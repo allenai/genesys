@@ -1,0 +1,198 @@
+{
+    "paperId": "4aa9f5150b46320f534de4747a2dd0cd7f3fe292",
+    "externalIds": {
+        "ArXiv": "1511.01432",
+        "MAG": "2952729433",
+        "DBLP": "conf/nips/DaiL15",
+        "CorpusId": 7138078
+    },
+    "title": "Semi-supervised Sequence Learning",
+    "abstract": "We present two approaches to use unlabeled data to improve Sequence Learning with recurrent networks. The first approach is to predict what comes next in a sequence, which is a language model in NLP. The second approach is to use a sequence autoencoder, which reads the input sequence into a vector and predicts the input sequence again. These two algorithms can be used as a \"pretraining\" algorithm for a later supervised sequence learning algorithm. In other words, the parameters obtained from the pretraining step can then be used as a starting point for other supervised training models. In our experiments, we find that long short term memory recurrent networks after pretrained with the two approaches become more stable to train and generalize better. With pretraining, we were able to achieve strong performance in many classification tasks, such as text classification with IMDB, DBpedia or image recognition in CIFAR-10.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2015,
+    "referenceCount": 41,
+    "citationCount": 1182,
+    "influentialCitationCount": 76,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Two approaches to use unlabeled data to improve Sequence Learning with recurrent networks are presented and it is found that long short term memory recurrent networks after pretrained with the two approaches become more stable to train and generalize better."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2555924",
+            "name": "Andrew M. Dai"
+        },
+        {
+            "authorId": "2827616",
+            "name": "Quoc V. Le"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "51a55df1f023571a7e07e338ee45a3e3d66ef73e",
+            "title": "Character-level Convolutional Networks for Text Classification"
+        },
+        {
+            "paperId": "6e795c6e9916174ae12349f5dc3f516570c17ce8",
+            "title": "Skip-Thought Vectors"
+        },
+        {
+            "paperId": "86311b182786bfde19446f6ded0854de973d4060",
+            "title": "A Neural Conversational Model"
+        },
+        {
+            "paperId": "5418b2a482720e013d487a385c26fae0f017c6a6",
+            "title": "Beyond short snippets: Deep networks for video classification"
+        },
+        {
+            "paperId": "a7976c2bacfbb194ddbe7fd10c2e50a545cf4081",
+            "title": "LSTM: A Search Space Odyssey"
+        },
+        {
+            "paperId": "ba49d3823d43515e447296ca4e1e55d3f1fd8c4d",
+            "title": "Neural Responding Machine for Short-Text Conversation"
+        },
+        {
+            "paperId": "829510ad6f975c939d589eeb01a3cf6fc6c8ce4d",
+            "title": "Unsupervised Learning of Video Representations using LSTMs"
+        },
+        {
+            "paperId": "47570e7f63e296f224a0e7f9a0d08b0de3cbaf40",
+            "title": "Grammar as a Foreign Language"
+        },
+        {
+            "paperId": "1938624bb9b0f999536dcc8d8f519810bb4e1b3b",
+            "title": "On Using Very Large Target Vocabulary for Neural Machine Translation"
+        },
+        {
+            "paperId": "47d2dc34e1d02a8109f5c04bb6939725de23716d",
+            "title": "End-to-end Continuous Speech Recognition using Attention-based Recurrent NN: First Results"
+        },
+        {
+            "paperId": "fbf417c83ae5b895fc645346e4efbf3a0aabeac9",
+            "title": "Effective Use of Word Order for Text Categorization with Convolutional Neural Networks"
+        },
+        {
+            "paperId": "d4dc1012d780e8e2547237eb5a6dc7b1bf47d2f0",
+            "title": "Show and tell: A neural image caption generator"
+        },
+        {
+            "paperId": "1956c239b3552e030db1b78951f64781101125ed",
+            "title": "Addressing the Rare Word Problem in Neural Machine Translation"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "f264e8b33c0d49a692a6ce2c4bcb28588aeb7d97",
+            "title": "Recurrent Neural Network Regularization"
+        },
+        {
+            "paperId": "1f6ba0782862ec12a5ec6d7fb608523d55b0c6ba",
+            "title": "Convolutional Neural Networks for Sentence Classification"
+        },
+        {
+            "paperId": "f3de86aeb442216a8391befcacb49e58b478f512",
+            "title": "Distributed Representations of Sentences and Documents"
+        },
+        {
+            "paperId": "cbdc46f0453fb81aa8582ec19be9b5ddd9371701",
+            "title": "Stochastic Ratio Matching of RBMs for Sparse High-Dimensional Inputs"
+        },
+        {
+            "paperId": "665f89a20b05472d82df0a12f2dd63e8fcc4f3ea",
+            "title": "Hidden factors and hidden topics: understanding rating dimensions with review text"
+        },
+        {
+            "paperId": "687bac2d3320083eb4530bf18bb8f8f721477600",
+            "title": "Recursive Deep Models for Semantic Compositionality Over a Sentiment Treebank"
+        },
+        {
+            "paperId": "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17",
+            "title": "Generating Sequences With Recurrent Neural Networks"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "27e38351e48fe4b7da2775bf94341738bc4da07e",
+            "title": "Semantic Compositionality through Recursive Matrix-Vector Spaces"
+        },
+        {
+            "paperId": "5e9fa46f231c59e6573f9a116f77f53703347659",
+            "title": "Baselines and Bigrams: Simple, Good Sentiment and Topic Classification"
+        },
+        {
+            "paperId": "1c61f9ef06fe74505775a833ff849185757199e7",
+            "title": "Learning Word Vectors for Sentiment Analysis"
+        },
+        {
+            "paperId": "944e1a7b2c5c62e952418d7684e3cade89c76f87",
+            "title": "A Framework for Learning Predictive Structures from Multiple Tasks and Unlabeled Data"
+        },
+        {
+            "paperId": "6af58c061f2e4f130c3b795c21ff0c7e3903278f",
+            "title": "Seeing Stars: Exploiting Class Relationships for Sentiment Categorization with Respect to Rating Scales"
+        },
+        {
+            "paperId": "6c2b28f9354f667cd5bd07afc0471d8334430da7",
+            "title": "A Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "11540131eae85b2e11d53df7f1360eeb6476e7f4",
+            "title": "Learning to Forget: Continual Prediction with LSTM"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "38b3a4447a47a6a6ed1869f3da03352c487f8fe3",
+            "title": "NewsWeeder: Learning to Filter Netnews"
+        },
+        {
+            "paperId": "052b1d8ce63b07fec3de9dbb583772d860b7c769",
+            "title": "Learning representations by back-propagating errors"
+        },
+        {
+            "paperId": "d2946a868682e4141beabc288d79253ae254c6e1",
+            "title": "DBpedia - A large-scale, multilingual knowledge base extracted from Wikipedia"
+        },
+        {
+            "paperId": null,
+            "title": "Datasets for single-label text categorization"
+        },
+        {
+            "paperId": null,
+            "title": "Listen, attend and spell"
+        },
+        {
+            "paperId": "1671a665c636bec7d2eaff137d74e9b7f074892f",
+            "title": "Learning Algorithms for the Classification Restricted Boltzmann Machine"
+        },
+        {
+            "paperId": "bea5780d621e669e8069f05d0f2fc0db9df4b50f",
+            "title": "Convolutional Deep Belief Networks on CIFAR-10"
+        },
+        {
+            "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+            "title": "Recurrent neural network based language model"
+        },
+        {
+            "paperId": "2e5f2b57f4c476dd69dc22ccdf547e48f40a994c",
+            "title": "Gradient Flow in Recurrent Nets: the Difficulty of Learning Long-Term Dependencies"
+        },
+        {
+            "paperId": "749ce8ccd9453d1b34901143cddf5f9bee2977cf",
+            "title": "Learning representations by back-propagation errors, nature"
+        },
+        {
+            "paperId": "56623a496727d5c71491850e04512ddf4152b487",
+            "title": "Beyond Regression : \"New Tools for Prediction and Analysis in the Behavioral Sciences"
+        }
+    ]
+}

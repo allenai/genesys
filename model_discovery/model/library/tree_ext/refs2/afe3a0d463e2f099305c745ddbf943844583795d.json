@@ -1,0 +1,335 @@
+{
+    "paperId": "afe3a0d463e2f099305c745ddbf943844583795d",
+    "externalIds": {
+        "DBLP": "journals/corr/abs-1808-00300",
+        "MAG": "2885380450",
+        "ArXiv": "1808.00300",
+        "DOI": "10.1007/978-3-030-01231-1_1",
+        "CorpusId": 51895329
+    },
+    "title": "Learning Visual Question Answering by Bootstrapping Hard Attention",
+    "abstract": null,
+    "venue": "European Conference on Computer Vision",
+    "year": 2018,
+    "referenceCount": 73,
+    "citationCount": 92,
+    "influentialCitationCount": 4,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces a new approach for hard attention and finds it achieves very competitive performance on a recently-released visual question answering datasets, equalling and in some cases surpassing similar soft attention architectures while entirely ignoring some features."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145478807",
+            "name": "Mateusz Malinowski"
+        },
+        {
+            "authorId": "2786693",
+            "name": "Carl Doersch"
+        },
+        {
+            "authorId": "35030998",
+            "name": "Adam Santoro"
+        },
+        {
+            "authorId": "2019153",
+            "name": "P. Battaglia"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "c611b9c82e234b344a232bcbbe5436e06da69f0b",
+            "title": "Explainable Neural Computation via Stack Neural Module Networks"
+        },
+        {
+            "paperId": "3a58efcc4558727cc5c131c44923635da4524f33",
+            "title": "Relational inductive biases, deep learning, and graph networks"
+        },
+        {
+            "paperId": "ebff4eb2f94dcf38171a5ca6a24ee95bc8e88c10",
+            "title": "Hyperbolic Attention Networks"
+        },
+        {
+            "paperId": "cd0a7c58964905ccfddbad1614165320ccc56393",
+            "title": "Transparency by Design: Closing the Gap Between Performance and Interpretability in Visual Reasoning"
+        },
+        {
+            "paperId": "c8efcc854d97dfc2a42b83316a2109f9d166e43f",
+            "title": "Self-Attention with Relative Position Representations"
+        },
+        {
+            "paperId": "21af4ed208ea3ecdb20b75aa27cddd0bfe683eec",
+            "title": "The Building Blocks of Interpretability"
+        },
+        {
+            "paperId": "289fb3709475f5c87df8d97f129af54029d27fee",
+            "title": "Compositional Attention Networks for Machine Reasoning"
+        },
+        {
+            "paperId": "0bca81af424ebc50018a9e9337041e51a74e3722",
+            "title": "DDRprog: A CLEVR Differentiable Dynamic Reasoning Programmer"
+        },
+        {
+            "paperId": "23d6bb8edcd86f8439072f932f414329b393473b",
+            "title": "Object-Based Reasoning in VQA"
+        },
+        {
+            "paperId": "90873a97aa9a43775e5aeea01b03aea54b28bfbd",
+            "title": "Don't Just Assume; Look and Answer: Overcoming Priors for Visual Question Answering"
+        },
+        {
+            "paperId": "8899094797e82c5c185a0893896320ef77f60e64",
+            "title": "Non-local Neural Networks"
+        },
+        {
+            "paperId": "47bc048efb90e7b8bae5c1fcc979a78b65763fe9",
+            "title": "PackNet: Adding Multiple Tasks to a Single Network by Iterative Pruning"
+        },
+        {
+            "paperId": "7cfa5c97164129ce3630511f639040d28db1d4b7",
+            "title": "FiLM: Visual Reasoning with a General Conditioning Layer"
+        },
+        {
+            "paperId": "b14a60a1c3e6bb45baddd754a1cfe83ffc1bbb81",
+            "title": "Tips and Tricks for Visual Question Answering: Learnings from the 2017 Challenge"
+        },
+        {
+            "paperId": "5823d18cd378898b12de537862d996443ce9c9e8",
+            "title": "Structured Attentions for Visual Question Answering"
+        },
+        {
+            "paperId": "feeb3a2aa35a02e06546d05d94bac9a2123fc0c8",
+            "title": "Modulating early visual processing by language"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "007112213ece771be72cbecfd59f048209facabd",
+            "title": "A simple neural network module for relational reasoning"
+        },
+        {
+            "paperId": "2e17cf6a339fd071ad222062f868e882ef4120a4",
+            "title": "Inferring and Executing Programs for Visual Reasoning"
+        },
+        {
+            "paperId": "a396a6febdacb84340d139096455e67049ac1e22",
+            "title": "Learning to Reason: End-to-End Module Networks for Visual Question Answering"
+        },
+        {
+            "paperId": "d674b540dcd968bc302ea4360df3f4e85e994b55",
+            "title": "Show, Ask, Attend, and Answer: A Strong Baseline For Visual Question Answering"
+        },
+        {
+            "paperId": "13d9323a8716131911bfda048a40e2cde1a76a46",
+            "title": "Structured Attention Networks"
+        },
+        {
+            "paperId": "03eb382e04cca8cca743f7799070869954f1402a",
+            "title": "CLEVR: A Diagnostic Dataset for Compositional Language and Elementary Visual Reasoning"
+        },
+        {
+            "paperId": "7e232313a59d735ef7c8a9f4cc7bc980a29deb5e",
+            "title": "Making the V in VQA Matter: Elevating the Role of Image Understanding in Visual Question Answering"
+        },
+        {
+            "paperId": "29e944711a354c396fad71936f536e83025b6ce0",
+            "title": "Categorical Reparameterization with Gumbel-Softmax"
+        },
+        {
+            "paperId": "515a21e90117941150923e559729c59f5fdade1c",
+            "title": "The Concrete Distribution: A Continuous Relaxation of Discrete Random Variables"
+        },
+        {
+            "paperId": "95f0125e6dda6c0028e09e814a7aaae5ef4922a4",
+            "title": "Solving VIsual Madlibs with Multiple Cues"
+        },
+        {
+            "paperId": "e0c7c81571ff97881277bc37a218d885ec64beb1",
+            "title": "Mean Box Pooling: A Rich Image Representation and Output Embedding for the Visual Madlibs Task"
+        },
+        {
+            "paperId": "906ac7584faf8ead6004be4cc5122320c87df59c",
+            "title": "Dynamic Neural Turing Machine with Soft and Hard Addressing Schemes"
+        },
+        {
+            "paperId": "12f7de07f9b00315418e381b2bd797d21f12b419",
+            "title": "Multimodal Compact Bilinear Pooling for Visual Question Answering and Visual Grounding"
+        },
+        {
+            "paperId": "f7ddf708442dad7ed2978658b101c797c7c10220",
+            "title": "Ask Your Neurons: A Deep Learning Approach to Visual Question Answering"
+        },
+        {
+            "paperId": "7214daf035ab005b3d1e739750dd597b4f4513fa",
+            "title": "A Focused Dynamic Attention Model for Visual Question Answering"
+        },
+        {
+            "paperId": "f96898d15a1bf1fa8925b1280d0e07a7a8e72194",
+            "title": "Dynamic Memory Networks for Visual and Textual Question Answering"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "175e9bb50cc062c6c1742a5d90c8dfe31d2e4e22",
+            "title": "Where to Look: Focus Regions for Visual Question Answering"
+        },
+        {
+            "paperId": "d913b9d742b99119d96ad2b661f3e7e7c2fa5e2b",
+            "title": "What makes Paris look like Paris?"
+        },
+        {
+            "paperId": "b196bc11ad516c8e6ff96f83acfc443fd7161730",
+            "title": "ABC-CNN: An Attention Based Convolutional Neural Network for Visual Question Answering"
+        },
+        {
+            "paperId": "1cf6bc0866226c1f8e282463adc8b75d92fba9bb",
+            "title": "Ask, Attend and Answer: Exploring Question-Guided Spatial Attention for Visual Question Answering"
+        },
+        {
+            "paperId": "14c2321851fb5ae580a19726dd2753a525d6ad76",
+            "title": "Grounding of Textual Phrases in Images by Reconstruction"
+        },
+        {
+            "paperId": "def584565d05d6a8ba94de6621adab9e301d375d",
+            "title": "Visual7W: Grounded Question Answering in Images"
+        },
+        {
+            "paperId": "2c1890864c1c2b750f48316dc8b650ba4772adc5",
+            "title": "Stacked Attention Networks for Image Question Answering"
+        },
+        {
+            "paperId": "dbb6ded623159c867fbeca0772db7b2eb9489523",
+            "title": "Spatial Transformer Networks"
+        },
+        {
+            "paperId": "2fcd5cff2b4743ea640c4af68bf4143f4a2cccb1",
+            "title": "Are You Talking to a Machine? Dataset and Methods for Multilingual Image Question"
+        },
+        {
+            "paperId": "df4f851e3c37017822a683b1356c6c390b5b5487",
+            "title": "Image Question Answering: A Visual Semantic Embedding Model and a New Dataset"
+        },
+        {
+            "paperId": "bd7bd1d2945a58cdcc1797ba9698b8810fe68f60",
+            "title": "Ask Your Neurons: A Neural-Based Approach to Answering Questions about Images"
+        },
+        {
+            "paperId": "97ad70a9fa3f99adf18030e5e38ebe3d90daa2db",
+            "title": "VQA: Visual Question Answering"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "f4a397577302ad1f270c2541e6230064882921cc",
+            "title": "Hard to Cheat: A Turing Test based on Answering Questions about Images"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "55e022fb7581bb9e1fce678d21fb25ffbb3fbb88",
+            "title": "Deep visual-semantic alignments for generating image descriptions"
+        },
+        {
+            "paperId": "3d29e1c4f1c2b079cf6b5dd458fa6cee246955f9",
+            "title": "Towards a Visual Turing Challenge"
+        },
+        {
+            "paperId": "ac64fb7e6d2ddf236332ec9f371fe85d308c114d",
+            "title": "A Multi-World Approach to Question Answering about Real-World Scenes based on Uncertain Input"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "8a756d4d25511d92a45d0f4545fa819de993851d",
+            "title": "Recurrent Models of Visual Attention"
+        },
+        {
+            "paperId": "13549b4e6fffbb7932b7a83a8eb6be27e6a60eca",
+            "title": "What Are You Talking About? Text-to-Image Coreference"
+        },
+        {
+            "paperId": "b222b3b05d8d313420dbde8b163e4336a85dcde9",
+            "title": "Mid-level Visual Element Discovery as Discriminative Mode Seeking"
+        },
+        {
+            "paperId": "e64fd4eb33199fc2cc731aec1c25d4e88a4d4f40",
+            "title": "Grounding spatial relations for human-robot interaction"
+        },
+        {
+            "paperId": "62c76ca0b2790c34e85ba1cce09d47be317c7235",
+            "title": "Estimating or Propagating Gradients Through Stochastic Neurons for Conditional Computation"
+        },
+        {
+            "paperId": "6b730f5dfbd73172a4bba2d00d377a145c046bca",
+            "title": "Blocks That Shout: Distinctive Parts for Scene Classification"
+        },
+        {
+            "paperId": "4ea7eaff98a6365aa94c99a52f540cf7dcc4e384",
+            "title": "Attention During Natural Vision Warps Semantic Representation Across the Human Brain"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "ce854ea2c797bd10cbdf4563a558cd8652c4946e",
+            "title": "Unsupervised Discovery of Mid-Level Discriminative Patches"
+        },
+        {
+            "paperId": "3cc6c4b2881c5607df9d3d6bb25ed94fd0add236",
+            "title": "Top-down control of visual attention in object detection"
+        },
+        {
+            "paperId": "0b93901e11e0277e04fe4f0133846250d0be7f89",
+            "title": "Inattentional Blindness"
+        },
+        {
+            "paperId": "6951dacb842e4efca89d6b594dbd2a15bc42eb8d",
+            "title": "Noticing Familiar Objects in Real World Scenes: The Role of Temporal Cortical Neurons in Natural Vision"
+        },
+        {
+            "paperId": "819c8ebdf35f0966b6dc041624d5bfa87f850efa",
+            "title": "Gorillas in Our Midst: Sustained Inattentional Blindness for Dynamic Events"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "4106342a079eecadd4a4a1d39eabd4a50e0a7cd1",
+            "title": "Symbol grounding problem"
+        },
+        {
+            "paperId": "5cd16bf8e2701abf8ca30e935866088058db706e",
+            "title": "Towards holistic machines: From visual recognition to question answering about real-world images"
+        },
+        {
+            "paperId": "d3edc100c6577abba414f6c0a16e4c3921e68bff",
+            "title": "A visual Turing test for computer vision systems"
+        },
+        {
+            "paperId": null,
+            "title": "Change blindness: Past, present, and future"
+        },
+        {
+            "paperId": null,
+            "title": "Learning Visual Question Answering by Bootstrapping Hard Attention 23"
+        }
+    ]
+}

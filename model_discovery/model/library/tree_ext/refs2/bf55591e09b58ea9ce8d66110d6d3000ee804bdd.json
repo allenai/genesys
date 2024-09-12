@@ -1,0 +1,210 @@
+{
+    "paperId": "bf55591e09b58ea9ce8d66110d6d3000ee804bdd",
+    "externalIds": {
+        "MAG": "2302086703",
+        "ArXiv": "1603.03925",
+        "DBLP": "journals/corr/YouJWFL16",
+        "DOI": "10.1109/CVPR.2016.503",
+        "CorpusId": 3120635
+    },
+    "title": "Image Captioning with Semantic Attention",
+    "abstract": "Automatically generating a natural language description of an image has attracted interests recently both because of its importance in practical applications and because it connects two major artificial intelligence fields: computer vision and natural language processing. Existing approaches are either top-down, which start from a gist of an image and convert it into words, or bottom-up, which come up with words describing various aspects of an image and then combine them. In this paper, we propose a new algorithm that combines both approaches through a model of semantic attention. Our algorithm learns to selectively attend to semantic concept proposals and fuse them into hidden states and outputs of recurrent neural networks. The selection and fusion form a feedback connecting the top-down and bottom-up computation. We evaluate our algorithm on two public benchmarks: Microsoft COCO and Flickr30K. Experimental results show that our algorithm significantly outperforms the state-of-the-art approaches consistently across different evaluation metrics.",
+    "venue": "Computer Vision and Pattern Recognition",
+    "year": 2016,
+    "referenceCount": 40,
+    "citationCount": 1587,
+    "influentialCitationCount": 129,
+    "openAccessPdf": {
+        "url": "http://arxiv.org/pdf/1603.03925",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a new algorithm that combines top-down and bottom-up approaches to natural language description through a model of semantic attention, and significantly outperforms the state-of-the-art approaches consistently across different evaluation metrics."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "36610242",
+            "name": "Quanzeng You"
+        },
+        {
+            "authorId": "41151701",
+            "name": "Hailin Jin"
+        },
+        {
+            "authorId": "8056043",
+            "name": "Zhaowen Wang"
+        },
+        {
+            "authorId": "144823841",
+            "name": "Chen Fang"
+        },
+        {
+            "authorId": "33642939",
+            "name": "Jiebo Luo"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "a72b8bbd039989db39769da836cdb287737deb92",
+            "title": "Mind's eye: A recurrent visual representation for image caption generation"
+        },
+        {
+            "paperId": "c4048de57777afb4873fdd01b18f0976b903bf87",
+            "title": "On the relationship between visual attributes and convolutional networks"
+        },
+        {
+            "paperId": "00fe3d95d0fd5f1433d81405bee772c4fe9af9c6",
+            "title": "What Value Do Explicit High Level Concepts Have in Vision to Language Problems?"
+        },
+        {
+            "paperId": "3ca194773fe583661b988fbdf33f7680764438b3",
+            "title": "Exploring Nearest Neighbor Approaches for Image Captioning"
+        },
+        {
+            "paperId": "eb847564774394c484e701437dbcffbf040ff3cc",
+            "title": "Learning Like a Child: Fast Novel Visual Concept Learning from Sentence Descriptions of Images"
+        },
+        {
+            "paperId": "696ca58d93f6404fea0fc75c62d1d7b378f47628",
+            "title": "Microsoft COCO Captions: Data Collection and Evaluation Server"
+        },
+        {
+            "paperId": "a2785f66c20fbdf30ec26c0931584c6d6a0f4fca",
+            "title": "DRAW: A Recurrent Neural Network For Image Generation"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "7845f1d3e796b5704d4bd37a945e0cf3fb8bbf1f",
+            "title": "Multiple Object Recognition with Visual Attention"
+        },
+        {
+            "paperId": "54b2b6f35f1b5704dddfaa3a137a2f4ad3dfe745",
+            "title": "Deep Captioning with Multimodal Recurrent Neural Networks (m-RNN)"
+        },
+        {
+            "paperId": "55e022fb7581bb9e1fce678d21fb25ffbb3fbb88",
+            "title": "Deep visual-semantic alignments for generating image descriptions"
+        },
+        {
+            "paperId": "03c58a72ce2b4753dc23e4396bcd6fd90353e277",
+            "title": "Simple Image Description Generator via a Linear Phrase-Based Approach"
+        },
+        {
+            "paperId": "a404b56cb1afc8383d44dd1e217642802474649b",
+            "title": "ConceptLearner: Discovering visual concepts from weakly labeled image collections"
+        },
+        {
+            "paperId": "15f102c3c9f4d4fe6ba105e221df48c6e8902b3b",
+            "title": "From captions to visual concepts and back"
+        },
+        {
+            "paperId": "d4dc1012d780e8e2547237eb5a6dc7b1bf47d2f0",
+            "title": "Show and tell: A neural image caption generator"
+        },
+        {
+            "paperId": "f01fc808592ea7c473a69a6e7484040a435f36d9",
+            "title": "Long-term recurrent convolutional networks for visual recognition and description"
+        },
+        {
+            "paperId": "6fc6803df5f9ae505cae5b2f178ade4062c768d0",
+            "title": "Fully convolutional networks for semantic segmentation"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa0cc5fcd2faa4591dd53504d0c5115783a2d2b6",
+            "title": "Improving Image-Sentence Embeddings Using Large Weakly Annotated Photo Collections"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "8a756d4d25511d92a45d0f4545fa819de993851d",
+            "title": "Recurrent Models of Visual Attention"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "0ca6cccbfcf3df972a470c7fe18f7eaed9420cd6",
+            "title": "Learning Generative Models with Visual Attention"
+        },
+        {
+            "paperId": "3b049d8cfea6c3bed377090e0e7fa677d282a361",
+            "title": "Deep Convolutional Ranking for Multilabel Image Annotation"
+        },
+        {
+            "paperId": "1a81c722727299e45af289d905d7dcf157174248",
+            "title": "BabyTalk: Understanding and Generating Simple Image Descriptions"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "3f6a4556769e819242d669d073b895f1e45a706f",
+            "title": "Image Description using Visual Dependency Representations"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "2a0d0f6c5a69b264710df0230696f47c5918e2f2",
+            "title": "Collective Generation of Natural Image Descriptions"
+        },
+        {
+            "paperId": "72829d537f0ec8b1cc0ced2f278bb56ce89f1b0c",
+            "title": "Learning Where to Attend with Deep Architectures for Image Tracking"
+        },
+        {
+            "paperId": "fbdbe747c6aa8b35b981d21e475ff1506a1bae66",
+            "title": "Composing Simple Image Descriptions using Web-scale N-grams"
+        },
+        {
+            "paperId": "0bff8898e3ebb1ab67fd20b5db00c6cb1938e6c3",
+            "title": "Learning to combine foveal glimpses with a third-order Boltzmann machine"
+        },
+        {
+            "paperId": "eaaed23a2d94feb2f1c3ff22a25777c7a78f3141",
+            "title": "Every Picture Tells a Story: Generating Sentences from Images"
+        },
+        {
+            "paperId": "0fb8f4f91472d5e0ef91963849709f74b172fbe3",
+            "title": "A Feedback Model of Visual Attention"
+        },
+        {
+            "paperId": "255d66dba588c4c0340a3ccffeffc4b9cc68d688",
+            "title": "Long-Term Recurrent Convolutional Networks for Visual Recognition and Description"
+        },
+        {
+            "paperId": null,
+            "title": "Lecture 6.5 - rmsprop"
+        },
+        {
+            "paperId": "9d896605fbf93315b68d4ee03be0770077f84e40",
+            "title": "Baby Talk: Understanding and Generating Image Descriptions"
+        },
+        {
+            "paperId": "1ebb8ac1eda5c3c0857c9652ee977d1dee567d74",
+            "title": "Shifts in selective visual attention: towards the underlying neural circuitry."
+        }
+    ]
+}

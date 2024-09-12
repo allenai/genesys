@@ -1,0 +1,178 @@
+{
+    "paperId": "767c02e92c24b11279443148644a3396a167934b",
+    "externalIds": {
+        "MAG": "1492899210",
+        "DBLP": "conf/dcc/HowardV91",
+        "DOI": "10.1109/DCC.1991.213368",
+        "CorpusId": 15148784
+    },
+    "title": "Analysis of arithmetic coding for data compression",
+    "abstract": "The authors analyze the amount of compression possible when arithmetic coding is used for text compression in conjunction with various input models. Arithmetic coding, a technique for statistical lossless encoding, can be thought of as a generalization of Huffman coding in which probabilities are not constrained to be integral powers of 2 and code lengths need not be integers. Adaptive codes are proven to be as good as decrementing semi-adaptive codes. The tradeoff between scaling overheads and savings from exploitation of locality of reference is characterised exactly by means of weighted entropy.<<ETX>>",
+    "venue": "Proceedings. Data Compression Conference",
+    "year": 1991,
+    "referenceCount": 36,
+    "citationCount": 144,
+    "influentialCitationCount": 4,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The authors analyze the amount of compression possible when arithmetic coding is used for text compression in conjunction with various input models and finds that adaptive codes are proven to be as good as decrementing semi-adaptive codes."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1748112",
+            "name": "P. Howard"
+        },
+        {
+            "authorId": "1725956",
+            "name": "J. Vitter"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "852580f604792cd814b50265c463e33477cba58d",
+            "title": "Practical Implementations of Arithmetic Coding"
+        },
+        {
+            "paperId": "1f5d21625f8264f455591b3c7cbdac18b983b3c0",
+            "title": "The zero-frequency problem: Estimating the probabilities of novel events in adaptive text compression"
+        },
+        {
+            "paperId": "442bfccde8f59ddbc5b7067a50dee3414a18418e",
+            "title": "High efficiency, multiplication free approximation of arithmetic coding"
+        },
+        {
+            "paperId": "4e5a42a6643bac7f5cd7d9b9111c5be3e3e49cf6",
+            "title": "Probabilistic and Q-Coder algorithms for binary source adaptation"
+        },
+        {
+            "paperId": "0f0b4d4fdec3c7a9c4cb06ca5b78254f281bbf59",
+            "title": "Implementing the PPM data compression scheme"
+        },
+        {
+            "paperId": "eca032da22009c471c1901c2527b70977be7b1a0",
+            "title": "Text Compression"
+        },
+        {
+            "paperId": "d7d07b2b2ca6e28561fa142fd6f2fd020bcb40a7",
+            "title": "Modeling for text compression"
+        },
+        {
+            "paperId": "074afc7c994a846019e72409d498c5dbf521567d",
+            "title": "A multiplication-free multialphabet arithmetic code"
+        },
+        {
+            "paperId": "95ae410dc2451768f478a6f7cb9d486b88592185",
+            "title": "An Overview of the Basic Principles of the Q-Coder Adaptive Binary Arithmetic Coder"
+        },
+        {
+            "paperId": "4ef3a5f3a430ec3504aa3fa2649b2c0622b7e64e",
+            "title": "Almost asymptotically optimal flag encoding of the integers"
+        },
+        {
+            "paperId": "65a5e1c2f569d24634cb5f7df3926dde4102fa3f",
+            "title": "Data Compression Using Dynamic Markov Modelling"
+        },
+        {
+            "paperId": "fd23c9168418324e81881365f297fb6a1caa3a07",
+            "title": "Arithmetic coding for data compression"
+        },
+        {
+            "paperId": "5eba3ab5440ff7d99ef62887dca66d1a55ac3997",
+            "title": "Interval and recency rank source coding: Two on-line adaptive variable-length schemes"
+        },
+        {
+            "paperId": "7e1ca8d081fc07e6190a3bf5e3156569d8e9c96b",
+            "title": "Stochastic Complexity and Modeling"
+        },
+        {
+            "paperId": "f0c2b562c8bf47aed41e3c91feae131d044a6000",
+            "title": "Dynamic Huffman Coding"
+        },
+        {
+            "paperId": "dec4696ce7122669e4be281b4f2bef9d6791a6c9",
+            "title": "Universal coding, information, prediction, and estimation"
+        },
+        {
+            "paperId": "58135a17632cb70c29883b3100f21dd017f7aeef",
+            "title": "A comparison of enumerative and adaptive codes"
+        },
+        {
+            "paperId": "50e2733d2a8a9b3929bda278d382c37711f3fa8e",
+            "title": "Data Compression Using Adaptive Coding and Partial String Matching"
+        },
+        {
+            "paperId": "71568a29d90ca5dca4e2cf45ab235832fc773149",
+            "title": "Algorithms for Adaptive Huffman Codes"
+        },
+        {
+            "paperId": "bba1b441ac1143ceb3e75ca02588515792684b3b",
+            "title": "Information in prediction and estimation"
+        },
+        {
+            "paperId": "930c9b4a081cd73186ff3d990da1842c6e45f95b",
+            "title": "Compression of Black-White Images with Arithmetic Coding"
+        },
+        {
+            "paperId": "47d1350e9d5b637a7fc888b52c5b9291985b9ed8",
+            "title": "Arithmetic stream coding using fixed precision registers"
+        },
+        {
+            "paperId": "9fcb8d85e3d429f3816861fc7999e1bb68eefd39",
+            "title": "Generalized Kraft Inequality and Arithmetic Coding"
+        },
+        {
+            "paperId": "1ecd86899c752f1e41ec4792cff22a4c7fbfc048",
+            "title": "Universal codeword sets and representations of the integers"
+        },
+        {
+            "paperId": "a068df4c5f829bd0b85bf72fd919006c563c6345",
+            "title": "A method for the construction of minimum-redundancy codes"
+        },
+        {
+            "paperId": null,
+            "title": "Comput. Surveys"
+        },
+        {
+            "paperId": null,
+            "title": "Adaptive model for nonstationary sources"
+        },
+        {
+            "paperId": null,
+            "title": "J. Algorithms"
+        },
+        {
+            "paperId": null,
+            "title": "Universal Complete Codes as Alternatives  to Hu man"
+        },
+        {
+            "paperId": null,
+            "title": "Method for adaptively initializing a source model for symbol encoding"
+        },
+        {
+            "paperId": null,
+            "title": "Data compression by means of a book stack"
+        },
+        {
+            "paperId": "20d673dc3200ac1742ee0827535a291eb6e051f8",
+            "title": "Arithmetic Coding"
+        },
+        {
+            "paperId": null,
+            "title": "Encoding of Commas Between Strings,\" Comm"
+        },
+        {
+            "paperId": "6e9a6af4bc23b4cd139e671f4d1b2ca18228f660",
+            "title": "Source coding algorithms for fast data compression"
+        },
+        {
+            "paperId": null,
+            "title": "IBM J. Res. Develop"
+        },
+        {
+            "paperId": "d1522ddf1a7e6dc5606442b7b644d8586908a8e3",
+            "title": "Programming Techniques and Data Structures a Locally Adaptive Data"
+        }
+    ]
+}

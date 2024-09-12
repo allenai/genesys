@@ -1,0 +1,221 @@
+{
+    "paperId": "edf455c3b5b8d1c6337c72e39940125036354d03",
+    "externalIds": {
+        "MAG": "1921093919",
+        "DBLP": "conf/cvpr/MenzeG15",
+        "DOI": "10.1109/CVPR.2015.7298925",
+        "CorpusId": 12986049
+    },
+    "title": "Object scene flow for autonomous vehicles",
+    "abstract": "This paper proposes a novel model and dataset for 3D scene flow estimation with an application to autonomous driving. Taking advantage of the fact that outdoor scenes often decompose into a small number of independently moving objects, we represent each element in the scene by its rigid motion parameters and each superpixel by a 3D plane as well as an index to the corresponding object. This minimal representation increases robustness and leads to a discrete-continuous CRF where the data term decomposes into pairwise potentials between superpixels and objects. Moreover, our model intrinsically segments the scene into its constituting dynamic components. We demonstrate the performance of our model on existing benchmarks as well as a novel realistic dataset with scene flow ground truth. We obtain this dataset by annotating 400 dynamic scenes from the KITTI raw data collection using detailed 3D CAD models for all vehicles in motion. Our experiments also reveal novel challenges which cannot be handled by existing methods.",
+    "venue": "Computer Vision and Pattern Recognition",
+    "year": 2015,
+    "referenceCount": 46,
+    "citationCount": 1909,
+    "influentialCitationCount": 394,
+    "openAccessPdf": {
+        "url": "http://www.cvlibs.net/publications/Menze2015CVPR.pdf",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel model and dataset for 3D scene flow estimation with an application to autonomous driving by representing each element in the scene by its rigid motion parameters and each superpixel by a 3D plane as well as an index to the corresponding object."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "101841672",
+            "name": "Moritz Menze"
+        },
+        {
+            "authorId": "47237027",
+            "name": "Andreas Geiger"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "b0d986d92e085675c126c06dc1c8ed4bf1c71ae8",
+            "title": "View-Consistent 3D Scene Flow Estimation over Multiple Frames"
+        },
+        {
+            "paperId": "ab750ac89def351e2ebd5fcf8d0ff12aaa21977d",
+            "title": "Modeling Blurred Video with Layers"
+        },
+        {
+            "paperId": "9d4e33eb6e8be3d45e685645d2dee394ae204a5a",
+            "title": "Dense Semi-rigid Scene Flow Estimation from RGBD Images"
+        },
+        {
+            "paperId": "efbafc35347ca68b521848251d5a53abe932800a",
+            "title": "Efficient Joint Segmentation, Occlusion Labeling, Stereo and Flow Estimation"
+        },
+        {
+            "paperId": "444d165af18f474a2d0e56e981195374c3f304bf",
+            "title": "Scene Flow Estimation using Intelligent Cost Functions"
+        },
+        {
+            "paperId": "46639ab055d377cfb9a99bf9963329c8fe02d0c2",
+            "title": "SphereFlow: 6 DoF Scene Flow from RGB-D Pairs"
+        },
+        {
+            "paperId": "2c29f5245e20b49acad4c63220a17f3b1fb8cd00",
+            "title": "Preserving Modes and Messages via Diverse Particle Selection"
+        },
+        {
+            "paperId": "afc68658553bfb7bf6c265efece16b20bbcdf510",
+            "title": "3D Traffic Scene Understanding From Movable Platforms"
+        },
+        {
+            "paperId": "0da502f4c6a34b303682ba45403ac73253d1fe34",
+            "title": "Piecewise Rigid Scene Flow"
+        },
+        {
+            "paperId": "1850a106fad32010e2fae2f3c34d47e3237bb3f4",
+            "title": "A Quantitative Analysis of Current Practices in Optical Flow Estimation and the Principles Behind Them"
+        },
+        {
+            "paperId": "79b949d9b35c3f51dd20fb5c746cc81fc87147eb",
+            "title": "Vision meets robotics: The KITTI dataset"
+        },
+        {
+            "paperId": "b70d46fa10b43ed534b0541b01e222f118ba3dae",
+            "title": "Robust Monocular Epipolar Flow Estimation"
+        },
+        {
+            "paperId": "d350be53eff985e199c596f3b92bca817e95c778",
+            "title": "A Fully-Connected Layered Model of Foreground and Background Flow"
+        },
+        {
+            "paperId": "b65bea5349e4157b81781e04c0f3023116455912",
+            "title": "RGB-D flow: Dense 3-D motion estimation using color and depth"
+        },
+        {
+            "paperId": "b62e0211878083cbdc38c7768b9f14f55b586ebc",
+            "title": "Extracting 3D Scene-Consistent Object Proposals and Depth from Stereo Images"
+        },
+        {
+            "paperId": "de5b0fd02ea4f4d67fe3ae0d74603b9822df4e42",
+            "title": "Are we ready for autonomous driving? The KITTI vision benchmark suite"
+        },
+        {
+            "paperId": "6fbf16394084bea915af1632f4cc2a34fdb16901",
+            "title": "3D scene flow estimation with a rigid motion prior"
+        },
+        {
+            "paperId": "174059854d1d1544c792eca1d6a2a4de56615479",
+            "title": "Stereoscopic Scene Flow Computation for 3D Motion Understanding"
+        },
+        {
+            "paperId": "1c5b891cc2879638e2924e119aa1166a4918654c",
+            "title": "Object stereo \u2014 Joint stereo matching and object segmentation"
+        },
+        {
+            "paperId": "101b3894e639ecaaec910d039e543ab98cf672f8",
+            "title": "Scene flow estimation by growing correspondence seeds"
+        },
+        {
+            "paperId": "8e7b64024ed4c5cf233c7d678234eb8328b0b9d5",
+            "title": "StereoScan: Dense 3d reconstruction in real-time"
+        },
+        {
+            "paperId": "6835f680a3d02b98ee090cdb93d3e7a15fb0cf97",
+            "title": "Large Displacement Optical Flow: Descriptor Matching in Variational Motion Estimation"
+        },
+        {
+            "paperId": "49937c53e607e3c7a1387445a602f662104e6eea",
+            "title": "Joint Estimation of Motion, Structure and Geometry from Stereo Sequences"
+        },
+        {
+            "paperId": "5c3c189ea42a4bcb395d3a678dbb87b83fd7cdbe",
+            "title": "Dense, Robust, and Accurate Motion Field Estimation from Stereo Image Sequences in Real-Time"
+        },
+        {
+            "paperId": "6d43df24d38e9db87c0c1a51d4552b960f2f8177",
+            "title": "Multi-view Scene Flow Estimation: A View Centered Variational Approach"
+        },
+        {
+            "paperId": "0dfdb4d55430b88d01c0a6d7d6e20df0f6a932fc",
+            "title": "Robust Multiperson Tracking from a Mobile Platform"
+        },
+        {
+            "paperId": "5d564cec98eff7eb1de2ab35e398bbeda5da6a0c",
+            "title": "Efficient Dense Scene Flow from Sparse or Dense Stereo Data"
+        },
+        {
+            "paperId": "43a94b58de73296f0bf9f5391790d9c6faf435e0",
+            "title": "Over-Parameterized Variational Optical Flow"
+        },
+        {
+            "paperId": "cb00a4ee187d91546df7e0b842ee26a78bf9c16a",
+            "title": "A Variational Method for Scene Flow Estimation from Stereo Sequences"
+        },
+        {
+            "paperId": "f3f0567853773023196890cb0a52e2292daca56f",
+            "title": "Optimizing Binary MRFs via Extended Roof Duality"
+        },
+        {
+            "paperId": "db47a9a47b83f2294ca89c90d643829b4a909cc6",
+            "title": "Multi-View Stereo Reconstruction and Scene Flow Estimation with a Global Image-Based Matching Score"
+        },
+        {
+            "paperId": "e0bcc580a1e9e32b3329363bab43331ed9c5a7d4",
+            "title": "Convergent Tree-Reweighted Message Passing for Energy Minimization"
+        },
+        {
+            "paperId": "d5cd034e94453c4c4b86cf7fb9b12b6d7fb38963",
+            "title": "6D-Vision: Fusion of Stereo and Motion for Robust Environment Perception"
+        },
+        {
+            "paperId": "37a15ce03c26ec83d95bf4aaf756a41370d50353",
+            "title": "Pedestrian detection for driving assistance systems: single-frame classification and system level performance"
+        },
+        {
+            "paperId": "d2f78c2b2b325d72f359d4c797c9aab6a8e60942",
+            "title": "A Taxonomy and Evaluation of Dense Two-Frame Stereo Correspondence Algorithms"
+        },
+        {
+            "paperId": "b288673205c479d0a019d45f85c2716fe1f85096",
+            "title": "Non-parametric Local Transforms for Computing Visual Correspondence"
+        },
+        {
+            "paperId": "eedaec6f0b9fb8348173caa1fecbc7903ac693be",
+            "title": "Computing Visual Correspondence"
+        },
+        {
+            "paperId": "1752b71637321db1e70a6d26e4190cfb5ddf0c06",
+            "title": "Vision: A Computational Investigation into the Human Representation and Processing of Visual Information"
+        },
+        {
+            "paperId": "772731199bd7dc8341a4f67567ba4de76d48e5e2",
+            "title": "CP-Census: A Novel Model for Dense Variational Scene Flow from RGB-D Data"
+        },
+        {
+            "paperId": "b7740f3ac331389c4d8cbccaf5d965b434d79077",
+            "title": "D Traffic Scene Understanding from Movable Platforms"
+        },
+        {
+            "paperId": "a409261ab55f8356979164bd813686a8c0a8b13f",
+            "title": "TRINH , MCALLESTER : UNSUPERVISED LEARNING FOR STEREO 1 Unsupervised Learning of Stereo Vision with Monocular Cues"
+        },
+        {
+            "paperId": "9d985d4307aa41682cbb50d5f1f8bab5b67bec88",
+            "title": "Unsupervised Learning of Stereo Vision with Monocular Depth Cues"
+        },
+        {
+            "paperId": "52df763d69ed5fe609a4a88f07e97a6cfaadf59f",
+            "title": "VISION A Computational Investigation into the Human Representation and Processing of Visual Information"
+        },
+        {
+            "paperId": null,
+            "title": "The DARPA urban challenge"
+        },
+        {
+            "paperId": "bcd84d8bd864ff903e3fe5b91bed3f2eedacc324",
+            "title": "Ieee Transactions on Pattern Analysis and Machine Intelligence 1 Stereo Processing by Semi-global Matching and Mutual Information"
+        },
+        {
+            "paperId": "c680ef116aad56006d8e833cce27ca7b1b3f97af",
+            "title": "TRANSACTIONS ON PATTERN ANALYSIS AND MACHINE INTELLIGENCE"
+        }
+    ]
+}

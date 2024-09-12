@@ -1,0 +1,97 @@
+{
+    "paperId": "a67530a9e9e96720278ae1278baa53f48b944bd6",
+    "externalIds": {
+        "MAG": "1497057245",
+        "DBLP": "conf/icml/LiKL10",
+        "CorpusId": 16261083
+    },
+    "title": "Making Large-Scale Nystr\u00f6m Approximation Possible",
+    "abstract": "The Nystrom method is an efficient technique for the eigenvalue decomposition of large kernel matrices. However, in order to ensure an accurate approximation, a sufficiently large number of columns have to be sampled. On very large data sets, the SVD step on the resultant data submatrix will soon dominate the computations and become prohibitive. In this paper, we propose an accurate and scalable Nystrom scheme that first samples a large column subset from the input matrix, but then only performs an approximate SVD on the inner submatrix by using the recent randomized low-rank matrix approximation algorithms. Theoretical analysis shows that the proposed algorithm is as accurate as the standard Nystrom method that directly performs a large SVD on the inner submatrix. On the other hand, its time complexity is only as low as performing a small SVD. Experiments are performed on a number of large-scale data sets for low-rank approximation and spectral embedding. In particular, spectral embedding of a MNIST data set with 3.3 million examples takes less than an hour on a standard PC with 4G memory.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2010,
+    "referenceCount": 15,
+    "citationCount": 132,
+    "influentialCitationCount": 14,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An accurate and scalable Nystrom scheme that first samples a large column subset from the input matrix, but then only performs an approximate SVD on the inner submatrix by using the recent randomized low-rank matrix approximation algorithms."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2112144357",
+            "name": "Mu Li"
+        },
+        {
+            "authorId": "145193332",
+            "name": "J. Kwok"
+        },
+        {
+            "authorId": "1715839",
+            "name": "Bao-Liang Lu"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "780165c9c7ebfed946bf47ad8afe471e8680fb25",
+            "title": "Ensemble Nystrom Method"
+        },
+        {
+            "paperId": "df7e1cfa5999c3746a3bbc9817d924677ac8b8f0",
+            "title": "Finding Structure with Randomness: Probabilistic Algorithms for Constructing Approximate Matrix Decompositions"
+        },
+        {
+            "paperId": "eb05b0f84ffbfa6c14ff58d6f4d062a93a346d03",
+            "title": "Finding structure with randomness: Probabilistic algorithms for constructing approximate matrix decompositions"
+        },
+        {
+            "paperId": "25f7cdba90ff53b40ff865a4e088ee5749f34210",
+            "title": "Sampling Techniques for the Nystrom Method"
+        },
+        {
+            "paperId": "ed2f7914bf51168842f33618d50f1e5f21622548",
+            "title": "Improved Nystr\u00f6m low-rank approximation and error analysis"
+        },
+        {
+            "paperId": "eda90bd43f4256986688e525b45b833a3addab97",
+            "title": "A tutorial on spectral clustering"
+        },
+        {
+            "paperId": "11e6b5a30a921e6028662105148fac41a76f0500",
+            "title": "On the Nystr\u00f6m Method for Approximating a Gram Matrix for Improved Kernel-Based Learning"
+        },
+        {
+            "paperId": "9d16c547d15a08091e68c86a99731b14366e3f0d",
+            "title": "Laplacian Eigenmaps and Spectral Techniques for Embedding and Clustering"
+        },
+        {
+            "paperId": "3537fcd0ff99a3b3cb3d279012df826358420556",
+            "title": "A global geometric framework for nonlinear dimensionality reduction."
+        },
+        {
+            "paperId": "13c82489c1568b67265d17a15720001a5737171e",
+            "title": "Spectral grouping using the Nystrom method"
+        },
+        {
+            "paperId": "6f3bb84ee1b5d638e2d605ae0eb1014e2b6e3931",
+            "title": "FAST MONTE CARLO ALGORITHMS FOR MATRICES II: COMPUTING A LOW-RANK APPROXIMATION TO A MATRIX\u2217"
+        },
+        {
+            "paperId": "b6fff8b8ea77f157913986e7af53951d9fc1128e",
+            "title": "Using the Nystr\u00f6m Method to Speed Up Kernel Machines"
+        },
+        {
+            "paperId": "abaff99aa3175aeb6f16bbfeac420c0879d00b34",
+            "title": "ARPACK users' guide - solution of large-scale eigenvalue problems with implicitly restarted Arnoldi methods"
+        },
+        {
+            "paperId": "bf4e821ed2179fd940b16b6fd3568761df07f870",
+            "title": "The Handbook of Matrices"
+        },
+        {
+            "paperId": "6c09c25131ac2e7f01fd14ce2a576c209f8ad23e",
+            "title": "Matrix Perturbation Theory"
+        }
+    ]
+}

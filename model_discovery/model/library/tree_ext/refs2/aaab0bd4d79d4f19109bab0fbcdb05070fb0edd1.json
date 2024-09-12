@@ -1,0 +1,231 @@
+{
+    "paperId": "aaab0bd4d79d4f19109bab0fbcdb05070fb0edd1",
+    "externalIds": {
+        "ArXiv": "1807.10221",
+        "DBLP": "journals/corr/abs-1807-10221",
+        "MAG": "2953120679",
+        "DOI": "10.1007/978-3-030-01228-1_26",
+        "CorpusId": 50781105
+    },
+    "title": "Unified Perceptual Parsing for Scene Understanding",
+    "abstract": null,
+    "venue": "European Conference on Computer Vision",
+    "year": 2018,
+    "referenceCount": 46,
+    "citationCount": 1488,
+    "influentialCitationCount": 188,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A multi-task framework called UPerNet and a training strategy are developed to learn from heterogeneous image annotations and it is shown that it is able to effectively segment a wide range of concepts from images."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "15727192",
+            "name": "Tete Xiao"
+        },
+        {
+            "authorId": "51149370",
+            "name": "Yingcheng Liu"
+        },
+        {
+            "authorId": "145291669",
+            "name": "Bolei Zhou"
+        },
+        {
+            "authorId": "2117772986",
+            "name": "Yuning Jiang"
+        },
+        {
+            "authorId": null,
+            "name": "Jian Sun"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "0f304db595d7bd0727c82ca706141c97b32d7388",
+            "title": "Interpreting Visual Representations of Neural Networks via Network Dissection"
+        },
+        {
+            "paperId": "ccd99008d942b890cecd308a31ba61240eac9e54",
+            "title": "Learning to Segment Every Thing"
+        },
+        {
+            "paperId": "642897c7d92262f9f40a1d6192d34c33487ac227",
+            "title": "MegDet: A Large Mini-Batch Object Detector"
+        },
+        {
+            "paperId": "c5f1b2df8b4ad9a50671709f062ffd8674bb9dc5",
+            "title": "Interpreting Deep Visual Representations via Network Dissection"
+        },
+        {
+            "paperId": "2a5667702b0f1ff77dde8fb3e2e10d4e05e8de9d",
+            "title": "Scene Parsing through ADE20K Dataset"
+        },
+        {
+            "paperId": "744464cd6fa8341633cd3b5d378faab18a3b543a",
+            "title": "Network Dissection: Quantifying Interpretability of Deep Visual Representations"
+        },
+        {
+            "paperId": "af1765c5fa55a13f33bbca91a73c9e93d77b6056",
+            "title": "Batch Renormalization: Towards Reducing Minibatch Dependence in Batch-Normalized Models"
+        },
+        {
+            "paperId": "394b103969eac939c2dfb7ef6de518a4f57679b6",
+            "title": "MultiNet: Real-time Joint Semantic Reasoning for Autonomous Driving"
+        },
+        {
+            "paperId": "2a94c84383ee3de5e6211d43d16e7de387f68878",
+            "title": "Feature Pyramid Networks for Object Detection"
+        },
+        {
+            "paperId": "1031a69923b80ad01cf3fbb703d10757a80e699b",
+            "title": "Pyramid Scene Parsing Network"
+        },
+        {
+            "paperId": "de4ee92cfad3734ca820d004bc9ee75fc9dcfbf4",
+            "title": "RefineNet: Multi-path Refinement Networks for High-Resolution Semantic Segmentation"
+        },
+        {
+            "paperId": "f6e0856b4a9199fa968ac00da612a9407b5cb85c",
+            "title": "Aggregated Residual Transformations for Deep Neural Networks"
+        },
+        {
+            "paperId": "922197906907dc0a5e1b51fae40d3149333ecacf",
+            "title": "UberNet: Training a Universal Convolutional Neural Network for Low-, Mid-, and High-Level Vision Using Diverse Datasets and Limited Memory"
+        },
+        {
+            "paperId": "cab372bc3824780cce20d9dd1c22d4df39ed081a",
+            "title": "DeepLab: Semantic Image Segmentation with Deep Convolutional Nets, Atrous Convolution, and Fully Connected CRFs"
+        },
+        {
+            "paperId": "c8c494ee5488fe20e0aa01bddf3fc4632086d654",
+            "title": "The Cityscapes Dataset for Semantic Urban Scene Understanding"
+        },
+        {
+            "paperId": "31f9eb39d840821979e5df9f34a6e92dd9c879f2",
+            "title": "Learning Deep Features for Discriminative Localization"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "7f5fc84819c0cf94b771fe15141f65b123f7b8ec",
+            "title": "Multi-Scale Context Aggregation by Dilated Convolutions"
+        },
+        {
+            "paperId": "eb33ae08bbc4918eeaf12b70af00345e1eeb63ad",
+            "title": "Convolutional Models for Joint Object Categorization and Pose Estimation"
+        },
+        {
+            "paperId": "b0c065cd43aa7280e766b5dcbcc7e26abce59330",
+            "title": "SegNet: A Deep Convolutional Encoder-Decoder Architecture for Image Segmentation"
+        },
+        {
+            "paperId": "cf986bfe13a24d4739f95df3a856a3c6e4ed4c1c",
+            "title": "Learning Deconvolution Network for Semantic Segmentation"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "39ad6c911f3351a3b390130a6e4265355b4d593b",
+            "title": "Semantic Image Segmentation with Deep Convolutional Nets and Fully Connected CRFs"
+        },
+        {
+            "paperId": "401192b00b650adfa5ac49de59b720e1c81f1410",
+            "title": "Object Detectors Emerge in Deep Scene CNNs"
+        },
+        {
+            "paperId": "9667f8264745b626c6173b1310e2ff0298b09cfc",
+            "title": "Learning Deep Features for Scene Recognition using Places Database"
+        },
+        {
+            "paperId": "cb3a2ddcf305e2ec0f6b94af13d1e631ed261bdc",
+            "title": "Predicting Depth, Surface Normals and Semantic Labels with a Common Multi-scale Convolutional Architecture"
+        },
+        {
+            "paperId": "6fc6803df5f9ae505cae5b2f178ade4062c768d0",
+            "title": "Fully convolutional networks for semantic segmentation"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "3419ccd5c94d301ee08d716d037f0c3c6a62e78e",
+            "title": "The Role of Context for Object Detection and Semantic Segmentation in the Wild"
+        },
+        {
+            "paperId": "caf202fd5833b1ef635923e79608e1a48d7539f9",
+            "title": "Detect What You Can: Detecting and Representing Objects Using Holistic Models and Body Parts"
+        },
+        {
+            "paperId": "18c125ce0f64e85577f7d30132cf0e92ec664bf4",
+            "title": "Describing Textures in the Wild"
+        },
+        {
+            "paperId": "1a2a770d23b4a171fa81de62a78a3deb0588f238",
+            "title": "Visualizing and Understanding Convolutional Networks"
+        },
+        {
+            "paperId": "fbc980c37cb34a8275621a496ac49a39f5a333b6",
+            "title": "What is network science?"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "d743430cb2329caa5d446c17fc9ec07f5e916ab0",
+            "title": "Adaptive deconvolutional networks for mid and high level feature learning"
+        },
+        {
+            "paperId": "18ccd8bd64b50c1b6a83a71792fd808da7076bc9",
+            "title": "Object detection and segmentation from joint embedding of parts and pixels"
+        },
+        {
+            "paperId": "a538b05ebb01a40323997629e171c91aa28b8e2f",
+            "title": "Rectified Linear Units Improve Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": "ba6e446a9c0aeb181e420dfb42c4c0d0a2742b28",
+            "title": "Exploring features in a Bayesian framework for material recognition"
+        },
+        {
+            "paperId": "d2c733e34d48784a37d717fe43d9e93277a8c53e",
+            "title": "ImageNet: A large-scale hierarchical image database"
+        },
+        {
+            "paperId": "efb97398a378bdb1d3cf5061802fcf3613477497",
+            "title": "An expectation maximization approach to the synergy between image segmentation and object categorization"
+        },
+        {
+            "paperId": "847d6ece37d22430a0d9e061b5dc1d1b8c679055",
+            "title": "Integrated Segmentation and Recognition of Hand-Printed Numerals"
+        },
+        {
+            "paperId": null,
+            "title": "Mscoco challenge 2017: stu\ufb00 segmentation, team fair"
+        },
+        {
+            "paperId": null,
+            "title": "Opensurfaces: A richly annotated catalog of surface appearance"
+        },
+        {
+            "paperId": null,
+            "title": "Edinburgh Research Explorer The PASCAL Visual Object Classes (VOC) Challenge"
+        },
+        {
+            "paperId": null,
+            "title": "Uni\ufb01ed Perceptual Parsing for Scene Understanding 17"
+        }
+    ]
+}

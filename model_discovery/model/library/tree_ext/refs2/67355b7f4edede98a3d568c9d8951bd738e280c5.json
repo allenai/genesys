@@ -1,0 +1,182 @@
+{
+    "paperId": "67355b7f4edede98a3d568c9d8951bd738e280c5",
+    "externalIds": {
+        "MAG": "2773281122",
+        "ArXiv": "1712.04910",
+        "DBLP": "conf/date/LinLNLDWP18",
+        "DOI": "10.23919/DATE.2018.8342166",
+        "CorpusId": 5067512
+    },
+    "title": "FFT-based deep learning deployment in embedded systems",
+    "abstract": "Deep learning has delivered its powerfulness in many application domains, especially in image and speech recognition. As the backbone of deep learning, deep neural networks (DNNs) consist of multiple layers of various types with hundreds to thousands of neurons. Embedded platforms are now becoming essential for deep learning deployment due to their portability, versatility, and energy efficiency. The large model size of DNNs, while providing excellent accuracy, also burdens the embedded platforms with intensive computation and storage. Researchers have investigated on reducing DNN model size with negligible accuracy loss. This work proposes a Fast Fourier Transform (FFT)-based DNN training and inference model suitable for embedded platforms with reduced asymptotic complexity of both computation and storage, making our approach distinguished from existing approaches. We develop the training and inference algorithms based on FFT as the computing kernel and deploy the FFT-based inference model on embedded platforms achieving extraordinary processing speed.",
+    "venue": "Design, Automation and Test in Europe",
+    "year": 2017,
+    "referenceCount": 31,
+    "citationCount": 49,
+    "influentialCitationCount": 3,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1712.04910",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a Fast Fourier Transform-based DNN training and inference model suitable for embedded platforms with reduced asymptotic complexity of both computation and storage, and develops and deploys the FFT-based inference model on embedded platforms achieving extraordinary processing speed."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "152386403",
+            "name": "Sheng Lin"
+        },
+        {
+            "authorId": "2152354569",
+            "name": "Ning Liu"
+        },
+        {
+            "authorId": "34643396",
+            "name": "M. Nazemi"
+        },
+        {
+            "authorId": "1391217910",
+            "name": "Hongjia Li"
+        },
+        {
+            "authorId": "2881873",
+            "name": "Caiwen Ding"
+        },
+        {
+            "authorId": "46393431",
+            "name": "Yanzhi Wang"
+        },
+        {
+            "authorId": "1691311",
+            "name": "Massoud Pedram"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "e6ee0be9bae86ee7790844c4f553ecf26bacc271",
+            "title": "High-performance FPGA implementation of equivariant adaptive separation via independence algorithm for Independent Component Analysis"
+        },
+        {
+            "paperId": "983db08bf7f6c837616780098cb363fd435c4d5c",
+            "title": "Theoretical Properties for Neural Networks with Weight Matrices of Low Displacement Rank"
+        },
+        {
+            "paperId": "5d89747390f1d5c3738b4bd95d46f26311d5f3cb",
+            "title": "SC-DCNN: Highly-Scalable Deep Convolutional Neural Network using Stochastic Computing"
+        },
+        {
+            "paperId": "40faa4b9a95f42e8ae1dff96ee2059eb90e3b039",
+            "title": "Simplifying deep neural networks for neuromorphic architectures"
+        },
+        {
+            "paperId": "29316449c7cc52ad326c5d1bd5b0dc5af27c1496",
+            "title": "Convolutional networks for fast, energy-efficient neuromorphic computing"
+        },
+        {
+            "paperId": "c382406fd8db2744b2a609837395e5da05e1d2ed",
+            "title": "Going Deeper with Embedded FPGA Platform for Convolutional Neural Network"
+        },
+        {
+            "paperId": "6eecc808d4c74e7d0d7ef6b8a4112c985ced104d",
+            "title": "Binarized Neural Networks"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "04105898efe96c7f2d876e6bcb9e19afd3e23635",
+            "title": "Backpropagation for Energy-Efficient Neuromorphic Computing"
+        },
+        {
+            "paperId": "bf76be8df2f2bc56edac98a5d0dfc19c85882eaa",
+            "title": "Structured Transforms for Small-Footprint Deep Learning"
+        },
+        {
+            "paperId": "642d0f49b7826adcf986616f4af77e736229990f",
+            "title": "Deep Compression: Compressing Deep Neural Network with Pruning, Trained Quantization and Huffman Coding"
+        },
+        {
+            "paperId": "a6373454105df0c5511ca5f6cae4d20c48214272",
+            "title": "Fixed point optimization of deep convolutional neural networks for object recognition"
+        },
+        {
+            "paperId": "12806c298e01083a79db77927530367d85939907",
+            "title": "An Empirical Evaluation of Deep Learning on Highway Driving"
+        },
+        {
+            "paperId": "5934400081d9541339da0f16d2613263f1a4c2a2",
+            "title": "An Exploration of Parameter Redundancy in Deep Networks with Circulant Projections"
+        },
+        {
+            "paperId": "e7bf9803705f2eb608db1e59e5c7636a3f171916",
+            "title": "Compressing Deep Convolutional Networks using Vector Quantization"
+        },
+        {
+            "paperId": "0bde8d9367d1004c7396dd69cb27ed97dc2f8d77",
+            "title": "MatConvNet: Convolutional Neural Networks for MATLAB"
+        },
+        {
+            "paperId": "a4db2d26b5d169de6b64de361dc7d4fd5b1f61a3",
+            "title": "Fixed-point feedforward deep neural network design using weights +1, 0, and \u22121"
+        },
+        {
+            "paperId": "6bdb186ec4726e00a8051119636d4df3b94043b5",
+            "title": "Caffe: Convolutional Architecture for Fast Feature Embedding"
+        },
+        {
+            "paperId": "a7621b4ec18719b08f3a2a444b6d37a2e20227b7",
+            "title": "Fast Training of Convolutional Networks through FFTs"
+        },
+        {
+            "paperId": "eff61216e0136886e1158625b1e5a88ed1a7cbce",
+            "title": "Predicting Parameters in Deep Learning"
+        },
+        {
+            "paperId": "4177ec52d1b80ed57f2e72b0f9a42365f1a8598d",
+            "title": "Speech recognition with deep recurrent neural networks"
+        },
+        {
+            "paperId": "57458bc1cffe5caa45a885af986d70f723f406b4",
+            "title": "A unified architecture for natural language processing: deep neural networks with multitask learning"
+        },
+        {
+            "paperId": "ae73fa99d777efd07ed5a73cdc695191862f9d9e",
+            "title": "Drug Design by Machine Learning: Support Vector Machines for Pharmaceutical Data Analysis"
+        },
+        {
+            "paperId": "0e6beb95b5150ce99b108acdefabf70ccd3fee30",
+            "title": "An algorithm for the machine calculation of complex Fourier series"
+        },
+        {
+            "paperId": null,
+            "title": "Open source computer vision library"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        },
+        {
+            "paperId": "7c9411bc50b6a33947575f37ae16931578beae23",
+            "title": "Structured Matrices and Polynomials: Unified Superfast Algorithms"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "e7297db245c3feb1897720b173a59fe7e36babb7",
+            "title": "Optimal Brain Damage"
+        },
+        {
+            "paperId": "f4ea5a6ff3ffcd11ec2e6ed7828a7d41279fb3ad",
+            "title": "Comparing Biases for Minimal Network Construction with Back-Propagation"
+        },
+        {
+            "paperId": null,
+            "title": "LeCun and C . Cortes , \u201c MNIST handwritten digit database , \u201d 2010 . [ Online ]"
+        }
+    ]
+}

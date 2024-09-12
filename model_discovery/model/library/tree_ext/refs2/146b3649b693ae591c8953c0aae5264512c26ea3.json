@@ -1,0 +1,134 @@
+{
+    "paperId": "146b3649b693ae591c8953c0aae5264512c26ea3",
+    "externalIds": {
+        "MAG": "2083195487",
+        "ACL": "W06-1673",
+        "DBLP": "conf/emnlp/FinkelMN06",
+        "DOI": "10.3115/1610075.1610162",
+        "CorpusId": 5563288
+    },
+    "title": "Solving the Problem of Cascading Errors: Approximate Bayesian Inference for Linguistic Annotation Pipelines",
+    "abstract": "The end-to-end performance of natural language processing systems for compound tasks, such as question answering and textual entailment, is often hampered by use of a greedy 1-best pipeline architecture, which causes errors to propagate and compound at each stage. We present a novel architecture, which models these pipelines as Bayesian networks, with each low level task corresponding to a variable in the network, and then we perform approximate inference to find the best labeling. Our approach is extremely simple to apply but gains the benefits of sampling the entire distribution over labels at each stage in the pipeline. We apply our method to two tasks -- semantic role labeling and recognizing textual entailment -- and achieve useful performance gains from the superior pipeline architecture.",
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2006,
+    "referenceCount": 23,
+    "citationCount": 145,
+    "influentialCitationCount": 9,
+    "openAccessPdf": {
+        "url": "http://dl.acm.org/ft_gateway.cfm?id=1610162&type=pdf",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel architecture is presented, which models these pipelines as Bayesian networks, with each low level task corresponding to a variable in the network, and then it is performed approximate inference to find the best labeling."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2784228",
+            "name": "J. Finkel"
+        },
+        {
+            "authorId": "144783904",
+            "name": "Christopher D. Manning"
+        },
+        {
+            "authorId": "34699434",
+            "name": "A. Ng"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "757a192157d7587433db93a899d32c4c5e832489",
+            "title": "Learning to recognize features of valid textual entailments"
+        },
+        {
+            "paperId": "8dfdedcbeb3b67ecaa4d85ca4b9d1aff368b8e2a",
+            "title": "Better k-best Parsing"
+        },
+        {
+            "paperId": "6f78ac1460e6b7f2f2594179f3b7fcf07aa207df",
+            "title": "A Joint Model for Semantic Role Labeling"
+        },
+        {
+            "paperId": "48b4524a3b1207157b1b2f87885c434c96fc7a19",
+            "title": "Joint Parsing and Semantic Role Labeling"
+        },
+        {
+            "paperId": "15fad23ab1f03b39aeeee0fed24803e98c47c28d",
+            "title": "Generalized Inference with Multiple Semantic Role Labeling Systems"
+        },
+        {
+            "paperId": "25e7efa59a5cf68e0fc9401e4c6fa7b2bfe3f1ae",
+            "title": "Introduction to the CoNLL-2005 Shared Task: Semantic Role Labeling"
+        },
+        {
+            "paperId": "03a52216777990f504d95e0d30cc53573055d07c",
+            "title": "Joint Learning Improves Semantic Role Labeling"
+        },
+        {
+            "paperId": "3a58d9b2f82b86bbf65d8a20911e73b5c296ac30",
+            "title": "An Integrated, Conditional Model of Information Extraction and Coreference with Appli"
+        },
+        {
+            "paperId": "a600850ac0120cb09a0b7de7da80bb6a7a76de06",
+            "title": "Accurate Unlexicalized Parsing"
+        },
+        {
+            "paperId": "2685fc6cc208c67088afa9e8c2743511852fc19c",
+            "title": "Dynamic programming for parsing and estimation of stochastic unification-based grammars"
+        },
+        {
+            "paperId": "503c739cc3cb4e85aa2d81e57e66357e61b66963",
+            "title": "Convergence rates of the Voting Gibbs classifier, with application to Bayesian feature selection"
+        },
+        {
+            "paperId": "f4ba954b0412773d047dc41231c733de0c1f4926",
+            "title": "Conditional Random Fields: Probabilistic Models for Segmenting and Labeling Sequence Data"
+        },
+        {
+            "paperId": "f7566f1797eb36429acbb09e581d6b2918a50760",
+            "title": "Foundations of Statistical Natural Language Processing"
+        },
+        {
+            "paperId": "f5e135219b4c9598d62d96991f0d3f63ca4cdf54",
+            "title": "Probabilistic Networks and Expert Systems"
+        },
+        {
+            "paperId": "7fe72de6d9c926edf5bdac1c0568eff449fc4acd",
+            "title": "Applications of Finite-State Transducers in Natural Language Processing"
+        },
+        {
+            "paperId": "76d5e3fa888bee872b7adb7fa810089aa8ab1d58",
+            "title": "A Maximum-Entropy-Inspired Parser"
+        },
+        {
+            "paperId": "fd6fc093b9a1a1fec6958a4c2e9a0d3b3ae59314",
+            "title": "Parsing Inside-Out"
+        },
+        {
+            "paperId": "fec6d8a5b58d82a9f868be3e0ebb1504d623dd5d",
+            "title": "Packed Rewriting for Mapping Semantics to KR"
+        },
+        {
+            "paperId": "e808f28d411a958c5db81ceb111beb2638698f47",
+            "title": "The PASCAL Recognising Textual Entailment Challenge"
+        },
+        {
+            "paperId": "098a170095b1e84b3a8eb673adfe6408fc0dcff5",
+            "title": "Effective statistical models for syntactic and semantic disambiguation"
+        },
+        {
+            "paperId": "ee3895a45a4f2c81c3f847c01b02fe78f79d1252",
+            "title": "Introduction to the CoNLL-2004 Shared Task: Semantic Role Labeling"
+        },
+        {
+            "paperId": "389689f5e256abba46b3f5b7bb5d3704f752dd81",
+            "title": "The Problem of Computing the Most Probable Tree in Data-Oriented Parsing and Stochastic Tree Grammars"
+        },
+        {
+            "paperId": "471744a269d83b9a74fee96d3fe298f8d6bbf96b",
+            "title": "A Method for Disjunctive Constraint Satisfaction"
+        }
+    ]
+}

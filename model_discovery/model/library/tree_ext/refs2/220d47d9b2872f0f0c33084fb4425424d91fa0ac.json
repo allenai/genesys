@@ -1,0 +1,134 @@
+{
+    "paperId": "220d47d9b2872f0f0c33084fb4425424d91fa0ac",
+    "externalIds": {
+        "MAG": "2949580977",
+        "DBLP": "conf/icassp/PrengerVC19",
+        "ArXiv": "1811.00002",
+        "DOI": "10.1109/ICASSP.2019.8683143",
+        "CorpusId": 53145796
+    },
+    "title": "Waveglow: A Flow-based Generative Network for Speech Synthesis",
+    "abstract": "In this paper we propose WaveGlow: a flow-based network capable of generating high quality speech from mel-spectrograms. WaveGlow combines insights from Glow [1] and WaveNet [2] in order to provide fast, efficient and high-quality audio synthesis, without the need for auto-regression. WaveGlow is implemented using only a single network, trained using only a single cost function: maximizing the likelihood of the training data, which makes the training procedure simple and stable. Our PyTorch implementation produces audio samples at a rate of more than 500 kHz on an NVIDIA V100 GPU. Mean Opinion Scores show that it delivers audio quality as good as the best publicly available WaveNet implementation. All code will be made publicly available online [3].",
+    "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+    "year": 2018,
+    "referenceCount": 23,
+    "citationCount": 948,
+    "influentialCitationCount": 121,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1811.00002",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "WaveGlow is a flow-based network capable of generating high quality speech from mel-spectrograms, implemented using only a single network, trained using a single cost function: maximizing the likelihood of the training data, which makes the training procedure simple and stable."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3283879",
+            "name": "R. Prenger"
+        },
+        {
+            "authorId": "2059204721",
+            "name": "Rafael Valle"
+        },
+        {
+            "authorId": "2301680",
+            "name": "Bryan Catanzaro"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "196236d5225a01147af5b376396963eebe8ffc1c",
+            "title": "Fast Spectrogram Inversion Using Multi-Head Convolutional Neural Networks"
+        },
+        {
+            "paperId": "5e3a59695261f03aa3f09a8a5ac6166fb63e0a2e",
+            "title": "ClariNet: Parallel Wave Generation in End-to-End Text-to-Speech"
+        },
+        {
+            "paperId": "21b786b3f870fc7fa247c143aa41de88b1fc6141",
+            "title": "Glow: Generative Flow with Invertible 1x1 Convolutions"
+        },
+        {
+            "paperId": "d198754b61b3d87b015b382d6cc9204a270eb6cb",
+            "title": "Fftnet: A Real-Time Speaker-Dependent Neural Vocoder"
+        },
+        {
+            "paperId": "f2c882fd290d616ff96c1c5d6af4578682e26556",
+            "title": "Efficient Neural Audio Synthesis"
+        },
+        {
+            "paperId": "1db9bd18681b96473f3c82b21edc9240b44dc329",
+            "title": "Image Transformer"
+        },
+        {
+            "paperId": "1a2599e467e855f845dcbf9282f8bdbd97b85708",
+            "title": "Natural TTS Synthesis by Conditioning Wavenet on MEL Spectrogram Predictions"
+        },
+        {
+            "paperId": "f6cbf83e1ce3b099d656d2346b261d5ef7f2b62e",
+            "title": "Parallel WaveNet: Fast High-Fidelity Speech Synthesis"
+        },
+        {
+            "paperId": "5a5bcfda3b753f8266b9ba27d34fc86b6d374a1b",
+            "title": "Deep Voice 2: Multi-Speaker Neural Text-to-Speech"
+        },
+        {
+            "paperId": "4185286ec9d65086803c3ddf1cae1b27a9d6b5bb",
+            "title": "Tacotron: A Fully End-to-End Text-To-Speech Synthesis Model"
+        },
+        {
+            "paperId": "a072c2a400f62f720b68dc54a662fb1ae115bf06",
+            "title": "Tacotron: Towards End-to-End Speech Synthesis"
+        },
+        {
+            "paperId": "63880b57b95de8afd73036e55b9c4bccb7a528b9",
+            "title": "Deep Voice: Real-time Neural Text-to-Speech"
+        },
+        {
+            "paperId": "df0402517a7338ae28bc54acaac400de6b456a46",
+            "title": "WaveNet: A Generative Model for Raw Audio"
+        },
+        {
+            "paperId": "6a97d2668187965743d1b825b306defccbabbb4c",
+            "title": "Improved Variational Inference with Inverse Autoregressive Flow"
+        },
+        {
+            "paperId": "09879f7956dddc2a9328f5c1472feeb8402bcbcf",
+            "title": "Density estimation using Real NVP"
+        },
+        {
+            "paperId": "3d2c6941a9b4608ba52b328369a3352db2092ae0",
+            "title": "Weight Normalization: A Simple Reparameterization to Accelerate Training of Deep Neural Networks"
+        },
+        {
+            "paperId": "0f899b92b7fb03b609fee887e4b6f3b633eaf30d",
+            "title": "Variational Inference with Normalizing Flows"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "dc8301b67f98accbb331190dd7bd987952a692af",
+            "title": "NICE: Non-linear Independent Components Estimation"
+        },
+        {
+            "paperId": "14bc876fae55faf5669beb01667a4f3bd324a4f1",
+            "title": "Signal estimation from modified short-time Fourier transform"
+        },
+        {
+            "paperId": null,
+            "title": "\u201cWavenet vocoder,\u201d"
+        },
+        {
+            "paperId": null,
+            "title": "\u201cWaveglow,\u201d"
+        },
+        {
+            "paperId": null,
+            "title": "\u201cThe LJ speech dataset,\u201d"
+        }
+    ]
+}

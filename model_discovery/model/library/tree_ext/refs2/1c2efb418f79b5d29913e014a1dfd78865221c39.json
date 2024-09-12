@@ -1,0 +1,666 @@
+{
+    "paperId": "1c2efb418f79b5d29913e014a1dfd78865221c39",
+    "externalIds": {
+        "DBLP": "journals/datamine/FawazFWIM19",
+        "ArXiv": "1809.04356",
+        "MAG": "2892035503",
+        "DOI": "10.1007/s10618-019-00619-1",
+        "CorpusId": 52195012
+    },
+    "title": "Deep learning for time series classification: a review",
+    "abstract": null,
+    "venue": "Data mining and knowledge discovery",
+    "year": 2018,
+    "referenceCount": 154,
+    "citationCount": 2269,
+    "influentialCitationCount": 157,
+    "openAccessPdf": {
+        "url": "https://link.springer.com/content/pdf/10.1007/s10618-019-00619-1.pdf",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This article proposes the most exhaustive study of DNNs for TSC by training 8730 deep learning models on 97 time series datasets and provides an open source deep learning framework to the TSC community."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "19302914",
+            "name": "Hassan Ismail Fawaz"
+        },
+        {
+            "authorId": "2318564",
+            "name": "G. Forestier"
+        },
+        {
+            "authorId": "152947675",
+            "name": "J. Weber"
+        },
+        {
+            "authorId": "3482237",
+            "name": "L. Idoumghar"
+        },
+        {
+            "authorId": "145344693",
+            "name": "Pierre-Alain Muller"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "c1e9efc95462e5d391ba6ec70cd52b987e1a0e64",
+            "title": "Deep learning for time series classification"
+        },
+        {
+            "paperId": "55714124b3ddd471e612bf21ea5e4e7a768fb64d",
+            "title": "Time Series Classification With Multivariate Convolutional Neural Network"
+        },
+        {
+            "paperId": "1da0ef742d78d7588f0840424d9adc1bf1337934",
+            "title": "Multiobjective Learning in the Model Space for Time Series Classification"
+        },
+        {
+            "paperId": "78aae5dce8bb6af889567ee68e1fedc18d0ddb03",
+            "title": "Transfer learning for time series classification"
+        },
+        {
+            "paperId": "4543360d6b6133d143121eda079cd4b7667d2277",
+            "title": "The UCR time series archive"
+        },
+        {
+            "paperId": "d82829c9fd9cfba8a44efe5ba048d3332a1671fc",
+            "title": "Dynamic Programming"
+        },
+        {
+            "paperId": "3ca0326b4f6ca3386f758aae8ccb3adaf8fe773e",
+            "title": "GCRNN: Group-Constrained Convolutional Recurrent Neural Network"
+        },
+        {
+            "paperId": "664106e8f64e4fda427cfeb2febd31e6dfc8af47",
+            "title": "Time Series Classification in Reservoir- and Model-Space"
+        },
+        {
+            "paperId": "7069d9218e0820e7c089b9ff6fa382f1865c36df",
+            "title": "A Deep Reinforcement Learning Approach for Early Classification of Time Series"
+        },
+        {
+            "paperId": "d0cf8271b76661b58936f443bfe7387d18ddf9a5",
+            "title": "Deep learning algorithms for human activity recognition using mobile and wearable sensor networks: State of the art and research challenges"
+        },
+        {
+            "paperId": "92e3f7367ceedc8a0735a10b60e9e959947fcf15",
+            "title": "Proximity Forest: an effective and scalable distance-based classifier for time series"
+        },
+        {
+            "paperId": "af885ec2163397018db9da8784d7489ca20d2d3a",
+            "title": "Data augmentation using synthetic data for time series classification with deep residual networks"
+        },
+        {
+            "paperId": "32f215640451bb0a06ac97e04c8f89f3dbeb5e15",
+            "title": "Time Series Classification with HIVE-COTE"
+        },
+        {
+            "paperId": "06ec154c2622fc2d6828e315da15210dd807684b",
+            "title": "Deep learning for healthcare applications based on physiological signals: A review"
+        },
+        {
+            "paperId": "939043b58d41ca05ca228ae3081c9a540f770a47",
+            "title": "Multilevel Wavelet Decomposition Network for Interpretable Time Series Analysis"
+        },
+        {
+            "paperId": "78d9c71f88dd2367161bb84853ea21d43e05d86c",
+            "title": "Detecting and interpreting myocardial infarction using fully convolutional neural networks"
+        },
+        {
+            "paperId": "b22acb7ff98bb276c49c4c5f962f5eea936d2590",
+            "title": "Evaluating surgical skills from kinematic data using convolutional neural networks"
+        },
+        {
+            "paperId": "06766d3cfbdd11aba1bedf030c0f9ba7ca5995d1",
+            "title": "Towards a universal neural network encoder for time series"
+        },
+        {
+            "paperId": "28938d31e007061b7764450894ca8eccbebf4940",
+            "title": "Genesis of Basic and Multi-Layer Echo State Network Recurrent Autoencoders for Efficient Data Representations"
+        },
+        {
+            "paperId": "73a0771cc1c911cd05b882eda10f0a8ed344d7fe",
+            "title": "Generalized Dynamic Time Warping: Unleashing the Warping Power Hidden in Point-Wise Distances"
+        },
+        {
+            "paperId": "e29c2b675eba70a49621a6760e35321be0ce2f8d",
+            "title": "Reservoir Computing Approaches for Representation and Classification of Multivariate Time Series"
+        },
+        {
+            "paperId": "2b50026b7b1054ef8e3643fcd7ef89d7b278a068",
+            "title": "Deep k-Nearest Neighbors: Towards Confident, Interpretable and Robust Deep Learning"
+        },
+        {
+            "paperId": "b97133f6d3e20eb4f684c574bf75d7014397e5c1",
+            "title": "Speeding up similarity search under dynamic time warping by pruning unpromising alignments"
+        },
+        {
+            "paperId": "67d866a0a43a25aedf20d856193eb0c1d17e1830",
+            "title": "Feasibility of an AI-Based Measure of the Hand Motions of Expert and Novice Surgeons"
+        },
+        {
+            "paperId": "0867d82d4e69dc95d898f3d5b2838fd66de11f7d",
+            "title": "A Generative Modeling Approach to Limited Channel ECG Classification"
+        },
+        {
+            "paperId": "b9a8222e140a22b2bae52b67ee1133dbdb01e79b",
+            "title": "Neutral-Point Voltage Balancing in Three-Level Inverters Using an Optimized Virtual Space Vector PWM With Reduced Commutations"
+        },
+        {
+            "paperId": "1f7eec4c76963a4ba7516ca00e6a2f855667b3f2",
+            "title": "Scalable and accurate deep learning with electronic health records"
+        },
+        {
+            "paperId": "21e82350472bf6a12af0f761b8dea91cb16bf42f",
+            "title": "Cost-Sensitive Convolution based Neural Networks for Imbalanced Time-Series Classification"
+        },
+        {
+            "paperId": "bca2ec1554269c2550f86386ca4e2530924a32c6",
+            "title": "Deep Echo State Network (DeepESN): A Brief Survey"
+        },
+        {
+            "paperId": "c2b7dc96cfee6fdaf80af83a872d22dbf1ddfa56",
+            "title": "Time Series Classification in Reservoir- and Model-Space"
+        },
+        {
+            "paperId": "8f9f4ca0fc593f361ab9c58d7c2a80f74630b9ca",
+            "title": "Convolutional neural network with multi-task learning scheme for acoustic scene classification"
+        },
+        {
+            "paperId": "5d4aa2dcd5f167599c375594187698c393c58a29",
+            "title": "Judicious setting of Dynamic Time Warping's window width allows more accurate classification of time series"
+        },
+        {
+            "paperId": "51f5771b0165970c02b57322a83a7839d520e60e",
+            "title": "A deep transfer learning approach for improved post-traumatic stress disorder diagnosis"
+        },
+        {
+            "paperId": "af72dc2363c29bc425c4b60b8c5ee0dd8264c386",
+            "title": "Spatio-Temporal Neural Networks for Space-Time Series Forecasting and Relations Discovery"
+        },
+        {
+            "paperId": "35cd4d9858a645cbe2d75afbab3c1e3ff9a50706",
+            "title": "Generating Synthetic Time Series to Augment Sparse Datasets"
+        },
+        {
+            "paperId": "284ce7599e153ebd6090b162a5df0956b5c41d25",
+            "title": "A probabilistic classifier ensemble weighting scheme based on cross-validated accuracy estimates"
+        },
+        {
+            "paperId": "6ff55cc652f11a99a7ff0dcbb5759b00f92dfe2b",
+            "title": "The Heterogeneous Ensembles of Standard Classification Algorithms (HESCA): the Whole is Greater than the Sum of its Parts"
+        },
+        {
+            "paperId": "de50861542c40f4180e665b50810a1704c813e49",
+            "title": "Classification of time-series images using deep convolutional neural networks"
+        },
+        {
+            "paperId": "99e0e5a6818bc17e72310e65d62583136c4b1221",
+            "title": "Boosting Deep Learning Risk Prediction with Generative Adversarial Networks for Electronic Health Records"
+        },
+        {
+            "paperId": "60a1e0a81a562f2efd56fe2c1d012b8cf5f47e1c",
+            "title": "Deep Learning for Sensor-based Activity Recognition: A Survey"
+        },
+        {
+            "paperId": "9ecbb5e7ec801c1b2a69bf54222eb2ee3a05b81b",
+            "title": "TimeNet: Pre-trained deep recurrent neural network for time series classification"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "c293e24548c22efbb1b856d7c4f53242300df88e",
+            "title": "Time Series Classification by Sequence Learning in All-Subsequence Space"
+        },
+        {
+            "paperId": "9c0a20debcd99ae14807196601ee8efe5f0003df",
+            "title": "Convolutional neural networks for time series classification"
+        },
+        {
+            "paperId": "559886d80d8b2903950e67025eb570285b1b0050",
+            "title": "Improving time series similarity measures by integrating preprocessing steps"
+        },
+        {
+            "paperId": "fd5c031fd7829af8d8ed800b4ea86268f72bf59e",
+            "title": "Improving time series similarity measures by integrating preprocessing steps"
+        },
+        {
+            "paperId": "5f3a79e184d4e4ebaee7fb5cd9a0304dd26a43b6",
+            "title": "Deep Learning for Time-Series Analysis"
+        },
+        {
+            "paperId": "44202c42e2387c61acd1261d7a750d3f520ca0c7",
+            "title": "HIVE-COTE: The Hierarchical Vote Collective of Transformation-Based Ensembles for Time Series Classification"
+        },
+        {
+            "paperId": "2b12e68f2f22a005ffedb29bac7f0bc5e2612460",
+            "title": "Functional echo state network for time series classification"
+        },
+        {
+            "paperId": "4be3946a29fd64cf149064c76d24020c4f2b5443",
+            "title": "Time Series Classification Using Time Warping Invariant Echo State Networks"
+        },
+        {
+            "paperId": "3b421dcebe21bf45c1930b948cfda7ec95b55ac4",
+            "title": "The great time series classification bake off: a review and experimental evaluation of recent algorithmic advances"
+        },
+        {
+            "paperId": "ca0917853ea55c0ec4cded50914eb825fd45d00f",
+            "title": "Time series classification from scratch with deep neural networks: A strong baseline"
+        },
+        {
+            "paperId": "97d4f9dbddb27c4b3046b20cb24e47b9be01a8bc",
+            "title": "Earliness-Aware Deep Convolutional Networks for Early Time Series Classification"
+        },
+        {
+            "paperId": "54ddb00fa691728944fd8becea90a373d21597cf",
+            "title": "Understanding deep learning requires rethinking generalization"
+        },
+        {
+            "paperId": "fdbe123a6535720274db2518af49abe9e9daac87",
+            "title": "Why and when can deep-but not shallow-networks avoid the curse of dimensionality: A review"
+        },
+        {
+            "paperId": "c6c8946c7ee4483d101abf66a2a8c191c3ab239e",
+            "title": "Representation Learning with Deconvolution for Multivariate Time Series Classification and Visualization"
+        },
+        {
+            "paperId": "590dfcce5ae3f0164e90200f1ffd1df3eeb21c5e",
+            "title": "Time Series Classification in Reservoir- and Model-Space: A Comparison"
+        },
+        {
+            "paperId": "e467404d68c8c2f45bae0e4bdfda12fc7df65cce",
+            "title": "Data Augmentation for Time Series Classification using Convolutional Neural Networks"
+        },
+        {
+            "paperId": "63de0ad39d807f0c256f851428f211e8d5fcd3bb",
+            "title": "Instance Normalization: The Missing Ingredient for Fast Stylization"
+        },
+        {
+            "paperId": "9e8cce4d2d0bc575c6a24e65398b43bf56ac150a",
+            "title": "Multi-Scale Convolutional Neural Networks for Time Series Classification"
+        },
+        {
+            "paperId": "9c9d7247f8c51ec5a02b0d911d1d7b9e8160495d",
+            "title": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems"
+        },
+        {
+            "paperId": "a17fa87dc3eeebff1da725f60ef8a1608eb7986d",
+            "title": "The Great Time Series Classification Bake Off: An Experimental Evaluation of Recently Proposed Algorithms. Extended Version"
+        },
+        {
+            "paperId": "5fb93db7f732720c8f0183486fb3b6e53cf94ca1",
+            "title": "Exploiting multi-channels deep convolutional neural networks for multivariate time series classification"
+        },
+        {
+            "paperId": "c8599a64beec9ec141a97c8117aa5b1726c13223",
+            "title": "Deep Convolutional and LSTM Recurrent Neural Networks for Multimodal Wearable Activity Recognition"
+        },
+        {
+            "paperId": "31f9eb39d840821979e5df9f34a6e92dd9c879f2",
+            "title": "Learning Deep Features for Discriminative Localization"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "14fa426d09632664b5885c4c9e78f1e402a82bf9",
+            "title": "The BOSS is concerned with time series classification in the presence of noise"
+        },
+        {
+            "paperId": "56edaa1368ff4dfa45388e4be24fdfbded7d88a7",
+            "title": "A Primer on Neural Network Models for Natural Language Processing"
+        },
+        {
+            "paperId": "831bbec1666a5073ff6036571aff50ffc1da4d15",
+            "title": "Spatially Encoding Temporal Correlations to Classify Temporal Data Using Convolutional Neural Networks"
+        },
+        {
+            "paperId": "60cbcbc965d5101d281075f54361310e60e14c82",
+            "title": "Faster and more accurate classification of time series by exploiting a novel dynamic time warping averaging algorithm"
+        },
+        {
+            "paperId": "be9892e207007d5f4c3e23133ea03daef64b87b0",
+            "title": "Time-Series Classification with COTE: The Collective of Transformation-Based Ensembles"
+        },
+        {
+            "paperId": "a53b8b492119c323a02b1e8db000d7e414d87df0",
+            "title": "Time-series modeling with undecimated fully convolutional neural networks"
+        },
+        {
+            "paperId": "5ec840413c73bec638ba517c25df51c209185375",
+            "title": "Model Metric Co-Learning for Time Series Classification"
+        },
+        {
+            "paperId": "69eea40aa3eed818485665926808b20328054279",
+            "title": "Imaging Time-Series to Improve Classification and Imputation"
+        },
+        {
+            "paperId": "1435c09304f24a1310e6ede11bf5dfb4dbe78c3d",
+            "title": "Should We Really Use Post-Hoc Tests Based on Mean-Ranks?"
+        },
+        {
+            "paperId": "230a54f459482633165a39769961eeda3710c58a",
+            "title": "Using dynamic time warping distances as features for improved time series classification"
+        },
+        {
+            "paperId": "0b72c321cd990df3b8960fc68e482d2f9e1834ab",
+            "title": "Time series classification with ensembles of elastic distance measures"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "d6f2f611da110b5b5061731be3fc4c7f45d8ee23",
+            "title": "Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "081651b38ff7533550a3adfc1c00da333a8fe86c",
+            "title": "How transferable are features in deep neural networks?"
+        },
+        {
+            "paperId": "0155c42de00386653ce33e63877c62b50b6456e5",
+            "title": "Model-Based Time Series Classification"
+        },
+        {
+            "paperId": "cbde0306f1d580b445b8d6ef6b3c3262395de5a4",
+            "title": "A 1 TOPS/W Analog Deep Machine-Learning Engine With Floating-Gate Storage in 0.13 \u00b5m CMOS"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "1f6ba0782862ec12a5ec6d7fb608523d55b0c6ba",
+            "title": "Convolutional Neural Networks for Sentence Classification"
+        },
+        {
+            "paperId": "5900721a7ff9e91782dd4dc33956b09d3adb67f5",
+            "title": "Learning time-series shapelets"
+        },
+        {
+            "paperId": "ca2034e41c089cdbb60180d9b5556ca41073ac01",
+            "title": "Time Series Classification Using Multi-Channels Deep Convolutional Neural Networks"
+        },
+        {
+            "paperId": "af3b7e1e2921aa68f6e00e07589c0d0f585e9f76",
+            "title": "A review of unsupervised feature learning and deep learning for time-series modeling"
+        },
+        {
+            "paperId": "f3de86aeb442216a8391befcacb49e58b478f512",
+            "title": "Distributed Representations of Sentences and Documents"
+        },
+        {
+            "paperId": "e1e5d83a955d073d86bb13e620f7f00dd0955ae9",
+            "title": "A Bag-of-Features Framework to Classify Time Series"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "f43a684ca0a40afe94f459335af7462dcfa22563",
+            "title": "Model-based kernel for efficient time series analysis"
+        },
+        {
+            "paperId": "22543edde560a54c1c91178bc97a50e5eb95aa52",
+            "title": "A Run Length Transformation for Discriminating Between Auto Regressive Time Series"
+        },
+        {
+            "paperId": "d9704f8119d6ba748230b4f2ad59f0e8c64fdfb0",
+            "title": "Generalized Denoising Auto-Encoders as Generative Models"
+        },
+        {
+            "paperId": "24e555913192d8722f4a0240445bf73db71bd884",
+            "title": "Deep convolutional neural networks for LVCSR"
+        },
+        {
+            "paperId": "f3f5cb24b7a71911702c640bb765b44d0fc03d30",
+            "title": "Classification of time series by shapelet transformation"
+        },
+        {
+            "paperId": "9ad37f6e390f4eb4da0f82e312640c2b40919690",
+            "title": "A time series forest for classification and feature extraction"
+        },
+        {
+            "paperId": "f6b51c8753a871dc94ff32152c00c01e94f90f09",
+            "title": "Efficient Estimation of Word Representations in Vector Space"
+        },
+        {
+            "paperId": "8729441d734782c3ed532a7d2d9611b438c0a09a",
+            "title": "ADADELTA: An Adaptive Learning Rate Method"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "84069287da0a6b488b8c933f3cb5be759cb6237e",
+            "title": "On the difficulty of training recurrent neural networks"
+        },
+        {
+            "paperId": "c5145b1d15fea9340840cc8bb6f0e46e8934827f",
+            "title": "Understanding the exploding gradient problem"
+        },
+        {
+            "paperId": "27cfb0a893063bf6c84246f90cdec1d8350d0720",
+            "title": "Time-series data mining"
+        },
+        {
+            "paperId": "a25fbcbbae1e8f79c4360d26aa11a3abf1a11972",
+            "title": "A Survey on Transfer Learning"
+        },
+        {
+            "paperId": "ea9d2a2b4ce11aaf85136840c65f3bc9c03ab649",
+            "title": "Understanding the difficulty of training deep feedforward neural networks"
+        },
+        {
+            "paperId": "7e640729cca5a82c205bf95f346867097446838c",
+            "title": "Statistical Comparisons of Classifiers over Multiple Data Sets"
+        },
+        {
+            "paperId": "e3a617f1848f8df98d28472e32d9c2ec3dcb8ad3",
+            "title": "10 Challenging Problems in Data Mining Research"
+        },
+        {
+            "paperId": "668b1277fbece28c4841eeab1c97e4ebd0079700",
+            "title": "Pattern Recognition and Machine Learning"
+        },
+        {
+            "paperId": "d140cb3e753eefc3d43cace8da5a5503aeb9aba1",
+            "title": "Three Myths about Dynamic Time Warping Data Mining"
+        },
+        {
+            "paperId": "46857f0c98f223622ad530b6fc4e446fb9187082",
+            "title": "Harnessing Nonlinearity: Predicting Chaotic Systems and Saving Energy in Wireless Communication"
+        },
+        {
+            "paperId": "ec3cae15e8c739b4037260fc65a7f09553449e74",
+            "title": "Multidimensional Scaling"
+        },
+        {
+            "paperId": "0409674cc4ce146c0fcef8df92ff8ad5f4c15e61",
+            "title": "Mid-infrared spectroscopy and authenticity problems in selected meats: a feasibility study"
+        },
+        {
+            "paperId": "ef9253524d45ee5b4d5a5d2397b93e444a7518fc",
+            "title": "Daubechies wavelets and Mathematica"
+        },
+        {
+            "paperId": "74a6c8ffb2995afce8adb5c8ef353402a914267d",
+            "title": "Ridge Regression: Applications to Nonorthogonal Problems"
+        },
+        {
+            "paperId": "59d823fc9877f8d448ac4c2d90e38051026e3201",
+            "title": "Individual Comparisons by Ranking Methods"
+        },
+        {
+            "paperId": "42a1901c9e9dae53b5ca95481d1c35211cc67c85",
+            "title": "A Comparison of Alternative Tests of Significance for the Problem of $m$ Rankings"
+        },
+        {
+            "paperId": "84f57af111829ceb1e73b0ea9f0ea6846c3b9791",
+            "title": "Deep Learning for Time Series"
+        },
+        {
+            "paperId": "07642da3907fc400d7c5894e6885ee086ea88036",
+            "title": "Real-time human activity recognition from accelerometer data using Convolutional Neural Networks"
+        },
+        {
+            "paperId": "7348f7aeb51fd12a7f6227d1379c572a30dc905a",
+            "title": "Use of features from RR-time series and EEG signals for automated classification of sleep stages in deep neural network framework"
+        },
+        {
+            "paperId": "8519b1e6722a568243a0d797b8ea7608e6d58bf6",
+            "title": "Time-Series Classification Methods: Review and Applications to Power Systems Data"
+        },
+        {
+            "paperId": "c8bc3a3a936ecdf7fef9779b6a4b01e5d1a97d0f",
+            "title": "Applied Gaussian Process in Optimizing Unburned Carbon Content in Fly Ash for Boiler Combustion"
+        },
+        {
+            "paperId": "00e5c5c8426d8fbbdbf25460cf225505afeaa6be",
+            "title": "A Cycle Deep Belief Network Model for Multivariate Time Series Classification"
+        },
+        {
+            "paperId": "e23bcce0edaa5e0cae64c2e3613928f031d8d2d9",
+            "title": "DECADE : A Deep Metric Learning Model for Multivariate Time Series"
+        },
+        {
+            "paperId": null,
+            "title": "Big Data Analytics and Knowledge Discovery, pp"
+        },
+        {
+            "paperId": "422e11e145e3227996931e338f32193235fb456f",
+            "title": "Curse of Dimensionality"
+        },
+        {
+            "paperId": "6722f2a280553a8879e00180f9b7ca4f74461d99",
+            "title": "Time Series Classification using Deep Learning for Process Planning: A Case from the Process Industry"
+        },
+        {
+            "paperId": null,
+            "title": "OpenImages: a public dataset for large-scale multi-label and multiclass image classification"
+        },
+        {
+            "paperId": null,
+            "title": "Mueen A (2017) Curse of dimensionality. Encyclopedia of Machine Learning and Data Mining pp"
+        },
+        {
+            "paperId": "8b7125459b6d9e7fbaac71a64cc7110d45d217d2",
+            "title": "A Literature Survey of Early Time Series Classification and Deep Learning"
+        },
+        {
+            "paperId": "ba73c8328d75eff46d35a5c443d961d364743c8d",
+            "title": "Transfer learning for short-term wind speed prediction with deep neural networks"
+        },
+        {
+            "paperId": "2853ce8835d4bd48ffb9ee727df0da6f0d9f3b97",
+            "title": "An effective multivariate time series classification approach using echo state network and adaptive differential evolution algorithm"
+        },
+        {
+            "paperId": null,
+            "title": "Web-age information management, pp"
+        },
+        {
+            "paperId": "2913c2bf3f92b5ae369400a42b2d27cc5bc05ecb",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": null,
+            "title": "Multivariate time series classification datasets. http: //www.mustafabaydogan.com"
+        },
+        {
+            "paperId": null,
+            "title": "The UCR time series classification archive. www.cs.ucr.edu/~eamonn/ time_series_data"
+        },
+        {
+            "paperId": null,
+            "title": "Keras"
+        },
+        {
+            "paperId": "e90666552aaaa056bc6465019632bf06917c842c",
+            "title": "Encoding Time Series as Images for Visual Inspection and Classification Using Tiled Convolutional Neural Networks"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "b87274e6d9aa4e6ba5148898aa92941617d2b6ed",
+            "title": "Efficient BackProp"
+        },
+        {
+            "paperId": "6b250ff83ebb7cb1d5ee03891d0304df3139d776",
+            "title": "Transactions on Large-Scale Data- and Knowledge-Centered Systems XXXII"
+        },
+        {
+            "paperId": "31868290adf1c000c611dfc966b514d5a34e8d23",
+            "title": "FUNDAMENTAL TECHNOLOGIES IN MODERN SPEECH RECOGNITION Digital Object Identifier 10.1109/MSP.2012.2205597"
+        },
+        {
+            "paperId": null,
+            "title": "Deep Neural Networks for Acoustic Modeling in Speech Recognition: The Shared Views of Four Research Groups"
+        },
+        {
+            "paperId": "450de7320b94e3df15eb9634ae17b1825165c4d6",
+            "title": "Time series shapelets: a novel technique that allows accurate, interpretable and fast classification"
+        },
+        {
+            "paperId": "0f09767a303c2b97807c51996fb53dbbafedf9af",
+            "title": "An Extension on \"Statistical Comparisons of Classifiers over Multiple Data Sets\" for all Pairwise Comparisons"
+        },
+        {
+            "paperId": "987e9d43778d717c2478d0fa90701d73b8b39fc1",
+            "title": "Quantitative Applications in the Social Sciences"
+        },
+        {
+            "paperId": null,
+            "title": "Springer Bostrom A, Bagnall A (2015) Binary shapelet transform for multiclass time series classification"
+        },
+        {
+            "paperId": "b1a5961609c623fc816aaa77565ba38b25531a8e",
+            "title": "Neural Networks: Tricks of the Trade"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "deede4f010369a810eb1017fd9e757d9876a44c8",
+            "title": "Effiicient BackProp"
+        },
+        {
+            "paperId": "b0eb7232dc0ceae32aad26c918a24e2775020d46",
+            "title": "Document image defect models"
+        },
+        {
+            "paperId": "b0ebbcf713b3ddf3f94325bc58dc39ff76fdc412",
+            "title": "A Simple Sequentially Rejective Multiple Test Procedure"
+        }
+    ]
+}

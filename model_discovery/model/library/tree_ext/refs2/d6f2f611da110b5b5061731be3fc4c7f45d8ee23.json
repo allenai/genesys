@@ -1,0 +1,230 @@
+{
+    "paperId": "d6f2f611da110b5b5061731be3fc4c7f45d8ee23",
+    "externalIds": {
+        "MAG": "1677182931",
+        "DBLP": "conf/iccv/HeZRS15",
+        "ArXiv": "1502.01852",
+        "DOI": "10.1109/ICCV.2015.123",
+        "CorpusId": 13740328
+    },
+    "title": "Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification",
+    "abstract": "Rectified activation units (rectifiers) are essential for state-of-the-art neural networks. In this work, we study rectifier neural networks for image classification from two aspects. First, we propose a Parametric Rectified Linear Unit (PReLU) that generalizes the traditional rectified unit. PReLU improves model fitting with nearly zero extra computational cost and little overfitting risk. Second, we derive a robust initialization method that particularly considers the rectifier nonlinearities. This method enables us to train extremely deep rectified models directly from scratch and to investigate deeper or wider network architectures. Based on the learnable activation and advanced initialization, we achieve 4.94% top-5 test error on the ImageNet 2012 classification dataset. This is a 26% relative improvement over the ILSVRC 2014 winner (GoogLeNet, 6.66% [33]). To our knowledge, our result is the first to surpass the reported human-level performance (5.1%, [26]) on this dataset.",
+    "venue": "IEEE International Conference on Computer Vision",
+    "year": 2015,
+    "referenceCount": 46,
+    "citationCount": 17302,
+    "influentialCitationCount": 1220,
+    "openAccessPdf": {
+        "url": "http://arxiv.org/pdf/1502.01852",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a Parametric Rectified Linear Unit (PReLU) that generalizes the traditional rectified unit and derives a robust initialization method that particularly considers the rectifier nonlinearities."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "39353098",
+            "name": "Kaiming He"
+        },
+        {
+            "authorId": "1771551",
+            "name": "X. Zhang"
+        },
+        {
+            "authorId": "3080683",
+            "name": "Shaoqing Ren"
+        },
+        {
+            "authorId": null,
+            "name": "Jian Sun"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "7ffdbc358b63378f07311e883dddacc9faeeaf4b",
+            "title": "Fast R-CNN"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "f5ce3abf942cdd685fb0f290f3e741f7b4749f0a",
+            "title": "Deep Image: Scaling up Image Recognition"
+        },
+        {
+            "paperId": "93100ebe89840bc235c586ddc6daccd262707fec",
+            "title": "Learning Activation Functions to Improve Deep Neural Networks"
+        },
+        {
+            "paperId": "8ad35df17ae4064dd174690efb04d347428f1117",
+            "title": "Convolutional neural networks at constrained time cost"
+        },
+        {
+            "paperId": "fb91db6aa4f710814f8aec28a7f3ecbc4e5ad4fd",
+            "title": "Deeply-Supervised Nets"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "6bdb186ec4726e00a8051119636d4df3b94043b5",
+            "title": "Caffe: Convolutional Architecture for Fast Feature Embedding"
+        },
+        {
+            "paperId": "cbb19236820a96038d000dc629225d36e0b6294a",
+            "title": "Spatial Pyramid Pooling in Deep Convolutional Networks for Visual Recognition"
+        },
+        {
+            "paperId": "91bdaf3f1226e4065c4296d5c362906ceadfc631",
+            "title": "Deep Learning Face Representation by Joint Identification-Verification"
+        },
+        {
+            "paperId": "9f2efadf66817f1b38f58b3f50c7c8f34c69d89a",
+            "title": "DeepFace: Closing the Gap to Human-Level Performance in Face Verification"
+        },
+        {
+            "paperId": "14d9be7962a4ec5a6e55755f4c7588ea00793652",
+            "title": "Return of the Devil in the Details: Delving Deep into Convolutional Nets"
+        },
+        {
+            "paperId": "80d800dfadbe2e6c7b2367d9229cc82912d55889",
+            "title": "One weird trick for parallelizing convolutional neural networks"
+        },
+        {
+            "paperId": "1109b663453e78a59e4f66446d71720ac58cec25",
+            "title": "OverFeat: Integrated Recognition, Localization and Detection using Convolutional Networks"
+        },
+        {
+            "paperId": "99c970348b8f70ce23d6641e201904ea49266b6e",
+            "title": "Exact solutions to the nonlinear dynamics of learning in deep linear neural networks"
+        },
+        {
+            "paperId": "d67175d17c450ab0ac9c256103828f9e9a0acb85",
+            "title": "Some Improvements on Deep Convolutional Neural Network Based Image Classification"
+        },
+        {
+            "paperId": "5e83ab70d0cbc003471e87ec306d27d9c80ecb16",
+            "title": "Network In Network"
+        },
+        {
+            "paperId": "e2d894584986b44710f634b696db371f8aff92e0",
+            "title": "Understanding Deep Architectures using a Recursive Convolutional Network"
+        },
+        {
+            "paperId": "e9f60363fd3d448492d6d670e5b333b4b26a5064",
+            "title": "Compete to Compute"
+        },
+        {
+            "paperId": "fc26b9c1afe81e1b20195123fe6f3ced9520abb6",
+            "title": "Visualizing and Understanding Convolutional Neural Networks"
+        },
+        {
+            "paperId": "2f4df08d9072fc2ac181b7fced6a245315ce05c8",
+            "title": "Rich Feature Hierarchies for Accurate Object Detection and Semantic Segmentation"
+        },
+        {
+            "paperId": "38f35dd624cd1cf827416e31ac5e0e0454028eca",
+            "title": "Regularization of Neural Networks using DropConnect"
+        },
+        {
+            "paperId": "64da1980714cfc130632c5b92b9d98c2f6763de6",
+            "title": "On rectified linear units for speech processing"
+        },
+        {
+            "paperId": "b7b915d508987b73b61eccd2b237e7ed099a2d29",
+            "title": "Maxout Networks"
+        },
+        {
+            "paperId": "f72c079d9179cfaada1135a7e4c77d48b6309a30",
+            "title": "Pushing Stochastic Gradient towards Second-Order Methods -- Backpropagation Learning with Transformations in Nonlinearities"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "0060745e006c5f14ec326904119dca19c6545e51",
+            "title": "Improving neural networks by preventing co-adaptation of feature detectors"
+        },
+        {
+            "paperId": "b8ef1230a5cc9ea7cd8358f1ae7d1af97813ba14",
+            "title": "Deep Learning Made Easier by Linear Transformations in Perceptrons"
+        },
+        {
+            "paperId": "398c296d0cc7f9d180f84969f8937e6d3a413796",
+            "title": "Multi-column deep neural networks for image classification"
+        },
+        {
+            "paperId": "a538b05ebb01a40323997629e171c91aa28b8e2f",
+            "title": "Rectified Linear Units Improve Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": "3a9b175324ba11bc0e16c0633912d897b2fac4e2",
+            "title": "The Pascal Visual Object Classes (VOC) Challenge"
+        },
+        {
+            "paperId": "ea9d2a2b4ce11aaf85136840c65f3bc9c03ab649",
+            "title": "Understanding the difficulty of training deep feedforward neural networks"
+        },
+        {
+            "paperId": "d2c733e34d48784a37d717fe43d9e93277a8c53e",
+            "title": "ImageNet: A large-scale hierarchical image database"
+        },
+        {
+            "paperId": "bc6dff14a130c57a91d5a21339c23471faf1d46f",
+            "title": "Et al"
+        },
+        {
+            "paperId": "a8e8f3c8d4418c8d62e306538c9c1292635e9d27",
+            "title": "Backpropagation Applied to Handwritten Zip Code Recognition"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "367f2c63a6f6a10b3b64b8729d601e69337ee3cc",
+            "title": "Rectifier Nonlinearities Improve Neural Network Acoustic Models"
+        },
+        {
+            "paperId": "b87274e6d9aa4e6ba5148898aa92941617d2b6ed",
+            "title": "Efficient BackProp"
+        },
+        {
+            "paperId": null,
+            "title": "Deep sparse recti\ufb01er networks"
+        },
+        {
+            "paperId": "6f042474870612860a85839329f9b4dceee312f8",
+            "title": "Backpropagation"
+        },
+        {
+            "paperId": null,
+            "title": "Figure 5 Example validation images incorrectly classified by our method, in the three classes with the highest top-5 test error. Top: \" letter opener \" (49% top-5 test error)"
+        },
+        {
+            "paperId": null,
+            "title": "birdhouse 2: sliding door 3: window screen 4: mailbox 5: pot GT: yellow lady's slipper 1: yellow lady's slipper 2: slug 3: hen-of-the-woods"
+        },
+        {
+            "paperId": null,
+            "title": "GT: yellow lady's slipper 1: yellow lady's slipper 2: slug 3: hen-of-the-woods 4: stinkhorn 5: coral fungus"
+        },
+        {
+            "paperId": null,
+            "title": "For each image, the ground-truth label and the top-5 labels predicted by our method are listed"
+        }
+    ]
+}

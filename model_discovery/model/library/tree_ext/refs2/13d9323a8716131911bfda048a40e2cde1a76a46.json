@@ -1,0 +1,306 @@
+{
+    "paperId": "13d9323a8716131911bfda048a40e2cde1a76a46",
+    "externalIds": {
+        "MAG": "2949847915",
+        "DBLP": "conf/iclr/KimDHR17",
+        "ArXiv": "1702.00887",
+        "CorpusId": 6961760
+    },
+    "title": "Structured Attention Networks",
+    "abstract": "Attention networks have proven to be an effective approach for embedding categorical inference within a deep neural network. However, for many tasks we may want to model richer structural dependencies without abandoning end-to-end training. In this work, we experiment with incorporating richer structural distributions, encoded using graphical models, within deep networks. We show that these structured attention networks are simple extensions of the basic attention procedure, and that they allow for extending attention beyond the standard soft-selection approach, such as attending to partial segmentations or to subtrees. We experiment with two different classes of structured attention networks: a linear-chain conditional random field and a graph-based parsing model, and describe how these models can be practically implemented as neural network layers. Experiments show that this approach is effective for incorporating structural biases, and structured attention networks outperform baseline attention models on a variety of synthetic and real tasks: tree transduction, neural machine translation, question answering, and natural language inference. We further find that models trained in this way learn interesting unsupervised hidden representations that generalize simple attention.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2017,
+    "referenceCount": 66,
+    "citationCount": 442,
+    "influentialCitationCount": 22,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work shows that structured attention networks are simple extensions of the basic attention procedure, and that they allow for extending attention beyond the standard soft-selection approach, such as attending to partial segmentations or to subtrees."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "38367242",
+            "name": "Yoon Kim"
+        },
+        {
+            "authorId": "47472547",
+            "name": "Carl Denton"
+        },
+        {
+            "authorId": "144294755",
+            "name": "Luong Hoang"
+        },
+        {
+            "authorId": "2531268",
+            "name": "Alexander M. Rush"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "e06a68b26bde368883761c9dceb547914b2ecca8",
+            "title": "Textual Entailment with Structured Attentions and Composition"
+        },
+        {
+            "paperId": "d19b712f90cde698cc96ebd5fe291b410e3f0f9c",
+            "title": "The Neural Noisy Channel"
+        },
+        {
+            "paperId": "222c23cba96dd487eee0722d3d302cc97e70d18e",
+            "title": "Inside-Outside and Forward-Backward Algorithms Are Just Backprop (tutorial paper)"
+        },
+        {
+            "paperId": "e8135016ff3bd33ace936e50247fd650fcc58a7a",
+            "title": "Lexicons and Minimum Risk Training for Neural Machine Translation: NAIST-CMU at WAT2016"
+        },
+        {
+            "paperId": "784ee73d5363c711118f784428d1ab89f019daa5",
+            "title": "Hybrid computing using a neural network with dynamic external memory"
+        },
+        {
+            "paperId": "d9d1def2c3cd2af5705a736534f7682a967d9126",
+            "title": "Modelling Sentence Pairs with Tree-structured Attentive Encoder"
+        },
+        {
+            "paperId": "f61da0efbb38bd3e6b9a9855809f5288b829f1f0",
+            "title": "Online Segment to Segment Neural Transduction"
+        },
+        {
+            "paperId": "83e7654d545fbbaaf2328df365a781fb67b841b4",
+            "title": "Enhanced LSTM for Natural Language Inference"
+        },
+        {
+            "paperId": "162db03ef3cb50a07ff54ae4a1d4ea120e4162f2",
+            "title": "Enhancing and Combining Sequential and Tree LSTM for Natural Language Inference"
+        },
+        {
+            "paperId": "705dcc8eadba137834e4b0359e2d696d4b209f5b",
+            "title": "Neural Tree Indexers for Text Understanding"
+        },
+        {
+            "paperId": "2cd8e8f510c89c7c18268e8ad51c061e459ad321",
+            "title": "A Decomposable Attention Model for Natural Language Inference"
+        },
+        {
+            "paperId": "53ca01f8c593b2339f292672b183235da5f6ce70",
+            "title": "ASPEC: Asian Scientific Paper Excerpt Corpus"
+        },
+        {
+            "paperId": "4be0dd53aa1c751219fa6f19fed8a6324f6d2766",
+            "title": "Globally Normalized Transition-Based Neural Networks"
+        },
+        {
+            "paperId": "eec3a236ecd185712ce65fb336141f8656eea13d",
+            "title": "Simple and Accurate Dependency Parsing Using Bidirectional LSTM Feature Representations"
+        },
+        {
+            "paperId": "f5a7da72496e2ca8edcd9f9123773012c010cfc6",
+            "title": "Neural Architectures for Named Entity Recognition"
+        },
+        {
+            "paperId": "aedffcebea081138a0f2bf2454f872700237fbf6",
+            "title": "Segmental Recurrent Neural Networks for End-to-End Speech Recognition"
+        },
+        {
+            "paperId": "36c097a225a95735271960e2b63a2cb9e98bff83",
+            "title": "A Fast Unified Model for Parsing and Sentence Understanding"
+        },
+        {
+            "paperId": "596c882de006e4bb4a93f1fa08a5dd467bee060a",
+            "title": "Learning Natural Language Inference with LSTM"
+        },
+        {
+            "paperId": "ea407573bfcd39f9a478fe33cf6ce0ee1780a5f0",
+            "title": "Natural Language Inference by Tree-Based Convolution and Heuristic Matching"
+        },
+        {
+            "paperId": "bc82b4f9f202062857958f0336fc28327a75563b",
+            "title": "Structured Prediction Energy Networks"
+        },
+        {
+            "paperId": "6b904d6e84c98c6ce22ce6923224b205a2a24ee1",
+            "title": "Segmental Recurrent Neural Networks"
+        },
+        {
+            "paperId": "2846e83d405cbe3bf2f0f3b5f635dd8b3c680c45",
+            "title": "Reasoning about Entailment with Neural Attention"
+        },
+        {
+            "paperId": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+            "title": "Effective Approaches to Attention-based Neural Machine Translation"
+        },
+        {
+            "paperId": "1abe41711155afe82222ac0f99b978b32b1e68b5",
+            "title": "Approximation-Aware Dependency Parsing by Belief Propagation"
+        },
+        {
+            "paperId": "3056add22b20e3361c38c0472d294a79d4031cb4",
+            "title": "Listen, attend and spell: A neural network for large vocabulary conversational speech recognition"
+        },
+        {
+            "paperId": "654a3e53fb41d8168798ee0ee61dfab73739b1ed",
+            "title": "Describing Multimedia Content Using Attention-Based Encoder-Decoder Networks"
+        },
+        {
+            "paperId": "bb50784deeb9d74106de7639db775ec3bfa43df3",
+            "title": "Neural CRF Parsing"
+        },
+        {
+            "paperId": "b624504240fa52ab76167acfe3156150ca01cf3b",
+            "title": "Attention-Based Models for Speech Recognition"
+        },
+        {
+            "paperId": "438bb3d46e72b177ed1c9b7cd2c11a045644a1f4",
+            "title": "Gradient Estimation Using Stochastic Computation Graphs"
+        },
+        {
+            "paperId": "04d1a26c2516dc14a765112a63ec60dc3cb3de72",
+            "title": "Tree-Structured Composition in Neural Networks without Tree-Structured Architectures"
+        },
+        {
+            "paperId": "d1505c6123c102e53eb19dff312cb25cea840b72",
+            "title": "Teaching Machines to Read and Comprehend"
+        },
+        {
+            "paperId": "9653d5c2c7844347343d073bbedd96e05d52f69b",
+            "title": "Pointer Networks"
+        },
+        {
+            "paperId": "e837b79de602c69395498c1fbbe39bbb4e6f75ad",
+            "title": "Learning to Transduce with Unbounded Memory"
+        },
+        {
+            "paperId": "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e",
+            "title": "End-To-End Memory Networks"
+        },
+        {
+            "paperId": "abb33d75dc297993fcc3fb75e0f4498f413eb4f6",
+            "title": "Towards AI-Complete Question Answering: A Set of Prerequisite Toy Tasks"
+        },
+        {
+            "paperId": "e2820bffe5b42cb7d88b7f65c12171c62ab4aae2",
+            "title": "Gradient-based Hyperparameter Optimization through Reversible Learning"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "21da448e7c31e1ff6cc3b7155a9c9c49a0138060",
+            "title": "Deep Structured Output Learning for Unconstrained Text Recognition"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "71ae756c75ac89e2d731c9c79649562b5768ff39",
+            "title": "Memory Networks"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "c66758c1029a463489f26aeb3955f333b37f727a",
+            "title": "Learning Deep Structured Models"
+        },
+        {
+            "paperId": "2418131d18173161b48575839d145091c3178a72",
+            "title": "Minimum-Risk Training of Approximate CRF-Based NLP Systems"
+        },
+        {
+            "paperId": "5b0a44014c24f9b584904bf223530a3b9fa9853f",
+            "title": "Generic Methods for Optimization-Based Modeling"
+        },
+        {
+            "paperId": "80f3ec80d1114bcd9a8ad9b56dd7b230ec16c048",
+            "title": "Parameter learning with truncated message-passing"
+        },
+        {
+            "paperId": "fba7c0a51a6301ca4086a5ce59b1f13af9acad7f",
+            "title": "Pointwise Prediction for Robust, Adaptable Japanese Morphological Analysis"
+        },
+        {
+            "paperId": "04e9385a1267d75197f695acf83e314668f6ae52",
+            "title": "Empirical Risk Minimization of Graphical Model Parameters Given Approximate Inference, Decoding, and Model Structure"
+        },
+        {
+            "paperId": "bc1022b031dc6c7019696492e8116598097a8c12",
+            "title": "Natural Language Processing (Almost) from Scratch"
+        },
+        {
+            "paperId": "413c1142de9d91804d6d11c67ff3fed59c9fc279",
+            "title": "Adaptive Subgradient Methods for Online Learning and Stochastic Optimization"
+        },
+        {
+            "paperId": "c3227702dd212965157a615332f3dd78b0f11b5e",
+            "title": "Neural conditional random fields"
+        },
+        {
+            "paperId": "f8a96652a43c2b6bd087ece6c3d67f097d0c7c9e",
+            "title": "Conditional Neural Fields"
+        },
+        {
+            "paperId": "394c6c50445ab4ccd1c79fbc2db8f35994ef9f15",
+            "title": "First- and Second-Order Expectation Semirings with Applications to Minimum-Risk Training on Translation Forests"
+        },
+        {
+            "paperId": "ebbb58b2e616435b6ededbc103acfef6dc79bd51",
+            "title": "Dependency Parsing by Belief Propagation"
+        },
+        {
+            "paperId": "f4ba954b0412773d047dc41231c733de0c1f4926",
+            "title": "Conditional Random Fields: Probabilistic Models for Segmenting and Labeling Sequence Data"
+        },
+        {
+            "paperId": "adfef97814b292a09520d8c78a141e7a4baf8726",
+            "title": "Three New Probabilistic Models for Dependency Parsing: An Exploration"
+        },
+        {
+            "paperId": "6c79a9bb8f885050cad70b4c69e016b186ffa538",
+            "title": "Trainable grammars for speech recognition"
+        },
+        {
+            "paperId": "bcd857d75841aa3e92cd4284a8818aba9f6c0c3f",
+            "title": "Published as a conference paper at ICLR 2018 S IMULATING A CTION D YNAMICS WITH N EURAL P ROCESS N ETWORKS"
+        },
+        {
+            "paperId": "b8f4a8028c31dbc4b9cf3ff61e5399bf7f14f978",
+            "title": "Proximal Deep Structured Models"
+        },
+        {
+            "paperId": "e4351041d25c272a008bcd5765868dc3a28fe470",
+            "title": "Under Review as a Conference Paper at Iclr 2017 Delving into Transferable Adversarial Ex- Amples and Black-box Attacks"
+        },
+        {
+            "paperId": null,
+            "title": "Proceedings of Structured Prediction Workshop at EMNLP"
+        },
+        {
+            "paperId": null,
+            "title": "Mustafa Suleyman, and Phil Blunsom. Teaching Machines to Read and Comprehend. In Proceedings of NIPS"
+        },
+        {
+            "paperId": null,
+            "title": "In particular, let x = [x1"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": null,
+            "title": "1 do Outside step for s = 1, . . . , n \u2212 k do t \u2190 s + k for u = s + 1"
+        }
+    ]
+}

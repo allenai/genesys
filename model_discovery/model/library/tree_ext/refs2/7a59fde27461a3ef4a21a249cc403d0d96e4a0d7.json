@@ -1,0 +1,101 @@
+{
+    "paperId": "7a59fde27461a3ef4a21a249cc403d0d96e4a0d7",
+    "externalIds": {
+        "MAG": "2144902422",
+        "DBLP": "conf/nips/RahimiR07",
+        "CorpusId": 877929
+    },
+    "title": "Random Features for Large-Scale Kernel Machines",
+    "abstract": "To accelerate the training of kernel machines, we propose to map the input data to a randomized low-dimensional feature space and then apply existing fast linear methods. The features are designed so that the inner products of the transformed data are approximately equal to those in the feature space of a user specified shift-invariant kernel. We explore two sets of random features, provide convergence bounds on their ability to approximate various radial basis kernels, and show that in large-scale classification and regression tasks linear machine learning algorithms applied to these features outperform state-of-the-art large-scale kernel machines.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2007,
+    "referenceCount": 17,
+    "citationCount": 3877,
+    "influentialCitationCount": 650,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Two sets of random features are explored, provided convergence bounds on their ability to approximate various radial basis kernels, and it is shown that in large-scale classification and regression tasks linear machine learning algorithms applied to these features outperform state-of-the-art large- scale kernel machines."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "31558848",
+            "name": "A. Rahimi"
+        },
+        {
+            "authorId": "9229182",
+            "name": "B. Recht"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "9691f67f5075bde2fd70da0135a4a70f25ef042b",
+            "title": "Pegasos: primal estimated sub-gradient solver for SVM"
+        },
+        {
+            "paperId": "eb9380776450ee38548aaf6cf509b7bd788acd58",
+            "title": "Comments on the \"Core Vector Machines: Fast SVM Training on Very Large Data Sets\""
+        },
+        {
+            "paperId": "427b168f490b56716f22b129ac93aba5425ea08f",
+            "title": "Training linear SVMs in linear time"
+        },
+        {
+            "paperId": "fb00902d67f2fe224721b8a54c816e72883d28d2",
+            "title": "Fast Gaussian Process Regression using KD-Trees"
+        },
+        {
+            "paperId": "8608a48f6a5850259afb036b70fd289b4c174cc6",
+            "title": "Core Vector Machines: Fast SVM Training on Very Large Data Sets"
+        },
+        {
+            "paperId": "11e6b5a30a921e6028662105148fac41a76f0500",
+            "title": "On the Nystr\u00f6m Method for Approximating a Gram Matrix for Improved Kernel-Based Learning"
+        },
+        {
+            "paperId": "174cecadda4ecbcebaf575bc0d5c4b3fd233fd12",
+            "title": "Random Projection, Margins, Kernels, and Feature-Selection"
+        },
+        {
+            "paperId": "303600138609133e1cf558fca94514d9c19470d2",
+            "title": "Efficient Kernel Machines Using the Improved Fast Gauss Transform"
+        },
+        {
+            "paperId": "e43f51ac91781b18f5cb426db5c8b7cfb3de002f",
+            "title": "Fast Query-Optimized Kernel Machine Classification Via Incremental Approximate Nearest Support Vectors"
+        },
+        {
+            "paperId": "20f6ac9427d700e48a5025c9c43e5b6d20a2a79d",
+            "title": "Interior-Point Methods for Massive Support Vector Machines"
+        },
+        {
+            "paperId": "7b2dd79083a74699e4e0509ac3f0a8a302b4eabe",
+            "title": "On the mathematical foundations of learning"
+        },
+        {
+            "paperId": "e5e12dd2604cb7cc9cde165509ca8db764784688",
+            "title": "Sampling Techniques for Kernel Methods"
+        },
+        {
+            "paperId": "8aaff7e62c4ce8724298a276a56ac519c804bb74",
+            "title": "Using Analytic QP and Sparseness to Speed Training of Support Vector Machines"
+        },
+        {
+            "paperId": "bbc531f6ca5e83c6fa507bdf6399ecf76ef2e614",
+            "title": "Fast Monte-Carlo algorithms for finding low-rank approximations"
+        },
+        {
+            "paperId": "7838d046f296235cb0bbab0a190d539e8debb25a",
+            "title": "Fourier Analysis on Groups."
+        },
+        {
+            "paperId": null,
+            "title": "Fast image retrieval via embeddings"
+        },
+        {
+            "paperId": "eeeec164d5a5501bd76b71828378646836511483",
+            "title": "Random Projection"
+        }
+    ]
+}

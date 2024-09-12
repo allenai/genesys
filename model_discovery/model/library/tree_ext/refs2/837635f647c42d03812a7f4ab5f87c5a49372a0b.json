@@ -1,0 +1,109 @@
+{
+    "paperId": "837635f647c42d03812a7f4ab5f87c5a49372a0b",
+    "externalIds": {
+        "MAG": "2542803194",
+        "DBLP": "conf/icdp/BashirXG09",
+        "DOI": "10.1049/IC.2009.0230",
+        "CorpusId": 11176755
+    },
+    "title": "Gait recognition using Gait Entropy Image",
+    "abstract": "Gait as a behavioural biometric is concerned with how people walk. However, most existing gait representations capture both motion and appearance information. They are thus sensitive to changes in various covariate conditions such as carrying and clothing. In this paper, a novel gait representation termed as Gait Entropy Image (GEnI) is proposed. Based on computing entropy, a GEnI encodes in a single image the randomness of pixel values in the silhouette images over a complete gait cycle. It thus captures mostly motion information and is robust to covariate condition changes that affect appearance. Extensive experiments on the USF HumanID dataset, CASIA dataset and the SOTON dataset have been carried out to demonstrate that the proposed gait representation outperforms existing methods, especially when there are significant appearance changes. Our experiments also show clear advantage of GEnI over the alternatives without the assumption on cooperative subjects, i.e. both the gallery and the probe sets consist of a mixture of gait sequences under different and unknown covariate conditions. (6 pages)",
+    "venue": "International Conferences on Imaging for Crime Detection and Prevention",
+    "year": 2009,
+    "referenceCount": 17,
+    "citationCount": 266,
+    "influentialCitationCount": 31,
+    "openAccessPdf": {
+        "url": "http://www.eecs.qmul.ac.uk/~sgg/papers/BashirXiangGong_ICDP2009.pdf",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel gait representation termed as Gait Entropy Image (GEnI) is proposed, based on computing entropy, which encodes in a single image the randomness of pixel values in the silhouette images over a complete gait cycle that captures mostly motion information and is robust to covariate condition changes that affect appearance."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "47067388",
+            "name": "Khalid Bashir"
+        },
+        {
+            "authorId": "145406421",
+            "name": "T. Xiang"
+        },
+        {
+            "authorId": "144784813",
+            "name": "S. Gong"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "6f05f30883decaf1b9eb2f59364cf5e790a05041",
+            "title": "A robust identification approach to gait recognition"
+        },
+        {
+            "paperId": "b03abe450365433450120b3eba460ee4e2cfc763",
+            "title": "Human gait recognition by the fusion of motion and static spatio-temporal templates"
+        },
+        {
+            "paperId": "4263630a35c5ee34ccf9dbd81c0541d92d0c7d5b",
+            "title": "Shape Variation-Based Frieze Pattern for Robust Gait Recognition"
+        },
+        {
+            "paperId": "9aee463018bf9f33f61d565ac8f4cbe01884cf20",
+            "title": "Human gait recognition at sagittal plane"
+        },
+        {
+            "paperId": "0268d1744377ffbff48b014f513ea3e5e4a4dab1",
+            "title": "A Framework for Evaluating the Effect of View Angle, Clothing and Carrying Condition on Gait Recognition"
+        },
+        {
+            "paperId": "71fe2a23d49b5ba87f115a82eedb196b49c2d4fb",
+            "title": "A layered deformable model for gait analysis"
+        },
+        {
+            "paperId": "890992c340d970beea5418bac2cb7bd8d0596f12",
+            "title": "3D gait recognition using multiple cameras"
+        },
+        {
+            "paperId": "540339c32eaf41962740583bfa415a5a0ff9d932",
+            "title": "Individual recognition using gait energy image"
+        },
+        {
+            "paperId": "85c7aab0f58f17816064699865cd0836bfbf2e82",
+            "title": "A New Representation for Human Gait Recognition: Motion Silhouettes Image (MSI)"
+        },
+        {
+            "paperId": "bb6b14397f69bbfbc52cbd1a04bc6302a8b938d7",
+            "title": "The humanID gait challenge problem: data sets, performance, and analysis"
+        },
+        {
+            "paperId": "5480518ea7a41f8feed52e963b6eb4efcc1142ac",
+            "title": "Identification of humans using gait"
+        },
+        {
+            "paperId": "caca515247a64ce6034ab0a5df5235c5734f7379",
+            "title": "Role of shape and kinematics in human movement analysis"
+        },
+        {
+            "paperId": "6862945b8abc805eec2dcff0eb2445f7c8ea9a80",
+            "title": "What image information is important in silhouette-based gait recognition?"
+        },
+        {
+            "paperId": "1655a490824ff77a5384e5f712a42c4dfdefbbbc",
+            "title": "Gait Sequence Analysis Using Frieze Patterns"
+        },
+        {
+            "paperId": "9d91d98fd9d6b3bc7c47df5e4023aa223f2044fb",
+            "title": "Recognising humans by gait via parametric canonical space"
+        },
+        {
+            "paperId": "33ef5e6714e3635289b687f96d830b413b7496bd",
+            "title": "Feature Selection for Gait Recognition without Subject Cooperation"
+        },
+        {
+            "paperId": "4f93cd09785c6e77bf4bc5a788e079df524c8d21",
+            "title": "On a Large Sequence-Based Human Gait Database"
+        }
+    ]
+}

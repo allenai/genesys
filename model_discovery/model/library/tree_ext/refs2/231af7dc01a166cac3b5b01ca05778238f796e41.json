@@ -1,0 +1,293 @@
+{
+    "paperId": "231af7dc01a166cac3b5b01ca05778238f796e41",
+    "externalIds": {
+        "MAG": "2963981733",
+        "DBLP": "conf/nips/HeuselRUNH17",
+        "CorpusId": 326772
+    },
+    "title": "GANs Trained by a Two Time-Scale Update Rule Converge to a Local Nash Equilibrium",
+    "abstract": "Generative Adversarial Networks (GANs) excel at creating realistic images with complex models for which maximum likelihood is infeasible. However, the convergence of GAN training has still not been proved. We propose a two time-scale update rule (TTUR) for training GANs with stochastic gradient descent on arbitrary GAN loss functions. TTUR has an individual learning rate for both the discriminator and the generator. Using the theory of stochastic approximation, we prove that the TTUR converges under mild assumptions to a stationary local Nash equilibrium. The convergence carries over to the popular Adam optimization, for which we prove that it follows the dynamics of a heavy ball with friction and thus prefers flat minima in the objective landscape. For the evaluation of the performance of GANs at image generation, we introduce the \"Frechet Inception Distance\" (FID) which captures the similarity of generated images to real ones better than the Inception Score. In experiments, TTUR improves learning for DCGANs and Improved Wasserstein GANs (WGAN-GP) outperforming conventional GAN training on CelebA, CIFAR-10, SVHN, LSUN Bedrooms, and the One Billion Word Benchmark.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2017,
+    "referenceCount": 62,
+    "citationCount": 10675,
+    "influentialCitationCount": 2297,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a two time-scale update rule (TTUR) for training GANs with stochastic gradient descent on arbitrary GAN loss functions and introduces the \"Frechet Inception Distance\" (FID) which captures the similarity of generated images to real ones better than the Inception Score."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2445103",
+            "name": "M. Heusel"
+        },
+        {
+            "authorId": "19219270",
+            "name": "Hubert Ramsauer"
+        },
+        {
+            "authorId": "2465270",
+            "name": "Thomas Unterthiner"
+        },
+        {
+            "authorId": "37082831",
+            "name": "Bernhard Nessler"
+        },
+        {
+            "authorId": "3308557",
+            "name": "Sepp Hochreiter"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "fde798b263a69e7830ef936f76a3a12e850abc74",
+            "title": "Geometric"
+        },
+        {
+            "paperId": "ddf50c5bcbe11ba1346c168ca2efd554ca7dab78",
+            "title": "Towards Understanding the Dynamics of Generative Adversarial Networks"
+        },
+        {
+            "paperId": "21b25b025898bd1cabe60234434b49cf14016981",
+            "title": "Gradient descent GAN optimization is locally stable"
+        },
+        {
+            "paperId": "245f8b05bdd1ac65a09a476440dc4b05ac05d4a0",
+            "title": "An Online Learning Approach to Generative Adversarial Networks"
+        },
+        {
+            "paperId": "459fbc416eb9a55920645c741b1e4cce95f39786",
+            "title": "The Numerics of GANs"
+        },
+        {
+            "paperId": "e21c45b14d75545d40ed07896f26ec6f766f6a4b",
+            "title": "Fisher GAN"
+        },
+        {
+            "paperId": "cd1758d3b86c4f1caf01ec222b45daf15888d1a8",
+            "title": "MMD GAN: Towards Deeper Understanding of Moment Matching Network"
+        },
+        {
+            "paperId": "5e4d2e73e71806e9147afbedcd504424721fa059",
+            "title": "Geometric GAN"
+        },
+        {
+            "paperId": "dfb9afb4b86de168c11d8fac863740732cf5b817",
+            "title": "Approximation and Convergence Properties of Generative Adversarial Learning"
+        },
+        {
+            "paperId": "ad37850e17ce5ad9ca954ec97c1fe95c31cefc9e",
+            "title": "MAGAN: Margin Adaptation for Generative Adversarial Networks"
+        },
+        {
+            "paperId": "edf73ab12595c6709f646f542a0d2b33eb20a3f4",
+            "title": "Improved Training of Wasserstein GANs"
+        },
+        {
+            "paperId": "aa6f7ad0a06b52a8be89dbd8d056561418276ff2",
+            "title": "BEGAN: Boundary Equilibrium Generative Adversarial Networks"
+        },
+        {
+            "paperId": "641165c959554d8f03314778bd6dfb581d9a469e",
+            "title": "Generalization and Equilibrium in Generative Adversarial Nets (GANs)"
+        },
+        {
+            "paperId": "042116e805aa3b5171efaf0c822dc142310ceefe",
+            "title": "Boundary-Seeking Generative Adversarial Networks"
+        },
+        {
+            "paperId": "2f85b7376769473d2bed56f855f115e23d727094",
+            "title": "Wasserstein GAN"
+        },
+        {
+            "paperId": "90c10cc419420e18ed8649967c2cf3ae45c42057",
+            "title": "AdaGAN: Boosting Generative Models"
+        },
+        {
+            "paperId": "2c740e574eea66fdcf473e15ed2c228baef2eccd",
+            "title": "NIPS 2016 Tutorial: Generative Adversarial Networks"
+        },
+        {
+            "paperId": "8acbe90d5b852dadea7810345451a99608ee54c7",
+            "title": "Image-to-Image Translation with Conditional Adversarial Networks"
+        },
+        {
+            "paperId": "024d30897e0a2b036bc122163a954b7f1a1d0679",
+            "title": "Mode Regularized Generative Adversarial Networks"
+        },
+        {
+            "paperId": "488bb25e0b1777847f04c943e6dbc4f84415b712",
+            "title": "Unrolled Generative Adversarial Networks"
+        },
+        {
+            "paperId": "858dc7408c27702ec42778599fc8d11f73ef3f76",
+            "title": "On the Quantitative Analysis of Decoder-Based Generative Models"
+        },
+        {
+            "paperId": "df0c54fe61f0ffb9f0e36a17c2038d9a1964cba3",
+            "title": "Photo-Realistic Single Image Super-Resolution Using a Generative Adversarial Network"
+        },
+        {
+            "paperId": "451f8b812639fa18d6c8f89d8acef2074a26e237",
+            "title": "Stochastic Heavy ball"
+        },
+        {
+            "paperId": "571b0750085ae3d939525e62af510ee2cee9d5ea",
+            "title": "Improved Techniques for Training GANs"
+        },
+        {
+            "paperId": "4954fa180728932959997a4768411ff9136aac81",
+            "title": "TensorFlow: A system for large-scale machine learning"
+        },
+        {
+            "paperId": "9c9d7247f8c51ec5a02b0d911d1d7b9e8160495d",
+            "title": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems"
+        },
+        {
+            "paperId": "f63e917638553414526a0cc8550de4ad2d83fe7a",
+            "title": "Fast and Accurate Deep Network Learning by Exponential Linear Units (ELUs)"
+        },
+        {
+            "paperId": "8388f1be26329fa45e5807e968a641ce170ea078",
+            "title": "Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks"
+        },
+        {
+            "paperId": "39e0c341351f8f4a39ac890b96217c7f4bde5369",
+            "title": "A note on the evaluation of generative models"
+        },
+        {
+            "paperId": "4dcdae25a5e33682953f0853ee4cf7ca93be58a9",
+            "title": "LSUN: Construction of a Large-scale Image Dataset using Deep Learning with Humans in the Loop"
+        },
+        {
+            "paperId": "21d94499143e62fd016f59e3c07a3c7211347beb",
+            "title": "Two-Timescale Algorithms for Learning Nash Equilibria in General-Sum Stochastic Games"
+        },
+        {
+            "paperId": "3efa002bb476573d3657ece9d562912e6dc7bc86",
+            "title": "Stochastic recursive inclusion in two timescales with an application to the Lagrangian dual problem"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "b321e8eca4dbf424a9e30dd938fb423786c90b76",
+            "title": "On distinguishability criteria for estimating generative models"
+        },
+        {
+            "paperId": "6424b69f3ff4d35249c0bb7ef912fbc2c86f4ff4",
+            "title": "Deep Learning Face Attributes in the Wild"
+        },
+        {
+            "paperId": "5d833331b0e22ff359db05c62a8bca18c4f04b68",
+            "title": "One billion word benchmark for measuring progress in statistical language modeling"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "1934ea37649d1ea4e9e7e51a496b6bb69d469f80",
+            "title": "Stochastic Recursive Algorithms for Optimization"
+        },
+        {
+            "paperId": "e1c98be6037f46f33ed4432b8b517a558cdf20c0",
+            "title": "A Convergent Online Single Time Scale Actor Critic Algorithm"
+        },
+        {
+            "paperId": "f682dc6583c13382c87cd8c0c33582ecb12d3e46",
+            "title": "The gradient and heavy ball with friction dynamical systems: the quasiconvex case"
+        },
+        {
+            "paperId": "3258b53497d5a5dea14312be8e14ef554694615b",
+            "title": "The Impact of Stochastic Noisy Feedback on Distributed Network Utility Maximization"
+        },
+        {
+            "paperId": "9a093b438e341216ed6a8251f9264aad7ccbdd64",
+            "title": "Convergence rate and averaging of nonlinear two-time-scale stochastic approximation algorithms"
+        },
+        {
+            "paperId": "ef676a7ebead282f9faabf911742b7b0df5dea42",
+            "title": "Convergence rate of linear two-time-scale stochastic approximation"
+        },
+        {
+            "paperId": "5d1fd49ea6a5a4c758b527aa28b7eb02e0ce225a",
+            "title": "Linear stochastic approximation driven by slowly varying Markov chains"
+        },
+        {
+            "paperId": "aaf2a0d3204297e65ee794aed5f7a0d934affb3e",
+            "title": "THE HEAVY BALL WITH FRICTION METHOD, I. THE CONTINUOUS DYNAMICAL SYSTEM: GLOBAL EXPLORATION OF THE LOCAL MINIMA OF A REAL-VALUED FUNCTION BY ASYMPTOTIC ANALYSIS OF A DISSIPATIVE DYNAMICAL SYSTEM"
+        },
+        {
+            "paperId": "abe0f00db308460ec36618d2a59238c58d8affcd",
+            "title": "Actor-Critic - Type Learning Algorithms for Markov Decision Processes"
+        },
+        {
+            "paperId": "a8c615136657df084448cb06b70b7df76b267465",
+            "title": "Gradient Convergence in Gradient methods with Errors"
+        },
+        {
+            "paperId": "5c29049c6cc7e93bd42ccd55d70a5b92120ceec6",
+            "title": "Stochastic approximation with two time scales"
+        },
+        {
+            "paperId": "7dcd68d2421c1d065c88810d8685582546f25252",
+            "title": "Convergent activation dynamics in continuous time networks"
+        },
+        {
+            "paperId": "c68796f833a7151f0a63d1d1608dc902b4fdc9b6",
+            "title": "GENERATIVE ADVERSARIAL NETS"
+        },
+        {
+            "paperId": null,
+            "title": "Two time-scale stochastic approximation with controlled Markov noise and off-policy temporal-difference learning"
+        },
+        {
+            "paperId": null,
+            "title": "Nagarajan and J. Z. Kolter. Gradient descent GAN optimization is locally stable. arXiv e-prints , arXiv:1706.04156"
+        },
+        {
+            "paperId": "02227c94dd41fe0b439e050d377b0beb5d427cda",
+            "title": "Reading Digits in Natural Images with Unsupervised Feature Learning"
+        },
+        {
+            "paperId": "57531d0e337781870ccccb62090db8e9d5750557",
+            "title": "Almost sure convergence of two time-scale stochastic approximation algorithms"
+        },
+        {
+            "paperId": "7449f8982f9de36faf9d34bca680444ab827657c",
+            "title": "The Frkhet Distance between Multivariate Normal Distributions"
+        },
+        {
+            "paperId": "9813c4933a6a3f5d0c9a95cdff43258522979fef",
+            "title": "The O.D.E. Method for Convergence of Stochastic Approximation and Reinforcement Learning"
+        },
+        {
+            "paperId": "ac4af1df88e178386d782705acc159eaa0c3904a",
+            "title": "Actor-Critic Algorithms"
+        },
+        {
+            "paperId": "f91154c0d159a3f2dd3638915db32c5914544273",
+            "title": "Flat Minima"
+        },
+        {
+            "paperId": "8d3a318b62d2e970122da35b2a2e70a5d12cc16f",
+            "title": "A method for solving the convex programming problem with convergence rate O(1/k^2)"
+        },
+        {
+            "paperId": null,
+            "title": "Markov processes over denumerable products of spaces describing large systems of automata"
+        },
+        {
+            "paperId": "4b53e3f719ff983eef867c6d8deac5dbe38aecb4",
+            "title": "Some methods of speeding up the convergence of iteration methods"
+        },
+        {
+            "paperId": null,
+            "title": "Fr\u00e9chet . Sur la distance de deux lois de probabilit\u00e9 . C . R"
+        }
+    ]
+}

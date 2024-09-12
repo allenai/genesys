@@ -1,0 +1,310 @@
+{
+    "paperId": "42ec3db12a2e4628885451b13035c2e975220a25",
+    "externalIds": {
+        "ArXiv": "1811.03962",
+        "MAG": "2964098911",
+        "DBLP": "journals/corr/abs-1811-03962",
+        "CorpusId": 53250107
+    },
+    "title": "A Convergence Theory for Deep Learning via Over-Parameterization",
+    "abstract": "Deep neural networks (DNNs) have demonstrated dominating performance in many fields; since AlexNet, networks used in practice are going wider and deeper. On the theoretical side, a long line of works has been focusing on training neural networks with one hidden layer. The theory of multi-layer networks remains largely unsettled. \nIn this work, we prove why stochastic gradient descent (SGD) can find $\\textit{global minima}$ on the training objective of DNNs in $\\textit{polynomial time}$. We only make two assumptions: the inputs are non-degenerate and the network is over-parameterized. The latter means the network width is sufficiently large: $\\textit{polynomial}$ in $L$, the number of layers and in $n$, the number of samples. \nOur key technique is to derive that, in a sufficiently large neighborhood of the random initialization, the optimization landscape is almost-convex and semi-smooth even with ReLU activations. This implies an equivalence between over-parameterized neural networks and neural tangent kernel (NTK) in the finite (and polynomial) width setting. \nAs concrete examples, starting from randomly initialized weights, we prove that SGD can attain 100% training accuracy in classification tasks, or minimize regression loss in linear convergence speed, with running time polynomial in $n,L$. Our theory applies to the widely-used but non-smooth ReLU activation, and to any smooth and possibly non-convex loss functions. In terms of network architectures, our theory at least applies to fully-connected neural networks, convolutional neural networks (CNN), and residual neural networks (ResNet).",
+    "venue": "International Conference on Machine Learning",
+    "year": 2018,
+    "referenceCount": 68,
+    "citationCount": 1341,
+    "influentialCitationCount": 195,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proves why stochastic gradient descent can find global minima on the training objective of DNNs in $\\textit{polynomial time}$ and implies an equivalence between over-parameterized neural networks and neural tangent kernel (NTK) in the finite (and polynomial) width setting."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1388725932",
+            "name": "Zeyuan Allen-Zhu"
+        },
+        {
+            "authorId": "2110486765",
+            "name": "Yuanzhi Li"
+        },
+        {
+            "authorId": "143825455",
+            "name": "Zhao Song"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "6ad4308626a52696f43ba3527f723a5ec08a6ea7",
+            "title": "Appendix 6"
+        },
+        {
+            "paperId": "611fe6e34df07ea1b2104899e49642b4531b53e9",
+            "title": "Learning and Generalization in Overparameterized Neural Networks, Going Beyond Two Layers"
+        },
+        {
+            "paperId": "03e7e8663c69e691be6b6403b1eb1bbf593d31f2",
+            "title": "Gradient Descent Finds Global Minima of Deep Neural Networks"
+        },
+        {
+            "paperId": "1228a5f81dd6d169858cc3378a59065166583126",
+            "title": "On the Convergence Rate of Training Recurrent Neural Networks"
+        },
+        {
+            "paperId": "529b7b4b0321b3809d30de77c8845fc48cb65d65",
+            "title": "The Computational Complexity of Training ReLU(s)"
+        },
+        {
+            "paperId": "d6f6d1504cfedde4efb23e7ec0f42f006062c6a0",
+            "title": "Gradient Descent Provably Optimizes Over-parameterized Neural Networks"
+        },
+        {
+            "paperId": "134c165953e23a6dc7d4f0d86989e92362ca4335",
+            "title": "A Convergence Analysis of Gradient Descent for Deep Linear Neural Networks"
+        },
+        {
+            "paperId": "81f88736c4e70d4a55dd7cba973d7a0548eccc73",
+            "title": "Safely Learning to Control the Constrained Linear Quadratic Regulator"
+        },
+        {
+            "paperId": "ccb1bafdae68c635cbd30d49fda7dbf88a3ce1b6",
+            "title": "Learning Overparameterized Neural Networks via Stochastic Gradient Descent on Structured Data"
+        },
+        {
+            "paperId": "c3ea547e45e573537609225dd4750561fd81d659",
+            "title": "Robust Spectral Filtering and Anomaly Detection"
+        },
+        {
+            "paperId": "e0a4f668bd61cb3b66c22b0b7d9600575f2572db",
+            "title": "Linear Model Regression on Time-series Data: Non-asymptotic Error Bounds and Applications"
+        },
+        {
+            "paperId": "7a84a692327534fd227fa1e07fcb3816b633c591",
+            "title": "Neural Tangent Kernel: Convergence and Generalization in Neural Networks"
+        },
+        {
+            "paperId": "aa9b2ab8e1af2729c725ae213247c290365a07ba",
+            "title": "Non-asymptotic Identification of LTI Systems from a Single Trajectory"
+        },
+        {
+            "paperId": "b56d065e56866dce8ceaca4af78a8f058aecd6a7",
+            "title": "Learning Long Term Dependencies via Fourier Recurrent Units"
+        },
+        {
+            "paperId": "88141e44d400bd1b38f6420358d17e621d6472ee",
+            "title": "Learning Without Mixing: Towards A Sharp Analysis of Linear System Identification"
+        },
+        {
+            "paperId": "63ae7e196430fe250e65b65fdef261d357921d28",
+            "title": "Gradient Descent with Identity Initialization Efficiently Learns Positive-Definite Linear Transformations by Deep Residual Networks"
+        },
+        {
+            "paperId": "f0638ac4a24d7fa6e770ac173ce46d74bc4d561f",
+            "title": "Spectral Filtering for General Linear Dynamical Systems"
+        },
+        {
+            "paperId": "6ca283b53ddfe0013330b79cca728a5742b87419",
+            "title": "Towards Provable Control for Unknown Linear Dynamical Systems"
+        },
+        {
+            "paperId": "181350e78a5c9e1f44e9cc2ace2137b7180856ba",
+            "title": "Learning One Convolutional Layer with Overlapping Patches"
+        },
+        {
+            "paperId": "52ce57ccd25f30b9ff3b63eba8a78a430dff7a27",
+            "title": "Learning Compact Neural Networks with Regularization"
+        },
+        {
+            "paperId": "99d1d9367879c5f3adc3aa78a2e68b5b165176cd",
+            "title": "Spurious Local Minima are Common in Two-Layer ReLU Neural Networks"
+        },
+        {
+            "paperId": "f91248a4f587f89f1d1d8e557cee08b8114686d9",
+            "title": "Gradient Descent Learns One-hidden-layer CNN: Don't be Afraid of Spurious Local Minima"
+        },
+        {
+            "paperId": "8b68ddb67b80367f88b2bd643c485c3efcad63f9",
+            "title": "Neon2: Finding Local Minima via First-Order Oracles"
+        },
+        {
+            "paperId": "97326ad593fc141e2cf3f9f6450ea523f443ff20",
+            "title": "Learning Non-overlapping Convolutional Neural Networks with Multiple Kernels"
+        },
+        {
+            "paperId": "73317dbc881f53ee7fc25a9899b8b5b6698fce55",
+            "title": "Learning Linear Dynamical Systems via Spectral Filtering"
+        },
+        {
+            "paperId": "136d8b08d38a5c4829449b87bad6bad675ca8c71",
+            "title": "Learning One-hidden-layer Neural Networks with Landscape Design"
+        },
+        {
+            "paperId": "c27db32efa8137cbf654902f8f728f338e55cd1c",
+            "title": "Mastering the game of Go without human knowledge"
+        },
+        {
+            "paperId": "e53eaf5a509763e376f9e5fb2b278318430d75e0",
+            "title": "On the Sample Complexity of the Linear Quadratic Regulator"
+        },
+        {
+            "paperId": "2a8f0a9706370d8f0c52c3438ca4e78615deddb2",
+            "title": "On the Complexity of Learning Neural Networks"
+        },
+        {
+            "paperId": "99ed21b585f4d6cbc4e20002bedca8d6c08169c6",
+            "title": "Recovery Guarantees for One-hidden-layer Neural Networks"
+        },
+        {
+            "paperId": "97db7860df3ee3624f8b55d5820b00f893bc4f9a",
+            "title": "Learning ReLUs via Gradient Descent"
+        },
+        {
+            "paperId": "353f07a8c8a35a6b121d891d81e1f4ebec0d849a",
+            "title": "Convergence Analysis of Two-layer Neural Networks with ReLU Activation"
+        },
+        {
+            "paperId": "c6f2f35169abb6bfeb4dd2deec15d38587910168",
+            "title": "An Analytical Formula of Population Gradient for two-layered ReLU network and its Applications in Convergence and Critical Point Analysis"
+        },
+        {
+            "paperId": "6783b727e7de7d6d826e765e48406aacf103e63d",
+            "title": "SGD Learns the Conjugate Kernel Class of the Network"
+        },
+        {
+            "paperId": "fc756b45678ef7ffc1a796de62365013011b659e",
+            "title": "Globally Optimal Gradient Descent for a ConvNet with Gaussian Inputs"
+        },
+        {
+            "paperId": "c18816c09420b1d9a019d5c87abeb32d7e986945",
+            "title": "Convergence Results for Neural Networks via Electrodynamics"
+        },
+        {
+            "paperId": "d9b2cbb244a8c9afc69f7aa518c78d6a8d5aed43",
+            "title": "Follow the Compressed Leader: Faster Online Learning of Eigenvectors and Faster MMWU"
+        },
+        {
+            "paperId": "8fbb115c578e8bfbcc1615bd7af990396abf6776",
+            "title": "Identity Matters in Deep Learning"
+        },
+        {
+            "paperId": "54ddb00fa691728944fd8becea90a373d21597cf",
+            "title": "Understanding deep learning requires rethinking generalization"
+        },
+        {
+            "paperId": "e7c2874f7b5db50a27d79298ee4d051462c1b8a3",
+            "title": "Reliably Learning the ReLU in Polynomial Time"
+        },
+        {
+            "paperId": "8a765725a44b91b60d414551dc555175cfff3cd9",
+            "title": "Gradient Descent Learns Linear Dynamical Systems"
+        },
+        {
+            "paperId": "97616121e0153bdd279630a645751d6616451f30",
+            "title": "No bad local minima: Data independent training error guarantees for multilayer neural networks"
+        },
+        {
+            "paperId": "07925910d45761d96269fc3bdfdc21b1d20d84ad",
+            "title": "Deep Learning without Poor Local Minima"
+        },
+        {
+            "paperId": "1c4e9156ca07705531e45960b7a919dc473abb51",
+            "title": "Wide Residual Networks"
+        },
+        {
+            "paperId": "846aedd869a00c09b40f1f1f35673cb22bc87490",
+            "title": "Mastering the game of Go with deep neural networks and tree search"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "13497bd108d4412d02050e646235f456568cf822",
+            "title": "Deep Speech 2 : End-to-End Speech Recognition in English and Mandarin"
+        },
+        {
+            "paperId": "024006d4c2a89f7acacc6e4438d156525b60a98f",
+            "title": "Continuous control with deep reinforcement learning"
+        },
+        {
+            "paperId": "b92aa7024b87f50737b372e5df31ef091ab54e62",
+            "title": "Training Very Deep Networks"
+        },
+        {
+            "paperId": "707fd08e0e69fa8ccf174891f2215e5df36d5e39",
+            "title": "Complexity theoretic limitations on learning halfspaces"
+        },
+        {
+            "paperId": "4d4d09ae8f6a11547441f7fee36405758102a801",
+            "title": "Qualitatively characterizing neural network optimization problems"
+        },
+        {
+            "paperId": "4c48a4c2f8bbeb6038fa2f8bc7745e8b9a835818",
+            "title": "On the Computational Efficiency of Training Neural Networks"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "44e4a5cfac737066d445b8908eb9bee49d751dbf",
+            "title": "Complexity Theoretic Limitations on Learning DNF's"
+        },
+        {
+            "paperId": "4177ec52d1b80ed57f2e72b0f9a42365f1a8598d",
+            "title": "Speech recognition with deep recurrent neural networks"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "7ce11449adb2f3d822153b173dfd4b30123a268a",
+            "title": "A Variant of Azuma's Inequality for Martingales with Subgaussian Tails"
+        },
+        {
+            "paperId": "7142185fd2e86e922f609562f30820cd7c5af7f4",
+            "title": "Advances in Neural Information Processing Systems (NIPS)"
+        },
+        {
+            "paperId": "df87935cf6b19e62f9949856d2650450b6f6a211",
+            "title": "Cryptographic Hardness for Learning Intersections of Halfspaces"
+        },
+        {
+            "paperId": "10a51873b373c3c38438aa6ff440b11b8af71c7a",
+            "title": "A Robust Gradient Sampling Algorithm for Nonsmooth, Nonconvex Optimization"
+        },
+        {
+            "paperId": "b7cdcf9e42f20c0b053ef70b88d023353668c5a4",
+            "title": "Original Contribution: Training a 3-node neural network is NP-complete"
+        },
+        {
+            "paperId": null,
+            "title": "What Can ResNet Learn Efficiently"
+        },
+        {
+            "paperId": null,
+            "title": "Classification on CIFAR-10/100 and ImageNet with PyTorch, 2018"
+        },
+        {
+            "paperId": null,
+            "title": "An overview of resnet and its variants"
+        },
+        {
+            "paperId": null,
+            "title": "Introductory Lectures on Convex Programming Volume: A Basic course, volume I"
+        },
+        {
+            "paperId": null,
+            "title": "Changes to Section 4. For Lemma 4.1, ignoring subscripts in i for simplicity"
+        },
+        {
+            "paperId": null,
+            "title": "b) The proof of Lemma 4.3b is the same as Lemma 4.3a, except to take \u03b5 -net over all O (cid:0) m L log m (cid:1) - sparse vectors u and then applying union bound"
+        }
+    ]
+}

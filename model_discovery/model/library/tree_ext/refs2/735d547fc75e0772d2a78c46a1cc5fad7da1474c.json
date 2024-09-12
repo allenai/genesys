@@ -1,0 +1,142 @@
+{
+    "paperId": "735d547fc75e0772d2a78c46a1cc5fad7da1474c",
+    "externalIds": {
+        "DBLP": "journals/corr/KaiserB16",
+        "ArXiv": "1610.08613",
+        "MAG": "2545625743",
+        "CorpusId": 11250862
+    },
+    "title": "Can Active Memory Replace Attention?",
+    "abstract": "Several mechanisms to focus attention of a neural network on selected parts of its input or memory have been used successfully in deep learning models in recent years. Attention has improved image classification, image captioning, speech recognition, generative models, and learning algorithmic tasks, but it had probably the largest impact on neural machine translation. Recently, similar improvements have been obtained using alternative mechanisms that do not focus on a single part of a memory but operate on all of it in parallel, in a uniform way. Such mechanism, which we call active memory, improved over attention in algorithmic tasks, image processing, and in generative modelling. So far, however, active memory has not improved over attention for most natural language processing tasks, in particular for machine translation. We analyze this shortcoming in this paper and propose an extended model of active memory that matches existing attention models on neural machine translation and generalizes better to longer sentences. We investigate this model and explain why previous active memory models did not succeed. Finally, we discuss when active memory brings most benefits and where attention can be a better choice.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2016,
+    "referenceCount": 27,
+    "citationCount": 57,
+    "influentialCitationCount": 3,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An extended model of active memory is proposed that matches existing attention models on neural machine translation and generalizes better to longer sentences and discusses when active memory brings most benefits and where attention can be a better choice."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "40527594",
+            "name": "Lukasz Kaiser"
+        },
+        {
+            "authorId": "1751569",
+            "name": "Samy Bengio"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "bda89e0d181eda7e49ea831225eda86d075e111c",
+            "title": "Towards Conceptual Compression"
+        },
+        {
+            "paperId": "aaf08e37bcd0f4624d8eb04f301bfa98b0456641",
+            "title": "Bridging the Gaps Between Residual Learning, Recurrent Neural Networks and Visual Cortex"
+        },
+        {
+            "paperId": "0811597b0851b7ebe21aadce7cb4daac4664b44f",
+            "title": "One-Shot Generalization in Deep Generative Models"
+        },
+        {
+            "paperId": "9c9d7247f8c51ec5a02b0d911d1d7b9e8160495d",
+            "title": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems"
+        },
+        {
+            "paperId": "33108287fbc8d94160787d7b2c7ef249d3ad6437",
+            "title": "Modeling Coverage for Neural Machine Translation"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "5e4eb58d5b47ac1c73f4cf189497170e75ae6237",
+            "title": "Neural GPUs Learn Algorithms"
+        },
+        {
+            "paperId": "4e8930ae948262a89acf2e43c8e8b6e902c312c4",
+            "title": "Variable Rate Image Compression with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "1121ff5cdeaa470521b8dff084ba1424dd613cc1",
+            "title": "Fast Algorithms for Convolutional Neural Networks"
+        },
+        {
+            "paperId": "5b791cd374c7109693aaddee2c12d659ae4e3ec0",
+            "title": "Grid Long Short-Term Memory"
+        },
+        {
+            "paperId": "f9c990b1b5724e50e5632b94fdb7484ece8a6ce7",
+            "title": "Convolutional LSTM Network: A Machine Learning Approach for Precipitation Nowcasting"
+        },
+        {
+            "paperId": "eb5eb891061c78f4fcbc9deb3df8bca7fd005acd",
+            "title": "Encoding Source Language with Convolutional Neural Network for Machine Translation"
+        },
+        {
+            "paperId": "d38e8631bba0720becdaf7b89f79d9f9dca45d82",
+            "title": "Inferring Algorithmic Patterns with Stack-Augmented Recurrent Nets"
+        },
+        {
+            "paperId": "a2785f66c20fbdf30ec26c0931584c6d6a0f4fca",
+            "title": "DRAW: A Recurrent Neural Network For Image Generation"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "47570e7f63e296f224a0e7f9a0d08b0de3cbaf40",
+            "title": "Grammar as a Foreign Language"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "1eb09fecd75eb27825dce4f964b97f4f5cc399d7",
+            "title": "On the Properties of Neural Machine Translation: Encoder\u2013Decoder Approaches"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "944a1cfd79dbfb6fef460360a0765ba790f4027a",
+            "title": "Recurrent Continuous Translation Models"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "6658bbf68995731b2083195054ff45b4eca38b3a",
+            "title": "Context-Dependent Pre-Trained Deep Neural Networks for Large-Vocabulary Speech Recognition"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "4c915c1eecb217c123a36dc6d3ce52d12c742614",
+            "title": "Simple Statistical Gradient-Following Algorithms for Connectionist Reinforcement Learning"
+        }
+    ]
+}

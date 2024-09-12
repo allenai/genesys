@@ -1,0 +1,170 @@
+{
+    "paperId": "a11b243c571ade72c1be5bbb4105b00388174bd6",
+    "externalIds": {
+        "DBLP": "journals/pvldb/PelkonenFCHMTV15",
+        "MAG": "2294581520",
+        "DOI": "10.14778/2824032.2824078",
+        "CorpusId": 14777791
+    },
+    "title": "Gorilla: A Fast, Scalable, In-Memory Time Series Database",
+    "abstract": "Large-scale internet services aim to remain highly available and responsive in the presence of unexpected failures. Providing this service often requires monitoring and analyzing tens of millions of measurements per second across a large number of systems, and one particularly effective solution is to store and query such measurements in a time series database (TSDB). \n \nA key challenge in the design of TSDBs is how to strike the right balance between efficiency, scalability, and reliability. In this paper we introduce Gorilla, Facebook's in-memory TSDB. Our insight is that users of monitoring systems do not place much emphasis on individual data points but rather on aggregate analysis, and recent data points are of much higher value than older points to quickly detect and diagnose the root cause of an ongoing problem. Gorilla optimizes for remaining highly available for writes and reads, even in the face of failures, at the expense of possibly dropping small amounts of data on the write path. To improve query efficiency, we aggressively leverage compression techniques such as delta-of-delta timestamps and XOR'd floating point values to reduce Gorilla's storage footprint by 10x. This allows us to store Gorilla's data in memory, reducing query latency by 73x and improving query throughput by 14x when compared to a traditional database (HBase)-backed time series data. This performance improvement has unlocked new monitoring and debugging tools, such as time series correlation search and more dense visualization tools. Gorilla also gracefully handles failures from a single-node to entire regions with little to no operational overhead.",
+    "venue": "Proceedings of the VLDB Endowment",
+    "year": 2015,
+    "referenceCount": 29,
+    "citationCount": 235,
+    "influentialCitationCount": 25,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Gorilla, Facebook's in-memory TSDB, is introduced and insight is that users of monitoring systems do not place much emphasis on individual data points but rather on aggregate analysis, and recent data points are of much higher value than older points to quickly detect and diagnose the root cause of an ongoing problem."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "47398641",
+            "name": "Tuomas Pelkonen"
+        },
+        {
+            "authorId": "2070724993",
+            "name": "Scott Franklin"
+        },
+        {
+            "authorId": "2096409231",
+            "name": "Paul Cavallaro"
+        },
+        {
+            "authorId": "2226142662",
+            "name": "Qi Huang"
+        },
+        {
+            "authorId": "144606145",
+            "name": "Justin Meza"
+        },
+        {
+            "authorId": "46288749",
+            "name": "J. Teller"
+        },
+        {
+            "authorId": "3199448",
+            "name": "K. Veeraraghavan"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "e6b62fecb0298eafd13a3695f5127d546863f714",
+            "title": "Open data challenges at Facebook"
+        },
+        {
+            "paperId": "da22c51db84ad7358c2b4c34e07360c93ade98c3",
+            "title": "Dynamic Time Warping Averaging of Time Series Allows Faster and More Accurate Classification"
+        },
+        {
+            "paperId": "0bce0735ef3ea01e02b73c98338727d519a71be4",
+            "title": "Scuba: Diving into Data at Facebook"
+        },
+        {
+            "paperId": "28f13ebe8e17fdb4c2500c515759a3ee0c2783ce",
+            "title": "Scaling Memcache at Facebook"
+        },
+        {
+            "paperId": "20ed54badb1fd2bb311815c2eb322f7a959fcddd",
+            "title": "Overview of Time Series Storage and Processing in a Cloud Environment"
+        },
+        {
+            "paperId": "c5a8d4145dc3530d437c93112b790bddb1927b59",
+            "title": "Searching and Mining Trillions of Time Series Subsequences under Dynamic Time Warping"
+        },
+        {
+            "paperId": "deeca28923aaa06202d962e4c43f0f952a7ee76c",
+            "title": "GlusterFS One Storage Server to Rule Them All"
+        },
+        {
+            "paperId": "d034d6057e3a553546fda16a304bc9c7e6e0fb81",
+            "title": "Fast approximate correlation for massive time-series data"
+        },
+        {
+            "paperId": "19a22753a1ef61c2bd19e97961f8ed1b5a073c2c",
+            "title": "Hive - A Warehousing Solution Over a Map-Reduce Framework"
+        },
+        {
+            "paperId": "76aad5b272219c6745c76b7874129797e97e6041",
+            "title": "Paxos made live: an engineering perspective"
+        },
+        {
+            "paperId": "09b71bc8d83e2583319b5bd42838e6c4ffa0bd70",
+            "title": "Fast and Efficient Compression of Floating-Point Data"
+        },
+        {
+            "paperId": "7e8b0ac17f11dcfd13fea4aadf0b86598f3d1d72",
+            "title": "Fast lossless compression of scientific floating-point data"
+        },
+        {
+            "paperId": "781cce0e94dc9d232c805af0573b1baf680472df",
+            "title": "RACE: time series compression with rate adaptivity and error bound for sensor networks"
+        },
+        {
+            "paperId": "d0329d8cdd95a7091c983b36b4e65b98d22182b2",
+            "title": "Towards parameter-free data mining"
+        },
+        {
+            "paperId": "0b7e7de116c012cbe6a508d6424d80a1761c230d",
+            "title": "Visually mining and monitoring massive time series"
+        },
+        {
+            "paperId": "dc710f2ef19c6bec299ef7828506f86708941e36",
+            "title": "A symbolic representation of time series, with implications for streaming algorithms"
+        },
+        {
+            "paperId": "2b82cdcc173e430122f59b1b1963bbe2404efe82",
+            "title": "Capturing sensor-generated time series with quality guarantees"
+        },
+        {
+            "paperId": "7fb7364cf5f9bd48a9dd3a92a5243aae128afc24",
+            "title": "Exact indexing of dynamic time warping"
+        },
+        {
+            "paperId": "9891d654cd4fd53086e9ec939cc38c27a0fc1ffe",
+            "title": "Finding surprising patterns in a time series database in linear time and space"
+        },
+        {
+            "paperId": "728211a7edfe536299670f34714de1b426d969dc",
+            "title": "Locally adaptive dimensionality reduction for indexing large time series databases"
+        },
+        {
+            "paperId": null,
+            "title": "com: InfluxDB -Open Source Time Series, Metrics, and Analytics Database"
+        },
+        {
+            "paperId": "8174e2f946dff9121f9ede714cd8cc15dd9d7630",
+            "title": "Time Series Classification under More Realistic Assumptions"
+        },
+        {
+            "paperId": null,
+            "title": "Facebook\u2019s Large Scale Monitoring System Built on HBase"
+        },
+        {
+            "paperId": "2d31a44f27d86a3acebf78d996a1c14246185d6d",
+            "title": "Keynote speech I"
+        },
+        {
+            "paperId": "02b1103e592fa6bf0499e27f1519692441fad557",
+            "title": "Paxos Made Simple"
+        },
+        {
+            "paperId": "518b70c916e90134bcc5fc112a2f9f2f79e3d798",
+            "title": "VII. Note on regression and inheritance in the case of two parents"
+        },
+        {
+            "paperId": null,
+            "title": "Graphite - Scalable Realtime Graphing"
+        },
+        {
+            "paperId": null,
+            "title": "In\ufb02uxdb."
+        },
+        {
+            "paperId": null,
+            "title": "Learning from Mistakes and Outages"
+        }
+    ]
+}

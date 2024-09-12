@@ -1,0 +1,194 @@
+{
+    "paperId": "e24cdf73b3e7e590c2fe5ecac9ae8aa983801367",
+    "externalIds": {
+        "DBLP": "journals/corr/GilmerSRVD17",
+        "MAG": "2952254971",
+        "ArXiv": "1704.01212",
+        "CorpusId": 9665943
+    },
+    "title": "Neural Message Passing for Quantum Chemistry",
+    "abstract": "Supervised learning on molecules has incredible potential to be useful in chemistry, drug discovery, and materials science. Luckily, several promising and closely related neural network models invariant to molecular symmetries have already been described in the literature. These models learn a message passing algorithm and aggregation procedure to compute a function of their entire input graph. At this point, the next step is to find a particularly effective variant of this general approach and apply it to chemical prediction benchmarks until we either solve them or reach the limits of the approach. In this paper, we reformulate existing models into a single common framework we call Message Passing Neural Networks (MPNNs) and explore additional novel variations within this framework. Using MPNNs we demonstrate state of the art results on an important molecular property prediction benchmark; these results are strong enough that we believe future work should focus on datasets with larger molecules or more accurate ground truth labels.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2017,
+    "referenceCount": 37,
+    "citationCount": 6491,
+    "influentialCitationCount": 748,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Using MPNNs, state of the art results on an important molecular property prediction benchmark are demonstrated and it is believed future work should focus on datasets with larger molecules or more accurate ground truth labels."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2058362",
+            "name": "J. Gilmer"
+        },
+        {
+            "authorId": "2601641",
+            "name": "S. Schoenholz"
+        },
+        {
+            "authorId": "119508204",
+            "name": "Patrick F. Riley"
+        },
+        {
+            "authorId": "1689108",
+            "name": "O. Vinyals"
+        },
+        {
+            "authorId": "35188630",
+            "name": "George E. Dahl"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "7b6cef118b3292d3b46a03a1ef2a4e2777653b4c",
+            "title": "Fast machine learning models of electronic and energetic properties consistently reach approximation errors better than DFT accuracy"
+        },
+        {
+            "paperId": "79baf8cf6be6510f69be8c515516136138678cf5",
+            "title": "The More You Know: Using Knowledge Graphs for Image Classification"
+        },
+        {
+            "paperId": "ae42c0cff384495683192b06bd985cdd7a54632a",
+            "title": "Interaction Networks for Learning about Objects, Relations and Physics"
+        },
+        {
+            "paperId": "28f7cc049f3f4a4db81f0d0a608a4f57636cc35b",
+            "title": "Quantum-chemical insights from deep tensor neural networks"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "36eff562f65125511b5dfab68ce7f7a943c27478",
+            "title": "Semi-Supervised Classification with Graph Convolutional Networks"
+        },
+        {
+            "paperId": "11fac1618c5f70734806e2479bd7a269e7cecb05",
+            "title": "Communication: Understanding molecular representations in machine learning: The role of uniqueness and target similarity."
+        },
+        {
+            "paperId": "c41eb895616e453dcba1a70c9b942c5063cc656c",
+            "title": "Convolutional Neural Networks on Graphs with Fast Localized Spectral Filtering"
+        },
+        {
+            "paperId": "7c6de5a9e02a779e24504619050c6118f4eac181",
+            "title": "Learning Convolutional Neural Networks for Graphs"
+        },
+        {
+            "paperId": "561c3fa53d36405186da9cab02bd68635c3738aa",
+            "title": "Molecular graph convolutions: moving beyond fingerprints"
+        },
+        {
+            "paperId": "d01379ebb53c66a4ccf5f4959d904dcf9e161e41",
+            "title": "Order Matters: Sequence to sequence for sets"
+        },
+        {
+            "paperId": "492f57ee9ceb61fb5a47ad7aebfec1121887a175",
+            "title": "Gated Graph Sequence Neural Networks"
+        },
+        {
+            "paperId": "5d1bfeed240709725c78bc72ea40e55410b373dc",
+            "title": "Convolutional Networks on Graphs for Learning Molecular Fingerprints"
+        },
+        {
+            "paperId": "aa9b433daef865e7b3b1e3704b2b96d64bfaf78b",
+            "title": "A structural approach to relaxation in glassy liquids"
+        },
+        {
+            "paperId": "03956f0d63c1a8a3c9192afc5d05781779858005",
+            "title": "Machine Learning Predictions of Molecular Properties: Accurate Many-Body Potentials and Nonlocality in Chemical Space"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "1eb09fecd75eb27825dce4f964b97f4f5cc399d7",
+            "title": "On the Properties of Neural Machine Translation: Encoder\u2013Decoder Approaches"
+        },
+        {
+            "paperId": "89655dc3c3a794cb25e055aed79424c66301d70f",
+            "title": "Quantum chemistry structures and properties of 134 kilo molecules"
+        },
+        {
+            "paperId": "21a95705872f9ac1b3f82cab052ad6eb1b2f1329",
+            "title": "Readme file: Data description for \"Quantum chemistry structures and properties of 134 kilo molecules\""
+        },
+        {
+            "paperId": "5e925a9f1e20df61d1e860a7aa71894b35a1c186",
+            "title": "Spectral Networks and Locally Connected Networks on Graphs"
+        },
+        {
+            "paperId": "b3e025049142be3d97d559cca12b027f16c6349e",
+            "title": "Deep Architectures and Deep Learning in Chemoinformatics: The Prediction of Aqueous Solubility for Drug-Like Molecules"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "369227538d5f6398a09271c8adadc8e4c19270c6",
+            "title": "Learning Invariant Representations of Molecules for Atomization Energy Prediction"
+        },
+        {
+            "paperId": "4453295600cc89c33f643c8729972fa64aab0233",
+            "title": "Enumeration of 166 Billion Organic Small Molecules in the Chemical Universe Database GDB-17"
+        },
+        {
+            "paperId": "df2a7756382540e92895f10703cec32d50c4f316",
+            "title": "Fast and accurate modeling of molecular atomization energies with machine learning."
+        },
+        {
+            "paperId": "6420a334687d290d77c6b5ec99ca17f9d069df4a",
+            "title": "Extended-Connectivity Fingerprints"
+        },
+        {
+            "paperId": "ec2b2569b3a0d70a5b45d48b041dec9060d85eb7",
+            "title": "Neural Network for Graphs: A Contextual Constructive Approach"
+        },
+        {
+            "paperId": "25a081126295898458fc36caf656f9b770fc5968",
+            "title": "Generalized neural-network representation of high-dimensional potential-energy surfaces."
+        },
+        {
+            "paperId": "20036cd7fac884130f642d3df30b1fd7fb24c6d2",
+            "title": "Automatic Generation of Complementary Descriptors with Molecular Graph Networks"
+        },
+        {
+            "paperId": "37ca60e16838b91809f88467b4a02434bd360838",
+            "title": "Combined first-principles calculation and neural-network correction approach for heat of formation"
+        },
+        {
+            "paperId": "0db0ed4a3df187f422a4c0f1469791a8bfff557b",
+            "title": "Density-functional thermochemistry. III. The role of exact exchange"
+        },
+        {
+            "paperId": "b2dd99981610b8cf90097c1a1d1f326108493c6a",
+            "title": "Computer simulation of local order in condensed phases of silicon."
+        },
+        {
+            "paperId": "1b91abc1cffc258b6b0d83a63af3260427b9be7a",
+            "title": "Inhomogeneous Electron Gas"
+        },
+        {
+            "paperId": "426becf3d36fed65463cb6ce6cb1b114cd806a61",
+            "title": "NEW METHOD FOR CALCULATING THE ONE-PARTICLE GREEN'S FUNCTION WITH APPLICATION TO THE ELECTRON-GAS PROBLEM"
+        },
+        {
+            "paperId": "31868290adf1c000c611dfc966b514d5a34e8d23",
+            "title": "FUNDAMENTAL TECHNOLOGIES IN MODERN SPEECH RECOGNITION Digital Object Identifier 10.1109/MSP.2012.2205597"
+        },
+        {
+            "paperId": "3efd851140aa28e95221b55fcc5659eea97b172d",
+            "title": "The Graph Neural Network Model"
+        },
+        {
+            "paperId": "57152d4581a7b0aadf9404a7adf282c2fbf5e779",
+            "title": "Quantum Monte Carlo"
+        }
+    ]
+}

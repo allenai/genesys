@@ -1,0 +1,146 @@
+{
+    "paperId": "3d28cb8c175323409ab302780a55382a3cf5c2c9",
+    "externalIds": {
+        "DBLP": "conf/coling/HeLND18",
+        "ACL": "C18-1096",
+        "MAG": "2875308690",
+        "CorpusId": 52013036
+    },
+    "title": "Effective Attention Modeling for Aspect-Level Sentiment Classification",
+    "abstract": "Aspect-level sentiment classification aims to determine the sentiment polarity of a review sentence towards an opinion target. A sentence could contain multiple sentiment-target pairs; thus the main challenge of this task is to separate different opinion contexts for different targets. To this end, attention mechanism has played an important role in previous state-of-the-art neural models. The mechanism is able to capture the importance of each context word towards a target by modeling their semantic associations. We build upon this line of research and propose two novel approaches for improving the effectiveness of attention. First, we propose a method for target representation that better captures the semantic meaning of the opinion target. Second, we introduce an attention model that incorporates syntactic information into the attention mechanism. We experiment on attention-based LSTM (Long Short-Term Memory) models using the datasets from SemEval 2014, 2015, and 2016. The experimental results show that the conventional attention-based LSTM can be substantially improved by incorporating the two approaches.",
+    "venue": "International Conference on Computational Linguistics",
+    "year": 2018,
+    "referenceCount": 26,
+    "citationCount": 193,
+    "influentialCitationCount": 15,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a method for target representation that better captures the semantic meaning of the opinion target and introduces an attention model that incorporates syntactic information into the attention mechanism."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "22272507",
+            "name": "Ruidan He"
+        },
+        {
+            "authorId": "1740222",
+            "name": "Wee Sun Lee"
+        },
+        {
+            "authorId": "34789794",
+            "name": "H. Ng"
+        },
+        {
+            "authorId": "1990725",
+            "name": "Daniel Dahlmeier"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "677e0ce81f561a07d1864b18092b669552e9166b",
+            "title": "Exploiting Document Knowledge for Aspect-level Sentiment Classification"
+        },
+        {
+            "paperId": "fb2734de76d9713f97d1156aed4c8eca8fc4d542",
+            "title": "Targeted Aspect-Based Sentiment Analysis via Embedding Commonsense Knowledge into an Attentive LSTM"
+        },
+        {
+            "paperId": "cf3dfce20514078413ea911164c872bf85a4d80a",
+            "title": "Aspect-level Sentiment Classification with HEAT (HiErarchical ATtention) Network"
+        },
+        {
+            "paperId": "8e3a3ba309fe68f5b1d02266a03395332f7d945c",
+            "title": "Recurrent Attention Network on Memory for Aspect Sentiment Analysis"
+        },
+        {
+            "paperId": "3b0e05f72b9b14ba50f3ec2e9059f3284e6a4cbd",
+            "title": "Attention Modeling for Targeted Sentiment"
+        },
+        {
+            "paperId": "82bb306038446302cedd20fa986d20640ed88a2e",
+            "title": "Attention-based LSTM for Aspect-level Sentiment Classification"
+        },
+        {
+            "paperId": "4ff5cdeeed3dfeeea542d463dc2f5ad64fd38281",
+            "title": "Neural Sentiment Classification with User and Product Attention"
+        },
+        {
+            "paperId": "dd7bfb6632612e680cc11b4f8570c96ead12942d",
+            "title": "SemEval-2016 Task 5: Aspect Based Sentiment Analysis"
+        },
+        {
+            "paperId": "b28f7e2996b6ee2784dd2dbb8212cfa0c79ba9e7",
+            "title": "Aspect Level Sentiment Classification with Deep Memory Network"
+        },
+        {
+            "paperId": "688d8718e662d931d8c0ab1bfd03314c2ba711af",
+            "title": "Gated Neural Networks for Targeted Sentiment Analysis"
+        },
+        {
+            "paperId": "0b0dc14b8a8dcccbfc62a38355fff2f6a361e9d2",
+            "title": "Effective LSTMs for Target-Dependent Sentiment Classification"
+        },
+        {
+            "paperId": "d797300a5d614ffa1b5b0a7620a4bcfaa85ba305",
+            "title": "PhraseRNN: Phrase Recursive Neural Network for Aspect-based Sentiment Analysis"
+        },
+        {
+            "paperId": "e5a241df2f4bc8dca3763131571a2145d139f426",
+            "title": "Target-Dependent Twitter Sentiment Classification with Rich Automatic Features"
+        },
+        {
+            "paperId": "4e1c3d61ae3135a9f040125b787b2f145be5beb9",
+            "title": "SemEval-2015 Task 12: Aspect Based Sentiment Analysis"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "e88500eceea7b08bf80afbd23e8342c37d52c964",
+            "title": "DCU: Aspect-based Polarity Classification for SemEval Task 4"
+        },
+        {
+            "paperId": "67f5a7870bf8246eb313340a02f30e03cb7d87eb",
+            "title": "NRC-Canada-2014: Detecting Aspects and Sentiment in Customer Reviews"
+        },
+        {
+            "paperId": "2ff4b9ca75a37cec1607f1f49333b948b1c8d08b",
+            "title": "SemEval-2014 Task 4: Aspect Based Sentiment Analysis"
+        },
+        {
+            "paperId": "06e122f475a21d92dba137609c40f35690217475",
+            "title": "Adaptive Recursive Neural Network for Target-dependent Twitter Sentiment Classification"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "7ba9dcbd2e9163f2684b098786bbc3abb4784905",
+            "title": "Target-dependent Twitter Sentiment Classification"
+        },
+        {
+            "paperId": "462754e479123ef2167c3946fd4cd04a242c2767",
+            "title": "A machine learning approach to sentiment analysis in multilingual Web texts"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "297d01ff6731c3bd917ede3d378c94cb84650e8f",
+            "title": "Opinion Mining and Sentiment Analysis"
+        },
+        {
+            "paperId": "c9faf8c7c8e1f13b7a14a86b57c6432c4fd953eb",
+            "title": "An Unsupervised Neural Attention Model for Aspect Extraction"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        }
+    ]
+}

@@ -1,0 +1,157 @@
+{
+    "paperId": "e2080a3ee52ce4d1239da1b67fe0405f2cfe8d6d",
+    "externalIds": {
+        "ACL": "D08-1046",
+        "MAG": "2102448616",
+        "DOI": "10.3115/1613715.1613771",
+        "CorpusId": 7685502
+    },
+    "title": "Legal Docket Classification: Where Machine Learning Stumbles",
+    "abstract": "We investigate the problem of binary text classification in the domain of legal docket entries. This work presents an illustrative instance of a domain-specific problem where the state-of-the-art Machine Learning (ML) classifiers such as SVMs are inadequate. Our investigation into the reasons for the failure of these classifiers revealed two types of prominent errors which we call conjunctive and disjunctive errors. We developed simple heuristics to address one of these error types and improve the performance of the SVMs. Based on the intuition gained from our experiments, we also developed a simple propositional logic based classifier using hand-labeled features, that addresses both types of errors simultaneously. We show that this new, but simple, approach outperforms all existing state-of-the-art ML models, with statistically significant gains. We hope this work serves as a motivating example of the need to build more expressive classifiers beyond the standard model classes, and to address text classification problems in such non-traditional domains.",
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2008,
+    "referenceCount": 30,
+    "citationCount": 34,
+    "influentialCitationCount": 2,
+    "openAccessPdf": {
+        "url": "http://dl.acm.org/ft_gateway.cfm?id=1613771&type=pdf",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A simple propositional logic based classifier using hand-labeled features, that addresses both types of errors simultaneously and outperforms all existing state-of-the-art ML models, with statistically significant gains is developed."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1701451",
+            "name": "Ramesh Nallapati"
+        },
+        {
+            "authorId": "144783904",
+            "name": "Christopher D. Manning"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "d40db65f6cab8ef88f0bc5092c601b86535c19b8",
+            "title": "Learning from labeled features using generalized expectation criteria"
+        },
+        {
+            "paperId": "7f6e64c1a6a4f9d0b5448436d1f6784262e2eb6e",
+            "title": "Active Learning with Feedback on Features and Instances"
+        },
+        {
+            "paperId": "4cd2ffebffd60708fb958c82b5fc72813fb9a1dd",
+            "title": "Incorporating prior knowledge with weighted margin support vector machines"
+        },
+        {
+            "paperId": "a5000120bac6a3fabb875ce5d05af400d699b571",
+            "title": "Distributional Word Clusters vs. Words for Text Categorization"
+        },
+        {
+            "paperId": "d49bfad00101a03ac3e964bea3717c75a5bb3210",
+            "title": "Text Categorization Based on Regularized Linear Classification Methods"
+        },
+        {
+            "paperId": "a351ffd1634b0930bd51ff225a8836e540269947",
+            "title": "Text Categorization with Support Vector Machines: Learning with Many Relevant Features"
+        },
+        {
+            "paperId": "43015e9790c812bdc25bf0539b2ee4055a1882a7",
+            "title": "A re-examination of text categorization methods"
+        },
+        {
+            "paperId": "76d145db690532cf5df577c97632ae768a28c929",
+            "title": "Inductive Logic Programming: 6th International Workshop, ILP-96, Stockholm, Sweden, August 26-28, 1996, Selected Papers"
+        },
+        {
+            "paperId": "c3ebcef26c22a373b6f26a67934213eb0582804e",
+            "title": "A Comparative Study on Feature Selection in Text Categorization"
+        },
+        {
+            "paperId": "9257779eed46107bcdce9f4dc86298572ff466ce",
+            "title": "Automated learning of decision rules for text categorization"
+        },
+        {
+            "paperId": "f2cf9ae81b38f7637899f19274226e623f9b153b",
+            "title": "FOIL: A Midterm Report"
+        },
+        {
+            "paperId": "e798233a6ab6f6d4b567e274f4a6ec708e119bd4",
+            "title": "A Comparison"
+        },
+        {
+            "paperId": "3a923a81a8f5069d50f827c22abe4546385603b4",
+            "title": "Inductive learning algorithms and representations for text categorization"
+        },
+        {
+            "paperId": "90e88c8d0588d34aeea2e21245eed8bc8075ee2a",
+            "title": "Distributional Word Clusters vs"
+        },
+        {
+            "paperId": "04ce064505b1635583fa0d9cc07cac7e9ea993cc",
+            "title": "A comparison of event models for naive bayes text classification"
+        },
+        {
+            "paperId": "e9fd1a7ae0322d417ab2d32017e373dd50efc063",
+            "title": "A comparison of two learning algorithms for text categorization"
+        },
+        {
+            "paperId": null,
+            "title": "ORDER denying [36-1] motion for summary judgment on dfts Ranbaxy invalidity defenses by pltfs"
+        },
+        {
+            "paperId": null,
+            "title": "ORDER by Judge Claudia Wilken denying plaintiff\u2019s motion to shorten time on motion to vacate portions of Court\u2019s order on cross-motion for summary judgment on patent issues [695-1] [697-1]"
+        },
+        {
+            "paperId": null,
+            "title": "ORDER GRANTING IN PART PLTF S/J MOT; GRANTING IN PART PLTF MOT/CLARIFY; GRANTING DEFT MOT/CLARIFY; PRTL S/J STAYED"
+        },
+        {
+            "paperId": null,
+            "title": "ORDER re 78 MOTION to Amend/Correct Motion for Summary Judgment and supporting documents, \ufb01led by Defendant"
+        },
+        {
+            "paperId": null,
+            "title": "ORDER by Judge William Alsup denying in part 12 Motion to Consolidate Cases except as to one issue, granting in part for collateral estoppel 20"
+        },
+        {
+            "paperId": null,
+            "title": "Order denying as moot motion for summary judgment"
+        },
+        {
+            "paperId": null,
+            "title": "ORDER - denying w/out prejudice 17 Motion for Summary Judgment, denying w/out prejudice 49 Motion to Amend/Correct . Signed by Judge Kent A. Jordan on 1/23/06"
+        },
+        {
+            "paperId": null,
+            "title": "Order granting 53 Motion to Amend/Correct the deadline for \ufb01ling summary"
+        },
+        {
+            "paperId": null,
+            "title": "ORDER by Chief Judge Joe B. McDade"
+        },
+        {
+            "paperId": null,
+            "title": "ORDER by Judge Claudia Wilken DENYING motion for an order certifying for immediate appeal portions of the courts\u2019 2/6/03 order granting in part plaintiff\u2019s"
+        },
+        {
+            "paperId": null,
+            "title": "ORDER ( Chief Mag. Judge Jonathan G. Lebedoff / 9/11/02) that the court grants Andersen\u2019s motion and orders that Andersen be allowed to bring its motions for summary judgment"
+        },
+        {
+            "paperId": null,
+            "title": "ORDER GRANTING DEFT. MOTION FOR S/J AND DENYING PLTF. MOTIONS FOR S/J AND TO SUP-PLEMENT"
+        },
+        {
+            "paperId": null,
+            "title": "ORDER by Judge Susan J. Dlott denying motion to strike declaration of H Bradley Hammond attached to mem-orandum in opposition to motion for partial summary judgment as to liability"
+        },
+        {
+            "paperId": null,
+            "title": "Table 2: Order: re Summary Judgment: positive and negative docket entries. The entries are reproduced as they are"
+        }
+    ]
+}

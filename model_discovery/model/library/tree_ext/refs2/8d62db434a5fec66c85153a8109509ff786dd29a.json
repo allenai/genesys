@@ -1,0 +1,127 @@
+{
+    "paperId": "8d62db434a5fec66c85153a8109509ff786dd29a",
+    "externalIds": {
+        "CorpusId": 12418559
+    },
+    "title": "Deep Learning on Point Sets for 3 D Classification and Segmentation",
+    "abstract": "Point cloud is an important type of geometric data structure. Due to its irregular format, most researchers transform such data to regular 3D voxel grids or collections of images. This, however, renders data unnecessarily voluminous and causes issues. In this paper, we design a novel type of neural network that directly consumes point clouds and well respects the permutation invariance of points in the input. Our network, named PointNet, provides a unified architecture for applications ranging from object classification, part segmentation, to scene semantic parsing. Though simple, PointNet is highly efficient and effective. Empirically, it shows strong performance on par or even better than state of the art. We also provide analysis towards understanding of what the network has learnt and why the network is robust with respect to input perturbation and corruption.",
+    "venue": "",
+    "year": 2016,
+    "referenceCount": 25,
+    "citationCount": 834,
+    "influentialCitationCount": 37,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper designs a novel type of neural network that directly consumes point clouds and well respects the permutation invariance of points in the input, and provides a unified architecture for applications ranging from object classification, part segmentation, to scene semantic parsing."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "144329939",
+            "name": "C. Qi"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "729d5c7dc6bfb32e47b5bd24cdb01ccaaf62bba5",
+            "title": "A scalable active framework for region annotation in 3D shape collections"
+        },
+        {
+            "paperId": "dc3f8c8513441915408ab0549e9ac5f2f2f31eec",
+            "title": "3D Semantic Parsing of Large-Scale Indoor Spaces"
+        },
+        {
+            "paperId": "15ca7adccf5cd4dc309cdcaa6328f4c429ead337",
+            "title": "FPNN: Field Probing Neural Networks for 3D Data"
+        },
+        {
+            "paperId": "4cdcf2ae5e1fafebd9b3613247a7b1962584da34",
+            "title": "Volumetric and Multi-view CNNs for Object Classification on 3D Data"
+        },
+        {
+            "paperId": "681bfa1afd80b8210938706cd88a6a0dc02d238d",
+            "title": "3D Mesh Labeling via Deep Convolutional Neural Networks"
+        },
+        {
+            "paperId": "d01379ebb53c66a4ccf5f4959d904dcf9e161e41",
+            "title": "Order Matters: Sequence to sequence for sets"
+        },
+        {
+            "paperId": "3f1c6749edfaf4f89bac38b2d15a0493bd9aa253",
+            "title": "VoxNet: A 3D Convolutional Neural Network for real-time object recognition"
+        },
+        {
+            "paperId": "8154027ed2e0c1772b54e79c40d30ae9ee468331",
+            "title": "Voting for Voting in Online Point Cloud Object Detection"
+        },
+        {
+            "paperId": "170cfe612cc064d8b07626df307e546498c2dc94",
+            "title": "3D deep shape descriptor"
+        },
+        {
+            "paperId": "dbb6ded623159c867fbeca0772db7b2eb9489523",
+            "title": "Spatial Transformer Networks"
+        },
+        {
+            "paperId": "1ba8376f416e90fe434977ae9f300997667498d2",
+            "title": "Multi-view Convolutional Neural Networks for 3D Shape Recognition"
+        },
+        {
+            "paperId": "a743115795375666593919cbd48590213c229ae9",
+            "title": "Geodesic Convolutional Neural Networks on Riemannian Manifolds"
+        },
+        {
+            "paperId": "7c8a51d04522496c43db68f2582efd45eaf59fea",
+            "title": "3D ShapeNets: A deep representation for volumetric shapes"
+        },
+        {
+            "paperId": "2261eb4866d2a65ac94e416c37d0a27a86e07c48",
+            "title": "Interactive shape co-segmentation via label propagation"
+        },
+        {
+            "paperId": "5e925a9f1e20df61d1e860a7aa71894b35a1c186",
+            "title": "Spectral Networks and Locally Connected Networks on Graphs"
+        },
+        {
+            "paperId": "955635d7179484f106f584c3d5766dee0cfa45db",
+            "title": "The wave kernel signature: A quantum mechanical approach to shape analysis"
+        },
+        {
+            "paperId": "a31f548fde2f1622bb5040048c160c93417fb0dd",
+            "title": "BlenSor: Blender Sensor Simulation Toolbox"
+        },
+        {
+            "paperId": "2ec6dd508e48231fcbe9c11c7e18790b0dee8b26",
+            "title": "Scale-invariant heat kernel signatures for non-rigid shape recognition"
+        },
+        {
+            "paperId": "940dd2fa074ad97d5e8efa7e867b1f4460cfb8d5",
+            "title": "Fast Point Feature Histograms (FPFH) for 3D registration"
+        },
+        {
+            "paperId": "aef7f3c512cd9f96a2108b96a717d6d64882e187",
+            "title": "Aligning point cloud views using persistent feature histograms"
+        },
+        {
+            "paperId": "c9bb27a60b6c2555a4c01c4c0b8808f1e3625403",
+            "title": "Shape Classification Using the Inner-Distance"
+        },
+        {
+            "paperId": "dc01194dca94f0cde2f98caa93f9740d7cbd1642",
+            "title": "On Visual Similarity Based 3D Model Retrieval"
+        },
+        {
+            "paperId": "da275dcffd835ddfd41fd73ea147c767c605d3f0",
+            "title": "Rotation Invariant Spherical Harmonic Representation of 3D Shape Descriptors"
+        },
+        {
+            "paperId": "df6c0c55864252090b4099237aa821a6c75b52c2",
+            "title": "Using Spin Images for Efficient Object Recognition in Cluttered 3D Scenes"
+        },
+        {
+            "paperId": "3215222470768a73cd3b7d2fe89a9496d5518a5e",
+            "title": "Eurographics Symposium on Geometry Processing 2009 a Concise and Provably Informative Multi-scale Signature Based on Heat Diffusion"
+        }
+    ]
+}

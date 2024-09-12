@@ -1,0 +1,215 @@
+{
+    "paperId": "bb567cf793a6c4df1a652489c5ce866fe044f0e5",
+    "externalIds": {
+        "MAG": "2952748757",
+        "ArXiv": "1711.05345",
+        "ACL": "N18-1143",
+        "DBLP": "conf/naacl/ChungLG18",
+        "DOI": "10.18653/v1/N18-1143",
+        "CorpusId": 3453374
+    },
+    "title": "Supervised and Unsupervised Transfer Learning for Question Answering",
+    "abstract": "Although transfer learning has been shown to be successful for tasks like object and speech recognition, its applicability to question answering (QA) has yet to be well-studied. In this paper, we conduct extensive experiments to investigate the transferability of knowledge learned from a source QA dataset to a target dataset using two QA models. The performance of both models on a TOEFL listening comprehension test (Tseng et al., 2016) and MCTest (Richardson et al., 2013) is significantly improved via a simple transfer learning technique from MovieQA (Tapaswi et al., 2016). In particular, one of the models achieves the state-of-the-art on all target datasets; for the TOEFL listening comprehension test, it outperforms the previous best model by 7%. Finally, we show that transfer learning is helpful even in unsupervised scenarios when correct answers for target QA dataset examples are not available.",
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2017,
+    "referenceCount": 43,
+    "citationCount": 82,
+    "influentialCitationCount": 4,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/N18-1143.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The performance of both models on a TOEFL listening comprehension test and MCTest is significantly improved via a simple transfer learning technique from MovieQA, which achieves the state-of-the-art on all target datasets."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2815804",
+            "name": "Yu-An Chung"
+        },
+        {
+            "authorId": "1706104",
+            "name": "Hung-yi Lee"
+        },
+        {
+            "authorId": "145898106",
+            "name": "James R. Glass"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "083ec74cc10f96fbb64322ba23450666fd4df6cd",
+            "title": "Speech2Vec: A Sequence-to-Sequence Framework for Learning Word Embeddings from Speech"
+        },
+        {
+            "paperId": "18833f315d7985337abddc2fc52ee24ab592a300",
+            "title": "Learning Word Embeddings from Speech"
+        },
+        {
+            "paperId": "fa634836c057a34a4b5eb94624757ab262837bc6",
+            "title": "Query-based Attention CNN for Text Similarity Map"
+        },
+        {
+            "paperId": "be60cdc4f3202f44afdfb90bff005e3005dacf9a",
+            "title": "Two-Stage Synthesis Networks for Transfer Learning in Machine Comprehension"
+        },
+        {
+            "paperId": "4c16a6fd7b4aad8c1331e4753b30701fdf6d12f4",
+            "title": "Neural Domain Adaptation for Biomedical Question Answering"
+        },
+        {
+            "paperId": "bb1087e8dee2039f773c381a3449a1c382482da6",
+            "title": "Question Answering through Transfer Learning from Large Fine-grained Supervision Data"
+        },
+        {
+            "paperId": "4668d812461a4878a0ca61ee8d5564d5b4a025de",
+            "title": "Aspect-augmented Adversarial Networks for Domain Adaptation"
+        },
+        {
+            "paperId": "9f4d7d622d1f7319cc511bfef661cd973e881a4c",
+            "title": "Knowing When to Look: Adaptive Attention via a Visual Sentinel for Image Captioning"
+        },
+        {
+            "paperId": "3eda43078ae1f4741f09be08c4ecab6229046a5c",
+            "title": "NewsQA: A Machine Comprehension Dataset"
+        },
+        {
+            "paperId": "189e6bb7523733c4e524214b9e6ae92d4ed50dac",
+            "title": "Transfer Learning for Sequence Tagging with Hierarchical Recurrent Networks"
+        },
+        {
+            "paperId": "725121df4cbab88ee214b30a882e4122d11b170e",
+            "title": "Hierarchical attention model for improved machine comprehension of spoken content"
+        },
+        {
+            "paperId": "21633a4ef076e21ec116856a003efb1bb033a470",
+            "title": "Towards Machine Comprehension of Spoken Content: Initial TOEFL Listening Comprehension Test by Machine"
+        },
+        {
+            "paperId": "05dd7254b632376973f3a1b4d39485da17814df5",
+            "title": "SQuAD: 100,000+ Questions for Machine Comprehension of Text"
+        },
+        {
+            "paperId": "12f7de07f9b00315418e381b2bd797d21f12b419",
+            "title": "Multimodal Compact Bilinear Pooling for Visual Question Answering and Visual Grounding"
+        },
+        {
+            "paperId": "46147f08468e873ff90d1d51e65493f262c7bb57",
+            "title": "A Parallel-Hierarchical Model for Machine Comprehension on Sparse Data"
+        },
+        {
+            "paperId": "f21b36a5cfba94bbc6ed5c3642e1e46057deccaf",
+            "title": "How Transferable are Neural Networks in NLP Applications?"
+        },
+        {
+            "paperId": "a5c7e4f9600952996cc3dfeca58ce2176bee6360",
+            "title": "Audio Word2Vec: Unsupervised Learning of Audio Segment Representations Using Sequence-to-Sequence Autoencoder"
+        },
+        {
+            "paperId": "1bdd75a37f7c601f01e9d31c2551fa9f2067ffd7",
+            "title": "MovieQA: Understanding Stories in Movies through Question-Answering"
+        },
+        {
+            "paperId": "1cf6bc0866226c1f8e282463adc8b75d92fba9bb",
+            "title": "Ask, Attend and Answer: Exploring Question-Guided Spatial Attention for Visual Question Answering"
+        },
+        {
+            "paperId": "2c1890864c1c2b750f48316dc8b650ba4772adc5",
+            "title": "Stacked Attention Networks for Image Question Answering"
+        },
+        {
+            "paperId": "f53e2ae46470b89cd1ce6e3bf1d60d9c59722ce1",
+            "title": "WikiQA: A Challenge Dataset for Open-Domain Question Answering"
+        },
+        {
+            "paperId": "2ab526fc94b8abc77e0b4543c9bc5200a70cb585",
+            "title": "Data-selective transfer learning for multi-domain speech recognition"
+        },
+        {
+            "paperId": "999f0acfac28215db2e4c69ff42711fd4f56511d",
+            "title": "Machine Comprehension with Syntax, Frames, and Semantics"
+        },
+        {
+            "paperId": "97ad70a9fa3f99adf18030e5e38ebe3d90daa2db",
+            "title": "VQA: Visual Question Answering"
+        },
+        {
+            "paperId": "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e",
+            "title": "End-To-End Memory Networks"
+        },
+        {
+            "paperId": "abb33d75dc297993fcc3fb75e0f4498f413eb4f6",
+            "title": "Towards AI-Complete Question Answering: A Set of Prerequisite Toy Tasks"
+        },
+        {
+            "paperId": "55e022fb7581bb9e1fce678d21fb25ffbb3fbb88",
+            "title": "Deep visual-semantic alignments for generating image descriptions"
+        },
+        {
+            "paperId": "15f102c3c9f4d4fe6ba105e221df48c6e8902b3b",
+            "title": "From captions to visual concepts and back"
+        },
+        {
+            "paperId": "081651b38ff7533550a3adfc1c00da333a8fe86c",
+            "title": "How transferable are features in deep neural networks?"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "6270baedeba28001cd1b563a199335720d6e0fe0",
+            "title": "CNN Features Off-the-Shelf: An Astounding Baseline for Recognition"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "564257469fa44cdb57e4272f85253efb9acfd69d",
+            "title": "MCTest: A Challenge Dataset for the Open-Domain Machine Comprehension of Text"
+        },
+        {
+            "paperId": "0a7c4cec908ca18f76f5101578a2496a2dceb5e7",
+            "title": "Cross-language knowledge transfer using multilingual deep neural network with shared hidden layers"
+        },
+        {
+            "paperId": "66fb4d1cd549673450756b05d994f5f260de7db4",
+            "title": "Unsupervised domain adaptation for spoken document summarization with structured support vector machine"
+        },
+        {
+            "paperId": "aba3a2964d05a026c175efb4fa433f216088abc9",
+            "title": "Constrained discriminative mapping transforms for unsupervised speaker adaptation"
+        },
+        {
+            "paperId": "1cf53c62906a48b9d607f94468bf777855199a28",
+            "title": "Domain Adaptation of Rule-Based Annotators for Named-Entity Recognition Tasks"
+        },
+        {
+            "paperId": "a25fbcbbae1e8f79c4360d26aa11a3abf1a11972",
+            "title": "A Survey on Transfer Learning"
+        },
+        {
+            "paperId": "9a222218041f07dd63d0e8c34b0402a88d50c463",
+            "title": "Automatic Domain Adaptation for Parsing"
+        },
+        {
+            "paperId": "caea768e2b58a959363c968b1903513c70af6146",
+            "title": "Unsupervised speaker adaptation for telephone call transcription"
+        },
+        {
+            "paperId": "7d060fc04306580d8693e1335caf4c37ad83357b",
+            "title": "Sphinx-4: a flexible open source framework for speech recognition"
+        },
+        {
+            "paperId": "f09fc5c026d9b824338685f20754bebdfe198802",
+            "title": "From Particular to General: A Preliminary Case Study of Transfer Learning in Reading Comprehension"
+        }
+    ]
+}

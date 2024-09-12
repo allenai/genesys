@@ -1,0 +1,118 @@
+{
+    "paperId": "53bfec9b34e40000d9f2174c8ac6191087fe4d57",
+    "externalIds": {
+        "MAG": "2963097630",
+        "DBLP": "journals/corr/abs-1709-02540",
+        "ArXiv": "1709.02540",
+        "CorpusId": 3235741
+    },
+    "title": "The Expressive Power of Neural Networks: A View from the Width",
+    "abstract": "The expressive power of neural networks is important for understanding deep learning. Most existing works consider this problem from the view of the depth of a network. In this paper, we study how width affects the expressiveness of neural networks. Classical results state that depth-bounded (e.g. depth-$2$) networks with suitable activation functions are universal approximators. We show a universal approximation theorem for width-bounded ReLU networks: width-$(n+4)$ ReLU networks, where $n$ is the input dimension, are universal approximators. Moreover, except for a measure zero set, all functions cannot be approximated by width-$n$ ReLU networks, which exhibits a phase transition. Several recent works demonstrate the benefits of depth by proving the depth-efficiency of neural networks. That is, there are classes of deep networks which cannot be realized by any shallow network whose size is no more than an exponential bound. Here we pose the dual question on the width-efficiency of ReLU networks: Are there wide networks that cannot be realized by narrow networks whose size is not substantially larger? We show that there exist classes of wide networks which cannot be realized by any narrow network whose depth is no more than a polynomial bound. On the other hand, we demonstrate by extensive experiments that narrow networks whose size exceed the polynomial bound by a constant factor can approximate wide and shallow network with high accuracy. Our results provide more comprehensive evidence that depth is more effective than width for the expressiveness of ReLU networks.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2017,
+    "referenceCount": 18,
+    "citationCount": 805,
+    "influentialCitationCount": 33,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that there exist classes of wide networks which cannot be realized by any narrow network whose depth is no more than a polynomial bound, and that narrow networks whose size exceed the polynometric bound by a constant factor can approximate wide and shallow network with high accuracy."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2110248966",
+            "name": "Zhou Lu"
+        },
+        {
+            "authorId": "32471978",
+            "name": "Hongming Pu"
+        },
+        {
+            "authorId": "9112744",
+            "name": "Feicheng Wang"
+        },
+        {
+            "authorId": null,
+            "name": "Zhiqiang Hu"
+        },
+        {
+            "authorId": "24952249",
+            "name": "Liwei Wang"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "feb6e2d46ce707094b24f5ace9456aa0aff3119e",
+            "title": "The Loss Surface of Deep and Wide Neural Networks"
+        },
+        {
+            "paperId": "8edbd132765e72f5887b7ef8c38624f31dd53a77",
+            "title": "Nearly-tight VC-dimension bounds for piecewise linear neural networks"
+        },
+        {
+            "paperId": "87524c2bb725f967b7fac73442d6412b43d422d1",
+            "title": "Why Deep Neural Networks for Function Approximation?"
+        },
+        {
+            "paperId": "4d74c808f5720eb9eb312f7be85be03bd7207071",
+            "title": "Error bounds for approximations with deep ReLU networks"
+        },
+        {
+            "paperId": "4206c84525a7904df3613b843491c0ae6a5507eb",
+            "title": "Benefits of Depth in Neural Networks"
+        },
+        {
+            "paperId": "a9da71715d54e33959751c88bb69a5875a23e324",
+            "title": "The Power of Depth for Feedforward Neural Networks"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "325e51cdb065666f3c9e21e70a823bbe33fefae7",
+            "title": "On the Expressive Power of Deep Learning: A Tensor Analysis"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "4b4d7ff8192c3862379f6ee58ad1fa0ec3de3937",
+            "title": "Shallow vs. Deep Sum-Product Networks"
+        },
+        {
+            "paperId": "f22f6972e66bdd2e769fa64b0df0a13063c0c101",
+            "title": "Multilayer feedforward networks are universal approximators"
+        },
+        {
+            "paperId": "386cbc45ceb59a7abb844b5078e5c944f17723b4",
+            "title": "On the approximate realization of continuous mappings by neural networks"
+        },
+        {
+            "paperId": null,
+            "title": "Reed , Dragomir Anguelov , Dumitru Erhan , Vincent Vanhoucke , and Andrew Rabinovich . Going deeper with convolutions . CoRR , abs / 1409"
+        },
+        {
+            "paperId": "722c52711a8014694d68839f0ffc52ba8f7fc621",
+            "title": "Approximation and estimation bounds for artificial neural networks"
+        },
+        {
+            "paperId": "21e82ed12c620fba1f5ee42162962aae74a23510",
+            "title": "Approximation by superpositions of a sigmoidal function"
+        },
+        {
+            "paperId": null,
+            "title": "Recognition. CoRR 1409.1556 Christian Szegedy et al.Going Deeper with Convolutions. CoRR 1409.4842 Matus Telgarsky.Bene\ufb01ts of depth in neural networks."
+        }
+    ]
+}

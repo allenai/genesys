@@ -1,0 +1,227 @@
+{
+    "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+    "externalIds": {
+        "MAG": "2064675550",
+        "DBLP": "journals/neco/HochreiterS97",
+        "DOI": "10.1162/neco.1997.9.8.1735",
+        "CorpusId": 1915014,
+        "PubMed": "9377276"
+    },
+    "title": "Long Short-Term Memory",
+    "abstract": "Learning to store information over extended time intervals by recurrent backpropagation takes a very long time, mostly because of insufficient, decaying error backflow. We briefly review Hochreiter's (1991) analysis of this problem, then address it by introducing a novel, efficient, gradient based method called long short-term memory (LSTM). Truncating the gradient where this does not do harm, LSTM can learn to bridge minimal time lags in excess of 1000 discrete-time steps by enforcing constant error flow through constant error carousels within special units. Multiplicative gate units learn to open and close access to the constant error flow. LSTM is local in space and time; its computational complexity per time step and weight is O. 1. Our experiments with artificial data involve local, distributed, real-valued, and noisy pattern representations. In comparisons with real-time recurrent learning, back propagation through time, recurrent cascade correlation, Elman nets, and neural sequence chunking, LSTM leads to many more successful runs, and learns much faster. LSTM also solves complex, artificial long-time-lag tasks that have never been solved by previous recurrent network algorithms.",
+    "venue": "Neural Computation",
+    "year": 1997,
+    "referenceCount": 48,
+    "citationCount": 80310,
+    "influentialCitationCount": 9240,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel, efficient, gradient based method called long short-term memory (LSTM) is introduced, which can learn to bridge minimal time lags in excess of 1000 discrete-time steps by enforcing constant error flow through constant error carousels within special units."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3308557",
+            "name": "Sepp Hochreiter"
+        },
+        {
+            "authorId": "145341374",
+            "name": "J. Schmidhuber"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "b158a006bebb619e2ea7bf0a22c27d45c5d19004",
+            "title": "LSTM can Solve Hard Long Time Lag Problems"
+        },
+        {
+            "paperId": "f6e91c9e7e8f8a577a98ecfcfa998212a683195a",
+            "title": "Learning long-term dependencies in NARX recurrent neural networks"
+        },
+        {
+            "paperId": "762031682309e0124b2811ee05a798860dde82d1",
+            "title": "Guessing can Outperform Many Long Time Lag Algorithms"
+        },
+        {
+            "paperId": "32e97eef94beacace020e79322cef0e1e5a76ee0",
+            "title": "Gradient calculations for dynamic recurrent neural networks: a survey"
+        },
+        {
+            "paperId": "063fe6ed19c0204d55bde174483c5a93eb4819c0",
+            "title": "Learning long-term dependencies is not as difficult with NARX recurrent neural networks"
+        },
+        {
+            "paperId": "d0be39ee052d246ae99c082a565aba25b811be2d",
+            "title": "Learning long-term dependencies with gradient descent is difficult"
+        },
+        {
+            "paperId": "0e63335010c6d3a56ffba62595118447ff9e8734",
+            "title": "Neurocontrol of nonlinear dynamical systems with Kalman filter trained recurrent networks"
+        },
+        {
+            "paperId": "13369d124474b5f8dcbc70d12296a185832192b2",
+            "title": "Credit Assignment through Time: Alternatives to Backpropagation"
+        },
+        {
+            "paperId": "34f8c5769899dfd9450bb13c3f52c18c88444515",
+            "title": "Experimental Comparison of the Effect of Order in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "b1ae0fb208fd389d2ff723e5442f9ca7896cb0a4",
+            "title": "Time Warping Invariant Neural Networks"
+        },
+        {
+            "paperId": "ebf62950d733a4a8f9ecd8d3752dee8d13fc8e6d",
+            "title": "Holographic Recurrent Networks"
+        },
+        {
+            "paperId": "d0dd604b2b29bbc0adee2b71bbabca5d5ad3cd54",
+            "title": "Learning Sequential Tasks by Incrementally Adding Higher Orders"
+        },
+        {
+            "paperId": "f55e5107f756e29f1e6ac6109dc44d698d6301fb",
+            "title": "Bifurcations in the learning of recurrent neural networks"
+        },
+        {
+            "paperId": "a64ca771a733d58dcbf8f7a3fe65a09310424bf8",
+            "title": "Induction of Finite-State Languages Using Second-Order Recurrent Networks"
+        },
+        {
+            "paperId": "50c770b425a5bb25c77387f687a9910a9d130722",
+            "title": "Learning Complex, Extended Sequences Using the Principle of History Compression"
+        },
+        {
+            "paperId": "89b9a181801f32bf62c4237c4265ba036a79f9dc",
+            "title": "A Fixed Size Storage O(n3) Time Complexity Learning Algorithm for Fully Recurrent Continually Running Networks"
+        },
+        {
+            "paperId": "e141d68065ce638f9fc4f006eab2f66711e89768",
+            "title": "Induction of Multiscale Temporal Structure"
+        },
+        {
+            "paperId": "2f7c4048a03281e976f28d35c2f9fef3a58346e6",
+            "title": "Learning Unambiguous Reduced Sequence Descriptions"
+        },
+        {
+            "paperId": "9b7861d28f653ead3e02f1ae5c07540b2d07346d",
+            "title": "Contrastive Learning and Neural Oscillations"
+        },
+        {
+            "paperId": "86dee86ea1b2eb5651e9ef9a4962460718d2ebd4",
+            "title": "Learning Sequential Structure with the Real-Time Recurrent Learning Algorithm"
+        },
+        {
+            "paperId": "2ae5a5507253aa3cada113d41d35fada1e84555f",
+            "title": "An Efficient Gradient-Based Algorithm for On-Line Training of Recurrent Network Trajectories"
+        },
+        {
+            "paperId": "415dca031402b5186c0c8bf00ca7bb60bfedb986",
+            "title": "Language Induction by Phase Transition in Dynamical Recognizers"
+        },
+        {
+            "paperId": "c115f0d793225c515ebce6be91521fcb8374ad6b",
+            "title": "A Theory for Neural Networks with Time Delays"
+        },
+        {
+            "paperId": "9e8cf03655d224b0994d0f9d4f5aa80bca07021a",
+            "title": "The Recurrent Cascade-Correlation Architecture"
+        },
+        {
+            "paperId": "668087f0ae7ce1de6e0bd0965dbb480c08103260",
+            "title": "Finding Structure in Time"
+        },
+        {
+            "paperId": "8be3f21ab796bd9811382b560507c1c679fae37f",
+            "title": "A learning rule for asynchronous perceptrons with feedback in a combinatorial environment"
+        },
+        {
+            "paperId": "bd46c1b5948abe04e565a8bae6454da63a1b021e",
+            "title": "Finite State Automata and Simple Recurrent Networks"
+        },
+        {
+            "paperId": "fd0da2f1d2b95e5b62221a00ff132219d0c853b7",
+            "title": "Adaptive neural oscillator using continuous-time back-propagation learning"
+        },
+        {
+            "paperId": "34468c0aa95a7aea212d8738ab899a69b2fc14c6",
+            "title": "Learning State Space Trajectories in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "5146d7902132bcb0b2e6fe5f607358768fc47323",
+            "title": "Dynamics and architecture for neural computation"
+        },
+        {
+            "paperId": "6602985bd326d9996c68627b56ed389e2c90fd08",
+            "title": "Generalization of back-propagation to recurrent neural networks."
+        },
+        {
+            "paperId": "030ba5a03666bf4c3a17c64699f8de8ec13d623b",
+            "title": "Bridging Long Time Lags by Weight Guessing and \\Long Short Term Memory\""
+        },
+        {
+            "paperId": null,
+            "title": "Faster training of recurrent"
+        },
+        {
+            "paperId": "10dae7fca6b65b61d155a622f0c6ca2bc3922251",
+            "title": "Gradient-based learning algorithms for recurrent networks and their computational complexity"
+        },
+        {
+            "paperId": null,
+            "title": "Long short-term memory (Tech"
+        },
+        {
+            "paperId": "a4a9af3c0418bceef7e057db0f08fdfeab4cdff5",
+            "title": "Netzwerkarchitekturen, Zielfunktionen und Kettenregel (Network architectures, objective functions, and chain rule)"
+        },
+        {
+            "paperId": "3f3d13e95c25a8f6a753e38dfce88885097cbd43",
+            "title": "Untersuchungen zu dynamischen neuronalen Netzen"
+        },
+        {
+            "paperId": "6d72a0e83e772468c6084ae7c79e43a4f5989feb",
+            "title": "A local learning algorithm for dynamic feedforward and recurrent networks"
+        },
+        {
+            "paperId": "e08d090d1e586610d636a46004876e9f3ded8209",
+            "title": "A time-delay neural network architecture for isolated word recognition"
+        },
+        {
+            "paperId": "26bc0449360d7016f684eafae5b5d2feded32041",
+            "title": "An E cient Gradient-Based Algorithm for On-LineTraining of Recurrent Network Trajectories"
+        },
+        {
+            "paperId": null,
+            "title": "The Neural Bucket Brigade: A local learning algorithm for dynamic"
+        },
+        {
+            "paperId": "ae254bfe3533558980cb2902f469cc3606807998",
+            "title": "Gradient-Based Learning Algorithms for Recurrent Networks"
+        },
+        {
+            "paperId": null,
+            "title": "A focused back-propagation algorithm for temporal sequence recognition"
+        },
+        {
+            "paperId": null,
+            "title": "Complexity of exact gradient computation algorithms for recurrent neural networks (Tech"
+        },
+        {
+            "paperId": "266e07d0dd9a75b61e3632e9469993dbaf063f1c",
+            "title": "Generalization of backpropagation with application to a recurrent gas market model"
+        },
+        {
+            "paperId": null,
+            "title": "References"
+        },
+        {
+            "paperId": null,
+            "title": "\u2212 q) and f in j (net in j (t \u2212 q)) are small if the input gate is negatively biased (assume f in j is a logistic sigmoid). However, the potential sig"
+        },
+        {
+            "paperId": "02f38b2d72d7b3243b5ba4005f814f71b80eec00",
+            "title": "The Utility Driven Dynamic Error Propagation Network"
+        }
+    ]
+}

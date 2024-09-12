@@ -1,0 +1,190 @@
+{
+    "paperId": "9cd4d0cee6c22a65dd6e5ae51c9b6cdbaeb550df",
+    "externalIds": {
+        "DBLP": "journals/tsp/SorensenJHB87",
+        "MAG": "2134128809",
+        "DOI": "10.1109/TASSP.1987.1165220",
+        "CorpusId": 1886290
+    },
+    "title": "Real-valued fast Fourier transform algorithms",
+    "abstract": "This tutorial paper describes the methods for constructing fast algorithms for the computation of the discrete Fourier transform (DFT) of a real-valued series. The application of these ideas to all the major fast Fourier transform (FFT) algorithms is discussed, and the various algorithms are compared. We present a new implementation of the real-valued split-radix FFT, an algorithm that uses fewer operations than any other real-valued power-of-2-length FFT. We also compare the performance of inherently real-valued transform algorithms such as the fast Hartley transform (FHT) and the fast cosine transform (FCT) to real-valued FFT algorithms for the computation of power spectra and cyclic convolutions. Comparisons of these techniques reveal that the alternative techniques always require more additions than a method based on a real-valued FFT algorithm and result in computer code of equal or greater length and complexity.",
+    "venue": "IEEE Transactions on Acoustics Speech and Signal Processing",
+    "year": 1987,
+    "referenceCount": 37,
+    "citationCount": 501,
+    "influentialCitationCount": 28,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new implementation of the real-valued split-radix FFT is presented, an algorithm that uses fewer operations than any otherreal-valued power-of-2-length FFT."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "40078212",
+            "name": "H. V. Sorensen"
+        },
+        {
+            "authorId": "145378909",
+            "name": "Douglas L. Jones"
+        },
+        {
+            "authorId": "35452164",
+            "name": "M. Heideman"
+        },
+        {
+            "authorId": "143833900",
+            "name": "C. Burrus"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "75f0c133572f9a9b608b1d10d180490e24ced040",
+            "title": "A new FFT algorithm of radix 3, 6, and 12"
+        },
+        {
+            "paperId": "52b8a0b3279cf1fe7bd44239c00f1161fc5c8dbc",
+            "title": "Cyclic convolution of real sequences: Hartley versus Fourier and new schemes"
+        },
+        {
+            "paperId": "11544f07bb1059c4168fc72a50263c1426e98b74",
+            "title": "Implementation of \"Split-radix\" FFT algorithms for complex, real, and real-symmetric data"
+        },
+        {
+            "paperId": "78f88a81ecc0191531413f6484cc5db07eb842fe",
+            "title": "On computing the split-radix FFT"
+        },
+        {
+            "paperId": "00731c84723fe8d2bd0e48e8d82c36e7db1618fd",
+            "title": "On computing the discrete Hartley transform"
+        },
+        {
+            "paperId": "1cc72718a0a752e51e86c18b77040b327bb35889",
+            "title": "A prime factor FFT algorithm with real valued arithmetic"
+        },
+        {
+            "paperId": "850682146f840520a8d2106cb5379ba8dc5c511c",
+            "title": "Implementation of \"Split-radix\" FFT algorithms for complex, real, and real symmetric data"
+        },
+        {
+            "paperId": "f168c5dedff6243f30583073ea92b97b257ca0e8",
+            "title": "A new algorithm to compute the discrete cosine Transform"
+        },
+        {
+            "paperId": "0556f5ac4c9b81e47c7f362f9075a2d06e9359ec",
+            "title": "The fast Hartley transform"
+        },
+        {
+            "paperId": "3c9508bf8af1d8382722a0174a75b72d3e920243",
+            "title": "Simple FFT and DCT algorithms with reduced number of operations"
+        },
+        {
+            "paperId": "7eb7c7d735fbe357cb57b7afc6f256801b91f93c",
+            "title": "Recursive cyclotomic factorization--A new algorithm for calculating the discrete Fourier transform"
+        },
+        {
+            "paperId": "2d48ece50be1aa6cde04db195ce1cb7db4d6a702",
+            "title": "Discrete Fourier transform algorithms for real valued sequences"
+        },
+        {
+            "paperId": "c6eeaf55bbc743fb43565b3e6188a77c14a9e5e1",
+            "title": "Prime factor FFT algorithms for real-valued series"
+        },
+        {
+            "paperId": "3e410714fe55078a5072aaa952e2cfe16b0a0b45",
+            "title": "`Split radix' FFT algorithm"
+        },
+        {
+            "paperId": "c9a0378911fa30526cb28f52d036e8d17497ce71",
+            "title": "Very fast computation of the radix-2 discrete Fourier transform"
+        },
+        {
+            "paperId": "32ec2330df2cf55ee080eb0ef5cbb0e75894e7b7",
+            "title": "An in-place, in-order prime factor FFT algorithm"
+        },
+        {
+            "paperId": "dcbf35059aea1a91b8927ed50b5839a5546f3971",
+            "title": "A new radix-6 FFT algorithm"
+        },
+        {
+            "paperId": "e878fe874d2b5a395655e22d0d08de604b8a1d43",
+            "title": "Number theory in digital signal processing"
+        },
+        {
+            "paperId": "3544c44217896b48980f6fd62582531ea1c42dec",
+            "title": "A winograd-Fourier transform algorithm for real-valued data"
+        },
+        {
+            "paperId": "a7df13ae24cb239388522b47608ce299c5df5e0f",
+            "title": "On the use of symmetry in FFT computation"
+        },
+        {
+            "paperId": "2c5cf0539875a686f7c619d8a62df856ddd78ed8",
+            "title": "A new algorithm for the radix-3 FFT"
+        },
+        {
+            "paperId": "c4d8422645e4c8ed96397e1db5449ce03375dc82",
+            "title": "A prime factor FFT algorithm using high-speed convolution"
+        },
+        {
+            "paperId": "6e50ca0efdfdc697fa0eed6897e4b6f75cd8ff13",
+            "title": "Index mappings for multidimensional formulation of the DFT and convolution"
+        },
+        {
+            "paperId": "7af534a971b05b26b9758cdb7253b849d0de956e",
+            "title": "On computing the Discrete Fourier Transform."
+        },
+        {
+            "paperId": "bd9ed6b8427bc6af466a765b8ae523d5c2f50bf5",
+            "title": "A fast Fourier transform algorithm for symmetric real-valued series"
+        },
+        {
+            "paperId": "05a8d4aa637f64064e443e7f8d442c5987f16b27",
+            "title": "The fast Fourier transform algorithm: Programming considerations in the calculation of sine, cosine and Laplace transforms\u2606"
+        },
+        {
+            "paperId": "040f8459239d8e91476a88fae1e0224bfa240a81",
+            "title": "A radix-eight fast Fourier transform subroutine for real-valued series"
+        },
+        {
+            "paperId": "030bd4c198f4325d11482f086ecd61acc15bc00b",
+            "title": "Numerical Analysis: A fast fourier transform algorithm for real-valued series"
+        },
+        {
+            "paperId": "bc2b36d62a698f2ea2bd3c4499d60799c5376182",
+            "title": "On computing the fast Fourier transform"
+        },
+        {
+            "paperId": "339cf6959e65fb58228124c229dc727d00a02c14",
+            "title": "An economical method for calculating the discrete Fourier transform"
+        },
+        {
+            "paperId": null,
+            "title": "Sorensen is a member of DIF, the Danish Parks) of two books: DFT/FFT and Convolution Algorithms and Digital Engineering Society. Filter Design"
+        },
+        {
+            "paperId": "a5fc76be274e8dfc739be67f6cef2deb6e47304b",
+            "title": "Fast Fourier transform and convolution algorithms"
+        },
+        {
+            "paperId": null,
+            "title": "His professional interests are in the Award in 1975, a Senior Fulbright Fellowship in 1979, and the IEEE Sarea of digital"
+        },
+        {
+            "paperId": null,
+            "title": "Image enhancement using cosine transform filtering"
+        },
+        {
+            "paperId": "f5ed53760000b1851c10734f271a97b7017ecfb8",
+            "title": "Theory and application of digital signal processing"
+        },
+        {
+            "paperId": null,
+            "title": "S'81) was born in Dallas"
+        },
+        {
+            "paperId": null,
+            "title": "S\u201955-M\u201961-SM\u201975-F\u201981) was born in Abilene"
+        }
+    ]
+}

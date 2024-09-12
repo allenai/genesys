@@ -128,7 +128,7 @@ def design(evosys,project_dir):
             st.header("WARNING!!!: Only mutation mode is supported now. Other modes are not stable or unimplemented.")
 
 
-        sources = ['ReferenceCoreWithTree', 'DesignArtifact', 'ReferenceCore', 'ReferenceWithCode', 'Reference', 'Reference1hop']
+        sources = ['ReferenceCoreWithTree', 'DesignArtifact', 'ReferenceCore', 'ReferenceWithCode', 'Reference']
         sources={i:len(evosys.ptree.filter_by_type(i)) for i in sources}
         
         st.markdown("##### Configure the number of seeds to sample from each source")
@@ -255,3 +255,4 @@ def design(evosys,project_dir):
                 log=eval(U.read_file(U.pjoin(selected_folder_dir,session,'stream.log')))
                 logs.append(log)
             stat_logs(logs)
+

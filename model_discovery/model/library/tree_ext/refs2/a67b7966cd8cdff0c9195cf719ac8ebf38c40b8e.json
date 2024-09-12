@@ -1,0 +1,170 @@
+{
+    "paperId": "a67b7966cd8cdff0c9195cf719ac8ebf38c40b8e",
+    "externalIds": {
+        "MAG": "2783525259",
+        "DBLP": "journals/micro/DaviesSLCCCDJIJ18",
+        "DOI": "10.1109/MM.2018.112130359",
+        "CorpusId": 3608458
+    },
+    "title": "Loihi: A Neuromorphic Manycore Processor with On-Chip Learning",
+    "abstract": "Loihi is a 60-mm2 chip fabricated in Intels 14-nm process that advances the state-of-the-art modeling of spiking neural networks in silicon. It integrates a wide range of novel features for the field, such as hierarchical connectivity, dendritic compartments, synaptic delays, and, most importantly, programmable synaptic learning rules. Running a spiking convolutional form of the Locally Competitive Algorithm, Loihi can solve LASSO optimization problems with over three orders of magnitude superior energy-delay-product compared to conventional solvers running on a CPU iso-process/voltage/area. This provides an unambiguous example of spike-based computation, outperforming all known conventional solutions.",
+    "venue": "IEEE Micro",
+    "year": 2018,
+    "referenceCount": 13,
+    "citationCount": 2376,
+    "influentialCitationCount": 205,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Loihi is a 60-mm2 chip fabricated in Intels 14-nm process that advances the state-of-the-art modeling of spiking neural networks in silicon, and can solve LASSO optimization problems with over three orders of magnitude superior energy-delay-product compared to conventional solvers running on a CPU iso-process/voltage/area."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2087005207",
+            "name": "Mike Davies"
+        },
+        {
+            "authorId": "1753812",
+            "name": "N. Srinivasa"
+        },
+        {
+            "authorId": "1740851",
+            "name": "Tsung-Han Lin"
+        },
+        {
+            "authorId": "3198756",
+            "name": "G. Chinya"
+        },
+        {
+            "authorId": "39098303",
+            "name": "Yongqiang Cao"
+        },
+        {
+            "authorId": "2572988",
+            "name": "S. H. Choday"
+        },
+        {
+            "authorId": "50280933",
+            "name": "G. Dimou"
+        },
+        {
+            "authorId": "144594117",
+            "name": "Prasad Joshi"
+        },
+        {
+            "authorId": "39536844",
+            "name": "N. Imam"
+        },
+        {
+            "authorId": "2116971410",
+            "name": "Shweta Jain"
+        },
+        {
+            "authorId": "2781201",
+            "name": "Yuyun Liao"
+        },
+        {
+            "authorId": "3312263",
+            "name": "Chit-Kwan Lin"
+        },
+        {
+            "authorId": "145166778",
+            "name": "Andrew Lines"
+        },
+        {
+            "authorId": "35804101",
+            "name": "Ruokun Liu"
+        },
+        {
+            "authorId": "1710935",
+            "name": "D. Mathaikutty"
+        },
+        {
+            "authorId": "2070135234",
+            "name": "Steve McCoy"
+        },
+        {
+            "authorId": "2150514037",
+            "name": "Arnab Paul"
+        },
+        {
+            "authorId": "2306147",
+            "name": "Jonathan Tse"
+        },
+        {
+            "authorId": "35865638",
+            "name": "Guruguhanathan Venkataramanan"
+        },
+        {
+            "authorId": "31953633",
+            "name": "Y. Weng"
+        },
+        {
+            "authorId": "1665915600",
+            "name": "Andreas Wild"
+        },
+        {
+            "authorId": "2108648646",
+            "name": "Yoonseok Yang"
+        },
+        {
+            "authorId": "49528487",
+            "name": "Hong Wang"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "bf49b419b12353e70a31c137dd14042cdb745cd9",
+            "title": "Local Information with Feedback Perturbation Suffices for Dictionary Learning in Neural Circuits"
+        },
+        {
+            "paperId": "f95870a7bedd42dfb91494a98f77090d161426f5",
+            "title": "Sparse Coding by Spiking Neural Networks: Convergence Theory and Computational Results"
+        },
+        {
+            "paperId": "a844595c3b561b00325c75d00e5cc7f639e8ed9a",
+            "title": "Event-Driven Random Back-Propagation: Enabling Neuromorphic Deep Learning Machines"
+        },
+        {
+            "paperId": "1d7a1c2c01fb47460c5a29ba15b08e3192202c53",
+            "title": "A reconfigurable on-line learning spiking neuromorphic processor comprising 256 neurons and 128K synapses"
+        },
+        {
+            "paperId": "680a38e8f025685b192e9e0cf755c6b664963551",
+            "title": "A million spiking-neuron integrated circuit with a scalable communication network and interface"
+        },
+        {
+            "paperId": "b14910da992b2efbacfd25cb5ca6dc529f85f016",
+            "title": "Optimal Sparse Approximation with Integrate and Fire Neurons"
+        },
+        {
+            "paperId": "a1d5a3751e6d00bca2916a6e2f1d12d064ad80a3",
+            "title": "Rapid, parallel path planning by propagating wavefronts of spiking neural activity"
+        },
+        {
+            "paperId": "398335fedd93b2b675834c862faa775d83de4e71",
+            "title": "A triplet spike-timing\u2013dependent plasticity model generalizes the Bienenstock\u2013Cooper\u2013Munro rule to higher-order spatiotemporal correlations"
+        },
+        {
+            "paperId": "e4e100e44bf7618c7d96188605fd9870012bdb50",
+            "title": "Neural Dynamics as Sampling: A Model for Stochastic Computation in Recurrent Networks of Spiking Neurons"
+        },
+        {
+            "paperId": "a929bfd35293290cc0da49143c5711b81493f826",
+            "title": "A 45nm CMOS neuromorphic chip with a scalable architecture for learning in networks of spiking neurons"
+        },
+        {
+            "paperId": "779b7bb1a872862fe5cbb6778f0a09fafd1d40fe",
+            "title": "Supervised Learning in Spiking Neural Networks with ReSuMe: Sequence Learning, Classification, and Spike Shifting"
+        },
+        {
+            "paperId": "1debadf7e6c580a280919df9b9cef5bc52b50100",
+            "title": "Reinforcement Learning Through Modulation of Spike-Timing-Dependent Synaptic Plasticity"
+        },
+        {
+            "paperId": "ef14185666a77ec43d859b50cc6f68e01af0fa57",
+            "title": "Polychronization: Computation with Spikes"
+        }
+    ]
+}

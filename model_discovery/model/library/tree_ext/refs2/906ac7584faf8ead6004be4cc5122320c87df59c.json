@@ -1,0 +1,226 @@
+{
+    "paperId": "906ac7584faf8ead6004be4cc5122320c87df59c",
+    "externalIds": {
+        "ArXiv": "1607.00036",
+        "MAG": "2470713034",
+        "DBLP": "journals/corr/GulcehreCCB16",
+        "CorpusId": 1399676
+    },
+    "title": "Dynamic Neural Turing Machine with Soft and Hard Addressing Schemes",
+    "abstract": "We extend neural Turing machine (NTM) model into a dynamic neural Turing machine (D-NTM) by introducing a trainable memory addressing scheme. This addressing scheme maintains for each memory cell two separate vectors, content and address vectors. This allows the D-NTM to learn a wide variety of location-based addressing strategies including both linear and nonlinear ones. We implement the D-NTM with both continuous, differentiable and discrete, non-differentiable read/write mechanisms. We investigate the mechanisms and effects of learning to read and write into a memory through experiments on Facebook bAbI tasks using both a feedforward and GRUcontroller. The D-NTM is evaluated on a set of Facebook bAbI tasks and shown to outperform NTM and LSTM baselines. We have done extensive analysis of our model and different variations of NTM on bAbI task. We also provide further experimental results on sequential pMNIST, Stanford Natural Language Inference, associative recall and copy tasks.",
+    "venue": "arXiv.org",
+    "year": 2016,
+    "referenceCount": 46,
+    "citationCount": 62,
+    "influentialCitationCount": 9,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The D-NTM is evaluated on a set of Facebook bAbI tasks and shown to outperform NTM and LSTM baselines and provide further experimental results on sequential pMNIST, Stanford Natural Language Inference, associative recall and copy tasks."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1854385",
+            "name": "\u00c7aglar G\u00fcl\u00e7ehre"
+        },
+        {
+            "authorId": "144631588",
+            "name": "A. Chandar"
+        },
+        {
+            "authorId": "1979489",
+            "name": "Kyunghyun Cho"
+        },
+        {
+            "authorId": "1751762",
+            "name": "Yoshua Bengio"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "be8c6c69f3e357bfad2987e45b62cff7e7474378",
+            "title": "Scaling Memory-Augmented Neural Networks with Sparse Reads and Writes"
+        },
+        {
+            "paperId": "97fb4e3d45bb098e27e0071448b6152217bd35a5",
+            "title": "Layer Normalization"
+        },
+        {
+            "paperId": "9f0687bcd0a7d7fc91b8c5d36c003a38b8853105",
+            "title": "Zoneout: Regularizing RNNs by Randomly Preserving Hidden Activations"
+        },
+        {
+            "paperId": "c17b6f2d9614878e3f860c187f72a18ffb5aabb6",
+            "title": "Hierarchical Memory Networks"
+        },
+        {
+            "paperId": "bbd0e204f48a45735e1065c8b90b298077b73192",
+            "title": "One-shot Learning with Memory-Augmented Neural Networks"
+        },
+        {
+            "paperId": "6b570069f14c7588e066f7138e1f21af59d62e61",
+            "title": "Theano: A Python framework for fast computation of mathematical expressions"
+        },
+        {
+            "paperId": "952454718139dba3aafc6b3b67c4f514ac3964af",
+            "title": "Recurrent Batch Normalization"
+        },
+        {
+            "paperId": "cf76789618f5db929393c1187514ce6c3502c3cd",
+            "title": "Recurrent Dropout without Memory Loss"
+        },
+        {
+            "paperId": "f96898d15a1bf1fa8925b1280d0e07a7a8e72194",
+            "title": "Dynamic Memory Networks for Visual and Textual Question Answering"
+        },
+        {
+            "paperId": "568374ac9433e29b812008b2a01f81e657bdbd34",
+            "title": "Noisy Activation Functions"
+        },
+        {
+            "paperId": "c86d6f344e4cf62af216bea8d51ad500bf9edfd4",
+            "title": "Lie Access Neural Turing Machine"
+        },
+        {
+            "paperId": "49e24b1fd415e20839c09b5dd68a01f61d1681d9",
+            "title": "Learning Simple Algorithms from Examples"
+        },
+        {
+            "paperId": "be3a65ef15f79ebb8296e6a0e8d1a9cb5c0f3638",
+            "title": "Evaluating Prerequisite Qualities for Learning End-to-End Dialog Systems"
+        },
+        {
+            "paperId": "35b91b365ceb016fb3e022577cec96fb9b445dc5",
+            "title": "The Goldilocks Principle: Reading Children's Books with Explicit Memory Representations"
+        },
+        {
+            "paperId": "f01345a2efc1aa5100b27caf82368bf410937152",
+            "title": "Structured Memory for Neural Turing Machines"
+        },
+        {
+            "paperId": "2846e83d405cbe3bf2f0f3b5f635dd8b3c680c45",
+            "title": "Reasoning about Entailment with Neural Attention"
+        },
+        {
+            "paperId": "1ac30af5522c7a50ec4d1ee43fd2bd8652a9bd52",
+            "title": "A Neural Attention Model for Abstractive Sentence Summarization"
+        },
+        {
+            "paperId": "f04df4e20a18358ea2f689b4c129781628ef7fc1",
+            "title": "A large annotated corpus for learning natural language inference"
+        },
+        {
+            "paperId": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+            "title": "Effective Approaches to Attention-based Neural Machine Translation"
+        },
+        {
+            "paperId": "17f5c7411eeeeedf25b0db99a9130aa353aee4ba",
+            "title": "Building End-To-End Dialogue Systems Using Generative Hierarchical Neural Network Models"
+        },
+        {
+            "paperId": "b624504240fa52ab76167acfe3156150ca01cf3b",
+            "title": "Attention-Based Models for Speech Recognition"
+        },
+        {
+            "paperId": "86311b182786bfde19446f6ded0854de973d4060",
+            "title": "A Neural Conversational Model"
+        },
+        {
+            "paperId": "d1505c6123c102e53eb19dff312cb25cea840b72",
+            "title": "Teaching Machines to Read and Comprehend"
+        },
+        {
+            "paperId": "e837b79de602c69395498c1fbbe39bbb4e6f75ad",
+            "title": "Learning to Transduce with Unbounded Memory"
+        },
+        {
+            "paperId": "6e565308c8081e807709cb4a917443b737e6cdb4",
+            "title": "Large-scale Simple Question Answering with Memory Networks"
+        },
+        {
+            "paperId": "c9d7afd65b2127e6f0651bc7e13eeec1897ac8dd",
+            "title": "Reinforcement Learning Neural Turing Machines"
+        },
+        {
+            "paperId": "97ad70a9fa3f99adf18030e5e38ebe3d90daa2db",
+            "title": "VQA: Visual Question Answering"
+        },
+        {
+            "paperId": "d46b81707786d18499f911b4ab72bb10c65406ba",
+            "title": "A Simple Way to Initialize Recurrent Networks of Rectified Linear Units"
+        },
+        {
+            "paperId": "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e",
+            "title": "End-To-End Memory Networks"
+        },
+        {
+            "paperId": "d38e8631bba0720becdaf7b89f79d9f9dca45d82",
+            "title": "Inferring Algorithmic Patterns with Stack-Augmented Recurrent Nets"
+        },
+        {
+            "paperId": "5f425b7abf2ed3172ed060df85bb1885860a297e",
+            "title": "Describing Videos by Exploiting Temporal Structure"
+        },
+        {
+            "paperId": "abb33d75dc297993fcc3fb75e0f4498f413eb4f6",
+            "title": "Towards AI-Complete Question Answering: A Set of Prerequisite Toy Tasks"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "71ae756c75ac89e2d731c9c79649562b5768ff39",
+            "title": "Memory Networks"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "331f0fb3b6176c6e463e0401025b04f6ace9ccd3",
+            "title": "Neural Variational Inference and Learning in Belief Networks"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "a879da675c6133c23beb96c110c351bb4f9154dc",
+            "title": "The Neural Network Pushdown Automaton: Architecture, Dynamics and Training"
+        },
+        {
+            "paperId": "d0be39ee052d246ae99c082a565aba25b811be2d",
+            "title": "Learning long-term dependencies with gradient descent is difficult"
+        },
+        {
+            "paperId": "4f8d648c52edf74e41b0996128aa536e13cc7e82",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": "4c915c1eecb217c123a36dc6d3ce52d12c742614",
+            "title": "Simple Statistical Gradient-Following Algorithms for Connectionist Reinforcement Learning"
+        },
+        {
+            "paperId": "c87d57da3b1f2b467ef4995d30df832ee2281107",
+            "title": "On robust estimation of the location parameter"
+        }
+    ]
+}

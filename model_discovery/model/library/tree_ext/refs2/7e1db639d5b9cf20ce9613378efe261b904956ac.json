@@ -1,0 +1,175 @@
+{
+    "paperId": "7e1db639d5b9cf20ce9613378efe261b904956ac",
+    "externalIds": {
+        "CorpusId": 145034668
+    },
+    "title": "Generalized ELBO with Constrained Optimization , GECO",
+    "abstract": "Deep variational auto-encoders (VAEs) are latent-variable generative models that define a joint density p(x, z) between some observed data x \u2208 Rx and unobserved or latent variables z \u2208 Rz . The most popular method for training these models is through stochastic amortized variational approximations [1, 2], which use a variational posterior (also referred to as encoder), q(z|x), to construct the evidence lower-bound (ELBO) objective function.",
+    "venue": "",
+    "year": 2018,
+    "referenceCount": 36,
+    "citationCount": 22,
+    "influentialCitationCount": 1,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Deep variational auto-encoders are latent-variable generative models that define a joint density p(x, z) between some observed data x \u2208 Rx and unobserved or latent variables z \u2208 Rz."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1748523",
+            "name": "Danilo Jimenez Rezende"
+        },
+        {
+            "authorId": "47963165",
+            "name": "Fabio Viola"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "78f6d3a5539a6513061e46789e7c1277a625fb4e",
+            "title": "Doubly Semi-Implicit Variational Inference"
+        },
+        {
+            "paperId": "21b786b3f870fc7fa247c143aa41de88b1fc6141",
+            "title": "Glow: Generative Flow with Invertible 1x1 Convolutions"
+        },
+        {
+            "paperId": "d0ce7e227350a745ebbbe912ed7e402d1ac0c178",
+            "title": "A Lagrangian Perspective on Latent Variable Generative Models"
+        },
+        {
+            "paperId": "e3530c67ed2294ce1a72b424d5e38c95552ba15f",
+            "title": "Neural scene representation and rendering"
+        },
+        {
+            "paperId": "533e651177354d6687e8d0a24217a6bf65692bcc",
+            "title": "Sylvester Normalizing Flows for Variational Inference"
+        },
+        {
+            "paperId": "fa8a2ae4d5b06567d3a796e302b4f0cd83249e5c",
+            "title": "Distribution Matching in Variational Inference"
+        },
+        {
+            "paperId": "765090fd66e0f76c945985df7102857fa776301d",
+            "title": "The Mutual Autoencoder: Controlling Information in Latent Code Representations"
+        },
+        {
+            "paperId": "5f3aaee0f9d870d4cbe78f54f81416dcce891309",
+            "title": "Inference Suboptimality in Variational Autoencoders"
+        },
+        {
+            "paperId": "8976e91ccae57a20c29f3c9d88bf45b19973c952",
+            "title": "Fixing a Broken ELBO"
+        },
+        {
+            "paperId": "505da18b3bae7f504bea04757fc122f80414644b",
+            "title": "Information Potential Auto-Encoders"
+        },
+        {
+            "paperId": "5ea2cdab68c69d7aef5a004495783ae7628193f2",
+            "title": "VAE with a VampPrior"
+        },
+        {
+            "paperId": "5532c52fffb8b446e3d4fc47d4d9a9b29091bdff",
+            "title": "Towards Deeper Understanding of Variational Autoencoding Models"
+        },
+        {
+            "paperId": "bcbb0e86010b33d077b676ab8a0605e4b56cd9e6",
+            "title": "Improving Variational Auto-Encoders using Householder Flow"
+        },
+        {
+            "paperId": "488bb25e0b1777847f04c943e6dbc4f84415b712",
+            "title": "Unrolled Generative Adversarial Networks"
+        },
+        {
+            "paperId": "a90226c41b79f8b06007609f39f82757073641e2",
+            "title": "beta-VAE: Learning Basic Visual Concepts with a Constrained Variational Framework"
+        },
+        {
+            "paperId": "6a97d2668187965743d1b825b306defccbabbb4c",
+            "title": "Improved Variational Inference with Inverse Autoregressive Flow"
+        },
+        {
+            "paperId": "09879f7956dddc2a9328f5c1472feeb8402bcbcf",
+            "title": "Density estimation using Real NVP"
+        },
+        {
+            "paperId": "bda89e0d181eda7e49ea831225eda86d075e111c",
+            "title": "Towards Conceptual Compression"
+        },
+        {
+            "paperId": "64d698ecd01eab99e81e586400e86d3d70b9cba7",
+            "title": "Ladder Variational Autoencoders"
+        },
+        {
+            "paperId": "2cc3fbf8e36667fa2bec9ea047076b79304e2eee",
+            "title": "The Variational Gaussian Process"
+        },
+        {
+            "paperId": "39e0c341351f8f4a39ac890b96217c7f4bde5369",
+            "title": "A note on the evaluation of generative models"
+        },
+        {
+            "paperId": "3e47c4c2dd98c49b7771c7228812d5fd9eee56a3",
+            "title": "Importance Weighted Autoencoders"
+        },
+        {
+            "paperId": "0f899b92b7fb03b609fee887e4b6f3b633eaf30d",
+            "title": "Variational Inference with Normalizing Flows"
+        },
+        {
+            "paperId": "415229903f91a1f3fc7404f5e5997fde025c221d",
+            "title": "Deep learning and the information bottleneck principle"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "484ad17c926292fbe0d5211540832a8c8a8e958b",
+            "title": "Stochastic Backpropagation and Approximate Inference in Deep Generative Models"
+        },
+        {
+            "paperId": "f8f50f01c3e92213386bce4c33b11acd45fc4019",
+            "title": "A Stochastic Augmented Lagrangian Equality Constrained\u2010Based Algorithm for Global Optimization"
+        },
+        {
+            "paperId": "e9fdcda69427a5075773562b45632a8a0746d711",
+            "title": "Stochastic optimization with inequality constraints using simultaneous perturbations and penalty functions"
+        },
+        {
+            "paperId": "4ef483f819e11873822416042a4b6dc4652e010c",
+            "title": "The information bottleneck method"
+        },
+        {
+            "paperId": "cb89a25141febad0c14d080e2791c506ae6e4a76",
+            "title": "Constrained Optimization and Lagrange Multiplier Methods"
+        },
+        {
+            "paperId": "ef4f5a50837a7c1b3e87b9300ffc7ba00d461a0f",
+            "title": "AUTO-ENCODING VARIATIONAL BAYES"
+        },
+        {
+            "paperId": null,
+            "title": "Understanding disentangling in beta-vae"
+        },
+        {
+            "paperId": "f6fe5e8e25994c188ba6a124462e2cc55f2c5a67",
+            "title": "Approximate Inference for Deep Latent Gaussian Mixtures"
+        },
+        {
+            "paperId": "c7e07cf8ba4ad956483f9dd37a168355ef16a041",
+            "title": "Markov Chain Monte Carlo and Variational Inference: Bridging the Gap"
+        },
+        {
+            "paperId": null,
+            "title": "Mnist handwritten digit database"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        }
+    ]
+}

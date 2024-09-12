@@ -1,0 +1,243 @@
+{
+    "paperId": "36c097a225a95735271960e2b63a2cb9e98bff83",
+    "externalIds": {
+        "MAG": "2951264799",
+        "DBLP": "conf/acl/BowmanGRGMP16",
+        "ArXiv": "1603.06021",
+        "ACL": "P16-1139",
+        "DOI": "10.18653/v1/P16-1139",
+        "CorpusId": 14429450
+    },
+    "title": "A Fast Unified Model for Parsing and Sentence Understanding",
+    "abstract": "Tree-structured neural networks exploit valuable syntactic parse information as they interpret the meanings of sentences. However, they suer from two key technical problems that make them slow and unwieldyforlarge-scaleNLPtasks: theyusually operate on parsed sentences and they do not directly support batched computation. We address these issues by introducingtheStack-augmentedParser-Interpreter NeuralNetwork(SPINN),whichcombines parsing and interpretation within a single tree-sequence hybrid model by integrating tree-structured sentence interpretation into the linear sequential structure of a shiftreduceparser. Ourmodelsupportsbatched computation for a speedup of up to 25\u25ca over other tree-structured models, and its integrated parser can operate on unparsed data with little loss in accuracy. We evaluate it on the Stanford NLI entailment task and show that it significantly outperforms other sentence-encoding models.",
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2016,
+    "referenceCount": 47,
+    "citationCount": 306,
+    "influentialCitationCount": 44,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/P16-1139.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Stack-augmentedParser-Interpreter NeuralNetwork (SPINN) combines parsing and interpretation within a single tree-sequence hybrid model by integrating tree-structured sentence interpretation into the linear sequential structure of a shiftreduceparser."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3644767",
+            "name": "Samuel R. Bowman"
+        },
+        {
+            "authorId": "24339276",
+            "name": "Jon Gauthier"
+        },
+        {
+            "authorId": "2188497",
+            "name": "Abhinav Rastogi"
+        },
+        {
+            "authorId": "47495799",
+            "name": "Raghav Gupta"
+        },
+        {
+            "authorId": "144783904",
+            "name": "Christopher D. Manning"
+        },
+        {
+            "authorId": "144922861",
+            "name": "Christopher Potts"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "6b570069f14c7588e066f7138e1f21af59d62e61",
+            "title": "Theano: A Python framework for fast computation of mathematical expressions"
+        },
+        {
+            "paperId": "94960fcdf0ea3b346fca77ae8c63ae7943eb0d28",
+            "title": "Easy-First Dependency Parsing with Hierarchical Tree LSTMs"
+        },
+        {
+            "paperId": "7345843e87c81e24e42264859b214d26042f8d51",
+            "title": "Recurrent Neural Network Grammars"
+        },
+        {
+            "paperId": "13fe71da009484f240c46f14d9330e932f8de210",
+            "title": "Long Short-Term Memory-Networks for Machine Reading"
+        },
+        {
+            "paperId": "596c882de006e4bb4a93f1fa08a5dd467bee060a",
+            "title": "Learning Natural Language Inference with LSTM"
+        },
+        {
+            "paperId": "ea407573bfcd39f9a478fe33cf6ce0ee1780a5f0",
+            "title": "Natural Language Inference by Tree-Based Convolution and Heuristic Matching"
+        },
+        {
+            "paperId": "81bd1081df12c554f5b577677eb1a3975f728476",
+            "title": "Recognizing Entailment and Contradiction by Tree-based Convolution"
+        },
+        {
+            "paperId": "46b8cbcdff87b842c2c1d4a003c831f845096ba7",
+            "title": "Order-Embeddings of Images and Language"
+        },
+        {
+            "paperId": "e5f0762b9cfd07f88608f5502ed4467a8b5546cb",
+            "title": "Top-down Tree Long Short-Term Memory Networks"
+        },
+        {
+            "paperId": "2846e83d405cbe3bf2f0f3b5f635dd8b3c680c45",
+            "title": "Reasoning about Entailment with Neural Attention"
+        },
+        {
+            "paperId": "51a55df1f023571a7e07e338ee45a3e3d66ef73e",
+            "title": "Character-level Convolutional Networks for Text Classification"
+        },
+        {
+            "paperId": "f04df4e20a18358ea2f689b4c129781628ef7fc1",
+            "title": "A large annotated corpus for learning natural language inference"
+        },
+        {
+            "paperId": "d8ac015407cf68c695043b23d905cddd880e5844",
+            "title": "Generative Incremental Dependency Parsing with Neural Networks"
+        },
+        {
+            "paperId": "04d1a26c2516dc14a765112a63ec60dc3cb3de72",
+            "title": "Tree-Structured Composition in Neural Networks without Tree-Structured Architectures"
+        },
+        {
+            "paperId": "df137487e20ba7c6e1e2b9a1e749f2a578b5ad99",
+            "title": "Scheduled Sampling for Sequence Prediction with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "e837b79de602c69395498c1fbbe39bbb4e6f75ad",
+            "title": "Learning to Transduce with Unbounded Memory"
+        },
+        {
+            "paperId": "b36b7f7c68923d14ba2859b5d28a1124616a8c89",
+            "title": "Transition-Based Dependency Parsing with Stack Long Short-Term Memory"
+        },
+        {
+            "paperId": "d38e8631bba0720becdaf7b89f79d9f9dca45d82",
+            "title": "Inferring Algorithmic Patterns with Stack-Augmented Recurrent Nets"
+        },
+        {
+            "paperId": "df77714269f1f88182092f8535b1bc290fcd835d",
+            "title": "When Are Tree Structures Necessary for Deep Learning of Representations?"
+        },
+        {
+            "paperId": "32de44f01a96d4473d21099d15e25bc2b9f08e2f",
+            "title": "Improved Semantic Representations From Tree-Structured Long Short-Term Memory Networks"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "d6f2f611da110b5b5061731be3fc4c7f45d8ee23",
+            "title": "Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification"
+        },
+        {
+            "paperId": "60dda7f5efd67758bde1ee7f45e6d3ef86445495",
+            "title": "Deep Recursive Neural Networks for Compositionality in Language"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "27725a2d2a8cee9bf9fffc6c2167017103aba0fa",
+            "title": "A Convolutional Neural Network for Modelling Sentences"
+        },
+        {
+            "paperId": "855d0f722d75cc56a66a00ede18ace96bafee6bd",
+            "title": "Theano: new features and speed improvements"
+        },
+        {
+            "paperId": "cfa2646776405d50533055ceb1b7f050e9014dcb",
+            "title": "Semi-Supervised Recursive Autoencoders for Predicting Sentiment Distributions"
+        },
+        {
+            "paperId": "9c0ddf74f87d154db88d79c640578c1610451eec",
+            "title": "Parsing Natural Scenes and Natural Language with Recursive Neural Networks"
+        },
+        {
+            "paperId": "9762f5d2ca8c2132942d10ef6b064bf370262585",
+            "title": "A Latent Variable Model for Generative Dependency Parsing"
+        },
+        {
+            "paperId": "ffea7f0fd89dc940107cdf94f7decfcc42315c67",
+            "title": "A Neural Syntactic Language Model"
+        },
+        {
+            "paperId": "1174297ddcf08937a94d8efe4c1efb65f3b92fd8",
+            "title": "Discriminative Training of a Neural Network Statistical Parser"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "5b885bc11bb4fb12829cdab49775ea59ea744173",
+            "title": "The Zipper"
+        },
+        {
+            "paperId": "c6ded0325aff39d7c91002aa46adcdc6d0e6f449",
+            "title": "Sentence Disambiguation by a Shift-Reduce Parsing Technique"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "a14045a751f5d8ed387c8630a86a3a2861b90643",
+            "title": "A Fast and Accurate Dependency Parser using Neural Networks"
+        },
+        {
+            "paperId": null,
+            "title": "Lecture 6.5 \u2013 RMSProp: Divide the gradient by a running average of its recent magnitude. InNeural Networks for Machine Learning, Coursera"
+        },
+        {
+            "paperId": null,
+            "title": "Theano : a CPU and GPU math expression compiler"
+        },
+        {
+            "paperId": "51171b9e76ab937338e5cbe9bb4a95c61883f556",
+            "title": "Compositionality as an Empirical Problem"
+        },
+        {
+            "paperId": "e03d300581e16f6664157d2c1c6ceec33ec528ce",
+            "title": "Machine Learning Challenges. Evaluating Predictive Uncertainty, Visual Object Classification, and Recognising Tectual Entailment"
+        },
+        {
+            "paperId": "e808f28d411a958c5db81ceb111beb2638698f47",
+            "title": "The PASCAL Recognising Textual Entailment Challenge"
+        },
+        {
+            "paperId": null,
+            "title": "Learning task-dependent distributed representations by backpropagation through structure"
+        },
+        {
+            "paperId": "40dbb25a15b63af3faccb81c8e64a3f5d659e07e",
+            "title": "The Theory of Parsing, Translation, and Compiling"
+        },
+        {
+            "paperId": null,
+            "title": "reduce : (cid:104) x | y | S , B (cid:105) \u2192 (cid:104) ( x , y ) | S , B (cid:105) . This operation pops the top two elements from the stack, merges them, and pushes the result back on to the stack"
+        },
+        {
+            "paperId": null,
+            "title": "shift : (cid:104) S , x | B (cid:105) \u2192 (cid:104) x | S , B (cid:105)"
+        }
+    ]
+}

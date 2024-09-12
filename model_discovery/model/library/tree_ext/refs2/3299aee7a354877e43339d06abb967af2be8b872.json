@@ -1,0 +1,182 @@
+{
+    "paperId": "3299aee7a354877e43339d06abb967af2be8b872",
+    "externalIds": {
+        "MAG": "2949549352",
+        "DBLP": "conf/iclr/SmithKYL18",
+        "ArXiv": "1711.00489",
+        "CorpusId": 3516266
+    },
+    "title": "Don't Decay the Learning Rate, Increase the Batch Size",
+    "abstract": "It is common practice to decay the learning rate. Here we show one can usually obtain the same learning curve on both training and test sets by instead increasing the batch size during training. This procedure is successful for stochastic gradient descent (SGD), SGD with momentum, Nesterov momentum, and Adam. It reaches equivalent test accuracies after the same number of training epochs, but with fewer parameter updates, leading to greater parallelism and shorter training times. We can further reduce the number of parameter updates by increasing the learning rate $\\epsilon$ and scaling the batch size $B \\propto \\epsilon$. Finally, one can increase the momentum coefficient $m$ and scale $B \\propto 1/(1-m)$, although this tends to slightly reduce the test accuracy. Crucially, our techniques allow us to repurpose existing training schedules for large batch training with no hyper-parameter tuning. We train ResNet-50 on ImageNet to $76.1\\%$ validation accuracy in under 30 minutes.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2017,
+    "referenceCount": 36,
+    "citationCount": 916,
+    "influentialCitationCount": 56,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This procedure is successful for stochastic gradient descent, SGD with momentum, Nesterov momentum, and Adam, and reaches equivalent test accuracies after the same number of training epochs, but with fewer parameter updates, leading to greater parallelism and shorter training times."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2157770601",
+            "name": "Samuel L. Smith"
+        },
+        {
+            "authorId": "2113697",
+            "name": "Pieter-Jan Kindermans"
+        },
+        {
+            "authorId": "2827616",
+            "name": "Quoc V. Le"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "6cd621c0973c915895d88a391783063b20e98855",
+            "title": "Extremely Large Minibatch SGD: Training ResNet-50 on ImageNet in 15 Minutes"
+        },
+        {
+            "paperId": "ae4b0b63ff26e52792be7f60bda3ed5db83c1577",
+            "title": "A Bayesian Perspective on Generalization and Stochastic Gradient Descent"
+        },
+        {
+            "paperId": "6fc2ccc1cbb555955291b0989251bd77240dd551",
+            "title": "ImageNet Training in Minutes"
+        },
+        {
+            "paperId": "e6e64043c66b83a8787a69a70d7c0a85fd9d23c3",
+            "title": "Scaling SGD Batch Size to 32K for ImageNet Training"
+        },
+        {
+            "paperId": "1e3d18beaf3921f561e1b999780f29f2b23f3b7d",
+            "title": "Large Batch Training of Convolutional Networks"
+        },
+        {
+            "paperId": "0d57ba12a6d958e178d83be4c84513f7e42b24e5",
+            "title": "Accurate, Large Minibatch SGD: Training ImageNet in 1 Hour"
+        },
+        {
+            "paperId": "1ecc2bd0bc6ffa0a2f466a058589c20593e3e57c",
+            "title": "The Marginal Value of Adaptive Gradient Methods in Machine Learning"
+        },
+        {
+            "paperId": "8501e330d78391f4e690886a8eb8fac867704ea6",
+            "title": "Train longer, generalize better: closing the generalization gap in large batch training of neural networks"
+        },
+        {
+            "paperId": "2dfeb5a90abc49ab2a80a492a01a4e2c8e92ec22",
+            "title": "In-datacenter performance analysis of a tensor processing unit"
+        },
+        {
+            "paperId": "ea68a5c75e0e228e54efd91db972f71c1a917e51",
+            "title": "Stochastic Gradient Descent as Approximate Bayesian Inference"
+        },
+        {
+            "paperId": "aff6a21f5fadc3f240b4275f6c229ac00d89f420",
+            "title": "Automated Inference with Adaptive Batches"
+        },
+        {
+            "paperId": "29d9fa0527ccc9d0092bad9deca4109288acd85f",
+            "title": "Coupling Adaptive Batch Sizes with Learning Rates"
+        },
+        {
+            "paperId": "b6583fe9c9dc52bb129aff4cefc60519349f3b4c",
+            "title": "Entropy-SGD: biasing gradient descent into wide valleys"
+        },
+        {
+            "paperId": "54ddb00fa691728944fd8becea90a373d21597cf",
+            "title": "Understanding deep learning requires rethinking generalization"
+        },
+        {
+            "paperId": "8ec5896b4490c6e127d1718ffc36a3439d84cb81",
+            "title": "On Large-Batch Training for Deep Learning: Generalization Gap and Sharp Minima"
+        },
+        {
+            "paperId": "b022f2a277a4bf5f42382e86e4380b96340b9e86",
+            "title": "SGDR: Stochastic Gradient Descent with Warm Restarts"
+        },
+        {
+            "paperId": "d21703674ae562bae4a849a75847cdd9ead417df",
+            "title": "Optimization Methods for Large-Scale Machine Learning"
+        },
+        {
+            "paperId": "1c4e9156ca07705531e45960b7a919dc473abb51",
+            "title": "Wide Residual Networks"
+        },
+        {
+            "paperId": "b5c26ab8767d046cb6e32d959fdf726aee89bb62",
+            "title": "Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning"
+        },
+        {
+            "paperId": "2f8eb618406e5ae3fe73b9b4ffe2b346107febaa",
+            "title": "Stochastic Modified Equations and Adaptive Stochastic Gradient Algorithms"
+        },
+        {
+            "paperId": "cb4dc7277d1c8c3bc76dd7425eb1cc7cbaf99487",
+            "title": "Optimizing Neural Networks with Kronecker-factored Approximate Curvature"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "80d800dfadbe2e6c7b2367d9229cc82912d55889",
+            "title": "One weird trick for parallelizing convolutional neural networks"
+        },
+        {
+            "paperId": "3127190433230b3dc1abd0680bb58dced4bcd90e",
+            "title": "Large Scale Distributed Deep Networks"
+        },
+        {
+            "paperId": "d254b4a5232f82d1bf4c76c04fd38f1f109a0d32",
+            "title": "Sample size selection in optimization methods for machine learning"
+        },
+        {
+            "paperId": "aeed631d6a84100b5e9a021ec1914095c66de415",
+            "title": "Bayesian Learning via Stochastic Gradient Langevin Dynamics"
+        },
+        {
+            "paperId": "36f49b05d764bf5c10428b082c2d96c13c4203b9",
+            "title": "Hogwild: A Lock-Free Approach to Parallelizing Stochastic Gradient Descent"
+        },
+        {
+            "paperId": "d0b8c324eacff55458d61275d642f7b340193d8c",
+            "title": "Hybrid Deterministic-Stochastic Methods for Data Fitting"
+        },
+        {
+            "paperId": "34ddd8865569c2c32dec9bf7ffc817ff42faaa01",
+            "title": "A Stochastic Approximation Method"
+        },
+        {
+            "paperId": "c1d05e7e58bffab5f88299df223a8dd3503634ca",
+            "title": "ImageNet Training in 24 Minutes"
+        },
+        {
+            "paperId": "1b7db8ad49f94da9b90db89bede5f27644bb9911",
+            "title": "SGDR: Stochastic Gradient Descent with Restarts"
+        },
+        {
+            "paperId": "b1a5961609c623fc816aaa77565ba38b25531a8e",
+            "title": "Neural Networks: Tricks of the Trade"
+        },
+        {
+            "paperId": "f91154c0d159a3f2dd3638915db32c5914544273",
+            "title": "Flat Minima"
+        },
+        {
+            "paperId": "8c8f198d582898ef06aea1edc51cbc419d922a00",
+            "title": "Early Stopping-But When?"
+        },
+        {
+            "paperId": "8d3a318b62d2e970122da35b2a2e70a5d12cc16f",
+            "title": "A method for solving the convex programming problem with convergence rate O(1/k^2)"
+        },
+        {
+            "paperId": null,
+            "title": "Don't Decay the Learning Rate, Increase the Batch Size"
+        }
+    ]
+}

@@ -1,0 +1,266 @@
+{
+    "paperId": "bce22675d77e1ef28e92f3793c02f8f5ccdb0ddd",
+    "externalIds": {
+        "MAG": "2964156591",
+        "DBLP": "conf/soda/SaGPRR18",
+        "DOI": "10.1137/1.9781611975031.69",
+        "CorpusId": 4050547,
+        "PubMed": "31130802"
+    },
+    "title": "A Two-pronged Progress in Structured Dense Matrix Vector Multiplication",
+    "abstract": "Matrix-vector multiplication is one of the most fundamental computing primitives. Given a matrix A \u2208 F N \u00d7 N and a vector b \u2208 F N , it is known that in the worst case \u0398(N 2) operations over F are needed to compute Ab. Many types of structured matrices do admit faster multiplication. However, even given a matrix A that is known to have this property, it is hard in general to recover a representation of A exposing the actual fast multiplication algorithm. Additionally, it is not known in general whether the inverses of such structured matrices can be computed or multiplied quickly. A broad question is thus to identify classes of structured dense matrices that can be represented with O(N) parameters, and for which matrix-vector multiplication (and ideally other operations such as solvers) can be performed in a sub-quadratic number of operations. One such class of structured matrices that admit near-linear matrix-vector multiplication are the orthogonal polynomial transforms whose rows correspond to a family of orthogonal polynomials. Other well known classes include the Toeplitz, Hankel, Vandermonde, Cauchy matrices and their extensions (e.g. confluent Cauchy-like matrices) that are all special cases of a low displacementrank property. In this paper, we make progress on two fronts: Our work unifies, generalizes, and simplifies existing state-of-the-art results in structured matrix-vector multiplication. Finally, we show how applications in areas such as multipoint evaluations of multivariate polynomials can be reduced to problems involving low recurrence width matrices.",
+    "venue": "ACM-SIAM Symposium on Discrete Algorithms",
+    "year": 2018,
+    "referenceCount": 54,
+    "citationCount": 26,
+    "influentialCitationCount": 1,
+    "openAccessPdf": {
+        "url": "https://epubs.siam.org/doi/pdf/10.1137/1.9781611975031.69",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work unifies, generalizes, and simplifies existing state-of-the-art results in structured matrix-vector multiplication, and shows how applications in areas such as multipoint evaluations of multivariate polynomials can be reduced to problems involving low recurrence width matrices."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1801197",
+            "name": "Christopher De Sa"
+        },
+        {
+            "authorId": "39499001",
+            "name": "Albert Gu"
+        },
+        {
+            "authorId": "3221067",
+            "name": "Rohan Puttagunta"
+        },
+        {
+            "authorId": "2114485554",
+            "name": "C. R\u00e9"
+        },
+        {
+            "authorId": "1755572",
+            "name": "A. Rudra"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "24541200583f821572ff4217764f95521aebfe26",
+            "title": "Algorithms for Structured Linear Systems Solving and Their Implementation"
+        },
+        {
+            "paperId": "f593e06217e6a92b5130502452b61bc76ae121b6",
+            "title": "On Matrices With Displacement Structure: Generalized Operators and Faster Algorithms"
+        },
+        {
+            "paperId": "983db08bf7f6c837616780098cb363fd435c4d5c",
+            "title": "Theoretical Properties for Neural Networks with Weight Matrices of Low Displacement Rank"
+        },
+        {
+            "paperId": "1913ed0443a8ff19abbd5d4be0219fd06ec01734",
+            "title": "Time and space efficient generators for quasiseparable matrices"
+        },
+        {
+            "paperId": "94087ad5ed11555c260a42f2f9ca9da183c6f87e",
+            "title": "Predicting non-small cell lung cancer prognosis by fully automated microscopic pathology image features"
+        },
+        {
+            "paperId": "bf31e4aaa0f2f0cc1318d1742c60a409d68f12ce",
+            "title": "Computational Methods for Linear Matrix Equations"
+        },
+        {
+            "paperId": "99e9c9641c38f1a50b97d8677aa97b5a7f8a26c2",
+            "title": "Computing with Quasiseparable Matrices"
+        },
+        {
+            "paperId": "54c3e878bf0ff2fdde16e439b5579ee99ee0d0d8",
+            "title": "ACDC: A Structured Efficient Linear Layer"
+        },
+        {
+            "paperId": "bf76be8df2f2bc56edac98a5d0dfc19c85882eaa",
+            "title": "Structured Transforms for Small-Footprint Deep Learning"
+        },
+        {
+            "paperId": "4da4ccd64ce2b4d6bef11ea7c86c984451e8d970",
+            "title": "High-rate locally-correctable and locally-testable codes with sub-polynomial query complexity"
+        },
+        {
+            "paperId": "eca5e4cfe3e72bdf70b13fecb76d8bda71694423",
+            "title": "Nearly optimal computations with structured matrices"
+        },
+        {
+            "paperId": "e5e809fbce8fa94b0b8676716abb9e49c800cb9b",
+            "title": "Separable Type Representations of Matrices and Fast Algorithms"
+        },
+        {
+            "paperId": "ff1158a934767556c4cb16056537636682a1649e",
+            "title": "Logic Minimization Techniques with Applications to Cryptology"
+        },
+        {
+            "paperId": "f73390354f9d357012b34742aa6401bab84d3bd6",
+            "title": "Fast Polynomial Factorization and Modular Composition"
+        },
+        {
+            "paperId": "c06d7b88c6f686c496a15e85478f0cbcb91e28f5",
+            "title": "High-rate codes with sublinear-time decoding"
+        },
+        {
+            "paperId": "ed9a4dcab525d8fc20ccf26208ddb94e43fc2b51",
+            "title": "Matrix Computations and Semiseparable Matrices: Linear Systems"
+        },
+        {
+            "paperId": "35099635bceb88469f25e9c7c1bed19f57d222da",
+            "title": "Computations with quasiseparable polynomials and matrices"
+        },
+        {
+            "paperId": "da28d791dd37effd26359601a249ddd23597a218",
+            "title": "Fast Conversion Algorithms for Orthogonal Polynomials"
+        },
+        {
+            "paperId": "d564e15935e93fb68a2aee9b69fadf7ceb8972ef",
+            "title": "A Givens-Weight Representation for Rank Structured Matrices"
+        },
+        {
+            "paperId": "7d7820bed93d776b9ffed063fd6044150a7eb668",
+            "title": "A note on the representation and definition of semiseparable matrices"
+        },
+        {
+            "paperId": "7b07d92ae33d0dad145a03db0228fddccd04030a",
+            "title": "Fast Multipoint Evaluation of Bivariate Polynomials"
+        },
+        {
+            "paperId": "526496e2067e8e9740d71ea33b1b4954b8fa82d3",
+            "title": "Solving certain matrix equations by means of Toeplitz computations: algorithms and applications"
+        },
+        {
+            "paperId": "1669633956cd20c52d701ff0766a5dedfc32d8c5",
+            "title": "Matrix-vector product for confluent Cauchy-like matrices with application to confluent rational interpolation"
+        },
+        {
+            "paperId": "ec10af8308aed3f2342233c09e090175cbf141cc",
+            "title": "Fundamental problems of algorithmic algebra"
+        },
+        {
+            "paperId": "8df26a339b6cbb1089e02f2039ac6c30a6ec89d9",
+            "title": "On a new class of structured matrices"
+        },
+        {
+            "paperId": "816d537e26f2bd00a87b8bc5cc44082191dadb96",
+            "title": "A displacement approach to efficient decoding of algebraic-geometric codes"
+        },
+        {
+            "paperId": "dc3efdd991621d8f18a013ad1d013a24b86ccf90",
+            "title": "A unified superfast algorithm for boundary rational tangential interpolation problems and for inversion and factorization of dense structured matrices"
+        },
+        {
+            "paperId": "fb5b2c8dac6f0c2cbfdc749340ce884de36a5068",
+            "title": "Fast algorithms for discrete polynomial transforms"
+        },
+        {
+            "paperId": "ab3976cc49b61845c54b5babbb0e0e011c85edc9",
+            "title": "Fast Discrete Polynomial Transforms with Applications to Data Analysis for Distance Transitive Graphs"
+        },
+        {
+            "paperId": "54946e3ef95b6eb93d89346a768a9c73053870d0",
+            "title": "Algebraic complexity theory"
+        },
+        {
+            "paperId": "c72d3de95adde34a66c73f6358fd5eae0c067195",
+            "title": "Displacement Structure: Theory and Applications"
+        },
+        {
+            "paperId": "ac9234baff1af9006ab5e69eaa825ef565222827",
+            "title": "Asymptotically fast solution of Toeplitz-like singular linear systems"
+        },
+        {
+            "paperId": "910eea963f1ef8bf1324d77b9f864a9a04c9dbfc",
+            "title": "Complexity of multiplication with vectors for structured matrices"
+        },
+        {
+            "paperId": "51b76dae9d7ae067f65f5786afd6625d27f74c35",
+            "title": "On Wiedemann's Method of Solving Sparse Linear Systems"
+        },
+        {
+            "paperId": "9c9b7a9a3c0515e8d705748e84f46e29d63881e4",
+            "title": "On computations with dense structured matrices"
+        },
+        {
+            "paperId": "0f79df045b1f5e534b9576dd19b5ae78fa38d2cb",
+            "title": "Algebraic Methods for Toeplitz-like Matrices and Operators"
+        },
+        {
+            "paperId": "3ccd832c9ff8ebc5363f3f582f155bd42fb73042",
+            "title": "Factored forms for solutions of AX \u2212 XB = C and X \u2212 AXB = C in companion matrices"
+        },
+        {
+            "paperId": "27161310196eab907aedd72c85708c58b1ea5e2f",
+            "title": "Asymptotically fast solution of toeplitz and related systems of linear equations"
+        },
+        {
+            "paperId": "56dd0bd32ff2d50b2e3209d851288414a1d6d96b",
+            "title": "Doubling algorithms for Toeplitz and related equations"
+        },
+        {
+            "paperId": "cf961811732b7e1f253883e0345f679ff57ac3a9",
+            "title": "New inversion formulas for matrices classified in terms of their distance from Toeplitz matrices"
+        },
+        {
+            "paperId": "57923211710a9684f7156b8dc6ebd8dc0dba0e55",
+            "title": "An Introduction to Orthogonal Polynomials"
+        },
+        {
+            "paperId": "7306af13eb2052fe9b9652c7d8b669655d307635",
+            "title": "Displacement ranks of matrices and linear equations"
+        },
+        {
+            "paperId": "1835b07b5671b97a4350f8c07b5412a1b390fdf7",
+            "title": "A Parallel Algorithm for the Efficient Solution of a General Class of Recurrence Equations"
+        },
+        {
+            "paperId": "9b320f795a1cd4be15ed19804a137325b7ea25e2",
+            "title": "Inter-reciprocity applied to electrical networks"
+        },
+        {
+            "paperId": "3dc79c3cab5df78e80b70536d2ad42f9f0ac9dec",
+            "title": "List-Decoding Multiplicity Codes"
+        },
+        {
+            "paperId": "8a43cec9747de9a4ef187d906bb1a881797f390c",
+            "title": "A bibliography on semiseparable matrices*"
+        },
+        {
+            "paperId": "639c576044226f0696c6bd097ed0fb21d54bc645",
+            "title": "Fast algorithms for structured matrices : theory and applications : AMS-IMS-SIAM Joint Summer Research Conference on Fast Algorithms in Mathematics, Computer Science and Engineering, August 5-9, 2001, Mount Holyoke College, South Hadley, Massachusetts"
+        },
+        {
+            "paperId": "7c9411bc50b6a33947575f37ae16931578beae23",
+            "title": "Structured Matrices and Polynomials: Unified Superfast Algorithms"
+        },
+        {
+            "paperId": "c0642e1e3c6696442210746810df22d576e6dc9f",
+            "title": "Structured matrices and newton's iteration: unified approach"
+        },
+        {
+            "paperId": "4098fbe931e60ce7f87a1925a348c9e6fce2a970",
+            "title": "Polynomial and Matrix Computations"
+        },
+        {
+            "paperId": "10a463bb00b44bdd3a8620f2bedb9e1564bfcf32",
+            "title": "The Design and Analysis of Computer Algorithms"
+        },
+        {
+            "paperId": null,
+            "title": "A two-pronged progress in structured dense matrix vector multiplication"
+        },
+        {
+            "paperId": null,
+            "title": "Inverting modified matrices"
+        },
+        {
+            "paperId": null,
+            "title": "A method of circuit synthesis"
+        }
+    ]
+}

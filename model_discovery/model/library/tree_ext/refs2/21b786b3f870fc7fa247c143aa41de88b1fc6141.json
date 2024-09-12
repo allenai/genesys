@@ -1,0 +1,150 @@
+{
+    "paperId": "21b786b3f870fc7fa247c143aa41de88b1fc6141",
+    "externalIds": {
+        "MAG": "2963139417",
+        "DBLP": "journals/corr/abs-1807-03039",
+        "ArXiv": "1807.03039",
+        "CorpusId": 49657329
+    },
+    "title": "Glow: Generative Flow with Invertible 1x1 Convolutions",
+    "abstract": "Flow-based generative models (Dinh et al., 2014) are conceptually attractive due to tractability of the exact log-likelihood, tractability of exact latent-variable inference, and parallelizability of both training and synthesis. In this paper we propose Glow, a simple type of generative flow using an invertible 1x1 convolution. Using our method we demonstrate a significant improvement in log-likelihood on standard benchmarks. Perhaps most strikingly, we demonstrate that a generative model optimized towards the plain log-likelihood objective is capable of efficient realistic-looking synthesis and manipulation of large images. The code for our model is available at this https URL",
+    "venue": "Neural Information Processing Systems",
+    "year": 2018,
+    "referenceCount": 29,
+    "citationCount": 2763,
+    "influentialCitationCount": 477,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Glow, a simple type of generative flow using an invertible 1x1 convolution, is proposed, demonstrating that a generative model optimized towards the plain log-likelihood objective is capable of efficient realistic-looking synthesis and manipulation of large images."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1726807",
+            "name": "Diederik P. Kingma"
+        },
+        {
+            "authorId": "6515819",
+            "name": "Prafulla Dhariwal"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "1db9bd18681b96473f3c82b21edc9240b44dc329",
+            "title": "Image Transformer"
+        },
+        {
+            "paperId": "f6cbf83e1ce3b099d656d2346b261d5ef7f2b62e",
+            "title": "Parallel WaveNet: Fast High-Fidelity Speech Synthesis"
+        },
+        {
+            "paperId": "744fe47157477235032f7bb3777800f9f2f45e52",
+            "title": "Progressive Growing of GANs for Improved Quality, Stability, and Variation"
+        },
+        {
+            "paperId": "3a6d4cd0768ae8768e733280d362bdb4d25924e7",
+            "title": "The Reversible Residual Network: Backpropagation Without Storing Activations"
+        },
+        {
+            "paperId": "e9882bd009c414d4c6d153a5cf340b2d23213d0f",
+            "title": "Flow-GAN: Combining Maximum Likelihood and Adversarial Learning in Generative Models"
+        },
+        {
+            "paperId": "585bf7bea8fa5267738bc465611d6f197e0f87dd",
+            "title": "Masked Autoregressive Flow for Density Estimation"
+        },
+        {
+            "paperId": "2d1b8f60f2724efd6c9344870fb60e8525157d70",
+            "title": "Parallel Multiscale Autoregressive Density Estimation"
+        },
+        {
+            "paperId": "df0402517a7338ae28bc54acaac400de6b456a46",
+            "title": "WaveNet: A Generative Model for Raw Audio"
+        },
+        {
+            "paperId": "0936352b78a52bc5d2b5e3f04233efc56664af51",
+            "title": "Conditional Image Generation with PixelCNN Decoders"
+        },
+        {
+            "paperId": "6a97d2668187965743d1b825b306defccbabbb4c",
+            "title": "Improved Variational Inference with Inverse Autoregressive Flow"
+        },
+        {
+            "paperId": "09879f7956dddc2a9328f5c1472feeb8402bcbcf",
+            "title": "Density estimation using Real NVP"
+        },
+        {
+            "paperId": "77f0a39b8e02686fd85b01971f8feb7f60971f80",
+            "title": "Identity Mappings in Deep Residual Networks"
+        },
+        {
+            "paperId": "3d2c6941a9b4608ba52b328369a3352db2092ae0",
+            "title": "Weight Normalization: A Simple Reparameterization to Accelerate Training of Deep Neural Networks"
+        },
+        {
+            "paperId": "41f1d50c85d3180476c4c7b3eea121278b0d8474",
+            "title": "Pixel Recurrent Neural Networks"
+        },
+        {
+            "paperId": "4dcdae25a5e33682953f0853ee4cf7ca93be58a9",
+            "title": "LSUN: Construction of a Large-scale Image Dataset using Deep Learning with Humans in the Loop"
+        },
+        {
+            "paperId": "0f899b92b7fb03b609fee887e4b6f3b633eaf30d",
+            "title": "Variational Inference with Normalizing Flows"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "dc8301b67f98accbb331190dd7bd987952a692af",
+            "title": "NICE: Non-linear Independent Components Estimation"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "5f5dc5b9a2ba710937e2c413b37b053cd673df02",
+            "title": "Auto-Encoding Variational Bayes"
+        },
+        {
+            "paperId": "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17",
+            "title": "Generating Sequences With Recurrent Neural Networks"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "c68796f833a7151f0a63d1d1608dc902b4fdc9b6",
+            "title": "GENERATIVE ADVERSARIAL NETS"
+        },
+        {
+            "paperId": null,
+            "title": "Variational autoencoders"
+        },
+        {
+            "paperId": null,
+            "title": "Gradient checkpointing"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        },
+        {
+            "paperId": "56f50f070a861923707d1faba7e9144ea99be6e8",
+            "title": "Higher Order Statistical Decorrelation without Information Loss"
+        },
+        {
+            "paperId": null,
+            "title": "Class conditional 32 \u00d7 32 ImageNet samples Figure 10: Class conditional samples on 5-bit CIFAR-10 and 32 \u00d7 32 ImageNet respectively"
+        }
+    ]
+}

@@ -1,0 +1,114 @@
+{
+    "paperId": "3adff57fd09965224506a1bacc0579d9d3c8c11e",
+    "externalIds": {
+        "MAG": "2609826708",
+        "DBLP": "journals/corr/DunnSHGCC17",
+        "ArXiv": "1704.05179",
+        "CorpusId": 11606382
+    },
+    "title": "SearchQA: A New Q&A Dataset Augmented with Context from a Search Engine",
+    "abstract": "We publicly release a new large-scale dataset, called SearchQA, for machine comprehension, or question-answering. Unlike recently released datasets, such as DeepMind CNN/DailyMail and SQuAD, the proposed SearchQA was constructed to reflect a full pipeline of general question-answering. That is, we start not from an existing article and generate a question-answer pair, but start from an existing question-answer pair, crawled from J! Archive, and augment it with text snippets retrieved by Google. Following this approach, we built SearchQA, which consists of more than 140k question-answer pairs with each pair having 49.6 snippets on average. Each question-answer-context tuple of the SearchQA comes with additional meta-data such as the snippet's URL, which we believe will be valuable resources for future research. We conduct human evaluation as well as test two baseline methods, one simple word selection and the other deep learning based, on the SearchQA. We show that there is a meaningful gap between the human and machine performances. This suggests that the proposed dataset could well serve as a benchmark for question-answering.",
+    "venue": "arXiv.org",
+    "year": 2017,
+    "referenceCount": 16,
+    "citationCount": 422,
+    "influentialCitationCount": 73,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that there is a meaningful gap between the human and machine performances, which suggests that the proposed dataset could well serve as a benchmark for question-answering."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2111841367",
+            "name": "Matthew Dunn"
+        },
+        {
+            "authorId": "2246570",
+            "name": "Levent Sagun"
+        },
+        {
+            "authorId": "2055681746",
+            "name": "Mike Higgins"
+        },
+        {
+            "authorId": "3243915",
+            "name": "V. U. G\u00fcney"
+        },
+        {
+            "authorId": "3149518",
+            "name": "Volkan Cirik"
+        },
+        {
+            "authorId": "1979489",
+            "name": "Kyunghyun Cho"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "3eda43078ae1f4741f09be08c4ecab6229046a5c",
+            "title": "NewsQA: A Machine Comprehension Dataset"
+        },
+        {
+            "paperId": "8d574fde3e46ad766fac26094e3bb1cf55a08226",
+            "title": "MS MARCO: A Human Generated MAchine Reading COmprehension Dataset"
+        },
+        {
+            "paperId": "dd95f96e3322dcaee9b1e3f7871ecc3ebcd51bfe",
+            "title": "MS MARCO: A Human Generated MAchine Reading COmprehension Dataset"
+        },
+        {
+            "paperId": "579e0077a3810510a7965224a8782ecc01766ea0",
+            "title": "Achieving Human Parity in Conversational Speech Recognition"
+        },
+        {
+            "paperId": "a39ffa57ef8e538b3c6a6c2bbc0b641f7cdc60dc",
+            "title": "Who did What: A Large-Scale Person-Centered Cloze Dataset"
+        },
+        {
+            "paperId": "05dd7254b632376973f3a1b4d39485da17814df5",
+            "title": "SQuAD: 100,000+ Questions for Machine Comprehension of Text"
+        },
+        {
+            "paperId": "f2e50e2ee4021f199877c8920f1f984481c723aa",
+            "title": "Text Understanding with the Attention Sum Reader Network"
+        },
+        {
+            "paperId": "35b91b365ceb016fb3e022577cec96fb9b445dc5",
+            "title": "The Goldilocks Principle: Reading Children's Books with Explicit Memory Representations"
+        },
+        {
+            "paperId": "d1505c6123c102e53eb19dff312cb25cea840b72",
+            "title": "Teaching Machines to Read and Comprehend"
+        },
+        {
+            "paperId": "9653d5c2c7844347343d073bbedd96e05d52f69b",
+            "title": "Pointer Networks"
+        },
+        {
+            "paperId": "6e565308c8081e807709cb4a917443b737e6cdb4",
+            "title": "Large-scale Simple Question Answering with Memory Networks"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        }
+    ]
+}

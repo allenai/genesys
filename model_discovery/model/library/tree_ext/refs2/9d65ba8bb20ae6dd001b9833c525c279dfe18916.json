@@ -1,0 +1,158 @@
+{
+    "paperId": "9d65ba8bb20ae6dd001b9833c525c279dfe18916",
+    "externalIds": {
+        "DBLP": "conf/nips/MairalBPSZ08",
+        "MAG": "2128638419",
+        "ArXiv": "0809.3083",
+        "CorpusId": 682971
+    },
+    "title": "Supervised Dictionary Learning",
+    "abstract": "It is now well established that sparse signal models are well suited for restoration tasks and can be effectively learned from audio, image, and video data. Recent research has been aimed at learning discriminative sparse models instead of purely reconstructive ones. This paper proposes a new step in that direction, with a novel sparse representation for signals belonging to different classes in terms of a shared dictionary and discriminative class models. The linear version of the proposed model admits a simple probabilistic interpretation, while its most general variant admits an interpretation in terms of kernels. An optimization framework for learning all the components of the proposed model is presented, along with experimental results on standard handwritten digit and texture classification tasks.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2008,
+    "referenceCount": 28,
+    "citationCount": 1178,
+    "influentialCitationCount": 75,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel sparse representation for signals belonging to different classes in terms of a shared dictionary and discriminative class models is proposed, with results on standard handwritten digit and texture classification tasks."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2599292",
+            "name": "J. Mairal"
+        },
+        {
+            "authorId": "144570279",
+            "name": "F. Bach"
+        },
+        {
+            "authorId": "144189388",
+            "name": "J. Ponce"
+        },
+        {
+            "authorId": "1699339",
+            "name": "G. Sapiro"
+        },
+        {
+            "authorId": "1688869",
+            "name": "Andrew Zisserman"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "f4106ee9cde073f89263aa417434bea09c094e71",
+            "title": "Robust Face Recognition via Sparse Representation"
+        },
+        {
+            "paperId": "18862760ac708a589afa5848ab55931996db1b28",
+            "title": "Semi-supervised learning of compact document representations with deep networks"
+        },
+        {
+            "paperId": "a53da9916b87fa295837617c16ef2ca6462cafb8",
+            "title": "Classification using discriminative restricted Boltzmann machines"
+        },
+        {
+            "paperId": "0a072cbdee54b83c8df43a431065f009d2cd2e70",
+            "title": "Discriminative learned dictionaries for local image analysis"
+        },
+        {
+            "paperId": "15f53de0a5ee2ef9015e218cb179165df1ed1298",
+            "title": "Sparse representations for image classification: learning discriminative and reconstructive non-parametric dictionaries"
+        },
+        {
+            "paperId": "c13aa63ccd5cf972a0a8c6b236c1dfad95b19b4e",
+            "title": "Supervised Topic Models"
+        },
+        {
+            "paperId": "b3852f0113fcf8a3913c55ae92393ae6ccde347e",
+            "title": "Self-taught learning: transfer learning from unlabeled data"
+        },
+        {
+            "paperId": "ad33d1fa8628cb55c32fb52feb537f65184c3b29",
+            "title": "Learning a Nonlinear Embedding by Preserving Class Neighbourhood Structure"
+        },
+        {
+            "paperId": "63140301f88a0c5223f92afbf2acfec9e537f6be",
+            "title": "Sparse Representation for Signal Classification"
+        },
+        {
+            "paperId": "932c2a02d462abd75af018125413b1ceaa1ee3f4",
+            "title": "Efficient Learning of Sparse Representations with an Energy-Based Model"
+        },
+        {
+            "paperId": "e07416eabd4ba6c69fa473756bb04ae7161177be",
+            "title": "Image Denoising Via Sparse and Redundant Representations Over Learned Dictionaries"
+        },
+        {
+            "paperId": "83b522f4bfa5db7f7d34f839475af7d078107634",
+            "title": "$rm K$-SVD: An Algorithm for Designing Overcomplete Dictionaries for Sparse Representation"
+        },
+        {
+            "paperId": "f5d565d307a746d8bc0feb52c873995af698deca",
+            "title": "Principled Hybrids of Generative and Discriminative Models"
+        },
+        {
+            "paperId": "03a073589eaf8ce3440464d020e0d0b26df5869b",
+            "title": "Object categorization by learned universal visual dictionary"
+        },
+        {
+            "paperId": "2c3cac0f568ae9261ff9c80eeda55a13e83ae7fb",
+            "title": "A discriminative framework for modelling object classes"
+        },
+        {
+            "paperId": "0e0801da1a187d90862cd00ce7f12222ff965ef0",
+            "title": "Classification with Hybrid Generative/Discriminative Models"
+        },
+        {
+            "paperId": "469165b7b82ec3d94ed4fe0be5956bbc84164259",
+            "title": "Tangent distance kernels for support vector machines"
+        },
+        {
+            "paperId": "2805537bec87a6177037b18f9a3a9d3f1038867b",
+            "title": "Sparse coding with an overcomplete basis set: A strategy employed by V1?"
+        },
+        {
+            "paperId": "7cf0323d74a1d89a5d760ddd5b8674d11acdbaed",
+            "title": "\u53cc\u5bfe\u5e73\u5766\u7a7a\u9593\u306b\u304a\u3051\u308bLeast Angle Regression\u3068\u60c5\u5831\u91cf\u898f\u6e96"
+        },
+        {
+            "paperId": null,
+            "title": "inria-00322431, version 1 -17 Sep"
+        },
+        {
+            "paperId": "b4de0efa06940e8b943dd0d73f3ad95d792ba448",
+            "title": "Sparse Representation for Signal Classification"
+        },
+        {
+            "paperId": null,
+            "title": "A \ufb01xed-point continuation method for l1-regularized minimization with applications to compressed sensing"
+        },
+        {
+            "paperId": null,
+            "title": "Pontil Multi-Task Feature Learning"
+        },
+        {
+            "paperId": "f6e0fb4c77906bc23fe59a8f848ce62ba9687181",
+            "title": "K-SVD : An Algorithm for Designing of Overcomplete Dictionaries for Sparse Representation"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "6f14a338e8837fae059cab41064155cd84cb9cd5",
+            "title": "Compressive Sampling"
+        },
+        {
+            "paperId": null,
+            "title": "la Haute Borne -40, avenue Halley -59650 Villeneuve d'Ascq Centre de recherche INRIA Nancy -Grand Est : LORIA, Technop\u00f4le de Nancy-Brabois -Campus scientifique 615"
+        },
+        {
+            "paperId": null,
+            "title": "RR n \u00b0 6652"
+        }
+    ]
+}

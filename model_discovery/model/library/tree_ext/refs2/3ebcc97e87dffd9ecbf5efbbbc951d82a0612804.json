@@ -1,0 +1,118 @@
+{
+    "paperId": "3ebcc97e87dffd9ecbf5efbbbc951d82a0612804",
+    "externalIds": {
+        "DBLP": "journals/corr/GuttenbergVWAK16",
+        "MAG": "2584280040",
+        "ArXiv": "1612.04530",
+        "CorpusId": 10748852
+    },
+    "title": "Permutation-equivariant neural networks applied to dynamics prediction",
+    "abstract": "The introduction of convolutional layers greatly advanced the performance of neural networks on image tasks due to innately capturing a way of encoding and learning translation-invariant operations, matching one of the underlying symmetries of the image domain. In comparison, there are a number of problems in which there are a number of different inputs which are all 'of the same type' --- multiple particles, multiple agents, multiple stock prices, etc. The corresponding symmetry to this is permutation symmetry, in that the algorithm should not depend on the specific ordering of the input data. We discuss a permutation-invariant neural network layer in analogy to convolutional layers, and show the ability of this architecture to learn to predict the motion of a variable number of interacting hard discs in 2D. In the same way that convolutional layers can generalize to different image sizes, the permutation layer we describe generalizes to different numbers of objects.",
+    "venue": "arXiv.org",
+    "year": 2016,
+    "referenceCount": 18,
+    "citationCount": 55,
+    "influentialCitationCount": 3,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A permutation-invariant neural network layer is discussed in analogy to convolutional layers, and the ability of this architecture to learn to predict the motion of a variable number of interacting hard discs in 2D is shown."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "48204438",
+            "name": "N. Guttenberg"
+        },
+        {
+            "authorId": "2250904",
+            "name": "N. Virgo"
+        },
+        {
+            "authorId": "3302184",
+            "name": "O. Witkowski"
+        },
+        {
+            "authorId": "48006944",
+            "name": "H. Aoki"
+        },
+        {
+            "authorId": "1800112",
+            "name": "R. Kanai"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "5ef5e2fa01f1b3b512786bf9f8e2c98f7557f4f9",
+            "title": "Lasagne: First release."
+        },
+        {
+            "paperId": "666010dc3621e1a08fb6830f03a1f7857c7377cc",
+            "title": "I and i"
+        },
+        {
+            "paperId": "20b844e395355b40fa5940c61362ec40e56027aa",
+            "title": "Neural networks"
+        },
+        {
+            "paperId": "b441dd8fb25eddbaf92bc9938afda69627a281ab",
+            "title": "Computer Vision"
+        },
+        {
+            "paperId": "75aa1f1a04b5f2bb6bf9afb662711121edde9eda",
+            "title": "A and V"
+        },
+        {
+            "paperId": null,
+            "title": "Nature"
+        },
+        {
+            "paperId": null,
+            "title": "Theano Development Team, arXiv e-prints abs/1605.02688"
+        },
+        {
+            "paperId": null,
+            "title": "ACM Transactions on Graphics (TOG)"
+        },
+        {
+            "paperId": "3d2218b17e7898a222e5fc2079a3f1531990708f",
+            "title": "I and J"
+        },
+        {
+            "paperId": "f4c5d07f2b435407883d859a3363433c767545e2",
+            "title": "of Pattern Recognition and Artificial Intelligence Signature Segmentation from Machine Printed Documents using Contextual Information"
+        },
+        {
+            "paperId": "b89e9f0cef5ace08946a7c07bf7284854c418445",
+            "title": "Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition-' Washington , D . C . , June , 1983 OPTIMAL PERCEPTUAL INFERENCE"
+        },
+        {
+            "paperId": null,
+            "title": "Journal of Machine Learning Research"
+        },
+        {
+            "paperId": "ca5cb4e0826b424adb81cbb4f2e3c88c391a4075",
+            "title": "Influence of cultivation temperature on the ligninolytic activity of selected fungal strains"
+        },
+        {
+            "paperId": "dd7f2f14d9a119aa1c03c8a06552a5ac9887fed0",
+            "title": "International Conference on Artificial Neural Networks"
+        },
+        {
+            "paperId": "8065f1bde165594e2d7bcaaf37c41bcf08a505f4",
+            "title": "\u0393 and B"
+        },
+        {
+            "paperId": "4d98ce60f4f8ed822503b8d13b0605f8c5d74ca7",
+            "title": "In Advances in Neural Information Processing Systems"
+        },
+        {
+            "paperId": "12b03af504d0960334c77567dab38791bf0f739a",
+            "title": "AND T"
+        },
+        {
+            "paperId": "73f36ff3a6d340606e09d2d0091da27a13af7a6f",
+            "title": "and as an in"
+        }
+    ]
+}

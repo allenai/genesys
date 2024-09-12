@@ -1,0 +1,670 @@
+{
+    "paperId": "2fe2cfd98e232f1396f01881853ed6b3d5e37d65",
+    "externalIds": {
+        "MAG": "2966617434",
+        "ArXiv": "1804.08328",
+        "DBLP": "conf/ijcai/ZamirSSGMS19",
+        "DOI": "10.1109/CVPR.2018.00391",
+        "CorpusId": 5046249
+    },
+    "title": "Taskonomy: Disentangling Task Transfer Learning",
+    "abstract": "Do visual tasks have a relationship, or are they unrelated? For instance, could having surface normals simplify estimating the depth of an image? Intuition answers these questions positively, implying existence of a structure among visual tasks. Knowing this structure has notable values; it is the concept underlying transfer learning and provides a principled way for identifying redundancies across tasks, e.g., to seamlessly reuse supervision among related tasks or solve many tasks in one system without piling up the complexity. We proposes a fully computational approach for modeling the structure of space of visual tasks. This is done via finding (first and higher-order) transfer learning dependencies across a dictionary of twenty six 2D, 2.5D, 3D, and semantic tasks in a latent space. The product is a computational taxonomic map for task transfer learning. We study the consequences of this structure, e.g. nontrivial emerged relationships, and exploit them to reduce the demand for labeled data. We provide a set of tools for computing and probing this taxonomical structure including a solver users can employ to find supervision policies for their use cases.",
+    "venue": "2018 IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "year": 2018,
+    "referenceCount": 154,
+    "citationCount": 1119,
+    "influentialCitationCount": 139,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1804.08328",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a fully computational approach for modeling the structure of space of visual tasks via finding (first and higher-order) transfer learning dependencies across a dictionary of twenty six 2D, 2.5D, 3D, and semantic tasks in a latent space and provides a computational taxonomic map for task transfer learning."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "40029556",
+            "name": "Amir Zamir"
+        },
+        {
+            "authorId": "46389228",
+            "name": "Alexander Sax"
+        },
+        {
+            "authorId": "41187419",
+            "name": "Bokui (William) Shen"
+        },
+        {
+            "authorId": "51352814",
+            "name": "L. Guibas"
+        },
+        {
+            "authorId": "143751119",
+            "name": "Jitendra Malik"
+        },
+        {
+            "authorId": "1702137",
+            "name": "S. Savarese"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "41456401db746b9f8f579a3120b80b9791de9b18",
+            "title": "PhD thesis"
+        },
+        {
+            "paperId": "d9dcd1e99a91a9662b1f0edf248808ec5e9297ac",
+            "title": "Mid-Level Visual Representations Improve Generalization and Sample Efficiency for Learning Visuomotor Policies"
+        },
+        {
+            "paperId": "e89a4fe6e8286eccedd702216153f0f248adb151",
+            "title": "Gibson Env: Real-World Perception for Embodied Agents"
+        },
+        {
+            "paperId": "ca2f3a290bc24bc1c602389207ee86f9e01779e7",
+            "title": "Label Efficient Learning of Transferable Representations acrosss Domains and Tasks"
+        },
+        {
+            "paperId": "90d2d6e19913d481b75d2e3950f5eb8ec385fcd1",
+            "title": "Playing for Benchmarks"
+        },
+        {
+            "paperId": "8337441971f941716a9e525a67f37088eb01fd13",
+            "title": "Matterport3D: Learning from RGB-D Data in Indoor Environments"
+        },
+        {
+            "paperId": "482c0cbfffa77154e3c879c497f50b605297d5bc",
+            "title": "One-Shot Visual Imitation Learning via Meta-Learning"
+        },
+        {
+            "paperId": "684fe9e2d4f7b9b108b9305f7a69907b5e541725",
+            "title": "Multi-task Self-Supervised Visual Learning"
+        },
+        {
+            "paperId": "6a25e474075e26ddd18a24cd80deeb1d2ab33b42",
+            "title": "Representation Learning by Learning to Count"
+        },
+        {
+            "paperId": "f8599ad5332cdf2c9919988ba300bb4b438b5834",
+            "title": "Transitive Invariance for Self-Supervised Visual Representation Learning"
+        },
+        {
+            "paperId": "c889d6f98e6d79b89c3a6adf8a921f88fa6ba518",
+            "title": "Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks"
+        },
+        {
+            "paperId": "1b02204b210f822dabf8d68b7e3ea7ac14ee1268",
+            "title": "Identifying beneficial task relations for multi-task learning in deep neural networks"
+        },
+        {
+            "paperId": "42b1cb0030e174ba4395d987df77cfa6d112d221",
+            "title": "Joint 2D-3D-Semantic Data for Indoor Scene Understanding"
+        },
+        {
+            "paperId": "71e19982137412e433c0c6cd74ac7fe126dbcfd4",
+            "title": "Random walks and diffusion on networks"
+        },
+        {
+            "paperId": "0366b36006a6b37c673a42aad03ae77e8ef6ecda",
+            "title": "Fully Convolutional Instance-Aware Semantic Segmentation"
+        },
+        {
+            "paperId": "c3a159d6a85be68af4c985c281718bc5801ada19",
+            "title": "Lifelong Machine Learning"
+        },
+        {
+            "paperId": "54ddb00fa691728944fd8becea90a373d21597cf",
+            "title": "Understanding deep learning requires rethinking generalization"
+        },
+        {
+            "paperId": "4603f26093d64fc4107d3ec49667003f60210654",
+            "title": "Generalizing Skills with Semi-Supervised Reinforcement Learning"
+        },
+        {
+            "paperId": "954b01151ff13aef416d27adc60cd9a076753b1a",
+            "title": "RL$^2$: Fast Reinforcement Learning via Slow Reinforcement Learning"
+        },
+        {
+            "paperId": "c5bfae879f62848cfa27f85562179e258b1ff5a4",
+            "title": "Generic 3D Representation via Pose Estimation and Matching"
+        },
+        {
+            "paperId": "922197906907dc0a5e1b51fae40d3149333ecacf",
+            "title": "UberNet: Training a Universal Convolutional Neural Network for Low-, Mid-, and High-Level Vision Using Diverse Datasets and Limited Memory"
+        },
+        {
+            "paperId": "6cedc6ec6f6c84a6f433035537119c00face1f9f",
+            "title": "IM2CAD"
+        },
+        {
+            "paperId": "71683e224ab91617950956b5005ed0439a733a71",
+            "title": "Learning to learn by gradient descent by gradient descent"
+        },
+        {
+            "paperId": "e353bd01a250983d4ed10ed990561246eab8d932",
+            "title": "Deep Image Homography Estimation"
+        },
+        {
+            "paperId": "02c270487bd68afb0cc9224d2102118f42ee1d59",
+            "title": "Integrated perception with recurrent multi-task neural networks"
+        },
+        {
+            "paperId": "2f7ae3361b2aafa24fc289252a9cad8f1135edae",
+            "title": "Deeper Depth Prediction with Fully Convolutional Residual Networks"
+        },
+        {
+            "paperId": "1db6e3078597386ac4222ba6c3f4f61b61f53539",
+            "title": "Adversarial Feature Learning"
+        },
+        {
+            "paperId": "3c3861c607fb79f3fbf79552018724617fc8ba1b",
+            "title": "A Deep Hierarchical Approach to Lifelong Learning in Minecraft"
+        },
+        {
+            "paperId": "7d0effebfa4bed19b6ba41f3af5b7e5b6890de87",
+            "title": "Context Encoders: Feature Learning by Inpainting"
+        },
+        {
+            "paperId": "2976605dc3b73377696537291d45f09f1ab1fbf5",
+            "title": "Cross-Stitch Networks for Multi-task Learning"
+        },
+        {
+            "paperId": "e2f1df32b0809d9f81ccd0ca7a166847d3b52fb9",
+            "title": "Toward the neural implementation of structure learning"
+        },
+        {
+            "paperId": "5f0625c30014c12f333eb518268647673d18f9f1",
+            "title": "What can the brain teach us about building artificial intelligence?"
+        },
+        {
+            "paperId": "ec4a13452f1c0b75acfb99f3f98241929463c1f0",
+            "title": "Vanishing Point Estimation and Line Classification in a Manhattan World with a Unifying Camera Model"
+        },
+        {
+            "paperId": "2ec8f7e0257a07d3914322b36072d1bbcd58a1e0",
+            "title": "Unsupervised Learning of Visual Representations by Solving Jigsaw Puzzles"
+        },
+        {
+            "paperId": "8201e6e687f2de477258e9be53ba7b73ee30d7de",
+            "title": "Colorful Image Colorization"
+        },
+        {
+            "paperId": "04162cb8cfaa0f7e37586823ff4ad0bff09ed21d",
+            "title": "Guided Cost Learning: Deep Inverse Optimal Control via Policy Optimization"
+        },
+        {
+            "paperId": "d1cd6a085cb52df16d65253dccba5dab24a2ac8e",
+            "title": "The three R's of computer vision: Recognition, reconstruction and reorganization"
+        },
+        {
+            "paperId": "6e1b2e05fe043046ccda1d5065e113f035c3c98b",
+            "title": "Multi-task Learning with Labeled and Unlabeled Tasks"
+        },
+        {
+            "paperId": "815c84ab906e43f3e6322f2ca3fd5e1360c64285",
+            "title": "Human-level concept learning through probabilistic program induction"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "842ca93d770edef147e9ca117e1c0294a596cb82",
+            "title": "Transferring Deep Convolutional Neural Networks for the Scene Classification of High-Resolution Remote Sensing Imagery"
+        },
+        {
+            "paperId": "c8f41160130980c1ffead5a812cf2b3c6b03049f",
+            "title": "Deep spatial autoencoders for visuomotor learning"
+        },
+        {
+            "paperId": "c1f2c92eb29978ab56fa7e66bb7b40c0f2e58c80",
+            "title": "Shape, Illumination, and Reflectance from Shading"
+        },
+        {
+            "paperId": "4dcdae25a5e33682953f0853ee4cf7ca93be58a9",
+            "title": "LSUN: Construction of a Large-scale Image Dataset using Deep Learning with Humans in the Loop"
+        },
+        {
+            "paperId": "b9da26512807dd468d9d8970983d4d0d5ade8cc0",
+            "title": "Visual Learning of Arithmetic Operation"
+        },
+        {
+            "paperId": "fc1b1c9364c58ec406f494dd944b609a6a038ba6",
+            "title": "Unsupervised Visual Representation Learning by Context Prediction"
+        },
+        {
+            "paperId": "dfbfaaec46d38392f61d683c340ee92a0a66e5d9",
+            "title": "Learning to See by Moving"
+        },
+        {
+            "paperId": "6d4ff172c2d1820f33c0c72286d52b846ab5a216",
+            "title": "Unsupervised Learning of Visual Representations Using Videos"
+        },
+        {
+            "paperId": "dacaf094b2c6d67a8e60a572cb935bf2a48336d0",
+            "title": "CRF Learning with CNN Features for Image Segmentation"
+        },
+        {
+            "paperId": "0c908739fbff75f03469d13d4a1a07de3414ee19",
+            "title": "Distilling the Knowledge in a Neural Network"
+        },
+        {
+            "paperId": "449532187c94af3dd3aa55e16d2c50f7854d2199",
+            "title": "Trust Region Policy Optimization"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "9667f8264745b626c6173b1310e2ff0298b09cfc",
+            "title": "Learning Deep Features for Scene Recognition using Places Database"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "2208843128bf1790f049a5a529b663455c82b89c",
+            "title": "Curvature-processing network in macaque visual cortex"
+        },
+        {
+            "paperId": "0ef33ea68b39ad04dae675b8f388389d68b18eec",
+            "title": "Continuous Manifold Based Adaptation for Evolving Visual Domains"
+        },
+        {
+            "paperId": "71b7178df5d2b112d07e45038cb5637208659ff7",
+            "title": "Microsoft COCO: Common Objects in Context"
+        },
+        {
+            "paperId": "6270baedeba28001cd1b563a199335720d6e0fe0",
+            "title": "CNN Features Off-the-Shelf: An Astounding Baseline for Recognition"
+        },
+        {
+            "paperId": "5f5dc5b9a2ba710937e2c413b37b053cd673df02",
+            "title": "Auto-Encoding Variational Bayes"
+        },
+        {
+            "paperId": "d891dc72cbd40ffaeefdc79f2e7afe1e530a23ad",
+            "title": "Intriguing properties of neural networks"
+        },
+        {
+            "paperId": "be2f5d8a7e6b415f1e22cee7dfd9be56b1afd8be",
+            "title": "Zero-Shot Learning by Convex Combination of Semantic Embeddings"
+        },
+        {
+            "paperId": "28ef938aaa312d76df988f636e248a6b267b6352",
+            "title": "Unsupervised Visual Domain Adaptation Using Subspace Alignment"
+        },
+        {
+            "paperId": "1d6e6adc7a841393fc10b78dc0018e550aff589d",
+            "title": "Provable Bounds for Learning Some Deep Representations"
+        },
+        {
+            "paperId": "b8de958fead0d8a9619b55c7299df3257c624a96",
+            "title": "DeCAF: A Deep Convolutional Activation Feature for Generic Visual Recognition"
+        },
+        {
+            "paperId": "0157dcd6122c20b5afc359a799b2043453471f7f",
+            "title": "Exploiting Similarities among Languages for Machine Translation"
+        },
+        {
+            "paperId": "5776d0fea69d826519ee3649f620e8755a490efe",
+            "title": "Lifelong Machine Learning Systems: Beyond Learning Algorithms"
+        },
+        {
+            "paperId": "755e9f43ce398ae8737366720c5f82685b0c253e",
+            "title": "Zero-Shot Learning Through Cross-Modal Transfer"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "0f89679e79fdb7610863adca0ab3bbcc577c7d7c",
+            "title": "\u201cClustering by Composition\u201d\u2014Unsupervised Discovery of Image Categories"
+        },
+        {
+            "paperId": "c1994ba5946456fc70948c549daf62363f13fa2d",
+            "title": "Indoor Segmentation and Support Inference from RGBD Images"
+        },
+        {
+            "paperId": "21a39ca716c37ccc133ff96c31cc71565d0c968e",
+            "title": "Functional maps"
+        },
+        {
+            "paperId": "184ac0766262312ba76bbdece4e7ffad0aa8180b",
+            "title": "Representation Learning: A Review and New Perspectives"
+        },
+        {
+            "paperId": "de5b0fd02ea4f4d67fe3ae0d74603b9822df4e42",
+            "title": "Are we ready for autonomous driving? The KITTI vision benchmark suite"
+        },
+        {
+            "paperId": "a797ed714ed3d65f9174a0f2b33f605748283681",
+            "title": "A codebook-free and annotation-free approach for fine-grained image categorization"
+        },
+        {
+            "paperId": "5384b569f76c157b5f824e3df403197c3e04147e",
+            "title": "Globally optimal line clustering and vanishing point estimation in Manhattan world"
+        },
+        {
+            "paperId": "921944cd999ae9ce110e91b5619568e65922e446",
+            "title": "Robust visual domain adaptation with low-rank reconstruction"
+        },
+        {
+            "paperId": "2e7f66717227af485d331aa28f0e9833005e979e",
+            "title": "Rapid vanishing point estimation for general road detection"
+        },
+        {
+            "paperId": "b466b8e786be2dc2ffb88298db3e30060ee5e829",
+            "title": "Semantic colorization with internet images"
+        },
+        {
+            "paperId": "976e29fe6c9baeb39732bca0e35f66f84d5bdd90",
+            "title": "ORB: An efficient alternative to SIFT or SURF"
+        },
+        {
+            "paperId": "d3edbfee56884d2b6d9aa51a6c525f9a05248802",
+            "title": "Domain adaptation for object recognition: An unsupervised approach"
+        },
+        {
+            "paperId": "4682fee7dc045aea7177d7f3bfe344aabf153bd5",
+            "title": "Tabula rasa: Model transfer for object category detection"
+        },
+        {
+            "paperId": "68bb6dec93c62b5d53186c84e1f0b48334d1d400",
+            "title": "One-Shot Learning with a Hierarchical Nonparametric Bayesian Model"
+        },
+        {
+            "paperId": "feca3cf344320e3d14045c3dcc8a9975f39c8791",
+            "title": "What you saw is not what you get: Domain adaptation using asymmetric kernel transforms"
+        },
+        {
+            "paperId": "2a3842f6070b4554ff21fe62b2a486657d9a304a",
+            "title": "How to Grow a Mind: Statistics, Structure, and Abstraction"
+        },
+        {
+            "paperId": "268b8f10a45e71f63daab6403bb453da31ae28a7",
+            "title": "Melting of Peridotite to 140 Gigapascals"
+        },
+        {
+            "paperId": "1551ab876f75b1d11eab4a7ebd21c95ac771da43",
+            "title": "Hough Transform and 3D SURF for Robust Three Dimensional Classification"
+        },
+        {
+            "paperId": "5d9a3036181676e187c9c0ff995d8bed1db3557d",
+            "title": "Adapting Visual Category Models to New Domains"
+        },
+        {
+            "paperId": "0d2336389dff3031910bd21dd1c44d1b4cd51725",
+            "title": "Why Does Unsupervised Pre-training Help Deep Learning?"
+        },
+        {
+            "paperId": "bd47b1f3e2839af705187de7fe7d51a514997765",
+            "title": "On the Repeatability and Quality of Keypoints for Local Feature-based 3D Object Retrieval from Cluttered Scenes"
+        },
+        {
+            "paperId": "78c9e73e04177af281bbc6ecc76115bd4ace8fe4",
+            "title": "Wide-baseline image matching using Line Signatures"
+        },
+        {
+            "paperId": "e37e9fe0917f972394ff4bc152caca1c83f5c35a",
+            "title": "Intrinsic shape signatures: A shape descriptor for 3D object recognition"
+        },
+        {
+            "paperId": "06fd73d9903f47dbef4a6d02a67051a6a739f128",
+            "title": "Vanishing point detection for road detection"
+        },
+        {
+            "paperId": "03647c409afdcbcc2271646a9b908fc8db11a606",
+            "title": "Guest editor\u2019s introduction: special issue on inductive transfer learning"
+        },
+        {
+            "paperId": "98f4746f5bb95e4abcf5778b2c8ae2cf849ee085",
+            "title": "A notion of task relatedness yielding provable multiple-task learning guarantees"
+        },
+        {
+            "paperId": "bc6dff14a130c57a91d5a21339c23471faf1d46f",
+            "title": "Et al"
+        },
+        {
+            "paperId": "e3e35f399c5ab919f0222c5521ace0b1bdbd32e6",
+            "title": "The Theory and Applications of Homomorphic Cryptography"
+        },
+        {
+            "paperId": "843959ffdccf31c6694d135fad07425924f785b1",
+            "title": "Extracting and composing robust features with denoising autoencoders"
+        },
+        {
+            "paperId": "8136b80047469e2bfe5953c1c0354833a76eb239",
+            "title": "Ten-fold Improvement in Visual Odometry Using Landmark Matching"
+        },
+        {
+            "paperId": "17f08200f746c1e96e042dd9a58565598fcbb97f",
+            "title": "Dual Fuzzy-Possibilistic Co-clustering for Document Categorization"
+        },
+        {
+            "paperId": "924806e958c106bfdd2fc904cdae05f76354192c",
+            "title": "Representing Tuple and Attribute Uncertainty in Probabilistic Databases"
+        },
+        {
+            "paperId": "08b74486974c2e0ae8ef11ec9bf83d05a6bd28c2",
+            "title": "On universal transfer learning"
+        },
+        {
+            "paperId": "0fbf373d25f2710e2e4eaf64e00e071f734ad84f",
+            "title": "Mapping and Revising Markov Logic Networks for Transfer Learning"
+        },
+        {
+            "paperId": "fa67cccf76c00fb18dc4a4b2619822c05d128f90",
+            "title": "Inductive Transfer for Bayesian Network Structure Learning"
+        },
+        {
+            "paperId": "0c476e482b3b600980ec311763b7bdb41ea823a4",
+            "title": "Similarity by Composition"
+        },
+        {
+            "paperId": "14f16a6d737a82a8b026ba6e378f84eb1e5d377c",
+            "title": "Theory-based Bayesian models of inductive learning and reasoning"
+        },
+        {
+            "paperId": "39265f8247f2dc6c394de0378a7027b435246fe3",
+            "title": "A Comparison and Evaluation of Multi-View Stereo Reconstruction Algorithms"
+        },
+        {
+            "paperId": "9ad3179098eb9ac7f0c81bf89b6bdcde91752880",
+            "title": "SURF: Speeded Up Robust Features"
+        },
+        {
+            "paperId": "812355cec91fa30bb50e9e992a3549af39e4f6eb",
+            "title": "One-shot learning of object categories"
+        },
+        {
+            "paperId": "458aa276338c7805d55cb4bcfefb4f34869f9733",
+            "title": "Optimization"
+        },
+        {
+            "paperId": "9bde163b97c07d6b7c0927d93c9c568c0f08c825",
+            "title": "A Bayesian network framework for relational shape matching"
+        },
+        {
+            "paperId": "86aa05a4a38d81d95afe31daa6e339237562bd41",
+            "title": "A Survey of Dimension Reduction Techniques"
+        },
+        {
+            "paperId": "caa359864efb289d43afc50f2020cf38dcf6fad2",
+            "title": "Generalization, similarity, and Bayesian inference."
+        },
+        {
+            "paperId": "8e6d789ee714d29c9b5156ba9d61b2170d7a315f",
+            "title": "Volume 8"
+        },
+        {
+            "paperId": "f0a3e1752e1146da927adc24ae07144ab2e744ec",
+            "title": "Nonlinear dimensionality reduction by locally linear embedding."
+        },
+        {
+            "paperId": "f9f836d28f52ad260213d32224a6d227f8e8849a",
+            "title": "Object recognition from local scale-invariant features"
+        },
+        {
+            "paperId": "2722b9e5ab8da95f03e578bb65879c452c105385",
+            "title": "Catastrophic forgetting in connectionist networks"
+        },
+        {
+            "paperId": "ec5540f6da71eb79a18bbcacb48b8ea847cad120",
+            "title": "Learning to Learn"
+        },
+        {
+            "paperId": "1bd6e929ed8384ea2212d50ab3c103ec018cc9fd",
+            "title": "A Bayesian/Information Theoretic Model of Learning to Learn via Multiple Task Sampling"
+        },
+        {
+            "paperId": "b94c7ff9532ab26c3aedbee3988ec4c7a237c173",
+            "title": "Normalized cuts and image segmentation"
+        },
+        {
+            "paperId": "16618df0617fc33256b0f5d8ebc84afdb0531093",
+            "title": "Compositionality, MDL Priors, and Object Recognition"
+        },
+        {
+            "paperId": "27882d21eb8aeb691c8aaa7c99205d74d1370e77",
+            "title": "The perception of shading and reflectance"
+        },
+        {
+            "paperId": "b66fcdaca4c9e789bd4fae5dfd08a325bbb9fa48",
+            "title": "Discriminability-Based Transfer between Neural Networks"
+        },
+        {
+            "paperId": "bfc579ff44a87951b3d8c6a3d9924c022f599c15",
+            "title": "Thinking Machines: Can There Be? Are We?"
+        },
+        {
+            "paperId": "f5c541f83d3868a412bda93fd2dd1210741a719a",
+            "title": "Generalization"
+        },
+        {
+            "paperId": "4893b3c5eefad1d3b6cc432950a91300d13024ba",
+            "title": "On the nature of the visual-cliff-avoidance response in human infants."
+        },
+        {
+            "paperId": "8adc062b73f0e9c26f9b5ae706528b690a15780d",
+            "title": "MOVEMENT-PRODUCED STIMULATION IN THE DEVELOPMENT OF VISUALLY GUIDED BEHAVIOR."
+        },
+        {
+            "paperId": "2d5673caa9e6af3a7b82a43f19ee920992db07ad",
+            "title": "Computing Machinery and Intelligence"
+        },
+        {
+            "paperId": null,
+            "title": "and Silvio Savarese"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "573429d6e43838be1be72f777c30706fcba746fa",
+            "title": "Provable Algorithms for Machine Learning Problems"
+        },
+        {
+            "paperId": null,
+            "title": "In NIPS"
+        },
+        {
+            "paperId": "3d2218b17e7898a222e5fc2079a3f1531990708f",
+            "title": "I and J"
+        },
+        {
+            "paperId": "268cd46a06e8e3052bbd64e96fac73d600430281",
+            "title": "Distinctive Image Features from Scale-Invariant Keypoints Abstract by Matthijs Dorst Based on the paper by"
+        },
+        {
+            "paperId": null,
+            "title": "and Samy Bengio"
+        },
+        {
+            "paperId": null,
+            "title": "V12. 1: Users manual for cplex. International Business Machines Corporation"
+        },
+        {
+            "paperId": null,
+            "title": "I. I. CPLEX. V12. 1: Users manual for cplex"
+        },
+        {
+            "paperId": "26f178dbb00630ce19cccb9840ea12dbe31801be",
+            "title": "A Survey of Clustering Data Mining Techniques"
+        },
+        {
+            "paperId": "59640289df0a0262bc3a71fb24cd37d62e7d17e5",
+            "title": "Visual odometry"
+        },
+        {
+            "paperId": "fb6bc3454004ce4070b39edace9d059a7b5f83c5",
+            "title": "Locally Planar Patch Features for Real-Time Structure from Motion"
+        },
+        {
+            "paperId": "792695c436fd0148a71e7f2830ea5bac7938b014",
+            "title": "A theory of causal learning in children: causal maps and Bayes nets."
+        },
+        {
+            "paperId": "3f1220be9e783caa716482863af4a671197c6aeb",
+            "title": "The Manhattan World Assumption: Regularities in Scene Statistics which Enable Bayesian Inference"
+        },
+        {
+            "paperId": "6b4d8cf155b77a63829920c7d77dbca1229b8595",
+            "title": "The scientist in the crib : minds, brains, and how children learn"
+        },
+        {
+            "paperId": "f2535d490fecbf5df0bf4296be63388c68afe956",
+            "title": "Catastrophic Forgetting in Connectionist Networks: Causes, Consequences and Solutions"
+        },
+        {
+            "paperId": "4d0183d8644aabcdf01f2f741249df718de0609b",
+            "title": "Behavioral and Brain Sciences"
+        },
+        {
+            "paperId": "75c74bfd77c4f87060ef045072704556ba6f4f57",
+            "title": "Compositionality"
+        },
+        {
+            "paperId": "d92bf274d0a28378c3638d18415be4756ffa1c52",
+            "title": "A solvable connectionist model of immediate recall of ordered lists"
+        },
+        {
+            "paperId": "fbf509f30c042deab8c798082cb46fed66f111e8",
+            "title": "Catastrophic Forgetting in Connectionist Networks: Causes, Consequences and Solutions"
+        },
+        {
+            "paperId": "c213af6582c0d518a6e8e14217611c733eeb1ef1",
+            "title": "Catastrophic Interference in Connectionist Networks: The Sequential Learning Problem"
+        },
+        {
+            "paperId": "97035e4f1089c938ad04bc6ce7d3e492b8a70cdd",
+            "title": "The analytic hierarchy process\u2014what it is and how it is used"
+        },
+        {
+            "paperId": "b4911ff9a221281ec42915fc423b2ac1251def67",
+            "title": "QUARTERLY OF APPLIED MATHEMATICS"
+        },
+        {
+            "paperId": "7a5a9ad4a95bbe49c6ab869549572d71fa120320",
+            "title": "The Origins of Intelligence in Children"
+        },
+        {
+            "paperId": "43a0503e38b4c47a5b794c04439299bd78310189",
+            "title": "Laws of organization in perceptual forms."
+        },
+        {
+            "paperId": "8ae847a99d0ca36e2dfe0d54a71cb04c0099deb7",
+            "title": "Author manuscript, published in \"International Conference on Computer Vision and Pattern Recognition (2009)\" Surface Feature Detection and Description with Applications to Mesh Matching"
+        }
+    ]
+}

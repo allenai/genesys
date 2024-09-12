@@ -1,0 +1,251 @@
+{
+    "paperId": "651e5bcc14f14605a879303e97572a27ea8c7956",
+    "externalIds": {
+        "MAG": "2949585489",
+        "DBLP": "journals/corr/LiGBGD15",
+        "ACL": "N16-1014",
+        "ArXiv": "1510.03055",
+        "DOI": "10.18653/v1/N16-1014",
+        "CorpusId": 7287895
+    },
+    "title": "A Diversity-Promoting Objective Function for Neural Conversation Models",
+    "abstract": "Sequence-to-sequence neural network models for generation of conversational responses tend to generate safe, commonplace responses (e.g., \"I don't know\") regardless of the input. We suggest that the traditional objective function, i.e., the likelihood of output (response) given input (message) is unsuited to response generation tasks. Instead we propose using Maximum Mutual Information (MMI) as the objective function in neural models. Experimental results demonstrate that the proposed MMI models produce more diverse, interesting, and appropriate responses, yielding substantive gains in BLEU scores on two conversational datasets and in human evaluations.",
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2015,
+    "referenceCount": 50,
+    "citationCount": 2193,
+    "influentialCitationCount": 367,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/N16-1014.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes using Maximum Mutual Information (MMI) as the objective function in neural models, and demonstrates that the proposed MMI models produce more diverse, interesting, and appropriate responses, yielding substantive gains in BLEU scores on two conversational datasets and in human evaluations."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "49298465",
+            "name": "Jiwei Li"
+        },
+        {
+            "authorId": "1947267",
+            "name": "Michel Galley"
+        },
+        {
+            "authorId": "3125776",
+            "name": "Chris Brockett"
+        },
+        {
+            "authorId": "1800422",
+            "name": "Jianfeng Gao"
+        },
+        {
+            "authorId": "83415753",
+            "name": "W. Dolan"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "c25e3fc7bb2c890c692b500dcd4e774e66081aab",
+            "title": "Attention with Intention for a Neural Network Conversation Model"
+        },
+        {
+            "paperId": "4d4b46e545e1a3f6871b49cc69640ef2eb1a4654",
+            "title": "Semantically Conditioned LSTM-based Natural Language Generation for Spoken Dialogue Systems"
+        },
+        {
+            "paperId": "17f5c7411eeeeedf25b0db99a9130aa353aee4ba",
+            "title": "Building End-To-End Dialogue Systems Using Generative Hierarchical Neural Network Models"
+        },
+        {
+            "paperId": "7df22e88a86d7e7e914a9cf3ad5b8fbd62b35cb8",
+            "title": "Hierarchical Neural Network Generative Models for Movie Dialogues"
+        },
+        {
+            "paperId": "7d0684b19ba46e739e28baa1e180c008226f793a",
+            "title": "deltaBLEU: A Discriminative Metric for Generation Tasks with Intrinsically Diverse Targets"
+        },
+        {
+            "paperId": "5247a6e3a60ff0381355e66bfc313bf27512ae0c",
+            "title": "A Neural Network Approach to Context-Sensitive Generation of Conversational Responses"
+        },
+        {
+            "paperId": "86311b182786bfde19446f6ded0854de973d4060",
+            "title": "A Neural Conversational Model"
+        },
+        {
+            "paperId": "b21c78a62fbb945a19ae9a8935933711647e7d70",
+            "title": "A Hierarchical Neural Autoencoder for Paragraphs and Documents"
+        },
+        {
+            "paperId": "ba49d3823d43515e447296ca4e1e55d3f1fd8c4d",
+            "title": "Neural Responding Machine for Short-Text Conversation"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "47570e7f63e296f224a0e7f9a0d08b0de3cbaf40",
+            "title": "Grammar as a Foreign Language"
+        },
+        {
+            "paperId": "54b2b6f35f1b5704dddfaa3a137a2f4ad3dfe745",
+            "title": "Deep Captioning with Multimodal Recurrent Neural Networks (m-RNN)"
+        },
+        {
+            "paperId": "1956c239b3552e030db1b78951f64781101125ed",
+            "title": "Addressing the Rare Word Problem in Neural Machine Translation"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "2de0401b5f019fb8646a27a3cc50429b38693dd6",
+            "title": "Luke, I am Your Father: Dealing with Out-of-Domain Requests by Using Movies Subtitles"
+        },
+        {
+            "paperId": "34992ceb89e251f2ed5c1a792fbd594bcf8246c2",
+            "title": "Learning Continuous Phrase Representations for Translation Modeling"
+        },
+        {
+            "paperId": "e8679859bf0ad6ca4253603d05462838957733fb",
+            "title": "A Systematic Exploration of Diversity in Machine Translation"
+        },
+        {
+            "paperId": "bc1f09a48e173a9e0f516d7384acec49e0e9ba60",
+            "title": "An empirical investigation of sparse log-linear models for improved dialogue act classification"
+        },
+        {
+            "paperId": "9528fa09fbd918618dbd1bac72fe8c24f5574400",
+            "title": "IRIS: a Chat-oriented Dialogue System based on the Vector Space Model"
+        },
+        {
+            "paperId": "5b6f048840ded1a27b9830f78f4d48b3ededb3ea",
+            "title": "Data-Driven Response Generation in Social Media"
+        },
+        {
+            "paperId": "2a69b0f09cf3375c7e12404307adbdf6b3be4122",
+            "title": "Improving Spoken Dialogue Understanding Using Phonetic Mixture Models"
+        },
+        {
+            "paperId": "33fc7a58f2a4c924a5f3868eced1726ce961e559",
+            "title": "Unsupervised Modeling of Twitter Conversations"
+        },
+        {
+            "paperId": "b4300fbc44973301810017cf917bd6e5b1eadd3f",
+            "title": "The Hidden Information State model: A practical framework for POMDP-based spoken dialogue management"
+        },
+        {
+            "paperId": "fbd201207e51f50f14235c5ea864ccccb6425325",
+            "title": "News from OPUS \u2014 A collection of multilingual parallel corpora with tools and interfaces"
+        },
+        {
+            "paperId": "1d1861764141b0255389fecfc309ef74151033fc",
+            "title": "Are We There Yet? Research in Commercial Spoken Dialog Systems"
+        },
+        {
+            "paperId": "4ee2eab4c298c1824a9fb8799ad8eed21be38d21",
+            "title": "Moses: Open Source Toolkit for Statistical Machine Translation"
+        },
+        {
+            "paperId": "3385397d3be400c3f4a6f79f9c47e67e50333b45",
+            "title": "A trainable generator for recommendations in multimodal dialog"
+        },
+        {
+            "paperId": "1f12451245667a85d0ee225a80880fc93c71cc8b",
+            "title": "Minimum Error Rate Training in Statistical Machine Translation"
+        },
+        {
+            "paperId": "d7da009f457917aa381619facfa5ffae9329a6e9",
+            "title": "Bleu: a Method for Automatic Evaluation of Machine Translation"
+        },
+        {
+            "paperId": "8f4c9f5877fbd287785466d59877ef870c5e53c4",
+            "title": "Trainable approaches to surface natural language generation and their application to conversational dialog systems"
+        },
+        {
+            "paperId": "8f6327b4e769138d86f20129dbcb1be5b1602db2",
+            "title": "Are We There Yet?"
+        },
+        {
+            "paperId": "e25184f44c5b9af8c25bdb35fe8c10077f31f00e",
+            "title": "Spoken Language Processing: A Guide to Theory, Algorithm and System Development"
+        },
+        {
+            "paperId": "28bb28488c30e26b047916cbc3276bee213c7ab9",
+            "title": "Spoken Language Processing: A Guide to Theory, Algorithm and System Development"
+        },
+        {
+            "paperId": "f3db747cbb304dbad722aecf5ae527b242c60e2b",
+            "title": "Stochastic Language Generation for Spoken Dialogue Systems"
+        },
+        {
+            "paperId": "10ce81dadc2e07d69c8a4f0bbdf7d14b3f37882e",
+            "title": "The Use of MMR, Diversity-Based Reranking for Reordering Documents and Producing Summaries"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "b5f09ce0dd760857e0d0e4879f6e2543f04c5d33",
+            "title": "Maximum mutual information estimation of hidden Markov model parameters for speech recognition"
+        },
+        {
+            "paperId": "2a94fa0de804b5efaae1a66f50c3ea96539c46b8",
+            "title": "Developing Non-goal Dialog System Based on Examples of Drama Television"
+        },
+        {
+            "paperId": "7b13b2008d10bb3f32db71c5481827b97dde86e7",
+            "title": "Who are we?"
+        },
+        {
+            "paperId": null,
+            "title": "Open source toolkit"
+        },
+        {
+            "paperId": null,
+            "title": "Foreword By-Reddy"
+        },
+        {
+            "paperId": "abe0bd94e134c7ac0b1c78922ed17cf3bec08d5e",
+            "title": "A stochastic model of human-machine interaction for learning dialog strategies"
+        },
+        {
+            "paperId": "1aa31d5deb45f477a6de45b3b75b62c7f4a213e7",
+            "title": "The acoustic-modeling problem in automatic speech recognition"
+        },
+        {
+            "paperId": null,
+            "title": "32% percent of all generated responses"
+        },
+        {
+            "paperId": null,
+            "title": "Just making sure you're OK. 6. I'm looking for a doctor. Input: What is your name?"
+        },
+        {
+            "paperId": null,
+            "title": "Input: What are you doing?"
+        },
+        {
+            "paperId": null,
+            "title": "My name is Robert. Input: How old are you?"
+        },
+        {
+            "paperId": null,
+            "title": "Proc. of ICML"
+        },
+        {
+            "paperId": null,
+            "title": "Proc. of the 32nd International Conference on Machine Learning (ICML-15)"
+        }
+    ]
+}

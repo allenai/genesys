@@ -1,0 +1,234 @@
+{
+    "paperId": "510e26733aaff585d65701b9f1be7ca9d5afc586",
+    "externalIds": {
+        "DBLP": "journals/corr/ShazeerMMDLHD17",
+        "MAG": "2952339051",
+        "ArXiv": "1701.06538",
+        "CorpusId": 12462234
+    },
+    "title": "Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer",
+    "abstract": "The capacity of a neural network to absorb information is limited by its number of parameters. Conditional computation, where parts of the network are active on a per-example basis, has been proposed in theory as a way of dramatically increasing model capacity without a proportional increase in computation. In practice, however, there are significant algorithmic and performance challenges. In this work, we address these challenges and finally realize the promise of conditional computation, achieving greater than 1000x improvements in model capacity with only minor losses in computational efficiency on modern GPU clusters. We introduce a Sparsely-Gated Mixture-of-Experts layer (MoE), consisting of up to thousands of feed-forward sub-networks. A trainable gating network determines a sparse combination of these experts to use for each example. We apply the MoE to the tasks of language modeling and machine translation, where model capacity is critical for absorbing the vast quantities of knowledge available in the training corpora. We present model architectures in which a MoE with up to 137 billion parameters is applied convolutionally between stacked LSTM layers. On large language modeling and machine translation benchmarks, these models achieve significantly better results than state-of-the-art at lower computational cost.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2017,
+    "referenceCount": 45,
+    "citationCount": 1885,
+    "influentialCitationCount": 240,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces a Sparsely-Gated Mixture-of-Experts layer (MoE), consisting of up to thousands of feed-forward sub-networks, and applies the MoE to the tasks of language modeling and machine translation, where model capacity is critical for absorbing the vast quantities of knowledge available in the training corpora."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1846258",
+            "name": "Noam M. Shazeer"
+        },
+        {
+            "authorId": "1861312",
+            "name": "Azalia Mirhoseini"
+        },
+        {
+            "authorId": "50351613",
+            "name": "Krzysztof Maziarz"
+        },
+        {
+            "authorId": "36347083",
+            "name": "Andy Davis"
+        },
+        {
+            "authorId": "2827616",
+            "name": "Quoc V. Le"
+        },
+        {
+            "authorId": "1695689",
+            "name": "Geoffrey E. Hinton"
+        },
+        {
+            "authorId": "48448318",
+            "name": "J. Dean"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "b0a2719ffd8c0cf8fe8b4aeca118c7a71cf94fef",
+            "title": "Ensemble Learning for Multi-Source Neural Machine Translation"
+        },
+        {
+            "paperId": "66b8d34477cf1736f91fd22b27e37ce0b703c86e",
+            "title": "Expert Gate: Lifelong Learning with a Network of Experts"
+        },
+        {
+            "paperId": "a486e2839291111bb44fa1f07731ada123539f75",
+            "title": "Google\u2019s Multilingual Neural Machine Translation System: Enabling Zero-Shot Translation"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "b60abe57bc195616063be10638c6437358c81d1e",
+            "title": "Deep Recurrent Models with Fast-Forward Connections for Neural Machine Translation"
+        },
+        {
+            "paperId": "f61e9fd5a4878e1493f7a6b03774a61c17b7e9a4",
+            "title": "Memory-Efficient Backpropagation Through Time"
+        },
+        {
+            "paperId": "9c9d7247f8c51ec5a02b0d911d1d7b9e8160495d",
+            "title": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems"
+        },
+        {
+            "paperId": "2f2d8f8072e5cc9b296fad551f65f183bdbff7aa",
+            "title": "Exploring the Limits of Language Modeling"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "13497bd108d4412d02050e646235f456568cf822",
+            "title": "Deep Speech 2 : End-to-End Speech Recognition in English and Mandarin"
+        },
+        {
+            "paperId": "5a5d48986b855b83a7d9df5005bbd155024ce756",
+            "title": "Dynamic Capacity Networks"
+        },
+        {
+            "paperId": "fba71eefd060e30f3516fdd46df9a191cd0aaaf7",
+            "title": "Conditional Computation in Neural Networks for faster models"
+        },
+        {
+            "paperId": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+            "title": "Effective Approaches to Attention-based Neural Machine Translation"
+        },
+        {
+            "paperId": "f267934e9de60c5badfa9d3f28918e67ae7a2bf4",
+            "title": "Generative Image Modeling Using Spatial LSTMs"
+        },
+        {
+            "paperId": "e2e81c568ac0aa067e32fbc9ca9396824fa04d66",
+            "title": "Distributed Gaussian Processes"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "1956c239b3552e030db1b78951f64781101125ed",
+            "title": "Addressing the Rare Word Problem in Neural Machine Translation"
+        },
+        {
+            "paperId": "8829e3873846c6bbad5aca111e64f9d2c1b24299",
+            "title": "Deep Sequential Neural Network"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "f264e8b33c0d49a692a6ce2c4bcb28588aeb7d97",
+            "title": "Recurrent Neural Network Regularization"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "c6f002b73ffe647ef0effd17c9bfbd5cd7adac7d",
+            "title": "Exponentially Increasing the Capacity-to-Computation Ratio for Conditional Computation in Deep Learning"
+        },
+        {
+            "paperId": "97cedf99252026f58e8154bc61d49cf885d42030",
+            "title": "Edinburgh\u2019s Phrase-based Machine Translation Systems for WMT-14"
+        },
+        {
+            "paperId": "44ddac48353ead135eef4096859956eaa31be2a5",
+            "title": "Learning Factored Representations in a Deep Mixture of Experts"
+        },
+        {
+            "paperId": "cf3229e74f912ef365d67d1954441b32ce2573ee",
+            "title": "Low-Rank Approximations for Conditional Feedforward Computation in Deep Neural Networks"
+        },
+        {
+            "paperId": "5d833331b0e22ff359db05c62a8bca18c4f04b68",
+            "title": "One billion word benchmark for measuring progress in statistical language modeling"
+        },
+        {
+            "paperId": "62c76ca0b2790c34e85ba1cce09d47be317c7235",
+            "title": "Estimating or Propagating Gradients Through Stochastic Neurons for Conditional Computation"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "ed6262b569c0a62c51d941228c54f34e563af022",
+            "title": "Japanese and Korean voice search"
+        },
+        {
+            "paperId": "72e93aa6767ee683de7f001fa72f1314e40a8f35",
+            "title": "Building high-level features using large scale unsupervised learning"
+        },
+        {
+            "paperId": "413c1142de9d91804d6d11c67ff3fed59c9fc279",
+            "title": "Adaptive Subgradient Methods for Online Learning and Stochastic Optimization"
+        },
+        {
+            "paperId": "61854f305fed48a52b53884c138de8fa90772cfb",
+            "title": "Hierarchical Mixture of Classification Experts Uncovers Interactions between Brain Regions"
+        },
+        {
+            "paperId": "81c9cb2c3c08070a80c7b26c288789084f70b43b",
+            "title": "Nonlinear Models Using Dirichlet Process Mixtures"
+        },
+        {
+            "paperId": "16174aa9f7b2f72a078b1301244367f40a754502",
+            "title": "A Parallel Mixture of SVMs for Very Large Scale Problems"
+        },
+        {
+            "paperId": "11540131eae85b2e11d53df7f1360eeb6476e7f4",
+            "title": "Learning to Forget: Continual Prediction with LSTM"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "9548ac30c113562a51e603dbbc8e9fa651cfd3ab",
+            "title": "Improved backing-off for M-gram language modeling"
+        },
+        {
+            "paperId": "f6d8a7fc2e2d53923832f9404376512068ca2a57",
+            "title": "Hierarchical Mixtures of Experts and the EM Algorithm"
+        },
+        {
+            "paperId": "c8d90974c3f3b40fa05e322df2905fc16204aa56",
+            "title": "Adaptive Mixtures of Local Experts"
+        },
+        {
+            "paperId": "0c2563caba6bcdb113817d560ce9492467e45873",
+            "title": "Under review as a conference paper at ICLR 2020 many domain adaptation methods"
+        },
+        {
+            "paperId": "067e07b725ab012c80aa2f87857f6791c1407f6d",
+            "title": "Long short-term memory recurrent neural network architectures for large scale acoustic modeling"
+        },
+        {
+            "paperId": "31868290adf1c000c611dfc966b514d5a34e8d23",
+            "title": "FUNDAMENTAL TECHNOLOGIES IN MODERN SPEECH RECOGNITION Digital Object Identifier 10.1109/MSP.2012.2205597"
+        },
+        {
+            "paperId": "421c01f0f005e5bd72e578162d07e6540e3beb09",
+            "title": "Mixtures of Gaussian Processes"
+        },
+        {
+            "paperId": "7c32d22cb9538920b31c70f8d014ea16cc7d2c4b",
+            "title": "in Advances in Neural Information Processing"
+        }
+    ]
+}

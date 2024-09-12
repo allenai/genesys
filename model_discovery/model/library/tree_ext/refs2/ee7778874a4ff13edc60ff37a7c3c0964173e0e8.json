@@ -1,0 +1,187 @@
+{
+    "paperId": "ee7778874a4ff13edc60ff37a7c3c0964173e0e8",
+    "externalIds": {
+        "MAG": "2120872934",
+        "DBLP": "journals/corr/abs-0910-0651",
+        "ArXiv": "0910.0651",
+        "DOI": "10.5555/1953048.2185803",
+        "CorpusId": 7125812
+    },
+    "title": "A Simpler Approach to Matrix Completion",
+    "abstract": "This paper provides the best bounds to date on the number of randomly sampled entries required to reconstruct an unknown low-rank matrix. These results improve on prior work by Candes and Recht (2009), Candes and Tao (2009), and Keshavan et al. (2009). The reconstruction is accomplished by minimizing the nuclear norm, or sum of the singular values, of the hidden matrix subject to agreement with the provided entries. If the underlying matrix satisfies a certain incoherence condition, then the number of entries required is equal to a quadratic logarithmic factor times the number of parameters in the singular value decomposition. The proof of this assertion is short, self contained, and uses very elementary analysis. The novel techniques herein are based on recent work in quantum information theory.",
+    "venue": "Journal of machine learning research",
+    "year": 2009,
+    "referenceCount": 39,
+    "citationCount": 999,
+    "influentialCitationCount": 118,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper provides the best bounds to date on the number of randomly sampled entries required to reconstruct an unknown low-rank matrix by minimizing the nuclear norm of the hidden matrix subject to agreement with the provided entries."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "9229182",
+            "name": "B. Recht"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "3f4f6a261f0536c3c9b4e023f34186897a7a4887",
+            "title": "Joint covariate selection and joint subspace selection for multiple classification problems"
+        },
+        {
+            "paperId": "842b12cee678cdc2856fa1fd9df3fd9970222b28",
+            "title": "Recovering Low-Rank Matrices From Few Coefficients in Any Basis"
+        },
+        {
+            "paperId": "1a54f0aa1936afad8e29ac54eae9ce322d451b44",
+            "title": "Quantum state tomography via compressed sensing."
+        },
+        {
+            "paperId": "d4bbcc842f22547eaf5884251eaa68251895dccb",
+            "title": "Matrix Factorization Techniques for Recommender Systems"
+        },
+        {
+            "paperId": "e194ea3ba83d58ed0cf3e74a02064bf062408dd5",
+            "title": "Rank-Sparsity Incoherence for Matrix Decomposition"
+        },
+        {
+            "paperId": "7147f96dc58b37837ec87d9d14b505ca7afb040a",
+            "title": "Matrix Completion from Noisy Entries"
+        },
+        {
+            "paperId": "d13e466cbd7c8ac764b3dfd3e3a12c7e8736412f",
+            "title": "Matrix Completion With Noise"
+        },
+        {
+            "paperId": "c369d9192c9754fb7a04529c68f2fb286f646df7",
+            "title": "The Power of Convex Relaxation: Near-Optimal Matrix Completion"
+        },
+        {
+            "paperId": "0e716a68650437cde42bdfb752085964d5e05437",
+            "title": "Matrix completion from a few entries"
+        },
+        {
+            "paperId": "9e7b0395d7b34e9d34cca779afd0c10da6e135b5",
+            "title": "Convex multi-task feature learning"
+        },
+        {
+            "paperId": "040c161f21e0fa57ac192ac826310f55d60277b0",
+            "title": "Exact Matrix Completion via Convex Optimization"
+        },
+        {
+            "paperId": "0c9bb579d8ad6ac987f7a16b66ddace671fc57c5",
+            "title": "Guaranteed Minimum-Rank Solutions of Linear Matrix Equations via Nuclear Norm Minimization"
+        },
+        {
+            "paperId": "6cd49dd5d26d1e8e33891f8e64ad3b5012e90ba6",
+            "title": "Fast maximum margin matrix factorization for collaborative prediction"
+        },
+        {
+            "paperId": "235a54f586a5c6ded9251368f7c43d215ecfa258",
+            "title": "Theory of semidefinite programming for Sensor Network Localization"
+        },
+        {
+            "paperId": "c1180048929ed490ab25e0e612f8f7c3d7196450",
+            "title": "Robust uncertainty principles: exact signal reconstruction from highly incomplete frequency information"
+        },
+        {
+            "paperId": "8f70d8019618a7c1dfc8118711a2e72ea5a510e7",
+            "title": "Unsupervised Learning of Image Manifolds by Semidefinite Programming"
+        },
+        {
+            "paperId": "6cf9b027aa09d042dd13fd9ae848d902240b3d34",
+            "title": "On sparse representations in arbitrary redundant bases"
+        },
+        {
+            "paperId": "744ee462ea16b677f5d00156f83371ad44967538",
+            "title": "18.465 Topics in Statistics: Statistical Learning Theory, Spring 2004"
+        },
+        {
+            "paperId": "6503fcffc6692b99f467815d2a3471116115f5bd",
+            "title": "A rank minimization heuristic with application to minimum order system approximation"
+        },
+        {
+            "paperId": "3872d48be875096dbf38612d762962630b687d40",
+            "title": "Strong converse for identification via quantum channels"
+        },
+        {
+            "paperId": "5a659d77546f9dba41e247d9f0aa90fb3d1f647d",
+            "title": "Computational study and comparisons of LFT reducibility methods"
+        },
+        {
+            "paperId": "43a4c2f60494dfe6c3a2294973054773cedb0ab9",
+            "title": "Technical Notes and Correspondence on the Rank Minimization Problem Over a Positive Semidefinite Linear Matrix Inequality"
+        },
+        {
+            "paperId": "826ad9d93afd1826a1b4146c88c1476cef5835df",
+            "title": "The geometry of graphs and some of its algorithmic applications"
+        },
+        {
+            "paperId": "c1b84e592405613427391912223042f6dfd102f5",
+            "title": "Decoupling Inequalities for the Tail Probabilities of Multivariate $U$-Statistics"
+        },
+        {
+            "paperId": "1d0c7472515c632130d5593dfb05458c09af2b76",
+            "title": "A Guided Tour of Chernoff Bounds"
+        },
+        {
+            "paperId": "d90bb29c1011d9c004f2bc8e0eb48b091db9db11",
+            "title": "Complexity of Quantifier Elimination in the Theory of Algebraically Closed Fields"
+        },
+        {
+            "paperId": "b7900418455fad7296fba6b93c2d2009a2c879ec",
+            "title": "Expected Length of the Longest Probe Sequence in Hash Code Searching"
+        },
+        {
+            "paperId": "d84840ea89c231bd0381847903682c346441d335",
+            "title": "Inequality with Applications in Statistical Mechanics"
+        },
+        {
+            "paperId": "5afac09177986a75ff5faf59f81d9ed1b751ed7b",
+            "title": "LOWER BOUNDS FOR THE HELMHOLTZ FUNCTION"
+        },
+        {
+            "paperId": "3d2218b17e7898a222e5fc2079a3f1531990708f",
+            "title": "I and J"
+        },
+        {
+            "paperId": null,
+            "title": "Submitted to Proceedings of the IEEE"
+        },
+        {
+            "paperId": null,
+            "title": "Micchelli , and Massimiliano Pontil . Convex multitask feature learn"
+        },
+        {
+            "paperId": null,
+            "title": ", pages 1 \u2013 22 , 2009"
+        },
+        {
+            "paperId": null,
+            "title": "465: Statistical Learning Theory. MIT Open Courseware http:// ocw.mit.edu/OcwWeb/Mathematics"
+        },
+        {
+            "paperId": null,
+            "title": "MIT 18.465: Statistical Learning Theory"
+        },
+        {
+            "paperId": "e39054d8b3c10aaa50e716230ef27db40f2f0c5c",
+            "title": "Learning with matrix factorizations"
+        },
+        {
+            "paperId": null,
+            "title": "Matrix Rank Minimization with Applications"
+        },
+        {
+            "paperId": "12b03af504d0960334c77567dab38791bf0f739a",
+            "title": "AND T"
+        },
+        {
+            "paperId": "73f36ff3a6d340606e09d2d0091da27a13af7a6f",
+            "title": "and as an in"
+        }
+    ]
+}

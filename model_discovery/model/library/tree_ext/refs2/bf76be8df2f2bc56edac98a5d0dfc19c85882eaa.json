@@ -1,0 +1,150 @@
+{
+    "paperId": "bf76be8df2f2bc56edac98a5d0dfc19c85882eaa",
+    "externalIds": {
+        "DBLP": "conf/nips/SindhwaniSK15",
+        "MAG": "2182629226",
+        "ArXiv": "1510.01722",
+        "CorpusId": 475539
+    },
+    "title": "Structured Transforms for Small-Footprint Deep Learning",
+    "abstract": "We consider the task of building compact deep learning pipelines suitable for deployment on storage and power constrained mobile devices. We propose a unified framework to learn a broad family of structured parameter matrices that are characterized by the notion of low displacement rank. Our structured transforms admit fast function and gradient evaluation, and span a rich range of parameter sharing configurations whose statistical modeling capacity can be explicitly tuned along a continuum from structured to unstructured. Experimental results show that these transforms can significantly accelerate inference and forward/backward passes during training, and offer superior accuracy-compactness-speed tradeoffs in comparison to a number of existing techniques. In keyword spotting applications in mobile speech recognition, our methods are much more effective than standard linear low-rank bottleneck layers and nearly retain the performance of state of the art models, while providing more than 3.5-fold compression.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2015,
+    "referenceCount": 28,
+    "citationCount": 228,
+    "influentialCitationCount": 15,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "In keyword spotting applications in mobile speech recognition, the proposed unified framework to learn a broad family of structured parameter matrices that are characterized by the notion of low displacement rank are much more effective than standard linear low-rank bottleneck layers and nearly retain the performance of state of the art models."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1808676",
+            "name": "Vikas Sindhwani"
+        },
+        {
+            "authorId": "1784851",
+            "name": "Tara N. Sainath"
+        },
+        {
+            "authorId": "152663162",
+            "name": "Sanjiv Kumar"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "efb5032e6199c80f83309fd866b25be9545831fd",
+            "title": "Compressing Neural Networks with the Hashing Trick"
+        },
+        {
+            "paperId": "0c908739fbff75f03469d13d4a1a07de3414ee19",
+            "title": "Distilling the Knowledge in a Neural Network"
+        },
+        {
+            "paperId": "ff2c1df15e5d19f82942e757cfc56416cc2cd082",
+            "title": "Fast Multidimensional Convolution in Low-Rank Tensor Formats via Cross Approximation"
+        },
+        {
+            "paperId": "9e75ebb1225bf605814deac5d01ca8d0002552c6",
+            "title": "Fast Neural Networks with Circulant Projections"
+        },
+        {
+            "paperId": "5934400081d9541339da0f16d2613263f1a4c2a2",
+            "title": "An Exploration of Parameter Redundancy in Deep Networks with Circulant Projections"
+        },
+        {
+            "paperId": "27a99c21a1324f087b2f144adc119f04137dfd87",
+            "title": "Deep Fried Convnets"
+        },
+        {
+            "paperId": "851c27d7cdb74b0b21bd84a9333bca106f486713",
+            "title": "Low precision storage for deep learning"
+        },
+        {
+            "paperId": "2a4117849c88d4728c33b1becaa9fb6ed7030725",
+            "title": "Memory Bounded Deep Convolutional Networks"
+        },
+        {
+            "paperId": "18c7fb55ff796db5c5a604e0ca44b6baaeb12239",
+            "title": "Fastfood: Approximate Kernel Expansions in Loglinear Time"
+        },
+        {
+            "paperId": "9c226faaaf155f97a6951a3adb8bbae2ef8d2c25",
+            "title": "Small-footprint keyword spotting using deep neural networks"
+        },
+        {
+            "paperId": "eff61216e0136886e1158625b1e5a88ed1a7cbce",
+            "title": "Predicting Parameters in Deep Learning"
+        },
+        {
+            "paperId": "5cea23330c76994cb626df20bed31cc2588033df",
+            "title": "Low-rank matrix factorization for Deep Neural Network training with high-dimensional output targets"
+        },
+        {
+            "paperId": "3127190433230b3dc1abd0680bb58dced4bcd90e",
+            "title": "Large Scale Distributed Deep Networks"
+        },
+        {
+            "paperId": "82b9099ddf092463f497bd48bb112c46ca52c4d1",
+            "title": "High-Performance Neural Networks for Visual Object Classification"
+        },
+        {
+            "paperId": "7a59fde27461a3ef4a21a249cc403d0d96e4a0d7",
+            "title": "Random Features for Large-Scale Kernel Machines"
+        },
+        {
+            "paperId": "b8012351bc5ebce4a4b3039bbbba3ce393bc3315",
+            "title": "An empirical evaluation of deep architectures on problems with many factors of variation"
+        },
+        {
+            "paperId": "79d1b330f0ef51f63ecb9b291dd5a05de5a858c0",
+            "title": "Toeplitz and Circulant Matrices: A Review"
+        },
+        {
+            "paperId": "c72d3de95adde34a66c73f6358fd5eae0c067195",
+            "title": "Displacement Structure: Theory and Applications"
+        },
+        {
+            "paperId": "7306af13eb2052fe9b9652c7d8b669655d307635",
+            "title": "Displacement ranks of matrices and linear equations"
+        },
+        {
+            "paperId": "5497cfa40fa86967e2c10d54e1b3fafcb3ae7c57",
+            "title": "Material : Structured Transforms for Small-Footprint Deep Learning"
+        },
+        {
+            "paperId": "c4756dcc7afc2f09d61e6e4cf2199d9f6dd695cc",
+            "title": "Convolutional neural networks for small-footprint keyword spotting"
+        },
+        {
+            "paperId": "fbeaa499e10e98515f7e1c4ad89165e8c0677427",
+            "title": "Improving the speed of neural networks on CPUs"
+        },
+        {
+            "paperId": "2e63fe065601529babc9d104889b6972a23cf68a",
+            "title": "The Mailman algorithm: A note on matrix-vector multiplication"
+        },
+        {
+            "paperId": "09b028e77aa5f3d3175c4059e4ba57326c317e48",
+            "title": "Toeplitz And Circulant Matrices: A Review (Foundations and Trends(R) in Communications and Information Theory)"
+        },
+        {
+            "paperId": "7c9411bc50b6a33947575f37ae16931578beae23",
+            "title": "Structured Matrices and Polynomials: Unified Superfast Algorithms"
+        },
+        {
+            "paperId": "0e343cf071214253b8907ebdcfdc948af411489a",
+            "title": "Structured Matrices and Polynomials"
+        },
+        {
+            "paperId": "e7f9f92f160fd6f609814bf6dd72849c8d15c494",
+            "title": "Generalized Displacement Structure for Block-Toeplitz, Toeplitz-Block, and Toeplitz-Derived Matrices"
+        },
+        {
+            "paperId": "dbb42e49583829a013d72a3f918a07b2c16239ae",
+            "title": "c \u25cb 2003 Society for Industrial and Applied Mathematics INVERSION OF DISPLACEMENT OPERATORS \u2217"
+        }
+    ]
+}

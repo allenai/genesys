@@ -1,0 +1,110 @@
+{
+    "paperId": "8b67d364d5a4680c958205f60e2f34dc057d84ae",
+    "externalIds": {
+        "MAG": "2951561575",
+        "ArXiv": "1504.02118",
+        "DBLP": "journals/siammax/Pan16",
+        "DOI": "10.1137/15M1030170",
+        "CorpusId": 39124975
+    },
+    "title": "How Bad Are Vandermonde Matrices?",
+    "abstract": "The work on the estimation of the condition numbers of Vandermonde matrices, motivated by applications to interpolation and quadrature, can be traced back at least to the 1970s. Empirical study has shown consistently that Vandermonde matrices tend to be badly ill-conditioned, with a narrow class of notable exceptions, such as the matrices of the discrete Fourier transform (hereafter referred to as DFT). So far formal support for this empirical observation, however, has been limited to the matrices defined by the real set of knots. We prove that, more generally, any Vandermonde matrix of a large size is badly ill-conditioned unless its knots are more or less equally spaced on or about the circle $C(0,1)=\\{x:\\,|x|=1\\}$. The matrices of DFT are perfectly conditioned, being defined by a cyclic sequence of knots, equally spaced on that circle, but we prove that even a slight modification of the knots into the so called quasi-cyclic sequence on this circle defines badly ill-conditioned Vandermonde matrices. Likewise we prove that the half-size leading block of a large DFT matrix is badly ill-conditioned. (This result was motivated by an application to pre-conditioning of an input matrix for Gaussian elimination with no pivoting.) Our analysis involves the Ekkart--Young theorem, the Vandermonde-to-Cauchy transformation of matrix structure, our new inversion formula for a Cauchy matrix, and low-rank approximation of its large submatrices.",
+    "venue": "SIAM Journal on Matrix Analysis and Applications",
+    "year": 2015,
+    "referenceCount": 19,
+    "citationCount": 116,
+    "influentialCitationCount": 4,
+    "openAccessPdf": {
+        "url": "http://arxiv.org/pdf/1504.02118",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is proved that any Vandermonde matrix of a large size is badly ill-conditioned unless its knots are more or less equally spaced on or about the circle $C(0,1)=\\{x:\\,|x|=1\\}$."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1766306",
+            "name": "V. Pan"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "d9e022b5b10af145e728471e13aa07783b509e0e",
+            "title": "Fast approximate computations with Cauchy matrices and polynomials"
+        },
+        {
+            "paperId": "7873cb76cb15a7c5223557f428651c556952b625",
+            "title": "Numerically Safe Gaussian Elimination with No Pivoting"
+        },
+        {
+            "paperId": "2e8594817de7b0f968170ae6dfad9a3aec0be3aa",
+            "title": "Random multipliers numerically stabilize Gaussian and block Gaussian elimination: Proofs and an extension to low-rank approximation \u2606"
+        },
+        {
+            "paperId": "8a2c2907990f1177045a09297854172dfc3acab7",
+            "title": "Communication lower bounds and optimal algorithms for numerical linear algebra*\u2020"
+        },
+        {
+            "paperId": "cb8339f128ae4e4ee94e98567f16c04af95f8f1d",
+            "title": "Superfast and Stable Structured Solvers for Toeplitz Least Squares via Randomized Sampling"
+        },
+        {
+            "paperId": "5455ee98068cdf9b88467bc5ce10c4d8536f38e1",
+            "title": "Transformations of Matrix Structures Work Again"
+        },
+        {
+            "paperId": "ff1dcbd9ff5ef27740375059d3718c2cd99d5c18",
+            "title": "Randomized preprocessing versus pivoting"
+        },
+        {
+            "paperId": "da638625c1ce4a5bb3b2808b2dc28675ea7eb0f2",
+            "title": "A Superfast Structured Solver for Toeplitz Linear Systems via Randomized Sampling"
+        },
+        {
+            "paperId": "9da69f49086c12e12ffec40577ea2ff2444e23fa",
+            "title": "A Superfast Algorithm for Toeplitz Systems of Linear Equations"
+        },
+        {
+            "paperId": "253f80efd842a100e9cbe654e32029a25aba02b8",
+            "title": "Fast Solution of Toeplitz- and Cauchy-Like Least-Squares Problems"
+        },
+        {
+            "paperId": "a133448454c2042c51b9c65a55f98235a3055214",
+            "title": "Explicit inverse of a generalized Vandermonde matrix"
+        },
+        {
+            "paperId": "5cf23691e2b1136b0c0a8cadb7e528b888ae5143",
+            "title": "Stable and Efficient Algorithms for Structured Systems of Linear Equations"
+        },
+        {
+            "paperId": "67e1e7388ebe742d3b44662db13022e7369cfe66",
+            "title": "Fast Gaussian elimination with partial pivoting for matrices with displacement structure"
+        },
+        {
+            "paperId": "5888ed382577bce3a5f745a4c9fe084472cd9df0",
+            "title": "How bad are Hankel matrices?"
+        },
+        {
+            "paperId": "9c9b7a9a3c0515e8d705748e84f46e29d63881e4",
+            "title": "On computations with dense structured matrices"
+        },
+        {
+            "paperId": "f79fdb0178f8769fb5efb874d2d61c0d7c42f2f9",
+            "title": "Lower bounds for the condition number of Vandermonde matrices"
+        },
+        {
+            "paperId": "7c9411bc50b6a33947575f37ae16931578beae23",
+            "title": "Structured Matrices and Polynomials: Unified Superfast Algorithms"
+        },
+        {
+            "paperId": null,
+            "title": "Tygert, A Fast Algorithm for the Inversion of Toeplitz Matrices"
+        },
+        {
+            "paperId": null,
+            "title": "How Unstable are Vandermonde Systems"
+        }
+    ]
+}

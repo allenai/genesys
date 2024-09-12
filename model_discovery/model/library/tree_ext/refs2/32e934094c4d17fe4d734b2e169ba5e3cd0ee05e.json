@@ -1,0 +1,182 @@
+{
+    "paperId": "32e934094c4d17fe4d734b2e169ba5e3cd0ee05e",
+    "externalIds": {
+        "ArXiv": "1610.09072",
+        "DBLP": "conf/nips/YuSCHK16",
+        "MAG": "2949384808",
+        "CorpusId": 5354603
+    },
+    "title": "Orthogonal Random Features",
+    "abstract": "We present an intriguing discovery related to Random Fourier Features: replacing multiplication by a random Gaussian matrix with multiplication by a properly scaled random orthogonal matrix significantly decreases kernel approximation error. We call this technique Orthogonal Random Features (ORF), and provide theoretical and empirical justification for its effectiveness. Motivated by the discovery, we further propose Structured Orthogonal Random Features (SORF), which uses a class of structured discrete orthogonal matrices to speed up the computation. The method reduces the time cost from $\\mathcal{O}(d^2)$ to $\\mathcal{O}(d \\log d)$, where $d$ is the data dimensionality, with almost no compromise in kernel approximation quality compared to ORF. Experiments on several datasets verify the effectiveness of ORF and SORF over the existing methods. We also provide discussions on using the same type of discrete orthogonal structure for a broader range of kernels and applications.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2016,
+    "referenceCount": 34,
+    "citationCount": 199,
+    "influentialCitationCount": 32,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An intriguing discovery is presented related to Random Fourier Features: replacing multiplication by a random Gaussian matrix with multiplication by an properly scaled random orthogonal matrix significantly decreases kernel approximation error."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1815972",
+            "name": "Felix X. Yu"
+        },
+        {
+            "authorId": "9486035",
+            "name": "A. Suresh"
+        },
+        {
+            "authorId": "1805203",
+            "name": "K. Choromanski"
+        },
+        {
+            "authorId": "1404655176",
+            "name": "D. Holtmann-Rice"
+        },
+        {
+            "authorId": "152663162",
+            "name": "Sanjiv Kumar"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "6cc31cad99f88adad5ae8e7335d4c109a3cc18fe",
+            "title": "TripleSpin - a generic compact paradigm for fast machine learning computations"
+        },
+        {
+            "paperId": "559faf4b49ef3f317e894f7ba3947d1769bdeb8c",
+            "title": "Recycling Randomness with Structure for Sublinear time Kernel Expansions"
+        },
+        {
+            "paperId": "63d99caff9582642a91467c20db479c65cb527c4",
+            "title": "Fast Cross-Polytope Locality-Sensitive Hashing"
+        },
+        {
+            "paperId": "e92cb981bd2f38e5129d38cee0b24315551ab0f5",
+            "title": "Generalization Properties of Learning with Random Features"
+        },
+        {
+            "paperId": "2d33cbf5e62d0cbff5079b0ea0678892c4cc982e",
+            "title": "Fast Orthogonal Projection Based on Kronecker Product"
+        },
+        {
+            "paperId": "6dfb4cf44186817d5445eb1aafd351da49637dbc",
+            "title": "Spherical Random Features for Polynomial Kernels"
+        },
+        {
+            "paperId": "50645e3dc912d597e89d59bffb96ccc0f8e1aefa",
+            "title": "Practical and Optimal LSH for Angular Distance"
+        },
+        {
+            "paperId": "a986ae204a6979abe1d175b5e188d3af51cf57c3",
+            "title": "Optimal Rates for Random Fourier Features"
+        },
+        {
+            "paperId": "e16276e1590804ea5f79df6ece67c170ba8d5239",
+            "title": "Compact Nonlinear Maps and Circulant Extensions"
+        },
+        {
+            "paperId": "5934400081d9541339da0f16d2613263f1a4c2a2",
+            "title": "An Exploration of Parameter Redundancy in Deep Networks with Circulant Projections"
+        },
+        {
+            "paperId": "18c7fb55ff796db5c5a604e0ca44b6baaeb12239",
+            "title": "Fastfood: Approximate Kernel Expansions in Loglinear Time"
+        },
+        {
+            "paperId": "2b55f034a3874ad4a4b7f389e6f89e3bf2d1801e",
+            "title": "Quasi-Monte Carlo Feature Maps for Shift-Invariant Kernels"
+        },
+        {
+            "paperId": "46abc8d639f1b8595ad241e44ac5dae61075ea80",
+            "title": "Circulant Binary Embedding"
+        },
+        {
+            "paperId": "8f77e16f2834eb23307b0436f5422a9752339f0a",
+            "title": "Nystr\u00f6m Method vs Random Fourier Features: A Theoretical and Empirical Comparison"
+        },
+        {
+            "paperId": "236a1facf2bbd96608763363390f7acff9dd764a",
+            "title": "Efficient Additive Kernels via Explicit Feature Maps"
+        },
+        {
+            "paperId": "03a3ba746584c01ed62c73e805d62336839582ae",
+            "title": "Random Feature Maps for Dot Product Kernels"
+        },
+        {
+            "paperId": "458d437f2b8d882d59bade4f9bbbdd3015f232a2",
+            "title": "Random Fourier Approximations for Skewed Multiplicative Histogram Kernels"
+        },
+        {
+            "paperId": "98ddb5f09e1e4480394b6e3a03cf1aa2442b01f7",
+            "title": "Efficient additive kernels via explicit feature maps"
+        },
+        {
+            "paperId": "03a8f53058127798bc2bc0245d21e78354f6c93b",
+            "title": "Max-margin additive classifiers for detection"
+        },
+        {
+            "paperId": "7a59fde27461a3ef4a21a249cc403d0d96e4a0d7",
+            "title": "Random Features for Large-Scale Kernel Machines"
+        },
+        {
+            "paperId": "9691f67f5075bde2fd70da0135a4a70f25ef042b",
+            "title": "Pegasos: primal estimated sub-gradient solver for SVM"
+        },
+        {
+            "paperId": "427b168f490b56716f22b129ac93aba5425ea08f",
+            "title": "Training linear SVMs in linear time"
+        },
+        {
+            "paperId": "b4d6a34f9d25b7a7ca665087ad7cb82f58d89d51",
+            "title": "Approximate nearest neighbors and the fast Johnson-Lindenstrauss transform"
+        },
+        {
+            "paperId": "42bb0ac384fb87933be67f63b98d90a45d2fe6e9",
+            "title": "Similarity estimation techniques from rounding algorithms"
+        },
+        {
+            "paperId": "52b7bf3ba59b31f362aa07f957f1543a29a4279e",
+            "title": "Support-Vector Networks"
+        },
+        {
+            "paperId": "908e12eb07435a79c76b50ff48efade0612025f9",
+            "title": "Unified Matrix Treatment of the Fast Walsh-Hadamard Transform"
+        },
+        {
+            "paperId": "54c922b956f8d07a81799b8f94d241b3ec0d40fa",
+            "title": "Harmonic Analysis and the Theory of Probability"
+        },
+        {
+            "paperId": "5578f3d9e6931c3762b2275f5265113e8f94369a",
+            "title": "Generalized RBF feature maps for Efficient Detection"
+        },
+        {
+            "paperId": "eddad3888e75bc35b923ce348fddeea23a74f7a9",
+            "title": "Quasi-Monte Carlo methods"
+        },
+        {
+            "paperId": null,
+            "title": "Lecture notes on Stein\u2019s method and applications"
+        },
+        {
+            "paperId": "bab7a53795e22ad70cfcf632335a577d7c515a8a",
+            "title": "Aspects of Multivariate Statistical Theory"
+        },
+        {
+            "paperId": null,
+            "title": "We now bound the term on the right hand side by classic Stein-type arguments"
+        },
+        {
+            "paperId": null,
+            "title": "Wx) can be used to approximate the angle, i.e., for any x"
+        },
+        {
+            "paperId": null,
+            "title": "Sensitive Hashing (LSH) result shows that the sign nonlinear map \u03c6 : \u03c6(x) = 1"
+        }
+    ]
+}

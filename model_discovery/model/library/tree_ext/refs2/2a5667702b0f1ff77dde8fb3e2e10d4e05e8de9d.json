@@ -1,0 +1,190 @@
+{
+    "paperId": "2a5667702b0f1ff77dde8fb3e2e10d4e05e8de9d",
+    "externalIds": {
+        "MAG": "2737258237",
+        "DBLP": "conf/cvpr/ZhouZPFB017",
+        "DOI": "10.1109/CVPR.2017.544",
+        "CorpusId": 5636055
+    },
+    "title": "Scene Parsing through ADE20K Dataset",
+    "abstract": "Scene parsing, or recognizing and segmenting objects and stuff in an image, is one of the key problems in computer vision. Despite the communitys efforts in data collection, there are still few image datasets covering a wide range of scenes and object categories with dense and detailed annotations for scene parsing. In this paper, we introduce and analyze the ADE20K dataset, spanning diverse annotations of scenes, objects, parts of objects, and in some cases even parts of parts. A scene parsing benchmark is built upon the ADE20K with 150 object and stuff classes included. Several segmentation baseline models are evaluated on the benchmark. A novel network design called Cascade Segmentation Module is proposed to parse a scene into stuff, objects, and object parts in a cascade and improve over the baselines. We further show that the trained scene parsing networks can lead to applications such as image content removal and scene synthesis1.",
+    "venue": "Computer Vision and Pattern Recognition",
+    "year": 2017,
+    "referenceCount": 35,
+    "citationCount": 2652,
+    "influentialCitationCount": 548,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The ADE20K dataset, spanning diverse annotations of scenes, objects, parts of objects, and in some cases even parts of parts, is introduced and it is shown that the trained scene parsing networks can lead to applications such as image content removal and scene synthesis."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145291669",
+            "name": "Bolei Zhou"
+        },
+        {
+            "authorId": "47940821",
+            "name": "Hang Zhao"
+        },
+        {
+            "authorId": "143872936",
+            "name": "Xavier Puig"
+        },
+        {
+            "authorId": "37895334",
+            "name": "S. Fidler"
+        },
+        {
+            "authorId": "2063937685",
+            "name": "Adela Barriuso"
+        },
+        {
+            "authorId": "143805211",
+            "name": "A. Torralba"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "cab372bc3824780cce20d9dd1c22d4df39ed081a",
+            "title": "DeepLab: Semantic Image Segmentation with Deep Convolutional Nets, Atrous Convolution, and Fully Connected CRFs"
+        },
+        {
+            "paperId": "e1ce8d00729f9e61eeb315f3cbd7b5354706adbd",
+            "title": "Synthesizing the preferred inputs for neurons in neural networks via deep generator networks"
+        },
+        {
+            "paperId": "1e9b1f6061ef779e3ad0819c2832a29168eaeb9d",
+            "title": "Instance-Aware Semantic Segmentation via Multi-task Network Cascades"
+        },
+        {
+            "paperId": "7f5fc84819c0cf94b771fe15141f65b123f7b8ec",
+            "title": "Multi-Scale Context Aggregation by Dilated Convolutions"
+        },
+        {
+            "paperId": "b0c065cd43aa7280e766b5dcbcc7e26abce59330",
+            "title": "SegNet: A Deep Convolutional Encoder-Decoder Architecture for Image Segmentation"
+        },
+        {
+            "paperId": "b73e2d40da901ad3da3813670a51c52803d7af7e",
+            "title": "SUN RGB-D: A RGB-D scene understanding benchmark suite"
+        },
+        {
+            "paperId": "cf986bfe13a24d4739f95df3a856a3c6e4ed4c1c",
+            "title": "Learning Deconvolution Network for Semantic Segmentation"
+        },
+        {
+            "paperId": "9667f8264745b626c6173b1310e2ff0298b09cfc",
+            "title": "Learning Deep Features for Scene Recognition using Places Database"
+        },
+        {
+            "paperId": "3ad998a9b2c071c4a1971048f8a2d754530f08e8",
+            "title": "Convolutional feature masking for joint object and stuff segmentation"
+        },
+        {
+            "paperId": "0959ef8fefe9e7041f508c2448fc026bc9e08393",
+            "title": "Material recognition in the wild with the Materials in Context Database"
+        },
+        {
+            "paperId": "6fc6803df5f9ae505cae5b2f178ade4062c768d0",
+            "title": "Fully convolutional networks for semantic segmentation"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "1f46ed7166bb9d9a3cf44126b9b8058bf1f14428",
+            "title": "Image completion using planar structure guidance"
+        },
+        {
+            "paperId": "3419ccd5c94d301ee08d716d037f0c3c6a62e78e",
+            "title": "The Role of Context for Object Detection and Semantic Segmentation in the Wild"
+        },
+        {
+            "paperId": "1a9658c0b7bea22075c0ea3c229b8c70c1790153",
+            "title": "Recurrent Convolutional Neural Networks for Scene Labeling"
+        },
+        {
+            "paperId": "6bdb186ec4726e00a8051119636d4df3b94043b5",
+            "title": "Caffe: Convolutional Architecture for Fast Feature Embedding"
+        },
+        {
+            "paperId": "caf202fd5833b1ef635923e79608e1a48d7539f9",
+            "title": "Detect What You Can: Detecting and Representing Objects Using Holistic Models and Body Parts"
+        },
+        {
+            "paperId": "463825c7e3b437fea82f2052f4809b06e3c7d628",
+            "title": "Context Driven Scene Parsing with Attention to Rare Classes"
+        },
+        {
+            "paperId": "71b7178df5d2b112d07e45038cb5637208659ff7",
+            "title": "Microsoft COCO: Common Objects in Context"
+        },
+        {
+            "paperId": "237a04dd8291cbdb59b6dc4b53e689af743fe2a3",
+            "title": "Learning Hierarchical Features for Scene Labeling"
+        },
+        {
+            "paperId": "8f88b66e964161c29cccf64933083561b751d09b",
+            "title": "Finding Things: Image Parsing with Regions and Per-Exemplar Detectors"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "c1994ba5946456fc70948c549daf62363f13fa2d",
+            "title": "Indoor Segmentation and Support Inference from RGBD Images"
+        },
+        {
+            "paperId": "de5b0fd02ea4f4d67fe3ae0d74603b9822df4e42",
+            "title": "Are we ready for autonomous driving? The KITTI vision benchmark suite"
+        },
+        {
+            "paperId": "64d53cf6116c258a419ebbf07df64efbe276b924",
+            "title": "Understanding scenes on many levels"
+        },
+        {
+            "paperId": "8bfbd28e6684e5507a150b7cc26392648b394e49",
+            "title": "Measuring and Predicting Object Importance"
+        },
+        {
+            "paperId": "908091b4a8757c3b2f7d9cfa2c4f616ee12c5157",
+            "title": "SUN database: Large-scale scene recognition from abbey to zoo"
+        },
+        {
+            "paperId": "3a9b175324ba11bc0e16c0633912d897b2fac4e2",
+            "title": "The Pascal Visual Object Classes (VOC) Challenge"
+        },
+        {
+            "paperId": "ef2448cf2eae2bc2fc1d83f1da0fbaba188ecec7",
+            "title": "Nonparametric scene parsing: Label transfer via dense scene alignment"
+        },
+        {
+            "paperId": "2a709dcc204af8bade3ed4040dc6bc738e80995a",
+            "title": "Learning Spatial Context: Using Stuff to Find Things"
+        },
+        {
+            "paperId": "092c275005ae49dc1303214f6d02d134457c7053",
+            "title": "LabelMe: A Database and Web-Based Tool for Image Annotation"
+        },
+        {
+            "paperId": "9a1ed876196ec9733acb1daa6d65e35ff0414291",
+            "title": "A database of human segmented natural images and its application to evaluating segmentation algorithms and measuring ecological statistics"
+        },
+        {
+            "paperId": "5ffd74d2873b7cba2cbc5fd295cc7fbdedca22a2",
+            "title": "The Cityscapes Dataset"
+        },
+        {
+            "paperId": null,
+            "title": "OpenSurfaces: A richly annotated catalog of surface appearance"
+        },
+        {
+            "paperId": null,
+            "title": "Cross-category object recognition"
+        }
+    ]
+}

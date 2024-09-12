@@ -1,0 +1,57 @@
+{
+    "paperId": "3dc3a0efe58eaf8564ca1965c0ffd23ec495b83f",
+    "externalIds": {
+        "MAG": "2102409316",
+        "DBLP": "conf/nips/HintonZ93",
+        "CorpusId": 2445072
+    },
+    "title": "Autoencoders, Minimum Description Length and Helmholtz Free Energy",
+    "abstract": "An autoencoder network uses a set of recognition weights to convert an input vector into a code vector. It then uses a set of generative weights to convert the code vector into an approximate reconstruction of the input vector. We derive an objective function for training autoencoders based on the Minimum Description Length (MDL) principle. The aim is to minimize the information required to describe both the code vector and the reconstruction error. We show that this information is minimized by choosing code vectors stochastically according to a Boltzmann distribution, where the generative weights define the energy of each possible code vector given the input vector. Unfortunately, if the code vectors use distributed representations, it is exponentially expensive to compute this Boltzmann distribution because it involves all possible code vectors. We show that the recognition weights of an autoencoder can be used to compute an approximation to the Boltzmann distribution and that this approximation gives an upper bound on the description length. Even when this bound is poor, it can be used as a Lyapunov function for learning both the generative and the recognition weights. We demonstrate that this approach can be used to learn factorial codes.",
+    "venue": "Neural Information Processing Systems",
+    "year": 1993,
+    "referenceCount": 6,
+    "citationCount": 1287,
+    "influentialCitationCount": 39,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that the recognition weights of an autoencoder can be used to compute an approximation to the Boltzmann distribution and that this approximation gives an upper bound on the description length."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1695689",
+            "name": "Geoffrey E. Hinton"
+        },
+        {
+            "authorId": "1804104",
+            "name": "R. Zemel"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "a57c6d627ffc667ae3547073876c35d6420accff",
+            "title": "Connectionist Learning Procedures"
+        },
+        {
+            "paperId": "b7b2bffdf5b62305bec4c0f1ea7e3c1ba66fccb5",
+            "title": "A minimum description length framework for unsupervised learning"
+        },
+        {
+            "paperId": "2993bed6663f53a12584ea293bf8d487a91cd25a",
+            "title": "Developing Population Codes by Minimizing Description Length"
+        },
+        {
+            "paperId": "4967ceb31f1e62231f6ae0ebceaa8ca1ca3f3625",
+            "title": "The limitations of deterministic Boltzmann machine learning"
+        },
+        {
+            "paperId": "418cc44768ff9d0ed8cf4cef79869f90ab672f7b",
+            "title": "A new view of the EM algorithm that justifies incremental and other variants"
+        },
+        {
+            "paperId": "9552ac39a57daacf3d75865a268935b5a0df9bbb",
+            "title": "Neural networks and principal component analysis: Learning from examples without local minima"
+        }
+    ]
+}

@@ -1,0 +1,186 @@
+{
+    "paperId": "f264e8b33c0d49a692a6ce2c4bcb28588aeb7d97",
+    "externalIds": {
+        "MAG": "1591801644",
+        "ArXiv": "1409.2329",
+        "DBLP": "journals/corr/ZarembaSV14",
+        "CorpusId": 17719760
+    },
+    "title": "Recurrent Neural Network Regularization",
+    "abstract": "We present a simple regularization technique for Recurrent Neural Networks (RNNs) with Long Short-Term Memory (LSTM) units. Dropout, the most successful technique for regularizing neural networks, does not work well with RNNs and LSTMs. In this paper, we show how to correctly apply dropout to LSTMs, and show that it substantially reduces overfitting on a variety of tasks. These tasks include language modeling, speech recognition, image caption generation, and machine translation.",
+    "venue": "arXiv.org",
+    "year": 2014,
+    "referenceCount": 37,
+    "citationCount": 2620,
+    "influentialCitationCount": 335,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper shows how to correctly apply dropout to LSTMs, and shows that it substantially reduces overfitting on a variety of tasks."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2563432",
+            "name": "Wojciech Zaremba"
+        },
+        {
+            "authorId": "1701686",
+            "name": "I. Sutskever"
+        },
+        {
+            "authorId": "1689108",
+            "name": "O. Vinyals"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "d4dc1012d780e8e2547237eb5a6dc7b1bf47d2f0",
+            "title": "Show and tell: A neural image caption generator"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "0894b06cff1cd0903574acaa7fcf071b144ae775",
+            "title": "Fast and Robust Neural Network Joint Models for Statistical Machine Translation"
+        },
+        {
+            "paperId": "71b7178df5d2b112d07e45038cb5637208659ff7",
+            "title": "Microsoft COCO: Common Objects in Context"
+        },
+        {
+            "paperId": "5522764282c85aea422f1c4dc92ff7e0ca6987bc",
+            "title": "A Clockwork RNN"
+        },
+        {
+            "paperId": "533ee188324b833e059cb59b654e6160776d5812",
+            "title": "How to Construct Deep Recurrent Neural Networks"
+        },
+        {
+            "paperId": "c0b624c46b51920dfec5aa02cc86323c0beb0df5",
+            "title": "Dropout Improves Recurrent Neural Networks for Handwriting Recognition"
+        },
+        {
+            "paperId": "ba0c34d72dd42ef78c1f1514d92c2c22b9c0d454",
+            "title": "On Fast Dropout and its Applicability to Recurrent Networks"
+        },
+        {
+            "paperId": "944a1cfd79dbfb6fef460360a0765ba790f4027a",
+            "title": "Recurrent Continuous Translation Models"
+        },
+        {
+            "paperId": "0157dcd6122c20b5afc359a799b2043453471f7f",
+            "title": "Exploiting Similarities among Languages for Machine Translation"
+        },
+        {
+            "paperId": "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17",
+            "title": "Generating Sequences With Recurrent Neural Networks"
+        },
+        {
+            "paperId": "ec92efde21707ddf4b81f301cd58e2051c1a2443",
+            "title": "Fast dropout training"
+        },
+        {
+            "paperId": "38f35dd624cd1cf827416e31ac5e0e0454028eca",
+            "title": "Regularization of Neural Networks using DropConnect"
+        },
+        {
+            "paperId": "4177ec52d1b80ed57f2e72b0f9a42365f1a8598d",
+            "title": "Speech recognition with deep recurrent neural networks"
+        },
+        {
+            "paperId": "4ef03716945bd3907458efbe1bbf8928dafc1efc",
+            "title": "Regularization and nonlinearities for neural language models: when are they needed?"
+        },
+        {
+            "paperId": "d1275b2a2ab53013310e759e5c6878b96df643d4",
+            "title": "Context dependent recurrent neural network language model"
+        },
+        {
+            "paperId": "77b73697c8b5295a718ffef0d63a1afd489de915",
+            "title": "LIUM\u2019s SMT Machine Translation Systems for WMT 2012"
+        },
+        {
+            "paperId": "cb45e9217fe323fbc199d820e7735488fca2a9b3",
+            "title": "Strategies for training large scale neural network language models"
+        },
+        {
+            "paperId": "937d3a404b8870fb3ff3e243e6a0c6024eef491b",
+            "title": "A Novel Connectionist System for Unconstrained Handwriting Recognition"
+        },
+        {
+            "paperId": "370984d3910e61d41ee8318714cd610b689de726",
+            "title": "2007 Special Issue: Optimization and applications of echo state networks with leaky- integrator neurons"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "3d82e058a5c40954b8f5db170a298a889a254c37",
+            "title": "Connectionist Speech Recognition: A Hybrid Approach"
+        },
+        {
+            "paperId": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+            "title": "Building a Large Annotated Corpus of English: The Penn Treebank"
+        },
+        {
+            "paperId": "b8fe93d3e5205a450fdd8a9fb94cea0ab73b067f",
+            "title": "BYBLOS: The BBN continuous speech recognition system"
+        },
+        {
+            "paperId": null,
+            "title": "eeper with convolutions.arXiv preprint arXiv:1409.4842"
+        },
+        {
+            "paperId": "965c9aec5e68d49142c5af6a9f0a984f6c2c743a",
+            "title": "Sequence discriminative distributed training of long short-term memory recurrent neural networks"
+        },
+        {
+            "paperId": "2a76c2121eee30af82a24058b4e149f05bcda911",
+            "title": "Language modeling with sum-product networks"
+        },
+        {
+            "paperId": null,
+            "title": "University le mans"
+        },
+        {
+            "paperId": "5d5d4f49d6443c8529a6f5ebef5c499d47a869da",
+            "title": "Improving Neural Networks with Dropout"
+        },
+        {
+            "paperId": "96364af2d208ea75ca3aeb71892d2f7ce7326b55",
+            "title": "Statistical Language Models Based on Neural Networks"
+        },
+        {
+            "paperId": "f9a1b3850dfd837793743565a8af95973d395a4e",
+            "title": "LSTM Neural Networks for Language Modeling"
+        },
+        {
+            "paperId": null,
+            "title": "Automatic Speech Recognition and Understanding (ASRU), 2011"
+        },
+        {
+            "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+            "title": "Recurrent neural network based language model"
+        },
+        {
+            "paperId": "03bc854feaee144b54924b440eff02ed9082cc6b",
+            "title": "THE USE OF RECURRENT NEURAL NETWORKS IN CONTINUOUS SPEECH RECOGNITION"
+        },
+        {
+            "paperId": null,
+            "title": "Automatic speech and speaker recognition, pp. 233\u2013258"
+        }
+    ]
+}

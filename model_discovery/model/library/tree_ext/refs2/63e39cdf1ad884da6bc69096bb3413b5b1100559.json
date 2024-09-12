@@ -1,0 +1,219 @@
+{
+    "paperId": "63e39cdf1ad884da6bc69096bb3413b5b1100559",
+    "externalIds": {
+        "DBLP": "journals/corr/PressW16",
+        "MAG": "2963347649",
+        "ArXiv": "1608.05859",
+        "ACL": "E17-2025",
+        "DOI": "10.18653/V1/E17-2025",
+        "CorpusId": 836219
+    },
+    "title": "Using the Output Embedding to Improve Language Models",
+    "abstract": "We study the topmost weight matrix of neural network language models. We show that this matrix constitutes a valid word embedding. When training language models, we recommend tying the input embedding and this output embedding. We analyze the resulting update rules and show that the tied embedding evolves in a more similar way to the output embedding than to the input embedding in the untied model. We also offer a new method of regularizing the output embedding. Our methods lead to a significant reduction in perplexity, as we are able to show on a variety of neural network language models. Finally, we show that weight tying can reduce the size of neural translation models to less than half of their original size without harming their performance.",
+    "venue": "Conference of the European Chapter of the Association for Computational Linguistics",
+    "year": 2016,
+    "referenceCount": 45,
+    "citationCount": 692,
+    "influentialCitationCount": 31,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/E17-2025.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The topmost weight matrix of neural network language models is studied and it is shown that this matrix constitutes a valid word embedding and a new method of regularizing the output embedding is offered."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "40170001",
+            "name": "Ofir Press"
+        },
+        {
+            "authorId": "145128145",
+            "name": "Lior Wolf"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "424aef7340ee618132cc3314669400e23ad910ba",
+            "title": "Tying Word Vectors and Word Classifiers: A Loss Framework for Language Modeling"
+        },
+        {
+            "paperId": "67d968c7450878190e45ac7886746de867bf673d",
+            "title": "Neural Architecture Search with Reinforcement Learning"
+        },
+        {
+            "paperId": "579e0077a3810510a7965224a8782ecc01766ea0",
+            "title": "Achieving Human Parity in Conversational Speech Recognition"
+        },
+        {
+            "paperId": "7dba53e72c182e25e98e8f73a99d75ff69dda0c2",
+            "title": "Recurrent Highway Networks"
+        },
+        {
+            "paperId": "58001259d2f6442b07cc0d716ff99899abbb2bc7",
+            "title": "Gated Word-Character Recurrent Language Model"
+        },
+        {
+            "paperId": "568374ac9433e29b812008b2a01f81e657bdbd34",
+            "title": "Noisy Activation Functions"
+        },
+        {
+            "paperId": "19d6da9fc75ff04116d022d5bb4b6539b741484a",
+            "title": "A Dual Embedding Space Model for Document Ranking"
+        },
+        {
+            "paperId": "0c1f9ca23f4f09ecfc44bcc8ca1c2736624f4652",
+            "title": "A Theoretically Grounded Application of Dropout in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "1518039b5001f1836565215eb047526b3ac7f462",
+            "title": "Neural Machine Translation of Rare Words with Subword Units"
+        },
+        {
+            "paperId": "f35de4f9b1a7c4d3fa96a0d2ab1bf8937671f6b6",
+            "title": "Dropout as a Bayesian Approximation: Representing Model Uncertainty in Deep Learning"
+        },
+        {
+            "paperId": "63c490f2a3330e3685e7df50973278296905f63b",
+            "title": "A Fixed-Size Encoding Method for Variable-Length Sequences with its Application to Neural Network Language Models"
+        },
+        {
+            "paperId": "0c908739fbff75f03469d13d4a1a07de3414ee19",
+            "title": "Distilling the Knowledge in a Neural Network"
+        },
+        {
+            "paperId": "9665247ea3421929f9b6ad721f139f11edb1dbb8",
+            "title": "Learning Longer Memory in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "dbd5e38086fce7210bff8b9038b6b41fb2212d93",
+            "title": "An Unsupervised Model for Instance Level Subcategorization Acquisition"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "f264e8b33c0d49a692a6ce2c4bcb28588aeb7d97",
+            "title": "Recurrent Neural Network Regularization"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "7a96765c147c9c814803c8c9de28a1dd069271da",
+            "title": "SimLex-999: Evaluating Semantic Models With (Genuine) Similarity Estimation"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "2012f32199adc88747d5a1b47c7b4ba1cb3cb995",
+            "title": "word2vec Explained: deriving Mikolov et al.'s negative-sampling word-embedding method"
+        },
+        {
+            "paperId": "533ee188324b833e059cb59b654e6160776d5812",
+            "title": "How to Construct Deep Recurrent Neural Networks"
+        },
+        {
+            "paperId": "53ca064b9f1b92951c1997e90b776e95b0880e52",
+            "title": "Learning word embeddings efficiently with noise-contrastive estimation"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "944a1cfd79dbfb6fef460360a0765ba790f4027a",
+            "title": "Recurrent Continuous Translation Models"
+        },
+        {
+            "paperId": "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17",
+            "title": "Generating Sequences With Recurrent Neural Networks"
+        },
+        {
+            "paperId": "53ab89807caead278d3deb7b6a4180b277d3cb77",
+            "title": "Better Word Representations with Recursive Neural Networks for Morphology"
+        },
+        {
+            "paperId": "f6b51c8753a871dc94ff32152c00c01e94f90f09",
+            "title": "Efficient Estimation of Word Representations in Vector Space"
+        },
+        {
+            "paperId": "8729441d734782c3ed532a7d2d9611b438c0a09a",
+            "title": "ADADELTA: An Adaptive Learning Rate Method"
+        },
+        {
+            "paperId": "1a8c33f9e51ba01e1cdade7029f96892c7c7087b",
+            "title": "Large-scale learning of word relatedness with constraints"
+        },
+        {
+            "paperId": "5b0d644f5c4b9880cbaf79932c0a4fa98996f068",
+            "title": "A fast and simple algorithm for training neural probabilistic language models"
+        },
+        {
+            "paperId": "396aabd694da04cdb846cb724ca9f866f345cbd5",
+            "title": "Domain Adaptation via Pseudo In-Domain Data Selection"
+        },
+        {
+            "paperId": "1c61f9ef06fe74505775a833ff849185757199e7",
+            "title": "Learning Word Vectors for Sentiment Analysis"
+        },
+        {
+            "paperId": "07ca885cb5cc4328895bfaec9ab752d5801b14cd",
+            "title": "Extensions of recurrent neural network language model"
+        },
+        {
+            "paperId": "a9fc84f8abe740cdc7ee82e69444d1d00dbe0ceb",
+            "title": "A Scalable Hierarchical Distributed Language Model"
+        },
+        {
+            "paperId": "4bc1678b9d2ffc9af22a6c3b786ad79a941f0b86",
+            "title": "Practical solutions to the problem of diagonal dominance in kernel document clustering"
+        },
+        {
+            "paperId": "6c2b28f9354f667cd5bd07afc0471d8334430da7",
+            "title": "A Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "1aa9c0045f1fe8c79cce03c7c14ef4b4643a21f8",
+            "title": "A new algorithm for data compression"
+        },
+        {
+            "paperId": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+            "title": "Building a Large Annotated Corpus of English: The Penn Treebank"
+        },
+        {
+            "paperId": "e3ce71a26872c7755e6d8b8fc45bf00c8be64193",
+            "title": "Neural Machine Translation Systems for WMT 16"
+        },
+        {
+            "paperId": "83a768a0720d0a1f68792827a422395001291614",
+            "title": "Multimodal Distributional Semantics"
+        },
+        {
+            "paperId": "5d5d4f49d6443c8529a6f5ebef5c499d47a869da",
+            "title": "Improving Neural Networks with Dropout"
+        },
+        {
+            "paperId": null,
+            "title": "Proceedings of the Seventeenth Conference on Computational Natural Language Learning, chapter Better Word Representations with Recursive Neural Networks for Morphology, pages 104\u2013113"
+        },
+        {
+            "paperId": "f9a1b3850dfd837793743565a8af95973d395a4e",
+            "title": "LSTM Neural Networks for Language Modeling"
+        },
+        {
+            "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+            "title": "Recurrent neural network based language model"
+        }
+    ]
+}

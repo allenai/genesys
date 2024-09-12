@@ -1,0 +1,198 @@
+{
+    "paperId": "1109b663453e78a59e4f66446d71720ac58cec25",
+    "externalIds": {
+        "MAG": "1487583988",
+        "DBLP": "journals/corr/SermanetEZMFL13",
+        "ArXiv": "1312.6229",
+        "CorpusId": 4071727
+    },
+    "title": "OverFeat: Integrated Recognition, Localization and Detection using Convolutional Networks",
+    "abstract": "We present an integrated framework for using Convolutional Networks for classification, localization and detection. We show how a multiscale and sliding window approach can be efficiently implemented within a ConvNet. We also introduce a novel deep learning approach to localization by learning to predict object boundaries. Bounding boxes are then accumulated rather than suppressed in order to increase detection confidence. We show that different tasks can be learned simultaneously using a single shared network. This integrated framework is the winner of the localization task of the ImageNet Large Scale Visual Recognition Challenge 2013 (ILSVRC2013) and obtained very competitive results for the detection and classifications tasks. In post-competition work, we establish a new state of the art for the detection task. Finally, we release a feature extractor from our best model called OverFeat.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2013,
+    "referenceCount": 37,
+    "citationCount": 4896,
+    "influentialCitationCount": 328,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This integrated framework for using Convolutional Networks for classification, localization and detection is the winner of the localization task of the ImageNet Large Scale Visual Recognition Challenge 2013 and obtained very competitive results for the detection and classifications tasks."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3142556",
+            "name": "P. Sermanet"
+        },
+        {
+            "authorId": "2060028",
+            "name": "D. Eigen"
+        },
+        {
+            "authorId": null,
+            "name": "Xiang Zhang"
+        },
+        {
+            "authorId": "143949035",
+            "name": "Micha\u00ebl Mathieu"
+        },
+        {
+            "authorId": "2276554",
+            "name": "R. Fergus"
+        },
+        {
+            "authorId": "1688882",
+            "name": "Yann LeCun"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "3aa259af5b7f1778eca7926ed1b6a6cbaebf28ab",
+            "title": "Prime Object Proposals with Randomized Prim's Algorithm"
+        },
+        {
+            "paperId": "237a04dd8291cbdb59b6dc4b53e689af743fe2a3",
+            "title": "Learning Hierarchical Features for Scene Labeling"
+        },
+        {
+            "paperId": "9b223c8a31e0ea1d1f2c9787ffd8416dfc90c912",
+            "title": "Selective Search for Object Recognition"
+        },
+        {
+            "paperId": "68299ec9b72e3ac378a1fdc9d86039ebba203deb",
+            "title": "Fast image scanning with deep max-pooling convolutional neural networks"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "a1306ce652f556fbb9e794d91084a29294298e6d",
+            "title": "Pedestrian Detection with Unsupervised Multi-stage Feature Learning"
+        },
+        {
+            "paperId": "0060745e006c5f14ec326904119dca19c6545e51",
+            "title": "Improving neural networks by preventing co-adaptation of feature detectors"
+        },
+        {
+            "paperId": "9f7f9aba0a6a966ce04e29e401ea28f9eae82f02",
+            "title": "Convolutional neural networks applied to house numbers digit classification"
+        },
+        {
+            "paperId": "398c296d0cc7f9d180f84969f8937e6d3a413796",
+            "title": "Multi-column deep neural networks for image classification"
+        },
+        {
+            "paperId": "140d2acd4cdbc30b102dac34f4c68f279ace6a26",
+            "title": "Object Recognition by Sequential Figure-Ground Ranking"
+        },
+        {
+            "paperId": "9ab0de951cc9cdf16887b1f841f8da6affc9c0de",
+            "title": "Traffic sign recognition with multi-scale Convolutional Networks"
+        },
+        {
+            "paperId": "20f0357688876fa4662f806f985779dce6e24f3c",
+            "title": "Transforming Auto-Encoders"
+        },
+        {
+            "paperId": "943262361be04747aba71d45fb4854cf72019851",
+            "title": "Pose-Sensitive Embedding by Nonlinear NCA Regression"
+        },
+        {
+            "paperId": "f0640da2565bad7037d969e9f07276c10102083d",
+            "title": "Category Independent Object Proposals"
+        },
+        {
+            "paperId": "222eb8a73386c9a3ba4a83cd0a785961b3a3a943",
+            "title": "Constrained parametric min-cuts for automatic object segmentation"
+        },
+        {
+            "paperId": "1f88427d7aa8225e47f946ac41a0667d7b69ac52",
+            "title": "What is the best multi-stage architecture for object recognition?"
+        },
+        {
+            "paperId": "d2c733e34d48784a37d717fe43d9e93277a8c53e",
+            "title": "ImageNet: A large-scale hierarchical image database"
+        },
+        {
+            "paperId": "2d8f527d1a96b0dae209daa6a241cf3255a6ec0d",
+            "title": "Learning long\u2010range vision for autonomous off\u2010road driving"
+        },
+        {
+            "paperId": "f566b1f24e63151ddae652826638af054973a27f",
+            "title": "Supervised Learning of Image Restoration with Convolutional Networks"
+        },
+        {
+            "paperId": "c029513aef54460ef6a468ff83f549d7ffbb646b",
+            "title": "Toward automatic phenotyping of developing embryos from videos"
+        },
+        {
+            "paperId": "6b728a7442ca158f895d07c11c77d302269a832d",
+            "title": "Synergistic Face Detection and Pose Estimation with Energy-Based Models"
+        },
+        {
+            "paperId": "68a859142ef42196e6a56305b8c6ac4cb2c9326e",
+            "title": "Convolutional face finder: a neural architecture for fast and robust face detection"
+        },
+        {
+            "paperId": "f354310098e09c1e1dc88758fca36767fd9d084d",
+            "title": "Learning methods for generic object recognition with invariance to pose and lighting"
+        },
+        {
+            "paperId": "66eacdebef8afddd4ec4162fa11069dffb4c9df0",
+            "title": "Recognition"
+        },
+        {
+            "paperId": "09ebd9ad4fa21c0d56433ac57a4cd69e94c72281",
+            "title": "Original approach for the localisation of objects in images"
+        },
+        {
+            "paperId": "cc7fa2cf9d7d2b3aca4fa22271412831e9a61e22",
+            "title": "An original approach for the localization of objects in images"
+        },
+        {
+            "paperId": "52a3dca70cc21b540ad5d7b7b6e23744c20095f7",
+            "title": "Reading handwritten digits: a ZIP code recognition system"
+        },
+        {
+            "paperId": null,
+            "title": "Learning invarance through imitation"
+        },
+        {
+            "paperId": "fd790b061082571e20be7892ce4a97e156497c9f",
+            "title": "text Detection with Convolutional Neural Networks"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "2b234385356cb10d448908cef49584bece15d94b",
+            "title": "A Convolutional Neural Network Hand Tracker"
+        },
+        {
+            "paperId": "86ab4cae682fbd49c5a5bedb630e5a40fa7529f6",
+            "title": "Handwritten Digit Recognition with a Back-Propagation Network"
+        },
+        {
+            "paperId": null,
+            "title": "b) Assign to B s the set of bounding boxes predicted by the regressor network for each class in C s , across all spatial locations at scale s . 10"
+        },
+        {
+            "paperId": null,
+            "title": "(a) Assign to C s the set of classes in the top k for each scale s \u2208 1 . . . 6 , found by taking the maximum detection class outputs across spatial locations for that scale"
+        },
+        {
+            "paperId": null,
+            "title": "Each of unpooled maps undergoes a 3x3 max pooling operation (non-overlapping regions), repeated 3x3 times for (\u2206 x , \u2206 y ) pixel offsets of { 0 , 1 , 2 }"
+        },
+        {
+            "paperId": null,
+            "title": "(c) This produces a set of pooled feature maps, replicated (3x3) times for different (\u2206 x , \u2206 y ) combinations"
+        },
+        {
+            "paperId": null,
+            "title": "(a) For a single image, at a given scale, we start with the unpooled layer 5 feature maps"
+        }
+    ]
+}

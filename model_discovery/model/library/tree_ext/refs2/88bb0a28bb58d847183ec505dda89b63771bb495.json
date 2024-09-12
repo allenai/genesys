@@ -1,0 +1,198 @@
+{
+    "paperId": "88bb0a28bb58d847183ec505dda89b63771bb495",
+    "externalIds": {
+        "ArXiv": "1803.05457",
+        "DBLP": "journals/corr/abs-1803-05457",
+        "MAG": "2794325560",
+        "CorpusId": 3922816
+    },
+    "title": "Think you have Solved Question Answering? Try ARC, the AI2 Reasoning Challenge",
+    "abstract": "We present a new question set, text corpus, and baselines assembled to encourage AI research in advanced question answering. Together, these constitute the AI2 Reasoning Challenge (ARC), which requires far more powerful knowledge and reasoning than previous challenges such as SQuAD or SNLI. The ARC question set is partitioned into a Challenge Set and an Easy Set, where the Challenge Set contains only questions answered incorrectly by both a retrieval-based algorithm and a word co-occurence algorithm. The dataset contains only natural, grade-school science questions (authored for human tests), and is the largest public-domain set of this kind (7,787 questions). We test several baselines on the Challenge Set, including leading neural models from the SQuAD and SNLI tasks, and find that none are able to significantly outperform a random baseline, reflecting the difficult nature of this task. We are also releasing the ARC Corpus, a corpus of 14M science sentences relevant to the task, and implementations of the three neural baseline models tested. Can your model perform better? We pose ARC as a challenge to the community.",
+    "venue": "arXiv.org",
+    "year": 2018,
+    "referenceCount": 36,
+    "citationCount": 1385,
+    "influentialCitationCount": 206,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new question set, text corpus, and baselines assembled to encourage AI research in advanced question answering constitute the AI2 Reasoning Challenge (ARC), which requires far more powerful knowledge and reasoning than previous challenges such as SQuAD or SNLI."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "48323507",
+            "name": "Peter Clark"
+        },
+        {
+            "authorId": "3390191",
+            "name": "Isaac Cowhey"
+        },
+        {
+            "authorId": "1741101",
+            "name": "Oren Etzioni"
+        },
+        {
+            "authorId": "2236429",
+            "name": "Tushar Khot"
+        },
+        {
+            "authorId": "48229640",
+            "name": "Ashish Sabharwal"
+        },
+        {
+            "authorId": "3393851",
+            "name": "Carissa Schoenick"
+        },
+        {
+            "authorId": "3385516",
+            "name": "Oyvind Tafjord"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "cf8c493079702ec420ab4fc9c0fabb56b2a16c84",
+            "title": "SciTaiL: A Textual Entailment Dataset from Science Question Answering"
+        },
+        {
+            "paperId": "74f5ea3952cef12b13675b4232a28b8e61ffe4da",
+            "title": "Question Answering as Global Reasoning Over Semantic Abstractions"
+        },
+        {
+            "paperId": "2997b26ffb8c291ce478bd8a6e47979d5a55c466",
+            "title": "Annotation Artifacts in Natural Language Inference Data"
+        },
+        {
+            "paperId": "7d5cf22c70484fe217936c66741fb73b2a278bde",
+            "title": "Constructing Datasets for Multi-hop Reading Comprehension Across Documents"
+        },
+        {
+            "paperId": "ffb949d3493c3b2f3c9acf9c75cb03938933ddf0",
+            "title": "Adversarial Examples for Evaluating Reading Comprehension Systems"
+        },
+        {
+            "paperId": "c071a1ad68310fed7f0876b6f01cb7b135043bc3",
+            "title": "Are You Smarter Than a Sixth Grader? Textbook Question Answering for Multimodal Machine Comprehension"
+        },
+        {
+            "paperId": "932a5de79d8a8ebb75ea0c43493450fd9922e738",
+            "title": "Crowdsourcing Multiple Choice Science Questions"
+        },
+        {
+            "paperId": "f010affab57b5fcf1cd6be23df79d8ec98c7289c",
+            "title": "TriviaQA: A Large Scale Distantly Supervised Challenge Dataset for Reading Comprehension"
+        },
+        {
+            "paperId": "0ff595f0645a3e25a2f37145768985b10ead0509",
+            "title": "Answering Complex Questions Using Open Information Extraction"
+        },
+        {
+            "paperId": "3eda43078ae1f4741f09be08c4ecab6229046a5c",
+            "title": "NewsQA: A Machine Comprehension Dataset"
+        },
+        {
+            "paperId": "3a7b63b50c64f4ec3358477790e84cbd6be2a0b4",
+            "title": "Bidirectional Attention Flow for Machine Comprehension"
+        },
+        {
+            "paperId": "033dd6cf61a6017e9aa9b46068d3c89082849cf3",
+            "title": "Tracking the World State with Recurrent Entity Networks"
+        },
+        {
+            "paperId": "05dd7254b632376973f3a1b4d39485da17814df5",
+            "title": "SQuAD: 100,000+ Questions for Machine Comprehension of Text"
+        },
+        {
+            "paperId": "4bf7edee5a4c4cfdbdd43a607c402420129fa277",
+            "title": "Query-Reduction Networks for Question Answering"
+        },
+        {
+            "paperId": "2cd8e8f510c89c7c18268e8ad51c061e459ad321",
+            "title": "A Decomposable Attention Model for Natural Language Inference"
+        },
+        {
+            "paperId": "a5ae605457fd8c1c5cc2675417d44f8f59fc7c33",
+            "title": "Question Answering via Integer Programming over Semi-Structured Knowledge"
+        },
+        {
+            "paperId": "afaae8591456819c58aaa9baafaeaaa8a9d972ff",
+            "title": "Moving beyond the Turing Test with the Allen AI Science Challenge"
+        },
+        {
+            "paperId": "390808617b277987999b6e8e0aa5742aab54a6a0",
+            "title": "My Computer Is an Honor Student - but How Intelligent Is It? Standardized Tests as a Measure of AI"
+        },
+        {
+            "paperId": "7da8df4161906ad2eab242dbff724ac6d136dd24",
+            "title": "How to Write Science Questions that Are Easy for People and Hard for Computers"
+        },
+        {
+            "paperId": "478b4a5123bd5fda98bb35e6317d7f3555fec97d",
+            "title": "Combining Retrieval, Statistics, and Inference to Answer Elementary Science Questions"
+        },
+        {
+            "paperId": "d1505c6123c102e53eb19dff312cb25cea840b72",
+            "title": "Teaching Machines to Read and Comprehend"
+        },
+        {
+            "paperId": "abb33d75dc297993fcc3fb75e0f4498f413eb4f6",
+            "title": "Towards AI-Complete Question Answering: A Set of Prerequisite Toy Tasks"
+        },
+        {
+            "paperId": "71ae756c75ac89e2d731c9c79649562b5768ff39",
+            "title": "Memory Networks"
+        },
+        {
+            "paperId": "2519ed73f8084b993664e5a0c240e2dd37ba7349",
+            "title": "Diagram Understanding in Geometry Questions"
+        },
+        {
+            "paperId": "105c2473b7829d358b154bd7168cd26a839af0fd",
+            "title": "Overview of Todai Robot Project and Evaluation Framework of its NLP-based Problem Solving"
+        },
+        {
+            "paperId": "564257469fa44cdb57e4272f85253efb9acfd69d",
+            "title": "MCTest: A Challenge Dataset for the Open-Domain Machine Comprehension of Text"
+        },
+        {
+            "paperId": "9ac7f2587ac2f09a2ab3c8323cf5c26bfa8e65f9",
+            "title": "Can an AI get into the University of Tokyo"
+        },
+        {
+            "paperId": "9e2caa39ac534744a180972a30a320ad0ae41ea3",
+            "title": "Word Association Norms, Mutual Information, and Lexicography"
+        },
+        {
+            "paperId": null,
+            "title": "Ai beat humans at reading! maybe not"
+        },
+        {
+            "paperId": null,
+            "title": "which performs semi-structured matching of the question with retrieved sentences, where the structure consists of Open IE tuples"
+        },
+        {
+            "paperId": null,
+            "title": "Evaluation of information access technologies"
+        },
+        {
+            "paperId": null,
+            "title": ", which performs matching and reasoning using a semi-structured knowledge base of science knowledge"
+        },
+        {
+            "paperId": null,
+            "title": "Selected grand challenges in cognitive science"
+        },
+        {
+            "paperId": null,
+            "title": "Answer Scoring the scores for each premise score e ( q, a, p q,a ) , we the maximum supporting sentence score as the answer score c ( q, a ) = max score e ( q, a, p q,a )"
+        },
+        {
+            "paperId": null,
+            "title": "Three neural baseline models,"
+        },
+        {
+            "paperId": null,
+            "title": ", DGEM, and DGEM-OpenIE (Neural En-tailment Models). We adapted two neural entailment"
+        }
+    ]
+}

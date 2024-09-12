@@ -1,0 +1,183 @@
+{
+    "paperId": "853d4d94651c6d9f8ed4d114e1eb21f15f786daa",
+    "externalIds": {
+        "ArXiv": "1804.05685",
+        "ACL": "N18-2097",
+        "MAG": "2963926728",
+        "DBLP": "journals/corr/abs-1804-05685",
+        "DOI": "10.18653/v1/N18-2097",
+        "CorpusId": 4894594
+    },
+    "title": "A Discourse-Aware Attention Model for Abstractive Summarization of Long Documents",
+    "abstract": "Neural abstractive summarization models have led to promising results in summarizing relatively short documents. We propose the first model for abstractive summarization of single, longer-form documents (e.g., research papers). Our approach consists of a new hierarchical encoder that models the discourse structure of a document, and an attentive discourse-aware decoder to generate the summary. Empirical results on two large-scale datasets of scientific papers show that our model significantly outperforms state-of-the-art models.",
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2018,
+    "referenceCount": 31,
+    "citationCount": 644,
+    "influentialCitationCount": 110,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/N18-2097.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes the first model for abstractive summarization of single, longer-form documents (e.g., research papers), consisting of a new hierarchical encoder that models the discourse structure of a document, and an attentive discourse-aware decoder to generate the summary."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2527954",
+            "name": "Arman Cohan"
+        },
+        {
+            "authorId": "2462276",
+            "name": "Franck Dernoncourt"
+        },
+        {
+            "authorId": "153586399",
+            "name": "Doo Soon Kim"
+        },
+        {
+            "authorId": "145262461",
+            "name": "Trung Bui"
+        },
+        {
+            "authorId": "2047181",
+            "name": "Seokhwan Kim"
+        },
+        {
+            "authorId": "145907577",
+            "name": "W. Chang"
+        },
+        {
+            "authorId": "1685063",
+            "name": "Nazli Goharian"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "8691706ad0cf5e83969658b2e6bfffdc379440c9",
+            "title": "Generating Wikipedia by Summarizing Long Sequences"
+        },
+        {
+            "paperId": "d025598aab2075a89c5313c6092a6fbeab744b2f",
+            "title": "Cascaded Attention based Unsupervised Information Distillation for Compressive Summarization"
+        },
+        {
+            "paperId": "41d56a3eb9fd6563ba33a5b71d4519c1f8844bc2",
+            "title": "Coarse-to-Fine Attention Models for Document Summarization"
+        },
+        {
+            "paperId": "13395213d47f78672ab4e81573f2b0fa0cfc8c6d",
+            "title": "Challenges in Data-to-Document Generation"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "a4db1b93b722c21034ff39d5241f3668ae4a2b2c",
+            "title": "Contextualizing Citations for Scientific Summarization using Word Embeddings and Domain Knowledge"
+        },
+        {
+            "paperId": "032274e57f7d8b456bd255fe76b909b2c1d7458e",
+            "title": "A Deep Reinforced Model for Abstractive Summarization"
+        },
+        {
+            "paperId": "fd4b94a3406c5b12db649750e95abb3a7882d38b",
+            "title": "Scientific document summarization via citation contextualization and scientific discourse"
+        },
+        {
+            "paperId": "668db48c6a79826456341680ee1175dfc4cced71",
+            "title": "Get To The Point: Summarization with Pointer-Generator Networks"
+        },
+        {
+            "paperId": "2893a347f1cb32b16d4a2cfd0ef01d505ef1c9ec",
+            "title": "Generating High-Quality and Informative Conversation Responses with Sequence-to-Sequence Models"
+        },
+        {
+            "paperId": "1bc49abe5145055f1fa259bd4e700b1eb6b7f08d",
+            "title": "SummaRuNNer: A Recurrent Neural Network Based Sequence Model for Extractive Summarization of Documents"
+        },
+        {
+            "paperId": "c78468c2f87efabf8845ccd210ced364d45e5eab",
+            "title": "Language as a Latent Variable: Discrete Generative Models for Sentence Compression"
+        },
+        {
+            "paperId": "7a67159fc7bc76d0b37930b55005a69b51241635",
+            "title": "Abstractive Sentence Summarization with Attentive Recurrent Neural Networks"
+        },
+        {
+            "paperId": "02534853626c18c9a097c2712f1ddf3613257d35",
+            "title": "Incorporating Copying Mechanism in Sequence-to-Sequence Learning"
+        },
+        {
+            "paperId": "f37076f426023241f19cdc2fb0a0fd733a6fa7fa",
+            "title": "Abstractive Text Summarization using Sequence-to-sequence RNNs and Beyond"
+        },
+        {
+            "paperId": "1ac30af5522c7a50ec4d1ee43fd2bd8652a9bd52",
+            "title": "A Neural Attention Model for Abstractive Sentence Summarization"
+        },
+        {
+            "paperId": "a4d3e2302c8e599d9b558a19127beb5f0dfdde8a",
+            "title": "An Improved Non-monotonic Transition System for Dependency Parsing"
+        },
+        {
+            "paperId": "a98d11d7d6c9717b8a761b3d702cb10a4a2e2c4a",
+            "title": "Scientific Article Summarization Using Citation-Context and Article\u2019s Discourse Structure"
+        },
+        {
+            "paperId": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+            "title": "Effective Approaches to Attention-based Neural Machine Translation"
+        },
+        {
+            "paperId": "d1505c6123c102e53eb19dff312cb25cea840b72",
+            "title": "Teaching Machines to Read and Comprehend"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "4177ec52d1b80ed57f2e72b0f9a42365f1a8598d",
+            "title": "Speech recognition with deep recurrent neural networks"
+        },
+        {
+            "paperId": "e8c2f3247d8d6f8586b73bfa87f8c8bef8f055ea",
+            "title": "Generating Extractive Summaries of Scientific Paradigms"
+        },
+        {
+            "paperId": "3827c54958e653b5ce23e19a347f1f52e25592b8",
+            "title": "Beyond SumBasic: Task-focused summarization with sentence simplification and lexical expansion"
+        },
+        {
+            "paperId": "60b05f32c32519a809f21642ef1eb3eaf3848008",
+            "title": "ROUGE: A Package for Automatic Evaluation of Summaries"
+        },
+        {
+            "paperId": "44fca068eecce2203d111213e3691647914a3945",
+            "title": "LexRank: Graph-based Lexical Centrality as Salience in Text Summarization"
+        },
+        {
+            "paperId": "92ba9c288cbd0089cf6e9d988c9672f095a67109",
+            "title": "Using Hidden Markov Modeling to Decompose Human-Written Summaries"
+        },
+        {
+            "paperId": "dada43d57da426ce4d4982621e5ce7e77675894d",
+            "title": "The Structure of a Scientific Paper"
+        },
+        {
+            "paperId": "1be0cbe76f0591baebe214d9a4069a90f7ecede7",
+            "title": "Structure of the scientific paper."
+        },
+        {
+            "paperId": "38dde28d624b89ed568976a28dda64f0b0c048c2",
+            "title": "Using Latent Semantic Analysis in Text Summarization and Summary Evaluation"
+        }
+    ]
+}

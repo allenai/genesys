@@ -1,0 +1,153 @@
+{
+    "paperId": "bc900a187b6f0115417f4b7dfd2cf44c62875bf8",
+    "externalIds": {
+        "DBLP": "conf/cvpr/FathiRR11",
+        "MAG": "2031688197",
+        "DOI": "10.1109/CVPR.2011.5995444",
+        "CorpusId": 1641563
+    },
+    "title": "Learning to recognize objects in egocentric activities",
+    "abstract": "This paper addresses the problem of learning object models from egocentric video of household activities, using extremely weak supervision. For each activity sequence, we know only the names of the objects which are present within it, and have no other knowledge regarding the appearance or location of objects. The key to our approach is a robust, unsupervised bottom up segmentation method, which exploits the structure of the egocentric domain to partition each frame into hand, object, and background categories. By using Multiple Instance Learning to match object instances across sequences, we discover and localize object occurrences. Object representations are refined through transduction and object-level classifiers are trained. We demonstrate encouraging results in detecting novel object instances using models produced by weakly-supervised learning.",
+    "venue": "Computer Vision and Pattern Recognition",
+    "year": 2011,
+    "referenceCount": 28,
+    "citationCount": 522,
+    "influentialCitationCount": 91,
+    "openAccessPdf": {
+        "url": "http://repository.gatech.edu/bitstreams/eb1ff0f0-1a0e-4ba6-ad9a-ae1d6744b20b/download",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The key to this approach is a robust, unsupervised bottom up segmentation method, which exploits the structure of the egocentric domain to partition each frame into hand, object, and background categories and uses Multiple Instance Learning to match object instances across sequences."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "50706340",
+            "name": "A. Fathi"
+        },
+        {
+            "authorId": "2114833718",
+            "name": "Xiaofeng Ren"
+        },
+        {
+            "authorId": "144177248",
+            "name": "James M. Rehg"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "ffeb684b193afd21aefc5a6b05fb3616cc99418e",
+            "title": "Semantic Label Sharing for Learning with Many Categories"
+        },
+        {
+            "paperId": "c7de6028a3b6c07a5544b48e132862923d9c01bd",
+            "title": "Object, Scene and Actions: Combining Multiple Features for Human Action Recognition"
+        },
+        {
+            "paperId": "04b16a1a19ee2128c663326b1e87a2d8ec368450",
+            "title": "Figure-ground segmentation improves handled object recognition in egocentric video"
+        },
+        {
+            "paperId": "138c86b9283e4f26ff1583acdf4e51a5f88ccad1",
+            "title": "Observing Human-Object Interactions: Using Spatial and Functional Compatibility for Recognition"
+        },
+        {
+            "paperId": "1aaf8e1e8164e8968f693a100fee4343580b1d61",
+            "title": "Temporal segmentation and activity classification from first-person sensing"
+        },
+        {
+            "paperId": "779dea9b105d8f48c9bc86f479b91f9c1d3c5963",
+            "title": "From contours to regions: An empirical evaluation"
+        },
+        {
+            "paperId": "34b7e826db49a16773e8747bc8dfa48e344e425d",
+            "title": "Learning sign language by watching TV (using weakly aligned subtitles)"
+        },
+        {
+            "paperId": "66bf90eb1a737279abf028239bd4d0a318d3328e",
+            "title": "Actions in context"
+        },
+        {
+            "paperId": "02a98118ce990942432c0147ff3c0de756b4b76a",
+            "title": "Learning realistic human actions from movies"
+        },
+        {
+            "paperId": "d793bcd4e2f4e8e006278bb2e82a124fe25b34b8",
+            "title": "Keywords to visual categories: Multiple-instance learning forweakly supervised object categorization"
+        },
+        {
+            "paperId": "ef4209ed288ef38fecdfae2409bce78633386c10",
+            "title": "What, where and who? Classifying events by scene and object recognition"
+        },
+        {
+            "paperId": "d7e13004dcc904591ade1f471b09a86870da0b69",
+            "title": "A Scalable Approach to Activity Recognition based on Object Use"
+        },
+        {
+            "paperId": "b1029d008f3b8b8ca6d6028eb922dc911e9558df",
+            "title": "Hierarchical Recognition of Human Activities Interacting with Objects"
+        },
+        {
+            "paperId": "4a3684ee0c64d22386a44c0ddfbf8d609cd2de48",
+            "title": "MILES: Multiple-Instance Learning via Embedded Instance Selection"
+        },
+        {
+            "paperId": "e397800e8601631a8e01f210e5665b731fd7ebfc",
+            "title": "Animals on the Web"
+        },
+        {
+            "paperId": "7785c92d471ef3d2ec132f3facf2c1f7ec7e56a5",
+            "title": "A General Framework for Motion Segmentation: Independent, Articulated, Rigid, Non-rigid, Degenerate and Non-degenerate"
+        },
+        {
+            "paperId": "a737c107623bcffefa0bac20f1b64677f6a1255a",
+            "title": "Discovering objects and their location in images"
+        },
+        {
+            "paperId": "7a33502bddcf2775636c12ea114573431c08085b",
+            "title": "A Statistical Approach to Texture Classification from Single Images"
+        },
+        {
+            "paperId": "8c04f169203f9e55056a6f7f956695babe622a38",
+            "title": "Distinctive Image Features from Scale-Invariant Keypoints"
+        },
+        {
+            "paperId": "01d5bf24c0b35d9a234d534bf69924fa16201dee",
+            "title": "A probabilistic framework for semi-supervised clustering"
+        },
+        {
+            "paperId": "125842668eab7decac136db8a59d392dc5e4e395",
+            "title": "Combining active learning and semi-supervised learning using Gaussian fields and harmonic functions"
+        },
+        {
+            "paperId": "74b1a9e50f18af8a7b9f8dd38f40e0466ad7a8e8",
+            "title": "Transductive Inference for Text Classification using Support Vector Machines"
+        },
+        {
+            "paperId": "eac7287d7ef69252358c1fbddedf123e11012370",
+            "title": "Adaptive background mixture models for real-time tracking"
+        },
+        {
+            "paperId": "600193a45e76d907cbd81a80eb0d0dc4394f4fe3",
+            "title": "An Interactive Computer Vision System DyPERS: Dynamic Personal Enhanced Reality System"
+        },
+        {
+            "paperId": "7e3c3fee11758b15b56d719cca819303eca9b54b",
+            "title": "A Statistical Approach to Texture Classification from Single Images"
+        },
+        {
+            "paperId": "b7ed7ba7226cc0cd2f175aabbefc08cc9ff2d375",
+            "title": "Distinctive Image Features from Scale-Invariant Keypoints"
+        },
+        {
+            "paperId": "02e68b069d9cf13c082049429ffed18a5ca5f6d0",
+            "title": "Support Vector Machines for Multiple-Instance Learning"
+        },
+        {
+            "paperId": "f2b7a0c608ab2557b8897cddd1dd7ebd56978a85",
+            "title": "Looking at People: Sensing for Ubiquitous and Wearable Computing"
+        }
+    ]
+}

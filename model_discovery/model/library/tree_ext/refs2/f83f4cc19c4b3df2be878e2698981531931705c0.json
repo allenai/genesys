@@ -1,0 +1,146 @@
+{
+    "paperId": "f83f4cc19c4b3df2be878e2698981531931705c0",
+    "externalIds": {
+        "MAG": "2912029173",
+        "ArXiv": "1502.01379",
+        "DBLP": "journals/mmas/LiYMHY15",
+        "DOI": "10.1137/15M1007173",
+        "CorpusId": 17392991
+    },
+    "title": "Butterfly Factorization",
+    "abstract": "The paper introduces the butterfly factorization as a data-sparse approximation for the matrices that satisfy a complementary low-rank property. The factorization can be constructed efficiently if either fast algorithms for applying the matrix and its adjoint are available or the entries of the matrix can be sampled individually. For an $N\\times N$ matrix, the resulting factorization is a product of $O(\\log N)$ sparse matrices, each with $O(N)$ nonzero entries. Hence, it can be applied rapidly in $O(N\\log N)$ operations. Numerical results are provided to demonstrate the effectiveness of the butterfly factorization and its construction algorithms.",
+    "venue": "Multiscale Modeling & simulation",
+    "year": 2015,
+    "referenceCount": 24,
+    "citationCount": 59,
+    "influentialCitationCount": 5,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1502.01379",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The butterfly factorization is introduced as a data-sparse approximation for the matrices that satisfy a complementary low-rank property and can be applied rapidly in O(N)$ operations."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2185132",
+            "name": "Yingzhou Li"
+        },
+        {
+            "authorId": "2906086",
+            "name": "Haizhao Yang"
+        },
+        {
+            "authorId": "2151069576",
+            "name": "Eileen R. Martin"
+        },
+        {
+            "authorId": "10210457",
+            "name": "Kenneth L. Ho"
+        },
+        {
+            "authorId": "143954840",
+            "name": "Lexing Ying"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "a28f280dee808a2cb8a151b05c1c3e763cc825e3",
+            "title": "A Parallel Butterfly Algorithm"
+        },
+        {
+            "paperId": "10ea2f48d6d58f40ee0605fc07689fed65e3c9f3",
+            "title": "Fast wave computation via Fourier integral operators"
+        },
+        {
+            "paperId": "f28266ef678d21161d64a226ce109d28a6d8d790",
+            "title": "A fast algorithm for multilinear operators"
+        },
+        {
+            "paperId": "cb13d6831bbf5a40c7caf6edf5fead628c076b4b",
+            "title": "A Fast Randomized Algorithm for Computing a Hierarchically Semiseparable Representation of a Matrix"
+        },
+        {
+            "paperId": "e3ea0a65a0fd5e16fc545370b8dab7ec85f5f13b",
+            "title": "WAVEMOTH\u2013FAST SPHERICAL HARMONIC TRANSFORMS BY BUTTERFLY MATRIX COMPRESSION"
+        },
+        {
+            "paperId": "ba897a173e3e31ab2922cf3ad5f10d5db2d9f3a8",
+            "title": "Synthetic aperture inversion with sparsity constraints"
+        },
+        {
+            "paperId": "7613796ad094e7e17efc789c35a9e3301ed712ce",
+            "title": "Fast algorithms for hierarchically semiseparable matrices"
+        },
+        {
+            "paperId": "9f1159d06aeb2438f9c0861a4cb432a889bd6cb8",
+            "title": "An algorithm for the rapid evaluation of special function transforms"
+        },
+        {
+            "paperId": "8a4bbd5d0b3117291827d661d23522458366d72b",
+            "title": "Fast construction of hierarchical matrix representation from matrix-vector multiplication"
+        },
+        {
+            "paperId": "e51944b9202ecf72d22e7bab3889b5178bbebf7b",
+            "title": "Fast algorithms for spherical harmonic expansions, III"
+        },
+        {
+            "paperId": "75bc44168b0f32f8a2df7398745908383124b8b3",
+            "title": "CUR matrix decompositions for improved data analysis"
+        },
+        {
+            "paperId": "e725f8145ebe0cce7635dcdebddf6f7b288ce123",
+            "title": "A Fast Butterfly Algorithm for the Computation of Fourier Integral Operators"
+        },
+        {
+            "paperId": "000bbeee777e45effa463479c49e07447239a3c6",
+            "title": "Sparse Fourier Transform via Butterfly Algorithm"
+        },
+        {
+            "paperId": "51a20365c3440ec49747d867b49e244e051abb84",
+            "title": "Randomized algorithms for the low-rank approximation of matrices"
+        },
+        {
+            "paperId": "921c312a539867b15cbf847b47d45d911e4d98ea",
+            "title": "Accurate interpolation with high-resolution time-variant Radon transforms"
+        },
+        {
+            "paperId": "2d8acd2266c81f73bfe3a5d1a20a9c7efbfb5957",
+            "title": "A multilevel matrix decomposition algorithm for analyzing scattering from large structures"
+        },
+        {
+            "paperId": "6d73c9947d840cd84a8eee79c224add5fbbb929e",
+            "title": "FINDING STRUCTURE WITH RANDOMNESS : PROBABILISTIC ALGORITHMS FOR CONSTRUCTING"
+        },
+        {
+            "paperId": null,
+            "title": "A multiscale butterfly aglorithm for Fourier integral operators. preprint"
+        },
+        {
+            "paperId": "6ce227167bfeeaa11aeda4b9e77056b93b9226a4",
+            "title": "A fast directional algorithm for high frequency acoustic scattering in two dimensions"
+        },
+        {
+            "paperId": "ebeb00dc90862124120f2f6e7195435884991b31",
+            "title": "A fast randomized algorithm for the approximation of matrices \u2729"
+        },
+        {
+            "paperId": "1c54a8b40836ce6e9d4c7bad135a323809775f62",
+            "title": "Fast Algorithms for Spherical Harmonic Expansions"
+        },
+        {
+            "paperId": "9498bb96328c3e9498772241b55031570e6577d1",
+            "title": "Digital Object Identifier (DOI) 10.1007/s00607-002-1450-4 Data-sparse Approximation by Adaptive H 2-Matrices"
+        },
+        {
+            "paperId": "952896a6656080d1a0e021733bfaa237dd53f832",
+            "title": "A Sparse Matrix Arithmetic Based on H-Matrices. Part I: Introduction to H-Matrices"
+        },
+        {
+            "paperId": "6e09e1b235e94a5fdff823090ad044131da6e9ea",
+            "title": "Fourier Integral Operators"
+        }
+    ]
+}

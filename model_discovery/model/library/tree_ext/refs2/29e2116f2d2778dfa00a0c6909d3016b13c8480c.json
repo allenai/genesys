@@ -1,0 +1,310 @@
+{
+    "paperId": "29e2116f2d2778dfa00a0c6909d3016b13c8480c",
+    "externalIds": {
+        "MAG": "2808305145",
+        "ArXiv": "1806.05743",
+        "DOI": "10.1103/PhysRevE.98.012301",
+        "CorpusId": 52017573,
+        "PubMed": "30110750"
+    },
+    "title": "Distribution of shortest path lengths in subcritical Erd\u0151s-R\u00e9nyi networks.",
+    "abstract": "Networks that are fragmented into small disconnected components are prevalent in a large variety of systems. These include the secure communication networks of commercial enterprises, government agencies, and illicit organizations, as well as networks that suffered multiple failures, attacks, or epidemics. The structural and statistical properties of such networks resemble those of subcritical random networks, which consist of finite components, whose sizes are nonextensive. Surprisingly, such networks do not exhibit the small-world property that is typical in supercritical random networks, where the mean distance between pairs of nodes scales logarithmically with the network size. Unlike supercritical networks whose structure has been studied extensively, subcritical networks have attracted relatively little attention. A special feature of these networks is that the statistical and geometric properties vary between different components and depend on their sizes and topologies. The overall statistics of the network can be obtained by a summation over all the components with suitable weights. We use a topological expansion to perform a systematic analysis of the degree distribution and the distribution of shortest path lengths (DSPL) on components of given sizes and topologies in subcritical Erd\u0151s-R\u00e9nyi (ER) networks. From this expansion we obtain an exact analytical expression for the DSPL of the entire subcritical network, in the asymptotic limit. The DSPL, which accounts for all the pairs of nodes that reside on the same finite component (FC), is found to follow a geometric distribution of the form P_{FC}(L=\u2113|L<\u221e)=(1-c)c^{\u2113-1}, where c<1 is the mean degree. Using computer simulations we calculate the DSPL in subcritical ER networks of increasing sizes and confirm the convergence to this asymptotic result. We also obtain exact asymptotic results for the mean distance, \u3008L\u3009_{FC}, and for the standard deviation of the DSPL, \u03c3_{L,FC}, and show that the simulation results converge to these asymptotic results. Using the duality relations between subcritical and supercritical ER networks, we obtain the DSPL on the nongiant components of ER networks above the percolation transition.",
+    "venue": "Physical Review E",
+    "year": 2018,
+    "referenceCount": 67,
+    "citationCount": 19,
+    "influentialCitationCount": 2,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1806.05743",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A topological expansion is used to perform a systematic analysis of the degree distribution and the distribution of shortest path lengths (DSPL) on components of given sizes and topologies in subcritical Erd\u0151s-R\u00e9nyi (ER) networks and obtains an exact analytical expression for the DSPL of the entire subcritical network, in the asymptotic limit."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1882704",
+            "name": "E. Katzav"
+        },
+        {
+            "authorId": "3267392",
+            "name": "O. Biham"
+        },
+        {
+            "authorId": "2157668",
+            "name": "A. Hartmann"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "66c431c2dfe70556dc021cf0e1b8a62c2531922f",
+            "title": "Introduction To Percolation Theory"
+        },
+        {
+            "paperId": "6e3c56010e987b1f7b0ebc64d93d0442948cf389",
+            "title": "Random Graphs"
+        },
+        {
+            "paperId": "2aff9f745cc5043f02ef56772d21ab5e93ba1e9e",
+            "title": "Revealing the microstructure of the giant component in random graph ensembles."
+        },
+        {
+            "paperId": "5284ed8cae5cf7271c56a0d7e81de27d6646cafc",
+            "title": "Distribution of shortest cycle lengths in random networks."
+        },
+        {
+            "paperId": "faa313e5a826351ea311802e2f136ba41ea8fcc0",
+            "title": "Distribution of diameters for Erd\u0151s-R\u00e9nyi random graphs."
+        },
+        {
+            "paperId": "5087303565f7fbc3bd686f7cbe1c19f125ea5339",
+            "title": "Large-deviation properties of the largest 2-core component for random graphs"
+        },
+        {
+            "paperId": "b89f492e721c58ddd6736d2ddae2f891163a15cd",
+            "title": "Quantification of network structural dissimilarities"
+        },
+        {
+            "paperId": "699960a17bee7b17a9606eba92edbdc07a556bb4",
+            "title": "The distribution of first hitting times of randomwalks on Erd\u0151s\u2013R\u00e9nyi networks"
+        },
+        {
+            "paperId": "3137c8a8e31eb3238a4dd0325d0573b4461a5be4",
+            "title": "Simple and accurate analytical calculation of shortest path lengths"
+        },
+        {
+            "paperId": "e9a3121c27f8a7c8833354144b36f73e41d21867",
+            "title": "The distribution of path lengths of self avoiding walks on Erd\u0151s\u2013R\u00e9nyi networks"
+        },
+        {
+            "paperId": "74259fae33af20b6ccdb7ccfbf43fa38adbb19e4",
+            "title": "Distance distribution in configuration-model networks."
+        },
+        {
+            "paperId": "75463adacd63390f79bac5449a9d35bf7b29f37e",
+            "title": "Broadband macroscopic cortical oscillations emerge from intrinsic neuronal response failures"
+        },
+        {
+            "paperId": "c5e11c5d51bb9fa68761bf9af64a7e8aa431f2bc",
+            "title": "Graph-Theoretical Matrices in Chemistry"
+        },
+        {
+            "paperId": "223aedc1da2251d66b75b45e40d3cc8d1c3335dc",
+            "title": "Analytical results for the distribution of shortest path lengths in random networks"
+        },
+        {
+            "paperId": "05749bc4795cf01a9b885f7c8e3f460abe6152d2",
+            "title": "Big Practical Guide to Computer Simulations, 2nd Edition"
+        },
+        {
+            "paperId": "e772a82d5624514d85448bdd1e2eb5d23f347e1b",
+            "title": "The average number of distinct sites visited by a random walker on random graphs"
+        },
+        {
+            "paperId": "8da1b8bb89b94c6b2705067f967adc3aef894ab3",
+            "title": "Percolation of localized attack on complex networks"
+        },
+        {
+            "paperId": "89c3b555c0dce04a76ba2877f9f4b41107e8a58b",
+            "title": "Encyclopedia of Distances"
+        },
+        {
+            "paperId": "4a8ac5b3046ae990c8f6ab4244476a3ab25d8211",
+            "title": "Epidemic processes in complex networks"
+        },
+        {
+            "paperId": "26e848d9b8c7f29fdb3d76b15d34af98320df1d2",
+            "title": "High-precision work distributions for extreme nonequilibrium processes in large systems."
+        },
+        {
+            "paperId": "1a0ec9bb3cae7ffccf3f8d395f5257e9520194cd",
+            "title": "The Relative Ineffectiveness of Criminal Network Disruption"
+        },
+        {
+            "paperId": "fc86d73d91cc605a115334ed2b1dd1738e0ac932",
+            "title": "A recursion formula for resistance distances and its applications"
+        },
+        {
+            "paperId": "9edc3b7e5d71e7199815cc436c87dc9b33ce9321",
+            "title": "Spectra of Edge-Independent Random Graphs"
+        },
+        {
+            "paperId": "66fe3102344c6f3cf25dd98f7f95454c853b5400",
+            "title": "Enumerative Combinatorics: Contents"
+        },
+        {
+            "paperId": "fea9abefefc11241641fd80c3edc1fbec828a77d",
+            "title": "Bias in generation of random graphs."
+        },
+        {
+            "paperId": "8352b51ba7596380c5da901e355d3589cc2f204a",
+            "title": "Large-deviation properties of largest component for random graphs"
+        },
+        {
+            "paperId": "effa683ec6111aaf4b4d29ab2fb26b832844d9e1",
+            "title": "Networks: An Introduction"
+        },
+        {
+            "paperId": "e431580ae468b91a1192306376b9a59389e48e6e",
+            "title": "Thermodynamics and dynamics of systems with long-range interactions"
+        },
+        {
+            "paperId": "10ca6c3392df36fdba45a2d50b765a1c60198ead",
+            "title": "Structure of shells in complex networks."
+        },
+        {
+            "paperId": "bf7b349fc87dfa91fc85f7363b594b9615371717",
+            "title": "Dynamical Processes on Complex Networks"
+        },
+        {
+            "paperId": "efffa7325d7a69e0bb66fcde47bdce21cdb36c5f",
+            "title": "Fractal boundaries of complex networks"
+        },
+        {
+            "paperId": "141d4deee2d49d3d627d8b3faa06497f15ddd885",
+            "title": "Distance distribution in random graphs and application to network exploration."
+        },
+        {
+            "paperId": "f0975f573c625a298e7acc860eb53e9af53acb7c",
+            "title": "Resistance distance and the normalized Laplacian spectrum"
+        },
+        {
+            "paperId": "49e1dfa195edc3da8c530925a36ba45bca1b351f",
+            "title": "Universality for the Distance in Finite Variance Random Graphs"
+        },
+        {
+            "paperId": "926898ef1ccc9ce34c868271dd5556560030900b",
+            "title": "The phase transition in inhomogeneous random graphs"
+        },
+        {
+            "paperId": "d794d822b47c4677d1022d066cb48d87ff583796",
+            "title": "Distances in Random Graphs with Finite Mean and Infinite Variance Degrees"
+        },
+        {
+            "paperId": "a9027ace8b8e467d59e6d7ffa92345aa3fd38d59",
+            "title": "First-passage properties of the Erdos Renyi random graph"
+        },
+        {
+            "paperId": "067e26bbf905a42433a26b173846d8e3312d247c",
+            "title": "Distances in random graphs with finite variance degrees"
+        },
+        {
+            "paperId": "702974436ddcc44eb28ecc677a8a60abe88f92f2",
+            "title": "A Protein Interaction Map of Drosophila melanogaster"
+        },
+        {
+            "paperId": "eb77570dc0bb7109899a2e4df3a89b71a4cee400",
+            "title": "On Large Deviation Properties of Erd\u00f6s\u2013R\u00e9nyi Random Graphs"
+        },
+        {
+            "paperId": "eddc0df5a96efc68d22811d07beaf1340701fca2",
+            "title": "Spectra of random graphs with given expected degrees"
+        },
+        {
+            "paperId": "0b9107b96b39a00fc18986cb6a578e301fbc00ec",
+            "title": "Average path length in random networks."
+        },
+        {
+            "paperId": "eff3e2a802a63b15ce57498611165eccca0ddbe3",
+            "title": "The average distances in random graphs with given expected degrees"
+        },
+        {
+            "paperId": "92da2ce66c41f6fae81ae42c00d6373a17ded02f",
+            "title": "Metric structure of random networks"
+        },
+        {
+            "paperId": "f63ebd3d37a5b023fd82cfbe79713d28f979790d",
+            "title": "Scale-free networks are ultrasmall."
+        },
+        {
+            "paperId": "bedd73ed63f6f8ea1985360f0d725630fe0f3fc3",
+            "title": "Sampling rare events: statistics of local sequence alignments."
+        },
+        {
+            "paperId": "e8b8c5f4a81e11576ee2c74ab65c66a42bbad270",
+            "title": "Random graphs with arbitrary degree distributions and their applications."
+        },
+        {
+            "paperId": "44c9a2516a86add7645c945769b06054c79a21bf",
+            "title": "The Size of the Giant Component of a Random Graph with a Given Degree Sequence"
+        },
+        {
+            "paperId": "0183718fb098383f4a13b7197ddc96674b25986b",
+            "title": "A Critical Point for Random Graphs with a Given Degree Sequence"
+        },
+        {
+            "paperId": "94e5cb39c64e253d1dc1b853286b04a8d1afc00d",
+            "title": "An introduction to percolation"
+        },
+        {
+            "paperId": "66f39660bc001d058204d22de233ddda557f00b3",
+            "title": "Constant Time Generation of Free Trees"
+        },
+        {
+            "paperId": "8d8e9d75a92cc57a638ccb283bafcd6b4ea0de49",
+            "title": "Random Graphs"
+        },
+        {
+            "paperId": "dc6f745289ae9ae69b07a5ecde0ace262fdef24b",
+            "title": "A transfer-matrix approach to random resistor networks"
+        },
+        {
+            "paperId": "bb662ef5dcb8fed62e53f60a7b225ad7d564e2f2",
+            "title": "Constant Time Generation of Rooted Trees"
+        },
+        {
+            "paperId": "df73acfa3c66328659f125f02780e4340e57098a",
+            "title": "The Structure Of Complex Networks: Theory And Applications By Ernesto Estrada"
+        },
+        {
+            "paperId": "c80600e251635c2195a97bac54feeef6eb422a7f",
+            "title": "Supplementary : Oscillations in networks of networks stem from adaptive nodes with memory"
+        },
+        {
+            "paperId": null,
+            "title": "Quantification of 012301-21  EYTAN KATZAV"
+        },
+        {
+            "paperId": "2b891265a516dd57ac32dac9ca83e027a752405a",
+            "title": "Graphs and Matrices"
+        },
+        {
+            "paperId": "cf018458a7db40987f5a9f026e8a14b4a41fe02e",
+            "title": "On the Nature of the Function Expressive of the Law of Human Mortality"
+        },
+        {
+            "paperId": null,
+            "title": "Complex networks: structure"
+        },
+        {
+            "paperId": "1ffbfa8ca6ff57474f808c19f20d1d8fb95941f3",
+            "title": "A theorem on trees"
+        },
+        {
+            "paperId": null,
+            "title": "The book of trees (Design Lab"
+        },
+        {
+            "paperId": null,
+            "title": "Field guide to simple graphs"
+        },
+        {
+            "paperId": "a5aad5abb32f6b15f31b92312bb3b0f7b6470977",
+            "title": "On the evolution of random graphs"
+        },
+        {
+            "paperId": "f6bd3bd119eb15eafe02fa40c634ffe2e3bf21bf",
+            "title": "XXIV. On the nature of the function expressive of the law of human mortality, and on a new mode of determining the value of life contingencies. In a letter to Francis Baily, Esq. F. R. S. &c"
+        },
+        {
+            "paperId": "420173e087bca0bdb31985e28ff69c60a129c8ef",
+            "title": "On the Evolution of Random Graphs"
+        },
+        {
+            "paperId": "73f36ff3a6d340606e09d2d0091da27a13af7a6f",
+            "title": "and as an in"
+        }
+    ]
+}

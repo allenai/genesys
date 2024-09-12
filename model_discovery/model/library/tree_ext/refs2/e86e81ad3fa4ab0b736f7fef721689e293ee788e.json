@@ -1,0 +1,103 @@
+{
+    "paperId": "e86e81ad3fa4ab0b736f7fef721689e293ee788e",
+    "externalIds": {
+        "MAG": "2539583692",
+        "ArXiv": "1610.08431",
+        "ACL": "E17-2009",
+        "DBLP": "conf/eacl/GimpelWMC17",
+        "DOI": "10.18653/V1/E17-2009",
+        "CorpusId": 14091969
+    },
+    "title": "Broad Context Language Modeling as Reading Comprehension",
+    "abstract": "Progress in text understanding has been driven by large datasets that test particular capabilities, like recent datasets for reading comprehension (Hermann et al., 2015). We focus here on the LAMBADA dataset (Paperno et al., 2016), a word prediction task requiring broader context than the immediate sentence. We view LAMBADA as a reading comprehension problem and apply comprehension models based on neural networks. Though these models are constrained to choose a word from the context, they improve the state of the art on LAMBADA from 7.3% to 49%. We analyze 100 instances, finding that neural network readers perform well in cases that involve selecting a name from the context based on dialogue or discourse cues but struggle when coreference resolution or external knowledge is needed.",
+    "venue": "Conference of the European Chapter of the Association for Computational Linguistics",
+    "year": 2016,
+    "referenceCount": 14,
+    "citationCount": 24,
+    "influentialCitationCount": 7,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/E17-2009.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work views LAMBADA as a reading comprehension problem and applies comprehension models based on neural networks, finding that neural network readers perform well in cases that involve selecting a name from the context based on dialogue or discourse cues but struggle when coreference resolution or external knowledge is needed."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1700980",
+            "name": "Kevin Gimpel"
+        },
+        {
+            "authorId": "2113221447",
+            "name": "Hai Wang"
+        },
+        {
+            "authorId": "145689002",
+            "name": "David A. McAllester"
+        },
+        {
+            "authorId": "2802149",
+            "name": "Zewei Chu"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "99e763d3835686b8e1285c2a498766044fbc88ad",
+            "title": "Emergent Logical Structure in Vector Representations of Neural Readers"
+        },
+        {
+            "paperId": "a39ffa57ef8e538b3c6a6c2bbc0b641f7cdc60dc",
+            "title": "Who did What: A Large-Scale Person-Centered Cloze Dataset"
+        },
+        {
+            "paperId": "c6e5df6322659276da6133f9b734a389d7a255e8",
+            "title": "Attention-over-Attention Neural Networks for Reading Comprehension"
+        },
+        {
+            "paperId": "5ed791f810da580c78df6a052c6b9f2e258f6b0a",
+            "title": "The LAMBADA dataset: Word prediction requiring a broad discourse context"
+        },
+        {
+            "paperId": "b1e20420982a4f923c08652941666b189b11b7fe",
+            "title": "A Thorough Examination of the CNN/Daily Mail Reading Comprehension Task"
+        },
+        {
+            "paperId": "0f2ea810c16275dc74e880296e20dbd83b1bae1c",
+            "title": "Gated-Attention Readers for Text Comprehension"
+        },
+        {
+            "paperId": "f2e50e2ee4021f199877c8920f1f984481c723aa",
+            "title": "Text Understanding with the Attention Sum Reader Network"
+        },
+        {
+            "paperId": "35b91b365ceb016fb3e022577cec96fb9b445dc5",
+            "title": "The Goldilocks Principle: Reading Children's Books with Explicit Memory Representations"
+        },
+        {
+            "paperId": "0e6824e137847be0599bb0032e37042ed2ef5045",
+            "title": "Aligning Books and Movies: Towards Story-Like Visual Explanations by Watching Movies and Reading Books"
+        },
+        {
+            "paperId": "d1505c6123c102e53eb19dff312cb25cea840b72",
+            "title": "Teaching Machines to Read and Comprehend"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "564257469fa44cdb57e4272f85253efb9acfd69d",
+            "title": "MCTest: A Challenge Dataset for the Open-Domain Machine Comprehension of Text"
+        },
+        {
+            "paperId": "399da68d3b97218b6c80262df7963baa89dcc71b",
+            "title": "SRILM - an extensible language modeling toolkit"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        }
+    ]
+}

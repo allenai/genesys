@@ -1,0 +1,210 @@
+{
+    "paperId": "f91ff6c0aeba78f94f02b761446d5d911e6ab390",
+    "externalIds": {
+        "MAG": "2894919355",
+        "DBLP": "conf/iclr/ChenLHG19",
+        "ArXiv": "1810.01365",
+        "CorpusId": 52912118
+    },
+    "title": "On Self Modulation for Generative Adversarial Networks",
+    "abstract": "Training Generative Adversarial Networks (GANs) is notoriously challenging. We propose and study an architectural modification, self-modulation, which improves GAN performance across different data sets, architectures, losses, regularizers, and hyperparameter settings. Intuitively, self-modulation allows the intermediate feature maps of a generator to change as a function of the input noise vector. While reminiscent of other conditioning techniques, it requires no labeled data. In a large-scale empirical study we observe a relative decrease of $5\\%-35\\%$ in FID. Furthermore, all else being equal, adding this modification to the generator leads to improved performance in $124/144$ ($86\\%$) of the studied settings. Self-modulation is a simple architectural change that requires no additional parameter tuning, which suggests that it can be applied readily to any GAN.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2018,
+    "referenceCount": 42,
+    "citationCount": 102,
+    "influentialCitationCount": 8,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes and study an architectural modification, self-modulation, which improves GAN performance across different data sets, architectures, losses, regularizers, and hyperparameter settings."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2117180415",
+            "name": "Ting Chen"
+        },
+        {
+            "authorId": "34302129",
+            "name": "Mario Lucic"
+        },
+        {
+            "authorId": "2815290",
+            "name": "N. Houlsby"
+        },
+        {
+            "authorId": "1802148",
+            "name": "S. Gelly"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "5d642d5f21fcb94a03443735d16cf07dbdd5130f",
+            "title": "Understanding the Effectiveness of Lipschitz Constraint in Training of GANs via Gradient Analysis"
+        },
+        {
+            "paperId": "f91b05894b387cdb5186193359c2943febd49f3e",
+            "title": "The GAN Landscape: Losses, Architectures, Regularization, and Normalization"
+        },
+        {
+            "paperId": "1ea9f643171115e4a89e77c9a770c593f0794712",
+            "title": "Assessing Generative Models via Precision and Recall"
+        },
+        {
+            "paperId": "36a2a633dfec3ca8746f520ebe780343a8a2aee8",
+            "title": "Deep Generative Models for Distribution-Preserving Lossy Compression"
+        },
+        {
+            "paperId": "a8f3dc53e321fbb2565f5925def4365b9f68d1af",
+            "title": "Self-Attention Generative Adversarial Networks"
+        },
+        {
+            "paperId": "cf3d878d9c64bdff14dac364df8376a44225eec7",
+            "title": "Is Generator Conditioning Causally Related to GAN Performance?"
+        },
+        {
+            "paperId": "84de7d27e2f6160f634a483e8548c499a2cda7fa",
+            "title": "Spectral Normalization for Generative Adversarial Networks"
+        },
+        {
+            "paperId": "ab559473a01836e72b9fb9393d6e07c5745528f3",
+            "title": "cGANs with Projection Discriminator"
+        },
+        {
+            "paperId": "da4e3270085fe5f59d9e89c072345c6600e7eb9a",
+            "title": "A Note on the Inception Score"
+        },
+        {
+            "paperId": "c88e8d85fd5160b0793598bda037f977366acf7a",
+            "title": "Are GANs Created Equal? A Large-Scale Study"
+        },
+        {
+            "paperId": "744fe47157477235032f7bb3777800f9f2f45e52",
+            "title": "Progressive Growing of GANs for Improved Quality, Stability, and Variation"
+        },
+        {
+            "paperId": "fb37561499573109fc2cebb6a7b08f44917267dd",
+            "title": "Squeeze-and-Excitation Networks"
+        },
+        {
+            "paperId": "7cfa5c97164129ce3630511f639040d28db1d4b7",
+            "title": "FiLM: Visual Reasoning with a General Conditioning Layer"
+        },
+        {
+            "paperId": "11f9732e22bedf2a6d9fa710940545d36815403c",
+            "title": "Dynamic Layer Normalization for Adaptive Neural Acoustic Modeling in Speech Recognition"
+        },
+        {
+            "paperId": "acd87843a451d18b4dc6474ddce1ae946429eaf1",
+            "title": "Wasserstein Generative Adversarial Networks"
+        },
+        {
+            "paperId": "feeb3a2aa35a02e06546d05d94bac9a2123fc0c8",
+            "title": "Modulating early visual processing by language"
+        },
+        {
+            "paperId": "231af7dc01a166cac3b5b01ca05778238f796e41",
+            "title": "GANs Trained by a Two Time-Scale Update Rule Converge to a Local Nash Equilibrium"
+        },
+        {
+            "paperId": "56f5005c4be6f816f6f43795cc4825d798cd53ef",
+            "title": "GANs Trained by a Two Time-Scale Update Rule Converge to a Nash Equilibrium"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "43428880d75b3a14257c3ee9bda054e61eb869c0",
+            "title": "Convolutional Sequence to Sequence Learning"
+        },
+        {
+            "paperId": "edf73ab12595c6709f646f542a0d2b33eb20a3f4",
+            "title": "Improved Training of Wasserstein GANs"
+        },
+        {
+            "paperId": "c43d954cf8133e6254499f3d68e45218067e4941",
+            "title": "Unpaired Image-to-Image Translation Using Cycle-Consistent Adversarial Networks"
+        },
+        {
+            "paperId": "ea67d2d5f2a7d5760ec6b67ea93d11dd5affa921",
+            "title": "StackGAN: Text to Photo-Realistic Image Synthesis with Stacked Generative Adversarial Networks"
+        },
+        {
+            "paperId": "74ff6d48f9c62e937023106629d27ef2d2ddf8bc",
+            "title": "Least Squares Generative Adversarial Networks"
+        },
+        {
+            "paperId": "ecc0edd450ae7e52f65ddf61405b30ad6dbabdd7",
+            "title": "Conditional Image Synthesis with Auxiliary Classifier GANs"
+        },
+        {
+            "paperId": "99542f614d7e4146cad17196e76c997e57a69e4d",
+            "title": "A Learned Representation For Artistic Style"
+        },
+        {
+            "paperId": "df0c54fe61f0ffb9f0e36a17c2038d9a1964cba3",
+            "title": "Photo-Realistic Single Image Super-Resolution Using a Generative Adversarial Network"
+        },
+        {
+            "paperId": "63de0ad39d807f0c256f851428f211e8d5fcd3bb",
+            "title": "Instance Normalization: The Missing Ingredient for Fast Stylization"
+        },
+        {
+            "paperId": "97fb4e3d45bb098e27e0071448b6152217bd35a5",
+            "title": "Layer Normalization"
+        },
+        {
+            "paperId": "0936352b78a52bc5d2b5e3f04233efc56664af51",
+            "title": "Conditional Image Generation with PixelCNN Decoders"
+        },
+        {
+            "paperId": "571b0750085ae3d939525e62af510ee2cee9d5ea",
+            "title": "Improved Techniques for Training GANs"
+        },
+        {
+            "paperId": "7d0effebfa4bed19b6ba41f3af5b7e5b6890de87",
+            "title": "Context Encoders: Feature Learning by Inpainting"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "8388f1be26329fa45e5807e968a641ce170ea078",
+            "title": "Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks"
+        },
+        {
+            "paperId": "4dcdae25a5e33682953f0853ee4cf7ca93be58a9",
+            "title": "LSUN: Construction of a Large-scale Image Dataset using Deep Learning with Humans in the Loop"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "353ecf7b66b3e9ff5e9f41145a147e899a2eea5c",
+            "title": "Conditional Generative Adversarial Nets"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": null,
+            "title": "Since the resolution of images in CIFAR10is 32\u00d732\u00d73, while resolutions of images in other datasets are 128\u00d7128\u00d73"
+        },
+        {
+            "paperId": null,
+            "title": "Again, due to the resolution differences, two ResNet architectures are used in this work"
+        }
+    ]
+}

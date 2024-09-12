@@ -1,0 +1,235 @@
+{
+    "paperId": "b28f7e2996b6ee2784dd2dbb8212cfa0c79ba9e7",
+    "externalIds": {
+        "MAG": "2963168371",
+        "DBLP": "journals/corr/TangQL16",
+        "ArXiv": "1605.08900",
+        "ACL": "D16-1021",
+        "DOI": "10.18653/v1/D16-1021",
+        "CorpusId": 359042
+    },
+    "title": "Aspect Level Sentiment Classification with Deep Memory Network",
+    "abstract": "We introduce a deep memory network for aspect level sentiment classification. Unlike feature-based SVM and sequential neural models such as LSTM, this approach explicitly captures the importance of each context word when inferring the sentiment polarity of an aspect. Such importance degree and text representation are calculated with multiple computational layers, each of which is a neural attention model over an external memory. Experiments on laptop and restaurant datasets demonstrate that our approach performs comparable to state-of-art feature based SVM system, and substantially better than LSTM and attention-based LSTM architectures. On both datasets we show that multiple computational layers could improve the performance. Moreover, our approach is also fast. The deep memory network with 9 layers is 15 times faster than LSTM with a CPU implementation.",
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2016,
+    "referenceCount": 48,
+    "citationCount": 849,
+    "influentialCitationCount": 128,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/D16-1021.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A deep memory network for aspect level sentiment classification that explicitly captures the importance of each context word when inferring the sentiment polarity of an aspect, and is also fast."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "39483833",
+            "name": "Duyu Tang"
+        },
+        {
+            "authorId": "152277111",
+            "name": "Bing Qin"
+        },
+        {
+            "authorId": "40282288",
+            "name": "Ting Liu"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "455afd748e8834ef521e4b67c7c056d3c33429e2",
+            "title": "Hierarchical Attention Networks for Document Classification"
+        },
+        {
+            "paperId": "0b0dc14b8a8dcccbfc62a38355fff2f6a361e9d2",
+            "title": "Effective LSTMs for Target-Dependent Sentiment Classification"
+        },
+        {
+            "paperId": "844703f4daa223aa940f1ec6c1c35419ca9451c6",
+            "title": "Target-Dependent Sentiment Classification with Long Short Term Memory"
+        },
+        {
+            "paperId": "1ac30af5522c7a50ec4d1ee43fd2bd8652a9bd52",
+            "title": "A Neural Attention Model for Abstractive Sentence Summarization"
+        },
+        {
+            "paperId": "ecb5336bf7b54a62109f325e7152bb74c4c7f527",
+            "title": "Document Modeling with Gated Recurrent Neural Network for Sentiment Classification"
+        },
+        {
+            "paperId": "93547ca277f93ae8cde856f66bf54166d64b4dcf",
+            "title": "Better Document-level Sentiment Analysis from RST Discourse Parsing"
+        },
+        {
+            "paperId": "d797300a5d614ffa1b5b0a7620a4bcfaa85ba305",
+            "title": "PhraseRNN: Phrase Recursive Neural Network for Aspect-based Sentiment Analysis"
+        },
+        {
+            "paperId": "8959a480a77c29c223533e1438268d02bb8ecf7b",
+            "title": "Fine-grained Opinion Mining with Recurrent Neural Networks and Word Embeddings"
+        },
+        {
+            "paperId": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+            "title": "Effective Approaches to Attention-based Neural Machine Translation"
+        },
+        {
+            "paperId": "e5a241df2f4bc8dca3763131571a2145d139f426",
+            "title": "Target-Dependent Twitter Sentiment Classification with Rich Automatic Features"
+        },
+        {
+            "paperId": "43b239a996358af9463689c3dbb080104e28f337",
+            "title": "Modeling Mention, Context and Entity with Neural Networks for Entity Disambiguation"
+        },
+        {
+            "paperId": "ee8755e1f519b7edec1ca6d076a9edb6c24af9ec",
+            "title": "Multichannel Variable-Size Convolution for Sentence Classification"
+        },
+        {
+            "paperId": "452059171226626718eb677358836328f884298e",
+            "title": "Ask Me Anything: Dynamic Memory Networks for Natural Language Processing"
+        },
+        {
+            "paperId": "6e795c6e9916174ae12349f5dc3f516570c17ce8",
+            "title": "Skip-Thought Vectors"
+        },
+        {
+            "paperId": "b21c78a62fbb945a19ae9a8935933711647e7d70",
+            "title": "A Hierarchical Neural Autoencoder for Paragraphs and Documents"
+        },
+        {
+            "paperId": "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e",
+            "title": "End-To-End Memory Networks"
+        },
+        {
+            "paperId": "4b9af9b9ed1bfb6b0688019d9fa79875bbcd8f3f",
+            "title": "Long Short-Term Memory Over Tree Structures"
+        },
+        {
+            "paperId": "df77714269f1f88182092f8535b1bc290fcd835d",
+            "title": "When Are Tree Structures Necessary for Deep Learning of Representations?"
+        },
+        {
+            "paperId": "32de44f01a96d4473d21099d15e25bc2b9f08e2f",
+            "title": "Improved Semantic Representations From Tree-Structured Long Short-Term Memory Networks"
+        },
+        {
+            "paperId": "450068221da8297ac0a0e1524b1e196900c61b2e",
+            "title": "Aspect Specific Sentiment Analysis Using Hierarchical Deep Learning"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "71ae756c75ac89e2d731c9c79649562b5768ff39",
+            "title": "Memory Networks"
+        },
+        {
+            "paperId": "71e90c4015e3dea597dbd583f3d3d08cdc0077fb",
+            "title": "Opinion Mining with Deep Recurrent Neural Networks"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "1f6ba0782862ec12a5ec6d7fb608523d55b0c6ba",
+            "title": "Convolutional Neural Networks for Sentence Classification"
+        },
+        {
+            "paperId": "e88500eceea7b08bf80afbd23e8342c37d52c964",
+            "title": "DCU: Aspect-based Polarity Classification for SemEval Task 4"
+        },
+        {
+            "paperId": "67f5a7870bf8246eb313340a02f30e03cb7d87eb",
+            "title": "NRC-Canada-2014: Detecting Aspects and Sentiment in Customer Reviews"
+        },
+        {
+            "paperId": "2ff4b9ca75a37cec1607f1f49333b948b1c8d08b",
+            "title": "SemEval-2014 Task 4: Aspect Based Sentiment Analysis"
+        },
+        {
+            "paperId": "06e122f475a21d92dba137609c40f35690217475",
+            "title": "Adaptive Recursive Neural Network for Target-dependent Twitter Sentiment Classification"
+        },
+        {
+            "paperId": "f3de86aeb442216a8391befcacb49e58b478f512",
+            "title": "Distributed Representations of Sentences and Documents"
+        },
+        {
+            "paperId": "27725a2d2a8cee9bf9fffc6c2167017103aba0fa",
+            "title": "A Convolutional Neural Network for Modelling Sentences"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "687bac2d3320083eb4530bf18bb8f8f721477600",
+            "title": "Recursive Deep Models for Semantic Compositionality Over a Sentiment Treebank"
+        },
+        {
+            "paperId": "33c95f4d13958e65e676a9cd64bd4d8df0fdb44d",
+            "title": "Sentiment Analysis and Opinion Mining"
+        },
+        {
+            "paperId": "2063745d08868c928455f422202b72146a1960fb",
+            "title": "Compositional Matrix-Space Models for Sentiment Analysis"
+        },
+        {
+            "paperId": "6f4065f0cc99a0839b0248ffb4457e5f0277b30d",
+            "title": "Domain Adaptation for Large-Scale Sentiment Classification: A Deep Learning Approach"
+        },
+        {
+            "paperId": "745d86adca56ec50761591733e157f84cfb19671",
+            "title": "Composition in Distributional Models of Semantics"
+        },
+        {
+            "paperId": "ca56c7456ae337fe0a4b7741086dfe58e2fd5198",
+            "title": "Hierarchical Sequential Learning for Extracting Opinions and Their Attributes"
+        },
+        {
+            "paperId": "25146f22b6be1bc0e7d7c91f7209c82eac5c18c4",
+            "title": "FEATURES"
+        },
+        {
+            "paperId": "7b6f9b6df5eac70b1b5ab3d7ff222e9f18d14c24",
+            "title": "Sense and Reference"
+        },
+        {
+            "paperId": "297d01ff6731c3bd917ede3d378c94cb84650e8f",
+            "title": "Opinion Mining and Sentiment Analysis"
+        },
+        {
+            "paperId": "4f8d648c52edf74e41b0996128aa536e13cc7e82",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": "990c7e5b74d8a26227f2a135e2a61ec906571691",
+            "title": "Synthesis Lectures on Human Language Technologies"
+        },
+        {
+            "paperId": null,
+            "title": "machine"
+        },
+        {
+            "paperId": null,
+            "title": "Harris Papageorgiou, Ion Androutsopoulos, and Suresh Manandhar"
+        },
+        {
+            "paperId": null,
+            "title": "Workshop on Semantic Evaluation"
+        }
+    ]
+}

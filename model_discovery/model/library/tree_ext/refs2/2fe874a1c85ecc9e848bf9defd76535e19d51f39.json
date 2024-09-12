@@ -1,0 +1,190 @@
+{
+    "paperId": "2fe874a1c85ecc9e848bf9defd76535e19d51f39",
+    "externalIds": {
+        "ArXiv": "1610.09038",
+        "DBLP": "conf/nips/GoyalLZZCB16",
+        "MAG": "2542835211",
+        "CorpusId": 14994977
+    },
+    "title": "Professor Forcing: A New Algorithm for Training Recurrent Networks",
+    "abstract": "The Teacher Forcing algorithm trains recurrent networks by supplying observed sequence values as inputs during training and using the network\u2019s own one-step-ahead predictions to do multi-step sampling. We introduce the Professor Forcing algorithm, which uses adversarial domain adaptation to encourage the dynamics of the recurrent network to be the same when training the network and when sampling from the network over multiple time steps. We apply Professor Forcing to language modeling, vocal synthesis on raw waveforms, handwriting generation, and image generation. Empirically we find that Professor Forcing acts as a regularizer, improving test likelihood on character level Penn Treebank and sequential MNIST. We also find that the model qualitatively improves samples, especially when sampling for a large number of time steps. This is supported by human evaluation of sample quality. Trade-offs between Professor Forcing and Scheduled Sampling are discussed. We produce T-SNEs showing that Professor Forcing successfully makes the dynamics of the network during training and sampling more similar.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2016,
+    "referenceCount": 35,
+    "citationCount": 543,
+    "influentialCitationCount": 37,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Professor Forcing algorithm, which uses adversarial domain adaptation to encourage the dynamics of the recurrent network to be the same when training the network and when sampling from the network over multiple time steps, is introduced."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1996705",
+            "name": "Anirudh Goyal"
+        },
+        {
+            "authorId": "49071560",
+            "name": "Alex Lamb"
+        },
+        {
+            "authorId": "2153392903",
+            "name": "Ying Zhang"
+        },
+        {
+            "authorId": "35097114",
+            "name": "Saizheng Zhang"
+        },
+        {
+            "authorId": "1760871",
+            "name": "Aaron C. Courville"
+        },
+        {
+            "authorId": "1751762",
+            "name": "Yoshua Bengio"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "0d24a0695c9fc669e643bad51d4e14f056329dec",
+            "title": "An Actor-Critic Algorithm for Sequence Prediction"
+        },
+        {
+            "paperId": "6b570069f14c7588e066f7138e1f21af59d62e61",
+            "title": "Theano: A Python framework for fast computation of mathematical expressions"
+        },
+        {
+            "paperId": "41f1d50c85d3180476c4c7b3eea121278b0d8474",
+            "title": "Pixel Recurrent Neural Networks"
+        },
+        {
+            "paperId": "0e4a97a0ccbf699272e3d6dc25b6fe16eb35382d",
+            "title": "How (not) to Train your Generative Model: Scheduled Sampling, Likelihood, Adversary?"
+        },
+        {
+            "paperId": "39e0c341351f8f4a39ac890b96217c7f4bde5369",
+            "title": "A note on the evaluation of generative models"
+        },
+        {
+            "paperId": "878ba5458e9e51f0b341fd9117fa0b43ef4096d3",
+            "title": "End-to-end attention-based large vocabulary speech recognition"
+        },
+        {
+            "paperId": "b624504240fa52ab76167acfe3156150ca01cf3b",
+            "title": "Attention-Based Models for Speech Recognition"
+        },
+        {
+            "paperId": "df137487e20ba7c6e1e2b9a1e749f2a578b5ad99",
+            "title": "Scheduled Sampling for Sequence Prediction with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "a72b8bbd039989db39769da836cdb287737deb92",
+            "title": "Mind's eye: A recurrent visual representation for image caption generation"
+        },
+        {
+            "paperId": "1d5972b32a9b5a455a6eef389de5b7fca25771ad",
+            "title": "Domain-Adversarial Training of Neural Networks"
+        },
+        {
+            "paperId": "a2785f66c20fbdf30ec26c0931584c6d6a0f4fca",
+            "title": "DRAW: A Recurrent Neural Network For Image Generation"
+        },
+        {
+            "paperId": "90f72fbbe5f0a29e627db28999e01a30a9655bc6",
+            "title": "MADE: Masked Autoencoder for Distribution Estimation"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "c3b38c2fd30adb316d0bdb32e983804be5595c30",
+            "title": "Domain-Adversarial Neural Networks"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "c175081733d98e63fa68a70405a35804c318afc5",
+            "title": "Iterative Neural Autoregressive Distribution Estimator NADE-k"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "62c76ca0b2790c34e85ba1cce09d47be317c7235",
+            "title": "Estimating or Propagating Gradients Through Stochastic Neurons for Conditional Computation"
+        },
+        {
+            "paperId": "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17",
+            "title": "Generating Sequences With Recurrent Neural Networks"
+        },
+        {
+            "paperId": "d1275b2a2ab53013310e759e5c6878b96df643d4",
+            "title": "Context dependent recurrent neural network language model"
+        },
+        {
+            "paperId": "a97b5db17acc731ef67321832dbbaf5766153135",
+            "title": "Supervised Sequence Labelling with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "79ab3c49903ec8cb339437ccf5cf998607fc313e",
+            "title": "A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning"
+        },
+        {
+            "paperId": "526e22c130b18924976553d29ba11bc9d898d58b",
+            "title": "Search-based structured prediction"
+        },
+        {
+            "paperId": "4341446db90f569e689cddf2b08a5093a5bb83ae",
+            "title": "Evaluating probabilities under high-dimensional latent variable models"
+        },
+        {
+            "paperId": "9eb7daa88879f283ae05e359d6c502a320b833c9",
+            "title": "IAM-OnDB - an on-line English sentence database acquired from handwritten text on a whiteboard"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "ce9a21b93ba29d4145a8ef6bf401e77f261848de",
+            "title": "A Learning Algorithm for Continually Running Fully Recurrent Neural Networks"
+        },
+        {
+            "paperId": null,
+            "title": "Conditional handwriting generation in theano"
+        },
+        {
+            "paperId": "c7e07cf8ba4ad956483f9dd37a168355ef16a041",
+            "title": "Markov Chain Monte Carlo and Variational Inference: Bridging the Gap"
+        },
+        {
+            "paperId": null,
+            "title": "Generative adversarial networks. In NIPS"
+        },
+        {
+            "paperId": "ea1e3728d195161d8f0e21e689bd23cb534633cc",
+            "title": "Bridging the Gap"
+        },
+        {
+            "paperId": "b893e7053c9c7e266a23fb13a42261a88f650210",
+            "title": "The Neural Autoregressive Distribution Estimator"
+        },
+        {
+            "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+            "title": "Recurrent neural network based language model"
+        }
+    ]
+}

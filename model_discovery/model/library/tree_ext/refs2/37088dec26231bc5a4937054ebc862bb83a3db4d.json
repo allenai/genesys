@@ -1,0 +1,246 @@
+{
+    "paperId": "37088dec26231bc5a4937054ebc862bb83a3db4d",
+    "externalIds": {
+        "DBLP": "journals/corr/PritzelUSBVHWB17",
+        "MAG": "2594466397",
+        "ArXiv": "1703.01988",
+        "CorpusId": 15938338
+    },
+    "title": "Neural Episodic Control",
+    "abstract": "Deep reinforcement learning methods attain super-human performance in a wide range of environments. Such methods are grossly inefficient, often taking orders of magnitudes more data than humans to achieve reasonable performance. We propose Neural Episodic Control: a deep reinforcement learning agent that is able to rapidly assimilate new experiences and act upon them. Our agent uses a semi-tabular representation of the value function: a buffer of past experience containing slowly changing state representations and rapidly updated estimates of the value function. We show across a wide range of environments that our agent learns significantly faster than other state-of-the-art, general purpose deep reinforcement learning agents.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2017,
+    "referenceCount": 47,
+    "citationCount": 317,
+    "influentialCitationCount": 48,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes Neural Episodic Control: a deep reinforcement learning agent that is able to rapidly assimilate new experiences and act upon them, and shows across a wide range of environments that the agent learns significantly faster than other state-of-the-art, general purpose deep reinforcementlearning agents."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2064022681",
+            "name": "Alexander Pritzel"
+        },
+        {
+            "authorId": "2064430351",
+            "name": "Benigno Uria"
+        },
+        {
+            "authorId": "2059763631",
+            "name": "Sriram Srinivasan"
+        },
+        {
+            "authorId": "2064645067",
+            "name": "A. Badia"
+        },
+        {
+            "authorId": "2065708175",
+            "name": "Oriol Vinyals"
+        },
+        {
+            "authorId": "2064163661",
+            "name": "Demis Hassabis"
+        },
+        {
+            "authorId": "2064632007",
+            "name": "Daan Wierstra"
+        },
+        {
+            "authorId": "2065066249",
+            "name": "Charles Blundell"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "29092f0deaac3898e43b3f094bf15d82b6a99afd",
+            "title": "Learning to Remember Rare Events"
+        },
+        {
+            "paperId": "321f1877bc570ff9b318e909cefb7c27138458df",
+            "title": "PathNet: Evolution Channels Gradient Descent in Super Neural Networks"
+        },
+        {
+            "paperId": "282a380fb5ac26d99667224cef8c630f6882704f",
+            "title": "Learning to reinforcement learn"
+        },
+        {
+            "paperId": "85d8b1b3483c7f4db999e7cf6b3e6231954c43dc",
+            "title": "Learning to Play in a Day: Faster Deep Reinforcement Learning by Optimality Tightening"
+        },
+        {
+            "paperId": "954b01151ff13aef416d27adc60cd9a076753b1a",
+            "title": "RL$^2$: Fast Reinforcement Learning via Slow Reinforcement Learning"
+        },
+        {
+            "paperId": "c91ae35dbcb6d479580ecd235eabf98374acdb55",
+            "title": "Using Fast Weights to Attend to the Recent Past"
+        },
+        {
+            "paperId": "784ee73d5363c711118f784428d1ab89f019daa5",
+            "title": "Hybrid computing using a neural network with dynamic external memory"
+        },
+        {
+            "paperId": "84dccdefebec40941af9d0cd4d415d7f2e5f1959",
+            "title": "What Learning Systems do Intelligent Agents Need? Complementary Learning Systems Theory Updated"
+        },
+        {
+            "paperId": "4ba25cb493ac7a03fc15d3b936257c9a6c689c1d",
+            "title": "Strategic Attentive Writer for Learning Macro-Actions"
+        },
+        {
+            "paperId": "53c9443e4e667170acc60ca1b31a0ec7151fe753",
+            "title": "Progressive Neural Networks"
+        },
+        {
+            "paperId": "ba378579fb44007db9f02699889721dcd2b5b3a0",
+            "title": "Model-Free Episodic Control"
+        },
+        {
+            "paperId": "be1bb4e4aa1fcf70281b4bd24d8cd31c04864bb6",
+            "title": "Matching Networks for One Shot Learning"
+        },
+        {
+            "paperId": "bba5f2852b1db8a18004eb7328efa5e1d57cc62a",
+            "title": "Key-Value Memory Networks for Directly Reading Documents"
+        },
+        {
+            "paperId": "dc3e905bfb27d21675ee1720413e007b014b37d3",
+            "title": "Safe and Efficient Off-Policy Reinforcement Learning"
+        },
+        {
+            "paperId": "5129a9cbb6de3c6579f6a7d974394d392ac29829",
+            "title": "Control of Memory, Active Perception, and Action in Minecraft"
+        },
+        {
+            "paperId": "5f0625c30014c12f333eb518268647673d18f9f1",
+            "title": "What can the brain teach us about building artificial intelligence?"
+        },
+        {
+            "paperId": "53d8cd298711a85dd89c9814c989f7fae7500d87",
+            "title": "Learning functions across many orders of magnitudes"
+        },
+        {
+            "paperId": "4b63e34276aa98d5345efa7fe09bb06d8a9d8f52",
+            "title": "Deep Exploration via Bootstrapped DQN"
+        },
+        {
+            "paperId": "69e76e16740ed69f4dc55361a3d319ac2f1293dd",
+            "title": "Asynchronous Methods for Deep Reinforcement Learning"
+        },
+        {
+            "paperId": "846aedd869a00c09b40f1f1f35673cb22bc87490",
+            "title": "Mastering the game of Go with deep neural networks and tree search"
+        },
+        {
+            "paperId": "c6170fa90d3b2efede5a2e1660cb23e1c824f2ca",
+            "title": "Prioritized Experience Replay"
+        },
+        {
+            "paperId": "3b9732bb07dc99bde5e1f9f75251c6ea5039373e",
+            "title": "Deep Reinforcement Learning with Double Q-Learning"
+        },
+        {
+            "paperId": "e4257bc131c36504a04382290cbc27ca8bb27813",
+            "title": "Action-Conditional Video Prediction using Deep Networks in Atari Games"
+        },
+        {
+            "paperId": "f5f323e62acb75f785e00b4c90ace16f1690076f",
+            "title": "Deep Recurrent Q-Learning for Partially Observable MDPs"
+        },
+        {
+            "paperId": "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e",
+            "title": "End-To-End Memory Networks"
+        },
+        {
+            "paperId": "340f48901f72278f6bf78a04ee5b01df208cc508",
+            "title": "Human-level control through deep reinforcement learning"
+        },
+        {
+            "paperId": "484ad17c926292fbe0d5211540832a8c8a8e958b",
+            "title": "Stochastic Backpropagation and Approximate Inference in Deep Generative Models"
+        },
+        {
+            "paperId": "5f5dc5b9a2ba710937e2c413b37b053cd673df02",
+            "title": "Auto-Encoding Variational Bayes"
+        },
+        {
+            "paperId": "f82e4ff4f003581330338aaae71f60316e58dd26",
+            "title": "The Arcade Learning Environment: An Evaluation Platform for General Agents"
+        },
+        {
+            "paperId": "c8e337a12df57783edb75eace2b8d67270a6823c",
+            "title": "Hippocampal Contributions to Control: The Third Way"
+        },
+        {
+            "paperId": "144919678f406afb0420c2628b74fb32ddbab5df",
+            "title": "CBR for State Value Function Approximation in Reinforcement Learning"
+        },
+        {
+            "paperId": "72d8fe43c1ebeceb7dbb1dd6faf10c0234a9b6bf",
+            "title": "A robot that reinforcement-learns to identify and memorize important previous observations"
+        },
+        {
+            "paperId": "2fa368a3fbee571d600f9afab8462a095dc8c9a9",
+            "title": "Barycentric Interpolators for Continuous Space and Time Reinforcement Learning"
+        },
+        {
+            "paperId": "8c63689611fd1bf40d6a5ca14ba730ca7e62d283",
+            "title": "Reinforcement Learning: : An Introduction"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "70b5f973be9b0283546bb33948b3de1f25708cf5",
+            "title": "Experiments with Reinforcement Learning in Problems with Continuous State and Action Spaces"
+        },
+        {
+            "paperId": "59b50a775542e87f078db35b868ac10ab43d4c75",
+            "title": "Learning from delayed rewards"
+        },
+        {
+            "paperId": "f3e10675b2ef79d8431b8011f909ee0d05e92d92",
+            "title": "Incremental multi-step Q-learning"
+        },
+        {
+            "paperId": "03b7e51c52084ac1db5118342a00b5fbcfc587aa",
+            "title": "Q-learning"
+        },
+        {
+            "paperId": "a91635f8d0e7fb804efd1c38d9c24ee952ba7076",
+            "title": "Learning to predict by the methods of temporal differences"
+        },
+        {
+            "paperId": "cc73bacd6a00442570d15e122604ad6862b8663d",
+            "title": "Multidimensional binary search trees used for associative searching"
+        },
+        {
+            "paperId": null,
+            "title": ". Q ( \\ lambda ) with off - policy corrections"
+        },
+        {
+            "paperId": null,
+            "title": "Lecture 6.5rmsprop: Divide the gradient by a running average of its recent magnitude"
+        },
+        {
+            "paperId": "97efafdb4a3942ab3efba53ded7413199f79c054",
+            "title": "Reinforcement Learning: An Introduction"
+        },
+        {
+            "paperId": null,
+            "title": "Machine learning"
+        },
+        {
+            "paperId": "c213af6582c0d518a6e8e14217611c733eeb1ef1",
+            "title": "Catastrophic Interference in Connectionist Networks: The Sequential Learning Problem"
+        },
+        {
+            "paperId": "7257eacd80458e70c74494eb1b6759b52ff21399",
+            "title": "Using fast weights to deblur old memories"
+        }
+    ]
+}

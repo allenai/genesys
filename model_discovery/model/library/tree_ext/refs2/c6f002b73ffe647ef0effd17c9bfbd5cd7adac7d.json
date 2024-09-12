@@ -1,0 +1,150 @@
+{
+    "paperId": "c6f002b73ffe647ef0effd17c9bfbd5cd7adac7d",
+    "externalIds": {
+        "ArXiv": "1406.7362",
+        "MAG": "2405210557",
+        "DBLP": "journals/corr/ChoB14",
+        "CorpusId": 18014964
+    },
+    "title": "Exponentially Increasing the Capacity-to-Computation Ratio for Conditional Computation in Deep Learning",
+    "abstract": "Many state-of-the-art results obtained with deep networks are achieved with the largest models that could be trained, and if more computation power was available, we might be able to exploit much larger datasets in order to improve generalization ability. Whereas in learning algorithms such as decision trees the ratio of capacity (e.g., the number of parameters) to computation is very favorable (up to exponentially more parameters than computation), the ratio is essentially 1 for deep neural networks. Conditional computation has been proposed as a way to increase the capacity of a deep neural network without increasing the amount of computation required, by activating some parameters and computation \"on-demand\", on a per-example basis. In this note, we propose a novel parametrization of weight matrices in neural networks which has the potential to increase up to exponentially the ratio of the number of parameters to computation. The proposed approach is based on turning on some parameters (weight matrices) when specific bit patterns of hidden unit activations are obtained. In order to better control for the overfitting that might result, we propose a parametrization that is tree-structured, where each node of the tree corresponds to a prefix of a sequence of sign bits, or gating units, associated with hidden units.",
+    "venue": "arXiv.org",
+    "year": 2014,
+    "referenceCount": 29,
+    "citationCount": 36,
+    "influentialCitationCount": 1,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel parametrization of weight matrices in neural networks which has the potential to increase up to exponentially the ratio of the number of parameters to computation is proposed, which is based on turning on some parameters (weight matrices) when specific bit patterns of hidden unit activations are obtained."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1979489",
+            "name": "Kyunghyun Cho"
+        },
+        {
+            "authorId": "1751762",
+            "name": "Yoshua Bengio"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "c965bac486a714d47a6362248f0a959c77622738",
+            "title": "Techniques for Learning Binary Stochastic Feedforward Neural Networks"
+        },
+        {
+            "paperId": "331f0fb3b6176c6e463e0401025b04f6ace9ccd3",
+            "title": "Neural Variational Inference and Learning in Belief Networks"
+        },
+        {
+            "paperId": "c12fefe264e42e77f1275ce56fb3e905347761a3",
+            "title": "On the number of inference regions of deep feed forward networks with piece-wise linear activations"
+        },
+        {
+            "paperId": "2319a491378867c7049b3da055c5df60e1671158",
+            "title": "Playing Atari with Deep Reinforcement Learning"
+        },
+        {
+            "paperId": "695a2c95eacdbccb7a73d2f1e90e7b35b4b3d864",
+            "title": "Deep AutoRegressive Networks"
+        },
+        {
+            "paperId": "62c76ca0b2790c34e85ba1cce09d47be317c7235",
+            "title": "Estimating or Propagating Gradients Through Stochastic Neurons for Conditional Computation"
+        },
+        {
+            "paperId": "b7b915d508987b73b61eccd2b237e7ed099a2d29",
+            "title": "Maxout Networks"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "3127190433230b3dc1abd0680bb58dced4bcd90e",
+            "title": "Large Scale Distributed Deep Networks"
+        },
+        {
+            "paperId": "e33cbb25a8c7390aec6a398e36381f4f7770c283",
+            "title": "Deep Neural Networks for Acoustic Modeling in Speech Recognition"
+        },
+        {
+            "paperId": "5bdfd78fb2285b9306e93bd3a4b534d19bf55f06",
+            "title": "Multi-column deep neural network for traffic sign classification"
+        },
+        {
+            "paperId": "0060745e006c5f14ec326904119dca19c6545e51",
+            "title": "Improving neural networks by preventing co-adaptation of feature detectors"
+        },
+        {
+            "paperId": "f8c8619ea7d68e604e40b814b40c72888a755e95",
+            "title": "Unsupervised Feature Learning and Deep Learning: A Review and New Perspectives"
+        },
+        {
+            "paperId": "522e90b9fccfd3c1c0603359eb04757d770c1ab5",
+            "title": "Practical Recommendations for Gradient-Based Training of Deep Architectures"
+        },
+        {
+            "paperId": "fbf9f8650c9521472f0297e7c82292235738449b",
+            "title": "Classification and regression trees"
+        },
+        {
+            "paperId": "72e93aa6767ee683de7f001fa72f1314e40a8f35",
+            "title": "Building high-level features using large scale unsupervised learning"
+        },
+        {
+            "paperId": "be9a17321537d9289875fe475b71f4821457b435",
+            "title": "An Analysis of Single-Layer Networks in Unsupervised Feature Learning"
+        },
+        {
+            "paperId": "93c20e38c85b69fc2d2eb314b3c1217913f7db11",
+            "title": "Generating Text with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "9c34be4a906a86b2ebc09078d80247227cd54453",
+            "title": "DECISION TREES DO NOT GENERALIZE TO NEW VARIATIONS"
+        },
+        {
+            "paperId": "0eb2e4a205a628ab059cab41d3b772f614ad29f2",
+            "title": "Learning to Represent Spatial Transformations with Factored Higher-Order Boltzmann Machines"
+        },
+        {
+            "paperId": "e337c5e4c23999c36f64bcb33ebe6b284e1bcbf1",
+            "title": "Large-scale deep unsupervised learning using graphics processors"
+        },
+        {
+            "paperId": "7924c809b75c1ff9cdb3aac3ecd4d8a49d738e9e",
+            "title": "Complexity Lower Bounds for Approximation Algebraic Computation Trees"
+        },
+        {
+            "paperId": "b0130277677e5b915d5cd86b3afafd77fd08eb2e",
+            "title": "Estimation of probabilities from sparse data for the language model component of a speech recognizer"
+        },
+        {
+            "paperId": "8dcb21c00f2d42b16d86a91dec5deab53b87cc6d",
+            "title": "Deep Neural Network \u3092\u7528\u3044\u305f\u682a\u5f0f\u58f2\u8cb7\u6226\u7565\u306e\u69cb\u7bc9"
+        },
+        {
+            "paperId": null,
+            "title": "estimate a gradient using a heuristic that propagates the gradient on g (obtained by back-prop of the loss) backwards into the pre-threshold values x"
+        },
+        {
+            "paperId": null,
+            "title": "estimate a gradient using a variance-reduced variant of REINFORCE, i.e., by reinforcement learning"
+        },
+        {
+            "paperId": "d04d6db5f0df11d0cff57ec7e15134990ac07a4f",
+            "title": "Learning Deep Architectures for AI"
+        },
+        {
+            "paperId": "378e8a238d156859dfc88cc13489441d47cf661a",
+            "title": "Classification and regression trees"
+        },
+        {
+            "paperId": "6a923c9f89ed53b6e835b3807c0c1bd8d532687b",
+            "title": "Interpolated estimation of Markov source parameters from sparse data"
+        }
+    ]
+}

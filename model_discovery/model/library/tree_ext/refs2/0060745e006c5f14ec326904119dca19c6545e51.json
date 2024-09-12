@@ -1,0 +1,150 @@
+{
+    "paperId": "0060745e006c5f14ec326904119dca19c6545e51",
+    "externalIds": {
+        "ArXiv": "1207.0580",
+        "MAG": "1904365287",
+        "DBLP": "journals/corr/abs-1207-0580",
+        "CorpusId": 14832074
+    },
+    "title": "Improving neural networks by preventing co-adaptation of feature detectors",
+    "abstract": "When a large feedforward neural network is trained on a small training set, it typically performs poorly on held-out test data. This \"overfitting\" is greatly reduced by randomly omitting half of the feature detectors on each training case. This prevents complex co-adaptations in which a feature detector is only helpful in the context of several other specific feature detectors. Instead, each neuron learns to detect a feature that is generally helpful for producing the correct answer given the combinatorially large variety of internal contexts in which it must operate. Random \"dropout\" gives big improvements on many benchmark tasks and sets new records for speech and object recognition.",
+    "venue": "arXiv.org",
+    "year": 2012,
+    "referenceCount": 26,
+    "citationCount": 7393,
+    "influentialCitationCount": 680,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": null
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1695689",
+            "name": "Geoffrey E. Hinton"
+        },
+        {
+            "authorId": "2897313",
+            "name": "Nitish Srivastava"
+        },
+        {
+            "authorId": "2064160",
+            "name": "A. Krizhevsky"
+        },
+        {
+            "authorId": "1701686",
+            "name": "I. Sutskever"
+        },
+        {
+            "authorId": "145124475",
+            "name": "R. Salakhutdinov"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "38f35dd624cd1cf827416e31ac5e0e0454028eca",
+            "title": "Regularization of Neural Networks using DropConnect"
+        },
+        {
+            "paperId": "6658bbf68995731b2083195054ff45b4eca38b3a",
+            "title": "Context-Dependent Pre-Trained Deep Neural Networks for Large-Vocabulary Speech Recognition"
+        },
+        {
+            "paperId": "6f568d757d2c1ab42f2006faa25690b74c3d2d44",
+            "title": "The Importance of Encoding Versus Training with Sparse Coding and Vector Quantization"
+        },
+        {
+            "paperId": "eefcc7bcc05436dac9881acb4ff4e4a0b730e175",
+            "title": "High-dimensional signature compression for large-scale image classification"
+        },
+        {
+            "paperId": "b98cd08b75ebf2bd1d1ec47c51ef75777a7e64bd",
+            "title": "Deep, Big, Simple Neural Nets for Handwritten Digit Recognition"
+        },
+        {
+            "paperId": "d2c733e34d48784a37d717fe43d9e93277a8c53e",
+            "title": "ImageNet: A large-scale hierarchical image database"
+        },
+        {
+            "paperId": "7be7d4c57d8b7ff865ff53217e30cc82655de9fd",
+            "title": "A mixability theory for the role of sex in evolution"
+        },
+        {
+            "paperId": "52070af952474cf13ecd015d42979373ff7c1c00",
+            "title": "Training Products of Experts by Minimizing Contrastive Divergence"
+        },
+        {
+            "paperId": "d1ee87290fa827f1217b8fa2bccb3485da1a300e",
+            "title": "Bagging Predictors"
+        },
+        {
+            "paperId": "c8d90974c3f3b40fa05e322df2905fc16204aa56",
+            "title": "Adaptive Mixtures of Local Experts"
+        },
+        {
+            "paperId": "052b1d8ce63b07fec3de9dbb583772d860b7c769",
+            "title": "Learning representations by back-propagating errors"
+        },
+        {
+            "paperId": "d2b62f77cb2864e465aa60bca6c26bb1d2f84963",
+            "title": "Acoustic Modeling Using Deep Belief Networks"
+        },
+        {
+            "paperId": "d779f5c56a7121bdb62d73c1894a1ab0d182cbc2",
+            "title": "Application of Pretrained Deep Neural Networks to Large Vocabulary Conversational Speech Recognition"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        },
+        {
+            "paperId": null,
+            "title": "Science"
+        },
+        {
+            "paperId": "7c59908c946a4157abc030cdbe2b63d08ba97db3",
+            "title": "Supporting Online Material for Reducing the Dimensionality of Data with Neural Networks"
+        },
+        {
+            "paperId": "8e0be569ea77b8cb29bb0e8b031887630fe7a96c",
+            "title": "Random Forests"
+        },
+        {
+            "paperId": null,
+            "title": "Machine Learning"
+        },
+        {
+            "paperId": "9360e5ce9c98166bb179ad479a9d2919ff13d022",
+            "title": "Training Products of Experts by Minimizing Contrastive Divergence"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "a22b36cf5dba3e85eb064220be7ef03be4efba48",
+            "title": "Bayesian learning for neural networks"
+        },
+        {
+            "paperId": "e1082fee59f00b1096b2206f3dc434e68f7ffac6",
+            "title": "Neural Computation"
+        },
+        {
+            "paperId": null,
+            "title": "Nature"
+        },
+        {
+            "paperId": null,
+            "title": "Williams for helpful discussions, and NSERC, Google and Microsoft Research for funding. GEH and RRS are members of the Canadian Institute for Advanced Research"
+        },
+        {
+            "paperId": null,
+            "title": "We thank N. Jaitly for help with TIMIT, H. Larochelle, R. Neal, K. Swersky and C.K.I. Williams for helpful discussions, and NSERC, Google and Microsoft Research for funding"
+        },
+        {
+            "paperId": "45321f216bf504a0a147041ead2f3b7c7538add5",
+            "title": "IEEE Transactions on Audio, Speech, and Language Processing"
+        }
+    ]
+}

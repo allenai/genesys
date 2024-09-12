@@ -1,0 +1,479 @@
+{
+    "paperId": "cab372bc3824780cce20d9dd1c22d4df39ed081a",
+    "externalIds": {
+        "ArXiv": "1606.00915",
+        "MAG": "2952865063",
+        "DBLP": "journals/corr/ChenPK0Y16",
+        "DOI": "10.1109/TPAMI.2017.2699184",
+        "CorpusId": 3429309,
+        "PubMed": "28463186"
+    },
+    "title": "DeepLab: Semantic Image Segmentation with Deep Convolutional Nets, Atrous Convolution, and Fully Connected CRFs",
+    "abstract": "In this work we address the task of semantic image segmentation with Deep Learning and make three main contributions that are experimentally shown to have substantial practical merit. First, we highlight convolution with upsampled filters, or \u2018atrous\u00a0convolution\u2019, as a powerful tool in dense prediction tasks. Atrous convolution allows us to explicitly control the resolution at which feature responses are computed within Deep Convolutional Neural Networks. It also allows us to effectively enlarge the field of view of filters to incorporate larger context without increasing the number of parameters or the amount of computation. Second, we propose atrous\u00a0spatial pyramid pooling (ASPP) to robustly segment objects at multiple scales. ASPP probes an incoming convolutional feature layer with filters at multiple sampling rates and effective fields-of-views, thus capturing objects as well as image context at multiple scales. Third, we improve the localization of object boundaries by combining methods from DCNNs and probabilistic graphical models. The commonly deployed combination of max-pooling and downsampling in DCNNs achieves invariance but has a toll on localization accuracy. We overcome this by combining the responses at the final DCNN layer with a fully connected Conditional Random Field (CRF), which is shown both qualitatively and quantitatively to improve localization performance. Our proposed \u201cDeepLab\u201d system sets the new state-of-art at the PASCAL VOC-2012 semantic image segmentation task, reaching 79.7 percent mIOU in the test set, and advances the results on three other datasets: PASCAL-Context, PASCAL-Person-Part, and Cityscapes. All of our code is made publicly available online.",
+    "venue": "IEEE Transactions on Pattern Analysis and Machine Intelligence",
+    "year": 2016,
+    "referenceCount": 107,
+    "citationCount": 16167,
+    "influentialCitationCount": 1643,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1606.00915",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work addresses the task of semantic image segmentation with Deep Learning and proposes atrous\u00a0spatial pyramid pooling (ASPP), which is proposed to robustly segment objects at multiple scales, and improves the localization of object boundaries by combining methods from DCNNs and probabilistic graphical models."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "34192119",
+            "name": "Liang-Chieh Chen"
+        },
+        {
+            "authorId": "2776496",
+            "name": "G. Papandreou"
+        },
+        {
+            "authorId": "2010660",
+            "name": "Iasonas Kokkinos"
+        },
+        {
+            "authorId": "1702318",
+            "name": "K. Murphy"
+        },
+        {
+            "authorId": "145081362",
+            "name": "A. Yuille"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "e48cd65147c25f45f9270cad76e2983a2a510b25",
+            "title": "Gaussian Conditional Random Field Network for Semantic Segmentation"
+        },
+        {
+            "paperId": "b61c0b11b1c25958d202b4f7ca772e1d95ee1037",
+            "title": "Bridging Category-level and Instance-level Semantic Image Segmentation"
+        },
+        {
+            "paperId": "b724c3f7ff395235b62537203ddeb710f0eb27bb",
+            "title": "R-FCN: Object Detection via Region-based Fully Convolutional Networks"
+        },
+        {
+            "paperId": "ff5bd8c22b6bcf09bfcbb955f75101b433b77bdd",
+            "title": "Fast Semantic Image Segmentation with High Order Context and Guided Filtering"
+        },
+        {
+            "paperId": "752fc36f9813ebff3837cb12f790820d2f851c14",
+            "title": "Laplacian Reconstruction and Refinement for Semantic Segmentation"
+        },
+        {
+            "paperId": "2796c448023b78fd77f3a4b57966f257c5e654c2",
+            "title": "Laplacian Pyramid Reconstruction and Refinement for Semantic Segmentation"
+        },
+        {
+            "paperId": "ff3850ff71c9998589c6fd0b778d89883a51fa72",
+            "title": "Pixel-Level Encoding and Depth Layering for Instance-Level Semantic Labeling"
+        },
+        {
+            "paperId": "42e583e2f1dca03c7607974c99f3ff66c846d2c9",
+            "title": "High-performance Semantic Segmentation Using Very Deep Fully Convolutional Networks"
+        },
+        {
+            "paperId": "c8c494ee5488fe20e0aa01bddf3fc4632086d654",
+            "title": "The Cityscapes Dataset for Semantic Urban Scene Understanding"
+        },
+        {
+            "paperId": "bac287c2da6c02a2de88f8e0ea8d45f77de4670d",
+            "title": "Instance-Sensitive Fully Convolutional Networks"
+        },
+        {
+            "paperId": "c1baa0d7c0680e528285aebdac73649ec5dc823c",
+            "title": "Fast, Exact and Multi-scale Inference for Semantic Image Segmentation with Deep Gaussian CRFs"
+        },
+        {
+            "paperId": "3cea26512e9fd8bcb4081af44286d395004a5433",
+            "title": "Semantic Object Parsing with Graph LSTM"
+        },
+        {
+            "paperId": "77f0a39b8e02686fd85b01971f8feb7f60971f80",
+            "title": "Identity Mappings in Deep Residual Networks"
+        },
+        {
+            "paperId": "33a985dfd43cb7f8cc679f2b58b3e1fcae1dff6d",
+            "title": "Combining the Best of Convolutional Layers and Recurrent Layers: A Hybrid Network for Semantic Segmentation"
+        },
+        {
+            "paperId": "9c9d7247f8c51ec5a02b0d911d1d7b9e8160495d",
+            "title": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems"
+        },
+        {
+            "paperId": "2dd8e73e78998b3b65632e434975c22077ba825d",
+            "title": "Optical Flow with Semantic Segmentation and Localized Layers"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "4d7a9197433acbfb24ef0e9d0f33ed1699e4a5b0",
+            "title": "SSD: Single Shot MultiBox Detector"
+        },
+        {
+            "paperId": "321c3a3da10d4b327b44f50c46f3305acb3bbaec",
+            "title": "Higher Order Conditional Random Fields in Deep Neural Networks"
+        },
+        {
+            "paperId": "587caa61ac2ff1b45acf5c8f4ae1478addd79b7f",
+            "title": "Higher Order Potentials in End-to-End Trainable Conditional Random Fields"
+        },
+        {
+            "paperId": "7f5fc84819c0cf94b771fe15141f65b123f7b8ec",
+            "title": "Multi-Scale Context Aggregation by Dilated Convolutions"
+        },
+        {
+            "paperId": "86da68568ad3c22154f56f4f821ba7954109c11c",
+            "title": "Pushing the Boundaries of Boundary Detection using Deep Learning"
+        },
+        {
+            "paperId": "480888bad59b314236f2d947ebf308ae146c98e4",
+            "title": "Zoom Better to See Clearer: Human and Object Parsing with Hierarchical Auto-Zoom Net"
+        },
+        {
+            "paperId": "17113b0f647ce05b2e50d1d40c856370f94da7de",
+            "title": "Zoom Better to See Clearer: Human Part Segmentation with Auto Zoom Net"
+        },
+        {
+            "paperId": "b196bc11ad516c8e6ff96f83acfc443fd7161730",
+            "title": "ABC-CNN: An Attention Based Convolutional Neural Network for Visual Question Answering"
+        },
+        {
+            "paperId": "7304c3155ee9ac37348ced0d71f3cb03434b252d",
+            "title": "Semantic Object Parsing with Local-Global Long Short-Term Memory"
+        },
+        {
+            "paperId": "6b9d3e50e3de7f2a0c7ec6a0291e3265274c8e25",
+            "title": "Semantic Image Segmentation with Task-Specific Edge Detection Using CNNs and a Discriminatively Trained Domain Transform"
+        },
+        {
+            "paperId": "9f48616039cb21903132528c0be5348b3019db50",
+            "title": "Attention to Scale: Scale-Aware Semantic Image Segmentation"
+        },
+        {
+            "paperId": "b0c065cd43aa7280e766b5dcbcc7e26abce59330",
+            "title": "SegNet: A Deep Convolutional Encoder-Decoder Architecture for Image Segmentation"
+        },
+        {
+            "paperId": "ca3995875ad949b86fb4d07953d89505292e3623",
+            "title": "Proposal-Free Network for Instance-Level Object Segmentation"
+        },
+        {
+            "paperId": "55a3b288b6885cd8dcc247212de9e82e713702db",
+            "title": "Semantic Image Segmentation via Deep Parsing Network"
+        },
+        {
+            "paperId": "588b518bf7fe8112a2abc63a2cc188c1c883a16b",
+            "title": "Decoupled Deep Neural Network for Semi-supervised Semantic Segmentation"
+        },
+        {
+            "paperId": "2173f1b8172c9b5bed4650c81b69988717bd6df6",
+            "title": "ParseNet: Looking Wider to See Better"
+        },
+        {
+            "paperId": "792bf014f202938b798656c61a6fce2adc74403f",
+            "title": "Constrained Convolutional Neural Networks for Weakly Supervised Segmentation"
+        },
+        {
+            "paperId": "91768b21a2f8a65f1dede87adb0cec2b621ce1f9",
+            "title": "Modeling local and global deformations in Deep Learning: Epitomic convolution, Multiple Instance Learning, and sliding window detection"
+        },
+        {
+            "paperId": "b49c25e6e40fffb10d3e90d54b876a54e6725962",
+            "title": "Towards unified depth and semantic prediction from a single image"
+        },
+        {
+            "paperId": "424561d8585ff8ebce7d5d07de8dbf7aae5e7270",
+            "title": "Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks"
+        },
+        {
+            "paperId": "6364fdaa0a0eccd823a779fcdd489173f938e91a",
+            "title": "U-Net: Convolutional Networks for Biomedical Image Segmentation"
+        },
+        {
+            "paperId": "cf986bfe13a24d4739f95df3a856a3c6e4ed4c1c",
+            "title": "Learning Deconvolution Network for Semantic Segmentation"
+        },
+        {
+            "paperId": "602174ad642bae2e77d89ad0e973e123f8821d0d",
+            "title": "Joint Object and Part Segmentation Using Deep Learned Potentials"
+        },
+        {
+            "paperId": "7ffdbc358b63378f07311e883dddacc9faeeaf4b",
+            "title": "Fast R-CNN"
+        },
+        {
+            "paperId": "3d410ec1fe9dfc1965e238351ef5ef10f5403121",
+            "title": "High-for-Low and Low-for-High: Efficient Boundary Detection from Deep Object Features and Its Applications to High-Level Vision"
+        },
+        {
+            "paperId": "4cef5476f9da50c1a8fefdcb7114863966f61d67",
+            "title": "Efficient Piecewise Training of Deep Structured Models for Semantic Segmentation"
+        },
+        {
+            "paperId": "416a242f24246f8ee2c00f4d3d1561443dc65b59",
+            "title": "Fully Connected Deep Structured Networks"
+        },
+        {
+            "paperId": "f084f0126d48a0793cf7e60830089b93ef09c844",
+            "title": "BoxSup: Exploiting Bounding Boxes to Supervise Convolutional Networks for Semantic Segmentation"
+        },
+        {
+            "paperId": "ca5c766b2d31a1f5ce8896a0a42b40a2bff9323a",
+            "title": "Conditional Random Fields as Recurrent Neural Networks"
+        },
+        {
+            "paperId": "a030bdc1c201cd41dff7f30b81d9007008699254",
+            "title": "Weakly- and Semi-Supervised Learning of a DCNN for Semantic Image Segmentation"
+        },
+        {
+            "paperId": "39ad6c911f3351a3b390130a6e4265355b4d593b",
+            "title": "Semantic Image Segmentation with Deep Convolutional Nets and Fully Connected CRFs"
+        },
+        {
+            "paperId": "e3926f53f0ecdd07f2210d249819e2ea05fe0c9c",
+            "title": "Semantic part segmentation using compositional model combining shape and appearance"
+        },
+        {
+            "paperId": "d75cef0345beac41f226d094cb38207c61538478",
+            "title": "Combining the Best of Graphical Models and ConvNets for Semantic Segmentation"
+        },
+        {
+            "paperId": "3ad998a9b2c071c4a1971048f8a2d754530f08e8",
+            "title": "Convolutional feature masking for joint object and stuff segmentation"
+        },
+        {
+            "paperId": "0959ef8fefe9e7041f508c2448fc026bc9e08393",
+            "title": "Material recognition in the wild with the Materials in Context Database"
+        },
+        {
+            "paperId": "aa8ef9a12eafadf201c01562f125f5f212b009b6",
+            "title": "Feedforward semantic segmentation with zoom-out features"
+        },
+        {
+            "paperId": "091458abbf195dcf9ce9591ec5ab981e6a8fb68a",
+            "title": "From image-level to pixel-level labeling with Convolutional Networks"
+        },
+        {
+            "paperId": "34cfd9ef5508f0deb52ec1352153f06d57171873",
+            "title": "Weakly Supervised Semantic Segmentation with Convolutional Networks"
+        },
+        {
+            "paperId": "428db42e86f6d51292e23fa57797e35cecd0e2ee",
+            "title": "Hypercolumns for object segmentation and fine-grained localization"
+        },
+        {
+            "paperId": "cb3a2ddcf305e2ec0f6b94af13d1e631ed261bdc",
+            "title": "Predicting Depth, Surface Normals and Semantic Labels with a Common Multi-scale Convolutional Architecture"
+        },
+        {
+            "paperId": "6fc6803df5f9ae505cae5b2f178ade4062c768d0",
+            "title": "Fully convolutional networks for semantic segmentation"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "c66758c1029a463489f26aeb3955f333b37f727a",
+            "title": "Learning Deep Structured Models"
+        },
+        {
+            "paperId": "342786659379879f58bf5c4ff43c84c83a6a7389",
+            "title": "Simultaneous Detection and Segmentation"
+        },
+        {
+            "paperId": "616b246e332573af1f4859aa91440280774c183a",
+            "title": "The Pascal Visual Object Classes Challenge: A Retrospective"
+        },
+        {
+            "paperId": "3419ccd5c94d301ee08d716d037f0c3c6a62e78e",
+            "title": "The Role of Context for Object Detection and Semantic Segmentation in the Wild"
+        },
+        {
+            "paperId": "83d1118c2b2995a3e0cf9b6159e4c59e85cabb7e",
+            "title": "Multiscale Combinatorial Grouping"
+        },
+        {
+            "paperId": "6bdb186ec4726e00a8051119636d4df3b94043b5",
+            "title": "Caffe: Convolutional Architecture for Fast Feature Embedding"
+        },
+        {
+            "paperId": "cbb19236820a96038d000dc629225d36e0b6294a",
+            "title": "Spatial Pyramid Pooling in Deep Convolutional Networks for Visual Recognition"
+        },
+        {
+            "paperId": "caf202fd5833b1ef635923e79608e1a48d7539f9",
+            "title": "Detect What You Can: Detecting and Representing Objects Using Holistic Models and Body Parts"
+        },
+        {
+            "paperId": "71b7178df5d2b112d07e45038cb5637208659ff7",
+            "title": "Microsoft COCO: Common Objects in Context"
+        },
+        {
+            "paperId": "1109b663453e78a59e4f66446d71720ac58cec25",
+            "title": "OverFeat: Integrated Recognition, Localization and Detection using Convolutional Networks"
+        },
+        {
+            "paperId": "67fc0ec1d26f334b05fe66d2b7e0767b60fb73b6",
+            "title": "Scalable Object Detection Using Deep Neural Networks"
+        },
+        {
+            "paperId": "f112d85a54e9cd2e774e753dc96b0ebf4b4ac3a2",
+            "title": "Learning a Dictionary of Shape Epitomes with Applications to Image Labeling"
+        },
+        {
+            "paperId": "1a2a770d23b4a171fa81de62a78a3deb0588f238",
+            "title": "Visualizing and Understanding Convolutional Networks"
+        },
+        {
+            "paperId": "2f4df08d9072fc2ac181b7fced6a245315ce05c8",
+            "title": "Rich Feature Hierarchies for Accurate Object Detection and Semantic Segmentation"
+        },
+        {
+            "paperId": "237a04dd8291cbdb59b6dc4b53e689af743fe2a3",
+            "title": "Learning Hierarchical Features for Scene Labeling"
+        },
+        {
+            "paperId": "9b223c8a31e0ea1d1f2c9787ffd8416dfc90c912",
+            "title": "Selective Search for Object Recognition"
+        },
+        {
+            "paperId": "68299ec9b72e3ac378a1fdc9d86039ebba203deb",
+            "title": "Fast image scanning with deep max-pooling convolutional neural networks"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "28fa525ca1e101335e877bb1f6999b6ccf476959",
+            "title": "Semantic Segmentation with Second-Order Pooling"
+        },
+        {
+            "paperId": "76f02eca773414828271da315b379efa9e1f57fa",
+            "title": "CPMC: Automatic Object Segmentation Using Constrained Parametric Min-Cuts"
+        },
+        {
+            "paperId": "c81c20109c809cfc47565a9477c04ee005d424bf",
+            "title": "Efficient Inference in Fully Connected CRFs with Gaussian Edge Potentials"
+        },
+        {
+            "paperId": "b65891fde65045c86d71e6577f44b2dcbf43b9f4",
+            "title": "Pylon Model for Semantic Segmentation"
+        },
+        {
+            "paperId": "c2932a9c686ede327f41069e17962d330a7a3ebf",
+            "title": "Weakly supervised semantic segmentation with a multi-image model"
+        },
+        {
+            "paperId": "31f1c4cf34ce0bb35382c35b2f468cf72bffae0b",
+            "title": "Are spatial and global constraints really necessary for segmentation?"
+        },
+        {
+            "paperId": "82fae97673a353271b1d4c001afda1af6ef6dc23",
+            "title": "Semantic contours from inverse detectors"
+        },
+        {
+            "paperId": "a3fc46d80a95207911a363dc4b6069ec6e0edd05",
+            "title": "Domain transform for edge-aware image and video processing"
+        },
+        {
+            "paperId": "0ba6f4fb548d8289fb42d68ac64d55f9e3a274ca",
+            "title": "Auto-Context and Its Application to High-Level Vision Tasks and 3D Brain Image Segmentation"
+        },
+        {
+            "paperId": "ce51aa425cccb509830f5e5882230ff976344cc5",
+            "title": "Fast Approximate Energy Minimization with Label Costs"
+        },
+        {
+            "paperId": "24c20c28871fa923c3f45b745b9b9f2d3d280e81",
+            "title": "Harmony potentials for joint classification and segmentation"
+        },
+        {
+            "paperId": "7309a56c14f9f2737dbc7d45e106a65c205b3dcb",
+            "title": "Fast High\u2010Dimensional Filtering Using the Permutohedral Lattice"
+        },
+        {
+            "paperId": "5e796ec9be0009b8f6ae7b1ccba1c9c055328d14",
+            "title": "Associative hierarchical CRFs for object class image segmentation"
+        },
+        {
+            "paperId": "52727dcc2d948093b8be500b5e8c66ed9b2ae729",
+            "title": "Class segmentation and object localization with superpixel neighborhoods"
+        },
+        {
+            "paperId": "87073fd45685b78cb5a68e5eae331d88f2a2be63",
+            "title": "Robust Higher Order Potentials for Enforcing Label Consistency"
+        },
+        {
+            "paperId": "d136d77dcdfb34381d8f581f3866d10293a519fd",
+            "title": "Semantic texton forests for image categorization and segmentation"
+        },
+        {
+            "paperId": "2d57386381df97802b281ad55405c91ec0f71d46",
+            "title": "Computational analysis and learning for a biologically motivated model of boundary detection"
+        },
+        {
+            "paperId": "6dbaff29d3898cf60f63f5a34cb9610ebb75220c",
+            "title": "Beyond Bags of Features: Spatial Pyramid Matching for Recognizing Natural Scene Categories"
+        },
+        {
+            "paperId": "0959c66fa263b033b914204ce470e9d116dba749",
+            "title": "The redundant discrete wavelet transform and additive noise"
+        },
+        {
+            "paperId": "f26d35d2e32934150cd27b030d4d769942126184",
+            "title": "\"GrabCut\""
+        },
+        {
+            "paperId": "363b56f85e12389017ba8894056a1b309e46a5f7",
+            "title": "Multiscale conditional random fields for image labeling"
+        },
+        {
+            "paperId": "ca7a7b68935c38e52749cb4028ad941d068635da",
+            "title": "The discrete wavelet transform: wedding the a trous and Mallat algorithms"
+        },
+        {
+            "paperId": "8d5a193fdbf9d34118f136935cfd07a81b3e0d77",
+            "title": "Parallel and Deterministic Algorithms from MRFs: Surface Reconstruction"
+        },
+        {
+            "paperId": "8cfa2c28c4b9c45873191f188fe349d5378280f6",
+            "title": "A common framework for image segmentation"
+        },
+        {
+            "paperId": null,
+            "title": "Yuille received the BA degree in mathematics from the University of Cambridge in"
+        },
+        {
+            "paperId": "0d1bfcdfc90e662defd26b8b0deae6ef6e661b23",
+            "title": "TextonBoost for Image Understanding: Multi-Class Object Recognition and Segmentation by Jointly Modeling Texture, Layout, and Context"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "bc856b039dd22327f7a0b6cb7ce4e28618f5540a",
+            "title": "Multirate digital filters, filter banks, polyphase networks, and applications: a tutorial"
+        },
+        {
+            "paperId": "ef3ed634a28eee78a7e31fc525cf7083e6689345",
+            "title": "A real-time algorithm for signal analysis with the help of the wavelet transform"
+        }
+    ]
+}

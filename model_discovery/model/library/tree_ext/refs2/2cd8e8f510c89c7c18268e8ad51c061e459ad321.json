@@ -1,0 +1,171 @@
+{
+    "paperId": "2cd8e8f510c89c7c18268e8ad51c061e459ad321",
+    "externalIds": {
+        "DBLP": "journals/corr/ParikhT0U16",
+        "ACL": "D16-1244",
+        "MAG": "2413794162",
+        "ArXiv": "1606.01933",
+        "DOI": "10.18653/v1/D16-1244",
+        "CorpusId": 8495258
+    },
+    "title": "A Decomposable Attention Model for Natural Language Inference",
+    "abstract": "We propose a simple neural architecture for natural language inference. Our approach uses attention to decompose the problem into subproblems that can be solved separately, thus making it trivially parallelizable. On the Stanford Natural Language Inference (SNLI) dataset, we obtain state-of-the-art results with almost an order of magnitude fewer parameters than previous work and without relying on any word-order information. Adding intra-sentence attention that takes a minimum amount of order into account yields further improvements.",
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2016,
+    "referenceCount": 31,
+    "citationCount": 1327,
+    "influentialCitationCount": 144,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/D16-1244.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a simple neural architecture for natural language inference that uses attention to decompose the problem into subproblems that can be solved separately, thus making it trivially parallelizable."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "144729897",
+            "name": "Ankur P. Parikh"
+        },
+        {
+            "authorId": "2556289",
+            "name": "Oscar T\u00e4ckstr\u00f6m"
+        },
+        {
+            "authorId": "143790066",
+            "name": "Dipanjan Das"
+        },
+        {
+            "authorId": "39328010",
+            "name": "Jakob Uszkoreit"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "36c097a225a95735271960e2b63a2cb9e98bff83",
+            "title": "A Fast Unified Model for Parsing and Sentence Understanding"
+        },
+        {
+            "paperId": "13fe71da009484f240c46f14d9330e932f8de210",
+            "title": "Long Short-Term Memory-Networks for Machine Reading"
+        },
+        {
+            "paperId": "596c882de006e4bb4a93f1fa08a5dd467bee060a",
+            "title": "Learning Natural Language Inference with LSTM"
+        },
+        {
+            "paperId": "ea407573bfcd39f9a478fe33cf6ce0ee1780a5f0",
+            "title": "Natural Language Inference by Tree-Based Convolution and Heuristic Matching"
+        },
+        {
+            "paperId": "7f3ae283243e15e05f188a05779ccfae9a3567f4",
+            "title": "ABCNN: Attention-Based Convolutional Neural Network for Modeling Sentence Pairs"
+        },
+        {
+            "paperId": "46b8cbcdff87b842c2c1d4a003c831f845096ba7",
+            "title": "Order-Embeddings of Images and Language"
+        },
+        {
+            "paperId": "2846e83d405cbe3bf2f0f3b5f635dd8b3c680c45",
+            "title": "Reasoning about Entailment with Neural Attention"
+        },
+        {
+            "paperId": "f04df4e20a18358ea2f689b4c129781628ef7fc1",
+            "title": "A large annotated corpus for learning natural language inference"
+        },
+        {
+            "paperId": "9f08b01251cb99f4ffae8c7b3e4468d3af9c98d3",
+            "title": "Convolutional Neural Network Architectures for Matching Natural Language Sentences"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "c0be2ac2f45681f1852fc1d298af5dceb85834f4",
+            "title": "Paraphrase-Driven Learning for Open Question Answering"
+        },
+        {
+            "paperId": "50c651e9f94f9d4927a726af0ef44818179d87da",
+            "title": "Semantic Parsing as Machine Translation"
+        },
+        {
+            "paperId": "67107f78a84bdb2411053cb54e94fa226eea6d8e",
+            "title": "Deep Sparse Rectifier Neural Networks"
+        },
+        {
+            "paperId": "413c1142de9d91804d6d11c67ff3fed59c9fc279",
+            "title": "Adaptive Subgradient Methods for Online Learning and Stochastic Optimization"
+        },
+        {
+            "paperId": "41bcec85259ad9fde877f48ffb18b31b721d1687",
+            "title": "Discriminative Learning over Constrained Latent Representations"
+        },
+        {
+            "paperId": "7ff5cff8e1c33b30226bf0b2384cbfd7481a4332",
+            "title": "Paraphrase Identification as Probabilistic Quasi-Synchronous Recognition"
+        },
+        {
+            "paperId": "5feb2c61b04532869e44d1ca4e48c7108aee5fd3",
+            "title": "An extended model of natural logic"
+        },
+        {
+            "paperId": "581f4e8d74b9ffa3d1e4fbbac8d8742de79cb6c2",
+            "title": "A Phrase-Based Alignment Model for Natural Language Inference"
+        },
+        {
+            "paperId": "0af81925ffade8b0ddaf84d5fb64a8fa5cbd4c5c",
+            "title": "Statistical machine translation"
+        },
+        {
+            "paperId": "bc3db492047da12beae9cc3ced5feea6b16df10b",
+            "title": "A Discourse Commitment-Based Framework for Recognizing Textual Entailment"
+        },
+        {
+            "paperId": "757a192157d7587433db93a899d32c4c5e832489",
+            "title": "Learning to recognize features of valid textual entailments"
+        },
+        {
+            "paperId": "ea2563467c1c472a346d165b7f97c86317d63ca4",
+            "title": "Recognising Textual Entailment with Logical Inference"
+        },
+        {
+            "paperId": "131eb9c57d842e55be86f311c6d47f735b24e443",
+            "title": "Robust Textual Inference via Graph Matching"
+        },
+        {
+            "paperId": "dce3bcaf68e10992a49189c1227a3ccd4cc8a11d",
+            "title": "Classification of Semantic Relations by Humans and Machines"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": null,
+            "title": "TensorFlow: Large-scale machine learning on heterogeneous systems. Software available from tensorflow. org"
+        },
+        {
+            "paperId": "24b391a74ec61209b86a9c4ad37387f9ca261f12",
+            "title": "A brief history of natural logic"
+        },
+        {
+            "paperId": "86ab4cae682fbd49c5a5bedb630e5a40fa7529f6",
+            "title": "Handwritten Digit Recognition with a Back-Propagation Network"
+        },
+        {
+            "paperId": null,
+            "title": "Semantic theory"
+        }
+    ]
+}

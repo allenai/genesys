@@ -1,0 +1,130 @@
+{
+    "paperId": "0dc9eb7d17f2def56ad930945f2521653f04c3fa",
+    "externalIds": {
+        "MAG": "2145543707",
+        "ArXiv": "1412.1454",
+        "DBLP": "journals/corr/ShazeerPC14",
+        "CorpusId": 18359770
+    },
+    "title": "Skip-gram Language Modeling Using Sparse Non-negative Matrix Probability Estimation",
+    "abstract": "We present a novel family of language model (LM) estimation techniques named Sparse Non-negative Matrix (SNM) estimation. A first set of experiments empirically evaluating it on the On e Billion Word Benchmark [Chelba et al., 2013] shows that SNM n-gram LMs perform almost as well as the well-established Kneser-Ney (KN) models. When using skip-gram features the models are able to match the state-of-the-art recurrent neural network (RNN) LMs; combining the two modeling techniques yields the best known result on the benchmark. The computational advantages of SNM over both maximum entropy and RNN LM estimation are probably its main strength, promising an approach that has the same flexibility in combining arbitrary feature s effectively and yet should scale to very large amounts of data as gracefully as n-gram LMs do.",
+    "venue": "arXiv.org",
+    "year": 2014,
+    "referenceCount": 23,
+    "citationCount": 14,
+    "influentialCitationCount": 1,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The computational advantages of SNM over both maximum entropy and RNN LM estimation are probably its main strength, promising an approach that has the same flexibility in combining arbitrary features effectively and yet should scale to very large amounts of data as gracefully as n-gram LMs do."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1846258",
+            "name": "Noam M. Shazeer"
+        },
+        {
+            "authorId": "2277087",
+            "name": "J. Pelemans"
+        },
+        {
+            "authorId": "1802969",
+            "name": "Ciprian Chelba"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "ac973bbfd62a902d073a85ca621fd297e8660a82",
+            "title": "Scaling recurrent neural network language models"
+        },
+        {
+            "paperId": "5d833331b0e22ff359db05c62a8bca18c4f04b68",
+            "title": "One billion word benchmark for measuring progress in statistical language modeling"
+        },
+        {
+            "paperId": "090515794ce9c56fa4793c659e50ca0abeb1bc29",
+            "title": "Comparing RNNs and log-linear interpolation of improved skip-model on four Babel languages: Cantonese, Pashto, Tagalog, Turkish"
+        },
+        {
+            "paperId": "186f9616e98218d29d08608de311a86d40bec6b5",
+            "title": "A Scalable Distributed Syntactic, Semantic, and Lexical Language Model"
+        },
+        {
+            "paperId": "3b56693f6fe6b82092c4adc756f20fb9b7710ac5",
+            "title": "Efficient Subsampling for Training Complex Language Models"
+        },
+        {
+            "paperId": "0fcc184b3b90405ec3ceafd6a4007c749df7c363",
+            "title": "Continuous space language models"
+        },
+        {
+            "paperId": "6bf6c77b895069239ef7a180aee5332ed7b40c79",
+            "title": "A Hierarchical Bayesian Language Model Based On Pitman-Yor Processes"
+        },
+        {
+            "paperId": "ffea7f0fd89dc940107cdf94f7decfcc42315c67",
+            "title": "A Neural Syntactic Language Model"
+        },
+        {
+            "paperId": "6c2b28f9354f667cd5bd07afc0471d8334430da7",
+            "title": "A Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "09c76da2361d46689825c4efc37ad862347ca577",
+            "title": "A bit of progress in language modeling"
+        },
+        {
+            "paperId": "4af41f4d838daa7ca6995aeb4918b61989d1ed80",
+            "title": "Classes for fast maximum entropy training"
+        },
+        {
+            "paperId": "a1c3748820d6b5ab4e7334524815df9bb6d20aed",
+            "title": "Structured language modeling"
+        },
+        {
+            "paperId": "a90c1ca6c335de94721d7445bb01b723c3d9a840",
+            "title": "Exploiting latent semantic information in statistical language modeling"
+        },
+        {
+            "paperId": "9548ac30c113562a51e603dbbc8e9fa651cfd3ab",
+            "title": "Improved backing-off for M-gram language modeling"
+        },
+        {
+            "paperId": "0b26fa1b848ed808a0511db34bce2426888f0b68",
+            "title": "Adaptive Statistical Language Modeling; A Maximum Entropy Approach"
+        },
+        {
+            "paperId": "3de5d40b60742e3dfa86b19e7f660962298492af",
+            "title": "Class-Based n-gram Models of Natural Language"
+        },
+        {
+            "paperId": "b0130277677e5b915d5cd86b3afafd77fd08eb2e",
+            "title": "Estimation of probabilities from sparse data for the language model component of a speech recognizer"
+        },
+        {
+            "paperId": "f9a1b3850dfd837793743565a8af95973d395a4e",
+            "title": "LSTM Neural Networks for Language Modeling"
+        },
+        {
+            "paperId": "96364af2d208ea75ca3aeb71892d2f7ce7326b55",
+            "title": "Statistical Language Models Based on Neural Networks"
+        },
+        {
+            "paperId": "c19fbefdeead6a4154a22a9c8551a18b1530033a",
+            "title": "Hierarchical Probabilistic Neural Network Language Model"
+        },
+        {
+            "paperId": "231f6de83cfa4d641da1681e97a11b689a48e3aa",
+            "title": "Statistical methods for speech recognition"
+        },
+        {
+            "paperId": "6a923c9f89ed53b6e835b3807c0c1bd8d532687b",
+            "title": "Interpolated estimation of Markov source parameters from sparse data"
+        },
+        {
+            "paperId": null,
+            "title": "Information Extraction From Speech And Text"
+        }
+    ]
+}

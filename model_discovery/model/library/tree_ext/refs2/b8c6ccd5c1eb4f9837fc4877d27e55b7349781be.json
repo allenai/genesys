@@ -1,0 +1,210 @@
+{
+    "paperId": "b8c6ccd5c1eb4f9837fc4877d27e55b7349781be",
+    "externalIds": {
+        "MAG": "2950961224",
+        "ArXiv": "1706.06978",
+        "DBLP": "conf/kdd/ZhouZSFZMYJLG18",
+        "DOI": "10.1145/3219819.3219823",
+        "CorpusId": 1637394
+    },
+    "title": "Deep Interest Network for Click-Through Rate Prediction",
+    "abstract": "Click-through rate prediction is an essential task in industrial applications, such as online advertising. Recently deep learning based models have been proposed, which follow a similar Embedding&MLP paradigm. In these methods large scale sparse input features are first mapped into low dimensional embedding vectors, and then transformed into fixed-length vectors in a group-wise manner, finally concatenated together to fed into a multilayer perceptron (MLP) to learn the nonlinear relations among features. In this way, user features are compressed into a fixed-length representation vector, in regardless of what candidate ads are. The use of fixed-length vector will be a bottleneck, which brings difficulty for Embedding&MLP methods to capture user's diverse interests effectively from rich historical behaviors. In this paper, we propose a novel model: Deep Interest Network (DIN) which tackles this challenge by designing a local activation unit to adaptively learn the representation of user interests from historical behaviors with respect to a certain ad. This representation vector varies over different ads, improving the expressive ability of model greatly. Besides, we develop two techniques: mini-batch aware regularization and data adaptive activation function which can help training industrial deep networks with hundreds of millions of parameters. Experiments on two public datasets as well as an Alibaba real production dataset with over 2 billion samples demonstrate the effectiveness of proposed approaches, which achieve superior performance compared with state-of-the-art methods. DIN now has been successfully deployed in the online display advertising system in Alibaba, serving the main traffic.",
+    "venue": "Knowledge Discovery and Data Mining",
+    "year": 2017,
+    "referenceCount": 35,
+    "citationCount": 1591,
+    "influentialCitationCount": 298,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1706.06978",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel model: Deep Interest Network (DIN) is proposed which tackles this challenge by designing a local activation unit to adaptively learn the representation of user interests from historical behaviors with respect to a certain ad."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "35066946",
+            "name": "Guorui Zhou"
+        },
+        {
+            "authorId": "123582260",
+            "name": "Cheng-Ning Song"
+        },
+        {
+            "authorId": "150345697",
+            "name": "Xiaoqiang Zhu"
+        },
+        {
+            "authorId": "2115573737",
+            "name": "Xiao Ma"
+        },
+        {
+            "authorId": "2117858805",
+            "name": "Yanghui Yan"
+        },
+        {
+            "authorId": "32452445",
+            "name": "Xi-Wang Dai"
+        },
+        {
+            "authorId": "2115313387",
+            "name": "Han Zhu"
+        },
+        {
+            "authorId": "2512850",
+            "name": "Junqi Jin"
+        },
+        {
+            "authorId": "2118384236",
+            "name": "Han Li"
+        },
+        {
+            "authorId": "20029557",
+            "name": "Kun Gai"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "848aa2210061b6bab6f3dbe7df9c190bf1c79c27",
+            "title": "DKN: Deep Knowledge-Aware Network for News Recommendation"
+        },
+        {
+            "paperId": "063598cdaff79852c3647d074506120889c5c17b",
+            "title": "ATRank: An Attention-Based User Behavior Modeling Framework for Recommendation"
+        },
+        {
+            "paperId": "65944f4706d2dd9e91e56e962388a128f6262c90",
+            "title": "Learning Piece-wise Linear Models from Large Scale Data for Ad Click Prediction"
+        },
+        {
+            "paperId": "1d122a074c936fcfd95faf44608e377a9d1799c8",
+            "title": "DeepFM: A Factorization-Machine based Neural Network for CTR Prediction"
+        },
+        {
+            "paperId": "dba197afbe1cf422323eeab4f871756a7625d913",
+            "title": "Optimized Cost per Click in Taobao Display Advertising"
+        },
+        {
+            "paperId": "4402c6c8445f17f4161e0f64573b7e28df1ca180",
+            "title": "Product-Based Neural Networks for User Response Prediction"
+        },
+        {
+            "paperId": "5e383584ccbc8b920eaf3cfce3869da646ff5550",
+            "title": "Deep Neural Networks for YouTube Recommendations"
+        },
+        {
+            "paperId": "5694e46284460a648fe29117cbc55f6c9be3fa3c",
+            "title": "Densely Connected Convolutional Networks"
+        },
+        {
+            "paperId": "a83c778e918539941cba9dcaa6ec881b3ae7a29a",
+            "title": "Deep Crossing: Web-Scale Modeling without Manually Crafted Combinatorial Features"
+        },
+        {
+            "paperId": "81bb8626560fdd0ae35a8aab1f115022a38499d3",
+            "title": "DeepIntent: Learning Attentions for Online Advertising with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "657fbf29ea0b4904a3e98d1556f9acf38dddae5f",
+            "title": "Wide & Deep Learning for Recommender Systems"
+        },
+        {
+            "paperId": "6b570069f14c7588e066f7138e1f21af59d62e61",
+            "title": "Theano: A Python framework for fast computation of mathematical expressions"
+        },
+        {
+            "paperId": "9c9d7247f8c51ec5a02b0d911d1d7b9e8160495d",
+            "title": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems"
+        },
+        {
+            "paperId": "a8d8301604a12bc0605cc5b10a67d99a92423069",
+            "title": "DiFacto: Distributed Factorization Machines"
+        },
+        {
+            "paperId": "36f652172792f8aab1cf3c4441a72a1bf79d17c8",
+            "title": "Ups and Downs: Modeling the Visual Evolution of Fashion Trends with One-Class Collaborative Filtering"
+        },
+        {
+            "paperId": "276ebc620a8976026bd2d03582b9ecfa3738d43c",
+            "title": "The MovieLens Datasets: History and Context"
+        },
+        {
+            "paperId": "62df84d6a4d26f95e4714796c2337c9848cc13b5",
+            "title": "MXNet: A Flexible and Efficient Machine Learning Library for Heterogeneous Distributed Systems"
+        },
+        {
+            "paperId": "6b858b9cc99af35b14b65616f389690ac0952baf",
+            "title": "Learning Visual Clothing Style with Heterogeneous Dyadic Co-Occurrences"
+        },
+        {
+            "paperId": "fab4d19ed77dad7c437d885eceb8aa65fae5a783",
+            "title": "Image-Based Recommendations on Styles and Substitutes"
+        },
+        {
+            "paperId": "d6f2f611da110b5b5061731be3fc4c7f45d8ee23",
+            "title": "Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "daf9ed5dc6c6bad5367d7fd8561527da30e9b8dd",
+            "title": "Practical Lessons from Predicting Clicks on Ads at Facebook"
+        },
+        {
+            "paperId": "c14ef7b146b13086159c5ce104db046a27b3e21c",
+            "title": "Coupled Group Lasso for Web-Scale CTR Prediction in Display Advertising"
+        },
+        {
+            "paperId": "79f2626046fdc56edfaca840874e355cac734b9a",
+            "title": "Ad click prediction: a view from the trenches"
+        },
+        {
+            "paperId": "df93596d4ed71d2863532c063c4c693711216abf",
+            "title": "Factorization Machines"
+        },
+        {
+            "paperId": "d40ee5dd758c525dfb9932d726bb4e844b7b8478",
+            "title": "An introduction to ROC analysis"
+        },
+        {
+            "paperId": "28209ce8d0ac1cf4ceea3eeddf4630e1032fa0ef",
+            "title": "A neural probabilistic language model"
+        },
+        {
+            "paperId": "6c2b28f9354f667cd5bd07afc0471d8334430da7",
+            "title": "A Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "e23c34414e66118ecd9b08cf0cd4d016f59b0b85",
+            "title": "Bidirectional recurrent neural networks"
+        },
+        {
+            "paperId": "ce9a21b93ba29d4145a8ef6bf401e77f261848de",
+            "title": "A Learning Algorithm for Continually Running Fully Recurrent Neural Networks"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "367f2c63a6f6a10b3b64b8729d601e69337ee3cc",
+            "title": "Rectifier Nonlinearities Improve Neural Network Acoustic Models"
+        },
+        {
+            "paperId": "1c46943103bd7b7a2c7be86859995a4144d1938b",
+            "title": "Visualizing Data using t-SNE"
+        },
+        {
+            "paperId": "b365b8e45b7d81f081de44ac8f9eadf9144f3ca5",
+            "title": "Regression Shrinkage and Selection via the Lasso"
+        }
+    ]
+}

@@ -1,0 +1,78 @@
+{
+    "paperId": "29bbb5727e0b04444b4286e8b15375c0985b028e",
+    "externalIds": {
+        "DBLP": "conf/smc/KataokaKH98",
+        "MAG": "2167581055",
+        "DOI": "10.1109/ICSMC.1998.727520",
+        "CorpusId": 46963148
+    },
+    "title": "Music information retrieval system using complex-valued recurrent neural networks",
+    "abstract": "We propose a music information retrieval system using complex-valued recurrent neural networks. Melodies can be treated as temporal sequences. The multilayer network using complex neurons with local feedback (MNCF) is used in the proposed system because of the high ability to deal with temporal sequences. The process of retrieval is as follows: first, the pitch and duration of each note are extracted from the key melody which is inputted from the MIDI keyboard. Second, they are inputted to some MNCFs. When the output values of each MNCF agree with the next input values for several times, it produces the database address. The user can listen to the candidate of the melody. In addition, the user can know the text information. The proposed system has the following other features: the user can input any parts of the melody he/she remembers as a key input; the human interface is excellent for users. The retrieval is performed in parallel because of the inherent parallelism of neural networks; the proposed system is robust for transposition and change of the tempo. We have evaluated the proposed system by experiment. The system retrieved about 91.5% of melodies correctly.",
+    "venue": "SMC'98 Conference Proceedings. 1998 IEEE International Conference on Systems, Man, and Cybernetics (Cat. No.98CH36218)",
+    "year": 1998,
+    "referenceCount": 10,
+    "citationCount": 14,
+    "influentialCitationCount": 1,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The proposed music information retrieval system using complex-valued recurrent neural networks is robust for transposition and change of the tempo, and the human interface is excellent for users."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "30574618",
+            "name": "M. Kataoka"
+        },
+        {
+            "authorId": "2174734",
+            "name": "M. Kinouchi"
+        },
+        {
+            "authorId": "145719769",
+            "name": "M. Hagiwara"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "92f1f691c363636ff7362e44882a20a573dfbeee",
+            "title": "COMPOzE-intention-based music composition through constraint programming"
+        },
+        {
+            "paperId": "c4956687717e0d7eee8259a12bdb6a213b213e18",
+            "title": "Memorization of melodies by complex-valued recurrent network"
+        },
+        {
+            "paperId": "7fa8a45c0957b0ee5c4adba2e4acf283b42cd583",
+            "title": "Creating Printed Music Automatically"
+        },
+        {
+            "paperId": "455331ddbd3c205f735444aeb981719bb9b74886",
+            "title": "Learning temporal sequences by complex neurons with local feedback"
+        },
+        {
+            "paperId": "5ba392196ab64b8fc411b241c82db0a69c8f42dc",
+            "title": "A Melody Retrieval Method with Hummed Melody"
+        },
+        {
+            "paperId": "81e0a57abde1bf2cc4b7cd772e0573e92069e8ef",
+            "title": "A Connectionist Approach To Algorithmic Composition"
+        },
+        {
+            "paperId": "69a8e331ea493894066d003ab3e5987d30527b06",
+            "title": "Neural Network Music Composition by Prediction: Exploring the Benefits of Psychoacoustic Constraints and Multi-scale Processing"
+        },
+        {
+            "paperId": null,
+            "title": "\u201c Neural network composition by prediction"
+        },
+        {
+            "paperId": null,
+            "title": "Music Database,"
+        },
+        {
+            "paperId": null,
+            "title": "\u201c Musical Rhythm Recognition with Neural Networks"
+        }
+    ]
+}

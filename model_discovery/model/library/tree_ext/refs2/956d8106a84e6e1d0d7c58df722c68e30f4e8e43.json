@@ -1,0 +1,142 @@
+{
+    "paperId": "956d8106a84e6e1d0d7c58df722c68e30f4e8e43",
+    "externalIds": {
+        "MAG": "2786598939",
+        "ArXiv": "1803.09327",
+        "DBLP": "conf/icml/ZhangLD18",
+        "CorpusId": 4426976
+    },
+    "title": "Stabilizing Gradients for Deep Neural Networks via Efficient SVD Parameterization",
+    "abstract": "Vanishing and exploding gradients are two of the main obstacles in training deep neural networks, especially in capturing long range dependencies in recurrent neural networks~(RNNs). In this paper, we present an efficient parametrization of the transition matrix of an RNN that allows us to stabilize the gradients that arise in its training. Specifically, we parameterize the transition matrix by its singular value decomposition(SVD), which allows us to explicitly track and control its singular values. We attain efficiency by using tools that are common in numerical linear algebra, namely Householder reflectors for representing the orthogonal matrices that arise in the SVD. By explicitly controlling the singular values, our proposed Spectral-RNN method allows us to easily solve the exploding gradient problem and we observe that it empirically solves the vanishing gradient issue to a large extent. We note that the SVD parameterization can be used for any rectangular weight matrix, hence it can be easily extended to any deep neural network, such as a multi-layer perceptron. Theoretically, we demonstrate that our parameterization does not lose any expressive power, and show how it controls generalization of RNN for the classification task. %, and show how it potentially makes the optimization process easier. Our extensive experimental results also demonstrate that the proposed framework converges faster, and has good generalization, especially in capturing long range dependencies, as shown on the synthetic addition and copy tasks, as well as on MNIST and Penn Tree Bank data sets.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2018,
+    "referenceCount": 26,
+    "citationCount": 99,
+    "influentialCitationCount": 15,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An efficient parametrization of the transition matrix of an RNN that allows us to stabilize the gradients that arise in its training and empirically solves the vanishing gradient issue to a large extent."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "49049987",
+            "name": "Jiong Zhang"
+        },
+        {
+            "authorId": "144438755",
+            "name": "Qi Lei"
+        },
+        {
+            "authorId": "1783667",
+            "name": "I. Dhillon"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "4fc3ee440c2b0f66255a9e6966cee871ee0cc6da",
+            "title": "A PAC-Bayesian Approach to Spectrally-Normalized Margin Bounds for Neural Networks"
+        },
+        {
+            "paperId": "9753967a3af8e1db1e2da52a9bb3255bd1ce5c51",
+            "title": "Spectrally-normalized margin bounds for neural networks"
+        },
+        {
+            "paperId": "013efe3ff541e518c51f08d1b62a62e0c57c0b14",
+            "title": "Parseval Networks: Improving Robustness to Adversarial Examples"
+        },
+        {
+            "paperId": "9d1fb89b99aafc01ee56fc92df1ad150fba67c22",
+            "title": "On orthogonality and learning recurrent networks with long term dependencies"
+        },
+        {
+            "paperId": "6e99f4859eb420ace7f03f098940135c1c355075",
+            "title": "Efficient Orthogonal Parametrisation of Recurrent Neural Networks Using Householder Reflections"
+        },
+        {
+            "paperId": "8fbb115c578e8bfbcc1615bd7af990396abf6776",
+            "title": "Identity Matters in Deep Learning"
+        },
+        {
+            "paperId": "79c78c98ea317ba8cdf25a9783ef4b8a7552db75",
+            "title": "Full-Capacity Unitary Recurrent Neural Networks"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "e9c771197a6564762754e48c1daafb066f449f2e",
+            "title": "Unitary Evolution Recurrent Neural Networks"
+        },
+        {
+            "paperId": "d46b81707786d18499f911b4ab72bb10c65406ba",
+            "title": "A Simple Way to Initialize Recurrent Networks of Rectified Linear Units"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "f264e8b33c0d49a692a6ce2c4bcb28588aeb7d97",
+            "title": "Recurrent Neural Network Regularization"
+        },
+        {
+            "paperId": "66a666b3c106cec648ba08c188a5115d513fda41",
+            "title": "Implementing QR factorization updating algorithms on GPUs"
+        },
+        {
+            "paperId": "84069287da0a6b488b8c933f3cb5be759cb6237e",
+            "title": "On the difficulty of training recurrent neural networks"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "d0be39ee052d246ae99c082a565aba25b811be2d",
+            "title": "Learning long-term dependencies with gradient descent is difficult"
+        },
+        {
+            "paperId": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+            "title": "Building a Large Annotated Corpus of English: The Penn Treebank"
+        },
+        {
+            "paperId": "baa39c709c427197411d548542ae45a133d75e96",
+            "title": "Unitary Triangularization of a Nonsymmetric Matrix"
+        },
+        {
+            "paperId": "be31cff7d8ad7ec2b90765f754dcaf4a241df151",
+            "title": "Preventing Gradient Explosions in Gated Recurrent Units"
+        },
+        {
+            "paperId": null,
+            "title": "TensorFlow: Large-scale machine learning"
+        },
+        {
+            "paperId": "96364af2d208ea75ca3aeb71892d2f7ce7326b55",
+            "title": "Statistical Language Models Based on Neural Networks"
+        },
+        {
+            "paperId": "2309802f896a7b0a66641cd247e611e211367da1",
+            "title": "Designing structured tight frames via an alternating projection method"
+        },
+        {
+            "paperId": "7e252a389eedc07622bf6d90159dae2fa496cb53",
+            "title": "Simplified PAC-Bayesian Margin Bounds"
+        },
+        {
+            "paperId": "530d2b07898a610a3c7de19c01b71dc4b5a6dd5d",
+            "title": "Recurrent neural networks for time series classification"
+        },
+        {
+            "paperId": null,
+            "title": "Numerical linear algebra, volume 50"
+        },
+        {
+            "paperId": null,
+            "title": "The UCR time series classification archive"
+        }
+    ]
+}

@@ -1,0 +1,229 @@
+{
+    "paperId": "a929a3d92e305f4ef22ad9e52d264e7782394bd4",
+    "externalIds": {
+        "MAG": "2536769020",
+        "DBLP": "journals/peerj-cs/AletrasTPL16",
+        "DOI": "10.7717/PEERJ-CS.93",
+        "CorpusId": 7630289
+    },
+    "title": "Predicting judicial decisions of the European Court of Human Rights: a Natural Language Processing perspective",
+    "abstract": "Recent advances in Natural Language Processing and Machine Learning provide us with the tools to build predictive models that can be used to unveil patterns driving judicial decisions. This can be useful, for both lawyers and judges, as an assisting tool to rapidly identify cases and extract patterns which lead to certain decisions. This paper presents the first systematic study on predicting the outcome of cases tried by the European Court of Human Rights based solely on textual content. We formulate a binary classification task where the input of our classifiers is the textual content extracted from a case and the target output is the actual judgment as to whether there has been a violation of an article of the convention of human rights. Textual information is represented using contiguous word sequences, i.e., N-grams, and topics. Our models can predict the court\u2019s decisions with a strong accuracy (79% on average). Our empirical analysis indicates that the formal facts of a case are the most important predictive factor. This is consistent with the theory of legal realism suggesting that judicial decision-making is significantly affected by the stimulus of the facts. We also observe that the topical content of a case is another important feature in this classification task and explore this relationship further by conducting a qualitative analysis.",
+    "venue": "PeerJ Computer Science",
+    "year": 2016,
+    "referenceCount": 46,
+    "citationCount": 497,
+    "influentialCitationCount": 38,
+    "openAccessPdf": {
+        "url": "https://peerj.com/articles/cs-93.pdf",
+        "status": "GOLD"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The empirical analysis indicates that the formal facts of a case are the most important predictive factor, consistent with the theory of legal realism suggesting that judicial decision-making is significantly affected by the stimulus of the facts."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3238627",
+            "name": "Nikolaos Aletras"
+        },
+        {
+            "authorId": "8245526",
+            "name": "D. Tsarapatsanis"
+        },
+        {
+            "authorId": "1398830377",
+            "name": "Daniel Preotiuc-Pietro"
+        },
+        {
+            "authorId": "3006026",
+            "name": "Vasileios Lampos"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "4c75b748911ddcd888c5122f7672f69caa5d661f",
+            "title": "Statistical Learning Theory"
+        },
+        {
+            "paperId": "aec761ad33b65fc8a5b8f03ece65dc633fadc7a1",
+            "title": "The margin of appreciation doctrine: a low-level institutional view"
+        },
+        {
+            "paperId": "ba240e56732c217be36e6862f252a09ac2588a57",
+            "title": "Studying User Income through Language, Behaviour and Affect in Social Media"
+        },
+        {
+            "paperId": "71587670128aa44c2d58b30948f1b70e557c72a0",
+            "title": "An analysis of the user occupational class through Twitter content"
+        },
+        {
+            "paperId": "342a74a00bc12b4e4d1d42648321fcb5f537684d",
+            "title": "The Utility of Text: The Case of Amicus Briefs and the Supreme Court"
+        },
+        {
+            "paperId": "1f4e3d6b26ddad6c64800018576a7ce2b3e59d71",
+            "title": "The Impact of the European Convention on Human Rights on Private International Law"
+        },
+        {
+            "paperId": "620586f0b0e3ad7943649149e2bb255a166ebbe8",
+            "title": "Scaling Politically Meaningful Dimensions Using Texts and Votes"
+        },
+        {
+            "paperId": "d267f872412f675138e72974873c9c0111c50ade",
+            "title": "The Supreme Court's Many Median Justices"
+        },
+        {
+            "paperId": "5eec359ca2903a20700019761a6e2f843d4bec6b",
+            "title": "Gender identity and lexical variation in social media"
+        },
+        {
+            "paperId": "f7561bd7d66b5d059a7031b59aae2811d7043a30",
+            "title": "Nowcasting Events from the Social Web with Statistical Learning"
+        },
+        {
+            "paperId": "5e9fa46f231c59e6573f9a116f77f53703347659",
+            "title": "Baselines and Bigrams: Simple, Good Sentiment and Topic Classification"
+        },
+        {
+            "paperId": "ddd7555a798f090e6bd95aaa1bed4c6a6f51c5f2",
+            "title": "LEGAL FORMALISM AND LEGAL REALISM: WHAT IS THE ISSUE?"
+        },
+        {
+            "paperId": "3a0e788268fafb23ab20da0e98bb578b06830f7d",
+            "title": "From Frequency to Meaning: Vector Space Models of Semantics"
+        },
+        {
+            "paperId": "34ad1953668d558e5cd2f5a81a739ab8a70cf6b2",
+            "title": "Human Rights Fact-Finding. The European Court of Human Rights at a Crossroads"
+        },
+        {
+            "paperId": "70006d9f08a76e541fc2328a815d9eff67fd69ec",
+            "title": "Beyond the Formalist-Realist Divide: The Role of Politics in Judging"
+        },
+        {
+            "paperId": "00bc52a7514aa63d3b74e40113a02b927529a869",
+            "title": "Feature Ranking Using Linear SVM"
+        },
+        {
+            "paperId": "e1e878157dd4bac297ec26e447abcb761f9abe37",
+            "title": "Redesigning the European Court of Human Rights: Embeddedness as a Deep Structural Principle of the European Human Rights Regime"
+        },
+        {
+            "paperId": "538412f81be34660ada0fe3fad8f57c70fecfa73",
+            "title": "The New Legal Realism"
+        },
+        {
+            "paperId": "eda90bd43f4256986688e525b45b833a3addab97",
+            "title": "A tutorial on spectral clustering"
+        },
+        {
+            "paperId": "c042283a0490b7e1e734c05c4a1b52d0d352d53f",
+            "title": "Naturalizing Jurisprudence: Essays on American Legal Realism and Naturalism in Legal Philosophy"
+        },
+        {
+            "paperId": "9da756f18f73e123c220d326d59b09613d4f230a",
+            "title": "The Supreme Court and the Attitudinal Model Revisited"
+        },
+        {
+            "paperId": "e57bf5b7328f3ccbbe259eca6798cf0ae72cea85",
+            "title": "Taking a Case to the European Court of Human Rights"
+        },
+        {
+            "paperId": "2c4986b03ab15bdad01f808a6786bee01e3800a1",
+            "title": "Learning to classify text using support vector machines - methods, theory and algorithms"
+        },
+        {
+            "paperId": "3cd9107a83b568c12cb54c204ef8062d590e4b16",
+            "title": "Human Rights Fact-Finding"
+        },
+        {
+            "paperId": "01050632a67b568dddb710a796f2299b2c983450",
+            "title": "The puzzle of judicial behavior"
+        },
+        {
+            "paperId": "847c750d9a1e25df0b1ced137235f0fea094b8ca",
+            "title": "A Pragmatic Legal Expert System"
+        },
+        {
+            "paperId": "b60def3075f3c6ba8dbef7109b12d6aa168b7e7c",
+            "title": "Predicting Supreme Court Cases Probabilistically: The Search and Seizure Cases, 1962-1981"
+        },
+        {
+            "paperId": "d6fb07758b09a2b9495f42cdfbaa139af96645d7",
+            "title": "The Selection of Disputes for Litigation"
+        },
+        {
+            "paperId": "49af3e80343eb80c61e727ae0c27541628c7c5e2",
+            "title": "Introduction to Modern Information Retrieval"
+        },
+        {
+            "paperId": "d5f169880e30e1f76827d72f862555d00b01bed9",
+            "title": "A vector space model for automatic indexing"
+        },
+        {
+            "paperId": "ea15a18a7c6e07043ccda31a0982a0b6f529c95a",
+            "title": "Legal Formality"
+        },
+        {
+            "paperId": "cbb6d425b933031fb87c22fff550caf05cef0e88",
+            "title": "Predicting Supreme Court Decisions Mathematically: A Quantitative Analysis of the \u201cRight to Counsel\u201d Cases"
+        },
+        {
+            "paperId": "5ccb4f89cce3e2b27fe0ad7c515ce980447d2b7d",
+            "title": "THE UNIVERSITY OF CHICAGO LAW REVIEW"
+        },
+        {
+            "paperId": null,
+            "title": "Factsheet on life imprisonment"
+        },
+        {
+            "paperId": "14fb7c59e0379438db28ed30ee5d8f92e8fa22b2",
+            "title": "Predicting and Characterising User Impact on Twitter"
+        },
+        {
+            "paperId": "5d0b97efdb2e590f93ec5b81aa3eaa5e9b93296c",
+            "title": "The Margin of Appreciation: Interpretation and Discretion Under the European Convention on Human Rights"
+        },
+        {
+            "paperId": "b547e8927116f8a4816f83ddf9c5accf4810eeed",
+            "title": "Forms of Formalism"
+        },
+        {
+            "paperId": "010d79b8a74fad56afc4f148bdfcef24c3c7a610",
+            "title": "Legal Formalism, Legal Realism, and the Interpretation of Statutes and the Constitution"
+        },
+        {
+            "paperId": null,
+            "title": "Langdell\u2019s orthodoxy"
+        },
+        {
+            "paperId": null,
+            "title": "1980.Mathematical models for legal prediction"
+        },
+        {
+            "paperId": null,
+            "title": "1963.What computers can do: analysis and prediction of judicial decisions"
+        },
+        {
+            "paperId": null,
+            "title": "Applying correlation analysis to case prediction"
+        },
+        {
+            "paperId": "6c42af9bdff99512401ffc490329f3e7bcdab32e",
+            "title": "The Common Law Tradition: Deciding Appeals"
+        },
+        {
+            "paperId": null,
+            "title": "Mechanical Jurisprudence"
+        },
+        {
+            "paperId": null,
+            "title": "1908.Mechanical jurisprudence. Columbia Law Review 8(8):605\u2013623"
+        },
+        {
+            "paperId": "ed85f22490a33d236a94355c2f9ade55d779d756",
+            "title": "PREDICTION AND PARTICULARITY"
+        }
+    ]
+}

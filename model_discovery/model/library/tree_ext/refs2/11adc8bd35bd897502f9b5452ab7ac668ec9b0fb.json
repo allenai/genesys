@@ -1,0 +1,151 @@
+{
+    "paperId": "11adc8bd35bd897502f9b5452ab7ac668ec9b0fb",
+    "externalIds": {
+        "ArXiv": "1710.10345",
+        "DBLP": "journals/corr/abs-1710-10345",
+        "MAG": "2964084001",
+        "DOI": "10.5555/3291125.3309632",
+        "CorpusId": 3994909
+    },
+    "title": "The Implicit Bias of Gradient Descent on Separable Data",
+    "abstract": "We examine gradient descent on unregularized logistic regression problems, with homogeneous linear predictors on linearly separable datasets. We show the predictor converges to the direction of the max-margin (hard margin SVM) solution. The result also generalizes to other monotone decreasing loss functions with an infimum at infinity, to multi-class problems, and to training a weight layer in a deep network in a certain restricted setting. Furthermore, we show this convergence is very slow, and only logarithmic in the convergence of the loss itself. This can help explain the benefit of continuing to optimize the logistic or cross-entropy loss even after the training error is zero and the training loss is extremely small, and, as we show, even if the validation loss increases. Our methodology can also aid in understanding implicit regularization n more complex models and with other optimization methods.",
+    "venue": "Journal of machine learning research",
+    "year": 2017,
+    "referenceCount": 27,
+    "citationCount": 830,
+    "influentialCitationCount": 117,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": null
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1912398",
+            "name": "Daniel Soudry"
+        },
+        {
+            "authorId": "40555034",
+            "name": "Elad Hoffer"
+        },
+        {
+            "authorId": "3317356",
+            "name": "Suriya Gunasekar"
+        },
+        {
+            "authorId": "1706280",
+            "name": "N. Srebro"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "76c2679deb0b7689c658c199254963889d4d2b69",
+            "title": "The implicit bias of gradient descent on nonseparable data"
+        },
+        {
+            "paperId": "d8b477a120798e3c8983de485c1a8cff06ff33db",
+            "title": "Stochastic Gradient Descent on Separable Data: Exact Convergence with a Fixed Learning Rate"
+        },
+        {
+            "paperId": "67a97032fd3ad81cda45e1e5d4a1a7d851494525",
+            "title": "Implicit Bias of Gradient Descent on Linear Convolutional Networks"
+        },
+        {
+            "paperId": "4a5a17d7849b91a3af583c7b99403844e1a5cdb1",
+            "title": "Risk and parameter convergence of logistic regression"
+        },
+        {
+            "paperId": "59ef5569832b2fbb865466b3951ad0957537cd54",
+            "title": "Convergence of Gradient Descent on Separable Data"
+        },
+        {
+            "paperId": "33416f2dc49db24cca520a3b234f02463a4e833e",
+            "title": "Characterizing Implicit Bias in Terms of Optimization Geometry"
+        },
+        {
+            "paperId": "d53fb3feeeab07a0d70bf466dd473ec6052ecc07",
+            "title": "Exploring Generalization in Deep Learning"
+        },
+        {
+            "paperId": "4e8917e73e02c76d55ded62e43541d44684a4c8a",
+            "title": "Implicit Regularization in Matrix Factorization"
+        },
+        {
+            "paperId": "1ecc2bd0bc6ffa0a2f466a058589c20593e3e57c",
+            "title": "The Marginal Value of Adaptive Gradient Methods in Machine Learning"
+        },
+        {
+            "paperId": "8501e330d78391f4e690886a8eb8fac867704ea6",
+            "title": "Train longer, generalize better: closing the generalization gap in large batch training of neural networks"
+        },
+        {
+            "paperId": "54ddb00fa691728944fd8becea90a373d21597cf",
+            "title": "Understanding deep learning requires rethinking generalization"
+        },
+        {
+            "paperId": "d2e4147eecae6f914e9e1e9aece8fdd2eaed809f",
+            "title": "Quantized Neural Networks: Training Neural Networks with Low Precision Weights and Activations"
+        },
+        {
+            "paperId": "8ec5896b4490c6e127d1718ffc36a3439d84cb81",
+            "title": "On Large-Batch Training for Deep Learning: Generalization Gap and Sharp Minima"
+        },
+        {
+            "paperId": "0f7c85357c366b314b5b55c400869a62fd23372c",
+            "title": "Train faster, generalize better: Stability of stochastic gradient descent"
+        },
+        {
+            "paperId": "6fe02ad979baad659f04c3376a77dbb2cb4699a5",
+            "title": "Path-SGD: Path-Normalized Optimization in Deep Neural Networks"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "4b675d8f63888d7d6d7d77a0834efa5eaded64c5",
+            "title": "In Search of the Real Inductive Bias: On the Role of Implicit Regularization in Deep Learning"
+        },
+        {
+            "paperId": "2cf3142e55965c6dce7e3ee2f93d1fb2d5aba416",
+            "title": "Margins, Shrinkage, and Boosting"
+        },
+        {
+            "paperId": "413c1142de9d91804d6d11c67ff3fed59c9fc279",
+            "title": "Adaptive Subgradient Methods for Online Learning and Stochastic Optimization"
+        },
+        {
+            "paperId": "65311ed8bb113763b747ea4ac7baed97ef3623c3",
+            "title": "On the equivalence of weak learnability and linear separability: new relaxations and efficient boosting algorithms"
+        },
+        {
+            "paperId": "b0816b4f1fdf1ebc324663f66485e05d58cbd1a7",
+            "title": "Boosting with early stopping: Convergence and consistency"
+        },
+        {
+            "paperId": "f5616db9e1e377ef580bbe5c05b6e969b16dc222",
+            "title": "Boosting as a Regularized Path to a Maximum Margin Classifier"
+        },
+        {
+            "paperId": "f6d16b4db8779721715a00008ba03b5c67e4669c",
+            "title": "Margin Maximizing Loss Functions"
+        },
+        {
+            "paperId": "4d19272112b50547614479a0c409fca66e3b05f7",
+            "title": "Boosting the margin: A new explanation for the effectiveness of voting methods"
+        },
+        {
+            "paperId": null,
+            "title": "EE6151, Convex optimization algorithms"
+        },
+        {
+            "paperId": null,
+            "title": "Unconstrained minimization: Gradient descent algorithm"
+        },
+        {
+            "paperId": null,
+            "title": "0 10 1 10 2 10 3 10 4 10 5 t 10 0 10 1 10 2 10 3 10 4 10 5 t \u22123 \u22122 \u22121 0 1 2 3 x 1 Figure 4: Same as Fig. 1, except stochastic gradient decent is used (with mini-batch of size 4), instead of GD. 48"
+        }
+    ]
+}

@@ -1,0 +1,119 @@
+{
+    "paperId": "b5799525379e505234d727b01f8005f69a4d252d",
+    "externalIds": {
+        "MAG": "2950034379",
+        "ACL": "I17-1004",
+        "DBLP": "journals/corr/abs-1710-03348",
+        "ArXiv": "1710.03348",
+        "CorpusId": 2389139
+    },
+    "title": "What does Attention in Neural Machine Translation Pay Attention to?",
+    "abstract": "Attention in neural machine translation provides the possibility to encode relevant parts of the source sentence at each translation step. As a result, attention is considered to be an alignment model as well. However, there is no work that specifically studies attention and provides analysis of what is being learned by attention models. Thus, the question still remains that how attention is similar or different from the traditional alignment. In this paper, we provide detailed analysis of attention and compare it to traditional alignment. We answer the question of whether attention is only capable of modelling translational equivalent or it captures more information. We show that attention is different from alignment in some cases and is capturing useful information other than alignments.",
+    "venue": "International Joint Conference on Natural Language Processing",
+    "year": 2017,
+    "referenceCount": 21,
+    "citationCount": 97,
+    "influentialCitationCount": 8,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper answers the question of whether attention is only capable of modelling translational equivalent or it captures more information and shows that attention is different from alignment in some cases and is capturing useful information other than alignments."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2817643",
+            "name": "Hamidreza Ghader"
+        },
+        {
+            "authorId": "1696402",
+            "name": "Christof Monz"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "106d5e0cf44ea08500adc91c4d5bb3e6c8a4d627",
+            "title": "Six Challenges for Neural Machine Translation"
+        },
+        {
+            "paperId": "263210f256603e3b62476ffb5b9bbbbc6403b646",
+            "title": "What do Neural Machine Translation Models Learn about Morphology?"
+        },
+        {
+            "paperId": "d821ce08da6c0084d5eacbdf65e25556bc1b9bc3",
+            "title": "Does String-Based Neural MT Learn Source Syntax?"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "7f12bd8efc6791399abdc587a1ca4f52776e2b88",
+            "title": "Neural Machine Translation with Supervised Attention"
+        },
+        {
+            "paperId": "afd528af8df5e371a1282f0a05bdf68b4cb80fc2",
+            "title": "Guided Alignment Training for Topic-Aware Neural Machine Translation"
+        },
+        {
+            "paperId": "ada937c9f51316c6ac87f9d1d4509383d23e0c21",
+            "title": "Incorporating Structural Alignment Biases into an Attentional Neural Translation Model"
+        },
+        {
+            "paperId": "1518039b5001f1836565215eb047526b3ac7f462",
+            "title": "Neural Machine Translation of Rare Words with Subword Units"
+        },
+        {
+            "paperId": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+            "title": "Effective Approaches to Attention-based Neural Machine Translation"
+        },
+        {
+            "paperId": "1938624bb9b0f999536dcc8d8f519810bb4e1b3b",
+            "title": "On Using Very Large Target Vocabulary for Neural Machine Translation"
+        },
+        {
+            "paperId": "1956c239b3552e030db1b78951f64781101125ed",
+            "title": "Addressing the Rare Word Problem in Neural Machine Translation"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "86065cfb8c0052342d5ddc834ed76c7b4d7f5339",
+            "title": "Exploiting Synergies Between Open Resources for German Dependency Parsing, POS-tagging, and Morphological Analysis"
+        },
+        {
+            "paperId": "7b5e31257f01aba987f16e175a3e49e00a5bd3bb",
+            "title": "A Simple, Fast, and Effective Reparameterization of IBM Model 2"
+        },
+        {
+            "paperId": "d9674edc47fd41c27c0c6497c0e7d6bf1910d84e",
+            "title": "A Universal Part-of-Speech Tagset"
+        },
+        {
+            "paperId": "de2df29b0a0312de7270c3f5a0af6af5645cf91a",
+            "title": "A Systematic Comparison of Various Statistical Alignment Models"
+        },
+        {
+            "paperId": "d7da009f457917aa381619facfa5ffae9329a6e9",
+            "title": "Bleu: a Method for Automatic Evaluation of Machine Translation"
+        },
+        {
+            "paperId": "c9214ebe91454e6369720136ab7dd990d52a07d4",
+            "title": "Improved Statistical Alignment Models"
+        },
+        {
+            "paperId": "bff35c11ea7563131ce9c74b5bb30338ca717922",
+            "title": "Alignment-Based Neural Machine Translation"
+        },
+        {
+            "paperId": null,
+            "title": "7th International Joint Conference on Natural Language Processing (Volume 1: Long Papers)"
+        }
+    ]
+}

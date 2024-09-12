@@ -1,0 +1,267 @@
+{
+    "paperId": "1b443db0552343e4d02ad24112dc0667a12335a7",
+    "externalIds": {
+        "DBLP": "journals/tnn/BanerjeeG04",
+        "MAG": "2149521737",
+        "DOI": "10.1109/TNN.2004.824416",
+        "CorpusId": 2303304,
+        "PubMed": "15384557"
+    },
+    "title": "Frequency-sensitive competitive learning for scalable balanced clustering on high-dimensional hyperspheres",
+    "abstract": "Competitive learning mechanisms for clustering, in general, suffer from poor performance for very high-dimensional (>1000) data because of \"curse of dimensionality\" effects. In applications such as document clustering, it is customary to normalize the high-dimensional input vectors to unit length, and it is sometimes also desirable to obtain balanced clusters, i.e., clusters of comparable sizes. The spherical kmeans (spkmeans) algorithm, which normalizes the cluster centers as well as the inputs, has been successfully used to cluster normalized text documents in 2000+ dimensional space. Unfortunately, like regular kmeans and its soft expectation-maximization-based version, spkmeans tends to generate extremely imbalanced clusters in high-dimensional spaces when the desired number of clusters is large (tens or more). This paper first shows that the spkmeans algorithm can be derived from a certain maximum likelihood formulation using a mixture of von Mises-Fisher distributions as the generative model, and in fact, it can be considered as a batch-mode version of (normalized) competitive learning. The proposed generative model is then adapted in a principled way to yield three frequency-sensitive competitive learning variants that are applicable to static data and produced high-quality and well-balanced clusters for high-dimensional data. Like kmeans, each iteration is linear in the number of data points and in the number of clusters for all the three algorithms. A frequency-sensitive algorithm to cluster streaming data is also proposed. Experimental results on clustering of high-dimensional text data sets are provided to show the effectiveness and applicability of the proposed techniques.",
+    "venue": "IEEE Transactions on Neural Networks",
+    "year": 2004,
+    "referenceCount": 58,
+    "citationCount": 107,
+    "influentialCitationCount": 11,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper shows that the spkmeans algorithm can be derived from a certain maximum likelihood formulation using a mixture of von Mises-Fisher distributions as the generative model, and in fact, it can be considered as a batch-mode version of (normalized) competitive learning."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "144205696",
+            "name": "A. Banerjee"
+        },
+        {
+            "authorId": "34724702",
+            "name": "Joydeep Ghosh"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "4c75b748911ddcd888c5122f7672f69caa5d661f",
+            "title": "Statistical Learning Theory"
+        },
+        {
+            "paperId": "7dbdb4209626fd92d2436a058663206216036e68",
+            "title": "Elements of Information Theory"
+        },
+        {
+            "paperId": "99d3f99514e3c6284b2094acf9a0eeded51759b8",
+            "title": "Relationship-Based Clustering and Visualization for High-Dimensional Data Mining"
+        },
+        {
+            "paperId": "ccd64c17c811d0d60672ac1a4a4bbb222debfa5d",
+            "title": "The Management of Context-Sensitive Features: A Review of Strategies"
+        },
+        {
+            "paperId": "d899da3b799f5b0d8a9512ef7ec97f7e749e3887",
+            "title": "Frequency sensitive competitive learning for clustering on high-dimensional hyperspheres"
+        },
+        {
+            "paperId": "f4f3a10d96e0b6d134e7e347e1727b7438d4006f",
+            "title": "Semi-supervised Clustering by Seeding"
+        },
+        {
+            "paperId": "621c2bd43c1ba86ca12bd44a27b5062db5a87f8f",
+            "title": "Self-splitting competitive learning: a new on-line clustering paradigm"
+        },
+        {
+            "paperId": "36e2130daa0a2837264eb36893fdb4096dc88ef6",
+            "title": "Clustering Based on Conditional Distributions in an Auxiliary Space"
+        },
+        {
+            "paperId": "05357314fe2da7c2248b03d89b7ab9e358cbf01e",
+            "title": "Learning with Kernels: support vector machines, regularization, optimization, and beyond"
+        },
+        {
+            "paperId": "5b66b1c65dcb97d1d0b18014e2e32e8522e66932",
+            "title": "Mining time-changing data streams"
+        },
+        {
+            "paperId": "5eb75ac359fbd32c378a783741d7543186fe58d8",
+            "title": "Clustering data streams"
+        },
+        {
+            "paperId": "ecadeb93378d7911c2f7b9bd83a8af55d7fa9e06",
+            "title": "Constrained K-Means Clustering"
+        },
+        {
+            "paperId": "76b68dd26e0e2cabcbd376deb76e998eeb323d7a",
+            "title": "A sublinear time approximation scheme for clustering in metric spaces"
+        },
+        {
+            "paperId": "ec14579225241e95ae691562a9cec3d86de1f054",
+            "title": "The platform for privacy preferences"
+        },
+        {
+            "paperId": "e45c2420e6dc59ba6d357fb0c996ebf43c861560",
+            "title": "Exploiting Generative Models in Discriminative Classifiers"
+        },
+        {
+            "paperId": "4ce8bc485df9ac987f18d99c7af1d95f9cbea6b2",
+            "title": "Deterministic annealing for clustering, compression, classification, regression, and related optimization problems"
+        },
+        {
+            "paperId": "dddd774bc73acf5ed3d360e291b3265bf069b8b9",
+            "title": "An Experimental Comparison of Several Clustering and Initialization Methods"
+        },
+        {
+            "paperId": "9f87a11a523e4680e61966e36ea2eac516096f23",
+            "title": "A View of the Em Algorithm that Justifies Incremental, Sparse, and other Variants"
+        },
+        {
+            "paperId": "0e08260df8ecfd084293efd8bd516eca9e7c1a1c",
+            "title": "Use of localized gating in mixture of experts networks"
+        },
+        {
+            "paperId": "6ecb68885ba2a9db2bf5b30a9b7a8cca03c5f265",
+            "title": "Diffusion approximation of frequency sensitive competitive learning"
+        },
+        {
+            "paperId": "c4c631b245971eb5fde9cbd6d3575e4ac4e41c49",
+            "title": "An Information-Theoretic Analysis of Hard and Soft Assignment Methods for Clustering"
+        },
+        {
+            "paperId": "c073564b48dd5671284d7ade46e78c49fabd6577",
+            "title": "Habituation based neural networks for spatio-temporal classification"
+        },
+        {
+            "paperId": "62f4d89a3c1441b47170c7e1380137fb388d0799",
+            "title": "Modeling the manifolds of images of handwritten digits"
+        },
+        {
+            "paperId": "2f3876251cc2f03a06190ef0a47544042da416aa",
+            "title": "Clustering Sequences with Hidden Markov Models"
+        },
+        {
+            "paperId": "e96d22faa4a167a6f7cb8ea4e3aa5bb2ca117bf7",
+            "title": "Codeword distribution for frequency sensitive competitive learning with one-dimensional input data"
+        },
+        {
+            "paperId": "e5e3902768b29e3dd058e48caa36e3e8f74b7fb7",
+            "title": "Reversible jump Markov chain Monte Carlo computation and Bayesian model determination"
+        },
+        {
+            "paperId": "1210f40af80dc660dc9acf11cad3226ac805f948",
+            "title": "An analysis of the gamma memory in dynamic neural networks"
+        },
+        {
+            "paperId": "1b52f9413fea90069a305ba98dd0566b47a7d609",
+            "title": "The Future of Time Series: Learning and Understanding"
+        },
+        {
+            "paperId": "38e32ba4311f4cf5a133b919baaa8c33fc7ecbdc",
+            "title": "A neural network approach to statistical pattern classification by 'semiparametric' estimation of probability density functions"
+        },
+        {
+            "paperId": "63f5a3a89a94fd1c672317f816cc49bdbdb0697d",
+            "title": "30 years of adaptive neural networks: perceptron, Madaline, and backpropagation"
+        },
+        {
+            "paperId": "c3da7bdcbf7cba94ce64abc3aff0f9b947a5cab9",
+            "title": "Competitive learning algorithms for vector quantization"
+        },
+        {
+            "paperId": "a03c9127dc782129a793d731fe73f33a7a844ad8",
+            "title": "Adding a conscience to competitive learning"
+        },
+        {
+            "paperId": "8684d6daae039c76a48146c768d01550b64b2f1f",
+            "title": "Neural networks that learn temporal sequences by selection."
+        },
+        {
+            "paperId": "bb4bad84a2fd896edfa4f5c22061b2913fec500d",
+            "title": "Feature Discovery by Competive Learning"
+        },
+        {
+            "paperId": "37e44d1de8003d8394d158ec6afd1ff0e87e595b",
+            "title": "Estimating the Dimension of a Model"
+        },
+        {
+            "paperId": "d36efb9ad91e00faa334b549ce989bfae7e2907a",
+            "title": "Maximum likelihood from incomplete data via the EM - algorithm plus discussions on the paper"
+        },
+        {
+            "paperId": "495bbf69d338e33c3217c272da9eb4fec0a66212",
+            "title": "Adaptive pattern classification and universal recoding: I. Parallel development and coding of neural feature detectors"
+        },
+        {
+            "paperId": "50a42ed2f81b9fe150883a6c89194c88a9647106",
+            "title": "A new look at the statistical model identification"
+        },
+        {
+            "paperId": "f059510bc8c276587cc50b984b5f0d0897719c58",
+            "title": "Statistics of Directional Data"
+        },
+        {
+            "paperId": "155d81d9f764de34c7234f0e3dc37a5bd297edee",
+            "title": "Concept Decompositions for Large Sparse Text Data Using Clustering"
+        },
+        {
+            "paperId": null,
+            "title": "Clustering on Hyperspheres Using Expectation Maximization Department of Computer Sciences"
+        },
+        {
+            "paperId": null,
+            "title": "Scalable clustering, \" in The Handbook of Data Mining"
+        },
+        {
+            "paperId": "939c8053f190c5bcfc6b7d4b15c8f09a6b6cfeff",
+            "title": "On Scaling Up Balanced Clustering Algorithms"
+        },
+        {
+            "paperId": "5f4ef51ae312a815db6946751219bdcfee443d45",
+            "title": "Detecting Seasonal Trends and Cluster Motion Visualization for Very High Dimensional Transactional Data"
+        },
+        {
+            "paperId": "764fb39acf057b52f9e1221f630e701ff56ea3b9",
+            "title": "Efficient Clustering of Very Large Document Collections"
+        },
+        {
+            "paperId": "1b7df0c67df8ce681d7c36dd9d9424a91514db64",
+            "title": "A Unified Model for Probabilistic Principal Surfaces"
+        },
+        {
+            "paperId": "e20ad680666a4e02a1b0a99d0b6c974f7390bc64",
+            "title": "Impact of Similarity Measures on Web-page Clustering"
+        },
+        {
+            "paperId": "8948ed4d2866da6c47120210b6adf981159164f2",
+            "title": "Structurally adaptive modular networks for nonstationary environments"
+        },
+        {
+            "paperId": null,
+            "title": "Modern Information Retrieval"
+        },
+        {
+            "paperId": "56931d2df145459fa60b2e7863afbf06a4230a5a",
+            "title": "On the Use of Localized Gating in Mixture of ExpertsNetworks"
+        },
+        {
+            "paperId": "7c5a3401299fe9b98731f92e52e4208164ff9a78",
+            "title": "A habituation based neural network for spatio-temporal classification"
+        },
+        {
+            "paperId": "934a841acb7fa0dde3c2f8968d0fb810224cd850",
+            "title": "An Overview of Predictive Learning and Function Approximation"
+        },
+        {
+            "paperId": "6b13011ff172b1f6321a4de018e841733565f671",
+            "title": "Fuzzy models for pattern recognition"
+        },
+        {
+            "paperId": "b027d77a20e713e7244db0f92e73dc5370e94a82",
+            "title": "Entropy optimization principles with applications"
+        },
+        {
+            "paperId": "aa4bddbd10eafd8e1b54338517eedfee408f03ae",
+            "title": "Algorithms for Clustering Data"
+        },
+        {
+            "paperId": "5aca8d0b21dd0b05191100f2f345bdc7bb1f2fe9",
+            "title": "Cortical dynamics of three-dimensional form, color, and brightness perception: I. Monocular theory"
+        },
+        {
+            "paperId": "58fa32e606158cf99f0ca641f5d96e6ff8e17478",
+            "title": "Adaptive Signal Processing"
+        },
+        {
+            "paperId": "3d438966ad4c51d38e87fac7d4c4475837a5e8f3",
+            "title": "Bessel Functions for Engineers"
+        }
+    ]
+}

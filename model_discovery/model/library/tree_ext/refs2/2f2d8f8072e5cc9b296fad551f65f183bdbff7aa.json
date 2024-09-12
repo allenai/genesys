@@ -1,0 +1,262 @@
+{
+    "paperId": "2f2d8f8072e5cc9b296fad551f65f183bdbff7aa",
+    "externalIds": {
+        "DBLP": "journals/corr/JozefowiczVSSW16",
+        "ArXiv": "1602.02410",
+        "MAG": "2259472270",
+        "CorpusId": 260422
+    },
+    "title": "Exploring the Limits of Language Modeling",
+    "abstract": "In this work we explore recent advances in Recurrent Neural Networks for large scale Language Modeling, a task central to language understanding. We extend current models to deal with two key challenges present in this task: corpora and vocabulary sizes, and complex, long term structure of language. We perform an exhaustive study on techniques such as character Convolutional Neural Networks or Long-Short Term Memory, on the One Billion Word Benchmark. Our best single model significantly improves state-of-the-art perplexity from 51.3 down to 30.0 (whilst reducing the number of parameters by a factor of 20), while an ensemble of models sets a new record by improving perplexity from 41.0 down to 23.7. We also release these models for the NLP and ML community to study and improve upon.",
+    "venue": "arXiv.org",
+    "year": 2016,
+    "referenceCount": 54,
+    "citationCount": 1102,
+    "influentialCitationCount": 118,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work explores recent advances in Recurrent Neural Networks for large scale Language Modeling, and extends current models to deal with two key challenges present in this task: corpora and vocabulary sizes, and complex, long term structure of language."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1944541",
+            "name": "R. J\u00f3zefowicz"
+        },
+        {
+            "authorId": "1689108",
+            "name": "O. Vinyals"
+        },
+        {
+            "authorId": "144927151",
+            "name": "M. Schuster"
+        },
+        {
+            "authorId": "1846258",
+            "name": "Noam M. Shazeer"
+        },
+        {
+            "authorId": "48607963",
+            "name": "Yonghui Wu"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "4dabd6182ce2681c758f654561d351739e8df7bf",
+            "title": "Multilingual Language Processing From Bytes"
+        },
+        {
+            "paperId": "12a5b7190b981bf478b4c9c04d3c0d41f13b9023",
+            "title": "BlackOut: Speeding up Recurrent Neural Network Language Models With Very Large Vocabularies"
+        },
+        {
+            "paperId": "961073143d3cfe662e9e820d24c0a88f0ae94c83",
+            "title": "Document Context Language Models"
+        },
+        {
+            "paperId": "722e01d5ba05083f7a091f3188cfdfcf183a325d",
+            "title": "Larger-Context Language Modelling with Recurrent Neural Network"
+        },
+        {
+            "paperId": "1ac30af5522c7a50ec4d1ee43fd2bd8652a9bd52",
+            "title": "A Neural Attention Model for Abstractive Sentence Summarization"
+        },
+        {
+            "paperId": "3566c944bd71468d38872e67e441f493715233de",
+            "title": "Sparse Non-negative Matrix Language Modeling"
+        },
+        {
+            "paperId": "b064b714107ffc724e0d477f4083e9e507c22fec",
+            "title": "Sentence Compression by Deletion with LSTMs"
+        },
+        {
+            "paperId": "891ce1687e2befddd19f54e4eef1d3f39c8dbaf7",
+            "title": "Character-Aware Neural Language Models"
+        },
+        {
+            "paperId": "6dab1c6491929d396e9e5463bc2e87af88602aa2",
+            "title": "Finding Function in Form: Compositional Character Models for Open Vocabulary Word Representation"
+        },
+        {
+            "paperId": "96526726f87233fb017f6ea9483090f04e0f0530",
+            "title": "Improved Transition-based Parsing by Modeling Characters instead of Words with LSTMs"
+        },
+        {
+            "paperId": "b92aa7024b87f50737b372e5df31ef091ab54e62",
+            "title": "Training Very Deep Networks"
+        },
+        {
+            "paperId": "7df22e88a86d7e7e914a9cf3ad5b8fbd62b35cb8",
+            "title": "Hierarchical Neural Network Generative Models for Movie Dialogues"
+        },
+        {
+            "paperId": "5b8364c21155d3d2cd38ea4c8b8580beba9a3250",
+            "title": "An Empirical Exploration of Recurrent Network Architectures"
+        },
+        {
+            "paperId": "86311b182786bfde19446f6ded0854de973d4060",
+            "title": "A Neural Conversational Model"
+        },
+        {
+            "paperId": "829510ad6f975c939d589eeb01a3cf6fc6c8ce4d",
+            "title": "Unsupervised Learning of Video Representations using LSTMs"
+        },
+        {
+            "paperId": "ac973bbfd62a902d073a85ca621fd297e8660a82",
+            "title": "Scaling recurrent neural network language models"
+        },
+        {
+            "paperId": "757f517f1952addc1716ea56f912f2e4a2803f7a",
+            "title": "Efficient Exact Gradient Update for training Deep Networks with Very Large Sparse Targets"
+        },
+        {
+            "paperId": "1956c239b3552e030db1b78951f64781101125ed",
+            "title": "Addressing the Rare Word Problem in Neural Machine Translation"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "f264e8b33c0d49a692a6ce2c4bcb28588aeb7d97",
+            "title": "Recurrent Neural Network Regularization"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "27725a2d2a8cee9bf9fffc6c2167017103aba0fa",
+            "title": "A Convolutional Neural Network for Modelling Sentences"
+        },
+        {
+            "paperId": "5d833331b0e22ff359db05c62a8bca18c4f04b68",
+            "title": "One billion word benchmark for measuring progress in statistical language modeling"
+        },
+        {
+            "paperId": "53ca064b9f1b92951c1997e90b776e95b0880e52",
+            "title": "Learning word embeddings efficiently with noise-contrastive estimation"
+        },
+        {
+            "paperId": "71480da09af638260801af1db8eff6acb4e1122f",
+            "title": "Decoding with Large-Scale Neural Language Models Improves Translation"
+        },
+        {
+            "paperId": "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17",
+            "title": "Generating Sequences With Recurrent Neural Networks"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "d1275b2a2ab53013310e759e5c6878b96df643d4",
+            "title": "Context dependent recurrent neural network language model"
+        },
+        {
+            "paperId": "84069287da0a6b488b8c933f3cb5be759cb6237e",
+            "title": "On the difficulty of training recurrent neural networks"
+        },
+        {
+            "paperId": "a17745f1d7045636577bcd5d513620df5860e9e5",
+            "title": "Deep Neural Network Language Models"
+        },
+        {
+            "paperId": "e1f27c00ead87b2bde0e1a4ef732677dd9b989ff",
+            "title": "Large, Pruned or Continuous Space Language Models on a GPU for Statistical Machine Translation"
+        },
+        {
+            "paperId": "77dfe038a9bdab27c4505444931eaa976e9ec667",
+            "title": "Empirical Evaluation and Combination of Advanced Language Modeling Techniques"
+        },
+        {
+            "paperId": "93c20e38c85b69fc2d2eb314b3c1217913f7db11",
+            "title": "Generating Text with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "e3ce36b9deb47aa6bb2aa19c4bfa71283b505025",
+            "title": "Noise-contrastive estimation: A new estimation principle for unnormalized statistical models"
+        },
+        {
+            "paperId": "d2c733e34d48784a37d717fe43d9e93277a8c53e",
+            "title": "ImageNet: A large-scale hierarchical image database"
+        },
+        {
+            "paperId": "a9fc84f8abe740cdc7ee82e69444d1d00dbe0ceb",
+            "title": "A Scalable Hierarchical Distributed Language Model"
+        },
+        {
+            "paperId": "699d5ab38deee78b1fd17cc8ad233c74196d16e9",
+            "title": "Adaptive Importance Sampling to Accelerate Training of a Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "5536d42ce80e129be8cae172ed1b7659c769d31d",
+            "title": "2005 Special Issue: Framewise phoneme classification with bidirectional LSTM and other neural network architectures"
+        },
+        {
+            "paperId": "11540131eae85b2e11d53df7f1360eeb6476e7f4",
+            "title": "Learning to Forget: Continual Prediction with LSTM"
+        },
+        {
+            "paperId": "e23c34414e66118ecd9b08cf0cd4d016f59b0b85",
+            "title": "Bidirectional recurrent neural networks"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "9548ac30c113562a51e603dbbc8e9fa651cfd3ab",
+            "title": "Improved backing-off for M-gram language modeling"
+        },
+        {
+            "paperId": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+            "title": "Building a Large Annotated Corpus of English: The Penn Treebank"
+        },
+        {
+            "paperId": "2ae5a5507253aa3cada113d41d35fada1e84555f",
+            "title": "An Efficient Gradient-Based Algorithm for On-Line Training of Recurrent Network Trajectories"
+        },
+        {
+            "paperId": null,
+            "title": "TensorFlow: Large-scale machine learning on heterogeneous systems"
+        },
+        {
+            "paperId": "067e07b725ab012c80aa2f87857f6791c1407f6d",
+            "title": "Long short-term memory recurrent neural network architectures for large scale acoustic modeling"
+        },
+        {
+            "paperId": "5d5d4f49d6443c8529a6f5ebef5c499d47a869da",
+            "title": "Improving Neural Networks with Dropout"
+        },
+        {
+            "paperId": "96364af2d208ea75ca3aeb71892d2f7ce7326b55",
+            "title": "Statistical Language Models Based on Neural Networks"
+        },
+        {
+            "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+            "title": "Recurrent neural network based language model"
+        },
+        {
+            "paperId": "5eb1a272f9933a11d113cf63fe659e073942bce5",
+            "title": "Neural Probabilistic Language Models"
+        },
+        {
+            "paperId": "c19fbefdeead6a4154a22a9c8551a18b1530033a",
+            "title": "Hierarchical Probabilistic Neural Network Language Model"
+        },
+        {
+            "paperId": "6b388f0151ab37adb3d57738b8f52a3f943f86c8",
+            "title": "Quick Training of Probabilistic Neural Nets by Importance Sampling"
+        },
+        {
+            "paperId": "86ab4cae682fbd49c5a5bedb630e5a40fa7529f6",
+            "title": "Handwritten Digit Recognition with a Back-Propagation Network"
+        },
+        {
+            "paperId": null,
+            "title": "with very large vocabularies. CoRR, abs/1511"
+        }
+    ]
+}

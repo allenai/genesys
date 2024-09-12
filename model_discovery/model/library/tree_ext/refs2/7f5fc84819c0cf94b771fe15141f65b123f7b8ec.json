@@ -1,0 +1,194 @@
+{
+    "paperId": "7f5fc84819c0cf94b771fe15141f65b123f7b8ec",
+    "externalIds": {
+        "ArXiv": "1511.07122",
+        "MAG": "2949927980",
+        "DBLP": "journals/corr/YuK15",
+        "CorpusId": 17127188
+    },
+    "title": "Multi-Scale Context Aggregation by Dilated Convolutions",
+    "abstract": "State-of-the-art models for semantic segmentation are based on adaptations of convolutional networks that had originally been designed for image classification. However, dense prediction and image classification are structurally different. In this work, we develop a new convolutional network module that is specifically designed for dense prediction. The presented module uses dilated convolutions to systematically aggregate multi-scale contextual information without losing resolution. The architecture is based on the fact that dilated convolutions support exponential expansion of the receptive field without loss of resolution or coverage. We show that the presented context module increases the accuracy of state-of-the-art semantic segmentation systems. In addition, we examine the adaptation of image classification networks to dense prediction and show that simplifying the adapted network can increase accuracy.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2015,
+    "referenceCount": 40,
+    "citationCount": 7859,
+    "influentialCitationCount": 469,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work develops a new convolutional network module that is specifically designed for dense prediction, and shows that the presented context module increases the accuracy of state-of-the-art semantic segmentation systems."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1807197",
+            "name": "F. Yu"
+        },
+        {
+            "authorId": "145231047",
+            "name": "V. Koltun"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "3c7e3f96533125d5bc52615b6ee3c4f277395f26",
+            "title": "Feature Space Optimization for Semantic Video Segmentation"
+        },
+        {
+            "paperId": "c8c494ee5488fe20e0aa01bddf3fc4632086d654",
+            "title": "The Cityscapes Dataset for Semantic Urban Scene Understanding"
+        },
+        {
+            "paperId": "9f48616039cb21903132528c0be5348b3019db50",
+            "title": "Attention to Scale: Scale-Aware Semantic Image Segmentation"
+        },
+        {
+            "paperId": "4f00cdc90a1e91da5fb7e8d778862acb4547a63d",
+            "title": "Multiclass semantic video segmentation with object-level active inference"
+        },
+        {
+            "paperId": "6f9f143ec602aac743e07d092165b708fa8f1473",
+            "title": "SegNet: A Deep Convolutional Encoder-Decoder Architecture for Robust Semantic Pixel-Wise Labelling"
+        },
+        {
+            "paperId": "cf986bfe13a24d4739f95df3a856a3c6e4ed4c1c",
+            "title": "Learning Deconvolution Network for Semantic Segmentation"
+        },
+        {
+            "paperId": "4cef5476f9da50c1a8fefdcb7114863966f61d67",
+            "title": "Efficient Piecewise Training of Deep Structured Models for Semantic Segmentation"
+        },
+        {
+            "paperId": "d46b81707786d18499f911b4ab72bb10c65406ba",
+            "title": "A Simple Way to Initialize Recurrent Networks of Rectified Linear Units"
+        },
+        {
+            "paperId": "ca5c766b2d31a1f5ce8896a0a42b40a2bff9323a",
+            "title": "Conditional Random Fields as Recurrent Neural Networks"
+        },
+        {
+            "paperId": "24efb327f1154965f12915f0a6c483594d2b5e06",
+            "title": "Vision-Based Offline-Online Perception Paradigm for Autonomous Driving"
+        },
+        {
+            "paperId": "39ad6c911f3351a3b390130a6e4265355b4d593b",
+            "title": "Semantic Image Segmentation with Deep Convolutional Nets and Fully Connected CRFs"
+        },
+        {
+            "paperId": "6fc6803df5f9ae505cae5b2f178ade4062c768d0",
+            "title": "Fully convolutional networks for semantic segmentation"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "6bdb186ec4726e00a8051119636d4df3b94043b5",
+            "title": "Caffe: Convolutional Architecture for Fast Feature Embedding"
+        },
+        {
+            "paperId": "71b7178df5d2b112d07e45038cb5637208659ff7",
+            "title": "Microsoft COCO: Common Objects in Context"
+        },
+        {
+            "paperId": "79b949d9b35c3f51dd20fb5c746cc81fc87147eb",
+            "title": "Vision meets robotics: The KITTI dataset"
+        },
+        {
+            "paperId": "237a04dd8291cbdb59b6dc4b53e689af743fe2a3",
+            "title": "Learning Hierarchical Features for Scene Labeling"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "bd5fc28c7356915ec71abafbe86b7596c60720aa",
+            "title": "The conference paper"
+        },
+        {
+            "paperId": "c81c20109c809cfc47565a9477c04ee005d424bf",
+            "title": "Efficient Inference in Fully Connected CRFs with Gaussian Edge Potentials"
+        },
+        {
+            "paperId": "82fae97673a353271b1d4c001afda1af6ef6dc23",
+            "title": "Semantic contours from inverse detectors"
+        },
+        {
+            "paperId": "914f6db28db0de5f439e891dac38f09bbdc5a452",
+            "title": "Superparsing"
+        },
+        {
+            "paperId": "155f50770f43b7e52c85583a0a2d552f5b21cb81",
+            "title": "Context based object categorization: A critical survey"
+        },
+        {
+            "paperId": "3a9b175324ba11bc0e16c0633912d897b2fac4e2",
+            "title": "The Pascal Visual Object Classes (VOC) Challenge"
+        },
+        {
+            "paperId": "ea9d2a2b4ce11aaf85136840c65f3bc9c03ab649",
+            "title": "Understanding the difficulty of training deep feedforward neural networks"
+        },
+        {
+            "paperId": "5e796ec9be0009b8f6ae7b1ccba1c9c055328d14",
+            "title": "Associative hierarchical CRFs for object class image segmentation"
+        },
+        {
+            "paperId": "e03bbca03dc10c4dfb10eca7439aa1a19233aa5a",
+            "title": "Semantic object classes in video: A high-definition ground truth database"
+        },
+        {
+            "paperId": "87073fd45685b78cb5a68e5eae331d88f2a2be63",
+            "title": "Robust Higher Order Potentials for Enforcing Label Consistency"
+        },
+        {
+            "paperId": "363b56f85e12389017ba8894056a1b309e46a5f7",
+            "title": "Multiscale conditional random fields for image labeling"
+        },
+        {
+            "paperId": "ca7a7b68935c38e52749cb4028ad941d068635da",
+            "title": "The discrete wavelet transform: wedding the a trous and Mallat algorithms"
+        },
+        {
+            "paperId": "8944a3b8b385df07fe7da2d5d08938e2afeeeee2",
+            "title": "Wavelets: Time-Frequency Methods and Phase Space"
+        },
+        {
+            "paperId": "a8e8f3c8d4418c8d62e306538c9c1292635e9d27",
+            "title": "Backpropagation Applied to Handwritten Zip Code Recognition"
+        },
+        {
+            "paperId": "052b1d8ce63b07fec3de9dbb583772d860b7c769",
+            "title": "Learning representations by back-propagating errors"
+        },
+        {
+            "paperId": "bcd857d75841aa3e92cd4284a8818aba9f6c0c3f",
+            "title": "Published as a conference paper at ICLR 2018 S IMULATING A CTION D YNAMICS WITH N EURAL P ROCESS N ETWORKS"
+        },
+        {
+            "paperId": null,
+            "title": "Results on the CamVid test set are reported in Table 5. We refer to our complete convolutional network (front-end + context) as Dilation8, since the context module has 8 layers"
+        },
+        {
+            "paperId": null,
+            "title": "We use the training and validation"
+        },
+        {
+            "paperId": null,
+            "title": "Semantic image labeling via deep parsing network"
+        },
+        {
+            "paperId": "114b34fd2a2a2acd4a968cbaeb5e0d2251fb2835",
+            "title": "Combining Appearance and Structure from Motion Features for Road Scene Understanding"
+        },
+        {
+            "paperId": "0d1bfcdfc90e662defd26b8b0deae6ef6e661b23",
+            "title": "TextonBoost for Image Understanding: Multi-Class Object Recognition and Segmentation by Jointly Modeling Texture, Layout, and Context"
+        },
+        {
+            "paperId": "ef3ed634a28eee78a7e31fc525cf7083e6689345",
+            "title": "A real-time algorithm for signal analysis with the help of the wavelet transform"
+        }
+    ]
+}

@@ -1,0 +1,158 @@
+{
+    "paperId": "d3707cf521e3596313af1f53acba6413d0d528a6",
+    "externalIds": {
+        "DBLP": "journals/corr/abs-1804-00247",
+        "ArXiv": "1804.00247",
+        "MAG": "2796108585",
+        "DOI": "10.2478/pralin-2018-0002",
+        "CorpusId": 4556964
+    },
+    "title": "Training Tips for the Transformer Model",
+    "abstract": "Abstract This article describes our experiments in neural machine translation using the recent Tensor2Tensor framework and the Transformer sequence-to-sequence model (Vaswani et al., 2017). We examine some of the critical parameters that affect the final translation quality, memory usage, training stability and training time, concluding each experiment with a set of recommendations for fellow researchers. In addition to confirming the general mantra \u201cmore data and larger models\u201d, we address scaling to multiple GPUs and provide practical tips for improved training regarding batch size, learning rate, warmup steps, maximum sentence length and checkpoint averaging. We hope that our observations will allow others to get better results given their particular hardware and data constraints.",
+    "venue": "Prague Bulletin of Mathematical Linguistics",
+    "year": 2018,
+    "referenceCount": 30,
+    "citationCount": 288,
+    "influentialCitationCount": 18,
+    "openAccessPdf": {
+        "url": "https://content.sciendo.com/downloadpdf/journals/pralin/110/1/article-p43.pdf",
+        "status": "GOLD"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The experiments in neural machine translation using the recent Tensor2Tensor framework and the Transformer sequence-to-sequence model are described, confirming the general mantra \u201cmore data and larger models\u201d."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3209310",
+            "name": "M. Popel"
+        },
+        {
+            "authorId": "143832874",
+            "name": "Ondrej Bojar"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "54a13bcc9613dcaa76fb25fbe96572f376cfcca9",
+            "title": "Adafactor: Adaptive Learning Rates with Sublinear Memory Cost"
+        },
+        {
+            "paperId": "f9e6af73d33e7aac3f349bef927fcd666e8e00db",
+            "title": "Three Factors Influencing Minima in SGD"
+        },
+        {
+            "paperId": "3299aee7a354877e43339d06abb967af2be8b872",
+            "title": "Don't Decay the Learning Rate, Increase the Batch Size"
+        },
+        {
+            "paperId": "ae4b0b63ff26e52792be7f60bda3ed5db83c1577",
+            "title": "A Bayesian Perspective on Generalization and Stochastic Gradient Descent"
+        },
+        {
+            "paperId": "dc4b3112000e151583da2532b63e0b1e59cbff8a",
+            "title": "Results of the WMT17 Metrics Shared Task"
+        },
+        {
+            "paperId": "704aa23d0be8817dd0aa2d4794068fc167243b85",
+            "title": "Findings of the 2017 Conference on Machine Translation (WMT17)"
+        },
+        {
+            "paperId": "e6e64043c66b83a8787a69a70d7c0a85fd9d23c3",
+            "title": "Scaling SGD Batch Size to 32K for ImageNet Training"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "0d57ba12a6d958e178d83be4c84513f7e42b24e5",
+            "title": "Accurate, Large Minibatch SGD: Training ImageNet in 1 Hour"
+        },
+        {
+            "paperId": "8501e330d78391f4e690886a8eb8fac867704ea6",
+            "title": "Train longer, generalize better: closing the generalization gap in large batch training of neural networks"
+        },
+        {
+            "paperId": "b8bc86a1bc281b15ce45e967cbdd045bcf23a952",
+            "title": "Fully Character-Level Neural Machine Translation without Explicit Segmentation"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "8ec5896b4490c6e127d1718ffc36a3439d84cb81",
+            "title": "On Large-Batch Training for Deep Learning: Generalization Gap and Sharp Minima"
+        },
+        {
+            "paperId": "18080d9c8544656c50e4dc388118dabd19dcf95a",
+            "title": "CzEng 1.6: Enlarged Czech-English Parallel Corpus with Processing Tools Dockered"
+        },
+        {
+            "paperId": "97fb4e3d45bb098e27e0071448b6152217bd35a5",
+            "title": "Layer Normalization"
+        },
+        {
+            "paperId": "d21703674ae562bae4a849a75847cdd9ead417df",
+            "title": "Optimization Methods for Large-Scale Machine Learning"
+        },
+        {
+            "paperId": "285c165c81fc9275955147a892b9a039ec8b1052",
+            "title": "chrF: character n-gram F-score for automatic MT evaluation"
+        },
+        {
+            "paperId": "1518039b5001f1836565215eb047526b3ac7f462",
+            "title": "Neural Machine Translation of Rare Words with Subword Units"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "80d800dfadbe2e6c7b2367d9229cc82912d55889",
+            "title": "One weird trick for parallelizing convolutional neural networks"
+        },
+        {
+            "paperId": "62563ffee9396a2601b2293690e6498545817210",
+            "title": "The Joy of Parallelism with CzEng 1.0"
+        },
+        {
+            "paperId": "d7da009f457917aa381619facfa5ffae9329a6e9",
+            "title": "Bleu: a Method for Automatic Evaluation of Machine Translation"
+        },
+        {
+            "paperId": "cb0ab255c4079e2082ba6e3a807529527d96687c",
+            "title": "Overview of the IWSLT 2017 Evaluation Campaign"
+        },
+        {
+            "paperId": "8a7e4164d954eb55617362dcb18ca1359b4b753b",
+            "title": "Stochastic Gradient Descent Tricks"
+        },
+        {
+            "paperId": null,
+            "title": "Translation quality is an automatic estimate of how well the translation carried out by a particular \ufb01xed model expresses the meaning of the source"
+        },
+        {
+            "paperId": null,
+            "title": "Training Steps denote the number of iterations, i.e. the number of times the optimizer update was run"
+        },
+        {
+            "paperId": null,
+            "title": "Time Till Score is the training time needed to achieve a certain level of translation quality"
+        },
+        {
+            "paperId": null,
+            "title": "Convergence Speed or BLEU Convergence is the increase in BLEU divided by time"
+        },
+        {
+            "paperId": null,
+            "title": "Effective Batch Size is the number of training examples consumed in one training step"
+        }
+    ]
+}

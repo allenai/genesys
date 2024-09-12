@@ -1,0 +1,218 @@
+{
+    "paperId": "5522764282c85aea422f1c4dc92ff7e0ca6987bc",
+    "externalIds": {
+        "ArXiv": "1402.3511",
+        "DBLP": "journals/corr/KoutnikGGS14",
+        "MAG": "2952276042",
+        "CorpusId": 14936429
+    },
+    "title": "A Clockwork RNN",
+    "abstract": "Sequence prediction and classification are ubiquitous and challenging problems in machine learning that can require identifying complex dependencies between temporally distant inputs. Recurrent Neural Networks (RNNs) have the ability, in theory, to cope with these temporal dependencies by virtue of the short-term memory implemented by their recurrent (feedback) connections. However, in practice they are difficult to train successfully when long-term memory is required. This paper introduces a simple, yet powerful modification to the simple RNN (SRN) architecture, the Clockwork RNN (CW-RNN), in which the hidden layer is partitioned into separate modules, each processing inputs at its own temporal granularity, making computations only at its prescribed clock rate. Rather than making the standard RNN models more complex, CW-RNN reduces the number of SRN parameters, improves the performance significantly in the tasks tested, and speeds up the network evaluation. The network is demonstrated in preliminary experiments involving three tasks: audio signal generation, TIMIT spoken word classification, where it outperforms both SRN and LSTM networks, and online handwriting recognition, where it outperforms SRNs.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2014,
+    "referenceCount": 44,
+    "citationCount": 474,
+    "influentialCitationCount": 66,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper introduces a simple, yet powerful modification to the simple RNN architecture, the Clockwork RNN (CW-RNN), in which the hidden layer is partitioned into separate modules, each processing inputs at its own temporal granularity, making computations only at its prescribed clock rate."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2865775",
+            "name": "J. Koutn\u00edk"
+        },
+        {
+            "authorId": "3035541",
+            "name": "Klaus Greff"
+        },
+        {
+            "authorId": "145842938",
+            "name": "Faustino J. Gomez"
+        },
+        {
+            "authorId": "145341374",
+            "name": "J. Schmidhuber"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "e941f94c9b70c0dfb433871deecbf7d2df561352",
+            "title": "Long Short-Term Memory Based Recurrent Neural Network Architectures for Large Vocabulary Speech Recognition"
+        },
+        {
+            "paperId": "aa7bfd2304201afbb19971ebde87b17e40242e91",
+            "title": "On the importance of initialization and momentum in deep learning"
+        },
+        {
+            "paperId": "4177ec52d1b80ed57f2e72b0f9a42365f1a8598d",
+            "title": "Speech recognition with deep recurrent neural networks"
+        },
+        {
+            "paperId": "a97b5db17acc731ef67321832dbbaf5766153135",
+            "title": "Supervised Sequence Labelling with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "93c20e38c85b69fc2d2eb314b3c1217913f7db11",
+            "title": "Generating Text with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "0d6203718c15f137fda2f295c96269bc2b254644",
+            "title": "Learning Recurrent Neural Networks with Hessian-Free Optimization"
+        },
+        {
+            "paperId": "da5d2b6344fce4314e5f05356d06cdf1aafeef1a",
+            "title": "Temporal-Kernel Recurrent Neural Networks"
+        },
+        {
+            "paperId": "937d3a404b8870fb3ff3e243e6a0c6024eef491b",
+            "title": "A Novel Connectionist System for Unconstrained Handwriting Recognition"
+        },
+        {
+            "paperId": "2c377d9dcf88d00019f0b2ed9068f183024cd9d3",
+            "title": "Offline Handwriting Recognition with Multidimensional Recurrent Neural Networks"
+        },
+        {
+            "paperId": "75479012461814fd176556a56b32c2392462aef5",
+            "title": "Training Recurrent Networks by Evolino"
+        },
+        {
+            "paperId": "12496bf48ebdb5ab3c92bc911d6ee42369fa70bc",
+            "title": "Sequence Labelling in Structured Domains with Hierarchical Recurrent Neural Networks"
+        },
+        {
+            "paperId": "46f5b539cb51319a9f1dc3c59350e8f456877763",
+            "title": "A System for Robotic Heart Surgery that Learns to Tie Knots Using Recurrent Neural Networks"
+        },
+        {
+            "paperId": "9eb7daa88879f283ae05e359d6c502a320b833c9",
+            "title": "IAM-OnDB - an on-line English sentence database acquired from handwritten text on a whiteboard"
+        },
+        {
+            "paperId": "309d5e05fb12df556237d58c8e844605f4d02073",
+            "title": "Evolino: Hybrid Neuroevolution/Optimal Linear Search for Sequence Learning"
+        },
+        {
+            "paperId": "8a51dc0b5694af3e54393e20e05f42fc3cbe476b",
+            "title": "Rapid Retraining on Speech Data with LSTM Recurrent Networks."
+        },
+        {
+            "paperId": "c49019464e326899e76be358a86b8706ee20d0ef",
+            "title": "Kalman filters improve LSTM network performance in problems unsolvable by traditional recurrent nets"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "e23c34414e66118ecd9b08cf0cd4d016f59b0b85",
+            "title": "Bidirectional recurrent neural networks"
+        },
+        {
+            "paperId": "f6e91c9e7e8f8a577a98ecfcfa998212a683195a",
+            "title": "Learning long-term dependencies in NARX recurrent neural networks"
+        },
+        {
+            "paperId": "b13813b49f160e1a2010c44bd4fb3d09a28446e3",
+            "title": "Hierarchical Recurrent Neural Networks for Long-Term Dependencies"
+        },
+        {
+            "paperId": "47128bb3ce4ed00691c0d7d58c02791c3e963ab7",
+            "title": "Darpa Timit Acoustic-Phonetic Continuous Speech Corpus CD-ROM {TIMIT} | NIST"
+        },
+        {
+            "paperId": "b3db94f62118e192ef0465ca9edafcd6c074c137",
+            "title": "DARPA TIMIT:: acoustic-phonetic continuous speech corpus CD-ROM, NIST speech disc 1-1.1"
+        },
+        {
+            "paperId": "d0dd604b2b29bbc0adee2b71bbabca5d5ad3cd54",
+            "title": "Learning Sequential Tasks by Incrementally Adding Higher Orders"
+        },
+        {
+            "paperId": "54e34d0053b71d78cec26e8c29f57a3b9e85de49",
+            "title": "Training recurrent networks using the extended Kalman filter"
+        },
+        {
+            "paperId": "50c770b425a5bb25c77387f687a9910a9d130722",
+            "title": "Learning Complex, Extended Sequences Using the Principle of History Compression"
+        },
+        {
+            "paperId": "e141d68065ce638f9fc4f006eab2f66711e89768",
+            "title": "Induction of Multiscale Temporal Structure"
+        },
+        {
+            "paperId": "668087f0ae7ce1de6e0bd0965dbb480c08103260",
+            "title": "Finding Structure in Time"
+        },
+        {
+            "paperId": "319f22bd5abfd67ac15988aa5c7f705f018c3ccd",
+            "title": "Learning internal representations by error propagation"
+        },
+        {
+            "paperId": "a481ef233939b74448d18fb342f251def5db12f5",
+            "title": "Recurrent Transition Hierarchies for Continual Learning: A General Overview"
+        },
+        {
+            "paperId": "c08d0525bd42fa1c24f9f5df72f4c8fcf7063b22",
+            "title": "Offline Handwriting Recognition with Multidimensional Recurrent Neural Networks"
+        },
+        {
+            "paperId": "43fa5235e49fa6f16d047c999234d1b93df360b0",
+            "title": "A novel approach to on-line handwriting recognition based on bidirectional long short-term memory networks"
+        },
+        {
+            "paperId": "a56a3c3d45001a47fb94a968888e6fbd8d25e051",
+            "title": "Evolino: Hybrid Neuroevolution / Optimal Linear Search for Sequence Prediction"
+        },
+        {
+            "paperId": null,
+            "title": "Short term memory in echo state networks. GMD-Report 152, GMD - German"
+        },
+        {
+            "paperId": "2e5f2b57f4c476dd69dc22ccdf547e48f40a994c",
+            "title": "Gradient Flow in Recurrent Nets: the Difficulty of Learning Long-Term Dependencies"
+        },
+        {
+            "paperId": "69a8e331ea493894066d003ab3e5987d30527b06",
+            "title": "Neural Network Music Composition by Prediction: Exploring the Benefits of Psychoacoustic Constraints and Multi-scale Processing"
+        },
+        {
+            "paperId": "c69201d091dd92699fd90a17b9e3407319726791",
+            "title": "Neural sequence chunkers"
+        },
+        {
+            "paperId": "3f3d13e95c25a8f6a753e38dfce88885097cbd43",
+            "title": "Untersuchungen zu dynamischen neuronalen Netzen"
+        },
+        {
+            "paperId": "266e07d0dd9a75b61e3632e9469993dbaf063f1c",
+            "title": "Generalization of backpropagation with application to a recurrent gas market model"
+        },
+        {
+            "paperId": "a086b8bcaf7a3ef2eee498ada4481c33a5e43fcf",
+            "title": "Distance measures for speech recognition, psychological and instrumental"
+        },
+        {
+            "paperId": "261a056f8b21918e8616a429b2df6e1d5d33be41",
+            "title": "Connectionist Temporal Classi\ufb01cation: Labelling Unsegmented Sequence Data with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "c67972e65e0467c656924693eff2664ea50ab4d9",
+            "title": "Gmd Report"
+        },
+        {
+            "paperId": null,
+            "title": "Cluster 2"
+        },
+        {
+            "paperId": null,
+            "title": "Cluster 3: tradition, addition, audition"
+        },
+        {
+            "paperId": "02f38b2d72d7b3243b5ba4005f814f71b80eec00",
+            "title": "The Utility Driven Dynamic Error Propagation Network"
+        }
+    ]
+}

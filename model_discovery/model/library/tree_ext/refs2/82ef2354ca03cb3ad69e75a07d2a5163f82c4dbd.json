@@ -1,0 +1,233 @@
+{
+    "paperId": "82ef2354ca03cb3ad69e75a07d2a5163f82c4dbd",
+    "externalIds": {
+        "MAG": "1973959314",
+        "DBLP": "conf/egh/ChaurasiaRPDD15",
+        "DOI": "10.1145/2790060.2790063",
+        "CorpusId": 14377595
+    },
+    "title": "Compiling high performance recursive filters",
+    "abstract": "Infinite impulse response (IIR) or recursive filters, are essential for image processing because they turn expensive large-footprint convolutions into operations that have a constant cost per pixel regardless of kernel size. However, their recursive nature constrains the order in which pixels can be computed, severely limiting both parallelism within a filter and memory locality across multiple filters. Prior research has developed algorithms that can compute IIR filters with image tiles. Using a divide-and-recombine strategy inspired by parallel prefix sum, they expose greater parallelism and exploit producer-consumer locality in pipelines of IIR filters over multi-dimensional images. While the principles are simple, it is hard, given a recursive filter, to derive a corresponding tile-parallel algorithm, and even harder to implement and debug it.\n We show that parallel and locality-aware implementations of IIR filter pipelines can be obtained through program transformations, which we mechanize through a domain-specific compiler. We show that the composition of a small set of transformations suffices to cover the space of possible strategies. We also demonstrate that the tiled implementations can be automatically scheduled in hardware-specific manners using a small set of generic heuristics. The programmer specifies the basic recursive filters, and the choice of transformation requires only a few lines of code. Our compiler then generates high-performance implementations that are an order of magnitude faster than standard GPU implementations, and outperform hand tuned tiled implementations of specialized algorithms which require orders of magnitude more programming effort---a few lines of code instead of a few thousand lines per pipeline.",
+    "venue": "High Performance Graphics",
+    "year": 2015,
+    "referenceCount": 46,
+    "citationCount": 21,
+    "influentialCitationCount": 1,
+    "openAccessPdf": {
+        "url": "https://hal.inria.fr/hal-01167185/file/recfilter.pdf",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that parallel and locality-aware implementations of IIR filter pipelines can be obtained through program transformations, which are mechanized through a domain-specific compiler, and high-performance implementations are generated that are an order of magnitude faster than standard GPU implementations."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2585067",
+            "name": "G. Chaurasia"
+        },
+        {
+            "authorId": "1401885963",
+            "name": "Jonathan Ragan-Kelley"
+        },
+        {
+            "authorId": "145799132",
+            "name": "Sylvain Paris"
+        },
+        {
+            "authorId": "1721779",
+            "name": "G. Drettakis"
+        },
+        {
+            "authorId": "145403226",
+            "name": "F. Durand"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "57d70e927c9a1c2fc6c71f90336b071aa459eeb3",
+            "title": "HIPAcc: A Domain-Specific Language and Compiler for Image Processing"
+        },
+        {
+            "paperId": "0b9aaee517e0cabb274f5d7cfb01d8f58e51d76e",
+            "title": "PolyMage: Automatic Optimization for Image Processing Pipelines"
+        },
+        {
+            "paperId": "3366ce958ced04bac43f08b7c3ef3a9fd6f0ae0e",
+            "title": "Forma: a DSL for image processing applications to target GPUs and multi-core CPUs"
+        },
+        {
+            "paperId": "16e04275a4cc9bab47101df9934068382cb45c4b",
+            "title": "Parallel Algorithms for the Summed Area Table on the Asynchronous Hierarchical Memory Machine, with GPU implementations"
+        },
+        {
+            "paperId": "6b96796f10aacd8b59bb59b91d00bcae5d9f0cd4",
+            "title": "Parallel Algorithms for the Summed Area Table on the Asynchronous Hierarchical Memory Machine, with GPU implementations"
+        },
+        {
+            "paperId": "a8be2596cbc0a857b33c90a9ae34214833cc76cc",
+            "title": "Errata for GPU-Efficient Recursive Filtering and Summed-Area Tables"
+        },
+        {
+            "paperId": "ba930ceaf29ce79be06345b07d4ac60dbf9cc7ab",
+            "title": "Spiral in scala: towards the systematic construction of generators for performance libraries"
+        },
+        {
+            "paperId": "31bc761f45c78fdc676f7ff91be0da7c05735776",
+            "title": "A novel compilation approach for image processing graphs on a many-core platform with explicitly managed memory"
+        },
+        {
+            "paperId": "4d23db55e6671a82c95dacec33b2967a4b8b677d",
+            "title": "Halide: a language and compiler for optimizing parallelism, locality, and recomputation in image processing pipelines"
+        },
+        {
+            "paperId": "3e06546182d5a36796a0f48e70151bf1d38e094d",
+            "title": "Decoupling algorithms from schedules for easy optimization of image processing pipelines"
+        },
+        {
+            "paperId": "9fe7d597bf7f1f934bb5755fb81744b91659258c",
+            "title": "GPU-efficient recursive filtering and summed-area tables"
+        },
+        {
+            "paperId": "1b7fc36dc56a400f7a7f4c75e53550bbb6a0a4d8",
+            "title": "Guided Image Filtering"
+        },
+        {
+            "paperId": "c255fb7691f0d674a6960adb3d8bc9db9b0e3a0c",
+            "title": "Smoothed local histogram filters"
+        },
+        {
+            "paperId": "dc5681c07a4a9f142b0c2173b9a37b47d0f6cebf",
+            "title": "PARO: Synthesis of Hardware Accelerators for Multi-Dimensional Dataflow-Intensive Applications"
+        },
+        {
+            "paperId": "a0a5a80e019c6eb501d32e4250b1be91dc27047e",
+            "title": "Median Filtering in Constant Time"
+        },
+        {
+            "paperId": "ec88941835c88a2956fc84c9e7cfd6dedf1b36f6",
+            "title": "Scan primitives for GPU computing"
+        },
+        {
+            "paperId": "4ef0a1200a1d9e69a291184d5c4c7cffc562135f",
+            "title": "Real-time edge-aware image processing with the bilateral grid"
+        },
+        {
+            "paperId": "ba791fc6f34fed7a2cf8b7f174a19ee87fb05012",
+            "title": "Fast median and bilateral filtering"
+        },
+        {
+            "paperId": "d3de83b4fc0e9b410e8cae9d5873832cd9082a3d",
+            "title": "The Direct3D 10 system"
+        },
+        {
+            "paperId": "d015554f6c557e37caa7b5bf491f17e7885ca9ea",
+            "title": "Fast Summed\u2010Area Table Generation and its Applications"
+        },
+        {
+            "paperId": "78ec0d28b105d48f29d67a93a08a9edeb4b7d10a",
+            "title": "Cg: a system for programming graphics hardware in a C-like language"
+        },
+        {
+            "paperId": "4ce393506dc1e0ddbc65225d2dad24d31d430c90",
+            "title": "A stream compiler for communication-exposed architectures"
+        },
+        {
+            "paperId": "553fdbe4c82296cc0a2db2731f252fbb434fe22d",
+            "title": "StreamIt: A Language for Streaming Applications"
+        },
+        {
+            "paperId": "f86098b78acfaa0187b000d9cdf572ee974ae268",
+            "title": "Recursive Gaussian derivative filters"
+        },
+        {
+            "paperId": "30058a85147401171eb2b310d8bb91c18028771a",
+            "title": "Efficient approximation of Gaussian filters"
+        },
+        {
+            "paperId": "899c660f5f71935688d757daa25fe6eed37a8da3",
+            "title": "A language for shading and lighting calculations"
+        },
+        {
+            "paperId": "3c019693f59a32bf2fe5e99e93372c2816705139",
+            "title": "Scans as Primitive Parallel Operations"
+        },
+        {
+            "paperId": "8b364a13c1c0abe74636ed6182a37289c5e308ef",
+            "title": "Efficient multi-processor implementation of recursive digital filters"
+        },
+        {
+            "paperId": "8b22e1751f75be137b7b210981baccc1b9ab9222",
+            "title": "Summed-area tables for texture mapping"
+        },
+        {
+            "paperId": "662514a92ec7da77c8004b65dc559cc3a2b8a258",
+            "title": "A fast two-dimensional median filtering algorithm"
+        },
+        {
+            "paperId": "1835b07b5671b97a4350f8c07b5412a1b390fdf7",
+            "title": "A Parallel Algorithm for the Efficient Solution of a General Class of Recurrence Equations"
+        },
+        {
+            "paperId": "acbd0d8557edad81f05b7098a5500937725acefb",
+            "title": "The Organization of Computations for Uniform Recurrence Equations"
+        },
+        {
+            "paperId": "dfc6c14ee4c09f7acf42ed06b6e56dcf51ee1259",
+            "title": "Tangram: a High-level Language for Performance Portable Code Synthesis"
+        },
+        {
+            "paperId": null,
+            "title": "NVIDIA"
+        },
+        {
+            "paperId": "d2b093b005c86d35c0d1708bee37e92afe7b6d8d",
+            "title": "GPU Prefilter for Accurate Cubic B-spline Interpolation"
+        },
+        {
+            "paperId": "85117b884f90f1f5820c8aadb3977d3f5705a8f0",
+            "title": "Digital Signal Processing with Examples in MATLAB Second Edition"
+        },
+        {
+            "paperId": null,
+            "title": "Adobe PixelBender reference"
+        },
+        {
+            "paperId": null,
+            "title": "C ORE I"
+        },
+        {
+            "paperId": null,
+            "title": "Apple CoreImage programming guide. https://developer.apple.com/library/ ios/documentation/GraphicsImaging/Conceptual"
+        },
+        {
+            "paperId": "1cbfa10be8f8744a3e84e3f60b59f28ee4d17435",
+            "title": "Discrete Time Signal Processing"
+        },
+        {
+            "paperId": "05e9ea2f6382fe7324a838242ec0bcad117c764c",
+            "title": "Functional Image Synthesis"
+        },
+        {
+            "paperId": "99d03dc3437b5c4ed1b3e54d65a030330e32c6cb",
+            "title": "Discrete-time signal processing (2nd ed.)"
+        },
+        {
+            "paperId": "ffcf8c750718f35fad64ef8a4b6cf24c812da7c8",
+            "title": "Digital Signal Processing with Examples in MATLAB"
+        },
+        {
+            "paperId": "43e93a66cbe8081ee6f51de1778a5903044047a1",
+            "title": "Recursively implementating the Gaussian and its derivatives"
+        },
+        {
+            "paperId": "7e957a5af8b4041be3b3431bafe4fe23126e9724",
+            "title": "Discrete-Time Signal Pro-cessing"
+        },
+        {
+            "paperId": "442d8b6489aec7c1f661fc33a4a9d8c9c17e981c",
+            "title": "Beyond Photography: The Digital Darkroom"
+        }
+    ]
+}

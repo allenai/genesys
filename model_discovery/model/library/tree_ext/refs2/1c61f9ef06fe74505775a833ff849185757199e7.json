@@ -1,0 +1,174 @@
+{
+    "paperId": "1c61f9ef06fe74505775a833ff849185757199e7",
+    "externalIds": {
+        "MAG": "2113459411",
+        "ACL": "P11-1015",
+        "DBLP": "conf/acl/MaasDPHNP11",
+        "CorpusId": 1428702
+    },
+    "title": "Learning Word Vectors for Sentiment Analysis",
+    "abstract": "Unsupervised vector-based approaches to semantics can model rich lexical meanings, but they largely fail to capture sentiment information that is central to many word meanings and important for a wide range of NLP tasks. We present a model that uses a mix of unsupervised and supervised techniques to learn word vectors capturing semantic term--document information as well as rich sentiment content. The proposed model can leverage both continuous and multi-dimensional sentiment information as well as non-sentiment annotations. We instantiate the model to utilize the document-level sentiment polarity annotations present in many online documents (e.g. star ratings). We evaluate the model using small, widely used sentiment and subjectivity corpora and find it out-performs several previously introduced methods for sentiment classification. We also introduce a large dataset of movie reviews to serve as a more robust benchmark for work in this area.",
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2011,
+    "referenceCount": 31,
+    "citationCount": 4739,
+    "influentialCitationCount": 610,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents a model that uses a mix of unsupervised and supervised techniques to learn word vectors capturing semantic term--document information as well as rich sentiment content, and finds it out-performs several previously introduced methods for sentiment classification."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "34961461",
+            "name": "Andrew L. Maas"
+        },
+        {
+            "authorId": "119816047",
+            "name": "Raymond E. Daly"
+        },
+        {
+            "authorId": "2061523260",
+            "name": "Peter T. Pham"
+        },
+        {
+            "authorId": "2110408720",
+            "name": "Dan Huang"
+        },
+        {
+            "authorId": "34699434",
+            "name": "A. Ng"
+        },
+        {
+            "authorId": "144922861",
+            "name": "Christopher Potts"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "4bfc842cfadc632de84709945c870fb8608162d9",
+            "title": "Sentiment Analysis"
+        },
+        {
+            "paperId": "8deeb6091710caab295d66a1d9fa2485a83b7eac",
+            "title": "Probabilistic topic models"
+        },
+        {
+            "paperId": "00069d59c1e58a4e6515dc94ea8caf2f30f9bf29",
+            "title": "Holistic Sentiment Analysis Across Languages: Multilingual Supervised Latent Dirichlet Allocation"
+        },
+        {
+            "paperId": "8492070dc4031ed825e95e4803781752bb5e909f",
+            "title": "Word Representations: A Simple and General Method for Semi-Supervised Learning"
+        },
+        {
+            "paperId": "4ac9bf53e4c5fae5ff6feacf96f2e2c474fcc6ca",
+            "title": "A Study of Information Retrieval Weighting Schemes for Sentiment Analysis"
+        },
+        {
+            "paperId": "75de299d2aeccfbadeced0e8fdbd54030f7cd927",
+            "title": "Sentiment Analysis with Global Topics and Local Dependency"
+        },
+        {
+            "paperId": "3a0e788268fafb23ab20da0e98bb578b06830f7d",
+            "title": "From Frequency to Meaning: Vector Space Models of Semantics"
+        },
+        {
+            "paperId": "e5554c9d5fa92af69992d72ed1fdfbe953b03fb4",
+            "title": "Rethinking LDA: Why Priors Matter"
+        },
+        {
+            "paperId": "a45973f8d5ede2bc700d3e6c0758e5c90455d5a0",
+            "title": "Joint sentiment/topic model for sentiment analysis"
+        },
+        {
+            "paperId": "00cf902b27676cdc376e26567e70298b96c672a1",
+            "title": "Joint Parsing and Named Entity Recognition"
+        },
+        {
+            "paperId": "5ef2edfe51d3d768b1d89ad7e74e4ce8e55d1d49",
+            "title": "Delta TFIDF: An Improved Feature Space for Sentiment Analysis"
+        },
+        {
+            "paperId": "57458bc1cffe5caa45a885af986d70f723f406b4",
+            "title": "A unified architecture for natural language processing: deep neural networks with multitask learning"
+        },
+        {
+            "paperId": "268a4f8da15a42f3e0e71691f760ff5edbf9cec8",
+            "title": "LIBLINEAR: A Library for Large Linear Classification"
+        },
+        {
+            "paperId": "92d21c180641df9c5ceb82b07844a922799ff3d5",
+            "title": "The expressive dimension"
+        },
+        {
+            "paperId": "bd7d93193aad6c4b71cc8942e808753019e87706",
+            "title": "Three new graphical models for statistical language modelling"
+        },
+        {
+            "paperId": "2ab8faaa1ee1791e6da911e408dee97681cfa58e",
+            "title": "Multiple Aspect Ranking Using the Good Grief Algorithm"
+        },
+        {
+            "paperId": "6fec21a78eb9279c87cc89ef7efa0acf22ff4abd",
+            "title": "Seeing stars when there aren\u2019t many stars: Graph-based semi-supervised learning for sentiment categorization"
+        },
+        {
+            "paperId": "e14609a3a6c6f8ef3269d3e0728f88da57826698",
+            "title": "SENTIMENT CLASSIFICATION of MOVIE REVIEWS USING CONTEXTUAL VALENCE SHIFTERS"
+        },
+        {
+            "paperId": "0470303953de1d19765423f719d8314e3cb91278",
+            "title": "Using appraisal groups for sentiment analysis"
+        },
+        {
+            "paperId": "872352b0a53ab6cbb4420f81df64d215d86c7d9b",
+            "title": "Emotions from Text: Machine Learning for Text-based Emotion Prediction"
+        },
+        {
+            "paperId": "6af58c061f2e4f130c3b795c21ff0c7e3903278f",
+            "title": "Seeing Stars: Exploiting Class Relationships for Sentiment Categorization with Respect to Rating Scales"
+        },
+        {
+            "paperId": "b419fb257870fe8024fb3f07dddd66328ae644cb",
+            "title": "Just How Mad Are You? Finding Strong and Weak Opinion Clauses"
+        },
+        {
+            "paperId": "167e1359943b96b9e92ee73db1df69a1f65d731d",
+            "title": "A Sentimental Education: Sentiment Analysis Using Subjectivity Summarization Based on Minimum Cuts"
+        },
+        {
+            "paperId": "28209ce8d0ac1cf4ceea3eeddf4630e1032fa0ef",
+            "title": "A neural probabilistic language model"
+        },
+        {
+            "paperId": "12d0353ce8b41b7e5409e5a4a611110aee33c7bc",
+            "title": "Thumbs up? Sentiment Classification using Machine Learning Techniques"
+        },
+        {
+            "paperId": "04882a986d7155aae66b3be77e5b732e0b340d19",
+            "title": "Why We Curse. A Neuro-Psycho-Social Theory of Speech."
+        },
+        {
+            "paperId": "e41f3ca94308ddaba99dfb4efee61687a5690894",
+            "title": "Why We Curse"
+        },
+        {
+            "paperId": "164125a65d42a791d2c1e108559344caef96d08b",
+            "title": "Indexing by Latent Semantic Analysis"
+        },
+        {
+            "paperId": "4574d77fff19e093782178595a8988a7f3aa1969",
+            "title": "Latent Dirichlet Allocation"
+        },
+        {
+            "paperId": "d2d8b52f59945b4a3ef9d20ab44e108319eead6f",
+            "title": "Mining WordNet for a Fuzzy Sentiment: Sentiment Tag Extraction from WordNet Glosses"
+        },
+        {
+            "paperId": null,
+            "title": "What is meaning? Explorations in the theory of Meaning as Use"
+        }
+    ]
+}

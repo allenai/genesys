@@ -1,0 +1,253 @@
+{
+    "paperId": "1d1802480eeb320d2f48bccee669c02804dbaa99",
+    "externalIds": {
+        "DBLP": "journals/corr/WuDLZS17",
+        "ArXiv": "1706.02609",
+        "PubMedCentral": "5974215",
+        "MAG": "2950396309",
+        "DOI": "10.3389/fnins.2018.00331",
+        "CorpusId": 6446489,
+        "PubMed": "29875621"
+    },
+    "title": "Spatio-Temporal Backpropagation for Training High-Performance Spiking Neural Networks",
+    "abstract": "Spiking neural networks (SNNs) are promising in ascertaining brain-like behaviors since spikes are capable of encoding spatio-temporal information. Recent schemes, e.g., pre-training from artificial neural networks (ANNs) or direct training based on backpropagation (BP), make the high-performance supervised training of SNNs possible. However, these methods primarily fasten more attention on its spatial domain information, and the dynamics in temporal domain are attached less significance. Consequently, this might lead to the performance bottleneck, and scores of training techniques shall be additionally required. Another underlying problem is that the spike activity is naturally non-differentiable, raising more difficulties in supervised training of SNNs. In this paper, we propose a spatio-temporal backpropagation (STBP) algorithm for training high-performance SNNs. In order to solve the non-differentiable problem of SNNs, an approximated derivative for spike activity is proposed, being appropriate for gradient descent training. The STBP algorithm combines the layer-by-layer spatial domain (SD) and the timing-dependent temporal domain (TD), and does not require any additional complicated skill. We evaluate this method through adopting both the fully connected and convolutional architecture on the static MNIST dataset, a custom object detection dataset, and the dynamic N-MNIST dataset. Results bespeak that our approach achieves the best accuracy compared with existing state-of-the-art algorithms on spiking networks. This work provides a new perspective to investigate the high-performance SNNs for future brain-like computing paradigm with rich spatio-temporal dynamics.",
+    "venue": "Frontiers in Neuroscience",
+    "year": 2017,
+    "referenceCount": 51,
+    "citationCount": 804,
+    "influentialCitationCount": 101,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A spatio-temporal backpropagation (STBP) algorithm for training high-performance SNNs is proposed, which combines the layer-by-layer spatial domain (SD) and the timing-dependent temporal domain (TD), and does not require any additional complicated skill."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "72500851",
+            "name": "Yujie Wu"
+        },
+        {
+            "authorId": "143895326",
+            "name": "Lei Deng"
+        },
+        {
+            "authorId": "1730243",
+            "name": "Guoqi Li"
+        },
+        {
+            "authorId": "2146279632",
+            "name": "Jun Zhu"
+        },
+        {
+            "authorId": "29889772",
+            "name": "Luping Shi"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "7ffcfb70e07fd5ab273d437c18bd769fc080b2c0",
+            "title": "First-Spike-Based Visual Categorization Using Reward-Modulated STDP"
+        },
+        {
+            "paperId": "1640ca9e048eed5cf1ec34ed164ee4dc037cc43b",
+            "title": "Bio-Inspired Spiking Convolutional Neural Network using Layer-wise Sparse Coding and STDP Learning"
+        },
+        {
+            "paperId": "ebbd8c53d13de0d79c3543d067c2287f47736863",
+            "title": "A self-driving robot using deep convolutional neural networks on neuromorphic hardware"
+        },
+        {
+            "paperId": "a4b6b32c21609b9b093e0aacc5c0d82e70a9be52",
+            "title": "Phased LSTM: Accelerating Recurrent Network Training for Long or Event-based Sequences"
+        },
+        {
+            "paperId": "c99537a3f0ce446df31942b78fb8337edb0c0c07",
+            "title": "Training Deep Spiking Neural Networks Using Backpropagation"
+        },
+        {
+            "paperId": "31f6d32b7945a70941a2d279c25f09cf81acae78",
+            "title": "Effective sensor fusion with event-based sensors and deep network architectures"
+        },
+        {
+            "paperId": "b5dcd5cf7a95c262b9cdaaf32536b66ad6bc82f3",
+            "title": "Skimming Digits: Neuromorphic Classification of Spike-Encoded Images"
+        },
+        {
+            "paperId": "29316449c7cc52ad326c5d1bd5b0dc5af27c1496",
+            "title": "Convolutional networks for fast, energy-efficient neuromorphic computing"
+        },
+        {
+            "paperId": "cb4a372ae84b3ff3a6cc4e60c327f8108a83551f",
+            "title": "Deep Spiking Networks"
+        },
+        {
+            "paperId": "0a76cdb10b244d90770888f72ee46ca3ea1d918d",
+            "title": "Spiking Deep Networks with LIF Neurons"
+        },
+        {
+            "paperId": "a3ab782bec5b395df9d8f71f5fef7e9c82a8bc79",
+            "title": "An objective function for STDP"
+        },
+        {
+            "paperId": "713d600bc941cb0625873f946a4b2a7fbe25ed4c",
+            "title": "Unsupervised learning of digit recognition using spike-timing-dependent plasticity"
+        },
+        {
+            "paperId": "f8b2c2a8c2369f4c40a9cf5e8599bf4ece665200",
+            "title": "Converting Static Image Datasets to Spiking Neuromorphic Datasets Using Saccades"
+        },
+        {
+            "paperId": "1cb3a0ff57de3199fe7029db7a1b8bac310fa5f8",
+            "title": "Fast-classifying, high-accuracy spiking deep networks through weight and threshold balancing"
+        },
+        {
+            "paperId": "b097934333592612833da9ddf17d287b662b5611",
+            "title": "Bio-inspired unsupervised learning of visual features leads to robust invariant object recognition"
+        },
+        {
+            "paperId": "f0dcf4a41d7b5801d2baba0195f32665fc311687",
+            "title": "Spiking neural network methodology for modelling, classification and understanding of EEG spatio-temporal data measuring cognitive processes"
+        },
+        {
+            "paperId": "d14c7e5f5cace4c925abc74c88baa474e9f31a28",
+            "title": "Gated Feedback Recurrent Neural Networks"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "680a38e8f025685b192e9e0cf755c6b664963551",
+            "title": "A million spiking-neuron integrated circuit with a scalable communication network and interface"
+        },
+        {
+            "paperId": "6bdb186ec4726e00a8051119636d4df3b94043b5",
+            "title": "Caffe: Convolutional Architecture for Fast Feature Embedding"
+        },
+        {
+            "paperId": "cbb19236820a96038d000dc629225d36e0b6294a",
+            "title": "Spatial Pyramid Pooling in Deep Convolutional Networks for Visual Recognition"
+        },
+        {
+            "paperId": "f58ea68448a584b8c8540c86bb9965d746b767a9",
+            "title": "Deep Learning: Methods and Applications"
+        },
+        {
+            "paperId": "336d333bcd1feb6d14f13a478534c808bf7e7e53",
+            "title": "Neurogrid: A Mixed-Analog-Digital Multichip System for Large-Scale Neural Simulations"
+        },
+        {
+            "paperId": "28ba0ed8526e4322d81602a1da21b2b43fbe9b10",
+            "title": "The SpiNNaker Project"
+        },
+        {
+            "paperId": "e5486aa1a0bbc5b6b64cc252d22ab3abd4f37393",
+            "title": "Spike-based indirect training of a spiking neural network-controlled virtual insect"
+        },
+        {
+            "paperId": "4ef4ab1766614b8a605cb3308a07bc68ac3b03c4",
+            "title": "Event-driven contrastive divergence for spiking neuromorphic systems"
+        },
+        {
+            "paperId": "eb0976cb154e82d0744b63238c0a12f749cf8d13",
+            "title": "Mapping from frame-driven to frame-free event-driven vision systems by low-rate rate coding and coincidence processing--application to feedforward ConvNets."
+        },
+        {
+            "paperId": "aeb2607db853918c031dd3bf7c488cd26180935a",
+            "title": "Real-time classification and sensor fusion with a spiking deep belief network"
+        },
+        {
+            "paperId": "e3510cb51f9aae9048e328a1c42c871886b7db20",
+            "title": "Immunity to Device Variations in a Spiking Neural Network With Memristive Nanodevices"
+        },
+        {
+            "paperId": "779b7bb1a872862fe5cbb6778f0a09fafd1d40fe",
+            "title": "Supervised Learning in Spiking Neural Networks with ReSuMe: Sequence Learning, Classification, and Spike Shifting"
+        },
+        {
+            "paperId": "486f217d07121fed997614fbf3ee7152cca8d990",
+            "title": "Cognitive processing using spiking neural networks"
+        },
+        {
+            "paperId": "98613547f2eb650b6427f767b48b74faf19e94af",
+            "title": "A Gradient Learning Rule for the Tempotron"
+        },
+        {
+            "paperId": "843959ffdccf31c6694d135fad07425924f785b1",
+            "title": "Extracting and composing robust features with denoising autoencoders"
+        },
+        {
+            "paperId": "5339f1ab6666abdedcec3d138f12d05b16e08770",
+            "title": "A 128$\\times$ 128 120 dB 15 $\\mu$s Latency Asynchronous Temporal Contrast Vision Sensor"
+        },
+        {
+            "paperId": "61a531cefa14a5bdf4b218e2c20bf909521c18d8",
+            "title": "Fast Modifications of the SpikeProp Algorithm"
+        },
+        {
+            "paperId": "eaba315d5f972c059ab2d0315f2aeada27c1becd",
+            "title": "The tempotron: a neuron that learns spike timing\u2013based decisions"
+        },
+        {
+            "paperId": "5562a56da3a96dae82add7de705e2bd841eb00fc",
+            "title": "Best practices for convolutional neural networks applied to visual document analysis"
+        },
+        {
+            "paperId": "11540131eae85b2e11d53df7f1360eeb6476e7f4",
+            "title": "Learning to Forget: Continual Prediction with LSTM"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "b3db94f62118e192ef0465ca9edafcd6c074c137",
+            "title": "DARPA TIMIT:: acoustic-phonetic continuous speech corpus CD-ROM, NIST speech disc 1-1.1"
+        },
+        {
+            "paperId": "1a3d22599028a05669e884f3eaf19a342e190a87",
+            "title": "Backpropagation Through Time: What It Does and How to Do It"
+        },
+        {
+            "paperId": "00f62d4316c4612081f1ba2054a114e329f9e8c5",
+            "title": "Automatic Recognition of Spoken Digits"
+        },
+        {
+            "paperId": "374521926d7ea4d3c37071fc3b7efd3b492e1b44",
+            "title": "Progressive Review Towards Deep Learning Techniques"
+        },
+        {
+            "paperId": null,
+            "title": "Creating more intelligent robots through brain-inspired"
+        },
+        {
+            "paperId": "a5117e86265f42f90a6cecae49527a0e69e2708b",
+            "title": "Mapping from Frame-Driven to Frame-Free Event-Driven Vision Systems by Low-Rate Rate Coding and Coincidence Processing--Application to Feedforward ConvNets"
+        },
+        {
+            "paperId": "31868290adf1c000c611dfc966b514d5a34e8d23",
+            "title": "FUNDAMENTAL TECHNOLOGIES IN MODERN SPEECH RECOGNITION Digital Object Identifier 10.1109/MSP.2012.2205597"
+        },
+        {
+            "paperId": "b04f2391b8c9539edff41065c39fc2d27cc3d95a",
+            "title": "ReSuMe-New Supervised Learning Method for Spiking Neural Networks"
+        },
+        {
+            "paperId": "78bbaf192704f349a5e972addeb6998722bd65ee",
+            "title": "Extending SpikeProp"
+        },
+        {
+            "paperId": "58df6b9af7621eb30709be0d9e987fa8ebb3277c",
+            "title": "SpikeProp: backpropagation for networks of spiking neurons"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "6fe028a54dad296b6d25c50baaa47511df6d4123",
+            "title": "> Replace This Line with Your Paper Identification Number (double-click Here to Edit) < 1"
+        }
+    ]
+}

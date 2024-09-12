@@ -1,0 +1,250 @@
+{
+    "paperId": "2d7782c225e0fc123d6e227f2cb253e58279ac73",
+    "externalIds": {
+        "DBLP": "conf/iclr/GraveJU17",
+        "MAG": "2571859396",
+        "ArXiv": "1612.04426",
+        "CorpusId": 8693672
+    },
+    "title": "Improving Neural Language Models with a Continuous Cache",
+    "abstract": "We propose an extension to neural network language models to adapt their prediction to the recent history. Our model is a simplified version of memory augmented networks, which stores past hidden activations as memory and accesses them through a dot product with the current hidden activation. This mechanism is very efficient and scales to very large memory sizes. We also draw a link between the use of external memory in neural network and cache models used with count based language models. We demonstrate on several language model datasets that our approach performs significantly better than recent memory augmented networks.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2016,
+    "referenceCount": 53,
+    "citationCount": 296,
+    "influentialCitationCount": 42,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A simplified version of memory augmented networks, which stores past hidden activations as memory and accesses them through a dot product with the current hidden activation, which is very efficient and scales to very large memory sizes."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3024698",
+            "name": "Edouard Grave"
+        },
+        {
+            "authorId": "2319608",
+            "name": "Armand Joulin"
+        },
+        {
+            "authorId": "1746841",
+            "name": "Nicolas Usunier"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "efbd381493bb9636f489b965a2034d529cd56bcd",
+            "title": "Pointer Sentinel Mixture Models"
+        },
+        {
+            "paperId": "9ec499af9b85f30bdbdd6cdfbb07d484808c526a",
+            "title": "Efficient softmax approximation for GPUs"
+        },
+        {
+            "paperId": "7dba53e72c182e25e98e8f73a99d75ff69dda0c2",
+            "title": "Recurrent Highway Networks"
+        },
+        {
+            "paperId": "5ed791f810da580c78df6a052c6b9f2e258f6b0a",
+            "title": "The LAMBADA dataset: Word prediction requiring a broad discourse context"
+        },
+        {
+            "paperId": "b1e20420982a4f923c08652941666b189b11b7fe",
+            "title": "A Thorough Examination of the CNN/Daily Mail Reading Comprehension Task"
+        },
+        {
+            "paperId": "aa5b35dcf8b024f5352db73cc3944e8fad4f3793",
+            "title": "Pointing the Unknown Words"
+        },
+        {
+            "paperId": "f2e50e2ee4021f199877c8920f1f984481c723aa",
+            "title": "Text Understanding with the Attention Sum Reader Network"
+        },
+        {
+            "paperId": "2f2d8f8072e5cc9b296fad551f65f183bdbff7aa",
+            "title": "Exploring the Limits of Language Modeling"
+        },
+        {
+            "paperId": "0c1f9ca23f4f09ecfc44bcc8ca1c2736624f4652",
+            "title": "A Theoretically Grounded Application of Dropout in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "be3a65ef15f79ebb8296e6a0e8d1a9cb5c0f3638",
+            "title": "Evaluating Prerequisite Qualities for Learning End-to-End Dialog Systems"
+        },
+        {
+            "paperId": "722e01d5ba05083f7a091f3188cfdfcf183a325d",
+            "title": "Larger-Context Language Modelling with Recurrent Neural Network"
+        },
+        {
+            "paperId": "d1505c6123c102e53eb19dff312cb25cea840b72",
+            "title": "Teaching Machines to Read and Comprehend"
+        },
+        {
+            "paperId": "9653d5c2c7844347343d073bbedd96e05d52f69b",
+            "title": "Pointer Networks"
+        },
+        {
+            "paperId": "e837b79de602c69395498c1fbbe39bbb4e6f75ad",
+            "title": "Learning to Transduce with Unbounded Memory"
+        },
+        {
+            "paperId": "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e",
+            "title": "End-To-End Memory Networks"
+        },
+        {
+            "paperId": "d38e8631bba0720becdaf7b89f79d9f9dca45d82",
+            "title": "Inferring Algorithmic Patterns with Stack-Augmented Recurrent Nets"
+        },
+        {
+            "paperId": "9665247ea3421929f9b6ad721f139f11edb1dbb8",
+            "title": "Learning Longer Memory in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "ac3ee98020251797c2b401e1389461df88e52e62",
+            "title": "Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "f264e8b33c0d49a692a6ce2c4bcb28588aeb7d97",
+            "title": "Recurrent Neural Network Regularization"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "4177ec52d1b80ed57f2e72b0f9a42365f1a8598d",
+            "title": "Speech recognition with deep recurrent neural networks"
+        },
+        {
+            "paperId": "d1275b2a2ab53013310e759e5c6878b96df643d4",
+            "title": "Context dependent recurrent neural network language model"
+        },
+        {
+            "paperId": "bd5fc28c7356915ec71abafbe86b7596c60720aa",
+            "title": "The conference paper"
+        },
+        {
+            "paperId": "77dfe038a9bdab27c4505444931eaa976e9ec667",
+            "title": "Empirical Evaluation and Combination of Advanced Language Modeling Techniques"
+        },
+        {
+            "paperId": "413c1142de9d91804d6d11c67ff3fed59c9fc279",
+            "title": "Adaptive Subgradient Methods for Online Learning and Stochastic Optimization"
+        },
+        {
+            "paperId": "6c2b28f9354f667cd5bd07afc0471d8334430da7",
+            "title": "A Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "09c76da2361d46689825c4efc37ad862347ca577",
+            "title": "A bit of progress in language modeling"
+        },
+        {
+            "paperId": "7ac0550daef2f936c4280aca87ff8e9c7e7baf69",
+            "title": "Maximum entropy techniques for exploiting syntactic, semantic and collocational dependencies in language modeling"
+        },
+        {
+            "paperId": "a90c1ca6c335de94721d7445bb01b723c3d9a840",
+            "title": "Exploiting latent semantic information in statistical language modeling"
+        },
+        {
+            "paperId": "b888cae7e6e288b108f9d119fc23b84b4d447029",
+            "title": "Towards better integration of semantic predictors in statistical language modeling"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "404fffebcdb9b597489f62735d8ce59eff41f623",
+            "title": "Modeling long distance dependence in language: topic mixtures vs. dynamic cache models"
+        },
+        {
+            "paperId": "076fa8d095c37c657f2aff39cf90bc2ea883b7cb",
+            "title": "A maximum entropy approach to adaptive statistical language modelling"
+        },
+        {
+            "paperId": "9548ac30c113562a51e603dbbc8e9fa651cfd3ab",
+            "title": "Improved backing-off for M-gram language modeling"
+        },
+        {
+            "paperId": "ab7b5917515c460b90451e67852171a531671ab8",
+            "title": "The Mathematics of Statistical Machine Translation: Parameter Estimation"
+        },
+        {
+            "paperId": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+            "title": "Building a Large Annotated Corpus of English: The Penn Treebank"
+        },
+        {
+            "paperId": "606df60d518db088986e74fad1f357ea6e5312f2",
+            "title": "On the dynamic adaptation of stochastic language models"
+        },
+        {
+            "paperId": "6e58b5f825df9fb0b00465a66598f302c30b080a",
+            "title": "Trigger-based language models: a maximum entropy approach"
+        },
+        {
+            "paperId": "eadf7d20852caa92310d0cb582269b94226b1e58",
+            "title": "Adaptive Language Modeling Using Minimum Discriminant Estimation"
+        },
+        {
+            "paperId": "0687165a9f0360bde0469fd401d966540e0897c3",
+            "title": "A Dynamic Language Model for Speech Recognition"
+        },
+        {
+            "paperId": "2ae5a5507253aa3cada113d41d35fada1e84555f",
+            "title": "An Efficient Gradient-Based Algorithm for On-Line Training of Recurrent Network Trajectories"
+        },
+        {
+            "paperId": "1a3d22599028a05669e884f3eaf19a342e190a87",
+            "title": "Backpropagation Through Time: What It Does and How to Do It"
+        },
+        {
+            "paperId": "be1fed9544830df1137e72b1d2396c40d3e18365",
+            "title": "A Cache-Based Natural Language Model for Speech Recognition"
+        },
+        {
+            "paperId": "668087f0ae7ce1de6e0bd0965dbb480c08103260",
+            "title": "Finding Structure in Time"
+        },
+        {
+            "paperId": "343c8af478f7703459b0e390e888efe723f15e31",
+            "title": "Probabilistic Models of Short and Long Distance Word Dependencies in Running Text"
+        },
+        {
+            "paperId": "491566891addc26134c617ab026f5548de39401a",
+            "title": "Speech Recognition and the Frequency of Recently Used Words: A Modified Markov Model for Natural Language"
+        },
+        {
+            "paperId": "b0130277677e5b915d5cd86b3afafd77fd08eb2e",
+            "title": "Estimation of probabilities from sparse data for the language model component of a speech recognizer"
+        },
+        {
+            "paperId": "c4775e2f0d27e8be4aae7b5b5c2560b96ce2eb58",
+            "title": "A Maximum Likelihood Approach to Continuous Speech Recognition"
+        },
+        {
+            "paperId": "240269c9bc2552d451753f2d05ee75d4a02717ba",
+            "title": "Under review as a conference paper at ICLR 2020 3 L INEAR INEQUALITY CONSTRAINTS FOR DEEP LEARNING MODELS We consider a generic L layer neural network"
+        },
+        {
+            "paperId": null,
+            "title": "Mustafa Suleyman, and Phil Blunsom. Teaching machines to read and comprehend. In NIPS"
+        },
+        {
+            "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+            "title": "Recurrent neural network based language model"
+        },
+        {
+            "paperId": "e07cdd0e018cb7809e56a32223711d3a4bc18410",
+            "title": "Act Modeling for Automatic Tagging and Recognition of Conversational Speech"
+        }
+    ]
+}

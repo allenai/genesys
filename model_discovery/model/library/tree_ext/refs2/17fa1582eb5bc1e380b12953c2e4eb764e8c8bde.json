@@ -1,0 +1,142 @@
+{
+    "paperId": "17fa1582eb5bc1e380b12953c2e4eb764e8c8bde",
+    "externalIds": {
+        "DBLP": "journals/corr/BellettiSFBG16",
+        "ArXiv": "1603.03336",
+        "MAG": "2295663533",
+        "CorpusId": 9544301
+    },
+    "title": "Scalable Linear Causal Inference for Irregularly Sampled Time Series with Long Range Dependencies",
+    "abstract": "Linear causal analysis is central to a wide range of important application spanning finance, the physical sciences, and engineering. Much of the existing literature in linear causal analysis operates in the time domain. Unfortunately, the direct application of time domain linear causal analysis to many real-world time series presents three critical challenges: irregular temporal sampling, long range dependencies, and scale. Moreover, real-world data is often collected at irregular time intervals across vast arrays of decentralized sensors and with long range dependencies which make naive time domain correlation estimators spurious. In this paper we present a frequency domain based estimation framework which naturally handles irregularly sampled data and long range dependencies while enabled memory and communication efficient distributed processing of time series data. By operating in the frequency domain we eliminate the need to interpolate and help mitigate the effects of long range dependencies. We implement and evaluate our new work-flow in the distributed setting using Apache Spark and demonstrate on both Monte Carlo simulations and high-frequency financial trading that we can accurately recover causal structure at scale.",
+    "venue": "arXiv.org",
+    "year": 2016,
+    "referenceCount": 24,
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper presents a frequency domain based estimation framework which naturally handles irregularly sampled data and long range dependencies while enabled memory and communication efficient distributed processing of time series data."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "40063714",
+            "name": "Francois Belletti"
+        },
+        {
+            "authorId": "144752747",
+            "name": "Evan R. Sparks"
+        },
+        {
+            "authorId": "143666627",
+            "name": "M. Franklin"
+        },
+        {
+            "authorId": "1705102",
+            "name": "A. Bayen"
+        },
+        {
+            "authorId": "49988044",
+            "name": "Joseph E. Gonzalez"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "673541ce7ae9320c1279a9f46f9991cfb5ba58b8",
+            "title": "Embarrassingly Parallel Time Series Analysis for Large Scale Weak Memory Systems"
+        },
+        {
+            "paperId": "80050cc9090cb42e5b26a8d0f11a1ce19d2b0fc8",
+            "title": "Time Series: Theory and Methods"
+        },
+        {
+            "paperId": "7da377fa19f5a8bdb1468785b1635e4ad26772f7",
+            "title": "Estimation of the lead-lag parameter from non-synchronous data"
+        },
+        {
+            "paperId": "09ab687c644aa978ffa73a525db939711a11bd9c",
+            "title": "Market microstructure: confronting many viewpoints"
+        },
+        {
+            "paperId": "968a716fa5437370c7ed261ac75b1e320ea046e8",
+            "title": "High Frequency Lead/lag Relationships Empirical facts"
+        },
+        {
+            "paperId": "b17ed4e7f08b159a1437d743287c7e1c1d46a393",
+            "title": "Long-Memory Time Series: Theory and Methods"
+        },
+        {
+            "paperId": "4c224a8c6c5b58909286e2da71bf0254d4de7909",
+            "title": "Chaotic analysis of traffic time series"
+        },
+        {
+            "paperId": "395a9a420b8c579c6f44cdaad8c51ad638baa1e5",
+            "title": "On covariance estimation of non-synchronously observed diffusion processes"
+        },
+        {
+            "paperId": "fba2cfd252303b2fb1e41010b127d48f4e89bee8",
+            "title": "Analysis of Financial Time Series"
+        },
+        {
+            "paperId": "84448eceabe055f28ce3c0d74c4fb8447730485f",
+            "title": "Wavelet Methods for Time Series Analysis"
+        },
+        {
+            "paperId": "36482ff0eb3401a05a5d0f002105556512b1ee75",
+            "title": "Introduction to Parallel Computing"
+        },
+        {
+            "paperId": "6d00b41bb19d1c5136e41f204339bffe5748042f",
+            "title": "An efficient method of forecasting chaotic time series using linear interpolation"
+        },
+        {
+            "paperId": "9580e88b5138d61ffd0f769da96f5f82ab8bb2ca",
+            "title": "Causality, cointegration, and control"
+        },
+        {
+            "paperId": "c7844b80046e651ae3368896d4ca8d6fff6d8e3e",
+            "title": "Studies in astronomical time series analysis. II - Statistical aspects of spectral analysis of unevenly spaced data"
+        },
+        {
+            "paperId": "e24d4555ac3743fa68b9032274778f10e3720bfa",
+            "title": "Least-squares frequency analysis of unequally spaced data"
+        },
+        {
+            "paperId": "6a7c63a73724c0ca68b1675e256bb8b9a35c94f4",
+            "title": "Investigating causal relations by econometric models and cross-spectral methods"
+        },
+        {
+            "paperId": "80e9826f5a4238251340b5bf8e81bed7337e7c12",
+            "title": "Extrapolation, Interpolation, and Smoothing of Stationary Time Series"
+        },
+        {
+            "paperId": "679ec615fa784500adda49b39cab804ff72c982c",
+            "title": "The Interpolation of Time Series by Related Series"
+        },
+        {
+            "paperId": "23b92488b12f211ca33b80061dcb0b5c56747a44",
+            "title": "Distributed Computing"
+        },
+        {
+            "paperId": "99e37b4b689339da03493d01a853c00afc67f63d",
+            "title": "Brownian Motion and Stochastic Calculus"
+        },
+        {
+            "paperId": "785f1d3d3517a078ba5ca02bb79f2b3f988a2a4e",
+            "title": "Theory and applications of long-range dependence"
+        },
+        {
+            "paperId": "c665e1920c77b5cebc479a4373a41b6e569f1ceb",
+            "title": "On the spectrum of fractional Brownian motions"
+        },
+        {
+            "paperId": null,
+            "title": "Time Series Analysis of Irregularly Observed Data: Proceedings of a Symposium Held at Texas A & M University, College Station"
+        },
+        {
+            "paperId": "764b069495163338ac70e2b5328e00c12aace914",
+            "title": "Time Series: Data Analysis and Theory."
+        }
+    ]
+}

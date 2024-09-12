@@ -1,0 +1,221 @@
+{
+    "paperId": "72c969a5dc5b236d511fbdaae88c443d14145ae8",
+    "externalIds": {
+        "MAG": "2909813108",
+        "DBLP": "conf/iclr/HsuIKV19",
+        "CorpusId": 53366294
+    },
+    "title": "Learning-Based Frequency Estimation Algorithms",
+    "abstract": "Estimating the frequencies of elements in a data stream is a fundamental task in data analysis and machine learning. The problem is typically addressed using streaming algorithms which can process very large data using limited storage. Today\u2019s streaming algorithms, however, cannot exploit patterns in their input to improve performance. We propose a new class of algorithms that automatically learn relevant patterns in the input data and use them to improve its frequency estimates. The proposed algorithms combine the benefits of machine learning with the formal guarantees available through algorithm theory. We prove that our learning-based algorithms have lower estimation errors than their non-learning counterparts. We also evaluate our algorithms on two real-world datasets and demonstrate empirically their performance gains.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2018,
+    "referenceCount": 45,
+    "citationCount": 142,
+    "influentialCitationCount": 19,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a new class of algorithms that automatically learn relevant patterns in the input data and use them to improve its frequency estimates, and proves that these learning-based algorithms have lower estimation errors than their non-learning counterparts."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2502450",
+            "name": "Chen-Yu Hsu"
+        },
+        {
+            "authorId": "1688317",
+            "name": "P. Indyk"
+        },
+        {
+            "authorId": "1785714",
+            "name": "D. Katabi"
+        },
+        {
+            "authorId": "2347383",
+            "name": "A. Vakilian"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "ed376accc7ff119afdf9535c16f24dfb8031d714",
+            "title": "A Model for Learned Bloom Filters and Optimizing by Sandwiching"
+        },
+        {
+            "paperId": "ae2ef0ff8de98a5e0ecf18e57a6f5e668c6352d7",
+            "title": "MISSION: Ultra Large-Scale Feature Selection using Count-Sketches"
+        },
+        {
+            "paperId": "7883661293c5df437827a3eb0f414b25df6df380",
+            "title": "Learning to Branch"
+        },
+        {
+            "paperId": "6c4e068c2e4b8f5cdc18bcf61cd7f66f6d22f8a7",
+            "title": "Competitive caching with machine learned advice"
+        },
+        {
+            "paperId": "0539535989147bc7033f4a34931c7b8e17f1c650",
+            "title": "The Case for Learned Index Structures"
+        },
+        {
+            "paperId": "27cc9f1b123e7e6d8043bfa6321983acc5f0a688",
+            "title": "DeepCodec: Adaptive sensing and recovery via deep convolutional neural networks"
+        },
+        {
+            "paperId": "1e819f533ef2bf5ca50a6b2008d96eaea2a2706e",
+            "title": "Learning Combinatorial Optimization Algorithms over Graphs"
+        },
+        {
+            "paperId": "3f116042f50a499ab794bcc1255915bee507413c",
+            "title": "Efficient Processing of Deep Neural Networks: A Tutorial and Survey"
+        },
+        {
+            "paperId": "f580b0e1020ad67bdbb11e8d99a59c21a8df1e7d",
+            "title": "Compressed Sensing using Generative Models"
+        },
+        {
+            "paperId": "b71ae4f14d329268baa5d280734054b449e6ea1b",
+            "title": "ESE: Efficient Speech Recognition Engine with Sparse LSTM on FPGA"
+        },
+        {
+            "paperId": "cd7b4fdd5d945cb3be828cc544f3239e060b802a",
+            "title": "Heavy-Hitter Detection Entirely in the Data Plane"
+        },
+        {
+            "paperId": "7efe0dc4cde074bd87089491a6f95dde84397cca",
+            "title": "One Sketch to Rule Them All: Rethinking Network Flow Monitoring with UnivMon"
+        },
+        {
+            "paperId": "fafe0e777dd8aad7a054f4214ef6b7e967b892cd",
+            "title": "Augmented Sketch: Faster and More Accurate Stream Processing"
+        },
+        {
+            "paperId": "2e2b189f668cf2c06ebc44dc9b166648256cf457",
+            "title": "EIE: Efficient Inference Engine on Compressed Deep Neural Network"
+        },
+        {
+            "paperId": "ffdaa12ef011de9dbf43be46d45a3abcc8288965",
+            "title": "Eyeriss: An Energy-Efficient Reconfigurable Accelerator for Deep Convolutional Neural Networks"
+        },
+        {
+            "paperId": "dadb78a50c10067ebac3fa1bb7a240e5ab0a8c35",
+            "title": "Learning-Based Compressive Subsampling"
+        },
+        {
+            "paperId": "642d0f49b7826adcf986616f4af77e736229990f",
+            "title": "Deep Compression: Compressing Deep Neural Network with Pruning, Trained Quantization and Huffman Coding"
+        },
+        {
+            "paperId": "81b7e5635241f0fae8eac9f703f604a1a0073038",
+            "title": "Learning to Hash for Indexing Big Data\u2014A Survey"
+        },
+        {
+            "paperId": "08ca35366a4708ead695497c82edf1401d1bbf27",
+            "title": "A deep learning approach to structured signal recovery"
+        },
+        {
+            "paperId": "6cfc1a9a85abaca2487b154b579fdad6c293e0dd",
+            "title": "Scalable Preference Learning from Data Streams"
+        },
+        {
+            "paperId": "6544d86462d3a0bb2717ba336ad48a0c0f621246",
+            "title": "Learning to Search in Branch and Bound Algorithms"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "41e49fd3af628f1c8201942a659769f7cc21d812",
+            "title": "Scaling Graph-based Semi Supervised Learning to Large Number of Labels Using Count-Min Sketch"
+        },
+        {
+            "paperId": "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17",
+            "title": "Generating Sequences With Recurrent Neural Networks"
+        },
+        {
+            "paperId": "f1ad95a898ba4d8a96557178d731760e083cafdb",
+            "title": "Software Defined Traffic Measurement with OpenSketch"
+        },
+        {
+            "paperId": "55a62990a82bf9205e507f73d42583df46062806",
+            "title": "A new approach to interdomain routing based on secure multi-party computation"
+        },
+        {
+            "paperId": "3b89f710d5bf422a1fbbc95585d0c030fd2b26c4",
+            "title": "Improved Concentration Bounds for Count-Sketch"
+        },
+        {
+            "paperId": "b1d9e1dcbbf380eeefdf184c9aff3d06754c000c",
+            "title": "Sketch Algorithms for Estimating Point Queries in NLP"
+        },
+        {
+            "paperId": "1e32ec997cd9f85b31aee87007d4b18841d6acd9",
+            "title": "Tight bounds for Lp samplers, finding duplicates in streams, and related problems"
+        },
+        {
+            "paperId": "c218cad1ff66042802862e41f0e305a902453439",
+            "title": "Popularity Is Everything: A New Approach to Protecting Passwords from Statistical-Guessing Attacks"
+        },
+        {
+            "paperId": "2874730dde419b7989e12e5d97dac9b2a9fad455",
+            "title": "Sparse Recovery Using Sparse Matrices"
+        },
+        {
+            "paperId": "bfb8ea13385f363742d882d68169c945c203e6dc",
+            "title": "Summarizing and Mining Skewed Data Streams"
+        },
+        {
+            "paperId": "72f15aba2e67b1cc9cd1fb12c99e101c4c1aae4b",
+            "title": "Efficient Computation of Frequent and Top-k Elements in Data Streams"
+        },
+        {
+            "paperId": "c1180048929ed490ab25e0e612f8f7c3d7196450",
+            "title": "Robust uncertainty principles: exact signal reconstruction from highly incomplete frequency information"
+        },
+        {
+            "paperId": "3d48d4a133f6268a013d34ff9ec333950af7200c",
+            "title": "Data streaming algorithms for efficient and accurate estimation of flow size distribution"
+        },
+        {
+            "paperId": "cd873347660c2af6a70d623a9fb265893e64c98d",
+            "title": "An improved data stream summary: the count-min sketch and its applications"
+        },
+        {
+            "paperId": "1a5bff15fdffa1205c0b1e6aa101158915dd8e87",
+            "title": "New directions in traffic measurement and accounting: Focusing on the elephants, ignoring the mice"
+        },
+        {
+            "paperId": "e82c4930ec5f01508313d8ad9b41565d25ea96d5",
+            "title": "A simple algorithm for finding frequent elements in streams and bags"
+        },
+        {
+            "paperId": "ece890238d1cbc2bdd707cfea7e9877083d6e944",
+            "title": "Frequency Estimation of Internet Packet Streams with Limited Space"
+        },
+        {
+            "paperId": "24763030fb1e9813dad51d28bea9c5d1414f9cda",
+            "title": "Finding frequent items in data streams"
+        },
+        {
+            "paperId": "5285b2c3880c2fe5a93a9ed213a169facf6d6228",
+            "title": "Finding Repeated Elements"
+        },
+        {
+            "paperId": null,
+            "title": "(1+\u03b1)B = 20M,n = 33.5M) and ((1+\u03b1)B = 50M,n"
+        },
+        {
+            "paperId": "e7321ab0f3be0b29aaf5f073fd7de7da5fed2f92",
+            "title": "Compressed Sensing"
+        },
+        {
+            "paperId": "4748d22348e72e6e06c2476486afddbc76e5eca7",
+            "title": "Product Quantization for Nearest Neighbor Search"
+        },
+        {
+            "paperId": "1c46943103bd7b7a2c7be86859995a4144d1938b",
+            "title": "Visualizing Data using t-SNE"
+        }
+    ]
+}

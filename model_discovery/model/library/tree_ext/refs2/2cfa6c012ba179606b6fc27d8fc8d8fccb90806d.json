@@ -1,0 +1,884 @@
+{
+    "paperId": "2cfa6c012ba179606b6fc27d8fc8d8fccb90806d",
+    "externalIds": {
+        "MAG": "1982064072",
+        "DOI": "10.1016/S0377-0427(00)00412-X",
+        "CorpusId": 14367151
+    },
+    "title": "Iterative solution of linear systems in the 20th century",
+    "abstract": null,
+    "venue": "",
+    "year": 2000,
+    "referenceCount": 212,
+    "citationCount": 490,
+    "influentialCitationCount": 26,
+    "openAccessPdf": {
+        "url": "https://dspace.library.uu.nl/bitstream/handle/1874/1861/ithistory.pdf?sequence=1&isAllowed=y",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper sketches the main research developments in the area of iterative methods for solving linear systems during the 20th century, ending with the availability of large toolbox of specialized algorithms for solving the very large problems which arise in scientic and industrial computational models."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1765199",
+            "name": "Y. Saad"
+        },
+        {
+            "authorId": "1786744",
+            "name": "H. A. Vorst"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "4a27d3ca08e2d03d93c1b9b0f706f53e1772692a",
+            "title": "Predicting the Behavior of Finite Precision Lanczos and Conjugate Gradient Computations"
+        },
+        {
+            "paperId": "8bf17c4e97c390b42d45e55a116ba11d76e16acc",
+            "title": "Computer Solution of Large Linear Systems"
+        },
+        {
+            "paperId": "c805aa2bba472731b358d1693917d930fc40a055",
+            "title": "Orderings for Incomplete Factorization Preconditioning of Nonsymmetric Problems"
+        },
+        {
+            "paperId": "154c81d388c666b10cd84b59a391d7fba9f06357",
+            "title": "Approximate Inverse Preconditioners via Sparse-Sparse Iterations"
+        },
+        {
+            "paperId": "78f04b1d83ba6574f0de5847ac2bfd5015d46f93",
+            "title": "Approximate Inverse Techniques for Block-Partitioned Matrices"
+        },
+        {
+            "paperId": "82703fe8dd01150caef7657974624ca10f8f951b",
+            "title": "Parallel Preconditioning with Sparse Approximate Inverses"
+        },
+        {
+            "paperId": "6946cf6a229a46a9c4a89e1db99c76c4e2b99ea6",
+            "title": "GPBi-CG: Generalized Product-type Methods Based on Bi-CG for Solving Nonsymmetric Linear Systems"
+        },
+        {
+            "paperId": null,
+            "title": "A Sparse Approximate Inverse Preconditioner for the Conjugate Gradient Method"
+        },
+        {
+            "paperId": "45ce900547b9276fdf3c854a43d7df7db20f7a5c",
+            "title": "Parameter-Free Iterative Linear Solvers"
+        },
+        {
+            "paperId": "2c8895bf1a51970fbc640736ee7394b632593000",
+            "title": "Generalized conjugate gradient squared"
+        },
+        {
+            "paperId": "980b28dc7f3ffa2dc00d561906d479a72df15792",
+            "title": "Any Nonincreasing Convergence Curve is Possible for GMRES"
+        },
+        {
+            "paperId": "dacfbaf8bdcb6df0d6f2599c49e351f2735f38a3",
+            "title": "Relations between Galerkin and Norm-Minimizing Iterative Methods for Solving Linear Systems"
+        },
+        {
+            "paperId": "dfee553e34c2558e94433c884745942bfffbdc9a",
+            "title": "Nested grids ILU-decomposition (NGILU)"
+        },
+        {
+            "paperId": "46d50b13b688ce297cd8f0c93de087fce0c793fa",
+            "title": "A theoretical overview of Krylov subspace methods"
+        },
+        {
+            "paperId": "05173a73828215ff813ef8cbbd2ed65f929a4880",
+            "title": "SOR as a preconditioner"
+        },
+        {
+            "paperId": "2c1ec0a794fe037544b4becc81af42729e0a082f",
+            "title": "Look-ahead in Bi-CGSTAB and other product methods for linear systems"
+        },
+        {
+            "paperId": "ac530c7b0aa7dacbfabf2f1585510c23c0ee8ea0",
+            "title": "Ordering Strategies for Modified Block Incomplete Factorizations"
+        },
+        {
+            "paperId": "070fc7b395421371e064a344dcd6695f417dff85",
+            "title": "DRIC: A dynamic version of the RIC method"
+        },
+        {
+            "paperId": "60d6f160fedb689dcfb8376cf66d99af38d32ad3",
+            "title": "Parallel block preconditioning based on SSOR and MILU"
+        },
+        {
+            "paperId": "0e8a1447790fa2d23c76f7b0b8f16987e160f6a2",
+            "title": "GMRESR: a family of nested GMRES methods"
+        },
+        {
+            "paperId": "5b27f47213f7c9a9e8376405a779ce96bb7076ea",
+            "title": "Variable metric conjugate gradient methods"
+        },
+        {
+            "paperId": "c88b862171a585438f2cbdd2bdd8d808fa66e092",
+            "title": "Error-Minimizing Krylov Subspace Methods"
+        },
+        {
+            "paperId": "9d2ee180c272db076485b352fcf597b1688dad08",
+            "title": "A Quasi-Minimal Residual Variant of the Bi-CGSTAB Algorithm for Nonsymmetric Systems"
+        },
+        {
+            "paperId": "c609fb381a614e8c63035ad483a55e99dd35f7a5",
+            "title": "An analysis of the composite step biconjugate gradient method"
+        },
+        {
+            "paperId": "6abc874f62bf39ed51ae70ea78da79baa17537c2",
+            "title": "A Flexible Inner-Outer Preconditioned GMRES Algorithm"
+        },
+        {
+            "paperId": "87c73a26f6cdde660fae6805d48442faca65fcec",
+            "title": "A Transpose-Free Quasi-Minimal Residual Algorithm for Non-Hermitian Linear Systems"
+        },
+        {
+            "paperId": "d9733c31a71ca61f07ac828b0efacae7ab4cf292",
+            "title": "Modified block-approximate factorization strategies"
+        },
+        {
+            "paperId": "08d2c7fa72b8a00f6da35f556f230488534e35ca",
+            "title": "A breakdown-free Lanczos type algorithm for solving linear systems"
+        },
+        {
+            "paperId": "63395680740e3de2fd3e06804a0e05e3af8815fb",
+            "title": "Towards a cost-effective ILU preconditioner with high level fill"
+        },
+        {
+            "paperId": "e701052b7491b88a94eaf8aa72ef949eb7237e54",
+            "title": "Ordering Methods for Preconditioned Conjugate Gradient Methods Applied to Unstructured Grid Problems"
+        },
+        {
+            "paperId": "899bd31c4b9a29b593c31ccbcd4497684eeea864",
+            "title": "How Fast are Nonsymmetric Matrix Iterations?"
+        },
+        {
+            "paperId": "6f20e790c84a5cd824e2aab0b188e6da2623eef9",
+            "title": "Reduction to Tridiagonal Form and Minimal Realizations"
+        },
+        {
+            "paperId": "4d82968351583de52a704241efc65c85bc61b452",
+            "title": "Bi-CGSTAB: A Fast and Smoothly Converging Variant of Bi-CG for the Solution of Nonsymmetric Linear Systems"
+        },
+        {
+            "paperId": "02f6c07fc04e1fc578613f11d3e72ce2c13ac9cd",
+            "title": "Generalized Schwarz Splittings"
+        },
+        {
+            "paperId": "fa833b1604604ccfb5c3dccd76c64573a7bf46cd",
+            "title": "QMR: a quasi-minimal residual method for non-Hermitian linear systems"
+        },
+        {
+            "paperId": "f6b97f948d7fd1f2705667abe448839dfbd30844",
+            "title": "A black box generalized conjugate gradient solver with inner iterations and variable-step preconditioning"
+        },
+        {
+            "paperId": "834c954c72bbd24c2d293c838a205c3856187a0b",
+            "title": "On the real convergence rate of the conjugate gradient method"
+        },
+        {
+            "paperId": "80fd03ffe3853a461e7652be3db750c30b9025bc",
+            "title": "A Theoretical Comparison of the Arnoldi and GMRES Algorithms"
+        },
+        {
+            "paperId": "317e223a8b1c7f796c12e9fe8e0b9fb2dd081bb6",
+            "title": "Algebraic multilevel preconditioning methods, II"
+        },
+        {
+            "paperId": "5fedc3519941131b223d2b7cdf54b1481f8ac53e",
+            "title": "A Note on the Efficiency of Domain Decomposed Incomplete Factorizations"
+        },
+        {
+            "paperId": "0e29942c75a8a8b5daf06c4080a2a36f3a0379bf",
+            "title": "Krylov Methods Preconditioned with Incompletely Factored Matrices on the CM-2"
+        },
+        {
+            "paperId": "b7167b0904e677a7f381dc11daa0b0ab31adca0a",
+            "title": "Relaxed and stabilized incomplete factorizations for non-self-adjoint linear systems"
+        },
+        {
+            "paperId": "cafab166e245d813b5b3d1a41c9136c444a7ae85",
+            "title": "The effect of ordering on preconditioned conjugate gradients"
+        },
+        {
+            "paperId": "e39ed7211449147a1fb2edbc1e2900a88db2d672",
+            "title": "Application of sparse matrix solvers as effective preconditioners"
+        },
+        {
+            "paperId": "b3d6bbeb453ee3cdb93d2d0329e64a341b52e69c",
+            "title": "Krylov Subspace Methods on Supercomputers"
+        },
+        {
+            "paperId": "ca4441a92e3bb66d2e96228bc789bf47a164bcbc",
+            "title": "High Performance Preconditioning"
+        },
+        {
+            "paperId": "ea5d9867d22f00bde6e7d7c6b301d07dc3ba06fb",
+            "title": "Parallel conjugate gradient-like algorithms for solving sparse nonsymmetric linear systems on a vector multiprocessor"
+        },
+        {
+            "paperId": "da4083f8f570d8a2b3efe74f86ad60592a3c0a89",
+            "title": "Accelerating with rank-one updates"
+        },
+        {
+            "paperId": "6fad552c9ffc981362337ae77197a8e4e220d766",
+            "title": "ICCG and related methods for 3D problems on vector computers"
+        },
+        {
+            "paperId": "86b965024a195ebc52915ed1dd59e8d1d51ae156",
+            "title": "Solving Sparse Triangular Linear Systems on Parallel Computers"
+        },
+        {
+            "paperId": "6644f26470d586eafe227d841f8bdc8c5763252b",
+            "title": "Some History of the Conjugate Gradient and Lanczos Algorithms: 1948-1976"
+        },
+        {
+            "paperId": "5da7aa9efd6035641fc13d6c74e0068dcfe4406a",
+            "title": "Run-time parallelization and scheduling of loops"
+        },
+        {
+            "paperId": "2528793df6848b4da3478894a185a581af22021a",
+            "title": "A projection method for solving nonsymmetric linear systems on multiprocessors"
+        },
+        {
+            "paperId": "ec65343f83c51ed5a588f5961ff17b4991cd41ff",
+            "title": "Algebraic multilevel preconditioning methods. I"
+        },
+        {
+            "paperId": "502d7f4adc764df4a1742f0e06f296dfab1ad9e2",
+            "title": "An experimental study of methods for parallel preconditioned Krylov methods"
+        },
+        {
+            "paperId": "19c6ef369c356c338d85765c3b61f96cc020de11",
+            "title": "CGS, A Fast Lanczos-Type Solver for Nonsymmetric Linear systems"
+        },
+        {
+            "paperId": "8c04382c2f40d3a4dd3a60d1ab0f6867e57bafc0",
+            "title": "A stable Richardson iteration method for complex linear systems"
+        },
+        {
+            "paperId": "0afad907b58c4c278a7766886746178987e4b309",
+            "title": "Preconditioning techniques for nonsymmetric and indefinite linear systems"
+        },
+        {
+            "paperId": "90d2eb060bd96a9704d56ebc8f8420e51d12a153",
+            "title": "Imaging algorithms, accuracy and resolution in delay time tomography"
+        },
+        {
+            "paperId": "f22b2f411af2e194fbd542b7d17042edf9c078e2",
+            "title": "Incomplete LU Preconditioners for Conjugate-Gradient-Type Iterative Methods"
+        },
+        {
+            "paperId": "9b4df7d1117dcab1aa589c407b38115b6b5e8e32",
+            "title": "Computing the Roots of Complex Orthogonal and Kernel Polynomials"
+        },
+        {
+            "paperId": "d225129655fcf086d93a041dc0c6132a90085047",
+            "title": "Large tridiagonal and block tridiagonal linear systems on vector and parallel computers"
+        },
+        {
+            "paperId": "a39d2f3d89c4aa4744bf7c946e79567d1a5720b3",
+            "title": "Direct Methods for Sparse Matrices"
+        },
+        {
+            "paperId": "c0db002e1fab976fad80f59e796560c23702ef0f",
+            "title": "Least squares polynomials in the complex plane and their use for solving nonsymmetric linear systems"
+        },
+        {
+            "paperId": "dc0ea1f7ad30b05cf76df1eefb852e68d30cfa85",
+            "title": "A hybrid Chebyshev Krylov subspace algorithm for solving nonsymmetric systems of linear equations"
+        },
+        {
+            "paperId": "534b90afd9c89d31ea61082899e33888f8da76ac",
+            "title": "A stability analysis of incomplete LU factorizations"
+        },
+        {
+            "paperId": "7bb9bab74df4d2939bbdf41fc33027b59e0f229e",
+            "title": "GMRES: a generalized minimal residual algorithm for solving nonsymmetric linear systems"
+        },
+        {
+            "paperId": "ec1afaeebb0e0e835326e10202b87ec3bbff4478",
+            "title": "On the eigenvalue distribution of a class of preconditioning methods"
+        },
+        {
+            "paperId": "bbaf2ec436aae8fde5b9b3dfb28dfcda07490551",
+            "title": "The rate of convergence of Conjugate Gradients"
+        },
+        {
+            "paperId": "e4bbe40f4c136bf554e56bf3fdcd296fb2330f92",
+            "title": "A general incomplete block-matrix factorization method"
+        },
+        {
+            "paperId": "582ceeb434593dc20269751ad0db85f4d272770c",
+            "title": "Practical Use of Polynomial Preconditionings for the Conjugate Gradient Method"
+        },
+        {
+            "paperId": "95a22bdbd85809eb2a8f540a6e62d3cea13cc27f",
+            "title": "Computational methods in linear algebra"
+        },
+        {
+            "paperId": "887a57e036bf37f17fa12438417f1e31063d1ccb",
+            "title": "Necessary and Sufficient Conditions for the Existence of a Conjugate Gradient Method"
+        },
+        {
+            "paperId": "32bf7a57a8f3c94dca08715456afa6943e985396",
+            "title": "Direct Methods for Sparse Matrices"
+        },
+        {
+            "paperId": "1fc0ce44410db9fa9767a8e2661638c9269e3d10",
+            "title": "Variational Iterative Methods for Nonsymmetric Systems of Linear Equations"
+        },
+        {
+            "paperId": "aa915c140e823c45cfc7c918cd7194d5aeeb9a01",
+            "title": "Polynomial Preconditioners for Conjugate Gradient Calculations"
+        },
+        {
+            "paperId": "525ecbff7805d45a0d16f98badc6c626b0d4663e",
+            "title": "A Vectorizable Variant of some ICCG Methods"
+        },
+        {
+            "paperId": "e76e7e99ac2bb523e5bb7985363e3f2a9d851015",
+            "title": "Use of Iterative Refinement in the Solution of Sparse Linear Systems"
+        },
+        {
+            "paperId": "30cadff20998ea7bea6da42fa0eed48334fdde1e",
+            "title": "LSQR: An Algorithm for Sparse Linear Equations and Sparse Least Squares"
+        },
+        {
+            "paperId": "e851ac3acc987b4075e79d29ac7a25ccc4f8eb85",
+            "title": "Extremal Polynomials with Application to Richardson Iteration for Indefinite Linear Systems"
+        },
+        {
+            "paperId": "c6d4cf6c13255100c605ca6a0c3b7ca67333348f",
+            "title": "Guidelines for the usage of incomplete decompositions in solving sets of linear equations as they occur in practical problems"
+        },
+        {
+            "paperId": "287b936fade90a04cebc9f785738c3523d883ab9",
+            "title": "Iterative solution methods for certain sparse linear systems with a non-symmetric matrix arising from PDE-problems\u2606"
+        },
+        {
+            "paperId": "c600095f5c36b39cf2349dfacec33da2efe03d79",
+            "title": "A Conjugate Gradient-Truncated Direct Method for the Iterative Solution of the Reservoir Simulation Pressure Equation"
+        },
+        {
+            "paperId": "7fee3e7cc4458b03acacc4f48657ffe75c855d97",
+            "title": "Generalized conjugate-gradient acceleration of nonsymmetrizable iterative methods"
+        },
+        {
+            "paperId": "4cda72b6424d4a0b830b33d8a4509019df17785e",
+            "title": "Conjugate gradient type methods for unsymmetric and inconsistent systems of linear equations"
+        },
+        {
+            "paperId": "5ab3e4fb0e34c3d566e53b2206078ee8c39ae78e",
+            "title": "Accelerated projection methods for computing pseudoinverse solutions of systems of linear equations"
+        },
+        {
+            "paperId": "f9fecab3a30b884cf7326bb5b118e1852b051d96",
+            "title": "A Lanczos Method for a Class of Nonsymmetric Systems of Linear Equations"
+        },
+        {
+            "paperId": "21fd2082082446a68f5b55c5ebd6328bc14f8a9a",
+            "title": "Adaptive procedure for estimating parameters for the nonsymmetric Tchebychev iteration"
+        },
+        {
+            "paperId": "24296d890c224b238be8e96b3ab628ed647ce156",
+            "title": "A class of first order factorization methods"
+        },
+        {
+            "paperId": "a2b2e41435cba4d34e9867a5cf5264718c6bb594",
+            "title": "The Tchebychev iteration for nonsymmetric linear systems"
+        },
+        {
+            "paperId": "e02ce144d3b524ef77569b9bcbcffec7540d0193",
+            "title": "Multi-level adaptive solutions to boundary-value problems math comptr"
+        },
+        {
+            "paperId": "2dfbb70cafb110c660d4230386f9dd6328b61421",
+            "title": "Solution of Sparse Indefinite Systems of Linear Equations"
+        },
+        {
+            "paperId": "1fb40d476e5ef4d6598faad9c51f7100dd2bc713",
+            "title": "Handbook for Automatic Computation. Vol II, Linear Algebra"
+        },
+        {
+            "paperId": "6ca9e34123a4886a90612ec494cc14f0dc77b59e",
+            "title": "A generalized SSOR method"
+        },
+        {
+            "paperId": "2a90c3990e2593174a0a6b7815115efbe0ac0f04",
+            "title": "Projection method for solving a singular system of linear equations and its applications"
+        },
+        {
+            "paperId": "7f4207600ee49c513b10cb8819c823fedd14209d",
+            "title": "Hyperbolic Pairs in the Method of Conjugate Gradients"
+        },
+        {
+            "paperId": "581dc77556e923cd7b74d85ea0b0221521d5ac56",
+            "title": "On the approximate minimization of functionals"
+        },
+        {
+            "paperId": "46c917744b707b56a2b0e6ca3340c3f5ba234ded",
+            "title": "A New Method of Solving Nonlinear Simultaneous Equations"
+        },
+        {
+            "paperId": "2e592a04b24f61461ac2a3fe89fbf78baa947733",
+            "title": "An Approximate Factorization Procedure for Solving Self-Adjoint Elliptic Difference Equations"
+        },
+        {
+            "paperId": "5bd7e8e409122983085ed60f25fcb985619647f9",
+            "title": "ITERATIVE SOLUTION OF IMPLICIT APPROXIMATIONS OF MULTIDIMENSIONAL PARTIAL DIFFERENTIAL EQUATIONS"
+        },
+        {
+            "paperId": "4315b3392eb2f725bc24d008aaf2c8f21a8fc864",
+            "title": "The Use of Pre-conditioning in Iterative Methods for Solving Linear Equations with Symmetric Positive Definite Matrices"
+        },
+        {
+            "paperId": "06fe71d1f1d2953634588042ae5b4729f8bd0ff5",
+            "title": "Iterative solution of elliptic systems : and applications to the neutron diffusion equations of reactor physics"
+        },
+        {
+            "paperId": "884e3b192f522ae49a731a49ba7c017529d07438",
+            "title": "The Conjugate Gradient Method for Linear and Nonlinear Operator Equations"
+        },
+        {
+            "paperId": "4713a6bea2d6e55c0a88e90fa0b25f60a4e6faf3",
+            "title": "The algebraic eigenvalue problem"
+        },
+        {
+            "paperId": "5cde0050027c22a953ffa9875ddeb6a961eecd14",
+            "title": "Estimates for Some Computational Techniques - in Linear Algebra"
+        },
+        {
+            "paperId": "86893eff0153efed6172d017007e0ae96547712f",
+            "title": "Computational Methods of Linear Algebra."
+        },
+        {
+            "paperId": "61f55254d911c1c202d2801e3abe0413773d9a4b",
+            "title": "An Iterative Least-Square Method Suitable for Solving Large Sparse Matrices"
+        },
+        {
+            "paperId": "3dacd9e1955171793e8ad90761dc77c271dfb416",
+            "title": "An extrapolation procedure for solving linear systems"
+        },
+        {
+            "paperId": "7b4a892dc4bf654a4ef9d787609066d2aeda679d",
+            "title": "Chebyshev semi-iterative methods, successive overrelaxation iterative methods, and second order Richardson iterative methods"
+        },
+        {
+            "paperId": "e726f00657c2d82e5ff0ef011910f2d197c4b010",
+            "title": "Matrix Iterative Analysis"
+        },
+        {
+            "paperId": "9a4c89a01048387b5406f4360e74a932b8833378",
+            "title": "Boundary Problems in Differential Equations"
+        },
+        {
+            "paperId": "d0bb3752f542cbabfb01dbcf9753700c6a77dc95",
+            "title": "On the numerical solution of elliptic difference equations"
+        },
+        {
+            "paperId": "6fbc5ee62633077478d62253e4ab298d7cb84f1f",
+            "title": "The Numerical Solution of Parabolic and Elliptic Differential Equations"
+        },
+        {
+            "paperId": "14e0ce4d7cd70b3aa93181689ae3eb22e3a02dcc",
+            "title": "On Richardson's Method for Solving Linear Systems with Positive Definite Matrices"
+        },
+        {
+            "paperId": "b24db2a0d86669c6d7dff45e550ad913e46c5a26",
+            "title": "Use of Tschebyscheff\u2010Polynomial Operators in the Numerical Solution of Boundary\u2010Value Problems"
+        },
+        {
+            "paperId": "466daddfb6340c28cb8da548007028c8cc5df687",
+            "title": "Methods of conjugate gradients for solving linear systems"
+        },
+        {
+            "paperId": "511f4ffc02b9ceb5fc9a1ae97574a03bbd9d2a0f",
+            "title": "Chebyshev polynomials in the solution of large-scale linear systems"
+        },
+        {
+            "paperId": "a998bb2f702a2ecaf926487daa0a88e1a9da0d11",
+            "title": "Solution of Systems of Linear Equations by Minimized Iterations1"
+        },
+        {
+            "paperId": "9284971cd371f582aa2ac5cfec50e41d4a9dd6a3",
+            "title": "Convergence of a method of solving linear problems"
+        },
+        {
+            "paperId": "d252389e81eede4c33793bfd887c20e872126502",
+            "title": "The principle of minimized iterations in the solution of the matrix eigenvalue problem"
+        },
+        {
+            "paperId": "ce57e030e93fc8ccdca3504a02addd33f853cfc7",
+            "title": "Numerical Determination of Fundamental Modes"
+        },
+        {
+            "paperId": "abfa5038b8537655353294689da9380c8c9342f9",
+            "title": "Convergence rates of iterative treatments of partial differential equations"
+        },
+        {
+            "paperId": "2611b5ea8e709990acb1bcb4859ae57075e4ef50",
+            "title": "On the Convergence of the Classical Iterative Method of Solving Linear Simultaneous Equations"
+        },
+        {
+            "paperId": "84bfe7a34953a3d322020b7eb78dfd5e7a5e7a24",
+            "title": "On the Solution of Linear Simultaneous Equations By Iteration"
+        },
+        {
+            "paperId": "cc103d7a96b83249126743d7f1e9d0c58dc13fe2",
+            "title": "\u00dcber die determinanten mit \u00fcberwiegender Hauptdiagonale"
+        },
+        {
+            "paperId": "ecfc24bc6ac21aeaaaa9dcec6201477a4cdf9a23",
+            "title": "Stress-calculation in frameworks by the method of \"systematic relaxation of constraints\"\u2014I and II"
+        },
+        {
+            "paperId": "53549d2fde6d3c81cda96a47f8ffb72ef59ed6af",
+            "title": "On Algebraic Multilevel Preconditioning"
+        },
+        {
+            "paperId": "a753c54248baf7a620ff89a752d375f69768e6df",
+            "title": "A Two-Level Parallel Preconditioner Based on Sparse Approximate Inverses"
+        },
+        {
+            "paperId": null,
+            "title": "Convergence of Krylov Subspace Methods for Non-Normal Matrices"
+        },
+        {
+            "paperId": "62e8a129a6257f144a20d95ea862dae6f07fd33c",
+            "title": "An Evaluation of Parallel Multigrid as a Solver and a Preconditioner for Singularly Perturbed Problems"
+        },
+        {
+            "paperId": "3ecf42379b5a07bb4a2a973718847c6ca79dcca9",
+            "title": "Numerical Linear Algebra for High-Performance Computers"
+        },
+        {
+            "paperId": "772be304eb30f741dc6ad503255c192d3f095753",
+            "title": "Projection methods for systems of equations"
+        },
+        {
+            "paperId": "271d00e59c669bb10ab838dd6c56f82ff5fb7c84",
+            "title": "Iterative methods for solving linear systems"
+        },
+        {
+            "paperId": "391a88165e60a65a8226646ac86a93bd30364d42",
+            "title": "Nested grids ILU-decomposition"
+        },
+        {
+            "paperId": "e90a3763e5e1530932d49afbd3c26086d522b558",
+            "title": "Effective Parallel Preconditioning with Sparse Approximate Inverses"
+        },
+        {
+            "paperId": "c20f3a2b72a082d8da0c2c7cfdcbc7e3728d496e",
+            "title": "Look{ahead in Bi{cgstab and Other Product Methods for Linear Systems"
+        },
+        {
+            "paperId": null,
+            "title": "Local Coupling in Domain Decomposition"
+        },
+        {
+            "paperId": null,
+            "title": "Preconditioning for sparse matrices with applications, Ph.D"
+        },
+        {
+            "paperId": "42fdb5dbe4910f5e14502a401e09282e2101d1cb",
+            "title": "Highly Parallel Preconditioners for General Sparse Matrices"
+        },
+        {
+            "paperId": "c8d6b732b94a6b91cf425c523c8eda9d338b5c4f",
+            "title": "A Completed Theory of the Unsymmetric Lanczos Process and Related Algorithms. Part II"
+        },
+        {
+            "paperId": "e9ac3f57c39aa80f618a4821c9d98310b54808e8",
+            "title": "Templates for the Solution of Linear Systems: Building Blocks for Iterative Methods"
+        },
+        {
+            "paperId": null,
+            "title": "Matrices that generate the same Krylov varieties"
+        },
+        {
+            "paperId": null,
+            "title": "and H"
+        },
+        {
+            "paperId": "d11f2ff3e3947c2b9036aa930de933d566ec4710",
+            "title": "An Implementation of the Look-Ahead Lanczos Algorithm for Non-Hermitian Matrices"
+        },
+        {
+            "paperId": "886803ef9dcc14482ea5cc5a02dfe3f39085c29c",
+            "title": "Parallel Preconditioning and Approximate Inverses on the Connection Machine"
+        },
+        {
+            "paperId": "6bd619315e75ee89335fd66a421eb645c2bfe074",
+            "title": "Factorized Sparse Approximate Inverse Preconditionings I. Theory"
+        },
+        {
+            "paperId": "7ff7488bad813595112446032b259275825ec5c0",
+            "title": "ON ALGEBRAIC MULTILEVEL PRECONDITIONING METHODS"
+        },
+        {
+            "paperId": "5e444f7732487e58d818f0e31493280b91d317fe",
+            "title": "BICGSTAB( L ) FOR LINEAR EQUATIONS INVOLVING UNSYMMETRIC MATRICES WITH COMPLEX"
+        },
+        {
+            "paperId": null,
+            "title": "Kolotilina and A"
+        },
+        {
+            "paperId": "feba425369b55e95e1fb91549000d78c73dfd3b5",
+            "title": "Line Iterative Methods for Cyclically Reduced Discrete Convection-Diffusion Problems"
+        },
+        {
+            "paperId": "e2aafdac7b6967cfd55f6d0cb0bc065ae3c19221",
+            "title": "Row Projection Methods for Large Nonsymmetric Linear Systems"
+        },
+        {
+            "paperId": "ce345ea731a10d3c7f604e8ee7d3b97b11badd3b",
+            "title": "A comparison of some GMRES-like methods"
+        },
+        {
+            "paperId": "2cd61cba3ca13d5aadb6359bf9f9098c8f25cd66",
+            "title": "A Completed Theory of the Unsymmetric Lanczos Process and Related Algorithms, Part I"
+        },
+        {
+            "paperId": "1d324ed871fe551d7dd606eeea2683e0dbaa2f08",
+            "title": "Approximate inverse preconditionings for sparse linear systems"
+        },
+        {
+            "paperId": "10abd0120fe11bca4c4587288d851c437ec4ef68",
+            "title": "Solution of large unsymmetric systems of linear equations"
+        },
+        {
+            "paperId": "392af3991c737568e6901e3b67feacd76103e495",
+            "title": "Generalized conjugate gradient and Lanczos methods for the solution of nonsymmetric systems of linear equations"
+        },
+        {
+            "paperId": "22c035f33efb4ea30ada366ae355bb18e3173eae",
+            "title": "A parallel hybrid sparse linear system solver"
+        },
+        {
+            "paperId": null,
+            "title": "Direct sparse matrix methods"
+        },
+        {
+            "paperId": null,
+            "title": "A framework for the analysis of domain decomposition preconditioners"
+        },
+        {
+            "paperId": null,
+            "title": "ICCG and related method for 3-D problems on vector computers, in: D. Truhlar (Ed.), Workshop on Practical Iterative Methods for Large Scale Computations, Minneaopolis"
+        },
+        {
+            "paperId": "8a2384ff41dc2c337e6aaacbcfd13f74e0e2f1ea",
+            "title": "A multigrid tutorial"
+        },
+        {
+            "paperId": "9f4e2e3332afbeef3989529dc386095aa3b43083",
+            "title": "4. Algebraic Multigrid"
+        },
+        {
+            "paperId": "f172eaee6757ece3e7449bacb971fe8af0172c7d",
+            "title": "A Computer and Communication Network Performance Analysis Primer (Prentice Hall, Englewood Cliffs, NJ, 1985; revised, 1987)"
+        },
+        {
+            "paperId": null,
+            "title": "editor"
+        },
+        {
+            "paperId": "e79c7d5d5f36ec1c1904152ff965722e4e764061",
+            "title": "On a family of two-level preconditionings of the incomplete block factorization type"
+        },
+        {
+            "paperId": "128511d2ad7912c25abe1c790d90d6a4facd3c52",
+            "title": "Advances in numerical methods for large sparse sets of linear equations"
+        },
+        {
+            "paperId": "daca7f4e313f538024e5a92230e867c480c51acd",
+            "title": "Multi-grid methods and applications"
+        },
+        {
+            "paperId": "b2412f0fcd02503e52c317852d6b766ec4339c5b",
+            "title": "A Look Ahead Lanczos Algorithm for Unsymmetric Matrices"
+        },
+        {
+            "paperId": "d5289b71c18e3d6008e8bb242a8dde91a9907331",
+            "title": "Block Preconditioning for the Conjugate Gradient Method"
+        },
+        {
+            "paperId": "a05f81c7a13f6329228539b20c69649945837ac8",
+            "title": "On the linear iteration procedures for symmetric matrices"
+        },
+        {
+            "paperId": "f7c38182e407d35b5f0c073e0083c326ec89c23a",
+            "title": "Improving the convergence of iterative methods"
+        },
+        {
+            "paperId": "83e32a11b731e65eaca14cd2adbb48380a096b74",
+            "title": "The question of non-self-adjoint extension of the conjugate gradients method is closed"
+        },
+        {
+            "paperId": "9cfa5bce047b8ddbe0e97c8950d62d7498490ecc",
+            "title": "SOLVING ELLIPTIC PROBLEMS: 1930\u20131980"
+        },
+        {
+            "paperId": "a88d414300dda54128b609887da88c146411a595",
+            "title": "Elliptic problem solvers"
+        },
+        {
+            "paperId": "3d6a84d817e52ab90ab653d75e031646f2619f3e",
+            "title": "Pad\u00e9-type approximation and general orthogonal polynomials"
+        },
+        {
+            "paperId": null,
+            "title": "Approximating the inverse of a matrix for use on iterative algorithms on vectors processors, Computing"
+        },
+        {
+            "paperId": "827b1b4daf6531ba42201fec9c06f6ff74504ef4",
+            "title": "An iterative solution method for linear systems of which the coefficient matrix is a symmetric -matrix"
+        },
+        {
+            "paperId": "535e763db72140d61a4fa368f41eddd7f82ce098",
+            "title": "Solution of linear systems of equations: Iterative methods"
+        },
+        {
+            "paperId": "65146925205d9ed3139bda27b4a6717667be854e",
+            "title": "Conjugate gradient methods for indefinite systems"
+        },
+        {
+            "paperId": "84a9356dd03995756af3980806ed46e5c6613f38",
+            "title": "Contraction en norme vectorielle: Convergence d'iterations chaotiques pour des equations non lin\u00e9aires de point fixe \u00e0 plusieurs variables"
+        },
+        {
+            "paperId": "6190ccbef6e54b37cfea4d81f14c596e9eaf014f",
+            "title": "Orthomin, an Iterative Method for Solving Sparse Sets of Simultaneous Linear Equations"
+        },
+        {
+            "paperId": null,
+            "title": "An approximate factorization procedure based on the block Cholesky factorization and its use with the conjugate gradient method"
+        },
+        {
+            "paperId": "ec226ce777181735faf801dca752c4fbb9c36690",
+            "title": "Algorithmes de relaxation chaotique \u00e0 retards"
+        },
+        {
+            "paperId": "de855e8764dbc1979b76857b0bb55f18cef4f988",
+            "title": "Iterations chaotiques s\u00e9rie-parallele pour des \u00e9quations non lineaires de point fixe"
+        },
+        {
+            "paperId": "e9905f151f77a57915c33513310b3f65c577696a",
+            "title": "Computing Methods in Applied Sciences and Engineering"
+        },
+        {
+            "paperId": "68575c273ff20a1045a89771f3e347c1f8a06e25",
+            "title": "Iterative Solution of Large Linear Systems."
+        },
+        {
+            "paperId": "bac33c52a559a13a6c642520af128e4f460b8603",
+            "title": "Multi-level adaptive technique (MLAT) for fast numerical solution to boundary value problems"
+        },
+        {
+            "paperId": "c3772b3a0525924786a46182762b0b45275f4cef",
+            "title": "Large Sparse Sets of Linear Equations"
+        },
+        {
+            "paperId": null,
+            "title": "Chaotic relaxation"
+        },
+        {
+            "paperId": "cd60161ce98f660e6449259782e6ff13387837ec",
+            "title": "Analyse num\u00e9rique lin\u00e9aire"
+        },
+        {
+            "paperId": "3171271e8d0092cfc37e6da923004ede723f5fff",
+            "title": "The Theory of Matrices in Numerical Analysis"
+        },
+        {
+            "paperId": "0d045138ea1b1c66d77bc4c961f6c14373cfd1e2",
+            "title": "The speed of convergence of one iterative process"
+        },
+        {
+            "paperId": null,
+            "title": "Factorization and normalized iterative methods"
+        },
+        {
+            "paperId": "b8a6459ae0fc41518166b68e294ed7e42b89bd63",
+            "title": "Handbook for Automatic Computation"
+        },
+        {
+            "paperId": null,
+            "title": "A numerical method for the solution of two-dimensional and three-dimensional equations of diffusion"
+        },
+        {
+            "paperId": "2c1e3f1181f5859d57ad7a128bdfb0dfa659b8e9",
+            "title": "Overrelaxation and Related Methods"
+        },
+        {
+            "paperId": "57b8b57d87bb53a312c7a4511066e81a905eb018",
+            "title": "Theory of Gradient Methods"
+        },
+        {
+            "paperId": "8f6aabbd378558ac55d0f751d6535438c817e3c4",
+            "title": "Refined Iterative Methods for Computation of the Solution and the Eigenvalues of Self-Adjoint Boundary Value Problems"
+        },
+        {
+            "paperId": null,
+            "title": "Matrix Calculus (second revised and enlarged edition)"
+        },
+        {
+            "paperId": null,
+            "title": "Kernel polynomials in linear algebra and their applications"
+        },
+        {
+            "paperId": null,
+            "title": "CURE: A generalized two-space-dimension multigroup coding for the IBM-704"
+        },
+        {
+            "paperId": "cbd3444ff80ebb8a6275d5c8cb811019c5ca0249",
+            "title": "Iterative methods for solving partial difference equations of elliptic type"
+        },
+        {
+            "paperId": null,
+            "title": "Iterative methods of solving linear systems on Hilbert space. National Bureau of Standards"
+        },
+        {
+            "paperId": null,
+            "title": "On an efficient method for solving optimization problems for quadratic functionals"
+        },
+        {
+            "paperId": null,
+            "title": "Angenn aherte auuu osung von systemen linearer gleichungen"
+        },
+        {
+            "paperId": null,
+            "title": "Calcolo approssimato per le soluzioni dei sistemi di equazioni lineari, Ric"
+        },
+        {
+            "paperId": null,
+            "title": "Sulla risoluzione dei sistemi di equazioni lineari per approssimazioni successive"
+        },
+        {
+            "paperId": null,
+            "title": "Die angen\u007f  aherte harmonischer Funktionen und konformer Abbildungen (nach Ideen von Boltzmann und Jacobi)"
+        },
+        {
+            "paperId": "b58a6d42f658012d306d8d6274e5fca3fa8e892a",
+            "title": "The Approximate Arithmetical Solution by Finite Differences of Physical Problems Involving Differential Equations, with an Application to the Stresses in a Masonry Dam"
+        },
+        {
+            "paperId": null,
+            "title": "Werke, Band IX"
+        },
+        {
+            "paperId": null,
+            "title": "Gauss in seiner VorlesungVorlesung\u00a8Vorlesung\u00fcber die Methode der kleisten Quadrate"
+        },
+        {
+            "paperId": null,
+            "title": "Determining unknowns using the least squares method when the number of unknowns is large"
+        }
+    ]
+}

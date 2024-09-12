@@ -1,0 +1,294 @@
+{
+    "paperId": "2976605dc3b73377696537291d45f09f1ab1fbf5",
+    "externalIds": {
+        "DBLP": "conf/cvpr/MisraSGH16",
+        "MAG": "2963877604",
+        "ArXiv": "1604.03539",
+        "DOI": "10.1109/CVPR.2016.433",
+        "CorpusId": 1923223
+    },
+    "title": "Cross-Stitch Networks for Multi-task Learning",
+    "abstract": "Multi-task learning in Convolutional Networks has displayed remarkable success in the field of recognition. This success can be largely attributed to learning shared representations from multiple supervisory tasks. However, existing multi-task approaches rely on enumerating multiple network architectures specific to the tasks at hand, that do not generalize. In this paper, we propose a principled approach to learn shared representations in ConvNets using multitask learning. Specifically, we propose a new sharing unit: \"cross-stitch\" unit. These units combine the activations from multiple networks and can be trained end-to-end. A network with cross-stitch units can learn an optimal combination of shared and task-specific representations. Our proposed method generalizes across multiple tasks and shows dramatically improved performance over baseline methods for categories with few training examples.",
+    "venue": "Computer Vision and Pattern Recognition",
+    "year": 2016,
+    "referenceCount": 62,
+    "citationCount": 1224,
+    "influentialCitationCount": 135,
+    "openAccessPdf": {
+        "url": "http://arxiv.org/pdf/1604.03539",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a principled approach to learn shared representations in Convolutional Networks using multitask learning using a new sharing unit: \"cross-stitch\" unit that combines the activations from multiple networks and can be trained end-to-end."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1806773",
+            "name": "Ishan Misra"
+        },
+        {
+            "authorId": "1781242",
+            "name": "Abhinav Shrivastava"
+        },
+        {
+            "authorId": "1726095131",
+            "name": "A. Gupta"
+        },
+        {
+            "authorId": "145670946",
+            "name": "M. Hebert"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "97fa3a6a56b5e762d20b5a4b8b6c80949c7cda71",
+            "title": "Multi-Task Learning with Low Rank Attribute Embedding for Person Re-Identification"
+        },
+        {
+            "paperId": "f69cda1175c3ddf2d4e3f3789a6c743b1059ebb2",
+            "title": "Multi-Task CNN Model for Attribute Prediction"
+        },
+        {
+            "paperId": "5e2b918f2dee17cb79d692e10aa2103ca9129e2c",
+            "title": "Rotating your face using multi-task deep neural network"
+        },
+        {
+            "paperId": "020928259a848b91b7c36062e4bbc6df6398c02e",
+            "title": "Object Detection via a Multi-region and Semantic Segmentation-Aware CNN Model"
+        },
+        {
+            "paperId": "c3b8367a80181e28c95630b9b63060d895de08ff",
+            "title": "Representation Learning Using Multi-Task Deep Neural Networks for Semantic Classification and Information Retrieval"
+        },
+        {
+            "paperId": "7ffdbc358b63378f07311e883dddacc9faeeaf4b",
+            "title": "Fast R-CNN"
+        },
+        {
+            "paperId": "b4482761879009635e04d170f9f9c70a74f4ba39",
+            "title": "A Unified Perspective on Multi-Domain and Multi-Task Learning"
+        },
+        {
+            "paperId": "60184c071f782cc97d28f8a78b14405b3b3f1e28",
+            "title": "Curriculum learning of multiple tasks"
+        },
+        {
+            "paperId": "60a15269fb2e6d031d2dad4bb9c4225b18bbf1eb",
+            "title": "Designing deep networks for surface normal estimation"
+        },
+        {
+            "paperId": "cb3a2ddcf305e2ec0f6b94af13d1e631ed261bdc",
+            "title": "Predicting Depth, Surface Normals and Semantic Labels with a Common Multi-scale Convolutional Architecture"
+        },
+        {
+            "paperId": "6fc6803df5f9ae505cae5b2f178ade4062c768d0",
+            "title": "Fully convolutional networks for semantic segmentation"
+        },
+        {
+            "paperId": "081651b38ff7533550a3adfc1c00da333a8fe86c",
+            "title": "How transferable are features in deep neural networks?"
+        },
+        {
+            "paperId": "f500b1a7df00f67c417673e0538d86abb8a333fa",
+            "title": "Facial Landmark Detection by Deep Multi-task Learning"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "2c0b510ebf995ef172cb64ed7ce24aa7903dced8",
+            "title": "Learning Rich Features from RGB-D Images for Object Detection and Segmentation"
+        },
+        {
+            "paperId": "342786659379879f58bf5c4ff43c84c83a6a7389",
+            "title": "Simultaneous Detection and Segmentation"
+        },
+        {
+            "paperId": "6f649fea1c02c18e237d5cfa73314f882ac5af53",
+            "title": "Scalable Multitask Representation Learning for Scene Classification"
+        },
+        {
+            "paperId": "6bdb186ec4726e00a8051119636d4df3b94043b5",
+            "title": "Caffe: Convolutional Architecture for Fast Feature Embedding"
+        },
+        {
+            "paperId": "f57137ae926b1a50b9a55457b996bbd1e1635b89",
+            "title": "R-CNNs for Pose Estimation and Action Detection"
+        },
+        {
+            "paperId": "8b161cbb805bbaafbe8e225eec3cd44e126d3c8b",
+            "title": "Improving multiview face detection with multi-task deep convolutional neural networks"
+        },
+        {
+            "paperId": "6270baedeba28001cd1b563a199335720d6e0fe0",
+            "title": "CNN Features Off-the-Shelf: An Astounding Baseline for Recognition"
+        },
+        {
+            "paperId": "c855d8b75090e4d4aadd6ce936046327774470c9",
+            "title": "Data-Driven 3D Primitives for Single Image Understanding"
+        },
+        {
+            "paperId": "3205e0c0cb44a40c1ea2ed1096f5778c147dd457",
+            "title": "Learning to Share Latent Tasks for Action Recognition"
+        },
+        {
+            "paperId": "2f4df08d9072fc2ac181b7fced6a245315ce05c8",
+            "title": "Rich Feature Hierarchies for Accurate Object Detection and Semantic Segmentation"
+        },
+        {
+            "paperId": "b8de958fead0d8a9619b55c7299df3257c624a96",
+            "title": "DeCAF: A Deep Convolutional Activation Feature for Generic Visual Recognition"
+        },
+        {
+            "paperId": "b9d35e88d4dc2156469446270fd67b8e45ca7811",
+            "title": "Perceptual Organization and Recognition of Indoor Scenes from RGB-D Images"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "c1994ba5946456fc70948c549daf62363f13fa2d",
+            "title": "Indoor Segmentation and Support Inference from RGBD Images"
+        },
+        {
+            "paperId": "a049d35dedd40dce2ce6464e2ae3eeee1236e30b",
+            "title": "Modeling disease progression via fused sparse group lasso"
+        },
+        {
+            "paperId": "1248ec7fae6c2b34a40cc0b99100227af6d2e980",
+            "title": "Integrating low-rank and group-sparse structures for robust multi-task learning"
+        },
+        {
+            "paperId": "d2d35fc47bfcd9bbcdf1905b23be6e5dcee05e9c",
+            "title": "Learning with Whom to Share in Multi-task Feature Learning"
+        },
+        {
+            "paperId": "bc1022b031dc6c7019696492e8116598097a8c12",
+            "title": "Natural Language Processing (Almost) from Scratch"
+        },
+        {
+            "paperId": "895217d527de919dfdfbfeae5362bf5adba984ce",
+            "title": "A Dirty Model for Multi-task Learning"
+        },
+        {
+            "paperId": "a25fbcbbae1e8f79c4360d26aa11a3abf1a11972",
+            "title": "A Survey on Transfer Learning"
+        },
+        {
+            "paperId": "e79272fe3d65197100eae8be9fec6469107969ae",
+            "title": "Object Detection with Discriminatively Trained Part Based Models"
+        },
+        {
+            "paperId": "5d33a10752af9ea30993139ac6e3a323992a5831",
+            "title": "Attribute-centric recognition for cross-category generalization"
+        },
+        {
+            "paperId": "74227090d23c958f601ad05369fad587e3b546f1",
+            "title": "Sparse Representation for Computer Vision and Pattern Recognition"
+        },
+        {
+            "paperId": "3f4f6a261f0536c3c9b4e023f34186897a7a4887",
+            "title": "Joint covariate selection and joint subspace selection for multiple classification problems"
+        },
+        {
+            "paperId": "bb08786f79957464b3abf87eb4d6b47d8a5c2b9c",
+            "title": "Learning the Shared Subspace for Multi-task Clustering and Transductive Transfer Classification"
+        },
+        {
+            "paperId": "d2c733e34d48784a37d717fe43d9e93277a8c53e",
+            "title": "ImageNet: A large-scale hierarchical image database"
+        },
+        {
+            "paperId": "c6a8aef1bf134294482d8088f982d5643347d2ff",
+            "title": "Describing objects by their attributes"
+        },
+        {
+            "paperId": "0566bf06a0368b518b8b474166f7b1dfef3f9283",
+            "title": "Learning to detect unseen object classes by between-class attribute transfer"
+        },
+        {
+            "paperId": "9e7b0395d7b34e9d34cca779afd0c10da6e135b5",
+            "title": "Convex multi-task feature learning"
+        },
+        {
+            "paperId": "2a709dcc204af8bade3ed4040dc6bc738e80995a",
+            "title": "Learning Spatial Context: Using Stuff to Find Things"
+        },
+        {
+            "paperId": "57458bc1cffe5caa45a885af986d70f723f406b4",
+            "title": "A unified architecture for natural language processing: deep neural networks with multitask learning"
+        },
+        {
+            "paperId": "953e2cfa58679ff6ea8c0bb432afd641f15d3657",
+            "title": "Transfer learning for image classification with sparse prototype representations"
+        },
+        {
+            "paperId": "6c09d83387c3ad36cd9d7113c0019d1ea0c5a3c9",
+            "title": "Uncovering shared structures in multiclass classification"
+        },
+        {
+            "paperId": "dd626564bd47e9fc67a5b276301282ba2fe3d833",
+            "title": "Sharing Visual Features for Multiclass and Multiview Object Detection"
+        },
+        {
+            "paperId": "89c808af926ecb20870b2521fbaa7dcbb85be106",
+            "title": "Multi-Task Learning for Classification with Dirichlet Process Priors"
+        },
+        {
+            "paperId": "f07260deea7dea6dfe82d208731f4790e37cb3b3",
+            "title": "TextonBoost: Joint Appearance, Shape and Context Modeling for Multi-class Object Recognition and Segmentation"
+        },
+        {
+            "paperId": "e219a61354d972a28954e655a7c53373508a08b6",
+            "title": "Regularized multi--task learning"
+        },
+        {
+            "paperId": "36cd88ed2c17a596001e9c7d89533ac46c28dec0",
+            "title": "Object Detection Using the Statistics of Parts"
+        },
+        {
+            "paperId": "161ffb54a3fdf0715b198bb57bd22f910242eb49",
+            "title": "Multitask Learning"
+        },
+        {
+            "paperId": "b94c7ff9532ab26c3aedbee3988ec4c7a237c173",
+            "title": "Normalized cuts and image segmentation"
+        },
+        {
+            "paperId": "0d19f46563599325199fe740ada994d4f649af44",
+            "title": "Shared Roots: Regularizing Deep Neural Networks through Multitask Learning"
+        },
+        {
+            "paperId": "c39f634edc2318a4b288bd29cf3880505e4ae711",
+            "title": "Robust Visual Tracking via Structured Multi-Task Sparse Learning"
+        },
+        {
+            "paperId": "fdf533eeb1306ba418b09210387833bdf27bb756",
+            "title": "Exploiting Unrelated Tasks in Multi-Task Learning"
+        },
+        {
+            "paperId": null,
+            "title": "Multi-tAsk Learning via StructurAl Regularization"
+        },
+        {
+            "paperId": "13ef25201af7f2a7e401ef31a6197f66357f6f01",
+            "title": "The PASCAL Visual Object Classes Challenge"
+        },
+        {
+            "paperId": "71977913bf322052cb84346dc0061ae68470f556",
+            "title": "Multi-task feature selection"
+        },
+        {
+            "paperId": "4984239c82e82577fba571d83a100adef1068118",
+            "title": "INADMISSIBILITY OF THE USUAL ESTIMATOR FOR THE MEAN OF A MULTIVARIATE NORMAL DISTRIBUTION"
+        },
+        {
+            "paperId": "9374019e86b7e97260b240bbcc98671c7d8976ec",
+            "title": "on Knowledge and Data Engineering,"
+        }
+    ]
+}

@@ -1,0 +1,175 @@
+{
+    "paperId": "5ed791f810da580c78df6a052c6b9f2e258f6b0a",
+    "externalIds": {
+        "MAG": "2952915793",
+        "ArXiv": "1606.06031",
+        "DBLP": "conf/acl/PapernoKLPBPBBF16",
+        "ACL": "P16-1144",
+        "DOI": "10.18653/v1/P16-1144",
+        "CorpusId": 2381275
+    },
+    "title": "The LAMBADA dataset: Word prediction requiring a broad discourse context",
+    "abstract": "We introduce LAMBADA, a dataset to evaluate the capabilities of computational models for text understanding by means of a word prediction task. LAMBADA is a collection of narrative passages sharing the characteristic that human subjects are able to guess their last word if they are exposed to the whole passage, but not if they only see the last sentence preceding the target word. To succeed on LAMBADA, computational models cannot simply rely on local context, but must be able to keep track of information in the broader discourse. We show that LAMBADA exemplifies a wide range of linguistic phenomena, and that none of several state-of-the-art language models reaches accuracy above 1% on this novel benchmark. We thus propose LAMBADA as a challenging test set, meant to encourage the development of new models capable of genuine understanding of broad context in natural language text.",
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2016,
+    "referenceCount": 27,
+    "citationCount": 467,
+    "influentialCitationCount": 68,
+    "openAccessPdf": {
+        "url": "https://doi.org/10.18653/v1/p16-1144",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that LAMBADA exemplifies a wide range of linguistic phenomena, and that none of several state-of-the-art language models reaches accuracy above 1% on this novel benchmark."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2129425",
+            "name": "Denis Paperno"
+        },
+        {
+            "authorId": "2067996",
+            "name": "Germ\u00e1n Kruszewski"
+        },
+        {
+            "authorId": "2672644",
+            "name": "Angeliki Lazaridou"
+        },
+        {
+            "authorId": "3422089",
+            "name": "Q. N. Pham"
+        },
+        {
+            "authorId": "145040726",
+            "name": "R. Bernardi"
+        },
+        {
+            "authorId": "3422247",
+            "name": "Sandro Pezzelle"
+        },
+        {
+            "authorId": "145283199",
+            "name": "Marco Baroni"
+        },
+        {
+            "authorId": "1807810",
+            "name": "Gemma Boleda"
+        },
+        {
+            "authorId": "144151273",
+            "name": "R. Fern\u00e1ndez"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "b3539895e4f2c31ca77032d38b940cdf68329003",
+            "title": "Context"
+        },
+        {
+            "paperId": "961073143d3cfe662e9e820d24c0a88f0ae94c83",
+            "title": "Document Context Language Models"
+        },
+        {
+            "paperId": "722e01d5ba05083f7a091f3188cfdfcf183a325d",
+            "title": "Larger-Context Language Modelling with Recurrent Neural Network"
+        },
+        {
+            "paperId": "35b91b365ceb016fb3e022577cec96fb9b445dc5",
+            "title": "The Goldilocks Principle: Reading Children's Books with Explicit Memory Representations"
+        },
+        {
+            "paperId": "2846e83d405cbe3bf2f0f3b5f635dd8b3c680c45",
+            "title": "Reasoning about Entailment with Neural Attention"
+        },
+        {
+            "paperId": "f04df4e20a18358ea2f689b4c129781628ef7fc1",
+            "title": "A large annotated corpus for learning natural language inference"
+        },
+        {
+            "paperId": "fc981c140ae0331b5ea20f48cb92762d8e8316b9",
+            "title": "MultiGranCNN: An Architecture for General Matching of Text Chunks on Multiple Levels of Granularity"
+        },
+        {
+            "paperId": "0e6824e137847be0599bb0032e37042ed2ef5045",
+            "title": "Aligning Books and Movies: Towards Story-Like Visual Explanations by Watching Movies and Reading Books"
+        },
+        {
+            "paperId": "5247a6e3a60ff0381355e66bfc313bf27512ae0c",
+            "title": "A Neural Network Approach to Context-Sensitive Generation of Conversational Responses"
+        },
+        {
+            "paperId": "86311b182786bfde19446f6ded0854de973d4060",
+            "title": "A Neural Conversational Model"
+        },
+        {
+            "paperId": "d1505c6123c102e53eb19dff312cb25cea840b72",
+            "title": "Teaching Machines to Read and Comprehend"
+        },
+        {
+            "paperId": "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e",
+            "title": "End-To-End Memory Networks"
+        },
+        {
+            "paperId": "abb33d75dc297993fcc3fb75e0f4498f413eb4f6",
+            "title": "Towards AI-Complete Question Answering: A Set of Prerequisite Toy Tasks"
+        },
+        {
+            "paperId": "9665247ea3421929f9b6ad721f139f11edb1dbb8",
+            "title": "Learning Longer Memory in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "f264e8b33c0d49a692a6ce2c4bcb28588aeb7d97",
+            "title": "Recurrent Neural Network Regularization"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "fa9bdc457edd08f251e268f5da3ba6fb2e4a313f",
+            "title": "Using Neural Networks for Modeling and Representing Natural Languages"
+        },
+        {
+            "paperId": "564257469fa44cdb57e4272f85253efb9acfd69d",
+            "title": "MCTest: A Challenge Dataset for the Open-Domain Machine Comprehension of Text"
+        },
+        {
+            "paperId": "f6b51c8753a871dc94ff32152c00c01e94f90f09",
+            "title": "Efficient Estimation of Word Representations in Vector Space"
+        },
+        {
+            "paperId": "fac2ca048fdd7e848f0b9ba2f7be25bb49186770",
+            "title": "The Microsoft Research Sentence Completion Challenge"
+        },
+        {
+            "paperId": "3aaa1e4974800767fcbd2c24c2f2af42bf412f97",
+            "title": "Structured Output Layer neural network language model"
+        },
+        {
+            "paperId": "399da68d3b97218b6c80262df7963baa89dcc71b",
+            "title": "SRILM - an extensible language modeling toolkit"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "fdf4aa623e4d5b5edaeb873ed8e8b1cef0b59c87",
+            "title": "Statistical language modeling using the CMU-cambridge toolkit"
+        },
+        {
+            "paperId": "668087f0ae7ce1de6e0bd0965dbb480c08103260",
+            "title": "Finding Structure in Time"
+        },
+        {
+            "paperId": "5aada25e3d3122f02a84d5d393c2ef2a78bf7e8b",
+            "title": "Text Compression"
+        },
+        {
+            "paperId": null,
+            "title": "models weights to random values in (\u22120.1, 0.1)"
+        }
+    ]
+}

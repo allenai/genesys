@@ -1,0 +1,142 @@
+{
+    "paperId": "0e9822e6c78b752f13ccf2943a8e41f9997f4a22",
+    "externalIds": {
+        "MAG": "2952788071",
+        "DBLP": "journals/corr/abs-1804-11188",
+        "ArXiv": "1804.11188",
+        "CorpusId": 3532296
+    },
+    "title": "Can recurrent neural networks warp time?",
+    "abstract": "Successful recurrent models such as long short-term memories (LSTMs) and gated recurrent units (GRUs) use ad hoc gating mechanisms. Empirically these models have been found to improve the learning of medium to long term temporal dependencies and to help with vanishing gradient issues. We prove that learnable gates in a recurrent model formally provide quasi- invariance to general time transformations in the input data. We recover part of the LSTM architecture from a simple axiomatic approach. This result leads to a new way of initializing gate biases in LSTMs and GRUs. Ex- perimentally, this new chrono initialization is shown to greatly improve learning of long term dependencies, with minimal implementation effort.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2018,
+    "referenceCount": 27,
+    "citationCount": 125,
+    "influentialCitationCount": 13,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is proved that learnable gates in a recurrent model formally provide quasi- invariance to general time transformations in the input data, which leads to a new way of initializing gate biases in LSTMs and GRUs."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "31803582",
+            "name": "Corentin Tallec"
+        },
+        {
+            "authorId": "1734570",
+            "name": "Y. Ollivier"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "79c78c98ea317ba8cdf25a9783ef4b8a7552db75",
+            "title": "Full-Capacity Unitary Recurrent Neural Networks"
+        },
+        {
+            "paperId": "7dba53e72c182e25e98e8f73a99d75ff69dda0c2",
+            "title": "Recurrent Highway Networks"
+        },
+        {
+            "paperId": "952454718139dba3aafc6b3b67c4f514ac3964af",
+            "title": "Recurrent Batch Normalization"
+        },
+        {
+            "paperId": "f5a7da72496e2ca8edcd9f9123773012c010cfc6",
+            "title": "Neural Architectures for Named Entity Recognition"
+        },
+        {
+            "paperId": "ef3152106e7f4d05ad8d32a5b90d3790c5cdef24",
+            "title": "Recurrent Orthogonal Networks and Long-Memory Tasks"
+        },
+        {
+            "paperId": "e9c771197a6564762754e48c1daafb066f449f2e",
+            "title": "Unitary Evolution Recurrent Neural Networks"
+        },
+        {
+            "paperId": "5b8364c21155d3d2cd38ea4c8b8580beba9a3250",
+            "title": "An Empirical Exploration of Recurrent Network Architectures"
+        },
+        {
+            "paperId": "d46b81707786d18499f911b4ab72bb10c65406ba",
+            "title": "A Simple Way to Initialize Recurrent Networks of Rectified Linear Units"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "ac3ee98020251797c2b401e1389461df88e52e62",
+            "title": "Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "99c970348b8f70ce23d6641e201904ea49266b6e",
+            "title": "Exact solutions to the nonlinear dynamics of learning in deep linear neural networks"
+        },
+        {
+            "paperId": "4177ec52d1b80ed57f2e72b0f9a42365f1a8598d",
+            "title": "Speech recognition with deep recurrent neural networks"
+        },
+        {
+            "paperId": "c5145b1d15fea9340840cc8bb6f0e46e8934827f",
+            "title": "Understanding the exploding gradient problem"
+        },
+        {
+            "paperId": "0d6203718c15f137fda2f295c96269bc2b254644",
+            "title": "Learning Recurrent Neural Networks with Hessian-Free Optimization"
+        },
+        {
+            "paperId": "11540131eae85b2e11d53df7f1360eeb6476e7f4",
+            "title": "Learning to Forget: Continual Prediction with LSTM"
+        },
+        {
+            "paperId": "545a4e23bf00ddbc1d3325324b4c61f57cf45081",
+            "title": "Recurrent nets that time and count"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "d0be39ee052d246ae99c082a565aba25b811be2d",
+            "title": "Learning long-term dependencies with gradient descent is difficult"
+        },
+        {
+            "paperId": "e141d68065ce638f9fc4f006eab2f66711e89768",
+            "title": "Induction of Multiscale Temporal Structure"
+        },
+        {
+            "paperId": null,
+            "title": "Lecture 6.5-rmsprop: Divide the gradient by a running average of its recent magnitude"
+        },
+        {
+            "paperId": "1fd7fc06653723b05abe5f3d1de393ddcf6bdddb",
+            "title": "SUBWORD LANGUAGE MODELING WITH NEURAL NETWORKS"
+        },
+        {
+            "paperId": null,
+            "title": "Tutorial on training recurrent neural networks , covering BPPT , RTRL , EKF and the \u201c echo state network \u201d approach"
+        },
+        {
+            "paperId": "7789ce16348a1a4d85f17b6b3b08cfb9cb9c5f0f",
+            "title": "Shape, Contour and Grouping in Computer Vision"
+        },
+        {
+            "paperId": "9a5ea367f0fb05805acaa84a402f5d036eea37dc",
+            "title": "Object Recognition with Gradient-Based Learning"
+        },
+        {
+            "paperId": "3f3d13e95c25a8f6a753e38dfce88885097cbd43",
+            "title": "Untersuchungen zu dynamischen neuronalen Netzen"
+        },
+        {
+            "paperId": null,
+            "title": "of initializing gate biases in LSTMs"
+        }
+    ]
+}

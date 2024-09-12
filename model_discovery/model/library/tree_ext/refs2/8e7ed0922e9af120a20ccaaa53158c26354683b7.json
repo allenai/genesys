@@ -1,0 +1,97 @@
+{
+    "paperId": "8e7ed0922e9af120a20ccaaa53158c26354683b7",
+    "externalIds": {
+        "MAG": "2133324003",
+        "DBLP": "conf/nips/Scholkopf00",
+        "CorpusId": 7728339
+    },
+    "title": "The Kernel Trick for Distances",
+    "abstract": "A method is described which, like the kernel trick in support vector machines (SVMs), lets us generalize distance-based algorithms to operate in feature spaces, usually nonlinearly related to the input space. This is done by identifying a class of kernels which can be represented as norm-based distances in Hilbert spaces. It turns out that common kernel algorithms, such as SVMs and kernel PCA, are actually really distance based algorithms and can be run with that class of kernels, too. \n \nAs well as providing a useful new insight into how these algorithms work, the present work can form the basis for conceiving new algorithms.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2000,
+    "referenceCount": 17,
+    "citationCount": 660,
+    "influentialCitationCount": 35,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A method is described which, like the kernel trick in support vector machines (SVMs), lets us generalize distance-based algorithms to operate in feature spaces, usually nonlinearly related to the input space."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1707625",
+            "name": "B. Scholkopf"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "6ec7c724aa1d906e9e9f81c58497adddb22175b8",
+            "title": "An Introduction to Support Vector Machines and Other Kernel-based Learning Methods"
+        },
+        {
+            "paperId": "9c4da62e9e89e65ac78ee271e424e8b498053e8c",
+            "title": "Advances in kernel methods: support vector learning"
+        },
+        {
+            "paperId": "508db892b1f34149f5a5931d74449d87552bf3a3",
+            "title": "Semiparametric Support Vector and Linear Programming Machines"
+        },
+        {
+            "paperId": "3f600e6c6cf93e78c9e6e690443d6d22c4bf18b9",
+            "title": "Nonlinear Component Analysis as a Kernel Eigenvalue Problem"
+        },
+        {
+            "paperId": "8985a9637540daa0b7b8295f8a5bbda3a3be1dea",
+            "title": "The connection between regularization operators and support vector kernels"
+        },
+        {
+            "paperId": "eae2430d9a984120bf511655a03c15089b007499",
+            "title": "Regularization Theory and Neural Networks Architectures"
+        },
+        {
+            "paperId": "4aaa30769ca49875f45670970130c088136986d1",
+            "title": "A training algorithm for optimal margin classifiers"
+        },
+        {
+            "paperId": "e786caa59202d923ccaae00ae6a4682eec92699b",
+            "title": "Spline Models for Observational Data"
+        },
+        {
+            "paperId": "ab91f8b2372ec432d8f93c86b545cd9729446291",
+            "title": "CBMS-NSF REGIONAL CONFERENCE SERIES IN APPLIED MATHEMATICS"
+        },
+        {
+            "paperId": "abff5f423efd2894c89c6e00c5de8f2b346df2b9",
+            "title": "Theory and Methods of Scaling."
+        },
+        {
+            "paperId": "b9a933d2aaeed93d99064f64a8e58814017695ef",
+            "title": "Metric spaces and positive definite functions"
+        },
+        {
+            "paperId": "b48694cb275eba60b48026f3159373c92c1b286c",
+            "title": "Functions of Positive and Negative Type, and their Connection with the Theory of Integral Equations"
+        },
+        {
+            "paperId": "8213dbed4db44e113af3ed17d6dad57471a0c048",
+            "title": "The Nature of Statistical Learning Theory"
+        },
+        {
+            "paperId": null,
+            "title": "C. Watkins. Personal communication"
+        },
+        {
+            "paperId": "5ee0d8aeb2cb01ef4d8a858d234e72a7400c03ac",
+            "title": "Convolution kernels on discrete structures"
+        },
+        {
+            "paperId": "b9f4febf74f3802df63f3d73dd49cabd37eece15",
+            "title": "Harmonic Analysis on Semigroups"
+        },
+        {
+            "paperId": "c3caf34c1c86633b6e80dca29e3cb2b6367a0f93",
+            "title": "Theoretical Foundations of the Potential Function Method in Pattern Recognition Learning"
+        }
+    ]
+}

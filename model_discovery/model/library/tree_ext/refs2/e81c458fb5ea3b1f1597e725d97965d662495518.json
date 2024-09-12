@@ -1,0 +1,126 @@
+{
+    "paperId": "e81c458fb5ea3b1f1597e725d97965d662495518",
+    "externalIds": {
+        "ArXiv": "1710.03743",
+        "DBLP": "journals/corr/abs-1710-03743",
+        "MAG": "2762464988",
+        "CorpusId": 9236719
+    },
+    "title": "Confidence through Attention",
+    "abstract": "Attention distributions of the generated translations are a useful bi-product of attention-based recurrent neural network translation models and can be treated as soft alignments between the input and output tokens. In this work, we use attention distributions as a confidence metric for output translations. We present two strategies of using the attention distributions: filtering out bad translations from a large back-translated corpus, and selecting the best translation in a hybrid setup of two different translation systems. While manual evaluation indicated only a weak correlation between our confidence score and human judgments, the use-cases showed improvements of up to 2.22 BLEU points for filtering and 0.99 points for hybrid translation, tested on English German and English Latvian translation.",
+    "venue": "Machine Translation Summit",
+    "year": 2017,
+    "referenceCount": 23,
+    "citationCount": 26,
+    "influentialCitationCount": 0,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work uses attention distributions as a confidence metric for output translations and presents two strategies of using the attention distributions: filtering out bad translations from a large back-translated corpus, and selecting the best translation in a hybrid setup of two different translation systems."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3417794",
+            "name": "Mat\u012bss Rikters"
+        },
+        {
+            "authorId": "2032659",
+            "name": "Mark Fishel"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "af65974aa5e3df6e8b5c30b2771d63661918004c",
+            "title": "Visualizing Neural Machine Translation Attention and Confidence"
+        },
+        {
+            "paperId": "6e205e973af09673028918658b99196f31fb8684",
+            "title": "Neural Machine Translation for Morphologically Rich Languages with Improved Sub-word Units and Synthetic Data"
+        },
+        {
+            "paperId": "db017b9a2b0613a15f57c586f9fb4258bfbcad6f",
+            "title": "Neural System Combination for Machine Translation"
+        },
+        {
+            "paperId": "0267e8dab6669a6c10be2e29bea44ea32c41e990",
+            "title": "Neural Monkey: An Open-source Tool for Sequence Learning"
+        },
+        {
+            "paperId": "100104b980d56a40cadfbd7034fa7807ce49b3fb",
+            "title": "Nematus: a Toolkit for Neural Machine Translation"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "feef7ea14013e9e93b9f1219795b3b1a78bb5a8f",
+            "title": "The QT21/HimL Combined Machine Translation System"
+        },
+        {
+            "paperId": "33108287fbc8d94160787d7b2c7ef249d3ad6437",
+            "title": "Modeling Coverage for Neural Machine Translation"
+        },
+        {
+            "paperId": "f3b96ef2dc1fc5e14982f1b963db8db6a54183bb",
+            "title": "Improving Neural Machine Translation Models with Monolingual Data"
+        },
+        {
+            "paperId": "1518039b5001f1836565215eb047526b3ac7f462",
+            "title": "Neural Machine Translation of Rare Words with Subword Units"
+        },
+        {
+            "paperId": "1938624bb9b0f999536dcc8d8f519810bb4e1b3b",
+            "title": "On Using Very Large Target Vocabulary for Neural Machine Translation"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "bf0267c5d0067b1dfcd2659a198a3dd4037dc71e",
+            "title": "MT-EQuAl: a Toolkit for Human Assessment of Machine Translation Output"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "8729441d734782c3ed532a7d2d9611b438c0a09a",
+            "title": "ADADELTA: An Adaptive Learning Rate Method"
+        },
+        {
+            "paperId": "84069287da0a6b488b8c933f3cb5be759cb6237e",
+            "title": "On the difficulty of training recurrent neural networks"
+        },
+        {
+            "paperId": "6bb63356e7ad0d690949c471e0f180f28161c68e",
+            "title": "Linguistic Features for Quality Estimation"
+        },
+        {
+            "paperId": "b71ebec0f728c40eafcf81701c558328a0ecb483",
+            "title": "Goodness: A Method for Measuring Machine Translation Confidence"
+        },
+        {
+            "paperId": "4d3f45009baa00e8f6d4e9ba4dd788a512b82c4a",
+            "title": "Sentence-level MT evaluation without reference translations: beyond language modeling"
+        },
+        {
+            "paperId": "d7da009f457917aa381619facfa5ffae9329a6e9",
+            "title": "Bleu: a Method for Automatic Evaluation of Machine Translation"
+        },
+        {
+            "paperId": "d7b7f16ec98591b535f7b03c5e7d3327a4b2cac8",
+            "title": "A NEW MEASURE OF RANK CORRELATION"
+        },
+        {
+            "paperId": "e3ce71a26872c7755e6d8b8fc45bf00c8be64193",
+            "title": "Neural Machine Translation Systems for WMT 16"
+        }
+    ]
+}

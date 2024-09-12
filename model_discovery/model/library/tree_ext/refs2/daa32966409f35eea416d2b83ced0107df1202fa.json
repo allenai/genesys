@@ -1,0 +1,246 @@
+{
+    "paperId": "daa32966409f35eea416d2b83ced0107df1202fa",
+    "externalIds": {
+        "DBLP": "journals/corr/abs-1710-02690",
+        "MAG": "2949531026",
+        "ArXiv": "1710.02690",
+        "DOI": "10.1214/18-AOAS1163",
+        "CorpusId": 24945410
+    },
+    "title": "Unique Entity Estimation with Application to the Syrian Conflict",
+    "abstract": "Entity resolution identifies and removes duplicate entities in large, noisy databases and has grown in both usage and new developments as a result of increased data availability. Nevertheless, entity resolution has tradeoffs regarding assumptions of the data generation process, error rates, and computational scalability that make it a difficult task for real applications. In this paper, we focus on a related problem of unique entity estimation, which is the task of estimating the unique number of entities and associated standard errors in a data set with duplicate entities. Unique entity estimation shares many fundamental challenges of entity resolution, namely, that the computational cost of all-to-all entity comparisons is intractable for large databases. To circumvent this computational barrier, we propose an efficient (near-linear time) estimation algorithm based on locality sensitive hashing. Our estimator, under realistic assumptions, is unbiased and has provably low variance compared to existing random sampling based approaches. In addition, we empirically show its superiority over the state-of-the-art estimators on three real applications. The motivation for our work is to derive an accurate estimate of the documented, identifiable deaths in the ongoing Syrian conflict. Our methodology, when applied to the Syrian data set, provides an estimate of $191,874 \\pm 1772$ documented, identifiable deaths, which is very close to the Human Rights Data Analysis Group (HRDAG) estimate of 191,369. Our work provides an example of challenges and efforts involved in solving a real, noisy challenging problem where modeling assumptions may not hold.",
+    "venue": "Annals of Applied Statistics",
+    "year": 2017,
+    "referenceCount": 51,
+    "citationCount": 33,
+    "influentialCitationCount": 1,
+    "openAccessPdf": {
+        "url": "https://projecteuclid.org/journals/annals-of-applied-statistics/volume-12/issue-2/Unique-entity-estimation-with-application-to-the-Syrian-conflict/10.1214/18-AOAS1163.pdf",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes an efficient (near-linear time) estimation algorithm based on locality sensitive hashing that provides an accurate estimate of the documented, identifiable deaths in the ongoing Syrian conflict and empirically shows its superiority over the state-of-the-art estimators on three real applications."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "4319427",
+            "name": "Beidi Chen"
+        },
+        {
+            "authorId": "4260659",
+            "name": "Anshumali Shrivastava"
+        },
+        {
+            "authorId": "3124658",
+            "name": "R. Steorts"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "fee1a603b1fff4152b245ed4b1d05ec7b166201a",
+            "title": "Lsh-sampling Breaks the Computation Chicken-and-egg Loop in Adaptive Stochastic Gradient Estimation"
+        },
+        {
+            "paperId": "122a70263d2889e524ac11cf6f483c2dac4c7834",
+            "title": "Scaling-up Split-Merge MCMC with Locality Sensitive Sampling (LSS)"
+        },
+        {
+            "paperId": "9824ef9222892d52dbc3d3119c6d65bafd31777f",
+            "title": "FLASH: Randomized Algorithms Accelerated over CPU-GPU for Ultra-High Dimensional Similarity Search"
+        },
+        {
+            "paperId": "535c4647c9304c9c7202bc430a6aaedb36d8e31a",
+            "title": "Arrays of (locality-sensitive) Count Estimators (ACE): High-Speed Anomaly Detection via Cache Lookups"
+        },
+        {
+            "paperId": "db9b52b7890e165554e513006f1a44a9a2ffe41c",
+            "title": "A New Unbiased and Efficient Class of LSH-Based Samplers and Estimators for Partition Function Computation in Log-Linear Models"
+        },
+        {
+            "paperId": "f6d9a6f650f063a9eec726679e236b3dcb485261",
+            "title": "Optimal Densification for Fast and Accurate Minwise Hashing"
+        },
+        {
+            "paperId": "102deb561bdf50c6a8ab5f41b800c85a1cd1be76",
+            "title": "Flexible Models for Microclustering with Application to Entity Resolution"
+        },
+        {
+            "paperId": "21f13f1ed074eb8504d8b856460d04ec672e7dd4",
+            "title": "Scalable and Sustainable Deep Learning via Randomized Hashing"
+        },
+        {
+            "paperId": "7269031efb4d6fd8c36fdf94817d70a8bd28244b",
+            "title": "Blocking Methods Applied to Casualty Records from the Syrian Conflict"
+        },
+        {
+            "paperId": "611de2479215970c6b89670a4c814642f24de53e",
+            "title": "The Limits of Observation for Understanding Mass Violence"
+        },
+        {
+            "paperId": "3993cbd649a09938787362513255250bee63fd34",
+            "title": "Documents of war: Understanding the Syrian conflict"
+        },
+        {
+            "paperId": "36ad41f39ace417b3c8fefdc971e2511b2a84a49",
+            "title": "Entity Resolution with Empirically Motivated Priors"
+        },
+        {
+            "paperId": "e3a3ddc3eff253552aaec0ce7a1fd91267453377",
+            "title": "Detecting duplicates in a homicide registry using a Bayesian partitioning approach"
+        },
+        {
+            "paperId": "c8c3cd883f73ae6fe465f6c8d4f7f96c8bbe989e",
+            "title": "In Defense of Minhash over Simhash"
+        },
+        {
+            "paperId": "c009122c3868356ab5d5930ce087b22355404afa",
+            "title": "A Comparison of Blocking Methods for Record Linkage"
+        },
+        {
+            "paperId": "6d552d38404a5e01d142322c456c50ffaf3d3a1f",
+            "title": "Densifying One Permutation Hashing via Rotation for Fast Near Neighbor Search"
+        },
+        {
+            "paperId": "1b16571a4bbdcb916b250d3640e683700de143b8",
+            "title": "Improved Densification of One Permutation Hashing"
+        },
+        {
+            "paperId": "1e2d8c5d15b8f5201e5376b6420ca1ba7fb5215e",
+            "title": "An Evaluation Framework for Privacy-Preserving Record Linkage"
+        },
+        {
+            "paperId": "43b6a6b3f219c2225f7c15284ece5fe650ae144a",
+            "title": "Noise-Tolerant Approximate Blocking for Dynamic Real-Time Entity Resolution"
+        },
+        {
+            "paperId": "f6abff681057eb7c37f17bf95376bca44fa18f77",
+            "title": "A Bayesian Approach to Graphical Record Linkage and Deduplication"
+        },
+        {
+            "paperId": "d45d435bcc3f22c7a8dc964005cd3571989d1d32",
+            "title": "A Bayesian Procedure for File Linking to Analyze End-of-Life Medical Costs"
+        },
+        {
+            "paperId": "7883f88428bb98508afeda2e65098ac56b640ca7",
+            "title": "A Survey of Indexing Techniques for Scalable Record Linkage and Deduplication"
+        },
+        {
+            "paperId": "7ae42cc4b475a2192707d0ada7b3c60c347b621e",
+            "title": "Approximate Nearest Neighbor: Towards Removing the Curse of Dimensionality"
+        },
+        {
+            "paperId": "ff5efde46de6c0370bf6928ec2a4308f0c078116",
+            "title": "GPU-based minwise hashing: GPU-based minwise hashing"
+        },
+        {
+            "paperId": "ab406fa804a206766b1118d0f774def28f2c80e7",
+            "title": "A hierarchical Bayesian approach to record linkage and population size problems"
+        },
+        {
+            "paperId": "9a110c56e363ccf5a80fc38f42ecca4087b4baa1",
+            "title": "Locality sensitive hashing: A comparison of hash function types and querying mechanisms"
+        },
+        {
+            "paperId": "40df4771b203dc7b7f1b959745b88a44adefbfcc",
+            "title": "A Latent Dirichlet Model for Unsupervised Entity Resolution"
+        },
+        {
+            "paperId": "cbb786e7e42d02de0080299dc2e114357e816002",
+            "title": "Conditional Models of Identity Uncertainty with Application to Noun Coreference"
+        },
+        {
+            "paperId": "a28d5bd0d33fed02dac31b42340e073071450d89",
+            "title": "Approximating the Minimum Spanning Tree Weight in Sublinear Time"
+        },
+        {
+            "paperId": "8856b09c032ed4f10ef8367a8f7088fbb891ec2b",
+            "title": "Efficient clustering of high-dimensional data sets with application to reference matching"
+        },
+        {
+            "paperId": "2e74388f55f2cc704c4de410578887a53a9433b0",
+            "title": "Similarity Search in High Dimensions via Hashing"
+        },
+        {
+            "paperId": "8addb1718c2bc6bbb0d82cd1a57b41198bf65965",
+            "title": "On the resemblance and containment of documents"
+        },
+        {
+            "paperId": "895842fb9f629420baca3f21ef21f355b8c386d2",
+            "title": "The Complexity of Counting Cuts and of Computing the Probability that a Graph is Connected"
+        },
+        {
+            "paperId": "4d72522794820c3402a99a35edca60b1117ec282",
+            "title": "A Theory for Record Linkage"
+        },
+        {
+            "paperId": "2f951a53b55f144c554e4798130f8db3a1473773",
+            "title": "On the Problem of Matching Lists by Samples"
+        },
+        {
+            "paperId": null,
+            "title": "Unique entity estimation with application to the Syrian conflict"
+        },
+        {
+            "paperId": null,
+            "title": "imsart-generic ver. 2013/03/06 file: aoas-steorts-final"
+        },
+        {
+            "paperId": null,
+            "title": "Judges in Habre trial cite HRDAG analysis"
+        },
+        {
+            "paperId": "e7e04bd3ae892ea78ec485e6cd23bce96e1caac5",
+            "title": "Response to comment by Ms. Ola Awad on the paper ``Selection bias and the statistical patterns of mortality in conflict''"
+        },
+        {
+            "paperId": null,
+            "title": "Preparation of a real voter data set for record linkage and duplicate detection research"
+        },
+        {
+            "paperId": "3082db4bd3bd3e33432cd37c07c42337c754e1df",
+            "title": "Updated Statistical Analysis of Documentation of Killings in the Syrian Arab Republic"
+        },
+        {
+            "paperId": "89269690219564cddf7d0b91ec5f692fef13b9a9",
+            "title": "Some advances on Bayesian record linkage and inference for linked data"
+        },
+        {
+            "paperId": "2dec6e69f42b22d03208ce01afc103a7d702f276",
+            "title": "Overview of Record Linkage and Current Research Directions"
+        },
+        {
+            "paperId": "4ba919c6fe98f5d8a6095e433fc4809ff6478f2f",
+            "title": "Approximate Nearest Neighbors"
+        },
+        {
+            "paperId": "3945fa05036116ef8ae00c4bd6f46f149d7edcff",
+            "title": "SERIES ( Statistics # 2005-02 ) Approximate String Comparator Search Strategies for Very Large Administrative Lists"
+        },
+        {
+            "paperId": null,
+            "title": "Compression and Complexity of Sequences"
+        },
+        {
+            "paperId": null,
+            "title": "E2lsh: Exact Euclidean locality sensitive hashing"
+        },
+        {
+            "paperId": "761b151368e709b972a1fa2c6f672ad6c675f37a",
+            "title": "A Comparison of Fast Blocking Methods for Record Linkage"
+        },
+        {
+            "paperId": "a5aad5abb32f6b15f31b92312bb3b0f7b6470977",
+            "title": "On the evolution of random graphs"
+        },
+        {
+            "paperId": "c1dd4468330c9b99964294e9ac2ef6cc88cf6939",
+            "title": "Estimation of the Number of Connected Components in a Graph by Using a Sampled Subgraph"
+        },
+        {
+            "paperId": null,
+            "title": "Combinatorial Topology 1"
+        }
+    ]
+}

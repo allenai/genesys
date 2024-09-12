@@ -1,0 +1,154 @@
+{
+    "paperId": "71e5a76ea53877e6d295dad67759a3683636854f",
+    "externalIds": {
+        "MAG": "2999561760",
+        "DBLP": "conf/iui/DonahueSD19",
+        "ArXiv": "1810.05246",
+        "DOI": "10.1145/3301275.3302288",
+        "CorpusId": 52979270
+    },
+    "title": "Piano Genie",
+    "abstract": "We present Piano Genie, an intelligent controller which allows non-musicians to improvise on the piano. With Piano Genie, a user performs on a simple interface with eight buttons, and their performance is decoded into the space of plausible piano music in real time. To learn a suitable mapping procedure for this problem, we train recurrent neural network autoencoders with discrete bottlenecks: an encoder learns an appropriate sequence of buttons corresponding to a piano piece, and a decoder learns to map this sequence back to the original piece. During performance, we substitute a user's input for the encoder output, and play the decoder's prediction each time the user presses a button. To improve the intuitiveness of Piano Genie's performance behavior, we impose musically meaningful constraints over the encoder's outputs.",
+    "venue": "International Conference on Intelligent User Interfaces",
+    "year": 2018,
+    "referenceCount": 28,
+    "citationCount": 38,
+    "influentialCitationCount": 1,
+    "openAccessPdf": {
+        "url": "https://dl.acm.org/doi/pdf/10.1145/3301275.3302288",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Piano Genie, an intelligent controller which allows non-musicians to improvise on the piano, is presented and musically meaningful constraints over the encoder's outputs are imposed to improve the intuitiveness of Piano Genie's performance behavior."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1872307",
+            "name": "Chris Donahue"
+        },
+        {
+            "authorId": "35577716",
+            "name": "Ian Simon"
+        },
+        {
+            "authorId": "48373216",
+            "name": "S. Dieleman"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "dc632493fb8c32450f512bb285cd5587b071c78a",
+            "title": "Analyzing Free-Hand Sound-Tracings of Melodic Phrases"
+        },
+        {
+            "paperId": "f466157848d1a7772fb6d02cdac9a7a5e7ef982e",
+            "title": "Neural Discrete Representation Learning"
+        },
+        {
+            "paperId": "c8a6d76450c0807c340666750406fa526558cf37",
+            "title": "Representation Strategies in Two-handed Melodic Sound-Tracing"
+        },
+        {
+            "paperId": "977560251c2bd4c28a6c7c707c29f4091c5e6247",
+            "title": "Lossy Image Compression with Compressive Autoencoders"
+        },
+        {
+            "paperId": "232148b97bd0543613ffd98fb4edcff79434ce1a",
+            "title": "End-to-end Optimized Image Compression"
+        },
+        {
+            "paperId": "04cf2cccf089dd212a690bd5cb0b75b6fdf6e108",
+            "title": "Grab-and-Play Mapping: Creative Machine Learning Approaches for Musical Inclusion and Exploration"
+        },
+        {
+            "paperId": "62c76ca0b2790c34e85ba1cce09d47be317c7235",
+            "title": "Estimating or Propagating Gradients Through Stochastic Neurons for Conditional Computation"
+        },
+        {
+            "paperId": "b2a2dfc850db36bdae2ed4f120d89cd65721ed88",
+            "title": "Analyzing sound tracings: a multimodal approach to music information retrieval"
+        },
+        {
+            "paperId": "afe294866631624b27732ed48a9c961d2d64c1ba",
+            "title": "A Machine Learning Toolbox For Musician Computer Interaction"
+        },
+        {
+            "paperId": "5174ea6010d75dd97b79bdccbd91749b3e27436f",
+            "title": "Playing \"Air Instruments\": Mimicry of Sound-Producing Gestures by Novices and Experts"
+        },
+        {
+            "paperId": "c39307e474851ef2eb57da196615d45304667789",
+            "title": "MnM: a Max/MSP mapping toolbox"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "6b6d745b33b27b0e7d2a7a809c7598544d90a44f",
+            "title": "Neural networks for simultaneous classification and parameter estimation in musical instrument control"
+        },
+        {
+            "paperId": "5912672b8a0322bde256a177702566ef78ac64c1",
+            "title": "Infants' perception of melodies: the role of melodic contour."
+        },
+        {
+            "paperId": "371fc47902ffdbb2a99abe41137775ba800f9b50",
+            "title": "Scale and contour: Two components of a theory of memory for melodies."
+        },
+        {
+            "paperId": "8bbcbcf06100d14dc331f15a72c0e5c17c42a95d",
+            "title": "Evaluating a Collection of Sound-Tracing Data of Melodic Phrases"
+        },
+        {
+            "paperId": null,
+            "title": "Performance RNN: Generating music with expressive timing and dynamics. https://magenta.tensorflow.org/performance-rnn"
+        },
+        {
+            "paperId": "50c5f96f89bdc9cd44920ce8a3b4d2c4917a005e",
+            "title": "Jamsketch: a drawing-based real-time evolutionary improvisation support system"
+        },
+        {
+            "paperId": "10eabb8eb44b2ead3fda70471a7179881936f939",
+            "title": "Lower pitch is larger, yet falling pitches shrink."
+        },
+        {
+            "paperId": "d80c411adaaefad276c42b060d6c2d3cea0c7518",
+            "title": "TrAP: An Interactive System to Generate Valid Raga Phrases from Sound-Tracings"
+        },
+        {
+            "paperId": "0652e6120d72dc0162a17b5b0e49e9f5e12bc668",
+            "title": "A Meta-Instrument for Interactive, On-the-Fly Machine Learning"
+        },
+        {
+            "paperId": "0981edae094043a71a527d9ba0af839bd8e4f3ba",
+            "title": "Body Movement in Music Information Retrieval"
+        },
+        {
+            "paperId": null,
+            "title": "Guitar Hero. Game"
+        },
+        {
+            "paperId": null,
+            "title": "The Axe: Titans of Classic Rock"
+        },
+        {
+            "paperId": null,
+            "title": "The melodic arch in Western folksongs"
+        },
+        {
+            "paperId": "8dbe2aac08b5dcf84f5b02dee06aa098bcc328fe",
+            "title": "The directory of tunes and musical themes"
+        },
+        {
+            "paperId": null,
+            "title": "A technique for the measurement of attitudes. Archives of psychology"
+        },
+        {
+            "paperId": null,
+            "title": "IUI \u201919, March 17\u201320, 2019"
+        }
+    ]
+}

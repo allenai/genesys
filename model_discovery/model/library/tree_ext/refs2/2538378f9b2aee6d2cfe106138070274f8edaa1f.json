@@ -1,0 +1,137 @@
+{
+    "paperId": "2538378f9b2aee6d2cfe106138070274f8edaa1f",
+    "externalIds": {
+        "DBLP": "conf/icml/TitsiasL14",
+        "MAG": "2150807068",
+        "CorpusId": 12977196
+    },
+    "title": "Doubly Stochastic Variational Bayes for non-Conjugate Inference",
+    "abstract": "We propose a simple and effective variational inference algorithm based on stochastic optimisation that can be widely applied for Bayesian non-conjugate inference in continuous parameter spaces. This algorithm is based on stochastic approximation and allows for efficient use of gradient information from the model joint density. We demonstrate these properties using illustrative examples as well as in challenging and diverse Bayesian inference problems such as variable selection in logistic regression and fully Bayesian inference over kernel hyperparameters in Gaussian process regression.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2014,
+    "referenceCount": 26,
+    "citationCount": 364,
+    "influentialCitationCount": 47,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A simple and effective variational inference algorithm based on stochastic optimisation that can be widely applied for Bayesian non-conjugate inference in continuous parameter spaces and allows for efficient use of gradient information from the model joint density is proposed."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1722732",
+            "name": "Michalis K. Titsias"
+        },
+        {
+            "authorId": "1388666962",
+            "name": "M. L\u00e1zaro-Gredilla"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "331f0fb3b6176c6e463e0401025b04f6ace9ccd3",
+            "title": "Neural Variational Inference and Learning in Belief Networks"
+        },
+        {
+            "paperId": "484ad17c926292fbe0d5211540832a8c8a8e958b",
+            "title": "Stochastic Backpropagation and Approximate Inference in Deep Generative Models"
+        },
+        {
+            "paperId": "6a667700100e228cb30a5d884258a0db921603fe",
+            "title": "Black Box Variational Inference"
+        },
+        {
+            "paperId": "5f5dc5b9a2ba710937e2c413b37b053cd673df02",
+            "title": "Auto-Encoding Variational Bayes"
+        },
+        {
+            "paperId": "082fb4bc8e52c973ddfb13aee5558d1a8bf1fd9e",
+            "title": "Technical Report 2012"
+        },
+        {
+            "paperId": "cfa4c2030ea6835cb43122c4be34604a2b3a2a7d",
+            "title": "Variational Optimization"
+        },
+        {
+            "paperId": "bccb2f99a9d1c105699f5d88c479569085e2c7ba",
+            "title": "Stochastic variational inference"
+        },
+        {
+            "paperId": "9ceb1dea15ac3df3d610fd0b3cc52b9a4e9141a3",
+            "title": "Variational Bayesian Inference with Stochastic Search"
+        },
+        {
+            "paperId": "63078445fa1aca9887ccb59da20503854e8779ab",
+            "title": "Concave Gaussian Variational Approximations for Inference in Large-Scale Bayesian Linear Models"
+        },
+        {
+            "paperId": "2d8cbd7370b4ce666edd864e66f83ebf20963516",
+            "title": "Online Learning for Latent Dirichlet Allocation"
+        },
+        {
+            "paperId": "be45343d13a9ea7f1d8adc8d0f9ba97564ac875c",
+            "title": "Approximate Riemannian Conjugate Gradient Learning for Fixed-Form Variational Bayes"
+        },
+        {
+            "paperId": "8e5eda285b30216bc5f5ca93d3a93728c15852f8",
+            "title": "The Variational Gaussian Approximation Revisited"
+        },
+        {
+            "paperId": "d98d0d1900b13b87aa4ffd6b69c046beb63f0434",
+            "title": "Graphical Models, Exponential Families, and Variational Inference"
+        },
+        {
+            "paperId": "5936754b5762260bf102ac95d7b26cfc9d31956a",
+            "title": "The Tradeoffs of Large Scale Learning"
+        },
+        {
+            "paperId": "8ca86e941da7254613a5d03dd7a6c36886fadc1d",
+            "title": "Gaussian Processes for Machine Learning (Adaptive Computation and Machine Learning)"
+        },
+        {
+            "paperId": "554894f70b28dba58b396c2d84080ac01051261b",
+            "title": "Gaussian Processes For Machine Learning"
+        },
+        {
+            "paperId": "17a09383cf450da8fe9830b9420914fa47707916",
+            "title": "Monte Carlo Statistical Methods"
+        },
+        {
+            "paperId": "69ef4c14c7cf129747a018861fa688aa8a5769b7",
+            "title": "Bayesian Model Selection for Support Vector Machines, Gaussian Processes and Other Kernel Classifiers"
+        },
+        {
+            "paperId": "6120cc252bc74239012f11b8b075cb7cb16bee26",
+            "title": "An Introduction to Variational Methods for Graphical Models"
+        },
+        {
+            "paperId": "9f87a11a523e4680e61966e36ea2eac516096f23",
+            "title": "A View of the Em Algorithm that Justifies Incremental, Sparse, and other Variants"
+        },
+        {
+            "paperId": "990b10ce4ef643e148b6c719e99dbf2430671a74",
+            "title": "Adaptive Algorithms and Stochastic Approximations"
+        },
+        {
+            "paperId": "34ddd8865569c2c32dec9bf7ffc817ff42faaa01",
+            "title": "A Stochastic Approximation Method"
+        },
+        {
+            "paperId": "6d5031a537a8a9d3064aeb8ab578f3c431dc547c",
+            "title": "Gaussian Kullback-Leibler approximate inference"
+        },
+        {
+            "paperId": null,
+            "title": "A simple and efficient algorithm for gene selection using sparse logistic regression."
+        },
+        {
+            "paperId": "d68725804eadecf83d707d89e12c5132bf376187",
+            "title": "Sparse Bayesian Learning and the Relevance Vector Machine"
+        },
+        {
+            "paperId": "78d19e190dc5ece1e4e42a76662c5e98c2bb0842",
+            "title": "Ensemble learning in Bayesian neural networks"
+        }
+    ]
+}

@@ -1,0 +1,57 @@
+{
+    "paperId": "2ad0f5a95fe0913b872bd1394bbf4836cb3cfd33",
+    "externalIds": {
+        "MAG": "2021250792",
+        "DOI": "10.1103/PHYSREVE.51.5084",
+        "CorpusId": 25952115,
+        "PubMed": "9963221"
+    },
+    "title": "Long-range correlation properties of coding and noncoding DNA sequences: GenBank analysis.",
+    "abstract": "An open question in computational molecular biology is whether long-range correlations are present in both coding and noncoding DNA or only in the latter. To answer this question, we consider all 33301 coding and all 29453 noncoding eukaryotic sequences--each of length larger than 512 base pairs (bp)--in the present release of the GenBank to dtermine whether there is any statistically significant distinction in their long-range correlation properties. Standard fast Fourier transform (FFT) analysis indicates that coding sequences have practically no correlations in the range from 10 bp to 100 bp (spectral exponent beta=0.00 +/- 0.04, where the uncertainty is two standard deviations). In contrast, for noncoding sequences, the average value of the spectral exponent beta is positive (0.16 +/- 0.05) which unambiguously shows the presence of long-range correlations. We also separately analyze the 874 coding and the 1157 noncoding sequences that have more than 4096 bp and find a larger region of power-law behavior. We calculate the probability that these two data sets (coding and noncoding) were drawn from the same distribution and we find that it is less than 10(-10). We obtain independent confirmation of these findings using the method of detrended fluctuation analysis (DFA), which is designed to treat sequences with statistical heterogeneity, such as DNA's known mosaic structure (\"patchiness\") arising from the nonstationarity of nucleotide concentration. The near-perfect agreement between the two independent analysis methods, FFT and DFA, increases the confidence in the reliability of our conclusion.",
+    "venue": "Physical review. E, Statistical physics, plasmas, fluids, and related interdisciplinary topics",
+    "year": 1995,
+    "referenceCount": 0,
+    "citationCount": 541,
+    "influentialCitationCount": 23,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An open question in computational molecular biology is whether long-range correlations are present in both coding and noncoding DNA or only in the latter, and the near-perfect agreement between the two independent analysis methods, FFT and DFA, increases the confidence in the reliability of the conclusion."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2850031",
+            "name": "S. Buldyrev"
+        },
+        {
+            "authorId": "32868771",
+            "name": "A. Goldberger"
+        },
+        {
+            "authorId": "40191926",
+            "name": "S. Havlin"
+        },
+        {
+            "authorId": "2622687",
+            "name": "R. Mantegna"
+        },
+        {
+            "authorId": "40464410",
+            "name": "M. Matsa"
+        },
+        {
+            "authorId": "143856496",
+            "name": "Chung-Kang Peng"
+        },
+        {
+            "authorId": "46364295",
+            "name": "M. Simons"
+        },
+        {
+            "authorId": "2249889430",
+            "name": "H. Stanley"
+        }
+    ],
+    "references": []
+}

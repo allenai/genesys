@@ -1,0 +1,106 @@
+{
+    "paperId": "79baf48bd560060549998d7b61751286de062e2a",
+    "externalIds": {
+        "MAG": "2963385194",
+        "ArXiv": "1703.10722",
+        "DBLP": "conf/iclr/KuchaievG17",
+        "CorpusId": 3570621
+    },
+    "title": "Factorization tricks for LSTM networks",
+    "abstract": "We present two simple ways of reducing the number of parameters and accelerating the training of large Long Short-Term Memory (LSTM) networks: the first one is \"matrix factorization by design\" of LSTM matrix into the product of two smaller matrices, and the second one is partitioning of LSTM matrix, its inputs and states into the independent groups. Both approaches allow us to train large LSTM networks significantly faster to the near state-of the art perplexity while using significantly less RNN parameters.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2017,
+    "referenceCount": 18,
+    "citationCount": 109,
+    "influentialCitationCount": 15,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Two simple ways of reducing the number of parameters and accelerating the training of large Long Short-Term Memory networks are presented: \"matrix factorization by design\" of LSTM matrix into the product of two smaller matrices, and the second one is partitioning of L STM matrix, its inputs and states into the independent groups."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2787022",
+            "name": "Oleksii Kuchaiev"
+        },
+        {
+            "authorId": "31963005",
+            "name": "Boris Ginsburg"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "510e26733aaff585d65701b9f1be7ca9d5afc586",
+            "title": "Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer"
+        },
+        {
+            "paperId": "579e0077a3810510a7965224a8782ecc01766ea0",
+            "title": "Achieving Human Parity in Conversational Speech Recognition"
+        },
+        {
+            "paperId": "5b6ec746d309b165f9f9def873a2375b6fb40f3d",
+            "title": "Xception: Deep Learning with Depthwise Separable Convolutions"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "29316449c7cc52ad326c5d1bd5b0dc5af27c1496",
+            "title": "Convolutional networks for fast, energy-efficient neuromorphic computing"
+        },
+        {
+            "paperId": "2f2d8f8072e5cc9b296fad551f65f183bdbff7aa",
+            "title": "Exploring the Limits of Language Modeling"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "f9c990b1b5724e50e5632b94fdb7484ece8a6ce7",
+            "title": "Convolutional LSTM Network: A Machine Learning Approach for Precipitation Nowcasting"
+        },
+        {
+            "paperId": "f264e8b33c0d49a692a6ce2c4bcb28588aeb7d97",
+            "title": "Recurrent Neural Network Regularization"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "5d833331b0e22ff359db05c62a8bca18c4f04b68",
+            "title": "One billion word benchmark for measuring progress in statistical language modeling"
+        },
+        {
+            "paperId": "eff61216e0136886e1158625b1e5a88ed1a7cbce",
+            "title": "Predicting Parameters in Deep Learning"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "84069287da0a6b488b8c933f3cb5be759cb6237e",
+            "title": "On the difficulty of training recurrent neural networks"
+        },
+        {
+            "paperId": "398c296d0cc7f9d180f84969f8937e6d3a413796",
+            "title": "Multi-column deep neural networks for image classification"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "d0be39ee052d246ae99c082a565aba25b811be2d",
+            "title": "Learning long-term dependencies with gradient descent is difficult"
+        },
+        {
+            "paperId": "067e07b725ab012c80aa2f87857f6791c1407f6d",
+            "title": "Long short-term memory recurrent neural network architectures for large scale acoustic modeling"
+        }
+    ]
+}

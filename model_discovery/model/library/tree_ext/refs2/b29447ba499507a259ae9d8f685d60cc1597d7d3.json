@@ -1,0 +1,218 @@
+{
+    "paperId": "b29447ba499507a259ae9d8f685d60cc1597d7d3",
+    "externalIds": {
+        "DBLP": "conf/emnlp/BerantCFL13",
+        "ACL": "D13-1160",
+        "MAG": "2252136820",
+        "CorpusId": 6401679
+    },
+    "title": "Semantic Parsing on Freebase from Question-Answer Pairs",
+    "abstract": "In this paper, we train a semantic parser that scales up to Freebase. Instead of relying on annotated logical forms, which is especially expensive to obtain at large scale, we learn from question-answer pairs. The main challenge in this setting is narrowing down the huge number of possible logical predicates for a given question. We tackle this problem in two ways: First, we build a coarse mapping from phrases to predicates using a knowledge base and a large text corpus. Second, we use a bridging operation to generate additional predicates based on neighboring predicates. On the dataset of Cai and Yates (2013), despite not having annotated logical forms, our system outperforms their state-of-the-art parser. Additionally, we collected a more realistic and challenging dataset of question-answer pairs and improves over a natural baseline.",
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2013,
+    "referenceCount": 44,
+    "citationCount": 1824,
+    "influentialCitationCount": 253,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper trains a semantic parser that scales up to Freebase and outperforms their state-of-the-art parser on the dataset of Cai and Yates (2013), despite not having annotated logical forms."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1750652",
+            "name": "Jonathan Berant"
+        },
+        {
+            "authorId": "2059149862",
+            "name": "A. Chou"
+        },
+        {
+            "authorId": "34765463",
+            "name": "Roy Frostig"
+        },
+        {
+            "authorId": "145419642",
+            "name": "Percy Liang"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "96232dd74fad21f495a2f4563fd42869d968e6bf",
+            "title": "Lambda Dependency-Based Compositional Semantics"
+        },
+        {
+            "paperId": "80c2d8c691b09f8b4e53f512b9d2641b49fda935",
+            "title": "Large-scale Semantic Parsing via Schema Matching and Lexicon Extension"
+        },
+        {
+            "paperId": "dd78a271722fb9e0eaade4208860398de1d80b7f",
+            "title": "Grounded Unsupervised Semantic Parsing"
+        },
+        {
+            "paperId": "dfebcf4d157cb21a31a25f7d23cbb21965ec48d5",
+            "title": "From Natural Language Specifications to Program Input Parsers"
+        },
+        {
+            "paperId": "c0be2ac2f45681f1852fc1d298af5dceb85834f4",
+            "title": "Paraphrase-Driven Learning for Open Question Answering"
+        },
+        {
+            "paperId": "e510bae5437936c24c18dfb81e5659f9f08a9531",
+            "title": "Using Semantic Unification to Generate Regular Expressions from Natural Language"
+        },
+        {
+            "paperId": "c45fd881bcc20bc1a754ee4b446d99aaff1d3dd5",
+            "title": "Jointly Learning to Parse and Perceive: Connecting Natural Language to the Physical World"
+        },
+        {
+            "paperId": "cde902f11b0870c695428d865a35eb819b1d24b7",
+            "title": "Weakly Supervised Learning of Semantic Parsers for Mapping Instructions to Actions"
+        },
+        {
+            "paperId": "cbeb681d7a2685bec300407cc87011a2d0f30401",
+            "title": "Ontological Smoothing for Relation Extraction with Minimal Supervision"
+        },
+        {
+            "paperId": "8ad0e78a9619c50bcb3cae4a589ec9a5d38c437c",
+            "title": "Open Language Learning for Information Extraction"
+        },
+        {
+            "paperId": "fbe358ce706371b93c10c4395cab9a78ad3aef67",
+            "title": "Multi-instance Multi-label Learning for Relation Extraction"
+        },
+        {
+            "paperId": "88976f41c902556c39a44ebe9abd583c885417dc",
+            "title": "Natural Language Questions for the Web of Data"
+        },
+        {
+            "paperId": "00ff3c9d8bbcc09448b768aa80666eb775445c00",
+            "title": "Weakly Supervised Training of Semantic Parsers"
+        },
+        {
+            "paperId": "fd302951371db00ff96d1bda658f8c83eda31f18",
+            "title": "Fast Online Lexicon Learning for Grounded Language Acquisition"
+        },
+        {
+            "paperId": "2aa73c3f04536ed9d7c24db7d1090de897dec86c",
+            "title": "Learning High-Level Planning from Text"
+        },
+        {
+            "paperId": "58bd0afc8a1b98e16a67ebda436e60c6f6410f56",
+            "title": "A Joint Model of Language and Perception for Grounded Attribute Learning"
+        },
+        {
+            "paperId": "c5c08e6dec3bf8a036607593e11e389697e03f45",
+            "title": "Entity Linking at Web Scale"
+        },
+        {
+            "paperId": "fe80746646f6ee819205ca9a8476292ea6b83e66",
+            "title": "SUTime: A library for recognizing and normalizing time expressions"
+        },
+        {
+            "paperId": "eb04bd49bdc2c9218624435eb277be2a973b21a5",
+            "title": "Template-based question answering over RDF data"
+        },
+        {
+            "paperId": "a389456fdc46e458d0a813a608b71b44b2ff8e62",
+            "title": "Understanding Natural Language Commands for Robotic Navigation and Mobile Manipulation"
+        },
+        {
+            "paperId": "d4b651d6a904f69f8fa1dcad4ebe972296af3a9a",
+            "title": "Identifying Relations for Open Information Extraction"
+        },
+        {
+            "paperId": "508e5b724c8b841aecfae864e5d6dcd02eb28772",
+            "title": "Bootstrapping Semantic Parsers from Conversations"
+        },
+        {
+            "paperId": "36d69fec4884389c1709d3ca74394cac814ce4a4",
+            "title": "Lexical Generalization in CCG Grammar Induction for Semantic Parsing"
+        },
+        {
+            "paperId": "2aea6cc6c42101b2615753c2933a33e57dd665f2",
+            "title": "Random Walk Inference and Learning in A Large Scale Knowledge Base"
+        },
+        {
+            "paperId": "3ecd3e00bbbfd94446c3adc9c6878de27e250f7c",
+            "title": "Learning Dependency-Based Compositional Semantics"
+        },
+        {
+            "paperId": "d48edf9e81653f4c3da716b037b0b50d54c5b034",
+            "title": "Knowledge-Based Weak Supervision for Information Extraction of Overlapping Relations"
+        },
+        {
+            "paperId": "d7add86884b03ded456bd0fd09fa28030f3d64d9",
+            "title": "Confidence Driven Unsupervised Semantic Parsing"
+        },
+        {
+            "paperId": "99f1921a8ba5ceecb18e5ca7ff19b7f95c4e250d",
+            "title": "Learning to Win by Reading Manuals in a Monte-Carlo Framework"
+        },
+        {
+            "paperId": "413c1142de9d91804d6d11c67ff3fed59c9fc279",
+            "title": "Adaptive Subgradient Methods for Online Learning and Stochastic Optimization"
+        },
+        {
+            "paperId": "c7a40c3ef180d847bb3db40fd01990e08a6264f7",
+            "title": "Inducing Probabilistic CCG Grammars from Logical Form with Higher-Order Unification"
+        },
+        {
+            "paperId": "e7e7b9a731678bf0494fe29cbebb42a822224cc6",
+            "title": "Modeling Relations and Their Mentions without Labeled Text"
+        },
+        {
+            "paperId": "92fb5e045bb23f13c11d8bb277925013b24b5930",
+            "title": "Driving Semantic Parsing from the World\u2019s Response"
+        },
+        {
+            "paperId": "66ff889f25829822169d5971e706013ed909d574",
+            "title": "Reading between the Lines: Learning to Map High-Level Instructions to Commands"
+        },
+        {
+            "paperId": "ddf0f2226cc837750eb1eb57c43d8192ef0fc2b3",
+            "title": "Toward an Architecture for Never-Ending Language Learning"
+        },
+        {
+            "paperId": "c2ecc66c0e5f976b0e0d95c64ed2d1e283a2625d",
+            "title": "Learning Synchronous Grammars for Semantic Parsing with Lambda Calculus"
+        },
+        {
+            "paperId": "498bb0efad6ec15dd09d941fb309aa18d6df9f5f",
+            "title": "Open Information Extraction from the Web"
+        },
+        {
+            "paperId": "74fe7ec751cd50295b15cfd46389a8fefb37c414",
+            "title": "Learning to Map Sentences to Logical Form: Structured Classification with Probabilistic Categorial Grammars"
+        },
+        {
+            "paperId": "d3b27746f7a53f2dc5d9b8c2f3d343313622ec36",
+            "title": "Online Large-Margin Training of Dependency Parsers"
+        },
+        {
+            "paperId": "b50f78c9534182a09c060580811274928702b38d",
+            "title": "Towards a theory of natural language interfaces to databases"
+        },
+        {
+            "paperId": "b7c0e47f8b768258b7d536c21b218e6c46ab8791",
+            "title": "Learning to Parse Database Queries Using Inductive Logic Programming"
+        },
+        {
+            "paperId": "dbfd191afbbc8317577cbc44afe7156df546e143",
+            "title": "Automatic Acquisition of Hyponyms from Large Text Corpora"
+        },
+        {
+            "paperId": null,
+            "title": "Freebase data dumps (2013-06- 09). https://developers.google.com/ freebase/data"
+        },
+        {
+            "paperId": null,
+            "title": "Freebase data dumps (2013-0609)"
+        },
+        {
+            "paperId": "05d77d232dcee8c765ba32ae92b49922076d6fa0",
+            "title": "Bridging"
+        }
+    ]
+}

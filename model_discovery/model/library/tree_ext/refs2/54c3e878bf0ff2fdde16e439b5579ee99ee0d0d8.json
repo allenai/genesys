@@ -1,0 +1,206 @@
+{
+    "paperId": "54c3e878bf0ff2fdde16e439b5579ee99ee0d0d8",
+    "externalIds": {
+        "MAG": "2964196118",
+        "DBLP": "journals/corr/MoczulskiDAF15",
+        "ArXiv": "1511.05946",
+        "CorpusId": 1204679
+    },
+    "title": "ACDC: A Structured Efficient Linear Layer",
+    "abstract": "The linear layer is one of the most pervasive modules in deep learning representations. However, it requires $O(N^2)$ parameters and $O(N^2)$ operations. These costs can be prohibitive in mobile applications or prevent scaling in many domains. Here, we introduce a deep, differentiable, fully-connected neural network module composed of diagonal matrices of parameters, $\\mathbf{A}$ and $\\mathbf{D}$, and the discrete cosine transform $\\mathbf{C}$. The core module, structured as $\\mathbf{ACDC^{-1}}$, has $O(N)$ parameters and incurs $O(N log N )$ operations. We present theoretical results showing how deep cascades of ACDC layers approximate linear layers. ACDC is, however, a stand-alone module and can be used in combination with any other types of module. In our experiments, we show that it can indeed be successfully interleaved with ReLU modules in convolutional neural networks for image recognition. Our experiments also study critical factors in the training of these structured modules, including initialization and depth. Finally, this paper also provides a connection between structured linear transforms used in deep learning and the field of Fourier optics, illustrating how ACDC could in principle be implemented with lenses and diffractive elements.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2015,
+    "referenceCount": 41,
+    "citationCount": 91,
+    "influentialCitationCount": 15,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A deep, differentiable, fully-connected neural network module composed of diagonal matrices of parameters, $\\mathbf{A}$ and $D}$, and the discrete cosine transform, illustrating how ACDC could in principle be implemented with lenses and diffractive elements."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3009779",
+            "name": "Marcin Moczulski"
+        },
+        {
+            "authorId": "1715051",
+            "name": "Misha Denil"
+        },
+        {
+            "authorId": "40231275",
+            "name": "J. Appleyard"
+        },
+        {
+            "authorId": "1737568",
+            "name": "Nando de Freitas"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "02fae389f1074f6fda9a958d53b78870014fa45d",
+            "title": "Random projections through multiple optical scattering: Approximating Kernels at the speed of light"
+        },
+        {
+            "paperId": "bf76be8df2f2bc56edac98a5d0dfc19c85882eaa",
+            "title": "Structured Transforms for Small-Footprint Deep Learning"
+        },
+        {
+            "paperId": "642d0f49b7826adcf986616f4af77e736229990f",
+            "title": "Deep Compression: Compressing Deep Neural Network with Pruning, Trained Quantization and Huffman Coding"
+        },
+        {
+            "paperId": "343eb0aad0eeae3770a31f93c36cfb80e7c936a7",
+            "title": "Towards Trainable Media: Using Waves for Neural Network-Style Training"
+        },
+        {
+            "paperId": "e6f2f3a5cc7c7213835b9aede15715b5830520e1",
+            "title": "Tensorizing Neural Networks"
+        },
+        {
+            "paperId": "1ff9a37d766e3a4f39757f5e1b235a42dacf18ff",
+            "title": "Learning both Weights and Connections for Efficient Neural Network"
+        },
+        {
+            "paperId": "d559dd84fc473fca7e91b9075675750823935afa",
+            "title": "Sparse Convolutional Neural Networks"
+        },
+        {
+            "paperId": "da6057368920585bcf2443295b98418840f1fc80",
+            "title": "Weight Uncertainty in Neural Networks"
+        },
+        {
+            "paperId": "efb5032e6199c80f83309fd866b25be9545831fd",
+            "title": "Compressing Neural Networks with the Hashing Trick"
+        },
+        {
+            "paperId": "7de11e686c16f7dbe720bef17345bd5c4dd50b84",
+            "title": "Speeding Up Neural Networks for Large Scale Classification using WTA Hashing"
+        },
+        {
+            "paperId": "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e",
+            "title": "End-To-End Memory Networks"
+        },
+        {
+            "paperId": "a23363f7b36eef5529ced6c65027ae8c28c13d28",
+            "title": "Factoring Matrices into the Product of Circulant and Diagonal Matrices"
+        },
+        {
+            "paperId": "0c908739fbff75f03469d13d4a1a07de3414ee19",
+            "title": "Distilling the Knowledge in a Neural Network"
+        },
+        {
+            "paperId": "5934400081d9541339da0f16d2613263f1a4c2a2",
+            "title": "An Exploration of Parameter Redundancy in Deep Networks with Circulant Projections"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "27a99c21a1324f087b2f144adc119f04137dfd87",
+            "title": "Deep Fried Convnets"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "8604f376633af8b347e31d84c6150a93b11e34c2",
+            "title": "FitNets: Hints for Thin Deep Nets"
+        },
+        {
+            "paperId": "e7bf9803705f2eb608db1e59e5c7636a3f171916",
+            "title": "Compressing Deep Convolutional Networks using Vector Quantization"
+        },
+        {
+            "paperId": "2a4117849c88d4728c33b1becaa9fb6ed7030725",
+            "title": "Memory Bounded Deep Convolutional Networks"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "18c7fb55ff796db5c5a604e0ca44b6baaeb12239",
+            "title": "Fastfood: Approximate Kernel Expansions in Loglinear Time"
+        },
+        {
+            "paperId": "6bdb186ec4726e00a8051119636d4df3b94043b5",
+            "title": "Caffe: Convolutional Architecture for Fast Feature Embedding"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "eff61216e0136886e1158625b1e5a88ed1a7cbce",
+            "title": "Predicting Parameters in Deep Learning"
+        },
+        {
+            "paperId": "5cea23330c76994cb626df20bed31cc2588033df",
+            "title": "Low-rank matrix factorization for Deep Neural Network training with high-dimensional output targets"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "d2c733e34d48784a37d717fe43d9e93277a8c53e",
+            "title": "ImageNet: A large-scale hierarchical image database"
+        },
+        {
+            "paperId": "2a941e7c5f374f8f8dba0daf6ffc6504a2779473",
+            "title": "The Fast Johnson--Lindenstrauss Transform and Approximate Nearest Neighbors"
+        },
+        {
+            "paperId": "8ecf895df566d099adf0f07f5a389a332b8c1b05",
+            "title": "Approximating ideal diffractive optical systems"
+        },
+        {
+            "paperId": "a9132c36492cb2185468ec253b4bb3480f9b1990",
+            "title": "Decomposing a matrix into circulant and diagonal factors"
+        },
+        {
+            "paperId": "30d94bff5f5c338147c68f2c47a3bffeee646b5f",
+            "title": "Algorithmic design of diffractive optical systems for information processing"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "5903a7efca6636073c734a095f4d5dea29166b79",
+            "title": "Efficient Parallel Algorithms for Optical Computing with the DFT Primitive"
+        },
+        {
+            "paperId": "387eed2d96c099655168c4cfa52ec71ada48ca2d",
+            "title": "A fast cosine transform in one and two dimensions"
+        },
+        {
+            "paperId": "bcd857d75841aa3e92cd4284a8818aba9f6c0c3f",
+            "title": "Published as a conference paper at ICLR 2018 S IMULATING A CTION D YNAMICS WITH N EURAL P ROCESS N ETWORKS"
+        },
+        {
+            "paperId": "e4351041d25c272a008bcd5765868dc3a28fe470",
+            "title": "Under Review as a Conference Paper at Iclr 2017 Delving into Transferable Adversarial Ex- Amples and Black-box Attacks"
+        },
+        {
+            "paperId": "6d9429b96d9bb40e2d0d9c3f57d0b97f61db8503",
+            "title": "Restructuring of deep neural network acoustic models with singular value decomposition"
+        },
+        {
+            "paperId": null,
+            "title": "Lecture 6.5\u2014RmsProp: Divide the gradient by a running average of its recent magnitude"
+        },
+        {
+            "paperId": "444d70e3331b5083b40ef32e49390ef683a65e67",
+            "title": "Matrix Computations"
+        }
+    ]
+}

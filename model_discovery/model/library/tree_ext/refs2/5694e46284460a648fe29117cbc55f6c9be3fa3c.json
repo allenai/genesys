@@ -1,0 +1,246 @@
+{
+    "paperId": "5694e46284460a648fe29117cbc55f6c9be3fa3c",
+    "externalIds": {
+        "MAG": "2963446712",
+        "ArXiv": "1608.06993",
+        "DBLP": "journals/corr/HuangLW16a",
+        "DOI": "10.1109/CVPR.2017.243",
+        "CorpusId": 9433631
+    },
+    "title": "Densely Connected Convolutional Networks",
+    "abstract": "Recent work has shown that convolutional networks can be substantially deeper, more accurate, and efficient to train if they contain shorter connections between layers close to the input and those close to the output. In this paper, we embrace this observation and introduce the Dense Convolutional Network (DenseNet), which connects each layer to every other layer in a feed-forward fashion. Whereas traditional convolutional networks with L layers have L connections&#x2014;one between each layer and its subsequent layer&#x2014;our network has L(L+1)/2 direct connections. For each layer, the feature-maps of all preceding layers are used as inputs, and its own feature-maps are used as inputs into all subsequent layers. DenseNets have several compelling advantages: they alleviate the vanishing-gradient problem, strengthen feature propagation, encourage feature reuse, and substantially reduce the number of parameters. We evaluate our proposed architecture on four highly competitive object recognition benchmark tasks (CIFAR-10, CIFAR-100, SVHN, and ImageNet). DenseNets obtain significant improvements over the state-of-the-art on most of them, whilst requiring less memory and computation to achieve high performance. Code and pre-trained models are available at https://github.com/liuzhuang13/DenseNet.",
+    "venue": "Computer Vision and Pattern Recognition",
+    "year": 2016,
+    "referenceCount": 51,
+    "citationCount": 32938,
+    "influentialCitationCount": 4316,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1608.06993",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Dense Convolutional Network (DenseNet), which connects each layer to every other layer in a feed-forward fashion, and has several compelling advantages: they alleviate the vanishing-gradient problem, strengthen feature propagation, encourage feature reuse, and substantially reduce the number of parameters."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "143983679",
+            "name": "Gao Huang"
+        },
+        {
+            "authorId": "2109168016",
+            "name": "Zhuang Liu"
+        },
+        {
+            "authorId": "7446832",
+            "name": "Kilian Q. Weinberger"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "c085682ffa152a3b85da9c72bb6b9d271db46c88",
+            "title": "Memory-Efficient Implementation of DenseNets"
+        },
+        {
+            "paperId": "b9a81ca3b8fc0ca0fab3ef4dad489f94d8dd2550",
+            "title": "AdaNet: Adaptive Structural Learning of Artificial Neural Networks"
+        },
+        {
+            "paperId": "883eef83e407434dfbda09a2276120b28628429a",
+            "title": "Augmenting Supervised Neural Networks with Unsupervised Objectives for Large-scale Image Classification"
+        },
+        {
+            "paperId": "0c2de1b4fe7c5da8adf6351533a9c39503ad7a4c",
+            "title": "Deeply-Fused Nets"
+        },
+        {
+            "paperId": "d0156126edbfc524c8d108bdc0cf811cfe3129aa",
+            "title": "FractalNet: Ultra-Deep Neural Networks without Residuals"
+        },
+        {
+            "paperId": "1c4e9156ca07705531e45960b7a919dc473abb51",
+            "title": "Wide Residual Networks"
+        },
+        {
+            "paperId": "aaf08e37bcd0f4624d8eb04f301bfa98b0456641",
+            "title": "Bridging the Gaps Between Residual Learning, Recurrent Neural Networks and Visual Cortex"
+        },
+        {
+            "paperId": "51db1f3c8dfc7d4077da39c96bb90a6358128111",
+            "title": "Deep Networks with Stochastic Depth"
+        },
+        {
+            "paperId": "77f0a39b8e02686fd85b01971f8feb7f60971f80",
+            "title": "Identity Mappings in Deep Residual Networks"
+        },
+        {
+            "paperId": "06a81b3b11f4f51a6b72f009841378547f85674c",
+            "title": "Resnet in Resnet: Generalizing Residual Architectures"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "23ffaa0fe06eae05817f527a47ac3291077f9e58",
+            "title": "Rethinking the Inception Architecture for Computer Vision"
+        },
+        {
+            "paperId": "2579b2066d0fcbeda5498f5053f201b10a8e254b",
+            "title": "Deconstructing the Ladder Network Architecture"
+        },
+        {
+            "paperId": "345cc31c85e19cea9f8b8521be6a37937efd41c2",
+            "title": "Deep Manifold Traversal: Changing Labels with Convolutional Features"
+        },
+        {
+            "paperId": "f37e90c0bd5c4a9619ccfb763c45cb2d84abd3e6",
+            "title": "A Neural Algorithm of Artistic Style"
+        },
+        {
+            "paperId": "b92aa7024b87f50737b372e5df31ef091ab54e62",
+            "title": "Training Very Deep Networks"
+        },
+        {
+            "paperId": "cddf8a10c7f48df67a797808a615be0d4acf9a8e",
+            "title": "Semi-supervised Learning with Ladder Networks"
+        },
+        {
+            "paperId": "6140cbe70713d92f53c7e48dc31633fae961d9c7",
+            "title": "Multi-scale Recognition with DAG-CNNs"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "d6f2f611da110b5b5061731be3fc4c7f45d8ee23",
+            "title": "Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification"
+        },
+        {
+            "paperId": "33af9298e5399269a12d4b9901492fe406af62b4",
+            "title": "Striving for Simplicity: The All Convolutional Net"
+        },
+        {
+            "paperId": "8604f376633af8b347e31d84c6150a93b11e34c2",
+            "title": "FitNets: Hints for Thin Deep Nets"
+        },
+        {
+            "paperId": "428db42e86f6d51292e23fa57797e35cecd0e2ee",
+            "title": "Hypercolumns for object segmentation and fine-grained localization"
+        },
+        {
+            "paperId": "6fc6803df5f9ae505cae5b2f178ade4062c768d0",
+            "title": "Fully convolutional networks for semantic segmentation"
+        },
+        {
+            "paperId": "fb91db6aa4f710814f8aec28a7f3ecbc4e5ad4fd",
+            "title": "Deeply-Supervised Nets"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "5e83ab70d0cbc003471e87ec306d27d9c80ecb16",
+            "title": "Network In Network"
+        },
+        {
+            "paperId": "aa7bfd2304201afbb19971ebde87b17e40242e91",
+            "title": "On the importance of initialization and momentum in deep learning"
+        },
+        {
+            "paperId": "b7b915d508987b73b61eccd2b237e7ed099a2d29",
+            "title": "Maxout Networks"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "a1306ce652f556fbb9e794d91084a29294298e6d",
+            "title": "Pedestrian Detection with Unsupervised Multi-stage Feature Learning"
+        },
+        {
+            "paperId": "9f7f9aba0a6a966ce04e29e401ea28f9eae82f02",
+            "title": "Convolutional neural networks applied to house numbers digit classification"
+        },
+        {
+            "paperId": "67107f78a84bdb2411053cb54e94fa226eea6d8e",
+            "title": "Deep Sparse Rectifier Neural Networks"
+        },
+        {
+            "paperId": "1ba5e45b50108a73624efb0cb2dec9ed283fb512",
+            "title": "Neural Network Learning Without Backpropagation"
+        },
+        {
+            "paperId": "d2c733e34d48784a37d717fe43d9e93277a8c53e",
+            "title": "ImageNet: A large-scale hierarchical image database"
+        },
+        {
+            "paperId": "bc6dff14a130c57a91d5a21339c23471faf1d46f",
+            "title": "Et al"
+        },
+        {
+            "paperId": "a8e8f3c8d4418c8d62e306538c9c1292635e9d27",
+            "title": "Backpropagation Applied to Handwritten Zip Code Recognition"
+        },
+        {
+            "paperId": null,
+            "title": "Training and investigating residual nets"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "3449b65008b27f6e60a73d80c1fd990f0481126b",
+            "title": "Torch7: A Matlab-like Environment for Machine Learning"
+        },
+        {
+            "paperId": "02227c94dd41fe0b439e050d377b0beb5d427cda",
+            "title": "Reading Digits in Natural Images with Unsupervised Feature Learning"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        },
+        {
+            "paperId": "f42b865e20e61a954239f421b42007236e671f19",
+            "title": "GradientBased Learning Applied to Document Recognition"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "995a3b11cc8a4751d8e167abc4aa937abc934df0",
+            "title": "The Cascade-Correlation Learning Architecture"
+        },
+        {
+            "paperId": null,
+            "title": "We replaced the heat map (Fig. 4) in the previous version which was not clear enough"
+        },
+        {
+            "paperId": null,
+            "title": "A brief discussion on the connection between DenseNets and Stochastic Depth Networks is added (cf. Section 5)"
+        },
+        {
+            "paperId": null,
+            "title": "Results of DenseNets on the ImageNet classification task are added (cf"
+        },
+        {
+            "paperId": null,
+            "title": "Due to length limit, we removed the comparison between DenseNets and Partial DenseNets in the previous version (Fig"
+        },
+        {
+            "paperId": null,
+            "title": "The layers within the second and third dense block consistently assign the least weight to the outputs of the transition layer (the top row of the triangles)"
+        }
+    ]
+}

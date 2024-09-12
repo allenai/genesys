@@ -1,0 +1,198 @@
+{
+    "paperId": "6eec608f266de95eb817e9a6086641abc3c91e5f",
+    "externalIds": {
+        "ArXiv": "1610.00956",
+        "MAG": "2906569387",
+        "DBLP": "conf/iclr/BajgarKK17",
+        "CorpusId": 17714865
+    },
+    "title": "Embracing data abundance: BookTest Dataset for Reading Comprehension",
+    "abstract": "There is a practically unlimited amount of natural language data available. Still, recent work in text comprehension has focused on datasets which are small relative to current computing possibilities. This article is making a case for the community to move to larger data and as a step in that direction it is proposing the BookTest, a new dataset similar to the popular Children's Book Test (CBT), however more than 60 times larger. We show that training on the new data improves the accuracy of our Attention-Sum Reader model on the original CBT test data by a much larger margin than many recent attempts to improve the model architecture. On one version of the dataset our ensemble even exceeds the human baseline provided by Facebook. We then show in our own human study that there is still space for further improvement.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2016,
+    "referenceCount": 40,
+    "citationCount": 63,
+    "influentialCitationCount": 11,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The BookTest is proposed, a new dataset similar to the popular Children's Book Test, however more than 60 times larger, which shows that training on the new data improves the accuracy of the Attention-Sum Reader model on the original CBT test data by a much larger margin."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3363139",
+            "name": "Ondrej Bajgar"
+        },
+        {
+            "authorId": "2100019",
+            "name": "Rudolf Kadlec"
+        },
+        {
+            "authorId": "1773749",
+            "name": "Jan Kleindienst"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "24021461b49c726606bb9acdedd05cea5277c491",
+            "title": "Reasoning with Memory Augmented Neural Networks for Language Comprehension"
+        },
+        {
+            "paperId": "c636a2dd242908fe2e598a1077c0c57bfdea8633",
+            "title": "ReasoNet: Learning to Stop Reading in Machine Comprehension"
+        },
+        {
+            "paperId": "a39ffa57ef8e538b3c6a6c2bbc0b641f7cdc60dc",
+            "title": "Who did What: A Large-Scale Person-Centered Cloze Dataset"
+        },
+        {
+            "paperId": "832fc9327695f7425d8759c6aaeec0fa2d7b0a90",
+            "title": "WikiReading: A Novel Large-scale Language Understanding Task over Wikipedia"
+        },
+        {
+            "paperId": "bdf28e3cadbabda3261bd904c37edea66ab84766",
+            "title": "Dataset and Neural Recurrent Sequence Labeling Model for Open-Domain Factoid Question Answering"
+        },
+        {
+            "paperId": "c6e5df6322659276da6133f9b734a389d7a255e8",
+            "title": "Attention-over-Attention Neural Networks for Reading Comprehension"
+        },
+        {
+            "paperId": "15454e478cc826e195cb15732ea0db57ad8bd38c",
+            "title": "Separating Answers from Queries for Neural Reading Comprehension"
+        },
+        {
+            "paperId": "f92272e33b11a0d2f47b5b65446c0f1a913cfd17",
+            "title": "Consensus Attention-based Neural Networks for Chinese Reading Comprehension"
+        },
+        {
+            "paperId": "5ed791f810da580c78df6a052c6b9f2e258f6b0a",
+            "title": "The LAMBADA dataset: Word prediction requiring a broad discourse context"
+        },
+        {
+            "paperId": "05dd7254b632376973f3a1b4d39485da17814df5",
+            "title": "SQuAD: 100,000+ Questions for Machine Comprehension of Text"
+        },
+        {
+            "paperId": "b1e20420982a4f923c08652941666b189b11b7fe",
+            "title": "A Thorough Examination of the CNN/Daily Mail Reading Comprehension Task"
+        },
+        {
+            "paperId": "f314339651cb25e4234e0b96fe8bd87206847993",
+            "title": "Iterative Alternating Neural Attention for Machine Reading"
+        },
+        {
+            "paperId": "75fa915984f1903cd8d0e1ea54b9d008d5a87fe5",
+            "title": "Natural Language Comprehension with the EpiReader"
+        },
+        {
+            "paperId": "0f2ea810c16275dc74e880296e20dbd83b1bae1c",
+            "title": "Gated-Attention Readers for Text Comprehension"
+        },
+        {
+            "paperId": "c4916a5fb50bcc73213b6f054c42ad10c68c52cd",
+            "title": "Dynamic Entity Representation with Max-pooling Improves Machine Reading"
+        },
+        {
+            "paperId": "85b68477a6e031d88b963833e15a4b4fc6855264",
+            "title": "A Corpus and Cloze Evaluation for Deeper Understanding of Commonsense Stories"
+        },
+        {
+            "paperId": "46147f08468e873ff90d1d51e65493f262c7bb57",
+            "title": "A Parallel-Hierarchical Model for Machine Comprehension on Sparse Data"
+        },
+        {
+            "paperId": "fd34442a626fc24f59edb533a455425deee6315d",
+            "title": "Neural Text Understanding with Attention Sum Reader"
+        },
+        {
+            "paperId": "a2dc06c8da0ff9344dc558d6df571fc704b81ae7",
+            "title": "Attentive Pooling Networks"
+        },
+        {
+            "paperId": "2f2d8f8072e5cc9b296fad551f65f183bdbff7aa",
+            "title": "Exploring the Limits of Language Modeling"
+        },
+        {
+            "paperId": "35b91b365ceb016fb3e022577cec96fb9b445dc5",
+            "title": "The Goldilocks Principle: Reading Children's Books with Explicit Memory Representations"
+        },
+        {
+            "paperId": "d1505c6123c102e53eb19dff312cb25cea840b72",
+            "title": "Teaching Machines to Read and Comprehend"
+        },
+        {
+            "paperId": "59b81ff81da55efc724c84ddc9d3ffd8e57a8d0e",
+            "title": "Blocks and Fuel: Frameworks for deep learning"
+        },
+        {
+            "paperId": "0ba86604228b555475496e200f31878df3aabd6e",
+            "title": "Never-Ending Learning"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "99c970348b8f70ce23d6641e201904ea49266b6e",
+            "title": "Exact solutions to the nonlinear dynamics of learning in deep linear neural networks"
+        },
+        {
+            "paperId": "5d833331b0e22ff359db05c62a8bca18c4f04b68",
+            "title": "One billion word benchmark for measuring progress in statistical language modeling"
+        },
+        {
+            "paperId": "564257469fa44cdb57e4272f85253efb9acfd69d",
+            "title": "MCTest: A Challenge Dataset for the Open-Domain Machine Comprehension of Text"
+        },
+        {
+            "paperId": "855d0f722d75cc56a66a00ede18ace96bafee6bd",
+            "title": "Theano: new features and speed improvements"
+        },
+        {
+            "paperId": "84069287da0a6b488b8c933f3cb5be759cb6237e",
+            "title": "On the difficulty of training recurrent neural networks"
+        },
+        {
+            "paperId": "c1787db25af5614f41e56938aa594f2dbb1dca07",
+            "title": "The Unreasonable Effectiveness of Data"
+        },
+        {
+            "paperId": "4f410ab5c8b12b34b38421241366ee456bbebab9",
+            "title": "Incorporating Non-local Information into Information Extraction Systems by Gibbs Sampling"
+        },
+        {
+            "paperId": "4d546894d3f8bc28d13b6a2eeca500b47b970db4",
+            "title": "Some of my Best Friends are Linguists"
+        },
+        {
+            "paperId": "eb42a490cf4f186d3383c92963817d100afd81e2",
+            "title": "Feature-Rich Part-of-Speech Tagging with a Cyclic Dependency Network"
+        },
+        {
+            "paperId": "7628b62d64d2e5c33a13a5a473bc41b2391c1ebc",
+            "title": "Scaling to Very Very Large Corpora for Natural Language Disambiguation"
+        },
+        {
+            "paperId": "766ce989b8b8b984f7a4691fd8c9af4bdb2b74cd",
+            "title": "\u201cCloze Procedure\u201d: A New Tool for Measuring Readability"
+        },
+        {
+            "paperId": "d0961cec97320f3ea5f0f4088bedaa81e35cdcbb",
+            "title": "INTERSPEECH 2014 15th Annual Conference of the International Speech Communication Association"
+        },
+        {
+            "paperId": null,
+            "title": "it is widely accepted that more data can significantly improve performance of most models (Banko and Brill, 2001; Halevy et al.,"
+        },
+        {
+            "paperId": null,
+            "title": "training a model takes only about two hours on the CBT or about two days on the Daily Mail dataset, the largest of the three sets,"
+        }
+    ]
+}

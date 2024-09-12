@@ -1,0 +1,38 @@
+{
+    "paperId": "157b3e1ab532f2c5e99907ed0d4ad80d44395ca2",
+    "externalIds": {
+        "MAG": "1990131646",
+        "DBLP": "journals/spm/JacobsenL04",
+        "DOI": "10.1109/MSP.2004.1516381",
+        "CorpusId": 62107058
+    },
+    "title": "An update to the sliding DFT",
+    "abstract": "Those properties allow us to create Table 1, listing the appropriate arctan approximation based on the octant location of complex x. So we have to check the signs of Q and I, and see if |Q | > |I |, to determine the octant location and then use the appropriate approximation in Table 1. The maximum angle approximation error is 0.26\u25e6 for all octants. When \u03b8 is in the fifth octant, the above algorithm will yield a \u03b8 \u2032 that\u2019s more positive than +\u03c0 radians. If we need to keep the \u03b8 \u2032 estimate in the range of \u2212\u03c0 to +\u03c0 , we can rotate any \u03b8 residing in the fifth quadrant +\u03c0/4 rad (45\u25e6) by multiplying (I + jQ ) by (1 + j ), placing it in the sixth octant. That multiplication yields new real and imaginary parts defined as",
+    "venue": "IEEE Signal Processing Magazine",
+    "year": 2004,
+    "referenceCount": 1,
+    "citationCount": 206,
+    "influentialCitationCount": 10,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Those properties allow us to create Table 1, listing the appropriate arctan approximation based on the octant location of complex x, and to check the signs of Q and I, and see if |Q | > |I |, to determine theOctant location and then use the appropriate approximation in Table 1."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "49331965",
+            "name": "E. Jacobsen"
+        },
+        {
+            "authorId": "65871712",
+            "name": "R. Lyons"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "0daa2afe6aedee0bb915302d59b9c25bd062e57c",
+            "title": "The sliding DFT"
+        }
+    ]
+}

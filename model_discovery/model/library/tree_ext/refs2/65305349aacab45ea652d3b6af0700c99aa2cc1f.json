@@ -1,0 +1,262 @@
+{
+    "paperId": "65305349aacab45ea652d3b6af0700c99aa2cc1f",
+    "externalIds": {
+        "MAG": "2785890791",
+        "DBLP": "conf/aistats/ImaizumiF19",
+        "ArXiv": "1802.04474",
+        "CorpusId": 59425874
+    },
+    "title": "Deep Neural Networks Learn Non-Smooth Functions Effectively",
+    "abstract": "We theoretically discuss why deep neural networks (DNNs) performs better than other models in some cases by investigating statistical properties of DNNs for non-smooth functions. While DNNs have empirically shown higher performance than other standard methods, understanding its mechanism is still a challenging problem. From an aspect of the statistical theory, it is known many standard methods attain optimal convergence rates, and thus it has been difficult to find theoretical advantages of DNNs. This paper fills this gap by considering learning of a certain class of non-smooth functions, which was not covered by the previous theory. We derive convergence rates of estimators by DNNs with a ReLU activation, and show that the estimators by DNNs are almost optimal to estimate the non-smooth functions, while some of the popular models do not attain the optimal rate. In addition, our theoretical result provides guidelines for selecting an appropriate number of layers and edges of DNNs. We provide numerical experiments to support the theoretical results.",
+    "venue": "International Conference on Artificial Intelligence and Statistics",
+    "year": 2018,
+    "referenceCount": 57,
+    "citationCount": 113,
+    "influentialCitationCount": 10,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that the estimators by DNNs are almost optimal to estimate the non-smooth functions, while some of the popular models do not attain the optimal rate."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3429139",
+            "name": "M. Imaizumi"
+        },
+        {
+            "authorId": "1693668",
+            "name": "K. Fukumizu"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "6d9f4f5b9c9d1f07b98a36ee9e9989f9830612c9",
+            "title": "Statistically Efficient Estimation for Non-Smooth Probability Densities"
+        },
+        {
+            "paperId": "c80daf1a7defd4364fb62641fa08339dcb3f6c6e",
+            "title": "Fast generalization error bound of deep learning from a kernel perspective"
+        },
+        {
+            "paperId": "8d4f727b181e14632b7dd15435e4f756e2926ad9",
+            "title": "Optimal approximation of piecewise smooth functions using deep ReLU neural networks"
+        },
+        {
+            "paperId": "83af8edebf7e4550dd1f53e3bac55ba51d19bd5b",
+            "title": "Memory-optimal neural network approximation"
+        },
+        {
+            "paperId": "396bc378026271f5e5f87794004fac49996791c8",
+            "title": "Nonparametric regression using deep neural networks with ReLU activation function"
+        },
+        {
+            "paperId": "23effc082f2582b39e277dfc99bbce198cf36451",
+            "title": "Optimal Approximation with Sparsely Connected Deep Neural Networks"
+        },
+        {
+            "paperId": "54ddb00fa691728944fd8becea90a373d21597cf",
+            "title": "Understanding deep learning requires rethinking generalization"
+        },
+        {
+            "paperId": "4d74c808f5720eb9eb312f7be85be03bd7207071",
+            "title": "Error bounds for approximations with deep ReLU networks"
+        },
+        {
+            "paperId": "97616121e0153bdd279630a645751d6616451f30",
+            "title": "No bad local minima: Data independent training error guarantees for multilayer neural networks"
+        },
+        {
+            "paperId": "07925910d45761d96269fc3bdfdc21b1d20d84ad",
+            "title": "Deep Learning without Poor Local Minima"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "7acb2f72bdfb505233fec1e9521d9a7d70ddcde4",
+            "title": "Mathematical Foundations of Infinite-Dimensional Statistical Models"
+        },
+        {
+            "paperId": "02480b5d060eb4cb2228ac7e824fda22b29c3e9e",
+            "title": "Norm-Based Capacity Control in Neural Networks"
+        },
+        {
+            "paperId": "7e17a3c231dc37d162b9ad74043afc1cee4ee2dd",
+            "title": "Probabilistic Backpropagation for Scalable Learning of Bayesian Neural Networks"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "981ce6b655cc06416ff6bf7fac8c6c2076fd7fac",
+            "title": "Identifying and attacking the saddle point problem in high-dimensional non-convex optimization"
+        },
+        {
+            "paperId": "193edd20cae92c6759c18ce93eeea96afd9528eb",
+            "title": "Deep learning in neural networks: An overview"
+        },
+        {
+            "paperId": "b034b5769ab94acf9fb8ae48c7edb560a300bb63",
+            "title": "On the Number of Linear Regions of Deep Neural Networks"
+        },
+        {
+            "paperId": "90a99fb11720ad5977f9195c8edbb217744b0f67",
+            "title": "On the Expressive Power of Deep Architectures"
+        },
+        {
+            "paperId": "7c76e2223e9da9882235c1f50282f7fd8a5fde5a",
+            "title": "Stochastic expansions using continuous dictionaries: L\u00e9vy adaptive regression kernels"
+        },
+        {
+            "paperId": "053912e76e50c9f923a1fc1c173f1365776060cc",
+            "title": "On optimization methods for deep learning"
+        },
+        {
+            "paperId": "ce5bad4f63dd1832e5d229cb11164eb261c21ca2",
+            "title": "Information Rates of Nonparametric Gaussian Process Methods"
+        },
+        {
+            "paperId": "c562a2479094768fcf76bcc992cdbf12227a98fe",
+            "title": "Minimax-Optimal Rates For Sparse Additive Models Over Kernel Classes Via Convex Programming"
+        },
+        {
+            "paperId": "433bfa2fb7185200ad928d0b6dc4afa17f459813",
+            "title": "Compactly supported shearlets are optimally sparse"
+        },
+        {
+            "paperId": "379daa0dabeffa72b9a0d8c48b361236c03fb302",
+            "title": "Introduction to Nonparametric Estimation"
+        },
+        {
+            "paperId": "04b23f577c20d1a0e2a67aadda555f58e6d23d6e",
+            "title": "Support vector machines"
+        },
+        {
+            "paperId": "57458bc1cffe5caa45a885af986d70f723f406b4",
+            "title": "A unified architecture for natural language processing: deep neural networks with multitask learning"
+        },
+        {
+            "paperId": "ab6223e54eb9699a7edf37e422486bdf113d25cc",
+            "title": "Rates of contraction of posterior distributions based on Gaussian process priors"
+        },
+        {
+            "paperId": "8978cf7574ceb35f4c3096be768c7547b28a35d0",
+            "title": "A Fast Learning Algorithm for Deep Belief Nets"
+        },
+        {
+            "paperId": "8ca86e941da7254613a5d03dd7a6c36886fadc1d",
+            "title": "Gaussian Processes for Machine Learning (Adaptive Computation and Machine Learning)"
+        },
+        {
+            "paperId": "7dbdb4209626fd92d2436a058663206216036e68",
+            "title": "Elements of Information Theory"
+        },
+        {
+            "paperId": "832f6a52920db02135d751c46c026a78ad16128c",
+            "title": "New tight frames of curvelets and optimal representations of objects with piecewise C2 singularities"
+        },
+        {
+            "paperId": "601ba02449e03c7b36e882b80de24c42b887aa4d",
+            "title": "Recovering edges in ill-posed inverse problems: optimality of curvelet frames"
+        },
+        {
+            "paperId": "27b89885140da973ee04469c032ebeb02f921053",
+            "title": "Local minima and plateaus in hierarchical structures of multilayer perceptrons"
+        },
+        {
+            "paperId": "e71d1595ba78c7095066d90ac7d5687c7be80885",
+            "title": "Smooth Discrimination Analysis"
+        },
+        {
+            "paperId": "da07bb3688f5ec5b42ee19fb06270a68be6ac46a",
+            "title": "Neural Network Learning: Theoretical Foundations"
+        },
+        {
+            "paperId": "557cdcfd6cc9eb72d0d84196f5b3bf2add2face4",
+            "title": "Information-theoretic determination of minimax rates of convergence"
+        },
+        {
+            "paperId": "015999a72c70a960e59c51078b09c8f672af0d2c",
+            "title": "The Sample Complexity of Pattern Classification with Neural Networks: The Size of the Weights is More Important than the Size of the Network"
+        },
+        {
+            "paperId": "45ee7447b9dd406496c4a5d9d8fb6556366a01c6",
+            "title": "Weak Convergence and Empirical Processes: With Applications to Statistics"
+        },
+        {
+            "paperId": "ce65fdc0241a006287bdc022db422642ec32d30e",
+            "title": "Asymptotical minimax recovery of sets with smooth boundaries"
+        },
+        {
+            "paperId": "da23a5cd2db0080666964cace0c4e6c4d0b562d3",
+            "title": "Kernel-Type Estimators of Jump Points and Values of a Regression Function"
+        },
+        {
+            "paperId": "04113e8974341f97258800126d05fd8df2751b7e",
+            "title": "Universal approximation bounds for superpositions of a sigmoidal function"
+        },
+        {
+            "paperId": "a9209f90c02a378720879a3bb93aa2f7181cf5f2",
+            "title": "Approximation and Estimation Bounds for Artificial Neural Networks"
+        },
+        {
+            "paperId": "8da1dda34ecc96263102181448c94ec7d645d085",
+            "title": "Approximation by superpositions of a sigmoidal function"
+        },
+        {
+            "paperId": "c559c87c9a44b22584f3a815487f4ffa4d06fd87",
+            "title": "Mean integrated squared error of kernel estimators when the density and its derivative are not necessarily continuous"
+        },
+        {
+            "paperId": "2f0be7ef09295368bb1b1f01945ff337e0d44b39",
+            "title": "Optimal Global Rates of Convergence for Nonparametric Regression"
+        },
+        {
+            "paperId": "3b40583dd95ee4a07220ff4e56665fa71b90a799",
+            "title": "Metric Entropy of Some Classes of Sets with Differentiable Boundaries"
+        },
+        {
+            "paperId": "4f8d648c52edf74e41b0996128aa536e13cc7e82",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": "e215f2144bf370842e777c2caa70c69b91a3f1d0",
+            "title": "Using deep learning to enhance cancer diagnosis and classication"
+        },
+        {
+            "paperId": "d6e742888a4a37dd8fd33ebfec0332754cebba7a",
+            "title": "Local Rademacher complexities and oracle inequalities in risk minimization"
+        },
+        {
+            "paperId": null,
+            "title": "All of nonparametric statistics: with 52 illustrations"
+        },
+        {
+            "paperId": "722c52711a8014694d68839f0ffc52ba8f7fc621",
+            "title": "Approximation and estimation bounds for artificial neural networks"
+        },
+        {
+            "paperId": "f8de7df259908769a23e94f7016e9462c222e217",
+            "title": "Minimax theory of image reconstruction"
+        },
+        {
+            "paperId": null,
+            "title": "Nonparametric function estimation and bandwidth selection for discontinuous regression functions"
+        },
+        {
+            "paperId": "9552ac39a57daacf3d75865a268935b5a0df9bbb",
+            "title": "Neural networks and principal component analysis: Learning from examples without local minima"
+        },
+        {
+            "paperId": "beed3712548dcb1906b9f9939e38e5efb17fd276",
+            "title": "Mean integrated squared error of kernel estimators when the density and its derivative are not necessarily continuous"
+        },
+        {
+            "paperId": null,
+            "title": "DNNS FOR NON-SMOOTH FUNCTIONS"
+        }
+    ]
+}

@@ -1,0 +1,74 @@
+{
+    "paperId": "4af41f4d838daa7ca6995aeb4918b61989d1ed80",
+    "externalIds": {
+        "DBLP": "journals/corr/cs-CL-0108006",
+        "MAG": "2950075229",
+        "ArXiv": "cs/0108006",
+        "DOI": "10.1109/ICASSP.2001.940893",
+        "CorpusId": 7284722
+    },
+    "title": "Classes for fast maximum entropy training",
+    "abstract": "Maximum entropy models are considered by many to be one of the most promising avenues of language modeling research. Unfortunately, long training times make maximum entropy research difficult. We present a speedup technique: we change the form of the model to use classes. Our speedup works by creating two maximum entropy models, the first of which predicts the class of each word, and the second of which predicts the word itself. This factoring of the model leads to fewer nonzero indicator functions, and faster normalization, achieving speedups of up to a factor of 35 over one of the best previous techniques. It also results in typically slightly lower perplexities. The same trick can be used to speed training of other machine learning techniques, e.g. neural networks, applied to any problem with a large number of outputs, such as language modeling.",
+    "venue": "2001 IEEE International Conference on Acoustics, Speech, and Signal Processing. Proceedings (Cat. No.01CH37221)",
+    "year": 2001,
+    "referenceCount": 10,
+    "citationCount": 249,
+    "influentialCitationCount": 21,
+    "openAccessPdf": {
+        "url": "http://arxiv.org/pdf/cs/0108006",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper presents a speedup technique: changing the form of the model to use classes, which leads to fewer nonzero indicator functions, and faster normalization, achieving speedups of up to a factor of 35 over one of the best previous techniques."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "50126864",
+            "name": "Joshua Goodman"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "db1492970cecaaebb8890cbe14046d1b3e6c57b3",
+            "title": "Putting it all together."
+        },
+        {
+            "paperId": "92b99542f27ce2e899326ac167a07ee35991cfee",
+            "title": "Efficient training methods for maximum entropy language modeling"
+        },
+        {
+            "paperId": "21108df08a7d20d877c2b6c0f03a2b53a9cd537d",
+            "title": "Language model size reduction by pruning and clustering"
+        },
+        {
+            "paperId": "a434c9cb11768b61e9ac608d31a81b62c1ad474e",
+            "title": "Putting it all together: language model combination"
+        },
+        {
+            "paperId": "0555dccd4f243fe6d353e8d0af4f161882694b1f",
+            "title": "Cluster Expansions and Iterative Scaling for Maximum Entropy Language Models"
+        },
+        {
+            "paperId": "b951b9f78b98a186ba259027996a48e4189d37e5",
+            "title": "Inducing Features of Random Fields"
+        },
+        {
+            "paperId": "0b26fa1b848ed808a0511db34bce2426888f0b68",
+            "title": "Adaptive Statistical Language Modeling; A Maximum Entropy Approach"
+        },
+        {
+            "paperId": "3de5d40b60742e3dfa86b19e7f660962298492af",
+            "title": "Class-Based n-gram Models of Natural Language"
+        },
+        {
+            "paperId": "37c931cbaa9217b829596dd196520a838562a109",
+            "title": "Generalized Iterative Scaling for Log-Linear Models"
+        },
+        {
+            "paperId": "b3e53b9c0e3a7a60e7a5295e9b08af74d6fb3dbf",
+            "title": "On structuring probabilistic dependences in stochastic language modelling"
+        }
+    ]
+}

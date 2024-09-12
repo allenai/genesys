@@ -1,0 +1,130 @@
+{
+    "paperId": "ab7b5917515c460b90451e67852171a531671ab8",
+    "externalIds": {
+        "MAG": "2006969979",
+        "ACL": "J93-2003",
+        "DBLP": "journals/coling/BrownPPM94",
+        "CorpusId": 13259913
+    },
+    "title": "The Mathematics of Statistical Machine Translation: Parameter Estimation",
+    "abstract": "We describe a series of five statistical models of the translation process and give algorithms for estimating the parameters of these models given a set of pairs of sentences that are translations of one another. We define a concept of word-by-word alignment between such pairs of sentences. For any given pair of such sentences each of our models assigns a probability to each of the possible word-by-word alignments. We give an algorithm for seeking the most probable of these alignments. Although the algorithm is suboptimal, the alignment thus obtained accounts well for the word-by-word relationships in the pair of sentences. We have a great deal of data in French and English from the proceedings of the Canadian Parliament. Accordingly, we have restricted our work to these two languages; but we feel that because our algorithms have minimal linguistic content they would work well on other pairs of languages. We also feel, again because of the minimal linguistic content of our algorithms, that it is reasonable to argue that word-by-word alignments are inherent in any sufficiently large bilingual corpus.",
+    "venue": "International Conference on Computational Logic",
+    "year": 1993,
+    "referenceCount": 22,
+    "citationCount": 4810,
+    "influentialCitationCount": 619,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is reasonable to argue that word-by-word alignments are inherent in any sufficiently large bilingual corpus, given a set of pairs of sentences that are translations of one another."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "32538203",
+            "name": "P. Brown"
+        },
+        {
+            "authorId": "2714577",
+            "name": "S. D. Pietra"
+        },
+        {
+            "authorId": "39944066",
+            "name": "V. D. Pietra"
+        },
+        {
+            "authorId": "2474650",
+            "name": "R. Mercer"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "a0b61625e60a419bd5ea1d892047a65a73d9f0c4",
+            "title": "Text-Translation Alignment"
+        },
+        {
+            "paperId": "4fe2a45babab10c1bfae05d2464363f4e52bbaf9",
+            "title": "A Program for Aligning Sentences in Bilingual Corpora"
+        },
+        {
+            "paperId": "3de5d40b60742e3dfa86b19e7f660962298492af",
+            "title": "Class-Based n-gram Models of Natural Language"
+        },
+        {
+            "paperId": "0858eb565308ef214a0b7e51f0aa204185adf430",
+            "title": "An automatic technique to include grammatical and morphological information in a trigram-based statistical language model"
+        },
+        {
+            "paperId": "5d7cf89392ce857475f8e699e11f8ac3c60dab47",
+            "title": "Aligning Sentences in Parallel Corpora"
+        },
+        {
+            "paperId": "85b9eb556c211d954b31d9d58fed6891a07ab473",
+            "title": "Word-Sense Disambiguation Using Statistical Methods"
+        },
+        {
+            "paperId": "09091c767a756001bf87205df25f1505354469a2",
+            "title": "A Statistical Approach to Sense Disambiguation in Machine Translation"
+        },
+        {
+            "paperId": "df563691b20b727fe346fc00f6b2afc25d97fb8d",
+            "title": "Identifying word correspondence in parallel texts"
+        },
+        {
+            "paperId": "a1066659ec1afee9dce586f6f49b7d44527827e1",
+            "title": "A Statistical Approach to Machine Translation"
+        },
+        {
+            "paperId": "2166fa493a8c6e40f7f8562d15712dd3c75f03df",
+            "title": "A Statistical Approach to Language Translation"
+        },
+        {
+            "paperId": "d43de0e607c51b1f378aa9df6e850c7f6822297e",
+            "title": "Encyclopedic Dictionary of Mathematics"
+        },
+        {
+            "paperId": "d36efb9ad91e00faa334b549ce989bfae7e2907a",
+            "title": "Maximum likelihood from incomplete data via the EM - algorithm plus discussions on the paper"
+        },
+        {
+            "paperId": "ac819d81d6e80fa75f84ff8a5ab2e592854f6947",
+            "title": "Machine Translation of Languages"
+        },
+        {
+            "paperId": "5051e54af8c0d6b84f8459c57d55bd19be9f0cee",
+            "title": "Identifying Word Correspondences in Parallel Texts"
+        },
+        {
+            "paperId": null,
+            "title": "1991a). \"A statistical approach"
+        },
+        {
+            "paperId": null,
+            "title": "Bilingual concordancing and bilingual lexicography.\" In EURALEX 4th International Congress"
+        },
+        {
+            "paperId": null,
+            "title": "Algor i thm (Baum 1972; Dempster, Laird, and Rubin 1977), for finding locally optimal parameter values 8 for a model P"
+        },
+        {
+            "paperId": "539036ab9e8f038c8a948596e77cc0dfcfa91fb3",
+            "title": "An inequality and associated maximization technique in statistical estimation of probabilistic functions of a Markov process"
+        },
+        {
+            "paperId": null,
+            "title": "If any position has been chosen more than once then return failure"
+        },
+        {
+            "paperId": null,
+            "title": "Let m = \u00a20 + Y2~li=l \u00a2i"
+        },
+        {
+            "paperId": null,
+            "title": "Just as for Model 1, the independence assumptions allow us to calculate the sum over alignments (52) in closed form"
+        },
+        {
+            "paperId": null,
+            "title": "Choose a length \u00a20 for r0 according to the distribution n0(\u00a20 I ~li=l \u00a2i)"
+        }
+    ]
+}

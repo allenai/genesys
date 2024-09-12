@@ -1,0 +1,166 @@
+{
+    "paperId": "d5aefe86b1ba8c773a6bd0e84812ace161b8c0db",
+    "externalIds": {
+        "MAG": "2809418595",
+        "ArXiv": "1808.03965",
+        "DBLP": "journals/corr/abs-1808-03965",
+        "DOI": "10.1145/3219819.3219947",
+        "CorpusId": 50776464
+    },
+    "title": "Large-Scale Learnable Graph Convolutional Networks",
+    "abstract": "Convolutional neural networks (CNNs) have achieved great success on grid-like data such as images, but face tremendous challenges in learning from more generic data such as graphs. In CNNs, the trainable local filters enable the automatic extraction of high-level features. The computation with filters requires a fixed number of ordered units in the receptive fields. However, the number of neighboring units is neither fixed nor are they ordered in generic graphs, thereby hindering the applications of convolutional operations. Here, we address these challenges by proposing the learnable graph convolutional layer (LGCL). LGCL automatically selects a fixed number of neighboring nodes for each feature based on value ranking in order to transform graph data into grid-like structures in 1-D format, thereby enabling the use of regular convolutional operations on generic graphs. To enable model training on large-scale graphs, we propose a sub-graph training method to reduce the excessive memory and computational resource requirements suffered by prior methods on graph convolutions. Our experimental results on node classification tasks in both transductive and inductive learning settings demonstrate that our methods can achieve consistently better performance on the Cora, Citeseer, Pubmed citation network, and protein-protein interaction network datasets. Our results also indicate that the proposed methods using sub-graph training strategy are more efficient as compared to prior approaches.",
+    "venue": "Knowledge Discovery and Data Mining",
+    "year": 2018,
+    "referenceCount": 31,
+    "citationCount": 551,
+    "influentialCitationCount": 41,
+    "openAccessPdf": {
+        "url": "https://dl.acm.org/doi/pdf/10.1145/3219819.3219947",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The proposed LGCL automatically selects a fixed number of neighboring nodes for each feature based on value ranking in order to transform graph data into grid-like structures in 1-D format, thereby enabling the use of regular convolutional operations on generic graphs."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3920758",
+            "name": "Hongyang Gao"
+        },
+        {
+            "authorId": "8492168",
+            "name": "Zhengyang Wang"
+        },
+        {
+            "authorId": "1743600",
+            "name": "Shuiwang Ji"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "33998aff64ce51df8dee45989cdca4b6b1329ec4",
+            "title": "Graph Attention Networks"
+        },
+        {
+            "paperId": "b7c4570d7d97f327e7f82fe28100172ec5e94cac",
+            "title": "Predicting multicellular function through multi-layer tissue networks"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "6b7d6e6416343b2a122f8416e69059ce919026ef",
+            "title": "Inductive Representation Learning on Large Graphs"
+        },
+        {
+            "paperId": "1a0912bb76777469295bb2c059faee907e7f3258",
+            "title": "Mask R-CNN"
+        },
+        {
+            "paperId": "f958d4921951e394057a1c4ec33bad9a34e5dad1",
+            "title": "A Convolutional Encoder Model for Neural Machine Translation"
+        },
+        {
+            "paperId": "36eff562f65125511b5dfab68ce7f7a943c27478",
+            "title": "Semi-Supervised Classification with Graph Convolutional Networks"
+        },
+        {
+            "paperId": "5694e46284460a648fe29117cbc55f6c9be3fa3c",
+            "title": "Densely Connected Convolutional Networks"
+        },
+        {
+            "paperId": "36ee2c8bd605afd48035d15fdc6b8c8842363376",
+            "title": "node2vec: Scalable Feature Learning for Networks"
+        },
+        {
+            "paperId": "c41eb895616e453dcba1a70c9b942c5063cc656c",
+            "title": "Convolutional Neural Networks on Graphs with Fast Localized Spectral Filtering"
+        },
+        {
+            "paperId": "cab372bc3824780cce20d9dd1c22d4df39ed081a",
+            "title": "DeepLab: Semantic Image Segmentation with Deep Convolutional Nets, Atrous Convolution, and Fully Connected CRFs"
+        },
+        {
+            "paperId": "7c6de5a9e02a779e24504619050c6118f4eac181",
+            "title": "Learning Convolutional Neural Networks for Graphs"
+        },
+        {
+            "paperId": "3d846cb01f6a975554035d2210b578ca61344b22",
+            "title": "Revisiting Semi-Supervised Learning with Graph Embeddings"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+            "title": "Effective Approaches to Attention-based Neural Machine Translation"
+        },
+        {
+            "paperId": "424561d8585ff8ebce7d5d07de8dbf7aae5e7270",
+            "title": "Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "1eb09fecd75eb27825dce4f964b97f4f5cc399d7",
+            "title": "On the Properties of Neural Machine Translation: Encoder\u2013Decoder Approaches"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "fff114cbba4f3ba900f33da574283e3de7f26c83",
+            "title": "DeepWalk: online learning of social representations"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "26cb14c9d22cf946314d685fe3541ef9f641e429",
+            "title": "End-to-end text recognition with convolutional neural networks"
+        },
+        {
+            "paperId": "ea9d2a2b4ce11aaf85136840c65f3bc9c03ab649",
+            "title": "Understanding the difficulty of training deep feedforward neural networks"
+        },
+        {
+            "paperId": "d2c733e34d48784a37d717fe43d9e93277a8c53e",
+            "title": "ImageNet: A large-scale hierarchical image database"
+        },
+        {
+            "paperId": "43d2ed5c3c55c1100450cd74dc1031afa24d37b2",
+            "title": "Collective Classification in Network Data"
+        },
+        {
+            "paperId": null,
+            "title": "Kipf and MaxWelling"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "f42b865e20e61a954239f421b42007236e671f19",
+            "title": "GradientBased Learning Applied to Document Recognition"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        }
+    ]
+}

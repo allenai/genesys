@@ -1,0 +1,249 @@
+{
+    "paperId": "c8c4ab59ac29973a00df4e5c8df3773a3c59995a",
+    "externalIds": {
+        "MAG": "2962972936",
+        "DBLP": "conf/iclr/RamachandranZL18",
+        "CorpusId": 10919244
+    },
+    "title": "Searching for Activation Functions",
+    "abstract": "The choice of activation functions in deep networks has a significant effect on the training dynamics and task performance. Currently, the most successful and widely-used activation function is the Rectified Linear Unit (ReLU). Although various hand-designed alternatives to ReLU have been proposed, none have managed to replace it due to inconsistent gains. In this work, we propose to leverage automatic search techniques to discover new activation functions. Using a combination of exhaustive and reinforcement learning-based search, we discover multiple novel activation functions. We verify the effectiveness of the searches by conducting an empirical evaluation with the best discovered activation function. Our experiments show that the best discovered activation function, $f(x) = x \\cdot \\text{sigmoid}(\\beta x)$, which we name Swish, tends to work better than ReLU on deeper models across a number of challenging datasets. For example, simply replacing ReLUs with Swish units improves top-1 classification accuracy on ImageNet by 0.9\\% for Mobile NASNet-A and 0.6\\% for Inception-ResNet-v2. The simplicity of Swish and its similarity to ReLU make it easy for practitioners to replace ReLUs with Swish units in any neural network.",
+    "venue": "arXiv.org",
+    "year": 2018,
+    "referenceCount": 53,
+    "citationCount": 2782,
+    "influentialCitationCount": 226,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The experiments show that the best discovered activation function, f(x) = x \\cdot \\text{sigmoid}(\\beta x)$, which is named Swish, tends to work better than ReLU on deeper models across a number of challenging datasets."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3377142",
+            "name": "Prajit Ramachandran"
+        },
+        {
+            "authorId": "2368067",
+            "name": "Barret Zoph"
+        },
+        {
+            "authorId": "2827616",
+            "name": "Quoc V. Le"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "7e259f2582c32755b968cb725c5c04a00e481417",
+            "title": "Practical Network Blocks Design with Q-Learning"
+        },
+        {
+            "paperId": "168b7d0ab57a331a228ce21ffd1becbb93066f79",
+            "title": "Neural Optimizer Search with Reinforcement Learning"
+        },
+        {
+            "paperId": "d0611891b9e8a7c5731146097b6f201578f47b2f",
+            "title": "Learning Transferable Architectures for Scalable Image Recognition"
+        },
+        {
+            "paperId": "dce6f9d4017b1785979e7520fd0834ef8cf02f4b",
+            "title": "Proximal Policy Optimization Algorithms"
+        },
+        {
+            "paperId": "4e7c28bd51d75690e166769490ed718af9736faa",
+            "title": "Reinforcement Learning for Architecture Search by Network Transformation"
+        },
+        {
+            "paperId": "20e70ad5bb2c5b7b996dba8b1548ad23121a55b3",
+            "title": "Flexible Rectified Linear Units for Improving Convolutional Neural Networks"
+        },
+        {
+            "paperId": "b8c6ccd5c1eb4f9837fc4877d27e55b7349781be",
+            "title": "Deep Interest Network for Click-Through Rate Prediction"
+        },
+        {
+            "paperId": "1238d0c296c1263afa958ccc1bff3d65e6430be3",
+            "title": "Learnable pooling with Context Gating for video classification"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "424a6e62084d919bfc2e39a507c263e5991ebdad",
+            "title": "Self-Normalizing Neural Networks"
+        },
+        {
+            "paperId": "2b7583e8cc12f92dff1feff0445ddc6075014611",
+            "title": "Taming the waves: sine as activation function in deep neural networks"
+        },
+        {
+            "paperId": "3647d6d0f151dc05626449ee09cc7bce55be497e",
+            "title": "MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications"
+        },
+        {
+            "paperId": "c889d6f98e6d79b89c3a6adf8a921f88fa6ba518",
+            "title": "Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks"
+        },
+        {
+            "paperId": "f108b65fe0003e387e1cd7e50f537af0531818e4",
+            "title": "Large-Scale Evolution of Image Classifiers"
+        },
+        {
+            "paperId": "b587ee7c802a5bd222a69090f59285e0dfdb29f1",
+            "title": "Sigmoid-Weighted Linear Units for Neural Network Function Approximation in Reinforcement Learning"
+        },
+        {
+            "paperId": "88caa4a0253a8b0076176745ebc072864eab66e1",
+            "title": "Language Modeling with Gated Convolutional Networks"
+        },
+        {
+            "paperId": "282a380fb5ac26d99667224cef8c630f6882704f",
+            "title": "Learning to reinforcement learn"
+        },
+        {
+            "paperId": "29c887794eed2ca9462638ff853e6fe1ab91d5d8",
+            "title": "Optimization as a Model for Few-Shot Learning"
+        },
+        {
+            "paperId": "67d968c7450878190e45ac7886746de867bf673d",
+            "title": "Neural Architecture Search with Reinforcement Learning"
+        },
+        {
+            "paperId": "954b01151ff13aef416d27adc60cd9a076753b1a",
+            "title": "RL$^2$: Fast Reinforcement Learning via Slow Reinforcement Learning"
+        },
+        {
+            "paperId": "563783de03452683a9206e85fe6d661714436686",
+            "title": "HyperNetworks"
+        },
+        {
+            "paperId": "5694e46284460a648fe29117cbc55f6c9be3fa3c",
+            "title": "Densely Connected Convolutional Networks"
+        },
+        {
+            "paperId": "97fb4e3d45bb098e27e0071448b6152217bd35a5",
+            "title": "Layer Normalization"
+        },
+        {
+            "paperId": "4361e64f2d12d63476fdc88faf72a0f70d9a2ffb",
+            "title": "Bridging Nonlinearities and Stochastic Regularizers with Gaussian Error Linear Units"
+        },
+        {
+            "paperId": "136cf66392f1d6bf42da4cc070888996dc472b91",
+            "title": "On Multiplicative Integration with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "0936352b78a52bc5d2b5e3f04233efc56664af51",
+            "title": "Conditional Image Generation with PixelCNN Decoders"
+        },
+        {
+            "paperId": "4954fa180728932959997a4768411ff9136aac81",
+            "title": "TensorFlow: A system for large-scale machine learning"
+        },
+        {
+            "paperId": "1c4e9156ca07705531e45960b7a919dc473abb51",
+            "title": "Wide Residual Networks"
+        },
+        {
+            "paperId": "77f0a39b8e02686fd85b01971f8feb7f60971f80",
+            "title": "Identity Mappings in Deep Residual Networks"
+        },
+        {
+            "paperId": "0e2b3faed39561f712c3b14a08c7c36272d9857a",
+            "title": "Understanding and Improving Convolutional Neural Networks via Concatenated Rectified Linear Units"
+        },
+        {
+            "paperId": "b5c26ab8767d046cb6e32d959fdf726aee89bb62",
+            "title": "Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "23ffaa0fe06eae05817f527a47ac3291077f9e58",
+            "title": "Rethinking the Inception Architecture for Computer Vision"
+        },
+        {
+            "paperId": "f63e917638553414526a0cc8550de4ad2d83fe7a",
+            "title": "Fast and Accurate Deep Network Learning by Exponential Linear Units (ELUs)"
+        },
+        {
+            "paperId": "adf3b591281688b7e71b254ab931b2aa39b4b59f",
+            "title": "Empirical Evaluation of Rectified Activations in Convolutional Network"
+        },
+        {
+            "paperId": "e0945081b5b87187a53d4329cf77cd8bff635795",
+            "title": "Highway Networks"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "d6f2f611da110b5b5061731be3fc4c7f45d8ee23",
+            "title": "Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "93100ebe89840bc235c586ddc6daccd262707fec",
+            "title": "Learning Activation Functions to Improve Deep Neural Networks"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "b7b915d508987b73b61eccd2b237e7ed099a2d29",
+            "title": "Maxout Networks"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "a538b05ebb01a40323997629e171c91aa28b8e2f",
+            "title": "Rectified Linear Units Improve Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": "1f88427d7aa8225e47f946ac41a0667d7b69ac52",
+            "title": "What is the best multi-stage architecture for object recognition?"
+        },
+        {
+            "paperId": "03de8578480c53677c484e1facfced74f4f5b045",
+            "title": "Digital selection and analogue amplification coexist in a cortex-inspired silicon circuit"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "b64e846fe88acaf302248249696c3b7badde41b5",
+            "title": "Meta-neural networks that learn by learning"
+        },
+        {
+            "paperId": "44b6da0cd36c0fa2f7d3485c6dc0b6d2fbe379bb",
+            "title": "Learning how to learn"
+        },
+        {
+            "paperId": "367f2c63a6f6a10b3b64b8729d601e69337ee3cc",
+            "title": "Rectifier Nonlinearities Improve Neural Network Acoustic Models"
+        },
+        {
+            "paperId": null,
+            "title": "Lecture 6.5-rmsprop: Divide the gradient by a running average of its recent magnitude"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        },
+        {
+            "paperId": "bdaec1b3eb9a8f7a2b296be009a148c35236f3ce",
+            "title": "Evolutionary principles in self-referential learning, or on learning how to learn: The meta-meta-. hook"
+        }
+    ]
+}

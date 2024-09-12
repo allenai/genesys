@@ -1,0 +1,325 @@
+{
+    "paperId": "d79a26226393f687ddbc375e32055b40b8ad8d38",
+    "externalIds": {
+        "MAG": "2991040477",
+        "DBLP": "conf/nips/HuangCBFCCLNLWC19",
+        "CorpusId": 53670168
+    },
+    "title": "GPipe: Efficient Training of Giant Neural Networks using Pipeline Parallelism",
+    "abstract": "Scaling up deep neural network capacity has been known as an effective approach to improving model quality for several different machine learning tasks. In many cases, increasing model capacity beyond the memory limit of a single accelerator has required developing special algorithms or infrastructure. These solutions are often architecture-specific and do not transfer to other tasks. To address the need for efficient and task-independent model parallelism, we introduce GPipe, a pipeline parallelism library that allows scaling any network that can be expressed as a sequence of layers. By pipelining different sub-sequences of layers on separate accelerators, GPipe provides the flexibility of scaling a variety of different networks to gigantic sizes efficiently. Moreover, GPipe utilizes a novel batch-splitting pipelining algorithm, resulting in almost linear speedup when a model is partitioned across multiple accelerators. We demonstrate the advantages of GPipe by training large-scale neural networks on two different tasks with distinct network architectures: (i) Image Classification: We train a 557-million-parameter AmoebaNet model and attain a top-1 accuracy of 84.4% on ImageNet-2012, (ii) Multilingual Neural Machine Translation: We train a single 6-billion-parameter, 128-layer Transformer model on a corpus spanning over 100 languages and achieve better quality than all bilingual models.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2018,
+    "referenceCount": 68,
+    "citationCount": 1337,
+    "influentialCitationCount": 165,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "GPipe is introduced, a pipeline parallelism library that allows scaling any network that can be expressed as a sequence of layers by pipelining different sub-sequences of layers on separate accelerators, resulting in almost linear speedup when a model is partitioned across multiple accelerators."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2145438541",
+            "name": "Yanping Huang"
+        },
+        {
+            "authorId": "50607661",
+            "name": "Yonglong Cheng"
+        },
+        {
+            "authorId": "7167328",
+            "name": "Dehao Chen"
+        },
+        {
+            "authorId": "34946720",
+            "name": "HyoukJoong Lee"
+        },
+        {
+            "authorId": "2020608",
+            "name": "Jiquan Ngiam"
+        },
+        {
+            "authorId": "2827616",
+            "name": "Quoc V. Le"
+        },
+        {
+            "authorId": "2545358",
+            "name": "Z. Chen"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "43f2ad297941db230c089ba353efc3f281ab678c",
+            "title": "5\u5206\u3067\u5206\u304b\u308b!? \u6709\u540d\u8ad6\u6587\u30ca\u30ca\u30e1\u8aad\u307f\uff1aJacob Devlin et al. : BERT : Pre-training of Deep Bidirectional Transformers for Language Understanding"
+        },
+        {
+            "paperId": "c17985a669522e7e85ae3d34754c7df49c7187d1",
+            "title": "Massively Multilingual Neural Machine Translation in the Wild: Findings and Challenges"
+        },
+        {
+            "paperId": "ff413cae44ca5e14281ebe4659b8627c349e8493",
+            "title": "Lingvo: a Modular and Scalable Framework for Sequence-to-Sequence Modeling"
+        },
+        {
+            "paperId": "fea820b7d953d32069e189af2961c28fd213470b",
+            "title": "Pay Less Attention with Lightweight and Dynamic Convolutions"
+        },
+        {
+            "paperId": "96c82727dd5a80fef93007f888bb8569feb6bd85",
+            "title": "Fixup Initialization: Residual Learning Without Normalization"
+        },
+        {
+            "paperId": "2270b8628fd8ca67ae39d277f45bc3c38ac63d5f",
+            "title": "Mesh-TensorFlow: Deep Learning for Supercomputers"
+        },
+        {
+            "paperId": "22aab110058ebbd198edb1f1e7b4f69fb13c0613",
+            "title": "Large Scale GAN Training for High Fidelity Natural Image Synthesis"
+        },
+        {
+            "paperId": "ca50d92e11053794b49b3c59eb2a56655fc3fc07",
+            "title": "Domain Adaptive Transfer Learning"
+        },
+        {
+            "paperId": "d3b0d4b2ea111f9b560815487e65c2619d9cf15d",
+            "title": "Efficient and Robust Parallel DNN Training through Model Parallelism on Multi-GPU Platform"
+        },
+        {
+            "paperId": "a82fc0115c1802d48d352b35595204738fad84f0",
+            "title": "Highly Scalable Deep Learning Training System with Mixed-Precision: Training ImageNet in Four Minutes"
+        },
+        {
+            "paperId": "c314d97d75b4a988b106ddcec8a40a4d3bcdb8bd",
+            "title": "PipeDream: Fast and Efficient Pipeline Parallel DNN Training"
+        },
+        {
+            "paperId": "b2c3f631999857d26a9abc4895ca6a9531d54a8e",
+            "title": "Analysis of DAWNBench, a Time-to-Accuracy Machine Learning Performance Benchmark"
+        },
+        {
+            "paperId": "89c3355f5bc7130ae4ed090c8accc52dd885d558",
+            "title": "Large Scale Fine-Grained Categorization and Domain-Specific Transfer Learning"
+        },
+        {
+            "paperId": "bf8fe437f779f2098f9af82b534aa51dc9edb06f",
+            "title": "Scaling Neural Machine Translation"
+        },
+        {
+            "paperId": "f723eb3e7159f07b97464c8d947d15e78612abe4",
+            "title": "AutoAugment: Learning Augmentation Policies from Data"
+        },
+        {
+            "paperId": "8a8cfa45b4c0d071fbffa091c02670b19c94b693",
+            "title": "Do Better ImageNet Models Transfer Better?"
+        },
+        {
+            "paperId": "0f885fd46064d271d4404cf9bb3d758e1a6f8d55",
+            "title": "Exploring the Limits of Weakly Supervised Pretraining"
+        },
+        {
+            "paperId": "bb669de2fce407df2f5cb2f8c51dedee3f467e04",
+            "title": "The Best of Both Worlds: Combining Recent Advances in Neural Machine Translation"
+        },
+        {
+            "paperId": "c278accaeb977444d99b1426cb8bc52d29bc28dd",
+            "title": "Mask-CNN: Localizing parts and selecting descriptors for fine-grained bird species categorization"
+        },
+        {
+            "paperId": "3febb2bed8865945e7fddc99efd791887bb7e14f",
+            "title": "Deep Contextualized Word Representations"
+        },
+        {
+            "paperId": "50bdda28de3dcf82a0e10f9ec13eea248b19edb5",
+            "title": "Regularized Evolution for Image Classifier Architecture Search"
+        },
+        {
+            "paperId": "c6b61535f1544835cca3851ceb34222ebc5b4377",
+            "title": "State-of-the-Art Speech Recognition with Sequence-to-Sequence Models"
+        },
+        {
+            "paperId": "642897c7d92262f9f40a1d6192d34c33487ac227",
+            "title": "MegDet: A Large Mini-Batch Object Detector"
+        },
+        {
+            "paperId": "3299aee7a354877e43339d06abb967af2be8b872",
+            "title": "Don't Decay the Learning Rate, Increase the Batch Size"
+        },
+        {
+            "paperId": "b36a5bb1707bb9c70025294b3a310138aae8327a",
+            "title": "Automatic differentiation in PyTorch"
+        },
+        {
+            "paperId": "e7fd6848cb29ca221a7e17d823e06fb566f1f135",
+            "title": "Mixed Precision Training"
+        },
+        {
+            "paperId": "fb37561499573109fc2cebb6a7b08f44917267dd",
+            "title": "Squeeze-and-Excitation Networks"
+        },
+        {
+            "paperId": "eb35fdc11a325f21a8ce0ca65058f7480a2fc91f",
+            "title": "Improved Regularization of Convolutional Neural Networks with Cutout"
+        },
+        {
+            "paperId": "bc8fa64625d9189f5801837e7b133e7fe3c581f7",
+            "title": "Learned in Translation: Contextualized Word Vectors"
+        },
+        {
+            "paperId": "d0611891b9e8a7c5731146097b6f201578f47b2f",
+            "title": "Learning Transferable Architectures for Scalable Image Recognition"
+        },
+        {
+            "paperId": "37c5a90619eb4bfd7c41b674e4fdf2317622e0f7",
+            "title": "Deep Layer Aggregation"
+        },
+        {
+            "paperId": "8760bc7631c0cb04e7138254e9fd6451b7def8ca",
+            "title": "Revisiting Unreasonable Effectiveness of Data in Deep Learning Era"
+        },
+        {
+            "paperId": "d7ddad7bbda29de7676c21bfeac6be2ce0a07d6f",
+            "title": "Dual Path Networks"
+        },
+        {
+            "paperId": "bfbd10ebffc9494423770a5bd30ebd0f9cbce66d",
+            "title": "Device Placement Optimization with Reinforcement Learning"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "0d57ba12a6d958e178d83be4c84513f7e42b24e5",
+            "title": "Accurate, Large Minibatch SGD: Training ImageNet in 1 Hour"
+        },
+        {
+            "paperId": "43428880d75b3a14257c3ee9bda054e61eb869c0",
+            "title": "Convolutional Sequence to Sequence Learning"
+        },
+        {
+            "paperId": "67b9b6db06fa91145bed02438aab8773cc029f1c",
+            "title": "Object-Part Attention Model for Fine-Grained Image Classification"
+        },
+        {
+            "paperId": "aad34665649953fa4bbacdc6eff4edb5408df6b3",
+            "title": "PolyNet: A Pursuit of Structural Diversity in Very Deep Networks"
+        },
+        {
+            "paperId": "f6e0856b4a9199fa968ac00da612a9407b5cb85c",
+            "title": "Aggregated Residual Transformations for Deep Neural Networks"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "8ec5896b4490c6e127d1718ffc36a3439d84cb81",
+            "title": "On Large-Batch Training for Deep Learning: Generalization Gap and Sharp Minima"
+        },
+        {
+            "paperId": "942deb7d865b7782c03176d95e3a0d56cb71009e",
+            "title": "Training Deep Nets with Sublinear Memory Cost"
+        },
+        {
+            "paperId": "77f0a39b8e02686fd85b01971f8feb7f60971f80",
+            "title": "Identity Mappings in Deep Residual Networks"
+        },
+        {
+            "paperId": "b5c26ab8767d046cb6e32d959fdf726aee89bb62",
+            "title": "Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning"
+        },
+        {
+            "paperId": "62df84d6a4d26f95e4714796c2337c9848cc13b5",
+            "title": "MXNet: A Flexible and Efficient Machine Learning Library for Heterogeneous Distributed Systems"
+        },
+        {
+            "paperId": "23ffaa0fe06eae05817f527a47ac3291077f9e58",
+            "title": "Rethinking the Inception Architecture for Computer Vision"
+        },
+        {
+            "paperId": "9cee45ef1212ebbc7d468f9b1d7df24f5005e64d",
+            "title": "Highway long short-term memory RNNS for distant speech recognition"
+        },
+        {
+            "paperId": "7ffdbc358b63378f07311e883dddacc9faeeaf4b",
+            "title": "Fast R-CNN"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "df7ed39d3f1fd0ffd695f53345e4fbff832df157",
+            "title": "On Model Parallelization and Scheduling Strategies for Distributed Machine Learning"
+        },
+        {
+            "paperId": "6fc6803df5f9ae505cae5b2f178ade4062c768d0",
+            "title": "Fully convolutional networks for semantic segmentation"
+        },
+        {
+            "paperId": "50684b147b752a07c313cb73d864f7b21bd8b703",
+            "title": "Scaling Distributed Machine Learning with the Parameter Server"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "8e3f12804882b60ad5f59aad92755c5edb34860e",
+            "title": "Food-101 - Mining Discriminative Components with Random Forests"
+        },
+        {
+            "paperId": "6bdb186ec4726e00a8051119636d4df3b94043b5",
+            "title": "Caffe: Convolutional Architecture for Fast Feature Embedding"
+        },
+        {
+            "paperId": "80d800dfadbe2e6c7b2367d9229cc82912d55889",
+            "title": "One weird trick for parallelizing convolutional neural networks"
+        },
+        {
+            "paperId": "6270baedeba28001cd1b563a199335720d6e0fe0",
+            "title": "CNN Features Off-the-Shelf: An Astounding Baseline for Recognition"
+        },
+        {
+            "paperId": "3127190433230b3dc1abd0680bb58dced4bcd90e",
+            "title": "Large Scale Distributed Deep Networks"
+        },
+        {
+            "paperId": "d1443e4af5f4ca00bc43b2018c3b33955a197e97",
+            "title": "Pipelined Back-Propagation for Context-Dependent Deep Neural Networks"
+        },
+        {
+            "paperId": "84b50ebe85f7a1721800125e7882fce8c45b5c5a",
+            "title": "Cats and dogs"
+        },
+        {
+            "paperId": "d2c733e34d48784a37d717fe43d9e93277a8c53e",
+            "title": "ImageNet: A large-scale hierarchical image database"
+        },
+        {
+            "paperId": "766cd91c0d8650495529cab7d4eeed482729cf89",
+            "title": "Algorithm 799: revolve: an implementation of checkpointing for the reverse or adjoint mode of computational differentiation"
+        },
+        {
+            "paperId": "f9b33d62f0cd0705db196b7b0ae05fc10ef30de5",
+            "title": "Performance analysis of a pipelined backpropagation parallel algorithm"
+        },
+        {
+            "paperId": "8665c9b459e4161825baf1f25b5141f41a5085ff",
+            "title": "A bridging model for parallel computation"
+        },
+        {
+            "paperId": "9405cc0d6169988371b2755e573cc28650d14dfe",
+            "title": "Language Models are Unsupervised Multitask Learners"
+        },
+        {
+            "paperId": "df2b0e26d0599ce3e70df8a9da02e51594e0e992",
+            "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding"
+        },
+        {
+            "paperId": "fbc6562814e08e416e28a268ce7beeaa3d0708c8",
+            "title": "Large-Scale Machine Learning with Stochastic Gradient Descent"
+        }
+    ]
+}

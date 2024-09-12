@@ -1,0 +1,166 @@
+{
+    "paperId": "2f5102ec3f70d0dea98c957cc2cab4d15d83a2da",
+    "externalIds": {
+        "ACL": "P14-5010",
+        "MAG": "2123442489",
+        "DBLP": "conf/acl/ManningSBFBM14",
+        "DOI": "10.3115/v1/P14-5010",
+        "CorpusId": 14068874
+    },
+    "title": "The Stanford CoreNLP Natural Language Processing Toolkit",
+    "abstract": "We describe the design and use of the Stanford CoreNLP toolkit, an extensible pipeline that provides core natural language analysis. This toolkit is quite widely used, both in the research NLP community and also among commercial and government users of open source NLP technology. We suggest that this follows from a simple, approachable design, straightforward interfaces, the inclusion of robust and good quality analysis components, and not requiring use of a large amount of associated baggage.",
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2014,
+    "referenceCount": 28,
+    "citationCount": 7100,
+    "influentialCitationCount": 710,
+    "openAccessPdf": {
+        "url": "https://aclanthology.org/P14-5010.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The design and use of the Stanford CoreNLP toolkit is described, an extensible pipeline that provides core natural language analysis, and it is suggested that this follows from a simple, approachable design, straightforward interfaces, the inclusion of robust and good quality analysis components, and not requiring use of a large amount of associated baggage."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "144783904",
+            "name": "Christopher D. Manning"
+        },
+        {
+            "authorId": "1760868",
+            "name": "M. Surdeanu"
+        },
+        {
+            "authorId": "144661918",
+            "name": "John Bauer"
+        },
+        {
+            "authorId": "2784228",
+            "name": "J. Finkel"
+        },
+        {
+            "authorId": "2105138",
+            "name": "Steven Bethard"
+        },
+        {
+            "authorId": "2240597",
+            "name": "David McClosky"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "4db0de66c7d08fbc23fe4f05bb8e01e3ff3d19c5",
+            "title": "ClearTK 2.0: Design Patterns for Machine Learning in UIMA"
+        },
+        {
+            "paperId": "f3cd7890d3ad50cd1947d099bbd16f6da3b33a78",
+            "title": "Deterministic Coreference Resolution Based on Entity-Centric, Precision-Ranked Rules"
+        },
+        {
+            "paperId": "687bac2d3320083eb4530bf18bb8f8f721477600",
+            "title": "Recursive Deep Models for Semantic Compositionality Over a Sentiment Treebank"
+        },
+        {
+            "paperId": "fe80746646f6ee819205ca9a8476292ea6b83e66",
+            "title": "SUTime: A library for recognizing and normalizing time expressions"
+        },
+        {
+            "paperId": "cfdd423c8672a7b178ea85d56079328df4eea647",
+            "title": "Steven Bird, Ewan Klein and Edward Loper: Natural Language Processing with Python, Analyzing Text with the Natural Language Toolkit"
+        },
+        {
+            "paperId": "3cc228402f31ca749112197720b9ef6af0c16790",
+            "title": "Generating Typed Dependency Parses from Phrase Structure Parses"
+        },
+        {
+            "paperId": "4f410ab5c8b12b34b38421241366ee456bbebab9",
+            "title": "Incorporating Non-local Information into Information Extraction Systems by Gibbs Sampling"
+        },
+        {
+            "paperId": "9f8eb04dbafdfda997ac5e06cd6c521f82bf4e4c",
+            "title": "UIMA: an architectural approach to unstructured information processing in the corporate research environment"
+        },
+        {
+            "paperId": "eb42a490cf4f186d3383c92963817d100afd81e2",
+            "title": "Feature-Rich Part-of-Speech Tagging with a Cyclic Dependency Network"
+        },
+        {
+            "paperId": "967972821567b8a34dc058c9fbf60c4054dc3b69",
+            "title": "GATE: an Architecture for Development of Robust HLT applications"
+        },
+        {
+            "paperId": null,
+            "title": "sentiment Sentiment analysis with a compositional model over trees using deep learning"
+        },
+        {
+            "paperId": "3493c33b36f005d230469c456256cb1fe144376f",
+            "title": "An NLP Curator (or: How I Learned to Stop Worrying and Love NLP Pipelines)"
+        },
+        {
+            "paperId": null,
+            "title": "Why this project is success"
+        },
+        {
+            "paperId": null,
+            "title": "Natural Language Processing with Python"
+        },
+        {
+            "paperId": null,
+            "title": "An overview of JCoRe, the Julie lab UIMA component registry"
+        },
+        {
+            "paperId": null,
+            "title": "Effective Java"
+        },
+        {
+            "paperId": "217eee1d5877fb399175286cade9b5b0e20d57fa",
+            "title": "Darmstadt Knowledge Processing Repository Based on UIMA"
+        },
+        {
+            "paperId": null,
+            "title": "parse Provides full syntactic analysis, including both constituent and dependency representation, based on a probabilistic parser (Klein and Manning, 2003;"
+        },
+        {
+            "paperId": null,
+            "title": "pos Labels tokens with their part-of-speech (POS) tag, using a maximum entropy POS tagger"
+        },
+        {
+            "paperId": "f17c1ebdfe95f9cf4e2e36dca1dcf55ddd5fd45c",
+            "title": "Fast Exact Inference with a Factored Model for Natural Language Parsing"
+        },
+        {
+            "paperId": null,
+            "title": "ner Recognizes named (PERSON, LOCATION, ORGANIZATION, MISC) and numerical (MONEY, NUMBER, DATE, TIME, DU-RATION, SET) entities. With the default"
+        },
+        {
+            "paperId": null,
+            "title": "Loading parser from serialized file"
+        },
+        {
+            "paperId": null,
+            "title": "java -cp \"*\" -Xmx2g"
+        },
+        {
+            "paperId": null,
+            "title": "regexner Implements a simple, rule-based NER over token sequences building on Java regular expressions"
+        },
+        {
+            "paperId": null,
+            "title": "Processing file /"
+        },
+        {
+            "paperId": null,
+            "title": "english-left3words/english-left3words-distsim.tagger ... done [1.0 sec Adding annotator lemma"
+        },
+        {
+            "paperId": null,
+            "title": "lemma Generates the lemmas (base forms) for all tokens in the annotation"
+        },
+        {
+            "paperId": null,
+            "title": "/** Simple annotator for locations stored in a gazetteer"
+        }
+    ]
+}

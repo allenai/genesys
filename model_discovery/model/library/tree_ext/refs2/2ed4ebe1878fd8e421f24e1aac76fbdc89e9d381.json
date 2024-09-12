@@ -1,0 +1,258 @@
+{
+    "paperId": "2ed4ebe1878fd8e421f24e1aac76fbdc89e9d381",
+    "externalIds": {
+        "DBLP": "journals/corr/abs-1711-02604",
+        "MAG": "2952568826",
+        "ArXiv": "1711.02604",
+        "CorpusId": 9975560
+    },
+    "title": "Unbounded cache model for online language modeling with open vocabulary",
+    "abstract": "Recently, continuous cache models were proposed as extensions to recurrent neural network language models, to adapt their predictions to local changes in the data distribution. These models only capture the local context, of up to a few thousands tokens. In this paper, we propose an extension of continuous cache models, which can scale to larger contexts. In particular, we use a large scale non-parametric memory component that stores all the hidden activations seen in the past. We leverage recent advances in approximate nearest neighbor search and quantization algorithms to store millions of representations while searching them efficiently. We conduct extensive experiments showing that our approach significantly improves the perplexity of pre-trained language models on new distributions, and can scale efficiently to much larger contexts than previously proposed local cache models.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2017,
+    "referenceCount": 55,
+    "citationCount": 59,
+    "influentialCitationCount": 4,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper uses a large scale non-parametric memory component that stores all the hidden activations seen in the past and leverages recent advances in approximate nearest neighbor search and quantization algorithms to store millions of representations while searching them efficiently."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3024698",
+            "name": "Edouard Grave"
+        },
+        {
+            "authorId": "5723508",
+            "name": "Moustapha Ciss\u00e9"
+        },
+        {
+            "authorId": "2319608",
+            "name": "Armand Joulin"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "5feb32a73dd1bd9e13f84a7b3344497a5545106b",
+            "title": "FastText.zip: Compressing text classification models"
+        },
+        {
+            "paperId": "2d7782c225e0fc123d6e227f2cb253e58279ac73",
+            "title": "Improving Neural Language Models with a Continuous Cache"
+        },
+        {
+            "paperId": "efbd381493bb9636f489b965a2034d529cd56bcd",
+            "title": "Pointer Sentinel Mixture Models"
+        },
+        {
+            "paperId": "77fb0266b354d33f3725629c2ddce3d2342b318a",
+            "title": "Is Attribute-Based Zero-Shot Learning an Ill-Posed Strategy?"
+        },
+        {
+            "paperId": "9ec499af9b85f30bdbdd6cdfbb07d484808c526a",
+            "title": "Efficient softmax approximation for GPUs"
+        },
+        {
+            "paperId": "7dba53e72c182e25e98e8f73a99d75ff69dda0c2",
+            "title": "Recurrent Highway Networks"
+        },
+        {
+            "paperId": "2f2d8f8072e5cc9b296fad551f65f183bdbff7aa",
+            "title": "Exploring the Limits of Language Modeling"
+        },
+        {
+            "paperId": "13497bd108d4412d02050e646235f456568cf822",
+            "title": "Deep Speech 2 : End-to-End Speech Recognition in English and Mandarin"
+        },
+        {
+            "paperId": "17f5c7411eeeeedf25b0db99a9130aa353aee4ba",
+            "title": "Building End-To-End Dialogue Systems Using Generative Hierarchical Neural Network Models"
+        },
+        {
+            "paperId": "9653d5c2c7844347343d073bbedd96e05d52f69b",
+            "title": "Pointer Networks"
+        },
+        {
+            "paperId": "ac3ee98020251797c2b401e1389461df88e52e62",
+            "title": "Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "8e4fb17fff38a7834af5b4eaafcbbde02bf00975",
+            "title": "N-gram Counts and Language Models from the Common Crawl"
+        },
+        {
+            "paperId": "5d833331b0e22ff359db05c62a8bca18c4f04b68",
+            "title": "One billion word benchmark for measuring progress in statistical language modeling"
+        },
+        {
+            "paperId": "7e338a86996ca9d8438b949a3f421553a94e5966",
+            "title": "Complexity of Word Collocation Networks: A Preliminary Structural Analysis"
+        },
+        {
+            "paperId": "759d9a6c9206c366a8d94a06f4eb05659c2bb7f2",
+            "title": "Toward Open Set Recognition"
+        },
+        {
+            "paperId": "687d90f4b147d557fa54d7815a7845da96148560",
+            "title": "From N to N+1: Multiclass Transfer Incremental Learning"
+        },
+        {
+            "paperId": "3739b442f14badc0547ab780c77163e8ab7f6c00",
+            "title": "Optimized Product Quantization for Approximate Nearest Neighbor Search"
+        },
+        {
+            "paperId": "4177ec52d1b80ed57f2e72b0f9a42365f1a8598d",
+            "title": "Speech recognition with deep recurrent neural networks"
+        },
+        {
+            "paperId": "d1275b2a2ab53013310e759e5c6878b96df643d4",
+            "title": "Context dependent recurrent neural network language model"
+        },
+        {
+            "paperId": "55a62990a82bf9205e507f73d42583df46062806",
+            "title": "A new approach to interdomain routing based on secure multi-party computation"
+        },
+        {
+            "paperId": "77dfe038a9bdab27c4505444931eaa976e9ec667",
+            "title": "Empirical Evaluation and Combination of Advanced Language Modeling Techniques"
+        },
+        {
+            "paperId": "883d1d06d857a85a0e64bb19f0b17d56f2cc9d7b",
+            "title": "KenLM: Faster and Smaller Language Model Queries"
+        },
+        {
+            "paperId": "b3f09ea2a8cc1d82c2b27d71dd8f7451d178beaf",
+            "title": "Iterative quantization: A procrustean approach to learning binary codes"
+        },
+        {
+            "paperId": "66d398aeaeb7ec24ededb1adaa4b4f09a6c1bcde",
+            "title": "A theory of learning from different domains"
+        },
+        {
+            "paperId": "8de174ab5419b9d3127695405efd079808e956e8",
+            "title": "Curriculum learning"
+        },
+        {
+            "paperId": "5a2bfaa724ba37134eb55c29644f8576c3d64c96",
+            "title": "Hamming Embedding and Weak Geometric Consistency for Large Scale Image Search"
+        },
+        {
+            "paperId": "e45923dc26b10e043e6de124cc2bd96e8a28a989",
+            "title": "Inverted files for text search engines"
+        },
+        {
+            "paperId": "96c6d421342631e3005cc85a330fedc729c8298b",
+            "title": "Variable kernel density estimation"
+        },
+        {
+            "paperId": "6c2b28f9354f667cd5bd07afc0471d8334430da7",
+            "title": "A Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "42bb0ac384fb87933be67f63b98d90a45d2fe6e9",
+            "title": "Similarity estimation techniques from rounding algorithms"
+        },
+        {
+            "paperId": "09c76da2361d46689825c4efc37ad862347ca577",
+            "title": "A bit of progress in language modeling"
+        },
+        {
+            "paperId": "7ac0550daef2f936c4280aca87ff8e9c7e7baf69",
+            "title": "Maximum entropy techniques for exploiting syntactic, semantic and collocational dependencies in language modeling"
+        },
+        {
+            "paperId": "a90c1ca6c335de94721d7445bb01b723c3d9a840",
+            "title": "Exploiting latent semantic information in statistical language modeling"
+        },
+        {
+            "paperId": "b888cae7e6e288b108f9d119fc23b84b4d447029",
+            "title": "Towards better integration of semantic predictors in statistical language modeling"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "161ffb54a3fdf0715b198bb57bd22f910242eb49",
+            "title": "Multitask Learning"
+        },
+        {
+            "paperId": "076fa8d095c37c657f2aff39cf90bc2ea883b7cb",
+            "title": "A maximum entropy approach to adaptive statistical language modelling"
+        },
+        {
+            "paperId": "9548ac30c113562a51e603dbbc8e9fa651cfd3ab",
+            "title": "Improved backing-off for M-gram language modeling"
+        },
+        {
+            "paperId": "606df60d518db088986e74fad1f357ea6e5312f2",
+            "title": "On the dynamic adaptation of stochastic language models"
+        },
+        {
+            "paperId": "6e58b5f825df9fb0b00465a66598f302c30b080a",
+            "title": "Trigger-based language models: a maximum entropy approach"
+        },
+        {
+            "paperId": "eadf7d20852caa92310d0cb582269b94226b1e58",
+            "title": "Adaptive Language Modeling Using Minimum Discriminant Estimation"
+        },
+        {
+            "paperId": "0687165a9f0360bde0469fd401d966540e0897c3",
+            "title": "A Dynamic Language Model for Speech Recognition"
+        },
+        {
+            "paperId": "be1fed9544830df1137e72b1d2396c40d3e18365",
+            "title": "A Cache-Based Natural Language Model for Speech Recognition"
+        },
+        {
+            "paperId": "668087f0ae7ce1de6e0bd0965dbb480c08103260",
+            "title": "Finding Structure in Time"
+        },
+        {
+            "paperId": "343c8af478f7703459b0e390e888efe723f15e31",
+            "title": "Probabilistic Models of Short and Long Distance Word Dependencies in Running Text"
+        },
+        {
+            "paperId": "491566891addc26134c617ab026f5548de39401a",
+            "title": "Speech Recognition and the Frequency of Recently Used Words: A Modified Markov Model for Natural Language"
+        },
+        {
+            "paperId": "b0130277677e5b915d5cd86b3afafd77fd08eb2e",
+            "title": "Estimation of probabilities from sparse data for the language model component of a speech recognizer"
+        },
+        {
+            "paperId": "c4775e2f0d27e8be4aae7b5b5c2560b96ce2eb58",
+            "title": "A Maximum Likelihood Approach to Continuous Speech Recognition"
+        },
+        {
+            "paperId": "4748d22348e72e6e06c2476486afddbc76e5eca7",
+            "title": "Product Quantization for Nearest Neighbor Search"
+        },
+        {
+            "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+            "title": "Recurrent neural network based language model"
+        },
+        {
+            "paperId": "4248d278dc031631a8213292ebeab4b766f0f01c",
+            "title": "Learn$^{++}$ .NC: Combining Ensemble of Classifiers With Dynamically Weighted Consult-and-Vote for Efficient Incremental Learning of New Classes"
+        },
+        {
+            "paperId": "93f6dd2c761fdeac0af6d2253d57834439d7794f",
+            "title": "IRSTLM: an open source toolkit for handling large scale language models"
+        },
+        {
+            "paperId": "134bfab478a5488868c2e24d2923e82b813fc0f3",
+            "title": "Modeling long distance dependence in language: topic mixtures versus dynamic cache models"
+        },
+        {
+            "paperId": "3fd90098551bf88c7509521adf1c0ba9b5dfeb57",
+            "title": "Attribute-Based Classification for Zero-Shot Visual Object Categorization"
+        }
+    ]
+}

@@ -1,0 +1,96 @@
+{
+    "paperId": "4cb4d685b47001652b29dc41c1b3e786277e7647",
+    "externalIds": {
+        "MAG": "1761390164",
+        "CorpusId": 235084
+    },
+    "title": "Robust Real-time Object Detection",
+    "abstract": "This paper describes a visual object detection framework that is capable of processing images extremely rapidly while achieving high detection rates. There are three key contributions. The first is the introduction of a new image representation called the \u201cIntegral Image\u201d which allows the features used by our detector to be computed very quickly. The second is a learning algorithm, based on AdaBoost, which selects a small number of critical visual features and yields extremely efficient classifiers [4]. The third contribution is a method for combining classifiers in a \u201ccascade\u201d which allows background regions of the image to be quickly discarded while spending more computation on promising object-like regions. A set of experiments in the domain of face detection are presented. The system yields face detection performance comparable to the best previous systems [16, 11, 14, 10, 1]. Implemented on a conventional desktop, face detection proceeds at 15 frames per second. Author email: fPaul.Viola,Mike.J.Jonesg@compaq.com c Compaq Computer Corporation, 2001 This work may not be copied or reproduced in whole or in part for any commercial purpose. Permission to copy in whole or in part without payment of fee is granted for nonprofit educational and research purposes provided that all such whole or partial copies include the following: a notice that such copying is by permission of the Cambridge Research Laboratory of Compaq Computer Corporation in Cambridge, Massachusetts; an acknowledgment of the authors and individual contributors to the work; and all applicable portions of the copyright notice. Copying, reproducing, or republishing for any other purpose shall require a license with payment of fee to the Cambridge Research Laboratory. All rights reserved. CRL Technical reports are available on the CRL\u2019s web page at http://crl.research.compaq.com. Compaq Computer Corporation Cambridge Research Laboratory One Cambridge Center Cambridge, Massachusetts 02142 USA",
+    "venue": "",
+    "year": 2001,
+    "referenceCount": 16,
+    "citationCount": 4132,
+    "influentialCitationCount": 519,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A visual object detection framework that is capable of processing images extremely rapidly while achieving high detection rates is described, with the introduction of a new image representation called the \u201cIntegral Image\u201d which allows the features used by the detector to be computed very quickly."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1731948",
+            "name": "Paul A. Viola"
+        },
+        {
+            "authorId": "2111328101",
+            "name": "Michael Jones"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "09ba4b8f612f8593280ce3862d88890de9c3846b",
+            "title": "Pattern Recognition"
+        },
+        {
+            "paperId": "eda4ebc9529f7b4cd53e47f051999a26134c0191",
+            "title": "Boosting Image Retrieval"
+        },
+        {
+            "paperId": "3565c5a65842f26091578b9d71d496cc1561239d",
+            "title": "A statistical method for 3D object detection applied to faces and cars"
+        },
+        {
+            "paperId": "b2ef3d741a8d267b813781a73d4222b6dbba99fa",
+            "title": "Boxlets: A Fast Convolution Algorithm for Signal Processing and Neural Networks"
+        },
+        {
+            "paperId": "76f560991d56ad689ec32f9e9d13291e0193f4cf",
+            "title": "A general framework for object detection"
+        },
+        {
+            "paperId": "9f7c640ea1fe32e017c68005ef5e18969039b3f4",
+            "title": "Joint Induction of Shape Features and Tree Classifiers"
+        },
+        {
+            "paperId": "4ba566223e426677d12a9a18418c023a4deec77e",
+            "title": "A decision-theoretic generalization of on-line learning and an application to boosting"
+        },
+        {
+            "paperId": "4d19272112b50547614479a0c409fca66e3b05f7",
+            "title": "Boosting the margin: A new explanation for the effectiveness of voting methods"
+        },
+        {
+            "paperId": "9008cdacbdcff8a218a6928e94fe7c6dfc237b24",
+            "title": "Training support vector machines: an application to face detection"
+        },
+        {
+            "paperId": "a3885c13438132b516e5ffc8b640d20b4e41a7a4",
+            "title": "Neural network-based face detection"
+        },
+        {
+            "paperId": "8930f62a4b5eb1cbabf224cf84aa009ea798cfee",
+            "title": "Modeling Visual Attention via Selective Tuning"
+        },
+        {
+            "paperId": "2c7349eed0d13a1740286196db7bc83f40a88e85",
+            "title": "Overcomplete steerable pyramid filters and rotation invariance"
+        },
+        {
+            "paperId": "993b1083455b5c4d631eaf44f230b061994e75c3",
+            "title": "The Design and Use of Steerable Filters"
+        },
+        {
+            "paperId": "8b22e1751f75be137b7b210981baccc1b9ab9222",
+            "title": "Summed-area tables for texture mapping"
+        },
+        {
+            "paperId": null,
+            "title": "Anonymous. Anonymous. In Anonymous"
+        },
+        {
+            "paperId": null,
+            "title": "The design and u  se of steerable filters.IEEE Transactions on Pattern Analysis and Machine Intelligence"
+        }
+    ]
+}

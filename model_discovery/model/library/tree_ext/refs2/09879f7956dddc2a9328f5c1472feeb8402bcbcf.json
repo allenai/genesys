@@ -1,0 +1,350 @@
+{
+    "paperId": "09879f7956dddc2a9328f5c1472feeb8402bcbcf",
+    "externalIds": {
+        "MAG": "2950173439",
+        "DBLP": "journals/corr/DinhSB16",
+        "ArXiv": "1605.08803",
+        "CorpusId": 8768364
+    },
+    "title": "Density estimation using Real NVP",
+    "abstract": "Unsupervised learning of probabilistic models is a central yet challenging problem in machine learning. Specifically, designing models with tractable learning, sampling, inference and evaluation is crucial in solving this task. We extend the space of such models using real-valued non-volume preserving (real NVP) transformations, a set of powerful invertible and learnable transformations, resulting in an unsupervised learning algorithm with exact log-likelihood computation, exact sampling, exact inference of latent variables, and an interpretable latent space. We demonstrate its ability to model natural images on four datasets through sampling, log-likelihood evaluation and latent variable manipulations.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2016,
+    "referenceCount": 78,
+    "citationCount": 3267,
+    "influentialCitationCount": 613,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work extends the space of probabilistic models using real-valued non-volume preserving (real NVP) transformations, a set of powerful invertible and learnable transformations, resulting in an unsupervised learning algorithm with exact log-likelihood computation, exact sampling, exact inference of latent variables, and an interpretable latent space."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "46573521",
+            "name": "Laurent Dinh"
+        },
+        {
+            "authorId": "1407546424",
+            "name": "Jascha Narain Sohl-Dickstein"
+        },
+        {
+            "authorId": "1751569",
+            "name": "Samy Bengio"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "6a97d2668187965743d1b825b306defccbabbb4c",
+            "title": "Improved Variational Inference with Inverse Autoregressive Flow"
+        },
+        {
+            "paperId": "bda89e0d181eda7e49ea831225eda86d075e111c",
+            "title": "Towards Conceptual Compression"
+        },
+        {
+            "paperId": "8201e6e687f2de477258e9be53ba7b73ee30d7de",
+            "title": "Colorful Image Colorization"
+        },
+        {
+            "paperId": "77f0a39b8e02686fd85b01971f8feb7f60971f80",
+            "title": "Identity Mappings in Deep Residual Networks"
+        },
+        {
+            "paperId": "9c9d7247f8c51ec5a02b0d911d1d7b9e8160495d",
+            "title": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems"
+        },
+        {
+            "paperId": "d358d41c69450b171327ebd99462b6afef687269",
+            "title": "Continuous Deep Q-Learning with Model-based Acceleration"
+        },
+        {
+            "paperId": "3d2c6941a9b4608ba52b328369a3352db2092ae0",
+            "title": "Weight Normalization: A Simple Reparameterization to Accelerate Training of Deep Neural Networks"
+        },
+        {
+            "paperId": "53d8cd298711a85dd89c9814c989f7fae7500d87",
+            "title": "Learning functions across many orders of magnitudes"
+        },
+        {
+            "paperId": "4931c91f4b30eb122def1e697abc096f14c48987",
+            "title": "Learning values across many orders of magnitude"
+        },
+        {
+            "paperId": "06a81b3b11f4f51a6b72f009841378547f85674c",
+            "title": "Resnet in Resnet: Generalizing Residual Architectures"
+        },
+        {
+            "paperId": "729b18d8d91035f4bb84bf2e61b0517824e5d31b",
+            "title": "Auxiliary Deep Generative Models"
+        },
+        {
+            "paperId": "2f2d8f8072e5cc9b296fad551f65f183bdbff7aa",
+            "title": "Exploring the Limits of Language Modeling"
+        },
+        {
+            "paperId": "32c09d2933a4638b034343f9be20544dacf6031f",
+            "title": "Generating images with recurrent adversarial networks"
+        },
+        {
+            "paperId": "41f1d50c85d3180476c4c7b3eea121278b0d8474",
+            "title": "Pixel Recurrent Neural Networks"
+        },
+        {
+            "paperId": "e8b8a7778ace2a02f8db6fe321a54520c6b283ca",
+            "title": "Autoencoding beyond pixels using a learned similarity metric"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "7f5fc84819c0cf94b771fe15141f65b123f7b8ec",
+            "title": "Multi-Scale Context Aggregation by Dilated Convolutions"
+        },
+        {
+            "paperId": "2cc3fbf8e36667fa2bec9ea047076b79304e2eee",
+            "title": "The Variational Gaussian Process"
+        },
+        {
+            "paperId": "e85e16584a3c778d91888cbd9d07da78277002b0",
+            "title": "Density Modeling of Images using a Generalized Normalization Transformation"
+        },
+        {
+            "paperId": "d82b55c35c8673774a708353838918346f6c006f",
+            "title": "Generating Sentences from a Continuous Space"
+        },
+        {
+            "paperId": "8388f1be26329fa45e5807e968a641ce170ea078",
+            "title": "Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks"
+        },
+        {
+            "paperId": "d01379ebb53c66a4ccf5f4959d904dcf9e161e41",
+            "title": "Order Matters: Sequence to sequence for sets"
+        },
+        {
+            "paperId": "cd108ed4f69b754cf0a5f3eb74d6c1949ea6674d",
+            "title": "Super-Resolution with Deep Convolutional Sufficient Statistics"
+        },
+        {
+            "paperId": "39e0c341351f8f4a39ac890b96217c7f4bde5369",
+            "title": "A note on the evaluation of generative models"
+        },
+        {
+            "paperId": "671d29863bde3fe85a0c279a798f94ab9a81d270",
+            "title": "Understanding symmetries in deep networks"
+        },
+        {
+            "paperId": "3e47c4c2dd98c49b7771c7228812d5fd9eee56a3",
+            "title": "Importance Weighted Autoencoders"
+        },
+        {
+            "paperId": "bb1a17010254abfa5e1f2a17553582ce449f8e16",
+            "title": "Embed to Control: A Locally Linear Latent Dynamics Model for Control from Raw Images"
+        },
+        {
+            "paperId": "47900aca2f0b50da3010ad59b394c870f0e6c02e",
+            "title": "Deep Generative Image Models using a Laplacian Pyramid of Adversarial Networks"
+        },
+        {
+            "paperId": "4dcdae25a5e33682953f0853ee4cf7ca93be58a9",
+            "title": "LSUN: Construction of a Large-scale Image Dataset using Deep Learning with Humans in the Loop"
+        },
+        {
+            "paperId": "f267934e9de60c5badfa9d3f28918e67ae7a2bf4",
+            "title": "Generative Image Modeling Using Spatial LSTMs"
+        },
+        {
+            "paperId": "0c3b69b5247ef18fd5bab1109d87a04184ea8f4b",
+            "title": "A Recurrent Latent Variable Model for Sequential Data"
+        },
+        {
+            "paperId": "0d0eeb46fc5ec778a62bb94aa2ef261b08e6f8c6",
+            "title": "Texture Synthesis Using Convolutional Neural Networks"
+        },
+        {
+            "paperId": "0f899b92b7fb03b609fee887e4b6f3b633eaf30d",
+            "title": "Variational Inference with Normalizing Flows"
+        },
+        {
+            "paperId": "2dcef55a07f8607a819c21fe84131ea269cc2e3c",
+            "title": "Deep Unsupervised Learning using Nonequilibrium Thermodynamics"
+        },
+        {
+            "paperId": "340f48901f72278f6bf78a04ee5b01df208cc508",
+            "title": "Human-level control through deep reinforcement learning"
+        },
+        {
+            "paperId": "90f72fbbe5f0a29e627db28999e01a30a9655bc6",
+            "title": "MADE: Masked Autoencoder for Distribution Estimation"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "6424b69f3ff4d35249c0bb7ef912fbc2c86f4ff4",
+            "title": "Deep Learning Face Attributes in the Wild"
+        },
+        {
+            "paperId": "dc8301b67f98accbb331190dd7bd987952a692af",
+            "title": "NICE: Non-linear Independent Components Estimation"
+        },
+        {
+            "paperId": "fb91db6aa4f710814f8aec28a7f3ecbc4e5ad4fd",
+            "title": "Deeply-Supervised Nets"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "331f0fb3b6176c6e463e0401025b04f6ace9ccd3",
+            "title": "Neural Variational Inference and Learning in Belief Networks"
+        },
+        {
+            "paperId": "484ad17c926292fbe0d5211540832a8c8a8e958b",
+            "title": "Stochastic Backpropagation and Approximate Inference in Deep Generative Models"
+        },
+        {
+            "paperId": "752a1f2392138de5ef8e4437d339d510375f0ad9",
+            "title": "Stochastic gradient estimate variance in contrastive divergence and persistent contrastive divergence"
+        },
+        {
+            "paperId": "5f5dc5b9a2ba710937e2c413b37b053cd673df02",
+            "title": "Auto-Encoding Variational Bayes"
+        },
+        {
+            "paperId": "309494da0769345cb35ca0b7b0aae8143eee85a2",
+            "title": "RNADE: The real-valued neural autoregressive density-estimator"
+        },
+        {
+            "paperId": "638f454d6ccb6fb3e5cea263dafdd5ec51aaa536",
+            "title": "High-Dimensional Probability Estimation with Deep Density Models"
+        },
+        {
+            "paperId": "bccb2f99a9d1c105699f5d88c479569085e2c7ba",
+            "title": "Stochastic variational inference"
+        },
+        {
+            "paperId": "ddc45fad8d15771d9f1f8579331458785b2cdd93",
+            "title": "Deep Boltzmann Machines"
+        },
+        {
+            "paperId": "48c7e6c96df0c7865250be76fcdd45eddba9893a",
+            "title": "An Unsupervised Ensemble Learning Method for Nonlinear Dynamic State-Space Models"
+        },
+        {
+            "paperId": "190e4800c67ef445e4bd0944a55debaccebcf43f",
+            "title": "Modeling High-Dimensional Discrete Data with Multi-Layer Neural Networks"
+        },
+        {
+            "paperId": "106a7910cf1bf53f3ff1a90455e863d3b2e1373c",
+            "title": "Nonlinear independent component analysis: Existence and uniqueness results"
+        },
+        {
+            "paperId": "629cc74dcaf655feea40f64cd74617ac884ed0f8",
+            "title": "Graphical Models for Machine Learning and Digital Communication"
+        },
+        {
+            "paperId": "9f87a11a523e4680e61966e36ea2eac516096f23",
+            "title": "A View of the Em Algorithm that Justifies Incremental, Sparse, and other Variants"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "0a79433b5feacd9e8feeafa629dae5a85f362fef",
+            "title": "Mean Field Theory for Sigmoid Belief Networks"
+        },
+        {
+            "paperId": "1d7d0e8c4791700defd4b0df82a26b50055346e0",
+            "title": "An Information-Maximization Approach to Blind Separation and Blind Deconvolution"
+        },
+        {
+            "paperId": "605402e235bd62437baf3c9ebefe77fb4d92ee95",
+            "title": "The Helmholtz Machine"
+        },
+        {
+            "paperId": "15aac8f8aaaa57e9bf9738117eac47becad2fcf2",
+            "title": "Sample-based non-uniform random variate generation"
+        },
+        {
+            "paperId": "052b1d8ce63b07fec3de9dbb583772d860b7c769",
+            "title": "Learning representations by back-propagating errors"
+        },
+        {
+            "paperId": "4f7476037408ac3d993f5088544aab427bc319c1",
+            "title": "Information processing in dynamical systems: foundations of harmony theory"
+        },
+        {
+            "paperId": "c68796f833a7151f0a63d1d1608dc902b4fdc9b6",
+            "title": "GENERATIVE ADVERSARIAL NETS"
+        },
+        {
+            "paperId": null,
+            "title": "Jozefowicz and George Dahl for their input on a draft of the paper"
+        },
+        {
+            "paperId": "a96449c7f9b1ed6bf4545db7e5ec095b766de3eb",
+            "title": "Construction of a Large-scale Image Dataset using Deep Learning with Humans in the Loop"
+        },
+        {
+            "paperId": "6cdcd22d69479c6c19f1583a281a95bc4029631e",
+            "title": "Independent Component Analysis"
+        },
+        {
+            "paperId": "c7e07cf8ba4ad956483f9dd37a168355ef16a041",
+            "title": "Markov Chain Monte Carlo and Variational Inference: Bridging the Gap"
+        },
+        {
+            "paperId": "b87274e6d9aa4e6ba5148898aa92941617d2b6ed",
+            "title": "Efficient BackProp"
+        },
+        {
+            "paperId": "b893e7053c9c7e266a23fb13a42261a88f650210",
+            "title": "The Neural Autoregressive Distribution Estimator"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        },
+        {
+            "paperId": "4c915c1eecb217c123a36dc6d3ce52d12c742614",
+            "title": "Simple Statistical Gradient-Following Algorithms for Connectionist Reinforcement Learning"
+        },
+        {
+            "paperId": "2422c1b488573fa9188edfffc0905e7d3cb59a42",
+            "title": "Gaussianization"
+        },
+        {
+            "paperId": "4d98ce60f4f8ed822503b8d13b0605f8c5d74ca7",
+            "title": "In Advances in Neural Information Processing Systems"
+        },
+        {
+            "paperId": "56f50f070a861923707d1faba7e9144ea99be6e8",
+            "title": "Higher Order Statistical Decorrelation without Information Loss"
+        },
+        {
+            "paperId": "cde2937cb41cf461f624ded2012743ac4624eca8",
+            "title": "Artificial neural networks and their application to sequence recognition"
+        },
+        {
+            "paperId": null,
+            "title": "A Samples Figure 7: Samples from a model trained on Imagenet (64 \u00d7 64)"
+        },
+        {
+            "paperId": null,
+            "title": "Published as a conference paper at ICLR 2017 Figure 9: Samples from a model trained on LSUN (bedroom category)"
+        }
+    ]
+}

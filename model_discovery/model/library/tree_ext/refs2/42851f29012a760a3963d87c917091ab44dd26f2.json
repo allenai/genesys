@@ -1,0 +1,162 @@
+{
+    "paperId": "42851f29012a760a3963d87c917091ab44dd26f2",
+    "externalIds": {
+        "ArXiv": "1804.08654",
+        "MAG": "2052886157",
+        "DBLP": "journals/tim/MarconatoSSS14",
+        "DOI": "10.1109/TIM.2013.2283553",
+        "CorpusId": 825462
+    },
+    "title": "Improved Initialization for Nonlinear State-Space Modeling",
+    "abstract": "This paper discusses a novel initialization algorithm for the estimation of nonlinear state-space models. Good initial values for the model parameters are obtained by identifying separately the linear dynamics and the nonlinear terms in the model. In particular, the nonlinear dynamic problem is transformed into an approximate static formulation, and simple regression methods are applied to obtain the solution in a fast and efficient way. The proposed method is validated by means of two measurement examples: the Wiener-Hammerstein benchmark problem and the identification of a crystal detector.",
+    "venue": "IEEE Transactions on Instrumentation and Measurement",
+    "year": 2014,
+    "referenceCount": 29,
+    "citationCount": 24,
+    "influentialCitationCount": 1,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1804.08654",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel initialization algorithm for the estimation of nonlinear state-space models is discussed, which is transformed into an approximate static formulation, and simple regression methods are applied to obtain the solution in a fast and efficient way."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2415909",
+            "name": "A. Marconato"
+        },
+        {
+            "authorId": "3404510",
+            "name": "J. Sj\u00f6berg"
+        },
+        {
+            "authorId": "1744439",
+            "name": "J. Suykens"
+        },
+        {
+            "authorId": "1751978",
+            "name": "J. Schoukens"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "d0892a6e20aae53f9bfef3bd8440143993bfdc75",
+            "title": "Nonlinear Model-Based Approach for Accurate Stability Prediction of One-Bit Higher-Order Delta\u2013Sigma Modulators"
+        },
+        {
+            "paperId": "a0d4fbd546583851f0e3973902b653e29ae6fbac",
+            "title": "A Nonlinear Electric Field Sensor That Exploits Coupled Oscillator Dynamics: The Charge Collection Mechanism"
+        },
+        {
+            "paperId": "83a48921c2eb56b011ff8b9a18163ddc9bca5a5d",
+            "title": "Identification of a Block-Structured Model with Localised Nonlinearity"
+        },
+        {
+            "paperId": "d53294718a19bb36e66a1688109d856dee870a69",
+            "title": "System Identification: Theory for the User, 2nd Edition (Ljung, L.; 1999) [On the Shelf]"
+        },
+        {
+            "paperId": "b4e9f4a93f5e6cc88546c08ff0c6c12027eccd06",
+            "title": "Separate initialization of dynamics and nonlinearities in nonlinear state-space models"
+        },
+        {
+            "paperId": "e28d1aebca9fcd36d0a23b494b9dfa2ef8795277",
+            "title": "System Identification: A Frequency Domain Approach"
+        },
+        {
+            "paperId": "61ac28ae667ce533bd870d167f987efb4aea4198",
+            "title": "Distributed Spatiotemporal Neural Network for Nonlinear Dynamic Transmitter Modeling and Adaptive Digital Predistortion"
+        },
+        {
+            "paperId": "23991dd17e8f441671163bd966d6204341143317",
+            "title": "An Approach to Locate Parametric Faults in Nonlinear Analog Circuits"
+        },
+        {
+            "paperId": "bb2d82124768f812456e5e80782f7791f438f87d",
+            "title": "State-Space Inference and Learning with Gaussian Processes"
+        },
+        {
+            "paperId": "8cd6999b3f929c07e24ccb8a0a7e7d2a34712b4f",
+            "title": "Identification of mixed linear/nonlinear state-space models"
+        },
+        {
+            "paperId": "aee5a883a2cd8e6a71c292f4485a1ee8c53e1176",
+            "title": "Estimation of general nonlinear state-space systems"
+        },
+        {
+            "paperId": "ebdd7e1a75fb3546c4763ae7cb016452a0fa9628",
+            "title": "Convex optimization in identification of stable non-linear state space models"
+        },
+        {
+            "paperId": "82844f503fec8a10faba541f58d82e92376f3f02",
+            "title": "Identification of nonlinear systems using Polynomial Nonlinear State Space models"
+        },
+        {
+            "paperId": "9fe9d52e29a5577c60c475781349072490060824",
+            "title": "Closed-loop subspace identification of Hammerstein-Wiener models"
+        },
+        {
+            "paperId": "fdf304d999c41826671f15d2b68c943f8f2e2cc3",
+            "title": "Identification of a Block-Structured Nonlinear Feedback System, Applied to a Microwave Crystal Detector"
+        },
+        {
+            "paperId": "d4e2816bf4a64aec43cb24697164d54ba1d55205",
+            "title": "Identification of nonlinear state space models using an MLP network trained by the EM algorithm"
+        },
+        {
+            "paperId": "ffa1129faf23e84ad7beb6fc1cdb74267b9f1128",
+            "title": "Validation of a crystal detector model for the calibration of the Large Signal Network Analyzer"
+        },
+        {
+            "paperId": "fa25610fb8586c2b50a3654edc5bb42fa7fc4729",
+            "title": "The Elements of Statistical Learning: Data Mining, Inference, and Prediction"
+        },
+        {
+            "paperId": "f9d832f26883ef55433fc72c48f105b3de77e242",
+            "title": "Learning Nonlinear Dynamical Systems Using an EM Algorithm"
+        },
+        {
+            "paperId": "f447198aaeb26376261e7c42106f6ff9383e325d",
+            "title": "On estimation of nonlinear black-box models: how to obtain a good initialization"
+        },
+        {
+            "paperId": "f2c62716b0dbde3682a587efdf4c2f8014dc4f14",
+            "title": "Nonlinear black-box modeling in system identification: a unified overview"
+        },
+        {
+            "paperId": "775cab39107ecac3f60c395abcac3d2a77765046",
+            "title": "A new approach to linear filtering and prediction problems\" transaction of the asme~journal of basic"
+        },
+        {
+            "paperId": "e0f4e5675e6f066987353f40ed49366f766cd81d",
+            "title": "System identification of nonlinear state-space models"
+        },
+        {
+            "paperId": "6dc98b612b726d77e38c16c45a1c007de001fa93",
+            "title": "Neural Network Identification of Non Linear Systems Using State Space Techniques"
+        },
+        {
+            "paperId": "eec961cf00c199ce77f563cbc5abb20e19b4cc65",
+            "title": "Least Squares Support Vector Machines for Kernel CCA in Nonlinear State-Space Identification"
+        },
+        {
+            "paperId": "51d6294733d877d1204edb0ab7462c0573b7856e",
+            "title": "On linear models for nonlinear systems"
+        },
+        {
+            "paperId": "255a77422b1da74da05d1714b7875356187385bd",
+            "title": "A New Approach to Linear Filtering and Prediction Problems"
+        },
+        {
+            "paperId": "c652b6d6879b6d4c7b764f9228a21659644c789d",
+            "title": "Nonlinear system identification using neural state space models, applicable to robust control design"
+        },
+        {
+            "paperId": "303853acb0f36c75be367e8f14573d0a22ab8c3d",
+            "title": "Artificial Neural Networks for Modeling and Control of Non-Linear Systems"
+        }
+    ]
+}

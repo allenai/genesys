@@ -1,0 +1,150 @@
+{
+    "paperId": "b74bfb6afd5abcb2c6fe0b2f8d60b97cdb80ca55",
+    "externalIds": {
+        "MAG": "2740137140",
+        "DBLP": "conf/icml/HelfrichWY18",
+        "ArXiv": "1707.09520",
+        "CorpusId": 44778792
+    },
+    "title": "Orthogonal Recurrent Neural Networks with Scaled Cayley Transform",
+    "abstract": "Recurrent Neural Networks (RNNs) are designed to handle sequential data but suffer from vanishing or exploding gradients. Recent work on Unitary Recurrent Neural Networks (uRNNs) have been used to address this issue and in some cases, exceed the capabilities of Long Short-Term Memory networks (LSTMs). We propose a simpler and novel update scheme to maintain orthogonal recurrent weight matrices without using complex valued matrices. This is done by parametrizing with a skew-symmetric matrix using the Cayley transform. Such a parametrization is unable to represent matrices with negative one eigenvalues, but this limitation is overcome by scaling the recurrent weight matrix by a diagonal matrix consisting of ones and negative ones. The proposed training scheme involves a straightforward gradient calculation and update step. In several experiments, the proposed scaled Cayley orthogonal recurrent neural network (scoRNN) achieves superior results with fewer trainable parameters than other unitary RNNs.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2017,
+    "referenceCount": 28,
+    "citationCount": 115,
+    "influentialCitationCount": 29,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a simpler and novel update scheme to maintain orthogonal recurrent weight matrices without using complex valued matrices by parametrizing with a skew-symmetric matrix using the Cayley transform."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145288911",
+            "name": "Kyle E. Helfrich"
+        },
+        {
+            "authorId": "2853458",
+            "name": "Devin Willmott"
+        },
+        {
+            "authorId": "50540106",
+            "name": "Q. Ye"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "9081823129a5a9035247c56e73cccc035fc8818d",
+            "title": "Gated Orthogonal Recurrent Units: On Learning to Forget"
+        },
+        {
+            "paperId": "9d1fb89b99aafc01ee56fc92df1ad150fba67c22",
+            "title": "On orthogonality and learning recurrent networks with long term dependencies"
+        },
+        {
+            "paperId": "1d782819afafe0d391e5b67151cb510e621f243d",
+            "title": "Tunable Efficient Unitary Neural Networks (EUNN) and their application to RNNs"
+        },
+        {
+            "paperId": "6e99f4859eb420ace7f03f098940135c1c355075",
+            "title": "Efficient Orthogonal Parametrisation of Recurrent Neural Networks Using Householder Reflections"
+        },
+        {
+            "paperId": "79c78c98ea317ba8cdf25a9783ef4b8a7552db75",
+            "title": "Full-Capacity Unitary Recurrent Neural Networks"
+        },
+        {
+            "paperId": "00c04118a0d0f1ff855ad4597025448c5daf873d",
+            "title": "Learning Unitary Operators with Help From u(n)"
+        },
+        {
+            "paperId": "ef3152106e7f4d05ad8d32a5b90d3790c5cdef24",
+            "title": "Recurrent Orthogonal Networks and Long-Memory Tasks"
+        },
+        {
+            "paperId": "e9c771197a6564762754e48c1daafb066f449f2e",
+            "title": "Unitary Evolution Recurrent Neural Networks"
+        },
+        {
+            "paperId": "d46b81707786d18499f911b4ab72bb10c65406ba",
+            "title": "A Simple Way to Initialize Recurrent Networks of Rectified Linear Units"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "1eb09fecd75eb27825dce4f964b97f4f5cc399d7",
+            "title": "On the Properties of Neural Machine Translation: Encoder\u2013Decoder Approaches"
+        },
+        {
+            "paperId": "d1f2676d0a03fdea67bb8668142748cb1ceed6d7",
+            "title": "Minimizing the Cayley transform of an orthogonal matrix by multiplying by signature matrices"
+        },
+        {
+            "paperId": "84069287da0a6b488b8c933f3cb5be759cb6237e",
+            "title": "On the difficulty of training recurrent neural networks"
+        },
+        {
+            "paperId": "5d76202ebe37936b4c3796d9cbbe7be5b60f93d0",
+            "title": "A feasible method for optimization with orthogonality constraints"
+        },
+        {
+            "paperId": "445ee3f6a7bc18ad6f029df27b4ea99b9eb44112",
+            "title": "An Algorithm for Intelligibility Prediction of Time\u2013Frequency Weighted Noisy Speech"
+        },
+        {
+            "paperId": "a538b05ebb01a40323997629e171c91aa28b8e2f",
+            "title": "Rectified Linear Units Improve Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": "d78f3b59b0c388673c52da3663844af8fdbfaafc",
+            "title": "Is there a small skew Cayley transform with zero diagonal"
+        },
+        {
+            "paperId": "dd5e786fd6ced91db79105ca289f49816fe17c80",
+            "title": "Perceptual evaluation of speech quality (PESQ)-a new method for speech quality assessment of telephone networks and codecs"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "3f1d04f57e420f0f1b2cd059deab309bc7073ca1",
+            "title": "The problem of learning long-term dependencies in recurrent networks"
+        },
+        {
+            "paperId": null,
+            "title": "Orthogonal Recurrent Neural Networks with Scaled Cayley Transform"
+        },
+        {
+            "paperId": "fd0611608567d9a278e2f030c9b19544f8fae035",
+            "title": "Neural Networks for Machine Learning"
+        },
+        {
+            "paperId": "cab2ba3bd239c8f698fb628396895077310e7b54",
+            "title": "Tunable Efficient Unitary Neural Networks (EUNN) and their application to RNN"
+        },
+        {
+            "paperId": "3911933c247f705b2488fdd067330820e8db07bf",
+            "title": "TIMIT Acoustic-Phonetic Continuous Speech Corpus"
+        },
+        {
+            "paperId": null,
+            "title": "Lecture 6 . 5 - rmsprop : Divide the gradient by a running average of its recent magnitude"
+        },
+        {
+            "paperId": "4dd83bc386ed5398ef19c54561684cb89e60871d",
+            "title": "Notes on Optimization on Stiefel Manifolds"
+        },
+        {
+            "paperId": null,
+            "title": "Voicebox: Speech processing toolbox for matlab. Software, available [Mar"
+        },
+        {
+            "paperId": null,
+            "title": "The mnist database"
+        }
+    ]
+}

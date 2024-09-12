@@ -1,0 +1,306 @@
+{
+    "paperId": "f63e917638553414526a0cc8550de4ad2d83fe7a",
+    "externalIds": {
+        "ArXiv": "1511.07289",
+        "DBLP": "journals/corr/ClevertUH15",
+        "MAG": "2949643667",
+        "CorpusId": 5273326
+    },
+    "title": "Fast and Accurate Deep Network Learning by Exponential Linear Units (ELUs)",
+    "abstract": "We introduce the \"exponential linear unit\" (ELU) which speeds up learning in deep neural networks and leads to higher classification accuracies. Like rectified linear units (ReLUs), leaky ReLUs (LReLUs) and parametrized ReLUs (PReLUs), ELUs alleviate the vanishing gradient problem via the identity for positive values. However, ELUs have improved learning characteristics compared to the units with other activation functions. In contrast to ReLUs, ELUs have negative values which allows them to push mean unit activations closer to zero like batch normalization but with lower computational complexity. Mean shifts toward zero speed up learning by bringing the normal gradient closer to the unit natural gradient because of a reduced bias shift effect. While LReLUs and PReLUs have negative values, too, they do not ensure a noise-robust deactivation state. ELUs saturate to a negative value with smaller inputs and thereby decrease the forward propagated variation and information. Therefore, ELUs code the degree of presence of particular phenomena in the input, while they do not quantitatively model the degree of their absence. In experiments, ELUs lead not only to faster learning, but also to significantly better generalization performance than ReLUs and LReLUs on networks with more than 5 layers. On CIFAR-100 ELUs networks significantly outperform ReLU networks with batch normalization while batch normalization does not improve ELU networks. ELU networks are among the top 10 reported CIFAR-10 results and yield the best published result on CIFAR-100, without resorting to multi-view evaluation or model averaging. On ImageNet, ELU networks considerably speed up learning compared to a ReLU network with the same architecture, obtaining less than 10% classification error for a single crop, single model network.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2015,
+    "referenceCount": 67,
+    "citationCount": 5125,
+    "influentialCitationCount": 528,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The \"exponential linear unit\" (ELU) which speeds up learning in deep neural networks and leads to higher classification accuracies and significantly better generalization performance than ReLUs and LReLUs on networks with more than 5 layers."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "34917892",
+            "name": "Djork-Arn\u00e9 Clevert"
+        },
+        {
+            "authorId": "2465270",
+            "name": "Thomas Unterthiner"
+        },
+        {
+            "authorId": "3308557",
+            "name": "Sepp Hochreiter"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "1d298139fc73654db7d8d936b07fa9e85bba008c",
+            "title": "DeepTox: Toxicity Prediction using Deep Learning"
+        },
+        {
+            "paperId": "b92aa7024b87f50737b372e5df31ef091ab54e62",
+            "title": "Training Very Deep Networks"
+        },
+        {
+            "paperId": "5b93662a56a11d22efd49afa5aa79e64539260b8",
+            "title": "Scaling up Natural Gradient by Sparsely Factorizing the Inverse Fisher Matrix"
+        },
+        {
+            "paperId": "941e30afcae061a115301c65a1afe49d8856f14e",
+            "title": "Natural Neural Networks"
+        },
+        {
+            "paperId": "adf3b591281688b7e71b254ab931b2aa39b4b59f",
+            "title": "Empirical Evaluation of Rectified Activations in Convolutional Network"
+        },
+        {
+            "paperId": "65c10300c2094d86c47928ddf70eeda7d083dec9",
+            "title": "Toxicity Prediction using Deep Learning"
+        },
+        {
+            "paperId": "e41f9fb884a3c6806048fd57041b797dd2b20bc6",
+            "title": "Rectified Factor Networks"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "d6f2f611da110b5b5061731be3fc4c7f45d8ee23",
+            "title": "Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification"
+        },
+        {
+            "paperId": "33af9298e5399269a12d4b9901492fe406af62b4",
+            "title": "Striving for Simplicity: The All Convolutional Net"
+        },
+        {
+            "paperId": "55dda8f230566867acbfaa7bdd08fd8c7b8721ed",
+            "title": "Fractional Max-Pooling"
+        },
+        {
+            "paperId": "fb91db6aa4f710814f8aec28a7f3ecbc4e5ad4fd",
+            "title": "Deeply-Supervised Nets"
+        },
+        {
+            "paperId": "5e83ab70d0cbc003471e87ec306d27d9c80ecb16",
+            "title": "Network In Network"
+        },
+        {
+            "paperId": "64da1980714cfc130632c5b92b9d98c2f6763de6",
+            "title": "On rectified linear units for speech processing"
+        },
+        {
+            "paperId": "1a3c74c7b11ad5635570932577cdde2a3f7a6a5c",
+            "title": "Improving deep neural networks for LVCSR using rectified linear units and dropout"
+        },
+        {
+            "paperId": "d46317cc16c8dbfd019afe99699f56dbfd0bb9b6",
+            "title": "Riemannian metrics for neural networks I: feedforward networks"
+        },
+        {
+            "paperId": "b83c32b75ded6fd45062b7cdaf8794a85ea36264",
+            "title": "Riemannian metrics for neural networks"
+        },
+        {
+            "paperId": "b7b915d508987b73b61eccd2b237e7ed099a2d29",
+            "title": "Maxout Networks"
+        },
+        {
+            "paperId": "daa083e60ed6a85ddbbf370f8cb58dee37520f3a",
+            "title": "Training Neural Networks with Stochastic Hessian-Free Optimization"
+        },
+        {
+            "paperId": "7a7a2658df5d66541305962d4c9d43078adadac6",
+            "title": "Metric-Free Natural Gradient for Joint-Training of Boltzmann Machines"
+        },
+        {
+            "paperId": "e8f95ccfd13689f672c39dca3eccf1c484533bcc",
+            "title": "Revisiting Natural Gradient for Deep Networks"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "68e3fca8f6f60ca1c70854b9d09228ece37f02b2",
+            "title": "Deep Boltzmann Machines and the Centering Trick"
+        },
+        {
+            "paperId": "b8ef1230a5cc9ea7cd8358f1ae7d1af97813ba14",
+            "title": "Deep Learning Made Easier by Linear Transformations in Perceptrons"
+        },
+        {
+            "paperId": "a98483785378bde7e2384a3035b2b501ee03654b",
+            "title": "Krylov Subspace Descent for Deep Learning"
+        },
+        {
+            "paperId": "1a700d6cce09f1711cdaf8f5f21b6ab2a8ce7bae",
+            "title": "Enhanced Gradient and Adaptive Learning Rate for Training Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": "0d6203718c15f137fda2f295c96269bc2b254644",
+            "title": "Learning Recurrent Neural Networks with Hessian-Free Optimization"
+        },
+        {
+            "paperId": "67107f78a84bdb2411053cb54e94fa226eea6d8e",
+            "title": "Deep Sparse Rectifier Neural Networks"
+        },
+        {
+            "paperId": "4c46347fbc272b21468efe3d9af34b4b2bad6684",
+            "title": "Deep learning via Hessian-free optimization"
+        },
+        {
+            "paperId": "a538b05ebb01a40323997629e171c91aa28b8e2f",
+            "title": "Rectified Linear Units Improve Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": "f7cc843c318d8862357485488971b26527ef1a8e",
+            "title": "A fast natural Newton method"
+        },
+        {
+            "paperId": "c980686b001f55b1e514efaccb6cfbe1a8726db8",
+            "title": "Stochastic search using the natural gradient"
+        },
+        {
+            "paperId": "dd5cf95a7af93d2733120d177c593989b19b98fe",
+            "title": "Natural Evolution Strategies"
+        },
+        {
+            "paperId": "6ed460701019072ee2e364a1a491f73dd931f27f",
+            "title": "Topmoumoute Online Natural Gradient Algorithm"
+        },
+        {
+            "paperId": "1a74fef3639f99a67fb90460091b05f0916dd054",
+            "title": "Incremental Natural Actor-Critic Algorithms"
+        },
+        {
+            "paperId": "d2308c22009f769f852c87747824680dfd4d8f4a",
+            "title": "Iterative Scaled Trust-Region Learning in Krylov Subspaces via Pearlmutter's Implicit Sparse Hessian-Vector Multiply"
+        },
+        {
+            "paperId": "f1a391bab223fc2609717316bec30ae36f8ea448",
+            "title": "Natural Actor-Critic"
+        },
+        {
+            "paperId": "b18833db0de9393d614d511e60821a1504fc6cd1",
+            "title": "A Natural Policy Gradient"
+        },
+        {
+            "paperId": "55a5dbc05fe8e362e0050b36dbbc4886011c4a32",
+            "title": "Adaptive natural gradient learning algorithms for various stochastic models"
+        },
+        {
+            "paperId": "20e7e590a11601d9b0a86be9a2b1fadead93e1b3",
+            "title": "A Fast, Compact Approximation of the Exponential Function"
+        },
+        {
+            "paperId": "a1c9b33100566fb8e40f86a56ef47b0cc95152b6",
+            "title": "Feature Extraction Through LOCOCODE"
+        },
+        {
+            "paperId": "9e88407f3a5591ca5c46c4c26751bdeba1e42a41",
+            "title": "Complexity Issues in Natural Gradient Descent Method for Training Multilayer Perceptrons"
+        },
+        {
+            "paperId": "e9fac1091d9a1646314b1b91e58f40dae3a750cd",
+            "title": "The Vanishing Gradient Problem During Learning Recurrent Neural Nets and Problem Solutions"
+        },
+        {
+            "paperId": "5a767a341364de1f75bea85e0b12ba7d3586a461",
+            "title": "Natural Gradient Works Efficiently in Learning"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "fa0c75a9b5f39d166dd875005580687716a236bb",
+            "title": "Neural Learning in Structured Parameter Spaces - Natural Riemannian Gradient"
+        },
+        {
+            "paperId": "fac0e753905d1498e0b3debf01431696e1f0c645",
+            "title": "A New Learning Algorithm for Blind Signal Separation"
+        },
+        {
+            "paperId": "882b6899d07ce3498a04195885150ef87c02d1c3",
+            "title": "Statistical Theory of Learning Curves under Entropic Loss Criterion"
+        },
+        {
+            "paperId": "de9b9ef2d13ecc69d94399af1d98f9158fc0a1d5",
+            "title": "Iterative weighted least squares algorithms for neural networks classifiers"
+        },
+        {
+            "paperId": "fe5f4a0e774d3124b2a0e6591636acd0cdc7fc27",
+            "title": "Eigenvalues of covariance matrices: Application to neural-network learning."
+        },
+        {
+            "paperId": "bcd857d75841aa3e92cd4284a8818aba9f6c0c3f",
+            "title": "Published as a conference paper at ICLR 2018 S IMULATING A CTION D YNAMICS WITH N EURAL P ROCESS N ETWORKS"
+        },
+        {
+            "paperId": "df67349bc22e251ddd586e16091d881321578b9a",
+            "title": "Under review as a conference paper at ICLR 2019 MILE : A Multi-Level Framework for Scalable Graph Embedding"
+        },
+        {
+            "paperId": "95f7b2c0fe75f08e3ce0d2ac4315166f4239db5c",
+            "title": "Deep Learning as an Opportunity in Virtual Screening"
+        },
+        {
+            "paperId": "13a5b779b46b507f59df866e369ac4e78388240a",
+            "title": "Learning Semantic Image Representations at a Large Scale"
+        },
+        {
+            "paperId": null,
+            "title": "J. Natural evolution strategies. Journal of Machine Learning Research"
+        },
+        {
+            "paperId": "367f2c63a6f6a10b3b64b8729d601e69337ee3cc",
+            "title": "Rectifier Nonlinearities Improve Neural Network Acoustic Models"
+        },
+        {
+            "paperId": "b87274e6d9aa4e6ba5148898aa92941617d2b6ed",
+            "title": "Efficient BackProp"
+        },
+        {
+            "paperId": "b0ced8ba22674b3b948c22deb0f43df93c82f87f",
+            "title": "Improved Preconditioner for Hessian Free Optimization"
+        },
+        {
+            "paperId": "b1a5961609c623fc816aaa77565ba38b25531a8e",
+            "title": "Neural Networks: Tricks of the Trade"
+        },
+        {
+            "paperId": "2e5f2b57f4c476dd69dc22ccdf547e48f40a994c",
+            "title": "Gradient Flow in Recurrent Nets: the Difficulty of Learning Long-Term Dependencies"
+        },
+        {
+            "paperId": "ff926cb9b2d972378774e6fd5e66ac5920a7b35d",
+            "title": "NATURAL GRADIENT LEARNING WITH A NONHOLONOMIC CONSTRAINT FOR BLIND DECONVOLUTION OF MULTIPLE CHANNELS"
+        },
+        {
+            "paperId": "9b81a3b4ab374d2de9912ef72e987cdf42a9bd4a",
+            "title": "Natural Gradient Approach To Blind Separation Of Over- And Under-Complete Mixtures"
+        },
+        {
+            "paperId": "8aeb4b344fe4f310fed7f1d1072a6a71c2e62244",
+            "title": "Recurrent Neural Net Learning and Vanishing"
+        },
+        {
+            "paperId": "75a026ddfdd9c219d69fe8af816f085ea1b3877d",
+            "title": "Centering Neural Network Gradient Factors"
+        },
+        {
+            "paperId": "3f3d13e95c25a8f6a753e38dfce88885097cbd43",
+            "title": "Untersuchungen zu dynamischen neuronalen Netzen"
+        },
+        {
+            "paperId": "420322994c59e9081786b46b31e2c82a9753e23a",
+            "title": "Differential-geometrical methods in statistics"
+        },
+        {
+            "paperId": "a6bcf0e9b5034c4c9cbea839baadd69a42b05cc1",
+            "title": "Learning curves for stochastic gradient descent in linear feedforward networks"
+        }
+    ]
+}

@@ -1,0 +1,154 @@
+{
+    "paperId": "b56d065e56866dce8ceaca4af78a8f058aecd6a7",
+    "externalIds": {
+        "DBLP": "journals/corr/abs-1803-06585",
+        "MAG": "2950458194",
+        "ArXiv": "1803.06585",
+        "CorpusId": 3958635
+    },
+    "title": "Learning Long Term Dependencies via Fourier Recurrent Units",
+    "abstract": "It is a known fact that training recurrent neural networks for tasks that have long term dependencies is challenging. One of the main reasons is the vanishing or exploding gradient problem, which prevents gradient information from propagating to early layers. In this paper we propose a simple recurrent architecture, the Fourier Recurrent Unit (FRU), that stabilizes the gradients that arise in its training while giving us stronger expressive power. Specifically, FRU summarizes the hidden states $h^{(t)}$ along the temporal dimension with Fourier basis functions. This allows gradients to easily reach any layer due to FRU's residual learning structure and the global support of trigonometric functions. We show that FRU has gradient lower and upper bounds independent of temporal dimension. We also show the strong expressivity of sparse Fourier basis, from which FRU obtains its strong expressive power. Our experimental study also demonstrates that with fewer parameters the proposed architecture outperforms other recurrent architectures on many tasks.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2018,
+    "referenceCount": 28,
+    "citationCount": 40,
+    "influentialCitationCount": 4,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A simple recurrent architecture, the Fourier Recurrent Unit (FRU), that stabilizes the gradients that arise in its training while giving us stronger expressive power, and demonstrates that with fewer parameters the proposed architecture outperforms other recurrent architectures on many tasks."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "49049987",
+            "name": "Jiong Zhang"
+        },
+        {
+            "authorId": "1787759",
+            "name": "Yibo Lin"
+        },
+        {
+            "authorId": "143825455",
+            "name": "Zhao Song"
+        },
+        {
+            "authorId": "1783667",
+            "name": "I. Dhillon"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "0200506b4a0b582859ef24b9a946871d29dde0b4",
+            "title": "FCNN: Fourier Convolutional Neural Networks"
+        },
+        {
+            "paperId": "96f78f409e4e3f25276d9d98977ef67f2a801abf",
+            "title": "The Statistical Recurrent Unit"
+        },
+        {
+            "paperId": "097fb68f360195d438126a7cd9b988fac31b1228",
+            "title": "Residual LSTM: Design of a Deep Recurrent Architecture for Distant Speech Recognition"
+        },
+        {
+            "paperId": "6917fb1ceeca7deca73c29f815b0830afb9f9e65",
+            "title": "Fourier-Sparse Interpolation without a Frequency Gap"
+        },
+        {
+            "paperId": "9c9d7247f8c51ec5a02b0d911d1d7b9e8160495d",
+            "title": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "e9c771197a6564762754e48c1daafb066f449f2e",
+            "title": "Unitary Evolution Recurrent Neural Networks"
+        },
+        {
+            "paperId": "9cee45ef1212ebbc7d468f9b1d7df24f5005e64d",
+            "title": "Highway long short-term memory RNNS for distant speech recognition"
+        },
+        {
+            "paperId": "5fbc4ac435812afe9a07a40e713336219e3976fd",
+            "title": "A Robust Sparse Fourier Transform in the Continuous Setting"
+        },
+        {
+            "paperId": "d46b81707786d18499f911b4ab72bb10c65406ba",
+            "title": "A Simple Way to Initialize Recurrent Networks of Rectified Linear Units"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "1eb09fecd75eb27825dce4f964b97f4f5cc399d7",
+            "title": "On the Properties of Neural Machine Translation: Encoder\u2013Decoder Approaches"
+        },
+        {
+            "paperId": "301510e39559b8935f2a6ceebe5ed8a24e312966",
+            "title": "Super-resolution, Extremal Functions and the Condition Number of Vandermonde Matrices"
+        },
+        {
+            "paperId": "f9d04fb757024e11c15f8f7be5af8e22a90b828b",
+            "title": "Sample-Optimal Fourier Sampling in Any Constant Dimension"
+        },
+        {
+            "paperId": "157a9598f54f1a424ae8510953bacbd5a232cc14",
+            "title": "(Nearly) Sample-Optimal Sparse Fourier Transform"
+        },
+        {
+            "paperId": "84069287da0a6b488b8c933f3cb5be759cb6237e",
+            "title": "On the difficulty of training recurrent neural networks"
+        },
+        {
+            "paperId": "8a23fb198c5651c44c2f51ce9967aca7d5bf6b2c",
+            "title": "Simple and practical algorithm for sparse Fourier transform"
+        },
+        {
+            "paperId": "7c69c424784595ea604014971d639ca40b805582",
+            "title": "Nearly optimal sparse fourier transform"
+        },
+        {
+            "paperId": "cb45e9217fe323fbc199d820e7735488fca2a9b3",
+            "title": "Strategies for training large scale neural network language models"
+        },
+        {
+            "paperId": "705c63346f57e627ffe14a2b6b60d1405ee4c151",
+            "title": "Properties of sums of some elementary functions and modeling of transitional and other processes"
+        },
+        {
+            "paperId": "723a33c5062dae9fdd535ec95dab5e5b33934afd",
+            "title": "Sums of exponential functions and their new fundamental properties"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "c1b47c7092c8f130a8d226302b9a5075edf6ee03",
+            "title": "Using Fourier-neural recurrent networks to fit sequential input/output data"
+        },
+        {
+            "paperId": "d0be39ee052d246ae99c082a565aba25b811be2d",
+            "title": "Learning long-term dependencies with gradient descent is difficult"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "3ef91e459d2ebcf31dc078fb42fc5103f6e80b7b",
+            "title": "Sparse recovery and Fourier sampling"
+        },
+        {
+            "paperId": "96364af2d208ea75ca3aeb71892d2f7ce7326b55",
+            "title": "Statistical Language Models Based on Neural Networks"
+        },
+        {
+            "paperId": "d463daca03d09bccbc810d0ebdb30d58d7c2f57c",
+            "title": "ForeNet : fourier recurrent networks for time series prediction"
+        }
+    ]
+}

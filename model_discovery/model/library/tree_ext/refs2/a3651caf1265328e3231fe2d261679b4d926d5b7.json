@@ -1,0 +1,234 @@
+{
+    "paperId": "a3651caf1265328e3231fe2d261679b4d926d5b7",
+    "externalIds": {
+        "DBLP": "conf/focs/ImpagliazzoPZ98",
+        "MAG": "1995725694",
+        "DOI": "10.1109/SFCS.1998.743516",
+        "CorpusId": 510692
+    },
+    "title": "Which problems have strongly exponential complexity?",
+    "abstract": "For several NP-complete problems, there have been a progression of better but still exponential algorithms. In this paper we address the relative likelihood of sub-exponential algorithms for these problems. We introduce a generalized reduction which we call sub-exponential reduction family (SERF) that preserves sub-exponential complexity. We show that Circuit-SAT is SERF-complete for all NP-search problems, and that for any fixed k, k-SAT, k-Colorability, k-Set Cover Independent Set, Clique, Vertex Cover are SERF-complete for the class SNP of search problems expressible by second order existential formulas whose first order part is universal. In particular, sub-exponential complexity for any one of the above problems implies the same for all others. We also look at the issue of proving strongly exponential lower bounds (that is, bounds of the form 2/sup /spl Omega/(n)/) for AC/sup 0/. This problem is even open far depth-3 circuits. In fact, such a bound for depth-3 circuits with even limited (at most n/sup /spl epsiv//) fan-infer bottom-level gates would imply a nonlinear size lower bound for logarithmic depth circuits. We show that with high probability even degree 2 random GF(2) polynomials require strongly exponential site for /spl Sigma//sub 3//sup k/ circuits for k=o(loglogn). We thus exhibit a much smaller space of 2(0(/sup n2/)) functions such that almost every function in this class requires strongly exponential size /spl Sigma//sub 3//sup k/ circuits. As a corollary, we derive a pseudorandom generator (requiring O(n/sup 2/) bits of advice) that maps n bits into a larger number of bits so that computing parity on the range is hard for /spl Sigma//sub 3//sup k/ circuits. Our main technical lemma is an algorithm that, for any fixed /spl epsiv/>0, represents an arbitrary k-CNF formula as a disjunction of 2/sup /spl epsiv/n/ k-CNF formulas that are sparse, e.g., each having O(n) clauses.",
+    "venue": "Proceedings 39th Annual Symposium on Foundations of Computer Science (Cat. No.98CB36280)",
+    "year": 1998,
+    "referenceCount": 49,
+    "citationCount": 1486,
+    "influentialCitationCount": 222,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A generalized reduction which is called sub-exponential reduction family (SERF) that preserves sub- Exponential complexity for NP-search problems and shows that Circuit-SAT is SERF-complete for all NP- search problems, and that for any fixed k, k-S AT,k-Colorability, k -Set Cover Independent Set, Clique, Vertex Cover are SERF -complete for the class SNP of search problems expressible by second order existential formulas whose first order"
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1735759",
+            "name": "R. Impagliazzo"
+        },
+        {
+            "authorId": "1714356",
+            "name": "R. Paturi"
+        },
+        {
+            "authorId": "1748672",
+            "name": "F. Zane"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "fcaca9b1e72bdb3fc40a49a5ea957ecd96a491f0",
+            "title": "A probabilistic algorithm for k-SAT and constraint satisfaction problems"
+        },
+        {
+            "paperId": "8c41a9c8a6f266330ace1e030327bad493a69b6e",
+            "title": "Clique is hard to approximate withinn1\u2212\u03b5"
+        },
+        {
+            "paperId": "832f559f5cadad419017c933b8092e3061b7b99b",
+            "title": "An improved exponential-time algorithm for k-SAT"
+        },
+        {
+            "paperId": "1393ad709eb9f43393f8594a9707fd67c339e779",
+            "title": "Satisfiability Coding Lemma"
+        },
+        {
+            "paperId": "7970e52cc60ac0e1dce8c051b087fb15f73377eb",
+            "title": "Exponential lower bounds for depth 3 Boolean circuits"
+        },
+        {
+            "paperId": "e06ac0f6c8a8f18726ab7b1b029d5dc2cbf9eaa9",
+            "title": "Polynomial time approximation schemes for Euclidean TSP and other geometric problems"
+        },
+        {
+            "paperId": "8858200fb69a050304e74e59df91d46a6013d3df",
+            "title": "Clique is hard to approximate within n/sup 1-/spl epsiv//"
+        },
+        {
+            "paperId": "f2c1830eedc095b92a78dc3afa39a36343ed81ad",
+            "title": "Introduction to algorithms"
+        },
+        {
+            "paperId": "eec760886316b18d519bd6d3c364c8a9330bcbbc",
+            "title": "3-coloring in time 0(1.3446/sup n/): a no-MIS algorithm"
+        },
+        {
+            "paperId": "0fad168e66e9200e7a785ad9b54fe273aae11df0",
+            "title": "Fixed-Parameter Tractability and Completeness IV: On Completeness for W[P] and PSPACE Analogues"
+        },
+        {
+            "paperId": "923c8488ccdd0ab705cce95a6203898dda536f64",
+            "title": "Top-down lower bounds for depth 3 circuits"
+        },
+        {
+            "paperId": "e01813c2468ab8c4484dc7a414a8b63da909e8a6",
+            "title": "Introduction to Coding Theory"
+        },
+        {
+            "paperId": "77f4328feaae852c33f985d219fc7d59a31001c7",
+            "title": "Proof verification and hardness of approximation problems"
+        },
+        {
+            "paperId": "27710df435ff179b42405d80e1a7123593cce428",
+            "title": "Solving 3-Satisfiability in Less Then 1, 579n Steps"
+        },
+        {
+            "paperId": "2a078f34447498e5eff8e3922f076c24fdb26f4d",
+            "title": "Optimization, approximation, and complexity classes"
+        },
+        {
+            "paperId": "25698356c65b041324104597bd968dadf91176df",
+            "title": "Approximating clique is almost NP-complete"
+        },
+        {
+            "paperId": "9ead2e12159dc5040b5ccb1304ee196e9d1ee29d",
+            "title": "The Complexity of Finite Functions"
+        },
+        {
+            "paperId": "b55fda1f58af7fd9ecde8f1dc193ddd6ab6e9d26",
+            "title": "Handbook of theoretical computer science - Part A: Algorithms and complexity; Part B: Formal models and semantics"
+        },
+        {
+            "paperId": "4c398ffe2f1df1b5bf174cd694f366ef8a594a5f",
+            "title": "Lower bounds on the size of bounded depth circuits over a complete basis with logical addition"
+        },
+        {
+            "paperId": "f29d639869fb39bdbf6fffab4b6dc6c6f2b35a44",
+            "title": "Algebraic methods in the theory of lower bounds for Boolean circuit complexity"
+        },
+        {
+            "paperId": "56e6db25c6e72c0cff4ee099fa6e79bfbd20c7fb",
+            "title": "Almost optimal lower bounds for small depth circuits"
+        },
+        {
+            "paperId": "d0f8003fa8198ed0d5d7fa97fb3d65b9d6fdb68c",
+            "title": "Algorithms for Maximum Independent Sets"
+        },
+        {
+            "paperId": "0a029f3f56c1a67763462b928f42930f6aaa3b47",
+            "title": "Separating the Polynomial-Time Hierarchy by Oracles (Preliminary Version)"
+        },
+        {
+            "paperId": "eed2b17b4099bf1e3bf75d429f0b8eff3466a5aa",
+            "title": "Solving satisfiability in less than 2n steps"
+        },
+        {
+            "paperId": "8dedaa0168e36600c6ee7091b49913f3007245ba",
+            "title": "\u221111-Formulae on finite structures"
+        },
+        {
+            "paperId": "75f57a8e71ebc9f05b6c9983032a75fc1edb1597",
+            "title": "Parity, circuits, and the polynomial-time hierarchy"
+        },
+        {
+            "paperId": "7b2edb82d848e9e533529e3e47308dbb0a9f4d20",
+            "title": "Graph-Theoretic Arguments in Low-Level Complexity"
+        },
+        {
+            "paperId": "10077a4312ca6900d6f0f3750d6847dfeea39d05",
+            "title": "Finding a Maximum Independent Set"
+        },
+        {
+            "paperId": "788c6d1b1419a0f7b7695c0e7e9e41cf54fbfe1b",
+            "title": "On the Density of Families of Sets"
+        },
+        {
+            "paperId": "46e0f7461ab2e9e0f461d4ed40cf23f028fd710c",
+            "title": "Clique Is Hard To Approximate Within"
+        },
+        {
+            "paperId": null,
+            "title": "and M"
+        },
+        {
+            "paperId": null,
+            "title": "What are the least tractable instances of Max Clique"
+        },
+        {
+            "paperId": "82288d8a14f6fde902feb2609e238b2e4da5b2ba",
+            "title": "Two new upper bounds for SAT"
+        },
+        {
+            "paperId": "e5cca121e9852018c141ac3bc2cf2c35fea1dc9a",
+            "title": "The Probabilistic Method"
+        },
+        {
+            "paperId": "406fcaaea6e6a17d5f00dcd1bd5c93381dd7dc2e",
+            "title": "Deciding propositional tautologies: Algorithms and their complexity"
+        },
+        {
+            "paperId": null,
+            "title": "Some optimal inapproxibility results, in \u2018\u2018Proceedings of the Twenty-Ninth Annual ACM Symposium on Theory of Computing,\u2019\u2019 pp"
+        },
+        {
+            "paperId": "9d4d0f29f340acc03ed0cee171c701ab53163426",
+            "title": "Proof Checking and Approximation: Towards Tight Results"
+        },
+        {
+            "paperId": null,
+            "title": "Pure Literal Look Ahead: An O(1:497n) 3-Satisfiability Algorithm, Workshop on the Satisfiability Problem"
+        },
+        {
+            "paperId": "0f9837a2458999e89adccb3531e44c17dd649958",
+            "title": "3-Coloring in time O(1.3446n): A no-MIS Algorithm"
+        },
+        {
+            "paperId": "a987f5804fc649e6467e6bf3cef99866522be8e6",
+            "title": "Annals of Pure and Applied Logic"
+        },
+        {
+            "paperId": "bb88e621c2c76242c0fc828c6fb7ed69afd2f051",
+            "title": "The Probabilistic Method"
+        },
+        {
+            "paperId": "7256d857beea010aff2d4f7f7d50e01131b55917",
+            "title": "Annals of Pure and Applied Logic"
+        },
+        {
+            "paperId": null,
+            "title": "Power Indices and Easier H  ard Problems,  Mathematical Systems Theory"
+        },
+        {
+            "paperId": null,
+            "title": "III, Power indices and easier hand problems"
+        },
+        {
+            "paperId": null,
+            "title": "Computers and Intractability Freeman"
+        },
+        {
+            "paperId": "a36b028d024bf358c4af1a5e1dc3ca0aed23b553",
+            "title": "Chervonenkis: On the uniform convergence of relative frequencies of events to their probabilities"
+        },
+        {
+            "paperId": null,
+            "title": "Acknowledgments: The authors thank Sanjeev Arora"
+        },
+        {
+            "paperId": null,
+            "title": "GF(2) polynomials"
+        },
+        {
+            "paperId": null,
+            "title": "is an exponentially small (in \u00d2) fraction of all degree 2"
+        }
+    ]
+}

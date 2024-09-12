@@ -1,0 +1,150 @@
+{
+    "paperId": "a06892420dbaba693892f36d779e792ca9097473",
+    "externalIds": {
+        "MAG": "1563860769",
+        "DBLP": "journals/siammax/BakerES15",
+        "ArXiv": "1410.8741",
+        "DOI": "10.1137/140993867",
+        "CorpusId": 14212243
+    },
+    "title": "Fast Singular Value Decay for Lyapunov Solutions with Nonnormal Coefficients",
+    "abstract": "Lyapunov equations with low-rank right-hand sides often have solutions whose singular values decay rapidly, enabling iterative methods that produce low-rank approximate solutions. All previously known bounds on this decay involve quantities that depend quadratically on the departure of the coefficient matrix from normality: these bounds suggest that the larger the departure from normality, the slower the singular values will decay. We show this is only true up to a threshold, beyond which a larger departure from normality can actually correspond to faster decay of singular values: if the singular values decay slowly, the numerical range cannot extend far into the right-half plane.",
+    "venue": "SIAM Journal on Matrix Analysis and Applications",
+    "year": 2014,
+    "referenceCount": 27,
+    "citationCount": 45,
+    "influentialCitationCount": 4,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1410.8741",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that a larger departure from normality can actually correspond to faster decay of singular values: if the singular values decay slowly, the numerical range cannot extend far into the right-half plane."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2117187563",
+            "name": "Jonathan Baker"
+        },
+        {
+            "authorId": "2204779",
+            "name": "M. Embree"
+        },
+        {
+            "authorId": "40197320",
+            "name": "John Sabino"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "bf31e4aaa0f2f0cc1318d1742c60a409d68f12ce",
+            "title": "Computational Methods for Linear Matrix Equations"
+        },
+        {
+            "paperId": "47487c24571dd8ada8e1295b8b6def0f455e1863",
+            "title": "On the eigenvalue decay of solutions to operator Lyapunov equations"
+        },
+        {
+            "paperId": "32288a799f8b8b21cc91de24fa3545687045e36c",
+            "title": "Numerical solution of large and sparse continuous time algebraic matrix Riccati and Lyapunov equations: a state of the art survey"
+        },
+        {
+            "paperId": "20df32b572a1c4aefc6978918f30b6237cc9200e",
+            "title": "Ritz Value Localization for Non-Hermitian Matrices"
+        },
+        {
+            "paperId": "b1c47a47ea20d016f857eb7c2ea8aff22df872de",
+            "title": "Lyapunov Inverse Iteration for Identifying Hopf Bifurcations in Models of Incompressible Flow"
+        },
+        {
+            "paperId": "84c7a0caba53601bd28b97e82850c816cbce87b2",
+            "title": "An Error Analysis for Rational Galerkin Projection Applied to the Sylvester Equation"
+        },
+        {
+            "paperId": "83f9bf47d1d6372727a2ee5fef4bd3129e1c8e4a",
+            "title": "Analysis of the Rational Krylov Subspace and ADI Methods for Solving the Lyapunov Equation"
+        },
+        {
+            "paperId": "574298e7361ff6e43974da151c6cd5dc24d7d5d0",
+            "title": "Analysis of the solution of the Sylvester equation using low-rank ADI with exact shifts"
+        },
+        {
+            "paperId": "3371d7f50540dc8e157df672c71bd0317047c3a2",
+            "title": "Functions of matrices - theory and computation"
+        },
+        {
+            "paperId": "3eaad4c8a5b458febd25f6104de6056d4316026e",
+            "title": "Bounds on the trace of a solution to the Lyapunov equation with a general stable matrix"
+        },
+        {
+            "paperId": "ce63a48a3a9da8a3b21866fa9ff9c7751aff31e6",
+            "title": "Numerical range and functional calculus in Hilbert space"
+        },
+        {
+            "paperId": "0d981785476a62cbc763c51482b31bc88d35ce5e",
+            "title": "Solution of Large-Scale Lyapunov Equations via the Block Modified Smith Methods"
+        },
+        {
+            "paperId": "31a9c66730500929663f23fc8350a190b471422e",
+            "title": "Approximation of Large-Scale Dynamical Systems"
+        },
+        {
+            "paperId": "87bffbda11db084d2f5c917888689fd89f7ab8d7",
+            "title": "On the decay rate of Hankel singular values and related issues"
+        },
+        {
+            "paperId": "21bf8422c4d785242d03566f597ea16442fab9f1",
+            "title": "On the eigensystems of graded matrices"
+        },
+        {
+            "paperId": "39d42113505c9d8588c6c6f6f154142a37284f58",
+            "title": "Eigenvalue decay bounds for solutions of Lyapunov equations: the symmetric case"
+        },
+        {
+            "paperId": "fa1e07d6965cb6ee7864a10b8d13c28e552e30cf",
+            "title": "A Cyclic Low Rank Smith Method for Large Sparse Lyapunov Equations with Applications in Model Reduct"
+        },
+        {
+            "paperId": "b0dc50b566596f4b74a6317e260fee169336dc48",
+            "title": "Robust and optimal control"
+        },
+        {
+            "paperId": "22d37979b6aa7278f636e530fef5219c3d444011",
+            "title": "Hydrodynamic Stability Without Eigenvalues"
+        },
+        {
+            "paperId": "575a99b77fb50318d86e0a5e75283cd16b1c421d",
+            "title": "On measures of nonnormality of matrices"
+        },
+        {
+            "paperId": "3c1a73f858ca44e9debe7bd22db542600cf1a537",
+            "title": "New ADI Model Problem Applications"
+        },
+        {
+            "paperId": "721f54f6fa32f5f02c5124a2b73ce5f4280b4eaf",
+            "title": "Matrix analysis"
+        },
+        {
+            "paperId": "6e4355cadf50252a10e985ac94449a574b38768e",
+            "title": "Robust and Optimal Control"
+        },
+        {
+            "paperId": "0ec43db4db4a44a9453fd09997870e202ab0e512",
+            "title": "Spectra and pseudospectra : the behavior of nonnormal matrices and operators"
+        },
+        {
+            "paperId": "443bf2f0c34d0d2e58200d8e1cb49884573bf465",
+            "title": "Topics in Matrix Analysis"
+        },
+        {
+            "paperId": "ada068ff6b7fea37163890e27f670bb334b9f70a",
+            "title": "The numerical range of certain 0,1-matrices \u2020"
+        },
+        {
+            "paperId": null,
+            "title": "An Introduction to Model Reduction for Linear and Nonlinear Differential Equations"
+        }
+    ]
+}

@@ -1,0 +1,230 @@
+{
+    "paperId": "1a13b5dd42df52ffc89b80a133a7677aeebd788c",
+    "externalIds": {
+        "MAG": "2510190030",
+        "DBLP": "conf/icb/ShiragaMMEY16",
+        "DOI": "10.1109/ICB.2016.7550060",
+        "CorpusId": 12632343
+    },
+    "title": "GEINet: View-invariant gait recognition using a convolutional neural network",
+    "abstract": "This paper proposes a method of gait recognition using a convolutional neural network (CNN). Inspired by the great successes of CNNs in image recognition tasks, we feed in the most prevalent image-based gait representation, that is, the gait energy image (GEI), as an input to a CNN designed for gait recognition called GEINet. More specifically, GEINet is composed of two sequential triplets of convolution, pooling, and normalization layers, and two subsequent fully connected layers, which output a set of similarities to individual training subjects. We conducted experiments to demonstrate the effectiveness of the proposed method in terms of cross-view gait recognition in both cooperative and uncooperative settings using the OU-ISIR large population dataset. As a result, we confirmed that the proposed method significantly outperformed state-of-the-art approaches, in particular in verification scenarios.",
+    "venue": "International Conference on Biometrics",
+    "year": 2016,
+    "referenceCount": 46,
+    "citationCount": 337,
+    "influentialCitationCount": 50,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is confirmed that the proposed method of gait recognition using a convolutional neural network significantly outperformed state-of-the-art approaches, in particular in verification scenarios."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3449049",
+            "name": "Kohei Shiraga"
+        },
+        {
+            "authorId": "1689334",
+            "name": "Yasushi Makihara"
+        },
+        {
+            "authorId": "1810088",
+            "name": "D. Muramatsu"
+        },
+        {
+            "authorId": "1701321",
+            "name": "T. Echigo"
+        },
+        {
+            "authorId": "1715071",
+            "name": "Y. Yagi"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "325ca1a1061d8f2c9588a12b9ca6f80e69d02de2",
+            "title": "View Transformation Model Incorporating Quality Measures for Cross-View Gait Recognition"
+        },
+        {
+            "paperId": "013d0acff1e5410fd9f6e15520d16f4ea02f03f6",
+            "title": "Learning Representative Deep Features for Image Set Analysis"
+        },
+        {
+            "paperId": "52459d74aa67d7393843a7fee698df80aa6f9d9a",
+            "title": "Gait Recognition: Databases, Representations, and Applications"
+        },
+        {
+            "paperId": "1be6ae7a74f0079b6bf8587d210062d80661a1d0",
+            "title": "Cross-view gait recognition by fusion of multiple transformation consistency measures"
+        },
+        {
+            "paperId": "01cfa4d1a4b59f3606c2273f5d5b2b24a0361eb0",
+            "title": "Uncooperative gait recognition by learning to rank"
+        },
+        {
+            "paperId": "637dea47c50146d34d20e58874d2a906f7d3d25a",
+            "title": "Cross-view gait recognition using view-dependent discriminative analysis"
+        },
+        {
+            "paperId": "6d4c9c923e9f145d1c01a2de2afc38ec23c44253",
+            "title": "Large-Scale Video Classification with Convolutional Neural Networks"
+        },
+        {
+            "paperId": "6bdb186ec4726e00a8051119636d4df3b94043b5",
+            "title": "Caffe: Convolutional Architecture for Fast Feature Embedding"
+        },
+        {
+            "paperId": "9f2efadf66817f1b38f58b3f50c7c8f34c69d89a",
+            "title": "DeepFace: Closing the Gap to Human-Level Performance in Face Verification"
+        },
+        {
+            "paperId": "1b626828c5bb7eb1eae58887ddeefa0cc4ec97b5",
+            "title": "Multimodal Feature Learning for Gait Biometric Based Human Identity Recognition"
+        },
+        {
+            "paperId": "226b5712ce28731042228af3daa66a7942656937",
+            "title": "Relating ROC and CMC curves via the biometric menagerie"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "2d01cbc84241f1542946f0bcd4ab5cf4f79015cd",
+            "title": "Human Identification Using Temporal Information Preserving Gait Template"
+        },
+        {
+            "paperId": "4b8762d7637868b6ba0c97c95b2d4949d103ecdc",
+            "title": "The OU-ISIR Gait Database Comprising the Large Population Dataset and Performance Evaluation of Gait Recognition"
+        },
+        {
+            "paperId": "55bc72e912c1db2c85dbbb6e4afe6eb7bbff89de",
+            "title": "The OU-ISIR Gait Database Comprising the Treadmill Dataset"
+        },
+        {
+            "paperId": "591e53602b390746851040047dfd1e499144ef64",
+            "title": "Generalized Multiview Analysis: A discriminative latent space"
+        },
+        {
+            "paperId": "8193f76af2b9ddddf2c4f1f33d588cf48622745e",
+            "title": "Gait Recognition Under Various Viewing Angles Based on Correlated Motion Regression"
+        },
+        {
+            "paperId": "160c218687f3c205e8aaeebc107bd5d7c60301e4",
+            "title": "On Using Gait in Forensic Biometrics"
+        },
+        {
+            "paperId": "8981dbf15e23de1c1cf6622c8a1db918a44f675a",
+            "title": "Joint Subspace Learning for View-Invariant Gait Recognition"
+        },
+        {
+            "paperId": "8e8c8374de4b7fe9dcf631adae216488819c6bcd",
+            "title": "Gait flow image: A silhouette-based gait representation for human identification"
+        },
+        {
+            "paperId": "ca88d5e8a9d57dde0af641807e6e5a7e5926dc6c",
+            "title": "Gait recognition without subject cooperation"
+        },
+        {
+            "paperId": "a538b05ebb01a40323997629e171c91aa28b8e2f",
+            "title": "Rectified Linear Units Improve Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": "9bcb9878603691f34f4c85678c5113e1d497ac04",
+            "title": "Gait curves for human recognition, backpack detection, and silhouette correction in a nighttime environment"
+        },
+        {
+            "paperId": "797d1fbde07ce0d9bb7d559e40ba42d365112e12",
+            "title": "Uncorrelated discriminant simplex analysis for view-invariant gait signal computing"
+        },
+        {
+            "paperId": "5936754b5762260bf102ac95d7b26cfc9d31956a",
+            "title": "The Tradeoffs of Large Scale Learning"
+        },
+        {
+            "paperId": "0268d1744377ffbff48b014f513ea3e5e4a4dab1",
+            "title": "A Framework for Evaluating the Effect of View Angle, Clothing and Carrying Condition on Gait Recognition"
+        },
+        {
+            "paperId": "8978cf7574ceb35f4c3096be768c7547b28a35d0",
+            "title": "A Fast Learning Algorithm for Deep Belief Nets"
+        },
+        {
+            "paperId": "dd4a82fb2e24328a7d858da6a21c98655fcb0bff",
+            "title": "Improved gait recognition by gait dynamics normalization"
+        },
+        {
+            "paperId": "a7f0f887ec8d089d579c04a4ca3a8fd3e48afb08",
+            "title": "Gait Recognition Using a View Transformation Model in the Frequency Domain"
+        },
+        {
+            "paperId": "540339c32eaf41962740583bfa415a5a0ff9d932",
+            "title": "Individual recognition using gait energy image"
+        },
+        {
+            "paperId": "3c47022955c3274250630b042b53d3de2df8eeda",
+            "title": "Discriminant analysis with tensor representation"
+        },
+        {
+            "paperId": "bb6b14397f69bbfbc52cbd1a04bc6302a8b938d7",
+            "title": "The humanID gait challenge problem: data sets, performance, and analysis"
+        },
+        {
+            "paperId": "0407866be9938f24acc44afd6760e27e15e6e160",
+            "title": "Simplest representation yet for gait recognition: averaged silhouette"
+        },
+        {
+            "paperId": "b87090fdb9ae02456544c47b3e1b75de76ba2206",
+            "title": "Improving ICP with easy implementation for free-form surface matching"
+        },
+        {
+            "paperId": "c4b271dc2e3a220b8f3163c9832c53984c69fef2",
+            "title": "Towards a view invariant gait recognition algorithm"
+        },
+        {
+            "paperId": "8c56ecf60d4375fb217ffd35d62b613d3d05aa53",
+            "title": "Automatic Gait Recognition via Fourier Descriptors of Deformable Objects"
+        },
+        {
+            "paperId": "9ac69c19924b2112ebc3bcd84887af8d6f93ddc5",
+            "title": "Visual motion perception."
+        },
+        {
+            "paperId": "57854a0e8309af7ad6f5d9612e20e2ba1a171a96",
+            "title": "Analyzing and recognizing walking figures in XYT"
+        },
+        {
+            "paperId": "50d2571f0abc2330bffd9b840fee6b9178c8f944",
+            "title": "Gait-Based Person Recognition Using Arbitrary View Transformation Model"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "bdeff833f3a7c035ff2987984317493d0a02f8d9",
+            "title": "The TUM Gait from Audio, Image and Depth (GAID) database: Multimodal recognition of subjects and traits"
+        },
+        {
+            "paperId": "837635f647c42d03812a7f4ab5f87c5a49372a0b",
+            "title": "Gait recognition using Gait Entropy Image"
+        },
+        {
+            "paperId": "4f93cd09785c6e77bf4bc5a788e079df524c8d21",
+            "title": "On a Large Sequence-Based Human Gait Database"
+        },
+        {
+            "paperId": null,
+            "title": "Optimal linear and nonlinear solutions for leastsquare discriminant feature extraction"
+        },
+        {
+            "paperId": "c5637543e80f97c9ddab8b54a635cf71941e2786",
+            "title": "This article has been accepted for inclusion in a future issue of this journal. Content is final as presented, with the exception of pagination. IEEE TRANSACTIONS ON SYSTEMS, MAN, AND CYBERNETICS\u2014PART B: CYBERNETICS 1 Self-Calibrating View-Invariant Gait"
+        },
+        {
+            "paperId": "52dfa20f6fdfcda8c11034e3d819f4bd47e6207d",
+            "title": "Ieee Transactions on Pattern Analysis and Machine Intelligence 1 3d Convolutional Neural Networks for Human Action Recognition"
+        }
+    ]
+}

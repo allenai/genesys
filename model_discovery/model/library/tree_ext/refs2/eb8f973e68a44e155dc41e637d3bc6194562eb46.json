@@ -1,0 +1,98 @@
+{
+    "paperId": "eb8f973e68a44e155dc41e637d3bc6194562eb46",
+    "externalIds": {
+        "MAG": "2463885964",
+        "DBLP": "journals/corr/RoyGMJ16",
+        "ArXiv": "1606.07869",
+        "CorpusId": 15987308
+    },
+    "title": "Representing Documents and Queries as Sets of Word Embedded Vectors for Information Retrieval",
+    "abstract": "A major difficulty in applying word vector embeddings in IR is in devising an effective and efficient strategy for obtaining representations of compound units of text, such as whole documents, (in comparison to the atomic words), for the purpose of indexing and scoring documents. Instead of striving for a suitable method for obtaining a single vector representation of a large document of text, we rather aim for developing a similarity metric that makes use of the similarities between the individual embedded word vectors in a document and a query. More specifically, we represent a document and a query as sets of word vectors, and use a standard notion of similarity measure between these sets, computed as a function of the similarities between each constituent word pair from these sets. We then make use of this similarity measure in combination with standard IR based similarities for document ranking. The results of our initial experimental investigations shows that our proposed method improves MAP by up to $5.77\\%$, in comparison to standard text-based language model similarity, on the TREC ad-hoc dataset.",
+    "venue": "arXiv.org",
+    "year": 2016,
+    "referenceCount": 14,
+    "citationCount": 28,
+    "influentialCitationCount": 2,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work represents a document and a query as sets of word vectors, and uses a standard notion of similarity measure between these sets, computed as a function of the similarities between each constituent word pair from these sets."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "39762635",
+            "name": "Dwaipayan Roy"
+        },
+        {
+            "authorId": "1698027",
+            "name": "Debasis Ganguly"
+        },
+        {
+            "authorId": "1798723",
+            "name": "Mandar Mitra"
+        },
+        {
+            "authorId": "143723939",
+            "name": "G. Jones"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "a29a2aa3ce86e770f8857824003e3fb055d87990",
+            "title": "Exploring Session Context using Distributed Representations of Queries and Reformulations"
+        },
+        {
+            "paperId": "1a08e135ac11db0249c6afb4540672c5a349495e",
+            "title": "Efficient Non-parametric Estimation of Multiple Embeddings per Word in Vector Space"
+        },
+        {
+            "paperId": "f3de86aeb442216a8391befcacb49e58b478f512",
+            "title": "Distributed Representations of Sentences and Documents"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "bc1022b031dc6c7019696492e8116598097a8c12",
+            "title": "Natural Language Processing (Almost) from Scratch"
+        },
+        {
+            "paperId": "19e8869f4c29353de0d9b52542c1fe9def4cbc7d",
+            "title": "Introduction to Information Retrieval"
+        },
+        {
+            "paperId": "78947497cbbffc691aac3f590d972130259af9ce",
+            "title": "Distance Metric Learning for Large Margin Nearest Neighbor Classification"
+        },
+        {
+            "paperId": "7d986dac610e20441adb9161e5466c88932626e9",
+            "title": "A study of smoothing methods for language models applied to information retrieval"
+        },
+        {
+            "paperId": "cd8fd3c8d280e1ba9b41de2e4822a54cd8e944c7",
+            "title": "Language models for information retrieval"
+        },
+        {
+            "paperId": "6c2b28f9354f667cd5bd07afc0471d8334430da7",
+            "title": "A Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "7f8cbf4453062af8d5c8cf1a94ff01867d122121",
+            "title": "Relevance-Based Language Models"
+        },
+        {
+            "paperId": "33151c9905102c47d431f59fc9a5a7667960507a",
+            "title": "A Language Modeling Approach to Information Retrieval"
+        },
+        {
+            "paperId": "ea67efe9866b245ea2b0bbb526239fbd7070f635",
+            "title": "An Introduction to Information Retrieval"
+        },
+        {
+            "paperId": "8afa1e7dbeb5f10d34a618731d0793ca4e617140",
+            "title": "UMass at TREC 2004: Novelty and HARD"
+        }
+    ]
+}

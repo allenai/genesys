@@ -1,0 +1,258 @@
+{
+    "paperId": "e457aabc35b6a7bd07ea8efc2d9d2700ff27c2ee",
+    "externalIds": {
+        "ArXiv": "1601.04187",
+        "DBLP": "journals/corr/DiehlZCPN16",
+        "MAG": "2950552133",
+        "DOI": "10.1109/ICRC.2016.7738691",
+        "CorpusId": 9621839
+    },
+    "title": "Conversion of artificial recurrent neural networks to spiking neural networks for low-power neuromorphic hardware",
+    "abstract": "In recent years the field of neuromorphic low-power systems gained significant momentum, spurring brain-inspired hardware systems which operate on principles that are fundamentally different from standard digital computers and thereby consume orders of magnitude less power. However, their wider use is still hindered by the lack of algorithms that can harness the strengths of such architectures. While neuromorphic adaptations of representation learning algorithms are now emerging, the efficient processing of temporal sequences or variable length-inputs remains difficult, partly due to challenges in representing and configuring the dynamics of spiking neural networks. Recurrent neural networks (RNN) are widely used in machine learning to solve a variety of sequence learning tasks. In this work we present a train-and-constrain methodology that enables the mapping of machine learned (Elman) RNNs on a substrate of spiking neurons, while being compatible with the capabilities of current and near-future neuromorphic systems. This \u201ctrain-and-constrain\u201d method consists of first training RNNs using backpropagation through time, then discretizing the weights and finally converting them to spiking RNNs by matching the responses of artificial neurons with those of the spiking neurons. We demonstrate our approach by mapping a natural language processing task (question classification), where we demonstrate the entire mapping process of the recurrent layer of the network on IBM's Neurosynaptic System TrueNorth, a spike-based digital neuromorphic hardware architecture. TrueNorth imposes specific constraints on connectivity, neural and synaptic parameters. To satisfy these constraints, it was necessary to discretize the synaptic weights to 16 levels, discretize the neural activities to 16 levels, and to limit fan-in to 64 inputs. Surprisingly, we find that short synaptic delays are sufficient to implement the dynamic (temporal) aspect of the RNN in the question classification task. Furthermore we observed that the discretization of the neural activities is beneficial to our train-and-constrain approach. The hardware-constrained model achieved 74% accuracy in question classification while using less than 0.025% of the cores on one TrueNorth chip, resulting in an estimated power consumption of \u2248 17\u03bcW.",
+    "venue": "International Conference on Rebooting Computing",
+    "year": 2016,
+    "referenceCount": 52,
+    "citationCount": 209,
+    "influentialCitationCount": 11,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1601.04187",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Surprisingly, it is found that short synaptic delays are sufficient to implement the dynamic (temporal) aspect of the RNN in the question classification task and the discretization of the neural activities is beneficial to the train-and-constrain approach."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "49243884",
+            "name": "P. U. Diehl"
+        },
+        {
+            "authorId": "2983465",
+            "name": "Guido Zarrella"
+        },
+        {
+            "authorId": "34019307",
+            "name": "A. Cassidy"
+        },
+        {
+            "authorId": "1986004",
+            "name": "Bruno U. Pedroni"
+        },
+        {
+            "authorId": "1734355",
+            "name": "E. Neftci"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "29316449c7cc52ad326c5d1bd5b0dc5af27c1496",
+            "title": "Convolutional networks for fast, energy-efficient neuromorphic computing"
+        },
+        {
+            "paperId": "04105898efe96c7f2d876e6bcb9e19afd3e23635",
+            "title": "Backpropagation for Energy-Efficient Neuromorphic Computing"
+        },
+        {
+            "paperId": "891ce1687e2befddd19f54e4eef1d3f39c8dbaf7",
+            "title": "Character-Aware Neural Language Models"
+        },
+        {
+            "paperId": "713d600bc941cb0625873f946a4b2a7fbe25ed4c",
+            "title": "Unsupervised learning of digit recognition using spike-timing-dependent plasticity"
+        },
+        {
+            "paperId": "cc14a56eb0361261f9294646a727dc853813c532",
+            "title": "Word Embedding Revisited: A New Representation Learning and Explicit Matrix Factorization Perspective"
+        },
+        {
+            "paperId": "1cb3a0ff57de3199fe7029db7a1b8bac310fa5f8",
+            "title": "Fast-classifying, high-accuracy spiking deep networks through weight and threshold balancing"
+        },
+        {
+            "paperId": "8a872b185d9c8b9550c0a40e78a5031b55e46fd0",
+            "title": "Robustness of spiking Deep Belief Networks to noise and reduced bit precision of neuro-inspired hardware platforms"
+        },
+        {
+            "paperId": "d0edfd4cafaa66722f2b653d92682a3576f1bb72",
+            "title": "MITRE: Seven Systems for Semantic Similarity in Tweets"
+        },
+        {
+            "paperId": "07e89af6769c4ed9c77dcaf034c8c458b76e8294",
+            "title": "Spiking Deep Convolutional Neural Networks for Energy-Efficient Object Recognition"
+        },
+        {
+            "paperId": "d97a83af0bcab8bb17f6ef137eb08bf17b7f3677",
+            "title": "Rounding Methods for Neural Networks with Low Resolution Synaptic Weights"
+        },
+        {
+            "paperId": "d46b81707786d18499f911b4ab72bb10c65406ba",
+            "title": "A Simple Way to Initialize Recurrent Networks of Rectified Linear Units"
+        },
+        {
+            "paperId": "9665247ea3421929f9b6ad721f139f11edb1dbb8",
+            "title": "Learning Longer Memory in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "f4c018bcc8ea707b83247866bdc8ccb87cd9f5da",
+            "title": "Neural Word Embedding as Implicit Matrix Factorization"
+        },
+        {
+            "paperId": "d4dc1012d780e8e2547237eb5a6dc7b1bf47d2f0",
+            "title": "Show and tell: A neural image caption generator"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "1f6ba0782862ec12a5ec6d7fb608523d55b0c6ba",
+            "title": "Convolutional Neural Networks for Sentence Classification"
+        },
+        {
+            "paperId": "680a38e8f025685b192e9e0cf755c6b664963551",
+            "title": "A million spiking-neuron integrated circuit with a scalable communication network and interface"
+        },
+        {
+            "paperId": "8a756d4d25511d92a45d0f4545fa819de993851d",
+            "title": "Recurrent Models of Visual Attention"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "193edd20cae92c6759c18ce93eeea96afd9528eb",
+            "title": "Deep learning in neural networks: An overview"
+        },
+        {
+            "paperId": "336d333bcd1feb6d14f13a478534c808bf7e7e53",
+            "title": "Neurogrid: A Mixed-Analog-Digital Multichip System for Large-Scale Neural Simulations"
+        },
+        {
+            "paperId": "27725a2d2a8cee9bf9fffc6c2167017103aba0fa",
+            "title": "A Convolutional Neural Network for Modelling Sentences"
+        },
+        {
+            "paperId": "34f92f00783b670a41d988297b860a819b7991e0",
+            "title": "STDP Installs in Winner-Take-All Circuits an Online Approximation to Hidden Markov Model Learning"
+        },
+        {
+            "paperId": "94d0a3f76eb60e8cb2de01816e723c33f3696218",
+            "title": "Minitaur, an Event-Driven FPGA-Based Spiking Network Accelerator"
+        },
+        {
+            "paperId": "1109b663453e78a59e4f66446d71720ac58cec25",
+            "title": "OverFeat: Integrated Recognition, Localization and Detection using Convolutional Networks"
+        },
+        {
+            "paperId": "b8c2db40ec53dc2e146c9acf539eff2187dc3907",
+            "title": "Delay learning architectures for memory and classification"
+        },
+        {
+            "paperId": "136aae33d1873c6c3727285e7672c9321123829c",
+            "title": "Stochastic Computations in Cortical Microcircuit Models"
+        },
+        {
+            "paperId": "2bd03095d13a09f6a5e0d01e53137eb340bb55c3",
+            "title": "Cognitive computing building block: A versatile and efficient digital neuron model for neurosynaptic cores"
+        },
+        {
+            "paperId": "64da1980714cfc130632c5b92b9d98c2f6763de6",
+            "title": "On rectified linear units for speech processing"
+        },
+        {
+            "paperId": "eb9243a3b98a819539ad57b7b4f05b969510d075",
+            "title": "New types of deep neural network learning for speech recognition and related applications: an overview"
+        },
+        {
+            "paperId": "4177ec52d1b80ed57f2e72b0f9a42365f1a8598d",
+            "title": "Speech recognition with deep recurrent neural networks"
+        },
+        {
+            "paperId": "f6b51c8753a871dc94ff32152c00c01e94f90f09",
+            "title": "Efficient Estimation of Word Representations in Vector Space"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "d1275b2a2ab53013310e759e5c6878b96df643d4",
+            "title": "Context dependent recurrent neural network language model"
+        },
+        {
+            "paperId": "b98cd08b75ebf2bd1d1ec47c51ef75777a7e64bd",
+            "title": "Deep, Big, Simple Neural Nets for Handwritten Digit Recognition"
+        },
+        {
+            "paperId": "94a9af119df61f501980cf095700f35c2a7762a3",
+            "title": "Question Classification using Head Words and their Hypernyms"
+        },
+        {
+            "paperId": "fa6509ebe8c0264da3ce7e1c5794100d25ff1997",
+            "title": "SpiNNaker: Mapping neural networks onto a massively-parallel chip multiprocessor"
+        },
+        {
+            "paperId": "926bd98d8e0f1a8751e4f55c93d2151fa809e5b6",
+            "title": "Enhanced Answer Type Inference from Questions using Sequential Models"
+        },
+        {
+            "paperId": "2c8ac3e1f0edeed1fbd76813e61efdc384c319c7",
+            "title": "Learning Question Classifiers"
+        },
+        {
+            "paperId": "6d2ce28248bb8c570f4459197e6e382457b2dd9b",
+            "title": "Temporally Asymmetric Hebbian Learning, Spike liming and Neural Response Variability"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "1a3d22599028a05669e884f3eaf19a342e190a87",
+            "title": "Backpropagation Through Time: What It Does and How to Do It"
+        },
+        {
+            "paperId": "668087f0ae7ce1de6e0bd0965dbb480c08103260",
+            "title": "Finding Structure in Time"
+        },
+        {
+            "paperId": null,
+            "title": "Truehappiness: Sentiment analysis on truenorth"
+        },
+        {
+            "paperId": null,
+            "title": "UNESCO Encyclopedia of Life Support Systems"
+        },
+        {
+            "paperId": "e27d81521dc4e8b6ea93947c05ffccf06784f569",
+            "title": "Audio Chord Recognition with Recurrent Neural Networks"
+        },
+        {
+            "paperId": null,
+            "title": "Restricted boltzmann machines and continuous-time contrastive divergence in spiking neuromorphic systems"
+        },
+        {
+            "paperId": null,
+            "title": "Theano: a CPU and GPU math expression compiler"
+        },
+        {
+            "paperId": "fcb912ee570d70f7d052dca7e753036f509cfca4",
+            "title": "A VLSI array of low-power spiking neurons and bistable synapses with spike-timing dependent plasticity"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "ebe6859ace06f9fde4edcb46e1c1612c7dd026e1",
+            "title": "Excitatory and inhibitory interactions in localized populations of model neurons."
+        },
+        {
+            "paperId": null,
+            "title": "Adaptive Relational Networks BUP: The Office of Naval Research (ONR MURI 14-13-1-0205) and CNPQ Brazil"
+        }
+    ]
+}

@@ -1,0 +1,108 @@
+{
+    "paperId": "cfa3cb6b21410352a9aacb991cb0bd7e7d6a4ec0",
+    "externalIds": {
+        "MAG": "2084924279",
+        "DOI": "10.1063/1.1378322",
+        "CorpusId": 5109777
+    },
+    "title": "Approximate accelerated stochastic simulation of chemically reacting systems",
+    "abstract": "The stochastic simulation algorithm (SSA) is an essentially exact procedure for numerically simulating the time evolution of a well-stirred chemically reacting system. Despite recent major improvements in the efficiency of the SSA, its drawback remains the great amount of computer time that is often required to simulate a desired amount of system time. Presented here is the \u201c\u03c4-leap\u201d method, an approximate procedure that in some circumstances can produce significant gains in simulation speed with acceptable losses in accuracy. Some primitive strategies for control parameter selection and error mitigation for the \u03c4-leap method are described, and simulation results for two simple model systems are exhibited. With further refinement, the \u03c4-leap method should provide a viable way of segueing from the exact SSA to the approximate chemical Langevin equation, and thence to the conventional deterministic reaction rate equation, as the system size becomes larger.",
+    "venue": "",
+    "year": 2001,
+    "referenceCount": 19,
+    "citationCount": 1898,
+    "influentialCitationCount": 163,
+    "openAccessPdf": {
+        "url": "https://zenodo.org/record/1231854/files/article.pdf",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "With further refinement, the \u03c4-leap method should provide a viable way of segueing from the exact SSA to the approximate chemical Langevin equation, and thence to the conventional deterministic reaction rate equation, as the system size becomes larger."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "92053822",
+            "name": "D. Gillespie"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "6382079d37c5361f3827c2022621f1c06af0bf88",
+            "title": "Modelling cellular behaviour"
+        },
+        {
+            "paperId": "619ee8d9850784b3068649335f4372cef736013b",
+            "title": "The chemical Langevin equation"
+        },
+        {
+            "paperId": "93f4c2c3d20dd740e1259c27b11cf2214a2bd267",
+            "title": "Efficient Exact Stochastic Simulation of Chemical Systems with Many Species and Many Channels"
+        },
+        {
+            "paperId": "d94293e17e4d814ac3e9df8091e19d88b82bbc0b",
+            "title": "Stochastic kinetic analysis of developmental pathway bifurcation in phage lambda-infected Escherichia coli cells."
+        },
+        {
+            "paperId": "36daf4b13f4a0e556cc3ea98b91ea515a9d5e59b",
+            "title": "Efficient Monte Carlo methods for the simulation of catalytic surface reactions"
+        },
+        {
+            "paperId": "eaa4a354fc3c7e5b0503f1bfd1b55b49d04f8a24",
+            "title": "Stochastic mechanisms in gene expression."
+        },
+        {
+            "paperId": "a65d32fae8acc20c7ddbf0fe652e42ef99ea0354",
+            "title": "A rigorous derivation of the chemical master equation"
+        },
+        {
+            "paperId": "e51502411932a573462fe90b4f82676fa95b8147",
+            "title": "Markov Processes: An Introduction for Physical Scientists"
+        },
+        {
+            "paperId": "493cd5e15d6b8726ce27ed0595f1993c27525670",
+            "title": "Numerical recipes"
+        },
+        {
+            "paperId": "74974454d1e1805de5e890bc38b36baed2b4ec19",
+            "title": "Exact Stochastic Simulation of Coupled Chemical Reactions"
+        },
+        {
+            "paperId": "54832f5f4a629a115ad0069c62222973b3568eac",
+            "title": "A General Method for Numerically Simulating the Stochastic Time Evolution of Coupled Chemical Reactions"
+        },
+        {
+            "paperId": "a120cd621f1527e3a930223e56e237f4ff5dd338",
+            "title": "Stochastic approach to chemical kinetics"
+        },
+        {
+            "paperId": null,
+            "title": "J. Chem. Phys. Simulation"
+        },
+        {
+            "paperId": "16b4fd36ff5ca603fed13a326054cd0373ea442c",
+            "title": "Numerical Recipes: The Art of Scientific Computing"
+        },
+        {
+            "paperId": null,
+            "title": "J. Appl. Probab"
+        },
+        {
+            "paperId": null,
+            "title": "Redistribution subject to AIP license or copyright"
+        },
+        {
+            "paperId": null,
+            "title": "Nature"
+        },
+        {
+            "paperId": null,
+            "title": "J. Comput. Phys"
+        },
+        {
+            "paperId": null,
+            "title": "J. Phys. Chem. A"
+        }
+    ]
+}

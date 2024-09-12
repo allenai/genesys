@@ -1,0 +1,202 @@
+{
+    "paperId": "289fb3709475f5c87df8d97f129af54029d27fee",
+    "externalIds": {
+        "MAG": "2963223524",
+        "DBLP": "conf/iclr/HudsonM18",
+        "ArXiv": "1803.03067",
+        "CorpusId": 3728944
+    },
+    "title": "Compositional Attention Networks for Machine Reasoning",
+    "abstract": "We present the MAC network, a novel fully differentiable neural network architecture, designed to facilitate explicit and expressive reasoning. MAC moves away from monolithic black-box neural architectures towards a design that encourages both transparency and versatility. The model approaches problems by decomposing them into a series of attention-based reasoning steps, each performed by a novel recurrent Memory, Attention, and Composition (MAC) cell that maintains a separation between control and memory. By stringing the cells together and imposing structural constraints that regulate their interaction, MAC effectively learns to perform iterative reasoning processes that are directly inferred from the data in an end-to-end approach. We demonstrate the model's strength, robustness and interpretability on the challenging CLEVR dataset for visual reasoning, achieving a new state-of-the-art 98.9% accuracy, halving the error rate of the previous best model. More importantly, we show that the model is computationally-efficient and data-efficient, in particular requiring 5x less data than existing models to achieve strong results.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2018,
+    "referenceCount": 42,
+    "citationCount": 544,
+    "influentialCitationCount": 84,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The MAC network is presented, a novel fully differentiable neural network architecture, designed to facilitate explicit and expressive reasoning that is computationally-efficient and data-efficient, in particular requiring 5x less data than existing models to achieve strong results."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "152951058",
+            "name": "Drew A. Hudson"
+        },
+        {
+            "authorId": "144783904",
+            "name": "Christopher D. Manning"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "83040001210751239553269727b9ea53e152af71",
+            "title": "Building Machines that Learn and Think Like People"
+        },
+        {
+            "paperId": "7cfa5c97164129ce3630511f639040d28db1d4b7",
+            "title": "FiLM: Visual Reasoning with a General Conditioning Layer"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "007112213ece771be72cbecfd59f048209facabd",
+            "title": "A simple neural network module for relational reasoning"
+        },
+        {
+            "paperId": "637648198f9e91654ce27eaaa40512f2dc870fc1",
+            "title": "Survey of Visual Question Answering: Datasets and Techniques"
+        },
+        {
+            "paperId": "2e17cf6a339fd071ad222062f868e882ef4120a4",
+            "title": "Inferring and Executing Programs for Visual Reasoning"
+        },
+        {
+            "paperId": "a396a6febdacb84340d139096455e67049ac1e22",
+            "title": "Learning to Reason: End-to-End Module Networks for Visual Question Answering"
+        },
+        {
+            "paperId": "03eb382e04cca8cca743f7799070869954f1402a",
+            "title": "CLEVR: A Diagnostic Dataset for Compositional Language and Elementary Visual Reasoning"
+        },
+        {
+            "paperId": "784ee73d5363c711118f784428d1ab89f019daa5",
+            "title": "Hybrid computing using a neural network with dynamic external memory"
+        },
+        {
+            "paperId": "376f23cce537235122fdce5524d084e3a869c403",
+            "title": "Towards Deep Symbolic Reinforcement Learning"
+        },
+        {
+            "paperId": "97fb4e3d45bb098e27e0071448b6152217bd35a5",
+            "title": "Layer Normalization"
+        },
+        {
+            "paperId": "bba5f2852b1db8a18004eb7328efa5e1d57cc62a",
+            "title": "Key-Value Memory Networks for Directly Reading Documents"
+        },
+        {
+            "paperId": "8e759195eb4b4f0f480a8a2cf1c629bfd881d4e5",
+            "title": "Analyzing the Behavior of Visual Question Answering Models"
+        },
+        {
+            "paperId": "fb9d253258d6b3beceb9d6cd7bba6e0a29ab875b",
+            "title": "Hierarchical Question-Image Co-Attention for Visual Question Answering"
+        },
+        {
+            "paperId": "e39ea61d4751fa3447041ad0706e32e88be15e9d",
+            "title": "Counting Everyday Objects in Everyday Scenes"
+        },
+        {
+            "paperId": "f96898d15a1bf1fa8925b1280d0e07a7a8e72194",
+            "title": "Dynamic Memory Networks for Visual and Textual Question Answering"
+        },
+        {
+            "paperId": "98ea4abc9bf0e30eb020db2075c9c8a039a848a3",
+            "title": "Learning to Compose Neural Networks for Question Answering"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "f63e917638553414526a0cc8550de4ad2d83fe7a",
+            "title": "Fast and Accurate Deep Network Learning by Exponential Linear Units (ELUs)"
+        },
+        {
+            "paperId": "21c99706bb26e9012bfb4d8d48009a3d45af59b2",
+            "title": "Neural Module Networks"
+        },
+        {
+            "paperId": "2c1890864c1c2b750f48316dc8b650ba4772adc5",
+            "title": "Stacked Attention Networks for Image Question Answering"
+        },
+        {
+            "paperId": "452059171226626718eb677358836328f884298e",
+            "title": "Ask Me Anything: Dynamic Memory Networks for Natural Language Processing"
+        },
+        {
+            "paperId": "97ad70a9fa3f99adf18030e5e38ebe3d90daa2db",
+            "title": "VQA: Visual Question Answering"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "15b18f9dc8cc65a638f15ddcef17a79a07b2faac",
+            "title": "A Simple Method to Determine if a Music Information Retrieval System is a \u201cHorse\u201d"
+        },
+        {
+            "paperId": "1149888d75af4ed5dffc25731b875651c3ccdeb2",
+            "title": "Hybrid speech recognition with Deep Bidirectional LSTM"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "ab4850b6151ca9a9337dbba94115bde342876d50",
+            "title": "From machine learning to machine reasoning"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": null,
+            "title": "Finally, our approach has potential ties to the VQA models Hu et al"
+        },
+        {
+            "paperId": null,
+            "title": "xh,w represents one region"
+        },
+        {
+            "paperId": null,
+            "title": "Alternative approaches for the CLEVR task that do not rely on the provided programs as a strong supervision signal are Santoro et al"
+        },
+        {
+            "paperId": null,
+            "title": "2017) proposes a model for visual reasoning that interleaves standard CNN layers with linear layers, reminiscent of layer normalization techniques (Ba et al., 2016"
+        },
+        {
+            "paperId": null,
+            "title": "In our case, we use GloVE words embeddings (Pennington et al., 2014). Then, these embeddings are processed by a bidirectional LSTM of dimension d that outputs"
+        },
+        {
+            "paperId": null,
+            "title": "This confers our network with a virtual capacity to represent arbi"
+        },
+        {
+            "paperId": null,
+            "title": "MEMORY AND ATTENTION Our architecture draws inspiration from recent research on memory and attention (Kumar et al., 2016"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        }
+    ]
+}

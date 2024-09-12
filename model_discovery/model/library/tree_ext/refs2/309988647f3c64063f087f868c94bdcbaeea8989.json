@@ -1,0 +1,250 @@
+{
+    "paperId": "309988647f3c64063f087f868c94bdcbaeea8989",
+    "externalIds": {
+        "MAG": "2932524182",
+        "PubMedCentral": "6460014",
+        "DOI": "10.3389/fgene.2019.00286",
+        "CorpusId": 96433136,
+        "PubMed": "31024615"
+    },
+    "title": "DeePromoter: Robust Promoter Predictor Using Deep Learning",
+    "abstract": "The promoter region is located near the transcription start sites and regulates transcription initiation of the gene by controlling the binding of RNA polymerase. Thus, promoter region recognition is an important area of interest in the field of bioinformatics. Numerous tools for promoter prediction were proposed. However, the reliability of these tools still needs to be improved. In this work, we propose a robust deep learning model, called DeePromoter, to analyze the characteristics of the short eukaryotic promoter sequences, and accurately recognize the human and mouse promoter sequences. DeePromoter combines a convolutional neural network (CNN) and a long short-term memory (LSTM). Additionally, instead of using non-promoter regions of the genome as a negative set, we derive a more challenging negative set from the promoter sequences. The proposed negative set reconstruction method improves the discrimination ability and significantly reduces the number of false positive predictions. Consequently, DeePromoter outperforms the previously proposed promoter prediction tools. In addition, a web-server for promoter prediction is developed based on the proposed methods and made available at https://home.jbnu.ac.kr/NSCL/deepromoter.htm.",
+    "venue": "Frontiers in Genetics",
+    "year": 2019,
+    "referenceCount": 51,
+    "citationCount": 122,
+    "influentialCitationCount": 8,
+    "openAccessPdf": {
+        "url": "https://www.frontiersin.org/articles/10.3389/fgene.2019.00286/pdf",
+        "status": "GOLD"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A robust deep learning model is proposed, called DeePromoter, to analyze the characteristics of the short eukaryotic promoter sequences, and accurately recognize the human and mouse promoter sequences and derives a more challenging negative set from the promoter sequences."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "51894989",
+            "name": "Mhaned Oubounyt"
+        },
+        {
+            "authorId": "51940461",
+            "name": "Z. Louadi"
+        },
+        {
+            "authorId": "8652102",
+            "name": "Hilal Tayara"
+        },
+        {
+            "authorId": "1968184",
+            "name": "K. Chong"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "83ae621808798a052cf46a595bc35cd4eea041f0",
+            "title": "iPSW(2L)-PseKNC: A two-layer predictor for identifying promoters and their strength by hybrid features via pseudo K-tuple nucleotide composition."
+        },
+        {
+            "paperId": "f907492d7ea9fb1a78cc32bd2de192993249dce3",
+            "title": "Identifying Sigma70 Promoters with Novel Pseudo Nucleotide Composition"
+        },
+        {
+            "paperId": "7bb6565eb5df0d43ff4f9638265055fd968a59d4",
+            "title": "iRNA-PseKNC(2methyl): Identify RNA 2'-O-methylation sites by convolution neural network and Chou's pseudo components."
+        },
+        {
+            "paperId": "89d223476d6ab92173423f54f595003e804fd941",
+            "title": "Promoter analysis and prediction in the human genome using sequence-based deep learning models"
+        },
+        {
+            "paperId": "81b166898e83eb7ae127bc99e45bcf889069088b",
+            "title": "Deep Learning Models Based on Distributed Feature Representations for Alternative Splicing Prediction"
+        },
+        {
+            "paperId": "961ef273fb746ec5f7964ccfa2565d8361840f85",
+            "title": "An Improved Promoter Recognition Model Using Convolutional Neural Network"
+        },
+        {
+            "paperId": "77cec64cdf0581ff4e7b70aa595a4d6e39b70ce4",
+            "title": "Keras: The Python Deep Learning library"
+        },
+        {
+            "paperId": "ed04bfe3ac3aa8a0a85a3f01433dcb56d104aa7a",
+            "title": "PromoterPredict: sequence-based modelling of Escherichia coli \u03c370 promoter strength yields logarithmic dependence between promoter strength and sequence"
+        },
+        {
+            "paperId": "de11ef44f5ae6323dab6392906520966e684d58d",
+            "title": "Prediction of human protein subcellular localization using deep learning"
+        },
+        {
+            "paperId": "942e1b9a15c4271fe3fde3151f839e8fc07ebcc7",
+            "title": "Exploiting sequence-based features for predicting enhancer\u2013promoter interactions"
+        },
+        {
+            "paperId": "3f7ff48661979438d99c94aa8c3090ee1855f41d",
+            "title": "Recognition of prokaryotic and eukaryotic promoters using convolutional deep learning neural networks"
+        },
+        {
+            "paperId": "837566abb925a33b33544965bbe8d9bb710af7d6",
+            "title": "DeepCpG: accurate prediction of single-cell DNA methylation states using deep learning"
+        },
+        {
+            "paperId": "058c7d1b2952dd16edee24caf51a8dda5fa40aa7",
+            "title": "Core promoter-specific gene regulation: TATA box selectivity and Initiator-dependent bi-directionality of serum response factor-activated transcription."
+        },
+        {
+            "paperId": "98b2df80e7850ab71933a278eec5504c7d04e1d3",
+            "title": "DanQ: a hybrid convolutional and recurrent deep neural network for quantifying the function of DNA sequences"
+        },
+        {
+            "paperId": "42d3ae61ca296558cba61446bd95b8a6e5b1082d",
+            "title": "Predicting the sequence specificities of DNA- and RNA-binding proteins by deep learning"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "193edd20cae92c6759c18ce93eeea96afd9528eb",
+            "title": "Deep learning in neural networks: An overview"
+        },
+        {
+            "paperId": "0fb1a82419e549219590d941cff4f565b123d629",
+            "title": "Improved and promising identification of human MicroRNAs by incorporating a high-quality negative set"
+        },
+        {
+            "paperId": "5c1abae5db0405f1727ce12a634be2de4a5783bc",
+            "title": "What is next generation sequencing?"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "95f2dfedbfcd27b33bd62bb273bd5d0235483b35",
+            "title": "EPD and EPDnew, high-quality promoter resources in the next-generation sequencing era"
+        },
+        {
+            "paperId": "67107f78a84bdb2411053cb54e94fa226eea6d8e",
+            "title": "Deep Sparse Rectifier Neural Networks"
+        },
+        {
+            "paperId": "1b9c146da87d0f487b0e91ccc8b01ab955ff6476",
+            "title": "The impact of next-generation sequencing on genomics."
+        },
+        {
+            "paperId": "413a0fac465e55798e13973af0a2554d9345bf13",
+            "title": "The RNA polymerase II core promoter - the gateway to transcription."
+        },
+        {
+            "paperId": "f1fd6e19b2425b2ec77f3e5e6678ce3525f931c7",
+            "title": "Prevalence of the initiator over the TATA box in human and yeast genes and identification of DNA motifs enriched in human TATA-less core promoters."
+        },
+        {
+            "paperId": "f4a1867c6786f55978d6383925626ad66ba944b7",
+            "title": "Frequency distribution of TATA Box and extension sequences on human promoters"
+        },
+        {
+            "paperId": "c089f1508138ee4b218e00d55181f84c727c2705",
+            "title": "A novel method for prokaryotic promoter prediction based on DNA stability"
+        },
+        {
+            "paperId": "6e2a4064baa44902924f1e9243a1ddc931aa8359",
+            "title": "Evaluation of Myc E-Box Phylogenetic Footprints in Glycolytic Genes by Chromatin Immunoprecipitation Assays"
+        },
+        {
+            "paperId": "6a3da4ce0e3b3b627d9bc6963a840ef31ec113e8",
+            "title": "The RNA polymerase II core promoter."
+        },
+        {
+            "paperId": "9fa2fb39ab02273592c8407d6e09cc73e847e079",
+            "title": "CpGProD: identifying CpG islands associated with transcription start sites in large genomic mammalian sequences"
+        },
+        {
+            "paperId": "be6aac2a13041c08a74ce81f36317bad64e8036d",
+            "title": "Computational detection and location of transcription start sites in mammalian genomic DNA."
+        },
+        {
+            "paperId": "f6faf249f6cef5248ab791475e6b3c6b5a508610",
+            "title": "Application of a Time-delay Neural Network to Promoter Annotation in the Drosophila Melanogaster Genome"
+        },
+        {
+            "paperId": "87b98f8c11092d40650c96487c432c327d701f22",
+            "title": "Computational identification of promoters and first exons in the human genome"
+        },
+        {
+            "paperId": "5179d4af95ce791a843cfeddac3e039a5d5f4425",
+            "title": "Large-scale human promoter mapping using CpG islands"
+        },
+        {
+            "paperId": "8a9bc24433f82107b4b91f745e274711fa633112",
+            "title": "Highly specific localization of promoter regions in large genomic sequences by PromoterInspector: a novel context analysis approach."
+        },
+        {
+            "paperId": "689a3c725feb8a34eeef2106769c9363b547c5d7",
+            "title": "Promoter2.0: for the recognition of PolII promoter sequences"
+        },
+        {
+            "paperId": "b078669060b51e9018ddf2812111d17f82aced52",
+            "title": "Interpolated markov chains for eukaryotic promoter recognition"
+        },
+        {
+            "paperId": "8de9a5a961f9c9a1542894384b85e5dca5bef058",
+            "title": "A microdeletion of D6S305 in a family of autosomal recessive juvenile parkinsonism (PARK2)."
+        },
+        {
+            "paperId": "e23c34414e66118ecd9b08cf0cd4d016f59b0b85",
+            "title": "Bidirectional recurrent neural networks"
+        },
+        {
+            "paperId": "b91a888d9be979a2d3b388fcc70011a9b51083c0",
+            "title": "The prediction of vertebrate promoter regions using differential hexamer frequency analysis"
+        },
+        {
+            "paperId": "29b67086f67192d36b36945231895a671c62c5cc",
+            "title": "Predicting Pol II promoter sequences using transcription factor binding sites."
+        },
+        {
+            "paperId": "aa8cc0328f34bff18a69e14596175b51ffeab9ac",
+            "title": "Branch Point Selection in RNA Splicing Using Deep Learning"
+        },
+        {
+            "paperId": "4f8d648c52edf74e41b0996128aa536e13cc7e82",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": "01ba22fef18e555fd75fb7778220546857e8ea2c",
+            "title": "Improved and Promising Identification of Human MicroRNAs by Incorporating a High-Quality Negative Set"
+        },
+        {
+            "paperId": "5d0b68cb479fbea4a62d9241761dde4a8a4ecc38",
+            "title": "A rapid micro chromatin immunoprecipitation assay (ChIP)"
+        },
+        {
+            "paperId": null,
+            "title": "Molecular Biology of the Gene (San Francisco, CA:)"
+        },
+        {
+            "paperId": "040e3692c4855e5d2e41cacf7aeaa36c00c11570",
+            "title": "Initial sequencing and analysis of the human genome"
+        },
+        {
+            "paperId": "a6cc094962a5a4afc85ed96a26975c05d3dc01a4",
+            "title": "A microdeletion of D6S305 in a family of autosomal recessive juvenile parkinsonism (PARK2)"
+        },
+        {
+            "paperId": "374845097385ea67efcf7b9c07357803e65e608e",
+            "title": "The Eukaryotic Promoter Database EPD"
+        },
+        {
+            "paperId": null,
+            "title": "DeePromoter"
+        }
+    ]
+}

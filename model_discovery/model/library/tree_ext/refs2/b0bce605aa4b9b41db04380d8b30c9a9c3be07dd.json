@@ -1,0 +1,58 @@
+{
+    "paperId": "b0bce605aa4b9b41db04380d8b30c9a9c3be07dd",
+    "externalIds": {
+        "MAG": "2157440724",
+        "DOI": "10.1109/TASSP.1983.1164043",
+        "CorpusId": 121979832
+    },
+    "title": "On the approximation of FIR by IIR digital filters",
+    "abstract": "Kaiser's empirical formula for finite impulse response (FIR) digital filter length, as a function of transition width and rejection band loss (together with the I_{0}-\\sinh window function), provides a simple FIR filter design algorithm. Recent developments in time series analysis provide a theoretical procedure for selecting the numerator and denominator orders of an infinite impulse response (IIR) digital filter whose frequency domain amplitude response is equivalent to that of a given FIR filter. In practice, this procedure has unfailingly indicated the correct denominator order, but has frequently selected a numerator order which produced a poor approximation to the desired frequency domain amplitude characteristics. Part of the problem has been due to the lack of a reasonable estimate of the quality of the approximation, and part has been due to a poor understanding of what the observed order selection criteria mean in an approximation setting. By relating the order selection algorithm to traditional methods for solving the linear predictive coding equations, this paper resolves both obstacles to minimal order approximation of FIR filters by IIR filters. As an added benefit, the relational analysis has the potential to provide an automated procedure for simultaneous order selection and IIR filter design and approximation.",
+    "venue": "",
+    "year": 1983,
+    "referenceCount": 8,
+    "citationCount": 14,
+    "influentialCitationCount": 0,
+    "openAccessPdf": null,
+    "tldr": null,
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "102385124",
+            "name": "J. Bednar"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "8afd176c7b0721e9157f99e6abdf7ca6cf458168",
+            "title": "An exact recursion for the composite nearest\u2010neighbor degeneracy for a 2\u00d7N lattice space"
+        },
+        {
+            "paperId": "4bb23ef819e460f891fa4ed2a94514202ce812bf",
+            "title": "Order selection for and design of IIR filters"
+        },
+        {
+            "paperId": "1026ef3087dce7d397b4c78314757a6c4721ffee",
+            "title": "Data smoothing using low\u2010pass digital filters"
+        },
+        {
+            "paperId": "d27fa9396686b1ea93773321cc65b830487be01f",
+            "title": "An Algorithm for the Computation of the Higher Order G-Transformation"
+        },
+        {
+            "paperId": "5d5ad4a13150321bca3d95f45d4ae2e160aa778c",
+            "title": "An Algorithm for the Inversion of Finite Toeplitz Matrices"
+        },
+        {
+            "paperId": "d528efe29ca581ed63b0d3191dcdabe830ebd7a8",
+            "title": "The Wiener (Root Mean Square) Error Criterion in Filter Design and Prediction"
+        },
+        {
+            "paperId": "162088ac2902f1bff975e85898877fe25fcca42c",
+            "title": "A New Approach to ARMA Modeling."
+        },
+        {
+            "paperId": "33d25522918cef1cdde9a04ffc61200c3e1f7089",
+            "title": "The fitting of time series models"
+        }
+    ]
+}

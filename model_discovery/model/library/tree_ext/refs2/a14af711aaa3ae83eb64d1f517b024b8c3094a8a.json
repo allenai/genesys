@@ -1,0 +1,278 @@
+{
+    "paperId": "a14af711aaa3ae83eb64d1f517b024b8c3094a8a",
+    "externalIds": {
+        "MAG": "2896528354",
+        "DBLP": "conf/iclr/BaiKK19",
+        "ArXiv": "1810.06682",
+        "CorpusId": 53111329
+    },
+    "title": "Trellis Networks for Sequence Modeling",
+    "abstract": "We present trellis networks, a new architecture for sequence modeling. On the one hand, a trellis network is a temporal convolutional network with special structure, characterized by weight tying across depth and direct injection of the input into deep layers. On the other hand, we show that truncated recurrent networks are equivalent to trellis networks with special sparsity structure in their weight matrices. Thus trellis networks with general weight matrices generalize truncated recurrent networks. We leverage these connections to design high-performing trellis networks that absorb structural and algorithmic elements from both recurrent and convolutional models. Experiments demonstrate that trellis networks outperform the current state of the art methods on a variety of challenging benchmarks, including word-level language modeling and character-level language modeling tasks, and stress tests designed to evaluate long-term memory retention. The code is available at this https URL .",
+    "venue": "International Conference on Learning Representations",
+    "year": 2018,
+    "referenceCount": 59,
+    "citationCount": 138,
+    "influentialCitationCount": 25,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Trellis networks are presented, a new architecture for sequence modeling that outperform the current state of the art methods on a variety of challenging benchmarks, including word-level language modeling and character- level language modeling tasks, and stress tests designed to evaluate long-term memory retention."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2264232133",
+            "name": "Sequence Modeling"
+        },
+        {
+            "authorId": "35836381",
+            "name": "Shaojie Bai"
+        },
+        {
+            "authorId": "145116464",
+            "name": "J. Z. Kolter"
+        },
+        {
+            "authorId": "145231047",
+            "name": "V. Koltun"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "c4744a7c2bb298e4a52289a1e085c71cc3d37bc6",
+            "title": "Transformer-XL: Attentive Language Models beyond a Fixed-Length Context"
+        },
+        {
+            "paperId": "5dc62bdeb879e030a05d1d1bdab9a04de9d23b32",
+            "title": "Transformer-XL: Language Modeling with Longer-Term Dependency"
+        },
+        {
+            "paperId": "c1f457e31b611da727f9aef76c283a18157dfa83",
+            "title": "DARTS: Differentiable Architecture Search"
+        },
+        {
+            "paperId": "fd4ae71916cf400bfd1490f275e91b154eb69160",
+            "title": "Relational recurrent neural networks"
+        },
+        {
+            "paperId": "72ebf25c2d0aff183e61d4e60f6f484767a2de36",
+            "title": "When Recurrent Models Don't Need To Be Recurrent"
+        },
+        {
+            "paperId": "fd5794fc63d5f19bf83cf7baa36e0aa62cbf6299",
+            "title": "Sharp Nearby, Fuzzy Far Away: How Neural Language Models Use Context"
+        },
+        {
+            "paperId": "bb669de2fce407df2f5cb2f8c51dedee3f467e04",
+            "title": "The Best of Both Worlds: Combining Recent Advances in Neural Machine Translation"
+        },
+        {
+            "paperId": "680aafd3d51e666b297e27b93d9554cc2caf1c4d",
+            "title": "An Analysis of Neural Language Modeling at Multiple Scales"
+        },
+        {
+            "paperId": "565ab57eede8bf6ef9c42df51216b9f85287c234",
+            "title": "Independently Recurrent Neural Network (IndRNN): Building A Longer and Deeper RNN"
+        },
+        {
+            "paperId": "921196c32213a229245a9705ee4768bc941e7a26",
+            "title": "An Empirical Evaluation of Generic Convolutional and Recurrent Networks for Sequence Modeling"
+        },
+        {
+            "paperId": "608e4bbe7a2d6f04d68b5747d9d0778d5fce47df",
+            "title": "Learning Longer-term Dependencies in RNNs with Auxiliary Losses"
+        },
+        {
+            "paperId": "fe9b8aac9fa3bfd9724db5a881a578e471e612d7",
+            "title": "Efficient Neural Architecture Search via Parameter Sharing"
+        },
+        {
+            "paperId": "ef9ddbc35676ce8ffc2a8067044473727839dbac",
+            "title": "Breaking the Softmax Bottleneck: A High-Rank RNN Language Model"
+        },
+        {
+            "paperId": "2dad7e558a1e2982d0d42042021f4cde4af04abf",
+            "title": "Dilated Recurrent Neural Networks"
+        },
+        {
+            "paperId": "4712e0d1344167050f5d991d2497497a49fe9863",
+            "title": "A Primal Dual Network for Low-Level Vision Problems"
+        },
+        {
+            "paperId": "58c6f890a1ae372958b7decf56132fe258152722",
+            "title": "Regularizing and Optimizing LSTM Language Models"
+        },
+        {
+            "paperId": "2397ce306e5d7f3d0492276e357fb1833536b5d8",
+            "title": "On the State of the Art of Evaluation in Neural Language Models"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "87a913817503379547bec61a5f010abac5b0f76b",
+            "title": "Fast-Slow Recurrent Neural Networks"
+        },
+        {
+            "paperId": "43428880d75b3a14257c3ee9bda054e61eb869c0",
+            "title": "Convolutional Sequence to Sequence Learning"
+        },
+        {
+            "paperId": "88caa4a0253a8b0076176745ebc072864eab66e1",
+            "title": "Language Modeling with Gated Convolutional Networks"
+        },
+        {
+            "paperId": "2d876ed1dd2c58058d7197b734a8e4d349b8f231",
+            "title": "Quasi-Recurrent Neural Networks"
+        },
+        {
+            "paperId": "67d968c7450878190e45ac7886746de867bf673d",
+            "title": "Neural Architecture Search with Reinforcement Learning"
+        },
+        {
+            "paperId": "2d7782c225e0fc123d6e227f2cb253e58279ac73",
+            "title": "Improving Neural Language Models with a Continuous Cache"
+        },
+        {
+            "paperId": "98445f4172659ec5e891e031d8202c102135c644",
+            "title": "Neural Machine Translation in Linear Time"
+        },
+        {
+            "paperId": "efbd381493bb9636f489b965a2034d529cd56bcd",
+            "title": "Pointer Sentinel Mixture Models"
+        },
+        {
+            "paperId": "9ec499af9b85f30bdbdd6cdfbb07d484808c526a",
+            "title": "Efficient softmax approximation for GPUs"
+        },
+        {
+            "paperId": "df0402517a7338ae28bc54acaac400de6b456a46",
+            "title": "WaveNet: A Generative Model for Raw Audio"
+        },
+        {
+            "paperId": "7dba53e72c182e25e98e8f73a99d75ff69dda0c2",
+            "title": "Recurrent Highway Networks"
+        },
+        {
+            "paperId": "58001259d2f6442b07cc0d716ff99899abbb2bc7",
+            "title": "Gated Word-Character Recurrent Language Model"
+        },
+        {
+            "paperId": "3d2c6941a9b4608ba52b328369a3352db2092ae0",
+            "title": "Weight Normalization: A Simple Reparameterization to Accelerate Training of Deep Neural Networks"
+        },
+        {
+            "paperId": "0c1f9ca23f4f09ecfc44bcc8ca1c2736624f4652",
+            "title": "A Theoretically Grounded Application of Dropout in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "7f5fc84819c0cf94b771fe15141f65b123f7b8ec",
+            "title": "Multi-Scale Context Aggregation by Dilated Convolutions"
+        },
+        {
+            "paperId": "dec2ccce1ecb34bab02c42c2dd18cb468470adf8",
+            "title": "Convolutional, Long Short-Term Memory, fully connected Deep Neural Networks"
+        },
+        {
+            "paperId": "5b8364c21155d3d2cd38ea4c8b8580beba9a3250",
+            "title": "An Empirical Exploration of Recurrent Network Architectures"
+        },
+        {
+            "paperId": "f9c990b1b5724e50e5632b94fdb7484ece8a6ce7",
+            "title": "Convolutional LSTM Network: A Machine Learning Approach for Precipitation Nowcasting"
+        },
+        {
+            "paperId": "e58a110fa1e4ddf247d5c614d117d64bfbe135c4",
+            "title": "Sequence to Sequence -- Video to Text"
+        },
+        {
+            "paperId": "8da55e685a7bef9c897788ab519a8710c695c419",
+            "title": "Holistically-Nested Edge Detection"
+        },
+        {
+            "paperId": "a7976c2bacfbb194ddbe7fd10c2e50a545cf4081",
+            "title": "LSTM: A Search Space Odyssey"
+        },
+        {
+            "paperId": "55e022fb7581bb9e1fce678d21fb25ffbb3fbb88",
+            "title": "Deep visual-semantic alignments for generating image descriptions"
+        },
+        {
+            "paperId": "d4dc1012d780e8e2547237eb5a6dc7b1bf47d2f0",
+            "title": "Show and tell: A neural image caption generator"
+        },
+        {
+            "paperId": "f01fc808592ea7c473a69a6e7484040a435f36d9",
+            "title": "Long-term recurrent convolutional networks for visual recognition and description"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "1eb09fecd75eb27825dce4f964b97f4f5cc399d7",
+            "title": "On the Properties of Neural Machine Translation: Encoder\u2013Decoder Approaches"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17",
+            "title": "Generating Sequences With Recurrent Neural Networks"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "a97b5db17acc731ef67321832dbbaf5766153135",
+            "title": "Supervised Sequence Labelling with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "93c20e38c85b69fc2d2eb314b3c1217913f7db11",
+            "title": "Generating Text with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "bc1022b031dc6c7019696492e8116598097a8c12",
+            "title": "Natural Language Processing (Almost) from Scratch"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+            "title": "Building a Large Annotated Corpus of English: The Penn Treebank"
+        },
+        {
+            "paperId": "1a3d22599028a05669e884f3eaf19a342e190a87",
+            "title": "Backpropagation Through Time: What It Does and How to Do It"
+        },
+        {
+            "paperId": "668087f0ae7ce1de6e0bd0965dbb480c08103260",
+            "title": "Finding Structure in Time"
+        },
+        {
+            "paperId": "a8e8f3c8d4418c8d62e306538c9c1292635e9d27",
+            "title": "Backpropagation Applied to Handwritten Zip Code Recognition"
+        },
+        {
+            "paperId": "cd62c9976534a6a2096a38244f6cbb03635a127e",
+            "title": "Phoneme recognition using time-delay neural networks"
+        },
+        {
+            "paperId": null,
+            "title": "For factors such as auxiliary loss weight and frequency, we perform a basic grid search. Table 4: Models and hyperparameters used in experiments. \u201c-\u201d means not applicable/used"
+        },
+        {
+            "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+            "title": "Recurrent neural network based language model"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        }
+    ]
+}

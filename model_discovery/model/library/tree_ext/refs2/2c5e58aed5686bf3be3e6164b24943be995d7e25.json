@@ -1,0 +1,166 @@
+{
+    "paperId": "2c5e58aed5686bf3be3e6164b24943be995d7e25",
+    "externalIds": {
+        "MAG": "2949873087",
+        "DBLP": "journals/tac/RamVN10",
+        "ArXiv": "0804.1607",
+        "DOI": "10.1109/TAC.2009.2037460",
+        "CorpusId": 395
+    },
+    "title": "Distributed and Recursive Parameter Estimation in Parametrized Linear State-Space Models",
+    "abstract": "We consider a network of sensors deployed to sense a spatio-temporal field and infer parameters of interest about the field. We are interested in the case where each sensor's observation sequence is modeled as a state-space process that is perturbed by random noise, and the models across sensors are parametrized by the same parameter vector. The sensors collaborate to estimate this parameter from their measurements, and to this end we propose a distributed and recursive estimation algorithm, which we refer to as the incremental recursive prediction error algorithm. This algorithm has the distributed property of incremental gradient algorithms and the on-line property of recursive prediction error algorithms.",
+    "venue": "IEEE Transactions on Automatic Control",
+    "year": 2008,
+    "referenceCount": 31,
+    "citationCount": 112,
+    "influentialCitationCount": 5,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/0804.1607",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work considers a network of sensors deployed to sense a spatio-temporal field and infer parameters of interest about the field and proposes a distributed and recursive estimation algorithm, which is referred to as the incremental recursive prediction error algorithm."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "144307036",
+            "name": "S. Ram"
+        },
+        {
+            "authorId": "1726611",
+            "name": "V. Veeravalli"
+        },
+        {
+            "authorId": "1800855",
+            "name": "A. Nedi\u0107"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "aabf4de59bf91fa46033b29d5ba2da7aec1e30eb",
+            "title": "Incremental Stochastic Subgradient Algorithms for Convex Optimization"
+        },
+        {
+            "paperId": "a817ca0f6644d052a23237fecebd0834de72c88e",
+            "title": "Localization and Intensity Tracking of Diffusing Point Sources Using Sensor Networks"
+        },
+        {
+            "paperId": "cac824a996742147d78a4dac114228683e1eab6d",
+            "title": "Incremental Robbins-Monro Gradient Algorithm for Regression in Sensor Networks"
+        },
+        {
+            "paperId": "38dd9a839c9245727ee6338ce65f151233c73a24",
+            "title": "Incremental Adaptive Strategies Over Distributed Networks"
+        },
+        {
+            "paperId": "74563f29ccf8e40f67a37586e534b9f8514f0396",
+            "title": "Distributed Sequential Bayesian Estimation of a Diffusive Source in Wireless Sensor Networks"
+        },
+        {
+            "paperId": "1eefa9aed57acffa87bee46fac971a2a6defca28",
+            "title": "A Convergent Incremental Gradient Method with a Constant Step Size"
+        },
+        {
+            "paperId": "0b09c4682d44ff163129eabe60911e9004e0c325",
+            "title": "Source localization by spatially distributed electronic noses for advection and diffusion"
+        },
+        {
+            "paperId": "51fb0ad908794c6127c51420c3924dfcc601b570",
+            "title": "Quantized incremental algorithms for distributed optimization"
+        },
+        {
+            "paperId": "95a65393717e80a3987d5379f2dffded41ecd3c6",
+            "title": "Maximum likelihood diffusive source localization based on binary observations"
+        },
+        {
+            "paperId": "4d7ec134ca443f60483ef5171a6e067468b16164",
+            "title": "Distributed parameter estimation for monitoring diffusion phenomena using physical models"
+        },
+        {
+            "paperId": "d9978e3aae28fb15a469dfd3f3f0dbc6499ff1d2",
+            "title": "Distributed maximum likelihood estimation for sensor networks"
+        },
+        {
+            "paperId": "6d448100e48a52cf354b8b659b602bebc552128a",
+            "title": "Distributed optimization in sensor networks"
+        },
+        {
+            "paperId": "65f3254ba70d0649132e8ff9e879ed03c4022a56",
+            "title": "Distributed EM algorithms for density estimation and clustering in sensor networks"
+        },
+        {
+            "paperId": "c73f7c5057c8554aa55bf071b1b55b24ca2c962b",
+            "title": "MULTIPLE TRANSIENT POINT HEAT SOURCES IDENTIFICATION IN HEAT DIFFUSION: APPLICATION TO NUMERICAL TWO- AND THREE-DIMENSIONAL PROBLEMS"
+        },
+        {
+            "paperId": "e69234079c22171459dc58eb2aec93aa2159e10d",
+            "title": "Incremental subgradient methods for nondifferentiable optimization"
+        },
+        {
+            "paperId": "a8c615136657df084448cb06b70b7df76b267465",
+            "title": "Gradient Convergence in Gradient methods with Errors"
+        },
+        {
+            "paperId": "30755a7614148f1acf5edca72385832410c7c33a",
+            "title": "A Unifying Review of Linear Gaussian Models"
+        },
+        {
+            "paperId": "dcf844c7693ff7b6c2d0814c387d0f904bb964c1",
+            "title": "Incremental Gradient Algorithms with Stepsizes Bounded Away from Zero"
+        },
+        {
+            "paperId": "bf46fc0481bf7e0d0bec994c2c81bd93d8257371",
+            "title": "Model-based solution techniques for the source localization problem"
+        },
+        {
+            "paperId": "b692146ef637c8260f61cb2c3f0f8334b6da9614",
+            "title": "Structural identification of an unknown source term in a heat equation"
+        },
+        {
+            "paperId": "da37a4349e5d09fa3bf7003e34ba53e64836b1bb",
+            "title": "An Introduction to Signal Detection and Estimation"
+        },
+        {
+            "paperId": "4269407105696ae3dafe1fd8bc99ca57f6462d60",
+            "title": "Theory and practice of recursive identification"
+        },
+        {
+            "paperId": "75aa1f1a04b5f2bb6bf9afb662711121edde9eda",
+            "title": "A and V"
+        },
+        {
+            "paperId": "ca5cb4e0826b424adb81cbb4f2e3c88c391a4075",
+            "title": "Influence of cultivation temperature on the ligninolytic activity of selected fungal strains"
+        },
+        {
+            "paperId": null,
+            "title": "\u201cA scheme for robust distributed fusion based on average consensus,\u201d"
+        },
+        {
+            "paperId": "6d4fdbe7543676e8a0359cd3940fe1e848286506",
+            "title": "On asymptotic problems of parameter estimation in stochastic PDE's: the case of discrete time sampli"
+        },
+        {
+            "paperId": "92ba330f091692a2f961c3156499578b2069227d",
+            "title": "Parallel recursive prediction error algorithm for training layered neural networks"
+        },
+        {
+            "paperId": "8ae83806465bb89763a6ec4c1f87add1d5ee1841",
+            "title": "Stochastic Systems: Estimation, Identification, and Adaptive Control"
+        },
+        {
+            "paperId": null,
+            "title": "Distributed and recursive parameter estimation in parametrized linear state - space models"
+        },
+        {
+            "paperId": null,
+            "title": "Standard IRPE : 1000 iterations of the IRPE algorithm are used to estimate the source location"
+        },
+        {
+            "paperId": "73f36ff3a6d340606e09d2d0091da27a13af7a6f",
+            "title": "and as an in"
+        }
+    ]
+}

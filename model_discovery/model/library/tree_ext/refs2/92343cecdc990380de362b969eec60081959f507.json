@@ -1,0 +1,124 @@
+{
+    "paperId": "92343cecdc990380de362b969eec60081959f507",
+    "externalIds": {
+        "MAG": "2948902769",
+        "CorpusId": 195505104
+    },
+    "title": "Asynchronous Pipeline for Processing Huge Corpora on Medium to Low Resource Infrastructures",
+    "abstract": "Common Crawl is a considerably large, heterogeneous multilingual corpus comprised of crawled documents from the internet, surpassing 20TB of data and distributed as a set of more than 50 thousand plain text files where each contains many documents written in a wide variety of languages. Even though each document has a metadata block associated to it, this data lacks any information about the language in which each document is written, making it extremely difficult to use Common Crawl for monolingual applications. We propose a general, highly parallel, multithreaded pipeline to clean and classify Common Crawl by language; we specifically design it so that it runs efficiently on medium to low resource infrastructures where I/O speeds are the main constraint. We develop the pipeline so that it can be easily reapplied to any kind of heterogeneous corpus and so that it can be parameterised to a wide range of infrastructures. We also distribute a 6.3TB version of Common Crawl, filtered, classified by language, shuffled at line level in order to avoid copyright issues, and ready to be used for NLP applications.",
+    "venue": "",
+    "year": 2019,
+    "referenceCount": 22,
+    "citationCount": 378,
+    "influentialCitationCount": 34,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A general, highly parallel, multithreaded pipeline to clean and classify Common Crawl by language is proposed and developed so that it runs efficiently on medium to low resource infrastructures where I/O speeds are the main constraint."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "147846651",
+            "name": "Pedro Ortiz Suarez"
+        },
+        {
+            "authorId": "68990982",
+            "name": "Beno\u00eet Sagot"
+        },
+        {
+            "authorId": "49799441",
+            "name": "L. Romary"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+            "title": "XLNet: Generalized Autoregressive Pretraining for Language Understanding"
+        },
+        {
+            "paperId": "9f1c5777a193b2c3bb2b25e248a156348e5ba56d",
+            "title": "Cloze-driven Pretraining of Self-attention Networks"
+        },
+        {
+            "paperId": "c4744a7c2bb298e4a52289a1e085c71cc3d37bc6",
+            "title": "Transformer-XL: Attentive Language Models beyond a Fixed-Length Context"
+        },
+        {
+            "paperId": "d098bdca6d0335a31fd164c1fac68028784a0737",
+            "title": "Findings of the 2018 Conference on Machine Translation (WMT18)"
+        },
+        {
+            "paperId": "0fe73c19513dfd17372d8ef58da0d0149725832c",
+            "title": "Learning Word Vectors for 157 Languages"
+        },
+        {
+            "paperId": "3febb2bed8865945e7fddc99efd791887bb7e14f",
+            "title": "Deep Contextualized Word Representations"
+        },
+        {
+            "paperId": "95b3d6b9d50bfd4b0a77a096269762b28e218346",
+            "title": "Advances in Pre-Training Distributed Word Representations"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "5feb32a73dd1bd9e13f84a7b3344497a5545106b",
+            "title": "FastText.zip: Compressing text classification models"
+        },
+        {
+            "paperId": "e2dba792360873aef125572812f3673b1a85d850",
+            "title": "Enriching Word Vectors with Subword Information"
+        },
+        {
+            "paperId": "892e53fe5cd39f037cb2a961499f42f3002595dd",
+            "title": "Bag of Tricks for Efficient Text Classification"
+        },
+        {
+            "paperId": "0e6824e137847be0599bb0032e37042ed2ef5045",
+            "title": "Aligning Books and Movies: Towards Story-Like Visual Explanations by Watching Movies and Reading Books"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "8e3f0f7a761f18cb91c11764d8d6cb3b1e9c5731",
+            "title": "Polyglot: Distributed Word Representations for Multilingual NLP"
+        },
+        {
+            "paperId": "df2b0e26d0599ce3e70df8a9da02e51594e0e992",
+            "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding"
+        },
+        {
+            "paperId": "9405cc0d6169988371b2755e573cc28650d14dfe",
+            "title": "Language Models are Unsupervised Multitask Learners"
+        },
+        {
+            "paperId": "cd18800a0fe0b668a1cc19f2ec95b5003d0a5035",
+            "title": "Improving Language Understanding by Generative Pre-Training"
+        },
+        {
+            "paperId": null,
+            "title": "English gigaword fifth edition, linguistic data consortium"
+        },
+        {
+            "paperId": null,
+            "title": "gigaword"
+        },
+        {
+            "paperId": "994630c52dfe7b6619a3a17dc5313ae7569380a4",
+            "title": "Proceedings of the 4th International Conference on Language Resources and Evaluation"
+        },
+        {
+            "paperId": null,
+            "title": "Clueweb09 data set"
+        }
+    ]
+}

@@ -1,0 +1,150 @@
+{
+    "paperId": "415de1da054e31b2095e1031423cebd8167fff41",
+    "externalIds": {
+        "ACL": "P12-1078",
+        "DBLP": "conf/acl/WangMND12",
+        "MAG": "2160044068",
+        "CorpusId": 2717798
+    },
+    "title": "Historical Analysis of Legal Opinions with a Sparse Mixed-Effects Latent Variable Model",
+    "abstract": "We propose a latent variable model to enhance historical analysis of large corpora. This work extends prior work in topic modelling by incorporating metadata, and the interactions between the components in metadata, in a general way. To test this, we collect a corpus of slavery-related United States property law judgements sampled from the years 1730 to 1866. We study the language use in these legal cases, with a special focus on shifts in opinions on controversial topics across different regions. Because this is a longitudinal data set, we are also interested in understanding how these opinions change over the course of decades. We show that the joint learning scheme of our sparse mixed-effects model improves on other state-of-the-art generative and discriminative models on the region and time period identification tasks. Experiments show that our sparse mixed-effects model is more accurate quantitatively and qualitatively interesting, and that these improvements are robust across different parameter settings.",
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2012,
+    "referenceCount": 27,
+    "citationCount": 28,
+    "influentialCitationCount": 0,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that the joint learning scheme of the sparse mixed-effects model improves on other state-of-the-art generative and discriminative models on the region and time period identification tasks and is more accurate quantitatively and qualitatively interesting."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1682479",
+            "name": "William Yang Wang"
+        },
+        {
+            "authorId": "3309954",
+            "name": "Elijah Mayfield"
+        },
+        {
+            "authorId": "47824203",
+            "name": "S. Naidu"
+        },
+        {
+            "authorId": "3009042",
+            "name": "Jeremiah Dittmar"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "195b8e0778f4e2523f1faf7ffcdfd1f9ff3a9976",
+            "title": "Identifying Event Descriptions using Co-training with Online News Summaries"
+        },
+        {
+            "paperId": "a597ebc33e9769193b397ff528b52b10ed6a3937",
+            "title": "An Efficient Algorithm for Topic Ranking and Modeling Topic Evolution"
+        },
+        {
+            "paperId": "2c0dd733157e4a824dfe2ce2ce9bd7b29fc8a731",
+            "title": "Semantic Topic Models: Combining Word Distributional Statistics and Dictionary Definitions"
+        },
+        {
+            "paperId": "953811701447daa3f5e97a744dd3aca00f930ee1",
+            "title": "Sparse Additive Generative Models of Text"
+        },
+        {
+            "paperId": "f55163ed16144200d322efe20d19cdcf332f9361",
+            "title": "Topic Modeling on Historical Newspapers"
+        },
+        {
+            "paperId": "70ae6a74c9fe2b46f12f7b2f4d94ff8e12a33767",
+            "title": "Automatic Verb Extraction from Historical Swedish Texts"
+        },
+        {
+            "paperId": "fba0da124b669892e9c1beb49364cde1eb523d93",
+            "title": "Historical Event Extraction from Text"
+        },
+        {
+            "paperId": "5c2955b6923ff047bd616e25eef3be9b04eed377",
+            "title": "Language use as a reflection of socialization in online communities"
+        },
+        {
+            "paperId": "a1a37452f3f6e6f42623d9db8c276395e3367b88",
+            "title": "Discovering Sociolinguistic Associations with Structured Sparsity"
+        },
+        {
+            "paperId": "273dfbcb68080251f5e9ff38b4413d7bd84b10a1",
+            "title": "LIBSVM: A library for support vector machines"
+        },
+        {
+            "paperId": "4159b7d284db0fceb176c2cc2d833efef7f31793",
+            "title": "A Latent Variable Model for Geographic Lexical Variation"
+        },
+        {
+            "paperId": "c4911178f3505532a8067d67b3eeda5b48660138",
+            "title": "\u201cGot You!\u201d: Automatic Vandalism Detection in Wikipedia with Web-based Shallow Syntactic-Semantic Modeling"
+        },
+        {
+            "paperId": "ce8174db8e95182a950d04350f3fea744866229e",
+            "title": "An analysis of perspectives in interactive settings"
+        },
+        {
+            "paperId": "438cd004c7fa0a5ed74acc28bff1ac3d11b8c80a",
+            "title": "The State of Educational Data Mining in 2009: A Review and Future Visions."
+        },
+        {
+            "paperId": "be0f3a3d2f6ee4a90f6e8342924944494e76ca89",
+            "title": "Enabling information retrieval on historical document collections: the role of matching procedures and special lexica"
+        },
+        {
+            "paperId": "09bad12ca59c6ea53281418ab7a9d6ba57ac5f5e",
+            "title": "Evolution of the Judicial Opinion: Institutional and Individual Styles"
+        },
+        {
+            "paperId": "b90d922ff07d0eb8d77b8687aba7f55bd3926436",
+            "title": "Hierarchical Dirichlet Processes"
+        },
+        {
+            "paperId": "5a7958b418bceb48a315384568091ab1898b1640",
+            "title": "Discriminative Training Methods for Hidden Markov Models: Theory and Experiments with Perceptron Algorithms"
+        },
+        {
+            "paperId": "a351ffd1634b0930bd51ff225a8836e540269947",
+            "title": "Text Categorization with Support Vector Machines: Learning with Many Relevant Features"
+        },
+        {
+            "paperId": "a99e5bf7273da127be1fcdf4f3cb911f17550304",
+            "title": "Probabilistic Latent Semantic Analysis"
+        },
+        {
+            "paperId": "b9e7fcb05c7a0ab7f721dc0947d9591bd0da2146",
+            "title": "The Bondsman's Burden: An Economic Analysis of the Common Law of Southern Slavery"
+        },
+        {
+            "paperId": "a476a2b0b0debec5632f68406277ada18b21d195",
+            "title": "Normal/Independent Distributions and Their Applications in Robust Regression"
+        },
+        {
+            "paperId": "4c5c1621ed69da09ffbd7c42b363486e0c9d2565",
+            "title": "A new algorithm for the estimation of hidden Markov model parameters"
+        },
+        {
+            "paperId": "4574d77fff19e093782178595a8988a7f3aa1969",
+            "title": "Latent Dirichlet Allocation"
+        },
+        {
+            "paperId": "2ebf21b7bcd80f2a12ab06858d3c00fc2d39e896",
+            "title": "Biological data mining"
+        },
+        {
+            "paperId": "5844a50e067d2b602a416b6657c8e63711f78bad",
+            "title": "Slavery and American Economic Development"
+        },
+        {
+            "paperId": "8d92f69153b3d72a0b813f244086ada7cf62e737",
+            "title": "Belated Feudalism: Labor, the Law, and Liberal Development in the United States"
+        }
+    ]
+}

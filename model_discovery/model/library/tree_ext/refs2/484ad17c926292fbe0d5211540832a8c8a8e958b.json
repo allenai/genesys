@@ -1,0 +1,193 @@
+{
+    "paperId": "484ad17c926292fbe0d5211540832a8c8a8e958b",
+    "externalIds": {
+        "MAG": "1909320841",
+        "DBLP": "conf/icml/RezendeMW14",
+        "CorpusId": 16895865
+    },
+    "title": "Stochastic Backpropagation and Approximate Inference in Deep Generative Models",
+    "abstract": "We marry ideas from deep neural networks and approximate Bayesian inference to derive a generalised class of deep, directed generative models, endowed with a new algorithm for scalable inference and learning. Our algorithm introduces a recognition model to represent approximate posterior distributions, and that acts as a stochastic encoder of the data. We develop stochastic back-propagation -- rules for back-propagation through stochastic variables -- and use this to develop an algorithm that allows for joint optimisation of the parameters of both the generative and recognition model. We demonstrate on several real-world data sets that the model generates realistic samples, provides accurate imputations of missing data and is a useful tool for high-dimensional data visualisation.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2014,
+    "referenceCount": 39,
+    "citationCount": 4984,
+    "influentialCitationCount": 648,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work marries ideas from deep neural networks and approximate Bayesian inference to derive a generalised class of deep, directed generative models, endowed with a new algorithm for scalable inference and learning that introduces a recognition model to represent approximate posterior distributions and that acts as a stochastic encoder of the data."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1748523",
+            "name": "Danilo Jimenez Rezende"
+        },
+        {
+            "authorId": "14594344",
+            "name": "S. Mohamed"
+        },
+        {
+            "authorId": "1688276",
+            "name": "Daan Wierstra"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "5fb874a1c8106a5b2b2779ee8e1433149109ba00",
+            "title": "Learning Bayesian Networks is NP-Complete"
+        },
+        {
+            "paperId": "98d764b59e26338aaeffaf40db303d079ffcd07c",
+            "title": "On Using Control Variates with Stochastic Approximation for Variational Bayes and its Connection to Stochastic Linear Regression"
+        },
+        {
+            "paperId": "6a667700100e228cb30a5d884258a0db921603fe",
+            "title": "Black Box Variational Inference"
+        },
+        {
+            "paperId": "5f5dc5b9a2ba710937e2c413b37b053cd673df02",
+            "title": "Auto-Encoding Variational Bayes"
+        },
+        {
+            "paperId": "695a2c95eacdbccb7a73d2f1e90e7b35b4b3d864",
+            "title": "Deep AutoRegressive Networks"
+        },
+        {
+            "paperId": "705fd4febe2fff810d2f72f48dcda20826eca77a",
+            "title": "A Deep and Tractable Density Estimator"
+        },
+        {
+            "paperId": "5ffa8bf1bf3e39227be28de4ff6915d3b21eb52d",
+            "title": "Deep Generative Stochastic Networks Trainable by Backprop"
+        },
+        {
+            "paperId": "d9704f8119d6ba748230b4f2ad59f0e8c64fdfb0",
+            "title": "Generalized Denoising Auto-Encoders as Generative Models"
+        },
+        {
+            "paperId": "b5f5ed292ce93404a0985754b2b531eca4e6cf50",
+            "title": "Deep Gaussian Processes"
+        },
+        {
+            "paperId": "bccb2f99a9d1c105699f5d88c479569085e2c7ba",
+            "title": "Stochastic variational inference"
+        },
+        {
+            "paperId": "9ceb1dea15ac3df3d610fd0b3cc52b9a4e9141a3",
+            "title": "Variational Bayesian Inference with Stochastic Search"
+        },
+        {
+            "paperId": "57f3faa06d215481d04238a3c6ee75828863d6e4",
+            "title": "Bayesian Posterior Sampling via Stochastic Gradient Fisher Scoring"
+        },
+        {
+            "paperId": "5a9ef216bf11f222438fff130c778267d39a9564",
+            "title": "Practical Variational Inference for Neural Networks"
+        },
+        {
+            "paperId": "aeed631d6a84100b5e9a021ec1914095c66de415",
+            "title": "Bayesian Learning via Stochastic Gradient Langevin Dynamics"
+        },
+        {
+            "paperId": "adb4d64fc1b05a464f2915f27ccafdf73c6134af",
+            "title": "Approximating the covariance matrix of GMMs with low-rank perturbations"
+        },
+        {
+            "paperId": "e2b7f37cd97a7907b1b8a41138721ed06a0b76cd",
+            "title": "Stacked Denoising Autoencoders: Learning Useful Representations in a Deep Network with a Local Denoising Criterion"
+        },
+        {
+            "paperId": "65bb01b985035307f7b1102e17b8a5c0f2dafff8",
+            "title": "Approximate Bayesian inference for latent Gaussian models by using integrated nested Laplace approximations"
+        },
+        {
+            "paperId": "8e5eda285b30216bc5f5ca93d3a93728c15852f8",
+            "title": "The Variational Gaussian Approximation Revisited"
+        },
+        {
+            "paperId": "8d60f04d9677f1a5c439b6b1cef41606bd0ca646",
+            "title": "Probabilistic Non-linear Principal Component Analysis with Gaussian Process Latent Variable Models"
+        },
+        {
+            "paperId": "0ae2e4e974f7ee57f590a691aada75c27c4c5394",
+            "title": "Unsupervised Variational Bayesian Learning of Nonlinear Models"
+        },
+        {
+            "paperId": "0a79433b5feacd9e8feeafa629dae5a85f362fef",
+            "title": "Mean Field Theory for Sigmoid Belief Networks"
+        },
+        {
+            "paperId": "605402e235bd62437baf3c9ebefe77fb4d92ee95",
+            "title": "The Helmholtz Machine"
+        },
+        {
+            "paperId": "f13987663364e399e7d9890088122fe60278f681",
+            "title": "Statistical Analysis with Missing Data."
+        },
+        {
+            "paperId": "d11d994b4f875f962fcf9e6379d29383196a7b45",
+            "title": "Variance Reduction Techniques for Digital Simulation"
+        },
+        {
+            "paperId": "5b9a3b410b37bb97fc0766f13c758dd146274dca",
+            "title": "Transformations des signaux al\u00e9atoires a travers les syst\u00e8mes non lin\u00e9aires sans m\u00e9moire"
+        },
+        {
+            "paperId": "f20fd159bca2a955b0d3dab00d8ea9aabc63b82a",
+            "title": "A useful theorem for nonlinear devices having Gaussian inputs"
+        },
+        {
+            "paperId": "93f5a28d16e04334fcb71cb62d0fd9b1c68883bb",
+            "title": "Amortized Inference in Probabilistic Reasoning"
+        },
+        {
+            "paperId": "02227c94dd41fe0b439e050d377b0beb5d427cda",
+            "title": "Reading Digits in Natural Images with Unsupervised Feature Learning"
+        },
+        {
+            "paperId": "0ee392ad467b967c0a32d8ecb19fc20f7c1d62fe",
+            "title": "Probabilistic Inference Using Markov Chain Monte Carlo Methods"
+        },
+        {
+            "paperId": "b893e7053c9c7e266a23fb13a42261a88f650210",
+            "title": "The Neural Autoregressive Distribution Estimator"
+        },
+        {
+            "paperId": "4c915c1eecb217c123a36dc6d3ce52d12c742614",
+            "title": "Simple Statistical Gradient-Following Algorithms for Connectionist Reinforcement Learning"
+        },
+        {
+            "paperId": "00cf63a7926a826f7cf73c1d5edb117f98d70c2c",
+            "title": "Variational algorithms for approximate Bayesian inference"
+        },
+        {
+            "paperId": "2497edbea9676e08d3c85ec7f9705efcf13d6b81",
+            "title": "Thesis Supervisor Accepted by......................................................................."
+        },
+        {
+            "paperId": "dd8cda00ccb0af1594fbaa5d41ee639d053a9cb2",
+            "title": "Helmholtz Machines and Wake-Sleep Learning"
+        },
+        {
+            "paperId": "3ce2c5c3cf802a7f66c9e49ed00364313927c4e5",
+            "title": "Bayesian Non-Linear Independent Component Analysis by Multi-Layer Perceptrons"
+        },
+        {
+            "paperId": "763aa50583ed047528ba4ef471d72bfbe34471e6",
+            "title": "Variational Learning in Nonlinear Gaussian Belief Networks"
+        },
+        {
+            "paperId": "2ff2f523e976992a5a681a210aa4e991388e0f24",
+            "title": "Variational Inference for continuous Sigmoidal Bayesian Networks"
+        },
+        {
+            "paperId": "b7b2bffdf5b62305bec4c0f1ea7e3c1ba66fccb5",
+            "title": "A minimum description length framework for unsupervised learning"
+        },
+        {
+            "paperId": null,
+            "title": "References"
+        }
+    ]
+}

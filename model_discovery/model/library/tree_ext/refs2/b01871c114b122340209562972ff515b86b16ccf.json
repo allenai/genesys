@@ -1,0 +1,138 @@
+{
+    "paperId": "b01871c114b122340209562972ff515b86b16ccf",
+    "externalIds": {
+        "MAG": "2963629403",
+        "DBLP": "journals/corr/KalchbrennerOSD16",
+        "ArXiv": "1610.00527",
+        "CorpusId": 14278057
+    },
+    "title": "Video Pixel Networks",
+    "abstract": "We propose a probabilistic video model, the Video Pixel Network (VPN), that estimates the discrete joint distribution of the raw pixel values in a video. The model and the neural architecture reflect the time, space and color structure of video tensors and encode it as a four-dimensional dependency chain. The VPN approaches the best possible performance on the Moving MNIST benchmark, a leap over the previous state of the art, and the generated videos show only minor deviations from the ground truth. The VPN also produces detailed samples on the action-conditional Robotic Pushing benchmark and generalizes to the motion of novel objects.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2016,
+    "referenceCount": 21,
+    "citationCount": 405,
+    "influentialCitationCount": 37,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A probabilistic video model, the Video Pixel Network (VPN), that estimates the discrete joint distribution of the raw pixel values in a video and generalizes to the motion of novel objects."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2583391",
+            "name": "Nal Kalchbrenner"
+        },
+        {
+            "authorId": "3422336",
+            "name": "A\u00e4ron van den Oord"
+        },
+        {
+            "authorId": "34838386",
+            "name": "K. Simonyan"
+        },
+        {
+            "authorId": "1841008",
+            "name": "Ivo Danihelka"
+        },
+        {
+            "authorId": "1689108",
+            "name": "O. Vinyals"
+        },
+        {
+            "authorId": "1753223",
+            "name": "Alex Graves"
+        },
+        {
+            "authorId": "2645384",
+            "name": "K. Kavukcuoglu"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "df0402517a7338ae28bc54acaac400de6b456a46",
+            "title": "WaveNet: A Generative Model for Raw Audio"
+        },
+        {
+            "paperId": "ee091ccf24c4f053c5c3dfbefe4a7975ed3447c1",
+            "title": "Generating Videos with Scene Dynamics"
+        },
+        {
+            "paperId": "0936352b78a52bc5d2b5e3f04233efc56664af51",
+            "title": "Conditional Image Generation with PixelCNN Decoders"
+        },
+        {
+            "paperId": "f110cfdbe9ded7a384bcf5c0d56e536bd275a7eb",
+            "title": "Unsupervised Learning for Physical Interaction through Video Prediction"
+        },
+        {
+            "paperId": "77f0a39b8e02686fd85b01971f8feb7f60971f80",
+            "title": "Identity Mappings in Deep Residual Networks"
+        },
+        {
+            "paperId": "41f1d50c85d3180476c4c7b3eea121278b0d8474",
+            "title": "Pixel Recurrent Neural Networks"
+        },
+        {
+            "paperId": "7f5fc84819c0cf94b771fe15141f65b123f7b8ec",
+            "title": "Multi-Scale Context Aggregation by Dilated Convolutions"
+        },
+        {
+            "paperId": "b6e7d0ec83f2a40fadc99bb0f1ced8508f5cfee5",
+            "title": "Spatio-temporal video autoencoder with differentiable memory"
+        },
+        {
+            "paperId": "17fa1c2a24ba8f731c8b21f1244463bc4b465681",
+            "title": "Deep multi-scale video prediction beyond mean square error"
+        },
+        {
+            "paperId": "e4257bc131c36504a04382290cbc27ca8bb27813",
+            "title": "Action-Conditional Video Prediction using Deep Networks in Atari Games"
+        },
+        {
+            "paperId": "5b791cd374c7109693aaddee2c12d659ae4e3ec0",
+            "title": "Grid Long Short-Term Memory"
+        },
+        {
+            "paperId": "f9c990b1b5724e50e5632b94fdb7484ece8a6ce7",
+            "title": "Convolutional LSTM Network: A Machine Learning Approach for Precipitation Nowcasting"
+        },
+        {
+            "paperId": "e0945081b5b87187a53d4329cf77cd8bff635795",
+            "title": "Highway Networks"
+        },
+        {
+            "paperId": "829510ad6f975c939d589eeb01a3cf6fc6c8ce4d",
+            "title": "Unsupervised Learning of Video Representations using LSTMs"
+        },
+        {
+            "paperId": "39ad6c911f3351a3b390130a6e4265355b4d593b",
+            "title": "Semantic Image Segmentation with Deep Convolutional Nets and Fully Connected CRFs"
+        },
+        {
+            "paperId": "355f98e4827a1b6ad3f29d07ea2bcf9ad078295c",
+            "title": "Video (language) modeling: a baseline for generative models of natural videos"
+        },
+        {
+            "paperId": "944a1cfd79dbfb6fef460360a0765ba790f4027a",
+            "title": "Recurrent Continuous Translation Models"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": null,
+            "title": "Oriol Vinyals, Alex Graves, Nal Kalchbrenner, Andrew Senior, and Koray Kavukcuoglu. Wavenet: A generative model for raw audio. CoRR, abs/1609"
+        },
+        {
+            "paperId": null,
+            "title": "Tinne Tuytelaars, and Luc Van Gool. Dynamic filter networks. CoRR, abs/1605"
+        },
+        {
+            "paperId": null,
+            "title": "Dynamic \ufb01lter networks"
+        }
+    ]
+}

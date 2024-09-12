@@ -1,0 +1,178 @@
+{
+    "paperId": "680aafd3d51e666b297e27b93d9554cc2caf1c4d",
+    "externalIds": {
+        "DBLP": "journals/corr/abs-1803-08240",
+        "ArXiv": "1803.08240",
+        "MAG": "2792376130",
+        "CorpusId": 4111774
+    },
+    "title": "An Analysis of Neural Language Modeling at Multiple Scales",
+    "abstract": "Many of the leading approaches in language modeling introduce novel, complex and specialized architectures. We take existing state-of-the-art word level language models based on LSTMs and QRNNs and extend them to both larger vocabularies as well as character-level granularity. When properly tuned, LSTMs and QRNNs achieve state-of-the-art results on character-level (Penn Treebank, enwik8) and word-level (WikiText-103) datasets, respectively. Results are obtained in only 12 hours (WikiText-103) to 2 days (enwik8) using a single modern GPU.",
+    "venue": "arXiv.org",
+    "year": 2018,
+    "referenceCount": 35,
+    "citationCount": 168,
+    "influentialCitationCount": 23,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work takes existing state-of-the-art word level language models based on LSTMs and QRNNs and extend them to both larger vocabularies as well as character-level granularity, achieving state- of- the-art results on character- level and word-level datasets."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3375440",
+            "name": "Stephen Merity"
+        },
+        {
+            "authorId": "2844898",
+            "name": "N. Keskar"
+        },
+        {
+            "authorId": "2166511",
+            "name": "R. Socher"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "3febb2bed8865945e7fddc99efd791887bb7e14f",
+            "title": "Deep Contextualized Word Representations"
+        },
+        {
+            "paperId": "ef9ddbc35676ce8ffc2a8067044473727839dbac",
+            "title": "Breaking the Softmax Bottleneck: A High-Rank RNN Language Model"
+        },
+        {
+            "paperId": "fa9decd1395cc2f39e9921f870ebc8a8ec2bd08d",
+            "title": "Dynamic Evaluation of Neural Sequence Models"
+        },
+        {
+            "paperId": "58c6f890a1ae372958b7decf56132fe258152722",
+            "title": "Regularizing and Optimizing LSTM Language Models"
+        },
+        {
+            "paperId": "737fee76a437be2346bee4261e05707bf6a74be1",
+            "title": "Revisiting Activation Regularization for Language RNNs"
+        },
+        {
+            "paperId": "2397ce306e5d7f3d0492276e357fb1833536b5d8",
+            "title": "On the State of the Art of Evaluation in Neural Language Models"
+        },
+        {
+            "paperId": "0d57ba12a6d958e178d83be4c84513f7e42b24e5",
+            "title": "Accurate, Large Minibatch SGD: Training ImageNet in 1 Hour"
+        },
+        {
+            "paperId": "87a913817503379547bec61a5f010abac5b0f76b",
+            "title": "Fast-Slow Recurrent Neural Networks"
+        },
+        {
+            "paperId": "664ec878de4b7170712baae4a7821fc2602bba25",
+            "title": "Learning to Generate Reviews and Discovering Sentiment"
+        },
+        {
+            "paperId": "510e26733aaff585d65701b9f1be7ca9d5afc586",
+            "title": "Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer"
+        },
+        {
+            "paperId": "88caa4a0253a8b0076176745ebc072864eab66e1",
+            "title": "Language Modeling with Gated Convolutional Networks"
+        },
+        {
+            "paperId": "2d876ed1dd2c58058d7197b734a8e4d349b8f231",
+            "title": "Quasi-Recurrent Neural Networks"
+        },
+        {
+            "paperId": "67d968c7450878190e45ac7886746de867bf673d",
+            "title": "Neural Architecture Search with Reinforcement Learning"
+        },
+        {
+            "paperId": "424aef7340ee618132cc3314669400e23ad910ba",
+            "title": "Tying Word Vectors and Word Classifiers: A Loss Framework for Language Modeling"
+        },
+        {
+            "paperId": "2d7782c225e0fc123d6e227f2cb253e58279ac73",
+            "title": "Improving Neural Language Models with a Continuous Cache"
+        },
+        {
+            "paperId": "5b4cef5ce21753a38234740b3d5bf5ff0f7d9b3a",
+            "title": "Surprisal-Driven Zoneout"
+        },
+        {
+            "paperId": "563783de03452683a9206e85fe6d661714436686",
+            "title": "HyperNetworks"
+        },
+        {
+            "paperId": "efbd381493bb9636f489b965a2034d529cd56bcd",
+            "title": "Pointer Sentinel Mixture Models"
+        },
+        {
+            "paperId": "9ec499af9b85f30bdbdd6cdfbb07d484808c526a",
+            "title": "Efficient softmax approximation for GPUs"
+        },
+        {
+            "paperId": "65eee67dee969fdf8b44c87c560d66ad4d78e233",
+            "title": "Hierarchical Multiscale Recurrent Neural Networks"
+        },
+        {
+            "paperId": "63e39cdf1ad884da6bc69096bb3413b5b1100559",
+            "title": "Using the Output Embedding to Improve Language Models"
+        },
+        {
+            "paperId": "7dba53e72c182e25e98e8f73a99d75ff69dda0c2",
+            "title": "Recurrent Highway Networks"
+        },
+        {
+            "paperId": "9f0687bcd0a7d7fc91b8c5d36c003a38b8853105",
+            "title": "Zoneout: Regularizing RNNs by Randomly Preserving Hidden Activations"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "08c13be14da51f2ed531ffe980bb993e45042e41",
+            "title": "Automatic Speech Recognition: A Deep Learning Approach"
+        },
+        {
+            "paperId": "e3ce36b9deb47aa6bb2aa19c4bfa71283b505025",
+            "title": "Noise-contrastive estimation: A new estimation principle for unnormalized statistical models"
+        },
+        {
+            "paperId": "0af81925ffade8b0ddaf84d5fb64a8fa5cbd4c5c",
+            "title": "Statistical machine translation"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "59ce9cdbde13affc05a6c1f48a51ee7b0fcb154b",
+            "title": "The Penn Treebank: Annotating Predicate Argument Structure"
+        },
+        {
+            "paperId": "2ae5a5507253aa3cada113d41d35fada1e84555f",
+            "title": "An Efficient Gradient-Based Algorithm for On-Line Training of Recurrent Network Trajectories"
+        },
+        {
+            "paperId": "1a3d22599028a05669e884f3eaf19a342e190a87",
+            "title": "Backpropagation Through Time: What It Does and How to Do It"
+        },
+        {
+            "paperId": null,
+            "title": "The Human Knowledge Compression Contest"
+        },
+        {
+            "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+            "title": "Recurrent neural network based language model"
+        },
+        {
+            "paperId": "c19fbefdeead6a4154a22a9c8551a18b1530033a",
+            "title": "Hierarchical Probabilistic Neural Network Language Model"
+        },
+        {
+            "paperId": "8e0be569ea77b8cb29bb0e8b031887630fe7a96c",
+            "title": "Random Forests"
+        }
+    ]
+}

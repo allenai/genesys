@@ -1,0 +1,182 @@
+{
+    "paperId": "11aada215e6f72cbd5928619de839ba35106a88f",
+    "externalIds": {
+        "MAG": "2576915720",
+        "ArXiv": "1612.04642",
+        "DBLP": "conf/cvpr/WorrallGTB17",
+        "DOI": "10.1109/CVPR.2017.758",
+        "CorpusId": 206596746
+    },
+    "title": "Harmonic Networks: Deep Translation and Rotation Equivariance",
+    "abstract": "Translating or rotating an input image should not affect the results of many computer vision tasks. Convolutional neural networks (CNNs) are already translation equivariant: input image translations produce proportionate feature map translations. This is not the case for rotations. Global rotation equivariance is typically sought through data augmentation, but patch-wise equivariance is more difficult. We present Harmonic Networks or H-Nets, a CNN exhibiting equivariance to patch-wise translation and 360-rotation. We achieve this by replacing regular CNN filters with circular harmonics, returning a maximal response and orientation for every receptive field patch. H-Nets use a rich, parameter-efficient and fixed computational complexity representation, and we show that deep feature maps within the network encode complicated rotational invariants. We demonstrate that our layers are general enough to be used in conjunction with the latest architectures and techniques, such as deep supervision and batch normalization. We also achieve state-of-the-art classification on rotated-MNIST, and competitive results on other benchmark challenges.",
+    "venue": "Computer Vision and Pattern Recognition",
+    "year": 2016,
+    "referenceCount": 34,
+    "citationCount": 662,
+    "influentialCitationCount": 70,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1612.04642",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "H-Nets are presented, a CNN exhibiting equivariance to patch-wise translation and 360-rotation, and it is demonstrated that their layers are general enough to be used in conjunction with the latest architectures and techniques, such as deep supervision and batch normalization."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3471551",
+            "name": "Daniel E. Worrall"
+        },
+        {
+            "authorId": "8472317",
+            "name": "Stephan J. Garbin"
+        },
+        {
+            "authorId": "2810420",
+            "name": "Daniyar Turmukhambetov"
+        },
+        {
+            "authorId": "3309893",
+            "name": "G. Brostow"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "db1207440d20104854464d51da4cf5f79c5de240",
+            "title": "Steerable CNNs"
+        },
+        {
+            "paperId": "6befc9fac6846df9f27e91ffbad5de58b77ffef1",
+            "title": "Structured Receptive Fields in CNNs"
+        },
+        {
+            "paperId": "2faef2d5cd56aec03c66315d36b0ec791312f308",
+            "title": "Learning Covariant Feature Detectors"
+        },
+        {
+            "paperId": "59da3fc6f47c19d7950a7f98e7cc750f0bd55861",
+            "title": "Learning rotation invariant convolutional filters for texture classification"
+        },
+        {
+            "paperId": "049a5a81bd664c27a6f5c973f253c7664463d13b",
+            "title": "TI-POOLING: Transformation-Invariant Pooling for Feature Learning in Convolutional Neural Networks"
+        },
+        {
+            "paperId": "fafcaf5ca3fab8dc4fad15c2391c0fdb4a7dc005",
+            "title": "Group Equivariant Convolutional Networks"
+        },
+        {
+            "paperId": "b2e8f988e4c4ef0b38f6c8766aca7f2e5a2575db",
+            "title": "Exploiting Cyclic Symmetry in Convolutional Neural Networks"
+        },
+        {
+            "paperId": "86da68568ad3c22154f56f4f821ba7954109c11c",
+            "title": "Pushing the Boundaries of Boundary Detection using Deep Learning"
+        },
+        {
+            "paperId": "2cc46a96000db7b92493cc03126a987006641b28",
+            "title": "DeepContour: A deep convolutional feature learned by positive-sharing loss for contour detection"
+        },
+        {
+            "paperId": "8da55e685a7bef9c897788ab519a8710c695c419",
+            "title": "Holistically-Nested Edge Detection"
+        },
+        {
+            "paperId": "709c509e97c1d6e2361ea30568690f63f8ac2bc6",
+            "title": "Pixel-wise Deep Learning for Contour Detection"
+        },
+        {
+            "paperId": "f55fe2b4344f015927a834d8ad6f52a35c3a8c8e",
+            "title": "A Mathematical Motivation for Complex-Valued Convolutional Networks"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "cb5724c16ae30ccc7f14e82603b032528cca30fc",
+            "title": "Deep roto-translation scattering for object classification"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "17d7b57dcc5c50e3bf2dada669a7905a8f5b13ef",
+            "title": "DeepEdge: A multi-scale bifurcated deep network for top-down contour detection"
+        },
+        {
+            "paperId": "371400e61632592146f40b621fb3dbb6971721be",
+            "title": "Understanding Image Representations by Measuring Their Equivariance and Equivalence"
+        },
+        {
+            "paperId": "fb91db6aa4f710814f8aec28a7f3ecbc4e5ad4fd",
+            "title": "Deeply-Supervised Nets"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "d6c29c6b00233b7b2e5c70d86d87fdd5a05a9674",
+            "title": "N4-Fields: Neural Network Nearest Neighbor Fields for Image Transforms"
+        },
+        {
+            "paperId": "f0702ac2ff15ffc27eb30ac812ec14f3ec40d71e",
+            "title": "Visual Boundary Prediction: A Deep Neural Prediction Network and Quality Dissection"
+        },
+        {
+            "paperId": "1a2a770d23b4a171fa81de62a78a3deb0588f238",
+            "title": "Visualizing and Understanding Convolutional Networks"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "8f7214bafbed6d4dfd397c35315c7275d5608f61",
+            "title": "Learning Invariant Representations with Local Transformations"
+        },
+        {
+            "paperId": "0dbd40ee4700a3ff813ac52c798cdfba46ef6c29",
+            "title": "2D/3D rotation-invariant detection using equivariant filters and kernel weighted mapping"
+        },
+        {
+            "paperId": "23593d08d7fe3b87e59343f194cf72a092d36304",
+            "title": "Learning rotation-aware features: From invariant priors to equivariant descriptors"
+        },
+        {
+            "paperId": "20f0357688876fa4662f806f985779dce6e24f3c",
+            "title": "Transforming Auto-Encoders"
+        },
+        {
+            "paperId": "0e5a262bf59b68ba8a7a1103d16fa33a9f5ffc28",
+            "title": "Contour Detection and Hierarchical Image Segmentation"
+        },
+        {
+            "paperId": "0eb2e4a205a628ab059cab41d3b772f614ad29f2",
+            "title": "Learning to Represent Spatial Transformations with Factored Higher-Order Boltzmann Machines"
+        },
+        {
+            "paperId": "4ac0c5aeb3e4b64cdf697a4535146c7e10af7b2c",
+            "title": "Actionable information in vision"
+        },
+        {
+            "paperId": "b8012351bc5ebce4a4b3039bbbba3ce393bc3315",
+            "title": "An empirical evaluation of deep architectures on problems with many factors of variation"
+        },
+        {
+            "paperId": "6316a4b689706b0f01b40f9a3cef47b92bc52411",
+            "title": "Rotation-Invariant Neoperceptron"
+        },
+        {
+            "paperId": "993b1083455b5c4d631eaf44f230b061994e75c3",
+            "title": "The Design and Use of Steerable Filters"
+        },
+        {
+            "paperId": "86ab4cae682fbd49c5a5bedb630e5a40fa7529f6",
+            "title": "Handwritten Digit Recognition with a Back-Propagation Network"
+        }
+    ]
+}

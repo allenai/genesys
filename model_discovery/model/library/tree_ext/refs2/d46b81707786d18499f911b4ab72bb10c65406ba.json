@@ -1,0 +1,198 @@
+{
+    "paperId": "d46b81707786d18499f911b4ab72bb10c65406ba",
+    "externalIds": {
+        "MAG": "1800356822",
+        "DBLP": "journals/corr/LeJH15",
+        "ArXiv": "1504.00941",
+        "CorpusId": 299149
+    },
+    "title": "A Simple Way to Initialize Recurrent Networks of Rectified Linear Units",
+    "abstract": "Learning long term dependencies in recurrent networks is difficult due to vanishing and exploding gradients. To overcome this difficulty, researchers have developed sophisticated optimization techniques and network architectures. In this paper, we propose a simpler solution that use recurrent neural networks composed of rectified linear units. Key to our solution is the use of the identity matrix or its scaled version to initialize the recurrent weight matrix. We find that our solution is comparable to LSTM on our four benchmarks: two toy problems involving long-range temporal structures, a large language modeling problem and a benchmark speech recognition problem.",
+    "venue": "arXiv.org",
+    "year": 2015,
+    "referenceCount": 40,
+    "citationCount": 697,
+    "influentialCitationCount": 90,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a simpler solution that use recurrent neural networks composed of rectified linear units that is comparable to LSTM on four benchmarks: two toy problems involving long-range temporal structures, a large language modeling problem and a benchmark speech recognition problem."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2827616",
+            "name": "Quoc V. Le"
+        },
+        {
+            "authorId": "3111912",
+            "name": "N. Jaitly"
+        },
+        {
+            "authorId": "1695689",
+            "name": "Geoffrey E. Hinton"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "9665247ea3421929f9b6ad721f139f11edb1dbb8",
+            "title": "Learning Longer Memory in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "47570e7f63e296f224a0e7f9a0d08b0de3cbaf40",
+            "title": "Grammar as a Foreign Language"
+        },
+        {
+            "paperId": "ecd29385eb214d75fc4b310489ab11977a5d1181",
+            "title": "Random Walk Initialization for Training Very Deep Feedforward Networks"
+        },
+        {
+            "paperId": "d4dc1012d780e8e2547237eb5a6dc7b1bf47d2f0",
+            "title": "Show and tell: A neural image caption generator"
+        },
+        {
+            "paperId": "2e36ea91a3c8fbff92be2989325531b4002e2afc",
+            "title": "Unifying Visual-Semantic Embeddings with Multimodal Neural Language Models"
+        },
+        {
+            "paperId": "b04175bb99d6beff0f201ed82971aeb91d2c081d",
+            "title": "Exploring Deep Learning Methods for Discovering Features in Speech Signals"
+        },
+        {
+            "paperId": "1956c239b3552e030db1b78951f64781101125ed",
+            "title": "Addressing the Rare Word Problem in Neural Machine Translation"
+        },
+        {
+            "paperId": "0d0b3ff23fbf1ec7a0dfebd923a3ef224306491a",
+            "title": "Learning to Execute"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "0fa553cfa0cf3cbdf7a913aa2ae789a757dfb32f",
+            "title": "Towards End-To-End Speech Recognition with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "99c970348b8f70ce23d6641e201904ea49266b6e",
+            "title": "Exact solutions to the nonlinear dynamics of learning in deep linear neural networks"
+        },
+        {
+            "paperId": "5d833331b0e22ff359db05c62a8bca18c4f04b68",
+            "title": "One billion word benchmark for measuring progress in statistical language modeling"
+        },
+        {
+            "paperId": "1149888d75af4ed5dffc25731b875651c3ccdeb2",
+            "title": "Hybrid speech recognition with Deep Bidirectional LSTM"
+        },
+        {
+            "paperId": "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17",
+            "title": "Generating Sequences With Recurrent Neural Networks"
+        },
+        {
+            "paperId": "acc4e56c44771ebf69302a06af51498aeb0a6ac8",
+            "title": "Parsing with Compositional Vector Grammars"
+        },
+        {
+            "paperId": "aa7bfd2304201afbb19971ebde87b17e40242e91",
+            "title": "On the importance of initialization and momentum in deep learning"
+        },
+        {
+            "paperId": "64da1980714cfc130632c5b92b9d98c2f6763de6",
+            "title": "On rectified linear units for speech processing"
+        },
+        {
+            "paperId": "4177ec52d1b80ed57f2e72b0f9a42365f1a8598d",
+            "title": "Speech recognition with deep recurrent neural networks"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "3127190433230b3dc1abd0680bb58dced4bcd90e",
+            "title": "Large Scale Distributed Deep Networks"
+        },
+        {
+            "paperId": "84069287da0a6b488b8c933f3cb5be759cb6237e",
+            "title": "On the difficulty of training recurrent neural networks"
+        },
+        {
+            "paperId": "6658bbf68995731b2083195054ff45b4eca38b3a",
+            "title": "Context-Dependent Pre-Trained Deep Neural Networks for Large-Vocabulary Speech Recognition"
+        },
+        {
+            "paperId": "72e93aa6767ee683de7f001fa72f1314e40a8f35",
+            "title": "Building high-level features using large scale unsupervised learning"
+        },
+        {
+            "paperId": "0d6203718c15f137fda2f295c96269bc2b254644",
+            "title": "Learning Recurrent Neural Networks with Hessian-Free Optimization"
+        },
+        {
+            "paperId": "93c20e38c85b69fc2d2eb314b3c1217913f7db11",
+            "title": "Generating Text with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "413c1142de9d91804d6d11c67ff3fed59c9fc279",
+            "title": "Adaptive Subgradient Methods for Online Learning and Stochastic Optimization"
+        },
+        {
+            "paperId": "4c46347fbc272b21468efe3d9af34b4b2bad6684",
+            "title": "Deep learning via Hessian-free optimization"
+        },
+        {
+            "paperId": "a538b05ebb01a40323997629e171c91aa28b8e2f",
+            "title": "Rectified Linear Units Improve Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": "937d3a404b8870fb3ff3e243e6a0c6024eef491b",
+            "title": "A Novel Connectionist System for Unconstrained Handwriting Recognition"
+        },
+        {
+            "paperId": "047655e733a9eed9a500afd916efa566915b9110",
+            "title": "Learning Precise Timing with LSTM Recurrent Networks"
+        },
+        {
+            "paperId": "11540131eae85b2e11d53df7f1360eeb6476e7f4",
+            "title": "Learning to Forget: Continual Prediction with LSTM"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "052b1d8ce63b07fec3de9dbb583772d860b7c769",
+            "title": "Learning representations by back-propagating errors"
+        },
+        {
+            "paperId": null,
+            "title": "Lecture 6.5-rmsprop: Divide the gradient by a running average of its recent magnitude.COURSERA"
+        },
+        {
+            "paperId": "3a1a2cff2b70fb84a7ca7d97f8adcc5855851795",
+            "title": "The Kaldi Speech Recognition Toolkit"
+        },
+        {
+            "paperId": "b1a5961609c623fc816aaa77565ba38b25531a8e",
+            "title": "Neural Networks: Tricks of the Trade"
+        },
+        {
+            "paperId": "2e5f2b57f4c476dd69dc22ccdf547e48f40a994c",
+            "title": "Gradient Flow in Recurrent Nets: the Difficulty of Learning Long-Term Dependencies"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "749ce8ccd9453d1b34901143cddf5f9bee2977cf",
+            "title": "Learning representations by back-propagation errors, nature"
+        }
+    ]
+}

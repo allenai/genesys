@@ -1,0 +1,106 @@
+{
+    "paperId": "0e5d529befc3ca2e3e3371a0c39dc05731c1d5b7",
+    "externalIds": {
+        "MAG": "2796649226",
+        "DBLP": "journals/corr/abs-1804-06826",
+        "ArXiv": "1804.06826",
+        "CorpusId": 4930164
+    },
+    "title": "Dissecting the NVIDIA Volta GPU Architecture via Microbenchmarking",
+    "abstract": "Every year, novel NVIDIA GPU designs are introduced. This rapid architectural and technological progression, coupled with a reluctance by manufacturers to disclose low-level details, makes it difficult for even the most proficient GPU software designers to remain up-to-date with the technological advances at a microarchitectural level. To address this dearth of public, microarchitectural-level information on the novel NVIDIA GPUs, independent researchers have resorted to microbenchmarks-based dissection and discovery. This has led to a prolific line of publications that shed light on instruction encoding, and memory hierarchy's geometry and features at each level. Namely, research that describes the performance and behavior of the Kepler, Maxwell and Pascal architectures. In this technical report, we continue this line of research by presenting the microarchitectural details of the NVIDIA Volta architecture, discovered through microbenchmarks and instruction set disassembly. Additionally, we compare quantitatively our Volta findings against its predecessors, Kepler, Maxwell and Pascal.",
+    "venue": "arXiv.org",
+    "year": 2018,
+    "referenceCount": 16,
+    "citationCount": 282,
+    "influentialCitationCount": 27,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This technical report presents the microarchitectural details of the NVIDIA Volta architecture, discovered through microbenchmarks and instruction set disassembly, and compares quantitatively the findings against its predecessors, Kepler, Maxwell and Pascal."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "48813086",
+            "name": "Zhe Jia"
+        },
+        {
+            "authorId": "138304679",
+            "name": "Marco Maggioni"
+        },
+        {
+            "authorId": "2064282343",
+            "name": "Benjamin Staiger"
+        },
+        {
+            "authorId": "3277273",
+            "name": "D. Scarpazza"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "d976bb3e73493db9b059e61601e1cfe8e48c597c",
+            "title": "Understanding the GPU Microarchitecture to Achieve Bare-Metal Performance Tuning"
+        },
+        {
+            "paperId": "a170a2e07d02b1ee0281f8f657aef820cb303d4c",
+            "title": "Dissecting GPU Memory Hierarchy Through Microbenchmarking"
+        },
+        {
+            "paperId": "4fe1c707a48869cbbdf3eb0384e526d1d294f7e2",
+            "title": "maxDNN: An Efficient Convolution Kernel for Deep Learning with Maxwell GPUs"
+        },
+        {
+            "paperId": "9eaa5628b3458a2bdfb6d7423b5e76c768d9e710",
+            "title": "Performance upper bound analysis and optimization of SGEMM on Fermi and Kepler GPUs"
+        },
+        {
+            "paperId": "8417b4ac1216510bb64e59592ee53df4d56d82d2",
+            "title": "Autotuning GEMM Kernels for the Fermi GPU"
+        },
+        {
+            "paperId": "96501cb481db24649ce88639ba0a4943098ec013",
+            "title": "Fast implementation of DGEMM on Fermi GPU"
+        },
+        {
+            "paperId": "3f946f896f42aed7ba872db7d4625e87e5fefd7f",
+            "title": "An Improved Magma Gemm For Fermi Graphics Processing Units"
+        },
+        {
+            "paperId": "23177452df15b652dd54a59324502b92c99687a7",
+            "title": "Demystifying GPU microarchitecture through microbenchmarking"
+        },
+        {
+            "paperId": "356869aa0ae8d598e956c7f2ae884bbf5009c98c",
+            "title": "NVIDIA Tesla: A Unified Graphics and Computing Architecture"
+        },
+        {
+            "paperId": null,
+            "title": "The World's Most Advanced Data Center GPU. NVIDIA Corporation"
+        },
+        {
+            "paperId": null,
+            "title": "maxas"
+        },
+        {
+            "paperId": null,
+            "title": "Nvidia cuobjdump and nvdisasm"
+        },
+        {
+            "paperId": null,
+            "title": "Tuning performance on Kepler GPUs: An introduction to Kepler assembler and its usage in CNN optimization"
+        },
+        {
+            "paperId": null,
+            "title": "GeForce GTX 980 -Featuring Maxwell, The Most Advanced GPU Ever Made"
+        },
+        {
+            "paperId": null,
+            "title": "Asfermi"
+        },
+        {
+            "paperId": null,
+            "title": "NVIDIA's Next Generation CUDA Compute Architecture: Fermi. NVIDIA Corporation"
+        }
+    ]
+}

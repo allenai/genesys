@@ -1,0 +1,169 @@
+{
+    "paperId": "003376467ba21a6321bbe31d99173a4fd5e21f34",
+    "externalIds": {
+        "DBLP": "conf/nips/BurkovL18",
+        "MAG": "2891758168",
+        "CorpusId": 54056186
+    },
+    "title": "Deep Neural Networks with Box Convolutions",
+    "abstract": "Box filters computed using integral images have been part of the computer vision toolset for a long time. Here, we show that a convolutional layer that computes box filter responses in a sliding manner can be used within deep architectures, whereas the dimensions and the offsets of the sliding boxes in such a layer can be learned as part of an end-to-end loss minimization. Crucially, the training process can make the size of the boxes in such a layer arbitrarily large without incurring extra computational cost and without the need to increase the number of learnable parameters. Due to its ability to integrate information over large boxes, the new layer facilitates long-range propagation of information and leads to the efficient increase of the receptive fields of downstream units in the network. By incorporating the new layer into existing architectures for semantic segmentation, we are able to achieve both the increase in segmentation accuracy as well as the decrease in the computational cost and the number of learnable parameters.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2018,
+    "referenceCount": 35,
+    "citationCount": 11,
+    "influentialCitationCount": 3,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that a convolutional layer that computes box filter responses in a sliding manner can be used within deep architectures, whereas the dimensions and the offsets of the sliding boxes in such a layer can be learned as part of an end-to-end loss minimization."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "52225338",
+            "name": "Egor Burkov"
+        },
+        {
+            "authorId": "1740145",
+            "name": "V. Lempitsky"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "1031a69923b80ad01cf3fbb703d10757a80e699b",
+            "title": "Pyramid Scene Parsing Network"
+        },
+        {
+            "paperId": "5b6ec746d309b165f9f9def873a2375b6fb40f3d",
+            "title": "Xception: Deep Learning with Depthwise Separable Convolutions"
+        },
+        {
+            "paperId": "5f168d6933ba90c241ad0295b01e43538883d524",
+            "title": "DeepProposals: Hunting Objects and Actions by Cascading Deep Convolutional Layers"
+        },
+        {
+            "paperId": "daf74c34f7da0695b154f645c8b78a7397a98f16",
+            "title": "ENet: A Deep Neural Network Architecture for Real-Time Semantic Segmentation"
+        },
+        {
+            "paperId": "cab372bc3824780cce20d9dd1c22d4df39ed081a",
+            "title": "DeepLab: Semantic Image Segmentation with Deep Convolutional Nets, Atrous Convolution, and Fully Connected CRFs"
+        },
+        {
+            "paperId": "c8c494ee5488fe20e0aa01bddf3fc4632086d654",
+            "title": "The Cityscapes Dataset for Semantic Urban Scene Understanding"
+        },
+        {
+            "paperId": "c1baa0d7c0680e528285aebdac73649ec5dc823c",
+            "title": "Fast, Exact and Multi-scale Inference for Semantic Image Segmentation with Deep Gaussian CRFs"
+        },
+        {
+            "paperId": "b5c26ab8767d046cb6e32d959fdf726aee89bb62",
+            "title": "Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "7f5fc84819c0cf94b771fe15141f65b123f7b8ec",
+            "title": "Multi-Scale Context Aggregation by Dilated Convolutions"
+        },
+        {
+            "paperId": "45804983d4ed401584546438cc9a88880712968b",
+            "title": "Aggregating Local Deep Features for Image Retrieval"
+        },
+        {
+            "paperId": "b73e2d40da901ad3da3813670a51c52803d7af7e",
+            "title": "SUN RGB-D: A RGB-D scene understanding benchmark suite"
+        },
+        {
+            "paperId": "6364fdaa0a0eccd823a779fcdd489173f938e91a",
+            "title": "U-Net: Convolutional Networks for Biomedical Image Segmentation"
+        },
+        {
+            "paperId": "e0945081b5b87187a53d4329cf77cd8bff635795",
+            "title": "Highway Networks"
+        },
+        {
+            "paperId": "7ffdbc358b63378f07311e883dddacc9faeeaf4b",
+            "title": "Fast R-CNN"
+        },
+        {
+            "paperId": "ca5c766b2d31a1f5ce8896a0a42b40a2bff9323a",
+            "title": "Conditional Random Fields as Recurrent Neural Networks"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "33af9298e5399269a12d4b9901492fe406af62b4",
+            "title": "Striving for Simplicity: The All Convolutional Net"
+        },
+        {
+            "paperId": "6fc6803df5f9ae505cae5b2f178ade4062c768d0",
+            "title": "Fully convolutional networks for semantic segmentation"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "c66758c1029a463489f26aeb3955f333b37f727a",
+            "title": "Learning Deep Structured Models"
+        },
+        {
+            "paperId": "a62c2e5e1ebb68559a5287e1bce4f28f6b76d9c1",
+            "title": "Decision Forests: A Unified Framework for Classification, Regression, Density Estimation, Manifold Learning and Semi-Supervised Learning"
+        },
+        {
+            "paperId": "d136d77dcdfb34381d8f581f3866d10293a519fd",
+            "title": "Semantic texton forests for image categorization and segmentation"
+        },
+        {
+            "paperId": "f07260deea7dea6dfe82d208731f4790e37cb3b3",
+            "title": "TextonBoost: Joint Appearance, Shape and Context Modeling for Multi-class Object Recognition and Segmentation"
+        },
+        {
+            "paperId": "e0b1226910fd8deb67c0b64b37c120e0f0aa967e",
+            "title": "Detecting Pedestrians Using Patterns of Motion and Appearance"
+        },
+        {
+            "paperId": "a8e8f3c8d4418c8d62e306538c9c1292635e9d27",
+            "title": "Backpropagation Applied to Handwritten Zip Code Recognition"
+        },
+        {
+            "paperId": "21b58c8aba44c173493e418a797a1f36c6dae8a9",
+            "title": "ERFNet: Efficient Residual Factorized ConvNet for Real-Time Semantic Segmentation"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "3449b65008b27f6e60a73d80c1fd990f0481126b",
+            "title": "Torch7: A Matlab-like Environment for Machine Learning"
+        },
+        {
+            "paperId": "fd375345cbd203aa9c88e1aa3c2e4e1835548b10",
+            "title": "Integral Channel Features"
+        },
+        {
+            "paperId": "57d797a1389ed6211ef39e203eecabcd0d7e37e5",
+            "title": "Fast Template Matching"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "ef3ed634a28eee78a7e31fc525cf7083e6689345",
+            "title": "A real-time algorithm for signal analysis with the help of the wavelet transform"
+        }
+    ]
+}

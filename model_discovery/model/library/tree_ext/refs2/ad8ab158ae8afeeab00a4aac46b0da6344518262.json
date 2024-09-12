@@ -1,0 +1,133 @@
+{
+    "paperId": "ad8ab158ae8afeeab00a4aac46b0da6344518262",
+    "externalIds": {
+        "MAG": "2578798508",
+        "DBLP": "conf/icml/SiHD16",
+        "CorpusId": 6096622
+    },
+    "title": "Computationally Efficient Nystr\u00f6m Approximation using Fast Transforms",
+    "abstract": "Our goal is to improve the training and prediction time of Nystrom method, which is a widely-used technique for generating low-rank kernel matrix approximations. When applying the Nystrom approximation for large-scale applications, both training and prediction time is dominated by computing kernel values between a data point and all landmark points. With m landmark points, this computation requires \u0398(md) time (flops), where d is the input dimension. In this paper, we propose the use of a family of fast transforms to generate structured landmark points for Nystrom approximation. By exploiting fast transforms, e.g., Haar transform and Hadamard transform, our modified Nystrom method requires only \u0398(m) or \u0398(mlog d) time to compute the kernel values between a given data point and m landmark points. This improvement in time complexity can significantly speed up kernel approximation and benefit prediction speed in kernel machines. For instance, on the webspam data (more than 300,000 data points), our proposed algorithm enables kernel SVM prediction to deliver 98% accuracy and the resulting prediction time is 1000 times faster than LIB-SVM and only 10 times slower than linear SVM prediction (which yields only 91% accuracy).",
+    "venue": "International Conference on Machine Learning",
+    "year": 2016,
+    "referenceCount": 24,
+    "citationCount": 10,
+    "influentialCitationCount": 1,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes the use of a family of fast transforms to generate structured landmark points for Nystrom approximation by exploiting fast transforms, e.g., Haar transform and Hadamard transform, which can significantly speed up kernel approximation and benefit prediction speed in kernel machines."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3422911",
+            "name": "Si Si"
+        },
+        {
+            "authorId": "1793529",
+            "name": "Cho-Jui Hsieh"
+        },
+        {
+            "authorId": "1783667",
+            "name": "I. Dhillon"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "6dfb4cf44186817d5445eb1aafd351da49637dbc",
+            "title": "Spherical Random Features for Polynomial Kernels"
+        },
+        {
+            "paperId": "cdcdaabfebbd82c1ecff26e82ff1343d41ec9360",
+            "title": "Less is More: Nystr\u00f6m Computational Regularization"
+        },
+        {
+            "paperId": "ab0415e75ac1e1e5e684f86678a7e2096a4bb99e",
+            "title": "Double Nystr\u00f6m Method: An Efficient and Accurate Nystr\u00f6m Scheme for Large-Scale Data Sets"
+        },
+        {
+            "paperId": "ef2cb3b03f95de248be6530c38fea525e5e817ba",
+            "title": "Fast Prediction for Large-Scale Kernel Machines"
+        },
+        {
+            "paperId": "18c7fb55ff796db5c5a604e0ca44b6baaeb12239",
+            "title": "Fastfood: Approximate Kernel Expansions in Loglinear Time"
+        },
+        {
+            "paperId": "6007164957cced3e5d5b02d3402ea82c3530d852",
+            "title": "Scalable Kernel Methods via Doubly Stochastic Gradients"
+        },
+        {
+            "paperId": "2b55f034a3874ad4a4b7f389e6f89e3bf2d1801e",
+            "title": "Quasi-Monte Carlo Feature Maps for Shift-Invariant Kernels"
+        },
+        {
+            "paperId": "58c85498e23c86f526223e661e250007794c8d67",
+            "title": "Memory Efficient Kernel Approximation"
+        },
+        {
+            "paperId": "8ca1448151f026af6eb986bde6124e4310039461",
+            "title": "Logarithmic Time Online Multiclass prediction"
+        },
+        {
+            "paperId": "a3b39efea137930d7534baa40c480324fba1e84c",
+            "title": "A Divide-and-Conquer Solver for Kernel Support Vector Machines"
+        },
+        {
+            "paperId": "8dcdd6d61b735c529bf50b514a262d9e40f633d9",
+            "title": "Local Deep Kernel Learning for Efficient Non-linear SVM Prediction"
+        },
+        {
+            "paperId": "7cda32aeefdd3cabd76871b8ee06bd1a1ea2ba10",
+            "title": "Revisiting the Nystrom Method for Improved Large-scale Machine Learning"
+        },
+        {
+            "paperId": "03a3ba746584c01ed62c73e805d62336839582ae",
+            "title": "Random Feature Maps for Dot Product Kernels"
+        },
+        {
+            "paperId": "5e86db3683931837a68e9843686be16b42510ea1",
+            "title": "Clustered Nystr\u00f6m Method for Large Scale Manifold Learning and Dimension Reduction"
+        },
+        {
+            "paperId": "a67530a9e9e96720278ae1278baa53f48b944bd6",
+            "title": "Making Large-Scale Nystr\u00f6m Approximation Possible"
+        },
+        {
+            "paperId": "6c9a5ffb58b827a71be5b0c67ceb97900873b847",
+            "title": "Optimized fixed-size kernel models for large data sets"
+        },
+        {
+            "paperId": "47aa6d7381cc9993da60e4547b01f415a04f3cf2",
+            "title": "Weighted Sums of Random Kitchen Sinks: Replacing minimization with randomization in learning"
+        },
+        {
+            "paperId": "ed2f7914bf51168842f33618d50f1e5f21622548",
+            "title": "Improved Nystr\u00f6m low-rank approximation and error analysis"
+        },
+        {
+            "paperId": "7a59fde27461a3ef4a21a249cc403d0d96e4a0d7",
+            "title": "Random Features for Large-Scale Kernel Machines"
+        },
+        {
+            "paperId": "11e6b5a30a921e6028662105148fac41a76f0500",
+            "title": "On the Nystr\u00f6m Method for Approximating a Gram Matrix for Improved Kernel-Based Learning"
+        },
+        {
+            "paperId": null,
+            "title": "Computationally Efficient Nystr\u00f6m Approximation using Fast Transforms"
+        },
+        {
+            "paperId": "6d73c9947d840cd84a8eee79c224add5fbbb929e",
+            "title": "FINDING STRUCTURE WITH RANDOMNESS : PROBABILISTIC ALGORITHMS FOR CONSTRUCTING"
+        },
+        {
+            "paperId": null,
+            "title": "Ensemble Nystr\u00f6m methods"
+        },
+        {
+            "paperId": "b6fff8b8ea77f157913986e7af53951d9fc1128e",
+            "title": "Using the Nystr\u00f6m Method to Speed Up Kernel Machines"
+        }
+    ]
+}

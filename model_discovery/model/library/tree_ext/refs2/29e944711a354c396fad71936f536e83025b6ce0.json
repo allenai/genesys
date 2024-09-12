@@ -1,0 +1,170 @@
+{
+    "paperId": "29e944711a354c396fad71936f536e83025b6ce0",
+    "externalIds": {
+        "MAG": "2950151997",
+        "DBLP": "journals/corr/JangGP16",
+        "ArXiv": "1611.01144",
+        "CorpusId": 2428314
+    },
+    "title": "Categorical Reparameterization with Gumbel-Softmax",
+    "abstract": "Categorical variables are a natural choice for representing discrete structure in the world. However, stochastic neural networks rarely use categorical latent variables due to the inability to backpropagate through samples. In this work, we present an efficient gradient estimator that replaces the non-differentiable sample from a categorical distribution with a differentiable sample from a novel Gumbel-Softmax distribution. This distribution has the essential property that it can be smoothly annealed into a categorical distribution. We show that our Gumbel-Softmax estimator outperforms state-of-the-art gradient estimators on structured output prediction and unsupervised generative modeling tasks with categorical latent variables, and enables large speedups on semi-supervised classification.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2016,
+    "referenceCount": 33,
+    "citationCount": 4753,
+    "influentialCitationCount": 587,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that the Gumbel-Softmax estimator outperforms state-of-the-art gradient estimators on structured output prediction and unsupervised generative modeling tasks with categorical latent variables, and enables large speedups on semi-supervised classification."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145116380",
+            "name": "Eric Jang"
+        },
+        {
+            "authorId": "2046135",
+            "name": "S. Gu"
+        },
+        {
+            "authorId": "16443937",
+            "name": "Ben Poole"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "6ce1922802169f757bbafc6e087cc274a867c763",
+            "title": "Regularizing Neural Networks by Penalizing Confident Output Distributions"
+        },
+        {
+            "paperId": "515a21e90117941150923e559729c59f5fdade1c",
+            "title": "The Concrete Distribution: A Continuous Relaxation of Discrete Random Variables"
+        },
+        {
+            "paperId": "be8c6c69f3e357bfad2987e45b62cff7e7474378",
+            "title": "Scaling Memory-Augmented Neural Networks with Sparse Reads and Writes"
+        },
+        {
+            "paperId": "784ee73d5363c711118f784428d1ab89f019daa5",
+            "title": "Hybrid computing using a neural network with dynamic external memory"
+        },
+        {
+            "paperId": "711683de61ee8d2aa929ec4d5d97d616b8e281d3",
+            "title": "Discrete Variational Autoencoders"
+        },
+        {
+            "paperId": "65eee67dee969fdf8b44c87c560d66ad4d78e233",
+            "title": "Hierarchical Multiscale Recurrent Neural Networks"
+        },
+        {
+            "paperId": "eb7ee0bc355652654990bcf9f92f124688fde493",
+            "title": "InfoGAN: Interpretable Representation Learning by Information Maximizing Generative Adversarial Nets"
+        },
+        {
+            "paperId": "266e8622d57457ad76224649c6b00adf23c0b76d",
+            "title": "Variational Inference for Monte Carlo Objectives"
+        },
+        {
+            "paperId": "23ffaa0fe06eae05817f527a47ac3291077f9e58",
+            "title": "Rethinking the Inception Architecture for Computer Vision"
+        },
+        {
+            "paperId": "c25b7e6f45a7bb15a23c737c711f200c131d6b68",
+            "title": "MuProp: Unbiased Backpropagation for Stochastic Neural Networks"
+        },
+        {
+            "paperId": "438bb3d46e72b177ed1c9b7cd2c11a045644a1f4",
+            "title": "Gradient Estimation Using Stochastic Computation Graphs"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "29232ff5aa884ea0f1bcda7c32e23ccd1dd6f7c0",
+            "title": "A* Sampling"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "66ad2fbc8b73242a889699868611fcf239e3435d",
+            "title": "Semi-supervised Learning with Deep Generative Models"
+        },
+        {
+            "paperId": "c965bac486a714d47a6362248f0a959c77622738",
+            "title": "Techniques for Learning Binary Stochastic Feedforward Neural Networks"
+        },
+        {
+            "paperId": "331f0fb3b6176c6e463e0401025b04f6ace9ccd3",
+            "title": "Neural Variational Inference and Learning in Belief Networks"
+        },
+        {
+            "paperId": "484ad17c926292fbe0d5211540832a8c8a8e958b",
+            "title": "Stochastic Backpropagation and Approximate Inference in Deep Generative Models"
+        },
+        {
+            "paperId": "5f5dc5b9a2ba710937e2c413b37b053cd673df02",
+            "title": "Auto-Encoding Variational Bayes"
+        },
+        {
+            "paperId": "695a2c95eacdbccb7a73d2f1e90e7b35b4b3d864",
+            "title": "Deep AutoRegressive Networks"
+        },
+        {
+            "paperId": "62c76ca0b2790c34e85ba1cce09d47be317c7235",
+            "title": "Estimating or Propagating Gradients Through Stochastic Neurons for Conditional Computation"
+        },
+        {
+            "paperId": "9ceb1dea15ac3df3d610fd0b3cc52b9a4e9141a3",
+            "title": "Variational Bayesian Inference with Stochastic Search"
+        },
+        {
+            "paperId": "bd5fc28c7356915ec71abafbe86b7596c60720aa",
+            "title": "The conference paper"
+        },
+        {
+            "paperId": "08d0ea90b53aba0008d25811268fe46562cfb38c",
+            "title": "On the quantitative analysis of deep belief networks"
+        },
+        {
+            "paperId": "977817f265cf7b6976442bdefbe81cd05f3139b9",
+            "title": "Likelihood ratio gradient estimation for stochastic systems"
+        },
+        {
+            "paperId": "1d70fed85b2bf8eaac0878b88c3934d62578cb8a",
+            "title": "Statistical Theory of Extreme Values and Some Practical Applications"
+        },
+        {
+            "paperId": "bcd857d75841aa3e92cd4284a8818aba9f6c0c3f",
+            "title": "Published as a conference paper at ICLR 2018 S IMULATING A CTION D YNAMICS WITH N EURAL P ROCESS N ETWORKS"
+        },
+        {
+            "paperId": "e4351041d25c272a008bcd5765868dc3a28fe470",
+            "title": "Under Review as a Conference Paper at Iclr 2017 Delving into Transferable Adversarial Ex- Amples and Black-box Attacks"
+        },
+        {
+            "paperId": null,
+            "title": "Lasse Espeholt, Alex Graves, and Koray Kavukcuoglu. Conditional image generation with pixelcnn decoders. CoRR, abs/1606"
+        },
+        {
+            "paperId": "b893e7053c9c7e266a23fb13a42261a88f650210",
+            "title": "The Neural Autoregressive Distribution Estimator"
+        },
+        {
+            "paperId": "4c915c1eecb217c123a36dc6d3ce52d12c742614",
+            "title": "Simple Statistical Gradient-Following Algorithms for Connectionist Reinforcement Learning"
+        },
+        {
+            "paperId": "6e103f45ce2f653fd7aafcf67afa80c39130294f",
+            "title": "Statistical Theory of Extreme Values and Some Practical Applications : A Series of Lectures"
+        },
+        {
+            "paperId": "1ee27c66fabde8ffe90bd2f4ccee5835f8dedbb9",
+            "title": "9 Entropy Regularization"
+        }
+    ]
+}

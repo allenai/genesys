@@ -1,0 +1,190 @@
+{
+    "paperId": "27e98e09cf09bc13c913d01676e5f32624011050",
+    "externalIds": {
+        "DBLP": "journals/corr/abs-1810-06638",
+        "ArXiv": "1810.06638",
+        "MAG": "2897076808",
+        "CorpusId": 53116060
+    },
+    "title": "U-Net: Machine Reading Comprehension with Unanswerable Questions",
+    "abstract": "Machine reading comprehension with unanswerable questions is a new challenging task for natural language processing. A key subtask is to reliably predict whether the question is unanswerable. In this paper, we propose a unified model, called U-Net, with three important components: answer pointer, no-answer pointer, and answer verifier. We introduce a universal node and thus process the question and its context passage as a single contiguous sequence of tokens. The universal node encodes the fused information from both the question and passage, and plays an important role to predict whether the question is answerable and also greatly improves the conciseness of the U-Net. Different from the state-of-art pipeline models, U-Net can be learned in an end-to-end fashion. The experimental results on the SQuAD 2.0 dataset show that U-Net can effectively predict the unanswerability of questions and achieves an F1 score of 71.7 on SQuAD 2.0.",
+    "venue": "arXiv.org",
+    "year": 2018,
+    "referenceCount": 37,
+    "citationCount": 47,
+    "influentialCitationCount": 6,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A unified model, called U-Net, with three important components: answer pointer, no-answer pointer, and answer verifier is proposed, which can effectively predict the unanswerability of questions and achieves an F1 score of 71.7 on SQuAD 2.0."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2075375390",
+            "name": "Fu Sun"
+        },
+        {
+            "authorId": "2107897400",
+            "name": "Linyang Li"
+        },
+        {
+            "authorId": "1767521",
+            "name": "Xipeng Qiu"
+        },
+        {
+            "authorId": "2152797548",
+            "name": "Yang Liu"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "26b47e35fe6e4260fdf7b7cc98f279a73c277494",
+            "title": "Multi-Granularity Hierarchical Attention Fusion Networks for Reading Comprehension and Question Answering"
+        },
+        {
+            "paperId": "bb6daf3bd95668ea9775d7e06d8b3f6994306cb7",
+            "title": "I Know There Is No Answer: Modeling Answer Validation for Machine Reading Comprehension"
+        },
+        {
+            "paperId": "9a5ba9aee44ab873f3d60b05e2773c693707da88",
+            "title": "Read + Verify: Machine Reading Comprehension with Unanswerable Questions"
+        },
+        {
+            "paperId": "4d1c856275744c0284312a3a50efb6ca9dc4cd4c",
+            "title": "Know What You Don\u2019t Know: Unanswerable Questions for SQuAD"
+        },
+        {
+            "paperId": "3febb2bed8865945e7fddc99efd791887bb7e14f",
+            "title": "Deep Contextualized Word Representations"
+        },
+        {
+            "paperId": "8490431f3a76fbd165d108eba938ead212a2a639",
+            "title": "Stochastic Answer Networks for Machine Reading Comprehension"
+        },
+        {
+            "paperId": "1fe6bee85774244d8674cbb20a25e8d153cecb17",
+            "title": "FusionNet: Fusing via Fully-Aware Attention with Application to Machine Comprehension"
+        },
+        {
+            "paperId": "3c78c6df5eb1695b6a399e346dde880af27d1016",
+            "title": "Simple and Effective Multi-Paragraph Reading Comprehension"
+        },
+        {
+            "paperId": "b798cfd967e1a9ca5e7bc995d33a907bf65d1c7f",
+            "title": "Gated Self-Matching Networks for Reading Comprehension and Question Answering"
+        },
+        {
+            "paperId": "fa025e5d117929361bcf798437957762eb5bb6d4",
+            "title": "Zero-Shot Relation Extraction via Reading Comprehension"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "e0222a1ae6874f7fff128c3da8769ab95963da04",
+            "title": "Reinforced Mnemonic Reader for Machine Reading Comprehension"
+        },
+        {
+            "paperId": "42d2338a8c2e44154e10ff4d68a3c389aeca3913",
+            "title": "Reinforced Mnemonic Reader for Machine Comprehension"
+        },
+        {
+            "paperId": "104715e1097b7ebee436058bfd9f45540f269845",
+            "title": "Reading Wikipedia to Answer Open-Domain Questions"
+        },
+        {
+            "paperId": "e978d832a4d86571e1b52aa1685dc32ccb250f50",
+            "title": "Dynamic Coattention Networks For Question Answering"
+        },
+        {
+            "paperId": "3a7b63b50c64f4ec3358477790e84cbd6be2a0b4",
+            "title": "Bidirectional Attention Flow for Machine Comprehension"
+        },
+        {
+            "paperId": "97e6ed1f7e5de0034f71c370c01f59c87aaf9a72",
+            "title": "Learning Recurrent Span Representations for Extractive Question Answering"
+        },
+        {
+            "paperId": "c636a2dd242908fe2e598a1077c0c57bfdea8633",
+            "title": "ReasoNet: Learning to Stop Reading in Machine Comprehension"
+        },
+        {
+            "paperId": "ff1861b71eaedba46cb679bbe2c585dbe18f9b19",
+            "title": "Machine Comprehension Using Match-LSTM and Answer Pointer"
+        },
+        {
+            "paperId": "5694e46284460a648fe29117cbc55f6c9be3fa3c",
+            "title": "Densely Connected Convolutional Networks"
+        },
+        {
+            "paperId": "c6e5df6322659276da6133f9b734a389d7a255e8",
+            "title": "Attention-over-Attention Neural Networks for Reading Comprehension"
+        },
+        {
+            "paperId": "05dd7254b632376973f3a1b4d39485da17814df5",
+            "title": "SQuAD: 100,000+ Questions for Machine Comprehension of Text"
+        },
+        {
+            "paperId": "0f2ea810c16275dc74e880296e20dbd83b1bae1c",
+            "title": "Gated-Attention Readers for Text Comprehension"
+        },
+        {
+            "paperId": "35b91b365ceb016fb3e022577cec96fb9b445dc5",
+            "title": "The Goldilocks Principle: Reading Children's Books with Explicit Memory Representations"
+        },
+        {
+            "paperId": "452059171226626718eb677358836328f884298e",
+            "title": "Ask Me Anything: Dynamic Memory Networks for Natural Language Processing"
+        },
+        {
+            "paperId": "d1505c6123c102e53eb19dff312cb25cea840b72",
+            "title": "Teaching Machines to Read and Comprehend"
+        },
+        {
+            "paperId": "9653d5c2c7844347343d073bbedd96e05d52f69b",
+            "title": "Pointer Networks"
+        },
+        {
+            "paperId": "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e",
+            "title": "End-To-End Memory Networks"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "161ffb54a3fdf0715b198bb57bd22f910242eb49",
+            "title": "Multitask Learning"
+        },
+        {
+            "paperId": null,
+            "title": "and Gardner"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": null,
+            "title": "and Ba"
+        },
+        {
+            "paperId": null,
+            "title": "and Schmidhuber"
+        }
+    ]
+}

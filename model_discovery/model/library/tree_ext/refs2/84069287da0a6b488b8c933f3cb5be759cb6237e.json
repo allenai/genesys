@@ -1,0 +1,182 @@
+{
+    "paperId": "84069287da0a6b488b8c933f3cb5be759cb6237e",
+    "externalIds": {
+        "ArXiv": "1211.5063",
+        "DBLP": "conf/icml/PascanuMB13",
+        "MAG": "2949190276",
+        "CorpusId": 14650762
+    },
+    "title": "On the difficulty of training recurrent neural networks",
+    "abstract": "There are two widely known issues with properly training recurrent neural networks, the vanishing and the exploding gradient problems detailed in Bengio et al. (1994). In this paper we attempt to improve the understanding of the underlying issues by exploring these problems from an analytical, a geometric and a dynamical systems perspective. Our analysis is used to justify a simple yet effective solution. We propose a gradient norm clipping strategy to deal with exploding gradients and a soft constraint for the vanishing gradients problem. We validate empirically our hypothesis and proposed solutions in the experimental section.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2012,
+    "referenceCount": 36,
+    "citationCount": 5024,
+    "influentialCitationCount": 333,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a gradient norm clipping strategy to deal with exploding gradients and a soft constraint for the vanishing gradients problem and validates empirically the hypothesis and proposed solutions."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1996134",
+            "name": "Razvan Pascanu"
+        },
+        {
+            "authorId": "2047446108",
+            "name": "Tomas Mikolov"
+        },
+        {
+            "authorId": "1751762",
+            "name": "Yoshua Bengio"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "ded103d0613e1a8f51f586cc1678aee3ff26e811",
+            "title": "Advances in optimizing recurrent networks"
+        },
+        {
+            "paperId": "855d0f722d75cc56a66a00ede18ace96bafee6bd",
+            "title": "Theano: new features and speed improvements"
+        },
+        {
+            "paperId": "07c43a3ff15f2104022f2b1ca8ec4128a930b414",
+            "title": "Modeling Temporal Dependencies in High-Dimensional Sequences: Application to Polyphonic Music Generation and Transcription"
+        },
+        {
+            "paperId": "35b7ceb6d4bfb81eaf005138fd9b058991951836",
+            "title": "Long Short-Term Memory in Echo State Networks: Details of a Simulation Study"
+        },
+        {
+            "paperId": "77dfe038a9bdab27c4505444931eaa976e9ec667",
+            "title": "Empirical Evaluation and Combination of Advanced Language Modeling Techniques"
+        },
+        {
+            "paperId": "0d6203718c15f137fda2f295c96269bc2b254644",
+            "title": "Learning Recurrent Neural Networks with Hessian-Free Optimization"
+        },
+        {
+            "paperId": "93c20e38c85b69fc2d2eb314b3c1217913f7db11",
+            "title": "Generating Text with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "52121b38358023f1aa3c010434f605e69b612043",
+            "title": "On the training of recurrent neural networks"
+        },
+        {
+            "paperId": "4f317d3533d814512a18a427f4c901aae23ea42c",
+            "title": "A neurodynamical model for working memory"
+        },
+        {
+            "paperId": "413c1142de9d91804d6d11c67ff3fed59c9fc279",
+            "title": "Adaptive Subgradient Methods for Online Learning and Stochastic Optimization"
+        },
+        {
+            "paperId": "69e5339c0c3928a354e848b9ccf5349f6397e60b",
+            "title": "Reservoir computing approaches to recurrent neural network training"
+        },
+        {
+            "paperId": "937d3a404b8870fb3ff3e243e6a0c6024eef491b",
+            "title": "A Novel Connectionist System for Unconstrained Handwriting Recognition"
+        },
+        {
+            "paperId": "370984d3910e61d41ee8318714cd610b689de726",
+            "title": "2007 Special Issue: Optimization and applications of echo state networks with leaky- integrator neurons"
+        },
+        {
+            "paperId": "46857f0c98f223622ad530b6fc4e446fb9187082",
+            "title": "Harnessing Nonlinearity: Predicting Chaotic Systems and Saving Energy in Wireless Communication"
+        },
+        {
+            "paperId": "6bdabcdcde21d4d71321935e2e0332e32eda5366",
+            "title": "New results on recurrent network training: unifying the algorithms and accelerating convergence"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "1968d22f1c2539e23bb9661c3a7c5939b3f8afcc",
+            "title": "Nonlinear Dynamics and Chaos: With Applications to Physics, Biology, Chemistry and Engineering"
+        },
+        {
+            "paperId": "d0be39ee052d246ae99c082a565aba25b811be2d",
+            "title": "Learning long-term dependencies with gradient descent is difficult"
+        },
+        {
+            "paperId": "3f1d04f57e420f0f1b2cd059deab309bc7073ca1",
+            "title": "The problem of learning long-term dependencies in recurrent networks"
+        },
+        {
+            "paperId": "17594df98c222217a11510dd454ba52a5a737378",
+            "title": "On the computational power of neural nets"
+        },
+        {
+            "paperId": "27effe5b6f077bf9cef35832495ab651291b2909",
+            "title": "Adaptive Synchronization of Neural and Physical Oscillators"
+        },
+        {
+            "paperId": "668087f0ae7ce1de6e0bd0965dbb480c08103260",
+            "title": "Finding Structure in Time"
+        },
+        {
+            "paperId": "ce9a21b93ba29d4145a8ef6bf401e77f261848de",
+            "title": "A Learning Algorithm for Continually Running Fully Recurrent Neural Networks"
+        },
+        {
+            "paperId": "052b1d8ce63b07fec3de9dbb583772d860b7c769",
+            "title": "Learning representations by back-propagating errors"
+        },
+        {
+            "paperId": "f34607a6aa2d984e34a5ce7f0bdac4a860fa98a4",
+            "title": "Training Recurrent Neural Networks"
+        },
+        {
+            "paperId": "96364af2d208ea75ca3aeb71892d2f7ce7326b55",
+            "title": "Statistical Language Models Based on Neural Networks"
+        },
+        {
+            "paperId": "1fd7fc06653723b05abe5f3d1de393ddcf6bdddb",
+            "title": "SUBWORD LANGUAGE MODELING WITH NEURAL NETWORKS"
+        },
+        {
+            "paperId": null,
+            "title": "using Hessian Free), where we see a decline in success rate as the length of the sequence gets closer"
+        },
+        {
+            "paperId": null,
+            "title": "Theano: a CPU"
+        },
+        {
+            "paperId": "6b82ecf6f2dd87f5c47b5ca122a7e75d848a9caa",
+            "title": "Neural Networks with Adaptive Learning Rate and Momentum Terms"
+        },
+        {
+            "paperId": "b57927b713a6f9b73c7941f99144165396483478",
+            "title": "Bifurcations of Recurrent Neural Networks in Gradient Descent Learning"
+        },
+        {
+            "paperId": "266e07d0dd9a75b61e3632e9469993dbaf063f1c",
+            "title": "Generalization of backpropagation with application to a recurrent gas market model"
+        },
+        {
+            "paperId": null,
+            "title": "2 n now write the row vector \u2202 E t \u2202 x t into this basis: \u2202 E t \u2202 x t = (cid:80) Ni =1 c i q Ti"
+        },
+        {
+            "paperId": null,
+            "title": "Tk \u2202 x t \u2202 x k \u2202\u03b8 linear version of the parametrization in equation (11) (i.e. set \u03c3 to the identity function) and assume t goes to in\ufb01nity and l = t \u2212 k"
+        },
+        {
+            "paperId": null,
+            "title": "\u2202 x t \u2202 x k = (cid:0) W Trec (cid:1) l (12 By employing a generic power iteration method based proof we"
+        },
+        {
+            "paperId": null,
+            "title": "\u2202 E t \u2202 x t (cid:0) W Trec (cid:1) l grows exponentially"
+        }
+    ]
+}

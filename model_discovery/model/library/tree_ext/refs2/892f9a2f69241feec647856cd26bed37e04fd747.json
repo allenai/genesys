@@ -1,0 +1,274 @@
+{
+    "paperId": "892f9a2f69241feec647856cd26bed37e04fd747",
+    "externalIds": {
+        "MAG": "2963815651",
+        "ArXiv": "1603.06560",
+        "DBLP": "journals/jmlr/LiJDRT17",
+        "CorpusId": 11971778
+    },
+    "title": "Hyperband: A Novel Bandit-Based Approach to Hyperparameter Optimization",
+    "abstract": "Performance of machine learning algorithms depends critically on identifying a good set of hyperparameters. While recent approaches use Bayesian optimization to adaptively select configurations, we focus on speeding up random search through adaptive resource allocation and early-stopping. We formulate hyperparameter optimization as a pure-exploration non-stochastic infinite-armed bandit problem where a predefined resource like iterations, data samples, or features is allocated to randomly sampled configurations. We introduce a novel algorithm, Hyperband, for this framework and analyze its theoretical properties, providing several desirable guarantees. Furthermore, we compare Hyperband with popular Bayesian optimization methods on a suite of hyperparameter optimization problems. We observe that Hyperband can provide over an order-of-magnitude speedup over our competitor set on a variety of deep-learning and kernel-based learning problems.",
+    "venue": "Journal of machine learning research",
+    "year": 2016,
+    "referenceCount": 57,
+    "citationCount": 2029,
+    "influentialCitationCount": 220,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel algorithm is introduced, Hyperband, for hyperparameter optimization as a pure-exploration non-stochastic infinite-armed bandit problem where a predefined resource like iterations, data samples, or features is allocated to randomly sampled configurations."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2108744219",
+            "name": "Lisha Li"
+        },
+        {
+            "authorId": "40566417",
+            "name": "Kevin G. Jamieson"
+        },
+        {
+            "authorId": "3186812",
+            "name": "Giulia DeSalvo"
+        },
+        {
+            "authorId": "2435268",
+            "name": "Afshin Rostamizadeh"
+        },
+        {
+            "authorId": "145532827",
+            "name": "Ameet Talwalkar"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "938f6ef7eed095919e6a482c7f1836a01d62db4b",
+            "title": "Google Vizier: A Service for Black-Box Optimization"
+        },
+        {
+            "paperId": "5f2060ad5ba828288c9daa13f3bbaf0a6ac0e6f6",
+            "title": "Multi-fidelity Bayesian Optimisation with Continuous Approximations"
+        },
+        {
+            "paperId": "30423f985355d74295546f1d14ed2ddd33cdef99",
+            "title": "Bayesian Optimization with Robust Bayesian Neural Networks"
+        },
+        {
+            "paperId": "925cab60b1795c94ae6f488fda7ad71be71b5822",
+            "title": "Learning Curve Prediction with Bayesian Neural Networks"
+        },
+        {
+            "paperId": "04fe6b11280c79b91c060934be66856877e532c6",
+            "title": "Hyperband: Bandit-Based Configuration Evaluation for Hyperparameter Optimization"
+        },
+        {
+            "paperId": "cf4e443c4268a3b6face07a30599529e6f47410c",
+            "title": "Fast Bayesian Optimization of Machine Learning Hyperparameters on Large Datasets"
+        },
+        {
+            "paperId": "436dbf541aea8f24e29cec53f56cc13cd1d65ee3",
+            "title": "A Stratified Analysis of Bayesian Optimization Methods"
+        },
+        {
+            "paperId": "775a4e375cc79b53b94e37fa3eedff481823e4a6",
+            "title": "Efficient and Robust Automated Machine Learning"
+        },
+        {
+            "paperId": "1f9edb5d2779bbee8d99dcbb8d13c2a836a8e7b7",
+            "title": "Thoughts on Massively Scalable Gaussian Processes"
+        },
+        {
+            "paperId": "8f81a4d368eb3312331be933197db6e3ecd57a1c",
+            "title": "Optimization as Estimation with Gaussian Processes in Bandit Settings"
+        },
+        {
+            "paperId": "83ec245d470a3b75c0861acd5e67db5216e8e049",
+            "title": "Automating model search for large scale machine learning"
+        },
+        {
+            "paperId": "efb4431579a46d9cfa51b4ebbd4ddb9f44a30246",
+            "title": "Speeding Up Automatic Hyperparameter Optimization of Deep Neural Networks by Extrapolation of Learning Curves"
+        },
+        {
+            "paperId": "617ea1c4778bc6bc6286509eba4521cada701394",
+            "title": "Simple regret for infinitely many armed bandits"
+        },
+        {
+            "paperId": "7282c7f7f138bc79f8eb5482020684424433a4f2",
+            "title": "High Dimensional Bayesian Optimisation and Bandits via Additive Models"
+        },
+        {
+            "paperId": "c6c745d7fae9aad4294549d829f7e7415ffb1709",
+            "title": "Non-stochastic Best Arm Identification and Hyperparameter Optimization"
+        },
+        {
+            "paperId": "93bc65d2842b8cc5f3cf72ebc5b8f75daeacea35",
+            "title": "Scalable Bayesian Optimization Using Deep Neural Networks"
+        },
+        {
+            "paperId": "9be7e7579fbec5d45e3e6ea1c4465258225a183d",
+            "title": "Initializing Bayesian Hyperparameter Optimization via Meta-Learning"
+        },
+        {
+            "paperId": "681e518fd8e3e986ba25bc1fb33aac8873b521e7",
+            "title": "Using Meta-Learning to Initialize Bayesian Optimization of Hyperparameters"
+        },
+        {
+            "paperId": "4dc0e6599d543a5ad3c32b9127c9dac04e34021b",
+            "title": "On the Complexity of Best-Arm Identification in Multi-Armed Bandit Models"
+        },
+        {
+            "paperId": "52d97890dbc290108136739ec2afe0f2b6c4f570",
+            "title": "Freeze-Thaw Bayesian Optimization"
+        },
+        {
+            "paperId": "34c976240814548d87bae9526e2cd64e8f8f5041",
+            "title": "Best-arm identification algorithms for multi-armed bandits in the fixed confidence setting"
+        },
+        {
+            "paperId": "53b967ac34b5a422f81fb6947da0ba148ba90221",
+            "title": "lil' UCB : An Optimal Exploration Algorithm for Multi-Armed Bandits"
+        },
+        {
+            "paperId": "35e7925616123355a232231deb2182fb38663214",
+            "title": "Multi-Task Bayesian Optimization"
+        },
+        {
+            "paperId": "f4dde6555e6cf51c25870aa49a80dfd18452b03f",
+            "title": "Gaussian Process Optimization with Mutual Information"
+        },
+        {
+            "paperId": "6c44c8becb0cbf010470a8fb69ceba2a104e3d51",
+            "title": "Least Squares Revisited: Scalable Approaches for Multi-class Prediction"
+        },
+        {
+            "paperId": "43e0414b3cb52369c0ffece6eb043d0717776e92",
+            "title": "Almost Optimal Exploration in Multi-Armed Bandits"
+        },
+        {
+            "paperId": "7a76cd1bbd8f374c7e6bcb36296e9b7530c0e477",
+            "title": "Sharp analysis of low-rank kernel matrix approximations"
+        },
+        {
+            "paperId": "2e2089ae76fe914706e6fa90081a79c8fe01611e",
+            "title": "Practical Bayesian Optimization of Machine Learning Algorithms"
+        },
+        {
+            "paperId": "5e8e6083e430ab6bd00108b3b94ee62eea32c6f8",
+            "title": "Fast cross-validation via sequential testing"
+        },
+        {
+            "paperId": "9f7f9aba0a6a966ce04e29e401ea28f9eae82f02",
+            "title": "Convolutional neural networks applied to house numbers digit classification"
+        },
+        {
+            "paperId": "188e247506ad992b8bc62d6c74789e89891a984f",
+            "title": "Random Search for Hyper-Parameter Optimization"
+        },
+        {
+            "paperId": "676ff5d40785fa82f0c1e41547cfe88f01a29cfd",
+            "title": "Oracle inequalities for computationally budgeted model selection"
+        },
+        {
+            "paperId": "03911c85305d42aa2eeb02be82ef6fb7da644dd0",
+            "title": "Algorithms for Hyper-Parameter Optimization"
+        },
+        {
+            "paperId": "ce5bad4f63dd1832e5d229cb11164eb261c21ca2",
+            "title": "Information Rates of Nonparametric Gaussian Process Methods"
+        },
+        {
+            "paperId": "728744423ff0fb7e327664ed4e6352a95bb6c893",
+            "title": "Sequential Model-Based Optimization for General Algorithm Configuration"
+        },
+        {
+            "paperId": "30488abdb797808e264f8544a373a9d4ad9c6995",
+            "title": "Regret Bounds for Gaussian Process Bandit Problems"
+        },
+        {
+            "paperId": "a035cccf0f57b505229f0e5db1a1dfedde062d43",
+            "title": "On the Impact of Kernel Approximation on Learning Accuracy"
+        },
+        {
+            "paperId": "b5902a8ae8bbd37d363972f69f16bd1b9eb6d3b6",
+            "title": "Pure Exploration in Multi-armed Bandits Problems"
+        },
+        {
+            "paperId": "847371ea5c3eedc756bc6a78df4ad6c224c7f30b",
+            "title": "Efficient Multi-Start Strategies for Local Search Algorithms"
+        },
+        {
+            "paperId": "9aef914bbf220ac4a621183691a5ce06845f75a7",
+            "title": "Empirical Bernstein stopping"
+        },
+        {
+            "paperId": "7a59fde27461a3ef4a21a249cc403d0d96e4a0d7",
+            "title": "Random Features for Large-Scale Kernel Machines"
+        },
+        {
+            "paperId": "b8012351bc5ebce4a4b3039bbbba3ce393bc3315",
+            "title": "An empirical evaluation of deep architectures on problems with many factors of variation"
+        },
+        {
+            "paperId": "887a80f2b85c1737f8f882986d078017654f23e4",
+            "title": "Fast rates for support vector machines using Gaussian kernels"
+        },
+        {
+            "paperId": "dba141eddbbaa86f86a9831c83641ff5a7a28861",
+            "title": "Action Elimination and Stopping Conditions for the Multi-Armed Bandit and Reinforcement Learning Problems"
+        },
+        {
+            "paperId": "8c44749c8496a82512047aad0fd5e31e1b979d6a",
+            "title": "In Defense of One-Vs-All Classification"
+        },
+        {
+            "paperId": "cf35848e5e0771a3a7f7a2bae11b219840f83d2d",
+            "title": "The Racing Algorithm: Model Selection for Lazy Learners"
+        },
+        {
+            "paperId": "f9da9e6379b948cca9719887aa66e46fcb01482d",
+            "title": "The Power of Adaptivity in Identifying Statistical Alternatives"
+        },
+        {
+            "paperId": "12806c5028d7f3dfea82d332f27f40c5af831bcf",
+            "title": "Gaussian Process Bandit Optimisation with Multi-fidelity Evaluations"
+        },
+        {
+            "paperId": "175b9f0b37e1e5a04cfb1e79ae39ae420eaa4b3f",
+            "title": "Auto-WEKA : combined selection and hyperparameter optimization of supervised machine learning algorithms"
+        },
+        {
+            "paperId": "312f8804100cc836ad6fcc780f95b9f23a12f257",
+            "title": "Towards an Empirical Foundation for Assessing Bayesian Optimization of Hyperparameters"
+        },
+        {
+            "paperId": "02227c94dd41fe0b439e050d377b0beb5d427cda",
+            "title": "Reading Digits in Natural Images with Unsupervised Feature Learning"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        },
+        {
+            "paperId": null,
+            "title": "Gaussian process optimization in the bandit setting: No regret and experimental design"
+        },
+        {
+            "paperId": "13f48e541756c34afa798eacd502c8bb4689be4d",
+            "title": "ESTIMATING THE APPROXIMATION ERROR IN LEARNING THEORY"
+        },
+        {
+            "paperId": "714c6edbebe8a1bc6a85bf2b30603ab8196005b1",
+            "title": "Bandit Problems"
+        },
+        {
+            "paperId": null,
+            "title": "Proceedings of the Twenty-Third International Joint Conference on Artificial Intelligence Bayesian Optimization in High Dimensions via Random Embeddings"
+        },
+        {
+            "paperId": "fda3fa07f3f4fc5e922352b6efa2e026cd847643",
+            "title": "\u2013armed Bandits"
+        }
+    ]
+}

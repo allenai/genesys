@@ -1,0 +1,109 @@
+{
+    "paperId": "110b7719f16eae8d82af0f56fca6e802c842c181",
+    "externalIds": {
+        "MAG": "2148190602",
+        "DBLP": "conf/msr/AllamanisS13a",
+        "DOI": "10.1109/MSR.2013.6624029",
+        "CorpusId": 1857729
+    },
+    "title": "Mining source code repositories at massive scale using language modeling",
+    "abstract": "The tens of thousands of high-quality open source software projects on the Internet raise the exciting possibility of studying software development by finding patterns across truly large source code repositories. This could enable new tools for developing code, encouraging reuse, and navigating large projects. In this paper, we build the first giga-token probabilistic language model of source code, based on 352 million lines of Java. This is 100 times the scale of the pioneering work by Hindle et al. The giga-token model is significantly better at the code suggestion task than previous models. More broadly, our approach provides a new \u201clens\u201d for analyzing software projects, enabling new complexity metrics based on statistical analysis of large corpora. We call these metrics data-driven complexity metrics. We propose new metrics that measure the complexity of a code module and the topical centrality of a module to a software project. In particular, it is possible to distinguish reusable utility classes from classes that are part of a program's core logic based solely on general information theoretic criteria.",
+    "venue": "IEEE Working Conference on Mining Software Repositories",
+    "year": 2013,
+    "referenceCount": 18,
+    "citationCount": 349,
+    "influentialCitationCount": 35,
+    "openAccessPdf": {
+        "url": "https://www.pure.ed.ac.uk/ws/files/10625087/sutton_msr13.pdf",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper builds the first giga-token probabilistic language model of source code, based on 352 million lines of Java, and proposes new metrics that measure the complexity of a code module and the topical centrality of a module to a software project."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3216345",
+            "name": "Miltiadis Allamanis"
+        },
+        {
+            "authorId": "37210858",
+            "name": "Charles Sutton"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "77bdb4c1117d72ad863845f35ba50929cb623776",
+            "title": "On the naturalness of software"
+        },
+        {
+            "paperId": "de760552279b241976676f4723a159060a433198",
+            "title": "GHTorrent: Github's data from a firehose"
+        },
+        {
+            "paperId": "d55269a3b59d229d4d1431a03abede83380f5449",
+            "title": "Efficient Malicious Code Detection Using N-Gram Analysis and SVM"
+        },
+        {
+            "paperId": "d664cc7336b6874f4e9a955659920bcd41264734",
+            "title": "A study of the uniqueness of source code"
+        },
+        {
+            "paperId": "f5e801f6680edd09e414d4b62b1f23289efac2ce",
+            "title": "Proceedings of the eighteenth ACM SIGSOFT international symposium on Foundations of software engineering"
+        },
+        {
+            "paperId": "2681cbdd353046557d5cb84616013bcbf054515b",
+            "title": "Learning from 6,000 projects: lightweight cross-project anomaly detection"
+        },
+        {
+            "paperId": "fe18c6d7de4292266d49e4778473d560116981de",
+            "title": "Sourcerer: mining and searching internet-scale software repositories"
+        },
+        {
+            "paperId": "ba2cfa6c1bb1beffef09eea59adfea7e280a5003",
+            "title": "Semantic clustering: Identifying topics in source code"
+        },
+        {
+            "paperId": "d58ccccd7d3e109fb42549b4c5c15148502c275c",
+            "title": "Cognitive Perspectives on the Role of Naming in Computer Programs"
+        },
+        {
+            "paperId": "382e55821fbc7285395a33267e267f705e4a8d30",
+            "title": "Jungloid mining: helping to navigate the API jungle"
+        },
+        {
+            "paperId": "7f11d4761b2bc41c8d261855607a724c9377a157",
+            "title": "Guide to the Software Engineering Body of Knowledge (SWEBOK) and the Software Engineering Education Knowledge (SEEK) - a preliminary mapping"
+        },
+        {
+            "paperId": "2317af51e6de11f2abf682635de0a24d217c41f7",
+            "title": "Programming by voice, VocalProgramming"
+        },
+        {
+            "paperId": "894149cb66e8af4a20c82840ea3f774888644fa6",
+            "title": "Speech and language processing: an introduction to natural language processing, computational linguistics, and speech recognition, 2nd Edition"
+        },
+        {
+            "paperId": "a6a9e207f7b80ae66d31ff449aaaca5144152161",
+            "title": "The Guide to the Software Engineering Body of Knowledge"
+        },
+        {
+            "paperId": "d4e8bed3b50a035e1eabad614fe4218a34b3b178",
+            "title": "An Empirical Study of Smoothing Techniques for Language Modeling"
+        },
+        {
+            "paperId": "59f9629329fea4aef68e69321e5305a0aeebe614",
+            "title": "Metrics and Models in Software Quality Engineering"
+        },
+        {
+            "paperId": "b54c53ad5b8dc0af62395d0873fef6f12178d5c2",
+            "title": "Speech and Language Processing"
+        },
+        {
+            "paperId": "b54bcfca3fddc26b8889739a247a25e445818149",
+            "title": "Speech and Language Processing: An Introduction to Natural Language Processing, Computational Linguistics, and Speech Recognition"
+        }
+    ]
+}

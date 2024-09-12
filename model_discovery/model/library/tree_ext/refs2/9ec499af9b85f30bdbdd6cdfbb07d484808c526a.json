@@ -1,0 +1,254 @@
+{
+    "paperId": "9ec499af9b85f30bdbdd6cdfbb07d484808c526a",
+    "externalIds": {
+        "MAG": "2519314406",
+        "DBLP": "journals/corr/GraveJCGJ16",
+        "ArXiv": "1609.04309",
+        "CorpusId": 6483732
+    },
+    "title": "Efficient softmax approximation for GPUs",
+    "abstract": "We propose an approximate strategy to efficiently train neural network based language models over very large vocabularies. Our approach, called adaptive softmax, circumvents the linear dependency on the vocabulary size by exploiting the unbalanced word distribution to form clusters that explicitly minimize the expectation of computational complexity. Our approach further reduces the computational cost by exploiting the specificities of modern architectures and matrix-matrix vector operations, making it particularly suited for graphical processing units. Our experiments carried out on standard benchmarks, such as EuroParl and One Billion Word, show that our approach brings a large gain in efficiency over standard approximations while achieving an accuracy close to that of the full softmax.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2016,
+    "referenceCount": 52,
+    "citationCount": 249,
+    "influentialCitationCount": 25,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes an approximate strategy to efficiently train neural network based language models over very large vocabularies by exploiting the unbalanced word distribution to form clusters that explicitly minimize the expectation of computational complexity."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3024698",
+            "name": "Edouard Grave"
+        },
+        {
+            "authorId": "2319608",
+            "name": "Armand Joulin"
+        },
+        {
+            "authorId": "5723508",
+            "name": "Moustapha Ciss\u00e9"
+        },
+        {
+            "authorId": "2529182",
+            "name": "David Grangier"
+        },
+        {
+            "authorId": "1681054",
+            "name": "H. J\u00e9gou"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "2f2d8f8072e5cc9b296fad551f65f183bdbff7aa",
+            "title": "Exploring the Limits of Language Modeling"
+        },
+        {
+            "paperId": "759956bb98689dbcc891528636d8994e54318f85",
+            "title": "Strategies for Training Large Vocabulary Neural Language Models"
+        },
+        {
+            "paperId": "12a5b7190b981bf478b4c9c04d3c0d41f13b9023",
+            "title": "BlackOut: Speeding up Recurrent Neural Network Language Models With Very Large Vocabularies"
+        },
+        {
+            "paperId": "8c30968d96e0c601adaa74db8907fa6ad73bae31",
+            "title": "Learning Visual Features from Large Weakly Supervised Data"
+        },
+        {
+            "paperId": "3566c944bd71468d38872e67e441f493715233de",
+            "title": "Sparse Non-negative Matrix Language Modeling"
+        },
+        {
+            "paperId": "d46b81707786d18499f911b4ab72bb10c65406ba",
+            "title": "A Simple Way to Initialize Recurrent Networks of Rectified Linear Units"
+        },
+        {
+            "paperId": "9665247ea3421929f9b6ad721f139f11edb1dbb8",
+            "title": "Learning Longer Memory in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "757f517f1952addc1716ea56f912f2e4a2803f7a",
+            "title": "Efficient Exact Gradient Update for training Deep Networks with Very Large Sparse Targets"
+        },
+        {
+            "paperId": "ac3ee98020251797c2b401e1389461df88e52e62",
+            "title": "Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling"
+        },
+        {
+            "paperId": "1938624bb9b0f999536dcc8d8f519810bb4e1b3b",
+            "title": "On Using Very Large Target Vocabulary for Neural Machine Translation"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "0894b06cff1cd0903574acaa7fcf071b144ae775",
+            "title": "Fast and Robust Neural Network Joint Models for Statistical Machine Translation"
+        },
+        {
+            "paperId": "5d833331b0e22ff359db05c62a8bca18c4f04b68",
+            "title": "One billion word benchmark for measuring progress in statistical language modeling"
+        },
+        {
+            "paperId": "71480da09af638260801af1db8eff6acb4e1122f",
+            "title": "Decoding with Large-Scale Neural Language Models Improves Translation"
+        },
+        {
+            "paperId": "25eb5bb4eba859b1eaac200ec0c2e4638b7e83b5",
+            "title": "Speed regularization and optimality in word classing"
+        },
+        {
+            "paperId": "4177ec52d1b80ed57f2e72b0f9a42365f1a8598d",
+            "title": "Speech recognition with deep recurrent neural networks"
+        },
+        {
+            "paperId": "f6b51c8753a871dc94ff32152c00c01e94f90f09",
+            "title": "Efficient Estimation of Word Representations in Vector Space"
+        },
+        {
+            "paperId": "d1275b2a2ab53013310e759e5c6878b96df643d4",
+            "title": "Context dependent recurrent neural network language model"
+        },
+        {
+            "paperId": "5b0d644f5c4b9880cbaf79932c0a4fa98996f068",
+            "title": "A fast and simple algorithm for training neural probabilistic language models"
+        },
+        {
+            "paperId": "e1f27c00ead87b2bde0e1a4ef732677dd9b989ff",
+            "title": "Large, Pruned or Continuous Space Language Models on a GPU for Statistical Machine Translation"
+        },
+        {
+            "paperId": "cb45e9217fe323fbc199d820e7735488fca2a9b3",
+            "title": "Strategies for training large scale neural network language models"
+        },
+        {
+            "paperId": "77dfe038a9bdab27c4505444931eaa976e9ec667",
+            "title": "Empirical Evaluation and Combination of Advanced Language Modeling Techniques"
+        },
+        {
+            "paperId": "07ca885cb5cc4328895bfaec9ab752d5801b14cd",
+            "title": "Extensions of recurrent neural network language model"
+        },
+        {
+            "paperId": "3aaa1e4974800767fcbd2c24c2f2af42bf412f97",
+            "title": "Structured Output Layer neural network language model"
+        },
+        {
+            "paperId": "413c1142de9d91804d6d11c67ff3fed59c9fc279",
+            "title": "Adaptive Subgradient Methods for Online Learning and Stochastic Optimization"
+        },
+        {
+            "paperId": "e3ce36b9deb47aa6bb2aa19c4bfa71283b505025",
+            "title": "Noise-contrastive estimation: A new estimation principle for unnormalized statistical models"
+        },
+        {
+            "paperId": "a9fc84f8abe740cdc7ee82e69444d1d00dbe0ceb",
+            "title": "A Scalable Hierarchical Distributed Language Model"
+        },
+        {
+            "paperId": "699d5ab38deee78b1fd17cc8ad233c74196d16e9",
+            "title": "Adaptive Importance Sampling to Accelerate Training of a Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "0fcc184b3b90405ec3ceafd6a4007c749df7c363",
+            "title": "Continuous space language models"
+        },
+        {
+            "paperId": "28209ce8d0ac1cf4ceea3eeddf4630e1032fa0ef",
+            "title": "A neural probabilistic language model"
+        },
+        {
+            "paperId": "09c76da2361d46689825c4efc37ad862347ca577",
+            "title": "A bit of progress in language modeling"
+        },
+        {
+            "paperId": "4af41f4d838daa7ca6995aeb4918b61989d1ed80",
+            "title": "Classes for fast maximum entropy training"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "9548ac30c113562a51e603dbbc8e9fa651cfd3ab",
+            "title": "Improved backing-off for M-gram language modeling"
+        },
+        {
+            "paperId": "3de5d40b60742e3dfa86b19e7f660962298492af",
+            "title": "Class-Based n-gram Models of Natural Language"
+        },
+        {
+            "paperId": "2ae5a5507253aa3cada113d41d35fada1e84555f",
+            "title": "An Efficient Gradient-Based Algorithm for On-Line Training of Recurrent Network Trajectories"
+        },
+        {
+            "paperId": "1a3d22599028a05669e884f3eaf19a342e190a87",
+            "title": "Backpropagation Through Time: What It Does and How to Do It"
+        },
+        {
+            "paperId": "be1fed9544830df1137e72b1d2396c40d3e18365",
+            "title": "A Cache-Based Natural Language Model for Speech Recognition"
+        },
+        {
+            "paperId": "668087f0ae7ce1de6e0bd0965dbb480c08103260",
+            "title": "Finding Structure in Time"
+        },
+        {
+            "paperId": "b0130277677e5b915d5cd86b3afafd77fd08eb2e",
+            "title": "Estimation of probabilities from sparse data for the language model component of a speech recognizer"
+        },
+        {
+            "paperId": "c4775e2f0d27e8be4aae7b5b5c2560b96ce2eb58",
+            "title": "A Maximum Likelihood Approach to Continuous Speech Recognition"
+        },
+        {
+            "paperId": "e4351041d25c272a008bcd5765868dc3a28fe470",
+            "title": "Under Review as a Conference Paper at Iclr 2017 Delving into Transferable Adversarial Ex- Amples and Black-box Attacks"
+        },
+        {
+            "paperId": "4e18fea7edd3a49e3ed580b9eafd72d477b1975e",
+            "title": "When and why are log-linear models self-normalizing?"
+        },
+        {
+            "paperId": null,
+            "title": "Deep neural networks for acoustic modeling in speech recognition: The shared views of four research groups"
+        },
+        {
+            "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+            "title": "Recurrent neural network based language model"
+        },
+        {
+            "paperId": "5eb1a272f9933a11d113cf63fe659e073942bce5",
+            "title": "Neural Probabilistic Language Models"
+        },
+        {
+            "paperId": "c19fbefdeead6a4154a22a9c8551a18b1530033a",
+            "title": "Hierarchical Probabilistic Neural Network Language Model"
+        },
+        {
+            "paperId": "694b3c58712deefb59502847ba1b52b192c413e5",
+            "title": "Europarl: A Parallel Corpus for Statistical Machine Translation"
+        },
+        {
+            "paperId": "6b388f0151ab37adb3d57738b8f52a3f943f86c8",
+            "title": "Quick Training of Probabilistic Neural Nets by Importance Sampling"
+        },
+        {
+            "paperId": "26bc0449360d7016f684eafae5b5d2feded32041",
+            "title": "An E cient Gradient-Based Algorithm for On-LineTraining of Recurrent Network Trajectories"
+        },
+        {
+            "paperId": "2bcf3e6c2b45c052a0bd0183cc29c03acc4b49ac",
+            "title": "Human behavior and the principle of least effort"
+        },
+        {
+            "paperId": null,
+            "title": "Ef\ufb01cient softmax approximation for GPUs"
+        }
+    ]
+}

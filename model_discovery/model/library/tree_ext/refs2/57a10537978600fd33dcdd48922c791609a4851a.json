@@ -1,0 +1,299 @@
+{
+    "paperId": "57a10537978600fd33dcdd48922c791609a4851a",
+    "externalIds": {
+        "ACL": "D16-1139",
+        "DBLP": "conf/emnlp/KimR16",
+        "ArXiv": "1606.07947",
+        "MAG": "2463507112",
+        "DOI": "10.18653/v1/D16-1139",
+        "CorpusId": 8451212
+    },
+    "title": "Sequence-Level Knowledge Distillation",
+    "abstract": "Neural machine translation (NMT) offers a novel alternative formulation of translation that is potentially simpler than statistical approaches. However to reach competitive performance, NMT models need to be exceedingly large. In this paper we consider applying knowledge distillation approaches (Bucila et al., 2006; Hinton et al., 2015) that have proven successful for reducing the size of neural models in other domains to the problem of NMT. We demonstrate that standard knowledge distillation applied to word-level prediction can be effective for NMT, and also introduce two novel sequence-level versions of knowledge distillation that further improve performance, and somewhat surprisingly, seem to eliminate the need for beam search (even when applied on the original teacher model). Our best student model runs 10 times faster than its state-of-the-art teacher with little loss in performance. It is also significantly better than a baseline model trained without knowledge distillation: by 4.2/1.7 BLEU with greedy decoding/beam search. Applying weight pruning on top of knowledge distillation results in a student model that has 13 times fewer parameters than the original teacher model, with a decrease of 0.4 BLEU.",
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2016,
+    "referenceCount": 65,
+    "citationCount": 992,
+    "influentialCitationCount": 96,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/D16-1139.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is demonstrated that standard knowledge distillation applied to word-level prediction can be effective for NMT, and two novel sequence-level versions of knowledge distilling are introduced that further improve performance, and somewhat surprisingly, seem to eliminate the need for beam search."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "38367242",
+            "name": "Yoon Kim"
+        },
+        {
+            "authorId": "2531268",
+            "name": "Alexander M. Rush"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "30e0b5cb62be2dc2c14d3ecae7cccceddfeab4c8",
+            "title": "SYSTRAN's Pure Neural Machine Translation Systems"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "d43b4801ea469a71b346698bf41197ef97e97d53",
+            "title": "Distilling an Ensemble of Greedy Dependency Parsers into One MST Parser"
+        },
+        {
+            "paperId": "b60abe57bc195616063be10638c6437358c81d1e",
+            "title": "Deep Recurrent Models with Fast-Forward Connections for Neural Machine Translation"
+        },
+        {
+            "paperId": "369427f52ede6326b228b0e27f3e62292e0b0480",
+            "title": "Learning compact recurrent neural networks"
+        },
+        {
+            "paperId": "21b0fa7edb89eaf3cf24a4f0813791538e1ce60f",
+            "title": "On the compression of recurrent neural networks with an application to LVCSR acoustic modeling for embedded speech recognition"
+        },
+        {
+            "paperId": "4d070993cb75407b285e14cb8aac0077624ef4d9",
+            "title": "Character-based Neural Machine Translation"
+        },
+        {
+            "paperId": "6eecc808d4c74e7d0d7ef6b8a4112c985ced104d",
+            "title": "Binarized Neural Networks"
+        },
+        {
+            "paperId": "2f2d8f8072e5cc9b296fad551f65f183bdbff7aa",
+            "title": "Exploring the Limits of Language Modeling"
+        },
+        {
+            "paperId": "9f2a8e923965b23c11066a2ead79658208f1fae1",
+            "title": "Minimum Risk Training for Neural Machine Translation"
+        },
+        {
+            "paperId": "4dabd6182ce2681c758f654561d351739e8df7bf",
+            "title": "Multilingual Language Processing From Bytes"
+        },
+        {
+            "paperId": "972f861e1063a3286acbd22a1ae40cdb7f537923",
+            "title": "Blending LSTMs into CNNs"
+        },
+        {
+            "paperId": "3f081a7d2dbdcd10d71d0340721e4857a73ed7ee",
+            "title": "Diversity Networks"
+        },
+        {
+            "paperId": "651e5bcc14f14605a879303e97572a27ea8c7956",
+            "title": "A Diversity-Promoting Objective Function for Neural Conversation Models"
+        },
+        {
+            "paperId": "67c191bcce6821f736798cb9b31472bcdd1e52a6",
+            "title": "Neural Networks with Few Multiplications"
+        },
+        {
+            "paperId": "642d0f49b7826adcf986616f4af77e736229990f",
+            "title": "Deep Compression: Compressing Deep Neural Network with Pruning, Trained Quantization and Huffman Coding"
+        },
+        {
+            "paperId": "1ac30af5522c7a50ec4d1ee43fd2bd8652a9bd52",
+            "title": "A Neural Attention Model for Abstractive Sentence Summarization"
+        },
+        {
+            "paperId": "891ce1687e2befddd19f54e4eef1d3f39c8dbaf7",
+            "title": "Character-Aware Neural Language Models"
+        },
+        {
+            "paperId": "4b267c6a41813e16937d99ed0eed72c4edcd2dca",
+            "title": "Auto-Sizing Neural Networks: With Applications to n-gram Language Models"
+        },
+        {
+            "paperId": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+            "title": "Effective Approaches to Attention-based Neural Machine Translation"
+        },
+        {
+            "paperId": "6dab1c6491929d396e9e5463bc2e87af88602aa2",
+            "title": "Finding Function in Form: Compositional Character Models for Open Vocabulary Word Representation"
+        },
+        {
+            "paperId": "1e662c87a36779dbe9f56f7ffd3ade756059d094",
+            "title": "Joint Learning of Character and Word Embeddings"
+        },
+        {
+            "paperId": "b0bd441a0cc04cdd0d0e469fe4c5184ee148a97d",
+            "title": "Data-free Parameter Pruning for Deep Neural Networks"
+        },
+        {
+            "paperId": "17f5c7411eeeeedf25b0db99a9130aa353aee4ba",
+            "title": "Building End-To-End Dialogue Systems Using Generative Hierarchical Neural Network Models"
+        },
+        {
+            "paperId": "b624504240fa52ab76167acfe3156150ca01cf3b",
+            "title": "Attention-Based Models for Speech Recognition"
+        },
+        {
+            "paperId": "86311b182786bfde19446f6ded0854de973d4060",
+            "title": "A Neural Conversational Model"
+        },
+        {
+            "paperId": "7613d67c7348f746ecaf71c6fd034fd577154050",
+            "title": "Distilling Word Embeddings: An Encoding Approach"
+        },
+        {
+            "paperId": "d1505c6123c102e53eb19dff312cb25cea840b72",
+            "title": "Teaching Machines to Read and Comprehend"
+        },
+        {
+            "paperId": "efb5032e6199c80f83309fd866b25be9545831fd",
+            "title": "Compressing Neural Networks with the Hashing Trick"
+        },
+        {
+            "paperId": "edb1e4bd20731b292e36df7f80dc5c1ad61febb6",
+            "title": "Transferring knowledge from a RNN to a DNN"
+        },
+        {
+            "paperId": "0c908739fbff75f03469d13d4a1a07de3414ee19",
+            "title": "Distilling the Knowledge in a Neural Network"
+        },
+        {
+            "paperId": "829510ad6f975c939d589eeb01a3cf6fc6c8ce4d",
+            "title": "Unsupervised Learning of Video Representations using LSTMs"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "47570e7f63e296f224a0e7f9a0d08b0de3cbaf40",
+            "title": "Grammar as a Foreign Language"
+        },
+        {
+            "paperId": "8604f376633af8b347e31d84c6150a93b11e34c2",
+            "title": "FitNets: Hints for Thin Deep Nets"
+        },
+        {
+            "paperId": "d4dc1012d780e8e2547237eb5a6dc7b1bf47d2f0",
+            "title": "Show and tell: A neural image caption generator"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "8bc150dc49fc81c7c4dacd35a2b8b1afe1a1692a",
+            "title": "A Systematic Comparison of Smoothing Techniques for Sentence-Level BLEU"
+        },
+        {
+            "paperId": "021fc345d40d3e6332cd2ef276e2eaa5e71102e4",
+            "title": "Speeding up Convolutional Neural Networks with Low Rank Expansions"
+        },
+        {
+            "paperId": "87d810fcea61068e8b29f2b75fa1cbb00c190bea",
+            "title": "Reshaping deep neural network for fast decoding by node-pruning"
+        },
+        {
+            "paperId": "e5ae8ab688051931b4814f6d32b18391f8d1fa8d",
+            "title": "Exploiting Linear Structure Within Convolutional Networks for Efficient Evaluation"
+        },
+        {
+            "paperId": "d770060812fb646b3846a7d398a3066145b5e3c8",
+            "title": "Do Deep Nets Really Need to be Deep?"
+        },
+        {
+            "paperId": "944a1cfd79dbfb6fef460360a0765ba790f4027a",
+            "title": "Recurrent Continuous Translation Models"
+        },
+        {
+            "paperId": "77c559f2980f8f4dbebe1d2dc28e607c66554bce",
+            "title": "Hope and Fear"
+        },
+        {
+            "paperId": "eff61216e0136886e1158625b1e5a88ed1a7cbce",
+            "title": "Predicting Parameters in Deep Learning"
+        },
+        {
+            "paperId": "79ab3c49903ec8cb339437ccf5cf998607fc313e",
+            "title": "A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning"
+        },
+        {
+            "paperId": "526e22c130b18924976553d29ba11bc9d898d58b",
+            "title": "Search-based structured prediction"
+        },
+        {
+            "paperId": "30c9bb327b7f2b9f1d1e5b69b9d0c97b410948d9",
+            "title": "Model compression"
+        },
+        {
+            "paperId": "10d21ca7728cb3dd15731accedda9ea711d8a0f4",
+            "title": "An End-to-End Discriminative Approach to Machine Translation"
+        },
+        {
+            "paperId": "1f12451245667a85d0ee225a80880fc93c71cc8b",
+            "title": "Minimum Error Rate Training in Statistical Machine Translation"
+        },
+        {
+            "paperId": "d7da009f457917aa381619facfa5ffae9329a6e9",
+            "title": "Bleu: a Method for Automatic Evaluation of Machine Translation"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "a42954d4b9d0ccdf1036e0af46d87a01b94c3516",
+            "title": "Second Order Derivatives for Network Pruning: Optimal Brain Surgeon"
+        },
+        {
+            "paperId": null,
+            "title": "Listen, Attend and Spell"
+        },
+        {
+            "paperId": "8d25d04051074be7590cbe5e4e34c45bb26674e1",
+            "title": "Learning small-size DNN with output-distribution-based criteria"
+        },
+        {
+            "paperId": "ac34dc5163eed224db3b39b51893b732e3805f3f",
+            "title": "Hope and Fear for Discriminative Training of Statistical Translation Models"
+        },
+        {
+            "paperId": "e7297db245c3feb1897720b173a59fe7e36babb7",
+            "title": "Optimal Brain Damage"
+        },
+        {
+            "paperId": null,
+            "title": "Slave Petrov, Ilya Sutskever, and Geoffrey Hinton"
+        },
+        {
+            "paperId": null,
+            "title": "Oriol Vinyals, and Amarnag Subramanya. 2016. Multilingual Language Processing from Bytes. In Proceedings of NAACL"
+        },
+        {
+            "paperId": null,
+            "title": "Weinberger, and Yixin Chen. 2015. Compressing Neural Networks with the Hashing Trick. In Proceedings of ICML"
+        },
+        {
+            "paperId": null,
+            "title": "Marc'Aurelio Ranzato, and Nando de Freitas. 2013. Predicting Parameters in Deep Learning. In Proceedings of NIPS"
+        },
+        {
+            "paperId": null,
+            "title": "Networks for Ef\ufb01cient Evaluation"
+        },
+        {
+            "paperId": null,
+            "title": "References III"
+        }
+    ]
+}

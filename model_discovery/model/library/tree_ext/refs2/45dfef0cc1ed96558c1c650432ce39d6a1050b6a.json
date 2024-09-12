@@ -1,0 +1,126 @@
+{
+    "paperId": "45dfef0cc1ed96558c1c650432ce39d6a1050b6a",
+    "externalIds": {
+        "DBLP": "journals/corr/abs-1711-05101",
+        "MAG": "2768282280",
+        "ArXiv": "1711.05101",
+        "CorpusId": 3312944
+    },
+    "title": "Fixing Weight Decay Regularization in Adam",
+    "abstract": "We note that common implementations of adaptive gradient algorithms, such as Adam, limit the potential benefit of weight decay regularization, because the weights do not decay multiplicatively (as would be expected for standard weight decay) but by an additive constant factor. We propose a simple way to resolve this issue by decoupling weight decay and the optimization steps taken w.r.t. the loss function. We provide empirical evidence that our proposed modification (i) decouples the optimal choice of weight decay factor from the setting of the learning rate for both standard SGD and Adam, and (ii) substantially improves Adam's generalization performance, allowing it to compete with SGD with momentum on image classification datasets (on which it was previously typically outperformed by the latter). We also demonstrate that longer optimization runs require smaller weight decay values for optimal results and introduce a normalized variant of weight decay to reduce this dependence. Finally, we propose a version of Adam with warm restarts (AdamWR) that has strong anytime performance while achieving state-of-the-art results on CIFAR-10 and ImageNet32x32. Our source code will become available after the review process.",
+    "venue": "arXiv.org",
+    "year": 2017,
+    "referenceCount": 23,
+    "citationCount": 1739,
+    "influentialCitationCount": 284,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work decouples the optimal choice of weight decay factor from the setting of the learning rate for both standard SGD and Adam and substantially improves Adam's generalization performance, allowing it to compete with SGD with momentum on image classification datasets."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1678656",
+            "name": "I. Loshchilov"
+        },
+        {
+            "authorId": "144661829",
+            "name": "F. Hutter"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "c983653841b6987d9959318f074a595783838576",
+            "title": "On the Convergence of Adam and Beyond"
+        },
+        {
+            "paperId": "6baca6351dc55baac44f0416e74a7e0ba2bfd03e",
+            "title": "Visualizing the Loss Landscape of Neural Nets"
+        },
+        {
+            "paperId": "430de87a0a8996bc93b1998f9a6261f7558a5679",
+            "title": "Generalization in Deep Learning"
+        },
+        {
+            "paperId": "51ed8996e6bb192c4d56cf16d27ce31c4fdb687e",
+            "title": "Normalized Direction-preserving Adam"
+        },
+        {
+            "paperId": "e644a409b4a4c6eaedffe27efbc5c76280b34c61",
+            "title": "A Downsampled Variant of ImageNet as an Alternative to the CIFAR datasets"
+        },
+        {
+            "paperId": "d0611891b9e8a7c5731146097b6f201578f47b2f",
+            "title": "Learning Transferable Architectures for Scalable Image Recognition"
+        },
+        {
+            "paperId": "1ecc2bd0bc6ffa0a2f466a058589c20593e3e57c",
+            "title": "The Marginal Value of Adaptive Gradient Methods in Machine Learning"
+        },
+        {
+            "paperId": "3fea412361b2d14cb3c6723968b421c1c8cb38e8",
+            "title": "Shake-Shake regularization"
+        },
+        {
+            "paperId": "b134d0911e2e13ac169ffa5f478a39e6ef77869a",
+            "title": "Snapshot Ensembles: Train 1, get M for free"
+        },
+        {
+            "paperId": "58123025178256279bb060ca5da971b62bc329ee",
+            "title": "Sharp Minima Can Generalize For Deep Nets"
+        },
+        {
+            "paperId": "8ec5896b4490c6e127d1718ffc36a3439d84cb81",
+            "title": "On Large-Batch Training for Deep Learning: Generalization Gap and Sharp Minima"
+        },
+        {
+            "paperId": "5694e46284460a648fe29117cbc55f6c9be3fa3c",
+            "title": "Densely Connected Convolutional Networks"
+        },
+        {
+            "paperId": "b022f2a277a4bf5f42382e86e4380b96340b9e86",
+            "title": "SGDR: Stochastic Gradient Descent with Warm Restarts"
+        },
+        {
+            "paperId": "3d2c6941a9b4608ba52b328369a3352db2092ae0",
+            "title": "Weight Normalization: A Simple Reparameterization to Accelerate Training of Deep Neural Networks"
+        },
+        {
+            "paperId": "8388f1be26329fa45e5807e968a641ce170ea078",
+            "title": "Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks"
+        },
+        {
+            "paperId": "37b5dfe87d82ba8f310155165d5bf841dc92dea2",
+            "title": "Cyclical Learning Rates for Training Neural Networks"
+        },
+        {
+            "paperId": "a2785f66c20fbdf30ec26c0931584c6d6a0f4fca",
+            "title": "DRAW: A Recurrent Neural Network For Image Generation"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "413c1142de9d91804d6d11c67ff3fed59c9fc279",
+            "title": "Adaptive Subgradient Methods for Online Learning and Stochastic Optimization"
+        },
+        {
+            "paperId": null,
+            "title": "Lecture 6.5-rmsprop: Divide the gradient by a running average of its recent magnitude"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        },
+        {
+            "paperId": "f4ea5a6ff3ffcd11ec2e6ed7828a7d41279fb3ad",
+            "title": "Comparing Biases for Minimal Network Construction with Back-Propagation"
+        }
+    ]
+}

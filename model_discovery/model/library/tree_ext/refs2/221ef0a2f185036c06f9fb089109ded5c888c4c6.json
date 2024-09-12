@@ -1,0 +1,81 @@
+{
+    "paperId": "221ef0a2f185036c06f9fb089109ded5c888c4c6",
+    "externalIds": {
+        "DBLP": "journals/corr/NallapatiXZ16",
+        "MAG": "2280798142",
+        "CorpusId": 12386980
+    },
+    "title": "Sequence-to-Sequence RNNs for Text Summarization",
+    "abstract": "In this work, we cast text summarization as a sequence-to-sequence problem and apply the attentional encoder-decoder RNN that has been shown to be successful for Machine Translation (Bahdanau et al. (2014)). Our experiments show that the proposed architecture significantly outperforms the state-of-the art model of Rush et al. (2015) on the Gigaword dataset without any additional tuning. We also propose additional extensions to the standard architecture, which we show contribute to further improvement in performance.",
+    "venue": "arXiv.org",
+    "year": 2016,
+    "referenceCount": 11,
+    "citationCount": 155,
+    "influentialCitationCount": 21,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work casts text summarization as a sequence-to-sequence problem and applies the attentional encoder-decoder RNN that has been shown to be successful for Machine Translation and significantly outperforms the state-of-the art model of Rush et al. (2015)."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1701451",
+            "name": "Ramesh Nallapati"
+        },
+        {
+            "authorId": "144028698",
+            "name": "Bing Xiang"
+        },
+        {
+            "authorId": "145218984",
+            "name": "Bowen Zhou"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "1ac30af5522c7a50ec4d1ee43fd2bd8652a9bd52",
+            "title": "A Neural Attention Model for Abstractive Sentence Summarization"
+        },
+        {
+            "paperId": "878ba5458e9e51f0b341fd9117fa0b43ef4096d3",
+            "title": "End-to-end attention-based large vocabulary speech recognition"
+        },
+        {
+            "paperId": "b21c78a62fbb945a19ae9a8935933711647e7d70",
+            "title": "A Hierarchical Neural Autoencoder for Paragraphs and Documents"
+        },
+        {
+            "paperId": "e58a110fa1e4ddf247d5c614d117d64bfbe135c4",
+            "title": "Sequence to Sequence -- Video to Text"
+        },
+        {
+            "paperId": "ac3ee98020251797c2b401e1389461df88e52e62",
+            "title": "Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling"
+        },
+        {
+            "paperId": "1938624bb9b0f999536dcc8d8f519810bb4e1b3b",
+            "title": "On Using Very Large Target Vocabulary for Neural Machine Translation"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "8729441d734782c3ed532a7d2d9611b438c0a09a",
+            "title": "ADADELTA: An Adaptive Learning Rate Method"
+        },
+        {
+            "paperId": "44fca068eecce2203d111213e3691647914a3945",
+            "title": "LexRank: Graph-based Lexical Centrality as Salience in Text Summarization"
+        },
+        {
+            "paperId": "9d08213ede54c4e205d18b4400288831af918ec8",
+            "title": "Headline Generation Based on Statistical Translation"
+        }
+    ]
+}

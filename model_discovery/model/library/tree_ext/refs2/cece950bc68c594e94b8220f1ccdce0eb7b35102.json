@@ -1,0 +1,277 @@
+{
+    "paperId": "cece950bc68c594e94b8220f1ccdce0eb7b35102",
+    "externalIds": {
+        "DBLP": "conf/isca/MalladiNPLKH12",
+        "MAG": "2165473669",
+        "DOI": "10.1145/2366231.2337164",
+        "CorpusId": 14680002
+    },
+    "title": "Towards energy-proportional datacenter memory with mobile DRAM",
+    "abstract": "To increase datacenter energy efficiency, we need memory systems that keep pace with processor efficiency gains. Currently, servers use DDR3 memory, which is designed for high bandwidth but not for energy proportionality. A system using 20% of the peak DDR3 bandwidth consumes 2.3\u00d7 the energy per bit compared to the energy consumed by a system with fully utilized memory bandwidth. Nevertheless, many datacenter applications stress memory capacity and latency but not memory bandwidth. In response, we architect server memory systems using mobile DRAM devices, trading peak bandwidth for lower energy consumption per bit and more efficient idle modes. We demonstrate 3-5\u00d7 lower memory power, better proportionality, and negligible performance penalties for data-center workloads.",
+    "venue": "International Symposium on Computer Architecture",
+    "year": 2012,
+    "referenceCount": 56,
+    "citationCount": 251,
+    "influentialCitationCount": 20,
+    "openAccessPdf": {
+        "url": "http://csl.stanford.edu/~christos/publications/2012.lpddr2.isca.pdf",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work architects server memory systems using mobile DRAM devices, trading peak bandwidth for lower energy consumption per bit and more efficient idle modes, and demonstrates 3-5\u00d7 lower memory power, better proportionality, and negligible performance penalties for data-center workloads."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2807420",
+            "name": "Krishna T. Malladi"
+        },
+        {
+            "authorId": "3383599",
+            "name": "Frank A. Nothaft"
+        },
+        {
+            "authorId": "3379225",
+            "name": "Karthika Periyathambi"
+        },
+        {
+            "authorId": "152840677",
+            "name": "Benjamin C. Lee"
+        },
+        {
+            "authorId": "117272782",
+            "name": "Christos Kozyrakis"
+        },
+        {
+            "authorId": "144764327",
+            "name": "M. Horowitz"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "77f826132cf09ac91ea9c859387a8d52221a019a",
+            "title": "Memory power management via dynamic voltage/frequency scaling"
+        },
+        {
+            "paperId": "66e91538990e476c7f2f387a3967ae994bbbecff",
+            "title": "The impact of memory subsystem resource sharing on datacenter applications"
+        },
+        {
+            "paperId": "96046803c5d3a6c3d7b3f318e877d64050ace933",
+            "title": "MemScale: active low-power modes for main memory"
+        },
+        {
+            "paperId": "0f457b7f93736da38cdcffcbd76ae9cd7a0a6749",
+            "title": "Blink: managing server clusters on intermittent power"
+        },
+        {
+            "paperId": "37e49c57dd4d0849380d177222db53e52ff21347",
+            "title": "Understanding the Energy Consumption of Dynamic Random Access Memories"
+        },
+        {
+            "paperId": "adeb05eaf20c3d4430b4bd68e90685833f6b05ff",
+            "title": "Thread Cluster Memory Scheduling: Exploiting Differences in Memory Access Behavior"
+        },
+        {
+            "paperId": "ab8a68b6a882973090dfb8e19e7a37083b8b23b4",
+            "title": "The ZCache: Decoupling Ways and Associativity"
+        },
+        {
+            "paperId": "cc8350f9170eb7f97d2768e92a6ad03692acd912",
+            "title": "Handling the problems and opportunities posed by multiple on-chip memory controllers"
+        },
+        {
+            "paperId": "cff44081dfd5209dc274f85d2cdf253df9d34ada",
+            "title": "Server Engineering Insights for Large-Scale Online Services"
+        },
+        {
+            "paperId": "2c9b77a063a3459ed8f3be0c0066724a38e225e5",
+            "title": "Web search using mobile cores: quantifying and mitigating the price of efficiency"
+        },
+        {
+            "paperId": "9adb2e7f66a71b9783fa7f68ba5499b89dc28fa4",
+            "title": "Rethinking DRAM design and organization for energy-constrained multi-cores"
+        },
+        {
+            "paperId": "c113513903d01df2c8aa59662f7149c3199ce59b",
+            "title": "What computer architects need to know about memory throttling"
+        },
+        {
+            "paperId": "828c504705841dee0031e52bf9acb016fcec45de",
+            "title": "Virtualized and flexible ECC for main memory"
+        },
+        {
+            "paperId": "3dce3f430f042b20abc9e4677461842b67a1fb18",
+            "title": "The case for RAMClouds: scalable high-performance storage entirely in DRAM"
+        },
+        {
+            "paperId": "2d797dfe705d5da020d1fbf822e65f63647d2c22",
+            "title": "Future scaling of processor-memory interfaces"
+        },
+        {
+            "paperId": "ce9cd55e1baaf25151be6511b4d957f78ed96de0",
+            "title": "A 4.3GB/s mobile memory interface with power-efficient bandwidth scaling"
+        },
+        {
+            "paperId": "0e2efda23894526e869e57cb81c76de22f6a8d20",
+            "title": "Scaling the bandwidth wall: challenges in and avenues for CMP scaling"
+        },
+        {
+            "paperId": "8e8e622d5fab4c1d2a5bc7783db84e62cc570f9a",
+            "title": "Disaggregated memory for expansion and sharing in blade servers"
+        },
+        {
+            "paperId": "4cb28b37df474714ae1076ea52ef22f494b44ed2",
+            "title": "A 1.35V 4.3GB/s 1Gb LPDDR2 DRAM with controllable repeater and on-the-fly power-cut scheme for low-power and high-speed mobile application"
+        },
+        {
+            "paperId": "4aec1ba26ca8a42a041dc0ac6a43dc91f1b6abc1",
+            "title": "PowerNap: eliminating server idle power"
+        },
+        {
+            "paperId": "3a58216b8b7b158f5bc6349f802c225b7b881801",
+            "title": "Memory MISER: Improving Main Memory Energy Efficiency in Servers"
+        },
+        {
+            "paperId": "d454bfb736d8928698a0f6f4be85e58c45de687e",
+            "title": "SPECjvm2008 Performance Characterization"
+        },
+        {
+            "paperId": "bfcfb829b25fa698a1a884490f9feaf1d30fe45c",
+            "title": "Mini-rank: Adaptive DRAM architecture for improving memory power efficiency"
+        },
+        {
+            "paperId": "bc6dff14a130c57a91d5a21339c23471faf1d46f",
+            "title": "Et al"
+        },
+        {
+            "paperId": "f7d582db46f4e94782ba9aac7126302ec76f7710",
+            "title": "A comprehensive approach to DRAM power management"
+        },
+        {
+            "paperId": "aa57bace76abbfa3166f3e8e199f0774ca337f1d",
+            "title": "Understanding and Designing New Server Architectures for Emerging Warehouse-Computing Environments"
+        },
+        {
+            "paperId": "ad61a05a10319f4a95733b833fc4be1115670d95",
+            "title": "The Case for Energy-Proportional Computing"
+        },
+        {
+            "paperId": "830642c882a073a736cc66d5a22c628536ed4f11",
+            "title": "Characterization of Apache web server with Specweb2005"
+        },
+        {
+            "paperId": "08af8e9674bd5460e477b3372c0a3ebc97fe518e",
+            "title": "Memory Systems: Cache, DRAM, Disk"
+        },
+        {
+            "paperId": "1ce4e51123eb9c2a3a46afb19889526456a0e8ff",
+            "title": "Exploring Large-Scale CMP Architectures Using ManySim"
+        },
+        {
+            "paperId": "62d66d476333cec61fc905a80f94a5554b7a94b8",
+            "title": "Limiting the power consumption of main memory"
+        },
+        {
+            "paperId": "7c16b8030a51d499491198cf1ea0fd8ad642ace6",
+            "title": "Fully-Buffered DIMM Memory Architectures: Understanding Mechanisms, Overheads and Scaling"
+        },
+        {
+            "paperId": "f74f386db7d7f01326986fcccb6bdb367eb104e2",
+            "title": "Improving Power and Data Efficiency with Threaded Memory Modules"
+        },
+        {
+            "paperId": "705cdac27ba2d2f4078e5c7672930fa2d778d485",
+            "title": "DMA-aware memory energy management"
+        },
+        {
+            "paperId": "e99d3632328c11e369fd676f2e7ee510f08ce8c5",
+            "title": "Improving energy efficiency by making DRAM less randomly accessed"
+        },
+        {
+            "paperId": "6de5a2f262cfeb6327af46e2066959a2320ffc9f",
+            "title": "Pin: building customized program analysis tools with dynamic instrumentation"
+        },
+        {
+            "paperId": "1b512c393fcfdf3441bb22ffb5b7016a070c1199",
+            "title": "Memory controller policies for DRAM power management"
+        },
+        {
+            "paperId": "d01501168b29a2a0006ebcf881b47f2363bee037",
+            "title": "DRAM energy management using software and hardware directed power mode control"
+        },
+        {
+            "paperId": "d5e5ac0e6d39240fe904fac17c2c557e74fe17b6",
+            "title": "Power aware page allocation"
+        },
+        {
+            "paperId": "7f5626a22e2bfb0d3afbba115554a35ee25f5641",
+            "title": "b-adjacent error correction"
+        },
+        {
+            "paperId": "e9db4d9e2e4356e107336f33e92e8b01129dfcad",
+            "title": "ACTIVE LOW-POWER MODES FOR MAIN MEMORY"
+        },
+        {
+            "paperId": "e35328307e83f5a6c3dcf36474862863b7014fb3",
+            "title": "DRAMSim2: A Cycle Accurate Memory System Simulator"
+        },
+        {
+            "paperId": null,
+            "title": "Signal and power integrity limitations for mobile memory in 3D packaging"
+        },
+        {
+            "paperId": null,
+            "title": "Startup SeaMicro packs 512 Intel Atoms in server"
+        },
+        {
+            "paperId": null,
+            "title": "JEDEC standard for LP-DDR2. Standard JESD209-2B"
+        },
+        {
+            "paperId": null,
+            "title": "High performance cache replacement using re-reference interval prediction (RRRIP)"
+        },
+        {
+            "paperId": null,
+            "title": "DDR3 memory technology"
+        },
+        {
+            "paperId": null,
+            "title": "Micron 2Gb: x4, x8, x16 DDR3 SDRAM. Data Sheet MT41J128M16HA-125"
+        },
+        {
+            "paperId": null,
+            "title": "The Datacenter as a Computer"
+        },
+        {
+            "paperId": null,
+            "title": "HP. CACTI"
+        },
+        {
+            "paperId": null,
+            "title": "152-ball x32 mobile lpddr pop (ti-omap). Data Sheet MT46HxxxMxxLxCG"
+        },
+        {
+            "paperId": null,
+            "title": "Scaling memcached at Facebook"
+        },
+        {
+            "paperId": null,
+            "title": "Calculating memory system power for DDR2. Technical Note tn4704"
+        },
+        {
+            "paperId": "40b929eb52e6a30799a682aea017cdff87ac7ba3",
+            "title": "Seoul National University,"
+        },
+        {
+            "paperId": null,
+            "title": "Cost of power in large-scale data centers"
+        },
+        {
+            "paperId": null,
+            "title": "Mobile XDR memory versus LPDDR2"
+        }
+    ]
+}

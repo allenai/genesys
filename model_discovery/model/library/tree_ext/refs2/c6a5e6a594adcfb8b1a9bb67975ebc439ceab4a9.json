@@ -1,0 +1,194 @@
+{
+    "paperId": "c6a5e6a594adcfb8b1a9bb67975ebc439ceab4a9",
+    "externalIds": {
+        "MAG": "2794752562",
+        "DBLP": "journals/corr/abs-1803-10760",
+        "ArXiv": "1803.10760",
+        "CorpusId": 4376320
+    },
+    "title": "Unsupervised Predictive Memory in a Goal-Directed Agent",
+    "abstract": "Animals execute goal-directed behaviours despite the limited range and scope of their sensors. To cope, they explore environments and store memories maintaining estimates of important information that is not presently available. Recently, progress has been made with artificial intelligence (AI) agents that learn to perform tasks from sensory input, even at a human level, by merging reinforcement learning (RL) algorithms with deep neural networks, and the excitement surrounding these results has led to the pursuit of related ideas as explanations of non-human animal learning. However, we demonstrate that contemporary RL algorithms struggle to solve simple tasks when enough information is concealed from the sensors of the agent, a property called \"partial observability\". An obvious requirement for handling partially observed tasks is access to extensive memory, but we show memory is not enough; it is critical that the right information be stored in the right format. We develop a model, the Memory, RL, and Inference Network (MERLIN), in which memory formation is guided by a process of predictive modeling. MERLIN facilitates the solution of tasks in 3D virtual reality environments for which partial observability is severe and memories must be maintained over long durations. Our model demonstrates a single learning agent architecture that can solve canonical behavioural tasks in psychology and neurobiology without strong simplifying assumptions about the dimensionality of sensory input or the duration of experiences.",
+    "venue": "arXiv.org",
+    "year": 2018,
+    "referenceCount": 18,
+    "citationCount": 183,
+    "influentialCitationCount": 13,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A model, the Memory, RL, and Inference Network (MERLIN), in which memory formation is guided by a process of predictive modeling, demonstrates a single learning agent architecture that can solve canonical behavioural tasks in psychology and neurobiology without strong simplifying assumptions about the dimensionality of sensory input or the duration of experiences."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "89504302",
+            "name": "Greg Wayne"
+        },
+        {
+            "authorId": "2143897443",
+            "name": "Chia-Chun Hung"
+        },
+        {
+            "authorId": "2064400086",
+            "name": "David Amos"
+        },
+        {
+            "authorId": "153583218",
+            "name": "Mehdi Mirza"
+        },
+        {
+            "authorId": "37968006",
+            "name": "Arun Ahuja"
+        },
+        {
+            "authorId": "1398898827",
+            "name": "A. Grabska-Barwinska"
+        },
+        {
+            "authorId": "34269227",
+            "name": "Jack W. Rae"
+        },
+        {
+            "authorId": "144705062",
+            "name": "Piotr Wojciech Mirowski"
+        },
+        {
+            "authorId": "1700356",
+            "name": "Joel Z. Leibo"
+        },
+        {
+            "authorId": "35030998",
+            "name": "Adam Santoro"
+        },
+        {
+            "authorId": "2730646",
+            "name": "Mevlana Gemici"
+        },
+        {
+            "authorId": "47447264",
+            "name": "Malcolm Reynolds"
+        },
+        {
+            "authorId": "3367786",
+            "name": "Tim Harley"
+        },
+        {
+            "authorId": "3041463",
+            "name": "Josh Abramson"
+        },
+        {
+            "authorId": "14594344",
+            "name": "S. Mohamed"
+        },
+        {
+            "authorId": "1748523",
+            "name": "Danilo Jimenez Rezende"
+        },
+        {
+            "authorId": "143810408",
+            "name": "D. Saxton"
+        },
+        {
+            "authorId": "2055913310",
+            "name": "Adam Cain"
+        },
+        {
+            "authorId": "38961760",
+            "name": "Chloe Hillier"
+        },
+        {
+            "authorId": "145824029",
+            "name": "David Silver"
+        },
+        {
+            "authorId": "2645384",
+            "name": "K. Kavukcuoglu"
+        },
+        {
+            "authorId": "46378362",
+            "name": "M. Botvinick"
+        },
+        {
+            "authorId": "48987704",
+            "name": "D. Hassabis"
+        },
+        {
+            "authorId": "2542999",
+            "name": "T. Lillicrap"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "019923afa86036b69c0e423f3c2188bfa7050923",
+            "title": "Grounded Language Learning in a Simulated 3D World"
+        },
+        {
+            "paperId": "5c57bb5630835a05eb1c3d0df3e12d6180d75de2",
+            "title": "One-Shot Imitation Learning"
+        },
+        {
+            "paperId": "ca959b31692cf41b163cebc656a208e48f6f07d2",
+            "title": "Generative Temporal Models with Memory"
+        },
+        {
+            "paperId": "282a380fb5ac26d99667224cef8c630f6882704f",
+            "title": "Learning to reinforcement learn"
+        },
+        {
+            "paperId": "d35b05f440b5ba00d9429139edef7182bf9f7ce7",
+            "title": "Learning to Navigate in Complex Environments"
+        },
+        {
+            "paperId": "d7bd6e3addd8bc8e2e154048300eea15f030ed33",
+            "title": "Reinforcement Learning with Unsupervised Auxiliary Tasks"
+        },
+        {
+            "paperId": "5129a9cbb6de3c6579f6a7d974394d392ac29829",
+            "title": "Control of Memory, Active Perception, and Action in Minecraft"
+        },
+        {
+            "paperId": "f19284f6ab802c8a1fcde076fcb3fba195a71723",
+            "title": "A guide to convolution arithmetic for deep learning"
+        },
+        {
+            "paperId": "d316c82c12cf4c45f9e85211ef3d1fa62497bff8",
+            "title": "High-Dimensional Continuous Control Using Generalized Advantage Estimation"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "71ae756c75ac89e2d731c9c79649562b5768ff39",
+            "title": "Memory Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "5f5dc5b9a2ba710937e2c413b37b053cd673df02",
+            "title": "Auto-Encoding Variational Bayes"
+        },
+        {
+            "paperId": "56b249e4fb0e18f358e1762c779de447fe50722e",
+            "title": "The hippocampus as a cognitive map"
+        },
+        {
+            "paperId": null,
+            "title": "An introduction, vol"
+        },
+        {
+            "paperId": "97efafdb4a3942ab3efba53ded7413199f79c054",
+            "title": "Reinforcement Learning: An Introduction"
+        },
+        {
+            "paperId": "4d98ce60f4f8ed822503b8d13b0605f8c5d74ca7",
+            "title": "In Advances in Neural Information Processing Systems"
+        }
+    ]
+}

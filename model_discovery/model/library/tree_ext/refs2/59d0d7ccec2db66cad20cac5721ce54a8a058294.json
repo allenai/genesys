@@ -1,0 +1,198 @@
+{
+    "paperId": "59d0d7ccec2db66cad20cac5721ce54a8a058294",
+    "externalIds": {
+        "DBLP": "journals/corr/abs-1712-05877",
+        "ArXiv": "1712.05877",
+        "MAG": "2963122961",
+        "DOI": "10.1109/CVPR.2018.00286",
+        "CorpusId": 39867659
+    },
+    "title": "Quantization and Training of Neural Networks for Efficient Integer-Arithmetic-Only Inference",
+    "abstract": "The rising popularity of intelligent mobile devices and the daunting computational cost of deep learning-based models call for efficient and accurate on-device inference schemes. We propose a quantization scheme that allows inference to be carried out using integer-only arithmetic, which can be implemented more efficiently than floating point inference on commonly available integer-only hardware. We also co-design a training procedure to preserve end-to-end model accuracy post quantization. As a result, the proposed quantization scheme improves the tradeoff between accuracy and on-device latency. The improvements are significant even on MobileNets, a model family known for run-time efficiency, and are demonstrated in ImageNet classification and COCO detection on popular CPUs.",
+    "venue": "2018 IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "year": 2017,
+    "referenceCount": 34,
+    "citationCount": 2577,
+    "influentialCitationCount": 299,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1712.05877",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A quantization scheme is proposed that allows inference to be carried out using integer- only arithmetic, which can be implemented more efficiently than floating point inference on commonly available integer-only hardware."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "11543879",
+            "name": "Benoit Jacob"
+        },
+        {
+            "authorId": "68988581",
+            "name": "S. Kligys"
+        },
+        {
+            "authorId": null,
+            "name": "Bo Chen"
+        },
+        {
+            "authorId": "2717876",
+            "name": "Menglong Zhu"
+        },
+        {
+            "authorId": "2113728429",
+            "name": "Matthew Tang"
+        },
+        {
+            "authorId": "144727050",
+            "name": "Andrew G. Howard"
+        },
+        {
+            "authorId": "2595180",
+            "name": "Hartwig Adam"
+        },
+        {
+            "authorId": "2741985",
+            "name": "Dmitry Kalenichenko"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "08ca99dde4d51edfedcf2730ee47a831b6c49839",
+            "title": "Large-Scale Machine Learning"
+        },
+        {
+            "paperId": "a0e35d6d9b64f11253a5d9660383f2039868b77d",
+            "title": "Extremely Low Bit Neural Network: Squeeze the Last Bit Out with ADMM"
+        },
+        {
+            "paperId": "9da734397acd7ff7c557960c62fb1b400b27bd89",
+            "title": "ShuffleNet: An Extremely Efficient Convolutional Neural Network for Mobile Devices"
+        },
+        {
+            "paperId": "004c71d2905a83ca301f74cbc6020ff37732f390",
+            "title": "Ternary Neural Networks with Fine-Grained Quantization"
+        },
+        {
+            "paperId": "3647d6d0f151dc05626449ee09cc7bce55be497e",
+            "title": "MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications"
+        },
+        {
+            "paperId": "407ead18083e68626e82e07db1a9289ff0b7e862",
+            "title": "Incremental Network Quantization: Towards Lossless CNNs with Low-Precision Weights"
+        },
+        {
+            "paperId": "a312a573ef81793d56401e932ef6c9498791a3d1",
+            "title": "Speed/Accuracy Trade-Offs for Modern Convolutional Object Detectors"
+        },
+        {
+            "paperId": "d418295cd3027c43eccc5592ae5b8303ba8192be",
+            "title": "Trained Ternary Quantization"
+        },
+        {
+            "paperId": "d2e4147eecae6f914e9e1e9aece8fdd2eaed809f",
+            "title": "Quantized Neural Networks: Training Neural Networks with Low Precision Weights and Activations"
+        },
+        {
+            "paperId": "5694e46284460a648fe29117cbc55f6c9be3fa3c",
+            "title": "Densely Connected Convolutional Networks"
+        },
+        {
+            "paperId": "8b053389eb8c18c61b84d7e59a95cb7e13f205b7",
+            "title": "DoReFa-Net: Training Low Bitwidth Convolutional Neural Networks with Low Bitwidth Gradients"
+        },
+        {
+            "paperId": "b649a98ce77ece8cd7638bb74ab77d22d9be77e7",
+            "title": "XNOR-Net: ImageNet Classification Using Binary Convolutional Neural Networks"
+        },
+        {
+            "paperId": "592d2e65489f23ebd993dbdc0c84eda9ac8aadbe",
+            "title": "SqueezeNet: AlexNet-level accuracy with 50x fewer parameters and <1MB model size"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "4d7a9197433acbfb24ef0e9d0f33ed1699e4a5b0",
+            "title": "SSD: Single Shot MultiBox Detector"
+        },
+        {
+            "paperId": "23ffaa0fe06eae05817f527a47ac3291077f9e58",
+            "title": "Rethinking the Inception Architecture for Computer Vision"
+        },
+        {
+            "paperId": "642d0f49b7826adcf986616f4af77e736229990f",
+            "title": "Deep Compression: Compressing Deep Neural Network with Pruning, Trained Quantization and Huffman Coding"
+        },
+        {
+            "paperId": "efb5032e6199c80f83309fd866b25be9545831fd",
+            "title": "Compressing Neural Networks with the Hashing Trick"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "b7cf49e30355633af2db19f35189410c8515e91f",
+            "title": "Deep Learning with Limited Numerical Precision"
+        },
+        {
+            "paperId": "e7bf9803705f2eb608db1e59e5c7636a3f171916",
+            "title": "Compressing Deep Convolutional Networks using Vector Quantization"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "71b7178df5d2b112d07e45038cb5637208659ff7",
+            "title": "Microsoft COCO: Common Objects in Context"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "d2c733e34d48784a37d717fe43d9e93277a8c53e",
+            "title": "ImageNet: A large-scale hierarchical image database"
+        },
+        {
+            "paperId": null,
+            "title": "Tensorflow object detection api, 2017"
+        },
+        {
+            "paperId": "28135fd3e80dda50a673cd556f10b9b972005d27",
+            "title": "Binarized Neural Networks"
+        },
+        {
+            "paperId": null,
+            "title": "Tensorflow: Large-scale machine learning on heterogeneous systems"
+        },
+        {
+            "paperId": "fbeaa499e10e98515f7e1c4ad89165e8c0677427",
+            "title": "Improving the speed of neural networks on CPUs"
+        },
+        {
+            "paperId": "6a630ac89d7c0a57eb7bf4cb30dd5946bcf3ccce",
+            "title": "google,\u6211,\u8428\u5a1c"
+        },
+        {
+            "paperId": null,
+            "title": "gemmlowp: a small self-contained low-precision gemm library"
+        },
+        {
+            "paperId": null,
+            "title": "Eigen v3"
+        },
+        {
+            "paperId": null,
+            "title": "Ten-sor\ufb02ow quantized training support"
+        }
+    ]
+}

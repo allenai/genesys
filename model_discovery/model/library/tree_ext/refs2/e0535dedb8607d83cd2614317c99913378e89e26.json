@@ -1,0 +1,175 @@
+{
+    "paperId": "e0535dedb8607d83cd2614317c99913378e89e26",
+    "externalIds": {
+        "DBLP": "journals/neco/MaassNM02",
+        "MAG": "2103179919",
+        "DOI": "10.1162/089976602760407955",
+        "CorpusId": 1045112,
+        "PubMed": "12433288"
+    },
+    "title": "Real-Time Computing Without Stable States: A New Framework for Neural Computation Based on Perturbations",
+    "abstract": "A key challenge for neural modeling is to explain how a continuous stream of multimodal input from a rapidly changing environment can be processed by stereotypical recurrent circuits of integrate-and-fire neurons in real time. We propose a new computational model for real-time computing on time-varying input that provides an alternative to paradigms based on Turing machines or attractor neural networks. It does not require a task-dependent construction of neural circuits. Instead, it is based on principles of high-dimensional dynamical systems in combination with statistical learning theory and can be implemented on generic evolved or found recurrent circuitry. It is shown that the inherent transient dynamics of the high-dimensional dynamical system formed by a sufficiently large and heterogeneous neural circuit may serve as universal analog fading memory. Readout neurons can learn to extract in real time from the current state of such recurrent neural circuit information about current and past inputs that may be needed for diverse tasks. Stable internal states are not required for giving a stable output, since transient internal states can be transformed by readout neurons into stable target outputs due to the high dimensionality of the dynamical system. Our approach is based on a rigorous computational model, the liquid state machine, that, unlike Turing machines, does not require sequential transitions between well-defined discrete internal states. It is supported, as the Turing machine is, by rigorous mathematical results that predict universal computational power under idealized conditions, but for the biologically more realistic scenario of real-time processing of time-varying inputs. Our approach provides new perspectives for the interpretation of neural coding, the design of experiments and data analysis in neurophysiology, and the solution of problems in robotics and neurotechnology.",
+    "venue": "Neural Computation",
+    "year": 2002,
+    "referenceCount": 34,
+    "citationCount": 3462,
+    "influentialCitationCount": 245,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new computational model for real-time computing on time-varying input that provides an alternative to paradigms based on Turing machines or attractor neural networks, based on principles of high-dimensional dynamical systems in combination with statistical learning theory and can be implemented on generic evolved or found recurrent circuitry."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145247053",
+            "name": "W. Maass"
+        },
+        {
+            "authorId": "1792142",
+            "name": "T. Natschl\u00e4ger"
+        },
+        {
+            "authorId": "1754307",
+            "name": "H. Markram"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "4c75b748911ddcd888c5122f7672f69caa5d661f",
+            "title": "Statistical Learning Theory"
+        },
+        {
+            "paperId": "6e15c1f389e21e7e8cb3b0f720c612b09fe9f8f8",
+            "title": "Dynamical motifs: building blocks of complex dynamics in sparsely connected random networks."
+        },
+        {
+            "paperId": "5075f3041159eb5e84bc35e8d4483e114bad9167",
+            "title": "Coding and learning of behavioral sequences"
+        },
+        {
+            "paperId": "b119886ad2d58b008eccda6708c22a13e12503f3",
+            "title": "Local Interactions in Neural Networks Explain Global Effects in Gestalt Processing and Masking"
+        },
+        {
+            "paperId": "eeba017a44d8576dc81e03b63f94bd9bbd789572",
+            "title": "Perspectives of the high-dimensional dynamics of neural microcircuits from the point of view of low-dimensional readouts"
+        },
+        {
+            "paperId": "406d968077fdb21f7d44e5b0c095ff1d66bcd329",
+            "title": "What is a moment? Transient synchrony as a collective mechanism for spatiotemporal integration."
+        },
+        {
+            "paperId": "5e23d50b6d2a7256b5f471489844fcfcac0fb635",
+            "title": "On the Computational Power of Winner-Take-All"
+        },
+        {
+            "paperId": "30152d0b6beaa7074a5fb37072604dbf738dacef",
+            "title": "Neural Systems as Nonlinear Filters"
+        },
+        {
+            "paperId": "af03409ba4dc3b19a2ee5a51e2abae3f64594c9e",
+            "title": "Visual behaviour mediated by retinal projections directed to the auditory pathway"
+        },
+        {
+            "paperId": "b5d9a4c32b53ffd6c37facd18e0bf13a1e9575ba",
+            "title": "Organizing principles for a diversity of GABAergic interneurons and synapses in the neocortex."
+        },
+        {
+            "paperId": "3e68373921e8088aebe7bf71e06e7f787f7b4fac",
+            "title": "t Synchrony Generation in Recurrent Networks with Frequency-Dependent Synapses"
+        },
+        {
+            "paperId": "8c56c5ff6e213dc7dbfed5c0c86a0106d0d28b1f",
+            "title": "Analog Neural Nets with Gaussian or Other Common Noise Distributions Cannot Recognize Arbitrary Regular Languages"
+        },
+        {
+            "paperId": "38c0ea686e2d5307b9316058cecf1ef8e1d8e510",
+            "title": "Dynamical Recognizers: Real-Time Language Recognition by Analog Computers"
+        },
+        {
+            "paperId": "6427d81b67f5958136fefe8757a82eb39665c500",
+            "title": "Differential signaling via the same axon of neocortical pyramidal neurons."
+        },
+        {
+            "paperId": "bda56f9ed466df418ec5f416b020b79bc93e456f",
+            "title": "Dynamics of Ongoing Activity: Explanation of the Large Variability in Evoked Cortical Responses"
+        },
+        {
+            "paperId": "32e97eef94beacace020e79322cef0e1e5a76ee0",
+            "title": "Gradient calculations for dynamic recurrent neural networks: a survey"
+        },
+        {
+            "paperId": "85403bc4d4928e9b6dd8f49103aab7d51c596794",
+            "title": "A Model of Corticostriatal Plasticity for Learning Oculomotor Associations and Sequences"
+        },
+        {
+            "paperId": "b71f89199f6090775310ec8d4cd19c38ecefb086",
+            "title": "Temporal information transformed into a spatial code by a neural network with realistic properties"
+        },
+        {
+            "paperId": "6c0cbbd275bb43e09f0527a31ddd61824eca295b",
+            "title": "Introduction to the theory of neural computation"
+        },
+        {
+            "paperId": "93aaf126443643fb0835df896ab07b523f2c9613",
+            "title": "Analog computation via neural networks"
+        },
+        {
+            "paperId": "872cdc269f3cb59f8a227818f35041415091545f",
+            "title": "Learning and Extracting Finite State Automata with Second-Order Recurrent Neural Networks"
+        },
+        {
+            "paperId": "b185742930fd959aaccdfdecdb31641839a787c4",
+            "title": "The Induction of Dynamical Recognizers"
+        },
+        {
+            "paperId": "282aa17172f1d5d2621fb7e507be0e006ea8e29e",
+            "title": "Can excitable media be considered as computational systems"
+        },
+        {
+            "paperId": "9249389a2fbc2151a80b4731f007c780616b067a",
+            "title": "Fading memory and the problem of approximating nonlinear operators with volterra series"
+        },
+        {
+            "paperId": "a7ab38f4814b684b0a9dfeb464c1ba556d0bfc89",
+            "title": "The Synaptic Organization of the Brain"
+        },
+        {
+            "paperId": "8430c0b9afa478ae660398704b11dca1221ccf22",
+            "title": "The''echo state''approach to analysing and training recurrent neural networks"
+        },
+        {
+            "paperId": null,
+            "title": "The p-delta rule for parallel perceptrons. Manuscript submitted for publication"
+        },
+        {
+            "paperId": "0af7569c2af0ee193ce0bf33669b16f720826e18",
+            "title": "Models of Computation: Exploring the Power of Computing"
+        },
+        {
+            "paperId": "1c8c87c9009f4e435ce3e079c22e2d66c73d96e6",
+            "title": "Turing Machines Are Recurrent Neural Networks"
+        },
+        {
+            "paperId": "b3a36b7b76593d3e6efa068938a6911ededa16bb",
+            "title": "Lower Bounds for the Computational Power of Networks of Spiking Neurons"
+        },
+        {
+            "paperId": null,
+            "title": "Science"
+        },
+        {
+            "paperId": "ff4782609c7891e5be89916003e6e7cff4cbe547",
+            "title": "A basic circuit of cortical organization."
+        },
+        {
+            "paperId": "6d8b0d1a233a3ce3632b7f31fa28589b7699754e",
+            "title": "The Synaptic Organization of the Brain"
+        },
+        {
+            "paperId": null,
+            "title": "VTT Tietotekniikka: Finnish Artiicial Intelligence Society"
+        }
+    ]
+}

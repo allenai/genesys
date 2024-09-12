@@ -1,0 +1,146 @@
+{
+    "paperId": "5ed5f368aa5ee237828f058d883eec5d489e650b",
+    "externalIds": {
+        "DBLP": "conf/icpr/FengLL16",
+        "MAG": "2609963459",
+        "DOI": "10.1109/ICPR.2016.7899654",
+        "CorpusId": 6703188
+    },
+    "title": "Learning effective Gait features using LSTM",
+    "abstract": "Human gait is an important biometric feature for person identification in surveillance videos because it can be collected at a distance without subject cooperation. Most existing gait recognition methods are based on Gait Energy Image (GEI). Although the spatial information in one gait sequence can be well represented by GEI, the temporal information is lost. To solve this problem, we propose a new feature learning method for gait recognition. Not only can the learned feature preserve temporal information in a gait sequence, but it can also be applied to cross-view gait recognition. Heatmaps extracted by a convolutional neutral network (CNN) based pose estimate method are used to describe the gait information in one frame. To model a gait sequence, the LSTM recurrent neural network is naturally adopted. Our LSTM model can be trained with unlabeled data, where the identity of the subject in a gait sequence is unknown. When labeled data are available, our LSTM works as a frame to frame view transformation model (VTM). Experiments on a gait benchmark demonstrate the efficacy of our method.",
+    "venue": "International Conference on Pattern Recognition",
+    "year": 2016,
+    "referenceCount": 27,
+    "citationCount": 109,
+    "influentialCitationCount": 6,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a new feature learning method that not only can the learned feature preserve temporal information in a gait sequence, but it can also be applied to cross-view gait recognition."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2115387758",
+            "name": "Yang Feng"
+        },
+        {
+            "authorId": "3092578",
+            "name": "Y. Li"
+        },
+        {
+            "authorId": "33642939",
+            "name": "Jiebo Luo"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "4263f35acf270651cd4be079db72b0d62ac14fb9",
+            "title": "Automatic Learning of Gait Signatures for People Identification"
+        },
+        {
+            "paperId": "cf2d9fa9241b24ab2d2562ceb11c8df2fdb0b07b",
+            "title": "Complete canonical correlation analysis with application to multi-view gait recognition"
+        },
+        {
+            "paperId": "3b2df6c87801e9de5865693df17803169947df7b",
+            "title": "Fisher Motion Descriptor for Multiview Gait Recognition"
+        },
+        {
+            "paperId": "d058ffd7e893e2422b86ceec79a7466472a08a98",
+            "title": "Gait recognition method for arbitrary straight walking paths using appearance conversion machine"
+        },
+        {
+            "paperId": "52ed55387cd6e168b91391110fb4319160e82f50",
+            "title": "Multi-attributes gait identification by convolutional neural networks"
+        },
+        {
+            "paperId": "013d0acff1e5410fd9f6e15520d16f4ea02f03f6",
+            "title": "Learning Representative Deep Features for Image Set Analysis"
+        },
+        {
+            "paperId": "f22f25904f85c657e10fcc262653ebb6187193f9",
+            "title": "Flowing ConvNets for Human Pose Estimation in Videos"
+        },
+        {
+            "paperId": "829510ad6f975c939d589eeb01a3cf6fc6c8ce4d",
+            "title": "Unsupervised Learning of Video Representations using LSTMs"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "f264e8b33c0d49a692a6ce2c4bcb28588aeb7d97",
+            "title": "Recurrent Neural Network Regularization"
+        },
+        {
+            "paperId": "bac377d3a051899dbe0d7249ed5d3d0b22d57310",
+            "title": "Human3.6M: Large Scale Datasets and Predictive Methods for 3D Human Sensing in Natural Environments"
+        },
+        {
+            "paperId": "1a8cbda56eca39f49bc71ad66b5a827a761d3d7c",
+            "title": "Recognizing Gaits Across Views Through Correlated Motion Co-Clustering"
+        },
+        {
+            "paperId": "4177ec52d1b80ed57f2e72b0f9a42365f1a8598d",
+            "title": "Speech recognition with deep recurrent neural networks"
+        },
+        {
+            "paperId": "855d0f722d75cc56a66a00ede18ace96bafee6bd",
+            "title": "Theano: new features and speed improvements"
+        },
+        {
+            "paperId": "2d01cbc84241f1542946f0bcd4ab5cf4f79015cd",
+            "title": "Human Identification Using Temporal Information Preserving Gait Template"
+        },
+        {
+            "paperId": "2be3868b679116344c4761b7193374dca491d7c7",
+            "title": "Robust view transformation model for gait recognition"
+        },
+        {
+            "paperId": "aa2304791ea6bd387d0a9b950a150e1a87d57211",
+            "title": "Support vector regression for multi-view gait recognition based on local motion feature selection"
+        },
+        {
+            "paperId": "376a41378cb91d488eefb6fd81672c2013fc5bcf",
+            "title": "Multiple views gait recognition using View Transformation Model based on optimized Gait Energy Image"
+        },
+        {
+            "paperId": "61d3f715eeeb9a28c66c85e4d4621ae43c786b9a",
+            "title": "View-independent human motion classification using image-based reconstruction"
+        },
+        {
+            "paperId": "0268d1744377ffbff48b014f513ea3e5e4a4dab1",
+            "title": "A Framework for Evaluating the Effect of View Angle, Clothing and Carrying Condition on Gait Recognition"
+        },
+        {
+            "paperId": "890992c340d970beea5418bac2cb7bd8d0596f12",
+            "title": "3D gait recognition using multiple cameras"
+        },
+        {
+            "paperId": "540339c32eaf41962740583bfa415a5a0ff9d932",
+            "title": "Individual recognition using gait energy image"
+        },
+        {
+            "paperId": "c4b271dc2e3a220b8f3163c9832c53984c69fef2",
+            "title": "Towards a view invariant gait recognition algorithm"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": null,
+            "title": "and Z"
+        },
+        {
+            "paperId": "c5637543e80f97c9ddab8b54a635cf71941e2786",
+            "title": "This article has been accepted for inclusion in a future issue of this journal. Content is final as presented, with the exception of pagination. IEEE TRANSACTIONS ON SYSTEMS, MAN, AND CYBERNETICS\u2014PART B: CYBERNETICS 1 Self-Calibrating View-Invariant Gait"
+        },
+        {
+            "paperId": null,
+            "title": "IEEE Conference on"
+        }
+    ]
+}

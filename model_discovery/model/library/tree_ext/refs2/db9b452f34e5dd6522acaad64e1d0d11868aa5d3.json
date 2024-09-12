@@ -1,0 +1,197 @@
+{
+    "paperId": "db9b452f34e5dd6522acaad64e1d0d11868aa5d3",
+    "externalIds": {
+        "DBLP": "journals/access/HeWLFW19",
+        "MAG": "2934798344",
+        "DOI": "10.1109/ACCESS.2019.2907992",
+        "CorpusId": 106411499
+    },
+    "title": "Long Document Classification From Local Word Glimpses via Recurrent Attention Learning",
+    "abstract": "Document classification requires to extract high-level features from low-level word vectors. Typically, feature extraction by deep neural networks makes use of all words in a document, which cannot scale well for a long document. In this paper, we propose to tackle the long document classification task by incorporating the recurrent attention learning framework, which can produce the discriminative features with significantly less words. Specifically, the core work is to train a recurrent neural network (RNN)-based controller, which can focus its attention on the discriminative parts. Then, the glimpsed feature is extracted by a typical short text level convolutional neural network (CNN) from the focused group of words. The controller locates its attention according to the context information, which consists of the coarse representation of the original document and the memorized glimpsed features. By glimpsing a few groups, the document can be classified by aggregating these glimpsed features and the coarse representation. For our collected 11-class 10 000-word arXiv paper data set, the proposed method outperforms two subsampled deep CNN baseline models by a large margin given much less observed words.",
+    "venue": "IEEE Access",
+    "year": 2019,
+    "referenceCount": 37,
+    "citationCount": 33,
+    "influentialCitationCount": 5,
+    "openAccessPdf": {
+        "url": "https://ieeexplore.ieee.org/ielx7/6287639/8600701/08675939.pdf",
+        "status": "GOLD"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes to tackle the long document classification task by incorporating the recurrent attention learning framework, which can produce the discriminative features with significantly less words."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "50774742",
+            "name": "Jun He"
+        },
+        {
+            "authorId": "2108908160",
+            "name": "Liqun Wang"
+        },
+        {
+            "authorId": "2117958137",
+            "name": "Liu Liu"
+        },
+        {
+            "authorId": "1406031975",
+            "name": "Jiao Feng"
+        },
+        {
+            "authorId": "30566977",
+            "name": "Hao Wu"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "3c914230ca499edb9104a9a38fa74a01d37b6926",
+            "title": "Interactive Attention Transfer Network for Cross-Domain Sentiment Classification"
+        },
+        {
+            "paperId": "5d699deb5764dc6b88d04dee6e5532179b71685e",
+            "title": "Long Length Document Classification by Local Convolutional Feature Aggregation"
+        },
+        {
+            "paperId": "1bf3d761b701e58da088a476a37963610ea23a60",
+            "title": "Hierarchical Convolutional Attention Networks for Text Classification"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "77d30cf9a34fb6b50979c6a68863099da9a060ad",
+            "title": "Residual Attention Network for Image Classification"
+        },
+        {
+            "paperId": "f797fd44b9ddd5845611eb7a705ca9464a8819d1",
+            "title": "Very Deep Convolutional Networks for Text Classification"
+        },
+        {
+            "paperId": "ac50801574f7c97f1cf8f6718a9ff2b3e18c2dc6",
+            "title": "Improving Information Extraction by Acquiring External Evidence with Reinforcement Learning"
+        },
+        {
+            "paperId": "f292139b371f5b34e835f4dbff102dc28f972876",
+            "title": "Sequential Short-Text Classification with Recurrent and Convolutional Neural Networks"
+        },
+        {
+            "paperId": "31f9eb39d840821979e5df9f34a6e92dd9c879f2",
+            "title": "Learning Deep Features for Discriminative Localization"
+        },
+        {
+            "paperId": "51a55df1f023571a7e07e338ee45a3e3d66ef73e",
+            "title": "Character-level Convolutional Networks for Text Classification"
+        },
+        {
+            "paperId": "ecb5336bf7b54a62109f325e7152bb74c4c7f527",
+            "title": "Document Modeling with Gated Recurrent Neural Network for Sentiment Classification"
+        },
+        {
+            "paperId": "80a624b9327d9050244dfebac96f7f6cf806880f",
+            "title": "Deep Unordered Composition Rivals Syntactic Methods for Text Classification"
+        },
+        {
+            "paperId": "7845f1d3e796b5704d4bd37a945e0cf3fb8bbf1f",
+            "title": "Multiple Object Recognition with Visual Attention"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "1f6ba0782862ec12a5ec6d7fb608523d55b0c6ba",
+            "title": "Convolutional Neural Networks for Sentence Classification"
+        },
+        {
+            "paperId": "8a756d4d25511d92a45d0f4545fa819de993851d",
+            "title": "Recurrent Models of Visual Attention"
+        },
+        {
+            "paperId": "2012f32199adc88747d5a1b47c7b4ba1cb3cb995",
+            "title": "word2vec Explained: deriving Mikolov et al.'s negative-sampling word-embedding method"
+        },
+        {
+            "paperId": "e9cd1d6a25aae329dc3f1268a8998898cca26f58",
+            "title": "Feature selection for text classification with Na\u00efve Bayes"
+        },
+        {
+            "paperId": "9d559fe57b6a97fec6c8535cf8b023350adb58f1",
+            "title": "Text Document Preprocessing with the Bayes Formula for Classification Using the Support Vector Machine"
+        },
+        {
+            "paperId": "4686d10750167d9c578392f645fdaa4a55197ffb",
+            "title": "Some Effective Techniques for Naive Bayes Text Classification"
+        },
+        {
+            "paperId": "5feca7d699227265f607baee1f74b5449994a6b7",
+            "title": "Topic modeling: beyond bag-of-words"
+        },
+        {
+            "paperId": "d20c10c70b5ca440d01b2c15a434553f02abc0a8",
+            "title": "Protein classification based on text document classification techniques"
+        },
+        {
+            "paperId": "ebe5b9a24275793de12cb367802db19690751f41",
+            "title": "Feature selection for text categorization on imbalanced data"
+        },
+        {
+            "paperId": "12d0353ce8b41b7e5409e5a4a611110aee33c7bc",
+            "title": "Thumbs up? Sentiment Classification using Machine Learning Techniques"
+        },
+        {
+            "paperId": "a20f0ce0616def7cc9a87446c228906cd5da093b",
+            "title": "Policy Gradient Methods for Reinforcement Learning with Function Approximation"
+        },
+        {
+            "paperId": "74b1a9e50f18af8a7b9f8dd38f40e0466ad7a8e8",
+            "title": "Transductive Inference for Text Classification using Support Vector Machines"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "c3ebcef26c22a373b6f26a67934213eb0582804e",
+            "title": "A Comparative Study on Feature Selection in Text Categorization"
+        },
+        {
+            "paperId": "62cfacee0383f6c0ca649ccd1c5dbaf230ee5268",
+            "title": "Gauging Similarity with n-Grams: Language-Independent Categorization of Text"
+        },
+        {
+            "paperId": "49af572ef8f7ea89db06d5e7b66e9369c22d7607",
+            "title": "N-gram-based text categorization"
+        },
+        {
+            "paperId": "7c54d9b80113f637e447199d8ffbfe4b0678cc6f",
+            "title": "A survey on feature selection methods"
+        },
+        {
+            "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+            "title": "Recurrent neural network based language model"
+        },
+        {
+            "paperId": "d8384f7ef288d2d5cb267128471c5427fc98b54b",
+            "title": "An Introduction to Variable and Feature Selection"
+        },
+        {
+            "paperId": "f330f1f472f860212b980bb9be81eff884f7f0e1",
+            "title": "Classification using String Kernels"
+        },
+        {
+            "paperId": "04ce064505b1635583fa0d9cc07cac7e9ea993cc",
+            "title": "A comparison of event models for naive bayes text classification"
+        },
+        {
+            "paperId": "b1b800aacf850a18e6504c693b4c5d33b8b3ac32",
+            "title": "State of the Art\u2014A Survey of Partially Observable Markov Decision Processes: Theory, Models, and Algorithms"
+        }
+    ]
+}

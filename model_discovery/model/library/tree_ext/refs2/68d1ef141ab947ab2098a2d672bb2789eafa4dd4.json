@@ -1,0 +1,146 @@
+{
+    "paperId": "68d1ef141ab947ab2098a2d672bb2789eafa4dd4",
+    "externalIds": {
+        "DBLP": "conf/naacl/SteedmanHCOSHRBC03",
+        "ACL": "N03-1031",
+        "MAG": "2051840895",
+        "DOI": "10.3115/1073445.1073476",
+        "CorpusId": 7163980
+    },
+    "title": "Example Selection for Bootstrapping Statistical Parsers",
+    "abstract": "This paper investigates bootstrapping for statistical parsers to reduce their reliance on manually annotated training data. We consider both a mostly-unsupervised approach, cotraining, in which two parsers are iteratively re-trained on each other's output; and a semi-supervised approach, corrected co-training, in which a human corrects each parser's output before adding it to the training data. The selection of labeled training examples is an integral part of both frameworks. We propose several selection methods based on the criteria of minimizing errors in the data and maximizing training utility. We show that incorporating the utility criterion into the selection method results in better parsers for both frameworks.",
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2003,
+    "referenceCount": 20,
+    "citationCount": 286,
+    "influentialCitationCount": 4,
+    "openAccessPdf": {
+        "url": "http://dl.acm.org/ft_gateway.cfm?id=1073476&type=pdf",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper investigates bootstrapping for statistical parsers to reduce their reliance on manually annotated training data and proposes several selection methods based on the criteria of minimizing errors in the data and maximizing training utility."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145332819",
+            "name": "Mark Steedman"
+        },
+        {
+            "authorId": "1726601",
+            "name": "R. Hwa"
+        },
+        {
+            "authorId": "144523372",
+            "name": "S. Clark"
+        },
+        {
+            "authorId": "2057788",
+            "name": "M. Osborne"
+        },
+        {
+            "authorId": "3028658",
+            "name": "Anoop Sarkar"
+        },
+        {
+            "authorId": "3118681",
+            "name": "J. Hockenmaier"
+        },
+        {
+            "authorId": "2942974",
+            "name": "Paul Ruhlen"
+        },
+        {
+            "authorId": "2105668870",
+            "name": "S. Baker"
+        },
+        {
+            "authorId": "48695826",
+            "name": "J. Crim"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "3fc44ff7f37ec5585310666c183c65e0a0bb2446",
+            "title": "Head-Driven Statistical Models for Natural Language Parsing"
+        },
+        {
+            "paperId": "b16fc0643c715813c2eafc3f6d0e2bd59354b236",
+            "title": "Bootstrapping statistical parsers from small datasets"
+        },
+        {
+            "paperId": "08e39912a54fc46f25f9e79bfa06ee44311b051a",
+            "title": "Active Learning for Statistical Natural Language Parsing"
+        },
+        {
+            "paperId": "f0c90a5bc53027d76b24854209a4cdb1bd75dd2f",
+            "title": "Applying Co-Training Methods to Statistical Parsing"
+        },
+        {
+            "paperId": "a48abd949978432b8a9498f94b029e440bc1b4f3",
+            "title": "PAC Generalization Bounds for Co-training"
+        },
+        {
+            "paperId": "ac3a42fddd287c7de791a7f52b5f0cacbf40f51a",
+            "title": "Bootstrapping"
+        },
+        {
+            "paperId": "b694f16582afdfa7400348bb37d5df21e4889613",
+            "title": "Sample Selection for Statistical Grammar Induction"
+        },
+        {
+            "paperId": "52e16b234c8d15d20de0e892e190bb6af04576e3",
+            "title": "Rule Writing or Annotation: Cost-efficient Resource Usage for Base Noun Phrase Chunking"
+        },
+        {
+            "paperId": "2196c4afde66808657f5ded39595de937dfbd08d",
+            "title": "Selective Sampling with Redundant Views"
+        },
+        {
+            "paperId": "ea4feb953b86f6a099d61ffa70d21c59be99f76a",
+            "title": "Enhancing Supervised Learning with Unlabeled Data"
+        },
+        {
+            "paperId": "76d5e3fa888bee872b7adb7fa810089aa8ab1d58",
+            "title": "A Maximum-Entropy-Inspired Parser"
+        },
+        {
+            "paperId": "37c9408d511cbc1122b5b570694eed52b04e9636",
+            "title": "Active Learning for Natural Language Parsing and Information Extraction"
+        },
+        {
+            "paperId": "c101259742dcd6fb2fcf51c7995522e632db2744",
+            "title": "Selective Sampling Using the Query by Committee Algorithm"
+        },
+        {
+            "paperId": "dec83c793bcbcd3d4aca5d1a0f2f9280a9214671",
+            "title": "Minimizing Manual Annotation Cost in Supervised Training from Corpora"
+        },
+        {
+            "paperId": "b69e0cce79eb288ffb43ad7ae3b99b8dea9ac5ac",
+            "title": "Heterogeneous Uncertainty Sampling for Supervised Learning"
+        },
+        {
+            "paperId": "80aa9c12d315734073d8db0b60a1b67fce98746b",
+            "title": "Improving Generalization with Active Learning"
+        },
+        {
+            "paperId": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+            "title": "Building a Large Annotated Corpus of English: The Penn Treebank"
+        },
+        {
+            "paperId": "c7ea4d581ba0814141078b5251fdc74d06ca5b21",
+            "title": "Statistical Parsing Algorithms for Lexi-calized Tree Adjoining Grammars"
+        },
+        {
+            "paperId": "df3520f52fcf42b4f10ed4b35b3b3f9cd050f290",
+            "title": "Limitations of Co-Training for Natural Language Learning from Large Datasets"
+        },
+        {
+            "paperId": null,
+            "title": "Combining labeled and unlabeled data with co-training"
+        }
+    ]
+}

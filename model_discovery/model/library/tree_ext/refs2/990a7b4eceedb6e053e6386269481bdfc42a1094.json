@@ -1,0 +1,307 @@
+{
+    "paperId": "990a7b4eceedb6e053e6386269481bdfc42a1094",
+    "externalIds": {
+        "MAG": "2888296173",
+        "DBLP": "journals/tacl/ReddyCM19",
+        "ACL": "Q19-1016",
+        "ArXiv": "1808.07042",
+        "DOI": "10.1162/tacl_a_00266",
+        "CorpusId": 52055325
+    },
+    "title": "CoQA: A Conversational Question Answering Challenge",
+    "abstract": "Humans gather information through conversations involving a series of interconnected questions and answers. For machines to assist in information gathering, it is therefore essential to enable them to answer conversational questions. We introduce CoQA, a novel dataset for building Conversational Question Answering systems. Our dataset contains 127k questions with answers, obtained from 8k conversations about text passages from seven diverse domains. The questions are conversational, and the answers are free-form text with their corresponding evidence highlighted in the passage. We analyze CoQA in depth and show that conversational questions have challenging phenomena not present in existing reading comprehension datasets (e.g., coreference and pragmatic reasoning). We evaluate strong dialogue and reading comprehension models on CoQA. The best system obtains an F1 score of 65.4%, which is 23.4 points behind human performance (88.8%), indicating that there is ample room for improvement. We present CoQA as a challenge to the community at https://stanfordnlp.github.io/coqa.",
+    "venue": "Transactions of the Association for Computational Linguistics",
+    "year": 2018,
+    "referenceCount": 66,
+    "citationCount": 1046,
+    "influentialCitationCount": 164,
+    "openAccessPdf": {
+        "url": "https://direct.mit.edu/tacl/article-pdf/doi/10.1162/tacl_a_00266/1923252/tacl_a_00266.pdf",
+        "status": "GOLD"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "CoQA is introduced, a novel dataset for building Conversational Question Answering systems and it is shown that conversational questions have challenging phenomena not present in existing reading comprehension datasets (e.g., coreference and pragmatic reasoning)."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145732771",
+            "name": "Siva Reddy"
+        },
+        {
+            "authorId": "50536468",
+            "name": "Danqi Chen"
+        },
+        {
+            "authorId": "144783904",
+            "name": "Christopher D. Manning"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "7a78503410c10994913100863bbdb83b2d58b79b",
+            "title": "SDNet: Contextualized Attention-based Deep Network for Conversational Question Answering"
+        },
+        {
+            "paperId": "e51ad1057e540404f08314caa018abb47c82293f",
+            "title": "A Dataset for Document Grounded Conversations"
+        },
+        {
+            "paperId": "cd832f7081ab7b83240140c4e5e58b4fb1f8e0e6",
+            "title": "Interpretation of Natural Language Rules in Conversational Machine Reading"
+        },
+        {
+            "paperId": "39e734da43eb8c72e9549b42e96760545036f8e5",
+            "title": "QuAC: Question Answering in Context"
+        },
+        {
+            "paperId": "53488be57a10ee7c37bf81712efe060865c9a063",
+            "title": "Multi-Relational Question Answering from Narratives: Machine Reading and Reasoning in Simulated Worlds"
+        },
+        {
+            "paperId": "92f44bfc47dbe6b377bc5f4981697cb18c50efdf",
+            "title": "The price of debiasing automatic metrics in natural language evalaution"
+        },
+        {
+            "paperId": "85c22ce1a62973a4b64bbcde26748893d61d01e4",
+            "title": "End-to-end Audio Visual Scene-aware Dialog Using Multimodal Attention-based Video Features"
+        },
+        {
+            "paperId": "4d1c856275744c0284312a3a50efb6ca9dc4cd4c",
+            "title": "Know What You Don\u2019t Know: Unanswerable Questions for SQuAD"
+        },
+        {
+            "paperId": "6c5eb60ac554f2210eb18124ca0f052806eec2b0",
+            "title": "SemEval-2018 Task 11: Machine Comprehension Using Commonsense Knowledge"
+        },
+        {
+            "paperId": "99ad0533f84c110da2d0713d5798e6e14080b159",
+            "title": "Looking Beyond the Surface: A Challenge Set for Reading Comprehension over Multiple Sentences"
+        },
+        {
+            "paperId": "29de7c0fb3c09eaf55b20619bceaeafe72fd87a6",
+            "title": "Hierarchical Neural Story Generation"
+        },
+        {
+            "paperId": "c8725f13be7434b69738491c66b45c9225258253",
+            "title": "The Web as a Knowledge-Base for Answering Complex Questions"
+        },
+        {
+            "paperId": "3febb2bed8865945e7fddc99efd791887bb7e14f",
+            "title": "Deep Contextualized Word Representations"
+        },
+        {
+            "paperId": "e5a1d41e6212951cb6a831ed61a59d00b7ff6867",
+            "title": "Complex Sequential Question Answering: Towards Learning to Converse Over Linked Question Answer Pairs with a Knowledge Graph"
+        },
+        {
+            "paperId": "6c7046195f64cccac1ed3275d88d77655534b5a4",
+            "title": "Personalizing Dialogue Agents: I have a dog, do you have pets too?"
+        },
+        {
+            "paperId": "d91043f0d48b9b2c8ff7ee321abb8fd7efafff7a",
+            "title": "The NarrativeQA Reading Comprehension Challenge"
+        },
+        {
+            "paperId": "3c78c6df5eb1695b6a399e346dde880af27d1016",
+            "title": "Simple and Effective Multi-Paragraph Reading Comprehension"
+        },
+        {
+            "paperId": "7d5cf22c70484fe217936c66741fb73b2a278bde",
+            "title": "Constructing Datasets for Multi-hop Reading Comprehension Across Documents"
+        },
+        {
+            "paperId": "932a5de79d8a8ebb75ea0c43493450fd9922e738",
+            "title": "Crowdsourcing Multiple Choice Science Questions"
+        },
+        {
+            "paperId": "5b5cc77898a71a1386734584ceef4070263b8d03",
+            "title": "ParlAI: A Dialog Research Software Platform"
+        },
+        {
+            "paperId": "8ff54aa8045b1e30c348cf2ca42259c946cd7a9e",
+            "title": "Search-based Neural Structured Learning for Sequential Question Answering"
+        },
+        {
+            "paperId": "f010affab57b5fcf1cd6be23df79d8ec98c7289c",
+            "title": "TriviaQA: A Large Scale Distantly Supervised Challenge Dataset for Reading Comprehension"
+        },
+        {
+            "paperId": "3adff57fd09965224506a1bacc0579d9d3c8c11e",
+            "title": "SearchQA: A New Q&A Dataset Augmented with Context from a Search Engine"
+        },
+        {
+            "paperId": "636a79420d838eabe4af7fb25d6437de45ab64e8",
+            "title": "RACE: Large-scale ReAding Comprehension Dataset From Examinations"
+        },
+        {
+            "paperId": "668db48c6a79826456341680ee1175dfc4cced71",
+            "title": "Get To The Point: Summarization with Pointer-Generator Networks"
+        },
+        {
+            "paperId": "104715e1097b7ebee436058bfd9f45540f269845",
+            "title": "Reading Wikipedia to Answer Open-Domain Questions"
+        },
+        {
+            "paperId": "46a7afc2b23bb3406fb64c36b6f2696145b54f24",
+            "title": "Making Neural QA as Simple as Possible but not Simpler"
+        },
+        {
+            "paperId": "aab5002a22b9b4244a8329b140bd0a86021aa2d1",
+            "title": "OpenNMT: Open-Source Toolkit for Neural Machine Translation"
+        },
+        {
+            "paperId": "3eda43078ae1f4741f09be08c4ecab6229046a5c",
+            "title": "NewsQA: A Machine Comprehension Dataset"
+        },
+        {
+            "paperId": "8d574fde3e46ad766fac26094e3bb1cf55a08226",
+            "title": "MS MARCO: A Human Generated MAchine Reading COmprehension Dataset"
+        },
+        {
+            "paperId": "1b80416cc2b05954941ac7e7dcbcc358c10e5ace",
+            "title": "Visual Dialog"
+        },
+        {
+            "paperId": "754cd9d2853ead8610ef6949cf3e6e6a48e69168",
+            "title": "Generative Deep Neural Networks for Dialogue: A Short Review"
+        },
+        {
+            "paperId": "3a7b63b50c64f4ec3358477790e84cbd6be2a0b4",
+            "title": "Bidirectional Attention Flow for Machine Comprehension"
+        },
+        {
+            "paperId": "dd95f96e3322dcaee9b1e3f7871ecc3ebcd51bfe",
+            "title": "MS MARCO: A Human Generated MAchine Reading COmprehension Dataset"
+        },
+        {
+            "paperId": "e2dba792360873aef125572812f3673b1a85d850",
+            "title": "Enriching Word Vectors with Subword Information"
+        },
+        {
+            "paperId": "05dd7254b632376973f3a1b4d39485da17814df5",
+            "title": "SQuAD: 100,000+ Questions for Machine Comprehension of Text"
+        },
+        {
+            "paperId": "b1e20420982a4f923c08652941666b189b11b7fe",
+            "title": "A Thorough Examination of the CNN/Daily Mail Reading Comprehension Task"
+        },
+        {
+            "paperId": "129cbad01be98ee88a930e31898cb76be79c41c1",
+            "title": "How NOT To Evaluate Your Dialogue System: An Empirical Study of Unsupervised Evaluation Metrics for Dialogue Response Generation"
+        },
+        {
+            "paperId": "02534853626c18c9a097c2712f1ddf3613257d35",
+            "title": "Incorporating Copying Mechanism in Sequence-to-Sequence Learning"
+        },
+        {
+            "paperId": "35b91b365ceb016fb3e022577cec96fb9b445dc5",
+            "title": "The Goldilocks Principle: Reading Children's Books with Explicit Memory Representations"
+        },
+        {
+            "paperId": "651e5bcc14f14605a879303e97572a27ea8c7956",
+            "title": "A Diversity-Promoting Objective Function for Neural Conversation Models"
+        },
+        {
+            "paperId": "b41e95c8c97846d5ca4c11ef79d7814499cc9663",
+            "title": "Compositional Semantic Parsing on Semi-Structured Tables"
+        },
+        {
+            "paperId": "86311b182786bfde19446f6ded0854de973d4060",
+            "title": "A Neural Conversational Model"
+        },
+        {
+            "paperId": "d1505c6123c102e53eb19dff312cb25cea840b72",
+            "title": "Teaching Machines to Read and Comprehend"
+        },
+        {
+            "paperId": "6e565308c8081e807709cb4a917443b737e6cdb4",
+            "title": "Large-scale Simple Question Answering with Memory Networks"
+        },
+        {
+            "paperId": "97ad70a9fa3f99adf18030e5e38ebe3d90daa2db",
+            "title": "VQA: Visual Question Answering"
+        },
+        {
+            "paperId": "abb33d75dc297993fcc3fb75e0f4498f413eb4f6",
+            "title": "Towards AI-Complete Question Answering: A Set of Prerequisite Toy Tasks"
+        },
+        {
+            "paperId": "818b92bfad6e11d849bae552be60111579d91e91",
+            "title": "Elementary School Science and Math Tests as a Driver for AI: Take the Aristo Challenge!"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "2f5102ec3f70d0dea98c957cc2cab4d15d83a2da",
+            "title": "The Stanford CoreNLP Natural Language Processing Toolkit"
+        },
+        {
+            "paperId": "564257469fa44cdb57e4272f85253efb9acfd69d",
+            "title": "MCTest: A Challenge Dataset for the Open-Domain Machine Comprehension of Text"
+        },
+        {
+            "paperId": "b29447ba499507a259ae9d8f685d60cc1597d7d3",
+            "title": "Semantic Parsing on Freebase from Question-Answer Pairs"
+        },
+        {
+            "paperId": "84b520a8d6de79f62bb095b565d077e95bfb6f5b",
+            "title": "POMDP-Based Statistical Spoken Dialog Systems: A Review"
+        },
+        {
+            "paperId": "5b6f048840ded1a27b9830f78f4d48b3ededb3ea",
+            "title": "Data-Driven Response Generation in Social Media"
+        },
+        {
+            "paperId": "019f7f3ac989411c023ab02ca731fc13d9a9c447",
+            "title": "Beyond Question-Answering."
+        },
+        {
+            "paperId": "a798bca71c8833e49ad9bac22da4b5c3503f1e6a",
+            "title": "ELIZA\u2014a computer program for the study of natural language communication between man and machine"
+        },
+        {
+            "paperId": "df2b0e26d0599ce3e70df8a9da02e51594e0e992",
+            "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding"
+        },
+        {
+            "paperId": "520fcc38b93ece751869636cadc9ca9bf068b024",
+            "title": "CONVERSATIONAL MACHINE COMPREHENSION"
+        },
+        {
+            "paperId": "bf8a8f18739ebb99957cd357db79a97a0d7e23ed",
+            "title": "A dataset and baselines for sequential open-domain question answering"
+        },
+        {
+            "paperId": null,
+            "title": "Fast and Accurate Reading Comprehension by Combining Self-Attention and Convolution"
+        },
+        {
+            "paperId": null,
+            "title": "A Survey of Available Corpora For Building DataDriven Dialogue Systems: The Journal Version"
+        },
+        {
+            "paperId": null,
+            "title": "A Neural Network Approach to ContextSensitive"
+        },
+        {
+            "paperId": "cdd025e6296e21acab8c314f8b972ea6a3b07ed7",
+            "title": "READING COMPREHENSION: A"
+        },
+        {
+            "paperId": null,
+            "title": "Empirical Methods in Natural"
+        },
+        {
+            "paperId": null,
+            "title": "of questions that were not present in the guidelines (e.g., true or false, \ufb01ll in the blank and time series questions). We pay workers an hourly wage around 8\u201315 USD"
+        }
+    ]
+}

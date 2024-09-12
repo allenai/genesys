@@ -1,0 +1,226 @@
+{
+    "paperId": "c41eb895616e453dcba1a70c9b942c5063cc656c",
+    "externalIds": {
+        "MAG": "2468907370",
+        "ArXiv": "1606.09375",
+        "DBLP": "conf/nips/DefferrardBV16",
+        "CorpusId": 3016223
+    },
+    "title": "Convolutional Neural Networks on Graphs with Fast Localized Spectral Filtering",
+    "abstract": "In this work, we are interested in generalizing convolutional neural networks (CNNs) from low-dimensional regular grids, where image, video and speech are represented, to high-dimensional irregular domains, such as social networks, brain connectomes or words' embedding, represented by graphs. We present a formulation of CNNs in the context of spectral graph theory, which provides the necessary mathematical background and efficient numerical schemes to design fast localized convolutional filters on graphs. Importantly, the proposed technique offers the same linear computational complexity and constant learning complexity as classical CNNs, while being universal to any graph structure. Experiments on MNIST and 20NEWS demonstrate the ability of this novel deep learning system to learn local, stationary, and compositional features on graphs.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2016,
+    "referenceCount": 47,
+    "citationCount": 6986,
+    "influentialCitationCount": 761,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents a formulation of CNNs in the context of spectral graph theory, which provides the necessary mathematical background and efficient numerical schemes to design fast localized convolutional filters on graphs."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3422350",
+            "name": "M. Defferrard"
+        },
+        {
+            "authorId": "2549032",
+            "name": "X. Bresson"
+        },
+        {
+            "authorId": "1697397",
+            "name": "P. Vandergheynst"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "d6cf95d389382e6640a2b800abfc5578caa2dcde",
+            "title": "Wavelets"
+        },
+        {
+            "paperId": "9c9d7247f8c51ec5a02b0d911d1d7b9e8160495d",
+            "title": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems"
+        },
+        {
+            "paperId": "52016c7e6077fba9b3281118c723d5255889bf98",
+            "title": "Global and Local Uncertainty Principles for Signals on Graphs"
+        },
+        {
+            "paperId": "442cd4209baf9d78ee0a48ccb222a5302f1fd290",
+            "title": "Compressive Spectral Clustering"
+        },
+        {
+            "paperId": "20532fdc614a896e9910ef115cd3534153c35c4d",
+            "title": "On the degrees of freedom of signals on graphs"
+        },
+        {
+            "paperId": "492f57ee9ceb61fb5a47ad7aebfec1121887a175",
+            "title": "Gated Graph Sequence Neural Networks"
+        },
+        {
+            "paperId": "df943b8b6d6f19edd5f3d096a1cecfdf04394c54",
+            "title": "Accelerated filtering on graphs using Lanczos method"
+        },
+        {
+            "paperId": "e49ff72d420c8d72e62a9353e3abc053445e59bd",
+            "title": "Deep Convolutional Networks on Graph-Structured Data"
+        },
+        {
+            "paperId": "dbb6ded623159c867fbeca0772db7b2eb9489523",
+            "title": "Spatial Transformer Networks"
+        },
+        {
+            "paperId": "3487f1ac35097eab95a30f15105bbab9bd28e7d7",
+            "title": "Toward an uncertainty principle for weighted graphs"
+        },
+        {
+            "paperId": "a743115795375666593919cbd48590213c229ae9",
+            "title": "Geodesic Convolutional Neural Networks on Riemannian Manifolds"
+        },
+        {
+            "paperId": "4fcb266c334b0e649426a0b92c0199d3a0c726b0",
+            "title": "ShapeNet: Convolutional Neural Networks on Non-Euclidean Manifolds"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "a4b24b375c99c4526a6fd39580dfedf8f1fa5d3b",
+            "title": "Unsupervised Deep Haar Scattering on Graphs"
+        },
+        {
+            "paperId": "5e925a9f1e20df61d1e860a7aa71894b35a1c186",
+            "title": "Spectral Networks and Locally Connected Networks on Graphs"
+        },
+        {
+            "paperId": "3ab187930cc6e1874fad72ce4eaf57fd5b795f84",
+            "title": "Wavelets on Graphs via Deep Learning"
+        },
+        {
+            "paperId": "493e91bf9be48ad0e736e636813a357f4912ae26",
+            "title": "A Multiscale Pyramid Transform for Graph Signals"
+        },
+        {
+            "paperId": "f6b51c8753a871dc94ff32152c00c01e94f90f09",
+            "title": "Efficient Estimation of Word Representations in Vector Space"
+        },
+        {
+            "paperId": "39e223e6b5a6f8727e9f60b8b7c7720dc40a5dbc",
+            "title": "The emerging field of signal processing on graphs: Extending high-dimensional data analysis to networks and other irregular domains"
+        },
+        {
+            "paperId": "182015c5edff1956cbafbcb3e7bbe294aa54f9fc",
+            "title": "Selecting Receptive Fields in Deep Networks"
+        },
+        {
+            "paperId": "6271dd32623234a2576be57b8a1d75227c6383ca",
+            "title": "Generalized Tree-Based Wavelet Transform"
+        },
+        {
+            "paperId": "1b243c92539db787148bdd9e3b52637cfa02235a",
+            "title": "Multiscale Wavelets on Trees, Graphs and High Dimensional Data: Theory and Applications to Semi Supervised Learning"
+        },
+        {
+            "paperId": "31f04f8f83365fabf7ba9c9be1179c0da6815128",
+            "title": "Emergence of Complex-Like Cells in a Temporal Product Network with Local Receptive Fields"
+        },
+        {
+            "paperId": "5f843434ba173bc6808c4b03823945e68bdc7d6a",
+            "title": "Relaxation-based coarsening and multiscale graph organization"
+        },
+        {
+            "paperId": "8e8152d46c8ff1070805096c214df7f389c57b80",
+            "title": "Wavelets on Graphs via Spectral Graph Theory"
+        },
+        {
+            "paperId": "7df6149cf947c535da2faf5556a4bcd03fa858a6",
+            "title": "A Wavelet Tour of Signal Processing, Third Edition: The Sparse Way"
+        },
+        {
+            "paperId": "eda90bd43f4256986688e525b45b833a3addab97",
+            "title": "A tutorial on spectral clustering"
+        },
+        {
+            "paperId": "34795caa356317f2c662bd4553cd7608e0aeb657",
+            "title": "Weighted Graph Cuts without Eigenvectors A Multilevel Approach"
+        },
+        {
+            "paperId": "40cd779cb417c9e665ec29fdccc73a6499c5ae5e",
+            "title": "Towards a theoretical foundation for Laplacian-based manifold methods"
+        },
+        {
+            "paperId": "22cc0ac7fdf06de9a8edb58fd1a1518c0c04d376",
+            "title": "LSH forest: self-tuning indexes for similarity search"
+        },
+        {
+            "paperId": "9b6c8644c7c3e46ba9aba62c63d1423cbed207f5",
+            "title": "Diffusion maps, spectral clustering and reaction coordinates of dynamical systems"
+        },
+        {
+            "paperId": "df86d2a8c217776786bac9019d8b20029e4c0dd5",
+            "title": "A Fast and High Quality Multilevel Scheme for Partitioning Irregular Graphs"
+        },
+        {
+            "paperId": "094fc15bc058b0d62a661a1460885a9490bdb1bd",
+            "title": "A Probabilistic Analysis of the Rocchio Algorithm with TFIDF for Text Categorization"
+        },
+        {
+            "paperId": "b94c7ff9532ab26c3aedbee3988ec4c7a237c173",
+            "title": "Normalized cuts and image segmentation"
+        },
+        {
+            "paperId": "95a8b859d6fdc8d5fbf5bffd5a42717321c31444",
+            "title": "Finding Good Approximate Vertex and Edge Partitions is NP-Hard"
+        },
+        {
+            "paperId": null,
+            "title": "2015 I Spectral graph theory for convolution on graphs. I Balanced cut model for graph coarsening (sub-sampling)"
+        },
+        {
+            "paperId": "4f8d648c52edf74e41b0996128aa536e13cc7e82",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": null,
+            "title": "Spline Chebyshev Make CNNs practical for graph signals ! Spline:\u011d \u03b8 (\u039b) = B\u03b8 where B is the cubic spline basis"
+        },
+        {
+            "paperId": "efe4e08fde8a7ae06f97b9f88c1d7a1353da774f",
+            "title": "Image denoising with nonlocal spectral graph wavelets"
+        },
+        {
+            "paperId": "3efd851140aa28e95221b55fcc5659eea97b172d",
+            "title": "The Graph Neural Network Model"
+        },
+        {
+            "paperId": "60290252155782642d39145421ba924e78263553",
+            "title": "Diffusion maps"
+        },
+        {
+            "paperId": "c53acdacb1e4131a996b0deee882b345e835e23c",
+            "title": "A wavelet tour of signal processing"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": null,
+            "title": "Spectral Graph Theory, volume 92"
+        },
+        {
+            "paperId": null,
+            "title": "All operations are well defined and computationally efficient: 1. Convolution \u2192 filter translation or fast Fourier transform (FFT)"
+        },
+        {
+            "paperId": null,
+            "title": "Low computational complexity"
+        },
+        {
+            "paperId": null,
+            "title": "Strictly localized \ufb01lters. Enhancing [4, 15], the proposed spectral \ufb01lters are provable to be strictly localized in a ball of radius K , i.e. K hops from the central vertex"
+        }
+    ]
+}

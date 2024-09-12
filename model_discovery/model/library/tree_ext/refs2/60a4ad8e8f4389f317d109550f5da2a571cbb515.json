@@ -1,0 +1,138 @@
+{
+    "paperId": "60a4ad8e8f4389f317d109550f5da2a571cbb515",
+    "externalIds": {
+        "ArXiv": "1707.03904",
+        "DBLP": "journals/corr/DhingraMC17",
+        "MAG": "2734823783",
+        "CorpusId": 2417413
+    },
+    "title": "Quasar: Datasets for Question Answering by Search and Reading",
+    "abstract": "We present two new large-scale datasets aimed at evaluating systems designed to comprehend a natural language query and extract its answer from a large corpus of text. The Quasar-S dataset consists of 37000 cloze-style (fill-in-the-gap) queries constructed from definitions of software entity tags on the popular website Stack Overflow. The posts and comments on the website serve as the background corpus for answering the cloze questions. The Quasar-T dataset consists of 43000 open-domain trivia questions and their answers obtained from various internet sources. ClueWeb09 serves as the background corpus for extracting these answers. We pose these datasets as a challenge for two related subtasks of factoid Question Answering: (1) searching for relevant pieces of text that include the correct answer to a query, and (2) reading the retrieved text to answer the query. We also describe a retrieval system for extracting relevant sentences and documents from the corpus given a query, and include these in the release for researchers wishing to only focus on (2). We evaluate several baselines on both datasets, ranging from simple heuristics to powerful neural models, and show that these lag behind human performance by 16.4% and 32.1% for Quasar-S and -T respectively. The datasets are available at this https URL .",
+    "venue": "arXiv.org",
+    "year": 2017,
+    "referenceCount": 25,
+    "citationCount": 176,
+    "influentialCitationCount": 45,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Two new large-scale datasets aimed at evaluating systems designed to comprehend a natural language query and extract its answer from a large corpus of text are presented."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "34994191",
+            "name": "Bhuwan Dhingra"
+        },
+        {
+            "authorId": "2406799",
+            "name": "Kathryn Mazaitis"
+        },
+        {
+            "authorId": "50056360",
+            "name": "William W. Cohen"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "f010affab57b5fcf1cd6be23df79d8ec98c7289c",
+            "title": "TriviaQA: A Large Scale Distantly Supervised Challenge Dataset for Reading Comprehension"
+        },
+        {
+            "paperId": "3adff57fd09965224506a1bacc0579d9d3c8c11e",
+            "title": "SearchQA: A New Q&A Dataset Augmented with Context from a Search Engine"
+        },
+        {
+            "paperId": "104715e1097b7ebee436058bfd9f45540f269845",
+            "title": "Reading Wikipedia to Answer Open-Domain Questions"
+        },
+        {
+            "paperId": "89d06c2996f379c602e64b4243f026cd164400d7",
+            "title": "Question Answering from Unstructured Text by Retrieval and Comprehension"
+        },
+        {
+            "paperId": "e4600ece1f09236d082eca4537ee9c1efe687f6c",
+            "title": "FastQA: A Simple and Efficient Neural Architecture for Question Answering"
+        },
+        {
+            "paperId": "3eda43078ae1f4741f09be08c4ecab6229046a5c",
+            "title": "NewsQA: A Machine Comprehension Dataset"
+        },
+        {
+            "paperId": "3a7b63b50c64f4ec3358477790e84cbd6be2a0b4",
+            "title": "Bidirectional Attention Flow for Machine Comprehension"
+        },
+        {
+            "paperId": "dd95f96e3322dcaee9b1e3f7871ecc3ebcd51bfe",
+            "title": "MS MARCO: A Human Generated MAchine Reading COmprehension Dataset"
+        },
+        {
+            "paperId": "a39ffa57ef8e538b3c6a6c2bbc0b641f7cdc60dc",
+            "title": "Who did What: A Large-Scale Person-Centered Cloze Dataset"
+        },
+        {
+            "paperId": "05dd7254b632376973f3a1b4d39485da17814df5",
+            "title": "SQuAD: 100,000+ Questions for Machine Comprehension of Text"
+        },
+        {
+            "paperId": "bba5f2852b1db8a18004eb7328efa5e1d57cc62a",
+            "title": "Key-Value Memory Networks for Directly Reading Documents"
+        },
+        {
+            "paperId": "b1e20420982a4f923c08652941666b189b11b7fe",
+            "title": "A Thorough Examination of the CNN/Daily Mail Reading Comprehension Task"
+        },
+        {
+            "paperId": "0f2ea810c16275dc74e880296e20dbd83b1bae1c",
+            "title": "Gated-Attention Readers for Text Comprehension"
+        },
+        {
+            "paperId": "35b91b365ceb016fb3e022577cec96fb9b445dc5",
+            "title": "The Goldilocks Principle: Reading Children's Books with Explicit Memory Representations"
+        },
+        {
+            "paperId": "f53e2ae46470b89cd1ce6e3bf1d60d9c59722ce1",
+            "title": "WikiQA: A Challenge Dataset for Open-Domain Question Answering"
+        },
+        {
+            "paperId": "d1505c6123c102e53eb19dff312cb25cea840b72",
+            "title": "Teaching Machines to Read and Comprehend"
+        },
+        {
+            "paperId": "d2567a7de43ad073d68e12dec0df23f5d72c2022",
+            "title": "Knowledge base completion via search-based question answering"
+        },
+        {
+            "paperId": "564257469fa44cdb57e4272f85253efb9acfd69d",
+            "title": "MCTest: A Challenge Dataset for the Open-Domain Machine Comprehension of Text"
+        },
+        {
+            "paperId": "1976c9eeccc7115d18a04f1e7fb5145db6b96002",
+            "title": "Freebase: a collaboratively created graph database for structuring human knowledge"
+        },
+        {
+            "paperId": "399da68d3b97218b6c80262df7963baa89dcc71b",
+            "title": "SRILM - an extensible language modeling toolkit"
+        },
+        {
+            "paperId": "d2161251488dbba08616a9cdd4223a0ac1190cef",
+            "title": "Building a question answering test collection"
+        },
+        {
+            "paperId": null,
+            "title": "Clueweb09 data set"
+        },
+        {
+            "paperId": null,
+            "title": "relations for Q UASAR -S. B Performance Analysis"
+        },
+        {
+            "paperId": null,
+            "title": "following cases"
+        },
+        {
+            "paperId": null,
+            "title": "performance with the best performing baseline for each category of annotated questions"
+        }
+    ]
+}

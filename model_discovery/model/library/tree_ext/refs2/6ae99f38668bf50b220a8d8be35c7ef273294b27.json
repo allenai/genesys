@@ -1,0 +1,154 @@
+{
+    "paperId": "6ae99f38668bf50b220a8d8be35c7ef273294b27",
+    "externalIds": {
+        "DBLP": "journals/tsp/Farhang-BoroujenyG94",
+        "MAG": "2151978417",
+        "DOI": "10.1109/78.277845",
+        "CorpusId": 32944910
+    },
+    "title": "Generalized sliding FFT and its application to implementation of block LMS adaptive filters",
+    "abstract": "This paper has two contributions. First, the concept of the generalized sliding fast Fourier transform (GSFFT) as an efficient implementation of the hopping FFT is introduced. Application of the GSFFT is broad and not limited to what has been considered in this paper. The frequency domain block LMS (FBLMS) adaptive filters are then revised, and their implementations for block lengths less than the length of the adaptive filter are studied. The GSFFT and the available pruned FFTs are used to give an efficient implementation of these filters. In the particular case of the block length equal to one, where the FBLMS algorithm reduces to the frequency domain LMS (FLMS) algorithm, it is shown that the latter can be implemented with the order of M complexity, where M is the length of the adaptive filter. >",
+    "venue": "IEEE Transactions on Signal Processing",
+    "year": 1994,
+    "referenceCount": 30,
+    "citationCount": 73,
+    "influentialCitationCount": 10,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The generalized sliding fast Fourier transform (GSFFT) as an efficient implementation of the hopping FFT is introduced, and the frequency domain block LMS (FBLMS) adaptive filters are revised, and their implementations for block lengths less than the length of the adaptive filter are studied."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1398220613",
+            "name": "B. Farhang-Boroujeny"
+        },
+        {
+            "authorId": "1681402",
+            "name": "S. Gazor"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "c67c14c0835b5bbc8f2a89377fa12614ffe489e4",
+            "title": "A comment on the computational complexity of sliding FFT"
+        },
+        {
+            "paperId": "84b12d593344ca152346425d61357ce49419ec62",
+            "title": "A state space approach for efficient implementation of block LMS adaptive filters"
+        },
+        {
+            "paperId": "597abf82d19c85e194ab6caa97f162043e33389f",
+            "title": "Selection of orthonormal transforms for improving the performance of the transform domain normalised LMS algorithm"
+        },
+        {
+            "paperId": "240553500aa034bcc6429dc9af91c056f4cedf75",
+            "title": "Fast filter bank (FFB)"
+        },
+        {
+            "paperId": "101a1b1907854590d2a0a0dc889115729ab90b5c",
+            "title": "Multidelay block frequency domain adaptive filter"
+        },
+        {
+            "paperId": "288b1ffc7a08f8eb0446b035fd14f9223df6dea6",
+            "title": "Kronecker Products, Unitary Matrices and Signal Processing Applications"
+        },
+        {
+            "paperId": "d036bad2e7680e67f6d0d7dadd274ae403d10e08",
+            "title": "The use of orthogonal transforms for improving performance of adaptive filters"
+        },
+        {
+            "paperId": "5111c800be9b91c4d4257762e50d11659d1af753",
+            "title": "Performance analysis of frequency-domain block LMS adaptive digital filters"
+        },
+        {
+            "paperId": "6e447f174ad637d08db688bc3880a03b65a9b8cd",
+            "title": "Limited-precision effects in adaptive filtering"
+        },
+        {
+            "paperId": "2c74001fc1ccabed8b3bcbfbdf7bcc005e1dc7ed",
+            "title": "Performance of transform-domain LMS adaptive digital filters"
+        },
+        {
+            "paperId": "5d4148c447425fbb956c53d3b0f9418261b3ef0b",
+            "title": "Transform domain adaptive filtering using a recursive DFT"
+        },
+        {
+            "paperId": "ad669ab6e338b35dd93c6e9239ee37b447c4a807",
+            "title": "A reduced structure of the frequency-domain block LMS adaptive digital filter"
+        },
+        {
+            "paperId": "a5c6863da46456a353d1f8224be89e8a45578420",
+            "title": "Adaptive Filters: Structures, Algorithms and Applications"
+        },
+        {
+            "paperId": "00dab3af5d0487831606a9cca3cb7f8f4e66a84a",
+            "title": "Self-Orthogonalizing Adaptive Equalization in the Discrete Frequency Domain"
+        },
+        {
+            "paperId": "7598e231392ccae7c9f5c3980e5deb5ed48b3576",
+            "title": "A unified approach to time- and frequency-domain realization of FIR adaptive digital filters"
+        },
+        {
+            "paperId": "4d198016386a703c4dfa2fb3ef9572f4460160d7",
+            "title": "Transform domain LMS algorithm"
+        },
+        {
+            "paperId": "effec5072572036a819bc3fceebb7ade05817e37",
+            "title": "Unconstrained frequency-domain adaptive filter"
+        },
+        {
+            "paperId": "38e28126e75472ac8800f94b88731526eaf2459d",
+            "title": "Block implementation of adaptive digital filters"
+        },
+        {
+            "paperId": "46da04c64f0201e3a172b52ed67cf6cef3d10e74",
+            "title": "Adaptive frequency sampling filters"
+        },
+        {
+            "paperId": "54df1e4ffc5342e89a12625948bb9bc02f066fcf",
+            "title": "Fast implementations of LMS adaptive filters"
+        },
+        {
+            "paperId": "f8c30d651ffd6ea2356bfceba8d625a587930c84",
+            "title": "Block adaptive filtering"
+        },
+        {
+            "paperId": "80ef8639df7906668a9fa499a260c3238e4738cd",
+            "title": "Adaptive filtering in the frequency domain"
+        },
+        {
+            "paperId": "d19dd6e1c4d14341ea1e30b5af42f4bf5facb84c",
+            "title": "FFT pruning"
+        },
+        {
+            "paperId": "7e957a5af8b4041be3b3431bafe4fe23126e9724",
+            "title": "Discrete-Time Signal Pro-cessing"
+        },
+        {
+            "paperId": "2e14b2ff9dc2234df94fc24d89fc25e797d0e9e7",
+            "title": "Adaptive switching circuits"
+        },
+        {
+            "paperId": "58fa32e606158cf99f0ca641f5d96e6ff8e17478",
+            "title": "Adaptive Signal Processing"
+        },
+        {
+            "paperId": null,
+            "title": "On reducing the number of operations in adaptive equalizers"
+        },
+        {
+            "paperId": "267e5b0ba4e50cd7b420824903f4f2615fba4a7f",
+            "title": "Frequency domain least-mean-square algorithm"
+        },
+        {
+            "paperId": "f5ed53760000b1851c10734f271a97b7017ecfb8",
+            "title": "Theory and application of digital signal processing"
+        },
+        {
+            "paperId": "84121b7dc9b064930b60e807e413b54d31561d89",
+            "title": "Automatic equalization using the discrete frequency domain"
+        }
+    ]
+}

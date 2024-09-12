@@ -1,0 +1,134 @@
+{
+    "paperId": "37b9903650065f0dde322ba1c70ee13c99840411",
+    "externalIds": {
+        "DBLP": "conf/dcc/Kulekci11",
+        "MAG": "2149719595",
+        "DOI": "10.1109/DCC.2011.44",
+        "CorpusId": 16514648
+    },
+    "title": "Compressed Context Modeling for Text Compression",
+    "abstract": "In text compression, statistical context modeling aims to construct a model to calculate the probability distribution of a character based upon its context. The order -- $k$ context of a symbol is defined as the string formed by its preceding $k$ symbols. This study introduces compressed context modeling, which defines the order -- $k$ context of a character as the sequence of $k$-bits composed of the entropy compressed representations of its preceding characters. While computing the compressed context of a symbol at some position in a given text, enough number of characters are involved in the compressed context so as to produce $k$-bits of information. Thus, instead of certain number of characters, certain amount of \\emph{information} is considered as the context of a character, and this property enables the prediction of each character to be performed with nearly uniform amount of information. Experiments are conducted to compare the proposed modeling against the classical fixed-length context definitions. The files in the large Calgary corpus are modeled with the newly introduced compressed context modeling and with the classical fixed-length context modeling. It is observed that on the average the statistical model with the proposed method uses $13.76$ percent less space measured according to the number of distinct contexts, while providing $5.88$ percent gain in empirical entropy measured by the information content as bits per character.",
+    "venue": "Data Compression Conference",
+    "year": 2011,
+    "referenceCount": 25,
+    "citationCount": 5,
+    "influentialCitationCount": 0,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study introduces compressed context modeling, which defines the order -- $k$ context of a character as the sequence of $k-bits composed of the entropy compressed representations of its preceding characters."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2237527489",
+            "name": "M. O"
+        },
+        {
+            "authorId": "2229790539",
+            "name": "Guzhan K\u00fclekci"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "adc0719d623e0b0307be4c24b4f946e9749f69bf",
+            "title": "Data Compression: The Complete Reference"
+        },
+        {
+            "paperId": "f758d8e6dee5348c2b5bf56f33994ad96e88a591",
+            "title": "Adaptive weighing of context models for lossless data compression"
+        },
+        {
+            "paperId": "f42b144a5f4b536000e44d9227b3e711c44c08a4",
+            "title": "Flexible pattern matching in strings - practical on-line search algorithms for texts and biological sequences"
+        },
+        {
+            "paperId": "666010dc3621e1a08fb6830f03a1f7857c7377cc",
+            "title": "I and i"
+        },
+        {
+            "paperId": "5f0c4b0960c1f4af85e4e798fbae3ef1314fec91",
+            "title": "Introduction to data compression (2nd ed.)"
+        },
+        {
+            "paperId": "8d94832e245906775b428e949ac1f635bfb28ad3",
+            "title": "Managing Gigabytes: Compressing and Indexing Documents and Images"
+        },
+        {
+            "paperId": "ee9aca2136b32a87e97d1d118e8e9909efd9e05c",
+            "title": "Optimal Suffix Tree Construction with Large Alphabets"
+        },
+        {
+            "paperId": "ff75b495a575acd9ff6b6831b9a7664cddeb9171",
+            "title": "Optimal suffix tree construction with large alphabets"
+        },
+        {
+            "paperId": "ba80821017853e45c3de12a2823d2ea698de2bc2",
+            "title": "Experiments on the zero frequency problem"
+        },
+        {
+            "paperId": "660d7a2520875c46c62e455970ad2c2036ff2f3a",
+            "title": "Unbounded length contexts for PPM"
+        },
+        {
+            "paperId": "0c40c25b8b32538c3fed3d3ca5207f293b9d20e4",
+            "title": "Design and analysis of fast text compression based on quasi-arithmetic coding"
+        },
+        {
+            "paperId": "1f5d21625f8264f455591b3c7cbdac18b983b3c0",
+            "title": "The zero-frequency problem: Estimating the probabilities of novel events in adaptive text compression"
+        },
+        {
+            "paperId": "852580f604792cd814b50265c463e33477cba58d",
+            "title": "Practical Implementations of Arithmetic Coding"
+        },
+        {
+            "paperId": "0f0b4d4fdec3c7a9c4cb06ca5b78254f281bbf59",
+            "title": "Implementing the PPM data compression scheme"
+        },
+        {
+            "paperId": "d7d07b2b2ca6e28561fa142fd6f2fd020bcb40a7",
+            "title": "Modeling for text compression"
+        },
+        {
+            "paperId": "69a12f5321c845840bf6b1c5d01bb402a703ac5e",
+            "title": "Predictive test compression by hashing"
+        },
+        {
+            "paperId": "50e2733d2a8a9b3929bda278d382c37711f3fa8e",
+            "title": "Data Compression Using Adaptive Coding and Partial String Matching"
+        },
+        {
+            "paperId": "a068df4c5f829bd0b85bf72fd919006c563c6345",
+            "title": "A method for the construction of minimum-redundancy codes"
+        },
+        {
+            "paperId": null,
+            "title": "Predictive text compression by hashing , \u201d in Proceedings of 10 th Annual International ACMSIGIR Conference on Research and Development in Information Retrivial"
+        },
+        {
+            "paperId": "6d12a1d23b21a9b170118a56386552bc5d4727de",
+            "title": "A Mathematical Theory of Communication"
+        },
+        {
+            "paperId": null,
+            "title": "\u201cSolving the problems of context modeling,\u201d"
+        },
+        {
+            "paperId": "0a466bd0bc06ac60e29e741ce4c95c52c1cd3ec0",
+            "title": "Introduction to Data Compression"
+        },
+        {
+            "paperId": "47ad5261ee5dc787d6a6992828e41df710587df1",
+            "title": "Context Modeling for Text Compression"
+        },
+        {
+            "paperId": null,
+            "title": "Optimal suffix tree construction with largealphabets , \u201d in Proceedings of the 38 th Annual Symposium on Foundations of Computer Science ( FOCS \u2019 97 )"
+        },
+        {
+            "paperId": null,
+            "title": "\u201cHutter prize,\u201d"
+        }
+    ]
+}

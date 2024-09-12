@@ -1,0 +1,326 @@
+{
+    "paperId": "67d968c7450878190e45ac7886746de867bf673d",
+    "externalIds": {
+        "MAG": "2952431534",
+        "ArXiv": "1611.01578",
+        "DBLP": "journals/corr/ZophL16",
+        "CorpusId": 12713052
+    },
+    "title": "Neural Architecture Search with Reinforcement Learning",
+    "abstract": "Neural networks are powerful and flexible models that work well for many difficult learning tasks in image, speech and natural language understanding. Despite their success, neural networks are still hard to design. In this paper, we use a recurrent network to generate the model descriptions of neural networks and train this RNN with reinforcement learning to maximize the expected accuracy of the generated architectures on a validation set. On the CIFAR-10 dataset, our method, starting from scratch, can design a novel network architecture that rivals the best human-invented architecture in terms of test set accuracy. Our CIFAR-10 model achieves a test error rate of 3.65, which is 0.09 percent better and 1.05x faster than the previous state-of-the-art model that used a similar architectural scheme. On the Penn Treebank dataset, our model can compose a novel recurrent cell that outperforms the widely-used LSTM cell, and other state-of-the-art baselines. Our cell achieves a test set perplexity of 62.4 on the Penn Treebank, which is 3.6 perplexity better than the previous state-of-the-art model. The cell can also be transferred to the character language modeling task on PTB and achieves a state-of-the-art perplexity of 1.214.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2016,
+    "referenceCount": 73,
+    "citationCount": 5022,
+    "influentialCitationCount": 582,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper uses a recurrent network to generate the model descriptions of neural networks and trains this RNN with reinforcement learning to maximize the expected accuracy of the generated architectures on a validation set."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2368067",
+            "name": "Barret Zoph"
+        },
+        {
+            "authorId": "2827616",
+            "name": "Quoc V. Le"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "06b2a66c86c270e24a2177f816c6bc6e971819ee",
+            "title": "Towards Automatically-Tuned Neural Networks"
+        },
+        {
+            "paperId": "424aef7340ee618132cc3314669400e23ad910ba",
+            "title": "Tying Word Vectors and Word Classifiers: A Loss Framework for Language Modeling"
+        },
+        {
+            "paperId": "563783de03452683a9206e85fe6d661714436686",
+            "title": "HyperNetworks"
+        },
+        {
+            "paperId": "efbd381493bb9636f489b965a2034d529cd56bcd",
+            "title": "Pointer Sentinel Mixture Models"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "5694e46284460a648fe29117cbc55f6c9be3fa3c",
+            "title": "Densely Connected Convolutional Networks"
+        },
+        {
+            "paperId": "63e39cdf1ad884da6bc69096bb3413b5b1100559",
+            "title": "Using the Output Embedding to Improve Language Models"
+        },
+        {
+            "paperId": "7dba53e72c182e25e98e8f73a99d75ff69dda0c2",
+            "title": "Recurrent Highway Networks"
+        },
+        {
+            "paperId": "71683e224ab91617950956b5005ed0439a733a71",
+            "title": "Learning to learn by gradient descent by gradient descent"
+        },
+        {
+            "paperId": "197c8988ef21d0b58d363c21bafe1900c3089e3e",
+            "title": "Convolutional Neural Fabrics"
+        },
+        {
+            "paperId": "ead9a671428631e44f6fe49324efe69da628bc47",
+            "title": "Learning to Optimize"
+        },
+        {
+            "paperId": "d0156126edbfc524c8d108bdc0cf811cfe3129aa",
+            "title": "FractalNet: Ultra-Deep Neural Networks without Residuals"
+        },
+        {
+            "paperId": "1c4e9156ca07705531e45960b7a919dc473abb51",
+            "title": "Wide Residual Networks"
+        },
+        {
+            "paperId": "51db1f3c8dfc7d4077da39c96bb90a6358128111",
+            "title": "Deep Networks with Stochastic Depth"
+        },
+        {
+            "paperId": "77f0a39b8e02686fd85b01971f8feb7f60971f80",
+            "title": "Identity Mappings in Deep Residual Networks"
+        },
+        {
+            "paperId": "98ea4abc9bf0e30eb020db2075c9c8a039a848a3",
+            "title": "Learning to Compose Neural Networks for Question Answering"
+        },
+        {
+            "paperId": "0c1f9ca23f4f09ecfc44bcc8ca1c2736624f4652",
+            "title": "A Theoretically Grounded Application of Dropout in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "815c84ab906e43f3e6322f2ca3fd5e1360c64285",
+            "title": "Human-level concept learning through probabilistic program induction"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "9f2a8e923965b23c11066a2ead79658208f1fae1",
+            "title": "Minimum Risk Training for Neural Machine Translation"
+        },
+        {
+            "paperId": "b7aee9dfb027d6061c6a653684c0fa9a9bba750d",
+            "title": "Sequence Level Training with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "b59d91e0699d4e1896a15bae13fd180bdaf77ea5",
+            "title": "Neural Programmer-Interpreters"
+        },
+        {
+            "paperId": "bf85a0cd645ad68919c0706741ab568a60a58af2",
+            "title": "Neural Programmer: Inducing Latent Programs with Gradient Descent"
+        },
+        {
+            "paperId": "891ce1687e2befddd19f54e4eef1d3f39c8dbaf7",
+            "title": "Character-Aware Neural Language Models"
+        },
+        {
+            "paperId": "5b8364c21155d3d2cd38ea4c8b8580beba9a3250",
+            "title": "An Empirical Exploration of Recurrent Network Architectures"
+        },
+        {
+            "paperId": "9653d5c2c7844347343d073bbedd96e05d52f69b",
+            "title": "Pointer Networks"
+        },
+        {
+            "paperId": "e0945081b5b87187a53d4329cf77cd8bff635795",
+            "title": "Highway Networks"
+        },
+        {
+            "paperId": "93bc65d2842b8cc5f3cf72ebc5b8f75daeacea35",
+            "title": "Scalable Bayesian Optimization Using Deep Neural Networks"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "33af9298e5399269a12d4b9901492fe406af62b4",
+            "title": "Striving for Simplicity: The All Convolutional Net"
+        },
+        {
+            "paperId": "9e46f2b8e00a31d06662b276d46b37852ec725c9",
+            "title": "Example Selection For Dictionary Learning"
+        },
+        {
+            "paperId": "fb91db6aa4f710814f8aec28a7f3ecbc4e5ad4fd",
+            "title": "Deeply-Supervised Nets"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "f264e8b33c0d49a692a6ce2c4bcb28588aeb7d97",
+            "title": "Recurrent Neural Network Regularization"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "533ee188324b833e059cb59b654e6160776d5812",
+            "title": "How to Construct Deep Recurrent Neural Networks"
+        },
+        {
+            "paperId": "5e83ab70d0cbc003471e87ec306d27d9c80ecb16",
+            "title": "Network In Network"
+        },
+        {
+            "paperId": "aa7bfd2304201afbb19971ebde87b17e40242e91",
+            "title": "On the importance of initialization and momentum in deep learning"
+        },
+        {
+            "paperId": "29935173af73aef20336db72d608e0ef5b0e0c16",
+            "title": "Making a Science of Model Search: Hyperparameter Optimization in Hundreds of Dimensions for Vision Architectures"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "3127190433230b3dc1abd0680bb58dced4bcd90e",
+            "title": "Large Scale Distributed Deep Networks"
+        },
+        {
+            "paperId": "d1275b2a2ab53013310e759e5c6878b96df643d4",
+            "title": "Context dependent recurrent neural network language model"
+        },
+        {
+            "paperId": "2e2089ae76fe914706e6fa90081a79c8fe01611e",
+            "title": "Practical Bayesian Optimization of Machine Learning Algorithms"
+        },
+        {
+            "paperId": "188e247506ad992b8bc62d6c74789e89891a984f",
+            "title": "Random Search for Hyper-Parameter Optimization"
+        },
+        {
+            "paperId": "03911c85305d42aa2eeb02be82ef6fb7da644dd0",
+            "title": "Algorithms for Hyper-Parameter Optimization"
+        },
+        {
+            "paperId": "a538b05ebb01a40323997629e171c91aa28b8e2f",
+            "title": "Rectified Linear Units Improve Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": "c26770f29afafe22f2a507506e3f43c413f6a619",
+            "title": "Learning Programs: A Hierarchical Bayesian Approach"
+        },
+        {
+            "paperId": "1f88427d7aa8225e47f946ac41a0667d7b69ac52",
+            "title": "What is the best multi-stage architecture for object recognition?"
+        },
+        {
+            "paperId": "6e744cf0273a84b087e94191fd654210e8fec8e9",
+            "title": "A Hypercube-Based Encoding for Evolving Large-Scale Neural Networks"
+        },
+        {
+            "paperId": "cf7bdff21a875e5d043514ed0714fafae77e1492",
+            "title": "Neuroevolution: from architectures to learning"
+        },
+        {
+            "paperId": "bd7d93193aad6c4b71cc8942e808753019e87706",
+            "title": "Three new graphical models for statistical language modelling"
+        },
+        {
+            "paperId": "a149d240ecde338e91ccb2f001074b792be070b2",
+            "title": "Modeling systems with internal state using evolino"
+        },
+        {
+            "paperId": "e8b12467bdc20bde976750b8a28decdb33246d1d",
+            "title": "Histograms of oriented gradients for human detection"
+        },
+        {
+            "paperId": "28209ce8d0ac1cf4ceea3eeddf4630e1032fa0ef",
+            "title": "A neural probabilistic language model"
+        },
+        {
+            "paperId": "6c2b28f9354f667cd5bd07afc0471d8334430da7",
+            "title": "A Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "f9f836d28f52ad260213d32224a6d227f8e8849a",
+            "title": "Object recognition from local scale-invariant features"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "5ba6aa7868b36e6ad1e41ee89c5e4b2dd3e2b493",
+            "title": "The Inference of Regular LISP Programs from Examples"
+        },
+        {
+            "paperId": "dd7abc005846b18c9a78ab80467cbbaedb643456",
+            "title": "A Methodology for LISP Program Construction from Examples"
+        },
+        {
+            "paperId": "44b6da0cd36c0fa2f7d3485c6dc0b6d2fbe379bb",
+            "title": "Learning how to learn"
+        },
+        {
+            "paperId": "2a76c2121eee30af82a24058b4e149f05bcda911",
+            "title": "Language modeling with sum-product networks"
+        },
+        {
+            "paperId": "31868290adf1c000c611dfc966b514d5a34e8d23",
+            "title": "FUNDAMENTAL TECHNOLOGIES IN MODERN SPEECH RECOGNITION Digital Object Identifier 10.1109/MSP.2012.2205597"
+        },
+        {
+            "paperId": "4c915c1eecb217c123a36dc6d3ce52d12c742614",
+            "title": "Simple Statistical Gradient-Following Algorithms for Connectionist Reinforcement Learning"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": null,
+            "title": "The child networks are always built and trained for 50 epochs, regardless of their structures"
+        },
+        {
+            "paperId": null,
+            "title": "This method is flexible, but still need to follow some patterns (predefined recurrent structure)"
+        },
+        {
+            "paperId": null,
+            "title": "This paper introduces an idea of using RNN to compose neural network architectures, and the generated structures from this paper can even outperform some state-of-the-art models"
+        },
+        {
+            "paperId": null,
+            "title": "The generated structures from this methods can be generalized to other tasks"
+        },
+        {
+            "paperId": null,
+            "title": "Transfer learning: Applying the generated RNN cell structure from previous tasks to the character language modeling task on the same dataset \u2192 Result is better than LSTM cell"
+        },
+        {
+            "paperId": null,
+            "title": "RNN makes it possible to search in different variable-length architecture spaces and different types of structures"
+        }
+    ]
+}

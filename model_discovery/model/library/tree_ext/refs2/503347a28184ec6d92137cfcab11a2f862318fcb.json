@@ -1,0 +1,105 @@
+{
+    "paperId": "503347a28184ec6d92137cfcab11a2f862318fcb",
+    "externalIds": {
+        "MAG": "2151683004",
+        "DBLP": "conf/nips/AvronNW14",
+        "CorpusId": 16658740
+    },
+    "title": "Subspace Embeddings for the Polynomial Kernel",
+    "abstract": "Sketching is a powerful dimensionality reduction tool for accelerating statistical learning algorithms. However, its applicability has been limited to a certain extent since the crucial ingredient, the so-called oblivious subspace embedding, can only be applied to data spaces with an explicit representation as the column span or row span of a matrix, while in many settings learning is done in a high-dimensional space implicitly defined by the data matrix via a kernel transformation. We propose the first fast oblivious subspace embeddings that are able to embed a space induced by a non-linear kernel without explicitly mapping the data to the high-dimensional space. In particular, we propose an embedding for mappings induced by the polynomial kernel. Using the subspace embeddings, we obtain the fastest known algorithms for computing an implicit low rank approximation of the higher-dimension mapping of the data matrix, and for computing an approximate kernel PCA of the data, as well as doing approximate kernel principal component regression.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2014,
+    "referenceCount": 17,
+    "citationCount": 94,
+    "influentialCitationCount": 12,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes the first fast oblivious subspace embeddings that are able to embed a space induced by a non-linear kernel without explicitly mapping the data to the high-dimensional space."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1922753",
+            "name": "H. Avron"
+        },
+        {
+            "authorId": "143679841",
+            "name": "Huy L. Nguyen"
+        },
+        {
+            "authorId": "143982862",
+            "name": "David P. Woodruff"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "18c7fb55ff796db5c5a604e0ca44b6baaeb12239",
+            "title": "Fastfood: Approximate Kernel Expansions in Loglinear Time"
+        },
+        {
+            "paperId": "b03e90e1d44af90f296706098b1a5ea747b72ba9",
+            "title": "Compact Random Feature Maps"
+        },
+        {
+            "paperId": "1b758b4c3897019657ff9d1e5d1730033cb9bb41",
+            "title": "Sketching Structured Matrices for Faster Nonlinear Regression"
+        },
+        {
+            "paperId": "ed4847b6ea369b7f4f1419d1a49504a534b2e3b4",
+            "title": "Fast and scalable polynomial kernels via explicit feature maps"
+        },
+        {
+            "paperId": "bf31569c8f8a88ac92cd724c804ca82faa28793a",
+            "title": "Principal Component Analysis and Higher Correlations for Distributed Data"
+        },
+        {
+            "paperId": "1e177a3f6417e7702750793dad70ad9e243cb58a",
+            "title": "OSNAP: Faster Numerical Linear Algebra Algorithms via Sparser Subspace Embeddings"
+        },
+        {
+            "paperId": "6dad15d39b2b5f19d038171281a1dc8a7e1f052f",
+            "title": "Low-Rank Approximation and Regression in Input Sparsity Time"
+        },
+        {
+            "paperId": "03a3ba746584c01ed62c73e805d62336839582ae",
+            "title": "Random Feature Maps for Dot Product Kernels"
+        },
+        {
+            "paperId": "f4647a881973a074cde283318c57434369ca66fa",
+            "title": "Compressed matrix multiplication"
+        },
+        {
+            "paperId": "c143b5431952f38179649a5218e1cf70ddddef3e",
+            "title": "The power of simple tabulation hashing"
+        },
+        {
+            "paperId": "6d8d4423d990d9398fcec42f0811bf8d81528592",
+            "title": "Numerical linear algebra in the streaming model"
+        },
+        {
+            "paperId": "7a59fde27461a3ef4a21a249cc403d0d96e4a0d7",
+            "title": "Random Features for Large-Scale Kernel Machines"
+        },
+        {
+            "paperId": "7ab959ec1915f63bb91dd706f6b177cef0abde84",
+            "title": "Relative-Error CUR Matrix Decompositions"
+        },
+        {
+            "paperId": "24763030fb1e9813dad51d28bea9c5d1414f9cda",
+            "title": "Finding frequent items in data streams"
+        },
+        {
+            "paperId": "016eb4fce870dd335084478a4caf2ab74ee12ea2",
+            "title": "A Note on the Use of Principal Components in Regression"
+        },
+        {
+            "paperId": "feb061b699a2249f803baf159a991d63c64f9c99",
+            "title": "Universal Classes of Hash Functions"
+        },
+        {
+            "paperId": "a26eb90a8766449b942547b02b4f82ecfab0875c",
+            "title": "Stat260/cs294: Randomized Algorithms for Matrices and Data"
+        }
+    ]
+}

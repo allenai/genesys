@@ -1,0 +1,270 @@
+{
+    "paperId": "fc089a09074c84979d1f34e89341318a5bc26d3d",
+    "externalIds": {
+        "ACL": "S19-2145",
+        "DBLP": "conf/semeval/KieselMSVACSP19",
+        "MAG": "2955041501",
+        "DOI": "10.18653/v1/S19-2145",
+        "CorpusId": 120224153
+    },
+    "title": "SemEval-2019 Task 4: Hyperpartisan News Detection",
+    "abstract": "Hyperpartisan news is news that takes an extreme left-wing or right-wing standpoint. If one is able to reliably compute this meta information, news articles may be automatically tagged, this way encouraging or discouraging readers to consume the text. It is an open question how successfully hyperpartisan news detection can be automated, and the goal of this SemEval task was to shed light on the state of the art. We developed new resources for this purpose, including a manually labeled dataset with 1,273 articles, and a second dataset with 754,000 articles, labeled via distant supervision. The interest of the research community in our task exceeded all our expectations: The datasets were downloaded about 1,000 times, 322 teams registered, of which 184 configured a virtual machine on our shared task cloud service TIRA, of which in turn 42 teams submitted a valid run. The best team achieved an accuracy of 0.822 on a balanced sample (yes : no hyperpartisan) drawn from the manually tagged corpus; an ensemble of the submitted systems increased the accuracy by 0.048.",
+    "venue": "International Workshop on Semantic Evaluation",
+    "year": 2019,
+    "referenceCount": 52,
+    "citationCount": 224,
+    "influentialCitationCount": 50,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/S19-2145.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The goal of this SemEval task was to shed light on the state of the art of hyperpartisan news detection, and developed new resources, including a manually labeled dataset with 1,273 articles, and a second dataset with 754,000 articles, labeled via distant supervision."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1840075",
+            "name": "Johannes Kiesel"
+        },
+        {
+            "authorId": "144040598",
+            "name": "M. Mestre"
+        },
+        {
+            "authorId": "121293845",
+            "name": "Rishabh Shukla"
+        },
+        {
+            "authorId": "2035263593",
+            "name": "Emmanuel Vincent"
+        },
+        {
+            "authorId": "9568703",
+            "name": "Payam Adineh"
+        },
+        {
+            "authorId": "3347130",
+            "name": "D. Corney"
+        },
+        {
+            "authorId": "144146081",
+            "name": "Benno Stein"
+        },
+        {
+            "authorId": "3046200",
+            "name": "Martin Potthast"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "c8c4f1244ce08b470e89e4b77b8960c68a9772c1",
+            "title": "Products"
+        },
+        {
+            "paperId": "3cb7ef02ed8c1b9983e110386fa5168eb9cb992a",
+            "title": "Representations"
+        },
+        {
+            "paperId": "cc3d83614708c0ceeb4911d2189a3cd0aa7f1d14",
+            "title": "Rouletabille at SemEval-2019 Task 4: Neural Network Baseline for Identification of Hyperpartisan Publishers"
+        },
+        {
+            "paperId": "7238baa75e78838398a03aa705742004ab068d35",
+            "title": "Team Bertha von Suttner at SemEval-2019 Task 4: Hyperpartisan News Detection using ELMo Sentence Representation Convolutional Network"
+        },
+        {
+            "paperId": "dfe04e7e8fe9776e1623a5e9ce99ca4757181e5f",
+            "title": "Vernon-fenwick at SemEval-2019 Task 4: Hyperpartisan News Detection using Lexical and Semantic Features"
+        },
+        {
+            "paperId": "995ce52518f811aa9f303d235350dc6a737a0374",
+            "title": "NLP@UIT at SemEval-2019 Task 4: The Paparazzo Hyperpartisan News Detector"
+        },
+        {
+            "paperId": "e8e5bdb20333b4818426f515a61e2603cf18b24f",
+            "title": "Team yeon-zi at SemEval-2019 Task 4: Hyperpartisan News Detection by De-noising Weakly-labeled Data"
+        },
+        {
+            "paperId": "acc9a55a70968d71aaee87cac59d9b7a492c0198",
+            "title": "The Sally Smedley Hyperpartisan News Detector at SemEval-2019 Task 4"
+        },
+        {
+            "paperId": "49fb1771af010e5cc0400cb76e69bdc8b1a89de2",
+            "title": "Tom Jumbo-Grumbo at SemEval-2019 Task 4: Hyperpartisan News Detection with GloVe vectors and SVM"
+        },
+        {
+            "paperId": "daf5b2e7b36972b2c7cfad156b49fc918acae142",
+            "title": "Doris Martin at SemEval-2019 Task 4: Hyperpartisan News Detection with Generic Semi-supervised Features"
+        },
+        {
+            "paperId": "c4ed6f4c08df82e1c780238674bd2fb459cb926a",
+            "title": "Tintin at SemEval-2019 Task 4: Detecting Hyperpartisan News Article with only Simple Tokens"
+        },
+        {
+            "paperId": "ccae11b5a9403ea08d45ffe0cbefaa7ed4d0ab74",
+            "title": "Steve Martin at SemEval-2019 Task 4: Ensemble Learning Model for Detecting Hyperpartisan News"
+        },
+        {
+            "paperId": "0f8e055248dc7ec69680cbe69e403207f20f3959",
+            "title": "Team Howard Beale at SemEval-2019 Task 4: Hyperpartisan News Detection with BERT"
+        },
+        {
+            "paperId": "d0390ec5514225a0f04aef08518000da48bf4ae2",
+            "title": "Clark Kent at SemEval-2019 Task 4: Stylometric Insights into Hyperpartisan News Detection"
+        },
+        {
+            "paperId": "cc86d2de148e6b86c6e0316aba280ef3a1893dac",
+            "title": "Team Xenophilius Lovegood at SemEval-2019 Task 4: Hyperpartisanship Classification using Convolutional Neural Networks"
+        },
+        {
+            "paperId": "d1e7cf4ea6864cef4a8a36a45b595ccf5c12ece8",
+            "title": "Team Fernando-Pessa at SemEval-2019 Task 4: Back to Basics in Hyperpartisan News Detection"
+        },
+        {
+            "paperId": "6e08322f2135bc2f2914278f3a4a01c21c76c987",
+            "title": "Fermi at SemEval-2019 Task 4: The sarah-jane-smith Hyperpartisan News Detector"
+        },
+        {
+            "paperId": "f5be656dbc45f33324e8766ad7c476f2b5d3c121",
+            "title": "TakeLab at SemEval-2019 Task 4: Hyperpartisan News Detection"
+        },
+        {
+            "paperId": "b626adcac15c3ffa4ea260ee39a5a2b3c819c4bd",
+            "title": "Duluth at SemEval-2019 Task 4: The Pioquinto Manterola Hyperpartisan News Detector"
+        },
+        {
+            "paperId": "426d5a001c1a9085bf578e34034ece8643b2a050",
+            "title": "Team Jack Ryder at SemEval-2019 Task 4: Using BERT Representations for Detecting Hyperpartisan News"
+        },
+        {
+            "paperId": "d826ae7e4b282ce833e5685e864d056b3e433c9f",
+            "title": "Dick-Preston and Morbo at SemEval-2019 Task 4: Transfer Learning for Hyperpartisan News Detection"
+        },
+        {
+            "paperId": "07b5c144216f10e974f9a15fbfff7de64ea4fc75",
+            "title": "Orwellian-times at SemEval-2019 Task 4: A Stylistic and Content-based Classifier"
+        },
+        {
+            "paperId": "8e1166be997b7773df0a6a42967ab580f0ef2a8e",
+            "title": "Harvey Mudd College at SemEval-2019 Task 4: The D.X. Beaumont Hyperpartisan News Detector"
+        },
+        {
+            "paperId": "140382a37af0ddf630433711128b730e5ab1e59f",
+            "title": "Brenda Starr at SemEval-2019 Task 4: Hyperpartisan News Detection"
+        },
+        {
+            "paperId": "cb4a63eacff24e4d64dfe05a4914ca9d005c61fc",
+            "title": "Team Kermit-the-frog at SemEval-2019 Task 4: Bias Detection Through Sentiment Analysis and Simple Linguistic Features"
+        },
+        {
+            "paperId": "41f673715c7c1e6d3ab914a407b86194b1d2751c",
+            "title": "UBC-NLP at SemEval-2019 Task 4: Hyperpartisan News Detection With Attention-Based Bi-LSTMs"
+        },
+        {
+            "paperId": "94b14a63755ee0c7c2d88c72b1eae19e243f5865",
+            "title": "Team Peter Brinkmann at SemEval-2019 Task 4: Detecting Biased News Articles Using Convolutional Neural Networks"
+        },
+        {
+            "paperId": "1dc6de6959083fb78a3e4a7304a03ad1e91c4bfe",
+            "title": "Team Kit Kittredge at SemEval-2019 Task 4: LSTM Voting System"
+        },
+        {
+            "paperId": "6952a0ab97aeda56dd792b7fc0e3bb00284babee",
+            "title": "Harvey Mudd College at SemEval-2019 Task 4: The Carl Kolchak Hyperpartisan News Detector"
+        },
+        {
+            "paperId": "2e95a9627ffb4909cbbe4ad3cf4fa2f81748af6d",
+            "title": "Harvey Mudd College at SemEval-2019 Task 4: The Clint Buchanan Hyperpartisan News Detector"
+        },
+        {
+            "paperId": "bfc1c20084484edad6e71f968955c6e982f81d82",
+            "title": "Team QCRI-MIT at SemEval-2019 Task 4: Propaganda Analysis Meets Hyperpartisan News Detection"
+        },
+        {
+            "paperId": "ffcc4344387aacefaebc0793f85e006dd17f26b1",
+            "title": "The Clickbait Challenge 2017: Towards a Regression Model for Clickbait Strength"
+        },
+        {
+            "paperId": "b0a10a320bda4c8280e99ba58864f1291814eee4",
+            "title": "Crowdsourcing a Large Corpus of Clickbait on Twitter"
+        },
+        {
+            "paperId": "ec68cf304903671999e791c39115bc3ec08335ed",
+            "title": "Clickbait Detection"
+        },
+        {
+            "paperId": "34e7f27e3412c4a3193d3c9d289b6aadcc63801e",
+            "title": "Illuminating an Ecosystem of Partisan Websites"
+        },
+        {
+            "paperId": "3febb2bed8865945e7fddc99efd791887bb7e14f",
+            "title": "Deep Contextualized Word Representations"
+        },
+        {
+            "paperId": "1e077413b25c4d34945cc2707e17e46ed4fe784a",
+            "title": "Universal Language Model Fine-tuning for Text Classification"
+        },
+        {
+            "paperId": "ed31e1225f6a76b469dfe4d022b235dc70be4390",
+            "title": "A Stylometric Inquiry into Hyperpartisan and Fake News"
+        },
+        {
+            "paperId": "455afd748e8834ef521e4b67c7c056d3c33429e2",
+            "title": "Hierarchical Attention Networks for Document Classification"
+        },
+        {
+            "paperId": "9b65bf83a9d052ca9fba527b8d780a12fbc7f51e",
+            "title": "Webis: An Ensemble for Twitter Sentiment Detection"
+        },
+        {
+            "paperId": "1f6ba0782862ec12a5ec6d7fb608523d55b0c6ba",
+            "title": "Convolutional Neural Networks for Sentence Classification"
+        },
+        {
+            "paperId": "75370ec861aebff59297b8ebfb75d4525224ed09",
+            "title": "TIRA Integrated Research Architecture"
+        },
+        {
+            "paperId": "df2b0e26d0599ce3e70df8a9da02e51594e0e992",
+            "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding"
+        },
+        {
+            "paperId": "f1e09c8345b89937ba88e44dda39f3d66b1bc3d6",
+            "title": "Team Harry Friberg at SemEval-2019 Task 4: Identifying Hyperpartisan News through Editorially Defined Metatopics"
+        },
+        {
+            "paperId": "1d33945b1d61161bd7d0f11bfb8b6ec0aa42f1e7",
+            "title": "Team Ned Leeds at SemEval-2019 Task 4: Exploring Language Indicators of Hyperpartisan Reporting"
+        },
+        {
+            "paperId": "290111b650ea396908249475b2f99b9652af3741",
+            "title": "Team Peter-Parker at SemEval-2019 Task 4: BERT-Based Method in Hyperpartisan News Detection"
+        },
+        {
+            "paperId": "060753e03866050bbad5d58f976db5e569dd63a9",
+            "title": "Spider-Jerusalem at SemEval-2019 Task 04: Hyperpartisan News Detection"
+        },
+        {
+            "paperId": null,
+            "title": "Task 4: The Carl Kolchak"
+        },
+        {
+            "paperId": "0c0f42e828784196acf8766628e5655e4b7f6c3a",
+            "title": "Crowdsourced Measure of News Articles Bias: Assessing Contributors' Reliability"
+        },
+        {
+            "paperId": null,
+            "title": "Reproducible Web Corpora: Interactive"
+        },
+        {
+            "paperId": "817b4d24643ac0d36ea9e647f0c144abd6b2da10",
+            "title": "Clickbait Detection"
+        },
+        {
+            "paperId": "730ca170962a58607e092035beb2afc4b5fa6242",
+            "title": "Data Mining Practical Machine Learning Tools and Techniques"
+        }
+    ]
+}

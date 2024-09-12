@@ -1,0 +1,81 @@
+{
+    "paperId": "bbf58df1856fd582817fe93f816f1e03bfe3b17b",
+    "externalIds": {
+        "DBLP": "journals/cacm/AggarwalV88",
+        "MAG": "2038142281",
+        "DOI": "10.1145/48529.48535",
+        "CorpusId": 6264984
+    },
+    "title": "The input/output complexity of sorting and related problems",
+    "abstract": "We provide tight upper and lower bounds, up to a constant factor, for the number of inputs and outputs (I/OS) between internal memory and secondary storage required for five sorting-related problems: sorting, the fast Fourier transform (FFT), permutation networks, permuting, and matrix transposition. The bounds hold both in the worst case and in the average case, and in several situations the constant factors match. Secondary storage is modeled as a magnetic disk capable of transferring P blocks each containing B records in a single time unit; the records in each block must be input from or output to B contiguous locations on the disk. We give two optimal algorithms for the problems, which are variants of merge sorting and distribution sorting. In particular we show for P = 1 that the standard merge sorting algorithm is an optimal external sorting method, up to a constant factor in the number of I/Os. Our sorting algorithms use the same number of I/Os as does the permutation phase of key sorting, except when the internal memory size is extremely small, thus affirming the popular adage that key sorting is not faster. We also give a simpler and more direct derivation of Hong and Kung's lower bound for the FFT for the special case B = P = O(1).",
+    "venue": "CACM",
+    "year": 1988,
+    "referenceCount": 11,
+    "citationCount": 1337,
+    "influentialCitationCount": 231,
+    "openAccessPdf": {
+        "url": "https://dl.acm.org/doi/pdf/10.1145/48529.48535",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Tight upper and lower bounds are provided for the number of inputs and outputs (I/OS) between internal memory and secondary storage required for five sorting-related problems: sorting, the fast Fourier transform (FFT), permutation networks, permuting, and matrix transposition."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1737322",
+            "name": "A. Aggarwal"
+        },
+        {
+            "authorId": "1725956",
+            "name": "J. Vitter"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "0c59169dad6de1a3fe3046cdacfe880549d3c42e",
+            "title": "The I/O Performance of Multiway Mergesort and Tag Sort"
+        },
+        {
+            "paperId": "58feae474fa0d1a666d84a5a8d7141cc96da581f",
+            "title": "The Design and Analysis of BucketSort for Bubble Memory Secondary Storage"
+        },
+        {
+            "paperId": "3b2849c55fe6fd719cc298be03292a93ce78d107",
+            "title": "Tight Bounds on the Complexity of Parallel Sorting"
+        },
+        {
+            "paperId": "3e69317455f7db9b1325239c6f6f52cbe29a5491",
+            "title": "I/O complexity: The red-blue pebble game"
+        },
+        {
+            "paperId": "46aea9de2c982a1bfa8a5492105a7b8a2f8723f4",
+            "title": "The Universality of the Shuffle-Exchange Network"
+        },
+        {
+            "paperId": "a77f8b3c58a9186298e35913cd180c51c83c82ad",
+            "title": "The Art of Computer Programming, Volume 3, Sorting and Searching"
+        },
+        {
+            "paperId": "639bb2d08557584d28c19777b0c6732e498e82a5",
+            "title": "Time Bounds for Selection"
+        },
+        {
+            "paperId": null,
+            "title": "Conference Highlights: l Quality Program Focused on Emerging Computing Trends"
+        },
+        {
+            "paperId": null,
+            "title": "Parallelism in space-time tradeoffs"
+        },
+        {
+            "paperId": null,
+            "title": "J. Personal Communication"
+        },
+        {
+            "paperId": "63094a5b5c9d022143081e1f9023498d3052c3fa",
+            "title": "Permuting Information in Idealized Two-Level Storage"
+        }
+    ]
+}

@@ -1,0 +1,138 @@
+{
+    "paperId": "79c78c98ea317ba8cdf25a9783ef4b8a7552db75",
+    "externalIds": {
+        "DBLP": "conf/nips/WisdomPHRA16",
+        "MAG": "2951605425",
+        "ArXiv": "1611.00035",
+        "CorpusId": 14702380
+    },
+    "title": "Full-Capacity Unitary Recurrent Neural Networks",
+    "abstract": "Recurrent neural networks are powerful models for processing sequential data, but they are generally plagued by vanishing and exploding gradient problems. Unitary recurrent neural networks (uRNNs), which use unitary recurrence matrices, have recently been proposed as a means to avoid these issues. However, in previous experiments, the recurrence matrices were restricted to be a product of parameterized unitary matrices, and an open question remains: when does such a parameterization fail to represent all unitary matrices, and how does this restricted representational capacity limit what can be learned? To address this question, we propose full-capacity uRNNs that optimize their recurrence matrix over all unitary matrices, leading to significantly improved performance over uRNNs that use a restricted-capacity recurrence matrix. Our contribution consists of two main components. First, we provide a theoretical argument to determine if a unitary parameterization has restricted capacity. Using this argument, we show that a recently proposed unitary parameterization has restricted capacity for hidden state dimension greater than 7. Second, we show how a complete, full-capacity unitary recurrence matrix can be optimized over the differentiable manifold of unitary matrices. The resulting multiplicative gradient step is very simple and does not require gradient clipping or learning rate adaptation. We confirm the utility of our claims by empirically evaluating our new full-capacity uRNNs on both synthetic and natural data, achieving superior performance compared to both LSTMs and the original restricted-capacity uRNNs.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2016,
+    "referenceCount": 23,
+    "citationCount": 279,
+    "influentialCitationCount": 41,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work provides a theoretical argument to determine if a unitary parameterization has restricted capacity, and shows how a complete, full-capacity unitary recurrence matrix can be optimized over the differentiable manifold of unitary matrices."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2249568",
+            "name": "Scott Wisdom"
+        },
+        {
+            "authorId": "143767013",
+            "name": "Thomas Powers"
+        },
+        {
+            "authorId": "2387467",
+            "name": "J. Hershey"
+        },
+        {
+            "authorId": "9332945",
+            "name": "Jonathan Le Roux"
+        },
+        {
+            "authorId": "1705299",
+            "name": "L. Atlas"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "6b570069f14c7588e066f7138e1f21af59d62e61",
+            "title": "Theano: A Python framework for fast computation of mathematical expressions"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "e9c771197a6564762754e48c1daafb066f449f2e",
+            "title": "Unitary Evolution Recurrent Neural Networks"
+        },
+        {
+            "paperId": "d46b81707786d18499f911b4ab72bb10c65406ba",
+            "title": "A Simple Way to Initialize Recurrent Networks of Rectified Linear Units"
+        },
+        {
+            "paperId": "1eb09fecd75eb27825dce4f964b97f4f5cc399d7",
+            "title": "On the Properties of Neural Machine Translation: Encoder\u2013Decoder Approaches"
+        },
+        {
+            "paperId": "8a756d4d25511d92a45d0f4545fa819de993851d",
+            "title": "Recurrent Models of Visual Attention"
+        },
+        {
+            "paperId": "99c970348b8f70ce23d6641e201904ea49266b6e",
+            "title": "Exact solutions to the nonlinear dynamics of learning in deep linear neural networks"
+        },
+        {
+            "paperId": "84069287da0a6b488b8c933f3cb5be759cb6237e",
+            "title": "On the difficulty of training recurrent neural networks"
+        },
+        {
+            "paperId": "445ee3f6a7bc18ad6f029df27b4ea99b9eb44112",
+            "title": "An Algorithm for Intelligibility Prediction of Time\u2013Frequency Weighted Noisy Speech"
+        },
+        {
+            "paperId": "874bd27eb6008607f55d723209a4e3335ea0d853",
+            "title": "Lie Groups, Physics, and Geometry: Frontmatter"
+        },
+        {
+            "paperId": "514552938459a623683c072ab1360efd24d4765d",
+            "title": "Speech Enhancement: Theory and Practice"
+        },
+        {
+            "paperId": "dd5e786fd6ced91db79105ca289f49816fe17c80",
+            "title": "Perceptual evaluation of speech quality (PESQ)-a new method for speech quality assessment of telephone networks and codecs"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "d0be39ee052d246ae99c082a565aba25b811be2d",
+            "title": "Learning long-term dependencies with gradient descent is difficult"
+        },
+        {
+            "paperId": "baa39c709c427197411d548542ae45a133d75e96",
+            "title": "Unitary Triangularization of a Nonsymmetric Matrix"
+        },
+        {
+            "paperId": "011ff0d1a1b6e6e3844afd0c0d05ba217e8e80cf",
+            "title": "The measure of the critical values of differentiable maps"
+        },
+        {
+            "paperId": null,
+            "title": "Lecture 6.5\u2014RmsProp: Divide the gradient by a running average of its recent magnitude"
+        },
+        {
+            "paperId": "4dd83bc386ed5398ef19c54561684cb89e60871d",
+            "title": "Notes on Optimization on Stiefel Manifolds"
+        },
+        {
+            "paperId": "039c9bf4777f900017dddc054ea9e376faf1ebf9",
+            "title": "Methods for objective and subjective assessment of quality Perceptual evaluation of speech quality ( PESQ ) : An objective method for end-to-end speech quality assessment of narrow-band telephone networks and speech codecs"
+        },
+        {
+            "paperId": null,
+            "title": "VOICEBOX: Speech processing toolbox for MATLAB"
+        },
+        {
+            "paperId": "2e5f2b57f4c476dd69dc22ccdf547e48f40a994c",
+            "title": "Gradient Flow in Recurrent Nets: the Difficulty of Learning Long-Term Dependencies"
+        },
+        {
+            "paperId": "d0ff60013a985f932e2bdf4223b86c2d3ce25d77",
+            "title": "Heterogeneous acoustic measurements and multiple classifiers for speech recognition"
+        },
+        {
+            "paperId": null,
+            "title": "DARPA TIMIT acoustic-phonetic continous speech corpus"
+        }
+    ]
+}

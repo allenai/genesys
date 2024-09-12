@@ -1,0 +1,298 @@
+{
+    "paperId": "449310e3538b08b43227d660227dfd2875c3c3c1",
+    "externalIds": {
+        "MAG": "2963755523",
+        "DBLP": "journals/corr/abs-1806-07366",
+        "ArXiv": "1806.07366",
+        "CorpusId": 49310446
+    },
+    "title": "Neural Ordinary Differential Equations",
+    "abstract": "We introduce a new family of deep neural network models. Instead of specifying a discrete sequence of hidden layers, we parameterize the derivative of the hidden state using a neural network. The output of the network is computed using a black-box differential equation solver. These continuous-depth models have constant memory cost, adapt their evaluation strategy to each input, and can explicitly trade numerical precision for speed. We demonstrate these properties in continuous-depth residual networks and continuous-time latent variable models. We also construct continuous normalizing flows, a generative model that can train by maximum likelihood, without partitioning or ordering the data dimensions. For training, we show how to scalably backpropagate through any ODE solver, without access to its internal operations. This allows end-to-end training of ODEs within larger models.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2018,
+    "referenceCount": 64,
+    "citationCount": 4093,
+    "influentialCitationCount": 924,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work shows how to scalably backpropagate through any ODE solver, without access to its internal operations, which allows end-to-end training of ODEs within larger models."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "11126631",
+            "name": "T. Chen"
+        },
+        {
+            "authorId": "40959192",
+            "name": "Yulia Rubanova"
+        },
+        {
+            "authorId": "51012893",
+            "name": "J. Bettencourt"
+        },
+        {
+            "authorId": "1704657",
+            "name": "D. Duvenaud"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "71b03c8885b425c02e0b722c1133fcccb70ba413",
+            "title": "CasADi: a software framework for nonlinear optimization and optimal control"
+        },
+        {
+            "paperId": "dfb1bcdeb2eeb1a50ae218f5cc318842eabcfee6",
+            "title": "Deep Neural Networks Motivated by Partial Differential Equations"
+        },
+        {
+            "paperId": "533e651177354d6687e8d0a24217a6bf65692bcc",
+            "title": "Sylvester Normalizing Flows for Variational Inference"
+        },
+        {
+            "paperId": "7ab631b23b12e4c166a156172588c730aae34f78",
+            "title": "Optimization and uncertainty analysis of ODE models using 2nd order adjoint sensitivity analysis"
+        },
+        {
+            "paperId": "f1a5c2405906eec16d1609d5f137848996a4ca55",
+            "title": "Latent Space Physics: Towards Learning the Temporal Evolution of Fluid Flow"
+        },
+        {
+            "paperId": "d39e1ad6f47b2edcfb3b8333b7469e849602ddd4",
+            "title": "Black-Box Variational Inference for Stochastic Differential Equations"
+        },
+        {
+            "paperId": "ebcc0e71ef6a77d05e7ab064435bc2da87c55e91",
+            "title": "Deep Hidden Physics Models: Deep Learning of Nonlinear Partial Differential Equations"
+        },
+        {
+            "paperId": "a41fe2302296a9d1eabc382415d4049905fddb36",
+            "title": "Multistep Neural Networks for Data-driven Discovery of Nonlinear Dynamical Systems"
+        },
+        {
+            "paperId": "b36a5bb1707bb9c70025294b3a310138aae8327a",
+            "title": "Automatic differentiation in PyTorch"
+        },
+        {
+            "paperId": "1cb7ea5de0f8f4d90e4369db4a161ca8594026dc",
+            "title": "Beyond Finite Layer Neural Networks: Bridging Deep Architectures and Numerical Differential Equations"
+        },
+        {
+            "paperId": "cd958525291ee1ab856d23aa93cb95c86d87ccbe",
+            "title": "Multi-level Residual Networks from Dynamical Systems View"
+        },
+        {
+            "paperId": "7e5cc3f813c30ed051f263cad17af1b07b58e8cc",
+            "title": "PDE-Net: Learning PDEs from Data"
+        },
+        {
+            "paperId": "6a06a44dc8538a226df169e5a7ed659e5db3f9e4",
+            "title": "Reversible Architectures for Arbitrarily Deep Residual Neural Networks"
+        },
+        {
+            "paperId": "7667bc888de12981cecddfb70faff58f2fbd7c3f",
+            "title": "Scalable Joint Models for Reliable Uncertainty-Aware Event Prediction"
+        },
+        {
+            "paperId": "0d5e16fc64d0555d187b47d03c5698747e15adaa",
+            "title": "Hidden physics models: Machine learning of nonlinear partial differential equations"
+        },
+        {
+            "paperId": "6b6616f9a939947b605bb2b8c4d57fdb1dfc399b",
+            "title": "Time-Dependent Representation for Neural Event Sequence Prediction"
+        },
+        {
+            "paperId": "3a6d4cd0768ae8768e733280d362bdb4d25924e7",
+            "title": "The Reversible Residual Network: Backpropagation Without Storing Activations"
+        },
+        {
+            "paperId": "fefa01721467212eea51110c9f26b6b3514f4c68",
+            "title": "Learning to Detect Sepsis with a Multitask Gaussian Process RNN Classifier"
+        },
+        {
+            "paperId": "37be889f4654312109dc9c53395fe117adb0f72b",
+            "title": "Stable architectures for deep neural networks"
+        },
+        {
+            "paperId": "4a8e692ede416d4864e15042696f53300a52089b",
+            "title": "What-If Reasoning with Counterfactual Gaussian Processes"
+        },
+        {
+            "paperId": "0af8d24b14614499393b50f71070d68cf299d52c",
+            "title": "Reliable Decision Support using Counterfactual Models"
+        },
+        {
+            "paperId": "c6dfa7b141afe4d2627e8653c2b55edd8bf7b3f6",
+            "title": "Numerical Gaussian Processes for Time-Dependent and Nonlinear Partial Differential Equations"
+        },
+        {
+            "paperId": "0076b232181e4e5be58dce8354a813ad2bbf663a",
+            "title": "OptNet: Differentiable Optimization as a Layer in Neural Networks"
+        },
+        {
+            "paperId": "7944d0b061610b1c67ad15efdf192681e60d0129",
+            "title": "Spatially Adaptive Computation Time for Residual Networks"
+        },
+        {
+            "paperId": "bcbb0e86010b33d077b676ab8a0605e4b56cd9e6",
+            "title": "Improving Variational Auto-Encoders using Householder Flow"
+        },
+        {
+            "paperId": "6746a18b2820f757334f75bc95428b3ea58d6603",
+            "title": "Variable Computation in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "563783de03452683a9206e85fe6d661714436686",
+            "title": "HyperNetworks"
+        },
+        {
+            "paperId": "439d216e9cf62fe2fe6fa95646543140bb074b43",
+            "title": "Recurrent Marked Temporal Point Processes: Embedding Event History to Vector"
+        },
+        {
+            "paperId": "6a97d2668187965743d1b825b306defccbabbb4c",
+            "title": "Improved Variational Inference with Inverse Autoregressive Flow"
+        },
+        {
+            "paperId": "2abbacd380f094615801b4b50e5d37ee1a55573a",
+            "title": "Fast derivatives of likelihood functionals for ODE based models using adjoint-state method"
+        },
+        {
+            "paperId": "562f33611cdc0d8ed6609aa09f153e6238d5409e",
+            "title": "Directly Modeling Missing Data in Sequences with RNNs: Improved Classification of Clinical Time Series"
+        },
+        {
+            "paperId": "bd723bc768baa78b7bd3e6f28a401d6d5cfe87f8",
+            "title": "Recurrent Neural Networks for Multivariate Time Series with Missing Values"
+        },
+        {
+            "paperId": "04cca8e341a5da42b29b0bc831cb25a0f784fa01",
+            "title": "Adaptive Computation Time for Recurrent Neural Networks"
+        },
+        {
+            "paperId": "77f0a39b8e02686fd85b01971f8feb7f60971f80",
+            "title": "Identity Mappings in Deep Residual Networks"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "c434fce129f205a31871d51c0706b6aa9cfcb3b5",
+            "title": "Doctor AI: Predicting Clinical Events via Recurrent Neural Networks"
+        },
+        {
+            "paperId": "0e9383e2e127474c84614fe184a86af7c8540a49",
+            "title": "The Stan Math Library: Reverse-Mode Automatic Differentiation in C++"
+        },
+        {
+            "paperId": "0f899b92b7fb03b609fee887e4b6f3b633eaf30d",
+            "title": "Variational Inference with Normalizing Flows"
+        },
+        {
+            "paperId": "643da4c4de1954daeac571a82367241db012a8bf",
+            "title": "Automatic differentiation in machine learning: a survey"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "dc8301b67f98accbb331190dd7bd987952a692af",
+            "title": "NICE: Non-linear Independent Components Estimation"
+        },
+        {
+            "paperId": "1abcdf6d65ff63a48b3d8ccf8ab5180200d3dd90",
+            "title": "FATODE: A Library for Forward, Adjoint, and Tangent Linear Integration of ODEs"
+        },
+        {
+            "paperId": "7430b92ae5c4156238500957cb17d05cfd057814",
+            "title": "Probabilistic ODE Solvers with Runge-Kutta Means"
+        },
+        {
+            "paperId": "484ad17c926292fbe0d5211540832a8c8a8e958b",
+            "title": "Stochastic Backpropagation and Approximate Inference in Deep Generative Models"
+        },
+        {
+            "paperId": "5f5dc5b9a2ba710937e2c413b37b053cd673df02",
+            "title": "Auto-Encoding Variational Bayes"
+        },
+        {
+            "paperId": "3ce9bdd7a82a13def5a2d723cb679c3cf3cb5e60",
+            "title": "A General-Purpose Software Framework for Dynamic Optimization (Een algemene softwareomgeving voor dynamische optimalisatie)"
+        },
+        {
+            "paperId": "74ec688ff7b60a8f5926b108f2609276a9a76e08",
+            "title": "Automated Derivation of the Adjoint of High-Level Transient Finite Element Programs"
+        },
+        {
+            "paperId": "121888ad47647b07d48ecf3c8a275b0bdcb3c396",
+            "title": "Computationally Efficient Convolved Multiple Output Gaussian Processes"
+        },
+        {
+            "paperId": "bb701ebd5b5688e987c8a8e51162c2f5bbf77e75",
+            "title": "Solving Ordinary Differential Equations I: Nonstiff Problems"
+        },
+        {
+            "paperId": "20103f8ae16617a20d17f69b7e3e9a6b5fd71f6c",
+            "title": "Stable fluids"
+        },
+        {
+            "paperId": "32e97eef94beacace020e79322cef0e1e5a76ee0",
+            "title": "Gradient calculations for dynamic recurrent neural networks: a survey"
+        },
+        {
+            "paperId": "c7f140af3bf15704cc9fbfc2c35b3c792cf872f4",
+            "title": "Solving ordinary differential equations I (2nd revised. ed.): nonstiff problems"
+        },
+        {
+            "paperId": "4f2703652205bb4e146aee4dd48c78ed68b83ff3",
+            "title": "The Mathematical Theory of Optimal Processes"
+        },
+        {
+            "paperId": "3db38d6924cbbc5e754656c33d2c154ef4d028b5",
+            "title": "Mathematical Theory of Optimal Processes"
+        },
+        {
+            "paperId": "c0793eebb4960c5896fdec93b17075aa4d050236",
+            "title": "Ueber die numerische Aufl\u00f6sung von Differentialgleichungen"
+        },
+        {
+            "paperId": "448c04f70cad6b028fe038998e78b1b1eeefccbd",
+            "title": "The Neural Hawkes Process: A Neurally Self-Modulating Multivariate Point Process"
+        },
+        {
+            "paperId": null,
+            "title": "Treatment-response models for counterfactual reasoning with continuous-time, continuous-valued interventions"
+        },
+        {
+            "paperId": "7b3a7733077e8f632d42bd0718943671b006e461",
+            "title": "Theory Of Ordinary Differential Equations"
+        },
+        {
+            "paperId": null,
+            "title": "Autograd: Reverse-mode differentiation of native Python"
+        },
+        {
+            "paperId": null,
+            "title": "Neural networks for machine learning lecture 6a overview of mini-batch gradient descent"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "5d1f4d800a3a3bd0bf10839f9869f533e0d41c23",
+            "title": "A Theoretical Framework for Back-Propagation"
+        },
+        {
+            "paperId": null,
+            "title": "Intensit\u00e4tsschwankungen im fernsprechverker. Ericsson Technics"
+        },
+        {
+            "paperId": "47f8a708cce5d1ea1482d3dc35f0aabc1fa90a65",
+            "title": "Beitrag zur Naherungsweisen Integration Totaler Differentialgleichungen"
+        }
+    ]
+}

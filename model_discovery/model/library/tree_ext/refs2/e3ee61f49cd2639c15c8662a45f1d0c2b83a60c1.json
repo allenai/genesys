@@ -1,0 +1,167 @@
+{
+    "paperId": "e3ee61f49cd2639c15c8662a45f1d0c2b83a60c1",
+    "externalIds": {
+        "DBLP": "journals/corr/abs-1808-08946",
+        "ACL": "D18-1458",
+        "MAG": "2950399211",
+        "ArXiv": "1808.08946",
+        "DOI": "10.18653/v1/D18-1458",
+        "CorpusId": 52100282
+    },
+    "title": "Why Self-Attention? A Targeted Evaluation of Neural Machine Translation Architectures",
+    "abstract": "Recently, non-recurrent architectures (convolutional, self-attentional) have outperformed RNNs in neural machine translation. CNNs and self-attentional networks can connect distant words via shorter network paths than RNNs, and it has been speculated that this improves their ability to model long-range dependencies. However, this theoretical argument has not been tested empirically, nor have alternative explanations for their strong performance been explored in-depth. We hypothesize that the strong performance of CNNs and self-attentional networks could also be due to their ability to extract semantic features from the source text, and we evaluate RNNs, CNNs and self-attention networks on two tasks: subject-verb agreement (where capturing long-range dependencies is required) and word sense disambiguation (where semantic feature extraction is required). Our experimental results show that: 1) self-attentional networks and CNNs do not outperform RNNs in modeling subject-verb agreement over long distances; 2) self-attentional networks perform distinctly better than RNNs and CNNs on word sense disambiguation.",
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2018,
+    "referenceCount": 30,
+    "citationCount": 249,
+    "influentialCitationCount": 11,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/D18-1458.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The experimental results show that: 1) self-attentional networks and CNNs do not outperform RNNs in modeling subject-verb agreement over long distances; 2)Self-att attentional networks perform distinctly better than RNN's and CNN's on word sense disambiguation."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2786820",
+            "name": "Gongbo Tang"
+        },
+        {
+            "authorId": "144529826",
+            "name": "Mathias M\u00fcller"
+        },
+        {
+            "authorId": "40659617",
+            "name": "Annette Rios Gonzales"
+        },
+        {
+            "authorId": "2082372",
+            "name": "Rico Sennrich"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "cf0545d9f171c8e2d88aed13cd7ad60ff2ab8fb5",
+            "title": "How Much Attention Do You Need? A Granular Analysis of Neural Machine Translation Architectures"
+        },
+        {
+            "paperId": "8ff11e2e4418b1df9c5b76e7e5d6eebfef98485c",
+            "title": "An Evaluation of Neural Machine Translation Models on Historical Spelling Normalization"
+        },
+        {
+            "paperId": "bb669de2fce407df2f5cb2f8c51dedee3f467e04",
+            "title": "The Best of Both Worlds: Combining Recent Advances in Neural Machine Translation"
+        },
+        {
+            "paperId": "b4bfadfca9742bb3ee98a0cd322d5ce4e59a3ceb",
+            "title": "A Call for Clarity in Reporting BLEU Scores"
+        },
+        {
+            "paperId": "302c56e718d449b25cd3d6873f2e58078c584617",
+            "title": "Marian: Fast Neural Machine Translation in C++"
+        },
+        {
+            "paperId": "997c55547aeca733dfc5dfebd12412612ecba022",
+            "title": "The Importance of Being Recurrent for Modeling Hierarchical Structure"
+        },
+        {
+            "paperId": "921196c32213a229245a9705ee4768bc941e7a26",
+            "title": "An Empirical Evaluation of Generic Convolutional and Recurrent Networks for Sequence Modeling"
+        },
+        {
+            "paperId": "c2f62a32b11f1906f5a3508b22134631cbfaa268",
+            "title": "Sockeye: A Toolkit for Neural Machine Translation"
+        },
+        {
+            "paperId": "fb92ccadf502e66e3e7d72b6beaba1b9721a6276",
+            "title": "Using Deep Neural Networks to Learn Syntactic Agreement"
+        },
+        {
+            "paperId": "585d654340ba9ea586406d27b61feee7a2c0c3f8",
+            "title": "Improving Word Sense Disambiguation in Neural Machine Translation with Sense Embeddings"
+        },
+        {
+            "paperId": "e509d20978bc003722f975d235c530b1d3c6cee8",
+            "title": "The University of Edinburgh\u2019s Neural MT Systems for WMT17"
+        },
+        {
+            "paperId": "0b2c790fc30e39d275856cee1aa54002fc1ec0c9",
+            "title": "Deep architectures for Neural Machine Translation"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "f52b48a988489ed4d1c53f98e77aa34669547a94",
+            "title": "Comparative Study of CNN and RNN for Natural Language Processing"
+        },
+        {
+            "paperId": "63c4114bd373dd0fcfe0d25a605b353c62be2995",
+            "title": "How Grammatical is Character-level Neural Machine Translation? Assessing MT Quality with Contrastive Translation Pairs"
+        },
+        {
+            "paperId": "3aa52436575cf6768a0a1a476601825f6a62e58f",
+            "title": "Assessing the Ability of LSTMs to Learn Syntax-Sensitive Dependencies"
+        },
+        {
+            "paperId": "62df84d6a4d26f95e4714796c2337c9848cc13b5",
+            "title": "MXNet: A Flexible and Efficient Machine Learning Library for Heterogeneous Distributed Systems"
+        },
+        {
+            "paperId": "1518039b5001f1836565215eb047526b3ac7f462",
+            "title": "Neural Machine Translation of Rare Words with Subword Units"
+        },
+        {
+            "paperId": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+            "title": "Effective Approaches to Attention-based Neural Machine Translation"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "61cb0b0e82950f6f48b4821f263bc25456073631",
+            "title": "Scale-Invariant Convolutional Neural Networks"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "944a1cfd79dbfb6fef460360a0765ba790f4027a",
+            "title": "Recurrent Continuous Translation Models"
+        },
+        {
+            "paperId": "25ca4a36df2955b345634b5f8a6b6bb66a774b3c",
+            "title": "Parallel Data, Tools and Interfaces in OPUS"
+        },
+        {
+            "paperId": "d7da009f457917aa381619facfa5ffae9329a6e9",
+            "title": "Bleu: a Method for Automatic Evaluation of Machine Translation"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "668087f0ae7ce1de6e0bd0965dbb480c08103260",
+            "title": "Finding Structure in Time"
+        },
+        {
+            "paperId": "8fd61ae673e79de6723f800e06b38b2bda1dc3db",
+            "title": "Convolutional Sequence to Sequence Learning"
+        }
+    ]
+}

@@ -1,0 +1,202 @@
+{
+    "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+    "externalIds": {
+        "MAG": "2130942839",
+        "DBLP": "conf/nips/SutskeverVL14",
+        "ArXiv": "1409.3215",
+        "CorpusId": 7961699
+    },
+    "title": "Sequence to Sequence Learning with Neural Networks",
+    "abstract": "Deep Neural Networks (DNNs) are powerful models that have achieved excellent performance on difficult learning tasks. Although DNNs work well whenever large labeled training sets are available, they cannot be used to map sequences to sequences. In this paper, we present a general end-to-end approach to sequence learning that makes minimal assumptions on the sequence structure. Our method uses a multilayered Long Short-Term Memory (LSTM) to map the input sequence to a vector of a fixed dimensionality, and then another deep LSTM to decode the target sequence from the vector. Our main result is that on an English to French translation task from the WMT-14 dataset, the translations produced by the LSTM achieve a BLEU score of 34.8 on the entire test set, where the LSTM's BLEU score was penalized on out-of-vocabulary words. Additionally, the LSTM did not have difficulty on long sentences. For comparison, a phrase-based SMT system achieves a BLEU score of 33.3 on the same dataset. When we used the LSTM to rerank the 1000 hypotheses produced by the aforementioned SMT system, its BLEU score increases to 36.5, which is close to the previous state of the art. The LSTM also learned sensible phrase and sentence representations that are sensitive to word order and are relatively invariant to the active and the passive voice. Finally, we found that reversing the order of the words in all source sentences (but not target sentences) improved the LSTM's performance markedly, because doing so introduced many short term dependencies between the source and the target sentence which made the optimization problem easier.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2014,
+    "referenceCount": 41,
+    "citationCount": 19379,
+    "influentialCitationCount": 1355,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper presents a general end-to-end approach to sequence learning that makes minimal assumptions on the sequence structure, and finds that reversing the order of the words in all source sentences improved the LSTM's performance markedly, because doing so introduced many short term dependencies between the source and the target sentence which made the optimization problem easier."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1701686",
+            "name": "I. Sutskever"
+        },
+        {
+            "authorId": "1689108",
+            "name": "O. Vinyals"
+        },
+        {
+            "authorId": "2827616",
+            "name": "Quoc V. Le"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "6122c95ac6475e965bf4e120f7a588d29bb00ecc",
+            "title": "Overcoming the Curse of Sentence Length for Neural Machine Translation using Automatic Segmentation"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "0894b06cff1cd0903574acaa7fcf071b144ae775",
+            "title": "Fast and Robust Neural Network Joint Models for Statistical Machine Translation"
+        },
+        {
+            "paperId": "97cedf99252026f58e8154bc61d49cf885d42030",
+            "title": "Edinburgh\u2019s Phrase-based Machine Translation Systems for WMT-14"
+        },
+        {
+            "paperId": "9f2efadf66817f1b38f58b3f50c7c8f34c69d89a",
+            "title": "DeepFace: Closing the Gap to Human-Level Performance in Face Verification"
+        },
+        {
+            "paperId": "c20ed3a1600122e6cf03b8ed74d3d2920ad0a8c6",
+            "title": "Multilingual Distributed Representations without Word Alignment"
+        },
+        {
+            "paperId": "944a1cfd79dbfb6fef460360a0765ba790f4027a",
+            "title": "Recurrent Continuous Translation Models"
+        },
+        {
+            "paperId": "167ad306d84cca2455bc50eb833454de9f2dcd02",
+            "title": "Joint Language and Translation Modeling with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17",
+            "title": "Generating Sequences With Recurrent Neural Networks"
+        },
+        {
+            "paperId": "f6b51c8753a871dc94ff32152c00c01e94f90f09",
+            "title": "Efficient Estimation of Word Representations in Vector Space"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "84069287da0a6b488b8c933f3cb5be759cb6237e",
+            "title": "On the difficulty of training recurrent neural networks"
+        },
+        {
+            "paperId": "7b4f3d0e4e2486a8d5d3f8e00549cf9a117bf88f",
+            "title": "Sequence Transduction with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "e33cbb25a8c7390aec6a398e36381f4f7770c283",
+            "title": "Deep Neural Networks for Acoustic Modeling in Speech Recognition"
+        },
+        {
+            "paperId": null,
+            "title": "Deep Neural Networks for Acoustic Modeling in Speech Recognition"
+        },
+        {
+            "paperId": "77b73697c8b5295a718ffef0d63a1afd489de915",
+            "title": "LIUM\u2019s SMT Machine Translation Systems for WMT 2012"
+        },
+        {
+            "paperId": "398c296d0cc7f9d180f84969f8937e6d3a413796",
+            "title": "Multi-column deep neural networks for image classification"
+        },
+        {
+            "paperId": "6658bbf68995731b2083195054ff45b4eca38b3a",
+            "title": "Context-Dependent Pre-Trained Deep Neural Networks for Large-Vocabulary Speech Recognition"
+        },
+        {
+            "paperId": "72e93aa6767ee683de7f001fa72f1314e40a8f35",
+            "title": "Building high-level features using large scale unsupervised learning"
+        },
+        {
+            "paperId": "4b36221c0b78c68cb696c64fd6032613c63f65ac",
+            "title": "LIUM\u2019s SMT Machine Translation Systems for WMT 2011"
+        },
+        {
+            "paperId": "6c2b28f9354f667cd5bd07afc0471d8334430da7",
+            "title": "A Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "d7da009f457917aa381619facfa5ffae9329a6e9",
+            "title": "Bleu: a Method for Automatic Evaluation of Machine Translation"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "b158a006bebb619e2ea7bf0a22c27d45c5d19004",
+            "title": "LSTM can Solve Hard Long Time Lag Problems"
+        },
+        {
+            "paperId": "d0be39ee052d246ae99c082a565aba25b811be2d",
+            "title": "Learning long-term dependencies with gradient descent is difficult"
+        },
+        {
+            "paperId": "06342ba4480526574a8d864a3c3c1719450e2463",
+            "title": "On Small Depth Threshold Circuits"
+        },
+        {
+            "paperId": "1a3d22599028a05669e884f3eaf19a342e190a87",
+            "title": "Backpropagation Through Time: What It Does and How to Do It"
+        },
+        {
+            "paperId": "052b1d8ce63b07fec3de9dbb583772d860b7c769",
+            "title": "Learning representations by back-propagating errors"
+        },
+        {
+            "paperId": null,
+            "title": "University le mans.http://www-lium.univ-lemans.fr/ \u0303 schwenk/cslm_ joint_paper"
+        },
+        {
+            "paperId": "f9a1b3850dfd837793743565a8af95973d395a4e",
+            "title": "LSTM Neural Networks for Language Modeling"
+        },
+        {
+            "paperId": "96364af2d208ea75ca3aeb71892d2f7ce7326b55",
+            "title": "Statistical Language Models Based on Neural Networks"
+        },
+        {
+            "paperId": "3d2218b17e7898a222e5fc2079a3f1531990708f",
+            "title": "I and J"
+        },
+        {
+            "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+            "title": "Recurrent neural network based language model"
+        },
+        {
+            "paperId": "2e5f2b57f4c476dd69dc22ccdf547e48f40a994c",
+            "title": "Gradient Flow in Recurrent Nets: the Difficulty of Learning Long-Term Dependencies"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "3f3d13e95c25a8f6a753e38dfce88885097cbd43",
+            "title": "Untersuchungen zu dynamischen neuronalen Netzen"
+        },
+        {
+            "paperId": null,
+            "title": "Untersuchungen zu dynamischen neurona  len netzen.Master\u2019s thesis, Institut fur Informatik, Technische Universitat"
+        },
+        {
+            "paperId": "261a056f8b21918e8616a429b2df6e1d5d33be41",
+            "title": "Connectionist Temporal Classi\ufb01cation: Labelling Unsegmented Sequence Data with Recurrent Neural Networks"
+        },
+        {
+            "paperId": null,
+            "title": "le mans"
+        },
+        {
+            "paperId": "845ee9838c1f5bf63b7db2c95ec5d27af14a4e02",
+            "title": "Connectionist Temporal Classi\ufb01cation: Labelling Unsegmented Sequences with Recurrent Neural Networks"
+        }
+    ]
+}

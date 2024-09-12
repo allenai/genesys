@@ -1,0 +1,277 @@
+{
+    "paperId": "640de4224d57e2df834d4294b4aa045dbd266fd6",
+    "externalIds": {
+        "MAG": "2010106582",
+        "DBLP": "conf/stoc/AlonLSV13",
+        "DOI": "10.1145/2488608.2488694",
+        "CorpusId": 801833
+    },
+    "title": "The approximate rank of a matrix and its algorithmic applications: approximate rank",
+    "abstract": "We study the \u03b5-rank of a real matrix A, defined for any \u03b5 > 0 as the minimum rank over matrices that approximate every entry of A to within an additive \u03b5. This parameter is connected to other notions of approximate rank and is motivated by problems from various topics including communication complexity, combinatorial optimization, game theory, computational geometry and learning theory. Here we give bounds on the \u03b5-rank and use them for algorithmic applications. Our main algorithmic results are (a) polynomial-time additive approximation schemes for Nash equilibria for 2-player games when the payoff matrices are positive semidefinite or have logarithmic rank and (b) an additive PTAS for the densest subgraph problem for similar classes of weighted graphs. We use combinatorial, geometric and spectral techniques; our main new tool is an algorithm for efficiently covering a convex body with translates of another convex body.",
+    "venue": "Symposium on the Theory of Computing",
+    "year": 2013,
+    "referenceCount": 58,
+    "citationCount": 65,
+    "influentialCitationCount": 11,
+    "openAccessPdf": {
+        "url": "http://www.cc.gatech.edu/%7Evempala/papers/epsrank.pdf",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Borders are given on the \u03b5-rank of a real matrix A, defined for any \u03b5 > 0 as the minimum rank over matrices that approximate every entry of A to within an additive \u03b5."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1734327",
+            "name": "N. Alon"
+        },
+        {
+            "authorId": "2110707585",
+            "name": "Troy Lee"
+        },
+        {
+            "authorId": "2994279",
+            "name": "A. Shraibman"
+        },
+        {
+            "authorId": "1737804",
+            "name": "S. Vempala"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "22976249fe9602c4fbd163b3571d79af49abc630",
+            "title": "The Cover Number of a Matrix and its Algorithmic Applications"
+        },
+        {
+            "paperId": "46f4856c474cc75ee4ca77bd6ff4cdf07fdeb9a5",
+            "title": "Near-optimal deterministic algorithms for volume computation via M-ellipsoids"
+        },
+        {
+            "paperId": "51f71a0ca3059841db31c33e15c440c3205253b6",
+            "title": "Enumerative Lattice Algorithms in any Norm Via M-ellipsoid Coverings"
+        },
+        {
+            "paperId": "688d839672bb99838e2342ed64ab12051ef343bd",
+            "title": "Rank bounds for design matrices with applications to combinatorial geometry and locally correctable codes"
+        },
+        {
+            "paperId": "e1ada191566510f7efc2d4b7a76a3167bafe4c43",
+            "title": "Perturbed Identity Matrices Have High Rank: Proof and Applications"
+        },
+        {
+            "paperId": "65106cd008cd959d9335eebd0610f945b9a6cfcd",
+            "title": "An Approximation Algorithm for Approximation Rank"
+        },
+        {
+            "paperId": "d849c7c58892e9db6524738e41023d6abfdae694",
+            "title": "Complexity measures of sign matrices"
+        },
+        {
+            "paperId": "b9630fb1b9271a5344fbca3922308e76491e4938",
+            "title": "Halfspace Matrices"
+        },
+        {
+            "paperId": "cb06f8e6d3528122b962988f9373178f4b43da18",
+            "title": "On Computation and Communication with Small Bias"
+        },
+        {
+            "paperId": "219e97f70a84d9464c8e3b3bac2addea953cad34",
+            "title": "Lower bounds in communication complexity based on factorization norms"
+        },
+        {
+            "paperId": "257329c393b606d3b660aa831576fc3ab354fd52",
+            "title": "Simulated annealing in convex bodies and an O*(n4) volume algorithm"
+        },
+        {
+            "paperId": "1c625d24ab99f79f16a5333d0dbdf16bb0876fa1",
+            "title": "Games of fixed rank: a hierarchy of bimatrix games"
+        },
+        {
+            "paperId": "ea5ab0399bd179aeb2345b1c6780ece1fdb34271",
+            "title": "Additive approximation for edge-deletion problems"
+        },
+        {
+            "paperId": "2beda8e9db31679e5a656b46a97c114a7d6ce759",
+            "title": "Nash equilibria in random games"
+        },
+        {
+            "paperId": "33054d1dd83b36187b0d15e11162232a4cbc80e5",
+            "title": "Tensor decomposition and approximation schemes for constraint satisfaction problems"
+        },
+        {
+            "paperId": "7c3664f31c6a27cd715409af9eaf81d39766f990",
+            "title": "The Random Projection Method"
+        },
+        {
+            "paperId": "2e0abdd8ec26fdb9d9c964af98c25fae40791486",
+            "title": "The complexity of the covering radius problem"
+        },
+        {
+            "paperId": "2105cb7675b455f2f7e8b28c7cf70a84bbd177a3",
+            "title": "A proof of Alon's second eigenvalue conjecture and related problems"
+        },
+        {
+            "paperId": "181c0753d51a222f8b911363df593596f2fb7833",
+            "title": "Random sampling and approximation of MAX-CSPs"
+        },
+        {
+            "paperId": "e60d5d45a98a819d432b9e1d9264ea2b0abedf2b",
+            "title": "Playing large games using simple strategies"
+        },
+        {
+            "paperId": "e1df18e4e25198382f563573dd85f5bd34b75f8d",
+            "title": "Quantum search of spatial regions"
+        },
+        {
+            "paperId": "13ea05e6c5af98e109b66e656e95677476bf3880",
+            "title": "Limitations of Learning Via Embeddings in Euclidean Half Spaces"
+        },
+        {
+            "paperId": "b250329650428093e08a13d18c4bce4747ab52b7",
+            "title": "On the equidistribution of Hecke points"
+        },
+        {
+            "paperId": "b74b85f95b804c9af1e7d0d576f6d5d359922e04",
+            "title": "Quantum communication complexity of symmetric predicates"
+        },
+        {
+            "paperId": "47a1fca6d151fd45dfbffe00aff62cb6d172d5b7",
+            "title": "Estimating the Optimal Margins of Embeddings in Euclidean Half Spaces"
+        },
+        {
+            "paperId": "446a052d1541fdcf25bc97cfb8b764bb5b867492",
+            "title": "A linear lower bound on the unbounded error probabilistic communication complexity"
+        },
+        {
+            "paperId": "048d02623d94cc30dfbe3bda8ba75100735f33d8",
+            "title": "An algorithmic theory of learning: Robust concepts and random projection"
+        },
+        {
+            "paperId": "dc46c4068a2b01d394abd7466cc793662926c6ac",
+            "title": "Communication complexity lower bounds by polynomials"
+        },
+        {
+            "paperId": "662052837e597d7e2c6f76468ee7bccff5c7a3e8",
+            "title": "Quick Approximation to Matrices and Applications"
+        },
+        {
+            "paperId": "a5a86656448540a91ec06dbe017231d16862a502",
+            "title": "Scale-sensitive dimensions, uniform convergence, and learnability"
+        },
+        {
+            "paperId": "537befdd8d4cbc7754b0c0df83d9f7c7b58070ca",
+            "title": "The Hadamard Operator Norm of a Circulant and Applications"
+        },
+        {
+            "paperId": "be3ff4d44f635ef9545c44963bb3857d3796dfe6",
+            "title": "Geometric arguments yield better bounds for threshold circuits and distributed computing"
+        },
+        {
+            "paperId": "d5066fb9e9ee8c4a341c2372d8e0b2d6ddfbb15c",
+            "title": "Sampling and integration of near log-concave functions"
+        },
+        {
+            "paperId": "2e421f11e54f9b658ae2f3acf03ada31a52ec26f",
+            "title": "A random polynomial time algorithm for approximating the volume of convex bodies"
+        },
+        {
+            "paperId": "323b0c3dc98ac860fd6754ac04ad444e3586c05d",
+            "title": "Approximation of the sphere by polytopes having few vertices"
+        },
+        {
+            "paperId": "71ee3a57edce34de0e5a916d2128ec4580491fff",
+            "title": "Computing the volume is difficult"
+        },
+        {
+            "paperId": "16e91a2b92a5b83944956d5c8bf1bc2cdae7906e",
+            "title": "Geometrical realization of set systems and probabilistic communication complexity"
+        },
+        {
+            "paperId": "143902c455a5587d81da72fd5eecbea634f2ca0b",
+            "title": "Six standard deviations suffice"
+        },
+        {
+            "paperId": "7b2edb82d848e9e533529e3e47308dbb0a9f4d20",
+            "title": "Graph-Theoretic Arguments in Low-Level Complexity"
+        },
+        {
+            "paperId": "3bf8598d416630709e411532579344069ad611f0",
+            "title": "Lattice coverings of space"
+        },
+        {
+            "paperId": "f45a9c073b3acb5e7d3f0a4d73e37c8d96cc5314",
+            "title": "Lattice Coverings of Space: The Minkowski\u2013Hlawka Theorem"
+        },
+        {
+            "paperId": "e4651aabfc92309799369c424ee919376a44484b",
+            "title": "Lattice Coverings of Space with Convex Bodies"
+        },
+        {
+            "paperId": "35db25bf2678db473519edd31d5629a85b4273e1",
+            "title": "A Note on Coverings and Packings"
+        },
+        {
+            "paperId": "c26b5214362a547b8dd6f7ba3c8f32fad34b8faa",
+            "title": "A Mean Value Theorem in Geometry of Numbers"
+        },
+        {
+            "paperId": null,
+            "title": "On the inapproximability of the densest k-subgraph problem"
+        },
+        {
+            "paperId": "b12f48af91c904256e10306f3e7d56f49139ea95",
+            "title": "The Sign-Rank of AC0"
+        },
+        {
+            "paperId": "ac773c345d751659d1c249dd5f2d6fe7ab13afcb",
+            "title": "Detecting High Log-Densities \u2013 an O ( n 1 / 4 ) Approximation for Densest k -Subgraph"
+        },
+        {
+            "paperId": "9780e4bacef107bb0127c49bac8519ae0d9a986b",
+            "title": "The Sign-rank of Ac"
+        },
+        {
+            "paperId": "d69832a4ef7355c47806bf007206249914bdc652",
+            "title": "Simulated Annealing in Convex Bodies and an O ( n 4 ) Volume Algorithm"
+        },
+        {
+            "paperId": null,
+            "title": "and R"
+        },
+        {
+            "paperId": null,
+            "title": "Santosh Vempala and Adrian Vetta"
+        },
+        {
+            "paperId": null,
+            "title": "Comput. Syst. Sci"
+        },
+        {
+            "paperId": "b4caa5b6aa4248a47b24e29d3644229eca94d95e",
+            "title": "Matrix theory"
+        },
+        {
+            "paperId": "f77518089fb6c1f8947257b08c24b573a51429bf",
+            "title": "The volume of convex bodies and Banach space geometry"
+        },
+        {
+            "paperId": "c3d47d49e7c46d2543e92a26b964f42b25371ba4",
+            "title": "Geometric Algorithms and Combinatorial Optimization"
+        },
+        {
+            "paperId": null,
+            "title": "Extensions of Lipschitz maps into a Hilbert space"
+        },
+        {
+            "paperId": "a36b028d024bf358c4af1a5e1dc3ca0aed23b553",
+            "title": "Chervonenkis: On the uniform convergence of relative frequencies of events to their probabilities"
+        },
+        {
+            "paperId": "06c126b1238dc11cc1e36a3b876dab4044637fa1",
+            "title": "Lower bounds for approximation by nonlinear manifolds"
+        }
+    ]
+}

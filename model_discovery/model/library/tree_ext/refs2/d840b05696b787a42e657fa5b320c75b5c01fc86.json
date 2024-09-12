@@ -1,0 +1,98 @@
+{
+    "paperId": "d840b05696b787a42e657fa5b320c75b5c01fc86",
+    "externalIds": {
+        "DBLP": "journals/jcsc/BahnYHB09",
+        "MAG": "2127373103",
+        "DOI": "10.1142/S0218126609005046",
+        "CorpusId": 16321717
+    },
+    "title": "Parallel FFT Algorithms on Network-on-Chips",
+    "abstract": "This paper presents several parallel FFT algorithms with different degree of communication overhead for multiprocessors in network-on-chip (NoC) environment. Three different methods of parallel FFT are presented. One is the reference parallel FFT for comparison, and the other two with well-distributed computation as well as reduced communication overhead. By evenly distributing parallel computation tasks which uses data locality, the execution time for completing each stage of FFT can be reduced. Moreover, by optimizing data exchanges we minimize the communication overhead. Depending on the communication regularity, one can select appropriate parallel FFT algorithm. By using the simulation results of our cycle-accurate SystemC NoC model with a parameterizable 2-D mesh architecture, and the performance analysis in time as well as complexity, our proposed algorithms are shown to outperform other parallel FFT algorithm or high-speed DSP implementations.",
+    "venue": "International Conference on Information Technology: New Generations",
+    "year": 2008,
+    "referenceCount": 14,
+    "citationCount": 62,
+    "influentialCitationCount": 13,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Using the simulation results of the cycle-accurate SystemC NoC model with a parameterizable 2-D mesh architecture, and the performance analysis in time and complexity, the proposed algorithms are shown to outperform other parallel FFT algorithm or high-speed DSP implementations."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2867823",
+            "name": "J. Bahn"
+        },
+        {
+            "authorId": "2316727",
+            "name": "Jungsook Yang"
+        },
+        {
+            "authorId": "2219670271",
+            "name": "Wen-Hsiang Hu"
+        },
+        {
+            "authorId": "1689483",
+            "name": "N. Bagherzadeh"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "d17a74bc0294be4ad7d31bfc8e331ef375d6163f",
+            "title": "On Design and Analysis of a Feasible Network-on-Chip (NoC) Architecture"
+        },
+        {
+            "paperId": "7e7e49d3f75e85c267180afba5f5a2103ac2da85",
+            "title": "Parallel FFT computation with a CDMA-based network-on-chip"
+        },
+        {
+            "paperId": "b2507d4c5c87bff51e6adc18830ed3e434b5df2a",
+            "title": "Improving data locality in parallel fast Fourier transform algorithm for pricing financial derivatives"
+        },
+        {
+            "paperId": "551f848dc5e9a8345f5df79800c9e209b656992d",
+            "title": "Introduction to Parallel Computing"
+        },
+        {
+            "paperId": "89b03c9a9a34c81ed68b5eae76574c8b709742f2",
+            "title": "A parallel FFT on an MIMD machine"
+        },
+        {
+            "paperId": "30e4c372514c568955826abd84676c9392dd7e71",
+            "title": "FFTs in external or hierarchical memory"
+        },
+        {
+            "paperId": "cf734d3dd8bb94eb001165314cf1e32218aebc5a",
+            "title": "Performance Analysis of the FFT Algorithm on a Shared-Memory Parallel Architecture"
+        },
+        {
+            "paperId": "dd1e80ae0729583c21aa3f147dd3b004ff0f7b3e",
+            "title": "Parallelization and Performance Analysis of the Cooley&#8211;Tukey FFT Algorithm for Shared-Memory Architectures"
+        },
+        {
+            "paperId": "55ffdcab5daf1b87b870c62bfe70929694f7e189",
+            "title": "FFT algorithms for vector computers"
+        },
+        {
+            "paperId": "0e6beb95b5150ce99b108acdefabf70ccd3fee30",
+            "title": "An algorithm for the machine calculation of complex Fourier series"
+        },
+        {
+            "paperId": "654077020f836ac13485f4216d36b6d3c898888f",
+            "title": "Some New Parallel Fast Fourier Transform Algorithms"
+        },
+        {
+            "paperId": "603c13d83bdcab014f05901f669f1a8216f1db10",
+            "title": "Computational Frameworks for the Fast Fourier Transform"
+        },
+        {
+            "paperId": null,
+            "title": "FFT benchmark results"
+        },
+        {
+            "paperId": null,
+            "title": "TMS320C67x floating point DSPs C67x core benchmarks from texas instruments"
+        }
+    ]
+}

@@ -1,0 +1,259 @@
+{
+    "paperId": "3056add22b20e3361c38c0472d294a79d4031cb4",
+    "externalIds": {
+        "DBLP": "conf/icassp/ChanJLV16",
+        "MAG": "2327501763",
+        "ArXiv": "1508.01211",
+        "DOI": "10.1109/ICASSP.2016.7472621",
+        "CorpusId": 18165915
+    },
+    "title": "Listen, attend and spell: A neural network for large vocabulary conversational speech recognition",
+    "abstract": "We present Listen, Attend and Spell (LAS), a neural speech recognizer that transcribes speech utterances directly to characters without pronunciation models, HMMs or other components of traditional speech recognizers. In LAS, the neural network architecture subsumes the acoustic, pronunciation and language models making it not only an end-to-end trained system but an end-to-end model. In contrast to DNN-HMM, CTC and most other models, LAS makes no independence assumptions about the probability distribution of the output character sequences given the acoustic sequence. Our system has two components: a listener and a speller. The listener is a pyramidal recurrent network encoder that accepts filter bank spectra as inputs. The speller is an attention-based recurrent network decoder that emits each character conditioned on all previous characters, and the entire acoustic sequence. On a Google voice search task, LAS achieves a WER of 14.1% without a dictionary or an external language model and 10.3% with language model rescoring over the top 32 beams. In comparison, the state-of-the-art CLDNN-HMM model achieves a WER of 8.0% on the same set.",
+    "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+    "year": 2015,
+    "referenceCount": 54,
+    "citationCount": 2137,
+    "influentialCitationCount": 162,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Listen, Attend and Spell (LAS), a neural speech recognizer that transcribes speech utterances directly to characters without pronunciation models, HMMs or other components of traditional speech recognizers is presented."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "144333684",
+            "name": "William Chan"
+        },
+        {
+            "authorId": "3111912",
+            "name": "N. Jaitly"
+        },
+        {
+            "authorId": "2827616",
+            "name": "Quoc V. Le"
+        },
+        {
+            "authorId": "1689108",
+            "name": "O. Vinyals"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "dec2ccce1ecb34bab02c42c2dd18cb468470adf8",
+            "title": "Convolutional, Long Short-Term Memory, fully connected Deep Neural Networks"
+        },
+        {
+            "paperId": "878ba5458e9e51f0b341fd9117fa0b43ef4096d3",
+            "title": "End-to-end attention-based large vocabulary speech recognition"
+        },
+        {
+            "paperId": "97acdfb3d247f8250d865ef8a9169f06e40f138b",
+            "title": "EESEN: End-to-end speech recognition using deep RNN models and WFST-based decoding"
+        },
+        {
+            "paperId": "9fca2af9a0e3f2c5c3ed47abb3ebd21b7265ac2b",
+            "title": "Fast and accurate recurrent neural network acoustic models for speech recognition"
+        },
+        {
+            "paperId": "b624504240fa52ab76167acfe3156150ca01cf3b",
+            "title": "Attention-Based Models for Speech Recognition"
+        },
+        {
+            "paperId": "86311b182786bfde19446f6ded0854de973d4060",
+            "title": "A Neural Conversational Model"
+        },
+        {
+            "paperId": "df137487e20ba7c6e1e2b9a1e749f2a578b5ad99",
+            "title": "Scheduled Sampling for Sequence Prediction with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "dc96e329dc7b9d29aa8b2f1a44e8928b6977456a",
+            "title": "Sequence-to-sequence neural net models for grapheme-to-phoneme conversion"
+        },
+        {
+            "paperId": "fa7d8aadf92fa9761506780a72f8992ec8504fc0",
+            "title": "Learning acoustic frame labeling for speech recognition with recurrent neural networks"
+        },
+        {
+            "paperId": "5ffe28da9dd002b60a8c7bc0bf5fba14f6e6a750",
+            "title": "Grapheme-to-phoneme conversion using Long Short-Term Memory recurrent neural networks"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "47570e7f63e296f224a0e7f9a0d08b0de3cbaf40",
+            "title": "Grammar as a Foreign Language"
+        },
+        {
+            "paperId": "24741d280869ad9c60321f5ab6e5f01b7852507d",
+            "title": "Deep Speech: Scaling up end-to-end speech recognition"
+        },
+        {
+            "paperId": "1938624bb9b0f999536dcc8d8f519810bb4e1b3b",
+            "title": "On Using Very Large Target Vocabulary for Neural Machine Translation"
+        },
+        {
+            "paperId": "47d2dc34e1d02a8109f5c04bb6939725de23716d",
+            "title": "End-to-end Continuous Speech Recognition using Attention-based Recurrent NN: First Results"
+        },
+        {
+            "paperId": "d4dc1012d780e8e2547237eb5a6dc7b1bf47d2f0",
+            "title": "Show and tell: A neural image caption generator"
+        },
+        {
+            "paperId": "1956c239b3552e030db1b78951f64781101125ed",
+            "title": "Addressing the Rare Word Problem in Neural Machine Translation"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "0fa553cfa0cf3cbdf7a913aa2ae789a757dfb32f",
+            "title": "Towards End-To-End Speech Recognition with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "5522764282c85aea422f1c4dc92ff7e0ca6987bc",
+            "title": "A Clockwork RNN"
+        },
+        {
+            "paperId": "1149888d75af4ed5dffc25731b875651c3ccdeb2",
+            "title": "Hybrid speech recognition with Deep Bidirectional LSTM"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "b48168acba4a6ca33ad0f11bbf1c7d8106333822",
+            "title": "Sequence-discriminative training of deep neural networks"
+        },
+        {
+            "paperId": "24e555913192d8722f4a0240445bf73db71bd884",
+            "title": "Deep convolutional neural networks for LVCSR"
+        },
+        {
+            "paperId": "4177ec52d1b80ed57f2e72b0f9a42365f1a8598d",
+            "title": "Speech recognition with deep recurrent neural networks"
+        },
+        {
+            "paperId": "3127190433230b3dc1abd0680bb58dced4bcd90e",
+            "title": "Large Scale Distributed Deep Networks"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "7b4f3d0e4e2486a8d5d3f8e00549cf9a117bf88f",
+            "title": "Sequence Transduction with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "2446e8f2012f23176ff602be633c0ed2b956d66c",
+            "title": "Large vocabulary continuous speech recognition with context-dependent DBN-HMMS"
+        },
+        {
+            "paperId": "f4ba954b0412773d047dc41231c733de0c1f4926",
+            "title": "Conditional Random Fields: Probabilistic Models for Segmenting and Labeling Sequence Data"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "b13813b49f160e1a2010c44bd4fb3d09a28446e3",
+            "title": "Hierarchical Recurrent Neural Networks for Long-Term Dependencies"
+        },
+        {
+            "paperId": "cd0568b4faa03910ae3c07d00c627666f404305d",
+            "title": "Continuous speech recognition using multilayer perceptrons with hidden Markov models"
+        },
+        {
+            "paperId": "603bdbb17ba1f909280405a076455ac4f878fbf3",
+            "title": "Statistical Inference for Probabilistic Functions of Finite State Markov Chains"
+        },
+        {
+            "paperId": "55ee875b9039febd378a3f8ac4e3d7603f83d57c",
+            "title": "Lexicon-Free Conversational Speech Recognition with Neural Networks"
+        },
+        {
+            "paperId": "965c9aec5e68d49142c5af6a9f0a984f6c2c743a",
+            "title": "Sequence discriminative distributed training of long short-term memory recurrent neural networks"
+        },
+        {
+            "paperId": "c1b05fd52dca7ff0c4f45e29ec119d22e31a9ec3",
+            "title": "Autoregressive product of multi-frame predictions can improve the accuracy of hybrid models"
+        },
+        {
+            "paperId": null,
+            "title": "International Conference on Machine Learning"
+        },
+        {
+            "paperId": "ceda4e36d1e7409e0d2f8c852931da01b2307a26",
+            "title": "Integrating Deep Neural Networks into Structural Classification Approach based on Weighted Finite-State Transducers"
+        },
+        {
+            "paperId": "d2b62f77cb2864e465aa60bca6c26bb1d2f84963",
+            "title": "Acoustic Modeling Using Deep Belief Networks"
+        },
+        {
+            "paperId": "31868290adf1c000c611dfc966b514d5a34e8d23",
+            "title": "FUNDAMENTAL TECHNOLOGIES IN MODERN SPEECH RECOGNITION Digital Object Identifier 10.1109/MSP.2012.2205597"
+        },
+        {
+            "paperId": "a4eb9f4fad5c5a1935c6d0532e2c765ee29b0b37",
+            "title": "Application of Pretrained Deep Neural Networks to Large Vocabulary Speech Recognition"
+        },
+        {
+            "paperId": null,
+            "title": "Ke Yang, and Andrew Y. Ng. Large Scale Distributed Deep Networks. In Neural Information Processing Systems"
+        },
+        {
+            "paperId": "3a1a2cff2b70fb84a7ca7d97f8adcc5855851795",
+            "title": "The Kaldi Speech Recognition Toolkit"
+        },
+        {
+            "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+            "title": "Recurrent neural network based language model"
+        },
+        {
+            "paperId": "f37cfdc4520c56c1eaf87cee5ec2a4028ceaa9c5",
+            "title": "Deep Belief Networks for phone recognition"
+        },
+        {
+            "paperId": "f42b865e20e61a954239f421b42007236e671f19",
+            "title": "GradientBased Learning Applied to Document Recognition"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "261a056f8b21918e8616a429b2df6e1d5d33be41",
+            "title": "Connectionist Temporal Classi\ufb01cation: Labelling Unsegmented Sequence Data with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "845ee9838c1f5bf63b7db2c95ec5d27af14a4e02",
+            "title": "Connectionist Temporal Classi\ufb01cation: Labelling Unsegmented Sequences with Recurrent Neural Networks"
+        },
+        {
+            "paperId": null,
+            "title": "The spelling variants of \" aaa \" vs \" triple a \" produces different attention distributions, both spelling variants appear in our top beams. The ground truth is: \" aaa emergency roadside service"
+        },
+        {
+            "paperId": null,
+            "title": "A Alignment Examples In this section, we give additional visualization examples of our model and the attention distribution"
+        }
+    ]
+}

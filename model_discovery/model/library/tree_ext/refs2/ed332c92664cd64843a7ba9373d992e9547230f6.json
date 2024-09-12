@@ -1,0 +1,134 @@
+{
+    "paperId": "ed332c92664cd64843a7ba9373d992e9547230f6",
+    "externalIds": {
+        "ArXiv": "1606.01164",
+        "MAG": "2962940432",
+        "DBLP": "journals/corr/KrotovH16",
+        "CorpusId": 6582795
+    },
+    "title": "Dense Associative Memory for Pattern Recognition",
+    "abstract": "A model of associative memory is studied, which stores and reliably retrieves many more patterns than the number of neurons in the network. We propose a simple duality between this dense associative memory and neural networks commonly used in deep learning. On the associative memory side of this duality, a family of models that smoothly interpolates between two limiting cases can be constructed. One limit is referred to as the feature-matching mode of pattern recognition, and the other one as the prototype regime. On the deep learning side of the duality, this family corresponds to feedforward neural networks with one hidden layer and various activation functions, which transmit the activities of the visible neurons to the hidden layer. This family of activation functions includes logistics, rectified linear units, and rectified polynomials of higher degrees. The proposed duality makes it possible to apply energy-based intuition from associative memory to analyze computational properties of neural networks with unusual activation functions - the higher rectified polynomials which until now have not been used in deep learning. The utility of the dense memories is illustrated for two test cases: the logical gate XOR and the recognition of handwritten digits from the MNIST data set.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2016,
+    "referenceCount": 25,
+    "citationCount": 263,
+    "influentialCitationCount": 28,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The proposed duality makes it possible to apply energy-based intuition from associative memory to analyze computational properties of neural networks with unusual activation functions - the higher rectified polynomials which until now have not been used in deep learning."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145753925",
+            "name": "D. Krotov"
+        },
+        {
+            "authorId": "3219867",
+            "name": "J. Hopfield"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "cddf8a10c7f48df67a797808a615be0d4acf9a8e",
+            "title": "Semi-supervised Learning with Ladder Networks"
+        },
+        {
+            "paperId": "0453df0ea663e714de05125a680f981de547b8ef",
+            "title": "The Potential Energy of an Autoencoder"
+        },
+        {
+            "paperId": "bee044c8e8903fb67523c1f8c105ab4718600cdb",
+            "title": "Explaining and Harnessing Adversarial Examples"
+        },
+        {
+            "paperId": "38f35dd624cd1cf827416e31ac5e0e0454028eca",
+            "title": "Regularization of Neural Networks using DropConnect"
+        },
+        {
+            "paperId": "edaceb0de13045f96fbbaae01478695d66256944",
+            "title": "On autoencoder scoring"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "67107f78a84bdb2411053cb54e94fa226eea6d8e",
+            "title": "Deep Sparse Rectifier Neural Networks"
+        },
+        {
+            "paperId": "a538b05ebb01a40323997629e171c91aa28b8e2f",
+            "title": "Rectified Linear Units Improve Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": "8978cf7574ceb35f4c3096be768c7547b28a35d0",
+            "title": "A Fast Learning Algorithm for Deep Belief Nets"
+        },
+        {
+            "paperId": "5562a56da3a96dae82add7de705e2bd841eb00fc",
+            "title": "Best practices for convolutional neural networks applied to visual document analysis"
+        },
+        {
+            "paperId": "6c6a89af8b5721b2c8cf2aed26a535da3948b5d0",
+            "title": "Capacities of multiconnected memory models"
+        },
+        {
+            "paperId": "d51794b7340a06ead71a369deb4ae6ba3c40a8c0",
+            "title": "Storage capacity of generalized networks."
+        },
+        {
+            "paperId": "48d3739bfce60d4a0040bfb2bbe5d88f858b8c91",
+            "title": "Multiconnected neural network models"
+        },
+        {
+            "paperId": "d5db1cc4a5ea1fcf017ceac7f07496292f37a9a2",
+            "title": "The capacity of the Hopfield associative memory"
+        },
+        {
+            "paperId": "00978ad20811898f80cea78f39973e9071f7085b",
+            "title": "Number of stable points for spin-glasses and neural networks of higher orders."
+        },
+        {
+            "paperId": "93daae771e02ae6d9f2259593d10ba34f2c6c051",
+            "title": "High order correlation model for associative memory"
+        },
+        {
+            "paperId": "c6afc0dc36482d6456a30de562b2e6cbbfe90beb",
+            "title": "Nonlinear discriminant functions and associative memories"
+        },
+        {
+            "paperId": "b0f93cf5b155e9deccec9ddd6978fb3b4775878b",
+            "title": "Storing infinite numbers of patterns in a spin-glass model of neural networks."
+        },
+        {
+            "paperId": "98b4d4e24aab57ab4e1124ff8106909050645cfa",
+            "title": "Neural networks and physical systems with emergent collective computational abilities."
+        },
+        {
+            "paperId": "0de8234e6935ced7ea838de585b4236810f1b837",
+            "title": "Perceptrons An Introduction To Computational Geometry"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "7fc604e1a3e45cd2d2742f96d62741930a363efa",
+            "title": "A Tutorial on Energy-Based Learning"
+        },
+        {
+            "paperId": "7c59908c946a4157abc030cdbe2b63d08ba97db3",
+            "title": "Supporting Online Material for Reducing the Dimensionality of Data with Neural Networks"
+        },
+        {
+            "paperId": "f3e2cfad939b7e4f0ea7783883afa997e48920c1",
+            "title": "Associative recall of memory without errors."
+        },
+        {
+            "paperId": "266b7e11eae0a3b4e9bccc47378a3974a2c2acf8",
+            "title": "Perceptrons: An Introduction to Computational Geometry"
+        }
+    ]
+}

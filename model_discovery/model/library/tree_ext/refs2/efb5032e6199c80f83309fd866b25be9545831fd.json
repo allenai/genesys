@@ -1,0 +1,266 @@
+{
+    "paperId": "efb5032e6199c80f83309fd866b25be9545831fd",
+    "externalIds": {
+        "ArXiv": "1504.04788",
+        "DBLP": "journals/corr/ChenWTWC15",
+        "MAG": "2952432176",
+        "CorpusId": 543597
+    },
+    "title": "Compressing Neural Networks with the Hashing Trick",
+    "abstract": "As deep nets are increasingly used in applications suited for mobile devices, a fundamental dilemma becomes apparent: the trend in deep learning is to grow models to absorb ever-increasing data set sizes; however mobile devices are designed with very little memory and cannot store such large models. We present a novel network architecture, HashedNets, that exploits inherent redundancy in neural networks to achieve drastic reductions in model sizes. HashedNets uses a low-cost hash function to randomly group connection weights into hash buckets, and all connections within the same hash bucket share a single parameter value. These parameters are tuned to adjust to the HashedNets weight sharing architecture with standard backprop during training. Our hashing procedure introduces no additional memory overhead, and we demonstrate on several benchmark data sets that HashedNets shrink the storage requirements of neural networks substantially while mostly preserving generalization performance.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2015,
+    "referenceCount": 55,
+    "citationCount": 1158,
+    "influentialCitationCount": 71,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents a novel network architecture, HashedNets, that exploits inherent redundancy in neural networks to achieve drastic reductions in model sizes, and demonstrates on several benchmark data sets that HashingNets shrink the storage requirements of neural networks substantially while mostly preserving generalization performance."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": null,
+            "name": "Wenlin Chen"
+        },
+        {
+            "authorId": "152983984",
+            "name": "James T. Wilson"
+        },
+        {
+            "authorId": "2342481",
+            "name": "Stephen Tyree"
+        },
+        {
+            "authorId": "7446832",
+            "name": "Kilian Q. Weinberger"
+        },
+        {
+            "authorId": "2116664181",
+            "name": "Yixin Chen"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "0c908739fbff75f03469d13d4a1a07de3414ee19",
+            "title": "Distilling the Knowledge in a Neural Network"
+        },
+        {
+            "paperId": "b7cf49e30355633af2db19f35189410c8515e91f",
+            "title": "Deep Learning with Limited Numerical Precision"
+        },
+        {
+            "paperId": "6c3ab2d55767f45b2de8381f573f12346428a0ac",
+            "title": "Compressed Support Vector Machines"
+        },
+        {
+            "paperId": "d8c35c2c39fdd2ec6af37ddc8c51deb396aefef8",
+            "title": "Low precision arithmetic for deep learning"
+        },
+        {
+            "paperId": "851c27d7cdb74b0b21bd84a9333bca106f486713",
+            "title": "Low precision storage for deep learning"
+        },
+        {
+            "paperId": "1b82d54e9a3b06c603d7987ba3ecf437425f6330",
+            "title": "Training deep neural networks with low precision multiplications"
+        },
+        {
+            "paperId": "55e022fb7581bb9e1fce678d21fb25ffbb3fbb88",
+            "title": "Deep visual-semantic alignments for generating image descriptions"
+        },
+        {
+            "paperId": "d4dc1012d780e8e2547237eb5a6dc7b1bf47d2f0",
+            "title": "Show and tell: A neural image caption generator"
+        },
+        {
+            "paperId": "203e56f3e1afe0b9b8fee590d66034b4780877a8",
+            "title": "Fast flux discriminant for large-scale sparse nonlinear classification"
+        },
+        {
+            "paperId": "5918ae75d71ff737ed002a0d2d4d720d8a94c6b6",
+            "title": "Bayesian Optimization with Inequality Constraints"
+        },
+        {
+            "paperId": "dcb75b83cfeaddc6e0a596b9d9761c63935ef013",
+            "title": "Marginalized Denoising Auto-encoders for Nonlinear Representations"
+        },
+        {
+            "paperId": "e5ae8ab688051931b4814f6d32b18391f8d1fa8d",
+            "title": "Exploiting Linear Structure Within Convolutional Networks for Efficient Evaluation"
+        },
+        {
+            "paperId": "6270baedeba28001cd1b563a199335720d6e0fe0",
+            "title": "CNN Features Off-the-Shelf: An Astounding Baseline for Recognition"
+        },
+        {
+            "paperId": "7a6fd5573d2679506765d461ec4892fd4017b745",
+            "title": "Learning Ordered Representations with Nested Dropout"
+        },
+        {
+            "paperId": "1109b663453e78a59e4f66446d71720ac58cec25",
+            "title": "OverFeat: Integrated Recognition, Localization and Detection using Convolutional Networks"
+        },
+        {
+            "paperId": "d770060812fb646b3846a7d398a3066145b5e3c8",
+            "title": "Do Deep Nets Really Need to be Deep?"
+        },
+        {
+            "paperId": "1a2a770d23b4a171fa81de62a78a3deb0588f238",
+            "title": "Visualizing and Understanding Convolutional Networks"
+        },
+        {
+            "paperId": "2f4df08d9072fc2ac181b7fced6a245315ce05c8",
+            "title": "Rich Feature Hierarchies for Accurate Object Detection and Semantic Segmentation"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "b8de958fead0d8a9619b55c7299df3257c624a96",
+            "title": "DeCAF: A Deep Convolutional Activation Feature for Generic Visual Recognition"
+        },
+        {
+            "paperId": "d1208ac421cf8ff67b27d93cd19ae42b8d596f95",
+            "title": "Deep learning with COTS HPC systems"
+        },
+        {
+            "paperId": "eff61216e0136886e1158625b1e5a88ed1a7cbce",
+            "title": "Predicting Parameters in Deep Learning"
+        },
+        {
+            "paperId": "94cb8e3a285b64e95bd199bbdef26330754a640f",
+            "title": "A Low-Power Processor With Configurable Embedded Machine-Learning Accelerators for High-Order and Adaptive Analysis of Medical-Sensor Signals"
+        },
+        {
+            "paperId": "4177ec52d1b80ed57f2e72b0f9a42365f1a8598d",
+            "title": "Speech recognition with deep recurrent neural networks"
+        },
+        {
+            "paperId": "0abb49fe138e8fb7332c26b148a48d0db39724fc",
+            "title": "Stochastic Pooling for Regularization of Deep Convolutional Neural Networks"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "2e2089ae76fe914706e6fa90081a79c8fe01611e",
+            "title": "Practical Bayesian Optimization of Machine Learning Algorithms"
+        },
+        {
+            "paperId": "72e93aa6767ee683de7f001fa72f1314e40a8f35",
+            "title": "Building high-level features using large scale unsupervised learning"
+        },
+        {
+            "paperId": "be9a17321537d9289875fe475b71f4821457b435",
+            "title": "An Analysis of Single-Layer Networks in Unsupervised Feature Learning"
+        },
+        {
+            "paperId": "1dbc1238409549ae6872a744b7b2ff1da5822053",
+            "title": "A reliable effective terascale linear learning system"
+        },
+        {
+            "paperId": "6f4065f0cc99a0839b0248ffb4457e5f0277b30d",
+            "title": "Domain Adaptation for Large-Scale Sentiment Classification: A Deep Learning Approach"
+        },
+        {
+            "paperId": "67107f78a84bdb2411053cb54e94fa226eea6d8e",
+            "title": "Deep Sparse Rectifier Neural Networks"
+        },
+        {
+            "paperId": "be53d4def5e0601f2416e9345babc7ef1b30a664",
+            "title": "Deep Belief Networks using discriminative features for phone recognition"
+        },
+        {
+            "paperId": "82b9099ddf092463f497bd48bb112c46ca52c4d1",
+            "title": "High-Performance Neural Networks for Visual Object Classification"
+        },
+        {
+            "paperId": "b4d48a8d572aaab9d78e6290e1b63cca524c819d",
+            "title": "Speech Recognition for Mobile Devices at Google"
+        },
+        {
+            "paperId": "a538b05ebb01a40323997629e171c91aa28b8e2f",
+            "title": "Rectified Linear Units Improve Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": "9a2aa2aee8926ec07a4a76324b7665f678d3517c",
+            "title": "Hash Kernels for Structured Data"
+        },
+        {
+            "paperId": "4e1f37dbbde87067db80379a2bcec4fa9825ee5b",
+            "title": "Augmented Smartphone Applications Through Clone Cloud Execution"
+        },
+        {
+            "paperId": "00bbfde6af97ce5efcf86b3401d265d42a95603d",
+            "title": "Feature hashing for large scale multitask learning"
+        },
+        {
+            "paperId": "e83edee5fa7644258fb9e361b697b69fea37daed",
+            "title": "Junior: The Stanford entry in the Urban Challenge"
+        },
+        {
+            "paperId": "3fb1c64b763d27fba2a18c923637c5ea0e048e3b",
+            "title": "Small Statistical Models by Random Feature Mixing"
+        },
+        {
+            "paperId": "41fef1a197fab9684a4608b725d3ae72e1ab4b39",
+            "title": "Sparse Feature Learning for Deep Belief Networks"
+        },
+        {
+            "paperId": "b8012351bc5ebce4a4b3039bbbba3ce393bc3315",
+            "title": "An empirical evaluation of deep architectures on problems with many factors of variation"
+        },
+        {
+            "paperId": "30c9bb327b7f2b9f1d1e5b69b9d0c97b410948d9",
+            "title": "Model compression"
+        },
+        {
+            "paperId": "5562a56da3a96dae82add7de705e2bd841eb00fc",
+            "title": "Best practices for convolutional neural networks applied to visual document analysis"
+        },
+        {
+            "paperId": "de75e4e15e22d4376300e5c968e2db44be29ac9e",
+            "title": "Simplifying Neural Networks by Soft Weight-Sharing"
+        },
+        {
+            "paperId": "e50a316f97c9a405aa000d883a633bd5707f1a34",
+            "title": "Term-Weighting Approaches in Automatic Text Retrieval"
+        },
+        {
+            "paperId": "6602985bd326d9996c68627b56ed389e2c90fd08",
+            "title": "Generalization of back-propagation to recurrent neural networks."
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "b87274e6d9aa4e6ba5148898aa92941617d2b6ed",
+            "title": "Efficient BackProp"
+        },
+        {
+            "paperId": "31868290adf1c000c611dfc966b514d5a34e8d23",
+            "title": "FUNDAMENTAL TECHNOLOGIES IN MODERN SPEECH RECOGNITION Digital Object Identifier 10.1109/MSP.2012.2205597"
+        },
+        {
+            "paperId": null,
+            "title": "Client vs. server architecture: Why google voice search is also much faster than siri @ON- LINE"
+        },
+        {
+            "paperId": "3449b65008b27f6e60a73d80c1fd990f0481126b",
+            "title": "Torch7: A Matlab-like Environment for Machine Learning"
+        },
+        {
+            "paperId": "83b6755242f1cff6bacf270f65b4626d4d118f32",
+            "title": "Neural Networks for Pattern Recognition"
+        },
+        {
+            "paperId": "e7297db245c3feb1897720b173a59fe7e36babb7",
+            "title": "Optimal Brain Damage"
+        }
+    ]
+}

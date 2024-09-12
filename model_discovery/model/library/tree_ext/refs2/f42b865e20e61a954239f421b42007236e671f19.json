@@ -1,0 +1,35 @@
+{
+    "paperId": "f42b865e20e61a954239f421b42007236e671f19",
+    "externalIds": {
+        "MAG": "2504108613",
+        "DOI": "10.1109/9780470544976.CH9",
+        "CorpusId": 64294544
+    },
+    "title": "GradientBased Learning Applied to Document Recognition",
+    "abstract": "Multilayer Neural Networks trained with the backpropagation algorithm constitute the best example of a successful Gradient-Based Learning technique. Given an appropriate network architecture, Gradient-Based Learning algorithms can be used to synthesize a complex decision surface that can classify high-dimensional patterns such as handwritten characters, with minimal preprocessing. This paper reviews various methods applied to handwritten character recognition and compares them on a standard handwritten digit recognition task. Convolutional Neural Networks, that are specifically designed to deal with the variability of 2D shapes, are shown to outperform all other techniques. Real-life document recognition systems are composed of multiple modules including field extraction, segmentation, recognition, and language modeling. A new learning paradigm, called Graph Transformer Networks (GTN), allows such multi-module systems to be trained globally using Gradient-Based methods so as to minimize an overall performance measure. Two systems for on-line handwriting recognition are described. Experiments demonstrate the advantage of global training, and the flexibility of Graph Transformer Networks. A Graph Transformer Network for reading bank check is also described. It uses Convolutional Neural Network character recognizers combined with global training techniques to provides record accuracy on business and personal checks. It is deployed commercially and reads several million checks per day.",
+    "venue": "",
+    "year": 2001,
+    "referenceCount": 0,
+    "citationCount": 4355,
+    "influentialCitationCount": 976,
+    "openAccessPdf": {
+        "url": "https://hal.science/hal-03926082/file/lecun1998.pdf",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Various methods applied to handwritten character recognition are reviewed and compared and Convolutional Neural Networks, that are specifically designed to deal with the variability of 2D shapes, are shown to outperform all other techniques."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1735300",
+            "name": "S. Haykin"
+        },
+        {
+            "authorId": "1713858",
+            "name": "B. Kosko"
+        }
+    ],
+    "references": []
+}

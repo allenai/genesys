@@ -1,0 +1,210 @@
+{
+    "paperId": "dbb6ded623159c867fbeca0772db7b2eb9489523",
+    "externalIds": {
+        "ArXiv": "1506.02025",
+        "MAG": "603908379",
+        "DBLP": "conf/nips/JaderbergSZK15",
+        "CorpusId": 6099034
+    },
+    "title": "Spatial Transformer Networks",
+    "abstract": "Convolutional Neural Networks define an exceptionally powerful class of models, but are still limited by the lack of ability to be spatially invariant to the input data in a computationally and parameter efficient manner. In this work we introduce a new learnable module, the Spatial Transformer, which explicitly allows the spatial manipulation of data within the network. This differentiable module can be inserted into existing convolutional architectures, giving neural networks the ability to actively spatially transform feature maps, conditional on the feature map itself, without any extra training supervision or modification to the optimisation process. We show that the use of spatial transformers results in models which learn invariance to translation, scale, rotation and more generic warping, resulting in state-of-the-art performance on several benchmarks, and for a number of classes of transformations.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2015,
+    "referenceCount": 42,
+    "citationCount": 6873,
+    "influentialCitationCount": 716,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces a new learnable module, the Spatial Transformer, which explicitly allows the spatial manipulation of data within the network, and can be inserted into existing convolutional architectures, giving neural networks the ability to actively spatially transform feature maps."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3093886",
+            "name": "Max Jaderberg"
+        },
+        {
+            "authorId": "34838386",
+            "name": "K. Simonyan"
+        },
+        {
+            "authorId": "1688869",
+            "name": "Andrew Zisserman"
+        },
+        {
+            "authorId": "2645384",
+            "name": "K. Kavukcuoglu"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "aec822f56ff1794c32f5826cfb266f9b477f4df8",
+            "title": "Deep filter banks for texture recognition and segmentation"
+        },
+        {
+            "paperId": "1ab237d7eb9dec8416947fce0b0cbf6c688a7229",
+            "title": "Contextual Action Recognition with R*CNN"
+        },
+        {
+            "paperId": "e704f7b9f0b7218715888b7b6f23960245588d02",
+            "title": "Neural Activation Constellations: Unsupervised Part Model Discovery with Convolutional Networks"
+        },
+        {
+            "paperId": "3d3f789a56dca288b2c8e23ef047a2b342184950",
+            "title": "Bilinear CNN Models for Fine-Grained Visual Recognition"
+        },
+        {
+            "paperId": "5aa26299435bdf7db874ef1640a6c3b5a4a2c394",
+            "title": "FaceNet: A unified embedding for face recognition and clustering"
+        },
+        {
+            "paperId": "a2785f66c20fbdf30ec26c0931584c6d6a0f4fca",
+            "title": "DRAW: A Recurrent Neural Network For Image Generation"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "1420e02a8cf5d8c4ee0a966086aefa51a1c637c1",
+            "title": "Transformation Properties of Learned Visual Representations"
+        },
+        {
+            "paperId": "7845f1d3e796b5704d4bd37a945e0cf3fb8bbf1f",
+            "title": "Multiple Object Recognition with Visual Attention"
+        },
+        {
+            "paperId": "6ef259c2f6d50373abfec14fcb8fa924f7b7af0b",
+            "title": "Attention for Fine-Grained Categorization"
+        },
+        {
+            "paperId": "b9bc7f799ad6198ca085077710f31b77bd3ce77b",
+            "title": "Locally Scale-Invariant Convolutional Neural Networks"
+        },
+        {
+            "paperId": "4f939bb8dd6a660a8f6851bf8ad2ce8a55c974ae",
+            "title": "Deep Symmetry Networks"
+        },
+        {
+            "paperId": "b64601d509711468f5d085261d463846f36785b2",
+            "title": "Efficient and accurate approximations of nonlinear convolutional networks"
+        },
+        {
+            "paperId": "6fc6803df5f9ae505cae5b2f178ade4062c768d0",
+            "title": "Fully convolutional networks for semantic segmentation"
+        },
+        {
+            "paperId": "b712ccc32236afe9f8a13d9871911b30aa069e2b",
+            "title": "Optimizing Neural Networks that Generate Iimages"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "98bb60748eb8ef7a671cdd22faa87e377fd13060",
+            "title": "Part-Based R-CNNs for Fine-Grained Category Detection"
+        },
+        {
+            "paperId": "70155488a49d51755c1dfea728e03a6dd72703a1",
+            "title": "Deep Networks with Internal Selective Attention through Feedback Connections"
+        },
+        {
+            "paperId": "23bdd2d82068419bf4923e6a0198fc0fa4468807",
+            "title": "Bird Species Categorization Using Pose Normalized Deep Convolutional Nets"
+        },
+        {
+            "paperId": "12ecc2d786080f638a01b9999518e9386baa157d",
+            "title": "Joint Training of a Convolutional Network and a Graphical Model for Human Pose Estimation"
+        },
+        {
+            "paperId": "c0b8aad30d8dfd08535f361864f064b2fbbc9a75",
+            "title": "Synthetic Data and Artificial Neural Networks for Natural Scene Text Recognition"
+        },
+        {
+            "paperId": "67dccc9a856b60bdc4d058d83657a089b8ad4486",
+            "title": "Two-Stream Convolutional Networks for Action Recognition in Videos"
+        },
+        {
+            "paperId": "a0574b894e15c429f1f11b38bff5ab42d2eedc95",
+            "title": "Introduction to computer graphics"
+        },
+        {
+            "paperId": "b3d8dffb73bc93de239998548386c84177caa2ad",
+            "title": "Multi-digit Number Recognition from Street View Imagery using Deep Convolutional Neural Networks"
+        },
+        {
+            "paperId": "67fc0ec1d26f334b05fe66d2b7e0767b60fb73b6",
+            "title": "Scalable Object Detection Using Deep Neural Networks"
+        },
+        {
+            "paperId": "2f4df08d9072fc2ac181b7fced6a245315ce05c8",
+            "title": "Rich Feature Hierarchies for Accurate Object Detection and Semantic Segmentation"
+        },
+        {
+            "paperId": "0060745e006c5f14ec326904119dca19c6545e51",
+            "title": "Improving neural networks by preventing co-adaptation of feature detectors"
+        },
+        {
+            "paperId": "8f7214bafbed6d4dfd397c35315c7275d5608f61",
+            "title": "Learning Invariant Representations with Local Transformations"
+        },
+        {
+            "paperId": "30e2e85b7cf2e85f8965ec74b03f569caa2b5cdd",
+            "title": "Invariant Scattering Convolution Networks"
+        },
+        {
+            "paperId": "c069629a51f6c1c301eb20ed77bc6b586c24ce32",
+            "title": "The Caltech-UCSD Birds-200-2011 Dataset"
+        },
+        {
+            "paperId": "20f0357688876fa4662f806f985779dce6e24f3c",
+            "title": "Transforming Auto-Encoders"
+        },
+        {
+            "paperId": "bc6dff14a130c57a91d5a21339c23471faf1d46f",
+            "title": "Et al"
+        },
+        {
+            "paperId": "107bb3bec71880d3dd50ed90817f11b1700d61a4",
+            "title": "Fast, Large-Scale Transformation-Invariant Clustering"
+        },
+        {
+            "paperId": "427e2415d0d8f846cdabba34842162f7bab6af02",
+            "title": "Principal Warps: Thin-Plate Splines and the Decomposition of Deformations"
+        },
+        {
+            "paperId": "5b87030ad4ef55fa7c563938217d87b840c2a158",
+            "title": "A Parallel Computation that Assigns Canonical Object-Based Frames of Reference"
+        },
+        {
+            "paperId": "02227c94dd41fe0b439e050d377b0beb5d427cda",
+            "title": "Reading Digits in Natural Images with Unsupervised Feature Learning"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "dafb111b23786058bd8943a6f1a5b4afc68cb3b3",
+            "title": "Learning to Generate Artificial Fovea Trajectories for Target Detection"
+        },
+        {
+            "paperId": null,
+            "title": "The results are given in Table 4 (left) Due to the complexity of this task, the FCN reaches a minimum error of 47.7%, however a CNN with max-pooling layers is far more accurate with 14"
+        }
+    ]
+}

@@ -1,0 +1,137 @@
+{
+    "paperId": "ed2f7914bf51168842f33618d50f1e5f21622548",
+    "externalIds": {
+        "MAG": "1967934524",
+        "DBLP": "conf/icml/ZhangTK08",
+        "DOI": "10.1145/1390156.1390311",
+        "CorpusId": 10651609
+    },
+    "title": "Improved Nystr\u00f6m low-rank approximation and error analysis",
+    "abstract": "Low-rank matrix approximation is an effective tool in alleviating the memory and computational burdens of kernel methods and sampling, as the mainstream of such algorithms, has drawn considerable attention in both theory and practice. This paper presents detailed studies on the Nystr\u00f6m sampling scheme and in particular, an error analysis that directly relates the Nystr\u00f6m approximation quality with the encoding powers of the landmark points in summarizing the data. The resultant error bound suggests a simple and efficient sampling scheme, the k-means clustering algorithm, for Nystr\u00f6m low-rank approximation. We compare it with state-of-the-art approaches that range from greedy schemes to probabilistic sampling. Our algorithm achieves significant performance gains in a number of supervised/unsupervised learning tasks including kernel PCA and least squares SVM.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2008,
+    "referenceCount": 24,
+    "citationCount": 331,
+    "influentialCitationCount": 41,
+    "openAccessPdf": {
+        "url": "http://www.cse.ust.hk/~twinsen/nystrom.pdf",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An error analysis that directly relates the Nystr\u00f6m approximation quality with the encoding powers of the landmark points in summarizing the data is presented, and the resultant error bound suggests a simple and efficient sampling scheme, the k-means clustering algorithm, for NyStr\u00f6m low-rank approximation."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2152986588",
+            "name": "Kai Zhang"
+        },
+        {
+            "authorId": "1807998",
+            "name": "I. Tsang"
+        },
+        {
+            "authorId": "145193332",
+            "name": "J. Kwok"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "9975d23bc1204693d7c2ae76aadae9fef2351127",
+            "title": "Block-quantized kernel matrix for fast spectral embedding"
+        },
+        {
+            "paperId": "56c9ddaca9bf54f5e491ce11b71af1e19b5ea2ce",
+            "title": "Predictive low-rank decomposition for kernel methods"
+        },
+        {
+            "paperId": "11e6b5a30a921e6028662105148fac41a76f0500",
+            "title": "On the Nystr\u00f6m Method for Approximating a Gram Matrix for Improved Kernel-Based Learning"
+        },
+        {
+            "paperId": "9b8d8f2fb88e03f8f3ad01efbfef52718b70d104",
+            "title": "Using the Triangle Inequality to Accelerate k-Means"
+        },
+        {
+            "paperId": "8d4f4601940d5b13455541a643a39538bb54b6f3",
+            "title": "Kernel independent component analysis"
+        },
+        {
+            "paperId": "848a25a41cba56ca180ca79c6ba3470cc3b8f143",
+            "title": "An Efficient k-Means Clustering Algorithm: Analysis and Implementation"
+        },
+        {
+            "paperId": "0db7af02be7cbadc029f9104a8c784d02de42df7",
+            "title": "Efficient SVM Training Using Low-Rank Kernel Representations"
+        },
+        {
+            "paperId": "6700cbf389ae198190e672a3e5995b32f7a6d7c9",
+            "title": "An Experimental Evaluation of a Monte-Carlo Algorithm for Singular Value Decomposition"
+        },
+        {
+            "paperId": "9fe4e58bcf31d528a30f15bd0b180fbe298f91ef",
+            "title": "Fast computation of low rank matrix approximations"
+        },
+        {
+            "paperId": "9d16c547d15a08091e68c86a99731b14366e3f0d",
+            "title": "Laplacian Eigenmaps and Spectral Techniques for Embedding and Clustering"
+        },
+        {
+            "paperId": "9ded923a192ffbf13e4466c6b7d2ede55724b716",
+            "title": "Sparse Greedy Matrix Approximation for Machine Learning"
+        },
+        {
+            "paperId": "763f4b3c0e830b92a2d6af3c547fcc4e52b5225e",
+            "title": "The Effect of the Input Density Distribution on Kernel-based Classifiers"
+        },
+        {
+            "paperId": "ccce1cf96f641b3581fba6f4ce2545f4135a15e3",
+            "title": "Least Squares Support Vector Machine Classifiers"
+        },
+        {
+            "paperId": "bbc531f6ca5e83c6fa507bdf6399ecf76ef2e614",
+            "title": "Fast Monte-Carlo algorithms for finding low-rank approximations"
+        },
+        {
+            "paperId": "3f600e6c6cf93e78c9e6e690443d6d22c4bf18b9",
+            "title": "Nonlinear Component Analysis as a Kernel Eigenvalue Problem"
+        },
+        {
+            "paperId": "fecf8f9b8f09c3c87def62a66485558e92065737",
+            "title": "The Numerical Treatment of Integral Equations"
+        },
+        {
+            "paperId": "8bb257fa1311abe601c3c2270610ecf50aeea89d",
+            "title": "Greedy Spectral Embedding"
+        },
+        {
+            "paperId": "1230d7cc7d5f81b61d7ae532508d27f513bcb983",
+            "title": "FastMap, MetricMap, and Landmark MDS are all Nystrom Algorithms"
+        },
+        {
+            "paperId": "13c82489c1568b67265d17a15720001a5737171e",
+            "title": "Spectral grouping using the Nystrom method"
+        },
+        {
+            "paperId": "fde4bf50d48d54ba913d574c849566dc4f3d4fde",
+            "title": "Fast Sparse Gaussian Process Methods: The Informative Vector Machine"
+        },
+        {
+            "paperId": "5342b022f72556e57d59e52fa5f0fd4d46fdc7ef",
+            "title": "Advances in Neural Information Processing Systems 14"
+        },
+        {
+            "paperId": "b6fff8b8ea77f157913986e7af53951d9fc1128e",
+            "title": "Using the Nystr\u00f6m Method to Speed Up Kernel Machines"
+        },
+        {
+            "paperId": "c564aa7639a08c280423489e52b6e32055c9aa7f",
+            "title": "Vector quantization and signal compression"
+        },
+        {
+            "paperId": "225ca57add3b3fb12ef01cc97c4683350dc93fe4",
+            "title": "Matrix computations"
+        }
+    ]
+}

@@ -1,0 +1,217 @@
+{
+    "paperId": "3a0edb0232e9a8e3455f5ad38cd3c6f28cb4e787",
+    "externalIds": {
+        "MAG": "2229916477",
+        "DBLP": "journals/tsp/ChenCWDCS15",
+        "DOI": "10.1109/TSP.2015.2451107",
+        "CorpusId": 2361537
+    },
+    "title": "Fast Computation of Sliding Discrete Tchebichef Moments and Its Application in Duplicated Regions Detection",
+    "abstract": "Computational load remains a major concern when processing signals by means of sliding transforms. In this paper, we present an efficient algorithm for the fast computation of one-dimensional and two-dimensional sliding discrete Tchebichef moments. To do so, we first establish the relationships that exist between the Tchebichef moments of two neighboring windows taking advantage of Tchebichef polynomials' properties. We then propose an original way to fast compute the moments of one window by utilizing the moment values of its previous window. We further theoretically establish the complexity of our fast algorithm and illustrate its interest within the framework of digital forensics and more precisely the detection of duplicated regions in an audio signal or an image. Our algorithm is used to extract local features of such a signal tampering. Experimental results show that its complexity is independent of the window size, validating the theory. They also exhibit that our algorithm is suitable to digital forensics and beyond to any applications based on sliding Tchebichef moments.",
+    "venue": "IEEE Transactions on Signal Processing",
+    "year": 2015,
+    "referenceCount": 41,
+    "citationCount": 22,
+    "influentialCitationCount": 2,
+    "openAccessPdf": {
+        "url": "https://hal-univ-rennes1.archives-ouvertes.fr/hal-01217003/file/Fast%20computation%20of%20sliding%20discrete%20Tchebichef%20moments%20and%20its%20application%20in%20duplicated%20regions%20detection.pdf",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper presents an efficient algorithm for the fast computation of one-dimensional and two-dimensional sliding discrete Tchebichef moments and proposes an original way to fast compute the moments of one window by utilizing the moment values of its previous window."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3143502",
+            "name": "Beijing Chen"
+        },
+        {
+            "authorId": "1734213",
+            "name": "G. Coatrieux"
+        },
+        {
+            "authorId": "1694704",
+            "name": "Jiasong Wu"
+        },
+        {
+            "authorId": "144874433",
+            "name": "Z. Dong"
+        },
+        {
+            "authorId": "144734543",
+            "name": "J. Coatrieux"
+        },
+        {
+            "authorId": "144305247",
+            "name": "H. Shu"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "61b49336926fb1438a4c579dc925764ef839c4b1",
+            "title": "Segmentation-Based Image Copy-Move Forgery Detection Scheme"
+        },
+        {
+            "paperId": "d267b04087309b6d782061340c0050c705133dba",
+            "title": "Audio authenticity: Duplicated audio segment detection in waveform audio file"
+        },
+        {
+            "paperId": "2db52404cb58a667e5d825f13ee56c4c6dc29184",
+            "title": "Harmonics Measurement With a Modulated Sliding Discrete Fourier Transform Algorithm"
+        },
+        {
+            "paperId": "da45ebda90b792beec14e7c06a455fd5e9a99249",
+            "title": "The Hopping Discrete Fourier Transform [sp Tips&Tricks]"
+        },
+        {
+            "paperId": "07d63ef7906cae947515d90d89d689615136eb2b",
+            "title": "The fast recursive computation of Tchebichef moment and its inverse transform based on Z-transform"
+        },
+        {
+            "paperId": "a2efb6594598504b87b10a07bf448d286ef9b3f7",
+            "title": "Texture classification using discrete Tchebichef moments."
+        },
+        {
+            "paperId": "dd1cd2e4fb93a3e3726f6fedb122943167fa70d3",
+            "title": "Rotation Invariant Localization of Duplicated Image Regions Based on Zernike Moments"
+        },
+        {
+            "paperId": "08ed41e079636afc99c315f3fa0a7200787602f3",
+            "title": "A review of object representation based on local features"
+        },
+        {
+            "paperId": "c7fc52b486afb588fa8166fc0482ae40ec233d51",
+            "title": "Analysis of noise sensitivity of Tchebichef and Zernike moments with application to image watermarking"
+        },
+        {
+            "paperId": "2d6cef3a17ff7d3c548d7c66e4f81a9b7ec5b3cd",
+            "title": "Blind Integrity Verification of Medical Images"
+        },
+        {
+            "paperId": "3fdfaa0f5c6fa79f310a6e867bf4cedc84a496c4",
+            "title": "Sliding Conjugate Symmetric Sequency-Ordered Complex Hadamard Transform: Fast Algorithm and Applications"
+        },
+        {
+            "paperId": "421e202b77d714c4a104a52e17ca7da051d992f3",
+            "title": "Combined Invariants to Similarity Transformation and to Blur Using Orthogonal Zernike Moments"
+        },
+        {
+            "paperId": "f24ca1cc79e030d9335be45a5531f16213e2e6ef",
+            "title": "Passive digital image authentication algorithm based on Tchebichef moment invariants"
+        },
+        {
+            "paperId": "94d556d06d4623e12287ce8d66e71eb2b1d8634a",
+            "title": "Fast Computation of Tchebichef Moments for Binary and Grayscale Images"
+        },
+        {
+            "paperId": "8ed213ed7dae91bdb0c90cf7069743e0d7474137",
+            "title": "Accurate, Guaranteed Stable, Sliding Discrete Fourier Transform [DSP Tips & Tricks]"
+        },
+        {
+            "paperId": "39e38cc4cfaeb19df5902b7d6149a35ce2617e04",
+            "title": "Symmetric image recognition by Tchebichef moment invariants"
+        },
+        {
+            "paperId": "8e798c9ff0174b5f006a1444afbc36dbb6439cd6",
+            "title": "Fast pattern matching using orthogonal Haar transform"
+        },
+        {
+            "paperId": "23bde1098941aa492964484f4309b924acbf8332",
+            "title": "Short-Time Fractional Fourier Transform and Its Applications"
+        },
+        {
+            "paperId": "e87fc17b35a961c47a02dd9d7be95f43b7c0009c",
+            "title": "Reconstruction of tomographic images from limited range projections using discrete Radon transform and Tchebichef moments"
+        },
+        {
+            "paperId": "b3df085d5a33b4e8a34d75d1c9056e0c9a50ffdf",
+            "title": "Fast Algorithms for the Computation of Sliding Discrete Hartley Transforms"
+        },
+        {
+            "paperId": "c5fd209b8b3a234777c02122dc7ced8e76a14859",
+            "title": "An efficient recursive algorithm and an explicit formula for calculating update vectors of running walsh-hadamard transform"
+        },
+        {
+            "paperId": "8a26741117ecb3348008b4780c4507c0f96f7725",
+            "title": "Fast algorithms for the computation of sliding discrete sinusoidal transforms"
+        },
+        {
+            "paperId": "a8c9718fa551a0f0e8d662abbe437528c2eff9b6",
+            "title": "Image focus measure based on Chebyshev moments"
+        },
+        {
+            "paperId": "0daa2afe6aedee0bb915302d59b9c25bd062e57c",
+            "title": "The sliding DFT"
+        },
+        {
+            "paperId": "8eff0266e57004599025aa3a7e088962a10c3620",
+            "title": "Efficient computation of local geometric moments"
+        },
+        {
+            "paperId": "a67dee08d90e7733060d25ed111402ea8c8e725b",
+            "title": "Image Analysis by Tchebichef Moments"
+        },
+        {
+            "paperId": "7aa9efdfdfb4b92f34d94051fce64f3a127217a8",
+            "title": "Recursive formulation of short-time discrete trigonometric transforms"
+        },
+        {
+            "paperId": "6ae99f38668bf50b220a8d8be35c7ef273294b27",
+            "title": "Generalized sliding FFT and its application to implementation of block LMS adaptive filters"
+        },
+        {
+            "paperId": "a09279d443fcb70824456943b8d5785aef0e867b",
+            "title": "Color Image Analysis by Quaternion-Type Moments"
+        },
+        {
+            "paperId": null,
+            "title": "He is now an assistant professor of Southeast University. His research interest is focused on fast algorithms of digital signal processing"
+        },
+        {
+            "paperId": "02315392a61d6f38fb55b391ff68c86965ae0371",
+            "title": "A Zernike Moment Phase-Based Descriptor for Local Image Representation and Matching"
+        },
+        {
+            "paperId": "8876e3a0e1da64d05d7b05fe9297c3c3847daa08",
+            "title": "Fast Algorithm for Walsh Hadamard Transform on Sliding Windows"
+        },
+        {
+            "paperId": "456eb058bf277888344b324df51bd2075e105ac1",
+            "title": "Efficient computation of the running discrete Haar transform"
+        },
+        {
+            "paperId": "a8a49e26f3b6ec7fbdf670f172cab8542a4022c3",
+            "title": "Recursive computation of Tchebichef moment and its inverse transform"
+        },
+        {
+            "paperId": "6be1c27bb9f7f45854af8dcd4b2d3217d6bd71c5",
+            "title": "Detection of Copy-Move Forgery in Digital Images"
+        },
+        {
+            "paperId": null,
+            "title": "His primary research interests concern medical information system security, watermarking, electronic patient records"
+        },
+        {
+            "paperId": null,
+            "title": "The DARPA TIMIT Acoustic-Phonetic Continuous Speech Corpus CDROM, Linguistic Data Consortium"
+        },
+        {
+            "paperId": null,
+            "title": "Degree in Numerical Analysis from the University of Rennes (France) in 1992. He is now a professor of the Department of"
+        },
+        {
+            "paperId": "e1aae1c92a8177da9ea481b41df4af59e44765ac",
+            "title": "Ieee Transactions on Information Forensics and Security an Evaluation of Popular Copy-move Forgery Detection Approaches"
+        },
+        {
+            "paperId": null,
+            "title": "Gouenou Coatrieux received the Ph. D. degree in signal processing and telecommunication from the University of Rennes I"
+        },
+        {
+            "paperId": null,
+            "title": "Now he is an associate professor in the School of Computer & Software"
+        }
+    ]
+}

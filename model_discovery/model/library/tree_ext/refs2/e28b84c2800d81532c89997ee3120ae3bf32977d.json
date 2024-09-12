@@ -1,0 +1,150 @@
+{
+    "paperId": "e28b84c2800d81532c89997ee3120ae3bf32977d",
+    "externalIds": {
+        "ArXiv": "1406.5979",
+        "MAG": "112666333",
+        "DBLP": "journals/corr/RossB14",
+        "CorpusId": 1685197
+    },
+    "title": "Reinforcement and Imitation Learning via Interactive No-Regret Learning",
+    "abstract": "Recent work has demonstrated that problems-- particularly imitation learning and structured prediction-- where a learner's predictions influence the input-distribution it is tested on can be naturally addressed by an interactive approach and analyzed using no-regret online learning. These approaches to imitation learning, however, neither require nor benefit from information about the cost of actions. We extend existing results in two directions: first, we develop an interactive imitation learning approach that leverages cost information; second, we extend the technique to address reinforcement learning. The results provide theoretical support to the commonly observed successes of online approximate policy iteration. Our approach suggests a broad new family of algorithms and provides a unifying view of existing techniques for imitation and reinforcement learning.",
+    "venue": "arXiv.org",
+    "year": 2014,
+    "referenceCount": 29,
+    "citationCount": 248,
+    "influentialCitationCount": 34,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work develops an interactive imitation learning approach that leverages cost information and extends the technique to address reinforcement learning, suggesting a broad new family of algorithms and providing a unifying view of existing techniques for imitation and reinforcement learning."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1700433",
+            "name": "St\u00e9phane Ross"
+        },
+        {
+            "authorId": "1756566",
+            "name": "J. Bagnell"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "d746a1f64daae2d3fb91de8ffe08e9e5668cdc38",
+            "title": "Approximate Policy Iteration Schemes: A Comparison"
+        },
+        {
+            "paperId": "79b6f847e6a68107f67f83859e24b91813c6d5ae",
+            "title": "Learning Policies for Contextual Submodular Prediction"
+        },
+        {
+            "paperId": "38cb6016b0c33a330eb535256b1ce9aaa4cb6f73",
+            "title": "Imitation learning for natural language direction following through unknown environments"
+        },
+        {
+            "paperId": "ee312938f4291a60c21f1679a40bcac66c40b0f3",
+            "title": "The Interplay Between Stability and Regret in Online Learning"
+        },
+        {
+            "paperId": "630f710aece5e64563de7fb27ff8a7c6a20384d1",
+            "title": "Projection-free Online Learning"
+        },
+        {
+            "paperId": "04bd82fe99ab3debe0ae8730cab2ccd410ed5a9b",
+            "title": "Decoupling Exploration and Exploitation in Multi-Armed Bandits"
+        },
+        {
+            "paperId": "43be33ef48e66d1f293c73af73f2f6753c6c392c",
+            "title": "Agnostic System Identification for Model-Based Reinforcement Learning"
+        },
+        {
+            "paperId": "3efd2c862d94f4041880cbfe6b810153a2dc0005",
+            "title": "Stability Conditions for Online Learnability"
+        },
+        {
+            "paperId": "633664376ffadc1396d86e476925121ac3d4cf86",
+            "title": "Learning message-passing inference machines for structured prediction"
+        },
+        {
+            "paperId": "5ccf7658018981bf492d0c8d66277d22ebaac815",
+            "title": "Doubly Robust Policy Evaluation and Learning"
+        },
+        {
+            "paperId": "79ab3c49903ec8cb339437ccf5cf998607fc313e",
+            "title": "A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning"
+        },
+        {
+            "paperId": "370308ad57aa43a29df1a9500c813c13254e16cd",
+            "title": "Stacked Hierarchical Labeling"
+        },
+        {
+            "paperId": "70e10a5459c6f1aaf346ee4f2dcc837151fbe75c",
+            "title": "Efficient Reductions for Imitation Learning"
+        },
+        {
+            "paperId": "ec0072bc37f83f1a81459df43289613e04cc61e1",
+            "title": "A contextual-bandit approach to personalized news article recommendation"
+        },
+        {
+            "paperId": "08aae8b3ef06e06895bb9046d028aa6b5cac69ec",
+            "title": "Contextual Bandit Algorithms with Supervised Learning Guarantees"
+        },
+        {
+            "paperId": "526e22c130b18924976553d29ba11bc9d898d58b",
+            "title": "Search-based structured prediction"
+        },
+        {
+            "paperId": "0c3235b6f86cb99b18bd7edf62bc3594adbff699",
+            "title": "Error-Correcting Tournaments"
+        },
+        {
+            "paperId": "0538e399046c74d95124c715760aa51ab4716dce",
+            "title": "Prediction, learning, and games"
+        },
+        {
+            "paperId": "1521e475bc6d8ed07c95a46ec099377a8584ba7d",
+            "title": "Error limiting reductions between classification tasks"
+        },
+        {
+            "paperId": "e53254f9d08defd6767cd1da7d1472b6edd37910",
+            "title": "Sensitive Error Correcting Output Codes"
+        },
+        {
+            "paperId": "d925fca2d6859c43e4c91a53fca96528de0c28dc",
+            "title": "Policy Search by Dynamic Programming"
+        },
+        {
+            "paperId": "523b4ce1c2a1336962444abc1dec215756c2f3e6",
+            "title": "Approximately Optimal Approximate Reinforcement Learning"
+        },
+        {
+            "paperId": "54d47af5a99eb31ce0d9b38edd0d03022be34841",
+            "title": "Robotics and autonomous systems"
+        },
+        {
+            "paperId": "a29685354dab74d6a2e53031dfe32e05f84afd21",
+            "title": "A Generalization of Sampling Without Replacement from a Finite Universe"
+        },
+        {
+            "paperId": null,
+            "title": "Error and regret bounds for cost-sensitive multiclass classi\ufb01cation reduction to regression"
+        },
+        {
+            "paperId": "b1e0fe073d271775b980f1d3840a12c3bfb3aed9",
+            "title": "Machine Learning Techniques\u2014Reductions Between Prediction Quality Metrics"
+        },
+        {
+            "paperId": "a9e5a40b0ff5c40d2db7b73490922e115576adb5",
+            "title": "On the sample complexity of reinforcement learning."
+        },
+        {
+            "paperId": "26e17f6b62a7caec660b3356d49e879e6e0eeabc",
+            "title": "The Nonstochastic Multiarmed Bandit Problem"
+        },
+        {
+            "paperId": null,
+            "title": "The right way to do reinforcement learning wi  th function approximation"
+        }
+    ]
+}

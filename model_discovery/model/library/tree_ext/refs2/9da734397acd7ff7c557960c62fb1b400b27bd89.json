@@ -1,0 +1,246 @@
+{
+    "paperId": "9da734397acd7ff7c557960c62fb1b400b27bd89",
+    "externalIds": {
+        "DBLP": "journals/corr/ZhangZLS17",
+        "MAG": "2724359148",
+        "ArXiv": "1707.01083",
+        "DOI": "10.1109/CVPR.2018.00716",
+        "CorpusId": 24982157
+    },
+    "title": "ShuffleNet: An Extremely Efficient Convolutional Neural Network for Mobile Devices",
+    "abstract": "We introduce an extremely computation-efficient CNN architecture named ShuffleNet, which is designed specially for mobile devices with very limited computing power (e.g., 10-150 MFLOPs). The new architecture utilizes two new operations, pointwise group convolution and channel shuffle, to greatly reduce computation cost while maintaining accuracy. Experiments on ImageNet classification and MS COCO object detection demonstrate the superior performance of ShuffleNet over other structures, e.g. lower top-1 error (absolute 7.8%) than recent MobileNet [12] on ImageNet classification task, under the computation budget of 40 MFLOPs. On an ARM-based mobile device, ShuffleNet achieves ~13\u00c3\u2014 actual speedup over AlexNet while maintaining comparable accuracy.",
+    "venue": "2018 IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "year": 2017,
+    "referenceCount": 50,
+    "citationCount": 5987,
+    "influentialCitationCount": 601,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1707.01083",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An extremely computation-efficient CNN architecture named ShuffleNet is introduced, which is designed specially for mobile devices with very limited computing power (e.g., 10-150 MFLOPs), to greatly reduce computation cost while maintaining accuracy."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "50875121",
+            "name": "Xiangyu Zhang"
+        },
+        {
+            "authorId": "2148927556",
+            "name": "Xinyu Zhou"
+        },
+        {
+            "authorId": "3287035",
+            "name": "Mengxiao Lin"
+        },
+        {
+            "authorId": null,
+            "name": "Jian Sun"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "4f57f486adea0bf95c252620a4e8af39232ef8bc",
+            "title": "Swish: a Self-Gated Activation Function"
+        },
+        {
+            "paperId": "fb37561499573109fc2cebb6a7b08f44917267dd",
+            "title": "Squeeze-and-Excitation Networks"
+        },
+        {
+            "paperId": "d0611891b9e8a7c5731146097b6f201578f47b2f",
+            "title": "Learning Transferable Architectures for Scalable Image Recognition"
+        },
+        {
+            "paperId": "0c3d62921a1f77f4c755dad70b6b15a83ba96b33",
+            "title": "Interleaved Group Convolutions for Deep Neural Networks"
+        },
+        {
+            "paperId": "3647d6d0f151dc05626449ee09cc7bce55be497e",
+            "title": "MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications"
+        },
+        {
+            "paperId": "407ead18083e68626e82e07db1a9289ff0b7e862",
+            "title": "Incremental Network Quantization: Towards Lossless CNNs with Low-Precision Weights"
+        },
+        {
+            "paperId": "e0ed0df67db591292b696e5120b0d657f98d4bb9",
+            "title": "LCNN: Lookup-Based Convolutional Neural Network"
+        },
+        {
+            "paperId": "f6e0856b4a9199fa968ac00da612a9407b5cb85c",
+            "title": "Aggregated Residual Transformations for Deep Neural Networks"
+        },
+        {
+            "paperId": "5b6ec746d309b165f9f9def873a2375b6fb40f3d",
+            "title": "Xception: Deep Learning with Depthwise Separable Convolutions"
+        },
+        {
+            "paperId": "bbd8ff9ac6b66820e30b34d75c551f0e6d1fde42",
+            "title": "PVANET: Deep but Lightweight Neural Networks for Real-time Object Detection"
+        },
+        {
+            "paperId": "d20da75866f500ee9fbfa859e69556702e1f50a4",
+            "title": "Design of Efficient Convolutional Layers using Single Intra-channel Convolution, Topological Subdivisioning and Spatial \"Bottleneck\" Structure"
+        },
+        {
+            "paperId": "7601b995303f953955004db7b9b8b206c0e02ff8",
+            "title": "Learning Structured Sparsity in Deep Neural Networks"
+        },
+        {
+            "paperId": "8b053389eb8c18c61b84d7e59a95cb7e13f205b7",
+            "title": "DoReFa-Net: Training Low Bitwidth Convolutional Neural Networks with Low Bitwidth Gradients"
+        },
+        {
+            "paperId": "f552d03c45298e919d7b4fc1a5b72a9539499a88",
+            "title": "Deep Roots: Improving CNN Efficiency with Hierarchical Filter Groups"
+        },
+        {
+            "paperId": "77f0a39b8e02686fd85b01971f8feb7f60971f80",
+            "title": "Identity Mappings in Deep Residual Networks"
+        },
+        {
+            "paperId": "b649a98ce77ece8cd7638bb74ab77d22d9be77e7",
+            "title": "XNOR-Net: ImageNet Classification Using Binary Convolutional Neural Networks"
+        },
+        {
+            "paperId": "9c9d7247f8c51ec5a02b0d911d1d7b9e8160495d",
+            "title": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems"
+        },
+        {
+            "paperId": "592d2e65489f23ebd993dbdc0c84eda9ac8aadbe",
+            "title": "SqueezeNet: AlexNet-level accuracy with 50x fewer parameters and <1MB model size"
+        },
+        {
+            "paperId": "b5c26ab8767d046cb6e32d959fdf726aee89bb62",
+            "title": "Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning"
+        },
+        {
+            "paperId": "d3cb9bad655197b52932978dd8186b36c512bf92",
+            "title": "Quantized Convolutional Neural Networks for Mobile Devices"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "23ffaa0fe06eae05817f527a47ac3291077f9e58",
+            "title": "Rethinking the Inception Architecture for Computer Vision"
+        },
+        {
+            "paperId": "642d0f49b7826adcf986616f4af77e736229990f",
+            "title": "Deep Compression: Compressing Deep Neural Network with Pruning, Trained Quantization and Huffman Coding"
+        },
+        {
+            "paperId": "1ff9a37d766e3a4f39757f5e1b235a42dacf18ff",
+            "title": "Learning both Weights and Connections for Efficient Neural Network"
+        },
+        {
+            "paperId": "424561d8585ff8ebce7d5d07de8dbf7aae5e7270",
+            "title": "Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks"
+        },
+        {
+            "paperId": "b89d7f7439cab841934a1ede06bf6b1f593c754f",
+            "title": "Accelerating Very Deep Convolutional Networks for Classification and Detection"
+        },
+        {
+            "paperId": "0c908739fbff75f03469d13d4a1a07de3414ee19",
+            "title": "Distilling the Knowledge in a Neural Network"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "326d65827307862ddc3d39b84ebc662e83ff95b3",
+            "title": "Fast Convolutional Nets With fbfft: A GPU Performance Evaluation"
+        },
+        {
+            "paperId": "62e348e26976c3ef77909b9af9788ebc2509009a",
+            "title": "Speeding-up Convolutional Neural Networks Using Fine-tuned CP-Decomposition"
+        },
+        {
+            "paperId": "30ae2bdef407e7a05b83781907ad7fb257dcd7a1",
+            "title": "Flattened Convolutional Neural Networks for Feedforward Acceleration"
+        },
+        {
+            "paperId": "feaa7e295c7a43ec52091ed9ade1a9a1e5d9bed2",
+            "title": "Expectation Backpropagation: Parameter-Free Training of Multilayer Neural Networks with Continuous or Discrete Weights"
+        },
+        {
+            "paperId": "8ad35df17ae4064dd174690efb04d347428f1117",
+            "title": "Convolutional neural networks at constrained time cost"
+        },
+        {
+            "paperId": "d4dc1012d780e8e2547237eb5a6dc7b1bf47d2f0",
+            "title": "Show and tell: A neural image caption generator"
+        },
+        {
+            "paperId": "b64601d509711468f5d085261d463846f36785b2",
+            "title": "Efficient and accurate approximations of nonlinear convolutional networks"
+        },
+        {
+            "paperId": "6fc6803df5f9ae505cae5b2f178ade4062c768d0",
+            "title": "Fully convolutional networks for semantic segmentation"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "6bdb186ec4726e00a8051119636d4df3b94043b5",
+            "title": "Caffe: Convolutional Architecture for Fast Feature Embedding"
+        },
+        {
+            "paperId": "021fc345d40d3e6332cd2ef276e2eaa5e71102e4",
+            "title": "Speeding up Convolutional Neural Networks with Low Rank Expansions"
+        },
+        {
+            "paperId": "71b7178df5d2b112d07e45038cb5637208659ff7",
+            "title": "Microsoft COCO: Common Objects in Context"
+        },
+        {
+            "paperId": "a7621b4ec18719b08f3a2a444b6d37a2e20227b7",
+            "title": "Fast Training of Convolutional Networks through FFTs"
+        },
+        {
+            "paperId": "2f4df08d9072fc2ac181b7fced6a245315ce05c8",
+            "title": "Rich Feature Hierarchies for Accurate Object Detection and Semantic Segmentation"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "d2c733e34d48784a37d717fe43d9e93277a8c53e",
+            "title": "ImageNet: A large-scale hierarchical image database"
+        },
+        {
+            "paperId": "bc6dff14a130c57a91d5a21339c23471faf1d46f",
+            "title": "Et al"
+        },
+        {
+            "paperId": "c8c4ab59ac29973a00df4e5c8df3773a3c59995a",
+            "title": "Searching for Activation Functions"
+        },
+        {
+            "paperId": null,
+            "title": "Inceptionv4"
+        },
+        {
+            "paperId": null,
+            "title": "and K"
+        }
+    ]
+}

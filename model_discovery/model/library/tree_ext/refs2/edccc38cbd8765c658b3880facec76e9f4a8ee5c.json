@@ -1,0 +1,126 @@
+{
+    "paperId": "edccc38cbd8765c658b3880facec76e9f4a8ee5c",
+    "externalIds": {
+        "MAG": "2620983607",
+        "DBLP": "journals/corr/ZagoruykoK17",
+        "ArXiv": "1706.00388",
+        "CorpusId": 1086822
+    },
+    "title": "DiracNets: Training Very Deep Neural Networks Without Skip-Connections",
+    "abstract": "Deep neural networks with skip-connections, such as ResNet, show excellent performance in various image classification benchmarks. It is though observed that the initial motivation behind them - training deeper networks - does not actually hold true, and the benefits come from increased capacity, rather than from depth. Motivated by this, and inspired from ResNet, we propose a simple Dirac weight parameterization, which allows us to train very deep plain networks without explicit skip-connections, and achieve nearly the same performance. This parameterization has a minor computational cost at training time and no cost at all at inference, as both Dirac parameterization and batch normalization can be folded into convolutional filters, so that network becomes a simple chain of convolution-ReLU pairs. We are able to match ResNet-1001 accuracy on CIFAR-10 with 28-layer wider plain DiracNet, and closely match ResNets on ImageNet. Our parameterization also mostly eliminates the need of careful initialization in residual and non-residual networks. The code and models for our experiments are available at this https URL",
+    "venue": "arXiv.org",
+    "year": 2017,
+    "referenceCount": 23,
+    "citationCount": 111,
+    "influentialCitationCount": 11,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A simple Dirac weight parameterization is proposed, which allows us to train very deep plain networks without explicit skip-connections, and achieve nearly the same performance."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2134433",
+            "name": "Sergey Zagoruyko"
+        },
+        {
+            "authorId": "2505902",
+            "name": "N. Komodakis"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "e79fa48078e9c1794cb67bfb1aab9557f263820f",
+            "title": "The Shattered Gradients Problem: If resnets are the answer, then what is the question?"
+        },
+        {
+            "paperId": "5694e46284460a648fe29117cbc55f6c9be3fa3c",
+            "title": "Densely Connected Convolutional Networks"
+        },
+        {
+            "paperId": "1c4e9156ca07705531e45960b7a919dc473abb51",
+            "title": "Wide Residual Networks"
+        },
+        {
+            "paperId": "ec6bb39f18f20dbb504790a5f7089e40de33b169",
+            "title": "Residual Networks are Exponential Ensembles of Relatively Shallow Networks"
+        },
+        {
+            "paperId": "77f0a39b8e02686fd85b01971f8feb7f60971f80",
+            "title": "Identity Mappings in Deep Residual Networks"
+        },
+        {
+            "paperId": "0e2b3faed39561f712c3b14a08c7c36272d9857a",
+            "title": "Understanding and Improving Convolutional Neural Networks via Concatenated Rectified Linear Units"
+        },
+        {
+            "paperId": "3d2c6941a9b4608ba52b328369a3352db2092ae0",
+            "title": "Weight Normalization: A Simple Reparameterization to Accelerate Training of Deep Neural Networks"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "f63e917638553414526a0cc8550de4ad2d83fe7a",
+            "title": "Fast and Accurate Deep Network Learning by Exponential Linear Units (ELUs)"
+        },
+        {
+            "paperId": "16cb6876666f3a7b56a636c1d85ad00bd0d98bf3",
+            "title": "Net2Net: Accelerating Learning via Knowledge Transfer"
+        },
+        {
+            "paperId": "e0945081b5b87187a53d4329cf77cd8bff635795",
+            "title": "Highway Networks"
+        },
+        {
+            "paperId": "d6f2f611da110b5b5061731be3fc4c7f45d8ee23",
+            "title": "Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification"
+        },
+        {
+            "paperId": "8604f376633af8b347e31d84c6150a93b11e34c2",
+            "title": "FitNets: Hints for Thin Deep Nets"
+        },
+        {
+            "paperId": "fb91db6aa4f710814f8aec28a7f3ecbc4e5ad4fd",
+            "title": "Deeply-Supervised Nets"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "14d9be7962a4ec5a6e55755f4c7588ea00793652",
+            "title": "Return of the Devil in the Details: Delving Deep into Convolutional Nets"
+        },
+        {
+            "paperId": "5e83ab70d0cbc003471e87ec306d27d9c80ecb16",
+            "title": "Network In Network"
+        },
+        {
+            "paperId": "aa7bfd2304201afbb19971ebde87b17e40242e91",
+            "title": "On the importance of initialization and momentum in deep learning"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "ea9d2a2b4ce11aaf85136840c65f3bc9c03ab649",
+            "title": "Understanding the difficulty of training deep feedforward neural networks"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "50c770b425a5bb25c77387f687a9910a9d130722",
+            "title": "Learning Complex, Extended Sequences Using the Principle of History Compression"
+        }
+    ]
+}

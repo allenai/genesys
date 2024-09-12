@@ -1,0 +1,134 @@
+{
+    "paperId": "6e565308c8081e807709cb4a917443b737e6cdb4",
+    "externalIds": {
+        "MAG": "580074167",
+        "DBLP": "journals/corr/BordesUCW15",
+        "ArXiv": "1506.02075",
+        "CorpusId": 9605730
+    },
+    "title": "Large-scale Simple Question Answering with Memory Networks",
+    "abstract": "Training large-scale question answering systems is complicated because training sources usually cover a small portion of the range of possible questions. This paper studies the impact of multitask and transfer learning for simple question answering; a setting for which the reasoning required to answer is quite easy, as long as one can retrieve the correct evidence given a question, which can be difficult in large-scale conditions. To this end, we introduce a new dataset of 100k questions that we use in conjunction with existing benchmarks. We conduct our study within the framework of Memory Networks (Weston et al., 2015) because this perspective allows us to eventually scale up to more complex reasoning, and show that Memory Networks can be successfully trained to achieve excellent performance.",
+    "venue": "arXiv.org",
+    "year": 2015,
+    "referenceCount": 23,
+    "citationCount": 671,
+    "influentialCitationCount": 131,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper studies the impact of multitask and transfer learning for simple question answering; a setting for which the reasoning required to answer is quite easy, as long as one can retrieve the correct evidence given a question, which can be difficult in large-scale conditions."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1713934",
+            "name": "Antoine Bordes"
+        },
+        {
+            "authorId": "1746841",
+            "name": "Nicolas Usunier"
+        },
+        {
+            "authorId": "3295092",
+            "name": "S. Chopra"
+        },
+        {
+            "authorId": "145183709",
+            "name": "J. Weston"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e",
+            "title": "End-To-End Memory Networks"
+        },
+        {
+            "paperId": "a583af2696030bcf5f556edc74573fbee902be0b",
+            "title": "Weakly Supervised Memory Networks"
+        },
+        {
+            "paperId": "71ae756c75ac89e2d731c9c79649562b5768ff39",
+            "title": "Memory Networks"
+        },
+        {
+            "paperId": "b4fc7e1fa4a1c30955089cc832cf2a3422e93b6e",
+            "title": "Large-scale Semantic Parsing without Question-Answer Pairs"
+        },
+        {
+            "paperId": "2fc760267d7e052e584cf55b641539e913df55ef",
+            "title": "Joint Relational Embeddings for Knowledge-based Question Answering"
+        },
+        {
+            "paperId": "f86ec155cce6259e5230aaad3b762343757feb1d",
+            "title": "Open question answering over curated and extracted knowledge bases"
+        },
+        {
+            "paperId": "33261d252218007147a71e40f8367ed152fa2fe0",
+            "title": "Question Answering with Subgraph Embeddings"
+        },
+        {
+            "paperId": "3d1d42c9435b419ac928ebf7bcf4c86a460d6ef4",
+            "title": "Semantic Parsing via Paraphrasing"
+        },
+        {
+            "paperId": "319e572fcddff77513eed8a25effbc7d9ff8ef85",
+            "title": "Information Extraction over Structured Data: Question Answering with Freebase"
+        },
+        {
+            "paperId": "a584211768d49f80192f13b8ed2fda9c058dec34",
+            "title": "Open Question Answering with Weakly Supervised Embedding Models"
+        },
+        {
+            "paperId": "b29447ba499507a259ae9d8f685d60cc1597d7d3",
+            "title": "Semantic Parsing on Freebase from Question-Answer Pairs"
+        },
+        {
+            "paperId": "b2ac51e10a3510eadac5eac5e4fb828f086fab88",
+            "title": "Scaling Semantic Parsers with On-the-Fly Ontology Matching"
+        },
+        {
+            "paperId": "c0be2ac2f45681f1852fc1d298af5dceb85834f4",
+            "title": "Paraphrase-Driven Learning for Open Question Answering"
+        },
+        {
+            "paperId": "80c2d8c691b09f8b4e53f512b9d2641b49fda935",
+            "title": "Large-scale Semantic Parsing via Schema Matching and Lexicon Extension"
+        },
+        {
+            "paperId": "88976f41c902556c39a44ebe9abd583c885417dc",
+            "title": "Natural Language Questions for the Web of Data"
+        },
+        {
+            "paperId": "c5c08e6dec3bf8a036607593e11e389697e03f45",
+            "title": "Entity Linking at Web Scale"
+        },
+        {
+            "paperId": "eb04bd49bdc2c9218624435eb277be2a973b21a5",
+            "title": "Template-based question answering over RDF data"
+        },
+        {
+            "paperId": "d4b651d6a904f69f8fa1dcad4ebe972296af3a9a",
+            "title": "Identifying Relations for Open Information Extraction"
+        },
+        {
+            "paperId": "36f49b05d764bf5c10428b082c2d96c13c4203b9",
+            "title": "Hogwild: A Lock-Free Approach to Parallelizing Stochastic Gradient Descent"
+        },
+        {
+            "paperId": "413c1142de9d91804d6d11c67ff3fed59c9fc279",
+            "title": "Adaptive Subgradient Methods for Online Learning and Stochastic Optimization"
+        },
+        {
+            "paperId": "aea0f946e8dcddb65cc2e907456c42453f246a50",
+            "title": "Large scale image annotation: learning\u00a0to\u00a0rank with\u00a0joint word-image embeddings"
+        },
+        {
+            "paperId": "0c7c2ca0579112c81d5a98fb0d110d1a006759b5",
+            "title": "Web question answering: is more always better?"
+        },
+        {
+            "paperId": "4a92e760db5aee771255dacf7f26c3f968b4b1cb",
+            "title": "Overview of the TREC-9 Question Answering Track"
+        }
+    ]
+}

@@ -1,0 +1,244 @@
+{
+    "paperId": "c99537a3f0ce446df31942b78fb8337edb0c0c07",
+    "externalIds": {
+        "DBLP": "journals/corr/LeeDP16",
+        "MAG": "2950484055",
+        "PubMedCentral": "5099523",
+        "ArXiv": "1608.08782",
+        "DOI": "10.3389/fnins.2016.00508",
+        "CorpusId": 2882718,
+        "PubMed": "27877107"
+    },
+    "title": "Training Deep Spiking Neural Networks Using Backpropagation",
+    "abstract": "Deep spiking neural networks (SNNs) hold the potential for improving the latency and energy efficiency of deep neural networks through data-driven event-based computation. However, training such networks is difficult due to the non-differentiable nature of spike events. In this paper, we introduce a novel technique, which treats the membrane potentials of spiking neurons as differentiable signals, where discontinuities at spike times are considered as noise. This enables an error backpropagation mechanism for deep SNNs that follows the same principles as in conventional deep networks, but works directly on spike signals and membrane potentials. Compared with previous methods relying on indirect training and conversion, our technique has the potential to capture the statistics of spikes more precisely. We evaluate the proposed framework on artificially generated events from the original MNIST handwritten digit benchmark, and also on the N-MNIST benchmark recorded with an event-based dynamic vision sensor, in which the proposed method reduces the error rate by a factor of more than three compared to the best previous SNN, and also achieves a higher accuracy than a conventional convolutional neural network (CNN) trained and tested on the same data. We demonstrate in the context of the MNIST task that thanks to their event-driven operation, deep SNNs (both fully connected and convolutional) trained with our method achieve accuracy equivalent with conventional neural networks. In the N-MNIST example, equivalent accuracy is achieved with about five times fewer computational operations.",
+    "venue": "Frontiers in Neuroscience",
+    "year": 2016,
+    "referenceCount": 50,
+    "citationCount": 849,
+    "influentialCitationCount": 64,
+    "openAccessPdf": {
+        "url": "https://www.frontiersin.org/articles/10.3389/fnins.2016.00508/pdf",
+        "status": "GOLD"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel technique is introduced, which treats the membrane potentials of spiking neurons as differentiable signals, where discontinuities at spike times are considered as noise, which enables an error backpropagation mechanism for deep SNNs that follows the same principles as in conventional deep networks, but works directly on spike signals and membranes potentials."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2108454655",
+            "name": "Junhaeng Lee"
+        },
+        {
+            "authorId": "1694635",
+            "name": "T. Delbr\u00fcck"
+        },
+        {
+            "authorId": "144578436",
+            "name": "Michael Pfeiffer"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "31f6d32b7945a70941a2d279c25f09cf81acae78",
+            "title": "Effective sensor fusion with event-based sensors and deep network architectures"
+        },
+        {
+            "paperId": "b5dcd5cf7a95c262b9cdaaf32536b66ad6bc82f3",
+            "title": "Skimming Digits: Neuromorphic Classification of Spike-Encoded Images"
+        },
+        {
+            "paperId": "29316449c7cc52ad326c5d1bd5b0dc5af27c1496",
+            "title": "Convolutional networks for fast, energy-efficient neuromorphic computing"
+        },
+        {
+            "paperId": "cb4a372ae84b3ff3a6cc4e60c327f8108a83551f",
+            "title": "Deep Spiking Networks"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "04105898efe96c7f2d876e6bcb9e19afd3e23635",
+            "title": "Backpropagation for Energy-Efficient Neuromorphic Computing"
+        },
+        {
+            "paperId": "00d0ad750f3eeb9eab4b806f407182eea526b90b",
+            "title": "Neuromorphic architectures for spiking deep neural networks"
+        },
+        {
+            "paperId": "0a76cdb10b244d90770888f72ee46ca3ea1d918d",
+            "title": "Spiking Deep Networks with LIF Neurons"
+        },
+        {
+            "paperId": "a3ab782bec5b395df9d8f71f5fef7e9c82a8bc79",
+            "title": "An objective function for STDP"
+        },
+        {
+            "paperId": "71bb19dfc671eec57ca7aa7b243640dae47f5203",
+            "title": "STDP as presynaptic activity times rate of change of postsynaptic activity"
+        },
+        {
+            "paperId": "713d600bc941cb0625873f946a4b2a7fbe25ed4c",
+            "title": "Unsupervised learning of digit recognition using spike-timing-dependent plasticity"
+        },
+        {
+            "paperId": "f8b2c2a8c2369f4c40a9cf5e8599bf4ece665200",
+            "title": "Converting Static Image Datasets to Spiking Neuromorphic Datasets Using Saccades"
+        },
+        {
+            "paperId": "1cb3a0ff57de3199fe7029db7a1b8bac310fa5f8",
+            "title": "Fast-classifying, high-accuracy spiking deep networks through weight and threshold balancing"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "d6f2f611da110b5b5061731be3fc4c7f45d8ee23",
+            "title": "Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "f8fe36b59bf0fe17dceed8b913f894c2fbe8cbf8",
+            "title": "Variability-tolerant Convolutional Neural Network for Pattern Recognition applications based on OxRAM synapses"
+        },
+        {
+            "paperId": "cffff1bd7df25469a1c508f67cf8d2bcb52f672a",
+            "title": "Turn Down That Noise: Synaptic Encoding of Afferent SNR in a Single Spiking Neuron"
+        },
+        {
+            "paperId": "680a38e8f025685b192e9e0cf755c6b664963551",
+            "title": "A million spiking-neuron integrated circuit with a scalable communication network and interface"
+        },
+        {
+            "paperId": "43603db3411879ab9cad17fea6e8222b16af02d7",
+            "title": "Overview of the SpiNNaker System Architecture"
+        },
+        {
+            "paperId": "4ef4ab1766614b8a605cb3308a07bc68ac3b03c4",
+            "title": "Event-driven contrastive divergence for spiking neuromorphic systems"
+        },
+        {
+            "paperId": "aeb2607db853918c031dd3bf7c488cd26180935a",
+            "title": "Real-time classification and sensor fusion with a spiking deep belief network"
+        },
+        {
+            "paperId": "38f35dd624cd1cf827416e31ac5e0e0454028eca",
+            "title": "Regularization of Neural Networks using DropConnect"
+        },
+        {
+            "paperId": "b7b915d508987b73b61eccd2b237e7ed099a2d29",
+            "title": "Maxout Networks"
+        },
+        {
+            "paperId": "01974d9f865235169a2ab038e94f11615fd95df9",
+            "title": "Alloxan Induced Oxidative Stress and Impairment of Oxidative Defense System in rats"
+        },
+        {
+            "paperId": "22de57401fc3972913a1f8c71a3a791fcaf5c1a2",
+            "title": "An Event-Driven Multi-Kernel Convolution Processor Module for Event-Driven Vision Sensors"
+        },
+        {
+            "paperId": "ea9d2a2b4ce11aaf85136840c65f3bc9c03ab649",
+            "title": "Understanding the difficulty of training deep feedforward neural networks"
+        },
+        {
+            "paperId": "28ffe0dd4da19306d47dc26fd14e8563e516edc7",
+            "title": "Computation with Spikes in a Winner-Take-All Network"
+        },
+        {
+            "paperId": "c20cc01c7d9758fb49d1d928b5a66056f025138c",
+            "title": "Computing spike-based convolutions on GPUs"
+        },
+        {
+            "paperId": "20b003b91679fd88b63e9bfab6f05f1e7ecabe2c",
+            "title": "Sparse Coding via Thresholding and Local Competition in Neural Circuits"
+        },
+        {
+            "paperId": "843959ffdccf31c6694d135fad07425924f785b1",
+            "title": "Extracting and composing robust features with denoising autoencoders"
+        },
+        {
+            "paperId": "5339f1ab6666abdedcec3d138f12d05b16e08770",
+            "title": "A 128$\\times$ 128 120 dB 15 $\\mu$s Latency Asynchronous Temporal Contrast Vision Sensor"
+        },
+        {
+            "paperId": "f588c52762bc302a4f45dc061652eb09fee17832",
+            "title": "Unsupervised Learning of Visual Features through Spike Timing Dependent Plasticity"
+        },
+        {
+            "paperId": "0dce4e8f14052e6569ca0b1b4d012e24d938b0f6",
+            "title": "On the computational power of circuits of spiking neurons"
+        },
+        {
+            "paperId": "bb4bad84a2fd896edfa4f5c22061b2913fec500d",
+            "title": "Feature Discovery by Competive Learning"
+        },
+        {
+            "paperId": "b96d308a9df2f824dc0acd8ea206522877b07580",
+            "title": "Backprop"
+        },
+        {
+            "paperId": "4f8d648c52edf74e41b0996128aa536e13cc7e82",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": null,
+            "title": "be construed as a potential con\ufb02ict of interest"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": null,
+            "title": "Intelligence and Statistics (Sardinia)"
+        },
+        {
+            "paperId": null,
+            "title": "Automated Experimentation the Philosophy of Scientific Experimentation: a Review the Rise of Experimental Science"
+        },
+        {
+            "paperId": null,
+            "title": "Computing spikebased convolutions on GPUs , \u201d in IEEE International Symposium on Circuits and Systems , 2009"
+        },
+        {
+            "paperId": null,
+            "title": "A 128x128 120db 15us latency"
+        },
+        {
+            "paperId": "4388c3910a165c01a251ea7d50b18f37fac5a642",
+            "title": "Training Invariant Support Vector Machines using Selective Sampling"
+        },
+        {
+            "paperId": "849f849f647bc8d49c025dc408f4e927e12bceec",
+            "title": "SPIKING NEURON MODELS Single Neurons , Populations , Plasticity"
+        },
+        {
+            "paperId": "6d2b250bce3f73f87cec8938b25bed47c6048585",
+            "title": "The Computational Power of \u2133\ufe01\u03c9"
+        },
+        {
+            "paperId": null,
+            "title": "Electron Devices Meeting (IEDM) (San Francisco, CA)"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "6fe028a54dad296b6d25c50baaa47511df6d4123",
+            "title": "> Replace This Line with Your Paper Identification Number (double-click Here to Edit) < 1"
+        },
+        {
+            "paperId": null,
+            "title": "Frontiers in Neuroscience | www.frontiersin"
+        }
+    ]
+}

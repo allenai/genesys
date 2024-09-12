@@ -1,0 +1,138 @@
+{
+    "paperId": "2ff4b9ca75a37cec1607f1f49333b948b1c8d08b",
+    "externalIds": {
+        "ACL": "S14-2004",
+        "DBLP": "conf/semeval/PontikiGPPAM14",
+        "MAG": "2251648804",
+        "DOI": "10.3115/v1/S14-2004",
+        "CorpusId": 61955135
+    },
+    "title": "SemEval-2014 Task 4: Aspect Based Sentiment Analysis",
+    "abstract": "Sentiment analysis is increasingly viewed as a vital task both from an academic and a commercial standpoint. The majority of current approaches, however, attempt to detect the overall polarity of a sentence, paragraph, or text span, irrespective of the entities mentioned (e.g., laptops) and their aspects (e.g., battery, screen). SemEval2014 Task 4 aimed to foster research in the field of aspect-based sentiment analysis, where the goal is to identify the aspects of given target entities and the sentiment expressed for each aspect. The task provided datasets containing manually annotated reviews of restaurants and laptops, as well as a common evaluation procedure. It attracted 163 submissions from 32 teams.",
+    "venue": "International Workshop on Semantic Evaluation",
+    "year": 2014,
+    "referenceCount": 21,
+    "citationCount": 1507,
+    "influentialCitationCount": 199,
+    "openAccessPdf": {
+        "url": "https://aclanthology.org/S14-2004.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "SemEval2014 Task 4 aimed to foster research in the field of aspect-based sentiment analysis, where the goal is to identify the aspects of given target entities and the sentiment expressed for each aspect."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3467179",
+            "name": "Maria Pontiki"
+        },
+        {
+            "authorId": "50143153",
+            "name": "Dimitris Galanis"
+        },
+        {
+            "authorId": "2332587",
+            "name": "John Pavlopoulos"
+        },
+        {
+            "authorId": "36050276",
+            "name": "Haris Papageorgiou"
+        },
+        {
+            "authorId": "1752430",
+            "name": "Ion Androutsopoulos"
+        },
+        {
+            "authorId": "1756438",
+            "name": "S. Manandhar"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "7ec83febbcf98248decbd2c0453bbce689c2ddca",
+            "title": "Multi-Granular Aspect Aggregation in Aspect-Based Sentiment Analysis"
+        },
+        {
+            "paperId": "5aec88038ee576a36c2f599032927337e1cb44af",
+            "title": "Aspect Term Extraction for Sentiment Analysis: New Datasets, New Evaluation Measures and an Improved Unsupervised Method"
+        },
+        {
+            "paperId": "3b70590a8d24ad4c1569209c136a856349208718",
+            "title": "The META-SHARE Language Resources Sharing Infrastructure: Principles, Challenges, Solutions"
+        },
+        {
+            "paperId": "33c95f4d13958e65e676a9cd64bd4d8df0fdb44d",
+            "title": "Sentiment Analysis and Opinion Mining"
+        },
+        {
+            "paperId": "a97c7876ebf9ae6c468db92c3c6dc1c0be832192",
+            "title": "brat: a Web-based Tool for NLP-Assisted Text Annotation"
+        },
+        {
+            "paperId": "91fff7969f1bfe10c25c82b1e9a338a3a10066a9",
+            "title": "Aspect-based sentiment analysis of movie reviews on discussion boards"
+        },
+        {
+            "paperId": "126d3533679136677a684deb802b49f9ee54cd33",
+            "title": "A Review Selection Approach for Accurate Feature Rating Estimation"
+        },
+        {
+            "paperId": "b1eb39722b3577c46e41572099dcaad74ce43753",
+            "title": "An Unsupervised Aspect-Sentiment Model for Online Reviews"
+        },
+        {
+            "paperId": "8c8bf1efdbdbe37bd854192a7ba0716498e1802b",
+            "title": "A Joint Model of Text and Aspect Ratings for Sentiment Summarization"
+        },
+        {
+            "paperId": "ff75055d4e47737702d3b550879d6128cec13233",
+            "title": "Extracting Product Features and Opinions from Reviews"
+        },
+        {
+            "paperId": "b61edf6d800e8e4f9285f0fb3707938ce9c03661",
+            "title": "Pulse: Mining Customer Opinions from Free Text"
+        },
+        {
+            "paperId": "cdcf7cb29f37ac0546961ea8a076075b9cc1f992",
+            "title": "Mining and summarizing customer reviews"
+        },
+        {
+            "paperId": "64b8553bd62997d332910078bcd5ee74a43f9350",
+            "title": "Mining Opinion Features in Customer Reviews"
+        },
+        {
+            "paperId": "9e7c7853a16a378cc24a082153b282257a9675b7",
+            "title": "Thumbs Up or Thumbs Down? Semantic Orientation Applied to Unsupervised Classification of Reviews"
+        },
+        {
+            "paperId": "12d0353ce8b41b7e5409e5a4a611110aee33c7bc",
+            "title": "Thumbs up? Sentiment Classification using Machine Learning Techniques"
+        },
+        {
+            "paperId": "990c7e5b74d8a26227f2a135e2a61ec906571691",
+            "title": "Synthesis Lectures on Human Language Technologies"
+        },
+        {
+            "paperId": "1b41abbf9d3707a1a5c0fcf8e1f7734da0e61703",
+            "title": "Beyond the Stars: Improving Rating Predictions using Review Text Content"
+        },
+        {
+            "paperId": null,
+            "title": "A. References to the target entity (the restaurant or laptop the review is about) as a whole and mentions of other entities"
+        },
+        {
+            "paperId": null,
+            "title": "Verbs or verbals (words formed from a verb, but functioning as a different part of speech e.g., gerunds and participles) naming aspects,"
+        },
+        {
+            "paperId": null,
+            "title": "Overall I would recommend it and go back again \u2192 aspect categories discussed: anecdotes/miscellaneous"
+        },
+        {
+            "paperId": null,
+            "title": "If an aspect term appears in a sentence more than once, all of its occurrences in the sentence should be annotated"
+        }
+    ]
+}

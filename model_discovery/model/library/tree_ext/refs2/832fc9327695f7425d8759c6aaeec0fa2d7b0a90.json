@@ -1,0 +1,175 @@
+{
+    "paperId": "832fc9327695f7425d8759c6aaeec0fa2d7b0a90",
+    "externalIds": {
+        "MAG": "2510759893",
+        "DBLP": "conf/acl/HewlettLJPFHKB16",
+        "ACL": "P16-1145",
+        "ArXiv": "1608.03542",
+        "DOI": "10.18653/v1/P16-1145",
+        "CorpusId": 15870937
+    },
+    "title": "WikiReading: A Novel Large-scale Language Understanding Task over Wikipedia",
+    "abstract": "We present WIKIREADING, a large-scale natural language understanding task and publicly-available dataset with 18 million instances. The task is to predict textual values from the structured knowledge base Wikidata by reading the text of the corresponding Wikipedia articles. The task contains a rich variety of challenging classification and extraction sub-tasks, making it well-suited for end-to-end models such as deep neural networks (DNNs). We compare various state-of-the-art DNNbased architectures for document classification, information extraction, and question answering. We find that models supporting a rich answer space, such as word or character sequences, perform best. Our best-performing model, a word-level sequence to sequence model with a mechanism to copy out-of-vocabulary words, obtains an accuracy of 71.8%.",
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2016,
+    "referenceCount": 28,
+    "citationCount": 136,
+    "influentialCitationCount": 17,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/P16-1145.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents WIKIREADING, a large-scale natural language understanding task and publicly-available dataset with 18 million instances, and compares various state-of-the-art DNNbased architectures for document classification, information extraction, and question answering."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "34979516",
+            "name": "D. Hewlett"
+        },
+        {
+            "authorId": "8651990",
+            "name": "Alexandre Lacoste"
+        },
+        {
+            "authorId": "145024664",
+            "name": "Llion Jones"
+        },
+        {
+            "authorId": "3443442",
+            "name": "Illia Polosukhin"
+        },
+        {
+            "authorId": "3240386",
+            "name": "Andrew Fandrianto"
+        },
+        {
+            "authorId": "2111716473",
+            "name": "Jay Han"
+        },
+        {
+            "authorId": "2554321",
+            "name": "Matthew Kelcey"
+        },
+        {
+            "authorId": "39835551",
+            "name": "David Berthelot"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "a2499dd426c46c645ee805d7594b6687547c72d4",
+            "title": "Neural Random Access Machines"
+        },
+        {
+            "paperId": "4aa9f5150b46320f534de4747a2dd0cd7f3fe292",
+            "title": "Semi-supervised Sequence Learning"
+        },
+        {
+            "paperId": "f53e2ae46470b89cd1ce6e3bf1d60d9c59722ce1",
+            "title": "WikiQA: A Challenge Dataset for Open-Domain Question Answering"
+        },
+        {
+            "paperId": "51a55df1f023571a7e07e338ee45a3e3d66ef73e",
+            "title": "Character-level Convolutional Networks for Text Classification"
+        },
+        {
+            "paperId": "d1505c6123c102e53eb19dff312cb25cea840b72",
+            "title": "Teaching Machines to Read and Comprehend"
+        },
+        {
+            "paperId": "eb9fb8385c5824b029633c0cb68a8fb8573380ad",
+            "title": "Relation Extraction: Perspective from Convolutional Neural Networks"
+        },
+        {
+            "paperId": "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e",
+            "title": "End-To-End Memory Networks"
+        },
+        {
+            "paperId": "abb33d75dc297993fcc3fb75e0f4498f413eb4f6",
+            "title": "Towards AI-Complete Question Answering: A Set of Prerequisite Toy Tasks"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "1956c239b3552e030db1b78951f64781101125ed",
+            "title": "Addressing the Rare Word Problem in Neural Machine Translation"
+        },
+        {
+            "paperId": "dab7e605237ad4f4fe56dcba2861b8f0a57112be",
+            "title": "Wikidata"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "f3de86aeb442216a8391befcacb49e58b478f512",
+            "title": "Distributed Representations of Sentences and Documents"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17",
+            "title": "Generating Sequences With Recurrent Neural Networks"
+        },
+        {
+            "paperId": "cd96a6e0b6bb099c515be8770764d2fd18e7b878",
+            "title": "Recurrent Convolutional Neural Networks for Discourse Compositionality"
+        },
+        {
+            "paperId": "fbe358ce706371b93c10c4395cab9a78ad3aef67",
+            "title": "Multi-instance Multi-label Learning for Relation Extraction"
+        },
+        {
+            "paperId": "e7e7b9a731678bf0494fe29cbebb42a822224cc6",
+            "title": "Modeling Relations and Their Mentions without Labeled Text"
+        },
+        {
+            "paperId": "d84b57362e2010f6f65357267df7e0157af30684",
+            "title": "Distant supervision for relation extraction without labeled data"
+        },
+        {
+            "paperId": "1976c9eeccc7115d18a04f1e7fb5145db6b96002",
+            "title": "Freebase: a collaboratively created graph database for structuring human knowledge"
+        },
+        {
+            "paperId": "57faa0e5f99442d1723d2c5ccb70b1461987a7ed",
+            "title": "Autonomously semantifying wikipedia"
+        },
+        {
+            "paperId": "9c7f4412b8f0310a91334aed79b8553b2ad70908",
+            "title": "Constructing Biological Knowledge Bases by Extracting Information from Text Sources"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": null,
+            "title": "Marcin Andrychowicz , and Ilya Sutskever. 2015. Neural randomaccess machines"
+        },
+        {
+            "paperId": "822f1ed9a76a57cc19d8fda7745365b97130b97a",
+            "title": "Injecting Logical Background Knowledge into Embeddings for Relation Extraction"
+        },
+        {
+            "paperId": null,
+            "title": "Tensor\ufb02ow: Large-scale machine learning on heterogeneous systems"
+        },
+        {
+            "paperId": "9b67f9ad2efd562bdb0555dd2b4c47f0a006bb54",
+            "title": "How Wikipedia Works: And How You Can Be a Part of It"
+        }
+    ]
+}

@@ -1,0 +1,298 @@
+{
+    "paperId": "a84906dbd4d6640f918d0b6ed2a7313dda0d55f1",
+    "externalIds": {
+        "MAG": "2910628332",
+        "DBLP": "journals/corr/abs-1901-02446",
+        "ArXiv": "1901.02446",
+        "DOI": "10.1109/CVPR.2019.00656",
+        "CorpusId": 57721164
+    },
+    "title": "Panoptic Feature Pyramid Networks",
+    "abstract": "The recently introduced panoptic segmentation task has renewed our community's interest in unifying the tasks of instance segmentation (for thing classes) and semantic segmentation (for stuff classes). However, current state-of-the-art methods for this joint task use separate and dissimilar networks for instance and semantic segmentation, without performing any shared computation. In this work, we aim to unify these methods at the architectural level, designing a single network for both tasks. Our approach is to endow Mask R-CNN, a popular instance segmentation method, with a semantic segmentation branch using a shared Feature Pyramid Network (FPN) backbone. Surprisingly, this simple baseline not only remains effective for instance segmentation, but also yields a lightweight, top-performing method for semantic segmentation. In this work, we perform a detailed study of this minimally extended version of Mask R-CNN with FPN, which we refer to as Panoptic FPN, and show it is a robust and accurate baseline for both tasks. Given its effectiveness and conceptual simplicity, we hope our method can serve as a strong baseline and aid future research in panoptic segmentation.",
+    "venue": "Computer Vision and Pattern Recognition",
+    "year": 2019,
+    "referenceCount": 63,
+    "citationCount": 1110,
+    "influentialCitationCount": 213,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1901.02446",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work endsow Mask R-CNN, a popular instance segmentation method, with a semantic segmentation branch using a shared Feature Pyramid Network (FPN) backbone, and shows it is a robust and accurate baseline for both tasks."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "144843400",
+            "name": "Alexander Kirillov"
+        },
+        {
+            "authorId": "2983898",
+            "name": "Ross B. Girshick"
+        },
+        {
+            "authorId": "39353098",
+            "name": "Kaiming He"
+        },
+        {
+            "authorId": "3127283",
+            "name": "Piotr Doll\u00e1r"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "45d539264dae07bf121afd5f412f76f0367a81e7",
+            "title": "Learning to Fuse Things and Stuff"
+        },
+        {
+            "paperId": "8001fa4dd0b26cd9604b32f8b6577e327ec77a6e",
+            "title": "Triply Supervised Decoder Networks for Joint Detection and Segmentation"
+        },
+        {
+            "paperId": "4eee87d960754f755fdec073a160af3e2e31672f",
+            "title": "PSANet: Point-wise Spatial Attention Network for Scene Parsing"
+        },
+        {
+            "paperId": "50d6dcec7f1fcbde647237d43950fa5ec59d6984",
+            "title": "Panoptic Segmentation with a Joint Semantic and Instance Segmentation Network"
+        },
+        {
+            "paperId": "e29440115c5b6c05c98a63d2be0c7c232738091b",
+            "title": "Weakly- and Semi-Supervised Panoptic Segmentation"
+        },
+        {
+            "paperId": "d08b35243edc5be07387a9ed218070b31e502901",
+            "title": "Group Normalization"
+        },
+        {
+            "paperId": "5cc22f65bf4e5c0aa61f3139da832d3a946e15cf",
+            "title": "Path Aggregation Network for Instance Segmentation"
+        },
+        {
+            "paperId": "9217e28b2273eb3b26e4e9b7b498b4661e6e09f5",
+            "title": "Encoder-Decoder with Atrous Separable Convolution for Semantic Image Segmentation"
+        },
+        {
+            "paperId": "dce916351ef589afa7a63452648dd8acba931e92",
+            "title": "Panoptic Segmentation"
+        },
+        {
+            "paperId": "6b89c45ed9e12d3392e28730f80234aa82e41cbc",
+            "title": "MaskLab: Instance Segmentation by Refining Object Detection with Semantic and Direction Features"
+        },
+        {
+            "paperId": "325093f2c5b33d7507c10aa422e96aa5b10a33f1",
+            "title": "In-place Activated BatchNorm for Memory-Optimized Training of DNNs"
+        },
+        {
+            "paperId": "04957e40d47ca89d38653e97f728883c0ad26e5d",
+            "title": "Cascade R-CNN: Delving Into High Quality Object Detection"
+        },
+        {
+            "paperId": "8899094797e82c5c185a0893896320ef77f60e64",
+            "title": "Non-local Neural Networks"
+        },
+        {
+            "paperId": "642897c7d92262f9f40a1d6192d34c33487ac227",
+            "title": "MegDet: A Large Mini-Batch Object Detector"
+        },
+        {
+            "paperId": "79828e6e9f137a583082b8b5a9dfce0c301989b8",
+            "title": "The Mapillary Vistas Dataset for Semantic Understanding of Street Scenes"
+        },
+        {
+            "paperId": "ede3af38e30ca332af0c1ce3bd5144070f7fb7f3",
+            "title": "SGN: Sequential Grouping Networks for Instance Segmentation"
+        },
+        {
+            "paperId": "fb37561499573109fc2cebb6a7b08f44917267dd",
+            "title": "Squeeze-and-Excitation Networks"
+        },
+        {
+            "paperId": "ae9f8036244c1cc52d228a27d2962b7a5431fb85",
+            "title": "BlitzNet: A Real-Time Deep Network for Scene Understanding"
+        },
+        {
+            "paperId": "2a5667702b0f1ff77dde8fb3e2e10d4e05e8de9d",
+            "title": "Scene Parsing through ADE20K Dataset"
+        },
+        {
+            "paperId": "ee4a012a4b12d11d7ab8c0e79c61e807927a163c",
+            "title": "Rethinking Atrous Convolution for Semantic Image Segmentation"
+        },
+        {
+            "paperId": "ce83340ebbdeda56d97f00dafbf7c502c9ce06f0",
+            "title": "BiSeg: Simultaneous Instance Segmentation and Semantic Segmentation with Fully Convolutional Networks"
+        },
+        {
+            "paperId": "f98788f32b0d33d200c9bc7d900d0ef39519c927",
+            "title": "Multi-task Learning Using Uncertainty to Weigh Losses for Scene Geometry and Semantics"
+        },
+        {
+            "paperId": "27b34c8448426cc08165c17f4fd72459ca157fdd",
+            "title": "Pixelwise Instance Segmentation with a Dynamically Instantiated Network"
+        },
+        {
+            "paperId": "1a0912bb76777469295bb2c059faee907e7f3258",
+            "title": "Mask R-CNN"
+        },
+        {
+            "paperId": "4a73a1840945e87583d89ca0216a2c449d50a4a3",
+            "title": "Deformable Convolutional Networks"
+        },
+        {
+            "paperId": "0095b9f73c000f2609fc81ffb7769df7cd77bda1",
+            "title": "COCO-Stuff: Thing and Stuff Classes in Context"
+        },
+        {
+            "paperId": "2a94c84383ee3de5e6211d43d16e7de387f68878",
+            "title": "Feature Pyramid Networks for Object Detection"
+        },
+        {
+            "paperId": "1031a69923b80ad01cf3fbb703d10757a80e699b",
+            "title": "Pyramid Scene Parsing Network"
+        },
+        {
+            "paperId": "1226a8943e813bf60035bd59442bea7de83cbc3d",
+            "title": "InstanceCut: From Edges to Instances with MultiCut"
+        },
+        {
+            "paperId": "0366b36006a6b37c673a42aad03ae77e8ef6ecda",
+            "title": "Fully Convolutional Instance-Aware Semantic Segmentation"
+        },
+        {
+            "paperId": "f6e0856b4a9199fa968ac00da612a9407b5cb85c",
+            "title": "Aggregated Residual Transformations for Deep Neural Networks"
+        },
+        {
+            "paperId": "922197906907dc0a5e1b51fae40d3149333ecacf",
+            "title": "UberNet: Training a Universal Convolutional Neural Network for Low-, Mid-, and High-Level Vision Using Diverse Datasets and Limited Memory"
+        },
+        {
+            "paperId": "cab372bc3824780cce20d9dd1c22d4df39ed081a",
+            "title": "DeepLab: Semantic Image Segmentation with Deep Convolutional Nets, Atrous Convolution, and Fully Connected CRFs"
+        },
+        {
+            "paperId": "2796c448023b78fd77f3a4b57966f257c5e654c2",
+            "title": "Laplacian Pyramid Reconstruction and Refinement for Semantic Segmentation"
+        },
+        {
+            "paperId": "2976605dc3b73377696537291d45f09f1ab1fbf5",
+            "title": "Cross-Stitch Networks for Multi-task Learning"
+        },
+        {
+            "paperId": "c8c494ee5488fe20e0aa01bddf3fc4632086d654",
+            "title": "The Cityscapes Dataset for Semantic Urban Scene Understanding"
+        },
+        {
+            "paperId": "361b19d2c00d086fa8ef860374f5e1d862fd2f30",
+            "title": "Learning to Refine Object Segments"
+        },
+        {
+            "paperId": "848938e6199bad08f1db6f3239b260cfa901e95f",
+            "title": "Stacked Hourglass Networks for Human Pose Estimation"
+        },
+        {
+            "paperId": "adc4e63b58cf4092420533fd877b8c29f8e2ec1d",
+            "title": "Inside-Outside Net: Detecting Objects in Context with Skip Pooling and Recurrent Neural Networks"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "4d7a9197433acbfb24ef0e9d0f33ed1699e4a5b0",
+            "title": "SSD: Single Shot MultiBox Detector"
+        },
+        {
+            "paperId": "364d9e665c163c47c307495135e2b69d3cf0529b",
+            "title": "Recombinator Networks: Learning Coarse-to-Fine Feature Aggregation"
+        },
+        {
+            "paperId": "7f5fc84819c0cf94b771fe15141f65b123f7b8ec",
+            "title": "Multi-Scale Context Aggregation by Dilated Convolutions"
+        },
+        {
+            "paperId": "b0c065cd43aa7280e766b5dcbcc7e26abce59330",
+            "title": "SegNet: A Deep Convolutional Encoder-Decoder Architecture for Image Segmentation"
+        },
+        {
+            "paperId": "424561d8585ff8ebce7d5d07de8dbf7aae5e7270",
+            "title": "Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks"
+        },
+        {
+            "paperId": "6364fdaa0a0eccd823a779fcdd489173f938e91a",
+            "title": "U-Net: Convolutional Networks for Biomedical Image Segmentation"
+        },
+        {
+            "paperId": "7ffdbc358b63378f07311e883dddacc9faeeaf4b",
+            "title": "Fast R-CNN"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "6fc6803df5f9ae505cae5b2f178ade4062c768d0",
+            "title": "Fully convolutional networks for semantic segmentation"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "616b246e332573af1f4859aa91440280774c183a",
+            "title": "The Pascal Visual Object Classes Challenge: A Retrospective"
+        },
+        {
+            "paperId": "9f6674449c973fffa40aa890470009c962d809b5",
+            "title": "Scene Parsing with Object Instances and Occlusion Ordering"
+        },
+        {
+            "paperId": "71b7178df5d2b112d07e45038cb5637208659ff7",
+            "title": "Microsoft COCO: Common Objects in Context"
+        },
+        {
+            "paperId": "2f4df08d9072fc2ac181b7fced6a245315ce05c8",
+            "title": "Rich Feature Hierarchies for Accurate Object Detection and Semantic Segmentation"
+        },
+        {
+            "paperId": "8687d2dc63fa7b9d085712910d0e3b663b76ca0c",
+            "title": "Describing the scene as a whole: Joint object detection, scene classification and semantic segmentation"
+        },
+        {
+            "paperId": "cca9200d9da958b7f90eab901b2f30c04f1e0e9c",
+            "title": "Image Parsing: Unifying Segmentation, Detection, and Recognition"
+        },
+        {
+            "paperId": null,
+            "title": "Panoptic Feature Pyramid Networks"
+        },
+        {
+            "paperId": null,
+            "title": "Detectron"
+        },
+        {
+            "paperId": null,
+            "title": "Challenge: G-RMI team. 2017"
+        },
+        {
+            "paperId": null,
+            "title": "COCO-Stuff 2017 Challenge: Oxford Active Vision Lab team"
+        },
+        {
+            "paperId": "ca5cb4e0826b424adb81cbb4f2e3c88c391a4075",
+            "title": "Influence of cultivation temperature on the ligninolytic activity of selected fungal strains"
+        },
+        {
+            "paperId": null,
+            "title": "Adding an instance segmentation branch can provide significant benefits for semantic"
+        },
+        {
+            "paperId": null,
+            "title": "Adding a semantic segmentation branch can slightly improve instance segmentation results over a single-task baseline"
+        }
+    ]
+}

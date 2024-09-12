@@ -1,0 +1,93 @@
+{
+    "paperId": "f6d16b4db8779721715a00008ba03b5c67e4669c",
+    "externalIds": {
+        "DBLP": "conf/nips/RossetZH03",
+        "MAG": "2168885649",
+        "CorpusId": 455073
+    },
+    "title": "Margin Maximizing Loss Functions",
+    "abstract": "Margin maximizing properties play an important role in the analysis of classification models, such as boosting and support vector machines. Margin maximization is theoretically interesting because it facilitates generalization error analysis, and practically interesting because it presents a clear geometric interpretation of the models being built. We formulate and prove a sufficient condition for the solutions of regularized loss functions to converge to margin maximizing separators, as the regularization vanishes. This condition covers the hinge loss of SVM, the exponential loss of AdaBoost and logistic regression loss. We also generalize it to multi-class classification problems, and present margin maximizing multi-class versions of logistic regression and support vector machines.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2003,
+    "referenceCount": 14,
+    "citationCount": 139,
+    "influentialCitationCount": 21,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A sufficient condition for the solutions of regularized loss functions to converge to margin maximizing separators, as the regularization vanishes is formulated and proved."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1816048",
+            "name": "Saharon Rosset"
+        },
+        {
+            "authorId": "115816494",
+            "name": "Ji Zhu"
+        },
+        {
+            "authorId": "1784682",
+            "name": "T. Hastie"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "f5616db9e1e377ef580bbe5c05b6e969b16dc222",
+            "title": "Boosting as a Regularized Path to a Maximum Margin Classifier"
+        },
+        {
+            "paperId": "6f4493eff2531536a7aeb3fc11d62c30a8f487f6",
+            "title": "Special Invited Paper-Additive logistic regression: A statistical view of boosting"
+        },
+        {
+            "paperId": "a92684c164b0c46020a371ae5116df74bb37a412",
+            "title": "Prediction Games and Arcing Algorithms"
+        },
+        {
+            "paperId": "3ac1fddab4caf22d1ce116d0712592dab8f4fb96",
+            "title": "Arbitrary-norm separating plane"
+        },
+        {
+            "paperId": "639057ad00ddaf8bbed3fa0dbd9663dfeb663d62",
+            "title": "Boosting in the Limit: Maximizing the Margin of Learned Ensembles"
+        },
+        {
+            "paperId": "4ba566223e426677d12a9a18418c023a4deec77e",
+            "title": "A decision-theoretic generalization of on-line learning and an application to boosting"
+        },
+        {
+            "paperId": "4d19272112b50547614479a0c409fca66e3b05f7",
+            "title": "Boosting the margin: A new explanation for the effectiveness of voting methods"
+        },
+        {
+            "paperId": null,
+            "title": "2001).Elementsof Stat.Learning. Springer  -Verlag"
+        },
+        {
+            "paperId": null,
+            "title": "Elements of Stat"
+        },
+        {
+            "paperId": "8213dbed4db44e113af3ed17d6dad57471a0c048",
+            "title": "The Nature of Statistical Learning Theory"
+        },
+        {
+            "paperId": null,
+            "title": "1999).Arbitrary-normseparatingplane.OperationsResear  ch Letters,Vol"
+        },
+        {
+            "paperId": "89a37349688b49bbfc9fd643db5a41b9071f9ca2",
+            "title": "Multi-Class Support Vector Machines"
+        },
+        {
+            "paperId": null,
+            "title": "1998).Multi-classsupportvectormachines.Technical reportCSD- TR-98-04,deptof CS,RoyalHolloway"
+        },
+        {
+            "paperId": "5451278e1a11cf3f1be28a05f38d36c8641e68f7",
+            "title": "The Nature of Statistical Learning"
+        }
+    ]
+}

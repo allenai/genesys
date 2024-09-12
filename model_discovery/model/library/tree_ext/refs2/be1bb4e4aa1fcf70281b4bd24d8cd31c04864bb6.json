@@ -1,0 +1,166 @@
+{
+    "paperId": "be1bb4e4aa1fcf70281b4bd24d8cd31c04864bb6",
+    "externalIds": {
+        "MAG": "2432717477",
+        "DBLP": "journals/corr/VinyalsBLKW16",
+        "ArXiv": "1606.04080",
+        "CorpusId": 8909022
+    },
+    "title": "Matching Networks for One Shot Learning",
+    "abstract": "Learning from a few examples remains a key challenge in machine learning. Despite recent advances in important domains such as vision and language, the standard supervised deep learning paradigm does not offer a satisfactory solution for learning new concepts rapidly from little data. In this work, we employ ideas from metric learning based on deep neural features and from recent advances that augment neural networks with external memories. Our framework learns a network that maps a small labelled support set and an unlabelled example to its label, obviating the need for fine-tuning to adapt to new class types. We then define one-shot learning problems on vision (using Omniglot, ImageNet) and language tasks. Our algorithm improves one-shot accuracy on ImageNet from 87.6% to 93.2% and from 88.0% to 93.8% on Omniglot compared to competing approaches. We also demonstrate the usefulness of the same model on language modeling by introducing a one-shot task on the Penn Treebank.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2016,
+    "referenceCount": 30,
+    "citationCount": 6600,
+    "influentialCitationCount": 1343,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work employs ideas from metric learning based on deep neural features and from recent advances that augment neural networks with external memories to learn a network that maps a small labelled support set and an unlabelled example to its label, obviating the need for fine-tuning to adapt to new class types."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1689108",
+            "name": "O. Vinyals"
+        },
+        {
+            "authorId": "1723876",
+            "name": "C. Blundell"
+        },
+        {
+            "authorId": "2542999",
+            "name": "T. Lillicrap"
+        },
+        {
+            "authorId": "2645384",
+            "name": "K. Kavukcuoglu"
+        },
+        {
+            "authorId": "1688276",
+            "name": "Daan Wierstra"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "3904315e2eca50d0086e4b7273f7fd707c652230",
+            "title": "Meta-Learning with Memory-Augmented Neural Networks"
+        },
+        {
+            "paperId": "23ffaa0fe06eae05817f527a47ac3291077f9e58",
+            "title": "Rethinking the Inception Architecture for Computer Vision"
+        },
+        {
+            "paperId": "d01379ebb53c66a4ccf5f4959d904dcf9e161e41",
+            "title": "Order Matters: Sequence to sequence for sets"
+        },
+        {
+            "paperId": "35b91b365ceb016fb3e022577cec96fb9b445dc5",
+            "title": "The Goldilocks Principle: Reading Children's Books with Explicit Memory Representations"
+        },
+        {
+            "paperId": "d1505c6123c102e53eb19dff312cb25cea840b72",
+            "title": "Teaching Machines to Read and Comprehend"
+        },
+        {
+            "paperId": "9653d5c2c7844347343d073bbedd96e05d52f69b",
+            "title": "Pointer Networks"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "3ac1a7d6630cd1c7b70c4c2c7bc92c40df1162ca",
+            "title": "Deep Metric Learning Using Triplet Network"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "71ae756c75ac89e2d731c9c79649562b5768ff39",
+            "title": "Memory Networks"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "f264e8b33c0d49a692a6ce2c4bcb28588aeb7d97",
+            "title": "Recurrent Neural Network Regularization"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "be2f5d8a7e6b415f1e22cee7dfd9be56b1afd8be",
+            "title": "Zero-Shot Learning by Convex Combination of Semantic Embeddings"
+        },
+        {
+            "paperId": "b8de958fead0d8a9619b55c7299df3257c624a96",
+            "title": "DeCAF: A Deep Convolutional Activation Feature for Generic Visual Recognition"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "ad33d1fa8628cb55c32fb52feb537f65184c3b29",
+            "title": "Learning a Nonlinear Embedding by Preserving Class Neighbourhood Structure"
+        },
+        {
+            "paperId": "78947497cbbffc691aac3f590d972130259af9ce",
+            "title": "Distance Metric Learning for Large Margin Nearest Neighbor Classification"
+        },
+        {
+            "paperId": "24c287d97982216c8f35c8d326dc2ec2d2475f3e",
+            "title": "Neighbourhood Components Analysis"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "6b502694a8e23d3b9ab08fa7a0c6d5e82bd1f066",
+            "title": "Locally Weighted Learning"
+        },
+        {
+            "paperId": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+            "title": "Building a Large Annotated Corpus of English: The Penn Treebank"
+        },
+        {
+            "paperId": "f216444d4f2959b4520c61d20003fa30a199670a",
+            "title": "Siamese Neural Networks for One-Shot Image Recognition"
+        },
+        {
+            "paperId": "31868290adf1c000c611dfc966b514d5a34e8d23",
+            "title": "FUNDAMENTAL TECHNOLOGIES IN MODERN SPEECH RECOGNITION Digital Object Identifier 10.1109/MSP.2012.2205597"
+        },
+        {
+            "paperId": "100a038fdf29b4b20801887f0ec40e3f10d9a4f9",
+            "title": "One shot learning of simple visual concepts"
+        },
+        {
+            "paperId": "bea5780d621e669e8069f05d0f2fc0db9df4b50f",
+            "title": "Convolutional Deep Belief Networks on CIFAR-10"
+        },
+        {
+            "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+            "title": "Recurrent neural network based language model"
+        }
+    ]
+}

@@ -1,0 +1,169 @@
+{
+    "paperId": "f0bf18fc90674fbef616e8c54bdefb3adc237e4d",
+    "externalIds": {
+        "DBLP": "conf/nips/YuilleR01",
+        "MAG": "2147102238",
+        "CorpusId": 6538459
+    },
+    "title": "The Concave-Convex Procedure (CCCP)",
+    "abstract": "We introduce the Concave-Convex procedure (CCCP) which constructs discrete time iterative dynamical systems which are guaranteed to monotonically decrease global optimization/energy functions. It can be applied to (almost) any optimization problem and many existing algorithms can be interpreted in terms of CCCP. In particular, we prove relationships to some applications of Legendre transform techniques. We then illustrate CCCP by applications to Potts models, linear assignment, EM algorithms, and Generalized Iterative Scaling (GIS). CCCP can be used both as a new way to understand existing optimization algorithms and as a procedure for generating new algorithms.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2001,
+    "referenceCount": 34,
+    "citationCount": 502,
+    "influentialCitationCount": 79,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces the Concave-Convex procedure (CCCP) which constructs discrete time iterative dynamical systems which are guaranteed to monotonically decrease global optimization/energy functions and proves relationships to some applications of Legendre transform techniques."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145081362",
+            "name": "A. Yuille"
+        },
+        {
+            "authorId": "145257017",
+            "name": "Anand Rangarajan"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "470490c678f55deaaf2a90b752e0526103878811",
+            "title": "Block-iterative interior point optimization methods for image reconstruction from limited data"
+        },
+        {
+            "paperId": "d39f230f4e58fd362058d81e25cf1ae690645b37",
+            "title": "Self-annealing and self-annihilation: unifying deterministic annealing and relaxation labeling"
+        },
+        {
+            "paperId": "a9e0444b694a804a9088a622a6123e10a04430ae",
+            "title": "Optimization Transfer Using Surrogate Objective Functions"
+        },
+        {
+            "paperId": "213e7bf36330a7fcc20ec53345f9d509a4ead1a1",
+            "title": "[Optimization Transfer Using Surrogate Objective Functions]: Discussion"
+        },
+        {
+            "paperId": "9f87a11a523e4680e61966e36ea2eac516096f23",
+            "title": "A View of the Em Algorithm that Justifies Incremental, Sparse, and other Variants"
+        },
+        {
+            "paperId": "a2aa39f6ef8017b232e85e5cda20c43e2464b4ad",
+            "title": "A Convergence Proof for the Softassign Quadratic Assignment Algorithm"
+        },
+        {
+            "paperId": "7b782c8204b8b8c86a088a443a948221a239ec26",
+            "title": "A Novel Optimizing Network Architecture with Applications"
+        },
+        {
+            "paperId": "cbc6853ac9b52712d048ea1275b0c22033f156af",
+            "title": "Convex Potentials and their Conjugates in Analog Mean-Field Optimization"
+        },
+        {
+            "paperId": "4dc175e8f6e7ca5c40ffd6fb9c6b92323bf7daf2",
+            "title": "Additive versus exponentiated gradient updates for linear prediction"
+        },
+        {
+            "paperId": "b951b9f78b98a186ba259027996a48e4189d37e5",
+            "title": "Inducing Features of Random Fields"
+        },
+        {
+            "paperId": "ed223a6a3f853a6720406d6c22680e02e3953b9c",
+            "title": "Statistical Physics Algorithms That Converge"
+        },
+        {
+            "paperId": "429b1cf154d3d5e24d98b6d83f875cd91aab72fd",
+            "title": "The invisible hand algorithm: Solving the assignment problem with statistical physics"
+        },
+        {
+            "paperId": "f6d8a7fc2e2d53923832f9404376512068ca2a57",
+            "title": "Hierarchical Mixtures of Experts and the EM Algorithm"
+        },
+        {
+            "paperId": "e92ecd9b2b11717181e1df98a9c73bc93a5bf135",
+            "title": "Analog neural networks with local competition. I. Dynamics and stability."
+        },
+        {
+            "paperId": "493cd5e15d6b8726ce27ed0595f1993c27525670",
+            "title": "Numerical recipes"
+        },
+        {
+            "paperId": "59fbb0b127de1ea9be27d5f8c1e30d0cf394a503",
+            "title": "Generalized Deformable Models, Statistical Physics, and Matching Problems"
+        },
+        {
+            "paperId": "b70ca7821dbc882237cbe7fd2baa0c5837fd3076",
+            "title": "Optimization and Stability Theory for Economic Analysis: DYNAMICS AND STABILITY"
+        },
+        {
+            "paperId": "477db9d84d8875da57664d39af140d884d858222",
+            "title": "An Analysis of the Elastic Net Approach to the Traveling Salesman Problem"
+        },
+        {
+            "paperId": "10b142806ef289156a06478cfa9bfc8ca43255ba",
+            "title": "Dynamics of iterated-map neural networks."
+        },
+        {
+            "paperId": "ac84c7e453c6848f5b873492e56f74d11bde71aa",
+            "title": "Introduction to applied mathematics"
+        },
+        {
+            "paperId": "a94be030ccd68f3a5a3bf9245137fe114c549819",
+            "title": "An analogue approach to the travelling salesman problem using an elastic net method"
+        },
+        {
+            "paperId": "f866fa9a6c13d72a87b8ff2da7c582e987db53a6",
+            "title": "Another interpretation of the EM algorithm for mixture distributions"
+        },
+        {
+            "paperId": "d36efb9ad91e00faa334b549ce989bfae7e2907a",
+            "title": "Maximum likelihood from incomplete data via the EM - algorithm plus discussions on the paper"
+        },
+        {
+            "paperId": "37c931cbaa9217b829596dd196520a838562a109",
+            "title": "Generalized Iterative Scaling for Log-Linear Models"
+        },
+        {
+            "paperId": "441f33fab0614fa0696be54a046cbc692b7e70a2",
+            "title": "A Relationship Between Arbitrary Positive Matrices and Doubly Stochastic Matrices"
+        },
+        {
+            "paperId": "3f3fbc98433ab8ecf38e45bfebb6e5bd3c333897",
+            "title": "\u2026 and Statistics"
+        },
+        {
+            "paperId": "3fc40b83ad9066c7b547167c851dcefab2ec9ad2",
+            "title": "A Double-Loop Algorithm to Minimize the Bethe and Kikuchi Free Energies"
+        },
+        {
+            "paperId": "3acaa12ea71ef5569b82d25c97ffbe3a16399de7",
+            "title": "Bethe free energy, Kikuchi approximations, and belief propagation algorithms"
+        },
+        {
+            "paperId": "16c55848a4835f6cd00e092bd0983de7951aa949",
+            "title": "Expectation-Maximization as lower bound maximization"
+        },
+        {
+            "paperId": "3a58c3eafcc642ffa2e571e069e53f20bb1d1150",
+            "title": "Pairwise Data Clustering by Deterministic Annealing"
+        },
+        {
+            "paperId": null,
+            "title": "Partitioned mixture distributions: an adaptive bayesian Draft submitted to Neural Computation network for low-level image processing"
+        },
+        {
+            "paperId": "7d9b251a729004e468680c55c99435dd8dd15b78",
+            "title": "Algebraic transformations of objective functions"
+        },
+        {
+            "paperId": null,
+            "title": "Parameter Estimation for Markov Random Fields with Hidden Variables and Experiments with the EM Algorithm \" . Working Pa- Draft submitted to Neural Computation per no"
+        },
+        {
+            "paperId": "44a6b76e5cbc61330663d0a9f393caf91a3a1be8",
+            "title": "The relaxation method of finding the common point of convex sets and its application to the solution of problems in convex programming"
+        }
+    ]
+}

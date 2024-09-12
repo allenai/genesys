@@ -1,0 +1,382 @@
+{
+    "paperId": "fc1d981dd051063ae586a56b05390fe3ea82f040",
+    "externalIds": {
+        "DBLP": "journals/corr/abs-1803-05567",
+        "MAG": "2794365787",
+        "ArXiv": "1803.05567",
+        "CorpusId": 3912183
+    },
+    "title": "Achieving Human Parity on Automatic Chinese to English News Translation",
+    "abstract": "Machine translation has made rapid advances in recent years. Millions of people are using it today in online translation systems and mobile applications in order to communicate across language barriers. The question naturally arises whether such systems can approach or achieve parity with human translations. In this paper, we first address the problem of how to define and accurately measure human parity in translation. We then describe Microsoft's machine translation system and measure the quality of its translations on the widely used WMT 2017 news translation task from Chinese to English. We find that our latest neural machine translation system has reached a new state-of-the-art, and that the translation quality is at human parity when compared to professional human translations. We also find that it significantly exceeds the quality of crowd-sourced non-professional translations.",
+    "venue": "arXiv.org",
+    "year": 2018,
+    "referenceCount": 65,
+    "citationCount": 583,
+    "influentialCitationCount": 22,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is found that Microsoft's latest neural machine translation system has reached a new state-of-the-art, and that the translation quality is at human parity when compared to professional human translations."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "143925074",
+            "name": "Hany Hassan"
+        },
+        {
+            "authorId": "2266204",
+            "name": "Anthony Aue"
+        },
+        {
+            "authorId": "2118429641",
+            "name": "Chang Chen"
+        },
+        {
+            "authorId": "2066238647",
+            "name": "Vishal Chowdhary"
+        },
+        {
+            "authorId": "2109724821",
+            "name": "Jonathan Clark"
+        },
+        {
+            "authorId": "3359291",
+            "name": "C. Federmann"
+        },
+        {
+            "authorId": "144531812",
+            "name": "Xuedong Huang"
+        },
+        {
+            "authorId": "1733933",
+            "name": "Marcin Junczys-Dowmunt"
+        },
+        {
+            "authorId": "119117298",
+            "name": "W. Lewis"
+        },
+        {
+            "authorId": "2112143809",
+            "name": "Mu Li"
+        },
+        {
+            "authorId": "1803054",
+            "name": "Shujie Liu"
+        },
+        {
+            "authorId": "2110264337",
+            "name": "Tie-Yan Liu"
+        },
+        {
+            "authorId": "3440939",
+            "name": "Renqian Luo"
+        },
+        {
+            "authorId": "145280401",
+            "name": "Arul Menezes"
+        },
+        {
+            "authorId": "143826491",
+            "name": "Tao Qin"
+        },
+        {
+            "authorId": "1745715",
+            "name": "F. Seide"
+        },
+        {
+            "authorId": "48391466",
+            "name": "Xu Tan"
+        },
+        {
+            "authorId": "143853336",
+            "name": "Fei Tian"
+        },
+        {
+            "authorId": "47767550",
+            "name": "Lijun Wu"
+        },
+        {
+            "authorId": "2362902",
+            "name": "Shuangzhi Wu"
+        },
+        {
+            "authorId": "2794096",
+            "name": "Yingce Xia"
+        },
+        {
+            "authorId": "40232931",
+            "name": "Dongdong Zhang"
+        },
+        {
+            "authorId": "4947404",
+            "name": "Zhirui Zhang"
+        },
+        {
+            "authorId": "92660691",
+            "name": "Ming Zhou"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "4a5bd1f2935f9a3c33f1a103a1d43377e61265a0",
+            "title": "Conditional Image-to-Image Translation"
+        },
+        {
+            "paperId": "a8492c76ea47b71583a662ec2e791158df9d8995",
+            "title": "Joint Training for Neural Machine Translation Models with Monolingual Data"
+        },
+        {
+            "paperId": "2115a9127cb7ea4dfd5c3a08bfc41bab3b279266",
+            "title": "Universal Neural Machine Translation for Extremely Low Resource Languages"
+        },
+        {
+            "paperId": "062be14f127e590a8476fdb535337d4d7e1caad9",
+            "title": "Dual Transfer Learning for Neural Machine Translation with Marginal Distribution Regularization"
+        },
+        {
+            "paperId": "0106ac3ed6867af22d732cf7640b766cc98d256b",
+            "title": "Deliberation Networks: Sequence Generation Beyond One-Pass Decoding"
+        },
+        {
+            "paperId": "5a7f3f0fdbdc29fddc7a41098ee8bbc3f7cfd1a1",
+            "title": "Toward Human Parity in Conversational Speech Recognition"
+        },
+        {
+            "paperId": "765bdcf27ebc1eb03a14f1e47aefa4dda1e03073",
+            "title": "Synthetic and Natural Noise Both Break Neural Machine Translation"
+        },
+        {
+            "paperId": "e3d772986d176057aca2f5e3eb783da53b559134",
+            "title": "Unsupervised Machine Translation Using Monolingual Corpora Only"
+        },
+        {
+            "paperId": "c2a7afbb5609a723f8eea91bfde4b02579b048d6",
+            "title": "Unsupervised Neural Machine Translation"
+        },
+        {
+            "paperId": "baf9657d66845e47413510e8ab53fdb73ebba27f",
+            "title": "Deep Dual Learning for Semantic Image Segmentation"
+        },
+        {
+            "paperId": "704aa23d0be8817dd0aa2d4794068fc167243b85",
+            "title": "Findings of the 2017 Conference on Machine Translation (WMT17)"
+        },
+        {
+            "paperId": "426b8a0e4314a7d7db210177b625cf4052283cf0",
+            "title": "Dual Inference for Machine Learning"
+        },
+        {
+            "paperId": "eb2bd0b24acd652c57782ce02f5d65f498fc8b3c",
+            "title": "Dynamic Data Selection for Neural Machine Translation"
+        },
+        {
+            "paperId": "52b15103417a47ad20465bccf86e6302391fe9ce",
+            "title": "Dual Supervised Learning"
+        },
+        {
+            "paperId": "ebe9dfd29824160d8d00c9bafdd10c25eb1fc2b9",
+            "title": "Synthetic Data for Neural Machine Translation of Spoken-Dialects"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "6f11c247df91a81a08e10c83d2b4914dfaf9d40c",
+            "title": "Question Answering and Question Generation as Dual Tasks"
+        },
+        {
+            "paperId": "43428880d75b3a14257c3ee9bda054e61eb869c0",
+            "title": "Convolutional Sequence to Sequence Learning"
+        },
+        {
+            "paperId": "deff3b0635e141297238797d924d7a9aba3a132a",
+            "title": "Sharp Models on Dull Hardware: Fast and Accurate Neural Machine Translation Decoding on the CPU"
+        },
+        {
+            "paperId": "ef3c1f6c177e37f1d0d2a61702b60c766971700b",
+            "title": "DualGAN: Unsupervised Dual Learning for Image-to-Image Translation"
+        },
+        {
+            "paperId": "5bb8d7e709d493102c027601b779eb5284a04a4d",
+            "title": "Learning Residual Images for Face Attribute Manipulation"
+        },
+        {
+            "paperId": "734d0e41828b53a748336884078777cca127dc27",
+            "title": "Improving Attention Modeling with Implicit Distortion and Fertility for Machine Translation"
+        },
+        {
+            "paperId": "a486e2839291111bb44fa1f07731ada123539f75",
+            "title": "Google\u2019s Multilingual Neural Machine Translation System: Enabling Zero-Shot Translation"
+        },
+        {
+            "paperId": "23b559b5ab27f2fca6f56c0a7b6478bcf69db509",
+            "title": "Dual Learning for Machine Translation"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "1cd7f2c74bd7ffb3a8b1527bec8795d0876a40b6",
+            "title": "Transfer Learning for Low-Resource Neural Machine Translation"
+        },
+        {
+            "paperId": "846aedd869a00c09b40f1f1f35673cb22bc87490",
+            "title": "Mastering the game of Go with deep neural networks and tree search"
+        },
+        {
+            "paperId": "33108287fbc8d94160787d7b2c7ef249d3ad6437",
+            "title": "Modeling Coverage for Neural Machine Translation"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "f3b96ef2dc1fc5e14982f1b963db8db6a54183bb",
+            "title": "Improving Neural Machine Translation Models with Monolingual Data"
+        },
+        {
+            "paperId": "113ea1e3323298c29201464c2cf3588364a33832",
+            "title": "Can machine translation systems be evaluated by the crowd alone"
+        },
+        {
+            "paperId": "1518039b5001f1836565215eb047526b3ac7f462",
+            "title": "Neural Machine Translation of Rare Words with Subword Units"
+        },
+        {
+            "paperId": "df137487e20ba7c6e1e2b9a1e749f2a578b5ad99",
+            "title": "Scheduled Sampling for Sequence Prediction with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "e33fee91f408d3f7a3e18bb7e6f974c66bd87057",
+            "title": "Batch Tuning Strategies for Statistical Machine Translation"
+        },
+        {
+            "paperId": "46309506f8d687e4963e3d0850a0506cfdc47563",
+            "title": "HyTER: Meaning-Equivalent Semantics for Translation Evaluation"
+        },
+        {
+            "paperId": "0f8992ee6418d367d8e50ecbb59b08ea15e8431f",
+            "title": "Meteor 1.3: Automatic Metric for Reliable Optimization and Evaluation of Machine Translation Systems"
+        },
+        {
+            "paperId": "396aabd694da04cdb846cb724ca9f866f345cbd5",
+            "title": "Domain Adaptation via Pseudo In-Domain Data Selection"
+        },
+        {
+            "paperId": "791c0df5557890e7a4d8c81b12cd966531e7b42c",
+            "title": "Better Hypothesis Testing for Statistical Machine Translation: Controlling for Optimizer Instability"
+        },
+        {
+            "paperId": "0482eeefa01c4cbf585f572c1fd4ed930ee222d2",
+            "title": "Intelligent Selection of Language Model Training Data"
+        },
+        {
+            "paperId": "f282db3b17282483821066cc9db0848624febd1f",
+            "title": "Error Analysis of Statistical Machine Translation Output"
+        },
+        {
+            "paperId": "d7da009f457917aa381619facfa5ffae9329a6e9",
+            "title": "Bleu: a Method for Automatic Evaluation of Machine Translation"
+        },
+        {
+            "paperId": "ef5639ff5858aa69be3408a008173618c3b5a093",
+            "title": "Validity of Randomization Tests for one-Subject Experiments"
+        },
+        {
+            "paperId": "60f788264e6278374be9dabd8e2a644cc65129b6",
+            "title": "On a Test of Whether one of Two Random Variables is Stochastically Larger than the Other"
+        },
+        {
+            "paperId": "59d823fc9877f8d448ac4c2d90e38051026e3201",
+            "title": "Individual Comparisons by Ranking Methods"
+        },
+        {
+            "paperId": "cb0ab255c4079e2082ba6e3a807529527d96687c",
+            "title": "Overview of the IWSLT 2017 Evaluation Campaign"
+        },
+        {
+            "paperId": "883b0c17021c83699fe80d1996431dcd3763b869",
+            "title": "Sogou Neural Machine Translation Systems for WMT17"
+        },
+        {
+            "paperId": null,
+            "title": "Unpaired image-to-image translation using cycle-consistent adversarial networks"
+        },
+        {
+            "paperId": null,
+            "title": "Online translations Output"
+        },
+        {
+            "paperId": "3d07b5087e53c6f7c228b3c7e769494527be228e",
+            "title": "A Study of Translation Edit Rate with Targeted Human Annotation"
+        },
+        {
+            "paperId": "a5899f1ec92af7d01f35225161430116a6eabbea",
+            "title": "A STUDY OF TRANSLATION ERROR RATE WITH TARGETED HUMAN ANNOTATION"
+        },
+        {
+            "paperId": null,
+            "title": "Data variability study Our data subsets are randomly selected from the source data"
+        },
+        {
+            "paperId": null,
+            "title": "Reference-WMT test data This is publicly available from the WMT17 website 16"
+        },
+        {
+            "paperId": null,
+            "title": "references for newstest2017 Two new references for newstest2017 , one based on human translation from scratch ( Reference-HT ), the other based on human post-editing ( Reference-PE )"
+        },
+        {
+            "paperId": null,
+            "title": "Sogou translation This is publicly available from the WMT17 website as well 17 . We used newstest2017"
+        },
+        {
+            "paperId": null,
+            "title": "Reference-PE vendor-created human post-editing output, based on Google Translate machine translation results"
+        },
+        {
+            "paperId": null,
+            "title": "Subset-2 Table 5d shows the results for our evaluation on Subset-2 . Annotators seem to have a preference for Reference-HT over Combo-4 , Combo-5 , and Combo-6 , but not signi\ufb01cantly so"
+        },
+        {
+            "paperId": null,
+            "title": "Annotator variability study To measure this, we repeat the same evaluation campaign three times. All data is collected on the same subset. We allow annotator overlap but do not enforce it. In the"
+        },
+        {
+            "paperId": null,
+            "title": "Again, the latter are not significantly different w.r.t human perceived quality"
+        },
+        {
+            "paperId": null,
+            "title": "Reference-HT vendor-created human translations of newstest2017"
+        },
+        {
+            "paperId": null,
+            "title": "Human evaluation data All data points collected in our human evaluation campaigns"
+        },
+        {
+            "paperId": null,
+            "title": "Reference-WMT Original newstest2017 reference released after WMT17"
+        },
+        {
+            "paperId": null,
+            "title": "Subset-1 , second iteration Table 5b shows the results for our second evaluation round on Subset-1"
+        }
+    ]
+}

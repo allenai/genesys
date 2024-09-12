@@ -1,0 +1,162 @@
+{
+    "paperId": "50645e3dc912d597e89d59bffb96ccc0f8e1aefa",
+    "externalIds": {
+        "DBLP": "conf/nips/AndoniILRS15",
+        "MAG": "2949388608",
+        "ArXiv": "1509.02897",
+        "CorpusId": 9222460
+    },
+    "title": "Practical and Optimal LSH for Angular Distance",
+    "abstract": "We show the existence of a Locality-Sensitive Hashing (LSH) family for the angular distance that yields an approximate Near Neighbor Search algorithm with the asymptotically optimal running time exponent. Unlike earlier algorithms with this property (e.g., Spherical LSH [1, 2]), our algorithm is also practical, improving upon the well-studied hyperplane LSH [3] in practice. We also introduce a multiprobe version of this algorithm and conduct an experimental evaluation on real and synthetic data sets. \n \nWe complement the above positive results with a fine-grained lower bound for the quality of any LSH family for angular distance. Our lower bound implies that the above LSH family exhibits a trade-off between evaluation time and quality that is close to optimal for a natural class of LSH functions.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2015,
+    "referenceCount": 29,
+    "citationCount": 441,
+    "influentialCitationCount": 61,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work shows the existence of a Locality-Sensitive Hashing (LSH) family for the angular distance that yields an approximate Near Neighbor Search algorithm with the asymptotically optimal running time exponent and establishes a fine-grained lower bound for the quality of any LSH family for angular distance."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1738395",
+            "name": "Alexandr Andoni"
+        },
+        {
+            "authorId": "1688317",
+            "name": "P. Indyk"
+        },
+        {
+            "authorId": "1728281",
+            "name": "Thijs Laarhoven"
+        },
+        {
+            "authorId": "2111443",
+            "name": "Ilya P. Razenshteyn"
+        },
+        {
+            "authorId": "152772922",
+            "name": "Ludwig Schmidt"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "4fa1dc510793e5dbde47b83cc5b295ca1fd5fc0a",
+            "title": "Tight Lower Bounds for Data-Dependent Locality-Sensitive Hashing"
+        },
+        {
+            "paperId": "cd82aaab1aa247c453dcd716d77855859cc086ff",
+            "title": "Optimal Data-Dependent Hashing for Approximate Near Neighbors"
+        },
+        {
+            "paperId": "6d552d38404a5e01d142322c456c50ffaf3d3a1f",
+            "title": "Densifying One Permutation Hashing via Rotation for Fast Near Neighbor Search"
+        },
+        {
+            "paperId": "46dff004006db5d150d4def329c0a500d1ba8798",
+            "title": "Large-scale speaker identification"
+        },
+        {
+            "paperId": "a2ce28e04242421d704b87158ad2270271c91d80",
+            "title": "Streaming Similarity Search over one Billion Tweets using Parallel Locality-Sensitive Hashing"
+        },
+        {
+            "paperId": "51bcfe9229cf4cce00b86f3b857ffebef7adcfa2",
+            "title": "Beyond Locality-Sensitive Hashing"
+        },
+        {
+            "paperId": "4e55b47f55ffebdc8e8a9775dcccf082d0b06508",
+            "title": "Fast and RIP-Optimal Transforms"
+        },
+        {
+            "paperId": "b2387e70a40dfcd71aff51972f106d64168299cd",
+            "title": "Fast Near Neighbor Search in High-Dimensional Binary Data"
+        },
+        {
+            "paperId": "dfd45bcd1d752a0c755315362e0a25e82d77ba8a",
+            "title": "Optimal Parameters for Locality-Sensitive Hashing"
+        },
+        {
+            "paperId": "7ae42cc4b475a2192707d0ada7b3c60c347b621e",
+            "title": "Approximate Nearest Neighbor: Towards Removing the Curse of Dimensionality"
+        },
+        {
+            "paperId": "40349f066fd2ced16138a016256755dc45ff031c",
+            "title": "Fast locality-sensitive hashing"
+        },
+        {
+            "paperId": "39b740ae3bab9237259b32995f378c5b76e5090a",
+            "title": "Optimal Lower Bounds for Locality-Sensitive Hashing (Except When q is Tiny)"
+        },
+        {
+            "paperId": "2a941e7c5f374f8f8dba0daf6ffc6504a2779473",
+            "title": "The Fast Johnson--Lindenstrauss Transform and Approximate Nearest Neighbors"
+        },
+        {
+            "paperId": "00bbfde6af97ce5efcf86b3401d265d42a95603d",
+            "title": "Feature hashing for large scale multitask learning"
+        },
+        {
+            "paperId": "13c7ef7c0843e2d5be40ce8bd1bc75a35dedfb6f",
+            "title": "Bucketing Coding and Information Theory for the Statistical High-Dimensional Nearest-Neighbor Problem"
+        },
+        {
+            "paperId": "80c4ca56b9009f1c564202956c96c38b6adf952a",
+            "title": "Locality sensitive hash functions based on concomitant rank order statistics"
+        },
+        {
+            "paperId": "9ed960374381062d85d3944182a539c1d00f7703",
+            "title": "Multi-Probe LSH: Efficient Indexing for High-Dimensional Similarity Search"
+        },
+        {
+            "paperId": "3b5600a125391cde502f60722d5c2667f865b003",
+            "title": "Spherical LSH for Approximate Nearest Neighbor Search on Unit Hypersphere"
+        },
+        {
+            "paperId": "e8da033f03c679e87b95a9e8cc1cfdd8c6ccb526",
+            "title": "Foundations of multidimensional and metric data structures"
+        },
+        {
+            "paperId": "2323173a0bddac0dd2586b17a2f3ac33f401c45c",
+            "title": "Nearest-Neighbor Methods in Learning and Vision: Theory and Practice (Neural Information Processing)"
+        },
+        {
+            "paperId": "a81f31dce2341b638c2f0fe83a93bc74b905f55f",
+            "title": "Lower bounds on locality sensitive hashing"
+        },
+        {
+            "paperId": "42bb0ac384fb87933be67f63b98d90a45d2fe6e9",
+            "title": "Similarity estimation techniques from rounding algorithms"
+        },
+        {
+            "paperId": "2fe06daefb86188f7109ff1a1b01093c1ed839f2",
+            "title": "On the optimality of the random hyperplane rounding technique for MAX CUT"
+        },
+        {
+            "paperId": null,
+            "title": "UCI machine learning repository"
+        },
+        {
+            "paperId": "4748d22348e72e6e06c2476486afddbc76e5eca7",
+            "title": "Product Quantization for Nearest Neighbor Search"
+        },
+        {
+            "paperId": "cd8bb70897e7ac6f8470e48695e4ee97f91793c1",
+            "title": "A dozen de Finetti-style results in search of a theory"
+        },
+        {
+            "paperId": "59fc70c1e1116808316270027c22a48e2f211e00",
+            "title": "Annales de l'Institut Henri Poincar\u00e9"
+        },
+        {
+            "paperId": null,
+            "title": "SIFT We use the standard data set of one million SIFT feature vectors from [7], which also contains a set of 10,000 query vectors"
+        },
+        {
+            "paperId": null,
+            "title": "random For the random data sets"
+        }
+    ]
+}

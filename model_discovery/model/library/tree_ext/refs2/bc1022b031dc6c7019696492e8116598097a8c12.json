@@ -1,0 +1,455 @@
+{
+    "paperId": "bc1022b031dc6c7019696492e8116598097a8c12",
+    "externalIds": {
+        "MAG": "2158899491",
+        "DBLP": "journals/jmlr/CollobertWBKKK11",
+        "ArXiv": "1103.0398",
+        "DOI": "10.5555/1953048.2078186",
+        "CorpusId": 351666
+    },
+    "title": "Natural Language Processing (Almost) from Scratch",
+    "abstract": "We propose a unified neural network architecture and learning algorithm that can be applied to various natural language processing tasks including part-of-speech tagging, chunking, named entity recognition, and semantic role labeling. This versatility is achieved by trying to avoid task-specific engineering and therefore disregarding a lot of prior knowledge. Instead of exploiting man-made input features carefully optimized for each task, our system learns internal representations on the basis of vast amounts of mostly unlabeled training data. This work is then used as a basis for building a freely available tagging system with good performance and minimal computational requirements.",
+    "venue": "Journal of machine learning research",
+    "year": 2011,
+    "referenceCount": 101,
+    "citationCount": 7539,
+    "influentialCitationCount": 649,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A unified neural network architecture and learning algorithm that can be applied to various natural language processing tasks including part-of-speech tagging, chunking, named entity recognition, and semantic role labeling is proposed."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2939803",
+            "name": "R. Collobert"
+        },
+        {
+            "authorId": "145183709",
+            "name": "J. Weston"
+        },
+        {
+            "authorId": "52184096",
+            "name": "L. Bottou"
+        },
+        {
+            "authorId": "21432929",
+            "name": "Michael Karlen"
+        },
+        {
+            "authorId": "2645384",
+            "name": "K. Kavukcuoglu"
+        },
+        {
+            "authorId": "46283650",
+            "name": "Pavel P. Kuksa"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "d6d931fe9bfe7223165b14ec85d79d56e406e38a",
+            "title": "Deep Learning for Efficient Discriminative Parsing"
+        },
+        {
+            "paperId": "8492070dc4031ed825e95e4803781752bb5e909f",
+            "title": "Word Representations: A Simple and General Method for Semi-Supervised Learning"
+        },
+        {
+            "paperId": "c8c007a5d86caa2fc77f186bae974b9af39428f1",
+            "title": "Distributional Representations for Handling Sparsity in Supervised Sequence-Labeling"
+        },
+        {
+            "paperId": "b5e12de7d3f2a66bfcf10a510f9ac80afb3541c1",
+            "title": "Phrase Clustering for Discriminative Learning"
+        },
+        {
+            "paperId": "8de174ab5419b9d3127695405efd079808e956e8",
+            "title": "Curriculum learning"
+        },
+        {
+            "paperId": "aa9efc8b2737eac0675ba5abb5feab8305482c12",
+            "title": "Design Challenges and Misconceptions in Named Entity Recognition"
+        },
+        {
+            "paperId": "d2da66238e3f9ea48c63d65d1b7f7854a956cd10",
+            "title": "Modeling Latent-Dynamic in Shallow Parsing: A Latent Conditional Model with Improved Inference"
+        },
+        {
+            "paperId": "1ae9c28ef16e9e37dff9b6e44e5a55f1a32907c6",
+            "title": "Structure compilation: trading structure for features"
+        },
+        {
+            "paperId": "7ee368e60d0b826e78f965aad8d6c7d406127104",
+            "title": "Deep learning via semi-supervised embedding"
+        },
+        {
+            "paperId": "7ece4e8d31f872d928369ac2cf58a616a7182112",
+            "title": "Semi-Supervised Sequential Labeling and Segmentation Using Giga-Word Scale Unlabeled Data"
+        },
+        {
+            "paperId": "790ecefeaf2b471b439743a772ccce026131bef5",
+            "title": "Simple Semi-supervised Dependency Parsing"
+        },
+        {
+            "paperId": "bd7d93193aad6c4b71cc8942e808753019e87706",
+            "title": "Three new graphical models for statistical language modelling"
+        },
+        {
+            "paperId": "6503a3d9fb204c2a08ecfcfe6ba5b815fc65a030",
+            "title": "Guided Learning for Bidirectional Sequence Classification"
+        },
+        {
+            "paperId": "060d5bb21f318efd785e86aa50cb97aed090a0fb",
+            "title": "A discriminative language model with pseudo-negative samples"
+        },
+        {
+            "paperId": "022f600ff683d0b5158dac85832b8aecd00fe86f",
+            "title": "Transductive learning for statistical machine translation"
+        },
+        {
+            "paperId": "3fcc3bbdfd2e0421dde947c5485e3ff1abe471d7",
+            "title": "Using Corpus Statistics on Entities to Improve Semi-supervised Relation Extraction from the Web"
+        },
+        {
+            "paperId": "0dec090d24ebe162650923f206979300cfaa847d",
+            "title": "Learning to Rank with Nonsmooth Cost Functions"
+        },
+        {
+            "paperId": "355d44f53428b1ac4fb2ab468d593c720640e5bd",
+            "title": "Greedy Layer-Wise Training of Deep Networks"
+        },
+        {
+            "paperId": "8a428ffb89f628d76c7fb145f7edc0e20362c587",
+            "title": "Ranking the Best Instances"
+        },
+        {
+            "paperId": "463565c30b7a9c12c2ef0558a51cfc7b05055737",
+            "title": "Semi-Supervised Learning (Adaptive Computation and Machine Learning)"
+        },
+        {
+            "paperId": "8978cf7574ceb35f4c3096be768c7547b28a35d0",
+            "title": "A Fast Learning Algorithm for Deep Belief Nets"
+        },
+        {
+            "paperId": "78a9513e70f596077179101f6cb6eadc51602039",
+            "title": "Effective Self-Training for Parsing"
+        },
+        {
+            "paperId": "944e1a7b2c5c62e952418d7684e3cade89c76f87",
+            "title": "A Framework for Learning Predictive Structures from Multiple Tasks and Unlabeled Data"
+        },
+        {
+            "paperId": "8c1395ada48416c0d8fb109edd878272a9d203ca",
+            "title": "Comparing and Combining Finite-State and Context-Free Parsers"
+        },
+        {
+            "paperId": "618238c056a08ec0c1e9ced53ccda311cc732abb",
+            "title": "Flexible Text Segmentation with Structured Multilabel Classification"
+        },
+        {
+            "paperId": "caa317c56e5373cc9f293f10c24270596c60cc7b",
+            "title": "Composition of Conditional Random Fields for Transfer Learning"
+        },
+        {
+            "paperId": "31274eabb84407e3bc2c1d14b804cb7bcc068111",
+            "title": "The Necessity of Syntactic Parsing for Semantic Role Labeling"
+        },
+        {
+            "paperId": "ccea966a744af5ea34c0584ca777c32ebbb60a89",
+            "title": "Semantic Role Chunking Combining Complementary Syntactic Views"
+        },
+        {
+            "paperId": "15fad23ab1f03b39aeeee0fed24803e98c47c28d",
+            "title": "Generalized Inference with Multiple Semantic Role Labeling Systems"
+        },
+        {
+            "paperId": "48b4524a3b1207157b1b2f87885c434c96fc7a19",
+            "title": "Joint Parsing and Semantic Role Labeling"
+        },
+        {
+            "paperId": "6f78ac1460e6b7f2f2594179f3b7fcf07aa207df",
+            "title": "A Joint Model for Semantic Role Labeling"
+        },
+        {
+            "paperId": "de2c94b233c52f43cceebf8927536e4579f8b164",
+            "title": "Semantic Role Labelling with Tree Conditional Random Fields"
+        },
+        {
+            "paperId": "9452e711ce2e7e0d4e35aaeb5ab8731de62a5809",
+            "title": "Contrastive Estimation: Training Log-Linear Models on Unlabeled Data"
+        },
+        {
+            "paperId": "8334df0103443b78546a3cec9284f668106774fc",
+            "title": "Voting Between Multiple Data Representations for Text Chunking"
+        },
+        {
+            "paperId": "99d2dcdcf4cf05facaa101a48c7e31d140b4736d",
+            "title": "The Proposition Bank: An Annotated Corpus of Semantic Roles"
+        },
+        {
+            "paperId": "2abe6b9ea1b13653b7384e9c8ef14b0d87e20cfc",
+            "title": "RCV1: A New Benchmark Collection for Text Categorization Research"
+        },
+        {
+            "paperId": "0329663498462521483612649c0dffc85d9d9419",
+            "title": "Dynamic conditional random fields: factorized probabilistic models for labeling and segmenting sequence data"
+        },
+        {
+            "paperId": "4b56b3008918d07165d765285808a11edd971091",
+            "title": "SVMTool: A general POS Tagger Generator Based on Support Vector Machines"
+        },
+        {
+            "paperId": "3fc44ff7f37ec5585310666c183c65e0a0bb2446",
+            "title": "Head-Driven Statistical Models for Natural Language Parsing"
+        },
+        {
+            "paperId": "d1ba322f795adbdc706651dbc76ad53b9c5f9468",
+            "title": "Named Entity Recognition through Classifier Combination"
+        },
+        {
+            "paperId": "03c03dec975554cb02aca1e076106178dbe0a8a0",
+            "title": "Named Entity Recognition with a Maximum Entropy Approach"
+        },
+        {
+            "paperId": "8d65ee7aa0a9dac3957093985e9179e1ccb9bd3b",
+            "title": "Early results for Named Entity Recognition with Conditional Random Fields, Feature Induction and Web-Enhanced Lexicons"
+        },
+        {
+            "paperId": "897249c93f55ef1c0d2aa1e799eb67b414c6d4a6",
+            "title": "Shallow Parsing with Conditional Random Fields"
+        },
+        {
+            "paperId": "eb42a490cf4f186d3383c92963817d100afd81e2",
+            "title": "Feature-Rich Part-of-Speech Tagging with a Cyclic Dependency Network"
+        },
+        {
+            "paperId": "6c2b28f9354f667cd5bd07afc0471d8334430da7",
+            "title": "A Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "3e5652cca6464981a065184dceb2672bd13984b7",
+            "title": "The Necessity of Parsing for Predicate Argument Recognition"
+        },
+        {
+            "paperId": "e41498c05d4c68e4750fb84a380317a112d97b01",
+            "title": "Connectionist language modeling for large vocabulary continuous speech recognition"
+        },
+        {
+            "paperId": "f4ba954b0412773d047dc41231c733de0c1f4926",
+            "title": "Conditional Random Fields: Probabilistic Models for Segmenting and Labeling Sequence Data"
+        },
+        {
+            "paperId": "6ffea7929f0e4bbee9e98755eb3d8fc09e89cf4e",
+            "title": "Chunking with Support Vector Machines"
+        },
+        {
+            "paperId": "5feb019135e705641380ec0dd9be8cc7bdcd973b",
+            "title": "Natural Language Grammar Induction Using a Constituent-Context Model"
+        },
+        {
+            "paperId": "c274b8aac56e49e65a3827c570b2496b14429166",
+            "title": "Automatic Labeling of Semantic Roles"
+        },
+        {
+            "paperId": "923db0aeb26a6dc1cb42069c9db04e5dd2d2200a",
+            "title": "Use of Support Vector Learning for Chunk Identification"
+        },
+        {
+            "paperId": "76d5e3fa888bee872b7adb7fa810089aa8ab1d58",
+            "title": "A Maximum-Entropy-Inspired Parser"
+        },
+        {
+            "paperId": "f2124f8995a9cdf4e168baba426472d2d811c0f1",
+            "title": "A Novel Use of Statistical Parsing to Extract Information from Text"
+        },
+        {
+            "paperId": "74b1a9e50f18af8a7b9f8dd38f40e0466ad7a8e8",
+            "title": "Transductive Inference for Text Classification using Support Vector Machines"
+        },
+        {
+            "paperId": "0025b963134b1c0b64c1389af19610d038ab7072",
+            "title": "Learning to Order Things"
+        },
+        {
+            "paperId": "a651bb7cc7fc68ece0cc66ab921486d163373385",
+            "title": "An algorithm for suffix stripping"
+        },
+        {
+            "paperId": "161ffb54a3fdf0715b198bb57bd22f910242eb49",
+            "title": "Multitask Learning"
+        },
+        {
+            "paperId": "4f0ab1dcdc9f405ca90e36a35ea335196464d387",
+            "title": "Global training of document processing systems using graph transformer networks"
+        },
+        {
+            "paperId": "6b833e09f76a335dbfbb91abb7f94384eb0603d7",
+            "title": "The entropy of English using PPM-based models"
+        },
+        {
+            "paperId": "aadd4657c4260f2885cd536b1ce54ec7845b7f44",
+            "title": "Distributional Part-of-Speech Tagging"
+        },
+        {
+            "paperId": "3de5d40b60742e3dfa86b19e7f660962298492af",
+            "title": "Class-Based n-gram Models of Natural Language"
+        },
+        {
+            "paperId": "9463e3eca9f3b053fca7ca64abb157aaeac35f4f",
+            "title": "An Estimate of an Upper Bound for the Entropy of English"
+        },
+        {
+            "paperId": "dfe7dbbd6e8d5d3720f58c2c9a0b9bec040a8ef8",
+            "title": "Symbolic-Neural Systems and the Use of Hints for Developing Complex Systems"
+        },
+        {
+            "paperId": "990b10ce4ef643e148b6c719e99dbf2430671a74",
+            "title": "Adaptive Algorithms and Stochastic Approximations"
+        },
+        {
+            "paperId": "c3fa4c1ebd90bf14c55d253806fdf9e69defd729",
+            "title": "A Framework for the Cooperation of Learning Algorithms"
+        },
+        {
+            "paperId": "cd62c9976534a6a2096a38244f6cbb03635a127e",
+            "title": "Phoneme recognition using time-delay neural networks"
+        },
+        {
+            "paperId": "8fe2ea0a67954f1380b3387e3262f1cdb9f9b3e5",
+            "title": "A tutorial on hidden Markov models and selected applications in speech recognition"
+        },
+        {
+            "paperId": "a1dace286582d91916fe470d08f30381cf453f20",
+            "title": "Learning Quickly When Irrelevant Attributes Abound: A New Linear-Threshold Algorithm"
+        },
+        {
+            "paperId": "6b59ebc8abee160f1cb34a992a6b07d1c9f7bafb",
+            "title": "Learning sets of filters using back-propagation"
+        },
+        {
+            "paperId": "9a2fa97225b1fde56aec1ddefcdc2e67412c4b24",
+            "title": "A Grammar of English on Mathematical Principles"
+        },
+        {
+            "paperId": "bc68ec44a97b0ffb7dfc11fac3dd203b3d15c67a",
+            "title": "Parsing"
+        },
+        {
+            "paperId": "130b1c7786328bf8f4ebea56e6d2f1cb992404ab",
+            "title": "A convergent gambling estimate of the entropy of English"
+        },
+        {
+            "paperId": "32a175b36ec7f2f08cb3dfac30ce141e144ec9e9",
+            "title": "Continuous speech recognition by statistical methods"
+        },
+        {
+            "paperId": "6e785a402a60353e6e22d6883d3998940dcaea96",
+            "title": "Three models for the description of language"
+        },
+        {
+            "paperId": "044dd7141bc3b5366b9512934e48f92aa259e438",
+            "title": "Semantic Roles"
+        },
+        {
+            "paperId": "b87274e6d9aa4e6ba5148898aa92941617d2b6ed",
+            "title": "Efficient BackProp"
+        },
+        {
+            "paperId": "f4ebb542c752a0dc423f94fd121e2edb8f6275ba",
+            "title": "The BellKor solution to the Netflix Prize"
+        },
+        {
+            "paperId": "d20f3d1f6a8949bb7703910e154d0e3f4b14716b",
+            "title": "Robust Parsing of the Proposition Bank"
+        },
+        {
+            "paperId": "31b4c03d721dc10b87c178277c1d369f91db8f0e",
+            "title": "Semi-Supervised Learning for Natural Language"
+        },
+        {
+            "paperId": null,
+            "title": "role chunking"
+        },
+        {
+            "paperId": "ad269ba941949a1d66b6649a71d752784c576dc3",
+            "title": "Name Tagging with Word Clusters and Discriminative Training"
+        },
+        {
+            "paperId": "a16e484824b2580e092c985aa659e8680aeda5ee",
+            "title": "Shallow Semantic Parsing using Support Vector Machines"
+        },
+        {
+            "paperId": "619a9baf9ba554ac9810a154cf81e72d1640ba1a",
+            "title": "Large Scale Machine Learning"
+        },
+        {
+            "paperId": "30afca3a4056bc54deadc1c5794048436d1c9eb4",
+            "title": "Dependency Networks for Inference, Collaborative Filtering, and Data Visualization"
+        },
+        {
+            "paperId": "149f5137d1c7e34764e1f4d4d7b97b8e6bdeda2a",
+            "title": "A Maximum Entropy Approach to Named Entity Recognition"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "a574e320d899e7e82e341eb64baef7dfe8a24642",
+            "title": "A Maximum Entropy Model for Part-Of-Speech Tagging"
+        },
+        {
+            "paperId": null,
+            "title": "Number 118 in Lecture Notes in Statistics"
+        },
+        {
+            "paperId": "a22b36cf5dba3e85eb064220be7ef03be4efba48",
+            "title": "Bayesian learning for neural networks"
+        },
+        {
+            "paperId": "82eec4af1475de9a7e876bcbaddb4a0c4a1dc187",
+            "title": "Stochastic Gradient Learning in Neural Networks"
+        },
+        {
+            "paperId": "1f462943c8d0af69c12a09058251848324135e5a",
+            "title": "Probabilistic Interpretation of Feedforward Classification Network Outputs, with Relationships to Statistical Pattern Recognition"
+        },
+        {
+            "paperId": "1826df6f270cae70afacb5f6ae1d5175db903d5e",
+            "title": "Probabilistic reasoning in intelligent systems - networks of plausible inference"
+        },
+        {
+            "paperId": "5bf6f01402e1648b7d1e6c9200ede6cb1af30123",
+            "title": "Probabilistic reasoning in intelligent systems"
+        },
+        {
+            "paperId": "1d453386011ef21285fa81fb4f87fdf811c6ad7a",
+            "title": "Learning internal representations by back-propagating errors"
+        },
+        {
+            "paperId": "d007ed936c51a700d8c65d1bbfae7acc83783c31",
+            "title": "Une procedure d'apprentissage pour reseau a seuil asymmetrique (A learning scheme for asymmetric threshold networks)"
+        },
+        {
+            "paperId": "99eadd5e29a85f30cafef7f2c915f384715e3b89",
+            "title": "Mathematical structures of language"
+        },
+        {
+            "paperId": "c1e3f2d537e50e0d5263e4731ab6c7983acd6687",
+            "title": "Prediction and Entropy of Printed English"
+        },
+        {
+            "paperId": null,
+            "title": "Available at http://ml.nec-labs.com/senna"
+        },
+        {
+            "paperId": null,
+            "title": "See Table 3 for tagging scheme details"
+        },
+        {
+            "paperId": null,
+            "title": "Ohio, June 2008"
+        }
+    ]
+}

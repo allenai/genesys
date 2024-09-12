@@ -1,0 +1,222 @@
+{
+    "paperId": "c6b61535f1544835cca3851ceb34222ebc5b4377",
+    "externalIds": {
+        "MAG": "2775304348",
+        "DBLP": "conf/icassp/ChiuSWPNCKWRGJL18",
+        "ArXiv": "1712.01769",
+        "DOI": "10.1109/ICASSP.2018.8462105",
+        "CorpusId": 206742954
+    },
+    "title": "State-of-the-Art Speech Recognition with Sequence-to-Sequence Models",
+    "abstract": "Attention-based encoder-decoder architectures such as Listen, Attend, and Spell (LAS), subsume the acoustic, pronunciation and language model components of a traditional automatic speech recognition (ASR) system into a single neural network. In previous work, we have shown that such architectures are comparable to state-of-the-art ASR systems on dictation tasks, but it was not clear if such architectures would be practical for more challenging tasks such as voice search. In this work, we explore a variety of structural and optimization improvements to our LAS model which significantly improve performance. On the structural side, we show that word piece models can be used instead of graphemes. We also introduce a multi-head attention architecture, which offers improvements over the commonly-used single-head attention. On the optimization side, we explore synchronous training, scheduled sampling, label smoothing, and minimum word error rate optimization, which are all shown to improve accuracy. We present results with a unidirectional LSTM encoder for streaming recognition. On a 12, 500 hour voice search task, we find that the proposed changes improve the WER from 9.2% to 5.6%, while the best conventional system achieves 6.7%; on a dictation task our model achieves a WER of 4.1% compared to 5% for the conventional system.",
+    "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+    "year": 2017,
+    "referenceCount": 34,
+    "citationCount": 1115,
+    "influentialCitationCount": 46,
+    "openAccessPdf": {
+        "url": "http://arxiv.org/pdf/1712.01769",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A variety of structural and optimization improvements to the Listen, Attend, and Spell model are explored, which significantly improve performance and a multi-head attention architecture is introduced, which offers improvements over the commonly-used single- head attention."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145039780",
+            "name": "Chung-Cheng Chiu"
+        },
+        {
+            "authorId": "1784851",
+            "name": "Tara N. Sainath"
+        },
+        {
+            "authorId": "48607963",
+            "name": "Yonghui Wu"
+        },
+        {
+            "authorId": "2557391",
+            "name": "Rohit Prabhavalkar"
+        },
+        {
+            "authorId": "14902530",
+            "name": "Patrick Nguyen"
+        },
+        {
+            "authorId": "2545358",
+            "name": "Z. Chen"
+        },
+        {
+            "authorId": "31801501",
+            "name": "Anjuli Kannan"
+        },
+        {
+            "authorId": "39571582",
+            "name": "Ron J. Weiss"
+        },
+        {
+            "authorId": "2251957",
+            "name": "Kanishka Rao"
+        },
+        {
+            "authorId": "1398413062",
+            "name": "Katya Gonina"
+        },
+        {
+            "authorId": "3111912",
+            "name": "N. Jaitly"
+        },
+        {
+            "authorId": "143771569",
+            "name": "Bo Li"
+        },
+        {
+            "authorId": "2292403",
+            "name": "J. Chorowski"
+        },
+        {
+            "authorId": "1771090",
+            "name": "M. Bacchiani"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "478d6102a2df86b0f4e69e398f96619312ecdc8c",
+            "title": "An Analysis of Incorporating an External Language Model into a Sequence-to-Sequence Model"
+        },
+        {
+            "paperId": "0988c200659858ba6b8a203aea69b0168f5c2660",
+            "title": "Minimum Word Error Rate Training for Attention-Based Sequence-to-Sequence Models"
+        },
+        {
+            "paperId": "bd62a42eed5991958b30934c557c33d0c6f0f25e",
+            "title": "Improving the Performance of Online Neural Transducer Models"
+        },
+        {
+            "paperId": "8eff044945bf2543d210adb1e327b8957a219e4d",
+            "title": "No Need for a Lexicon? Evaluating the Value of the Pronunciation Lexica in End-to-End Models"
+        },
+        {
+            "paperId": "eac48f406c46527f5ca821de7fe8d62d6db56a27",
+            "title": "Exploring architectures, data and units for streaming end-to-end speech recognition with RNN-transducer"
+        },
+        {
+            "paperId": "7703a2c5468ecbee5b62c048339a03358ed5fe19",
+            "title": "Recurrent Neural Aligner: An Encoder-Decoder Neural Network Model for Sequence to Sequence Mapping"
+        },
+        {
+            "paperId": "6cc68e8adf34b580f3f37d1bd267ee701974edde",
+            "title": "A Comparison of Sequence-to-Sequence Models for Speech Recognition"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "0d57ba12a6d958e178d83be4c84513f7e42b24e5",
+            "title": "Accurate, Large Minibatch SGD: Training ImageNet in 1 Hour"
+        },
+        {
+            "paperId": "76faaf292c6d9dc29d3a99300a7fdd7a35d6d107",
+            "title": "Online and Linear-Time Attention by Enforcing Monotonic Alignments"
+        },
+        {
+            "paperId": "7dbb2d983ab95da04e5d47c87ddd2cd9a8f20786",
+            "title": "Towards Better Decoding and Language Model Integration in Sequence to Sequence Models"
+        },
+        {
+            "paperId": "105788dd22393d5a4333c167814ec3d38c7d6612",
+            "title": "Latent Sequence Decompositions"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "f79925410329ab4e3045243f4a652dd03afd4cc8",
+            "title": "Lower Frame Rate Neural Network Acoustic Models"
+        },
+        {
+            "paperId": "9c9d7247f8c51ec5a02b0d911d1d7b9e8160495d",
+            "title": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems"
+        },
+        {
+            "paperId": "23ffaa0fe06eae05817f527a47ac3291077f9e58",
+            "title": "Rethinking the Inception Architecture for Computer Vision"
+        },
+        {
+            "paperId": "b7aee9dfb027d6061c6a653684c0fa9a9bba750d",
+            "title": "Sequence Level Training with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "a418524a3576afff4dc2178ed169e692915bd46b",
+            "title": "An Online Sequence-to-Sequence Model Using Partial Conditioning"
+        },
+        {
+            "paperId": "878ba5458e9e51f0b341fd9117fa0b43ef4096d3",
+            "title": "End-to-end attention-based large vocabulary speech recognition"
+        },
+        {
+            "paperId": "9fca2af9a0e3f2c5c3ed47abb3ebd21b7265ac2b",
+            "title": "Fast and accurate recurrent neural network acoustic models for speech recognition"
+        },
+        {
+            "paperId": "b624504240fa52ab76167acfe3156150ca01cf3b",
+            "title": "Attention-Based Models for Speech Recognition"
+        },
+        {
+            "paperId": "df137487e20ba7c6e1e2b9a1e749f2a578b5ad99",
+            "title": "Scheduled Sampling for Sequence Prediction with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "3127190433230b3dc1abd0680bb58dced4bcd90e",
+            "title": "Large Scale Distributed Deep Networks"
+        },
+        {
+            "paperId": "7b4f3d0e4e2486a8d5d3f8e00549cf9a117bf88f",
+            "title": "Sequence Transduction with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "ed6262b569c0a62c51d941228c54f34e563af022",
+            "title": "Japanese and Korean voice search"
+        },
+        {
+            "paperId": "2443dc59cf3d6cc1deba6d3220d61664b1a7eada",
+            "title": "Lattice-based optimization of sequence classification criteria for neural-network acoustic modeling"
+        },
+        {
+            "paperId": "0509bf552a0d1fe895c019e4e8f1b1599c7112e4",
+            "title": "Minimum Phone Error and I-smoothing for improved discriminative training"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "e23c34414e66118ecd9b08cf0cd4d016f59b0b85",
+            "title": "Bidirectional recurrent neural networks"
+        },
+        {
+            "paperId": null,
+            "title": "End-to-end Models: Can We Throw Away the Lexicon"
+        },
+        {
+            "paperId": null,
+            "title": "Listen, attend and spell"
+        },
+        {
+            "paperId": "e4a404524e8bcaf2fafb977d52b93eaf4667fddc",
+            "title": "Bayesian Language Model Interpolation for Mobile Speech Input"
+        }
+    ]
+}

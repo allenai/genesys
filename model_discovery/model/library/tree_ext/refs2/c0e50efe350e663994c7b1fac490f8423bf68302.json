@@ -1,0 +1,338 @@
+{
+    "paperId": "c0e50efe350e663994c7b1fac490f8423bf68302",
+    "externalIds": {
+        "ArXiv": "1812.10004",
+        "MAG": "2905800572",
+        "DBLP": "journals/corr/abs-1812-10004",
+        "CorpusId": 56895275
+    },
+    "title": "Overparameterized Nonlinear Learning: Gradient Descent Takes the Shortest Path?",
+    "abstract": "Many modern learning tasks involve fitting nonlinear models to data which are trained in an overparameterized regime where the parameters of the model exceed the size of the training dataset. Due to this overparameterization, the training loss may have infinitely many global minima and it is critical to understand the properties of the solutions found by first-order optimization schemes such as (stochastic) gradient descent starting from different initializations. In this paper we demonstrate that when the loss has certain properties over a minimally small neighborhood of the initial point, first order methods such as (stochastic) gradient descent have a few intriguing properties: (1) the iterates converge at a geometric rate to a global optima even when the loss is nonconvex, (2) among all global optima of the loss the iterates converge to one with a near minimal distance to the initial point, (3) the iterates take a near direct route from the initial point to this global optima. As part of our proof technique, we introduce a new potential function which captures the precise tradeoff between the loss function and the distance to the initial point as the iterations progress. For Stochastic Gradient Descent (SGD), we develop novel martingale techniques that guarantee SGD never leaves a small neighborhood of the initialization, even with rather large learning rates. We demonstrate the utility of our general theory for a variety of problem domains spanning low-rank matrix recovery to neural network training. Underlying our analysis are novel insights that may have implications for training and generalization of more sophisticated learning problems including those involving deep neural network architectures.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2018,
+    "referenceCount": 76,
+    "citationCount": 167,
+    "influentialCitationCount": 16,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper demonstrates the utility of the general theory of (stochastic) gradient descent for a variety of problem domains spanning low-rank matrix recovery to neural network training and develops novel martingale techniques that guarantee SGD never leaves a small neighborhood of the initialization, even with rather large learning rates."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3103394",
+            "name": "Samet Oymak"
+        },
+        {
+            "authorId": "2766123",
+            "name": "M. Soltanolkotabi"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "29090beb90c184a9aaf7aa610bfed5ee1631d2f2",
+            "title": "Gradient Descent with Early Stopping is Provably Robust to Label Noise for Overparameterized Neural Networks"
+        },
+        {
+            "paperId": "8c73b09887ef832798207679855a03d3281bd79b",
+            "title": "Fitting ReLUs via SGD and Quantized SGD"
+        },
+        {
+            "paperId": "313b368457e54e6a7482b008d5eb4182eb1b4d1c",
+            "title": "Stochastic Gradient Descent Optimizes Over-parameterized Deep ReLU Networks"
+        },
+        {
+            "paperId": "611fe6e34df07ea1b2104899e49642b4531b53e9",
+            "title": "Learning and Generalization in Overparameterized Neural Networks, Going Beyond Two Layers"
+        },
+        {
+            "paperId": "03e7e8663c69e691be6b6403b1eb1bbf593d31f2",
+            "title": "Gradient Descent Finds Global Minima of Deep Neural Networks"
+        },
+        {
+            "paperId": "45b5765cd1847f6a370da01483a53e9ed9676557",
+            "title": "On exponential convergence of SGD in non-convex over-parametrized learning"
+        },
+        {
+            "paperId": "047a662fd3e5772a59d7f93f2212b8b429cfdbc6",
+            "title": "Fast and Faster Convergence of SGD for Over-Parameterized Models and an Accelerated Perceptron"
+        },
+        {
+            "paperId": "d6f6d1504cfedde4efb23e7ec0f42f006062c6a0",
+            "title": "Gradient Descent Provably Optimizes Over-parameterized Neural Networks"
+        },
+        {
+            "paperId": "5786917220aab2f6d0b00606eee9fe0ad0700f1b",
+            "title": "Gradient descent aligns the layers of deep linear networks"
+        },
+        {
+            "paperId": "79b26719c44ed4957fd880fbd66cd6fbec54e5e7",
+            "title": "Over-parameterization Improves Generalization in the XOR Detection Problem"
+        },
+        {
+            "paperId": "0a065f42ccbb3bf54ddcb5e1963c6694f0de8d2c",
+            "title": "Stochastic Gradient Descent Learns State Equations with Nonlinear Activations"
+        },
+        {
+            "paperId": "42ec3db12a2e4628885451b13035c2e975220a25",
+            "title": "A Convergence Theory for Deep Learning via Over-Parameterization"
+        },
+        {
+            "paperId": "ccb1bafdae68c635cbd30d49fda7dbf88a3ce1b6",
+            "title": "Learning Overparameterized Neural Networks via Stochastic Gradient Descent on Structured Data"
+        },
+        {
+            "paperId": "47149cbfee9dac6c092462bbe13cf18cf9cc9314",
+            "title": "Just Interpolate: Kernel \"Ridgeless\" Regression Can Generalize"
+        },
+        {
+            "paperId": "f6fcdc4e0bb806f4b5c225de53ac7a38f08d3561",
+            "title": "Does data interpolation contradict statistical optimality?"
+        },
+        {
+            "paperId": "75d63250ee64f373708a343e07029d9783055ddd",
+            "title": "Overfitting or perfect fitting? Risk bounds for classification and regression rules that interpolate"
+        },
+        {
+            "paperId": "cdd0c4d1625e38b9df90d68f6c61ff03ae64069e",
+            "title": "Accelerated Wirtinger Flow: A fast algorithm for ptychography"
+        },
+        {
+            "paperId": "d8b477a120798e3c8983de485c1a8cff06ff33db",
+            "title": "Stochastic Gradient Descent on Separable Data: Exact Convergence with a Fixed Learning Rate"
+        },
+        {
+            "paperId": "1d57045bfa02ac54df0481c1a977829b63564334",
+            "title": "Stochastic Gradient/Mirror Descent: Minimax Optimality and Implicit Regularization"
+        },
+        {
+            "paperId": "9c7de616d16e5643e9e29dfdf2d7d6001c548132",
+            "title": "On the Global Convergence of Gradient Descent for Over-parameterized Models using Optimal Transport"
+        },
+        {
+            "paperId": "22b03f16992ba01259c369ae45dbd6294d84a740",
+            "title": "The Global Optimization Geometry of Shallow Linear Neural Networks"
+        },
+        {
+            "paperId": "034b8b81b2162d2eb3340f1068beecfd3efdddf4",
+            "title": "A theory on the absence of spurious solutions for nonconvex and nonsmooth optimization"
+        },
+        {
+            "paperId": "f1d48ad5a04360bf65e793b84298d8e0570bf1cc",
+            "title": "A mean field view of the landscape of two-layer neural networks"
+        },
+        {
+            "paperId": "9cd7e7fae932800651eed161eaf9eef45c61887d",
+            "title": "Gradient descent with random initialization: fast global convergence for nonconvex phase retrieval"
+        },
+        {
+            "paperId": "6ea8cbf0cc4cda3d981348a279b464524a8485cc",
+            "title": "On the Optimization of Deep Networks: Implicit Acceleration by Overparameterization"
+        },
+        {
+            "paperId": "7996894ff576c389441d036a0ad51176f0624c87",
+            "title": "Spurious Valleys in Two-layer Neural Network Optimization Landscapes"
+        },
+        {
+            "paperId": "111489fe8ca23c3314caef484558b244f5311fa4",
+            "title": "Neural Networks with Finite Intrinsic Dimension have no Spurious Valleys"
+        },
+        {
+            "paperId": "a9022d8ffb5e417458fba9a280f90c1b08cb6c73",
+            "title": "Stronger generalization bounds for deep nets via a compression approach"
+        },
+        {
+            "paperId": "52ce57ccd25f30b9ff3b63eba8a78a430dff7a27",
+            "title": "Learning Compact Neural Networks with Regularization"
+        },
+        {
+            "paperId": "8b4b861583f698e89c8cd9e198aad86809a71de7",
+            "title": "Algorithmic Regularization in Over-parameterized Matrix Sensing and Neural Networks with Quadratic Activations"
+        },
+        {
+            "paperId": "018a844cd7a496aed84f166e4b02ff547c3b5d16",
+            "title": "Size-Independent Sample Complexity of Neural Networks"
+        },
+        {
+            "paperId": "f8dccc59fae4b86b955630f21f9558a194ca4f70",
+            "title": "The Power of Interpolation: Understanding the Effectiveness of SGD in Modern Over-parametrized Learning"
+        },
+        {
+            "paperId": "136d8b08d38a5c4829449b87bad6bad675ca8c71",
+            "title": "Learning One-hidden-layer Neural Networks with Landscape Design"
+        },
+        {
+            "paperId": "c923208fb1e917f55e38b7c9f94f219554f398fa",
+            "title": "SGD Learns Over-parameterized Networks that Provably Generalize on Linearly Separable Data"
+        },
+        {
+            "paperId": "11adc8bd35bd897502f9b5452ab7ac668ec9b0fb",
+            "title": "The Implicit Bias of Gradient Descent on Separable Data"
+        },
+        {
+            "paperId": "6635639236934975cc8e52c4d41a2dae4a0cefe6",
+            "title": "Gradient Methods for Submodular Maximization"
+        },
+        {
+            "paperId": "fa3cd1f68783c160f7acf9ef857f1e3254ff95db",
+            "title": "Theoretical Insights Into the Optimization Landscape of Over-Parameterized Shallow Neural Networks"
+        },
+        {
+            "paperId": "e76d2adc9e229b1dd9ae8e3dacaa9c954fbf2c69",
+            "title": "Phase Retrieval via Randomized Kaczmarz: Theoretical Guarantees"
+        },
+        {
+            "paperId": "3898467f0a84e6fca8a7e40258bc55bae195d0de",
+            "title": "Non-convex Finite-Sum Optimization Via SCSG Methods"
+        },
+        {
+            "paperId": "9753967a3af8e1db1e2da52a9bb3255bd1ce5c51",
+            "title": "Spectrally-normalized margin bounds for neural networks"
+        },
+        {
+            "paperId": "0528ec31d633d1588a711c41b6adf624442df21f",
+            "title": "Empirical Analysis of the Hessian of Over-Parametrized Neural Networks"
+        },
+        {
+            "paperId": "99ed21b585f4d6cbc4e20002bedca8d6c08169c6",
+            "title": "Recovery Guarantees for One-hidden-layer Neural Networks"
+        },
+        {
+            "paperId": "4e8917e73e02c76d55ded62e43541d44684a4c8a",
+            "title": "Implicit Regularization in Matrix Factorization"
+        },
+        {
+            "paperId": "1ecc2bd0bc6ffa0a2f466a058589c20593e3e57c",
+            "title": "The Marginal Value of Adaptive Gradient Methods in Machine Learning"
+        },
+        {
+            "paperId": "97db7860df3ee3624f8b55d5820b00f893bc4f9a",
+            "title": "Learning ReLUs via Gradient Descent"
+        },
+        {
+            "paperId": "b3c22857095db1df0609975df3359c873ddfaf35",
+            "title": "Geometry of Optimization and Implicit Regularization in Deep Learning"
+        },
+        {
+            "paperId": "fc756b45678ef7ffc1a796de62365013011b659e",
+            "title": "Globally Optimal Gradient Descent for a ConvNet with Gaussian Inputs"
+        },
+        {
+            "paperId": "02cc1f39aa90a5d6d0c4ce63755896f8170536af",
+            "title": "Structured Signal Recovery From Quadratic Measurements: Breaking Sample Complexity Barriers via Nonconvex Optimization"
+        },
+        {
+            "paperId": "b6583fe9c9dc52bb129aff4cefc60519349f3b4c",
+            "title": "Entropy-SGD: biasing gradient descent into wide valleys"
+        },
+        {
+            "paperId": "54ddb00fa691728944fd8becea90a373d21597cf",
+            "title": "Understanding deep learning requires rethinking generalization"
+        },
+        {
+            "paperId": "8ec5896b4490c6e127d1718ffc36a3439d84cb81",
+            "title": "On Large-Batch Training for Deep Learning: Generalization Gap and Sharp Minima"
+        },
+        {
+            "paperId": "07f5bae91cd45eafe82f3548a43268eb5c84df7a",
+            "title": "Linear Convergence of Gradient and Proximal-Gradient Methods Under the Polyak-\u0141ojasiewicz Condition"
+        },
+        {
+            "paperId": "57e20e146e844697866087892642a96068978de6",
+            "title": "Rapid, Robust, and Reliable Blind Deconvolution via Nonconvex Optimization"
+        },
+        {
+            "paperId": "14ba240715868c28e02c0686aee80424cadeca53",
+            "title": "The non-convex Burer-Monteiro approach works on smooth semidefinite programs"
+        },
+        {
+            "paperId": "4954fa180728932959997a4768411ff9136aac81",
+            "title": "TensorFlow: A system for large-scale machine learning"
+        },
+        {
+            "paperId": "97616121e0153bdd279630a645751d6616451f30",
+            "title": "No bad local minima: Data independent training error guarantees for multilayer neural networks"
+        },
+        {
+            "paperId": "4a4ba96debb9719766830c419ca01e14cb465b83",
+            "title": "Global Optimality of Local Search for Low Rank Matrix Recovery"
+        },
+        {
+            "paperId": "037dd1f564273b2d9eec19c7f4aa4b879db51ff5",
+            "title": "A Geometric Analysis of Phase Retrieval"
+        },
+        {
+            "paperId": "251bb6a30841dcc10abbcd4b36c5f42c988b0297",
+            "title": "Sharp Time\u2013Data Tradeoffs for Linear Inverse Problems"
+        },
+        {
+            "paperId": "1eb94de6649346765f920d88b7de0ff05d16718d",
+            "title": "Low-rank Solutions of Linear Matrix Equations via Procrustes Flow"
+        },
+        {
+            "paperId": "c5641d8b79c983c21bad4e669fc555357de35e4a",
+            "title": "Taming the Wild: A Unified Analysis of Hogwild-Style Algorithms"
+        },
+        {
+            "paperId": "4b675d8f63888d7d6d7d77a0834efa5eaded64c5",
+            "title": "In Search of the Real Inductive Bias: On the Role of Implicit Regularization in Deep Learning"
+        },
+        {
+            "paperId": "da457a529ee78d44f1aa07fe1960657f6cec7957",
+            "title": "Phase Retrieval via Wirtinger Flow: Theory and Algorithms"
+        },
+        {
+            "paperId": "c58390a5563b672bf02f7fc3f8ca264babf3cc3d",
+            "title": "Foundations of Machine Learning"
+        },
+        {
+            "paperId": "e08f14111728901945f8c3b384b2f75746935e0d",
+            "title": "Making Gradient Descent Optimal for Strongly Convex Stochastic Optimization"
+        },
+        {
+            "paperId": "009f35c0e453f2435efd8d8ef8086b76b294967a",
+            "title": "Rademacher and Gaussian Complexities: Risk Bounds and Structural Results"
+        },
+        {
+            "paperId": "0eb4bbd57275644738916a1603f3ff7f9ae0d74e",
+            "title": "A nonlinear programming algorithm for solving semidefinite programs via low-rank factorization"
+        },
+        {
+            "paperId": null,
+            "title": "Overparameterization without overfitting: Jacobian-based generalization guarantees for neural networks"
+        },
+        {
+            "paperId": null,
+            "title": "Towards moderate overparameterization: global convergence guarantees for training neural networks. 2019"
+        },
+        {
+            "paperId": "2d0d21c0a96d1b3586d3f43f413548dc1c46d639",
+            "title": "SPECTRALLY-NORMALIZED MARGIN BOUNDS FOR NEURAL NETWORKS"
+        },
+        {
+            "paperId": "9cb09fb641f0c0371811615cb5d5df2d18ea3d0b",
+            "title": "Generic Chaining Upper And Lower Bounds For Stochastic Processes"
+        },
+        {
+            "paperId": "f42b865e20e61a954239f421b42007236e671f19",
+            "title": "GradientBased Learning Applied to Document Recognition"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "defca13182445737dfb2353764e9c4c363f57051",
+            "title": "Continuous martingales and Brownian motion"
+        },
+        {
+            "paperId": "a36b028d024bf358c4af1a5e1dc3ca0aed23b553",
+            "title": "Chervonenkis: On the uniform convergence of relative frequencies of events to their probabilities"
+        },
+        {
+            "paperId": null,
+            "title": "A topological property of real analytic subsets"
+        }
+    ]
+}

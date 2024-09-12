@@ -1,0 +1,321 @@
+{
+    "paperId": "0ba86604228b555475496e200f31878df3aabd6e",
+    "externalIds": {
+        "MAG": "2890648394",
+        "DBLP": "journals/cacm/MitchellCHTYBCM18",
+        "DOI": "10.1145/3191513",
+        "CorpusId": 3201232
+    },
+    "title": "Never-Ending Learning",
+    "abstract": "Whereas people learn many different types of knowledge from diverse experiences over many years, most current machine learning systems acquire just a single function or data model from just a single data set. We propose a neverending learning paradigm for machine learning, to better reflect the more ambitious and encompassing type of learning performed by humans. As a case study, we describe the Never-Ending Language Learner (NELL), which achieves some of the desired properties of a never-ending learner, and we discuss lessons learned. NELL has been learning to read the web 24 hours/day since January 2010, and so far has acquired a knowledge base with over 80 million confidenceweighted beliefs (e.g., servedWith(tea, biscuits)). NELL has also learned millions of features and parameters that enable it to read these beliefs from the web. Additionally, it has learned to reason over these beliefs to infer new beliefs, and is able to extend its ontology by synthesizing new relational predicates. NELL can be tracked online at http://rtw.ml.cmu.edu, and followed on Twitter at @CMUNELL.",
+    "venue": "AAAI Conference on Artificial Intelligence",
+    "year": 2015,
+    "referenceCount": 47,
+    "citationCount": 1016,
+    "influentialCitationCount": 63,
+    "openAccessPdf": {
+        "url": "https://dl.acm.org/doi/pdf/10.1145/3191513",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Never-Ending Language Learner is described, which achieves some of the desired properties of a never-ending learner, and lessons learned are discussed."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "40975594",
+            "name": "Tom Michael Mitchell"
+        },
+        {
+            "authorId": "50056360",
+            "name": "William W. Cohen"
+        },
+        {
+            "authorId": "1842532",
+            "name": "Estevam Hruschka"
+        },
+        {
+            "authorId": "2406435",
+            "name": "Partha P. Talukdar"
+        },
+        {
+            "authorId": "2119660368",
+            "name": "Bo Yang"
+        },
+        {
+            "authorId": "31779043",
+            "name": "J. Betteridge"
+        },
+        {
+            "authorId": "143818235",
+            "name": "Andrew Carlson"
+        },
+        {
+            "authorId": "40135250",
+            "name": "Bhavana Dalvi"
+        },
+        {
+            "authorId": "40642935",
+            "name": "Matt Gardner"
+        },
+        {
+            "authorId": "16411658",
+            "name": "B. Kisiel"
+        },
+        {
+            "authorId": "2517825",
+            "name": "Jayant Krishnamurthy"
+        },
+        {
+            "authorId": "1914797",
+            "name": "N. Lao"
+        },
+        {
+            "authorId": "2406799",
+            "name": "Kathryn Mazaitis"
+        },
+        {
+            "authorId": "35645263",
+            "name": "Thahir Mohamed"
+        },
+        {
+            "authorId": "3115592",
+            "name": "Ndapandula Nakashole"
+        },
+        {
+            "authorId": "144888672",
+            "name": "Emmanouil Antonios Platanios"
+        },
+        {
+            "authorId": "1863425",
+            "name": "Alan Ritter"
+        },
+        {
+            "authorId": "32402038",
+            "name": "M. Samadi"
+        },
+        {
+            "authorId": "1717452",
+            "name": "Burr Settles"
+        },
+        {
+            "authorId": "2108772203",
+            "name": "Richard C. Wang"
+        },
+        {
+            "authorId": "2129412",
+            "name": "D. Wijaya"
+        },
+        {
+            "authorId": "1726095131",
+            "name": "A. Gupta"
+        },
+        {
+            "authorId": "39717886",
+            "name": "Xinlei Chen"
+        },
+        {
+            "authorId": "2407368",
+            "name": "Abulhair Saparov"
+        },
+        {
+            "authorId": "2062798496",
+            "name": "Malcolm Greaves"
+        },
+        {
+            "authorId": "122360608",
+            "name": "Joel Welling"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "a89d59f39e805e71b554a962d07449c5d39b7df3",
+            "title": "The Bottleneck"
+        },
+        {
+            "paperId": "7bf34d65eec494a0b758f4ab3f58db8a89815e1f",
+            "title": "Leveraging Knowledge Bases in LSTMs for Improving Machine Reading"
+        },
+        {
+            "paperId": "eaa78c7842536ce321c0d7d095ac0a42ea34cd03",
+            "title": "Estimating Accuracy from Unlabeled Data: A Probabilistic Logic Approach"
+        },
+        {
+            "paperId": "c3a159d6a85be68af4c985c281718bc5801ada19",
+            "title": "Lifelong Machine Learning"
+        },
+        {
+            "paperId": "6df40bf289ab0524eafa1161371d6368a3b6afc0",
+            "title": "Estimating Accuracy from Unlabeled Data: A Bayesian Approach"
+        },
+        {
+            "paperId": "395044a2e3f5624b2471fb28826e7dbb1009356e",
+            "title": "Towards Universal Paraphrastic Sentence Embeddings"
+        },
+        {
+            "paperId": "824d0854a27ca72636b0f25b1090e7726688d988",
+            "title": "How to read the web in portuguese using the never-ending language learner's principles"
+        },
+        {
+            "paperId": "5346525f5022b3d60e7a954b50772ea75d967e7d",
+            "title": "Incorporating Vector Space Similarity in Random Walk Inference over Knowledge Bases"
+        },
+        {
+            "paperId": "dfbd2f5eef7a8c64a8670da8d7a1e4f20742417e",
+            "title": "Estimating Accuracy from Unlabeled Data"
+        },
+        {
+            "paperId": "53e4ab9730e983242a3409c7bf1af945041a6563",
+            "title": "NEIL: Extracting Visual Knowledge from Web Data"
+        },
+        {
+            "paperId": "b2a090506264bc9706dc9bcc5d61b4965ae919e7",
+            "title": "Knowledge Graph Identification"
+        },
+        {
+            "paperId": "e270b273115951a13e4bf6b2d3f9dce6d33b1fdc",
+            "title": "OpenEval: Web Information Query Evaluation"
+        },
+        {
+            "paperId": "d01efc686ef83011e7e024aef34b32487b71a129",
+            "title": "Conversing Learning: Active Learning and Active Social Interaction for Human Supervision in Never-Ending Learning Systems"
+        },
+        {
+            "paperId": "3df24d5f8c149ce6eacc997aecce648c43e3716f",
+            "title": "Discovering Relations between Noun Categories"
+        },
+        {
+            "paperId": "2aea6cc6c42101b2615753c2933a33e57dd665f2",
+            "title": "Random Walk Inference and Learning in A Large Scale Knowledge Base"
+        },
+        {
+            "paperId": "75ae36f8f3462588a498c4159d05793e77c378a3",
+            "title": "Open Information Extraction: The Second Generation"
+        },
+        {
+            "paperId": "ddf0f2226cc837750eb1eb57c43d8192ef0fc2b3",
+            "title": "Toward an Architecture for Never-Ending Language Learning"
+        },
+        {
+            "paperId": "df3196bd230e23a86fbf8254daa78c7be9df028a",
+            "title": "Coupled semi-supervised learning for information extraction"
+        },
+        {
+            "paperId": "8de174ab5419b9d3127695405efd079808e956e8",
+            "title": "Curriculum learning"
+        },
+        {
+            "paperId": "934166bbcda68614fab94f7d505c0adc2d870842",
+            "title": "Proactive learning: cost-sensitive active learning with multiple imperfect oracles"
+        },
+        {
+            "paperId": "ae187b46c2a71f5e38c9ecc9018ffab4679bf4b5",
+            "title": "CORL: A Continuous-state Offset-dynamics Reinforcement Learner"
+        },
+        {
+            "paperId": "6994b9860248aea10f8b8bac74e87afd3fcdc842",
+            "title": "Language-Independent Set Expansion of Named Entities Using the Web"
+        },
+        {
+            "paperId": "5740f80fb61c4489674c9a0beb40c4f5e0ed19ff",
+            "title": "YAGO: A Core of Semantic Knowledge Unifying WordNet and Wikipedia"
+        },
+        {
+            "paperId": "59be86632a3bcc2d24c3bde1c0dfa5d325552c5c",
+            "title": "A PAC-Style Model for Learning from Labeled and Unlabeled Data"
+        },
+        {
+            "paperId": "9ef07373873cc0f0b940512dcdde4e7b54b0cfb0",
+            "title": "Web-scale information extraction in knowitall: (preliminary results)"
+        },
+        {
+            "paperId": "2174d4c7a56bb79b3c1e17bc38b88bb4780b42b2",
+            "title": "Active Learning for Structure in Bayesian Networks"
+        },
+        {
+            "paperId": "c7788fe99735eceff2bcc37401fc02d2825f739a",
+            "title": "Text Classification from Labeled and Unlabeled Documents using EM"
+        },
+        {
+            "paperId": "8446830f3c05b97c4d12a0751c022d1ae6a5115b",
+            "title": "Learning to Extract Symbolic Knowledge from the World Wide Web"
+        },
+        {
+            "paperId": "161ffb54a3fdf0715b198bb57bd22f910242eb49",
+            "title": "Multitask Learning"
+        },
+        {
+            "paperId": "6c8f0f28bcbc358726035cfd243239fd32eb8cba",
+            "title": "Lifelong robot learning"
+        },
+        {
+            "paperId": "ccd9370939934463c2da9cf688ecf217dadfe638",
+            "title": "A design for the ICARUS architecture"
+        },
+        {
+            "paperId": "e340a9b752f9b358cda4dc7a1c6e3c6280867158",
+            "title": "Machine Invention of First Order Predicates by Inverting Resolution"
+        },
+        {
+            "paperId": "cd0a0648572ccf2d350a8cb9a0bf9aacaa12942c",
+            "title": "SOAR: An Architecture for General Intelligence"
+        },
+        {
+            "paperId": "0e19bdb1dba273b920e2b0c70d5d40fe9996a67a",
+            "title": "EURISKO: A Program That Learns New Heuristics and Domain Concepts"
+        },
+        {
+            "paperId": "d36efb9ad91e00faa334b549ce989bfae7e2907a",
+            "title": "Maximum likelihood from incomplete data via the EM - algorithm plus discussions on the paper"
+        },
+        {
+            "paperId": null,
+            "title": "VerbKB: A Knowledge Base of Verbs for Natural Language Understanding"
+        },
+        {
+            "paperId": null,
+            "title": "Clueweb12 data set"
+        },
+        {
+            "paperId": "1c46943103bd7b7a2c7be86859995a4144d1938b",
+            "title": "Visualizing Data using t-SNE"
+        },
+        {
+            "paperId": "d04d6db5f0df11d0cff57ec7e15134990ac07a4f",
+            "title": "Learning Deep Architectures for AI"
+        },
+        {
+            "paperId": null,
+            "title": "HTML structure of web pages containing the noun phrase (e.g., whether the noun phrase appears in an HTML list, alongside other known cities). This is performed by the SEAL system"
+        },
+        {
+            "paperId": null,
+            "title": "Theo: A framework for self-improving systems"
+        },
+        {
+            "paperId": "5b716c969a92be687adabd9d1727b3824c47310b",
+            "title": "The never-ending learning"
+        },
+        {
+            "paperId": "dcfab1576c3839bbbfa9a98531cf32eed1ea419d",
+            "title": "Research Showcase @ CMU"
+        },
+        {
+            "paperId": null,
+            "title": "Active Learning through CrowdSourcing"
+        },
+        {
+            "paperId": null,
+            "title": "\u2022 outsource actively-selected KB edits as a \"human computation\" trivia game: Polarity \"posi&ve\"player \"nega&ve\"player"
+        },
+        {
+            "paperId": null,
+            "title": "The distribution of text contexts found around this noun phrase through active web search"
+        },
+        {
+            "paperId": null,
+            "title": "Alpine Data Labs"
+        }
+    ]
+}

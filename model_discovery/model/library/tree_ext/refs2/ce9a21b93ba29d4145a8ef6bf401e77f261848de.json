@@ -1,0 +1,106 @@
+{
+    "paperId": "ce9a21b93ba29d4145a8ef6bf401e77f261848de",
+    "externalIds": {
+        "MAG": "2016589492",
+        "DBLP": "journals/neco/WilliamsZ89",
+        "DOI": "10.1162/neco.1989.1.2.270",
+        "CorpusId": 14711886
+    },
+    "title": "A Learning Algorithm for Continually Running Fully Recurrent Neural Networks",
+    "abstract": "The exact form of a gradient-following learning algorithm for completely recurrent networks running in continually sampled time is derived and used as the basis for practical algorithms for temporal supervised learning tasks. These algorithms have (1) the advantage that they do not require a precisely defined training interval, operating while the network runs; and (2) the disadvantage that they require nonlocal communication in the network being trained and are computationally expensive. These algorithms allow networks having recurrent connections to learn complex tasks that require the retention of information over time periods having either fixed or indefinite length.",
+    "venue": "Neural Computation",
+    "year": 1989,
+    "referenceCount": 18,
+    "citationCount": 4522,
+    "influentialCitationCount": 304,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The exact form of a gradient-following learning algorithm for completely recurrent networks running in continually sampled time is derived and used as the basis for practical algorithms for temporal supervised learning tasks."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2116648700",
+            "name": "Ronald J. Williams"
+        },
+        {
+            "authorId": "1895771",
+            "name": "D. Zipser"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "668087f0ae7ce1de6e0bd0965dbb480c08103260",
+            "title": "Finding Structure in Time"
+        },
+        {
+            "paperId": "8be3f21ab796bd9811382b560507c1c679fae37f",
+            "title": "A learning rule for asynchronous perceptrons with feedback in a combinatorial environment"
+        },
+        {
+            "paperId": "d76aafbeb54575859441a442376766c597f6bb52",
+            "title": "Attractor dynamics and parallelism in a connectionist sequential machine"
+        },
+        {
+            "paperId": "34468c0aa95a7aea212d8738ab899a69b2fc14c6",
+            "title": "Learning State Space Trajectories in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "5146d7902132bcb0b2e6fe5f607358768fc47323",
+            "title": "Dynamics and architecture for neural computation"
+        },
+        {
+            "paperId": "7d51742bdb98221b3f42208baaa3df91ba06a617",
+            "title": "A self-optimizing, nonsymmetrical neural net for content addressable memory and pattern recognition"
+        },
+        {
+            "paperId": "319f22bd5abfd67ac15988aa5c7f705f018c3ccd",
+            "title": "Learning internal representations by error propagation"
+        },
+        {
+            "paperId": "98b4d4e24aab57ab4e1124ff8106909050645cfa",
+            "title": "Neural networks and physical systems with emergent collective computational abilities."
+        },
+        {
+            "paperId": "2b6957da5a80f33c03e980c9d11d37a527dc118a",
+            "title": "Optimization of time-varying systems"
+        },
+        {
+            "paperId": "7fb4d10f6d2ee3133135958aefd50bf22dcced9d",
+            "title": "A Focused Backpropagation Algorithm for Temporal Pattern Recognition"
+        },
+        {
+            "paperId": null,
+            "title": "Learning to represent state"
+        },
+        {
+            "paperId": "d0d7f8b5d54e3d68fd45a70d4a0d13f42e8d71ff",
+            "title": "Learning Subsequential Structure in Simple Recurrent Networks"
+        },
+        {
+            "paperId": null,
+            "title": "Experiments with sequential associative memories"
+        },
+        {
+            "paperId": null,
+            "title": "Encoding sequential structure in 9"
+        },
+        {
+            "paperId": "268e772554222e1dc738f87077b64f1b67258225",
+            "title": "A Dynamical Approach to Temporal Pattern Processing"
+        },
+        {
+            "paperId": "eccfb47fa72551b2951ab927eadc8358b2609027",
+            "title": "Learning Internal Representations by Error Propagation, Parallel Distributed Processing"
+        },
+        {
+            "paperId": null,
+            "title": "simple recurrent networks (Tech. Rep. CMU-CS-88-183)"
+        },
+        {
+            "paperId": "02f38b2d72d7b3243b5ba4005f814f71b80eec00",
+            "title": "The Utility Driven Dynamic Error Propagation Network"
+        }
+    ]
+}

@@ -1,0 +1,186 @@
+{
+    "paperId": "7e45b68037b5f86c4bce305b2725f4871c6b091e",
+    "externalIds": {
+        "MAG": "2950297649",
+        "ArXiv": "1602.02218",
+        "DBLP": "journals/corr/BalduzziG16",
+        "CorpusId": 1513925
+    },
+    "title": "Strongly-Typed Recurrent Neural Networks",
+    "abstract": "Recurrent neural networks are increasing popular models for sequential learning. Unfortunately, although the most effective RNN architectures are perhaps excessively complicated, extensive searches have not found simpler alternatives. This paper imports ideas from physics and functional programming into RNN design to provide guiding principles. From physics, we introduce type constraints, analogous to the constraints that forbids adding meters to seconds. From functional programming, we require that strongly-typed architectures factorize into stateless learnware and state-dependent firmware, reducing the impact of side-effects. The features learned by strongly-typed nets have a simple semantic interpretation via dynamic average-pooling on one-dimensional convolutions. We also show that strongly-typed gradients are better behaved than in classical architectures, and characterize the representational power of strongly-typed nets. Finally, experiments show that, despite being more constrained, strongly-typed architectures achieve lower training and comparable generalization error to classical architectures.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2016,
+    "referenceCount": 38,
+    "citationCount": 54,
+    "influentialCitationCount": 9,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Ideas from physics and functional programming are imported into RNN design to provide guiding principles and, despite being more constrained, strongly-typed architectures achieve lower training and comparable generalization error to classical architectures."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1722983",
+            "name": "David Balduzzi"
+        },
+        {
+            "authorId": "1900979",
+            "name": "Muhammad Ghifary"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "54c3e878bf0ff2fdde16e439b5579ee99ee0d0d8",
+            "title": "ACDC: A Structured Efficient Linear Layer"
+        },
+        {
+            "paperId": "f95adc1d8daaa07a0c956826ec274ca9e2515ddc",
+            "title": "Batch normalized recurrent neural networks"
+        },
+        {
+            "paperId": "5b8364c21155d3d2cd38ea4c8b8580beba9a3250",
+            "title": "An Empirical Exploration of Recurrent Network Architectures"
+        },
+        {
+            "paperId": "e837b79de602c69395498c1fbbe39bbb4e6f75ad",
+            "title": "Learning to Transduce with Unbounded Memory"
+        },
+        {
+            "paperId": "40be3888daa5c2e5af4d36ae22f690bcc8caf600",
+            "title": "Visualizing and Understanding Recurrent Networks"
+        },
+        {
+            "paperId": "d46b81707786d18499f911b4ab72bb10c65406ba",
+            "title": "A Simple Way to Initialize Recurrent Networks of Rectified Linear Units"
+        },
+        {
+            "paperId": "a7976c2bacfbb194ddbe7fd10c2e50a545cf4081",
+            "title": "LSTM: A Search Space Odyssey"
+        },
+        {
+            "paperId": "a2785f66c20fbdf30ec26c0931584c6d6a0f4fca",
+            "title": "DRAW: A Recurrent Neural Network For Image Generation"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "9665247ea3421929f9b6ad721f139f11edb1dbb8",
+            "title": "Learning Longer Memory in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "55e022fb7581bb9e1fce678d21fb25ffbb3fbb88",
+            "title": "Deep visual-semantic alignments for generating image descriptions"
+        },
+        {
+            "paperId": "d4dc1012d780e8e2547237eb5a6dc7b1bf47d2f0",
+            "title": "Show and tell: A neural image caption generator"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "f264e8b33c0d49a692a6ce2c4bcb28588aeb7d97",
+            "title": "Recurrent Neural Network Regularization"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "533ee188324b833e059cb59b654e6160776d5812",
+            "title": "How to Construct Deep Recurrent Neural Networks"
+        },
+        {
+            "paperId": "dff72b0a7a3922952e4cd2da30ac21ad6b19a23b",
+            "title": "Typing linear algebra: A biproduct-oriented approach"
+        },
+        {
+            "paperId": "4177ec52d1b80ed57f2e72b0f9a42365f1a8598d",
+            "title": "Speech recognition with deep recurrent neural networks"
+        },
+        {
+            "paperId": "84069287da0a6b488b8c933f3cb5be759cb6237e",
+            "title": "On the difficulty of training recurrent neural networks"
+        },
+        {
+            "paperId": "b81732fd07aa2f1fb17a7fff9f3460521a3260f8",
+            "title": "On the information-theoretic structure of distributed measurements"
+        },
+        {
+            "paperId": "ab4850b6151ca9a9337dbba94115bde342876d50",
+            "title": "From machine learning to machine reasoning"
+        },
+        {
+            "paperId": "8b7405ab47e1b6686cebcbfb1f2efdbe431fc79c",
+            "title": "Evolving Memory Cell Structures for Sequence Learning"
+        },
+        {
+            "paperId": "5a6dbe11f7bd7182ca008b0f94b75fe5cac57a08",
+            "title": "Types and programming languages: the next generation"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "d0be39ee052d246ae99c082a565aba25b811be2d",
+            "title": "Learning long-term dependencies with gradient descent is difficult"
+        },
+        {
+            "paperId": "990504fc9e5a1f3619ace4fa7f5bf667069018b1",
+            "title": "Original Contribution: Multilayer feedforward networks with a nonpolynomial activation function can approximate any function"
+        },
+        {
+            "paperId": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+            "title": "Building a Large Annotated Corpus of English: The Penn Treebank"
+        },
+        {
+            "paperId": "17594df98c222217a11510dd454ba52a5a737378",
+            "title": "On the computational power of neural nets"
+        },
+        {
+            "paperId": "f6acad049660fc1b289e15e43b2c981d0937965a",
+            "title": "Towards a theory of type structure"
+        },
+        {
+            "paperId": "7ef3766046c0f3331607f5e965f79c3eb9d7dd7a",
+            "title": "Letters to the editor: go to statement considered harmful"
+        },
+        {
+            "paperId": "2cd7bc93b1c82d5385acb1447e97140c4e1299ca",
+            "title": "Multidimensional Analysis Algebras And Systems For Science And Engineering"
+        },
+        {
+            "paperId": null,
+            "title": "Neural Networks, Types, and Functional Programming"
+        },
+        {
+            "paperId": null,
+            "title": ", Kyunghyun , and Ben - gio , Yoshua . How to Construct Deep Recurrent Networks"
+        },
+        {
+            "paperId": "ec0020be667a7cbf3fb3ddd422575fb25e8a8516",
+            "title": "Inventing Temperature: Measurement and Scientific Progress"
+        },
+        {
+            "paperId": "3f3d13e95c25a8f6a753e38dfce88885097cbd43",
+            "title": "Untersuchungen zu dynamischen neuronalen Netzen"
+        },
+        {
+            "paperId": "d0da7f8995768f7ad2e796aab8f414557daa86b0",
+            "title": "Proofs and types"
+        },
+        {
+            "paperId": "8a5b1912b7e537c49c14a89963099b82c8baabf7",
+            "title": "Dimensional Analysis"
+        }
+    ]
+}

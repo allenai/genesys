@@ -1,0 +1,142 @@
+{
+    "paperId": "07c4fc48ad7b7d1a417b0bb72d0ae2d4efc5aa83",
+    "externalIds": {
+        "MAG": "2625477277",
+        "DBLP": "conf/iclr/KaiserGC18",
+        "ArXiv": "1706.03059",
+        "CorpusId": 3508167
+    },
+    "title": "Depthwise Separable Convolutions for Neural Machine Translation",
+    "abstract": "Depthwise separable convolutions reduce the number of parameters and computation used in convolutional operations while increasing representational efficiency. They have been shown to be successful in image classification models, both in obtaining better models than previously possible for a given parameter count (the Xception architecture) and considerably reducing the number of parameters required to perform at a given level (the MobileNets family of architectures). Recently, convolutional sequence-to-sequence networks have been applied to machine translation tasks with good results. In this work, we study how depthwise separable convolutions can be applied to neural machine translation. We introduce a new architecture inspired by Xception and ByteNet, called SliceNet, which enables a significant reduction of the parameter count and amount of computation needed to obtain results like ByteNet, and, with a similar parameter count, achieves new state-of-the-art results. In addition to showing that depthwise separable convolutions perform well for machine translation, we investigate the architectural changes that they enable: we observe that thanks to depthwise separability, we can increase the length of convolution windows, removing the need for filter dilation. We also introduce a new \"super-separable\" convolution operation that further reduces the number of parameters and computational cost for obtaining state-of-the-art results.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2017,
+    "referenceCount": 26,
+    "citationCount": 268,
+    "influentialCitationCount": 19,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new architecture inspired by Xception and ByteNet is introduced, called SliceNet, which enables a significant reduction of the parameter count and amount of computation needed to obtain results like ByteNet, and, with a similar parameter count, achieves new state-of-the-art results."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "40527594",
+            "name": "Lukasz Kaiser"
+        },
+        {
+            "authorId": "19177000",
+            "name": "Aidan N. Gomez"
+        },
+        {
+            "authorId": "1565641737",
+            "name": "Fran\u00e7ois Chollet"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "6b9ae17bc3d8d65112df335a3cfc700b9d65db28",
+            "title": "Machine Translation"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "43428880d75b3a14257c3ee9bda054e61eb869c0",
+            "title": "Convolutional Sequence to Sequence Learning"
+        },
+        {
+            "paperId": "3647d6d0f151dc05626449ee09cc7bce55be497e",
+            "title": "MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications"
+        },
+        {
+            "paperId": "79baf48bd560060549998d7b61751286de062e2a",
+            "title": "Factorization tricks for LSTM networks"
+        },
+        {
+            "paperId": "510e26733aaff585d65701b9f1be7ca9d5afc586",
+            "title": "Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer"
+        },
+        {
+            "paperId": "98445f4172659ec5e891e031d8202c102135c644",
+            "title": "Neural Machine Translation in Linear Time"
+        },
+        {
+            "paperId": "735d547fc75e0772d2a78c46a1cc5fad7da1474c",
+            "title": "Can Active Memory Replace Attention?"
+        },
+        {
+            "paperId": "d9dab7574d56ae81efe6c90c213c6509b36cf950",
+            "title": "Deconvolution and Checkerboard Artifacts"
+        },
+        {
+            "paperId": "5b6ec746d309b165f9f9def873a2375b6fb40f3d",
+            "title": "Xception: Deep Learning with Depthwise Separable Convolutions"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "df0402517a7338ae28bc54acaac400de6b456a46",
+            "title": "WaveNet: A Generative Model for Raw Audio"
+        },
+        {
+            "paperId": "97fb4e3d45bb098e27e0071448b6152217bd35a5",
+            "title": "Layer Normalization"
+        },
+        {
+            "paperId": "0936352b78a52bc5d2b5e3f04233efc56664af51",
+            "title": "Conditional Image Generation with PixelCNN Decoders"
+        },
+        {
+            "paperId": "9c9d7247f8c51ec5a02b0d911d1d7b9e8160495d",
+            "title": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems"
+        },
+        {
+            "paperId": "7f5fc84819c0cf94b771fe15141f65b123f7b8ec",
+            "title": "Multi-Scale Context Aggregation by Dilated Convolutions"
+        },
+        {
+            "paperId": "1518039b5001f1836565215eb047526b3ac7f462",
+            "title": "Neural Machine Translation of Rare Words with Subword Units"
+        },
+        {
+            "paperId": "eb5eb891061c78f4fcbc9deb3df8bca7fd005acd",
+            "title": "Encoding Source Language with Convolutional Neural Network for Machine Translation"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "1eb09fecd75eb27825dce4f964b97f4f5cc399d7",
+            "title": "On the Properties of Neural Machine Translation: Encoder\u2013Decoder Approaches"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "944a1cfd79dbfb6fef460360a0765ba790f4027a",
+            "title": "Recurrent Continuous Translation Models"
+        },
+        {
+            "paperId": "528beaa995bf1bd1ae451b18218674af9ecd2b50",
+            "title": "Rotation, Scaling and Deformation Invariant Scattering for Texture Discrimination"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": null,
+            "title": "Learning visual representations at scale"
+        }
+    ]
+}

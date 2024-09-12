@@ -1,0 +1,318 @@
+{
+    "paperId": "df0402517a7338ae28bc54acaac400de6b456a46",
+    "externalIds": {
+        "MAG": "2519091744",
+        "ArXiv": "1609.03499",
+        "DBLP": "journals/corr/OordDZSVGKSK16",
+        "CorpusId": 6254678
+    },
+    "title": "WaveNet: A Generative Model for Raw Audio",
+    "abstract": "This paper introduces WaveNet, a deep neural network for generating raw audio waveforms. The model is fully probabilistic and autoregressive, with the predictive distribution for each audio sample conditioned on all previous ones; nonetheless we show that it can be efficiently trained on data with tens of thousands of samples per second of audio. When applied to text-to-speech, it yields state-of-the-art performance, with human listeners rating it as significantly more natural sounding than the best parametric and concatenative systems for both English and Mandarin. A single WaveNet can capture the characteristics of many different speakers with equal fidelity, and can switch between them by conditioning on the speaker identity. When trained to model music, we find that it generates novel and often highly realistic musical fragments. We also show that it can be employed as a discriminative model, returning promising results for phoneme recognition.",
+    "venue": "Speech Synthesis Workshop",
+    "year": 2016,
+    "referenceCount": 64,
+    "citationCount": 6805,
+    "influentialCitationCount": 813,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "WaveNet, a deep neural network for generating raw audio waveforms, is introduced; it is shown that it can be efficiently trained on data with tens of thousands of samples per second of audio, and can be employed as a discriminative model, returning promising results for phoneme recognition."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3422336",
+            "name": "A\u00e4ron van den Oord"
+        },
+        {
+            "authorId": "48373216",
+            "name": "S. Dieleman"
+        },
+        {
+            "authorId": "1691713",
+            "name": "H. Zen"
+        },
+        {
+            "authorId": "34838386",
+            "name": "K. Simonyan"
+        },
+        {
+            "authorId": "1689108",
+            "name": "O. Vinyals"
+        },
+        {
+            "authorId": "1753223",
+            "name": "Alex Graves"
+        },
+        {
+            "authorId": "2583391",
+            "name": "Nal Kalchbrenner"
+        },
+        {
+            "authorId": "33666044",
+            "name": "A. Senior"
+        },
+        {
+            "authorId": "2645384",
+            "name": "K. Kavukcuoglu"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "d4903c15a7aba8e2c2386b2fe95edf0905144d6a",
+            "title": "SUPERSEDED - CSTR VCTK Corpus: English Multi-speaker Corpus for CSTR Voice Cloning Toolkit"
+        },
+        {
+            "paperId": "21c82f0bc54af14bc7c596a9512ec9e190dd936b",
+            "title": "Recent Advances in Google Real-Time HMM-Driven Unit Selection Synthesizer"
+        },
+        {
+            "paperId": "ba91dabec842d507a647aab97ad224b4abdc1635",
+            "title": "WORLD: A Vocoder-Based High-Quality Speech Synthesis System for Real-Time Applications"
+        },
+        {
+            "paperId": "16fea85194803a3980bf0381fa5ec997d3de178c",
+            "title": "Fast, Compact, and High Quality LSTM-RNN Based Statistical Parametric Speech Synthesizers for Mobile Devices"
+        },
+        {
+            "paperId": "0936352b78a52bc5d2b5e3f04233efc56664af51",
+            "title": "Conditional Image Generation with PixelCNN Decoders"
+        },
+        {
+            "paperId": "4b890b6ded71f005414e55adb87c23efd437ef95",
+            "title": "Postfilters to Modify the Modulation Spectrum for Statistical Parametric Speech Synthesis"
+        },
+        {
+            "paperId": "629380a24c3fc7c26e96415f5cf8d6496b2d1c38",
+            "title": "Directly modeling voiced and unvoiced components in speech waveforms by neural networks"
+        },
+        {
+            "paperId": "24d6f1bfb663a9d7a6aa53bd12c0c8014aa78a2f",
+            "title": "A deep auto-encoder based low-dimensional feature extraction from FFT spectral envelopes for statistical parametric speech synthesis"
+        },
+        {
+            "paperId": "2f2d8f8072e5cc9b296fad551f65f183bdbff7aa",
+            "title": "Exploring the Limits of Language Modeling"
+        },
+        {
+            "paperId": "41f1d50c85d3180476c4c7b3eea121278b0d8474",
+            "title": "Pixel Recurrent Neural Networks"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "7f5fc84819c0cf94b771fe15141f65b123f7b8ec",
+            "title": "Multi-Scale Context Aggregation by Dilated Convolutions"
+        },
+        {
+            "paperId": "f267934e9de60c5badfa9d3f28918e67ae7a2bf4",
+            "title": "Generative Image Modeling Using Spatial LSTMs"
+        },
+        {
+            "paperId": "22c1c1dc95f043ea04aadffb21c748977718f58b",
+            "title": "Vocaine the vocoder and applications in speech synthesis"
+        },
+        {
+            "paperId": "7bf053b97e0cce85aa47f6597cd5ec116333c4f8",
+            "title": "Directly modeling speech waveforms by neural networks for statistical parametric speech synthesis"
+        },
+        {
+            "paperId": "58592e7acf612023406800794a8b86e926f20cba",
+            "title": "Speech acoustic modeling from raw multichannel waveforms"
+        },
+        {
+            "paperId": "ea9381d2aa2690596660d930420fe752e3905b19",
+            "title": "Modelling acoustic feature dependencies with artificial neural networks: Trajectory-RNADE"
+        },
+        {
+            "paperId": "39ad6c911f3351a3b390130a6e4265355b4d593b",
+            "title": "Semantic Image Segmentation with Deep Convolutional Nets and Fully Connected CRFs"
+        },
+        {
+            "paperId": "595f25770afe27204bec92f4e65920407de50000",
+            "title": "A Deep Learning Approach to Data-driven Parameterizations for Statistical Parametric Speech Synthesis"
+        },
+        {
+            "paperId": "8517b1a43a74fca82b549bcc9bd907bea2b1e4e4",
+            "title": "Integration of Spectral Feature Extraction and Modeling for HMM-Based Speech Synthesis"
+        },
+        {
+            "paperId": "20969e35837d93b6e4eb52d75c8713abc6069f4a",
+            "title": "Statistical parametric speech synthesis using deep neural networks"
+        },
+        {
+            "paperId": "155e7a8ebabd17726bfa1c05b4bd5939e6772a51",
+            "title": "Estimating phoneme class conditional probabilities from raw speech signal using convolutional neural networks"
+        },
+        {
+            "paperId": "76093cb346dafdc36c33ea8aff8baaaa1ac80f4d",
+            "title": "Statistical parametric speech synthesis with joint estimation of acoustic and excitation model parameters"
+        },
+        {
+            "paperId": "a538b05ebb01a40323997629e171c91aa28b8e2f",
+            "title": "Rectified Linear Units Improve Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": "72dd231084d2fee5c31343b395ae372b68389ba9",
+            "title": "Input-agreement: a new mechanism for collecting data using human computation games"
+        },
+        {
+            "paperId": "ca8ec76a2bca0bd60f9d28e3bb4724e4b480032b",
+            "title": "Statistical approach to vocal tract transfer function estimation based on factor analyzed trajectory HMM"
+        },
+        {
+            "paperId": "8f9f4f197c79e6c41e4c6e7751b8a55bf0044fe0",
+            "title": "A Speech Parameter Generation Algorithm Considering Global Variance for HMM-Based Speech Synthesis"
+        },
+        {
+            "paperId": "317d2b6e97b878e77f8aad964575bcaadddb83cf",
+            "title": "Statistical Parametric Speech Synthesis"
+        },
+        {
+            "paperId": "defafc2bb5ce486b774bc523ee8624dcbd8fbef3",
+            "title": "Nonlinear filter design: methodologies and challenges"
+        },
+        {
+            "paperId": "518c3867f4272fd46fc5e8ecf1eb4f6af517c698",
+            "title": "Restructuring speech representations using a pitch-adaptive time-frequency smoothing and an instantaneous-frequency-based F0 extraction: Possible role of a repetitive structure in sounds"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "3a069c56e05db4dcdbc8072d1795568443f3b439",
+            "title": "Text-to-speech conversion with neural networks: a recurrent TDNN approach"
+        },
+        {
+            "paperId": "1dd0140d51e870a713340ae30734c8438b03d1a3",
+            "title": "Unit selection in a concatenative speech synthesis system using a large speech database"
+        },
+        {
+            "paperId": "449dd056204e8f0ce6d21afa1d804eb61ce45b61",
+            "title": "Speech synthesis using artificial neural networks trained on cepstral coefficients"
+        },
+        {
+            "paperId": "b3db94f62118e192ef0465ca9edafcd6c074c137",
+            "title": "DARPA TIMIT:: acoustic-phonetic continuous speech corpus CD-ROM, NIST speech disc 1-1.1"
+        },
+        {
+            "paperId": "ce14e0a3c79e3c80bb64596a6aae3c4d7145dcc1",
+            "title": "ATR \u03bc-talk speech synthesis system"
+        },
+        {
+            "paperId": "8944a3b8b385df07fe7da2d5d08938e2afeeeee2",
+            "title": "Wavelets: Time-Frequency Methods and Phase Space"
+        },
+        {
+            "paperId": "d31898b96c994fb8d661a8094344a379712b672b",
+            "title": "Pitch-synchronous waveform processing techniques for text-to-speech synthesis using diphones"
+        },
+        {
+            "paperId": "436f38dc28ca25af965b202ebe0e27c747888da6",
+            "title": "Mixture autoregressive hidden Markov models for speech signals"
+        },
+        {
+            "paperId": "1e6f96bee0a7b78402866e1461d00a72612dcc69",
+            "title": "Linear predictive hidden Markov models and the speech signal"
+        },
+        {
+            "paperId": "c06be257debf1a81633fb7916d72a8b2200c826d",
+            "title": "Line spectrum representation of linear predictor coefficients of speech signals"
+        },
+        {
+            "paperId": "fd5474f21495989777cbff507ecf1b37b7091475",
+            "title": "Learning the speech front-end with raw waveform CLDNNs"
+        },
+        {
+            "paperId": "c217905bc98f00af747e8e9d5f6b79fb89a90886",
+            "title": "TTS synthesis with bidirectional LSTM based recurrent neural networks"
+        },
+        {
+            "paperId": "dae891c65f9c555cff233fe4bf6502d283c31ecd",
+            "title": "Acoustic modeling with deep neural networks using raw time signal for LVCSR"
+        },
+        {
+            "paperId": null,
+            "title": "Speech synthesis as a statistical machine learning problem. http://www.sp"
+        },
+        {
+            "paperId": null,
+            "title": "Speech analysis with multi-kernel linear prediction"
+        },
+        {
+            "paperId": "574e2b70f5999142c44b239798e4b32af7724894",
+            "title": "Minimum generation error training with direct log spectral distortion on LSPs for HMM-based speech synthesis"
+        },
+        {
+            "paperId": "b690f6db23ea76c4b44d231b3c639da924c15cc5",
+            "title": "Reformulating the HMM as a trajectory model by imposing explicit relationships between static and dynamic feature vector sequences"
+        },
+        {
+            "paperId": "f09d02319bbab716cc5cb561f3f6175319d9332a",
+            "title": "Reformulating HMM as a trajectory model by imposing explicit relationships between static and dynamic features"
+        },
+        {
+            "paperId": null,
+            "title": "An example of context-dependent label format for HMM-based speech synthesis in English"
+        },
+        {
+            "paperId": "c61926496fa04d04d937740aa31437485ed91b64",
+            "title": "Simultaneous modeling of phonetic and prosodic parameters,and characteristic conversion for HMM-based text-to-speech systems"
+        },
+        {
+            "paperId": "1c424745996fd31920cadeec62a5514f3ce1a8b8",
+            "title": "Aperiodicity extraction and control using mixed mode excitation and group delay manipulation for a high quality speech analysis, modification and synthesis system STRAIGHT"
+        },
+        {
+            "paperId": "d4ca18249446328c86d9da295a21c679aea1ed77",
+            "title": "Mixture Density Networks"
+        },
+        {
+            "paperId": "2392e94df520e707e8b1422311bfdc552954dea9",
+            "title": "Fundamentals of speech recognition"
+        },
+        {
+            "paperId": "ef3ed634a28eee78a7e31fc525cf7083e6689345",
+            "title": "A real-time algorithm for signal analysis with the help of the wavelet transform"
+        },
+        {
+            "paperId": "f75b338c638edca496c99852b706524e3eef1e55",
+            "title": "An Implementation of the \u201calgorithme \u00e0 trous\u201d to Compute the Wavelet Transform"
+        },
+        {
+            "paperId": null,
+            "title": "Unbiased estimation of log spectrum"
+        },
+        {
+            "paperId": null,
+            "title": "Kameoka et al., 2010) within a windowed frame. However, the relationship between successive audio samples can be highly non-linear"
+        },
+        {
+            "paperId": null,
+            "title": "Pulse Code Modulation (PCM) of voice frequencies"
+        },
+        {
+            "paperId": "3acdc93dab375c667480670cbd3c8e4d3f79f740",
+            "title": "A statistical method for estimation of speech spectral density and formant frequencies"
+        },
+        {
+            "paperId": null,
+            "title": "These generative models are typically realized as a linear time-invariant filter (Itakura & Saito"
+        },
+        {
+            "paperId": "5d79d86d4501b4a5381a7a8cc3562bf66cf975e6",
+            "title": "Acoustic Theory Of Speech Production"
+        },
+        {
+            "paperId": "6aa19e69d6b450a3010ac230d6cb8b811f2d0d36",
+            "title": "The vowel, its nature and structure"
+        },
+        {
+            "paperId": null,
+            "title": "Remaking speech"
+        }
+    ]
+}

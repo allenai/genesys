@@ -1,0 +1,182 @@
+{
+    "paperId": "d76c07211479e233f7c6a6f32d5346c983c5598f",
+    "externalIds": {
+        "MAG": "2963842982",
+        "DBLP": "journals/corr/LuongLSVK15",
+        "ArXiv": "1511.06114",
+        "CorpusId": 6954272
+    },
+    "title": "Multi-task Sequence to Sequence Learning",
+    "abstract": "Sequence to sequence learning has recently emerged as a new paradigm in supervised learning. To date, most of its applications focused on only one task and not much work explored this framework for multiple tasks. This paper examines three multi-task learning (MTL) settings for sequence to sequence models: (a) the oneto-many setting - where the encoder is shared between several tasks such as machine translation and syntactic parsing, (b) the many-to-one setting - useful when only the decoder can be shared, as in the case of translation and image caption generation, and (c) the many-to-many setting - where multiple encoders and decoders are shared, which is the case with unsupervised objectives and translation. Our results show that training on a small amount of parsing and image caption data can improve the translation quality between English and German by up to 1.5 BLEU points over strong single-task baselines on the WMT benchmarks. Furthermore, we have established a new state-of-the-art result in constituent parsing with 93.0 F1. Lastly, we reveal interesting properties of the two unsupervised learning objectives, autoencoder and skip-thought, in the MTL context: autoencoder helps less in terms of perplexities but more on BLEU scores compared to skip-thought.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2015,
+    "referenceCount": 34,
+    "citationCount": 788,
+    "influentialCitationCount": 63,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The results show that training on a small amount of parsing and image caption data can improve the translation quality between English and German by up to 1.5 BLEU points over strong single-task baselines on the WMT benchmarks, and reveal interesting properties of the two unsupervised learning objectives, autoencoder and skip-thought, in the MTL context."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1707242",
+            "name": "Minh-Thang Luong"
+        },
+        {
+            "authorId": "2827616",
+            "name": "Quoc V. Le"
+        },
+        {
+            "authorId": "1701686",
+            "name": "I. Sutskever"
+        },
+        {
+            "authorId": "1689108",
+            "name": "O. Vinyals"
+        },
+        {
+            "authorId": "40527594",
+            "name": "Lukasz Kaiser"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "2f2d8f8072e5cc9b296fad551f65f183bdbff7aa",
+            "title": "Exploring the Limits of Language Modeling"
+        },
+        {
+            "paperId": "4aa9f5150b46320f534de4747a2dd0cd7f3fe292",
+            "title": "Semi-supervised Sequence Learning"
+        },
+        {
+            "paperId": "feb420a4ac7c5719d51480053cd3e8669d5f2062",
+            "title": "Findings of the 2015 Workshop on Statistical Machine Translation"
+        },
+        {
+            "paperId": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+            "title": "Effective Approaches to Attention-based Neural Machine Translation"
+        },
+        {
+            "paperId": "83cf4b2f39bcc802b09fd59b69e23068447b26b7",
+            "title": "Multi-Task Learning for Multiple Language Translation"
+        },
+        {
+            "paperId": "6e795c6e9916174ae12349f5dc3f516570c17ce8",
+            "title": "Skip-Thought Vectors"
+        },
+        {
+            "paperId": "c3b8367a80181e28c95630b9b63060d895de08ff",
+            "title": "Representation Learning Using Multi-Task Deep Neural Networks for Semantic Classification and Information Retrieval"
+        },
+        {
+            "paperId": "5fcd41ca42659ff792fc8ee7d535156e8e69f987",
+            "title": "On Using Monolingual Corpora in Neural Machine Translation"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "47570e7f63e296f224a0e7f9a0d08b0de3cbaf40",
+            "title": "Grammar as a Foreign Language"
+        },
+        {
+            "paperId": "1938624bb9b0f999536dcc8d8f519810bb4e1b3b",
+            "title": "On Using Very Large Target Vocabulary for Neural Machine Translation"
+        },
+        {
+            "paperId": "d4dc1012d780e8e2547237eb5a6dc7b1bf47d2f0",
+            "title": "Show and tell: A neural image caption generator"
+        },
+        {
+            "paperId": "1956c239b3552e030db1b78951f64781101125ed",
+            "title": "Addressing the Rare Word Problem in Neural Machine Translation"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "c0b624c46b51920dfec5aa02cc86323c0beb0df5",
+            "title": "Dropout Improves Recurrent Neural Networks for Handwriting Recognition"
+        },
+        {
+            "paperId": "b8de958fead0d8a9619b55c7299df3257c624a96",
+            "title": "DeCAF: A Deep Convolutional Activation Feature for Generic Visual Recognition"
+        },
+        {
+            "paperId": "944a1cfd79dbfb6fef460360a0765ba790f4027a",
+            "title": "Recurrent Continuous Translation Models"
+        },
+        {
+            "paperId": "a41b826d23957d6ad4e9e794d20a583a9b567c5d",
+            "title": "Multilingual acoustic models using distributed deep neural networks"
+        },
+        {
+            "paperId": "0a7c4cec908ca18f76f5101578a2496a2dceb5e7",
+            "title": "Cross-language knowledge transfer using multilingual deep neural network with shared hidden layers"
+        },
+        {
+            "paperId": "d3c04a424fff21d3d12ff8b0543734cf244d5f67",
+            "title": "Learning Task Grouping and Overlap in Multi-task Learning"
+        },
+        {
+            "paperId": "bd5fc28c7356915ec71abafbe86b7596c60720aa",
+            "title": "The conference paper"
+        },
+        {
+            "paperId": "944e1a7b2c5c62e952418d7684e3cade89c76f87",
+            "title": "A Framework for Learning Predictive Structures from Multiple Tasks and Unlabeled Data"
+        },
+        {
+            "paperId": "e219a61354d972a28954e655a7c53373508a08b6",
+            "title": "Regularized multi--task learning"
+        },
+        {
+            "paperId": "d7da009f457917aa381619facfa5ffae9329a6e9",
+            "title": "Bleu: a Method for Automatic Evaluation of Machine Translation"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "161ffb54a3fdf0715b198bb57bd22f910242eb49",
+            "title": "Multitask Learning"
+        },
+        {
+            "paperId": "371c9dc680e916f79d9c78fcf6c894a2dd299095",
+            "title": "Is Learning The n-th Thing Any Easier Than Learning The First?"
+        },
+        {
+            "paperId": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+            "title": "Building a Large Annotated Corpus of English: The Penn Treebank"
+        },
+        {
+            "paperId": "bcd857d75841aa3e92cd4284a8818aba9f6c0c3f",
+            "title": "Published as a conference paper at ICLR 2018 S IMULATING A CTION D YNAMICS WITH N EURAL P ROCESS N ETWORKS"
+        },
+        {
+            "paperId": "e4351041d25c272a008bcd5765868dc3a28fe470",
+            "title": "Under Review as a Conference Paper at Iclr 2017 Delving into Transferable Adversarial Ex- Amples and Black-box Attacks"
+        },
+        {
+            "paperId": "2826f9dccdcceb113b33ccf2841d488f1419bb30",
+            "title": "Stanford Neural Machine Translation Systems for Spoken Language Domains"
+        },
+        {
+            "paperId": "25eb839f39507fe6983ad3e692b2f8d93a5cb0cc",
+            "title": "Neural Machine Translation Systems for WMT \u2019 15"
+        }
+    ]
+}

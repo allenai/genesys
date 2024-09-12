@@ -1,0 +1,146 @@
+{
+    "paperId": "73317dbc881f53ee7fc25a9899b8b5b6698fce55",
+    "externalIds": {
+        "MAG": "2765506414",
+        "DBLP": "conf/nips/HazanSZ17",
+        "ArXiv": "1711.00946",
+        "CorpusId": 6731097
+    },
+    "title": "Learning Linear Dynamical Systems via Spectral Filtering",
+    "abstract": "We present an efficient and practical algorithm for the online prediction of discrete-time linear dynamical systems with a symmetric transition matrix. We circumvent the non-convex optimization problem using improper learning: carefully overparameterize the class of LDSs by a polylogarithmic factor, in exchange for convexity of the loss functions. From this arises a polynomial-time algorithm with a near-optimal regret guarantee, with an analogous sample complexity bound for agnostic learning. Our algorithm is based on a novel filtering technique, which may be of independent interest: we convolve the time series with the eigenvectors of a certain Hankel matrix.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2017,
+    "referenceCount": 27,
+    "citationCount": 87,
+    "influentialCitationCount": 2,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A polynomial-time algorithm with a near-optimal regret guarantee, with an analogous sample complexity bound for agnostic learning, based on a novel filtering technique, which may be of independent interest."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "34840427",
+            "name": "Elad Hazan"
+        },
+        {
+            "authorId": "2109143637",
+            "name": "Karan Singh"
+        },
+        {
+            "authorId": "15943185",
+            "name": "Cyril Zhang"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "f0a22929e436f6d22cf87629df94ddfe612e7d08",
+            "title": "On the Singular Values of Matrices with Displacement Structure"
+        },
+        {
+            "paperId": "8a765725a44b91b60d414551dc555175cfff3cd9",
+            "title": "Gradient Descent Learns Linear Dynamical Systems"
+        },
+        {
+            "paperId": "195043e4c13a635555c28dfab7ac534d10d78c12",
+            "title": "Introduction to Online Convex Optimization"
+        },
+        {
+            "paperId": "60e7761c232428dee0102131e7a9a6ea419fe34e",
+            "title": "A generalisation of Mirsky's singular value inequalities"
+        },
+        {
+            "paperId": "413c1142de9d91804d6d11c67ff3fed59c9fc279",
+            "title": "Adaptive Subgradient Methods for Online Learning and Stochastic Optimization"
+        },
+        {
+            "paperId": "5290251021888c7ceb1dfa9b5ad5e696a9f290f0",
+            "title": "Learning the Linear Dynamical System with ASOS"
+        },
+        {
+            "paperId": "bb3ed654be746a155573024639ab8d01e168a677",
+            "title": "Efficient algorithms for online decision problems"
+        },
+        {
+            "paperId": "e1f153c6df86d1ca8ecb9561daddfe7a54f901e7",
+            "title": "Online Convex Programming and Generalized Infinitesimal Gradient Ascent"
+        },
+        {
+            "paperId": "009f35c0e453f2435efd8d8ef8086b76b294967a",
+            "title": "Rademacher and Gaussian Complexities: Risk Bounds and Structural Results"
+        },
+        {
+            "paperId": "d9d2fe0d5ae1ec67068f1b4be2e8ac828ac989ac",
+            "title": "The unscented Kalman filter for nonlinear estimation"
+        },
+        {
+            "paperId": "30755a7614148f1acf5edca72385832410c7c33a",
+            "title": "A Unifying Review of Linear Gaussian Models"
+        },
+        {
+            "paperId": "2e3170f91e1d8037f8ba03286fa5ddd347a0b88e",
+            "title": "Parameter estimation for linear dynamical systems"
+        },
+        {
+            "paperId": "22cd8ee12f34e75781dd34be2f9cd9f5a1ffe2fc",
+            "title": "The weighted majority algorithm"
+        },
+        {
+            "paperId": "68e1bbbc56c05bc53c894855ffa9823c69f2a28f",
+            "title": "TRICKS OR TREATS WITH THE HILBERT MATRIX"
+        },
+        {
+            "paperId": "658ee89b35cde8dae323452f01146b6176b2ece8",
+            "title": "AN APPROACH TO TIME SERIES SMOOTHING AND FORECASTING USING THE EM ALGORITHM"
+        },
+        {
+            "paperId": "88a943580d29bb484eff0344a15858aef5d20e80",
+            "title": "A remark on Hilbert's matrix"
+        },
+        {
+            "paperId": "eb6343aa8ff7bb8c19e33dd558230adcf71c02af",
+            "title": "Prolate spheroidal wave functions, fourier analysis, and uncertainty \u2014 V: the discrete case"
+        },
+        {
+            "paperId": "c64140d4f525f029d417b5624f92cf01edabe003",
+            "title": "Sparse Coding and Dictionary Learning with Linear Dynamical Systems"
+        },
+        {
+            "paperId": "c1a456e8e40fdb179dfb111422ff5663e9e94da9",
+            "title": "Eecient Algorithms for Online Decision Problems"
+        },
+        {
+            "paperId": "0ee24636cd1f51f80543e590514e2a3a500eb36a",
+            "title": "Prediction error estimation methods"
+        },
+        {
+            "paperId": "255a77422b1da74da05d1714b7875356187385bd",
+            "title": "A New Approach to Linear Filtering and Prediction Problems"
+        },
+        {
+            "paperId": "bb55c1c619c30f939fc792b049172926a4a0c0f7",
+            "title": "A New Approach to Linear Filtering and Prediction Problems"
+        },
+        {
+            "paperId": null,
+            "title": "System identification: Theory for the User"
+        },
+        {
+            "paperId": "2757c752d2b2082d707aa9bbf5d124e0d4651759",
+            "title": "Subspace identification for linear systems"
+        },
+        {
+            "paperId": "87c07ee4ed43f08e00d853bf3184c9f57a8d0703",
+            "title": "Bemerkungen zur Theorie der beschr\u00e4nkten Bilinearformen mit unendlich vielen Ver\u00e4nderlichen."
+        },
+        {
+            "paperId": "6a5e95f6695fedd43d4f49756777d55bbc4b05bb",
+            "title": "Ein Beitrag zur Theorie des Legendre'schen Polynoms"
+        },
+        {
+            "paperId": null,
+            "title": "iii) Iterate the doubling argument O (log T ) times to reach Z T from Z T 0 , to conclude the lemma"
+        }
+    ]
+}

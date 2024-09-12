@@ -1,0 +1,165 @@
+{
+    "paperId": "4d674fc145bb30a09d3ec41aaed327cf6016becb",
+    "externalIds": {
+        "DBLP": "conf/cvpr/KleinWA15",
+        "MAG": "1982479097",
+        "DOI": "10.1109/CVPR.2015.7299117",
+        "CorpusId": 14120146
+    },
+    "title": "A Dynamic Convolutional Layer for short rangeweather prediction",
+    "abstract": "We present a new deep network layer called \u201cDynamic Convolutional Layer\u201d which is a generalization of the convolutional layer. The conventional convolutional layer uses filters that are learned during training and are held constant during testing. In contrast, the dynamic convolutional layer uses filters that will vary from input to input during testing. This is achieved by learning a function that maps the input to the filters. We apply the dynamic convolutional layer to the application of short range weather prediction and show performance improvements compared to other baselines.",
+    "venue": "Computer Vision and Pattern Recognition",
+    "year": 2015,
+    "referenceCount": 31,
+    "citationCount": 168,
+    "influentialCitationCount": 4,
+    "openAccessPdf": {
+        "url": "http://www.cs.tau.ac.il/%7Ewolf/papers/dynconv.pdf",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new deep network layer called \u201cDynamic Convolutional Layer\u201d which is a generalization of the convolutional layer which is applied to the application of short range weather prediction and shows performance improvements compared to other baselines."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145969200",
+            "name": "Benjamin Klein"
+        },
+        {
+            "authorId": "145128145",
+            "name": "Lior Wolf"
+        },
+        {
+            "authorId": "1695885",
+            "name": "Y. Afek"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "738885a1c94924d7ee0cbd6450e0d855bc50c388",
+            "title": "SimNets: A Generalization of Convolutional Networks"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "0504945cc2d03550fecb6ff02e637f9421107c25",
+            "title": "Learning a Deep Convolutional Network for Image Super-Resolution"
+        },
+        {
+            "paperId": "93ba9c51439c6632219328419d3619c3df77c135",
+            "title": "Learning to Deblur"
+        },
+        {
+            "paperId": "57fab4eec584634756b0da244ce1abe429556003",
+            "title": "Who Do I Look Like? Determining Parent-Offspring Resemblance via Gated Autoencoders"
+        },
+        {
+            "paperId": "6bdb186ec4726e00a8051119636d4df3b94043b5",
+            "title": "Caffe: Convolutional Architecture for Fast Feature Embedding"
+        },
+        {
+            "paperId": "9f2efadf66817f1b38f58b3f50c7c8f34c69d89a",
+            "title": "DeepFace: Closing the Gap to Human-Level Performance in Face Verification"
+        },
+        {
+            "paperId": "1109b663453e78a59e4f66446d71720ac58cec25",
+            "title": "OverFeat: Integrated Recognition, Localization and Detection using Convolutional Networks"
+        },
+        {
+            "paperId": "5e83ab70d0cbc003471e87ec306d27d9c80ecb16",
+            "title": "Network In Network"
+        },
+        {
+            "paperId": "6196fa503ecd1b0798e5fd3a48ea519fc3ff5765",
+            "title": "Mitosis Detection in Breast Cancer Histology Images with Deep Neural Networks"
+        },
+        {
+            "paperId": "237a04dd8291cbdb59b6dc4b53e689af743fe2a3",
+            "title": "Learning Hierarchical Features for Scene Labeling"
+        },
+        {
+            "paperId": "abbd916054f046dfc0556fd1b27ce0dc806f4d29",
+            "title": "Gated Autoencoders with Tied Input Weights"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "2239f2a97d80b63466815e2e2d6ee993d156813e",
+            "title": "Semantic Road Segmentation via Multi-scale Ensembles of Learned Features"
+        },
+        {
+            "paperId": "3ee71211e3471421ff34f23fa695f13292c4d1ba",
+            "title": "Links Between Weather Phenomena and Characteristics of Refractivity Measured by Precipitation Radar"
+        },
+        {
+            "paperId": "1ca4f8711e0c5ac77a7dfd8e5916d9d4e4268719",
+            "title": "Gated Softmax Classification"
+        },
+        {
+            "paperId": "4d476b96be73fccc61f2076befbf5a468caa4180",
+            "title": "Convolutional Learning of Spatio-temporal Features"
+        },
+        {
+            "paperId": "ea9d2a2b4ce11aaf85136840c65f3bc9c03ab649",
+            "title": "Understanding the difficulty of training deep feedforward neural networks"
+        },
+        {
+            "paperId": "2ac91e028cdc602695b46bd1f372c03b4d2776cf",
+            "title": "Unsupervised Learning of Image Transformations"
+        },
+        {
+            "paperId": "fd38622d5e7f433d442a41eeedfea0470bdab566",
+            "title": "Introduction to real-time ray tracing"
+        },
+        {
+            "paperId": "3cadadc172f77117f614223fc991529c8d082040",
+            "title": "Radar Refractivity Retrieval: Validation and Application to Short-Term Forecasting"
+        },
+        {
+            "paperId": "78f6f0ac3d501cb0073a7d94edde5267044a59ae",
+            "title": "Parallel Distributed Processing: Explorations in the Microstructure of Cognition, vol 1: Foundations, vol 2: Psychological and Biological Models"
+        },
+        {
+            "paperId": "052b1d8ce63b07fec3de9dbb583772d860b7c769",
+            "title": "Learning representations by back-propagating errors"
+        },
+        {
+            "paperId": "4bb08f30bb2c83334b21fbbc68c3f2622d4fb04b",
+            "title": "Parallel distributed processing: explorations in the microstructure of cognition, vol. 1: foundations"
+        },
+        {
+            "paperId": "e03d550b23e45d1c5da474574914d91bee77101f",
+            "title": "A general framework for parallel distributed processing"
+        },
+        {
+            "paperId": "84e611d7b24323fda931a0e10aee59d8824e58bf",
+            "title": "Toward real-time indoor semantic segmentation using depth information"
+        },
+        {
+            "paperId": "ad378a439f2f8b29923fc4f09614029414c790e1",
+            "title": "Learning to Relate Images."
+        },
+        {
+            "paperId": "9945bddbec91662edd70c29bd87cbd8a19486c09",
+            "title": "Flash flood forecasting: What are the limits of predictability?"
+        },
+        {
+            "paperId": "f42b865e20e61a954239f421b42007236e671f19",
+            "title": "GradientBased Learning Applied to Document Recognition"
+        },
+        {
+            "paperId": null,
+            "title": "The OpenCV Library. Dr. Dobb's Journal of Software Tools"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        }
+    ]
+}

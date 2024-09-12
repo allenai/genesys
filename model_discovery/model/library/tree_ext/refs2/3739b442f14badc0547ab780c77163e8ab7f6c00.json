@@ -1,0 +1,130 @@
+{
+    "paperId": "3739b442f14badc0547ab780c77163e8ab7f6c00",
+    "externalIds": {
+        "DBLP": "conf/cvpr/GeHK013",
+        "MAG": "2111006384",
+        "DOI": "10.1109/CVPR.2013.379",
+        "CorpusId": 1189578
+    },
+    "title": "Optimized Product Quantization for Approximate Nearest Neighbor Search",
+    "abstract": "Product quantization is an effective vector quantization approach to compactly encode high-dimensional vectors for fast approximate nearest neighbor (ANN) search. The essence of product quantization is to decompose the original high-dimensional space into the Cartesian product of a finite number of low-dimensional subspaces that are then quantized separately. Optimal space decomposition is important for the performance of ANN search, but still remains unaddressed. In this paper, we optimize product quantization by minimizing quantization distortions w.r.t. the space decomposition and the quantization codebooks. We present two novel methods for optimization: a non-parametric method that alternatively solves two smaller sub-problems, and a parametric method that is guaranteed to achieve the optimal solution if the input data follows some Gaussian distribution. We show by experiments that our optimized approach substantially improves the accuracy of product quantization for ANN search.",
+    "venue": "2013 IEEE Conference on Computer Vision and Pattern Recognition",
+    "year": 2013,
+    "referenceCount": 22,
+    "citationCount": 389,
+    "influentialCitationCount": 84,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper optimization product quantization by minimizing quantization distortions w.r.t. the space decomposition and the quantization codebooks and presents two novel methods for optimization: a non-parametric method that alternatively solves two smaller sub-problems, and a parametric method guarantees the optimal solution if the input data follows some Gaussian distribution."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1994847",
+            "name": "T. Ge"
+        },
+        {
+            "authorId": "39353098",
+            "name": "Kaiming He"
+        },
+        {
+            "authorId": "2259786",
+            "name": "Qifa Ke"
+        },
+        {
+            "authorId": null,
+            "name": "Jian Sun"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "24272743a9457b726c13c0751d1ef91e389bce5a",
+            "title": "K-Means Hashing: An Affinity-Preserving Quantization Method for Learning Binary Compact Codes"
+        },
+        {
+            "paperId": "0e2261c75bf0ac263ff4d2eaf90f996d82622633",
+            "title": "Cartesian K-Means"
+        },
+        {
+            "paperId": "55a62990a82bf9205e507f73d42583df46062806",
+            "title": "A new approach to interdomain routing based on secure multi-party computation"
+        },
+        {
+            "paperId": "b3f09ea2a8cc1d82c2b27d71dd8f7451d178beaf",
+            "title": "Iterative quantization: A procrustean approach to learning binary codes"
+        },
+        {
+            "paperId": "a1855be6143291aeafb16338eb3327f903ac7618",
+            "title": "Aggregating local descriptors into a compact image representation"
+        },
+        {
+            "paperId": "bb963c63ee55eab58371bc4ba0690f3eb0f498a8",
+            "title": "Semi-supervised hashing for scalable image retrieval"
+        },
+        {
+            "paperId": "f61a6c5045c15db24ad71b84ce8abbf7a58fd4ad",
+            "title": "Transform coding for fast approximate nearest neighbor search in high dimensions"
+        },
+        {
+            "paperId": "7ae4d5ec354f2a54b5cd70395cb12283390d0638",
+            "title": "In defense of Nearest-Neighbor based image classification"
+        },
+        {
+            "paperId": "993cb3c7167b34b033c66cc4b2af87ff4781c6d4",
+            "title": "Small codes and large image databases for recognition"
+        },
+        {
+            "paperId": "e17529924798975856310a75cb3df3066ac7ccfa",
+            "title": "Near-Optimal Hashing Algorithms for Approximate Nearest Neighbor in High Dimensions"
+        },
+        {
+            "paperId": "7dbdb4209626fd92d2436a058663206216036e68",
+            "title": "Elements of Information Theory"
+        },
+        {
+            "paperId": "8c04f169203f9e55056a6f7f956695babe622a38",
+            "title": "Distinctive Image Features from Scale-Invariant Keypoints"
+        },
+        {
+            "paperId": "642e328cae81c5adb30069b680cf60ba6b475153",
+            "title": "Video Google: a text retrieval approach to object matching in videos"
+        },
+        {
+            "paperId": "869171b2f56cfeaa9b81b2626cb4956fea590a57",
+            "title": "Modeling the Shape of the Scene: A Holistic Representation of the Spatial Envelope"
+        },
+        {
+            "paperId": "721f54f6fa32f5f02c5124a2b73ce5f4280b4eaf",
+            "title": "Matrix analysis"
+        },
+        {
+            "paperId": "47ac9bfe0e8a0bd95fd4a4096e07677a8f525df8",
+            "title": "Vector quantization"
+        },
+        {
+            "paperId": "956081123f4a530ccf93aa7bfe196412118fc41a",
+            "title": "A generalized solution of the orthogonal procrustes problem"
+        },
+        {
+            "paperId": "4748d22348e72e6e06c2476486afddbc76e5eca7",
+            "title": "Product Quantization for Nearest Neighbor Search"
+        },
+        {
+            "paperId": "19b92b63396a79042e6d0d87c3611803af5e9be2",
+            "title": "Cours d'Analyse de l'\u00c9cole Royale Polytechnique: Frontmatter"
+        },
+        {
+            "paperId": "9a7d03416c734f08c2fb9749a7fb2cfd172ff31d",
+            "title": "Cours d'analyse de l'\u00e9cole royale polytechnique"
+        },
+        {
+            "paperId": "ac8ab51a86f1a9ae74dd0e4576d1a019f5e654ed",
+            "title": "Some methods for classification and analysis of multivariate observations"
+        },
+        {
+            "paperId": "777010281e4ad7feef46bcbd8c1e3fcdf467ec57",
+            "title": "Some methods for classi cation and analysis of multivariate observations"
+        }
+    ]
+}

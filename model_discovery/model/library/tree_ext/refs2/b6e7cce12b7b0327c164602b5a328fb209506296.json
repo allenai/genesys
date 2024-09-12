@@ -1,0 +1,117 @@
+{
+    "paperId": "b6e7cce12b7b0327c164602b5a328fb209506296",
+    "externalIds": {
+        "MAG": "2741368848",
+        "DBLP": "conf/icml/Lyu17",
+        "CorpusId": 8255724
+    },
+    "title": "Spherical Structured Feature Maps for Kernel Approximation",
+    "abstract": "We propose Spherical Structured Feature (SSF) maps to approximate shift and rotation invariant kernels as well as b-order arc-cosine kernels (Cho & Saul, 2009). We construct SSF maps based on the point set on d \u2212 1 dimensional sphere Sd\u22121. We prove that the inner product of SSF maps are unbiased estimates for above kernels if asymptotically uniformly distributed point set on Sd\u22121 is given. According to (Brauchart & Grabner, 2015), optimizing the discrete Riesz s-energy can generate asymptotically uniformly distributed point set on Sd\u22121. Thus, we propose an efficient coordinate decent method to find a local optimum of the discrete Riesz s-energy for SSF maps construction. Theoretically, SSF maps construction achieves linear space complexity and loglinear time complexity. Empirically, SSF maps achieve superior performance compared with other methods.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2017,
+    "referenceCount": 22,
+    "citationCount": 26,
+    "influentialCitationCount": 0,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An efficient coordinate decent method is proposed to find a local optimum of the discrete Riesz s-energy for SSF maps construction to approximate shift and rotation invariant kernels as well as b-order arc-cosine kernels."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "8020375",
+            "name": "Yueming Lyu"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "bafa7e2d586e7bfe77d9a55ac1cff4eb2f6ff292",
+            "title": "Practical learning of deep gaussian processes via random Fourier features"
+        },
+        {
+            "paperId": "559faf4b49ef3f317e894f7ba3947d1769bdeb8c",
+            "title": "Recycling Randomness with Structure for Sublinear time Kernel Expansions"
+        },
+        {
+            "paperId": "a04434c379f03cb4db02f71c313a417b363a31dc",
+            "title": "Random Feature Mapping with Signed Circulant Matrix Projection"
+        },
+        {
+            "paperId": "48fa0e4e28ce4c33a0c1a2555c03ace27d29acaa",
+            "title": "How Can Deep Rectifier Networks Achieve Linear Separability and Preserve Distances?"
+        },
+        {
+            "paperId": "0887e7721f526e75488babf464bee51c5cbbcbda",
+            "title": "Bayesian Nonparametric Kernel-Learning"
+        },
+        {
+            "paperId": "18c7fb55ff796db5c5a604e0ca44b6baaeb12239",
+            "title": "Fastfood: Approximate Kernel Expansions in Loglinear Time"
+        },
+        {
+            "paperId": "dc38a89ff937b139ad7d1eaa1ad7a1e84e26046f",
+            "title": "Distributing many points on spheres: Minimal energy and designs"
+        },
+        {
+            "paperId": "2b55f034a3874ad4a4b7f389e6f89e3bf2d1801e",
+            "title": "Quasi-Monte Carlo Feature Maps for Shift-Invariant Kernels"
+        },
+        {
+            "paperId": "4b7ee3d29188fb1d3a24c2d4cf120f648ebded76",
+            "title": "High-dimensional integration: The quasi-Monte Carlo way*\u2020"
+        },
+        {
+            "paperId": "3e436cf219ac9899f54b1ed24d4da0de5b2b7204",
+            "title": "QMC designs: Optimal order Quasi Monte Carlo integration schemes on the sphere"
+        },
+        {
+            "paperId": "2e2089ae76fe914706e6fa90081a79c8fe01611e",
+            "title": "Practical Bayesian Optimization of Machine Learning Algorithms"
+        },
+        {
+            "paperId": "273dfbcb68080251f5e9ff38b4413d7bd84b10a1",
+            "title": "LIBSVM: A library for support vector machines"
+        },
+        {
+            "paperId": "0c8413ab8de0c1b8f2e86402b8d737d94371610f",
+            "title": "Information-Theoretic Regret Bounds for Gaussian Process Optimization in the Bandit Setting"
+        },
+        {
+            "paperId": "77e379fd57ea44638fc628623e383eccada82689",
+            "title": "Kernel Methods for Deep Learning"
+        },
+        {
+            "paperId": "47aa6d7381cc9993da60e4547b01f415a04f3cf2",
+            "title": "Weighted Sums of Random Kitchen Sinks: Replacing minimization with randomization in learning"
+        },
+        {
+            "paperId": "268a4f8da15a42f3e0e71691f760ff5edbf9cec8",
+            "title": "LIBLINEAR: A Library for Large Linear Classification"
+        },
+        {
+            "paperId": "7a59fde27461a3ef4a21a249cc403d0d96e4a0d7",
+            "title": "Random Features for Large-Scale Kernel Machines"
+        },
+        {
+            "paperId": "554894f70b28dba58b396c2d84080ac01051261b",
+            "title": "Gaussian Processes For Machine Learning"
+        },
+        {
+            "paperId": "9c6d9064a65dcce9df76e32d853f0afe4c9d8225",
+            "title": "On the Riesz energy of measures"
+        },
+        {
+            "paperId": "7838d046f296235cb0bbab0a190d539e8debb25a",
+            "title": "Fourier Analysis on Groups."
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        },
+        {
+            "paperId": "f447d9de5b62d40345a5da90c60bbc47c967baab",
+            "title": "Ieee Transaction on Pattern Analysis and Machine Intelligence 1 Iterative Quantization: a Procrustean Approach to Learning Binary Codes for Large-scale Image Retrieval"
+        }
+    ]
+}

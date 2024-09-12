@@ -1,0 +1,224 @@
+{
+    "paperId": "6d35949dac3d64ce087c54d200463b3908932832",
+    "externalIds": {
+        "MAG": "2206373005",
+        "CorpusId": 62410387
+    },
+    "title": "Convolutional Neural Network for Sentence Classification",
+    "abstract": "The goal of a Knowledge Base\u2013supported Question Answering (KB-supported QA) system is to answer a query natural language by obtaining the answer from a knowledge database, which stores knowledge in the form of (entity, relation, value) triples. QA systems understand questions by extracting entity and relation pairs. This thesis aims at recognizing the relation candidates inside a question. We define a multi-label classification problem for this challenging task. Based on the word2vec representation of words, we propose two convolutional neural networks (CNNs) to solve the multi-label classification problem, namely Parallel CNN and Deep CNN. The Parallel CNN contains four parallel convolutional layers while Deep CNN contains two serial convolutional layers. The convolutional layers of both the models capture local semantic features. A max over time pooling layer is placed on the top of the last convolutional layer to select global semantic features. Fully connected layers with dropout are used to summarize the features. Our experiments show that these two models outperform the traditional Support Vector Classification (SVC)\u2013based method by a large margin. Furthermore, we observe that Deep CNN has better performance than Parallel CNN, indicating that the deep structure enables much stronger semantic learning capacity than the wide but shallow network.",
+    "venue": "",
+    "year": 2015,
+    "referenceCount": 49,
+    "citationCount": 283,
+    "influentialCitationCount": 32,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This thesis aims at recognizing the relation candidates inside a question by proposing two convolutional neural networks (CNNs) to solve the multi-label classification problem, namely Parallel CNN and Deep CNN."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "49069786",
+            "name": "Yahui Chen"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "3e8d6e44d131b7bd67cfeee219ec72ce08ac14bc",
+            "title": "Lexical Comparison Between Wikipedia and Twitter Corpora by Using Word Embeddings"
+        },
+        {
+            "paperId": "c8434b04acfe1d300b56c0d369092038ec899a2b",
+            "title": "Classifying Relations by Ranking with Convolutional Neural Networks"
+        },
+        {
+            "paperId": "d46b81707786d18499f911b4ab72bb10c65406ba",
+            "title": "A Simple Way to Initialize Recurrent Networks of Rectified Linear Units"
+        },
+        {
+            "paperId": "9f08b01251cb99f4ffae8c7b3e4468d3af9c98d3",
+            "title": "Convolutional Neural Network Architectures for Matching Natural Language Sentences"
+        },
+        {
+            "paperId": "1f6ba0782862ec12a5ec6d7fb608523d55b0c6ba",
+            "title": "Convolutional Neural Networks for Sentence Classification"
+        },
+        {
+            "paperId": "791b65c65f8ae7e16c1ee9203cdc3ee59ffeb99f",
+            "title": "Relation Classification via Convolutional Deep Neural Network"
+        },
+        {
+            "paperId": "b0aca3e7877c3c20958b0fae5cbf2dd602104859",
+            "title": "Deep Convolutional Neural Networks for Sentiment Analysis of Short Texts"
+        },
+        {
+            "paperId": "f70391f9a6aeec75bc52b9fe38588b9d0b4d40c6",
+            "title": "Learning Character-level Representations for Part-of-Speech Tagging"
+        },
+        {
+            "paperId": "27725a2d2a8cee9bf9fffc6c2167017103aba0fa",
+            "title": "A Convolutional Neural Network for Modelling Sentences"
+        },
+        {
+            "paperId": "941f318e41147773ae69d9da4f8de9b8dbea70f4",
+            "title": "Learning semantic representations using convolutional neural networks for web search"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "687bac2d3320083eb4530bf18bb8f8f721477600",
+            "title": "Recursive Deep Models for Semantic Compositionality Over a Sentiment Treebank"
+        },
+        {
+            "paperId": "acc4e56c44771ebf69302a06af51498aeb0a6ac8",
+            "title": "Parsing with Compositional Vector Grammars"
+        },
+        {
+            "paperId": "c0be2ac2f45681f1852fc1d298af5dceb85834f4",
+            "title": "Paraphrase-Driven Learning for Open Question Answering"
+        },
+        {
+            "paperId": "c4fd9c86b2b41df51a6fe212406dda81b1997fd4",
+            "title": "Linguistic Regularities in Continuous Space Word Representations"
+        },
+        {
+            "paperId": "f6b51c8753a871dc94ff32152c00c01e94f90f09",
+            "title": "Efficient Estimation of Word Representations in Vector Space"
+        },
+        {
+            "paperId": "8729441d734782c3ed532a7d2d9611b438c0a09a",
+            "title": "ADADELTA: An Adaptive Learning Rate Method"
+        },
+        {
+            "paperId": "855d0f722d75cc56a66a00ede18ace96bafee6bd",
+            "title": "Theano: new features and speed improvements"
+        },
+        {
+            "paperId": "c5145b1d15fea9340840cc8bb6f0e46e8934827f",
+            "title": "Understanding the exploding gradient problem"
+        },
+        {
+            "paperId": "27e38351e48fe4b7da2775bf94341738bc4da07e",
+            "title": "Semantic Compositionality through Recursive Matrix-Vector Spaces"
+        },
+        {
+            "paperId": "398c296d0cc7f9d180f84969f8937e6d3a413796",
+            "title": "Multi-column deep neural networks for image classification"
+        },
+        {
+            "paperId": "6658bbf68995731b2083195054ff45b4eca38b3a",
+            "title": "Context-Dependent Pre-Trained Deep Neural Networks for Large-Vocabulary Speech Recognition"
+        },
+        {
+            "paperId": "d4b651d6a904f69f8fa1dcad4ebe972296af3a9a",
+            "title": "Identifying Relations for Open Information Extraction"
+        },
+        {
+            "paperId": "bc1022b031dc6c7019696492e8116598097a8c12",
+            "title": "Natural Language Processing (Almost) from Scratch"
+        },
+        {
+            "paperId": "8ea8da551ef6b1c909ca5b37ba94be4cae02e9ac",
+            "title": "SemEval-2010 Task 8: Multi-Way Classification of Semantic Relations Between Pairs of Nominals"
+        },
+        {
+            "paperId": "57458bc1cffe5caa45a885af986d70f723f406b4",
+            "title": "A unified architecture for natural language processing: deep neural networks with multitask learning"
+        },
+        {
+            "paperId": "4f410ab5c8b12b34b38421241366ee456bbebab9",
+            "title": "Incorporating Non-local Information into Information Extraction Systems by Gibbs Sampling"
+        },
+        {
+            "paperId": "6af58c061f2e4f130c3b795c21ff0c7e3903278f",
+            "title": "Seeing Stars: Exploiting Class Relationships for Sentiment Categorization with Respect to Rating Scales"
+        },
+        {
+            "paperId": "2abe6b9ea1b13653b7384e9c8ef14b0d87e20cfc",
+            "title": "RCV1: A New Benchmark Collection for Text Categorization Research"
+        },
+        {
+            "paperId": "cdcf7cb29f37ac0546961ea8a076075b9cc1f992",
+            "title": "Mining and summarizing customer reviews"
+        },
+        {
+            "paperId": "167e1359943b96b9e92ee73db1df69a1f65d731d",
+            "title": "A Sentimental Education: Sentiment Analysis Using Subjectivity Summarization Based on Minimum Cuts"
+        },
+        {
+            "paperId": "43b87f5f4da973a513eaddb779032f0ceacfa394",
+            "title": "Hierarchical Neural Networks for Image Interpretation"
+        },
+        {
+            "paperId": "5562a56da3a96dae82add7de705e2bd841eb00fc",
+            "title": "Best practices for convolutional neural networks applied to visual document analysis"
+        },
+        {
+            "paperId": "2c8ac3e1f0edeed1fbd76813e61efdc384c319c7",
+            "title": "Learning Question Classifiers"
+        },
+        {
+            "paperId": "5a1d9cbbbd7fb63a15c21461dcdcca8a006229d6",
+            "title": "Natural language processing for online applications : text retrieval, extraction and categorization"
+        },
+        {
+            "paperId": "69e68bfaadf2dccff800158749f5a50fe82d173b",
+            "title": "Neocognitron: A self-organizing neural network model for a mechanism of pattern recognition unaffected by shift in position"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "8a93cd1b6fbf7c8c86637bae18d979dafeb9a7c1",
+            "title": "Factor-based Compositional Embedding Models"
+        },
+        {
+            "paperId": null,
+            "title": "Semantic parsing for singlerelation question answering"
+        },
+        {
+            "paperId": "31868290adf1c000c611dfc966b514d5a34e8d23",
+            "title": "FUNDAMENTAL TECHNOLOGIES IN MODERN SPEECH RECOGNITION Digital Object Identifier 10.1109/MSP.2012.2205597"
+        },
+        {
+            "paperId": null,
+            "title": "The mathematics of signal processing. page 232"
+        },
+        {
+            "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+            "title": "Recurrent neural network based language model"
+        },
+        {
+            "paperId": null,
+            "title": "Theano: a CPU and GPU math expression compiler"
+        },
+        {
+            "paperId": "4662eea99a7850dc742cf02cee5a8e06d1b029d2",
+            "title": "Paraphrase Identification with Lexico-Syntactic Graph Subsumption"
+        },
+        {
+            "paperId": "1cff7cc15555c38607016aaba24059e76b160adb",
+            "title": "Annotating Expressions of Opinions and Emotions in Language"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": null,
+            "title": "Spelling corrector. http://norvig.com/spell-correct.html"
+        },
+        {
+            "paperId": null,
+            "title": "Keras website. http://keras"
+        },
+        {
+            "paperId": null,
+            "title": "The Stanford Natural Language Processing Group Stanford named entity recognizer (ner)"
+        }
+    ]
+}

@@ -1,0 +1,267 @@
+{
+    "paperId": "a7976c2bacfbb194ddbe7fd10c2e50a545cf4081",
+    "externalIds": {
+        "ArXiv": "1503.04069",
+        "DBLP": "journals/tnn/GreffSKSS17",
+        "MAG": "1689711448",
+        "DOI": "10.1109/tnnls.2016.2582924",
+        "CorpusId": 3356463,
+        "PubMed": "27411231"
+    },
+    "title": "LSTM: A Search Space Odyssey",
+    "abstract": "Several variants of the long short-term memory (LSTM) architecture for recurrent neural networks have been proposed since its inception in 1995. In recent years, these networks have become the state-of-the-art models for a variety of machine learning problems. This has led to a renewed interest in understanding the role and utility of various computational components of typical LSTM variants. In this paper, we present the first large-scale analysis of eight LSTM variants on three representative tasks: speech recognition, handwriting recognition, and polyphonic music modeling. The hyperparameters of all LSTM variants for each task were optimized separately using random search, and their importance was assessed using the powerful functional ANalysis Of VAriance framework. In total, we summarize the results of 5400 experimental runs ( $\\approx 15$  years of CPU time), which makes our study the largest of its kind on LSTM networks. Our results show that none of the variants can improve upon the standard LSTM architecture significantly, and demonstrate the forget gate and the output activation function to be its most critical components. We further observe that the studied hyperparameters are virtually independent and derive guidelines for their efficient adjustment.",
+    "venue": "IEEE Transactions on Neural Networks and Learning Systems",
+    "year": 2015,
+    "referenceCount": 54,
+    "citationCount": 4824,
+    "influentialCitationCount": 278,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1503.04069",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper presents the first large-scale analysis of eight LSTM variants on three representative tasks: speech recognition, handwriting recognition, and polyphonic music modeling, and observes that the studied hyperparameters are virtually independent and derive guidelines for their efficient adjustment."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3035541",
+            "name": "Klaus Greff"
+        },
+        {
+            "authorId": "2100612",
+            "name": "R. Srivastava"
+        },
+        {
+            "authorId": "2865775",
+            "name": "J. Koutn\u00edk"
+        },
+        {
+            "authorId": "1714059",
+            "name": "Bas R. Steunebrink"
+        },
+        {
+            "authorId": "145341374",
+            "name": "J. Schmidhuber"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "5b8364c21155d3d2cd38ea4c8b8580beba9a3250",
+            "title": "An Empirical Exploration of Recurrent Network Architectures"
+        },
+        {
+            "paperId": "0431b1ba9c4e61619404682cb929588b7efc44be",
+            "title": "Protein Secondary Structure Prediction with Long Short Term Memory Networks"
+        },
+        {
+            "paperId": "274e993cbe30c0171c82294bfb626fd9d1f12514",
+            "title": "Fast and Robust Training of Recurrent Neural Networks for Offline Handwriting Recognition"
+        },
+        {
+            "paperId": "ac3ee98020251797c2b401e1389461df88e52e62",
+            "title": "Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling"
+        },
+        {
+            "paperId": "f01fc808592ea7c473a69a6e7484040a435f36d9",
+            "title": "Long-term recurrent convolutional networks for visual recognition and description"
+        },
+        {
+            "paperId": "1956c239b3552e030db1b78951f64781101125ed",
+            "title": "Addressing the Rare Word Problem in Neural Machine Translation"
+        },
+        {
+            "paperId": "754d6ad9c36406bfb7f48e0a7b3cac430edc0648",
+            "title": "Dynamic Cortex Memory: Enhancing Recurrent Neural Networks for Gradient-Based Sequence Learning"
+        },
+        {
+            "paperId": "f264e8b33c0d49a692a6ce2c4bcb28588aeb7d97",
+            "title": "Recurrent Neural Network Regularization"
+        },
+        {
+            "paperId": "cabd6bbdd2be9996dd7473185c9eaf104980fe21",
+            "title": "An Efficient Approach for Assessing Hyperparameter Importance"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "f74a9296d9f7319f213e17262f82f8ebca09fb76",
+            "title": "Multi-resolution linear prediction based features for audio onset detection with bidirectional LSTM neural networks"
+        },
+        {
+            "paperId": "c0b624c46b51920dfec5aa02cc86323c0beb0df5",
+            "title": "Dropout Improves Recurrent Neural Networks for Handwriting Recognition"
+        },
+        {
+            "paperId": "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17",
+            "title": "Generating Sequences With Recurrent Neural Networks"
+        },
+        {
+            "paperId": "aa7bfd2304201afbb19971ebde87b17e40242e91",
+            "title": "On the importance of initialization and momentum in deep learning"
+        },
+        {
+            "paperId": "4177ec52d1b80ed57f2e72b0f9a42365f1a8598d",
+            "title": "Speech recognition with deep recurrent neural networks"
+        },
+        {
+            "paperId": "07c43a3ff15f2104022f2b1ca8ec4128a930b414",
+            "title": "Modeling Temporal Dependencies in High-Dimensional Sequences: Application to Polyphonic Music Generation and Transcription"
+        },
+        {
+            "paperId": "2e2089ae76fe914706e6fa90081a79c8fe01611e",
+            "title": "Practical Bayesian Optimization of Machine Learning Algorithms"
+        },
+        {
+            "paperId": "a97b5db17acc731ef67321832dbbaf5766153135",
+            "title": "Supervised Sequence Labelling with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "188e247506ad992b8bc62d6c74789e89891a984f",
+            "title": "Random Search for Hyper-Parameter Optimization"
+        },
+        {
+            "paperId": "728744423ff0fb7e327664ed4e6352a95bb6c893",
+            "title": "Sequential Model-Based Optimization for General Algorithm Configuration"
+        },
+        {
+            "paperId": "8b7405ab47e1b6686cebcbfb1f2efdbe431fc79c",
+            "title": "Evolving Memory Cell Structures for Sequence Learning"
+        },
+        {
+            "paperId": "937d3a404b8870fb3ff3e243e6a0c6024eef491b",
+            "title": "A Novel Connectionist System for Unconstrained Handwriting Recognition"
+        },
+        {
+            "paperId": "68db33b01ef82cbafb440e5f4bee30458cbb9871",
+            "title": "Unconstrained On-line Handwriting Recognition with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "22f631355f1fc74f3f08a7241dd089ed39fb5147",
+            "title": "Generalized Functional ANOVA Diagnostics for High-Dimensional Functions of Dependent Variables"
+        },
+        {
+            "paperId": "75479012461814fd176556a56b32c2392462aef5",
+            "title": "Training Recurrent Networks by Evolino"
+        },
+        {
+            "paperId": "9eb7daa88879f283ae05e359d6c502a320b833c9",
+            "title": "IAM-OnDB - an on-line English sentence database acquired from handwritten text on a whiteboard"
+        },
+        {
+            "paperId": "5536d42ce80e129be8cae172ed1b7659c769d31d",
+            "title": "2005 Special Issue: Framewise phoneme classification with bidirectional LSTM and other neural network architectures"
+        },
+        {
+            "paperId": "0f3bd4e6b16817e332b9be8357e3eddb8a461990",
+            "title": "Harmonising Chorales by Probabilistic Inference"
+        },
+        {
+            "paperId": "11540131eae85b2e11d53df7f1360eeb6476e7f4",
+            "title": "Learning to Forget: Continual Prediction with LSTM"
+        },
+        {
+            "paperId": "545a4e23bf00ddbc1d3325324b4c61f57cf45081",
+            "title": "Recurrent nets that time and count"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "772604020c7d259010d082417f6cee858cbf3ea9",
+            "title": "A dictionary of linguistics and phonetics"
+        },
+        {
+            "paperId": "d0be39ee052d246ae99c082a565aba25b811be2d",
+            "title": "Learning long-term dependencies with gradient descent is difficult"
+        },
+        {
+            "paperId": "b3db94f62118e192ef0465ca9edafcd6c074c137",
+            "title": "DARPA TIMIT:: acoustic-phonetic continuous speech corpus CD-ROM, NIST speech disc 1-1.1"
+        },
+        {
+            "paperId": "47128bb3ce4ed00691c0d7d58c02791c3e963ab7",
+            "title": "Darpa Timit Acoustic-Phonetic Continuous Speech Corpus CD-ROM {TIMIT} | NIST"
+        },
+        {
+            "paperId": "9475bc8c36e9b9623f0ff9ceda491c9cb6dd16d4",
+            "title": "Minimization by Random Search Techniques"
+        },
+        {
+            "paperId": "2d393b9e48e47568245e5277c3e99f224d0a259f",
+            "title": "RECENT ADVANCES IN FINDING BEST OPERATING CONDITIONS"
+        },
+        {
+            "paperId": "067e07b725ab012c80aa2f87857f6791c1407f6d",
+            "title": "Long short-term memory recurrent neural network architectures for large scale acoustic modeling"
+        },
+        {
+            "paperId": "c217905bc98f00af747e8e9d5f6b79fb89a90886",
+            "title": "TTS synthesis with bidirectional LSTM based recurrent neural networks"
+        },
+        {
+            "paperId": "a0aca3246845016bd8dc996944476f3dd5a5ba56",
+            "title": "Unconstrained Online Handwriting Recognition with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "de56fec1eb47759f4e5aa05aee5fa3976e0ae9f5",
+            "title": "Dekf-lstm"
+        },
+        {
+            "paperId": null,
+            "title": "ESANN 2002, Proceedings of the 10th Eurorean Symposium on Artificial Neural Networks"
+        },
+        {
+            "paperId": "2e5f2b57f4c476dd69dc22ccdf547e48f40a994c",
+            "title": "Gradient Flow in Recurrent Nets: the Difficulty of Learning Long-Term Dependencies"
+        },
+        {
+            "paperId": "d0ff60013a985f932e2bdf4223b86c2d3ce25d77",
+            "title": "Heterogeneous acoustic measurements and multiple classifiers for speech recognition"
+        },
+        {
+            "paperId": null,
+            "title": "Gers , Juan Antonio P\u00e9rez - Ortiz , Douglas Eck , and J\u00fcrgen Schmidhuber . DEFK - LSTM"
+        },
+        {
+            "paperId": "3f3d13e95c25a8f6a753e38dfce88885097cbd43",
+            "title": "Untersuchungen zu dynamischen neuronalen Netzen"
+        },
+        {
+            "paperId": "266e07d0dd9a75b61e3632e9469993dbaf063f1c",
+            "title": "Generalization of backpropagation with application to a recurrent gas market model"
+        },
+        {
+            "paperId": "a086b8bcaf7a3ef2eee498ada4481c33a5e43fcf",
+            "title": "Distance measures for speech recognition, psychological and instrumental"
+        },
+        {
+            "paperId": null,
+            "title": "Association"
+        },
+        {
+            "paperId": "261a056f8b21918e8616a429b2df6e1d5d33be41",
+            "title": "Connectionist Temporal Classi\ufb01cation: Labelling Unsegmented Sequence Data with Recurrent Neural Networks"
+        },
+        {
+            "paperId": null,
+            "title": "References"
+        },
+        {
+            "paperId": "845ee9838c1f5bf63b7db2c95ec5d27af14a4e02",
+            "title": "Connectionist Temporal Classi\ufb01cation: Labelling Unsegmented Sequences with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "02f38b2d72d7b3243b5ba4005f814f71b80eec00",
+            "title": "The Utility Driven Dynamic Error Propagation Network"
+        },
+        {
+            "paperId": null,
+            "title": "and Machine Learning \u2013 ICANN 2014"
+        }
+    ]
+}

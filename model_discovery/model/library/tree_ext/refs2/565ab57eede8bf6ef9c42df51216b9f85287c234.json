@@ -1,0 +1,278 @@
+{
+    "paperId": "565ab57eede8bf6ef9c42df51216b9f85287c234",
+    "externalIds": {
+        "ArXiv": "1803.04831",
+        "MAG": "2949319535",
+        "DBLP": "journals/corr/abs-1803-04831",
+        "DOI": "10.1109/CVPR.2018.00572",
+        "CorpusId": 3880365
+    },
+    "title": "Independently Recurrent Neural Network (IndRNN): Building A Longer and Deeper RNN",
+    "abstract": "Recurrent neural networks (RNNs) have been widely used for processing sequential data. However, RNNs are commonly difficult to train due to the well-known gradient vanishing and exploding problems and hard to learn long-term patterns. Long short-term memory (LSTM) and gated recurrent unit (GRU) were developed to address these problems, but the use of hyperbolic tangent and the sigmoid action functions results in gradient decay over layers. Consequently, construction of an efficiently trainable deep network is challenging. In addition, all the neurons in an RNN layer are entangled together and their behaviour is hard to interpret. To address these problems, a new type of RNN, referred to as independently recurrent neural network (IndRNN), is proposed in this paper, where neurons in the same layer are independent of each other and they are connected across layers. We have shown that an IndRNN can be easily regulated to prevent the gradient exploding and vanishing problems while allowing the network to learn long-term dependencies. Moreover, an IndRNN can work with non-saturated activation functions such as relu (rectified linear unit) and be still trained robustly. Multiple IndRNNs can be stacked to construct a network that is deeper than the existing RNNs. Experimental results have shown that the proposed IndRNN is able to process very long sequences (over 5000 time steps), can be used to construct very deep networks (21 layers used in the experiment) and still be trained robustly. Better performances have been achieved on various tasks by using IndRNNs compared with the traditional RNN and LSTM.",
+    "venue": "2018 IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "year": 2018,
+    "referenceCount": 57,
+    "citationCount": 668,
+    "influentialCitationCount": 75,
+    "openAccessPdf": {
+        "url": "http://arxiv.org/pdf/1803.04831",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that an IndRNN can be easily regulated to prevent the gradient exploding and vanishing problems while allowing the network to learn long-term dependencies and work with non-saturated activation functions such as relu and be still trained robustly."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2133435913",
+            "name": "Shuai Li"
+        },
+        {
+            "authorId": "1685696",
+            "name": "W. Li"
+        },
+        {
+            "authorId": "2055845956",
+            "name": "Chris Cook"
+        },
+        {
+            "authorId": "143754862",
+            "name": "Ce Zhu"
+        },
+        {
+            "authorId": "2044320063",
+            "name": "Yanbo Gao"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "024d037d46ae933c7e12fd16af61953c7161773a",
+            "title": "Learning Spatio-Temporal Representation with Pseudo-3D Residual Networks"
+        },
+        {
+            "paperId": "7ba9b6266569bd7b6a3c2ec64348c5b969a5ceb7",
+            "title": "Simple Recurrent Units for Highly Parallelizable Recurrence"
+        },
+        {
+            "paperId": "ad45b1291067120bf9e55ac7424eb627e0aab149",
+            "title": "Training RNNs as Fast as CNNs"
+        },
+        {
+            "paperId": "928742fae8f5f6e3142cdab1976e9198e21092c6",
+            "title": "Enhanced skeleton visualization for view invariant human action recognition"
+        },
+        {
+            "paperId": "87a913817503379547bec61a5f010abac5b0f76b",
+            "title": "Fast-Slow Recurrent Neural Networks"
+        },
+        {
+            "paperId": "6a505908f37fa97373b0815c1caf4acd289d6739",
+            "title": "Interpretable 3D Human Action Analysis with Temporal Convolutional Networks"
+        },
+        {
+            "paperId": "96f600c7fcb212a22e6ec0b3331f48be2e44324f",
+            "title": "SkeletonNet: Mining Deep Part Features for 3-D Action Recognition"
+        },
+        {
+            "paperId": "a1a091274516ce0902fdc8721b3c1b87fd24407c",
+            "title": "Pose-conditioned Spatio-Temporal Attention for Human Action Recognition"
+        },
+        {
+            "paperId": "fd2a8edf482d96fcaf432a943ce0888d49bb4525",
+            "title": "A New Representation of Skeleton Sequences for 3D Action Recognition"
+        },
+        {
+            "paperId": "bc4268551ebc33f90f77186501432523cbb7c9ca",
+            "title": "Joint Distance Maps Based Action Recognition With Convolutional Neural Networks"
+        },
+        {
+            "paperId": "e1a8686b5350c30205ee76d55629c4cfb218e2f6",
+            "title": "On Geometric Features for Skeleton-Based Action Recognition Using Multilayer LSTM Networks"
+        },
+        {
+            "paperId": "e9a526001d12de6b55f6e33e0e7a0f2cf56f7637",
+            "title": "Deep Learning on Lie Groups for Skeleton-Based Action Recognition"
+        },
+        {
+            "paperId": "addb41821f0e6c3f89289061a5598e9a70b637a4",
+            "title": "An End-to-End Spatio-Temporal Attention Model for Human Action Recognition from Skeleton Data"
+        },
+        {
+            "paperId": "2d876ed1dd2c58058d7197b734a8e4d349b8f231",
+            "title": "Quasi-Recurrent Neural Networks"
+        },
+        {
+            "paperId": "424aef7340ee618132cc3314669400e23ad910ba",
+            "title": "Tying Word Vectors and Word Classifiers: A Loss Framework for Language Modeling"
+        },
+        {
+            "paperId": "67d968c7450878190e45ac7886746de867bf673d",
+            "title": "Neural Architecture Search with Reinforcement Learning"
+        },
+        {
+            "paperId": "79c78c98ea317ba8cdf25a9783ef4b8a7552db75",
+            "title": "Full-Capacity Unitary Recurrent Neural Networks"
+        },
+        {
+            "paperId": "ce601575f213073c2e11c53eba169a695eaa4cad",
+            "title": "Action Recognition Based on Joint Trajectory Maps Using Convolutional Neural Networks"
+        },
+        {
+            "paperId": "563783de03452683a9206e85fe6d661714436686",
+            "title": "HyperNetworks"
+        },
+        {
+            "paperId": "efbd381493bb9636f489b965a2034d529cd56bcd",
+            "title": "Pointer Sentinel Mixture Models"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "65eee67dee969fdf8b44c87c560d66ad4d78e233",
+            "title": "Hierarchical Multiscale Recurrent Neural Networks"
+        },
+        {
+            "paperId": "63e39cdf1ad884da6bc69096bb3413b5b1100559",
+            "title": "Using the Output Embedding to Improve Language Models"
+        },
+        {
+            "paperId": "9afbd70a4727df98a0c38c437b94b14eba6577c4",
+            "title": "Spatio-Temporal LSTM with Trust Gates for 3D Human Action Recognition"
+        },
+        {
+            "paperId": "7dba53e72c182e25e98e8f73a99d75ff69dda0c2",
+            "title": "Recurrent Highway Networks"
+        },
+        {
+            "paperId": "9f0687bcd0a7d7fc91b8c5d36c003a38b8853105",
+            "title": "Zoneout: Regularizing RNNs by Randomly Preserving Hidden Activations"
+        },
+        {
+            "paperId": "6690f96668e9fc3758eb6848ca9c0f65d042e4f3",
+            "title": "Path-Normalized Optimization of Recurrent Neural Networks with ReLU Activations"
+        },
+        {
+            "paperId": "091e4d3c85dc0a8212afea875cd3b162d273d46b",
+            "title": "NTU RGB+D: A Large Scale Dataset for 3D Human Activity Analysis"
+        },
+        {
+            "paperId": "952454718139dba3aafc6b3b67c4f514ac3964af",
+            "title": "Recurrent Batch Normalization"
+        },
+        {
+            "paperId": "cf76789618f5db929393c1187514ce6c3502c3cd",
+            "title": "Recurrent Dropout without Memory Loss"
+        },
+        {
+            "paperId": "77f0a39b8e02686fd85b01971f8feb7f60971f80",
+            "title": "Identity Mappings in Deep Residual Networks"
+        },
+        {
+            "paperId": "0c1f9ca23f4f09ecfc44bcc8ca1c2736624f4652",
+            "title": "A Theoretically Grounded Application of Dropout in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "f84d5add20d4df0a6c89c47a920354c272cbdbd8",
+            "title": "Regularizing RNNs by Stabilizing Activations"
+        },
+        {
+            "paperId": "e9c771197a6564762754e48c1daafb066f449f2e",
+            "title": "Unitary Evolution Recurrent Neural Networks"
+        },
+        {
+            "paperId": "26744bcd78eef332a3f588b72f73c9cf92691aad",
+            "title": "Improving performance of recurrent neural network with relu nonlinearity"
+        },
+        {
+            "paperId": "f95adc1d8daaa07a0c956826ec274ca9e2515ddc",
+            "title": "Batch normalized recurrent neural networks"
+        },
+        {
+            "paperId": "891ce1687e2befddd19f54e4eef1d3f39c8dbaf7",
+            "title": "Character-Aware Neural Language Models"
+        },
+        {
+            "paperId": "5b8364c21155d3d2cd38ea4c8b8580beba9a3250",
+            "title": "An Empirical Exploration of Recurrent Network Architectures"
+        },
+        {
+            "paperId": "96d288df7ca67dafe1642c427a4d9f4901267c8b",
+            "title": "Scene labeling with LSTM recurrent neural networks"
+        },
+        {
+            "paperId": "40be3888daa5c2e5af4d36ae22f690bcc8caf600",
+            "title": "Visualizing and Understanding Recurrent Networks"
+        },
+        {
+            "paperId": "d46b81707786d18499f911b4ab72bb10c65406ba",
+            "title": "A Simple Way to Initialize Recurrent Networks of Rectified Linear Units"
+        },
+        {
+            "paperId": "a7976c2bacfbb194ddbe7fd10c2e50a545cf4081",
+            "title": "LSTM: A Search Space Odyssey"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "f01fc808592ea7c473a69a6e7484040a435f36d9",
+            "title": "Long-term recurrent convolutional networks for visual recognition and description"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "533ee188324b833e059cb59b654e6160776d5812",
+            "title": "How to Construct Deep Recurrent Neural Networks"
+        },
+        {
+            "paperId": "d1275b2a2ab53013310e759e5c6878b96df643d4",
+            "title": "Context dependent recurrent neural network language model"
+        },
+        {
+            "paperId": "84069287da0a6b488b8c933f3cb5be759cb6237e",
+            "title": "On the difficulty of training recurrent neural networks"
+        },
+        {
+            "paperId": "bc6dff14a130c57a91d5a21339c23471faf1d46f",
+            "title": "Et al"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "5687dbbf8b7392d8e4d6b7e86d2bb2efb9356917",
+            "title": "Laguerre's Method Applied to the Matrix Eigenvalue Problem"
+        },
+        {
+            "paperId": "314ff45f98b5b3764c07146880848696da529eae",
+            "title": "Exploring the Depths of Recurrent Neural Networks with Stochastic Residual Learning"
+        },
+        {
+            "paperId": "1fd7fc06653723b05abe5f3d1de393ddcf6bdddb",
+            "title": "SUBWORD LANGUAGE MODELING WITH NEURAL NETWORKS"
+        },
+        {
+            "paperId": "f42b865e20e61a954239f421b42007236e671f19",
+            "title": "GradientBased Learning Applied to Document Recognition"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "caa5eec3feba1e3f4c421f28daaa6d1906b573ec",
+            "title": "Serial Order: A Parallel Distributed Processing Approach"
+        }
+    ]
+}

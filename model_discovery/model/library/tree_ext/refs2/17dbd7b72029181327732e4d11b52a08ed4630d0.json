@@ -1,0 +1,254 @@
+{
+    "paperId": "17dbd7b72029181327732e4d11b52a08ed4630d0",
+    "externalIds": {
+        "ACL": "Q19-1026",
+        "MAG": "2912924812",
+        "DBLP": "journals/tacl/KwiatkowskiPRCP19",
+        "DOI": "10.1162/tacl_a_00276",
+        "CorpusId": 86611921
+    },
+    "title": "Natural Questions: A Benchmark for Question Answering Research",
+    "abstract": "We present the Natural Questions corpus, a question answering data set. Questions consist of real anonymized, aggregated queries issued to the Google search engine. An annotator is presented with a question along with a Wikipedia page from the top 5 search results, and annotates a long answer (typically a paragraph) and a short answer (one or more entities) if present on the page, or marks null if no long/short answer is present. The public release consists of 307,373 training examples with single annotations; 7,830 examples with 5-way annotations for development data; and a further 7,842 examples with 5-way annotated sequestered as test data. We present experiments validating quality of the data. We also describe analysis of 25-way annotations on 302 examples, giving insights into human variability on the annotation task. We introduce robust metrics for the purposes of evaluating question answering systems; demonstrate high human upper bounds on these metrics; and establish baseline results using competitive methods drawn from related literature.",
+    "venue": "Transactions of the Association for Computational Linguistics",
+    "year": 2019,
+    "referenceCount": 38,
+    "citationCount": 2487,
+    "influentialCitationCount": 363,
+    "openAccessPdf": {
+        "url": "https://direct.mit.edu/tacl/article-pdf/doi/10.1162/tacl_a_00276/1923288/tacl_a_00276.pdf",
+        "status": "GOLD"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Natural Questions corpus, a question answering data set, is presented, introducing robust metrics for the purposes of evaluating question answering systems; demonstrating high human upper bounds on these metrics; and establishing baseline results using competitive methods drawn from related literature."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "15652489",
+            "name": "T. Kwiatkowski"
+        },
+        {
+            "authorId": "52578817",
+            "name": "J. Palomaki"
+        },
+        {
+            "authorId": "90784578",
+            "name": "Olivia Redfield"
+        },
+        {
+            "authorId": "123052390",
+            "name": "Michael Collins"
+        },
+        {
+            "authorId": "144729897",
+            "name": "Ankur P. Parikh"
+        },
+        {
+            "authorId": "114577307",
+            "name": "Chris Alberti"
+        },
+        {
+            "authorId": "153215783",
+            "name": "D. Epstein"
+        },
+        {
+            "authorId": "3443442",
+            "name": "Illia Polosukhin"
+        },
+        {
+            "authorId": "39172707",
+            "name": "Jacob Devlin"
+        },
+        {
+            "authorId": "2544107",
+            "name": "Kenton Lee"
+        },
+        {
+            "authorId": "3259253",
+            "name": "Kristina Toutanova"
+        },
+        {
+            "authorId": "145024664",
+            "name": "Llion Jones"
+        },
+        {
+            "authorId": "2554321",
+            "name": "Matthew Kelcey"
+        },
+        {
+            "authorId": "1744179",
+            "name": "Ming-Wei Chang"
+        },
+        {
+            "authorId": "2555924",
+            "name": "Andrew M. Dai"
+        },
+        {
+            "authorId": "39328010",
+            "name": "Jakob Uszkoreit"
+        },
+        {
+            "authorId": "2827616",
+            "name": "Quoc V. Le"
+        },
+        {
+            "authorId": "1754497",
+            "name": "Slav Petrov"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "b496b11fb2091678cc2d299cc778046d9a64b0a4",
+            "title": "A BERT Baseline for the Natural Questions"
+        },
+        {
+            "paperId": "22655979df781d222eaf812b0d325fa9adf11594",
+            "title": "HotpotQA: A Dataset for Diverse, Explainable Multi-hop Question Answering"
+        },
+        {
+            "paperId": "990a7b4eceedb6e053e6386269481bdfc42a1094",
+            "title": "CoQA: A Conversational Question Answering Challenge"
+        },
+        {
+            "paperId": "39e734da43eb8c72e9549b42e96760545036f8e5",
+            "title": "QuAC: Question Answering in Context"
+        },
+        {
+            "paperId": "1536e8958697c5364f68b2e2448905dbbeb3a0ca",
+            "title": "Can a Suit of Armor Conduct Electricity? A New Dataset for Open Book Question Answering"
+        },
+        {
+            "paperId": "4d1c856275744c0284312a3a50efb6ca9dc4cd4c",
+            "title": "Know What You Don\u2019t Know: Unanswerable Questions for SQuAD"
+        },
+        {
+            "paperId": "d91043f0d48b9b2c8ff7ee321abb8fd7efafff7a",
+            "title": "The NarrativeQA Reading Comprehension Challenge"
+        },
+        {
+            "paperId": "995b7affd684b910d5a1c520c3af00fd20cc39b0",
+            "title": "DuReader: a Chinese Machine Reading Comprehension Dataset from Real-world Applications"
+        },
+        {
+            "paperId": "3c78c6df5eb1695b6a399e346dde880af27d1016",
+            "title": "Simple and Effective Multi-Paragraph Reading Comprehension"
+        },
+        {
+            "paperId": "ffb949d3493c3b2f3c9acf9c75cb03938933ddf0",
+            "title": "Adversarial Examples for Evaluating Reading Comprehension Systems"
+        },
+        {
+            "paperId": "f010affab57b5fcf1cd6be23df79d8ec98c7289c",
+            "title": "TriviaQA: A Large Scale Distantly Supervised Challenge Dataset for Reading Comprehension"
+        },
+        {
+            "paperId": "5ded2b8c64491b4a67f6d39ce473d4b9347a672e",
+            "title": "A Broad-Coverage Challenge Corpus for Sentence Understanding through Inference"
+        },
+        {
+            "paperId": "636a79420d838eabe4af7fb25d6437de45ab64e8",
+            "title": "RACE: Large-scale ReAding Comprehension Dataset From Examinations"
+        },
+        {
+            "paperId": "104715e1097b7ebee436058bfd9f45540f269845",
+            "title": "Reading Wikipedia to Answer Open-Domain Questions"
+        },
+        {
+            "paperId": "2cd8ae29075d7b9b916377ead43b84e485f1399b",
+            "title": "Proceedings for the 5th International Conference on Learning Representations"
+        },
+        {
+            "paperId": "dd95f96e3322dcaee9b1e3f7871ecc3ebcd51bfe",
+            "title": "MS MARCO: A Human Generated MAchine Reading COmprehension Dataset"
+        },
+        {
+            "paperId": "a39ffa57ef8e538b3c6a6c2bbc0b641f7cdc60dc",
+            "title": "Who did What: A Large-Scale Person-Centered Cloze Dataset"
+        },
+        {
+            "paperId": "5ed791f810da580c78df6a052c6b9f2e258f6b0a",
+            "title": "The LAMBADA dataset: Word prediction requiring a broad discourse context"
+        },
+        {
+            "paperId": "05dd7254b632376973f3a1b4d39485da17814df5",
+            "title": "SQuAD: 100,000+ Questions for Machine Comprehension of Text"
+        },
+        {
+            "paperId": "b1e20420982a4f923c08652941666b189b11b7fe",
+            "title": "A Thorough Examination of the CNN/Daily Mail Reading Comprehension Task"
+        },
+        {
+            "paperId": "2cd8e8f510c89c7c18268e8ad51c061e459ad321",
+            "title": "A Decomposable Attention Model for Natural Language Inference"
+        },
+        {
+            "paperId": "35b91b365ceb016fb3e022577cec96fb9b445dc5",
+            "title": "The Goldilocks Principle: Reading Children's Books with Explicit Memory Representations"
+        },
+        {
+            "paperId": "f53e2ae46470b89cd1ce6e3bf1d60d9c59722ce1",
+            "title": "WikiQA: A Challenge Dataset for Open-Domain Question Answering"
+        },
+        {
+            "paperId": "f04df4e20a18358ea2f689b4c129781628ef7fc1",
+            "title": "A large annotated corpus for learning natural language inference"
+        },
+        {
+            "paperId": "d1505c6123c102e53eb19dff312cb25cea840b72",
+            "title": "Teaching Machines to Read and Comprehend"
+        },
+        {
+            "paperId": "564257469fa44cdb57e4272f85253efb9acfd69d",
+            "title": "MCTest: A Challenge Dataset for the Open-Domain Machine Comprehension of Text"
+        },
+        {
+            "paperId": "30c9ba88ad0f2fc62b44674950b36ead105cc12e",
+            "title": "COMPREHENSION"
+        },
+        {
+            "paperId": "d7da009f457917aa381619facfa5ffae9329a6e9",
+            "title": "Bleu: a Method for Automatic Evaluation of Machine Translation"
+        },
+        {
+            "paperId": "dbfd191afbbc8317577cbc44afe7156df546e143",
+            "title": "Automatic Acquisition of Hyponyms from Large Text Corpora"
+        },
+        {
+            "paperId": null,
+            "title": "Conference on Empirical"
+        },
+        {
+            "paperId": "43fcdee6c6d885ac2bd32e122dbf282f93720c22",
+            "title": "A Probabilistic Theory of Pattern Recognition"
+        },
+        {
+            "paperId": "13167f9cd8c7906ca808b01d28dca6dd951da8a5",
+            "title": "of the Association for Computational Linguistics"
+        },
+        {
+            "paperId": null,
+            "title": "proportions from NQ training data. Percentages are proportions of entire data set. A total of 49% of all examples"
+        },
+        {
+            "paperId": null,
+            "title": "We focus on Wikipedia as it is a very"
+        },
+        {
+            "paperId": null,
+            "title": "Texas, November"
+        },
+        {
+            "paperId": null,
+            "title": "contain multiple entities as well as an adjective, adverb, verb, or determiner"
+        },
+        {
+            "paperId": null,
+            "title": "contain a categorical noun phrase immediately preceded by a preposition or relative clause"
+        },
+        {
+            "paperId": null,
+            "title": "Correct"
+        }
+    ]
+}

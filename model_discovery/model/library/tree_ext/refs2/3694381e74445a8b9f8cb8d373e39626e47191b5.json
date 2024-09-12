@@ -1,0 +1,130 @@
+{
+    "paperId": "3694381e74445a8b9f8cb8d373e39626e47191b5",
+    "externalIds": {
+        "MAG": "2949569871",
+        "DBLP": "conf/iclr/PerezMB19",
+        "ArXiv": "1901.03429",
+        "CorpusId": 57825721
+    },
+    "title": "On the Turing Completeness of Modern Neural Network Architectures",
+    "abstract": "Alternatives to recurrent neural networks, in particular, architectures based on attention or convolutions, have been gaining momentum for processing input sequences. In spite of their relevance, the computational properties of these alternatives have not yet been fully explored. We study the computational power of two of the most paradigmatic architectures exemplifying these mechanisms: the Transformer (Vaswani et al., 2017) and the Neural GPU (Kaiser & Sutskever, 2016). We show both models to be Turing complete exclusively based on their capacity to compute and access internal dense representations of the data. In particular, neither the Transformer nor the Neural GPU requires access to an external memory to become Turing complete. Our study also reveals some minimal sets of elements needed to obtain these completeness results.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2019,
+    "referenceCount": 23,
+    "citationCount": 111,
+    "influentialCitationCount": 11,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study studies the computational power of two of the most paradigmatic architectures exemplifying these mechanisms: the Transformer and the Neural GPU, and shows both models to be Turing complete exclusively based on their capacity to compute and access internal dense representations of the data."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "144022533",
+            "name": "Jorge P\u00e9rez"
+        },
+        {
+            "authorId": "66941060",
+            "name": "Javier Marinkovic"
+        },
+        {
+            "authorId": "35106192",
+            "name": "P. Barcel\u00f3"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "ac4dafdef1d2b685b7f28a11837414573d39ff4e",
+            "title": "Universal Transformers"
+        },
+        {
+            "paperId": "06354570d5f6be803d4a79bf59ecbb097bca8755",
+            "title": "On the Practical Computational Power of Finite Precision RNNs for Language Recognition"
+        },
+        {
+            "paperId": "c8efcc854d97dfc2a42b83316a2109f9d166e43f",
+            "title": "Self-Attention with Relative Position Representations"
+        },
+        {
+            "paperId": "31b26b31f28988ebcfe7ff356e7fda7e17f1558c",
+            "title": "Recurrent Neural Networks as Weighted Language Recognizers"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "618784f1c811dd3df9a0fb95de9868575b38f7a4",
+            "title": "Improving the Neural GPU Architecture for Algorithm Learning"
+        },
+        {
+            "paperId": "0bb487b9cfefd56e79be0a5be5f1e05742683301",
+            "title": "Extensions and Limitations of the Neural GPU"
+        },
+        {
+            "paperId": "77f0a39b8e02686fd85b01971f8feb7f60971f80",
+            "title": "Identity Mappings in Deep Residual Networks"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "5e4eb58d5b47ac1c73f4cf189497170e75ae6237",
+            "title": "Neural GPUs Learn Algorithms"
+        },
+        {
+            "paperId": "a2499dd426c46c645ee805d7594b6687547c72d4",
+            "title": "Neural Random Access Machines"
+        },
+        {
+            "paperId": "e837b79de602c69395498c1fbbe39bbb4e6f75ad",
+            "title": "Learning to Transduce with Unbounded Memory"
+        },
+        {
+            "paperId": "d38e8631bba0720becdaf7b89f79d9f9dca45d82",
+            "title": "Inferring Algorithmic Patterns with Stack-Augmented Recurrent Nets"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "17594df98c222217a11510dd454ba52a5a737378",
+            "title": "On the computational power of neural nets"
+        },
+        {
+            "paperId": "8da1dda34ecc96263102181448c94ec7d645d085",
+            "title": "Approximation by superpositions of a sigmoidal function"
+        },
+        {
+            "paperId": "19224913176aaf8493ff956dd8d73ab4edd84c16",
+            "title": "Simple Computation-Universal Cellular Spaces"
+        },
+        {
+            "paperId": "a496212ca3444e1e14b0668b82e2459d02dc275a",
+            "title": "Representation of Events in Nerve Nets and Finite Automata"
+        },
+        {
+            "paperId": "22617a1404e50f2cd30c2c0a434e5f9d0fec8d10",
+            "title": "Universalities in Cellular Automata"
+        },
+        {
+            "paperId": "090c5a5df345ab60c41d6de02b3e366e1a27cf43",
+            "title": "A logical calculus of the ideas immanent in nervous activity"
+        },
+        {
+            "paperId": null,
+            "title": "A CKNOWLEDGEMENTS This work was supported by the Millennium Institute for Foundational Research on Data (IMFD)"
+        }
+    ]
+}

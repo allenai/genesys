@@ -1,0 +1,126 @@
+{
+    "paperId": "6c1975d5ce92d97518b865cd5d4e48fe228d9a93",
+    "externalIds": {
+        "DBLP": "journals/corr/VirtueYL17",
+        "ArXiv": "1707.00070",
+        "MAG": "2950152461",
+        "DOI": "10.1109/ICIP.2017.8297024",
+        "CorpusId": 3482604
+    },
+    "title": "Better than real: Complex-valued neural nets for MRI fingerprinting",
+    "abstract": "The task of MRI fingerprinting is to identify tissue parameters from complex-valued MRI signals. The prevalent approach is dictionary based, where a test MRI signal is compared to stored MRI signals with known tissue parameters and the most similar signals and tissue parameters retrieved. Such an approach does not scale with the number of parameters and is rather slow when the tissue parameter space is large. Our first novel contribution is to use deep learning as an efficient nonlinear inverse mapping approach. We generate synthetic (tissue, MRI) data from an MRI simulator, and use them to train a deep net to map the MRI signal to the tissue parameters directly. Our second novel contribution is to develop a complex-valued neural network with new cardioid activation functions. Our results demonstrate that complex-valued neural nets could be much more accurate than real-valued neural nets at complex-valued MRI fingerprinting.",
+    "venue": "International Conference on Information Photonics",
+    "year": 2017,
+    "referenceCount": 21,
+    "citationCount": 147,
+    "influentialCitationCount": 10,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1707.00070",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work uses deep learning as an efficient nonlinear inverse mapping approach to train a deep net to map the MRI signal to the tissue parameters directly, and develops a complex-valued neural network with new cardioid activation functions."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2197326",
+            "name": "P. Virtue"
+        },
+        {
+            "authorId": "2107881808",
+            "name": "Stella X. Yu"
+        },
+        {
+            "authorId": "2050014",
+            "name": "M. Lustig"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "f34fe3fd3fecee82c3be967a7fec51e795afb0d5",
+            "title": "Pseudo Steady\u2010State Free Precession for MR\u2010Fingerprinting"
+        },
+        {
+            "paperId": "a8b08ee1cf65a69fa5d31123ebabefdd3ac61f1d",
+            "title": "Multiscale reconstruction for MR fingerprinting"
+        },
+        {
+            "paperId": "4394f17c00474ecd6a12a80d258581493a1b2b4d",
+            "title": "Fast group matching for MR fingerprinting reconstruction"
+        },
+        {
+            "paperId": "f474d5145e145cf835c0b391572d9f4c13533bcd",
+            "title": "SVD Compression for Magnetic Resonance Fingerprinting in the Time Domain"
+        },
+        {
+            "paperId": "6bdb186ec4726e00a8051119636d4df3b94043b5",
+            "title": "Caffe: Convolutional Architecture for Fast Feature Embedding"
+        },
+        {
+            "paperId": "e6d060cc0c4c8c54adbc0da96aa7d79d8385386d",
+            "title": "Magnetic Resonance Fingerprinting"
+        },
+        {
+            "paperId": "ccfcf7025de0c852213a99f2ffbe108e823552aa",
+            "title": "The Complex Gradient Operator and the CR-Calculus ECE275A - Lecture Supplement - Fall 2005"
+        },
+        {
+            "paperId": "b046b464d30b21c1d6dcb05405fdacb5348c27e3",
+            "title": "A new improved version of the realistic digital brain phantom"
+        },
+        {
+            "paperId": "2f071c5e1688de8534c7776c31fe4ad6af91527e",
+            "title": "Design and construction of a realistic digital brain phantom"
+        },
+        {
+            "paperId": "7ce1c053850f41233034b4f30db2d890897beafe",
+            "title": "An Extension of the Back-Propagation Algorithm to Complex Numbers"
+        },
+        {
+            "paperId": "10c9eda049b7c4bbf56b4aee2114775f3ee0e688",
+            "title": "Complex domain backpropagation"
+        },
+        {
+            "paperId": "a76e79bff7fa8e90cd6b2595cff6fb1b5665b084",
+            "title": "On the complex backpropagation algorithm"
+        },
+        {
+            "paperId": "0cbf151cc4bc46b70168205f9a2ae4a6d197b149",
+            "title": "A complex gradient operator and its applica-tion in adaptive array theory"
+        },
+        {
+            "paperId": "20c5be08f5e8c515560cdbfa7c0afe0f8f946de1",
+            "title": "Zur formalen Theorie der Funktionen von mehr komplexen Ver\u00e4nderlichen"
+        },
+        {
+            "paperId": "e083df3577b3231d16678aaf7a020767bdc9c3a0",
+            "title": "Single-layered complex-valued neural network for real-valued classification problems"
+        },
+        {
+            "paperId": null,
+            "title": "at no noise and pSNR=40 noise level, respectively. Fig. 5"
+        },
+        {
+            "paperId": null,
+            "title": "point operations (FLOPs)"
+        },
+        {
+            "paperId": null,
+            "title": "Real-valued neural nets that are twice as wide as the second model, with 1024 and 512 feature channels in the two hidden layers"
+        },
+        {
+            "paperId": null,
+            "title": "Complex-valued neural nets with 1-channel complex MRI signals, using our new cardioid activation function"
+        },
+        {
+            "paperId": null,
+            "title": "activation layers, including the CR calculus back propagation for all the layer functions. Results."
+        },
+        {
+            "paperId": null,
+            "title": "Complex-valued neural nets using separable sigmoid activation functions (i.e. sigmoid applied to real and imaginary independently)"
+        }
+    ]
+}

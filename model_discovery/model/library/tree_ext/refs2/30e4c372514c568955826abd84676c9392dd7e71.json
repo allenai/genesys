@@ -1,0 +1,73 @@
+{
+    "paperId": "30e4c372514c568955826abd84676c9392dd7e71",
+    "externalIds": {
+        "DBLP": "journals/tjs/Bailey90",
+        "MAG": "2405717486",
+        "DOI": "10.1007/BF00162341",
+        "CorpusId": 14705400
+    },
+    "title": "FFTs in external or hierarchical memory",
+    "abstract": null,
+    "venue": "Proceedings of the 1989 ACM/IEEE Conference on Supercomputing (Supercomputing '89)",
+    "year": 1989,
+    "referenceCount": 10,
+    "citationCount": 365,
+    "influentialCitationCount": 27,
+    "openAccessPdf": {
+        "url": "https://dl.acm.org/doi/pdf/10.1145/76263.76288",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Advanced techniques for computing an ordered FFT on a computer with external or hierarchical memory that require as few as two passes through the external data set, employ strictly unit stride, long vector transfers between main memory and external storage, and are well suited for vector and parallel computation are described."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2082481941",
+            "name": "D. Bailey"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "bbf58df1856fd582817fe93f816f1e03bfe3b17b",
+            "title": "The input/output complexity of sorting and related problems"
+        },
+        {
+            "paperId": "dab0f4b43f745970477dbed854d20cfac777e4e2",
+            "title": "A High-Performance FFT Algorithm for Vector Supercomputers"
+        },
+        {
+            "paperId": "bb1e28b3b75ba48049f9c439e8440d10158914ff",
+            "title": "A segmented FFT algorithm for vector computers"
+        },
+        {
+            "paperId": "622e16edc032c6ec2d5ff277e1ba94669b3a4f77",
+            "title": "Fourier Transform and Convolution Subroutines for the IBM 3090 Vector Facility"
+        },
+        {
+            "paperId": "55ffdcab5daf1b87b870c62bfe70929694f7e189",
+            "title": "FFT algorithms for vector computers"
+        },
+        {
+            "paperId": "a839df713112dc38a76fa28d0ca49b4572e1a5c6",
+            "title": "Array Permutation by Index-Digit Permutation"
+        },
+        {
+            "paperId": "e4a80900817cbaddee9a81c67a44da0dfcfae7c4",
+            "title": "Fast Fourier Transforms: for fun and profit"
+        },
+        {
+            "paperId": "0c7d87104dff2928464e63c6da11184f4afa0c76",
+            "title": "Multiprocessor FFTs"
+        },
+        {
+            "paperId": "44063af3f4af933d7b8eb9a730dfa76cc49a6cb9",
+            "title": "Research and Development"
+        },
+        {
+            "paperId": null,
+            "title": "A MultiAlgorithm Approach to Very High Performance 1 D FFTs \u201d"
+        }
+    ]
+}

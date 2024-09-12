@@ -1,0 +1,147 @@
+{
+    "paperId": "fc097d528fd62fe76d73fafbf0c57473b58d1e84",
+    "externalIds": {
+        "DBLP": "conf/wmt/MurrayC18",
+        "ACL": "W18-6322",
+        "ArXiv": "1808.10006",
+        "MAG": "2951062070",
+        "DOI": "10.18653/v1/W18-6322",
+        "CorpusId": 52132833
+    },
+    "title": "Correcting Length Bias in Neural Machine Translation",
+    "abstract": "We study two problems in neural machine translation (NMT). First, in beam search, whereas a wider beam should in principle help translation, it often hurts NMT. Second, NMT has a tendency to produce translations that are too short. Here, we argue that these problems are closely related and both rooted in label bias. We show that correcting the brevity problem almost eliminates the beam problem; we compare some commonly-used methods for doing this, finding that a simple per-word reward works well; and we introduce a simple and quick way to tune this reward using the perceptron algorithm.",
+    "venue": "Conference on Machine Translation",
+    "year": 2018,
+    "referenceCount": 27,
+    "citationCount": 138,
+    "influentialCitationCount": 8,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/W18-6322.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that correcting the brevity problem almost eliminates the beam problem; some commonly-used methods for doing this are compared, finding that a simple per-word reward works well and a simple and quick way to tune this reward using the perceptron algorithm is introduced."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "38730896",
+            "name": "Kenton Murray"
+        },
+        {
+            "authorId": "145287425",
+            "name": "David Chiang"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "77351f0a20a21f239051dca02d485e9d8a4c3a55",
+            "title": "Breaking the Beam Search Curse: A Study of (Re-)Scoring Methods and Stopping Criteria for Neural Machine Translation"
+        },
+        {
+            "paperId": "2eeb4d6529ec7222415e53d7a0bbedbe11d56fc4",
+            "title": "When to Finish? Optimal Beam Search for Neural Text Generation (modulo beam size)"
+        },
+        {
+            "paperId": "704aa23d0be8817dd0aa2d4794068fc167243b85",
+            "title": "Findings of the 2017 Conference on Machine Translation (WMT17)"
+        },
+        {
+            "paperId": "106d5e0cf44ea08500adc91c4d5bb3e6c8a4d627",
+            "title": "Six Challenges for Neural Machine Translation"
+        },
+        {
+            "paperId": "f4c8539bed600c9c652aba76a996b8188761d3fe",
+            "title": "Stronger Baselines for Trustable Results in Neural Machine Translation"
+        },
+        {
+            "paperId": "e8135016ff3bd33ace936e50247fd650fcc58a7a",
+            "title": "Lexicons and Minimum Risk Training for Neural Machine Translation: NAIST-CMU at WAT2016"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "1a327709cc53ff9e52454e50a643abf4a0ac92af",
+            "title": "Findings of the 2016 Conference on Machine Translation"
+        },
+        {
+            "paperId": "5507dc32b368c8afd3b9507e9b5888da7bd7d7cd",
+            "title": "Sequence-to-Sequence Learning as Beam-Search Optimization"
+        },
+        {
+            "paperId": "4be0dd53aa1c751219fa6f19fed8a6324f6d2766",
+            "title": "Globally Normalized Transition-Based Neural Networks"
+        },
+        {
+            "paperId": "7768f88efe03b9735f79462c0f89aa04a074f107",
+            "title": "Improved Neural Machine Translation with SMT Features"
+        },
+        {
+            "paperId": "9f2a8e923965b23c11066a2ead79658208f1fae1",
+            "title": "Minimum Risk Training for Neural Machine Translation"
+        },
+        {
+            "paperId": "b7aee9dfb027d6061c6a653684c0fa9a9bba750d",
+            "title": "Sequence Level Training with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "1518039b5001f1836565215eb047526b3ac7f462",
+            "title": "Neural Machine Translation of Rare Words with Subword Units"
+        },
+        {
+            "paperId": "d5d46991c7e92352865dbf442be7c74d0d560dd8",
+            "title": "Improving Multi-Step Prediction of Learned Time Series Models"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "a5e4377d2149a8167d89383d785793967cf74602",
+            "title": "Meteor Universal: Language Specific Translation Evaluation for Any Target Language"
+        },
+        {
+            "paperId": "026c19a29d3d1f3997393192ced1eb6098038f09",
+            "title": "Analyzing the Effect of Global Learning and Beam-Search on Transition-Based Dependency Parsing"
+        },
+        {
+            "paperId": "1f12451245667a85d0ee225a80880fc93c71cc8b",
+            "title": "Minimum Error Rate Training in Statistical Machine Translation"
+        },
+        {
+            "paperId": "37fadfb6d60e83e24c72d8a90da5644b39d6e8f0",
+            "title": "Discriminative Training and Maximum Entropy Models for Statistical Machine Translation"
+        },
+        {
+            "paperId": "d7da009f457917aa381619facfa5ffae9329a6e9",
+            "title": "Bleu: a Method for Automatic Evaluation of Machine Translation"
+        },
+        {
+            "paperId": "f4ba954b0412773d047dc41231c733de0c1f4926",
+            "title": "Conditional Random Fields: Probabilistic Models for Segmenting and Labeling Sequence Data"
+        },
+        {
+            "paperId": "25eb839f39507fe6983ad3e692b2f8d93a5cb0cc",
+            "title": "Neural Machine Translation Systems for WMT \u2019 15"
+        },
+        {
+            "paperId": null,
+            "title": "lamtram: A toolkit for language and translation modeling using neural networks"
+        },
+        {
+            "paperId": "e27d81521dc4e8b6ea93947c05ffccf06784f569",
+            "title": "Audio Chord Recognition with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "fe14d8f69bf153554c860449dcfa268d2846e147",
+            "title": "Overview of the IWSLT 2010 evaluation campaign"
+        },
+        {
+            "paperId": null,
+            "title": "Une Approche th\u00b4eorique de l\u2019Apprentissage Connexioniste; Applications `a la re-connaissance de la Parole"
+        }
+    ]
+}

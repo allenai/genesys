@@ -1,0 +1,138 @@
+{
+    "paperId": "83c54cdaf1979235ec12f1c3f08705ce5ffb9de3",
+    "externalIds": {
+        "MAG": "2889205932",
+        "ArXiv": "1808.10088",
+        "DBLP": "conf/icassp/LiLH19",
+        "DOI": "10.1109/ICASSP.2019.8682500",
+        "CorpusId": 52146277
+    },
+    "title": "End-to-end Speech Recognition with Adaptive Computation Steps",
+    "abstract": "In this paper, we present Adaptive Computation Steps (ACS) algorithm, which enables end-to-end speech recognition models to dynamically decide how many frames should be processed to predict a linguistic output. The model that applies ACS algorithm follows the encoder-decoder framework, while unlike the attention-based models, it produces alignments independently at the encoder side using the correlation between adjacent frames. Thus, predictions can be made as soon as sufficient acoustic information is received, which makes the model applicable in online cases. Besides, a small change is made to the decoding stage of the encoder-decoder framework, which allows the prediction to exploit bidirectional contexts. We verify the ACS algorithm on a Mandarin speech corpus AIShell-1, and it achieves a 31.2% CER in the online occasion, compared to the 32.4% CER of the attention-based model. To fully demonstrate the advantage of ACS algorithm, offline experiments are conducted, in which our ACS model achieves an 18.7% CER, outperforming the attention-based counterpart with the CER of 22.0%.",
+    "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+    "year": 2018,
+    "referenceCount": 24,
+    "citationCount": 32,
+    "influentialCitationCount": 9,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1808.10088",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Adaptive Computation Steps algorithm is presented, which enables end-to-end speech recognition models to dynamically decide how many frames should be processed to predict a linguistic output, and it achieves a higher CER than the attention-based model."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2109044814",
+            "name": "Mohan Li"
+        },
+        {
+            "authorId": "2112387373",
+            "name": "Min Liu"
+        },
+        {
+            "authorId": "144318241",
+            "name": "Masanori Hattori"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "c6b61535f1544835cca3851ceb34222ebc5b4377",
+            "title": "State-of-the-Art Speech Recognition with Sequence-to-Sequence Models"
+        },
+        {
+            "paperId": "5a8bb7b192373d8222a6efd99de4f9042da06f37",
+            "title": "AISHELL-1: An open-source Mandarin speech corpus and a speech recognition baseline"
+        },
+        {
+            "paperId": "c102ac8c779ee0a53dc8e4ee20b4088ac2c7e186",
+            "title": "Advances in Joint CTC-Attention Based End-to-End Speech Recognition with a Deep CNN Encoder and RNN-LM"
+        },
+        {
+            "paperId": "2c0a634a71ade1bb8458db124dc1cc9f7e452627",
+            "title": "Local Monotonic Attention Mechanism for End-to-End Speech And Language Processing"
+        },
+        {
+            "paperId": "76faaf292c6d9dc29d3a99300a7fdd7a35d6d107",
+            "title": "Online and Linear-Time Attention by Enforcing Monotonic Alignments"
+        },
+        {
+            "paperId": "9af2264799bdc3490e4650e2f5d126762caf420f",
+            "title": "Joint CTC-attention based end-to-end speech recognition using multi-task learning"
+        },
+        {
+            "paperId": "39a8ce943d0b4171e7fa6e4cab2d80cdb23cdbf1",
+            "title": "On Online Attention-Based Speech Recognition and Joint Mandarin Character-Pinyin Training"
+        },
+        {
+            "paperId": "9e2d9365ec2b940f4ba5d31f8a9950a184c2d2ed",
+            "title": "Learning online alignments with continuous rewards policy gradient"
+        },
+        {
+            "paperId": "04cca8e341a5da42b29b0bc831cb25a0f784fa01",
+            "title": "Adaptive Computation Time for Recurrent Neural Networks"
+        },
+        {
+            "paperId": "2b5f51588f1c4cdca0865de20c1e2e1ff3570fd1",
+            "title": "Attend, Infer, Repeat: Fast Scene Understanding with Generative Models"
+        },
+        {
+            "paperId": "d026408dc768588c1eef86302e967104c73ecb97",
+            "title": "Simplifying long short-term memory acoustic models for fast training and decoding"
+        },
+        {
+            "paperId": "9c9d7247f8c51ec5a02b0d911d1d7b9e8160495d",
+            "title": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems"
+        },
+        {
+            "paperId": "878ba5458e9e51f0b341fd9117fa0b43ef4096d3",
+            "title": "End-to-end attention-based large vocabulary speech recognition"
+        },
+        {
+            "paperId": "3056add22b20e3361c38c0472d294a79d4031cb4",
+            "title": "Listen, attend and spell: A neural network for large vocabulary conversational speech recognition"
+        },
+        {
+            "paperId": "9fca2af9a0e3f2c5c3ed47abb3ebd21b7265ac2b",
+            "title": "Fast and accurate recurrent neural network acoustic models for speech recognition"
+        },
+        {
+            "paperId": "b624504240fa52ab76167acfe3156150ca01cf3b",
+            "title": "Attention-Based Models for Speech Recognition"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "47d2dc34e1d02a8109f5c04bb6939725de23716d",
+            "title": "End-to-end Continuous Speech Recognition using Attention-based Recurrent NN: First Results"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17",
+            "title": "Generating Sequences With Recurrent Neural Networks"
+        },
+        {
+            "paperId": "84069287da0a6b488b8c933f3cb5be759cb6237e",
+            "title": "On the difficulty of training recurrent neural networks"
+        },
+        {
+            "paperId": "3a1a2cff2b70fb84a7ca7d97f8adcc5855851795",
+            "title": "The Kaldi Speech Recognition Toolkit"
+        },
+        {
+            "paperId": "10dae7fca6b65b61d155a622f0c6ca2bc3922251",
+            "title": "Gradient-based learning algorithms for recurrent networks and their computational complexity"
+        }
+    ]
+}

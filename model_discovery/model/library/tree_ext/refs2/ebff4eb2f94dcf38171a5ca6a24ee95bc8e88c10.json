@@ -1,0 +1,258 @@
+{
+    "paperId": "ebff4eb2f94dcf38171a5ca6a24ee95bc8e88c10",
+    "externalIds": {
+        "MAG": "2950632741",
+        "ArXiv": "1805.09786",
+        "DBLP": "journals/corr/abs-1805-09786",
+        "CorpusId": 43968607
+    },
+    "title": "Hyperbolic Attention Networks",
+    "abstract": "We introduce hyperbolic attention networks to endow neural networks with enough capacity to match the complexity of data with hierarchical and power-law structure. A few recent approaches have successfully demonstrated the benefits of imposing hyperbolic geometry on the parameters of shallow networks. We extend this line of work by imposing hyperbolic geometry on the activations of neural networks. This allows us to exploit hyperbolic geometry to reason about embeddings produced by deep networks. We achieve this by re-expressing the ubiquitous mechanism of soft attention in terms of operations defined for hyperboloid and Klein models. Our method shows improvements in terms of generalization on neural machine translation, learning on graphs and visual question answering tasks while keeping the neural representations compact.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2018,
+    "referenceCount": 47,
+    "citationCount": 204,
+    "influentialCitationCount": 19,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces hyperbolic attention networks to endow neural networks with enough capacity to match the complexity of data with hierarchical and power-law structure and re-expressing the ubiquitous mechanism of soft attention in terms of operations defined for hyperboloid and Klein models."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1854385",
+            "name": "\u00c7aglar G\u00fcl\u00e7ehre"
+        },
+        {
+            "authorId": "1715051",
+            "name": "Misha Denil"
+        },
+        {
+            "authorId": "145478807",
+            "name": "Mateusz Malinowski"
+        },
+        {
+            "authorId": "143653164",
+            "name": "Ali Razavi"
+        },
+        {
+            "authorId": "1996134",
+            "name": "Razvan Pascanu"
+        },
+        {
+            "authorId": "2910877",
+            "name": "Karl Moritz Hermann"
+        },
+        {
+            "authorId": "2019153",
+            "name": "P. Battaglia"
+        },
+        {
+            "authorId": "2603033",
+            "name": "V. Bapst"
+        },
+        {
+            "authorId": "143724694",
+            "name": "David Raposo"
+        },
+        {
+            "authorId": "35030998",
+            "name": "Adam Santoro"
+        },
+        {
+            "authorId": "1737568",
+            "name": "Nando de Freitas"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "0a69a34408555a6fcdb0491e9bf82af8675876ae",
+            "title": "Attention Solves Your TSP"
+        },
+        {
+            "paperId": "c8efcc854d97dfc2a42b83316a2109f9d166e43f",
+            "title": "Self-Attention with Relative Position Representations"
+        },
+        {
+            "paperId": "89b1766a77f7a34aadd67861123d5cf3cd3ece52",
+            "title": "Neural Relational Inference for Interacting Systems"
+        },
+        {
+            "paperId": "8899094797e82c5c185a0893896320ef77f60e64",
+            "title": "Non-local Neural Networks"
+        },
+        {
+            "paperId": "33998aff64ce51df8dee45989cdca4b6b1329ec4",
+            "title": "Graph Attention Networks"
+        },
+        {
+            "paperId": "a90179a880a34c70cb916133f931be7a97fec2d5",
+            "title": "Hyperbolic Representation Learning for Fast and Efficient Neural Question Answering"
+        },
+        {
+            "paperId": "ec63fa721282ccc114c5dda4928e3b400f1190f3",
+            "title": "Do neural nets learn statistical laws behind natural language?"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "007112213ece771be72cbecfd59f048209facabd",
+            "title": "A simple neural network module for relational reasoning"
+        },
+        {
+            "paperId": "76ce8d30c6f72aa56ae02cd42a064e41b9ab9391",
+            "title": "Neural Embeddings of Graphs in Hyperbolic Space"
+        },
+        {
+            "paperId": "1590bd1bca945fc6ff50b8cdf2da14ea2061c79a",
+            "title": "Poincar\u00e9 Embeddings for Learning Hierarchical Representations"
+        },
+        {
+            "paperId": "e24cdf73b3e7e590c2fe5ecac9ae8aa983801367",
+            "title": "Neural Message Passing for Quantum Chemistry"
+        },
+        {
+            "paperId": "5c57bb5630835a05eb1c3d0df3e12d6180d75de2",
+            "title": "One-Shot Imitation Learning"
+        },
+        {
+            "paperId": "03eb382e04cca8cca743f7799070869954f1402a",
+            "title": "CLEVR: A Diagnostic Dataset for Compositional Language and Elementary Visual Reasoning"
+        },
+        {
+            "paperId": "ae42c0cff384495683192b06bd985cdd7a54632a",
+            "title": "Interaction Networks for Learning about Objects, Relations and Physics"
+        },
+        {
+            "paperId": "0e779fd59353a7f1f5b559b9d65fa4bfe367890c",
+            "title": "Geometric Deep Learning: Going beyond Euclidean data"
+        },
+        {
+            "paperId": "784ee73d5363c711118f784428d1ab89f019daa5",
+            "title": "Hybrid computing using a neural network with dynamic external memory"
+        },
+        {
+            "paperId": "36eff562f65125511b5dfab68ce7f7a943c27478",
+            "title": "Semi-Supervised Classification with Graph Convolutional Networks"
+        },
+        {
+            "paperId": "c41eb895616e453dcba1a70c9b942c5063cc656c",
+            "title": "Convolutional Neural Networks on Graphs with Fast Localized Spectral Filtering"
+        },
+        {
+            "paperId": "5da2173ee0eebd56e6e4b3937fe719821b510b08",
+            "title": "Critical Behavior in Physics and Probabilistic Formal Languages"
+        },
+        {
+            "paperId": "f685d816621eb6adee000ee674a07d9fde19f44f",
+            "title": "Generating Random Hyperbolic Graphs in Subquadratic Time"
+        },
+        {
+            "paperId": "46b8cbcdff87b842c2c1d4a003c831f845096ba7",
+            "title": "Order-Embeddings of Images and Language"
+        },
+        {
+            "paperId": "492f57ee9ceb61fb5a47ad7aebfec1121887a175",
+            "title": "Gated Graph Sequence Neural Networks"
+        },
+        {
+            "paperId": "def584565d05d6a8ba94de6621adab9e301d375d",
+            "title": "Visual7W: Grounded Question Answering in Images"
+        },
+        {
+            "paperId": "9653d5c2c7844347343d073bbedd96e05d52f69b",
+            "title": "Pointer Networks"
+        },
+        {
+            "paperId": "97ad70a9fa3f99adf18030e5e38ebe3d90daa2db",
+            "title": "VQA: Visual Question Answering"
+        },
+        {
+            "paperId": "340f48901f72278f6bf78a04ee5b01df208cc508",
+            "title": "Human-level control through deep reinforcement learning"
+        },
+        {
+            "paperId": "ac64fb7e6d2ddf236332ec9f371fe85d308c114d",
+            "title": "A Multi-World Approach to Question Answering about Real-World Scenes based on Uncertain Input"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "5ec85a0d88adcc4344bb5cc81b0d1aef9bcd8dcc",
+            "title": "Findings of the 2014 Workshop on Statistical Machine Translation"
+        },
+        {
+            "paperId": "9ee949dc55a12849afb60c2d883e0bbc11d781df",
+            "title": "Zipf\u2019s word frequency law in natural language: A critical review and future directions"
+        },
+        {
+            "paperId": "5e925a9f1e20df61d1e860a7aa71894b35a1c186",
+            "title": "Spectral Networks and Locally Connected Networks on Graphs"
+        },
+        {
+            "paperId": "5731795f184b2a5431fc909a0ce8bf7a9ec2c762",
+            "title": "Low Distortion Delaunay Embedding of Trees in Hyperbolic Plane"
+        },
+        {
+            "paperId": "ef8458353c245bbe3bcf81b055fe5313b93a9f66",
+            "title": "Hyperbolic Geometry of Complex Networks"
+        },
+        {
+            "paperId": "9ce23599d6be0e4b77e5746a1a1d5433fba341aa",
+            "title": "On curvature and temperature of complex networks"
+        },
+        {
+            "paperId": "bb964ef58cc9497f04c0722d4735cb3e6de4a495",
+            "title": "A Gyrovector Space Approach to Hyperbolic Geometry"
+        },
+        {
+            "paperId": "1bd58404cd26a8572213fb32d886d4cbf0dc4433",
+            "title": "Greedy Forwarding in Dynamic Scale-Free Networks Embedded in Hyperbolic Metric Spaces"
+        },
+        {
+            "paperId": "7dcc27e011874c43463b80257d8ff3d797411844",
+            "title": "Power-Law Distributions in Empirical Data"
+        },
+        {
+            "paperId": "e18b661c6ab814d764b2adfef019b461bceb305a",
+            "title": "Rebuilding community ecology from functional traits."
+        },
+        {
+            "paperId": "eeabd28948cd27434cce67e2fdb9d0aa43812f00",
+            "title": "Power laws, Pareto distributions and Zipf's law"
+        },
+        {
+            "paperId": "15cac7c8d07407d5a4f4e780abe4e28e17605045",
+            "title": "Hyperbolic Self-Organizing Maps for Semantic Navigation"
+        },
+        {
+            "paperId": "1f7e50d220f41f4fac985a991c8d5187323aab4c",
+            "title": "Applications and Explanations of Zipf\u2019s Law"
+        },
+        {
+            "paperId": "19b14bd2b015601025251475b65a2bdb0d4fe5c5",
+            "title": "Analytic Hyperbolic Geometry: Mathematical Foundations And Applications"
+        },
+        {
+            "paperId": "df0bec1f1f2fd8beb6c37fd3b14aafdc26ccba65",
+            "title": "Self-Organizing Maps on non-euclidean Spaces"
+        },
+        {
+            "paperId": "1aaae34e077aa69ed6c9afbe78929f9099072ba8",
+            "title": "Low distortion euclidean embeddings of trees"
+        },
+        {
+            "paperId": "b775883f10990352a991e3ee2b706c0272795cd2",
+            "title": "HYPERBOLIC GEOMETRY"
+        },
+        {
+            "paperId": "0290d2de781e5b388530ca0b45c960a7c4445cd0",
+            "title": "Psychophysical bases of perceived exertion."
+        }
+    ]
+}

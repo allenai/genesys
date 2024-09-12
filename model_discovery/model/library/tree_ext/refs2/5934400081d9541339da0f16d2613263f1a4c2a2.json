@@ -1,0 +1,237 @@
+{
+    "paperId": "5934400081d9541339da0f16d2613263f1a4c2a2",
+    "externalIds": {
+        "DBLP": "conf/iccv/ChengYFKCC15",
+        "MAG": "1919191429",
+        "DOI": "10.1109/ICCV.2015.327",
+        "CorpusId": 10437988
+    },
+    "title": "An Exploration of Parameter Redundancy in Deep Networks with Circulant Projections",
+    "abstract": "We explore the redundancy of parameters in deep neural networks by replacing the conventional linear projection in fully-connected layers with the circulant projection. The circulant structure substantially reduces memory footprint and enables the use of the Fast Fourier Transform to speed up the computation. Considering a fully-connected neural network layer with d input nodes, and d output nodes, this method improves the time complexity from O(d2) to O(dlogd) and space complexity from O(d2) to O(d). The space savings are particularly important for modern deep convolutional neural network architectures, where fully-connected layers typically contain more than 90% of the network parameters. We further show that the gradient computation and optimization of the circulant projections can be performed very efficiently. Our experiments on three standard datasets show that the proposed approach achieves this significant gain in storage and efficiency with minimal increase in error rate compared to neural networks with unstructured projections.",
+    "venue": "IEEE International Conference on Computer Vision",
+    "year": 2015,
+    "referenceCount": 46,
+    "citationCount": 312,
+    "influentialCitationCount": 26,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1502.03436",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work explores the redundancy of parameters in deep neural networks by replacing the conventional linear projection in fully-connected layers with the circulant projection, which substantially reduces memory footprint and enables the use of the Fast Fourier Transform to speed up the computation."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145215474",
+            "name": "Yu Cheng"
+        },
+        {
+            "authorId": "1815972",
+            "name": "Felix X. Yu"
+        },
+        {
+            "authorId": "1723233",
+            "name": "R. Feris"
+        },
+        {
+            "authorId": "152663162",
+            "name": "Sanjiv Kumar"
+        },
+        {
+            "authorId": "143975793",
+            "name": "A. Choudhary"
+        },
+        {
+            "authorId": "9546964",
+            "name": "Shih-Fu Chang"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "f5b69e31b6064b512360ed84d15c8e0670abf50e",
+            "title": "Fast, Simple and Accurate Handwritten Digit Classification by Training Shallow Neural Network Classifiers with the \u2018Extreme Learning Machine\u2019 Algorithm"
+        },
+        {
+            "paperId": "0dcde9f2c5149f0e4c806db7b4cc4915bed077da",
+            "title": "Enhanced image classification with a fast-learning shallow convolutional neural network"
+        },
+        {
+            "paperId": "e16276e1590804ea5f79df6ece67c170ba8d5239",
+            "title": "Compact Nonlinear Maps and Circulant Extensions"
+        },
+        {
+            "paperId": "0c908739fbff75f03469d13d4a1a07de3414ee19",
+            "title": "Distilling the Knowledge in a Neural Network"
+        },
+        {
+            "paperId": "4983ad3b7312327f18eaf61aed47e660c3374e61",
+            "title": "Fast, simple and accurate handwritten digit classification using extreme learning machines with shaped input-weights"
+        },
+        {
+            "paperId": "27a99c21a1324f087b2f144adc119f04137dfd87",
+            "title": "Deep Fried Convnets"
+        },
+        {
+            "paperId": "8604f376633af8b347e31d84c6150a93b11e34c2",
+            "title": "FitNets: Hints for Thin Deep Nets"
+        },
+        {
+            "paperId": "e70d75454de81b05fed9b63a405bcd1229f20229",
+            "title": "Deeply learned face representations are sparse, selective, and robust"
+        },
+        {
+            "paperId": "2a4117849c88d4728c33b1becaa9fb6ed7030725",
+            "title": "Memory Bounded Deep Convolutional Networks"
+        },
+        {
+            "paperId": "b138688d04eac3153bc4112babecc0106059c220",
+            "title": "Training and operation of an integrated neuromorphic network based on metal-oxide memristors"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "4b4738809317259d2b49017203da512b21ea51ed",
+            "title": "Deep Features for Text Spotting"
+        },
+        {
+            "paperId": "177bc509dd0c7b8d388bb47403f28d6228c14b5c",
+            "title": "Deep Learning Face Representation from Predicting 10,000 Classes"
+        },
+        {
+            "paperId": "6bdb186ec4726e00a8051119636d4df3b94043b5",
+            "title": "Caffe: Convolutional Architecture for Fast Feature Embedding"
+        },
+        {
+            "paperId": "9f2efadf66817f1b38f58b3f50c7c8f34c69d89a",
+            "title": "DeepFace: Closing the Gap to Human-Level Performance in Face Verification"
+        },
+        {
+            "paperId": "021fc345d40d3e6332cd2ef276e2eaa5e71102e4",
+            "title": "Speeding up Convolutional Neural Networks with Low Rank Expansions"
+        },
+        {
+            "paperId": "46abc8d639f1b8595ad241e44ac5dae61075ea80",
+            "title": "Circulant Binary Embedding"
+        },
+        {
+            "paperId": "b3c879b2430a61d8c4393436685c85bcfbd6c6d8",
+            "title": "Kernel methods match Deep Neural Networks on TIMIT"
+        },
+        {
+            "paperId": "e5ae8ab688051931b4814f6d32b18391f8d1fa8d",
+            "title": "Exploiting Linear Structure Within Convolutional Networks for Efficient Evaluation"
+        },
+        {
+            "paperId": "1109b663453e78a59e4f66446d71720ac58cec25",
+            "title": "OverFeat: Integrated Recognition, Localization and Detection using Convolutional Networks"
+        },
+        {
+            "paperId": "a7621b4ec18719b08f3a2a444b6d37a2e20227b7",
+            "title": "Fast Training of Convolutional Networks through FFTs"
+        },
+        {
+            "paperId": "5e83ab70d0cbc003471e87ec306d27d9c80ecb16",
+            "title": "Network In Network"
+        },
+        {
+            "paperId": "67fc0ec1d26f334b05fe66d2b7e0767b60fb73b6",
+            "title": "Scalable Object Detection Using Deep Neural Networks"
+        },
+        {
+            "paperId": "31a8803d7e2618bfa44c472d003055bb5961b9de",
+            "title": "PhotoOCR: Reading Text in Uncontrolled Conditions"
+        },
+        {
+            "paperId": "c77121f5dbed9583e4d3c37c98f1161d654d94ba",
+            "title": "Beyond Hard Negative Mining: Efficient Detector Learning via Block-Circulant Decomposition"
+        },
+        {
+            "paperId": "1a2a770d23b4a171fa81de62a78a3deb0588f238",
+            "title": "Visualizing and Understanding Convolutional Networks"
+        },
+        {
+            "paperId": "2f4df08d9072fc2ac181b7fced6a245315ce05c8",
+            "title": "Rich Feature Hierarchies for Accurate Object Detection and Semantic Segmentation"
+        },
+        {
+            "paperId": "b8de958fead0d8a9619b55c7299df3257c624a96",
+            "title": "DeCAF: A Deep Convolutional Activation Feature for Generic Visual Recognition"
+        },
+        {
+            "paperId": "eff61216e0136886e1158625b1e5a88ed1a7cbce",
+            "title": "Predicting Parameters in Deep Learning"
+        },
+        {
+            "paperId": "5cea23330c76994cb626df20bed31cc2588033df",
+            "title": "Low-rank matrix factorization for Deep Neural Network training with high-dimensional output targets"
+        },
+        {
+            "paperId": "b7b915d508987b73b61eccd2b237e7ed099a2d29",
+            "title": "Maxout Networks"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "3127190433230b3dc1abd0680bb58dced4bcd90e",
+            "title": "Large Scale Distributed Deep Networks"
+        },
+        {
+            "paperId": "5b4e50860d61095bb5fb65eaa367b131923917be",
+            "title": "Exploiting the Circulant Structure of Tracking-by-Detection with Kernels"
+        },
+        {
+            "paperId": "0060745e006c5f14ec326904119dca19c6545e51",
+            "title": "Improving neural networks by preventing co-adaptation of feature detectors"
+        },
+        {
+            "paperId": "37e41557932cc0035eab23fd767bde68f6475c3a",
+            "title": "Segmentation as selective search for object recognition"
+        },
+        {
+            "paperId": "40349f066fd2ced16138a016256755dc45ff031c",
+            "title": "Fast locality-sensitive hashing"
+        },
+        {
+            "paperId": "c3c82b476162d2d006e02180530875a64af18154",
+            "title": "Hardware accelerated convolutional neural networks for synthetic vision systems"
+        },
+        {
+            "paperId": "9da848e8e3893afc33417803cf2629cc8617df39",
+            "title": "A variant of the Johnson-Lindenstrauss lemma for circulant matrices"
+        },
+        {
+            "paperId": "2cde78f9dc1f35d7d38801f4d5168a2df26c328e",
+            "title": "Johnson\u2010Lindenstrauss lemma for circulant matrices* *"
+        },
+        {
+            "paperId": "b4d6a34f9d25b7a7ca665087ad7cb82f58d89d51",
+            "title": "Approximate nearest neighbors and the fast Johnson-Lindenstrauss transform"
+        },
+        {
+            "paperId": "fbeaa499e10e98515f7e1c4ad89165e8c0677427",
+            "title": "Improving the speed of neural networks on CPUs"
+        },
+        {
+            "paperId": null,
+            "title": "Deep sparse recti\ufb01er networks"
+        },
+        {
+            "paperId": "f42b865e20e61a954239f421b42007236e671f19",
+            "title": "GradientBased Learning Applied to Document Recognition"
+        },
+        {
+            "paperId": null,
+            "title": "Discretetime signal processing"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        }
+    ]
+}

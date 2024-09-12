@@ -1,0 +1,117 @@
+{
+    "paperId": "d130325c41947a41a55a4431e9e8e15be89da8ea",
+    "externalIds": {
+        "MAG": "2123399796",
+        "DOI": "10.1109/IJCNN.1991.155621",
+        "CorpusId": 1734973
+    },
+    "title": "Learning a synaptic learning rule",
+    "abstract": "Summary form only given, as follows. The authors discuss an original approach to neural modeling based on the idea of searching, with learning methods, for a synaptic learning rule which is biologically plausible and yields networks that are able to learn to perform difficult tasks. The proposed method of automatically finding the learning rule relies on the idea of considering the synaptic modification rule as a parametric function. This function has local inputs and is the same in many neurons. The parameters that define this function can be estimated with known learning methods. For this optimization, particular attention is given to gradient descent and genetic algorithms. In both cases, estimation of this function consists of a joint global optimization of the synaptic modification function and the networks that are learning to perform some tasks. Both network architecture and the learning function can be designed within constraints derived from biological knowledge.<<ETX>>",
+    "venue": "IJCNN-91-Seattle International Joint Conference on Neural Networks",
+    "year": 1991,
+    "referenceCount": 20,
+    "citationCount": 370,
+    "influentialCitationCount": 9,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An original approach to neural modeling based on the idea of searching, with learning methods, for a synaptic learning rule which is biologically plausible and yields networks that are able to learn to perform difficult tasks is discussed."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1751762",
+            "name": "Yoshua Bengio"
+        },
+        {
+            "authorId": "1751569",
+            "name": "Samy Bengio"
+        },
+        {
+            "authorId": "2909364",
+            "name": "J. Cloutier"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "4b4279db68b16e20fbc56f9d41980a950191d30a",
+            "title": "Adaptation in Natural and Artificial Systems: An Introductory Analysis with Applications to Biology, Control, and Artificial Intelligence"
+        },
+        {
+            "paperId": "5829d1bcd9d2bd08963577db20be0d50c00e0a75",
+            "title": "Sensorimotor learning and the cerebellum"
+        },
+        {
+            "paperId": "f0fa691ed1239f98a85ac95d862108ac78f63d52",
+            "title": "Mapping neural networks into classifier systems genetic algorithms"
+        },
+        {
+            "paperId": "a57c6d627ffc667ae3547073876c35d6420accff",
+            "title": "Connectionist Learning Procedures"
+        },
+        {
+            "paperId": "34468c0aa95a7aea212d8738ab899a69b2fc14c6",
+            "title": "Learning State Space Trajectories in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "9f160fd64c39b525e5430e4bfaccfb836d3605e9",
+            "title": "Optimizing Neural Networks Using FasterMore Accurate Genetic Search"
+        },
+        {
+            "paperId": "97ae41a9d71090da4692a8c25dff0e9e31ae9a69",
+            "title": "Programmable execution of multi-layered networks for automatic speech recognition"
+        },
+        {
+            "paperId": "b33da8473dda0d5f4bfa0da0f8a4db0143d92dda",
+            "title": "Cellular analysis of associative learning."
+        },
+        {
+            "paperId": "319f22bd5abfd67ac15988aa5c7f705f018c3ccd",
+            "title": "Learning internal representations by error propagation"
+        },
+        {
+            "paperId": "1a6937cac81f47cc97b6548d59e5ecc984a72faf",
+            "title": "A cellular mechanism of classical conditioning in Aplysia."
+        },
+        {
+            "paperId": "58012273b4a12fbb3a614386b02abf56fceb3f43",
+            "title": "A cellular mechanism of classical conditioning in Aplysia: activity-dependent amplification of presynaptic facilitation."
+        },
+        {
+            "paperId": "8e1e4b2673ab6e5d43428385e45de7508698f762",
+            "title": "Learning with Synaptic Nonlinearities in a Coupled Oscillator Model of Olfactory Cortex"
+        },
+        {
+            "paperId": "589d377b23e2bdae7ad161b36a5d6613bcfccdde",
+            "title": "Improving the convergence of back-propagation learning with second-order methods"
+        },
+        {
+            "paperId": "43deaa6a9459bba0a800c2064c77b2f3fed30870",
+            "title": "Computational models of learning in simple neural systems"
+        },
+        {
+            "paperId": "736403683107ae5983a8bcb1e83cbf328b8f4179",
+            "title": "A Biologically Based Computational Model for Several Simple Forms of Learning"
+        },
+        {
+            "paperId": "be9aedd9c05c775108a53f09c7cfe69ebbf99970",
+            "title": "Classical Conditioning Phenomena Predicted by a Drive-Reinforcement Model of Neuronal Function"
+        },
+        {
+            "paperId": "0e9b4ce207421b40a4bb1b47c284be0eafe350f0",
+            "title": "Associative Learning, Memory, and Neuromodulation in Hermissenda"
+        },
+        {
+            "paperId": "a2f69190e01b65752af591158327807863b99c28",
+            "title": "Integrating Behavioral and Biological Models of Classical Conditioning"
+        },
+        {
+            "paperId": null,
+            "title": "Genetic Algorithms in Machine Learning, Optimization, and Search"
+        },
+        {
+            "paperId": null,
+            "title": "Synaptic diversity characterizes Biological Neural Networks"
+        }
+    ]
+}

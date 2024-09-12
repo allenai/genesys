@@ -1,0 +1,226 @@
+{
+    "paperId": "fbeb8dd4d5e9a8187e5f32e0027df3728236302b",
+    "externalIds": {
+        "MAG": "2121245437",
+        "DBLP": "journals/tsp/EgnerP01",
+        "DOI": "10.1109/78.942628",
+        "CorpusId": 494588
+    },
+    "title": "Automatic generation of fast discrete signal transforms",
+    "abstract": "This paper presents an algorithm that derives fast versions for a broad class of discrete signal transforms symbolically. The class includes but is not limited to the discrete Fourier and the discrete trigonometric transforms. This is achieved by finding fast sparse matrix factorizations for the matrix representations of these transforms. Unlike previous methods, the algorithm is entirely automatic and uses the defining matrix as its sole input. The sparse matrix factorization algorithm consists of two steps: first, the \"symmetry\" of the matrix is computed in the form of a pair of group representations; second, the representations are stepwise decomposed, giving rise to a sparse factorization of the original transform matrix. We have successfully demonstrated the method by computing automatically efficient transforms in several important cases: for the DFT, we obtain the Cooley-Tukey (1965) FFT; for a class of transforms including the DCT, type II, the number of arithmetic operations for our fast transforms is the same as for the best-known algorithms. Our approach provides new insights and interpretations for the structure of these signal transforms and the question of why fast algorithms exist. The sparse matrix factorization algorithm is implemented within the software package AREP.",
+    "venue": "IEEE Transactions on Signal Processing",
+    "year": 2001,
+    "referenceCount": 48,
+    "citationCount": 43,
+    "influentialCitationCount": 1,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An algorithm that derives fast versions for a broad class of discrete signal transforms symbolically by finding fast sparse matrix factorizations for the matrix representations of these transforms by using the defining matrix as its sole input."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "8928311",
+            "name": "S. Egner"
+        },
+        {
+            "authorId": "1690697",
+            "name": "Markus P\u00fcschel"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "69e90d2531ec4bbd4bbe4ea1d49e1a53e7dc457d",
+            "title": "Decomposing Monomial Representations of Solvable Groups"
+        },
+        {
+            "paperId": "37d8e1bac21fb73e598d46677c5a8b9463bc4a2f",
+            "title": "Representations and Characters of Groups"
+        },
+        {
+            "paperId": "e69d73a9ed476b2a6008dee4f574d09f00184d74",
+            "title": "Fourier Analysis on Finite Groups and Applications: Index"
+        },
+        {
+            "paperId": "8addadc4f14ef0fae80ac2f55065eb3a2da0f276",
+            "title": "Some applications of generalized FFT's"
+        },
+        {
+            "paperId": "bdac86393b8185d94f43c7d51efde90f5eb2fabc",
+            "title": "Algorithms Explained by Symmetries"
+        },
+        {
+            "paperId": "2b8c5317bc09a474d55d538a5c859fbfce9750f4",
+            "title": "Fast algorithms for the discrete cosine transform"
+        },
+        {
+            "paperId": "d351ae5bc75b126d8a5487f3d50f174733a8af8c",
+            "title": "Algorithms"
+        },
+        {
+            "paperId": "5ca9c611686a18f8a4c6d54484b954b225cca500",
+            "title": "A representation-theoretic approach to the DFT with noncommutative generalizations"
+        },
+        {
+            "paperId": "7a50da82bd9c9125ce040ffabd90c89b1e8c9905",
+            "title": "Permutation Group Algorithms Based on Partitions, I: Theory and Algorithms"
+        },
+        {
+            "paperId": "de0d56efd1742df4c152425003fd83e8b4133fd0",
+            "title": "Adaptation of group algebras to signal and image processing"
+        },
+        {
+            "paperId": "dbdf9036fa3e747e686c55a5b196f43bf508972c",
+            "title": "Direct methods for computing discrete sinusoidal transforms"
+        },
+        {
+            "paperId": "29774eec7448f2a869a88376197297b4e8c9215f",
+            "title": "Discrete Cosine Transform: Algorithms, Advantages, Applications"
+        },
+        {
+            "paperId": "3416c15caa5d3ea1bfa698b30757cd5d0891bb71",
+            "title": "Fast scaled-DCT algorithm"
+        },
+        {
+            "paperId": "e265052e44a88c8282d8243b23399774fed6f21b",
+            "title": "Algorithms for Discrete Fourier Transform and Convolution"
+        },
+        {
+            "paperId": "6134d65dc1d01db1e3c4be6f675763a469a973f6",
+            "title": "Practical fast 1-D DCT algorithms with 11 multiplications"
+        },
+        {
+            "paperId": "9425571b0e5b46af13ddd41e1b716e18e1da6d94",
+            "title": "The decimation-in-frequency algorithms for a family of discrete sine and cosine transforms"
+        },
+        {
+            "paperId": "1dc1223b4d66b293a5e7b737e08839db426d9b72",
+            "title": "A Fast Recursive Algorithm For Computing The Discrete Cosine Transform"
+        },
+        {
+            "paperId": "00731c84723fe8d2bd0e48e8d82c36e7db1618fd",
+            "title": "On computing the discrete Hartley transform"
+        },
+        {
+            "paperId": "38598761aafa11dec17979436b30fe9c8e5d4229",
+            "title": "Fast decimation-in-time algorithms for a family of discrete sine and cosine transforms"
+        },
+        {
+            "paperId": "f168c5dedff6243f30583073ea92b97b257ca0e8",
+            "title": "A new algorithm to compute the discrete cosine Transform"
+        },
+        {
+            "paperId": "1790fe007bc1ab161a1ea814748b42e3acbdc958",
+            "title": "Gauss and the history of the fast Fourier transform"
+        },
+        {
+            "paperId": "3c9508bf8af1d8382722a0174a75b72d3e920243",
+            "title": "Simple FFT and DCT algorithms with reduced number of operations"
+        },
+        {
+            "paperId": "387ad3e72385bf5239415aed79a8bd39a205404c",
+            "title": "Fast algorithms for the discrete W transform and for the discrete Fourier transform"
+        },
+        {
+            "paperId": "9bc26f4d94623e89d16b42dc87160e6a326ce3fc",
+            "title": "Fast transforms: Algorithms, analyses, applications"
+        },
+        {
+            "paperId": "475376a8ef4b013cc8f18ca00b3deca062bf154c",
+            "title": "Abelian semi-simple algebras and algorithms for the Discrete Fourier Transform"
+        },
+        {
+            "paperId": "c7bedc6835289d2c503b05b42a3de1488cce235c",
+            "title": "FAST TRANSFORMS, algorithms, analysis, applications"
+        },
+        {
+            "paperId": "f3aeb3a51e73237c17d3c4805cbc3dc26eda1031",
+            "title": "A Fast Computational Algorithm for the Discrete Cosine Transform"
+        },
+        {
+            "paperId": "79628c631b42ffe3bbb4bd53c348f1b519262876",
+            "title": "New algorithms for digital convolution"
+        },
+        {
+            "paperId": "ab15d160bc545ece06227eae15d648ea45b1df21",
+            "title": "Complexity of Computation"
+        },
+        {
+            "paperId": "2d85353c0c3439664e8ae54c8e37c97110eee39c",
+            "title": "A linear filtering approach to the computation of discrete Fourier transform"
+        },
+        {
+            "paperId": "93c670c45373a746a44c8ff74939a31417ca9750",
+            "title": "Discrete Fourier transforms when the number of data samples is prime"
+        },
+        {
+            "paperId": "0e6beb95b5150ce99b108acdefabf70ccd3fee30",
+            "title": "An algorithm for the machine calculation of complex Fourier series"
+        },
+        {
+            "paperId": "adbb7497e6bfe2133334accbfe0daf4c8d1dee81",
+            "title": "A wreath product group approach to signal and image processing .I. Multiresolution analysis"
+        },
+        {
+            "paperId": "6b91413e5b70f06afda6c935865a23680713977b",
+            "title": "Fourier Analysis on Finite Groups and Applications: The Fast Fourier Transform or FFT"
+        },
+        {
+            "paperId": null,
+            "title": "and GAP share package"
+        },
+        {
+            "paperId": "b5ff3738efcbfe8f6b4bcdd00995f17805f3def2",
+            "title": "Konstruktive Darstellungstheorie und Algorithmengenerierung"
+        },
+        {
+            "paperId": null,
+            "title": "P\u00fcschel, and GAP share package AREP\u2014Constructive representation theory and fast signal transforms"
+        },
+        {
+            "paperId": "094511794c09e5ab3ff694852dfa48ec69c83452",
+            "title": "Zur algorithmischen Zerlegungstheorie linearer Transformationen mit Symmetrie"
+        },
+        {
+            "paperId": "e541aaab175655eeda8828dd200c64b2abd8365a",
+            "title": "Algorithms and Programming"
+        },
+        {
+            "paperId": "e98bb706add1c9bea979b5a1457680408c7ff45d",
+            "title": "Algorithmensynthese f\u00fcr lineare Systeme mit Symmetrie"
+        },
+        {
+            "paperId": "3f343c200110a8c72a57b17faafe474b328ca3db",
+            "title": "A polynomial approach to fast algorithms for discrete Fourier-cosine and Fourier-sine transforms"
+        },
+        {
+            "paperId": "eeb88496e935b1fcec520268bf01197581dd5fe3",
+            "title": "The discreteW transform"
+        },
+        {
+            "paperId": null,
+            "title": "Verfahren der Schnellen Fouriertransformation"
+        },
+        {
+            "paperId": "1ff2a79066f2501453c750f40b17613324ec12b9",
+            "title": "Arithmetic complexity of computations"
+        },
+        {
+            "paperId": null,
+            "title": "Computers and Intractability"
+        },
+        {
+            "paperId": "3bd8741f562289fadde61e4709844b24a3757e8f",
+            "title": "A Linear Filtering Approach to the Computation of the Discrete Fourier Transform"
+        },
+        {
+            "paperId": "12b03af504d0960334c77567dab38791bf0f739a",
+            "title": "AND T"
+        },
+        {
+            "paperId": "d93dba4fe9fff04185a8b441829758ddfbbd03b1",
+            "title": "THE DECIMATION-INFREQUENCY ALGORITHMS FOR A FAMILY OF DISCRETE SINE AND COSINE TRANSFORMS *"
+        }
+    ]
+}

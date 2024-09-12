@@ -1,0 +1,49 @@
+{
+    "paperId": "4d8340eae2c98ab5e0a3b1a7e071a7ddb9106cff",
+    "externalIds": {
+        "MAG": "2154318594",
+        "DBLP": "conf/nips/MaronL97",
+        "CorpusId": 8516600
+    },
+    "title": "A Framework for Multiple-Instance Learning",
+    "abstract": "Multiple-instance learning is a variation on supervised learning, where the task is to learn a concept given positive and negative bags of instances. Each bag may contain many instances, but a bag is labeled positive even if only one of the instances in it falls within the concept. A bag is labeled negative only if all the instances in it are negative. We describe a new general framework, called Diverse Density, for solving multiple-instance learning problems. We apply this framework to learn a simple description of a person from a series of images (bags) containing that person, to a stock selection problem, and to the drug activity prediction problem.",
+    "venue": "Neural Information Processing Systems",
+    "year": 1997,
+    "referenceCount": 4,
+    "citationCount": 1421,
+    "influentialCitationCount": 189,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new general framework, called Diverse Density, is described, which is applied to learn a simple description of a person from a series of images containing that person, to a stock selection problem, and to the drug activity prediction problem."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3331580",
+            "name": "O. Maron"
+        },
+        {
+            "authorId": "1388700951",
+            "name": "Tomas Lozano-Perez"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "e2a6ebf4f1789ca34a3b204977b9ab0dc3b28f44",
+            "title": "Multiple-Instance Learning for Natural Scene Classification"
+        },
+        {
+            "paperId": "f688a4182ae65fc4ff695981527bd884b0c32fd0",
+            "title": "On Learning From Multi-Instance Examples: Empirical Evaluation of a Theoretical Approach"
+        },
+        {
+            "paperId": "1c7d38f68fe1150895a186e30b60c02dd89a676a",
+            "title": "Solving the Multiple Instance Problem with Axis-Parallel Rectangles"
+        },
+        {
+            "paperId": "9e728ed5dc6243afdbd57f6c85f353974351692b",
+            "title": "PAC Learning Axis-aligned Rectangles with Respect to Product Distributions from Multiple-Instance Examples"
+        }
+    ]
+}

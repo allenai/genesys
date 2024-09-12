@@ -1,0 +1,186 @@
+{
+    "paperId": "174bbdb96252454cbb40a9c4e53335996235a008",
+    "externalIds": {
+        "MAG": "2126433015",
+        "ACL": "P13-1043",
+        "DBLP": "conf/acl/ZhuZCZZ13",
+        "CorpusId": 10361562
+    },
+    "title": "Fast and Accurate Shift-Reduce Constituent Parsing",
+    "abstract": "Shift-reduce dependency parsers give comparable accuracies to their chartbased counterparts, yet the best shiftreduce constituent parsers still lag behind the state-of-the-art. One important reason is the existence of unary nodes in phrase structure trees, which leads to different numbers of shift-reduce actions between different outputs for the same input. This turns out to have a large empirical impact on the framework of global training and beam search. We propose a simple yet effective extension to the shift-reduce process, which eliminates size differences between action sequences in beam-search. Our parser gives comparable accuracies to the state-of-the-art chart parsers. With linear run-time complexity, our parser is over an order of magnitude faster than the fastest chart parser.",
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2013,
+    "referenceCount": 35,
+    "citationCount": 214,
+    "influentialCitationCount": 26,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a simple yet effective extension to the shift-reduce process, which eliminates size differences between action sequences in beam-search and gives comparable accuracies to the state-of-the-art chart parsers."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145490067",
+            "name": "Muhua Zhu"
+        },
+        {
+            "authorId": null,
+            "name": "Yue Zhang"
+        },
+        {
+            "authorId": "2463750",
+            "name": "Wenliang Chen"
+        },
+        {
+            "authorId": "1390813134",
+            "name": "Min Zhang"
+        },
+        {
+            "authorId": "1728004",
+            "name": "Jingbo Zhu"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "d30eced0a4a779a46a6c9e68a667172ceafd9a8c",
+            "title": "Exploiting Lexical Dependencies from Large-Scale Data for Better Shift-Reduce Constituency Parsing"
+        },
+        {
+            "paperId": "281507601d3d57f087547016a6863a7643cf2417",
+            "title": "A Transition-Based System for Joint Part-of-Speech Tagging and Labeled Non-Projective Dependency Parsing"
+        },
+        {
+            "paperId": "8b9e6a39096807ff1de6b287c1e4b97b32a1c159",
+            "title": "Capturing Paradigmatic and Syntagmatic Lexical Relations: Towards Accurate Chinese Part-of-Speech Tagging"
+        },
+        {
+            "paperId": "beb1226c89615d2b092b9230c4df5c496a2a76eb",
+            "title": "Utilizing Dependency Language Models for Graph-based Dependency Parsing Models"
+        },
+        {
+            "paperId": "c1d96c0f421f8b519cafdbb4e499faa1c797ed9b",
+            "title": "Transition-based Dependency Parsing with Rich Non-local Features"
+        },
+        {
+            "paperId": "e441126a8dd0cb8363272b7b54207ae92e155bc0",
+            "title": "Self-Training with Products of Latent Variable Grammars"
+        },
+        {
+            "paperId": "311a30c808ee16e13e8d1a9ba5c12213de5ddf60",
+            "title": "Dynamic Programming for Linear-Time Incremental Parsing"
+        },
+        {
+            "paperId": "865081156ed7506d21de25d7b865f278b6b8191d",
+            "title": "Transition-Based Parsing of the Chinese Treebank using a Global Discriminative Model"
+        },
+        {
+            "paperId": "5bfd8d40bc071fffaf93685a46974b122ee4239d",
+            "title": "Self-Training PCFG Grammars with Latent Annotations Across Languages"
+        },
+        {
+            "paperId": "5e80938dedf6c8b8fe6d05278ef47eb957ca931e",
+            "title": "Improving Dependency Parsing with Subtrees from Auto-Parsed Data"
+        },
+        {
+            "paperId": "060435976a20b551b659cba4335725d48cbce6b1",
+            "title": "TAG, Dynamic Programming, and the Perceptron for Efficient, Feature-Rich Parsing"
+        },
+        {
+            "paperId": "1ba700aec9f23ecb76622f2202badf25f6ad896e",
+            "title": "Forest Reranking: Discriminative Parsing with Non-Local Features"
+        },
+        {
+            "paperId": "248d32911670e551db4835a5a5279d2d9673ee37",
+            "title": "A New String-to-Dependency Machine Translation Algorithm with a Target Dependency Language Model"
+        },
+        {
+            "paperId": "790ecefeaf2b471b439743a772ccce026131bef5",
+            "title": "Simple Semi-supervised Dependency Parsing"
+        },
+        {
+            "paperId": "3594af2ebf510609651bf282dfea65c8e837b1a7",
+            "title": "Joint Word Segmentation and POS Tagging Using a Single Perceptron"
+        },
+        {
+            "paperId": "6e1b12dd7ca3443ba6e0fb38dfa3587a4eb5d539",
+            "title": "Improved Inference for Unlexicalized Parsing"
+        },
+        {
+            "paperId": "78a9513e70f596077179101f6cb6eadc51602039",
+            "title": "Effective Self-Training for Parsing"
+        },
+        {
+            "paperId": "6ffbfc01fd25546093d1f1953522d782d4e7fa8d",
+            "title": "Parser Combination by Reparsing"
+        },
+        {
+            "paperId": "a350dc635ea3d0fd6dc8c0224fd8d6b55cc03271",
+            "title": "A Classifier-Based Parser with Linear Run-Time Complexity"
+        },
+        {
+            "paperId": "0ecb33ced5b0976accdf13817151f80568b6fdcb",
+            "title": "Coarse-to-Fine n-Best Parsing and MaxEnt Discriminative Reranking"
+        },
+        {
+            "paperId": "d3b27746f7a53f2dc5d9b8c2f3d343313622ec36",
+            "title": "Online Large-Margin Training of Dependency Parsers"
+        },
+        {
+            "paperId": "2c72257ae7a4a32dc60569f4e1fe4504b2678112",
+            "title": "The Penn Chinese TreeBank: Phrase structure annotation of a large corpus"
+        },
+        {
+            "paperId": "41828fc3dab24784f95e6976e8aaa73f68e1840e",
+            "title": "Incremental Parsing with the Perceptron Algorithm"
+        },
+        {
+            "paperId": "3fc44ff7f37ec5585310666c183c65e0a0bb2446",
+            "title": "Head-Driven Statistical Models for Natural Language Parsing"
+        },
+        {
+            "paperId": "f0e1883cf9d1b3c911125f46359f908557fc5827",
+            "title": "Statistical Dependency Analysis with Support Vector Machines"
+        },
+        {
+            "paperId": "f4ba954b0412773d047dc41231c733de0c1f4926",
+            "title": "Conditional Random Fields: Probabilistic Models for Segmenting and Labeling Sequence Data"
+        },
+        {
+            "paperId": "76d5e3fa888bee872b7adb7fa810089aa8ab1d58",
+            "title": "A Maximum-Entropy-Inspired Parser"
+        },
+        {
+            "paperId": "0ffa423a5283396c88ff3d4033d541796bd039cc",
+            "title": "Three Generative, Lexicalised Models for Statistical Parsing"
+        },
+        {
+            "paperId": "54c846ee00c6132d70429cc279e8577f63ed05e4",
+            "title": "A Linear Observed Time Statistical Parser Based on Maximum Entropy Models"
+        },
+        {
+            "paperId": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+            "title": "Building a Large Annotated Corpus of English: The Penn Treebank"
+        },
+        {
+            "paperId": "ecf3a4cd2b2d721e823fd06b5c467c64e0fde5a8",
+            "title": "MaltParser: A Data-Driven Parser-Generator for Dependency Parsing"
+        },
+        {
+            "paperId": "31b4c03d721dc10b87c178277c1d369f91db8f0e",
+            "title": "Semi-Supervised Learning for Natural Language"
+        },
+        {
+            "paperId": "7bd0a04b0f0687896e765b48619a27ee545e86db",
+            "title": "On the parameter space of generative lexicalized statistical parsing models"
+        },
+        {
+            "paperId": "7846dc6537009a18b96a5292422cac7e63a44eb0",
+            "title": "Improve Chinese Parsing with MaxEnt Reranking Parser"
+        },
+        {
+            "paperId": "0374e1be848857b0a8aed57d4fd7d54943967361",
+            "title": "across Languages"
+        }
+    ]
+}

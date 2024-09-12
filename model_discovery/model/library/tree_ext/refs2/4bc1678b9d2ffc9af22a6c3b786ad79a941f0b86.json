@@ -1,0 +1,93 @@
+{
+    "paperId": "4bc1678b9d2ffc9af22a6c3b786ad79a941f0b86",
+    "externalIds": {
+        "DBLP": "conf/icml/GreeneC06",
+        "MAG": "2129250947",
+        "DOI": "10.1145/1143844.1143892",
+        "CorpusId": 8286427
+    },
+    "title": "Practical solutions to the problem of diagonal dominance in kernel document clustering",
+    "abstract": "In supervised kernel methods, it has been observed that the performance of the SVM classifier is poor in cases where the diagonal entries of the Gram matrix are large relative to the off-diagonal entries. This problem, referred to as diagonal dominance, often occurs when certain kernel functions are applied to sparse high-dimensional data, such as text corpora. In this paper we investigate the implications of diagonal dominance for unsupervised kernel methods, specifically in the task of document clustering. We propose a selection of strategies for addressing this issue, and evaluate their effectiveness in producing more accurate and stable clusterings.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2006,
+    "referenceCount": 14,
+    "citationCount": 541,
+    "influentialCitationCount": 42,
+    "openAccessPdf": {
+        "url": "https://www.cs.tcd.ie/publications/tech-reports/reports.06/TCD-CS-2006-04.pdf",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A selection of strategies for addressing the implications of diagonal dominance for unsupervised kernel methods in the task of document clustering are proposed, and their effectiveness in producing more accurate and stable clusterings is evaluated."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "40199774",
+            "name": "Derek Greene"
+        },
+        {
+            "authorId": "143709732",
+            "name": "P. Cunningham"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "749c328e9ef247b073f065837ffa8a79c8a9cce6",
+            "title": "Producing Accurate Interpretable Clusters from High-Dimensional Data"
+        },
+        {
+            "paperId": "aa77294d99496de0748d91a606e1e4141d5bd67c",
+            "title": "An extended kernel for generalized multiple-instance learning"
+        },
+        {
+            "paperId": "3022fa48187e3099c59f2afa62068bd68befe9e9",
+            "title": "Protein homology detection using string alignment kernels"
+        },
+        {
+            "paperId": "fc8cda36a0972e7de1ac3a7bcb81dc32da79bee4",
+            "title": "Learning with Kernels: Support Vector Machines, Regularization, Optimization, and Beyond"
+        },
+        {
+            "paperId": "a9c086c216968ba7b453b03841c723a1f41671ed",
+            "title": "Word-Sequence Kernels"
+        },
+        {
+            "paperId": "e48e58427bb7e5f00279d71bcca7f0723f5451f1",
+            "title": "Iterative clustering of high dimensional text data augmented by local search"
+        },
+        {
+            "paperId": "73475607051d59edd786feccb4eb80acb77349b7",
+            "title": "A Kernel Approach for Learning from Almost Orthogonal Patterns"
+        },
+        {
+            "paperId": "c900c66310a29bdb771270bb22440a4cf42958cb",
+            "title": "Advances in Large Margin Classifiers"
+        },
+        {
+            "paperId": "b6a3e0028d99439ce2741d0e147b6e9a34bc4267",
+            "title": "Input space versus feature space in kernel-based methods"
+        },
+        {
+            "paperId": "3f600e6c6cf93e78c9e6e690443d6d22c4bf18b9",
+            "title": "Nonlinear Component Analysis as a Kernel Eigenvalue Problem"
+        },
+        {
+            "paperId": "d4b68cd5b2594d0822c8abc549efc00588d2983b",
+            "title": "An Analysis of Transformation on Non - Positive Semidefinite Similarity Matrix for Kernel Machines"
+        },
+        {
+            "paperId": "0f28993f09606a3e3f6c5c9b6d17138f27d85069",
+            "title": "A Unified View of Kernel k-means , Spectral Clustering and Graph Cuts"
+        },
+        {
+            "paperId": "b8c282f76923d89e00dcd17ec425d496ade6ddc7",
+            "title": "Cluster Ensembles --- A Knowledge Reuse Framework for Combining Multiple Partitions"
+        },
+        {
+            "paperId": "fe3a39eaae3a19753a294524f08493f3b8751017",
+            "title": "A Resampling Approach to Cluster Validation"
+        }
+    ]
+}

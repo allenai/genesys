@@ -1,0 +1,102 @@
+{
+    "paperId": "8faad7901db9a73cacaf92ecdedbaece87d95f92",
+    "externalIds": {
+        "MAG": "1986007546",
+        "DBLP": "conf/kdd/DhillonGK04",
+        "DOI": "10.1145/1014052.1014118",
+        "CorpusId": 1018454
+    },
+    "title": "Kernel k-means: spectral clustering and normalized cuts",
+    "abstract": "Kernel k-means and spectral clustering have both been used to identify clusters that are non-linearly separable in input space. Despite significant research, these methods have remained only loosely related. In this paper, we give an explicit theoretical connection between them. We show the generality of the weighted kernel k-means objective function, and derive the spectral clustering objective of normalized cut as a special case. Given a positive definite similarity matrix, our results lead to a novel weighted kernel k-means algorithm that monotonically decreases the normalized cut. This has important implications: a) eigenvector-based algorithms, which can be computationally prohibitive, are not essential for minimizing normalized cuts, b) various techniques, such as local search and acceleration schemes, may be used to improve the quality as well as speed of kernel k-means. Finally, we present results on several interesting data sets, including diametrical clustering of large gene-expression matrices and a handwriting recognition data set.",
+    "venue": "Knowledge Discovery and Data Mining",
+    "year": 2004,
+    "referenceCount": 16,
+    "citationCount": 1329,
+    "influentialCitationCount": 91,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The generality of the weighted kernel k-means objective function is shown, and the spectral clustering objective of normalized cut is derived as a special case, leading to a novel weightedkernel k-Means algorithm that monotonically decreases the normalized cut."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1783667",
+            "name": "I. Dhillon"
+        },
+        {
+            "authorId": "1853389",
+            "name": "Yuqiang Guan"
+        },
+        {
+            "authorId": "1692670",
+            "name": "Brian Kulis"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "f312852b31a76bc09b59aca6e4017a9382f9cb39",
+            "title": "Clustering with Bregman Divergences"
+        },
+        {
+            "paperId": "32fad9f3b7ab236f326d6927c2965a01118e8e93",
+            "title": "Learning Spectral Clustering"
+        },
+        {
+            "paperId": "d08824dd86424f7a81f3e8f463f68a817b43aabe",
+            "title": "Multiclass spectral clustering"
+        },
+        {
+            "paperId": "5bda5ee334f1019e8469df2fb00e7c580f2265cd",
+            "title": "Diametrical clustering for identifying anti-correlated gene clusters"
+        },
+        {
+            "paperId": "e48e58427bb7e5f00279d71bcca7f0723f5451f1",
+            "title": "Iterative clustering of high dimensional text data augmented by local search"
+        },
+        {
+            "paperId": "7da07348d6fcb2b292da76285f3a371b02b8296b",
+            "title": "Mercer kernel-based clustering in feature space"
+        },
+        {
+            "paperId": "0e90a73f03902cbe915af1aff54ea7f0b3373680",
+            "title": "An Introduction to Support Vector Machines and Other Kernel-Based Learning Methods"
+        },
+        {
+            "paperId": "c02dfd94b11933093c797c362e2f8f6a3b9b8012",
+            "title": "On Spectral Clustering: Analysis and an algorithm"
+        },
+        {
+            "paperId": "01cbff216f2888f96151fb490338af40a09a0c30",
+            "title": "Spectral Relaxation for K-means Clustering"
+        },
+        {
+            "paperId": "f36bfb04f8ff4d10aaa204b5338d2234f05c97d2",
+            "title": "On clusterings-good, bad and spectral"
+        },
+        {
+            "paperId": "6ec7c724aa1d906e9e9f81c58497adddb22175b8",
+            "title": "An Introduction to Support Vector Machines and Other Kernel-based Learning Methods"
+        },
+        {
+            "paperId": "3f600e6c6cf93e78c9e6e690443d6d22c4bf18b9",
+            "title": "Nonlinear Component Analysis as a Kernel Eigenvalue Problem"
+        },
+        {
+            "paperId": "b94c7ff9532ab26c3aedbee3988ec4c7a237c173",
+            "title": "Normalized cuts and image segmentation"
+        },
+        {
+            "paperId": null,
+            "title": "Clustering with Bregman divergence. Proceeding of SIAM Data Mining conference"
+        },
+        {
+            "paperId": "764fb39acf057b52f9e1221f630e701ff56ea3b9",
+            "title": "Efficient Clustering of Very Large Document Collections"
+        },
+        {
+            "paperId": null,
+            "title": "Connection between weighted kernel k-means and spectral clustering"
+        }
+    ]
+}

@@ -1,0 +1,89 @@
+{
+    "paperId": "e8eaf8aedb495b6ae0e174eea11e3cfcdf4a3724",
+    "externalIds": {
+        "MAG": "2156150815",
+        "DBLP": "conf/icnn/HassibiSW93",
+        "DOI": "10.1109/ICNN.1993.298572",
+        "CorpusId": 61815367
+    },
+    "title": "Optimal Brain Surgeon and general network pruning",
+    "abstract": "The use of information from all second-order derivatives of the error function to perform network pruning (i.e., removing unimportant weights from a trained network) in order to improve generalization, simplify networks, reduce hardware or storage requirements, increase the speed of further training, and, in some cases, enable rule extraction, is investigated. The method, Optimal Brain Surgeon (OBS), is significantly better than magnitude-based methods and Optimal Brain Damage, which often remove the wrong weights. OBS, permits pruning of more weights than other methods (for the same error on the training set), and thus yields better generalization on test data. Crucial to OBS is a recursion relation for calculating the inverse Hessian matrix H/sup -1/ from training data and structural information of the set. OBS deletes the correct weights from a trained XOR network in every case.<<ETX>>",
+    "venue": "IEEE International Conference on Neural Networks",
+    "year": 1993,
+    "referenceCount": 12,
+    "citationCount": 714,
+    "influentialCitationCount": 48,
+    "openAccessPdf": {
+        "url": "https://authors.library.caltech.edu/records/tzehb-vz706/files/Optimal_Brain_Surgeon_and_general_network_pruning.pdf?download=1",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The use of information from all second-order derivatives of the error function to perform network pruning to improve generalization, simplify networks, reduce hardware or storage requirements, increase the speed of further training, and, in some cases, enable rule extraction is investigated."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1736279",
+            "name": "B. Hassibi"
+        },
+        {
+            "authorId": "2586918",
+            "name": "D. Stork"
+        },
+        {
+            "authorId": "20235001",
+            "name": "G. Wolff"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "6c0cbbd275bb43e09f0527a31ddd61824eca295b",
+            "title": "Introduction to the theory of neural computation"
+        },
+        {
+            "paperId": "a42954d4b9d0ccdf1036e0af46d87a01b94c3516",
+            "title": "Second Order Derivatives for Network Pruning: Optimal Brain Surgeon"
+        },
+        {
+            "paperId": "1b29884885401d12299a01b0eae099f425dd32e1",
+            "title": "Interpretation of Artificial Neural Networks: Mapping Knowledge-Based Neural Networks into Rules"
+        },
+        {
+            "paperId": "94c0418c4bd9d719e1203acfd42741ebbd343073",
+            "title": "The MONK''s Problems-A Performance Comparison of Different Learning Algorithms, CMU-CS-91-197, Sch"
+        },
+        {
+            "paperId": "5887de8eed53c444b2ef93d8ab9c8cc685cd7ac5",
+            "title": "A Frobenius approximation reduction method (FARM) for determining optimal number of hidden units"
+        },
+        {
+            "paperId": "319f22bd5abfd67ac15988aa5c7f705f018c3ccd",
+            "title": "Learning internal representations by error propagation"
+        },
+        {
+            "paperId": "d382b9c11e5c6a8e173fbeb442545e3be8d3e3a5",
+            "title": "Modeling By Shortest Data Description*"
+        },
+        {
+            "paperId": null,
+            "title": "Optimal Brain Surgeon, Inforination Theory and network capacity control"
+        },
+        {
+            "paperId": null,
+            "title": "Optinial Brain Damage, i n Proceedings of the Neural Information Processing Systenis-2"
+        },
+        {
+            "paperId": "e7297db245c3feb1897720b173a59fe7e36babb7",
+            "title": "Optimal Brain Damage"
+        },
+        {
+            "paperId": null,
+            "title": "Non-linear Regression 35-36"
+        },
+        {
+            "paperId": "de996c32045df6f7b404dda2a753b6a9becf3c08",
+            "title": "Parallel Networks that Learn to Pronounce English Text"
+        }
+    ]
+}

@@ -1,0 +1,82 @@
+{
+    "paperId": "a7621b4ec18719b08f3a2a444b6d37a2e20227b7",
+    "externalIds": {
+        "MAG": "2963340555",
+        "ArXiv": "1312.5851",
+        "DBLP": "journals/corr/MathieuHL13",
+        "CorpusId": 18233038
+    },
+    "title": "Fast Training of Convolutional Networks through FFTs",
+    "abstract": "Convolutional networks are one of the most widely employed architectures in computer vision and machine learning. In order to leverage their ability to learn complex functions, large amounts of data are required for training. Training a large convolutional network to produce state-of-the-art results can take weeks, even when using modern GPUs. Producing labels using a trained network can also be costly when dealing with web-scale datasets. In this work, we present a simple algorithm which accelerates training and inference by a significant factor, and can yield improvements of over an order of magnitude compared to existing state-of-the-art implementations. This is done by computing convolutions as pointwise products in the Fourier domain while reusing the same transformed feature map many times. The algorithm is implemented on a GPU architecture and addresses a number of related challenges.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2013,
+    "referenceCount": 11,
+    "citationCount": 577,
+    "influentialCitationCount": 60,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents a simple algorithm which accelerates training and inference by a significant factor, and can yield improvements of over an order of magnitude compared to existing state-of-the-art implementations."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "143949035",
+            "name": "Micha\u00ebl Mathieu"
+        },
+        {
+            "authorId": "39713408",
+            "name": "Mikael Henaff"
+        },
+        {
+            "authorId": "1688882",
+            "name": "Yann LeCun"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "d2c733e34d48784a37d717fe43d9e93277a8c53e",
+            "title": "ImageNet: A large-scale hierarchical image database"
+        },
+        {
+            "paperId": "b98c68f01d84ac07dc7fc51af782018070da748f",
+            "title": "Representing shape with a spatial pyramid kernel"
+        },
+        {
+            "paperId": "ed9db7b20e019cdb1c7db8b7921221ee2d9f36e2",
+            "title": "Learning Generative Visual Models from Few Training Examples: An Incremental Bayesian Approach Tested on 101 Object Categories"
+        },
+        {
+            "paperId": "602f31242e577d2d05f918a3080fd50095e7faed",
+            "title": "Factors in automatic musical genre classification of audio signals"
+        },
+        {
+            "paperId": "0e6beb95b5150ce99b108acdefabf70ccd3fee30",
+            "title": "An algorithm for the machine calculation of complex Fourier series"
+        },
+        {
+            "paperId": "b87274e6d9aa4e6ba5148898aa92941617d2b6ed",
+            "title": "Efficient BackProp"
+        },
+        {
+            "paperId": "3449b65008b27f6e60a73d80c1fd990f0481126b",
+            "title": "Torch7: A Matlab-like Environment for Machine Learning"
+        },
+        {
+            "paperId": "5aaf311172b9778d78f6904fbe40124c63463b57",
+            "title": "The Million Song Dataset"
+        },
+        {
+            "paperId": "f64fb2e5cfa86fe68e9c239557f440c412d02274",
+            "title": "Fast Face Detection using MLP and FFT"
+        },
+        {
+            "paperId": null,
+            "title": "We see that our method signi\ufb01cantly outperforms the other two in nearly all cases"
+        }
+    ]
+}

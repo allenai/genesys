@@ -1,0 +1,306 @@
+{
+    "paperId": "23effc082f2582b39e277dfc99bbce198cf36451",
+    "externalIds": {
+        "DBLP": "journals/corr/BolcskeiGKP17",
+        "ArXiv": "1705.01714",
+        "MAG": "2949799420",
+        "DOI": "10.1137/18M118709X",
+        "CorpusId": 4588577
+    },
+    "title": "Optimal Approximation with Sparsely Connected Deep Neural Networks",
+    "abstract": "We derive fundamental lower bounds on the connectivity and the memory requirements of deep neural networks guaranteeing uniform approximation rates for arbitrary function classes in $L^2(\\mathbb{R}^d)$. In other words, we establish a connection between the complexity of a function class and the complexity of deep neural networks approximating functions from this class to within a prescribed accuracy. Additionally, we prove that our lower bounds are achievable for a broad family of function classes. Specifically, all function classes that are optimally approximated by a general class of representation systems---so-called affine systems---can be approximated by deep neural networks with minimal connectivity and memory requirements. Affine systems encompass a wealth of representation systems from applied harmonic analysis such as wavelets, ridgelets, curvelets, shearlets, $\\alpha$-shearlets, and more generally $\\alpha$-molecules. Our central result elucidates a remarkable universality property of neural networks and shows that they achieve the optimum approximation properties of all affine systems combined. As a specific example, we consider the class of $\\alpha^{-1}$-cartoon-like functions, which is approximated optimally by $\\alpha$-shearlets. We also explain how our results can be extended to the case of functions on low-dimensional immersed manifolds. Finally, we present numerical experiments demonstrating that the standard stochastic gradient descent algorithm generates deep neural networks providing close-to-optimal approximation rates at minimal connectivity. Moreover, these results indicate that stochastic gradient descent can actually learn approximations that are sparse in the representation systems optimally sparsifying the function class the network is trained on.",
+    "venue": "SIAM Journal on Mathematics of Data Science",
+    "year": 2017,
+    "referenceCount": 65,
+    "citationCount": 239,
+    "influentialCitationCount": 14,
+    "openAccessPdf": {
+        "url": "https://epubs.siam.org/doi/pdf/10.1137/18M118709X",
+        "status": "GOLD"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "All function classes that are optimally approximated by a general class of representation systems---so-called affine systems---can be approximating by deep neural networks with minimal connectivity and memory requirements, and it is proved that the lower bounds are achievable for a broad family of function classes."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1691809",
+            "name": "H. B\u00f6lcskei"
+        },
+        {
+            "authorId": "1690644",
+            "name": "P. Grohs"
+        },
+        {
+            "authorId": "3125779",
+            "name": "Gitta Kutyniok"
+        },
+        {
+            "authorId": "31421135",
+            "name": "P. Petersen"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "725c4498e38a57729cf1a25992dbd720516a6055",
+            "title": "Deep Neural Network Approximation Theory"
+        },
+        {
+            "paperId": "1ed3a78ad829b016571fc21436bb0f934b2f128e",
+            "title": "Equivalence of approximation by convolutional neural networks and fully-connected networks"
+        },
+        {
+            "paperId": "7f402777746df1128acd10e3217c507fc67822ac",
+            "title": "Analysis of the generalization error: Empirical risk minimization over deep artificial neural networks overcomes the curse of dimensionality in the numerical approximation of Black-Scholes partial differential equations"
+        },
+        {
+            "paperId": "7484cce4b20c43debd6fc5f993b539001c47a97e",
+            "title": "Universal Approximations of Invariant Maps by Neural Networks"
+        },
+        {
+            "paperId": "8d4f727b181e14632b7dd15435e4f756e2926ad9",
+            "title": "Optimal approximation of piecewise smooth functions using deep ReLU neural networks"
+        },
+        {
+            "paperId": "4d74c808f5720eb9eb312f7be85be03bd7207071",
+            "title": "Error bounds for approximations with deep ReLU networks"
+        },
+        {
+            "paperId": "9e52ade2f71f358a5aa3852d9b410c6cc2cf01cc",
+            "title": "Deep vs. shallow networks : An approximation theory perspective"
+        },
+        {
+            "paperId": "7db73b56ca014d44b925ed6ad6d1fe18a774ecd1",
+            "title": "Convolutional Rectifier Networks as Generalized Tensor Decompositions"
+        },
+        {
+            "paperId": "846aedd869a00c09b40f1f1f35673cb22bc87490",
+            "title": "Mastering the game of Go with deep neural networks and tree search"
+        },
+        {
+            "paperId": "a9da71715d54e33959751c88bb69a5875a23e324",
+            "title": "The Power of Depth for Feedforward Neural Networks"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "8f083eff97e2f725080d2b6cb3a01c105b318b38",
+            "title": "Provable approximation properties for deep neural networks"
+        },
+        {
+            "paperId": "325e51cdb065666f3c9e21e70a823bbe33fefae7",
+            "title": "On the Expressive Power of Deep Learning: A Tensor Analysis"
+        },
+        {
+            "paperId": "3ad7b87cc4df2974f552d714ffd57cd27fc0038e",
+            "title": "Cartoon Approximation with \u03b1\\documentclass[12pt]{minimal} \\usepackage{amsmath} \\usepackage{wasysym} \\usepackage{amsfonts} \\usepackage{amssymb} \\usepackage{amsbsy} \\usepackage{mathrsfs} \\usepackage{upgreek} \\setlength{\\oddsidemargin}{-69pt} \\begin{document}$$\\alpha $$\\end{document}-Curvelets"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "8ad511f65520df29d435f504a8339f80bfdee5a6",
+            "title": "Parabolic Molecules"
+        },
+        {
+            "paperId": "36fdb789f3ad0cfa3fcc28a7ce461a9b66c34077",
+            "title": "Sparse Tensor Product Wavelet Approximation of Singular Functions"
+        },
+        {
+            "paperId": "433bfa2fb7185200ad928d0b6dc4afa17f459813",
+            "title": "Compactly supported shearlets are optimally sparse"
+        },
+        {
+            "paperId": "95129f7b8e7e3d6e02d26ad2e5c37b10510d70a4",
+            "title": "Molecules : Nucleation, aggregation and crystallization: Beyond medical and other implications"
+        },
+        {
+            "paperId": "04b23f577c20d1a0e2a67aadda555f58e6d23d6e",
+            "title": "Support vector machines"
+        },
+        {
+            "paperId": "26d7830947062978553dffdf21d4ffd307deac1c",
+            "title": "Wave atoms and sparsity of oscillatory patterns"
+        },
+        {
+            "paperId": "832f6a52920db02135d751c46c026a78ad16128c",
+            "title": "New tight frames of curvelets and optimal representations of objects with piecewise C2 singularities"
+        },
+        {
+            "paperId": "7b2dd79083a74699e4e0509ac3f0a8a302b4eabe",
+            "title": "On the mathematical foundations of learning"
+        },
+        {
+            "paperId": "b6803a4b9c7222be408a63a470ddd6aed677ec2d",
+            "title": "Tree Approximation and Optimal Encoding"
+        },
+        {
+            "paperId": "91e90a29064c836853ae57f71fd91b5c978f1002",
+            "title": "Ridgelets and the Representation of Mutilated Sobolev Functions"
+        },
+        {
+            "paperId": "8eb8f816752e96dfcd79948c2d6c12391320cc2e",
+            "title": "Lower Bounds on the Complexity of Approximating Continuous Functions by Sigmoidal Neural Networks"
+        },
+        {
+            "paperId": "3941a6adab4569190128068625dfa4250b5d303d",
+            "title": "Approximation of functions and their derivatives: A neural network implementation with applications"
+        },
+        {
+            "paperId": "4bdd1f845d26e488d67c0e4549cff17407b980ad",
+            "title": "Lower bounds for approximation by MLP neural networks"
+        },
+        {
+            "paperId": "6e37979d2a910e8a2337927731619fd789a5213b",
+            "title": "Approximation theory of the MLP model in neural networks"
+        },
+        {
+            "paperId": "9f6058c289adb7a91b1ddcc904ff23094edaa92f",
+            "title": "Nonlinear approximation"
+        },
+        {
+            "paperId": "5f2ec07ad74b8f687b12c535bd9202aebc8086ef",
+            "title": "Degree of Approximation by Neural and Translation Networks with a Single Hidden Layer"
+        },
+        {
+            "paperId": "88314173209c284cb2e66e9849bb76ef3b58fcf0",
+            "title": "Neural networks for localized approximation"
+        },
+        {
+            "paperId": "9130442c1c6bad0350f4c4ac750b87b87b158989",
+            "title": "Aspects of the numerical analysis of neural networks"
+        },
+        {
+            "paperId": "60ad4a043430cf503a2fbafbac8df377de62a39c",
+            "title": "Unconditional Bases Are Optimal Bases for Data Compression and for Statistical Estimation"
+        },
+        {
+            "paperId": "04113e8974341f97258800126d05fd8df2751b7e",
+            "title": "Universal approximation bounds for superpositions of a sigmoidal function"
+        },
+        {
+            "paperId": "9134c6e67cca05c93bf8a865b1960049c1064025",
+            "title": "Approximation properties of a multilayered feedforward artificial neural network"
+        },
+        {
+            "paperId": "ebf2bc6f41d19d5fe39f93006be5677d28db2ac1",
+            "title": "Approximation by superposition of sigmoidal and radial basis functions"
+        },
+        {
+            "paperId": "7e63bf9af3f70abd5771c06d459a0d3fbfbb2909",
+            "title": "Ten Lectures on Wavelets"
+        },
+        {
+            "paperId": "a9209f90c02a378720879a3bb93aa2f7181cf5f2",
+            "title": "Approximation and Estimation Bounds for Artificial Neural Networks"
+        },
+        {
+            "paperId": "d35f1e533b72370683d8fa2dabff5f0fc16490cc",
+            "title": "Approximation capabilities of multilayer feedforward networks"
+        },
+        {
+            "paperId": "8da1dda34ecc96263102181448c94ec7d645d085",
+            "title": "Approximation by superpositions of a sigmoidal function"
+        },
+        {
+            "paperId": "f22f6972e66bdd2e769fa64b0df0a13063c0c101",
+            "title": "Multilayer feedforward networks are universal approximators"
+        },
+        {
+            "paperId": "386cbc45ceb59a7abb844b5078e5c944f17723b4",
+            "title": "On the approximate realization of continuous mappings by neural networks"
+        },
+        {
+            "paperId": "fd6b44fde142686ed22836c4fdb4f6684a007028",
+            "title": "Modeles connexionnistes de l'apprentissage"
+        },
+        {
+            "paperId": "052b1d8ce63b07fec3de9dbb583772d860b7c769",
+            "title": "Learning representations by back-propagating errors"
+        },
+        {
+            "paperId": "99cf7894ba5961b828eab36a30facc180490aa30",
+            "title": "Real Analysis"
+        },
+        {
+            "paperId": "0800f8b1f48b6e09525270ddbfeb2ad550e3e97f",
+            "title": "Chaos In Dynamical Systems"
+        },
+        {
+            "paperId": "ed362097b434938359a7d06c4292212a7f59938c",
+            "title": "Foundations Of Time Frequency Analysis"
+        },
+        {
+            "paperId": "4f8d648c52edf74e41b0996128aa536e13cc7e82",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": "9f7cf8c49579d52a90508d031198fa36364b30d1",
+            "title": "Optimally Sparse Data Representations"
+        },
+        {
+            "paperId": "3ab3cdf7fb2916e6cf2031c6b95962c7c84d49ce",
+            "title": "Cartoon Approximation with $ \\ alpha $-Curvelets"
+        },
+        {
+            "paperId": "9952d4d5717afd4a27157ed8b98b0ee3dcb70d6c",
+            "title": "ImageNet Classification with Deep Convolutional Neural"
+        },
+        {
+            "paperId": "31868290adf1c000c611dfc966b514d5a34e8d23",
+            "title": "FUNDAMENTAL TECHNOLOGIES IN MODERN SPEECH RECOGNITION Digital Object Identifier 10.1109/MSP.2012.2205597"
+        },
+        {
+            "paperId": null,
+            "title": "Deep neural networks for acoustic modeling in speech recognition: The shared views of four research groups"
+        },
+        {
+            "paperId": "818a2e3ea21e22d637e8fcf222559e8942914b46",
+            "title": "Sparse Multidimensional Representations using Anisotropic Dilation and Shear Operators"
+        },
+        {
+            "paperId": "722c52711a8014694d68839f0ffc52ba8f7fc621",
+            "title": "Approximation and estimation bounds for artificial neural networks"
+        },
+        {
+            "paperId": "ba06decaa784655589ebe8109b3697cd7302abef",
+            "title": "Sparse Components of Images and Optimal Atomic Decompositions"
+        },
+        {
+            "paperId": null,
+            "title": "Ridgelets: Theory and Applications"
+        },
+        {
+            "paperId": "0e168de5975a9dfbe12837ef19a0366d938bc1d7",
+            "title": "Neural Networks for Optimal Approximation of Smooth and Analytic Functions"
+        },
+        {
+            "paperId": "b365b8e45b7d81f081de44ac8f9eadf9144f3ca5",
+            "title": "Regression Shrinkage and Selection via the Lasso"
+        },
+        {
+            "paperId": "b00b8538d266d83138068a63750d30afa95190b9",
+            "title": "Constructive Approximation"
+        },
+        {
+            "paperId": "090c5a5df345ab60c41d6de02b3e366e1a27cf43",
+            "title": "A logical calculus of the ideas immanent in nervous activity"
+        },
+        {
+            "paperId": "056d0b765ecee4f256bdfe5371064c87176d158f",
+            "title": "The Author Would like to Thank"
+        },
+        {
+            "paperId": null,
+            "title": "665044) within the H2020 Framework Program, DFG Grant"
+        },
+        {
+            "paperId": null,
+            "title": "Analysis sparsity versus synthesis sparsity for \u21b5-shearlets"
+        }
+    ]
+}

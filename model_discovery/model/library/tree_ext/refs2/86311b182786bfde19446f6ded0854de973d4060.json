@@ -1,0 +1,118 @@
+{
+    "paperId": "86311b182786bfde19446f6ded0854de973d4060",
+    "externalIds": {
+        "DBLP": "journals/corr/VinyalsL15",
+        "ArXiv": "1506.05869",
+        "MAG": "1591706642",
+        "CorpusId": 12300158
+    },
+    "title": "A Neural Conversational Model",
+    "abstract": "Conversational modeling is an important task in natural language understanding and machine intelligence. Although previous approaches exist, they are often restricted to specific domains (e.g., booking an airline ticket) and require hand-crafted rules. In this paper, we present a simple approach for this task which uses the recently proposed sequence to sequence framework. Our model converses by predicting the next sentence given the previous sentence or sentences in a conversation. The strength of our model is that it can be trained end-to-end and thus requires much fewer hand-crafted rules. We find that this straightforward model can generate simple conversations given a large conversational training dataset. Our preliminary results suggest that, despite optimizing the wrong objective function, the model is able to converse well. It is able extract knowledge from both a domain specific dataset, and from a large, noisy, and general domain dataset of movie subtitles. On a domain-specific IT helpdesk dataset, the model can find a solution to a technical problem via conversations. On a noisy open-domain movie transcript dataset, the model can perform simple forms of common sense reasoning. As expected, we also find that the lack of consistency is a common failure mode of our model.",
+    "venue": "arXiv.org",
+    "year": 2015,
+    "referenceCount": 21,
+    "citationCount": 1734,
+    "influentialCitationCount": 151,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A simple approach to conversational modeling which uses the recently proposed sequence to sequence framework, and is able to extract knowledge from both a domain specific dataset, and from a large, noisy, and general domain dataset of movie subtitles."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1689108",
+            "name": "O. Vinyals"
+        },
+        {
+            "authorId": "2827616",
+            "name": "Quoc V. Le"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "5247a6e3a60ff0381355e66bfc313bf27512ae0c",
+            "title": "A Neural Network Approach to Context-Sensitive Generation of Conversational Responses"
+        },
+        {
+            "paperId": "ba49d3823d43515e447296ca4e1e55d3f1fd8c4d",
+            "title": "Neural Responding Machine for Short-Text Conversation"
+        },
+        {
+            "paperId": "47570e7f63e296f224a0e7f9a0d08b0de3cbaf40",
+            "title": "Grammar as a Foreign Language"
+        },
+        {
+            "paperId": "1938624bb9b0f999536dcc8d8f519810bb4e1b3b",
+            "title": "On Using Very Large Target Vocabulary for Neural Machine Translation"
+        },
+        {
+            "paperId": "d4dc1012d780e8e2547237eb5a6dc7b1bf47d2f0",
+            "title": "Show and tell: A neural image caption generator"
+        },
+        {
+            "paperId": "1956c239b3552e030db1b78951f64781101125ed",
+            "title": "Addressing the Rare Word Problem in Neural Machine Translation"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "944a1cfd79dbfb6fef460360a0765ba790f4027a",
+            "title": "Recurrent Continuous Translation Models"
+        },
+        {
+            "paperId": "fbd201207e51f50f14235c5ea864ccccb6425325",
+            "title": "News from OPUS \u2014 A collection of multilingual parallel corpora with tools and interfaces"
+        },
+        {
+            "paperId": "86b364532df8e93b7d304b9490607bf3f79df735",
+            "title": "Extracting Chatbot Knowledge from Online Discussion Forums"
+        },
+        {
+            "paperId": "6c2b28f9354f667cd5bd07afc0471d8334430da7",
+            "title": "A Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "894149cb66e8af4a20c82840ea3f774888644fa6",
+            "title": "Speech and language processing: an introduction to natural language processing, computational linguistics, and speech recognition, 2nd Edition"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "3a4a80d3737c224bb38293754ff9e9715de5c34a",
+            "title": "Conversational Agents"
+        },
+        {
+            "paperId": "2d5673caa9e6af3a7b82a43f19ee920992db07ad",
+            "title": "Computing Machinery and Intelligence"
+        },
+        {
+            "paperId": "96364af2d208ea75ca3aeb71892d2f7ce7326b55",
+            "title": "Statistical Language Models Based on Neural Networks"
+        },
+        {
+            "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+            "title": "Recurrent neural network based language model"
+        },
+        {
+            "paperId": null,
+            "title": "Creating a Dynamic Speech Dialogue. VDM Verlag Dr"
+        },
+        {
+            "paperId": "f80f21703bd867e11e3334d41daa86c923d99961",
+            "title": "Conversational Agents"
+        },
+        {
+            "paperId": "de42b848775f9fa1e4bff758ae04a54099c0c381",
+            "title": "and Machine"
+        }
+    ]
+}

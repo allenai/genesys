@@ -1,0 +1,354 @@
+{
+    "paperId": "0d3c46a3cbfe06cec259fec954b6ff6df6c1a566",
+    "externalIds": {
+        "MAG": "2951626821",
+        "ArXiv": "1805.08315",
+        "DBLP": "journals/corr/abs-1805-08315",
+        "DOI": "10.32470/CCN.2018.1116-0",
+        "CorpusId": 46896043
+    },
+    "title": "Learning long-range spatial dependencies with horizontal gated-recurrent units",
+    "abstract": "Progress in deep learning has spawned great successes in many engineering applications. As a prime example, convolutional neural networks, a type of feedforward neural networks, are now approaching -- and sometimes even surpassing -- human accuracy on a variety of visual recognition tasks. Here, however, we show that these neural networks and their recent extensions struggle in recognition tasks where co-dependent visual features must be detected over long spatial ranges. We introduce the horizontal gated-recurrent unit (hGRU) to learn intrinsic horizontal connections -- both within and across feature columns. We demonstrate that a single hGRU layer matches or outperforms all tested feedforward hierarchical baselines including state-of-the-art architectures which have orders of magnitude more free parameters. We further discuss the biological plausibility of the hGRU in comparison to anatomical data from the visual cortex as well as human behavioral data on a classic contour detection task.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2018,
+    "referenceCount": 77,
+    "citationCount": 137,
+    "influentialCitationCount": 14,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1805.08315",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces the horizontal gated-recurrent unit (hGRU) to learn intrinsic horizontal connections -- both within and across feature columns, and demonstrates that a single hGRU layer matches or outperforms all tested feedforward hierarchical baselines including state-of-the-art architectures which have orders of magnitude more free parameters."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "46500310",
+            "name": "Drew Linsley"
+        },
+        {
+            "authorId": "118691416",
+            "name": "Junkyung Kim"
+        },
+        {
+            "authorId": "2066265305",
+            "name": "Vijay Veerabadran"
+        },
+        {
+            "authorId": "1981539",
+            "name": "Thomas Serre"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "0e6f5c774ca085c4aaf1c3c0af484db4b30c7990",
+            "title": "Complementary Surrounds Explain Diverse Contextual Phenomena Across Visual Modalities"
+        },
+        {
+            "paperId": "6d86a97a7b392baac602a8df7224cb83880b071f",
+            "title": "Task-Driven Convolutional Recurrent Models of the Visual System"
+        },
+        {
+            "paperId": "e4a7e92be7865cebe78ad3ebb46c80789c92d473",
+            "title": "Not-So-CLEVR: learning same\u2013different relations strains feedforward neural networks"
+        },
+        {
+            "paperId": "0e9822e6c78b752f13ccf2943a8e41f9997f4a22",
+            "title": "Can recurrent neural networks warp time?"
+        },
+        {
+            "paperId": "41a4e39dcccac800663f371b6329baf0158ba23d",
+            "title": "Not-So-CLEVR: Visual Relations Strain Feedforward Neural Networks"
+        },
+        {
+            "paperId": "3e00dd86c084d8680409c65c1a48f1b3aa864eb7",
+            "title": "Deep Crisp Boundaries: From Boundaries to Higher-Level Tasks"
+        },
+        {
+            "paperId": "1fe7ce8e3eec85c9a35f213044d1fa3e855c3897",
+            "title": "A generative vision model that trains with high data efficiency and breaks text-based CAPTCHAs"
+        },
+        {
+            "paperId": "8899094797e82c5c185a0893896320ef77f60e64",
+            "title": "Non-local Neural Networks"
+        },
+        {
+            "paperId": "d5579b2708a1c713e1b2feb8646533ce26085a3a",
+            "title": "Effective Use of Dilated Convolutions for Segmenting Small Object Instances in Remote Sensing Imagery"
+        },
+        {
+            "paperId": "3200f16b17de93b3cc44d3fc71c582c79eb91180",
+            "title": "Dilated Deep Residual Network for Image Denoising"
+        },
+        {
+            "paperId": "e3bd8955b74cb9b5a37a90bd7da54142728c5bcf",
+            "title": "Deep Crisp Boundaries"
+        },
+        {
+            "paperId": "ffdc37284a87a4c0d09d6804253acc94ae9685a1",
+            "title": "Do Deep Neural Networks Suffer from Crowding?"
+        },
+        {
+            "paperId": "1769ea9fe562e5628053ac3c76530d8d0bb74dc9",
+            "title": "Recurrent Convolutional Neural Networks: A Better Model of Biological Object Recognition"
+        },
+        {
+            "paperId": "21330285593da35ae24196f7fa4b145e06f6facc",
+            "title": "Feedback Networks"
+        },
+        {
+            "paperId": "1bbf746cca4bcafd274d197ac9fae82b245bf97b",
+            "title": "Richer Convolutional Features for Edge Detection"
+        },
+        {
+            "paperId": "e3ff617a7ad702396f36e08aa03625db3a18a4ff",
+            "title": "Convolutional gated recurrent networks for video segmentation"
+        },
+        {
+            "paperId": "d145edb79ec035d6cf3f50714429f51fb18f0a2f",
+            "title": "Learning Long-Term Dependencies for Action Recognition with a Biologically-Inspired Deep Network"
+        },
+        {
+            "paperId": "352afab390e4e783566c9b93484adec40ee30644",
+            "title": "Opponent surrounds explain diversity of contextual phenomena across visual modalities"
+        },
+        {
+            "paperId": "71b79d98256c0b122fd452efde8caaf97d1dcbcc",
+            "title": "Convolutional Oriented Boundaries: From Image Segmentation to High-Level Tasks"
+        },
+        {
+            "paperId": "cab372bc3824780cce20d9dd1c22d4df39ed081a",
+            "title": "DeepLab: Semantic Image Segmentation with Deep Convolutional Nets, Atrous Convolution, and Fully Connected CRFs"
+        },
+        {
+            "paperId": "4954fa180728932959997a4768411ff9136aac81",
+            "title": "TensorFlow: A system for large-scale machine learning"
+        },
+        {
+            "paperId": "ad367b44f3434b9ba6b46b41ab083210f6827a9f",
+            "title": "Deep Predictive Coding Networks for Video Prediction and Unsupervised Learning"
+        },
+        {
+            "paperId": "aaf08e37bcd0f4624d8eb04f301bfa98b0456641",
+            "title": "Bridging the Gaps Between Residual Learning, Recurrent Neural Networks and Visual Cortex"
+        },
+        {
+            "paperId": "952454718139dba3aafc6b3b67c4f514ac3964af",
+            "title": "Recurrent Batch Normalization"
+        },
+        {
+            "paperId": "77f0a39b8e02686fd85b01971f8feb7f60971f80",
+            "title": "Identity Mappings in Deep Residual Networks"
+        },
+        {
+            "paperId": "41f1d50c85d3180476c4c7b3eea121278b0d8474",
+            "title": "Pixel Recurrent Neural Networks"
+        },
+        {
+            "paperId": "adc4e63b58cf4092420533fd877b8c29f8e2ec1d",
+            "title": "Inside-Outside Net: Detecting Objects in Context with Skip Pooling and Recurrent Neural Networks"
+        },
+        {
+            "paperId": "bf994e3be0c0db0f1769c2ea204d150902585335",
+            "title": "Unsupervised Learning by Program Synthesis"
+        },
+        {
+            "paperId": "7f5fc84819c0cf94b771fe15141f65b123f7b8ec",
+            "title": "Multi-Scale Context Aggregation by Dilated Convolutions"
+        },
+        {
+            "paperId": "86da68568ad3c22154f56f4f821ba7954109c11c",
+            "title": "Pushing the Boundaries of Boundary Detection using Deep Learning"
+        },
+        {
+            "paperId": "ed95c6bcdc16fb1f68b20d5bcd15c4aca4d0abde",
+            "title": "Delving Deeper into Convolutional Networks for Learning Video Representations"
+        },
+        {
+            "paperId": "06c06885fd53b2cbd407704cf14f658842ed48e5",
+            "title": "Deeply-Recursive Convolutional Network for Image Super-Resolution"
+        },
+        {
+            "paperId": "b0c065cd43aa7280e766b5dcbcc7e26abce59330",
+            "title": "SegNet: A Deep Convolutional Encoder-Decoder Architecture for Image Segmentation"
+        },
+        {
+            "paperId": "f267934e9de60c5badfa9d3f28918e67ae7a2bf4",
+            "title": "Generative Image Modeling Using Spatial LSTMs"
+        },
+        {
+            "paperId": "91768b21a2f8a65f1dede87adb0cec2b621ce1f9",
+            "title": "Modeling local and global deformations in Deep Learning: Epitomic convolution, Multiple Instance Learning, and sliding window detection"
+        },
+        {
+            "paperId": "4b39a79a1dc8e578e38ee4b7f00b4ec9ded50dd0",
+            "title": "Recurrent convolutional neural network for object recognition"
+        },
+        {
+            "paperId": "6364fdaa0a0eccd823a779fcdd489173f938e91a",
+            "title": "U-Net: Convolutional Networks for Biomedical Image Segmentation"
+        },
+        {
+            "paperId": "e0945081b5b87187a53d4329cf77cd8bff635795",
+            "title": "Highway Networks"
+        },
+        {
+            "paperId": "7e463877264e70d53c844cf4b1bf3b15baec8cfb",
+            "title": "ReNet: A Recurrent Neural Network Based Alternative to Convolutional Networks"
+        },
+        {
+            "paperId": "8da55e685a7bef9c897788ab519a8710c695c419",
+            "title": "Holistically-Nested Edge Detection"
+        },
+        {
+            "paperId": "ca5c766b2d31a1f5ce8896a0a42b40a2bff9323a",
+            "title": "Conditional Random Fields as Recurrent Neural Networks"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "d6f2f611da110b5b5061731be3fc4c7f45d8ee23",
+            "title": "Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification"
+        },
+        {
+            "paperId": "7cd592f2201a54ec958df5ba141a9be0e796b788",
+            "title": "The Stabilized Supralinear Network: A Unifying Circuit Motif Underlying Multi-Input Integration in Sensory Cortex"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "4543670c4b2d88a9b67525e0084044adef94ae76",
+            "title": "Deep neural networks are easily fooled: High confidence predictions for unrecognizable images"
+        },
+        {
+            "paperId": "6fc6803df5f9ae505cae5b2f178ade4062c768d0",
+            "title": "Fully convolutional networks for semantic segmentation"
+        },
+        {
+            "paperId": "fb91db6aa4f710814f8aec28a7f3ecbc4e5ad4fd",
+            "title": "Deeply-Supervised Nets"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "90295df100f62bbc762d616f2d0a524fc44b0164",
+            "title": "Stereo, Shading, and Surfaces: Curvature Constraints Couple Neural Computations"
+        },
+        {
+            "paperId": "d891dc72cbd40ffaeefdc79f2e7afe1e530a23ad",
+            "title": "Intriguing properties of neural networks"
+        },
+        {
+            "paperId": "c36a411efba48afb635ebb69891733cd815882f4",
+            "title": "Top-down influences on visual processing"
+        },
+        {
+            "paperId": "0d54968e920f05434ed9261a23f7f69043e9a391",
+            "title": "Different Orientation Tuning of Near- and Far-Surround Suppression in Macaque Primary Visual Cortex Mirrors Their Tuning in Human Perception"
+        },
+        {
+            "paperId": "66b70617b4bf661152583a481096aa6741923cd4",
+            "title": "Strong Recurrent Networks Compute the Orientation Tuning of Surround Modulation in the Primate Primary Visual Cortex"
+        },
+        {
+            "paperId": "7d155b4eeb2bb7c3d8938fcb77d6c9d625933ec1",
+            "title": "Neural circuit models for computations in early visual cortex"
+        },
+        {
+            "paperId": "6e104cff36ced7c3bbc3d5b0b8c3c315653a66f3",
+            "title": "Incremental grouping of image elements in vision"
+        },
+        {
+            "paperId": "0e5a262bf59b68ba8a7a1103d16fa33a9f5ffc28",
+            "title": "Contour Detection and Hierarchical Image Segmentation"
+        },
+        {
+            "paperId": "24459451bc8a4a378b02463db4e11490191219ed",
+            "title": "Parallel and serial grouping of image elements in visual perception."
+        },
+        {
+            "paperId": "ea9d2a2b4ce11aaf85136840c65f3bc9c03ab649",
+            "title": "Understanding the difficulty of training deep feedforward neural networks"
+        },
+        {
+            "paperId": "849bddd97a8332488639a4ffd622c500bc0d8387",
+            "title": "Surround suppression of V1 neurons mediates orientation-based representation of high-order visual features."
+        },
+        {
+            "paperId": "035d9d29b06520eeba1814e7a23cbe6621b2c40e",
+            "title": "Learning to Link Visual Contours"
+        },
+        {
+            "paperId": "68a445e3773782b620301787e355c599bab00f62",
+            "title": "PsychoPy\u2014Psychophysics software in Python"
+        },
+        {
+            "paperId": "f70ae50828e3b6166628f5e8edb239b1cca6b471",
+            "title": "Multi-dimensional Recurrent Neural Networks"
+        },
+        {
+            "paperId": "ab8ea7a43aabe37b8191098c177e5fb3173161fb",
+            "title": "Contour Saliency in Primary Visual Cortex"
+        },
+        {
+            "paperId": "83fa51c8ca9144361d4ba26152e7cfa27d5c5649",
+            "title": "Learning to detect natural image boundaries using local brightness, color, and texture cues"
+        },
+        {
+            "paperId": "9505fbfb05329fa9d0613be25703f4f85c837e9b",
+            "title": "Geometrical Computations Explain Projection Patterns of Long-Range Horizontal Connections in Visual Cortex"
+        },
+        {
+            "paperId": "48f498634ea9064b2c33cca3450c5516f3410201",
+            "title": "The \u201csilent\u201d surround of V1 receptive fields: theory and experiments"
+        },
+        {
+            "paperId": "f7b7bcc21c93d6be29230f959b2c9899d06f20a3",
+            "title": "Lateral Connectivity and Contextual Interactions in Macaque Primary Visual Cortex"
+        },
+        {
+            "paperId": "9b2485cd93417a5bc8a05d94bb7e56c0cb48e566",
+            "title": "Global contour saliency and local colinear interactions."
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "08d157352dbc79c1865c8ab47af5ed3569894e88",
+            "title": "The role of edges and line-ends in illusory contour formation"
+        },
+        {
+            "paperId": "4bc789a006fa0b8a1e4f2cf51c021328fc8886cc",
+            "title": "Contour integration by the human visual system: Evidence for a local \u201cassociation field\u201d"
+        },
+        {
+            "paperId": "3eba61a546179893c5e6b3cfec4f2a504b425a9c",
+            "title": "Neural dynamics of perceptual grouping: Textures, boundaries, and emergent segmentations"
+        },
+        {
+            "paperId": "3b307f3c449b1f7d95f547977df773f98367bdcf",
+            "title": "Intrinsic laminar lattice connections in primate visual cortex"
+        },
+        {
+            "paperId": null,
+            "title": "2015, February). Deeply-Supervised nets. In Artificial intelligence and statistics (pp. 562\u2013570)"
+        },
+        {
+            "paperId": "c08d0525bd42fa1c24f9f5df72f4c8fcf7063b22",
+            "title": "Offline Handwriting Recognition with Multidimensional Recurrent Neural Networks"
+        }
+    ]
+}

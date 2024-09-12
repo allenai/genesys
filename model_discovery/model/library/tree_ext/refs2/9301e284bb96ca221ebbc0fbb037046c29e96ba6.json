@@ -1,0 +1,379 @@
+{
+    "paperId": "9301e284bb96ca221ebbc0fbb037046c29e96ba6",
+    "externalIds": {
+        "DBLP": "journals/corr/abs-cs-0612077",
+        "MAG": "3025322015",
+        "ArXiv": "cs/0612077",
+        "DOI": "10.1109/TSP.2008.925261; 10.1109/TSP.2008.925259; 10.1109/TSP.2012.2186133",
+        "CorpusId": 15545900
+    },
+    "title": "Algebraic Signal Processing Theory",
+    "abstract": "This paper presents an algebraic theory of linear signal processing. At the core of algebraic signal processing is the concept of a linear signal model defined as a triple (A, M, phi), where familiar concepts like the filter space and the signal space are cast as an algebra A and a module M, respectively, and phi generalizes the concept of the z-transform to bijective linear mappings from a vector space of, e.g., signal samples, into the module M. A signal model provides the structure for a particular linear signal processing application, such as infinite and finite discrete time, or infinite or finite discrete space, or the various forms of multidimensional linear signal processing. As soon as a signal model is chosen, basic ingredients follow, including the associated notions of filtering, spectrum, and Fourier transform. The shift operator is a key concept in the algebraic theory: it is the generator of the algebra of filters A. Once the shift is chosen, a well-defined methodology leads to the associated signal model. Different shifts correspond to infinite and finite time models with associated infinite and finite z-transforms, and to infinite and finite space models with associated infinite and finite C-transforms (that we introduce). In particular, we show that the 16 discrete cosine and sine transforms are Fourier transforms for the finite space models. Other definitions of the shift naturally lead to new signal models and to new transforms as associated Fourier transforms in one and higher dimensions, separable and non-separable. We explain in algebraic terms shift-invariance (the algebra of filters A is commutative), the role of boundary conditions and signal extensions, the connections between linear transforms and linear finite Gauss-Markov fields, and several other concepts and connections.",
+    "venue": "arXiv.org",
+    "year": 2006,
+    "referenceCount": 86,
+    "citationCount": 76,
+    "influentialCitationCount": 9,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The role of boundary conditions and signal extensions, the connections between linear transforms and linear finite Gauss-Markov fields, and several other concepts and connections are explained in algebraic terms."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1690697",
+            "name": "Markus P\u00fcschel"
+        },
+        {
+            "authorId": "144915495",
+            "name": "Jos\u00e9 M. F. Moura"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "4a6b67b40b84c647916faa0a5e6ee3023f65b085",
+            "title": "Symmetry-based matrix factorization"
+        },
+        {
+            "paperId": "2c75d939186c65ec044138334fc74532a4b2fc64",
+            "title": "The Algebraic Approach to the Discrete Cosine and Sine Transforms and Their Fast Algorithms"
+        },
+        {
+            "paperId": "379713ae114b57e7e259a364beb1ca1bbcf91c41",
+            "title": "Cooley-Tukey FFT like algorithms for the DCT"
+        },
+        {
+            "paperId": "69e90d2531ec4bbd4bbe4ea1d49e1a53e7dc457d",
+            "title": "Decomposing Monomial Representations of Solvable Groups"
+        },
+        {
+            "paperId": "37d8e1bac21fb73e598d46677c5a8b9463bc4a2f",
+            "title": "Representations and Characters of Groups"
+        },
+        {
+            "paperId": "fbeb8dd4d5e9a8187e5f32e0027df3728236302b",
+            "title": "Automatic generation of fast discrete signal transforms"
+        },
+        {
+            "paperId": "934132ace4e241a21914f1f8e2d1994b13a67a90",
+            "title": "Representation theory for high-rate multiple-antenna code design"
+        },
+        {
+            "paperId": "a67dee08d90e7733060d25ed111402ea8c8e725b",
+            "title": "Image Analysis by Tchebichef Moments"
+        },
+        {
+            "paperId": "dcdfa9e07aab63806d87b64197dc45ca1e1d07bc",
+            "title": "Double coset decompositions and computational harmonic analysis on groups"
+        },
+        {
+            "paperId": "26833ec0ee3ccf651884ddc8d719f51e327133b8",
+            "title": "The fast generalized discrete Fourier transforms: A unified approach to the discrete sinusoidal transforms computation"
+        },
+        {
+            "paperId": "fb5b2c8dac6f0c2cbfdc749340ce884de36a5068",
+            "title": "Fast algorithms for discrete polynomial transforms"
+        },
+        {
+            "paperId": "3d6d28c7cc7e9fbf90da5212267c1fa4b66820c8",
+            "title": "A representation theorem for linear systems"
+        },
+        {
+            "paperId": "ab3976cc49b61845c54b5babbb0e0e011c85edc9",
+            "title": "Fast Discrete Polynomial Transforms with Applications to Data Analysis for Distance Transitive Graphs"
+        },
+        {
+            "paperId": "46b15fae0960101c974429eaef2b0f51f289695f",
+            "title": "Displacement-structure approach to polynomial Vandermonde and related matrices"
+        },
+        {
+            "paperId": "44247f035e2fa4518217c52a7de210ac86edc805",
+            "title": "The discrete Laguerre transform: derivation and applications"
+        },
+        {
+            "paperId": "a82bd8eb033cf111adc4a44c6fa1f23d16bf8ad5",
+            "title": "Displacement structure approach to discrete-trigonometric-transform based preconditioners of G.Strang type and of T.Chan type"
+        },
+        {
+            "paperId": "3740988cbdb34494b0a1b4893dfabaaabe71aa6f",
+            "title": "A Polynomial Approach to Linear Algebra"
+        },
+        {
+            "paperId": "6e21e28060684fdc1cf32ea05c8b64b5eb17752e",
+            "title": "Generalized FFT's- A survey of some recent results"
+        },
+        {
+            "paperId": "7b6107a3d6849ae2bb32e8e4bd5604d1c0bdef8e",
+            "title": "Diagonalizing properties of the discrete cosine transforms"
+        },
+        {
+            "paperId": "f0429d6d7012eb9a3d5a4b7ec44059a72c42452e",
+            "title": "Unification of Legendre, Laguerre, Hermite, and binomial discrete transforms using Pascal's matrix"
+        },
+        {
+            "paperId": "cc9d149de3077ff8bd2712ffd07dc64a561561a7",
+            "title": "Computing Fourier Transforms and Convolutions on the 2-Sphere"
+        },
+        {
+            "paperId": "970036bbae871db775b39c86c8368b5290b62b2b",
+            "title": "Basefield transforms with the convolution property"
+        },
+        {
+            "paperId": "d01b68a54e2be36214681b30c91d991725a351ea",
+            "title": "Mathematics of Multidimensional Fourier Transform Algorithms"
+        },
+        {
+            "paperId": "c0ae841f6aa11e8d32446fd9e3e18804b7667f1a",
+            "title": "Symmetric convolution and the discrete sine and cosine transforms"
+        },
+        {
+            "paperId": "94db7e7426b60356ff3d6580008ab3184d19d4f5",
+            "title": "Recursive structure of noncausal Gauss-Markov random fields"
+        },
+        {
+            "paperId": "dc52ef13f2f5052be91ece69ee58f3c7c59fd9f6",
+            "title": "The Hermite transform-theory"
+        },
+        {
+            "paperId": "d5277e876b58db2814f89c0b0d072752b600e618",
+            "title": "Fast Fourier analysis for abelian group extensions"
+        },
+        {
+            "paperId": "e265052e44a88c8282d8243b23399774fed6f21b",
+            "title": "Algorithms for Discrete Fourier Transform and Convolution"
+        },
+        {
+            "paperId": "0a965cda1cfde969fbd35c0076219b7057df0ef1",
+            "title": "Fast Generalized Fourier Transforms"
+        },
+        {
+            "paperId": "adebd060249d1d50690c021f3b95e81ce85a5721",
+            "title": "A Generalization of Spectral Analysis with Application to Ranked Data"
+        },
+        {
+            "paperId": "cad64a0cfcc1758e99d35e5b0c5c089a31667f36",
+            "title": "A new orthogonal transform for signal coding"
+        },
+        {
+            "paperId": "f179e3752dbbf70db0fbb1d1733d7219277f9c7e",
+            "title": "Probability, Random Processes, And Ergodic Properties"
+        },
+        {
+            "paperId": "df564e56b604edb40de23b3b8049ec7064b844fb",
+            "title": "On the Computational Complexity of the General Discrete Fourier Transform"
+        },
+        {
+            "paperId": "1790fe007bc1ab161a1ea814748b42e3acbdc958",
+            "title": "Gauss and the history of the fast Fourier transform"
+        },
+        {
+            "paperId": "475376a8ef4b013cc8f18ca00b3deca062bf154c",
+            "title": "Abelian semi-simple algebras and algorithms for the Discrete Fourier Transform"
+        },
+        {
+            "paperId": "4d7c795dd42fb2b6f7e1f9c67fda7cad124a107c",
+            "title": "Discrete Hartley transform"
+        },
+        {
+            "paperId": "3b4851562af180f7658713bfe3441fcc98c74105",
+            "title": "A fast algorithm for the discrete sine transform implemented by the fast cosine transform"
+        },
+        {
+            "paperId": "12cc0e628f8a3e24bf73c1aca333b06a7cd56295",
+            "title": "Fourier series : a modern introduction"
+        },
+        {
+            "paperId": "0de45c67d9bc07bcec38b84d72dd1ad8c8980ef2",
+            "title": "Harmonic analysis with a real frequency function. III. Data sequence"
+        },
+        {
+            "paperId": "8a94c708c7b23da1aeeb438e248832ed4a564c0a",
+            "title": "Harmonic analysis with a real frequency function\u2014I. aperiodic case"
+        },
+        {
+            "paperId": "57923211710a9684f7156b8dc6ebd8dc0dba0e55",
+            "title": "An Introduction to Orthogonal Polynomials"
+        },
+        {
+            "paperId": "9bcd06239b74bcf76a0a5af729b41fde7b4299fa",
+            "title": "Asymptotic Properties of Discrete Unitary Transforms"
+        },
+        {
+            "paperId": "986c2fbf3f188a77376b8aaabd748a717cec7809",
+            "title": "Fast computation of discrete Fourier transforms using polynomial transforms"
+        },
+        {
+            "paperId": "9e96780d5f19d9adc49595ccd07e67798f6cb0a2",
+            "title": "Fast Fourier Transforms on Finite Non-Abelian Groups"
+        },
+        {
+            "paperId": "cdc26296cebb4a4025069098908beb1f394f05dc",
+            "title": "Algebraic system theory: an analyst's point of view"
+        },
+        {
+            "paperId": "7af534a971b05b26b9758cdb7253b849d0de956e",
+            "title": "On computing the Discrete Fourier Transform."
+        },
+        {
+            "paperId": "ca8baf5e5b1099bb5ef87d9c6aaa94bc17a694e6",
+            "title": "One-dimensional and two-dimensional generalised discrete fourier transforms"
+        },
+        {
+            "paperId": "ab15d160bc545ece06227eae15d648ea45b1df21",
+            "title": "Complexity of Computation"
+        },
+        {
+            "paperId": "992619c8711f423294c5f7bf2ff693d88ebad070",
+            "title": "Topics in mathematical system theory"
+        },
+        {
+            "paperId": "4a78f7ebf16b82b16e43a2584cacdf0b57689072",
+            "title": "Controllability, observability, pole allocation, and state reconstruction"
+        },
+        {
+            "paperId": "5ad17b77496c98827aa1cb4be7e5c6cc16284f5e",
+            "title": "Algebraic Theory of Finite Fourier Transforms"
+        },
+        {
+            "paperId": "83d32a58f5da1d9e60fbc627118b9418ad2378c1",
+            "title": "On the Fast Fourier Transform on Finite Abelian Groups"
+        },
+        {
+            "paperId": "179a355b764d7997648eff1513093e5662315734",
+            "title": "Calculation of Fourier transforms on finite Abelian groups (Corresp.)"
+        },
+        {
+            "paperId": "5928c6f49e19f1501d841fe6dcde9ac6416f743f",
+            "title": "Decoupling and Pole Assignment in Linear Multivariable Systems: A Geometric Approach"
+        },
+        {
+            "paperId": "b58dd798a400c0860db2ea639be40d16c0f579e9",
+            "title": "Controlled and conditioned invariant subspaces in linear system theory"
+        },
+        {
+            "paperId": "0e6beb95b5150ce99b108acdefabf70ccd3fee30",
+            "title": "An algorithm for the machine calculation of complex Fourier series"
+        },
+        {
+            "paperId": "af9ad6d503c42d2b93d61ae4f0fe937ade6d0df2",
+            "title": "A More Symmetrical Fourier Analysis Applied to Transmission Problems"
+        },
+        {
+            "paperId": "383b1274e902b380922cdf9807f25d1870b181ce",
+            "title": "Fourier transform for the spatial quincunx lattice"
+        },
+        {
+            "paperId": "d31dc804f784eb9aa862bc11ed34f6e5f72cf178",
+            "title": "The discrete triangle transform"
+        },
+        {
+            "paperId": "aa6f991b7d0a53ebdc8afa5437ce53adb3a5651f",
+            "title": "Fast Fourier Transforms"
+        },
+        {
+            "paperId": "0d7a7ed4ca78385098d32ac3b21ab43965352b17",
+            "title": "Basic Algebra = \u4ee3\u6570\u5b66\u5165\u9580"
+        },
+        {
+            "paperId": "0e343cf071214253b8907ebdcfdc948af411489a",
+            "title": "Structured Matrices and Polynomials"
+        },
+        {
+            "paperId": "adbb7497e6bfe2133334accbfe0daf4c8d1dee81",
+            "title": "A wreath product group approach to signal and image processing .I. Multiresolution analysis"
+        },
+        {
+            "paperId": "ba792b1080a0d57d9e1655186cbb8d25204d4194",
+            "title": "Efficient computation of the fourier transform on the finite groups"
+        },
+        {
+            "paperId": "047900782344b49170b1588f07fa2cc12304e3c4",
+            "title": "GENERALIZED FFTS - A SURVEY OF SOME RECENT RESULTS DAVID K. MASLEN AND DANIEL N. ROCKMORE"
+        },
+        {
+            "paperId": "4501c532e93a5f0e9e3ce0a3145864adcddc01cc",
+            "title": "Factorization of Chebyshev Polynomials"
+        },
+        {
+            "paperId": "d1359581a24a84a9e4f5084cac824644e92a7413",
+            "title": "Wavelet analysis"
+        },
+        {
+            "paperId": "ba7cf592bbbf03940722ecc6a9cb7c7ea874b4b2",
+            "title": "Ideals, Varieties, and Algorithms"
+        },
+        {
+            "paperId": null,
+            "title": "Algorithms explained by symmetry,\u201dLecture"
+        },
+        {
+            "paperId": "e98bb706add1c9bea979b5a1457680408c7ff45d",
+            "title": "Algorithmensynthese f\u00fcr lineare Systeme mit Symmetrie"
+        },
+        {
+            "paperId": "1161fac096159abb76d6a64df0bbf7d4245095eb",
+            "title": "Discrete Markov chains"
+        },
+        {
+            "paperId": "3f343c200110a8c72a57b17faafe474b328ca3db",
+            "title": "A polynomial approach to fast algorithms for discrete Fourier-cosine and Fourier-sine transforms"
+        },
+        {
+            "paperId": "d1ccb1fa7dc12d24c21151b88673fb24bfe9fe6a",
+            "title": "Group representations in probability and statistics"
+        },
+        {
+            "paperId": "39b131d970e81ec7f96312e72451134ec35eb1a6",
+            "title": "Multiplicative Complexity of Discrete Fourier Transform"
+        },
+        {
+            "paperId": null,
+            "title": "Beitr\u00e4ge zum Entwurf schneller Spektraltransformationen (Habilitationsschrift), Univ. Karlsruhe"
+        },
+        {
+            "paperId": "eeb88496e935b1fcec520268bf01197581dd5fe3",
+            "title": "The discreteW transform"
+        },
+        {
+            "paperId": null,
+            "title": "Verfahren der Schnellen Fouriertransformation [Methods f or the Fast Fourier Transform"
+        },
+        {
+            "paperId": "f32465479e073ed5e6cc245219e842c727440816",
+            "title": "Graph Theoretic Techniques for Pruning Data and Their Applications"
+        },
+        {
+            "paperId": "1ff2a79066f2501453c750f40b17613324ec12b9",
+            "title": "Arithmetic complexity of computations"
+        },
+        {
+            "paperId": "79f850a464fea866621ac45f2aab1bcb86165f15",
+            "title": "The Chebyshev polynomials"
+        },
+        {
+            "paperId": null,
+            "title": "Linear Systems Over various Rings"
+        },
+        {
+            "paperId": "540c5eb81879e5dbbe1eaeb9c6110b4990999d0b",
+            "title": "Representation Theory of Finite Groups"
+        },
+        {
+            "paperId": null,
+            "title": "Fourier Analysis on Groups, Number 12 in Interscience tracts in pure and applied mathematics"
+        },
+        {
+            "paperId": "49abb747588ca49bf65c6193472b30c363d644f3",
+            "title": "Convergence Problems of Orthogonal Series."
+        },
+        {
+            "paperId": null,
+            "title": "Gantmacher,  Matrix"
+        },
+        {
+            "paperId": null,
+            "title": "Algebraic signal proces sing theory: 1-d cooley-tukey type algorithms, part I"
+        }
+    ]
+}

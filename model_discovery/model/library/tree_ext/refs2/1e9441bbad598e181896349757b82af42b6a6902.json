@@ -1,0 +1,187 @@
+{
+    "paperId": "1e9441bbad598e181896349757b82af42b6a6902",
+    "externalIds": {
+        "CorpusId": 18801509
+    },
+    "title": "Byte Pair Encoding: a Text Compression Scheme That Accelerates Pattern Matching",
+    "abstract": "Byte pair encoding (BPE) is a simple universal text compression scheme. Decompression is very fast and requires small work space. Moreover, it is easy to decompress an arbitrary part of the original text. However, it has not been so popular since the compression is rather slow and the compression ratio is not as good as other methods such as Lempel-Ziv type compression. In this paper, we bring out a potential advantage of BPE compression. We show that it is very suitable from a practical view point of compressed pattern matching, where the goal is to nd a pattern directly in compressed text without decompressing it explicitly. We compare running times to nd a pattern in (1) BPE compressed les, (2) Lempel-Ziv-Welch compressed les, and (3) original text les, in various situations. Experimental results show that pattern matching in BPE compressed text is even faster than matching in the original text. Thus the BPE compression reduces not only the disk space but also the searching time.",
+    "venue": "",
+    "year": 1999,
+    "referenceCount": 35,
+    "citationCount": 160,
+    "influentialCitationCount": 8,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Experimental results show that pattern matching in BPE compressed text is even faster than matching in the original text, and the BPE compression reduces not only the disk space but also the searching time."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2423791",
+            "name": "Takuya Kida"
+        },
+        {
+            "authorId": "38330867",
+            "name": "S. Fukamachi"
+        },
+        {
+            "authorId": "143903398",
+            "name": "Masayuki Takeda"
+        },
+        {
+            "authorId": "144233019",
+            "name": "A. Shinohara"
+        },
+        {
+            "authorId": "1739810",
+            "name": "T. Shinohara"
+        },
+        {
+            "authorId": "1700214",
+            "name": "S. Arikawa"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "3604b60d990317bb5e1b31d71a570158a097dbfa",
+            "title": "Matching Patterns in Strings Subject to Multi-Linear Transformations"
+        },
+        {
+            "paperId": "c0df2424125201ff165beb6d9449a4610ccb3c98",
+            "title": "Shift-And Approach to Pattern Matching in LZW Compressed Text"
+        },
+        {
+            "paperId": "2ebc28b9c50d0f5015f8f7d74ccf938c539946c9",
+            "title": "A General Practical Approach to Pattern Matching over Ziv-Lempel Compressed Text"
+        },
+        {
+            "paperId": "c31a1e760db2791b5a6affdf4bd3b20a865d18ba",
+            "title": "Pattern Matching in Text Compressed by Using Antidictionaries"
+        },
+        {
+            "paperId": "e240e1347591e2e164d549993136e5c3566d5b90",
+            "title": "Direct pattern matching on compressed text"
+        },
+        {
+            "paperId": "ee5048a58223fa894abbc45b47a893728fa05b5f",
+            "title": "Multiple pattern matching in LZW compressed text"
+        },
+        {
+            "paperId": "d50866f999187098b635c8fedf61d69471d2896f",
+            "title": "Pattern Matching Machine for Text Compressed Using Finite State Model"
+        },
+        {
+            "paperId": "47360d06e648e7136fdb9bdc3d95a4d33474aa84",
+            "title": "An Improved Pattern Matching Algorithm for Strings in Terms of Straight-Line Programs"
+        },
+        {
+            "paperId": "92d61a96d1191965a12db079b1a4a8c8b7320498",
+            "title": "Efficient algorithms for Lempel-Ziv encoding"
+        },
+        {
+            "paperId": "5617f3ffd584cf12c11eba0f2c27cb46a655fabc",
+            "title": "Text Algorithms"
+        },
+        {
+            "paperId": "c1ac78efa954e0827c43d900988d5b51cbe8d6a4",
+            "title": "Optimal Two-Dimensional Compressed Matching"
+        },
+        {
+            "paperId": "80e6e7b3917c8e87a97886e1302309f27d24143f",
+            "title": "A text compression scheme that allows fast searching directly in the compressed file"
+        },
+        {
+            "paperId": "1aa9c0045f1fe8c79cce03c7c14ef4b4643a21f8",
+            "title": "A new algorithm for data compression"
+        },
+        {
+            "paperId": "1337a72073e2c80da6e53b776ccb469d5abb0579",
+            "title": "Suffix arrays: a new method for on-line string searches"
+        },
+        {
+            "paperId": "3b8c6253f25595d705c3ac27ca7fbd9eaec17ab6",
+            "title": "Fast text searching: allowing errors"
+        },
+        {
+            "paperId": "5499c4688e65d528069a3b0223f33c1ebcdfa95a",
+            "title": "Two-dimensional periodicity and its applications"
+        },
+        {
+            "paperId": "3cbaecdaffa6488bad8b5b9930c7e6a3d084d0ae",
+            "title": "Efficient two-dimensional compressed matching"
+        },
+        {
+            "paperId": "a46f4d657840ad25758b73c448de93124cc49424",
+            "title": "The Text Database Management System SIGMA: An Improvement of the Main Engine"
+        },
+        {
+            "paperId": "58e45db9fea5b85783dc664b86c44bd7e7f1a2a3",
+            "title": "A new approach to text searching"
+        },
+        {
+            "paperId": "adfe0cdac481f65d330516d94755d743b8fb16ed",
+            "title": "Generalized String Matching"
+        },
+        {
+            "paperId": "c47d151f09c567013761632c89e237431c6291a2",
+            "title": "Efficient Randomized Pattern-Matching Algorithms"
+        },
+        {
+            "paperId": "5b5969251a4dd58fa2b1593bfc32633ff90d31db",
+            "title": "PATTERN MATCHING MACHINES FOR REPLACING SEVERAL CHARACTER STRINGS"
+        },
+        {
+            "paperId": "4385c1e7c717095334f3f5cd1a8e1d2f1ae8cbd3",
+            "title": "A fast string searching algorithm"
+        },
+        {
+            "paperId": "5253fead88bfeaaa2930daccb7324a264cb681a9",
+            "title": "Fast Pattern Matching in Strings"
+        },
+        {
+            "paperId": "66c797950b9b61b9019de53609218723c953acc7",
+            "title": "A Space-Economical Suffix Tree Construction Algorithm"
+        },
+        {
+            "paperId": "d3390f13eed511cde1116446e71c3d462fd6a004",
+            "title": "Linear Pattern Matching Algorithms"
+        },
+        {
+            "paperId": "e71b0584699bf5069e4573e906f4c1ae412e5d1f",
+            "title": "String Matching in Lempel\u2014Ziv Compressed Strings"
+        },
+        {
+            "paperId": "d28ced72a6d714013235a49e228d84c745103dcf",
+            "title": "An Efficient Pattern-Matching Algorithm for Strings with Short Descriptions"
+        },
+        {
+            "paperId": "6f7ac4f18618d4b9190c5ddff023a5f183815fba",
+            "title": "Eecient Algorithms for Lempel-ziv Encoding"
+        },
+        {
+            "paperId": null,
+            "title": "On-line construction of su x trees"
+        },
+        {
+            "paperId": "ca4646a1de8d6f730c38273d637adc2c25072064",
+            "title": "Information Retrieval: Data Structures & Algorithms"
+        },
+        {
+            "paperId": "1cf768b85ab19284c0c863b700481f30b8b0da56",
+            "title": "An Efficient Multiple String Replacing Algorithm Using Patterns with Pictures"
+        },
+        {
+            "paperId": "5f3b62c032bc21f3ea64eb79746e7d80d1fe0a68",
+            "title": "Efficient pattern matching with scaling"
+        },
+        {
+            "paperId": null,
+            "title": "Text compaction for information retrieval"
+        },
+        {
+            "paperId": null,
+            "title": "Corasick. E cient string matching: An aid to bibliographic search"
+        }
+    ]
+}

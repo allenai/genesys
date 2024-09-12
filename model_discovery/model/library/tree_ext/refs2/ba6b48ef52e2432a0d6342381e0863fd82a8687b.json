@@ -1,0 +1,242 @@
+{
+    "paperId": "ba6b48ef52e2432a0d6342381e0863fd82a8687b",
+    "externalIds": {
+        "MAG": "2963502387",
+        "DBLP": "journals/corr/NiculaeB17",
+        "ArXiv": "1705.07704",
+        "CorpusId": 20600085
+    },
+    "title": "A Regularized Framework for Sparse and Structured Neural Attention",
+    "abstract": "Modern neural networks are often augmented with an attention mechanism, which tells the network where to focus within the input. We propose in this paper a new framework for sparse and structured attention, building upon a smoothed max operator. We show that the gradient of this operator defines a mapping from real values to probabilities, suitable as an attention mechanism. Our framework includes softmax and a slight generalization of the recently-proposed sparsemax as special cases. However, we also show how our framework can incorporate modern structured penalties, resulting in more interpretable attention mechanisms, that focus on entire segments or groups of an input. We derive efficient algorithms to compute the forward and backward passes of our attention mechanisms, enabling their use in a neural network trained with backpropagation. To showcase their potential as a drop-in replacement for existing ones, we evaluate our attention mechanisms on three large-scale tasks: textual entailment, machine translation, and sentence summarization. Our attention mechanisms improve interpretability without sacrificing performance; notably, on textual entailment and summarization, we outperform the standard attention mechanisms based on softmax and sparsemax.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2017,
+    "referenceCount": 52,
+    "citationCount": 92,
+    "influentialCitationCount": 2,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a new framework for sparse and structured attention, building upon a smoothed max operator, and shows that the gradient of this operator defines a mapping from real values to probabilities, suitable as an attention mechanism."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2114966",
+            "name": "Vlad Niculae"
+        },
+        {
+            "authorId": "27257992",
+            "name": "Mathieu Blondel"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "252571243aa4c0b533aa7fc63f88d07fd844e7bb",
+            "title": "Learning What\u2019s Easy: Fully Differentiable Neural Easy-First Taggers"
+        },
+        {
+            "paperId": "0076b232181e4e5be58dce8354a813ad2bbf663a",
+            "title": "OptNet: Differentiable Optimization as a Layer in Neural Networks"
+        },
+        {
+            "paperId": "13d9323a8716131911bfda048a40e2cde1a76a46",
+            "title": "Structured Attention Networks"
+        },
+        {
+            "paperId": "2ed7d639406927c47a7fa6f2ce917c0b83b7955b",
+            "title": "Deep Sequential and Structural Neural Models of Compositionality"
+        },
+        {
+            "paperId": "aab5002a22b9b4244a8329b140bd0a86021aa2d1",
+            "title": "OpenNMT: Open-Source Toolkit for Neural Machine Translation"
+        },
+        {
+            "paperId": "29e944711a354c396fad71936f536e83025b6ce0",
+            "title": "Categorical Reparameterization with Gumbel-Softmax"
+        },
+        {
+            "paperId": "515a21e90117941150923e559729c59f5fdade1c",
+            "title": "The Concrete Distribution: A Continuous Relaxation of Discrete Random Variables"
+        },
+        {
+            "paperId": "784ee73d5363c711118f784428d1ab89f019daa5",
+            "title": "Hybrid computing using a neural network with dynamic external memory"
+        },
+        {
+            "paperId": "7601b995303f953955004db7b9b8b206c0e02ff8",
+            "title": "Learning Structured Sparsity in Deep Neural Networks"
+        },
+        {
+            "paperId": "d224bb6a644583789965bd6182e09d2ee1a1f78f",
+            "title": "Group sparse regularization for deep neural networks"
+        },
+        {
+            "paperId": "467d5d8fc766e73bfd3e9415f75479823f92c2f7",
+            "title": "Rationalizing Neural Predictions"
+        },
+        {
+            "paperId": "c1e3a26fb88c6720f4e84b7118e6f2df7dc8efa3",
+            "title": "From Softmax to Sparsemax: A Sparse Model of Attention and Multi-Label Classification"
+        },
+        {
+            "paperId": "ada937c9f51316c6ac87f9d1d4509383d23e0c21",
+            "title": "Incorporating Structural Alignment Biases into an Attentional Neural Translation Model"
+        },
+        {
+            "paperId": "9a8147dedac1dae75f735c4fccbd12c03f60f640",
+            "title": "Smooth and Strong: MAP Inference with Linear Convergence"
+        },
+        {
+            "paperId": "2846e83d405cbe3bf2f0f3b5f635dd8b3c680c45",
+            "title": "Reasoning about Entailment with Neural Attention"
+        },
+        {
+            "paperId": "1ac30af5522c7a50ec4d1ee43fd2bd8652a9bd52",
+            "title": "A Neural Attention Model for Abstractive Sentence Summarization"
+        },
+        {
+            "paperId": "f04df4e20a18358ea2f689b4c129781628ef7fc1",
+            "title": "A large annotated corpus for learning natural language inference"
+        },
+        {
+            "paperId": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+            "title": "Effective Approaches to Attention-based Neural Machine Translation"
+        },
+        {
+            "paperId": "b624504240fa52ab76167acfe3156150ca01cf3b",
+            "title": "Attention-Based Models for Speech Recognition"
+        },
+        {
+            "paperId": "d559dd84fc473fca7e91b9075675750823935afa",
+            "title": "Sparse Convolutional Neural Networks"
+        },
+        {
+            "paperId": "fafa541419b3756968fe5b3156c6f0257cb29c23",
+            "title": "Visualizing and Understanding Neural Models in NLP"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "32e1331a6eb291689a496742ce878043b35b24d2",
+            "title": "Solving OSCAR regularization problems by fast approximate proximal splitting algorithms"
+        },
+        {
+            "paperId": "b97b5eb978fed537557e81b1aab0af4da8d53f75",
+            "title": "On Decomposing the Proximal Map"
+        },
+        {
+            "paperId": "de887b3547a6a774563100a28b9390d394b90132",
+            "title": "Proximal Algorithms"
+        },
+        {
+            "paperId": "d9bdff5eac0d0d1ebd8d09960f195b838ce16f4e",
+            "title": "Accelerated proximal stochastic dual coordinate ascent for regularized loss minimization"
+        },
+        {
+            "paperId": "38a3e5e5f2385971c046366f3539c1bc6576e63f",
+            "title": "A Direct Algorithm for 1-D Total Variation Denoising"
+        },
+        {
+            "paperId": "62c76ca0b2790c34e85ba1cce09d47be317c7235",
+            "title": "Estimating or Propagating Gradients Through Stochastic Neurons for Conditional Computation"
+        },
+        {
+            "paperId": "d7fd0e702d8849459a3e56c0cb8a22ee032460e5",
+            "title": "Efficient Sparse Modeling With Automatic Feature Grouping"
+        },
+        {
+            "paperId": "0b14178e7d79ac426d0a39700e1ac8b2c6f2e752",
+            "title": "Convex Optimization"
+        },
+        {
+            "paperId": "52087aa2426a1dea55e41982b2dc7b6956483885",
+            "title": "Regularization Techniques for Learning with Matrices"
+        },
+        {
+            "paperId": "41aa047d94c91674cccad645759fd4e06ad8f6be",
+            "title": "Recognizing textual entailment: Rational, evaluation and approaches"
+        },
+        {
+            "paperId": "bc6dff14a130c57a91d5a21339c23471faf1d46f",
+            "title": "Et al"
+        },
+        {
+            "paperId": "ed7c7c079c8c54d3b82e016cc52a7a2c3a61f237",
+            "title": "Efficient projections onto the l1-ball for learning in high dimensions"
+        },
+        {
+            "paperId": "8d6081993c9a65f333597582e6b60e7ab593b8ac",
+            "title": "Simultaneous Regression Shrinkage, Variable Selection, and Supervised Clustering of Predictors with OSCAR"
+        },
+        {
+            "paperId": "d50b597c475e87e03e8630e381011cb46e460ad8",
+            "title": "PATHWISE COORDINATE OPTIMIZATION"
+        },
+        {
+            "paperId": "4ee2eab4c298c1824a9fb8799ad8eed21be38d21",
+            "title": "Moses: Open Source Toolkit for Statistical Machine Translation"
+        },
+        {
+            "paperId": "758b1d823ac975720e6e81e375cd4432009e5bca",
+            "title": "Convex Neural Networks"
+        },
+        {
+            "paperId": "8e6c6086ea725737aa6081a57ea68d43a24ca3b9",
+            "title": "Smooth minimization of non-smooth functions"
+        },
+        {
+            "paperId": "b26bb53333d151dce65f0cfc85832470246e75c3",
+            "title": "Sparsity and smoothness via the fused lasso"
+        },
+        {
+            "paperId": "032ca6373e53a9e0691b04eee2f1809538c0e881",
+            "title": "Sharp uniform convexity and smoothness inequalities for trace norms"
+        },
+        {
+            "paperId": "3ccce8175def336d05a0c19910064d301b01cdee",
+            "title": "A finite algorithm for finding the projection of a point onto the canonical simplex of \u221dn"
+        },
+        {
+            "paperId": "874e46995f6043f52c5e2bbbca4d1a2d2fa24f89",
+            "title": "The Ordered Weighted \u21131 Norm: Atomic Formulation, Dual Norm, and Projections"
+        },
+        {
+            "paperId": "9221d1bbb248e04e48dfe9377d0f2ac160ac277e",
+            "title": "A Finite Algorithm for Finding the Projection of a Point onto the Canonical Simplex of R \""
+        },
+        {
+            "paperId": "3c718363c22221fd16771672da3bfd5f67d2c34c",
+            "title": "A Fast Iterative Shrinkage-Thresholding Algorithm for Linear Inverse Problems"
+        },
+        {
+            "paperId": "b0b36cd24cbb45bc11140def9245af79c313e609",
+            "title": "Open Source Toolkit for Statistical Machine Translation: Factored Translation Models and Lattice Decoding"
+        },
+        {
+            "paperId": "546743f425d8feca2dff78cbe2f68b1b78349024",
+            "title": "Convex analysis in general vector spaces"
+        },
+        {
+            "paperId": "81ff8885fd11af461fce05cf797ddf175664b305",
+            "title": "Incorporating Second-Order Functional Knowledge for Better Option Pricing"
+        },
+        {
+            "paperId": "849a2f9fff249cb5c7356aa6b8f4a7c43ce74746",
+            "title": "Optimization And Nonsmooth Analysis"
+        },
+        {
+            "paperId": null,
+            "title": "A Regularized Framework for Sparse and Structured Neural Attention"
+        }
+    ]
+}

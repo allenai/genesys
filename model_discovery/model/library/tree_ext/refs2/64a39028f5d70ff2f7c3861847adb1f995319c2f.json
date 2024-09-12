@@ -1,0 +1,873 @@
+{
+    "paperId": "64a39028f5d70ff2f7c3861847adb1f995319c2f",
+    "externalIds": {
+        "MAG": "2789834341",
+        "DBLP": "journals/cviu/ConnorR18",
+        "DOI": "10.1016/j.cviu.2018.01.007",
+        "CorpusId": 4469941
+    },
+    "title": "Biometric recognition by gait: A survey of modalities and features",
+    "abstract": null,
+    "venue": "Computer Vision and Image Understanding",
+    "year": 2018,
+    "referenceCount": 209,
+    "citationCount": 218,
+    "influentialCitationCount": 8,
+    "openAccessPdf": {
+        "url": "http://manuscript.elsevier.com/S1077314218300079/pdf/S1077314218300079.pdf",
+        "status": "CLOSED"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An extensive overview of the various types of features that have been utilized for each sensing modality and their relationship to the appearance and biomechanics of gait is provided."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2140017533",
+            "name": "Patrick Connor"
+        },
+        {
+            "authorId": "145743106",
+            "name": "A. Ross"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "5f5675e9bbc2e278a13f2a57981ce18d235bd7da",
+            "title": "The Effect of Military Load Carriage on Postural Sway, Forward Trunk Lean, and Pelvic Girdle Motion"
+        },
+        {
+            "paperId": "629ee690787badcd05abcff7c9cc80e149f0fa79",
+            "title": "Multimodal features fusion for gait, gender and shoes recognition"
+        },
+        {
+            "paperId": "d601f7736f9e16449fa2d2c6ce6171bca4b05b10",
+            "title": "Gait recognition using wifi signals"
+        },
+        {
+            "paperId": "2c080f9543febd770d6d1988508af339b4cb614d",
+            "title": "Multi-view gait recognition using 3D convolutional neural networks"
+        },
+        {
+            "paperId": "c169647cc19c07b9fefb7ba750fddd88ac279a5b",
+            "title": "Human authentication from ankle motion data using convolutional neural networks"
+        },
+        {
+            "paperId": "1a13b5dd42df52ffc89b80a133a7677aeebd788c",
+            "title": "GEINet: View-invariant gait recognition using a convolutional neural network"
+        },
+        {
+            "paperId": "5066b8e2a13d8a7b06d928e9c886df5cb88e572f",
+            "title": "Smartwatch-based biometric gait recognition"
+        },
+        {
+            "paperId": "e99d1e7ac9c2f2166e0fbd02f74bebb69e3537a7",
+            "title": "Feature selection for Lidar-based gait recognition"
+        },
+        {
+            "paperId": "013d0acff1e5410fd9f6e15520d16f4ea02f03f6",
+            "title": "Learning Representative Deep Features for Image Set Analysis"
+        },
+        {
+            "paperId": "8573995c56031ac1137c6dca6b625cfa90b446ba",
+            "title": "Empirical Study of Audio-Visual Features Fusion for Gait Recognition"
+        },
+        {
+            "paperId": "d113f7c68da9c2d459f1867fc4ad8019b18ddbdc",
+            "title": "Inertial Sensor-Based Gait Recognition: A Review"
+        },
+        {
+            "paperId": "25e35d626f4285b9d533550b705bfad079067049",
+            "title": "Accelerometer-Based Gait Recognition by Sparse Representation of Signature Points With Clusters"
+        },
+        {
+            "paperId": "2270663610e569015181c72fc6097ab04594539c",
+            "title": "Fusion of Static and Dynamic Parameters at Decision Level in Human Gait Recognition"
+        },
+        {
+            "paperId": "9e2daa41d38ac2b12c11ccb9a85e11d463a2535d",
+            "title": "Ensemble kNN classifiers for human gait recognition based on ground reaction forces"
+        },
+        {
+            "paperId": "4856d47e8f28daea96e8e9dea9ef06ebf4950855",
+            "title": "Guidelines for best practices in biometrics research"
+        },
+        {
+            "paperId": "ee0b47e7834e61389cdfbd3039a006e9fe9e2cbb",
+            "title": "Comparing and combining underfoot pressure features for shod and unshod gait biometrics"
+        },
+        {
+            "paperId": "a739762773b314fbdcba3cea12b8d3edd2d1808a",
+            "title": "The Influence of Walking Speed on Gait Patterns During Upslope Walking"
+        },
+        {
+            "paperId": "b511643e507a1789dccadc9da6683f3a00e103a4",
+            "title": "Sensor orientation invariant mobile gait biometrics"
+        },
+        {
+            "paperId": "122e0f5209393d05f3118964c61e71d1ea0f3e17",
+            "title": "New gait metrics for biometric authentication using a 3-axis acceleration"
+        },
+        {
+            "paperId": "ece376c9f0a684415cd9195aa1701c6aca316b34",
+            "title": "A New Gait-Based Identification Method Using Local Gauss Maps"
+        },
+        {
+            "paperId": "34f9ef56c4365e4b6fa4bcf17ee7f71c283e9cd8",
+            "title": "Evaluation of different feature sets for gait recognition using skeletal data from Kinect"
+        },
+        {
+            "paperId": "d3d41c895298c9c5b18be88f97b18d4551b46be5",
+            "title": "Human Skeleton Model Based Dynamic Features for Walking Speed Invariant Gait Recognition"
+        },
+        {
+            "paperId": "c926a8021f30e271f2635a948205c9560543525b",
+            "title": "Window based clothing invariant gait recognition"
+        },
+        {
+            "paperId": "e66fa7ccb4bea9114748477963fd4a61d2116265",
+            "title": "Modified kNN Algorithm for Improved Recognition Accuracy of Biometrics System Based on Gait"
+        },
+        {
+            "paperId": "960870523484a7f66cf8afbe833afd7d343b68f5",
+            "title": "Improving Gait Biometrics under Spoofing Attacks"
+        },
+        {
+            "paperId": "e2c68f6bea52930a74ca7f59ddc824a0129598c6",
+            "title": "Human biometric identification through integration of footprint and gait"
+        },
+        {
+            "paperId": "36ed109d18baf3987d3467a12a89edc14055d0d5",
+            "title": "Multi-view multi-modal person authentication from a single walking image sequence"
+        },
+        {
+            "paperId": "90cd2d71ed800efa5e4e5292f4ec7ce7a0124007",
+            "title": "A robust speed-invariant gait recognition system for walker and runner identification"
+        },
+        {
+            "paperId": "04e356a6d6cd71035a0357235cf6f34191389c5b",
+            "title": "A novel approach of gait recognition through fusion with footstep information"
+        },
+        {
+            "paperId": "90d120e5e032edd3ac22174d101fac7574008b6a",
+            "title": "Gait-based person identification by spectral, cepstral and energy-related audio features"
+        },
+        {
+            "paperId": "77a06234f2289c5f82199f91c0041645bd8b8608",
+            "title": "Comparative Analysis and Fusion of Spatiotemporal Information for Footstep Recognition"
+        },
+        {
+            "paperId": "d37887f36640e0dd595639c2625bf951f9e88aea",
+            "title": "2.5D gait biometrics using the Depth Gradient Histogram Energy Image"
+        },
+        {
+            "paperId": "15e33982d242ec0ae8ff0b82ba5fb7d00f67abb8",
+            "title": "Gait Recognition Across Various Walking Speeds Using Higher Order Shape Configuration Based on a Differential Composition Model"
+        },
+        {
+            "paperId": "d6daaec16ac90de8f99640f687ad7e9e92a46840",
+            "title": "Can gait biometrics be Spoofed?"
+        },
+        {
+            "paperId": "a9b35f938b6f70ced090448f656f3b2d0df62c37",
+            "title": "Can a \u201cpoor\u201d verification system be a \u201cgood\u201d identification system? A preliminary study"
+        },
+        {
+            "paperId": "fc707e08e09652883af2ea352ab5634796e2780a",
+            "title": "Multiple HOG templates for gait recognition"
+        },
+        {
+            "paperId": "4b8762d7637868b6ba0c97c95b2d4949d103ecdc",
+            "title": "The OU-ISIR Gait Database Comprising the Large Population Dataset and Performance Evaluation of Gait Recognition"
+        },
+        {
+            "paperId": "d02ec45865408edbfbc36342cac652404aae817b",
+            "title": "A cascade fusion scheme for gait and cumulative foot pressure image recognition"
+        },
+        {
+            "paperId": "82cb471dd6d78329286685b8648592f8ea841d22",
+            "title": "Improved Gait Recognition using Gradient Histogram Energy Image"
+        },
+        {
+            "paperId": "9e8f9786ea868f042f7d984cddbd9a6dc23969ee",
+            "title": "Robust Clothing-Invariant Gait Recognition"
+        },
+        {
+            "paperId": "23ed1443c1b6094a79e34fc2522f2ad77f2c0a17",
+            "title": "Influence of different walking speeds and surfaces on accelerometer-based biometric gait recognition"
+        },
+        {
+            "paperId": "67b588005078fc75da083583a6e387b4d29456f2",
+            "title": "Fusion of footsteps and face biometrics on an unsupervised and uncontrolled environment"
+        },
+        {
+            "paperId": "00ebf6a7a745be939ea5f7d0ccdbff6e24739950",
+            "title": "User Recognition Using Sequential Footprints Under Shoes Based on Mat-Type Floor Pressure Sensor"
+        },
+        {
+            "paperId": "b46ba515af73355391602d0c3b228efe65a9503d",
+            "title": "Gait recognition: highly unique dynamic plantar pressure patterns among 104 individuals"
+        },
+        {
+            "paperId": "b78e6347913d1531d8d2d219e10284f72a973585",
+            "title": "Automatic Human Gait Imitation and Recognition in 3D from Monocular Video with an Uncalibrated Camera"
+        },
+        {
+            "paperId": "2947ad043241076fa2cad841ee0990a00a6564d6",
+            "title": "Speed-invariant gait recognition based on Procrustes Shape Analysis using higher-order shape configuration"
+        },
+        {
+            "paperId": "5b293c7f26d7b95b5319b7924d6950c2e2d5c5c4",
+            "title": "Evaluation framework on translation-invariant representation for cumulative foot pressure image"
+        },
+        {
+            "paperId": "32e96a93606092e4a1193563a279d90ada52bd6a",
+            "title": "Analysis of spatial domain information for footstep recognition"
+        },
+        {
+            "paperId": "167942eb6fb1fe772afe2af7c5267014e47dc37f",
+            "title": "Human identification based on the reduced kinematic data of the gait"
+        },
+        {
+            "paperId": "2c38cb13f66872c1e71aeeb8820d99e5ecbbc3bc",
+            "title": "Model-based 3D gait biometrics"
+        },
+        {
+            "paperId": "c64ff444c99213f1bcccc7f0b14df250be6bbca8",
+            "title": "Gait energy volumes and frontal gait recognition using depth images"
+        },
+        {
+            "paperId": "2e4f593681416108ea43c8d17fe0d34e52bc50df",
+            "title": "Human Identification Based on Gait Paths"
+        },
+        {
+            "paperId": "a5ae6b5b652ecaad9a8a582092fb71b3db289f94",
+            "title": "A challenge to biometrics by sole pressure while walking"
+        },
+        {
+            "paperId": "96ef187651078a0cce4dc4f52b5c6c0561d5ec7f",
+            "title": "Effects of load carriage and fatigue on gait characteristics."
+        },
+        {
+            "paperId": "d1d9e6027288cdd64509ea62f88a3cbd9320c180",
+            "title": "Automated Markerless Analysis of Human Gait Motion for Recognition and Classification"
+        },
+        {
+            "paperId": "d817c736190c41ab1b83ad41cf5a0075d5cee748",
+            "title": "The effect of time on the performance of gait biometrics"
+        },
+        {
+            "paperId": "e3fd70fe0b819b73917e77929768509568e20e57",
+            "title": "Human Recognition at a Distance in Video"
+        },
+        {
+            "paperId": "b84678a04b555a0f7a8988bf0b1ac3a3e6616020",
+            "title": "Walk the Walk: Attacking Gait Biometrics by Imitation"
+        },
+        {
+            "paperId": "b500e77ec059241c81f8dcaaa7d6ff126ff81854",
+            "title": "Unobtrusive User-Authentication on Mobile Phones Using Biometric Gait Recognition"
+        },
+        {
+            "paperId": "b3cec30e79bd3803a54b1c88cb1a311d2fb70f15",
+            "title": "Improved Cycle Detection for Accelerometer Based Gait Authentication"
+        },
+        {
+            "paperId": "85d8b605cd844f654110e7dbae851a52dad394df",
+            "title": "Context-aware fusion: A case study on fusion of gait and face for human identification in video"
+        },
+        {
+            "paperId": "402306460df79ededd3e8a492bfbc3093ddc8a29",
+            "title": "Chrono-Gait Image: A Novel Temporal Template for Gait Recognition"
+        },
+        {
+            "paperId": "c269884ee97dcff21b4c528bdfe8edeeda0ea27d",
+            "title": "People Identification Using Floor Pressure Sensing and Analysis"
+        },
+        {
+            "paperId": "90981ac1a8c60e3d5f9b1d272b5331b53cdc5ca9",
+            "title": "Identification system for smart homes using footstep sounds"
+        },
+        {
+            "paperId": "d9de643dedaac692539680331b64114096a7bcc2",
+            "title": "Ethnicity classification based on gait using multi-view fusion"
+        },
+        {
+            "paperId": "2ca4b0c2c367155604f9488233e41bf0558dfd53",
+            "title": "Silhouette transformation based on walking speed for gait identification"
+        },
+        {
+            "paperId": "3fd970da1fd9ebcf1b97f4d16f5274b25666471b",
+            "title": "Clothing-invariant gait identification using part-based clothing categorization and adaptive weight control"
+        },
+        {
+            "paperId": "b04f65eb044b44e82bcbc6b150cb7a70a44795d6",
+            "title": "Eigensteps: A giant leap for gait recognition"
+        },
+        {
+            "paperId": "f897d96d977def37c988e2844002c4978e43e00f",
+            "title": "Effects of military load carriage on kinematics of gait"
+        },
+        {
+            "paperId": "2d1cb5b5921417364d759058b800f3b2c2cd15b8",
+            "title": "Improved Gait Recognition Performance Using Cycle Matching"
+        },
+        {
+            "paperId": "caa7c46b005526858f7c2348e12e1e0a84e72ec7",
+            "title": "Basic gait and symmetry measures for primary school-aged children and young adults whilst walking barefoot and with shoes."
+        },
+        {
+            "paperId": "02fbd9645a869bc96935814f752c4174067db50e",
+            "title": "Survey of Gait Recognition"
+        },
+        {
+            "paperId": "f97b497ba88c2f747d1e2792ca8e47cf29116b80",
+            "title": "Feature extraction based on a fuzzy complementary criterion for gait recognition using GRF signals"
+        },
+        {
+            "paperId": "89c8dc163149de20e9518c7ce155f4a11b678d07",
+            "title": "Critical features for the perception of emotion from gait."
+        },
+        {
+            "paperId": "d616ab2b16e3850539edfbace4cde50fbd438273",
+            "title": "Rate-Invariant Recognition of Humans and Their Activities"
+        },
+        {
+            "paperId": "5dacad72ac340feba0e408111d18c84981f745e0",
+            "title": "A time-frequency classifier for human gait recognition"
+        },
+        {
+            "paperId": "33b0411d0a2112eb206d5515b338bd47a87e494f",
+            "title": "Biometric personal identification based on gait pattern using both feet pressure change"
+        },
+        {
+            "paperId": "ec7951e69c7f31dde16072d369491250378f875b",
+            "title": "The University of Southampton Multi-Biometric Tunnel and introducing a novel 3D gait dataset"
+        },
+        {
+            "paperId": "b22522bb3142be2b3555d26cabcc643e644a2b08",
+            "title": "Gait recognition by dynamic cues"
+        },
+        {
+            "paperId": "fa1b287160725767359f89c0f626e2cc065d17a1",
+            "title": "Subject Recognition Based on Ground Reaction Force Measurements of Gait Signals"
+        },
+        {
+            "paperId": "4c7e74041555a2dd4419a7594a011e21eba490b7",
+            "title": "Gaussian Process Person Identifier Based on Simple Floor Sensors"
+        },
+        {
+            "paperId": "dc69d5cde5eb260c71b72ca4d794bc8664a58174",
+            "title": "Human identification experiments using acoustic micro-Doppler signatures"
+        },
+        {
+            "paperId": "a080762dd6bf8fc64a668d587f522ef45366e53d",
+            "title": "Exploratory factor analysis of gait recognition"
+        },
+        {
+            "paperId": "cdf4ef6e898062c7c885260ccf07cf9a8edc3643",
+            "title": "Feature selection on Gait Energy Image for human identification"
+        },
+        {
+            "paperId": "e32ef01bb41c2f6900ef73069114ed8f499072c5",
+            "title": "Recognition of Emotions in Gait Patterns by Means of Artificial Neural Nets"
+        },
+        {
+            "paperId": "a1d5c423d55f698751bcfd78afdda8547d6be131",
+            "title": "General Tensor Discriminant Analysis and Gabor Features for Gait Recognition"
+        },
+        {
+            "paperId": "2cb7b43fe3e4183e54bc1e6657667ad4d1d117c8",
+            "title": "The effect of military load carriage on ground reaction forces."
+        },
+        {
+            "paperId": "0309e99c9e3c533d954fd8f80336840e04891db4",
+            "title": "Acoustic Doppler sonar for gait recogination"
+        },
+        {
+            "paperId": "ddded464fb5c5c254ffe09ea210682125a2690f8",
+            "title": "Spoof Attacks on Gait Authentication System"
+        },
+        {
+            "paperId": "d89fbcd04e176e66d631dd222aa945484625c5b7",
+            "title": "A statistical approach to sparse multi-scale phase-based stereo"
+        },
+        {
+            "paperId": "f0a3cf484443f6cb4a32ef790318fd525881ec1f",
+            "title": "Gait Recognition Using Compact Feature Extraction Transforms and Depth Information"
+        },
+        {
+            "paperId": "b62dff96c392fffa5fd3c3610b30aa76e39db7f9",
+            "title": "An experimental study on the feasibility of footsteps as a biometric"
+        },
+        {
+            "paperId": "dc15ceb60a6f531ce04f9635a227b9b37fd75b20",
+            "title": "Increasing Security of Mobile Devices by Decreasing User Effort in Verification"
+        },
+        {
+            "paperId": "4263630a35c5ee34ccf9dbd81c0541d92d0c7d5b",
+            "title": "Shape Variation-Based Frieze Pattern for Robust Gait Recognition"
+        },
+        {
+            "paperId": "ab4867d401fecc1e755c32432c57fdba79a36be7",
+            "title": "Walking speed influences on gait cycle variability."
+        },
+        {
+            "paperId": "cd07670aa374d8487abbb486225a5834080af8dc",
+            "title": "A New Gait Representation for Human Identification: Mass Vector"
+        },
+        {
+            "paperId": "510f93c17194486d00f117121a7901164a7caab4",
+            "title": "A Wearable Acceleration Sensor System for Gait Recognition"
+        },
+        {
+            "paperId": "dc3e8bea9ef0c9a2df20e4d11860203eaf795b6a",
+            "title": "Using Ground Reaction Forces from Gait Analysis: Body Mass as a Weak Biometric"
+        },
+        {
+            "paperId": "22344ddcae83e732ba0c2116d7ee9016aebb12be",
+            "title": "Model-Based Feature Extraction for Gait Analysis and Recognition"
+        },
+        {
+            "paperId": "f95bc20247ae37f78cb740ce2c5c86fd0db35218",
+            "title": "A comparison of gait characteristics between Korean and Western people for establishing Korean gait reference data"
+        },
+        {
+            "paperId": "aeec61ef41d55b5c1becfdc00c2e4dbca0e379c0",
+            "title": "Automatic Recognition by Gait"
+        },
+        {
+            "paperId": "0268d1744377ffbff48b014f513ea3e5e4a4dab1",
+            "title": "A Framework for Evaluating the Effect of View Angle, Clothing and Carrying Condition on Gait Recognition"
+        },
+        {
+            "paperId": "d59925a717564e8e14197e8dd6cd046ee0402100",
+            "title": "Efficient Night Gait Recognition Based on Template Matching"
+        },
+        {
+            "paperId": "dd4a82fb2e24328a7d858da6a21c98655fcb0bff",
+            "title": "Improved gait recognition by gait dynamics normalization"
+        },
+        {
+            "paperId": "6b52647a6d4bd5efc12ff5835054f67ed71e2f50",
+            "title": "Gait recognition using acceleration from MEMS"
+        },
+        {
+            "paperId": "540339c32eaf41962740583bfa415a5a0ff9d932",
+            "title": "Individual recognition using gait energy image"
+        },
+        {
+            "paperId": "bdf12a3a9895ba3f249c4671f8257b7371088502",
+            "title": "User Identification Using User's Walking Pattern over the ubiFloorII"
+        },
+        {
+            "paperId": "eae617e46f714338dfcb93c1568f3ca12e903743",
+            "title": "Human identification based on gait"
+        },
+        {
+            "paperId": "774880daf193a7ec4899a217131ddc7d46667a22",
+            "title": "A Method to Measure Foot Print Similarity for Gait Analysis"
+        },
+        {
+            "paperId": "41feeb5a7f308c874730da5533878c0eba776968",
+            "title": "A floor sensor system for gait recognition"
+        },
+        {
+            "paperId": "4cd4a4734e9d7e9d0cf1cc3304b0fc9166906e33",
+            "title": "Human Recognition at a Distance in Video by Integrating Face Profile and Gait"
+        },
+        {
+            "paperId": "e8b12467bdc20bde976750b8a28decdb33246d1d",
+            "title": "Histograms of oriented gradients for human detection"
+        },
+        {
+            "paperId": "89037e5f1025b5162a87c4e70a63d9e47501c230",
+            "title": "Application of a continuous wave radar for human gait recognition"
+        },
+        {
+            "paperId": "eae6e930a711e11499197e5eb9ab6cf018468902",
+            "title": "Combining classifiers with different footstep feature sets and multiple samples for person identification"
+        },
+        {
+            "paperId": "016294079ee5fa35ec867cf2f658d9eb8cec4a4a",
+            "title": "Identifying users of portable devices from gait pattern with accelerometers"
+        },
+        {
+            "paperId": "bb6b14397f69bbfbc52cbd1a04bc6302a8b938d7",
+            "title": "The humanID gait challenge problem: data sets, performance, and analysis"
+        },
+        {
+            "paperId": "8985f8d9aa656ad5b85d0d06ebe027f8c4ddf46b",
+            "title": "Gait analysis for human identification in frequency domain"
+        },
+        {
+            "paperId": "8a284787b29a4734ba51494ed4883bf3c4999d0d",
+            "title": "Personal identification using footstep detection"
+        },
+        {
+            "paperId": "c9ea7886809bc53ca6feb4b2eefe8228c9472c7d",
+            "title": "The effect of walking speed on center of mass displacement."
+        },
+        {
+            "paperId": "0407866be9938f24acc44afd6760e27e15e6e160",
+            "title": "Simplest representation yet for gait recognition: averaged silhouette"
+        },
+        {
+            "paperId": "0dfcd922ff77040da967ca845ad5dd10a63f38ba",
+            "title": "Modelling the effects of walking speed on appearance-based gait recognition"
+        },
+        {
+            "paperId": "6862945b8abc805eec2dcff0eb2445f7c8ea9a80",
+            "title": "What image information is important in silhouette-based gait recognition?"
+        },
+        {
+            "paperId": "2eace7b06ff797c4c1b61de6faf6c9ba53ea336c",
+            "title": "Statistical feature fusion for gait-based human recognition"
+        },
+        {
+            "paperId": "a612d4121dabd1da22bcbce3d5fc541510be56e7",
+            "title": "Person Recognition Method Using Sequential Walking Footprints via Overlapped Foot Shape and Center-of-Pressure Trajectory"
+        },
+        {
+            "paperId": "1d4d249897a0b50d1e3b9ac4adea7ed5c4e26976",
+            "title": "On automated model-based extraction and analysis of gait"
+        },
+        {
+            "paperId": "dac47575300286aa9ded39cff7a0db41faed816e",
+            "title": "The influence of walking speed on plantar pressure measurements using the two-step gait initiation protocol"
+        },
+        {
+            "paperId": "9580c5e11fedd346a63390f10da9fd1425cd8d2c",
+            "title": "Silhouette Analysis-Based Gait Recognition for Human Identification"
+        },
+        {
+            "paperId": "5801f5d2c23f57bea93a1b41f7113b47f0c5e02d",
+            "title": "The User Identification System Using Walking Pattern over the ubiFloor"
+        },
+        {
+            "paperId": "5257c447f9c50ee8bb2011fb72f8bd40bc0291d8",
+            "title": "Automatic gait recognition using area-based metrics"
+        },
+        {
+            "paperId": "4323efacb543635b394b17c577fb653bad9f4575",
+            "title": "Automatic gait recognition based on statistical shape analysis"
+        },
+        {
+            "paperId": "aca4edf74d0f1e482451e957ca0f0c3ab82a89b9",
+            "title": "Combining multiple evidences for gait recognition"
+        },
+        {
+            "paperId": "6aa8833283c343ab4be8363f9a1d232ef6f02687",
+            "title": "Basic gait parameters: a comparison of reference data for normal subjects 20 to 29 years of age from Kuwait and Scandinavia."
+        },
+        {
+            "paperId": "0bdcb2bbe4fac1b5f1869bf00ff777ff40c6862c",
+            "title": "Human Recognition on Combining Kinematic and Stationary Features"
+        },
+        {
+            "paperId": "677165856108cf67c089dd06e0ff501a1def5314",
+            "title": "Performance Analysis of Time-Distance Gait Parameters under Different Speeds"
+        },
+        {
+            "paperId": "8c56ecf60d4375fb217ffd35d62b613d3d05aa53",
+            "title": "Automatic Gait Recognition via Fourier Descriptors of Deformable Objects"
+        },
+        {
+            "paperId": "66ac534528ecb74ab1dc40c590779132c97c486e",
+            "title": "Gait Analysis for Human Identification"
+        },
+        {
+            "paperId": "45e211329ce7ace49b78a810638ceed384dcd110",
+            "title": "Biometric Gait Recognition"
+        },
+        {
+            "paperId": "585e5e6a2ab846198510d8bac5321129b97fc7a1",
+            "title": "Automatic extraction and description of human gait models for recognition purposes"
+        },
+        {
+            "paperId": "a4b96cf2336ca7a542ac16466412b2c8cf6e7f4c",
+            "title": "Gait recognition based on Procrustes shape analysis"
+        },
+        {
+            "paperId": "e5cf346a2ab2795598098e43c2f3e581d797d4c7",
+            "title": "High resolution pressure sensor distributed floor for future human-robot symbiosis environments"
+        },
+        {
+            "paperId": "4e6363bb23672a3f0cea1f61ef02bb3d875d1671",
+            "title": "The effect of gait speed and load carrying on the reliability of ground reaction forces"
+        },
+        {
+            "paperId": "06637fecb6cd2b600137451f8ea817c6c1f3a5be",
+            "title": "The gait identification challenge problem: data sets and baseline algorithm"
+        },
+        {
+            "paperId": "09333e0dcb709b1f67dd86fc308b604231627278",
+            "title": "View-invariant Estimation of Height and Stride for Gait Recognition"
+        },
+        {
+            "paperId": "686d07173fd8280536fdc4e358aa240f3443d649",
+            "title": "Silhouette-based human identification from body shape and gait"
+        },
+        {
+            "paperId": "a3982539ce54c540d9fa58f86518a3b7dbd56768",
+            "title": "Gait-based recognition of humans using continuous HMMs"
+        },
+        {
+            "paperId": "68d885a2de9217ba787b8c8e55089944bbc558ee",
+            "title": "Gait analysis for recognition and classification"
+        },
+        {
+            "paperId": "95730cd7680a98c94fa278cdaa831a69c534fd83",
+            "title": "Integrated face and gait recognition from multiple views"
+        },
+        {
+            "paperId": "fe26c9cd23bd6119ab92fb2702800ee0967d7c1f",
+            "title": "Gait recognition from time-normalized joint-angle trajectories in the walking plane"
+        },
+        {
+            "paperId": "05ecbf2cd477ce1e1b12b2c1e78e4fc8dfdc08d2",
+            "title": "Gait recognition using static, activity-specific parameters"
+        },
+        {
+            "paperId": "188345f441f7e36fdcd8616723abfb7e6135bcf1",
+            "title": "EigenGait: Motion-Based Recognition of People Using Image Self-Similarity"
+        },
+        {
+            "paperId": "1dafef6c616186a0f583cd3aed0c87fc82a0fab2",
+            "title": "A Multi-view Method for Gait Recognition Using Static Body Parameters"
+        },
+        {
+            "paperId": "d85249df19a84ffeec4b613044af0076a86c4939",
+            "title": "Differences in gait parameters at a preferred walking speed in healthy subjects due to age, height and body weight"
+        },
+        {
+            "paperId": "fc8cc96850c1043300e70c8a3f5feb54ed3bc585",
+            "title": "Footprint-based personal recognition"
+        },
+        {
+            "paperId": "91e35dae3e25ff3e9883ad2d8bf0b3587bc4151e",
+            "title": "The NIST speaker recognition evaluation - Overview, methodology, systems, results, perspective"
+        },
+        {
+            "paperId": "a007ae8b8cb591f9c830162185272d14ecc146dd",
+            "title": "A Biomechanical Analysis of Gait During Pregnancy*"
+        },
+        {
+            "paperId": "5a68c553cc6b7eba1a1266050543e75e426df9ae",
+            "title": "Statistical gait description via temporal moments"
+        },
+        {
+            "paperId": "a69e63ef02a0b421e71d2a3074213c98a06337db",
+            "title": "The smart floor: a mechanism for natural user identification and tracking"
+        },
+        {
+            "paperId": "86f8917aeb950df1ef62e73dcb87f38f70a27032",
+            "title": "Visual analysis of gait as a cue to identity"
+        },
+        {
+            "paperId": "9d91d98fd9d6b3bc7c47df5e4023aa223f2044fb",
+            "title": "Recognising humans by gait via parametric canonical space"
+        },
+        {
+            "paperId": "518e79bd4f7505aa0a7857aa3361f81c602956ee",
+            "title": "The dynamics of gait transitions: effects of grade and load."
+        },
+        {
+            "paperId": "5cb4839b55c3979b26735b1c6bf2ec587e2b1e31",
+            "title": "The ORL Acfive Floor"
+        },
+        {
+            "paperId": "791e530f6a4098bb39696d1476032821a7a1c569",
+            "title": "The FERET evaluation methodology for face-recognition algorithms"
+        },
+        {
+            "paperId": "19f496acda8da2ef5c4c1bd8fa0b8b965ae7de8f",
+            "title": "Using Gait as a Biometric, via Phase-weighted Magnitude Spectra"
+        },
+        {
+            "paperId": "0ea50925ed471abde38a5e6e2124444a13634348",
+            "title": "Gait Changes in Older Adults: Predictors of Falls or Indicators of Fear?"
+        },
+        {
+            "paperId": "562e84a4d1c5d39fff59d6e66e720d0e4b8b30f4",
+            "title": "Uniqueness of bare feet and its use as a possible means of identification."
+        },
+        {
+            "paperId": "1eaaf3ee504e5e738af436934fec2d456046985e",
+            "title": "Moving object recognition in eigenspace representation: gait analysis and lip reading"
+        },
+        {
+            "paperId": "50837c95dc9bd236b6c1fe1a13d8541bda285880",
+            "title": "Describing motion for recognition"
+        },
+        {
+            "paperId": "552c8b55849410457dad2b7cda2d6baf1974d615",
+            "title": "Effects of walking speed on plantar pressure patterns and hindfoot angular motion"
+        },
+        {
+            "paperId": "57854a0e8309af7ad6f5d9612e20e2ba1a171a96",
+            "title": "Analyzing and recognizing walking figures in XYT"
+        },
+        {
+            "paperId": "ccc114434eba1eece90c83876502e115d9e36e02",
+            "title": "Mechanics of the human walking apparatus"
+        },
+        {
+            "paperId": "b712fb5929ce88ce605f881c5edc177f695a18e8",
+            "title": "Biomechanical walking pattern changes in the fit and healthy elderly."
+        },
+        {
+            "paperId": "2179a04df916f2aa161002f13f79f15d8ce32150",
+            "title": "Ground reaction forces at different speeds of human walking and running."
+        },
+        {
+            "paperId": "16a76a1c16055e811a432ca831d978e6428423ee",
+            "title": "The identification of emotions from gait information"
+        },
+        {
+            "paperId": "9ec4b0696f020d37bab1209ec24799549668e5ac",
+            "title": "Gait Analysis: An Introduction"
+        },
+        {
+            "paperId": "f44e84db424ed4f317e97677a96bbb976ad2d49c",
+            "title": "A biomechanical invariant for gait perception."
+        },
+        {
+            "paperId": "1c25a91fdb4e8da680eb19cb20d0f2ffbb1ea34f",
+            "title": "Recognizing the sex of a walker from a dynamic point-light display"
+        },
+        {
+            "paperId": "a6f0aa2485265e2f714708570a495cf0469ca717",
+            "title": "Recognizing friends by their walk: Gait perception without familiarity cues"
+        },
+        {
+            "paperId": "58ea2fa0580b2117618be6e1cc9658a5c9531dba",
+            "title": "Visual perception of biological motion and a model for its analysis"
+        },
+        {
+            "paperId": "fec5c3a9bf9fcfe02e6dc418b6d88809184c5276",
+            "title": "WALKING PATTERNS OF NORMAL MEN."
+        },
+        {
+            "paperId": "1613ec5693a1e808d14ba0800b2ddd48063d03bf",
+            "title": "The major determinants in normal and pathological gait."
+        },
+        {
+            "paperId": "c2a26d90167cdf7e69e069d24fc061cc34cb9411",
+            "title": "2020 IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops (CVPRW)"
+        },
+        {
+            "paperId": "9f0f8579af8bd685ae93b276e86eb540f383bfb4",
+            "title": "Machine Learning Techniques for Gait Biometric Recognition"
+        },
+        {
+            "paperId": null,
+            "title": "Online; accessed 19-January2017"
+        },
+        {
+            "paperId": "9f71135b840d15efec3202084bfcfef79bf02ba6",
+            "title": "The largest inertial sensor-based gait database and performance evaluation of gait-based personal authentication"
+        },
+        {
+            "paperId": "dca19d0dda14ed2997e8bcd7f6fe6320a0e0321a",
+            "title": "Quality-dependent Score-level Fusion of Face, Gait, and the Height Biometrics"
+        },
+        {
+            "paperId": "bdeff833f3a7c035ff2987984317493d0a02f8d9",
+            "title": "The TUM Gait from Audio, Image and Depth (GAID) database: Multimodal recognition of subjects and traits"
+        },
+        {
+            "paperId": "f619ce6fe06807a3315e3c45124a1213d3f13b49",
+            "title": "2014 IEEE 11th Consumer Communications and Networking Conference (CCNC)"
+        },
+        {
+            "paperId": null,
+            "title": "Detectives turn to podiatry to help solve murder case. [Online; accessed 19-January-2017"
+        },
+        {
+            "paperId": null,
+            "title": "International Conference on Biometrics (ICB)"
+        },
+        {
+            "paperId": "3bdfa011460b294cd14efe41465d9a618c4650b6",
+            "title": "Gait Recognition with Kinect"
+        },
+        {
+            "paperId": "bea5ebdf30dcbf37b258d3f24410bab377908c42",
+            "title": "Legacy of Footprints Recognition- A Review"
+        },
+        {
+            "paperId": "fd375febf700998cd5848823f281f1adf56b5c48",
+            "title": "Gait Mimicking : Attack Resistance Testing of Gait Authentication Systems"
+        },
+        {
+            "paperId": "837635f647c42d03812a7f4ab5f87c5a49372a0b",
+            "title": "Gait recognition using Gait Entropy Image"
+        },
+        {
+            "paperId": "310a88a60ffa2d8a0fa7ef9fc77fa842d16eed57",
+            "title": "View Invariant Gait Recognition"
+        },
+        {
+            "paperId": "c72f4d610ee898b4d5d4d3c300b74c663fc85b34",
+            "title": "Footstep recognition for a smart home environment"
+        },
+        {
+            "paperId": "843d36912a670df0ae9a875b30232e2f8164cd58",
+            "title": "Footprint-based biometric verification"
+        },
+        {
+            "paperId": null,
+            "title": "Biometric identification from a floor based PVDF sensor array using hidden markov models"
+        },
+        {
+            "paperId": "4f93cd09785c6e77bf4bc5a788e079df524c8d21",
+            "title": "On a Large Sequence-Based Human Gait Database"
+        },
+        {
+            "paperId": "53863f17c5b22a429120db3cbf6bd5df493ff6ea",
+            "title": "TOWARDS THE ADAPTIVE IDENTIFICATION OF WALKERS : AUTOMATED FEATURE SELECTION OF FOOTSTEPS USING DISTINCTION-SENSITIVE LVQ"
+        },
+        {
+            "paperId": "c628920b58904ef592f68175de04eed0232f0f6e",
+            "title": "A Study of Human Gaits across Different Speeds"
+        },
+        {
+            "paperId": "fc2849bc1690b2b3d3972319da4910b9890df8ab",
+            "title": "Biometric authentication system using human gait"
+        },
+        {
+            "paperId": "599cc88971d2f5b375ff23b6342f17855e01791c",
+            "title": "The CMU Motion of Body (MoBo) Database"
+        },
+        {
+            "paperId": "dccdfea475faa2ecee679803a8b4177ea7b5384c",
+            "title": "Recognizing People by Their Gait: The Shape of Motion"
+        },
+        {
+            "paperId": "398abddf9d4b723fcc2cd1b1b2287083e54ea487",
+            "title": "The ORL Active Floor"
+        },
+        {
+            "paperId": "e3580e40bcca7557e8bd0bf1cfe70095d7aaf0e2",
+            "title": "Audio- and Video-based Biometric Person Authentication"
+        },
+        {
+            "paperId": "019d91af53b19a72030726b2bfae06ddc1686218",
+            "title": "Basic gait parameters: reference data for normal subjects, 10-79 years of age."
+        },
+        {
+            "paperId": "c4e469db2da2fa0de10019bca3fa23a8d6a819ba",
+            "title": "\uc80a\uc740 \uc131\uc778 \ub0a8\uc790\ub4e4\uc758 \ud0a4\uc640 \ubc1c\ubd80\ud53c\uc758 \uc77c\ubcc0\ud654\uc5d0 \uad00\ud55c \uc5f0\uad6c = Circadian changes of human stature and foot volume for young adult men"
+        },
+        {
+            "paperId": "924947c814f08e7fad2bc590a136ccc816e9cf30",
+            "title": "Gait as a total pattern of movement."
+        },
+        {
+            "paperId": "c5637543e80f97c9ddab8b54a635cf71941e2786",
+            "title": "This article has been accepted for inclusion in a future issue of this journal. Content is final as presented, with the exception of pagination. IEEE TRANSACTIONS ON SYSTEMS, MAN, AND CYBERNETICS\u2014PART B: CYBERNETICS 1 Self-Calibrating View-Invariant Gait"
+        }
+    ]
+}

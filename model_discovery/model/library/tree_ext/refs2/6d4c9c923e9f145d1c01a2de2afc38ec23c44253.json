@@ -1,0 +1,173 @@
+{
+    "paperId": "6d4c9c923e9f145d1c01a2de2afc38ec23c44253",
+    "externalIds": {
+        "MAG": "2308045930",
+        "DBLP": "conf/cvpr/KarpathyTSLSF14",
+        "DOI": "10.1109/CVPR.2014.223",
+        "CorpusId": 206592218
+    },
+    "title": "Large-Scale Video Classification with Convolutional Neural Networks",
+    "abstract": "Convolutional Neural Networks (CNNs) have been established as a powerful class of models for image recognition problems. Encouraged by these results, we provide an extensive empirical evaluation of CNNs on large-scale video classification using a new dataset of 1 million YouTube videos belonging to 487 classes. We study multiple approaches for extending the connectivity of a CNN in time domain to take advantage of local spatio-temporal information and suggest a multiresolution, foveated architecture as a promising way of speeding up the training. Our best spatio-temporal networks display significant performance improvements compared to strong feature-based baselines (55.3% to 63.9%), but only a surprisingly modest improvement compared to single-frame models (59.3% to 60.9%). We further study the generalization performance of our best model by retraining the top layers on the UCF-101 Action Recognition dataset and observe significant performance improvements compared to the UCF-101 baseline model (63.3% up from 43.9%).",
+    "venue": "2014 IEEE Conference on Computer Vision and Pattern Recognition",
+    "year": 2014,
+    "referenceCount": 30,
+    "citationCount": 6211,
+    "influentialCitationCount": 449,
+    "openAccessPdf": {
+        "url": "http://www.cs.cmu.edu/~rahuls/pub/cvpr2014-deepvideo-rahuls.pdf",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work studies multiple approaches for extending the connectivity of a CNN in time domain to take advantage of local spatio-temporal information and suggests a multiresolution, foveated architecture as a promising way of speeding up the training."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2354728",
+            "name": "A. Karpathy"
+        },
+        {
+            "authorId": "1805076",
+            "name": "G. Toderici"
+        },
+        {
+            "authorId": "152821938",
+            "name": "Sanketh Shetty"
+        },
+        {
+            "authorId": "152456068",
+            "name": "Thomas Leung"
+        },
+        {
+            "authorId": "1694199",
+            "name": "R. Sukthankar"
+        },
+        {
+            "authorId": "48004138",
+            "name": "Li Fei-Fei"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "6270baedeba28001cd1b563a199335720d6e0fe0",
+            "title": "CNN Features Off-the-Shelf: An Astounding Baseline for Recognition"
+        },
+        {
+            "paperId": "1109b663453e78a59e4f66446d71720ac58cec25",
+            "title": "OverFeat: Integrated Recognition, Localization and Detection using Convolutional Networks"
+        },
+        {
+            "paperId": "fc26b9c1afe81e1b20195123fe6f3ced9520abb6",
+            "title": "Visualizing and Understanding Convolutional Neural Networks"
+        },
+        {
+            "paperId": "2f4df08d9072fc2ac181b7fced6a245315ce05c8",
+            "title": "Rich Feature Hierarchies for Accurate Object Detection and Semantic Segmentation"
+        },
+        {
+            "paperId": "237a04dd8291cbdb59b6dc4b53e689af743fe2a3",
+            "title": "Learning Hierarchical Features for Scene Labeling"
+        },
+        {
+            "paperId": "8f3c7fc72635c3b95dc3530fdaceee1d4681548e",
+            "title": "Indoor Semantic Segmentation using depth information"
+        },
+        {
+            "paperId": "09193e19b59fc8f05bee9d6efbfb1607ca5b6501",
+            "title": "Deep Neural Networks Segment Neuronal Membranes in Electron Microscopy Images"
+        },
+        {
+            "paperId": "3127190433230b3dc1abd0680bb58dced4bcd90e",
+            "title": "Large Scale Distributed Deep Networks"
+        },
+        {
+            "paperId": "da9e411fcf740569b6b356f330a1d0fc077c8d7c",
+            "title": "UCF101: A Dataset of 101 Human Actions Classes From Videos in The Wild"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "9f7f9aba0a6a966ce04e29e401ea28f9eae82f02",
+            "title": "Convolutional neural networks applied to house numbers digit classification"
+        },
+        {
+            "paperId": "12b6551a0f9f5aa62f7d37f03ebc66631e529c4b",
+            "title": "Sequential Deep Learning for Human Action Recognition"
+        },
+        {
+            "paperId": "3195f62e0a542259599ed3e0ad1c3526e0fe02b3",
+            "title": "Discriminative tag learning on YouTube videos with latent sub-tags"
+        },
+        {
+            "paperId": "aba7b76c300db4159592ee2933d8796176d1e737",
+            "title": "Action recognition by dense trajectories"
+        },
+        {
+            "paperId": "42269d0438c0ae4ca892334946ed779999691074",
+            "title": "Learning hierarchical invariant spatio-temporal features for action recognition with independent subspace analysis"
+        },
+        {
+            "paperId": "4d476b96be73fccc61f2076befbf5a468caa4180",
+            "title": "Convolutional Learning of Spatio-temporal Features"
+        },
+        {
+            "paperId": "994a7b903b937f8b177c035db86852091fd26aa7",
+            "title": "Modeling Temporal Structure of Decomposable Motion Segments for Activity Classification"
+        },
+        {
+            "paperId": "2d6d7a3876574373bfdf4e587b685ecc09973926",
+            "title": "In the Wild"
+        },
+        {
+            "paperId": "a39e6968580762ac5ae3cd064e86e1849f3efb7f",
+            "title": "Evaluation of Local Spatio-temporal Features for Action Recognition"
+        },
+        {
+            "paperId": "aca29d7bbbf54078f842c8ca1d75d8d8c68191d2",
+            "title": "Recognizing realistic actions from videos \u201cin the wild\u201d"
+        },
+        {
+            "paperId": "d2c733e34d48784a37d717fe43d9e93277a8c53e",
+            "title": "ImageNet: A large-scale hierarchical image database"
+        },
+        {
+            "paperId": "02a98118ce990942432c0147ff3c0de756b4b76a",
+            "title": "Learning realistic human actions from movies"
+        },
+        {
+            "paperId": "9f1707caad72573633c2307fa26ec093e8f4bb03",
+            "title": "Behavior recognition via sparse spatio-temporal features"
+        },
+        {
+            "paperId": "39dc218eb5582e861e53c8451586786cfaca08ec",
+            "title": "On Space-Time Interest Points"
+        },
+        {
+            "paperId": "e8b12467bdc20bde976750b8a28decdb33246d1d",
+            "title": "Histograms of oriented gradients for human detection"
+        },
+        {
+            "paperId": "642e328cae81c5adb30069b680cf60ba6b475153",
+            "title": "Video Google: a text retrieval approach to object matching in videos"
+        },
+        {
+            "paperId": "7e3c3fee11758b15b56d719cca819303eca9b54b",
+            "title": "A Statistical Approach to Texture Classification from Single Images"
+        },
+        {
+            "paperId": "f42b865e20e61a954239f421b42007236e671f19",
+            "title": "GradientBased Learning Applied to Document Recognition"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "52dfa20f6fdfcda8c11034e3d819f4bd47e6207d",
+            "title": "Ieee Transactions on Pattern Analysis and Machine Intelligence 1 3d Convolutional Neural Networks for Human Action Recognition"
+        }
+    ]
+}

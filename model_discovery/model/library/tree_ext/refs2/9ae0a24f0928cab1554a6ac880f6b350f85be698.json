@@ -1,0 +1,186 @@
+{
+    "paperId": "9ae0a24f0928cab1554a6ac880f6b350f85be698",
+    "externalIds": {
+        "DBLP": "journals/corr/KaiserGSVPJU17",
+        "MAG": "2626792426",
+        "ArXiv": "1706.05137",
+        "CorpusId": 663293
+    },
+    "title": "One Model To Learn Them All",
+    "abstract": "Deep learning yields great results across many fields, from speech recognition, image classification, to translation. But for each problem, getting a deep model to work well involves research into the architecture and a long period of tuning. We present a single model that yields good results on a number of problems spanning multiple domains. In particular, this single model is trained concurrently on ImageNet, multiple translation tasks, image captioning (COCO dataset), a speech recognition corpus, and an English parsing task. Our model architecture incorporates building blocks from multiple domains. It contains convolutional layers, an attention mechanism, and sparsely-gated layers. Each of these computational blocks is crucial for a subset of the tasks we train on. Interestingly, even if a block is not crucial for a task, we observe that adding it never hurts performance and in most cases improves it on all tasks. We also show that tasks with less data benefit largely from joint training with other tasks, while performance on large tasks degrades only slightly if at all.",
+    "venue": "arXiv.org",
+    "year": 2017,
+    "referenceCount": 33,
+    "citationCount": 318,
+    "influentialCitationCount": 13,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that tasks with less data benefit largely from joint training with other tasks, while performance on large tasks degrades only slightly if at all, and that adding a block to the model never hurts performance and in most cases improves it on all tasks."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "40527594",
+            "name": "Lukasz Kaiser"
+        },
+        {
+            "authorId": "19177000",
+            "name": "Aidan N. Gomez"
+        },
+        {
+            "authorId": "1846258",
+            "name": "Noam M. Shazeer"
+        },
+        {
+            "authorId": "40348417",
+            "name": "Ashish Vaswani"
+        },
+        {
+            "authorId": "3877127",
+            "name": "Niki Parmar"
+        },
+        {
+            "authorId": "145024664",
+            "name": "Llion Jones"
+        },
+        {
+            "authorId": "39328010",
+            "name": "Jakob Uszkoreit"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "07c4fc48ad7b7d1a417b0bb72d0ae2d4efc5aa83",
+            "title": "Depthwise Separable Convolutions for Neural Machine Translation"
+        },
+        {
+            "paperId": "510e26733aaff585d65701b9f1be7ca9d5afc586",
+            "title": "Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer"
+        },
+        {
+            "paperId": "a486e2839291111bb44fa1f07731ada123539f75",
+            "title": "Google\u2019s Multilingual Neural Machine Translation System: Enabling Zero-Shot Translation"
+        },
+        {
+            "paperId": "98445f4172659ec5e891e031d8202c102135c644",
+            "title": "Neural Machine Translation in Linear Time"
+        },
+        {
+            "paperId": "735d547fc75e0772d2a78c46a1cc5fad7da1474c",
+            "title": "Can Active Memory Replace Attention?"
+        },
+        {
+            "paperId": "5b6ec746d309b165f9f9def873a2375b6fb40f3d",
+            "title": "Xception: Deep Learning with Depthwise Separable Convolutions"
+        },
+        {
+            "paperId": "df0402517a7338ae28bc54acaac400de6b456a46",
+            "title": "WaveNet: A Generative Model for Raw Audio"
+        },
+        {
+            "paperId": "97fb4e3d45bb098e27e0071448b6152217bd35a5",
+            "title": "Layer Normalization"
+        },
+        {
+            "paperId": "b5c26ab8767d046cb6e32d959fdf726aee89bb62",
+            "title": "Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning"
+        },
+        {
+            "paperId": "7f5fc84819c0cf94b771fe15141f65b123f7b8ec",
+            "title": "Multi-Scale Context Aggregation by Dilated Convolutions"
+        },
+        {
+            "paperId": "1518039b5001f1836565215eb047526b3ac7f462",
+            "title": "Neural Machine Translation of Rare Words with Subword Units"
+        },
+        {
+            "paperId": "eb5eb891061c78f4fcbc9deb3df8bca7fd005acd",
+            "title": "Encoding Source Language with Convolutional Neural Network for Machine Translation"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "f500b1a7df00f67c417673e0538d86abb8a333fa",
+            "title": "Facial Landmark Detection by Deep Multi-task Learning"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "71b7178df5d2b112d07e45038cb5637208659ff7",
+            "title": "Microsoft COCO: Common Objects in Context"
+        },
+        {
+            "paperId": "944a1cfd79dbfb6fef460360a0765ba790f4027a",
+            "title": "Recurrent Continuous Translation Models"
+        },
+        {
+            "paperId": "528beaa995bf1bd1ae451b18218674af9ecd2b50",
+            "title": "Rotation, Scaling and Deformation Invariant Scattering for Texture Discrimination"
+        },
+        {
+            "paperId": "72387d6050efa32a1fe7ba9b07f2f35af8d9d046",
+            "title": "Multi-task learning in deep neural networks for improved phoneme recognition"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "6658bbf68995731b2083195054ff45b4eca38b3a",
+            "title": "Context-Dependent Pre-Trained Deep Neural Networks for Large-Vocabulary Speech Recognition"
+        },
+        {
+            "paperId": "a78273144520d57e150744cf75206e881e11cc5b",
+            "title": "Multimodal Deep Learning"
+        },
+        {
+            "paperId": "57458bc1cffe5caa45a885af986d70f723f406b4",
+            "title": "A unified architecture for natural language processing: deep neural networks with multitask learning"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "fdf533eeb1306ba418b09210387833bdf27bb756",
+            "title": "Exploiting Unrelated Tasks in Multi-Task Learning"
+        },
+        {
+            "paperId": null,
+            "title": "Treebank-3 ldc99t42. CD-ROM. Philadelphia, Penn"
+        },
+        {
+            "paperId": null,
+            "title": "Csr-ii (wsj1) complete"
+        },
+        {
+            "paperId": null,
+            "title": "Linguistic Data Consortium et al. Csr-ii (wsj1) complete. Linguistic Data Consortium"
+        },
+        {
+            "paperId": null,
+            "title": "Le Maxim Krikun Yonghui Wu Zhifeng Chen Nikhil Thorat Fernanda Vi\u00e9gas Martin Wattenberg Greg Corrado Macduff Hughes Jeffrey Dean Melvin"
+        }
+    ]
+}

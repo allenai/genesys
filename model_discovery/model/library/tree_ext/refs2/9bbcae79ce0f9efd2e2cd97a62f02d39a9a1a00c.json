@@ -1,0 +1,170 @@
+{
+    "paperId": "9bbcae79ce0f9efd2e2cd97a62f02d39a9a1a00c",
+    "externalIds": {
+        "DBLP": "journals/corr/abs-1709-06493",
+        "MAG": "2755728112",
+        "ArXiv": "1709.06493",
+        "CorpusId": 22458497
+    },
+    "title": "Learning to update Auto-associative Memory in Recurrent Neural Networks for Improving Sequence Memorization",
+    "abstract": "Learning to remember long sequences remains a challenging task for recurrent neural networks. Register memory and attention mechanisms were both proposed to resolve the issue with either high computational cost to retain memory differentiability, or by discounting the RNN representation learning towards encoding shorter local contexts than encouraging long sequence encoding. Associative memory, which studies the compression of multiple patterns in a fixed size memory, were rarely considered in recent years. Although some recent work tries to introduce associative memory in RNN and mimic the energy decay process in Hopfield nets, it inherits the shortcoming of rule-based memory updates, and the memory capacity is limited. This paper proposes a method to learn the memory update rule jointly with task objective to improve memory capacity for remembering long sequences. Also, we propose an architecture that uses multiple such associative memory for more complex input encoding. We observed some interesting facts when compared to other RNN architectures on some well-studied sequence learning tasks.",
+    "venue": "arXiv.org",
+    "year": 2017,
+    "referenceCount": 34,
+    "citationCount": 11,
+    "influentialCitationCount": 2,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a method to learn the memory update rule jointly with task objective to improve memory capacity for remembering long sequences and proposes an architecture that uses multiple such associative memory for more complex input encoding."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "47527881",
+            "name": "Wei Zhang"
+        },
+        {
+            "authorId": "145218984",
+            "name": "Bowen Zhou"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "84bad036fbe21a024975cefa71785930fdec758e",
+            "title": "On a Model of Associative Memory with Huge Storage Capacity"
+        },
+        {
+            "paperId": "67d968c7450878190e45ac7886746de867bf673d",
+            "title": "Neural Architecture Search with Reinforcement Learning"
+        },
+        {
+            "paperId": "0680f04750b1e257ffdd161e85382031dc73ea7f",
+            "title": "End-to-End Answer Chunk Extraction and Ranking for Reading Comprehension"
+        },
+        {
+            "paperId": "c91ae35dbcb6d479580ecd235eabf98374acdb55",
+            "title": "Using Fast Weights to Attend to the Recent Past"
+        },
+        {
+            "paperId": "97fb4e3d45bb098e27e0071448b6152217bd35a5",
+            "title": "Layer Normalization"
+        },
+        {
+            "paperId": "7dba53e72c182e25e98e8f73a99d75ff69dda0c2",
+            "title": "Recurrent Highway Networks"
+        },
+        {
+            "paperId": "05dd7254b632376973f3a1b4d39485da17814df5",
+            "title": "SQuAD: 100,000+ Questions for Machine Comprehension of Text"
+        },
+        {
+            "paperId": "1298dae5751fb06184f6b067d1503bde8037bdb7",
+            "title": "Deep Reinforcement Learning for Dialogue Generation"
+        },
+        {
+            "paperId": "ed332c92664cd64843a7ba9373d992e9547230f6",
+            "title": "Dense Associative Memory for Pattern Recognition"
+        },
+        {
+            "paperId": "f37076f426023241f19cdc2fb0a0fd733a6fa7fa",
+            "title": "Abstractive Text Summarization using Sequence-to-sequence RNNs and Beyond"
+        },
+        {
+            "paperId": "f01345a2efc1aa5100b27caf82368bf410937152",
+            "title": "Structured Memory for Neural Turing Machines"
+        },
+        {
+            "paperId": "b87e3c343c6012180fd84a7e003d8453615c9ed1",
+            "title": "Learning dynamic Boltzmann machines with spike-timing dependent plasticity"
+        },
+        {
+            "paperId": "f04df4e20a18358ea2f689b4c129781628ef7fc1",
+            "title": "A large annotated corpus for learning natural language inference"
+        },
+        {
+            "paperId": "d1505c6123c102e53eb19dff312cb25cea840b72",
+            "title": "Teaching Machines to Read and Comprehend"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "8a756d4d25511d92a45d0f4545fa819de993851d",
+            "title": "Recurrent Models of Visual Attention"
+        },
+        {
+            "paperId": "65438e0ba226c1f97bd8a36333ebc3297b1a32fd",
+            "title": "Reinforcement learning in robotics: A survey"
+        },
+        {
+            "paperId": "a538b05ebb01a40323997629e171c91aa28b8e2f",
+            "title": "Rectified Linear Units Improve Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": "ddc45fad8d15771d9f1f8579331458785b2cdd93",
+            "title": "Deep Boltzmann Machines"
+        },
+        {
+            "paperId": "0228810a988f6b8f06337e14f564e2fd3f6e1056",
+            "title": "The Recurrent Temporal Restricted Boltzmann Machine"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "17594df98c222217a11510dd454ba52a5a737378",
+            "title": "On the computational power of neural nets"
+        },
+        {
+            "paperId": "4f7476037408ac3d993f5088544aab427bc319c1",
+            "title": "Information processing in dynamical systems: foundations of harmony theory"
+        },
+        {
+            "paperId": "98b4d4e24aab57ab4e1124ff8106909050645cfa",
+            "title": "Neural networks and physical systems with emergent collective computational abilities."
+        },
+        {
+            "paperId": "6a7c79325d6a10525ce8a432994eed1bb6ad1d44",
+            "title": "An Adaptive Associative Memory Principle"
+        },
+        {
+            "paperId": null,
+            "title": "and Ba"
+        },
+        {
+            "paperId": "e95d3934e51107da7610acd0b1bcb6551671f9f1",
+            "title": "A Practical Guide to Training Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": null,
+            "title": "and Peters"
+        },
+        {
+            "paperId": null,
+            "title": "and Hinton"
+        },
+        {
+            "paperId": null,
+            "title": "and Schmidhuber"
+        },
+        {
+            "paperId": "7257eacd80458e70c74494eb1b6759b52ff21399",
+            "title": "Using fast weights to deblur old memories"
+        }
+    ]
+}

@@ -1,0 +1,48 @@
+{
+    "paperId": "294ef14804eeb9bed629eab9ff974ca3d0ffe92a",
+    "externalIds": {
+        "MAG": "2177031359",
+        "CorpusId": 123806696
+    },
+    "title": "The dual-tree complex wavelet transform: a new technique for shift invariance and directional filters",
+    "abstract": "A new implementation of the Discrete Wavelet Transform is presented, suitable for a range of signal and image processing applications. It employs a dual tree of wavelet lters to obtain the real and imaginary parts of complex wavelet coeecients. This introduces limited redundancy (4:1 for 2-dimensional signals) and allows the transform to provide approximate shift in-variance and directionally selective lters (properties lacking in the traditional wavelet transform) while preserving the usual properties of perfect reconstruction and computational eeciency. An application to texture synthesis is presented.",
+    "venue": "",
+    "year": 1998,
+    "referenceCount": 5,
+    "citationCount": 687,
+    "influentialCitationCount": 76,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new implementation of the Discrete Wavelet Transform is presented, suitable for a range of signal and image processing applications, that employs a dual tree of wavelet lters to obtain the real and imaginary parts of complex wavelet coeecients."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "48200751",
+            "name": "N. Kingsbury"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "a61cf742242b51c5a7a3c1de0843b6d64d87b029",
+            "title": "Motion estimation using a complex-valued wavelet transform"
+        },
+        {
+            "paperId": "38850b393d7132dc14141f7d643aca4cb9c321da",
+            "title": "Pyramid-based texture analysis/synthesis"
+        },
+        {
+            "paperId": "417404715e09cec1d89387616ee6efc07daa4a55",
+            "title": "Flexible design of multidimensional perfect reconstruction FIR 2-band filters using transformations of variables"
+        },
+        {
+            "paperId": "b78626ce1a562c05b1c06f9c805e839f9760b9ab",
+            "title": "A Theory for Multiresolution Signal Decomposition: The Wavelet Representation"
+        },
+        {
+            "paperId": null,
+            "title": "\\Shiftable multi-scale transforms"
+        }
+    ]
+}

@@ -1,0 +1,82 @@
+{
+    "paperId": "f53e2ae46470b89cd1ce6e3bf1d60d9c59722ce1",
+    "externalIds": {
+        "ACL": "D15-1237",
+        "MAG": "2251818205",
+        "DBLP": "conf/emnlp/YangYM15",
+        "DOI": "10.18653/v1/D15-1237",
+        "CorpusId": 1373518
+    },
+    "title": "WikiQA: A Challenge Dataset for Open-Domain Question Answering",
+    "abstract": "We describe the WIKIQA dataset, a new publicly available set of question and sentence pairs, collected and annotated for research on open-domain question answering. Most previous work on answer sentence selection focuses on a dataset created using the TREC-QA data, which includes editor-generated questions and candidate answer sentences selected by matching content words in the question. WIKIQA is constructed using a more natural process and is more than an order of magnitude larger than the previous dataset. In addition, the WIKIQA dataset also includes questions for which there are no correct sentences, enabling researchers to work on answer triggering, a critical component in any QA system. We compare several systems on the task of answer sentence selection on both datasets and also describe the performance of a system on the problem of answer triggering using the WIKIQA dataset.",
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2015,
+    "referenceCount": 10,
+    "citationCount": 852,
+    "influentialCitationCount": 137,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/D15-1237.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The WIKIQA dataset is described, a new publicly available set of question and sentence pairs, collected and annotated for research on open-domain question answering, which is more than an order of magnitude larger than the previous dataset."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2143684464",
+            "name": "Yi Yang"
+        },
+        {
+            "authorId": "144105277",
+            "name": "Wen-tau Yih"
+        },
+        {
+            "authorId": "50004012",
+            "name": "Christopher Meek"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "4cfad7889dc12825309325cd4b4f3febed424e36",
+            "title": "Deep Learning for Answer Sentence Selection"
+        },
+        {
+            "paperId": "f3de86aeb442216a8391befcacb49e58b478f512",
+            "title": "Distributed Representations of Sentences and Documents"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "7aa63f414a4d7c6e4369a15a04dc5d3eb5da2b0e",
+            "title": "Automatic Feature Engineering for Answer Selection and Extraction"
+        },
+        {
+            "paperId": "f1aa6df7f18f9cb7d6b6c5c190aeade47b450656",
+            "title": "Question Answering Using Enhanced Lexical Semantic Models"
+        },
+        {
+            "paperId": "228920ddc0d376c376ae534ceed589005f51867a",
+            "title": "Answer Extraction as Sequence Tagging with Tree Edit Distance"
+        },
+        {
+            "paperId": "0fd0e3854ee696148e978ec33d5c042554cd4d23",
+            "title": "Tree Edit Models for Recognizing Textual Entailments, Paraphrases, and Answers to Questions"
+        },
+        {
+            "paperId": "5ab6ddd1d45302bf635cce5cb93fbaf4ea79458a",
+            "title": "What is the Jeopardy Model? A Quasi-Synchronous Grammar for QA"
+        },
+        {
+            "paperId": "2c8ac3e1f0edeed1fbd76813e61efdc384c319c7",
+            "title": "Learning Question Classifiers"
+        },
+        {
+            "paperId": "46be284f1e1ece64465af6fe3a69ce544e0c7e33",
+            "title": "The TREC-8 Question Answering Track Evaluation"
+        }
+    ]
+}

@@ -1,0 +1,313 @@
+{
+    "paperId": "c71637baf838cec8d97e1f25633f4a0e1140aa8b",
+    "externalIds": {
+        "DBLP": "conf/cdc/HeemelsJT12",
+        "MAG": "1985235885",
+        "DOI": "10.1109/CDC.2012.6425820",
+        "CorpusId": 12340529
+    },
+    "title": "An introduction to event-triggered and self-triggered control",
+    "abstract": "Recent developments in computer and communication technologies have led to a new type of large-scale resource-constrained wireless embedded control systems. It is desirable in these systems to limit the sensor and control computation and/or communication to instances when the system needs attention. However, classical sampled-data control is based on performing sensing and actuation periodically rather than when the system needs attention. This paper provides an introduction to event- and self-triggered control systems where sensing and actuation is performed when needed. Event-triggered control is reactive and generates sensor sampling and control actuation when, for instance, the plant state deviates more than a certain threshold from a desired value. Self-triggered control, on the other hand, is proactive and computes the next sampling or actuation instance ahead of time. The basics of these control strategies are introduced together with a discussion on the differences between state feedback and output feedback for event-triggered control. It is also shown how event- and self-triggered control can be implemented using existing wireless communication technology. Some applications to wireless control in process industry are discussed as well.",
+    "venue": "IEEE Conference on Decision and Control",
+    "year": 2012,
+    "referenceCount": 68,
+    "citationCount": 1572,
+    "influentialCitationCount": 68,
+    "openAccessPdf": {
+        "url": "https://kth.diva-portal.org/smash/get/diva2:586391/FULLTEXT02",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An introduction to event- and self-triggered control systems where sensing and actuation is performed when needed and how these control strategies can be implemented using existing wireless communication technology is shown."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "47647770",
+            "name": "W. Heemels"
+        },
+        {
+            "authorId": "1679177",
+            "name": "K. Johansson"
+        },
+        {
+            "authorId": "1791875",
+            "name": "P. Tabuada"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "08dbc07d3ebf3ac5fd7aa434f385d58b5db8319b",
+            "title": "Self-triggered output feedback control of linear plants"
+        },
+        {
+            "paperId": "fe20152af50a176f2a48226baf2eaec6e7221dcf",
+            "title": "Periodic Event-Triggered Control for Linear Systems"
+        },
+        {
+            "paperId": "86ebeb40cf076dd6f461cebee0b687be8dbb31a1",
+            "title": "Model-based periodic event-triggered control for linear systems"
+        },
+        {
+            "paperId": "022d928c0f0137b1937e8fde213f9c652679f7c3",
+            "title": "Output-Based Event-Triggered Control With Guaranteed ${\\cal L}_{\\infty}$-Gain and Improved and Decentralized Event-Triggering"
+        },
+        {
+            "paperId": "92c894fb37cdce271e82b86b02ec4a514a775459",
+            "title": "On the minimum attention control problem for linear systems: A linear programming approach"
+        },
+        {
+            "paperId": "f26bb6666ace65708a50b888acc9073be123e674",
+            "title": "Steady state performance analysis of multiple state-based schedulers with CSMA"
+        },
+        {
+            "paperId": "b75b374887c8d47d0ddca8ecd55d91fd5f448e44",
+            "title": "Periodic event-triggered control based on state feedback"
+        },
+        {
+            "paperId": "d3dcd66862b22ba38d099bf9a0fadfeec2b69abe",
+            "title": "Weakly coupled event triggered output feedback system in wireless networked control systems"
+        },
+        {
+            "paperId": "1676c6b10987113c1c4a89a7007c48f2e7afd5ea",
+            "title": "A unifying Lyapunov-based framework for the event-triggered control of nonlinear systems"
+        },
+        {
+            "paperId": "353d289af2ab077c76ff05bebb78e2d55b522651",
+            "title": "Digital self triggered robust control of nonlinear systems"
+        },
+        {
+            "paperId": "83d0507b1e399345130e06138050f26b80ffe0b9",
+            "title": "Self-Triggered Output Feedback Control of Linear Plants in the Presence of Unknown Disturbances"
+        },
+        {
+            "paperId": "5b6d1e8ef6792269aef20e9bfa0b7c6e2ba5525e",
+            "title": "On the dual effect in state-based scheduling of networked control systems"
+        },
+        {
+            "paperId": "807c5954440d0599006d7c423fd0360fafd5da3a",
+            "title": "Self-triggered coordination of robotic networks for optimal deployment"
+        },
+        {
+            "paperId": "1906330bc4c63bb2d9518b561124b0ae8ca36a8e",
+            "title": "Self-triggered control over wireless sensor and actuator networks"
+        },
+        {
+            "paperId": "43d689225f8e501ac3c2b10c4b8e0bfdfa51ec06",
+            "title": "Event-based output-feedback control"
+        },
+        {
+            "paperId": "2b8b5836fca207a9195836e3af2d6749675ebdfc",
+            "title": "Event-Triggering in Distributed Networked Control Systems"
+        },
+        {
+            "paperId": "2256fd8c650ff4579910b58de9a85d0379346d5c",
+            "title": "Extension and experimental evaluation of an event-based state-feedback approach"
+        },
+        {
+            "paperId": "385cf5e3e882389779ee07df4f1fe7ed5f9b2f73",
+            "title": "Structural characterization of optimal event-based controllers for linear stochastic systems"
+        },
+        {
+            "paperId": "f9f450fc65fc6a0f566712d949d2597e9f81eb63",
+            "title": "Self-triggered state feedback control of linear plants under bounded disturbances"
+        },
+        {
+            "paperId": "a837f9e37aab9f52f5d0f3c461176dd4142810ce",
+            "title": "Exploiting Isochrony in Self-Triggered Control"
+        },
+        {
+            "paperId": "a270003ccc1a1f87408e75ae1e7d6e611ff1dd0b",
+            "title": "On integration of event-based estimation and robust MPC in a feedback loop"
+        },
+        {
+            "paperId": "59a345b4b80f9eb40d910c7543878b0c1888d29c",
+            "title": "Self-Triggering Under State-Independent Disturbances"
+        },
+        {
+            "paperId": "7c93c310fa9205d628fe860a6abfbcf034bd6463",
+            "title": "Input-to-state stability of self-triggered control systems"
+        },
+        {
+            "paperId": "65518d011befffdaa1293ace969ec38eff4cf7d6",
+            "title": "On the Benefits of Relaxing the Periodicity Assumption for Networked Control Systems over CAN"
+        },
+        {
+            "paperId": "279e943e706429e6803eba6301128301410ec85f",
+            "title": "Event-based control using quadratic approximate value functions"
+        },
+        {
+            "paperId": "4f8867c17889483c1cadc10f376ccdff27a821e3",
+            "title": "Comparison of LTI and event-based control for a moving cart with quantized position measurements"
+        },
+        {
+            "paperId": "8e571bb6d54a33eeab7eaf4c998ae6a94d06a344",
+            "title": "On self-triggered control for linear systems: Guarantees and complexity"
+        },
+        {
+            "paperId": "ed9a669a444d2e9d39b40df1c9a8b233b8cc7c0e",
+            "title": "Scheduling packets for Event-triggered control"
+        },
+        {
+            "paperId": "1bcf6228063bb20361671c4ef191233592602fff",
+            "title": "An ISS self-triggered implementation of linear controllers"
+        },
+        {
+            "paperId": "4dce5eb6fd89ec670dbe8fe313630288ad1963d7",
+            "title": "On Event Based State Estimation"
+        },
+        {
+            "paperId": "37012500ad1d7feb03116e2766eca6ae1b928a9f",
+            "title": "Event-Triggering in Distributed Networked Systems with Data Dropouts and Delays"
+        },
+        {
+            "paperId": "2dd8e895b6e47bd2376c75fca6d4780e6fa5a85e",
+            "title": "Self-Triggered Feedback Control Systems With Finite-Gain ${\\cal L}_{2}$  Stability"
+        },
+        {
+            "paperId": "8c5ff7a6a652c82293c66f1760edce016eab4382",
+            "title": "Optimal stopping for event-triggered sensing and actuation"
+        },
+        {
+            "paperId": "dcc579d30b799248f59de126cdee01c6f368e5e2",
+            "title": "Sporadic event-based control of first-order linear stochastic systems"
+        },
+        {
+            "paperId": "2740a5b422eca7e5aaeb43a99e59d343a102a4bb",
+            "title": "To Sample or not to Sample: Self-Triggered Control for Nonlinear Systems"
+        },
+        {
+            "paperId": "95ccbfb5e8c0d85f91d0b24c21468e379b52eb37",
+            "title": "Analysis of event-driven controllers for linear systems"
+        },
+        {
+            "paperId": "ede44602184e414834d50ccac65ef8814b40d8da",
+            "title": "Event-Triggered Real-Time Scheduling of Stabilizing Control Tasks"
+        },
+        {
+            "paperId": "a2afecd83001f45f30cd7b44e2a4531731bf4359",
+            "title": "Analysis and experimental validation of a sensor-based event-driven controller"
+        },
+        {
+            "paperId": "f0a2367fffc52a0679f952ad70b3a60c3f464d64",
+            "title": "Level Crossing Sampling in Feedback Stabilization under Data-Rate Constraints"
+        },
+        {
+            "paperId": "95a5081eb532d5297721f4c976de95dedd998b02",
+            "title": "Impulsive and Hybrid Dynamical Systems: Stability, Dissipativity, and Control"
+        },
+        {
+            "paperId": "e16d4fa920e6886be986d915b768dc166e7761e0",
+            "title": "Send-On-Delta Concept: An Event-Based Data Reporting Strategy"
+        },
+        {
+            "paperId": "e4a94fdd94b795f97575aa91d644a6fc34399b3d",
+            "title": "Stability of model-based networked control systems with time-varying transmission times"
+        },
+        {
+            "paperId": "2d14ce511cddedf4b16e4146c647fdde9762535a",
+            "title": "Multi-Parametric Toolbox (MPT)"
+        },
+        {
+            "paperId": "b21994109453aacb921a3286d3ab697dfff49c3f",
+            "title": "Trading computation for bandwidth: reducing communication in distributed control systems using state estimators"
+        },
+        {
+            "paperId": "713291dd54369b7f93ddddbd267861f1c63e2cc7",
+            "title": "Using deadbands to reduce communication in networked control systems"
+        },
+        {
+            "paperId": "5cd898d77363c15e5b0456b37406e0df3e8bb052",
+            "title": "Scheduling of networked control systems"
+        },
+        {
+            "paperId": "a812211e5fb72fc5a42398fb4d7fe6e45238ddb9",
+            "title": "Asynchronous measurement and control: a case study on motor synchronization"
+        },
+        {
+            "paperId": "235275a6c7aae2f2b8eb34ea2cc3a54efffda57c",
+            "title": "A simple event-based PID controller"
+        },
+        {
+            "paperId": "cc568435d91e306ef9eddc910e1a1b5eb3223e4b",
+            "title": "Comparison of Periodic and Event Based Sampling for First-Order Stochastic Systems"
+        },
+        {
+            "paperId": "057a437824acba9a583adc0d26551d6b986fb748",
+            "title": "Minimum attention control"
+        },
+        {
+            "paperId": "28f2c85adefaf8321533f465261ced4536d02416",
+            "title": "Problems in event based engine control"
+        },
+        {
+            "paperId": "4783faa92c8642aecc77646bf301887ca10bd1ef",
+            "title": "Hybrid dynamical systems"
+        },
+        {
+            "paperId": "285b11ddec0039001edc83723a520b02beea904e",
+            "title": "Adaptive sampling technique"
+        },
+        {
+            "paperId": "9b87e89450c15cb7ad23910a629f71f3c49e20af",
+            "title": "On increasing sampling efficiency by adaptive sampling"
+        },
+        {
+            "paperId": "e56f75c5ff188f7f5b693c45479ca78bd13a99fb",
+            "title": "Sensitivity of discrete systems to variation of sampling interval"
+        },
+        {
+            "paperId": "40f34cc9964390a4cadfcd2f324494a7954e5a4f",
+            "title": "Adaptive sampling based on amplitude sensitivity"
+        },
+        {
+            "paperId": "6bce2a5c7e0b0195758d013d395cae6595ac4eac",
+            "title": "On the optimum sampling rate for discrete-time modeling of continuous-time systems"
+        },
+        {
+            "paperId": "9d6b8e177c6c20ccb346cb18ac639f2b2fdaa228",
+            "title": "Increasing the sampling efficiency for a control system"
+        },
+        {
+            "paperId": "403ba72bc1d107b5d2bcc8d26a2acfd55692f74d",
+            "title": "Event-Based Control"
+        },
+        {
+            "paperId": "0291029442a7b277346930ad662dd93dcda45877",
+            "title": "Modelling and Stability Analysis of Hybrid Multiple Access in the IEEE 802.15.4 Protocol"
+        },
+        {
+            "paperId": "250e2138cd46672244005e5fba1f42a9e9a47ad4",
+            "title": "Event-Triggered Internally Stabilizing Sporadic Control for MIMO Plants with Non Measurable State"
+        },
+        {
+            "paperId": "708a88d0856a8a0da6ccfbbef52d36862443fcfd",
+            "title": "Modelling and Stability Analysis of Hybrid Multiple Access in the IEEE 802.15.4 Protocol"
+        },
+        {
+            "paperId": "7b2ecf0a6fdf5083620032e4d42341d2998d39b7",
+            "title": "A state-feedback approach to event-based control"
+        },
+        {
+            "paperId": "12a3b26787e3a08ebeacf06e0c36251512325b15",
+            "title": "Log-concave Observers"
+        },
+        {
+            "paperId": "7be008c8dd7d074b2428471b0e512b60e36f622d",
+            "title": "Performance Analysis of the IEEE 802 . 11 Distributed Coordination Function"
+        },
+        {
+            "paperId": "a17670e5fd876949b5c52036211d1d862e850823",
+            "title": "The Self Triggered Task Model for Real-Time Control Systems"
+        },
+        {
+            "paperId": "96809676742d6a58da7c01fec410bccdda273707",
+            "title": "Event-based modeling and control for the burnthrough point in sintering processes"
+        },
+        {
+            "paperId": "bb36c5ec5702947724ca4525d360a93f65596905",
+            "title": "Computer Controlled Systems"
+        }
+    ]
+}

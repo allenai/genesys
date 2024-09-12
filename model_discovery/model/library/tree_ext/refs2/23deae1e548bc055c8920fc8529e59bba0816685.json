@@ -1,0 +1,270 @@
+{
+    "paperId": "23deae1e548bc055c8920fc8529e59bba0816685",
+    "externalIds": {
+        "MAG": "2787434568",
+        "DBLP": "conf/iclr/MenaBLS18",
+        "ArXiv": "1802.08665",
+        "CorpusId": 3515469
+    },
+    "title": "Learning Latent Permutations with Gumbel-Sinkhorn Networks",
+    "abstract": "Permutations and matchings are core building blocks in a variety of latent variable models, as they allow us to align, canonicalize, and sort data. Learning in such models is difficult, however, because exact marginalization over these combinatorial objects is intractable. In response, this paper introduces a collection of new methods for end-to-end learning in such models that approximate discrete maximum-weight matching using the continuous Sinkhorn operator. Sinkhorn iteration is attractive because it functions as a simple, easy-to-implement analog of the softmax operator. With this, we can define the Gumbel-Sinkhorn method, an extension of the Gumbel-Softmax method (Jang et al. 2016, Maddison2016 et al. 2016) to distributions over latent matchings. We demonstrate the effectiveness of our method by outperforming competitive baselines on a range of qualitatively different tasks: sorting numbers, solving jigsaw puzzles, and identifying neural signals in worms.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2018,
+    "referenceCount": 57,
+    "citationCount": 233,
+    "influentialCitationCount": 42,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A collection of new methods for end-to-end learning in such models that approximate discrete maximum-weight matching using the continuous Sinkhorn operator are introduced."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145289462",
+            "name": "Gonzalo E. Mena"
+        },
+        {
+            "authorId": "2636941",
+            "name": "David Belanger"
+        },
+        {
+            "authorId": "2342841",
+            "name": "Scott W. Linderman"
+        },
+        {
+            "authorId": "144108062",
+            "name": "Jasper Snoek"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "69902406e7d08f8865f02185699978db499d25e7",
+            "title": "Improving GANs Using Optimal Transport"
+        },
+        {
+            "paperId": "a5e43826fe45fdea37dbab4cf473a13647de342e",
+            "title": "Reparameterizing the Birkhoff Polytope for Variational Permutation Inference"
+        },
+        {
+            "paperId": "12a5cd04b4ac6b096a2c2aa3ba38593f2a8400a9",
+            "title": "Lost Relatives of the Gumbel Trick"
+        },
+        {
+            "paperId": "a1bc7d90564c342beb75cedf36fd921de89d94ad",
+            "title": "Learning Generative Models with Sinkhorn Divergences"
+        },
+        {
+            "paperId": "eafc69e017378cfebc3c5a1238410361f615533a",
+            "title": "Sinkhorn-AutoDiff: Tractable Wasserstein Learning of Generative Models"
+        },
+        {
+            "paperId": "5889e9afbcc3935867f9ae16fe46c71b9f2b071f",
+            "title": "End-to-end Differentiable Proving"
+        },
+        {
+            "paperId": "0b9fdb40c399f0aab89174e38b88a9448b1040e5",
+            "title": "DeepPermNet: Visual Permutation Learning"
+        },
+        {
+            "paperId": "e57c09d50d67060b18806f9597674fdc28320dd2",
+            "title": "Deep and Hierarchical Implicit Models"
+        },
+        {
+            "paperId": "3b07d6a163c3b6cc75c3805dfbff60f1458e121b",
+            "title": "Variational Inference using Implicit Distributions"
+        },
+        {
+            "paperId": "d7878c2044fb699e0ce0cad83e411824b1499dc8",
+            "title": "Neural Combinatorial Optimization with Reinforcement Learning"
+        },
+        {
+            "paperId": "29e944711a354c396fad71936f536e83025b6ce0",
+            "title": "Categorical Reparameterization with Gumbel-Softmax"
+        },
+        {
+            "paperId": "515a21e90117941150923e559729c59f5fdade1c",
+            "title": "The Concrete Distribution: A Continuous Relaxation of Discrete Random Variables"
+        },
+        {
+            "paperId": "97fcee01d9777372a3d8966ab7cd4c17e3a6a5ca",
+            "title": "Operator Variational Inference"
+        },
+        {
+            "paperId": "b3ee60a093591ff1c5002df76a2905b729a3b3c1",
+            "title": "TerpreT: A Probabilistic Programming Language for Program Induction"
+        },
+        {
+            "paperId": "f7aae11ec63c9aa8f955c93416052a0e154f2c74",
+            "title": "On some properties of the low-dimensional Gumbel perturbations in the Perturb-and-MAP model"
+        },
+        {
+            "paperId": "09a6d7e831cf496fb5fb2903415eab4c73235715",
+            "title": "Programming with a Differentiable Forth Interpreter"
+        },
+        {
+            "paperId": "2ec8f7e0257a07d3914322b36072d1bbcd58a1e0",
+            "title": "Unsupervised Learning of Visual Representations by Solving Jigsaw Puzzles"
+        },
+        {
+            "paperId": "9c9d7247f8c51ec5a02b0d911d1d7b9e8160495d",
+            "title": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems"
+        },
+        {
+            "paperId": "6f24d7a6e1c88828e18d16c6db20f5329f6a6827",
+            "title": "Variational Inference: A Review for Statisticians"
+        },
+        {
+            "paperId": "d01379ebb53c66a4ccf5f4959d904dcf9e161e41",
+            "title": "Order Matters: Sequence to sequence for sets"
+        },
+        {
+            "paperId": "bf85a0cd645ad68919c0706741ab568a60a58af2",
+            "title": "Neural Programmer: Inducing Latent Programs with Gradient Descent"
+        },
+        {
+            "paperId": "b36b7f7c68923d14ba2859b5d28a1124616a8c89",
+            "title": "Transition-Based Dependency Parsing with Stack Long Short-Term Memory"
+        },
+        {
+            "paperId": "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e",
+            "title": "End-To-End Memory Networks"
+        },
+        {
+            "paperId": "63c9a3a8be51980614ec6f0ff9689ddb6d626c4c",
+            "title": "Bethe Projections for Non-Local Inference"
+        },
+        {
+            "paperId": "64f2978e128498da0849e4adb7878d05f9b5d450",
+            "title": "Bethe Learning of Conditional Random Fields via MAP Decoding"
+        },
+        {
+            "paperId": "d38e8631bba0720becdaf7b89f79d9f9dca45d82",
+            "title": "Inferring Algorithmic Patterns with Stack-Augmented Recurrent Nets"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "5f5dc5b9a2ba710937e2c413b37b053cd673df02",
+            "title": "Auto-Encoding Variational Bayes"
+        },
+        {
+            "paperId": "0f4f58578f73a7a03a89dd4df80bf9311f474b4e",
+            "title": "On Sampling from the Gibbs Distribution with Random Maximum A-Posteriori Perturbations"
+        },
+        {
+            "paperId": "0080118b0eb02af581ff32b85a1bb6aed7081f45",
+            "title": "Sinkhorn Distances: Lightspeed Computation of Optimal Transport"
+        },
+        {
+            "paperId": "e2b6ecae2b8890d6d798dbee589777cf8ccb2c76",
+            "title": "Learning Graphical Model Parameters with Approximate Marginal Inference"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "e07128013831350c237aeba5ce4375d0ae8de20d",
+            "title": "On the Partition Function and Random Maximum A-Posteriori Perturbations"
+        },
+        {
+            "paperId": "4474a3b3d3ab9238dbdd3baa48c40f423e245a8b",
+            "title": "Perturb-and-MAP random fields: Using discrete optimization to learn and sample from energy models"
+        },
+        {
+            "paperId": "04e9385a1267d75197f695acf83e314668f6ae52",
+            "title": "Empirical Risk Minimization of Graphical Model Parameters Given Approximate Inference, Decoding, and Model Structure"
+        },
+        {
+            "paperId": "37fa065905442974682e4aca19c8108075d4de44",
+            "title": "Ranking via Sinkhorn Propagation"
+        },
+        {
+            "paperId": "b34dd5bf231bc7308db801306b3a06c6b5eabd4f",
+            "title": "Approximating the Permanent with Belief Propagation"
+        },
+        {
+            "paperId": "8c518044fad72f43e93f7a27632f31a8b41b61b7",
+            "title": "Structural Properties of the Caenorhabditis elegans Neuronal Network"
+        },
+        {
+            "paperId": "2f5521885acca3905a83c953e7a2f78ec39e218e",
+            "title": "Exponential Family Graph Matching and Ranking"
+        },
+        {
+            "paperId": "d98d0d1900b13b87aa4ffd6b69c046beb63f0434",
+            "title": "Graphical Models, Exponential Families, and Variational Inference"
+        },
+        {
+            "paperId": "4db5c0119d99b089c537f3c70024d1436528dbd2",
+            "title": "The Sinkhorn-Knopp Algorithm: Convergence and Applications"
+        },
+        {
+            "paperId": "d833ccbcac5cc35fe1030edeb45a7d4ad20080ad",
+            "title": "Learning Graph Matching"
+        },
+        {
+            "paperId": "3d0f3f4af77b156351d230f25854275756739216",
+            "title": "Learning Permutations with Exponential Weights"
+        },
+        {
+            "paperId": "d1425c4c8b5cfafa1c3fe9e643f9f3454ef77438",
+            "title": "Approximate inference using conditional entropy decompositions"
+        },
+        {
+            "paperId": "59f8451586fba8e9a7c00daace8f8fc62d795b1e",
+            "title": "Topics in Optimal Transportation"
+        },
+        {
+            "paperId": "f97313760d3d78e1cc642a1e7fec0c0c55409b94",
+            "title": "Asymptotic analysis of the exponential penalty trajectory in linear programming"
+        },
+        {
+            "paperId": "429b1cf154d3d5e24d98b6d83f875cd91aab72fd",
+            "title": "The invisible hand algorithm: Solving the assignment problem with statistical physics"
+        },
+        {
+            "paperId": "70e0d2487440b519b392503f4fa6b94891238c90",
+            "title": "Concerning nonnegative matrices and doubly stochastic matrices"
+        },
+        {
+            "paperId": "441f33fab0614fa0696be54a046cbc692b7e70a2",
+            "title": "A Relationship Between Arbitrary Positive Matrices and Doubly Stochastic Matrices"
+        },
+        {
+            "paperId": "b6a0f30260302a2001da9999096cfdd89bc1f7fb",
+            "title": "The Hungarian method for the assignment problem"
+        },
+        {
+            "paperId": "1a08c22c6d67b21a0d82febab15fb4d88120efd7",
+            "title": "Efficient Feature Learning Using Perturb-and-MAP"
+        },
+        {
+            "paperId": "4c915c1eecb217c123a36dc6d3ce52d12c742614",
+            "title": "Simple Statistical Gradient-Following Algorithms for Connectionist Reinforcement Learning"
+        },
+        {
+            "paperId": "3acaa12ea71ef5569b82d25c97ffbe3a16399de7",
+            "title": "Bethe free energy, Kikuchi approximations, and belief propagation algorithms"
+        },
+        {
+            "paperId": "c6e67a2b88730c35a81b63a1e3dc00b9b519bfe0",
+            "title": "Convexity properties of entropy functions and analysis of diversity"
+        },
+        {
+            "paperId": null,
+            "title": "Convex analysis"
+        },
+        {
+            "paperId": "848c717ba51e48afef714dfef4bd6ab1cc050dab",
+            "title": "ALGORITHMS FOR THE ASSIGNMENT AND TRANSIORTATION tROBLEMS*"
+        },
+        {
+            "paperId": null,
+            "title": "Tres observaciones sobre el algebra lineal"
+        }
+    ]
+}

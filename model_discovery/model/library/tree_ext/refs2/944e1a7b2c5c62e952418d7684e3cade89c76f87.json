@@ -1,0 +1,145 @@
+{
+    "paperId": "944e1a7b2c5c62e952418d7684e3cade89c76f87",
+    "externalIds": {
+        "DBLP": "journals/jmlr/AndoZ05",
+        "MAG": "2130903752",
+        "CorpusId": 13650160
+    },
+    "title": "A Framework for Learning Predictive Structures from Multiple Tasks and Unlabeled Data",
+    "abstract": "One of the most important issues in machine learning is whether one can improve the performance of a supervised learning algorithm by including unlabeled data. Methods that use both labeled and unlabeled data are generally referred to as semi-supervised learning. Although a number of such methods are proposed, at the current stage, we still don't have a complete understanding of their effectiveness. This paper investigates a closely related problem, which leads to a novel approach to semi-supervised learning. Specifically we consider learning predictive structures on hypothesis spaces (that is, what kind of classifiers have good predictive power) from multiple learning tasks. We present a general framework in which the structural learning problem can be formulated and analyzed theoretically, and relate it to learning with unlabeled data. Under this framework, algorithms for structural learning will be proposed, and computational issues will be investigated. Experiments will be given to demonstrate the effectiveness of the proposed algorithms in the semi-supervised learning setting.",
+    "venue": "Journal of machine learning research",
+    "year": 2005,
+    "referenceCount": 28,
+    "citationCount": 1595,
+    "influentialCitationCount": 128,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper presents a general framework in which the structural learning problem can be formulated and analyzed theoretically, and relate it to learning with unlabeled data, and algorithms for structural learning will be proposed, and computational issues will be investigated."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "38070424",
+            "name": "R. Ando"
+        },
+        {
+            "authorId": "2117881943",
+            "name": "Tong Zhang"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "4c75b748911ddcd888c5122f7672f69caa5d661f",
+            "title": "Statistical Learning Theory"
+        },
+        {
+            "paperId": "a89d59f39e805e71b554a962d07449c5d39b7df3",
+            "title": "The Bottleneck"
+        },
+        {
+            "paperId": "b4299baa815ca5a815a70fba94a9f6f2b42fff19",
+            "title": "A High-Performance Semi-Supervised Learning Method for Text Chunking"
+        },
+        {
+            "paperId": "1abfc1c96fe3f2dd2b9282835dea1fd6906fedb0",
+            "title": "Kernels for Multi--task Learning"
+        },
+        {
+            "paperId": "e219a61354d972a28954e655a7c53373508a08b6",
+            "title": "Regularized multi--task learning"
+        },
+        {
+            "paperId": "0ef7d9e618cbb507d69f8ebcdc60b8a1f3135bff",
+            "title": "Solving large scale linear prediction problems using stochastic gradient descent algorithms"
+        },
+        {
+            "paperId": "ed3c324be93f30797e0f71d5f5fb5417cdd790bc",
+            "title": "Semi-Supervised Learning on Riemannian Manifolds"
+        },
+        {
+            "paperId": "46770a8e7e2af28f5253e5961f709be74e34c1f6",
+            "title": "Learning with Local and Global Consistency"
+        },
+        {
+            "paperId": "125842668eab7decac136db8a59d392dc5e4e395",
+            "title": "Combining active learning and semi-supervised learning using Gaussian fields and harmonic functions"
+        },
+        {
+            "paperId": "e41ba5dc12c79a64dfa905c0328f95976252ffe0",
+            "title": "The Elements of Statistical Learning"
+        },
+        {
+            "paperId": "d1ba322f795adbdc706651dbc76ad53b9c5f9468",
+            "title": "Named Entity Recognition through Classifier Combination"
+        },
+        {
+            "paperId": "207df123e3c24e6e25019d4b86f8efaad5d6f13c",
+            "title": "A Robust Risk Minimization based Named Entity Recognition System"
+        },
+        {
+            "paperId": "03c03dec975554cb02aca1e076106178dbe0a8a0",
+            "title": "Named Entity Recognition with a Maximum Entropy Approach"
+        },
+        {
+            "paperId": "7e958d809a45ba3ae9eef8c5381e8cad8f11de10",
+            "title": "Named Entity Recognition with Character-Level Models"
+        },
+        {
+            "paperId": "8e6779bb55f7fbed5684ded55df51747ea678a84",
+            "title": "Partially labeled classification with Markov random walks"
+        },
+        {
+            "paperId": "c7788fe99735eceff2bcc37401fc02d2825f739a",
+            "title": "Text Classification from Labeled and Unlabeled Documents using EM"
+        },
+        {
+            "paperId": "727e1e16ede6eaad241bad11c525da07b154c688",
+            "title": "A Model of Inductive Bias Learning"
+        },
+        {
+            "paperId": "74b1a9e50f18af8a7b9f8dd38f40e0466ad7a8e8",
+            "title": "Transductive Inference for Text Classification using Support Vector Machines"
+        },
+        {
+            "paperId": "161ffb54a3fdf0715b198bb57bd22f910242eb49",
+            "title": "Multitask Learning"
+        },
+        {
+            "paperId": "45ee7447b9dd406496c4a5d9d8fb6556366a01c6",
+            "title": "Weak Convergence and Empirical Processes: With Applications to Statistics"
+        },
+        {
+            "paperId": "944cba683d10d8c1a902e05cd68e32a9f47b372e",
+            "title": "Unsupervised Word Sense Disambiguation Rivaling Supervised Methods"
+        },
+        {
+            "paperId": "d61540a96c22a1ed4a2b78558a2ebdd39f221a90",
+            "title": "Probability in Banach Spaces: Isoperimetry and Processes"
+        },
+        {
+            "paperId": "6bbb79cc026ecca4264d95c4551fc58205b09533",
+            "title": "Surveys in Combinatorics, 1989: On the method of bounded differences"
+        },
+        {
+            "paperId": "3a4551508f84a3f5447d3490b2db95b4d87a7969",
+            "title": "Exploiting Task Relatedness for Mulitple Task Learning"
+        },
+        {
+            "paperId": "df3520f52fcf42b4f10ed4b35b3b3f9cd050f290",
+            "title": "Limitations of Co-Training for Natural Language Learning from Large Datasets"
+        },
+        {
+            "paperId": "9755f9993553131e5cc796d34ecaa624fe0ddffa",
+            "title": "The Value of Unlabeled Data for Classification Problems"
+        },
+        {
+            "paperId": "c5f1b46a306a486bcf91be71f2a726b11f462514",
+            "title": "Predicting Multivariate Responses in Multiple Linear Regression"
+        },
+        {
+            "paperId": "5546b2d40ca53da8d34d8cd3c3ea4d736cd1a3b2",
+            "title": "Probability on Banach spaces"
+        }
+    ]
+}

@@ -1,0 +1,646 @@
+{
+    "paperId": "2dfeb5a90abc49ab2a80a492a01a4e2c8e92ec22",
+    "externalIds": {
+        "DBLP": "conf/isca/JouppiYPPABBBBB17",
+        "MAG": "2953212265",
+        "ArXiv": "1704.04760",
+        "DOI": "10.1145/3079856.3080246",
+        "CorpusId": 4202768
+    },
+    "title": "In-datacenter performance analysis of a tensor processing unit",
+    "abstract": "Many architects believe that major improvements in cost-energy-performance must now come from domain-specific hardware. This paper evaluates a custom ASIC-called a Tensor Processing Unit (TPU)-deployed in datacenters since 2015 that accelerates the inference phase of neural networks (NN). The heart of the TPU is a 65,536 8-bit MAC matrix multiply unit that offers a peak throughput of 92 TeraOps/second (TOPS) and a large (28 MiB) software-managed on-chip memory. The TPU's deterministic execution model is a better match to the 99th-percentile response-time requirement of our NN applications than are the time-varying optimizations of CPUs and GPUs that help average throughput more than guaranteed latency. The lack of such features helps explain why, despite having myriad MACs and a big memory, the TPU is relatively small and low power. We compare the TPU to a server-class Intel Haswell CPU and an Nvidia K80 GPU, which are contemporaries deployed in the same datacenters. Our workload, written in the high-level TensorFlow framework, uses production NN applications (MLPs, CNNs, and LSTMs) that represent 95% of our datacenters' NN inference demand. Despite low utilization for some applications, the TPU is on average about 15X\u201330X faster than its contemporary GPU or CPU, with TOPS/Watt about 30X\u201380X higher. Moreover, using the GPU's GDDR5 memory in the TPU would triple achieved TOPS and raise TOPS/Watt to nearly 70X the GPU and 200X the CPU.",
+    "venue": "International Symposium on Computer Architecture",
+    "year": 2017,
+    "referenceCount": 78,
+    "citationCount": 4235,
+    "influentialCitationCount": 454,
+    "openAccessPdf": {
+        "url": "http://dl.acm.org/ft_gateway.cfm?id=3080246&type=pdf",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper evaluates a custom ASIC-called a Tensor Processing Unit (TPU)-deployed in datacenters since 2015 that accelerates the inference phase of neural networks (NN) and compares it to a server-class Intel Haswell CPU and an Nvidia K80 GPU, which are contemporaries deployed in the samedatacenters."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1715454",
+            "name": "N. Jouppi"
+        },
+        {
+            "authorId": "39660914",
+            "name": "C. Young"
+        },
+        {
+            "authorId": "2056800684",
+            "name": "Nishant Patil"
+        },
+        {
+            "authorId": "2265549299",
+            "name": "David Patterson"
+        },
+        {
+            "authorId": "2265528597",
+            "name": "Gaurav Agrawal"
+        },
+        {
+            "authorId": "2265528365",
+            "name": "Raminder Bajwa"
+        },
+        {
+            "authorId": "2265528604",
+            "name": "Sarah Bates"
+        },
+        {
+            "authorId": "2265528570",
+            "name": "Suresh Bhatia"
+        },
+        {
+            "authorId": "2265528912",
+            "name": "Nan Boden"
+        },
+        {
+            "authorId": "2265529409",
+            "name": "Al Borchers"
+        },
+        {
+            "authorId": "2265529523",
+            "name": "Rick Boyle"
+        },
+        {
+            "authorId": "2265531532",
+            "name": "Pierre-luc Cantin"
+        },
+        {
+            "authorId": "2265528729",
+            "name": "Clifford Chao"
+        },
+        {
+            "authorId": "2265550963",
+            "name": "Chris Clark"
+        },
+        {
+            "authorId": "2265528756",
+            "name": "Jeremy Coriell"
+        },
+        {
+            "authorId": "2265529003",
+            "name": "Mike Daley"
+        },
+        {
+            "authorId": "2265528872",
+            "name": "Matt Dau"
+        },
+        {
+            "authorId": "2265529729",
+            "name": "Jeffrey Dean"
+        },
+        {
+            "authorId": "2265528537",
+            "name": "Ben Gelb"
+        },
+        {
+            "authorId": "1398213038",
+            "name": "Taraneh Ghaemmaghami"
+        },
+        {
+            "authorId": "2265528754",
+            "name": "Rajendra Gottipati"
+        },
+        {
+            "authorId": "2265528752",
+            "name": "William Gulland"
+        },
+        {
+            "authorId": "2265528749",
+            "name": "Robert Hagmann"
+        },
+        {
+            "authorId": "2265582341",
+            "name": "C. Richard Ho"
+        },
+        {
+            "authorId": "2265528842",
+            "name": "Doug Hogberg"
+        },
+        {
+            "authorId": "2265596858",
+            "name": "John Hu"
+        },
+        {
+            "authorId": "1701671",
+            "name": "R. Hundt"
+        },
+        {
+            "authorId": "2265528853",
+            "name": "Dan Hurt"
+        },
+        {
+            "authorId": "2265529394",
+            "name": "Julian Ibarz"
+        },
+        {
+            "authorId": "10433955",
+            "name": "A. Jaffey"
+        },
+        {
+            "authorId": "2265529292",
+            "name": "Alek Jaworski"
+        },
+        {
+            "authorId": "2265551723",
+            "name": "Alexander Kaplan"
+        },
+        {
+            "authorId": "2265529388",
+            "name": "Harshit Khaitan"
+        },
+        {
+            "authorId": "35002044",
+            "name": "Daniel Killebrew"
+        },
+        {
+            "authorId": "2265529856",
+            "name": "Andy Koch"
+        },
+        {
+            "authorId": "2265642844",
+            "name": "Naveen Kumar"
+        },
+        {
+            "authorId": "2265529386",
+            "name": "Steve Lacy"
+        },
+        {
+            "authorId": "2258707080",
+            "name": "James Laudon"
+        },
+        {
+            "authorId": "2265529416",
+            "name": "James Law"
+        },
+        {
+            "authorId": "2265529515",
+            "name": "Diemthu Le"
+        },
+        {
+            "authorId": "2265529268",
+            "name": "Chris Leary"
+        },
+        {
+            "authorId": "2265576530",
+            "name": "Zhuyuan Liu"
+        },
+        {
+            "authorId": "2265532187",
+            "name": "Kyle Lucke"
+        },
+        {
+            "authorId": "2265529249",
+            "name": "Alan Lundin"
+        },
+        {
+            "authorId": "2265528983",
+            "name": "Gordon MacKean"
+        },
+        {
+            "authorId": "2265528640",
+            "name": "Adriana Maggiore"
+        },
+        {
+            "authorId": "2265529551",
+            "name": "Maire Mahony"
+        },
+        {
+            "authorId": "2265619145",
+            "name": "Kieran Miller"
+        },
+        {
+            "authorId": "1395811464",
+            "name": "R. Nagarajan"
+        },
+        {
+            "authorId": "1398213032",
+            "name": "Ravi Narayanaswami"
+        },
+        {
+            "authorId": "2265529536",
+            "name": "Ray Ni"
+        },
+        {
+            "authorId": "2265531761",
+            "name": "Kathy Nix"
+        },
+        {
+            "authorId": "3222376",
+            "name": "Thomas Norrie"
+        },
+        {
+            "authorId": "3175815",
+            "name": "Mark Omernick"
+        },
+        {
+            "authorId": "1398212990",
+            "name": "Narayana Penukonda"
+        },
+        {
+            "authorId": "2265528744",
+            "name": "Andy Phelps"
+        },
+        {
+            "authorId": "2265552909",
+            "name": "Jonathan Ross"
+        },
+        {
+            "authorId": "2265552588",
+            "name": "Matt Ross"
+        },
+        {
+            "authorId": "2265528580",
+            "name": "Amir Salek"
+        },
+        {
+            "authorId": "2265528564",
+            "name": "Emad Samadiani"
+        },
+        {
+            "authorId": "2265528562",
+            "name": "Chris Severn"
+        },
+        {
+            "authorId": "2265528974",
+            "name": "Gregory Sizikov"
+        },
+        {
+            "authorId": "2265528625",
+            "name": "Matthew Snelham"
+        },
+        {
+            "authorId": "2265529370",
+            "name": "Jed Souter"
+        },
+        {
+            "authorId": "2265532375",
+            "name": "Dan Steinberg"
+        },
+        {
+            "authorId": "1394189636",
+            "name": "Andy Swing"
+        },
+        {
+            "authorId": "2265616791",
+            "name": "Mercedes Tan"
+        },
+        {
+            "authorId": "2265532008",
+            "name": "Gregory Thorson"
+        },
+        {
+            "authorId": "2265529994",
+            "name": "Bo Tian"
+        },
+        {
+            "authorId": "2265529013",
+            "name": "Horia Toma"
+        },
+        {
+            "authorId": "2265528972",
+            "name": "Erick Tuttle"
+        },
+        {
+            "authorId": "2265528643",
+            "name": "Vijay Vasudevan"
+        },
+        {
+            "authorId": "2265529413",
+            "name": "Richard Walter"
+        },
+        {
+            "authorId": "2265617722",
+            "name": "Walter Wang"
+        },
+        {
+            "authorId": "2265529247",
+            "name": "Eric Wilcox"
+        },
+        {
+            "authorId": "2265552174",
+            "name": "Doe Hyun Yoon"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "fb346259efc2d8e9db4af98c084a058df9a784c4",
+            "title": "Technical Perspective: If I could only design one circuit \u2026"
+        },
+        {
+            "paperId": "8d67bac352dcd43c9c08f917ba8c4bebb444b55d",
+            "title": "A cloud-scale acceleration architecture"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "a4fb215dc03f5a2ff0e394ce9b68e493bd811f0d",
+            "title": "Fathom: reference workloads for modern deep learning methods"
+        },
+        {
+            "paperId": "da6e8bcf1c92167553a5b383fe6fe5109a4c0321",
+            "title": "Cambricon: An Instruction Set Architecture for Neural Networks"
+        },
+        {
+            "paperId": "58e4491dc48d46f4f47362686e09e6319c01edc0",
+            "title": "RedEye: Analog ConvNet Image Sensor Architecture for Continuous Mobile Vision"
+        },
+        {
+            "paperId": "91d03e4bf98a03c827983457e6de43cbd4c6ccd7",
+            "title": "Minerva: Enabling Low-Power, Highly-Accurate Deep Neural Network Accelerators"
+        },
+        {
+            "paperId": "9071775ebcfebddd54d879fe7e6c627673e4d305",
+            "title": "ISAAC: A Convolutional Neural Network Accelerator with In-Situ Analog Arithmetic in Crossbars"
+        },
+        {
+            "paperId": "5ec594e9f5ca4b629be28625cd78c882514ea3be",
+            "title": "Eyeriss: A Spatial Architecture for Energy-Efficient Dataflow for Convolutional Neural Networks"
+        },
+        {
+            "paperId": "073ea699d300d8f46ff2e0482217d1b0cd8f8849",
+            "title": "Batch processing in a neural network processor"
+        },
+        {
+            "paperId": "3337b44df2ef8ad604308f7959cf2b48a3eb6fc2",
+            "title": "Vector computation unit in a neural network processor"
+        },
+        {
+            "paperId": "77f0a39b8e02686fd85b01971f8feb7f60971f80",
+            "title": "Identity Mappings in Deep Residual Networks"
+        },
+        {
+            "paperId": "9c9d7247f8c51ec5a02b0d911d1d7b9e8160495d",
+            "title": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems"
+        },
+        {
+            "paperId": "1858e63794efdac126a60b840cce83e08451fdeb",
+            "title": "Large-Scale Deep Learning For Building Intelligent Computer Systems"
+        },
+        {
+            "paperId": "2e2b189f668cf2c06ebc44dc9b166648256cf457",
+            "title": "EIE: Efficient Inference Engine on Compressed Deep Neural Network"
+        },
+        {
+            "paperId": "846aedd869a00c09b40f1f1f35673cb22bc87490",
+            "title": "Mastering the game of Go with deep neural networks and tree search"
+        },
+        {
+            "paperId": "9e153f03de37c920327cf2feaf4cf2a5c03e0bc0",
+            "title": "Toward accelerating deep learning at scale using specialized hardware in the datacenter"
+        },
+        {
+            "paperId": "bd6507b5c9deaf87bda81e59ce15b2309df0bf37",
+            "title": "ShiDianNao: Shifting vision processing closer to the sensor"
+        },
+        {
+            "paperId": "1ff9a37d766e3a4f39757f5e1b235a42dacf18ff",
+            "title": "Learning both Weights and Connections for Efficient Neural Network"
+        },
+        {
+            "paperId": "dd9caf7e34acd8ad47fd35fd9d81bd22db202a81",
+            "title": "Origami: A Convolutional Network Accelerator"
+        },
+        {
+            "paperId": "68837728232463651283edbb7ef0c93b2f502b2b",
+            "title": "PuDianNao: A Polyvalent Machine Learning Accelerator"
+        },
+        {
+            "paperId": "209932cd2e3f5da071c4f6341a3b8b29cf50cc4a",
+            "title": "Accelerating Deep Convolutional Neural Networks Using Specialized Hardware"
+        },
+        {
+            "paperId": "3468a27c2e3019e1216ee9fe8bbf1ed3a0155ff4",
+            "title": "Optimizing FPGA-based Accelerator Design for Deep Convolutional Neural Networks"
+        },
+        {
+            "paperId": "b7cf49e30355633af2db19f35189410c8515e91f",
+            "title": "Deep Learning with Limited Numerical Precision"
+        },
+        {
+            "paperId": "4157ed3db4c656854e69931cb6089b64b08784b9",
+            "title": "DaDianNao: A Machine-Learning Supercomputer"
+        },
+        {
+            "paperId": "e25c39846d814f0eda33871c4b11c37855b9a70e",
+            "title": "A reconfigurable fabric for accelerating large-scale datacenter services"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "22e477a9fdde86ab1f8f4dafdb4d88ea37e31fbd",
+            "title": "DianNao: a small-footprint high-throughput accelerator for ubiquitous machine-learning"
+        },
+        {
+            "paperId": "0b71de48a1c7a5d7a7850bbe33a2bb055ea594ef",
+            "title": "Memory-centric accelerator design for Convolutional Neural Networks"
+        },
+        {
+            "paperId": "d50d7cd78126cd4df5dda62f1a75c89d095bc8a5",
+            "title": "Convolution engine: balancing efficiency & flexibility in specialized computing"
+        },
+        {
+            "paperId": "a5162479ce884feb4fffbf9df6739996bb854411",
+            "title": "The tail at scale"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "204710a6a6d935150b5b16daf74493dea6d1b7a2",
+            "title": "NeuFlow: A runtime reconfigurable dataflow processor for vision"
+        },
+        {
+            "paperId": "e1c4e2fa071046569a05e9cfdf13496d094025dd",
+            "title": "A dynamically configurable coprocessor for convolutional neural networks"
+        },
+        {
+            "paperId": "07956c7cf9bf4267b86d52aa4143c17a4aa5d0d6",
+            "title": "CNP: An FPGA-based processor for Convolutional Networks"
+        },
+        {
+            "paperId": "132a29823081a845355abe39c0966193a15e0d03",
+            "title": "Identifying Shades of Green: The SPECpower Benchmarks"
+        },
+        {
+            "paperId": "ad61a05a10319f4a95733b833fc4be1115670d95",
+            "title": "The Case for Energy-Proportional Computing"
+        },
+        {
+            "paperId": "843a1567b056c8a1d0deddc8b699e1725194f85c",
+            "title": "Latency lags bandwith"
+        },
+        {
+            "paperId": "668b882cf6026f6986b31dd6e99321aa03586cb0",
+            "title": "Special-purpose digital hardware for neural networks: An architectural survey"
+        },
+        {
+            "paperId": "c4c310f427e47dc5b70aaad2d8200c8a034d4468",
+            "title": "A VLSI architecture for high-performance, low-cost, on-chip learning"
+        },
+        {
+            "paperId": "a9212cdd44437a13fe507b3794a3ba52d424961a",
+            "title": "Decoupled access/execute computer architectures"
+        },
+        {
+            "paperId": "4d3a941a5749dbf0dd39554f12597c449c3c07ff",
+            "title": "The case for the reduced instruction set computer"
+        },
+        {
+            "paperId": "bccb4ff16f52113a93cde7025a82f581695beb19",
+            "title": "Computer Architecture - A Quantitative Approach, 5th Edition"
+        },
+        {
+            "paperId": null,
+            "title": "In-datacenter performance analysis of a tensor processing unit"
+        },
+        {
+            "paperId": "25a64d7e31c7b6f91a9484aac620ced29e7b0127",
+            "title": "Computer Architecture A Quantitative Approach 2nd Edition"
+        },
+        {
+            "paperId": null,
+            "title": "Microsoft Bets Its Future On A Reprogrammable Computer Chip"
+        },
+        {
+            "paperId": null,
+            "title": "Tesla GPU Accelerators For Servers"
+        },
+        {
+            "paperId": null,
+            "title": "Neurocube : A Programmable Digital Neuromorphic Architecture with High - Density 3 D Memory"
+        },
+        {
+            "paperId": null,
+            "title": "If I could only design one circuit\u2026: technical perspective"
+        },
+        {
+            "paperId": null,
+            "title": "DianNao Family: Energy-Efficient Hardware Accelerators for Machine Learning, Research Highlight"
+        },
+        {
+            "paperId": null,
+            "title": "PRIME: A Novel Processing-In- Memory Architecture for Neural Network Computation in ReRAMbased"
+        },
+        {
+            "paperId": null,
+            "title": "Intel\u00ae Xeon\u00ae Processor E5-4669 v3"
+        },
+        {
+            "paperId": null,
+            "title": "Tesla K80 GPU Accelerator Board Specification https://images.nvidia.com/content/pdf/kepler"
+        },
+        {
+            "paperId": null,
+            "title": "February. Optimizing FPGA-based accelerator design for deep convolutional neural networks. \u200b Proceedings of the 2015 ACM/SIGDA International Symposium on Field-Programmable Gate Arrays"
+        },
+        {
+            "paperId": null,
+            "title": "Rotating Data for Neural Network Computations,Patent Application No. 62/164,908"
+        },
+        {
+            "paperId": null,
+            "title": "Full - Chip Simulations , Keys to Success"
+        },
+        {
+            "paperId": "ade5dfbae1d7848f59c9f30f040521bd054f3acf",
+            "title": "Images"
+        },
+        {
+            "paperId": null,
+            "title": "The datacenter as a computer"
+        },
+        {
+            "paperId": "f8b1b43f284f1246ca015cc002ac949bb67c5645",
+            "title": "Roofline: An Insightful Visual Performance Model for Floating-Point Programs and Multicore Architectures"
+        },
+        {
+            "paperId": "04641fca9a8f72aef0f77b0f99d38040d51bdd26",
+            "title": "Neural network processor"
+        },
+        {
+            "paperId": "9269b4f1af2afe0a624871d565bf657670751c15",
+            "title": "The Handbook of Brain Theory and Neural Networks: Second Edition"
+        },
+        {
+            "paperId": null,
+            "title": "Asanovi \u0107 , K., Beck, Johnson"
+        },
+        {
+            "paperId": null,
+            "title": "Asanovi\u0107, K., Beck, Johnson, J., Wawrzynek, J., Kingsbury, B. and Morgan, N., November 1998. Training Neural Networks with Spert-II"
+        },
+        {
+            "paperId": null,
+            "title": "Training Neural Networks with Spert - II . Chapter 11 in \u200b Parallel Architectures for Artificial Networks : Paradigms and Implementations \u200b , N . Sundararajan and"
+        },
+        {
+            "paperId": "aaec8007703dc1d7f69ececd36098099f7cfad3a",
+            "title": "Computer Architecture: A Quantitative Approach, 2nd Edition"
+        },
+        {
+            "paperId": null,
+            "title": "Journal of VLSI signal processing systems for signal, image and video technology"
+        },
+        {
+            "paperId": "bd40111be9f842f6dc7946a717e03361b0b243c4",
+            "title": "Design of a 1st Generation Neurocomputer"
+        },
+        {
+            "paperId": "256bbe8e9fa3f5b72c24f1037ab734f9e7dd01c4",
+            "title": "Why systolic architectures?"
+        },
+        {
+            "paperId": null,
+            "title": "Algorithms for VLSI processor arrays. Introduction to VLSI systems"
+        },
+        {
+            "paperId": "05bec301281a7dab3c5c7bc64c1d60ee18940acd",
+            "title": "Programmable Neurocomputing"
+        },
+        {
+            "paperId": null,
+            "title": "Google Turning Its Lucrative Web Search Over to AI Machines"
+        },
+        {
+            "paperId": null,
+            "title": "ISCA \u201917, June 24-28, 2017, Toronto, ON, Canada"
+        },
+        {
+            "paperId": null,
+            "title": "The user and business impact of server delays , additional bytes , and HTTP chunking in web search"
+        },
+        {
+            "paperId": null,
+            "title": "Google Looks To Open Up StreamExecutor To Make GPGPU Programming Easier"
+        },
+        {
+            "paperId": null,
+            "title": "High Performance Hardware for Machine Learning"
+        },
+        {
+            "paperId": null,
+            "title": "New P2 Instance Type for Amazon EC2 -Up to 16 GPUs"
+        },
+        {
+            "paperId": null,
+            "title": "Google supercharges machine learning tasks with TPU custom chip"
+        }
+    ]
+}

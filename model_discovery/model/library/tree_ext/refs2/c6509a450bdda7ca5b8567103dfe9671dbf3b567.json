@@ -1,0 +1,314 @@
+{
+    "paperId": "c6509a450bdda7ca5b8567103dfe9671dbf3b567",
+    "externalIds": {
+        "DBLP": "conf/iclr/MetzMCS19",
+        "MAG": "2963154787",
+        "ArXiv": "1804.00222",
+        "CorpusId": 67856088
+    },
+    "title": "Meta-Learning Update Rules for Unsupervised Representation Learning",
+    "abstract": "A major goal of unsupervised learning is to discover data representations that are useful for subsequent tasks, without access to supervised labels during training. Typically, this involves minimizing a surrogate objective, such as the negative log likelihood of a generative model, with the hope that representations useful for subsequent tasks will arise as a side effect. In this work, we propose instead to directly target later desired tasks by meta-learning an unsupervised learning rule which leads to representations useful for those tasks. Specifically, we target semi-supervised classification performance, and we meta-learn an algorithm -- an unsupervised weight update rule -- that produces representations useful for this task. Additionally, we constrain our unsupervised update rule to a be a biologically-motivated, neuron-local function, which enables it to generalize to different neural network architectures, datasets, and data modalities. We show that the meta-learned update rule produces useful features and sometimes outperforms existing unsupervised learning techniques. We further show that the meta-learned unsupervised update rule generalizes to train networks with different widths, depths, and nonlinearities. It also generalizes to train on data with randomly permuted input dimensions and even generalizes from image datasets to a text task.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2018,
+    "referenceCount": 68,
+    "citationCount": 118,
+    "influentialCitationCount": 4,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work target semi-supervised classification performance, and meta-learn an algorithm -- an unsupervised weight update rule -- that produces representations useful for this task that is constrain to be a biologically-motivated, neuron-local function which enables it to generalize to different neural network architectures, datasets, and data modalities."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2096458",
+            "name": "Luke Metz"
+        },
+        {
+            "authorId": "2333223",
+            "name": "Niru Maheswaranathan"
+        },
+        {
+            "authorId": "144018734",
+            "name": "Brian Cheung"
+        },
+        {
+            "authorId": "1407546424",
+            "name": "Jascha Narain Sohl-Dickstein"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "58fc942fee2a1bd98296259267095289cc1f2a96",
+            "title": "Truncated Back-propagation for Bilevel Optimization"
+        },
+        {
+            "paperId": "37b3d9ab049c5671fed29f56cacee858d98c2ea8",
+            "title": "Unsupervised Learning via Meta-Learning"
+        },
+        {
+            "paperId": "df093d69cd98cf4b26542f53614a79754754eb78",
+            "title": "Meta-Learning for Semi-Supervised Few-Shot Classification"
+        },
+        {
+            "paperId": "c9660db0c94edfb2b1f3ab4f08eb80acd83a1c07",
+            "title": "Evolved Policy Gradients"
+        },
+        {
+            "paperId": "a16a98b813dad25a1e05e921fd20c6f9bdd07159",
+            "title": "Supervising Unsupervised Learning"
+        },
+        {
+            "paperId": "f9c602cc436a9ea2f9e7db48c77d924e09ce3c32",
+            "title": "Fashion-MNIST: a Novel Image Dataset for Benchmarking Machine Learning Algorithms"
+        },
+        {
+            "paperId": "168b7d0ab57a331a228ce21ffd1becbb93066f79",
+            "title": "Neural Optimizer Search with Reinforcement Learning"
+        },
+        {
+            "paperId": "d0611891b9e8a7c5731146097b6f201578f47b2f",
+            "title": "Learning Transferable Architectures for Scalable Image Recognition"
+        },
+        {
+            "paperId": "00357a417ce470a78f7a84d18ae2604330455d2a",
+            "title": "Meta-Learning with Temporal Convolutions"
+        },
+        {
+            "paperId": "2adae2da173b9dd720c8bcac0250a90a7f1ec697",
+            "title": "Time-Contrastive Networks: Self-Supervised Learning from Video"
+        },
+        {
+            "paperId": "77712d113a62caa83d6330360ce99d6a5f47bd6a",
+            "title": "Time-Contrastive Networks: Self-Supervised Learning from Multi-view Observation"
+        },
+        {
+            "paperId": "575a0e97702edcb0621a47b574949bac50e34200",
+            "title": "Unsupervised Learning by Predicting Noise"
+        },
+        {
+            "paperId": "c124a6aec4b1833e4e86092e20a782183349d57e",
+            "title": "An Approximation of the Error Backpropagation Algorithm in a Predictive Coding Network with Local Hebbian Synaptic Plasticity"
+        },
+        {
+            "paperId": "c269858a7bb34e8350f2442ccf37797856ae9bca",
+            "title": "Prototypical Networks for Few-shot Learning"
+        },
+        {
+            "paperId": "b8ff7e02ffa1577d125acd3e998e8ce76a9059dc",
+            "title": "Learned Optimizers that Scale and Generalize"
+        },
+        {
+            "paperId": "c889d6f98e6d79b89c3a6adf8a921f88fa6ba518",
+            "title": "Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks"
+        },
+        {
+            "paperId": "f108b65fe0003e387e1cd7e50f537af0531818e4",
+            "title": "Large-Scale Evolution of Image Classifiers"
+        },
+        {
+            "paperId": "b5fdbacc37f1d5e1a72c292ac2107c06c7bd6d4f",
+            "title": "Learning to Learn without Gradient Descent by Gradient Descent"
+        },
+        {
+            "paperId": "17ebe1eb19655543a6b876f91d41917488e70f55",
+            "title": "Random synaptic feedback weights support error backpropagation for deep learning"
+        },
+        {
+            "paperId": "4fdc7df2c737141a1bf5aec27a438b77d01f8af0",
+            "title": "Deep Information Propagation"
+        },
+        {
+            "paperId": "6cd5dfccd9f52538b19a415e00031d0ee4e5b181",
+            "title": "Designing Neural Network Architectures using Reinforcement Learning"
+        },
+        {
+            "paperId": "67d968c7450878190e45ac7886746de867bf673d",
+            "title": "Neural Architecture Search with Reinforcement Learning"
+        },
+        {
+            "paperId": "29c887794eed2ca9462638ff853e6fe1ab91d5d8",
+            "title": "Optimization as a Model for Few-Shot Learning"
+        },
+        {
+            "paperId": "71683e224ab91617950956b5005ed0439a733a71",
+            "title": "Learning to learn by gradient descent by gradient descent"
+        },
+        {
+            "paperId": "be1bb4e4aa1fcf70281b4bd24d8cd31c04864bb6",
+            "title": "Matching Networks for One Shot Learning"
+        },
+        {
+            "paperId": "ead9a671428631e44f6fe49324efe69da628bc47",
+            "title": "Learning to Optimize"
+        },
+        {
+            "paperId": "fcf43325529c8b1cc26aeb52fd5d7e532abb0a40",
+            "title": "Adversarially Learned Inference"
+        },
+        {
+            "paperId": "1db6e3078597386ac4222ba6c3f4f61b61f53539",
+            "title": "Adversarial Feature Learning"
+        },
+        {
+            "paperId": "4954fa180728932959997a4768411ff9136aac81",
+            "title": "TensorFlow: A system for large-scale machine learning"
+        },
+        {
+            "paperId": "2ec8f7e0257a07d3914322b36072d1bbcd58a1e0",
+            "title": "Unsupervised Learning of Visual Representations by Solving Jigsaw Puzzles"
+        },
+        {
+            "paperId": "6d4e3616d0b27957c4107ae877dc0dd4504b69ab",
+            "title": "Shuffle and Learn: Unsupervised Learning Using Temporal Order Verification"
+        },
+        {
+            "paperId": "8388f1be26329fa45e5807e968a641ce170ea078",
+            "title": "Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks"
+        },
+        {
+            "paperId": "f44ff4fc0ed0142cb18472a5ba421bb538aa837e",
+            "title": "Unsupervised Deep Embedding for Clustering Analysis"
+        },
+        {
+            "paperId": "e2820bffe5b42cb7d88b7f65c12171c62ab4aae2",
+            "title": "Gradient-based Hyperparameter Optimization through Reversible Learning"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "5f5dc5b9a2ba710937e2c413b37b053cd673df02",
+            "title": "Auto-Encoding Variational Bayes"
+        },
+        {
+            "paperId": "2319a491378867c7049b3da055c5df60e1671158",
+            "title": "Playing Atari with Deep Reinforcement Learning"
+        },
+        {
+            "paperId": "84069287da0a6b488b8c933f3cb5be759cb6237e",
+            "title": "On the difficulty of training recurrent neural networks"
+        },
+        {
+            "paperId": "c5145b1d15fea9340840cc8bb6f0e46e8934827f",
+            "title": "Understanding the exploding gradient problem"
+        },
+        {
+            "paperId": "2e2089ae76fe914706e6fa90081a79c8fe01611e",
+            "title": "Practical Bayesian Optimization of Machine Learning Algorithms"
+        },
+        {
+            "paperId": "188e247506ad992b8bc62d6c74789e89891a984f",
+            "title": "Random Search for Hyper-Parameter Optimization"
+        },
+        {
+            "paperId": "72e93aa6767ee683de7f001fa72f1314e40a8f35",
+            "title": "Building high-level features using large scale unsupervised learning"
+        },
+        {
+            "paperId": "03911c85305d42aa2eeb02be82ef6fb7da644dd0",
+            "title": "Algorithms for Hyper-Parameter Optimization"
+        },
+        {
+            "paperId": "1c61f9ef06fe74505775a833ff849185757199e7",
+            "title": "Learning Word Vectors for Sentiment Analysis"
+        },
+        {
+            "paperId": "e2b7f37cd97a7907b1b8a41138721ed06a0b76cd",
+            "title": "Stacked Denoising Autoencoders: Learning Useful Representations in a Deep Network with a Local Denoising Criterion"
+        },
+        {
+            "paperId": "843959ffdccf31c6694d135fad07425924f785b1",
+            "title": "Extracting and composing robust features with denoising autoencoders"
+        },
+        {
+            "paperId": "d03c916d49268d48fde3b76a68e64af7761835e7",
+            "title": "Evolving Neural Networks through Augmenting Topologies"
+        },
+        {
+            "paperId": "a3db48fdc9aaf6921f269817ba4ed16b9b198394",
+            "title": "A Taxonomy of Global Optimization Methods Based on Response Surfaces"
+        },
+        {
+            "paperId": "8ad9b6c56748ff12fb10536d0c189fb6835b2e43",
+            "title": "Evolution and design of distributed learning rules"
+        },
+        {
+            "paperId": "a1c9b33100566fb8e40f86a56ef47b0cc95152b6",
+            "title": "Feature Extraction Through LOCOCODE"
+        },
+        {
+            "paperId": "2805537bec87a6177037b18f9a3a9d3f1038867b",
+            "title": "Sparse coding with an overcomplete basis set: A strategy employed by V1?"
+        },
+        {
+            "paperId": "675d381653da0d2825ae37ab06069a1525fafb79",
+            "title": "Learning Factorial Codes by Predictability Minimization"
+        },
+        {
+            "paperId": "d130325c41947a41a55a4431e9e8e15be89da8ea",
+            "title": "Learning a synaptic learning rule"
+        },
+        {
+            "paperId": "c8c4ab59ac29973a00df4e5c8df3773a3c59995a",
+            "title": "Searching for Activation Functions"
+        },
+        {
+            "paperId": "c68796f833a7151f0a63d1d1608dc902b4fdc9b6",
+            "title": "GENERATIVE ADVERSARIAL NETS"
+        },
+        {
+            "paperId": "367f2c63a6f6a10b3b64b8729d601e69337ee3cc",
+            "title": "Rectifier Nonlinearities Improve Neural Network Acoustic Models"
+        },
+        {
+            "paperId": null,
+            "title": "Training parameters of recurrent systems in general can lead to chaos"
+        },
+        {
+            "paperId": "007d73c91a1bf90d72eb59fbdd8791a4b009f363",
+            "title": "Learning Feature Representations with K-Means"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        },
+        {
+            "paperId": "8784f905f4f9fb6fa4a3cc9b0faa5b5479c687ec",
+            "title": "On the Optimization of a Synaptic Learning Rule"
+        },
+        {
+            "paperId": "7c59908c946a4157abc030cdbe2b63d08ba97db3",
+            "title": "Supporting Online Material for Reducing the Dimensionality of Data with Neural Networks"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "2a0e6578f71793d29f8272afae75f9d610e1da46",
+            "title": "An investigation of the gradient descent process in neural networks"
+        },
+        {
+            "paperId": "9136509aa692002a573fa18e3845568bd652e5b3",
+            "title": "On learning how to learn learning strategies"
+        },
+        {
+            "paperId": "bdaec1b3eb9a8f7a2b296be009a148c35236f3ce",
+            "title": "Evolutionary principles in self-referential learning, or on learning how to learn: The meta-meta-. hook"
+        },
+        {
+            "paperId": "a6bcf0e9b5034c4c9cbea839baadd69a42b05cc1",
+            "title": "Learning curves for stochastic gradient descent in linear feedforward networks"
+        }
+    ]
+}

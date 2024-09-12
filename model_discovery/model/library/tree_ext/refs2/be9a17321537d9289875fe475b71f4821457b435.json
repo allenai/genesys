@@ -1,0 +1,181 @@
+{
+    "paperId": "be9a17321537d9289875fe475b71f4821457b435",
+    "externalIds": {
+        "MAG": "2809446226",
+        "DBLP": "journals/jmlr/CoatesNL11",
+        "CorpusId": 308212
+    },
+    "title": "An Analysis of Single-Layer Networks in Unsupervised Feature Learning",
+    "abstract": "A great deal of research has focused on algorithms for learning features from unlabeled data. Indeed, much progress has been made on benchmark datasets like NORB and CIFAR by employing increasingly complex unsupervised learning algorithms and deep models. In this paper, however, we show that several simple factors, such as the number of hidden nodes in the model, may be more important to achieving high performance than the learning algorithm or the depth of the model. Specifically, we will apply several othe-shelf feature learning algorithms (sparse auto-encoders, sparse RBMs, K-means clustering, and Gaussian mixtures) to CIFAR, NORB, and STL datasets using only singlelayer networks. We then present a detailed analysis of the eect of changes in the model setup: the receptive field size, number of hidden nodes (features), the step-size (\u201cstride\u201d) between extracted features, and the eect of whitening. Our results show that large numbers of hidden nodes and dense feature extraction are critical to achieving high performance\u2014so critical, in fact, that when these parameters are pushed to their limits, we achieve state-of-the-art performance on both CIFAR-10 and NORB using only a single layer of features. More surprisingly, our best performance is based on K-means clustering, which is extremely fast, has no hyperparameters to tune beyond the model structure itself, and is very easy to implement. Despite the simplicity of our system, we achieve accuracy beyond all previously published results on the CIFAR-10 and NORB datasets (79.6% and 97.2% respectively).",
+    "venue": "International Conference on Artificial Intelligence and Statistics",
+    "year": 2011,
+    "referenceCount": 36,
+    "citationCount": 3635,
+    "influentialCitationCount": 689,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The results show that large numbers of hidden nodes and dense feature extraction are critical to achieving high performance\u2014so critical, in fact, that when these parameters are pushed to their limits, they achieve state-of-the-art performance on both CIFAR-10 and NORB using only a single layer of features."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "144638694",
+            "name": "Adam Coates"
+        },
+        {
+            "authorId": "34699434",
+            "name": "A. Ng"
+        },
+        {
+            "authorId": "1697141",
+            "name": "Honglak Lee"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "8b25a44f617c1ed3ed52c6655b0d456ff1c565bd",
+            "title": "Learning Convolutional Feature Hierarchies for Visual Recognition"
+        },
+        {
+            "paperId": "405aed4b8ecdd869b2e83095dde51c396334115f",
+            "title": "A Theoretical Analysis of Feature Pooling in Visual Recognition"
+        },
+        {
+            "paperId": "a5ee556c355392db1750df92ae2dc8867073e771",
+            "title": "Improved Local Coordinate Coding using Local Tangents"
+        },
+        {
+            "paperId": "498efaa51f5eda731dc6199c3547b9465717fa68",
+            "title": "Learning mid-level features for recognition"
+        },
+        {
+            "paperId": "e2c04849a3802715d5a9d89179c9f161014d6c2a",
+            "title": "Modeling pixel means and covariances using factorized third-order boltzmann machines"
+        },
+        {
+            "paperId": "e7c64258997838087c9ba4e87225627b015122b2",
+            "title": "Factored 3-Way Restricted Boltzmann Machines For Modeling Natural Images"
+        },
+        {
+            "paperId": "5a2668bf420d8509a4dfa28e1cdcdac14c649975",
+            "title": "3D Object Recognition with Deep Belief Nets"
+        },
+        {
+            "paperId": "3137bc367c61c0e507a5e3c1f8caeb26f292d79f",
+            "title": "Measuring Invariances in Deep Networks"
+        },
+        {
+            "paperId": "a5e23ef59eaf3fd897c460c28d23a982c72e8f65",
+            "title": "Nonlinear Learning using Local Coordinate Coding"
+        },
+        {
+            "paperId": "2a65066f13a62d6f7e551a899d7f8a2fed063765",
+            "title": "A Statistical Approach to Material Classification Using Image Patch Exemplars"
+        },
+        {
+            "paperId": "3fa5450f1c0795527939cfef5fbe3912c4dab3ab",
+            "title": "Large-scale object recognition with CUDA-accelerated hierarchical neural networks"
+        },
+        {
+            "paperId": "1f88427d7aa8225e47f946ac41a0667d7b69ac52",
+            "title": "What is the best multi-stage architecture for object recognition?"
+        },
+        {
+            "paperId": "0c9633aedafe4ee8cf238fa06c40b84f47e17362",
+            "title": "Linear spatial pyramid matching using sparse coding for image classification"
+        },
+        {
+            "paperId": "1e80f755bcbf10479afd2338cec05211fdbd325c",
+            "title": "Convolutional deep belief networks for scalable unsupervised learning of hierarchical representations"
+        },
+        {
+            "paperId": "ddc45fad8d15771d9f1f8579331458785b2cdd93",
+            "title": "Deep Boltzmann Machines"
+        },
+        {
+            "paperId": "843959ffdccf31c6694d135fad07425924f785b1",
+            "title": "Extracting and composing robust features with denoising autoencoders"
+        },
+        {
+            "paperId": "202cbbf671743aefd380d2f23987bd46b9caaf97",
+            "title": "Sparse deep belief net model for visual area V2"
+        },
+        {
+            "paperId": "41fef1a197fab9684a4608b725d3ae72e1ab4b39",
+            "title": "Sparse Feature Learning for Deep Belief Networks"
+        },
+        {
+            "paperId": "e64a9960734215e2b1866ea3cb723ffa5585ac14",
+            "title": "Efficient sparse coding algorithms"
+        },
+        {
+            "paperId": "932c2a02d462abd75af018125413b1ceaa1ee3f4",
+            "title": "Efficient Learning of Sparse Representations with an Energy-Based Model"
+        },
+        {
+            "paperId": "8978cf7574ceb35f4c3096be768c7547b28a35d0",
+            "title": "A Fast Learning Algorithm for Deep Belief Nets"
+        },
+        {
+            "paperId": "6dbaff29d3898cf60f63f5a34cb9610ebb75220c",
+            "title": "Beyond Bags of Features: Spatial Pyramid Matching for Recognizing Natural Scene Categories"
+        },
+        {
+            "paperId": "8bd170564ea5e58faffd557826d442ab0baf8dc6",
+            "title": "Hyperfeatures - Multilevel Local Coding for Visual Recognition"
+        },
+        {
+            "paperId": "6ae643b467ce873de1ce7962a7fa24dda1a28e68",
+            "title": "Sampling Strategies for Bag-of-Features Image Classification"
+        },
+        {
+            "paperId": "03a073589eaf8ce3440464d020e0d0b26df5869b",
+            "title": "Object categorization by learned universal visual dictionary"
+        },
+        {
+            "paperId": "7a2252ccce2b65abc3759149b5c06587cc318e2f",
+            "title": "A Bayesian hierarchical model for learning natural scene categories"
+        },
+        {
+            "paperId": "f354310098e09c1e1dc88758fca36767fd9d084d",
+            "title": "Learning methods for generic object recognition with invariance to pose and lighting"
+        },
+        {
+            "paperId": "52070af952474cf13ecd015d42979373ff7c1c00",
+            "title": "Training Products of Experts by Minimizing Contrastive Divergence"
+        },
+        {
+            "paperId": "577d19a115f9ef6f002483fcf88adbb3b5479556",
+            "title": "Independent component analysis: algorithms and applications"
+        },
+        {
+            "paperId": "ca1d23be869380ac9e900578c601c2d1febcc0c9",
+            "title": "The \u201cindependent components\u201d of natural scenes are edge filters"
+        },
+        {
+            "paperId": "8012c4a1e2ca663f1a04e80cbb19631a00cbab27",
+            "title": "Emergence of simple-cell receptive field properties by learning a sparse code for natural images"
+        },
+        {
+            "paperId": "bea5780d621e669e8069f05d0f2fc0db9df4b50f",
+            "title": "Convolutional Deep Belief Networks on CIFAR-10"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        },
+        {
+            "paperId": "a860b3d5b0cd02c7a9b4be702509dbca47fadb1b",
+            "title": "UvA-DARE ( Digital Academic Repository ) Kernel codebooks for scene categorization"
+        },
+        {
+            "paperId": null,
+            "title": "Ng points"
+        },
+        {
+            "paperId": "b91180d8853d00e8f2df7ee3532e07d3d0cce2af",
+            "title": "Visual categorization with bags of keypoints"
+        }
+    ]
+}

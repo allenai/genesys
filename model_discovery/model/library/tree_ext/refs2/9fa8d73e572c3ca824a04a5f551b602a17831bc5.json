@@ -1,0 +1,146 @@
+{
+    "paperId": "9fa8d73e572c3ca824a04a5f551b602a17831bc5",
+    "externalIds": {
+        "DBLP": "conf/emnlp/BlitzerMP06",
+        "MAG": "2158108973",
+        "ACL": "W06-1615",
+        "DOI": "10.3115/1610075.1610094",
+        "CorpusId": 15978939
+    },
+    "title": "Domain Adaptation with Structural Correspondence Learning",
+    "abstract": "Discriminative learning methods are widely used in natural language processing. These methods work best when their training and test data are drawn from the same distribution. For many NLP tasks, however, we are confronted with new domains in which labeled data is scarce or non-existent. In such cases, we seek to adapt existing models from a resource-rich source domain to a resource-poor target domain. We introduce structural correspondence learning to automatically induce correspondences among features from different domains. We test our technique on part of speech tagging and show performance gains for varying amounts of source and target training data, as well as improvements in target domain parsing accuracy using our improved tagger.",
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2006,
+    "referenceCount": 26,
+    "citationCount": 1682,
+    "influentialCitationCount": 193,
+    "openAccessPdf": {
+        "url": "https://dl.acm.org/doi/pdf/10.5555/1610075.1610094",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces structural correspondence learning to automatically induce correspondences among features from different domains in order to adapt existing models from a resource-rich source domain to aresource-poor target domain."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2116927",
+            "name": "John Blitzer"
+        },
+        {
+            "authorId": "143957226",
+            "name": "Ryan T. McDonald"
+        },
+        {
+            "authorId": "145366908",
+            "name": "Fernando C Pereira"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "a89d59f39e805e71b554a962d07449c5d39b7df3",
+            "title": "The Bottleneck"
+        },
+        {
+            "paperId": "80e12e85fd990dc396099794a779d1423ef28e21",
+            "title": "Adaptation of Maximum Entropy Capitalizer: Little Data Can Help a Lo"
+        },
+        {
+            "paperId": "214d59739d221230aac4d9eeb8cd14131f2f815d",
+            "title": "Domain adaptation for statistical classifiers"
+        },
+        {
+            "paperId": "47f5682448cdc0b650b54e7f59d22d72f4976c2d",
+            "title": "Domain Adaptation for Statistical Classifiers"
+        },
+        {
+            "paperId": "944e1a7b2c5c62e952418d7684e3cade89c76f87",
+            "title": "A Framework for Learning Predictive Structures from Multiple Tasks and Unlabeled Data"
+        },
+        {
+            "paperId": "7c3c210952f8707f2f4f5dfcb4e476d7d76c2e41",
+            "title": "Parsing Biomedical Literature"
+        },
+        {
+            "paperId": "618238c056a08ec0c1e9ced53ccda311cc732abb",
+            "title": "Flexible Text Segmentation with Structured Multilabel Classification"
+        },
+        {
+            "paperId": "b4299baa815ca5a815a70fba94a9f6f2b42fff19",
+            "title": "A High-Performance Semi-Supervised Learning Method for Text Chunking"
+        },
+        {
+            "paperId": "d3b27746f7a53f2dc5d9b8c2f3d343313622ec36",
+            "title": "Online Large-Margin Training of Dependency Parsers"
+        },
+        {
+            "paperId": "11c7a380814780478899cc546608777b23cd086e",
+            "title": "Exploiting Unannotated Corpora for Tagging and Chunking"
+        },
+        {
+            "paperId": "567dc4e26ece98e96c2e798ae8acafa5883945a9",
+            "title": "Discriminative Language Modeling with Conditional Random Fields and the Perceptron Algorithm"
+        },
+        {
+            "paperId": "3ca4d4229b8a843c0847fc70531790df6bd017ec",
+            "title": "Online Passive-Aggressive Algorithms"
+        },
+        {
+            "paperId": "1f12451245667a85d0ee225a80880fc93c71cc8b",
+            "title": "Minimum Error Rate Training in Statistical Machine Translation"
+        },
+        {
+            "paperId": "89a3d24b4d6e28706c75c9794e35502138fa29fb",
+            "title": "Supervised and unsupervised PCFG adaptation to novel domains"
+        },
+        {
+            "paperId": "897249c93f55ef1c0d2aa1e799eb67b414c6d4a6",
+            "title": "Shallow Parsing with Conditional Random Fields"
+        },
+        {
+            "paperId": "eb42a490cf4f186d3383c92963817d100afd81e2",
+            "title": "Feature-Rich Part-of-Speech Tagging with a Cyclic Dependency Network"
+        },
+        {
+            "paperId": "721a81bb028ea5579c1f0de16c06bb8136ee58b0",
+            "title": "Eigenvoices for speaker adaptation"
+        },
+        {
+            "paperId": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+            "title": "Building a Large Annotated Corpus of English: The Penn Treebank"
+        },
+        {
+            "paperId": "3de5d40b60742e3dfa86b19e7f660962298492af",
+            "title": "Class-Based n-gram Models of Natural Language"
+        },
+        {
+            "paperId": "774c6a9405b6d52d5d30a15e82601ca4635369c6",
+            "title": "Some statistical issues in the comparison of speech recognition algorithms"
+        },
+        {
+            "paperId": null,
+            "title": "Mining The Bibliome Project"
+        },
+        {
+            "paperId": "54c04d731368ad14ab3902c1abae46b8b62cb633",
+            "title": "A Statistical Model for Multilingual Entity Detection and Tracking"
+        },
+        {
+            "paperId": "ad269ba941949a1d66b6649a71d752784c576dc3",
+            "title": "Name Tagging with Word Clusters and Discriminative Training"
+        },
+        {
+            "paperId": null,
+            "title": "Latent dirichlet allocation. JMLR"
+        },
+        {
+            "paperId": "a574e320d899e7e82e341eb64baef7dfe8a24642",
+            "title": "A Maximum Entropy Model for Part-Of-Speech Tagging"
+        },
+        {
+            "paperId": null,
+            "title": "Distributional clustering of english words"
+        }
+    ]
+}

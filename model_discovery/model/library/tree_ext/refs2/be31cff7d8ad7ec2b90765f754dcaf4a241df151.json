@@ -1,0 +1,189 @@
+{
+    "paperId": "be31cff7d8ad7ec2b90765f754dcaf4a241df151",
+    "externalIds": {
+        "DBLP": "conf/nips/KanaiFI17",
+        "MAG": "2752813595",
+        "CorpusId": 13825036
+    },
+    "title": "Preventing Gradient Explosions in Gated Recurrent Units",
+    "abstract": "A gated recurrent unit (GRU) is a successful recurrent neural network architecture for time-series data. The GRU is typically trained using a gradient-based method, which is subject to the exploding gradient problem in which the gradient increases significantly. This problem is caused by an abrupt change in the dynamics of the GRU due to a small variation in the parameters. In this paper, we find a condition under which the dynamics of the GRU changes drastically and propose a learning method to address the exploding gradient problem. Our method constrains the dynamics of the GRU so that it does not drastically change. We evaluated our method in experiments on language modeling and polyphonic music modeling. Our experiments showed that our method can prevent the exploding gradient problem and improve modeling accuracy.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2017,
+    "referenceCount": 38,
+    "citationCount": 93,
+    "influentialCitationCount": 0,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper finds a condition under which the dynamics of the GRU changes drastically and proposes a learning method to address the exploding gradient problem, which can prevent the exploded gradient problem and improve modeling accuracy."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "29820421",
+            "name": "Sekitoshi Kanai"
+        },
+        {
+            "authorId": "1491242041",
+            "name": "Y. Fujiwara"
+        },
+        {
+            "authorId": "3382187",
+            "name": "Sotetsu Iwamura"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "923663ce9d0d5d10c74aa5def44a569004f9d8da",
+            "title": "H design with pole placement constraints"
+        },
+        {
+            "paperId": "9d1fb89b99aafc01ee56fc92df1ad150fba67c22",
+            "title": "On orthogonality and learning recurrent networks with long term dependencies"
+        },
+        {
+            "paperId": "401d68e1a930b0f7e02030cab4c185fb1839cb11",
+            "title": "Capacity and Trainability in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "f451d0212e65ab9970a58b584b3363a853c9811c",
+            "title": "A recurrent neural network without chaos"
+        },
+        {
+            "paperId": "b1ee96a05585ab4979afb565dbbcd77a11673b4b",
+            "title": "Memory visualization for gated recurrent neural networks in speech recognition"
+        },
+        {
+            "paperId": "13497bd108d4412d02050e646235f456568cf822",
+            "title": "Deep Speech 2 : End-to-End Speech Recognition in English and Mandarin"
+        },
+        {
+            "paperId": "f84d5add20d4df0a6c89c47a920354c272cbdbd8",
+            "title": "Regularizing RNNs by Stabilizing Activations"
+        },
+        {
+            "paperId": "e9c771197a6564762754e48c1daafb066f449f2e",
+            "title": "Unitary Evolution Recurrent Neural Networks"
+        },
+        {
+            "paperId": "26744bcd78eef332a3f588b72f73c9cf92691aad",
+            "title": "Improving performance of recurrent neural network with relu nonlinearity"
+        },
+        {
+            "paperId": "5b8364c21155d3d2cd38ea4c8b8580beba9a3250",
+            "title": "An Empirical Exploration of Recurrent Network Architectures"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "ac3ee98020251797c2b401e1389461df88e52e62",
+            "title": "Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "f264e8b33c0d49a692a6ce2c4bcb28588aeb7d97",
+            "title": "Recurrent Neural Network Regularization"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "99c970348b8f70ce23d6641e201904ea49266b6e",
+            "title": "Exact solutions to the nonlinear dynamics of learning in deep linear neural networks"
+        },
+        {
+            "paperId": "4177ec52d1b80ed57f2e72b0f9a42365f1a8598d",
+            "title": "Speech recognition with deep recurrent neural networks"
+        },
+        {
+            "paperId": "84069287da0a6b488b8c933f3cb5be759cb6237e",
+            "title": "On the difficulty of training recurrent neural networks"
+        },
+        {
+            "paperId": "07c43a3ff15f2104022f2b1ca8ec4128a930b414",
+            "title": "Modeling Temporal Dependencies in High-Dimensional Sequences: Application to Polyphonic Music Generation and Transcription"
+        },
+        {
+            "paperId": "df7e1cfa5999c3746a3bbc9817d924677ac8b8f0",
+            "title": "Finding Structure with Randomness: Probabilistic Algorithms for Constructing Approximate Matrix Decompositions"
+        },
+        {
+            "paperId": "f6df612feff3663eb26a8f57ccde5b13e9b01873",
+            "title": "Input space bifurcation manifolds of recurrent neural networks"
+        },
+        {
+            "paperId": "2cabe93a2c5a1d3783a9208012ec9d3102583ba1",
+            "title": "Stability analysis of discrete-time recurrent neural networks"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "adf83f2fce636e8b75c12e3e0670113902f3f3a0",
+            "title": "Dynamics of Attention as Near Saddle-Node Bifurcation Behavior"
+        },
+        {
+            "paperId": "cc8e2c1ef4c1f4e0e94baf5f02251f927824993d",
+            "title": "Universal Approximnation and Learning of Trajectories Using Oscillators"
+        },
+        {
+            "paperId": "832fe59105a655a91b7a63e12c911693bc74dd29",
+            "title": "On the NP-hardness of solving bilinear matrix inequalities and simultaneous stabilization with static output feedback"
+        },
+        {
+            "paperId": "9b39b229d5ba8f193e7188bfbea2591199451688",
+            "title": "A Convergence Result for Learning in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "d0be39ee052d246ae99c082a565aba25b811be2d",
+            "title": "Learning long-term dependencies with gradient descent is difficult"
+        },
+        {
+            "paperId": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+            "title": "Building a Large Annotated Corpus of English: The Penn Treebank"
+        },
+        {
+            "paperId": "49fd5bb235e445d815218e5592409d05f1d39593",
+            "title": "Destabilization and Route to Chaos in Neural Networks with Random Connectivity"
+        },
+        {
+            "paperId": "f55e5107f756e29f1e6ac6109dc44d698d6301fb",
+            "title": "Bifurcations in the learning of recurrent neural networks"
+        },
+        {
+            "paperId": "bdb15624d725cc38f2dd8c73dd6e01b4ca13316e",
+            "title": "Introduction to Applied Nonlinear Dynamical Systems and Chaos"
+        },
+        {
+            "paperId": "b0b33aaed1d408d04fadf9ff2a080e47ef8cb7b1",
+            "title": "Training and Analysing Deep Recurrent Neural Networks"
+        },
+        {
+            "paperId": "96364af2d208ea75ca3aeb71892d2f7ce7326b55",
+            "title": "Statistical Language Models Based on Neural Networks"
+        },
+        {
+            "paperId": "c08d0525bd42fa1c24f9f5df72f4c8fcf7063b22",
+            "title": "Offline Handwriting Recognition with Multidimensional Recurrent Neural Networks"
+        },
+        {
+            "paperId": "a10990aab66ffaf6bfd3fe582c42c93a9e406fa7",
+            "title": "A tutorial on training recurrent neural networks , covering BPPT , RTRL , EKF and the \" echo state network \" approach - Semantic Scholar"
+        },
+        {
+            "paperId": "b1d99e15e1e2cb0db4a27c5d3c8cad90e4c46aa3",
+            "title": "Nonlinear system identification using discrete-time recurrent neural networks with stable learning algorithms"
+        },
+        {
+            "paperId": "5dd953a8a67f5af8c04729d4dd9c7fab9f98c0fc",
+            "title": "Robust local stability of multilayer recurrent neural networks"
+        }
+    ]
+}

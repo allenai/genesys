@@ -1,0 +1,81 @@
+{
+    "paperId": "fff9f2a8c62da0e79189797f08e60aa20f04173d",
+    "externalIds": {
+        "MAG": "2969003269",
+        "DOI": "10.1109/ITEC.2019.8790543",
+        "CorpusId": 199510445
+    },
+    "title": "Li-ion Battery State of Charge Estimation Using Long Short-Term Memory Recurrent Neural Network with Transfer Learning",
+    "abstract": "To develop more efficient, reliable and affordable electrified vehicles, it is very desirable to improve the accuracy of the battery state of charge (SOC) estimation. However, due to the nonlinear, temperature and state of charge dependent behaviour of Li-ion batteries, SOC estimation is still a significant engineering challenge. Traditional methods such as the Kalman filter require significant characterization testing, model development, and filter design and tuning efforts which must be tailored to each battery type. To help solve this problem, this work proposes a novel method to address SOC estimation using a deep neural network (DNN) with Transfer Learning (TL). Transfer learning is a method that uses the learnable parameters from a trained DNN to help train another DNN. Transfer learning has the potential to improve SOC estimation as well as reduce DNN training time and data required. Results show up to 64% better accuracy and similar or better accuracy with a reduced amount of training data.",
+    "venue": "IEEE Transportation Electrification Conference and Expo",
+    "year": 2019,
+    "referenceCount": 10,
+    "citationCount": 41,
+    "influentialCitationCount": 1,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a novel method to address SOC estimation using a deep neural network (DNN) with Transfer Learning (TL), a method that uses the learnable parameters from a trained DNN to help train another DNN."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2059745371",
+            "name": "Carlos Vidal"
+        },
+        {
+            "authorId": "9445403",
+            "name": "P. Kollmeyer"
+        },
+        {
+            "authorId": "30720011",
+            "name": "Ephrem Chemali"
+        },
+        {
+            "authorId": "145515389",
+            "name": "A. Emadi"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "2491ddb6e66b39d2fc6e2e88f1b65966ce41fabf",
+            "title": "xEV Li-Ion Battery Low-Temperature Effects\u2014Review"
+        },
+        {
+            "paperId": "97c843f2cd2a02475ef96e9f0679a5e445238d43",
+            "title": "State-of-charge estimation of Li-ion batteries using deep neural networks: A machine learning approach"
+        },
+        {
+            "paperId": "116ddfa9a79a53f0f4470eca862541c22fc7ec6a",
+            "title": "Long Short-Term Memory Networks for Accurate State-of-Charge Estimation of Li-ion Batteries"
+        },
+        {
+            "paperId": "396322c1535a6568adb1128d345731f298336a3d",
+            "title": "Hybrid Energy Storage System State-Of-Charge Estimation Using Artificial Neural Network For Micro-Hybrid Applications"
+        },
+        {
+            "paperId": "081651b38ff7533550a3adfc1c00da333a8fe86c",
+            "title": "How transferable are features in deep neural networks?"
+        },
+        {
+            "paperId": "2aeb491dbdf7905bfe8835a02606311d585fb63a",
+            "title": "The Zero Marginal Cost Society: The Internet of Things, the Collaborative Commons, and the Eclipse of Capitalism"
+        },
+        {
+            "paperId": "a25fbcbbae1e8f79c4360d26aa11a3abf1a11972",
+            "title": "A Survey on Transfer Learning"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "f34607a6aa2d984e34a5ce7f0bdac4a860fa98a4",
+            "title": "Training Recurrent Neural Networks"
+        },
+        {
+            "paperId": null,
+            "title": "Understanding LSTM networks"
+        }
+    ]
+}

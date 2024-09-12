@@ -1,0 +1,118 @@
+{
+    "paperId": "2c8ac3e1f0edeed1fbd76813e61efdc384c319c7",
+    "externalIds": {
+        "ACL": "C02-1150",
+        "DBLP": "conf/coling/LiR02",
+        "MAG": "2070246124",
+        "DOI": "10.3115/1072228.1072378",
+        "CorpusId": 11039301
+    },
+    "title": "Learning Question Classifiers",
+    "abstract": "In order to respond correctly to a free form factual question given a large collection of texts, one needs to understand the question to a level that allows determining some of the constraints the question imposes on a possible answer. These constraints may include a semantic classification of the sought after answer and may even suggest using different strategies when looking for and verifying a candidate answer.This paper presents a machine learning approach to question classification. We learn a hierarchical classifier that is guided by a layered semantic hierarchy of answer types, and eventually classifies questions into fine-grained classes. We show accurate results on a large collection of free-form questions used in TREC 10.",
+    "venue": "International Conference on Computational Linguistics",
+    "year": 2002,
+    "referenceCount": 20,
+    "citationCount": 1493,
+    "influentialCitationCount": 237,
+    "openAccessPdf": {
+        "url": "http://acl.ldc.upenn.edu/C/C02/C02-1150.pdf",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A hierarchical classifier is learned that is guided by a layered semantic hierarchy of answer types, and eventually classifies questions into fine-grained classes."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2153901204",
+            "name": "Xin Li"
+        },
+        {
+            "authorId": "144590225",
+            "name": "D. Roth"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "f24e2d8df650e8c8b0bf61af8ce5aed83e476be4",
+            "title": "Analyses for elucidating current question answering technology"
+        },
+        {
+            "paperId": "dd53ce7b4e9e1f4f236ae741b95d0553314f0cc4",
+            "title": "Learning Components for A Question-Answering System"
+        },
+        {
+            "paperId": "3fab92869cfab684b3ffb1c16a771e9c3b774acd",
+            "title": "The Use of Classifiers in Sequential Inference"
+        },
+        {
+            "paperId": "7354a886178466d65867eba6a8beb3a430d918d5",
+            "title": "Relational Learning via Propositional Algorithms: An Information Extraction Case Study"
+        },
+        {
+            "paperId": "5afbc0e1cb4cfb6f22bb1b11de3498a610a99ec7",
+            "title": "Parsing and Question Classification for Question Answering"
+        },
+        {
+            "paperId": "cb352f6df85ada5f90ab0301e3bdbf37c93b3190",
+            "title": "Exploring evidence for shallow parsing"
+        },
+        {
+            "paperId": "7d8b12abbaf0283f9f7612f48d1b46e981a0539d",
+            "title": "A Sequential Model for Multi-Class Classification"
+        },
+        {
+            "paperId": "75895ce98904e8afaaa248f081a1da501bd2dbe2",
+            "title": "Toward Semantics-Based Answer Pinpointing"
+        },
+        {
+            "paperId": "2f6c079bc68b93e7d0934a0b88c2105a2e39e040",
+            "title": "FALCON: Boosting Knowledge for Answer Engines"
+        },
+        {
+            "paperId": "10e3105bc60e0d18a808aea77d878a0892ef4d48",
+            "title": "Relational Representations that Facilitate Learning"
+        },
+        {
+            "paperId": "5ddde06f993d633a5f9750bc1c3301eb7f13e82f",
+            "title": "Deep Read: A Reading Comprehension System"
+        },
+        {
+            "paperId": "58dba823fc1d5f5d45c6fb7414aba7fed7011fb8",
+            "title": "A Winnow-Based Approach to Context-Sensitive Spelling Correction"
+        },
+        {
+            "paperId": "3ed17a1114e2dc48597ab17cc8d5234006f525c9",
+            "title": "Learning to Resolve Natural Language Ambiguities: A Unified Approach"
+        },
+        {
+            "paperId": "a98e11a9dbff1b3d4e25e0702864fef1eee2e8a6",
+            "title": "Principle-Based Parsing: Computation and Psycholinguistics"
+        },
+        {
+            "paperId": "c4cf4ec0fa17002dd54b3d8873521a8953babf51",
+            "title": "A Conceptual Theory of Question Answering"
+        },
+        {
+            "paperId": "f723db13ca1c8b1ff92cacb10a5854e6d8335f08",
+            "title": "IBM's Statistical Question Answering System"
+        },
+        {
+            "paperId": "4a92e760db5aee771255dacf7f26c3f968b4b1cb",
+            "title": "Overview of the TREC-9 Question Answering Track"
+        },
+        {
+            "paperId": "46e765ac3b3d163fdf60040f8742d199c0508675",
+            "title": "AT&T at TREC-8"
+        },
+        {
+            "paperId": null,
+            "title": "The SNoW learning architecture"
+        },
+        {
+            "paperId": "56d7826f3afaa374077f87ca3529709b1ca7e044",
+            "title": "Parsing By Chunks"
+        }
+    ]
+}

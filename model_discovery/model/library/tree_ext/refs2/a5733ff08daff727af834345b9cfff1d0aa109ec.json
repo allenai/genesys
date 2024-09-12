@@ -1,0 +1,226 @@
+{
+    "paperId": "a5733ff08daff727af834345b9cfff1d0aa109ec",
+    "externalIds": {
+        "MAG": "2949401648",
+        "DBLP": "conf/nips/CourbariauxBD15",
+        "ArXiv": "1511.00363",
+        "CorpusId": 1518846
+    },
+    "title": "BinaryConnect: Training Deep Neural Networks with binary weights during propagations",
+    "abstract": "Deep Neural Networks (DNN) have achieved state-of-the-art results in a wide range of tasks, with the best results obtained with large training sets and large models. In the past, GPUs enabled these breakthroughs because of their greater computational speed. In the future, faster computation at both training and test time is likely to be crucial for further progress and for consumer applications on low-power devices. As a result, there is much interest in research and development of dedicated hardware for Deep Learning (DL). Binary weights, i.e., weights which are constrained to only two possible values (e.g. -1 or 1), would bring great benefits to specialized DL hardware by replacing many multiply-accumulate operations by simple accumulations, as multipliers are the most space and power-hungry components of the digital implementation of neural networks. We introduce BinaryConnect, a method which consists in training a DNN with binary weights during the forward and backward propagations, while retaining precision of the stored weights in which gradients are accumulated. Like other dropout schemes, we show that BinaryConnect acts as regularizer and we obtain near state-of-the-art results with BinaryConnect on the permutation-invariant MNIST, CIFAR-10 and SVHN.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2015,
+    "referenceCount": 47,
+    "citationCount": 2795,
+    "influentialCitationCount": 300,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "BinaryConnect is introduced, a method which consists in training a DNN with binary weights during the forward and backward propagations, while retaining precision of the stored weights in which gradients are accumulated, and near state-of-the-art results with BinaryConnect are obtained on the permutation-invariant MNIST, CIFAR-10 and SVHN."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2388466",
+            "name": "Matthieu Courbariaux"
+        },
+        {
+            "authorId": "1751762",
+            "name": "Yoshua Bengio"
+        },
+        {
+            "authorId": "145719986",
+            "name": "J. David"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "5ef5e2fa01f1b3b512786bf9f8e2c98f7557f4f9",
+            "title": "Lasagne: First release."
+        },
+        {
+            "paperId": "d97a83af0bcab8bb17f6ef137eb08bf17b7f3677",
+            "title": "Rounding Methods for Neural Networks with Low Resolution Synaptic Weights"
+        },
+        {
+            "paperId": "89ebfb6c3a7ad6e6753b5060faf38fc90ad2287b",
+            "title": "Hippocampal Spine Head Sizes Are Highly Precise"
+        },
+        {
+            "paperId": "87e35aded44808e9c35ef00d505b6c60f376de2f",
+            "title": "Training Binary Multilayer Neural Networks for Image Classification using Expectation Backpropagation"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "b7cf49e30355633af2db19f35189410c8515e91f",
+            "title": "Deep Learning with Limited Numerical Precision"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "d8c35c2c39fdd2ec6af37ddc8c51deb396aefef8",
+            "title": "Low precision arithmetic for deep learning"
+        },
+        {
+            "paperId": "1b82d54e9a3b06c603d7987ba3ecf437425f6330",
+            "title": "Training deep neural networks with low precision multiplications"
+        },
+        {
+            "paperId": "4157ed3db4c656854e69931cb6089b64b08784b9",
+            "title": "DaDianNao: A Machine-Learning Supercomputer"
+        },
+        {
+            "paperId": "feaa7e295c7a43ec52091ed9ade1a9a1e5d9bed2",
+            "title": "Expectation Backpropagation: Parameter-Free Training of Multilayer Neural Networks with Continuous or Discrete Weights"
+        },
+        {
+            "paperId": "a4db2d26b5d169de6b64de361dc7d4fd5b1f61a3",
+            "title": "Fixed-point feedforward deep neural network design using weights +1, 0, and \u22121"
+        },
+        {
+            "paperId": "c8cb691eae3a2e79adf07548d348ab58e90ee2ba",
+            "title": "Spatially-sparse convolutional neural networks"
+        },
+        {
+            "paperId": "fb91db6aa4f710814f8aec28a7f3ecbc4e5ad4fd",
+            "title": "Deeply-Supervised Nets"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "0894b06cff1cd0903574acaa7fcf071b144ae775",
+            "title": "Fast and Robust Neural Network Joint Models for Statistical Machine Translation"
+        },
+        {
+            "paperId": "e277762804aa4615b2258fbd367d91326c00b90e",
+            "title": "X1000 real-time phoneme recognition VLSI using feed-forward deep neural networks"
+        },
+        {
+            "paperId": "22e477a9fdde86ab1f8f4dafdb4d88ea37e31fbd",
+            "title": "DianNao: a small-footprint high-throughput accelerator for ubiquitous machine-learning"
+        },
+        {
+            "paperId": "5e83ab70d0cbc003471e87ec306d27d9c80ecb16",
+            "title": "Network In Network"
+        },
+        {
+            "paperId": "2f7ad26514bce4df6c8ebc42c90383ef3a974df4",
+            "title": "Pylearn2: a machine learning research library"
+        },
+        {
+            "paperId": "38f35dd624cd1cf827416e31ac5e0e0454028eca",
+            "title": "Regularization of Neural Networks using DropConnect"
+        },
+        {
+            "paperId": "4417f78b31546227784941bbd6f6532a177e60b8",
+            "title": "Deep Learning using Linear Support Vector Machines"
+        },
+        {
+            "paperId": "24e555913192d8722f4a0240445bf73db71bd884",
+            "title": "Deep convolutional neural networks for LVCSR"
+        },
+        {
+            "paperId": "b7b915d508987b73b61eccd2b237e7ed099a2d29",
+            "title": "Maxout Networks"
+        },
+        {
+            "paperId": "3127190433230b3dc1abd0680bb58dced4bcd90e",
+            "title": "Large Scale Distributed Deep Networks"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "855d0f722d75cc56a66a00ede18ace96bafee6bd",
+            "title": "Theano: new features and speed improvements"
+        },
+        {
+            "paperId": "e33cbb25a8c7390aec6a398e36381f4f7770c283",
+            "title": "Deep Neural Networks for Acoustic Modeling in Speech Recognition"
+        },
+        {
+            "paperId": "5a9ef216bf11f222438fff130c778267d39a9564",
+            "title": "Practical Variational Inference for Neural Networks"
+        },
+        {
+            "paperId": "67107f78a84bdb2411053cb54e94fa226eea6d8e",
+            "title": "Deep Sparse Rectifier Neural Networks"
+        },
+        {
+            "paperId": "a538b05ebb01a40323997629e171c91aa28b8e2f",
+            "title": "Rectified Linear Units Improve Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": "ea9d2a2b4ce11aaf85136840c65f3bc9c03ab649",
+            "title": "Understanding the difficulty of training deep feedforward neural networks"
+        },
+        {
+            "paperId": "0b94894ad7d364fced3921d4291ff90feb45b6e7",
+            "title": "A highly scalable Restricted Boltzmann Machine FPGA implementation"
+        },
+        {
+            "paperId": "e337c5e4c23999c36f64bcb33ebe6b284e1bcbf1",
+            "title": "Large-scale deep unsupervised learning using graphics processors"
+        },
+        {
+            "paperId": "90164241366d6cdf0d122fa7402b717f5cf3c40e",
+            "title": "Hardware Complexity of Modular Multiplication and Exponentiation"
+        },
+        {
+            "paperId": "6c2b28f9354f667cd5bd07afc0471d8334430da7",
+            "title": "A Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "15c10ae31b039fe50d5cb51f7dbac6cbc3e4102c",
+            "title": "Expectation Propagation for approximate Bayesian inference"
+        },
+        {
+            "paperId": null,
+            "title": "diogo149, Brian McFee"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "5d5d4f49d6443c8529a6f5ebef5c499d47a869da",
+            "title": "Improving Neural Networks with Dropout"
+        },
+        {
+            "paperId": null,
+            "title": "Theano: a CPU and GPU math expression compiler"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "ed910d96802212c9e45d956adaa27d915f5d7469",
+            "title": "A method for unconstrained convex minimization problem with the rate of convergence o(1/k^2)"
+        },
+        {
+            "paperId": null,
+            "title": "and Lasagne, two Deep Learning libraries built on the top of Theano. We are also grateful for funding from NSERC, the Canada Research Chairs"
+        }
+    ]
+}

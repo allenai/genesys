@@ -1,0 +1,157 @@
+{
+    "paperId": "5b8364c21155d3d2cd38ea4c8b8580beba9a3250",
+    "externalIds": {
+        "DBLP": "conf/icml/JozefowiczZS15",
+        "MAG": "581956982",
+        "CorpusId": 9668607
+    },
+    "title": "An Empirical Exploration of Recurrent Network Architectures",
+    "abstract": "The Recurrent Neural Network (RNN) is an extremely powerful sequence model that is often difficult to train. The Long Short-Term Memory (LSTM) is a specific RNN architecture whose design makes it much easier to train. While wildly successful in practice, the LSTM's architecture appears to be ad-hoc so it is not clear if it is optimal, and the significance of its individual components is unclear. \n \nIn this work, we aim to determine whether the LSTM architecture is optimal or whether much better architectures exist. We conducted a thorough architecture search where we evaluated over ten thousand different RNN architectures, and identified an architecture that outperforms both the LSTM and the recently-introduced Gated Recurrent Unit (GRU) on some but not all tasks. We found that adding a bias of 1 to the LSTM's forget gate closes the gap between the LSTM and the GRU.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2015,
+    "referenceCount": 30,
+    "citationCount": 1650,
+    "influentialCitationCount": 113,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is found that adding a bias of 1 to the LSTM's forget gate closes the gap between the L STM and the recently-introduced Gated Recurrent Unit (GRU) on some but not all tasks."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1944541",
+            "name": "R. J\u00f3zefowicz"
+        },
+        {
+            "authorId": "2563432",
+            "name": "Wojciech Zaremba"
+        },
+        {
+            "authorId": "1701686",
+            "name": "I. Sutskever"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "a7976c2bacfbb194ddbe7fd10c2e50a545cf4081",
+            "title": "LSTM: A Search Space Odyssey"
+        },
+        {
+            "paperId": "9665247ea3421929f9b6ad721f139f11edb1dbb8",
+            "title": "Learning Longer Memory in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "ac3ee98020251797c2b401e1389461df88e52e62",
+            "title": "Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling"
+        },
+        {
+            "paperId": "0d0b3ff23fbf1ec7a0dfebd923a3ef224306491a",
+            "title": "Learning to Execute"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "f264e8b33c0d49a692a6ce2c4bcb28588aeb7d97",
+            "title": "Recurrent Neural Network Regularization"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17",
+            "title": "Generating Sequences With Recurrent Neural Networks"
+        },
+        {
+            "paperId": "aa7bfd2304201afbb19971ebde87b17e40242e91",
+            "title": "On the importance of initialization and momentum in deep learning"
+        },
+        {
+            "paperId": "84069287da0a6b488b8c933f3cb5be759cb6237e",
+            "title": "On the difficulty of training recurrent neural networks"
+        },
+        {
+            "paperId": "07c43a3ff15f2104022f2b1ca8ec4128a930b414",
+            "title": "Modeling Temporal Dependencies in High-Dimensional Sequences: Application to Polyphonic Music Generation and Transcription"
+        },
+        {
+            "paperId": "0d6203718c15f137fda2f295c96269bc2b254644",
+            "title": "Learning Recurrent Neural Networks with Hessian-Free Optimization"
+        },
+        {
+            "paperId": "4c46347fbc272b21468efe3d9af34b4b2bad6684",
+            "title": "Deep learning via Hessian-free optimization"
+        },
+        {
+            "paperId": "8b7405ab47e1b6686cebcbfb1f2efdbe431fc79c",
+            "title": "Evolving Memory Cell Structures for Sequence Learning"
+        },
+        {
+            "paperId": "46857f0c98f223622ad530b6fc4e446fb9187082",
+            "title": "Harnessing Nonlinearity: Predicting Chaotic Systems and Saving Energy in Wireless Communication"
+        },
+        {
+            "paperId": "11540131eae85b2e11d53df7f1360eeb6476e7f4",
+            "title": "Learning to Forget: Continual Prediction with LSTM"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "d0be39ee052d246ae99c082a565aba25b811be2d",
+            "title": "Learning long-term dependencies with gradient descent is difficult"
+        },
+        {
+            "paperId": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+            "title": "Building a Large Annotated Corpus of English: The Penn Treebank"
+        },
+        {
+            "paperId": "1a442ed03ed8c6bc79272d1be1fd8bc3f0afe73a",
+            "title": "Modelling Brain Function: The World of Attractor Neural Networks"
+        },
+        {
+            "paperId": "96364af2d208ea75ca3aeb71892d2f7ce7326b55",
+            "title": "Statistical Language Models Based on Neural Networks"
+        },
+        {
+            "paperId": "3449b65008b27f6e60a73d80c1fd990f0481126b",
+            "title": "Torch7: A Matlab-like Environment for Machine Learning"
+        },
+        {
+            "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+            "title": "Recurrent neural network based language model"
+        },
+        {
+            "paperId": null,
+            "title": "Theano: a CPU and GPU math expression compiler"
+        },
+        {
+            "paperId": "8430c0b9afa478ae660398704b11dca1221ccf22",
+            "title": "The''echo state''approach to analysing and training recurrent neural networks"
+        },
+        {
+            "paperId": "d859f0d4c78bc772b350854cae30e72e5610ce71",
+            "title": "Semantic and Associative Priming in a Distributed Attractor Network"
+        },
+        {
+            "paperId": "3f3d13e95c25a8f6a753e38dfce88885097cbd43",
+            "title": "Untersuchungen zu dynamischen neuronalen Netzen"
+        },
+        {
+            "paperId": "7b62ab1607ff003300b8819e1b8a76035406e7b6",
+            "title": "Lesioning an attractor network: investigations of acquired dyslexia."
+        },
+        {
+            "paperId": null,
+            "title": "Replace the current node with a randomly chosen node from the current node\u2019s ancestors (i.e., all nodes that A depends on)"
+        },
+        {
+            "paperId": null,
+            "title": "Remove the current node if it has one input and one output"
+        }
+    ]
+}

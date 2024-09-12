@@ -1,0 +1,122 @@
+{
+    "paperId": "b94043a133e3d07ed0b1cfc036829e619ea0ba22",
+    "externalIds": {
+        "ArXiv": "1312.5663",
+        "MAG": "1853900790",
+        "DBLP": "journals/corr/MakhzaniF13",
+        "CorpusId": 14850799
+    },
+    "title": "k-Sparse Autoencoders",
+    "abstract": "Recently, it has been observed that when representations are learnt in a way that encourages sparsity, improved performance is obtained on classification tasks. These methods involve combinations of activation functions, sampling steps and different kinds of penalties. To investigate the effectiveness of sparsity by itself, we propose the k-sparse autoencoder, which is an autoencoder with linear activation function, where in hidden layers only the k highest activities are kept. When applied to the MNIST and NORB datasets, we find that this method achieves better classification results than denoising autoencoders, networks trained with dropout, and RBMs. k-sparse autoencoders are simple to train and the encoding stage is very fast, making them well-suited to large problem sizes, where conventional sparse coding algorithms cannot be applied.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2013,
+    "referenceCount": 22,
+    "citationCount": 386,
+    "influentialCitationCount": 32,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": null
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2063975908",
+            "name": "Alireza Makhzani"
+        },
+        {
+            "authorId": "2054304315",
+            "name": "Brendan J. Frey"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "0060745e006c5f14ec326904119dca19c6545e51",
+            "title": "Improving neural networks by preventing co-adaptation of feature detectors"
+        },
+        {
+            "paperId": "be9a17321537d9289875fe475b71f4821457b435",
+            "title": "An Analysis of Single-Layer Networks in Unsupervised Feature Learning"
+        },
+        {
+            "paperId": "6f568d757d2c1ab42f2006faa25690b74c3d2d44",
+            "title": "The Importance of Encoding Versus Training with Sparse Coding and Vector Quantization"
+        },
+        {
+            "paperId": "c63ef05c5f9c424b5cfeeed90dbe35eedf6cb8ec",
+            "title": "Fast Inference in Sparse Coding Algorithms with Applications to Object Recognition"
+        },
+        {
+            "paperId": "e8f811399746c059bf4d4c3d43334045e0222209",
+            "title": "Learning Fast Approximations of Sparse Coding"
+        },
+        {
+            "paperId": "00cd1dab559a9671b692f39f14c1573ab2d1416b",
+            "title": "Efficient Learning of Deep Boltzmann Machines"
+        },
+        {
+            "paperId": "0d2336389dff3031910bd21dd1c44d1b4cd51725",
+            "title": "Why Does Unsupervised Pre-training Help Deep Learning?"
+        },
+        {
+            "paperId": "5a2668bf420d8509a4dfa28e1cdcdac14c649975",
+            "title": "3D Object Recognition with Deep Belief Nets"
+        },
+        {
+            "paperId": "cf8423b52150458ed642e1e62753b940512939dd",
+            "title": "Coherence analysis of iterative thresholding algorithms"
+        },
+        {
+            "paperId": "ca39d495ecda24db91a80de3785c8737d92b06d3",
+            "title": "Kernel Codebooks for Scene Categorization"
+        },
+        {
+            "paperId": "843959ffdccf31c6694d135fad07425924f785b1",
+            "title": "Extracting and composing robust features with denoising autoencoders"
+        },
+        {
+            "paperId": "7b4b43501d57ee40cdedf93882b613146faad7e2",
+            "title": "Iterative Hard Thresholding for Compressed Sensing"
+        },
+        {
+            "paperId": "202cbbf671743aefd380d2f23987bd46b9caaf97",
+            "title": "Sparse deep belief net model for visual area V2"
+        },
+        {
+            "paperId": "d8c0f0a243070ba05883befce0095a633186dd53",
+            "title": "Signal Recovery From Random Measurements Via Orthogonal Matching Pursuit"
+        },
+        {
+            "paperId": "355d44f53428b1ac4fb2ab468d593c720640e5bd",
+            "title": "Greedy Layer-Wise Training of Deep Networks"
+        },
+        {
+            "paperId": "f354310098e09c1e1dc88758fca36767fd9d084d",
+            "title": "Learning methods for generic object recognition with invariance to pose and lighting"
+        },
+        {
+            "paperId": "8031434363ece9109daab935ef561000bed2c483",
+            "title": "Optimally sparse representation in general (nonorthogonal) dictionaries via \u21131 minimization"
+        },
+        {
+            "paperId": "684732677d91a93b115f57e8d671ef7f5f13ee14",
+            "title": "Method of optimal directions for frame design"
+        },
+        {
+            "paperId": "2805537bec87a6177037b18f9a3a9d3f1038867b",
+            "title": "Sparse coding with an overcomplete basis set: A strategy employed by V1?"
+        },
+        {
+            "paperId": null,
+            "title": "Gnumpy: an easy way to use gpu boards in python"
+        },
+        {
+            "paperId": "7c59908c946a4157abc030cdbe2b63d08ba97db3",
+            "title": "Supporting Online Material for Reducing the Dimensionality of Data with Neural Networks"
+        },
+        {
+            "paperId": "27d7cfe8e0c06a69ac4f3debef3ae70c3e938246",
+            "title": "K-SVD : DESIGN OF DICTIONARIES FOR SPARSE REPRESENTATION"
+        }
+    ]
+}

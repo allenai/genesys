@@ -1,0 +1,250 @@
+{
+    "paperId": "4eee87d960754f755fdec073a160af3e2e31672f",
+    "externalIds": {
+        "MAG": "2895340641",
+        "DBLP": "conf/eccv/ZhaoZLSLLJ18",
+        "DOI": "10.1007/978-3-030-01240-3_17",
+        "CorpusId": 52958802
+    },
+    "title": "PSANet: Point-wise Spatial Attention Network for Scene Parsing",
+    "abstract": null,
+    "venue": "European Conference on Computer Vision",
+    "year": 2018,
+    "referenceCount": 49,
+    "citationCount": 926,
+    "influentialCitationCount": 84,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The point-wise spatial attention network (PSANet) is proposed to relax the local neighborhood constraint and achieves top performance on various competitive scene parsing datasets, including ADE20K, PASCAL VOC 2012 and Cityscapes, demonstrating its effectiveness and generality."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3459894",
+            "name": "Hengshuang Zhao"
+        },
+        {
+            "authorId": "2153911759",
+            "name": "Yi Zhang"
+        },
+        {
+            "authorId": "1779129",
+            "name": "Shu Liu"
+        },
+        {
+            "authorId": "1788070",
+            "name": "Jianping Shi"
+        },
+        {
+            "authorId": "1717179",
+            "name": "Chen Change Loy"
+        },
+        {
+            "authorId": "1807606",
+            "name": "Dahua Lin"
+        },
+        {
+            "authorId": "1729056",
+            "name": "Jiaya Jia"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "8899094797e82c5c185a0893896320ef77f60e64",
+            "title": "Non-local Neural Networks"
+        },
+        {
+            "paperId": "99c69fe118efbc47efc91ceaa3b2e711405eef20",
+            "title": "Scale-Adaptive Convolutions for Scene Parsing"
+        },
+        {
+            "paperId": "73866bdb723841da93b6ad93afe3d72817e2b377",
+            "title": "Dense and Low-Rank Gaussian CRFs Using Deep Embeddings"
+        },
+        {
+            "paperId": "c33289788ca69a55c7eefe6e672c82a0cac5a299",
+            "title": "Semantic Video CNNs Through Representation Warping"
+        },
+        {
+            "paperId": "2a5667702b0f1ff77dde8fb3e2e10d4e05e8de9d",
+            "title": "Scene Parsing through ADE20K Dataset"
+        },
+        {
+            "paperId": "5b79ae0d1fd60d61d1b7e37ffe499f50088554c0",
+            "title": "Semantic Segmentation via Structured Patch Prediction, Context CRF and Guidance CRF"
+        },
+        {
+            "paperId": "ee4a012a4b12d11d7ab8c0e79c61e807927a163c",
+            "title": "Rethinking Atrous Convolution for Semantic Image Segmentation"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "f98788f32b0d33d200c9bc7d900d0ef39519c927",
+            "title": "Multi-task Learning Using Uncertainty to Weigh Losses for Scene Geometry and Semantics"
+        },
+        {
+            "paperId": "35fe3dd3350c32467030884337dde10d5e20ff99",
+            "title": "ICNet for Real-Time Semantic Segmentation on High-Resolution Images"
+        },
+        {
+            "paperId": "7fbf1885f27fb72d5e553c4a2147375f928465ee",
+            "title": "Not All Pixels Are Equal: Difficulty-Aware Semantic Segmentation via Deep Layer Cascade"
+        },
+        {
+            "paperId": "3617ccfec4bed2d8ac15d0ad1a35b589d9b270cb",
+            "title": "Large Kernel Matters \u2014 Improve Semantic Segmentation by Global Convolutional Network"
+        },
+        {
+            "paperId": "84c1717345dd451e7a61fe89807b4c017754fc4e",
+            "title": "Understanding Convolution for Semantic Segmentation"
+        },
+        {
+            "paperId": "01a4f33da8ad94ced3cf58548b28dbbb44148571",
+            "title": "Understanding the Effective Receptive Field in Deep Convolutional Neural Networks"
+        },
+        {
+            "paperId": "1031a69923b80ad01cf3fbb703d10757a80e699b",
+            "title": "Pyramid Scene Parsing Network"
+        },
+        {
+            "paperId": "eb6b7a0b709f0fd2a5fe9a03f9b93d14e9fa98b8",
+            "title": "Video Scene Parsing with Predictive Feature Learning"
+        },
+        {
+            "paperId": "3070a1bd503c3767def898bbd50c7eea2bbf29c9",
+            "title": "Wider or Deeper: Revisiting the ResNet Model for Visual Recognition"
+        },
+        {
+            "paperId": "1bb5081766d84549b3411cb56e60483c33cca52d",
+            "title": "Full-Resolution Residual Networks for Semantic Segmentation in Street Scenes"
+        },
+        {
+            "paperId": "de4ee92cfad3734ca820d004bc9ee75fc9dcfbf4",
+            "title": "RefineNet: Multi-path Refinement Networks for High-Resolution Semantic Segmentation"
+        },
+        {
+            "paperId": "5694e46284460a648fe29117cbc55f6c9be3fa3c",
+            "title": "Densely Connected Convolutional Networks"
+        },
+        {
+            "paperId": "daf74c34f7da0695b154f645c8b78a7397a98f16",
+            "title": "ENet: A Deep Neural Network Architecture for Real-Time Semantic Segmentation"
+        },
+        {
+            "paperId": "cab372bc3824780cce20d9dd1c22d4df39ed081a",
+            "title": "DeepLab: Semantic Image Segmentation with Deep Convolutional Nets, Atrous Convolution, and Fully Connected CRFs"
+        },
+        {
+            "paperId": "ff5bd8c22b6bcf09bfcbb955f75101b433b77bdd",
+            "title": "Fast Semantic Image Segmentation with High Order Context and Guided Filtering"
+        },
+        {
+            "paperId": "2796c448023b78fd77f3a4b57966f257c5e654c2",
+            "title": "Laplacian Pyramid Reconstruction and Refinement for Semantic Segmentation"
+        },
+        {
+            "paperId": "c8c494ee5488fe20e0aa01bddf3fc4632086d654",
+            "title": "The Cityscapes Dataset for Semantic Urban Scene Understanding"
+        },
+        {
+            "paperId": "c1baa0d7c0680e528285aebdac73649ec5dc823c",
+            "title": "Fast, Exact and Multi-scale Inference for Semantic Image Segmentation with Deep Gaussian CRFs"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "7f5fc84819c0cf94b771fe15141f65b123f7b8ec",
+            "title": "Multi-Scale Context Aggregation by Dilated Convolutions"
+        },
+        {
+            "paperId": "e2449e7a57f3f18ef58203c155ead421b5c72850",
+            "title": "ReSeg: A Recurrent Neural Network-Based Model for Semantic Segmentation"
+        },
+        {
+            "paperId": "9f48616039cb21903132528c0be5348b3019db50",
+            "title": "Attention to Scale: Scale-Aware Semantic Image Segmentation"
+        },
+        {
+            "paperId": "b0c065cd43aa7280e766b5dcbcc7e26abce59330",
+            "title": "SegNet: A Deep Convolutional Encoder-Decoder Architecture for Image Segmentation"
+        },
+        {
+            "paperId": "55a3b288b6885cd8dcc247212de9e82e713702db",
+            "title": "Semantic Image Segmentation via Deep Parsing Network"
+        },
+        {
+            "paperId": "2173f1b8172c9b5bed4650c81b69988717bd6df6",
+            "title": "ParseNet: Looking Wider to See Better"
+        },
+        {
+            "paperId": "6364fdaa0a0eccd823a779fcdd489173f938e91a",
+            "title": "U-Net: Convolutional Networks for Biomedical Image Segmentation"
+        },
+        {
+            "paperId": "cf986bfe13a24d4739f95df3a856a3c6e4ed4c1c",
+            "title": "Learning Deconvolution Network for Semantic Segmentation"
+        },
+        {
+            "paperId": "4cef5476f9da50c1a8fefdcb7114863966f61d67",
+            "title": "Efficient Piecewise Training of Deep Structured Models for Semantic Segmentation"
+        },
+        {
+            "paperId": "ca5c766b2d31a1f5ce8896a0a42b40a2bff9323a",
+            "title": "Conditional Random Fields as Recurrent Neural Networks"
+        },
+        {
+            "paperId": "39ad6c911f3351a3b390130a6e4265355b4d593b",
+            "title": "Semantic Image Segmentation with Deep Convolutional Nets and Fully Connected CRFs"
+        },
+        {
+            "paperId": "401192b00b650adfa5ac49de59b720e1c81f1410",
+            "title": "Object Detectors Emerge in Deep Scene CNNs"
+        },
+        {
+            "paperId": "6fc6803df5f9ae505cae5b2f178ade4062c768d0",
+            "title": "Fully convolutional networks for semantic segmentation"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "8a756d4d25511d92a45d0f4545fa819de993851d",
+            "title": "Recurrent Models of Visual Attention"
+        },
+        {
+            "paperId": "6bdb186ec4726e00a8051119636d4df3b94043b5",
+            "title": "Caffe: Convolutional Architecture for Fast Feature Embedding"
+        },
+        {
+            "paperId": "71b7178df5d2b112d07e45038cb5637208659ff7",
+            "title": "Microsoft COCO: Common Objects in Context"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "c81c20109c809cfc47565a9477c04ee005d424bf",
+            "title": "Efficient Inference in Fully Connected CRFs with Gaussian Edge Potentials"
+        },
+        {
+            "paperId": "82fae97673a353271b1d4c001afda1af6ef6dc23",
+            "title": "Semantic contours from inverse detectors"
+        },
+        {
+            "paperId": "3a9b175324ba11bc0e16c0633912d897b2fac4e2",
+            "title": "The Pascal Visual Object Classes (VOC) Challenge"
+        }
+    ]
+}

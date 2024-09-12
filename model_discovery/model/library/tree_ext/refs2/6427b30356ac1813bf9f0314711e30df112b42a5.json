@@ -1,0 +1,101 @@
+{
+    "paperId": "6427b30356ac1813bf9f0314711e30df112b42a5",
+    "externalIds": {
+        "DBLP": "conf/nips/MochihashiS07",
+        "MAG": "2154292407",
+        "CorpusId": 1279894
+    },
+    "title": "The Infinite Markov Model",
+    "abstract": "We present a nonparametric Bayesian method of estimating variable order Markov processes up to a theoretically infinite order. By extending a stick-breaking prior, which is usually defined on a unit interval, \"vertically\" to the trees of infinite depth associated with a hierarchical Chinese restaurant process, our model directly infers the hidden orders of Markov dependencies from which each symbol originated. Experiments on character and word sequences in natural language showed that the model has a comparative performance with an exponentially large full-order model, while computationally much efficient in both time and space. We expect that this basic model will also extend to the variable order hierarchical clustering of general data.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2007,
+    "referenceCount": 17,
+    "citationCount": 45,
+    "influentialCitationCount": 4,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A nonparametric Bayesian method of estimating variable order Markov processes up to a theoretically infinite order by extending a stick-breaking prior to trees of infinite depth associated with a hierarchical Chinese restaurant process, which directly infers the hidden orders of Markov dependencies from which each symbol originated."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2619938",
+            "name": "D. Mochihashi"
+        },
+        {
+            "authorId": "1698363",
+            "name": "E. Sumita"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "24b20f7b118588055346f4ac5cdb1fe22e886dda",
+            "title": "Interpolating between types and tokens by estimating power-law generators"
+        },
+        {
+            "paperId": "80a9e398710b7d2346f697c0b68206a698c12d9f",
+            "title": "Variable Length Markov Chains: Methodology, Computing, and Software"
+        },
+        {
+            "paperId": "4f0d51889a040ef0c27c2247fd4b23d197c470cd",
+            "title": "Simplicial Mixtures of Markov Chains: Distributed Modelling of Dynamic User Profiles"
+        },
+        {
+            "paperId": "09c76da2361d46689825c4efc37ad862347ca577",
+            "title": "A bit of progress in language modeling"
+        },
+        {
+            "paperId": "29053eab305c2b585bcfbb713243b05646e7d62d",
+            "title": "Entropy-based Pruning of Backoff Language Models"
+        },
+        {
+            "paperId": "c0bad4a1fe95cdeb80922f88800151ade3f69a30",
+            "title": "Optimal amnesic probabilistic automata or how to learn and classify proteins in linear time and space"
+        },
+        {
+            "paperId": "02cbd1685c0f09ff76c0b51a6d1c51aa95f47583",
+            "title": "Beyond Word N-Grams"
+        },
+        {
+            "paperId": "e25f31d423b825826fe75f97c6d1fe806f1283c7",
+            "title": "The context-tree weighting method: basic properties"
+        },
+        {
+            "paperId": "11376222763d16f39a5be1a5151d55556997236e",
+            "title": "The Power of Amnesia"
+        },
+        {
+            "paperId": "cfc1b25776a4c4d99f23cf4a0ee5b27236bf2b95",
+            "title": "Polya Trees and Random Distributions"
+        },
+        {
+            "paperId": "bb3c073053d93d6abfef9a9c76ec2c5d7f09c313",
+            "title": "Self-adjusting binary search trees"
+        },
+        {
+            "paperId": "eb685f99269f8f65ba434c5e80a34887a21561ec",
+            "title": "A Bayesian Interpretation of Interpolated Kneser-Ney"
+        },
+        {
+            "paperId": "6d12a1d23b21a9b170118a56386552bc5d4727de",
+            "title": "A Mathematical Theory of Communication"
+        },
+        {
+            "paperId": null,
+            "title": "Estimating a Dirichlet distribution, 2000. http://research.microsoft.com/ \u0303minka/papers/ dirichlet"
+        },
+        {
+            "paperId": "231f6de83cfa4d641da1681e97a11b689a48e3aa",
+            "title": "Statistical methods for speech recognition"
+        },
+        {
+            "paperId": null,
+            "title": "William D"
+        },
+        {
+            "paperId": null,
+            "title": "Minka . Estimating a Dirichlet distribution ,"
+        }
+    ]
+}

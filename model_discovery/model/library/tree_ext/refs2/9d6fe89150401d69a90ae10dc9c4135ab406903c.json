@@ -1,0 +1,254 @@
+{
+    "paperId": "9d6fe89150401d69a90ae10dc9c4135ab406903c",
+    "externalIds": {
+        "MAG": "2951207919",
+        "DBLP": "journals/siamads/ProctorBK18",
+        "ArXiv": "1602.07647",
+        "DOI": "10.1137/16M1062296",
+        "CorpusId": 43924169
+    },
+    "title": "Generalizing Koopman Theory to Allow for Inputs and Control",
+    "abstract": "We develop a new generalization of Koopman operator theory that incorporates the effects of inputs and control. Koopman spectral analysis is a theoretical tool for the analysis of nonlinear dynamical systems. Moreover, Koopman is intimately connected to Dynamic Mode Decomposition (DMD), a method that discovers spatial-temporal coherent modes from data, connects local-linear analysis to nonlinear operator theory, and importantly creates an equation-free architecture allowing investigation of complex systems. In actuated systems, standard Koopman analysis and DMD are incapable of producing input-output models; moreover, the dynamics and the modes will be corrupted by external forcing. Our new theoretical developments extend Koopman operator theory to allow for systems with nonlinear input-output characteristics. We show how this generalization is rigorously connected and generalizes a recent development called Dynamic Mode Decomposition with control (DMDc). We demonstrate this new theory on nonlinear dynamical systems, including a standard Susceptible-Infectious-Recovered model with relevance to the analysis of infectious disease data with mass vaccination (actuation).",
+    "venue": "SIAM Journal on Applied Dynamical Systems",
+    "year": 2016,
+    "referenceCount": 53,
+    "citationCount": 261,
+    "influentialCitationCount": 13,
+    "openAccessPdf": {
+        "url": "https://epubs.siam.org/doi/pdf/10.1137/16M1062296",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new generalization of Koopman operator theory that incorporates the effects of inputs and control is developed that is rigorously connected and generalizes a recent development called Dynamic Mode Decomposition with control (DMDc)."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2424683",
+            "name": "J. Proctor"
+        },
+        {
+            "authorId": "3083169",
+            "name": "S. Brunton"
+        },
+        {
+            "authorId": "144484983",
+            "name": "J. Kutz"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "2e2a31b0678094fb94b58e97cec77dc10616de2c",
+            "title": "Compressed sensing and dynamic mode decomposition"
+        },
+        {
+            "paperId": "dbb73c3f14600e3a746c643c2e8bece117de6be4",
+            "title": "Linear predictors for nonlinear dynamical systems: Koopman operator meets model predictive control"
+        },
+        {
+            "paperId": "a3c279828af3621d2c16ac26e5900b970383f60e",
+            "title": "Koopman Invariant Subspaces and Finite Linear Representations of Nonlinear Dynamical Systems for Control"
+        },
+        {
+            "paperId": "5d150cec2775f9bc863760448f14104cc8f42368",
+            "title": "Discovering governing equations from data by sparse identification of nonlinear dynamical systems"
+        },
+        {
+            "paperId": "4a2fb9712893d3f7adee4b0a8ea1d0b39d9544f5",
+            "title": "Closed-Loop Turbulence Control: Progress and Challenges"
+        },
+        {
+            "paperId": "c540a5605485bbea1b5a1ab5b927e9ace0e8c569",
+            "title": "A data-driven modeling framework for predicting forces and pressures on a rapidly pitching airfoil"
+        },
+        {
+            "paperId": "6e10ba66b7d55f75a104b9357ade7aa5f7931db3",
+            "title": "Discovering dynamic patterns from infectious disease data using dynamic mode decomposition"
+        },
+        {
+            "paperId": "4f8c12773dbb79b42abbf6e546e7b7639ecbb371",
+            "title": "A dynamic mode decomposition approach for large and arbitrarily sampled systems"
+        },
+        {
+            "paperId": "7a0f963cc2f6e1ba06c41ccba832c8428f85133a",
+            "title": "De-biasing the dynamic mode decomposition for applied Koopman spectral analysis of noisy datasets"
+        },
+        {
+            "paperId": "4a225d482e007c5f5450671dbdcadbdf69ce93ae",
+            "title": "Data-driven model improvement for model-based control"
+        },
+        {
+            "paperId": "cf5aa0ec5ac54f3235e83403087c6053f9d83658",
+            "title": "Characterizing and correcting for the effect of sensor noise in the dynamic mode decomposition"
+        },
+        {
+            "paperId": "2e1ff723de621ec3b8f550df4db39282c96e8adc",
+            "title": "Data fusion via intrinsic dynamic variables: An application of data-driven Koopman spectral analysis"
+        },
+        {
+            "paperId": "162914fd2d2bee458b806ab74bd57751b3dbe33a",
+            "title": "A Kernel Approach to Data-Driven Koopman Spectral Analysis"
+        },
+        {
+            "paperId": "62903a1c8e5b08a240c5e42ddc35635b594adb68",
+            "title": "A Kernel-Based Approach to Data-Driven Koopman Spectral Analysis"
+        },
+        {
+            "paperId": "3a10b891422870b04eabade71e2ee3d3796f892c",
+            "title": "A dynamic observer to capture and control perturbation energy in noise amplifiers"
+        },
+        {
+            "paperId": "1556de28dd5a7033ebca57b78e923ee019e40680",
+            "title": "Dynamic Mode Decomposition with Control"
+        },
+        {
+            "paperId": "b08b71828179ebd541b9da3c5e068406fc3f2070",
+            "title": "Extracting spatial\u2013temporal coherent patterns in large-scale neural recordings using dynamic mode decomposition"
+        },
+        {
+            "paperId": "10cab2f43c29fe12e5a0d0718eb6e1ff8c9d4777",
+            "title": "A Data\u2013Driven Approximation of the Koopman Operator: Extending Dynamic Mode Decomposition"
+        },
+        {
+            "paperId": "5d87c585c8099951d31cdc659dd4787cd3ae93a7",
+            "title": "Global Stability Analysis Using the Eigenfunctions of the Koopman Operator"
+        },
+        {
+            "paperId": "dc3b2a42e573522a2f7de6cf8fc8b3f2c46e3f4f",
+            "title": "Model reduction using Dynamic Mode Decomposition"
+        },
+        {
+            "paperId": "99b24399a5c2ac515eb852a5bbc9af3ed5fc1f87",
+            "title": "Dynamic Mode Decomposition for Real-Time Background/Foreground Separation in Video"
+        },
+        {
+            "paperId": "77b17d697ebc64650f2767db40a4d4cac8facd75",
+            "title": "Construction of eigenfunctions for scalar-type operators via Laplace averages with connections to the Koopman operator"
+        },
+        {
+            "paperId": "3735c3807ee8eff216dd5b3c829cbc8bcd79937a",
+            "title": "Turbulence, Coherent Structures, Dynamical Systems and Symmetry"
+        },
+        {
+            "paperId": "ab8cde6dc665754dcf19656feb5388819b27ca10",
+            "title": "On dynamic mode decomposition: Theory and applications"
+        },
+        {
+            "paperId": "62069bd249d25bd0445158cd516f9b23400f77f0",
+            "title": "Dimension reduction in a feedback loop using the SVD: Results on controllability and stability"
+        },
+        {
+            "paperId": "fbcfa0cfd253e38c9394730df38819821c8fd2e3",
+            "title": "Koopman-mode decomposition of the cylinder wake"
+        },
+        {
+            "paperId": "61c5ce3f7f109150b471bf5b7c0f63aad480e564",
+            "title": "Sparsity-promoting dynamic mode decomposition"
+        },
+        {
+            "paperId": "2c9be1e38f978f43427ea5293b3138e0c4fede71",
+            "title": "Applied Koopmanism."
+        },
+        {
+            "paperId": "2b3000f85f4e8f2b47f1243decd98bd216f660fd",
+            "title": "Analysis of unsteady behaviour in shockwave turbulent boundary layer interaction"
+        },
+        {
+            "paperId": "061d652a32ceb6d7efd11b1f92c8427eaf91fa4b",
+            "title": "Application of the dynamic mode decomposition to experimental data"
+        },
+        {
+            "paperId": "2d90dc91bcd2791a7d0216a5cd1c078203d9836e",
+            "title": "Spectral analysis of nonlinear flows"
+        },
+        {
+            "paperId": "1d823a438491bbc0cb2cb5582440437f3dad29d0",
+            "title": "Dynamic Mode Decomposition and Proper Orthogonal Decomposition of flow in a lid-driven cylindrical cavity"
+        },
+        {
+            "paperId": "f94686c40606e3454e0942eb3283dd4c482dccd4",
+            "title": "Dynamic mode decomposition of numerical and experimental data"
+        },
+        {
+            "paperId": "21072f6ae4aed8b50285ec4fd7110e149e4d4653",
+            "title": "Reduced-order models for control of fluids using the eigensystem realization algorithm"
+        },
+        {
+            "paperId": "51bd2cca0bd991b8950b6fd5723ece646a55f33a",
+            "title": "Modeling of transitional channel flow using balanced proper orthogonal decomposition"
+        },
+        {
+            "paperId": "deb6d7a22417f70c992a9711da0b9b4507023fe5",
+            "title": "An overview of subspace identification"
+        },
+        {
+            "paperId": "9b6bdb476e61d8f60b46706036cff4d3ea5a89b3",
+            "title": "Spectral Properties of Dynamical Systems, Model Reduction and Decompositions"
+        },
+        {
+            "paperId": "4f62cf2e99315e5585ad4c77e76aa6b4b80cf338",
+            "title": "Model Reduction for fluids, Using Balanced Proper Orthogonal Decomposition"
+        },
+        {
+            "paperId": "096af44d26fd3b797ea23e86d4bd06df7752d1bc",
+            "title": "Comparison of systems with complex behavior"
+        },
+        {
+            "paperId": "110e14bb261dff117eb51aebc70683ab79578be7",
+            "title": "Model reduction for compressible flows using POD and Galerkin projection"
+        },
+        {
+            "paperId": "c2f5609fc33af8af4f7d1db022abd8f3dc3dff03",
+            "title": "A subspace approach to balanced truncation for model reduction of nonlinear control systems"
+        },
+        {
+            "paperId": "11fb9bed6c618f78409a5768200699eebbf98308",
+            "title": "Identification of observer/Kalman filter Markov parameters: Theory and experiments"
+        },
+        {
+            "paperId": "8626a4961319e05224955ea90ec730cc4eb82061",
+            "title": "An eigensystem realization algorithm for modal parameter identification and model reduction. [control systems design for large space structures]"
+        },
+        {
+            "paperId": "70e3da6c426ca384f78f77474cbbf00a436038a2",
+            "title": "Nonlinear Oscillations, Dynamical Systems, and Bifurcations of Vector Fields"
+        },
+        {
+            "paperId": "187c4d5717b6d525eb943282daac2cf26745eb5e",
+            "title": "Principal component analysis in linear systems: Controllability, observability, and model reduction"
+        },
+        {
+            "paperId": "b4fc4364c070269d7d0f4753ec00f78da44282ac",
+            "title": "Principles and Techniques of Applied Mathematics"
+        },
+        {
+            "paperId": "bf657b5049c1a5c839369d3948ffb4c0584cd1d2",
+            "title": "Hamiltonian Systems and Transformation in Hilbert Space."
+        },
+        {
+            "paperId": "39723e0fec1a49519d043ed0cffef2499450b1f8",
+            "title": "Nonlinear Oscillations"
+        },
+        {
+            "paperId": "ce6d2c3f51c6bccc4b2cf6f56ed36de6480f9cb7",
+            "title": "Turbulence"
+        },
+        {
+            "paperId": "7224af0174242698049cf0b46a73fdeed6da62f0",
+            "title": "Control: A perspective"
+        },
+        {
+            "paperId": "04f8f93ee7900fdc071ccf3d2cfb59b3a22e79ae",
+            "title": "Low-rank and sparse dynamic mode decomposition"
+        },
+        {
+            "paperId": "8d6c5dd809a54d16d2a0e7cd84c1e9e9cb6f3602",
+            "title": "Identification and data-driven model reduction of state-space representations of lossless and dissipative systems from noise-free data"
+        },
+        {
+            "paperId": "eb44197b41d3adc1c4f831b9870ee5f137ae4956",
+            "title": "Balanced Model Reduction via the Proper Orthogonal Decomposition"
+        }
+    ]
+}

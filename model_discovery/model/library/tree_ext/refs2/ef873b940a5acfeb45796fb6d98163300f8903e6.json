@@ -1,0 +1,89 @@
+{
+    "paperId": "ef873b940a5acfeb45796fb6d98163300f8903e6",
+    "externalIds": {
+        "DBLP": "conf/nips/MozerD92",
+        "MAG": "2144782183",
+        "CorpusId": 9847661
+    },
+    "title": "A Connectionist Symbol Manipulator that Discovers the Structure of Context-Free Languages",
+    "abstract": "We present a neural net architecture that can discover hierarchical and recursive structure in symbol strings. To detect structure at multiple levels, the architecture has the capability of reducing symbols substrings to single symbols, and makes use of an external stack memory. In terms of formal languages, the architecture can learn to parse strings in an LR(O) context-free grammar. Given training sets of positive and negative exemplars, the architecture has been trained to recognize many different grammars. The architecture has only one layer of modifiable weights, allowing for a straightforward interpretation of its behavior.",
+    "venue": "Neural Information Processing Systems",
+    "year": 1992,
+    "referenceCount": 14,
+    "citationCount": 52,
+    "influentialCitationCount": 2,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A neural net architecture that can discover hierarchical and recursive structure in symbol strings and has the capability of reducing symbols substrings to single symbols, and makes use of an external stack memory."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "144473519",
+            "name": "M. Mozer"
+        },
+        {
+            "authorId": "2109535043",
+            "name": "Sreerupa Das"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "d0dd604b2b29bbc0adee2b71bbabca5d5ad3cd54",
+            "title": "Learning Sequential Tasks by Incrementally Adding Higher Orders"
+        },
+        {
+            "paperId": "837fcdfe8fdcc9c7f2f8a8c58b2afd7e64b43ee0",
+            "title": "Hidden Markov Model} Induction by Bayesian Model Merging"
+        },
+        {
+            "paperId": "2f7c4048a03281e976f28d35c2f9fef3a58346e6",
+            "title": "Learning Unambiguous Reduced Sequence Descriptions"
+        },
+        {
+            "paperId": "e141d68065ce638f9fc4f006eab2f66711e89768",
+            "title": "Induction of Multiscale Temporal Structure"
+        },
+        {
+            "paperId": "319f22bd5abfd67ac15988aa5c7f705f018c3ccd",
+            "title": "Learning internal representations by error propagation"
+        },
+        {
+            "paperId": "30110856f45fde473f1903f686aa365cf70ed4c7",
+            "title": "Learning Context-free Grammars: Capabilities and Limitations of a Recurrent Neural Network with an External Stack Memory (cid:3)"
+        },
+        {
+            "paperId": null,
+            "title": "Connectionist pushdown automata that learn context-Cree grammars"
+        },
+        {
+            "paperId": "830ccb44084d9d6cdcb70d623df5012ae4835142",
+            "title": "Training Stochastic Model Recognition Algorithms as Networks can Lead to Maximum Mutual Information Estimation of Parameters"
+        },
+        {
+            "paperId": "af7802a50a8c294ebfd539ad72158475e5ecd9f2",
+            "title": "The \"Moving Targets\" Training Algorithm"
+        },
+        {
+            "paperId": "25c19c8c1d6778a16f8b27beac4d9c6a55357580",
+            "title": "Higher Order Recurrent Networks and Grammatical Inference"
+        },
+        {
+            "paperId": null,
+            "title": "Representing part-whole hierarchies in connectionist networks"
+        },
+        {
+            "paperId": "eccfb47fa72551b2951ab927eadc8358b2609027",
+            "title": "Learning Internal Representations by Error Propagation, Parallel Distributed Processing"
+        },
+        {
+            "paperId": null,
+            "title": "Adllancu in neural information procelling .y.tem. IV (pp. 275-282)"
+        },
+        {
+            "paperId": null,
+            "title": "Connectionist processing and learning as statistical inference"
+        }
+    ]
+}

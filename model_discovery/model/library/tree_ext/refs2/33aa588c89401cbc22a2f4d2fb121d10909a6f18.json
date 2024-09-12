@@ -1,0 +1,138 @@
+{
+    "paperId": "33aa588c89401cbc22a2f4d2fb121d10909a6f18",
+    "externalIds": {
+        "MAG": "2394882406",
+        "DBLP": "conf/icassp/ZhaoLG16",
+        "DOI": "10.1109/ICASSP.2016.7472630",
+        "CorpusId": 10506309
+    },
+    "title": "Low-rank plus diagonal adaptation for deep neural networks",
+    "abstract": "In this paper, we propose a scalable adaptation technique that adapts the deep neural network (DNN) model through the low-rank plus diagonal (LRPD) decomposition. It is desired that an adaptation method can properly accommodate the available development data with a variable amount of adaptation parameters. Thus, the resulting models neither over-fit nor under-fit as the development data vary in size for different speakers. The technique developed in this paper is inspired by observing that adaptation matrices are very close to an identity matrix or diagonally dominant. The LRPD restructures the adaptation matrix as a superposition of a diagonal matrix and a low-rank matrix. By varying the low-rank values, the LRPD contains the full and the diagonal adaptation matrix as its special cases. Experimental results demonstrated that the LRPD adaptation of the full-size DNN obtains improved accuracy over the standard linear adaptation. The LRPD bottleneck adaptation can reduce the speaker-specific footprint by 82% over an already very compact SVD bottleneck adaptation, at an expense of 1% relative WER increase.",
+    "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+    "year": 2016,
+    "referenceCount": 25,
+    "citationCount": 60,
+    "influentialCitationCount": 2,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A scalable adaptation technique that adapts the deep neural network (DNN) model through the low-rank plus diagonal (LRPD) decomposition, inspired by observing that adaptation matrices are very close to an identity matrix or diagonally dominant."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "49339371",
+            "name": "Yong Zhao"
+        },
+        {
+            "authorId": "152319568",
+            "name": "Jinyu Li"
+        },
+        {
+            "authorId": "1777280",
+            "name": "Y. Gong"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "cbf017a40ea7d4e752845c3222702e5e59b2b1ca",
+            "title": "Investigating online low-footprint speaker adaptation using generalized linear regression and click-through data"
+        },
+        {
+            "paperId": "5fc4313c4b75e96fe904f74e7088d5ca4b3d13fa",
+            "title": "Learning hidden unit contributions for unsupervised speaker adaptation of neural network acoustic models"
+        },
+        {
+            "paperId": "a5beae5f006249b2b112bac1bb8ef84fdca99e6b",
+            "title": "Fast Adaptation of Deep Neural Network Based on Discriminant Codes for Speech Recognition"
+        },
+        {
+            "paperId": "8e23df4db47cc529b91a565ac954aa556556343a",
+            "title": "Speaker Adaptation of Hybrid NN/HMM Model for Speech Recognition Based on Singular Value Decomposition"
+        },
+        {
+            "paperId": "3fc68a68225edce1635bc32054c1425db287fba3",
+            "title": "An introduction to computational networks and the computational network toolkit (invited talk)"
+        },
+        {
+            "paperId": "ea9941cf31e3f9b5edf0972d8a3ae9d075c9199b",
+            "title": "Singular value decomposition based low-footprint speaker adaptation and personalization for deep neural network"
+        },
+        {
+            "paperId": "bbf8e55f0837c08688106a30fd2560f39327f54b",
+            "title": "Direct adaptation of hybrid DNN/HMM model for fast speaker adaptation in LVCSR based on speaker code"
+        },
+        {
+            "paperId": "f317b89d3224b6bc5269790e81604904cff7052c",
+            "title": "Improving DNN speaker independence with I-vector inputs"
+        },
+        {
+            "paperId": "8e46a2e57ce37b846bef48d776aeafa16c411681",
+            "title": "Speaker adaptation of neural network acoustic models using i-vectors"
+        },
+        {
+            "paperId": "4d6e574c76e4a5ebbdb5f6e382d06c058090e4b7",
+            "title": "KL-divergence regularized deep neural network adaptation for improved large vocabulary speech recognition"
+        },
+        {
+            "paperId": "7600cf5da33b19d37266da4d2edcbd32bc0ecb5e",
+            "title": "Fast speaker adaptation of hybrid NN/HMM model for speech recognition based on discriminative learning of speaker code"
+        },
+        {
+            "paperId": "6bdccfe195bc49d218acc5be750aa49e41f408e4",
+            "title": "Recent advances in deep learning for speech research at Microsoft"
+        },
+        {
+            "paperId": "177496ecd8b485679d00839a1e19dadcab1f802e",
+            "title": "Adaptation of context-dependent deep neural networks for automatic speech recognition"
+        },
+        {
+            "paperId": "6658bbf68995731b2083195054ff45b4eca38b3a",
+            "title": "Context-Dependent Pre-Trained Deep Neural Networks for Large-Vocabulary Speech Recognition"
+        },
+        {
+            "paperId": "d7174b0cf599408fb723e6702504e27dc9d6c203",
+            "title": "Making Deep Belief Networks effective for large vocabulary continuous speech recognition"
+        },
+        {
+            "paperId": "7599dfed1de67c726f9e4fd372cc9ef03d2cf3e9",
+            "title": "Feature engineering in Context-Dependent Deep Neural Networks for conversational speech transcription"
+        },
+        {
+            "paperId": "0629c836ad5c1d1a80ca7d868cf048c8bd215b84",
+            "title": "Linear hidden transformations for adaptation of hybrid ANN/HMM models"
+        },
+        {
+            "paperId": "83fab3b9a434cd3a93e2367bd52af5c3ea66c7b2",
+            "title": "Speaker-adaptation for hybrid HMM-ANN continuous speech recognition system"
+        },
+        {
+            "paperId": "052b1d8ce63b07fec3de9dbb583772d860b7c769",
+            "title": "Learning representations by back-propagating errors"
+        },
+        {
+            "paperId": "254c43c5fb6d3226a49c723e0614ff31ef852d49",
+            "title": "Intermediate-layer DNN adaptation for offline and session-based iterative speaker adaptation"
+        },
+        {
+            "paperId": "f3f75667e1a895576bc4acf16f94289b1234acb0",
+            "title": "Adaptation of Deep Neural Networks"
+        },
+        {
+            "paperId": "05de249c56353b8916d3eb2fec76ddf7fbd47f33",
+            "title": "Towards speaker adaptive training of deep neural network acoustic models"
+        },
+        {
+            "paperId": "6d9429b96d9bb40e2d0d9c3f57d0b97f61db8503",
+            "title": "Restructuring of deep neural network acoustic models with singular value decomposition"
+        },
+        {
+            "paperId": "a4eb9f4fad5c5a1935c6d0532e2c765ee29b0b37",
+            "title": "Application of Pretrained Deep Neural Networks to Large Vocabulary Speech Recognition"
+        },
+        {
+            "paperId": "29fa7d38f80c2377e9a289f4c13218ce8626e27c",
+            "title": "Comparison of discriminative input and output transformations for speaker adaptation in the hybrid NN/HMM systems"
+        }
+    ]
+}

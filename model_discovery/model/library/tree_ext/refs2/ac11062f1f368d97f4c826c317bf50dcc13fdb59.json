@@ -1,0 +1,271 @@
+{
+    "paperId": "ac11062f1f368d97f4c826c317bf50dcc13fdb59",
+    "externalIds": {
+        "DBLP": "conf/emnlp/PetersNZY18",
+        "ArXiv": "1808.08949",
+        "MAG": "2950405925",
+        "ACL": "D18-1179",
+        "DOI": "10.18653/v1/D18-1179",
+        "CorpusId": 52098907
+    },
+    "title": "Dissecting Contextual Word Embeddings: Architecture and Representation",
+    "abstract": "Contextual word representations derived from pre-trained bidirectional language models (biLMs) have recently been shown to provide significant improvements to the state of the art for a wide range of NLP tasks. However, many questions remain as to how and why these models are so effective. In this paper, we present a detailed empirical study of how the choice of neural architecture (e.g. LSTM, CNN, or self attention) influences both end task accuracy and qualitative properties of the representations that are learned. We show there is a tradeoff between speed and accuracy, but all architectures learn high quality contextual representations that outperform word embeddings for four challenging NLP tasks. Additionally, all architectures learn representations that vary with network depth, from exclusively morphological based at the word embedding layer through local syntax based in the lower contextual layers to longer range semantics such coreference at the upper layers. Together, these results suggest that unsupervised biLMs, independent of architecture, are learning much more about the structure of language than previously appreciated.",
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2018,
+    "referenceCount": 56,
+    "citationCount": 394,
+    "influentialCitationCount": 70,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/D18-1179.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "There is a tradeoff between speed and accuracy, but all architectures learn high quality contextual representations that outperform word embeddings for four challenging NLP tasks, suggesting that unsupervised biLMs, independent of architecture, are learning much more about the structure of language than previously appreciated."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "39139825",
+            "name": "Matthew E. Peters"
+        },
+        {
+            "authorId": "50043859",
+            "name": "Mark Neumann"
+        },
+        {
+            "authorId": "1982950",
+            "name": "Luke Zettlemoyer"
+        },
+        {
+            "authorId": "144105277",
+            "name": "Wen-tau Yih"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "fb29af99e4ef690bcde788442b087fbac087f533",
+            "title": "Language Modeling Teaches You More Syntax than Translation Does: Lessons Learned Through Auxiliary Task Analysis"
+        },
+        {
+            "paperId": "1f1ed5bfd1b74518526edcd7650e7e9902fd8a50",
+            "title": "Extending a Parser to Distant Domains Using a Few Dozen Partially Annotated Examples"
+        },
+        {
+            "paperId": "efef34c1caef102ad5cc052642d75beaaf5adcaf",
+            "title": "Deep RNNs Encode Soft Hierarchical Syntax"
+        },
+        {
+            "paperId": "c41516420ddbd0f29e010ca259a74c1fc2da0466",
+            "title": "What you can cram into a single $&!#* vector: Probing sentence embeddings for linguistic properties"
+        },
+        {
+            "paperId": "928f9dccb806a3278d20d82cc53781c5f44e2bb1",
+            "title": "Constituency Parsing with a Self-Attentive Encoder"
+        },
+        {
+            "paperId": "fd5794fc63d5f19bf83cf7baa36e0aa62cbf6299",
+            "title": "Sharp Nearby, Fuzzy Far Away: How Neural Language Models Use Context"
+        },
+        {
+            "paperId": "d393943a873ead524069d0f7f55acef05cc9ba45",
+            "title": "Efficient Contextualized Representation: Language Model Pruning for Sequence Labeling"
+        },
+        {
+            "paperId": "b69a57c878960636bdf6e844541c3f40827296b5",
+            "title": "What\u2019s Going On in Neural Constituency Parsers? An Analysis"
+        },
+        {
+            "paperId": "93b4cc549a1bc4bc112189da36c318193d05d806",
+            "title": "AllenNLP: A Deep Semantic Natural Language Processing Platform"
+        },
+        {
+            "paperId": "3febb2bed8865945e7fddc99efd791887bb7e14f",
+            "title": "Deep Contextualized Word Representations"
+        },
+        {
+            "paperId": "1e077413b25c4d34945cc2707e17e46ed4fe784a",
+            "title": "Universal Language Model Fine-tuning for Text Classification"
+        },
+        {
+            "paperId": "cb6866b5fa62ae3cbe21bafd772bcce7d9668dd6",
+            "title": "Beyond Word Importance: Contextual Decomposition to Extract Interactions from LSTMs"
+        },
+        {
+            "paperId": "6ed376a26045ff0048ec2b216785d396960d6ed1",
+            "title": "Deep Semantic Role Labeling with Self-Attention"
+        },
+        {
+            "paperId": "1778e32c18bd611169e64c1805a51abff341ca53",
+            "title": "Natural Language Inference over Interaction Space"
+        },
+        {
+            "paperId": "58c6f890a1ae372958b7decf56132fe258152722",
+            "title": "Regularizing and Optimizing LSTM Language Models"
+        },
+        {
+            "paperId": "bc8fa64625d9189f5801837e7b133e7fe3c581f7",
+            "title": "Learned in Translation: Contextualized Word Vectors"
+        },
+        {
+            "paperId": "8ae1af4a424f5e464d46903bc3d18fe1cf1434ff",
+            "title": "End-to-end Neural Coreference Resolution"
+        },
+        {
+            "paperId": "2397ce306e5d7f3d0492276e357fb1833536b5d8",
+            "title": "On the State of the Art of Evaluation in Neural Language Models"
+        },
+        {
+            "paperId": "a4dd3beea286a20c4e4f66436875932d597190bc",
+            "title": "Deep Semantic Role Labeling: What Works and What\u2019s Next"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "43428880d75b3a14257c3ee9bda054e61eb869c0",
+            "title": "Convolutional Sequence to Sequence Learning"
+        },
+        {
+            "paperId": "5ded2b8c64491b4a67f6d39ce473d4b9347a672e",
+            "title": "A Broad-Coverage Challenge Corpus for Sentence Understanding through Inference"
+        },
+        {
+            "paperId": "263210f256603e3b62476ffb5b9bbbbc6403b646",
+            "title": "What do Neural Machine Translation Models Learn about Morphology?"
+        },
+        {
+            "paperId": "0bb4cadc80c0afaf29c57518dc9c06f8fcfa5f38",
+            "title": "Semi-supervised sequence tagging with bidirectional language models"
+        },
+        {
+            "paperId": "f302e136c41db5de1d624412f68c9174cf7ae8be",
+            "title": "Axiomatic Attribution for Deep Networks"
+        },
+        {
+            "paperId": "aab5002a22b9b4244a8329b140bd0a86021aa2d1",
+            "title": "OpenNMT: Open-Source Toolkit for Neural Machine Translation"
+        },
+        {
+            "paperId": "4c41104e871bccbd56494350a71d77a7f1da5bb0",
+            "title": "Understanding Neural Networks through Representation Erasure"
+        },
+        {
+            "paperId": "88caa4a0253a8b0076176745ebc072864eab66e1",
+            "title": "Language Modeling with Gated Convolutional Networks"
+        },
+        {
+            "paperId": "fce10a1a9727cbda33d44b62409e303f1009417a",
+            "title": "What Do Recurrent Neural Network Grammars Learn About Syntax?"
+        },
+        {
+            "paperId": "85f94d8098322f8130512b4c6c4627548ce4a6cc",
+            "title": "Unsupervised Pretraining for Sequence to Sequence Learning"
+        },
+        {
+            "paperId": "3aa52436575cf6768a0a1a476601825f6a62e58f",
+            "title": "Assessing the Ability of LSTMs to Learn Syntax-Sensitive Dependencies"
+        },
+        {
+            "paperId": "83e7654d545fbbaaf2328df365a781fb67b841b4",
+            "title": "Enhanced LSTM for Natural Language Inference"
+        },
+        {
+            "paperId": "df0402517a7338ae28bc54acaac400de6b456a46",
+            "title": "WaveNet: A Generative Model for Raw Audio"
+        },
+        {
+            "paperId": "9462eee3e5eff15df5e97c38e24072c65e581cee",
+            "title": "Representation of Linguistic Form and Function in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "2f2d8f8072e5cc9b296fad551f65f183bdbff7aa",
+            "title": "Exploring the Limits of Language Modeling"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "4aa9f5150b46320f534de4747a2dd0cd7f3fe292",
+            "title": "Semi-supervised Sequence Learning"
+        },
+        {
+            "paperId": "891ce1687e2befddd19f54e4eef1d3f39c8dbaf7",
+            "title": "Character-Aware Neural Language Models"
+        },
+        {
+            "paperId": "b92aa7024b87f50737b372e5df31ef091ab54e62",
+            "title": "Training Very Deep Networks"
+        },
+        {
+            "paperId": "40be3888daa5c2e5af4d36ae22f690bcc8caf600",
+            "title": "Visualizing and Understanding Recurrent Networks"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "5d833331b0e22ff359db05c62a8bca18c4f04b68",
+            "title": "One billion word benchmark for measuring progress in statistical language modeling"
+        },
+        {
+            "paperId": "1a2a770d23b4a171fa81de62a78a3deb0588f238",
+            "title": "Visualizing and Understanding Convolutional Networks"
+        },
+        {
+            "paperId": "c92970286c535992a86539b761357761e97a37ee",
+            "title": "Towards Robust Linguistic Analysis using OntoNotes"
+        },
+        {
+            "paperId": "f6b51c8753a871dc94ff32152c00c01e94f90f09",
+            "title": "Efficient Estimation of Word Representations in Vector Space"
+        },
+        {
+            "paperId": "8729441d734782c3ed532a7d2d9611b438c0a09a",
+            "title": "ADADELTA: An Adaptive Learning Rate Method"
+        },
+        {
+            "paperId": "f8cdf754fb7c08caf6e2f82b176819230910be5b",
+            "title": "CoNLL-2012 Shared Task: Modeling Multilingual Unrestricted Coreference in OntoNotes"
+        },
+        {
+            "paperId": "10f97f1fb4f5c2c8e6c44d4a33da46d331dd4aeb",
+            "title": "Introduction to the CoNLL-2003 Shared Task: Language-Independent Named Entity Recognition"
+        },
+        {
+            "paperId": "f4ba954b0412773d047dc41231c733de0c1f4926",
+            "title": "Conditional Random Fields: Probabilistic Models for Segmenting and Labeling Sequence Data"
+        },
+        {
+            "paperId": "9e85832b04cc3700c2c26d6ba93fdeae39cac04a",
+            "title": "Introduction to the CoNLL-2000 Shared Task Chunking"
+        },
+        {
+            "paperId": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+            "title": "Building a Large Annotated Corpus of English: The Penn Treebank"
+        },
+        {
+            "paperId": "cd18800a0fe0b668a1cc19f2ec95b5003d0a5035",
+            "title": "Improving Language Understanding by Generative Pre-Training"
+        },
+        {
+            "paperId": null,
+            "title": "Models are with a batch size of 80 sentences using Adadelta (Zeiler, 2012) with an initial learning rate of 1.0 and rho 0.95. Constituency Parsing The constituency Parser is a reimplementation"
+        },
+        {
+            "paperId": null,
+            "title": "Semantic Role Labeling The SRL model uses the reimplementation of He et al"
+        },
+        {
+            "paperId": "067e07b725ab012c80aa2f87857f6791c1407f6d",
+            "title": "Long short-term memory recurrent neural network architectures for large scale acoustic modeling"
+        },
+        {
+            "paperId": "1c46943103bd7b7a2c7be86859995a4144d1938b",
+            "title": "Visualizing Data using t-SNE"
+        }
+    ]
+}

@@ -1,0 +1,166 @@
+{
+    "paperId": "879fc7d6f9f493f1e8affbe8c9b51269163b3b38",
+    "externalIds": {
+        "DBLP": "conf/ics/DanalisPSC09",
+        "MAG": "2002505081",
+        "DOI": "10.1145/1542275.1542321",
+        "CorpusId": 2620324
+    },
+    "title": "MPI-aware compiler optimizations for improving communication-computation overlap",
+    "abstract": "Several existing compiler transformations can help improve communication-computation overlap in MPI applications. However, traditional compilers treat calls to the MPI library as a black box with unknown side effects and thus miss potential optimizations. This paper's contributions enable the development of an MPI-aware optimizing compiler that can perform transformations exploiting knowledge of MPI call effects to increase communication-computa-tion overlap. We formulate a set of data flow equations and rules to describe the side effects of key MPI functions so an MPI-aware compiler can automatically assess the safety of transformations. After categorizing existing compiler transformations based on their effect on the application code, we present an optimization algorithm that specifies when and how to apply these optimizing transformations to achieve improved communication-computation overlap. By manually applying the optimization algorithm to kernels extracted from HYCOM and the NAS benchmarks, we show that even when transforming these highly optimized codes, execution time can be decreased by an average of over 30%.",
+    "venue": "International Conference on Supercomputing",
+    "year": 2009,
+    "referenceCount": 31,
+    "citationCount": 46,
+    "influentialCitationCount": 2,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An optimization algorithm is presented that specifies when and how to apply these optimizing transformations to achieve improved communication-computation overlap and it is shown that even when transforming these highly optimized codes, execution time can be decreased by an average of over 30%."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3295217",
+            "name": "Anthony Danalis"
+        },
+        {
+            "authorId": "1699934",
+            "name": "L. Pollock"
+        },
+        {
+            "authorId": "2273524208",
+            "name": "M. Swany"
+        },
+        {
+            "authorId": "1874233",
+            "name": "John Cavazos"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "d1eb562e768b619dbb09883708bdd403a7ad491f",
+            "title": "Gravel: A Communication Library to Fast Path MPI"
+        },
+        {
+            "paperId": "7dfdcb3413bc1da3cef5e7967ca15918eb3de0c8",
+            "title": "Improving the Performance of Multiple Conjugate Gradient Solvers by Exploiting Overlap"
+        },
+        {
+            "paperId": "89cc35f8cb35fd818f561a636e844526d6e5ffb4",
+            "title": "Leveraging non-blocking collective communication in high-performance applications"
+        },
+        {
+            "paperId": "984250da0a78dbc6f47ce5624a98cfd6a4dc0aae",
+            "title": "Compiler-controlled extraction of computation-communication overlap in MPI applications"
+        },
+        {
+            "paperId": "ee2932bd617f70a736e15e6e6a9473a22d74d2a8",
+            "title": "Implementation and performance analysis of non-blocking collective operations for MPI"
+        },
+        {
+            "paperId": "27c89a8096ec748792f555f6860c416688cd2980",
+            "title": "Automatic nonblocking communication for partitioned global address space programs"
+        },
+        {
+            "paperId": "f5d7cf9897cb8fc74294de6a24a296bd8aa401b0",
+            "title": "Automatic MPI application transformation with ASPhALT"
+        },
+        {
+            "paperId": "85ada1f83563247402d6a644c85ea2c093bf04f3",
+            "title": "Quantifying the Potential Benefit of Overlapping Communication and Computation in Large-Scale Scientific Applications"
+        },
+        {
+            "paperId": "4aed282d7f49b39397d7352c2a47fbcfb4efd259",
+            "title": "Data-Flow Analysis for MPI Programs"
+        },
+        {
+            "paperId": "e44412117a90a8885ee48157adc6065abfc35916",
+            "title": "Transformations to Parallel Codes for Communication-Computation Overlap"
+        },
+        {
+            "paperId": "28e4c538e544db057e8339f1c3eb37956b6b4b7a",
+            "title": "Optimizing bandwidth limited problems using one-sided communication and overlap"
+        },
+        {
+            "paperId": "3572b9ae265d28b3d3ca6446b4146741cd6ccea3",
+            "title": "Representation-independent program analysis"
+        },
+        {
+            "paperId": "143f2bf86cd80061f3d8cd7a5b6eed275f48fa9b",
+            "title": "Communication optimizations for fine-grained UPC applications"
+        },
+        {
+            "paperId": "261201a03614dd2bf1100e02b9cdbfa086600dfe",
+            "title": "Message Strip-Mining Heuristics for High Speed Networks"
+        },
+        {
+            "paperId": "7e7b85b33458db2927efcdc5de284f2c5935a48e",
+            "title": "North Atlantic Simulations with the Hybrid Coordinate Ocean Model (HYCOM): Impact of the Vertical Coordinate Choice, Reference Pressure, and Thermobaricity"
+        },
+        {
+            "paperId": "70df06b97055e1389be9ba1765d22544edfa92cf",
+            "title": "CC--MPI: a compiled communication capable MPI prototype for ethernet switched clusters"
+        },
+        {
+            "paperId": "bfe913d8ad55e158c8e95f191d67dde31ee31147",
+            "title": "GASNet Specification, v1.1"
+        },
+        {
+            "paperId": "002372b86e831dd0d61e37d70b23831eaeb11fcc",
+            "title": "Telescoping Languages: A Strategy for Automatic Generation of Scientific Problem-Solving Systems from Annotated Libraries"
+        },
+        {
+            "paperId": "f40dfd49d77a6b1b72b449b0c17397799505617f",
+            "title": "Titanium Language Reference Manual"
+        },
+        {
+            "paperId": "8d0fe27e18c1f582502760ab40ccc5b0435b36a7",
+            "title": "Program Flow Graph Construction For Static Analysis of MPI Programs"
+        },
+        {
+            "paperId": "61689b9e352a072f90ac0baceb5960b53338ef99",
+            "title": "ARMCI: A Portable Remote Memory Copy Libray for Ditributed Array Libraries and Compiler Run-Time Systems"
+        },
+        {
+            "paperId": "c59b3120e0f1468f72513bc246c2d2fdc81f531c",
+            "title": "Co-array Fortran for parallel programming"
+        },
+        {
+            "paperId": "f8bf955c575c3aa00166806ede7c93eae4b246f0",
+            "title": "An HPF Compiler for the IBM SP2"
+        },
+        {
+            "paperId": "ad290a00d1b7cdb38526034462403aeab6e21909",
+            "title": "A New Approach to Array Redistribution: Strip Mining Redistribution"
+        },
+        {
+            "paperId": "31b56b490ea4f2ecb8948f143ed31666a68488b1",
+            "title": "Compiling Fortran D for MIMD distributed-memory machines"
+        },
+        {
+            "paperId": "a743eee9a781de1515805336a45db6b83a87c88e",
+            "title": "Array expansion"
+        },
+        {
+            "paperId": "e10b7e210008e236bfacdd93f33f09a028bb113b",
+            "title": "Implementing an Open 64-based Tool for Improving the Performance of MPI Programs"
+        },
+        {
+            "paperId": "9364b48b83244e432d970414cb3659cd0d0a23da",
+            "title": "Advanced Compiler Design and Implementation"
+        },
+        {
+            "paperId": "ddc9265820b3143414a5dd278a9ebbb25e66dc4c",
+            "title": "Eeectiveness of Message Strip-mining for Regular and Irregular Communication"
+        },
+        {
+            "paperId": "0b1a447850ccf139dd7c555006c59e67eca50be9",
+            "title": "A Compilation Approach for Fortran 90D/HPF Compilers on Distributed Memory MIMD Computers"
+        },
+        {
+            "paperId": null,
+            "title": "High Performance Fortran Forum High Performance Fortran language specification, version 1.0. CRPC-TR92225"
+        }
+    ]
+}

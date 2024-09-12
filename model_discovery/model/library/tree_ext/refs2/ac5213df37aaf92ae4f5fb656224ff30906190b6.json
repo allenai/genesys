@@ -1,0 +1,115 @@
+{
+    "paperId": "ac5213df37aaf92ae4f5fb656224ff30906190b6",
+    "externalIds": {
+        "MAG": "2952089254",
+        "DBLP": "journals/corr/OlivaNPXS14",
+        "ArXiv": "1410.7414",
+        "DOI": "10.1184/R1/6475625.V1",
+        "CorpusId": 14606678
+    },
+    "title": "Fast Function to Function Regression",
+    "abstract": "We analyze the problem of regression when both input covariates and output responses are functions from a nonparametric function class. Function to function regression (FFR) covers a large range of interesting applications including timeseries prediction problems, and also more general tasks like studying a mapping between two separate types of distributions. However, previous nonparametric estimators for FFR type problems scale badly computationally with the number of input/output pairs in a data-set. Given the complexity of a mapping between general functions it may be necessary to consider large datasets in order to achieve a low estimation risk. To address this issue, we develop a novel scalable nonparametric estimator, the Triple-Basis Estimator (3BE), which is capable of operating over data-sets with many instances. To the best of our knowledge, the 3BE is the first nonparametric FFR estimator that can scale to massive data-sets. We analyze the 3BE\u2019s risk and derive an upperbound rate. Furthermore, we show an improvement of several orders of magnitude in terms of prediction speed and a reduction in error over previous estimators in various real-world datasets.",
+    "venue": "International Conference on Artificial Intelligence and Statistics",
+    "year": 2014,
+    "referenceCount": 15,
+    "citationCount": 29,
+    "influentialCitationCount": 5,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The 3BE is the first nonparametric FFR estimator that can scale to massive data-sets and shows an improvement of several orders of magnitude in terms of prediction speed and a reduction in error over previous estimators in various real-world datasets."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "143930995",
+            "name": "Junier B. Oliva"
+        },
+        {
+            "authorId": "2934259",
+            "name": "W. Neiswanger"
+        },
+        {
+            "authorId": "1719347",
+            "name": "B. P\u00f3czos"
+        },
+        {
+            "authorId": "143977260",
+            "name": "E. Xing"
+        },
+        {
+            "authorId": "9909653",
+            "name": "H. Trac"
+        },
+        {
+            "authorId": "21220036",
+            "name": "S. Ho"
+        },
+        {
+            "authorId": "1753432",
+            "name": "J. Schneider"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "b29e5be7987216cb1aaf46c6927ff216e048240a",
+            "title": "Functional Data Analysis"
+        },
+        {
+            "paperId": "c80f0676f2b56d1ef979a95f71eab5e2376583d8",
+            "title": "Fast Distribution To Real Regression"
+        },
+        {
+            "paperId": "9dcc201d0dcbb97cccf797ff2cec622cd4aa5aa4",
+            "title": "FuSSO: Functional Shrinkage and Selection Operator"
+        },
+        {
+            "paperId": "8f464d54d08b01e250f45272617b8074ef19927f",
+            "title": "Distribution to Distribution Regression"
+        },
+        {
+            "paperId": "dbc7c45f86f11125fc4689e3f019485354f8e505",
+            "title": "Instructing people for training gestural interactive systems"
+        },
+        {
+            "paperId": "83610a58a7580a5451f4a123b025714e2814ed74",
+            "title": "Hilbert Space Embeddings of Hidden Markov Models"
+        },
+        {
+            "paperId": "bb7fefcfc6f99c50a5f13a5ab5496e1cba7243c2",
+            "title": "Nonlinear functional regression: a functional RKHS approach"
+        },
+        {
+            "paperId": "097c5aa2d1196118da6ff454f4d81a95995025b9",
+            "title": "DynaMMo: mining and summarization of coevolving sequences with missing values"
+        },
+        {
+            "paperId": "7a59fde27461a3ef4a21a249cc403d0d96e4a0d7",
+            "title": "Random Features for Large-Scale Kernel Machines"
+        },
+        {
+            "paperId": "dab8c701d1f1c9134a5994515c07c919e8eb9db6",
+            "title": "Nonparametric Functional Data Analysis: Theory And Practice"
+        },
+        {
+            "paperId": "eae6a40ce583e12cad9b1296bc0a755719b0d7de",
+            "title": "Out - of - core hydrodynamic simulations for cosmological applications"
+        },
+        {
+            "paperId": "514ed7b51fefd6cbbd087d50b7bc86f98c7e528e",
+            "title": "Applied Functional Data Analysis: Methods and Case Studies"
+        },
+        {
+            "paperId": "9bcb17c65fecd220445fe0ad160c51f37eb041cd",
+            "title": "Transients from initial conditions: a perturbative analysis"
+        },
+        {
+            "paperId": "1623b808f8d871d5403195021ccbcaeba6869dc4",
+            "title": "Efficient estimation of integral functionals of a density"
+        },
+        {
+            "paperId": "4d85d478d85a382e44f3a9c8f7ceebd6bed93de3",
+            "title": "Estimation and detection of functions from anisotropic Sobolev classes"
+        }
+    ]
+}

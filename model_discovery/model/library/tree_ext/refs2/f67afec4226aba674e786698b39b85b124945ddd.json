@@ -1,0 +1,170 @@
+{
+    "paperId": "f67afec4226aba674e786698b39b85b124945ddd",
+    "externalIds": {
+        "MAG": "2620126604",
+        "DBLP": "journals/corr/WangYJ17",
+        "ArXiv": "1705.06821",
+        "DOI": "10.1137/1.9781611975673.73",
+        "CorpusId": 20527197
+    },
+    "title": "Spatial Variational Auto-Encoding via Matrix-Variate Normal Distributions",
+    "abstract": "The key idea of variational auto-encoders (VAEs) resembles that of traditional auto-encoder models in which spatial information is supposed to be explicitly encoded in the latent space. However, the latent variables in VAEs are vectors, which can be interpreted as multiple feature maps of size 1x1. Such representations can only convey spatial information implicitly when coupled with powerful decoders. In this work, we propose spatial VAEs that use feature maps of larger size as latent variables to explicitly capture spatial information. This is achieved by allowing the latent variables to be sampled from matrix-variate normal (MVN) distributions whose parameters are computed from the encoder network. To increase dependencies among locations on latent feature maps and reduce the number of parameters, we further propose spatial VAEs via low-rank MVN distributions. Experimental results show that the proposed spatial VAEs outperform original VAEs in capturing rich structural and spatial information.",
+    "venue": "SDM",
+    "year": 2017,
+    "referenceCount": 32,
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "openAccessPdf": {
+        "url": "https://epubs.siam.org/doi/pdf/10.1137/1.9781611975673.73",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Experimental results show that the proposed spatial VAEs outperform original VAEs in capturing rich structural and spatial information and increase dependencies among locations on latent feature maps and reduce the number of parameters."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "8492168",
+            "name": "Zhengyang Wang"
+        },
+        {
+            "authorId": "1498527026",
+            "name": "Hao Yuan"
+        },
+        {
+            "authorId": "1743600",
+            "name": "Shuiwang Ji"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "5532c52fffb8b446e3d4fc47d4d9a9b29091bdff",
+            "title": "Towards Deeper Understanding of Variational Autoencoding Models"
+        },
+        {
+            "paperId": "2e77b99e8bd10b9e4551a780c0bde9dd10fdbe9b",
+            "title": "PixelCNN++: Improving the PixelCNN with Discretized Logistic Mixture Likelihood and Other Modifications"
+        },
+        {
+            "paperId": "2c740e574eea66fdcf473e15ed2c228baef2eccd",
+            "title": "NIPS 2016 Tutorial: Generative Adversarial Networks"
+        },
+        {
+            "paperId": "42e9055ec712ec9c7f0a79d963ea034a72dc7fa8",
+            "title": "PixelVAE: A Latent Variable Model for Natural Images"
+        },
+        {
+            "paperId": "2932c27534879345a1ff9c753c95ac60f8469179",
+            "title": "Tutorial on Variational Autoencoders"
+        },
+        {
+            "paperId": "0936352b78a52bc5d2b5e3f04233efc56664af51",
+            "title": "Conditional Image Generation with PixelCNN Decoders"
+        },
+        {
+            "paperId": "6a97d2668187965743d1b825b306defccbabbb4c",
+            "title": "Improved Variational Inference with Inverse Autoregressive Flow"
+        },
+        {
+            "paperId": "41f1d50c85d3180476c4c7b3eea121278b0d8474",
+            "title": "Pixel Recurrent Neural Networks"
+        },
+        {
+            "paperId": "8388f1be26329fa45e5807e968a641ce170ea078",
+            "title": "Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks"
+        },
+        {
+            "paperId": "c8c04ed972d38e2326a53d322a6f2d7e0f8218c1",
+            "title": "Adversarial Autoencoders"
+        },
+        {
+            "paperId": "39e0c341351f8f4a39ac890b96217c7f4bde5369",
+            "title": "A note on the evaluation of generative models"
+        },
+        {
+            "paperId": "3e47c4c2dd98c49b7771c7228812d5fd9eee56a3",
+            "title": "Importance Weighted Autoencoders"
+        },
+        {
+            "paperId": "6364fdaa0a0eccd823a779fcdd489173f938e91a",
+            "title": "U-Net: Convolutional Networks for Biomedical Image Segmentation"
+        },
+        {
+            "paperId": "6424b69f3ff4d35249c0bb7ef912fbc2c86f4ff4",
+            "title": "Deep Learning Face Attributes in the Wild"
+        },
+        {
+            "paperId": "6fc6803df5f9ae505cae5b2f178ade4062c768d0",
+            "title": "Fully convolutional networks for semantic segmentation"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "484ad17c926292fbe0d5211540832a8c8a8e958b",
+            "title": "Stochastic Backpropagation and Approximate Inference in Deep Generative Models"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "184ac0766262312ba76bbdece4e7ffad0aa8180b",
+            "title": "Representation Learning: A Review and New Perspectives"
+        },
+        {
+            "paperId": "d1c67346e46b4d0067b3c2e5d3b959a8bc24b28c",
+            "title": "Quickly Generating Representative Samples from an RBM-Derived Process"
+        },
+        {
+            "paperId": "83dfe3980b875c4e5fe6f2cb1df131cc46d175c8",
+            "title": "Deconvolutional networks"
+        },
+        {
+            "paperId": "e2b7f37cd97a7907b1b8a41138721ed06a0b76cd",
+            "title": "Stacked Denoising Autoencoders: Learning Useful Representations in a Deep Network with a Local Denoising Criterion"
+        },
+        {
+            "paperId": "a1b3294a937cae1239a9d0d825e562c2d734c272",
+            "title": "TRANSPOSABLE REGULARIZED COVARIANCE MODELS WITH AN APPLICATION TO MISSING DATA IMPUTATION."
+        },
+        {
+            "paperId": "843959ffdccf31c6694d135fad07425924f785b1",
+            "title": "Extracting and composing robust features with denoising autoencoders"
+        },
+        {
+            "paperId": "1655a0a81de71b713a283006dac3b1b5e9e756cc",
+            "title": "Matrix Variate Distributions"
+        },
+        {
+            "paperId": "ef4f5a50837a7c1b3e87b9300ffc7ba00d461a0f",
+            "title": "AUTO-ENCODING VARIATIONAL BAYES"
+        },
+        {
+            "paperId": "c68796f833a7151f0a63d1d1608dc902b4fdc9b6",
+            "title": "GENERATIVE ADVERSARIAL NETS"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        },
+        {
+            "paperId": "dc52d1ede1b90bf9d296bc5b34c9310b7eaa99a2",
+            "title": "The mnist database of handwritten digits"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": null,
+            "title": "and C"
+        }
+    ]
+}

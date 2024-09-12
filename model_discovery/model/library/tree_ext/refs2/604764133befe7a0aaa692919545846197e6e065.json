@@ -1,0 +1,214 @@
+{
+    "paperId": "604764133befe7a0aaa692919545846197e6e065",
+    "externalIds": {
+        "ACL": "D16-1128",
+        "MAG": "2963091658",
+        "DBLP": "conf/emnlp/LebretGA16",
+        "DOI": "10.18653/v1/D16-1128",
+        "CorpusId": 1238927
+    },
+    "title": "Neural Text Generation from Structured Data with Application to the Biography Domain",
+    "abstract": "This paper introduces a neural model for concept-to-text generation that scales to large, rich domains. We experiment with a new dataset of biographies from Wikipedia that is an order of magnitude larger than existing resources with over 700k samples. The dataset is also vastly more diverse with a 400k vocabulary, compared to a few hundred words for Weathergov or Robocup. Our model builds upon recent work on conditional neural language model for text generation. To deal with the large vocabulary, we extend these models to mix a fixed vocabulary with copy actions that transfer sample-specific words from the input database to the generated output sentence. Our neural model significantly out-performs a classical Kneser-Ney language model adapted to this task by nearly 15 BLEU.",
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2016,
+    "referenceCount": 43,
+    "citationCount": 488,
+    "influentialCitationCount": 105,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/D16-1128.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A neural model for concept-to-text generation that scales to large, rich domains and significantly out-performs a classical Kneser-Ney language model adapted to this task by nearly 15 BLEU is introduced."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2875254",
+            "name": "R. Lebret"
+        },
+        {
+            "authorId": "2529182",
+            "name": "David Grangier"
+        },
+        {
+            "authorId": "2325985",
+            "name": "Michael Auli"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "c25e3fc7bb2c890c692b500dcd4e774e66081aab",
+            "title": "Attention with Intention for a Neural Network Conversation Model"
+        },
+        {
+            "paperId": "f273adbfe0e6ba39a583b9669d94cc8d828d8c25",
+            "title": "What to talk about and how? Selective Generation using LSTMs with Coarse-to-Fine Alignment"
+        },
+        {
+            "paperId": "4d4b46e545e1a3f6871b49cc69640ef2eb1a4654",
+            "title": "Semantically Conditioned LSTM-based Natural Language Generation for Spoken Dialogue Systems"
+        },
+        {
+            "paperId": "ba49d3823d43515e447296ca4e1e55d3f1fd8c4d",
+            "title": "Neural Responding Machine for Short-Text Conversation"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "55e022fb7581bb9e1fce678d21fb25ffbb3fbb88",
+            "title": "Deep visual-semantic alignments for generating image descriptions"
+        },
+        {
+            "paperId": "15f102c3c9f4d4fe6ba105e221df48c6e8902b3b",
+            "title": "From captions to visual concepts and back"
+        },
+        {
+            "paperId": "d4dc1012d780e8e2547237eb5a6dc7b1bf47d2f0",
+            "title": "Show and tell: A neural image caption generator"
+        },
+        {
+            "paperId": "2e36ea91a3c8fbff92be2989325531b4002e2afc",
+            "title": "Unifying Visual-Semantic Embeddings with Multimodal Neural Language Models"
+        },
+        {
+            "paperId": "1956c239b3552e030db1b78951f64781101125ed",
+            "title": "Addressing the Rare Word Problem in Neural Machine Translation"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "8c3b69cd8d2f29a54ee133fa38c48963c71f08aa",
+            "title": "Numerical Computations with GPUs"
+        },
+        {
+            "paperId": "3b977cab4abd0a5ed9a0f9ffbf498db9941b5c5d",
+            "title": "Surface Realisation from Knowledge-Bases"
+        },
+        {
+            "paperId": "2f5102ec3f70d0dea98c957cc2cab4d15d83a2da",
+            "title": "The Stanford CoreNLP Natural Language Processing Toolkit"
+        },
+        {
+            "paperId": "0894b06cff1cd0903574acaa7fcf071b144ae775",
+            "title": "Fast and Robust Neural Network Joint Models for Statistical Machine Translation"
+        },
+        {
+            "paperId": "e89f679710507e239775a1e9c81988c3f928cbed",
+            "title": "Word Embeddings through Hellinger PCA"
+        },
+        {
+            "paperId": "41de65f718207cc5f98b561a62b16d5e818cb98c",
+            "title": "A Global Model for Concept-to-Text Generation"
+        },
+        {
+            "paperId": "774e560a2cadcb84f4b1def7b152e5398b062efb",
+            "title": "Scalable Modified Kneser-Ney Language Model Estimation"
+        },
+        {
+            "paperId": "bde2d81eaf6086e664af87c04241d4ce4e1bd01b",
+            "title": "Introduction to \"This is Watson\""
+        },
+        {
+            "paperId": "c9960e8da5ece65ab40b2adbce3cec0d72d6909b",
+            "title": "Controlling User Perceptions of Linguistic Style: Trainable Generation of Personality Traits"
+        },
+        {
+            "paperId": "f152db85455116eb674d65f63407497564901512",
+            "title": "A Probabilistic Forest-to-String Model for Language Generation from Typed Lambda Calculus Expressions"
+        },
+        {
+            "paperId": "a5424051ab04689fc8bc175ff015c6f7cdc46014",
+            "title": "A Simple Domain-Independent Probabilistic Approach to Generation"
+        },
+        {
+            "paperId": "c058a83962e55411b5615ebdfba470b892420c18",
+            "title": "Generative Alignment and Semantic Parsing for Learning from Ambiguous Supervision"
+        },
+        {
+            "paperId": "b3051b3e18eee9c498a2e94d0811d1a3551e64e4",
+            "title": "Learning Semantic Correspondences with Less Supervision"
+        },
+        {
+            "paperId": "8688d0d772df81c01e35488fcad55e991f1ce11f",
+            "title": "Generating Approximate Geographic Descriptions"
+        },
+        {
+            "paperId": "1a6b7cf5e1a3e069338498d1c17aa7d46c1ac7e9",
+            "title": "Automatic generation of weather forecast texts using comprehensive probabilistic generation-space models"
+        },
+        {
+            "paperId": "1976c9eeccc7115d18a04f1e7fb5145db6b96002",
+            "title": "Freebase: a collaboratively created graph database for structuring human knowledge"
+        },
+        {
+            "paperId": "85fd72fe9a4fd351c6f9663fb0d808ebc9f6264e",
+            "title": "Generation by Inverting a Semantic Parser that Uses Statistical Machine Translation"
+        },
+        {
+            "paperId": "973998ed4c305c78ed13adafdb94eb4a7e1c09d4",
+            "title": "Generating Multilingual Descriptions from Linguistically Annotated OWL Ontologies: the NaturalOWL System"
+        },
+        {
+            "paperId": "08e6c49c69f016308189fd2152bc31779c338f60",
+            "title": "Stochastic Language Generation Using WIDL-Expressions and its Application in Machine Translation and Summarization"
+        },
+        {
+            "paperId": "4927e7e5a99b6059a35cc59a07eb53e3954d927e",
+            "title": "Generation of Biomedical Arguments for Lay Readers"
+        },
+        {
+            "paperId": "03bf35097e9bf47b57eb594093803b8c00f59ebb",
+            "title": "Aggregation via Set Partitioning for Natural Language Generation"
+        },
+        {
+            "paperId": "b2c1efcaac5e99083639994d0daa4ae05b3839d8",
+            "title": "Collective Content Selection for Concept-to-Text Generation"
+        },
+        {
+            "paperId": "cd60e751a02e7104a68717c5ba29f534d9037ace",
+            "title": "Choosing words in computer-generated weather forecasts"
+        },
+        {
+            "paperId": "6c2b28f9354f667cd5bd07afc0471d8334430da7",
+            "title": "A Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "cc08fa311adc132494aa6817c2471d31fd8160ce",
+            "title": "Using Natural Language Generation for Navigational Assistance"
+        },
+        {
+            "paperId": "8f4c9f5877fbd287785466d59877ef870c5e53c4",
+            "title": "Trainable approaches to surface natural language generation and their application to conversational dialog systems"
+        },
+        {
+            "paperId": "f3db747cbb304dbad722aecf5ae527b242c60e2b",
+            "title": "Stochastic Language Generation for Spoken Dialogue Systems"
+        },
+        {
+            "paperId": "0886bd3d1b4fd46928a295a36b5230c4352f699b",
+            "title": "Generation that Exploits Corpus-Based Statistical Knowledge"
+        },
+        {
+            "paperId": "d7ec2f43258ff2032c8dd13f8777f221221340b1",
+            "title": "Building Natural-Language Generation Systems"
+        },
+        {
+            "paperId": "b87274e6d9aa4e6ba5148898aa92941617d2b6ed",
+            "title": "Efficient BackProp"
+        },
+        {
+            "paperId": "a70e48c119742cb69b1cdbd62e58a8a8d0d28a8e",
+            "title": "Comparing Automatic and Human Evaluation of NLG Systems"
+        },
+        {
+            "paperId": "15289c8b1f1ab42d71596b38ab2631510b195138",
+            "title": "Content Planner Construction via Evolutionary Algorithms and a Corpus-based Fitness Function"
+        }
+    ]
+}

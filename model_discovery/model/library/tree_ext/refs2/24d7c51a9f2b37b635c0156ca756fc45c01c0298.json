@@ -1,0 +1,122 @@
+{
+    "paperId": "24d7c51a9f2b37b635c0156ca756fc45c01c0298",
+    "externalIds": {
+        "DBLP": "conf/eucc/LanzettiLCDMJ19",
+        "MAG": "2967789530",
+        "DOI": "10.23919/ECC.2019.8795809",
+        "CorpusId": 201067040
+    },
+    "title": "Recurrent Neural Network based MPC for Process Industries",
+    "abstract": "Autonomous operation of industrial plants requires a cheap and efficient way of creating dynamic process models, which can then be used to either be part of the autonomous systems or to serve as simulators for reinforcement learning. The trends of digitalization, cheap storage, and industry 4.0 enable the access to more and more historical data that can be used in data driven methods to perform system identification. Model predictive control (MPC) is a promising advanced control framework, which might be part of autonomous plants or contribute to some extent to autonomy. In this article, we combine data-driven modeling with MPC and investigate how to train, validate, and incorporate a special recurrent neural network (RNN) architecture into an MPC framework. The proposed structure is designed for being scalable and applicable to a wide range of multiple-input multiple-output (MIMO) systems encountered in industrial applications. The training, validation, and closed-loop control using RNNs are demonstrated in an industrial simulation case study. The results show that the proposed framework performs well dealing with challenging practical conditions such as MIMO control, nonlinearities, noise, and time delays.",
+    "venue": "European Control Conference",
+    "year": 2019,
+    "referenceCount": 18,
+    "citationCount": 48,
+    "influentialCitationCount": 1,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This article combines data-driven modeling with MPC and investigates how to train, validate, and incorporate a special recurrent neural network (RNN) architecture into an MPC framework, designed for being scalable and applicable to a wide range of multiple-input multiple-output systems encountered in industrial applications."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "151452727",
+            "name": "Nicolas Lanzetti"
+        },
+        {
+            "authorId": "1475707354",
+            "name": "Yingzhao Lian"
+        },
+        {
+            "authorId": "40136956",
+            "name": "A. Cortinovis"
+        },
+        {
+            "authorId": "2065228982",
+            "name": "Luis F. Dominguez"
+        },
+        {
+            "authorId": "2866933",
+            "name": "Mehmet Mercang\u00f6z"
+        },
+        {
+            "authorId": "2115201230",
+            "name": "C. Jones"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "7d561ebad4d5d0d2ec0b10fe450682baba8460af",
+            "title": "Decentralized Control"
+        },
+        {
+            "paperId": "71b03c8885b425c02e0b722c1133fcccb70ba413",
+            "title": "CasADi: a software framework for nonlinear optimization and optimal control"
+        },
+        {
+            "paperId": "87c404e6a687b4cf6defe12be15117aaf6657e32",
+            "title": "Multistep Prediction of Dynamic Systems With Recurrent Neural Networks"
+        },
+        {
+            "paperId": "df7843fb2ec1a5c8c7e679ddfb5ac93925fee6bd",
+            "title": "Deep Learning and Model Predictive Control for Self-Tuning Mode-Locked Lasers"
+        },
+        {
+            "paperId": "9f371ce1c7df9c325dd49b8d1b529478878a60f3",
+            "title": "Learning A Physical Long-term Predictor"
+        },
+        {
+            "paperId": "e89d656a39fc3b08af47ebb9a583e182a596dabe",
+            "title": "DeepMPC: Learning Deep Latent Features for Model Predictive Control"
+        },
+        {
+            "paperId": "a6336fa1bcdeb7c84d2c4189728f0c1b2b7d0883",
+            "title": "A Critical Review of Recurrent Neural Networks for Sequence Learning"
+        },
+        {
+            "paperId": "5603cd32c87c0557a61282a81e455ae2330c7023",
+            "title": "Learning Stable Nonlinear Dynamical Systems With Gaussian Mixture Models"
+        },
+        {
+            "paperId": "321759af5a7d74afeb515719d8da25fba4759764",
+            "title": "On the implementation of an interior-point filter line-search algorithm for large-scale nonlinear programming"
+        },
+        {
+            "paperId": "d81b3d13ec1e30ebc2238c2e03fa06367b72c053",
+            "title": "Nonlinear System Identification: From Classical Approaches to Neural Networks and Fuzzy Models"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "10e84fa32047ec873ac2c512c0ced8fe06581d9c",
+            "title": "BOOK REVIEW SYSTEM IDENTIFICATION"
+        },
+        {
+            "paperId": "2913c2bf3f92b5ae369400a42b2d27cc5bc05ecb",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": "d0d7f8b5d54e3d68fd45a70d4a0d13f42e8d71ff",
+            "title": "Learning Subsequential Structure in Simple Recurrent Networks"
+        },
+        {
+            "paperId": null,
+            "title": "Tensor- Flow: Large-Scale Machine Learning on Heterogeneous Systems"
+        },
+        {
+            "paperId": null,
+            "title": "Machine learning for Advanced Process Control"
+        },
+        {
+            "paperId": null,
+            "title": "Zehnpfund, \u201dUse a Machine\u2019s full capability"
+        },
+        {
+            "paperId": null,
+            "title": "Zehnpfund, \u201dMultivariable CD control applications"
+        }
+    ]
+}

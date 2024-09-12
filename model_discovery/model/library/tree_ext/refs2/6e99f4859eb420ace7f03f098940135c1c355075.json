@@ -1,0 +1,298 @@
+{
+    "paperId": "6e99f4859eb420ace7f03f098940135c1c355075",
+    "externalIds": {
+        "DBLP": "conf/icml/MhammediHRB17",
+        "ArXiv": "1612.00188",
+        "MAG": "2951826560",
+        "CorpusId": 11182533
+    },
+    "title": "Efficient Orthogonal Parametrisation of Recurrent Neural Networks Using Householder Reflections",
+    "abstract": "The problem of learning long-term dependencies in sequences using Recurrent Neural Networks (RNNs) is still a major challenge. Recent methods have been suggested to solve this problem by constraining the transition matrix to be unitary during training which ensures that its norm is equal to one and prevents exploding gradients. These methods either have limited expressiveness or scale poorly with the size of the network when compared with the simple RNN case, especially when using stochastic gradient descent with a small mini-batch size. Our contributions are as follows; we first show that constraining the transition matrix to be unitary is a special case of an orthogonal constraint. Then we present a new parametrisation of the transition matrix which allows efficient training of an RNN while ensuring that the matrix is always orthogonal. Our results show that the orthogonal constraint on the transition matrix applied through our parametrisation gives similar benefits to the unitary constraint, without the time complexity limitations.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2016,
+    "referenceCount": 64,
+    "citationCount": 121,
+    "influentialCitationCount": 18,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new parametrisation of the transition matrix is presented which allows efficient training of an RNN while ensuring that the matrix is always orthogonal, and gives similar benefits to the unitary constraint, without the time complexity limitations."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "8272223",
+            "name": "Zakaria Mhammedi"
+        },
+        {
+            "authorId": "50071242",
+            "name": "Andrew D. Hellicar"
+        },
+        {
+            "authorId": "37034441",
+            "name": "Ashfaqur Rahman"
+        },
+        {
+            "authorId": "145148600",
+            "name": "J. Bailey"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "f43e584bbe71134bc025af85296045772abba1cd",
+            "title": "NEURAL NETWORKS MODULE"
+        },
+        {
+            "paperId": "9d1fb89b99aafc01ee56fc92df1ad150fba67c22",
+            "title": "On orthogonality and learning recurrent networks with long term dependencies"
+        },
+        {
+            "paperId": "70715a4cbf1ceddec9b3d092114dd898033f7421",
+            "title": "Improving Training of Deep Neural Networks via Singular Value Bounding"
+        },
+        {
+            "paperId": "401d68e1a930b0f7e02030cab4c185fb1839cb11",
+            "title": "Capacity and Trainability in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "79c78c98ea317ba8cdf25a9783ef4b8a7552db75",
+            "title": "Full-Capacity Unitary Recurrent Neural Networks"
+        },
+        {
+            "paperId": "65161b91378d0ee020f79a467c3646c801c24a0f",
+            "title": "Recurrent Neural Machine Translation"
+        },
+        {
+            "paperId": "00c04118a0d0f1ff855ad4597025448c5daf873d",
+            "title": "Learning Unitary Operators with Help From u(n)"
+        },
+        {
+            "paperId": "6690f96668e9fc3758eb6848ca9c0f65d042e4f3",
+            "title": "Path-Normalized Optimization of Recurrent Neural Networks with ReLU Activations"
+        },
+        {
+            "paperId": "6b570069f14c7588e066f7138e1f21af59d62e61",
+            "title": "Theano: A Python framework for fast computation of mathematical expressions"
+        },
+        {
+            "paperId": "99b5e7522de1f391c4ac30928937060bd3178f03",
+            "title": "Norm-preserving Orthogonal Permutation Linear Unit Activation Functions (OPLU)"
+        },
+        {
+            "paperId": "21b0fa7edb89eaf3cf24a4f0813791538e1ce60f",
+            "title": "On the compression of recurrent neural networks with an application to LVCSR acoustic modeling for embedded speech recognition"
+        },
+        {
+            "paperId": "4ca151307e3be93c6cd14ed403f6162892e7fbed",
+            "title": "Orthogonal RNNs and Long-Memory Tasks"
+        },
+        {
+            "paperId": "ef3152106e7f4d05ad8d32a5b90d3790c5cdef24",
+            "title": "Recurrent Orthogonal Networks and Long-Memory Tasks"
+        },
+        {
+            "paperId": "412b3ef02c85087e5f1721176114672c722b17a4",
+            "title": "A Taxonomy of Deep Convolutional Neural Nets for Computer Vision"
+        },
+        {
+            "paperId": "87119572d1065fb079e1dee8fcdb6c4811143f96",
+            "title": "Feed-Forward Networks with Attention Can Solve Some Long-Term Memory Problems"
+        },
+        {
+            "paperId": "f63e917638553414526a0cc8550de4ad2d83fe7a",
+            "title": "Fast and Accurate Deep Network Learning by Exponential Linear Units (ELUs)"
+        },
+        {
+            "paperId": "e9c771197a6564762754e48c1daafb066f449f2e",
+            "title": "Unitary Evolution Recurrent Neural Networks"
+        },
+        {
+            "paperId": "4aa9f5150b46320f534de4747a2dd0cd7f3fe292",
+            "title": "Semi-supervised Sequence Learning"
+        },
+        {
+            "paperId": "4b88e948121a87f00fb5aa0081d2044dde51ee36",
+            "title": "Generalizing Pooling Functions in Convolutional Neural Networks: Mixed, Gated, and Tree"
+        },
+        {
+            "paperId": "cdd2906f29d8103632dba24484571a8a05c09076",
+            "title": "Multi-Timescale Long Short-Term Memory Neural Network for Modelling Sentences and Documents"
+        },
+        {
+            "paperId": "5b8364c21155d3d2cd38ea4c8b8580beba9a3250",
+            "title": "An Empirical Exploration of Recurrent Network Architectures"
+        },
+        {
+            "paperId": "a6336fa1bcdeb7c84d2c4189728f0c1b2b7d0883",
+            "title": "A Critical Review of Recurrent Neural Networks for Sequence Learning"
+        },
+        {
+            "paperId": "d46b81707786d18499f911b4ab72bb10c65406ba",
+            "title": "A Simple Way to Initialize Recurrent Networks of Rectified Linear Units"
+        },
+        {
+            "paperId": "a2785f66c20fbdf30ec26c0931584c6d6a0f4fca",
+            "title": "DRAW: A Recurrent Neural Network For Image Generation"
+        },
+        {
+            "paperId": "d14c7e5f5cace4c925abc74c88baa474e9f31a28",
+            "title": "Gated Feedback Recurrent Neural Networks"
+        },
+        {
+            "paperId": "7845f1d3e796b5704d4bd37a945e0cf3fb8bbf1f",
+            "title": "Multiple Object Recognition with Visual Attention"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "55dda8f230566867acbfaa7bdd08fd8c7b8721ed",
+            "title": "Fractional Max-Pooling"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "5522764282c85aea422f1c4dc92ff7e0ca6987bc",
+            "title": "A Clockwork RNN"
+        },
+        {
+            "paperId": "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17",
+            "title": "Generating Sequences With Recurrent Neural Networks"
+        },
+        {
+            "paperId": "38f35dd624cd1cf827416e31ac5e0e0454028eca",
+            "title": "Regularization of Neural Networks using DropConnect"
+        },
+        {
+            "paperId": "aa7bfd2304201afbb19971ebde87b17e40242e91",
+            "title": "On the importance of initialization and momentum in deep learning"
+        },
+        {
+            "paperId": "84069287da0a6b488b8c933f3cb5be759cb6237e",
+            "title": "On the difficulty of training recurrent neural networks"
+        },
+        {
+            "paperId": "0d6203718c15f137fda2f295c96269bc2b254644",
+            "title": "Learning Recurrent Neural Networks with Hessian-Free Optimization"
+        },
+        {
+            "paperId": "1c6d990c80e60aa0b0059415444cdf94b3574f0f",
+            "title": "Stacked Convolutional Auto-Encoders for Hierarchical Feature Extraction"
+        },
+        {
+            "paperId": "ea9d2a2b4ce11aaf85136840c65f3bc9c03ab649",
+            "title": "Understanding the difficulty of training deep feedforward neural networks"
+        },
+        {
+            "paperId": "355d44f53428b1ac4fb2ab468d593c720640e5bd",
+            "title": "Greedy Layer-Wise Training of Deep Networks"
+        },
+        {
+            "paperId": "4a0614ae3dd74838995a38546e78a4bdadd8aee1",
+            "title": "How to generate random matrices from the classical compact groups"
+        },
+        {
+            "paperId": "7265a5524adb592bcdb991550c2880a1293d5cd7",
+            "title": "Recurrent Neural Networks Are Universal Approximators"
+        },
+        {
+            "paperId": "6c24fa80068fa70f3328e7a1eeec9b8642a450f8",
+            "title": "Accumulating Householder transformations, revisited"
+        },
+        {
+            "paperId": "d370f7bd63dafe7fe4fed659d37eb8436b6d6de6",
+            "title": "A neural network based approach to automated e-mail classification"
+        },
+        {
+            "paperId": "2b7b950d14a536b3a6ab5e9a468e6f43f274cbc9",
+            "title": "Image processing with neural networks - a review"
+        },
+        {
+            "paperId": "28ce7a064544fc093724cb2fecd8dfaea6367349",
+            "title": "Applying LSTM to Time Series Predictable through Time-Window Approaches"
+        },
+        {
+            "paperId": "98daaa8b55f1f893be09998c9094372136b2d872",
+            "title": "A data mining framework for building intrusion detection models"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "d0be39ee052d246ae99c082a565aba25b811be2d",
+            "title": "Learning long-term dependencies with gradient descent is difficult"
+        },
+        {
+            "paperId": "f22f6972e66bdd2e769fa64b0df0a13063c0c101",
+            "title": "Multilayer feedforward networks are universal approximators"
+        },
+        {
+            "paperId": "89ef34a30564e095b9c72f641109b0443fb6109a",
+            "title": "Perceptrons: An Introduction to Computational Geometry, Expanded Edition"
+        },
+        {
+            "paperId": "0908d52124ec2a31bfe9d966d1374a80919155ad",
+            "title": "An introduction to computing with neural nets"
+        },
+        {
+            "paperId": "9b486c647916df9f8be0f8d4fc5c94c493bfaa80",
+            "title": "PRINCIPLES OF NEURODYNAMICS. PERCEPTRONS AND THE THEORY OF BRAIN MECHANISMS"
+        },
+        {
+            "paperId": "5d11aad09f65431b5d3cb1d85328743c9e53ba96",
+            "title": "The perceptron: a probabilistic model for information storage and organization in the brain."
+        },
+        {
+            "paperId": "80eefcf08d65676b672a8f817eb1d91e57b34598",
+            "title": "Recurrent Neural Networks"
+        },
+        {
+            "paperId": "5b4022027fa6d467f503c13b3bee3505cc4fc820",
+            "title": "Short Term"
+        },
+        {
+            "paperId": "cab2ba3bd239c8f698fb628396895077310e7b54",
+            "title": "Tunable Efficient Unitary Neural Networks (EUNN) and their application to RNN"
+        },
+        {
+            "paperId": "96364af2d208ea75ca3aeb71892d2f7ce7326b55",
+            "title": "Statistical Language Models Based on Neural Networks"
+        },
+        {
+            "paperId": "c74c5e11ed05246c12165ce7e4b6222bd32d68dc",
+            "title": "An extended collection of matrix derivative results for forward and reverse mode algorithmic dieren tiation"
+        },
+        {
+            "paperId": "9eab007a8c0af72f1fdffe2aef210d790fb79d79",
+            "title": "The Application of Hidden Markov Models in Speech Recognition"
+        },
+        {
+            "paperId": null,
+            "title": "Robust bayesian mixture"
+        },
+        {
+            "paperId": "2e5f2b57f4c476dd69dc22ccdf547e48f40a994c",
+            "title": "Gradient Flow in Recurrent Nets: the Difficulty of Learning Long-Term Dependencies"
+        },
+        {
+            "paperId": "8430c0b9afa478ae660398704b11dca1221ccf22",
+            "title": "The''echo state''approach to analysing and training recurrent neural networks"
+        },
+        {
+            "paperId": "3344845a50571543d029a772a9f88c8a5151e678",
+            "title": "A modified leaky integrator network for temporal pattern processing"
+        },
+        {
+            "paperId": null,
+            "title": "The time and space complexities involved in one gradient calculation are, in the worst case, the same as that of the sRNN with the same number of hidden units"
+        },
+        {
+            "paperId": null,
+            "title": "When m < n , the matrix W is always orthogonal, as long as the re\ufb02ection vectors are nonzero"
+        }
+    ]
+}

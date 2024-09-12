@@ -1,0 +1,105 @@
+{
+    "paperId": "6fe8c5bf8dddaadf10c765133d38dfef5714347f",
+    "externalIds": {
+        "MAG": "2998574808",
+        "DBLP": "conf/sigmod/AgrawalIS93",
+        "DOI": "10.1145/170035.170072",
+        "CorpusId": 490415
+    },
+    "title": "Mining association rules between sets of items in large databases",
+    "abstract": "We are given a large database of customer transactions. Each transaction consists of items purchased by a customer in a visit. We present an efficient algorithm that generates all significant association rules between items in the database. The algorithm incorporates buffer management and novel estimation and pruning techniques. We also present results of applying this algorithm to sales data obtained from a large retailing company, which shows the effectiveness of the algorithm.",
+    "venue": "SIGMOD Conference",
+    "year": 1993,
+    "referenceCount": 16,
+    "citationCount": 16194,
+    "influentialCitationCount": 1454,
+    "openAccessPdf": {
+        "url": "https://dl.acm.org/doi/pdf/10.1145/170036.170072",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An efficient algorithm is presented that generates all significant association rules between items in the database of customer transactions and incorporates buffer management and novel estimation and pruning techniques."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "144947410",
+            "name": "R. Agrawal"
+        },
+        {
+            "authorId": "1733797",
+            "name": "T. Imielinski"
+        },
+        {
+            "authorId": "31536502",
+            "name": "A. Swami"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "c2b381b24aabf237394059fed7920cd6fd0e67b8",
+            "title": "Database Mining: A Performance Perspective"
+        },
+        {
+            "paperId": "00d38b3a8fdcbfcb6fb7dcd6f077666a243c35a3",
+            "title": "Knowledge Discovery in Databases: An Overview"
+        },
+        {
+            "paperId": "6d61b6bff88f7263a8e87a8474a3a276a03458b0",
+            "title": "An Interval Classifier for Database Mining Applications"
+        },
+        {
+            "paperId": "ba456829fbf61f2df34272f57b6f4e4ebf911be7",
+            "title": "Knowledge Discovery in Databases"
+        },
+        {
+            "paperId": "6a555aac57ba55bd37248aaba8b952dfce1ece7f",
+            "title": "Dependency Inference"
+        },
+        {
+            "paperId": "f3fd42d9d6d7d2220c03c2ab28e40031a55fb030",
+            "title": "Discovering Functional Formulas through Changing Representation Base"
+        },
+        {
+            "paperId": "009233749be702cb3ee7afb96cc7707c63f1cd52",
+            "title": "A theory of the learnable"
+        },
+        {
+            "paperId": null,
+            "title": "Bridging the Gap Between Database Theory and Practice"
+        },
+        {
+            "paperId": "c20ca1912675aca9f6af99d0b1137c03660cb666",
+            "title": "Discovery, Analysis, and Presentation of Strong Rules"
+        },
+        {
+            "paperId": "fe0b97311efdbc487049004c770279e4cca652aa",
+            "title": "Discovering Functional Relationships from Observational Data"
+        },
+        {
+            "paperId": "be9358bdecb7a42b63b87a43900396f2150f79a3",
+            "title": "Scientific discovery: compulalional explorations of the creative process"
+        },
+        {
+            "paperId": null,
+            "title": "Valiant, \\Learning Disjunctions and Conjunctions"
+        },
+        {
+            "paperId": null,
+            "title": "and  C"
+        },
+        {
+            "paperId": "d37b3a66d55d5361aeb5ef0793af66049535c24d",
+            "title": "A theory of the learnable"
+        },
+        {
+            "paperId": "378e8a238d156859dfc88cc13489441d47cf661a",
+            "title": "Classification and regression trees"
+        },
+        {
+            "paperId": null,
+            "title": "Generate all combinations of items that have fractional transaction support above a certain threshold, called minsupport"
+        }
+    ]
+}

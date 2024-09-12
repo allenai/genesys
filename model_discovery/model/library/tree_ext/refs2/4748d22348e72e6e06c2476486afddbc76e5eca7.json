@@ -1,0 +1,206 @@
+{
+    "paperId": "4748d22348e72e6e06c2476486afddbc76e5eca7",
+    "externalIds": {
+        "MAG": "2124509324",
+        "DBLP": "journals/pami/JegouDS11",
+        "DOI": "10.1109/TPAMI.2010.57",
+        "CorpusId": 5850884,
+        "PubMed": "21088323"
+    },
+    "title": "Product Quantization for Nearest Neighbor Search",
+    "abstract": "This paper introduces a product quantization-based approach for approximate nearest neighbor search. The idea is to decompose the space into a Cartesian product of low-dimensional subspaces and to quantize each subspace separately. A vector is represented by a short code composed of its subspace quantization indices. The euclidean distance between two vectors can be efficiently estimated from their codes. An asymmetric version increases precision, as it computes the approximate distance between a vector and a code. Experimental results show that our approach searches for nearest neighbors efficiently, in particular in combination with an inverted file system. Results for SIFT and GIST image descriptors show excellent search accuracy, outperforming three state-of-the-art approaches. The scalability of our approach is validated on a data set of two billion vectors.",
+    "venue": "IEEE Transactions on Pattern Analysis and Machine Intelligence",
+    "year": 2011,
+    "referenceCount": 41,
+    "citationCount": 2625,
+    "influentialCitationCount": 452,
+    "openAccessPdf": {
+        "url": "https://hal.inria.fr/inria-00514462/file/jegou_pq_postprint.pdf",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper introduces a product quantization-based approach for approximate nearest neighbor search to decompose the space into a Cartesian product of low-dimensional subspaces and to quantize each subspace separately."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1681054",
+            "name": "H. J\u00e9gou"
+        },
+        {
+            "authorId": "3271933",
+            "name": "Matthijs Douze"
+        },
+        {
+            "authorId": "2462253",
+            "name": "C. Schmid"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "55a62990a82bf9205e507f73d42583df46062806",
+            "title": "A new approach to interdomain routing based on secure multi-party computation"
+        },
+        {
+            "paperId": "ae2b90906f8e51fec4de1649ef1a2a482d3336f4",
+            "title": "Searching with expectations"
+        },
+        {
+            "paperId": "97163b4aea5f5e001bd5f85c5cc2372455e57f72",
+            "title": "Kernelized locality-sensitive hashing for scalable image search"
+        },
+        {
+            "paperId": "6aae10a6f36a946ddf9d91d101d767694e87f447",
+            "title": "Packing bag-of-features"
+        },
+        {
+            "paperId": "1c1bb9e4969cc2173d81749d02b44c1ed50ef2e9",
+            "title": "Searching with quantization: approximate nearest neighbor search using short codes and distance estimators"
+        },
+        {
+            "paperId": "51bdb7d535fb9ec20e696c256e945f8fcb620caa",
+            "title": "Evaluation of GIST descriptors for web-scale image search"
+        },
+        {
+            "paperId": "5e0a0f774677dc423df97c623a6710c62a4e1a0e",
+            "title": "Efficient representation of local geometry for large scale object retrieval"
+        },
+        {
+            "paperId": "5a2bfaa724ba37134eb55c29644f8576c3d64c96",
+            "title": "Hamming Embedding and Weak Geometric Consistency for Large Scale Image Search"
+        },
+        {
+            "paperId": "09d947e7cd215abf5d45463b64859ddc0f7e1a8e",
+            "title": "Optimised KD-trees for fast image descriptor matching"
+        },
+        {
+            "paperId": "993cb3c7167b34b033c66cc4b2af87ff4781c6d4",
+            "title": "Small codes and large image databases for recognition"
+        },
+        {
+            "paperId": "b6371f8c70c2684faefd99fffcc556c3a75dd7f4",
+            "title": "Lost in quantization: Improving particular object retrieval in large scale image databases"
+        },
+        {
+            "paperId": "2782968fa84a375857e69e95b6087ea8b5612aff",
+            "title": "Nearest-Neighbor Methods in Learning and Vision (Shakhnarovich, G. et al., Eds.; 2006) [Book review]"
+        },
+        {
+            "paperId": "4d524cbc9368435dcae2c7020b6b404f9883fe6f",
+            "title": "A contextual dissimilarity measure for accurate and efficient image search"
+        },
+        {
+            "paperId": "28e4b8ebbdb0e80f03b6f0578deeb38694af081e",
+            "title": "Object retrieval with large vocabularies and fast spatial matching"
+        },
+        {
+            "paperId": "35204f845e7151a1ac8d7170d008e310aeac7667",
+            "title": "Rapid object indexing using locality sensitive hashing and joint 3D-signature space estimation"
+        },
+        {
+            "paperId": "b3e7d3e37e67af7f4546b46051063bea1b62dbae",
+            "title": "Scalable Recognition with a Vocabulary Tree"
+        },
+        {
+            "paperId": "2323173a0bddac0dd2586b17a2f3ac33f401c45c",
+            "title": "Nearest-Neighbor Methods in Learning and Vision: Theory and Practice (Neural Information Processing)"
+        },
+        {
+            "paperId": "8c04f169203f9e55056a6f7f956695babe622a38",
+            "title": "Distinctive Image Features from Scale-Invariant Keypoints"
+        },
+        {
+            "paperId": "0cdd7368d49a14983ceb4254e8f43cc807468adc",
+            "title": "An efficient parts-based near-duplicate and sub-image retrieval system"
+        },
+        {
+            "paperId": "3f1e54ed3bd801766e1897d53a9fc962524dd3c2",
+            "title": "Locality-sensitive hashing scheme based on p-stable distributions"
+        },
+        {
+            "paperId": "642e328cae81c5adb30069b680cf60ba6b475153",
+            "title": "Video Google: a text retrieval approach to object matching in videos"
+        },
+        {
+            "paperId": "bf442aaf26faefe66b51cb7efeacce30540c9ad5",
+            "title": "Searching in high-dimensional spaces: Index structures for improving the performance of multimedia databases"
+        },
+        {
+            "paperId": "869171b2f56cfeaa9b81b2626cb4956fea590a57",
+            "title": "Modeling the Shape of the Scene: A Holistic Representation of the Spatial Envelope"
+        },
+        {
+            "paperId": "2e74388f55f2cc704c4de410578887a53a9433b0",
+            "title": "Similarity Search in High Dimensions via Hashing"
+        },
+        {
+            "paperId": "69fe08fb1aa15bbab4ca26c31cc9302e325870b1",
+            "title": "When Is ''Nearest Neighbor'' Meaningful?"
+        },
+        {
+            "paperId": "63eaeb0c48175065ffd096aad10aed712c6d7bbb",
+            "title": "A Quantitative Analysis and Performance Study for Similarity-Search Methods in High-Dimensional Spaces"
+        },
+        {
+            "paperId": "cab3c73f1b2140231b98944c720100b356d91b28",
+            "title": "An Algorithm for Finding Best Matches in Logarithmic Expected Time"
+        },
+        {
+            "paperId": "7457476bd4719212ab257ad96483a642a35d61bd",
+            "title": "The Art of Computer Programming"
+        },
+        {
+            "paperId": "84d64ea46e670417c36d805eaf45e22fcbd57bcb",
+            "title": "Nearest Neighbor"
+        },
+        {
+            "paperId": "35d81066cb1369acf4b6c5117fcbb862be2af350",
+            "title": "Fast Approximate Nearest Neighbors with Automatic Algorithm Configuration"
+        },
+        {
+            "paperId": "dd0ff1de66068d5aadb3d4cb633ef8734e99fb5b",
+            "title": "Nearest-Neighbor Methods in Learning and Vision"
+        },
+        {
+            "paperId": "e00ece3bf0058d288d7a7f17323b3cd969216cc1",
+            "title": "Minimum Sum-Squared Residue Co-Clustering of Gene Expression Data"
+        },
+        {
+            "paperId": "f63635bb36a1e61d6bce0d96552e72f0eec62cd8",
+            "title": "Efficient Near-duplicate Detection and Sub-image Retrieval"
+        },
+        {
+            "paperId": "67b8b74b1a36b6a3a55864919505cd4e1ec5accc",
+            "title": "The art of computer programming: sorting and searching (volume 3)"
+        },
+        {
+            "paperId": "54d2b5c64a67f65c5dd812b89e07973f97699552",
+            "title": "Ieee Transactions on Pattern Analysis and Machine Intelligence 1 80 Million Tiny Images: a Large Dataset for Non-parametric Object and Scene Recognition"
+        },
+        {
+            "paperId": null,
+            "title": "For more information on this or any other computing topic, please visit our Digital Library at www.computer.org/publications/dlib"
+        },
+        {
+            "paperId": null,
+            "title": "Searching the nearest neighbor(s) of a query x consists of 1) quantize x to its w nearest neighbors in the codebook q c ; For the sake of presentation"
+        },
+        {
+            "paperId": null,
+            "title": "select the K nearest neighbors of x based on the estimated distances"
+        },
+        {
+            "paperId": null,
+            "title": "add a new entry to the inverted list corresponding to q c ( y ) . It contains the vector (or image) identi\ufb01er and the binary code (the product quantizer\u2019s indexes)"
+        },
+        {
+            "paperId": null,
+            "title": "compute the squared distance d (cid:0) u j ( r ( x )) , c j,i (cid:1) 2 for each subquantizer j and each of its centroids"
+        },
+        {
+            "paperId": null,
+            "title": "compute the squared distance between r ( x ) and all the indexed vectors of the inverted list"
+        }
+    ]
+}

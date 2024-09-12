@@ -1,0 +1,117 @@
+{
+    "paperId": "f9a1b3850dfd837793743565a8af95973d395a4e",
+    "externalIds": {
+        "MAG": "2402268235",
+        "DBLP": "conf/interspeech/SundermeyerSN12",
+        "DOI": "10.21437/Interspeech.2012-65",
+        "CorpusId": 18939716
+    },
+    "title": "LSTM Neural Networks for Language Modeling",
+    "abstract": "Neural networks have become increasingly popular for the task of language modeling. Whereas feed-forward networks only exploit a fixed context length to predict the next word of a sequence, conceptually, standard recurrent neural networks can take into account all of the predecessor words. On the other hand, it is well known that recurrent networks are difficult to train and therefore are unlikely to show the full potential of recurrent models. These problems are addressed by a the Long Short-Term Memory neural network architecture. In this work, we analyze this type of network on an English and a large French language modeling task. Experiments show improvements of about 8 % relative in perplexity over standard recurrent neural network LMs. In addition, we gain considerable improvements in WER on top of a state-of-the-art speech recognition system.",
+    "venue": "Interspeech",
+    "year": 2012,
+    "referenceCount": 19,
+    "citationCount": 1859,
+    "influentialCitationCount": 129,
+    "openAccessPdf": {
+        "url": "http://www-i6.informatik.rwth-aachen.de/publications/downloader.php?id=820&row=pdf",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work analyzes the Long Short-Term Memory neural network architecture on an English and a large French language modeling task and gains considerable improvements in WER on top of a state-of-the-art speech recognition system."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2748591",
+            "name": "M. Sundermeyer"
+        },
+        {
+            "authorId": "144490010",
+            "name": "Ralf Schl\u00fcter"
+        },
+        {
+            "authorId": "145322333",
+            "name": "H. Ney"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "e4a94d6eef25cdebdde2c91fb3c45a737d5e3141",
+            "title": "Performance analysis of Neural Networks in combination with n-gram language models"
+        },
+        {
+            "paperId": "86d62362d50fd3d26f0c049fc72d4cf40bd218b6",
+            "title": "RNNLM - Recurrent Neural Network Language Modeling Toolkit"
+        },
+        {
+            "paperId": "0d6203718c15f137fda2f295c96269bc2b254644",
+            "title": "Learning Recurrent Neural Networks with Hessian-Free Optimization"
+        },
+        {
+            "paperId": "07ca885cb5cc4328895bfaec9ab752d5801b14cd",
+            "title": "Extensions of recurrent neural network language model"
+        },
+        {
+            "paperId": "47e3d8a1f8e92923e739ca34bea17004a40514e9",
+            "title": "Training Continuous Space Language Models: Some Practical Issues"
+        },
+        {
+            "paperId": "0fcc184b3b90405ec3ceafd6a4007c749df7c363",
+            "title": "Continuous space language models"
+        },
+        {
+            "paperId": "5536d42ce80e129be8cae172ed1b7659c769d31d",
+            "title": "2005 Special Issue: Framewise phoneme classification with bidirectional LSTM and other neural network architectures"
+        },
+        {
+            "paperId": "047655e733a9eed9a500afd916efa566915b9110",
+            "title": "Learning Precise Timing with LSTM Recurrent Networks"
+        },
+        {
+            "paperId": "6c2b28f9354f667cd5bd07afc0471d8334430da7",
+            "title": "A Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "4af41f4d838daa7ca6995aeb4918b61989d1ed80",
+            "title": "Classes for fast maximum entropy training"
+        },
+        {
+            "paperId": "11540131eae85b2e11d53df7f1360eeb6476e7f4",
+            "title": "Learning to Forget: Continual Prediction with LSTM"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "9548ac30c113562a51e603dbbc8e9fa651cfd3ab",
+            "title": "Improved backing-off for M-gram language modeling"
+        },
+        {
+            "paperId": "d0be39ee052d246ae99c082a565aba25b811be2d",
+            "title": "Learning long-term dependencies with gradient descent is difficult"
+        },
+        {
+            "paperId": "668087f0ae7ce1de6e0bd0965dbb480c08103260",
+            "title": "Finding Structure in Time"
+        },
+        {
+            "paperId": "052b1d8ce63b07fec3de9dbb583772d860b7c769",
+            "title": "Learning representations by back-propagating errors"
+        },
+        {
+            "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+            "title": "Recurrent neural network based language model"
+        },
+        {
+            "paperId": "c19fbefdeead6a4154a22a9c8551a18b1530033a",
+            "title": "Hierarchical Probabilistic Neural Network Language Model"
+        },
+        {
+            "paperId": "b9b1b1654ce0eea729c4160bfedcbb3246460b1d",
+            "title": "Neural networks for pattern recognition"
+        }
+    ]
+}

@@ -1,0 +1,222 @@
+{
+    "paperId": "e7fd6848cb29ca221a7e17d823e06fb566f1f135",
+    "externalIds": {
+        "DBLP": "journals/corr/abs-1710-03740",
+        "ArXiv": "1710.03740",
+        "MAG": "2963112338",
+        "CorpusId": 3297437
+    },
+    "title": "Mixed Precision Training",
+    "abstract": "Deep neural networks have enabled progress in a wide variety of applications. Growing the size of the neural network typically results in improved accuracy. As model sizes grow, the memory and compute requirements for training these models also increases. We introduce a technique to train deep neural networks using half precision floating point numbers. In our technique, weights, activations and gradients are stored in IEEE half-precision format. Half-precision floating numbers have limited numerical range compared to single-precision numbers. We propose two techniques to handle this loss of information. Firstly, we recommend maintaining a single-precision copy of the weights that accumulates the gradients after each optimizer step. This single-precision copy is rounded to half-precision format during training. Secondly, we propose scaling the loss appropriately to handle the loss of information with half-precision gradients. We demonstrate that this approach works for a wide variety of models including convolution neural networks, recurrent neural networks and generative adversarial networks. This technique works for large scale models with more than 100 million parameters trained on large datasets. Using this approach, we can reduce the memory consumption of deep learning models by nearly 2x. In future processors, we can also expect a significant computation speedup using half-precision hardware units.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2017,
+    "referenceCount": 38,
+    "citationCount": 1517,
+    "influentialCitationCount": 117,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces a technique to train deep neural networks using half precision floating point numbers, and demonstrates that this approach works for a wide variety of models including convolution neural networks, recurrent neural networks and generative adversarial networks."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1802359",
+            "name": "P. Micikevicius"
+        },
+        {
+            "authorId": "46617804",
+            "name": "Sharan Narang"
+        },
+        {
+            "authorId": "67038137",
+            "name": "Jonah Alben"
+        },
+        {
+            "authorId": "2040049",
+            "name": "G. Diamos"
+        },
+        {
+            "authorId": "152585800",
+            "name": "Erich Elsen"
+        },
+        {
+            "authorId": "2082313059",
+            "name": "David Garc\u00eda"
+        },
+        {
+            "authorId": "31963005",
+            "name": "Boris Ginsburg"
+        },
+        {
+            "authorId": "122523478",
+            "name": "Michael Houston"
+        },
+        {
+            "authorId": "2787022",
+            "name": "Oleksii Kuchaiev"
+        },
+        {
+            "authorId": "145595812",
+            "name": "Ganesh Venkatesh"
+        },
+        {
+            "authorId": "1491232360",
+            "name": "Hao Wu"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "cd0e6deaaa6f58149a8cd3be7cc87724beff61e3",
+            "title": "Performance Analysis"
+        },
+        {
+            "paperId": "b36a5bb1707bb9c70025294b3a310138aae8327a",
+            "title": "Automatic differentiation in PyTorch"
+        },
+        {
+            "paperId": "b18b2f8f6e55789b03f983f02f33283c39e6e36a",
+            "title": "WRPN: Wide Reduced-Precision Networks"
+        },
+        {
+            "paperId": "5b5415352b9e7e11941339502adc04e9f6c9bd1c",
+            "title": "Effective Quantization Methods for Recurrent Neural Networks"
+        },
+        {
+            "paperId": "b1cb867270f87f96397cb5f0d76cbb58cdf2c2f2",
+            "title": "Neural Speech Recognizer: Acoustic-to-Word LSTM Model for Large Vocabulary Speech Recognition"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "d2e4147eecae6f914e9e1e9aece8fdd2eaed809f",
+            "title": "Quantized Neural Networks: Training Neural Networks with Low Precision Weights and Activations"
+        },
+        {
+            "paperId": "7874340679ed0d90ce33b090ab875d0094a8e709",
+            "title": "Recurrent Neural Networks With Limited Numerical Precision"
+        },
+        {
+            "paperId": "8b053389eb8c18c61b84d7e59a95cb7e13f205b7",
+            "title": "DoReFa-Net: Training Low Bitwidth Convolutional Neural Networks with Low Bitwidth Gradients"
+        },
+        {
+            "paperId": "77f0a39b8e02686fd85b01971f8feb7f60971f80",
+            "title": "Identity Mappings in Deep Residual Networks"
+        },
+        {
+            "paperId": "b649a98ce77ece8cd7638bb74ab77d22d9be77e7",
+            "title": "XNOR-Net: ImageNet Classification Using Binary Convolutional Neural Networks"
+        },
+        {
+            "paperId": "6eecc808d4c74e7d0d7ef6b8a4112c985ced104d",
+            "title": "Binarized Neural Networks"
+        },
+        {
+            "paperId": "2f2d8f8072e5cc9b296fad551f65f183bdbff7aa",
+            "title": "Exploring the Limits of Language Modeling"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "13497bd108d4412d02050e646235f456568cf822",
+            "title": "Deep Speech 2 : End-to-End Speech Recognition in English and Mandarin"
+        },
+        {
+            "paperId": "4d7a9197433acbfb24ef0e9d0f33ed1699e4a5b0",
+            "title": "SSD: Single Shot MultiBox Detector"
+        },
+        {
+            "paperId": "23ffaa0fe06eae05817f527a47ac3291077f9e58",
+            "title": "Rethinking the Inception Architecture for Computer Vision"
+        },
+        {
+            "paperId": "8388f1be26329fa45e5807e968a641ce170ea078",
+            "title": "Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks"
+        },
+        {
+            "paperId": "a5733ff08daff727af834345b9cfff1d0aa109ec",
+            "title": "BinaryConnect: Training Deep Neural Networks with binary weights during propagations"
+        },
+        {
+            "paperId": "424561d8585ff8ebce7d5d07de8dbf7aae5e7270",
+            "title": "Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "b7cf49e30355633af2db19f35189410c8515e91f",
+            "title": "Deep Learning with Limited Numerical Precision"
+        },
+        {
+            "paperId": "24741d280869ad9c60321f5ab6e5f01b7852507d",
+            "title": "Deep Speech: Scaling up end-to-end speech recognition"
+        },
+        {
+            "paperId": "6424b69f3ff4d35249c0bb7ef912fbc2c86f4ff4",
+            "title": "Deep Learning Face Attributes in the Wild"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "6bdb186ec4726e00a8051119636d4df3b94043b5",
+            "title": "Caffe: Convolutional Architecture for Fast Feature Embedding"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": null,
+            "title": "Nvidia tesla v100 gpu architecture"
+        },
+        {
+            "paperId": "28135fd3e80dda50a673cd556f10b9b972005d27",
+            "title": "Binarized Neural Networks"
+        },
+        {
+            "paperId": null,
+            "title": "URL http://dblp.uni-trier.de/db/journals/ corr/corr1512.html#LiuAESR15"
+        },
+        {
+            "paperId": "261a056f8b21918e8616a429b2df6e1d5d33be41",
+            "title": "Connectionist Temporal Classi\ufb01cation: Labelling Unsegmented Sequence Data with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "845ee9838c1f5bf63b7db2c95ec5d27af14a4e02",
+            "title": "Connectionist Temporal Classi\ufb01cation: Labelling Unsegmented Sequences with Recurrent Neural Networks"
+        },
+        {
+            "paperId": null,
+            "title": "Faster r-cnn github repository"
+        },
+        {
+            "paperId": null,
+            "title": "Tensor\ufb02ow tutorial: Sequence-to-sequence models"
+        }
+    ]
+}

@@ -1,0 +1,214 @@
+{
+    "paperId": "87a913817503379547bec61a5f010abac5b0f76b",
+    "externalIds": {
+        "ArXiv": "1705.08639",
+        "MAG": "2964269252",
+        "DBLP": "journals/corr/MujikaMS17",
+        "CorpusId": 1547538
+    },
+    "title": "Fast-Slow Recurrent Neural Networks",
+    "abstract": "Processing sequential data of variable length is a major challenge in a wide range of applications, such as speech recognition, language modeling, generative image modeling and machine translation. Here, we address this challenge by proposing a novel recurrent neural network (RNN) architecture, the Fast-Slow RNN (FS-RNN). The FS-RNN incorporates the strengths of both multiscale RNNs and deep transition RNNs as it processes sequential data on different timescales and learns complex transition functions from one time step to the next. We evaluate the FS-RNN on two character level language modeling data sets, Penn Treebank and Hutter Prize Wikipedia, where we improve state of the art results to $1.19$ and $1.25$ bits-per-character (BPC), respectively. In addition, an ensemble of two FS-RNNs achieves $1.20$ BPC on Hutter Prize Wikipedia outperforming the best known compression algorithm with respect to the BPC measure. We also present an empirical investigation of the learning and network dynamics of the FS-RNN, which explains the improved performance compared to other RNN architectures. Our approach is general as any kind of RNN cell is a possible building block for the FS-RNN architecture, and thus can be flexibly applied to different tasks.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2017,
+    "referenceCount": 44,
+    "citationCount": 75,
+    "influentialCitationCount": 10,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The approach is general as any kind of RNN cell is a possible building block for the FS-RNN architecture, and thus can be flexibly applied to different tasks."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "32204498",
+            "name": "Asier Mujika"
+        },
+        {
+            "authorId": "47748536",
+            "name": "Florian Meier"
+        },
+        {
+            "authorId": "143618393",
+            "name": "A. Steger"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "0b586476892acfa16e1da9ccdeeb396743f35843",
+            "title": "Revisiting NARX Recurrent Neural Networks for Long-Term Dependencies"
+        },
+        {
+            "paperId": "1d782819afafe0d391e5b67151cb510e621f243d",
+            "title": "Tunable Efficient Unitary Neural Networks (EUNN) and their application to RNNs"
+        },
+        {
+            "paperId": "67d968c7450878190e45ac7886746de867bf673d",
+            "title": "Neural Architecture Search with Reinforcement Learning"
+        },
+        {
+            "paperId": "98445f4172659ec5e891e031d8202c102135c644",
+            "title": "Neural Machine Translation in Linear Time"
+        },
+        {
+            "paperId": "5b4cef5ce21753a38234740b3d5bf5ff0f7d9b3a",
+            "title": "Surprisal-Driven Zoneout"
+        },
+        {
+            "paperId": "784ee73d5363c711118f784428d1ab89f019daa5",
+            "title": "Hybrid computing using a neural network with dynamic external memory"
+        },
+        {
+            "paperId": "563783de03452683a9206e85fe6d661714436686",
+            "title": "HyperNetworks"
+        },
+        {
+            "paperId": "65eee67dee969fdf8b44c87c560d66ad4d78e233",
+            "title": "Hierarchical Multiscale Recurrent Neural Networks"
+        },
+        {
+            "paperId": "97fb4e3d45bb098e27e0071448b6152217bd35a5",
+            "title": "Layer Normalization"
+        },
+        {
+            "paperId": "7dba53e72c182e25e98e8f73a99d75ff69dda0c2",
+            "title": "Recurrent Highway Networks"
+        },
+        {
+            "paperId": "9f0687bcd0a7d7fc91b8c5d36c003a38b8853105",
+            "title": "Zoneout: Regularizing RNNs by Randomly Preserving Hidden Activations"
+        },
+        {
+            "paperId": "04cca8e341a5da42b29b0bc831cb25a0f784fa01",
+            "title": "Adaptive Computation Time for Recurrent Neural Networks"
+        },
+        {
+            "paperId": "878ba5458e9e51f0b341fd9117fa0b43ef4096d3",
+            "title": "End-to-end attention-based large vocabulary speech recognition"
+        },
+        {
+            "paperId": "b3e11af71552d39070dd9183acb8b8171bc22b38",
+            "title": "A Hierarchical Recurrent Encoder-Decoder for Generative Context-Aware Query Suggestion"
+        },
+        {
+            "paperId": "e0945081b5b87187a53d4329cf77cd8bff635795",
+            "title": "Highway Networks"
+        },
+        {
+            "paperId": "d14c7e5f5cace4c925abc74c88baa474e9f31a28",
+            "title": "Gated Feedback Recurrent Neural Networks"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "71ae756c75ac89e2d731c9c79649562b5768ff39",
+            "title": "Memory Networks"
+        },
+        {
+            "paperId": "f264e8b33c0d49a692a6ce2c4bcb28588aeb7d97",
+            "title": "Recurrent Neural Network Regularization"
+        },
+        {
+            "paperId": "5522764282c85aea422f1c4dc92ff7e0ca6987bc",
+            "title": "A Clockwork RNN"
+        },
+        {
+            "paperId": "533ee188324b833e059cb59b654e6160776d5812",
+            "title": "How to Construct Deep Recurrent Neural Networks"
+        },
+        {
+            "paperId": "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17",
+            "title": "Generating Sequences With Recurrent Neural Networks"
+        },
+        {
+            "paperId": "0d6203718c15f137fda2f295c96269bc2b254644",
+            "title": "Learning Recurrent Neural Networks with Hessian-Free Optimization"
+        },
+        {
+            "paperId": "e9fac1091d9a1646314b1b91e58f40dae3a750cd",
+            "title": "The Vanishing Gradient Problem During Learning Recurrent Neural Nets and Problem Solutions"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "f6e91c9e7e8f8a577a98ecfcfa998212a683195a",
+            "title": "Learning long-term dependencies in NARX recurrent neural networks"
+        },
+        {
+            "paperId": "b13813b49f160e1a2010c44bd4fb3d09a28446e3",
+            "title": "Hierarchical Recurrent Neural Networks for Long-Term Dependencies"
+        },
+        {
+            "paperId": "d0be39ee052d246ae99c082a565aba25b811be2d",
+            "title": "Learning long-term dependencies with gradient descent is difficult"
+        },
+        {
+            "paperId": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+            "title": "Building a Large Annotated Corpus of English: The Penn Treebank"
+        },
+        {
+            "paperId": "50c770b425a5bb25c77387f687a9910a9d130722",
+            "title": "Learning Complex, Extended Sequences Using the Principle of History Compression"
+        },
+        {
+            "paperId": "668087f0ae7ce1de6e0bd0965dbb480c08103260",
+            "title": "Finding Structure in Time"
+        },
+        {
+            "paperId": "052b1d8ce63b07fec3de9dbb583772d860b7c769",
+            "title": "Learning representations by back-propagating errors"
+        },
+        {
+            "paperId": null,
+            "title": "Cmix. http://www.byronknoll.com/cmix.html, 2017"
+        },
+        {
+            "paperId": null,
+            "title": "Large text compression benchmark"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": null,
+            "title": "The human knowledge compression contest"
+        },
+        {
+            "paperId": "1fd7fc06653723b05abe5f3d1de393ddcf6bdddb",
+            "title": "SUBWORD LANGUAGE MODELING WITH NEURAL NETWORKS"
+        },
+        {
+            "paperId": "df4d5473d62744d305bc388d66284ad64957ef64",
+            "title": "Discovering multiscale dynamical features with hierarchical Echo State Networks"
+        },
+        {
+            "paperId": "d04d6db5f0df11d0cff57ec7e15134990ac07a4f",
+            "title": "Learning Deep Architectures for AI"
+        },
+        {
+            "paperId": "3f3d13e95c25a8f6a753e38dfce88885097cbd43",
+            "title": "Untersuchungen zu dynamischen neuronalen Netzen"
+        },
+        {
+            "paperId": null,
+            "title": "Complexity of exact gradient computation algorithms for recurrent neural networks. Technical report, Technical Report Technical Report NU-CCS-89-27, Boston"
+        },
+        {
+            "paperId": "266e07d0dd9a75b61e3632e9469993dbaf063f1c",
+            "title": "Generalization of backpropagation with application to a recurrent gas market model"
+        },
+        {
+            "paperId": "02f38b2d72d7b3243b5ba4005f814f71b80eec00",
+            "title": "The Utility Driven Dynamic Error Propagation Network"
+        }
+    ]
+}

@@ -1,0 +1,210 @@
+{
+    "paperId": "682d194235ba3b573889836ba118502e8b525728",
+    "externalIds": {
+        "MAG": "2963851840",
+        "DBLP": "journals/corr/abs-1711-00123",
+        "ArXiv": "1711.00123",
+        "CorpusId": 3535369
+    },
+    "title": "Backpropagation through the Void: Optimizing control variates for black-box gradient estimation",
+    "abstract": "Gradient-based optimization is the foundation of deep learning and reinforcement learning. Even when the mechanism being optimized is unknown or not differentiable, optimization using high-variance or biased gradient estimates is still often the best strategy. We introduce a general framework for learning low-variance, unbiased gradient estimators for black-box functions of random variables. Our method uses gradients of a neural network trained jointly with model parameters or policies, and is applicable in both discrete and continuous settings. We demonstrate this framework for training discrete latent-variable models. We also give an unbiased, action-conditional extension of the advantage actor-critic reinforcement learning algorithm.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2017,
+    "referenceCount": 41,
+    "citationCount": 292,
+    "influentialCitationCount": 48,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces a general framework for learning low-variance, unbiased gradient estimators for black-box functions of random variables, and gives an unbiased, action-conditional extension of the advantage actor-critic reinforcement learning algorithm."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "7649077",
+            "name": "Will Grathwohl"
+        },
+        {
+            "authorId": "30097914",
+            "name": "Dami Choi"
+        },
+        {
+            "authorId": "3374063",
+            "name": "Yuhuai Wu"
+        },
+        {
+            "authorId": "6574647",
+            "name": "Geoffrey Roeder"
+        },
+        {
+            "authorId": "1704657",
+            "name": "D. Duvenaud"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "1bdcf6fe02ed2ff097e5f4ffdc5af159cd9a713a",
+            "title": "Variance Reduction for Policy Gradient with Action-Dependent Factorized Baselines"
+        },
+        {
+            "paperId": "8a05d72b6f54479c5ab3ceaccd221b2119f0ea7d",
+            "title": "The Mirage of Action-Dependent Baselines in Reinforcement Learning"
+        },
+        {
+            "paperId": "4d93459b5be1e0cba5612c001a000aad9eff985a",
+            "title": "Action-depedent Control Variates for Policy Optimization via Stein's Identity"
+        },
+        {
+            "paperId": "3d58ab2b6cc503012496d16aac8155550aac6afa",
+            "title": "Sample-efficient Policy Optimization with Stein Control Variate"
+        },
+        {
+            "paperId": "2b6f2b163372e3417b687cc43313f2a630e7bca7",
+            "title": "Scalable trust-region method for deep reinforcement learning using Kronecker-factored approximation"
+        },
+        {
+            "paperId": "749d4dbe27b1a587c8827af6659e954db8081080",
+            "title": "Interpolated Policy Gradient: Merging On-Policy and Off-Policy Gradient Estimation for Deep Reinforcement Learning"
+        },
+        {
+            "paperId": "56b624f65a506d73a70684ab6550f3ff72724444",
+            "title": "Reducing Reparameterization Gradient Variance"
+        },
+        {
+            "paperId": "4ee802a58d32aa049d549d06be440ac947b53987",
+            "title": "Evolution Strategies as a Scalable Alternative to Reinforcement Learning"
+        },
+        {
+            "paperId": "9172cd6c253edf7c3a1568e03577db20648ad0c4",
+            "title": "Reinforcement Learning with Deep Energy-Based Policies"
+        },
+        {
+            "paperId": "a642bbbaf8822565f9b812ea279c596cc54ce4c3",
+            "title": "REBAR: Low-variance, unbiased gradient estimates for discrete latent variable models"
+        },
+        {
+            "paperId": "524513b6f4ddca331c33bcc70a9f677fa240cfa3",
+            "title": "Q-Prop: Sample-Efficient Policy Gradient with An Off-Policy Critic"
+        },
+        {
+            "paperId": "29e944711a354c396fad71936f536e83025b6ce0",
+            "title": "Categorical Reparameterization with Gumbel-Softmax"
+        },
+        {
+            "paperId": "515a21e90117941150923e559729c59f5fdade1c",
+            "title": "The Concrete Distribution: A Continuous Relaxation of Discrete Random Variables"
+        },
+        {
+            "paperId": "0998c939e00af09b49ae04fc78aaca7625a0c895",
+            "title": "Reparameterization Gradients through Acceptance-Rejection Sampling Algorithms"
+        },
+        {
+            "paperId": "787ffb182e0555691d1c90047e16b8f3ff49bf0b",
+            "title": "The Generalized Reparameterization Gradient"
+        },
+        {
+            "paperId": "2b10281297ee001a9f3f4ea1aa9bea6b638c27df",
+            "title": "OpenAI Gym"
+        },
+        {
+            "paperId": "fccf3f8fea450a32a5c1f85e113127d70ed9ad7c",
+            "title": "Overdispersed Black-Box Variational Inference"
+        },
+        {
+            "paperId": "266e8622d57457ad76224649c6b00adf23c0b76d",
+            "title": "Variational Inference for Monte Carlo Objectives"
+        },
+        {
+            "paperId": "815c84ab906e43f3e6322f2ca3fd5e1360c64285",
+            "title": "Human-level concept learning through probabilistic program induction"
+        },
+        {
+            "paperId": "f63e917638553414526a0cc8550de4ad2d83fe7a",
+            "title": "Fast and Accurate Deep Network Learning by Exponential Linear Units (ELUs)"
+        },
+        {
+            "paperId": "438bb3d46e72b177ed1c9b7cd2c11a045644a1f4",
+            "title": "Gradient Estimation Using Stochastic Computation Graphs"
+        },
+        {
+            "paperId": "d316c82c12cf4c45f9e85211ef3d1fa62497bff8",
+            "title": "High-Dimensional Continuous Control Using Generalized Advantage Estimation"
+        },
+        {
+            "paperId": "5259755f9c100e220ffaa7e08439c5d34be7757a",
+            "title": "Reinforcement Learning Neural Turing Machines - Revised"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "6962787aed3748cccfb3d9431a50943cdab2c2ad",
+            "title": "Control functionals for Monte Carlo integration"
+        },
+        {
+            "paperId": "331f0fb3b6176c6e463e0401025b04f6ace9ccd3",
+            "title": "Neural Variational Inference and Learning in Belief Networks"
+        },
+        {
+            "paperId": "484ad17c926292fbe0d5211540832a8c8a8e958b",
+            "title": "Stochastic Backpropagation and Approximate Inference in Deep Generative Models"
+        },
+        {
+            "paperId": "5f5dc5b9a2ba710937e2c413b37b053cd673df02",
+            "title": "Auto-Encoding Variational Bayes"
+        },
+        {
+            "paperId": "b354ee518bfc1ac0d8ac447eece9edb69e92eae1",
+            "title": "MuJoCo: A physics engine for model-based control"
+        },
+        {
+            "paperId": "cfa4c2030ea6835cb43122c4be34604a2b3a2a7d",
+            "title": "Variational Optimization"
+        },
+        {
+            "paperId": "dd5cf95a7af93d2733120d177c593989b19b98fe",
+            "title": "Natural Evolution Strategies"
+        },
+        {
+            "paperId": "a20f0ce0616def7cc9a87446c228906cd5da093b",
+            "title": "Policy Gradient Methods for Reinforcement Learning with Function Approximation"
+        },
+        {
+            "paperId": "5fcb9e6cd2539208c79ed5d818ebf8361fa55c21",
+            "title": "An Analysis of Actor/Critic Algorithms Using Eligibility Traces: Reinforcement Learning with Imperfect Value Function"
+        },
+        {
+            "paperId": "052b1d8ce63b07fec3de9dbb583772d860b7c769",
+            "title": "Learning representations by back-propagating errors"
+        },
+        {
+            "paperId": "c5e9154cfaca2ac03ecbcf9e3ebdcde5b354372d",
+            "title": "Automatic Differentiation: Techniques and Applications"
+        },
+        {
+            "paperId": "34ddd8865569c2c32dec9bf7ffc817ff42faaa01",
+            "title": "A Stochastic Approximation Method"
+        },
+        {
+            "paperId": "c68796f833a7151f0a63d1d1608dc902b4fdc9b6",
+            "title": "GENERATIVE ADVERSARIAL NETS"
+        },
+        {
+            "paperId": null,
+            "title": "2017), we can then sample from p(z|b"
+        },
+        {
+            "paperId": null,
+            "title": "Lecture 6.5\u2014RmsProp: Divide the gradient by a running average of its recent magnitude"
+        },
+        {
+            "paperId": "4c915c1eecb217c123a36dc6d3ce52d12c742614",
+            "title": "Simple Statistical Gradient-Following Algorithms for Connectionist Reinforcement Learning"
+        },
+        {
+            "paperId": "a16fae64916d5ce900c94031149e3054a60df650",
+            "title": "Compiling Fast Partial Derivatives of Functions Given by Algorithms"
+        }
+    ]
+}

@@ -1,0 +1,174 @@
+{
+    "paperId": "15e81c8d1c21f9e928c72721ac46d458f3341454",
+    "externalIds": {
+        "DBLP": "conf/iclr/Gu0XLS18",
+        "MAG": "2767206889",
+        "ArXiv": "1711.02281",
+        "CorpusId": 3480671
+    },
+    "title": "Non-Autoregressive Neural Machine Translation",
+    "abstract": "Existing approaches to neural machine translation condition each output word on previously generated outputs. We introduce a model that avoids this autoregressive property and produces its outputs in parallel, allowing an order of magnitude lower latency during inference. Through knowledge distillation, the use of input token fertilities as a latent variable, and policy gradient fine-tuning, we achieve this at a cost of as little as 2.0 BLEU points relative to the autoregressive Transformer network used as a teacher. We demonstrate substantial cumulative improvements associated with each of the three aspects of our training strategy, and validate our approach on IWSLT 2016 English-German and two WMT language pairs. By sampling fertilities in parallel at inference time, our non-autoregressive model achieves near-state-of-the-art performance of 29.8 BLEU on WMT 2016 English-Romanian.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2017,
+    "referenceCount": 32,
+    "citationCount": 738,
+    "influentialCitationCount": 196,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A model is introduced that avoids this autoregressive property and produces its outputs in parallel, allowing an order of magnitude lower latency during inference, and achieves near-state-of-the-art performance on WMT 2016 English-Romanian."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3016273",
+            "name": "Jiatao Gu"
+        },
+        {
+            "authorId": "40518045",
+            "name": "James Bradbury"
+        },
+        {
+            "authorId": "2228109",
+            "name": "Caiming Xiong"
+        },
+        {
+            "authorId": "2052674293",
+            "name": "V. Li"
+        },
+        {
+            "authorId": "2166511",
+            "name": "R. Socher"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "2d08ed53491053d84b6de89aedbf2178b9c8cf84",
+            "title": "Fast Decoding in Sequence Models using Discrete Latent Variables"
+        },
+        {
+            "paperId": "9c5c89199114858eafbe50b46d77d38ffd03b28a",
+            "title": "Deterministic Non-Autoregressive Neural Sequence Modeling by Iterative Refinement"
+        },
+        {
+            "paperId": "f6cbf83e1ce3b099d656d2346b261d5ef7f2b62e",
+            "title": "Parallel WaveNet: Fast High-Fidelity Speech Synthesis"
+        },
+        {
+            "paperId": "2bb983c334075864d5ae903624999124279edfc9",
+            "title": "Chunk-based Decoder for Neural Machine Translation"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "07c4fc48ad7b7d1a417b0bb72d0ae2d4efc5aa83",
+            "title": "Depthwise Separable Convolutions for Neural Machine Translation"
+        },
+        {
+            "paperId": "106d5e0cf44ea08500adc91c4d5bb3e6c8a4d627",
+            "title": "Six Challenges for Neural Machine Translation"
+        },
+        {
+            "paperId": "43428880d75b3a14257c3ee9bda054e61eb869c0",
+            "title": "Convolutional Sequence to Sequence Learning"
+        },
+        {
+            "paperId": "8cfcbe3a58be39092ec2d1ef86585179bf7654e0",
+            "title": "Chunk-Based Bi-Scale Decoder for Neural Machine Translation"
+        },
+        {
+            "paperId": "f0a498014c4ef67c0b72ceb18d95e0d25087fd57",
+            "title": "Neural Machine Translation via Binary Code Prediction"
+        },
+        {
+            "paperId": "9d1fb89b99aafc01ee56fc92df1ad150fba67c22",
+            "title": "On orthogonality and learning recurrent networks with long term dependencies"
+        },
+        {
+            "paperId": "98445f4172659ec5e891e031d8202c102135c644",
+            "title": "Neural Machine Translation in Linear Time"
+        },
+        {
+            "paperId": "b8bc86a1bc281b15ce45e967cbdd045bcf23a952",
+            "title": "Fully Character-Level Neural Machine Translation without Explicit Segmentation"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "df0402517a7338ae28bc54acaac400de6b456a46",
+            "title": "WaveNet: A Generative Model for Raw Audio"
+        },
+        {
+            "paperId": "57a10537978600fd33dcdd48922c791609a4851a",
+            "title": "Sequence-Level Knowledge Distillation"
+        },
+        {
+            "paperId": "f0085dc1fe376ef240f233002b8ce57c2cfe0106",
+            "title": "Noisy Parallel Approximate Decoding for Conditional Recurrent Language Model"
+        },
+        {
+            "paperId": "acec46ffd3f6046af97529127d98f1d623816ea4",
+            "title": "A Character-level Decoder without Explicit Segmentation for Neural Machine Translation"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "1518039b5001f1836565215eb047526b3ac7f462",
+            "title": "Neural Machine Translation of Rare Words with Subword Units"
+        },
+        {
+            "paperId": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+            "title": "Effective Approaches to Attention-based Neural Machine Translation"
+        },
+        {
+            "paperId": "0c908739fbff75f03469d13d4a1a07de3414ee19",
+            "title": "Distilling the Knowledge in a Neural Network"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "5ec85a0d88adcc4344bb5cc81b0d1aef9bcd8dcc",
+            "title": "Findings of the 2014 Workshop on Statistical Machine Translation"
+        },
+        {
+            "paperId": "7b5e31257f01aba987f16e175a3e49e00a5bd3bb",
+            "title": "A Simple, Fast, and Effective Reparameterization of IBM Model 2"
+        },
+        {
+            "paperId": "e09d66805a12d0928be1d9d8340f4fa3c588c3e8",
+            "title": "Planning in sentence production: Evidence for the phrase as a default planning scope"
+        },
+        {
+            "paperId": "d7da009f457917aa381619facfa5ffae9329a6e9",
+            "title": "Bleu: a Method for Automatic Evaluation of Machine Translation"
+        },
+        {
+            "paperId": "ab7b5917515c460b90451e67852171a531671ab8",
+            "title": "The Mathematics of Statistical Machine Translation: Parameter Estimation"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "4c915c1eecb217c123a36dc6d3ce52d12c742614",
+            "title": "Simple Statistical Gradient-Following Algorithms for Connectionist Reinforcement Learning"
+        }
+    ]
+}

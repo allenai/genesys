@@ -1,0 +1,186 @@
+{
+    "paperId": "f0afdccf2903039d202085a771953a171dfd57b1",
+    "externalIds": {
+        "MAG": "2964272710",
+        "DBLP": "conf/iclr/ChiuR18",
+        "ArXiv": "1712.05382",
+        "CorpusId": 3538865
+    },
+    "title": "Monotonic Chunkwise Attention",
+    "abstract": "Sequence-to-sequence models with soft attention have been successfully applied to a wide variety of problems, but their decoding process incurs a quadratic time and space cost and is inapplicable to real-time sequence transduction. To address these issues, we propose Monotonic Chunkwise Attention (MoChA), which adaptively splits the input sequence into small chunks over which soft attention is computed. We show that models utilizing MoChA can be trained efficiently with standard backpropagation while allowing online and linear-time decoding at test time. When applied to online speech recognition, we obtain state-of-the-art results and match the performance of a model using an offline soft attention mechanism. In document summarization experiments where we do not expect monotonic alignments, we show significantly improved performance compared to a baseline monotonic attention-based model.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2017,
+    "referenceCount": 38,
+    "citationCount": 241,
+    "influentialCitationCount": 23,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Monotonic Chunkwise Attention (MoChA), which adaptively splits the input sequence into small chunks over which soft attention is computed, is proposed and shown that models utilizing MoChA can be trained efficiently with standard backpropagation while allowing online and linear-time decoding at test time."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145039780",
+            "name": "Chung-Cheng Chiu"
+        },
+        {
+            "authorId": "2402716",
+            "name": "Colin Raffel"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "6cc68e8adf34b580f3f37d1bd267ee701974edde",
+            "title": "A Comparison of Sequence-to-Sequence Models for Speech Recognition"
+        },
+        {
+            "paperId": "c102ac8c779ee0a53dc8e4ee20b4088ac2c7e186",
+            "title": "Advances in Joint CTC-Attention Based End-to-End Speech Recognition with a Deep CNN Encoder and RNN-LM"
+        },
+        {
+            "paperId": "4216ee11823aba41ad4c2adbe50f765e86a8a04b",
+            "title": "Learning Hard Alignments with Variational Inference"
+        },
+        {
+            "paperId": "76faaf292c6d9dc29d3a99300a7fdd7a35d6d107",
+            "title": "Online and Linear-Time Attention by Enforcing Monotonic Alignments"
+        },
+        {
+            "paperId": "668db48c6a79826456341680ee1175dfc4cced71",
+            "title": "Get To The Point: Summarization with Pointer-Generator Networks"
+        },
+        {
+            "paperId": "a072c2a400f62f720b68dc54a662fb1ae115bf06",
+            "title": "Tacotron: Towards End-to-End Speech Synthesis"
+        },
+        {
+            "paperId": "7dbb2d983ab95da04e5d47c87ddd2cd9a8f20786",
+            "title": "Towards Better Decoding and Language Model Integration in Sequence to Sequence Models"
+        },
+        {
+            "paperId": "a32763adef1ef22cc27d4d67ef7ac1490d23ce0b",
+            "title": "Morphological Inflection Generation with Hard Monotonic Attention"
+        },
+        {
+            "paperId": "da797d293203ebe7c95edb98184955a9b92990a4",
+            "title": "Sequence to Sequence Transduction with Hard Monotonic Attention"
+        },
+        {
+            "paperId": "8aa3358a34a17abd0a65622aad8c85317b851af4",
+            "title": "Very deep convolutional networks for end-to-end speech recognition"
+        },
+        {
+            "paperId": "f61da0efbb38bd3e6b9a9855809f5288b829f1f0",
+            "title": "Online Segment to Segment Neural Transduction"
+        },
+        {
+            "paperId": "9e2d9365ec2b940f4ba5d31f8a9950a184c2d2ed",
+            "title": "Learning online alignments with continuous rewards policy gradient"
+        },
+        {
+            "paperId": "4954fa180728932959997a4768411ff9136aac81",
+            "title": "TensorFlow: A system for large-scale machine learning"
+        },
+        {
+            "paperId": "f37076f426023241f19cdc2fb0a0fd733a6fa7fa",
+            "title": "Abstractive Text Summarization using Sequence-to-sequence RNNs and Beyond"
+        },
+        {
+            "paperId": "a0d864d73189101a0bffc6656aa907f3b2193cfa",
+            "title": "Lookahead Convolution Layer for Unidirectional Recurrent Neural Networks"
+        },
+        {
+            "paperId": "87119572d1065fb079e1dee8fcdb6c4811143f96",
+            "title": "Feed-Forward Networks with Attention Can Solve Some Long-Term Memory Problems"
+        },
+        {
+            "paperId": "6b904d6e84c98c6ce22ce6923224b205a2a24ee1",
+            "title": "Segmental Recurrent Neural Networks"
+        },
+        {
+            "paperId": "7fe83e1a713ccb5ba19bce9ca933f958843916bb",
+            "title": "A Neural Transducer"
+        },
+        {
+            "paperId": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+            "title": "Effective Approaches to Attention-based Neural Machine Translation"
+        },
+        {
+            "paperId": "3056add22b20e3361c38c0472d294a79d4031cb4",
+            "title": "Listen, attend and spell: A neural network for large vocabulary conversational speech recognition"
+        },
+        {
+            "paperId": "b624504240fa52ab76167acfe3156150ca01cf3b",
+            "title": "Attention-Based Models for Speech Recognition"
+        },
+        {
+            "paperId": "c9d7afd65b2127e6f0651bc7e13eeec1897ac8dd",
+            "title": "Reinforcement Learning Neural Turing Machines"
+        },
+        {
+            "paperId": "5259755f9c100e220ffaa7e08439c5d34be7757a",
+            "title": "Reinforcement Learning Neural Turing Machines - Revised"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "7b4f3d0e4e2486a8d5d3f8e00549cf9a117bf88f",
+            "title": "Sequence Transduction with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "5d0fc052d75298ed0536a525c262b7915b304513",
+            "title": "Predicting Success in Machine Translation"
+        },
+        {
+            "paperId": "1ff9332f2b62ccdded3f46320fd3661d99155652",
+            "title": "On Parallel Prefix Computation"
+        },
+        {
+            "paperId": "8648dbfff9662fa9c62a95622712dd2951b5b3a3",
+            "title": "The Design for the Wall Street Journal-based CSR Corpus"
+        },
+        {
+            "paperId": "37002741af7b02dfd55022c70202c6f525619f98",
+            "title": "Under review as a conference paper at ICLR 2020 completely free-form sampling in image space : Spatial Transformers"
+        },
+        {
+            "paperId": "d59b01eb08500519e85424a02917340ee8e4dd2c",
+            "title": "Difference Equations An Introduction With Applications"
+        },
+        {
+            "paperId": null,
+            "title": "Eigen v3"
+        },
+        {
+            "paperId": "261a056f8b21918e8616a429b2df6e1d5d33be41",
+            "title": "Connectionist Temporal Classi\ufb01cation: Labelling Unsegmented Sequence Data with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "845ee9838c1f5bf63b7db2c95ec5d27af14a4e02",
+            "title": "Connectionist Temporal Classi\ufb01cation: Labelling Unsegmented Sequences with Recurrent Neural Networks"
+        }
+    ]
+}

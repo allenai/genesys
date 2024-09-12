@@ -1,0 +1,230 @@
+{
+    "paperId": "fa0beb3f4d7f6e7e49b153af7e8a7c30f2937b60",
+    "externalIds": {
+        "ArXiv": "1809.03702",
+        "MAG": "2964059481",
+        "DBLP": "journals/corr/abs-1809-03702",
+        "CorpusId": 52187592
+    },
+    "title": "Sparse Attentive Backtracking: Temporal CreditAssignment Through Reminding",
+    "abstract": "Learning long-term dependencies in extended temporal sequences requires credit assignment to events far back in the past. The most common method for training recurrent neural networks, back-propagation through time (BPTT), requires credit information to be propagated backwards through every single step of the forward computation, potentially over thousands or millions of time steps. This becomes computationally expensive or even infeasible when used with long sequences. Importantly, biological brains are unlikely to perform such detailed reverse replay over very long sequences of internal states (consider days, months, or years.) However, humans are often reminded of past memories or mental states which are associated with the current mental state. We consider the hypothesis that such memory associations between past and present could be used for credit assignment through arbitrarily long sequences, propagating the credit assigned to the current state to the associated past state. Based on this principle, we study a novel algorithm which only back-propagates through a few of these temporal skip connections, realized by a learned attention mechanism that associates current states with relevant past states. We demonstrate in experiments that our method matches or outperforms regular BPTT and truncated BPTT in tasks involving particularly long-term dependencies, but without requiring the biologically implausible backward replay through the whole history of states. Additionally, we demonstrate that the proposed method transfers to longer sequences significantly better than LSTMs trained with BPTT and LSTMs trained with full self-attention.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2018,
+    "referenceCount": 44,
+    "citationCount": 81,
+    "influentialCitationCount": 4,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel algorithm which only back-propagates through a few of these temporal skip connections, realized by a learned attention mechanism that associates current states with relevant past states is studied."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145604319",
+            "name": "Nan Rosemary Ke"
+        },
+        {
+            "authorId": "1996705",
+            "name": "Anirudh Goyal"
+        },
+        {
+            "authorId": "2361575",
+            "name": "O. Bilaniuk"
+        },
+        {
+            "authorId": "1737610",
+            "name": "Jonathan Binas"
+        },
+        {
+            "authorId": "144473519",
+            "name": "M. Mozer"
+        },
+        {
+            "authorId": "1972076",
+            "name": "C. Pal"
+        },
+        {
+            "authorId": "1751762",
+            "name": "Yoshua Bengio"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "589e237c9b15c49f15b4989a4684792d9e705cce",
+            "title": "Revisiting the Hierarchical Multiscale LSTM"
+        },
+        {
+            "paperId": "8d9b48c0c50e06ccfef722ea6ac88c5000615534",
+            "title": "Focused Hierarchical RNNs for Conditional Sequence Processing"
+        },
+        {
+            "paperId": "58225a44e660bdd80de5d4deaab3495f02227421",
+            "title": "Discrete Event, Continuous Time RNNs"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "c124a6aec4b1833e4e86092e20a782183349d57e",
+            "title": "An Approximation of the Error Backpropagation Algorithm in a Predictive Coding Network with Local Hebbian Synaptic Plasticity"
+        },
+        {
+            "paperId": "4b8b3b792415df36f0fcb5b5810bbea471adfd47",
+            "title": "Memory Augmented Neural Networks with Wormhole Connections"
+        },
+        {
+            "paperId": "9f4d7d622d1f7319cc511bfef661cd973e881a4c",
+            "title": "Knowing When to Look: Adaptive Attention via a Visual Sentinel for Image Captioning"
+        },
+        {
+            "paperId": "784ee73d5363c711118f784428d1ab89f019daa5",
+            "title": "Hybrid computing using a neural network with dynamic external memory"
+        },
+        {
+            "paperId": "85644143e29c352aaf4f3f3f440139d0df4cd3a0",
+            "title": "Reverse Replay of Hippocampal Place Cells Is Uniquely Modulated by Changing Reward"
+        },
+        {
+            "paperId": "65eee67dee969fdf8b44c87c560d66ad4d78e233",
+            "title": "Hierarchical Multiscale Recurrent Neural Networks"
+        },
+        {
+            "paperId": "5694e46284460a648fe29117cbc55f6c9be3fa3c",
+            "title": "Densely Connected Convolutional Networks"
+        },
+        {
+            "paperId": "952454718139dba3aafc6b3b67c4f514ac3964af",
+            "title": "Recurrent Batch Normalization"
+        },
+        {
+            "paperId": "76d21c71ee13f472faaa45bb179af7c102abd8fb",
+            "title": "Towards a Biologically Plausible Backprop"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "e9c771197a6564762754e48c1daafb066f449f2e",
+            "title": "Unitary Evolution Recurrent Neural Networks"
+        },
+        {
+            "paperId": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+            "title": "Effective Approaches to Attention-based Neural Machine Translation"
+        },
+        {
+            "paperId": "3056add22b20e3361c38c0472d294a79d4031cb4",
+            "title": "Listen, attend and spell: A neural network for large vocabulary conversational speech recognition"
+        },
+        {
+            "paperId": "97acdfb3d247f8250d865ef8a9169f06e40f138b",
+            "title": "EESEN: End-to-end speech recognition using deep RNN models and WFST-based decoding"
+        },
+        {
+            "paperId": "7115d264594bdc849ee77b381be656e88677f02d",
+            "title": "Training recurrent networks online without backtracking"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "d4dc1012d780e8e2547237eb5a6dc7b1bf47d2f0",
+            "title": "Show and tell: A neural image caption generator"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "5522764282c85aea422f1c4dc92ff7e0ca6987bc",
+            "title": "A Clockwork RNN"
+        },
+        {
+            "paperId": "374b746d6fe01a02606d0fc0ec2bb88bd6ab8042",
+            "title": "Why am I remembering this now? Predicting the occurrence of involuntary (spontaneous) episodic memories."
+        },
+        {
+            "paperId": "4122002e32e660d4496c3aa7d6da82ac347294bf",
+            "title": "Hippocampal Replay Is Not a Simple Function of Experience"
+        },
+        {
+            "paperId": "7883f8db38fed6edea3fa22709d8e3d8889ae01d",
+            "title": "Hippocampal Replay of Extended Experience"
+        },
+        {
+            "paperId": "8566639e82b5c889a86a263d38bd754c512edb46",
+            "title": "Top-down and bottom-up attention to memory: A hypothesis (AtoM) on the role of the posterior parietal cortex in memory retrieval"
+        },
+        {
+            "paperId": "80159c6b24653d8d9797075d2b96dccc3c39a345",
+            "title": "Reverse replay of behavioural sequences in hippocampal place cells during the awake state"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "a2595cd9d8e35ca1954a361e549120ce9b2b304d",
+            "title": "Remote analogical reminding"
+        },
+        {
+            "paperId": "b13813b49f160e1a2010c44bd4fb3d09a28446e3",
+            "title": "Hierarchical Recurrent Neural Networks for Long-Term Dependencies"
+        },
+        {
+            "paperId": "a0fea0e9514f6d62ab91b522e94a1be46839c1d9",
+            "title": "MAC/FAC: A Model of Similarity-Based Retrieval"
+        },
+        {
+            "paperId": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+            "title": "Building a Large Annotated Corpus of English: The Penn Treebank"
+        },
+        {
+            "paperId": "2ae5a5507253aa3cada113d41d35fada1e84555f",
+            "title": "An Efficient Gradient-Based Algorithm for On-Line Training of Recurrent Network Trajectories"
+        },
+        {
+            "paperId": "7cff1494b5f31e08c9ca6d654403199adf2c63a9",
+            "title": "Analogical transfer, problem similarity, and expertise."
+        },
+        {
+            "paperId": null,
+            "title": "All models trained for upto 100 epochs with early stopping on the validation"
+        },
+        {
+            "paperId": "925b7d196fe0f6c52dddd3f18c146d2260cc8e80",
+            "title": "Target Propagation"
+        },
+        {
+            "paperId": null,
+            "title": "Large text compression benchmark"
+        },
+        {
+            "paperId": "c625304f54de1999a7d7720ae0e0c83f74a7f6c4",
+            "title": "Successful Remembering and Successful Forgetting : A Festschrift in Honor of Robert A. Bjork"
+        },
+        {
+            "paperId": "1fd7fc06653723b05abe5f3d1de393ddcf6bdddb",
+            "title": "SUBWORD LANGUAGE MODELING WITH NEURAL NETWORKS"
+        },
+        {
+            "paperId": "1f81047aeb65d32f6029b4a2af62d5df76236003",
+            "title": "THE CAUSES AND CONSEQUENCES OF REMINDING"
+        },
+        {
+            "paperId": "2664808ff9375cdd2acfe13acb024e7a5fb65556",
+            "title": "This reminds me of the time when \u2026: Expectation failures in reminding and explanation"
+        },
+        {
+            "paperId": null,
+            "title": "\u2022 The source code is now open-source"
+        },
+        {
+            "paperId": null,
+            "title": "Learned attention over different timesteps during training Copy Task with T = 200"
+        }
+    ]
+}

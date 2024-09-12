@@ -1,0 +1,292 @@
+{
+    "paperId": "bd723bc768baa78b7bd3e6f28a401d6d5cfe87f8",
+    "externalIds": {
+        "MAG": "2411563882",
+        "DBLP": "journals/corr/ChePCSL16",
+        "ArXiv": "1606.01865",
+        "PubMedCentral": "5904216",
+        "DOI": "10.1038/s41598-018-24271-9",
+        "CorpusId": 4900015,
+        "PubMed": "29666385"
+    },
+    "title": "Recurrent Neural Networks for Multivariate Time Series with Missing Values",
+    "abstract": null,
+    "venue": "Scientific Reports",
+    "year": 2016,
+    "referenceCount": 60,
+    "citationCount": 1662,
+    "influentialCitationCount": 195,
+    "openAccessPdf": {
+        "url": "https://www.nature.com/articles/s41598-018-24271-9.pdf",
+        "status": "GOLD"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Novel deep learning models are developed based on Gated Recurrent Unit, a state-of-the-art recurrent neural network that takes two representations of missing patterns, i.e., masking and time interval, and effectively incorporates them into a deep model architecture so that it not only captures the long-term temporal dependencies in time series, but also utilizes the missing patterns to achieve better prediction results."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1939695",
+            "name": "Zhengping Che"
+        },
+        {
+            "authorId": "144735626",
+            "name": "S. Purushotham"
+        },
+        {
+            "authorId": "1979489",
+            "name": "Kyunghyun Cho"
+        },
+        {
+            "authorId": "1746662",
+            "name": "D. Sontag"
+        },
+        {
+            "authorId": "47909587",
+            "name": "Yan Liu"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "eb9e0da8b7170e3ca4364f2f9010599c2d2556f1",
+            "title": "Machine Learning With Python"
+        },
+        {
+            "paperId": "1701a367d06fda7d5c17f0345c06dcd093dac7ef",
+            "title": "Benchmarking deep learning models on large healthcare datasets"
+        },
+        {
+            "paperId": "58b056dee286666864b2dec0496a232f7576ed88",
+            "title": "Reproducibility in critical care: a mortality prediction case study"
+        },
+        {
+            "paperId": "09f333582b11b0ee0d9320b1be5c5849a0a689f3",
+            "title": "Benchmark of Deep Learning Models on Large Healthcare MIMIC Datasets"
+        },
+        {
+            "paperId": "562f33611cdc0d8ed6609aa09f153e6238d5409e",
+            "title": "Directly Modeling Missing Data in Sequences with RNNs: Improved Classification of Clinical Time Series"
+        },
+        {
+            "paperId": "0f655f0e1937ad19b038952e2df69e30d447aac8",
+            "title": "Modeling Missing Data in Clinical Time Series with RNNs"
+        },
+        {
+            "paperId": "95cd83603a0d2b6918a8e34a5637a8f382da96f5",
+            "title": "MIMIC-III, a freely accessible critical care database"
+        },
+        {
+            "paperId": "ec327ec116936726cf765f54184d5a4366ff5414",
+            "title": "DeepCare: A Deep Dynamic Memory Model for Predictive Medicine"
+        },
+        {
+            "paperId": "0c1f9ca23f4f09ecfc44bcc8ca1c2736624f4652",
+            "title": "A Theoretically Grounded Application of Dropout in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "c434fce129f205a31871d51c0706b6aa9cfcb3b5",
+            "title": "Doctor AI: Predicting Clinical Events via Recurrent Neural Networks"
+        },
+        {
+            "paperId": "8f2182846d5d4cfbc216b5e4c00411e021dc4776",
+            "title": "Learning to Diagnose with LSTM Recurrent Neural Networks"
+        },
+        {
+            "paperId": "f5539cf9c438219c8ccf088a0a885725bb40cf2e",
+            "title": "Deep Computational Phenotyping"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "ac3ee98020251797c2b401e1389461df88e52e62",
+            "title": "Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "484ad17c926292fbe0d5211540832a8c8a8e958b",
+            "title": "Stochastic Backpropagation and Approximate Inference in Deep Generative Models"
+        },
+        {
+            "paperId": "5f5dc5b9a2ba710937e2c413b37b053cd673df02",
+            "title": "Auto-Encoding Variational Bayes"
+        },
+        {
+            "paperId": "b021b9fc3bef24a3769098f9b7e3b2fa25ae7f63",
+            "title": "Strategies for Handling Missing Data in Electronic Health Record Derived Data"
+        },
+        {
+            "paperId": "03fdbbd19037efff5d7ba14f56d46c2ff315227a",
+            "title": "Association between weight change and clinical outcomes in critically ill patients."
+        },
+        {
+            "paperId": "c43cf0e248ba4e4d07bd9e3e71ebd0d35ce99204",
+            "title": "Clinical use of lactate monitoring in critically ill patients"
+        },
+        {
+            "paperId": "30c689fbb9562c0e9828f08c7906ab518c47aef8",
+            "title": "Gesture unit segmentation using support vector machines: segmenting gestures from rest positions"
+        },
+        {
+            "paperId": "e39a06ef08b19dda5f80f15844e9d705986b872b",
+            "title": "Handling missing values in exploratory multivariate data analysis methods"
+        },
+        {
+            "paperId": "ed8235bff4cc8a1943f665f68158e30a8c3a72f7",
+            "title": "Predicting in-hospital mortality of ICU patients: The PhysioNet/Computing in cardiology challenge 2012"
+        },
+        {
+            "paperId": "8bbab0d33bd065933d675ba1a8591a55353a70fe",
+            "title": "MissForest - non-parametric missing value imputation for mixed-type data"
+        },
+        {
+            "paperId": "8ebeade389cb9508c60f71a3945b906b4db77a59",
+            "title": "Multiple imputation by chained equations: what is it and how does it work?"
+        },
+        {
+            "paperId": "d3520b9ae2def9f6112e3831d9f1a3994bae3db6",
+            "title": "Multiple imputation using chained equations: Issues and guidance for practice"
+        },
+        {
+            "paperId": "168f28ac3c8c7ea63bf7ed25f2288e8b67e2fe74",
+            "title": "Scikit-learn: Machine Learning in Python"
+        },
+        {
+            "paperId": "73404f69180770abc1fc65e2a4d5bc799eeae758",
+            "title": "Wavelet variance analysis for gappy time series"
+        },
+        {
+            "paperId": "c1f4f6222167e95bdf07a1358960a0a3ab2320a4",
+            "title": "Spectral Regularization Algorithms for Learning Large Incomplete Matrices"
+        },
+        {
+            "paperId": "3f631c73b429fd2e59ab0b2a80a12a42d6fd00a8",
+            "title": "Pattern classification with missing data: a review"
+        },
+        {
+            "paperId": "d4bbcc842f22547eaf5884251eaa68251895dccb",
+            "title": "Matrix Factorization Techniques for Recommender Systems"
+        },
+        {
+            "paperId": "66564536d39a51640d10e55543b9a2b23ac313d9",
+            "title": "Temporal reasoning with medical data - A review with emphasis on medical natural language processing"
+        },
+        {
+            "paperId": "a0f9bccc273182156ceb72e585a3a90757a859a4",
+            "title": "The effects of the irregular sample and missing data in time series analysis."
+        },
+        {
+            "paperId": "f867e56d3a8ac2bbef6bfe5c74ee80ab43239718",
+            "title": "Missing data: our view of the state of the art."
+        },
+        {
+            "paperId": "41a0be8ede3fee193b69802d5ec0a044de66530f",
+            "title": "Speech Recognition with Missing Data using Recurrent Neural Nets"
+        },
+        {
+            "paperId": "faa081d19e033f734c95b089b37c9769eda679fa",
+            "title": "A Solution for Missing Data in Recurrent Neural Networks with an Application to Blood Glucose Prediction"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "3311fba973367747bc4ff7783479b83998bf32e6",
+            "title": "Recurrent Neural Networks for Missing or Asynchronous Data"
+        },
+        {
+            "paperId": "c7d6de27864606ed8c19a48c24edf7263213d07b",
+            "title": "What is it and how does it work?"
+        },
+        {
+            "paperId": "89c0bb5205839067f1f48815d70748bf47aafddc",
+            "title": "INFERENCE AND MISSING DATA"
+        },
+        {
+            "paperId": "e2ffc5ff1c9107e363f888a402d72b15f5e2ec6c",
+            "title": "Interpretable Topic Features for Post-ICU Mortality Prediction"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "31868290adf1c000c611dfc966b514d5a34e8d23",
+            "title": "FUNDAMENTAL TECHNOLOGIES IN MODERN SPEECH RECOGNITION Digital Object Identifier 10.1109/MSP.2012.2205597"
+        },
+        {
+            "paperId": "00162da6ece84d584c4685813369a96b90e06f6d",
+            "title": "Nonlinear Processes in Geophysics Comparison of correlation analysis techniques for irregularly sampled time series"
+        },
+        {
+            "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+            "title": "Recurrent neural network based language model"
+        },
+        {
+            "paperId": "63936fa32f9e75ab2a864daae6791ce02112183d",
+            "title": "Theano: A CPU and GPU Math Compiler in Python"
+        },
+        {
+            "paperId": null,
+            "title": "a CPU and GPU math expression compiler"
+        },
+        {
+            "paperId": "6db308779954a4006d87ce68148ff2aaa176dfb2",
+            "title": "A Study of K-Nearest Neighbour as an Imputation Method"
+        },
+        {
+            "paperId": "307827ec09187e9c6935e8ff5fd43eeefb901320",
+            "title": "SciPy: Open Source Scientific Tools for Python"
+        },
+        {
+            "paperId": "10868cd3c9b5fb51ac1e0bfa270e99947e7be861",
+            "title": "de Boor, C., A Practical Guide to Splines. Applied Mathematical Sciences 27. Berlin\u2010Heidelberg\u2010New York, Springer\u2010Verlag 1978. XXIV, 392 S., DM 32,50. US $ 17.90"
+        },
+        {
+            "paperId": "955519d879e0fbbc1443ffe85b75f2e3c45557c5",
+            "title": "A Practical Guide to Splines"
+        },
+        {
+            "paperId": "af92d4db2cf7b588862dec03d78e8db0dfbb4e40",
+            "title": "A Review of the"
+        },
+        {
+            "paperId": null,
+            "title": "Size: numbers of hidden states (h) of the two GRU layers. Pars.: all parameters in the neural network model"
+        },
+        {
+            "paperId": null,
+            "title": "GRU-mean GRU-forward GRU-simple GRU-D"
+        },
+        {
+            "paperId": null,
+            "title": "A.3.3 MULTI-TASK PREDICTION DETAILS"
+        },
+        {
+            "paperId": null,
+            "title": "Figure 9: Performance for predicting 20 ICD-9 diagnosis categories on MIMIC-III dataset. x-axis, ICD-9 diagnosis category id; y-axis, AUC score"
+        },
+        {
+            "paperId": "d4545b14752cc2f7890a1b87d1f602a699f9a49d",
+            "title": "Bioengineering and Biotechnology Perspective Article a Systems Engineering Perspective on Homeostasis and Disease"
+        }
+    ]
+}

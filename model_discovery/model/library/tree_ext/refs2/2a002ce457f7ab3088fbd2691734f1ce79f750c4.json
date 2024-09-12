@@ -1,0 +1,150 @@
+{
+    "paperId": "2a002ce457f7ab3088fbd2691734f1ce79f750c4",
+    "externalIds": {
+        "DBLP": "conf/cvpr/ToshevS14",
+        "ArXiv": "1312.4659",
+        "MAG": "2113325037",
+        "DOI": "10.1109/CVPR.2014.214",
+        "CorpusId": 206592152
+    },
+    "title": "DeepPose: Human Pose Estimation via Deep Neural Networks",
+    "abstract": "We propose a method for human pose estimation based on Deep Neural Networks (DNNs). The pose estimation is formulated as a DNN-based regression problem towards body joints. We present a cascade of such DNN regres- sors which results in high precision pose estimates. The approach has the advantage of reasoning about pose in a holistic fashion and has a simple but yet powerful formula- tion which capitalizes on recent advances in Deep Learn- ing. We present a detailed empirical analysis with state-of- art or better performance on four academic benchmarks of diverse real-world images.",
+    "venue": "2014 IEEE Conference on Computer Vision and Pattern Recognition",
+    "year": 2013,
+    "referenceCount": 28,
+    "citationCount": 2575,
+    "influentialCitationCount": 155,
+    "openAccessPdf": {
+        "url": "http://arxiv.org/pdf/1312.4659",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The pose estimation is formulated as a DNN-based regression problem towards body joints and a cascade of such DNN regres- sors which results in high precision pose estimates."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1726415",
+            "name": "Alexander Toshev"
+        },
+        {
+            "authorId": "2574060",
+            "name": "Christian Szegedy"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "2f4df08d9072fc2ac181b7fced6a245315ce05c8",
+            "title": "Rich Feature Hierarchies for Accurate Object Detection and Semantic Segmentation"
+        },
+        {
+            "paperId": "8d90c2b57a61d4203498ecd6a10803e130bab9b2",
+            "title": "Human Pose Estimation Using Body Parts Dependent Joint Regressors"
+        },
+        {
+            "paperId": "113c22eed8383c74fe6b218743395532e2897e71",
+            "title": "MODEC: Multimodal Decomposable Models for Human Pose Estimation"
+        },
+        {
+            "paperId": "2b7c2e4e888f4ca6bc8def17497504ea4012aa0f",
+            "title": "Articulated Pose Estimation Using Discriminative Armlet Classifiers"
+        },
+        {
+            "paperId": "57ebeff9273dea933e2a75c306849baf43081a8c",
+            "title": "Deep Convolutional Network Cascade for Facial Point Detection"
+        },
+        {
+            "paperId": "ed662a8f1444578f6b4b47a3bb87e72b583d28b4",
+            "title": "Poselet Conditioned Pictorial Structures"
+        },
+        {
+            "paperId": "70f27b2d3e57fe48ad94b314c4f45c174ff7d05c",
+            "title": "Beyond Physical Connections: Tree Models in Human Pose Estimation"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "a6b2c5c527557cc86ae2ce4332b18a7850ee4e1e",
+            "title": "Exploring the Spatial Hierarchy of Mixture Models for Human Pose Estimation"
+        },
+        {
+            "paperId": "bb8a894914efa597f47f71ccc9968b9308048180",
+            "title": "Latent structured models for human pose estimation"
+        },
+        {
+            "paperId": "5310c57262146852280fb6ee4006c4abc91a7569",
+            "title": "Articulated pose estimation with flexible mixtures-of-parts"
+        },
+        {
+            "paperId": "50f3cd71a30ac6155e032c636d37d50e31cb09c2",
+            "title": "Learning effective human pose estimation from inaccurate annotation"
+        },
+        {
+            "paperId": "413c1142de9d91804d6d11c67ff3fed59c9fc279",
+            "title": "Adaptive Subgradient Methods for Online Learning and Stochastic Optimization"
+        },
+        {
+            "paperId": "943262361be04747aba71d45fb4854cf72019851",
+            "title": "Pose-Sensitive Embedding by Nonlinear NCA Regression"
+        },
+        {
+            "paperId": "d9279fe29ae1e4ecd0ee34d546560f8a70d17d1d",
+            "title": "Pictorial structures revisited: People detection and articulated pose estimation"
+        },
+        {
+            "paperId": "a7b6bd15f32ec49906e3500cac1abd7ed6a7c01a",
+            "title": "Progressive search space reduction for human pose estimation"
+        },
+        {
+            "paperId": "6dd0597f8513dc100cd0bc1b493768cde45098a9",
+            "title": "Learning to parse images of articulated bodies"
+        },
+        {
+            "paperId": "6b728a7442ca158f895d07c11c77d302269a832d",
+            "title": "Synergistic Face Detection and Pose Estimation with Energy-Based Models"
+        },
+        {
+            "paperId": "3e1556aea42601df3f457ad43dfb059498931a33",
+            "title": "Fast pose estimation with parameter-sensitive hashing"
+        },
+        {
+            "paperId": "9cc1b4ca121fef59517f24863b113bce3e5acd1a",
+            "title": "Estimating Human Body Configurations Using Shape Context Matching"
+        },
+        {
+            "paperId": "4dd5ad87ccf9b8493625e38514e2f37ab9ce99cb",
+            "title": "Description and Recognition of Curved Objects"
+        },
+        {
+            "paperId": null,
+            "title": "Object detection via deep neural networks"
+        },
+        {
+            "paperId": "c32715b5106f46eb6761531704cd2a9b5571832e",
+            "title": "Clustered Pose and Nonlinear Appearance Models for Human Pose Estimation"
+        },
+        {
+            "paperId": null,
+            "title": "Articulated human pose estimation and search in (almost) unconstrained still images. ETH Zurich, D-ITET, BIWI"
+        },
+        {
+            "paperId": "406767a9ea73cb77867aff9e73df40180185471a",
+            "title": "Better Appearance Models for Pictorial Structures"
+        },
+        {
+            "paperId": "34d21e6bf1586715e233248dee787afc66a1fbe7",
+            "title": "Pictorial Structures for Object Recognition"
+        },
+        {
+            "paperId": "719da2a0ddd38e78151e1cb2db31703ea8b2e490",
+            "title": "The Representation and Matching of Pictorial Structures"
+        },
+        {
+            "paperId": null,
+            "title": "Each pose is represented as a stick figure, inferred from predicted joints. Different limbs in the same image are colored differently, same limb across different images has the same color. Figure 9"
+        }
+    ]
+}

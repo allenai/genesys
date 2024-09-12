@@ -1,0 +1,203 @@
+{
+    "paperId": "409e5a3b7c25cd0cfcf0ff37cc47f7625c09f2fb",
+    "externalIds": {
+        "DBLP": "journals/spm/NeftciMZ19",
+        "MAG": "2914117107",
+        "ArXiv": "1901.09948",
+        "DOI": "10.1109/MSP.2019.2931595",
+        "CorpusId": 207941413
+    },
+    "title": "Surrogate Gradient Learning in Spiking Neural Networks: Bringing the Power of Gradient-based optimization to spiking neural networks",
+    "abstract": "Spiking neural networks (SNNs) are nature's versatile solution to fault-tolerant, energy-efficient signal processing. To translate these benefits into hardware, a growing number of neuromorphic spiking NN processors have attempted to emulate biological NNs. These developments have created an imminent need for methods and tools that enable such systems to solve real-world signal processing problems. Like conventional NNs, SNNs can be trained on real, domain-specific data; however, their training requires the overcoming of a number of challenges linked to their binary and dynamical nature. This article elucidates step-by-step the problems typically encountered when training SNNs and guides the reader through the key concepts of synaptic plasticity and data-driven learning in the spiking setting. Accordingly, it gives an overview of existing approaches and provides an introduction to surrogate gradient (SG) methods, specifically, as a particularly flexible and efficient method to overcome the aforementioned challenges.",
+    "venue": "IEEE Signal Processing Magazine",
+    "year": 2019,
+    "referenceCount": 41,
+    "citationCount": 975,
+    "influentialCitationCount": 73,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This article elucidates step-by-step the problems typically encountered when training SNNs and guides the reader through the key concepts of synaptic plasticity and data-driven learning in the spiking setting as well as introducing surrogate gradient methods, specifically, as a particularly flexible and efficient method to overcome the aforementioned challenges."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1734355",
+            "name": "E. Neftci"
+        },
+        {
+            "authorId": "34516897",
+            "name": "H. Mostafa"
+        },
+        {
+            "authorId": "39979946",
+            "name": "Friedemann Zenke"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "ffd0f679a631b733ba2f779ce1aa0e5bbde3a8b0",
+            "title": "Biologically inspired alternatives to backpropagation through time for learning in recurrent neural nets"
+        },
+        {
+            "paperId": "570912252096c320a5384a8fda0f54e5cd80d337",
+            "title": "SMPLR: Deep SMPL reverse for 3D human pose and shape recovery"
+        },
+        {
+            "paperId": "bf796d94de0e24a6c3351bb4fb26471bf970d79b",
+            "title": "Deep Networks Incorporating Spiking Neural Dynamics"
+        },
+        {
+            "paperId": "2ed7baf3dc26de1f934c938e2a806c28eea445a7",
+            "title": "Synaptic Plasticity Dynamics for Deep Continuous Local Learning (DECOLLE)"
+        },
+        {
+            "paperId": "3fe019f5ee31a4be3fe24b687f555006e17d27c5",
+            "title": "SLAYER: Spike Layer Error Reassignment in Time"
+        },
+        {
+            "paperId": "1a13bec308614ed56b9af2532a3d5e4cd8e2af94",
+            "title": "Deep Learning in Spiking Neural Networks"
+        },
+        {
+            "paperId": "80eec7deeffd76a42db351409d85e4a9165542b0",
+            "title": "Long short-term memory and Learning-to-learn in networks of spiking neurons"
+        },
+        {
+            "paperId": "de7264dde174f912ce3be57d95ea6e8e3ad952ab",
+            "title": "Deep Supervised Learning Using Local Errors"
+        },
+        {
+            "paperId": "dee8e3d352273fe905e9f02a9184faf419b2c9c4",
+            "title": "A Learning Framework for Winner-Take-All Networks with Stochastic Synapses"
+        },
+        {
+            "paperId": "bb7331dd99f452d532c277f4de39028d9b368bb2",
+            "title": "Gradient Descent for Spiking Neural Networks"
+        },
+        {
+            "paperId": "c0ef9d2fe95232a15cc459cad5caf0c7e68d1d55",
+            "title": "Temporally Efficient Deep Learning with Spikes"
+        },
+        {
+            "paperId": "d137505bb9617d990cd386943b146bd3294ba26d",
+            "title": "SuperSpike: Supervised Learning in Multilayer Spiking Neural Networks"
+        },
+        {
+            "paperId": "37671e53c9949fa08d9dc150adf1ecaaca6f1880",
+            "title": "A Neuromorph's Prospectus"
+        },
+        {
+            "paperId": "2a311700b13c43d1f2850cc78ccca8b435717123",
+            "title": "Predicting non-linear dynamics by stable local learning in a recurrent spiking neural network"
+        },
+        {
+            "paperId": "a844595c3b561b00325c75d00e5cc7f639e8ed9a",
+            "title": "Event-Driven Random Back-Propagation: Enabling Neuromorphic Deep Learning Machines"
+        },
+        {
+            "paperId": "17ebe1eb19655543a6b876f91d41917488e70f55",
+            "title": "Random synaptic feedback weights support error backpropagation for deep learning"
+        },
+        {
+            "paperId": "d6c850b41500be8cfadb5aa710934d9c5c7bc100",
+            "title": "Towards deep learning with segregated dendrites"
+        },
+        {
+            "paperId": "ed03b049f78f4f4e51293b6867582128c0959299",
+            "title": "Supervised learning in spiking neural networks with FORCE training"
+        },
+        {
+            "paperId": "e61d752b1eeba3033d9ce3e8c9382df9b4041956",
+            "title": "Direct Feedback Alignment Provides Learning in Deep Neural Networks"
+        },
+        {
+            "paperId": "c99537a3f0ce446df31942b78fb8337edb0c0c07",
+            "title": "Training Deep Spiking Neural Networks Using Backpropagation"
+        },
+        {
+            "paperId": "83e51128c4315799854ee645dac576d9c8331756",
+            "title": "Supervised Learning Based on Temporal Coding in Spiking Neural Networks"
+        },
+        {
+            "paperId": "29316449c7cc52ad326c5d1bd5b0dc5af27c1496",
+            "title": "Convolutional networks for fast, energy-efficient neuromorphic computing"
+        },
+        {
+            "paperId": "fd0b9d1268cb11e9f5fe0885ff4084f97a04532b",
+            "title": "Building functional networks of spiking model neurons"
+        },
+        {
+            "paperId": "6eecc808d4c74e7d0d7ef6b8a4112c985ced104d",
+            "title": "Binarized Neural Networks"
+        },
+        {
+            "paperId": "0a76cdb10b244d90770888f72ee46ca3ea1d918d",
+            "title": "Spiking Deep Networks with LIF Neurons"
+        },
+        {
+            "paperId": "57c73e49a759e7aa2901d95f3892ad06bbae9e83",
+            "title": "NormAD - Normalized Approximate Descent based supervised learning rule for spiking neurons"
+        },
+        {
+            "paperId": "982b7fb9a67a12f59b022335265597a05a4fab14",
+            "title": "A theory of local learning, the learning channel, and the optimality of backpropagation"
+        },
+        {
+            "paperId": "449f5dfebdd186c364248183bc743ba400596422",
+            "title": "Learning Spatiotemporally Encoded Pattern Transformations in Structured Spiking Neural Networks"
+        },
+        {
+            "paperId": "c9e81db0895b027a0248acf38d5149e0c492b070",
+            "title": "Neuronal Dynamics: From Single Neurons To Networks And Models Of Cognition"
+        },
+        {
+            "paperId": "385f6a2d1ceebb297e22adcdcac76f60fc9a65ae",
+            "title": "Learning Precisely Timed Spikes"
+        },
+        {
+            "paperId": "eca3ada9c78baa5c9ac8581179604b81a155c4ac",
+            "title": "Stochastic variational learning in recurrent spiking networks"
+        },
+        {
+            "paperId": "99034e12e0efba0c4dcddc2ce87e6992515175e8",
+            "title": "To spike, or when to spike?"
+        },
+        {
+            "paperId": "62c76ca0b2790c34e85ba1cce09d47be317c7235",
+            "title": "Estimating or Propagating Gradients Through Stochastic Neurons for Conditional Computation"
+        },
+        {
+            "paperId": "54846e844e14fc4722ddfeb745d83ba788a93457",
+            "title": "Matching Recall and Storage in Sequence Learning with Spiking Neural Networks"
+        },
+        {
+            "paperId": "d099a7f5b0a28735af6bbe248c9a21892590795d",
+            "title": "Error-Backpropagation in Networks of Fractionally Predictive Spiking Neurons"
+        },
+        {
+            "paperId": "0ac82bf7b720b7f75c279037111e48d6bc32b141",
+            "title": "Optimal Spike-Timing-Dependent Plasticity for Precise Action Potential Firing in Supervised Learning"
+        },
+        {
+            "paperId": "410be00c7a7e9959167ede3666dd43b7e3c8f4f6",
+            "title": "Error-backpropagation in temporally encoded networks of spiking neurons"
+        },
+        {
+            "paperId": "ce9a21b93ba29d4145a8ef6bf401e77f261848de",
+            "title": "A Learning Algorithm for Continually Running Fully Recurrent Neural Networks"
+        },
+        {
+            "paperId": "2913c2bf3f92b5ae369400a42b2d27cc5bc05ecb",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": "a0d16f0e99f7ce5e6fb70b1a68c685e9ad610657",
+            "title": "A Learning Algorithm for Boltzmann Machines"
+        },
+        {
+            "paperId": null,
+            "title": "IEEE SPM WHITE PAPER FOR THE SPECIAL ISSUE ON NEUROMORPHIC COMPUTING"
+        }
+    ]
+}

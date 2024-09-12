@@ -1,0 +1,127 @@
+{
+    "paperId": "c68796f833a7151f0a63d1d1608dc902b4fdc9b6",
+    "externalIds": {
+        "CorpusId": 10319744
+    },
+    "title": "GENERATIVE ADVERSARIAL NETS",
+    "abstract": "Estimating individualized treatment effects (ITE) is a challenging task due to the need for an individual\u2019s potential outcomes to be learned from biased data and without having access to the counterfactuals. We propose a novel method for inferring ITE based on the Generative Adversarial Nets (GANs) framework. Our method, termed Generative Adversarial Nets for inference of Individualized Treatment Effects (GANITE), is motivated by the possibility that we can capture the uncertainty in the counterfactual distributions by attempting to learn them using a GAN. We generate proxies of the counterfactual outcomes using a counterfactual generator, G, and then pass these proxies to an ITE generator, I, in order to train it. By modeling both of these using the GAN framework, we are able to infer based on the factual data, while still accounting for the unseen counterfactuals. We test our method on three real-world datasets (with both binary and multiple treatments) and show that GANITE outperforms state-of-the-art methods.",
+    "venue": "",
+    "year": 2018,
+    "referenceCount": 24,
+    "citationCount": 27624,
+    "influentialCitationCount": 3294,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel method for inferring ITE based on the Generative Adversarial Nets (GANs) framework, which is motivated by the possibility that it can capture the uncertainty in the counterfactual distributions by attempting to learn them using a GAN."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2262142027",
+            "name": "Individualized Treat"
+        },
+        {
+            "authorId": "2262204742",
+            "name": "Jinsung Yoon"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "dc3d7783fb12824b02fb5ae26117b3470d0d9e3c",
+            "title": "Deep Counterfactual Networks with Propensity-Dropout"
+        },
+        {
+            "paperId": "20d117f0cccf4aaaeadfdeb58d7af0fc201f7a9a",
+            "title": "Causal Effect Inference with Deep Latent-Variable Models"
+        },
+        {
+            "paperId": "74a53a386661ae9d259ef68b40ed622c2b64edc8",
+            "title": "Bayesian Inference of Individualized Treatment Effects using Multi-task Gaussian Processes"
+        },
+        {
+            "paperId": "32b68556cc50420ab1a481faf5a3961e722c1121",
+            "title": "Estimating Individual Treatment Effect in Observational Data Using Random Forest Methods"
+        },
+        {
+            "paperId": "17409ae85c237983dc22a5e4750d8054e4b6edc9",
+            "title": "Estimating individual treatment effect: generalization bounds and algorithms"
+        },
+        {
+            "paperId": "759b00cf35b397eab468935b5d90d04e9ed25549",
+            "title": "Learning Representations for Counterfactual Inference"
+        },
+        {
+            "paperId": "86e0f7eb8f762bbba5495f9a9c064df1960a8dec",
+            "title": "Causal Counterfactual Theory for the Attribution of Weather and Climate-Related Events"
+        },
+        {
+            "paperId": "c2fcb00fe4b773f9cb1682aaa69749aac59f711d",
+            "title": "Estimation and Inference of Heterogeneous Treatment Effects using Random Forests"
+        },
+        {
+            "paperId": "1a472d87ddd9cd3b4b2e3ccaec61a03053586897",
+            "title": "Recursive partitioning for heterogeneous causal effects"
+        },
+        {
+            "paperId": "353ecf7b66b3e9ff5e9f41145a147e899a2eea5c",
+            "title": "Conditional Generative Adversarial Nets"
+        },
+        {
+            "paperId": "86ee1835a56722b76564119437070782fc90eb19",
+            "title": "Generative Adversarial Nets"
+        },
+        {
+            "paperId": "188e247506ad992b8bc62d6c74789e89891a984f",
+            "title": "Random Search for Hyper-Parameter Optimization"
+        },
+        {
+            "paperId": "bd580bb56b1a70595a36f6bc5db6cf8195b15975",
+            "title": "The Relative Performance of Targeted Maximum Likelihood Estimators"
+        },
+        {
+            "paperId": "1abafb578e4b58ccd00bef08c7a7cc0b1e776e58",
+            "title": "Bayesian Nonparametric Modeling for Causal Inference"
+        },
+        {
+            "paperId": "c34467299f20cd47a0f155d357439967030de972",
+            "title": "BART: Bayesian Additive Regression Trees"
+        },
+        {
+            "paperId": "0320a4eb15a71478a1ea927d63ecdd5ae816cdbd",
+            "title": "Nonparametric Tests for Treatment Effect Heterogeneity"
+        },
+        {
+            "paperId": "7da0430d1e95da9f106c5a74153ecda108cf1062",
+            "title": "Causal inference based on counterfactuals"
+        },
+        {
+            "paperId": "17f01ec56450163b4e83ee28a8d227d4f23b7817",
+            "title": "Stratification and weighting via the propensity score in estimation of causal treatment effects: a comparative study"
+        },
+        {
+            "paperId": "1ed842cd77094d2d39a8cc46b9d78bd3bf143d66",
+            "title": "The Costs of Low Birth Weight"
+        },
+        {
+            "paperId": "38a83f59ecb684f4458952432a80d92649d26893",
+            "title": "Propensity Score-Matching Methods for Nonexperimental Causal Studies"
+        },
+        {
+            "paperId": "d9f656e508cf479cee3d56ec0425889adb2d766e",
+            "title": "Does Matching Overcome Lalonde's Critique of Nonexperimental Estimators?"
+        },
+        {
+            "paperId": "61572150188f35378fa208a158d2dbe0817647b8",
+            "title": "Evaluating the Econometric Evaluations of Training Programs with Experimental Data"
+        },
+        {
+            "paperId": null,
+            "title": "Causal inference using potential outcomes: Design, modeling, decisions"
+        },
+        {
+            "paperId": "3b7d77d8bb1b6a8b6a426d41f0bde9d5d6444f33",
+            "title": "The International Society for Heart Transplantation"
+        }
+    ]
+}

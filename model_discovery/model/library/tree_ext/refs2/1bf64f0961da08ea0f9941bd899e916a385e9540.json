@@ -1,0 +1,138 @@
+{
+    "paperId": "1bf64f0961da08ea0f9941bd899e916a385e9540",
+    "externalIds": {
+        "MAG": "2774769176",
+        "ArXiv": "1712.00527",
+        "DBLP": "journals/corr/abs-1712-00527",
+        "CorpusId": 23278522
+    },
+    "title": "Adaptive Sampled Softmax with Kernel Based Sampling",
+    "abstract": "Softmax is the most commonly used output function for multiclass problems and is widely used in areas such as vision, natural language processing, and recommendation. A softmax model has linear costs in the number of classes which makes it too expensive for many real-world problems. A common approach to speed up training involves sampling only some of the classes at each training step. It is known that this method is biased and that the bias increases the more the sampling distribution deviates from the output distribution. Nevertheless, almost any recent work uses simple sampling distributions that require a large sample size to mitigate the bias. In this work, we propose a new class of kernel based sampling methods and develop an efficient sampling algorithm. Kernel based sampling adapts to the model as it is trained, thus resulting in low bias. Kernel based sampling can be easily applied to many models because it relies only on the model's last hidden layer. We empirically study the trade-off of bias, sampling distribution and sample size and show that kernel based sampling results in low bias with few samples.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2017,
+    "referenceCount": 26,
+    "citationCount": 70,
+    "influentialCitationCount": 6,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a new class of kernel based sampling methods and develops an efficient sampling algorithm that adapts to the model as it is trained, thus resulting in low bias and empirically studies the trade-off of bias, sampling distribution and sample size."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "38023684",
+            "name": "Guy Blanc"
+        },
+        {
+            "authorId": "2843982",
+            "name": "Steffen Rendle"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "861b29980245108cf960f108160cdc51bfa718d3",
+            "title": "TAPAS: Two-pass Approximate Adaptive Sampling for Softmax"
+        },
+        {
+            "paperId": "3b25897570613805df7e7a6f7750b1ff4139b8ce",
+            "title": "An experimental analysis of Noise-Contrastive Estimation: the noise distribution matters"
+        },
+        {
+            "paperId": "9ec499af9b85f30bdbdd6cdfbb07d484808c526a",
+            "title": "Efficient softmax approximation for GPUs"
+        },
+        {
+            "paperId": "5e383584ccbc8b920eaf3cfce3869da646ff5550",
+            "title": "Deep Neural Networks for YouTube Recommendations"
+        },
+        {
+            "paperId": "759956bb98689dbcc891528636d8994e54318f85",
+            "title": "Strategies for Training Large Vocabulary Neural Language Models"
+        },
+        {
+            "paperId": "3e498f3dc80b276defcede984f456f4fef1f2e1f",
+            "title": "An Exploration of Softmax Alternatives Belonging to the Spherical Loss Family"
+        },
+        {
+            "paperId": "21b4f719993af854d85182d40c13da5f193669dc",
+            "title": "Sublinear Partition Estimation"
+        },
+        {
+            "paperId": "a2e2970dd99b86fd6198c0b756c6cd4d52e34c3b",
+            "title": "Clustering is Efficient for Approximate Maximum Inner Product Search"
+        },
+        {
+            "paperId": "7de11e686c16f7dbe720bef17345bd5c4dd50b84",
+            "title": "Speeding Up Neural Networks for Large Scale Classification using WTA Hashing"
+        },
+        {
+            "paperId": "757f517f1952addc1716ea56f912f2e4a2803f7a",
+            "title": "Efficient Exact Gradient Update for training Deep Networks with Very Large Sparse Targets"
+        },
+        {
+            "paperId": "f264e8b33c0d49a692a6ce2c4bcb28588aeb7d97",
+            "title": "Recurrent Neural Network Regularization"
+        },
+        {
+            "paperId": "6dbffa57b3c6c5645cf701b9b444984a4b61bb57",
+            "title": "Asymmetric LSH (ALSH) for Sublinear Time Maximum Inner Product Search (MIPS)"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "25eb5bb4eba859b1eaac200ec0c2e4638b7e83b5",
+            "title": "Speed regularization and optimality in word classing"
+        },
+        {
+            "paperId": "3aaa1e4974800767fcbd2c24c2f2af42bf412f97",
+            "title": "Structured Output Layer neural network language model"
+        },
+        {
+            "paperId": "07ca885cb5cc4328895bfaec9ab752d5801b14cd",
+            "title": "Extensions of recurrent neural network language model"
+        },
+        {
+            "paperId": "e3ce36b9deb47aa6bb2aa19c4bfa71283b505025",
+            "title": "Noise-contrastive estimation: A new estimation principle for unnormalized statistical models"
+        },
+        {
+            "paperId": "699d5ab38deee78b1fd17cc8ad233c74196d16e9",
+            "title": "Adaptive Importance Sampling to Accelerate Training of a Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "7a59fde27461a3ef4a21a249cc403d0d96e4a0d7",
+            "title": "Random Features for Large-Scale Kernel Machines"
+        },
+        {
+            "paperId": "4af41f4d838daa7ca6995aeb4918b61989d1ed80",
+            "title": "Classes for fast maximum entropy training"
+        },
+        {
+            "paperId": "8c63a34854f1c9b6051b6b89cadb16e7dba3365f",
+            "title": "An Efficient Method for Generating Discrete Random Variables with General Distributions"
+        },
+        {
+            "paperId": "c19fbefdeead6a4154a22a9c8551a18b1530033a",
+            "title": "Hierarchical Probabilistic Neural Network Language Model"
+        },
+        {
+            "paperId": "6b388f0151ab37adb3d57738b8f52a3f943f86c8",
+            "title": "Quick Training of Probabilistic Neural Nets by Importance Sampling"
+        },
+        {
+            "paperId": null,
+            "title": "Treebank-3 ldc99t42"
+        },
+        {
+            "paperId": null,
+            "title": "Model structure dependent : The sampling depends on the functional structure of o . For instance, if o is an LSTM, the sampling distribution should not be represented by simple bigrams"
+        },
+        {
+            "paperId": null,
+            "title": "if and only if (cid:80) m +1 k =2 exp( o (cid:48) s k ) is constant which means exp( o (cid:48) l ) = exp( o s l \u2212 ln mq s l ) = exp( o sl ) mq sl has to be constant"
+        }
+    ]
+}

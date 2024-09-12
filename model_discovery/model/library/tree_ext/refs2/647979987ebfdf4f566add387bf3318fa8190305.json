@@ -1,0 +1,130 @@
+{
+    "paperId": "647979987ebfdf4f566add387bf3318fa8190305",
+    "externalIds": {
+        "MAG": "2950840695",
+        "DBLP": "conf/nips/SvenstrupHW17",
+        "ArXiv": "1709.03933",
+        "CorpusId": 19835713
+    },
+    "title": "Hash Embeddings for Efficient Word Representations",
+    "abstract": "We present hash embeddings, an efficient method for representing words in a continuous vector form. A hash embedding may be seen as an interpolation between a standard word embedding and a word embedding created using a random hash function (the hashing trick). In hash embeddings each token is represented by $k$ $d$-dimensional embeddings vectors and one $k$ dimensional weight vector. The final $d$ dimensional representation of the token is the product of the two. Rather than fitting the embedding vectors for each token these are selected by the hashing trick from a shared pool of $B$ embedding vectors. Our experiments show that hash embeddings can easily deal with huge vocabularies consisting of millions of tokens. When using a hash embedding there is no need to create a dictionary before training nor to perform any kind of vocabulary pruning after training. We show that models trained using hash embeddings exhibit at least the same level of performance as models trained using regular embeddings across a wide range of tasks. Furthermore, the number of parameters needed by such an embedding is only a fraction of what is required by a regular embedding. Since standard embeddings and embeddings constructed using the hashing trick are actually just special cases of a hash embedding, hash embeddings can be considered an extension and improvement over the existing regular embedding types.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2017,
+    "referenceCount": 23,
+    "citationCount": 69,
+    "influentialCitationCount": 11,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The experiments show that hash embeddings can easily deal with huge vocabularies consisting of millions of tokens and that models trained using hash embedDings exhibit at least the same level of performance as models training using regular embeddins across a wide range of tasks."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3634317",
+            "name": "Dan Svenstrup"
+        },
+        {
+            "authorId": "7576467",
+            "name": "Jonas Meinertz Hansen"
+        },
+        {
+            "authorId": "1724252",
+            "name": "O. Winther"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "6727f574ad8b1c3763be8d58eeaf82c551aa33ef",
+            "title": "Generative and Discriminative Text Classification with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "5feb32a73dd1bd9e13f84a7b3344497a5545106b",
+            "title": "FastText.zip: Compressing text classification models"
+        },
+        {
+            "paperId": "282db08f5658321aaf3f444b7bee3bf2c6605b98",
+            "title": "Neural Machine Translation with Characters and Hierarchical Encoding"
+        },
+        {
+            "paperId": "8544d6258e9be31c6e363596f9ddf72b4c17011a",
+            "title": "Convolutional Neural Networks for Text Categorization: Shallow Word-level vs. Deep Character-level"
+        },
+        {
+            "paperId": "00846288b74f6422d9064150862e25cdb3db17df",
+            "title": "Hash2Vec, Feature Hashing for Word Embeddings"
+        },
+        {
+            "paperId": "892e53fe5cd39f037cb2a961499f42f3002595dd",
+            "title": "Bag of Tricks for Efficient Text Classification"
+        },
+        {
+            "paperId": "84ca430856a92000e90cd728445ca2241c10ddc3",
+            "title": "Very Deep Convolutional Networks for Natural Language Processing"
+        },
+        {
+            "paperId": "93d8d45fe8101545ae6d9fab3dbb38f904ff7b4e",
+            "title": "Virtual Adversarial Training for Semi-Supervised Text Classification"
+        },
+        {
+            "paperId": "573f0e60493e26558dd71f4c2ecc8d3b4784cbbd",
+            "title": "Efficient Character-level Document Classification by Combining Convolution and Recurrent Layers"
+        },
+        {
+            "paperId": "51a55df1f023571a7e07e338ee45a3e3d66ef73e",
+            "title": "Character-level Convolutional Networks for Text Classification"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "fdb813d8b927bdd21ae1858cafa6c34b66a36268",
+            "title": "Learning deep structured semantic models for web search using clickthrough data"
+        },
+        {
+            "paperId": "2b669398c4cf2ebe04375c8b1beae20f4ac802fa",
+            "title": "Improving Word Representations via Global Context and Multiple Word Prototypes"
+        },
+        {
+            "paperId": "c62450a13bb6692385490dd4b371de9857761374",
+            "title": "Multi-Prototype Vector-Space Models of Word Meaning"
+        },
+        {
+            "paperId": "8c054e1f378e033f39a7b95c7f68da4b3b5544e4",
+            "title": "Learning to Hash with Binary Reconstructive Embeddings"
+        },
+        {
+            "paperId": "0c092248fd2feec1267f2c173369f2f8e3a43bf7",
+            "title": "Supervised semantic indexing"
+        },
+        {
+            "paperId": "00bbfde6af97ce5efcf86b3401d265d42a95603d",
+            "title": "Feature hashing for large scale multitask learning"
+        },
+        {
+            "paperId": "f7566f1797eb36429acbb09e581d6b2918a50760",
+            "title": "Foundations of Statistical Natural Language Processing"
+        },
+        {
+            "paperId": "29053eab305c2b585bcfbb713243b05646e7d62d",
+            "title": "Entropy-based Pruning of Backoff Language Models"
+        },
+        {
+            "paperId": "084c55d6432265785e3ff86a2e900a49d501c00a",
+            "title": "Book Reviews: Foundations of Statistical Natural Language Processing"
+        },
+        {
+            "paperId": null,
+            "title": "Google \u2019 s trained word 2 vec model in python"
+        },
+        {
+            "paperId": "4748d22348e72e6e06c2476486afddbc76e5eca7",
+            "title": "Product Quantization for Nearest Neighbor Search"
+        }
+    ]
+}

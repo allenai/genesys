@@ -1,0 +1,238 @@
+{
+    "paperId": "475354f10798f110d34792b6d88f31d6d5cb099e",
+    "externalIds": {
+        "ACL": "I05-5002",
+        "DBLP": "conf/acl-iwp/DolanB05",
+        "MAG": "131533222",
+        "CorpusId": 16639476
+    },
+    "title": "Automatically Constructing a Corpus of Sentential Paraphrases",
+    "abstract": "An obstacle to research in automatic paraphrase identification and generation is the lack of large-scale, publiclyavailable labeled corpora of sentential paraphrases. This paper describes the creation of the recently-released Microsoft Research Paraphrase Corpus, which contains 5801 sentence pairs, each hand-labeled with a binary judgment as to whether the pair constitutes a paraphrase. The corpus was created using heuristic extraction techniques in conjunction with an SVM-based classifier to select likely sentence-level paraphrases from a large corpus of topicclustered news data. These pairs were then submitted to human judges, who confirmed that 67% were in fact semantically equivalent. In addition to describing the corpus itself, we explore a number of issues that arose in defining guidelines for the human raters.",
+    "venue": "International Joint Conference on Natural Language Processing",
+    "year": 2005,
+    "referenceCount": 51,
+    "citationCount": 1561,
+    "influentialCitationCount": 271,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The creation of the recently-released Microsoft Research Paraphrase Corpus, which contains 5801 sentence pairs, each hand-labeled with a binary judgment as to whether the pair constitutes a paraphrase, is described."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "83415753",
+            "name": "W. Dolan"
+        },
+        {
+            "authorId": "3125776",
+            "name": "Chris Brockett"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "5d1e736b2bf090470b5d7e7b94f944c83ada59c5",
+            "title": "Induction of Word and Phrase Alignments for Automatic Document Summarization"
+        },
+        {
+            "paperId": "17ae5fa96cf3ad5427d9654b17a2f937aae242c0",
+            "title": "Recognizing Paraphrases and Textual Entailment Using Inversion Transduction Grammars"
+        },
+        {
+            "paperId": "0724231630ccbc6e7b15740e49c42044507e6f39",
+            "title": "Generating an Entailment Corpus from News Headlines"
+        },
+        {
+            "paperId": "6fc4a08abd9f52013ad1c598aadc7ef60aa0d7d2",
+            "title": "Measuring the Semantic Similarity of Texts"
+        },
+        {
+            "paperId": "f7f6bcedcd3d3ef0af17e33a063f6ffd8bfb3e56",
+            "title": "Paraphrasing as Machine Translation (\u81ea\u7136\u8a00\u8a9e\u51e6\u7406\u7279\u96c6\u53f7\u300c\u8a00\u3044\u63db\u3048\u300d)"
+        },
+        {
+            "paperId": "7acfdc905f734abf966aed58abb983bc015ff7fe",
+            "title": "Unsupervised Construction of Large Paraphrase Corpora: Exploiting Massively Parallel News Sources"
+        },
+        {
+            "paperId": "1bc960477fe06e20c6672ff734d0ebfcc329860c",
+            "title": "Multi-level Bootstrapping For Extracting Parallel Sentences From a Quasi-Comparable Corpus"
+        },
+        {
+            "paperId": "2a5a179a70e98ee1c4b4b8b54f6c8aba629c02e4",
+            "title": "Monolingual Machine Translation for Paraphrase Generation"
+        },
+        {
+            "paperId": "b48af24cd360d6b0a3dd25424550c28bf97bc1ce",
+            "title": "Syntax-based Alignment of Multiple Translations: Extracting Paraphrases and Generating New Sentences"
+        },
+        {
+            "paperId": "10b8f21e57b3392ce623c374c2c039f811ce5f69",
+            "title": "Learning to Paraphrase: An Unsupervised Approach Using Multiple-Sequence Alignment"
+        },
+        {
+            "paperId": "de2df29b0a0312de7270c3f5a0af6af5645cf91a",
+            "title": "A Systematic Comparison of Various Statistical Alignment Models"
+        },
+        {
+            "paperId": "8f76788d60ebd4f3503551b5c56c036541a8883f",
+            "title": "Paraphrasing of Chinese Utterances"
+        },
+        {
+            "paperId": "fa56b221697e83e495da7486d90217624f40c300",
+            "title": "Towards a Thesaurus of Predicates"
+        },
+        {
+            "paperId": "2c4986b03ab15bdad01f808a6786bee01e3800a1",
+            "title": "Learning to classify text using support vector machines - methods, theory and algorithms"
+        },
+        {
+            "paperId": "8d7a692d8763a38283db54e19f1dcc694a34e706",
+            "title": "Extracting Paraphrases from a Parallel Corpus"
+        },
+        {
+            "paperId": "c9214ebe91454e6369720136ab7dd990d52a07d4",
+            "title": "Improved Statistical Alignment Models"
+        },
+        {
+            "paperId": "94dd2f513ef1aa5bcbe216f2cb939916097f688a",
+            "title": "WordNet : an electronic lexical database"
+        },
+        {
+            "paperId": "9c4da62e9e89e65ac78ee271e424e8b498053e8c",
+            "title": "Advances in kernel methods: support vector learning"
+        },
+        {
+            "paperId": "4de39c94e340a108fff01a90a67b0c17c86fb981",
+            "title": "Fast training of support vector machines using sequential minimal optimization, advances in kernel methods"
+        },
+        {
+            "paperId": "5b74d6c7cd6b7c172ffce98f80b2f7b810d49abc",
+            "title": "The mathematics of statistical machine translation"
+        },
+        {
+            "paperId": "3a923a81a8f5069d50f827c22abe4546385603b4",
+            "title": "Inductive learning algorithms and representations for text categorization"
+        },
+        {
+            "paperId": null,
+            "title": "The Distributional Similarity of Subparses"
+        },
+        {
+            "paperId": "23f8fa0b4a2db78a7a8dcc78494df8385b670f60",
+            "title": "Support Vector Machines for Paraphrase Identification and Corpus Construction"
+        },
+        {
+            "paperId": "3632dce9c72aa20a1f7b75fde9b91cc448d517fc",
+            "title": "Echo Chamber: A Game for Eliciting a Colloquial Paraphrase Corpus"
+        },
+        {
+            "paperId": "4732eed8e47416284b647daa20fc7f76a1dd12c2",
+            "title": "1001 Paraphrases: Incenting Responsible Contributions in Collecting Paraphrases from Volunteers"
+        },
+        {
+            "paperId": null,
+            "title": "Multiple-Translation Chinese Corpus"
+        },
+        {
+            "paperId": null,
+            "title": "Encarta Thesaurus"
+        },
+        {
+            "paperId": null,
+            "title": "125,054 word synonym pairs were extracted from the Encarta The-saurus"
+        },
+        {
+            "paperId": "d1fa8485ad749d51e7470d801bc1931706597601",
+            "title": "Fast Training of Support Vector Machines using Sequential Minimal Optimization"
+        },
+        {
+            "paperId": "8213dbed4db44e113af3ed17d6dad57471a0c048",
+            "title": "The Nature of Statistical Learning Theory"
+        },
+        {
+            "paperId": "d87ceda3042f781c341ac17109d1e94a717f5f60",
+            "title": "Book Reviews: WordNet: An Electronic Lexical Database"
+        },
+        {
+            "paperId": null,
+            "title": "The euro rose above $1.18 the highest level since its launch in January"
+        },
+        {
+            "paperId": "b2f8876482c97e804bb50a5e2433881ae31d0cdd",
+            "title": "Binary codes capable of correcting deletions, insertions, and reversals"
+        },
+        {
+            "paperId": null,
+            "title": "David Gest has sued his estranged wife Liza Minelli for %MONEY% million for beating him when she was drunk"
+        },
+        {
+            "paperId": null,
+            "title": "The two sentences shared at least three words in common"
+        },
+        {
+            "paperId": null,
+            "title": "Scientists have figured out"
+        },
+        {
+            "paperId": null,
+            "title": "complete genetic code of a virulent pathogen that has killed tens"
+        },
+        {
+            "paperId": null,
+            "title": "Microsoft Research Paraphrase Corpus"
+        },
+        {
+            "paperId": null,
+            "title": "The length of the shorter of the two sentences"
+        },
+        {
+            "paperId": null,
+            "title": "Wynn paid $23.5 million for Re-noir\u2019s \u201cIn the Roses (Madame Leon Clapisson)\u201d"
+        },
+        {
+            "paperId": null,
+            "title": "Thursday they've completed the genetic blueprint of the blight-causing culprit responsible for sudden oak death"
+        },
+        {
+            "paperId": null,
+            "title": "Word-based Levenshtein edit distance of 1 < e (cid:0) 20; and a length ratio > 66%; OR"
+        },
+        {
+            "paperId": null,
+            "title": "collect significant numbers of sentential paraphrase pairs, our standards for what constitutes \u201csemantic equivalence\u201d"
+        },
+        {
+            "paperId": null,
+            "title": "Both sentences in the first three sentences of each file; and length ratio > 50%"
+        },
+        {
+            "paperId": null,
+            "title": "However"
+        },
+        {
+            "paperId": null,
+            "title": "of thousands of California native oaks"
+        },
+        {
+            "paperId": null,
+            "title": "Slough was born on %DATE%, making her %NUMBER% years old at the time of her death"
+        },
+        {
+            "paperId": null,
+            "title": "The genome of the fungal pathogen that causes Sudden Oak Death has been sequenced by US scientists"
+        },
+        {
+            "paperId": null,
+            "title": ", 53, was named as Mr. Weill\u2019s successor"
+        },
+        {
+            "paperId": null,
+            "title": "Morphological Variants"
+        },
+        {
+            "paperId": null,
+            "title": "Lexmark was trying to shield itself from competition\u2026"
+        }
+    ]
+}

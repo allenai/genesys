@@ -1,0 +1,250 @@
+{
+    "paperId": "118fae4b4d07453561f1eded88654f812c7c61ec",
+    "externalIds": {
+        "DBLP": "conf/nips/Lopez-PazR17",
+        "MAG": "2734314755",
+        "ArXiv": "1706.08840",
+        "CorpusId": 37308416
+    },
+    "title": "Gradient Episodic Memory for Continual Learning",
+    "abstract": "One major obstacle towards AI is the poor ability of models to solve new problems quicker, and without forgetting previously acquired knowledge. To better understand this issue, we study the problem of continual learning, where the model observes, once and one by one, examples concerning a sequence of tasks. First, we propose a set of metrics to evaluate models learning over a continuum of data. These metrics characterize models not only by their test accuracy, but also in terms of their ability to transfer knowledge across tasks. Second, we propose a model for continual learning, called Gradient Episodic Memory (GEM) that alleviates forgetting, while allowing beneficial transfer of knowledge to previous tasks. Our experiments on variants of the MNIST and CIFAR-100 datasets demonstrate the strong performance of GEM when compared to the state-of-the-art.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2017,
+    "referenceCount": 54,
+    "citationCount": 2258,
+    "influentialCitationCount": 400,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A model for continual learning, called Gradient Episodic Memory (GEM) is proposed that alleviates forgetting, while allowing beneficial transfer of knowledge to previous tasks."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1401804750",
+            "name": "David Lopez-Paz"
+        },
+        {
+            "authorId": "1706809",
+            "name": "Marc'Aurelio Ranzato"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "4c75b748911ddcd888c5122f7672f69caa5d661f",
+            "title": "Statistical Learning Theory"
+        },
+        {
+            "paperId": "a36c43156fda548b40539b691706fddb1b142a9c",
+            "title": "Encoder Based Lifelong Learning"
+        },
+        {
+            "paperId": "2c9c61d531f96f26097127946f6ccb0d5807a5fc",
+            "title": "Training Mixture Models at Scale via Coresets"
+        },
+        {
+            "paperId": "4d921bca1938ddbd4e14895ea5c9d805ed1a825b",
+            "title": "Improved multitask learning through synaptic intelligence"
+        },
+        {
+            "paperId": "11e8cee777cd326afb75471d60efe3b1241cdba8",
+            "title": "CommAI: Evaluating the first steps towards a useful general AI"
+        },
+        {
+            "paperId": "321f1877bc570ff9b318e909cefb7c27138458df",
+            "title": "PathNet: Evolution Channels Gradient Descent in Super Neural Networks"
+        },
+        {
+            "paperId": "2e55ba6c97ce5eb55abd959909403fe8da7e9fe9",
+            "title": "Overcoming catastrophic forgetting in neural networks"
+        },
+        {
+            "paperId": "1703631a938b397ba7e858161ce16448f6046d6f",
+            "title": "iCaRL: Incremental Classifier and Representation Learning"
+        },
+        {
+            "paperId": "66b8d34477cf1736f91fd22b27e37ce0b703c86e",
+            "title": "Expert Gate: Lifelong Learning with a Network of Experts"
+        },
+        {
+            "paperId": "ea160ca21b2a8c4402b077d6338e6a679aa9d7b9",
+            "title": "Less-forgetting Learning in Deep Neural Networks"
+        },
+        {
+            "paperId": "8f3b80ddc0dd62e6c3369fabb1715990c29e9b9a",
+            "title": "Learning without Forgetting"
+        },
+        {
+            "paperId": "4423357dd21cc59662c6fabaf9839b15ef0fb8a8",
+            "title": "Learning feed-forward one-shot learners"
+        },
+        {
+            "paperId": "53c9443e4e667170acc60ca1b31a0ec7151fe753",
+            "title": "Progressive Neural Networks"
+        },
+        {
+            "paperId": "be1bb4e4aa1fcf70281b4bd24d8cd31c04864bb6",
+            "title": "Matching Networks for One Shot Learning"
+        },
+        {
+            "paperId": "bbd0e204f48a45735e1065c8b90b298077b73192",
+            "title": "One-shot Learning with Memory-Augmented Neural Networks"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "3457ddb9b9f614aad52052d680f9b11c08b3a4cf",
+            "title": "A Roadmap Towards Machine Intelligence"
+        },
+        {
+            "paperId": "5dc2a215bd7cd5bdd3a0baa8c967575632696fac",
+            "title": "Universal Value Function Approximators"
+        },
+        {
+            "paperId": "0c908739fbff75f03469d13d4a1a07de3414ee19",
+            "title": "Distilling the Knowledge in a Neural Network"
+        },
+        {
+            "paperId": "a2bf2e83df0c8b3257a8a809cb96c3ea58ec04b3",
+            "title": "Causal inference by using invariant prediction: identification and confidence intervals"
+        },
+        {
+            "paperId": "60184c071f782cc97d28f8a78b14405b3b3f1e28",
+            "title": "Curriculum learning of multiple tasks"
+        },
+        {
+            "paperId": "02095c4b9a6b3f968e23aaf01da427031b91669e",
+            "title": "Efficient Representations for Lifelong Learning and Autoencoding"
+        },
+        {
+            "paperId": "c08f5fa876181fc040d76c75fe2433eee3c9b001",
+            "title": "Learning and Transferring Mid-level Image Representations Using Convolutional Neural Networks"
+        },
+        {
+            "paperId": "0407b605b8f55db72e2545586bfe8e946b691b70",
+            "title": "An Empirical Investigation of Catastrophic Forgeting in Gradient-Based Neural Networks"
+        },
+        {
+            "paperId": "44ddac48353ead135eef4096859956eaa31be2a5",
+            "title": "Learning Factored Representations in a Deep Mixture of Experts"
+        },
+        {
+            "paperId": "8d49d34fff05285cb9a148261caff57775eb4453",
+            "title": "ELLA: An Efficient Lifelong Learning Algorithm"
+        },
+        {
+            "paperId": "a3004017d743b3dba80bc505c0317c95f7662edc",
+            "title": "Duality in Quadratic Programming..."
+        },
+        {
+            "paperId": "50e9a441f56124b7b969e6537b66469a0e1aa707",
+            "title": "Horde: a scalable real-time architecture for learning knowledge from unsupervised sensorimotor interaction"
+        },
+        {
+            "paperId": "a25fbcbbae1e8f79c4360d26aa11a3abf1a11972",
+            "title": "A Survey on Transfer Learning"
+        },
+        {
+            "paperId": "ddf0f2226cc837750eb1eb57c43d8192ef0fc2b3",
+            "title": "Toward an Architecture for Never-Ending Language Learning"
+        },
+        {
+            "paperId": "66d398aeaeb7ec24ededb1adaa4b4f09a6c1bcde",
+            "title": "A theory of learning from different domains"
+        },
+        {
+            "paperId": "0f6911bc1e6abee8bbf9dd3f8d54d40466429da7",
+            "title": "Zero-shot Learning with Semantic Output Codes"
+        },
+        {
+            "paperId": "0566bf06a0368b518b8b474166f7b1dfef3f9283",
+            "title": "Learning to detect unseen object classes by between-class attribute transfer"
+        },
+        {
+            "paperId": "8de174ab5419b9d3127695405efd079808e956e8",
+            "title": "Curriculum learning"
+        },
+        {
+            "paperId": "9bde163b97c07d6b7c0927d93c9c568c0f08c825",
+            "title": "A Bayesian network framework for relational shape matching"
+        },
+        {
+            "paperId": "fc8cda36a0972e7de1ac3a7bcb81dc32da79bee4",
+            "title": "Learning with Kernels: Support Vector Machines, Regularization, Optimization, and Beyond"
+        },
+        {
+            "paperId": "727e1e16ede6eaad241bad11c525da07b154c688",
+            "title": "A Model of Inductive Bias Learning"
+        },
+        {
+            "paperId": "2722b9e5ab8da95f03e578bb65879c452c105385",
+            "title": "Catastrophic forgetting in connectionist networks"
+        },
+        {
+            "paperId": "dde691805cfa7d6f1bb88c7411c1c3377b6cdc67",
+            "title": "Lifelong Learning Algorithms"
+        },
+        {
+            "paperId": "161ffb54a3fdf0715b198bb57bd22f910242eb49",
+            "title": "Multitask Learning"
+        },
+        {
+            "paperId": "cd94282256db82fb814480f08f8612045f0725f1",
+            "title": "CHILD: A First Step Towards Continual Learning"
+        },
+        {
+            "paperId": "371c9dc680e916f79d9c78fcf6c894a2dd299095",
+            "title": "Is Learning The n-th Thing Any Easier Than Learning The First?"
+        },
+        {
+            "paperId": "2ebf18e7892e660a833152ddc6cf8f1d21a7b881",
+            "title": "Why there are complementary learning systems in the hippocampus and neocortex: insights from the successes and failures of connectionist models of learning and memory."
+        },
+        {
+            "paperId": "18e5ae17ea0c934dcad242b860e5f7a8ad6dd049",
+            "title": "A lifelong learning perspective for mobile robot control"
+        },
+        {
+            "paperId": "591b52d24eb95f5ec3622b814bc91ac872acda9e",
+            "title": "Connectionist models of recognition memory: constraints imposed by learning and forgetting functions."
+        },
+        {
+            "paperId": "44b6da0cd36c0fa2f7d3485c6dc0b6d2fbe379bb",
+            "title": "Learning how to learn"
+        },
+        {
+            "paperId": "1898d4f596934165912350ed7c6e3083b3a709b4",
+            "title": "Lifelong Learning with Weighted Majority Votes"
+        },
+        {
+            "paperId": null,
+            "title": "Causal and statistical learning"
+        },
+        {
+            "paperId": "ca58604c70814c2104c89cf49a86c8bf087efeb9",
+            "title": "Deep Sequential Neural Networks"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        },
+        {
+            "paperId": "dc52d1ede1b90bf9d296bc5b34c9310b7eaa99a2",
+            "title": "The mnist database of handwritten digits"
+        },
+        {
+            "paperId": "082b1f5c791cadef18c4920ecc1396615a3fe7cb",
+            "title": "Continual learning in reinforcement environments"
+        },
+        {
+            "paperId": "c213af6582c0d518a6e8e14217611c733eeb1ef1",
+            "title": "Catastrophic Interference in Connectionist Networks: The Sequential Learning Problem"
+        },
+        {
+            "paperId": null,
+            "title": "Non-iid input data : the continuum of data is not iid with respect to any \ufb01xed probability distribution P ( X, T, Y ) since, once tasks switch, a whole sequence of examples from the new task"
+        }
+    ]
+}

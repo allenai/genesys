@@ -1,0 +1,110 @@
+{
+    "paperId": "8250ecbaef057bdb5390ef4e4be798f1523a23f6",
+    "externalIds": {
+        "MAG": "1723811852",
+        "ArXiv": "1412.7479",
+        "DBLP": "journals/corr/VijayanarasimhanSMY14",
+        "CorpusId": 15147584
+    },
+    "title": "Deep Networks With Large Output Spaces",
+    "abstract": "Deep neural networks have been extremely successful at various image, speech, video recognition tasks because of their ability to model deep structures within the data. However, they are still prohibitively expensive to train and apply for problems containing millions of classes in the output layer. Based on the observation that the key computation common to most neural network layers is a vector/matrix product, we propose a fast locality-sensitive hashing technique to approximate the actual dot product enabling us to scale up the training and inference to millions of output classes. We evaluate our technique on three diverse large-scale recognition tasks and show that our approach can train large-scale models at a faster rate (in terms of steps/total time) compared to baseline methods.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2014,
+    "referenceCount": 17,
+    "citationCount": 56,
+    "influentialCitationCount": 4,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A fast locality-sensitive hashing technique to approximate the actual dot product enabling us to scale up the training and inference to millions of output classes and can train large-scale models at a faster rate compared to baseline methods."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2259154",
+            "name": "Sudheendra Vijayanarasimhan"
+        },
+        {
+            "authorId": "1789737",
+            "name": "Jonathon Shlens"
+        },
+        {
+            "authorId": "3089272",
+            "name": "R. Monga"
+        },
+        {
+            "authorId": "1842163",
+            "name": "J. Yagnik"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "6d4c9c923e9f145d1c01a2de2afc38ec23c44253",
+            "title": "Large-Scale Video Classification with Convolutional Neural Networks"
+        },
+        {
+            "paperId": "f3de86aeb442216a8391befcacb49e58b478f512",
+            "title": "Distributed Representations of Sentences and Documents"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "954ec02492cecbf8a4fc1c8e37179fae613dbfc9",
+            "title": "Fast, Accurate Detection of 100,000 Object Classes on a Single Machine"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "3127190433230b3dc1abd0680bb58dced4bcd90e",
+            "title": "Large Scale Distributed Deep Networks"
+        },
+        {
+            "paperId": "72e93aa6767ee683de7f001fa72f1314e40a8f35",
+            "title": "Building high-level features using large scale unsupervised learning"
+        },
+        {
+            "paperId": "348b0133bd5d0d885ce7e0f8e5d6bb394a03b2b2",
+            "title": "Multiple feature hashing for real-time large scale near-duplicate video retrieval"
+        },
+        {
+            "paperId": "9ce42ca0666a52107a08b15affd496f2c781df72",
+            "title": "The power of comparative reasoning"
+        },
+        {
+            "paperId": "1810851f718e527595ffc04ee6b3c1846518db54",
+            "title": "Real-time large scale near-duplicate web video retrieval"
+        },
+        {
+            "paperId": "8a8db8e2ce5233053550aea3924ead66e262cc3a",
+            "title": "Near-Duplicate Keyframe Identification With Interest Point Matching and Pattern Learning"
+        },
+        {
+            "paperId": "2e74388f55f2cc704c4de410578887a53a9433b0",
+            "title": "Similarity Search in High Dimensions via Hashing"
+        },
+        {
+            "paperId": "c19fbefdeead6a4154a22a9c8551a18b1530033a",
+            "title": "Hierarchical Probabilistic Neural Network Language Model"
+        },
+        {
+            "paperId": "f12f7c9981615ef5fb3515b166fc939a1ca82121",
+            "title": "Proceedings of the Twenty-Second International Joint Conference on Artificial Intelligence WSABIE: Scaling Up To Large Vocabulary Image Annotation"
+        },
+        {
+            "paperId": null,
+            "title": "We performed our experiments with three loss functions, traditional softmax, hierarchical"
+        },
+        {
+            "paperId": null,
+            "title": "consisting of several billion sentences"
+        },
+        {
+            "paperId": null,
+            "title": "We compare all networks with three loss functions after 100 hours of training time across similar CPU time"
+        }
+    ]
+}

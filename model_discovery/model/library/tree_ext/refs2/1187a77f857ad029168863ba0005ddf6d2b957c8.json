@@ -1,0 +1,185 @@
+{
+    "paperId": "1187a77f857ad029168863ba0005ddf6d2b957c8",
+    "externalIds": {
+        "MAG": "2108682071",
+        "DBLP": "journals/jmlr/GreensmithBB04",
+        "CorpusId": 5259564
+    },
+    "title": "Variance Reduction Techniques for Gradient Estimates in Reinforcement Learning",
+    "abstract": "Policy gradient methods for reinforcement learning avoid some of the undesirable properties of the value function approaches, such as policy degradation (Baxter and Bartlett, 2001). However, the variance of the performance gradient estimates obtained from the simulation is sometimes excessive. In this paper, we consider variance reduction methods that were developed for Monte Carlo estimates of integrals. We study two commonly used policy gradient techniques, the baseline and actor-critic methods, from this perspective. Both can be interpreted as additive control variate variance reduction methods. We consider the expected average reward performance measure, and we focus on the GPOMDP algorithm for estimating performance gradients in partially observable Markov decision processes controlled by stochastic reactive policies. We give bounds for the estimation error of the gradient estimates for both baseline and actor-critic algorithms, in terms of the sample size and mixing properties of the controlled system. For the baseline technique, we compute the optimal baseline, and show that the popular approach of using the average reward to define the baseline can be suboptimal. For actor-critic algorithms, we show that using the true value function as the critic can be suboptimal. We also discuss algorithms for estimating the optimal baseline and approximate value function.",
+    "venue": "Journal of machine learning research",
+    "year": 2001,
+    "referenceCount": 37,
+    "citationCount": 472,
+    "influentialCitationCount": 33,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper considers variance reduction methods that were developed for Monte Carlo estimates of integrals, and gives bounds for the estimation error of the gradient estimates for both baseline and actor-critic algorithms, in terms of the sample size and mixing properties of the controlled system."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3054729",
+            "name": "Evan Greensmith"
+        },
+        {
+            "authorId": "1745169",
+            "name": "P. Bartlett"
+        },
+        {
+            "authorId": "47392513",
+            "name": "Jonathan Baxter"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "c1bfa4cd9bb82610d67c13aca57cb46437fae34f",
+            "title": "OnActor-Critic Algorithms"
+        },
+        {
+            "paperId": "085fb3acabcbf80ef1bf47daec50d246475b072b",
+            "title": "Infinite-Horizon Policy-Gradient Estimation"
+        },
+        {
+            "paperId": "a754de170e099eafb72d74e70e7a300846c31902",
+            "title": "Experiments with Infinite-Horizon, Policy-Gradient Estimation"
+        },
+        {
+            "paperId": "48b2bde4af5ac22dc33def8576f188bd13711fe5",
+            "title": "Some inequalities for information divergence and related measures of discrimination"
+        },
+        {
+            "paperId": "f1c879d4cb0c83124b86bcd22bce8d4921fef901",
+            "title": "Estimation and Approximation Bounds for Gradient-Based Reinforcement Learning"
+        },
+        {
+            "paperId": "d52eef68442eff8dd029d228c8f2cf01d60e3ab8",
+            "title": "Approximating Integrals Via Monte Carlo and Deterministic Methods"
+        },
+        {
+            "paperId": "a20f0ce0616def7cc9a87446c228906cd5da093b",
+            "title": "Policy Gradient Methods for Reinforcement Learning with Function Approximation"
+        },
+        {
+            "paperId": "f608268033a797a38047575e6b4de65899eedd5f",
+            "title": "Simulation-based optimization of Markov reward processes"
+        },
+        {
+            "paperId": "ab2ada3c97ad6f0ae79ca8b7b459f18d77119f9c",
+            "title": "Gradient Descent for General Reinforcement Learning"
+        },
+        {
+            "paperId": "5fcb9e6cd2539208c79ed5d818ebf8361fa55c21",
+            "title": "An Analysis of Actor/Critic Algorithms Using Eligibility Traces: Reinforcement Learning with Imperfect Value Function"
+        },
+        {
+            "paperId": "116d7798c1123cf7fad4176e98f58fd49de4f8f1",
+            "title": "Planning and Acting in Partially Observable Stochastic Domains"
+        },
+        {
+            "paperId": "382f2d3c7e318c3ad2de028c6598a9700899ce80",
+            "title": "Introduction to Reinforcement Learning"
+        },
+        {
+            "paperId": "1cb81c31c5495f33c4a9fedfc73f5dd98c6c5df6",
+            "title": "Monte Carlo: Concepts, Algorithms, and Applications"
+        },
+        {
+            "paperId": "7d1a7cd1d0c058fe5b78388dd47224d38de59071",
+            "title": "Reinforcement Learning in POMDPs with Function Approximation"
+        },
+        {
+            "paperId": "4caabff8b795d5d7334b1ff0d55d4aab366fa6ca",
+            "title": "Likelihood ratio gradient estimation for stochastic recursions"
+        },
+        {
+            "paperId": "03e26fef7d485f54f6c2965744f7dfb248460c48",
+            "title": "Reinforcement Learning by Stochastic Hill Climbing on Discounted Reward"
+        },
+        {
+            "paperId": "a9cd8efe9184dddb1bedbbec3a356c4dfb22fe63",
+            "title": "Markov Decision Processes: Discrete Stochastic Dynamic Programming"
+        },
+        {
+            "paperId": "b631510618b13c32a87ac134f11dcb22cec8c9a1",
+            "title": "A survey of algorithmic methods for partially observed Markov decision processes"
+        },
+        {
+            "paperId": "71a1481eb70ce46dc2242aa46956fc2481115e92",
+            "title": "How to optimize discrete-event systems from a single sample path by the score function method"
+        },
+        {
+            "paperId": "977817f265cf7b6976442bdefbe81cd05f3139b9",
+            "title": "Likelihood ratio gradient estimation for stochastic systems"
+        },
+        {
+            "paperId": "e4a800987bd7321dbbf8d9abb30ec7b9c3c541b0",
+            "title": "Sensitivity Analysis for Simulations via Likelihood Ratios"
+        },
+        {
+            "paperId": "a91635f8d0e7fb804efd1c38d9c24ee952ba7076",
+            "title": "Learning to predict by the methods of temporal differences"
+        },
+        {
+            "paperId": "8a7acaf6469c06ae5876d92f013184db5897bb13",
+            "title": "Neuronlike adaptive elements that can solve difficult learning control problems"
+        },
+        {
+            "paperId": "1b72ef7ed4f055d6ef40e5a7cc7e6e9494b44a55",
+            "title": "Non-negative Matrices and Markov Chains (Springer Series in Statistics)"
+        },
+        {
+            "paperId": "b9ced41b080b50e3c422e0215871c3fb972a296f",
+            "title": "Monte Carlo Methods"
+        },
+        {
+            "paperId": "4c915c1eecb217c123a36dc6d3ce52d12c742614",
+            "title": "Simple Statistical Gradient-Following Algorithms for Connectionist Reinforcement Learning"
+        },
+        {
+            "paperId": "41e1b9de83a9e2f53bcb3f27e18d349fd63b40fa",
+            "title": "Linear Least-Squares algorithms for temporal difference learning"
+        },
+        {
+            "paperId": null,
+            "title": "Infinite-horizon gradient-based policy search"
+        },
+        {
+            "paperId": null,
+            "title": "Infinite-horizo n gradient-based policy search: II. Gradient ascent algorithms and experiments"
+        },
+        {
+            "paperId": "ac4af1df88e178386d782705acc159eaa0c3904a",
+            "title": "Actor-Critic Algorithms"
+        },
+        {
+            "paperId": "62663f3f25b64fd7bfa2b92d71da984ab4d51004",
+            "title": "Reinforcement learning for continuous action using stochastic gradient ascent"
+        },
+        {
+            "paperId": "97efafdb4a3942ab3efba53ded7413199f79c054",
+            "title": "Reinforcement Learning: An Introduction"
+        },
+        {
+            "paperId": "a579d06ac278e14948f67748cd651e4eb617ae4e",
+            "title": "Learning Without State-Estimation in Partially Observable Markovian Decision Processes"
+        },
+        {
+            "paperId": "9a208167b153e6dfc3327415068ae4a7a6dcd006",
+            "title": "Reinforcement Learning Algorithm for Partially Observable Markov Decision Problems"
+        },
+        {
+            "paperId": null,
+            "title": "Measure Theory. Number 143 in Graduate Texts in Mathematics"
+        },
+        {
+            "paperId": null,
+            "title": "Reinforcement comparison"
+        },
+        {
+            "paperId": null,
+            "title": "VARIANCE REDUCTION OF GRADIENT ESTIMATES IN RL"
+        }
+    ]
+}

@@ -1,0 +1,355 @@
+{
+    "paperId": "0d4b28a4a244a569d5a1345464ae2be48595fff0",
+    "externalIds": {
+        "MAG": "3099330747",
+        "ArXiv": "1809.07454",
+        "DBLP": "journals/corr/abs-1809-07454",
+        "DOI": "10.1109/TASLP.2019.2915167",
+        "CorpusId": 52310361,
+        "PubMed": "31485462"
+    },
+    "title": "Conv-TasNet: Surpassing Ideal Time\u2013Frequency Magnitude Masking for Speech Separation",
+    "abstract": "Single-channel, speaker-independent speech separation methods have recently seen great progress. However, the accuracy, latency, and computational cost of such methods remain insufficient. The majority of the previous methods have formulated the separation problem through the time\u2013frequency representation of the mixed signal, which has several drawbacks, including the decoupling of the phase and magnitude of the signal, the suboptimality of time\u2013frequency representation for speech separation, and the long latency in calculating the spectrograms. To address these shortcomings, we propose a fully convolutional time-domain audio separation network (Conv-TasNet), a deep learning framework for end-to-end time-domain speech separation. Conv-TasNet uses a linear encoder to generate a representation of the speech waveform optimized for separating individual speakers. Speaker separation is achieved by applying a set of weighting functions (masks) to the encoder output. The modified encoder representations are then inverted back to the waveforms using a linear decoder. The masks are found using a temporal convolutional network consisting of stacked one-dimensional dilated convolutional blocks, which allows the network to model the long-term dependencies of the speech signal while maintaining a small model size. The proposed Conv-TasNet system significantly outperforms previous time\u2013frequency masking methods in separating two- and three-speaker mixtures. Additionally, Conv-TasNet surpasses several ideal time\u2013frequency magnitude masks in two-speaker speech separation as evaluated by both objective distortion measures and subjective quality assessment by human listeners. Finally, Conv-TasNet has a significantly smaller model size and a shorter minimum latency, making it a suitable solution for both offline and real-time speech separation applications. This study, therefore, represents a major step toward the realization of speech separation systems for real-world speech processing technologies.",
+    "venue": "IEEE/ACM Transactions on Audio Speech and Language Processing",
+    "year": 2018,
+    "referenceCount": 79,
+    "citationCount": 1529,
+    "influentialCitationCount": 284,
+    "openAccessPdf": {
+        "url": "https://ieeexplore.ieee.org/ielx7/6570655/8716764/08707065.pdf",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A fully convolutional time-domain audio separation network (Conv-TasNet), a deep learning framework for end-to-end time- domain speech separation, which significantly outperforms previous time\u2013frequency masking methods in separating two- and three-speaker mixtures."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145714738",
+            "name": "Yi Luo"
+        },
+        {
+            "authorId": "1686269",
+            "name": "N. Mesgarani"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "219eb2745a272f29c1b417eb247ef0bc5df9e3cd",
+            "title": "Real-time Single-channel Dereverberation and Separation with Time-domain Audio Separation Network"
+        },
+        {
+            "paperId": "cd6e8386c720d929ba46f1665617645f0291d415",
+            "title": "Wave-U-Net: A Multi-Scale Neural Network for End-to-End Audio Source Separation"
+        },
+        {
+            "paperId": "080e1bb6bbebeb78f822b3998b7ed898ab6457aa",
+            "title": "End-to-End Speech Separation with Unfolded Iterative Phase Reconstruction"
+        },
+        {
+            "paperId": "1ca6027b4bb45872ce117beec23754098012f503",
+            "title": "CBLDNN-Based Speaker-Independent Speech Separation Via Generative Adversarial Training"
+        },
+        {
+            "paperId": "a0c804276e7afbfbdffba7f0ca69c3abbf85ba3e",
+            "title": "Single Channel Speech Separation with Constrained Utterance Level Permutation Invariant Training Using Grid LSTM"
+        },
+        {
+            "paperId": "e6ff38622dfba67583169f5392d2c7741ffaec4c",
+            "title": "Multi-Channel Deep Clustering: Discriminative Spectral and Spatial Embeddings for Speaker-Independent Speech Separation"
+        },
+        {
+            "paperId": "a965235c0280290a08e3dd48d009c4a50f82e3e7",
+            "title": "Alternative Objective Functions for Deep Clustering"
+        },
+        {
+            "paperId": "921196c32213a229245a9705ee4768bc941e7a26",
+            "title": "An Empirical Evaluation of Generic Convolutional and Recurrent Networks for Sequence Modeling"
+        },
+        {
+            "paperId": "dd9cfe7124c734f5a6fc90227d541d3dbcd72ba4",
+            "title": "MobileNetV2: Inverted Residuals and Linear Bottlenecks"
+        },
+        {
+            "paperId": "b7ae625f147b2f4c9382247f54f02ca3840e8efe",
+            "title": "Cracking the cocktail party problem by multi-beam deep attractor network"
+        },
+        {
+            "paperId": "e5c98541d7ba1cdf92a853d731c4bb1b531aa5d9",
+            "title": "TaSNet: Time-Domain Audio Separation Network for Real-Time, Single-Channel Speech Separation"
+        },
+        {
+            "paperId": "83ea11b45cba0fc7ee5d60f608edae9c1443861d",
+            "title": "Singing Voice Separation with Deep U-Net Convolutional Networks"
+        },
+        {
+            "paperId": "0a1e664b66aae97d2f57b45d86dd7ac152e8fd92",
+            "title": "End-to-End Waveform Utterance Enhancement for Direct Evaluation Metrics Optimization by Fully Convolutional Neural Networks"
+        },
+        {
+            "paperId": "ae523e2f137fa2a4f5a6cbcc443ba63db2642a96",
+            "title": "Supervised Speech Separation Based on Deep Learning: An Overview"
+        },
+        {
+            "paperId": "29a795013c995ca55ac8205e7c02a19f203f7727",
+            "title": "Single-Channel Multi-talker Speech Recognition with Permutation Invariant Training"
+        },
+        {
+            "paperId": "7aa505f90d2b0d6fd9a4d878d4cf3f0bd37e7cc2",
+            "title": "Speaker-Independent Speech Separation With Deep Attractor Network"
+        },
+        {
+            "paperId": "07c4fc48ad7b7d1a417b0bb72d0ae2d4efc5aa83",
+            "title": "Depthwise Separable Convolutions for Neural Machine Translation"
+        },
+        {
+            "paperId": "12279a0a09d13a8465b0a4bf9007bcdc3c1aad38",
+            "title": "End-To-End Source Separation With Adaptive Front-Ends"
+        },
+        {
+            "paperId": "3647d6d0f151dc05626449ee09cc7bce55be497e",
+            "title": "MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications"
+        },
+        {
+            "paperId": "2374a65e335b26c2ae9692b6c2f1408401d86f5b",
+            "title": "A Consolidated Perspective on Multimicrophone Speech Enhancement and Source Separation"
+        },
+        {
+            "paperId": "f8d43ff00585c53f65eb04e15477113c2d2b758b",
+            "title": "SEGAN: Speech Enhancement Generative Adversarial Network"
+        },
+        {
+            "paperId": "256ad591c6fd5269fc6f88b9715bf379f210f53d",
+            "title": "Multitalker Speech Separation With Utterance-Level Permutation Invariant Training of Deep Recurrent Neural Networks"
+        },
+        {
+            "paperId": "5c46e8c6dbfac2fb298e592b74057b372917695c",
+            "title": "Deep attractor network for single-microphone speaker separation"
+        },
+        {
+            "paperId": "1a3f032007526110439f0ab006c1e6df7fb87a63",
+            "title": "Deep clustering and conventional networks for music separation: Stronger together"
+        },
+        {
+            "paperId": "210f258524deabc3d08cbbea4e4ca5c2a98f4846",
+            "title": "Temporal Convolutional Networks for Action Segmentation and Detection"
+        },
+        {
+            "paperId": "5b6ec746d309b165f9f9def873a2375b6fb40f3d",
+            "title": "Xception: Deep Learning with Depthwise Separable Convolutions"
+        },
+        {
+            "paperId": "df0402517a7338ae28bc54acaac400de6b456a46",
+            "title": "WaveNet: A Generative Model for Raw Audio"
+        },
+        {
+            "paperId": "589803a7319d32096587a7c6f165795c382d2b0d",
+            "title": "Multi-Talker Speech Recognition Based on Blind Source Separation with ad hoc Microphone Array Using Smartphones and Cloud Storage"
+        },
+        {
+            "paperId": "6903ea1adc08200dfe2df5a54896c4c76a0088d1",
+            "title": "Temporal Convolutional Networks: A Unified Approach to Action Segmentation"
+        },
+        {
+            "paperId": "97fb4e3d45bb098e27e0071448b6152217bd35a5",
+            "title": "Layer Normalization"
+        },
+        {
+            "paperId": "ab94fae3d49cd7016a47020469dc257d8090f5bb",
+            "title": "Single-Channel Multi-Speaker Separation Using Deep Clustering"
+        },
+        {
+            "paperId": "d4f62ffbf7c51a5ad01b89c6889c649bf48baac8",
+            "title": "Permutation invariant training of deep models for speaker-independent multi-talker speech separation"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "7ae9b087e80f735e60d19e92d507e918f31021aa",
+            "title": "Deep Neural Networks for Single-Channel Multi-Talker Speech Recognition"
+        },
+        {
+            "paperId": "3332dc72fbe3907e45e8a500c6a1202ad5092c0f",
+            "title": "Deep clustering: Discriminative embeddings for segmentation and separation"
+        },
+        {
+            "paperId": "6364fdaa0a0eccd823a779fcdd489173f938e91a",
+            "title": "U-Net: Convolutional Networks for Biomedical Image Segmentation"
+        },
+        {
+            "paperId": "c6e903099f01f1bd27e763385be02117e06b201d",
+            "title": "Advances in deep neural network approaches to speaker recognition"
+        },
+        {
+            "paperId": "3004a3e4d8969dc3c36c9274b0f76ecc874f2e6a",
+            "title": "Phase-sensitive and recognition-boosted speech separation using deep recurrent neural networks"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "d6f2f611da110b5b5061731be3fc4c7f45d8ee23",
+            "title": "Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "7e0f013e85eff9b089f58d9a3e98605ae1a7ba18",
+            "title": "On Training Targets for Supervised Speech Separation"
+        },
+        {
+            "paperId": "a917a31e4e32e81c49096702cfe05c899c313e7a",
+            "title": "A novel scheme for speaker recognition using a phonetically-aware deep neural network"
+        },
+        {
+            "paperId": "ea26ce69f8984832de2438ec7283f329db603cde",
+            "title": "Time-Domain Blind Separation of Audio Sources on the Basis of a Complete ICA Decomposition of an Observation Space"
+        },
+        {
+            "paperId": "394047a89e05629e28ce61e841d00133ae40a4e1",
+            "title": "Nonnegative Least-Correlated Component Analysis for Separation of Dependent Sources by Volume Maximization"
+        },
+        {
+            "paperId": "7c9a5be1729bdad029637bc61619831d82fbe3e5",
+            "title": "Tonotopic organization of human auditory cortex"
+        },
+        {
+            "paperId": "6e0121548ae114b8ed70b5189cbc4800d8b4290d",
+            "title": "K-nearest neighbor"
+        },
+        {
+            "paperId": "4e9e9b0716454f30e106da241e7cc1c90cb3e701",
+            "title": "On the optimality of ideal binary time-frequency masks"
+        },
+        {
+            "paperId": "29de8281b8cbc764d605a20d00b818eba6d47da1",
+            "title": "Performance measurement in blind audio source separation"
+        },
+        {
+            "paperId": "ad26804e1c70d75fd22552f18ba5f84bf592591d",
+            "title": "Independent Vector Analysis: An Extension of ICA to Multivariate Components"
+        },
+        {
+            "paperId": "6a8f704964f6150ddbdcd4fa5674c271a2d686c4",
+            "title": "Effects of fundamental frequency and vocal-tract length changes on attention to one of two simultaneous talkers."
+        },
+        {
+            "paperId": "80af83ece1fe2b9544e06a997e863b1c816db84f",
+            "title": "Single-channel signal separation using time-domain basis functions"
+        },
+        {
+            "paperId": "dd5e786fd6ced91db79105ca289f49816fe17c80",
+            "title": "Perceptual evaluation of speech quality (PESQ)-a new method for speech quality assessment of telephone networks and codecs"
+        },
+        {
+            "paperId": "d42fec94b31d48ffc5520465a67f0adafc40c626",
+            "title": "Blind Source Separation by Sparse Decomposition in a Signal Dictionary"
+        },
+        {
+            "paperId": "b8da1aec8d5542abe815f58caaa99febef525aa7",
+            "title": "Blind source separation of more sources than mixtures using overcomplete representations"
+        },
+        {
+            "paperId": "56a40028a5ce07f17b096383e31708777c316b90",
+            "title": "Tonotopic organization of the auditory cortex: pitch versus frequency representation."
+        },
+        {
+            "paperId": "cb38b1d203e7cbd2a5bbb5be659987016dbd8243",
+            "title": "Cepstral analysis synthesis on the mel frequency scale"
+        },
+        {
+            "paperId": "14bc876fae55faf5669beb01667a4f3bd324a4f1",
+            "title": "Signal estimation from modified short-time Fourier transform"
+        },
+        {
+            "paperId": "998e17afe08aea9953e8b14697d5e563b4efa007",
+            "title": "Tonotopic organization of the human auditory cortex."
+        },
+        {
+            "paperId": "0db093335bc3b9445fa5a1a5526d634921d7b59a",
+            "title": "A statistical method for evaluating systematic relationships"
+        },
+        {
+            "paperId": "8660642c37be1eaeca0d22598558249ac47d767d",
+            "title": "A Regression Approach to Speech Enhancement Based on Deep Neural Networks"
+        },
+        {
+            "paperId": "2978880d0c3a469a1420411d4b0b30a7b3fe56e9",
+            "title": "An Experimental Study on Speech Enhancement Based on Deep Neural Networks"
+        },
+        {
+            "paperId": "367437d5ee2ffbfee1076cf21c3852b2ec50d734",
+            "title": "Speech enhancement based on deep denoising autoencoder"
+        },
+        {
+            "paperId": "5fc6318684468678341f5e4fcc1c7317538c9ff3",
+            "title": "Beyond NMF: Time-Domain Audio Source Separation without Phase Reconstruction"
+        },
+        {
+            "paperId": "2c092c017ea7ffa7eb247ce2652a9ff9e1030ede",
+            "title": "Super-human multi-talker speech recognition: A graphical modeling approach"
+        },
+        {
+            "paperId": "1e1d1c9a3cc9991bf64b075be899bff7440f895a",
+            "title": "Convex and Semi-Nonnegative Matrix Factorizations"
+        },
+        {
+            "paperId": "23310cb5f153d85e9b284ed5a42a966b649888a0",
+            "title": "Explicit consistency constraints for STFT spectrograms and their application to phase reconstruction"
+        },
+        {
+            "paperId": "732864d868cb5ee4275455d3d9f2b2def98949d8",
+            "title": "Time-domain blind audio source separation using advanced ICA methods"
+        },
+        {
+            "paperId": "5603fa04c44f12734921efe7c58e1db4ce9cd0a9",
+            "title": "Blind Speech Separation"
+        },
+        {
+            "paperId": null,
+            "title": "Vocabulary for performance and quality of service"
+        },
+        {
+            "paperId": "f2b9de0e150798ed3c8c365c1ac51564b0d32fdb",
+            "title": "On Ideal Binary Mask As the Computational Goal of Auditory Scene Analysis"
+        },
+        {
+            "paperId": "49e697209463cdb370128283bca4196e05540a00",
+            "title": "Blind Source Separation and Independent Component Analysis: A Review"
+        },
+        {
+            "paperId": "887539061b4dec2439180eb58c2d6eae13f24548",
+            "title": "Blind Source Separation and Independent Component Analysis : A Review"
+        },
+        {
+            "paperId": "551bb4142794dd682acf9a1159063158895e8214",
+            "title": "Survey on Independent Component Analysis"
+        },
+        {
+            "paperId": "a607778dfcb0c467384a7be9119a8ba891f665f3",
+            "title": "Survey on Independent Component Analysis"
+        },
+        {
+            "paperId": null,
+            "title": "v) With the same con\ufb01guration of the autoencoder"
+        },
+        {
+            "paperId": null,
+            "title": "vii) With the same con\ufb01guration of the entire network except for the type of normalization in the convolutional blocks"
+        },
+        {
+            "paperId": null,
+            "title": "iii) With the same con\ufb01guration of the separation module, more \ufb01lters in the autoencoder N leads to minor improvement"
+        },
+        {
+            "paperId": null,
+            "title": "vi) With the same number of \ufb01lters N and separation module con\ufb01guration, a smaller \ufb01lter length L leads to better performance"
+        }
+    ]
+}

@@ -1,0 +1,80 @@
+{
+    "paperId": "0a0072654ab1daeab420dc785b83230afc5881c2",
+    "externalIds": {
+        "MAG": "2112847713",
+        "DOI": "10.1109/ASRU.2003.1318499",
+        "CorpusId": 16225086
+    },
+    "title": "A state-space method for language modeling",
+    "abstract": "A new state-space method for language modeling is presented. The complexity of the model is controlled by choosing the dimension of the state instead of the smoothing and back-off methods common in n-gram modeling. The model complexity also controls the generalization ability of the model, allowing the model to handle similar words in a similar manner. We compare the state-space model to a traditional n-gram model in a task of letter prediction. In this proof-of-concept experiment, the state-space model gives similar results as the n-gram model with sparse training data, but performs clearly worse with dense training data. While the initial results are encouraging, the training algorithm should be made more effective, so that it can fully exploit the model structure and scale up to larger token sets, such as words.",
+    "venue": "2003 IEEE Workshop on Automatic Speech Recognition and Understanding (IEEE Cat. No.03EX721)",
+    "year": 2003,
+    "referenceCount": 11,
+    "citationCount": 7,
+    "influentialCitationCount": 1,
+    "openAccessPdf": {
+        "url": "http://users.ics.aalto.fi/vsiivola/papers/asru03.pdf",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work compares the state-space model to a traditional n-gram model in a task of letter prediction, and suggests that the training algorithm should be made more effective to fully exploit the model structure and scale up to larger token sets, such as words."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2057164",
+            "name": "Vesa Siivola"
+        },
+        {
+            "authorId": "145766200",
+            "name": "Antti Honkela"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "6c2b28f9354f667cd5bd07afc0471d8334430da7",
+            "title": "A Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "09c76da2361d46689825c4efc37ad862347ca577",
+            "title": "A bit of progress in language modeling"
+        },
+        {
+            "paperId": "30755a7614148f1acf5edca72385832410c7c33a",
+            "title": "A Unifying Review of Linear Gaussian Models"
+        },
+        {
+            "paperId": "fdf4aa623e4d5b5edaeb873ed8e8b1cef0b59c87",
+            "title": "Statistical language modeling using the CMU-cambridge toolkit"
+        },
+        {
+            "paperId": "01fa57bd91f731522c861404d29e4604ba6ac6d3",
+            "title": "A hierarchical Dirichlet language model"
+        },
+        {
+            "paperId": "3de5d40b60742e3dfa86b19e7f660962298492af",
+            "title": "Class-Based n-gram Models of Natural Language"
+        },
+        {
+            "paperId": "1b84b383ad59f79e607ad0f08a8a10876631a0cd",
+            "title": "Practical Methods of Optimization"
+        },
+        {
+            "paperId": "83344c8840e62aaf062c40e8a9bcf6f9d6bcf0ea",
+            "title": "Special issue: finite state methods in natural language processing"
+        },
+        {
+            "paperId": "255a77422b1da74da05d1714b7875356187385bd",
+            "title": "A New Approach to Linear Filtering and Prediction Problems"
+        },
+        {
+            "paperId": "fee539841d1346f65b47bc920463141fc72bcea7",
+            "title": "A New Approach to Linear Filtering and Prediction Problems"
+        },
+        {
+            "paperId": "24653b3b33d48c409deb672f8d8ee0eff31cd418",
+            "title": "Category-Based Statistical Language Models"
+        }
+    ]
+}

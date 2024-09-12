@@ -1,0 +1,231 @@
+{
+    "paperId": "5e86db3683931837a68e9843686be16b42510ea1",
+    "externalIds": {
+        "MAG": "2075336646",
+        "DBLP": "journals/tnn/ZhangK10a",
+        "DOI": "10.1109/TNN.2010.2064786",
+        "CorpusId": 17455174,
+        "PubMed": "20805054"
+    },
+    "title": "Clustered Nystr\u00f6m Method for Large Scale Manifold Learning and Dimension Reduction",
+    "abstract": "Kernel (or similarity) matrix plays a key role in many machine learning algorithms such as kernel methods, manifold learning, and dimension reduction. However, the cost of storing and manipulating the complete kernel matrix makes it infeasible for large problems. The Nystro\u0308m method is a popular sampling-based low-rank approximation scheme for reducing the computational burdens in handling large kernel matrices. In this paper, we analyze how the approximating quality of the Nystro\u0308m method depends on the choice of landmark points, and in particular the encoding powers of the landmark points in summarizing the data. Our (non-probabilistic) error analysis justifies a \u201cclustered Nystro\u0308m method\u201d that uses the k-means clustering centers as landmark points. Our algorithm can be applied to scale up a wide variety of algorithms that depend on the eigenvalue decomposition of kernel matrix (or its variant), such as kernel principal component analysis, Laplacian eigenmap, spectral clustering, as well as those involving kernel matrix inverse such as least-squares support vector machine and Gaussian process regression. Extensive experiments demonstrate the competitive performance of our algorithm in both accuracy and efficiency.",
+    "venue": "IEEE Transactions on Neural Networks",
+    "year": 2010,
+    "referenceCount": 49,
+    "citationCount": 217,
+    "influentialCitationCount": 19,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The (non-probabilistic) error analysis justifies a \u201cclustered Nystro\u0308m method\u201d that uses the k-means clustering centers as landmark points and can be applied to scale up a wide variety of algorithms that depend on the eigenvalue decomposition of kernel matrix."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2152986588",
+            "name": "Kai Zhang"
+        },
+        {
+            "authorId": "145193332",
+            "name": "J. Kwok"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "f66c25b635539bf35bd001219d35df1b4805aa85",
+            "title": "Parallel Spectral Clustering in Distributed Systems"
+        },
+        {
+            "paperId": "a67530a9e9e96720278ae1278baa53f48b944bd6",
+            "title": "Making Large-Scale Nystr\u00f6m Approximation Possible"
+        },
+        {
+            "paperId": "537ff50f531a40067a859391524523a0319514f0",
+            "title": "Large Graph Construction for Scalable Semi-Supervised Learning"
+        },
+        {
+            "paperId": "780165c9c7ebfed946bf47ad8afe471e8680fb25",
+            "title": "Ensemble Nystrom Method"
+        },
+        {
+            "paperId": "9794b809f33c279e9d8056d0b0695cc765adf69a",
+            "title": "On sampling-based approximate spectral decomposition"
+        },
+        {
+            "paperId": "154887a2a15e6f6ea2a26c2bfdf1d755a434f472",
+            "title": "Prototype vector machine for large scale semi-supervised learning"
+        },
+        {
+            "paperId": "25f7cdba90ff53b40ff865a4e088ee5749f34210",
+            "title": "Sampling Techniques for the Nystrom Method"
+        },
+        {
+            "paperId": "c9721cc364b4934066361c36e1abb2774455e4f3",
+            "title": "Sparse multiscale gaussian process regression"
+        },
+        {
+            "paperId": "68d54eca0cbd3a6bc45227bcec0efa5dbb9b1cc1",
+            "title": "Large-scale manifold learning"
+        },
+        {
+            "paperId": "9975d23bc1204693d7c2ae76aadae9fef2351127",
+            "title": "Block-quantized kernel matrix for fast spectral embedding"
+        },
+        {
+            "paperId": "56c9ddaca9bf54f5e491ce11b71af1e19b5ea2ce",
+            "title": "Predictive low-rank decomposition for kernel methods"
+        },
+        {
+            "paperId": "11e6b5a30a921e6028662105148fac41a76f0500",
+            "title": "On the Nystr\u00f6m Method for Approximating a Gram Matrix for Improved Kernel-Based Learning"
+        },
+        {
+            "paperId": "b0bc7302011f7589a13396487fc05a710b19363f",
+            "title": "Applying neighborhood consistency for fast clustering and kernel density estimation"
+        },
+        {
+            "paperId": "2f058f630c646182ca814b70daf7294f08585646",
+            "title": "Linearized cluster assignment via spectral ordering"
+        },
+        {
+            "paperId": "554894f70b28dba58b396c2d84080ac01051261b",
+            "title": "Gaussian Processes For Machine Learning"
+        },
+        {
+            "paperId": "9b8d8f2fb88e03f8f3ad01efbfef52718b70d104",
+            "title": "Using the Triangle Inequality to Accelerate k-Means"
+        },
+        {
+            "paperId": "8d4f4601940d5b13455541a643a39538bb54b6f3",
+            "title": "Kernel independent component analysis"
+        },
+        {
+            "paperId": "848a25a41cba56ca180ca79c6ba3470cc3b8f143",
+            "title": "An Efficient k-Means Clustering Algorithm: Analysis and Implementation"
+        },
+        {
+            "paperId": "0db7af02be7cbadc029f9104a8c784d02de42df7",
+            "title": "Efficient SVM Training Using Low-Rank Kernel Representations"
+        },
+        {
+            "paperId": "6700cbf389ae198190e672a3e5995b32f7a6d7c9",
+            "title": "An Experimental Evaluation of a Monte-Carlo Algorithm for Singular Value Decomposition"
+        },
+        {
+            "paperId": "9fe4e58bcf31d528a30f15bd0b180fbe298f91ef",
+            "title": "Fast computation of low rank matrix approximations"
+        },
+        {
+            "paperId": "9d16c547d15a08091e68c86a99731b14366e3f0d",
+            "title": "Laplacian Eigenmaps and Spectral Techniques for Embedding and Clustering"
+        },
+        {
+            "paperId": "01cbff216f2888f96151fb490338af40a09a0c30",
+            "title": "Spectral Relaxation for K-means Clustering"
+        },
+        {
+            "paperId": "c02dfd94b11933093c797c362e2f8f6a3b9b8012",
+            "title": "On Spectral Clustering: Analysis and an algorithm"
+        },
+        {
+            "paperId": "f0a3e1752e1146da927adc24ae07144ab2e744ec",
+            "title": "Nonlinear dimensionality reduction by locally linear embedding."
+        },
+        {
+            "paperId": "3537fcd0ff99a3b3cb3d279012df826358420556",
+            "title": "A global geometric framework for nonlinear dimensionality reduction."
+        },
+        {
+            "paperId": "763f4b3c0e830b92a2d6af3c547fcc4e52b5225e",
+            "title": "The Effect of the Input Density Distribution on Kernel-based Classifiers"
+        },
+        {
+            "paperId": "9ded923a192ffbf13e4466c6b7d2ede55724b716",
+            "title": "Sparse Greedy Matrix Approximation for Machine Learning"
+        },
+        {
+            "paperId": "3e43d731d638f769f12f8ab413d14a77a761856c",
+            "title": "Fisher discriminant analysis with kernels"
+        },
+        {
+            "paperId": "a7a7f19a2b601d5adc317523a1df96751354c2d2",
+            "title": "A Data-Clustering Algorithm on Distributed Memory Multiprocessors"
+        },
+        {
+            "paperId": "33789b8786192e36fd5132a46c9a5a4271d65c96",
+            "title": "Accelerating exact k-means algorithms with geometric reasoning"
+        },
+        {
+            "paperId": "ccce1cf96f641b3581fba6f4ce2545f4135a15e3",
+            "title": "Least Squares Support Vector Machine Classifiers"
+        },
+        {
+            "paperId": "bbc531f6ca5e83c6fa507bdf6399ecf76ef2e614",
+            "title": "Fast Monte-Carlo algorithms for finding low-rank approximations"
+        },
+        {
+            "paperId": "3f600e6c6cf93e78c9e6e690443d6d22c4bf18b9",
+            "title": "Nonlinear Component Analysis as a Kernel Eigenvalue Problem"
+        },
+        {
+            "paperId": "b94c7ff9532ab26c3aedbee3988ec4c7a237c173",
+            "title": "Normalized cuts and image segmentation"
+        },
+        {
+            "paperId": "de28c165623adabcdba0fdb18b65eba685aaf31d",
+            "title": "On Estimation of a Probability Density Function and Mode"
+        },
+        {
+            "paperId": "444d70e3331b5083b40ef32e49390ef683a65e67",
+            "title": "Matrix Computations"
+        },
+        {
+            "paperId": "87bdbc9560aee3b2ec3787557151aab9933b67d8",
+            "title": "Department of Electronic and Information Engineering,"
+        },
+        {
+            "paperId": "8bb257fa1311abe601c3c2270610ecf50aeea89d",
+            "title": "Greedy Spectral Embedding"
+        },
+        {
+            "paperId": "1230d7cc7d5f81b61d7ae532508d27f513bcb983",
+            "title": "FastMap, MetricMap, and Landmark MDS are all Nystrom Algorithms"
+        },
+        {
+            "paperId": "13c82489c1568b67265d17a15720001a5737171e",
+            "title": "Spectral grouping using the Nystrom method"
+        },
+        {
+            "paperId": "6f3bb84ee1b5d638e2d605ae0eb1014e2b6e3931",
+            "title": "FAST MONTE CARLO ALGORITHMS FOR MATRICES II: COMPUTING A LOW-RANK APPROXIMATION TO A MATRIX\u2217"
+        },
+        {
+            "paperId": "b6fff8b8ea77f157913986e7af53951d9fc1128e",
+            "title": "Using the Nystr\u00f6m Method to Speed Up Kernel Machines"
+        },
+        {
+            "paperId": "8213dbed4db44e113af3ed17d6dad57471a0c048",
+            "title": "The Nature of Statistical Learning Theory"
+        },
+        {
+            "paperId": "9cb3c51796384c30e8bb3862c7c861cab769e438",
+            "title": "Numerical Treatment of the Integral Equations"
+        },
+        {
+            "paperId": "abaff99aa3175aeb6f16bbfeac420c0879d00b34",
+            "title": "ARPACK users' guide - solution of large-scale eigenvalue problems with implicitly restarted Arnoldi methods"
+        },
+        {
+            "paperId": "9a4031999c4ae2939f59bf53aa069de9d51589d1",
+            "title": "Modified K-means algorithm for vector quantizer design"
+        },
+        {
+            "paperId": "c564aa7639a08c280423489e52b6e32055c9aa7f",
+            "title": "Vector quantization and signal compression"
+        },
+        {
+            "paperId": "f1b17ef7c06065bc1f6f12d3289c20469040796c",
+            "title": "Density-weighted Nystr\u00f6m Method for Computing Large Kernel Eigen-systems"
+        }
+    ]
+}

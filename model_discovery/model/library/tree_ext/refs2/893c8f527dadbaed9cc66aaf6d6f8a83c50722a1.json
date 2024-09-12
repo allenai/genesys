@@ -1,0 +1,110 @@
+{
+    "paperId": "893c8f527dadbaed9cc66aaf6d6f8a83c50722a1",
+    "externalIds": {
+        "DBLP": "conf/icml/WoodAGJT09",
+        "MAG": "2120826678",
+        "DOI": "10.1145/1553374.1553518",
+        "CorpusId": 11199892
+    },
+    "title": "A stochastic memoizer for sequence data",
+    "abstract": "We propose an unbounded-depth, hierarchical, Bayesian nonparametric model for discrete sequence data. This model can be estimated from a single training sequence, yet shares statistical strength between subsequent symbol predictive distributions in such a way that predictive performance generalizes well. The model builds on a specific parameterization of an unbounded-depth hierarchical Pitman-Yor process. We introduce analytic marginalization steps (using coagulation operators) to reduce this model to one that can be represented in time and space linear in the length of the training sequence. We show how to perform inference in such a model without truncation approximation and introduce fragmentation operators necessary to do predictive inference. We demonstrate the sequence memoizer by using it as a language model, achieving state-of-the-art results.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2009,
+    "referenceCount": 16,
+    "citationCount": 118,
+    "influentialCitationCount": 4,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An unbounded-depth, hierarchical, Bayesian nonparametric model for discrete sequence data that can be estimated from a single training sequence, yet shares statistical strength between subsequent symbol predictive distributions in such a way that predictive performance generalizes well is proposed."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2347189",
+            "name": "Frank D. Wood"
+        },
+        {
+            "authorId": "2824663",
+            "name": "C. Archambeau"
+        },
+        {
+            "authorId": "2113062",
+            "name": "Jan Gasthaus"
+        },
+        {
+            "authorId": "40439165",
+            "name": "Lancelot F. James"
+        },
+        {
+            "authorId": "1725303",
+            "name": "Y. Teh"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "ef1102790dd1ea0289142aeb2bca0af4971ba7e6",
+            "title": "A Hierarchical Nonparametric Bayesian Approach to Statistical Language Model Domain Adaptation"
+        },
+        {
+            "paperId": "cd1a6669bdfb35c4db0dbd872dc7c58b44fe376a",
+            "title": "Shared Segmentation of Natural Scenes Using Dependent Pitman-Yor Processes"
+        },
+        {
+            "paperId": "a9fc84f8abe740cdc7ee82e69444d1d00dbe0ceb",
+            "title": "A Scalable Hierarchical Distributed Language Model"
+        },
+        {
+            "paperId": "b8f57509a228f1c84bf67094ec1fa8a99407368b",
+            "title": "Church: a language for generative models"
+        },
+        {
+            "paperId": "6427b30356ac1813bf9f0314711e30df112b42a5",
+            "title": "The Infinite Markov Model"
+        },
+        {
+            "paperId": "b90d922ff07d0eb8d77b8687aba7f55bd3926436",
+            "title": "Hierarchical Dirichlet Processes"
+        },
+        {
+            "paperId": "6bf6c77b895069239ef7a180aee5332ed7b40c79",
+            "title": "A Hierarchical Bayesian Language Model Based On Pitman-Yor Processes"
+        },
+        {
+            "paperId": "749c0c44b4c3818c19293e398bd0a41c4b77523a",
+            "title": "Coagulation fragmentation laws induced by general coagulations of two-parameter Poisson-Dirichlet processes"
+        },
+        {
+            "paperId": "6c2b28f9354f667cd5bd07afc0471d8334430da7",
+            "title": "A Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "45db16309fbf7e9fc8907047e7e1a9933c4e1b85",
+            "title": "Gibbs Sampling Methods for Stick-Breaking Priors"
+        },
+        {
+            "paperId": "5433b8b066f5303a553945567cadbd34c774e31f",
+            "title": "Coalescents with multiple collisions"
+        },
+        {
+            "paperId": "57e50c244a936cd7aad9197065a6c84432beaf9c",
+            "title": "The two-parameter Poisson-Dirichlet distribution derived from a stable subordinator"
+        },
+        {
+            "paperId": "a70deaad3a2079cb5c0c54442c29d6225e6bd4f8",
+            "title": "On-line construction of suffix trees"
+        },
+        {
+            "paperId": "660d7a2520875c46c62e455970ad2c2036ff2f3a",
+            "title": "Unbounded length contexts for PPM"
+        },
+        {
+            "paperId": "d3390f13eed511cde1116446e71c3d462fd6a004",
+            "title": "Linear Pattern Matching Algorithms"
+        },
+        {
+            "paperId": "22faafeba7d7443da14c1e23e549b94e40d7d6ee",
+            "title": "\u201cMemo\u201d Functions and Machine Learning"
+        }
+    ]
+}

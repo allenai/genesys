@@ -1,0 +1,110 @@
+{
+    "paperId": "8829e3873846c6bbad5aca111e64f9d2c1b24299",
+    "externalIds": {
+        "DBLP": "journals/corr/DenoyerG14",
+        "MAG": "2963792320",
+        "ArXiv": "1410.0510",
+        "CorpusId": 9301573
+    },
+    "title": "Deep Sequential Neural Network",
+    "abstract": "Neural Networks sequentially build high-level features through their successive layers. We propose here a new neural network model where each layer is associated with a set of candidate mappings. When an input is processed, at each layer, one mapping among these candidates is selected according to a sequential decision process. The resulting model is structured according to a DAG like architecture, so that a path from the root to a leaf node defines a sequence of transformations. Instead of considering global transformations, like in classical multilayer networks, this model allows us for learning a set of local transformations. It is thus able to process data with different characteristics through specific sequences of such local transformations, increasing the expression power of this model w.r.t a classical multilayered network. The learning algorithm is inspired from policy gradient techniques coming from the reinforcement learning domain and is used here instead of the classical back-propagation based gradient descent techniques. Experiments on different datasets show the relevance of this approach.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2014,
+    "referenceCount": 19,
+    "citationCount": 59,
+    "influentialCitationCount": 5,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new neural network model where each layer is associated with a set of candidate mappings that is able to process data with different characteristics through specific sequences of such local transformations, increasing the expression power of this model w.r.t a classical multilayered network."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "8905591",
+            "name": "Ludovic Denoyer"
+        },
+        {
+            "authorId": "1741426",
+            "name": "P. Gallinari"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "8a756d4d25511d92a45d0f4545fa819de993851d",
+            "title": "Recurrent Models of Visual Attention"
+        },
+        {
+            "paperId": "327d3df8ea2020882827d6bace1e26c9d24309c2",
+            "title": "The dropout learning algorithm"
+        },
+        {
+            "paperId": "9b6204e5ef66f82bee891b1336eb5ae1f64e8c99",
+            "title": "Sequentially Generated Instance-Dependent Image Representations for Classification"
+        },
+        {
+            "paperId": "0d3233d858660aff451a6c2561a05378ed09725a",
+            "title": "Bilingual Word Embeddings for Phrase-Based Machine Translation"
+        },
+        {
+            "paperId": "5936aea6a42492529cc9ee5271fcd3ae2cbacaf2",
+            "title": "Deep Learning for NLP (without Magic)"
+        },
+        {
+            "paperId": "4177ec52d1b80ed57f2e72b0f9a42365f1a8598d",
+            "title": "Speech recognition with deep recurrent neural networks"
+        },
+        {
+            "paperId": "08fbf92e45d59bc85921fa91c35d2d4763738679",
+            "title": "Timely Object Recognition"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "c0b1589b029db1d0cbf37f24648f13c2c9281a3a",
+            "title": "Sequential approaches for learning datum-wise sparse representations"
+        },
+        {
+            "paperId": "ac850bbddef863bc88622df4d423420ba033365b",
+            "title": "Fast classification using sparse decision DAGs"
+        },
+        {
+            "paperId": "398c296d0cc7f9d180f84969f8937e6d3a413796",
+            "title": "Multi-column deep neural networks for image classification"
+        },
+        {
+            "paperId": "bbbe546c3b20cf685f8c4594ef16870f830e3748",
+            "title": "Text Classification: A Sequential Reading Approach"
+        },
+        {
+            "paperId": "b7deffb347eeaf4c7d0014e10cdd772e5f327dc1",
+            "title": "Learning to segment from a few well-selected training images"
+        },
+        {
+            "paperId": "92d009217b100882376ae5c90217da2e92471ad7",
+            "title": "Solving Deep Memory POMDPs with Recurrent Policy Gradients"
+        },
+        {
+            "paperId": "f6d8a7fc2e2d53923832f9404376512068ca2a57",
+            "title": "Hierarchical Mixtures of Experts and the EM Algorithm"
+        },
+        {
+            "paperId": "2ad3a6294d3c57343899debbdf709384b982a3d5",
+            "title": "Perceptron Trees: A Case Study In Hybrid Concept Representations"
+        },
+        {
+            "paperId": "f2a0fbba89f0d18ea0abd29639d4e43babe59cf3",
+            "title": "Training Deep and Recurrent Networks with Hessian-Free Optimization"
+        },
+        {
+            "paperId": "6ccb34bf2122304af5cbecf54402ee3d970e43f2",
+            "title": "Induction of decision trees"
+        },
+        {
+            "paperId": "cd7f63611d59ae32fb0a029f978d4b0c1168adf3",
+            "title": "Neural trees: a new tool for classification"
+        }
+    ]
+}

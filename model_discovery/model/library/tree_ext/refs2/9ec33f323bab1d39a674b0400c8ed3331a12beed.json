@@ -1,0 +1,174 @@
+{
+    "paperId": "9ec33f323bab1d39a674b0400c8ed3331a12beed",
+    "externalIds": {
+        "ArXiv": "1710.11431",
+        "DBLP": "journals/corr/abs-1710-11431",
+        "MAG": "2766291668",
+        "CorpusId": 3425282
+    },
+    "title": "Physics-guided Neural Networks (PGNN): An Application in Lake Temperature Modeling",
+    "abstract": "This paper introduces a novel framework for learning data science models by using the scientific knowledge encoded in physics-based models. This framework, termed as physics-guided neural network (PGNN), leverages the output of physics-based model simulations along with observational features to generate predictions using a neural network architecture. Further, we present a novel class of learning objective for training neural networks, which ensures that the model predictions not only show lower errors on the training data but are also \\emph{consistent} with the known physics. We illustrate the effectiveness of PGNN for the problem of lake temperature modeling, where physical relationships between the temperature, density, and depth of water are used in the learning of neural network model parameters. By using scientific knowledge to guide the construction and learning of neural networks, we are able to show that the proposed framework ensures better generalizability as well as physical consistency of results.",
+    "venue": "arXiv.org",
+    "year": 2017,
+    "referenceCount": 33,
+    "citationCount": 464,
+    "influentialCitationCount": 28,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel framework, termed as physics-guided neural network (PGNN), leverages the output of physics-based model simulations along with observational features to generate predictions using a neural network architecture to ensure better generalizability as well as physical consistency of results."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2548167",
+            "name": "A. Karpatne"
+        },
+        {
+            "authorId": "2055921756",
+            "name": "William Watkins"
+        },
+        {
+            "authorId": "7517856",
+            "name": "J. Read"
+        },
+        {
+            "authorId": "2107978833",
+            "name": "Vipin Kumar"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "4c75b748911ddcd888c5122f7672f69caa5d661f",
+            "title": "Statistical Learning Theory"
+        },
+        {
+            "paperId": "bb8b636300bce4ffdd011e89fdadbe616ac1e0a5",
+            "title": "Machine learning closures for model order reduction of thermal fluids"
+        },
+        {
+            "paperId": "cd5477222fc1c615ad45ab9736802d9e5353897c",
+            "title": "Data-assisted reduced-order modeling of extreme events in complex dynamical systems"
+        },
+        {
+            "paperId": "dcd7606370071978a3e6f70a4aa4737b0b5cae95",
+            "title": "The scientists' apprentice."
+        },
+        {
+            "paperId": "7bb3a1085e42d32c53c86153fc7534905866a6b3",
+            "title": "Neural network closures for nonlinear model order reduction"
+        },
+        {
+            "paperId": "f167fd42e0a5811c98ab66c82f25e1af2d58e251",
+            "title": "Nonnative Trout Invasions Combined with Climate Change Threaten Persistence of Isolated Cutthroat Trout Populations in the Southern Rocky Mountains"
+        },
+        {
+            "paperId": "45adeafe67355bb707706d7396c74fe39262064d",
+            "title": "Water quality data for national\u2010scale aquatic research: The Water Quality Portal"
+        },
+        {
+            "paperId": "1bf3ec62db327f50836ba4464b53b06a60b1ab0e",
+            "title": "Predicting cyanobacterial abundance, microcystin, and geosmin in a eutrophic drinking-water reservoir using a 14-year dataset"
+        },
+        {
+            "paperId": "e1c8f86668d3e37e430f187b7fd91d1643a0a0ff",
+            "title": "Theory-Guided Data Science: A New Paradigm for Scientific Discovery from Data"
+        },
+        {
+            "paperId": "dfc255eddcbc26a25a6ec88258f83ba840916bf8",
+            "title": "Simulating 2368 temperate lakes reveals weak coherence in stratification phenology"
+        },
+        {
+            "paperId": "665751504d85f44eabcab88a3898ac194fda75f9",
+            "title": "Putting big data to good use in neuroscience"
+        },
+        {
+            "paperId": "eb3a23db88c76d93dff037a9d58121710c67ee7d",
+            "title": "Debates\u2014the future of hydrological sciences: A (common) path forward? Using models and data to learn: A systems theoretic perspective on the future of hydrological science"
+        },
+        {
+            "paperId": "f0e501008275a36c04e8d5bf9fefc702fe935a3f",
+            "title": "Debates\u2014The future of hydrological sciences: A (common) path forward? One water. One world. Many climes. Many souls"
+        },
+        {
+            "paperId": "32eb5781af145a3a555c3cb572961cdcddb1e0f3",
+            "title": "Debates\u2014The future of hydrological sciences: A (common) path forward? A call to action aimed at understanding velocities, celerities and residence time distributions of the headwater hydrograph"
+        },
+        {
+            "paperId": "00d681cfff7f0224ace607e515f4ed510e792df9",
+            "title": "The Parable of Google Flu: Traps in Big Data Analysis"
+        },
+        {
+            "paperId": "1ee03157e64521e6ac010a5f879bcc142b8239a4",
+            "title": "Fragmentation and thermal risks from climate change interact to affect persistence of native trout in the Colorado River basin"
+        },
+        {
+            "paperId": "8729441d734782c3ed532a7d2d9611b438c0a09a",
+            "title": "ADADELTA: An Adaptive Learning Rate Method"
+        },
+        {
+            "paperId": "1ee500f13a9ff0a57f05535ee52710aa9c48a725",
+            "title": "Simulations of water quality and oxythermal cisco habitat in Minnesota lakes under past and future climate scenarios"
+        },
+        {
+            "paperId": "bc6dff14a130c57a91d5a21339c23471faf1d46f",
+            "title": "Et al"
+        },
+        {
+            "paperId": "d7921a45a2701056d9ff46d785b7a6040db8bcd2",
+            "title": "Assessing the Effects of Climate Change on Aquatic Invasive Species"
+        },
+        {
+            "paperId": "d38e72c6a186310fb6e4e89ac9d25f6766c2ee7e",
+            "title": "Blooms Like It Hot"
+        },
+        {
+            "paperId": "e41ba5dc12c79a64dfa905c0328f95976252ffe0",
+            "title": "The Elements of Statistical Learning"
+        },
+        {
+            "paperId": "669c7f7e28142cfb8121686e2a44c59aea10064b",
+            "title": "The End of Theory"
+        },
+        {
+            "paperId": "a4097559e4e45147ae52d3f8403b8f8f37c618c4",
+            "title": "Hydrodynamics and Transport for Water Quality Modeling"
+        },
+        {
+            "paperId": "55c2a840dbb524ee1f318a9979deab1eb626bf67",
+            "title": "Combining Semi-Physical and Neural Network Modeling: An Example ofIts Usefulness"
+        },
+        {
+            "paperId": "a3e935a59446794ec34db8f1630169cb86afaa58",
+            "title": "Modeling chemical processes using prior knowledge and neural networks"
+        },
+        {
+            "paperId": "deda41530c48862aaae37a6aaabefb5c2e379181",
+            "title": "A global biome model based on plant physiology and dominance, soil properties and climate"
+        },
+        {
+            "paperId": "1b622a772ba886f9b7ba3ae3b0e3b7658088e4f1",
+            "title": "Temperature as an Ecological Resource"
+        },
+        {
+            "paperId": "f272de48d06349a8e118307fb878a1c815e9bb78",
+            "title": "The Scientists"
+        },
+        {
+            "paperId": null,
+            "title": "keras"
+        },
+        {
+            "paperId": null,
+            "title": "Glm\u2014general lake model: Model overview and user information"
+        },
+        {
+            "paperId": null,
+            "title": "Intorduc-  tion to Data Mining"
+        },
+        {
+            "paperId": null,
+            "title": "Big data : science in the petabyte era Special issue : dealing with data"
+        }
+    ]
+}

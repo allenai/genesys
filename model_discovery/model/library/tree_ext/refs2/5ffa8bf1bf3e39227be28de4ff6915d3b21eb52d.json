@@ -1,0 +1,206 @@
+{
+    "paperId": "5ffa8bf1bf3e39227be28de4ff6915d3b21eb52d",
+    "externalIds": {
+        "MAG": "2951446714",
+        "ArXiv": "1306.1091",
+        "DBLP": "conf/icml/BengioLAY14",
+        "CorpusId": 9494295
+    },
+    "title": "Deep Generative Stochastic Networks Trainable by Backprop",
+    "abstract": "We introduce a novel training principle for probabilistic models that is an alternative to maximum likelihood. The proposed Generative Stochastic Networks (GSN) framework is based on learning the transition operator of a Markov chain whose stationary distribution estimates the data distribution. The transition distribution of the Markov chain is conditional on the previous state, generally involving a small move, so this conditional distribution has fewer dominant modes, being unimodal in the limit of small moves. Thus, it is easier to learn because it is easier to approximate its partition function, more like learning to perform supervised function approximation, with gradients that can be obtained by backprop. We provide theorems that generalize recent work on the probabilistic interpretation of denoising autoencoders and obtain along the way an interesting justification for dependency networks and generalized pseudolikelihood, along with a definition of an appropriate joint distribution and sampling mechanism even when the conditionals are not consistent. GSNs can be used with missing inputs and can be used to sample subsets of variables given the rest. We validate these theoretical results with experiments on two image datasets using an architecture that mimics the Deep Boltzmann Machine Gibbs sampler but allows training to proceed with simple backprop, without the need for layerwise pretraining.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2013,
+    "referenceCount": 41,
+    "citationCount": 389,
+    "influentialCitationCount": 29,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Theorems that generalize recent work on the probabilistic interpretation of denoising autoencoders are provided and obtain along the way an interesting justification for dependency networks and generalized pseudolikelihood."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1751762",
+            "name": "Yoshua Bengio"
+        },
+        {
+            "authorId": "1398746441",
+            "name": "Eric Thibodeau-Laufer"
+        },
+        {
+            "authorId": "1815021",
+            "name": "Guillaume Alain"
+        },
+        {
+            "authorId": "2965424",
+            "name": "J. Yosinski"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "484ad17c926292fbe0d5211540832a8c8a8e958b",
+            "title": "Stochastic Backpropagation and Approximate Inference in Deep Generative Models"
+        },
+        {
+            "paperId": "5656fa5aa6e1beeb98703fc53ec112ad227c49ca",
+            "title": "Multi-Prediction Deep Boltzmann Machines"
+        },
+        {
+            "paperId": "8885d0755f7e19a4c58f56f299e693716840f398",
+            "title": "Fast Gradient-Based Inference with Continuous Latent Variable Models in Auxiliary Form"
+        },
+        {
+            "paperId": "d9704f8119d6ba748230b4f2ad59f0e8c64fdfb0",
+            "title": "Generalized Denoising Auto-Encoders as Generative Models"
+        },
+        {
+            "paperId": "3832057ac487f43e885cdb485a6ca1462834bb8d",
+            "title": "Estimating or Propagating Gradients Through Stochastic Neurons"
+        },
+        {
+            "paperId": "eb6208f3e2c0942e38ceffc443dcf64d2cb4ec82",
+            "title": "A semantic matching energy function for learning with multi-relational data"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "68e3fca8f6f60ca1c70854b9d09228ece37f02b2",
+            "title": "Deep Boltzmann Machines and the Centering Trick"
+        },
+        {
+            "paperId": "f47714b81c4e905460aa0b6ceb9c5257f0352b49",
+            "title": "Texture Modeling with Convolutional Spike-and-Slab RBMs and Deep Extensions"
+        },
+        {
+            "paperId": "31a2053ebda7f6f77afe8c3fc53269b73567e446",
+            "title": "What regularized auto-encoders learn from the data-generating distribution"
+        },
+        {
+            "paperId": "d0965d8f9842f2db960b36b528107ca362c00d1a",
+            "title": "Better Mixing via Deep Representations"
+        },
+        {
+            "paperId": "0060745e006c5f14ec326904119dca19c6545e51",
+            "title": "Improving neural networks by preventing co-adaptation of feature detectors"
+        },
+        {
+            "paperId": "473f0739666af2791ad6592822118240ed968b70",
+            "title": "Conversational Speech Transcription Using Context-Dependent Deep Neural Networks"
+        },
+        {
+            "paperId": "6bf0414dae4f10c7e54fb9e5e8af5d0d0cab290b",
+            "title": "A Generative Process for Contractive Auto-Encoders"
+        },
+        {
+            "paperId": "f8c8619ea7d68e604e40b814b40c72888a755e95",
+            "title": "Unsupervised Feature Learning and Deep Learning: A Review and New Perspectives"
+        },
+        {
+            "paperId": "402fc36729ea019f198340739df8105e1126e72f",
+            "title": "R\u00e9seaux de neurones \u00e0 relaxation entra\u00een\u00e9s par crit\u00e8re d'autoencodeur d\u00e9bruitant"
+        },
+        {
+            "paperId": "d1c67346e46b4d0067b3c2e5d3b959a8bc24b28c",
+            "title": "Quickly Generating Representative Samples from an RBM-Derived Process"
+        },
+        {
+            "paperId": "d1b21442aa4a6af708d64082d61f6e63e1d4cdf1",
+            "title": "Sum-product networks: A new deep architecture"
+        },
+        {
+            "paperId": "413c1142de9d91804d6d11c67ff3fed59c9fc279",
+            "title": "Adaptive Subgradient Methods for Online Learning and Stochastic Optimization"
+        },
+        {
+            "paperId": "90b63e917d5737b06357d50aa729619e933d9614",
+            "title": "Phone Recognition with the Mean-Covariance Restricted Boltzmann Machine"
+        },
+        {
+            "paperId": "e3c1bf806c325f306e5084c3bd332b83d2077e2a",
+            "title": "Binary coding of speech spectrograms using a deep auto-encoder"
+        },
+        {
+            "paperId": "e3ce36b9deb47aa6bb2aa19c4bfa71283b505025",
+            "title": "Noise-contrastive estimation: A new estimation principle for unnormalized statistical models"
+        },
+        {
+            "paperId": "ddc45fad8d15771d9f1f8579331458785b2cdd93",
+            "title": "Deep Boltzmann Machines"
+        },
+        {
+            "paperId": "843959ffdccf31c6694d135fad07425924f785b1",
+            "title": "Extracting and composing robust features with denoising autoencoders"
+        },
+        {
+            "paperId": "57458bc1cffe5caa45a885af986d70f723f406b4",
+            "title": "A unified architecture for natural language processing: deep neural networks with multitask learning"
+        },
+        {
+            "paperId": "325ea1f2022ee3886a5810df76dcfbe4010ad439",
+            "title": "Structured Learning with Approximate Inference"
+        },
+        {
+            "paperId": "e64a9960734215e2b1866ea3cb723ffa5585ac14",
+            "title": "Efficient sparse coding algorithms"
+        },
+        {
+            "paperId": "932c2a02d462abd75af018125413b1ceaa1ee3f4",
+            "title": "Efficient Learning of Sparse Representations with an Energy-Based Model"
+        },
+        {
+            "paperId": "355d44f53428b1ac4fb2ab468d593c720640e5bd",
+            "title": "Greedy Layer-Wise Training of Deep Networks"
+        },
+        {
+            "paperId": "4b4faba87470704d4451dcbf65278942f54b727f",
+            "title": "Consistency of Pseudolikelihood Estimation of Fully Visible Boltzmann Machines"
+        },
+        {
+            "paperId": "8978cf7574ceb35f4c3096be768c7547b28a35d0",
+            "title": "A Fast Learning Algorithm for Deep Belief Nets"
+        },
+        {
+            "paperId": "a967a35452b189be459dc1d1ecf45eb2c15bc524",
+            "title": "Comparison of perturbation bounds for the stationary distribution of a Markov chain"
+        },
+        {
+            "paperId": "149a57ec380c38762f3e392560ef3ad3e1ab8ebd",
+            "title": "Learning Iterative Image Reconstruction in the Neural Abstraction Pyramid"
+        },
+        {
+            "paperId": "9b20ad513361a26e98289e5a517291c6ff49960d",
+            "title": "Learning Continuous Attractors in Recurrent Networks"
+        },
+        {
+            "paperId": "e9a54374aec5c92296c7b24436f08934643829ae",
+            "title": "Exploiting Tractable Substructures in Intractable Networks"
+        },
+        {
+            "paperId": "f015f17a385c267020d782decf04e8feb4c64fc9",
+            "title": "Perturbation theory and finite Markov chains"
+        },
+        {
+            "paperId": "360ca02e6f5a5e1af3dce4866a257aafc2d6d6f5",
+            "title": "Machine learning - a probabilistic perspective"
+        },
+        {
+            "paperId": null,
+            "title": "The Toronto face dataset"
+        },
+        {
+            "paperId": "d04d6db5f0df11d0cff57ec7e15134990ac07a4f",
+            "title": "Learning Deep Architectures for AI"
+        },
+        {
+            "paperId": "7fc604e1a3e45cd2d2742f96d62741930a363efa",
+            "title": "A Tutorial on Energy-Based Learning"
+        },
+        {
+            "paperId": "30afca3a4056bc54deadc1c5794048436d1c9eb4",
+            "title": "Dependency Networks for Inference, Collaborative Filtering, and Data Visualization"
+        }
+    ]
+}

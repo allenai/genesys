@@ -1,0 +1,93 @@
+{
+    "paperId": "830ccb44084d9d6cdcb70d623df5012ae4835142",
+    "externalIds": {
+        "MAG": "2140766383",
+        "DBLP": "conf/nips/Bridle89",
+        "CorpusId": 18865663
+    },
+    "title": "Training Stochastic Model Recognition Algorithms as Networks can Lead to Maximum Mutual Information Estimation of Parameters",
+    "abstract": "One of the attractions of neural network approaches to pattern recognition is the use of a discrimination-based training method. We show that once we have modified the output layer of a multilayer perceptron to provide mathematically correct probability distributions, and replaced the usual squared error criterion with a probability-based score, the result is equivalent to Maximum Mutual Information training, which has been used successfully to improve the performance of hidden Markov models for speech recognition. If the network is specially constructed to perform the recognition computations of a given kind of stochastic model based classifier then we obtain a method for discrimination-based training of the parameters of the models. Examples include an HMM-based word discriminator, which we call an 'Alphanet'.",
+    "venue": "Neural Information Processing Systems",
+    "year": 1989,
+    "referenceCount": 16,
+    "citationCount": 517,
+    "influentialCitationCount": 31,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that once the output layer of a multilayer perceptron is modified to provide mathematically correct probability distributions, and the usual squared error criterion is replaced with a probability-based score, the result is equivalent to Maximum Mutual Information training."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2110094",
+            "name": "J. Bridle"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "c91c2ac02e33caff601b2e4d62a6841b33ca3929",
+            "title": "Alpha-nets: A recurrent 'neural' network architecture with a hidden Markov model interpretation"
+        },
+        {
+            "paperId": "a57c6d627ffc667ae3547073876c35d6420accff",
+            "title": "Connectionist Learning Procedures"
+        },
+        {
+            "paperId": "853e23daa0704cd5f2aae6d55341fdf2423928e2",
+            "title": "How limited training data can allow a neural network to outperform an 'optimal' statistical classifier"
+        },
+        {
+            "paperId": "1528918ae0c9f70ba6da030cb8dbc72f71bc198b",
+            "title": "Review of Neural Networks for Speech Recognition"
+        },
+        {
+            "paperId": "247698d0a716f0d99c0645050d049525e0b08ec2",
+            "title": "Accelerated Learning in Layered Neural Networks"
+        },
+        {
+            "paperId": "a6627d8efde3ed55e34ccee059eb6cdac99bb2fe",
+            "title": "Hidden Markov models: a guided tour"
+        },
+        {
+            "paperId": "74de4b349d65bd80714507ca3d2512fcc704d3ea",
+            "title": "Decoder selection based on cross-entropies"
+        },
+        {
+            "paperId": "b5f09ce0dd760857e0d0e4879f6e2543f04c5d33",
+            "title": "Maximum mutual information estimation of hidden Markov model parameters for speech recognition"
+        },
+        {
+            "paperId": "80c22aaa9eb463199ffae49168716f7be272b9e1",
+            "title": "The Boltzmann Perceptron Network: A soft classifier"
+        },
+        {
+            "paperId": "1f462943c8d0af69c12a09058251848324135e5a",
+            "title": "Probabilistic Interpretation of Feedforward Classification Network Outputs, with Relationships to Statistical Pattern Recognition"
+        },
+        {
+            "paperId": "3b63bb59fd8b52053aa2a18de364c6025ced466d",
+            "title": "The Boltzmann Perceptron Network: A Multi-Layered Feed-Forward Network Equivalent to the Boltzmann Machine"
+        },
+        {
+            "paperId": null,
+            "title": "Connectionist speech recognition using the temporal flow model"
+        },
+        {
+            "paperId": null,
+            "title": "r.fercer. A new algorithm for the estimation of HMM parameters"
+        },
+        {
+            "paperId": "7d9ed799fcc2ba2f929532a4f403091198bcfd83",
+            "title": "Supervised Learning of Probability Distributions by Neural Networks"
+        },
+        {
+            "paperId": null,
+            "title": "Probability scores for backpropagation networks"
+        },
+        {
+            "paperId": "a0d16f0e99f7ce5e6fb70b1a68c685e9ad610657",
+            "title": "A Learning Algorithm for Boltzmann Machines"
+        }
+    ]
+}

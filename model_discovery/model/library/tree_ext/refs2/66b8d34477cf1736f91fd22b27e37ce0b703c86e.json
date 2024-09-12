@@ -1,0 +1,226 @@
+{
+    "paperId": "66b8d34477cf1736f91fd22b27e37ce0b703c86e",
+    "externalIds": {
+        "DBLP": "journals/corr/AljundiCT16",
+        "ArXiv": "1611.06194",
+        "MAG": "2950510923",
+        "DOI": "10.1109/CVPR.2017.753",
+        "CorpusId": 914027
+    },
+    "title": "Expert Gate: Lifelong Learning with a Network of Experts",
+    "abstract": "In this paper we introduce a model of lifelong learning, based on a Network of Experts. New tasks / experts are learned and added to the model sequentially, building on what was learned before. To ensure scalability of this process, data from previous tasks cannot be stored and hence is not available when learning a new task. A critical issue in such context, not addressed in the literature so far, relates to the decision which expert to deploy at test time. We introduce a set of gating autoencoders that learn a representation for the task at hand, and, at test time, automatically forward the test sample to the relevant expert. This also brings memory efficiency as only one expert network has to be loaded into memory at any given time. Further, the autoencoders inherently capture the relatedness of one task to another, based on which the most relevant prior model to be used for training a new expert, with fine-tuning or learning-without-forgetting, can be selected. We evaluate our method on image classification and video prediction problems.",
+    "venue": "Computer Vision and Pattern Recognition",
+    "year": 2016,
+    "referenceCount": 46,
+    "citationCount": 558,
+    "influentialCitationCount": 33,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1611.06194",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A model of lifelong learning, based on a Network of Experts, with a set of gating autoencoders that learn a representation for the task at hand, and, at test time, automatically forward the test sample to the relevant expert."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2855778",
+            "name": "Rahaf Aljundi"
+        },
+        {
+            "authorId": "1846419",
+            "name": "Punarjay Chakravarty"
+        },
+        {
+            "authorId": "1704728",
+            "name": "T. Tuytelaars"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "922197906907dc0a5e1b51fae40d3149333ecacf",
+            "title": "UberNet: Training a Universal Convolutional Neural Network for Low-, Mid-, and High-Level Vision Using Diverse Datasets and Limited Memory"
+        },
+        {
+            "paperId": "8f3b80ddc0dd62e6c3369fabb1715990c29e9b9a",
+            "title": "Learning without Forgetting"
+        },
+        {
+            "paperId": "53c9443e4e667170acc60ca1b31a0ec7151fe753",
+            "title": "Progressive Neural Networks"
+        },
+        {
+            "paperId": "aba48504f4f9563eafa44e0cfb22e1345d767c80",
+            "title": "Dynamic Filter Networks"
+        },
+        {
+            "paperId": "9559668dc4a593ee9ed5f241dae1fbd70a3c91bf",
+            "title": "Network of Experts for Large-Scale Image Categorization"
+        },
+        {
+            "paperId": "c8c494ee5488fe20e0aa01bddf3fc4632086d654",
+            "title": "The Cityscapes Dataset for Semantic Urban Scene Understanding"
+        },
+        {
+            "paperId": "ed06a9685bc8e50866a7bbda49fc5033c4088276",
+            "title": "Knowledge Transfer in Deep Block-Modular Neural Networks"
+        },
+        {
+            "paperId": "0c908739fbff75f03469d13d4a1a07de3414ee19",
+            "title": "Distilling the Knowledge in a Neural Network"
+        },
+        {
+            "paperId": "0bde8d9367d1004c7396dd69cb27ed97dc2f8d77",
+            "title": "MatConvNet: Convolutional Neural Networks for MATLAB"
+        },
+        {
+            "paperId": "4543670c4b2d88a9b67525e0084044adef94ae76",
+            "title": "Deep neural networks are easily fooled: High confidence predictions for unrecognizable images"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "0407b605b8f55db72e2545586bfe8e946b691b70",
+            "title": "An Empirical Investigation of Catastrophic Forgeting in Gradient-Based Neural Networks"
+        },
+        {
+            "paperId": "a83cec6a91701bd8500f8c43ad731d4353c71d55",
+            "title": "3D Object Representations for Fine-Grained Categorization"
+        },
+        {
+            "paperId": "9bd13275315bad3be36725a90b6231f237c64243",
+            "title": "Context-dependent computation by recurrent dynamics in prefrontal cortex"
+        },
+        {
+            "paperId": "b8de958fead0d8a9619b55c7299df3257c624a96",
+            "title": "DeCAF: A Deep Convolutional Activation Feature for Generic Visual Recognition"
+        },
+        {
+            "paperId": "79b949d9b35c3f51dd20fb5c746cc81fc87147eb",
+            "title": "Vision meets robotics: The KITTI dataset"
+        },
+        {
+            "paperId": "522d65a3db7431015aeaa201a7fc4450a57e40c3",
+            "title": "Fine-Grained Visual Classification of Aircraft"
+        },
+        {
+            "paperId": "64da1980714cfc130632c5b92b9d98c2f6763de6",
+            "title": "On rectified linear units for speech processing"
+        },
+        {
+            "paperId": "5776d0fea69d826519ee3649f620e8755a490efe",
+            "title": "Lifelong Machine Learning Systems: Beyond Learning Algorithms"
+        },
+        {
+            "paperId": "31a2053ebda7f6f77afe8c3fc53269b73567e446",
+            "title": "What regularized auto-encoders learn from the data-generating distribution"
+        },
+        {
+            "paperId": "d3c04a424fff21d3d12ff8b0543734cf244d5f67",
+            "title": "Learning Task Grouping and Overlap in Multi-task Learning"
+        },
+        {
+            "paperId": "a48a56b0727d09f599676524fe190308d9e88bf1",
+            "title": "Caltech-UCSD Birds 200"
+        },
+        {
+            "paperId": "e2b7f37cd97a7907b1b8a41138721ed06a0b76cd",
+            "title": "Stacked Denoising Autoencoders: Learning Useful Representations in a Deep Network with a Local Denoising Criterion"
+        },
+        {
+            "paperId": "c82d90336ba365c7914fe4bd6c292a8c6916a801",
+            "title": "Recognizing indoor scenes"
+        },
+        {
+            "paperId": "dbbd5fdc09349bbfdee7aa7365a9d37716852b32",
+            "title": "Character Recognition in Natural Images"
+        },
+        {
+            "paperId": "02b28f3b71138a06e40dbd614abf8568420ae183",
+            "title": "Automated Flower Classification over a Large Number of Classes"
+        },
+        {
+            "paperId": "bc6dff14a130c57a91d5a21339c23471faf1d46f",
+            "title": "Et al"
+        },
+        {
+            "paperId": "9491bcc1e54b52bea617283f7f716cf009068bce",
+            "title": "Clustered Multi-Task Learning: A Convex Formulation"
+        },
+        {
+            "paperId": "89c808af926ecb20870b2521fbaa7dcbb85be106",
+            "title": "Multi-Task Learning for Classification with Dirichlet Process Priors"
+        },
+        {
+            "paperId": "306ddd8b7ea3ead125491efc3e8a9f738ce65b89",
+            "title": "A Unified Energy-Based Framework for Unsupervised Learning"
+        },
+        {
+            "paperId": "91db37cfd5bca7edfb7c43b16fb7be116332595a",
+            "title": "The Task Rehearsal Method of Life-Long Learning: Overcoming Impoverished Data"
+        },
+        {
+            "paperId": "c92689ab1e100998231e8c8e35da21817f646f47",
+            "title": "Clustering Learning Tasks and the Selective Cross-Task Transfer of Knowledge"
+        },
+        {
+            "paperId": "161ffb54a3fdf0715b198bb57bd22f910242eb49",
+            "title": "Multitask Learning"
+        },
+        {
+            "paperId": "c8d90974c3f3b40fa05e322df2905fc16204aa56",
+            "title": "Adaptive Mixtures of Local Experts"
+        },
+        {
+            "paperId": "f5821548720901c89b3b7481f7500d7cd64e99bd",
+            "title": "Auto-association by multilayer perceptrons and singular value decomposition"
+        },
+        {
+            "paperId": "4f8d648c52edf74e41b0996128aa536e13cc7e82",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": "02227c94dd41fe0b439e050d377b0beb5d427cda",
+            "title": "Reading Digits in Natural Images with Unsupervised Feature Learning"
+        },
+        {
+            "paperId": "6cf35ec34efa592f83e3a1b748aea14957fc784a",
+            "title": "The Need for Biases in Learning Generalizations"
+        },
+        {
+            "paperId": "d04d6db5f0df11d0cff57ec7e15134990ac07a4f",
+            "title": "Learning Deep Architectures for AI"
+        },
+        {
+            "paperId": "13ef25201af7f2a7e401ef31a6197f66357f6f01",
+            "title": "The PASCAL Visual Object Classes Challenge"
+        },
+        {
+            "paperId": "7c59908c946a4157abc030cdbe2b63d08ba97db3",
+            "title": "Supporting Online Material for Reducing the Dimensionality of Data with Neural Networks"
+        },
+        {
+            "paperId": "36245da2ebf4a6b32b164b2f8f11514c6af9fcc0",
+            "title": "The Pascal Visual Object Classes Challenge 2006 ( VOC 2006 ) Results"
+        },
+        {
+            "paperId": "a5307e2ffdfe34264385c26ea998a05656170179",
+            "title": "Pascal Visual Object Classes Challenge Results"
+        },
+        {
+            "paperId": "f42b865e20e61a954239f421b42007236e671f19",
+            "title": "GradientBased Learning Applied to Document Recognition"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "73f36ff3a6d340606e09d2d0091da27a13af7a6f",
+            "title": "and as an in"
+        }
+    ]
+}

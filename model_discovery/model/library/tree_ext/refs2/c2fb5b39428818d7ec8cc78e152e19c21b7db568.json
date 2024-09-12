@@ -1,0 +1,214 @@
+{
+    "paperId": "c2fb5b39428818d7ec8cc78e152e19c21b7db568",
+    "externalIds": {
+        "DBLP": "conf/iccv/DosovitskiyFIHH15",
+        "MAG": "2951309005",
+        "ArXiv": "1504.06852",
+        "DOI": "10.1109/ICCV.2015.316",
+        "CorpusId": 12552176
+    },
+    "title": "FlowNet: Learning Optical Flow with Convolutional Networks",
+    "abstract": "Convolutional neural networks (CNNs) have recently been very successful in a variety of computer vision tasks, especially on those linked to recognition. Optical flow estimation has not been among the tasks CNNs succeeded at. In this paper we construct CNNs which are capable of solving the optical flow estimation problem as a supervised learning task. We propose and compare two architectures: a generic architecture and another one including a layer that correlates feature vectors at different image locations. Since existing ground truth data sets are not sufficiently large to train a CNN, we generate a large synthetic Flying Chairs dataset. We show that networks trained on this unrealistic data still generalize very well to existing datasets such as Sintel and KITTI, achieving competitive accuracy at frame rates of 5 to 10 fps.",
+    "venue": "IEEE International Conference on Computer Vision",
+    "year": 2015,
+    "referenceCount": 37,
+    "citationCount": 3895,
+    "influentialCitationCount": 565,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1504.06852",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper constructs CNNs which are capable of solving the optical flow estimation problem as a supervised learning task, and proposes and compares two architectures: a generic architecture and another one including a layer that correlates feature vectors at different image locations."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2841331",
+            "name": "Alexey Dosovitskiy"
+        },
+        {
+            "authorId": "152702479",
+            "name": "P. Fischer"
+        },
+        {
+            "authorId": "48105320",
+            "name": "Eddy Ilg"
+        },
+        {
+            "authorId": "2880264",
+            "name": "Philip H\u00e4usser"
+        },
+        {
+            "authorId": "3322806",
+            "name": "C. Hazirbas"
+        },
+        {
+            "authorId": "2943639",
+            "name": "Vladimir Golkov"
+        },
+        {
+            "authorId": "1715782",
+            "name": "Patrick van der Smagt"
+        },
+        {
+            "authorId": "1695302",
+            "name": "D. Cremers"
+        },
+        {
+            "authorId": "1710872",
+            "name": "T. Brox"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "a81d6509fd2a2c31a104941b3308822a69589251",
+            "title": "Optical Flow with Geometric Occlusion Estimation and Fusion of Multiple Frames"
+        },
+        {
+            "paperId": "f08e462b77347dc3cf483ca24dcd484c0ba5b432",
+            "title": "EpicFlow: Edge-preserving interpolation of correspondences for optical flow"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "b437b5a0445f17b06b12791bc48aeb8110e95dc5",
+            "title": "Learning to generate chairs with convolutional neural networks"
+        },
+        {
+            "paperId": "428db42e86f6d51292e23fa57797e35cecd0e2ee",
+            "title": "Hypercolumns for object segmentation and fine-grained localization"
+        },
+        {
+            "paperId": "6fc6803df5f9ae505cae5b2f178ade4062c768d0",
+            "title": "Fully convolutional networks for semantic segmentation"
+        },
+        {
+            "paperId": "531d2c450e9748a2dee68a6f515bb4641c834f53",
+            "title": "Fast Edge-Preserving PatchMatch for Large Displacement Optical Flow"
+        },
+        {
+            "paperId": "2fdd82708a99cec2bcd45c2c7f337a9beccced04",
+            "title": "Computing the stereo matching cost with a convolutional neural network"
+        },
+        {
+            "paperId": "d6c29c6b00233b7b2e5c70d86d87fdd5a05a9674",
+            "title": "N4-Fields: Neural Network Nearest Neighbor Fields for Image Transforms"
+        },
+        {
+            "paperId": "6def29d024457f8897c3a634fef8a03dcaedc9a0",
+            "title": "Seeing 3D Chairs: Exemplar Part-Based 2D-3D Alignment Using a Large Dataset of CAD Models"
+        },
+        {
+            "paperId": "6bdb186ec4726e00a8051119636d4df3b94043b5",
+            "title": "Caffe: Convolutional Architecture for Fast Feature Embedding"
+        },
+        {
+            "paperId": "dd2cf76ae78a3262a094ac865aa9f60c55472c5d",
+            "title": "Depth Map Prediction from a Single Image using a Multi-Scale Deep Network"
+        },
+        {
+            "paperId": "c91b38e27515f1fd224f093eef18e6ecc62ec58a",
+            "title": "Descriptor Matching with Convolutional Neural Networks: a Comparison to SIFT"
+        },
+        {
+            "paperId": "1d56e6ff4aa09f49a41eb6502a34384a5727505f",
+            "title": "Unsupervised learning of depth and motion"
+        },
+        {
+            "paperId": "fdccc24d6771a12272515c5ef0fa89434cbdd697",
+            "title": "Learning the Local Statistics of Optical Flow"
+        },
+        {
+            "paperId": "c40edf53d1342dd8d260f961ef475aacf7d0b33a",
+            "title": "Locally Affine Sparse-to-Dense Matching for Motion and Occlusion Estimation"
+        },
+        {
+            "paperId": "1a2a770d23b4a171fa81de62a78a3deb0588f238",
+            "title": "Visualizing and Understanding Convolutional Networks"
+        },
+        {
+            "paperId": "2f4df08d9072fc2ac181b7fced6a245315ce05c8",
+            "title": "Rich Feature Hierarchies for Accurate Object Detection and Semantic Segmentation"
+        },
+        {
+            "paperId": "79b949d9b35c3f51dd20fb5c746cc81fc87147eb",
+            "title": "Vision meets robotics: The KITTI dataset"
+        },
+        {
+            "paperId": "237a04dd8291cbdb59b6dc4b53e689af743fe2a3",
+            "title": "Learning Hierarchical Features for Scene Labeling"
+        },
+        {
+            "paperId": "09193e19b59fc8f05bee9d6efbfb1607ca5b6501",
+            "title": "Deep Neural Networks Segment Neuronal Membranes in Electron Microscopy Images"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "7d53f0c87c8ab0de6f3e74515e3ffaf3fab40c62",
+            "title": "A Naturalistic Open Source Movie for Optical Flow Evaluation"
+        },
+        {
+            "paperId": "78b071744be4db2d78e723bb24d978c8105b8f6f",
+            "title": "Efficient Closed-Form Solution to Generalized Boundary Detection"
+        },
+        {
+            "paperId": "d743430cb2329caa5d446c17fc9ec07f5e916ab0",
+            "title": "Adaptive deconvolutional networks for mid and high level feature learning"
+        },
+        {
+            "paperId": "6835f680a3d02b98ee090cdb93d3e7a15fb0cf97",
+            "title": "Large Displacement Optical Flow: Descriptor Matching in Variational Motion Estimation"
+        },
+        {
+            "paperId": "4d476b96be73fccc61f2076befbf5a468caa4180",
+            "title": "Convolutional Learning of Spatio-temporal Features"
+        },
+        {
+            "paperId": "ad61eebde119131f845dc902e1c8f7a4c6d66233",
+            "title": "Learning Optical Flow"
+        },
+        {
+            "paperId": "b48d90cfebb8fbff29d161f6704d31b6909eb7ad",
+            "title": "IM2GPS: estimating geographic information from a single image"
+        },
+        {
+            "paperId": "804836b8ad86ef8042e3dcbd45442a52f031ee03",
+            "title": "A Database and Evaluation Methodology for Optical Flow"
+        },
+        {
+            "paperId": "91228e00fe33ed6072cfe849ab9e98160461549d",
+            "title": "High Accuracy Optical Flow Estimation Based on a Theory for Warping"
+        },
+        {
+            "paperId": "cd824a3406cd176edef37888d0e5c74c0774b0c3",
+            "title": "Dense estimation and object-based segmentation of the optical flow with robust techniques"
+        },
+        {
+            "paperId": "24cde5de8abd1ebf70b9439dc4cf8cf545e73e45",
+            "title": "Learning parameterized models of image motion"
+        },
+        {
+            "paperId": "a8e8f3c8d4418c8d62e306538c9c1292635e9d27",
+            "title": "Backpropagation Applied to Handwritten Zip Code Recognition"
+        },
+        {
+            "paperId": "a3229dc33ecb80c59a75b906c46b586dd059b781",
+            "title": "Determining Optical Flow"
+        },
+        {
+            "paperId": "d9f7fbbadc09a032d70f751f1fc865ecf044c03f",
+            "title": "Author manuscript, published in \"IEEE Intenational Conference on Computer Vision (ICCV), Sydney: Australie (2013)\" DeepFlow: Large displacement optical flow with deep matching"
+        },
+        {
+            "paperId": "f37c59708043e4ebcb1af711e4388c965bda1826",
+            "title": "Bonn University"
+        }
+    ]
+}

@@ -1,0 +1,250 @@
+{
+    "paperId": "d878f6364c70defb8f24733ac99ed8d45ddda364",
+    "externalIds": {
+        "MAG": "2207058206",
+        "DBLP": "conf/focs/AbboudBW15",
+        "DOI": "10.1109/FOCS.2015.14",
+        "CorpusId": 16094517
+    },
+    "title": "Tight Hardness Results for LCS and Other Sequence Similarity Measures",
+    "abstract": "Two important similarity measures between sequences are the longest common subsequence (LCS) and the dynamic time warping distance (DTWD). The computations of these measures for two given sequences are central tasks in a variety of applications. Simple dynamic programming algorithms solve these tasks in O(n2) time, and despite an extensive amount of research, no algorithms with significantly better worst case upper bounds are known. In this paper, we show that for any constant \u03b5 >0, an O(n2-\u03b5) time algorithm for computing the LCS or the DTWD of two sequences of length n over a constant size alphabet, refutes the popular Strong Exponential Time Hypothesis (SETH).",
+    "venue": "IEEE Annual Symposium on Foundations of Computer Science",
+    "year": 2015,
+    "referenceCount": 53,
+    "citationCount": 229,
+    "influentialCitationCount": 28,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that for any constant \u03b5 >0, an O(n2-\u03b5) time algorithm for computing the LCS or the DTWD of two sequences of length n over a constant size alphabet, refutes the popular Strong Exponential Time Hypothesis (SETH)."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1730630",
+            "name": "Amir Abboud"
+        },
+        {
+            "authorId": "2064251",
+            "name": "A. Backurs"
+        },
+        {
+            "authorId": "2275118",
+            "name": "V. V. Williams"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "f66ab0ec66787ede4403717fbc72a66cf15919c2",
+            "title": "Clustered Integer 3SUM via Additive Combinatorics"
+        },
+        {
+            "paperId": "98670f8585ac339ba676f7b96be61b8874578c07",
+            "title": "Subcubic Equivalences between Graph Centrality Problems, APSP, and Diameter"
+        },
+        {
+            "paperId": "80e535eeff690c2d157cbe9a93cb1bafb0ad2326",
+            "title": "More Applications of the Polynomial Method to Algorithm Design"
+        },
+        {
+            "paperId": "eb69f3f98b0dd41a3b8891537f81c9eea07fd922",
+            "title": "Edit Distance Cannot Be Computed in Strongly Subquadratic Time (unless SETH is false)"
+        },
+        {
+            "paperId": "b80a005396f4994345c56dd4523eb0c3177a009b",
+            "title": "Consequences of Faster Alignment of Sequences"
+        },
+        {
+            "paperId": "b3b3c34ce8b5820deb819b32c73bf179234d1164",
+            "title": "On Hardness of Jumbled Indexing"
+        },
+        {
+            "paperId": "33065df4d75c103700ec1d633232f883759206b2",
+            "title": "Why Walking the Dog Takes Time: Frechet Distance Has No Strongly Subquadratic Algorithms Unless SETH Fails"
+        },
+        {
+            "paperId": "de11864170b38297cfa28847e99414529f66c7dc",
+            "title": "Popular Conjectures Imply Strong Lower Bounds for Dynamic Problems"
+        },
+        {
+            "paperId": "c0d44b7ae5c6d004a3d3d9696ca1f5577080c1d8",
+            "title": "0-1 Integer Linear Programming with a Linear Number of Constraints"
+        },
+        {
+            "paperId": "8c60d216f38843b5b34b056732dea45f0e371367",
+            "title": "Faster all-pairs shortest paths via circuit complexity"
+        },
+        {
+            "paperId": "5e7d06b56c54f5fff0143074f99a11f430c1e84a",
+            "title": "New tabulation and sparse dynamic programming based techniques for sequence similarity problems"
+        },
+        {
+            "paperId": "7981d43875543b1115cbc5683fb2ff8d049a6492",
+            "title": "Fast approximation algorithms for the diameter and radius of sparse graphs"
+        },
+        {
+            "paperId": "083658dde8d4d7831ec3e39a4739d3a163713844",
+            "title": "Experimental comparison of representation methods and distance measures for time series data"
+        },
+        {
+            "paperId": "63e8dadc10837c836421559b279a4fea357a80e6",
+            "title": "Towards polynomial lower bounds for dynamic problems"
+        },
+        {
+            "paperId": "ec6252fb7e8e25763a9bf3cfcc43b6b92e422de2",
+            "title": "On the possibility of faster SAT algorithms"
+        },
+        {
+            "paperId": "611c2c20f6566946694d832e58bfd7b7cb58b66e",
+            "title": "Introduction to Algorithms, third edition"
+        },
+        {
+            "paperId": "9695b92f08d563ec053d4c89927836d9c8f01d26",
+            "title": "Information retrieval for music and motion"
+        },
+        {
+            "paperId": "7696880b74174962f396b5e79420ade46074136d",
+            "title": "Necklaces, Convolutions, and X+Y"
+        },
+        {
+            "paperId": "fb015eadb87e5470849cfdc4709b7dfb9f774f17",
+            "title": "MAX-SAT for Formulas with Constant Clause Density Can Be Solved Faster Than in O(s2) Time"
+        },
+        {
+            "paperId": "cde0d7cc93fc82fcf218db056d1e6a2053266af8",
+            "title": "A new algorithm for optimal 2-constraint satisfaction and its implications"
+        },
+        {
+            "paperId": "034139b63c70e3d8f45bf58aa209fd5489763483",
+            "title": "Fast and compact regular expression matching"
+        },
+        {
+            "paperId": "190acc40793e6f66de560a06196ad16199495767",
+            "title": "On approximating the depth and related problems"
+        },
+        {
+            "paperId": "d140cb3e753eefc3d43cace8da5a5503aeb9aba1",
+            "title": "Three Myths about Dynamic Time Warping Data Mining"
+        },
+        {
+            "paperId": "cec209d1c93b6da8d3f20383a46059ed7021c7a8",
+            "title": "Sparse Normalized Local Alignment"
+        },
+        {
+            "paperId": "40b689514fcf94cf8f5168154d958636a7cb2f25",
+            "title": "On the parameterized complexity of the fixed alphabet shortest common supersequence and longest common subsequence problems"
+        },
+        {
+            "paperId": "e20e64661424bee772c7f002d45c1ac79578fb03",
+            "title": "Word image matching using dynamic time warping"
+        },
+        {
+            "paperId": "03ce0503ad735d2aa455128247561a1beffc3963",
+            "title": "Warping indexes with envelope transforms for query by humming"
+        },
+        {
+            "paperId": "7fb7364cf5f9bd48a9dd3a92a5243aae128afc24",
+            "title": "Exact indexing of dynamic time warping"
+        },
+        {
+            "paperId": "fb0f9cbd3662423933ba8b91c61741a7cd06bb88",
+            "title": "New Algorithms for Subset Query, Partial Match, Orthogonal Range Searching, and Related Problems"
+        },
+        {
+            "paperId": "81aea89e95ca72202671c87e6c85014ccbc742a1",
+            "title": "Preprocessing chains for fast dihedral rotations is hard or even impossible"
+        },
+        {
+            "paperId": "63083bb80213a90fc887783aebfc87996c77a69b",
+            "title": "Improved exact algorithms for MAX-SAT"
+        },
+        {
+            "paperId": "23164d56e286cc62397fde4232c6c0b50071e6e0",
+            "title": "Aligning gene expression time series with time warping algorithms"
+        },
+        {
+            "paperId": "353448451ad1f5390def4c40161863e2b1ed1091",
+            "title": "A new approach to sequence comparison: normalized sequence alignment"
+        },
+        {
+            "paperId": "1fc012491efed2e44f676b9c6658735dc23200b2",
+            "title": "A survey of longest common subsequence algorithms"
+        },
+        {
+            "paperId": "94ebc9130e780c017e6e851c8c3d24b7c61c727d",
+            "title": "Complexity of k-SAT"
+        },
+        {
+            "paperId": "a3651caf1265328e3231fe2d261679b4d926d5b7",
+            "title": "Which problems have strongly exponential complexity?"
+        },
+        {
+            "paperId": "1d69976b8582f92b0ffa0fca1f2d820c1510ff67",
+            "title": "Warped-average template technique to track on a cycle-by-cycle basis the cardiac filling phases on left ventricular volume"
+        },
+        {
+            "paperId": "46c9196f64173623588504daff1e0f7d58b5dc92",
+            "title": "New lower bounds for convex hull problems in odd dimensions"
+        },
+        {
+            "paperId": "cf358177c81eef03af2b7f56ce838e8c5bcd6f77",
+            "title": "The Parameterized Complexity of Sequence Alignment and Consensus"
+        },
+        {
+            "paperId": "a928f958e815d8c2433842799d050c4ac5a727fa",
+            "title": "A Faster Algorithm Computing String Edit Distances"
+        },
+        {
+            "paperId": "0738f4cc71f9552c8d2c883f9be399786aa5728a",
+            "title": "The Complexity of Some Problems on Subsequences and Supersequences"
+        },
+        {
+            "paperId": "43018066c7d72e9a673b2c7e297f20ef07d27e67",
+            "title": "A fast algorithm for computing longest common subsequences"
+        },
+        {
+            "paperId": "13ec7c133cb95913ea4f8d1413a41518b2bd9236",
+            "title": "A linear space algorithm for computing maximal common subsequences"
+        },
+        {
+            "paperId": "c23637d2f16b6078ecd39e207fe3a50462f88f14",
+            "title": "Selected combinatorial research problems."
+        },
+        {
+            "paperId": null,
+            "title": "Mihai P\u02c7P\u02c7atrasP\u02c7atras\u00b8cu, and Perouz Taslakian. Necklaces, convolutions, and X+Y. Algorithmica"
+        },
+        {
+            "paperId": "0a1102a00218bf465401101eeccf9cf5b8e28bcb",
+            "title": "Worst-Case Upper Bounds"
+        },
+        {
+            "paperId": "be5143cb4be4a4ead57687bca792fffe61c59792",
+            "title": "On finding a guard that sees most and a shop that sells most"
+        },
+        {
+            "paperId": null,
+            "title": "An introduction to bioinformatics algorithms"
+        },
+        {
+            "paperId": "d95634f2c81e5498d0efd938d223f6d720b4f506",
+            "title": "Polygon-containment and Translational min-Hausdorff-Distance between segment Sets are 3SUM-hard"
+        },
+        {
+            "paperId": "b4bc7227ef75af1e26e10a5411de2f7d0e616d6c",
+            "title": "Some Variants of Polygon Containment and Minimum Hausdorr Distance under Translation Are 3sum-hard"
+        },
+        {
+            "paperId": "21f389aabe2491d620ce920e3bad2b12521fa025",
+            "title": "Algorithms on Strings, Trees, and Sequences - Computer Science and Computational Biology"
+        },
+        {
+            "paperId": "7881048f13a58370b7160b08a15cacfce0dd3a46",
+            "title": "On a Class of O(n2) Problems in Computational Geometry"
+        },
+        {
+            "paperId": "2392e94df520e707e8b1422311bfdc552954dea9",
+            "title": "Fundamentals of speech recognition"
+        }
+    ]
+}

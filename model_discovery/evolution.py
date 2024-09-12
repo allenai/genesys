@@ -73,7 +73,7 @@ __all__ = [
 ]
 
 
-LIBRARY_DIR = './model_discovery/model/library'
+LIBRARY_DIR = U.pjoin(os.path.dirname(__file__),'model','library')
 
 NODE_COLOR_MAP={
     '14M':'#5698c3',
@@ -101,6 +101,7 @@ CORE_COLOR = '#f0a1a8' # core reference
 REFERENCE_COLOR = '#AF47D2'
 RWC_COLOR = '#FB773C' # reference with code
 EXT_COLOR_1HOC = '#ed556a' # extended 1-hop reference
+
 
 
 @dataclass
@@ -135,6 +136,9 @@ class NodeObject:
     
     def to_prompt(self) -> str:
         raise NotImplementedError
+
+
+######### Library Reference
 
 @dataclass
 class LibraryReference(NodeObject):
@@ -251,98 +255,20 @@ class LibraryReference(NodeObject):
         return prompt
 
 
-@dataclass
-class LibraryReference1hop(LibraryReference):
-
-    @property
-    def type(self) -> str:
-        # if self.code is not None:
-        #     return 'Reference1hopWithCode'
-        # else:
-        return 'Reference1hop'
-
+##### 1-hop reference, low SNR, not used now, most are just about how to use those models to do applications
 # @dataclass
-# class DesignArtifact(NodeObject):
-#     code: str
-#     rawcode: str
-#     explain: str
-#     scale: str
-#     summary: str
-#     instruct: str
-#     ratings: dict
-#     reviews: dict
-#     session_id: str # store the agent design process
-#     verify_report: dict = None
-#     check_results: dict = None
+# class LibraryReference1hop(LibraryReference):
 
-#     def save(self,db_dir: str):
-#         U.mkdir(U.pjoin(db_dir,self.acronym))
-#         U.save_json(self.to_dict(),U.pjoin(db_dir,self.acronym,"artifact.json"))
-#         with open(U.pjoin(db_dir,self.acronym,"gab.py"),'w', encoding='utf-8') as f:
-#             f.write(self.code)
-#         with open(U.pjoin(db_dir,self.acronym,"explaination.md"),'w', encoding='utf-8') as f:
-#             f.write(self.explain)
-#         if self.instruct:
-#             with open(U.pjoin(db_dir,self.acronym,"instruct.md"),'w', encoding='utf-8') as f:
-#                 f.write(self.instruct)
-#         with open(U.pjoin(db_dir,self.acronym,"summary.md"),'w', encoding='utf-8') as f:
-#             f.write(self.summary)
-#         with open(U.pjoin(db_dir,self.acronym,"reviews.md"),'w', encoding='utf-8') as f:
-#             f.write(self.get_reviews())
-#         if self.check_results:
-#             U.save_json(self.check_results,U.pjoin(db_dir,self.acronym,"check_results.json"))
-        
-#     @classmethod
-#     def load(cls, db_dir: str, id:str) -> DesignArtifact:
-#         obj = cls.from_dict(U.load_json(U.pjoin(db_dir,id,"artifact.json")))
-#         report_dir=U.pjoin(db_dir,'..','ve',id,'report.json')
-#         if U.pexists(report_dir):
-#             obj.verify_report=U.load_json(report_dir)
-#         return obj
+#     @property
+#     def type(self) -> str:
+#         # if self.code is not None:
+#         #     return 'Reference1hopWithCode'
+#         # else:
+#         return 'Reference1hop'
 
 
-#     def to_desc(self) -> str:
-#         title=self.title.replace(':',' ')
-#         summary=self.summary.replace(':',' ')
 
-#         # Split the summary into parts: code blocks and non-code blocks
-#         code_block_pattern = re.compile(r'(```python[\s\S]*?```)', re.MULTILINE)
-#         numbered_list_pattern = re.compile(r'(\d+\.\s[^\n]*\n)', re.MULTILINE)
-#         parts = re.split(r'(```python[\s\S]*?```|\d+\.\s[^\n]*\n)', summary)
-
-#         # Replace colons in the non-code block parts
-#         for i in range(len(parts)):
-#             if not code_block_pattern.match(parts[i]) and not numbered_list_pattern.match(parts[i]):
-#                 parts[i] = parts[i].replace('.', '.\n').replace(';', ';\n').replace('?', '?\n').replace('!', '!\n').replace(',', '\n')
-
-#         # Join the parts back together
-#         summary = ''.join(parts)
-#         mdtext=f'# {title} ({self.scale})\n\n{summary}\n\n## Rating\n{self.rating} out of 5'
-#         return mdtext.replace('e.\ng.\n','e.g.').replace('i.\ne.\n','i.e.')
-    
-#     def get_reviews(self):
-#         review_ratings=''
-#         for idx, style in enumerate(self.reviews):
-#             review=self.reviews[style]
-#             rating=self.ratings[style]
-#             review_ratings+=f'# Review of Reviewer {idx+1} ({style}):\n\n{review}\n\n## Rating: {rating} out of 5\n\n'
-#         return review_ratings
-
-#     def to_prompt(self):
-#         scale=self.scale
-#         config:GAMConfig=eval(f'GAMConfig_{scale}()')
-#         config_str=config.to_prompt()
-#         prompt=f'## Title: {self.title}\n## Acronym: {self.acronym}\n\n## Code:\n\n{self.rawcode}\n\n## Justification:\n\n{self.explain}'
-#         prompt+=f'\\## Config and Reference:\n\n{config_str}\n\n'
-#         prompt+=self.get_reviews()
-#         if self.check_results:
-#             prompt+=f"## Effectiveness:\n\n{json.dumps(self.check_results['effectiveness'],indent=4)}\n\n"
-#         if self.verify_report:
-#             report=report_reader(self.verify_report)
-#             prompt+=f'## Report:\n\n{json.dumps(report,indent=4)}\n\n'
-#         return prompt
-
-
+######## Design Artifacts
 
 
 @dataclass
@@ -429,7 +355,7 @@ class DesignArtifact(NodeObject):
     design_id: str # design session id
     proposal: Proposal
     implementation: Implementation = None # find by modelname/id
-    verifications: Dict[str, Verification] = {} # find by modelname/id
+    verifications: Dict[str, Verification] = field(default_factory=dict) # find by modelname/id
     
     @property
     def stage(self) -> str:
@@ -716,14 +642,14 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
             for seed_id in ref.seed_ids:
                 edges_to_add.append((seed_id, ref.acronym))
 
-        # load extended library
-        dir_ext_1hop = U.pjoin(self.lib_ext_dir,'1hop')
-        for i in os.listdir(dir_ext_1hop):
-            id=i.split('.')[0]
-            ref = LibraryReference1hop.load(dir_ext_1hop, id)
-            self.G.add_node(ref.acronym, data=ref)
-            for seed_id in ref.seed_ids:
-                edges_to_add.append((seed_id, ref.acronym))
+        # # load extended library
+        # dir_ext_1hop = U.pjoin(self.lib_ext_dir,'1hop')
+        # for i in os.listdir(dir_ext_1hop):
+        #     id=i.split('.')[0]
+        #     ref = LibraryReference1hop.load(dir_ext_1hop, id)
+        #     self.G.add_node(ref.acronym, data=ref)
+        #     for seed_id in ref.seed_ids:
+        #         edges_to_add.append((seed_id, ref.acronym))
         
         for seed_id, product_id in edges_to_add:
             if seed_id == product_id or nx.has_path(self.G, product_id, seed_id):
@@ -747,7 +673,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         if max_nodes: fname+=f'_{max_nodes}'
         nt.show(U.pjoin(self.db_dir, '..', fname+'.html'))
 
-    def export(self,with_ext=False,max_nodes=None,height=5000,layout=False):
+    def export(self,max_nodes=None,height=5000,layout=False): #,with_ext=False
         G=nx.DiGraph()
         for idx,node in enumerate(self.G.nodes):
             if max_nodes and idx>max_nodes:
@@ -771,12 +697,12 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
                 color=CORE_COLOR
                 citations=data.citationCount
                 size=5*max(0,int(math.log(citations,3)))+10 if citations else 10
-            else: # VERY SLOW TO LOAD
-                if not with_ext: continue
-                color=EXT_COLOR_1HOC
-                citations=data.citationCount
-                size=5*max(0,int(math.log(citations,3)))+10 if citations else 10
-                # continue # skip the 1hop reference, too much
+            # else: # VERY SLOW TO LOAD
+            #     if not with_ext: continue
+            #     color=EXT_COLOR_1HOC
+            #     citations=data.citationCount
+            #     size=5*max(0,int(math.log(citations,3)))+10 if citations else 10
+            #     # continue # skip the 1hop reference, too much
             G.add_node(
                 node,
                 title=data.to_desc(),
@@ -1189,69 +1115,3 @@ if __name__ == '__main__':
     test_evolve('test_evo_004',step=True)
 
  
-#     code_MHA='''
-# # gab.py
-
-# import torch
-# import torch.nn as nn
-# from mamba_ssm.modules.mha import MHA
-
-# from model_discovery.model.utils.modules import GABBase # DO NOT CHANGE THIS IMPORT STATEMENT #
-
-# class GAB(GABBase):
-#     """Generalized Autoregressive Block
-#         Input:        X: (batch, seqlen, embed_dim)
-#         Output:       Y: (batch, seqlen, embed_dim)
-#         Constraints:  Causal, differentiable, parameter number, complexity, parallelizable
-#     """
-#     def __init__(self, embed_dim: int, device=None, dtype=None, n_heads=8, ff_dim=None, dropout=0.1): 
-#         factory_kwargs = {"device": device, "dtype": dtype} 
-#         super().__init__(embed_dim)
-        
-#         if ff_dim is None:
-#             ff_dim = 4 * embed_dim  # Feed-forward dimension is 4 times the embedding dimension
-        
-#         self.attention = nn.MultiheadAttention(embed_dim, n_heads, dropout=dropout, **factory_kwargs)
-#         # self.attn = MHA(embed_dim, n_heads, causal=False, **factory_kwargs)
-#         # self.lstm=nn.LSTM(embed_dim, embed_dim, batch_first=True)
-#         # self.bilstm=nn.LSTM(embed_dim, embed_dim//2, batch_first=True, bidirectional=True)
-#         # self.causalconv = nn.Conv1d(embed_dim, embed_dim, kernel_size=3, padding=2, groups=4, **factory_kwargs)
-#         # self.conv = nn.Conv1d(embed_dim, embed_dim, 3, padding=1)
-
-#     def _forward(self, X, **kwargs): 
-#         output,_ = self.attention(X, X, X)
-#         # mask=nn.Transformer.generate_square_subsequent_mask(len(X)).to(X.device)
-#         # output,_ = self.attention(X, X, X, attn_mask=mask)
-#         # output = self.attn(X)
-#         # output,_ = self.lstm(X)
-#         # output,_ = self.bilstm(X)
-#         # output = self.causalconv(X.permute(0,2,1)).permute(0,2,1)[:,:-2]
-#         # output = self.conv(X.permute(0,2,1)).permute(0,2,1)
-#         return output 
-    
-# gab_config = {
-#     'n_heads': 8,
-#     'ff_dim': None,  # This will be set to 4 * embed_dim in the GAB class
-#     'dropout': 0.1
-# }
-# '''
-
-
-    # checker=evolution_system.rnd_agent.checker
-    # cfg=evolution_system.rnd_agent._cfg
-    # design_name='test_design'
-
-    # code=code_MHA
-    # checkpass,check_report,gabcode,check_results = checker.check(cfg,code,design_name)
-    # print(check_results)
-
-    # print('Check the second code')
-    # code_retnet_dir='/home/junyanc/model_discovery/model_discovery/model/library/base/retnet/retnet_edu.py'
-    # code=open(code_retnet_dir,'r').read()
-    # checkpass,check_report,gabcode,check_results = checker.check(cfg,code,design_name)
-
-    # print('Check the third code')
-    # code=U.read_file('./draft.py')
-    # ret=checker.check(cfg,code,design_name)
-
-

@@ -1,0 +1,326 @@
+{
+    "paperId": "a82c1d1ccaa3a3d1d6ee6677de0eed2e93ddb6e8",
+    "externalIds": {
+        "MAG": "2745461083",
+        "DBLP": "conf/cvpr/00010BT0GZ18",
+        "ArXiv": "1707.07998",
+        "DOI": "10.1109/CVPR.2018.00636",
+        "CorpusId": 3753452
+    },
+    "title": "Bottom-Up and Top-Down Attention for Image Captioning and Visual Question Answering",
+    "abstract": "Top-down visual attention mechanisms have been used extensively in image captioning and visual question answering (VQA) to enable deeper image understanding through fine-grained analysis and even multiple steps of reasoning. In this work, we propose a combined bottom-up and top-down attention mechanism that enables attention to be calculated at the level of objects and other salient image regions. This is the natural basis for attention to be considered. Within our approach, the bottom-up mechanism (based on Faster R-CNN) proposes image regions, each with an associated feature vector, while the top-down mechanism determines feature weightings. Applying this approach to image captioning, our results on the MSCOCO test server establish a new state-of-the-art for the task, achieving CIDEr / SPICE / BLEU-4 scores of 117.9, 21.5 and 36.9, respectively. Demonstrating the broad applicability of the method, applying the same approach to VQA we obtain first place in the 2017 VQA Challenge.",
+    "venue": "2018 IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "year": 2017,
+    "referenceCount": 67,
+    "citationCount": 3887,
+    "influentialCitationCount": 821,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1707.07998",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A combined bottom-up and top-down attention mechanism that enables attention to be calculated at the level of objects and other salient image regions is proposed, demonstrating the broad applicability of this approach to VQA."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "6965856",
+            "name": "Peter Anderson"
+        },
+        {
+            "authorId": "144137069",
+            "name": "Xiaodong He"
+        },
+        {
+            "authorId": "31790073",
+            "name": "Chris Buehler"
+        },
+        {
+            "authorId": "2406263",
+            "name": "Damien Teney"
+        },
+        {
+            "authorId": "145177220",
+            "name": "Mark Johnson"
+        },
+        {
+            "authorId": "145273587",
+            "name": "Stephen Gould"
+        },
+        {
+            "authorId": "39089563",
+            "name": "Lei Zhang"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "b14a60a1c3e6bb45baddd754a1cfe83ffc1bbb81",
+            "title": "Tips and Tricks for Visual Question Answering: Learnings from the 2017 Challenge"
+        },
+        {
+            "paperId": "d674b540dcd968bc302ea4360df3f4e85e994b55",
+            "title": "Show, Ask, Attend, and Answer: A Strong Baseline For Visual Question Answering"
+        },
+        {
+            "paperId": "88caa4a0253a8b0076176745ebc072864eab66e1",
+            "title": "Language Modeling with Gated Convolutional Networks"
+        },
+        {
+            "paperId": "9f4d7d622d1f7319cc511bfef661cd973e881a4c",
+            "title": "Knowing When to Look: Adaptive Attention via a Visual Sentinel for Image Captioning"
+        },
+        {
+            "paperId": "6d86f0e22fed5e065ecf54b273d540b2430f014d",
+            "title": "Areas of Attention for Image Captioning"
+        },
+        {
+            "paperId": "7e232313a59d735ef7c8a9f4cc7bc980a29deb5e",
+            "title": "Making the V in VQA Matter: Elevating the Role of Image Understanding in Visual Question Answering"
+        },
+        {
+            "paperId": "6c8353697cdbb98dfba4f493875778c4286d3e3a",
+            "title": "Self-Critical Sequence Training for Image Captioning"
+        },
+        {
+            "paperId": "163a474747fd63ab62ae586711fa5e5a2ac91bd8",
+            "title": "Improved Image Captioning via Policy Gradient optimization of SPIDEr"
+        },
+        {
+            "paperId": "8a8224266b8ab1483f6548307ab96227147f34da",
+            "title": "Zero-Shot Visual Question Answering"
+        },
+        {
+            "paperId": "5785466bc14529e94e54baa4ed051f7037f3b1d3",
+            "title": "Boosting Image Captioning with Attributes"
+        },
+        {
+            "paperId": "3dc37dab102a0465098111b7ccf6f95b736397f2",
+            "title": "End-to-End Concept Word Detection for Video Captioning, Retrieval, and Question Answering"
+        },
+        {
+            "paperId": "f90d9c5615f4a0e3f9a1ce2a0075269b9bab6b5f",
+            "title": "SPICE: Semantic Propositional Image Caption Evaluation"
+        },
+        {
+            "paperId": "3c1bbd2672c11a796f1e6e6aa787257498ec8bec",
+            "title": "Revisiting Visual Question Answering Baselines"
+        },
+        {
+            "paperId": "12f7de07f9b00315418e381b2bd797d21f12b419",
+            "title": "Multimodal Compact Bilinear Pooling for Visual Question Answering and Visual Grounding"
+        },
+        {
+            "paperId": "fb9d253258d6b3beceb9d6cd7bba6e0a29ab875b",
+            "title": "Hierarchical Question-Image Co-Attention for Visual Question Answering"
+        },
+        {
+            "paperId": "61d2dda8d96a10a714636475c7589bd149bda053",
+            "title": "Review Networks for Caption Generation"
+        },
+        {
+            "paperId": "77f0a39b8e02686fd85b01971f8feb7f60971f80",
+            "title": "Identity Mappings in Deep Residual Networks"
+        },
+        {
+            "paperId": "bf55591e09b58ea9ce8d66110d6d3000ee804bdd",
+            "title": "Image Captioning with Semantic Attention"
+        },
+        {
+            "paperId": "afcf4dbd2ef300e5c4b35043d4fbe516807cdf7d",
+            "title": "Visual Genome: Connecting Language and Vision Using Crowdsourced Dense Image Annotations"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "4d7a9197433acbfb24ef0e9d0f33ed1699e4a5b0",
+            "title": "SSD: Single Shot MultiBox Detector"
+        },
+        {
+            "paperId": "d7ce5665a72c0b607f484c1b448875f02ddfac3b",
+            "title": "DenseCap: Fully Convolutional Localization Networks for Dense Captioning"
+        },
+        {
+            "paperId": "46b8cbcdff87b842c2c1d4a003c831f845096ba7",
+            "title": "Order-Embeddings of Images and Language"
+        },
+        {
+            "paperId": "1cf6bc0866226c1f8e282463adc8b75d92fba9bb",
+            "title": "Ask, Attend and Answer: Exploring Question-Guided Spatial Attention for Visual Question Answering"
+        },
+        {
+            "paperId": "def584565d05d6a8ba94de6621adab9e301d375d",
+            "title": "Visual7W: Grounded Question Answering in Images"
+        },
+        {
+            "paperId": "2c1890864c1c2b750f48316dc8b650ba4772adc5",
+            "title": "Stacked Attention Networks for Image Question Answering"
+        },
+        {
+            "paperId": "56ffece2817a0363f551210733a611830ba1155d",
+            "title": "Aligning where to see and what to tell: image caption with region-based attention and scene factorization"
+        },
+        {
+            "paperId": "f8e79ac0ea341056ef20f2616628b3e964764cfd",
+            "title": "You Only Look Once: Unified, Real-Time Object Detection"
+        },
+        {
+            "paperId": "dbb6ded623159c867fbeca0772db7b2eb9489523",
+            "title": "Spatial Transformer Networks"
+        },
+        {
+            "paperId": "424561d8585ff8ebce7d5d07de8dbf7aae5e7270",
+            "title": "Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks"
+        },
+        {
+            "paperId": "00fe3d95d0fd5f1433d81405bee772c4fe9af9c6",
+            "title": "What Value Do Explicit High Level Concepts Have in Vision to Language Problems?"
+        },
+        {
+            "paperId": "97ad70a9fa3f99adf18030e5e38ebe3d90daa2db",
+            "title": "VQA: Visual Question Answering"
+        },
+        {
+            "paperId": "e0945081b5b87187a53d4329cf77cd8bff635795",
+            "title": "Highway Networks"
+        },
+        {
+            "paperId": "696ca58d93f6404fea0fc75c62d1d7b378f47628",
+            "title": "Microsoft COCO Captions: Data Collection and Evaluation Server"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "54b2b6f35f1b5704dddfaa3a137a2f4ad3dfe745",
+            "title": "Deep Captioning with Multimodal Recurrent Neural Networks (m-RNN)"
+        },
+        {
+            "paperId": "55e022fb7581bb9e1fce678d21fb25ffbb3fbb88",
+            "title": "Deep visual-semantic alignments for generating image descriptions"
+        },
+        {
+            "paperId": "258986132bf17755fe8263e42429fe73218c1534",
+            "title": "CIDEr: Consensus-based image description evaluation"
+        },
+        {
+            "paperId": "15f102c3c9f4d4fe6ba105e221df48c6e8902b3b",
+            "title": "From captions to visual concepts and back"
+        },
+        {
+            "paperId": "d4dc1012d780e8e2547237eb5a6dc7b1bf47d2f0",
+            "title": "Show and tell: A neural image caption generator"
+        },
+        {
+            "paperId": "f01fc808592ea7c473a69a6e7484040a435f36d9",
+            "title": "Long-term recurrent convolutional networks for visual recognition and description"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "b183947ee15718b45546eda6b01e179b9a95421f",
+            "title": "Edge Boxes: Locating Object Proposals from Edges"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "a5e4377d2149a8167d89383d785793967cf74602",
+            "title": "Meteor Universal: Language Specific Translation Evaluation for Any Target Language"
+        },
+        {
+            "paperId": "71b7178df5d2b112d07e45038cb5637208659ff7",
+            "title": "Microsoft COCO: Common Objects in Context"
+        },
+        {
+            "paperId": "9b223c8a31e0ea1d1f2c9787ffd8416dfc90c912",
+            "title": "Selective Search for Object Recognition"
+        },
+        {
+            "paperId": "8729441d734782c3ed532a7d2d9611b438c0a09a",
+            "title": "ADADELTA: An Adaptive Learning Rate Method"
+        },
+        {
+            "paperId": "25a4fb7025453ce73feef36eeaa45dbd0eb215e5",
+            "title": "Maximum Expected BLEU Training of Phrase and Lexicon Translation Models"
+        },
+        {
+            "paperId": "0663c183e406004d0abdee67911e8b18f15c049f",
+            "title": "Top-Down Versus Bottom-Up Control of Attention in the Prefrontal and Posterior Parietal Cortices"
+        },
+        {
+            "paperId": "60b05f32c32519a809f21642ef1eb3eaf3848008",
+            "title": "ROUGE: A Package for Automatic Evaluation of Summaries"
+        },
+        {
+            "paperId": "d7da009f457917aa381619facfa5ffae9329a6e9",
+            "title": "Bleu: a Method for Automatic Evaluation of Machine Translation"
+        },
+        {
+            "paperId": "53e66b6934516a9859573f4866f81f04bce977ae",
+            "title": "Control of goal-directed and stimulus-driven attention in the brain"
+        },
+        {
+            "paperId": "e32be6db00da2d6ea9ff2be0482abac4daf7ecac",
+            "title": "Objects and attention: the state of the art"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "75a7931e3de0a05a3a71021fde66d71a68247bcf",
+            "title": "Shifting visual attention between objects and locations: evidence from normal and parietal lesion subjects."
+        },
+        {
+            "paperId": "e543af6f1f29661a43a2cc7706e4a95639327d68",
+            "title": "Perceptual grouping and attention in visual search for features and for objects."
+        },
+        {
+            "paperId": "76361a44e145732a39dbc68d9418871038c83be2",
+            "title": "A feature-integration theory of attention"
+        },
+        {
+            "paperId": null,
+            "title": "Optimization of image description metrics using policy gradient methods"
+        },
+        {
+            "paperId": null,
+            "title": "Deeper lstm and normalized cnn visual question answering model"
+        },
+        {
+            "paperId": "4c915c1eecb217c123a36dc6d3ce52d12c742614",
+            "title": "Simple Statistical Gradient-Following Algorithms for Connectionist Reinforcement Learning"
+        },
+        {
+            "paperId": null,
+            "title": "\u2022 (c) A shiny metal pot filled with some diced veggies. \u2022 (d) The pan on the stove has chopped vegetables in it"
+        },
+        {
+            "paperId": null,
+            "title": "\u2022 (a) A young girl standing on top of a tennis court"
+        },
+        {
+            "paperId": null,
+            "title": "\u2022 (b) A giraffe standing on top of a green field. High n-gram similarity"
+        },
+        {
+            "paperId": null,
+            "title": "Examples of visual question answering failure cases involving reading and counting"
+        },
+        {
+            "paperId": "73f36ff3a6d340606e09d2d0091da27a13af7a6f",
+            "title": "and as an in"
+        }
+    ]
+}

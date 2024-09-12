@@ -1,0 +1,142 @@
+{
+    "paperId": "26bc9195c6343e4d7f434dd65b4ad67efe2be27a",
+    "externalIds": {
+        "ArXiv": "1603.02754",
+        "DBLP": "conf/kdd/ChenG16",
+        "MAG": "3102476541",
+        "DOI": "10.1145/2939672.2939785",
+        "CorpusId": 4650265
+    },
+    "title": "XGBoost: A Scalable Tree Boosting System",
+    "abstract": "Tree boosting is a highly effective and widely used machine learning method. In this paper, we describe a scalable end-to-end tree boosting system called XGBoost, which is used widely by data scientists to achieve state-of-the-art results on many machine learning challenges. We propose a novel sparsity-aware algorithm for sparse data and weighted quantile sketch for approximate tree learning. More importantly, we provide insights on cache access patterns, data compression and sharding to build a scalable tree boosting system. By combining these insights, XGBoost scales beyond billions of examples using far fewer resources than existing systems.",
+    "venue": "Knowledge Discovery and Data Mining",
+    "year": 2016,
+    "referenceCount": 26,
+    "citationCount": 30252,
+    "influentialCitationCount": 2862,
+    "openAccessPdf": {
+        "url": "http://dl.acm.org/ft_gateway.cfm?id=2939785&type=pdf",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a novel sparsity-aware algorithm for sparse data and weighted quantile sketch for approximate tree learning and provides insights on cache access patterns, data compression and sharding to build a scalable tree boosting system called XGBoost."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1913774",
+            "name": "Tianqi Chen"
+        },
+        {
+            "authorId": "1730156",
+            "name": "Carlos Guestrin"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "3784b73a1f392160523400ec0309191c0a96d86f",
+            "title": "MLlib: Machine Learning in Apache Spark"
+        },
+        {
+            "paperId": "6390c4bcc2268b91deb7d268b69ff21b87748d98",
+            "title": "Efficient Second-Order Gradient Boosting for Conditional Random Fields"
+        },
+        {
+            "paperId": "daf9ed5dc6c6bad5367d7fd8561527da30e9b8dd",
+            "title": "Practical Lessons from Predicting Clicks on Ads at Facebook"
+        },
+        {
+            "paperId": "8588ec3fe0bfc6ebb763d0270608b85a5afdea61",
+            "title": "General Functional Matrix Factorization Using Gradient Boosting"
+        },
+        {
+            "paperId": "af08e1d1659788d756a731d1c12c16275cae3914",
+            "title": "Learning Nonlinear Functions Using Regularized Greedy Forest"
+        },
+        {
+            "paperId": "87a22424c8995f2d6f65b49a3f59eb1b712e8ed7",
+            "title": "Scaling up machine learning: parallel and distributed approaches"
+        },
+        {
+            "paperId": "7d36de51ea248046cb26eedd63cc6619109bd55a",
+            "title": "Parallel boosted regression trees for web search ranking"
+        },
+        {
+            "paperId": "168f28ac3c8c7ea63bf7ed25f2288e8b67e2fe74",
+            "title": "Scikit-learn: Machine Learning in Python"
+        },
+        {
+            "paperId": "e3e8d6cffe19a4aae526c988f0cf3d218ea601b0",
+            "title": "Robust LogitBoost and Adaptive Base Class (ABC) LogitBoost"
+        },
+        {
+            "paperId": "7df5a2760b055745f6d591c1ed7be5a7a23cf854",
+            "title": "Yahoo! Learning to Rank Challenge Overview"
+        },
+        {
+            "paperId": "0df9c70875783a73ce1e933079f328e8cf5e9ea2",
+            "title": "From RankNet to LambdaRank to LambdaMART: An Overview"
+        },
+        {
+            "paperId": "2ee4b8bc544020c14d8be093182093dc16327c26",
+            "title": "Stochastic gradient boosted distributed decision trees"
+        },
+        {
+            "paperId": "74c170f55160fcdbf558390cc768625b76c52cc9",
+            "title": "PLANET: Massively Parallel Learning of Tree Ensembles with MapReduce"
+        },
+        {
+            "paperId": "268a4f8da15a42f3e0e71691f760ff5edbf9cec8",
+            "title": "LIBLINEAR: A Library for Large Linear Classification"
+        },
+        {
+            "paperId": "c8c710c68dab80036b55dd48fbf1da0ecd4854cb",
+            "title": "McRank: Learning to Rank Using Multiple Classification and Gradient Boosting"
+        },
+        {
+            "paperId": "03a0f978de91f70249dc39de75e8958c49df4583",
+            "title": "A Fast Algorithm for Approximate Quantiles in High Speed Data Streams"
+        },
+        {
+            "paperId": "8bdda840ec8990e24c5a70db171edac330ebf650",
+            "title": "Stochastic gradient boosting"
+        },
+        {
+            "paperId": "1679beddda3a183714d380e944fe6bf586c083cd",
+            "title": "Greedy function approximation: A gradient boosting machine."
+        },
+        {
+            "paperId": "1f61892374c2be70f5924281c0d0e88dc4e02a25",
+            "title": "Space-efficient online computation of quantile summaries"
+        },
+        {
+            "paperId": "6f4493eff2531536a7aeb3fc11d62c30a8f487f6",
+            "title": "Special Invited Paper-Additive logistic regression: A statistical view of boosting"
+        },
+        {
+            "paperId": "04bdedb561c22d920e1b0145d0a342a68d2a4002",
+            "title": "Multivariate spearman's \u03c1 for aggregating ranks using copulas"
+        },
+        {
+            "paperId": "31af4b8793e93fd35e89569ccd663ae8777f0072",
+            "title": "The Netflix Prize"
+        },
+        {
+            "paperId": "19610284b552cd509f1c467020933c2849c170ea",
+            "title": "Generalized Boosted Models: A guide to the gbm package"
+        },
+        {
+            "paperId": "966ffe536f84efd15c1379dad9adffe90b20676f",
+            "title": "Importance Sampled Learning Ensembles"
+        },
+        {
+            "paperId": "8e0be569ea77b8cb29bb0e8b031887630fe7a96c",
+            "title": "Random Forests"
+        },
+        {
+            "paperId": null,
+            "title": "The present and the future of the kdd cup competition: an outsider's perspective"
+        }
+    ]
+}

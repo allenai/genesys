@@ -1,0 +1,282 @@
+{
+    "paperId": "2270b8628fd8ca67ae39d277f45bc3c38ac63d5f",
+    "externalIds": {
+        "ArXiv": "1811.02084",
+        "DBLP": "journals/corr/abs-1811-02084",
+        "MAG": "2963351145",
+        "CorpusId": 53236433
+    },
+    "title": "Mesh-TensorFlow: Deep Learning for Supercomputers",
+    "abstract": "Batch-splitting (data-parallelism) is the dominant distributed Deep Neural Network (DNN) training strategy, due to its universal applicability and its amenability to Single-Program-Multiple-Data (SPMD) programming. However, batch-splitting suffers from problems including the inability to train very large models (due to memory constraints), high latency, and inefficiency at small batch sizes. All of these can be solved by more general distribution strategies (model-parallelism). Unfortunately, efficient model-parallel algorithms tend to be complicated to discover, describe, and to implement, particularly on large clusters. We introduce Mesh-TensorFlow, a language for specifying a general class of distributed tensor computations. Where data-parallelism can be viewed as splitting tensors and operations along the \"batch\" dimension, in Mesh-TensorFlow, the user can specify any tensor-dimensions to be split across any dimensions of a multi-dimensional mesh of processors. A Mesh-TensorFlow graph compiles into a SPMD program consisting of parallel operations coupled with collective communication primitives such as Allreduce. We use Mesh-TensorFlow to implement an efficient data-parallel, model-parallel version of the Transformer sequence-to-sequence model. Using TPU meshes of up to 512 cores, we train Transformer models with up to 5 billion parameters, surpassing state of the art results on WMT'14 English-to-French translation task and the one-billion-word language modeling benchmark. Mesh-Tensorflow is available at this https URL .",
+    "venue": "Neural Information Processing Systems",
+    "year": 2018,
+    "referenceCount": 52,
+    "citationCount": 346,
+    "influentialCitationCount": 30,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Mesh-TensorFlow is introduced, a language for specifying a general class of distributed tensor computations and used to implement an efficient data-parallel, model-Parallel version of the Transformer sequence-to-sequence model, surpassing state of the art results on WMT'14 English- to-French translation task and the one-billion-word language modeling benchmark."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1846258",
+            "name": "Noam M. Shazeer"
+        },
+        {
+            "authorId": "73416451",
+            "name": "Youlong Cheng"
+        },
+        {
+            "authorId": "3877127",
+            "name": "Niki Parmar"
+        },
+        {
+            "authorId": "47497262",
+            "name": "Dustin Tran"
+        },
+        {
+            "authorId": "40348417",
+            "name": "Ashish Vaswani"
+        },
+        {
+            "authorId": "3344182",
+            "name": "Penporn Koanantakool"
+        },
+        {
+            "authorId": "2052793706",
+            "name": "Peter Hawkins"
+        },
+        {
+            "authorId": "34946720",
+            "name": "HyoukJoong Lee"
+        },
+        {
+            "authorId": "2069751443",
+            "name": "Mingsheng Hong"
+        },
+        {
+            "authorId": "39660914",
+            "name": "C. Young"
+        },
+        {
+            "authorId": "35474601",
+            "name": "Ryan Sepassi"
+        },
+        {
+            "authorId": "3135881",
+            "name": "Blake A. Hechtman"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "f971658ab845d7573c4bbb760d5e7e5332025254",
+            "title": "Beyond Data and Model Parallelism for Deep Neural Networks"
+        },
+        {
+            "paperId": "abd8cf4e6a1f3a4c61ac46a58bfa86c904d8d546",
+            "title": "Communication-Optimal Convolutional Neural Nets"
+        },
+        {
+            "paperId": "3ea088eae8637530d1108065acab244f3b6c280d",
+            "title": "Exploring Hidden Dimensions in Parallelizing Convolutional Neural Networks"
+        },
+        {
+            "paperId": "c39c1e0eec76c3bad44d088aad0d9cfb8e95f2e2",
+            "title": "Spatially Parallel Convolutions"
+        },
+        {
+            "paperId": "9654d0807b807ec7c0a78f717b0dc3d4dcb1ad7c",
+            "title": "Integrated Model, Batch, and Domain Parallelism in Training Neural Networks"
+        },
+        {
+            "paperId": "2f541c71646b330cb52f9b60957c950dcb75fcaf",
+            "title": "Integrated Model and Data Parallelism in Training Neural Networks"
+        },
+        {
+            "paperId": "16b0e58f16e3336311fdb4a40ffb4755edca31ca",
+            "title": "Communication-Avoiding Optimization Methods for Distributed Massive-Scale Sparse Inverse Covariance Estimation"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "510e26733aaff585d65701b9f1be7ca9d5afc586",
+            "title": "Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer"
+        },
+        {
+            "paperId": "4c452668e6f1e82d8ffd28fde96cfe4f5bfffa64",
+            "title": "Communication-Avoiding Parallel Sparse-Dense Matrix-Matrix Multiplication"
+        },
+        {
+            "paperId": "2f2d8f8072e5cc9b296fad551f65f183bdbff7aa",
+            "title": "Exploring the Limits of Language Modeling"
+        },
+        {
+            "paperId": "132540b32d857d1841b028184036ff24c496a31b",
+            "title": "Scalable task-based algorithm for multiplication of block-rank-sparse matrices"
+        },
+        {
+            "paperId": "f20340ebc8f466fc10b46015ccfc6dfaa61ea40f",
+            "title": "A massively parallel tensor contraction framework for coupled-cluster computations"
+        },
+        {
+            "paperId": "ce1109de9fd72ad10da896211ca50a0ff0f292ed",
+            "title": "Communication optimal parallel multiplication of sparse random matrices"
+        },
+        {
+            "paperId": "b8106b64eebf3b7dab5ddbc2226fc3c5f000176f",
+            "title": "Communication-Optimal Parallel Recursive Rectangular Matrix Multiplication"
+        },
+        {
+            "paperId": "fdf57b4bca2ccf01ae5a00a8b3e761270bdf32ea",
+            "title": "Communication lower bounds and optimal algorithms for programs that reference arrays - Part 1"
+        },
+        {
+            "paperId": "3127190433230b3dc1abd0680bb58dced4bcd90e",
+            "title": "Large Scale Distributed Deep Networks"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "3ffae44b736b6dbd6d715977bb6381297dd94304",
+            "title": "Communication-Optimal Parallel 2.5D Matrix Multiplication and LU Factorization Algorithms"
+        },
+        {
+            "paperId": "3492a16bccda6e64cd9eee62aabcab304c16ce7e",
+            "title": "Optimal bucket algorithms for large MPI collectives on torus interconnects"
+        },
+        {
+            "paperId": "f2905b93d056f3c71a4ac92b737a4c77680ce28e",
+            "title": "Minimizing Communication in Numerical Linear Algebra"
+        },
+        {
+            "paperId": "6f4e48c2a5de9337d147ebbb7d0ff0e555adceca",
+            "title": "Bandwidth optimal all-reduce algorithms for clusters of workstations"
+        },
+        {
+            "paperId": "fd6d2cf4ec3d765ecd084a747ab4c1d71d8609e0",
+            "title": "Communication lower bounds for distributed-memory matrix multiplication"
+        },
+        {
+            "paperId": "b582d4a005c3288858eb3910e9233edb35323f49",
+            "title": "Communication efficient matrix multiplication on hypercubes"
+        },
+        {
+            "paperId": "34d51059c4b97a888970354be43603fa4fa86c84",
+            "title": "Communication Complexity of PRAMs"
+        },
+        {
+            "paperId": "831cc6d9b7a333b38d34d923b52aed438e90ee1e",
+            "title": "More iteration space tiling"
+        },
+        {
+            "paperId": null,
+            "title": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Systems"
+        },
+        {
+            "paperId": null,
+            "title": "Smoking : The Letters of Hysteria and Reclining the State of South Carolina"
+        },
+        {
+            "paperId": null,
+            "title": "director of the Economic Policy Institute , India ranks 21st out of 221 nations in the current budget deficit"
+        },
+        {
+            "paperId": null,
+            "title": "the physicist who has kept many of these principles alive , the world has vanished into \" more and more of the static world \" -and in many ways we 're losing the earth 's ability to appreciate water"
+        },
+        {
+            "paperId": null,
+            "title": "chief technology officer for the US Department of Energy , aviation has \" potential to be the largest and fastest growing source of consumer and commercial emissions"
+        },
+        {
+            "paperId": null,
+            "title": "chief executive of the company , very few people work through chronology , and most people can 't use tables on their machines"
+        },
+        {
+            "paperId": null,
+            "title": "senior vice president of sales and marketing at Aspen , there is a percentage of the online response for the auto company escalating to 18 customers and increasing to 30 days a year"
+        },
+        {
+            "paperId": null,
+            "title": "of UNK , a software company in California , computer games are alive and well , with millions of gamers , but most games do not make money"
+        },
+        {
+            "paperId": null,
+            "title": "the famously headstrong and egocentric stack-on-stack , a keyboard is more than a part of the laptop 's muscle when it is standing upright rather than crouching"
+        },
+        {
+            "paperId": null,
+            "title": "Model with 0.37B Parameters"
+        },
+        {
+            "paperId": null,
+            "title": "the expert and co-author of \" The Singularity is Near : Comprehending the Technological Future of Engineering"
+        },
+        {
+            "paperId": null,
+            "title": "a transplant surgeon and Harvard astrophysicist , the results are illuminated in Honolulu"
+        },
+        {
+            "paperId": null,
+            "title": "we are saving the most jobs in the world"
+        },
+        {
+            "paperId": null,
+            "title": "the chief executive of ITC Emerging Markets , the metals sector should contribute about $ 210 billion by year-end 2008 -a figure that has now risen to $ 3 billion"
+        },
+        {
+            "paperId": null,
+            "title": "creator of the first modern computer , the sexy cyborg was the brainchild of an MIT professor , Thomas Harris , and a former banking entrepreneur , Henry Lee , who was looking for an UNK"
+        },
+        {
+            "paperId": null,
+            "title": "the head of PMI , he has now written off all his employees fairly"
+        },
+        {
+            "paperId": null,
+            "title": "the inventor of the modern personal computer , the shrinking human brain could eventually replace the Internet as a tool of human intelligence and imagination"
+        },
+        {
+            "paperId": null,
+            "title": "who will make an appearance at this year 's Consumer Electronics Show in Las Vegas next week , these mobile gadgets will be able to \" talk"
+        },
+        {
+            "paperId": null,
+            "title": "the owner and web guru at Stanford University , even a single person might fall in love with the internet simultaneously"
+        },
+        {
+            "paperId": null,
+            "title": "the futurist turned futurist , the onset of Alzheimer 's coincided precisely with the rate of unemployment in America"
+        },
+        {
+            "paperId": null,
+            "title": "creator of the Star Wars creator and creator of the popular game"
+        },
+        {
+            "paperId": null,
+            "title": "professor of musical economics at the University of California , Berkeley , the military 's \" biggest challenge \" might have been growing the region 's growing urban sprawl"
+        },
+        {
+            "paperId": null,
+            "title": "creator of the Review of Medical UNK , the organisation could be the \" holy grail"
+        },
+        {
+            "paperId": null,
+            "title": "According to Ray Kurzweil"
+        },
+        {
+            "paperId": null,
+            "title": "and a panel of experts testifying in Los Angeles , six years in Congress attempts to improve \" brain \" of Americans by hitting them with a $ 50 annual fee"
+        },
+        {
+            "paperId": null,
+            "title": "the futurist son of the futurist who wrote The Singularity is Near , the \" early days"
+        }
+    ]
+}

@@ -1,0 +1,198 @@
+{
+    "paperId": "35e57c040ddf95eca2a9bd6e1c532a08147b1f29",
+    "externalIds": {
+        "MAG": "2166027445",
+        "DBLP": "conf/icml/Sohl-DicksteinBD11",
+        "ArXiv": "0906.4779",
+        "CorpusId": 2595478
+    },
+    "title": "Minimum Probability Flow Learning",
+    "abstract": "Fitting probabilistic models to data is often difficult, due to the general intractability of the partition function and its derivatives. Here we propose a new parameter estimation technique that does not require computing an intractable normalization factor or sampling from the equilibrium distribution of the model. This is achieved by establishing dynamics that would transform the observed data distribution into the model distribution, and then setting as the objective the minimization of the KL divergence between the data distribution and the distribution produced by running the dynamics for an infinitesimal time. Score matching, minimum velocity learning, and certain forms of contrastive divergence are shown to be special cases of this learning technique. We demonstrate parameter estimation in Ising models, deep belief networks and an independent component analysis model of natural scenes. In the Ising model case, current state of the art techniques are outperformed by at least an order of magnitude in learning time, with lower error in recovered coupling parameters.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2009,
+    "referenceCount": 40,
+    "citationCount": 68,
+    "influentialCitationCount": 8,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a new parameter estimation technique that does not require computing an intractable normalization factor or sampling from the equilibrium distribution of the model, and demonstrates parameter estimation in Ising models, deep belief networks and an independent component analysis model of natural scenes."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1407546424",
+            "name": "Jascha Narain Sohl-Dickstein"
+        },
+        {
+            "authorId": "3341676",
+            "name": "P. Battaglino"
+        },
+        {
+            "authorId": "49488190",
+            "name": "M. DeWeese"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "5c96465c7c5a291b16d134db6bd1dbaa79ad8d1b",
+            "title": "Statistical Mechanics"
+        },
+        {
+            "paperId": "3b0821ff22fdffc95b0caae1f9660773eb54dc52",
+            "title": "MCMC using Hamiltonian dynamics"
+        },
+        {
+            "paperId": "e3ce36b9deb47aa6bb2aa19c4bfa71283b505025",
+            "title": "Noise-contrastive estimation: A new estimation principle for unnormalized statistical models"
+        },
+        {
+            "paperId": "6463cac46c43625ef78a9e0a3c2fc19affead187",
+            "title": "Interpretation and Generalization of Score Matching"
+        },
+        {
+            "paperId": "6f0a0732ab94094d345bb82524413d279bca9119",
+            "title": "The Structure of Large-Scale Synchronized Firing in Primate Retina"
+        },
+        {
+            "paperId": "4ad1afdd6cb59d1128ee59f9979ce23006f6031b",
+            "title": "Contrastive Divergence in Gaussian Diffusions"
+        },
+        {
+            "paperId": "bd83abfdce830e08c2aa21fd0bfeb92ae6983eff",
+            "title": "Faster solutions of the inverse pairwise Ising problem"
+        },
+        {
+            "paperId": "1d6793a163426b9c060de7588aef4fed8da6d16c",
+            "title": "Connections Between Score Matching, Contrastive Divergence, and Pseudolikelihood for Continuous-Valued Variables"
+        },
+        {
+            "paperId": "ce06539ba8e6b33045a9cfe9167026ebe5a980be",
+            "title": "Some extensions of score matching"
+        },
+        {
+            "paperId": "f199ed93aedf19c24d46dd6d0c5f6644ba691f30",
+            "title": "The Structure of Multi-Neuron Firing Patterns in Primate Retina"
+        },
+        {
+            "paperId": "8978cf7574ceb35f4c3096be768c7547b28a35d0",
+            "title": "A Fast Learning Algorithm for Deep Belief Nets"
+        },
+        {
+            "paperId": "59d435c69a34efec487447c52f37cb96b36df570",
+            "title": "Weak pairwise correlations imply strongly correlated network states in a neural population"
+        },
+        {
+            "paperId": "9966e890f2eedb4577e11b9d5a66380a4d9341fe",
+            "title": "Estimation of Non-Normalized Statistical Models by Score Matching"
+        },
+        {
+            "paperId": "e3b5bf2a8f1dc9dd99b3a54afb1306f85f72d353",
+            "title": "The Convergence of Contrastive Divergences"
+        },
+        {
+            "paperId": "b7b5bea7b4d40003a6887794652ea07196a97134",
+            "title": "A New Learning Algorithm for Mean Field Boltzmann Machines"
+        },
+        {
+            "paperId": "52070af952474cf13ecd015d42979373ff7c1c00",
+            "title": "Training Products of Experts by Minimizing Contrastive Divergence"
+        },
+        {
+            "paperId": "b8d90e4b3f68044727973d62a17ca8a6dec6e9c5",
+            "title": "Mean-field theory of Boltzmann machine learning"
+        },
+        {
+            "paperId": "1d7d0e8c4791700defd4b0df82a26b50055346e0",
+            "title": "An Information-Maximization Approach to Blind Separation and Blind Deconvolution"
+        },
+        {
+            "paperId": "fe74763afa5741c00263ca479068337b647252d4",
+            "title": "Learning Continuous Probability Distributions with Symmetric Diffusion Networks"
+        },
+        {
+            "paperId": "47cd50eec7f3d5ba6e4db9afdd9ea83545674236",
+            "title": "A personal communication"
+        },
+        {
+            "paperId": "458861a2d970b5f7893b4bbc5008f2f08ab107d0",
+            "title": "Nonuniversal critical dynamics in Monte Carlo simulations."
+        },
+        {
+            "paperId": "1406b6d771c270aff4dcb1c96e4f5c62c02c00a5",
+            "title": "Statistical Analysis of Non-Lattice Data"
+        },
+        {
+            "paperId": "8f3937458790245141f3f6f8d18b695baf6d8a37",
+            "title": "History of the Lenz-Ising Model"
+        },
+        {
+            "paperId": "1359fa0c29615f673b2f0f4d4fd7a333754074a3",
+            "title": "Mean field approach to learning Boltzmann Machines"
+        },
+        {
+            "paperId": "0ee392ad467b967c0a32d8ecb19fc20f7c1d62fe",
+            "title": "Probabilistic Inference Using Markov Chain Monte Carlo Methods"
+        },
+        {
+            "paperId": "ce70030c9d4e2ce2280cc15f50da42ea755d37d3",
+            "title": "Neural Networks and Learning Machines"
+        },
+        {
+            "paperId": null,
+            "title": "Sohl-Dickstein and Olshausen] Sohl- Dickstein, J and Olshausen, B. A spatial derivation of score matching"
+        },
+        {
+            "paperId": null,
+            "title": "A minimum velocity approach to learning"
+        },
+        {
+            "paperId": null,
+            "title": "unpublished draft"
+        },
+        {
+            "paperId": null,
+            "title": "M J Berry 2nd"
+        },
+        {
+            "paperId": null,
+            "title": "minfunc"
+        },
+        {
+            "paperId": null,
+            "title": "Journal of Machine Learning Research"
+        },
+        {
+            "paperId": "14d2d9b2e4c29fe105bfbb31f9749b60690303a7",
+            "title": "Learning Sparse Topographic Representations with Products of Student-t Distributions"
+        },
+        {
+            "paperId": "6069ec0d0387b3f3516ae83ff108a581f10a76e4",
+            "title": "Failures of the One-Step Learning Algorithm"
+        },
+        {
+            "paperId": "117175a54263cc2ae693fe82c9b3fe0553931cd8",
+            "title": "Independent component filters of natural images compared with simple cells in primary visual cortex"
+        },
+        {
+            "paperId": "e407ea7fda6d152d2186f4b5e27aa04ec2d32dcd",
+            "title": "A Variational Approach to Bayesian Logistic Regression Models and their Extensions"
+        },
+        {
+            "paperId": null,
+            "title": "Neural Computation 1995; vol"
+        },
+        {
+            "paperId": "a0d16f0e99f7ce5e6fb70b1a68c685e9ad610657",
+            "title": "A Learning Algorithm for Boltzmann Machines"
+        },
+        {
+            "paperId": null,
+            "title": "R Pathria. Statistical Mechanics. Butterworth Heinemann"
+        },
+        {
+            "paperId": null,
+            "title": "Topic: learning theory Preference: poster"
+        }
+    ]
+}

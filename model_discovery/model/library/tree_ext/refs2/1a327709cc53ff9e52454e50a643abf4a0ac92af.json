@@ -1,0 +1,682 @@
+{
+    "paperId": "1a327709cc53ff9e52454e50a643abf4a0ac92af",
+    "externalIds": {
+        "DBLP": "conf/wmt/BojarCFGHHJKLMN16",
+        "MAG": "2512924740",
+        "ACL": "W16-2301",
+        "DOI": "10.18653/v1/W16-2301",
+        "CorpusId": 14421595
+    },
+    "title": "Findings of the 2016 Conference on Machine Translation",
+    "abstract": "This paper presents the results of the WMT16 shared tasks, which included five machine translation (MT) tasks (standard news, IT-domain, biomedical, multimodal, pronoun), three evaluation tasks (metrics, tuning, run-time estimation of MT quality), and an automatic post-editing task and bilingual document alignment task. This year, 102 MT systems from 24 institutions (plus 36 anonymized online systems) were submitted to the 12 translation directions in the news translation task. The IT-domain task received 31 submissions from 12 institutions in 7 directions and the Biomedical task received 15 submissions systems from 5 institutions. Evaluation was both automatic and manual (relative ranking and 100-point scale assessments). The quality estimation task had three subtasks, with a total of 14 teams, submitting 39 entries. The automatic post-editing task had a total of 6 teams, submitting 11 entries.",
+    "venue": "Conference on Machine Translation",
+    "year": 2016,
+    "referenceCount": 142,
+    "citationCount": 717,
+    "influentialCitationCount": 68,
+    "openAccessPdf": {
+        "url": "https://doi.org/10.18653/v1/w16-2301",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The results of the WMT16 shared tasks are presented, which included five machine translation (MT) tasks (standard news, IT-domain, biomedical, multimodal, pronoun), three evaluation tasks (metrics, tuning, run-time estimation of MT quality), and an automatic post-editing task and bilingual document alignment task."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "143832874",
+            "name": "Ondrej Bojar"
+        },
+        {
+            "authorId": "3292652",
+            "name": "Rajen Chatterjee"
+        },
+        {
+            "authorId": "3359291",
+            "name": "C. Federmann"
+        },
+        {
+            "authorId": "2000709",
+            "name": "Yvette Graham"
+        },
+        {
+            "authorId": "2259100",
+            "name": "B. Haddow"
+        },
+        {
+            "authorId": "1839533",
+            "name": "Matthias Huck"
+        },
+        {
+            "authorId": "1399097376",
+            "name": "Antonio Jimeno-Yepes"
+        },
+        {
+            "authorId": "1755162",
+            "name": "Philipp Koehn"
+        },
+        {
+            "authorId": "145089549",
+            "name": "V. Logacheva"
+        },
+        {
+            "authorId": "1696402",
+            "name": "Christof Monz"
+        },
+        {
+            "authorId": "2138026",
+            "name": "Matteo Negri"
+        },
+        {
+            "authorId": "1692256",
+            "name": "Aur\u00e9lie N\u00e9v\u00e9ol"
+        },
+        {
+            "authorId": "1885693",
+            "name": "Mariana Neves"
+        },
+        {
+            "authorId": "3209310",
+            "name": "M. Popel"
+        },
+        {
+            "authorId": "38842528",
+            "name": "Matt Post"
+        },
+        {
+            "authorId": "1731383",
+            "name": "Rapha\u00ebl Rubino"
+        },
+        {
+            "authorId": "2797847",
+            "name": "Carolina Scarton"
+        },
+        {
+            "authorId": "1702974",
+            "name": "Lucia Specia"
+        },
+        {
+            "authorId": "145862931",
+            "name": "Marco Turchi"
+        },
+        {
+            "authorId": "144765178",
+            "name": "Karin M. Verspoor"
+        },
+        {
+            "authorId": "145130358",
+            "name": "Marcos Zampieri"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "0125dcdf7d2216b677d9fbb6ee15862781e4aa64",
+            "title": "Findings of the 2016 WMT Shared Task on Cross-lingual Pronoun Prediction"
+        },
+        {
+            "paperId": "4ef30bf34048741dd6e61e5ee0721584cf112ca1",
+            "title": "Translation Quality Estimation using Recurrent Neural Network"
+        },
+        {
+            "paperId": "18080d9c8544656c50e4dc388118dabd19dcf95a",
+            "title": "CzEng 1.6: Enlarged Czech-English Parallel Corpus with Processing Tools Dockered"
+        },
+        {
+            "paperId": "8d4cb41d377569249895dde9b809cdb02cd6861e",
+            "title": "Edinburgh\u2019s Statistical Machine Translation Systems for WMT16"
+        },
+        {
+            "paperId": "95d3001ed7782fecea29bdb41e598aa5b41a615b",
+            "title": "A Shared Task on Multimodal Machine Translation and Crosslingual Image Description"
+        },
+        {
+            "paperId": "feef7ea14013e9e93b9f1219795b3b1a78bb5a8f",
+            "title": "The QT21/HimL Combined Machine Translation System"
+        },
+        {
+            "paperId": "172d647a763b13d5afebe038324d5936677b021a",
+            "title": "The JHU Machine Translation Systems for WMT 2016"
+        },
+        {
+            "paperId": "79e8fbba8a36be5b0480f3bd36eb746a90b4482a",
+            "title": "The AFRL-MITLL WMT16 News-Translation Task Systems"
+        },
+        {
+            "paperId": "6e193cfc21b619d0044200e7ccc658ffa5d2ea69",
+            "title": "Hybrid Morphological Segmentation for Phrase-Based Machine Translation"
+        },
+        {
+            "paperId": "54a4c8051e655e3035f98bb9dd8876a6511517ff",
+            "title": "LIMSI@WMT\u201916: Machine Translation of News"
+        },
+        {
+            "paperId": "4dd0734ee88ce6eff8061f2968d610c6830bec53",
+            "title": "LIMSI\u2019s Contribution to the WMT\u201916 Biomedical Translation Task"
+        },
+        {
+            "paperId": "6316c4fbfca99aa6c9b7ff6489d3597dedbbb211",
+            "title": "Results of the WMT16 Metrics Shared Task"
+        },
+        {
+            "paperId": "778dadb92806087d3b5bc4b52b2ca2ebc4f95a80",
+            "title": "NRC Russian-English Machine Translation System for WMT 2016"
+        },
+        {
+            "paperId": "316f1e7f43a883abf9f8481dab713a5b23b0c928",
+            "title": "The TALP\u2013UPC Spanish\u2013English WMT Biomedical Task: Bilingual Embeddings and Char-based Neural Language Model Rescoring in a Phrase-based System"
+        },
+        {
+            "paperId": "6d7ed03f6e2e808aa4ca5177ad5904379a2916d1",
+            "title": "UGENT-LT3 SCATE Submission for WMT16 Shared Task on Quality Estimation"
+        },
+        {
+            "paperId": "62d4b3bdfb18a5143d2978a2af316fce0e17e322",
+            "title": "The UU Submission to the Machine Translation Quality Estimation Task"
+        },
+        {
+            "paperId": "9442255fa45da581257b965beceb012901e8d866",
+            "title": "MetaMind Neural Machine Translation System for WMT 2016"
+        },
+        {
+            "paperId": "6930e8b9c8e8f8f09f0c8add3e9d5fb3701fbbb3",
+            "title": "The RWTH Aachen University English-Romanian Machine Translation System for WMT 2016"
+        },
+        {
+            "paperId": "533b95b57a5719b94054868f363cecaf124b1881",
+            "title": "Abu-MaTran at WMT 2016 Translation Task: Deep Learning, Morphological Segmentation and Tuning on Character Sequences"
+        },
+        {
+            "paperId": "d1e37b2538553700f8593dbb29f84f55397ac9fc",
+            "title": "DFKI\u2019s system for WMT16 IT-domain task, including analysis of systematic errors"
+        },
+        {
+            "paperId": "4fc5ee8150685fe2e131c0da8864a4e7c964b0c1",
+            "title": "YSDA Participation in the WMT\u201916 Quality Estimation Shared Task"
+        },
+        {
+            "paperId": "c9ca99a8a358ed51b284a941f20cc9df54b68d56",
+            "title": "The Edinburgh/LMU Hierarchical Machine Translation System for WMT 2016"
+        },
+        {
+            "paperId": "04bf94628fdbdedc73c7d93af601e8f0ffa89dbf",
+            "title": "UAlacant word-level and phrase-level machine translation quality estimation systems at WMT 2016"
+        },
+        {
+            "paperId": "8732b28b228f60eef3759f72cb61006c177fa473",
+            "title": "SHEF-LIUM-NN: Sentence level Quality Estimation with Neural Network Features"
+        },
+        {
+            "paperId": "9fe660653fb34392ca6154e2079c593afccb3a66",
+            "title": "IXA Biomedical Translation System at WMT16 Biomedical Translation Task"
+        },
+        {
+            "paperId": "7b5ba5b3d7312cf88530f7b9e07a887f2351bd7d",
+            "title": "Findings of the WMT 2016 Bilingual Document Alignment Shared Task"
+        },
+        {
+            "paperId": "3c9b142b2d7f8e4cb38a1292d980166ebb09dfe1",
+            "title": "USFD\u2019s Phrase-level Quality Estimation Systems"
+        },
+        {
+            "paperId": "944844d9b8d84728763b42eaedd941c3545e0ec3",
+            "title": "T\u00dcB\u0130TAK SMT System Submission for WMT2016"
+        },
+        {
+            "paperId": "931b255db482745a19e1ddc01124e26b7eacc7c5",
+            "title": "Dictionary-based Domain Adaptation of MT Systems without Retraining"
+        },
+        {
+            "paperId": "944a1081eced2651dedba2384a1210808366bc7f",
+            "title": "SimpleNets: Quality Estimation with Resource-Light Neural Networks"
+        },
+        {
+            "paperId": "2f6843f9345ca56af3fd9df5512daa1e7f80bedf",
+            "title": "SHEF-MIME: Word-level Quality Estimation Using Imitation Learning"
+        },
+        {
+            "paperId": "ea29d03e540218b89aef851a4a69aee1642719ef",
+            "title": "SMT and Hybrid systems of the QTLeap project in the WMT16 IT-task"
+        },
+        {
+            "paperId": "491833087ba57eaabad5c762927e57aeaa4baaaf",
+            "title": "Merged bilingual trees based on Universal Dependencies in Machine Translation"
+        },
+        {
+            "paperId": "ea6896d55bfc1c17d67c1eb210308677e7d0cc20",
+            "title": "English-Portuguese Biomedical Translation Task Using a Genuine Phrase-Based Statistical Machine Translation Approach"
+        },
+        {
+            "paperId": "ccd8107a8dafb03b327887652225fb145255e50a",
+            "title": "Yandex School of Data Analysis approach to English-Turkish translation at WMT16 News Translation Task"
+        },
+        {
+            "paperId": "44b593cc3215de07b92357a4a66205e0cbb26ef6",
+            "title": "Phrase-Based SMT for Finnish with More Data, Better Models and Alternative Alignment and Translation Tools"
+        },
+        {
+            "paperId": "1e6a9f3fd67e437a4287a6e2f6522ed59f3bf3de",
+            "title": "Data Selection for IT Texts using Paragraph Vector"
+        },
+        {
+            "paperId": "b62d42470c4bda549e1c0c99cfea3a0dede8ea50",
+            "title": "Metrics for Evaluation of Word-level Machine Translation Quality Estimation"
+        },
+        {
+            "paperId": "27ba92d0c67e4a5c7932c7abacf05a2bf236a69e",
+            "title": "Recurrent Neural Network based Translation Quality Estimation"
+        },
+        {
+            "paperId": "6c58fdff64b52aaaaa16c5f5fc08befd65acff3a",
+            "title": "Bilingual Embeddings and Word Alignments for Translation Quality Estimation"
+        },
+        {
+            "paperId": "3f43314011db0e92e629d6ee6cf6a918e1e258bb",
+            "title": "NYU-MILA Neural Machine Translation Systems for WMT\u201916"
+        },
+        {
+            "paperId": "3527d1c4f7f2a9912f66e5e4f7471f619600dd42",
+            "title": "Results of the WMT16 Tuning Shared Task"
+        },
+        {
+            "paperId": "ca835ecd0b8a7fd8b40e7fa938a3bb812d99c27f",
+            "title": "The Edit Distance Transducer in Action: The University of Cambridge English-German System at WMT16"
+        },
+        {
+            "paperId": "233ca02cd479c3f2da8e74f431854ca3a326d377",
+            "title": "MultiVec: a Multilingual and Multilevel Representation Learning Toolkit for NLP"
+        },
+        {
+            "paperId": "f48d5181ab3440f96e6289ce4a505d441e9f001b",
+            "title": "The AMU-UEDIN Submission to the WMT16 News Translation Task: Attention-based NMT Models as Feature Functions in Phrase-based SMT"
+        },
+        {
+            "paperId": "5fcee748b331e9d9afc56c15dd731c4bb79b9096",
+            "title": "The Scielo Corpus: a Parallel Corpus of Scientific Publications for Biomedicine"
+        },
+        {
+            "paperId": "99f7420dfea0c9f593ad326232052ae9cfa915f3",
+            "title": "Cohere: A Toolkit for Local Coherence"
+        },
+        {
+            "paperId": "87341938df231c869b568311dc244e3aa2948620",
+            "title": "Log-linear Combinations of Monolingual and Bilingual Neural Machine Translation Models for Automatic Post-Editing"
+        },
+        {
+            "paperId": "ba6f2681ac4ab5d887099f77ae39d2652599cf1c",
+            "title": "MARMOT: A Toolkit for Translation Quality Estimation at the Word Level"
+        },
+        {
+            "paperId": "46c9985ad5d99e98d10d903a5c1c1ff80f249c4c",
+            "title": "Referential translation machines for predicting semantic similarity"
+        },
+        {
+            "paperId": "113ea1e3323298c29201464c2cf3588364a33832",
+            "title": "Can machine translation systems be evaluated by the crowd alone"
+        },
+        {
+            "paperId": "f0a4000286dcd6ec3fd955ebab988bae3eac4a4d",
+            "title": "QUality Estimation from ScraTCH (QUETCH): Deep Learning for Word-level Translation Quality Estimation"
+        },
+        {
+            "paperId": "eb40b62395075bdbc40f99efc8d334c38e9d5195",
+            "title": "USAAR-SAPE: An English\u2013Spanish Statistical Automatic Post-Editing System"
+        },
+        {
+            "paperId": "f2ddfefd3d0d1b166e485b712dc8ecc7107925b2",
+            "title": "USHEF and USAAR-USHEF participation in the WMT15 QE shared task"
+        },
+        {
+            "paperId": "3d74985809d32296fa1611da6108cf623d59a2f1",
+            "title": "New Language Pairs in TectoMT"
+        },
+        {
+            "paperId": "82c14dab906660920b695ca036bbbf7e9acd3f6a",
+            "title": "UAlacant word-level machine translation quality estimation system at WMT 2015"
+        },
+        {
+            "paperId": "e883ad338d4d006600383c24494dc6eef5f2e2fd",
+            "title": "The FBK Participation in the WMT15 Automatic Post-editing Shared Task"
+        },
+        {
+            "paperId": "feb420a4ac7c5719d51480053cd3e8669d5f2062",
+            "title": "Findings of the 2015 Workshop on Statistical Machine Translation"
+        },
+        {
+            "paperId": "1518039b5001f1836565215eb047526b3ac7f462",
+            "title": "Neural Machine Translation of Rare Words with Subword Units"
+        },
+        {
+            "paperId": "2be23048a3f8325e39e7ccfc652cc1cfa68aa68d",
+            "title": "Exploring the Planet of the APEs: a Comparative Study of State-of-the-art Methods for MT Automatic Post-Editing"
+        },
+        {
+            "paperId": "7294933e0456386bc464d2282680651908a4431b",
+            "title": "Multi-level Translation Quality Prediction with QuEst++"
+        },
+        {
+            "paperId": "7caddbbf06e9aa331a96983db4555c47f24961fa",
+            "title": "Improving Evaluation of Machine Translation Quality Estimation"
+        },
+        {
+            "paperId": "0629a17206ca20da7eaf6933bffc711bef95b641",
+            "title": "Searching for Context: a Study on Document-Level Labels for Translation Quality Estimation"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "2dbb30c60b76bd10bd46cb4205773311593bf90c",
+            "title": "Introducing the SPMRL 2014 Shared Task on Parsing Morphologically-rich Languages"
+        },
+        {
+            "paperId": "d72f0df676996e32f5cb17feb4f320b3b39b071a",
+            "title": "LIG System for Word Level QE task at WMT14"
+        },
+        {
+            "paperId": "4a7197348049018b8a1ed11295d02e8bf5747889",
+            "title": "Efficient Elicitation of Annotations for Human Evaluation of Machine Translation"
+        },
+        {
+            "paperId": "114cbeb219a692d3f976e7637168151e7c916f66",
+            "title": "FBK-UPV-UEdin participation in the WMT14 Quality Estimation shared-task"
+        },
+        {
+            "paperId": "5ec85a0d88adcc4344bb5cc81b0d1aef9bcd8dcc",
+            "title": "Findings of the 2014 Workshop on Statistical Machine Translation"
+        },
+        {
+            "paperId": "8e4fb17fff38a7834af5b4eaafcbbde02bf00975",
+            "title": "N-gram Counts and Language Models from the Common Crawl"
+        },
+        {
+            "paperId": "4eed3f806234a4e5e055ded21193ac3ae9e4b1ca",
+            "title": "Is Machine Translation Getting Better over Time?"
+        },
+        {
+            "paperId": "2466d675f9a8b07cc8295bf075a4bab7e8b7c5b2",
+            "title": "Turning on the Turbo: Fast Third-Order Non-Projective Turbo Parsers"
+        },
+        {
+            "paperId": "d94cf94459ccce18eb1205cec1bfb3f38108d717",
+            "title": "Continuous Measurement Scales in Human Evaluation of Machine Translation"
+        },
+        {
+            "paperId": "163157e8fa159551e4a70cbdcf1b0648463b1ccc",
+            "title": "FBK-UEdin Participation to the WMT13 Quality Estimation Shared Task"
+        },
+        {
+            "paperId": "7de66a09cd23f05859a95fa55616b515acab71e9",
+            "title": "Findings of the 2013 Workshop on Statistical Machine Translation"
+        },
+        {
+            "paperId": "8e3f0f7a761f18cb91c11764d8d6cb3b1e9c5731",
+            "title": "Polyglot: Distributed Word Representations for Multilingual NLP"
+        },
+        {
+            "paperId": "5d96fb77c7b89fae2d9fd0b101c20f6fec8e1e13",
+            "title": "Combining Word Reordering Methods on different Linguistic Abstraction Levels for Statistical Machine Translation"
+        },
+        {
+            "paperId": "c4fd9c86b2b41df51a6fe212406dda81b1997fd4",
+            "title": "Linguistic Regularities in Continuous Space Word Representations"
+        },
+        {
+            "paperId": "b8f858a7b81e1d43a4e6b0de7a93bce47309c82c",
+            "title": "Appraise: an Open-Source Toolkit for Manual Evaluation of MT Output"
+        },
+        {
+            "paperId": "cd17f62533ed110e6b31979f18680a4c6feb15a5",
+            "title": "Findings of the 2012 Workshop on Statistical Machine Translation"
+        },
+        {
+            "paperId": "30e943263285c3b2e01ccb3dc8409368942b8c7d",
+            "title": "PET: a Tool for Post-editing and Assessing Machine Translation"
+        },
+        {
+            "paperId": "e0c7a5f5fc258a9a17c4ba20c6ac4d4063904d9a",
+            "title": "A Grain of Salt for the WMT Manual Evaluation"
+        },
+        {
+            "paperId": "883d1d06d857a85a0e64bb19f0b17d56f2cc9d7b",
+            "title": "KenLM: Faster and Smaller Language Model Queries"
+        },
+        {
+            "paperId": "20665604f9ebab8ef12ac05e1e50e6b4a2a13ad6",
+            "title": "Findings of the 2011 Workshop on Statistical Machine Translation"
+        },
+        {
+            "paperId": "019e706ff091a69bdbe348e782fe5ea2998d93b9",
+            "title": "A Joint Sequence Translation Model with Integrated Reordering"
+        },
+        {
+            "paperId": "e5500e09805681d5f7af1b64ea3465e1388f0119",
+            "title": "\u201cThis sentence is wrong.\u201d Detecting errors in machine-translated sentences"
+        },
+        {
+            "paperId": "168f28ac3c8c7ea63bf7ed25f2288e8b67e2fe74",
+            "title": "Scikit-learn: Machine Learning in Python"
+        },
+        {
+            "paperId": "8dc05aa0cdaf14bdfed6cf9a5f15f423f30246a6",
+            "title": "Asiya: An Open Toolkit for Automatic Machine Translation (Meta-)Evaluation"
+        },
+        {
+            "paperId": "da6918ed87095d1313bd20606a934f899d4084b0",
+            "title": "Findings of the 2010 Joint Workshop on Statistical Machine Translation and Metrics for Machine Translation"
+        },
+        {
+            "paperId": "fbd201207e51f50f14235c5ea864ccccb6425325",
+            "title": "News from OPUS \u2014 A collection of multilingual parallel corpora with tools and interfaces"
+        },
+        {
+            "paperId": "319ac2dd69f75ef281fe4652dad97a32a0b8f4ac",
+            "title": "Findings of the 2009 Workshop on Statistical Machine Translation"
+        },
+        {
+            "paperId": "5ea9d9f6f81cd32314a28cc6bed80fa7ecccee74",
+            "title": "Parallel Implementations of Word Alignment Tool"
+        },
+        {
+            "paperId": "be9bca1e9b0192fc49b316f2701242b50d98d456",
+            "title": "Further Meta-Evaluation of Machine Translation"
+        },
+        {
+            "paperId": "20c11546a035d2fa2fa1121a7b31e890d20d6b6b",
+            "title": "(Meta-) Evaluation of Machine Translation"
+        },
+        {
+            "paperId": "659f1f754954d093e684ead4842832052f7bf748",
+            "title": "Factored Translation Models"
+        },
+        {
+            "paperId": "4ee2eab4c298c1824a9fb8799ad8eed21be38d21",
+            "title": "Moses: Open Source Toolkit for Statistical Machine Translation"
+        },
+        {
+            "paperId": "52bd827b0089a77ef6f9a72c1db6bc922b969239",
+            "title": "Statistical Phrase-Based Post-Editing"
+        },
+        {
+            "paperId": "009f60203ac86cda58a783a7003c575f06c475fd",
+            "title": "Manual and Automatic Evaluation of Machine Translation between European Languages"
+        },
+        {
+            "paperId": "f4f6bfacb4cd508df62540f5aa9ba30cd83dd127",
+            "title": "Alignment by Agreement"
+        },
+        {
+            "paperId": "cb826a3899752b796f14df1c50378c64954a6b0a",
+            "title": "Statistical Significance Tests for Machine Translation Evaluation"
+        },
+        {
+            "paperId": "554894f70b28dba58b396c2d84080ac01051261b",
+            "title": "Gaussian Processes For Machine Learning"
+        },
+        {
+            "paperId": "1f12451245667a85d0ee225a80880fc93c71cc8b",
+            "title": "Minimum Error Rate Training in Statistical Machine Translation"
+        },
+        {
+            "paperId": "de2df29b0a0312de7270c3f5a0af6af5645cf91a",
+            "title": "A Systematic Comparison of Various Statistical Alignment Models"
+        },
+        {
+            "paperId": "d7da009f457917aa381619facfa5ffae9329a6e9",
+            "title": "Bleu: a Method for Automatic Evaluation of Machine Translation"
+        },
+        {
+            "paperId": "9dcf566fa1515896ac7df2c6ff4b158536cc584f",
+            "title": "More accurate tests for the statistical significance of result differences"
+        },
+        {
+            "paperId": "7e7343a5608fff1c68c5259db0c77b9193f1546d",
+            "title": "The measurement of observer agreement for categorical data."
+        },
+        {
+            "paperId": "9e463eefadbcd336c69270a299666e4104d50159",
+            "title": "A Coefficient of Agreement for Nominal Scales"
+        },
+        {
+            "paperId": "350a58db3ecb693585f902a74396b2e9c563efbf",
+            "title": "The Karlsruhe Institute of Technology Systems for the News Translation Task in WMT 2018"
+        },
+        {
+            "paperId": "4464dfdad035d6bf29874a10aa3d9740db5b4a06",
+            "title": "PROMT Translation Systems for WMT 2016 Translation Tasks"
+        },
+        {
+            "paperId": "464b1964eb318e68afdd8527a731ce43c12d58f1",
+            "title": "ILLC-UvA Adaptation System (Scorpio) at WMT\u201916 IT-DOMAIN Task"
+        },
+        {
+            "paperId": "3068d60cd0aa24ad27b1cd7e430482360349aafb",
+            "title": "ParFDA for Instance Selection for Statistical Machine Translation"
+        },
+        {
+            "paperId": "8439757937c5175c1bfd5085d8533906e5c57d14",
+            "title": "PJAIT Systems for the WMT 2016"
+        },
+        {
+            "paperId": "04b0094935ed1fb442da49cfa001632801c4ecc2",
+            "title": "Using MT-ComparEval"
+        },
+        {
+            "paperId": "f0d14b665d9ac3ea1f396a3afd4dfbaa4ab14897",
+            "title": "CUNI-LMU Submissions in WMT2016: Chimera Constrained and Beaten"
+        },
+        {
+            "paperId": "c3837249760a03365c0cc4c354bbfdaa846b172e",
+            "title": "USAAR: An Operation Sequential Model for Automatic Statistical Post-Editing"
+        },
+        {
+            "paperId": "196dae2e871b1202c65a469f352eb825bf2e72fd",
+            "title": "Sheffield Systems for the English-Romanian WMT Translation Task"
+        },
+        {
+            "paperId": "25ba72f58ff7be74517a661a8b0c3cd6a56cd95f",
+            "title": "JU-USAAR: A Domain Adaptive MT System"
+        },
+        {
+            "paperId": "543ea473b0aebea6a7116cc3bbd389696b50247d",
+            "title": "Referential Translation Machines for Predicting Translation Performance"
+        },
+        {
+            "paperId": "f5f890a285746495056bce02e1a7a13ef4ff5e46",
+            "title": "Word embeddings and discourse information for Quality Estimation"
+        },
+        {
+            "paperId": "350e78cfc83471276008a4a8023236accff6da50",
+            "title": "Unbabel\u2019s Participation in the WMT16 Word-Level Translation Quality Estimation Shared Task"
+        },
+        {
+            "paperId": "e3ce71a26872c7755e6d8b8fc45bf00c8be64193",
+            "title": "Neural Machine Translation Systems for WMT 16"
+        },
+        {
+            "paperId": null,
+            "title": "The AMU Submission to the WMT-16 APE Task"
+        },
+        {
+            "paperId": null,
+            "title": "European Language Resources Association (ELRA)"
+        },
+        {
+            "paperId": "60166b51eb726323304d51b36e2fd09851e44f63",
+            "title": "The FBK Participation in the WMT 2016 Automatic Post-editing Shared Task"
+        },
+        {
+            "paperId": "9e945c6667fc5f8f8183895ea22cc1489dcccdfd",
+            "title": "Phrase-level Quality Estimation for Machine Translation"
+        },
+        {
+            "paperId": "6bf9a6d96038b72260e37ef7d0820daae785455c",
+            "title": "Latent Domain Translation Models in Mix-of-Domains Haystack"
+        },
+        {
+            "paperId": "7c8508e9cf113c8d82e66ebcda6b5127e00ad59c",
+            "title": "Document-level translation quality estimation: exploring discourse and pseudo-references"
+        },
+        {
+            "paperId": "33234ee9d9dd8e004d93ad8d2870c3a88e4b62f7",
+            "title": "Statistical Post-Editing for a Statistical MT System"
+        },
+        {
+            "paperId": null,
+            "title": "CRFsuite: a fast implementation of Conditional Random Fields"
+        },
+        {
+            "paperId": "3d07b5087e53c6f7c228b3c7e769494527be228e",
+            "title": "A Study of Translation Edit Rate with Targeted Human Annotation"
+        },
+        {
+            "paperId": "8b4300f253644d49c778c037ee614b9cf42a908c",
+            "title": "The Bonferonni and \u0160id\u00e1k Corrections for Multiple Comparisons"
+        },
+        {
+            "paperId": "a5899f1ec92af7d01f35225161430116a6eabbea",
+            "title": "A STUDY OF TRANSLATION ERROR RATE WITH TARGETED HUMAN ANNOTATION"
+        },
+        {
+            "paperId": null,
+            "title": "Europarl: A mul"
+        },
+        {
+            "paperId": "cfb4592221080deb127de94e8063fb403b13a298",
+            "title": "Measuring nominal scale agreement among many raters."
+        },
+        {
+            "paperId": null,
+            "title": "25 \u2021 .27 \u2021 .27 \u2021 NYU-UMONTREAL .59 \u2021 .60 \u2021 .56 \u2020 \u2013 .39 \u2021 .48 .41 \u2021 .45 .41 \u2021 .44 \u2020 .37 \u2021"
+        },
+        {
+            "paperId": null,
+            "title": "\u2020 .48 -.49 .47 .57 .39 \u2021 .36 \u2021 .32 \u2021 .32 \u2021 .34 \u2021 ONLINE-B .64 \u2021 .56"
+        },
+        {
+            "paperId": null,
+            "title": "\u2021 .30 \u2021 .28 \u2021 ONLINE-A .66 \u2021 .50 -.52 .48 .44 \u2020 .44 \u2020 .44 \u2020 .32 \u2021 .25 \u2021 UEDIN-SYNTAX"
+        },
+        {
+            "paperId": "13167f9cd8c7906ca808b01d28dca6dd951da8a5",
+            "title": "of the Association for Computational Linguistics"
+        },
+        {
+            "paperId": null,
+            "title": "38 \u2021 .36 \u2021 .31 \u2021 .19 \u2021 .19 \u2021 .19 \u2021 ONLINE-A .55 .53 -.41 \u2021 .40 \u2021 .35 \u2021 .24 \u2021 .15 \u2021"
+        },
+        {
+            "paperId": null,
+            "title": "Table 48: Head to head comparison, ignoring ties"
+        },
+        {
+            "paperId": null,
+            "title": "\u2021 .34 \u2021 .19 \u2021 ONLINE-B .53 .56 \u2020 .53 -.49 .44 \u2020 .42 \u2021 .41 \u2021"
+        },
+        {
+            "paperId": null,
+            "title": "Head to head comparison, ignoring ties, for English-Finnish systems"
+        }
+    ]
+}

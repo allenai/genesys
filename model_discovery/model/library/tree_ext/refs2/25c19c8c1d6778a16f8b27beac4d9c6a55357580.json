@@ -1,0 +1,81 @@
+{
+    "paperId": "25c19c8c1d6778a16f8b27beac4d9c6a55357580",
+    "externalIds": {
+        "DBLP": "conf/nips/GilesSCLC89",
+        "MAG": "2116664051",
+        "CorpusId": 25151650
+    },
+    "title": "Higher Order Recurrent Networks and Grammatical Inference",
+    "abstract": "A higher order single layer recursive network easily learns to simulate a deterministic finite state machine and recognize regular grammars. When an enhanced version of this neural net state machine is connected through a common error term to an external analog stack memory, the combination can be interpreted as a neural net pushdown automata. The neural net finite state machine is given the primitives, push and POP, and is able to read the top of the stack. Through a gradient descent learning rule derived from the common error function, the hybrid network learns to effectively use the stack actions to manipulate the stack memory and to learn simple contextfree grammars.",
+    "venue": "Neural Information Processing Systems",
+    "year": 1989,
+    "referenceCount": 9,
+    "citationCount": 145,
+    "influentialCitationCount": 9,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A higher order single layer recursive network easily learns to simulate a deterministic finite state machine and recognize regular grammars and can be interpreted as a neural net pushdown automata."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145157784",
+            "name": "C. Lee Giles"
+        },
+        {
+            "authorId": "34922532",
+            "name": "Guo-Zheng Sun"
+        },
+        {
+            "authorId": "2115401300",
+            "name": "Hsing-Hen Chen"
+        },
+        {
+            "authorId": "2552960",
+            "name": "Yee-Chun Lee"
+        },
+        {
+            "authorId": "2158193072",
+            "name": "Dong Chen"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "d76aafbeb54575859441a442376766c597f6bb52",
+            "title": "Attractor dynamics and parallelism in a connectionist sequential machine"
+        },
+        {
+            "paperId": "b7103e49202c92fe78e35a813d7c55eeed4ed1fe",
+            "title": "Adaptive training for connectionist state machines"
+        },
+        {
+            "paperId": "f6524a6b8e6091c0a11d665180a5ad94bbf1d3b4",
+            "title": "Inductive Inference: Theory and Methods"
+        },
+        {
+            "paperId": "840edd88fdc42ae7fbe5103694727bdb716e151f",
+            "title": "J.E.Hopcroft, J.D. Ullman \u8457, \"Introduction to Automata Theory, Languages, and Computation\", Addison-Wesley, A5\u5909\u5f62\u7248, X+418, \\6,670, 1979"
+        },
+        {
+            "paperId": "d0d7f8b5d54e3d68fd45a70d4a0d13f42e8d71ff",
+            "title": "Learning Subsequential Structure in Simple Recurrent Networks"
+        },
+        {
+            "paperId": "d259baddcfcbcdd3471eb66444633d7c60352a8c",
+            "title": "Implications of Recursive Distributed Representations"
+        },
+        {
+            "paperId": "41a88a490d7ba9e383ecb16c4290083413a08258",
+            "title": "Introduction to Automata Theory, Languages and Computation"
+        },
+        {
+            "paperId": "2982aba3ad1a424ccd342895c308c9744f06ea6f",
+            "title": "Syntactic Pattern Recognition And Applications"
+        },
+        {
+            "paperId": "1c771595221341d5b0647921b26e229fc7887395",
+            "title": "Computation: Finite and Infinite Machines"
+        }
+    ]
+}

@@ -1,0 +1,174 @@
+{
+    "paperId": "6f3370fcf266fc10842b6d3e77c6cadd842a3580",
+    "externalIds": {
+        "DBLP": "journals/corr/abs-1802-08219",
+        "MAG": "2788775653",
+        "ArXiv": "1802.08219",
+        "CorpusId": 3457605
+    },
+    "title": "Tensor Field Networks: Rotation- and Translation-Equivariant Neural Networks for 3D Point Clouds",
+    "abstract": "We introduce tensor field neural networks, which are locally equivariant to 3D rotations, translations, and permutations of points at every layer. 3D rotation equivariance removes the need for data augmentation to identify features in arbitrary orientations. Our network uses filters built from spherical harmonics; due to the mathematical consequences of this filter choice, each layer accepts as input (and guarantees as output) scalars, vectors, and higher-order tensors, in the geometric sense of these terms. We demonstrate the capabilities of tensor field networks with tasks in geometry, physics, and chemistry.",
+    "venue": "arXiv.org",
+    "year": 2018,
+    "referenceCount": 30,
+    "citationCount": 812,
+    "influentialCitationCount": 109,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Tensor field neural networks are introduced, which are locally equivariant to 3D rotations, translations, and permutations of points at every layer, and demonstrate the capabilities of tensor field networks with tasks in geometry, physics, and chemistry."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2068863396",
+            "name": "Nathaniel Thomas"
+        },
+        {
+            "authorId": "5485763",
+            "name": "T. Smidt"
+        },
+        {
+            "authorId": "3157072",
+            "name": "S. Kearnes"
+        },
+        {
+            "authorId": "35750606",
+            "name": "Lusann Yang"
+        },
+        {
+            "authorId": "2156058466",
+            "name": "Li Li"
+        },
+        {
+            "authorId": "2065004224",
+            "name": "Kai Kohlhoff"
+        },
+        {
+            "authorId": "119508204",
+            "name": "Patrick F. Riley"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "0b7520fb7811761bf1d9e20d43223547cea0ac8a",
+            "title": "Introduction to Quantum Mechanics"
+        },
+        {
+            "paperId": "3d269e17258ea06e132fb238bc9571af74f49b3c",
+            "title": "Intertwiners between Induced Representations (with Applications to the Theory of Equivariant Neural Networks)"
+        },
+        {
+            "paperId": "15f615583ce4069cd4d91deb98d7bbaa47151060",
+            "title": "N-body Networks: a Covariant Hierarchical Neural Network Architecture for Learning Atomic Potentials"
+        },
+        {
+            "paperId": "84032c19bad3493957d1319babd19bde2821fee3",
+            "title": "On the Generalization of Equivariance and Convolution in Neural Networks to the Action of Compact Groups"
+        },
+        {
+            "paperId": "ce2845cadc5233ff0a647aa22ae3bbe646258890",
+            "title": "Spherical CNNs"
+        },
+        {
+            "paperId": "afd76be183d34af3bf944debd73db1c77987a8c6",
+            "title": "Covariant Compositional Networks For Learning Graphs"
+        },
+        {
+            "paperId": "b891a88f130f2fe174272c60189ebc34e6e9ea77",
+            "title": "Prediction Errors of Molecular Machine Learning Models Lower than Hybrid DFT Error."
+        },
+        {
+            "paperId": "5bf31dc4bd54b623008c13f8bc8954dc7c9a2d80",
+            "title": "SchNet: A continuous-filter convolutional neural network for modeling quantum interactions"
+        },
+        {
+            "paperId": "477af70a1b6e9d50464409b694ac8096f09c7fae",
+            "title": "3D deep convolutional neural networks for amino acid environment similarity analysis"
+        },
+        {
+            "paperId": "8674494bd7a076286b905912d26d47f7501c4046",
+            "title": "PointNet++: Deep Hierarchical Feature Learning on Point Sets in a Metric Space"
+        },
+        {
+            "paperId": "45d572c1de2ce00a70468a14d956895420dc8321",
+            "title": "Deep Rotation Equivariant Network"
+        },
+        {
+            "paperId": "e24cdf73b3e7e590c2fe5ecac9ae8aa983801367",
+            "title": "Neural Message Passing for Quantum Chemistry"
+        },
+        {
+            "paperId": "1a970066e726c74484a6ba943959f81fe57c6f96",
+            "title": "Oriented Response Networks"
+        },
+        {
+            "paperId": "e1f2a547ca6aeac20765eabd11042dd2ae25d66d",
+            "title": "Rotation Equivariant Vector Field Networks"
+        },
+        {
+            "paperId": "db1207440d20104854464d51da4cf5f79c5de240",
+            "title": "Steerable CNNs"
+        },
+        {
+            "paperId": "11aada215e6f72cbd5928619de839ba35106a88f",
+            "title": "Harmonic Networks: Deep Translation and Rotation Equivariance"
+        },
+        {
+            "paperId": "d997beefc0922d97202789d2ac307c55c2c52fba",
+            "title": "PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation"
+        },
+        {
+            "paperId": "33d9d4593d44792e17a045e5f3407f0fe7a40dd1",
+            "title": "Machine learning of accurate energy-conserving molecular force fields"
+        },
+        {
+            "paperId": "eac3e315d1137e3999e4fc355e32b9f2e373cbba",
+            "title": "ANI-1: an extensible neural network potential with DFT accuracy at force field computational cost"
+        },
+        {
+            "paperId": "28f7cc049f3f4a4db81f0d0a608a4f57636cc35b",
+            "title": "Quantum-chemical insights from deep tensor neural networks"
+        },
+        {
+            "paperId": "fafcaf5ca3fab8dc4fad15c2391c0fdb4a7dc005",
+            "title": "Group Equivariant Convolutional Networks"
+        },
+        {
+            "paperId": "f276c869b4b75360f6cba3b65dae91b5f4f322b7",
+            "title": "AtomNet: A Deep Convolutional Neural Network for Bioactivity Prediction in Structure-based Drug Discovery"
+        },
+        {
+            "paperId": "89655dc3c3a794cb25e055aed79424c66301d70f",
+            "title": "Quantum chemistry structures and properties of 134 kilo molecules"
+        },
+        {
+            "paperId": "7c8a51d04522496c43db68f2582efd45eaf59fea",
+            "title": "3D ShapeNets: A deep representation for volumetric shapes"
+        },
+        {
+            "paperId": "874bd27eb6008607f55d723209a4e3335ea0d853",
+            "title": "Lie Groups, Physics, and Geometry: Frontmatter"
+        },
+        {
+            "paperId": "918c10fdcf2b70c77e741eeb3b683e6332e84be4",
+            "title": "Representations and Invariants of the Classical Groups"
+        },
+        {
+            "paperId": "8aa15d3fcc5f67b62abd27f78042e1691954217f",
+            "title": "Spherical convolutions and their application in molecular modelling"
+        },
+        {
+            "paperId": null,
+            "title": "TensorFlow: Large-scale machine learning on heterogeneous systems, 2015. URL https://www.tensorflow.org/. Software available from tensorflow.org"
+        },
+        {
+            "paperId": "c0569442fe5eeb1d74f64d6595aa051adf4ca004",
+            "title": "Spherical Tensor Calculus for Local Adaptive Filtering"
+        },
+        {
+            "paperId": null,
+            "title": "Mechanics, volume 1 of Course of Theoretical Physics"
+        }
+    ]
+}

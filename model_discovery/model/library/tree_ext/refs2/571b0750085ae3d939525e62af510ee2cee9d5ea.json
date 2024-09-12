@@ -1,0 +1,162 @@
+{
+    "paperId": "571b0750085ae3d939525e62af510ee2cee9d5ea",
+    "externalIds": {
+        "DBLP": "conf/nips/SalimansGZCRCC16",
+        "ArXiv": "1606.03498",
+        "MAG": "2949938177",
+        "CorpusId": 1687220
+    },
+    "title": "Improved Techniques for Training GANs",
+    "abstract": "We present a variety of new architectural features and training procedures that we apply to the generative adversarial networks (GANs) framework. We focus on two applications of GANs: semi-supervised learning, and the generation of images that humans find visually realistic. Unlike most work on generative models, our primary goal is not to train a model that assigns high likelihood to test data, nor do we require the model to be able to learn well without using any labels. Using our new techniques, we achieve state-of-the-art results in semi-supervised classification on MNIST, CIFAR-10 and SVHN. The generated images are of high quality as confirmed by a visual Turing test: our model generates MNIST samples that humans cannot distinguish from real data, and CIFAR-10 samples that yield a human error rate of 21.3%. We also present ImageNet samples with unprecedented resolution and show that our methods enable the model to learn recognizable features of ImageNet classes.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2016,
+    "referenceCount": 28,
+    "citationCount": 8180,
+    "influentialCitationCount": 903,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work focuses on two applications of GANs: semi-supervised learning, and the generation of images that humans find visually realistic, and presents ImageNet samples with unprecedented resolution and shows that the methods enable the model to learn recognizable features of ImageNet classes."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2887364",
+            "name": "Tim Salimans"
+        },
+        {
+            "authorId": "153440022",
+            "name": "I. Goodfellow"
+        },
+        {
+            "authorId": "2563432",
+            "name": "Wojciech Zaremba"
+        },
+        {
+            "authorId": "34415167",
+            "name": "Vicki Cheung"
+        },
+        {
+            "authorId": "38909097",
+            "name": "Alec Radford"
+        },
+        {
+            "authorId": "41192764",
+            "name": "Xi Chen"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "a9d83b30c3e615286d3e24b6a2e2228872b39bc8",
+            "title": "Semi-Supervised Learning with Generative Adversarial Networks"
+        },
+        {
+            "paperId": "29a6c8f788ebdd46eeb8f01785cb4f2bacb85fbb",
+            "title": "Pixel-Level Domain Transfer"
+        },
+        {
+            "paperId": "9c9d7247f8c51ec5a02b0d911d1d7b9e8160495d",
+            "title": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems"
+        },
+        {
+            "paperId": "3d2c6941a9b4608ba52b328369a3352db2092ae0",
+            "title": "Weight Normalization: A Simple Reparameterization to Accelerate Training of Deep Neural Networks"
+        },
+        {
+            "paperId": "729b18d8d91035f4bb84bf2e61b0517824e5d31b",
+            "title": "Auxiliary Deep Generative Models"
+        },
+        {
+            "paperId": "32c09d2933a4638b034343f9be20544dacf6031f",
+            "title": "Generating images with recurrent adversarial networks"
+        },
+        {
+            "paperId": "23ffaa0fe06eae05817f527a47ac3291077f9e58",
+            "title": "Rethinking the Inception Architecture for Computer Vision"
+        },
+        {
+            "paperId": "8388f1be26329fa45e5807e968a641ce170ea078",
+            "title": "Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks"
+        },
+        {
+            "paperId": "543f21d81bbea89f901dfcc01f4e332a9af6682d",
+            "title": "Unsupervised and Semi-supervised Learning with Categorical Generative Adversarial Networks"
+        },
+        {
+            "paperId": "08969cbeb4ac3fe0b20754cbcf221f8031fc682f",
+            "title": "Towards Principled Unsupervised Learning"
+        },
+        {
+            "paperId": "cddf8a10c7f48df67a797808a615be0d4acf9a8e",
+            "title": "Semi-supervised Learning with Ladder Networks"
+        },
+        {
+            "paperId": "4cd168514e9638e0212d130c382d78044e2b262a",
+            "title": "Distributional Smoothing by Virtual Adversarial Examples"
+        },
+        {
+            "paperId": "d450b0f12ae0437048e4047a630c31d902002d0c",
+            "title": "Distributional Smoothing with Virtual Adversarial Training"
+        },
+        {
+            "paperId": "47900aca2f0b50da3010ad59b394c870f0e6c02e",
+            "title": "Deep Generative Image Models using a Laplacian Pyramid of Adversarial Networks"
+        },
+        {
+            "paperId": "cba5fbd40767a27d20e346a108b8867ac8591a27",
+            "title": "Stacked What-Where Auto-encoders"
+        },
+        {
+            "paperId": "4e2f6b4bc889eed1afe5833d5190f6f02e501061",
+            "title": "Training generative neural networks via Maximum Mean Discrepancy optimization"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "2904a9932f4cd0f0886121dc1f2d4aaac0455176",
+            "title": "Generative Moment Matching Networks"
+        },
+        {
+            "paperId": "b321e8eca4dbf424a9e30dd938fb423786c90b76",
+            "title": "On distinguishability criteria for estimating generative models"
+        },
+        {
+            "paperId": "66ad2fbc8b73242a889699868611fcf239e3435d",
+            "title": "Semi-supervised Learning with Deep Generative Models"
+        },
+        {
+            "paperId": "d891dc72cbd40ffaeefdc79f2e7afe1e530a23ad",
+            "title": "Intriguing properties of neural networks"
+        },
+        {
+            "paperId": "1f319dcfd70b5d8afdd2ebf5551ae3fbdee01ff8",
+            "title": "Kernel Measures of Conditional Dependence"
+        },
+        {
+            "paperId": "3d808cb2cf3dda6c3f24d9dafdc001ad99ba00c2",
+            "title": "A Hilbert Space Embedding for Distributions"
+        },
+        {
+            "paperId": "397306cada03c29ab9c3d5a7991a343cae92f2e3",
+            "title": "Measuring Statistical Dependence with Hilbert-Schmidt Norms"
+        },
+        {
+            "paperId": "c68796f833a7151f0a63d1d1608dc902b4fdc9b6",
+            "title": "GENERATIVE ADVERSARIAL NETS"
+        },
+        {
+            "paperId": "4f8d648c52edf74e41b0996128aa536e13cc7e82",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": "a973eb892f233acb3093589393181ae633d3a244",
+            "title": "ACTIVITY ANALYSIS OF PRODUCTION AND ALLOCATION"
+        },
+        {
+            "paperId": null,
+            "title": "Iterative solution of games by \ufb01ctitious play"
+        }
+    ]
+}

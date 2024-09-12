@@ -1,0 +1,82 @@
+{
+    "paperId": "2ae5a5507253aa3cada113d41d35fada1e84555f",
+    "externalIds": {
+        "MAG": "2057653135",
+        "DBLP": "journals/neco/WilliamsP90",
+        "DOI": "10.1162/neco.1990.2.4.490",
+        "CorpusId": 12979634
+    },
+    "title": "An Efficient Gradient-Based Algorithm for On-Line Training of Recurrent Network Trajectories",
+    "abstract": "A novel variant of the familiar backpropagation-through-time approach to training recurrent networks is described. This algorithm is intended to be used on arbitrary recurrent networks that run continually without ever being reset to an initial state, and it is specifically designed for computationally efficient computer implementation. This algorithm can be viewed as a cross between epochwise backpropagation through time, which is not appropriate for continually running networks, and the widely used on-line gradient approximation technique of truncated backpropagation through time.",
+    "venue": "Neural Computation",
+    "year": 1990,
+    "referenceCount": 12,
+    "citationCount": 699,
+    "influentialCitationCount": 65,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel variant of the familiar backpropagation-through-time approach to training recurrent networks is described, intended to be used on arbitrary recurrent networks that run continually without ever being reset to an initial state."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2116648700",
+            "name": "Ronald J. Williams"
+        },
+        {
+            "authorId": "47918185",
+            "name": "Jing Peng"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "8be3f21ab796bd9811382b560507c1c679fae37f",
+            "title": "A learning rule for asynchronous perceptrons with feedback in a combinatorial environment"
+        },
+        {
+            "paperId": "bda89a6b28f234e9159b4fc884980bdd6163819a",
+            "title": "A Subgrouping Strategy that Reduces Complexity and Speeds Up Learning in Recurrent Networks"
+        },
+        {
+            "paperId": "bd46c1b5948abe04e565a8bae6454da63a1b021e",
+            "title": "Finite State Automata and Simple Recurrent Networks"
+        },
+        {
+            "paperId": "ce9a21b93ba29d4145a8ef6bf401e77f261848de",
+            "title": "A Learning Algorithm for Continually Running Fully Recurrent Neural Networks"
+        },
+        {
+            "paperId": "34468c0aa95a7aea212d8738ab899a69b2fc14c6",
+            "title": "Learning State Space Trajectories in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "6602985bd326d9996c68627b56ed389e2c90fd08",
+            "title": "Generalization of back-propagation to recurrent neural networks."
+        },
+        {
+            "paperId": "319f22bd5abfd67ac15988aa5c7f705f018c3ccd",
+            "title": "Learning internal representations by error propagation"
+        },
+        {
+            "paperId": "59f884480d293672213ca315beec332943b64434",
+            "title": "Comparison of four neural net learning methods for dynamic system identification"
+        },
+        {
+            "paperId": "cccd3fd7a45e7643f26391bd539ffbede0690f36",
+            "title": "Gradient-based learning algorithms for recurrent connectionist networks"
+        },
+        {
+            "paperId": "424710825d726e10b016204ed2bc979e2a342d10",
+            "title": "Experimental Analysis of the Real-time Recurrent Learning Algorithm"
+        },
+        {
+            "paperId": "006c42929dcd480490fdb367fd7478b2956dbc99",
+            "title": "A learning algorithm for analog, fully recurrent neural networks"
+        },
+        {
+            "paperId": null,
+            "title": "Plaut , Tim Shallice . 1993 . Deep dyslexia : A case study of connectionist neuropsychology"
+        }
+    ]
+}

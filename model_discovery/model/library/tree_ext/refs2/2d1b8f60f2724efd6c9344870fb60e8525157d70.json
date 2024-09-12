@@ -1,0 +1,194 @@
+{
+    "paperId": "2d1b8f60f2724efd6c9344870fb60e8525157d70",
+    "externalIds": {
+        "MAG": "2594961016",
+        "DBLP": "journals/corr/ReedOKCWBF17",
+        "ArXiv": "1703.03664",
+        "CorpusId": 8525940
+    },
+    "title": "Parallel Multiscale Autoregressive Density Estimation",
+    "abstract": "PixelCNN achieves state-of-the-art results in density estimation for natural images. Although training is fast, inference is costly, requiring one network evaluation per pixel; O(N) for N pixels. This can be sped up by caching activations, but still involves generating each pixel sequentially. In this work, we propose a parallelized PixelCNN that allows more efficient inference by modeling certain pixel groups as conditionally independent. Our new PixelCNN model achieves competitive density estimation and orders of magnitude speedup - O(log N) sampling instead of O(N) - enabling the practical generation of 512x512 images. We evaluate the model on class-conditional image generation, text-to-image synthesis, and action-conditional video generation, showing that our model achieves the best results among non-pixel-autoregressive density models that allow efficient sampling.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2017,
+    "referenceCount": 34,
+    "citationCount": 195,
+    "influentialCitationCount": 23,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a parallelized PixelCNN that allows more efficient inference by modeling certain pixel groups as conditionally independent, achieving competitive density estimation and orders of magnitude speedup - O(log N) sampling instead of O(N) - enabling the practical generation of 512x512 images."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "144828948",
+            "name": "Scott E. Reed"
+        },
+        {
+            "authorId": "3422336",
+            "name": "A\u00e4ron van den Oord"
+        },
+        {
+            "authorId": "2583391",
+            "name": "Nal Kalchbrenner"
+        },
+        {
+            "authorId": "2016840",
+            "name": "Sergio Gomez Colmenarejo"
+        },
+        {
+            "authorId": "2117966548",
+            "name": "Ziyun Wang"
+        },
+        {
+            "authorId": "2275897",
+            "name": "Yutian Chen"
+        },
+        {
+            "authorId": "143813532",
+            "name": "Dan Belov"
+        },
+        {
+            "authorId": "1737568",
+            "name": "Nando de Freitas"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "bd5c69fd9b34f481e03363f9d913c31af83547a5",
+            "title": "Generating Interpretable Images with Controllable Structure"
+        },
+        {
+            "paperId": "b6b3dd8aa5c399a7fbe46c51445115e40abb4e1c",
+            "title": "Fast Generation for Convolutional Autoregressive Models"
+        },
+        {
+            "paperId": "8578744cea4cf7b65ee8a51c64f766b4c31a2e7e",
+            "title": "Pixel Recursive Super Resolution"
+        },
+        {
+            "paperId": "2e77b99e8bd10b9e4551a780c0bde9dd10fdbe9b",
+            "title": "PixelCNN++: Improving the PixelCNN with Discretized Logistic Mixture Likelihood and Other Modifications"
+        },
+        {
+            "paperId": "ea67d2d5f2a7d5760ec6b67ea93d11dd5affa921",
+            "title": "StackGAN: Text to Photo-Realistic Image Synthesis with Stacked Generative Adversarial Networks"
+        },
+        {
+            "paperId": "42e9055ec712ec9c7f0a79d963ea034a72dc7fa8",
+            "title": "PixelVAE: A Latent Variable Model for Natural Images"
+        },
+        {
+            "paperId": "858dc7408c27702ec42778599fc8d11f73ef3f76",
+            "title": "On the Quantitative Analysis of Decoder-Based Generative Models"
+        },
+        {
+            "paperId": "98445f4172659ec5e891e031d8202c102135c644",
+            "title": "Neural Machine Translation in Linear Time"
+        },
+        {
+            "paperId": "3c7092347a5b7804d9534b6f3f52032c1502cbf8",
+            "title": "Amortised MAP Inference for Image Super-resolution"
+        },
+        {
+            "paperId": "cad4ac0d2389a89cf1955dd4788278c1e8ac1af9",
+            "title": "Learning What and Where to Draw"
+        },
+        {
+            "paperId": "b01871c114b122340209562972ff515b86b16ccf",
+            "title": "Video Pixel Networks"
+        },
+        {
+            "paperId": "df0c54fe61f0ffb9f0e36a17c2038d9a1964cba3",
+            "title": "Photo-Realistic Single Image Super-Resolution Using a Generative Adversarial Network"
+        },
+        {
+            "paperId": "df0402517a7338ae28bc54acaac400de6b456a46",
+            "title": "WaveNet: A Generative Model for Raw Audio"
+        },
+        {
+            "paperId": "03a5b2aac53443e6078f0f63b35d4f95d6d54c5d",
+            "title": "Real-Time Single Image and Video Super-Resolution Using an Efficient Sub-Pixel Convolutional Neural Network"
+        },
+        {
+            "paperId": "0936352b78a52bc5d2b5e3f04233efc56664af51",
+            "title": "Conditional Image Generation with PixelCNN Decoders"
+        },
+        {
+            "paperId": "6a97d2668187965743d1b825b306defccbabbb4c",
+            "title": "Improved Variational Inference with Inverse Autoregressive Flow"
+        },
+        {
+            "paperId": "09879f7956dddc2a9328f5c1472feeb8402bcbcf",
+            "title": "Density estimation using Real NVP"
+        },
+        {
+            "paperId": "f110cfdbe9ded7a384bcf5c0d56e536bd275a7eb",
+            "title": "Unsupervised Learning for Physical Interaction through Video Prediction"
+        },
+        {
+            "paperId": "6c7f040a150abf21dbcefe1f22e0f98fa184f41a",
+            "title": "Generative Adversarial Text to Image Synthesis"
+        },
+        {
+            "paperId": "915c4bb289b3642489e904c65a47fa56efb60658",
+            "title": "Perceptual Losses for Real-Time Style Transfer and Super-Resolution"
+        },
+        {
+            "paperId": "9c763df6843aba88d7fb3ab3c55a5937a5f39276",
+            "title": "Generative Image Modeling Using Style and Structure Adversarial Networks"
+        },
+        {
+            "paperId": "77f0a39b8e02686fd85b01971f8feb7f60971f80",
+            "title": "Identity Mappings in Deep Residual Networks"
+        },
+        {
+            "paperId": "41f1d50c85d3180476c4c7b3eea121278b0d8474",
+            "title": "Pixel Recurrent Neural Networks"
+        },
+        {
+            "paperId": "0875fc92cce33df5cf7df169590dbf0ca00d2652",
+            "title": "Generating Images from Captions with Attention"
+        },
+        {
+            "paperId": "47900aca2f0b50da3010ad59b394c870f0e6c02e",
+            "title": "Deep Generative Image Models using a Laplacian Pyramid of Adversarial Networks"
+        },
+        {
+            "paperId": "f267934e9de60c5badfa9d3f28918e67ae7a2bf4",
+            "title": "Generative Image Modeling Using Spatial LSTMs"
+        },
+        {
+            "paperId": "da8d53f9a85b40a695585aa461286e373c6b74d4",
+            "title": "2D Human Pose Estimation: New Benchmark and State of the Art Analysis"
+        },
+        {
+            "paperId": "71b7178df5d2b112d07e45038cb5637208659ff7",
+            "title": "Microsoft COCO: Common Objects in Context"
+        },
+        {
+            "paperId": "309494da0769345cb35ca0b7b0aae8143eee85a2",
+            "title": "RNADE: The real-valued neural autoregressive density-estimator"
+        },
+        {
+            "paperId": "d2c733e34d48784a37d717fe43d9e93277a8c53e",
+            "title": "ImageNet: A large-scale hierarchical image database"
+        },
+        {
+            "paperId": "c68796f833a7151f0a63d1d1608dc902b4fdc9b6",
+            "title": "GENERATIVE ADVERSARIAL NETS"
+        },
+        {
+            "paperId": "237175d9a7864dcf396751593605ea022c31421b",
+            "title": "Supplementary materials for: Plug & Play Generative Networks: Conditional Iterative Generation of Images in Latent Space"
+        },
+        {
+            "paperId": null,
+            "title": "The Caltech-UCSD birds"
+        },
+        {
+            "paperId": "b893e7053c9c7e266a23fb13a42261a88f650210",
+            "title": "The Neural Autoregressive Distribution Estimator"
+        }
+    ]
+}

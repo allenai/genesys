@@ -1,0 +1,226 @@
+{
+    "paperId": "abb33d75dc297993fcc3fb75e0f4498f413eb4f6",
+    "externalIds": {
+        "MAG": "2949122016",
+        "ArXiv": "1502.05698",
+        "DBLP": "journals/corr/WestonBCM15",
+        "CorpusId": 3178759
+    },
+    "title": "Towards AI-Complete Question Answering: A Set of Prerequisite Toy Tasks",
+    "abstract": "One long-term goal of machine learning research is to produce methods that are applicable to reasoning and natural language, in particular building an intelligent dialogue agent. To measure progress towards that goal, we argue for the usefulness of a set of proxy tasks that evaluate reading comprehension via question answering. Our tasks measure understanding in several ways: whether a system is able to answer questions via chaining facts, simple induction, deduction and many more. The tasks are designed to be prerequisites for any system that aims to be capable of conversing with a human. We believe many existing learning systems can currently not solve them, and hence our aim is to classify these tasks into skill sets, so that researchers can identify (and then rectify) the failings of their systems. We also extend and improve the recently introduced Memory Networks model, and show it is able to solve some, but not all, of the tasks.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2015,
+    "referenceCount": 46,
+    "citationCount": 1116,
+    "influentialCitationCount": 131,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work argues for the usefulness of a set of proxy tasks that evaluate reading comprehension via question answering, and classify these tasks into skill sets so that researchers can identify (and then rectify) the failings of their systems."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145183709",
+            "name": "J. Weston"
+        },
+        {
+            "authorId": "1713934",
+            "name": "Antoine Bordes"
+        },
+        {
+            "authorId": "3295092",
+            "name": "S. Chopra"
+        },
+        {
+            "authorId": "2047446108",
+            "name": "Tomas Mikolov"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "35b91b365ceb016fb3e022577cec96fb9b445dc5",
+            "title": "The Goldilocks Principle: Reading Children's Books with Explicit Memory Representations"
+        },
+        {
+            "paperId": "4d05ab884a6c1645b80ce5d02b09c7e5ff499790",
+            "title": "Towards Neural Network-based Reasoning"
+        },
+        {
+            "paperId": "452059171226626718eb677358836328f884298e",
+            "title": "Ask Me Anything: Dynamic Memory Networks for Natural Language Processing"
+        },
+        {
+            "paperId": "d1505c6123c102e53eb19dff312cb25cea840b72",
+            "title": "Teaching Machines to Read and Comprehend"
+        },
+        {
+            "paperId": "6e565308c8081e807709cb4a917443b737e6cdb4",
+            "title": "Large-scale Simple Question Answering with Memory Networks"
+        },
+        {
+            "paperId": "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e",
+            "title": "End-To-End Memory Networks"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "71ae756c75ac89e2d731c9c79649562b5768ff39",
+            "title": "Memory Networks"
+        },
+        {
+            "paperId": "6396ab37641d36be4c26420e58adeb8665914c3b",
+            "title": "Modeling Biological Processes for Reading Comprehension"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "f86ec155cce6259e5230aaad3b762343757feb1d",
+            "title": "Open question answering over curated and extracted knowledge bases"
+        },
+        {
+            "paperId": "b75329489baf067e6f7bbb74f16ffd49fba80dfa",
+            "title": "Freebase QA: Information Extraction or Semantic Parsing?"
+        },
+        {
+            "paperId": "564257469fa44cdb57e4272f85253efb9acfd69d",
+            "title": "MCTest: A Challenge Dataset for the Open-Domain Machine Comprehension of Text"
+        },
+        {
+            "paperId": "b29447ba499507a259ae9d8f685d60cc1597d7d3",
+            "title": "Semantic Parsing on Freebase from Question-Answer Pairs"
+        },
+        {
+            "paperId": "96232dd74fad21f495a2f4563fd42869d968e6bf",
+            "title": "Lambda Dependency-Based Compositional Semantics"
+        },
+        {
+            "paperId": "c0be2ac2f45681f1852fc1d298af5dceb85834f4",
+            "title": "Paraphrase-Driven Learning for Open Question Answering"
+        },
+        {
+            "paperId": "6f8461781e1a35ed038efcda6684be4739aed2ed",
+            "title": "TempEval-3: Evaluating Events, Time Expressions, and Temporal Relations"
+        },
+        {
+            "paperId": "4b17662f21c6313907a022af20f88616d11620eb",
+            "title": "Learning to Interpret Natural Language Navigation Instructions from Observations"
+        },
+        {
+            "paperId": "3ecd3e00bbbfd94446c3adc9c6878de27e250f7c",
+            "title": "Learning Dependency-Based Compositional Semantics"
+        },
+        {
+            "paperId": "128cb6b891aee1b5df099acb48e2efecfcff689f",
+            "title": "The Winograd Schema Challenge"
+        },
+        {
+            "paperId": "bc1022b031dc6c7019696492e8116598097a8c12",
+            "title": "Natural Language Processing (Almost) from Scratch"
+        },
+        {
+            "paperId": "548a54142456254709ba927660bd976a29b6fdb8",
+            "title": "A Multi-Pass Sieve for Coreference Resolution"
+        },
+        {
+            "paperId": "2b776119a1347e1455dc498ff5078b3a94029ed9",
+            "title": "Towards Understanding Situated Natural Language"
+        },
+        {
+            "paperId": "abba83b5747e98d10ab982df9ae94cc799668f16",
+            "title": "Simple Coreference Resolution with Rich Syntactic and Semantic Features"
+        },
+        {
+            "paperId": "c1787db25af5614f41e56938aa594f2dbb1dca07",
+            "title": "The Unreasonable Effectiveness of Data"
+        },
+        {
+            "paperId": "125842668eab7decac136db8a59d392dc5e4e395",
+            "title": "Combining active learning and semi-supervised learning using Gaussian fields and harmonic functions"
+        },
+        {
+            "paperId": "a20bfec3c95aad003dcb45a21a220c19cca8bb66",
+            "title": "A Machine Learning Approach to Coreference Resolution of Noun Phrases"
+        },
+        {
+            "paperId": "c02dfd94b11933093c797c362e2f8f6a3b9b8012",
+            "title": "On Spectral Clustering: Analysis and an algorithm"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "f43840dc1638a18eb6178f1060dc5f41af1c5ac7",
+            "title": "Predicting Time Series with Support Vector Machines"
+        },
+        {
+            "paperId": "319f22bd5abfd67ac15988aa5c7f705f018c3ccd",
+            "title": "Learning internal representations by error propagation"
+        },
+        {
+            "paperId": "df67349bc22e251ddd586e16091d881321578b9a",
+            "title": "Under review as a conference paper at ICLR 2019 MILE : A Multi-Level Framework for Scalable Graph Embedding"
+        },
+        {
+            "paperId": "0de8234e6935ced7ea838de585b4236810f1b837",
+            "title": "Perceptrons An Introduction To Computational Geometry"
+        },
+        {
+            "paperId": "8a93cd1b6fbf7c8c86637bae18d979dafeb9a7c1",
+            "title": "Factor-based Compositional Embedding Models"
+        },
+        {
+            "paperId": null,
+            "title": "Factorbased compositional embedding models. NIPS 2014 workshop on Learning Semantics"
+        },
+        {
+            "paperId": "37e0f5183ac14e2c55dfeb735794ac956b8c247c",
+            "title": "On the Effective Use of Cyc in a Question Answering System"
+        },
+        {
+            "paperId": "7f731c17a7b098232dbcf266a4f1355462d35bc6",
+            "title": "Twisty Little Passages: An Approach to Interactive Fiction"
+        },
+        {
+            "paperId": "de4961a6431b9553d9f13319236570a9f033fcab",
+            "title": "Understanding natural language"
+        },
+        {
+            "paperId": "266b7e11eae0a3b4e9bccc47378a3974a2c2acf8",
+            "title": "Perceptrons: An Introduction to Computational Geometry"
+        },
+        {
+            "paperId": null,
+            "title": "G: (generalization) \u2013 update the current memory state m given the new input: m i ="
+        },
+        {
+            "paperId": null,
+            "title": "R: (response) \u2013 finally, decode output features o to give the final textual response to the user: r = R(o)"
+        },
+        {
+            "paperId": null,
+            "title": "O: (output feature map) \u2013 compute output o given the new input and the memory: o = O(I(x), m)"
+        },
+        {
+            "paperId": null,
+            "title": "D = 3 | W | for s O"
+        },
+        {
+            "paperId": null,
+            "title": "where U is a n \u00d7 D matrix where D is the number of features and n is the embedding dimension"
+        },
+        {
+            "paperId": null,
+            "title": "UCI machine learning repository"
+        },
+        {
+            "paperId": null,
+            "title": "y is to map the original text to the D -dimensional space. They choose a bag of words representation"
+        }
+    ]
+}

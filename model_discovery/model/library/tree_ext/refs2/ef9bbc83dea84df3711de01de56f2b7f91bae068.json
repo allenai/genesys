@@ -1,0 +1,278 @@
+{
+    "paperId": "ef9bbc83dea84df3711de01de56f2b7f91bae068",
+    "externalIds": {
+        "DBLP": "series/lncs/MontavonBLSM19",
+        "MAG": "2973136764",
+        "DOI": "10.1007/978-3-030-28954-6_10",
+        "CorpusId": 202579539
+    },
+    "title": "Layer-Wise Relevance Propagation: An Overview",
+    "abstract": null,
+    "venue": "Explainable AI",
+    "year": 2019,
+    "referenceCount": 58,
+    "citationCount": 587,
+    "influentialCitationCount": 55,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This chapter gives a concise introduction to LRP with a discussion of how to implement propagation rules easily and efficiently, how the propagation procedure can be theoretically justified as a \u2018deep Taylor decomposition\u2019, how to choose the propagation rules at each layer to deliver high explanation quality, and how LRP can be extended to handle a variety of machine learning scenarios beyond deep neural networks."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "144535526",
+            "name": "G. Montavon"
+        },
+        {
+            "authorId": "2275296360",
+            "name": "Alexander Binder"
+        },
+        {
+            "authorId": "3633358",
+            "name": "Sebastian Lapuschkin"
+        },
+        {
+            "authorId": "1699054",
+            "name": "W. Samek"
+        },
+        {
+            "authorId": "2227633438",
+            "name": "Klaus M\u00fcller"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "7542385f3672cfee43adc964a90efb0b19f6b9fa",
+            "title": "Deep Neural Network Attribution Methods for Leakage Analysis and Symmetric Key Recovery"
+        },
+        {
+            "paperId": "4f51a64793d3b2a60e9e5846c31dae023cf5c69a",
+            "title": "Unmasking Clever Hans predictors and assessing what machines really learn"
+        },
+        {
+            "paperId": "98835d80b4f163bd54f8d6c9e83d4d5e7e2bd622",
+            "title": "CRNN-Based Multiple DoA Estimation Using Acoustic Intensity Features for Ambisonics Recordings"
+        },
+        {
+            "paperId": "d5d7b3c75c5a7bbc605236e7c722ecfb2cf8824e",
+            "title": "iNNvestigate neural networks!"
+        },
+        {
+            "paperId": "c5507613d02112351c80b5738acd069334e78778",
+            "title": "Explaining the unique nature of individual gait patterns with deep learning"
+        },
+        {
+            "paperId": "1a9977f0d02fad288ad0c9c99fa871ac88f6688c",
+            "title": "Evaluating neural network explanation methods using hybrid documents and morphosyntactic agreement"
+        },
+        {
+            "paperId": "ff20b621abefe09cfb6e370d766650bf33c4a36f",
+            "title": "Explaining Therapy Predictions with Layer-Wise Relevance Propagation in Neural Networks"
+        },
+        {
+            "paperId": "10dcd71e187e8f14cd8f82e2ecba84ca2da621ed",
+            "title": "Towards computational fluorescence microscopy: Machine learning-based integrated prediction of morphological and molecular tumor profiles"
+        },
+        {
+            "paperId": "20f69cc41c87b8abdf36761c623d65713daeab3b",
+            "title": "Towards Explaining Anomalies: A Deep Taylor Decomposition of One-Class Models"
+        },
+        {
+            "paperId": "a76c253bf8664dcf505380df0bfab84baa0b7c2c",
+            "title": "Visualizing Convolutional Neural Network Protein-Ligand Scoring"
+        },
+        {
+            "paperId": "e6705dd6a795608dda47d0d64a2fc01bc3facd74",
+            "title": "How do Humans Understand Explanations from Machine Learning Systems? An Evaluation of the Human-Interpretability of Explanation"
+        },
+        {
+            "paperId": "03a507a0876c7e1a26608358b1a9dd39f1eb08e0",
+            "title": "Adversarial Examples: Attacks and Defenses for Deep Learning"
+        },
+        {
+            "paperId": "00823e6c0b6f1cf22897b8d0b2596743723ec51c",
+            "title": "Understanding and Comparing Deep Neural Networks for Age and Gender Classification"
+        },
+        {
+            "paperId": "49bef668aff3cc3d470339479dd3cee0b4c9cf4f",
+            "title": "Deep Matrix Factorization Models for Recommender Systems"
+        },
+        {
+            "paperId": "a002e71561c90767240672f357b7d9e6d4d95186",
+            "title": "Methods for interpreting and understanding deep neural networks"
+        },
+        {
+            "paperId": "f22ac2e3e45debb13d635fddaccfff7e997e7db9",
+            "title": "Explaining Recurrent Neural Network Predictions in Sentiment Analysis"
+        },
+        {
+            "paperId": "f538dca4def5167a32fbc12107b69a05f0c9d832",
+            "title": "SmoothGrad: removing noise by adding noise"
+        },
+        {
+            "paperId": "7380e343dd4547e21d5118b16daf03d021d98c4e",
+            "title": "Interpretable Explanations of Black Boxes by Meaningful Perturbation"
+        },
+        {
+            "paperId": "1a2118bed729579528deb51e745d58dd3629baf6",
+            "title": "Learning Important Features Through Propagating Activation Differences"
+        },
+        {
+            "paperId": "ad42c33c299ef1c53dfd4697e3f7f98ed0ca31dd",
+            "title": "Neural Collaborative Filtering"
+        },
+        {
+            "paperId": "f302e136c41db5de1d624412f68c9174cf7ae8be",
+            "title": "Axiomatic Attribution for Deep Networks"
+        },
+        {
+            "paperId": "e79fa48078e9c1794cb67bfb1aab9557f263820f",
+            "title": "The Shattered Gradients Problem: If resnets are the answer, then what is the question?"
+        },
+        {
+            "paperId": "29069976eb7f828de91ed243cd12fd99fef56d94",
+            "title": "Visualizing Deep Neural Network Decisions: Prediction Difference Analysis"
+        },
+        {
+            "paperId": "e1ec11a1cb3d9745fb18d3bf74247f95a6663d08",
+            "title": "Dermatologist-level classification of skin cancer with deep neural networks"
+        },
+        {
+            "paperId": "78201113a852abba42a94b6d7b6098fb261f8759",
+            "title": "\"What is relevant in a text document?\": An interpretable machine learning approach"
+        },
+        {
+            "paperId": "33d9d4593d44792e17a045e5f3407f0fe7a40dd1",
+            "title": "Machine learning of accurate energy-conserving molecular force fields"
+        },
+        {
+            "paperId": "1ab7aa767e1779c87d822325859e47fe2986e6b2",
+            "title": "Resource Management with Deep Reinforcement Learning"
+        },
+        {
+            "paperId": "28f7cc049f3f4a4db81f0d0a608a4f57636cc35b",
+            "title": "Quantum-chemical insights from deep tensor neural networks"
+        },
+        {
+            "paperId": "7361e42c5eb0d5438c4294cc7ea3f9a53d326309",
+            "title": "Top-Down Neural Attention by Excitation Backprop"
+        },
+        {
+            "paperId": "2d21e6f8bd9e9f647f3517f51347ad89b4381a7f",
+            "title": "Identifying Individual Facial Expressions by Deconstructing a Neural Network"
+        },
+        {
+            "paperId": "2ac9995a47f9753041e8e760fb083dfb83998267",
+            "title": "Not Just a Black Box: Learning Important Features Through Propagating Activation Differences"
+        },
+        {
+            "paperId": "eeba500c4db5039f85b75b4b142682881031b42d",
+            "title": "Interpretable deep neural networks for single-trial EEG classification"
+        },
+        {
+            "paperId": "9e7be12082f58cbf7ebdb84a8cbdc897a4e41683",
+            "title": "The Deluge of Spurious Correlations in Big Data"
+        },
+        {
+            "paperId": "c0883f5930a232a9c1ad601c978caede29155979",
+            "title": "\u201cWhy Should I Trust You?\u201d: Explaining the Predictions of Any Classifier"
+        },
+        {
+            "paperId": "1d298139fc73654db7d8d936b07fa9e85bba008c",
+            "title": "DeepTox: Toxicity Prediction using Deep Learning"
+        },
+        {
+            "paperId": "056713e422a0753c5eb1733d73e9f8185e2015d4",
+            "title": "Explaining nonlinear classification decisions with deep Taylor decomposition"
+        },
+        {
+            "paperId": "13497bd108d4412d02050e646235f456568cf822",
+            "title": "Deep Speech 2 : End-to-End Speech Recognition in English and Mandarin"
+        },
+        {
+            "paperId": "23ffaa0fe06eae05817f527a47ac3291077f9e58",
+            "title": "Rethinking the Inception Architecture for Computer Vision"
+        },
+        {
+            "paperId": "43dc45dca9c1e641c7855a033a91a71746ca8832",
+            "title": "Analyzing Classifiers: Fisher Vectors and Deep Neural Networks"
+        },
+        {
+            "paperId": "6df11b0bb0244d4d36e8955436067cc5d19734fa",
+            "title": "Evaluating the Visualization of What a Deep Neural Network Has Learned"
+        },
+        {
+            "paperId": "17a273bbd4448083b01b5a9389b3c37f5425aac0",
+            "title": "On Pixel-Wise Explanations for Non-Linear Classifier Decisions by Layer-Wise Relevance Propagation"
+        },
+        {
+            "paperId": "340f48901f72278f6bf78a04ee5b01df208cc508",
+            "title": "Human-level control through deep reinforcement learning"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "49047883d555a536420faa0ac3c0684b70822643",
+            "title": "Searching for exotic particles in high-energy physics with deep learning"
+        },
+        {
+            "paperId": "d891dc72cbd40ffaeefdc79f2e7afe1e530a23ad",
+            "title": "Intriguing properties of neural networks"
+        },
+        {
+            "paperId": "1a2a770d23b4a171fa81de62a78a3deb0588f238",
+            "title": "Visualizing and Understanding Convolutional Networks"
+        },
+        {
+            "paperId": "14fdda294fc7d3971ba896d0f7bf9f89ab245e4f",
+            "title": "The Taylor Decomposition: A Unified Generalization of the Oaxaca Method to Nonlinear Models"
+        },
+        {
+            "paperId": "2cf3ba61f1dc0765f48f784dd9e9df377964730f",
+            "title": "Interpreting individual classifications of hierarchical networks"
+        },
+        {
+            "paperId": "0eb2e4a205a628ab059cab41d3b772f614ad29f2",
+            "title": "Learning to Represent Spatial Transformations with Factored Higher-Order Boltzmann Machines"
+        },
+        {
+            "paperId": "4e6238c8613b5b81f81552939bce33296aedfbfe",
+            "title": "How to Explain Individual Classification Decisions"
+        },
+        {
+            "paperId": "fe21fe877bdee557c10eba1bf4c787f0f171b2ca",
+            "title": "An introduction to variable and feature selection"
+        },
+        {
+            "paperId": "bf206bad6a74d27b40c8ea77ee54e98e492fb7f9",
+            "title": "Support Vector Method for Novelty Detection"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "d9de5fca81215d36ba321c1a4b76e51cad63c8a9",
+            "title": "Explanation in second generation expert systems"
+        },
+        {
+            "paperId": "c7ac54024d153a102b0a191117d5a79fabdf2d5c",
+            "title": "Understanding Patch-Based Learning of Video Data by Explaining Predictions"
+        },
+        {
+            "paperId": "e7ed4f39858957c9862a52ba6b09b4a7fcb5d3e1",
+            "title": "Considerations for Evaluation and Generalization in Interpretable Machine Learning"
+        },
+        {
+            "paperId": "683b446802b1216ef6aa8c6944523aca51fadf90",
+            "title": "Structuring Neural Networks for More Explainable Predictions"
+        },
+        {
+            "paperId": "53876c32a7602c194196acd57dfcab47e2300dd0",
+            "title": "Using Qualitative Models to Guide Inductive Learning"
+        }
+    ]
+}

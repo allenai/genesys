@@ -1,0 +1,226 @@
+{
+    "paperId": "c4b2c711b5b5ed56c3b01cbac67a127e0a4f872a",
+    "externalIds": {
+        "ArXiv": "1411.1134",
+        "MAG": "2963979747",
+        "DBLP": "journals/corr/SaOR14",
+        "CorpusId": 14418885
+    },
+    "title": "Global Convergence of Stochastic Gradient Descent for Some Non-convex Matrix Problems",
+    "abstract": "Stochastic gradient descent (SGD) on a low-rank factorization is commonly employed to speed up matrix problems including matrix completion, subspace tracking, and SDP relaxation. In this paper, we exhibit a step size scheme for SGD on a low-rank least-squares problem, and we prove that, under broad sampling conditions, our method converges globally from a random starting point within $O(\\epsilon^{-1} n \\log n)$ steps with constant probability for constant-rank problems. Our modification of SGD relates it to stochastic power iteration. We also show experiments to illustrate the runtime and convergence of the algorithm.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2014,
+    "referenceCount": 47,
+    "citationCount": 145,
+    "influentialCitationCount": 9,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper exhibits a step size scheme for SGD on a low-rank least-squares problem, and proves that, under broad sampling conditions, the method converges globally from a random starting point within $O(\\epsilon^{-1} n \\log n)$ steps with constant probability for constant-rank problems."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1801197",
+            "name": "Christopher De Sa"
+        },
+        {
+            "authorId": "1803218",
+            "name": "Christopher R\u00e9"
+        },
+        {
+            "authorId": "1746638",
+            "name": "K. Olukotun"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "cadf14c01ffb167df0d2e0c4333f0f369991b7ca",
+            "title": "Solving ptychography with a convex relaxation"
+        },
+        {
+            "paperId": "93d0c60812d0912bc2b32314605c6a7dcb15ed4f",
+            "title": "Guaranteed Matrix Completion via Non-Convex Factorization"
+        },
+        {
+            "paperId": "4d93203b26136781a10769929c07565675adbff8",
+            "title": "Fast Exact Matrix Completion with Finite Samples"
+        },
+        {
+            "paperId": "35a36ecd3a88e20fdcd4ff8a2513f4bfb374caa5",
+            "title": "A Stochastic PCA Algorithm with an Exponential Convergence Rate"
+        },
+        {
+            "paperId": "d4fe2b0b5b5c10be2bb32e36b3c774885ce36686",
+            "title": "Summingbird: A Framework for Integrating Batch and Online MapReduce Computations"
+        },
+        {
+            "paperId": "da457a529ee78d44f1aa07fe1960657f6cec7957",
+            "title": "Phase Retrieval via Wirtinger Flow: Theory and Algorithms"
+        },
+        {
+            "paperId": "6a47a19d287caffc89ced32bf0f3f466385e8c69",
+            "title": "The Fast Convergence of Incremental PCA"
+        },
+        {
+            "paperId": "d53f0c6b08ce44d59342d2ee2613a673a178de55",
+            "title": "Understanding Alternating Minimization for Matrix Completion"
+        },
+        {
+            "paperId": "e83459e287654736a61569b2ad05e9da4dd5e72f",
+            "title": "The Noisy Power Method: A Meta Algorithm with Applications"
+        },
+        {
+            "paperId": "e26e4511096f9a925c4fb6ae2bd50d6f8ad8d37d",
+            "title": "Stochastic Optimization of PCA with Capped MSG"
+        },
+        {
+            "paperId": "64322714f87a8a0e7bbe6e00490fd3bf82ab1efb",
+            "title": "Solving Quadratic Equations via PhaseLift When There Are About as Many Equations as Unknowns"
+        },
+        {
+            "paperId": "944ef766160f1f937ab0e9b136b92547c8c9c9d8",
+            "title": "Phase Retrieval Using Alternating Minimization"
+        },
+        {
+            "paperId": "989d672d38de29c36bb968edfdb593038bba7b85",
+            "title": "WTF: the who to follow service at Twitter"
+        },
+        {
+            "paperId": "d3986480be64dce5ae55c1f64df660d7d698f8fb",
+            "title": "Parallel stochastic gradient algorithms for large-scale matrix completion"
+        },
+        {
+            "paperId": "fad71ef3d846ee19b64c15c4942a81d248d58099",
+            "title": "Distributed Matrix Completion"
+        },
+        {
+            "paperId": "40d50a0cb39012bb1aae8b2a8358d41e1786df87",
+            "title": "Low-rank matrix completion using alternating minimization"
+        },
+        {
+            "paperId": "525b61614f73d2e54c4e3dbedc785c97a29e6ccd",
+            "title": "Stochastic optimization for PCA and PLS"
+        },
+        {
+            "paperId": "6e17b4bae37a557efc2c9826e7fe3b755edfe6bf",
+            "title": "Solving Quadratic Equations via PhaseLift When There Are About as Many Equations as Unknowns"
+        },
+        {
+            "paperId": "b120d006398215dc34fa776afbb77fa60b70f438",
+            "title": "Low-Rank Optimization with Trace Norm Penalty"
+        },
+        {
+            "paperId": "1dbc1238409549ae6872a744b7b2ff1da5822053",
+            "title": "A reliable effective terascale linear learning system"
+        },
+        {
+            "paperId": "e08f14111728901945f8c3b384b2f75746935e0d",
+            "title": "Making Gradient Descent Optimal for Strongly Convex Stochastic Optimization"
+        },
+        {
+            "paperId": "e8d8f8e7cad53725aa0eb255e28124aab6b4d64b",
+            "title": "Large-scale matrix factorization with distributed stochastic gradient descent"
+        },
+        {
+            "paperId": "36f49b05d764bf5c10428b082c2d96c13c4203b9",
+            "title": "Hogwild: A Lock-Free Approach to Parallelizing Stochastic Gradient Descent"
+        },
+        {
+            "paperId": "413c1142de9d91804d6d11c67ff3fed59c9fc279",
+            "title": "Adaptive Subgradient Methods for Online Learning and Stochastic Optimization"
+        },
+        {
+            "paperId": "f97e98caf94f2c4ebf70d6800cfddc2091a910f0",
+            "title": "Online identification and tracking of subspaces from highly incomplete information"
+        },
+        {
+            "paperId": "cb1c9446bf416a4c7c3ddbe3f7581c152860c93a",
+            "title": "Accelerated Gradient Methods for Stochastic Optimization and Online Learning"
+        },
+        {
+            "paperId": "0e716a68650437cde42bdfb752085964d5e05437",
+            "title": "Matrix completion from a few entries"
+        },
+        {
+            "paperId": "6b71b8fb5e97dbe599b829e2b0cb76c1036a4952",
+            "title": "Low-Rank Optimization on the Cone of Positive Semidefinite Matrices"
+        },
+        {
+            "paperId": "040c161f21e0fa57ac192ac826310f55d60277b0",
+            "title": "Exact Matrix Completion via Convex Optimization"
+        },
+        {
+            "paperId": "5936754b5762260bf102ac95d7b26cfc9d31956a",
+            "title": "The Tradeoffs of Large Scale Learning"
+        },
+        {
+            "paperId": "0025fc4f00c21960297fbdf83220d6bde75da645",
+            "title": "Sparse Principal Component Analysis"
+        },
+        {
+            "paperId": "0eb4bbd57275644738916a1603f3ff7f9ae0d74e",
+            "title": "A nonlinear programming algorithm for solving semidefinite programs via low-rank factorization"
+        },
+        {
+            "paperId": "a65f5bc94069f1087183783be8457320327ce610",
+            "title": "Design and Performance of Parallel and Distributed Approximation Algorithms for Maxcut"
+        },
+        {
+            "paperId": "2776d54485c112ceda70c4fee2ba6d85a331de0a",
+            "title": "Improved approximation algorithms for maximum cut and satisfiability problems using semidefinite programming"
+        },
+        {
+            "paperId": "320dd7814f28ae2cb5a01f514dd4af860f600fd7",
+            "title": "On stochastic approximation of the eigenvectors and eigenvalues of the expectation of a random matrix"
+        },
+        {
+            "paperId": "998e77dd20fd55ae1c6520af9cbe7167b94b4080",
+            "title": "Counting Processes And Survival Analysis"
+        },
+        {
+            "paperId": "2434ea848bfc5bbe77bdabe8fe346290a60e9537",
+            "title": "Robust Stochastic Principal Component Analysis"
+        },
+        {
+            "paperId": "b102e03b132ffa7c48c4cf2ec63df7906cc09fb2",
+            "title": "Matrix completion via an alternating direction method"
+        },
+        {
+            "paperId": "fbc6562814e08e416e28a268ce7beeaa3d0708c8",
+            "title": "Large-Scale Machine Learning with Stochastic Gradient Descent"
+        },
+        {
+            "paperId": "f7b4c27abb76dff4c017849049541f3fc91e77be",
+            "title": "Optimization algorithms on matrix manifolds"
+        },
+        {
+            "paperId": null,
+            "title": "Net\ufb02ix Update: Try this at Home"
+        },
+        {
+            "paperId": "5ced94fdad3c0dc591935aa2dce06608474cee9d",
+            "title": "Digital Object Identifier (DOI) 10.1007/s10107-004-0564-1"
+        },
+        {
+            "paperId": null,
+            "title": "Mathematics (Birkh\u00e4user) theory"
+        },
+        {
+            "paperId": null,
+            "title": "Riemannian geometry"
+        },
+        {
+            "paperId": "917cebdb15afd379f2646b3d4998a7800f11f68e",
+            "title": "Counting processes and survival analysis. Thomas R. Fleming and David P. Harrington, Wiley, New York, 1991. no. of pages: xiii + 429. Price: \u00a339.95. ISBN: 0-471-52218-X"
+        },
+        {
+            "paperId": null,
+            "title": "we will use Chebyshev\u2019s inequality to prove the third part of Theorem 1. This establishes convergence of the radial phase of Algorithm SC1. 14"
+        },
+        {
+            "paperId": null,
+            "title": "The dimensions of A could be such that computing the SVD could be intractable"
+        }
+    ]
+}

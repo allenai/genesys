@@ -1,0 +1,209 @@
+{
+    "paperId": "4d19272112b50547614479a0c409fca66e3b05f7",
+    "externalIds": {
+        "DBLP": "conf/icml/SchapireFBL97",
+        "MAG": "1553313034",
+        "DOI": "10.1214/AOS/1024691352",
+        "CorpusId": 573509
+    },
+    "title": "Boosting the margin: A new explanation for the effectiveness of voting methods",
+    "abstract": "One of the surprising recurring phenomena observed in experiments with boosting is that the test error of the generated classifier usually does not increase as its size becomes very large, and often is observed to decrease even after the training error reaches zero. In this paper, we show that this phenomenon is related to the distribution of margins of the training examples with respect to the generated voting classification rule, where the margin of an example is simply the difference between the number of correct votes and the maximum number of votes received by any incorrect label. We show that techniques used in the analysis of Vapnik's support vector classifiers and of neural networks with small weights can be applied to voting methods to relate the margin distribution to the test error. We also show theoretically and experimentally that boosting is especially effective at increasing the margins of the training examples. Finally, we compare our explanation to those based on the bias-variance",
+    "venue": "International Conference on Machine Learning",
+    "year": 1997,
+    "referenceCount": 41,
+    "citationCount": 3031,
+    "influentialCitationCount": 257,
+    "openAccessPdf": {
+        "url": "https://projecteuclid.org/journals/annals-of-statistics/volume-26/issue-5/Boosting-the-margin--a-new-explanation-for-the-effectiveness/10.1214/aos/1024691352.pdf",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that techniques used in the analysis of Vapnik's support vector classifiers and of neural networks with small weights can be applied to voting methods to relate the margin distribution to the test error."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1716301",
+            "name": "R. Schapire"
+        },
+        {
+            "authorId": "1703537",
+            "name": "Y. Freund"
+        },
+        {
+            "authorId": "2022386739",
+            "name": "Peter Barlett"
+        },
+        {
+            "authorId": "1740222",
+            "name": "Wee Sun Lee"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "08894e24c6bf120365c870157c7e3944615a45cc",
+            "title": "Adaptive game playing using multiplicative weights"
+        },
+        {
+            "paperId": "1f5a3dc5867218b86ab29cbf0046f2a02ee6ded5",
+            "title": "Structural Risk Minimization Over Data-Dependent Hierarchies"
+        },
+        {
+            "paperId": "2a024c5dea98fe9d1ae2d3ed7ee6c7b157854e4d",
+            "title": "The importance of convexity in learning with squared loss"
+        },
+        {
+            "paperId": "14e53403a0055dbe5faaf9f1f3be96ca0e692a4d",
+            "title": "Improved Boosting Algorithms Using Confidence-rated Predictions"
+        },
+        {
+            "paperId": "639057ad00ddaf8bbed3fa0dbd9663dfeb663d62",
+            "title": "Boosting in the Limit: Maximizing the Margin of Learned Ensembles"
+        },
+        {
+            "paperId": "015999a72c70a960e59c51078b09c8f672af0d2c",
+            "title": "The Sample Complexity of Pattern Classification with Neural Networks: The Size of the Weights is More Important than the Size of the Network"
+        },
+        {
+            "paperId": "6e0bf98f60f0596d8483442de820697467f151b0",
+            "title": "Training Methods for Adaptive Boosting of Neural Networks"
+        },
+        {
+            "paperId": "4ba566223e426677d12a9a18418c023a4deec77e",
+            "title": "A decision-theoretic generalization of on-line learning and an application to boosting"
+        },
+        {
+            "paperId": "c67dded190519ef798549ace5b6ff0aecabeff7a",
+            "title": "An Empirical Evaluation of Bagging and Boosting"
+        },
+        {
+            "paperId": "cc1374bcd952032dabe891114f29092b868e01b8",
+            "title": "Using output codes to boost multiclass learning problems"
+        },
+        {
+            "paperId": "6d8226a52ebc70c8d97ccae10a74e1b0a3908ec1",
+            "title": "Improving Regressors using Boosting Techniques"
+        },
+        {
+            "paperId": "940fc619e19494e681e987cd62c657ad166ef9d8",
+            "title": "Rates of convex approximation in non-hilbert spaces"
+        },
+        {
+            "paperId": "a4c16b4bfb2794f17f4816b621f4b97e70b7abdf",
+            "title": "For Valid Generalization the Size of the Weights is More Important than the Size of the Network"
+        },
+        {
+            "paperId": "68c1bfe375dde46777fe1ac8f3636fb651e3f0f8",
+            "title": "Experiments with a New Boosting Algorithm"
+        },
+        {
+            "paperId": "faf746427dc80d8a90c0e716fe7a301aed6b6414",
+            "title": "Bias Plus Variance Decomposition for Zero-One Loss Functions"
+        },
+        {
+            "paperId": "a1dfeb731fc0c79e04523cd655413c223f6fa102",
+            "title": "Boosting Decision Trees"
+        },
+        {
+            "paperId": "25744dbb4294fe7abb2d9b1b0d39006482ebb4ab",
+            "title": "Error-Correcting Output Coding Corrects Bias and Variance"
+        },
+        {
+            "paperId": "364a8b3da991eddb984779537434c5b66df6eb53",
+            "title": "Solving Multiclass Learning Problems via Error-Correcting Output Codes"
+        },
+        {
+            "paperId": "04113e8974341f97258800126d05fd8df2751b7e",
+            "title": "Universal approximation bounds for superpositions of a sigmoidal function"
+        },
+        {
+            "paperId": "807c1f19047f96083e13614f7ce20f2ac98c239a",
+            "title": "C4.5: Programs for Machine Learning"
+        },
+        {
+            "paperId": "4aaa30769ca49875f45670970130c088136986d1",
+            "title": "A training algorithm for optimal margin classifiers"
+        },
+        {
+            "paperId": "7e7f56734291de81e99976d092b58e4e4a2b6f60",
+            "title": "A Simple Lemma on Greedy Approximation in Hilbert Space and Convergence Rates for Projection Pursuit Regression and Neural Network Training"
+        },
+        {
+            "paperId": "b824cb051ffbdd81b529c4b82379a3af270fb6f7",
+            "title": "Boosting a weak learning algorithm by majority"
+        },
+        {
+            "paperId": "62af35038b5d3080cf84f4e28e8fd6f3ee05a133",
+            "title": "The Strength of Weak Learnability"
+        },
+        {
+            "paperId": "7f9014eb1a484eb5b059d9708325017a9814a2b4",
+            "title": "Bounds for the Uniform Deviation of Empirical Measures"
+        },
+        {
+            "paperId": "788c6d1b1419a0f7b7695c0e7e9e41cf54fbfe1b",
+            "title": "On the Density of Families of Sets"
+        },
+        {
+            "paperId": "814cf172298d11db0ac9b839440ed8f3db93e438",
+            "title": "Arcing Classifiers"
+        },
+        {
+            "paperId": "17f6e8cc70685d21c513ce90e237d42a5011eed5",
+            "title": "Adaptive Boosting of Neural Networks for Character Recognition"
+        },
+        {
+            "paperId": "d414438926b73bde0313948d8b074cb5360a0e6f",
+            "title": "Bias, Variance , And Arcing Classifiers"
+        },
+        {
+            "paperId": "79ea6a5a68e05065f82acd11a478aa7eac5f6c06",
+            "title": "Bagging, Boosting, and C4.5"
+        },
+        {
+            "paperId": "67f9e3de2fb39f051ef23b8fbed6d72de7b02900",
+            "title": "A framework for structural risk minimisation"
+        },
+        {
+            "paperId": "9253f3e13bca7e845e60394d85ddaec0d4cfc6d6",
+            "title": "Bias, Variance and Prediction Error for Classification Rules"
+        },
+        {
+            "paperId": "888c09de60ce427669fe5a264fa3e787803eb9d2",
+            "title": "Game theory, on-line prediction and boosting"
+        },
+        {
+            "paperId": "b6cf9167aeb2782651156de5e22cad82ee69a225",
+            "title": "UCI Repository of Machine Learning Databases"
+        },
+        {
+            "paperId": "d620946e24eee13bc3bdd5ceb0f90a3dc4bc4a54",
+            "title": "Boosting a Weak Learning Algorithm by Majority to Be Published in Information and Computation"
+        },
+        {
+            "paperId": "7feb0fc888cd55360949554db032d7d1cba9e947",
+            "title": "Programs for Machine Learning"
+        },
+        {
+            "paperId": "25406e6733a698bfc4ac836f8e74f458e75dad4f",
+            "title": "What Size Net Gives Valid Generalization?"
+        },
+        {
+            "paperId": "378e8a238d156859dfc88cc13489441d47cf661a",
+            "title": "Classification and regression trees"
+        },
+        {
+            "paperId": null,
+            "title": "Estimation of Dependences"
+        },
+        {
+            "paperId": "a36b028d024bf358c4af1a5e1dc3ca0aed23b553",
+            "title": "Chervonenkis: On the uniform convergence of relative frequencies of events to their probabilities"
+        },
+        {
+            "paperId": "4275aa52c4f173aa016889d0ae24ffd3a474cd9a",
+            "title": "Eecient Agnostic Learning of Neural Networks with Bounded Fan-in"
+        }
+    ]
+}

@@ -1,0 +1,185 @@
+{
+    "paperId": "3e0b9b1e4d354bb7caef3fc90fa9828b483c6e81",
+    "externalIds": {
+        "MAG": "2903810591",
+        "DBLP": "conf/aaai/XiaHTTHQ19",
+        "DOI": "10.1609/AAAI.V33I01.33015466",
+        "CorpusId": 70038734
+    },
+    "title": "Tied Transformers: Neural Machine Translation with Shared Encoder and Decoder",
+    "abstract": "Sharing source and target side vocabularies and word embeddings has been a popular practice in neural machine translation (briefly, NMT) for similar languages (e.g., English to French or German translation). The success of such wordlevel sharing motivates us to move one step further: we consider model-level sharing and tie the whole parts of the encoder and decoder of an NMT model. We share the encoder and decoder of Transformer (Vaswani et al. 2017), the state-of-the-art NMT model, and obtain a compact model named Tied Transformer. Experimental results demonstrate that such a simple method works well for both similar and dissimilar language pairs. We empirically verify our framework for both supervised NMT and unsupervised NMT: we achieve a 35.52 BLEU score on IWSLT 2014 German to English translation, 28.98/29.89 BLEU scores on WMT 2014 English to German translation without/with monolingual data, and a 22.05 BLEU score on WMT 2016 unsupervised German to English translation.",
+    "venue": "AAAI Conference on Artificial Intelligence",
+    "year": 2019,
+    "referenceCount": 33,
+    "citationCount": 61,
+    "influentialCitationCount": 8,
+    "openAccessPdf": {
+        "url": "https://ojs.aaai.org/index.php/AAAI/article/download/4487/4365",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work considers model-level sharing and ties the whole parts of the encoder and decoder of an NMT model, and obtains a compact model named Tied Transformer, which demonstrates that such a simple method works well for both similar and dissimilar language pairs."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2794096",
+            "name": "Yingce Xia"
+        },
+        {
+            "authorId": "47237216",
+            "name": "Tianyu He"
+        },
+        {
+            "authorId": "2112780268",
+            "name": "Xu Tan"
+        },
+        {
+            "authorId": "143853336",
+            "name": "Fei Tian"
+        },
+        {
+            "authorId": "1391126980",
+            "name": "Di He"
+        },
+        {
+            "authorId": "143826491",
+            "name": "Tao Qin"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "9f5b82d9915d0752957602224c5056be7e749c83",
+            "title": "Foundations of Machine Learning"
+        },
+        {
+            "paperId": "9e35cd34c87332796ed9d1480068ed8bb275bd45",
+            "title": "Pervasive Attention: 2D Convolutional Neural Networks for Sequence-to-Sequence Prediction"
+        },
+        {
+            "paperId": "01ffd50b3b82c7adac54d15cb84944b87c32525f",
+            "title": "Latent Alignment and Variational Attention"
+        },
+        {
+            "paperId": "051ab78d38cde2d409cfa093bfdb78341e053526",
+            "title": "Model-Level Dual Learning"
+        },
+        {
+            "paperId": "48925fef94500cf19ee220ed74217816f1ab5e60",
+            "title": "Phrase-Based & Neural Unsupervised Machine Translation"
+        },
+        {
+            "paperId": "fc1d981dd051063ae586a56b05390fe3ea82f040",
+            "title": "Achieving Human Parity on Automatic Chinese to English News Translation"
+        },
+        {
+            "paperId": "fe9b8aac9fa3bfd9724db5a881a578e471e612d7",
+            "title": "Efficient Neural Architecture Search via Parameter Sharing"
+        },
+        {
+            "paperId": "062be14f127e590a8476fdb535337d4d7e1caad9",
+            "title": "Dual Transfer Learning for Neural Machine Translation with Marginal Distribution Regularization"
+        },
+        {
+            "paperId": "3fc5ed18c2294596af072df929c8ee12c71f96a2",
+            "title": "Classical Structured Prediction Losses for Sequence to Sequence Learning"
+        },
+        {
+            "paperId": "e3d772986d176057aca2f5e3eb783da53b559134",
+            "title": "Unsupervised Machine Translation Using Monolingual Corpora Only"
+        },
+        {
+            "paperId": "d8a1b22883b9ee40414f70fce623365f991a4ef5",
+            "title": "Sequence Generation with Target Attention"
+        },
+        {
+            "paperId": "52b15103417a47ad20465bccf86e6302391fe9ce",
+            "title": "Dual Supervised Learning"
+        },
+        {
+            "paperId": "6d431f835c06afdea45dff6b24486bf301ebdef0",
+            "title": "An Overview of Multi-Task Learning in Deep Neural Networks"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "43428880d75b3a14257c3ee9bda054e61eb869c0",
+            "title": "Convolutional Sequence to Sequence Learning"
+        },
+        {
+            "paperId": "2d9604cdc3ef786b50b53aaf440d451ad16e7fb9",
+            "title": "Toward Multilingual Neural Machine Translation with Universal Encoder and Decoder"
+        },
+        {
+            "paperId": "a486e2839291111bb44fa1f07731ada123539f75",
+            "title": "Google\u2019s Multilingual Neural Machine Translation System: Enabling Zero-Shot Translation"
+        },
+        {
+            "paperId": "23b559b5ab27f2fca6f56c0a7b6478bcf69db509",
+            "title": "Dual Learning for Machine Translation"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "97fb4e3d45bb098e27e0071448b6152217bd35a5",
+            "title": "Layer Normalization"
+        },
+        {
+            "paperId": "e2dba792360873aef125572812f3673b1a85d850",
+            "title": "Enriching Word Vectors with Subword Information"
+        },
+        {
+            "paperId": "198ac64703e83d00eb0f51a4c4a7c77cb08a7e5c",
+            "title": "Zero-Resource Translation with Multi-Lingual Neural Machine Translation"
+        },
+        {
+            "paperId": "9ed9bff37ec952134564b3b2a022b7aba9479ff2",
+            "title": "Multi-Way, Multilingual Neural Machine Translation with a Shared Attention Mechanism"
+        },
+        {
+            "paperId": "f4610bbad14cf5c722cfe11fcca3d7e6382452dd",
+            "title": "Multi-Source Neural Translation"
+        },
+        {
+            "paperId": "f3b96ef2dc1fc5e14982f1b963db8db6a54183bb",
+            "title": "Improving Neural Machine Translation Models with Monolingual Data"
+        },
+        {
+            "paperId": "d76c07211479e233f7c6a6f32d5346c983c5598f",
+            "title": "Multi-task Sequence to Sequence Learning"
+        },
+        {
+            "paperId": "1518039b5001f1836565215eb047526b3ac7f462",
+            "title": "Neural Machine Translation of Rare Words with Subword Units"
+        },
+        {
+            "paperId": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+            "title": "Effective Approaches to Attention-based Neural Machine Translation"
+        },
+        {
+            "paperId": "83cf4b2f39bcc802b09fd59b69e23068447b26b7",
+            "title": "Multi-Task Learning for Multiple Language Translation"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "8729441d734782c3ed532a7d2d9611b438c0a09a",
+            "title": "ADADELTA: An Adaptive Learning Rate Method"
+        },
+        {
+            "paperId": "a25fbcbbae1e8f79c4360d26aa11a3abf1a11972",
+            "title": "A Survey on Transfer Learning"
+        },
+        {
+            "paperId": "4f8d648c52edf74e41b0996128aa536e13cc7e82",
+            "title": "Deep Learning"
+        }
+    ]
+}

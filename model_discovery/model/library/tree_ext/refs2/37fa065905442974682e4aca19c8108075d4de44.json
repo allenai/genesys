@@ -1,0 +1,114 @@
+{
+    "paperId": "37fa065905442974682e4aca19c8108075d4de44",
+    "externalIds": {
+        "MAG": "1665115054",
+        "ArXiv": "1106.1925",
+        "DBLP": "journals/corr/abs-1106-1925",
+        "CorpusId": 2015927
+    },
+    "title": "Ranking via Sinkhorn Propagation",
+    "abstract": "It is of increasing importance to develop learning methods for ranking. In contrast to many learning objectives, however, the ranking problem presents difficulties due to the fact that the space of permutations is not smooth. In this paper, we examine the class of rank-linear objective functions, which includes popular metrics such as precision and discounted cumulative gain. In particular, we observe that expectations of these gains are completely characterized by the marginals of the corresponding distribution over permutation matrices. Thus, the expectations of rank-linear objectives can always be described through locations in the Birkhoff polytope, i.e., doubly-stochastic matrices (DSMs). We propose a technique for learning DSM-based ranking functions using an iterative projection operator known as Sinkhorn normalization. Gradients of this operator can be computed via backpropagation, resulting in an algorithm we call Sinkhorn propagation, or SinkProp. This approach can be combined with a wide range of gradient-based approaches to rank learning. We demonstrate the utility of SinkProp on several information retrieval data sets.",
+    "venue": "arXiv.org",
+    "year": 2011,
+    "referenceCount": 20,
+    "citationCount": 135,
+    "influentialCitationCount": 15,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper examines the class of rank-linear objective functions, which includes popular metrics such as precision and discounted cumulative gain, and proposes a technique for learning DSM-based ranking functions using an iterative projection operator known as Sinkhorn normalization, or SinkProp."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1722180",
+            "name": "Ryan P. Adams"
+        },
+        {
+            "authorId": "1804104",
+            "name": "R. Zemel"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "7137a80d199e82397a564696e12773256f343d17",
+            "title": "LETOR: A benchmark collection for research on learning to rank for information retrieval"
+        },
+        {
+            "paperId": "37c415efb77e1d24da9f4350f3a93bb271cdba20",
+            "title": "Gradient descent optimization of smoothed information retrieval metrics"
+        },
+        {
+            "paperId": "1e80f755bcbf10479afd2338cec05211fdbd325c",
+            "title": "Convolutional deep belief networks for scalable unsupervised learning of hierarchical representations"
+        },
+        {
+            "paperId": "caecf11d25967f186075bba8f57a6b76d11d58d4",
+            "title": "BoltzRank: learning to maximize expected ranking gain"
+        },
+        {
+            "paperId": "0d5da71adc7da0bfa1ed12198b454e6d32ab0504",
+            "title": "Sinkhorn Solves Sudoku"
+        },
+        {
+            "paperId": "471cb4c2e5039bdaacb0274fee70c7fe2e93493e",
+            "title": "Rank-biased precision for measurement of retrieval effectiveness"
+        },
+        {
+            "paperId": "67984cf0d946854741cd96d64e030a0db797dc0c",
+            "title": "SoftRank: optimizing non-smooth rank metrics"
+        },
+        {
+            "paperId": "4db5c0119d99b089c537f3c70024d1436528dbd2",
+            "title": "The Sinkhorn-Knopp Algorithm: Convergence and Applications"
+        },
+        {
+            "paperId": "f9575f2d6df27de322feb979d05f51a091be6efc",
+            "title": "Fast approximation of the permanent for very dense problems"
+        },
+        {
+            "paperId": "a489d95fb930401c1f4b7d92bb139d271d49abbf",
+            "title": "AdaRank: a boosting algorithm for information retrieval"
+        },
+        {
+            "paperId": "db196fd70f0b54d72aedc75bd74c9b2f826925d7",
+            "title": "Learning to rank: from pairwise approach to listwise approach"
+        },
+        {
+            "paperId": "3d0f3f4af77b156351d230f25854275756739216",
+            "title": "Learning Permutations with Exponential Weights"
+        },
+        {
+            "paperId": "5c63065770a03ebaf37385586579402343408f0a",
+            "title": "Direct Optimization of Ranking Measures"
+        },
+        {
+            "paperId": "8490234d79b47e459824dcf87c1e288211a3c964",
+            "title": "Cumulated gain-based evaluation of IR techniques"
+        },
+        {
+            "paperId": "84169c1213b892bc4342d941a7930752a0267388",
+            "title": "Nonnegative Matrices and Applications"
+        },
+        {
+            "paperId": "70e0d2487440b519b392503f4fa6b94891238c90",
+            "title": "Concerning nonnegative matrices and doubly stochastic matrices"
+        },
+        {
+            "paperId": "441f33fab0614fa0696be54a046cbc692b7e70a2",
+            "title": "A Relationship Between Arbitrary Positive Matrices and Doubly Stochastic Matrices"
+        },
+        {
+            "paperId": "f37cfdc4520c56c1eaf87cee5ec2a4028ceaa9c5",
+            "title": "Deep Belief Networks for phone recognition"
+        },
+        {
+            "paperId": "033f43742659c94cb4079aa5bda5e29a421f04a3",
+            "title": "Polynomial approximation algorithms for belief matrix maintenance in identity management"
+        },
+        {
+            "paperId": "848c717ba51e48afef714dfef4bd6ab1cc050dab",
+            "title": "ALGORITHMS FOR THE ASSIGNMENT AND TRANSIORTATION tROBLEMS*"
+        }
+    ]
+}

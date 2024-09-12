@@ -1,0 +1,85 @@
+{
+    "paperId": "a9fc84f8abe740cdc7ee82e69444d1d00dbe0ceb",
+    "externalIds": {
+        "DBLP": "conf/nips/MnihH08",
+        "MAG": "2131462252",
+        "CorpusId": 10097073
+    },
+    "title": "A Scalable Hierarchical Distributed Language Model",
+    "abstract": "Neural probabilistic language models (NPLMs) have been shown to be competitive with and occasionally superior to the widely-used n-gram language models. The main drawback of NPLMs is their extremely long training and testing times. Morin and Bengio have proposed a hierarchical language model built around a binary tree of words, which was two orders of magnitude faster than the non-hierarchical model it was based on. However, it performed considerably worse than its non-hierarchical counterpart in spite of using a word tree created using expert knowledge. We introduce a fast hierarchical language model along with a simple feature-based algorithm for automatic construction of word trees from the data. We then show that the resulting models can outperform non-hierarchical neural models as well as the best n-gram models.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2008,
+    "referenceCount": 13,
+    "citationCount": 999,
+    "influentialCitationCount": 39,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A fast hierarchical language model along with a simple feature-based algorithm for automatic construction of word trees from the data are introduced and it is shown that the resulting models can outperform non-hierarchical neural models as well as the best n-gram models."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1714004",
+            "name": "A. Mnih"
+        },
+        {
+            "authorId": "1695689",
+            "name": "Geoffrey E. Hinton"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "bd7d93193aad6c4b71cc8942e808753019e87706",
+            "title": "Three new graphical models for statistical language modelling"
+        },
+        {
+            "paperId": "3d6036af971c1f11ab712cc41487376a94e63673",
+            "title": "Using a connectionist model in a syntactical based language model"
+        },
+        {
+            "paperId": "6c2b28f9354f667cd5bd07afc0471d8334430da7",
+            "title": "A Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "e41498c05d4c68e4750fb84a380317a112d97b01",
+            "title": "Connectionist language modeling for large vocabulary continuous speech recognition"
+        },
+        {
+            "paperId": "09c76da2361d46689825c4efc37ad862347ca577",
+            "title": "A bit of progress in language modeling"
+        },
+        {
+            "paperId": "d4e8bed3b50a035e1eabad614fe4218a34b3b178",
+            "title": "An Empirical Study of Smoothing Techniques for Language Modeling"
+        },
+        {
+            "paperId": "bf32a271a17c9c3376127d287f746e4876779d49",
+            "title": "Improving Statistical Language Model Performance with Automatically Generated Word Hierarchies"
+        },
+        {
+            "paperId": "3de5d40b60742e3dfa86b19e7f660962298492af",
+            "title": "Class-Based n-gram Models of Natural Language"
+        },
+        {
+            "paperId": "c19fbefdeead6a4154a22a9c8551a18b1530033a",
+            "title": "Hierarchical Probabilistic Neural Network Language Model"
+        },
+        {
+            "paperId": "6b388f0151ab37adb3d57738b8f52a3f943f86c8",
+            "title": "Quick Training of Probabilistic Neural Nets by Importance Sampling"
+        },
+        {
+            "paperId": "d87ceda3042f781c341ac17109d1e94a717f5f60",
+            "title": "Book Reviews: WordNet: An Electronic Lexical Database"
+        },
+        {
+            "paperId": null,
+            "title": "Distributional clust  ering of English words.Proceedings of the 31st conference on Association for Computational Linguistics, pages"
+        },
+        {
+            "paperId": null,
+            "title": "Distributional clustering of English words"
+        }
+    ]
+}

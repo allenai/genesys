@@ -1,0 +1,81 @@
+{
+    "paperId": "2352d9105de31032538900dfb2ce7c95f6402963",
+    "externalIds": {
+        "MAG": "2115665694",
+        "DBLP": "conf/nips/BottouB94",
+        "CorpusId": 1672253
+    },
+    "title": "Convergence Properties of the K-Means Algorithms",
+    "abstract": "This paper studies the convergence properties of the well known K-Means clustering algorithm. The K-Means algorithm can be described either as a gradient descent algorithm or by slightly extending the mathematics of the EM algorithm to this hard threshold case. We show that the K-Means algorithm actually minimizes the quantization error using the very fast Newton algorithm.",
+    "venue": "Neural Information Processing Systems",
+    "year": 1994,
+    "referenceCount": 12,
+    "citationCount": 522,
+    "influentialCitationCount": 33,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that the K-Means algorithm actually minimizes the quantization error using the very fast Newton algorithm."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "52184096",
+            "name": "L. Bottou"
+        },
+        {
+            "authorId": "1751762",
+            "name": "Yoshua Bengio"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "59fa47fc237a0781b4bf1c84fedb728d20db26a1",
+            "title": "Soft competitive adaptation: neural network learning algorithms based on fitting statistical mixtures"
+        },
+        {
+            "paperId": "713f55820406c9540428ae5ec2a0428010d6800c",
+            "title": "Note on Learning Rate Schedules for Stochastic Optimization"
+        },
+        {
+            "paperId": "015e5c48abbd59309e6986aaa94550e40562f100",
+            "title": "Self-organization and associative memory: 3rd edition"
+        },
+        {
+            "paperId": "d36efb9ad91e00faa334b549ce989bfae7e2907a",
+            "title": "Maximum likelihood from incomplete data via the EM - algorithm plus discussions on the paper"
+        },
+        {
+            "paperId": "fedbdcdead16c7b5cdb6dcc68bc5f4af3085f64b",
+            "title": "Optimisation par descente de gradient stochastique de systemes modulaires combinant reseaux de neurones et programmation dynamique. Application a la reconnaissance de la parole"
+        },
+        {
+            "paperId": null,
+            "title": "Theoretical and experimental studies of convergence properties of the em algorithm for unsupervised learning based on finite mixtures"
+        },
+        {
+            "paperId": null,
+            "title": "Synchronization and Linearity"
+        },
+        {
+            "paperId": "cde2937cb41cf461f624ded2012743ac4624eca8",
+            "title": "Artificial neural networks and their application to sequence recognition"
+        },
+        {
+            "paperId": null,
+            "title": "Une approche theorique de l'apprentissage connexioniste; applications a la reconnaissance de la parole"
+        },
+        {
+            "paperId": "10055eb6f2f711a36d9aa8f759d3b3f01ebddb5d",
+            "title": "Self-Organization and Associative Memory"
+        },
+        {
+            "paperId": null,
+            "title": "PTAH on continuous multivariate functions of Markov chains"
+        },
+        {
+            "paperId": "ac8ab51a86f1a9ae74dd0e4576d1a019f5e654ed",
+            "title": "Some methods for classification and analysis of multivariate observations"
+        }
+    ]
+}

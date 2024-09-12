@@ -1,0 +1,122 @@
+{
+    "paperId": "59ef5569832b2fbb865466b3951ad0957537cd54",
+    "externalIds": {
+        "MAG": "2951192614",
+        "DBLP": "journals/corr/abs-1803-01905",
+        "ArXiv": "1803.01905",
+        "CorpusId": 3692345
+    },
+    "title": "Convergence of Gradient Descent on Separable Data",
+    "abstract": "We provide a detailed study on the implicit bias of gradient descent when optimizing loss functions with strictly monotone tails, such as the logistic loss, over separable datasets. We look at two basic questions: (a) what are the conditions on the tail of the loss function under which gradient descent converges in the direction of the $L_2$ maximum-margin separator? (b) how does the rate of margin convergence depend on the tail of the loss function and the choice of the step size? We show that for a large family of super-polynomial tailed losses, gradient descent iterates on linear networks of any depth converge in the direction of $L_2$ maximum-margin solution, while this does not hold for losses with heavier tails. Within this family, for simple linear models we show that the optimal rates with fixed step size is indeed obtained for the commonly used exponentially tailed losses such as logistic loss. However, with a fixed step size the optimal convergence rate is extremely slow as $1/\\log(t)$, as also proved in Soudry et al. (2018). For linear models with exponential loss, we further prove that the convergence rate could be improved to $\\log (t) /\\sqrt{t}$ by using aggressive step sizes that compensates for the rapidly vanishing gradients. Numerical results suggest this method might be useful for deep networks.",
+    "venue": "International Conference on Artificial Intelligence and Statistics",
+    "year": 2018,
+    "referenceCount": 19,
+    "citationCount": 149,
+    "influentialCitationCount": 31,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is proved that the convergence rate could be improved to $\\log (t) /\\sqrt{t}$ by using aggressive step sizes that compensates for the rapidly vanishing gradients, which might be useful for deep networks."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "36088413",
+            "name": "M. S. Nacson"
+        },
+        {
+            "authorId": "2421201",
+            "name": "J. Lee"
+        },
+        {
+            "authorId": "3317356",
+            "name": "Suriya Gunasekar"
+        },
+        {
+            "authorId": "1706280",
+            "name": "N. Srebro"
+        },
+        {
+            "authorId": "1912398",
+            "name": "Daniel Soudry"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "5786917220aab2f6d0b00606eee9fe0ad0700f1b",
+            "title": "Gradient descent aligns the layers of deep linear networks"
+        },
+        {
+            "paperId": "7036f1c172412a1f85b1c3c78d352e84453828cf",
+            "title": "Convergence of SGD in Learning ReLU Models with Separable Data"
+        },
+        {
+            "paperId": "8e1ea054aa0a807f288a9e17cb783b17222e5b6c",
+            "title": "When will gradient methods converge to max\u2010margin classifier under ReLU models?"
+        },
+        {
+            "paperId": "d8b477a120798e3c8983de485c1a8cff06ff33db",
+            "title": "Stochastic Gradient Descent on Separable Data: Exact Convergence with a Fixed Learning Rate"
+        },
+        {
+            "paperId": "67a97032fd3ad81cda45e1e5d4a1a7d851494525",
+            "title": "Implicit Bias of Gradient Descent on Linear Convolutional Networks"
+        },
+        {
+            "paperId": "4a5a17d7849b91a3af583c7b99403844e1a5cdb1",
+            "title": "Risk and parameter convergence of logistic regression"
+        },
+        {
+            "paperId": "33416f2dc49db24cca520a3b234f02463a4e833e",
+            "title": "Characterizing Implicit Bias in Terms of Optimization Geometry"
+        },
+        {
+            "paperId": "11adc8bd35bd897502f9b5452ab7ac668ec9b0fb",
+            "title": "The Implicit Bias of Gradient Descent on Separable Data"
+        },
+        {
+            "paperId": "8501e330d78391f4e690886a8eb8fac867704ea6",
+            "title": "Train longer, generalize better: closing the generalization gap in large batch training of neural networks"
+        },
+        {
+            "paperId": "8c8bd2ccf7ff9313f9d00fac2be2b22b4e188b66",
+            "title": "The Power of Normalization: Faster Evasion of Saddle Points"
+        },
+        {
+            "paperId": "54ddb00fa691728944fd8becea90a373d21597cf",
+            "title": "Understanding deep learning requires rethinking generalization"
+        },
+        {
+            "paperId": "1c4e9156ca07705531e45960b7a919dc473abb51",
+            "title": "Wide Residual Networks"
+        },
+        {
+            "paperId": "4b675d8f63888d7d6d7d77a0834efa5eaded64c5",
+            "title": "In Search of the Real Inductive Bias: On the Role of Implicit Regularization in Deep Learning"
+        },
+        {
+            "paperId": "2cf3142e55965c6dce7e3ee2f93d1fb2d5aba416",
+            "title": "Margins, Shrinkage, and Boosting"
+        },
+        {
+            "paperId": "5f08514db80861b0b3700620715de3759689e2fc",
+            "title": "Sublinear Optimization for Machine Learning"
+        },
+        {
+            "paperId": "f6d16b4db8779721715a00008ba03b5c67e4669c",
+            "title": "Margin Maximizing Loss Functions"
+        },
+        {
+            "paperId": null,
+            "title": "Asymptotic solution for a first order ode. MathOverflow, 2018"
+        },
+        {
+            "paperId": "b724f39a84462bd36eed63778d3cc67cffbb3f19",
+            "title": "Boosting: Foundations and Algorithms"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        }
+    ]
+}

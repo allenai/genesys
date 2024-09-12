@@ -1,0 +1,179 @@
+{
+    "paperId": "169895d3a9ed3c4383bb71f27ade94e94695b172",
+    "externalIds": {
+        "DBLP": "conf/nips/DaoSR17",
+        "ArXiv": "1709.02605",
+        "MAG": "2963764299",
+        "CorpusId": 6924013,
+        "PubMed": "29398882"
+    },
+    "title": "Gaussian Quadrature for Kernel Features",
+    "abstract": "Kernel methods have recently attracted resurgent interest, showing performance competitive with deep neural networks in tasks such as speech recognition. The random Fourier features map is a technique commonly used to scale up kernel machines, but employing the randomized feature map means that O(\u03b5-2) samples are required to achieve an approximation error of at most \u03b5. We investigate some alternative schemes for constructing feature maps that are deterministic, rather than random, by approximating the kernel in the frequency domain using Gaussian quadrature. We show that deterministic feature maps can be constructed, for any \u03b3 > 0, to achieve error \u03b5 with O(e\u03b3 + \u03b5-1/\u03b3) samples as \u03b5 goes to 0. Our method works particularly well with sparse ANOVA kernels, which are inspired by the convolutional layer of CNNs. We validate our methods on datasets in different domains, such as MNIST and TIMIT, showing that deterministic features are faster to generate and achieve accuracy comparable to the state-of-the-art kernel methods based on random Fourier features.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2017,
+    "referenceCount": 35,
+    "citationCount": 43,
+    "influentialCitationCount": 10,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Deterministic feature maps can be constructed, for any \u03b3 > 0, to achieve error \u03b5 with O(e\u03b3 + \u03b5-1/\u03b3) samples as \u03b5 goes to 0, showing that deterministic features are faster to generate and achieve accuracy comparable to the state-of-the-art kernel methods based on random Fourier features."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "24593911",
+            "name": "Tri Dao"
+        },
+        {
+            "authorId": "1801197",
+            "name": "Christopher De Sa"
+        },
+        {
+            "authorId": "2114485554",
+            "name": "C. R\u00e9"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "43428880d75b3a14257c3ee9bda054e61eb869c0",
+            "title": "Convolutional Sequence to Sequence Learning"
+        },
+        {
+            "paperId": "9f928c849cd8ea7659b2262fbc50757de9831b78",
+            "title": "Kernel Approximation Methods for Speech Recognition"
+        },
+        {
+            "paperId": "0fb875e6f8e653ae66f42a832d1f0fec2be2a3dc",
+            "title": "Compact kernel models for acoustic modeling via random feature selection"
+        },
+        {
+            "paperId": "4299755fe337bc64c9c693332468f6180627d861",
+            "title": "A comparison between deep neural nets and kernel acoustic models for speech recognition"
+        },
+        {
+            "paperId": "78e95099ec2ac3cb087eb47ba7c87ddb01a19405",
+            "title": "On the Error of Random Fourier Features"
+        },
+        {
+            "paperId": "a986ae204a6979abe1d175b5e188d3af51cf57c3",
+            "title": "Optimal Rates for Random Fourier Features"
+        },
+        {
+            "paperId": "990f341846223e80a4c5fbd5c2be309eb5c8bec9",
+            "title": "On the Equivalence between Kernel Quadrature Rules and Random Feature Expansions"
+        },
+        {
+            "paperId": "12c3b9f64b7df59daa2b076a16fec357b0f251f4",
+            "title": "On the Equivalence between Quadrature Rules and Random Features"
+        },
+        {
+            "paperId": "bd47e101c7f869fffc57f529e532a0b9cf275a26",
+            "title": "How to Scale Up Kernel Methods to Be As Good As Deep Neural Nets"
+        },
+        {
+            "paperId": "e037775b77109e301defa001449fa2c8cfc1977f",
+            "title": "Fast computation of Gauss quadrature nodes and weights on the whole real line"
+        },
+        {
+            "paperId": "1f6ba0782862ec12a5ec6d7fb608523d55b0c6ba",
+            "title": "Convolutional Neural Networks for Sentence Classification"
+        },
+        {
+            "paperId": "2b55f034a3874ad4a4b7f389e6f89e3bf2d1801e",
+            "title": "Quasi-Monte Carlo Feature Maps for Shift-Invariant Kernels"
+        },
+        {
+            "paperId": "45486e51e130a4f093885e57d73345294b33f43c",
+            "title": "On the Sample Complexity of Random Fourier Features for Online Learning"
+        },
+        {
+            "paperId": "b3c879b2430a61d8c4393436685c85bcfbd6c6d8",
+            "title": "Kernel methods match Deep Neural Networks on TIMIT"
+        },
+        {
+            "paperId": "4ab4c0b3c2c0648c14b4a55d2908ce5f75512419",
+            "title": "Fast and Accurate Computation of Gauss-Legendre and Gauss-Jacobi Quadrature Nodes and Weights"
+        },
+        {
+            "paperId": "8f77e16f2834eb23307b0436f5422a9752339f0a",
+            "title": "Nystr\u00f6m Method vs Random Fourier Features: A Theoretical and Empirical Comparison"
+        },
+        {
+            "paperId": "cdef3687ba0c51eff03ad420786600324f4ba0b1",
+            "title": "METHODUS NOVA INTEGRALIUM VALORES PER APPROXIMATIONEM INVENIENDI"
+        },
+        {
+            "paperId": "8f0b5fbb978c93e6eab286c7f971e45beca8d632",
+            "title": "Analysis of numerical methods"
+        },
+        {
+            "paperId": "bef602ea4241845d2972f5d66e0154ee255b9c53",
+            "title": "Sparse Grid Quadrature in High Dimensions with Applications in Finance and Insurance"
+        },
+        {
+            "paperId": "47aa6d7381cc9993da60e4547b01f415a04f3cf2",
+            "title": "Weighted Sums of Random Kitchen Sinks: Replacing minimization with randomization in learning"
+        },
+        {
+            "paperId": "0139b9b7a5b24b0ec5afca73b3137f044ff38e83",
+            "title": "Is Gauss Quadrature Better than Clenshaw-Curtis?"
+        },
+        {
+            "paperId": "7a59fde27461a3ef4a21a249cc403d0d96e4a0d7",
+            "title": "Random Features for Large-Scale Kernel Machines"
+        },
+        {
+            "paperId": "d37fc9e9c4fedc32865b08661e7fb950df1f8fbe",
+            "title": "Kernel methods in machine learning"
+        },
+        {
+            "paperId": "5562a56da3a96dae82add7de705e2bd841eb00fc",
+            "title": "Best practices for convolutional neural networks applied to visual document analysis"
+        },
+        {
+            "paperId": "fc8cda36a0972e7de1ac3a7bcb81dc32da79bee4",
+            "title": "Learning with Kernels: Support Vector Machines, Regularization, Optimization, and Beyond"
+        },
+        {
+            "paperId": "919e21911ca2af621a3ec79e7b153a375d4edf38",
+            "title": "Structural Modelling with Sparse Kernels"
+        },
+        {
+            "paperId": "221663c3ec94babfaa0754a00d92ff69e2a4424a",
+            "title": "Support vector regression with ANOVA decomposition kernels"
+        },
+        {
+            "paperId": "2109f8f91301abec8497286160cd6b0f2e65ed05",
+            "title": "Maximum likelihood linear transformations for HMM-based speech recognition"
+        },
+        {
+            "paperId": "47128bb3ce4ed00691c0d7d58c02791c3e963ab7",
+            "title": "Darpa Timit Acoustic-Phonetic Continuous Speech Corpus CD-ROM {TIMIT} | NIST"
+        },
+        {
+            "paperId": "7838d046f296235cb0bbab0a190d539e8debb25a",
+            "title": "Fourier Analysis on Groups."
+        },
+        {
+            "paperId": "f1b35e3b459a748bc354365dd4dde0e5a8c02dca",
+            "title": "A method for numerical integration on an automatic computer"
+        },
+        {
+            "paperId": "36a5417dec6460afaf1b0394dff088b2a928970f",
+            "title": "Fast and Accurate Digit Classification"
+        },
+        {
+            "paperId": null,
+            "title": "Quadrature and interpolation formulas for tensor products of certain class of functions . Dokl . Akad . Nauk SSSR"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": null,
+            "title": "Now, since by assumption A \u2265 8b 2 M 2 and c 1 \u2265 m 1 , it follows that 2b 2 M 2 /A \u2264 1 and so we can upper-bound this sum with"
+        }
+    ]
+}

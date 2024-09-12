@@ -1,0 +1,94 @@
+{
+    "paperId": "e644a409b4a4c6eaedffe27efbc5c76280b34c61",
+    "externalIds": {
+        "ArXiv": "1707.08819",
+        "DBLP": "journals/corr/ChrabaszczLH17",
+        "MAG": "2741430497",
+        "CorpusId": 7304542
+    },
+    "title": "A Downsampled Variant of ImageNet as an Alternative to the CIFAR datasets",
+    "abstract": "The original ImageNet dataset is a popular large-scale benchmark for training Deep Neural Networks. Since the cost of performing experiments (e.g, algorithm design, architecture search, and hyperparameter tuning) on the original dataset might be prohibitive, we propose to consider a downsampled version of ImageNet. In contrast to the CIFAR datasets and earlier downsampled versions of ImageNet, our proposed ImageNet32$\\times$32 (and its variants ImageNet64$\\times$64 and ImageNet16$\\times$16) contains exactly the same number of classes and images as ImageNet, with the only difference that the images are downsampled to 32$\\times$32 pixels per image (64$\\times$64 and 16$\\times$16 pixels for the variants, respectively). Experiments on these downsampled variants are dramatically faster than on the original ImageNet and the characteristics of the downsampled datasets with respect to optimal hyperparameters appear to remain similar. The proposed datasets and scripts to reproduce our results are available at this http URL and this https URL",
+    "venue": "arXiv.org",
+    "year": 2017,
+    "referenceCount": 14,
+    "citationCount": 549,
+    "influentialCitationCount": 113,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a downsampled version of ImageNet that contains exactly the same number of classes and images as ImageNet, with the only difference that the images aredownsampled to 32$\\times$32 pixels per image."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "22259392",
+            "name": "P. Chrabaszcz"
+        },
+        {
+            "authorId": "1678656",
+            "name": "I. Loshchilov"
+        },
+        {
+            "authorId": "144661829",
+            "name": "F. Hutter"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "94218118ca9ad441210fd17aa4f27389b2acbeb6",
+            "title": "Systematic evaluation of convolution neural network advances on the Imagenet"
+        },
+        {
+            "paperId": "22aa426aeffb77339646cc03da8e94de22396efc",
+            "title": "Shake-Shake regularization of 3-branch residual networks"
+        },
+        {
+            "paperId": "b022f2a277a4bf5f42382e86e4380b96340b9e86",
+            "title": "SGDR: Stochastic Gradient Descent with Warm Restarts"
+        },
+        {
+            "paperId": "06571537e6210772e622eee2cba877d053332985",
+            "title": "Systematic evaluation of CNN advances on the ImageNet"
+        },
+        {
+            "paperId": "cf4e443c4268a3b6face07a30599529e6f47410c",
+            "title": "Fast Bayesian Optimization of Machine Learning Hyperparameters on Large Datasets"
+        },
+        {
+            "paperId": "1c4e9156ca07705531e45960b7a919dc473abb51",
+            "title": "Wide Residual Networks"
+        },
+        {
+            "paperId": "892f9a2f69241feec647856cd26bed37e04fd747",
+            "title": "Hyperband: A Novel Bandit-Based Approach to Hyperparameter Optimization"
+        },
+        {
+            "paperId": "41f1d50c85d3180476c4c7b3eea121278b0d8474",
+            "title": "Pixel Recurrent Neural Networks"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "1b7db8ad49f94da9b90db89bede5f27644bb9911",
+            "title": "SGDR: Stochastic Gradient Descent with Restarts"
+        },
+        {
+            "paperId": null,
+            "title": "Lessons learned from manually classifying"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        }
+    ]
+}

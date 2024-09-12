@@ -1,0 +1,119 @@
+{
+    "paperId": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+    "externalIds": {
+        "MAG": "1902237438",
+        "DBLP": "journals/corr/LuongPM15",
+        "ArXiv": "1508.04025",
+        "ACL": "D15-1166",
+        "DOI": "10.18653/v1/D15-1166",
+        "CorpusId": 1998416
+    },
+    "title": "Effective Approaches to Attention-based Neural Machine Translation",
+    "abstract": "An attentional mechanism has lately been used to improve neural machine translation (NMT) by selectively focusing on parts of the source sentence during translation. However, there has been little work exploring useful architectures for attention-based NMT. This paper examines two simple and effective classes of attentional mechanism: a global approach which always attends to all source words and a local one that only looks at a subset of source words at a time. We demonstrate the effectiveness of both approaches on the WMT translation tasks between English and German in both directions. With local attention, we achieve a significant gain of 5.0 BLEU points over non-attentional systems that already incorporate known techniques such as dropout. Our ensemble model using different attention architectures yields a new state-of-the-art result in the WMT\u201915 English to German translation task with 25.9 BLEU points, an improvement of 1.0 BLEU points over the existing best system backed by NMT and an n-gram reranker. 1",
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2015,
+    "referenceCount": 19,
+    "citationCount": 7666,
+    "influentialCitationCount": 635,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/D15-1166.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A global approach which always attends to all source words and a local one that only looks at a subset of source words at a time are examined, demonstrating the effectiveness of both approaches on the WMT translation tasks between English and German in both directions."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1821711",
+            "name": "Thang Luong"
+        },
+        {
+            "authorId": "143950636",
+            "name": "Hieu Pham"
+        },
+        {
+            "authorId": "144783904",
+            "name": "Christopher D. Manning"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "a2785f66c20fbdf30ec26c0931584c6d6a0f4fca",
+            "title": "DRAW: A Recurrent Neural Network For Image Generation"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "1938624bb9b0f999536dcc8d8f519810bb4e1b3b",
+            "title": "On Using Very Large Target Vocabulary for Neural Machine Translation"
+        },
+        {
+            "paperId": "47d2dc34e1d02a8109f5c04bb6939725de23716d",
+            "title": "End-to-end Continuous Speech Recognition using Attention-based Recurrent NN: First Results"
+        },
+        {
+            "paperId": "1956c239b3552e030db1b78951f64781101125ed",
+            "title": "Addressing the Rare Word Problem in Neural Machine Translation"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "f264e8b33c0d49a692a6ce2c4bcb28588aeb7d97",
+            "title": "Recurrent Neural Network Regularization"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "8a756d4d25511d92a45d0f4545fa819de993851d",
+            "title": "Recurrent Models of Visual Attention"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "8e4fb17fff38a7834af5b4eaafcbbde02bf00975",
+            "title": "N-gram Counts and Language Models from the Common Crawl"
+        },
+        {
+            "paperId": "944a1cfd79dbfb6fef460360a0765ba790f4027a",
+            "title": "Recurrent Continuous Translation Models"
+        },
+        {
+            "paperId": "52805ca2a7f5f6e73dc90ff20f1ca2f198dd031b",
+            "title": "Squibs and Discussions: Measuring Word Alignment Quality for Statistical Machine Translation"
+        },
+        {
+            "paperId": "f4f6bfacb4cd508df62540f5aa9ba30cd83dd127",
+            "title": "Alignment by Agreement"
+        },
+        {
+            "paperId": "a4b828609b60b06e61bea7a4029cc9e1cad5df87",
+            "title": "Statistical Phrase-Based Translation"
+        },
+        {
+            "paperId": "d7da009f457917aa381619facfa5ffae9329a6e9",
+            "title": "Bleu: a Method for Automatic Evaluation of Machine Translation"
+        },
+        {
+            "paperId": null,
+            "title": "Thegoldalignments are displayed at the bottom right corner. Compared to the alignment visualizations in (Bahdanau et al., 2015), our alignment patterns"
+        },
+        {
+            "paperId": null,
+            "title": "Compared to the alignment visualizations"
+        },
+        {
+            "paperId": null,
+            "title": "We visualize the alignment weights produced our different attention models in Figure 7"
+        }
+    ]
+}

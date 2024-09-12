@@ -1,0 +1,151 @@
+{
+    "paperId": "87fc28cbb193a3bc100e13a4a57a8dc9ce7e31a3",
+    "externalIds": {
+        "DBLP": "conf/emnlp/BritzGL17",
+        "ACL": "D17-1040",
+        "MAG": "2949690996",
+        "ArXiv": "1707.00110",
+        "DOI": "10.18653/v1/D17-1040",
+        "CorpusId": 998391
+    },
+    "title": "Efficient Attention using a Fixed-Size Memory Representation",
+    "abstract": "The standard content-based attention mechanism typically used in sequence-to-sequence models is computationally expensive as it requires the comparison of large encoder and decoder states at each time step. In this work, we propose an alternative attention mechanism based on a fixed size memory representation that is more efficient. Our technique predicts a compact set of K attention contexts during encoding and lets the decoder compute an efficient lookup that does not need to consult the memory. We show that our approach performs on-par with the standard attention mechanism while yielding inference speedups of 20% for real-world translation tasks and more for tasks with longer sequences. By visualizing attention scores we demonstrate that our models learn distinct, meaningful alignments.",
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2017,
+    "referenceCount": 27,
+    "citationCount": 32,
+    "influentialCitationCount": 2,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/D17-1040.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes an alternative attention mechanism based on a fixed size memory representation that is more efficient and predicts a compact set of K attention contexts during encoding and lets the decoder compute an efficient lookup that does not need to consult the memory."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3908643",
+            "name": "D. Britz"
+        },
+        {
+            "authorId": "152565355",
+            "name": "M. Guan"
+        },
+        {
+            "authorId": "1707242",
+            "name": "Minh-Thang Luong"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "76faaf292c6d9dc29d3a99300a7fdd7a35d6d107",
+            "title": "Online and Linear-Time Attention by Enforcing Monotonic Alignments"
+        },
+        {
+            "paperId": "4550a4c714920ef57d19878e31c9ebae37b049b2",
+            "title": "Massive Exploration of Neural Machine Translation Architectures"
+        },
+        {
+            "paperId": "7dbb2d983ab95da04e5d47c87ddd2cd9a8f20786",
+            "title": "Towards Better Decoding and Language Model Integration in Sequence to Sequence Models"
+        },
+        {
+            "paperId": "f958d4921951e394057a1c4ec33bad9a34e5dad1",
+            "title": "A Convolutional Encoder Model for Neural Machine Translation"
+        },
+        {
+            "paperId": "a32763adef1ef22cc27d4d67ef7ac1490d23ce0b",
+            "title": "Morphological Inflection Generation with Hard Monotonic Attention"
+        },
+        {
+            "paperId": "98445f4172659ec5e891e031d8202c102135c644",
+            "title": "Neural Machine Translation in Linear Time"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "53839f5d018e063f1c2b6b1bd391352702ca34c1",
+            "title": "A Cheap Linear Attention Mechanism with Fast Lookups and Fixed-Size Representations"
+        },
+        {
+            "paperId": "5507dc32b368c8afd3b9507e9b5888da7bd7d7cd",
+            "title": "Sequence-to-Sequence Learning as Beam-Search Optimization"
+        },
+        {
+            "paperId": "221ef0a2f185036c06f9fb089109ded5c888c4c6",
+            "title": "Sequence-to-Sequence RNNs for Text Summarization"
+        },
+        {
+            "paperId": "651e5bcc14f14605a879303e97572a27ea8c7956",
+            "title": "A Diversity-Promoting Objective Function for Neural Conversation Models"
+        },
+        {
+            "paperId": "1ac30af5522c7a50ec4d1ee43fd2bd8652a9bd52",
+            "title": "A Neural Attention Model for Abstractive Sentence Summarization"
+        },
+        {
+            "paperId": "1518039b5001f1836565215eb047526b3ac7f462",
+            "title": "Neural Machine Translation of Rare Words with Subword Units"
+        },
+        {
+            "paperId": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+            "title": "Effective Approaches to Attention-based Neural Machine Translation"
+        },
+        {
+            "paperId": "86311b182786bfde19446f6ded0854de973d4060",
+            "title": "A Neural Conversational Model"
+        },
+        {
+            "paperId": "a583af2696030bcf5f556edc74573fbee902be0b",
+            "title": "Weakly Supervised Memory Networks"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "609bb61e4202391e9dee997d21caf4f38a2bf319",
+            "title": "A Taxonomy of Human Translation Styles"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": null,
+            "title": "A\u00e4ron van den Oord, Alex Graves, and Koray Kavukcuoglu"
+        },
+        {
+            "paperId": null,
+            "title": "Listen, attend and spell"
+        },
+        {
+            "paperId": null,
+            "title": "Barbara Dragsted, and Arnt Lykke Jakobsen"
+        }
+    ]
+}

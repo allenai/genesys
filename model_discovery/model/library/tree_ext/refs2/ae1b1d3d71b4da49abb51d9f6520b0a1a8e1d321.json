@@ -1,0 +1,134 @@
+{
+    "paperId": "ae1b1d3d71b4da49abb51d9f6520b0a1a8e1d321",
+    "externalIds": {
+        "MAG": "2951733389",
+        "DBLP": "conf/nips/LiM16",
+        "ArXiv": "1606.04443",
+        "CorpusId": 1874643
+    },
+    "title": "A scalable end-to-end Gaussian process adapter for irregularly sampled time series classification",
+    "abstract": "We present a general framework for classification of sparse and irregularly-sampled time series. The properties of such time series can result in substantial uncertainty about the values of the underlying temporal processes, while making the data difficult to deal with using standard classification methods that assume fixed-dimensional feature spaces. To address these challenges, we propose an uncertainty-aware classification framework based on a special computational layer we refer to as the Gaussian process adapter that can connect irregularly sampled time series data to any black-box classifier learnable using gradient descent. We show how to scale up the required computations based on combining the structured kernel interpolation framework and the Lanczos approximation method, and how to discriminatively train the Gaussian process adapter in combination with a number of classifiers end-to-end using backpropagation.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2016,
+    "referenceCount": 25,
+    "citationCount": 84,
+    "influentialCitationCount": 8,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes an uncertainty-aware classification framework based on a special computational layer known as the Gaussian process adapter that can connect irregularly sampled time series data to any black-box classifier learnable using gradient descent."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "26622529",
+            "name": "Steven Cheng-Xian Li"
+        },
+        {
+            "authorId": "1805742",
+            "name": "Benjamin M Marlin"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "5589056f7709990be7920d57472a271bfd9c52e0",
+            "title": "Classification of Sparse and Irregularly Sampled Time Series with Mixtures of Expected Gaussian Kernels and Random Features"
+        },
+        {
+            "paperId": "767d0625c4767c6b8afa0b1b30deafed7e0e8f08",
+            "title": "Kernel Interpolation for Scalable Structured Gaussian Processes (KISS-GP)"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "e882640a29b0396d2c76c9fbc81a6467f91a86cb",
+            "title": "Preconditioned Krylov Subspace Methods for Sampling Multivariate Gaussian Distributions"
+        },
+        {
+            "paperId": "5f5dc5b9a2ba710937e2c413b37b053cd673df02",
+            "title": "Auto-Encoding Variational Bayes"
+        },
+        {
+            "paperId": "71ec2c3f28e5833fbf2b29967982969ac4ddc24e",
+            "title": "Gaussian Process Kernels for Pattern Discovery and Extrapolation"
+        },
+        {
+            "paperId": "8d9440495bb79a454a9a4cf121074979f94c7b31",
+            "title": "Unsupervised pattern discovery in electronic health care data using probabilistic clustering models"
+        },
+        {
+            "paperId": "f4dbf92df8f53adc179938e4775d309cf7e14f3c",
+            "title": "A restarted Lanczos approximation to functions of a symmetric matrix"
+        },
+        {
+            "paperId": "0ad6f6a841202fd51723b44dccabb95abc0aba87",
+            "title": "uWave: Accelerometer-based personalized gesture recognition and its applications"
+        },
+        {
+            "paperId": "e1a1ac265797e2b8cba8786ce16c428ba5b3376e",
+            "title": "POPULATION TIME SERIES: PROCESS VARIABILITY, OBSERVATION ERRORS, MISSING VALUES, LAGS, AND HIDDEN STATES"
+        },
+        {
+            "paperId": "f354310098e09c1e1dc88758fca36767fd9d084d",
+            "title": "Learning methods for generic object recognition with invariance to pose and lighting"
+        },
+        {
+            "paperId": "cd4f2ffcda1f9907936daf79ed67356b6694479a",
+            "title": "Iterative methods for sparse linear systems"
+        },
+        {
+            "paperId": "98842c1ea99266e3294339cb9a64acd5401974e9",
+            "title": "The Lomb-Scargle Periodogram in Biological Rhythm Research: Analysis of Incomplete and Unequally Spaced Time-Series"
+        },
+        {
+            "paperId": "e3761067ac2afc4a36439a8ed5c024789c1e68b7",
+            "title": "Spectrum: spectral analysis of unevenly spaced paleoclimatic time series"
+        },
+        {
+            "paperId": "909c835cc2e91be8a3436a85da2a23a66e60e550",
+            "title": "A block conjugate gradient method applied to linear systems with multiple right-hand sides"
+        },
+        {
+            "paperId": "1551022eb4cc47dd48b2ba6686568f34e981138c",
+            "title": "Solution of the matrix equation AX-XB=C"
+        },
+        {
+            "paperId": "b377fcdb05d9186e657e7473e9fc6c7216d4f1b0",
+            "title": "A Schur method for the square root of a matrix"
+        },
+        {
+            "paperId": "c7844b80046e651ae3368896d4ca8d6fff6d8e3e",
+            "title": "Studies in astronomical time series analysis. II - Statistical aspects of spectral analysis of unevenly spaced data"
+        },
+        {
+            "paperId": "de5ca64429d18710232ecc0da54998e1a401fcbe",
+            "title": "Cubic convolution interpolation for digital image processing"
+        },
+        {
+            "paperId": "785f6308eae0b2075162c1d3d47ff392f71537db",
+            "title": "The Symmetric Eigenvalue Problem"
+        },
+        {
+            "paperId": "dcf04c202cb381a13a358df96ca9dccbf0775e1b",
+            "title": "On the Rates of Convergence of the Lanczos and the Block-Lanczos Methods"
+        },
+        {
+            "paperId": "55736bc88332e4ec83203017274a46e546450671",
+            "title": "Algorithm 432 [C2]: Solution of the matrix equation AX + XB = C [F4]"
+        },
+        {
+            "paperId": "444d70e3331b5083b40ef32e49390ef683a65e67",
+            "title": "Matrix Computations"
+        },
+        {
+            "paperId": "b6634f7f6eb16a464637562ab643c81d3785e517",
+            "title": "The block Lanczos method for computing eigenvalues"
+        },
+        {
+            "paperId": "baa56b9f5f7d0a2446cd940939c2a98a09d312a1",
+            "title": "Retooling the method of block conjugate gradients."
+        }
+    ]
+}

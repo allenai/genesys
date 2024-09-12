@@ -1,0 +1,522 @@
+{
+    "paperId": "922197906907dc0a5e1b51fae40d3149333ecacf",
+    "externalIds": {
+        "MAG": "2510182739",
+        "DBLP": "conf/cvpr/Kokkinos17",
+        "ArXiv": "1609.02132",
+        "DOI": "10.1109/CVPR.2017.579",
+        "CorpusId": 8070108
+    },
+    "title": "UberNet: Training a Universal Convolutional Neural Network for Low-, Mid-, and High-Level Vision Using Diverse Datasets and Limited Memory",
+    "abstract": "In this work we train in an end-to-end manner a convolutional neural network (CNN) that jointly handles low-, mid-, and high-level vision tasks in a unified architecture. Such a network can act like a swiss knife for vision tasks, we call it an UberNet to indicate its overarching nature. The main contribution of this work consists in handling challenges that emerge when scaling up to many tasks. We introduce techniques that facilitate (i) training a deep architecture while relying on diverse training sets and (ii) training many (potentially unlimited) tasks with a limited memory budget. This allows us to train in an end-to-end manner a unified CNN architecture that jointly handles (a) boundary detection (b) normal estimation (c) saliency estimation (d) semantic segmentation (e) human part segmentation (f) semantic boundary detection, (g) region proposal generation and object detection. We obtain competitive performance while jointly addressing all tasks in 0.7 seconds on a GPU. Our system will be made publicly available.",
+    "venue": "Computer Vision and Pattern Recognition",
+    "year": 2016,
+    "referenceCount": 122,
+    "citationCount": 628,
+    "influentialCitationCount": 43,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1609.02132",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work trains in an end-to-end manner a convolutional neural network that jointly handles low-, mid-, and high-level vision tasks in a unified architecture that can act like a swiss knife for vision tasks and is called an UberNet to indicate its overarching nature."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2010660",
+            "name": "Iasonas Kokkinos"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "2e55ba6c97ce5eb55abd959909403fe8da7e9fe9",
+            "title": "Overcoming catastrophic forgetting in neural networks"
+        },
+        {
+            "paperId": "f6e0856b4a9199fa968ac00da612a9407b5cb85c",
+            "title": "Aggregated Residual Transformations for Deep Neural Networks"
+        },
+        {
+            "paperId": "d49979366cc8a5578e99a3a310500067899c5a87",
+            "title": "PixelNet: Towards a General Pixel-level Architecture"
+        },
+        {
+            "paperId": "8f3b80ddc0dd62e6c3369fabb1715990c29e9b9a",
+            "title": "Learning without Forgetting"
+        },
+        {
+            "paperId": "a4e9251d194b0ce95a9b7f35c7da07554228c689",
+            "title": "Attend Refine Repeat: Active Box Proposal Generation via In-Out Localization"
+        },
+        {
+            "paperId": "f61e9fd5a4878e1493f7a6b03774a61c17b7e9a4",
+            "title": "Memory-Efficient Backpropagation Through Time"
+        },
+        {
+            "paperId": "02c270487bd68afb0cc9224d2102118f42ee1d59",
+            "title": "Integrated perception with recurrent multi-task neural networks"
+        },
+        {
+            "paperId": "cab372bc3824780cce20d9dd1c22d4df39ed081a",
+            "title": "DeepLab: Semantic Image Segmentation with Deep Convolutional Nets, Atrous Convolution, and Fully Connected CRFs"
+        },
+        {
+            "paperId": "085bc4de5588497c2285809ac729643963fcc96c",
+            "title": "Noisy Label Recovery for Shadow Detection in Unfamiliar Domains"
+        },
+        {
+            "paperId": "b724c3f7ff395235b62537203ddeb710f0eb27bb",
+            "title": "R-FCN: Object Detection via Region-based Fully Convolutional Networks"
+        },
+        {
+            "paperId": "2dd46b83a1cf5c7c811a462728d9797c270c2cb4",
+            "title": "Recurrent Human Pose Estimation"
+        },
+        {
+            "paperId": "a2f4cae1acba37426372718fc30745055c8c2140",
+            "title": "DeeperCut: A Deeper, Stronger, and Faster Multi-person Pose Estimation Model"
+        },
+        {
+            "paperId": "752fc36f9813ebff3837cb12f790820d2f851c14",
+            "title": "Laplacian Reconstruction and Refinement for Semantic Segmentation"
+        },
+        {
+            "paperId": "942deb7d865b7782c03176d95e3a0d56cb71009e",
+            "title": "Training Deep Nets with Sublinear Memory Cost"
+        },
+        {
+            "paperId": "2976605dc3b73377696537291d45f09f1ab1fbf5",
+            "title": "Cross-Stitch Networks for Multi-task Learning"
+        },
+        {
+            "paperId": "218b4c5f1c14bd8fe57a849490f64a0832434a0c",
+            "title": "Marr Revisited: 2D-3D Alignment via Surface Normal Prediction"
+        },
+        {
+            "paperId": "630dd3eb1de19e1ef941a285cca64070896b507d",
+            "title": "Object Skeleton Extraction in Natural Images by Fusing Scale-Associated Deep Side Outputs"
+        },
+        {
+            "paperId": "47cbebf6c7139b79db2ecb80d69b8effdc4cc276",
+            "title": "LIFT: Learned Invariant Feature Transform"
+        },
+        {
+            "paperId": "c1baa0d7c0680e528285aebdac73649ec5dc823c",
+            "title": "Fast, Exact and Multi-scale Inference for Semantic Image Segmentation with Deep Gaussian CRFs"
+        },
+        {
+            "paperId": "3cea26512e9fd8bcb4081af44286d395004a5433",
+            "title": "Semantic Object Parsing with Graph LSTM"
+        },
+        {
+            "paperId": "848938e6199bad08f1db6f3239b260cfa901e95f",
+            "title": "Stacked Hourglass Networks for Human Pose Estimation"
+        },
+        {
+            "paperId": "8e63784bd5a24d5e3035e2a11753e65e6e56625d",
+            "title": "Learning Representations for Automatic Colorization"
+        },
+        {
+            "paperId": "207f85142c44efe3ef0bb13a12f3cc2973b68801",
+            "title": "Deep Contrast Learning for Salient Object Detection"
+        },
+        {
+            "paperId": "864e7db59f2ccfec1ee9f6eba79566ac7b0634df",
+            "title": "Convolutional Pose Machines"
+        },
+        {
+            "paperId": "1e9b1f6061ef779e3ad0819c2832a29168eaeb9d",
+            "title": "Instance-Aware Semantic Segmentation via Multi-task Network Cascades"
+        },
+        {
+            "paperId": "adc4e63b58cf4092420533fd877b8c29f8e2ec1d",
+            "title": "Inside-Outside Net: Detecting Objects in Context with Skip Pooling and Recurrent Neural Networks"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "4d7a9197433acbfb24ef0e9d0f33ed1699e4a5b0",
+            "title": "SSD: Single Shot MultiBox Detector"
+        },
+        {
+            "paperId": "3f12f001fdabf293e273e960c7756cb379c50b66",
+            "title": "Discriminative Learning of Deep Convolutional Feature Point Descriptors"
+        },
+        {
+            "paperId": "b0b93cea619af698c83434c46ba0b9e70c295285",
+            "title": "Direct Intrinsics: Learning Albedo-Shading Decomposition by Convolutional Regression"
+        },
+        {
+            "paperId": "86da68568ad3c22154f56f4f821ba7954109c11c",
+            "title": "Pushing the Boundaries of Boundary Detection using Deep Learning"
+        },
+        {
+            "paperId": "17113b0f647ce05b2e50d1d40c856370f94da7de",
+            "title": "Zoom Better to See Clearer: Human Part Segmentation with Auto Zoom Net"
+        },
+        {
+            "paperId": "bc74aaa383554e62ecb74078d10eecfc046aadfe",
+            "title": "Learning Dense Convolutional Embeddings for Semantic Segmentation"
+        },
+        {
+            "paperId": "9f48616039cb21903132528c0be5348b3019db50",
+            "title": "Attention to Scale: Scale-Aware Semantic Image Segmentation"
+        },
+        {
+            "paperId": "6b9d3e50e3de7f2a0c7ec6a0291e3265274c8e25",
+            "title": "Semantic Image Segmentation with Task-Specific Edge Detection Using CNNs and a Discriminatively Trained Domain Transform"
+        },
+        {
+            "paperId": "b1e3b92007e426ee466f63c4df730d3a7a63dc2e",
+            "title": "Deep Filter Banks for Texture Recognition, Description, and Segmentation"
+        },
+        {
+            "paperId": "6b8d0df903496699e52b4daee5d1815b7b784cf7",
+            "title": "Learning to Segment Object Candidates"
+        },
+        {
+            "paperId": "2173f1b8172c9b5bed4650c81b69988717bd6df6",
+            "title": "ParseNet: Looking Wider to See Better"
+        },
+        {
+            "paperId": "f22f25904f85c657e10fcc262653ebb6187193f9",
+            "title": "Flowing ConvNets for Human Pose Estimation in Videos"
+        },
+        {
+            "paperId": "cd126c7db89f1a66b17a6ef1152412876f4c0cbe",
+            "title": "Saliency detection by multi-context deep learning"
+        },
+        {
+            "paperId": "338e14e0c5e368efc79361adc5ba4957d1c17ef1",
+            "title": "Deep networks for saliency detection via local estimation and global search"
+        },
+        {
+            "paperId": "2cc46a96000db7b92493cc03126a987006641b28",
+            "title": "DeepContour: A deep convolutional feature learned by positive-sharing loss for contour detection"
+        },
+        {
+            "paperId": "0fcd11a9b10eefb8076c081578dd838f85acf0e9",
+            "title": "Saliency detection via Cellular Automata"
+        },
+        {
+            "paperId": "959f23f18aa7a9e9f6bc0ac5b2c02eafaea6e005",
+            "title": "MatchNet: Unifying feature and metric learning for patch-based matching"
+        },
+        {
+            "paperId": "91768b21a2f8a65f1dede87adb0cec2b621ce1f9",
+            "title": "Modeling local and global deformations in Deep Learning: Epitomic convolution, Multiple Instance Learning, and sliding window detection"
+        },
+        {
+            "paperId": "ec679c45e88fa25fec32c30bc7c1b7d7fd0facec",
+            "title": "Is object localization for free? - Weakly-supervised learning with convolutional neural networks"
+        },
+        {
+            "paperId": "424561d8585ff8ebce7d5d07de8dbf7aae5e7270",
+            "title": "Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks"
+        },
+        {
+            "paperId": "6364fdaa0a0eccd823a779fcdd489173f938e91a",
+            "title": "U-Net: Convolutional Networks for Biomedical Image Segmentation"
+        },
+        {
+            "paperId": "cf986bfe13a24d4739f95df3a856a3c6e4ed4c1c",
+            "title": "Learning Deconvolution Network for Semantic Segmentation"
+        },
+        {
+            "paperId": "119c7fbb13e231833e736d3b663f44aaf8603dbe",
+            "title": "PISA: Pixelwise Image Saliency by Aggregating Complementary Appearance Contrast Measures With Edge-Preserving Coherence"
+        },
+        {
+            "paperId": "4c6decd726d04b916d9a2cdd468c64a8a0fc2fdb",
+            "title": "Deep Learning for Semantic Part Segmentation with High-Level Guidance"
+        },
+        {
+            "paperId": "1ab237d7eb9dec8416947fce0b0cbf6c688a7229",
+            "title": "Contextual Action Recognition with R*CNN"
+        },
+        {
+            "paperId": "7ffdbc358b63378f07311e883dddacc9faeeaf4b",
+            "title": "Fast R-CNN"
+        },
+        {
+            "paperId": "51c4ecf4539f56c4b1035b890f743b3a91dd758b",
+            "title": "Situational object boundary detection"
+        },
+        {
+            "paperId": "8da55e685a7bef9c897788ab519a8710c695c419",
+            "title": "Holistically-Nested Edge Detection"
+        },
+        {
+            "paperId": "3d410ec1fe9dfc1965e238351ef5ef10f5403121",
+            "title": "High-for-Low and Low-for-High: Efficient Boundary Detection from Deep Object Features and Its Applications to High-Level Vision"
+        },
+        {
+            "paperId": "adcf9bdac7f05ba2bc003256a6794974aa571e0c",
+            "title": "Learning to compare image patches via convolutional neural networks"
+        },
+        {
+            "paperId": "4cef5476f9da50c1a8fefdcb7114863966f61d67",
+            "title": "Efficient Piecewise Training of Deep Structured Models for Semantic Segmentation"
+        },
+        {
+            "paperId": "709c509e97c1d6e2361ea30568690f63f8ac2bc6",
+            "title": "Pixel-wise Deep Learning for Contour Detection"
+        },
+        {
+            "paperId": "940f7bb5c1f69c61e57b33b4a266c2d578faa012",
+            "title": "Visual saliency based on multiscale deep features"
+        },
+        {
+            "paperId": "f084f0126d48a0793cf7e60830089b93ef09c844",
+            "title": "BoxSup: Exploiting Bounding Boxes to Supervise Convolutional Networks for Semantic Segmentation"
+        },
+        {
+            "paperId": "9c21b3ffdac5f2450b82dd6660ac69f72bb9018b",
+            "title": "Learning Depth from Single Monocular Images Using Deep Convolutional Neural Fields"
+        },
+        {
+            "paperId": "ca5c766b2d31a1f5ce8896a0a42b40a2bff9323a",
+            "title": "Conditional Random Fields as Recurrent Neural Networks"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "a030bdc1c201cd41dff7f30b81d9007008699254",
+            "title": "Weakly- and Semi-Supervised Learning of a DCNN for Semantic Image Segmentation"
+        },
+        {
+            "paperId": "66e9dc728b5041271bff0cd6ac0d7eadcd88442f",
+            "title": "Image Super-Resolution Using Deep Convolutional Networks"
+        },
+        {
+            "paperId": "39ad6c911f3351a3b390130a6e4265355b4d593b",
+            "title": "Semantic Image Segmentation with Deep Convolutional Nets and Fully Connected CRFs"
+        },
+        {
+            "paperId": "b9bc7f799ad6198ca085077710f31b77bd3ce77b",
+            "title": "Locally Scale-Invariant Convolutional Neural Networks"
+        },
+        {
+            "paperId": "60184c071f782cc97d28f8a78b14405b3b3f1e28",
+            "title": "Curriculum learning of multiple tasks"
+        },
+        {
+            "paperId": "17d7b57dcc5c50e3bf2dada669a7905a8f5b13ef",
+            "title": "DeepEdge: A multi-scale bifurcated deep network for top-down contour detection"
+        },
+        {
+            "paperId": "0959ef8fefe9e7041f508c2448fc026bc9e08393",
+            "title": "Material recognition in the wild with the Materials in Context Database"
+        },
+        {
+            "paperId": "3f25b3ddef8626ace7aa0865a1a9e3dad1f23fb6",
+            "title": "Deep convolutional neural fields for depth estimation from a single image"
+        },
+        {
+            "paperId": "428db42e86f6d51292e23fa57797e35cecd0e2ee",
+            "title": "Hypercolumns for object segmentation and fine-grained localization"
+        },
+        {
+            "paperId": "60a15269fb2e6d031d2dad4bb9c4225b18bbf1eb",
+            "title": "Designing deep networks for surface normal estimation"
+        },
+        {
+            "paperId": "cb3a2ddcf305e2ec0f6b94af13d1e631ed261bdc",
+            "title": "Predicting Depth, Surface Normals and Semantic Labels with a Common Multi-scale Convolutional Architecture"
+        },
+        {
+            "paperId": "6fc6803df5f9ae505cae5b2f178ade4062c768d0",
+            "title": "Fully convolutional networks for semantic segmentation"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "c221de2dfebb1a536382c8ad8ced3910b872e6d3",
+            "title": "Discriminatively Trained Dense Surface Normal Estimation"
+        },
+        {
+            "paperId": "f500b1a7df00f67c417673e0538d86abb8a333fa",
+            "title": "Facial Landmark Detection by Deep Multi-task Learning"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "342786659379879f58bf5c4ff43c84c83a6a7389",
+            "title": "Simultaneous Detection and Segmentation"
+        },
+        {
+            "paperId": "d6c29c6b00233b7b2e5c70d86d87fdd5a05a9674",
+            "title": "N4-Fields: Neural Network Nearest Neighbor Fields for Image Transforms"
+        },
+        {
+            "paperId": "616b246e332573af1f4859aa91440280774c183a",
+            "title": "The Pascal Visual Object Classes Challenge: A Retrospective"
+        },
+        {
+            "paperId": "3419ccd5c94d301ee08d716d037f0c3c6a62e78e",
+            "title": "The Role of Context for Object Detection and Semantic Segmentation in the Wild"
+        },
+        {
+            "paperId": "8b1ab1fba09c8620d2c695d2a13e8965128197b4",
+            "title": "Fast Edge Detection Using Structured Forests"
+        },
+        {
+            "paperId": "6bdb186ec4726e00a8051119636d4df3b94043b5",
+            "title": "Caffe: Convolutional Architecture for Fast Feature Embedding"
+        },
+        {
+            "paperId": "40e71c10edc2afc68d079546e8f4952cd52dc671",
+            "title": "The Secrets of Salient Object Segmentation"
+        },
+        {
+            "paperId": "caf202fd5833b1ef635923e79608e1a48d7539f9",
+            "title": "Detect What You Can: Detecting and Representing Objects Using Holistic Models and Body Parts"
+        },
+        {
+            "paperId": "71b7178df5d2b112d07e45038cb5637208659ff7",
+            "title": "Microsoft COCO: Common Objects in Context"
+        },
+        {
+            "paperId": "f0702ac2ff15ffc27eb30ac812ec14f3ec40d71e",
+            "title": "Visual Boundary Prediction: A Deep Neural Prediction Network and Quality Dissection"
+        },
+        {
+            "paperId": "1109b663453e78a59e4f66446d71720ac58cec25",
+            "title": "OverFeat: Integrated Recognition, Localization and Detection using Convolutional Networks"
+        },
+        {
+            "paperId": "d891dc72cbd40ffaeefdc79f2e7afe1e530a23ad",
+            "title": "Intriguing properties of neural networks"
+        },
+        {
+            "paperId": "2a002ce457f7ab3088fbd2691734f1ce79f750c4",
+            "title": "DeepPose: Human Pose Estimation via Deep Neural Networks"
+        },
+        {
+            "paperId": "20bdfc476336b3bda3c2b8f35a092a05a59eab03",
+            "title": "Salient Region Detection by UFO: Uniqueness, Focusness and Objectness"
+        },
+        {
+            "paperId": "2f4df08d9072fc2ac181b7fced6a245315ce05c8",
+            "title": "Rich Feature Hierarchies for Accurate Object Detection and Semantic Segmentation"
+        },
+        {
+            "paperId": "237a04dd8291cbdb59b6dc4b53e689af743fe2a3",
+            "title": "Learning Hierarchical Features for Scene Labeling"
+        },
+        {
+            "paperId": "b493e970256a99ec69e518f63364d380d08cd1d2",
+            "title": "Discriminatively Trained Sparse Code Gradients for Contour Detection"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "f70966af44bc36b50d7f10d957f829732d8587cc",
+            "title": "Learning-Based Symmetry Detection in Natural Images"
+        },
+        {
+            "paperId": "c1994ba5946456fc70948c549daf62363f13fa2d",
+            "title": "Indoor Segmentation and Support Inference from RGBD Images"
+        },
+        {
+            "paperId": "7abac1f397a76bc06d7508ab4108462786395c0f",
+            "title": "Saliency filters: Contrast based filtering for salient region detection"
+        },
+        {
+            "paperId": "c81c20109c809cfc47565a9477c04ee005d424bf",
+            "title": "Efficient Inference in Fully Connected CRFs with Gaussian Edge Potentials"
+        },
+        {
+            "paperId": "18ccd8bd64b50c1b6a83a71792fd808da7076bc9",
+            "title": "Object detection and segmentation from joint embedding of parts and pixels"
+        },
+        {
+            "paperId": "afcb15a67c8a68d01b3c9965d182e48c88502c38",
+            "title": "Describing people: A poselet-based approach to attribute classification"
+        },
+        {
+            "paperId": "82fae97673a353271b1d4c001afda1af6ef6dc23",
+            "title": "Semantic contours from inverse detectors"
+        },
+        {
+            "paperId": "d2d35fc47bfcd9bbcdf1905b23be6e5dcee05e9c",
+            "title": "Learning with Whom to Share in Multi-task Feature Learning"
+        },
+        {
+            "paperId": "7670e3c493126c8b2f211ddfc45f89de905f1d38",
+            "title": "Global contrast based salient region detection"
+        },
+        {
+            "paperId": "0e5a262bf59b68ba8a7a1103d16fa33a9f5ffc28",
+            "title": "Contour Detection and Hierarchical Image Segmentation"
+        },
+        {
+            "paperId": "98f4746f5bb95e4abcf5778b2c8ae2cf849ee085",
+            "title": "A notion of task relatedness yielding provable multiple-task learning guarantees"
+        },
+        {
+            "paperId": "efb97398a378bdb1d3cf5061802fcf3613477497",
+            "title": "An expectation maximization approach to the synergy between image segmentation and object categorization"
+        },
+        {
+            "paperId": "72a2c172cf49edb4a33708e05f53938f4d475432",
+            "title": "OBJ CUT"
+        },
+        {
+            "paperId": "cca9200d9da958b7f90eab901b2f30c04f1e0e9c",
+            "title": "Image Parsing: Unifying Segmentation, Detection, and Recognition"
+        },
+        {
+            "paperId": "9a1ed876196ec9733acb1daa6d65e35ff0414291",
+            "title": "A database of human segmented natural images and its application to evaluating segmentation algorithms and measuring ecological statistics"
+        },
+        {
+            "paperId": "161ffb54a3fdf0715b198bb57bd22f910242eb49",
+            "title": "Multitask Learning"
+        },
+        {
+            "paperId": "4f0ab1dcdc9f405ca90e36a35ea335196464d387",
+            "title": "Global training of document processing systems using graph transformer networks"
+        },
+        {
+            "paperId": "6c8f0f28bcbc358726035cfd243239fd32eb8cba",
+            "title": "Lifelong robot learning"
+        },
+        {
+            "paperId": "847d6ece37d22430a0d9e061b5dc1d1b8c679055",
+            "title": "Integrated Segmentation and Recognition of Hand-Printed Numerals"
+        },
+        {
+            "paperId": "04eed24e26d9e6aaf2ca434cad20facd5feb83d0",
+            "title": "HyperFace: A Deep Multi-Task Learning Framework for Face Detection, Landmark Localization, Pose Estimation, and Gender Recognition"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "fd4b33ba26cd28dc8c3869f5ddbd0a87dbe625e0",
+            "title": "Neuronal Architectures for Pattern-theoretic Problems"
+        },
+        {
+            "paperId": "a26f893c224ed6e3df1f37479de0e774a4cae237",
+            "title": "Scale-Space Filtering"
+        }
+    ]
+}

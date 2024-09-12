@@ -1,0 +1,190 @@
+{
+    "paperId": "21633a4ef076e21ec116856a003efb1bb033a470",
+    "externalIds": {
+        "DBLP": "journals/corr/TsengSLL16",
+        "MAG": "2951152440",
+        "ArXiv": "1608.06378",
+        "DOI": "10.21437/Interspeech.2016-876",
+        "CorpusId": 7488912
+    },
+    "title": "Towards Machine Comprehension of Spoken Content: Initial TOEFL Listening Comprehension Test by Machine",
+    "abstract": "Multimedia or spoken content presents more attractive information than plain text content, but it's more difficult to display on a screen and be selected by a user. As a result, accessing large collections of the former is much more difficult and time-consuming than the latter for humans. It's highly attractive to develop a machine which can automatically understand spoken content and summarize the key information for humans to browse over. In this endeavor, we propose a new task of machine comprehension of spoken content. We define the initial goal as the listening comprehension test of TOEFL, a challenging academic English examination for English learners whose native language is not English. We further propose an Attention-based Multi-hop Recurrent Neural Network (AMRNN) architecture for this task, achieving encouraging results in the initial tests. Initial results also have shown that word-level attention is probably more robust than sentence-level attention for this task with ASR errors.",
+    "venue": "Interspeech",
+    "year": 2016,
+    "referenceCount": 36,
+    "citationCount": 55,
+    "influentialCitationCount": 4,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1608.06378",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work defines the initial goal as the listening comprehension test of TOEFL, a challenging academic English examination for English learners whose native language is not English, and proposes an Attention-based Multi-hop Recurrent Neural Network (AMRNN) architecture for this task, achieving encouraging results in the initial tests."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "33870107",
+            "name": "Bo-Hsiang Tseng"
+        },
+        {
+            "authorId": "1988475",
+            "name": "Sheng-syun Shen"
+        },
+        {
+            "authorId": "1706104",
+            "name": "Hung-yi Lee"
+        },
+        {
+            "authorId": "145535692",
+            "name": "Lin-Shan Lee"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "1bdd75a37f7c601f01e9d31c2551fa9f2067ffd7",
+            "title": "MovieQA: Understanding Stories in Movies through Question-Answering"
+        },
+        {
+            "paperId": "1ac30af5522c7a50ec4d1ee43fd2bd8652a9bd52",
+            "title": "A Neural Attention Model for Abstractive Sentence Summarization"
+        },
+        {
+            "paperId": "452059171226626718eb677358836328f884298e",
+            "title": "Ask Me Anything: Dynamic Memory Networks for Natural Language Processing"
+        },
+        {
+            "paperId": "d1505c6123c102e53eb19dff312cb25cea840b72",
+            "title": "Teaching Machines to Read and Comprehend"
+        },
+        {
+            "paperId": "6e565308c8081e807709cb4a917443b737e6cdb4",
+            "title": "Large-scale Simple Question Answering with Memory Networks"
+        },
+        {
+            "paperId": "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e",
+            "title": "End-To-End Memory Networks"
+        },
+        {
+            "paperId": "ac3ee98020251797c2b401e1389461df88e52e62",
+            "title": "Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling"
+        },
+        {
+            "paperId": "71ae756c75ac89e2d731c9c79649562b5768ff39",
+            "title": "Memory Networks"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "921da70f380e9f9082e5594b128369cfd0fdf120",
+            "title": "A Neural Network for Factoid Question Answering over Paragraphs"
+        },
+        {
+            "paperId": "1eb09fecd75eb27825dce4f964b97f4f5cc399d7",
+            "title": "On the Properties of Neural Machine Translation: Encoder\u2013Decoder Approaches"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "f86ec155cce6259e5230aaad3b762343757feb1d",
+            "title": "Open question answering over curated and extracted knowledge bases"
+        },
+        {
+            "paperId": "33261d252218007147a71e40f8367ed152fa2fe0",
+            "title": "Question Answering with Subgraph Embeddings"
+        },
+        {
+            "paperId": "27725a2d2a8cee9bf9fffc6c2167017103aba0fa",
+            "title": "A Convolutional Neural Network for Modelling Sentences"
+        },
+        {
+            "paperId": "4a380cdefe623bbd69bac550dddfd4adab4b55ae",
+            "title": "A Factoid Question Answering System Using Answer Pattern Matching"
+        },
+        {
+            "paperId": "1a3c74c7b11ad5635570932577cdde2a3f7a6a5c",
+            "title": "Improving deep neural networks for LVCSR using rectified linear units and dropout"
+        },
+        {
+            "paperId": "eb9243a3b98a819539ad57b7b4f05b969510d075",
+            "title": "New types of deep neural network learning for speech recognition and related applications: an overview"
+        },
+        {
+            "paperId": "4177ec52d1b80ed57f2e72b0f9a42365f1a8598d",
+            "title": "Speech recognition with deep recurrent neural networks"
+        },
+        {
+            "paperId": "b372163f622e79581614fdd22bc5b088fbab3b3e",
+            "title": "Sibyl, a factoid question-answering system for spoken documents"
+        },
+        {
+            "paperId": "395674ccb69dbefd899d05a3b2f6fb318f46b0d1",
+            "title": "Factoid question answering for spoken documents"
+        },
+        {
+            "paperId": "bc1022b031dc6c7019696492e8116598097a8c12",
+            "title": "Natural Language Processing (Almost) from Scratch"
+        },
+        {
+            "paperId": "128a34c82fd12c1609eec917fa1b04acdd726d4f",
+            "title": "Overview of QAST 2008"
+        },
+        {
+            "paperId": "2589215fa519956ab8082c21609bfbe9ea33d3da",
+            "title": "Advances in Multilingual and Multimodal Information Retrieval, 8th Workshop of the Cross-Language Evaluation Forum, CLEF 2007, Budapest, Hungary, September 19-21, 2007, Revised Selected Papers"
+        },
+        {
+            "paperId": "5356a4b3e523d14ede8fd5469114be9b9e4d4d1b",
+            "title": "Overview of the CLEF 2004 Multilingual Question Answering Track"
+        },
+        {
+            "paperId": "7d060fc04306580d8693e1335caf4c37ad83357b",
+            "title": "Sphinx-4: a flexible open source framework for speech recognition"
+        },
+        {
+            "paperId": "ca5d01967f2c68e5bb9fcf1196f080e140ee0b28",
+            "title": "Library"
+        },
+        {
+            "paperId": "21d141bc7ae0046f4015321e7669f6259339fa17",
+            "title": "Maintaining Stream Statistics over Sliding Windows"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "3aa372484e7480eefa061277cd53d49172738915",
+            "title": "Learning Knowledge Graphs for Question Answering through Conversational Dialog"
+        },
+        {
+            "paperId": "965dc768fa406fae39e4924929654d368ccc32ce",
+            "title": "Spoken question answering using tree-structured conditional random fields and two-layer random walk"
+        },
+        {
+            "paperId": null,
+            "title": "\u201cLecture 6.5-rmsprop: Divide the gradient by a running average of its recent magnitude,\u201d"
+        },
+        {
+            "paperId": "bc93f6c910f95450b05d1b00a7e0c766e8a5b2f9",
+            "title": "Multilingual Information Access Evaluation I. Text Retrieval Experiments, 10th Workshop of the Cross-Language Evaluation Forum, CLEF 2009, Corfu, Greece, September 30 - October 2, 2009, Revised Selected Papers"
+        },
+        {
+            "paperId": "aa68613428f17cd9e81b775b7a43ad4aa4240ff6",
+            "title": "Multilingual Information Access Evaluation I - Text Retrieval Experiments, 10th Workshop of the Cross-Language Evaluation Forum, CLEF 2009, Corfu, Greece, September 30 - October 2, 2009, Revised Selec"
+        },
+        {
+            "paperId": "252d12d84c9298d6596eb554d7d9debf5ebfb650",
+            "title": "Spoken Question Answering"
+        },
+        {
+            "paperId": null,
+            "title": "Available: https://github.com/jiaaro"
+        }
+    ]
+}

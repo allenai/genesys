@@ -1,0 +1,214 @@
+{
+    "paperId": "8490234d79b47e459824dcf87c1e288211a3c964",
+    "externalIds": {
+        "DBLP": "journals/tois/JarvelinK02",
+        "MAG": "2069870183",
+        "DOI": "10.1145/582415.582418",
+        "CorpusId": 1981391
+    },
+    "title": "Cumulated gain-based evaluation of IR techniques",
+    "abstract": "Modern large retrieval environments tend to overwhelm their users by their large output. Since all documents are not of equal relevance to their users, highly relevant documents should be identified and ranked first for presentation. In order to develop IR techniques in this direction, it is necessary to develop evaluation approaches and methods that credit IR methods for their ability to retrieve highly relevant documents. This can be done by extending traditional evaluation methods, that is, recall and precision based on binary relevance judgments, to graded relevance judgments. Alternatively, novel measures based on graded relevance judgments may be developed. This article proposes several novel measures that compute the cumulative gain the user obtains by examining the retrieval result up to a given ranked position. The first one accumulates the relevance scores of retrieved documents along the ranked result list. The second one is similar but applies a discount factor to the relevance scores in order to devaluate late-retrieved documents. The third one computes the relative-to-the-ideal performance of IR techniques, based on the cumulative gain they are able to yield. These novel measures are defined and discussed and their use is demonstrated in a case study using TREC data: sample system run results for 20 queries in TREC-7. As a relevance base we used novel graded relevance judgments on a four-point scale. The test results indicate that the proposed measures credit IR methods for their ability to retrieve highly relevant documents and allow testing of statistical significance of effectiveness differences. The graphs based on the measures also provide insight into the performance IR techniques and allow interpretation, for example, from the user point of view.",
+    "venue": "TOIS",
+    "year": 2002,
+    "referenceCount": 45,
+    "citationCount": 4661,
+    "influentialCitationCount": 690,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This article proposes several novel measures that compute the cumulative gain the user obtains by examining the retrieval result up to a given ranked position, and test results indicate that the proposed measures credit IR methods for their ability to retrieve highly relevant documents and allow testing of statistical significance of effectiveness differences."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2768186",
+            "name": "K. J\u00e4rvelin"
+        },
+        {
+            "authorId": "2732839",
+            "name": "Jaana Kek\u00e4l\u00e4inen"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "ab294caba43b5c8c5a7aebe97f62c0f8c842c99c",
+            "title": "Using graded relevance assessments in IR evaluation"
+        },
+        {
+            "paperId": "ec731044a32cf51de0ddea4a4791230188e760c3",
+            "title": "Liberal relevance criteria of TREC -: counting on negligible documents?"
+        },
+        {
+            "paperId": "7c081257f9275e7d4c3c0a96396c660474018241",
+            "title": "Extensions to the STAIRS Study\u2014Empirical Evidence for the Hypothesised Ineffectiveness of Boolean Queries in Large Full-Text Databases"
+        },
+        {
+            "paperId": "170fe340456f33ef288931162932a229f9114b0b",
+            "title": "Evaluation by highly relevant documents"
+        },
+        {
+            "paperId": "401738df30766503494a47e87be75d9aa782c154",
+            "title": "Generic summaries for indexing in information retrieval"
+        },
+        {
+            "paperId": "7fc5fb4cfad94ccf56b2be4875e5e023320b1001",
+            "title": "Changes in relevance criteria and problem stages in task performance"
+        },
+        {
+            "paperId": "f3c1c43a17bad0d0892f170a91ce247224c3517c",
+            "title": "Experimental components for the evaluation of interactive information retrieval systems"
+        },
+        {
+            "paperId": "1dd71db7e640f16dc6c8035dbb49f8bb34794aa7",
+            "title": "Towards the Identification of the Optimal Number of Relevance Categories"
+        },
+        {
+            "paperId": "0e2d26ff37d117ee0c936b6945055452a10c3c94",
+            "title": "Text retrieval and filtering: analytic models of performance"
+        },
+        {
+            "paperId": "0adbe919863fe875d22d518a340b6af31f689518",
+            "title": "From Highly Relevant to Not Relevant: Examining Different Regions of Relevance"
+        },
+        {
+            "paperId": "3efdabf6aedb4aa3133032f44db864cfc60ff6e6",
+            "title": "Measures of relative relevance and ranked half-life: performance indicators for interactive IR"
+        },
+        {
+            "paperId": "0a765fce1179a06ebfcf03defe8b4e33c21b2000",
+            "title": "The impact of query structure and query expansion on retrieval performance"
+        },
+        {
+            "paperId": "150a31a1d38d90acefb560c2a42efed1ae67f7f7",
+            "title": "How reliable are the results of large-scale information retrieval experiments?"
+        },
+        {
+            "paperId": "d451142548236b93fcdf63fdaf49f036582b69d1",
+            "title": "TREC-7 Interactive Track Report"
+        },
+        {
+            "paperId": "88c278613347d6a525deb9e081db2896c5f3f5e5",
+            "title": "A study of information seeking and retrieving. I. Background and methodology"
+        },
+        {
+            "paperId": "7d839767a8c2dfd741b345410d51ab8b91c58ff8",
+            "title": "An Evaluation of Interactive Boolean and Natural Language Searching with an Online Medical Textbook"
+        },
+        {
+            "paperId": "c6525eded7f93c6890563ea7bf870b513a67e18c",
+            "title": "Using statistical testing in the evaluation of retrieval experiments"
+        },
+        {
+            "paperId": "88dc7d40deb63a824e504591cf86f65073012451",
+            "title": "Integration of user profiles: models and experiments in information retrieval"
+        },
+        {
+            "paperId": "f0dea29ac3e2c7f8937b3f65cc51431b99b10943",
+            "title": "An evaluation of retrieval effectiveness for a full-text document-retrieval system"
+        },
+        {
+            "paperId": "49af3e80343eb80c61e727ae0c27541628c7c5e2",
+            "title": "Introduction to Modern Information Retrieval"
+        },
+        {
+            "paperId": "96ba39d727b456b75fbc8818d48cc62f8bc21bee",
+            "title": "Practical Nonparametric Statistics (2nd ed)."
+        },
+        {
+            "paperId": "7578715490a00d59573b86ecd4e959425ca83e1b",
+            "title": "Practical Nonparametric Statistics (2nd ed.)"
+        },
+        {
+            "paperId": "a8121d961bfb0ec8857f6487abc3e64424f052ec",
+            "title": "Ranking in Principle"
+        },
+        {
+            "paperId": "7ff10b967d18a3fdf3078fda24eafe931595a08b",
+            "title": "Practical Nonparametric Statistics"
+        },
+        {
+            "paperId": "9075ee966bab9bd806e044a2391690b2fb01b42c",
+            "title": "Practical Nonparametric Statistics"
+        },
+        {
+            "paperId": "1626726c7f77fb41c6eadf4ea38fb98faf67cd14",
+            "title": "Measures for the comparison of information retrieval systems"
+        },
+        {
+            "paperId": "e043f3ea93b2dc63c42bfd5a1b3844be87c564d1",
+            "title": "The Co-Effects of Query Structure and Expansion on Retrieval Performance in Probabilistic Text Retrieval"
+        },
+        {
+            "paperId": "cf49f03d9625d9f03fb937907ccfa277e24d926e",
+            "title": "EVALUATING INFORMATION RETRIEVAL SYSTEMS UNDER THE CHALLENGES OF INTERACTION AND MULTIDIMENSIONAL DYNAMIC RELEVANCE"
+        },
+        {
+            "paperId": null,
+            "title": "Development in Information Retrieval , W. B. Croft, A. Moffat, C. J. Van J. Zobel, Eds., ACM, New York, 307\u2013314. Received January 2002; revised July 2002; accepted September 2002"
+        },
+        {
+            "paperId": null,
+            "title": "ACM Transactions on Information Systems"
+        },
+        {
+            "paperId": null,
+            "title": "Received January"
+        },
+        {
+            "paperId": null,
+            "title": "Data\u2014English relevance judgements [On-line]. Available at http"
+        },
+        {
+            "paperId": "4cbaee75ed9b66deeae71ad4579bd29a90fca506",
+            "title": "A Method for Measuring Wide Range Performance of Boolean Queries in Full-Text Databases"
+        },
+        {
+            "paperId": "4db2847d5d7bd856f32247d3f42d4c3f9ee4e7fc",
+            "title": "Evaluation of interactive information retrieval systems"
+        },
+        {
+            "paperId": "3464374899e799cbd516d00f75e425efd495150e",
+            "title": "IR evaluation methods for retrieving highly relevant documents"
+        },
+        {
+            "paperId": "3b76039ca74ba46ebb1b3ad8b71243a898121a31",
+            "title": "Overview of the seventh text retrieval conference (trec-7) [on-line]"
+        },
+        {
+            "paperId": "a07c4d5acf87e012a1a40c82d48d056b43b4aabc",
+            "title": "Overview of the Seventh Text REtrieval Conference"
+        },
+        {
+            "paperId": "2e3460a72d41f14d1ca5e8a8fa46919946f14e38",
+            "title": "A study of information seeking and retrieving. III. Searchers, searches, and overlap"
+        },
+        {
+            "paperId": "91f7579e660c139cb971f37f87c2dc0d3c86b9c6",
+            "title": "AN EVALUATION OF RETRIEVAL EFFECTIVENESS FOR A FULL-TEXT DOCulwvT-l?ETl?lEviiL SYSTEM"
+        },
+        {
+            "paperId": "5063b757b4a620761018d63fd3e1988edc383406",
+            "title": "Automatic indexing"
+        },
+        {
+            "paperId": "29cbbe75c31b5a0a253791014ab1dcc6c4da5f1b",
+            "title": "Automatic indexing"
+        },
+        {
+            "paperId": "223a80e2f3fe01e196d32e8edfe447a949a4bed6",
+            "title": "Expected search length: A single measure of retrieval effectiveness based on the weak ordering action of retrieval systems"
+        },
+        {
+            "paperId": "16fd08557b4aa638e5b0f5643f6531e94b7b5012",
+            "title": "Information--storage and retrieval."
+        },
+        {
+            "paperId": null,
+            "title": "Document retrieval systems\u2014Optimization and evaluation. PhD Dissertation"
+        },
+        {
+            "paperId": null,
+            "title": "The average actual CG and DCG vectors were compared to the ideal average vectors"
+        }
+    ]
+}

@@ -1,0 +1,101 @@
+{
+    "paperId": "28e245ce0e06f398dd26a9d6ab6bb04ef4c016e6",
+    "externalIds": {
+        "MAG": "2132827946",
+        "DBLP": "conf/nips/BleiGJT03",
+        "CorpusId": 1269561
+    },
+    "title": "Hierarchical Topic Models and the Nested Chinese Restaurant Process",
+    "abstract": "We address the problem of learning topic hierarchies from data. The model selection problem in this domain is daunting\u2014which of the large collection of possible trees to use? We take a Bayesian approach, generating an appropriate prior via a distribution on partitions that we refer to as the nested Chinese restaurant process. This nonparametric prior allows arbitrarily large branching factors and readily accommodates growing data collections. We build a hierarchical topic model by combining this prior with a likelihood that is based on a hierarchical variant of latent Dirichlet allocation. We illustrate our approach on simulated data and with an application to the modeling of NIPS abstracts.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2003,
+    "referenceCount": 15,
+    "citationCount": 1175,
+    "influentialCitationCount": 109,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A Bayesian approach is taken to generate an appropriate prior via a distribution on partitions that allows arbitrarily large branching factors and readily accommodates growing data collections."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1796335",
+            "name": "D. Blei"
+        },
+        {
+            "authorId": "1799860",
+            "name": "T. Griffiths"
+        },
+        {
+            "authorId": "1694621",
+            "name": "Michael I. Jordan"
+        },
+        {
+            "authorId": "1763295",
+            "name": "J. Tenenbaum"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "c74639a3fc648e19d46b5f52cd40ba8bec936184",
+            "title": "Generalized weighted Chinese restaurant processes for species sampling mixture models"
+        },
+        {
+            "paperId": "29878cba122f390a390e27832cd6f3995f85403b",
+            "title": "Probabilistic Abstraction Hierarchies"
+        },
+        {
+            "paperId": "91e62d27c08db29cf011a0326a61509e574cf772",
+            "title": "Markov Chain Sampling Methods for Dirichlet Process Mixture Models"
+        },
+        {
+            "paperId": "b473efe290f1de9ba0207dd731425fa1cf685be1",
+            "title": "The Cluster-Abstraction Model: Unsupervised Learning of Topic Hierarchies from Text Data"
+        },
+        {
+            "paperId": "01419887a0ff7bed00d57e5aea88d44320287408",
+            "title": "Computing Bayes Factors by Combining Simulation and Asymptotic Approximations"
+        },
+        {
+            "paperId": "e0999dc17b35c0d893974f03d98293f71f27698b",
+            "title": "Probabilistic Independence Networks for Hidden Markov Probability Models"
+        },
+        {
+            "paperId": "943308bbc933a01ded9eb185a062b756e03d4fa6",
+            "title": "A Bayesian Analysis of Some Nonparametric Problems"
+        },
+        {
+            "paperId": null,
+            "title": "Combinatorial Stochastic Processes. Notes for St. Flour Summer School"
+        },
+        {
+            "paperId": null,
+            "title": "A probabilisticapproachto semanticrepresentation"
+        },
+        {
+            "paperId": null,
+            "title": "NIPS abstracts, 1987\u20131999. http://www.cs.toronto.edu/ roweis/data.html"
+        },
+        {
+            "paperId": "1930d092f959a2f9abe5a64ff473ddb95cde8c55",
+            "title": "Bayes factors"
+        },
+        {
+            "paperId": "7c32d22cb9538920b31c70f8d014ea16cc7d2c4b",
+            "title": "in Advances in Neural Information Processing"
+        },
+        {
+            "paperId": "e858eefcccbcb0c6980a0a1c963ac905400139a1",
+            "title": "Exchangeability and related topics"
+        },
+        {
+            "paperId": "e21aebdef3c5549b49687c794bace5ad60ba30a3",
+            "title": "\u00c9cole d'\u00e9t\u00e9 de probabilit\u00e9s de Saint-Flour XIII - 1983"
+        },
+        {
+            "paperId": null,
+            "title": "Exchangeabilityandrelatedtopics. In \u00c9coled\u2019\u00e9t\u0301e deprobabilit\u00e9sdeSaint-Flour"
+        }
+    ]
+}

@@ -1,0 +1,254 @@
+{
+    "paperId": "03eb382e04cca8cca743f7799070869954f1402a",
+    "externalIds": {
+        "DBLP": "journals/corr/JohnsonHMFZG16",
+        "ArXiv": "1612.06890",
+        "MAG": "2953212746",
+        "DOI": "10.1109/CVPR.2017.215",
+        "CorpusId": 15458100
+    },
+    "title": "CLEVR: A Diagnostic Dataset for Compositional Language and Elementary Visual Reasoning",
+    "abstract": "When building artificial intelligence systems that can reason and answer questions about visual data, we need diagnostic tests to analyze our progress and discover short-comings. Existing benchmarks for visual question answering can help, but have strong biases that models can exploit to correctly answer questions without reasoning. They also conflate multiple sources of error, making it hard to pinpoint model weaknesses. We present a diagnostic dataset that tests a range of visual reasoning abilities. It contains minimal biases and has detailed annotations describing the kind of reasoning each question requires. We use this dataset to analyze a variety of modern visual reasoning systems, providing novel insights into their abilities and limitations.",
+    "venue": "Computer Vision and Pattern Recognition",
+    "year": 2016,
+    "referenceCount": 50,
+    "citationCount": 2056,
+    "influentialCitationCount": 392,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1612.06890",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents a diagnostic dataset that tests a range of visual reasoning abilities and uses this dataset to analyze a variety of modern visual reasoning systems, providing novel insights into their abilities and limitations."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2115231104",
+            "name": "Justin Johnson"
+        },
+        {
+            "authorId": "73710317",
+            "name": "B. Hariharan"
+        },
+        {
+            "authorId": "1803520",
+            "name": "L. Maaten"
+        },
+        {
+            "authorId": "48004138",
+            "name": "Li Fei-Fei"
+        },
+        {
+            "authorId": "1699161",
+            "name": "C. L. Zitnick"
+        },
+        {
+            "authorId": "2983898",
+            "name": "Ross B. Girshick"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "784ee73d5363c711118f784428d1ab89f019daa5",
+            "title": "Hybrid computing using a neural network with dynamic external memory"
+        },
+        {
+            "paperId": "0eb859d4184476bd80d5f2090b3401c702f66135",
+            "title": "Question Relevance in VQA: Identifying Non-Visual And False-Premise Questions"
+        },
+        {
+            "paperId": "12f7de07f9b00315418e381b2bd797d21f12b419",
+            "title": "Multimodal Compact Bilinear Pooling for Visual Question Answering and Visual Grounding"
+        },
+        {
+            "paperId": "8e759195eb4b4f0f480a8a2cf1c629bfd881d4e5",
+            "title": "Analyzing the Behavior of Visual Question Answering Models"
+        },
+        {
+            "paperId": "fb9d253258d6b3beceb9d6cd7bba6e0a29ab875b",
+            "title": "Hierarchical Question-Image Co-Attention for Visual Question Answering"
+        },
+        {
+            "paperId": "55a7286f014cc6b51a3f50b1e6bc8acc8166f231",
+            "title": "Image Captioning and Visual Question Answering Based on Attributes and Their Related External Knowledge"
+        },
+        {
+            "paperId": "f96898d15a1bf1fa8925b1280d0e07a7a8e72194",
+            "title": "Dynamic Memory Networks for Visual and Textual Question Answering"
+        },
+        {
+            "paperId": "afcf4dbd2ef300e5c4b35043d4fbe516807cdf7d",
+            "title": "Visual Genome: Connecting Language and Vision Using Crowdsourced Dense Image Annotations"
+        },
+        {
+            "paperId": "98ea4abc9bf0e30eb020db2075c9c8a039a848a3",
+            "title": "Learning to Compose Neural Networks for Question Answering"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "1bdd75a37f7c601f01e9d31c2551fa9f2067ffd7",
+            "title": "MovieQA: Understanding Stories in Movies through Question-Answering"
+        },
+        {
+            "paperId": "267fb4ac632449dbe84f7acf17c8c7527cb25b0d",
+            "title": "Simple Baseline for Visual Question Answering"
+        },
+        {
+            "paperId": "175e9bb50cc062c6c1742a5d90c8dfe31d2e4e22",
+            "title": "Where to Look: Focus Regions for Visual Question Answering"
+        },
+        {
+            "paperId": "327dc2fd203a7049f3409479ab68e5e2a83cd352",
+            "title": "Compact Bilinear Pooling"
+        },
+        {
+            "paperId": "1cf6bc0866226c1f8e282463adc8b75d92fba9bb",
+            "title": "Ask, Attend and Answer: Exploring Question-Guided Spatial Attention for Visual Question Answering"
+        },
+        {
+            "paperId": "5fa973b8d284145bf0ced9acf2913a74674260f6",
+            "title": "Yin and Yang: Balancing and Answering Binary Visual Questions"
+        },
+        {
+            "paperId": "def584565d05d6a8ba94de6621adab9e301d375d",
+            "title": "Visual7W: Grounded Question Answering in Images"
+        },
+        {
+            "paperId": "21c99706bb26e9012bfb4d8d48009a3d45af59b2",
+            "title": "Neural Module Networks"
+        },
+        {
+            "paperId": "2c1890864c1c2b750f48316dc8b650ba4772adc5",
+            "title": "Stacked Attention Networks for Image Question Answering"
+        },
+        {
+            "paperId": "85ae705ef4353c6854f5be4a4664269d6317c66b",
+            "title": "Image retrieval using scene graphs"
+        },
+        {
+            "paperId": "98bd5dd1740f585bf25320ba504e2c1ae57f2e5f",
+            "title": "Learning to Answer Questions from Image Using Convolutional Neural Network"
+        },
+        {
+            "paperId": "a58a582b95a07932cb248f1b739e4ad739ead6b9",
+            "title": "Visual Madlibs: Fill in the blank Image Generation and Question Answering"
+        },
+        {
+            "paperId": "2fcd5cff2b4743ea640c4af68bf4143f4a2cccb1",
+            "title": "Are You Talking to a Machine? Dataset and Methods for Multilingual Image Question"
+        },
+        {
+            "paperId": "62a956d7600b10ca455076cd56e604dfd106072a",
+            "title": "Exploring Models and Data for Image Question Answering"
+        },
+        {
+            "paperId": "bd7bd1d2945a58cdcc1797ba9698b8810fe68f60",
+            "title": "Ask Your Neurons: A Neural-Based Approach to Answering Questions about Images"
+        },
+        {
+            "paperId": "97ad70a9fa3f99adf18030e5e38ebe3d90daa2db",
+            "title": "VQA: Visual Question Answering"
+        },
+        {
+            "paperId": "d38e8631bba0720becdaf7b89f79d9f9dca45d82",
+            "title": "Inferring Algorithmic Patterns with Stack-Augmented Recurrent Nets"
+        },
+        {
+            "paperId": "abb33d75dc297993fcc3fb75e0f4498f413eb4f6",
+            "title": "Towards AI-Complete Question Answering: A Set of Prerequisite Toy Tasks"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "3d29e1c4f1c2b079cf6b5dd458fa6cee246955f9",
+            "title": "Towards a Visual Turing Challenge"
+        },
+        {
+            "paperId": "71ae756c75ac89e2d731c9c79649562b5768ff39",
+            "title": "Memory Networks"
+        },
+        {
+            "paperId": "92c141447f51b6732242376164ff961e464731c8",
+            "title": "ReferItGame: Referring to Objects in Photographs of Natural Scenes"
+        },
+        {
+            "paperId": "ac64fb7e6d2ddf236332ec9f371fe85d308c114d",
+            "title": "A Multi-World Approach to Question Answering about Real-World Scenes based on Uncertain Input"
+        },
+        {
+            "paperId": "15b18f9dc8cc65a638f15ddcef17a79a07b2faac",
+            "title": "A Simple Method to Determine if a Music Information Retrieval System is a \u201cHorse\u201d"
+        },
+        {
+            "paperId": "71b7178df5d2b112d07e45038cb5637208659ff7",
+            "title": "Microsoft COCO: Common Objects in Context"
+        },
+        {
+            "paperId": "44040913380206991b1991daf1192942e038fe31",
+            "title": "From image descriptions to visual denotations: New similarity metrics for semantic inference over event descriptions"
+        },
+        {
+            "paperId": "051830b0ea58d1568f19ec3297e301d9789c9a76",
+            "title": "Bringing Semantics into Focus Using Visual Abstraction"
+        },
+        {
+            "paperId": "f6b51c8753a871dc94ff32152c00c01e94f90f09",
+            "title": "Efficient Estimation of Word Representations in Vector Space"
+        },
+        {
+            "paperId": "184ac0766262312ba76bbdece4e7ffad0aa8180b",
+            "title": "Representation Learning: A Review and New Perspectives"
+        },
+        {
+            "paperId": "128cb6b891aee1b5df099acb48e2efecfcff689f",
+            "title": "The Winograd Schema Challenge"
+        },
+        {
+            "paperId": "eaaed23a2d94feb2f1c3ff22a25777c7a78f3141",
+            "title": "Every Picture Tells a Story: Generating Sentences from Images"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "0c6e8912fe8ed3c8cf9008a7d59edcf469522a45",
+            "title": "Clever Hans : the horse of Mr. Von Osten"
+        },
+        {
+            "paperId": null,
+            "title": "and L"
+        },
+        {
+            "paperId": null,
+            "title": "Blender - a 3D modelling and rendering package"
+        },
+        {
+            "paperId": null,
+            "title": "Horse taxonomy and taxidermy. HORSE2016"
+        },
+        {
+            "paperId": "d0fd9b23e4e9b65c44a0ab722c4a69a6ed38cc3d",
+            "title": "D\u00e9j\u00e0 Image-Captions: A Corpus of Expressive Descriptions in Repetition"
+        },
+        {
+            "paperId": "d3edc100c6577abba414f6c0a16e4c3921e68bff",
+            "title": "A visual Turing test for computer vision systems"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "de4961a6431b9553d9f13319236570a9f033fcab",
+            "title": "Understanding natural language"
+        }
+    ]
+}

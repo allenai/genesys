@@ -1,0 +1,311 @@
+{
+    "paperId": "fdca7486611a574d08aca45b83ba38486b2d83ab",
+    "externalIds": {
+        "MAG": "2960957522",
+        "DBLP": "journals/tip/ZhangHYW20",
+        "DOI": "10.1109/TIP.2019.2926208",
+        "CorpusId": 195894214,
+        "PubMed": "31295113"
+    },
+    "title": "Cross-View Gait Recognition by Discriminative Feature Learning",
+    "abstract": "Recently, deep learning-based cross-view gait recognition has become popular owing to the strong capacity of convolutional neural networks (CNNs). Current deep learning methods often rely on loss functions used widely in the task of face recognition, e.g., contrastive loss and triplet loss. These loss functions have the problem of hard negative mining. In this paper, a robust, effective, and gait-related loss function, called angle center loss (ACL), is proposed to learn discriminative gait features. The proposed loss function is robust to different local parts and temporal window sizes. Different from center loss which learns a center for each identity, the proposed loss function learns multiple sub-centers for each angle of the same identity. Only the largest distance between the anchor feature and the corresponding cross-view sub-centers is penalized, which achieves better intra-subject compactness. We also propose to extract discriminative spatial\u2013temporal features by local feature extractors and a temporal attention model. A simplified spatial transformer network is proposed to localize the suitable horizontal parts of the human body. Local gait features for each horizontal part are extracted and then concatenated as the descriptor. We introduce long short-term memory (LSTM) units as the temporal attention model to learn the attention score for each frame, e.g., focusing more on discriminative frames and less on frames with bad quality. The temporal attention model shows better performance than the temporal average pooling or gait energy images (GEI). By combing the three aspects, we achieve state-of-the-art results on several cross-view gait recognition benchmarks.",
+    "venue": "IEEE Transactions on Image Processing",
+    "year": 2020,
+    "referenceCount": 67,
+    "citationCount": 105,
+    "influentialCitationCount": 17,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A robust, effective, and gait-related loss function, called angle center loss (ACL), is proposed to learn discriminative gait features and introduces long short-term memory units as the temporal attention model to learn the attention score for each frame."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2108445791",
+            "name": "Yuqi Zhang"
+        },
+        {
+            "authorId": "145501833",
+            "name": "Yongzhen Huang"
+        },
+        {
+            "authorId": "1719370",
+            "name": "Shiqi Yu"
+        },
+        {
+            "authorId": "123865558",
+            "name": "Liang Wang"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "ea8b595b870619908da11285f908c275346359f0",
+            "title": "Coupled Bilinear Discriminant Projection for Cross-View Gait Recognition"
+        },
+        {
+            "paperId": "550be5ba6540ab36a987ba66091c0a441e0c45b5",
+            "title": "On Input/Output Architectures for Convolutional Neural Network-Based Cross-View Gait Recognition"
+        },
+        {
+            "paperId": "f34d9b612a9c95d8bf647145ade7685bd98bdb06",
+            "title": "TGLSTM: A time based graph deep learning approach to gait recognition"
+        },
+        {
+            "paperId": "f6638068266fe436029b7e4b016c74273535aade",
+            "title": "Gait Recognition via Disentangled Representation Learning"
+        },
+        {
+            "paperId": "b273e5d19becc28d39b38db424bee54938a42cc2",
+            "title": "Coupled Patch Alignment for Matching Cross-View Gaits"
+        },
+        {
+            "paperId": "2e2e0588b6014ccb8770070dc6919eeafde63b47",
+            "title": "Multi-Task GANs for View-Specific Feature Learning in Gait Recognition"
+        },
+        {
+            "paperId": "cd4e1e3454d1beb3ea63ae0544927d675220db68",
+            "title": "Multi-view large population gait dataset and its performance evaluation for cross-view gait recognition"
+        },
+        {
+            "paperId": "5d6812033ec3fccb5ec6ea7dca868a3686596c6f",
+            "title": "Robust Cross-View Gait Identification with Evidence: A Discriminant Gait GAN (DiGGAN) Approach on 10000 People"
+        },
+        {
+            "paperId": "e5cf53498bcc848e6909c3255afd6082754415ba",
+            "title": "GaitSet: Regarding Gait as a Set for Cross-View Gait Recognition"
+        },
+        {
+            "paperId": "bec3c3e6bb9c738dad942f00fc69848018c3b1cc",
+            "title": "Part-Activated Deep Reinforcement Learning for Action Prediction"
+        },
+        {
+            "paperId": "cfb829a1cd8533e569090cd582b96ef8709533a9",
+            "title": "Improving Gait Recognition with 3D Pose Estimation"
+        },
+        {
+            "paperId": "b1885bfb044556f00919e1f075b70ee26f9175b2",
+            "title": "Cross-View Discriminative Feature Learning for Person Re-Identification"
+        },
+        {
+            "paperId": "9bfefdf18016e146f2afb38f1807dffabb84a7c6",
+            "title": "Deep Progressive Reinforcement Learning for Skeleton-Based Action Recognition"
+        },
+        {
+            "paperId": "17092ce59ed56eb5fcbf467a889c7ec3e930f4c2",
+            "title": "Mask-Guided Contrastive Attention Model for Person Re-identification"
+        },
+        {
+            "paperId": "8c94385d45f5896e748e43171eeaaa259009faab",
+            "title": "DensePose: Dense Human Pose Estimation in the Wild"
+        },
+        {
+            "paperId": "9dc915697768dd1f7c7b97e2c25c90b02241958b",
+            "title": "CosFace: Large Margin Cosine Loss for Deep Face Recognition"
+        },
+        {
+            "paperId": "ca235ce0decdb4f80024a429a20ae4437ceae09e",
+            "title": "ArcFace: Additive Angular Margin Loss for Deep Face Recognition"
+        },
+        {
+            "paperId": "753d2a35c9edf5dfcac4ef3a6adc993b657b01f0",
+            "title": "Beyond Part Models: Person Retrieval with Refined Part Pooling"
+        },
+        {
+            "paperId": "83deacfb7271717dfafbf10730d2c102dcb4b711",
+            "title": "Pose-Based Temporal-Spatial Network (PTSN) for Gait Recognition with Carrying and Clothing Variations"
+        },
+        {
+            "paperId": "605886b07ec27492e8d5bc48f79ddc39c02ec190",
+            "title": "Learning Deep Context-Aware Features over Body and Latent Parts for Person Re-identification"
+        },
+        {
+            "paperId": "33d36dad2dff1ca63998c91736808019b01324c9",
+            "title": "VGR-net: A view invariant gait recognition network"
+        },
+        {
+            "paperId": "5a803d9334246cfb7762eb210c19459febdf4b22",
+            "title": "Rethinking Feature Discrimination and Polymerization for Large-scale Recognition"
+        },
+        {
+            "paperId": "557619ab0c146d5526df3c18c0663a269ecaa21b",
+            "title": "GaitGAN: Invariant Gait Feature Extraction Using Generative Adversarial Networks"
+        },
+        {
+            "paperId": "e79baae76381deb001a72f2b0e63095be56a660c",
+            "title": "Invariant feature extraction for gait recognition using only one uniform model"
+        },
+        {
+            "paperId": "08d55271589f989d90a7edce3345f78f2468a7e0",
+            "title": "Quality Aware Network for Set to Set Recognition"
+        },
+        {
+            "paperId": "023cc603946e9a2c56cf94a3b9160b042aa57433",
+            "title": "Modeling Temporal Dynamics and Spatial Configurations of Actions Using Two-Stream Recurrent Neural Networks"
+        },
+        {
+            "paperId": "5f5164cf998a10d2bef37741adb562ab07fac413",
+            "title": "A Comprehensive Study on Cross-View Gait Based Human Identification with Deep CNNs"
+        },
+        {
+            "paperId": "6ce1922802169f757bbafc6e087cc274a867c763",
+            "title": "Regularizing Neural Networks by Penalizing Confident Output Distributions"
+        },
+        {
+            "paperId": "5ed5f368aa5ee237828f058d883eec5d489e650b",
+            "title": "Learning effective Gait features using LSTM"
+        },
+        {
+            "paperId": "dfad8f616bd2a05c8cae5f61060f743f966ece85",
+            "title": "Realtime Multi-person 2D Pose Estimation Using Part Affinity Fields"
+        },
+        {
+            "paperId": "4cfd770ccecae1c0b4248bc800d7fd35c817bbbd",
+            "title": "A Discriminative Feature Learning Approach for Deep Face Recognition"
+        },
+        {
+            "paperId": "2c080f9543febd770d6d1988508af339b4cb614d",
+            "title": "Multi-view gait recognition using 3D convolutional neural networks"
+        },
+        {
+            "paperId": "0b2282ba8b50165f21d42473c22ef89b0224864a",
+            "title": "Online Detection and Classification of Dynamic Hand Gestures with Recurrent 3D Convolutional Neural Networks"
+        },
+        {
+            "paperId": "6fd9e3cb0cf23c8ef4aa7065d9be407c45250bff",
+            "title": "Large-Margin Softmax Loss for Convolutional Neural Networks"
+        },
+        {
+            "paperId": "1a13b5dd42df52ffc89b80a133a7677aeebd788c",
+            "title": "GEINet: View-invariant gait recognition using a convolutional neural network"
+        },
+        {
+            "paperId": "62df84d6a4d26f95e4714796c2337c9848cc13b5",
+            "title": "MXNet: A Flexible and Efficient Machine Learning Library for Heterogeneous Distributed Systems"
+        },
+        {
+            "paperId": "013d0acff1e5410fd9f6e15520d16f4ea02f03f6",
+            "title": "Learning Representative Deep Features for Image Set Analysis"
+        },
+        {
+            "paperId": "1839e17555160bd897b978c48b8ebd13dd21445f",
+            "title": "Hierarchical recurrent neural network for skeleton based action recognition"
+        },
+        {
+            "paperId": "eae099ca54c9ee12a5763f6347b91f77df2c7bf4",
+            "title": "Beyond Temporal Pooling: Recurrence and Temporal Convolutions for Gesture Recognition in Video"
+        },
+        {
+            "paperId": "dbb6ded623159c867fbeca0772db7b2eb9489523",
+            "title": "Spatial Transformer Networks"
+        },
+        {
+            "paperId": "5aa26299435bdf7db874ef1640a6c3b5a4a2c394",
+            "title": "FaceNet: A unified embedding for face recognition and clustering"
+        },
+        {
+            "paperId": "01cfa4d1a4b59f3606c2273f5d5b2b24a0361eb0",
+            "title": "Uncooperative gait recognition by learning to rank"
+        },
+        {
+            "paperId": "f01fc808592ea7c473a69a6e7484040a435f36d9",
+            "title": "Long-term recurrent convolutional networks for visual recognition and description"
+        },
+        {
+            "paperId": "bfacdd954b6c416fc59f0d75abcb4a5cd85ffea2",
+            "title": "Hierarchical feature coding for image classification"
+        },
+        {
+            "paperId": "36358eff7c34de64c0ce8aa42cf7c4da24bf8e93",
+            "title": "Deep Metric Learning for Person Re-identification"
+        },
+        {
+            "paperId": "91bdaf3f1226e4065c4296d5c362906ceadfc631",
+            "title": "Deep Learning Face Representation by Joint Identification-Verification"
+        },
+        {
+            "paperId": "67dccc9a856b60bdc4d058d83657a089b8ad4486",
+            "title": "Two-Stream Convolutional Networks for Action Recognition in Videos"
+        },
+        {
+            "paperId": "9f2efadf66817f1b38f58b3f50c7c8f34c69d89a",
+            "title": "DeepFace: Closing the Gap to Human-Level Performance in Face Verification"
+        },
+        {
+            "paperId": "1a8cbda56eca39f49bc71ad66b5a827a761d3d7c",
+            "title": "Recognizing Gaits Across Views Through Correlated Motion Co-Clustering"
+        },
+        {
+            "paperId": "8229b25366e1f434d579283a03b5d8b065f0f059",
+            "title": "View-Invariant Discriminative Projection for Multi-View Gait-Based Human Identification"
+        },
+        {
+            "paperId": "67538df7950dbba0ab7885a23b7abf6f56f39537",
+            "title": "Person Re-identification by Salience Matching"
+        },
+        {
+            "paperId": "42328c7537004156126f983c5300fb3d1f081d53",
+            "title": "Effective part selection for part-based gait identification"
+        },
+        {
+            "paperId": "2d01cbc84241f1542946f0bcd4ab5cf4f79015cd",
+            "title": "Human Identification Using Temporal Information Preserving Gait Template"
+        },
+        {
+            "paperId": "4b8762d7637868b6ba0c97c95b2d4949d103ecdc",
+            "title": "The OU-ISIR Gait Database Comprising the Large Population Dataset and Performance Evaluation of Gait Recognition"
+        },
+        {
+            "paperId": "2c38cb13f66872c1e71aeeb8820d99e5ecbbc3bc",
+            "title": "Model-based 3D gait biometrics"
+        },
+        {
+            "paperId": "160c218687f3c205e8aaeebc107bd5d7c60301e4",
+            "title": "On Using Gait in Forensic Biometrics"
+        },
+        {
+            "paperId": "ee7829d57f2ac5fda308a99f3abaaf594936a31f",
+            "title": "Gait Analysis in Forensic Medicine *"
+        },
+        {
+            "paperId": "0268d1744377ffbff48b014f513ea3e5e4a4dab1",
+            "title": "A Framework for Evaluating the Effect of View Angle, Clothing and Carrying Condition on Gait Recognition"
+        },
+        {
+            "paperId": "a7f0f887ec8d089d579c04a4ca3a8fd3e48afb08",
+            "title": "Gait Recognition Using a View Transformation Model in the Frequency Domain"
+        },
+        {
+            "paperId": "890992c340d970beea5418bac2cb7bd8d0596f12",
+            "title": "3D gait recognition using multiple cameras"
+        },
+        {
+            "paperId": "540339c32eaf41962740583bfa415a5a0ff9d932",
+            "title": "Individual recognition using gait energy image"
+        },
+        {
+            "paperId": "68d885a2de9217ba787b8c8e55089944bbc558ee",
+            "title": "Gait analysis for recognition and classification"
+        },
+        {
+            "paperId": "5e28e81e757009d2f76b8674e0da431f5845884a",
+            "title": "Using Discriminant Eigenfeatures for Image Retrieval"
+        },
+        {
+            "paperId": "a2d276c57db43b16e9ace92edc3a36209e56eace",
+            "title": "Gait-Based Human Identification by Combining Shallow Convolutional Neural Network-Stacked Long Short-Term Memory and Deep Convolutional Neural Network"
+        },
+        {
+            "paperId": "16b802881cafcf9f6ae7a6a09d69cc4556f4eb9f",
+            "title": "Human Body Part Selection by Group Lasso of Motion for Model-Free Gait Recognition"
+        },
+        {
+            "paperId": "c5637543e80f97c9ddab8b54a635cf71941e2786",
+            "title": "This article has been accepted for inclusion in a future issue of this journal. Content is final as presented, with the exception of pagination. IEEE TRANSACTIONS ON SYSTEMS, MAN, AND CYBERNETICS\u2014PART B: CYBERNETICS 1 Self-Calibrating View-Invariant Gait"
+        },
+        {
+            "paperId": "d25522b12556ed9424d7e82d2054f6eed7edd1a5",
+            "title": "Ieee Transactions on Information Forensics and Security 1 a New View-invariant Feature for Cross-view Gait Recognition"
+        }
+    ]
+}

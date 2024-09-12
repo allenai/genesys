@@ -1,0 +1,254 @@
+{
+    "paperId": "007112213ece771be72cbecfd59f048209facabd",
+    "externalIds": {
+        "MAG": "2963907629",
+        "ArXiv": "1706.01427",
+        "DBLP": "conf/nips/SantoroRBMPBL17",
+        "CorpusId": 8528277
+    },
+    "title": "A simple neural network module for relational reasoning",
+    "abstract": "Relational reasoning is a central component of generally intelligent behavior, but has proven difficult for neural networks to learn. In this paper we describe how to use Relation Networks (RNs) as a simple plug-and-play module to solve problems that fundamentally hinge on relational reasoning. We tested RN-augmented networks on three tasks: visual question answering using a challenging dataset called CLEVR, on which we achieve state-of-the-art, super-human performance; text-based question answering using the bAbI suite of tasks; and complex reasoning about dynamic physical systems. Then, using a curated dataset called Sort-of-CLEVR we show that powerful convolutional networks do not have a general capacity to solve relational questions, but can gain this capacity when augmented with RNs. Our work shows how a deep learning architecture equipped with an RN module can implicitly discover and learn to reason about entities and their relations.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2017,
+    "referenceCount": 49,
+    "citationCount": 1548,
+    "influentialCitationCount": 199,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work shows how a deep learning architecture equipped with an RN module can implicitly discover and learn to reason about entities and their relations."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "35030998",
+            "name": "Adam Santoro"
+        },
+        {
+            "authorId": "143724694",
+            "name": "David Raposo"
+        },
+        {
+            "authorId": "50181861",
+            "name": "D. Barrett"
+        },
+        {
+            "authorId": "145478807",
+            "name": "Mateusz Malinowski"
+        },
+        {
+            "authorId": "1996134",
+            "name": "Razvan Pascanu"
+        },
+        {
+            "authorId": "2019153",
+            "name": "P. Battaglia"
+        },
+        {
+            "authorId": "2542999",
+            "name": "T. Lillicrap"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "83040001210751239553269727b9ea53e152af71",
+            "title": "Building Machines that Learn and Think Like People"
+        },
+        {
+            "paperId": "2e17cf6a339fd071ad222062f868e882ef4120a4",
+            "title": "Inferring and Executing Programs for Visual Reasoning"
+        },
+        {
+            "paperId": "a396a6febdacb84340d139096455e67049ac1e22",
+            "title": "Learning to Reason: End-to-End Module Networks for Visual Question Answering"
+        },
+        {
+            "paperId": "915b5b12f9bdebc321e970ecd713458c3479d70e",
+            "title": "An Analysis of Visual Question Answering Algorithms"
+        },
+        {
+            "paperId": "a456265138c088a894301c0433dae938705a9bec",
+            "title": "Deep Sets"
+        },
+        {
+            "paperId": "15f91ae7590b88c4a533daeefa4b6fa7c0c277e5",
+            "title": "Discovering objects and their relations from entangled scene representations"
+        },
+        {
+            "paperId": "03eb382e04cca8cca743f7799070869954f1402a",
+            "title": "CLEVR: A Diagnostic Dataset for Compositional Language and Elementary Visual Reasoning"
+        },
+        {
+            "paperId": "ae42c0cff384495683192b06bd985cdd7a54632a",
+            "title": "Interaction Networks for Learning about Objects, Relations and Physics"
+        },
+        {
+            "paperId": "033dd6cf61a6017e9aa9b46068d3c89082849cf3",
+            "title": "Tracking the World State with Recurrent Entity Networks"
+        },
+        {
+            "paperId": "be8c6c69f3e357bfad2987e45b62cff7e7474378",
+            "title": "Scaling Memory-Augmented Neural Networks with Sparse Reads and Writes"
+        },
+        {
+            "paperId": "784ee73d5363c711118f784428d1ab89f019daa5",
+            "title": "Hybrid computing using a neural network with dynamic external memory"
+        },
+        {
+            "paperId": "376f23cce537235122fdce5524d084e3a869c403",
+            "title": "Towards Deep Symbolic Reinforcement Learning"
+        },
+        {
+            "paperId": "36eff562f65125511b5dfab68ce7f7a943c27478",
+            "title": "Semi-Supervised Classification with Graph Convolutional Networks"
+        },
+        {
+            "paperId": "d3d4273db96381330a98b1277fddc3907af95fbd",
+            "title": "Chains of Reasoning over Entities, Relations, and Text using Recurrent Neural Networks"
+        },
+        {
+            "paperId": "12f7de07f9b00315418e381b2bd797d21f12b419",
+            "title": "Multimodal Compact Bilinear Pooling for Visual Question Answering and Visual Grounding"
+        },
+        {
+            "paperId": "7c6de5a9e02a779e24504619050c6118f4eac181",
+            "title": "Learning Convolutional Neural Networks for Graphs"
+        },
+        {
+            "paperId": "f7ddf708442dad7ed2978658b101c797c7c10220",
+            "title": "Ask Your Neurons: A Deep Learning Approach to Visual Question Answering"
+        },
+        {
+            "paperId": "f96898d15a1bf1fa8925b1280d0e07a7a8e72194",
+            "title": "Dynamic Memory Networks for Visual and Textual Question Answering"
+        },
+        {
+            "paperId": "492f57ee9ceb61fb5a47ad7aebfec1121887a175",
+            "title": "Gated Graph Sequence Neural Networks"
+        },
+        {
+            "paperId": "1cf6bc0866226c1f8e282463adc8b75d92fba9bb",
+            "title": "Ask, Attend and Answer: Exploring Question-Guided Spatial Attention for Visual Question Answering"
+        },
+        {
+            "paperId": "2c1890864c1c2b750f48316dc8b650ba4772adc5",
+            "title": "Stacked Attention Networks for Image Question Answering"
+        },
+        {
+            "paperId": "e49ff72d420c8d72e62a9353e3abc053445e59bd",
+            "title": "Deep Convolutional Networks on Graph-Structured Data"
+        },
+        {
+            "paperId": "2fcd5cff2b4743ea640c4af68bf4143f4a2cccb1",
+            "title": "Are You Talking to a Machine? Dataset and Methods for Multilingual Image Question"
+        },
+        {
+            "paperId": "df4f851e3c37017822a683b1356c6c390b5b5487",
+            "title": "Image Question Answering: A Visual Semantic Embedding Model and a New Dataset"
+        },
+        {
+            "paperId": "97ad70a9fa3f99adf18030e5e38ebe3d90daa2db",
+            "title": "VQA: Visual Question Answering"
+        },
+        {
+            "paperId": "abb33d75dc297993fcc3fb75e0f4498f413eb4f6",
+            "title": "Towards AI-Complete Question Answering: A Set of Prerequisite Toy Tasks"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "9064e16181e5a62ce7d93b9a8ea90e829f41683e",
+            "title": "A Pooling Approach to Modelling Spatial Relations for Image Retrieval and Annotation"
+        },
+        {
+            "paperId": "71ae756c75ac89e2d731c9c79649562b5768ff39",
+            "title": "Memory Networks"
+        },
+        {
+            "paperId": "ac64fb7e6d2ddf236332ec9f371fe85d308c114d",
+            "title": "A Multi-World Approach to Question Answering about Real-World Scenes based on Uncertain Input"
+        },
+        {
+            "paperId": "e64fd4eb33199fc2cc731aec1c25d4e88a4d4f40",
+            "title": "Grounding spatial relations for human-robot interaction"
+        },
+        {
+            "paperId": "b29447ba499507a259ae9d8f685d60cc1597d7d3",
+            "title": "Semantic Parsing on Freebase from Question-Answer Pairs"
+        },
+        {
+            "paperId": "c45fd881bcc20bc1a754ee4b446d99aaff1d3dd5",
+            "title": "Jointly Learning to Parse and Perceive: Connecting Natural Language to the Physical World"
+        },
+        {
+            "paperId": "b354ee518bfc1ac0d8ac447eece9edb69e92eae1",
+            "title": "MuJoCo: A physics engine for model-based control"
+        },
+        {
+            "paperId": "10c9e6881eeb27f8b9df7c38de7f914dc1297129",
+            "title": "Image Retrieval with Structured Object Queries Using Latent Ranking SVM"
+        },
+        {
+            "paperId": "a389456fdc46e458d0a813a608b71b44b2ff8e62",
+            "title": "Understanding Natural Language Commands for Robotic Navigation and Mobile Manipulation"
+        },
+        {
+            "paperId": "3ecd3e00bbbfd94446c3adc9c6878de27e250f7c",
+            "title": "Learning Dependency-Based Compositional Semantics"
+        },
+        {
+            "paperId": "2a55286f08b0da6d739dfe2af8937ce4497630e7",
+            "title": "Grounding spatial language for video search"
+        },
+        {
+            "paperId": "c7a40c3ef180d847bb3db40fd01990e08a6264f7",
+            "title": "Inducing Probabilistic CCG Grammars from Logical Form with Higher-Order Unification"
+        },
+        {
+            "paperId": "615f70728d7176acf83e310cdbcd763bbf6d5633",
+            "title": "A Game-Theoretic Approach to Generating Spatial Descriptions"
+        },
+        {
+            "paperId": "5b2403afd150bdf0b916f87eecd67d6bcc077ae2",
+            "title": "The discovery of structural form"
+        },
+        {
+            "paperId": "2533ec0b94e7c6fa4227e629aca3ab083b7f3d51",
+            "title": "Situated Dialogue and Spatial Organization: What, Where\u2026 and Why?"
+        },
+        {
+            "paperId": "b7c0e47f8b768258b7d536c21b218e6c46ab8791",
+            "title": "Learning to Parse Database Queries Using Inductive Logic Programming"
+        },
+        {
+            "paperId": "4106342a079eecadd4a4a1d39eabd4a50e0a7cd1",
+            "title": "Symbol grounding problem"
+        },
+        {
+            "paperId": "a0fc0ffed960258d91db19e6c3a7c34997a9b205",
+            "title": "Physical Symbol Systems"
+        },
+        {
+            "paperId": "4f8d648c52edf74e41b0996128aa536e13cc7e82",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": "2913c2bf3f92b5ae369400a42b2d27cc5bc05ecb",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": "3efd851140aa28e95221b55fcc5659eea97b172d",
+            "title": "The Graph Neural Network Model"
+        },
+        {
+            "paperId": "52d48cf7ccbe0b95808be7de1157e27f9a4e9d88",
+            "title": "A computational analysis of the apprehension of spatial relations"
+        },
+        {
+            "paperId": null,
+            "title": "Acknowledgments We would like to thank Murray Shanahan, Ari Morcos, Scott Reed, Daan Wierstra, and many others on the DeepMind team, for critical feedback and discussions"
+        }
+    ]
+}

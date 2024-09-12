@@ -1,0 +1,219 @@
+{
+    "paperId": "e6749a56e8f9927f6968ac99ec3163a016168d5c",
+    "externalIds": {
+        "MAG": "2406943157",
+        "DBLP": "journals/jcisd/MartinsTPF12",
+        "DOI": "10.1021/ci300124c",
+        "CorpusId": 28029842,
+        "PubMed": "22612593"
+    },
+    "title": "A Bayesian Approach to in Silico Blood-Brain Barrier Penetration Modeling",
+    "abstract": "The human blood-brain barrier (BBB) is a membrane that protects the central nervous system (CNS) by restricting the passage of solutes. The development of any new drug must take into account its existence whether for designing new molecules that target components of the CNS or, on the other hand, to find new substances that should not penetrate the barrier. Several studies in the literature have attempted to predict BBB penetration, so far with limited success and few, if any, application to real world drug discovery and development programs. Part of the reason is due to the fact that only about 2% of small molecules can cross the BBB, and the available data sets are not representative of that reality, being generally biased with an over-representation of molecules that show an ability to permeate the BBB (BBB positives). To circumvent this limitation, the current study aims to devise and use a new approach based on Bayesian statistics, coupled with state-of-the-art machine learning methods to produce a robust model capable of being applied in real-world drug research scenarios. The data set used, gathered from the literature, totals 1970 curated molecules, one of the largest for similar studies. Random Forests and Support Vector Machines were tested in various configurations against several chemical descriptor set combinations. Models were tested in a 5-fold cross-validation process, and the best one tested over an independent validation set. The best fitted model produced an overall accuracy of 95%, with a mean square contingency coefficient (\u03d5) of 0.74, and showing an overall capacity for predicting BBB positives of 83% and 96% for determining BBB negatives. This model was adapted into a Web based tool made available for the whole community at http://b3pp.lasige.di.fc.ul.pt.",
+    "venue": "Journal of Chemical Information and Modeling",
+    "year": 2012,
+    "referenceCount": 44,
+    "citationCount": 241,
+    "influentialCitationCount": 18,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new approach based on Bayesian statistics, coupled with state-of-the-art machine learning methods is devised to produce a robust model capable of being applied in real-world drug research scenarios."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145948867",
+            "name": "I. Martins"
+        },
+        {
+            "authorId": "145696615",
+            "name": "Ana L. Teixeira"
+        },
+        {
+            "authorId": "2065307182",
+            "name": "Luis Pinheiro"
+        },
+        {
+            "authorId": "1689110",
+            "name": "A. O. Falc\u00e3o"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "a6cbc4d15b0a8413d591159ce5cf8984a85aaa12",
+            "title": "Breaking through the barriers to well-being."
+        },
+        {
+            "paperId": "1b6febc313dfa86fbe4caeae72b1249e86dc561f",
+            "title": "A novel hypothesis of blood-brain barrier (BBB) development and in vitro BBB model: neural stem cell is the driver of BBB formation and maintenance -"
+        },
+        {
+            "paperId": "4fbb754ed9e6ae6b0ef9fe801d2ab44c563cac22",
+            "title": "Qualitative prediction of blood\u2013brain barrier permeability on a large and refined dataset"
+        },
+        {
+            "paperId": "273dfbcb68080251f5e9ff38b4413d7bd84b10a1",
+            "title": "LIBSVM: A library for support vector machines"
+        },
+        {
+            "paperId": "010e968510204598786c824f41aaa4898f6d2f70",
+            "title": "Best Practices for QSAR Model Development, Validation, and Exploitation"
+        },
+        {
+            "paperId": "05e226328614cfac2d07d766eb52f908d11911f4",
+            "title": "Insights for Predicting Blood-Brain Barrier Penetration of CNS Targeted Molecules Using QSPR Approaches"
+        },
+        {
+            "paperId": "d22d32c3ad0ea539f7022abb78e4399f23197933",
+            "title": "Molecular descriptors for chemoinformatics"
+        },
+        {
+            "paperId": "6e11313116e0d4d305828a444cd85fcfca984276",
+            "title": "ADDME \u2013 Avoiding Drug Development Mistakes Early: central nervous system drug discovery perspective"
+        },
+        {
+            "paperId": "ab0dd453d63295033d34306592085a868bce5a82",
+            "title": "Classification of Blood\u2010Brain Barrier Permeation by Kohonen's Self\u2010Organizing Neural Network (KohNN) and Support Vector Machine (SVM)"
+        },
+        {
+            "paperId": "68cc7df9dcceb1e7d5f6ad1361e9f1a6acd2e682",
+            "title": "Effective ribavirin concentration in mice brain using cyclodextrin as a drug carrier: evaluation in a measles encephalitis model."
+        },
+        {
+            "paperId": "c0ada0e2584f9f47b48f8924a725fd1ed866bf0e",
+            "title": "A Turning Point For Blood\u2013Brain Barrier Modeling"
+        },
+        {
+            "paperId": "9774ebd0d036119f429c330ad0ea7f0e49fdccc6",
+            "title": "QSAR Modeling of the Blood\u2013Brain Barrier Permeability for Diverse Organic Compounds"
+        },
+        {
+            "paperId": "023ba34bb97f66dce65900516b60407b531d63e8",
+            "title": "Artificial Neural Networks in ADMET Modeling: Prediction of Blood\u2013Brain Barrier Permeation"
+        },
+        {
+            "paperId": "80d473409a82a3bcca9fa9f38446de5181d43450",
+            "title": "New Predictive Models for Blood\u2013Brain Barrier Permeability of Drug-like Molecules"
+        },
+        {
+            "paperId": "ed2d96f75025491ad67cf7e9f68cafd7653421cc",
+            "title": "Pybel: a Python wrapper for the OpenBabel cheminformatics toolkit"
+        },
+        {
+            "paperId": "0b8bc96e009d71a40d936ea64b2ea06a534b53ed",
+            "title": "In Silico Prediction of Blood-Brain Barrier Permeation Using the Calculated Molecular Cross-Sectional Area as Main Parameter"
+        },
+        {
+            "paperId": "56ecb7e677de0323d6c79ca68979a6b705600d07",
+            "title": "The Blue Obelisk\u2014Interoperability in Chemical Informatics"
+        },
+        {
+            "paperId": "efb39f05501bfe1123e0428ebdbed04126a8e82b",
+            "title": "Computing chemistry on the web."
+        },
+        {
+            "paperId": "7bacb3d3555b0ee0d48b49d8da09bcd7aff28c32",
+            "title": "In Silico Predictions of Blood-Brain Barrier Penetration: Considerations to \u201cKeep in Mind\u201d"
+        },
+        {
+            "paperId": "2fd55c4d41d0a36d3cd1248bbd0bbf67675df793",
+            "title": "Effect of Selection of Molecular Descriptors on the Prediction of Blood-Brain Barrier Penetrating and Nonpenetrating Agents by Statistical Learning Methods"
+        },
+        {
+            "paperId": "b32ebfc9c1be4ebf44a0532476daf7a772e8945c",
+            "title": "Virtual Computational Chemistry Laboratory \u2013 Design and Description"
+        },
+        {
+            "paperId": "670a90cab42fb6a846a7868c04963fd17af80638",
+            "title": "Constructing Optimum Blood Brain Barrier QSAR Models Using a Combination of 4D-Molecular Similarity Measures and Cluster Analysis"
+        },
+        {
+            "paperId": "e0e31bb8866ac2695e2f06cad776febee73943e3",
+            "title": "Blood\u2010Brain Barrier Permeation Models: Discriminating Between Potential CNS and Non\u2010CNS Drugs Including P\u2010Glycoprotein Substrates."
+        },
+        {
+            "paperId": "667d3bf40cd2b823dc9f6fec5cfadf8a18c7aa7c",
+            "title": "Bioinformatics: The Machine Learning Approach by P. Baldi and S. Brunak, 2nd edn, MIT Press, 452\u2006pp., $60.00, ISBN 0-262-02506-X"
+        },
+        {
+            "paperId": "cebab2eb16f50cc2a456fd8f2d36f5db32cbfee4",
+            "title": "Random Forest: A Classification and Regression Tool for Compound Classification and QSAR Modeling"
+        },
+        {
+            "paperId": "bba85b5c99eb726141920857ccedab852d9fecb9",
+            "title": "ADME Evaluation in Drug Discovery. 3. Modeling Blood-Brain Barrier Partitioning Using Simple Molecular Descriptors"
+        },
+        {
+            "paperId": "71a57428a4838a7bb73ec279dcd7a5c06e8b9fbf",
+            "title": "High throughput artificial membrane permeability assay for blood-brain barrier."
+        },
+        {
+            "paperId": "423e2a9f0c539f65e1d9797ae3bfe8482f19aace",
+            "title": "Predicting Blood\u2013Brain Barrier Partitioning of Organic Molecules Using Membrane\u2013Interaction QSAR Analysis"
+        },
+        {
+            "paperId": "3bf024b906afbc2c1e36b44acf55fdc4f15bb96b",
+            "title": "A simple model to predict blood-brain barrier permeation from 3D molecular fields."
+        },
+        {
+            "paperId": "ae73fa99d777efd07ed5a73cdc695191862f9d9e",
+            "title": "Drug Design by Machine Learning: Support Vector Machines for Pharmaceutical Data Analysis"
+        },
+        {
+            "paperId": "65811c6c54f0bff0ce8d3eed463201ecff698fdc",
+            "title": "VolSurf: a new tool for the pharmacokinetic optimization of lead compounds."
+        },
+        {
+            "paperId": "8b17e51e5e8751ec7c9f580d1164af54e4134d9c",
+            "title": "Fast calculation of molecular polar surface area as a sum of fragment-based contributions and its application to the prediction of drug transport properties."
+        },
+        {
+            "paperId": "3c0a7b23b823f6eec2aae7d26217418f06b431db",
+            "title": "Designing libraries with CNS activity."
+        },
+        {
+            "paperId": "1f8a30b17d363c04feab4adb02654c33c0ae1e5b",
+            "title": "Prediction of Physicochemical Parameters by Atomic Contributions"
+        },
+        {
+            "paperId": "3f7983818b76a5f1b5daf9b605877ed401c8e73c",
+            "title": "SMILES, a chemical language and information system. 1. Introduction to methodology and encoding rules"
+        },
+        {
+            "paperId": "adc6cbf069233b15a33a6914dfa0116d3ff6da73",
+            "title": "Characteristics"
+        },
+        {
+            "paperId": "d7bc7050af0d2ea02754f86f726a7fe8f47efe70",
+            "title": "Blood-brain barrier delivery."
+        },
+        {
+            "paperId": "b75259c5cfdd957d8088960bc611cffb6206fe46",
+            "title": "Predicting Penetration Across the Blood-Brain Barrier from Simple Descriptors and Fragmentation Schemes"
+        },
+        {
+            "paperId": "9b49410b3a0b63c7b542d3e27186b43ae1d38422",
+            "title": "Drug delivery and in vitro models of the blood-brain barrier."
+        },
+        {
+            "paperId": "d2bb1ef7f1e3c5ab452b107accdef1cf32218858",
+            "title": "The blood-brain barrier: Bottleneck in brain drug development"
+        },
+        {
+            "paperId": "c0af4b0a467cdddb3e850fd8d7f1e66a293af6dd",
+            "title": "Predicting CNS Permeability of Drug Molecules: Comparison of Neural Network and Support Vector Machine Algorithms"
+        },
+        {
+            "paperId": "a01d887ff15ec43f945c785917dbb5aade46148f",
+            "title": "Bioinformatics The Machine Learning Approach 2nd ed."
+        },
+        {
+            "paperId": "4d21cbfa3329edddbacdf1d876c31cda31941896",
+            "title": "Predicting blood-brain barrier permeation from three-dimensional molecular structure."
+        },
+        {
+            "paperId": "a253e037c59222d10ac64859fd62676e28d969e9",
+            "title": "A Simple Model"
+        }
+    ]
+}

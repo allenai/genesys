@@ -1,0 +1,218 @@
+{
+    "paperId": "d8be72b910173aa7b20cdde403f15bed3e12cc33",
+    "externalIds": {
+        "MAG": "2949277965",
+        "DBLP": "journals/corr/abs-1811-07453",
+        "ArXiv": "1811.07453",
+        "DOI": "10.1109/ICASSP.2019.8683713",
+        "CorpusId": 53790579
+    },
+    "title": "The Pytorch-kaldi Speech Recognition Toolkit",
+    "abstract": "The availability of open-source software is playing a remarkable role in the popularization of speech recognition and deep learning. Kaldi, for instance, is nowadays an established framework used to develop state-of-the-art speech recognizers. PyTorch is used to build neural networks with the Python language and has recently spawn tremendous interest within the machine learning community thanks to its simplicity and flexibility.The PyTorch-Kaldi project aims to bridge the gap between these popular toolkits, trying to inherit the efficiency of Kaldi and the flexibility of PyTorch. PyTorch-Kaldi is not only a simple interface between these software, but it embeds several useful features for developing modern speech recognizers. For instance, the code is specifically designed to naturally plug-in user-defined acoustic models. As an alternative, users can exploit several pre-implemented neural networks that can be customized using intuitive configuration files. PyTorch-Kaldi supports multiple feature and label streams as well as combinations of neural networks, enabling the use of complex neural architectures. The toolkit is publicly-released along with a rich documentation and is designed to properly work locally or on HPC clusters.Experiments, that are conducted on several datasets and tasks, show that PyTorch-Kaldi can effectively be used to develop modern state-of-the-art speech recognizers.",
+    "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+    "year": 2018,
+    "referenceCount": 44,
+    "citationCount": 211,
+    "influentialCitationCount": 19,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1811.07453",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Experiments, that are conducted on several datasets and tasks, show that PyTorch-Kaldi can effectively be used to develop modern state-of-the-art speech recognizers."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "34924498",
+            "name": "M. Ravanelli"
+        },
+        {
+            "authorId": "9033417",
+            "name": "Titouan Parcollet"
+        },
+        {
+            "authorId": "1751762",
+            "name": "Yoshua Bengio"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "8a0be373940a833360cfdfaa325aee46e0c9ec97",
+            "title": "Interpretable Convolutional Filters with SincNet"
+        },
+        {
+            "paperId": "2540f32662aad59f66d0d9b00b9ad4721a9e522a",
+            "title": "Speaker Recognition from Raw Waveform with SincNet"
+        },
+        {
+            "paperId": "1bd861a1e385587e686a53d28438c76cc619de96",
+            "title": "Automatic context window composition for distant speech recognition"
+        },
+        {
+            "paperId": "f02c20b2ba0f12b0e85482f392201835b1a8fbdc",
+            "title": "Twin Regularization for online speech recognition"
+        },
+        {
+            "paperId": "d81f492849caa7c81452e5e7efedaeefd846c64c",
+            "title": "Pykaldi: A Python Wrapper for Kaldi"
+        },
+        {
+            "paperId": "360cfa09b2f7c8e10b1831d899c5a51aefa1883e",
+            "title": "Light Gated Recurrent Units for Speech Recognition"
+        },
+        {
+            "paperId": "34203350fe0af67f74a6c0c6de63689e18b52c49",
+            "title": "Deep Learning for Distant Speech Recognition"
+        },
+        {
+            "paperId": "b36a5bb1707bb9c70025294b3a310138aae8327a",
+            "title": "Automatic differentiation in PyTorch"
+        },
+        {
+            "paperId": "8fcd012e8ed2ea8190163369c9f222178e70a19d",
+            "title": "Hybrid CTC/Attention Architecture for End-to-End Speech Recognition"
+        },
+        {
+            "paperId": "05d82ba6b93f5f136547fd1dd8bc1e187c403226",
+            "title": "Contaminated speech training methods for robust DNN-HMM distant speech recognition"
+        },
+        {
+            "paperId": "d9e75a0c9d0a6538e822e460f068ac3963fbecc1",
+            "title": "Improving Speech Recognition by Revising Gated Recurrent Units"
+        },
+        {
+            "paperId": "eb7c1cc72b02508d3ef6748f234a5d789a4cf89f",
+            "title": "A network of deep neural networks for Distant Speech Recognition"
+        },
+        {
+            "paperId": "11134092f9206b390e4a81d15f241af3cd777b86",
+            "title": "Multitask Learning of Context-Dependent Targets in Deep Neural Network Acoustic Models"
+        },
+        {
+            "paperId": "52d145f7e7005ae8118306db1427bf1becbad001",
+            "title": "Batch-normalized joint training for DNN-based distant speech recognition"
+        },
+        {
+            "paperId": "4f717b9df493b6d275d65a107e22c60c33584d2f",
+            "title": "Realistic Multi-Microphone Data Simulation for Distant Speech Recognition"
+        },
+        {
+            "paperId": "1ee88e64945503c93b68344e639a7ae085f6e37d",
+            "title": "CNTK: Microsoft's Open-Source Deep-Learning Toolkit"
+        },
+        {
+            "paperId": "97fb4e3d45bb098e27e0071448b6152217bd35a5",
+            "title": "Layer Normalization"
+        },
+        {
+            "paperId": "4954fa180728932959997a4768411ff9136aac81",
+            "title": "TensorFlow: A system for large-scale machine learning"
+        },
+        {
+            "paperId": "6b570069f14c7588e066f7138e1f21af59d62e61",
+            "title": "Theano: A Python framework for fast computation of mathematical expressions"
+        },
+        {
+            "paperId": "d1f32060e921b6e06badd7fdb2b750638b2d131c",
+            "title": "Deep beamforming networks for multi-channel speech recognition"
+        },
+        {
+            "paperId": "3b16eea184424b2abe2455701b92b5afd87ed150",
+            "title": "The third \u2018CHiME\u2019 speech separation and recognition challenge: Dataset, task and baselines"
+        },
+        {
+            "paperId": "4a5e68033940785468cbe34bd6249106c311acfb",
+            "title": "RNNDROP: A novel dropout for RNNS in ASR"
+        },
+        {
+            "paperId": "2744eded1a5d06b8d2ff240bba3044d46752a6e7",
+            "title": "The DIRHA-ENGLISH corpus and related tasks for distant-speech recognition in domestic environments"
+        },
+        {
+            "paperId": "f95adc1d8daaa07a0c956826ec274ca9e2515ddc",
+            "title": "Batch normalized recurrent neural networks"
+        },
+        {
+            "paperId": "34038d9424ce602d7ac917a4e582d977725d4393",
+            "title": "Librispeech: An ASR corpus based on public domain audio books"
+        },
+        {
+            "paperId": "d46b81707786d18499f911b4ab72bb10c65406ba",
+            "title": "A Simple Way to Initialize Recurrent Networks of Rectified Linear Units"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "08c13be14da51f2ed531ffe980bb993e45042e41",
+            "title": "Automatic Speech Recognition: A Deep Learning Approach"
+        },
+        {
+            "paperId": "9144c8eb8585a97b706239dff0ce5b1763e01e81",
+            "title": "Joint noise adaptive training for robust automatic speech recognition"
+        },
+        {
+            "paperId": "05eb603871d8098bc8151a1a6b4ab225692158f8",
+            "title": "The DIRHA simulated corpus"
+        },
+        {
+            "paperId": "188e247506ad992b8bc62d6c74789e89891a984f",
+            "title": "Random Search for Hyper-Parameter Optimization"
+        },
+        {
+            "paperId": "934972f4f91d7d6b06306052974666ac5db08899",
+            "title": "A prototype of distant-talking interface for control of interactive TV"
+        },
+        {
+            "paperId": "ea9d2a2b4ce11aaf85136840c65f3bc9c03ab649",
+            "title": "Understanding the difficulty of training deep feedforward neural networks"
+        },
+        {
+            "paperId": "831c59de33aabbff9b7442a5645788761177741f",
+            "title": "Recent Development of Open-Source Speech Recognition Engine Julius"
+        },
+        {
+            "paperId": "22f20785f11a17f3d8139428989d11b737a51893",
+            "title": "Interpretation of Multiparty Meetings the AMI and Amida Projects"
+        },
+        {
+            "paperId": "b4959f13fe4c9bed6b0cd0a3c00d93ec8b76bc9f",
+            "title": "The LIA Speech Recognition System: From 10xRT to 1xRT"
+        },
+        {
+            "paperId": "2109f8f91301abec8497286160cd6b0f2e65ed05",
+            "title": "Maximum likelihood linear transformations for HMM-based speech recognition"
+        },
+        {
+            "paperId": "f4cc5563c694355ddcf746ff9a55ccdb22d86a98",
+            "title": "Finite-State Transducers in Language and Speech Processing"
+        },
+        {
+            "paperId": "4f8d648c52edf74e41b0996128aa536e13cc7e82",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "3a1a2cff2b70fb84a7ca7d97f8adcc5855851795",
+            "title": "The Kaldi Speech Recognition Toolkit"
+        },
+        {
+            "paperId": "6ca6ac9b3fec31be02ac296e6acb653107881a95",
+            "title": "RASR - The RWTH Aachen University Open Source Speech Recognition Toolkit"
+        },
+        {
+            "paperId": null,
+            "title": "HTK \u2013 Hidden Markov Model Toolkit"
+        }
+    ]
+}

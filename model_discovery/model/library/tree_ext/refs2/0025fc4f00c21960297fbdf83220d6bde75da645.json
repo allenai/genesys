@@ -1,0 +1,133 @@
+{
+    "paperId": "0025fc4f00c21960297fbdf83220d6bde75da645",
+    "externalIds": {
+        "MAG": "1975900269",
+        "DOI": "10.1198/106186006X113430",
+        "CorpusId": 5730904
+    },
+    "title": "Sparse Principal Component Analysis",
+    "abstract": "Principal component analysis (PCA) is widely used in data processing and dimensionality reduction. However, PCA suffers from the fact that each principal component is a linear combination of all the original variables, thus it is often difficult to interpret the results. We introduce a new method called sparse principal component analysis (SPCA) using the lasso (elastic net) to produce modified principal components with sparse loadings. We first show that PCA can be formulated as a regression-type optimization problem; sparse loadings are then obtained by imposing the lasso (elastic net) constraint on the regression coefficients. Efficient algorithms are proposed to fit our SPCA models for both regular multivariate data and gene expression arrays. We also give a new formula to compute the total variance of modified principal components. As illustrations, SPCA is applied to real and simulated data with encouraging results.",
+    "venue": "",
+    "year": 2006,
+    "referenceCount": 24,
+    "citationCount": 3032,
+    "influentialCitationCount": 458,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces a new method called sparse principal component analysis (SPCA) using the lasso (elastic net) to produce modified principal components with sparse loadings and shows that PCA can be formulated as a regression-type optimization problem."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "48861660",
+            "name": "H. Zou"
+        },
+        {
+            "authorId": "1784682",
+            "name": "T. Hastie"
+        },
+        {
+            "authorId": "1761784",
+            "name": "R. Tibshirani"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "e9fde5617b15623d1151d152671626df06aa5c2a",
+            "title": "Addendum: Regularization and variable selection via the elastic net"
+        },
+        {
+            "paperId": "fa25610fb8586c2b50a3654edc5bb42fa7fc4729",
+            "title": "The Elements of Statistical Learning: Data Mining, Inference, and Prediction"
+        },
+        {
+            "paperId": "78a9b31d5c2544c5d3d519e4df0f938ed53196f8",
+            "title": "Least angle regression"
+        },
+        {
+            "paperId": "5d49c9554e30b66091cb8a75db93cc670db04034",
+            "title": "A Modified Principal Component Technique Based on the LASSO"
+        },
+        {
+            "paperId": "e41ba5dc12c79a64dfa905c0328f95976252ffe0",
+            "title": "The Elements of Statistical Learning"
+        },
+        {
+            "paperId": "414e617decaaa8ce519e5616d38935d11b0b7e0e",
+            "title": "Principal Component Analysis"
+        },
+        {
+            "paperId": "2f4fc28a55c3a3e8b63af926b501b0d0e8bb9092",
+            "title": "Interactive exploration of microarray gene expression patterns in a reduced dimensional space."
+        },
+        {
+            "paperId": "a7a3046291d81a340a988775df671effb835ad93",
+            "title": "Diagnosis of multiple cancer types by shrunken centroids of gene expression"
+        },
+        {
+            "paperId": "e1890fe1b67a6e47b6b21016870f0fce20960ea3",
+            "title": "Multiclass cancer diagnosis using tumor gene expression signatures"
+        },
+        {
+            "paperId": "36b40e07dbd0fd44e16328154469011b8c1f8b0f",
+            "title": "Singular value decomposition for genome-wide expression data processing and modeling."
+        },
+        {
+            "paperId": "e22808d0205c2e763acfa3efd86a915050601e0b",
+            "title": "'Gene shaving' as a method for identifying distinct sets of genes with similar expression patterns"
+        },
+        {
+            "paperId": "db31973871f5648cffb02e7590582376e16ad0bb",
+            "title": "A new approach to variable selection in least squares problems"
+        },
+        {
+            "paperId": "6873a60e73c94d3797ff84ce4f5e5de96d798cbf",
+            "title": "Multivariate Analysis"
+        },
+        {
+            "paperId": "c6d0fb777408c8e859c9131c488836cbb732b063",
+            "title": "Two Case Studies in the Application of Principal Component Analysis"
+        },
+        {
+            "paperId": "edeff2cfd3f850e76e82dd4aa450607ffee4b432",
+            "title": "Proceedings of the National Academy of Sciences"
+        },
+        {
+            "paperId": "221d61b5719c3c66109d476f3b35b1f557a60769",
+            "title": "Regression Shrinkage and Selection via the Elastic Net , with Applications to Microarrays"
+        },
+        {
+            "paperId": null,
+            "title": "introduced SCoTLASS to get modi\ufb02ed principal components with possible zero loadings"
+        },
+        {
+            "paperId": "777ae5fc47aedc7519295192cc86c55627b33873",
+            "title": "Simple principal components"
+        },
+        {
+            "paperId": "b365b8e45b7d81f081de44ac8f9eadf9144f3ca5",
+            "title": "Regression Shrinkage and Selection via the Lasso"
+        },
+        {
+            "paperId": "434ce8a81d6c9a4efcbb0e016dbbca817675a2c7",
+            "title": "Face processing: Human perception and principal components analysis"
+        },
+        {
+            "paperId": "aa2c9ce64750a1208bebbeb903468da8deb74d28",
+            "title": "Rotation of principal components: choice of normalization constraints"
+        },
+        {
+            "paperId": "6c72a2f665ab75bab6335b29ce7b8f235bb23f94",
+            "title": "Loading and correlations in the interpretation of principle compenents"
+        },
+        {
+            "paperId": null,
+            "title": "Principal Variables"
+        },
+        {
+            "paperId": null,
+            "title": "As a demonstration, we also considered the \ufb02rst 6 principal components. Since this is a usual 15"
+        }
+    ]
+}

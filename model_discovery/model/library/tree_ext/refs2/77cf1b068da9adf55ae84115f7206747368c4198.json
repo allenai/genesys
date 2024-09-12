@@ -1,0 +1,85 @@
+{
+    "paperId": "77cf1b068da9adf55ae84115f7206747368c4198",
+    "externalIds": {
+        "DBLP": "conf/nips/MikaSSMSR98",
+        "MAG": "2105732805",
+        "CorpusId": 2508678
+    },
+    "title": "Kernel PCA and De-Noising in Feature Spaces",
+    "abstract": "Kernel PCA as a nonlinear feature extractor has proven powerful as a preprocessing step for classification algorithms. But it can also be considered as a natural generalization of linear principal component analysis. This gives rise to the question how to use nonlinear features for data compression, reconstruction, and de-noising, applications common in linear PCA. This is a nontrivial task, as the results provided by kernel PCA live in some high dimensional feature space and need not have pre-images in input space. This work presents ideas for finding approximate pre-images, focusing on Gaussian kernels, and shows experimental results using these pre-images in data reconstruction and de-noising on toy examples as well as on real world data.",
+    "venue": "Neural Information Processing Systems",
+    "year": 1998,
+    "referenceCount": 9,
+    "citationCount": 1099,
+    "influentialCitationCount": 123,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents ideas for finding approximate pre-images, focusing on Gaussian kernels, and shows experimental results using these pre- images in data reconstruction and de-noising on toy examples as well as on real world data."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2459012",
+            "name": "S. Mika"
+        },
+        {
+            "authorId": "1707625",
+            "name": "B. Scholkopf"
+        },
+        {
+            "authorId": "46234526",
+            "name": "Alex Smola"
+        },
+        {
+            "authorId": "145034054",
+            "name": "K. M\u00fcller"
+        },
+        {
+            "authorId": "47342864",
+            "name": "Matthias Scholz"
+        },
+        {
+            "authorId": "152597562",
+            "name": "Gunnar R\u00e4tsch"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "3be7657c39341bf88e060a7b071a30e75c217c6f",
+            "title": "Fast Approximation of Support Vector Kernel Expansions, and an Interpretation of Clustering as Approximation in Feature Spaces"
+        },
+        {
+            "paperId": "3f600e6c6cf93e78c9e6e690443d6d22c4bf18b9",
+            "title": "Nonlinear Component Analysis as a Kernel Eigenvalue Problem"
+        },
+        {
+            "paperId": "fed98ea8ecad5034441fd0ac9f728479183e3b9e",
+            "title": "Simplified Support Vector Decision Rules"
+        },
+        {
+            "paperId": "2210a7157565422261b03cf2cdf4e91b583df5a0",
+            "title": "Matching pursuits with time-frequency dictionaries"
+        },
+        {
+            "paperId": "4aaa30769ca49875f45670970130c088136986d1",
+            "title": "A training algorithm for optimal margin classifiers"
+        },
+        {
+            "paperId": "356125478f5d06b564b420755a4944254045bbbe",
+            "title": "Support vector learning"
+        },
+        {
+            "paperId": null,
+            "title": "Supportvectorlearning. Oldenbour  g Verlag,Munich,1997"
+        },
+        {
+            "paperId": "2f1a9350fd8141bcda3068aec33aef385d5c02eb",
+            "title": "Principal Component Neural Networks: Theory and Applications"
+        },
+        {
+            "paperId": "636b46471adea4916ec1b2e38c8e8265218f6952",
+            "title": "Theory of Reproducing Kernels and Its Applications"
+        }
+    ]
+}

@@ -1,0 +1,123 @@
+{
+    "paperId": "8b354d76813bd5375e7e5c8d17f630bec5936a01",
+    "externalIds": {
+        "MAG": "2963393721",
+        "DBLP": "conf/naacl/NangiaB18",
+        "ArXiv": "1804.06028",
+        "ACL": "N18-4013",
+        "DOI": "10.18653/v1/N18-4013",
+        "CorpusId": 4942335
+    },
+    "title": "ListOps: A Diagnostic Dataset for Latent Tree Learning",
+    "abstract": "Latent tree learning models learn to parse a sentence without syntactic supervision, and use that parse to build the sentence representation. Existing work on such models has shown that, while they perform well on tasks like sentence classification, they do not learn grammars that conform to any plausible semantic or syntactic formalism (Williams et al., 2018a). Studying the parsing ability of such models in natural language can be challenging due to the inherent complexities of natural language, like having several valid parses for a single sentence. In this paper we introduce ListOps, a toy dataset created to study the parsing ability of latent tree models. ListOps sequences are in the style of prefix arithmetic. The dataset is designed to have a single correct parsing strategy that a system needs to learn to succeed at the task. We show that the current leading latent tree models are unable to learn to parse and succeed at ListOps. These models achieve accuracies worse than purely sequential RNNs.",
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2018,
+    "referenceCount": 21,
+    "citationCount": 124,
+    "influentialCitationCount": 22,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/N18-4013.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that the current leading latent tree models are unable to learn to parse and succeed at ListOps, a toy dataset created to study the parsing ability of latentTree models."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "10666396",
+            "name": "Nikita Nangia"
+        },
+        {
+            "authorId": "3644767",
+            "name": "Samuel R. Bowman"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "cffe8c3f181b423999005b3d8120b17269db89ca",
+            "title": "Learning to parse from a semantic objective: It works. Is it syntax?"
+        },
+        {
+            "paperId": "027f9695189355d18ec6be8e48f3d23ea25db35d",
+            "title": "Learning to Compose Task-Specific Tree Structures"
+        },
+        {
+            "paperId": "3096b9e5b17dedbee9554fbd1d6e20f7a095e48a",
+            "title": "Jointly learning sentence embeddings and syntax with unsupervised Tree-LSTMs"
+        },
+        {
+            "paperId": "5ded2b8c64491b4a67f6d39ce473d4b9347a672e",
+            "title": "A Broad-Coverage Challenge Corpus for Sentence Understanding through Inference"
+        },
+        {
+            "paperId": "599f7863721d542dcef2da49b41d82b21e4f80b3",
+            "title": "Learning to Compose Words into Sentences with Reinforcement Learning"
+        },
+        {
+            "paperId": "29e944711a354c396fad71936f536e83025b6ce0",
+            "title": "Categorical Reparameterization with Gumbel-Softmax"
+        },
+        {
+            "paperId": "4d05ab884a6c1645b80ce5d02b09c7e5ff499790",
+            "title": "Towards Neural Network-based Reasoning"
+        },
+        {
+            "paperId": "f04df4e20a18358ea2f689b4c129781628ef7fc1",
+            "title": "A large annotated corpus for learning natural language inference"
+        },
+        {
+            "paperId": "452059171226626718eb677358836328f884298e",
+            "title": "Ask Me Anything: Dynamic Memory Networks for Natural Language Processing"
+        },
+        {
+            "paperId": "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e",
+            "title": "End-To-End Memory Networks"
+        },
+        {
+            "paperId": "32de44f01a96d4473d21099d15e25bc2b9f08e2f",
+            "title": "Improved Semantic Representations From Tree-Structured Long Short-Term Memory Networks"
+        },
+        {
+            "paperId": "abb33d75dc297993fcc3fb75e0f4498f413eb4f6",
+            "title": "Towards AI-Complete Question Answering: A Set of Prerequisite Toy Tasks"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "cfa2646776405d50533055ceb1b7f050e9014dcb",
+            "title": "Semi-Supervised Recursive Autoencoders for Predicting Sentiment Distributions"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "30da8ecce8b3ebc3e9344a79e5c2f8dc4c423bd2",
+            "title": "Recognition and Parsing of Context-Free Languages in Time n^3"
+        },
+        {
+            "paperId": "af66165c454a0e94afbab36271fe3deaae0b421a",
+            "title": "An Efficient Recognition and Syntax-Analysis Algorithm for Context-Free Languages"
+        },
+        {
+            "paperId": "4c915c1eecb217c123a36dc6d3ce52d12c742614",
+            "title": "Simple Statistical Gradient-Following Algorithms for Connectionist Reinforcement Learning"
+        },
+        {
+            "paperId": null,
+            "title": "Treebank-3. LDC99T42"
+        },
+        {
+            "paperId": "4561c20053add761b0fa28b0bea9c80c1bb81165",
+            "title": "Programming languages and their compilers: Preliminary notes"
+        },
+        {
+            "paperId": null,
+            "title": "and the 7th International Joint Conference on Natural"
+        }
+    ]
+}

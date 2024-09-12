@@ -1,0 +1,65 @@
+{
+    "paperId": "b6fff8b8ea77f157913986e7af53951d9fc1128e",
+    "externalIds": {
+        "MAG": "2112545207",
+        "DBLP": "conf/nips/WilliamsS00",
+        "CorpusId": 42041158
+    },
+    "title": "Using the Nystr\u00f6m Method to Speed Up Kernel Machines",
+    "abstract": "A major problem for kernel-based predictors (such as Support Vector Machines and Gaussian processes) is that the amount of computation required to find the solution scales as O(n3), where n is the number of training examples. We show that an approximation to the eigendecomposition of the Gram matrix can be computed by the Nystrom method (which is used for the numerical solution of eigenproblems). This is achieved by carrying out an eigendecomposition on a smaller system of size m < n, and then expanding the results back up to n dimensions. The computational complexity of a predictor using this approximation is O(m2n). We report experiments on the USPS and abalone data sets and show that we can set m \u226a n without any significant decrease in the accuracy of the solution.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2000,
+    "referenceCount": 8,
+    "citationCount": 2445,
+    "influentialCitationCount": 211,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that an approximation to the eigendecomposition of the Gram matrix can be computed by the Nystrom method (which is used for the numerical solution of eigenproblems) and the computational complexity of a predictor using this approximation is O(m2n)."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145715698",
+            "name": "Christopher K. I. Williams"
+        },
+        {
+            "authorId": "1680574",
+            "name": "M. Seeger"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "9ded923a192ffbf13e4466c6b7d2ede55724b716",
+            "title": "Sparse Greedy Matrix Approximation for Machine Learning"
+        },
+        {
+            "paperId": "b6a3e0028d99439ce2741d0e147b6e9a34bc4267",
+            "title": "Input space versus feature space in kernel-based methods"
+        },
+        {
+            "paperId": "f0ddbcb32e50514de5c89c8ceca58345c5a43948",
+            "title": "Bayesian Classification With Gaussian Processes"
+        },
+        {
+            "paperId": "bbc531f6ca5e83c6fa507bdf6399ecf76ef2e614",
+            "title": "Fast Monte-Carlo algorithms for finding low-rank approximations"
+        },
+        {
+            "paperId": "3f600e6c6cf93e78c9e6e690443d6d22c4bf18b9",
+            "title": "Nonlinear Component Analysis as a Kernel Eigenvalue Problem"
+        },
+        {
+            "paperId": "e786caa59202d923ccaae00ae6a4682eec92699b",
+            "title": "Spline Models for Observational Data"
+        },
+        {
+            "paperId": "fecf8f9b8f09c3c87def62a66485558e92065737",
+            "title": "The Numerical Treatment of Integral Equations"
+        },
+        {
+            "paperId": "8213dbed4db44e113af3ed17d6dad57471a0c048",
+            "title": "The Nature of Statistical Learning Theory"
+        }
+    ]
+}

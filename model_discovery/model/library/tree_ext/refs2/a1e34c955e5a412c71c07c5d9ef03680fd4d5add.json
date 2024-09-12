@@ -1,0 +1,182 @@
+{
+    "paperId": "a1e34c955e5a412c71c07c5d9ef03680fd4d5add",
+    "externalIds": {
+        "MAG": "2767406800",
+        "ArXiv": "1711.02326",
+        "DBLP": "journals/corr/abs-1711-02326",
+        "CorpusId": 1003317
+    },
+    "title": "Sparse Attentive Backtracking: Long-Range Credit Assignment in Recurrent Networks",
+    "abstract": "A major drawback of backpropagation through time (BPTT) is the difficulty of learning long-term dependencies, coming from having to propagate credit information backwards through every single step of the forward computation. This makes BPTT both computationally impractical and biologically implausible. For this reason, full backpropagation through time is rarely used on long sequences, and truncated backpropagation through time is used as a heuristic. However, this usually leads to biased estimates of the gradient in which longer term dependencies are ignored. Addressing this issue, we propose an alternative algorithm, Sparse Attentive Backtracking, which might also be related to principles used by brains to learn long-term dependencies. Sparse Attentive Backtracking learns an attention mechanism over the hidden states of the past and selectively backpropagates through paths with high attention weights. This allows the model to learn long term dependencies while only backtracking for a small number of time steps, not just from the recent past but also from attended relevant past states.",
+    "venue": "arXiv.org",
+    "year": 2017,
+    "referenceCount": 32,
+    "citationCount": 15,
+    "influentialCitationCount": 2,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes an alternative algorithm, Sparse Attentive Backtracking, which might also be related to principles used by brains to learn long-term dependencies, and learns an attention mechanism over the hidden states of the past and selectively backpropagates through paths with high attention weights."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145604319",
+            "name": "Nan Rosemary Ke"
+        },
+        {
+            "authorId": "1996705",
+            "name": "Anirudh Goyal"
+        },
+        {
+            "authorId": "2361575",
+            "name": "O. Bilaniuk"
+        },
+        {
+            "authorId": "1737610",
+            "name": "Jonathan Binas"
+        },
+        {
+            "authorId": "1778839",
+            "name": "Laurent Charlin"
+        },
+        {
+            "authorId": "1972076",
+            "name": "C. Pal"
+        },
+        {
+            "authorId": "1751762",
+            "name": "Yoshua Bengio"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "7d0aadef7fb03d6bcf03c329d6b606a1798b248a",
+            "title": "Unbiasing Truncated Backpropagation Through Time"
+        },
+        {
+            "paperId": "db337a93cdb1a636c086c1e5c855b9be016bfb77",
+            "title": "Unbiased Online Recurrent Optimization"
+        },
+        {
+            "paperId": "9f4d7d622d1f7319cc511bfef661cd973e881a4c",
+            "title": "Knowing When to Look: Adaptive Attention via a Visual Sentinel for Image Captioning"
+        },
+        {
+            "paperId": "e221e2c2ca8bd74a7b818406c8a2a342760e7d65",
+            "title": "SampleRNN: An Unconditional End-to-End Neural Audio Generation Model"
+        },
+        {
+            "paperId": "85644143e29c352aaf4f3f3f440139d0df4cd3a0",
+            "title": "Reverse Replay of Hippocampal Place Cells Is Uniquely Modulated by Changing Reward"
+        },
+        {
+            "paperId": "5694e46284460a648fe29117cbc55f6c9be3fa3c",
+            "title": "Densely Connected Convolutional Networks"
+        },
+        {
+            "paperId": "27760cc69be4ce445962ccb270a02d1944a9d4c9",
+            "title": "Decoupled Neural Interfaces using Synthetic Gradients"
+        },
+        {
+            "paperId": "c17b6f2d9614878e3f860c187f72a18ffb5aabb6",
+            "title": "Hierarchical Memory Networks"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+            "title": "Effective Approaches to Attention-based Neural Machine Translation"
+        },
+        {
+            "paperId": "3056add22b20e3361c38c0472d294a79d4031cb4",
+            "title": "Listen, attend and spell: A neural network for large vocabulary conversational speech recognition"
+        },
+        {
+            "paperId": "97acdfb3d247f8250d865ef8a9169f06e40f138b",
+            "title": "EESEN: End-to-end speech recognition using deep RNN models and WFST-based decoding"
+        },
+        {
+            "paperId": "7115d264594bdc849ee77b381be656e88677f02d",
+            "title": "Training recurrent networks online without backtracking"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "d4dc1012d780e8e2547237eb5a6dc7b1bf47d2f0",
+            "title": "Show and tell: A neural image caption generator"
+        },
+        {
+            "paperId": "31c36d445367ba204244bb74893c5654e31c3869",
+            "title": "cuDNN: Efficient Primitives for Deep Learning"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "6dbffa57b3c6c5645cf701b9b444984a4b61bb57",
+            "title": "Asymmetric LSH (ALSH) for Sublinear Time Maximum Inner Product Search (MIPS)"
+        },
+        {
+            "paperId": "e941f94c9b70c0dfb433871deecbf7d2df561352",
+            "title": "Long Short-Term Memory Based Recurrent Neural Network Architectures for Large Vocabulary Speech Recognition"
+        },
+        {
+            "paperId": "4122002e32e660d4496c3aa7d6da82ac347294bf",
+            "title": "Hippocampal Replay Is Not a Simple Function of Experience"
+        },
+        {
+            "paperId": "7883f8db38fed6edea3fa22709d8e3d8889ae01d",
+            "title": "Hippocampal Replay of Extended Experience"
+        },
+        {
+            "paperId": "80159c6b24653d8d9797075d2b96dccc3c39a345",
+            "title": "Reverse replay of behavioural sequences in hippocampal place cells during the awake state"
+        },
+        {
+            "paperId": "e9fac1091d9a1646314b1b91e58f40dae3a750cd",
+            "title": "The Vanishing Gradient Problem During Learning Recurrent Neural Nets and Problem Solutions"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "d0be39ee052d246ae99c082a565aba25b811be2d",
+            "title": "Learning long-term dependencies with gradient descent is difficult"
+        },
+        {
+            "paperId": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+            "title": "Building a Large Annotated Corpus of English: The Penn Treebank"
+        },
+        {
+            "paperId": "2ae5a5507253aa3cada113d41d35fada1e84555f",
+            "title": "An Efficient Gradient-Based Algorithm for On-Line Training of Recurrent Network Trajectories"
+        },
+        {
+            "paperId": "ce9a21b93ba29d4145a8ef6bf401e77f261848de",
+            "title": "A Learning Algorithm for Continually Running Fully Recurrent Neural Networks"
+        },
+        {
+            "paperId": "864f5e7b3c9cfec7522d6088f4a256545ed55a8d",
+            "title": "Unfolded recurrent neural networks for speech recognition"
+        },
+        {
+            "paperId": "3f3d13e95c25a8f6a753e38dfce88885097cbd43",
+            "title": "Untersuchungen zu dynamischen neuronalen Netzen"
+        }
+    ]
+}

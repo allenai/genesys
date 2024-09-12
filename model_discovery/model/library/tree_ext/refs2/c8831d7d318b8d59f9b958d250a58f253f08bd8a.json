@@ -1,0 +1,298 @@
+{
+    "paperId": "c8831d7d318b8d59f9b958d250a58f253f08bd8a",
+    "externalIds": {
+        "DBLP": "journals/jacm/CandesLMW11",
+        "MAG": "2951443864",
+        "ArXiv": "0912.3599",
+        "DOI": "10.1145/1970392.1970395",
+        "CorpusId": 7128002
+    },
+    "title": "Robust principal component analysis?",
+    "abstract": "This article is about a curious phenomenon. Suppose we have a data matrix, which is the superposition of a low-rank component and a sparse component. Can we recover each component individually? We prove that under some suitable assumptions, it is possible to recover both the low-rank and the sparse components exactly by solving a very convenient convex program called Principal Component Pursuit; among all feasible decompositions, simply minimize a weighted combination of the nuclear norm and of the \u21131 norm. This suggests the possibility of a principled approach to robust principal component analysis since our methodology and results assert that one can recover the principal components of a data matrix even though a positive fraction of its entries are arbitrarily corrupted. This extends to the situation where a fraction of the entries are missing as well. We discuss an algorithm for solving this optimization problem, and present applications in the area of video surveillance, where our methodology allows for the detection of objects in a cluttered background, and in the area of face recognition, where it offers a principled way of removing shadows and specularities in images of faces.",
+    "venue": "JACM",
+    "year": 2009,
+    "referenceCount": 63,
+    "citationCount": 6747,
+    "influentialCitationCount": 1217,
+    "openAccessPdf": {
+        "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2010/01/RobustPCA.pdf",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is proved that under some suitable assumptions, it is possible to recover both the low-rank and the sparse components exactly by solving a very convenient convex program called Principal Component Pursuit; among all feasible decompositions, this suggests the possibility of a principled approach to robust principal component analysis."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2006869",
+            "name": "E. Cand\u00e8s"
+        },
+        {
+            "authorId": "2118899110",
+            "name": "Xiaodong Li"
+        },
+        {
+            "authorId": "50032052",
+            "name": "Yi Ma"
+        },
+        {
+            "authorId": "143607492",
+            "name": "John Wright"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "97f4330fec037bd9cb18a5345f4cc7d47dd93c30",
+            "title": "The Fourth Paradigm: Data-Intensive Scientific Discovery [Point of View]"
+        },
+        {
+            "paperId": "4406c54f40e0f73db2180704d454951649df32f2",
+            "title": "Introduction to the non-asymptotic analysis of random matrices"
+        },
+        {
+            "paperId": "657ae1548cc926a82e811f4287d800acd837fcff",
+            "title": "The Augmented Lagrange Multiplier Method for Exact Recovery of Corrupted Low-Rank Matrices"
+        },
+        {
+            "paperId": "842b12cee678cdc2856fa1fd9df3fd9970222b28",
+            "title": "Recovering Low-Rank Matrices From Few Coefficients in Any Basis"
+        },
+        {
+            "paperId": "ee7778874a4ff13edc60ff37a7c3c0964173e0e8",
+            "title": "A Simpler Approach to Matrix Completion"
+        },
+        {
+            "paperId": "db8335198bd47c8865d0b3408b97e547abfd9ba2",
+            "title": "The Fourth Paradigm: Data-Intensive Scientific Discovery"
+        },
+        {
+            "paperId": "1a54f0aa1936afad8e29ac54eae9ce322d451b44",
+            "title": "Quantum state tomography via compressed sensing."
+        },
+        {
+            "paperId": "3c05a68e9bf2f7c9e08ad1ed62d2daae37a70235",
+            "title": "Face recognition with contiguous occlusion using markov random fields"
+        },
+        {
+            "paperId": "5f375bb9c691862caf11322679c94219c0057c83",
+            "title": "Interior-Point Method for Nuclear Norm Approximation with Application to System Identification"
+        },
+        {
+            "paperId": "e11b2403a0b8ad3b4a747ce6fc915a8aee04eb6b",
+            "title": "Principal Component Analysis"
+        },
+        {
+            "paperId": "4614f5ecca5a3637521d1917ec8ef155302df5d2",
+            "title": "Convergence of Fixed-Point Continuation Algorithms for Matrix Rank Minimization"
+        },
+        {
+            "paperId": "e194ea3ba83d58ed0cf3e74a02064bf062408dd5",
+            "title": "Rank-Sparsity Incoherence for Matrix Decomposition"
+        },
+        {
+            "paperId": "5e097e8b7b1cf267da5c2dd638c511456839ea2b",
+            "title": "Fixed point and Bregman iterative methods for matrix rank minimization"
+        },
+        {
+            "paperId": "a04e95660dd948525618325e0dbfcb12daf18648",
+            "title": "NESTA: A Fast and Accurate First-Order Method for Sparse Recovery"
+        },
+        {
+            "paperId": "d13e466cbd7c8ac764b3dfd3e3a12c7e8736412f",
+            "title": "Matrix Completion With Noise"
+        },
+        {
+            "paperId": "c369d9192c9754fb7a04529c68f2fb286f646df7",
+            "title": "The Power of Convex Relaxation: Near-Optimal Matrix Completion"
+        },
+        {
+            "paperId": "0e716a68650437cde42bdfb752085964d5e05437",
+            "title": "Matrix completion from a few entries"
+        },
+        {
+            "paperId": "023f6fc69fe1f6498e35dbf85932ecb549d36ca4",
+            "title": "A Singular Value Thresholding Algorithm for Matrix Completion"
+        },
+        {
+            "paperId": "935df6dd601b7569bc50905f1c1085afe2c4bbca",
+            "title": "Compressive Sensing for Background Subtraction"
+        },
+        {
+            "paperId": "07b5e2f08bc1be6da9269e9c61e113d6e3526ff0",
+            "title": "Fixed-Point Continuation for l1-Minimization: Methodology and Convergence"
+        },
+        {
+            "paperId": "040c161f21e0fa57ac192ac826310f55d60277b0",
+            "title": "Exact Matrix Completion via Convex Optimization"
+        },
+        {
+            "paperId": "2d9bb28841d2d5d83efdd1eae87809fe6375fec3",
+            "title": "Gradient methods for minimizing composite objective function"
+        },
+        {
+            "paperId": "0c9bb579d8ad6ac987f7a16b66ddace671fc57c5",
+            "title": "Guaranteed Minimum-Rank Solutions of Linear Matrix Equations via Nuclear Norm Minimization"
+        },
+        {
+            "paperId": "cc2de0a3f4a24cd4c8d2b83b8d647ecd6a693f4d",
+            "title": "Introduction"
+        },
+        {
+            "paperId": "952a6413aeac22d6b1f421e040072a17fcebad23",
+            "title": "Robust L/sub 1/ norm factorization in the presence of outliers and missing data by alternative convex programming"
+        },
+        {
+            "paperId": "8e6c6086ea725737aa6081a57ea68d43a24ca3b9",
+            "title": "Smooth minimization of non-smooth functions"
+        },
+        {
+            "paperId": "e40e04bfcad4ae86b6fe8bd390809d8ec0985fc6",
+            "title": "Robust Statistics"
+        },
+        {
+            "paperId": "28ea0e030e9f8ab812a94bc06812e38e4b078932",
+            "title": "Statistical modeling of complex backgrounds for foreground object detection"
+        },
+        {
+            "paperId": "c1180048929ed490ab25e0e612f8f7c3d7196450",
+            "title": "Robust uncertainty principles: exact signal reconstruction from highly incomplete frequency information"
+        },
+        {
+            "paperId": "3f5dfbd571ef719a2c5dc1ed63ca6a3702f7861e",
+            "title": "A Framework for Robust Subspace Learning"
+        },
+        {
+            "paperId": "14835359eca6d37c1a49b5824b19b8bac9c1c65a",
+            "title": "Log-det heuristic for matrix rank minimization with applications to Hankel and Euclidean distance matrices"
+        },
+        {
+            "paperId": "88816ae492956f3004daa41357166f1181c0c1bf",
+            "title": "Laplacian Eigenmaps for Dimensionality Reduction and Data Representation"
+        },
+        {
+            "paperId": "414e617decaaa8ce519e5616d38935d11b0b7e0e",
+            "title": "Principal Component Analysis"
+        },
+        {
+            "paperId": "66e6a411a7342203ebbc22fbe9a3740b744d7cbc",
+            "title": "Lambertian reflectance and linear subspaces"
+        },
+        {
+            "paperId": "18c72175ddbb7d5956d180b65a96005c100f6014",
+            "title": "From Few to Many: Illumination Cone Models for Face Recognition under Variable Lighting and Pose"
+        },
+        {
+            "paperId": "3537fcd0ff99a3b3cb3d279012df826358420556",
+            "title": "A global geometric framework for nonlinear dimensionality reduction."
+        },
+        {
+            "paperId": "eac7287d7ef69252358c1fbddedf123e11012370",
+            "title": "Adaptive background mixture models for real-time tracking"
+        },
+        {
+            "paperId": "9af121fbed84c3484ab86df8f17f1f198ed790a0",
+            "title": "Atomic Decomposition by Basis Pursuit"
+        },
+        {
+            "paperId": "d9bc48bbf2186201cc387bc5b162497d5ef0d607",
+            "title": "A variable-penalty alternating directions method for convex optimization"
+        },
+        {
+            "paperId": "5cfac7b32b7f2e279a63c90c8f0798f4d9f24c12",
+            "title": "Latent semantic indexing: a probabilistic analysis"
+        },
+        {
+            "paperId": "164125a65d42a791d2c1e108559344caef96d08b",
+            "title": "Indexing by Latent Semantic Analysis"
+        },
+        {
+            "paperId": "cb89a25141febad0c14d080e2791c506ae6e4a76",
+            "title": "Constrained Optimization and Lagrange Multiplier Methods"
+        },
+        {
+            "paperId": "4f37468a95ccc62debb9e5a4cb0d73489ca61190",
+            "title": "Random sample consensus: a paradigm for model fitting with applications to image analysis and automated cartography"
+        },
+        {
+            "paperId": "72d8e4028d4fa1ac85869c43baa6e2781c61f906",
+            "title": "Splitting Algorithms for the Sum of Two Nonlinear Operators"
+        },
+        {
+            "paperId": "d8a2b02687d15568d02f603b13723fee8a44ffa1",
+            "title": "ROBUST ESTIMATES, RESIDUALS, AND OUTLIER DETECTION WITH MULTIRESPONSE DATA"
+        },
+        {
+            "paperId": "8112c4305b88d85199267e9e03d3a0aca4432059",
+            "title": "The approximation of one matrix by another of lower rank"
+        },
+        {
+            "paperId": "7431b21b56f320080fd6cd0d4d1df233de583ceb",
+            "title": "Sparse and low-rank matrix decomposition via alternating direction method"
+        },
+        {
+            "paperId": "22ed136c9b4f187fc7aee0faecd7c54404fdaf11",
+            "title": "Robust Principal Component Analysis"
+        },
+        {
+            "paperId": null,
+            "title": "Article 11, Publication date"
+        },
+        {
+            "paperId": "a671f862adc5f9d86e8d5f1380b29e38c89865c9",
+            "title": "Fast Convex Optimization Algorithms for Exact Recovery of a Corrupted Low-Rank Matrix"
+        },
+        {
+            "paperId": "6d389485b399ae7b60c1f426f1168f4eacaba64f",
+            "title": "An accelerated proximal gradient algorithm for nuclear norm regularized linear least squares problems"
+        },
+        {
+            "paperId": "ae310ac2b532b55c286f1679ad8cf69429b42b9a",
+            "title": "An accelerated proximal gradient algorithm for nuclear norm regularized least squares problems"
+        },
+        {
+            "paperId": "3c718363c22221fd16771672da3bfd5f67d2c34c",
+            "title": "A Fast Iterative Shrinkage-Thresholding Algorithm for Linear Inverse Problems"
+        },
+        {
+            "paperId": null,
+            "title": "CVX: Matlab software for disciplined convex programming (web page and software)"
+        },
+        {
+            "paperId": "43acb7e3ab350e484d7c0e9494b616759b1325c2",
+            "title": "Bregman Iterative Algorithms for (cid:2) 1 -Minimization with Applications to Compressed Sensing \u2217"
+        },
+        {
+            "paperId": "31af4b8793e93fd35e89569ccd663ae8777f0072",
+            "title": "The Netflix Prize"
+        },
+        {
+            "paperId": null,
+            "title": "Math 280 lecture notes. Available at http"
+        },
+        {
+            "paperId": "a9f90916ce2d048f99d7d0d4e7dd5c1c723e6076",
+            "title": "An Iterative Regularization Method for Total Variation-Based Image Restoration"
+        },
+        {
+            "paperId": null,
+            "title": "Vershynin . Math 280 lecture notes"
+        },
+        {
+            "paperId": "381667eec4fb626d3a5352d33aa7ee756b7cd08c",
+            "title": "The concentration of measure phenomenon"
+        },
+        {
+            "paperId": "8d3a318b62d2e970122da35b2a2e70a5d12cc16f",
+            "title": "A method for solving the convex programming problem with convergence rate O(1/k^2)"
+        },
+        {
+            "paperId": null,
+            "title": "Soviet Mathematics Doklady"
+        },
+        {
+            "paperId": "9ebb5c0d6d54707a4d6181a693b6f755ec8a45a9",
+            "title": "Analysis of a complex of statistical variables into principal components."
+        }
+    ]
+}

@@ -1,0 +1,1118 @@
+{
+    "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+    "externalIds": {
+        "DBLP": "journals/corr/SzegedyLJSRAEVR14",
+        "MAG": "2097117768",
+        "ArXiv": "1409.4842",
+        "DOI": "10.1109/CVPR.2015.7298594",
+        "CorpusId": 206592484
+    },
+    "title": "Going deeper with convolutions",
+    "abstract": "We propose a deep convolutional neural network architecture codenamed Inception that achieves the new state of the art for classification and detection in the ImageNet Large-Scale Visual Recognition Challenge 2014 (ILSVRC14). The main hallmark of this architecture is the improved utilization of the computing resources inside the network. By a carefully crafted design, we increased the depth and width of the network while keeping the computational budget constant. To optimize quality, the architectural decisions were based on the Hebbian principle and the intuition of multi-scale processing. One particular incarnation used in our submission for ILSVRC14 is called GoogLeNet, a 22 layers deep network, the quality of which is assessed in the context of classification and detection.",
+    "venue": "Computer Vision and Pattern Recognition",
+    "year": 2014,
+    "referenceCount": 263,
+    "citationCount": 40932,
+    "influentialCitationCount": 4139,
+    "openAccessPdf": {
+        "url": "http://arxiv.org/pdf/1409.4842",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A deep convolutional neural network architecture codenamed Inception is proposed that achieves the new state of the art for classification and detection in the ImageNet Large-Scale Visual Recognition Challenge 2014 (ILSVRC14)."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2574060",
+            "name": "Christian Szegedy"
+        },
+        {
+            "authorId": "2157222093",
+            "name": "Wei Liu"
+        },
+        {
+            "authorId": "39978391",
+            "name": "Yangqing Jia"
+        },
+        {
+            "authorId": "3142556",
+            "name": "P. Sermanet"
+        },
+        {
+            "authorId": "144828948",
+            "name": "Scott E. Reed"
+        },
+        {
+            "authorId": "1838674",
+            "name": "Dragomir Anguelov"
+        },
+        {
+            "authorId": "1761978",
+            "name": "D. Erhan"
+        },
+        {
+            "authorId": "2657155",
+            "name": "Vincent Vanhoucke"
+        },
+        {
+            "authorId": "39863668",
+            "name": "Andrew Rabinovich"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "ba521c0f50bc5459f210339bf527605982c68436",
+            "title": "Pedestrian Classification and Detection in Far Infrared Images"
+        },
+        {
+            "paperId": "e82e2b3c4930cfca6572ce04257bf63683141297",
+            "title": "From single image query to detailed 3D reconstruction"
+        },
+        {
+            "paperId": "d25974eb72fe9ba020a40064cd7b68df137c0358",
+            "title": "What do eyes reveal about the mind?: Algorithmic inference of search targets from fixations"
+        },
+        {
+            "paperId": "8fb28b5b65e11742673d6c56a62c740c6d123961",
+            "title": "Efficient  $l_{1}$ -Norm-Based Low-Rank Matrix Approximations for Large-Scale Problems Using Alternating Rectified Gradient Method"
+        },
+        {
+            "paperId": "9667f8264745b626c6173b1310e2ff0298b09cfc",
+            "title": "Learning Deep Features for Scene Recognition using Places Database"
+        },
+        {
+            "paperId": "6f2f2c895f0141cc770dd72a28c34a51cb772850",
+            "title": "Encoding High Dimensional Local Features by Sparse Coding Based Fisher Vectors"
+        },
+        {
+            "paperId": "201d116761d9d300193df370107f26d7d475023b",
+            "title": "People detection and tracking from aerial thermal views"
+        },
+        {
+            "paperId": "ae639e4bdd2e6a11bc44ff7f1ae53cd25462042b",
+            "title": "Real-Time Continuous Pose Recovery of Human Hands Using Convolutional Networks"
+        },
+        {
+            "paperId": "24e1ea4d01f7bd8bf3e4bebdadbd158f27eec5a3",
+            "title": "Blind Deblurring Using Internal Patch Recurrence"
+        },
+        {
+            "paperId": "b06ce62194a54e59b2fcf44f906b083ebc705618",
+            "title": "Robust Global Translations with 1DSfM"
+        },
+        {
+            "paperId": "924a0f0b1cfcb0d1f8f4ac232e91fe19307861cb",
+            "title": "Large-Scale Object Classification Using Label Relation Graphs"
+        },
+        {
+            "paperId": "d9c9b8194ac81f97bfedb7d15124e7b80c3c3d68",
+            "title": "Video Action Detection with Relational Dynamic-Poselets"
+        },
+        {
+            "paperId": "d4415e7ee6770388ef367ebb8beb6de3d7a245b4",
+            "title": "VocMatch: Efficient Multiview Correspondence for Structure from Motion"
+        },
+        {
+            "paperId": "9d4e33eb6e8be3d45e685645d2dee394ae204a5a",
+            "title": "Dense Semi-rigid Scene Flow Estimation from RGBD Images"
+        },
+        {
+            "paperId": "25c740bb2a94ad3942e3a6ee329724cb3905e619",
+            "title": "Learning 6D Object Pose Estimation Using 3D Object Coordinates"
+        },
+        {
+            "paperId": "7daebb130b491b1ae8afff0e4e9b5f5302e2d996",
+            "title": "Rolling Guidance Filter"
+        },
+        {
+            "paperId": "a569c1d6e0d9efda1bd838f239da71fa3e042884",
+            "title": "Learning Must-Link Constraints for Video Segmentation Based on Spectral Clustering"
+        },
+        {
+            "paperId": "43996253f97d7023af1b1869a7ec2e6376ca1986",
+            "title": "Large-Margin Multi-ViewInformation Bottleneck"
+        },
+        {
+            "paperId": "98bb60748eb8ef7a671cdd22faa87e377fd13060",
+            "title": "Part-Based R-CNNs for Fine-Grained Category Detection"
+        },
+        {
+            "paperId": "342786659379879f58bf5c4ff43c84c83a6a7389",
+            "title": "Simultaneous Detection and Segmentation"
+        },
+        {
+            "paperId": "248d372355bb752ad6c05f4e84ee44aaeb47b68f",
+            "title": "Learning to Detect Ground Control Points for Improving the Accuracy of Stereo Matching"
+        },
+        {
+            "paperId": "2c76de57b8b1c9e63b1883cbdea9ec8e68ddf493",
+            "title": "A Thermal Infrared Video Benchmark for Visual Analysis"
+        },
+        {
+            "paperId": "5b7cb9b97c425b52b2e6f41ba8028836029c4432",
+            "title": "Smooth Representation Clustering"
+        },
+        {
+            "paperId": "24065d385bae5579be07607a1f63eb79cebf8773",
+            "title": "Incremental Learning of NCM Forests for Large-Scale Image Classification"
+        },
+        {
+            "paperId": "cc46242c10643235b734cf856aea61ed4ba9d948",
+            "title": "Segmentation-Free Dynamic Scene Deblurring"
+        },
+        {
+            "paperId": "ae76644810fa6ed28d2a0765f444fa0c950bf51a",
+            "title": "Super Normal Vector for Activity Recognition Using Depth Sequences"
+        },
+        {
+            "paperId": "af431453dd9e8c191971040089c3386b843ce773",
+            "title": "Leveraging Hierarchical Parametric Networks for Skeletal Joints Based Action Segmentation and Recognition"
+        },
+        {
+            "paperId": "db0750837ca4e905ffb419f98f893e8ddfaa2da2",
+            "title": "Latent Regression Forest: Structured Estimation of 3D Articulated Hand Posture"
+        },
+        {
+            "paperId": "8336dc3434a30dd677e3a2c95566739d7947b06a",
+            "title": "Spectral Graph Reduction for Efficient Image and Streaming Video Segmentation"
+        },
+        {
+            "paperId": "6d4c9c923e9f145d1c01a2de2afc38ec23c44253",
+            "title": "Large-Scale Video Classification with Convolutional Neural Networks"
+        },
+        {
+            "paperId": "f57137ae926b1a50b9a55457b996bbd1e1635b89",
+            "title": "R-CNNs for Pose Estimation and Action Detection"
+        },
+        {
+            "paperId": "74fa03ea483393e7c1b305b023b6161d449ec052",
+            "title": "Scaling up matrix computations on shared-memory manycore systems with 1000 CPU cores"
+        },
+        {
+            "paperId": "67dccc9a856b60bdc4d058d83657a089b8ad4486",
+            "title": "Two-Stream Convolutional Networks for Action Recognition in Videos"
+        },
+        {
+            "paperId": "09e1c1a130d98c91a9a5446690e114e2cc14e007",
+            "title": "Human Action Recognition by Representing 3D Skeletons as Points in a Lie Group"
+        },
+        {
+            "paperId": "2c117be9bc1c62d739705069c2880f010cf73ef0",
+            "title": "Realtime and Robust Hand Tracking from Depth"
+        },
+        {
+            "paperId": "71b7178df5d2b112d07e45038cb5637208659ff7",
+            "title": "Microsoft COCO: Common Objects in Context"
+        },
+        {
+            "paperId": "a99add9d76d849a8d47b93532703e4ca0f683b92",
+            "title": "Multi-scale Orderless Pooling of Deep Convolutional Activation Features"
+        },
+        {
+            "paperId": "8455f7e992596fbb39212897a9421c9005949f76",
+            "title": "Parsing the Hand in Depth Images"
+        },
+        {
+            "paperId": "18804d8e981fa66135c0ffa6fdb2b8b3fec6d753",
+            "title": "Predicting human gaze beyond pixels."
+        },
+        {
+            "paperId": "1109b663453e78a59e4f66446d71720ac58cec25",
+            "title": "OverFeat: Integrated Recognition, Localization and Detection using Convolutional Networks"
+        },
+        {
+            "paperId": "dc6ac3437f0a6e64e4404b1b9d188394f8a3bf71",
+            "title": "Deep Inside Convolutional Networks: Visualising Image Classification Models and Saliency Maps"
+        },
+        {
+            "paperId": "d67175d17c450ab0ac9c256103828f9e9a0acb85",
+            "title": "Some Improvements on Deep Convolutional Neural Network Based Image Classification"
+        },
+        {
+            "paperId": "5e83ab70d0cbc003471e87ec306d27d9c80ecb16",
+            "title": "Network In Network"
+        },
+        {
+            "paperId": "2a002ce457f7ab3088fbd2691734f1ce79f750c4",
+            "title": "DeepPose: Human Pose Estimation via Deep Neural Networks"
+        },
+        {
+            "paperId": "080bab0f7cb769b05ed5f6e74e5819e578017558",
+            "title": "Eye can read your mind: decoding gaze fixations to reveal categorical search targets."
+        },
+        {
+            "paperId": "67fc0ec1d26f334b05fe66d2b7e0767b60fb73b6",
+            "title": "Scalable Object Detection Using Deep Neural Networks"
+        },
+        {
+            "paperId": "713f73ce5c3013d9fb796c21b981dc6629af0bd5",
+            "title": "Deep Neural Networks for Object Detection"
+        },
+        {
+            "paperId": "b222b3b05d8d313420dbde8b163e4336a85dcde9",
+            "title": "Mid-level Visual Element Discovery as Discriminative Mode Seeking"
+        },
+        {
+            "paperId": "4aa4069693bee00d1b0759ca3df35e59284e9845",
+            "title": "DeViSE: A Deep Visual-Semantic Embedding Model"
+        },
+        {
+            "paperId": "d9b6b3d2044c696dd80dbc93b543ab45f34f3bc8",
+            "title": "SfM with MRFs: Discrete-Continuous Optimization for Large-Scale Structure from Motion"
+        },
+        {
+            "paperId": "fed350bc7c6ec7d402850c7a06b81aa0907f06d0",
+            "title": "Corrected-Moment Illuminant Estimation"
+        },
+        {
+            "paperId": "33594e1bfe93fc6c74c2bcfc1bc39c524fa9e2ca",
+            "title": "Alternating Regression Forests for Object Detection and Pose Estimation"
+        },
+        {
+            "paperId": "19c9ac899d5c1a008eaee887556bc1b61ff8132e",
+            "title": "Deformable Part Descriptors for Fine-Grained Recognition and Attribute Prediction"
+        },
+        {
+            "paperId": "1113b4fcf644616e2587eacead2bca4b794ac47d",
+            "title": "Efficient Human Pose Estimation from Single Depth Images"
+        },
+        {
+            "paperId": "9f04d907ba87261d4e46ed03dd7de0ec7a1a125f",
+            "title": "Articulated Human Detection with Flexible Mixtures of Parts"
+        },
+        {
+            "paperId": "124ff7a0a83647e15c782199cbb8ecd6989ab90f",
+            "title": "Unifying Nuclear Norm and Bilinear Factorization Approaches for Low-Rank Matrix Decomposition"
+        },
+        {
+            "paperId": "780eeaa7605562cb2363e051864867958db6e876",
+            "title": "Real-Time Articulated Hand Pose Estimation Using Semi-supervised Transductive Regression Forests"
+        },
+        {
+            "paperId": "9e8ce202fb51cd11d2b926e7ad21e08a58a43903",
+            "title": "Structured Forests for Fast Edge Detection"
+        },
+        {
+            "paperId": "94fdacd117c545300438ce39bbc684833f9e36e7",
+            "title": "Efficient Hand Pose Estimation from a Single Depth Image"
+        },
+        {
+            "paperId": "d6fd336e6f84b13b54968f2cae19a260c91ddded",
+            "title": "Interactive Markerless Articulated Hand Motion Tracking Using RGB and Depth Data"
+        },
+        {
+            "paperId": "4194159e8cb641b2df7e995794e3af2a8a03ab23",
+            "title": "A Unified Video Segmentation Benchmark: Annotation, Metrics and Analysis"
+        },
+        {
+            "paperId": "1a2a770d23b4a171fa81de62a78a3deb0588f238",
+            "title": "Visualizing and Understanding Convolutional Networks"
+        },
+        {
+            "paperId": "2f4df08d9072fc2ac181b7fced6a245315ce05c8",
+            "title": "Rich Feature Hierarchies for Accurate Object Detection and Semantic Segmentation"
+        },
+        {
+            "paperId": "1d6e6adc7a841393fc10b78dc0018e550aff589d",
+            "title": "Provable Bounds for Learning Some Deep Representations"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "b8de958fead0d8a9619b55c7299df3257c624a96",
+            "title": "DeCAF: A Deep Convolutional Activation Feature for Generic Visual Recognition"
+        },
+        {
+            "paperId": "5ffd8d720e2b239691a8446efe5107715b32714b",
+            "title": "BLSTM-RNN Based 3D Gesture Classification"
+        },
+        {
+            "paperId": "79b949d9b35c3f51dd20fb5c746cc81fc87147eb",
+            "title": "Vision meets robotics: The KITTI dataset"
+        },
+        {
+            "paperId": "f09e8b31a6e9e815237b89867c3f758d19977158",
+            "title": "Interpretable aesthetic features for affective image classification"
+        },
+        {
+            "paperId": "237a04dd8291cbdb59b6dc4b53e689af743fe2a3",
+            "title": "Learning Hierarchical Features for Scene Labeling"
+        },
+        {
+            "paperId": "429a2c7fd324722dce57296ec2aead725b0d2104",
+            "title": "Robust human action recognition via long short-term memory"
+        },
+        {
+            "paperId": "51b685fe8ce6b917993aecbf9e16cdd07d3b1b7c",
+            "title": "Towards Linear-Time Incremental Structure from Motion"
+        },
+        {
+            "paperId": "09c2e0d4aabe137789e4da403b712fabc9b20c5b",
+            "title": "Ensemble Learning for Confidence Measures in Stereo Vision"
+        },
+        {
+            "paperId": "6b730f5dfbd73172a4bba2d00d377a145c046bca",
+            "title": "Blocks That Shout: Distinctive Parts for Scene Classification"
+        },
+        {
+            "paperId": "1bbe9a802c83f52f365e6cef799df9dc19f9dbdb",
+            "title": "HON4D: Histogram of Oriented 4D Normals for Activity Recognition from Depth Sequences"
+        },
+        {
+            "paperId": "e6f732b7668fde550277123564670197d307d715",
+            "title": "Learning to Estimate and Remove Non-uniform Image Blur"
+        },
+        {
+            "paperId": "d350be53eff985e199c596f3b92bca817e95c778",
+            "title": "A Fully-Connected Layered Model of Foreground and Background Flow"
+        },
+        {
+            "paperId": "1dbd7653ede6af15d539f64cb2128752ca029e44",
+            "title": "Hollywood 3D: Recognizing Actions in 3D Natural Scenes"
+        },
+        {
+            "paperId": "eea7842025dad6b4cf53445c161538536020b412",
+            "title": "Spatiotemporal Deformable Part Models for Action Detection"
+        },
+        {
+            "paperId": "369e64f4bc471eca37b92c7ef94be904bb9615ba",
+            "title": "Unnatural L0 Sparse Representation for Natural Image Deblurring"
+        },
+        {
+            "paperId": "e6052969b1220a56f73a304a158e7cddfe5612c8",
+            "title": "Exploiting the Power of Stereo Confidences"
+        },
+        {
+            "paperId": "890b1f7946ada41e03dcc2807e74d64372716496",
+            "title": "Spatio-temporal Depth Cuboid Similarity Feature for Activity Recognition Using Depth Camera"
+        },
+        {
+            "paperId": "aa7bfd2304201afbb19971ebde87b17e40242e91",
+            "title": "On the importance of initialization and momentum in deep learning"
+        },
+        {
+            "paperId": "eff61216e0136886e1158625b1e5a88ed1a7cbce",
+            "title": "Predicting Parameters in Deep Learning"
+        },
+        {
+            "paperId": "ffc1e4ba9fb5b8535a0193d90f1bc253c4dae540",
+            "title": "Alternating Decision Forests"
+        },
+        {
+            "paperId": "00f2a152454db273b0d6831b6550beb37a135890",
+            "title": "Scene Coordinate Regression Forests for Camera Relocalization in RGB-D Images"
+        },
+        {
+            "paperId": "9b07ba7628d47c262fb47eb682d4a2412ebf9feb",
+            "title": "Robust real-time visual odometry for dense RGB-D mapping"
+        },
+        {
+            "paperId": "9e50fb4f3bbca0316c13ccfbde759b269047b3b4",
+            "title": "Multi-Wiener SURE-LET Deconvolution"
+        },
+        {
+            "paperId": "032d67d27ecacbf6c5b82eb67e5d02d81fb43a7a",
+            "title": "A Survey on Multi-view Learning"
+        },
+        {
+            "paperId": "de734cdfb68f4bcd91dcba4f243ced796c093394",
+            "title": "Edge-based blur kernel estimation using patch priors"
+        },
+        {
+            "paperId": "e9ecd4382cdb12bc6f26c7e6915ca849827a84b1",
+            "title": "Nonlocal Image Restoration With Bilateral Variance Estimation: A Low-Rank Approach"
+        },
+        {
+            "paperId": "f6b51c8753a871dc94ff32152c00c01e94f90f09",
+            "title": "Efficient Estimation of Word Representations in Vector Space"
+        },
+        {
+            "paperId": "5eb4c55740165defacf08329beaae5314d7fbfe6",
+            "title": "A benchmark for the evaluation of RGB-D SLAM systems"
+        },
+        {
+            "paperId": "cec14347ffaba614d2a3fa5e1f2bf734770eedd3",
+            "title": "Kernel-Based Weighted Multi-view Clustering"
+        },
+        {
+            "paperId": "3127190433230b3dc1abd0680bb58dced4bcd90e",
+            "title": "Large Scale Distributed Deep Networks"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "689dd0f68b81bf15b88775c3c6b59af02436c299",
+            "title": "Video Segmentation with Superpixels"
+        },
+        {
+            "paperId": "c4d92b1689b4402310247ed23ce0a80724bbc261",
+            "title": "A Quantitative Evaluation of Confidence Measures for Stereo Vision"
+        },
+        {
+            "paperId": "3bacd80a1b178a44666e712daf7923fd9a0bede2",
+            "title": "Hand Pose Estimation and Hand Shape Classification Using Multi-layered Randomized Decision Forests"
+        },
+        {
+            "paperId": "43ae07ae86545a586e5fee60f760120e0f1c32fb",
+            "title": "Minimizing Energies with Hierarchical Costs"
+        },
+        {
+            "paperId": "0dd4279e398523aa6c128f976f4748887775c7e1",
+            "title": "Coupled quasi\u2010harmonic bases"
+        },
+        {
+            "paperId": "0060745e006c5f14ec326904119dca19c6545e51",
+            "title": "Improving neural networks by preventing co-adaptation of feature detectors"
+        },
+        {
+            "paperId": "21a39ca716c37ccc133ff96c31cc71565d0c968e",
+            "title": "Functional maps"
+        },
+        {
+            "paperId": "489fc2a88f0257b577c3fecb5e4a59451c97dbfe",
+            "title": "Face Alignment by Explicit Shape Regression"
+        },
+        {
+            "paperId": "4006448d5b8ca4d9ff9ce138e9d756517e14ec35",
+            "title": "Practical low-rank matrix approximation under robust L1-norm"
+        },
+        {
+            "paperId": "d8398d4fa0c4722bd6f0eb0d374178c5a35cd3f3",
+            "title": "Visual tracking via adaptive structural local sparse appearance model"
+        },
+        {
+            "paperId": "76abc5301bacc7bedf690f067a98200bf5095402",
+            "title": "Layered segmentation and optical flow estimation over time"
+        },
+        {
+            "paperId": "de5b0fd02ea4f4d67fe3ae0d74603b9822df4e42",
+            "title": "Are we ready for autonomous driving? The KITTI vision benchmark suite"
+        },
+        {
+            "paperId": "07fb4ab89d1c1a684853b3cf2258174de5bb78f2",
+            "title": "Joint motion estimation and segmentation of complex scenes with label costs and occlusion modeling"
+        },
+        {
+            "paperId": "49435aab7cdf259335725acc96691f755e436f55",
+            "title": "A database for fine grained activity detection of cooking activities"
+        },
+        {
+            "paperId": "b3d80ae66aae86b0fc2f6fd962c5c3a4ea909e94",
+            "title": "Weakly Supervised Localization and Learning with Generic Knowledge"
+        },
+        {
+            "paperId": "b19d27e1bda4d039f9eaf2b2eb9d47f75abe9d75",
+            "title": "Sparse Subspace Clustering: Algorithm, Theory, and Applications"
+        },
+        {
+            "paperId": "a97b5db17acc731ef67321832dbbaf5766153135",
+            "title": "Supervised Sequence Labelling with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "d867d7c8cfefe0f5a297a3c613ae6d79c851f4b9",
+            "title": "An iterative integrated framework for thermal-visible image registration, sensor fusion, and people tracking for video surveillance applications"
+        },
+        {
+            "paperId": "892f0d45074f1d8053ddcd6b8be2f50ebbcf014a",
+            "title": "Outdoor stereo camera system for the generation of real-world benchmark data sets"
+        },
+        {
+            "paperId": "711a22f55111db6f5599076dcdd791a94a5e9368",
+            "title": "Object Detection with Grammar Models"
+        },
+        {
+            "paperId": "294b6e36f3f674d08d5951db5f6651847b269174",
+            "title": "Data-driven visual similarity for cross-domain image matching"
+        },
+        {
+            "paperId": "37e41557932cc0035eab23fd767bde68f6475c3a",
+            "title": "Segmentation as selective search for object recognition"
+        },
+        {
+            "paperId": "8b3b8848a311c501e704c45c6d50430ab7068956",
+            "title": "HMDB: A large video database for human motion recognition"
+        },
+        {
+            "paperId": "472df520353b3715ee8e5234db01d0f551e6d9a2",
+            "title": "Multimodal templates for real-time detection of texture-less objects in heavily cluttered scenes"
+        },
+        {
+            "paperId": "40da1560afbf65bb1d66e75a33dfe617e0dc4a2e",
+            "title": "Discriminative figure-centric models for joint action localization and recognition"
+        },
+        {
+            "paperId": "529403ab43b381b942b67751862b614cbd94341b",
+            "title": "From learning models of natural image patches to whole image restoration"
+        },
+        {
+            "paperId": "5efb47e755ae6428bc694829b0ed231d3be91e64",
+            "title": "Fast removal of non-uniform camera shake"
+        },
+        {
+            "paperId": "8e15dc51de6da2bc5cabbb733cf2adf5a2c1f72c",
+            "title": "Human action recognition by learning bases of action attributes and parts"
+        },
+        {
+            "paperId": "e2975deb809f35bd47ac3de34e348675a0cfb3f6",
+            "title": "KinectFusion: Real-time dense surface mapping and tracking"
+        },
+        {
+            "paperId": "93aa063d330ed7509f55b1297138cf20300fb969",
+            "title": "Kernels for Vector-Valued Functions: a Review"
+        },
+        {
+            "paperId": "6d68055a44393551b885977deab3479d9b452343",
+            "title": "Learning Output Kernels with Block Coordinate Descent"
+        },
+        {
+            "paperId": "c0d584423cd4afc3c1b861b7c62bb5da48021d66",
+            "title": "Learning Multi-View Neighborhood Preserving Projections"
+        },
+        {
+            "paperId": "917e01d4be4a3417b2941ecd548186a6bf868358",
+            "title": "A Co-training Approach for Multi-view Spectral Clustering"
+        },
+        {
+            "paperId": "43dfc9392d2aba128a40f458581a294bcaac497e",
+            "title": "Real time head pose estimation with random regression forests"
+        },
+        {
+            "paperId": "2915510a39448503ee873f9693cd3808ca74bd81",
+            "title": "Real-time human pose recognition in parts from single depth images"
+        },
+        {
+            "paperId": "f908d2fb9cfcaff17030a912e4811fb02aaeec03",
+            "title": "Fast cost-volume filtering for visual correspondence and beyond"
+        },
+        {
+            "paperId": "8339da16dced3343173fc71373012d73c9f59f8d",
+            "title": "Scalable multi-class object detection"
+        },
+        {
+            "paperId": "aba7b76c300db4159592ee2933d8796176d1e737",
+            "title": "Action recognition by dense trajectories"
+        },
+        {
+            "paperId": "c30b9fb837e912ccf3919fdb64e9543fca57799e",
+            "title": "Evaluating knowledge transfer and zero-shot learning in a large-scale setting"
+        },
+        {
+            "paperId": "21fa37258834c2e3f075a8465d8de1c178cdaaf5",
+            "title": "Shape-based pedestrian parsing"
+        },
+        {
+            "paperId": "6835f680a3d02b98ee090cdb93d3e7a15fb0cf97",
+            "title": "Large Displacement Optical Flow: Descriptor Matching in Variational Motion Estimation"
+        },
+        {
+            "paperId": "7e9f1435a51530408db91056a59b7a350aa5ca8b",
+            "title": "Mining data with random forests: A survey and results of new tests"
+        },
+        {
+            "paperId": "1ab86f25753d4a9cf55d913c2955b539ee552cd5",
+            "title": "SMILE: A Similarity-Based Approach for Multiple Instance Learning"
+        },
+        {
+            "paperId": "80167e8e03cdb830948b23af2a3bb2d3131dfdfb",
+            "title": "Image Deblurring and Super-Resolution by Adaptive Sparse Domain Selection and Adaptive Regularization"
+        },
+        {
+            "paperId": "ec2e48627c17b002aa3202d2f8ac426faa6f304b",
+            "title": "Block Variable Selection in Multivariate Regression and High-dimensional Causal Inference"
+        },
+        {
+            "paperId": "f2362cf37d9693cbc1d2f7ac50b44fca4b28d6cd",
+            "title": "Layered image motion with explicit occlusions, temporal consistency, and depth ordering"
+        },
+        {
+            "paperId": "2c411a12f33f15451e1659a3435391962c0cc144",
+            "title": "Affective image classification using features inspired by psychology and art theory"
+        },
+        {
+            "paperId": "1551ab876f75b1d11eab4a7ebd21c95ac771da43",
+            "title": "Hough Transform and 3D SURF for Robust Three Dimensional Classification"
+        },
+        {
+            "paperId": "c8d905b121e3e1f27d1f72195e27b7c8ac1a4386",
+            "title": "Detecting People Using Mutually Consistent Poselet Activations"
+        },
+        {
+            "paperId": "83f826bd48755e3ea81ad5c921382338f3bb4688",
+            "title": "Single Image Deblurring Using Motion Density Functions"
+        },
+        {
+            "paperId": "ffeb684b193afd21aefc5a6b05fb3616cc99418e",
+            "title": "Semantic Label Sharing for Learning with Many Categories"
+        },
+        {
+            "paperId": "7db8add47367430b35ff3c5373f8d00450f13348",
+            "title": "Building Rome on a Cloudless Day"
+        },
+        {
+            "paperId": "4e65c9f0a64b6a4333b12e2adc3861ad75aca83b",
+            "title": "Image Classification Using Super-Vector Coding of Local Image Descriptors"
+        },
+        {
+            "paperId": "994a7b903b937f8b177c035db86852091fd26aa7",
+            "title": "Modeling Temporal Structure of Decomposable Motion Segments for Activity Classification"
+        },
+        {
+            "paperId": "e79272fe3d65197100eae8be9fec6469107969ae",
+            "title": "Object Detection with Discriminatively Trained Part Based Models"
+        },
+        {
+            "paperId": "c993431e61e524565cd2e86435978e1b47067949",
+            "title": "A Convex Formulation for Learning Task Relationships in Multi-Task Learning"
+        },
+        {
+            "paperId": "4bb83b00e7b8eb27ad04d4bb80499e91fc471a07",
+            "title": "Emotion related structures in large image databases"
+        },
+        {
+            "paperId": "14f4b86f5429335df0a9c77cb2ccc7c715a01942",
+            "title": "Non-uniform Deblurring for Shaken Images"
+        },
+        {
+            "paperId": "a1855be6143291aeafb16338eb3327f903ac7618",
+            "title": "Aggregating local descriptors into a compact image representation"
+        },
+        {
+            "paperId": "2f7713dcc35e7c05becf3be5522f36c9546b0364",
+            "title": "Locality-constrained Linear Coding for image classification"
+        },
+        {
+            "paperId": "ce51aa425cccb509830f5e5882230ff976344cc5",
+            "title": "Fast Approximate Energy Minimization with Label Costs"
+        },
+        {
+            "paperId": "e654ba9b84d4bc2d723335548c7a49c71b0b06f8",
+            "title": "Cascaded pose regression"
+        },
+        {
+            "paperId": "0a87428c6b2205240485ee6bb9cfb00fd9ed359c",
+            "title": "Secrets of optical flow estimation and their principles"
+        },
+        {
+            "paperId": "d3a41b37b630ab1c25fae96c57d01fcf4b8f8d76",
+            "title": "Analyzing spatially-varying blur"
+        },
+        {
+            "paperId": "c65be1f97642510843667d36e399de58837d3419",
+            "title": "Supervised translation-invariant sparse coding"
+        },
+        {
+            "paperId": "4e1f786e79ad9f03436563b4fac53bfde789c697",
+            "title": "Model globally, match locally: Efficient and robust 3D object recognition"
+        },
+        {
+            "paperId": "3a9b175324ba11bc0e16c0633912d897b2fac4e2",
+            "title": "The Pascal Visual Object Classes (VOC) Challenge"
+        },
+        {
+            "paperId": "94968ac5c8b2a369aede6f6645c5f76e793aad58",
+            "title": "On Two-Dimensional Sparse Matrix Partitioning: Models, Methods, and a Recipe"
+        },
+        {
+            "paperId": "52c969f7acd3d4ff6257e9551ceb876b8525d41b",
+            "title": "Clustering with Multiple Graphs"
+        },
+        {
+            "paperId": "e0781ce041ee57da83dc400fbabb1209f24e65a8",
+            "title": "Fast motion deblurring"
+        },
+        {
+            "paperId": "9922e9f7c87b859df2e8af355f03744d33023f0e",
+            "title": "Building Rome in a day"
+        },
+        {
+            "paperId": "744293fb92aa3dde3a5001885cf61eb7165eb95b",
+            "title": "PatchMatch: a randomized correspondence algorithm for structural image editing"
+        },
+        {
+            "paperId": "c82d90336ba365c7914fe4bd6c292a8c6916a801",
+            "title": "Recognizing indoor scenes"
+        },
+        {
+            "paperId": "17eb16501cbff72beaa637b9226a8472d0b3de81",
+            "title": "Image deblurring and denoising using color priors"
+        },
+        {
+            "paperId": "1f281b87ef58c0dd244ec4743fb1f899b4948308",
+            "title": "Class-specific Hough forests for object detection"
+        },
+        {
+            "paperId": "3e083dc8aeb7983a5cdff146985363d38caf0886",
+            "title": "Pedestrian detection: A benchmark"
+        },
+        {
+            "paperId": "d2c733e34d48784a37d717fe43d9e93277a8c53e",
+            "title": "ImageNet: A large-scale hierarchical image database"
+        },
+        {
+            "paperId": "95a85842a726c614206774892e55d1dd1893b6ec",
+            "title": "Higher-order clique reduction in binary graph cut"
+        },
+        {
+            "paperId": "8194d30109afd911b5ecffec59b8c281c0b1a81b",
+            "title": "MAP Estimation of Semi-Metric MRFs via Hierarchical Graph Cuts"
+        },
+        {
+            "paperId": "5ae20e0bdfddc1888148e0fcde88d937e96318d2",
+            "title": "Learning structural SVMs with latent variables"
+        },
+        {
+            "paperId": "0728914a1dba0417bf2847548aa15711f3f8d4e8",
+            "title": "Multi-view clustering via canonical correlation analysis"
+        },
+        {
+            "paperId": "cd1a6669bdfb35c4db0dbd872dc7c58b44fe376a",
+            "title": "Shared Segmentation of Natural Scenes Using Dependent Pitman-Yor Processes"
+        },
+        {
+            "paperId": "9e7b0395d7b34e9d34cca779afd0c10da6e135b5",
+            "title": "Convex multi-task feature learning"
+        },
+        {
+            "paperId": "0da75214f4d1f636355bb0212262c5c5e55b746c",
+            "title": "Iterative Thresholding for Sparse Approximations"
+        },
+        {
+            "paperId": "9491bcc1e54b52bea617283f7f716cf009068bce",
+            "title": "Clustered Multi-Task Learning: A Convex Formulation"
+        },
+        {
+            "paperId": "49c67ea9313bd859b201603857c45e3597c77b4e",
+            "title": "Multi-instance learning by treating instances as non-I.I.D. samples"
+        },
+        {
+            "paperId": "8e7f51853229843c0056681f97754869032348ee",
+            "title": "Global stereo reconstruction under second order smoothness priors"
+        },
+        {
+            "paperId": "02a98118ce990942432c0147ff3c0de756b4b76a",
+            "title": "Learning realistic human actions from movies"
+        },
+        {
+            "paperId": "0e931d257ac4d1088fc0569284526c487095a406",
+            "title": "Fast and robust numerical solutions to minimal problems for cameras with radial distortion"
+        },
+        {
+            "paperId": "93f98ae9405399ff33d49d81d47c3f6e757ce60d",
+            "title": "Skeletal graphs for efficient structure from motion"
+        },
+        {
+            "paperId": "e80c48441351fc1d928524710b4500a0de8315bb",
+            "title": "SUN: A Bayesian framework for saliency using natural statistics."
+        },
+        {
+            "paperId": "b9828f6a4ca3c8e3142108f1ef1b0f376c1150b3",
+            "title": "Image restoration by sparse 3D transform-domain collaborative filtering"
+        },
+        {
+            "paperId": "01eeff3fb391294cef61d35e75c557575b5b0338",
+            "title": "Efficient Mining of Frequent and Distinctive Feature Configurations"
+        },
+        {
+            "paperId": "f6e91fc3550d7cd2337f031a571553e25c6a930f",
+            "title": "Convex Clustering with Exemplar-Based Models"
+        },
+        {
+            "paperId": "32a4ce65df5321ef2e2ebad6dda990f14fbf0a23",
+            "title": "Analyzing Co-training Style Algorithms"
+        },
+        {
+            "paperId": "23694b6d61668e62bb11f17c1d75dde3b4951948",
+            "title": "Fisher Kernels on Visual Vocabularies for Image Categorization"
+        },
+        {
+            "paperId": "bfedd15b5c82f97a7cc97df4754d1f255b58a12a",
+            "title": "Background-subtraction using contour-based fusion of thermal and visible imagery"
+        },
+        {
+            "paperId": "71e3d9fc53ba14c2feeb7390f0dc99076553b05a",
+            "title": "Robust Object Recognition with Cortex-Like Mechanisms"
+        },
+        {
+            "paperId": "c434bd9db63fca8c1fa3ff28c2d3962441b77f89",
+            "title": "Blind Motion Deblurring Using Image Statistics"
+        },
+        {
+            "paperId": "9bca4d7b932e0854c3325f1578cfd17341dd8ea8",
+            "title": "A Kernel Method for the Two-Sample-Problem"
+        },
+        {
+            "paperId": "ac4ca15a40799b2159c918fcf3b6d1794efd6ca2",
+            "title": "Three-Dimensional Model-Based Object Recognition and Segmentation in Cluttered Scenes"
+        },
+        {
+            "paperId": "e0bcc580a1e9e32b3329363bab43331ed9c5a7d4",
+            "title": "Convergent Tree-Reweighted Message Passing for Energy Minimization"
+        },
+        {
+            "paperId": "47980c6e42f1a3381e6c5f3db7230e6a64c40218",
+            "title": "Finding People in Images and Videos"
+        },
+        {
+            "paperId": "a31e9d09d90261fc68acffe097df592cfdcb7706",
+            "title": "Photo tourism: exploring photo collections in 3D"
+        },
+        {
+            "paperId": "2fbfd6a9daa73756196ec663d65019a7a9b58600",
+            "title": "Cosegmentation of Image Pairs by Histogram Matching - Incorporating a Global Constraint into MRFs"
+        },
+        {
+            "paperId": "78947497cbbffc691aac3f590d972130259af9ce",
+            "title": "Distance Metric Learning for Large Margin Nearest Neighbor Classification"
+        },
+        {
+            "paperId": "e9fde5617b15623d1151d152671626df06aa5c2a",
+            "title": "Addendum: Regularization and variable selection via the elastic net"
+        },
+        {
+            "paperId": "952a6413aeac22d6b1f421e040072a17fcebad23",
+            "title": "Robust L/sub 1/ norm factorization in the presence of outliers and missing data by alternative convex programming"
+        },
+        {
+            "paperId": "5f26571ec4473d8f2efb9deae4aa1ce703be1eba",
+            "title": "Motion Competition: A Variational Approach to Piecewise Parametric Motion Segmentation"
+        },
+        {
+            "paperId": "1abfc1c96fe3f2dd2b9282835dea1fd6906fedb0",
+            "title": "Kernels for Multi--task Learning"
+        },
+        {
+            "paperId": "cedf154c28178370d95510112413dc8cb48120a8",
+            "title": "Maximum-Margin Matrix Factorization"
+        },
+        {
+            "paperId": "8c04f169203f9e55056a6f7f956695babe622a38",
+            "title": "Distinctive Image Features from Scale-Invariant Keypoints"
+        },
+        {
+            "paperId": "6c9f7ddc68ae6d29e6973b2b0b9ca93eef423190",
+            "title": "Color lines: image specific color representation"
+        },
+        {
+            "paperId": "ce3cddcfcf19797b323ba2800b5c1c395b07b6cd",
+            "title": "ForWaRD: Fourier-wavelet regularized deconvolution for ill-conditioned systems"
+        },
+        {
+            "paperId": "0c450531e1121cfb657be5195e310217a4675397",
+            "title": "Max-Margin Markov Networks"
+        },
+        {
+            "paperId": "642e328cae81c5adb30069b680cf60ba6b475153",
+            "title": "Video Google: a text retrieval approach to object matching in videos"
+        },
+        {
+            "paperId": "11bec3f6e2318f334d58bf6d9d80b67ab41355b4",
+            "title": "Locally Optimized RANSAC"
+        },
+        {
+            "paperId": "755e566d3f10d057bc9e4908e4016ae6f7ca0753",
+            "title": "Weighted Low-Rank Approximations"
+        },
+        {
+            "paperId": "d2f78c2b2b325d72f359d4c797c9aab6a8e60942",
+            "title": "A Taxonomy and Evaluation of Dense Two-Frame Stereo Correspondence Algorithms"
+        },
+        {
+            "paperId": "7bdab89bcf6571108454ca6fdb1504791f2905e4",
+            "title": "Simultaneous linear estimation of multiple view geometry and lens distortion"
+        },
+        {
+            "paperId": "15d53db3001fb150ab2e17e02730379b429b95ed",
+            "title": "Mixtures of trees for object recognition"
+        },
+        {
+            "paperId": "3120324069ec20eed853d3f9bbbceb32e4173b93",
+            "title": "Fast approximate energy minimization via graph cuts"
+        },
+        {
+            "paperId": "1679beddda3a183714d380e944fe6bf586c083cd",
+            "title": "Greedy function approximation: A gradient boosting machine."
+        },
+        {
+            "paperId": "90d6e7f2202f754d8588f9536e3f5b4a24701f24",
+            "title": "Representing and Recognizing the Visual Appearance of Materials using Three-dimensional Textons"
+        },
+        {
+            "paperId": "df6c0c55864252090b4099237aa821a6c75b52c2",
+            "title": "Using Spin Images for Efficient Object Recognition in Cluttered 3D Scenes"
+        },
+        {
+            "paperId": "e409ee3d6df4f55597d5efe44676cb77f6c599d2",
+            "title": "Lines and Points in Three Views and the Trifocal Tensor"
+        },
+        {
+            "paperId": "1c7d38f68fe1150895a186e30b60c02dd89a676a",
+            "title": "Solving the Multiple Instance Problem with Axis-Parallel Rectangles"
+        },
+        {
+            "paperId": "1365bc5de434771f05f186c6be75bb9400b15495",
+            "title": "Estimating Optical Flow in Segmented Images Using Variable-Order Parametric Models With Local Deformations"
+        },
+        {
+            "paperId": "435384cc048ce88afa4e9cfb51e38297c4e7a255",
+            "title": "MDL-Based Decision Tree Pruning"
+        },
+        {
+            "paperId": "03ce1779bff26648490516eb4c9a13feaaf61f06",
+            "title": "Algebraic Functions For Recognition"
+        },
+        {
+            "paperId": "29946f1724104a47d73ab9c88cde129505b66ee5",
+            "title": "Fast Algorithms for Mining Association Rules in Large Databases"
+        },
+        {
+            "paperId": "de3a19f1587f371d860dd4ae0ddef180c8e579bf",
+            "title": "Representing moving images with layers"
+        },
+        {
+            "paperId": "80e4a9ba9d583c291b5db8c9549364757b092828",
+            "title": "Projective reconstruction from line correspondences"
+        },
+        {
+            "paperId": "9576d1573688a05e45ad30e783e7d0c10a10d6d9",
+            "title": "Measuring emotion: the Self-Assessment Manikin and the Semantic Differential."
+        },
+        {
+            "paperId": "ef46c51a9f9db65311accbfa5405b1d0dc280f93",
+            "title": "Eye, brain and vision"
+        },
+        {
+            "paperId": "54205667c1f65a320f667d73c354ed8e86f1b9d9",
+            "title": "Nonlinear total variation based noise removal algorithms"
+        },
+        {
+            "paperId": "6dc61f37ecc552413606d8c89ffbc46ec98ed887",
+            "title": "Acceleration of stochastic approximation by averaging"
+        },
+        {
+            "paperId": "a3b2a1b3a3364c6ff082e3a87e354c79ccd4334e",
+            "title": "Structure from motion using line correspondences"
+        },
+        {
+            "paperId": "a8e8f3c8d4418c8d62e306538c9c1292635e9d27",
+            "title": "Backpropagation Applied to Handwritten Zip Code Recognition"
+        },
+        {
+            "paperId": "b784f90bc8f81a1786a21a46bd483e1e20a5f98d",
+            "title": "Estimating motion/structure from line correspondences: a robust linear algorithm and uniqueness theorems"
+        },
+        {
+            "paperId": null,
+            "title": "Eyal Krupka, Andrew Fitzgibbon, and Shahram Izadi. Accurate, robust, and flexible realtime hand tracking"
+        },
+        {
+            "paperId": "f7024dbaeb72d25c2722868d27357a206a071a17",
+            "title": "Reconstructing the World* in Six Days *(As Captured by the Yahoo 100 Million Image Dataset)"
+        },
+        {
+            "paperId": "0a72afeb25797b36d110df9615b8e85402c80202",
+            "title": "Computer vision -- ECCV 2014 : 13th European conference Zurich, Switzerland, September 6-12, 2014 : proceedings"
+        },
+        {
+            "paperId": "f15aa250d444f4b4a195726e7ad7c709d2c8ebc6",
+            "title": "Sparse Modeling of Intrinsic Correspondences"
+        },
+        {
+            "paperId": "e533c6488b42b099f320a9921ba26dcde7e97e4f",
+            "title": "Weakly Supervised Object Detection with Posterior Regularization"
+        },
+        {
+            "paperId": null,
+            "title": "Unsupervised discovery of midlevel discriminative patches"
+        },
+        {
+            "paperId": null,
+            "title": "A dataset of 101 human action classes from videos in the wild"
+        },
+        {
+            "paperId": null,
+            "title": "Blended intrinsic maps. TOG"
+        },
+        {
+            "paperId": "cfbdb860f10bd0fbd39ddff0999a32ee4f4a684a",
+            "title": "Efficient model-based 3D tracking of hand articulations using Kinect"
+        },
+        {
+            "paperId": null,
+            "title": "Efficient hierarchical graphbased video segmentation"
+        },
+        {
+            "paperId": "4574d77fff19e093782178595a8988a7f3aa1969",
+            "title": "Latent Dirichlet Allocation"
+        },
+        {
+            "paperId": "f7b4c27abb76dff4c017849049541f3fc91e77be",
+            "title": "Optimization algorithms on matrix manifolds"
+        },
+        {
+            "paperId": "69381b5efd97e7c55f51c2730caccab3d632d4d2",
+            "title": "Graph Embedding and Extensions: A General Framework for Dimensionality Reduction"
+        },
+        {
+            "paperId": "42e5c2d65ce228979334eb4e162ad0a6b944a520",
+            "title": "A Close-form Solution of Absolute Orientation Using Unit Quaternions"
+        },
+        {
+            "paperId": "6ccb34bf2122304af5cbecf54402ee3d970e43f2",
+            "title": "Induction of decision trees"
+        },
+        {
+            "paperId": null,
+            "title": "Random forests. Machine learning"
+        },
+        {
+            "paperId": "d274dfd00aaac4c4f50030c489c31ea1b6169376",
+            "title": "Multiple View Geometry in Computer Vision"
+        },
+        {
+            "paperId": "08ec9c75fc38b1781478d2e7ee3f2940ffb135f9",
+            "title": "C ENTRE FOR M ATHEMATICAL S CIENCES"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": null,
+            "title": "Combining labeled and unlabeled data with co-training"
+        },
+        {
+            "paperId": "b365b8e45b7d81f081de44ac8f9eadf9144f3ca5",
+            "title": "Regression Shrinkage and Selection via the Lasso"
+        },
+        {
+            "paperId": "6b4fe4aa4d66fecc7b2869569002714d91d0b3f7",
+            "title": "Receptive fields, binocular interaction and functional architecture in the cat's visual cortex"
+        },
+        {
+            "paperId": "dd6a32bbfa4882ae3474d57eb71e9630c1a37d59",
+            "title": "Noname manuscript No. (will be inserted by the editor) Demisting the Hough Transform for 3D Shape Recognition and Registration"
+        },
+        {
+            "paperId": "c30fe4be6fed989dc8d77bee3d6443e757020c0e",
+            "title": "Ieee Transactions on Pattern Analysis and Machine Intelligence 1 Motion Detail Preserving Optical Flow Estimation"
+        },
+        {
+            "paperId": "070874b011f8eb2b18c8aa521ad0a7a932b4d9ad",
+            "title": "Action Recognition with Improved Trajectories"
+        },
+        {
+            "paperId": "bcd84d8bd864ff903e3fe5b91bed3f2eedacc324",
+            "title": "Ieee Transactions on Pattern Analysis and Machine Intelligence 1 Stereo Processing by Semi-global Matching and Mutual Information"
+        },
+        {
+            "paperId": null,
+            "title": "Know your meme: We need to go deeper"
+        }
+    ]
+}

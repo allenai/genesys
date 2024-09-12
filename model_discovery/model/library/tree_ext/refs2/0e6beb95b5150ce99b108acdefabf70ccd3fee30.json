@@ -1,0 +1,45 @@
+{
+    "paperId": "0e6beb95b5150ce99b108acdefabf70ccd3fee30",
+    "externalIds": {
+        "MAG": "2061171222",
+        "DOI": "10.1090/S0025-5718-1965-0178586-1",
+        "CorpusId": 121744946
+    },
+    "title": "An algorithm for the machine calculation of complex Fourier series",
+    "abstract": "An efficient method for the calculation of the interactions of a 2' factorial ex- periment was introduced by Yates and is widely known by his name. The generaliza- tion to 3' was given by Box et al. (1). Good (2) generalized these methods and gave elegant algorithms for which one class of applications is the calculation of Fourier series. In their full generality, Good's methods are applicable to certain problems in which one must multiply an N-vector by an N X N matrix which can be factored into m sparse matrices, where m is proportional to log N. This results inma procedure requiring a number of operations proportional to N log N rather than N2. These methods are applied here to the calculation of complex Fourier series. They are useful in situations where the number of data points is, or can be chosen to be, a highly composite number. The algorithm is here derived and presented in a rather different form. Attention is given to the choice of N. It is also shown how special advantage can be obtained in the use of a binary computer with N = 2' and how the entire calculation can be performed within the array of N data storage locations used for the given Fourier coefficients. Consider the problem of calculating the complex Fourier series N-1 (1) X(j) = EA(k)-Wjk, j = 0 1, * ,N- 1, k=0",
+    "venue": "",
+    "year": 1965,
+    "referenceCount": 3,
+    "citationCount": 12195,
+    "influentialCitationCount": 687,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Good generalized these methods and gave elegant algorithms for which one class of applications is the calculation of Fourier series, applicable to certain problems in which one must multiply an N-vector by an N X N matrix which can be factored into m sparse matrices."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2372800",
+            "name": "J. Cooley"
+        },
+        {
+            "authorId": "2016914",
+            "name": "J. Tukey"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "0eaf515d3289a3c6e1bca9f608540eeb9c45f80a",
+            "title": "Design and analysis of industrial experiments"
+        },
+        {
+            "paperId": null,
+            "title": "The interaction algorithm and practical Fourier series"
+        },
+        {
+            "paperId": null,
+            "title": "License or copyright restrictions may apply to redistribution; see http://www.ams.org/journal-terms-of-use"
+        }
+    ]
+}

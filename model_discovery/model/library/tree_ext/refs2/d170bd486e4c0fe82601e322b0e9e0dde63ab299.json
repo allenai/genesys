@@ -1,0 +1,174 @@
+{
+    "paperId": "d170bd486e4c0fe82601e322b0e9e0dde63ab299",
+    "externalIds": {
+        "MAG": "2894175714",
+        "DBLP": "conf/iclr/BaevskiA19",
+        "ArXiv": "1809.10853",
+        "CorpusId": 52892477
+    },
+    "title": "Adaptive Input Representations for Neural Language Modeling",
+    "abstract": "We introduce adaptive input representations for neural language modeling which extend the adaptive softmax of Grave et al. (2017) to input representations of variable capacity. There are several choices on how to factorize the input and output layers, and whether to model words, characters or sub-word units. We perform a systematic comparison of popular choices for a self-attentional architecture. Our experiments show that models equipped with adaptive embeddings are more than twice as fast to train than the popular character input CNN while having a lower number of parameters. On the WikiText-103 benchmark we achieve 18.7 perplexity, an improvement of 10.5 perplexity compared to the previously best published result and on the Billion Word benchmark, we achieve 23.02 perplexity.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2018,
+    "referenceCount": 35,
+    "citationCount": 358,
+    "influentialCitationCount": 45,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Adapt input representations for neural language modeling which extend the adaptive softmax of Grave et al. (2017) to input representations of variable capacity are introduced and a systematic comparison of popular choices for a self-attentional architecture is performed."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "51428394",
+            "name": "Alexei Baevski"
+        },
+        {
+            "authorId": "2325985",
+            "name": "Michael Auli"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "b9de9599d7241459db9213b5cdd7059696f5ef8d",
+            "title": "Character-Level Language Modeling with Deeper Self-Attention"
+        },
+        {
+            "paperId": "bf8fe437f779f2098f9af82b534aa51dc9edb06f",
+            "title": "Scaling Neural Machine Translation"
+        },
+        {
+            "paperId": "9852ae077c7da6a9d178acaa2b44a335289507a6",
+            "title": "Spell Once, Summon Anywhere: A Two-Level Open-Vocabulary Language Model"
+        },
+        {
+            "paperId": "69ac3b35887eb42e8fe554619fc7255e6e95a4cb",
+            "title": "Fast Parametric Learning with Activation Memorization"
+        },
+        {
+            "paperId": "680aafd3d51e666b297e27b93d9554cc2caf1c4d",
+            "title": "An Analysis of Neural Language Modeling at Multiple Scales"
+        },
+        {
+            "paperId": "0ca2a7465fe88f1f4912b8dd7b4b0db69a268b0b",
+            "title": "Neural Lattice Language Models"
+        },
+        {
+            "paperId": "b887a39268ee41fea8d72f0ecd364eb72fe28a82",
+            "title": "Analyzing Uncertainty in Neural Machine Translation"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "510e26733aaff585d65701b9f1be7ca9d5afc586",
+            "title": "Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer"
+        },
+        {
+            "paperId": "88caa4a0253a8b0076176745ebc072864eab66e1",
+            "title": "Language Modeling with Gated Convolutional Networks"
+        },
+        {
+            "paperId": "2d7782c225e0fc123d6e227f2cb253e58279ac73",
+            "title": "Improving Neural Language Models with a Continuous Cache"
+        },
+        {
+            "paperId": "424aef7340ee618132cc3314669400e23ad910ba",
+            "title": "Tying Word Vectors and Word Classifiers: A Loss Framework for Language Modeling"
+        },
+        {
+            "paperId": "efbd381493bb9636f489b965a2034d529cd56bcd",
+            "title": "Pointer Sentinel Mixture Models"
+        },
+        {
+            "paperId": "9ec499af9b85f30bdbdd6cdfbb07d484808c526a",
+            "title": "Efficient softmax approximation for GPUs"
+        },
+        {
+            "paperId": "63e39cdf1ad884da6bc69096bb3413b5b1100559",
+            "title": "Using the Output Embedding to Improve Language Models"
+        },
+        {
+            "paperId": "b022f2a277a4bf5f42382e86e4380b96340b9e86",
+            "title": "SGDR: Stochastic Gradient Descent with Warm Restarts"
+        },
+        {
+            "paperId": "2f2d8f8072e5cc9b296fad551f65f183bdbff7aa",
+            "title": "Exploring the Limits of Language Modeling"
+        },
+        {
+            "paperId": "759956bb98689dbcc891528636d8994e54318f85",
+            "title": "Strategies for Training Large Vocabulary Neural Language Models"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "3566c944bd71468d38872e67e441f493715233de",
+            "title": "Sparse Non-negative Matrix Language Modeling"
+        },
+        {
+            "paperId": "1518039b5001f1836565215eb047526b3ac7f462",
+            "title": "Neural Machine Translation of Rare Words with Subword Units"
+        },
+        {
+            "paperId": "891ce1687e2befddd19f54e4eef1d3f39c8dbaf7",
+            "title": "Character-Aware Neural Language Models"
+        },
+        {
+            "paperId": "dcfade77ecd26c1b21c68021ff482dba6fef8063",
+            "title": "Pragmatic Neural Language Modelling in Machine Translation"
+        },
+        {
+            "paperId": "5d833331b0e22ff359db05c62a8bca18c4f04b68",
+            "title": "One billion word benchmark for measuring progress in statistical language modeling"
+        },
+        {
+            "paperId": "71480da09af638260801af1db8eff6acb4e1122f",
+            "title": "Decoding with Large-Scale Neural Language Models Improves Translation"
+        },
+        {
+            "paperId": "aa7bfd2304201afbb19971ebde87b17e40242e91",
+            "title": "On the importance of initialization and momentum in deep learning"
+        },
+        {
+            "paperId": "84069287da0a6b488b8c933f3cb5be759cb6237e",
+            "title": "On the difficulty of training recurrent neural networks"
+        },
+        {
+            "paperId": "a17745f1d7045636577bcd5d513620df5860e9e5",
+            "title": "Deep Neural Network Language Models"
+        },
+        {
+            "paperId": "e1f27c00ead87b2bde0e1a4ef732677dd9b989ff",
+            "title": "Large, Pruned or Continuous Space Language Models on a GPU for Statistical Machine Translation"
+        },
+        {
+            "paperId": "07ca885cb5cc4328895bfaec9ab752d5801b14cd",
+            "title": "Extensions of recurrent neural network language model"
+        },
+        {
+            "paperId": "6c2b28f9354f667cd5bd07afc0471d8334430da7",
+            "title": "A Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "4af41f4d838daa7ca6995aeb4918b61989d1ed80",
+            "title": "Classes for fast maximum entropy training"
+        },
+        {
+            "paperId": "1b7db8ad49f94da9b90db89bede5f27644bb9911",
+            "title": "SGDR: Stochastic Gradient Descent with Restarts"
+        },
+        {
+            "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+            "title": "Recurrent neural network based language model"
+        },
+        {
+            "paperId": "c19fbefdeead6a4154a22a9c8551a18b1530033a",
+            "title": "Hierarchical Probabilistic Neural Network Language Model"
+        }
+    ]
+}

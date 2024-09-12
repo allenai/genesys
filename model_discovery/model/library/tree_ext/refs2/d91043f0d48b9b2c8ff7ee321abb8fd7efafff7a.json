@@ -1,0 +1,195 @@
+{
+    "paperId": "d91043f0d48b9b2c8ff7ee321abb8fd7efafff7a",
+    "externalIds": {
+        "MAG": "2953150776",
+        "DBLP": "journals/corr/abs-1712-07040",
+        "ArXiv": "1712.07040",
+        "ACL": "Q18-1023",
+        "DOI": "10.1162/tacl_a_00023",
+        "CorpusId": 2593903
+    },
+    "title": "The NarrativeQA Reading Comprehension Challenge",
+    "abstract": "Reading comprehension (RC)\u2014in contrast to information retrieval\u2014requires integrating information and reasoning about events, entities, and their relations across a full document. Question answering is conventionally used to assess RC ability, in both artificial agents and children learning to read. However, existing RC datasets and tasks are dominated by questions that can be solved by selecting answers using superficial information (e.g., local context similarity or global term frequency); they thus fail to test for the essential integrative aspect of RC. To encourage progress on deeper comprehension of language, we present a new dataset and set of tasks in which the reader must answer questions about stories by reading entire books or movie scripts. These tasks are designed so that successfully answering their questions requires understanding the underlying narrative rather than relying on shallow pattern matching or salience. We show that although humans solve the tasks easily, standard RC models struggle on the tasks presented here. We provide an analysis of the dataset and the challenges it presents.",
+    "venue": "Transactions of the Association for Computational Linguistics",
+    "year": 2017,
+    "referenceCount": 34,
+    "citationCount": 628,
+    "influentialCitationCount": 88,
+    "openAccessPdf": {
+        "url": "http://www.mitpressjournals.org/doi/pdf/10.1162/tacl_a_00023",
+        "status": "GOLD"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new dataset and set of tasks in which the reader must answer questions about stories by reading entire books or movie scripts are presented, designed so that successfully answering their questions requires understanding the underlying narrative rather than relying on shallow pattern matching or salience."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2367821",
+            "name": "Tom\u00e1s Kocisk\u00fd"
+        },
+        {
+            "authorId": "144735987",
+            "name": "Jonathan Schwarz"
+        },
+        {
+            "authorId": "1685771",
+            "name": "Phil Blunsom"
+        },
+        {
+            "authorId": "1745899",
+            "name": "Chris Dyer"
+        },
+        {
+            "authorId": "2910877",
+            "name": "Karl Moritz Hermann"
+        },
+        {
+            "authorId": "94303026",
+            "name": "G\u00e1bor Melis"
+        },
+        {
+            "authorId": "1864353",
+            "name": "Edward Grefenstette"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "69e1a8681928913df664e1de42ec4350b360efbb",
+            "title": "Inducing Semantic Micro-Clusters from Deep Multi-View Representations of Novels"
+        },
+        {
+            "paperId": "b798cfd967e1a9ca5e7bc995d33a907bf65d1c7f",
+            "title": "Gated Self-Matching Networks for Reading Comprehension and Question Answering"
+        },
+        {
+            "paperId": "3adff57fd09965224506a1bacc0579d9d3c8c11e",
+            "title": "SearchQA: A New Q&A Dataset Augmented with Context from a Search Engine"
+        },
+        {
+            "paperId": "e4600ece1f09236d082eca4537ee9c1efe687f6c",
+            "title": "FastQA: A Simple and Efficient Neural Architecture for Question Answering"
+        },
+        {
+            "paperId": "b0efb62aa2a435704a3412d592e73faf6be5ecea",
+            "title": "Unsupervised Learning of Evolving Relationships Between Literary Characters"
+        },
+        {
+            "paperId": "3eda43078ae1f4741f09be08c4ecab6229046a5c",
+            "title": "NewsQA: A Machine Comprehension Dataset"
+        },
+        {
+            "paperId": "8d574fde3e46ad766fac26094e3bb1cf55a08226",
+            "title": "MS MARCO: A Human Generated MAchine Reading COmprehension Dataset"
+        },
+        {
+            "paperId": "3a7b63b50c64f4ec3358477790e84cbd6be2a0b4",
+            "title": "Bidirectional Attention Flow for Machine Comprehension"
+        },
+        {
+            "paperId": "dd95f96e3322dcaee9b1e3f7871ecc3ebcd51bfe",
+            "title": "MS MARCO: A Human Generated MAchine Reading COmprehension Dataset"
+        },
+        {
+            "paperId": "6eec608f266de95eb817e9a6086641abc3c91e5f",
+            "title": "Embracing data abundance: BookTest Dataset for Reading Comprehension"
+        },
+        {
+            "paperId": "ff1861b71eaedba46cb679bbe2c585dbe18f9b19",
+            "title": "Machine Comprehension Using Match-LSTM and Answer Pointer"
+        },
+        {
+            "paperId": "832fc9327695f7425d8759c6aaeec0fa2d7b0a90",
+            "title": "WikiReading: A Novel Large-scale Language Understanding Task over Wikipedia"
+        },
+        {
+            "paperId": "05dd7254b632376973f3a1b4d39485da17814df5",
+            "title": "SQuAD: 100,000+ Questions for Machine Comprehension of Text"
+        },
+        {
+            "paperId": "b1e20420982a4f923c08652941666b189b11b7fe",
+            "title": "A Thorough Examination of the CNN/Daily Mail Reading Comprehension Task"
+        },
+        {
+            "paperId": "4cd6218a332a2ad022d0f0bbb429c836b899a849",
+            "title": "Feuding Families and Former Friends: Unsupervised Learning for Dynamic Fictional Relationships"
+        },
+        {
+            "paperId": "f2e50e2ee4021f199877c8920f1f984481c723aa",
+            "title": "Text Understanding with the Attention Sum Reader Network"
+        },
+        {
+            "paperId": "1bdd75a37f7c601f01e9d31c2551fa9f2067ffd7",
+            "title": "MovieQA: Understanding Stories in Movies through Question-Answering"
+        },
+        {
+            "paperId": "35b91b365ceb016fb3e022577cec96fb9b445dc5",
+            "title": "The Goldilocks Principle: Reading Children's Books with Explicit Memory Representations"
+        },
+        {
+            "paperId": "d1505c6123c102e53eb19dff312cb25cea840b72",
+            "title": "Teaching Machines to Read and Comprehend"
+        },
+        {
+            "paperId": "abb33d75dc297993fcc3fb75e0f4498f413eb4f6",
+            "title": "Towards AI-Complete Question Answering: A Set of Prerequisite Toy Tasks"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "564257469fa44cdb57e4272f85253efb9acfd69d",
+            "title": "MCTest: A Challenge Dataset for the Open-Domain Machine Comprehension of Text"
+        },
+        {
+            "paperId": "3bc170dc7467330eb6e35be64957d5ce1f03e5bf",
+            "title": "Learning Latent Personas of Film Characters"
+        },
+        {
+            "paperId": "0f8992ee6418d367d8e50ecbb59b08ea15e8431f",
+            "title": "Meteor 1.3: Automatic Metric for Reliable Optimization and Evaluation of Machine Translation Systems"
+        },
+        {
+            "paperId": "62808970f3eb55738ca796d46d5aa67a47daa9ee",
+            "title": "Unsupervised Learning of Narrative Schemas and their Participants"
+        },
+        {
+            "paperId": "60b05f32c32519a809f21642ef1eb3eaf3848008",
+            "title": "ROUGE: A Package for Automatic Evaluation of Summaries"
+        },
+        {
+            "paperId": "d7da009f457917aa381619facfa5ffae9329a6e9",
+            "title": "Bleu: a Method for Automatic Evaluation of Machine Translation"
+        },
+        {
+            "paperId": "17615254f908bbf78cca607e427c5132412d9190",
+            "title": "An Evaluation of Story Grammars"
+        },
+        {
+            "paperId": "e2f6994f57e1a8b07de7d82bf0b751a52e1a887f",
+            "title": "Scripts, plans, goals and understanding: an inquiry into human knowledge structures"
+        },
+        {
+            "paperId": "7a84996f12556dd9a62e7fdc8f1ed2bbd4ab1156",
+            "title": "Why John Married Mary: Understanding Stories Involving Recurring Goals"
+        },
+        {
+            "paperId": "230b3e73b581704986a404510bcc3c91826f4e03",
+            "title": "Movie Script Summarization as Graph-based Scene Extraction"
+        },
+        {
+            "paperId": "30c9deb8ca14ddef3be7c31e729fc92ee47e6619",
+            "title": "A Bayesian Mixed Effects Model of Literary Character"
+        },
+        {
+            "paperId": "4574d77fff19e093782178595a8988a7f3aa1969",
+            "title": "Latent Dirichlet Allocation"
+        }
+    ]
+}

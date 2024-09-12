@@ -1,0 +1,45 @@
+{
+    "paperId": "2d32fd3128b19f94685ebf658cb2622be4442308",
+    "externalIds": {
+        "MAG": "2490023472",
+        "DBLP": "journals/jmlr/WainbergAF16",
+        "CorpusId": 18711388
+    },
+    "title": "Are Random Forests Truly the Best Classifiers?",
+    "abstract": "The JMLR study Do we need hundreds of classifiers to solve real world classification problems? benchmarks 179 classifiers in 17 families on 121 data sets from the UCI repository and claims that \"the random forest is clearly the best family of classifier\". In this response, we show that the study's results are biased by the lack of a held-out test set and the exclusion of trials with errors. Further, the study's own statistical tests indicate that random forests do not have significantly higher percent accuracy than support vector machines and neural networks, calling into question the conclusion that random forests are the best classifiers.",
+    "venue": "Journal of machine learning research",
+    "year": 2016,
+    "referenceCount": 2,
+    "citationCount": 156,
+    "influentialCitationCount": 5,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that the study's results are biased by the lack of a held-out test set and the exclusion of trials with errors, and random forests do not have significantly higher percent accuracy than support vector machines and neural networks, calling into question the conclusion that random forests are the best classifiers."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "39866492",
+            "name": "Michael Wainberg"
+        },
+        {
+            "authorId": "48401711",
+            "name": "B. Alipanahi"
+        },
+        {
+            "authorId": "1749650",
+            "name": "B. Frey"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "fb90b4efdabd35f98f3b49da5af49067609cae2e",
+            "title": "Direct Parallel Perceptrons (DPPs): Fast Analytical Calculation of the Parallel Perceptrons Weights With Margin Control for Classification Tasks"
+        },
+        {
+            "paperId": "2c47bd8bd699914e3535292b17ba46542800845c",
+            "title": "Do we need hundreds of classifiers to solve real world classification problems?"
+        }
+    ]
+}

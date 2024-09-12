@@ -1,0 +1,225 @@
+{
+    "paperId": "88cd4209db62a34d9cba0b9cbe9d45d1e57d21e5",
+    "externalIds": {
+        "MAG": "2752037867",
+        "DBLP": "conf/nips/LinRLZ17",
+        "CorpusId": 38486148
+    },
+    "title": "Runtime Neural Pruning",
+    "abstract": "In this paper, we propose a Runtime Neural Pruning (RNP) framework which prunes the deep neural network dynamically at the runtime. Unlike existing neural pruning methods which produce a fixed pruned model for deployment, our method preserves the full ability of the original network and conducts pruning according to the input image and current feature maps adaptively. The pruning is performed in a bottom-up, layer-by-layer manner, which we model as a Markov decision process and use reinforcement learning for training. The agent judges the importance of each convolutional kernel and conducts channel-wise pruning conditioned on different samples, where the network is pruned more when the image is easier for the task. Since the ability of network is fully preserved, the balance point is easily adjustable according to the available resources. Our method can be applied to off-the-shelf network structures and reach a better tradeoff between speed and accuracy, especially with a large pruning rate.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2017,
+    "referenceCount": 46,
+    "citationCount": 444,
+    "influentialCitationCount": 32,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A Runtime Neural Pruning (RNP) framework which prunes the deep neural network dynamically at the runtime and preserves the full ability of the original network and conducts pruning according to the input image and current feature maps adaptively."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "46698300",
+            "name": "Ji Lin"
+        },
+        {
+            "authorId": "39358728",
+            "name": "Yongming Rao"
+        },
+        {
+            "authorId": "1697700",
+            "name": "Jiwen Lu"
+        },
+        {
+            "authorId": "49640256",
+            "name": "Jie Zhou"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "2d737dfb753e8cf30df01b6a54bd666a9ae376ac",
+            "title": "The cascading neural network: building the Internet of Smart Things"
+        },
+        {
+            "paperId": "3647d6d0f151dc05626449ee09cc7bce55be497e",
+            "title": "MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications"
+        },
+        {
+            "paperId": "6836636c87fe78a84284d7922a438ed51bc377e9",
+            "title": "Adaptive Neural Networks for Fast Test-Time Prediction"
+        },
+        {
+            "paperId": "60840105c7bbd85ce6ff94ef2c1997ab7964b668",
+            "title": "Changing Model Behavior at Test-Time Using Reinforcement Learning"
+        },
+        {
+            "paperId": "adec3702d810f1dfd0e5727406b16713be0a476f",
+            "title": "Dynamic Deep Neural Networks: Optimizing Accuracy-Efficiency Trade-offs by Selective Execution"
+        },
+        {
+            "paperId": "7944d0b061610b1c67ad15efdf192681e60d0129",
+            "title": "Spatially Adaptive Computation Time for Residual Networks"
+        },
+        {
+            "paperId": "c2a1cb1612ba21e067a5c3ba478a8d73b796b77a",
+            "title": "Pruning Filters for Efficient ConvNets"
+        },
+        {
+            "paperId": "7601b995303f953955004db7b9b8b206c0e02ff8",
+            "title": "Learning Structured Sparsity in Deep Neural Networks"
+        },
+        {
+            "paperId": "60ae4f18cb53efff0174e3fea7064049737e1e67",
+            "title": "Network Trimming: A Data-Driven Neuron Pruning Approach towards Efficient Deep Architectures"
+        },
+        {
+            "paperId": "b5c26ab8767d046cb6e32d959fdf726aee89bb62",
+            "title": "Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning"
+        },
+        {
+            "paperId": "7d39283a0fce1c96f57eb20046d09bd95ccc56d7",
+            "title": "Structured Pruning of Deep Convolutional Neural Networks"
+        },
+        {
+            "paperId": "5a5d48986b855b83a7d9df5005bbd155024ce756",
+            "title": "Dynamic Capacity Networks"
+        },
+        {
+            "paperId": "fba71eefd060e30f3516fdd46df9a191cd0aaaf7",
+            "title": "Conditional Computation in Neural Networks for faster models"
+        },
+        {
+            "paperId": "2735e6e760a5fce119d82dc1e449f329d072e172",
+            "title": "Active Object Localization with Deep Reinforcement Learning"
+        },
+        {
+            "paperId": "5c6e7cf3ee21d1e53363c716055c6d68cbde6ae7",
+            "title": "ProNet: Learning to Propose Object-Specific Boxes for Cascaded Neural Networks"
+        },
+        {
+            "paperId": "642d0f49b7826adcf986616f4af77e736229990f",
+            "title": "Deep Compression: Compressing Deep Neural Network with Pruning, Trained Quantization and Huffman Coding"
+        },
+        {
+            "paperId": "f28349edf0cd78d89d2e00ae5e4fcf589774826c",
+            "title": "Towards Vision-Based Deep Reinforcement Learning for Robotic Motion Control"
+        },
+        {
+            "paperId": "4b267c6a41813e16937d99ed0eed72c4edcd2dca",
+            "title": "Auto-Sizing Neural Networks: With Applications to n-gram Language Models"
+        },
+        {
+            "paperId": "1ff9a37d766e3a4f39757f5e1b235a42dacf18ff",
+            "title": "Learning both Weights and Connections for Efficient Neural Network"
+        },
+        {
+            "paperId": "2e61eb4a5c6fe6c0fdb36cfb84d460ee1524099f",
+            "title": "A convolutional neural network cascade for face detection"
+        },
+        {
+            "paperId": "424561d8585ff8ebce7d5d07de8dbf7aae5e7270",
+            "title": "Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks"
+        },
+        {
+            "paperId": "bf807c251962a694499b29938bdc54e716ca2dda",
+            "title": "Reinforcement learning improves behaviour from evaluative feedback"
+        },
+        {
+            "paperId": "b89d7f7439cab841934a1ede06bf6b1f593c754f",
+            "title": "Accelerating Very Deep Convolutional Networks for Classification and Detection"
+        },
+        {
+            "paperId": "340f48901f72278f6bf78a04ee5b01df208cc508",
+            "title": "Human-level control through deep reinforcement learning"
+        },
+        {
+            "paperId": "31c36d445367ba204244bb74893c5654e31c3869",
+            "title": "cuDNN: Efficient Primitives for Deep Learning"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "6bdb186ec4726e00a8051119636d4df3b94043b5",
+            "title": "Caffe: Convolutional Architecture for Fast Feature Embedding"
+        },
+        {
+            "paperId": "021fc345d40d3e6332cd2ef276e2eaa5e71102e4",
+            "title": "Speeding up Convolutional Neural Networks with Low Rank Expansions"
+        },
+        {
+            "paperId": "62c76ca0b2790c34e85ba1cce09d47be317c7235",
+            "title": "Estimating or Propagating Gradients Through Stochastic Neurons for Conditional Computation"
+        },
+        {
+            "paperId": "57ebeff9273dea933e2a75c306849baf43081a8c",
+            "title": "Deep Convolutional Network Cascade for Facial Point Detection"
+        },
+        {
+            "paperId": "1299732e905399066a36d11990a3921911de63b7",
+            "title": "Imitation Learning by Coaching"
+        },
+        {
+            "paperId": "08fbf92e45d59bc85921fa91c35d2d4763738679",
+            "title": "Timely Object Recognition"
+        },
+        {
+            "paperId": "ac850bbddef863bc88622df4d423420ba033365b",
+            "title": "Fast classification using sparse decision DAGs"
+        },
+        {
+            "paperId": "c6b3ca4f939e36a9679a70e14ce8b1bbbc5618f3",
+            "title": "Labeled Faces in the Wild: A Database forStudying Face Recognition in Unconstrained Environments"
+        },
+        {
+            "paperId": "a9cd8efe9184dddb1bedbbec3a356c4dfb22fe63",
+            "title": "Markov Decision Processes: Discrete Stochastic Dynamic Programming"
+        },
+        {
+            "paperId": "a42954d4b9d0ccdf1036e0af46d87a01b94c3516",
+            "title": "Second Order Derivatives for Network Pruning: Optimal Brain Surgeon"
+        },
+        {
+            "paperId": "03b7e51c52084ac1db5118342a00b5fbcfc587aa",
+            "title": "Q-learning"
+        },
+        {
+            "paperId": "536758a6af5b0f521752b7ed295d3b9cd5884e36",
+            "title": "DYNAMIC PROGRAMMING AND LAGRANGE MULTIPLIERS."
+        },
+        {
+            "paperId": null,
+            "title": "Tijmen Tieleman and Geoffrey Hinton . Lecture 6 . 5 - rmsprop : Divide the gradient by a running average of its recent magnitude"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "a9392b9299972452ea6fbc3c605f76bb1e21ae42",
+            "title": "Phoneme probability estimation with dynamic sparsely connected artificial neural networks"
+        },
+        {
+            "paperId": "e7297db245c3feb1897720b173a59fe7e36babb7",
+            "title": "Optimal Brain Damage"
+        },
+        {
+            "paperId": "f4ea5a6ff3ffcd11ec2e6ed7828a7d41279fb3ad",
+            "title": "Comparing Biases for Minimal Network Construction with Back-Propagation"
+        },
+        {
+            "paperId": "3958db5769c927cfc2a9e4d1ee33ecfba86fe054",
+            "title": "Ieee Transactions on Pattern Analysis and Machine Intelligence Describable Visual Attributes for Face Verification and Image Search"
+        }
+    ]
+}

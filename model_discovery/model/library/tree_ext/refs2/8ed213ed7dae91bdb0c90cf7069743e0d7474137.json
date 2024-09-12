@@ -1,0 +1,50 @@
+{
+    "paperId": "8ed213ed7dae91bdb0c90cf7069743e0d7474137",
+    "externalIds": {
+        "DBLP": "journals/spm/Duda10",
+        "MAG": "2025381053",
+        "DOI": "10.1109/MSP.2010.938088",
+        "CorpusId": 17978172
+    },
+    "title": "Accurate, Guaranteed Stable, Sliding Discrete Fourier Transform [DSP Tips & Tricks]",
+    "abstract": "This article presented a novel method of computing the SDFT that we call the modulated SDFT (mSDFT). The sliding discrete Fourier transform (SDFT) is a recursive algorithm that computes a DFT on a sample-by-sample basis. The accumulated errors and potential instabilities inherent in traditional SDFT algorithms are drastically reduced in the mSDFT. We removed the twiddle factor from the feedback in a traditional SDFT resonator and thus the finite precision of its representation is no longer a problem.",
+    "venue": "IEEE Signal Processing Magazine",
+    "year": 2010,
+    "referenceCount": 5,
+    "citationCount": 111,
+    "influentialCitationCount": 11,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The twiddle factor from the feedback in a traditional SDFT resonator is removed and thus the finite precision of its representation is no longer a problem and the accumulated errors and potential instabilities are drastically reduced in the mSDFT."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1722369",
+            "name": "K. Duda"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "0daa2afe6aedee0bb915302d59b9c25bd062e57c",
+            "title": "The sliding DFT"
+        },
+        {
+            "paperId": "49f6ae7e407cbaf610c72115892775f5b71bdc97",
+            "title": "A numerically-stable sliding-window estimator and its application to adaptive filters"
+        },
+        {
+            "paperId": "9dd0d3342dc8d751301f28f49c2f921b04dde799",
+            "title": "Understanding Digital Signal Processing"
+        },
+        {
+            "paperId": "157b3e1ab532f2c5e99907ed0d4ad80d44395ca2",
+            "title": "An update to the sliding DFT"
+        },
+        {
+            "paperId": "1cbfa10be8f8744a3e84e3f60b59f28ee4d17435",
+            "title": "Discrete Time Signal Processing"
+        }
+    ]
+}

@@ -1,0 +1,234 @@
+{
+    "paperId": "a9a5d671271fff45429084e184a788f611b6f194",
+    "externalIds": {
+        "DBLP": "journals/corr/abs-1809-06858",
+        "ArXiv": "1809.06858",
+        "MAG": "2890560993",
+        "CorpusId": 52301591
+    },
+    "title": "FRAGE: Frequency-Agnostic Word Representation",
+    "abstract": "Continuous word representation (aka word embedding) is a basic building block in many neural network-based models used in natural language processing tasks. Although it is widely accepted that words with similar semantics should be close to each other in the embedding space, we find that word embeddings learned in several tasks are biased towards word frequency: the embeddings of high-frequency and low-frequency words lie in different subregions of the embedding space, and the embedding of a rare word and a popular word can be far from each other even if they are semantically similar. This makes learned word embeddings ineffective, especially for rare words, and consequently limits the performance of these neural network models. In this paper, we develop a neat, simple yet effective way to learn \\emph{FRequency-AGnostic word Embedding} (FRAGE) using adversarial training. We conducted comprehensive studies on ten datasets across four natural language processing tasks, including word similarity, language modeling, machine translation and text classification. Results show that with FRAGE, we achieve higher performance than the baselines in all tasks.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2018,
+    "referenceCount": 46,
+    "citationCount": 140,
+    "influentialCitationCount": 16,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper develops a neat, simple yet effective way to learn FRequency-AGnostic word Embedding (FRAGE) using adversarial training and shows that with FRAGE, the model achieves higher performance than the baselines in all tasks."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "29777869",
+            "name": "Chengyue Gong"
+        },
+        {
+            "authorId": "1391126980",
+            "name": "Di He"
+        },
+        {
+            "authorId": "2112780268",
+            "name": "Xu Tan"
+        },
+        {
+            "authorId": "143826491",
+            "name": "Tao Qin"
+        },
+        {
+            "authorId": "24952249",
+            "name": "Liwei Wang"
+        },
+        {
+            "authorId": "2110264337",
+            "name": "Tie-Yan Liu"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "642c1b4a9da95ea4239708afc5929a5007a1870d",
+            "title": "Tensor2Tensor for Neural Machine Translation"
+        },
+        {
+            "paperId": "b887a39268ee41fea8d72f0ecd364eb72fe28a82",
+            "title": "Analyzing Uncertainty in Neural Machine Translation"
+        },
+        {
+            "paperId": "062be14f127e590a8476fdb535337d4d7e1caad9",
+            "title": "Dual Transfer Learning for Neural Machine Translation with Marginal Distribution Regularization"
+        },
+        {
+            "paperId": "178339ef29211540683b36c0e1c6acffd998cddd",
+            "title": "Fix your classifier: the marginal value of training the last weight layer"
+        },
+        {
+            "paperId": "3fc5ed18c2294596af072df929c8ee12c71f96a2",
+            "title": "Classical Structured Prediction Losses for Sequence to Sequence Learning"
+        },
+        {
+            "paperId": "ef9ddbc35676ce8ffc2a8067044473727839dbac",
+            "title": "Breaking the Softmax Bottleneck: A High-Rank RNN Language Model"
+        },
+        {
+            "paperId": "e3d772986d176057aca2f5e3eb783da53b559134",
+            "title": "Unsupervised Machine Translation Using Monolingual Corpora Only"
+        },
+        {
+            "paperId": "562c09c112df56c5696c010d90a815d6018a86c8",
+            "title": "Word Translation Without Parallel Data"
+        },
+        {
+            "paperId": "fa9decd1395cc2f39e9921f870ebc8a8ec2bd08d",
+            "title": "Dynamic Evaluation of Neural Sequence Models"
+        },
+        {
+            "paperId": "58c6f890a1ae372958b7decf56132fe258152722",
+            "title": "Regularizing and Optimizing LSTM Language Models"
+        },
+        {
+            "paperId": "4a07f0920fccb340ed46e719047a50bcb2fb1d4d",
+            "title": "Neural Phrase-based Machine Translation"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "43428880d75b3a14257c3ee9bda054e61eb869c0",
+            "title": "Convolutional Sequence to Sequence Learning"
+        },
+        {
+            "paperId": "3f1802d3f4f5f6d66875dac09112f978f12e1e1e",
+            "title": "A Simple but Tough-to-Beat Baseline for Sentence Embeddings"
+        },
+        {
+            "paperId": "345afa0e85cb2f5cb438ae44027499ff2c392409",
+            "title": "Adversarial Discriminative Domain Adaptation"
+        },
+        {
+            "paperId": "a2d407962bb1f5fcd209114f5687d4c11bf9dfad",
+            "title": "All-but-the-Top: Simple and Effective Postprocessing for Word Representations"
+        },
+        {
+            "paperId": "2f85b7376769473d2bed56f855f115e23d727094",
+            "title": "Wasserstein GAN"
+        },
+        {
+            "paperId": "f958d4921951e394057a1c4ec33bad9a34e5dad1",
+            "title": "A Convolutional Encoder Model for Neural Machine Translation"
+        },
+        {
+            "paperId": "2d7782c225e0fc123d6e227f2cb253e58279ac73",
+            "title": "Improving Neural Language Models with a Continuous Cache"
+        },
+        {
+            "paperId": "98445f4172659ec5e891e031d8202c102135c644",
+            "title": "Neural Machine Translation in Linear Time"
+        },
+        {
+            "paperId": "2fe874a1c85ecc9e848bf9defd76535e19d51f39",
+            "title": "Professor Forcing: A New Algorithm for Training Recurrent Networks"
+        },
+        {
+            "paperId": "efbd381493bb9636f489b965a2034d529cd56bcd",
+            "title": "Pointer Sentinel Mixture Models"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "0d24a0695c9fc669e643bad51d4e14f056329dec",
+            "title": "An Actor-Critic Algorithm for Sequence Prediction"
+        },
+        {
+            "paperId": "571b0750085ae3d939525e62af510ee2cee9d5ea",
+            "title": "Improved Techniques for Training GANs"
+        },
+        {
+            "paperId": "2f2d8f8072e5cc9b296fad551f65f183bdbff7aa",
+            "title": "Exploring the Limits of Language Modeling"
+        },
+        {
+            "paperId": "b7aee9dfb027d6061c6a653684c0fa9a9bba750d",
+            "title": "Sequence Level Training with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "8388f1be26329fa45e5807e968a641ce170ea078",
+            "title": "Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks"
+        },
+        {
+            "paperId": "4aa9f5150b46320f534de4747a2dd0cd7f3fe292",
+            "title": "Semi-supervised Sequence Learning"
+        },
+        {
+            "paperId": "1518039b5001f1836565215eb047526b3ac7f462",
+            "title": "Neural Machine Translation of Rare Words with Subword Units"
+        },
+        {
+            "paperId": "891ce1687e2befddd19f54e4eef1d3f39c8dbaf7",
+            "title": "Character-Aware Neural Language Models"
+        },
+        {
+            "paperId": "eba36ac75bf22edf9a1bfd33244d459c75b98305",
+            "title": "Recurrent Convolutional Neural Networks for Text Classification"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "2530cfc7764bda1330c48c0c8e2cd0e0c671d7e1",
+            "title": "Unsupervised Domain Adaptation by Backpropagation"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "1cda6fc19f6d7356f56b3e61e14cf930233b8960",
+            "title": "Document classification by topic labeling"
+        },
+        {
+            "paperId": "8e3f0f7a761f18cb91c11764d8d6cb3b1e9c5731",
+            "title": "Polyglot: Distributed Word Representations for Multilingual NLP"
+        },
+        {
+            "paperId": "1c61f9ef06fe74505775a833ff849185757199e7",
+            "title": "Learning Word Vectors for Sentiment Analysis"
+        },
+        {
+            "paperId": "bc6dff14a130c57a91d5a21339c23471faf1d46f",
+            "title": "Et al"
+        },
+        {
+            "paperId": "d7da009f457917aa381619facfa5ffae9329a6e9",
+            "title": "Bleu: a Method for Automatic Evaluation of Machine Translation"
+        },
+        {
+            "paperId": "c68796f833a7151f0a63d1d1608dc902b4fdc9b6",
+            "title": "GENERATIVE ADVERSARIAL NETS"
+        },
+        {
+            "paperId": null,
+            "title": "Unpaired image-to-image translation using cycle-consistent adversarial networks"
+        },
+        {
+            "paperId": "ea67efe9866b245ea2b0bbb526239fbd7070f635",
+            "title": "An Introduction to Information Retrieval"
+        },
+        {
+            "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+            "title": "Recurrent neural network based language model"
+        }
+    ]
+}

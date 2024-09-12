@@ -1,0 +1,750 @@
+{
+    "paperId": "83ae621808798a052cf46a595bc35cd4eea041f0",
+    "externalIds": {
+        "MAG": "2905321002",
+        "DOI": "10.1016/j.ygeno.2018.12.001",
+        "CorpusId": 54479693,
+        "PubMed": "30529532"
+    },
+    "title": "iPSW(2L)-PseKNC: A two-layer predictor for identifying promoters and their strength by hybrid features via pseudo K-tuple nucleotide composition.",
+    "abstract": null,
+    "venue": "Genomics",
+    "year": 2019,
+    "referenceCount": 175,
+    "citationCount": 72,
+    "influentialCitationCount": 3,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new two-layer predictor, called \"iPSW(2L)-PseKNC\", was developed by fusing the physicochemical properties of nucleotides and their nucleotide density into PseKNC (pseudo K-tuple nucleotide composition), which is remarkably superior to the existing state-of-the-art predictors in identifying the promoters and non-promoters."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "48895031",
+            "name": "Xuan Xiao"
+        },
+        {
+            "authorId": "47047849",
+            "name": "Zhaochun Xu"
+        },
+        {
+            "authorId": "3152121",
+            "name": "Wangren Qiu"
+        },
+        {
+            "authorId": "2155300057",
+            "name": "Peng Wang"
+        },
+        {
+            "authorId": "2143605238",
+            "name": "Hui Ge"
+        },
+        {
+            "authorId": "145892613",
+            "name": "K. Chou"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "00492de219ea7aa2a8a25bf73fe5982dd3ffd044",
+            "title": "Predicting subcellular localization of multi-label proteins by incorporating the sequence features into Chou's PseAAC."
+        },
+        {
+            "paperId": "c468e775e29ee14af0a0583cb648c5bde714a55c",
+            "title": "pLoc_bal-mHum: Predict subcellular localization of human proteins by PseAAC and quasi-balancing training dataset."
+        },
+        {
+            "paperId": "6628441482fde3fcc81bb9517576235e8d7fdc8e",
+            "title": "iRSpot-SF: Prediction of recombination hotspots by incorporating sequence based features into Chou's Pseudo components."
+        },
+        {
+            "paperId": "14329ac4258611f12b693d5218dc27e50d757c55",
+            "title": "pLoc_bal-mGpos: Predict subcellular localization of Gram-positive bacterial proteins by quasi-balancing training dataset and PseAAC."
+        },
+        {
+            "paperId": "ea0949786e3b534703fe42597dd6f498b26da59b",
+            "title": "iRSpot-PDI: Identification of recombination spots by incorporating dinucleotide property diversity information into Chou's pseudo components."
+        },
+        {
+            "paperId": "f700986b3fa67b73c7ffb649832e0ae83ad3331d",
+            "title": "iPPI-PseAAC(CGR): Identify protein-protein interactions by incorporating chaos game representation into PseAAC."
+        },
+        {
+            "paperId": "4e17eacdac6d3587c5a735da749e00d28cd534c0",
+            "title": "Effective DNA binding protein prediction by using key features via Chou's general PseAAC."
+        },
+        {
+            "paperId": "cb8ded46590edd672abcc0475baaacdb1fcc464c",
+            "title": "pLoc_bal-mGneg: Predict subcellular localization of Gram-negative bacterial proteins by quasi-balancing training dataset and general PseAAC."
+        },
+        {
+            "paperId": "764de089945f475bc4cf16eaa760625e9067b65d",
+            "title": "iRNA(m6A)-PseDNC: Identifying N6-methyladenosine sites using pseudo dinucleotide composition."
+        },
+        {
+            "paperId": "7c2e951e115a75e241afad48427473d08148f7cf",
+            "title": "Analysis and prediction of ion channel inhibitors by using feature selection and Chou's general pseudo amino acid composition."
+        },
+        {
+            "paperId": "d4f5c85b8aaf3e35ea135c0f899b95cfe59fbadf",
+            "title": "iNuc-ext-PseTNC: an efficient ensemble model for identification of nucleosome positioning by extending the concept of Chou\u2019s PseAAC to pseudo-tri-nucleotide composition"
+        },
+        {
+            "paperId": "182a5321ad7fcea94f2fdd972f517b1e76de80a8",
+            "title": "iMethyl-STTNC: Identification of N6-methyladenosine sites by extending the idea of SAAC into Chou's PseAAC to formulate RNA sequences."
+        },
+        {
+            "paperId": "1bf1f54e0f521163733b231a7f81e59b6f2359ae",
+            "title": "Predicting structural classes of proteins by incorporating their global and local physicochemical and conformational properties into general Chou's PseAAC."
+        },
+        {
+            "paperId": "3abbaa4abb0912a95c2e06753b2c80be4873a95a",
+            "title": "Identify Gram-negative bacterial secreted protein types by incorporating different modes of PSSM into Chou's general PseAAC via Kullback-Leibler divergence."
+        },
+        {
+            "paperId": "0d8a795cfae988c0b288d565522a7960f914d76c",
+            "title": "Predicting membrane protein types by incorporating a novel feature set into Chou's general PseAAC."
+        },
+        {
+            "paperId": "daa5c80ff05a0ab138a520f932fd70ae31024d40",
+            "title": "iRO-3wPseKNC: identify DNA replication origins by three-window-based PseKNC"
+        },
+        {
+            "paperId": "db6089c4872f426e611d30d8b677cdd42f668427",
+            "title": "Identifying 5-methylcytosine sites in RNA sequence using composite encoding feature into Chou's PseKNC."
+        },
+        {
+            "paperId": "44a5ceee4abfd16ed1913dec65c04fc53509e107",
+            "title": "DPP-PseAAC: A DNA-binding protein prediction model using Chou's general PseAAC."
+        },
+        {
+            "paperId": "e698c2bde53c7634a4d74c984caf303258276c89",
+            "title": "Twenty years of bioinformatics research for protease-specific substrate and cleavage site prediction: a comprehensive revisit and benchmarking of existing methods"
+        },
+        {
+            "paperId": "ed6e39d8eefb5b535751465953abba3792016044",
+            "title": "Computational analysis and prediction of lysine malonylation sites by exploiting informative features in an integrative machine-learning framework"
+        },
+        {
+            "paperId": "e7f74be192d7e9709e057f2e1f1d8e6290a1efee",
+            "title": "Bastion6: a bioinformatics approach for accurate prediction of type VI secreted effectors"
+        },
+        {
+            "paperId": "c6082dfea1e58cda5da9fa5cac04ad821d53ca90",
+            "title": "iFeature: a Python package and web server for features extraction and selection from protein and peptide sequences"
+        },
+        {
+            "paperId": "ffa84f7ad0c4361a092bdc7e6fddfdcb31de5074",
+            "title": "pLoc_bal\u2010mAnimal: predict subcellular localization of animal proteins by balancing training dataset and PseAAC"
+        },
+        {
+            "paperId": "f39251f099810e2f67da2c494d09d432896de6ac",
+            "title": "Implications of Newly Identified Brain eQTL Genes and Their Interactors in Schizophrenia"
+        },
+        {
+            "paperId": "6ecc0a390f7f5b9ef1a910151199ee5ddc2f62f8",
+            "title": "Quokka: a comprehensive tool for rapid and accurate prediction of kinase family\u2010specific phosphorylation sites in the human proteome"
+        },
+        {
+            "paperId": "ceb1b55cc15c57fd0fcabbd9b00c8765fbf8be6d",
+            "title": "iLoc\u2010lncRNA: predict the subcellular location of lncRNAs by incorporating octamer composition into general PseKNC"
+        },
+        {
+            "paperId": "aa8de71d6399be11fd0e164b7c6f9392435ceb8d",
+            "title": "Analysis and prediction of presynaptic and postsynaptic neurotoxins by Chou's general pseudo amino acid composition and motif features."
+        },
+        {
+            "paperId": "7e3d1c3a840ed15a9c81d1a0c0edd4b29816bea7",
+            "title": "iRSpot-Pse6NC: Identifying recombination spots in Saccharomyces cerevisiae by incorporating hexamer composition into general PseKNC"
+        },
+        {
+            "paperId": "bc80c72764cd63f88fa299a3c8cc208ae14526c0",
+            "title": "Using Chou's general PseAAC to analyze the evolutionary relationship of receptor associated proteins (RAP) with various folding patterns of protein domains."
+        },
+        {
+            "paperId": "f01a2c9927496b1726df64050822c3b4181baa87",
+            "title": "pLoc-mHum: predict subcellular localization of multi-location human proteins via general PseAAC to winnow out the crucial GO information"
+        },
+        {
+            "paperId": "f9187e3a34dfe7e63989291c32b4f8254de5e6a0",
+            "title": "iProt-Sub: a comprehensive package for accurately mapping and predicting protease-specific substrates and cleavage sites"
+        },
+        {
+            "paperId": "31cab54549653af61f83907274029a81ed8fc806",
+            "title": "PREvaIL, an integrative approach for inferring catalytic residues using sequence, structural, and network features in a machine-learning framework."
+        },
+        {
+            "paperId": "69cd6dd5ce2514f99fed20f16575175fa2b4d26d",
+            "title": "iMem-2LSAAC: A two-level model for discrimination of membrane proteins and their types by extending the notion of SAAC into chou's pseudo amino acid composition."
+        },
+        {
+            "paperId": "5bbbbae977009cc22054d779a857e026bab8642b",
+            "title": "iRNA-3typeA: Identifying Three Types of Modification at RNA\u2019s Adenosine Sites"
+        },
+        {
+            "paperId": "0183218a85def1b17a7f55401b61cdf2916a8410",
+            "title": "iRSpot-ADPM: Identify recombination spots by incorporating the associated dinucleotide product model into Chou's pseudo components."
+        },
+        {
+            "paperId": "3daff284219932edb3fb0d65acc019a6872c5fe5",
+            "title": "PROSPERous: high-throughput prediction of substrate cleavage sites for 90 proteases with improved accuracy"
+        },
+        {
+            "paperId": "778e364c05f8581055f7ec7b7983bb7b3265245c",
+            "title": "Prediction of HIV-1 and HIV-2 proteins by using Chou\u2019s pseudo amino acid compositions and different classifiers"
+        },
+        {
+            "paperId": "063ca200dc83bf433c95552bc746e649ab857b4d",
+            "title": "iDNA6mA-PseKNC: Identifying DNA N6-methyladenosine sites by incorporating nucleotide physicochemical properties into PseKNC."
+        },
+        {
+            "paperId": "a9d75d87ee8bc4f2252ef54c9338626297b9527d",
+            "title": "Prediction of protein subcellular localization with oversampling approach and Chou's general PseAAC."
+        },
+        {
+            "paperId": "d05d62ad56d58d9437987275c837a791521b0ad0",
+            "title": "iRNA-2methyl: Identify RNA 2'-O-methylation Sites by Incorporating Sequence-Coupled Effects into General PseKNC and Ensemble Classifier."
+        },
+        {
+            "paperId": "aba17e9170bcd1d5a8f75ecbde289be8e029395d",
+            "title": "pLoc\u2010mAnimal: predict subcellular localization of animal proteins with both single and multiple sites"
+        },
+        {
+            "paperId": "955d70ca98edbc7055665fdc2d2f5f2fb4a2c198",
+            "title": "pLoc-mGneg: Predict subcellular localization of Gram-negative bacterial proteins by deep gene ontology learning via general PseAAC."
+        },
+        {
+            "paperId": "9b1088373f191579b31ea47cef5b006d326f9afd",
+            "title": "pLoc-mGpos: Incorporate Key Gene Ontology Information into General PseAAC for Predicting Subcellular Localization of Gram-Positive Bacterial Proteins"
+        },
+        {
+            "paperId": "fce86e77c1ecbd0db7ec0d5a8a9088d7709e1f83",
+            "title": "pLoc-mVirus: Predict subcellular localization of multi-location virus proteins via incorporating the optimal GO information into general PseAAC."
+        },
+        {
+            "paperId": "78e4ee670c57fc6e818dccdef596fa85a3f02339",
+            "title": "POSSUM: a bioinformatics toolkit for generating numerical sequence feature descriptors based on PSSM profiles"
+        },
+        {
+            "paperId": "21d9b9f7ea7b4de567fe0afdc9c68f97b6948004",
+            "title": "iPreny-PseAAC: Identify C-terminal Cysteine Prenylation Sites in Proteins by Incorporating Two Tiers of Sequence Couplings into PseAAC."
+        },
+        {
+            "paperId": "a88363dcf8a241ac0fe4b540b15224c751c5e7e8",
+            "title": "iPGK-PseAAC: Identify Lysine Phosphoglycerylation Sites in Proteins by Incorporating Four Different Tiers of Amino Acid Pairwise Coupling Information into the General PseAAC."
+        },
+        {
+            "paperId": "bb1feaa8e1e20dcab04c5f95cec4167ed339604a",
+            "title": "pLoc-mPlant: predict subcellular localization of multi-location plant proteins by incorporating the optimal GO information into general PseAAC."
+        },
+        {
+            "paperId": "3b71ac6d53068b58fc0be75b302e5cb2ba62014b",
+            "title": "An Unprecedented Revolution in Medicinal Chemistry Driven by the Progress of Biological Science."
+        },
+        {
+            "paperId": "0f555444eaa0f06b35d92eefec5c36ad0636ef99",
+            "title": "A novel alignment-free method to classify protein folding types by combining spectral graph clustering with Chou's pseudo amino acid composition."
+        },
+        {
+            "paperId": "a3636b1beca2f8481b57ad157dff2968ecb24133",
+            "title": "Sequence based predictor for discrimination of enhancer and their types by applying general form of Chou's trinucleotide composition"
+        },
+        {
+            "paperId": "995f5a028ead82cffd7c83e1943ae86190e95f8a",
+            "title": "Pse-in-One 2.0: An Improved Package of Web Servers for Generating Various Modes of Pseudo Components of DNA, RNA, and Protein Sequences"
+        },
+        {
+            "paperId": "121719d2e76ce2d4efa17ec91c8b1e1009d311e8",
+            "title": "2L-piRNA: A Two-Layer Ensemble Classifier for Identifying Piwi-Interacting RNAs and Their Function"
+        },
+        {
+            "paperId": "3e72cb5b01b2147dfafb56c62b57f9ff6436a851",
+            "title": "iRNAm5C-PseDNC: identifying RNA 5-methylcytosine sites by incorporating physical-chemical properties into pseudo dinucleotide composition"
+        },
+        {
+            "paperId": "f8d28063ad332659e0e19078334f5e5f723fa929",
+            "title": "iATC-mHyb: a hybrid multi-label classifier for predicting the classification of anatomical therapeutic chemicals"
+        },
+        {
+            "paperId": "e9665a3406986c0dd303d5c318c54f3a3c1bd264",
+            "title": "iRNA-PseColl: Identifying the Occurrence Sites of Different RNA Modifications by Incorporating Collective Effects of Nucleotides into PseKNC"
+        },
+        {
+            "paperId": "706804a5bc88f8e27cf8ec26b838aabb72b68757",
+            "title": "Unb-DPC: Identify mycobacterial membrane protein types by incorporating un-biased dipeptide composition into Chou's general PseAAC."
+        },
+        {
+            "paperId": "5a7ed8945f1ebb003851091a0130e852ae9ea141",
+            "title": "Predicting antimicrobial peptides with improved accuracy by incorporating the compositional, physico-chemical and structural features into Chou\u2019s general PseAAC"
+        },
+        {
+            "paperId": "e81b1bddc2cd9dc7078be8f917656a879478cf6b",
+            "title": "OOgenesis_Pred: A sequence-based method for predicting oogenesis proteins by six different modes of Chou's pseudo amino acid composition."
+        },
+        {
+            "paperId": "0e953a66e1563788a744b220483c6c762732569f",
+            "title": "Analysis and comparison of lignin peroxidases between fungi and bacteria using three different modes of Chou's general pseudo amino acid composition."
+        },
+        {
+            "paperId": "b187f1eae44b272e6038999cc783122339105b28",
+            "title": "iRNA-AI: identifying the adenosine to inosine editing sites in RNA sequences"
+        },
+        {
+            "paperId": "5802aba38ae987a59ea4b6952cb6f252d6cd4161",
+            "title": "iPTM-mLys: identifying multiple lysine PTM sites and their different types"
+        },
+        {
+            "paperId": "faa610ae6ccacd79543259c1aad90d11095e3894",
+            "title": "pSumo-CD: predicting sumoylation sites in proteins with covariance discriminant algorithm by incorporating sequence-coupled effects into general PseAAC"
+        },
+        {
+            "paperId": "322a0f41aa297d40225412fc777b3ae0bf85719e",
+            "title": "iATC\u2010mISF: a multi\u2010label classifier for predicting the classes of anatomical therapeutic chemicals"
+        },
+        {
+            "paperId": "97b76266460ac76e36f5aa847d1f27fb9a3990e8",
+            "title": "bTSSfinder: a novel tool for the prediction of promoters in cyanobacteria and Escherichia coli"
+        },
+        {
+            "paperId": "5ff3987e265efe403dece2acfe7caeebabceaafd",
+            "title": "iOri-Human: identify human origin of replication by incorporating dinucleotide physicochemical properties into pseudo nucleotide composition"
+        },
+        {
+            "paperId": "cc362f13a0bfbaa395d4a0a169e3bfeb7a091ff4",
+            "title": "Identification of protein-protein binding sites by incorporating the physicochemical properties and stationary wavelet transforms into pseudo amino acid composition"
+        },
+        {
+            "paperId": "0ed47f9a78235e3dc95770d676767b46abb0243b",
+            "title": "iDHS-EL: identifying DNase I hypersensitive sites by fusing three different modes of pseudo nucleotide composition into an ensemble learning framework"
+        },
+        {
+            "paperId": "030656aba0baa2641cb9d44bfb576b148fc59191",
+            "title": "iRNA-PseU: Identifying RNA pseudouridine sites"
+        },
+        {
+            "paperId": "03176653c70dd4e9e2063bc85652a18c19cdd360",
+            "title": "iHyd-PseCp: Identify hydroxyproline and hydroxylysine in proteins by incorporating sequence-coupled effects into general PseAAC"
+        },
+        {
+            "paperId": "a64eec25048e2b7c460954ee624aeb9d7004ceba",
+            "title": "Identifying 2'-O-methylationation sites by integrating nucleotide chemical properties and nucleotide compositions."
+        },
+        {
+            "paperId": "e8fa350b8bdb321ce7e8d4f7dbab2c3f5569ee9a",
+            "title": "iCar-PseCp: identify carbonylation sites in proteins by Monte Carlo sampling and incorporating sequence coupled effects into general PseAAC"
+        },
+        {
+            "paperId": "e5bc8da0dbf77f5c9621b7f503b8d249d3168eca",
+            "title": "pSuc-Lys: Predict lysine succinylation sites in proteins with PseAAC and ensemble random forest approach."
+        },
+        {
+            "paperId": "399337588ab0f8b41b03bf2d2728771d025dad1a",
+            "title": "pRNAm-PC: Predicting N(6)-methyladenosine sites in RNA sequences via physical-chemical properties."
+        },
+        {
+            "paperId": "c2a021eb40946fa3e52f1750b2ae1796ba9fc968",
+            "title": "iSuc-PseOpt: Identifying lysine succinylation sites in proteins by incorporating sequence-coupling effects into pseudo components and optimizing imbalanced training dataset."
+        },
+        {
+            "paperId": "cb36678024e7fa5cad89226743f5330e770f5cb7",
+            "title": "Using deformation energy to analyze nucleosome positioning in genomes."
+        },
+        {
+            "paperId": "ff8994ab43193c2e9a0aae815d93dbc702498783",
+            "title": "iACP: a sequence-based tool for identifying anticancer peptides"
+        },
+        {
+            "paperId": "bf875b5edc21a434c0bf4c52560db85fb2041f42",
+            "title": "iEnhancer-2L: a two-layer predictor for identifying enhancers and their strength by pseudo k-tuple nucleotide composition"
+        },
+        {
+            "paperId": "63bc128cd43dd7f8ce9d0389d4525f39a4385ab4",
+            "title": "repRNA: a web server for generating various feature vectors of RNA sequences"
+        },
+        {
+            "paperId": "7a98a343748c3790ddfb7036995859254420b09c",
+            "title": "Prediction of Protein Submitochondrial Locations by Incorporating Dipeptide Composition into Chou\u2019s General Pseudo Amino Acid Composition"
+        },
+        {
+            "paperId": "6c3d20fd2c5c86c813cddcaef028a3c5f6d7cf34",
+            "title": "iPPBS-Opt: A Sequence-Based Ensemble Classifier for Identifying Protein-Protein Binding Sites by Optimizing Imbalanced Training Datasets"
+        },
+        {
+            "paperId": "4cf3d17d8ae089874239a0b062367abf155cade9",
+            "title": "iRNA-Methyl: Identifying N(6)-methyladenosine sites using pseudo nucleotide composition."
+        },
+        {
+            "paperId": "4cc0743a0d80c43a4aa59442100a4c8a2bce71d5",
+            "title": "Identification of microRNA precursor with the degenerate K-tuple or Kmer strategy."
+        },
+        {
+            "paperId": "753b392250e50427f96d6de5376e6ccc37b4eef6",
+            "title": "RegulonDB version 9.0: high-level integration of gene regulation, coexpression, motif clustering and beyond"
+        },
+        {
+            "paperId": "533d36503b01a4568a03c1e5834b3b494a65e8a9",
+            "title": "Pseudo nucleotide composition or PseKNC: an effective formulation for analyzing genomic sequences."
+        },
+        {
+            "paperId": "35c124d15aa00c10e0a79cb8462d0d3f66328761",
+            "title": "iUbiq-Lys: prediction of lysine ubiquitination sites in proteins by extracting sequence evolution information via a gray system model"
+        },
+        {
+            "paperId": "5ee3bd5461734eabd3e674c2a47a5e693d34a98b",
+            "title": "Identification of DNA-binding proteins by incorporating evolutionary information into pseudo amino acid composition via the top-n-gram approach"
+        },
+        {
+            "paperId": "e624faee4b54cf0f6fdf56a4b6a4cb9ccc71f117",
+            "title": "iPPI-Esml: An ensemble classifier for identifying the interactions of proteins by incorporating their physicochemical properties and wavelet transforms into PseAAC."
+        },
+        {
+            "paperId": "0c83d37a4e326ef06cee371042eeda497eb82deb",
+            "title": "Pse-in-One: a web server for generating various modes of pseudo components of DNA, RNA, and protein sequences"
+        },
+        {
+            "paperId": "6be2e6dca6c66f3ad74eb01c168e3c104119f41c",
+            "title": "Impacts of bioinformatics to medicinal chemistry."
+        },
+        {
+            "paperId": "aa14ee805a03ea1a430216ee5f40bea76f6ea7e3",
+            "title": "repDNA: a Python package to generate various modes of feature vectors for DNA sequences by incorporating user-defined physicochemical properties and sequence-order effects"
+        },
+        {
+            "paperId": "5ca2d2913e24c0b74670d793a4828acecae20f1e",
+            "title": "iDNA-Methyl: identifying DNA methylation sites via pseudo trinucleotide composition."
+        },
+        {
+            "paperId": "3e08710501b7346e31e878bf1340c8ef7edd381b",
+            "title": "iDrug-Target: predicting the interactions between drug compounds and target proteins in cellular networking via benchmark dataset optimization approach"
+        },
+        {
+            "paperId": "9c5e5a4b0c02960a342e5e9eef0e4454bb1cec38",
+            "title": "Prediction of protein subcellular localization by incorporating multiobjective PSO-based feature subset selection into the general form of Chou\u2019s PseAAC"
+        },
+        {
+            "paperId": "6b4cc054facf43ca69c746f671e170e1d975b323",
+            "title": "iPro54-PseKNC: a sequence-based predictor for identifying sigma-54 promoters in prokaryote with pseudo k-tuple nucleotide composition"
+        },
+        {
+            "paperId": "52dd78faaad7c1d55804b8af0305d920ff4e6121",
+            "title": "iTIS-PseTNC: a sequence-based predictor for identifying translation initiation site in human genes using pseudo trinucleotide composition."
+        },
+        {
+            "paperId": "a487da2534ac698950bb015f33f31e169d0c75fe",
+            "title": "Discriminating protein structure classes by incorporating Pseudo Average Chemical Shift to Chou's general PseAAC and Support Vector Machine"
+        },
+        {
+            "paperId": "1a1ebcf1ce6fdc984b5567e34f35857b9d19fbd3",
+            "title": "Chou's pseudo amino acid composition improves sequence-based antifreeze protein prediction."
+        },
+        {
+            "paperId": "3e523b9119cc72565f2895e1db02e78e61e7f06d",
+            "title": "PseKNC: a flexible web server for generating pseudo K-tuple nucleotide composition."
+        },
+        {
+            "paperId": "a3cd3c201fabee39873216daa9f708a0be541099",
+            "title": "iNuc-PseKNC: a sequence-based predictor for predicting nucleosome positioning in genomes with pseudo k-tuple nucleotide composition"
+        },
+        {
+            "paperId": "5bf6a5650ca2905ccbcca09d036c3180dbd98ec6",
+            "title": "iCTX-Type: A Sequence-Based Predictor for Identifying the Types of Conotoxins in Targeting Ion Channels"
+        },
+        {
+            "paperId": "5d0f14390456e758d5c57e0b2ffa1c28981434af",
+            "title": "iMethyl-PseAAC: Identification of Protein Methylation Sites via a Pseudo Amino Acid Composition Approach"
+        },
+        {
+            "paperId": "3bb8f7c74d5437df912c8619608081eede7513a0",
+            "title": "iSS-PseDNC: Identifying Splicing Sites Using Pseudo Dinucleotide Composition"
+        },
+        {
+            "paperId": "9e7ca9a590d115869571da4a2c9606e637324f4f",
+            "title": "iHyd-PseAAC: Predicting Hydroxyproline and Hydroxylysine in Proteins by Incorporating Dipeptide Position-Specific Propensity into Pseudo Amino Acid Composition"
+        },
+        {
+            "paperId": "ee55aea26f816403476a7cb71816b8ecb1110329",
+            "title": "iNR-Drug: Predicting the Interaction of Drugs with Nuclear Receptors in Cellular Networking"
+        },
+        {
+            "paperId": "6f787f1d89ca65089686801323e2c63bce4b3b7d",
+            "title": "iRSpot-TNCPseAAC: Identify Recombination Spots with Trinucleotide Composition and Pseudo Amino Acid Components"
+        },
+        {
+            "paperId": "bc9e927b42131be8ec89ec352020ee9d7d6d016e",
+            "title": "iHSP-PseRAAAC: Identifying the heat shock protein families using pseudo reduced amino acid alphabet composition."
+        },
+        {
+            "paperId": "e0c998049a9e7640184eeee597c13d35a43ccfef",
+            "title": "iSNO-AAPair: incorporating amino acid pairwise coupling into PseAAC for predicting cysteine S-nitrosylation sites in proteins"
+        },
+        {
+            "paperId": "1e74fe18fc95e14c9803caae42890333ae5151de",
+            "title": "Prediction of essential proteins in prokaryotes by incorporating various physico-chemical features into the general form of Chou's pseudo amino acid composition."
+        },
+        {
+            "paperId": "7534e322ad11a12599cbccf5c4420bc370b97695",
+            "title": "Some remarks on predicting multi-label attributes in molecular biosystems."
+        },
+        {
+            "paperId": "db416b8d96aa2077e0ca10f9ada95245631c3642",
+            "title": "propy: a tool to generate various modes of Chou's PseAAC"
+        },
+        {
+            "paperId": "8de10867a128c1189d2f33b34b9dd5cd48c7dd31",
+            "title": "A Multilabel Model Based on Chou\u2019s Pseudo\u2013Amino Acid Composition for Identifying Membrane Proteins with Both Single and Multiple Functional Types"
+        },
+        {
+            "paperId": "b5e0feaf92b7add01f3031cea5a5656271134837",
+            "title": "iRSpot-PseDNC: identify recombination spots with pseudo dinucleotide composition"
+        },
+        {
+            "paperId": "e9435949640903e9325ad825a32168545ca9718b",
+            "title": "ChIP\u2013seq and beyond: new and improved methodologies to detect and characterize protein\u2013DNA interactions"
+        },
+        {
+            "paperId": "43a15ba37c0e1c88ebf28ff7f5cbe7e4ad20d6cf",
+            "title": "CD-HIT: accelerated for clustering the next-generation sequencing data"
+        },
+        {
+            "paperId": "d9b9f28630c21f1e6cef9a85948c038c9717d91d",
+            "title": "PseAAC-Builder: a cross-platform stand-alone program for generating various special Chou's pseudo-amino acid compositions."
+        },
+        {
+            "paperId": "35bacba3299e1c7833e667de8fba26fe336199c6",
+            "title": "Multi-kernel transfer learning based on Chou's PseAAC formulation for protein submitochondria localization."
+        },
+        {
+            "paperId": "54c5a03d07072d512188e05acb5b1164da18794a",
+            "title": "Wavelet images and Chou\u2019s pseudo amino acid composition for protein classification"
+        },
+        {
+            "paperId": "de7af5c28270f70a5fc287cc2f5b5191d83644bc",
+            "title": "Recognition of prokaryotic promoters based on a novel variable-window Z-curve method"
+        },
+        {
+            "paperId": "b3ede7ef3473042116e46fbc18491cc77e26d14c",
+            "title": "Prediction of GABAA receptor proteins using the concept of Chou's pseudo-amino acid composition and support vector machine."
+        },
+        {
+            "paperId": "a63255769a69bc57fe6df7977d33f9cf87d49cd5",
+            "title": "Supersecondary structure prediction using Chou's pseudo amino acid composition"
+        },
+        {
+            "paperId": "d45f9e0a4dc5255614a15c7661c6eff2a4911745",
+            "title": "Predicting Functions of Proteins in Mouse Based on Weighted Protein-Protein Interaction Network and Protein Hybrid Properties"
+        },
+        {
+            "paperId": "57f16f036921838771cb79b264d305f193c28fdf",
+            "title": "Some remarks on protein attribute prediction and pseudo amino acid composition"
+        },
+        {
+            "paperId": "76edf34358f37fefc04eb1e873523edae506778e",
+            "title": "SecretP: identifying bacterial secreted proteins by fusing new features into Chou's pseudo-amino acid composition."
+        },
+        {
+            "paperId": "039ea9d15c028723364d562f088208c7e4df9ce3",
+            "title": "2D-MH: A web-server for generating graphic representation of protein sequences based on the physicochemical properties of their constituent amino acids."
+        },
+        {
+            "paperId": "b845d4e4c16e04360e6b318101b6b80ad0470b83",
+            "title": "Cell-PLoc 2.0: an improved package of web-servers for predicting subcellular localization of proteins in various organisms"
+        },
+        {
+            "paperId": "e8db4c01d32cad0694852a94052c1b7d88842ef6",
+            "title": "Pseudo Amino Acid Composition and its Applications in Bioinformatics, Proteomics and System Biology"
+        },
+        {
+            "paperId": "241ef6c817ea1d1bb9878ba90d0da2a3891945fb",
+            "title": "Relative stability of DNA as a generic criterion for promoter prediction: whole genome annotation of microbial genomes with varying nucleotide base composition."
+        },
+        {
+            "paperId": "bdbeee63d6db461bbdf7267b8007800b1771e507",
+            "title": "REVIEW : Recent advances in developing web-servers for predicting protein attributes"
+        },
+        {
+            "paperId": "4ba3f211c8ee46bd10e6f9e219dbe90972cf1db6",
+            "title": "Promoter Strength Properties of the Complete Sigma E Regulon of Escherichia coli and Salmonella enterica"
+        },
+        {
+            "paperId": null,
+            "title": "TopHat: discovering splice junctions with RNA-Seq"
+        },
+        {
+            "paperId": "43c263e1cb7b95b9f6f18c82212271da065406a6",
+            "title": "Use of fuzzy clustering technique and matrices to classify amino acids and its impact to Chou's pseudo amino acid composition."
+        },
+        {
+            "paperId": "a19e88464f46a0ecc6eb9239ef929d23d2de7513",
+            "title": "HIVcleave: a web-server for predicting human immunodeficiency virus protease cleavage sites in proteins."
+        },
+        {
+            "paperId": "4e0d6cc93463f85b6e12631fc1c0da963d056093",
+            "title": "Genetic programming for creating Chou\u2019s pseudo amino acid based features for submitochondria localization"
+        },
+        {
+            "paperId": "fce71ae4be65625191df38de722f245882ddb7ff",
+            "title": "Recent progress in protein subcellular location prediction."
+        },
+        {
+            "paperId": "6a84128792a72c5e82d1ce89cb2540f1bb618cfc",
+            "title": "Using Chou's amphiphilic pseudo-amino acid composition and support vector machine for prediction of enzyme subfamily classes."
+        },
+        {
+            "paperId": "82a31448155a85e6a157d2ecc88fde1dac5682e0",
+            "title": "Using pseudo amino acid composition to predict protein subnuclear localization: Approached with PSSM"
+        },
+        {
+            "paperId": "ad9ed439d8caa56314caccdab64f049097e35ce0",
+            "title": "MemType-2L: a web server for predicting membrane proteins and their types by incorporating evolution information through Pse-PSSM."
+        },
+        {
+            "paperId": "1e0c6c9c4553f52cfc885e876356a569ba78f1dd",
+            "title": "Prediction of linear B-cell epitopes using amino acid pair antigenicity scale"
+        },
+        {
+            "paperId": "a4f0793426059c181acd2a4ebdb5dbd8898be029",
+            "title": "The recognition and prediction of \u03c370 promoters in Escherichia coli K-12"
+        },
+        {
+            "paperId": "a883cacbc8f9b021b2a63f0453307855fa075d33",
+            "title": "The relationship between Precision-Recall and ROC curves"
+        },
+        {
+            "paperId": "d40ee5dd758c525dfb9932d726bb4e844b7b8478",
+            "title": "An introduction to ROC analysis"
+        },
+        {
+            "paperId": "8f68f5dfc85b7668c28227e77a1ecaa7ad8cacc0",
+            "title": "Using LogitBoost classifier to predict protein structural classes."
+        },
+        {
+            "paperId": "7027b33e89dbb655525c98a0e4d5118b41b0951a",
+            "title": "Large-scale structural analysis of the core promoter in mammalian and plant genomes"
+        },
+        {
+            "paperId": "94244f274f29220db160fea28a9a8733e466daf7",
+            "title": "Using cellular automata to generate image representation for biological sequences"
+        },
+        {
+            "paperId": "a22c85dcee82757d815957957d75321ef226654b",
+            "title": "Prediction and classification of protein subcellular location\u2014sequence\u2010order effect and pseudo amino acid composition"
+        },
+        {
+            "paperId": "740047859de1df572641d66e34273e13b4b9b620",
+            "title": "Nearest neighbour algorithm for predicting protein subcellular location by combining functional domain composition and pseudo-amino acid composition."
+        },
+        {
+            "paperId": "2c91083178da2c042f4524ef5bbef15e246db731",
+            "title": "Support vector machines for predicting membrane protein types by using functional domain composition."
+        },
+        {
+            "paperId": "a4016425c8a037aece8f7768a41ac41846a9abdb",
+            "title": "Using Functional Domain Composition and Support Vector Machines for Prediction of Protein Subcellular Location*"
+        },
+        {
+            "paperId": "b06fcbd83856b7a5b93162b7cb81d650b235209a",
+            "title": "Bioinformatical analysis of G-protein-coupled receptors."
+        },
+        {
+            "paperId": "f6faf249f6cef5248ab791475e6b3c6b5a508610",
+            "title": "Application of a Time-delay Neural Network to Promoter Annotation in the Drosophila Melanogaster Genome"
+        },
+        {
+            "paperId": "d2ad148476d96af5b167b8c4512331189b6395ee",
+            "title": "Prediction of signal peptides using scaled window"
+        },
+        {
+            "paperId": "7633e42149c31cea322d49e2751ad9e3c2858241",
+            "title": "Prediction of protein cellular attributes using pseudo\u2010amino acid composition"
+        },
+        {
+            "paperId": "d8561b0c775c0b0a7d33015c26c6db5c41d4a58b",
+            "title": "A formulation for correlating properties of peptides and its application to predicting human immunodeficiency virus protease\u2010cleavable sites in proteins"
+        },
+        {
+            "paperId": "cca9150bc193362adbc90deb47739dca411aef81",
+            "title": "The quinoline U-78036 is a potent inhibitor of HIV-1 reverse transcriptase."
+        },
+        {
+            "paperId": "20624109745d199967cb62c695533e2cc82e9915",
+            "title": "Kinetic studies with the non-nucleoside HIV-1 reverse transcriptase inhibitor U-88204E."
+        },
+        {
+            "paperId": "e65b3121a8bce3719bdfa2157c5e8ce2949ff4ef",
+            "title": "Predicting cleavability of peptide sequences by HIV protease via correlation-angle approach"
+        },
+        {
+            "paperId": "974cc4682cc3e124f73d645ea08936050c43ffef",
+            "title": "A joint prediction of the folding types of 1490 human proteins from their genetic codons."
+        },
+        {
+            "paperId": "130d195caa1a8be5475a5ba71b98f7acb1a67673",
+            "title": "A correlation-coefficient method to predicting protein-structural classes from amino acid compositions."
+        },
+        {
+            "paperId": "f249532a11721f5745cc01d0079940c637dadb66",
+            "title": "An optimization approach to predicting protein structural class from amino acid composition"
+        },
+        {
+            "paperId": "75194afa0dd6a63182fe004cf894dbcce08e5a80",
+            "title": "Graphic rules in steady and non-steady state enzyme kinetics."
+        },
+        {
+            "paperId": "14d72027eb101355650a5202a44b41c8c2abe499",
+            "title": "An extension of Chou's graphic rules for deriving enzyme kinetic equations to systems involving parallel reaction pathways."
+        },
+        {
+            "paperId": "82cfb7b022398e5ad1f204dee45125c28236a46e",
+            "title": "Low-frequency vibrations of DNA molecules."
+        },
+        {
+            "paperId": "d71d5e3c344282677806b663cd7105618563fcce",
+            "title": "Graphical rules for enzyme-catalysed rate laws."
+        },
+        {
+            "paperId": "d543bc66ad15103b729303867bd28ccbfd466408",
+            "title": "GRAPH THEORY OF ENZYME KINETICS I.STEADY-STATE REACTION SYSTEMS"
+        },
+        {
+            "paperId": "da5dec9a22648db2ef44cc37d1207aa586d3c5d8",
+            "title": "pLoc-mEuk: Predict subcellular localization of multi-label eukaryotic proteins by extracting the key GO information into general PseAAC."
+        },
+        {
+            "paperId": "e0e4ea18d2b55bce3ae76328ecf1b6f80da9c848",
+            "title": "iPromoter-2L: a two-layer predictor for identifying promoters and their types by multi-window-based PseKNC"
+        },
+        {
+            "paperId": null,
+            "title": "Bastion3: a two-layer approach for identifying type III secreted effectors using ensemble learning"
+        },
+        {
+            "paperId": "4dfac0740f1c32ca0ae339cff772fda2abf2b408",
+            "title": "iRSpot-EL: identify recombination spots with an ensemble learning approach"
+        },
+        {
+            "paperId": "1f6f0e9ec385c5e15e4d2dc6b5429a0bbf1f0fa1",
+            "title": "PseKNC-General: a cross-platform package for generating various modes of pseudo nucleotide compositions"
+        },
+        {
+            "paperId": "ea30864695289f3d91d4407089a060a00d2fca3d",
+            "title": "DNA duplex stability as discriminative characteristic for Escherichia coli \u03c3(54)- and \u03c3(28)- dependent promoter sequences."
+        },
+        {
+            "paperId": "0227bacf8ba169cbdd67dbe44060a63b58df6555",
+            "title": "Cell-PLoc: a package of Web servers for predicting subcellular localization of proteins in various organisms"
+        },
+        {
+            "paperId": "ae6267ba88a05de83ea4b6c4a912d5fdf1782d92",
+            "title": "Using amphiphilic pseudo amino acid composition to predict enzyme subfamily classes"
+        },
+        {
+            "paperId": "bc4c071c3f1052f9ad82ca2875021994c8fe8320",
+            "title": "BIOINFORMATICS ORIGINAL PAPER Sequence analysis Improving promoter prediction for the NNPP2.2 algorithm: a case study using Escherichia coli DNA sequences"
+        },
+        {
+            "paperId": "aea2c4fd55d16a4296f6f44d4c3b393bb4cfb69d",
+            "title": "Prediction of protein structural classes."
+        }
+    ]
+}

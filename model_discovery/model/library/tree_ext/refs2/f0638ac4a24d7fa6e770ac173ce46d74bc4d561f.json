@@ -1,0 +1,154 @@
+{
+    "paperId": "f0638ac4a24d7fa6e770ac173ce46d74bc4d561f",
+    "externalIds": {
+        "DBLP": "conf/nips/HazanLSZZ18",
+        "MAG": "2949143751",
+        "ArXiv": "1802.03981",
+        "CorpusId": 3630066
+    },
+    "title": "Spectral Filtering for General Linear Dynamical Systems",
+    "abstract": "We give a polynomial-time algorithm for learning latent-state linear dynamical systems without system identification, and without assumptions on the spectral radius of the system's transition matrix. The algorithm extends the recently introduced technique of spectral filtering, previously applied only to systems with a symmetric transition matrix, using a novel convex relaxation to allow for the efficient identification of phases.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2018,
+    "referenceCount": 27,
+    "citationCount": 88,
+    "influentialCitationCount": 4,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The recently introduced technique of spectral filtering is extended, previously applied only to systems with a symmetric transition matrix, using a novel convex relaxation to allow for the efficient identification of phases."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "34840427",
+            "name": "Elad Hazan"
+        },
+        {
+            "authorId": "40385395",
+            "name": "Holden Lee"
+        },
+        {
+            "authorId": "2109143637",
+            "name": "Karan Singh"
+        },
+        {
+            "authorId": "15943185",
+            "name": "Cyril Zhang"
+        },
+        {
+            "authorId": "2153912701",
+            "name": "Yi Zhang"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "73317dbc881f53ee7fc25a9899b8b5b6698fce55",
+            "title": "Learning Linear Dynamical Systems via Spectral Filtering"
+        },
+        {
+            "paperId": "e53eaf5a509763e376f9e5fb2b278318430d75e0",
+            "title": "On the Sample Complexity of the Linear Quadratic Regulator"
+        },
+        {
+            "paperId": "f0a22929e436f6d22cf87629df94ddfe612e7d08",
+            "title": "On the Singular Values of Matrices with Displacement Structure"
+        },
+        {
+            "paperId": "8a765725a44b91b60d414551dc555175cfff3cd9",
+            "title": "Gradient Descent Learns Linear Dynamical Systems"
+        },
+        {
+            "paperId": "195043e4c13a635555c28dfab7ac534d10d78c12",
+            "title": "Introduction to Online Convex Optimization"
+        },
+        {
+            "paperId": "fd8cc20ff13a819b48097146425eb7ab0279e2a5",
+            "title": "Time series prediction and online learning"
+        },
+        {
+            "paperId": "9b510639c82fbbc8c7d883644d7d15f5901c8c73",
+            "title": "A Linear Dynamical System Model for Text"
+        },
+        {
+            "paperId": "80050cc9090cb42e5b26a8d0f11a1ce19d2b0fc8",
+            "title": "Time Series: Theory and Methods"
+        },
+        {
+            "paperId": "1c607dcc5fd4b26603584c5f85c9c233788c64ed",
+            "title": "Online Learning for Time Series Prediction"
+        },
+        {
+            "paperId": "bcce96a2a074448953fc61a29a84afbdfc8db55a",
+            "title": "Online Learning and Online Convex Optimization"
+        },
+        {
+            "paperId": "52087aa2426a1dea55e41982b2dc7b6956483885",
+            "title": "Regularization Techniques for Learning with Matrices"
+        },
+        {
+            "paperId": "3264f3da27383494baa024f90153a8ad9163900d",
+            "title": "Competitive On-line Linear FIR MMSE Filtering"
+        },
+        {
+            "paperId": "c883f38d202548c1d89ef5de8892d53227842092",
+            "title": "Logarithmic regret algorithms for online convex optimization"
+        },
+        {
+            "paperId": "0538e399046c74d95124c715760aa51ab4716dce",
+            "title": "Prediction, learning, and games"
+        },
+        {
+            "paperId": "3f99769ca3f0e3f41a239a1b58adf26bb930b9b2",
+            "title": "Off-policy Learning with Options and Recognizers"
+        },
+        {
+            "paperId": "30755a7614148f1acf5edca72385832410c7c33a",
+            "title": "A Unifying Review of Linear Gaussian Models"
+        },
+        {
+            "paperId": "9dd1cddf0e8911b4a17b6b967df1b38a7dac7457",
+            "title": "A fast method to diagonalize a Hankel matrix"
+        },
+        {
+            "paperId": "b0dc50b566596f4b74a6317e260fee169336dc48",
+            "title": "Robust and optimal control"
+        },
+        {
+            "paperId": "68e1bbbc56c05bc53c894855ffa9823c69f2a28f",
+            "title": "TRICKS OR TREATS WITH THE HILBERT MATRIX"
+        },
+        {
+            "paperId": "8dcaf96f66340c453e775ab217a1b1bd9ba63449",
+            "title": "Time series analysis, forecasting and control"
+        },
+        {
+            "paperId": "2c3231a8a6cdae3d15e60baf1c4ab47bcd5564d4",
+            "title": "Discriminative State Space Models"
+        },
+        {
+            "paperId": "255a77422b1da74da05d1714b7875356187385bd",
+            "title": "A New Approach to Linear Filtering and Prediction Problems"
+        },
+        {
+            "paperId": "bb55c1c619c30f939fc792b049172926a4a0c0f7",
+            "title": "A New Approach to Linear Filtering and Prediction Problems"
+        },
+        {
+            "paperId": null,
+            "title": "System identification: Theory for the User"
+        },
+        {
+            "paperId": "2757c752d2b2082d707aa9bbf5d124e0d4651759",
+            "title": "Subspace identification for linear systems"
+        },
+        {
+            "paperId": "6a5e95f6695fedd43d4f49756777d55bbc4b05bb",
+            "title": "Ein Beitrag zur Theorie des Legendre'schen Polynoms"
+        },
+        {
+            "paperId": null,
+            "title": "Note that no bound on \u2016 \ud835\udc66 \ud835\udc61 \u2016 is required for the approximation theorem; \ud835\udc45 \ud835\udc66 only appears in the regret bound. 3"
+        }
+    ]
+}

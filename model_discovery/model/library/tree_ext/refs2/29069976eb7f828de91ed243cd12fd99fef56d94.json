@@ -1,0 +1,154 @@
+{
+    "paperId": "29069976eb7f828de91ed243cd12fd99fef56d94",
+    "externalIds": {
+        "DBLP": "conf/iclr/ZintgrafCAW17",
+        "ArXiv": "1702.04595",
+        "MAG": "2950211972",
+        "CorpusId": 2103669
+    },
+    "title": "Visualizing Deep Neural Network Decisions: Prediction Difference Analysis",
+    "abstract": "This article presents the prediction difference analysis method for visualizing the response of a deep neural network to a specific input. When classifying images, the method highlights areas in a given input image that provide evidence for or against a certain class. It overcomes several shortcoming of previous methods and provides great additional insight into the decision making process of classifiers. Making neural network decisions interpretable through visualization is important both to improve models and to accelerate the adoption of black-box classifiers in application areas such as medicine. We illustrate the method in experiments on natural images (ImageNet data), as well as medical images (MRI brain scans).",
+    "venue": "International Conference on Learning Representations",
+    "year": 2017,
+    "referenceCount": 28,
+    "citationCount": 679,
+    "influentialCitationCount": 52,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The prediction difference analysis method for visualizing the response of a deep neural network to a specific input highlights areas in a given input image that provide evidence for or against a certain class."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3378188",
+            "name": "L. Zintgraf"
+        },
+        {
+            "authorId": "2056266",
+            "name": "Taco Cohen"
+        },
+        {
+            "authorId": "3168195",
+            "name": "T. Adel"
+        },
+        {
+            "authorId": "1678311",
+            "name": "M. Welling"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "2ac9995a47f9753041e8e760fb083dfb83998267",
+            "title": "Not Just a Black Box: Learning Important Features Through Propagating Activation Differences"
+        },
+        {
+            "paperId": "31f9eb39d840821979e5df9f34a6e92dd9c879f2",
+            "title": "Learning Deep Features for Discriminative Localization"
+        },
+        {
+            "paperId": "17a273bbd4448083b01b5a9389b3c37f5425aac0",
+            "title": "On Pixel-Wise Explanations for Non-Linear Classifier Decisions by Layer-Wise Relevance Propagation"
+        },
+        {
+            "paperId": "1b5a24639fa80056d1a17b15f6997d10e76cc731",
+            "title": "Understanding Neural Networks Through Deep Visualization"
+        },
+        {
+            "paperId": "abc9a1b27a1fb4b733d7407db574621febb601d8",
+            "title": "A data\u2010centric neuroscience gateway: design, implementation, and experiences"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "6bdb186ec4726e00a8051119636d4df3b94043b5",
+            "title": "Caffe: Convolutional Architecture for Fast Feature Embedding"
+        },
+        {
+            "paperId": "3a6317c307688dc9cd82f34fda074b271d8b32ab",
+            "title": "On the interpretation of weight vectors of linear models in multivariate neuroimaging"
+        },
+        {
+            "paperId": "dc6ac3437f0a6e64e4404b1b9d188394f8a3bf71",
+            "title": "Deep Inside Convolutional Networks: Visualising Image Classification Models and Saliency Maps"
+        },
+        {
+            "paperId": "1a2a770d23b4a171fa81de62a78a3deb0588f238",
+            "title": "Visualizing and Understanding Convolutional Networks"
+        },
+        {
+            "paperId": "c776906ad1e34ec2c941d9fb7d55141dd9ec05aa",
+            "title": "Analytic estimation of statistical significance maps for support vector machine based multi-variate image analysis and classification"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "bd5fc28c7356915ec71abafbe86b7596c60720aa",
+            "title": "The conference paper"
+        },
+        {
+            "paperId": "de39953d02cb69db1d529a1f9bb5b5bec5de7490",
+            "title": "Describing the Brain in Autism in Five Dimensions\u2014Magnetic Resonance Imaging-Assisted Diagnosis of Autism Spectrum Disorder Using a Multiparameter Classification Approach"
+        },
+        {
+            "paperId": "dfa6247a208e31d67281ab3bd4d3516f3c728c35",
+            "title": "Explaining Classifications For Individual Instances"
+        },
+        {
+            "paperId": "3d13d6f847e8f4c76c5a8d6f99fa49dbabe473c0",
+            "title": "Automatic classification of MR scans in Alzheimer's disease."
+        },
+        {
+            "paperId": "b0c505f6b8f785af48b21e28c25dbc6db61e5a83",
+            "title": "Support vector machine learning-based fMRI data group analysis"
+        },
+        {
+            "paperId": "ddf0c793e4a431fdf9dc14db75aff310f675081e",
+            "title": "Classifying brain states and determining the discriminating activation patterns: Support Vector Machine on functional MRI data"
+        },
+        {
+            "paperId": "0c2563caba6bcdb113817d560ce9492467e45873",
+            "title": "Under review as a conference paper at ICLR 2020 many domain adaptation methods"
+        },
+        {
+            "paperId": "bcd857d75841aa3e92cd4284a8818aba9f6c0c3f",
+            "title": "Published as a conference paper at ICLR 2018 S IMULATING A CTION D YNAMICS WITH N EURAL P ROCESS N ETWORKS"
+        },
+        {
+            "paperId": "65d994fb778a8d9e0f632659fb33a082949a50d3",
+            "title": "Visualizing Higher-Layer Features of a Deep Network"
+        },
+        {
+            "paperId": "7018dff7b9e2d05f2b43a0fe8b0a3598e2f213f2",
+            "title": "Non-linear optimisation FMRIB Technial Report TR 07 JA 1"
+        },
+        {
+            "paperId": null,
+            "title": "HIV Monitoring Foundation). Central laboratory support"
+        },
+        {
+            "paperId": null,
+            "title": "AMC, Division of Infectious Diseases) Other collaborators"
+        },
+        {
+            "paperId": null,
+            "title": "This work was supported by AWS in Education Grant award. We thank Facebook and Google for financial support, and our reviewers for their time and valuable, constructive feedback"
+        },
+        {
+            "paperId": null,
+            "title": "AMC, Department of Radiology Nievaard (AMC, Department of Gynaecology); B.J.H. van den Born, E.S.G. Stroes, (AMC, Division of Vascular Medicine"
+        }
+    ]
+}

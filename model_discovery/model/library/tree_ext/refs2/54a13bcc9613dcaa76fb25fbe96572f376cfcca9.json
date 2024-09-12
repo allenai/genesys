@@ -1,0 +1,86 @@
+{
+    "paperId": "54a13bcc9613dcaa76fb25fbe96572f376cfcca9",
+    "externalIds": {
+        "MAG": "2949215200",
+        "ArXiv": "1804.04235",
+        "DBLP": "conf/icml/ShazeerS18",
+        "CorpusId": 4786918
+    },
+    "title": "Adafactor: Adaptive Learning Rates with Sublinear Memory Cost",
+    "abstract": "In several recently proposed stochastic optimization methods (e.g. RMSProp, Adam, Adadelta), parameter updates are scaled by the inverse square roots of exponential moving averages of squared past gradients. Maintaining these per-parameter second-moment estimators requires memory equal to the number of parameters. For the case of neural network weight matrices, we propose maintaining only the per-row and per-column sums of these moving averages, and estimating the per-parameter second moments based on these sums. We demonstrate empirically that this method produces similar results to the baseline. Secondly, we show that adaptive methods can produce larger-than-desired updates when the decay rate of the second moment accumulator is too slow. We propose update clipping and a gradually increasing decay rate scheme as remedies. Combining these methods and dropping momentum, we achieve comparable results to the published Adam regime in training the Transformer model on the WMT 2014 English-German machine translation task, while using very little auxiliary storage in the optimizer. Finally, we propose scaling the parameter updates based on the scale of the parameters themselves.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2018,
+    "referenceCount": 13,
+    "citationCount": 863,
+    "influentialCitationCount": 156,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work demonstrates empirically that adaptive methods can produce larger-than-desired updates when the decay rate of the second moment accumulator is too slow, and proposes update clipping and a gradually increasing decay rate scheme as remedies."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1846258",
+            "name": "Noam M. Shazeer"
+        },
+        {
+            "authorId": "144872294",
+            "name": "Mitchell Stern"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "c983653841b6987d9959318f074a595783838576",
+            "title": "On the Convergence of Adam and Beyond"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "0d57ba12a6d958e178d83be4c84513f7e42b24e5",
+            "title": "Accurate, Large Minibatch SGD: Training ImageNet in 1 Hour"
+        },
+        {
+            "paperId": "510e26733aaff585d65701b9f1be7ca9d5afc586",
+            "title": "Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "8729441d734782c3ed532a7d2d9611b438c0a09a",
+            "title": "ADADELTA: An Adaptive Learning Rate Method"
+        },
+        {
+            "paperId": "84069287da0a6b488b8c933f3cb5be759cb6237e",
+            "title": "On the difficulty of training recurrent neural networks"
+        },
+        {
+            "paperId": "413c1142de9d91804d6d11c67ff3fed59c9fc279",
+            "title": "Adaptive Subgradient Methods for Online Learning and Stochastic Optimization"
+        },
+        {
+            "paperId": "d9211bc2f53b93bc2501aef8d8d929eac60451ad",
+            "title": "Nonnegative matrix factorization and I-divergence alternating minimization\u2606"
+        },
+        {
+            "paperId": "29bae9472203546847ec1352a604566d0f602728",
+            "title": "Learning the parts of objects by non-negative matrix factorization"
+        },
+        {
+            "paperId": "8112c4305b88d85199267e9e03d3a0aca4432059",
+            "title": "The approximation of one matrix by another of lower rank"
+        },
+        {
+            "paperId": "c1d31d01837136222c5a501ea1cb6fa091d521fe",
+            "title": "Training highly multiclass classifiers"
+        },
+        {
+            "paperId": null,
+            "title": "Lecture 6.5-RmsProp: Divide the gradient by a running average of its recent magnitude. COURSERA: Neural Networks for Machine Learning"
+        }
+    ]
+}

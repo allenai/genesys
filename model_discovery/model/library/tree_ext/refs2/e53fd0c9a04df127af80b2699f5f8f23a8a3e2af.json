@@ -1,0 +1,140 @@
+{
+    "paperId": "e53fd0c9a04df127af80b2699f5f8f23a8a3e2af",
+    "externalIds": {
+        "MAG": "2899328858",
+        "ArXiv": "1811.01001",
+        "ACL": "W19-0128",
+        "DBLP": "journals/corr/abs-1811-01001",
+        "DOI": "10.7275/s02b-4d91",
+        "CorpusId": 53299978
+    },
+    "title": "On Evaluating the Generalization of LSTM Models in Formal Languages",
+    "abstract": "Recurrent Neural Networks (RNNs) are theoretically Turing-complete and established themselves as a dominant model for language processing. Yet, there still remains an uncertainty regarding their language learning capabilities. In this paper, we empirically evaluate the inductive learning capabilities of Long Short-Term Memory networks, a popular extension of simple RNNs, to learn simple formal languages, in particular $a^nb^n$, $a^nb^nc^n$, and $a^nb^nc^nd^n$. We investigate the influence of various aspects of learning, such as training data regimes and model capacity, on the generalization to unobserved samples. We find striking differences in model performances under different training settings and highlight the need for careful analysis and assessment when making claims about the learning capabilities of neural network models.",
+    "venue": "arXiv.org",
+    "year": 2018,
+    "referenceCount": 25,
+    "citationCount": 40,
+    "influentialCitationCount": 4,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper empirically evaluates the inductive learning capabilities of Long Short-Term Memory networks, a popular extension of simple RNNs, to learn simple formal languages."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "51903517",
+            "name": "Mirac Suzgun"
+        },
+        {
+            "authorId": "2083259",
+            "name": "Yonatan Belinkov"
+        },
+        {
+            "authorId": "1692491",
+            "name": "Stuart M. Shieber"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "cbc2b7cd7db78e9bd06de035a0b0ec7e187016f8",
+            "title": "LSTMs Exploit Linguistic Attributes of Data"
+        },
+        {
+            "paperId": "06354570d5f6be803d4a79bf59ecbb097bca8755",
+            "title": "On the Practical Computational Power of Finite Precision RNNs for Language Recognition"
+        },
+        {
+            "paperId": "b36a5bb1707bb9c70025294b3a310138aae8327a",
+            "title": "Automatic differentiation in PyTorch"
+        },
+        {
+            "paperId": "a7976c2bacfbb194ddbe7fd10c2e50a545cf4081",
+            "title": "LSTM: A Search Space Odyssey"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "561afac31bc551a3d563ac63821f6030a6172edc",
+            "title": "Incremental training of first order recurrent neural networks to predict a context-sensitive language"
+        },
+        {
+            "paperId": "df41e6edb0d57786f386901b8b2083b4795f08fb",
+            "title": "On learning context-free and context-sensitive languages"
+        },
+        {
+            "paperId": "1be8778de4c6eb623871fe08d0998016bd60936f",
+            "title": "LSTM recurrent networks learn simple context-free and context-sensitive languages"
+        },
+        {
+            "paperId": "d0585d60c1fe5b4c5fde208ecde015aacba8562e",
+            "title": "Simple Recurrent Networks Learn Context-Free and Context-Sensitive Languages by Counting"
+        },
+        {
+            "paperId": "bcf127b8fef69d4169dc6e985f5fbc263bb3652c",
+            "title": "Context-free and context-sensitive dynamics in recurrent neural networks"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "5ef19754541f8b368ce23ec579d968b96907d1bb",
+            "title": "Designing a Counter: Another Case Study of Dynamics and Activation Landscapes in Recurrent Networks"
+        },
+        {
+            "paperId": "225cfcc2bdb0fd6ab1b831257009032232688c2f",
+            "title": "The Dynamics of Discrete-Time Computation, with Application to Recurrent Neural Networks and Finite State Machine Extraction"
+        },
+        {
+            "paperId": "f41485b584777a5a72055a40ea8614fe1038fb12",
+            "title": "Computation Beyond the Turing Limit"
+        },
+        {
+            "paperId": "17594df98c222217a11510dd454ba52a5a737378",
+            "title": "On the computational power of neural nets"
+        },
+        {
+            "paperId": "872cdc269f3cb59f8a227818f35041415091545f",
+            "title": "Learning and Extracting Finite State Automata with Second-Order Recurrent Neural Networks"
+        },
+        {
+            "paperId": "605d738a39df3c5e596613ab0ca6925f0eecdf35",
+            "title": "Distributed representations, simple recurrent networks, and grammatical structure"
+        },
+        {
+            "paperId": "0cb74c670f4cb29afe63ff25df19d1ed7afe4429",
+            "title": "Inductive Inference of Formal Languages from Positive Data"
+        },
+        {
+            "paperId": "067e07b725ab012c80aa2f87857f6791c1407f6d",
+            "title": "Long short-term memory recurrent neural network architectures for large scale acoustic modeling"
+        },
+        {
+            "paperId": "57dbba9281cbd1b4dd5d1932f0dd605b8f498322",
+            "title": "A Recurrent Neural Network that Learns to Count"
+        },
+        {
+            "paperId": "73ce506d16ad040aca09a4460018010b833e73d7",
+            "title": "A Recurrent Network that performs a Context-Sensitive Prediction Task"
+        },
+        {
+            "paperId": "0eaf1af77f16a9b166556e4cc40d282303b854db",
+            "title": "Tail-recursive Distributed Representations and Simple Recurrent Networks"
+        },
+        {
+            "paperId": "0b7005984749cf5f2caa1072866b36e17713ab84",
+            "title": "Learning to count without a counter: A case study of dynamics and activation landscapes in recurrent networks"
+        },
+        {
+            "paperId": "30110856f45fde473f1903f686aa365cf70ed4c7",
+            "title": "Learning Context-free Grammars: Capabilities and Limitations of a Recurrent Neural Network with an External Stack Memory (cid:3)"
+        }
+    ]
+}

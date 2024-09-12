@@ -1,0 +1,118 @@
+{
+    "paperId": "fdfa7dc73dc1fc6772d26f88c72e98b68d1f8498",
+    "externalIds": {
+        "DBLP": "conf/iclr/MartinC18",
+        "MAG": "2963738165",
+        "ArXiv": "1709.04057",
+        "CorpusId": 3497822
+    },
+    "title": "Parallelizing Linear Recurrent Neural Nets Over Sequence Length",
+    "abstract": "Recurrent neural networks (RNNs) are widely used to model sequential data but their non-linear dependencies between sequence elements prevent parallelizing training over sequence length. We show the training of RNNs with only linear sequential dependencies can be parallelized over the sequence length using the parallel scan algorithm, leading to rapid training on long sequences even with small minibatch size. We develop a parallel linear recurrence CUDA kernel and show that it can be applied to immediately speed up training and inference of several state of the art RNN architectures by up to 9x. We abstract recent work on linear RNNs into a new framework of linear surrogate RNNs and develop a linear surrogate model for the long short-term memory unit, the GILR-LSTM, that utilizes parallel linear recurrence. We extend sequence learning to new extremely long sequence regimes that were previously out of reach by successfully training a GILR-LSTM on a synthetic sequence classification task with a one million timestep dependency.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2017,
+    "referenceCount": 21,
+    "citationCount": 69,
+    "influentialCitationCount": 3,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown the training of RNNs with only linear sequential dependencies can be parallelized over the sequence length using the parallel scan algorithm, leading to rapid training on long sequences even with small minibatch size."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2151069075",
+            "name": "Eric Martin"
+        },
+        {
+            "authorId": "24769718",
+            "name": "Chris Cundy"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "ad45b1291067120bf9e55ac7424eb627e0aab149",
+            "title": "Training RNNs as Fast as CNNs"
+        },
+        {
+            "paperId": "43428880d75b3a14257c3ee9bda054e61eb869c0",
+            "title": "Convolutional Sequence to Sequence Learning"
+        },
+        {
+            "paperId": "2d876ed1dd2c58058d7197b734a8e4d349b8f231",
+            "title": "Quasi-Recurrent Neural Networks"
+        },
+        {
+            "paperId": "98445f4172659ec5e891e031d8202c102135c644",
+            "title": "Neural Machine Translation in Linear Time"
+        },
+        {
+            "paperId": "8ec5896b4490c6e127d1718ffc36a3439d84cb81",
+            "title": "On Large-Batch Training for Deep Learning: Generalization Gap and Sharp Minima"
+        },
+        {
+            "paperId": "df0402517a7338ae28bc54acaac400de6b456a46",
+            "title": "WaveNet: A Generative Model for Raw Audio"
+        },
+        {
+            "paperId": "56172b6fe2613c37d9790bde8ab6ccda14b35678",
+            "title": "Persistent RNNs: Stashing Recurrent Weights On-Chip"
+        },
+        {
+            "paperId": "9c9d7247f8c51ec5a02b0d911d1d7b9e8160495d",
+            "title": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems"
+        },
+        {
+            "paperId": "7e45b68037b5f86c4bce305b2725f4871c6b091e",
+            "title": "Strongly-Typed Recurrent Neural Networks"
+        },
+        {
+            "paperId": "13497bd108d4412d02050e646235f456568cf822",
+            "title": "Deep Speech 2 : End-to-End Speech Recognition in English and Mandarin"
+        },
+        {
+            "paperId": "f8b2c2a8c2369f4c40a9cf5e8599bf4ece665200",
+            "title": "Converting Static Image Datasets to Spiking Neuromorphic Datasets Using Saccades"
+        },
+        {
+            "paperId": "f5f323e62acb75f785e00b4c90ace16f1690076f",
+            "title": "Deep Recurrent Q-Learning for Partially Observable MDPs"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "ea9d2a2b4ce11aaf85136840c65f3bc9c03ab649",
+            "title": "Understanding the difficulty of training deep feedforward neural networks"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "1ff9332f2b62ccdded3f46320fd3661d99155652",
+            "title": "On Parallel Prefix Computation"
+        },
+        {
+            "paperId": "dc52d1ede1b90bf9d296bc5b34c9310b7eaa99a2",
+            "title": "The mnist database of handwritten digits"
+        },
+        {
+            "paperId": "2304be7d4f14b28d266e2102444a2dbfeb432d43",
+            "title": "Physionet: Components of a New Research Resource for Complex Physiologic Signals\". Circu-lation Vol"
+        },
+        {
+            "paperId": "ec0bc920662693375a881d8beb8c97bf08281dba",
+            "title": "Prefix sums and their applications"
+        }
+    ]
+}

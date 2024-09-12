@@ -1,0 +1,262 @@
+{
+    "paperId": "cd62c9976534a6a2096a38244f6cbb03635a127e",
+    "externalIds": {
+        "MAG": "2117671523",
+        "DBLP": "journals/tsp/WaibelHHSL89",
+        "DOI": "10.1109/29.21701",
+        "CorpusId": 9563026
+    },
+    "title": "Phoneme recognition using time-delay neural networks",
+    "abstract": "The authors present a time-delay neural network (TDNN) approach to phoneme recognition which is characterized by two important properties: (1) using a three-layer arrangement of simple computing units, a hierarchy can be constructed that allows for the formation of arbitrary nonlinear decision surfaces, which the TDNN learns automatically using error backpropagation; and (2) the time-delay arrangement enables the network to discover acoustic-phonetic features and the temporal relationships between them independently of position in time and therefore not blurred by temporal shifts in the input. As a recognition task, the speaker-dependent recognition of the phonemes B, D, and G in varying phonetic contexts was chosen. For comparison, several discrete hidden Markov models (HMM) were trained to perform the same task. Performance evaluation over 1946 testing tokens from three speakers showed that the TDNN achieves a recognition rate of 98.5% correct while the rate obtained by the best of the HMMs was only 93.7%. >",
+    "venue": "IEEE Transactions on Acoustics Speech and Signal Processing",
+    "year": 1989,
+    "referenceCount": 54,
+    "citationCount": 3000,
+    "influentialCitationCount": 176,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The authors present a time-delay neural network (TDNN) approach to phoneme recognition which is characterized by two important properties: using a three-layer arrangement of simple computing units, a hierarchy can be constructed that allows for the formation of arbitrary nonlinear decision surfaces, which the TDNN learns automatically using error backpropagation."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1724972",
+            "name": "A. Waibel"
+        },
+        {
+            "authorId": "40396597",
+            "name": "Toshiyuki Hanazawa"
+        },
+        {
+            "authorId": "1695689",
+            "name": "Geoffrey E. Hinton"
+        },
+        {
+            "authorId": "9243990",
+            "name": "K. Shikano"
+        },
+        {
+            "authorId": "49464494",
+            "name": "Kevin J. Lang"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "a57c6d627ffc667ae3547073876c35d6420accff",
+            "title": "Connectionist Learning Procedures"
+        },
+        {
+            "paperId": "9049fcce47379e88cbba32b1ccbefd7f7c7545f7",
+            "title": "Speaker\u2010independent phoneme recognition using hidden Markov models"
+        },
+        {
+            "paperId": "06486d05481b20a115f6bf01a5630abfb438ce9c",
+            "title": "Learning spectral-temporal dependencies using connectionist networks"
+        },
+        {
+            "paperId": "c86590e947c28e8791d1e8bab8fc8ab53302341f",
+            "title": "Learning the hidden structure of speech."
+        },
+        {
+            "paperId": "d5d17a4644979943972e14661c68b66df6ef9257",
+            "title": "Learned phonetic discrimination using connectionist networks"
+        },
+        {
+            "paperId": "f1e40283ecd4633c36c70fbc8dbb14e9a4afb37f",
+            "title": "Learning Phonetic Features Using Connectionist Networks"
+        },
+        {
+            "paperId": "b8fe93d3e5205a450fdd8a9fb94cea0ab73b067f",
+            "title": "BYBLOS: The BBN continuous speech recognition system"
+        },
+        {
+            "paperId": "1be23f406a1ee7b6a45b7f98be17e7f562bdd48b",
+            "title": "Context-dependent phonetic Markov models for large vocabulary speech recognition"
+        },
+        {
+            "paperId": "0908d52124ec2a31bfe9d966d1374a80919155ad",
+            "title": "An introduction to computing with neural nets"
+        },
+        {
+            "paperId": "e69606729837aa1d0168c47f812cbccaba09dc83",
+            "title": "Neural computation by concentrating information in time."
+        },
+        {
+            "paperId": "052b1d8ce63b07fec3de9dbb583772d860b7c769",
+            "title": "Learning representations by back-propagating errors"
+        },
+        {
+            "paperId": "853994ab9227c6c682e4494d1a8b2e065f876d1a",
+            "title": "Recognition of phonemes using time-spectrum pattern"
+        },
+        {
+            "paperId": "87d79c0c5255bce9dacaf4dab07d00c682200f2e",
+            "title": "Boltzmann machines for speech recognition"
+        },
+        {
+            "paperId": "9f7d5a98f22bd880f42775f6300ae984ebcfc8c2",
+            "title": "Interactive processes in speech perception: the TRACE model"
+        },
+        {
+            "paperId": "319f22bd5abfd67ac15988aa5c7f705f018c3ccd",
+            "title": "Learning internal representations by error propagation"
+        },
+        {
+            "paperId": "e90c15e0de8b5452c6291359e98ddc099e3b93f6",
+            "title": "Recognition of isolated digits using hidden Markov models with continuous mixture densities"
+        },
+        {
+            "paperId": "df53e0dc66eb13bb51c6e4803ceae56d3ebe6f23",
+            "title": "Context-dependent modeling for acoustic-phonetic recognition of continuous speech"
+        },
+        {
+            "paperId": "1e32d64fd543b1e70012415fc6e47119257ae74a",
+            "title": "Some experiments with large-vocabulary isolated-word sentence recognition"
+        },
+        {
+            "paperId": "cab01ddd19b011e184845300d4bb43c82e082a4c",
+            "title": "Comparative study of nonlinear time warping techniques in isolated word speech recognition systems"
+        },
+        {
+            "paperId": "0bc161be3f413c79fd12c2538a999c3db2efb26f",
+            "title": "Neocognitron: A neural network model for a mechanism of visual pattern recognition"
+        },
+        {
+            "paperId": "601cc4495825e17e1c7b28cd51a9e83624ed4738",
+            "title": "LPC peak weighted spectral matching measures"
+        },
+        {
+            "paperId": "b896934a784910ca1bc44bc3378caad1c178f9f1",
+            "title": "Acoustic invariance in speech production: evidence from measurements of the spectral characteristics of stop consonants."
+        },
+        {
+            "paperId": "ae25f05151c2f695783807ab719aa288a2493fe7",
+            "title": "Perceptual invariance and onset spectra for stop consonants in different vowel environments"
+        },
+        {
+            "paperId": "32a175b36ec7f2f08cb3dfac30ce141e144ec9e9",
+            "title": "Continuous speech recognition by statistical methods"
+        },
+        {
+            "paperId": "406033f22b6a671b94bcbdfaf63070b7ce6f3e48",
+            "title": "NETtalk: a parallel network that learns to read aloud"
+        },
+        {
+            "paperId": "1aa31d5deb45f477a6de45b3b75b62c7f4a213e7",
+            "title": "The acoustic-modeling problem in automatic speech recognition"
+        },
+        {
+            "paperId": null,
+            "title": "'Multilayer perceptrons and au\u00ad tomatic speech recognition,\" i n Proc"
+        },
+        {
+            "paperId": null,
+            "title": "\u201cSome neural net recognition results on isolated words,\u201d"
+        },
+        {
+            "paperId": null,
+            "title": "McC!elland"
+        },
+        {
+            "paperId": null,
+            "title": "Parallel Disrribured Pro cessing"
+        },
+        {
+            "paperId": null,
+            "title": "The multi-layer perceptron as a tool for speech pattern processing"
+        },
+        {
+            "paperId": null,
+            "title": "Parallel Distributed Processing; Explorations in the Microsrructure of Cognition, Vol. I and 11"
+        },
+        {
+            "paperId": null,
+            "title": "I I I 1 ng by back propagation"
+        },
+        {
+            "paperId": null,
+            "title": "\u201cA neural network digit recognizer,\u201d"
+        },
+        {
+            "paperId": null,
+            "title": "Tech. Rep. Carnegie-Mellon Univ"
+        },
+        {
+            "paperId": null,
+            "title": "he joined the Information Systems and Electronics Development Laboratory"
+        },
+        {
+            "paperId": null,
+            "title": "\u201cSpoken word recognition using vector quantization in power-spectrum vector space,\u201d"
+        },
+        {
+            "paperId": "11c7f781884f53ec1c2f2edf69c4be65767e443b",
+            "title": "Time-varying features as correlates of place of articulation in stop consonants."
+        },
+        {
+            "paperId": "3859f6dcb8efdd2219d561a61de235719ad5b77d",
+            "title": "Perceptual invariance and onset spectra for stop consonants in different vowel environments."
+        },
+        {
+            "paperId": null,
+            "title": "received the B.A. degree in psychology from the University of Cambridge in 1970 and the Ph.D. degree in artificial intelligence from the University of Edinburgh in 1978"
+        },
+        {
+            "paperId": "d0802c70eba26b9798e1e8cbb6e285bce842fd5c",
+            "title": "Stochastic modeling as a means of automatic speech recognition."
+        },
+        {
+            "paperId": null,
+            "title": "S\u201879-M\u201986) was born in Heidelberg, West Germany, on May 2"
+        },
+        {
+            "paperId": null,
+            "title": "Kiyohiro Shikano (M'84) wds born in Japan on October 12"
+        },
+        {
+            "paperId": null,
+            "title": "degrees in elec\u00b7 trical cngincering and computcr science in 1979"
+        },
+        {
+            "paperId": null,
+            "title": "Associate and is now a Research Computer Scientist with joined respon sibilities in the Center for Machine Translation at Camegie-Mellon and at the ATR lnterpreting Telephony Research Laboratories in"
+        },
+        {
+            "paperId": null,
+            "title": "Japanese speech database with fine acoustic-phonetic transcriptions"
+        },
+        {
+            "paperId": null,
+            "title": "ly 1988, he worked as Invited Research Scientist at Telephony Research Laboratories in Osaka. Japan. tion. Since 1986 he has been with the ATR Interpreting Telephony Research Laboratories"
+        },
+        {
+            "paperId": null,
+            "title": "he is currently engaged in speech recognition research"
+        },
+        {
+            "paperId": null,
+            "title": "Te-lephony Research Laboratories, Osaka"
+        },
+        {
+            "paperId": null,
+            "title": "\u201cExperiments on learn-Cambridge Authorized licensed use limited to"
+        },
+        {
+            "paperId": null,
+            "title": "Psychology at the University of Toronto, and a Fellow of the Institute for Advanced Research. His research interests include connectionist networks for learning"
+        },
+        {
+            "paperId": null,
+            "title": "processing, and motor control"
+        },
+        {
+            "paperId": null,
+            "title": "Comparison between neural net md conventional classifiers"
+        },
+        {
+            "paperId": null,
+            "title": "Evaluation of LPC spectral matehing measures for pho netic unit recognition"
+        }
+    ]
+}

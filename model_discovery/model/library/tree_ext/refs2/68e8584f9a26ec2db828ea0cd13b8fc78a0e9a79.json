@@ -1,0 +1,217 @@
+{
+    "paperId": "68e8584f9a26ec2db828ea0cd13b8fc78a0e9a79",
+    "externalIds": {
+        "DBLP": "conf/nips/DingV10",
+        "MAG": "2128385268",
+        "CorpusId": 10668924
+    },
+    "title": "T-logistic Regression",
+    "abstract": "We extend logistic regression by using t-exponential families which were introduced recently in statistical physics. This gives rise to a regularized risk minimization problem with a non-convex loss function. An efficient block coordinate descent optimization scheme can be derived for estimating the parameters. Because of the nature of the loss function, our algorithm is tolerant to label noise. Furthermore, unlike other algorithms which employ non-convex loss functions, our algorithm is fairly robust to the choice of initial values. We verify both these observations empirically on a number of synthetic and real datasets.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2010,
+    "referenceCount": 46,
+    "citationCount": 51,
+    "influentialCitationCount": 8,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work extends logistic regression by using t-exponential families which were introduced recently in statistical physics to give rise to a regularized risk minimization problem with a non-convex loss function."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2066767241",
+            "name": "Nan Ding"
+        },
+        {
+            "authorId": "145713876",
+            "name": "S. Vishwanathan"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "f32b354014a9227f9e4cc959b3f60a6afd19b2f3",
+            "title": "Smoothing multivariate performance measures"
+        },
+        {
+            "paperId": "273dfbcb68080251f5e9ff38b4413d7bd84b10a1",
+            "title": "LIBSVM: A library for support vector machines"
+        },
+        {
+            "paperId": "fce223573634c7993c2ad374bf49cabd2267a271",
+            "title": "Generalized Maximum Entropy, Convexity and Machine Learning"
+        },
+        {
+            "paperId": "66f87c98a95f7816d2d93b06e0d0828e20a1de88",
+            "title": "On the design of robust classifiers for computer vision"
+        },
+        {
+            "paperId": "5d7f4d7d9acfe8b89a88ab45ee8480adb7fd0489",
+            "title": "Bundle Methods for Regularized Risk Minimization"
+        },
+        {
+            "paperId": "0b14178e7d79ac426d0a39700e1ac8b2c6f2e752",
+            "title": "Convex Optimization"
+        },
+        {
+            "paperId": "8532d2f502dff1dc85f8e6b08c18285709f03b23",
+            "title": "Gaussian process regression with Student-t likelihood"
+        },
+        {
+            "paperId": "ff8230bb34c377280282101630473d5d2314cc34",
+            "title": "A more robust boosting algorithm"
+        },
+        {
+            "paperId": "d98d0d1900b13b87aa4ffd6b69c046beb63f0434",
+            "title": "Graphical Models, Exponential Families, and Variational Inference"
+        },
+        {
+            "paperId": "6c2818a816146f845e5e9f53a5233295ce904995",
+            "title": "Random classification noise defeats all convex potential boosters"
+        },
+        {
+            "paperId": "0389a414c5d0ef50e06fe0c15f6102f374ce1b04",
+            "title": "A dual coordinate descent method for large-scale linear SVM"
+        },
+        {
+            "paperId": "2343dd9a8d63569667a6ce0ea669b1f584abb878",
+            "title": "Optimized cutting plane algorithm for support vector machines"
+        },
+        {
+            "paperId": "fbfba010cabba60e4f398cbf4a71a84ad71b4bd3",
+            "title": "Evidence Contrary to the Statistical View of Boosting"
+        },
+        {
+            "paperId": "4502543533659ea4ee7dc4aa97e967eb523761ee",
+            "title": "On the Consistency of Multiclass Classification Methods"
+        },
+        {
+            "paperId": "2024738cf561ee9b88eaa338fec84c3003c5f863",
+            "title": "Maximum Likelihood Estimation for q-Exponential (Tsallis) Distributions"
+        },
+        {
+            "paperId": "668b1277fbece28c4841eeab1c97e4ebd0079700",
+            "title": "Pattern Recognition and Machine Learning"
+        },
+        {
+            "paperId": "61a1565016477b2092a212e7af0e789a250bc552",
+            "title": "Pattern Recognition and Machine Learning (Information Science and Statistics)"
+        },
+        {
+            "paperId": "33fd991b4e05becfdec93585d25b6369a0519133",
+            "title": "Trading convexity for scalability"
+        },
+        {
+            "paperId": "1c1ea4eaf2c5ec2fb55debcbfa2bc8c07a821435",
+            "title": "Convexity, Classification, and Risk Bounds"
+        },
+        {
+            "paperId": "b7b0165b003ba50f247c47eb8afa1b8a4e1c2e9a",
+            "title": "Generalized Maximum Entropy"
+        },
+        {
+            "paperId": "93ad489b97241cbddc497bd9fbac0776a71510da",
+            "title": "Necessary and sufficient condition for compactness of the embedding operator."
+        },
+        {
+            "paperId": "f2e9d42f87b7651f06025ee07807cfeb08addf18",
+            "title": "Robit Regression: A Simple Robust Alternative to Logistic and Probit Regression"
+        },
+        {
+            "paperId": "eb6e94817bc64429adfc786574696d6dea633939",
+            "title": "Game theory, maximum entropy, minimum discrepancy and robust Bayesian decision theory"
+        },
+        {
+            "paperId": "d4e74681b02c3275daed52f36d42f8a3bfce1975",
+            "title": "Estimators, escort probabilities, and phi-exponential families in statistical physics"
+        },
+        {
+            "paperId": "a1955e882041d4c3004141863e89d7e6a119be2c",
+            "title": "Generalized thermostatistics based on deformed exponential and logarithmic functions"
+        },
+        {
+            "paperId": "e41ba5dc12c79a64dfa905c0328f95976252ffe0",
+            "title": "The Elements of Statistical Learning"
+        },
+        {
+            "paperId": "60383d4eefc9759d2f05a7f963d55d932ddab5a9",
+            "title": "Generalized thermostatistics and mean-field theory"
+        },
+        {
+            "paperId": "e07b7682fd084e75992e0b8962e37b30f44043f0",
+            "title": "Deformed exponentials and logarithms in generalized thermostatistics"
+        },
+        {
+            "paperId": "f4ba954b0412773d047dc41231c733de0c1f4926",
+            "title": "Conditional Random Fields: Probabilistic Models for Segmenting and Labeling Sequence Data"
+        },
+        {
+            "paperId": "f93c6881afb3e527a2cb6ea953fd91e95d20d03b",
+            "title": "On the difficulty of approximately maximizing agreements"
+        },
+        {
+            "paperId": "07651e2670a9e7a4a466f7a4b936275b1c07a0a6",
+            "title": "A First Look at Rigorous Probability Theory"
+        },
+        {
+            "paperId": "1569d92885a9452b8716af6520be300eaa832141",
+            "title": "The role of constraints within generalized nonextensive statistics"
+        },
+        {
+            "paperId": "4f0c1c61a68cd339458d6310c6e5f7071017a6aa",
+            "title": "Student's t- and r-distributions: Unified derivation from an entropic variational principle"
+        },
+        {
+            "paperId": "12a31091a6430529521beeb1a3508d3ce5cfab12",
+            "title": "An outer approximation method for minimizing the product of several convex functions on a convex set"
+        },
+        {
+            "paperId": "41690226a4204d502781bb9f19743d73f4cfde8e",
+            "title": "Robust Statistical Modeling Using the t Distribution"
+        },
+        {
+            "paperId": "b20c0758a38bd5a4083f64eff53af924499a8e29",
+            "title": "Possible generalization of Boltzmann-Gibbs statistics"
+        },
+        {
+            "paperId": "90c05a30cd36269b90d772ca35471f823d4de057",
+            "title": "Information and Exponential Families in Statistical Theory"
+        },
+        {
+            "paperId": "9bcacebd3bd5ad41508591ec8925de5bb7d7c788",
+            "title": "On Outlier Rejection Phenomena in Bayes Inference"
+        },
+        {
+            "paperId": "4f0e635a7dbd466cf367d2af476b332ef1414b39",
+            "title": "Bayesian and Non-Bayesian Analysis of the Regression Model with Multivariate Student- t Error Terms"
+        },
+        {
+            "paperId": null,
+            "title": "Pascal large scale learning challenge"
+        },
+        {
+            "paperId": "5969fdc215def657b8e607aaa03cee3796c10d4a",
+            "title": "An Introduction to Conditional Random Fields for Relational Learning"
+        },
+        {
+            "paperId": null,
+            "title": "UniverSVM: Support Vector Machine with Large Scale"
+        },
+        {
+            "paperId": "e068be31ded63600aea068eacd12931efd2a1029",
+            "title": "UCI Repository of machine learning databases"
+        },
+        {
+            "paperId": "b6cf9167aeb2782651156de5e22cad82ee69a225",
+            "title": "UCI Repository of Machine Learning Databases"
+        },
+        {
+            "paperId": "36e07bdcb9f8aa618d6d077238d3de2e7818a0f5",
+            "title": "Robust statistics: the approach based on influence functions"
+        },
+        {
+            "paperId": null,
+            "title": "There is no unique definition of robustness. For example, one of the definitions is through the outlier-proneness"
+        }
+    ]
+}

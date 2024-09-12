@@ -1,0 +1,177 @@
+{
+    "paperId": "2c7c9b405362277e390b09636c20ed274844c01f",
+    "externalIds": {
+        "MAG": "2922189677",
+        "DBLP": "conf/aistats/ChoromanskiPPT19",
+        "CorpusId": 88493519
+    },
+    "title": "KAMA-NNs: Low-dimensional Rotation Based Neural Networks",
+    "abstract": "We present new architectures for feedforward neural networks built from products of learned or random low-dimensional rotations that offer substantial space compression and computational speedups in comparison to the unstructured baselines. Models using them are also competitive with the baselines and often, due to imposed orthogonal structure, outperform baselines accuracy-wise.\nWe propose to use our architectures in two settings. We show that in the non-adaptive scenario (random neural networks) they lead to asymptotically more accurate, space-efficient and faster estimators of the so-called PNG-kernels (for any activation function defining the PNG). This generalizes several recent theoretical results about orthogonal estimators (e.g. orthogonal JLTs, orthogonal estimators of angular kernels and more). In the adaptive setting we propose efficient algorithms for learning products of low-dimensional rotations and show how our architectures can be used to improve space and time complexity of state of the art reinforcement learning (RL) algorithms (e.g. PPO, TRPO). Here they offer up to 7x compression of the network in comparison to the unstructured baselines and outperform reward-wise state of the art structured neural networks offering similar computational gains and based on low displacement rank matrices.",
+    "venue": "International Conference on Artificial Intelligence and Statistics",
+    "year": 2019,
+    "referenceCount": 34,
+    "citationCount": 6,
+    "influentialCitationCount": 0,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "New architectures for feedforward neural networks built from products of learned or random low-dimensional rotations that offer substantial space compression and computational speedups in comparison to the unstructured baselines are presented."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1805203",
+            "name": "K. Choromanski"
+        },
+        {
+            "authorId": "3124110",
+            "name": "Aldo Pacchiano"
+        },
+        {
+            "authorId": "143845796",
+            "name": "Jeffrey Pennington"
+        },
+        {
+            "authorId": "11501567",
+            "name": "Yunhao Tang"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "ad6309d1ea001098189425f54d069ef12abcb583",
+            "title": "Dynamical Isometry and a Mean Field Theory of CNNs: How to Train 10, 000-Layer Vanilla Convolutional Neural Networks"
+        },
+        {
+            "paperId": "b0526da184f99f359fa7b3430ccc73a3340f3d70",
+            "title": "Dynamical Isometry and a Mean Field Theory of RNNs: Gating Enables Signal Propagation in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "6200c3ef5af9b343456e8ff933e48816fa05b788",
+            "title": "Structured Evolution with Compact Architectures for Scalable Policy Optimization"
+        },
+        {
+            "paperId": "962ba753d7ea794f4085f96ef191e9016aff31ac",
+            "title": "The Geometry of Random Features"
+        },
+        {
+            "paperId": "abc8415a73e9056fdd8a7bf529b2c86898f29501",
+            "title": "Simple random search provides a competitive approach to reinforcement learning"
+        },
+        {
+            "paperId": "561490e0fe3aa5f4605282eddb7814bdbd7eb869",
+            "title": "The Emergence of Spectral Universality in Deep Networks"
+        },
+        {
+            "paperId": "597b1dedb58ddb5ee5c35938c1a2574c7a11e0f6",
+            "title": "Initialization matters: Orthogonal Predictive State Recurrent Neural Networks"
+        },
+        {
+            "paperId": "dce6f9d4017b1785979e7520fd0834ef8cf02f4b",
+            "title": "Proximal Policy Optimization Algorithms"
+        },
+        {
+            "paperId": "4ee802a58d32aa049d549d06be440ac947b53987",
+            "title": "Evolution Strategies as a Scalable Alternative to Reinforcement Learning"
+        },
+        {
+            "paperId": "5394da74498e00597295d18cd0557bd47e3fc341",
+            "title": "The Unreasonable Effectiveness of Structured Random Orthogonal Embeddings"
+        },
+        {
+            "paperId": "32e934094c4d17fe4d734b2e169ba5e3cd0ee05e",
+            "title": "Orthogonal Random Features"
+        },
+        {
+            "paperId": "6fc8bc53a706f7ca32b7c539844e66c3eb03b608",
+            "title": "Structured adaptive and random spinners for fast machine learning computations"
+        },
+        {
+            "paperId": "559faf4b49ef3f317e894f7ba3947d1769bdeb8c",
+            "title": "Recycling Randomness with Structure for Sublinear time Kernel Expansions"
+        },
+        {
+            "paperId": "4954fa180728932959997a4768411ff9136aac81",
+            "title": "TensorFlow: A system for large-scale machine learning"
+        },
+        {
+            "paperId": "16a26289d7c37e6a0179fa57b14a327286696d33",
+            "title": "Binary embeddings with structured hashed projections"
+        },
+        {
+            "paperId": "bf76be8df2f2bc56edac98a5d0dfc19c85882eaa",
+            "title": "Structured Transforms for Small-Footprint Deep Learning"
+        },
+        {
+            "paperId": "50645e3dc912d597e89d59bffb96ccc0f8e1aefa",
+            "title": "Practical and Optimal LSH for Angular Distance"
+        },
+        {
+            "paperId": "954cf7836ece7769b4543dd624f3c791ca302246",
+            "title": "Kac's Walk on $n$-sphere mixes in $n\\log n$ steps"
+        },
+        {
+            "paperId": "449532187c94af3dd3aa55e16d2c50f7854d2199",
+            "title": "Trust Region Policy Optimization"
+        },
+        {
+            "paperId": "da6e5c987fed3cc23cb8c285560b1d6ebf5f2e01",
+            "title": "Coordinate-descent for learning orthogonal matrices through Givens rotations"
+        },
+        {
+            "paperId": "cd7c5cbc246e42ebb1368f81ef403c988a1d4c89",
+            "title": "Fast Approximation of Rotations and Hessians matrices"
+        },
+        {
+            "paperId": "87ee6fc7501edc541b5c0620fd1d0435d2a35b7b",
+            "title": "New bounds for circulant Johnson-Lindenstrauss embeddings"
+        },
+        {
+            "paperId": "133deb5fa702cdfa394ddde316c2bac0e5518cb0",
+            "title": "Efficient random coordinate descent algorithms for large-scale structured nonconvex optimization"
+        },
+        {
+            "paperId": "b354ee518bfc1ac0d8ac447eece9edb69e92eae1",
+            "title": "MuJoCo: A physics engine for model-based control"
+        },
+        {
+            "paperId": "a1593bc211a13fc7ebd5cfbdab30e071c9d718ba",
+            "title": "Kac\u2019s program in kinetic theory"
+        },
+        {
+            "paperId": "9da848e8e3893afc33417803cf2629cc8617df39",
+            "title": "A variant of the Johnson-Lindenstrauss lemma for circulant matrices"
+        },
+        {
+            "paperId": "7a59fde27461a3ef4a21a249cc403d0d96e4a0d7",
+            "title": "Random Features for Large-Scale Kernel Machines"
+        },
+        {
+            "paperId": "b4d6a34f9d25b7a7ca665087ad7cb82f58d89d51",
+            "title": "Approximate nearest neighbors and the fast Johnson-Lindenstrauss transform"
+        },
+        {
+            "paperId": "5144152353ba5ebc1d8562cd12d48c51c0711792",
+            "title": "Spectral gap for Kac's model of Boltzmann equation"
+        },
+        {
+            "paperId": "4ad1485d3cda8ea035085e6d58c7b091b4ce066c",
+            "title": "ournal of Statistical Mechanics : J Theory and Experiment"
+        },
+        {
+            "paperId": "cfe3e4b39de63c8cabd89bf3feff7f5449fc981d",
+            "title": "COMPUTING EXPONENTIALS OF SKEW-SYMMETRIC MATRICES AND LOGARITHMS OF ORTHOGONAL MATRICES"
+        },
+        {
+            "paperId": "c98548bb5c7b8c63a948f889e3cd5fc0edabcc64",
+            "title": "Foundations of Kinetic Theory"
+        },
+        {
+            "paperId": null,
+            "title": "Resurrecting the sigmoid"
+        },
+        {
+            "paperId": null,
+            "title": "Openai baselines. https://github.com/openai/baselines"
+        }
+    ]
+}

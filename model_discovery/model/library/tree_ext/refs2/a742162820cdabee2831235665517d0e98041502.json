@@ -1,0 +1,278 @@
+{
+    "paperId": "a742162820cdabee2831235665517d0e98041502",
+    "externalIds": {
+        "MAG": "2962913459",
+        "DBLP": "journals/corr/TrabelsiBSSSMRB17",
+        "ArXiv": "1705.09792",
+        "CorpusId": 3470596
+    },
+    "title": "Deep Complex Networks",
+    "abstract": "At present, the vast majority of building blocks, techniques, and architectures for deep learning are based on real-valued operations and representations. However, recent work on recurrent neural networks and older fundamental theoretical analysis suggests that complex numbers could have a richer representational capacity and could also facilitate noise-robust memory retrieval mechanisms. Despite their attractive properties and potential for opening up entirely new neural architectures, complex-valued deep neural networks have been marginalized due to the absence of the building blocks required to design such models. In this work, we provide the key atomic components for complex-valued deep neural networks and apply them to convolutional feed-forward networks and convolutional LSTMs. More precisely, we rely on complex convolutions and present algorithms for complex batch-normalization, complex weight initialization strategies for complex-valued neural nets and we use them in experiments with end-to-end training schemes. We demonstrate that such complex-valued models are competitive with their real-valued counterparts. We test deep complex models on several computer vision tasks, on music transcription using the MusicNet dataset and on Speech Spectrum Prediction using the TIMIT dataset. We achieve state-of-the-art performance on these audio-related tasks.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2017,
+    "referenceCount": 54,
+    "citationCount": 736,
+    "influentialCitationCount": 133,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work relies on complex convolutions and present algorithms for complex batch-normalization, complex weight initialization strategies for complex-valued neural nets and uses them in experiments with end-to-end training schemes and demonstrates that such complex- valued models are competitive with their real-valued counterparts."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "29866465",
+            "name": "C. Trabelsi"
+        },
+        {
+            "authorId": "2361575",
+            "name": "O. Bilaniuk"
+        },
+        {
+            "authorId": "1862138",
+            "name": "Dmitriy Serdyuk"
+        },
+        {
+            "authorId": "50324141",
+            "name": "Sandeep Subramanian"
+        },
+        {
+            "authorId": "144660120",
+            "name": "J. F. Santos"
+        },
+        {
+            "authorId": "34719201",
+            "name": "Soroush Mehri"
+        },
+        {
+            "authorId": "2599281",
+            "name": "Negar Rostamzadeh"
+        },
+        {
+            "authorId": "1751762",
+            "name": "Yoshua Bengio"
+        },
+        {
+            "authorId": "1972076",
+            "name": "C. Pal"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "607e0bafc04bcc93089d25fed6d2ba1a41637ed7",
+            "title": "Complex and Holographic Embeddings of Knowledge Graphs: A Comparison"
+        },
+        {
+            "paperId": "11aada215e6f72cbd5928619de839ba35106a88f",
+            "title": "Harmonic Networks: Deep Translation and Rotation Equivariance"
+        },
+        {
+            "paperId": "f6154535699c65633243c482d2b97d4b66036633",
+            "title": "Learning Features of Music from Scratch"
+        },
+        {
+            "paperId": "79c78c98ea317ba8cdf25a9783ef4b8a7552db75",
+            "title": "Full-Capacity Unitary Recurrent Neural Networks"
+        },
+        {
+            "paperId": "df0402517a7338ae28bc54acaac400de6b456a46",
+            "title": "WaveNet: A Generative Model for Raw Audio"
+        },
+        {
+            "paperId": "7dba53e72c182e25e98e8f73a99d75ff69dda0c2",
+            "title": "Recurrent Highway Networks"
+        },
+        {
+            "paperId": "2218e2e1df2c3adfb70e0def2e326a39928aacfc",
+            "title": "Complex Embeddings for Simple Link Prediction"
+        },
+        {
+            "paperId": "0936352b78a52bc5d2b5e3f04233efc56664af51",
+            "title": "Conditional Image Generation with PixelCNN Decoders"
+        },
+        {
+            "paperId": "1c4e9156ca07705531e45960b7a919dc473abb51",
+            "title": "Wide Residual Networks"
+        },
+        {
+            "paperId": "6b570069f14c7588e066f7138e1f21af59d62e61",
+            "title": "Theano: A Python framework for fast computation of mathematical expressions"
+        },
+        {
+            "paperId": "77f0a39b8e02686fd85b01971f8feb7f60971f80",
+            "title": "Identity Mappings in Deep Residual Networks"
+        },
+        {
+            "paperId": "acb98cd7944db1cb57799a84b8fe24bbee6acafa",
+            "title": "On Complex Valued Convolutional Neural Networks"
+        },
+        {
+            "paperId": "3d2c6941a9b4608ba52b328369a3352db2092ae0",
+            "title": "Weight Normalization: A Simple Reparameterization to Accelerate Training of Deep Neural Networks"
+        },
+        {
+            "paperId": "da398dd57a31a663eb572ec85db7cdfe2f70dc99",
+            "title": "Associative Long Short-Term Memory"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "e9c771197a6564762754e48c1daafb066f449f2e",
+            "title": "Unitary Evolution Recurrent Neural Networks"
+        },
+        {
+            "paperId": "a61992160c1075035f184f28c1a01414971b2b58",
+            "title": "Reducing Overfitting in Deep Networks by Decorrelating Representations"
+        },
+        {
+            "paperId": "6ab07abe08116fa8df88a4d28a960f24995ac977",
+            "title": "Learning Representations Using Complex-Valued Nets"
+        },
+        {
+            "paperId": "b92aa7024b87f50737b372e5df31ef091ab54e62",
+            "title": "Training Very Deep Networks"
+        },
+        {
+            "paperId": "f9541d29bc5fe432eb321ef41cbbb07437e4ef92",
+            "title": "Scale-invariant learning and convolutional networks"
+        },
+        {
+            "paperId": "d64e9089a44859b8da6b4f225ef4b552609e9e4c",
+            "title": "Convolutional networks and learning invariant to homogeneous multiplicative scalings"
+        },
+        {
+            "paperId": "f9c990b1b5724e50e5632b94fdb7484ece8a6ce7",
+            "title": "Convolutional LSTM Network: A Machine Learning Approach for Precipitation Nowcasting"
+        },
+        {
+            "paperId": "0e37c8f19eefeb0c20d92f5cb4df4153077c116b",
+            "title": "Spectral Representations for Convolutional Neural Networks"
+        },
+        {
+            "paperId": "f55fe2b4344f015927a834d8ad6f52a35c3a8c8e",
+            "title": "A Mathematical Motivation for Complex-Valued Convolutional Networks"
+        },
+        {
+            "paperId": "2eff9844bddfcabe7b3f16c07fe5dad20ccedd53",
+            "title": "A theoretical argument for complex-valued convolutional networks"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "d6f2f611da110b5b5061731be3fc4c7f45d8ee23",
+            "title": "Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification"
+        },
+        {
+            "paperId": "cb5724c16ae30ccc7f14e82603b032528cca30fc",
+            "title": "Deep roto-translation scattering for object classification"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "ebcea2d842d3d4e320500086aff0deb4cb4412ff",
+            "title": "Efficient object localization using Convolutional Networks"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "1eb09fecd75eb27825dce4f964b97f4f5cc399d7",
+            "title": "On the Properties of Neural Machine Translation: Encoder\u2013Decoder Approaches"
+        },
+        {
+            "paperId": "7c5920c97f8bb1f91739b0d27746d655de95eedd",
+            "title": "Neuronal Synchrony in Complex-Valued Deep Networks"
+        },
+        {
+            "paperId": "7c23c337d1e756b66a20f0915549e54a07dfbb46",
+            "title": "Generalization Characteristics of Complex-Valued Feedforward Neural Networks in Relation to Signal Coherence"
+        },
+        {
+            "paperId": "ea9d2a2b4ce11aaf85136840c65f3bc9c03ab649",
+            "title": "Understanding the difficulty of training deep feedforward neural networks"
+        },
+        {
+            "paperId": "932c2a02d462abd75af018125413b1ceaa1ee3f4",
+            "title": "Efficient Learning of Sparse Representations with an Energy-Based Model"
+        },
+        {
+            "paperId": "355d44f53428b1ac4fb2ab468d593c720640e5bd",
+            "title": "Greedy Layer-Wise Training of Deep Networks"
+        },
+        {
+            "paperId": "b3b10f1f047e8982380a3fbdbf43dacc83041300",
+            "title": "On the importance of phase in human speech recognition"
+        },
+        {
+            "paperId": "8978cf7574ceb35f4c3096be768c7547b28a35d0",
+            "title": "A Fast Learning Algorithm for Deep Belief Nets"
+        },
+        {
+            "paperId": "d0054ed15223097fd9e734dc6ddbaed2a5886cee",
+            "title": "Complex-Valued Neural Networks: Theories and Applications"
+        },
+        {
+            "paperId": "a57d5b5ae5666c7a801fd7bf74a2716f2af4e120",
+            "title": "Approximation by Fully Complex Multilayer Perceptrons"
+        },
+        {
+            "paperId": "c3577312cb178cc93459bda92e37076e1fa9af88",
+            "title": "Holographic Reduced Representation: Distributed Representation for Cognitive Structures"
+        },
+        {
+            "paperId": "5235ec084dce87bfe5b44291f670166288d2e135",
+            "title": "On the critical points of the complex-valued neural network"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "a72df13fa64dcc35e6dab6e27af0ab50de9685a4",
+            "title": "Lending direction to neural networks"
+        },
+        {
+            "paperId": "10c9eda049b7c4bbf56b4aee2114775f3ee0e688",
+            "title": "Complex domain backpropagation"
+        },
+        {
+            "paperId": "aa77a30b21f291e8d79f2a30854d996f4acc7442",
+            "title": "The importance of phase in signals"
+        },
+        {
+            "paperId": null,
+            "title": "Keras: Deep learning library for theano and tensorflow"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "96e883dfb5ff86e177b8a9c299cbce7e037eebca",
+            "title": "Orthogonality of Decision Boundaries in Complex-Valued Neural Networks"
+        },
+        {
+            "paperId": "48804b63b9b713b93063fc9d62030d1942d61594",
+            "title": "Complex-valued neural networks : theories and applications"
+        },
+        {
+            "paperId": null,
+            "title": "Digital audio resampling"
+        },
+        {
+            "paperId": "3f3d13e95c25a8f6a753e38dfce88885097cbd43",
+            "title": "Untersuchungen zu dynamischen neuronalen Netzen"
+        },
+        {
+            "paperId": "8d3a318b62d2e970122da35b2a2e70a5d12cc16f",
+            "title": "A method for solving the convex programming problem with convergence rate O(1/k^2)"
+        }
+    ]
+}

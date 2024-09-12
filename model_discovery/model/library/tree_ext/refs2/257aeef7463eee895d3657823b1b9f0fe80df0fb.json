@@ -1,0 +1,138 @@
+{
+    "paperId": "257aeef7463eee895d3657823b1b9f0fe80df0fb",
+    "externalIds": {
+        "MAG": "2952840881",
+        "ArXiv": "1502.02206",
+        "DBLP": "conf/icml/ChangKADL15",
+        "CorpusId": 16610517
+    },
+    "title": "Learning to Search Better than Your Teacher",
+    "abstract": "Methods for learning to search for structured prediction typically imitate a reference policy, with existing theoretical guarantees demonstrating low regret compared to that reference. This is unsatisfactory in many applications where the reference policy is suboptimal and the goal of learning is to improve upon it. Can learning to search work even when the reference is poor? \n \nWe provide a new learning to search algorithm, LOLS, which does well relative to the reference policy, but additionally guarantees low regret compared to deviations from the learned policy: a local-optimality guarantee. Consequently, LOLS can improve upon the reference policy, unlike previous algorithms. This enables us to develop structured contextual bandits, a partial information structured prediction setting with many potential applications.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2015,
+    "referenceCount": 23,
+    "citationCount": 225,
+    "influentialCitationCount": 35,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new learning to search algorithm, LOLS, is provided, which does well relative to the reference policy, but additionally guarantees low regret compared to deviations from the learned policy: a local-optimality guarantee."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2782886",
+            "name": "Kai-Wei Chang"
+        },
+        {
+            "authorId": "37019006",
+            "name": "A. Krishnamurthy"
+        },
+        {
+            "authorId": "40333747",
+            "name": "Alekh Agarwal"
+        },
+        {
+            "authorId": "1722360",
+            "name": "Hal Daum\u00e9"
+        },
+        {
+            "authorId": "144162125",
+            "name": "J. Langford"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "e28b84c2800d81532c89997ee3120ae3bf32977d",
+            "title": "Reinforcement and Imitation Learning via Interactive No-Regret Learning"
+        },
+        {
+            "paperId": "83b538de66aeabeb5ad6d7fcd3f6347a42fa196e",
+            "title": "A Credit Assignment Compiler for Joint Prediction"
+        },
+        {
+            "paperId": "1642c8a1ee5238efe524a27f4e42b70333c1baf6",
+            "title": "Efficient programmable learning to search"
+        },
+        {
+            "paperId": "6ba3426128c05b14b9857fb5b60b0b2a4c489110",
+            "title": "HC-Search: A Learning Framework for Search-based Structured Prediction"
+        },
+        {
+            "paperId": "09d5446fd2cb488e9cf0663dcd9f41ca4869e292",
+            "title": "A Tabular Method for Dynamic Oracles in Transition-Based Parsing"
+        },
+        {
+            "paperId": "f90fc459c305f13b3fab0abf42b8dd1801c59511",
+            "title": "Training Deterministic Parsers with Non-Deterministic Oracles"
+        },
+        {
+            "paperId": "1299732e905399066a36d11990a3921911de63b7",
+            "title": "Imitation Learning by Coaching"
+        },
+        {
+            "paperId": "6f1631fa69fe6ae17dbe9dc975304ae13f24ff0a",
+            "title": "Dynamic Programming Algorithms for Transition-Based Dependency Parsers"
+        },
+        {
+            "paperId": "5ccf7658018981bf492d0c8d66277d22ebaac815",
+            "title": "Doubly Robust Policy Evaluation and Learning"
+        },
+        {
+            "paperId": "79ab3c49903ec8cb339437ccf5cf998607fc313e",
+            "title": "A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning"
+        },
+        {
+            "paperId": "458ed7e55e18445883c2296d18ff2b214f91e943",
+            "title": "The Snake-in-the-Box problem"
+        },
+        {
+            "paperId": "70e10a5459c6f1aaf346ee4f2dcc837151fbe75c",
+            "title": "Efficient Reductions for Imitation Learning"
+        },
+        {
+            "paperId": "526e22c130b18924976553d29ba11bc9d898d58b",
+            "title": "Search-based structured prediction"
+        },
+        {
+            "paperId": "0538e399046c74d95124c715760aa51ab4716dce",
+            "title": "Prediction, learning, and games"
+        },
+        {
+            "paperId": "936d36404165a724f90e4483eee34e65c28feeb1",
+            "title": "Non-Projective Dependency Parsing using Spanning Tree Algorithms"
+        },
+        {
+            "paperId": "a5c48c673b0d3152010e3374cac189314a13df10",
+            "title": "Learning as search optimization: approximate large margin methods for structured prediction"
+        },
+        {
+            "paperId": "e53254f9d08defd6767cd1da7d1472b6edd37910",
+            "title": "Sensitive Error Correcting Output Codes"
+        },
+        {
+            "paperId": "41828fc3dab24784f95e6976e8aaa73f68e1840e",
+            "title": "Incremental Parsing with the Perceptron Algorithm"
+        },
+        {
+            "paperId": "e1f153c6df86d1ca8ecb9561daddfe7a54f901e7",
+            "title": "Online Convex Programming and Generalized Infinitesimal Gradient Ascent"
+        },
+        {
+            "paperId": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+            "title": "Building a Large Annotated Corpus of English: The Penn Treebank"
+        },
+        {
+            "paperId": "ab41136c0a73b42463db10f9dd2913f8d8735155",
+            "title": "An Efficient Algorithm for Projective Dependency Parsing"
+        },
+        {
+            "paperId": null,
+            "title": "The asymptotic regret incurred by using a mixture policy for roll-out might be larger than that using the reference policy alone, when the reference policy is near-optimal"
+        },
+        {
+            "paperId": null,
+            "title": "the reference policy is optimal"
+        }
+    ]
+}

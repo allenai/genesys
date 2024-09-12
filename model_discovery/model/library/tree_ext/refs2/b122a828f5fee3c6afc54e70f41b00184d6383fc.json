@@ -1,0 +1,131 @@
+{
+    "paperId": "b122a828f5fee3c6afc54e70f41b00184d6383fc",
+    "externalIds": {
+        "ArXiv": "1506.05865",
+        "ACL": "D15-1229",
+        "MAG": "2951457522",
+        "DBLP": "journals/corr/HuCZ15",
+        "DOI": "10.18653/v1/D15-1229",
+        "CorpusId": 11597846
+    },
+    "title": "LCSTS: A Large Scale Chinese Short Text Summarization Dataset",
+    "abstract": "Automatic text summarization is widely regarded as the highly difficult problem, partially because of the lack of large text summarization data set. Due to the great challenge of constructing the large scale summaries for full text, in this paper, we introduce a large corpus of Chinese short text summarization dataset constructed from the Chinese microblogging website Sina Weibo, which is released to the public {this http URL}. This corpus consists of over 2 million real Chinese short texts with short summaries given by the author of each text. We also manually tagged the relevance of 10,666 short summaries with their corresponding short texts. Based on the corpus, we introduce recurrent neural network for the summary generation and achieve promising results, which not only shows the usefulness of the proposed corpus for short text summarization research, but also provides a baseline for further research on this topic.",
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2015,
+    "referenceCount": 22,
+    "citationCount": 317,
+    "influentialCitationCount": 79,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/D15-1229.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A large corpus of Chinese short text summarization dataset constructed from the Chinese microblogging website Sina Weibo is introduced and recurrent neural network is introduced for the summary generation and promising results are achieved."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "33968873",
+            "name": "Baotian Hu"
+        },
+        {
+            "authorId": "144159781",
+            "name": "Qingcai Chen"
+        },
+        {
+            "authorId": "3184623",
+            "name": "Fangze Zhu"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "ca607fba860ea2c9a80f780e6e1d3d3c6a61a4e0",
+            "title": "Answer Sequence Learning with Neural Networks for Answer Selection in Community Question Answering"
+        },
+        {
+            "paperId": "80c64a0b6f6f646c239ceb627bbeff03f5359491",
+            "title": "Abstractive Multi-Document Summarization via Phrase Selection and Merging"
+        },
+        {
+            "paperId": "b21c78a62fbb945a19ae9a8935933711647e7d70",
+            "title": "A Hierarchical Neural Autoencoder for Paragraphs and Documents"
+        },
+        {
+            "paperId": "ba49d3823d43515e447296ca4e1e55d3f1fd8c4d",
+            "title": "Neural Responding Machine for Short-Text Conversation"
+        },
+        {
+            "paperId": "d14c7e5f5cace4c925abc74c88baa474e9f31a28",
+            "title": "Gated Feedback Recurrent Neural Networks"
+        },
+        {
+            "paperId": "ac3ee98020251797c2b401e1389461df88e52e62",
+            "title": "Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling"
+        },
+        {
+            "paperId": "9f08b01251cb99f4ffae8c7b3e4468d3af9c98d3",
+            "title": "Convolutional Neural Network Architectures for Matching Natural Language Sentences"
+        },
+        {
+            "paperId": "1956c239b3552e030db1b78951f64781101125ed",
+            "title": "Addressing the Rare Word Problem in Neural Machine Translation"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "4177ec52d1b80ed57f2e72b0f9a42365f1a8598d",
+            "title": "Speech recognition with deep recurrent neural networks"
+        },
+        {
+            "paperId": "8729441d734782c3ed532a7d2d9611b438c0a09a",
+            "title": "ADADELTA: An Adaptive Learning Rate Method"
+        },
+        {
+            "paperId": "db12c246207464154f8ac24bc16633400e01c056",
+            "title": "Meme-tracking and the dynamics of the news cycle"
+        },
+        {
+            "paperId": "60b05f32c32519a809f21642ef1eb3eaf3848008",
+            "title": "ROUGE: A Package for Automatic Evaluation of Summaries"
+        },
+        {
+            "paperId": "2aeb08c93d6db8f305c015e593f753e2115a8750",
+            "title": "Graph-based Ranking Algorithms for Sentence Extraction, Applied to Text Summarization"
+        },
+        {
+            "paperId": "c63bb976dc0d3a897f3b0920170a4c573ef904c6",
+            "title": "Automatic Evaluation of Summaries Using N-gram Co-occurrence Statistics"
+        },
+        {
+            "paperId": "1058ed844c2c291733e355f1ba84d3e85547e270",
+            "title": "Automatic summarization of English broadcast news speech"
+        },
+        {
+            "paperId": "9b49cc6bf4f68be6c8b3530790925787d82ab2b2",
+            "title": "Automated Text Summarization and the Summarist System"
+        },
+        {
+            "paperId": "a6dcc17c6f3dbc2d203ade9ff671a895a9dead7c",
+            "title": "The Automatic Creation of Literature Abstracts"
+        },
+        {
+            "paperId": "a9614b05461bb306cc47c8cd645b9b67bb1227ba",
+            "title": "HEADS: Headline Generation as Sequence Prediction Using an Abstract Feature-Rich Space"
+        },
+        {
+            "paperId": "f2bf03e49c8dacb8784a9f69ef4c469b54115137",
+            "title": "Natural Language Processing Based on Naturally Annotated Web Resources"
+        },
+        {
+            "paperId": "9a296c206ef66031684152cbd3764a0f642cb688",
+            "title": "A Survey on Automatic Text Summarization"
+        }
+    ]
+}

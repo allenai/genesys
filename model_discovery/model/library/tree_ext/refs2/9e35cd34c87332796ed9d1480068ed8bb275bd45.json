@@ -1,0 +1,251 @@
+{
+    "paperId": "9e35cd34c87332796ed9d1480068ed8bb275bd45",
+    "externalIds": {
+        "DBLP": "conf/conll/ElbayadBV18",
+        "ArXiv": "1808.03867",
+        "MAG": "2886845974",
+        "ACL": "K18-1010",
+        "DOI": "10.18653/v1/K18-1010",
+        "CorpusId": 51977955
+    },
+    "title": "Pervasive Attention: 2D Convolutional Neural Networks for Sequence-to-Sequence Prediction",
+    "abstract": "Current state-of-the-art machine translation systems are based on encoder-decoder architectures, that first encode the input sequence, and then generate an output sequence based on the input encoding. Both are interfaced with an attention mechanism that recombines a fixed encoding of the source tokens based on the decoder state. We propose an alternative approach which instead relies on a single 2D convolutional neural network across both sequences. Each layer of our network re-codes source tokens on the basis of the output sequence produced so far. Attention-like properties are therefore pervasive throughout the network. Our model yields excellent results, outperforming state-of-the-art encoder-decoder systems, while being conceptually simpler and having fewer parameters.",
+    "venue": "Conference on Computational Natural Language Learning",
+    "year": 2018,
+    "referenceCount": 52,
+    "citationCount": 81,
+    "influentialCitationCount": 6,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/K18-1010.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes an alternative approach which instead relies on a single 2D convolutional neural network across both sequences, which outperforms state-of-the-art encoder-decoder systems, while being conceptually simpler and having fewer parameters."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "46183659",
+            "name": "Maha Elbayad"
+        },
+        {
+            "authorId": "143823463",
+            "name": "L. Besacier"
+        },
+        {
+            "authorId": "34602236",
+            "name": "Jakob Verbeek"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "be16a4e95bbb232fca75d3c9209dab1948193241",
+            "title": "Towards Two-Dimensional Sequence to Sequence Model in Neural Machine Translation"
+        },
+        {
+            "paperId": "01ffd50b3b82c7adac54d15cb84944b87c32525f",
+            "title": "Latent Alignment and Variational Attention"
+        },
+        {
+            "paperId": "1ac66a37cb24128fd834986c00b177b68d28da6e",
+            "title": "Weaver: Deep Co-Encoding of Questions and Documents for Machine Reading"
+        },
+        {
+            "paperId": "3fc5ed18c2294596af072df929c8ee12c71f96a2",
+            "title": "Classical Structured Prediction Losses for Sequence to Sequence Learning"
+        },
+        {
+            "paperId": "b36a5bb1707bb9c70025294b3a310138aae8327a",
+            "title": "Automatic differentiation in PyTorch"
+        },
+        {
+            "paperId": "7f8470a344eab1a7f9c2762e52eacfbdd2021a02",
+            "title": "Learning to Align the Source Code to the Compiled Object Code"
+        },
+        {
+            "paperId": "5616064812996ab1fae525f9679f300c7c307895",
+            "title": "Towards Neural Phrase-based Machine Translation"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "43428880d75b3a14257c3ee9bda054e61eb869c0",
+            "title": "Convolutional Sequence to Sequence Learning"
+        },
+        {
+            "paperId": "b65aaa2038d25387a565babd16bfa7193e3a0268",
+            "title": "Adversarial Neural Machine Translation"
+        },
+        {
+            "paperId": "2d1b8f60f2724efd6c9344870fb60e8525157d70",
+            "title": "Parallel Multiscale Autoregressive Density Estimation"
+        },
+        {
+            "paperId": "204a4a70428f3938d2c538a4d74c7ae0416306d8",
+            "title": "A Structured Self-attentive Sentence Embedding"
+        },
+        {
+            "paperId": "6db294e9309349d82df47a912ccc47eab1dc1358",
+            "title": "Sequence Modeling via Segmentations"
+        },
+        {
+            "paperId": "2e77b99e8bd10b9e4551a780c0bde9dd10fdbe9b",
+            "title": "PixelCNN++: Improving the PixelCNN with Discretized Logistic Mixture Likelihood and Other Modifications"
+        },
+        {
+            "paperId": "88caa4a0253a8b0076176745ebc072864eab66e1",
+            "title": "Language Modeling with Gated Convolutional Networks"
+        },
+        {
+            "paperId": "f958d4921951e394057a1c4ec33bad9a34e5dad1",
+            "title": "A Convolutional Encoder Model for Neural Machine Translation"
+        },
+        {
+            "paperId": "98445f4172659ec5e891e031d8202c102135c644",
+            "title": "Neural Machine Translation in Linear Time"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "df0402517a7338ae28bc54acaac400de6b456a46",
+            "title": "WaveNet: A Generative Model for Raw Audio"
+        },
+        {
+            "paperId": "5694e46284460a648fe29117cbc55f6c9be3fa3c",
+            "title": "Densely Connected Convolutional Networks"
+        },
+        {
+            "paperId": "0d24a0695c9fc669e643bad51d4e14f056329dec",
+            "title": "An Actor-Critic Algorithm for Sequence Prediction"
+        },
+        {
+            "paperId": "0936352b78a52bc5d2b5e3f04233efc56664af51",
+            "title": "Conditional Image Generation with PixelCNN Decoders"
+        },
+        {
+            "paperId": "2cd8e8f510c89c7c18268e8ad51c061e459ad321",
+            "title": "A Decomposable Attention Model for Natural Language Inference"
+        },
+        {
+            "paperId": "29006d8c9c2247fca4cd3a22822c2b042e85572d",
+            "title": "Pairwise Word Interaction Modeling with Deep Neural Networks for Semantic Similarity Measurement"
+        },
+        {
+            "paperId": "41f1d50c85d3180476c4c7b3eea121278b0d8474",
+            "title": "Pixel Recurrent Neural Networks"
+        },
+        {
+            "paperId": "bf76690e93fd06ba1f86cf029fd62ae3ac770968",
+            "title": "A Deep Architecture for Semantic Matching with Multiple Positional Sentence Representations"
+        },
+        {
+            "paperId": "b7aee9dfb027d6061c6a653684c0fa9a9bba750d",
+            "title": "Sequence Level Training with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "1518039b5001f1836565215eb047526b3ac7f462",
+            "title": "Neural Machine Translation of Rare Words with Subword Units"
+        },
+        {
+            "paperId": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+            "title": "Effective Approaches to Attention-based Neural Machine Translation"
+        },
+        {
+            "paperId": "5b791cd374c7109693aaddee2c12d659ae4e3ec0",
+            "title": "Grid Long Short-Term Memory"
+        },
+        {
+            "paperId": "eb5eb891061c78f4fcbc9deb3df8bca7fd005acd",
+            "title": "Encoding Source Language with Convolutional Neural Network for Machine Translation"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "9f08b01251cb99f4ffae8c7b3e4468d3af9c98d3",
+            "title": "Convolutional Neural Network Architectures for Matching Natural Language Sentences"
+        },
+        {
+            "paperId": "1938624bb9b0f999536dcc8d8f519810bb4e1b3b",
+            "title": "On Using Very Large Target Vocabulary for Neural Machine Translation"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "1f6ba0782862ec12a5ec6d7fb608523d55b0c6ba",
+            "title": "Convolutional Neural Networks for Sentence Classification"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "27725a2d2a8cee9bf9fffc6c2167017103aba0fa",
+            "title": "A Convolutional Neural Network for Modelling Sentences"
+        },
+        {
+            "paperId": "944a1cfd79dbfb6fef460360a0765ba790f4027a",
+            "title": "Recurrent Continuous Translation Models"
+        },
+        {
+            "paperId": "7b4f3d0e4e2486a8d5d3f8e00549cf9a117bf88f",
+            "title": "Sequence Transduction with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "a538b05ebb01a40323997629e171c91aa28b8e2f",
+            "title": "Rectified Linear Units Improve Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": "57458bc1cffe5caa45a885af986d70f723f406b4",
+            "title": "A unified architecture for natural language processing: deep neural networks with multitask learning"
+        },
+        {
+            "paperId": "4ee2eab4c298c1824a9fb8799ad8eed21be38d21",
+            "title": "Moses: Open Source Toolkit for Statistical Machine Translation"
+        },
+        {
+            "paperId": "d7da009f457917aa381619facfa5ffae9329a6e9",
+            "title": "Bleu: a Method for Automatic Evaluation of Machine Translation"
+        },
+        {
+            "paperId": "e23c34414e66118ecd9b08cf0cd4d016f59b0b85",
+            "title": "Bidirectional recurrent neural networks"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "4f8d648c52edf74e41b0996128aa536e13cc7e82",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "81aace0e90c6a962059b117c24db0d856f340f41",
+            "title": "Report on the 11th IWSLT evaluation campaign"
+        }
+    ]
+}

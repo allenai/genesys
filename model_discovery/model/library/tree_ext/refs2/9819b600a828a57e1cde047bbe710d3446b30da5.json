@@ -1,0 +1,114 @@
+{
+    "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+    "externalIds": {
+        "MAG": "179875071",
+        "DBLP": "conf/interspeech/MikolovKBCK10",
+        "DOI": "10.21437/Interspeech.2010-343",
+        "CorpusId": 17048224
+    },
+    "title": "Recurrent neural network based language model",
+    "abstract": "A new recurrent neural network based language model (RNN LM) with applications to speech recognition is presented. Results indicate that it is possible to obtain around 50% reduction of perplexity by using mixture of several RNN LMs, compared to a state of the art backoff language model. Speech recognition experiments show around 18% reduction of word error rate on the Wall Street Journal task when comparing models trained on the same amount of data, and around 5% on the much harder NIST RT05 task, even when the backoff model is trained on much more data than the RNN LM. We provide ample empirical evidence to suggest that connectionist language models are superior to standard n-gram techniques, except their high computational (training) complexity. Index Terms: language modeling, recurrent neural networks, speech recognition",
+    "venue": "Interspeech",
+    "year": 2010,
+    "referenceCount": 17,
+    "citationCount": 5748,
+    "influentialCitationCount": 493,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Results indicate that it is possible to obtain around 50% reduction of perplexity by using mixture of several RNN LMs, compared to a state of the art backoff language model."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2047446108",
+            "name": "Tomas Mikolov"
+        },
+        {
+            "authorId": "2245567",
+            "name": "M. Karafi\u00e1t"
+        },
+        {
+            "authorId": "1816892",
+            "name": "L. Burget"
+        },
+        {
+            "authorId": "1899242",
+            "name": "J. \u010cernock\u00fd"
+        },
+        {
+            "authorId": "2803071",
+            "name": "S. Khudanpur"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "0963942fdcba17f7b94d1d636431d4a772476711",
+            "title": "Self-supervised discriminative training of statistical language models"
+        },
+        {
+            "paperId": "927c25cdd384e8f39ed7db7ab1558eb7fd8f048c",
+            "title": "A Joint Language Model With Fine-grain Syntactic Tags"
+        },
+        {
+            "paperId": "7fefba4d85d8eb32efe43fd54a13c9b396ac19dc",
+            "title": "Neural network based language models for highly inflective languages"
+        },
+        {
+            "paperId": "699d5ab38deee78b1fd17cc8ad233c74196d16e9",
+            "title": "Adaptive Importance Sampling to Accelerate Training of a Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "8b395470a57c48d174c4216ea21a7a58bc046917",
+            "title": "Training Neural Network Language Models on Very Large Corpora"
+        },
+        {
+            "paperId": "fc999072ce188ee1d57b6bb744cb276b09a491bb",
+            "title": "The 2005 AMI System for the Transcription of Speech in Meetings"
+        },
+        {
+            "paperId": "e749a5ac7df38cbe8be9e214fa2b40f5bf905401",
+            "title": "The Development of the AMI System for the Transcription of Speech in Meetings"
+        },
+        {
+            "paperId": "6c2b28f9354f667cd5bd07afc0471d8334430da7",
+            "title": "A Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "09c76da2361d46689825c4efc37ad862347ca577",
+            "title": "A bit of progress in language modeling"
+        },
+        {
+            "paperId": "119b5e8927f98e3fea76cbb57d7e053c24ac5c18",
+            "title": "Fast Text Compression with Neural Networks"
+        },
+        {
+            "paperId": "43e5b43965aa4099e75110e4fd8e5458efb82fd8",
+            "title": "Text Compression as a Test for Artificial Intelligence"
+        },
+        {
+            "paperId": "d0be39ee052d246ae99c082a565aba25b811be2d",
+            "title": "Learning long-term dependencies with gradient descent is difficult"
+        },
+        {
+            "paperId": "668087f0ae7ce1de6e0bd0965dbb480c08103260",
+            "title": "Finding Structure in Time"
+        },
+        {
+            "paperId": "c19fbefdeead6a4154a22a9c8551a18b1530033a",
+            "title": "Hierarchical Probabilistic Neural Network Language Model"
+        },
+        {
+            "paperId": "8a0e2e4dd10e1be7fd28474504cbdaa1237e4926",
+            "title": "A guide to recurrent neural networks and backpropagation"
+        },
+        {
+            "paperId": null,
+            "title": "@BULLET RNNs are trained only on in-domain data(5.4M words) @BULLET RT 05, RT 09 are trained on more than 1.3G words"
+        },
+        {
+            "paperId": null,
+            "title": "Fix your typos! 2. Show your parameter selection plots! 3. Go simple!"
+        }
+    ]
+}

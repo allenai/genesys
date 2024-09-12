@@ -1,0 +1,170 @@
+{
+    "paperId": "d316c82c12cf4c45f9e85211ef3d1fa62497bff8",
+    "externalIds": {
+        "MAG": "1191599655",
+        "DBLP": "journals/corr/SchulmanMLJA15",
+        "ArXiv": "1506.02438",
+        "CorpusId": 3075448
+    },
+    "title": "High-Dimensional Continuous Control Using Generalized Advantage Estimation",
+    "abstract": "Policy gradient methods are an appealing approach in reinforcement learning because they directly optimize the cumulative reward and can straightforwardly be used with nonlinear function approximators such as neural networks. The two main challenges are the large number of samples typically required, and the difficulty of obtaining stable and steady improvement despite the nonstationarity of the incoming data. We address the first challenge by using value functions to substantially reduce the variance of policy gradient estimates at the cost of some bias, with an exponentially-weighted estimator of the advantage function that is analogous to TD(lambda). We address the second challenge by using trust region optimization procedure for both the policy and the value function, which are represented by neural networks. \nOur approach yields strong empirical results on highly challenging 3D locomotion tasks, learning running gaits for bipedal and quadrupedal simulated robots, and learning a policy for getting the biped to stand up from starting out lying on the ground. In contrast to a body of prior work that uses hand-crafted policy representations, our neural network policies map directly from raw kinematics to joint torques. Our algorithm is fully model-free, and the amount of simulated experience required for the learning tasks on 3D bipeds corresponds to 1-2 weeks of real time.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2015,
+    "referenceCount": 31,
+    "citationCount": 2899,
+    "influentialCitationCount": 461,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work addresses the large number of samples typically required and the difficulty of obtaining stable and steady improvement despite the nonstationarity of the incoming data by using value functions to substantially reduce the variance of policy gradient estimates at the cost of some bias."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "47971768",
+            "name": "John Schulman"
+        },
+        {
+            "authorId": "29912342",
+            "name": "Philipp Moritz"
+        },
+        {
+            "authorId": "1736651",
+            "name": "S. Levine"
+        },
+        {
+            "authorId": "1694621",
+            "name": "Michael I. Jordan"
+        },
+        {
+            "authorId": "1689992",
+            "name": "P. Abbeel"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "43c3bfffdcd313c549b2045980855ea001d6f13b",
+            "title": "Numerical Optimization"
+        },
+        {
+            "paperId": "6640f4e4beae786f301928d82a9f8eb037aa6935",
+            "title": "Learning Continuous Control Policies by Stochastic Value Gradients"
+        },
+        {
+            "paperId": "024006d4c2a89f7acacc6e4438d156525b60a98f",
+            "title": "Continuous control with deep reinforcement learning"
+        },
+        {
+            "paperId": "449532187c94af3dd3aa55e16d2c50f7854d2199",
+            "title": "Trust Region Policy Optimization"
+        },
+        {
+            "paperId": "3df673220e67cc55d40fbe495c9fba999d820613",
+            "title": "Bias in Natural Actor-Critic Algorithms"
+        },
+        {
+            "paperId": "b354ee518bfc1ac0d8ac447eece9edb69e92eae1",
+            "title": "MuJoCo: A physics engine for model-based control"
+        },
+        {
+            "paperId": "5e84a5549b2a985bd1bc0c3535de96c448b8b8cb",
+            "title": "Reinforcement learning in feedback control"
+        },
+        {
+            "paperId": "e1262319851d78ffa40c89d98d8afba10d0aec2d",
+            "title": "Convergent Temporal-Difference Learning with Arbitrary Smooth Function Approximation"
+        },
+        {
+            "paperId": "d1e493fb86f42104e6dfffec8191af3d43d44072",
+            "title": "Real-time reinforcement learning by sequential Actor-Critics and experience replay"
+        },
+        {
+            "paperId": "147ae2e23e74e80cd09bf60314945141db64de6e",
+            "title": "Optimal gait and form for animal locomotion"
+        },
+        {
+            "paperId": "fa2a5abb2cf23d5fba08831c42e6f6b1aa3f2b29",
+            "title": "Principles of Behavior"
+        },
+        {
+            "paperId": "ccd64fac85a1766c660c1d2e0eee0904b3d6139d",
+            "title": "Fast biped walking with a reflexive controller and real-time policy searching"
+        },
+        {
+            "paperId": "57f25eb66bf97e15fdac0912a671a61e666ec6ee",
+            "title": "Stochastic policy gradient reinforcement learning on a simple 3D biped"
+        },
+        {
+            "paperId": "f1a391bab223fc2609717316bec30ae36f8ea448",
+            "title": "Natural Actor-Critic"
+        },
+        {
+            "paperId": "8042a45d099442072f736ef812181c21b20d2df2",
+            "title": "Optimizing Average Reward Using Discounted Rewards"
+        },
+        {
+            "paperId": "1187a77f857ad029168863ba0005ddf6d2b957c8",
+            "title": "Variance Reduction Techniques for Gradient Estimates in Reinforcement Learning"
+        },
+        {
+            "paperId": "b18833db0de9393d614d511e60821a1504fc6cd1",
+            "title": "A Natural Policy Gradient"
+        },
+        {
+            "paperId": "b87498f0879d312c308889135203b17069aa0486",
+            "title": "Reinforcement Learning in POMDP's via Direct Gradient Ascent"
+        },
+        {
+            "paperId": "a20f0ce0616def7cc9a87446c228906cd5da093b",
+            "title": "Policy Gradient Methods for Reinforcement Learning with Function Approximation"
+        },
+        {
+            "paperId": "94066dc12fe31e96af7557838159bde598cb4f10",
+            "title": "Policy Invariance Under Reward Transformations: Theory and Application to Reward Shaping"
+        },
+        {
+            "paperId": "5fcb9e6cd2539208c79ed5d818ebf8361fa55c21",
+            "title": "An Analysis of Actor/Critic Algorithms Using Eligibility Traces: Reinforcement Learning with Imperfect Value Function"
+        },
+        {
+            "paperId": "b8ff8c7ab23eb70d4179c15a8a6b0efa1a493b8b",
+            "title": "Steps toward Artificial Intelligence"
+        },
+        {
+            "paperId": "a82db864e472b5aa6313596ef9919f64e3363b1f",
+            "title": "Dynamic Programming and Optimal Control, Two Volume Set"
+        },
+        {
+            "paperId": "8a7acaf6469c06ae5876d92f013184db5897bb13",
+            "title": "Neuronlike adaptive elements that can solve difficult learning control problems"
+        },
+        {
+            "paperId": "14279d2575e40565b0170855617e9e2a456b0220",
+            "title": "Principles of Behavior"
+        },
+        {
+            "paperId": "bcd857d75841aa3e92cd4284a8818aba9f6c0c3f",
+            "title": "Published as a conference paper at ICLR 2018 S IMULATING A CTION D YNAMICS WITH N EURAL P ROCESS N ETWORKS"
+        },
+        {
+            "paperId": "e5683e29365b3742c39422eb1faa2684a39bade8",
+            "title": "Under Review as a Conference Paper at Iclr 2017 Learning in Implicit Generative Models"
+        },
+        {
+            "paperId": "4c915c1eecb217c123a36dc6d3ce52d12c742614",
+            "title": "Simple Statistical Gradient-Following Algorithms for Connectionist Reinforcement Learning"
+        },
+        {
+            "paperId": "08f48867a7294bd3851d7fca095dcc1ecb591f6b",
+            "title": "Approximate Gradient Methods in Policy-Space Optimization of Markov Reward Processes"
+        },
+        {
+            "paperId": "ac4af1df88e178386d782705acc159eaa0c3904a",
+            "title": "Actor-Critic Algorithms"
+        },
+        {
+            "paperId": "c4179bf70b2be0f31762db4bed59ba2e034d7534",
+            "title": "Boekbespreking van D.P. Bertsekas (ed.), Dynamic programming and optimal control - volume 2"
+        }
+    ]
+}

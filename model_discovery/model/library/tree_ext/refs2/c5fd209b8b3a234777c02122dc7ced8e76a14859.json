@@ -1,0 +1,66 @@
+{
+    "paperId": "c5fd209b8b3a234777c02122dc7ced8e76a14859",
+    "externalIds": {
+        "DBLP": "conf/isspa/MozafariS07",
+        "MAG": "2020400385",
+        "DOI": "10.1109/ISSPA.2007.4555315",
+        "CorpusId": 12987737
+    },
+    "title": "An efficient recursive algorithm and an explicit formula for calculating update vectors of running walsh-hadamard transform",
+    "abstract": "Walsh-Hadamard transform (WHT) has many applications in digital signal processing including bioinformatics. While there are efficient algorithms for implementing this transform such as fast WHT (FWHT), performing WHT continuously on a sliding window over a long sequence is time consuming. As it is not reasonable to compute a separate WHT upon arrival of every new sample, another implementation named running WHT (RWHT) has been introduced in (G. Deng and A. Ling, 1996) which needs to have some update vectors pre-calculated. In this paper we report on an efficient recursive algorithm to find these vectors. Also we propose an easy-to-compute explicit formula for computing coefficients of these update vectors in a computation time independent of the vector size. A proof of the formula and a comparison between the proposed recursive algorithm and an algorithm based on the formula are also given.",
+    "venue": "2007 9th International Symposium on Signal Processing and Its Applications",
+    "year": 2007,
+    "referenceCount": 8,
+    "citationCount": 10,
+    "influentialCitationCount": 1,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An efficient recursive algorithm is reported on on an easy-to-compute explicit formula for computing coefficients of these update vectors in a computation time independent of the vector size."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2198667",
+            "name": "Barzan Mozafari"
+        },
+        {
+            "authorId": "3237759",
+            "name": "M. Savoji"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "d93ef8e1c44a1cead26bd43db4d023e77a406603",
+            "title": "Power spectrum analysis for DNA sequences"
+        },
+        {
+            "paperId": "49c42b0147470c71a54f2f34a5893a4e49a6e609",
+            "title": "Cache conscious Walsh-Hadamard transform"
+        },
+        {
+            "paperId": "bcb22865d3c4ac1ef2d99eeb664a4568da44a7a0",
+            "title": "In search of the optimal Walsh-Hadamard transform"
+        },
+        {
+            "paperId": "ff58a0045fffc591e9444b0301dfa3f1e22b72a7",
+            "title": "A running Walsh-Hadamard transform algorithm and its application to isotropic quadratic filter implementation"
+        },
+        {
+            "paperId": "60318a0087362b65b0aa66093897d7fdbd307d0a",
+            "title": "Efficient transposition algorithms for large matrices"
+        },
+        {
+            "paperId": "2caeb447a43f051992f568154c10aaf13db669fb",
+            "title": "A methodology for designing, modifying, and implementing Fourier transform algorithms on various architectures"
+        },
+        {
+            "paperId": "72a412c6afc2f77667744ffc2937b4544275ddab",
+            "title": "Generating Parallel Programs for Fast Signal Transforms using SPIRAL \u2217"
+        },
+        {
+            "paperId": null,
+            "title": "Music-dsp source code archive"
+        }
+    ]
+}

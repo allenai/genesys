@@ -1,0 +1,218 @@
+{
+    "paperId": "8760bc7631c0cb04e7138254e9fd6451b7def8ca",
+    "externalIds": {
+        "DBLP": "journals/corr/SunSSG17",
+        "MAG": "2734663976",
+        "ArXiv": "1707.02968",
+        "DOI": "10.1109/ICCV.2017.97",
+        "CorpusId": 6842201
+    },
+    "title": "Revisiting Unreasonable Effectiveness of Data in Deep Learning Era",
+    "abstract": "The success of deep learning in vision can be attributed to: (a) models with high capacity; (b) increased computational power; and (c) availability of large-scale labeled data. Since 2012, there have been significant advances in representation capabilities of the models and computational capabilities of GPUs. But the size of the biggest dataset has surprisingly remained constant. What will happen if we increase the dataset size by 10 \u00d7 or 100 \u00d7 ? This paper takes a step towards clearing the clouds of mystery surrounding the relationship between \u2018enormous data\u2019 and visual deep learning. By exploiting the JFT-300M dataset which has more than 375M noisy labels for 300M images, we investigate how the performance of current vision tasks would change if this data was used for representation learning. Our paper delivers some surprising (and some expected) findings. First, we find that the performance on vision tasks increases logarithmically based on volume of training data size. Second, we show that representation learning (or pre-training) still holds a lot of promise. One can improve performance on many vision tasks by just training a better base model. Finally, as expected, we present new state-of-the-art results for different vision tasks including image classification, object detection, semantic segmentation and human pose estimation. Our sincere hope is that this inspires vision community to not undervalue the data and develop collective efforts in building larger datasets.",
+    "venue": "IEEE International Conference on Computer Vision",
+    "year": 2017,
+    "referenceCount": 43,
+    "citationCount": 2149,
+    "influentialCitationCount": 104,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1707.02968",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is found that the performance on vision tasks increases logarithmically based on volume of training data size, and it is shown that representation learning (or pre-training) still holds a lot of promise."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1491624845",
+            "name": "Chen Sun"
+        },
+        {
+            "authorId": "1781242",
+            "name": "Abhinav Shrivastava"
+        },
+        {
+            "authorId": "2108498897",
+            "name": "Saurabh Singh"
+        },
+        {
+            "authorId": "1726095131",
+            "name": "A. Gupta"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "76ae2eb617d2ad12edf6b84539fce6e5cf76b00e",
+            "title": "Towards Accurate Multi-person Pose Estimation in the Wild"
+        },
+        {
+            "paperId": "a312a573ef81793d56401e932ef6c9498791a3d1",
+            "title": "Speed/Accuracy Trade-Offs for Modern Convolutional Object Detectors"
+        },
+        {
+            "paperId": "dfad8f616bd2a05c8cae5f61060f743f966ece85",
+            "title": "Realtime Multi-person 2D Pose Estimation Using Part Affinity Fields"
+        },
+        {
+            "paperId": "5b6ec746d309b165f9f9def873a2375b6fb40f3d",
+            "title": "Xception: Deep Learning with Depthwise Separable Convolutions"
+        },
+        {
+            "paperId": "ee091ccf24c4f053c5c3dfbefe4a7975ed3447c1",
+            "title": "Generating Videos with Scene Dynamics"
+        },
+        {
+            "paperId": "540b5b4919d345e4da3cc4f3e8a7862329bf41a2",
+            "title": "What makes ImageNet good for transfer learning?"
+        },
+        {
+            "paperId": "cab372bc3824780cce20d9dd1c22d4df39ed081a",
+            "title": "DeepLab: Semantic Image Segmentation with Deep Convolutional Nets, Atrous Convolution, and Fully Connected CRFs"
+        },
+        {
+            "paperId": "1db6e3078597386ac4222ba6c3f4f61b61f53539",
+            "title": "Adversarial Feature Learning"
+        },
+        {
+            "paperId": "d93ececdc44e7700cd84fc75ca069125022d8c9d",
+            "title": "The Curious Robot: Learning Visual Representations via Physical Interactions"
+        },
+        {
+            "paperId": "b5c26ab8767d046cb6e32d959fdf726aee89bb62",
+            "title": "Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning"
+        },
+        {
+            "paperId": "1b93a123d352ea09b4c8aaac933f1d4c8bd42009",
+            "title": "PlaNet - Photo Geolocation with Convolutional Neural Networks"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "4e6d882a4d2e6351cdf3013f0f7785941e3efd00",
+            "title": "The Unreasonable Effectiveness of Noisy Data for Fine-Grained Recognition"
+        },
+        {
+            "paperId": "8c30968d96e0c601adaa74db8907fa6ad73bae31",
+            "title": "Learning Visual Features from Large Weakly Supervised Data"
+        },
+        {
+            "paperId": "004aa2cb4b68850ee006af8a6807b3c1a6a198f0",
+            "title": "Deep Classifiers from Image Tags in the Wild"
+        },
+        {
+            "paperId": "f03b4ff1b4943691cec703b508c0a91f2d97a881",
+            "title": "Supersizing self-supervision: Learning to grasp from 50K tries and 700 robot hours"
+        },
+        {
+            "paperId": "90d44ce126b1ca7107f555db4d546d0e1843d075",
+            "title": "What do 15,000 object categories tell us about classifying and localizing actions?"
+        },
+        {
+            "paperId": "424561d8585ff8ebce7d5d07de8dbf7aae5e7270",
+            "title": "Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks"
+        },
+        {
+            "paperId": "fc1b1c9364c58ec406f494dd944b609a6a038ba6",
+            "title": "Unsupervised Visual Representation Learning by Context Prediction"
+        },
+        {
+            "paperId": "4645661d49e3b4b767b104336fa966bff1335705",
+            "title": "Webly Supervised Learning of Convolutional Networks"
+        },
+        {
+            "paperId": "0c908739fbff75f03469d13d4a1a07de3414ee19",
+            "title": "Distilling the Knowledge in a Neural Network"
+        },
+        {
+            "paperId": "a6e695ddd07aad719001c0fc1129328452385949",
+            "title": "The New Data and New Challenges in Multimedia Research"
+        },
+        {
+            "paperId": "454639ed30a2d336ea976c53b9fe851acbedb7fd",
+            "title": "Large-Scale Deep Learning on the YFCC100M Dataset"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "dcbf587642c39f495117552ca453a4f955ffa76a",
+            "title": "Analyzing the Performance of Multilayer Neural Networks for Object Recognition"
+        },
+        {
+            "paperId": "b0ab8aa7a5b684532b4ff30f8d34b35a99759a46",
+            "title": "Learning Everything about Anything: Webly-Supervised Visual Concept Learning"
+        },
+        {
+            "paperId": "c08f5fa876181fc040d76c75fe2433eee3c9b001",
+            "title": "Learning and Transferring Mid-level Image Representations Using Convolutional Neural Networks"
+        },
+        {
+            "paperId": "67dccc9a856b60bdc4d058d83657a089b8ad4486",
+            "title": "Two-Stream Convolutional Networks for Action Recognition in Videos"
+        },
+        {
+            "paperId": "71b7178df5d2b112d07e45038cb5637208659ff7",
+            "title": "Microsoft COCO: Common Objects in Context"
+        },
+        {
+            "paperId": "53e4ab9730e983242a3409c7bf1af945041a6563",
+            "title": "NEIL: Extracting Visual Knowledge from Web Data"
+        },
+        {
+            "paperId": "2f4df08d9072fc2ac181b7fced6a245315ce05c8",
+            "title": "Rich Feature Hierarchies for Accurate Object Detection and Semantic Segmentation"
+        },
+        {
+            "paperId": "e99be23407b4965ab0e34ed2998cb6fafec7822a",
+            "title": "Unsupervised Joint Object Discovery and Segmentation in Internet Images"
+        },
+        {
+            "paperId": "3127190433230b3dc1abd0680bb58dced4bcd90e",
+            "title": "Large Scale Distributed Deep Networks"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "82fae97673a353271b1d4c001afda1af6ef6dc23",
+            "title": "Semantic contours from inverse detectors"
+        },
+        {
+            "paperId": "0302bb2d5476540cfb21467473f5eca843caf90b",
+            "title": "Unbiased look at dataset bias"
+        },
+        {
+            "paperId": "d2b1b73bf5ecbff21b5d709ed0e5ab513c8a24ec",
+            "title": "Exploiting weakly-labeled Web images to improve object classification: a domain adaptation approach"
+        },
+        {
+            "paperId": "3a9b175324ba11bc0e16c0633912d897b2fac4e2",
+            "title": "The Pascal Visual Object Classes (VOC) Challenge"
+        },
+        {
+            "paperId": "c1787db25af5614f41e56938aa594f2dbb1dca07",
+            "title": "The Unreasonable Effectiveness of Data"
+        },
+        {
+            "paperId": "6c11626ae08706e6185fceff0a6d05e4bfd6bd06",
+            "title": "Unsupervised Learning of Visual Representations using Videos"
+        }
+    ]
+}

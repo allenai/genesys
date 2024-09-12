@@ -1,0 +1,150 @@
+{
+    "paperId": "1d782819afafe0d391e5b67151cb510e621f243d",
+    "externalIds": {
+        "MAG": "2952507584",
+        "ArXiv": "1612.05231",
+        "DBLP": "conf/icml/JingSDPSLTS17",
+        "CorpusId": 5287947
+    },
+    "title": "Tunable Efficient Unitary Neural Networks (EUNN) and their application to RNNs",
+    "abstract": "Using unitary (instead of general) matrices in artificial neural networks (ANNs) is a promising way to solve the gradient explosion/vanishing problem, as well as to enable ANNs to learn long-term correlations in the data. This approach appears particularly promising for Recurrent Neural Networks (RNNs). In this work, we present a new architecture for implementing an Efficient Unitary Neural Network (EUNNs); its main advantages can be summarized as follows. Firstly, the representation capacity of the unitary space in an EUNN is fully tunable, ranging from a subspace of SU(N) to the entire unitary space. Secondly, the computational complexity for training an EUNN is merely O(1) per parameter. Finally, we test the performance of EUNNs on the standard copying task, the pixel-permuted MNIST digit recognition benchmark as well as the Speech Prediction Test (TIMIT). We find that our architecture significantly outperforms both other state-of-the-art unitary RNNs and the LSTM architecture, in terms of the final performance and/or the wall-clock training speed. EUNNs are thus promising alternatives to RNNs and LSTMs for a wide variety of applications.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2016,
+    "referenceCount": 23,
+    "citationCount": 165,
+    "influentialCitationCount": 20,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents a new architecture for implementing an Efficient Unitary Neural Network (EUNNs), and finds that this architecture significantly outperforms both other state-of-the-art unitary RNNs and the LSTM architecture, in terms of the final performance and/or the wall-clock training speed."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "50780902",
+            "name": "Li Jing"
+        },
+        {
+            "authorId": "4013480",
+            "name": "Yichen Shen"
+        },
+        {
+            "authorId": "4265177",
+            "name": "T. Dub\u010dek"
+        },
+        {
+            "authorId": "143977609",
+            "name": "J. Peurifoy"
+        },
+        {
+            "authorId": "2969823",
+            "name": "S. Skirlo"
+        },
+        {
+            "authorId": "1688882",
+            "name": "Yann LeCun"
+        },
+        {
+            "authorId": "2011933",
+            "name": "Max Tegmark"
+        },
+        {
+            "authorId": "1973666",
+            "name": "M. Solja\u010di\u0107"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "79c78c98ea317ba8cdf25a9783ef4b8a7552db75",
+            "title": "Full-Capacity Unitary Recurrent Neural Networks"
+        },
+        {
+            "paperId": "3a2746e6f559cda514fcfa5068fbd6a96069192e",
+            "title": "Deep learning with coherent nanophotonic circuits"
+        },
+        {
+            "paperId": "381c820cb4403a7416a18aeea469b9f4337d8e7b",
+            "title": "An Optimal Design for Universal Multiport Interferometers"
+        },
+        {
+            "paperId": "4ca151307e3be93c6cd14ed403f6162892e7fbed",
+            "title": "Orthogonal RNNs and Long-Memory Tasks"
+        },
+        {
+            "paperId": "e9c771197a6564762754e48c1daafb066f449f2e",
+            "title": "Unitary Evolution Recurrent Neural Networks"
+        },
+        {
+            "paperId": "e32cf24268f079a76180f19edac267a539ea5d53",
+            "title": "Bidirectional Recurrent Neural Networks as Generative Models"
+        },
+        {
+            "paperId": "d46b81707786d18499f911b4ab72bb10c65406ba",
+            "title": "A Simple Way to Initialize Recurrent Networks of Rectified Linear Units"
+        },
+        {
+            "paperId": "f01fc808592ea7c473a69a6e7484040a435f36d9",
+            "title": "Long-term recurrent convolutional networks for visual recognition and description"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "1eb09fecd75eb27825dce4f964b97f4f5cc399d7",
+            "title": "On the Properties of Neural Machine Translation: Encoder\u2013Decoder Approaches"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "cd7c5cbc246e42ebb1368f81ef403c988a1d4c89",
+            "title": "Fast Approximation of Rotations and Hessians matrices"
+        },
+        {
+            "paperId": "99c970348b8f70ce23d6641e201904ea49266b6e",
+            "title": "Exact solutions to the nonlinear dynamics of learning in deep linear neural networks"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "bc1022b031dc6c7019696492e8116598097a8c12",
+            "title": "Natural Language Processing (Almost) from Scratch"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "627f209380b07cf3561060041a838d1da6a97183",
+            "title": "Experimental realization of any discrete unitary operator."
+        },
+        {
+            "paperId": "d0be39ee052d246ae99c082a565aba25b811be2d",
+            "title": "Learning long-term dependencies with gradient descent is difficult"
+        },
+        {
+            "paperId": "b3db94f62118e192ef0465ca9edafcd6c074c137",
+            "title": "DARPA TIMIT:: acoustic-phonetic continuous speech corpus CD-ROM, NIST speech disc 1-1.1"
+        },
+        {
+            "paperId": "4f8d648c52edf74e41b0996128aa536e13cc7e82",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": "31868290adf1c000c611dfc966b514d5a34e8d23",
+            "title": "FUNDAMENTAL TECHNOLOGIES IN MODERN SPEECH RECOGNITION Digital Object Identifier 10.1109/MSP.2012.2205597"
+        },
+        {
+            "paperId": "8fce466243540aa61b16088355d4555c9d2ed0b4",
+            "title": "Time-frequency feature representation using energy concentration: An overview of recent advances"
+        },
+        {
+            "paperId": "3f3d13e95c25a8f6a753e38dfce88885097cbd43",
+            "title": "Untersuchungen zu dynamischen neuronalen Netzen"
+        }
+    ]
+}

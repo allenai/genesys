@@ -1,0 +1,108 @@
+{
+    "paperId": "4c0d2d4269895eb367d7b0d38d9de3e99bf3f3ae",
+    "externalIds": {
+        "MAG": "2482276862",
+        "CorpusId": 10328421
+    },
+    "title": "Sparse Nonnegative Matrix Factorization for Clustering",
+    "abstract": "Properties of Nonnegative Matrix Factorization (NMF) as a clustering method are studied by relating its formulation to other methods such as K-means clustering. We show how interpreting the objective function of K-means as that of a lower rank approximation with special constraints allows comparisons between the constraints of NMF and K-means and provides the insight that some constraints can be relaxed from K-means to achieve NMF formulation. By introducing sparsity constraints on the coefficient matrix factor in NMF objective function, we in term can view NMF as a clustering method. We tested sparse NMF as a clustering method, and our experimental results with synthetic and text data shows that sparse NMF does not simply provide an alternative to K-means, but rather gives much better and consistent solutions to the clustering problem. In addition, the consistency of solutions further explains how NMF can be used to determine the unknown number of clusters from data. We also tested with a recently proposed clustering algorithm, Affinity Propagation, and achieved comparable results. A fast alternating nonnegative least squares algorithm was used to obtain NMF and sparse NMF.",
+    "venue": "",
+    "year": 2008,
+    "referenceCount": 19,
+    "citationCount": 231,
+    "influentialCitationCount": 19,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The experimental results shows that sparse NMF does not simply provide an alternative to K-means, but rather gives much better and consistent solutions to the clustering problem, and the consistency of solutions further explains how NMF can be used to determine the unknown number of clusters from data."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "143882848",
+            "name": "Jingu Kim"
+        },
+        {
+            "authorId": "1685928",
+            "name": "Haesun Park"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "55d0e5e82095ce4f9a79591221c3a8bdc78e3ac1",
+            "title": "Nonnegative Matrix Factorization Based on Alternating Nonnegativity Constrained Least Squares and Active Set Method"
+        },
+        {
+            "paperId": "0e6a0c9cd9c492da43a78ac9552fc3f82b6c1da8",
+            "title": "Sparse non-negative matrix factorizations via alternating non-negativity-constrained least squares for microarray data analysis"
+        },
+        {
+            "paperId": "ca839260a9e13f21fff53b7227d6d363cf3d4735",
+            "title": "Clustering by Passing Messages Between Data Points"
+        },
+        {
+            "paperId": "a74534569c5532ea62da572e3b617dedc825b262",
+            "title": "Document clustering using nonnegative matrix factorization"
+        },
+        {
+            "paperId": "b02f1e8bfbf5bcf449f8ebbc6d69f864789b1d1c",
+            "title": "Fast algorithm for the solution of large\u2010scale non\u2010negativity\u2010constrained least squares problems"
+        },
+        {
+            "paperId": "ede3af3637977988b8cbb330c294183e919b7d5a",
+            "title": "Non-negative Matrix Factorization with Sparseness Constraints"
+        },
+        {
+            "paperId": "8467c65182dcbd3ea76aa31c2074930b5e3c1e05",
+            "title": "Metagenes and molecular pattern discovery using matrix factorization"
+        },
+        {
+            "paperId": "eef58d85880ab19737f4880fcff19fdc7ec1db99",
+            "title": "When Does Non-Negative Matrix Factorization Give a Correct Decomposition into Parts?"
+        },
+        {
+            "paperId": "66a6dde6a6a20f77ce52cb2464a52777837bd81e",
+            "title": "Document clustering based on non-negative matrix factorization"
+        },
+        {
+            "paperId": "db53b8465a2d6b9dcba0a9c2ec7f10712c826306",
+            "title": "Learning spatially localized, parts-based representation"
+        },
+        {
+            "paperId": "01cbff216f2888f96151fb490338af40a09a0c30",
+            "title": "Spectral Relaxation for K-means Clustering"
+        },
+        {
+            "paperId": "29bae9472203546847ec1352a604566d0f602728",
+            "title": "Learning the parts of objects by non-negative matrix factorization"
+        },
+        {
+            "paperId": "3b4b6b3b6f13f2de00a213a822e7c005e034adae",
+            "title": "Refining Initial Points for K-Means Clustering"
+        },
+        {
+            "paperId": "6ff715c841b0e7d0642649ecfb22a5c033414230",
+            "title": "A fast non\u2010negativity\u2010constrained least squares algorithm"
+        },
+        {
+            "paperId": "c1eebff5e1b41283d45b0aa2d3770a2021efa672",
+            "title": "Positive matrix factorization: A non-negative factor model with optimal utilization of error estimates of data values\u2020"
+        },
+        {
+            "paperId": "4fc1bf60275c419eeb85e28793305a789dca4717",
+            "title": "On the Equivalence of Nonnegative Matrix Factorization and Spectral Clustering"
+        },
+        {
+            "paperId": "29c143fc694199ce6259e6e3f423e57a616e0bf5",
+            "title": "Refining clusters in high dimensional text data"
+        },
+        {
+            "paperId": "5aedf3b87ac63b2b839357d3dba62de2d356abec",
+            "title": "Information retrieval - algorithms and heuristics"
+        },
+        {
+            "paperId": "b365b8e45b7d81f081de44ac8f9eadf9144f3ca5",
+            "title": "Regression Shrinkage and Selection via the Lasso"
+        }
+    ]
+}

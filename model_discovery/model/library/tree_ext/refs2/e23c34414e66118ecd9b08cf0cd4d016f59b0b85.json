@@ -1,0 +1,109 @@
+{
+    "paperId": "e23c34414e66118ecd9b08cf0cd4d016f59b0b85",
+    "externalIds": {
+        "DBLP": "journals/tsp/SchusterP97",
+        "MAG": "2131774270",
+        "DOI": "10.1109/78.650093",
+        "CorpusId": 18375389
+    },
+    "title": "Bidirectional recurrent neural networks",
+    "abstract": "In the first part of this paper, a regular recurrent neural network (RNN) is extended to a bidirectional recurrent neural network (BRNN). The BRNN can be trained without the limitation of using input information just up to a preset future frame. This is accomplished by training it simultaneously in positive and negative time direction. Structure and training procedure of the proposed network are explained. In regression and classification experiments on artificial data, the proposed structure gives better results than other approaches. For real data, classification experiments for phonemes from the TIMIT database show the same tendency. In the second part of this paper, it is shown how the proposed bidirectional structure can be easily modified to allow efficient estimation of the conditional posterior probability of complete symbol sequences without making any explicit assumption about the shape of the distribution. For this part, experiments on real data are reported.",
+    "venue": "IEEE Transactions on Signal Processing",
+    "year": 1997,
+    "referenceCount": 18,
+    "citationCount": 7811,
+    "influentialCitationCount": 704,
+    "openAccessPdf": {
+        "url": "https://maxwell.ict.griffith.edu.au/spl/publications/papers/ieeesp97_schuster.pdf",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown how the proposed bidirectional structure can be easily modified to allow efficient estimation of the conditional posterior probability of complete symbol sequences without making any explicit assumption about the shape of the distribution."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "144927151",
+            "name": "M. Schuster"
+        },
+        {
+            "authorId": "48099761",
+            "name": "K. Paliwal"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "e0221670d9f5fa3d4e76b5cf38c5e008d8f7d3a8",
+            "title": "A review of large-vocabulary continuous-speech"
+        },
+        {
+            "paperId": "cbe4c8684e49fe1f56e256f99bb9eb2833cd98ed",
+            "title": "Methods For Combining Experts' Probability Assessments"
+        },
+        {
+            "paperId": "2a6f3efc7e27e2d873af9f358e32d4b38251792a",
+            "title": "Dynamic recurrent neural networks: Theory and applications"
+        },
+        {
+            "paperId": "c6629770cb6a00ad585918e71fe6dbad829ad0d1",
+            "title": "An application of recurrent nets to phone probability estimation"
+        },
+        {
+            "paperId": "916ceefae4b11dadc3ee754ce590381c568c90de",
+            "title": "A direct adaptive method for faster backpropagation learning: the RPROP algorithm"
+        },
+        {
+            "paperId": "ee50abb5aff3e5c43a38f24396b9552d593a9ae0",
+            "title": "Links Between Markov Models and Multilayer Perceptrons"
+        },
+        {
+            "paperId": "7c6be95e99e6d5538dfa362d18ac9b7e3ecce92a",
+            "title": "A probabilistic approach to the understanding and training of neural network classifiers"
+        },
+        {
+            "paperId": "34468c0aa95a7aea212d8738ab899a69b2fc14c6",
+            "title": "Learning State Space Trajectories in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "cd62c9976534a6a2096a38244f6cbb03635a127e",
+            "title": "Phoneme recognition using time-delay neural networks"
+        },
+        {
+            "paperId": "b9dd05b69d6906fff6ea6c4ba3609a6d97c9b8a3",
+            "title": "Statistical Decision Theory and Bayesian Analysis"
+        },
+        {
+            "paperId": "319f22bd5abfd67ac15988aa5c7f705f018c3ccd",
+            "title": "Learning internal representations by error propagation"
+        },
+        {
+            "paperId": "03bc854feaee144b54924b440eff02ed9082cc6b",
+            "title": "THE USE OF RECURRENT NEURAL NETWORKS IN CONTINUOUS SPEECH RECOGNITION"
+        },
+        {
+            "paperId": "83b6755242f1cff6bacf270f65b4626d4d118f32",
+            "title": "Neural Networks for Pattern Recognition"
+        },
+        {
+            "paperId": "8a6d820385527df2183a36ae1615f426ba894c5d",
+            "title": "Neural Network Classifiers Estimate Bayesian a posteriori Probabilities"
+        },
+        {
+            "paperId": null,
+            "title": "Several improvements to a recurrent error propagation network phone recognition system,"
+        },
+        {
+            "paperId": "1f462943c8d0af69c12a09058251848324135e5a",
+            "title": "Probabilistic Interpretation of Feedforward Classification Network Outputs, with Relationships to Statistical Pattern Recognition"
+        },
+        {
+            "paperId": null,
+            "title": "Acoust., Speech, Signal Processing"
+        },
+        {
+            "paperId": null,
+            "title": "and R"
+        }
+    ]
+}

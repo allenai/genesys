@@ -1,0 +1,151 @@
+{
+    "paperId": "167e1359943b96b9e92ee73db1df69a1f65d731d",
+    "externalIds": {
+        "DBLP": "journals/corr/cs-CL-0409058",
+        "ACL": "P04-1035",
+        "MAG": "2114524997",
+        "ArXiv": "cs/0409058",
+        "DOI": "10.3115/1218955.1218990",
+        "CorpusId": 388
+    },
+    "title": "A Sentimental Education: Sentiment Analysis Using Subjectivity Summarization Based on Minimum Cuts",
+    "abstract": "Sentiment analysis seeks to identify the viewpoint(s) underlying a text span; an example application is classifying a movie review as \"thumbs up\" or \"thumbs down\". To determine this sentiment polarity, we propose a novel machine-learning method that applies text-categorization techniques to just the subjective portions of the document. Extracting these portions can be implemented using efficient techniques for finding minimum cuts in graphs; this greatly facilitates incorporation of cross-sentence contextual constraints.",
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2004,
+    "referenceCount": 28,
+    "citationCount": 3971,
+    "influentialCitationCount": 393,
+    "openAccessPdf": {
+        "url": "https://dl.acm.org/doi/pdf/10.3115/1218955.1218990",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel machine-learning method is proposed that applies text-categorization techniques to just the subjective portions of the document, which greatly facilitates incorporation of cross-sentence contextual constraints."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "144865353",
+            "name": "B. Pang"
+        },
+        {
+            "authorId": "145810617",
+            "name": "Lillian Lee"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "310b72fbc3d384ca88ca994b33476b8a2be2e27f",
+            "title": "Sentiment analyzer: extracting sentiments about a given topic using natural language processing techniques"
+        },
+        {
+            "paperId": "49b8dff62cccc26023c876460234bf29084a382f",
+            "title": "Transductive Learning via Spectral Graph Partitioning"
+        },
+        {
+            "paperId": "ab3eec0a211e16751effa729281dd448001203db",
+            "title": "Learning Extraction Patterns for Subjective Expressions"
+        },
+        {
+            "paperId": "3f46b61a7216e5763ffab5d33e06b88c9d490c85",
+            "title": "Towards Answering Opinion Questions: Separating Facts from Opinions and Identifying the Polarity of Opinion Sentences"
+        },
+        {
+            "paperId": "96f9e8ee890b4e142dd34dcf93fd52678eecd2b5",
+            "title": "Learning subjective nouns using extraction pattern bootstrapping"
+        },
+        {
+            "paperId": "338a891907dce447da9a0fa2f27221bd35164163",
+            "title": "Mining the peanut gallery: opinion extraction and semantic classification of product reviews"
+        },
+        {
+            "paperId": "22291dcd8b5255b6d0d51a86138ee5bf57b34550",
+            "title": "Mining newsgroups using networks arising from social behavior"
+        },
+        {
+            "paperId": "de00b6d04d7d4c7d554b404f54b4362c9ba3df92",
+            "title": "A model of textual affect sensing using real-world knowledge"
+        },
+        {
+            "paperId": "55faa1e7282420d76dce63962eab35bc4c51f0b1",
+            "title": "Opinion Classification Through Information Extraction"
+        },
+        {
+            "paperId": "4f0d67a3a8a61d3a7ef0f940274ecff5f0d640ea",
+            "title": "Mining product reputations on the Web"
+        },
+        {
+            "paperId": "9e7c7853a16a378cc24a082153b282257a9675b7",
+            "title": "Thumbs Up or Thumbs Down? Semantic Orientation Applied to Unsupervised Classification of Reviews"
+        },
+        {
+            "paperId": "12d0353ce8b41b7e5409e5a4a611110aee33c7bc",
+            "title": "Thumbs up? Sentiment Classification using Machine Learning Techniques"
+        },
+        {
+            "paperId": "3120324069ec20eed853d3f9bbbceb32e4173b93",
+            "title": "Fast approximate energy minimization via graph cuts"
+        },
+        {
+            "paperId": "0eedbab3ae55fd6a4e7bbc75fcc261293384f883",
+            "title": "Learning from Labeled and Unlabeled Data using Graph Mincuts"
+        },
+        {
+            "paperId": "6ab2308c69f0ed91cc79bcb55c5ed38152640b86",
+            "title": "Thumbs up"
+        },
+        {
+            "paperId": "8a26ded61b67cce241352ba8742cd8fa2541d605",
+            "title": "Affect analysis of text using fuzzy semantic typing"
+        },
+        {
+            "paperId": "b62b80384f402d38c3425db6a99899d1cb9c50c6",
+            "title": "Predicting the Semantic Orientation of Adjectives"
+        },
+        {
+            "paperId": "f2c1830eedc095b92a78dc3afa39a36343ed81ad",
+            "title": "Introduction to algorithms"
+        },
+        {
+            "paperId": "829d1090da72af223944f7e576bbedaba53417c7",
+            "title": "Tracking Point of View in Narrative"
+        },
+        {
+            "paperId": "5ccef5423f3cb428121eb6fef2224d803c136806",
+            "title": "Exploring Sentiment Summarization"
+        },
+        {
+            "paperId": "614aa320c8b91fe884739f4ab9b0f172ad70b2f7",
+            "title": "Exploring attitude and affect in text : theories and applications : papers from the 2004 AAAI Symposium, March 22-24, Stanford, California"
+        },
+        {
+            "paperId": "2a210dc6b17efbaec314ca332abb1776ea40908d",
+            "title": "Combining Low-Level and Summary Representations of Opinions for Multi-Perspective Question Answering"
+        },
+        {
+            "paperId": "f0456ee92718b04e8ea51f47c9486455fafcf7d3",
+            "title": "A system for affective rating of texts"
+        },
+        {
+            "paperId": null,
+            "title": "Yahoo! for Amazon: Extracting market sentiment from stock message boards"
+        },
+        {
+            "paperId": null,
+            "title": "An operational system for detecting and tracking opinions in on-line discussion"
+        },
+        {
+            "paperId": "3c1dd0c1d29b467dd239ae288ecbaa8bc660e3b3",
+            "title": "1 Text Mining : New Techniques and Applications"
+        },
+        {
+            "paperId": "68d54f9dacbb5416c1aafb3399c072497c320021",
+            "title": "Network Flows: Theory, Algorithms, and Applications"
+        },
+        {
+            "paperId": "c4b197bcd4718c5881bff37103babbbe3f9907a9",
+            "title": "Thumbs Up! Thumbs Down!"
+        }
+    ]
+}

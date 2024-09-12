@@ -1,0 +1,218 @@
+{
+    "paperId": "8388f1be26329fa45e5807e968a641ce170ea078",
+    "externalIds": {
+        "MAG": "2949811265",
+        "ArXiv": "1511.06434",
+        "DBLP": "journals/corr/RadfordMC15",
+        "CorpusId": 11758569
+    },
+    "title": "Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks",
+    "abstract": "In recent years, supervised learning with convolutional networks (CNNs) has seen huge adoption in computer vision applications. Comparatively, unsupervised learning with CNNs has received less attention. In this work we hope to help bridge the gap between the success of CNNs for supervised learning and unsupervised learning. We introduce a class of CNNs called deep convolutional generative adversarial networks (DCGANs), that have certain architectural constraints, and demonstrate that they are a strong candidate for unsupervised learning. Training on various image datasets, we show convincing evidence that our deep convolutional adversarial pair learns a hierarchy of representations from object parts to scenes in both the generator and discriminator. Additionally, we use the learned features for novel tasks - demonstrating their applicability as general image representations.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2015,
+    "referenceCount": 45,
+    "citationCount": 13189,
+    "influentialCitationCount": 1663,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces a class of CNNs called deep convolutional generative adversarial networks (DCGANs), that have certain architectural constraints, and demonstrates that they are a strong candidate for unsupervised learning."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "38909097",
+            "name": "Alec Radford"
+        },
+        {
+            "authorId": "2096458",
+            "name": "Luke Metz"
+        },
+        {
+            "authorId": "2127604",
+            "name": "Soumith Chintala"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "488bb25e0b1777847f04c943e6dbc4f84415b712",
+            "title": "Unrolled Generative Adversarial Networks"
+        },
+        {
+            "paperId": "571b0750085ae3d939525e62af510ee2cee9d5ea",
+            "title": "Improved Techniques for Training GANs"
+        },
+        {
+            "paperId": "39e0c341351f8f4a39ac890b96217c7f4bde5369",
+            "title": "A note on the evaluation of generative models"
+        },
+        {
+            "paperId": "440349a3c81780ef08254f5a59229cad74f54904",
+            "title": "Dreaming More Data: Class-dependent Distributions over Diffeomorphisms for Learned Data Augmentation"
+        },
+        {
+            "paperId": "0f7c85357c366b314b5b55c400869a62fd23372c",
+            "title": "Train faster, generalize better: Stability of stochastic gradient descent"
+        },
+        {
+            "paperId": "cddf8a10c7f48df67a797808a615be0d4acf9a8e",
+            "title": "Semi-supervised Learning with Ladder Networks"
+        },
+        {
+            "paperId": "47900aca2f0b50da3010ad59b394c870f0e6c02e",
+            "title": "Deep Generative Image Models using a Laplacian Pyramid of Adversarial Networks"
+        },
+        {
+            "paperId": "4dcdae25a5e33682953f0853ee4cf7ca93be58a9",
+            "title": "LSUN: Construction of a Large-scale Image Dataset using Deep Learning with Humans in the Loop"
+        },
+        {
+            "paperId": "cba5fbd40767a27d20e346a108b8867ac8591a27",
+            "title": "Stacked What-Where Auto-encoders"
+        },
+        {
+            "paperId": "adf3b591281688b7e71b254ab931b2aa39b4b59f",
+            "title": "Empirical Evaluation of Rectified Activations in Convolutional Network"
+        },
+        {
+            "paperId": "2dcef55a07f8607a819c21fe84131ea269cc2e3c",
+            "title": "Deep Unsupervised Learning using Nonequilibrium Thermodynamics"
+        },
+        {
+            "paperId": "a2785f66c20fbdf30ec26c0931584c6d6a0f4fca",
+            "title": "DRAW: A Recurrent Neural Network For Image Generation"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "33af9298e5399269a12d4b9901492fe406af62b4",
+            "title": "Striving for Simplicity: The All Convolutional Net"
+        },
+        {
+            "paperId": "1c3d7d5a9a9eafa084913b8c83a013c81d50479f",
+            "title": "Learning to Generate Chairs, Tables and Cars with Convolutional Networks"
+        },
+        {
+            "paperId": "b437b5a0445f17b06b12791bc48aeb8110e95dc5",
+            "title": "Learning to generate chairs with convolutional neural networks"
+        },
+        {
+            "paperId": "abc866e30163ec67f1cf4f4380e5f8323a6c598d",
+            "title": "Understanding Locally Competitive Networks"
+        },
+        {
+            "paperId": "c08f5fa876181fc040d76c75fe2433eee3c9b001",
+            "title": "Learning and Transferring Mid-level Image Representations Using Convolutional Neural Networks"
+        },
+        {
+            "paperId": "86ee1835a56722b76564119437070782fc90eb19",
+            "title": "Generative Adversarial Nets"
+        },
+        {
+            "paperId": "5f5dc5b9a2ba710937e2c413b37b053cd673df02",
+            "title": "Auto-Encoding Variational Bayes"
+        },
+        {
+            "paperId": "1a2a770d23b4a171fa81de62a78a3deb0588f238",
+            "title": "Visualizing and Understanding Convolutional Networks"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "b7b915d508987b73b61eccd2b237e7ed099a2d29",
+            "title": "Maxout Networks"
+        },
+        {
+            "paperId": "188e247506ad992b8bc62d6c74789e89891a984f",
+            "title": "Random Search for Hyper-Parameter Optimization"
+        },
+        {
+            "paperId": "182015c5edff1956cbafbcb3e7bbe294aa54f9fc",
+            "title": "Selecting Receptive Fields in Deep Networks"
+        },
+        {
+            "paperId": "a538b05ebb01a40323997629e171c91aa28b8e2f",
+            "title": "Rectified Linear Units Improve Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": "e2b7f37cd97a7907b1b8a41138721ed06a0b76cd",
+            "title": "Stacked Denoising Autoencoders: Learning Useful Representations in a Deep Network with a Local Denoising Criterion"
+        },
+        {
+            "paperId": "d2c733e34d48784a37d717fe43d9e93277a8c53e",
+            "title": "ImageNet: A large-scale hierarchical image database"
+        },
+        {
+            "paperId": "1e80f755bcbf10479afd2338cec05211fdbd325c",
+            "title": "Convolutional deep belief networks for scalable unsupervised learning of hierarchical representations"
+        },
+        {
+            "paperId": "3a3aa31045bb79ecded928347f26685f180807ff",
+            "title": "Scene Completion Using Millions of Photographs"
+        },
+        {
+            "paperId": "e484ef6b9a1b38a86a8c79b5559a3070f327a033",
+            "title": "Example-Based Super-Resolution"
+        },
+        {
+            "paperId": "37afeac49518877dc96a3ca2ec3ebdfc5305e0a9",
+            "title": "A Parametric Texture Model Based on Joint Statistics of Complex Wavelet Coefficients"
+        },
+        {
+            "paperId": "bba3264d6794538381687ad6e151a7f42f3872a9",
+            "title": "Texture synthesis by non-parametric sampling"
+        },
+        {
+            "paperId": "c68796f833a7151f0a63d1d1608dc902b4fdc9b6",
+            "title": "GENERATIVE ADVERSARIAL NETS"
+        },
+        {
+            "paperId": "ad2469bff83c9d5a55dd81040d369c8af29be132",
+            "title": "Inceptionism: Going Deeper into Neural Networks"
+        },
+        {
+            "paperId": null,
+            "title": "Unsupervised representation learning with deep convolutional generative adversarial networks. arXiv preprint arXiv:1511.06434"
+        },
+        {
+            "paperId": "be0dd2e91bb104494feeb5da2761cf930564f650",
+            "title": "Under review as a conference paper at ICLR 2016"
+        },
+        {
+            "paperId": "a96449c7f9b1ed6bf4545db7e5ec095b766de3eb",
+            "title": "Construction of a Large-scale Image Dataset using Deep Learning with Humans in the Loop"
+        },
+        {
+            "paperId": "ea0a918c95790bb75b280c6cdfd41818206d3811",
+            "title": "Under Review as a Conference Paper at Iclr 2016 Predicting Distributions with Linearizing Belief Networks"
+        },
+        {
+            "paperId": "367f2c63a6f6a10b3b64b8729d601e69337ee3cc",
+            "title": "Rectifier Nonlinearities Improve Neural Network Acoustic Models"
+        },
+        {
+            "paperId": "007d73c91a1bf90d72eb59fbdd8791a4b009f363",
+            "title": "Learning Feature Representations with K-Means"
+        },
+        {
+            "paperId": "02227c94dd41fe0b439e050d377b0beb5d427cda",
+            "title": "Reading Digits in Natural Images with Unsupervised Feature Learning"
+        },
+        {
+            "paperId": "4388c3910a165c01a251ea7d50b18f37fac5a642",
+            "title": "Training Invariant Support Vector Machines using Selective Sampling"
+        },
+        {
+            "paperId": "bcaf73e6389261da6f2fdf88b20b17f4fc2add90",
+            "title": "Ieee Transactions on Pattern Analysis and Machine Intelligence 1 Discriminative Unsupervised Feature Learning with Exemplar Convolutional Neural Networks"
+        }
+    ]
+}

@@ -1,0 +1,222 @@
+{
+    "paperId": "6424b69f3ff4d35249c0bb7ef912fbc2c86f4ff4",
+    "externalIds": {
+        "MAG": "1834627138",
+        "ArXiv": "1411.7766",
+        "DBLP": "journals/corr/LiuLWT14",
+        "DOI": "10.1109/ICCV.2015.425",
+        "CorpusId": 459456
+    },
+    "title": "Deep Learning Face Attributes in the Wild",
+    "abstract": "Predicting face attributes in the wild is challenging due to complex face variations. We propose a novel deep learning framework for attribute prediction in the wild. It cascades two CNNs, LNet and ANet, which are fine-tuned jointly with attribute tags, but pre-trained differently. LNet is pre-trained by massive general object categories for face localization, while ANet is pre-trained by massive face identities for attribute prediction. This framework not only outperforms the state-of-the-art with a large margin, but also reveals valuable facts on learning face representation. (1) It shows how the performances of face localization (LNet) and attribute prediction (ANet) can be improved by different pre-training strategies. (2) It reveals that although the filters of LNet are fine-tuned only with image-level attribute tags, their response maps over entire images have strong indication of face locations. This fact enables training LNet for face localization with only image-level annotations, but without face bounding boxes or landmarks, which are required by all attribute recognition works. (3) It also demonstrates that the high-level hidden neurons of ANet automatically discover semantic concepts after pre-training with massive face identities, and such concepts are significantly enriched after fine-tuning with attribute tags. Each attribute can be well explained with a sparse linear combination of these concepts.",
+    "venue": "IEEE International Conference on Computer Vision",
+    "year": 2014,
+    "referenceCount": 44,
+    "citationCount": 7493,
+    "influentialCitationCount": 1639,
+    "openAccessPdf": {
+        "url": "http://arxiv.org/pdf/1411.7766",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel deep learning framework for attribute prediction in the wild that cascades two CNNs, LNet and ANet, which are fine-tuned jointly with attribute tags, but pre-trained differently."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2117940996",
+            "name": "Ziwei Liu"
+        },
+        {
+            "authorId": "47571885",
+            "name": "Ping Luo"
+        },
+        {
+            "authorId": "31843833",
+            "name": "Xiaogang Wang"
+        },
+        {
+            "authorId": "50295995",
+            "name": "Xiaoou Tang"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "86e07d015376035f9a554535ca9f1988f0947f25",
+            "title": "Clustering by Fast Search and Find of Density Peaks"
+        },
+        {
+            "paperId": "ec679c45e88fa25fec32c30bc7c1b7d7fd0facec",
+            "title": "Is object localization for free? - Weakly-supervised learning with convolutional neural networks"
+        },
+        {
+            "paperId": "401192b00b650adfa5ac49de59b720e1c81f1410",
+            "title": "Object Detectors Emerge in Deep Scene CNNs"
+        },
+        {
+            "paperId": "887c457b96ee0ab8ef6be6cd69962f8aa31ea476",
+            "title": "Multi-View Perceptron: a Deep Model for Learning Face Identity and View Representations"
+        },
+        {
+            "paperId": "21d2d64408fcfbe6f2c8d0cb53a614dcdb16ede5",
+            "title": "Pedestrian detection aided by deep learning semantic tasks"
+        },
+        {
+            "paperId": "6fc6803df5f9ae505cae5b2f178ade4062c768d0",
+            "title": "Fully convolutional networks for semantic segmentation"
+        },
+        {
+            "paperId": "bd2f443fc18947d2c9ecb81192b3f0a9cd2cf3f1",
+            "title": "Self-taught object localization with deep networks"
+        },
+        {
+            "paperId": "2f91ef3b3f71196def8bee7a7bacdc62cd07b64c",
+            "title": "Face Detection without Bells and Whistles"
+        },
+        {
+            "paperId": "b183947ee15718b45546eda6b01e179b9a95421f",
+            "title": "Edge Boxes: Locating Object Proposals from Edges"
+        },
+        {
+            "paperId": "2f04ba0f74df046b0080ca78e56898bd4847898b",
+            "title": "Aggregate channel features for multi-view face detection"
+        },
+        {
+            "paperId": "98bb60748eb8ef7a671cdd22faa87e377fd13060",
+            "title": "Part-Based R-CNNs for Fine-Grained Category Detection"
+        },
+        {
+            "paperId": "1faa856958fd22125dff44c40d5fd7ba92e7cb3b",
+            "title": "Clustering by fast search and find of density peaks"
+        },
+        {
+            "paperId": "cbb19236820a96038d000dc629225d36e0b6294a",
+            "title": "Spatial Pyramid Pooling in Deep Convolutional Networks for Visual Recognition"
+        },
+        {
+            "paperId": "91bdaf3f1226e4065c4296d5c362906ceadfc631",
+            "title": "Deep Learning Face Representation by Joint Identification-Verification"
+        },
+        {
+            "paperId": "9f2efadf66817f1b38f58b3f50c7c8f34c69d89a",
+            "title": "DeepFace: Closing the Gap to Human-Level Performance in Face Verification"
+        },
+        {
+            "paperId": "e1ef3fe81a1d8175874ee26ad3adecdf63c7bb7e",
+            "title": "Exploiting relationship between attributes for improved face verification"
+        },
+        {
+            "paperId": "6270baedeba28001cd1b563a199335720d6e0fe0",
+            "title": "CNN Features Off-the-Shelf: An Astounding Baseline for Recognition"
+        },
+        {
+            "paperId": "5c10a0d79a5e2dd2d7079dffe98450e6ff49cb3b",
+            "title": "A Deep Sum-Product Architecture for Robust Facial Attributes Analysis"
+        },
+        {
+            "paperId": "89d5b41b7fb0a122f811be270e6d5f72fc59d680",
+            "title": "PANDA: Pose Aligned Networks for Deep Attribute Modeling"
+        },
+        {
+            "paperId": "b8de958fead0d8a9619b55c7299df3257c624a96",
+            "title": "DeCAF: A Deep Convolutional Activation Feature for Generic Visual Recognition"
+        },
+        {
+            "paperId": "23efd4b0aef1ae0b356fe88141da085526ed3df0",
+            "title": "POOF: Part-Based One-vs.-One Features for Fine-Grained Categorization, Face Verification, and Attribute Estimation"
+        },
+        {
+            "paperId": "2c56f1f328d6d7d220253366598b2e21baecded3",
+            "title": "Learning SURF Cascade for Fast and Accurate Object Detection"
+        },
+        {
+            "paperId": "57ebeff9273dea933e2a75c306849baf43081a8c",
+            "title": "Deep Convolutional Network Cascade for Facial Point Detection"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "aa577652ce4dad3ca3dde44f881972ae6e1acce7",
+            "title": "Deep Attribute Networks"
+        },
+        {
+            "paperId": "b9c681f15b43e13329c8c0e1a6c7283dae7c9099",
+            "title": "Hierarchical face parsing via deep learning"
+        },
+        {
+            "paperId": "afcb15a67c8a68d01b3c9965d182e48c88502c38",
+            "title": "Describing people: A poselet-based approach to attribute classification"
+        },
+        {
+            "paperId": "23e568fcf0192e4ff5e6bed7507ee5b9e6c43598",
+            "title": "Relative attributes"
+        },
+        {
+            "paperId": "c180e58e5161a82e8aa7980f676c72ff7dc24da2",
+            "title": "Two faces are better than one: Face recognition in group photographs"
+        },
+        {
+            "paperId": "908091b4a8757c3b2f7d9cfa2c4f616ee12c5157",
+            "title": "SUN database: Large-scale scene recognition from abbey to zoo"
+        },
+        {
+            "paperId": "d3046251ec5d6e7f90ef5ef2b0ac885c01138555",
+            "title": "Attribute and simile classifiers for face verification"
+        },
+        {
+            "paperId": "d2c733e34d48784a37d717fe43d9e93277a8c53e",
+            "title": "ImageNet: A large-scale hierarchical image database"
+        },
+        {
+            "paperId": "c6a8aef1bf134294482d8088f982d5643347d2ff",
+            "title": "Describing objects by their attributes"
+        },
+        {
+            "paperId": "d363d3343cb70ad757d472d80622e1a7c5982fd9",
+            "title": "FaceTracer: A Search Engine for Large Collections of Images with Faces"
+        },
+        {
+            "paperId": "c6b3ca4f939e36a9679a70e14ce8b1bbbc5618f3",
+            "title": "Labeled Faces in the Wild: A Database forStudying Face Recognition in Unconstrained Environments"
+        },
+        {
+            "paperId": "268a4f8da15a42f3e0e71691f760ff5edbf9cec8",
+            "title": "LIBLINEAR: A Library for Large Linear Classification"
+        },
+        {
+            "paperId": "46f30e94dd3d5902141c5fbe58d0bc9189545c76",
+            "title": "Dimensionality Reduction by Learning an Invariant Mapping"
+        },
+        {
+            "paperId": "de3ba2bb8638e3f35670993d8d63835c841a8c89",
+            "title": "Vector boosting for rotation invariant multi-view face detection"
+        },
+        {
+            "paperId": "e8b12467bdc20bde976750b8a28decdb33246d1d",
+            "title": "Histograms of oriented gradients for human detection"
+        },
+        {
+            "paperId": "f11a7136b6b7854bd0998ef463ffa8e907c411a2",
+            "title": "Multiresolution Gray-Scale and Rotation Invariant Texture Classification with Local Binary Patterns"
+        },
+        {
+            "paperId": "869171b2f56cfeaa9b81b2626cb4956fea590a57",
+            "title": "Modeling the Shape of the Scene: A Holistic Representation of the Spatial Envelope"
+        },
+        {
+            "paperId": "86ab4cae682fbd49c5a5bedb630e5a40fa7529f6",
+            "title": "Handwritten Digit Recognition with a Back-Propagation Network"
+        },
+        {
+            "paperId": null,
+            "title": "Figure 14. More examples of face localization by LNet"
+        },
+        {
+            "paperId": null,
+            "title": "Figure 14 More results of LNet averaged response maps. (Best viewed in color)"
+        }
+    ]
+}

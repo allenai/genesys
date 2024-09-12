@@ -1,0 +1,78 @@
+{
+    "paperId": "44ddac48353ead135eef4096859956eaa31be2a5",
+    "externalIds": {
+        "MAG": "2949231389",
+        "DBLP": "journals/corr/EigenRS13",
+        "ArXiv": "1312.4314",
+        "CorpusId": 11492613
+    },
+    "title": "Learning Factored Representations in a Deep Mixture of Experts",
+    "abstract": "Mixtures of Experts combine the outputs of several \"expert\" networks, each of which specializes in a different part of the input space. This is achieved by training a \"gating\" network that maps each input to a distribution over the experts. Such models show promise for building larger networks that are still cheap to compute at test time, and more parallelizable at training time. In this this work, we extend the Mixture of Experts to a stacked model, the Deep Mixture of Experts, with multiple sets of gating and experts. This exponentially increases the number of effective experts by associating each input with a combination of experts at each layer, yet maintains a modest model size. On a randomly translated version of the MNIST dataset, we find that the Deep Mixture of Experts automatically learns to develop location-dependent (\"where\") experts at the first layer, and class-specific (\"what\") experts at the second layer. In addition, we see that the different combinations are in use when the model is applied to a dataset of speech monophones. These demonstrate effective use of all expert combinations.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2013,
+    "referenceCount": 10,
+    "citationCount": 303,
+    "influentialCitationCount": 20,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Mixtures of Experts is extended to a stacked model, the Deep Mixture of Experts, with multiple sets of gating and experts, which exponentially increases the number of effective experts by associating each input with a combination of experts at each layer, yet maintains a modest model size."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2060028",
+            "name": "D. Eigen"
+        },
+        {
+            "authorId": "1706809",
+            "name": "Marc'Aurelio Ranzato"
+        },
+        {
+            "authorId": "1701686",
+            "name": "I. Sutskever"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "62c76ca0b2790c34e85ba1cce09d47be317c7235",
+            "title": "Estimating or Propagating Gradients Through Stochastic Neurons for Conditional Computation"
+        },
+        {
+            "paperId": "72d32c986b47d6b880dad0c3f155fe23d2939038",
+            "title": "Deep Learning of Representations: Looking Forward"
+        },
+        {
+            "paperId": "4177ec52d1b80ed57f2e72b0f9a42365f1a8598d",
+            "title": "Speech recognition with deep recurrent neural networks"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "7bb0f5f20883db8c69b53ba4e52eded325b25f43",
+            "title": "Scaling Large Learning Problems with Hard Parallel Mixtures"
+        },
+        {
+            "paperId": "f6d8a7fc2e2d53923832f9404376512068ca2a57",
+            "title": "Hierarchical Mixtures of Experts and the EM Algorithm"
+        },
+        {
+            "paperId": "c8d90974c3f3b40fa05e322df2905fc16204aa56",
+            "title": "Adaptive Mixtures of Local Experts"
+        },
+        {
+            "paperId": "a4eb9f4fad5c5a1935c6d0532e2c765ee29b0b37",
+            "title": "Application of Pretrained Deep Neural Networks to Large Vocabulary Speech Recognition"
+        },
+        {
+            "paperId": "0fe51325d0ad3ab7b774fe07043bc6d36e24f66f",
+            "title": "Products of Experts"
+        },
+        {
+            "paperId": "5a47ba057a858f8c024d2518cc3731fc7eb40de1",
+            "title": "Proceedings of the Twenty-Second International Joint Conference on Artificial Intelligence Flexible, High Performance Convolutional Neural Networks for Image Classification"
+        }
+    ]
+}

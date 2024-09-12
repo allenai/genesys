@@ -1,0 +1,229 @@
+{
+    "paperId": "5418b86c85c662f76f3e69da922f53a03d2ec3c3",
+    "externalIds": {
+        "MAG": "2074772891",
+        "DBLP": "conf/icsipa/NagiDCCMGNSG11",
+        "DOI": "10.1109/ICSIPA.2011.6144164",
+        "CorpusId": 3333436
+    },
+    "title": "Max-pooling convolutional neural networks for vision-based hand gesture recognition",
+    "abstract": "Automatic recognition of gestures using computer vision is important for many real-world applications such as sign language recognition and human-robot interaction (HRI). Our goal is a real-time hand gesture-based HRI interface for mobile robots. We use a state-of-the-art big and deep neural network (NN) combining convolution and max-pooling (MPCNN) for supervised feature learning and classification of hand gestures given by humans to mobile robots using colored gloves. The hand contour is retrieved by color segmentation, then smoothened by morphological image processing which eliminates noisy edges. Our big and deep MPCNN classifies 6 gesture classes with 96% accuracy, nearly three times better than the nearest competitor. Experiments with mobile robots using an ARM 11 533MHz processor achieve real-time gesture recognition performance.",
+    "venue": "International Conference on Signal and Image Processing Applications",
+    "year": 2011,
+    "referenceCount": 41,
+    "citationCount": 550,
+    "influentialCitationCount": 19,
+    "openAccessPdf": {
+        "url": "http://www.idsia.ch/~juergen/icsipa2011.pdf",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work uses a state-of-the-art big and deep neural network combining convolution and max-pooling for supervised feature learning and classification of hand gestures given by humans to mobile robots using colored gloves."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3022882",
+            "name": "J. Nagi"
+        },
+        {
+            "authorId": "2241989",
+            "name": "F. Ducatelle"
+        },
+        {
+            "authorId": "1744127",
+            "name": "G. D. Caro"
+        },
+        {
+            "authorId": "1895356",
+            "name": "D. Ciresan"
+        },
+        {
+            "authorId": "2514691",
+            "name": "U. Meier"
+        },
+        {
+            "authorId": "33354551",
+            "name": "A. Giusti"
+        },
+        {
+            "authorId": "2242640",
+            "name": "F. Nagi"
+        },
+        {
+            "authorId": "145341374",
+            "name": "J. Schmidhuber"
+        },
+        {
+            "authorId": "6803671",
+            "name": "L. Gambardella"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "3c9f71df97690ff712eb3b55b5d0b89bea5f9ed3",
+            "title": "Vision Based Hand Gesture Recognition"
+        },
+        {
+            "paperId": "f86c3a57ab79116c5034965e5f83d2f83c1c6238",
+            "title": "Intelligent Approaches to interact with Machines using Hand Gesture Recognition in Natural way: A Survey"
+        },
+        {
+            "paperId": "3053d57a47c3041b82821911dd16147bfdac1eab",
+            "title": "Vision-based hand-gesture applications"
+        },
+        {
+            "paperId": "05cc38e249a6f642363b5a5cbd71cda67cea5893",
+            "title": "Tiled convolutional neural networks"
+        },
+        {
+            "paperId": "48bf19de8a65d0b9f8feeec1a8c8f7ed8302a6bf",
+            "title": "Invariant moment based feature analysis for abnormal erythrocyte recognition"
+        },
+        {
+            "paperId": "046c13f43c482d9a769f4a6f9bd7b48c52543811",
+            "title": "Survey on Various Gesture Recognition Techniques for Interfacing Machines Based on Ambient Intelligence"
+        },
+        {
+            "paperId": "5677e80cd3f3924ff4bbade111d012c313b15d86",
+            "title": "Human Tracking Using Convolutional Neural Networks"
+        },
+        {
+            "paperId": "809727e00eab5e4546abc2863739c2ab9bc95ecc",
+            "title": "Research on Image Recognition Based on Invariant Moment and SVM"
+        },
+        {
+            "paperId": "5d21006fa32ff69f6b0a646f26ce0db84f2f4d33",
+            "title": "Evaluation of Pooling Operations in Convolutional Architectures for Object Recognition"
+        },
+        {
+            "paperId": "c43025c429b1fbf6f1379f61801a1b40834d62e7",
+            "title": "Convolutional networks and applications in vision"
+        },
+        {
+            "paperId": "0591640b93541e677a3f1df8295965d82bcc7ecf",
+            "title": "Comparative evaluation of static gesture recognition techniques based on nearest neighbor, neural networks and support vector machines"
+        },
+        {
+            "paperId": "db0c1d03b24396f0916e56ac78b663f2ca132c64",
+            "title": "Nontechnical Loss Detection for Metered Customers in Power Utility Using Support Vector Machines"
+        },
+        {
+            "paperId": "a186005c8a6487d1695acedb0b650f8c3746d879",
+            "title": "Hand shape and hand gesture recognition"
+        },
+        {
+            "paperId": "865661950404d6ff8a040c3f8318468c7644a65d",
+            "title": "An Automatic Hand Gesture Recognition System Based on Viola-Jones Method and SVMs"
+        },
+        {
+            "paperId": "7d34193347b5db8516ec0b750787693c0a45780b",
+            "title": "Hand Gesture Recognition Based on MEB-SVM"
+        },
+        {
+            "paperId": "ec58358b3309455526ff2536366e7c5fbd032e81",
+            "title": "Static Hand Gesture Recognition and its Application based on Support Vector Machines"
+        },
+        {
+            "paperId": "5127c77f75c914c34c4b148ef92f541505c8762e",
+            "title": "Translation and scale-invariant gesture recognition in complex scenes"
+        },
+        {
+            "paperId": "8f814d88eb2a29cc1165d87d12f3f6ecbabf9c19",
+            "title": "The effect of colour space on tracking robustness"
+        },
+        {
+            "paperId": "76e103d9906304c19e8c39a732572cc111c8a4bc",
+            "title": "Design and Control of Five-Fingered Haptic Interface Opposite to Human Hand"
+        },
+        {
+            "paperId": "ce6cb83e7086ef2b809f853c0ae25897e4986500",
+            "title": "Hand Gesture Recognition Using Fast Multi-scale Analysis"
+        },
+        {
+            "paperId": "7eda890c0d5a3ec48494791deca376d1b0464158",
+            "title": "An Improved Method of Wavelets Basis Image Denoising Using Besov Norm Regularization"
+        },
+        {
+            "paperId": "4d1ab8a8492def9fa591a2b5f028e6aa2e4fc9a7",
+            "title": "Shape Recognition Based on Skeleton and Support Vector Machines"
+        },
+        {
+            "paperId": "9575afa2a6bf6fb005fde5cc1168ac9893fd362b",
+            "title": "Finger identification and hand posture recognition for human-robot interaction"
+        },
+        {
+            "paperId": "b98c68f01d84ac07dc7fc51af782018070da748f",
+            "title": "Representing shape with a spatial pyramid kernel"
+        },
+        {
+            "paperId": "22bd2cbb3fca6980ee11086b63c3a51f214d8a99",
+            "title": "A real-time hand gesture recognition method"
+        },
+        {
+            "paperId": "bcaea04cc8d543dca493f573b61d4fe0495de229",
+            "title": "Canonical Skeletons for Shape Matching"
+        },
+        {
+            "paperId": "6dbaff29d3898cf60f63f5a34cb9610ebb75220c",
+            "title": "Beyond Bags of Features: Spatial Pyramid Matching for Recognizing Natural Scene Categories"
+        },
+        {
+            "paperId": "d7c7c9e98e45e1c1d73090f6486479c67adaeea8",
+            "title": "Hand Posture Recognition in Gesture-Based Human-Robot Interaction"
+        },
+        {
+            "paperId": "bb6b78b51a1865c0a9364efb40716043116f445c",
+            "title": "A Fast Algorithm for Vision-Based Hand Gesture Recognition for Robot Control"
+        },
+        {
+            "paperId": "e8b12467bdc20bde976750b8a28decdb33246d1d",
+            "title": "Histograms of oriented gradients for human detection"
+        },
+        {
+            "paperId": "f354310098e09c1e1dc88758fca36767fd9d084d",
+            "title": "Learning methods for generic object recognition with invariance to pose and lighting"
+        },
+        {
+            "paperId": "59fe0f477f81a8671956b8d1363bdc06ae8b08b3",
+            "title": "Vision-Based Gesture Recognition: A Review"
+        },
+        {
+            "paperId": "f729cc907336b4d1339b5b0af0c3fa93790ff61c",
+            "title": "Evaluation of convolutional neural networks for visual recognition"
+        },
+        {
+            "paperId": "6f20e254e3993538c79e0ff2b9b8f198d3359cb3",
+            "title": "Receptive fields of single neurones in the cat's striate cortex"
+        },
+        {
+            "paperId": "76e120ac67923f05b6f39ec791b3f51fab624772",
+            "title": "2011 IEEE International Conference on Signal and Image Processing Applications, ICSIPA 2011, Kuala Lumpur, Malaysia, November 16-18, 2011"
+        },
+        {
+            "paperId": null,
+            "title": "An analisys of features for handgesture classification"
+        },
+        {
+            "paperId": "836dd170045a02a1d20a22c13ed89ed02b203e70",
+            "title": "A REVIEW OF VISION BASED HAND GESTURES RECOGNITION"
+        },
+        {
+            "paperId": "31d29053019e89f621f60a0b488d3ae7ab73aa42",
+            "title": "Published by: IRIDIA, Institut de Recherches Interdisciplinaires et de D\u00e9veloppements en Intelligence Artificielle"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "6b4fe4aa4d66fecc7b2869569002714d91d0b3f7",
+            "title": "Receptive fields, binocular interaction and functional architecture in the cat's visual cortex"
+        },
+        {
+            "paperId": "5a47ba057a858f8c024d2518cc3731fc7eb40de1",
+            "title": "Proceedings of the Twenty-Second International Joint Conference on Artificial Intelligence Flexible, High Performance Convolutional Neural Networks for Image Classification"
+        }
+    ]
+}

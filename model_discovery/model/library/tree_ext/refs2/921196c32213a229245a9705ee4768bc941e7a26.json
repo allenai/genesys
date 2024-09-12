@@ -1,0 +1,374 @@
+{
+    "paperId": "921196c32213a229245a9705ee4768bc941e7a26",
+    "externalIds": {
+        "MAG": "2792764867",
+        "DBLP": "journals/corr/abs-1803-01271",
+        "ArXiv": "1803.01271",
+        "CorpusId": 4747877
+    },
+    "title": "An Empirical Evaluation of Generic Convolutional and Recurrent Networks for Sequence Modeling",
+    "abstract": "For most deep learning practitioners, sequence modeling is synonymous with recurrent networks. Yet recent results indicate that convolutional architectures can outperform recurrent networks on tasks such as audio synthesis and machine translation. Given a new sequence modeling task or dataset, which architecture should one use? We conduct a systematic evaluation of generic convolutional and recurrent architectures for sequence modeling. The models are evaluated across a broad range of standard tasks that are commonly used to benchmark recurrent networks. Our results indicate that a simple convolutional architecture outperforms canonical recurrent networks such as LSTMs across a diverse range of tasks and datasets, while demonstrating longer effective memory. We conclude that the common association between sequence modeling and recurrent networks should be reconsidered, and convolutional networks should be regarded as a natural starting point for sequence modeling tasks. To assist related work, we have made code available at this http URL .",
+    "venue": "arXiv.org",
+    "year": 2018,
+    "referenceCount": 84,
+    "citationCount": 3938,
+    "influentialCitationCount": 569,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A systematic evaluation of generic convolutional and recurrent architectures for sequence modeling concludes that the common association between sequence modeling and recurrent networks should be reconsidered, and convolutionals should be regarded as a natural starting point for sequence modeled tasks."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "35836381",
+            "name": "Shaojie Bai"
+        },
+        {
+            "authorId": "145116464",
+            "name": "J. Z. Kolter"
+        },
+        {
+            "authorId": "145231047",
+            "name": "V. Koltun"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "ef9ddbc35676ce8ffc2a8067044473727839dbac",
+            "title": "Breaking the Softmax Bottleneck: A High-Rank RNN Language Model"
+        },
+        {
+            "paperId": "2dad7e558a1e2982d0d42042021f4cde4af04abf",
+            "title": "Dilated Recurrent Neural Networks"
+        },
+        {
+            "paperId": "ae8d5be3caea59a21221f02ef04d49a86cb80191",
+            "title": "Skip RNN: Learning to Skip State Updates in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "58c6f890a1ae372958b7decf56132fe258152722",
+            "title": "Regularizing and Optimizing LSTM Language Models"
+        },
+        {
+            "paperId": "2397ce306e5d7f3d0492276e357fb1833536b5d8",
+            "title": "On the State of the Art of Evaluation in Neural Language Models"
+        },
+        {
+            "paperId": "718e1b453fe9dce79458e0db035091db603775fb",
+            "title": "Deep Pyramid Convolutional Neural Networks for Text Categorization"
+        },
+        {
+            "paperId": "43428880d75b3a14257c3ee9bda054e61eb869c0",
+            "title": "Convolutional Sequence to Sequence Learning"
+        },
+        {
+            "paperId": "510b2cfe177db4438134ee3092c5efe25a25d757",
+            "title": "Diagonal rnns in symbolic music modeling"
+        },
+        {
+            "paperId": "f52b48a988489ed4d1c53f98e77aa34669547a94",
+            "title": "Comparative Study of CNN and RNN for Natural Language Processing"
+        },
+        {
+            "paperId": "88caa4a0253a8b0076176745ebc072864eab66e1",
+            "title": "Language Modeling with Gated Convolutional Networks"
+        },
+        {
+            "paperId": "1d782819afafe0d391e5b67151cb510e621f243d",
+            "title": "Tunable Efficient Unitary Neural Networks (EUNN) and their application to RNNs"
+        },
+        {
+            "paperId": "210f258524deabc3d08cbbea4e4ca5c2a98f4846",
+            "title": "Temporal Convolutional Networks for Action Segmentation and Detection"
+        },
+        {
+            "paperId": "f958d4921951e394057a1c4ec33bad9a34e5dad1",
+            "title": "A Convolutional Encoder Model for Neural Machine Translation"
+        },
+        {
+            "paperId": "2d876ed1dd2c58058d7197b734a8e4d349b8f231",
+            "title": "Quasi-Recurrent Neural Networks"
+        },
+        {
+            "paperId": "2d7782c225e0fc123d6e227f2cb253e58279ac73",
+            "title": "Improving Neural Language Models with a Continuous Cache"
+        },
+        {
+            "paperId": "79c78c98ea317ba8cdf25a9783ef4b8a7552db75",
+            "title": "Full-Capacity Unitary Recurrent Neural Networks"
+        },
+        {
+            "paperId": "98445f4172659ec5e891e031d8202c102135c644",
+            "title": "Neural Machine Translation in Linear Time"
+        },
+        {
+            "paperId": "563783de03452683a9206e85fe6d661714436686",
+            "title": "HyperNetworks"
+        },
+        {
+            "paperId": "efbd381493bb9636f489b965a2034d529cd56bcd",
+            "title": "Pointer Sentinel Mixture Models"
+        },
+        {
+            "paperId": "df0402517a7338ae28bc54acaac400de6b456a46",
+            "title": "WaveNet: A Generative Model for Raw Audio"
+        },
+        {
+            "paperId": "65eee67dee969fdf8b44c87c560d66ad4d78e233",
+            "title": "Hierarchical Multiscale Recurrent Neural Networks"
+        },
+        {
+            "paperId": "63e39cdf1ad884da6bc69096bb3413b5b1100559",
+            "title": "Using the Output Embedding to Improve Language Models"
+        },
+        {
+            "paperId": "97fb4e3d45bb098e27e0071448b6152217bd35a5",
+            "title": "Layer Normalization"
+        },
+        {
+            "paperId": "136cf66392f1d6bf42da4cc070888996dc472b91",
+            "title": "On Multiplicative Integration with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "5ed791f810da580c78df6a052c6b9f2e258f6b0a",
+            "title": "The LAMBADA dataset: Word prediction requiring a broad discourse context"
+        },
+        {
+            "paperId": "f797fd44b9ddd5845611eb7a705ca9464a8819d1",
+            "title": "Very Deep Convolutional Networks for Text Classification"
+        },
+        {
+            "paperId": "58001259d2f6442b07cc0d716ff99899abbb2bc7",
+            "title": "Gated Word-Character Recurrent Language Model"
+        },
+        {
+            "paperId": "9f0687bcd0a7d7fc91b8c5d36c003a38b8853105",
+            "title": "Zoneout: Regularizing RNNs by Randomly Preserving Hidden Activations"
+        },
+        {
+            "paperId": "952454718139dba3aafc6b3b67c4f514ac3964af",
+            "title": "Recurrent Batch Normalization"
+        },
+        {
+            "paperId": "f6fda11d2b31ad66dd008a65f7e708aa64a27703",
+            "title": "Architectural Complexity Measures of Recurrent Neural Networks"
+        },
+        {
+            "paperId": "3d2c6941a9b4608ba52b328369a3352db2092ae0",
+            "title": "Weight Normalization: A Simple Reparameterization to Accelerate Training of Deep Neural Networks"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "f84d5add20d4df0a6c89c47a920354c272cbdbd8",
+            "title": "Regularizing RNNs by Stabilizing Activations"
+        },
+        {
+            "paperId": "7f5fc84819c0cf94b771fe15141f65b123f7b8ec",
+            "title": "Multi-Scale Context Aggregation by Dilated Convolutions"
+        },
+        {
+            "paperId": "e9c771197a6564762754e48c1daafb066f449f2e",
+            "title": "Unitary Evolution Recurrent Neural Networks"
+        },
+        {
+            "paperId": "ab86eba89175276dd5d5ee55269843dbec2ec408",
+            "title": "Modeling temporal dependencies in data using a DBN-LSTM"
+        },
+        {
+            "paperId": "51a55df1f023571a7e07e338ee45a3e3d66ef73e",
+            "title": "Character-level Convolutional Networks for Text Classification"
+        },
+        {
+            "paperId": "5b8364c21155d3d2cd38ea4c8b8580beba9a3250",
+            "title": "An Empirical Exploration of Recurrent Network Architectures"
+        },
+        {
+            "paperId": "f9c990b1b5724e50e5632b94fdb7484ece8a6ce7",
+            "title": "Convolutional LSTM Network: A Machine Learning Approach for Precipitation Nowcasting"
+        },
+        {
+            "paperId": "d46b81707786d18499f911b4ab72bb10c65406ba",
+            "title": "A Simple Way to Initialize Recurrent Networks of Rectified Linear Units"
+        },
+        {
+            "paperId": "a7976c2bacfbb194ddbe7fd10c2e50a545cf4081",
+            "title": "LSTM: A Search Space Odyssey"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "ac3ee98020251797c2b401e1389461df88e52e62",
+            "title": "Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling"
+        },
+        {
+            "paperId": "fbf417c83ae5b895fc645346e4efbf3a0aabeac9",
+            "title": "Effective Use of Word Order for Text Categorization with Convolutional Neural Networks"
+        },
+        {
+            "paperId": "6fc6803df5f9ae505cae5b2f178ade4062c768d0",
+            "title": "Fully convolutional networks for semantic segmentation"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "1eb09fecd75eb27825dce4f964b97f4f5cc399d7",
+            "title": "On the Properties of Neural Machine Translation: Encoder\u2013Decoder Approaches"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "1f6ba0782862ec12a5ec6d7fb608523d55b0c6ba",
+            "title": "Convolutional Neural Networks for Sentence Classification"
+        },
+        {
+            "paperId": "f70391f9a6aeec75bc52b9fe38588b9d0b4d40c6",
+            "title": "Learning Character-level Representations for Part-of-Speech Tagging"
+        },
+        {
+            "paperId": "27725a2d2a8cee9bf9fffc6c2167017103aba0fa",
+            "title": "A Convolutional Neural Network for Modelling Sentences"
+        },
+        {
+            "paperId": "5522764282c85aea422f1c4dc92ff7e0ca6987bc",
+            "title": "A Clockwork RNN"
+        },
+        {
+            "paperId": "533ee188324b833e059cb59b654e6160776d5812",
+            "title": "How to Construct Deep Recurrent Neural Networks"
+        },
+        {
+            "paperId": "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17",
+            "title": "Generating Sequences With Recurrent Neural Networks"
+        },
+        {
+            "paperId": "84069287da0a6b488b8c933f3cb5be759cb6237e",
+            "title": "On the difficulty of training recurrent neural networks"
+        },
+        {
+            "paperId": "07c43a3ff15f2104022f2b1ca8ec4128a930b414",
+            "title": "Modeling Temporal Dependencies in High-Dimensional Sequences: Application to Polyphonic Music Generation and Transcription"
+        },
+        {
+            "paperId": "a97b5db17acc731ef67321832dbbaf5766153135",
+            "title": "Supervised Sequence Labelling with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "0d6203718c15f137fda2f295c96269bc2b254644",
+            "title": "Learning Recurrent Neural Networks with Hessian-Free Optimization"
+        },
+        {
+            "paperId": "93c20e38c85b69fc2d2eb314b3c1217913f7db11",
+            "title": "Generating Text with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "bc1022b031dc6c7019696492e8116598097a8c12",
+            "title": "Natural Language Processing (Almost) from Scratch"
+        },
+        {
+            "paperId": "a538b05ebb01a40323997629e171c91aa28b8e2f",
+            "title": "Rectified Linear Units Improve Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": "57458bc1cffe5caa45a885af986d70f723f406b4",
+            "title": "A unified architecture for natural language processing: deep neural networks with multitask learning"
+        },
+        {
+            "paperId": "0f3bd4e6b16817e332b9be8357e3eddb8a461990",
+            "title": "Harmonising Chorales by Probabilistic Inference"
+        },
+        {
+            "paperId": "047655e733a9eed9a500afd916efa566915b9110",
+            "title": "Learning Precise Timing with LSTM Recurrent Networks"
+        },
+        {
+            "paperId": "e23c34414e66118ecd9b08cf0cd4d016f59b0b85",
+            "title": "Bidirectional recurrent neural networks"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "b13813b49f160e1a2010c44bd4fb3d09a28446e3",
+            "title": "Hierarchical Recurrent Neural Networks for Long-Term Dependencies"
+        },
+        {
+            "paperId": "d0be39ee052d246ae99c082a565aba25b811be2d",
+            "title": "Learning long-term dependencies with gradient descent is difficult"
+        },
+        {
+            "paperId": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+            "title": "Building a Large Annotated Corpus of English: The Penn Treebank"
+        },
+        {
+            "paperId": "1a3d22599028a05669e884f3eaf19a342e190a87",
+            "title": "Backpropagation Through Time: What It Does and How to Do It"
+        },
+        {
+            "paperId": "830a0c617b99a2cd39517f699fe376442c662816",
+            "title": "Speaker-independent isolated digit recognition: Multilayer perceptrons vs. Dynamic time warping"
+        },
+        {
+            "paperId": "668087f0ae7ce1de6e0bd0965dbb480c08103260",
+            "title": "Finding Structure in Time"
+        },
+        {
+            "paperId": "a8e8f3c8d4418c8d62e306538c9c1292635e9d27",
+            "title": "Backpropagation Applied to Handwritten Zip Code Recognition"
+        },
+        {
+            "paperId": "a57c6d627ffc667ae3547073876c35d6420accff",
+            "title": "Connectionist Learning Procedures"
+        },
+        {
+            "paperId": "cd62c9976534a6a2096a38244f6cbb03635a127e",
+            "title": "Phoneme recognition using time-delay neural networks"
+        },
+        {
+            "paperId": null,
+            "title": "Sequence Models (Course 5 of Deep Learning Specialization)"
+        },
+        {
+            "paperId": null,
+            "title": "2017). We have chosen not to use gating in the generic TCN model"
+        },
+        {
+            "paperId": null,
+            "title": "RMSprop, Adagrad}. For certain larger datasets, we adopted the settings used in prior work (e.g., Grave et al. (2017) on Wikitext-103)"
+        },
+        {
+            "paperId": "4f8d648c52edf74e41b0996128aa536e13cc7e82",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "b0b33aaed1d408d04fadf9ff2a080e47ef8cb7b1",
+            "title": "Training and Analysing Deep Recurrent Neural Networks"
+        },
+        {
+            "paperId": "1fd7fc06653723b05abe5f3d1de393ddcf6bdddb",
+            "title": "SUBWORD LANGUAGE MODELING WITH NEURAL NETWORKS"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "de996c32045df6f7b404dda2a753b6a9becf3c08",
+            "title": "Parallel Networks that Learn to Pronounce English Text"
+        }
+    ]
+}

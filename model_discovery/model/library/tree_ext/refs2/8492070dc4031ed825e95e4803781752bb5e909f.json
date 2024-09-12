@@ -1,0 +1,246 @@
+{
+    "paperId": "8492070dc4031ed825e95e4803781752bb5e909f",
+    "externalIds": {
+        "ACL": "P10-1040",
+        "MAG": "2158139315",
+        "DBLP": "conf/acl/TurianRB10",
+        "CorpusId": 629094
+    },
+    "title": "Word Representations: A Simple and General Method for Semi-Supervised Learning",
+    "abstract": "If we take an existing supervised NLP system, a simple and general way to improve accuracy is to use unsupervised word representations as extra word features. We evaluate Brown clusters, Collobert and Weston (2008) embeddings, and HLBL (Mnih & Hinton, 2009) embeddings of words on both NER and chunking. We use near state-of-the-art supervised baselines, and find that each of the three word representations improves the accuracy of these baselines. We find further improvements by combining different word representations. You can download our word features, for off-the-shelf use in existing NLP systems, as well as our code, here: http://metaoptimize.com/projects/wordreprs/",
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2010,
+    "referenceCount": 52,
+    "citationCount": 2292,
+    "influentialCitationCount": 156,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work evaluates Brown clusters, Collobert and Weston (2008) embeddings, and HLBL (Mnih & Hinton, 2009) embeds of words on both NER and chunking, and finds that each of the three word representations improves the accuracy of these baselines."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "153160559",
+            "name": "Joseph P. Turian"
+        },
+        {
+            "authorId": "2335225",
+            "name": "Lev-Arie Ratinov"
+        },
+        {
+            "authorId": "1751762",
+            "name": "Yoshua Bengio"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "475fbc07ed00c02e14180c33b56b8df6f129c828",
+            "title": "From Baby Steps to Leapfrog: How \u201cLess is More\u201d in Unsupervised Dependency Parsing"
+        },
+        {
+            "paperId": "83a6cacc126d85c45605797406262677c256a6af",
+            "title": "Software Framework for Topic Modelling with Large Corpora"
+        },
+        {
+            "paperId": "3a0e788268fafb23ab20da0e98bb578b06830f7d",
+            "title": "From Frequency to Meaning: Vector Space Models of Semantics"
+        },
+        {
+            "paperId": "a602f612af13e80296a674b86ce91842f13447a2",
+            "title": "Improving generative statistical parsing with semi-supervised word clustering"
+        },
+        {
+            "paperId": "b47f0211778a2b84202bd5e0ac6003dd1909274d",
+            "title": "An Empirical Study of Semi-supervised Structured Conditional Models for Dependency Parsing"
+        },
+        {
+            "paperId": "ae29b936d437a93ad259ee008ba56fe82ab4db61",
+            "title": "Semi-supervised Semantic Role Labeling Using the Latent Words Language Model"
+        },
+        {
+            "paperId": "c8c007a5d86caa2fc77f186bae974b9af39428f1",
+            "title": "Distributional Representations for Handling Sparsity in Supervised Sequence-Labeling"
+        },
+        {
+            "paperId": "b5e12de7d3f2a66bfcf10a510f9ac80afb3541c1",
+            "title": "Phrase Clustering for Discriminative Learning"
+        },
+        {
+            "paperId": "8de174ab5419b9d3127695405efd079808e956e8",
+            "title": "Curriculum learning"
+        },
+        {
+            "paperId": "aa9efc8b2737eac0675ba5abb5feab8305482c12",
+            "title": "Design Challenges and Misconceptions in Named Entity Recognition"
+        },
+        {
+            "paperId": "a5196dfc949cf73ddaa5d66a43b8a212f4476377",
+            "title": "Multilingual Dependency Learning: A Huge Feature Engineering Method to Semantic Dependency Parsing"
+        },
+        {
+            "paperId": "f120ea4eca8a7d96ddb4e5073198e67f4a50d854",
+            "title": "Enhancing Unlexicalized Parsing Performance Using a Wide Coverage Lexicon, Fuzzy Tag-Set Mapping, and EM-HMM-Based Lexical Probabilities"
+        },
+        {
+            "paperId": "a9fc84f8abe740cdc7ee82e69444d1d00dbe0ceb",
+            "title": "A Scalable Hierarchical Distributed Language Model"
+        },
+        {
+            "paperId": "57458bc1cffe5caa45a885af986d70f723f406b4",
+            "title": "A unified architecture for natural language processing: deep neural networks with multitask learning"
+        },
+        {
+            "paperId": "7ece4e8d31f872d928369ac2cf58a616a7182112",
+            "title": "Semi-Supervised Sequential Labeling and Segmentation Using Giga-Word Scale Unlabeled Data"
+        },
+        {
+            "paperId": "790ecefeaf2b471b439743a772ccce026131bef5",
+            "title": "Simple Semi-supervised Dependency Parsing"
+        },
+        {
+            "paperId": "98449bcf80e52e0e902efd288b68c701d5392099",
+            "title": "Neural net language models"
+        },
+        {
+            "paperId": "bd7d93193aad6c4b71cc8942e808753019e87706",
+            "title": "Three new graphical models for statistical language modelling"
+        },
+        {
+            "paperId": "a2e65df02ae308402a6376dce0a2970bfb4980c3",
+            "title": "An Effective Two-Stage Model for Exploiting Non-Local Dependencies in Named Entity Recognition"
+        },
+        {
+            "paperId": "3ef1b0469b43acc8ede2e56d8f001ad090b04826",
+            "title": "An Introduction to Random Indexing"
+        },
+        {
+            "paperId": "b89926ec5f0046f3a5671d8e68c918ab9cac76fd",
+            "title": "Semi-Supervised Sequence Modeling with Syntactic Topic Models"
+        },
+        {
+            "paperId": "b4299baa815ca5a815a70fba94a9f6f2b42fff19",
+            "title": "A High-Performance Semi-Supervised Learning Method for Text Chunking"
+        },
+        {
+            "paperId": "7d841f9b1428817aa4044a1e5a942850763c17b2",
+            "title": "Comparison of Independent Component Analysis and Singular Value Decomposition in Word Context Analysis"
+        },
+        {
+            "paperId": "1d9575ade8c91e1f676b2ce7be68d45aa6008245",
+            "title": "Discard"
+        },
+        {
+            "paperId": "207df123e3c24e6e25019d4b86f8efaad5d6f13c",
+            "title": "A Robust Risk Minimization based Named Entity Recognition System"
+        },
+        {
+            "paperId": "897249c93f55ef1c0d2aa1e799eb67b414c6d4a6",
+            "title": "Shallow Parsing with Conditional Random Fields"
+        },
+        {
+            "paperId": "6c2b28f9354f667cd5bd07afc0471d8334430da7",
+            "title": "A Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "e41498c05d4c68e4750fb84a380317a112d97b01",
+            "title": "Connectionist language modeling for large vocabulary continuous speech recognition"
+        },
+        {
+            "paperId": "9e85832b04cc3700c2c26d6ba93fdeae39cac04a",
+            "title": "Introduction to the CoNLL-2000 Shared Task Chunking"
+        },
+        {
+            "paperId": "0e2987872ddc1ba9516aed3f85f8b4b9cf0125fb",
+            "title": "Dimensionality reduction by random mapping: fast similarity computation for clustering"
+        },
+        {
+            "paperId": "f9ae560989977602d546072f91105fa73e41ddc3",
+            "title": "Hierarchical Clustering of Words"
+        },
+        {
+            "paperId": "c7093913b4daa0f34d9d58a41ceb0475cc3cc9f4",
+            "title": "Producing high-dimensional semantic spaces from lexical co-occurrence"
+        },
+        {
+            "paperId": "2e6dd008f2837dea054cd968ae6a50325809833d",
+            "title": "Algorithms for bigram and trigram word clustering"
+        },
+        {
+            "paperId": "d5ddb30bf421bdfdf728b636993dc48b1e879176",
+            "title": "Learning and development in neural networks: the importance of starting small"
+        },
+        {
+            "paperId": "3de5d40b60742e3dfa86b19e7f660962298492af",
+            "title": "Class-Based n-gram Models of Natural Language"
+        },
+        {
+            "paperId": "7e6429291b65b4984a461350f7a07a3af1af7029",
+            "title": "Self-organizing semantic maps"
+        },
+        {
+            "paperId": "11d0506eb9739cfbcc5742d0f5c38cd6f4d96f5f",
+            "title": "Using latent semantic analysis to improve access to textual information"
+        },
+        {
+            "paperId": "1fb11eca39c0edab06c046d6e09d9e1331e5b7bf",
+            "title": "A preliminary evaluation of word representations for named-entity recognition"
+        },
+        {
+            "paperId": "4574d77fff19e093782178595a8988a7f3aa1969",
+            "title": "Latent Dirichlet Allocation"
+        },
+        {
+            "paperId": "3eafadaa0d2e6cab6ec52ca1112de882dba221cf",
+            "title": "Towards explicit semantic features using independent component analysis"
+        },
+        {
+            "paperId": "4996835ae239edc4d213940bfefa6d2c7e0ffbcd",
+            "title": "The Word-Space Model: using distributional analysis to represent syntagmatic and paradigmatic relations between words in high-dimensional vector spaces"
+        },
+        {
+            "paperId": "c19fbefdeead6a4154a22a9c8551a18b1530033a",
+            "title": "Hierarchical Probabilistic Neural Network Language Model"
+        },
+        {
+            "paperId": "31b4c03d721dc10b87c178277c1d369f91db8f0e",
+            "title": "Semi-Supervised Learning for Natural Language"
+        },
+        {
+            "paperId": "ad269ba941949a1d66b6649a71d752784c576dc3",
+            "title": "Name Tagging with Word Clusters and Discriminative Training"
+        },
+        {
+            "paperId": "2d0f229deedfed430a00849844f4e8185f67781f",
+            "title": "Word Category Maps based on Emergent Features Created by ICA"
+        },
+        {
+            "paperId": "6b388f0151ab37adb3d57738b8f52a3f943f86c8",
+            "title": "Quick Training of Probabilistic Neural Nets by Importance Sampling"
+        },
+        {
+            "paperId": "5cb2627c1700dfb47eec9ff32b295302a79f4ef6",
+            "title": "Vector-based semantic analysis: representing word meanings based on random labels"
+        },
+        {
+            "paperId": "582259e5d9cc29eb0148d6232c5579241f2c4f43",
+            "title": "An introduction to latent semantic analysis"
+        },
+        {
+            "paperId": "7e484b89f2cd66036fd61da24be560207711bf5d",
+            "title": "Self-Organizing Maps of Words for Natural Language Processing Applications"
+        },
+        {
+            "paperId": "06039258a0b7a5c50728cfa215cf44ea749c3203",
+            "title": "Contextual Relations of Words in Grimm Tales, Analyzed by Self-Organizing Map"
+        },
+        {
+            "paperId": null,
+            "title": "Semantic and associative priming in highdimensional semantic space"
+        },
+        {
+            "paperId": null,
+            "title": "Master's thesis, Massachusetts Institute of Technology"
+        }
+    ]
+}

@@ -1,0 +1,152 @@
+{
+    "paperId": "f15d89e3127bad5aefb620eb9c5359cf515d7194",
+    "externalIds": {
+        "MAG": "2795160845",
+        "DOI": "10.1155/2018/7987691",
+        "CorpusId": 54757104
+    },
+    "title": "A Hierarchical Neural-Network-Based Document Representation Approach for Text Classification",
+    "abstract": "Document representation is widely used in practical application, for example, sentiment classification, text retrieval, and text classification. Previous work is mainly based on the statistics and the neural networks, which suffer from data sparsity and model interpretability, respectively. In this paper, we propose a general framework for document representation with a hierarchical architecture. In particular, we incorporate the hierarchical architecture into three traditional neural-network models for document representation, resulting in three hierarchical neural representation models for document classification, that is, TextHFT, TextHRNN, and TextHCNN. Our comprehensive experimental results on two public datasets, that is, Yelp 2016 and Amazon Reviews (Electronics), show that our proposals with hierarchical architecture outperform the corresponding neural-network models for document classification, resulting in a significant improvement ranging from 4.65% to 35.08% in terms of accuracy with a comparable (or substantially less) expense of time consumption. In addition, we find that the long documents benefit more from the hierarchical architecture than the short ones as the improvement in terms of accuracy on long documents is greater than that on short documents.",
+    "venue": "",
+    "year": 2018,
+    "referenceCount": 27,
+    "citationCount": 15,
+    "influentialCitationCount": 0,
+    "openAccessPdf": {
+        "url": "http://downloads.hindawi.com/journals/mpe/2018/7987691.pdf",
+        "status": "GOLD"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The comprehensive experimental results show that the proposals with hierarchical architecture outperform the corresponding neural-network models for document classification, resulting in a significant improvement ranging from 4.65% to 35.08% in terms of accuracy with a comparable (or substantially less) expense of time consumption."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1832369910",
+            "name": "Jianming Zheng"
+        },
+        {
+            "authorId": "8280494",
+            "name": "Yupu Guo"
+        },
+        {
+            "authorId": "144579978",
+            "name": "Chong Feng"
+        },
+        {
+            "authorId": "2108476186",
+            "name": "Honghui Chen"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "91d61ddc4973fa84b83ab4307bdd8517b3c0bb5f",
+            "title": "Distributed Text Representation with Weighting Scheme Guidance for Sentiment Analysis"
+        },
+        {
+            "paperId": "892e53fe5cd39f037cb2a961499f42f3002595dd",
+            "title": "Bag of Tricks for Efficient Text Classification"
+        },
+        {
+            "paperId": "455afd748e8834ef521e4b67c7c056d3c33429e2",
+            "title": "Hierarchical Attention Networks for Document Classification"
+        },
+        {
+            "paperId": "e28ab7c3b994dd4e30baac1eb67c7f87e40c2b7b",
+            "title": "Recurrent Neural Network for Text Classification with Multi-Task Learning"
+        },
+        {
+            "paperId": "093131b5386b34b607bccee80b8994930d14cb9f",
+            "title": "Classification of Chinese Texts Based on Recognition of Semantic Topics"
+        },
+        {
+            "paperId": "51a55df1f023571a7e07e338ee45a3e3d66ef73e",
+            "title": "Character-level Convolutional Networks for Text Classification"
+        },
+        {
+            "paperId": "67c299c030ea82d80018d8aca8c1f609be97424c",
+            "title": "How to Generate a Good Word Embedding"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "7a701559d5e6e19b782ee555843796ac1ce5c1d0",
+            "title": "Word Embedding Composition for Data Imbalances in Sentiment and Emotion Classification"
+        },
+        {
+            "paperId": "e2e76a734f287bac46c15be9135ccdb8449688ba",
+            "title": "Sentiment-Specific Representation Learning for Document-Level Sentiment Analysis"
+        },
+        {
+            "paperId": "eba36ac75bf22edf9a1bfd33244d459c75b98305",
+            "title": "Recurrent Convolutional Neural Networks for Text Classification"
+        },
+        {
+            "paperId": "94da3e1719611d8316f3f83e82a9317374c1e4e9",
+            "title": "A Novel Calibrated Label Ranking Based Method for Multiple Emotions Detection in Chinese Microblogs"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "1f6ba0782862ec12a5ec6d7fb608523d55b0c6ba",
+            "title": "Convolutional Neural Networks for Sentence Classification"
+        },
+        {
+            "paperId": "2f5102ec3f70d0dea98c957cc2cab4d15d83a2da",
+            "title": "The Stanford CoreNLP Natural Language Processing Toolkit"
+        },
+        {
+            "paperId": "f3de86aeb442216a8391befcacb49e58b478f512",
+            "title": "Distributed Representations of Sentences and Documents"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "552df0475950af93cde5cbeecb0b21b372c23b3c",
+            "title": "Explicit and Implicit Syntactic Features for Text Classification"
+        },
+        {
+            "paperId": "f6b51c8753a871dc94ff32152c00c01e94f90f09",
+            "title": "Efficient Estimation of Word Representations in Vector Space"
+        },
+        {
+            "paperId": "84069287da0a6b488b8c933f3cb5be759cb6237e",
+            "title": "On the difficulty of training recurrent neural networks"
+        },
+        {
+            "paperId": "bc1022b031dc6c7019696492e8116598097a8c12",
+            "title": "Natural Language Processing (Almost) from Scratch"
+        },
+        {
+            "paperId": "ea9d2a2b4ce11aaf85136840c65f3bc9c03ab649",
+            "title": "Understanding the difficulty of training deep feedforward neural networks"
+        },
+        {
+            "paperId": "6c2b28f9354f667cd5bd07afc0471d8334430da7",
+            "title": "A Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "a351ffd1634b0930bd51ff225a8836e540269947",
+            "title": "Text Categorization with Support Vector Machines: Learning with Many Relevant Features"
+        },
+        {
+            "paperId": "b07f0f4553cfb42c0ed2bd6b07c9b22777b313d8",
+            "title": "An evaluation of phrasal and clustered representations on a text categorization task"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "5b474398231722ad317d6853b0cd11272de95ace",
+            "title": "Sparse multi-level representations for text retrieval"
+        }
+    ]
+}

@@ -1,0 +1,170 @@
+{
+    "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+    "externalIds": {
+        "MAG": "2133564696",
+        "ArXiv": "1409.0473",
+        "DBLP": "journals/corr/BahdanauCB14",
+        "CorpusId": 11212020
+    },
+    "title": "Neural Machine Translation by Jointly Learning to Align and Translate",
+    "abstract": "Neural machine translation is a recently proposed approach to machine translation. Unlike the traditional statistical machine translation, the neural machine translation aims at building a single neural network that can be jointly tuned to maximize the translation performance. The models proposed recently for neural machine translation often belong to a family of encoder-decoders and consists of an encoder that encodes a source sentence into a fixed-length vector from which a decoder generates a translation. In this paper, we conjecture that the use of a fixed-length vector is a bottleneck in improving the performance of this basic encoder-decoder architecture, and propose to extend this by allowing a model to automatically (soft-)search for parts of a source sentence that are relevant to predicting a target word, without having to form these parts as a hard segment explicitly. With this new approach, we achieve a translation performance comparable to the existing state-of-the-art phrase-based system on the task of English-to-French translation. Furthermore, qualitative analysis reveals that the (soft-)alignments found by the model agree well with our intuition.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2014,
+    "referenceCount": 33,
+    "citationCount": 25766,
+    "influentialCitationCount": 2485,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is conjecture that the use of a fixed-length vector is a bottleneck in improving the performance of this basic encoder-decoder architecture, and it is proposed to extend this by allowing a model to automatically (soft-)search for parts of a source sentence that are relevant to predicting a target word, without having to form these parts as a hard segment explicitly."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3335364",
+            "name": "Dzmitry Bahdanau"
+        },
+        {
+            "authorId": "1979489",
+            "name": "Kyunghyun Cho"
+        },
+        {
+            "authorId": "1751762",
+            "name": "Yoshua Bengio"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "1eb09fecd75eb27825dce4f964b97f4f5cc399d7",
+            "title": "On the Properties of Neural Machine Translation: Encoder\u2013Decoder Approaches"
+        },
+        {
+            "paperId": "6122c95ac6475e965bf4e120f7a588d29bb00ecc",
+            "title": "Overcoming the Curse of Sentence Length for Neural Machine Translation using Automatic Segmentation"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "0894b06cff1cd0903574acaa7fcf071b144ae775",
+            "title": "Fast and Robust Neural Network Joint Models for Statistical Machine Translation"
+        },
+        {
+            "paperId": "533ee188324b833e059cb59b654e6160776d5812",
+            "title": "How to Construct Deep Recurrent Neural Networks"
+        },
+        {
+            "paperId": "c20ed3a1600122e6cf03b8ed74d3d2920ad0a8c6",
+            "title": "Multilingual Distributed Representations without Word Alignment"
+        },
+        {
+            "paperId": "1149888d75af4ed5dffc25731b875651c3ccdeb2",
+            "title": "Hybrid speech recognition with Deep Bidirectional LSTM"
+        },
+        {
+            "paperId": "944a1cfd79dbfb6fef460360a0765ba790f4027a",
+            "title": "Recurrent Continuous Translation Models"
+        },
+        {
+            "paperId": "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17",
+            "title": "Generating Sequences With Recurrent Neural Networks"
+        },
+        {
+            "paperId": "b7b915d508987b73b61eccd2b237e7ed099a2d29",
+            "title": "Maxout Networks"
+        },
+        {
+            "paperId": "8729441d734782c3ed532a7d2d9611b438c0a09a",
+            "title": "ADADELTA: An Adaptive Learning Rate Method"
+        },
+        {
+            "paperId": "5f08df805f14baa826dbddcb002277b15d3f1556",
+            "title": "Continuous Space Translation Models for Phrase-Based Statistical Machine Translation"
+        },
+        {
+            "paperId": "855d0f722d75cc56a66a00ede18ace96bafee6bd",
+            "title": "Theano: new features and speed improvements"
+        },
+        {
+            "paperId": "84069287da0a6b488b8c933f3cb5be759cb6237e",
+            "title": "On the difficulty of training recurrent neural networks"
+        },
+        {
+            "paperId": "7b4f3d0e4e2486a8d5d3f8e00549cf9a117bf88f",
+            "title": "Sequence Transduction with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "bd5fc28c7356915ec71abafbe86b7596c60720aa",
+            "title": "The conference paper"
+        },
+        {
+            "paperId": "396aabd694da04cdb846cb724ca9f866f345cbd5",
+            "title": "Domain Adaptation via Pseudo In-Domain Data Selection"
+        },
+        {
+            "paperId": "0af81925ffade8b0ddaf84d5fb64a8fa5cbd4c5c",
+            "title": "Statistical machine translation"
+        },
+        {
+            "paperId": "d4a258df43cc14e46988de9a4a7b2f0ea817529b",
+            "title": "Continuous Space Language Models for Statistical Machine Translation"
+        },
+        {
+            "paperId": "a4b828609b60b06e61bea7a4029cc9e1cad5df87",
+            "title": "Statistical Phrase-Based Translation"
+        },
+        {
+            "paperId": "6c2b28f9354f667cd5bd07afc0471d8334430da7",
+            "title": "A Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "e23c34414e66118ecd9b08cf0cd4d016f59b0b85",
+            "title": "Bidirectional recurrent neural networks"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "73c2a58c936ba2d269491548ef32644c5e982199",
+            "title": "Recursive Hetero-associative Memories for Translation"
+        },
+        {
+            "paperId": "9d6c43ad7f4cf7ebcd4245510df2880f3d3b0964",
+            "title": "Biological and Artificial Computation: From Neuroscience to Technology"
+        },
+        {
+            "paperId": "d0be39ee052d246ae99c082a565aba25b811be2d",
+            "title": "Learning long-term dependencies with gradient descent is difficult"
+        },
+        {
+            "paperId": null,
+            "title": "Neural machine translation by jointly learning to align and translate"
+        },
+        {
+            "paperId": null,
+            "title": "\u00d7n and Ua \u2208 R \u2032\u00d72n are weight matrices. Note that the model becomes RNN Encoder\u2013Decoder (Cho et al., 2014a)"
+        },
+        {
+            "paperId": null,
+            "title": "The new state si of the RNN employing n gated hidden units8"
+        },
+        {
+            "paperId": "e27d81521dc4e8b6ea93947c05ffccf06784f569",
+            "title": "Audio Chord Recognition with Recurrent Neural Networks"
+        },
+        {
+            "paperId": null,
+            "title": "Theano: a CPU and GPU math expression compiler"
+        },
+        {
+            "paperId": "3f3d13e95c25a8f6a753e38dfce88885097cbd43",
+            "title": "Untersuchungen zu dynamischen neuronalen Netzen"
+        }
+    ]
+}

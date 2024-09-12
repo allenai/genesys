@@ -1,0 +1,85 @@
+{
+    "paperId": "9ca9f28676ad788d04ba24a51141a9a0a0df4d67",
+    "externalIds": {
+        "MAG": "1501856433",
+        "DOI": "10.1109/IJCNN.2005.1555942",
+        "CorpusId": 20480879
+    },
+    "title": "A new model for learning in graph domains",
+    "abstract": "In several applications the information is naturally represented by graphs. Traditional approaches cope with graphical data structures using a preprocessing phase which transforms the graphs into a set of flat vectors. However, in this way, important topological information may be lost and the achieved results may heavily depend on the preprocessing stage. This paper presents a new neural model, called graph neural network (GNN), capable of directly processing graphs. GNNs extends recursive neural networks and can be applied on most of the practically useful kinds of graphs, including directed, undirected, labelled and cyclic graphs. A learning algorithm for GNNs is proposed and some experiments are discussed which assess the properties of the model.",
+    "venue": "Proceedings. 2005 IEEE International Joint Conference on Neural Networks, 2005.",
+    "year": 2005,
+    "referenceCount": 12,
+    "citationCount": 1690,
+    "influentialCitationCount": 87,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new neural model, called graph neural network (GNN), capable of directly processing graphs, which extends recursive neural networks and can be applied on most of the practically useful kinds of graphs, including directed, undirected, labelled and cyclic graphs."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145467467",
+            "name": "M. Gori"
+        },
+        {
+            "authorId": "3073217",
+            "name": "G. Monfardini"
+        },
+        {
+            "authorId": "47260481",
+            "name": "F. Scarselli"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "767855258552b3b4cf7ab871979f72c9d3078631",
+            "title": "A recursive neural network model for processing directed acyclic graphs with labeled edges"
+        },
+        {
+            "paperId": "46cb7584ba5838c67368fbb98748a662bd3b427e",
+            "title": "An Introduction to Metric Spaces and Fixed Point Theory"
+        },
+        {
+            "paperId": "a5eb96540ef53b49eac2246d6b13635fe6e54451",
+            "title": "A general framework for adaptive processing of data structures"
+        },
+        {
+            "paperId": "3945f338ab687c00de441b55790d3f1afa83c935",
+            "title": "Inductive Inference of Tree Automata by Recursive Neural Networks"
+        },
+        {
+            "paperId": "964f5e0fe674788e13152eb236eeaf580cfad589",
+            "title": "Logo Recognition by Recursive Neural Networks"
+        },
+        {
+            "paperId": "3e33eca03933caaec671e20692e79d1acc9527e1",
+            "title": "Supervised neural networks for the classification of structures"
+        },
+        {
+            "paperId": "8be3f21ab796bd9811382b560507c1c679fae37f",
+            "title": "A learning rule for asynchronous perceptrons with feedback in a combinatorial environment"
+        },
+        {
+            "paperId": "6602985bd326d9996c68627b56ed389e2c90fd08",
+            "title": "Generalization of back-propagation to recurrent neural networks."
+        },
+        {
+            "paperId": "e943409eac3bd89f0155f28bae34fab011e877db",
+            "title": "Recursive processing of cyclic graphs"
+        },
+        {
+            "paperId": null,
+            "title": "A new neural network model for graph processing"
+        },
+        {
+            "paperId": "12182b550685b5097a1539c8dfa18c8aa49bba36",
+            "title": "Face Spotting in Color Images using Recursive Neural Networks"
+        },
+        {
+            "paperId": "b28aa3e3b951931e07284cc605a40220f1f37d35",
+            "title": "Relating Chemical Structure to Activity: An Application of the Neural Folding Architecture"
+        }
+    ]
+}

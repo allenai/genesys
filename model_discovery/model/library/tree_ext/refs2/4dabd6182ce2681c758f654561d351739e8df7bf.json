@@ -1,0 +1,191 @@
+{
+    "paperId": "4dabd6182ce2681c758f654561d351739e8df7bf",
+    "externalIds": {
+        "ACL": "N16-1155",
+        "ArXiv": "1512.00103",
+        "DBLP": "journals/corr/GillickBVS15",
+        "MAG": "2949777753",
+        "DOI": "10.18653/v1/N16-1155",
+        "CorpusId": 384520
+    },
+    "title": "Multilingual Language Processing From Bytes",
+    "abstract": "We describe an LSTM-based model which we call Byte-to-Span (BTS) that reads text as bytes and outputs span annotations of the form [start, length, label] where start positions, lengths, and labels are separate entries in our vocabulary. Because we operate directly on unicode bytes rather than language-specific words or characters, we can analyze text in many languages with a single model. Due to the small vocabulary size, these multilingual models are very compact, but produce results similar to or better than the state-of- the-art in Part-of-Speech tagging and Named Entity Recognition that use only the provided training datasets (no external data sources). Our models are learning \"from scratch\" in that they do not rely on any elements of the standard pipeline in Natural Language Processing (including tokenization), and thus can run in standalone fashion on raw text.",
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2015,
+    "referenceCount": 36,
+    "citationCount": 215,
+    "influentialCitationCount": 25,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/N16-1155.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An LSTM-based model that reads text as bytes and outputs span annotations of the form [start, length, label] where start positions, lengths, and labels are separate entries in the authors' vocabulary is described."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2396669",
+            "name": "D. Gillick"
+        },
+        {
+            "authorId": "3202382",
+            "name": "Clifford Brunk"
+        },
+        {
+            "authorId": "1689108",
+            "name": "O. Vinyals"
+        },
+        {
+            "authorId": "1726492",
+            "name": "A. Subramanya"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "4aa9f5150b46320f534de4747a2dd0cd7f3fe292",
+            "title": "Semi-supervised Sequence Learning"
+        },
+        {
+            "paperId": "51a55df1f023571a7e07e338ee45a3e3d66ef73e",
+            "title": "Character-level Convolutional Networks for Text Classification"
+        },
+        {
+            "paperId": "93a9694b6a4149e815c30a360347593b75860761",
+            "title": "Variable-Length Word Encodings for Neural Translation Models"
+        },
+        {
+            "paperId": "891ce1687e2befddd19f54e4eef1d3f39c8dbaf7",
+            "title": "Character-Aware Neural Language Models"
+        },
+        {
+            "paperId": "878ba5458e9e51f0b341fd9117fa0b43ef4096d3",
+            "title": "End-to-end attention-based large vocabulary speech recognition"
+        },
+        {
+            "paperId": "6dab1c6491929d396e9e5463bc2e87af88602aa2",
+            "title": "Finding Function in Form: Compositional Character Models for Open Vocabulary Word Representation"
+        },
+        {
+            "paperId": "af88ce6116c2cd2927a4198745e99e5465173783",
+            "title": "Bidirectional LSTM-CRF Models for Sequence Tagging"
+        },
+        {
+            "paperId": "96526726f87233fb017f6ea9483090f04e0f0530",
+            "title": "Improved Transition-based Parsing by Modeling Characters instead of Words with LSTMs"
+        },
+        {
+            "paperId": "ea4b9f05d91c91c99a654b623c0ed87de4427ed9",
+            "title": "Low Resource Dependency Parsing: Cross-lingual Parameter Sharing in a Neural Network Parser"
+        },
+        {
+            "paperId": "df137487e20ba7c6e1e2b9a1e749f2a578b5ad99",
+            "title": "Scheduled Sampling for Sequence Prediction with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "91a93f751f912b2f96d6771018d8f06c41e11152",
+            "title": "Boosting Named Entity Recognition with Neural Character Embeddings"
+        },
+        {
+            "paperId": "f1b0df6b2977d28e55df82576b108e4f5d87e044",
+            "title": "Text Understanding from Scratch"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "f264e8b33c0d49a692a6ce2c4bcb28588aeb7d97",
+            "title": "Recurrent Neural Network Regularization"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "0fa553cfa0cf3cbdf7a913aa2ae789a757dfb32f",
+            "title": "Towards End-To-End Speech Recognition with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "d53d878cf1a3f0bed5d9c68c925994cb72f47304",
+            "title": "Lexicon Infused Phrase Embeddings for Named Entity Resolution"
+        },
+        {
+            "paperId": "0060745e006c5f14ec326904119dca19c6545e51",
+            "title": "Improving neural networks by preventing co-adaptation of feature detectors"
+        },
+        {
+            "paperId": "d9674edc47fd41c27c0c6497c0e7d6bf1910d84e",
+            "title": "A Universal Part-of-Speech Tagset"
+        },
+        {
+            "paperId": "55b40dfe432f26fda35669fd257cf521faff0c7a",
+            "title": "Part-of-Speech Tagging from 97% to 100%: Is It Time for Some Linguistics?"
+        },
+        {
+            "paperId": "bc1022b031dc6c7019696492e8116598097a8c12",
+            "title": "Natural Language Processing (Almost) from Scratch"
+        },
+        {
+            "paperId": "39d37eb3ef1f5c9273ed3b197c0e2548547b6741",
+            "title": "From speech to letters - using a novel neural network architecture for grapheme based ASR"
+        },
+        {
+            "paperId": "ccf415df5a83b343dae261286d29a40e8b80e6c6",
+            "title": "The Difficulty of Training Deep Architectures and the Effect of Unsupervised Pre-Training"
+        },
+        {
+            "paperId": "3746c596de56f5ab969c88000c8ac3104ae3f657",
+            "title": "Effective identification of source code authors using byte-level information"
+        },
+        {
+            "paperId": "944e1a7b2c5c62e952418d7684e3cade89c76f87",
+            "title": "A Framework for Learning Predictive Structures from Multiple Tasks and Unlabeled Data"
+        },
+        {
+            "paperId": "6e1a47edccd3e34641c784e334e288cce7561ee1",
+            "title": "Chinese and Japanese Word Segmentation Using Word-Level and Character-Level Information"
+        },
+        {
+            "paperId": "d1ba322f795adbdc706651dbc76ad53b9c5f9468",
+            "title": "Named Entity Recognition through Classifier Combination"
+        },
+        {
+            "paperId": "7e958d809a45ba3ae9eef8c5381e8cad8f11de10",
+            "title": "Named Entity Recognition with Character-Level Models"
+        },
+        {
+            "paperId": "501e80737d0378a3e4dd2c391189196333c59ffb",
+            "title": "Language Independent Authorship Attribution with Character Level N-Grams"
+        },
+        {
+            "paperId": "5f54adfd6d6959e0c9ae8953ac00ea675087085f",
+            "title": "Named Entity Extraction using AdaBoost"
+        },
+        {
+            "paperId": "f4ba954b0412773d047dc41231c733de0c1f4926",
+            "title": "Conditional Random Fields: Probabilistic Models for Segmenting and Labeling Sequence Data"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "1cf01798f07e1f13cd44daad6119f4978721c61d",
+            "title": "Char_align: A Program for Aligning Parallel Texts at the Character Level"
+        },
+        {
+            "paperId": "8c3cf30db12d17638b01e0e464e09d6b58a88187",
+            "title": "Variable length word encodings for neural translation models"
+        },
+        {
+            "paperId": "09ebadba75e882a3874c3b9ce10e9d52226b9d30",
+            "title": "Computational Linguistics"
+        },
+        {
+            "paperId": "696b505083d34c6f995aef88d0352d70d7f7e8c8",
+            "title": "Learning multilingual named entity recognition from Wikipedia"
+        }
+    ]
+}

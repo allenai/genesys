@@ -1,0 +1,74 @@
+{
+    "paperId": "51d09ba221f10bc14ae7b31a1a91d155deeca1d5",
+    "externalIds": {
+        "MAG": "2152239535",
+        "DBLP": "conf/cvpr/BrandOP97",
+        "DOI": "10.1109/CVPR.1997.609450",
+        "CorpusId": 5391819
+    },
+    "title": "Coupled hidden Markov models for complex action recognition",
+    "abstract": "We present algorithms for coupling and training hidden Markov models (HMMs) to model interacting processes, and demonstrate their superiority to conventional HMMs in a vision task classifying two-handed actions. HMMs are perhaps the most successful framework in perceptual computing for modeling and classifying dynamic behaviors, popular because they offer dynamic time warping, a training algorithm and a clear Bayesian semantics. However the Markovian framework makes strong restrictive assumptions about the system generating the signal-that it is a single process having a small number of states and an extremely limited state memory. The single-process model is often inappropriate for vision (and speech) applications, resulting in low ceilings on model performance. Coupled HMMs provide an efficient way to resolve many of these problems, and offer superior training speeds, model likelihoods, and robustness to initial conditions.",
+    "venue": "Proceedings of IEEE Computer Society Conference on Computer Vision and Pattern Recognition",
+    "year": 1997,
+    "referenceCount": 9,
+    "citationCount": 1257,
+    "influentialCitationCount": 85,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Algorithms for coupling and training hidden Markov models (HMMs) to model interacting processes, and demonstrate their superiority to conventional HMMs in a vision task classifying two-handed actions are presented."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "144549270",
+            "name": "M. Brand"
+        },
+        {
+            "authorId": "145709776",
+            "name": "Nuria Oliver"
+        },
+        {
+            "authorId": "144994682",
+            "name": "A. Pentland"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "0bb9845d252e67714a6fa62a6e6abdc1caf4ab08",
+            "title": "The \"Inverse Hollywood Problem\": From Video to Scripts and Storyboards via Causal Analysis"
+        },
+        {
+            "paperId": "e0999dc17b35c0d893974f03d98293f71f27698b",
+            "title": "Probabilistic Independence Networks for Hidden Markov Probability Models"
+        },
+        {
+            "paperId": "4dab928d7caa4fb8ea321003c550e144138504b6",
+            "title": "Hidden Markov Decision Trees"
+        },
+        {
+            "paperId": "31cf57a8d3001a67063d786e6eb1da7a71f20da3",
+            "title": "Invariant features for 3-D gesture recognition"
+        },
+        {
+            "paperId": "2d7bcb538b03c67e5e7daecabd26d4941fa1bb07",
+            "title": "Real-time self-calibrating stereo person tracking using 3-D shape estimation from blob features"
+        },
+        {
+            "paperId": "03338265e7e508acbecf128dfd16e1a9c771445d",
+            "title": "Coupled hidden Markov models for modeling interacting processes"
+        },
+        {
+            "paperId": "2dc4d6d7d55f9f0f1de53bb7f6816502f8f38892",
+            "title": "Boltzmann Chains and Hidden Markov Models"
+        },
+        {
+            "paperId": "4725bea4175f9a3912188aca3c4f25c66469fea1",
+            "title": "Mean field networks that learn to discriminate temporally distorted strings"
+        },
+        {
+            "paperId": null,
+            "title": "Bayesian updating in recursive graphical models by local computations"
+        }
+    ]
+}

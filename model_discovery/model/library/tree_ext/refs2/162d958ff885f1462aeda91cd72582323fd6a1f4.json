@@ -1,0 +1,642 @@
+{
+    "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+    "externalIds": {
+        "MAG": "2112796928",
+        "DBLP": "journals/pieee/LeCunBBH98",
+        "DOI": "10.1109/5.726791",
+        "CorpusId": 14542261
+    },
+    "title": "Gradient-based learning applied to document recognition",
+    "abstract": "Multilayer neural networks trained with the back-propagation algorithm constitute the best example of a successful gradient based learning technique. Given an appropriate network architecture, gradient-based learning algorithms can be used to synthesize a complex decision surface that can classify high-dimensional patterns, such as handwritten characters, with minimal preprocessing. This paper reviews various methods applied to handwritten character recognition and compares them on a standard handwritten digit recognition task. Convolutional neural networks, which are specifically designed to deal with the variability of 2D shapes, are shown to outperform all other techniques. Real-life document recognition systems are composed of multiple modules including field extraction, segmentation recognition, and language modeling. A new learning paradigm, called graph transformer networks (GTN), allows such multimodule systems to be trained globally using gradient-based methods so as to minimize an overall performance measure. Two systems for online handwriting recognition are described. Experiments demonstrate the advantage of global training, and the flexibility of graph transformer networks. A graph transformer network for reading a bank cheque is also described. It uses convolutional neural network character recognizers combined with global training techniques to provide record accuracy on business and personal cheques. It is deployed commercially and reads several million cheques per day.",
+    "venue": "Proceedings of the IEEE",
+    "year": 1998,
+    "referenceCount": 150,
+    "citationCount": 49281,
+    "influentialCitationCount": 5886,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper reviews various methods applied to handwritten character recognition and compares them on a standard handwritten digit recognition task, and Convolutional neural networks are shown to outperform all other techniques."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1688882",
+            "name": "Yann LeCun"
+        },
+        {
+            "authorId": "52184096",
+            "name": "L. Bottou"
+        },
+        {
+            "authorId": "1751762",
+            "name": "Yoshua Bengio"
+        },
+        {
+            "authorId": "1721248",
+            "name": "P. Haffner"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "4c75b748911ddcd888c5122f7672f69caa5d661f",
+            "title": "Statistical Learning Theory"
+        },
+        {
+            "paperId": "2a5c494c9ac68c8915d9df880a3bf6fe48a696a8",
+            "title": "Discriminative feature and model design for automatic speech recognition"
+        },
+        {
+            "paperId": "2c777b4a563220dcd73a1b020b80c1f24c0f772a",
+            "title": "A Rational Design for a Weighted Finite-State Transducer Library"
+        },
+        {
+            "paperId": "9008cdacbdcff8a218a6928e94fe7c6dfc237b24",
+            "title": "Training support vector machines: an application to face detection"
+        },
+        {
+            "paperId": "f4cc5563c694355ddcf746ff9a55ccdb22d86a98",
+            "title": "Finite-State Transducers in Language and Speech Processing"
+        },
+        {
+            "paperId": "e6cd1f4ff52485e4bc154033e7b139b640ca9e12",
+            "title": "OVERVIEW AND SYNTHESIS OF ON-LINE CURSIVE HANDWRITING RECOGNITION TECHNIQUES"
+        },
+        {
+            "paperId": "40e5a40ae66d44e6c00d562d068d35db6922715d",
+            "title": "Improving the Accuracy and Speed of Support Vector Machines"
+        },
+        {
+            "paperId": "25bdc473f8377c1200adbd691fbb3cc77fa7bf70",
+            "title": "Input-output HMMs for sequence processing"
+        },
+        {
+            "paperId": "a3885c13438132b516e5ffc8b640d20b4e41a7a4",
+            "title": "Neural network-based face detection"
+        },
+        {
+            "paperId": "0bf2c2ca87256956b3e51bec4845c4fa28d4de7b",
+            "title": "Speech Recognition by Composition of Weighted Finite Automata"
+        },
+        {
+            "paperId": "7d85aa0711038278b4e1717aec9f7a52ff8836f7",
+            "title": "Dynamics of On-Line Gradient Descent Learning for Multilayer Neural Networks"
+        },
+        {
+            "paperId": "4a4192fd6efb5661eca197cce24289776a4fbcc2",
+            "title": "LeRec: A NN/HMM Hybrid for On-Line Handwriting Recognition"
+        },
+        {
+            "paperId": "683689ed058d0a5bea53129a09dc857d3bf04bc0",
+            "title": "Automatic processing of information on cheques"
+        },
+        {
+            "paperId": "97055a12a77fe988f8e46b01f2093a0806182239",
+            "title": "Discriminative utterance verification for connected digits recognition"
+        },
+        {
+            "paperId": "f781aea31221172c64d9b9a6d45304d14f439c99",
+            "title": "Cursive script recognition applied to the processing of bank cheques"
+        },
+        {
+            "paperId": "4f807c11196e524d421706f2e471575389c73623",
+            "title": "A system for the off-line recognition of handwritten text"
+        },
+        {
+            "paperId": "f3c5f1e1edd0d63f2d1b30d308c2c88b06a829ef",
+            "title": "Word normalization for online handwritten word recognition"
+        },
+        {
+            "paperId": "899defb6a100af509547b8d74bb626533ee87da4",
+            "title": "Measuring the VC-Dimension of a Learning Machine"
+        },
+        {
+            "paperId": "364a8b3da991eddb984779537434c5b66df6eb53",
+            "title": "Solving Multiclass Learning Problems via Error-Correcting Output Codes"
+        },
+        {
+            "paperId": "09ebd9ad4fa21c0d56433ac57a4cd69e94c72281",
+            "title": "Original approach for the localisation of objects in images"
+        },
+        {
+            "paperId": "0bdbc5a8a5ccb718007f0c1999ea7546deb0b473",
+            "title": "A connectionist recognizer for on-line cursive handwriting recognition"
+        },
+        {
+            "paperId": "39e5fbed9b4928f4e88483e1f52c69d01396fb8a",
+            "title": "Weighted Rational Transductions and their Application to Human Language Processing"
+        },
+        {
+            "paperId": "d0be39ee052d246ae99c082a565aba25b811be2d",
+            "title": "Learning long-term dependencies with gradient descent is difficult"
+        },
+        {
+            "paperId": "4d6f37bb4352b334cb3ff4b48f55879e248dd63a",
+            "title": "Efficient Training of Feed-Forward Neural Networks"
+        },
+        {
+            "paperId": "be383aa25b79ba3cb2570f044433096100a062ec",
+            "title": "Learning Curves: Asymptotic Values and Rate of Convergence"
+        },
+        {
+            "paperId": "22a1f76ba46e620e5c3131869ee8b1acdca5890b",
+            "title": "Postal Address Block Location Using a Convolutional Locator Network"
+        },
+        {
+            "paperId": "3d82e058a5c40954b8f5db170a298a889a254c37",
+            "title": "Connectionist Speech Recognition: A Hybrid Approach"
+        },
+        {
+            "paperId": "5aee00262285c4a26ec77af355ab86cd2d92b403",
+            "title": "Connectionist speech recognition with a global MMI algorithm"
+        },
+        {
+            "paperId": "065b0af1bc05ea4f1fbd2afc50a96b0ef1698c8d",
+            "title": "Off Line Recognition of Handwritten Postal Words Using Neural Networks"
+        },
+        {
+            "paperId": "997dc5d9a058753f034422afe7bd0cc0b8ad808b",
+            "title": "Signature Verification Using A \"Siamese\" Time Delay Neural Network"
+        },
+        {
+            "paperId": "cc7fa2cf9d7d2b3aca4fa22271412831e9a61e22",
+            "title": "An original approach for the localization of objects in images"
+        },
+        {
+            "paperId": "cfb28df0e6a807cabdecc8ab5ca9c9ed006be7c0",
+            "title": "Centered-Object Integrated Segmentation and Recognition of Overlapping Handprinted Characters"
+        },
+        {
+            "paperId": "92a9311686e48d5d20fbfcdc21362251b121096c",
+            "title": "Connectionist architectural learning for high performance character and speech recognition"
+        },
+        {
+            "paperId": "64e7adce9a36ffcace36a2e0a334a0415fbbfe75",
+            "title": "Multiresolution neural networks for omnifont character recognition"
+        },
+        {
+            "paperId": "4fb52984078d75ec5655962dc94dc7848182286b",
+            "title": "Distortion Invariant Object Recognition in the Dynamic Link Architecture"
+        },
+        {
+            "paperId": "e142635b24b57cfeb20e0e69bf7836dabe44aa7f",
+            "title": "Discriminative learning for minimum error classification [pattern recognition]"
+        },
+        {
+            "paperId": "8314dda1ec43ce57ff877f8f02ed89acb68ca035",
+            "title": "Efficient Pattern Recognition Using a New Transformation Distance"
+        },
+        {
+            "paperId": "c4d2207b9b9ee71da7b24c7172e5107492dd421d",
+            "title": "Recognition-Based Segmentation of On-Line Hand-Printed Words"
+        },
+        {
+            "paperId": "77b5185dafb9e5b884a677a32713e54c253a4e0b",
+            "title": "Improving Performance in Neural Networks Using a Boosting Algorithm"
+        },
+        {
+            "paperId": "1ca97e1668e305fb719845f84a05a62dfb946a5d",
+            "title": "Local Learning Algorithms"
+        },
+        {
+            "paperId": "4aaa30769ca49875f45670970130c088136986d1",
+            "title": "A training algorithm for optimal margin classifiers"
+        },
+        {
+            "paperId": "52a3dca70cc21b540ad5d7b7b6e23744c20095f7",
+            "title": "Reading handwritten digits: a ZIP code recognition system"
+        },
+        {
+            "paperId": "0f238b648bd99c3b66251ba0fc46b0be38e86483",
+            "title": "High-Performance Reading Machines"
+        },
+        {
+            "paperId": "32315b101afe9bacb725cf80944884e7ac053245",
+            "title": "Shortest path segmentation: a method for training a neural network to recognize character strings"
+        },
+        {
+            "paperId": "b8bc656a1935f07e894833b608cc4671b9fa828f",
+            "title": "Application of the ANNA neural network chip to high-speed character recognition"
+        },
+        {
+            "paperId": "2498a4e1755f047accc06a6e0fab0b0eb1b37ae0",
+            "title": "Statistical mechanics of learning from examples."
+        },
+        {
+            "paperId": "bbf6f07e699587c8d52faf829a289f8cbc7f11a5",
+            "title": "First- and Second-Order Methods for Learning: Between Steepest Descent and Newton's Method"
+        },
+        {
+            "paperId": "464e8d981df7f326c3af6e9d7bd627f83e438816",
+            "title": "Multi-Digit Recognition Using a Space Displacement Neural Network"
+        },
+        {
+            "paperId": "5a26b1e04cf5090a7026928bfb4e546cd45c6582",
+            "title": "Neural Network - Gaussian Mixture Hybrid for Speech Recognition or Density Estimation"
+        },
+        {
+            "paperId": "250e63438812c71b8d7287f05b6235dbae2123d6",
+            "title": "Multi-State Time Delay Networks for Continuous Speech Recognition"
+        },
+        {
+            "paperId": "82795cf04f5631e82413b1952625a5a6f21b68ea",
+            "title": "An analog neural network processor with programmable topology"
+        },
+        {
+            "paperId": "21bb294a68926e80ba58aa05a376d7c8840bdf92",
+            "title": "Time-delay neural networks embedding time alignment: a performance analysis"
+        },
+        {
+            "paperId": "9697881f7c675bfe719c0b2e23ffb6be38ddd754",
+            "title": "Handwritten Digit Recognition Using K Nearest-Neighbor, Radial-Basis Function, and Backpropagation Neural Networks"
+        },
+        {
+            "paperId": "3c92ffacba4eaddcb86c8fde50d1b183ac995052",
+            "title": "Global optimization of a neural network-hidden Markov model hybrid"
+        },
+        {
+            "paperId": "1762498d7ef09cc706b551c54ce6894a7b2ee14d",
+            "title": "Perception of multiple objects - a connectionist approach"
+        },
+        {
+            "paperId": "fe5f4a0e774d3124b2a0e6591636acd0cdc7fc27",
+            "title": "Eigenvalues of covariance matrices: Application to neural-network learning."
+        },
+        {
+            "paperId": "ee50abb5aff3e5c43a38f24396b9552d593a9ae0",
+            "title": "Links Between Markov Models and Multilayer Perceptrons"
+        },
+        {
+            "paperId": "847d6ece37d22430a0d9e061b5dc1d1b8c679055",
+            "title": "Integrated Segmentation and Recognition of Hand-Printed Numerals"
+        },
+        {
+            "paperId": "c3fa4c1ebd90bf14c55d253806fdf9e69defd729",
+            "title": "A Framework for the Cooperation of Learning Algorithms"
+        },
+        {
+            "paperId": "a5b3ce16666f0d9a7ac1636370a58838a7843b0f",
+            "title": "The State of the Art in Online Handwriting Recognition"
+        },
+        {
+            "paperId": "830a0c617b99a2cd39517f699fe376442c662816",
+            "title": "Speaker-independent isolated digit recognition: Multilayer perceptrons vs. Dynamic time warping"
+        },
+        {
+            "paperId": "0a3397b9feb4869a27ff9f4c95c888e90d04e0bd",
+            "title": "Combining hidden Markov model and neural network classifiers"
+        },
+        {
+            "paperId": "f866ac085771f5676800db2d9b102975b2a1b2d7",
+            "title": "Connectionist Viterbi training: a new hybrid method for continuous speech recognition"
+        },
+        {
+            "paperId": "c91c2ac02e33caff601b2e4d62a6841b33ca3929",
+            "title": "Alpha-nets: A recurrent 'neural' network architecture with a hidden Markov model interpretation"
+        },
+        {
+            "paperId": "a8e8f3c8d4418c8d62e306538c9c1292635e9d27",
+            "title": "Backpropagation Applied to Handwritten Zip Code Recognition"
+        },
+        {
+            "paperId": "8da1dda34ecc96263102181448c94ec7d645d085",
+            "title": "Approximation by superpositions of a sigmoidal function"
+        },
+        {
+            "paperId": "590bd948e06e9d07e305fe175c2a86d751ccac2d",
+            "title": "Comparing different neural network architectures for classifying handwritten digits"
+        },
+        {
+            "paperId": "62af35038b5d3080cf84f4e28e8fd6f3ee05a133",
+            "title": "The Strength of Weak Learnability"
+        },
+        {
+            "paperId": "b62a2f2c2cdf561bab99b2cb66477a3a7ad9ca90",
+            "title": "Speaker-independent word recognition using dynamic programming neural networks"
+        },
+        {
+            "paperId": "cd62c9976534a6a2096a38244f6cbb03635a127e",
+            "title": "Phoneme recognition using time-delay neural networks"
+        },
+        {
+            "paperId": "8fe2ea0a67954f1380b3387e3262f1cdb9f9b3e5",
+            "title": "A tutorial on hidden Markov models and selected applications in speech recognition"
+        },
+        {
+            "paperId": "6666e8358eed45caf93ada4272f8d63bb1b6b705",
+            "title": "Statistical pattern recognition with neural networks: benchmarking studies"
+        },
+        {
+            "paperId": "4c41868f69d265783b7540094946ee902571c5cd",
+            "title": "Speech recognition with continuous-parameter hidden Markov models"
+        },
+        {
+            "paperId": "6f8fbd0873eb98519d7047c13251aef32e769dfe",
+            "title": "PhD thesis: Modeles connexionnistes de l'apprentissage (connectionist learning models)"
+        },
+        {
+            "paperId": "b5f09ce0dd760857e0d0e4879f6e2543f04c5d33",
+            "title": "Maximum mutual information estimation of hidden Markov model parameters for speech recognition"
+        },
+        {
+            "paperId": "8592e46a5435d18bba70557846f47290b34c1aa5",
+            "title": "Learning and relearning in Boltzmann machines"
+        },
+        {
+            "paperId": "319f22bd5abfd67ac15988aa5c7f705f018c3ccd",
+            "title": "Learning internal representations by error propagation"
+        },
+        {
+            "paperId": "46b3764436e54ec10fdf14f31c544599456385d9",
+            "title": "A Multifont Word Recognition System for Postal Address Reading"
+        },
+        {
+            "paperId": "4091b8ec7c223cdfeb121eacb2117ba156d571cd",
+            "title": "Pattern classification and scene analysis"
+        },
+        {
+            "paperId": "624d7d56f98f29e96c36493b2a9e1820ec53725d",
+            "title": "Adaptation and learning in automatic systems"
+        },
+        {
+            "paperId": "b07ce649d6f6eb636872527104b0209d3edc8188",
+            "title": "Pattern classification and scene analysis"
+        },
+        {
+            "paperId": "ec0ed6c4fba767af67e7e156faffe7ddc990a264",
+            "title": "Applied optimal control"
+        },
+        {
+            "paperId": "1339348aeef592802288d9d929a085cb3ae61c4b",
+            "title": "A Theory of Adaptive Pattern Classifiers"
+        },
+        {
+            "paperId": "145c0b53514b02bdc3dadfb2e1cea124f2abd99b",
+            "title": "Error bounds for convolutional codes and an asymptotically optimum decoding algorithm"
+        },
+        {
+            "paperId": null,
+            "title": "The State of the Art in On-Line Handwriting Recognition"
+        },
+        {
+            "paperId": "8213dbed4db44e113af3ed17d6dad57471a0c048",
+            "title": "The Nature of Statistical Learning Theory"
+        },
+        {
+            "paperId": "baf4491be1f4c1de7ecb03bf81325f6f09bda9c6",
+            "title": "The Art of Scientific Computing Second Edition"
+        },
+        {
+            "paperId": "86890c82b589e24007c56e1f40c5f928a0e04183",
+            "title": "Face recognition: a convolutional neural-network approach"
+        },
+        {
+            "paperId": "a3461eaf51016f9d6e85ea47173b27e019e801c4",
+            "title": "State of the Art"
+        },
+        {
+            "paperId": null,
+            "title": "Weighted determinization and min-  imization for large vocabulary recognition,\" in Proceedings of  Eurospeech"
+        },
+        {
+            "paperId": null,
+            "title": "Reading checks with graph transformer networks"
+        },
+        {
+            "paperId": null,
+            "title": "Weighted determinization and minimization"
+        },
+        {
+            "paperId": "a02df6b956612047a9493baba5218f01ed44af00",
+            "title": "Neural networks for speech and sequence recognition"
+        },
+        {
+            "paperId": "730068cb367489f91aa8a99bc83fb43ef3b2466c",
+            "title": "An EM Algorithm for Asynchronous Input/Output Hidden Markov Models"
+        },
+        {
+            "paperId": null,
+            "title": "An input/output HMM architec-  ture,\" in Advances in Neural Information Processing"
+        },
+        {
+            "paperId": "d50dce749321301f0104689f2dc582303a83be65",
+            "title": "Comparison of learning algorithms for handwritten digit recognition"
+        },
+        {
+            "paperId": "3bdb4893a1816f560e0baa82792e2bb40936d152",
+            "title": "Fast neural net simulation with a DSP processor array"
+        },
+        {
+            "paperId": null,
+            "title": "Burges, \\Image segmentation and recognition"
+        },
+        {
+            "paperId": "b06fd351d10eccb830b75deb6061ffa3382f4166",
+            "title": "Combining TDNN and HMM in a hybrid system for improved continuous-speech recognition"
+        },
+        {
+            "paperId": "4b336597d72bef3b5b6964a88040129edcaf8dcd",
+            "title": "Word normalization for on-line handwritten word recognition"
+        },
+        {
+            "paperId": "2b234385356cb10d448908cef49584bece15d94b",
+            "title": "A Convolutional Neural Network Hand Tracker"
+        },
+        {
+            "paperId": "680335c0de8300117aeb1639ab94580d947b154a",
+            "title": "An Input Output HMM Architecture"
+        },
+        {
+            "paperId": null,
+            "title": "A Hybrid Approach, K l u wer Academic Publisher"
+        },
+        {
+            "paperId": "c8a4f5358bde28333ab94076c935bc49c3ff26ea",
+            "title": "On-line handwriting recognition with neural networks: Spatial representation versus temporal representation"
+        },
+        {
+            "paperId": null,
+            "title": "ner, \\Connectionist speech recognition with a global  MMI algorithm,\" in EUROSPEECH'93, 3rd European Confer-  ence on Speech Communication and Technology, Berlin, Sept"
+        },
+        {
+            "paperId": null,
+            "title": "Hender-  son, \\Recognition-based segmentation of on-line hand-printed  words,\" in Advances in Neural Information Processing Systems"
+        },
+        {
+            "paperId": null,
+            "title": "Recognition of cursive script amounts"
+        },
+        {
+            "paperId": null,
+            "title": "Vorbr(cid:127)uggen"
+        },
+        {
+            "paperId": "2599131a4bc2fa957338732a37c744cfe3e17b24",
+            "title": "A Training Algorithm for Optimal Margin Classi(cid:12)ers"
+        },
+        {
+            "paperId": null,
+            "title": "Satter(cid:12)eld, C Stenard, and T."
+        },
+        {
+            "paperId": "21e82ed12c620fba1f5ee42162962aae74a23510",
+            "title": "Approximation by superpositions of a sigmoidal function"
+        },
+        {
+            "paperId": null,
+            "title": "MLP, LVQ and DP: Comparison & cooperation"
+        },
+        {
+            "paperId": "adf724f637afdb300426df8d2ff4c4342f1e7528",
+            "title": "Design of a neural network character recognizer for a touch terminal"
+        },
+        {
+            "paperId": "695c519820e791af974f190528baf42154655da7",
+            "title": "Multi-State Time Delay Neural Networks for Continuous Speech Recognition"
+        },
+        {
+            "paperId": null,
+            "title": "Approche th \u0301 eorique de l\u2019Apprentissage Connexionniste: Applications `  a la Reconnaissance de la Parole"
+        },
+        {
+            "paperId": "bdf2081749ff30ec219006afa139f48e1edb9592",
+            "title": "Overview and Synthesis"
+        },
+        {
+            "paperId": "e08d090d1e586610d636a46004876e9f3ded8209",
+            "title": "A time-delay neural network architecture for isolated word recognition"
+        },
+        {
+            "paperId": null,
+            "title": "Combining hidden markov  models and neural network classi ers,\" in International Con-  ference on Acoustics, Speech, and Signal Processing, Albu"
+        },
+        {
+            "paperId": "86ab4cae682fbd49c5a5bedb630e5a40fa7529f6",
+            "title": "Handwritten Digit Recognition with a Back-Propagation Network"
+        },
+        {
+            "paperId": "01b6affe3ea4eae1978aec54e87087feb76d9215",
+            "title": "Generalization and network design strategies"
+        },
+        {
+            "paperId": "f19ca2336b8a7cc9344ffef5dbe3d3ff17954ab4",
+            "title": "A time delay neural network architecture for speech recognition"
+        },
+        {
+            "paperId": "1f462943c8d0af69c12a09058251848324135e5a",
+            "title": "Probabilistic Interpretation of Feedforward Classification Network Outputs, with Relationships to Statistical Pattern Recognition"
+        },
+        {
+            "paperId": "589d377b23e2bdae7ad161b36a5d6613bcfccdde",
+            "title": "Improving the convergence of back-propagation learning with second-order methods"
+        },
+        {
+            "paperId": "16b4fd36ff5ca603fed13a326054cd0373ea442c",
+            "title": "Numerical Recipes: The Art of Scientific Computing"
+        },
+        {
+            "paperId": "cdefacc5f4e4292936ea9bd542e0a46c6c49905c",
+            "title": "Handwritten Digit Recognition: Applications of Neural Net Chips and Automatic Learning"
+        },
+        {
+            "paperId": "c66cf3657e2c0bffe2e7861b840d3f9786323908",
+            "title": "A Tutorial on Hidden Markov Models and Selected Applications"
+        },
+        {
+            "paperId": "5d1f4d800a3a3bd0bf10839f9869f533e0d41c23",
+            "title": "A Theoretical Framework for Back-Propagation"
+        },
+        {
+            "paperId": "b6733d4705a41de1a8f5a5eccd75479b448d5247",
+            "title": "Efficient Parallel Learning Algorithms for Neural Networks"
+        },
+        {
+            "paperId": null,
+            "title": "He received the Ph.D degree in speech and signal processing from ENST in 1994"
+        },
+        {
+            "paperId": "9cd946b389c208a7a719626132fa51390e897067",
+            "title": "Numerical recipes: The art of scientific computing"
+        },
+        {
+            "paperId": null,
+            "title": "Neural-net classi ers useful for  speech"
+        },
+        {
+            "paperId": null,
+            "title": "During his time at the Universit\u00e9 Pierre et Marie Curie, he proposed an early version of the back-propagation learning algorithm for neural networks"
+        },
+        {
+            "paperId": "56b771c4c3a54910dc3e7ff838940de89ed282db",
+            "title": "Learning processes in an asymmetric threshold network"
+        },
+        {
+            "paperId": "44f2679f8169e7f6449c52e058ebe6a45838b3c0",
+            "title": "Learning Process in an Asymmetric Threshold Network"
+        },
+        {
+            "paperId": "a0d16f0e99f7ce5e6fb70b1a68c685e9ad610657",
+            "title": "A Learning Algorithm for Boltzmann Machines"
+        },
+        {
+            "paperId": "d007ed936c51a700d8c65d1bbfae7acc83783c31",
+            "title": "Une procedure d'apprentissage pour reseau a seuil asymmetrique (A learning scheme for asymmetric threshold networks)"
+        },
+        {
+            "paperId": "9aec973227713cd45f156090d82a3056cca8060f",
+            "title": "Neocognitron: A new algorithm for pattern recognition tolerant of deformations and shifts in position"
+        },
+        {
+            "paperId": "0c646a8923d70ae9a93ee8945c05e47246707d80",
+            "title": "Submitted by"
+        },
+        {
+            "paperId": null,
+            "title": "construction of quadratic polynomial classi(cid:12)ers"
+        },
+        {
+            "paperId": "ded14685a23df94d93e8662578d4132c9f4aa1c7",
+            "title": "Foundations of the theory of learning systems"
+        },
+        {
+            "paperId": "6b4fe4aa4d66fecc7b2869569002714d91d0b3f7",
+            "title": "Receptive fields, binocular interaction and functional architecture in the cat's visual cortex"
+        },
+        {
+            "paperId": null,
+            "title": "Learning in random nets"
+        },
+        {
+            "paperId": null,
+            "title": "20. DiscriminativeViterbiTrainingGTNArchitecture fora character stringrecognizer based on HeuristicOver-Segmentation"
+        },
+        {
+            "paperId": null,
+            "title": "Heuristic Over-Segmentation approach 2. SDNN approach"
+        },
+        {
+            "paperId": null,
+            "title": "Neural network-based 2322  PROCEEDINGS OF THE IEEE, VOL. 86, NO. 11, NOVEMBER 1998  face detection"
+        },
+        {
+            "paperId": null,
+            "title": "Fig. 29. Pseudo-code for a simpli(cid:12)ed generalized composition algo-rithm"
+        },
+        {
+            "paperId": null,
+            "title": "Yoshua Bengio"
+        },
+        {
+            "paperId": null,
+            "title": "Advances in Neural Information Processing Systems 6"
+        },
+        {
+            "paperId": null,
+            "title": "Authors Biographies Yann LeCun"
+        },
+        {
+            "paperId": null,
+            "title": "S(cid:127)ackinger"
+        }
+    ]
+}

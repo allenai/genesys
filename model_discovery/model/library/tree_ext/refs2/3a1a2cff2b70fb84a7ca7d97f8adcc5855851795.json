@@ -1,0 +1,184 @@
+{
+    "paperId": "3a1a2cff2b70fb84a7ca7d97f8adcc5855851795",
+    "externalIds": {
+        "MAG": "1524333225",
+        "CorpusId": 1774023
+    },
+    "title": "The Kaldi Speech Recognition Toolkit",
+    "abstract": "We describe the design of Kaldi, a free, open-source toolkit for speech recognition research. Kaldi provides a speech recognition system based on finite-state automata (using the freely available OpenFst), together with detailed documentation and a comprehensive set of scripts for building complete recognition systems. Kaldi is written is C++, and the core library supports modeling of arbitrary phonetic-context sizes, acoustic modeling with subspace Gaussian mixture models (SGMM) as well as standard Gaussian mixture models, together with all commonly used linear and affine transforms. Kaldi is released under the Apache License v2.0, which is highly nonrestrictive, making it suitable for a wide community of users.",
+    "venue": "",
+    "year": 2011,
+    "referenceCount": 27,
+    "citationCount": 6161,
+    "influentialCitationCount": 528,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The design of Kaldi is described, a free, open-source toolkit for speech recognition research that provides a speech recognition system based on finite-state automata together with detailed documentation and a comprehensive set of scripts for building complete recognition systems."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1792214",
+            "name": "Daniel Povey"
+        },
+        {
+            "authorId": "2268620",
+            "name": "Arnab Ghoshal"
+        },
+        {
+            "authorId": "2541218",
+            "name": "Gilles Boulianne"
+        },
+        {
+            "authorId": "1816892",
+            "name": "L. Burget"
+        },
+        {
+            "authorId": "3075141",
+            "name": "O. Glembek"
+        },
+        {
+            "authorId": "46356878",
+            "name": "N. Goel"
+        },
+        {
+            "authorId": "2592983",
+            "name": "M. Hannemann"
+        },
+        {
+            "authorId": "2745667",
+            "name": "P. Motl\u00edcek"
+        },
+        {
+            "authorId": "2480051",
+            "name": "Y. Qian"
+        },
+        {
+            "authorId": "35455336",
+            "name": "Petr Schwarz"
+        },
+        {
+            "authorId": "3330139",
+            "name": "J. Silovsk\u00fd"
+        },
+        {
+            "authorId": "1708033",
+            "name": "G. Stemmer"
+        },
+        {
+            "authorId": "2459598",
+            "name": "Karel Vesel\u00fd"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "820de1656c2ddd5009e92553bc2c2ca45fc674fb",
+            "title": "Speaker adaptation with an Exponential Transform"
+        },
+        {
+            "paperId": "8d73b5b6bbb93fdfb3974632b72930741cdedf46",
+            "title": "The subspace Gaussian mixture model - A structured model for speech recognition"
+        },
+        {
+            "paperId": "f66612b7b986169730d4e9c6e473566025a18d85",
+            "title": "The IBM Attila speech recognition toolkit"
+        },
+        {
+            "paperId": "31e105cac80aa8f1646dfb22c95d035564ea4998",
+            "title": "OpenFst: A General and Efficient Weighted Finite-State Transducer Library"
+        },
+        {
+            "paperId": "135328a4e2a33e17949b495ccd5fbdc87b2a7e3d",
+            "title": "The HTK book version 3.4"
+        },
+        {
+            "paperId": "6bb862f92e222ad7b1bf03a14a1c564ba0f2e76b",
+            "title": "Using VTLN for broadcast news transcription"
+        },
+        {
+            "paperId": "7d060fc04306580d8693e1335caf4c37ad83357b",
+            "title": "Sphinx-4: a flexible open source framework for speech recognition"
+        },
+        {
+            "paperId": "399da68d3b97218b6c80262df7963baa89dcc71b",
+            "title": "SRILM - an extensible language modeling toolkit"
+        },
+        {
+            "paperId": "eefd065ae942b03f5ff7199fce46d3392a136048",
+            "title": "Julius - an open source real-time large vocabulary recognition engine"
+        },
+        {
+            "paperId": "626a71ca59d88964d9a08e40ba0c8e4be2ac3bb9",
+            "title": "Robust decision tree state tying for continuous speech recognition"
+        },
+        {
+            "paperId": "2b899462b71be626c475c5a372a353de7ec07832",
+            "title": "Semi-tied covariance matrices for hidden Markov models"
+        },
+        {
+            "paperId": "6a3b8d6aaa38a8cbac71935b03560c79cc89f8c1",
+            "title": "Frame discrimination training for HMMs for large vocabulary speech recognition"
+        },
+        {
+            "paperId": "3fd4b226ecf0465d952fac3cc7d161a583a7c10c",
+            "title": "Heteroscedastic discriminant analysis and reduced rank HMMs for improved speech recognition"
+        },
+        {
+            "paperId": "df7614d47ab852439bed5d790f8b8e45b476aaeb",
+            "title": "Maximum likelihood modeling with Gaussian distributions for classification"
+        },
+        {
+            "paperId": "2109f8f91301abec8497286160cd6b0f2e65ed05",
+            "title": "Maximum likelihood linear transformations for HMM-based speech recognition"
+        },
+        {
+            "paperId": "694694267738a1295361294f2631b5f8f0abbbb1",
+            "title": "The generation and use of regression class trees for MLLR adaptation"
+        },
+        {
+            "paperId": "ae4614f758dfa344a04b33377c96abc10d5eeda7",
+            "title": "Maximum likelihood linear regression for speaker adaptation of continuous density hidden Markov models"
+        },
+        {
+            "paperId": "d8e9bec33ce069e567479a6d1c122363021c4a57",
+            "title": "Large vocabulary continuous speech recognition using HTK"
+        },
+        {
+            "paperId": "618c54f2ee1ebffdb8dc8fc501166b01f8731496",
+            "title": "Tree-based state tying for high accuracy acoustic modelling"
+        },
+        {
+            "paperId": null,
+            "title": "\u201cThe exponential transform as a generic substitute for vtln,\u201d"
+        },
+        {
+            "paperId": "90bbe026fa7acacd817f1962c758e2951f796bd5",
+            "title": "The RWTH aachen university open source speech recognition system"
+        },
+        {
+            "paperId": "93f6dd2c761fdeac0af6d2253d57834439d7794f",
+            "title": "IRSTLM: an open source toolkit for handling large scale language models"
+        },
+        {
+            "paperId": "a80a452e587bd7f06ece1be101d6775fcee0f7af",
+            "title": "Weighted finite-state transducers in speech recognition"
+        },
+        {
+            "paperId": "b462184f09696a8d819e28346747073f337b49a9",
+            "title": "Weighted finite state transducers in speech recognition"
+        },
+        {
+            "paperId": "09e33003ba16184f1206810932c4eb0eeffe7601",
+            "title": "Signal processing with lapped transforms"
+        },
+        {
+            "paperId": null,
+            "title": "ATLAS homepage, http://math-atlas.sourceforge.net"
+        },
+        {
+            "paperId": null,
+            "title": "JAMA homepage"
+        }
+    ]
+}

@@ -1,0 +1,151 @@
+{
+    "paperId": "168fba0cc5029a906cd57c9535645d1f13a87a7b",
+    "externalIds": {
+        "MAG": "2569829274",
+        "PubMedCentral": "5222833",
+        "DBLP": "journals/ficn/FolliLR17",
+        "DOI": "10.3389/fncom.2016.00144",
+        "CorpusId": 15009408,
+        "PubMed": "28119595"
+    },
+    "title": "On the Maximum Storage Capacity of the Hopfield Model",
+    "abstract": "Recurrent neural networks (RNN) have traditionally been of great interest for their capacity to store memories. In past years, several works have been devoted to determine the maximum storage capacity of RNN, especially for the case of the Hopfield network, the most popular kind of RNN. Analyzing the thermodynamic limit of the statistical properties of the Hamiltonian corresponding to the Hopfield neural network, it has been shown in the literature that the retrieval errors diverge when the number of stored memory patterns (P) exceeds a fraction (\u2248 14%) of the network size N. In this paper, we study the storage performance of a generalized Hopfield model, where the diagonal elements of the connection matrix are allowed to be different from zero. We investigate this model at finite N. We give an analytical expression for the number of retrieval errors and show that, by increasing the number of stored patterns over a certain threshold, the errors start to decrease and reach values below unit for P \u226b N. We demonstrate that the strongest trade-off between efficiency and effectiveness relies on the number of patterns (P) that are stored in the network by appropriately fixing the connection weights. When P\u226bN and the diagonal elements of the adjacency matrix are not forced to be zero, the optimal storage capacity is obtained with a number of stored memories much larger than previously reported. This theory paves the way to the design of RNN with high storage capacity and able to retrieve the desired pattern without distortions.",
+    "venue": "Frontiers Comput. Neurosci.",
+    "year": 2017,
+    "referenceCount": 27,
+    "citationCount": 41,
+    "influentialCitationCount": 2,
+    "openAccessPdf": {
+        "url": "https://www.frontiersin.org/articles/10.3389/fncom.2016.00144/pdf",
+        "status": "GOLD"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is demonstrated that the strongest trade-off between efficiency and effectiveness relies on the number of patterns that are stored in the network by appropriately fixing the connection weights, which paves the way to the design of RNN with high storage capacity and able to retrieve the desired pattern without distortions."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3694780",
+            "name": "V. Folli"
+        },
+        {
+            "authorId": "144167301",
+            "name": "M. Leonetti"
+        },
+        {
+            "authorId": "2920586",
+            "name": "G. Ruocco"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "28707ae5f20ff10352baf3cd3c64d0f4987990f3",
+            "title": "Is cortical connectivity optimized for storing information?"
+        },
+        {
+            "paperId": "40340d5ab47f7565533644c97c517f43a87396ab",
+            "title": "Topological and dynamical complexity of random neural networks."
+        },
+        {
+            "paperId": "285bd8fde3de93dd9f7e0d91a859fcd9ebb8db42",
+            "title": "Towards Real-World Applications of Online Learning Spiral Recurrent Neural Networks"
+        },
+        {
+            "paperId": "e476f5c51882d751a5befedb20fa2318b38211b6",
+            "title": "Attractors in fully asymmetric neural networks"
+        },
+        {
+            "paperId": "3b39fc342a654025279daca13fda8b0242c40ef2",
+            "title": "On the LambertW function"
+        },
+        {
+            "paperId": "20b844e395355b40fa5940c61362ec40e56027aa",
+            "title": "Neural networks"
+        },
+        {
+            "paperId": "3cea0c3d350d78bd3d9bd557c1fe56c59c9bf0e2",
+            "title": "The organization of behavior."
+        },
+        {
+            "paperId": "1a442ed03ed8c6bc79272d1be1fd8bc3f0afe73a",
+            "title": "Modelling Brain Function: The World of Attractor Neural Networks"
+        },
+        {
+            "paperId": "e228cdf4a899127cba956217bd9e29f9bfb4ddc9",
+            "title": "Distribution of the activities in a diluted neural network"
+        },
+        {
+            "paperId": "fa12d13973859352a6dc98e07f807f3700bac933",
+            "title": "Chaos in random neural networks."
+        },
+        {
+            "paperId": "238df53665263f5515142681ac493b879bb106ff",
+            "title": "The nature of attractors in an asymmetric spin glass with deterministic dynamics"
+        },
+        {
+            "paperId": "d5db1cc4a5ea1fcf017ceac7f07496292f37a9a2",
+            "title": "The capacity of the Hopfield associative memory"
+        },
+        {
+            "paperId": "b0f93cf5b155e9deccec9ddd6978fb3b4775878b",
+            "title": "Storing infinite numbers of patterns in a spin-glass model of neural networks."
+        },
+        {
+            "paperId": "bd10cbddb8407ac2eaccf9ec4cf2de2524813552",
+            "title": "Spin-glass models of neural networks."
+        },
+        {
+            "paperId": "ad1698c1f463a396c25e18520ff73a30f8b5cb2c",
+            "title": "Information capacity of the Hopfield model"
+        },
+        {
+            "paperId": "24b9eebe49cf7e00cf50cf7b7d9243386a23fe7c",
+            "title": "Neurons with graded response have collective computational properties like those of two-state neurons."
+        },
+        {
+            "paperId": "786b660e60069ecf01673ade33e287d6adb022b7",
+            "title": "\u2018Unlearning\u2019 has a stabilizing effect in collective memories"
+        },
+        {
+            "paperId": "98b4d4e24aab57ab4e1124ff8106909050645cfa",
+            "title": "Neural networks and physical systems with emergent collective computational abilities."
+        },
+        {
+            "paperId": "8ccc309320caea11e07ec44051331be8d9e5a8b9",
+            "title": "Analytic theory of the ground state properties of a spin glass. II. XY spin glass"
+        },
+        {
+            "paperId": "0cabc69aaf5dd7ff104bcec693a9ebe7bfb238c4",
+            "title": "A theory for the acquisition and loss of neuron specificity in visual cortex"
+        },
+        {
+            "paperId": "52ba94df650018790b30d5d2ba06d020c5d67638",
+            "title": "The Neurophysiological Basis of Mind"
+        },
+        {
+            "paperId": null,
+            "title": "Con\ufb02ict of Interest Statement"
+        },
+        {
+            "paperId": "6f2718bb53fd422b0698d038eef48266aa8dd0ea",
+            "title": "Handbook Of Mathematical Functions"
+        },
+        {
+            "paperId": "1d186de15f3d95e176ac7402c29b791346d7446c",
+            "title": "This is an open access article distributed under the terms of the Creative Commons Attribution License"
+        },
+        {
+            "paperId": "045310b06e8a3983a363a118cc9dcc3f292970b4",
+            "title": "Neural Networks: A Comprehensive Foundation"
+        },
+        {
+            "paperId": "dfc842fc01a5b9d3e19edc712f35e2cac5e45b99",
+            "title": "A possible organization of animal memory and learning"
+        },
+        {
+            "paperId": null,
+            "title": "Hopfiled Model: Maximum Storage Capacity"
+        }
+    ]
+}

@@ -1,0 +1,74 @@
+{
+    "paperId": "1ca97e1668e305fb719845f84a05a62dfb946a5d",
+    "externalIds": {
+        "MAG": "2056763477",
+        "DBLP": "journals/neco/BottouV92",
+        "DOI": "10.1162/neco.1992.4.6.888",
+        "CorpusId": 7035291
+    },
+    "title": "Local Learning Algorithms",
+    "abstract": "Very rarely are training data evenly distributed in the input space. Local learning algorithms attempt to locally adjust the capacity of the training system to the properties of the training set in each area of the input space. The family of local learning algorithms contains known methods, like the k-nearest neighbors method (kNN) or the radial basis function networks (RBF), as well as new algorithms. A single analysis models some aspects of these algorithms. In particular, it suggests that neither kNN or RBF, nor nonlocal classifiers, achieve the best compromise between locality and capacity. A careful control of these parameters in a simple local learning algorithm has provided a performance breakthrough for an optical character recognition problem. Both the error rate and the rejection performance have been significantly improved.",
+    "venue": "Neural Computation",
+    "year": 1992,
+    "referenceCount": 10,
+    "citationCount": 609,
+    "influentialCitationCount": 50,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A single analysis suggests that neither kNN or RBF, nor nonlocal classifiers, achieve the best compromise between locality and capacity."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "52184096",
+            "name": "L. Bottou"
+        },
+        {
+            "authorId": "50560492",
+            "name": "V. Vapnik"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "447c6c09cc0051d56ff7020941fce6734a0fd3e7",
+            "title": "Local Algorithms for Pattern Recognition and Dependencies Estimation"
+        },
+        {
+            "paperId": "04641b38cdab7b5b6c7d0d09193d3220ef40efc5",
+            "title": "Structural Risk Minimization for Character Recognition"
+        },
+        {
+            "paperId": "9642a175637a400b425f0ac0cb6a2b067cc8fe6b",
+            "title": "Principles of Risk Minimization for Learning Theory"
+        },
+        {
+            "paperId": "c8d90974c3f3b40fa05e322df2905fc16204aa56",
+            "title": "Adaptive Mixtures of Local Experts"
+        },
+        {
+            "paperId": "e4b370c1a04a8a6807bd73b6bbff5773e575fee7",
+            "title": "Transforming Neural-Net Output Levels to Probability Distributions"
+        },
+        {
+            "paperId": "1e7c4f513f24c3b82a1138b9f22ed87ed00cbe76",
+            "title": "Fast Learning in Networks of Locally-Tuned Processing Units"
+        },
+        {
+            "paperId": "d5558a34dfd1dbb572895664d38fca04029a99cb",
+            "title": "Radial Basis Functions, Multi-Variable Functional Interpolation and Adaptive Networks"
+        },
+        {
+            "paperId": "30ffd4a8e479d04b1dea5749eac4a466dccde64b",
+            "title": "Probability Inequalities for Sums of Bounded Random Variables"
+        },
+        {
+            "paperId": "86ab4cae682fbd49c5a5bedb630e5a40fa7529f6",
+            "title": "Handwritten Digit Recognition with a Back-Propagation Network"
+        },
+        {
+            "paperId": "b08ba914037af6d88d16e2657a65cd9dc5cf5da1",
+            "title": "Multivariable Functional Interpolation and Adaptive Networks"
+        }
+    ]
+}

@@ -1,0 +1,158 @@
+{
+    "paperId": "bff3ea999978e8c9503b62510bba11c2a5f24e51",
+    "externalIds": {
+        "DBLP": "journals/tnn/ZengGS94",
+        "MAG": "2152080463",
+        "DOI": "10.1109/72.279194",
+        "CorpusId": 518523,
+        "PubMed": "18267800"
+    },
+    "title": "Discrete recurrent neural networks for grammatical inference",
+    "abstract": "Describes a novel neural architecture for learning deterministic context-free grammars, or equivalently, deterministic pushdown automata. The unique feature of the proposed network is that it forms stable state representations during learning-previous work has shown that conventional analog recurrent networks can be inherently unstable in that they cannot retain their state memory for long input strings. The authors have previously introduced the discrete recurrent network architecture for learning finite-state automata. Here they extend this model to include a discrete external stack with discrete symbols. A composite error function is described to handle the different situations encountered in learning. The pseudo-gradient learning method (introduced in previous work) is in turn extended for the minimization of these error functions. Empirical trials validating the effectiveness of the pseudo-gradient learning method are presented, for networks both with and without an external stack. Experimental results show that the new networks are successful in learning some simple pushdown automata, though overfitting and non-convergent learning can also occur. Once learned, the internal representation of the network is provably stable; i.e., it classifies unseen strings of arbitrary length with 100% accuracy.",
+    "venue": "IEEE Trans. Neural Networks",
+    "year": 1994,
+    "referenceCount": 29,
+    "citationCount": 94,
+    "influentialCitationCount": 6,
+    "openAccessPdf": {
+        "url": "https://authors.library.caltech.edu/records/86tx1-2nb90/files/00279194.pdf?download=1",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel neural architecture for learning deterministic context-free grammars, or equivalently, deterministic pushdown automata is described, and a composite error function is described to handle the different situations encountered in learning."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2075413715",
+            "name": "Zheng Zeng"
+        },
+        {
+            "authorId": "145135018",
+            "name": "R. Goodman"
+        },
+        {
+            "authorId": "50860274",
+            "name": "Padhraic Smyth"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "0d3b51f94a5934fdda8f1e728f1b56c9bfeb1cb6",
+            "title": "Learning Finite State Machines With Self-Clustering Recurrent Networks"
+        },
+        {
+            "paperId": "1811f708b8b7456a3708fabd2fd638da36bd7ba0",
+            "title": "Using Prior Knowledge in a {NNPDA} to Learn Context-Free Languages"
+        },
+        {
+            "paperId": "872cdc269f3cb59f8a227818f35041415091545f",
+            "title": "Learning and Extracting Finite State Automata with Second-Order Recurrent Neural Networks"
+        },
+        {
+            "paperId": "9e8cf03655d224b0994d0f9d4f5aa80bca07021a",
+            "title": "The Recurrent Cascade-Correlation Architecture"
+        },
+        {
+            "paperId": "668087f0ae7ce1de6e0bd0965dbb480c08103260",
+            "title": "Finding Structure in Time"
+        },
+        {
+            "paperId": "bd46c1b5948abe04e565a8bae6454da63a1b021e",
+            "title": "Finite State Automata and Simple Recurrent Networks"
+        },
+        {
+            "paperId": "ce9a21b93ba29d4145a8ef6bf401e77f261848de",
+            "title": "A Learning Algorithm for Continually Running Fully Recurrent Neural Networks"
+        },
+        {
+            "paperId": "86dbe878a56e5052a66c036996416a782b4da618",
+            "title": "Syntactic pattern recognition and applications"
+        },
+        {
+            "paperId": "24c0d57775074c33a2cc2e973c948b393c3a1aa0",
+            "title": "The University of Ireland"
+        },
+        {
+            "paperId": null,
+            "title": "l-c)rcl(![ recurrent neural network s"
+        },
+        {
+            "paperId": "84ff839a24b3b271711ec0de9fcbea1cdfebf6b4",
+            "title": "Advances in neural information processing systems 3"
+        },
+        {
+            "paperId": null,
+            "title": "Distributed rcl}r(~sc~lltalioJls, ; ~imp]c rccurrcnt Ilctworks, an(l grzlrlllll:\\.lJi(}:ll structure"
+        },
+        {
+            "paperId": null,
+            "title": "The induction of dynamical recognizes"
+        },
+        {
+            "paperId": null,
+            "title": "Connectionist pushdown automata that learn context - free grammars"
+        },
+        {
+            "paperId": "c8214d69821dfa77950d8b1fceefa1915fcbcc47",
+            "title": "Theory of Finite Automata"
+        },
+        {
+            "paperId": null,
+            "title": "and of Technology. From 1985 to 1988 he worked part-time as a research consultant with Pacific Bell in the areas of telecommunications switching systems and automated network management"
+        },
+        {
+            "paperId": null,
+            "title": "ancl the PL)P Research Group, Parallel Distributed Processing"
+        },
+        {
+            "paperId": null,
+            "title": "Dynamic construction of finite-state automata from examples using hillclimbing"
+        },
+        {
+            "paperId": "41a88a490d7ba9e383ecb16c4290083413a08258",
+            "title": "Introduction to Automata Theory, Languages and Computation"
+        },
+        {
+            "paperId": null,
+            "title": "Ulhnanl Iniroduclion 10 A ulomata 7"
+        },
+        {
+            "paperId": null,
+            "title": "Ph.D. in Electronics at the University of Kent at Canterbury, U.K."
+        },
+        {
+            "paperId": null,
+            "title": "Dr. Goodman joined the faculty of the Department of Electncal Engineering at the Califomia Institute of Technology as Associate Professor. Dr Goodman\u2019s research interests are in error control"
+        },
+        {
+            "paperId": "2982aba3ad1a424ccd342895c308c9744f06ea6f",
+            "title": "Syntactic Pattern Recognition And Applications"
+        },
+        {
+            "paperId": null,
+            "title": "He received the B.Sc. degree in Electncal Engineering from Leeds University, Yorkshire, U.K"
+        },
+        {
+            "paperId": null,
+            "title": "S\u201982-M\u201985-S\u2019S5-M\u201988 bom in Kilmovee"
+        },
+        {
+            "paperId": null,
+            "title": "179-211, 19CN. Rodney M. Goodman, ( London England, on February the B.Sc. degree in Leeds University, Yorkshire"
+        },
+        {
+            "paperId": null,
+            "title": "manual clustering (as in [SI) is required to extract the state machine explicitly"
+        },
+        {
+            "paperId": null,
+            "title": "and sequence analysis"
+        },
+        {
+            "paperId": null,
+            "title": "for the Jet Propulsion Laboratory, and Pacific Bell"
+        }
+    ]
+}

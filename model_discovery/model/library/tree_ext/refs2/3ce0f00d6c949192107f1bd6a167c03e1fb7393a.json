@@ -1,0 +1,130 @@
+{
+    "paperId": "3ce0f00d6c949192107f1bd6a167c03e1fb7393a",
+    "externalIds": {
+        "DBLP": "conf/naacl/GoldbergE10",
+        "MAG": "1660460062",
+        "ACL": "N10-1115",
+        "CorpusId": 3146611
+    },
+    "title": "An Efficient Algorithm for Easy-First Non-Directional Dependency Parsing",
+    "abstract": "We present a novel deterministic dependency parsing algorithm that attempts to create the easiest arcs in the dependency structure first in a non-directional manner. Traditional deterministic parsing algorithms are based on a shift-reduce framework: they traverse the sentence from left-to-right and, at each step, perform one of a possible set of actions, until a complete tree is built. A drawback of this approach is that it is extremely local: while decisions can be based on complex structures on the left, they can look only at a few words to the right. In contrast, our algorithm builds a dependency tree by iteratively selecting the best pair of neighbours to connect at each parsing step. This allows incorporation of features from already built structures both to the left and to the right of the attachment point. The parser learns both the attachment preferences and the order in which they should be performed. The result is a deterministic, best-first, O(nlogn) parser, which is significantly more accurate than best-first transition based parsers, and nears the performance of globally optimized parsing models.",
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2010,
+    "referenceCount": 24,
+    "citationCount": 217,
+    "influentialCitationCount": 30,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel deterministic dependency parsing algorithm that attempts to create the easiest arcs in the dependency structure first in a non-directional manner, which is significantly more accurate than best-first transition based parsers, and nears the performance of globally optimized parsing models."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2089067",
+            "name": "Yoav Goldberg"
+        },
+        {
+            "authorId": "1754680",
+            "name": "Michael Elhadad"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "006ec6c55f096153087cf4be0da6960708701b5b",
+            "title": "Bilingually-Constrained (Monolingual) Shift-Reduce Parsing"
+        },
+        {
+            "paperId": "2b6a2a67a1bedbc53eb66f9658e34e85ba53a9c6",
+            "title": "LTAG Dependency Parsing with Bidirectional Incremental Construction"
+        },
+        {
+            "paperId": "ad1181d188f730b7917a95ae452efb48f830c90a",
+            "title": "A Tale of Two Parsers: Investigating and Combining Graph-based and Transition-based Dependency Parsing"
+        },
+        {
+            "paperId": "dccaa989317fd4f9060cff04a0a94e63176359dd",
+            "title": "Integrating Graph-Based and Transition-Based Dependency Parsers"
+        },
+        {
+            "paperId": "10a9abb4c78f0be5cc85847f248d3e8277b3c810",
+            "title": "The CoNLL 2007 Shared Task on Dependency Parsing"
+        },
+        {
+            "paperId": "6503a3d9fb204c2a08ecfcfe6ba5b815fc65a030",
+            "title": "Guided Learning for Bidirectional Sequence Classification"
+        },
+        {
+            "paperId": "67d58fad9a4fca2ccc1e8a748bc9be3ebc896bf4",
+            "title": "Multilingual Dependency Parsing Using Global Features"
+        },
+        {
+            "paperId": "c205e82ddf7d9bd759cca3e16baa60c49cecf056",
+            "title": "Experiments with a Higher-Order Projective Dependency Parser"
+        },
+        {
+            "paperId": "ef06ccbdab742b88f5eff8b46a61fa4cf7cfcbd8",
+            "title": "Characterizing the Errors of Data-Driven Dependency Parsing Models"
+        },
+        {
+            "paperId": "ce84ffca8a4107e61201245d1f3cb029b4c21a8c",
+            "title": "Fast and Robust Multilingual Dependency Parsing with a Generative Latent Variable Model"
+        },
+        {
+            "paperId": "570cd4cedd3ec5b51035fadebebaa88ac91f8b45",
+            "title": "Extended Constituent-to-Dependency Conversion for English"
+        },
+        {
+            "paperId": "27891ad3fbd8420c1a5a7459bf72b2e299487aab",
+            "title": "Incremental Integer Linear Programming for Non-projective Dependency Parsing"
+        },
+        {
+            "paperId": "d1ee5de52b17aaf7a6715312e5fa09b1436fa7c2",
+            "title": "A Best-First Probabilistic Shift-Reduce Parser"
+        },
+        {
+            "paperId": "9fc3bc94a0f1818bff5b2e1537edf1009a664da5",
+            "title": "Vine Parsing and Minimum Risk Reranking for Speed and Precision"
+        },
+        {
+            "paperId": "1deed1a4a03e07aee3b8b8e4716f35033c715a57",
+            "title": "CoNLL-X Shared Task on Multilingual Dependency Parsing"
+        },
+        {
+            "paperId": "6ffbfc01fd25546093d1f1953522d782d4e7fa8d",
+            "title": "Parser Combination by Reparsing"
+        },
+        {
+            "paperId": "8d1d98807843fad7de1734629edb0c873015c14a",
+            "title": "Online Learning of Approximate Dependency Parsing Algorithms"
+        },
+        {
+            "paperId": "ada80a1b6fe2621545a1e3d2fb56fc57eccf39a8",
+            "title": "Parsing with Soft and Hard Constraints on Dependency Length"
+        },
+        {
+            "paperId": "d3b27746f7a53f2dc5d9b8c2f3d343313622ec36",
+            "title": "Online Large-Margin Training of Dependency Parsers"
+        },
+        {
+            "paperId": "032906f0d86fd6bbf7512d3fffd06fcb83593012",
+            "title": "Incrementality in Deterministic Dependency Parsing"
+        },
+        {
+            "paperId": "f0e1883cf9d1b3c911125f46359f908557fc5827",
+            "title": "Statistical Dependency Analysis with Support Vector Machines"
+        },
+        {
+            "paperId": "5a7958b418bceb48a315384568091ab1898b1640",
+            "title": "Discriminative Training Methods for Hidden Markov Models: Theory and Experiments with Perceptron Algorithms"
+        },
+        {
+            "paperId": "81aea8b96f68e554cc933ba2c194eceb3b757592",
+            "title": "An English dependency treebank \u00e0 la Tesni\u00e8re"
+        },
+        {
+            "paperId": "ecf3a4cd2b2d721e823fd06b5c467c64e0fde5a8",
+            "title": "MaltParser: A Data-Driven Parser-Generator for Dependency Parsing"
+        }
+    ]
+}

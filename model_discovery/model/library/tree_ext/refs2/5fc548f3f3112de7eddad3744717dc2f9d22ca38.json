@@ -1,0 +1,182 @@
+{
+    "paperId": "5fc548f3f3112de7eddad3744717dc2f9d22ca38",
+    "externalIds": {
+        "DBLP": "conf/nips/TraskHRRDB18",
+        "ArXiv": "1808.00508",
+        "MAG": "2887020936",
+        "CorpusId": 51907763
+    },
+    "title": "Neural Arithmetic Logic Units",
+    "abstract": "Neural networks can learn to represent and manipulate numerical information, but they seldom generalize well outside of the range of numerical values encountered during training. To encourage more systematic numerical extrapolation, we propose an architecture that represents numerical quantities as linear activations which are manipulated using primitive arithmetic operators, controlled by learned gates. We call this module a neural arithmetic logic unit (NALU), by analogy to the arithmetic logic unit in traditional processors. Experiments show that NALU-enhanced neural networks can learn to track time, perform arithmetic over images of numbers, translate numerical language into real-valued scalars, execute computer code, and count objects in images. In contrast to conventional architectures, we obtain substantially better generalization both inside and outside of the range of numerical values encountered during training, often extrapolating orders of magnitude beyond trained numerical ranges.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2018,
+    "referenceCount": 33,
+    "citationCount": 194,
+    "influentialCitationCount": 25,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Experiments show that NALU-enhanced neural networks can learn to track time, perform arithmetic over images of numbers, translate numerical language into real-valued scalars, execute computer code, and count objects in images."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145994651",
+            "name": "Andrew Trask"
+        },
+        {
+            "authorId": "145783676",
+            "name": "Felix Hill"
+        },
+        {
+            "authorId": "144828948",
+            "name": "Scott E. Reed"
+        },
+        {
+            "authorId": "34269227",
+            "name": "Jack W. Rae"
+        },
+        {
+            "authorId": "1745899",
+            "name": "Chris Dyer"
+        },
+        {
+            "authorId": "1685771",
+            "name": "Phil Blunsom"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "06354570d5f6be803d4a79bf59ecbb097bca8755",
+            "title": "On the Practical Computational Power of Finite Precision RNNs for Language Recognition"
+        },
+        {
+            "paperId": "f83c5daa07093e4c27af17f8f39a66e6196dcb74",
+            "title": "Microscopy cell counting and detection with fully convolutional regression networks"
+        },
+        {
+            "paperId": "0c10a2cafb715f5c7b1810f89dd2eb3fadc5a38e",
+            "title": "Finding numbers in the brain"
+        },
+        {
+            "paperId": "856fe866bcce5e7a540655bea6ecc7406bdcfcba",
+            "title": "Generalization without Systematicity: On the Compositional Skills of Sequence-to-Sequence Recurrent Networks"
+        },
+        {
+            "paperId": "784ee73d5363c711118f784428d1ab89f019daa5",
+            "title": "Hybrid computing using a neural network with dynamic external memory"
+        },
+        {
+            "paperId": "5694e46284460a648fe29117cbc55f6c9be3fa3c",
+            "title": "Densely Connected Convolutional Networks"
+        },
+        {
+            "paperId": "77f0a39b8e02686fd85b01971f8feb7f60971f80",
+            "title": "Identity Mappings in Deep Residual Networks"
+        },
+        {
+            "paperId": "2f2d8f8072e5cc9b296fad551f65f183bdbff7aa",
+            "title": "Exploring the Limits of Language Modeling"
+        },
+        {
+            "paperId": "69e76e16740ed69f4dc55361a3d319ac2f1293dd",
+            "title": "Asynchronous Methods for Deep Reinforcement Learning"
+        },
+        {
+            "paperId": "b59d91e0699d4e1896a15bae13fd180bdaf77ea5",
+            "title": "Neural Programmer-Interpreters"
+        },
+        {
+            "paperId": "5d150cec2775f9bc863760448f14104cc8f42368",
+            "title": "Discovering governing equations from data by sparse identification of nonlinear dynamical systems"
+        },
+        {
+            "paperId": "452059171226626718eb677358836328f884298e",
+            "title": "Ask Me Anything: Dynamic Memory Networks for Natural Language Processing"
+        },
+        {
+            "paperId": "e837b79de602c69395498c1fbbe39bbb4e6f75ad",
+            "title": "Learning to Transduce with Unbounded Memory"
+        },
+        {
+            "paperId": "b0e52226bc29275698f35283060a97689b373490",
+            "title": "Cross-scene crowd counting via deep convolutional neural networks"
+        },
+        {
+            "paperId": "baac6d6686a06a8d16247950d5723f3fc6f36976",
+            "title": "Learning to count with deep object features"
+        },
+        {
+            "paperId": "97ad70a9fa3f99adf18030e5e38ebe3d90daa2db",
+            "title": "VQA: Visual Question Answering"
+        },
+        {
+            "paperId": "e0945081b5b87187a53d4329cf77cd8bff635795",
+            "title": "Highway Networks"
+        },
+        {
+            "paperId": "abb33d75dc297993fcc3fb75e0f4498f413eb4f6",
+            "title": "Towards AI-Complete Question Answering: A Set of Prerequisite Toy Tasks"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "0d0b3ff23fbf1ec7a0dfebd923a3ef224306491a",
+            "title": "Learning to Execute"
+        },
+        {
+            "paperId": "71ae756c75ac89e2d731c9c79649562b5768ff39",
+            "title": "Memory Networks"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "36eacf04da53c176bcfb9758d36022c7d9752fff",
+            "title": "Interactive Object Counting"
+        },
+        {
+            "paperId": "4177ec52d1b80ed57f2e72b0f9a42365f1a8598d",
+            "title": "Speech recognition with deep recurrent neural networks"
+        },
+        {
+            "paperId": "295895e5bd013c33ef0a62b89d41397e3238d8fa",
+            "title": "Privacy preserving crowd monitoring: Counting people without people models or tracking"
+        },
+        {
+            "paperId": "42f0d1e6d59e818d127e8352407799402756a615",
+            "title": "Tuning Curves for Approximate Numerosity in the Human Intraparietal Sulcus"
+        },
+        {
+            "paperId": "1be8778de4c6eb623871fe08d0998016bd60936f",
+            "title": "LSTM recurrent networks learn simple context-free and context-sensitive languages"
+        },
+        {
+            "paperId": "a3b7e80260891dcd3844b1835df8dee3a1cd67c7",
+            "title": "The Number Sense: How the Mind Creates Mathematics."
+        },
+        {
+            "paperId": "56cbfcbfffd8c54bd8477d10b6e0e17e097b97c7",
+            "title": "Connectionism and cognitive architecture: A critical analysis"
+        },
+        {
+            "paperId": "052b1d8ce63b07fec3de9dbb583772d860b7c769",
+            "title": "Learning representations by back-propagating errors"
+        },
+        {
+            "paperId": "6a081f65f9063658000584fd6de6c986701926c3",
+            "title": "The Child's Understanding of Number"
+        },
+        {
+            "paperId": "bea5780d621e669e8069f05d0f2fc0db9df4b50f",
+            "title": "Convolutional Deep Belief Networks on CIFAR-10"
+        },
+        {
+            "paperId": "a6383f155fa9d3e9b15092bfefbf613f982eb263",
+            "title": "The Algebraic Mind: Integrating Connectionism and Cognitive Science"
+        }
+    ]
+}

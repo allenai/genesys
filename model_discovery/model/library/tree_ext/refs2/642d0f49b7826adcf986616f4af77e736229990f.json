@@ -1,0 +1,178 @@
+{
+    "paperId": "642d0f49b7826adcf986616f4af77e736229990f",
+    "externalIds": {
+        "MAG": "2964299589",
+        "ArXiv": "1510.00149",
+        "DBLP": "journals/corr/HanMD15",
+        "CorpusId": 2134321
+    },
+    "title": "Deep Compression: Compressing Deep Neural Network with Pruning, Trained Quantization and Huffman Coding",
+    "abstract": "Neural networks are both computationally intensive and memory intensive, making them difficult to deploy on embedded systems with limited hardware resources. To address this limitation, we introduce \"deep compression\", a three stage pipeline: pruning, trained quantization and Huffman coding, that work together to reduce the storage requirement of neural networks by 35x to 49x without affecting their accuracy. Our method first prunes the network by learning only the important connections. Next, we quantize the weights to enforce weight sharing, finally, we apply Huffman coding. After the first two steps we retrain the network to fine tune the remaining connections and the quantized centroids. Pruning, reduces the number of connections by 9x to 13x; Quantization then reduces the number of bits that represent each connection from 32 to 5. On the ImageNet dataset, our method reduced the storage required by AlexNet by 35x, from 240MB to 6.9MB, without loss of accuracy. Our method reduced the size of VGG-16 by 49x from 552MB to 11.3MB, again with no loss of accuracy. This allows fitting the model into on-chip SRAM cache rather than off-chip DRAM memory. Our compression method also facilitates the use of complex neural networks in mobile applications where application size and download bandwidth are constrained. Benchmarked on CPU, GPU and mobile GPU, compressed network has 3x to 4x layerwise speedup and 3x to 7x better energy efficiency.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2015,
+    "referenceCount": 35,
+    "citationCount": 8102,
+    "influentialCitationCount": 816,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces \"deep compression\", a three stage pipeline: pruning, trained quantization and Huffman coding, that work together to reduce the storage requirement of neural networks by 35x to 49x without affecting their accuracy."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "143840275",
+            "name": "Song Han"
+        },
+        {
+            "authorId": "3123774",
+            "name": "Huizi Mao"
+        },
+        {
+            "authorId": "80724002",
+            "name": "W. Dally"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "592d2e65489f23ebd993dbdc0c84eda9ac8aadbe",
+            "title": "SqueezeNet: AlexNet-level accuracy with 50x fewer parameters and <1MB model size"
+        },
+        {
+            "paperId": "10b992e86ee96cd4c5d73f3d667059beb4749ce3",
+            "title": "HARDWARE-FRIENDLY CONVOLUTIONAL NEURAL NETWORK WITH EVEN-NUMBER FILTER SIZE"
+        },
+        {
+            "paperId": "2e2b189f668cf2c06ebc44dc9b166648256cf457",
+            "title": "EIE: Efficient Inference Engine on Compressed Deep Neural Network"
+        },
+        {
+            "paperId": "524cef2efdbed2af694ffb0c8f83e6890e178f16",
+            "title": "Cross-Domain Synthesis of Medical Images Using Efficient Location-Sensitive Deep Network"
+        },
+        {
+            "paperId": "1ff9a37d766e3a4f39757f5e1b235a42dacf18ff",
+            "title": "Learning both Weights and Connections for Efficient Neural Network"
+        },
+        {
+            "paperId": "7ffdbc358b63378f07311e883dddacc9faeeaf4b",
+            "title": "Fast R-CNN"
+        },
+        {
+            "paperId": "a6373454105df0c5511ca5f6cae4d20c48214272",
+            "title": "Fixed point optimization of deep convolutional neural networks for object recognition"
+        },
+        {
+            "paperId": "efb5032e6199c80f83309fd866b25be9545831fd",
+            "title": "Compressing Neural Networks with the Hashing Trick"
+        },
+        {
+            "paperId": "27a99c21a1324f087b2f144adc119f04137dfd87",
+            "title": "Deep Fried Convnets"
+        },
+        {
+            "paperId": "e7bf9803705f2eb608db1e59e5c7636a3f171916",
+            "title": "Compressing Deep Convolutional Networks using Vector Quantization"
+        },
+        {
+            "paperId": "2a4117849c88d4728c33b1becaa9fb6ed7030725",
+            "title": "Memory Bounded Deep Convolutional Networks"
+        },
+        {
+            "paperId": "a4db2d26b5d169de6b64de361dc7d4fd5b1f61a3",
+            "title": "Fixed-point feedforward deep neural network design using weights +1, 0, and \u22121"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "6bdb186ec4726e00a8051119636d4df3b94043b5",
+            "title": "Caffe: Convolutional Architecture for Fast Feature Embedding"
+        },
+        {
+            "paperId": "e5ae8ab688051931b4814f6d32b18391f8d1fa8d",
+            "title": "Exploiting Linear Structure Within Convolutional Networks for Efficient Evaluation"
+        },
+        {
+            "paperId": "5e83ab70d0cbc003471e87ec306d27d9c80ecb16",
+            "title": "Network In Network"
+        },
+        {
+            "paperId": "1d6e6adc7a841393fc10b78dc0018e550aff589d",
+            "title": "Provable Bounds for Learning Some Deep Representations"
+        },
+        {
+            "paperId": "eff61216e0136886e1158625b1e5a88ed1a7cbce",
+            "title": "Predicting Parameters in Deep Learning"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "bd5fc28c7356915ec71abafbe86b7596c60720aa",
+            "title": "The conference paper"
+        },
+        {
+            "paperId": "a42954d4b9d0ccdf1036e0af46d87a01b94c3516",
+            "title": "Second Order Derivatives for Network Pruning: Optimal Brain Surgeon"
+        },
+        {
+            "paperId": "f74672ff2cafd0e16469c9192b3261af129ffe46",
+            "title": "Pruning"
+        },
+        {
+            "paperId": "bcd857d75841aa3e92cd4284a8818aba9f6c0c3f",
+            "title": "Published as a conference paper at ICLR 2018 S IMULATING A CTION D YNAMICS WITH N EURAL P ROCESS N ETWORKS"
+        },
+        {
+            "paperId": "df67349bc22e251ddd586e16091d881321578b9a",
+            "title": "Under review as a conference paper at ICLR 2019 MILE : A Multi-Level Framework for Scalable Graph Embedding"
+        },
+        {
+            "paperId": null,
+            "title": "Deep Compression: Compressing Deep Neural Networks with Pruning, Trained Quantization and Huffman Coding"
+        },
+        {
+            "paperId": "eabf117aae614d6b65cc33a3a4bbb22b9a5014d9",
+            "title": "GPU-Based Deep Learning Inference: A Performance and Power Analysis"
+        },
+        {
+            "paperId": "fbeaa499e10e98515f7e1c4ad89165e8c0677427",
+            "title": "Improving the speed of neural networks on CPUs"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "a9392b9299972452ea6fbc3c605f76bb1e21ae42",
+            "title": "Phoneme probability estimation with dynamic sparsely connected artificial neural networks"
+        },
+        {
+            "paperId": "e7297db245c3feb1897720b173a59fe7e36babb7",
+            "title": "Optimal Brain Damage"
+        },
+        {
+            "paperId": "f4ea5a6ff3ffcd11ec2e6ed7828a7d41279fb3ad",
+            "title": "Comparing Biases for Minimal Network Construction with Back-Propagation"
+        },
+        {
+            "paperId": "237292e08fe45320e954377ebe2b7e08d08f1979",
+            "title": "On the Construction of Huffman Trees"
+        },
+        {
+            "paperId": null,
+            "title": "Caffe model zoo"
+        },
+        {
+            "paperId": null,
+            "title": "Technical brief: Nvidia jetson tk1 development kit bringing gpu-accelerated computing to embedded systems"
+        }
+    ]
+}

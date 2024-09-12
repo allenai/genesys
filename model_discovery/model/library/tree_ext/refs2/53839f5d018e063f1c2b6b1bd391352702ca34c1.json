@@ -1,0 +1,54 @@
+{
+    "paperId": "53839f5d018e063f1c2b6b1bd391352702ca34c1",
+    "externalIds": {
+        "ArXiv": "1609.05866",
+        "DBLP": "journals/corr/BrebissonV16",
+        "MAG": "2521593519",
+        "CorpusId": 6101861
+    },
+    "title": "A Cheap Linear Attention Mechanism with Fast Lookups and Fixed-Size Representations",
+    "abstract": "The softmax content-based attention mechanism has proven to be very beneficial in many applications of recurrent neural networks. Nevertheless it suffers from two major computational limitations. First, its computations for an attention lookup scale linearly in the size of the attended sequence. Second, it does not encode the sequence into a fixed-size representation but instead requires to memorize all the hidden states. These two limitations restrict the use of the softmax attention mechanism to relatively small-scale applications with short sequences and few lookups per sequence. In this work we introduce a family of linear attention mechanisms designed to overcome the two limitations listed above. We show that removing the softmax non-linearity from the traditional attention formulation yields constant-time attention lookups and fixed-size representations of the attended sequences. These properties make these linear attention mechanisms particularly suitable for large-scale applications with extreme query loads, real-time requirements and memory constraints. Early experiments on a question answering task show that these linear mechanisms yield significantly better accuracy results than no attention, but obviously worse than their softmax alternative.",
+    "venue": "arXiv.org",
+    "year": 2016,
+    "referenceCount": 5,
+    "citationCount": 9,
+    "influentialCitationCount": 0,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that removing the softmax non-linearity from the traditional attention formulation yields constant-time attention lookups and fixed-size representations of the attended sequences, making these linear attention mechanisms particularly suitable for large-scale applications with extreme query loads, real-time requirements and memory constraints."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2346028",
+            "name": "A. D. Br\u00e9bisson"
+        },
+        {
+            "authorId": "145467703",
+            "name": "Pascal Vincent"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "d1505c6123c102e53eb19dff312cb25cea840b72",
+            "title": "Teaching Machines to Read and Comprehend"
+        },
+        {
+            "paperId": "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e",
+            "title": "End-To-End Memory Networks"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": null,
+            "title": "@BULLET a requirement to store documents into fixed-size representations"
+        }
+    ]
+}

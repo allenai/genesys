@@ -1,0 +1,122 @@
+{
+    "paperId": "12279a0a09d13a8465b0a4bf9007bcdc3c1aad38",
+    "externalIds": {
+        "MAG": "2614024025",
+        "ArXiv": "1705.02514",
+        "DBLP": "conf/acssc/VenkataramaniCS18",
+        "DOI": "10.1109/ACSSC.2018.8645535",
+        "CorpusId": 6239651
+    },
+    "title": "End-To-End Source Separation With Adaptive Front-Ends",
+    "abstract": "Source separation and other audio applications have traditionally relied on the use of short-time Fourier transforms as a front-end frequency domain representation step. The unavailability of a neural network equivalent to forward and inverse transforms hinders the implementation of end-to-end learning systems for these applications. We develop an auto-encoder neural network that can act as an equivalent to short-time front-end transforms. We demonstrate the ability of the network to learn optimal, real-valued basis functions directly from the raw waveform of a signal and further show how it can be used as an adaptive front-end for supervised source separation. In terms of separation performance, these transforms significantly outperform their Fourier counterparts. Finally, we also propose and interpret a novel source to distortion ratio based cost function for end-to-end source separation.",
+    "venue": "Asilomar Conference on Signals, Systems and Computers",
+    "year": 2017,
+    "referenceCount": 21,
+    "citationCount": 72,
+    "influentialCitationCount": 4,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1705.02514",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An auto-encoder neural network is developed that can act as an equivalent to short-time front-end transforms and demonstrate the ability of the network to learn optimal, real-valued basis functions directly from the raw waveform of a signal."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "37445038",
+            "name": "Shrikant Venkataramani"
+        },
+        {
+            "authorId": "1718742",
+            "name": "Paris Smaragdis"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "e5c98541d7ba1cdf92a853d731c4bb1b531aa5d9",
+            "title": "TaSNet: Time-Domain Audio Separation Network for Real-Time, Single-Channel Speech Separation"
+        },
+        {
+            "paperId": "8e3282595e7f73cb6478b207c2e510026525bd38",
+            "title": "Neural network alternatives toconvolutive audio models for source separation"
+        },
+        {
+            "paperId": "76ea5484527ca67890879873592b6e63f52791ee",
+            "title": "Single channel audio source separation using convolutional denoising autoencoders"
+        },
+        {
+            "paperId": "73e61b31cc673b1bbb21595d50044c860f186fe0",
+            "title": "Improving music source separation based on deep neural networks through data augmentation and network blending"
+        },
+        {
+            "paperId": "fedef8eedef76692d805a6a3380159a95b79b4de",
+            "title": "Monoaural Audio Source Separation Using Deep Convolutional Neural Networks"
+        },
+        {
+            "paperId": "675ac07ad45971043dd41be4b62b92f4435fbda4",
+            "title": "A neural network alternative to non-negative audio models"
+        },
+        {
+            "paperId": "f84925aaa2bcb9bc1a83254e2b22f08e04a5669c",
+            "title": "Adaptive Denoising Autoencoders: A Fine-Tuning Scheme to Learn from Test Mixtures"
+        },
+        {
+            "paperId": "33af9298e5399269a12d4b9901492fe406af62b4",
+            "title": "Striving for Simplicity: The All Convolutional Net"
+        },
+        {
+            "paperId": "86efe7769f2b8a0e15ca213ab09881e6705caeb0",
+            "title": "Convolutional Neural Networks for Speech Recognition"
+        },
+        {
+            "paperId": "ca7f25ac119e2d706e51a63f6178f1547a863bcc",
+            "title": "Deep learning for monaural speech separation"
+        },
+        {
+            "paperId": "e93c7d71074c0d4890915263c7c34711d41b6940",
+            "title": "End-to-end learning for music audio"
+        },
+        {
+            "paperId": "558bec904602da019054d432259da5c59cfa79cb",
+            "title": "Deep neural networks for single channel source separation"
+        },
+        {
+            "paperId": "1a2a770d23b4a171fa81de62a78a3deb0588f238",
+            "title": "Visualizing and Understanding Convolutional Networks"
+        },
+        {
+            "paperId": "445ee3f6a7bc18ad6f029df27b4ea99b9eb44112",
+            "title": "An Algorithm for Intelligibility Prediction of Time\u2013Frequency Weighted Noisy Speech"
+        },
+        {
+            "paperId": "47128bb3ce4ed00691c0d7d58c02791c3e963ab7",
+            "title": "Darpa Timit Acoustic-Phonetic Continuous Speech Corpus CD-ROM {TIMIT} | NIST"
+        },
+        {
+            "paperId": "a78e587ab5811efcf09b1d28a45953d69bab31f5",
+            "title": "Adaptive Front-ends for End-to-end Source Separation"
+        },
+        {
+            "paperId": "fd5474f21495989777cbff507ecf1b37b7091475",
+            "title": "Learning the speech front-end with raw waveform CLDNNs"
+        },
+        {
+            "paperId": "3911933c247f705b2488fdd067330820e8db07bf",
+            "title": "TIMIT Acoustic-Phonetic Continuous Speech Corpus"
+        },
+        {
+            "paperId": "eba7e329e9d916ea10916ee97a398c53a794afcf",
+            "title": "BSS_EVAL Toolbox User Guide -- Revision 2.0"
+        },
+        {
+            "paperId": null,
+            "title": "\u201cNeural networks for machine learning lecture 6a overview of mini\u2013batch gradient descent.\u201d"
+        },
+        {
+            "paperId": null,
+            "title": "Spectral Audio Signal Processing"
+        }
+    ]
+}

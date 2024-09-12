@@ -1,0 +1,126 @@
+{
+    "paperId": "41a78e2885b5dc8c719495a33985b5f4880f5b48",
+    "externalIds": {
+        "DBLP": "conf/icassp/DongXX18",
+        "MAG": "2892009249",
+        "DOI": "10.1109/ICASSP.2018.8462506",
+        "CorpusId": 52287921
+    },
+    "title": "Speech-Transformer: A No-Recurrence Sequence-to-Sequence Model for Speech Recognition",
+    "abstract": "Recurrent sequence-to-sequence models using encoder-decoder architecture have made great progress in speech recognition task. However, they suffer from the drawback of slow training speed because the internal recurrence limits the training parallelization. In this paper, we present the Speech-Transformer, a no-recurrence sequence-to-sequence model entirely relies on attention mechanisms to learn the positional dependencies, which can be trained faster with more efficiency. We also propose a 2D-Attention mechanism, which can jointly attend to the time and frequency axes of the 2-dimensional speech inputs, thus providing more expressive representations for the Speech-Transformer. Evaluated on the Wall Street Journal (WSJ) speech recognition dataset, our best model achieves competitive word error rate (WER) of 10.9%, while the whole training process only takes 1.2 days on 1 GPU, significantly faster than the published results of recurrent sequence-to-sequence models.",
+    "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+    "year": 2018,
+    "referenceCount": 22,
+    "citationCount": 889,
+    "influentialCitationCount": 55,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Speech-Transformer is presented, a no-recurrence sequence-to-sequence model entirely relies on attention mechanisms to learn the positional dependencies, which can be trained faster with more efficiency and a 2D-Attention mechanism which can jointly attend to the time and frequency axes of the 2-dimensional speech inputs, thus providing more expressive representations for the Speech- Transformer."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2152288750",
+            "name": "Linhao Dong"
+        },
+        {
+            "authorId": "2111044238",
+            "name": "Shuang Xu"
+        },
+        {
+            "authorId": "2109511511",
+            "name": "Bo Xu"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "1cfcdf0cec5636066a4c2aa60b4451462ed49fca",
+            "title": "Exploring neural transducers for end-to-end speech recognition"
+        },
+        {
+            "paperId": "66a4b3e642923a99be51188007fec2837ac640ae",
+            "title": "Recent progresses in deep learning based acoustic models"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "f7b4eaadeba8ef62e249567730dd67d94e0619e8",
+            "title": "Local Monotonic Attention Mechanism for End-to-End Speech Recognition"
+        },
+        {
+            "paperId": "76faaf292c6d9dc29d3a99300a7fdd7a35d6d107",
+            "title": "Online and Linear-Time Attention by Enforcing Monotonic Alignments"
+        },
+        {
+            "paperId": "7dbb2d983ab95da04e5d47c87ddd2cd9a8f20786",
+            "title": "Towards Better Decoding and Language Model Integration in Sequence to Sequence Models"
+        },
+        {
+            "paperId": "8aa3358a34a17abd0a65622aad8c85317b851af4",
+            "title": "Very deep convolutional networks for end-to-end speech recognition"
+        },
+        {
+            "paperId": "105788dd22393d5a4333c167814ec3d38c7d6612",
+            "title": "Latent Sequence Decompositions"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "3c1a992a3b34adbab917b86eedd009603e71fd63",
+            "title": "Exploring multidimensional lstms for large vocabulary ASR"
+        },
+        {
+            "paperId": "9c9d7247f8c51ec5a02b0d911d1d7b9e8160495d",
+            "title": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems"
+        },
+        {
+            "paperId": "878ba5458e9e51f0b341fd9117fa0b43ef4096d3",
+            "title": "End-to-end attention-based large vocabulary speech recognition"
+        },
+        {
+            "paperId": "3056add22b20e3361c38c0472d294a79d4031cb4",
+            "title": "Listen, attend and spell: A neural network for large vocabulary conversational speech recognition"
+        },
+        {
+            "paperId": "b624504240fa52ab76167acfe3156150ca01cf3b",
+            "title": "Attention-Based Models for Speech Recognition"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "ac3ee98020251797c2b401e1389461df88e52e62",
+            "title": "Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling"
+        },
+        {
+            "paperId": "0fa553cfa0cf3cbdf7a913aa2ae789a757dfb32f",
+            "title": "Towards End-To-End Speech Recognition with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "4177ec52d1b80ed57f2e72b0f9a42365f1a8598d",
+            "title": "Speech recognition with deep recurrent neural networks"
+        },
+        {
+            "paperId": "7b4f3d0e4e2486a8d5d3f8e00549cf9a117bf88f",
+            "title": "Sequence Transduction with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "8fe2ea0a67954f1380b3387e3262f1cdb9f9b3e5",
+            "title": "A tutorial on hidden Markov models and selected applications in speech recognition"
+        },
+        {
+            "paperId": null,
+            "title": "Joint ctcattention based end-to-end speech recognition using multi-task learning"
+        },
+        {
+            "paperId": "067e07b725ab012c80aa2f87857f6791c1407f6d",
+            "title": "Long short-term memory recurrent neural network architectures for large scale acoustic modeling"
+        }
+    ]
+}

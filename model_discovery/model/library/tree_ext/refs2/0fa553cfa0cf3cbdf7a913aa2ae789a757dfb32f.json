@@ -1,0 +1,125 @@
+{
+    "paperId": "0fa553cfa0cf3cbdf7a913aa2ae789a757dfb32f",
+    "externalIds": {
+        "MAG": "3111804057",
+        "DBLP": "conf/icml/GravesJ14",
+        "CorpusId": 1166498
+    },
+    "title": "Towards End-To-End Speech Recognition with Recurrent Neural Networks",
+    "abstract": "This paper presents a speech recognition system that directly transcribes audio data with text, without requiring an intermediate phonetic representation. The system is based on a combination of the deep bidirectional LSTM recurrent neural network architecture and the Connectionist Temporal Classification objective function. A modification to the objective function is introduced that trains the network to minimise the expectation of an arbitrary transcription loss function. This allows a direct optimisation of the word error rate, even in the absence of a lexicon or language model. The system achieves a word error rate of 27.3% on the Wall Street Journal corpus with no prior linguistic information, 21.9% with only a lexicon of allowed words, and 8.2% with a trigram language model. Combining the network with a baseline system further reduces the error rate to 6.7%.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2014,
+    "referenceCount": 23,
+    "citationCount": 2132,
+    "influentialCitationCount": 151,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A speech recognition system that directly transcribes audio data with text, without requiring an intermediate phonetic representation is presented, based on a combination of the deep bidirectional LSTM recurrent neural network architecture and the Connectionist Temporal Classification objective function."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1753223",
+            "name": "Alex Graves"
+        },
+        {
+            "authorId": "3111912",
+            "name": "N. Jaitly"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "4177ec52d1b80ed57f2e72b0f9a42365f1a8598d",
+            "title": "Speech recognition with deep recurrent neural networks"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "e33cbb25a8c7390aec6a398e36381f4f7770c283",
+            "title": "Deep Neural Networks for Acoustic Modeling in Speech Recognition"
+        },
+        {
+            "paperId": "a97b5db17acc731ef67321832dbbaf5766153135",
+            "title": "Supervised Sequence Labelling with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "dd7f8b53e6802787179a961e766760cbbe2d5011",
+            "title": "A committee of neural networks for traffic sign classification"
+        },
+        {
+            "paperId": "46af78834358337447001241cd2e18828ed926f0",
+            "title": "Learning a better representation of speech soundwaves using restricted boltzmann machines"
+        },
+        {
+            "paperId": "39d37eb3ef1f5c9273ed3b197c0e2548547b6741",
+            "title": "From speech to letters - using a novel neural network architecture for grapheme based ASR"
+        },
+        {
+            "paperId": "ffced5b53ad956474a12d73b5cbfd38355dfb70a",
+            "title": "Reinforcement learning of motor skills with policy gradients"
+        },
+        {
+            "paperId": "5536d42ce80e129be8cae172ed1b7659c769d31d",
+            "title": "2005 Special Issue: Framewise phoneme classification with bidirectional LSTM and other neural network architectures"
+        },
+        {
+            "paperId": "6fe0ed86150f7fc94d271507463d995187f82c46",
+            "title": "Recognition of out-of-vocabulary words with sub-lexical language models"
+        },
+        {
+            "paperId": "047655e733a9eed9a500afd916efa566915b9110",
+            "title": "Learning Precise Timing with LSTM Recurrent Networks"
+        },
+        {
+            "paperId": "e23c34414e66118ecd9b08cf0cd4d016f59b0b85",
+            "title": "Bidirectional recurrent neural networks"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "3d82e058a5c40954b8f5db170a298a889a254c37",
+            "title": "Connectionist Speech Recognition: A Hybrid Approach"
+        },
+        {
+            "paperId": "b5f09ce0dd760857e0d0e4879f6e2543f04c5d33",
+            "title": "Maximum mutual information estimation of hidden Markov model parameters for speech recognition"
+        },
+        {
+            "paperId": "a4eb9f4fad5c5a1935c6d0532e2c765ee29b0b37",
+            "title": "Application of Pretrained Deep Neural Networks to Large Vocabulary Speech Recognition"
+        },
+        {
+            "paperId": "3a1a2cff2b70fb84a7ca7d97f8adcc5855851795",
+            "title": "The Kaldi Speech Recognition Toolkit"
+        },
+        {
+            "paperId": "c50dca78e97e335d362d6b991ae0e1448914e9a3",
+            "title": "Reducing the Dimensionality of Data with Neural"
+        },
+        {
+            "paperId": "7c59908c946a4157abc030cdbe2b63d08ba97db3",
+            "title": "Supporting Online Material for Reducing the Dimensionality of Data with Neural Networks"
+        },
+        {
+            "paperId": "325e90957eb2797e6a0e9f85331e19bc59b077a4",
+            "title": "Open vocabulary speech recognition with flat hybrid models"
+        },
+        {
+            "paperId": "2f5ca3bfcf00a688d65ffde89c6580979aa9c970",
+            "title": "A frequency warping approach to speaker normalization"
+        },
+        {
+            "paperId": "261a056f8b21918e8616a429b2df6e1d5d33be41",
+            "title": "Connectionist Temporal Classi\ufb01cation: Labelling Unsegmented Sequence Data with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "845ee9838c1f5bf63b7db2c95ec5d27af14a4e02",
+            "title": "Connectionist Temporal Classi\ufb01cation: Labelling Unsegmented Sequences with Recurrent Neural Networks"
+        }
+    ]
+}

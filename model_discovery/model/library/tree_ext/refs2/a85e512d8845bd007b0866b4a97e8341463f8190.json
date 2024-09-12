@@ -1,0 +1,318 @@
+{
+    "paperId": "a85e512d8845bd007b0866b4a97e8341463f8190",
+    "externalIds": {
+        "MAG": "2086504823",
+        "DBLP": "journals/pami/MujaL14",
+        "DOI": "10.1109/TPAMI.2014.2321376",
+        "CorpusId": 206765442,
+        "PubMed": "26353063"
+    },
+    "title": "Scalable Nearest Neighbor Algorithms for High Dimensional Data",
+    "abstract": "For many computer vision and machine learning problems, large training sets are key for good performance. However, the most computationally expensive part of many computer vision and machine learning algorithms consists of finding nearest neighbor matches to high dimensional vectors that represent the training data. We propose new algorithms for approximate nearest neighbor matching and evaluate and compare them with previous algorithms. For matching high dimensional features, we find two algorithms to be the most efficient: the randomized k-d forest and a new algorithm proposed in this paper, the priority search k-means tree. We also propose a new algorithm for matching binary features by searching multiple hierarchical clustering trees and show it outperforms methods typically used in the literature. We show that the optimal nearest neighbor algorithm and its parameters depend on the data set characteristics and describe an automated configuration procedure for finding the best algorithm to search a particular data set. In order to scale to very large data sets that would otherwise not fit in the memory of a single machine, we propose a distributed nearest neighbor matching framework that can be used with any of the algorithms described in the paper. All this research has been released as an open source library called fast library for approximate nearest neighbors (FLANN), which has been incorporated into OpenCV and is now one of the most popular libraries for nearest neighbor matching.",
+    "venue": "IEEE Transactions on Pattern Analysis and Machine Intelligence",
+    "year": 2014,
+    "referenceCount": 70,
+    "citationCount": 1326,
+    "influentialCitationCount": 126,
+    "openAccessPdf": {
+        "url": "https://ieeexplore.ieee.org/ielx7/34/6914638/06809191.pdf",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that the optimal nearest neighbor algorithm and its parameters depend on the data set characteristics and an automated configuration procedure for finding the best algorithm to search a particular data set is described."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2658890",
+            "name": "Marius Muja"
+        },
+        {
+            "authorId": "35238678",
+            "name": "D. Lowe"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "e2f54ff8733916677959c9482c5b436c908be99f",
+            "title": "ParamILS: An Automatic Algorithm Configuration Framework"
+        },
+        {
+            "paperId": "55a62990a82bf9205e507f73d42583df46062806",
+            "title": "A new approach to interdomain routing based on secure multi-party computation"
+        },
+        {
+            "paperId": "23b22f10d3e0a5726f58ae10c494a28103979c6f",
+            "title": "Scalable k-NN graph construction for visual descriptors"
+        },
+        {
+            "paperId": "5b81a5c1394e227cfff8406c0c4e476fd3cc4852",
+            "title": "The Inverted Multi-Index"
+        },
+        {
+            "paperId": "ad5ef08f29d367308fc27776d82e5ce9478388e0",
+            "title": "Fast Matching of Binary Features"
+        },
+        {
+            "paperId": "188e247506ad992b8bc62d6c74789e89891a984f",
+            "title": "Random Search for Hyper-Parameter Optimization"
+        },
+        {
+            "paperId": "976e29fe6c9baeb39732bca0e35f66f84d5bdd90",
+            "title": "ORB: An efficient alternative to SIFT or SURF"
+        },
+        {
+            "paperId": "86d27422aac2398cfe132ae8e312a6f2d190f754",
+            "title": "BRISK: Binary Robust invariant scalable keypoints"
+        },
+        {
+            "paperId": "354ff38a1f9a4d75cdd81f94d4511c05f8872122",
+            "title": "Complementary hashing for approximate nearest neighbor search"
+        },
+        {
+            "paperId": "2145f5cbac48df8ed9f7695606c34e98b26cf5a9",
+            "title": "BRIEF: Binary Robust Independent Elementary Features"
+        },
+        {
+            "paperId": "413a08dc1f83e60ca3eb24aca2f117a43d7548dd",
+            "title": "Scalable similarity search with optimized kernel hashing"
+        },
+        {
+            "paperId": "bb963c63ee55eab58371bc4ba0690f3eb0f498a8",
+            "title": "Semi-supervised hashing for scalable image retrieval"
+        },
+        {
+            "paperId": "2afde5e414aa94e20e2b30a5aa277ac36ca41d6a",
+            "title": "Optimizing kd-trees for scalable visual descriptor indexing"
+        },
+        {
+            "paperId": "8c054e1f378e033f39a7b95c7f68da4b3b5544e4",
+            "title": "Learning to Hash with Binary Reconstructive Embeddings"
+        },
+        {
+            "paperId": "1b20afbd2d2a349737ed3dc246e44bbdba203190",
+            "title": "Locality-sensitive binary codes from shift-invariant kernels"
+        },
+        {
+            "paperId": "97163b4aea5f5e001bd5f85c5cc2372455e57f72",
+            "title": "Kernelized locality-sensitive hashing for scalable image search"
+        },
+        {
+            "paperId": "4dbf658ff7106739f3cae82d9e775c758854ed96",
+            "title": "Better matching with fewer features: The selection of useful features in large database recognition problems"
+        },
+        {
+            "paperId": "db39b7be3c56071b610f5557aa93066d442d529c",
+            "title": "Highly scalable appearance-only SLAM - FAB-MAP 2.0"
+        },
+        {
+            "paperId": "360f6719f9676c6a7a434e523eebe52559a72ffb",
+            "title": "Randomized structure from motion based on atomic 3D models from camera triplets"
+        },
+        {
+            "paperId": "d2c733e34d48784a37d717fe43d9e93277a8c53e",
+            "title": "ImageNet: A large-scale hierarchical image database"
+        },
+        {
+            "paperId": "c1787db25af5614f41e56938aa594f2dbb1dca07",
+            "title": "The Unreasonable Effectiveness of Data"
+        },
+        {
+            "paperId": "09d947e7cd215abf5d45463b64859ddc0f7e1a8e",
+            "title": "Optimised KD-trees for fast image descriptor matching"
+        },
+        {
+            "paperId": "11e7d074e4deebfed771d0aa226f4160f4c5c82b",
+            "title": "Fast image search for learned metrics"
+        },
+        {
+            "paperId": "993cb3c7167b34b033c66cc4b2af87ff4781c6d4",
+            "title": "Small codes and large image databases for recognition"
+        },
+        {
+            "paperId": "b48d90cfebb8fbff29d161f6704d31b6909eb7ad",
+            "title": "IM2GPS: estimating geographic information from a single image"
+        },
+        {
+            "paperId": "001bd2afb6a81840b5aa9971bfa9bb7066f6a6c2",
+            "title": "Random projection trees and low dimensional manifolds"
+        },
+        {
+            "paperId": "252dc222e485daa8180f7db9f2107efb1434a624",
+            "title": "Improving Descriptors for Fast Tree Matching by Optimal Linear Projection"
+        },
+        {
+            "paperId": "9ed960374381062d85d3944182a539c1d00f7703",
+            "title": "Multi-Probe LSH: Efficient Indexing for High-Dimensional Similarity Search"
+        },
+        {
+            "paperId": "3a3aa31045bb79ecded928347f26685f180807ff",
+            "title": "Scene Completion Using Millions of Photographs"
+        },
+        {
+            "paperId": "cbd2b4bbdf5b0b16e2f9db342bd902f3d851d094",
+            "title": "City-Scale Location Recognition"
+        },
+        {
+            "paperId": "65cccb5b4aec5dd9a7161ddebcb0213b39f53439",
+            "title": "Learning Local Image Descriptors"
+        },
+        {
+            "paperId": "28e4b8ebbdb0e80f03b6f0578deeb38694af081e",
+            "title": "Object retrieval with large vocabularies and fast spatial matching"
+        },
+        {
+            "paperId": "ab25e57c716c34c02fe8f78738ffbd44fe7732fa",
+            "title": "k-means++: the advantages of careful seeding"
+        },
+        {
+            "paperId": "e17529924798975856310a75cb3df3066ac7ccfa",
+            "title": "Near-Optimal Hashing Algorithms for Approximate Nearest Neighbor in High Dimensions"
+        },
+        {
+            "paperId": "463a59fe9e27004fbaac8700bb30a156d07e2f03",
+            "title": "Efficient Clustering and Matching for Object Class Recognition"
+        },
+        {
+            "paperId": "5396e9858d70f09bf42f251621b5f2816a9cb660",
+            "title": "Cover trees for nearest neighbor"
+        },
+        {
+            "paperId": "b3e7d3e37e67af7f4546b46051063bea1b62dbae",
+            "title": "Scalable Recognition with a Vocabulary Tree"
+        },
+        {
+            "paperId": "12c7fc38debaf3589e712973642246bd54fe63b3",
+            "title": "Shape matching and object recognition using low distortion correspondences"
+        },
+        {
+            "paperId": "22cc0ac7fdf06de9a8edb58fd1a1518c0c04d376",
+            "title": "LSH forest: self-tuning indexes for similarity search"
+        },
+        {
+            "paperId": "7d394976d52f40bf14652de10b30fb9326c20f19",
+            "title": "An Investigation of Practical Approximate Nearest Neighbor Algorithms"
+        },
+        {
+            "paperId": "8c04f169203f9e55056a6f7f956695babe622a38",
+            "title": "Distinctive Image Features from Scale-Invariant Keypoints"
+        },
+        {
+            "paperId": "642e328cae81c5adb30069b680cf60ba6b475153",
+            "title": "Video Google: a text retrieval approach to object matching in videos"
+        },
+        {
+            "paperId": "3e1556aea42601df3f457ad43dfb059498931a33",
+            "title": "Fast pose estimation with parameter-sensitive hashing"
+        },
+        {
+            "paperId": "5d0423d9d7d3e8ebeabc3cad215d0eac4f29bf18",
+            "title": "Metric-based shape retrieval in large databases"
+        },
+        {
+            "paperId": "53bccfba60460d189ccc366cf320cebb58a5f7f9",
+            "title": "The Anchors Hierarchy: Using the Triangle Inequality to Survive High Dimensional Data"
+        },
+        {
+            "paperId": "c923be743ee3990e1ac0f29bd53531a8d54832e1",
+            "title": "An optimal algorithm for approximate nearest neighbor searching fixed dimensions"
+        },
+        {
+            "paperId": "ef05b72c9e5b267811d4a069fb1d8038f0e36bbd",
+            "title": "Shape indexing using approximate nearest-neighbour search in high-dimensional spaces"
+        },
+        {
+            "paperId": "6438d00d2d916568eadd630617ed0a54f8b98b9a",
+            "title": "Near Neighbor Search in Large Metric Spaces"
+        },
+        {
+            "paperId": "e96838bde759b9dfa1f27436fb8cbe14ddf29b61",
+            "title": "Enumerating the k closest pairs optimally"
+        },
+        {
+            "paperId": "2161986ab001b35ad5f429e04e8bbdd90eb3080d",
+            "title": "Refinements to nearest-neighbor searching ink-dimensional trees"
+        },
+        {
+            "paperId": "cab3c73f1b2140231b98944c720100b356d91b28",
+            "title": "An Algorithm for Finding Best Matches in Logarithmic Expected Time"
+        },
+        {
+            "paperId": "cc73bacd6a00442570d15e122604ad6862b8663d",
+            "title": "Multidimensional binary search trees used for associative searching"
+        },
+        {
+            "paperId": "72713a8e1e0fe291b28513dee97596690f4e1376",
+            "title": "A Branch and Bound Algorithm for Computing k-Nearest Neighbors"
+        },
+        {
+            "paperId": "455e38693e4be01064b1fcfd0eddbd26fa8f2db3",
+            "title": "Scalable nearest neighbour methods for high dimensional data"
+        },
+        {
+            "paperId": "4748d22348e72e6e06c2476486afddbc76e5eca7",
+            "title": "Product Quantization for Nearest Neighbor Search"
+        },
+        {
+            "paperId": "dedaa293496fd7c453191a70377a40d3959205c4",
+            "title": "Distributed Kd-Trees for Retrieval from Very Large Image Collections"
+        },
+        {
+            "paperId": "973ad02a0d6ecac185abcea046006c50ab09c3f8",
+            "title": "The 30th Anniversary of the IEEE Transactions on Pattern Analysis and Machine Intelligence"
+        },
+        {
+            "paperId": "35d81066cb1369acf4b6c5117fcbb862be2af350",
+            "title": "Fast Approximate Nearest Neighbors with Automatic Algorithm Configuration"
+        },
+        {
+            "paperId": "08c4fdd974d874c87ea87faa6b404a7b8eb72c73",
+            "title": "Automated configuration of algorithms for solving hard computational problems"
+        },
+        {
+            "paperId": "d45eaee8b2e047306329e5dbfc954e6dd318ca1e",
+            "title": "ROS: an open-source Robot Operating System"
+        },
+        {
+            "paperId": "5811ae0797a52afe7cfa068237fdc2ebcbb64240",
+            "title": "Automatic Reconstruction of Mars Artifacts"
+        },
+        {
+            "paperId": null,
+            "title": "Learning OpenCV: Comput. Vision with the OpenCV Library"
+        },
+        {
+            "paperId": "b7ed7ba7226cc0cd2f175aabbefc08cc9ff2d375",
+            "title": "Distinctive Image Features from Scale-Invariant Keypoints"
+        },
+        {
+            "paperId": "8b0d6d2e43a2c6b9e463845b5ebdab4a62236d66",
+            "title": "Data structures and algorithms for nearest neighbor search in general metric spaces"
+        },
+        {
+            "paperId": null,
+            "title": "computer science from the University of British Columbia in 1978, and the PhD degree in computer"
+        },
+        {
+            "paperId": "017ddb7e815236defd0566bc46f6ed8401cc6ba6",
+            "title": "A Simplex Method for Function Minimization"
+        },
+        {
+            "paperId": "54d2b5c64a67f65c5dd812b89e07973f97699552",
+            "title": "Ieee Transactions on Pattern Analysis and Machine Intelligence 1 80 Million Tiny Images: a Large Dataset for Non-parametric Object and Scene Recognition"
+        },
+        {
+            "paperId": "3287d04d3f2259bcd5da2160b07569953218e491",
+            "title": "Proceedings of the Twenty-Second International Joint Conference on Artificial Intelligence Fast Approximate Nearest-Neighbor Search with k-Nearest Neighbor Graph"
+        },
+        {
+            "paperId": null,
+            "title": "research interests include local image features, and computational models for a member of the IEEE"
+        },
+        {
+            "paperId": "d7b064e6cb859db734fa0eb18da0c7df17cce416",
+            "title": "ORB: an ef\ufb01cient alternative to SIFT or SURF"
+        }
+    ]
+}

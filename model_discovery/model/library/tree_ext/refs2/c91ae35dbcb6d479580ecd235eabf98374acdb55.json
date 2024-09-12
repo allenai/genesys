@@ -1,0 +1,158 @@
+{
+    "paperId": "c91ae35dbcb6d479580ecd235eabf98374acdb55",
+    "externalIds": {
+        "MAG": "2535697732",
+        "DBLP": "conf/nips/BaHMLI16",
+        "ArXiv": "1610.06258",
+        "CorpusId": 568305
+    },
+    "title": "Using Fast Weights to Attend to the Recent Past",
+    "abstract": "Until recently, research on artificial neural networks was largely restricted to systems with only two types of variable: Neural activities that represent the current or recent input and weights that learn to capture regularities among inputs, outputs and payoffs. There is no good reason for this restriction. Synapses have dynamics at many different time-scales and this suggests that artificial neural networks might benefit from variables that change slower than activities but much faster than the standard weights. These ``fast weights'' can be used to store temporary memories of the recent past and they provide a neurally plausible way of implementing the type of attention to the past that has recently proven helpful in sequence-to-sequence models. By using fast weights we can avoid the need to store copies of neural activity patterns.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2016,
+    "referenceCount": 28,
+    "citationCount": 238,
+    "influentialCitationCount": 21,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "These ``fast weights'' can be used to store temporary memories of the recent past and they provide a neurally plausible way of implementing the type of attention to the past that has recently proven helpful in sequence-to-sequence models."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2503659",
+            "name": "Jimmy Ba"
+        },
+        {
+            "authorId": "1695689",
+            "name": "Geoffrey E. Hinton"
+        },
+        {
+            "authorId": "3255983",
+            "name": "Volodymyr Mnih"
+        },
+        {
+            "authorId": "1700356",
+            "name": "Joel Z. Leibo"
+        },
+        {
+            "authorId": "2273228",
+            "name": "Catalin Ionescu"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "97fb4e3d45bb098e27e0071448b6152217bd35a5",
+            "title": "Layer Normalization"
+        },
+        {
+            "paperId": "da398dd57a31a663eb572ec85db7cdfe2f70dc99",
+            "title": "Associative Long Short-Term Memory"
+        },
+        {
+            "paperId": "69e76e16740ed69f4dc55361a3d319ac2f1293dd",
+            "title": "Asynchronous Methods for Deep Reinforcement Learning"
+        },
+        {
+            "paperId": "e837b79de602c69395498c1fbbe39bbb4e6f75ad",
+            "title": "Learning to Transduce with Unbounded Memory"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "7845f1d3e796b5704d4bd37a945e0cf3fb8bbf1f",
+            "title": "Multiple Object Recognition with Visual Attention"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "71ae756c75ac89e2d731c9c79649562b5768ff39",
+            "title": "Memory Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "8a756d4d25511d92a45d0f4545fa819de993851d",
+            "title": "Recurrent Models of Visual Attention"
+        },
+        {
+            "paperId": "bc7b9d099058dcfd585e4b115757645fbeffccc3",
+            "title": "Models of Information Processing in the Brain"
+        },
+        {
+            "paperId": "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17",
+            "title": "Generating Sequences With Recurrent Neural Networks"
+        },
+        {
+            "paperId": "d5194ab36d5cb9d773a86bd4e9c8e181d70e2e34",
+            "title": "Multi-PIE"
+        },
+        {
+            "paperId": "4fb05f78201e03241a4b95f210a18cebe917cdf5",
+            "title": "Persistent Activity in Neural Networks with Dynamic Synapses"
+        },
+        {
+            "paperId": "e5f231cdfbf7499a7af1d2775f250b715f79ba58",
+            "title": "Synaptic Modifications in Cultured Hippocampal Neurons: Dependence on Spike Timing, Synaptic Strength, and Postsynaptic Cell Type"
+        },
+        {
+            "paperId": "d96a14d09ce4412c0022f20ebe9427b754182c85",
+            "title": "Neural Networks with Dynamic Synapses"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "679f48306b47634b3ad6b64d8505d36e09dadfe3",
+            "title": "Regulation of Synaptic Efficacy by Coincidence of Postsynaptic APs and EPSPs"
+        },
+        {
+            "paperId": "61639af1a89c69094bcc0ed40fad752832b037c3",
+            "title": "Reducing the Ratio Between Learning Complexity and Number of Time Varying Variables in Fully Recurrent Nets"
+        },
+        {
+            "paperId": "bc22e87a26d020215afe91c751e5bdaddd8e4922",
+            "title": "Learning to Control Fast-Weight Memories: An Alternative to Dynamic Recurrent Networks"
+        },
+        {
+            "paperId": "7346d681807bf0852695caa42dbecae5265b360a",
+            "title": "The space of interactions in neural network models"
+        },
+        {
+            "paperId": "98b4d4e24aab57ab4e1124ff8106909050645cfa",
+            "title": "Neural networks and physical systems with emergent collective computational abilities."
+        },
+        {
+            "paperId": "d7f7f6dfbdbe5220aded6a211c50079e28b217ad",
+            "title": "Correlation Matrix Memories"
+        },
+        {
+            "paperId": "41351e5b997dc2555d330e54493c54583437c75a",
+            "title": "Synaptic computation"
+        },
+        {
+            "paperId": "5a07a55897abd22fbe0b6a78fad64dac1d4d72de",
+            "title": "Short-term synaptic plasticity."
+        },
+        {
+            "paperId": "7257eacd80458e70c74494eb1b6759b52ff21399",
+            "title": "Using fast weights to deblur old memories"
+        },
+        {
+            "paperId": "fd253ff0f4f33caad4ec0aef200a85fe88572ccc",
+            "title": "Non-Holographic Associative Memory"
+        }
+    ]
+}

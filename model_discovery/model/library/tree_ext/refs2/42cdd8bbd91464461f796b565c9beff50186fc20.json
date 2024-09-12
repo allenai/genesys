@@ -1,0 +1,93 @@
+{
+    "paperId": "42cdd8bbd91464461f796b565c9beff50186fc20",
+    "externalIds": {
+        "DBLP": "conf/soda/Woodruff04",
+        "MAG": "2160681854",
+        "CorpusId": 14790007
+    },
+    "title": "Optimal space lower bounds for all frequency moments",
+    "abstract": "We prove that any one-pass streaming algorithm which (\u03b5, \u0394)-approximates the <i>k</i>th frequency moment <i>F</i><inf><i>k</i></inf>, for any real <i>k</i> \u2260 1 and any \u03b5 = \u03a9(1/\u221am), must use \u03a9(1/\u03b5\u00b2) bits of space, where <i>m</i> is the size of the universe. This is optimal in terms of \u03b5, resolves the open questions of Bar-Yossef <i>et al</i> in [3, 4], and extends the \u03a9(1/\u03b5\u00b2) lower bound for <i>F</i><inf>0</inf> in [11] to much smaller \u03b5 by applying novel techniques. Along the way we lower bound the one-way communication complexity of approximating the Hamming distance and the number of bipartite graphs with minimum/maximum degree constraints.",
+    "venue": "ACM-SIAM Symposium on Discrete Algorithms",
+    "year": 2004,
+    "referenceCount": 16,
+    "citationCount": 180,
+    "influentialCitationCount": 10,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is proved that any one-pass streaming algorithm which (\u03b5, \u0394)-approximates the kth frequency moment, for any real <i>k</i> \u2260 1 and any \u03b5 = \u03a9(1/\u221am), must use \u03a9 (1/\u03b5\u00b2) bits of space, where m is the size of the universe."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "143982862",
+            "name": "David P. Woodruff"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "4330e396caab670c66777287697b6713736c2bdf",
+            "title": "The Probabilistic Method"
+        },
+        {
+            "paperId": "efd89df38c3c3773e478275b57f909c0ffe48e00",
+            "title": "Tight lower bounds for the distinct elements problem"
+        },
+        {
+            "paperId": "2803e1343b09670ff68a2e33d1543d236fd93f26",
+            "title": "An information statistics approach to data stream and communication complexity"
+        },
+        {
+            "paperId": "54ab2344541738dd600b9b37463e5e52e8eeb9bd",
+            "title": "Counting Distinct Elements in a Data Stream"
+        },
+        {
+            "paperId": "84dca4b6095bc07376a1f1f1d9a6e2d73aa4d01d",
+            "title": "Comparing Data Streams Using Hamming Norms (How to Zero In)"
+        },
+        {
+            "paperId": "8fdba94d5a27674f1e7a102e687517965485766a",
+            "title": "Asymptotic Enumeration of Graphs with a Given Upper Bound on the Maximum Degree"
+        },
+        {
+            "paperId": "cfaf568fadc6d57945487e5bed92a63df33e7dc9",
+            "title": "Information theory methods in communication complexity"
+        },
+        {
+            "paperId": "3ee765f1f71dd42c2a169fa13989a621e31a6c8a",
+            "title": "On Randomized One-round Communication Complexity"
+        },
+        {
+            "paperId": "45cfe457c14deb4fa714d46635dd994b7420f75d",
+            "title": "Practical Skew Handling in Parallel Joins"
+        },
+        {
+            "paperId": "9eb968c02d7ea47b226b67e566fae046c9ce1ede",
+            "title": "C332. Surprise indexes and p-values"
+        },
+        {
+            "paperId": "2ba0f76c3a6a5244170fba687c10ab9a8d0fbdcd",
+            "title": "Probabilistic Counting Algorithms for Data Base Applications"
+        },
+        {
+            "paperId": "be61fc5903f22384c90b94013a51448e8d5610eb",
+            "title": "Lower bounds by probabilistic arguments"
+        },
+        {
+            "paperId": "1d67f1dec9a2a1645485ebd0cbe7bf1791bde017",
+            "title": "Abstract The"
+        },
+        {
+            "paperId": "0fb92a7687986ad52cfa2b2ffd6ea4e7994a613b",
+            "title": "The complexity of massive data set computations"
+        },
+        {
+            "paperId": "e5cca121e9852018c141ac3bc2cf2c35fea1dc9a",
+            "title": "The Probabilistic Method"
+        },
+        {
+            "paperId": "a36b028d024bf358c4af1a5e1dc3ca0aed23b553",
+            "title": "Chervonenkis: On the uniform convergence of relative frequencies of events to their probabilities"
+        }
+    ]
+}

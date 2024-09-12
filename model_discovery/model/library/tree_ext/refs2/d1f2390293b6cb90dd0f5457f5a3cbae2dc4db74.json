@@ -1,0 +1,110 @@
+{
+    "paperId": "d1f2390293b6cb90dd0f5457f5a3cbae2dc4db74",
+    "externalIds": {
+        "MAG": "1540841088",
+        "DBLP": "journals/corr/abs-1305-1319",
+        "ArXiv": "1305.1319",
+        "CorpusId": 17559484
+    },
+    "title": "New Alignment Methods for Discriminative Book Summarization",
+    "abstract": "We consider the unsupervised alignment of the full text of a book with a human-written summary. This presents challenges not seen in other text alignment problems, including a disparity in length and, consequent to this, a violation of the expectation that individual words and phrases should align, since large passages and chapters can be distilled into a single summary phrase. We present two new methods, based on hidden Markov models, specifically targeted to this problem, and demonstrate gains on an extractive book summarization task. While there is still much room for improvement, unsupervised alignment holds intrinsic value in offering insight into what features of a book are deemed worthy of summarization.",
+    "venue": "arXiv.org",
+    "year": 2013,
+    "referenceCount": 19,
+    "citationCount": 24,
+    "influentialCitationCount": 1,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work considers the unsupervised alignment of the full text of a book with a human-written summary and presents two new methods, based on hidden Markov models specifically targeted to this problem, and demonstrates gains on an extractive book summarization task."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2168134",
+            "name": "David Bamman"
+        },
+        {
+            "authorId": "144365875",
+            "name": "Noah A. Smith"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "c9276cc86bf1d4f632188f213802460605fd7f98",
+            "title": "Investigating the extractive summarization of literary novels"
+        },
+        {
+            "paperId": "e83b3e36a16c0dea256ebff931b9b1a20336a42d",
+            "title": "Summarizing Short Stories"
+        },
+        {
+            "paperId": "7e55dee942dd42c413eb39dba135e74884038d15",
+            "title": "The Decomposition of Human-Written Book Summaries"
+        },
+        {
+            "paperId": "da93c50f74d482e2f18e9ccdd0e5da5a81093b40",
+            "title": "Sampling Alignment Structure under a Bayesian Translation Model"
+        },
+        {
+            "paperId": "7895109f3ed4b005a5dab2770c67cd13cbc6c72f",
+            "title": "Explorations in Automatic Book Summarization"
+        },
+        {
+            "paperId": "bb88d2460070a1157165b86e93f3ed61878adef8",
+            "title": "Document Summarization Using Conditional Random Fields"
+        },
+        {
+            "paperId": "5d1e736b2bf090470b5d7e7b94f944c83ada59c5",
+            "title": "Induction of Word and Phrase Alignments for Automatic Document Summarization"
+        },
+        {
+            "paperId": "2a5a179a70e98ee1c4b4b8b54f6c8aba629c02e4",
+            "title": "Monolingual Machine Translation for Paraphrase Generation"
+        },
+        {
+            "paperId": "cbbd5c4d920ef93b8c2566033b3bcee59e5b14d9",
+            "title": "Sentence Alignment for Monolingual Comparable Corpora"
+        },
+        {
+            "paperId": "c63bb976dc0d3a897f3b0920170a4c573ef904c6",
+            "title": "Automatic Evaluation of Summaries Using N-gram Co-occurrence Statistics"
+        },
+        {
+            "paperId": "de2df29b0a0312de7270c3f5a0af6af5645cf91a",
+            "title": "A Systematic Comparison of Various Statistical Alignment Models"
+        },
+        {
+            "paperId": "8f54b66017b99c4ee525e91f389f9f6417cf2e88",
+            "title": "Using maximum entropy for sentence extraction"
+        },
+        {
+            "paperId": "ad1da3216ff83e1186af6d01dd57718f8f5bae0a",
+            "title": "The decomposition of human-written summary sentences"
+        },
+        {
+            "paperId": "bd6f6bbea99da64218a0672405550b8d6c7faf53",
+            "title": "The automatic construction of large-scale corpora for summarization research"
+        },
+        {
+            "paperId": "59c442932e9fcfcac6df5566c2bcd1ec331548c9",
+            "title": "HMM-Based Word Alignment in Statistical Translation"
+        },
+        {
+            "paperId": "266a32615cdc2028eb743dc19d28242c8e67e357",
+            "title": "A Monte Carlo Implementation of the EM Algorithm and the Poor Man's Data Augmentation Algorithms"
+        },
+        {
+            "paperId": "a1066659ec1afee9dce586f6f49b7d44527827e1",
+            "title": "A Statistical Approach to Machine Translation"
+        },
+        {
+            "paperId": "d36efb9ad91e00faa334b549ce989bfae7e2907a",
+            "title": "Maximum likelihood from incomplete data via the EM - algorithm plus discussions on the paper"
+        },
+        {
+            "paperId": "8963658234befb305080960c552f1e53c830ee78",
+            "title": "Text summarization using a trainable summarizer and latent semantic analysis"
+        }
+    ]
+}

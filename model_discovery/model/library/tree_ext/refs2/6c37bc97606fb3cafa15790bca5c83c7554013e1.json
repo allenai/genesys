@@ -1,0 +1,222 @@
+{
+    "paperId": "6c37bc97606fb3cafa15790bca5c83c7554013e1",
+    "externalIds": {
+        "DBLP": "journals/ida/NemtsovAS16",
+        "MAG": "2952708094",
+        "ArXiv": "1305.0203",
+        "DOI": "10.3233/IDA-160854",
+        "CorpusId": 380672
+    },
+    "title": "Matrix compression using the Nystr\u00f6m method",
+    "abstract": "The Nystr\\\"{o}m method is routinely used for out-of-sample extension of kernel matrices. We describe how this method can be applied to find the singular value decomposition (SVD) of general matrices and the eigenvalue decomposition (EVD) of square matrices. We take as an input a matrix $M\\in \\mathbb{R}^{m\\times n}$, a user defined integer $s\\leq min(m,n)$ and $A_M \\in \\mathbb{R}^{s\\times s}$, a matrix sampled from the columns and rows of $M$. These are used to construct an approximate rank-$s$ SVD of $M$ in $O\\left(s^2\\left(m+n\\right)\\right)$ operations. If $M$ is square, the rank-$s$ EVD can be similarly constructed in $O\\left(s^2 n\\right)$ operations. Thus, the matrix $A_M$ is a compressed version of $M$. We discuss the choice of $A_M$ and propose an algorithm that selects a good initial sample for a pivoted version of $M$. The proposed algorithm performs well for general matrices and kernel matrices whose spectra exhibit fast decay.",
+    "venue": "Intelligent Data Analysis",
+    "year": 2013,
+    "referenceCount": 45,
+    "citationCount": 15,
+    "influentialCitationCount": 2,
+    "openAccessPdf": {
+        "url": "http://www.cs.tau.ac.il/~amir1/PS/Subsampling.pdf",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The choice of the matrix A_M is discussed and an algorithm that selects a good initial sample for a pivoted version of $M$ is proposed, which performs well for general matrices and kernel matrices whose spectra exhibit fast decay."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "34613577",
+            "name": "Arik Nemtsov"
+        },
+        {
+            "authorId": "1703304",
+            "name": "A. Averbuch"
+        },
+        {
+            "authorId": "2424088",
+            "name": "A. Schclar"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "27eb731c0097487fdd6bfb5e2f7a591a4631862a",
+            "title": "Low Rank Matrix Approximation in Linear Time"
+        },
+        {
+            "paperId": "841c9c6742057795ca210fad8b7f2a5c90e5bc55",
+            "title": "PCA for large data sets with parallel data summarization"
+        },
+        {
+            "paperId": "0e07200748ce87676bcbd8b7eef0ae23966b4b25",
+            "title": "Fast algorithms for sparse principal component analysis based on Rayleigh quotient iteration"
+        },
+        {
+            "paperId": "273dfbcb68080251f5e9ff38b4413d7bd84b10a1",
+            "title": "LIBSVM: A library for support vector machines"
+        },
+        {
+            "paperId": "c369d9192c9754fb7a04529c68f2fb286f646df7",
+            "title": "The Power of Convex Relaxation: Near-Optimal Matrix Completion"
+        },
+        {
+            "paperId": "08a757bb53efafbb0eec6cd0a9ab3f128b6d01d3",
+            "title": "A Randomized Algorithm for Principal Component Analysis"
+        },
+        {
+            "paperId": "ed2f7914bf51168842f33618d50f1e5f21622548",
+            "title": "Improved Nystr\u00f6m low-rank approximation and error analysis"
+        },
+        {
+            "paperId": "51a20365c3440ec49747d867b49e244e051abb84",
+            "title": "Randomized algorithms for the low-rank approximation of matrices"
+        },
+        {
+            "paperId": "238a0814109dc166f1a1c0c3b5c33bc59250ae3f",
+            "title": "Improved Approximation Algorithms for Large Matrices via Random Projections"
+        },
+        {
+            "paperId": "06eb6b4566cbb127ebf548f251e9b89bf34777f2",
+            "title": "Diffusion maps and coarse-graining: a unified framework for dimensionality reduction, graph partitioning, and data set parameterization"
+        },
+        {
+            "paperId": "f8907d015896563ae08526617f076b12a1f7fd00",
+            "title": "Adaptive Sampling and Fast Low-Rank Matrix Approximation"
+        },
+        {
+            "paperId": "37b13a08bfd5a1edfb468c6c7fbe0505d09c6c93",
+            "title": "Geometric harmonics: A novel tool for multiscale out-of-sample extension of empirical functions"
+        },
+        {
+            "paperId": "11e6b5a30a921e6028662105148fac41a76f0500",
+            "title": "On the Nystr\u00f6m Method for Approximating a Gram Matrix for Improved Kernel-Based Learning"
+        },
+        {
+            "paperId": "cfa15801bf4e7bf610d38dc86da62b83e2ddedcb",
+            "title": "Learning Eigenfunctions Links Spectral Embedding and Kernel PCA"
+        },
+        {
+            "paperId": "ec3cae15e8c739b4037260fc65a7f09553449e74",
+            "title": "Multidimensional Scaling"
+        },
+        {
+            "paperId": "31b72979ef41e97c96da9a80a6a21f661320d107",
+            "title": "Adaptive Low-Rank Approximation of Collocation Matrices"
+        },
+        {
+            "paperId": "cb22aec624fe953764777bcf9beef9b83e59efed",
+            "title": "Spectral Partitioning with Indefinite Kernels Using the Nystr\u00f6m Extension"
+        },
+        {
+            "paperId": "0db7af02be7cbadc029f9104a8c784d02de42df7",
+            "title": "Efficient SVM Training Using Low-Rank Kernel Representations"
+        },
+        {
+            "paperId": "6e4392c40ea4618c554bf72b74aeec6b1739cbf9",
+            "title": "Efficient spatiotemporal grouping using the Nystrom method"
+        },
+        {
+            "paperId": "e5e12dd2604cb7cc9cde165509ca8db764784688",
+            "title": "Sampling Techniques for Kernel Methods"
+        },
+        {
+            "paperId": "f0a3e1752e1146da927adc24ae07144ab2e744ec",
+            "title": "Nonlinear dimensionality reduction by locally linear embedding."
+        },
+        {
+            "paperId": "3537fcd0ff99a3b3cb3d279012df826358420556",
+            "title": "A global geometric framework for nonlinear dimensionality reduction."
+        },
+        {
+            "paperId": "cc15a2457b1dc14f27fa0f7f46a555ed521ea93d",
+            "title": "On the existence and computation of rank-revealing LU factorizations"
+        },
+        {
+            "paperId": "9ded923a192ffbf13e4466c6b7d2ede55724b716",
+            "title": "Sparse Greedy Matrix Approximation for Machine Learning"
+        },
+        {
+            "paperId": "27ff6ac7291cddd3e03ae04c596203d2ae928ca8",
+            "title": "Four algorithms for the the efficient computation of truncated pivoted QR approximations to a sparse matrix"
+        },
+        {
+            "paperId": "5b458ee989583e9a6a67046ed9441e254a49b1da",
+            "title": "Matrix computations (3rd ed.)"
+        },
+        {
+            "paperId": "0c5f7dd4ccaf7df883a99752c0d6d49bb369f320",
+            "title": "Efficient Algorithms for Computing a Strong Rank-Revealing QR Factorization"
+        },
+        {
+            "paperId": "b377fcdb05d9186e657e7473e9fc6c7216d4f1b0",
+            "title": "A Schur method for the square root of a matrix"
+        },
+        {
+            "paperId": "afc8c934eae4c9d129150042013240c0fb55bc55",
+            "title": "Linear least squares solutions by householder transformations"
+        },
+        {
+            "paperId": "444d70e3331b5083b40ef32e49390ef683a65e67",
+            "title": "Matrix Computations"
+        },
+        {
+            "paperId": "f792badacd15992b5194388db2a3d550f0e301a3",
+            "title": "A Diffusion Framework for Dimensionality Reduction"
+        },
+        {
+            "paperId": "3414f282d73b6b00e537feb65862b2c4116d04cd",
+            "title": "Mathematik in den Naturwissenschaften Leipzig Accelerating Galerkin BEM for Linear Elasticity using Adaptive Cross Approximation"
+        },
+        {
+            "paperId": "8bb257fa1311abe601c3c2270610ecf50aeea89d",
+            "title": "Greedy Spectral Embedding"
+        },
+        {
+            "paperId": "13c82489c1568b67265d17a15720001a5737171e",
+            "title": "Spectral grouping using the Nystrom method"
+        },
+        {
+            "paperId": "6f3bb84ee1b5d638e2d605ae0eb1014e2b6e3931",
+            "title": "FAST MONTE CARLO ALGORITHMS FOR MATRICES II: COMPUTING A LOW-RANK APPROXIMATION TO A MATRIX\u2217"
+        },
+        {
+            "paperId": "5342b022f72556e57d59e52fa5f0fd4d46fdc7ef",
+            "title": "Advances in Neural Information Processing Systems 14"
+        },
+        {
+            "paperId": "90a65d9751ce5aadeb52384242f83d7defe7572c",
+            "title": "Spectral Partitioning with Inde nite Kernels using the Nystr om Extension"
+        },
+        {
+            "paperId": null,
+            "title": "J. Mach. Learn. Res"
+        },
+        {
+            "paperId": "b6fff8b8ea77f157913986e7af53951d9fc1128e",
+            "title": "Using the Nystr\u00f6m Method to Speed Up Kernel Machines"
+        },
+        {
+            "paperId": "9cb3c51796384c30e8bb3862c7c861cab769e438",
+            "title": "Numerical Treatment of the Integral Equations"
+        },
+        {
+            "paperId": "9ebb5c0d6d54707a4d6181a693b6f755ec8a45a9",
+            "title": "Analysis of a complex of statistical variables into principal components."
+        },
+        {
+            "paperId": null,
+            "title": "Table 7.1: Summary of benchmark datasets (taken from [33]) References"
+        },
+        {
+            "paperId": null,
+            "title": "\u03c3 s ( G A ) \u2265 \u03c3 s ( G ) /\u03b2 and \u03c3 s ( S A ) \u2265 \u03c3 s ( S ) /\u03b2 for some constant \u03b2 \u2265 1;"
+        },
+        {
+            "paperId": null,
+            "title": "Apply the RRQR algorithm to G T to \ufb01nd a column pivoting matrix E G such that (cid:104) G TA G TB (cid:105) = G T E G = Q G R G , where G A \u2208 R s \u00d7 s and G B \u2208 R s \u00d7 m \u2212 s"
+        },
+        {
+            "paperId": null,
+            "title": "e s < ( \u03c3 s ( M ) \u2212 e s ) /\u03b2 2 \u03b3 , where e s is the error given by the rank-s approximation of by GS"
+        }
+    ]
+}

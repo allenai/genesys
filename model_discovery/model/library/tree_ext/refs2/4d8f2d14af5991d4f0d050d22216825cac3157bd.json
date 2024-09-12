@@ -1,0 +1,270 @@
+{
+    "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+    "externalIds": {
+        "MAG": "2950178297",
+        "DBLP": "conf/icml/XuBKCCSZB15",
+        "ArXiv": "1502.03044",
+        "CorpusId": 1055111
+    },
+    "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention",
+    "abstract": "Inspired by recent work in machine translation and object detection, we introduce an attention based model that automatically learns to describe the content of images. We describe how we can train this model in a deterministic manner using standard backpropagation techniques and stochastically by maximizing a variational lower bound. We also show through visualization how the model is able to automatically learn to fix its gaze on salient objects while generating the corresponding words in the output sequence. We validate the use of attention with state-of-the-art performance on three benchmark datasets: Flickr9k, Flickr30k and MS COCO.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2015,
+    "referenceCount": 53,
+    "citationCount": 9561,
+    "influentialCitationCount": 764,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An attention based model that automatically learns to describe the content of images is introduced that can be trained in a deterministic manner using standard backpropagation techniques and stochastically by maximizing a variational lower bound."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2117101253",
+            "name": "Ke Xu"
+        },
+        {
+            "authorId": "2503659",
+            "name": "Jimmy Ba"
+        },
+        {
+            "authorId": "3450996",
+            "name": "Ryan Kiros"
+        },
+        {
+            "authorId": "1979489",
+            "name": "Kyunghyun Cho"
+        },
+        {
+            "authorId": "1760871",
+            "name": "Aaron C. Courville"
+        },
+        {
+            "authorId": "145124475",
+            "name": "R. Salakhutdinov"
+        },
+        {
+            "authorId": "1804104",
+            "name": "R. Zemel"
+        },
+        {
+            "authorId": "1751762",
+            "name": "Yoshua Bengio"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "5f425b7abf2ed3172ed060df85bb1885860a297e",
+            "title": "Describing Videos by Exploiting Temporal Structure"
+        },
+        {
+            "paperId": "a2785f66c20fbdf30ec26c0931584c6d6a0f4fca",
+            "title": "DRAW: A Recurrent Neural Network For Image Generation"
+        },
+        {
+            "paperId": "7845f1d3e796b5704d4bd37a945e0cf3fb8bbf1f",
+            "title": "Multiple Object Recognition with Visual Attention"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "54b2b6f35f1b5704dddfaa3a137a2f4ad3dfe745",
+            "title": "Deep Captioning with Multimodal Recurrent Neural Networks (m-RNN)"
+        },
+        {
+            "paperId": "55e022fb7581bb9e1fce678d21fb25ffbb3fbb88",
+            "title": "Deep visual-semantic alignments for generating image descriptions"
+        },
+        {
+            "paperId": "f4af49a1ead3c81cc5d023878cb67c5646dd8a04",
+            "title": "Learning a Recurrent Visual Representation for Image Caption Generation"
+        },
+        {
+            "paperId": "15f102c3c9f4d4fe6ba105e221df48c6e8902b3b",
+            "title": "From captions to visual concepts and back"
+        },
+        {
+            "paperId": "d4dc1012d780e8e2547237eb5a6dc7b1bf47d2f0",
+            "title": "Show and tell: A neural image caption generator"
+        },
+        {
+            "paperId": "f01fc808592ea7c473a69a6e7484040a435f36d9",
+            "title": "Long-term recurrent convolutional networks for visual recognition and description"
+        },
+        {
+            "paperId": "2e36ea91a3c8fbff92be2989325531b4002e2afc",
+            "title": "Unifying Visual-Semantic Embeddings with Multimodal Neural Language Models"
+        },
+        {
+            "paperId": "59927ded86ab4f7253fc32efb351e5a13e746ead",
+            "title": "TreeTalk: Composition and Compression of Trees for Image Descriptions"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "f264e8b33c0d49a692a6ce2c4bcb28588aeb7d97",
+            "title": "Recurrent Neural Network Regularization"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "8a756d4d25511d92a45d0f4545fa819de993851d",
+            "title": "Recurrent Models of Visual Attention"
+        },
+        {
+            "paperId": "8d4e1568fd7a201e298b3ab6f2d8ebb3510a59d4",
+            "title": "Multimodal Neural Language Models"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "a5e4377d2149a8167d89383d785793967cf74602",
+            "title": "Meteor Universal: Language Specific Translation Evaluation for Any Target Language"
+        },
+        {
+            "paperId": "327d3df8ea2020882827d6bace1e26c9d24309c2",
+            "title": "The dropout learning algorithm"
+        },
+        {
+            "paperId": "71b7178df5d2b112d07e45038cb5637208659ff7",
+            "title": "Microsoft COCO: Common Objects in Context"
+        },
+        {
+            "paperId": "44040913380206991b1991daf1192942e038fe31",
+            "title": "From image descriptions to visual denotations: New similarity metrics for semantic inference over event descriptions"
+        },
+        {
+            "paperId": "17a5868dc7abfa9495af6b1ae71042a006238ebc",
+            "title": "Input Warping for Bayesian Optimization of Non-Stationary Functions"
+        },
+        {
+            "paperId": "484ad17c926292fbe0d5211540832a8c8a8e958b",
+            "title": "Stochastic Backpropagation and Approximate Inference in Deep Generative Models"
+        },
+        {
+            "paperId": "5f5dc5b9a2ba710937e2c413b37b053cd673df02",
+            "title": "Auto-Encoding Variational Bayes"
+        },
+        {
+            "paperId": "0ca6cccbfcf3df972a470c7fe18f7eaed9420cd6",
+            "title": "Learning Generative Models with Visual Attention"
+        },
+        {
+            "paperId": "533ee188324b833e059cb59b654e6160776d5812",
+            "title": "How to Construct Deep Recurrent Neural Networks"
+        },
+        {
+            "paperId": "1a81c722727299e45af289d905d7dcf157174248",
+            "title": "BabyTalk: Understanding and Generating Simple Image Descriptions"
+        },
+        {
+            "paperId": "3f6a4556769e819242d669d073b895f1e45a706f",
+            "title": "Image Description using Visual Dependency Representations"
+        },
+        {
+            "paperId": "944a1cfd79dbfb6fef460360a0765ba790f4027a",
+            "title": "Recurrent Continuous Translation Models"
+        },
+        {
+            "paperId": "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17",
+            "title": "Generating Sequences With Recurrent Neural Networks"
+        },
+        {
+            "paperId": "9814df8bd00ba999c4d1e305a7e9bca579dc7c75",
+            "title": "Framing Image Description as a Ranking Task: Data, Models and Evaluation Metrics"
+        },
+        {
+            "paperId": "082fb4bc8e52c973ddfb13aee5558d1a8bf1fd9e",
+            "title": "Technical Report 2012"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "855d0f722d75cc56a66a00ede18ace96bafee6bd",
+            "title": "Theano: new features and speed improvements"
+        },
+        {
+            "paperId": "2a0d0f6c5a69b264710df0230696f47c5918e2f2",
+            "title": "Collective Generation of Natural Image Descriptions"
+        },
+        {
+            "paperId": "2e2089ae76fe914706e6fa90081a79c8fe01611e",
+            "title": "Practical Bayesian Optimization of Machine Learning Algorithms"
+        },
+        {
+            "paperId": "355de7460120ddc1150d9ce3756f9848983f7ff4",
+            "title": "Midge: Generating Image Descriptions From Computer Vision Detections"
+        },
+        {
+            "paperId": "72829d537f0ec8b1cc0ced2f278bb56ce89f1b0c",
+            "title": "Learning Where to Attend with Deep Architectures for Image Tracking"
+        },
+        {
+            "paperId": "76a1dca3a9c2b0229c1b12c95752dcf40dc95a11",
+            "title": "Corpus-Guided Sentence Generation of Natural Images"
+        },
+        {
+            "paperId": "fbdbe747c6aa8b35b981d21e475ff1506a1bae66",
+            "title": "Composing Simple Image Descriptions using Web-scale N-grams"
+        },
+        {
+            "paperId": "0bff8898e3ebb1ab67fd20b5db00c6cb1938e6c3",
+            "title": "Learning to combine foveal glimpses with a third-order Boltzmann machine"
+        },
+        {
+            "paperId": "53e66b6934516a9859573f4866f81f04bce977ae",
+            "title": "Control of goal-directed and stimulus-driven attention in the brain"
+        },
+        {
+            "paperId": "4d92df4a844c94fbb31b95157488e4b562b4f681",
+            "title": "The Optimal Reward Baseline for Gradient-Based Reinforcement Learning"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": null,
+            "title": "Lecture 6.5 - RMSProp"
+        },
+        {
+            "paperId": null,
+            "title": "Theano: a CPU and GPU math expression compiler"
+        },
+        {
+            "paperId": "4c915c1eecb217c123a36dc6d3ce52d12c742614",
+            "title": "Simple Statistical Gradient-Following Algorithms for Connectionist Reinforcement Learning"
+        },
+        {
+            "paperId": "00e64fb34f407f5939612481ebc93a44d571c9c7",
+            "title": "The Dynamic Representation of Scenes"
+        }
+    ]
+}

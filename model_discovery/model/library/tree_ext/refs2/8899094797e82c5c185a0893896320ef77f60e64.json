@@ -1,0 +1,274 @@
+{
+    "paperId": "8899094797e82c5c185a0893896320ef77f60e64",
+    "externalIds": {
+        "DBLP": "conf/cvpr/0004GGH18",
+        "MAG": "2963091558",
+        "ArXiv": "1711.07971",
+        "DOI": "10.1109/CVPR.2018.00813",
+        "CorpusId": 4852647
+    },
+    "title": "Non-local Neural Networks",
+    "abstract": "Both convolutional and recurrent operations are building blocks that process one local neighborhood at a time. In this paper, we present non-local operations as a generic family of building blocks for capturing long-range dependencies. Inspired by the classical non-local means method [4] in computer vision, our non-local operation computes the response at a position as a weighted sum of the features at all positions. This building block can be plugged into many computer vision architectures. On the task of video classification, even without any bells and whistles, our nonlocal models can compete or outperform current competition winners on both Kinetics and Charades datasets. In static image recognition, our non-local models improve object detection/segmentation and pose estimation on the COCO suite of tasks. Code will be made available.",
+    "venue": "2018 IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "year": 2017,
+    "referenceCount": 57,
+    "citationCount": 8121,
+    "influentialCitationCount": 932,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1711.07971",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper presents non-local operations as a generic family of building blocks for capturing long-range dependencies in computer vision and improves object detection/segmentation and pose estimation on the COCO suite of tasks."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "39849136",
+            "name": "X. Wang"
+        },
+        {
+            "authorId": "2983898",
+            "name": "Ross B. Girshick"
+        },
+        {
+            "authorId": "1726095131",
+            "name": "A. Gupta"
+        },
+        {
+            "authorId": "39353098",
+            "name": "Kaiming He"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "2a31b4bf2a294b6e67956a6cd5ed6d875af548e0",
+            "title": "Learning Affinity via Spatial Propagation Networks"
+        },
+        {
+            "paperId": "73866bdb723841da93b6ad93afe3d72817e2b377",
+            "title": "Dense and Low-Rank Gaussian CRFs Using Deep Embeddings"
+        },
+        {
+            "paperId": "fa8d736f7b8c9314f9632561f09c17317bbef0ae",
+            "title": "Segmentation-Aware Convolutional Networks Using Local Attention Masks"
+        },
+        {
+            "paperId": "e591e31b9b6326571951a5193dde1c0f87beba78",
+            "title": "Revisiting the Effectiveness of Off-the-shelf Temporal Modeling Approaches for Large-scale Video Classification"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "0d57ba12a6d958e178d83be4c84513f7e42b24e5",
+            "title": "Accurate, Large Minibatch SGD: Training ImageNet in 1 Hour"
+        },
+        {
+            "paperId": "007112213ece771be72cbecfd59f048209facabd",
+            "title": "A simple neural network module for relational reasoning"
+        },
+        {
+            "paperId": "b61a3f8b80bbd44f24544dc915f52fd30bbdf485",
+            "title": "Quo Vadis, Action Recognition? A New Model and the Kinetics Dataset"
+        },
+        {
+            "paperId": "86e1bdbfd13b9ed137e4c4b8b459a3980eb257f6",
+            "title": "The Kinetics Human Action Video Dataset"
+        },
+        {
+            "paperId": "43428880d75b3a14257c3ee9bda054e61eb869c0",
+            "title": "Convolutional Sequence to Sequence Learning"
+        },
+        {
+            "paperId": "1a0912bb76777469295bb2c059faee907e7f3258",
+            "title": "Mask R-CNN"
+        },
+        {
+            "paperId": "e61c8ec6e26df76c8f0a174740f86510a786c93b",
+            "title": "Asynchronous Temporal Fields for Action Recognition"
+        },
+        {
+            "paperId": "2a94c84383ee3de5e6211d43d16e7de387f68878",
+            "title": "Feature Pyramid Networks for Object Detection"
+        },
+        {
+            "paperId": "ae42c0cff384495683192b06bd985cdd7a54632a",
+            "title": "Interaction Networks for Learning about Objects, Relations and Physics"
+        },
+        {
+            "paperId": "9641851496107d59632cccbed80db29c39741155",
+            "title": "Non-local Color Image Denoising with Convolutional Neural Networks"
+        },
+        {
+            "paperId": "f6e0856b4a9199fa968ac00da612a9407b5cb85c",
+            "title": "Aggregated Residual Transformations for Deep Neural Networks"
+        },
+        {
+            "paperId": "5f4d2f6ad967f7c9369c04e75cda08f12cb8afbd",
+            "title": "Spatiotemporal Residual Networks for Video Action Recognition"
+        },
+        {
+            "paperId": "ac94ef90be9b0c3bf744d6744e47b38855f9a4c7",
+            "title": "The microsoft 2016 conversational speech recognition system"
+        },
+        {
+            "paperId": "df0402517a7338ae28bc54acaac400de6b456a46",
+            "title": "WaveNet: A Generative Model for Raw Audio"
+        },
+        {
+            "paperId": "21334d1aac5422da88780f8e24e181bfa15ef0e1",
+            "title": "Hollywood in Homes: Crowdsourcing Data Collection for Activity Understanding"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "424561d8585ff8ebce7d5d07de8dbf7aae5e7270",
+            "title": "Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks"
+        },
+        {
+            "paperId": "df658828fb4146877f1031ec9d07052f7eb31186",
+            "title": "Action recognition with trajectory-pooled deep-convolutional descriptors"
+        },
+        {
+            "paperId": "5418b2a482720e013d487a385c26fae0f017c6a6",
+            "title": "Beyond short snippets: Deep networks for video classification"
+        },
+        {
+            "paperId": "416a242f24246f8ee2c00f4d3d1561443dc65b59",
+            "title": "Fully Connected Deep Structured Networks"
+        },
+        {
+            "paperId": "ca5c766b2d31a1f5ce8896a0a42b40a2bff9323a",
+            "title": "Conditional Random Fields as Recurrent Neural Networks"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "d6f2f611da110b5b5061731be3fc4c7f45d8ee23",
+            "title": "Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification"
+        },
+        {
+            "paperId": "39ad6c911f3351a3b390130a6e4265355b4d593b",
+            "title": "Semantic Image Segmentation with Deep Convolutional Nets and Fully Connected CRFs"
+        },
+        {
+            "paperId": "d25c65d261ea0e6a458be4c50c40ffe5bc508f77",
+            "title": "Learning Spatiotemporal Features with 3D Convolutional Networks"
+        },
+        {
+            "paperId": "f01fc808592ea7c473a69a6e7484040a435f36d9",
+            "title": "Long-term recurrent convolutional networks for visual recognition and description"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "67dccc9a856b60bdc4d058d83657a089b8ad4486",
+            "title": "Two-Stream Convolutional Networks for Action Recognition in Videos"
+        },
+        {
+            "paperId": "71b7178df5d2b112d07e45038cb5637208659ff7",
+            "title": "Microsoft COCO: Common Objects in Context"
+        },
+        {
+            "paperId": "59a6028ebb5a6056e80326388707fa642c98e10c",
+            "title": "Image denoising with multi-layer perceptrons, part 2: training trade-offs and analysis of their mechanisms"
+        },
+        {
+            "paperId": "0060745e006c5f14ec326904119dca19c6545e51",
+            "title": "Improving neural networks by preventing co-adaptation of feature detectors"
+        },
+        {
+            "paperId": "1d70937202d843664c5591fde4fb0d48627d1cf6",
+            "title": "Image denoising: Can plain neural networks compete with BM3D?"
+        },
+        {
+            "paperId": "c81c20109c809cfc47565a9477c04ee005d424bf",
+            "title": "Efficient Inference in Fully Connected CRFs with Gaussian Edge Potentials"
+        },
+        {
+            "paperId": "a538b05ebb01a40323997629e171c91aa28b8e2f",
+            "title": "Rectified Linear Units Improve Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": "89f62dd328cb3e0e7b1a7e03e5b39084b4a91d18",
+            "title": "Super-resolution from a single image"
+        },
+        {
+            "paperId": "744293fb92aa3dde3a5001885cf61eb7165eb95b",
+            "title": "PatchMatch: a randomized correspondence algorithm for structural image editing"
+        },
+        {
+            "paperId": "51d267b782e7caf2b6bc7240b1a5f48044ffe115",
+            "title": "Image Denoising by Sparse 3-D Transform-Domain Collaborative Filtering"
+        },
+        {
+            "paperId": "9c842b2926fd60b9e6ff80fee28c65e7c1ae5f1d",
+            "title": "A non-local algorithm for image denoising"
+        },
+        {
+            "paperId": "f4ba954b0412773d047dc41231c733de0c1f4926",
+            "title": "Conditional Random Fields: Probabilistic Models for Segmenting and Labeling Sequence Data"
+        },
+        {
+            "paperId": "bba3264d6794538381687ad6e151a7f42f3872a9",
+            "title": "Texture synthesis by non-parametric sampling"
+        },
+        {
+            "paperId": "bfeaf424a2ea6ca4702d545c6e959e2caeb68e9b",
+            "title": "Bilateral filtering for gray and color images"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "a8e8f3c8d4418c8d62e306538c9c1292635e9d27",
+            "title": "Backpropagation Applied to Handwritten Zip Code Recognition"
+        },
+        {
+            "paperId": "052b1d8ce63b07fec3de9dbb583772d860b7c769",
+            "title": "Learning representations by back-propagating errors"
+        },
+        {
+            "paperId": "9f2231338d7d196a47df962b5bca2e0bf658f9be",
+            "title": "Multi-agent Predictive Modeling with Attentional CommNets"
+        },
+        {
+            "paperId": null,
+            "title": "Learning af\ufb01nity via spatial propagation networks In Neural Information Processing Systems (NIPS)"
+        },
+        {
+            "paperId": null,
+            "title": "Visual interaction networks"
+        },
+        {
+            "paperId": "3efd851140aa28e95221b55fcc5659eea97b172d",
+            "title": "The Graph Neural Network Model"
+        },
+        {
+            "paperId": "9b2541b8d8ca872149b4dabd2ccdc0cacc46ebf5",
+            "title": "Neocognitron: A Self-Organizing Neural Network Model for a Mechanism of Visual Pattern Recognition"
+        },
+        {
+            "paperId": "070874b011f8eb2b18c8aa521ad0a7a932b4d9ad",
+            "title": "Action Recognition with Improved Trajectories"
+        },
+        {
+            "paperId": "52dfa20f6fdfcda8c11034e3d819f4bd47e6207d",
+            "title": "Ieee Transactions on Pattern Analysis and Machine Intelligence 1 3d Convolutional Neural Networks for Human Action Recognition"
+        }
+    ]
+}

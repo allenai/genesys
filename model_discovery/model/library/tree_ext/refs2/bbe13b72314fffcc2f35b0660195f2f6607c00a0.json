@@ -1,0 +1,178 @@
+{
+    "paperId": "bbe13b72314fffcc2f35b0660195f2f6607c00a0",
+    "externalIds": {
+        "MAG": "2963559821",
+        "DBLP": "conf/iclr/ReedCPOERVF18",
+        "ArXiv": "1710.10304",
+        "CorpusId": 3462549
+    },
+    "title": "Few-shot Autoregressive Density Estimation: Towards Learning to Learn Distributions",
+    "abstract": "Deep autoregressive models have shown state-of-the-art performance in density estimation for natural images on large-scale datasets such as ImageNet. However, such models require many thousands of gradient-based weight updates and unique image examples for training. Ideally, the models would rapidly learn visual concepts from only a handful of examples, similar to the manner in which humans learns across many vision tasks. In this paper, we show how 1) neural attention and 2) meta learning techniques can be used in combination with autoregressive models to enable effective few-shot density estimation. Our proposed modifications to PixelCNN result in state-of-the art few-shot density estimation on the Omniglot dataset. Furthermore, we visualize the learned attention policy and find that it learns intuitive algorithms for simple tasks such as image mirroring on ImageNet and handwriting on Omniglot without supervision. Finally, we extend the model to natural images and demonstrate few-shot image generation on the Stanford Online Products dataset.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2017,
+    "referenceCount": 30,
+    "citationCount": 87,
+    "influentialCitationCount": 0,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper shows how 1) neural attention and 2) meta learning techniques can be used in combination with autoregressive models to enable effective few-shot density estimation on the Omniglot dataset."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "144828948",
+            "name": "Scott E. Reed"
+        },
+        {
+            "authorId": "2275897",
+            "name": "Yutian Chen"
+        },
+        {
+            "authorId": "40470211",
+            "name": "T. Paine"
+        },
+        {
+            "authorId": "3422336",
+            "name": "A\u00e4ron van den Oord"
+        },
+        {
+            "authorId": "143648071",
+            "name": "S. Eslami"
+        },
+        {
+            "authorId": "1748523",
+            "name": "Danilo Jimenez Rezende"
+        },
+        {
+            "authorId": "1689108",
+            "name": "O. Vinyals"
+        },
+        {
+            "authorId": "1737568",
+            "name": "Nando de Freitas"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "482c0cbfffa77154e3c879c497f50b605297d5bc",
+            "title": "One-Shot Visual Imitation Learning via Meta-Learning"
+        },
+        {
+            "paperId": "d20af35f65fda506b605182d9b93025b559b1433",
+            "title": "Variational Memory Addressing in Generative Models"
+        },
+        {
+            "paperId": "43428880d75b3a14257c3ee9bda054e61eb869c0",
+            "title": "Convolutional Sequence to Sequence Learning"
+        },
+        {
+            "paperId": "5c57bb5630835a05eb1c3d0df3e12d6180d75de2",
+            "title": "One-Shot Imitation Learning"
+        },
+        {
+            "paperId": "2d1b8f60f2724efd6c9344870fb60e8525157d70",
+            "title": "Parallel Multiscale Autoregressive Density Estimation"
+        },
+        {
+            "paperId": "c889d6f98e6d79b89c3a6adf8a921f88fa6ba518",
+            "title": "Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks"
+        },
+        {
+            "paperId": "a3cd82aeecb75ef339889174706d168c40187d7d",
+            "title": "Attentive Recurrent Comparators"
+        },
+        {
+            "paperId": "7e7ecb6d72cc6584082d412355641121bc91db34",
+            "title": "Fast Adaptation in Generative Models with Generative Matching Networks"
+        },
+        {
+            "paperId": "519293ddd865118651b4a46041249b95cff74854",
+            "title": "Learning to Learn for Global Optimization of Black Box Functions"
+        },
+        {
+            "paperId": "29c887794eed2ca9462638ff853e6fe1ab91d5d8",
+            "title": "Optimization as a Model for Few-Shot Learning"
+        },
+        {
+            "paperId": "3904315e2eca50d0086e4b7273f7fd707c652230",
+            "title": "Meta-Learning with Memory-Augmented Neural Networks"
+        },
+        {
+            "paperId": "0936352b78a52bc5d2b5e3f04233efc56664af51",
+            "title": "Conditional Image Generation with PixelCNN Decoders"
+        },
+        {
+            "paperId": "71683e224ab91617950956b5005ed0439a733a71",
+            "title": "Learning to learn by gradient descent by gradient descent"
+        },
+        {
+            "paperId": "be1bb4e4aa1fcf70281b4bd24d8cd31c04864bb6",
+            "title": "Matching Networks for One Shot Learning"
+        },
+        {
+            "paperId": "6c7f040a150abf21dbcefe1f22e0f98fa184f41a",
+            "title": "Generative Adversarial Text to Image Synthesis"
+        },
+        {
+            "paperId": "bda89e0d181eda7e49ea831225eda86d075e111c",
+            "title": "Towards Conceptual Compression"
+        },
+        {
+            "paperId": "0811597b0851b7ebe21aadce7cb4daac4664b44f",
+            "title": "One-Shot Generalization in Deep Generative Models"
+        },
+        {
+            "paperId": "884750937bb97e82c41316d80e5d104e0c0e4795",
+            "title": "Deep Metric Learning via Lifted Structured Feature Embedding"
+        },
+        {
+            "paperId": "a2785f66c20fbdf30ec26c0931584c6d6a0f4fca",
+            "title": "DRAW: A Recurrent Neural Network For Image Generation"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "357da8861465de56c05259aeb7bf2116f7e73d21",
+            "title": "One-shot learning by inverting a compositional causal process"
+        },
+        {
+            "paperId": "d2c733e34d48784a37d717fe43d9e93277a8c53e",
+            "title": "ImageNet: A large-scale hierarchical image database"
+        },
+        {
+            "paperId": "c4dd0cb932d3da7f97a50842b10f8b0e17fc5012",
+            "title": "Apprenticeship Learning using Inverse Reinforcement Learning and Gradient Methods"
+        },
+        {
+            "paperId": "044b2c29e0a54dc689786bd4d029b9ba6e355d58",
+            "title": "Learning to Learn Using Gradient Descent"
+        },
+        {
+            "paperId": "44b6da0cd36c0fa2f7d3485c6dc0b6d2fbe379bb",
+            "title": "Learning how to learn"
+        },
+        {
+            "paperId": "b893e7053c9c7e266a23fb13a42261a88f650210",
+            "title": "The Neural Autoregressive Distribution Estimator"
+        },
+        {
+            "paperId": "1207aa55c8a2b47a25fc17c18328910daf3feb71",
+            "title": "Core knowledge."
+        },
+        {
+            "paperId": "25f8e9e35cafd7fb686d939f274111bcffeafd6b",
+            "title": "The Development of Embodied Cognition: Six Lessons from Babies"
+        },
+        {
+            "paperId": "d69a3ca39f86625cd6ac5050d7599033881e3be8",
+            "title": "The formation of learning sets."
+        }
+    ]
+}

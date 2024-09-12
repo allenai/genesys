@@ -1,0 +1,162 @@
+{
+    "paperId": "71ae756c75ac89e2d731c9c79649562b5768ff39",
+    "externalIds": {
+        "DBLP": "journals/corr/WestonCB14",
+        "ArXiv": "1410.3916",
+        "MAG": "2584341106",
+        "CorpusId": 2926851
+    },
+    "title": "Memory Networks",
+    "abstract": "Abstract: We describe a new class of learning models called memory networks. Memory networks reason with inference components combined with a long-term memory component; they learn how to use these jointly. The long-term memory can be read and written to, with the goal of using it for prediction. We investigate these models in the context of question answering (QA) where the long-term memory effectively acts as a (dynamic) knowledge base, and the output is a textual response. We evaluate them on a large-scale QA task, and a smaller, but more complex, toy task generated from a simulated world. In the latter, we show the reasoning power of such models by chaining multiple supporting sentences to answer questions that require understanding the intension of verbs.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2014,
+    "referenceCount": 31,
+    "citationCount": 1649,
+    "influentialCitationCount": 123,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work describes a new class of learning models called memory networks, which reason with inference components combined with a long-term memory component; they learn how to use these jointly."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145183709",
+            "name": "J. Weston"
+        },
+        {
+            "authorId": "3295092",
+            "name": "S. Chopra"
+        },
+        {
+            "authorId": "1713934",
+            "name": "Antoine Bordes"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "abb33d75dc297993fcc3fb75e0f4498f413eb4f6",
+            "title": "Towards AI-Complete Question Answering: A Set of Prerequisite Toy Tasks"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "0d0b3ff23fbf1ec7a0dfebd923a3ef224306491a",
+            "title": "Learning to Execute"
+        },
+        {
+            "paperId": "921da70f380e9f9082e5594b128369cfd0fdf120",
+            "title": "A Neural Network for Factoid Question Answering over Paragraphs"
+        },
+        {
+            "paperId": "6396ab37641d36be4c26420e58adeb8665914c3b",
+            "title": "Modeling Biological Processes for Reading Comprehension"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "33261d252218007147a71e40f8367ed152fa2fe0",
+            "title": "Question Answering with Subgraph Embeddings"
+        },
+        {
+            "paperId": "a129f612a9eff903d9133244a6f0914ef3cbda72",
+            "title": "Semantic Parsing for Single-Relation Question Answering"
+        },
+        {
+            "paperId": "a584211768d49f80192f13b8ed2fda9c058dec34",
+            "title": "Open Question Answering with Weakly Supervised Embedding Models"
+        },
+        {
+            "paperId": "564257469fa44cdb57e4272f85253efb9acfd69d",
+            "title": "MCTest: A Challenge Dataset for the Open-Domain Machine Comprehension of Text"
+        },
+        {
+            "paperId": "b29447ba499507a259ae9d8f685d60cc1597d7d3",
+            "title": "Semantic Parsing on Freebase from Question-Answer Pairs"
+        },
+        {
+            "paperId": "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17",
+            "title": "Generating Sequences With Recurrent Neural Networks"
+        },
+        {
+            "paperId": "c0be2ac2f45681f1852fc1d298af5dceb85834f4",
+            "title": "Paraphrase-Driven Learning for Open Question Answering"
+        },
+        {
+            "paperId": "d11923075c47f8fd2cee47b8d6ae2ad0e7c966e8",
+            "title": "A survey on question answering technology from an information retrieval perspective"
+        },
+        {
+            "paperId": "f94edbc67d410de462fe6eabe0fbf1f20424d7e9",
+            "title": "The fellowship of the ring"
+        },
+        {
+            "paperId": "2b776119a1347e1455dc498ff5078b3a94029ed9",
+            "title": "Towards Understanding Situated Natural Language"
+        },
+        {
+            "paperId": "14a9e68a3a32de3499a54bc3bbdd4a892b819fc9",
+            "title": "What's next?"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "f6e91c9e7e8f8a577a98ecfcfa998212a683195a",
+            "title": "Learning long-term dependencies in NARX recurrent neural networks"
+        },
+        {
+            "paperId": "bc22e87a26d020215afe91c751e5bdaddd8e4922",
+            "title": "Learning to Control Fast-Weight Memories: An Alternative to Dynamic Recurrent Networks"
+        },
+        {
+            "paperId": "f5c541f83d3868a412bda93fd2dd1210741a719a",
+            "title": "Generalization"
+        },
+        {
+            "paperId": "be0dd2e91bb104494feeb5da2761cf930564f650",
+            "title": "Under review as a conference paper at ICLR 2016"
+        },
+        {
+            "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+            "title": "Recurrent neural network based language model"
+        },
+        {
+            "paperId": "045310b06e8a3983a363a118cc9dcc3f292970b4",
+            "title": "Neural Networks: A Comprehensive Foundation"
+        },
+        {
+            "paperId": null,
+            "title": "A self-referentialweight matrix"
+        },
+        {
+            "paperId": "30110856f45fde473f1903f686aa365cf70ed4c7",
+            "title": "Learning Context-free Grammars: Capabilities and Limitations of a Recurrent Neural Network with an External Stack Memory (cid:3)"
+        },
+        {
+            "paperId": "a2697059c3424a9c4c6d856390fe6539b53329c7",
+            "title": "Discern: a distributed artificial neural network model of script processing and memory"
+        },
+        {
+            "paperId": "f12f7c9981615ef5fb3515b166fc939a1ca82121",
+            "title": "Proceedings of the Twenty-Second International Joint Conference on Artificial Intelligence WSABIE: Scaling Up To Large Vocabulary Image Annotation"
+        },
+        {
+            "paperId": null,
+            "title": "(output feature map"
+        },
+        {
+            "paperId": null,
+            "title": "Convert x to an internal feature representation I ( x )"
+        },
+        {
+            "paperId": null,
+            "title": "What else is next? \u0097\uf097 Make it harder/add more stuff, e.g. \" he went Frodo and Sam \" , etc.!!! \u0097\uf097 MemNNs that reason with more than 2 supporting memories"
+        }
+    ]
+}

@@ -1,0 +1,121 @@
+{
+    "paperId": "30b9de9496492f9a33a20d9a163608a6b6e0ae03",
+    "externalIds": {
+        "DBLP": "conf/cvpr/JainL11",
+        "MAG": "2141129816",
+        "DOI": "10.1109/CVPR.2011.5995317",
+        "CorpusId": 2260730
+    },
+    "title": "Online domain adaptation of a pre-trained cascade of classifiers",
+    "abstract": "Many classifiers are trained with massive training sets only to be applied at test time on data from a different distribution. How can we rapidly and simply adapt a classifier to a new test distribution, even when we do not have access to the original training data? We present an on-line approach for rapidly adapting a \u201cblack box\u201d classifier to a new test data set without retraining the classifier or examining the original optimization criterion. Assuming the original classifier outputs a continuous number for which a threshold gives the class, we reclassify points near the original boundary using a Gaussian process regression scheme. We show how this general procedure can be used in the context of a classifier cascade, demonstrating performance that far exceeds state-of-the-art results in face detection on a standard data set. We also draw connections to work in semi-supervised learning, domain adaptation, and information regularization.",
+    "venue": "Computer Vision and Pattern Recognition",
+    "year": 2011,
+    "referenceCount": 21,
+    "citationCount": 200,
+    "influentialCitationCount": 9,
+    "openAccessPdf": {
+        "url": "https://works.bepress.com/cgi/viewcontent.cgi?article=1099&context=erik_learned_miller",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents an on-line approach for rapidly adapting a \u201cblack box\u201d classifier to a new test data set without retraining the classifier or examining the original optimization criterion."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2246870",
+            "name": "Vidit Jain"
+        },
+        {
+            "authorId": "1389846455",
+            "name": "E. Learned-Miller"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "dad2a473d8cba13d93f436fa36622c6083582112",
+            "title": "Learning to re-rank: query-dependent image re-ranking using click data"
+        },
+        {
+            "paperId": "0916866570527b609566404ab80ae066cbd3ca7c",
+            "title": "A Survey of Recent Advances in Face Detection"
+        },
+        {
+            "paperId": "32024f9a00f8659a0a25f72796b0d84d40159c7e",
+            "title": "Discriminative Learning Under Covariate Shift"
+        },
+        {
+            "paperId": "a5dd230970c90f311f10b9c59283eb4131f4fc79",
+            "title": "Domain adaptive bootstrapping for named entity recognition"
+        },
+        {
+            "paperId": "e0e00f8a5c31403f8871a823f000ab38ac0fe2c0",
+            "title": "Learning Bounds for Domain Adaptation"
+        },
+        {
+            "paperId": "19bb0dce99466077e9bc5a2ad4941607fc28b40c",
+            "title": "Manifold Regularization: A Geometric Framework for Learning from Labeled and Unlabeled Examples"
+        },
+        {
+            "paperId": "47f5682448cdc0b650b54e7f59d22d72f4976c2d",
+            "title": "Domain Adaptation for Statistical Classifiers"
+        },
+        {
+            "paperId": "9943bb81f6e2dc6ce2a516bb00d79dda4cd4f5aa",
+            "title": "Face Detection - Efficient and Rank Deficient"
+        },
+        {
+            "paperId": "9186ed615f4c9d18f7440afdd03a74ff70a2ed78",
+            "title": "Semi-supervised Learning via Gaussian Processes"
+        },
+        {
+            "paperId": "f9cc6155cd69023a736a7b8f8680bcd6232c840e",
+            "title": "Human Detection Based on a Probabilistic Assembly of Robust Part Detectors"
+        },
+        {
+            "paperId": "554894f70b28dba58b396c2d84080ac01051261b",
+            "title": "Gaussian Processes For Machine Learning"
+        },
+        {
+            "paperId": "7de4569c7353030fec21bbb38c06323dd69f777c",
+            "title": "On Information Regularization"
+        },
+        {
+            "paperId": "8d314c440a537f9338358ef1fa3cc49664c98d8a",
+            "title": "Robust Real-Time Face Detection"
+        },
+        {
+            "paperId": "bbe488bb190d75f4b665d43e306bcab1ab228890",
+            "title": "Probabilistic modeling of local appearance and spatial relationships for object recognition"
+        },
+        {
+            "paperId": "a3885c13438132b516e5ffc8b640d20b4e41a7a4",
+            "title": "Neural network-based face detection"
+        },
+        {
+            "paperId": "ed33eba8143d2f8940dc034ee1cc9e80a65c3560",
+            "title": "FDDB: A benchmark for face detection in unconstrained settings"
+        },
+        {
+            "paperId": "d2a88bc7dbdbb4bf614f49ed93764080425ae7ee",
+            "title": "Fast Bounding Box Estimation based Face Detection"
+        },
+        {
+            "paperId": "3bc4736f9b8512043ed47357a81f26b93a1204b6",
+            "title": "Semi-supervised learning with graphs"
+        },
+        {
+            "paperId": "ca8219c2a7753872ac5343c68140014d57470fef",
+            "title": "Information Regularization with Partially Labeled Data"
+        },
+        {
+            "paperId": "088eb2d102c6bb486f5270d0b2adff76961994cf",
+            "title": "Example-Based Learning for View-Based Human Face Detection"
+        },
+        {
+            "paperId": "4e8dace5b01f363a18a8689f425cf3d782268292",
+            "title": "Example-based Learning for View-based Human Face Detection"
+        }
+    ]
+}

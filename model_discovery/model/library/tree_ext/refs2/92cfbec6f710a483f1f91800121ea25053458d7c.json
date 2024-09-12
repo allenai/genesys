@@ -1,0 +1,82 @@
+{
+    "paperId": "92cfbec6f710a483f1f91800121ea25053458d7c",
+    "externalIds": {
+        "DBLP": "conf/interspeech/LiuCPMG12",
+        "MAG": "2403947200",
+        "DOI": "10.21437/Interspeech.2012-563",
+        "CorpusId": 182604
+    },
+    "title": "A Conversational Movie Search System Based on Conditional Random Fields",
+    "abstract": "Online streaming companies such as Netflix have become dominant in the media distribution sector. However, such media delivery services often support very rudimentary search, especially for natural language queries. To provide a more natural search interface, we have developed a conversational movie search system, which parses the recognition hypothesis of a spoken query into semantic classes using conditional random fields (CRFs), and then searches an indexed database with the identified semantics. Topic modeling on user-generated content (e.g., movie reviews) is employed for query expansion. Thirteen searching schemas are supported (such as genre, plot, character and soundtrack search). A crowd-sourcing platform was utilized to automatically collect large-scale annotated data for incremental CRF training.",
+    "venue": "Interspeech",
+    "year": 2012,
+    "referenceCount": 9,
+    "citationCount": 45,
+    "influentialCitationCount": 7,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A conversational movie search system, which parses the recognition hypothesis of a spoken query into semantic classes using conditional random fields (CRFs), and then searches an indexed database with the identified semantics."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2108434481",
+            "name": "Jingjing Liu"
+        },
+        {
+            "authorId": "1813029",
+            "name": "D. S. Cyphers"
+        },
+        {
+            "authorId": "2616463",
+            "name": "Panupong Pasupat"
+        },
+        {
+            "authorId": "143685627",
+            "name": "Ian McGraw"
+        },
+        {
+            "authorId": "145898106",
+            "name": "James R. Glass"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "7e5c7d986d3ba7b7927ad93bf246b960d947c668",
+            "title": "Automating Crowd-supervised Learning for Spoken Language Systems"
+        },
+        {
+            "paperId": "b84abf13b9f6eec9adbb12c6caf2927b1740bb4c",
+            "title": "A dialogue system for accessing drug reviews"
+        },
+        {
+            "paperId": "f6d2a8e93a1ac2fe473afb532c67644f4ed612e3",
+            "title": "Lexicon modeling for query understanding"
+        },
+        {
+            "paperId": "2d287f828cc1736f6755bd5c6e75f73a9146c87d",
+            "title": "Understanding the Semantic Structure of Noun Phrase Queries"
+        },
+        {
+            "paperId": "43dbb3c6f3145fe1688974ce8b8d22ca66ab1c3b",
+            "title": "The WAMI toolkit for developing, deploying, and evaluating web-accessible multimodal interfaces"
+        },
+        {
+            "paperId": "d6df5c972ed687aefe41637f3b0433c7dd44a0b6",
+            "title": "A probabilistic framework for segment-based speech recognition"
+        },
+        {
+            "paperId": "f4ba954b0412773d047dc41231c733de0c1f4926",
+            "title": "Conditional Random Fields: Probabilistic Models for Segmenting and Labeling Sequence Data"
+        },
+        {
+            "paperId": "4574d77fff19e093782178595a8988a7f3aa1969",
+            "title": "Latent Dirichlet Allocation"
+        },
+        {
+            "paperId": "3d481e55187aa96312d5712f1f46436308048b0f",
+            "title": "Releasing a Multimodal Dialogue System into the Wild: User Support Mechanisms"
+        }
+    ]
+}

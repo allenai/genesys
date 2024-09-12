@@ -1,0 +1,173 @@
+{
+    "paperId": "a418524a3576afff4dc2178ed169e692915bd46b",
+    "externalIds": {
+        "DBLP": "conf/nips/JaitlyLVSSB16",
+        "MAG": "2178654303",
+        "CorpusId": 7880024
+    },
+    "title": "An Online Sequence-to-Sequence Model Using Partial Conditioning",
+    "abstract": "Sequence-to-sequence models have achieved impressive results on various tasks. However, they are unsuitable for tasks that require incremental predictions to be made as more data arrives. This is because they generate an output sequence conditioned on an entire input sequence. In this paper, we present a new model that can make incremental predictions as more input arrives, without redoing the entire computation. Unlike sequence-to-sequence models, our method computes the next-step distribution conditioned on the partial input sequence observed and the partial sequence generated. It accomplishes this goal using an encoder recurrent neural network (RNN) that computes features at the same frame rate as the input, and a transducer RNN that operates over blocks of input steps. The transducer RNN extends the sequence produced so far using a local sequence-to-sequence model. During training, our method uses alignment information to generate supervised targets for each block. Approximate alignment is easily available for tasks such as speech recognition, action recognition in videos, etc. During inference (decoding), beam search is used to find the most likely output sequence for an input sequence. This decoding is performed online - at the end of each block, the best candidates from the previous block are extended through the local sequence-to-sequence model. On TIMIT, our online method achieves 19.8% phone error rate (PER). For comparison with published sequence-to-sequence methods, we used a bidirectional encoder and achieved 18.7% PER compared to 17.6% from the best reported sequence-to-sequence model. Importantly, unlike sequence-to-sequence our model is minimally impacted by the length of the input. On artificially created longer utterances, it achieves 20.9% with a unidirectional model, compared to 20% from the best bidirectional sequence-to-sequence models.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2015,
+    "referenceCount": 31,
+    "citationCount": 110,
+    "influentialCitationCount": 9,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper presents a new model that can make incremental predictions as more input arrives, without redoing the entire computation, and is minimally impacted by the length of the input."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3111912",
+            "name": "N. Jaitly"
+        },
+        {
+            "authorId": "2827616",
+            "name": "Quoc V. Le"
+        },
+        {
+            "authorId": "1689108",
+            "name": "O. Vinyals"
+        },
+        {
+            "authorId": "1701686",
+            "name": "I. Sutskever"
+        },
+        {
+            "authorId": "3089810",
+            "name": "David Sussillo"
+        },
+        {
+            "authorId": "1751569",
+            "name": "Samy Bengio"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "b59d91e0699d4e1896a15bae13fd180bdaf77ea5",
+            "title": "Neural Programmer-Interpreters"
+        },
+        {
+            "paperId": "bf85a0cd645ad68919c0706741ab568a60a58af2",
+            "title": "Neural Programmer: Inducing Latent Programs with Gradient Descent"
+        },
+        {
+            "paperId": "878ba5458e9e51f0b341fd9117fa0b43ef4096d3",
+            "title": "End-to-end attention-based large vocabulary speech recognition"
+        },
+        {
+            "paperId": "9fca2af9a0e3f2c5c3ed47abb3ebd21b7265ac2b",
+            "title": "Fast and accurate recurrent neural network acoustic models for speech recognition"
+        },
+        {
+            "paperId": "b624504240fa52ab76167acfe3156150ca01cf3b",
+            "title": "Attention-Based Models for Speech Recognition"
+        },
+        {
+            "paperId": "5247a6e3a60ff0381355e66bfc313bf27512ae0c",
+            "title": "A Neural Network Approach to Context-Sensitive Generation of Conversational Responses"
+        },
+        {
+            "paperId": "86311b182786bfde19446f6ded0854de973d4060",
+            "title": "A Neural Conversational Model"
+        },
+        {
+            "paperId": "df137487e20ba7c6e1e2b9a1e749f2a578b5ad99",
+            "title": "Scheduled Sampling for Sequence Prediction with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "c9d7afd65b2127e6f0651bc7e13eeec1897ac8dd",
+            "title": "Reinforcement Learning Neural Turing Machines"
+        },
+        {
+            "paperId": "5259755f9c100e220ffaa7e08439c5d34be7757a",
+            "title": "Reinforcement Learning Neural Turing Machines - Revised"
+        },
+        {
+            "paperId": "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e",
+            "title": "End-To-End Memory Networks"
+        },
+        {
+            "paperId": "47570e7f63e296f224a0e7f9a0d08b0de3cbaf40",
+            "title": "Grammar as a Foreign Language"
+        },
+        {
+            "paperId": "47d2dc34e1d02a8109f5c04bb6939725de23716d",
+            "title": "End-to-end Continuous Speech Recognition using Attention-based Recurrent NN: First Results"
+        },
+        {
+            "paperId": "d4dc1012d780e8e2547237eb5a6dc7b1bf47d2f0",
+            "title": "Show and tell: A neural image caption generator"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "f264e8b33c0d49a692a6ce2c4bcb28588aeb7d97",
+            "title": "Recurrent Neural Network Regularization"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "2319a491378867c7049b3da055c5df60e1671158",
+            "title": "Playing Atari with Deep Reinforcement Learning"
+        },
+        {
+            "paperId": "4177ec52d1b80ed57f2e72b0f9a42365f1a8598d",
+            "title": "Speech recognition with deep recurrent neural networks"
+        },
+        {
+            "paperId": "7b4f3d0e4e2486a8d5d3f8e00549cf9a117bf88f",
+            "title": "Sequence Transduction with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "9a9f4bf3bfe133e1c70f6b60654c238b677c66d0",
+            "title": "Applying Convolutional Neural Networks concepts to hybrid NN-HMM model for speech recognition"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "e23c34414e66118ecd9b08cf0cd4d016f59b0b85",
+            "title": "Bidirectional recurrent neural networks"
+        },
+        {
+            "paperId": "85fa09523724489648d900c67c7ba1d9e24375c3",
+            "title": "Top Downloads in IEEE Xplore [Reader's Choice]"
+        },
+        {
+            "paperId": "e4351041d25c272a008bcd5765868dc3a28fe470",
+            "title": "Under Review as a Conference Paper at Iclr 2017 Delving into Transferable Adversarial Ex- Amples and Black-box Attacks"
+        },
+        {
+            "paperId": null,
+            "title": "Listen, attend and spell"
+        },
+        {
+            "paperId": null,
+            "title": "Deepspeech: Scaling up endto-end speech recognition"
+        },
+        {
+            "paperId": null,
+            "title": "Abdel-rahman. Hybrid Speech Recognition with Bidirectional LSTM"
+        },
+        {
+            "paperId": null,
+            "title": "The darpa speech recognition research database: speci\ufb01cations and status"
+        }
+    ]
+}

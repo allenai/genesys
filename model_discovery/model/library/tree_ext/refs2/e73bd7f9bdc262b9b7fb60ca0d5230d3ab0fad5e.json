@@ -1,0 +1,183 @@
+{
+    "paperId": "e73bd7f9bdc262b9b7fb60ca0d5230d3ab0fad5e",
+    "externalIds": {
+        "MAG": "2950919220",
+        "DBLP": "conf/acl/Kudo18",
+        "ArXiv": "1804.10959",
+        "ACL": "P18-1007",
+        "DOI": "10.18653/v1/P18-1007",
+        "CorpusId": 13753208
+    },
+    "title": "Subword Regularization: Improving Neural Network Translation Models with Multiple Subword Candidates",
+    "abstract": "Subword units are an effective way to alleviate the open vocabulary problems in neural machine translation (NMT). While sentences are usually converted into unique subword sequences, subword segmentation is potentially ambiguous and multiple segmentations are possible even with the same vocabulary. The question addressed in this paper is whether it is possible to harness the segmentation ambiguity as a noise to improve the robustness of NMT. We present a simple regularization method, subword regularization, which trains the model with multiple subword segmentations probabilistically sampled during training. In addition, for better subword sampling, we propose a new subword segmentation algorithm based on a unigram language model. We experiment with multiple corpora and report consistent improvements especially on low resource and out-of-domain settings.",
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2018,
+    "referenceCount": 37,
+    "citationCount": 1044,
+    "influentialCitationCount": 111,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/P18-1007.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A simple regularization method is presented, subword regularization, which trains the model with multiple subword segmentations probabilistically sampled during training, and a new sub word segmentation algorithm based on a unigram language model is proposed."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1765329",
+            "name": "Taku Kudo"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "765bdcf27ebc1eb03a14f1e47aefa4dda1e03073",
+            "title": "Synthetic and Natural Noise Both Break Neural Machine Translation"
+        },
+        {
+            "paperId": "e3d772986d176057aca2f5e3eb783da53b559134",
+            "title": "Unsupervised Machine Translation Using Monolingual Corpora Only"
+        },
+        {
+            "paperId": "c2a7afbb5609a723f8eea91bfde4b02579b048d6",
+            "title": "Unsupervised Neural Machine Translation"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "f4c8539bed600c9c652aba76a996b8188761d3fe",
+            "title": "Stronger Baselines for Trustable Results in Neural Machine Translation"
+        },
+        {
+            "paperId": "6cddfbed35c46937588bd9d6b846ca2855953cea",
+            "title": "Neural Lattice-to-Sequence Models for Uncertain Inputs"
+        },
+        {
+            "paperId": "2d5069a99bfa0b47c095bbb5cefd6dba974f72a7",
+            "title": "Data Noising as Smoothing in Neural Network Language Models"
+        },
+        {
+            "paperId": "105788dd22393d5a4333c167814ec3d38c7d6612",
+            "title": "Latent Sequence Decompositions"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "e43f713e0d2d438a4c0b03eacab58c334e869e6a",
+            "title": "Lattice-Based Recurrent Neural Network Encoders for Neural Machine Translation"
+        },
+        {
+            "paperId": "1ac30af5522c7a50ec4d1ee43fd2bd8652a9bd52",
+            "title": "A Neural Attention Model for Abstractive Sentence Summarization"
+        },
+        {
+            "paperId": "93a9694b6a4149e815c30a360347593b75860761",
+            "title": "Variable-Length Word Encodings for Neural Translation Models"
+        },
+        {
+            "paperId": "1518039b5001f1836565215eb047526b3ac7f462",
+            "title": "Neural Machine Translation of Rare Words with Subword Units"
+        },
+        {
+            "paperId": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+            "title": "Effective Approaches to Attention-based Neural Machine Translation"
+        },
+        {
+            "paperId": "80a624b9327d9050244dfebac96f7f6cf806880f",
+            "title": "Deep Unordered Composition Rivals Syntactic Methods for Text Classification"
+        },
+        {
+            "paperId": "86311b182786bfde19446f6ded0854de973d4060",
+            "title": "A Neural Conversational Model"
+        },
+        {
+            "paperId": "32de44f01a96d4473d21099d15e25bc2b9f08e2f",
+            "title": "Improved Semantic Representations From Tree-Structured Long Short-Term Memory Networks"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "bee044c8e8903fb67523c1f8c105ab4718600cdb",
+            "title": "Explaining and Harnessing Adversarial Examples"
+        },
+        {
+            "paperId": "d4dc1012d780e8e2547237eb5a6dc7b1bf47d2f0",
+            "title": "Show and tell: A neural image caption generator"
+        },
+        {
+            "paperId": "761a01ae66102502eadbe1e2220a1501e4d7b4a0",
+            "title": "Overview of the 1st Workshop on Asian Translation"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "ed6262b569c0a62c51d941228c54f34e563af022",
+            "title": "Japanese and Korean voice search"
+        },
+        {
+            "paperId": "90036969888613e0f49e01379dd1215cc0e206fd",
+            "title": "Linear Suffix Array Construction by Almost Pure Induced-Sorting"
+        },
+        {
+            "paperId": "843959ffdccf31c6694d135fad07425924f785b1",
+            "title": "Extracting and composing robust features with denoising autoencoders"
+        },
+        {
+            "paperId": "cb826a3899752b796f14df1c50378c64954a6b0a",
+            "title": "Statistical Significance Tests for Machine Translation Evaluation"
+        },
+        {
+            "paperId": "d7da009f457917aa381619facfa5ffae9329a6e9",
+            "title": "Bleu: a Method for Automatic Evaluation of Machine Translation"
+        },
+        {
+            "paperId": "1f701007f789890d1066172094bbf158f002f673",
+            "title": "Bayesian Methods for Hidden Markov Models"
+        },
+        {
+            "paperId": "f30a129113961242c6279436d60df17e9043ad08",
+            "title": "A Stochastic Japanese Morphological Analyzer Using a Forward-DP Backward-A* N-Best Search Algorithm"
+        },
+        {
+            "paperId": "1aa9c0045f1fe8c79cce03c7c14ef4b4643a21f8",
+            "title": "A new algorithm for data compression"
+        },
+        {
+            "paperId": "145c0b53514b02bdc3dadfb2e1cea124f2abd99b",
+            "title": "Error bounds for convolutional codes and an asymptotically optimum decoding algorithm"
+        },
+        {
+            "paperId": "de3c3eb590065a6d78ec8566161f8236ab2a7435",
+            "title": "Overview of the 4th Workshop on Asian Translation"
+        },
+        {
+            "paperId": "8fd61ae673e79de6723f800e06b38b2bda1dc3db",
+            "title": "Convolutional Sequence to Sequence Learning"
+        },
+        {
+            "paperId": "8c3cf30db12d17638b01e0e464e09d6b58a88187",
+            "title": "Variable length word encodings for neural translation models"
+        },
+        {
+            "paperId": null,
+            "title": "WMT14(en\u2194de) uses the same setting as"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": null,
+            "title": "b) Compute the loss i for each subword x i , where loss i represents how likely the likelihood L is reduced when the sub-word x i is removed from the current vocabulary"
+        }
+    ]
+}

@@ -1,0 +1,242 @@
+{
+    "paperId": "f6e0856b4a9199fa968ac00da612a9407b5cb85c",
+    "externalIds": {
+        "DBLP": "conf/cvpr/XieGDTH17",
+        "MAG": "2953328958",
+        "ArXiv": "1611.05431",
+        "DOI": "10.1109/CVPR.2017.634",
+        "CorpusId": 8485068
+    },
+    "title": "Aggregated Residual Transformations for Deep Neural Networks",
+    "abstract": "We present a simple, highly modularized network architecture for image classification. Our network is constructed by repeating a building block that aggregates a set of transformations with the same topology. Our simple design results in a homogeneous, multi-branch architecture that has only a few hyper-parameters to set. This strategy exposes a new dimension, which we call cardinality (the size of the set of transformations), as an essential factor in addition to the dimensions of depth and width. On the ImageNet-1K dataset, we empirically show that even under the restricted condition of maintaining complexity, increasing cardinality is able to improve classification accuracy. Moreover, increasing cardinality is more effective than going deeper or wider when we increase the capacity. Our models, named ResNeXt, are the foundations of our entry to the ILSVRC 2016 classification task in which we secured 2nd place. We further investigate ResNeXt on an ImageNet-5K set and the COCO detection set, also showing better results than its ResNet counterpart. The code and models are publicly available online.",
+    "venue": "Computer Vision and Pattern Recognition",
+    "year": 2016,
+    "referenceCount": 48,
+    "citationCount": 9374,
+    "influentialCitationCount": 1248,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1611.05431",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "On the ImageNet-1K dataset, it is empirically show that even under the restricted condition of maintaining complexity, increasing cardinality is able to improve classification accuracy and is more effective than going deeper or wider when the authors increase the capacity."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1817030",
+            "name": "Saining Xie"
+        },
+        {
+            "authorId": "2983898",
+            "name": "Ross B. Girshick"
+        },
+        {
+            "authorId": "3127283",
+            "name": "Piotr Doll\u00e1r"
+        },
+        {
+            "authorId": "144035504",
+            "name": "Z. Tu"
+        },
+        {
+            "authorId": "39353098",
+            "name": "Kaiming He"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "1a0912bb76777469295bb2c059faee907e7f3258",
+            "title": "Mask R-CNN"
+        },
+        {
+            "paperId": "98445f4172659ec5e891e031d8202c102135c644",
+            "title": "Neural Machine Translation in Linear Time"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "ac94ef90be9b0c3bf744d6744e47b38855f9a4c7",
+            "title": "The microsoft 2016 conversational speech recognition system"
+        },
+        {
+            "paperId": "df0402517a7338ae28bc54acaac400de6b456a46",
+            "title": "WaveNet: A Generative Model for Raw Audio"
+        },
+        {
+            "paperId": "f797fd44b9ddd5845611eb7a705ca9464a8819d1",
+            "title": "Very Deep Convolutional Networks for Text Classification"
+        },
+        {
+            "paperId": "84ca430856a92000e90cd728445ca2241c10ddc3",
+            "title": "Very Deep Convolutional Networks for Natural Language Processing"
+        },
+        {
+            "paperId": "1c4e9156ca07705531e45960b7a919dc473abb51",
+            "title": "Wide Residual Networks"
+        },
+        {
+            "paperId": "f552d03c45298e919d7b4fc1a5b72a9539499a88",
+            "title": "Deep Roots: Improving CNN Efficiency with Hierarchical Filter Groups"
+        },
+        {
+            "paperId": "2a24b68ef180c0c8742bd494a55fb6f68864efed",
+            "title": "Residual Networks Behave Like Ensembles of Relatively Shallow Networks"
+        },
+        {
+            "paperId": "77f0a39b8e02686fd85b01971f8feb7f60971f80",
+            "title": "Identity Mappings in Deep Residual Networks"
+        },
+        {
+            "paperId": "b5c26ab8767d046cb6e32d959fdf726aee89bb62",
+            "title": "Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning"
+        },
+        {
+            "paperId": "adc4e63b58cf4092420533fd877b8c29f8e2ec1d",
+            "title": "Inside-Outside Net: Detecting Objects in Context with Skip Pooling and Recurrent Neural Networks"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "23ffaa0fe06eae05817f527a47ac3291077f9e58",
+            "title": "Rethinking the Inception Architecture for Computer Vision"
+        },
+        {
+            "paperId": "4ca3b996d888d7178dbbf9855bb2ab253bdfa43d",
+            "title": "Compression of Deep Convolutional Neural Networks for Fast and Low Power Mobile Applications"
+        },
+        {
+            "paperId": "6b8d0df903496699e52b4daee5d1815b7b784cf7",
+            "title": "Learning to Segment Object Candidates"
+        },
+        {
+            "paperId": "424561d8585ff8ebce7d5d07de8dbf7aae5e7270",
+            "title": "Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks"
+        },
+        {
+            "paperId": "7ffdbc358b63378f07311e883dddacc9faeeaf4b",
+            "title": "Fast R-CNN"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "d6f2f611da110b5b5061731be3fc4c7f45d8ee23",
+            "title": "Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification"
+        },
+        {
+            "paperId": "6fc6803df5f9ae505cae5b2f178ade4062c768d0",
+            "title": "Fully convolutional networks for semantic segmentation"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "6bdb186ec4726e00a8051119636d4df3b94043b5",
+            "title": "Caffe: Convolutional Architecture for Fast Feature Embedding"
+        },
+        {
+            "paperId": "021fc345d40d3e6332cd2ef276e2eaa5e71102e4",
+            "title": "Speeding up Convolutional Neural Networks with Low Rank Expansions"
+        },
+        {
+            "paperId": "71b7178df5d2b112d07e45038cb5637208659ff7",
+            "title": "Microsoft COCO: Common Objects in Context"
+        },
+        {
+            "paperId": "e5ae8ab688051931b4814f6d32b18391f8d1fa8d",
+            "title": "Exploiting Linear Structure Within Convolutional Networks for Efficient Evaluation"
+        },
+        {
+            "paperId": "bc90c96263679a51021a63884b36f3e6ed8444a0",
+            "title": "Rigid-Motion Scattering for Texture Classification"
+        },
+        {
+            "paperId": "1109b663453e78a59e4f66446d71720ac58cec25",
+            "title": "OverFeat: Integrated Recognition, Localization and Detection using Convolutional Networks"
+        },
+        {
+            "paperId": "5e83ab70d0cbc003471e87ec306d27d9c80ecb16",
+            "title": "Network In Network"
+        },
+        {
+            "paperId": "e2d894584986b44710f634b696db371f8aff92e0",
+            "title": "Understanding Deep Architectures using a Recursive Convolutional Network"
+        },
+        {
+            "paperId": "fc26b9c1afe81e1b20195123fe6f3ced9520abb6",
+            "title": "Visualizing and Understanding Convolutional Neural Networks"
+        },
+        {
+            "paperId": "2f4df08d9072fc2ac181b7fced6a245315ce05c8",
+            "title": "Rich Feature Hierarchies for Accurate Object Detection and Semantic Segmentation"
+        },
+        {
+            "paperId": "b8de958fead0d8a9619b55c7299df3257c624a96",
+            "title": "DeCAF: A Deep Convolutional Activation Feature for Generic Visual Recognition"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "bc6dff14a130c57a91d5a21339c23471faf1d46f",
+            "title": "Et al"
+        },
+        {
+            "paperId": "e8b12467bdc20bde976750b8a28decdb33246d1d",
+            "title": "Histograms of oriented gradients for human detection"
+        },
+        {
+            "paperId": "8c04f169203f9e55056a6f7f956695babe622a38",
+            "title": "Distinctive Image Features from Scale-Invariant Keypoints"
+        },
+        {
+            "paperId": "a8e8f3c8d4418c8d62e306538c9c1292635e9d27",
+            "title": "Backpropagation Applied to Handwritten Zip Code Recognition"
+        },
+        {
+            "paperId": null,
+            "title": "Inceptionv4"
+        },
+        {
+            "paperId": null,
+            "title": "Training and investigating Residual Nets"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        },
+        {
+            "paperId": "b7ed7ba7226cc0cd2f175aabbefc08cc9ff2d375",
+            "title": "Distinctive Image Features from Scale-Invariant Keypoints"
+        },
+        {
+            "paperId": "464d94b3dc9a109dd64008a41a00181830f285aa",
+            "title": "Torch: a modular machine learning software library"
+        },
+        {
+            "paperId": "a0fa137338253a2e4946fd4a935f1e8b20790eb5",
+            "title": "Uber unendliche, lineare Punktmannigfaltigkeiten : Arbeiten zur Mengenlehre aus den Jahren 1872-1884"
+        },
+        {
+            "paperId": null,
+            "title": "Arbeiten zur Mengenlehre aus den Jahren"
+        }
+    ]
+}

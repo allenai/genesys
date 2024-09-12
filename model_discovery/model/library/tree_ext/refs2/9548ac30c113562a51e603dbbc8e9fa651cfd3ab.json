@@ -1,0 +1,62 @@
+{
+    "paperId": "9548ac30c113562a51e603dbbc8e9fa651cfd3ab",
+    "externalIds": {
+        "MAG": "1934041838",
+        "DBLP": "conf/icassp/KneserN95",
+        "DOI": "10.1109/ICASSP.1995.479394",
+        "CorpusId": 9685476
+    },
+    "title": "Improved backing-off for M-gram language modeling",
+    "abstract": "In stochastic language modeling, backing-off is a widely used method to cope with the sparse data problem. In case of unseen events this method backs off to a less specific distribution. In this paper we propose to use distributions which are especially optimized for the task of backing-off. Two different theoretical derivations lead to distributions which are quite different from the probability distributions that are usually used for backing-off. Experiments show an improvement of about 10% in terms of perplexity and 5% in terms of word error rate.",
+    "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+    "year": 1995,
+    "referenceCount": 7,
+    "citationCount": 1858,
+    "influentialCitationCount": 93,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes to use distributions which are especially optimized for the task of back-off, which are quite different from the probability distributions that are usually used for backing-off."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1795942",
+            "name": "Reinhard Kneser"
+        },
+        {
+            "authorId": "145322333",
+            "name": "H. Ney"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "11d74704fe3bb078f81e32e61857e082794c829d",
+            "title": "Large vocabulary continuous speech recognition of Wall Street Journal data"
+        },
+        {
+            "paperId": "8648dbfff9662fa9c62a95622712dd2951b5b3a3",
+            "title": "The Design for the Wall Street Journal-based CSR Corpus"
+        },
+        {
+            "paperId": "b0130277677e5b915d5cd86b3afafd77fd08eb2e",
+            "title": "Estimation of probabilities from sparse data for the language model component of a speech recognizer"
+        },
+        {
+            "paperId": "b07ce649d6f6eb636872527104b0209d3edc8188",
+            "title": "Pattern classification and scene analysis"
+        },
+        {
+            "paperId": "b2986b25f50babd536dd0ecf2237d9eabf5843c2",
+            "title": "THE POPULATION FREQUENCIES OF SPECIES AND THE ESTIMATION OF POPULATION PARAMETERS"
+        },
+        {
+            "paperId": "b3e53b9c0e3a7a60e7a5295e9b08af74d6fb3dbf",
+            "title": "On structuring probabilistic dependences in stochastic language modelling"
+        },
+        {
+            "paperId": "d36910319d11359b995ff5413696aa9e9995e163",
+            "title": "\\self-organized Language Modeling for Speech Recognition\". In"
+        }
+    ]
+}

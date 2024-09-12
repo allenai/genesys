@@ -1,0 +1,154 @@
+{
+    "paperId": "2cf3142e55965c6dce7e3ee2f93d1fb2d5aba416",
+    "externalIds": {
+        "MAG": "2949559870",
+        "DBLP": "journals/corr/abs-1303-4172",
+        "ArXiv": "1303.4172",
+        "CorpusId": 16775293
+    },
+    "title": "Margins, Shrinkage, and Boosting",
+    "abstract": "This manuscript shows that AdaBoost and its immediate variants can produce approximate maximum margin classifiers simply by scaling step size choices with a fixed small constant. In this way, when the unscaled step size is an optimal choice, these results provide guarantees for Friedman's empirically successful \"shrinkage\" procedure for gradient boosting (Friedman, 2000). Guarantees are also provided for a variety of other step sizes, affirming the intuition that increasingly regularized line searches provide improved margin guarantees. The results hold for the exponential loss and similar losses, most notably the logistic loss.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2013,
+    "referenceCount": 31,
+    "citationCount": 70,
+    "influentialCitationCount": 4,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This manuscript shows that AdaBoost and its immediate variants can produce approximate maximum margin classifiers simply by scaling step size choices with a fixed small constant, affirming the intuition that increasingly regularized line searches provide improved margin guarantees."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1750943",
+            "name": "Matus Telgarsky"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "168f28ac3c8c7ea63bf7ed25f2288e8b67e2fe74",
+            "title": "Scikit-learn: Machine Learning in Python"
+        },
+        {
+            "paperId": "8a0ba3ac7b1f8a07b8f6c6273d796e79c4b23736",
+            "title": "A Primal-Dual Convergence Analysis of Boosting"
+        },
+        {
+            "paperId": "479856a79a2462714b8c78fda454ca898490785f",
+            "title": "The Convergence Rate of AdaBoost."
+        },
+        {
+            "paperId": "65311ed8bb113763b747ea4ac7baed97ef3623c3",
+            "title": "On the equivalence of weak learnability and linear separability: new relaxations and efficient boosting algorithms"
+        },
+        {
+            "paperId": "f4fa664187fba92c5d2d6d6d0ac98a320f271f81",
+            "title": "Analysis of boosting algorithms using the smooth margin function"
+        },
+        {
+            "paperId": "d8d8f549cdc4da2c88e5fe937267e2dfc47c1ad3",
+            "title": "Totally corrective boosting algorithms that maximize the margin"
+        },
+        {
+            "paperId": "3ffa695aeb4f8f59b2a2008c87c687ab34680ca4",
+            "title": "How boosting the margin can also boost classifier complexity"
+        },
+        {
+            "paperId": "7a6e77e31f2330848bae457121a1c76150261714",
+            "title": "Efficient Margin Maximizing with Boosting"
+        },
+        {
+            "paperId": "b0816b4f1fdf1ebc324663f66485e05d58cbd1a7",
+            "title": "Boosting with early stopping: Convergence and consistency"
+        },
+        {
+            "paperId": "bfb4de26c77c82552067a07e4d57f0a71e1aa82f",
+            "title": "The Dynamics of AdaBoost: Cyclic Behavior and Convergence of Margins"
+        },
+        {
+            "paperId": "5356b4c32184ad0a1c559551b9a616363f52023d",
+            "title": "The Cauchy\u2013Schwarz Master Class: References"
+        },
+        {
+            "paperId": "1679beddda3a183714d380e944fe6bf586c083cd",
+            "title": "Greedy function approximation: A gradient boosting machine."
+        },
+        {
+            "paperId": "03e8d6373b63bb15e11d3092477c55c74c063b72",
+            "title": "Soft Margins for AdaBoost"
+        },
+        {
+            "paperId": "b54c9359e8858842d1b1b744ac5ca573b8031dcc",
+            "title": "Logistic Regression, AdaBoost and Bregman Distances"
+        },
+        {
+            "paperId": "14e53403a0055dbe5faaf9f1f3be96ca0e692a4d",
+            "title": "Improved Boosting Algorithms Using Confidence-rated Predictions"
+        },
+        {
+            "paperId": "4ba566223e426677d12a9a18418c023a4deec77e",
+            "title": "A decision-theoretic generalization of on-line learning and an application to boosting"
+        },
+        {
+            "paperId": "4d19272112b50547614479a0c409fca66e3b05f7",
+            "title": "Boosting the margin: A new explanation for the effectiveness of voting methods"
+        },
+        {
+            "paperId": "46eaa599a05468452c8c4f5d798be394b8afde51",
+            "title": "Hard-core distributions for somewhat hard problems"
+        },
+        {
+            "paperId": "b824cb051ffbdd81b529c4b82379a3af270fb6f7",
+            "title": "Boosting a weak learning algorithm by majority"
+        },
+        {
+            "paperId": "65f77b5c1a03ab2beb949714dd9bb37b60a8ff0c",
+            "title": "A hard-core predicate for all one-way functions"
+        },
+        {
+            "paperId": "f79ad736d957c718ef569088bdd9d420301a6053",
+            "title": "Crytographic limitations on learning Boolean formulae and finite automata"
+        },
+        {
+            "paperId": "c88d7b4f260ab4e66e274e3dda3780ef2148af37",
+            "title": "Regression, Prediction and Shrinkage"
+        },
+        {
+            "paperId": "b724f39a84462bd36eed63778d3cc67cffbb3f19",
+            "title": "Boosting: Foundations and Algorithms"
+        },
+        {
+            "paperId": null,
+            "title": "Quadratic upper bound"
+        },
+        {
+            "paperId": null,
+            "title": "The only other thing to check is that ` \u2208 G, the class of losses considered by Telgarsky (2012"
+        },
+        {
+            "paperId": null,
+            "title": "Optimal \u2217"
+        },
+        {
+            "paperId": "2ae2d4ceed96cd03262dc970c2aac142b17254c1",
+            "title": "Efficient Margin Maximizing with Boosting \u2217"
+        },
+        {
+            "paperId": null,
+            "title": "The OpenCV Library. Dr. Dobb's Journal of Software Tools"
+        },
+        {
+            "paperId": null,
+            "title": "Margins, Shrinkage, and Boosting Journal of the Royal Statistical Society, Series B (Methodological)"
+        },
+        {
+            "paperId": null,
+            "title": "\u03b1 O t ( \u03bd ) is only implicitly regularized. The condition that A \u2208 {\u2212 1 , +1 } m \u00d7 n prevents the negative, constraining examples from having too little in-\ufb02uence"
+        },
+        {
+            "paperId": null,
+            "title": "Following the scheme of AdaBoost, de-\ufb01ne \u03b1 A t ( \u03bd ) := \u03bd 2 ln( 1+ \u03b3 t 1 \u2212 \u03b3 t ), where convention is followed and \u03b3 t = 1 is ignored"
+        }
+    ]
+}

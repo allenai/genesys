@@ -1,0 +1,58 @@
+{
+    "paperId": "5be4e0eccca2892d31406a03b0c485f7a395fe5a",
+    "externalIds": {
+        "MAG": "2122962290",
+        "DBLP": "journals/tit/ZivL78",
+        "DOI": "10.1109/TIT.1978.1055934",
+        "CorpusId": 20900807
+    },
+    "title": "Compression of individual sequences via variable-rate coding",
+    "abstract": "Compressibility of individual sequences by the class of generalized finite-state information-lossless encoders is investigated. These encoders can operate in a variable-rate mode as well as a fixed-rate one, and they allow for any finite-state scheme of variable-length-to-variable-length coding. For every individual infinite sequence x a quantity \\rho(x) is defined, called the compressibility of x , which is shown to be the asymptotically attainable lower bound on the compression ratio that can be achieved for x by any finite-state encoder. This is demonstrated by means of a constructive coding theorem and its converse that, apart from their asymptotic significance, also provide useful performance criteria for finite and practical data-compression tasks. The proposed concept of compressibility is also shown to play a role analogous to that of entropy in classical information theory where one deals with probabilistic ensembles of sequences rather than with individual sequences. While the definition of \\rho(x) allows a different machine for each different sequence to be compressed, the constructive coding theorem leads to a universal algorithm that is asymptotically optimal for all sequences.",
+    "venue": "IEEE Transactions on Information Theory",
+    "year": 1978,
+    "referenceCount": 6,
+    "citationCount": 3621,
+    "influentialCitationCount": 266,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The proposed concept of compressibility is shown to play a role analogous to that of entropy in classical information theory where one deals with probabilistic ensembles of sequences rather than with individual sequences."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145720405",
+            "name": "J. Ziv"
+        },
+        {
+            "authorId": "50154247",
+            "name": "A. Lempel"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "cf00b87da27384ea52a88f8db9dba0bca01bd483",
+            "title": "Coding theorems for individual sequences"
+        },
+        {
+            "paperId": "59c9f2036e673d8bc9713eed851d12c6c9fe53cb",
+            "title": "A universal algorithm for sequential data compression"
+        },
+        {
+            "paperId": "6cad95bf8f6a451ee5e764a0637032eeb4968278",
+            "title": "On Information Lossless Automata of Finite Order"
+        },
+        {
+            "paperId": "bdd057e14fe4af2eed9179860ba1c3c18dee3425",
+            "title": "Generalized automata and their information losslessness"
+        },
+        {
+            "paperId": "da0fd6091d752dd29b71aff959107a3261a032fb",
+            "title": "On the Complexity of Finite Sequences"
+        },
+        {
+            "paperId": "eff026fee8b554a445ac881e5ffa899688e799a6",
+            "title": "Information Theory and Reliable Communication"
+        }
+    ]
+}

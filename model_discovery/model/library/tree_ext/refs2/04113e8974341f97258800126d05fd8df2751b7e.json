@@ -1,0 +1,166 @@
+{
+    "paperId": "04113e8974341f97258800126d05fd8df2751b7e",
+    "externalIds": {
+        "MAG": "2166116275",
+        "DBLP": "journals/tit/Barron93",
+        "DOI": "10.1109/18.256500",
+        "CorpusId": 15383918
+    },
+    "title": "Universal approximation bounds for superpositions of a sigmoidal function",
+    "abstract": "Approximation properties of a class of artificial neural networks are established. It is shown that feedforward networks with one layer of sigmoidal nonlinearities achieve integrated squared error of order O(1/n), where n is the number of nodes. The approximated function is assumed to have a bound on the first moment of the magnitude distribution of the Fourier transform. The nonlinear parameters associated with the sigmoidal nodes, as well as the parameters of linear combination, are adjusted in the approximation. In contrast, it is shown that for series expansions with n terms, in which only the parameters of linear combination are adjusted, the integrated squared approximation error cannot be made smaller than order 1/n/sup 2/d/ uniformly for functions satisfying the same smoothness assumption, where d is the dimension of the input to the function. For the class of functions examined, the approximation rate and the parsimony of the parameterization of the networks are shown to be advantageous in high-dimensional settings. >",
+    "venue": "IEEE Transactions on Information Theory",
+    "year": 1993,
+    "referenceCount": 34,
+    "citationCount": 3014,
+    "influentialCitationCount": 336,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The approximation rate and the parsimony of the parameterization of the networks are shown to be advantageous in high-dimensional settings and the integrated squared approximation error cannot be made smaller than order 1/n/sup 2/d/ uniformly for functions satisfying the same smoothness assumption."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "20658113",
+            "name": "A. Barron"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "39de69932ee3d70a587bd6c009b6aa0d1775bd75",
+            "title": "Degree of Approximation Results for Feedforward Networks Approximating Unknown Mappings and Their Derivatives"
+        },
+        {
+            "paperId": "4a0424daa4da05dc78eac319f31d62bb45c5c042",
+            "title": "Good weights and hyperbolic kernels for neural networks, projection pursuit, and pattern classification: Fourier strategies for extracting information from high-dimensional data"
+        },
+        {
+            "paperId": "01a3956e07bef9474080a70903c27521112130c2",
+            "title": "Rate of approximation results motivated by robust neural network learning"
+        },
+        {
+            "paperId": "256fe370199610c14256023eccb777bc08a4af3c",
+            "title": "Strong Universal Consistency of Neural Network Classifiers"
+        },
+        {
+            "paperId": "81a1e67bb9a2cc7a94acbfa4c9174ddbd22ce705",
+            "title": "Hinging hyperplanes for regression, classification, and function approximation"
+        },
+        {
+            "paperId": "fedfc9fbcfe46d50b81078560bce724678f90176",
+            "title": "Decision Theoretic Generalizations of the PAC Model for Neural Net and Other Learning Applications"
+        },
+        {
+            "paperId": "ebf2bc6f41d19d5fe39f93006be5677d28db2ac1",
+            "title": "Approximation by superposition of sigmoidal and radial basis functions"
+        },
+        {
+            "paperId": "82566f380f61e835292e483cda84eb3d22e32cd4",
+            "title": "Kolmogorov's theorem and multilayer neural networks"
+        },
+        {
+            "paperId": "7e7f56734291de81e99976d092b58e4e4a2b6f60",
+            "title": "A Simple Lemma on Greedy Approximation in Hilbert Space and Convergence Rates for Projection Pursuit Regression and Neural Network Training"
+        },
+        {
+            "paperId": "0fa209624648b36393fb6643fc91b81ae4602986",
+            "title": "Convergence Rates of Approximation by Translates"
+        },
+        {
+            "paperId": "a9209f90c02a378720879a3bb93aa2f7181cf5f2",
+            "title": "Approximation and Estimation Bounds for Artificial Neural Networks"
+        },
+        {
+            "paperId": "a3141cf8d7f61b46c1266a08af2843bf3ebe398b",
+            "title": "Projection pursuit learning"
+        },
+        {
+            "paperId": "fca98082fa9ff8e9dbae9922491ae54976a0ccef",
+            "title": "Minimum complexity density estimation"
+        },
+        {
+            "paperId": "e7c0f8622f5f67dd33d3d38644e7934b77fc0da7",
+            "title": "On The Power Of Threshold Circuits With Small Weights"
+        },
+        {
+            "paperId": "047128678671f3cb3e8e34cf4c8f6af8d8654023",
+            "title": "THE SPECTRAL NORM OF FINITE FUNCTIONS"
+        },
+        {
+            "paperId": "e2c558f1467863238374899f44e6d466fba99f98",
+            "title": "Learning decision trees using the Fourier spectrum"
+        },
+        {
+            "paperId": "77fdd39ab366b65a617015a72fe8dc9d0b394d64",
+            "title": "Connectionist nonparametric regression: Multilayer feedforward networks can learn arbitrary mappings"
+        },
+        {
+            "paperId": "fc91f9756da56e3ea7f1f18ca565606b96652a0c",
+            "title": "Constructive approximations for neural networks by sigmoidal functions"
+        },
+        {
+            "paperId": "e786caa59202d923ccaae00ae6a4682eec92699b",
+            "title": "Spline Models for Observational Data"
+        },
+        {
+            "paperId": "72d761afbe35634213849419ff63fad5bc9fabeb",
+            "title": "Statistical properties of artificial neural networks"
+        },
+        {
+            "paperId": "f22f6972e66bdd2e769fa64b0df0a13063c0c101",
+            "title": "Multilayer feedforward networks are universal approximators"
+        },
+        {
+            "paperId": "c58148ce71dc46f4e5e590e584c795071273fc3f",
+            "title": "n-Widths in Approximation Theory"
+        },
+        {
+            "paperId": "c4a856962e285c4488245c804145608b1bb82fa9",
+            "title": "Introduction to Fourier Analysis on Euclidean Spaces."
+        },
+        {
+            "paperId": "7d176907eefd6df93a92129a3cfba57e94f46c7a",
+            "title": "Convergence rates for single hidden layer feedforward networks"
+        },
+        {
+            "paperId": null,
+            "title": "Sup norm approximation bounds for networks via Yap\u00b7 nik-Chervoncnkis classes"
+        },
+        {
+            "paperId": "21e82ed12c620fba1f5ee42162962aae74a23510",
+            "title": "Approximation by superpositions of a sigmoidal function"
+        },
+        {
+            "paperId": null,
+            "title": "Neural net apprOximation"
+        },
+        {
+            "paperId": "8b7d60f49e7a5368920457c885c813a912c34997",
+            "title": "Complexity Regularization with Application to Artificial Neural Networks"
+        },
+        {
+            "paperId": null,
+            "title": "The Netherlands: K1uwer Academic"
+        },
+        {
+            "paperId": null,
+            "title": "Statistical lcarning networks: A unifying view"
+        },
+        {
+            "paperId": "171d6c53de316d9cb53a4947b631eef13b6edb53",
+            "title": "Remarques sur un r\u00e9sultat non publi\u00e9 de B. Maurey"
+        },
+        {
+            "paperId": null,
+            "title": "Remarqucs sur un resultat non publie de B. Maurey,\" presented at the Seminaire d' analyse fonctionelle"
+        },
+        {
+            "paperId": null,
+            "title": "Nllmber Th eoretic Methods of Approximate 1\\.nalysis. Moscow: Fiznatgiz"
+        },
+        {
+            "paperId": null,
+            "title": "Slide functions for projection pursuit regression and neural networks"
+        }
+    ]
+}

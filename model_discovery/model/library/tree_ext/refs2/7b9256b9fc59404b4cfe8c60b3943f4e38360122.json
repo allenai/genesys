@@ -1,0 +1,190 @@
+{
+    "paperId": "7b9256b9fc59404b4cfe8c60b3943f4e38360122",
+    "externalIds": {
+        "DBLP": "conf/nips/KanaiFYA18",
+        "MAG": "2804323070",
+        "ArXiv": "1805.10829",
+        "CorpusId": 44064935
+    },
+    "title": "Sigsoftmax: Reanalysis of the Softmax Bottleneck",
+    "abstract": "Softmax is an output activation function for modeling categorical probability distributions in many applications of deep learning. However, a recent study revealed that softmax can be a bottleneck of representational capacity of neural networks in language modeling (the softmax bottleneck). In this paper, we propose an output activation function for breaking the softmax bottleneck without additional parameters. We re-analyze the softmax bottleneck from the perspective of the output set of log-softmax and identify the cause of the softmax bottleneck. On the basis of this analysis, we propose sigsoftmax, which is composed of a multiplication of an exponential function and sigmoid function. Sigsoftmax can break the softmax bottleneck. The experiments on language modeling demonstrate that sigsoftmax and mixture of sigsoftmax outperform softmax and mixture of softmax, respectively.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2018,
+    "referenceCount": 37,
+    "citationCount": 64,
+    "influentialCitationCount": 3,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper re-analyzes the softmax bottleneck from the perspective of the output set of log-softmax and proposes sigsoftmax, which is composed of a multiplication of an exponential function and sigmoid function, which can break the hardmax bottleneck."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "29820421",
+            "name": "Sekitoshi Kanai"
+        },
+        {
+            "authorId": "1491242041",
+            "name": "Y. Fujiwara"
+        },
+        {
+            "authorId": "144901814",
+            "name": "Yuki Yamanaka"
+        },
+        {
+            "authorId": "2452040",
+            "name": "S. Adachi"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "da29659babd07d217466729791562a0a4fd05b6c",
+            "title": "Residual"
+        },
+        {
+            "paperId": "ef9ddbc35676ce8ffc2a8067044473727839dbac",
+            "title": "Breaking the Softmax Bottleneck: A High-Rank RNN Language Model"
+        },
+        {
+            "paperId": "fa9decd1395cc2f39e9921f870ebc8a8ec2bd08d",
+            "title": "Dynamic Evaluation of Neural Sequence Models"
+        },
+        {
+            "paperId": "58c6f890a1ae372958b7decf56132fe258152722",
+            "title": "Regularizing and Optimizing LSTM Language Models"
+        },
+        {
+            "paperId": "3a30a58ff20614057e0c2f565be37c1ed620c240",
+            "title": "Noisy Softmax: Improving the Generalization Ability of DCNN via Postponing the Early Softmax Saturation"
+        },
+        {
+            "paperId": "2b7f9117eb6608a58be4c078ca3d69c0e5ccb875",
+            "title": "SecureML: A System for Scalable Privacy-Preserving Machine Learning"
+        },
+        {
+            "paperId": "efbd381493bb9636f489b965a2034d529cd56bcd",
+            "title": "Pointer Sentinel Mixture Models"
+        },
+        {
+            "paperId": "01434a4153d5340c00d9e2f910f462a841a7bca3",
+            "title": "One-vs-Each Approximation to Softmax for Scalable Estimation of Probabilities"
+        },
+        {
+            "paperId": "9ec499af9b85f30bdbdd6cdfbb07d484808c526a",
+            "title": "Efficient softmax approximation for GPUs"
+        },
+        {
+            "paperId": "c1e3a26fb88c6720f4e84b7118e6f2df7dc8efa3",
+            "title": "From Softmax to Sparsemax: A Sparse Model of Attention and Multi-Label Classification"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "3e498f3dc80b276defcede984f456f4fef1f2e1f",
+            "title": "An Exploration of Softmax Alternatives Belonging to the Spherical Loss Family"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "f264e8b33c0d49a692a6ce2c4bcb28588aeb7d97",
+            "title": "Recurrent Neural Network Regularization"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "5d833331b0e22ff359db05c62a8bca18c4f04b68",
+            "title": "One billion word benchmark for measuring progress in statistical language modeling"
+        },
+        {
+            "paperId": "4177ec52d1b80ed57f2e72b0f9a42365f1a8598d",
+            "title": "Speech recognition with deep recurrent neural networks"
+        },
+        {
+            "paperId": "d46317cc16c8dbfd019afe99699f56dbfd0bb9b6",
+            "title": "Riemannian metrics for neural networks I: feedforward networks"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "84069287da0a6b488b8c933f3cb5be759cb6237e",
+            "title": "On the difficulty of training recurrent neural networks"
+        },
+        {
+            "paperId": "1ca4f8711e0c5ac77a7dfd8e5916d9d4e4268719",
+            "title": "Gated Softmax Classification"
+        },
+        {
+            "paperId": "a538b05ebb01a40323997629e171c91aa28b8e2f",
+            "title": "Rectified Linear Units Improve Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": "ea9d2a2b4ce11aaf85136840c65f3bc9c03ab649",
+            "title": "Understanding the difficulty of training deep feedforward neural networks"
+        },
+        {
+            "paperId": "f91f997a356bd6207c3b55c9ffdaf77c4e25afbb",
+            "title": "Numerical Recipes 3rd Edition: The Art of Scientific Computing"
+        },
+        {
+            "paperId": "668b1277fbece28c4841eeab1c97e4ebd0079700",
+            "title": "Pattern Recognition and Machine Learning"
+        },
+        {
+            "paperId": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+            "title": "Building a Large Annotated Corpus of English: The Penn Treebank"
+        },
+        {
+            "paperId": "c55dd503164c8aaf67a976d1eaad7507ec80ecea",
+            "title": "SVD-Softmax: Fast Softmax Approximation on Large Vocabulary Neural Networks"
+        },
+        {
+            "paperId": "be31cff7d8ad7ec2b90765f754dcaf4a241df151",
+            "title": "Preventing Gradient Explosions in Gated Recurrent Units"
+        },
+        {
+            "paperId": "4f8d648c52edf74e41b0996128aa536e13cc7e82",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "96364af2d208ea75ca3aeb71892d2f7ce7326b55",
+            "title": "Statistical Language Models Based on Neural Networks"
+        },
+        {
+            "paperId": null,
+            "title": "Large text compression benchmark"
+        },
+        {
+            "paperId": "83b6755242f1cff6bacf270f65b4626d4d118f32",
+            "title": "Neural Networks for Pattern Recognition"
+        },
+        {
+            "paperId": "1f462943c8d0af69c12a09058251848324135e5a",
+            "title": "Probabilistic Interpretation of Feedforward Classification Network Outputs, with Relationships to Statistical Pattern Recognition"
+        },
+        {
+            "paperId": "830ccb44084d9d6cdcb70d623df5012ae4835142",
+            "title": "Training Stochastic Model Recognition Algorithms as Networks can Lead to Maximum Mutual Information Estimation of Parameters"
+        },
+        {
+            "paperId": null,
+            "title": "Non-negative In"
+        }
+    ]
+}

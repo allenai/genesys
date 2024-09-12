@@ -1,0 +1,157 @@
+{
+    "paperId": "ae77c897a098f94f94cceb6f8731337db6e8a500",
+    "externalIds": {
+        "MAG": "2808788157",
+        "DBLP": "conf/uai/ChenS18",
+        "CorpusId": 52225385
+    },
+    "title": "Densified Winner Take All (WTA) Hashing for Sparse Datasets",
+    "abstract": "WTA (Winner Take All) hashing has been successfully applied in many large-scale vision applications. This hashing scheme was tailored to take advantage of the comparative reasoning (or order based information), which showed significant accuracy improvements. In this paper, we identify a subtle issue with WTA, which grows with the sparsity of the datasets. This issue limits the discriminative power of WTA. We then propose a solution to this problem based on the idea of Densification which makes use of 2-universal hash functions in a novel way. Our experiments show that Densified WTA Hashing outperforms Vanilla WTA Hashing both in image retrieval and classification tasks consistently and significantly.",
+    "venue": "Conference on Uncertainty in Artificial Intelligence",
+    "year": 2018,
+    "referenceCount": 31,
+    "citationCount": 13,
+    "influentialCitationCount": 2,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper identifies a subtle issue with WTA, which grows with the sparsity of the datasets, and proposes a solution based on the idea of Densification which makes use of 2-universal hash functions in a novel way."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "4319427",
+            "name": "Beidi Chen"
+        },
+        {
+            "authorId": "4260659",
+            "name": "Anshumali Shrivastava"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "fee1a603b1fff4152b245ed4b1d05ec7b166201a",
+            "title": "Lsh-sampling Breaks the Computation Chicken-and-egg Loop in Adaptive Stochastic Gradient Estimation"
+        },
+        {
+            "paperId": "daa32966409f35eea416d2b83ced0107df1202fa",
+            "title": "Unique Entity Estimation with Application to the Syrian Conflict"
+        },
+        {
+            "paperId": "f6d9a6f650f063a9eec726679e236b3dcb485261",
+            "title": "Optimal Densification for Fast and Accurate Minwise Hashing"
+        },
+        {
+            "paperId": "21f13f1ed074eb8504d8b856460d04ec672e7dd4",
+            "title": "Scalable and Sustainable Deep Learning via Randomized Hashing"
+        },
+        {
+            "paperId": "d3649936cf93d4e3f47b03af93ce39142d860de3",
+            "title": "Sparse Perceptron Decision Tree for Millions of Dimensions"
+        },
+        {
+            "paperId": "1353cceaa4c48957e29af31d7b3a7889d75cf5ea",
+            "title": "Probabilistic Hashing Techniques for Big Data"
+        },
+        {
+            "paperId": "8250ecbaef057bdb5390ef4e4be798f1523a23f6",
+            "title": "Deep Networks With Large Output Spaces"
+        },
+        {
+            "paperId": "6d552d38404a5e01d142322c456c50ffaf3d3a1f",
+            "title": "Densifying One Permutation Hashing via Rotation for Fast Near Neighbor Search"
+        },
+        {
+            "paperId": "1b16571a4bbdcb916b250d3640e683700de143b8",
+            "title": "Improved Densification of One Permutation Hashing"
+        },
+        {
+            "paperId": "954ec02492cecbf8a4fc1c8e37179fae613dbfc9",
+            "title": "Fast, Accurate Detection of 100,000 Object Classes on a Single Machine"
+        },
+        {
+            "paperId": "85bd560cdcbd4f3c24a43678284f485eb2d712d7",
+            "title": "Locally Uniform Comparison Image Descriptor"
+        },
+        {
+            "paperId": "7ae42cc4b475a2192707d0ada7b3c60c347b621e",
+            "title": "Approximate Nearest Neighbor: Towards Removing the Curse of Dimensionality"
+        },
+        {
+            "paperId": "7c7b50626ca0c1382075d8de669833cefee89907",
+            "title": "Dense Scale Invariant Descriptors for Images and Surfaces"
+        },
+        {
+            "paperId": "9ce42ca0666a52107a08b15affd496f2c781df72",
+            "title": "The power of comparative reasoning"
+        },
+        {
+            "paperId": "23e568fcf0192e4ff5e6bed7507ee5b9e6c43598",
+            "title": "Relative attributes"
+        },
+        {
+            "paperId": "76e3e31f9f6aef622ec3f51744a260fe3a38b5a9",
+            "title": "Theory and applications of b-bit minwise hashing"
+        },
+        {
+            "paperId": "b818c6168bafa76e2733f6584cd1eb739882c7fb",
+            "title": "Hashing Algorithms for Large-Scale Learning"
+        },
+        {
+            "paperId": "d720a95e1501922ea17ee31f299f43b2db5e15ef",
+            "title": "Vlfeat: an open and portable library of computer vision algorithms"
+        },
+        {
+            "paperId": "0c9633aedafe4ee8cf238fa06c40b84f47e17362",
+            "title": "Linear spatial pyramid matching using sparse coding for image classification"
+        },
+        {
+            "paperId": "092c275005ae49dc1303214f6d02d134457c7053",
+            "title": "LabelMe: A Database and Web-Based Tool for Image Annotation"
+        },
+        {
+            "paperId": "7a59fde27461a3ef4a21a249cc403d0d96e4a0d7",
+            "title": "Random Features for Large-Scale Kernel Machines"
+        },
+        {
+            "paperId": "e07554b693923605d71c0bff7fb2c811a7492931",
+            "title": "Floating Codes for Joint Information Storage in Write Asymmetric Memories"
+        },
+        {
+            "paperId": "e64a9960734215e2b1866ea3cb723ffa5585ac14",
+            "title": "Efficient sparse coding algorithms"
+        },
+        {
+            "paperId": "d70c182a71aea05a145391b24d6bc3cdeede32a5",
+            "title": "Database-friendly random projections"
+        },
+        {
+            "paperId": "d09deeb2eb6b1175d13817284d967189a83dbdde",
+            "title": "Support vector machines for histogram-based image classification"
+        },
+        {
+            "paperId": "a6777303d67ba4282a4495c545e1643d822c014d",
+            "title": "Unified representation of tractography and diffusion-weighted MRI data using sparse multidimensional arrays"
+        },
+        {
+            "paperId": "70c2701361ff5e39ca5250069a1ac8dda4d4123f",
+            "title": "Making Decision Trees Feasible in Ultrahigh Feature and Label Dimensions"
+        },
+        {
+            "paperId": "5a1362968efc9e45fb5c3cf1b0a714ee3a95e2a8",
+            "title": "Sparse Embedded k-Means Clustering"
+        },
+        {
+            "paperId": "13ef25201af7f2a7e401ef31a6197f66357f6f01",
+            "title": "The PASCAL Visual Object Classes Challenge"
+        },
+        {
+            "paperId": null,
+            "title": "Microsoft research cambridge object recognition image database"
+        },
+        {
+            "paperId": null,
+            "title": "A quantitative analysis and performance study for similaritysearch methods in high-dimensional spaces"
+        }
+    ]
+}

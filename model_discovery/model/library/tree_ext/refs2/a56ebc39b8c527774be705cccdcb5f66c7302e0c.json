@@ -1,0 +1,319 @@
+{
+    "paperId": "a56ebc39b8c527774be705cccdcb5f66c7302e0c",
+    "externalIds": {
+        "ArXiv": "1808.09357",
+        "DBLP": "conf/emnlp/PengSTS18",
+        "ACL": "D18-1152",
+        "MAG": "2951060897",
+        "DOI": "10.18653/v1/D18-1152",
+        "CorpusId": 52114454
+    },
+    "title": "Rational Recurrences",
+    "abstract": "Despite the tremendous empirical success of neural models in natural language processing, many of them lack the strong intuitions that accompany classical machine learning approaches. Recently, connections have been shown between convolutional neural networks (CNNs) and weighted finite state automata (WFSAs), leading to new interpretations and insights. In this work, we show that some recurrent neural networks also share this connection to WFSAs. We characterize this connection formally, defining rational recurrences to be recurrent hidden state update functions that can be written as the Forward calculation of a finite set of WFSAs. We show that several recent neural models use rational recurrences. Our analysis provides a fresh view of these models and facilitates devising new neural architectures that draw inspiration from WFSAs. We present one such model, which performs better than two recent baselines on language modeling and text classification. Our results demonstrate that transferring intuitions from classical models like WFSAs can be an effective approach to designing and understanding neural models.",
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2018,
+    "referenceCount": 68,
+    "citationCount": 36,
+    "influentialCitationCount": 5,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/D18-1152.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that several recent neural models use rational recurrences, and one such model is presented, which performs better than two recent baselines on language modeling and text classification and demonstrates that transferring intuitions from classical models like WFSAs can be an effective approach to designing and understanding neural models."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "49349645",
+            "name": "Hao Peng"
+        },
+        {
+            "authorId": "4671928",
+            "name": "Roy Schwartz"
+        },
+        {
+            "authorId": "38094552",
+            "name": "Sam Thomson"
+        },
+        {
+            "authorId": "144365875",
+            "name": "Noah A. Smith"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "6bf2f1dc081b319ed55f2e185278c7ebfacd9e45",
+            "title": "Bridging CNNs, RNNs, and Weighted Finite-State Machines"
+        },
+        {
+            "paperId": "06354570d5f6be803d4a79bf59ecbb097bca8755",
+            "title": "On the Practical Computational Power of Finite Precision RNNs for Language Recognition"
+        },
+        {
+            "paperId": "321f91528af535cefa1b6971df31c609673f463f",
+            "title": "Backpropagating through Structured Argmax using a SPIGOT"
+        },
+        {
+            "paperId": "565ab57eede8bf6ef9c42df51216b9f85287c234",
+            "title": "Independently Recurrent Neural Network (IndRNN): Building A Longer and Deeper RNN"
+        },
+        {
+            "paperId": "31b26b31f28988ebcfe7ff356e7fda7e17f1558c",
+            "title": "Recurrent Neural Networks as Weighted Language Recognizers"
+        },
+        {
+            "paperId": "7ba9b6266569bd7b6a3c2ec64348c5b969a5ceb7",
+            "title": "Simple Recurrent Units for Highly Parallelizable Recurrence"
+        },
+        {
+            "paperId": "ad45b1291067120bf9e55ac7424eb627e0aab149",
+            "title": "Training RNNs as Fast as CNNs"
+        },
+        {
+            "paperId": "2397ce306e5d7f3d0492276e357fb1833536b5d8",
+            "title": "On the State of the Art of Evaluation in Neural Language Models"
+        },
+        {
+            "paperId": "0b6beeaf86ce324d21f6276b470feb3ac7962774",
+            "title": "Hafez: an Interactive Poetry Generation System"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "a88f86093e6f2d14761d4b8cbdcadfeff496c948",
+            "title": "Adversarial Ranking for Language Generation"
+        },
+        {
+            "paperId": "ee9c6aeb6e29cf3c9081df2cc100b8203ebf5cff",
+            "title": "Deriving Neural Architectures from Sequence and Graph Kernels"
+        },
+        {
+            "paperId": "ecaf00a0464ef619890e46962b17ce838f3587d0",
+            "title": "Recurrent Additive Networks"
+        },
+        {
+            "paperId": "43428880d75b3a14257c3ee9bda054e61eb869c0",
+            "title": "Convolutional Sequence to Sequence Learning"
+        },
+        {
+            "paperId": "4908fc4d7f58383170c085fe8238a868e9a901f9",
+            "title": "Deep Multitask Learning for Semantic Dependency Parsing"
+        },
+        {
+            "paperId": "82abca98f2b208d681bb681c518a79f4accbc9a4",
+            "title": "Intelligible Language Modeling with Input Switched Affine Networks"
+        },
+        {
+            "paperId": "67d968c7450878190e45ac7886746de867bf673d",
+            "title": "Neural Architecture Search with Reinforcement Learning"
+        },
+        {
+            "paperId": "401d68e1a930b0f7e02030cab4c185fb1839cb11",
+            "title": "Capacity and Trainability in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "a3a8f179b8589ea51aa553722daf82f87210abc4",
+            "title": "Generating Topical Poetry"
+        },
+        {
+            "paperId": "63e39cdf1ad884da6bc69096bb3413b5b1100559",
+            "title": "Using the Output Embedding to Improve Language Models"
+        },
+        {
+            "paperId": "053b3605632c69d0c74c8a054840cfad89268ce3",
+            "title": "Weighting Finite-State Transductions With Neural Context"
+        },
+        {
+            "paperId": "d026408dc768588c1eef86302e967104c73ecb97",
+            "title": "Simplifying long short-term memory acoustic models for fast training and decoding"
+        },
+        {
+            "paperId": "7e45b68037b5f86c4bce305b2725f4871c6b091e",
+            "title": "Strongly-Typed Recurrent Neural Networks"
+        },
+        {
+            "paperId": "7345843e87c81e24e42264859b214d26042f8d51",
+            "title": "Recurrent Neural Network Grammars"
+        },
+        {
+            "paperId": "f3399e9a516983e5f4c5a27abb8663aa1f745d74",
+            "title": "Semi-supervised Question Retrieval with Gated Convolutions"
+        },
+        {
+            "paperId": "56edaa1368ff4dfa45388e4be24fdfbded7d88a7",
+            "title": "A Primer on Neural Network Models for Natural Language Processing"
+        },
+        {
+            "paperId": "a79ac27b270772c79b80d2235ca5ff2df2d2d370",
+            "title": "Molding CNNs for text: non-linear, non-consecutive convolutions"
+        },
+        {
+            "paperId": "67ce597aee3461f0ef8593b22473513b3edcbed7",
+            "title": "Modeling Word Forms Using Latent Underlying Morphs and Phonology"
+        },
+        {
+            "paperId": "9665247ea3421929f9b6ad721f139f11edb1dbb8",
+            "title": "Learning Longer Memory in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "f264e8b33c0d49a692a6ce2c4bcb28588aeb7d97",
+            "title": "Recurrent Neural Network Regularization"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "665f89a20b05472d82df0a12f2dd63e8fcc4f3ea",
+            "title": "Hidden factors and hidden topics: understanding rating dimensions with review text"
+        },
+        {
+            "paperId": "687bac2d3320083eb4530bf18bb8f8f721477600",
+            "title": "Recursive Deep Models for Semantic Compositionality Over a Sentiment Treebank"
+        },
+        {
+            "paperId": "d13d4dda75802815ef6f535e834871b866686486",
+            "title": "Enhanced Sentiment Learning Using Twitter Hashtags and Smileys"
+        },
+        {
+            "paperId": "d2b3820db596e9f01f58ce0801fcedef661ab1f0",
+            "title": "Juicer: A Weighted Finite-State Transducer Speech Decoder"
+        },
+        {
+            "paperId": "a284201c2dee3fc63b5e0e38644c96d55736aefb",
+            "title": "Modeling Form for On-line Following of Musical Performances"
+        },
+        {
+            "paperId": "a82ce929b746b6515fb4e9198d3d07d5dbe58ce7",
+            "title": "Rational Kernels: Theory and Algorithms"
+        },
+        {
+            "paperId": "cdcf7cb29f37ac0546961ea8a076075b9cc1f992",
+            "title": "Mining and summarizing customer reviews"
+        },
+        {
+            "paperId": "167e1359943b96b9e92ee73db1df69a1f65d731d",
+            "title": "A Sentimental Education: Sentiment Analysis Using Subjectivity Summarization Based on Minimum Cuts"
+        },
+        {
+            "paperId": "c4138748eb5dc1bbd1df2951f299d701304147a2",
+            "title": "A Weighted Finite State Transducer Implementation of the Alignment Template Model for Statistical Machine Translation"
+        },
+        {
+            "paperId": "683305450fcb46f6832108308fc436df1b9eb80e",
+            "title": "Parameter Estimation for Probabilistic Finite-State Transducers"
+        },
+        {
+            "paperId": "3c5568063456e7034275b9e3ba3c77ed895e8d89",
+            "title": "Hidden Markov model interpretations of neural networks"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "979e6000391c1739104581b295ae5c9461a539b7",
+            "title": "Fool's Gold: Extracting Finite State Machines from Recurrent Network Dynamics"
+        },
+        {
+            "paperId": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+            "title": "Building a Large Annotated Corpus of English: The Penn Treebank"
+        },
+        {
+            "paperId": "990504fc9e5a1f3619ace4fa7f5bf667069018b1",
+            "title": "Original Contribution: Multilayer feedforward networks with a nonpolynomial activation function can approximate any function"
+        },
+        {
+            "paperId": "17594df98c222217a11510dd454ba52a5a737378",
+            "title": "On the computational power of neural nets"
+        },
+        {
+            "paperId": "872cdc269f3cb59f8a227818f35041415091545f",
+            "title": "Learning and Extracting Finite State Automata with Second-Order Recurrent Neural Networks"
+        },
+        {
+            "paperId": "2ae5a5507253aa3cada113d41d35fada1e84555f",
+            "title": "An Efficient Gradient-Based Algorithm for On-Line Training of Recurrent Network Trajectories"
+        },
+        {
+            "paperId": "668087f0ae7ce1de6e0bd0965dbb480c08103260",
+            "title": "Finding Structure in Time"
+        },
+        {
+            "paperId": "bd46c1b5948abe04e565a8bae6454da63a1b021e",
+            "title": "Finite State Automata and Simple Recurrent Networks"
+        },
+        {
+            "paperId": "d26844d389df6aa01152bbe31832ff4ab73f5b01",
+            "title": "Rational series and their languages"
+        },
+        {
+            "paperId": "b9043cc0ad5e73749f0338950a118c98c607f539",
+            "title": "Semirings, Automata, Languages"
+        },
+        {
+            "paperId": "603bdbb17ba1f909280405a076455ac4f878fbf3",
+            "title": "Statistical Inference for Probabilistic Functions of Finite State Markov Chains"
+        },
+        {
+            "paperId": "04cce338d310bbec946b9084bc3da7c706d4b4bf",
+            "title": "On the Definition of a Family of Automata"
+        },
+        {
+            "paperId": "682ef8bb6e42f8230cabafbc56e964b3c47df25c",
+            "title": "Automatic musical accompaniment using finite state machines"
+        },
+        {
+            "paperId": null,
+            "title": "sentiment-analysis.html cally and arguably more interpretable"
+        },
+        {
+            "paperId": "8913512dfaf9890f88b7aeb92a8037db972be13e",
+            "title": "A non-parametric model for the discovery of inflectional paradigms from plain text using graphical models over strings"
+        },
+        {
+            "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+            "title": "Recurrent neural network based language model"
+        },
+        {
+            "paperId": "cb19a063ea91e716a2c84d7bd3ce8935a645ef8d",
+            "title": "Rational and Recognisable Power Series"
+        },
+        {
+            "paperId": "a80a452e587bd7f06ece1be101d6775fcee0f7af",
+            "title": "Weighted finite-state transducers in speech recognition"
+        },
+        {
+            "paperId": null,
+            "title": "inter alia), and are still successful in morphology (Dreyer"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "caa5eec3feba1e3f4c421f28daaa6d1906b573ec",
+            "title": "Serial Order: A Parallel Distributed Processing Approach"
+        },
+        {
+            "paperId": null,
+            "title": "Besides the perhaps most notable gated variants (Hochreiter and Schmidhuber"
+        }
+    ]
+}

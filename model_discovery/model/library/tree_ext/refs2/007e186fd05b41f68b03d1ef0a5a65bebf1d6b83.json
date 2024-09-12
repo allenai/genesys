@@ -1,0 +1,197 @@
+{
+    "paperId": "007e186fd05b41f68b03d1ef0a5a65bebf1d6b83",
+    "externalIds": {
+        "MAG": "3005100505",
+        "DBLP": "journals/jmlr/CollobertSWB06",
+        "CorpusId": 156548
+    },
+    "title": "Large Scale Transductive SVMs",
+    "abstract": "We show how the concave-convex procedure can be applied to transductive SVMs, which traditionally require solving a combinatorial search problem. This provides for the first time a highly scalable algorithm in the nonlinear case. Detailed experiments verify the utility of our approach. Software is available at http://www.kyb.tuebingen.mpg.de/bs/people/fabee/transduction.html .",
+    "venue": "Journal of machine learning research",
+    "year": 2006,
+    "referenceCount": 39,
+    "citationCount": 512,
+    "influentialCitationCount": 78,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown how the concave-convex procedure can be applied to transductive SVMs, which traditionally require solving a combinatorial search problem, and provides for the first time a highly scalable algorithm in the nonlinear case."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2939803",
+            "name": "R. Collobert"
+        },
+        {
+            "authorId": "50095217",
+            "name": "Fabian H Sinz"
+        },
+        {
+            "authorId": "145183709",
+            "name": "J. Weston"
+        },
+        {
+            "authorId": "52184096",
+            "name": "L. Bottou"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "33fd991b4e05becfdec93585d25b6369a0519133",
+            "title": "Trading convexity for scalability"
+        },
+        {
+            "paperId": "4a18360a14facea50dc819145b1daf4c53d5d59e",
+            "title": "Estimation of Dependences Based on Empirical Data"
+        },
+        {
+            "paperId": "07b54bac0159028aed116dbdbc2b747f723e585e",
+            "title": "Fast Kernel Classifiers with Online and Active Learning"
+        },
+        {
+            "paperId": "6c66378bcf0c63a25e78c24b544764e7ee073cb5",
+            "title": "A Modified Finite Newton Method for Fast Solution of Large Scale Linear SVMs"
+        },
+        {
+            "paperId": "ec7c68427a26f812532b1c913c68fcf84b7de58e",
+            "title": "Beyond the point cloud: from transductive to semi-supervised learning"
+        },
+        {
+            "paperId": "2abe6b9ea1b13653b7384e9c8ef14b0d87e20cfc",
+            "title": "RCV1: A New Benchmark Collection for Text Categorization Research"
+        },
+        {
+            "paperId": "9186ed615f4c9d18f7440afdd03a74ff70a2ed78",
+            "title": "Semi-supervised Learning via Gaussian Processes"
+        },
+        {
+            "paperId": "5f93423c41914639a147ad8dd589967daf2ea877",
+            "title": "Maximum Margin Clustering"
+        },
+        {
+            "paperId": "99ec0dd4cd38ef9884d8114ac714c24700dff929",
+            "title": "Leveraging the margin more carefully"
+        },
+        {
+            "paperId": "e7bba10dce160a5c15bd5249940689803b239a94",
+            "title": "Explicit Learning Curves for Transduction and Application to Clustering and Compression Algorithms"
+        },
+        {
+            "paperId": "46770a8e7e2af28f5253e5961f709be74e34c1f6",
+            "title": "Learning with Local and Global Consistency"
+        },
+        {
+            "paperId": "22a2a99643109ba39ad427a41deaa30fb36bcf12",
+            "title": "Convex Methods for Transduction"
+        },
+        {
+            "paperId": "67f3e2d4823b783fb6e2969f6fe01757f077dba3",
+            "title": "Semi-supervised Protein Classification Using Cluster Kernels"
+        },
+        {
+            "paperId": "125842668eab7decac136db8a59d392dc5e4e395",
+            "title": "Combining active learning and semi-supervised learning using Gaussian fields and harmonic functions"
+        },
+        {
+            "paperId": "b3f45ff1e0a749d6b4fd903dcd844582162469ce",
+            "title": "Asymptotic Behaviors of Support Vector Machines with Gaussian Kernel"
+        },
+        {
+            "paperId": "f0bf18fc90674fbef616e8c54bdefb3adc237e4d",
+            "title": "The Concave-Convex Procedure (CCCP)"
+        },
+        {
+            "paperId": "8e6779bb55f7fbed5684ded55df51747ea678a84",
+            "title": "Partially labeled classification with Markov random walks"
+        },
+        {
+            "paperId": "a004cec1cd96481bba8b12840b059ebc3cd04d5d",
+            "title": "Improved Generalization Through Explicit Optimization of Margins"
+        },
+        {
+            "paperId": "e6bdd20d5c028020da4ce68266ceca56b3587f46",
+            "title": "Bayesian Transduction"
+        },
+        {
+            "paperId": "74b1a9e50f18af8a7b9f8dd38f40e0466ad7a8e8",
+            "title": "Transductive Inference for Text Classification using Support Vector Machines"
+        },
+        {
+            "paperId": "4de39c94e340a108fff01a90a67b0c17c86fb981",
+            "title": "Fast training of support vector machines using sequential minimal optimization, advances in kernel methods"
+        },
+        {
+            "paperId": "f43a955dcf05ba3b348d2d77d31f3d694bfef2f6",
+            "title": "Making large-scale support vector machine learning practical"
+        },
+        {
+            "paperId": "bb99668d4df98a3f6ff0b9fa3402e09008f22e2c",
+            "title": "Making large-scale support vector machine learning practical"
+        },
+        {
+            "paperId": "8198e70878c907e1bd05e7a3fa4280d8c338df60",
+            "title": "Semi-Supervised Support Vector Machines"
+        },
+        {
+            "paperId": "1ad15c08556c8f8e3739703857ea01077ce738c5",
+            "title": "Kernel Principal Component Analysis"
+        },
+        {
+            "paperId": "4aaa30769ca49875f45670970130c088136986d1",
+            "title": "A training algorithm for optimal margin classifiers"
+        },
+        {
+            "paperId": "d2c5d2cafc35856832f2b478790f0af119baab92",
+            "title": "Semi-Supervised Classification by Low Density Separation"
+        },
+        {
+            "paperId": "16c65bc854666bb0fe19631061d13a07734d2465",
+            "title": "Kernel Methods for Missing Variables"
+        },
+        {
+            "paperId": "38a49f2d906b48a36ab4baca448298666a9ec259",
+            "title": "Using manifold structure for partially labelled classification"
+        },
+        {
+            "paperId": "6bbc0c752570c46a772f2982728f9ad4191f25dd",
+            "title": "Cluster Kernels for Semi-Supervised Learning"
+        },
+        {
+            "paperId": "730fb786a1710682584b9ef08793c0ab39e47c27",
+            "title": "OF LEARNING"
+        },
+        {
+            "paperId": "fced0bfd90bd624876762dd6bfacb992e5ed3b27",
+            "title": "Semi-Supervised Support Vector Machines for Unlabeled Data Classi\ufb01cation"
+        },
+        {
+            "paperId": "8213dbed4db44e113af3ed17d6dad57471a0c048",
+            "title": "The Nature of Statistical Learning Theory"
+        },
+        {
+            "paperId": "d1fa8485ad749d51e7470d801bc1931706597601",
+            "title": "Fast Training of Support Vector Machines using Sequential Minimal Optimization"
+        },
+        {
+            "paperId": null,
+            "title": "E\ufb03cient backprop"
+        },
+        {
+            "paperId": null,
+            "title": "Columbia object image libary (coil-20)"
+        },
+        {
+            "paperId": "1fe9c3adb9e8ec3266cb5b7718a11e42f0751f1a",
+            "title": "Analyse num\u00e9rique des algorithmes de l'optimisation D. C. . Approches locale et globale. Codes et simulations num\u00e9riques en grande dimension. Applications"
+        },
+        {
+            "paperId": null,
+            "title": "On the e\ufb00ective VC dimension. Technical Report bottou-e\ufb00vc"
+        },
+        {
+            "paperId": null,
+            "title": "On the effective VC dimension"
+        }
+    ]
+}

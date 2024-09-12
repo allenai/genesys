@@ -1,0 +1,27 @@
+{
+    "paperId": "af66165c454a0e94afbab36271fe3deaae0b421a",
+    "externalIds": {
+        "MAG": "2152907450",
+        "CorpusId": 61491815
+    },
+    "title": "An Efficient Recognition and Syntax-Analysis Algorithm for Context-Free Languages",
+    "abstract": "Abstract : An efficient algorithm of recognition and syntaxanalysis for the full class of context-free languages without the difficulty of exponential growth of computing time with the length n of input sequence is presented. This algorithm makes use of the essential property of a context-free language as a multi-parenthesis system. It is shown in this paper that a context-free language is n cubed-recognizable in the sense of Hartmanis and Stearns ('Computational complexity of recursive sequences'. Proc. Fifth Annual Symposium of Switching Circuit Theory and Logical Design (Oct. 1964) p.82-90) by a double-tape or double-head single-tape Turing machine and it is n to the 4th power-recognizable by a single-head single-tape Turing machine. If we use a random-access memory whose size is proportional to n cubed, the computing time required for syntaxanalysis is upperbounded by C(1)n cubed + C(2)n squared N, where N denotes the number of nonequivalent valid derivation sequences for a given input sequence and C(i)'s are constants independent of input sequences. If we use a tape of length C(3)n cubed and one of length C(4)n squared as working memories, the computing time for syntax-analysis is upperbounded by C(5)n cubed (1 + N). The size of required memory can be reduced to the order of n squared, but the computing time rises to the order of n to the 4th power. (Author)",
+    "venue": "",
+    "year": 1965,
+    "referenceCount": 0,
+    "citationCount": 619,
+    "influentialCitationCount": 38,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown in this paper that a context-free language is n cubed-recognizable in the sense of Hartmanis and Stearns and it is n to the 4th power- Recognizable by a single-head single-tape Turing machine."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2612754",
+            "name": "T. Kasami"
+        }
+    ],
+    "references": []
+}

@@ -1,0 +1,182 @@
+{
+    "paperId": "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17",
+    "externalIds": {
+        "DBLP": "journals/corr/Graves13",
+        "ArXiv": "1308.0850",
+        "MAG": "1810943226",
+        "CorpusId": 1697424
+    },
+    "title": "Generating Sequences With Recurrent Neural Networks",
+    "abstract": "This paper shows how Long Short-term Memory recurrent neural networks can be used to generate complex sequences with long-range structure, simply by predicting one data point at a time. The approach is demonstrated for text (where the data are discrete) and online handwriting (where the data are real-valued). It is then extended to handwriting synthesis by allowing the network to condition its predictions on a text sequence. The resulting system is able to generate highly realistic cursive handwriting in a wide variety of styles.",
+    "venue": "arXiv.org",
+    "year": 2013,
+    "referenceCount": 38,
+    "citationCount": 3875,
+    "influentialCitationCount": 334,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper shows how Long Short-term Memory recurrent neural networks can be used to generate complex sequences with long-range structure, simply by predicting one data point at a time."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1753223",
+            "name": "Alex Graves"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "b16ecfdb2256003cd59199ccbd37a1e1b325523b",
+            "title": "United states."
+        },
+        {
+            "paperId": "5cea23330c76994cb626df20bed31cc2588033df",
+            "title": "Low-rank matrix factorization for Deep Neural Network training with high-dimensional output targets"
+        },
+        {
+            "paperId": "4177ec52d1b80ed57f2e72b0f9a42365f1a8598d",
+            "title": "Speech recognition with deep recurrent neural networks"
+        },
+        {
+            "paperId": "7b4f3d0e4e2486a8d5d3f8e00549cf9a117bf88f",
+            "title": "Sequence Transduction with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "5b0d644f5c4b9880cbaf79932c0a4fa98996f068",
+            "title": "A fast and simple algorithm for training neural probabilistic language models"
+        },
+        {
+            "paperId": "07c43a3ff15f2104022f2b1ca8ec4128a930b414",
+            "title": "Modeling Temporal Dependencies in High-Dimensional Sequences: Application to Polyphonic Music Generation and Transcription"
+        },
+        {
+            "paperId": "d692edaaedaf1887bdf3b7cb7b5745f416426846",
+            "title": "A Machine Learning Perspective on Predictive Coding with PAQ8"
+        },
+        {
+            "paperId": "5a9ef216bf11f222438fff130c778267d39a9564",
+            "title": "Practical Variational Inference for Neural Networks"
+        },
+        {
+            "paperId": "76f9f7f03a660306c3e351e3b7ab6c7df048b411",
+            "title": "A Machine Learning Perspective on Predictive Coding with PAQ"
+        },
+        {
+            "paperId": "93c20e38c85b69fc2d2eb314b3c1217913f7db11",
+            "title": "Generating Text with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "346fbcffe4237aa60e8bcb3d4294a8b99436f1d0",
+            "title": "Factored conditional restricted Boltzmann Machines for modeling motion style"
+        },
+        {
+            "paperId": "0228810a988f6b8f06337e14f564e2fd3f6e1056",
+            "title": "The Recurrent Temporal Restricted Boltzmann Machine"
+        },
+        {
+            "paperId": "a9fc84f8abe740cdc7ee82e69444d1d00dbe0ceb",
+            "title": "A Scalable Hierarchical Distributed Language Model"
+        },
+        {
+            "paperId": "2c377d9dcf88d00019f0b2ed9068f183024cd9d3",
+            "title": "Offline Handwriting Recognition with Multidimensional Recurrent Neural Networks"
+        },
+        {
+            "paperId": "8acf6797593352a4c9ce718665c1868cc2a67c96",
+            "title": "The Minimum Description Length Principle (Adaptive Computation and Machine Learning)"
+        },
+        {
+            "paperId": "9eb7daa88879f283ae05e359d6c502a320b833c9",
+            "title": "IAM-OnDB - an on-line English sentence database acquired from handwritten text on a whiteboard"
+        },
+        {
+            "paperId": "5536d42ce80e129be8cae172ed1b7659c769d31d",
+            "title": "2005 Special Issue: Framewise phoneme classification with bidirectional LSTM and other neural network architectures"
+        },
+        {
+            "paperId": "047655e733a9eed9a500afd916efa566915b9110",
+            "title": "Learning Precise Timing with LSTM Recurrent Networks"
+        },
+        {
+            "paperId": "c135eede17f30b901275057553d37c07c0b90198",
+            "title": "A First Look at Music Composition using LSTM Recurrent Neural Networks"
+        },
+        {
+            "paperId": "bdc53fb58689cfc12cc88d774f179b3f0baae472",
+            "title": "Better Generative Models for Sequential Data Problems: Bidirectional Recurrent Mixture Density Networks"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "030a977bf32e81fb694117d78ac84a3fbe2a1d81",
+            "title": "An analysis of noise in recurrent neural networks: convergence and generalization"
+        },
+        {
+            "paperId": "d0be39ee052d246ae99c082a565aba25b811be2d",
+            "title": "Learning long-term dependencies with gradient descent is difficult"
+        },
+        {
+            "paperId": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+            "title": "Building a Large Annotated Corpus of English: The Penn Treebank"
+        },
+        {
+            "paperId": "50e2733d2a8a9b3929bda278d382c37711f3fa8e",
+            "title": "Data Compression Using Adaptive Coding and Partial String Matching"
+        },
+        {
+            "paperId": "96364af2d208ea75ca3aeb71892d2f7ce7326b55",
+            "title": "Statistical Language Models Based on Neural Networks"
+        },
+        {
+            "paperId": "e95d3934e51107da7610acd0b1bcb6551671f9f1",
+            "title": "A Practical Guide to Training Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": null,
+            "title": "The Human Knowledge Compression Contest"
+        },
+        {
+            "paperId": null,
+            "title": "Lecture 6.5 -rmsprop: Divide the gradient by a running average of its recent magnitude"
+        },
+        {
+            "paperId": "1fd7fc06653723b05abe5f3d1de393ddcf6bdddb",
+            "title": "SUBWORD LANGUAGE MODELING WITH NEURAL NETWORKS"
+        },
+        {
+            "paperId": "2e5f2b57f4c476dd69dc22ccdf547e48f40a994c",
+            "title": "Gradient Flow in Recurrent Nets: the Difficulty of Learning Long-Term Dependencies"
+        },
+        {
+            "paperId": "10dae7fca6b65b61d155a622f0c6ca2bc3922251",
+            "title": "Gradient-based learning algorithms for recurrent networks and their computational complexity"
+        },
+        {
+            "paperId": "d4ca18249446328c86d9da295a21c679aea1ed77",
+            "title": "Mixture Density Networks"
+        },
+        {
+            "paperId": "83b6755242f1cff6bacf270f65b4626d4d118f32",
+            "title": "Neural Networks for Pattern Recognition"
+        },
+        {
+            "paperId": "9c2dff1c9b04da49f50fd85ba010d2a041fc5c39",
+            "title": "The tagged LOB Corpus : user's manual"
+        },
+        {
+            "paperId": null,
+            "title": "and G"
+        },
+        {
+            "paperId": null,
+            "title": "Spanning civilization is quanting Software Society's ballistic missile"
+        },
+        {
+            "paperId": null,
+            "title": "B-45 BQ|B9"
+        }
+    ]
+}

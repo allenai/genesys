@@ -1,0 +1,163 @@
+{
+    "paperId": "77f0a39b8e02686fd85b01971f8feb7f60971f80",
+    "externalIds": {
+        "ArXiv": "1603.05027",
+        "MAG": "2949427019",
+        "DBLP": "journals/corr/HeZR016",
+        "DOI": "10.1007/978-3-319-46493-0_38",
+        "CorpusId": 6447277
+    },
+    "title": "Identity Mappings in Deep Residual Networks",
+    "abstract": null,
+    "venue": "European Conference on Computer Vision",
+    "year": 2016,
+    "referenceCount": 30,
+    "citationCount": 9452,
+    "influentialCitationCount": 1414,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The propagation formulations behind the residual building blocks suggest that the forward and backward signals can be directly propagated from one block to any other block, when using identity mappings as the skip connections and after-addition activation."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "39353098",
+            "name": "Kaiming He"
+        },
+        {
+            "authorId": "1771551",
+            "name": "X. Zhang"
+        },
+        {
+            "authorId": "3080683",
+            "name": "Shaoqing Ren"
+        },
+        {
+            "authorId": null,
+            "name": "Jian Sun"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "b5c26ab8767d046cb6e32d959fdf726aee89bb62",
+            "title": "Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "23ffaa0fe06eae05817f527a47ac3291077f9e58",
+            "title": "Rethinking the Inception Architecture for Computer Vision"
+        },
+        {
+            "paperId": "f63e917638553414526a0cc8550de4ad2d83fe7a",
+            "title": "Fast and Accurate Deep Network Learning by Exponential Linear Units (ELUs)"
+        },
+        {
+            "paperId": "97dc8df45972e4ed7423fc992a5092ba25b33411",
+            "title": "All you need is a good init"
+        },
+        {
+            "paperId": "b92aa7024b87f50737b372e5df31ef091ab54e62",
+            "title": "Training Very Deep Networks"
+        },
+        {
+            "paperId": "e0945081b5b87187a53d4329cf77cd8bff635795",
+            "title": "Highway Networks"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "d6f2f611da110b5b5061731be3fc4c7f45d8ee23",
+            "title": "Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification"
+        },
+        {
+            "paperId": "33af9298e5399269a12d4b9901492fe406af62b4",
+            "title": "Striving for Simplicity: The All Convolutional Net"
+        },
+        {
+            "paperId": "8604f376633af8b347e31d84c6150a93b11e34c2",
+            "title": "FitNets: Hints for Thin Deep Nets"
+        },
+        {
+            "paperId": "55dda8f230566867acbfaa7bdd08fd8c7b8721ed",
+            "title": "Fractional Max-Pooling"
+        },
+        {
+            "paperId": "fb91db6aa4f710814f8aec28a7f3ecbc4e5ad4fd",
+            "title": "Deeply-Supervised Nets"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "71b7178df5d2b112d07e45038cb5637208659ff7",
+            "title": "Microsoft COCO: Common Objects in Context"
+        },
+        {
+            "paperId": "5e83ab70d0cbc003471e87ec306d27d9c80ecb16",
+            "title": "Network In Network"
+        },
+        {
+            "paperId": "0060745e006c5f14ec326904119dca19c6545e51",
+            "title": "Improving neural networks by preventing co-adaptation of feature detectors"
+        },
+        {
+            "paperId": "a538b05ebb01a40323997629e171c91aa28b8e2f",
+            "title": "Rectified Linear Units Improve Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "a8e8f3c8d4418c8d62e306538c9c1292635e9d27",
+            "title": "Backpropagation Applied to Handwritten Zip Code Recognition"
+        },
+        {
+            "paperId": "2786feab5c644bf0bde98fb6f9d1dbd0b58ca80c",
+            "title": "On the complexity of shallow and deep neural network classifiers"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        },
+        {
+            "paperId": null,
+            "title": "The learning rate starts from 0.1 (no warming up), and is divided by 10 at 30 and 60 epochs. The mini-batch size is 256 on 8 GPUs (32 each) The weight References"
+        },
+        {
+            "paperId": null,
+            "title": "Specifically, on CIFAR we use only the translation and flipping augmentation in"
+        },
+        {
+            "paperId": null,
+            "title": "On ImageNet, we train the models using the same data augmentation as in"
+        },
+        {
+            "paperId": null,
+            "title": "Identity mappings in deep residual networks"
+        },
+        {
+            "paperId": null,
+            "title": "1001-layer net is \u223c10\u00d7 complex of a 100-layer net) On CIFAR, ResNet-1001 takes about 27 hours to train on 2 GPUs; on ImageNet, ResNet- 200 takes about 3 weeks to train on 8 GPUs"
+        },
+        {
+            "paperId": null,
+            "title": "Implementation Details The implementation details and hyper-parameters are the same as those in [1]"
+        }
+    ]
+}

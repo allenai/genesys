@@ -1,0 +1,150 @@
+{
+    "paperId": "a9da71715d54e33959751c88bb69a5875a23e324",
+    "externalIds": {
+        "ArXiv": "1512.03965",
+        "MAG": "2253400648",
+        "DBLP": "conf/colt/EldanS16",
+        "CorpusId": 1485226
+    },
+    "title": "The Power of Depth for Feedforward Neural Networks",
+    "abstract": "We show that there is a simple (approximately radial) function on $\\reals^d$, expressible by a small 3-layer feedforward neural networks, which cannot be approximated by any 2-layer network, to more than a certain constant accuracy, unless its width is exponential in the dimension. The result holds for virtually all known activation functions, including rectified linear units, sigmoids and thresholds, and formally demonstrates that depth -- even if increased by 1 -- can be exponentially more valuable than width for standard feedforward neural networks. Moreover, compared to related results in the context of Boolean functions, our result requires fewer assumptions, and the proof techniques and construction are very different.",
+    "venue": "Annual Conference Computational Learning Theory",
+    "year": 2015,
+    "referenceCount": 29,
+    "citationCount": 698,
+    "influentialCitationCount": 37,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that there is a simple (approximately radial) function on $\\reals^d$, expressible by a small 3-layer feedforward neural networks, which cannot be approximated by any 2-layer network, unless its width is exponential in the dimension."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2315830",
+            "name": "Ronen Eldan"
+        },
+        {
+            "authorId": "1768909",
+            "name": "Ohad Shamir"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "f8e99110b48c353aabdb11cf0fd399e1e2a09980",
+            "title": "Representation Benefits of Deep Feedforward Networks"
+        },
+        {
+            "paperId": "325e51cdb065666f3c9e21e70a823bbe33fefae7",
+            "title": "On the Expressive Power of Deep Learning: A Tensor Analysis"
+        },
+        {
+            "paperId": "26139c14e2d14a652994d021927bde670cf20003",
+            "title": "An Average-Case Depth Hierarchy Theorem for Boolean Circuits"
+        },
+        {
+            "paperId": "4cab1e55aa076c4f5d87248dd21fec86843fdf99",
+            "title": "On the Expressive Efficiency of Sum Product Networks"
+        },
+        {
+            "paperId": "b034b5769ab94acf9fb8ae48c7edb560a300bb63",
+            "title": "On the Number of Linear Regions of Deep Neural Networks"
+        },
+        {
+            "paperId": "c12fefe264e42e77f1275ce56fb3e905347761a3",
+            "title": "On the number of inference regions of deep feed forward networks with piece-wise linear activations"
+        },
+        {
+            "paperId": "d06a2ce22b60b5d806b22bbbc754b4d83d7c82d1",
+            "title": "On the number of response regions of deep feed forward networks with piece-wise linear activations"
+        },
+        {
+            "paperId": "0e6d7b913596465bff4745e1b541ada722e83ecd",
+            "title": "On the Representational Efficiency of Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": "9aeee7ebef6b5022ab79a454be10049c0a179fee",
+            "title": "On Fourier Transforms of Radial Functions and Distributions"
+        },
+        {
+            "paperId": "4b4d7ff8192c3862379f6ee58ad1fa0ec3de3937",
+            "title": "Shallow vs. Deep Sum-Product Networks"
+        },
+        {
+            "paperId": "18ea87263b5ad12c2d9cb131498f55ade4a9d3f3",
+            "title": "Arithmetic Circuits: A survey of recent results and open questions"
+        },
+        {
+            "paperId": "a89ec67faefb7e3891e8b486ea255a31f1b98712",
+            "title": "Tail-Sensitive Gaussian Asymptotics for Marginals of Concentrated Measures in High Dimension"
+        },
+        {
+            "paperId": "da07bb3688f5ec5b42ee19fb06270a68be6ac46a",
+            "title": "Neural Network Learning: Theoretical Foundations"
+        },
+        {
+            "paperId": "5d6f6f01a1e151746707e687808741d653a63fe4",
+            "title": "Degree of approximation by superpositions of a sigmoidal function"
+        },
+        {
+            "paperId": "a9209f90c02a378720879a3bb93aa2f7181cf5f2",
+            "title": "Approximation and Estimation Bounds for Artificial Neural Networks"
+        },
+        {
+            "paperId": "f22f6972e66bdd2e769fa64b0df0a13063c0c101",
+            "title": "Multilayer feedforward networks are universal approximators"
+        },
+        {
+            "paperId": "386cbc45ceb59a7abb844b5078e5c944f17723b4",
+            "title": "On the approximate realization of continuous mappings by neural networks"
+        },
+        {
+            "paperId": "25222c6e64ba5b39740a7e56ec1539c65c7208ee",
+            "title": "Threshold circuits of bounded depth"
+        },
+        {
+            "paperId": "56e6db25c6e72c0cff4ee099fa6e79bfbd20c7fb",
+            "title": "Almost optimal lower bounds for small depth circuits"
+        },
+        {
+            "paperId": "d91562d7ad3eadbd708bd36fb83cb2443e21211d",
+            "title": "Applied Analysis"
+        },
+        {
+            "paperId": "319f22bd5abfd67ac15988aa5c7f705f018c3ccd",
+            "title": "Learning internal representations by error propagation"
+        },
+        {
+            "paperId": "2786feab5c644bf0bde98fb6f9d1dbd0b58ca80c",
+            "title": "On the complexity of shallow and deep neural network classifiers"
+        },
+        {
+            "paperId": "aea9083139b2dd8b3a58283bc71a43517735bcba",
+            "title": "Approximations for the Bessel and Airy functions with an explicit error term"
+        },
+        {
+            "paperId": "4be3b864b34f57af5d498c3fd948798a47a2acd4",
+            "title": "Digital Library of Mathematical Functions"
+        },
+        {
+            "paperId": "1a56f1d92efebf120d59a9eea09dabfe1fb6fe57",
+            "title": "Private communication"
+        },
+        {
+            "paperId": "142c58d6b9286f65d04efe94d2fec72f6acecf49",
+            "title": "Circuit complexity and neural networks"
+        },
+        {
+            "paperId": "40e23e2dfb56771fafd96876a635f870d7422a8d",
+            "title": "A Comparison of the Computational Power of Sigmoid and Boolean Threshold Circuits"
+        },
+        {
+            "paperId": "21e82ed12c620fba1f5ee42162962aae74a23510",
+            "title": "Approximation by superpositions of a sigmoidal function"
+        },
+        {
+            "paperId": "357e417ad701705e0937afb827fe857ab81ceea5",
+            "title": "Applied Analysis"
+        }
+    ]
+}

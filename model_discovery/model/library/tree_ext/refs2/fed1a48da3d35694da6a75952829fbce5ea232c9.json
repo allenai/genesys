@@ -1,0 +1,182 @@
+{
+    "paperId": "fed1a48da3d35694da6a75952829fbce5ea232c9",
+    "externalIds": {
+        "ACL": "N15-1080",
+        "MAG": "575076247",
+        "DBLP": "conf/naacl/KongRS15",
+        "DOI": "10.3115/v1/N15-1080",
+        "CorpusId": 4985773
+    },
+    "title": "Transforming Dependencies into Phrase Structures",
+    "abstract": "We present a new algorithm for transforming dependency parse trees into phrase-structure parse trees. We cast the problem as structured prediction and learn a statistical model. Our algorithm is faster than traditional phrasestructure parsing and achieves 90.4% English parsing accuracy and 82.4% Chinese parsing accuracy, near to the state of the art on both benchmarks.",
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2015,
+    "referenceCount": 35,
+    "citationCount": 33,
+    "influentialCitationCount": 3,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/N15-1080.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents a new algorithm for transforming dependency parse trees into phrase-structure parse trees that is faster than traditional phrasestructure parsing and achieves near the state of the art on both benchmarks."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "47648549",
+            "name": "Lingpeng Kong"
+        },
+        {
+            "authorId": "2531268",
+            "name": "Alexander M. Rush"
+        },
+        {
+            "authorId": "144365875",
+            "name": "Noah A. Smith"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "376c690b70bb1cc87db5007801a3a60cdbee8212",
+            "title": "Parsing as Reduction"
+        },
+        {
+            "paperId": "192e272a26bd3a7de037a80a19cd0d273db6f0e3",
+            "title": "Less Grammar, More Features"
+        },
+        {
+            "paperId": "7c0216188ffcc4352ea3275a31bedb54a42f87a3",
+            "title": "An Empirical Comparison of Parsing Methods for Stanford Dependencies"
+        },
+        {
+            "paperId": "174bbdb96252454cbb40a9c4e53335996235a008",
+            "title": "Fast and Accurate Shift-Reduce Constituent Parsing"
+        },
+        {
+            "paperId": "acc4e56c44771ebf69302a06af51498aeb0a6ac8",
+            "title": "Parsing with Compositional Vector Grammars"
+        },
+        {
+            "paperId": "2466d675f9a8b07cc8295bf075a4bab7e8b7c5b2",
+            "title": "Turning on the Turbo: Fast Third-Order Non-Projective Turbo Parsers"
+        },
+        {
+            "paperId": "84256e6c2fce6dff0ff80dc434c09d0e9a8e3be1",
+            "title": "A Framework for (Under)specifying Dependency Syntax without Overloading Annotators"
+        },
+        {
+            "paperId": "c1d96c0f421f8b519cafdbb4e499faa1c797ed9b",
+            "title": "Transition-based Dependency Parsing with Rich Non-local Features"
+        },
+        {
+            "paperId": "413c1142de9d91804d6d11c67ff3fed59c9fc279",
+            "title": "Adaptive Subgradient Methods for Online Learning and Stochastic Optimization"
+        },
+        {
+            "paperId": "0409ab66f7604b07109019f93256756d630d3bc2",
+            "title": "On Dual Decomposition and Linear Programming Relaxations for Natural Language Processing"
+        },
+        {
+            "paperId": "f66821598f4db7a6a2f54a6a4ae43e391649f4c1",
+            "title": "The Stanford Typed Dependencies Representation"
+        },
+        {
+            "paperId": "060435976a20b551b659cba4335725d48cbce6b1",
+            "title": "TAG, Dynamic Programming, and the Perceptron for Efficient, Feature-Rich Parsing"
+        },
+        {
+            "paperId": "9ac32f43377a0908fcdb623a7abb1c3c280372eb",
+            "title": "A Dependency-Driven Parser for German Dependency and Constituency Representations"
+        },
+        {
+            "paperId": "570cd4cedd3ec5b51035fadebebaa88ac91f8b45",
+            "title": "Extended Constituent-to-Dependency Conversion for English"
+        },
+        {
+            "paperId": "a1d35b598922b24b92fdbd2c9b6bb65aa3a23ccf",
+            "title": "A Hybrid Constituency-Dependency Parser for Swedish"
+        },
+        {
+            "paperId": "6e1b12dd7ca3443ba6e0fb38dfa3587a4eb5d539",
+            "title": "Improved Inference for Unlexicalized Parsing"
+        },
+        {
+            "paperId": "0ecb33ced5b0976accdf13817151f80568b6fdcb",
+            "title": "Coarse-to-Fine n-Best Parsing and MaxEnt Discriminative Reranking"
+        },
+        {
+            "paperId": "33c8447e7b7ac1338ae151bba154bd2a78f8981e",
+            "title": "Machine Translation Using Probabilistic Synchronous Dependency Insertion Grammars"
+        },
+        {
+            "paperId": "2c72257ae7a4a32dc60569f4e1fe4504b2678112",
+            "title": "The Penn Chinese TreeBank: Phrase structure annotation of a large corpus"
+        },
+        {
+            "paperId": "0c450531e1121cfb657be5195e310217a4675397",
+            "title": "Max-Margin Markov Networks"
+        },
+        {
+            "paperId": "3fc44ff7f37ec5585310666c183c65e0a0bb2446",
+            "title": "Head-Driven Statistical Models for Natural Language Parsing"
+        },
+        {
+            "paperId": "a600850ac0120cb09a0b7de7da80bb6a7a76de06",
+            "title": "Accurate Unlexicalized Parsing"
+        },
+        {
+            "paperId": "f0e1883cf9d1b3c911125f46359f908557fc5827",
+            "title": "Statistical Dependency Analysis with Support Vector Machines"
+        },
+        {
+            "paperId": "bbc3fd65c3d42a87dd5349743d8920f359724824",
+            "title": "Converting Dependency Structures to Phrase Structures"
+        },
+        {
+            "paperId": "844db702be4bc149b06b822b47247e15f5894cc3",
+            "title": "Discriminative Reranking for Natural Language Parsing"
+        },
+        {
+            "paperId": "76d5e3fa888bee872b7adb7fa810089aa8ab1d58",
+            "title": "A Maximum-Entropy-Inspired Parser"
+        },
+        {
+            "paperId": "0cb912b4a208b217c45d57e28fc0f59599f92330",
+            "title": "A Statistical Parser for Czech"
+        },
+        {
+            "paperId": "f0304d8323154fd14732b9cec9b43792d4e37674",
+            "title": "Efficient Parsing for Bilexical Context-Free Grammars and Head Automaton Grammars"
+        },
+        {
+            "paperId": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+            "title": "Building a Large Annotated Corpus of English: The Penn Treebank"
+        },
+        {
+            "paperId": "a9b8db56ed7a09de706984f57668596ef3103de8",
+            "title": "Towards a Multi-Representational Treebank"
+        },
+        {
+            "paperId": "ecf3a4cd2b2d721e823fd06b5c467c64e0fde5a8",
+            "title": "MaltParser: A Data-Driven Parser-Generator for Dependency Parsing"
+        },
+        {
+            "paperId": "5b60e4b182c1679eb788455586a3f8a4df300e3d",
+            "title": "Discriminative learning and spanning tree algorithms for dependency parsing"
+        },
+        {
+            "paperId": "7bd0a04b0f0687896e765b48619a27ee545e86db",
+            "title": "On the parameter space of generative lexicalized statistical parsing models"
+        },
+        {
+            "paperId": "f17c1ebdfe95f9cf4e2e36dca1dcf55ddd5fd45c",
+            "title": "Fast Exact Inference with a Factored Model for Natural Language Parsing"
+        },
+        {
+            "paperId": null,
+            "title": "If the next rule is A \u2192 \u03b2 1 \u03b2 \u2217 2 then head( v ) = head( v R ) and head( v L ) \u2208 L (head( v )) , i.e. the head of the left-child is a dependent of the head word"
+        }
+    ]
+}

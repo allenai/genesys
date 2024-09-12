@@ -1,0 +1,699 @@
+{
+    "paperId": "72d32c986b47d6b880dad0c3f155fe23d2939038",
+    "externalIds": {
+        "MAG": "1613249581",
+        "DBLP": "conf/slsp/Bengio13",
+        "ArXiv": "1305.0445",
+        "DOI": "10.1007/978-3-642-39593-2_1",
+        "CorpusId": 1044293
+    },
+    "title": "Deep Learning of Representations: Looking Forward",
+    "abstract": null,
+    "venue": "International Conference on Statistical Language and Speech Processing",
+    "year": 2013,
+    "referenceCount": 167,
+    "citationCount": 658,
+    "influentialCitationCount": 29,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes to examine some of the challenges of scaling deep learning algorithms to much larger models and datasets, reducing optimization difficulties due to ill-conditioning or local minima, designing more efficient and powerful inference and sampling procedures, and learning to disentangle the factors of variation underlying the observed data."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1751762",
+            "name": "Yoshua Bengio"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "8d9cb2e46ed6f7f1f4a8696b5940a35adbd1d94f",
+            "title": "Exploring Compositional High Order Pattern Potentials for Structured Output Learning"
+        },
+        {
+            "paperId": "88996cf9195240f469e4270d514090e1e33e1966",
+            "title": "Learning and Selecting Features Jointly with Point-wise Gated Boltzmann Machines"
+        },
+        {
+            "paperId": "5ffa8bf1bf3e39227be28de4ff6915d3b21eb52d",
+            "title": "Deep Generative Stochastic Networks Trainable by Backprop"
+        },
+        {
+            "paperId": "d9704f8119d6ba748230b4f2ad59f0e8c64fdfb0",
+            "title": "Generalized Denoising Auto-Encoders as Generative Models"
+        },
+        {
+            "paperId": "6bdccfe195bc49d218acc5be750aa49e41f408e4",
+            "title": "Recent advances in deep learning for speech research at Microsoft"
+        },
+        {
+            "paperId": "3832057ac487f43e885cdb485a6ca1462834bb8d",
+            "title": "Estimating or Propagating Gradients Through Stochastic Neurons"
+        },
+        {
+            "paperId": "b7b915d508987b73b61eccd2b237e7ed099a2d29",
+            "title": "Maxout Networks"
+        },
+        {
+            "paperId": "73463ec3391df70d4c38de6a1e963830a85efbe6",
+            "title": "Joint Training Deep Boltzmann Machines for Classification"
+        },
+        {
+            "paperId": "0abb49fe138e8fb7332c26b148a48d0db39724fc",
+            "title": "Stochastic Pooling for Regularization of Deep Convolutional Neural Networks"
+        },
+        {
+            "paperId": "e8f95ccfd13689f672c39dca3eccf1c484533bcc",
+            "title": "Revisiting Natural Gradient for Deep Networks"
+        },
+        {
+            "paperId": "306c7cd74beda5a09662b5f289bba50a2b5ea308",
+            "title": "Big Neural Networks Waste Capacity"
+        },
+        {
+            "paperId": "eb6208f3e2c0942e38ceffc443dcf64d2cb4ec82",
+            "title": "A semantic matching energy function for learning with multi-relational data"
+        },
+        {
+            "paperId": "aeb38c8c4b826ad0dc63911dc5198f8c565298f5",
+            "title": "Joint Training of Deep Boltzmann Machines"
+        },
+        {
+            "paperId": "ded103d0613e1a8f51f586cc1678aee3ff26e811",
+            "title": "Advances in optimizing recurrent networks"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "3127190433230b3dc1abd0680bb58dced4bcd90e",
+            "title": "Large Scale Distributed Deep Networks"
+        },
+        {
+            "paperId": "80a9b191b559f3316348c39b24fc14ec4c38c107",
+            "title": "Emergence of Object-Selective Features in Unsupervised Feature Learning"
+        },
+        {
+            "paperId": "68e3fca8f6f60ca1c70854b9d09228ece37f02b2",
+            "title": "Deep Boltzmann Machines and the Centering Trick"
+        },
+        {
+            "paperId": "f47714b81c4e905460aa0b6ceb9c5257f0352b49",
+            "title": "Texture Modeling with Convolutional Spike-and-Slab RBMs and Deep Extensions"
+        },
+        {
+            "paperId": "84069287da0a6b488b8c933f3cb5be759cb6237e",
+            "title": "On the difficulty of training recurrent neural networks"
+        },
+        {
+            "paperId": "31a2053ebda7f6f77afe8c3fc53269b73567e446",
+            "title": "What regularized auto-encoders learn from the data-generating distribution"
+        },
+        {
+            "paperId": "e33cbb25a8c7390aec6a398e36381f4f7770c283",
+            "title": "Deep Neural Networks for Acoustic Modeling in Speech Recognition"
+        },
+        {
+            "paperId": "63cbac5a39cd926a806f60116b845f9bd70f5544",
+            "title": "Disentangling Factors of Variation via Generative Entangling"
+        },
+        {
+            "paperId": "f9c431f58565f874f76a024add2aa80717ec5cf5",
+            "title": "Disentangling Factors of Variation for Facial Expression Recognition"
+        },
+        {
+            "paperId": "4d2069788d8041e50f0107db060e14b196747602",
+            "title": "Communication/Computation Tradeoffs in Consensus-Based Distributed Optimization"
+        },
+        {
+            "paperId": "d0965d8f9842f2db960b36b528107ca362c00d1a",
+            "title": "Better Mixing via Deep Representations"
+        },
+        {
+            "paperId": "0060745e006c5f14ec326904119dca19c6545e51",
+            "title": "Improving neural networks by preventing co-adaptation of feature detectors"
+        },
+        {
+            "paperId": "f05cf9f5fc419e3f299bd11e481e29574afab6a1",
+            "title": "Implicit Density Estimation by Local Moment Matching to Sample from Auto-Encoders"
+        },
+        {
+            "paperId": "16a333a43d587802f95b5ec11de6c99314ae0c77",
+            "title": "Large-Scale Feature Learning With Spike-and-Slab Sparse Coding"
+        },
+        {
+            "paperId": "473f0739666af2791ad6592822118240ed968b70",
+            "title": "Conversational Speech Transcription Using Context-Dependent Deep Neural Networks"
+        },
+        {
+            "paperId": "6bf0414dae4f10c7e54fb9e5e8af5d0d0cab290b",
+            "title": "A Generative Process for Contractive Auto-Encoders"
+        },
+        {
+            "paperId": "07c43a3ff15f2104022f2b1ca8ec4128a930b414",
+            "title": "Modeling Temporal Dependencies in High-Dimensional Sequences: Application to Polyphonic Music Generation and Transcription"
+        },
+        {
+            "paperId": "184ac0766262312ba76bbdece4e7ffad0aa8180b",
+            "title": "Representation Learning: A Review and New Perspectives"
+        },
+        {
+            "paperId": "f8c8619ea7d68e604e40b814b40c72888a755e95",
+            "title": "Unsupervised Feature Learning and Deep Learning: A Review and New Perspectives"
+        },
+        {
+            "paperId": "522e90b9fccfd3c1c0603359eb04757d770c1ab5",
+            "title": "Practical Recommendations for Gradient-Based Training of Deep Architectures"
+        },
+        {
+            "paperId": "e5a685f40338f9c2f3e68e142efa217aad16dd56",
+            "title": "No more pesky learning rates"
+        },
+        {
+            "paperId": "b8ef1230a5cc9ea7cd8358f1ae7d1af97813ba14",
+            "title": "Deep Learning Made Easier by Linear Transformations in Perceptrons"
+        },
+        {
+            "paperId": "694b96886f45b8e6542863d8ac18de0910ab566a",
+            "title": "Evolving Culture vs Local Minima"
+        },
+        {
+            "paperId": "92ace17730c2173e642934d64f96d359697b7a93",
+            "title": "Bayesian reasoning and machine learning"
+        },
+        {
+            "paperId": "398c296d0cc7f9d180f84969f8937e6d3a413796",
+            "title": "Multi-column deep neural networks for image classification"
+        },
+        {
+            "paperId": "a233fccffdd2db27f833841d2cf0dfb338b03509",
+            "title": "Spike-and-Slab Sparse Coding for Unsupervised Feature Discovery"
+        },
+        {
+            "paperId": "402fc36729ea019f198340739df8105e1126e72f",
+            "title": "R\u00e9seaux de neurones \u00e0 relaxation entra\u00een\u00e9s par crit\u00e8re d'autoencodeur d\u00e9bruitant"
+        },
+        {
+            "paperId": "72e93aa6767ee683de7f001fa72f1314e40a8f35",
+            "title": "Building high-level features using large scale unsupervised learning"
+        },
+        {
+            "paperId": "8a9a10170ee907acb3e582742bec5fa09116f302",
+            "title": "The Manifold Tangent Classifier"
+        },
+        {
+            "paperId": "7599dfed1de67c726f9e4fd372cc9ef03d2cf3e9",
+            "title": "Feature engineering in Context-Dependent Deep Neural Networks for conversational speech transcription"
+        },
+        {
+            "paperId": "be9a17321537d9289875fe475b71f4821457b435",
+            "title": "An Analysis of Single-Layer Networks in Unsupervised Feature Learning"
+        },
+        {
+            "paperId": "543b44acf26ff37c597aa147d0f19e17878d2a18",
+            "title": "Structured sparsity through convex optimization"
+        },
+        {
+            "paperId": "2964d30862d0402b0d0ad4a427067f69e4a52130",
+            "title": "Higher Order Contractive Auto-Encoder"
+        },
+        {
+            "paperId": "d1c67346e46b4d0067b3c2e5d3b959a8bc24b28c",
+            "title": "Quickly Generating Representative Samples from an RBM-Derived Process"
+        },
+        {
+            "paperId": "94b0e8e97c19ad0977d26e3e355d3ae09ad49365",
+            "title": "Conditional Restricted Boltzmann Machines for Structured Output Prediction"
+        },
+        {
+            "paperId": "a6c1a120f6c84eff4fb0facf404094f840105b9f",
+            "title": "Deep Learning of Representations for Unsupervised and Transfer Learning"
+        },
+        {
+            "paperId": "681f6e3defcbdf931de975d720e185b2193ff343",
+            "title": "Unsupervised and Transfer Learning Challenge: a Deep Learning Approach"
+        },
+        {
+            "paperId": "872bae24c109f7c30e052ac218b17a8b028d08a0",
+            "title": "A Connection Between Score Matching and Denoising Autoencoders"
+        },
+        {
+            "paperId": "195d0a8233a7a46329c742eaff56c276f847fadc",
+            "title": "Contractive Auto-Encoders: Explicit Invariance During Feature Extraction"
+        },
+        {
+            "paperId": "36f49b05d764bf5c10428b082c2d96c13c4203b9",
+            "title": "Hogwild: A Lock-Free Approach to Parallelizing Stochastic Gradient Descent"
+        },
+        {
+            "paperId": "6f568d757d2c1ab42f2006faa25690b74c3d2d44",
+            "title": "The Importance of Encoding Versus Training with Sparse Coding and Vector Quantization"
+        },
+        {
+            "paperId": "aeed631d6a84100b5e9a021ec1914095c66de415",
+            "title": "Bayesian Learning via Stochastic Gradient Langevin Dynamics"
+        },
+        {
+            "paperId": "524b24a3523123785bedccfa0ef6c4857bf21b5f",
+            "title": "Unsupervised Models of Images by Spikeand-Slab RBMs"
+        },
+        {
+            "paperId": "6f4065f0cc99a0839b0248ffb4457e5f0277b30d",
+            "title": "Domain Adaptation for Large-Scale Sentiment Classification: A Deep Learning Approach"
+        },
+        {
+            "paperId": "2d851f681f82c71a934aebd16e8112adf1239f85",
+            "title": "On Autoencoders and Score Matching for Energy Based Models"
+        },
+        {
+            "paperId": "bb3d2f15fddf09827103877ce1874a04a33341fc",
+            "title": "Learning image representations from the pixel level via hierarchical sparse coding"
+        },
+        {
+            "paperId": "04e9385a1267d75197f695acf83e314668f6ae52",
+            "title": "Empirical Risk Minimization of Graphical Model Parameters Given Approximate Inference, Decoding, and Model Structure"
+        },
+        {
+            "paperId": "20f0357688876fa4662f806f985779dce6e24f3c",
+            "title": "Transforming Auto-Encoders"
+        },
+        {
+            "paperId": "67107f78a84bdb2411053cb54e94fa226eea6d8e",
+            "title": "Deep Sparse Rectifier Neural Networks"
+        },
+        {
+            "paperId": "52121b38358023f1aa3c010434f605e69b612043",
+            "title": "On the training of recurrent neural networks"
+        },
+        {
+            "paperId": "bc1022b031dc6c7019696492e8116598097a8c12",
+            "title": "Natural Language Processing (Almost) from Scratch"
+        },
+        {
+            "paperId": "b91e38e241bf3f247d10fc6ef23fbf5466d6ff66",
+            "title": "Sample Complexity of Testing the Manifold Hypothesis"
+        },
+        {
+            "paperId": "74706fab48249b071e10615f8da60b8401fb9f3f",
+            "title": "Regularized estimation of image statistics by Score Matching"
+        },
+        {
+            "paperId": "90b63e917d5737b06357d50aa729619e933d9614",
+            "title": "Phone Recognition with the Mean-Covariance Restricted Boltzmann Machine"
+        },
+        {
+            "paperId": "9c34be4a906a86b2ebc09078d80247227cd54453",
+            "title": "DECISION TREES DO NOT GENERALIZE TO NEW VARIATIONS"
+        },
+        {
+            "paperId": "c63ef05c5f9c424b5cfeeed90dbe35eedf6cb8ec",
+            "title": "Fast Inference in Sparse Coding Algorithms with Applications to Object Recognition"
+        },
+        {
+            "paperId": "268b8f10a45e71f63daab6403bb453da31ae28a7",
+            "title": "Melting of Peridotite to 140 Gigapascals"
+        },
+        {
+            "paperId": "0e7607195f9a46dcd1ee55b7410fbf836d9f09a5",
+            "title": "Sequential Labeling Using Deep-Structured Conditional Random Fields"
+        },
+        {
+            "paperId": "e3c1bf806c325f306e5084c3bd332b83d2077e2a",
+            "title": "Binary coding of speech spectrograms using a deep auto-encoder"
+        },
+        {
+            "paperId": "755d7b81010b665a52a7d136cce3c2af3a76d940",
+            "title": "Parallel tempering is efficient for learning restricted Boltzmann machines"
+        },
+        {
+            "paperId": "4c46347fbc272b21468efe3d9af34b4b2bad6684",
+            "title": "Deep learning via Hessian-free optimization"
+        },
+        {
+            "paperId": "e8f811399746c059bf4d4c3d43334045e0222209",
+            "title": "Learning Fast Approximations of Sparse Coding"
+        },
+        {
+            "paperId": "a538b05ebb01a40323997629e171c91aa28b8e2f",
+            "title": "Rectified Linear Units Improve Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": "6032773345c73957f87178fd5d0556870299c4e1",
+            "title": "Learning Deep Boltzmann Machines using Adaptive MCMC"
+        },
+        {
+            "paperId": "00cd1dab559a9671b692f39f14c1573ab2d1416b",
+            "title": "Efficient Learning of Deep Boltzmann Machines"
+        },
+        {
+            "paperId": "ea9d2a2b4ce11aaf85136840c65f3bc9c03ab649",
+            "title": "Understanding the difficulty of training deep feedforward neural networks"
+        },
+        {
+            "paperId": "097b2dca3167b88066a16eabe9b3ed697bd40dd5",
+            "title": "Parallelizable Sampling of Markov Random Fields"
+        },
+        {
+            "paperId": "e3ce36b9deb47aa6bb2aa19c4bfa71283b505025",
+            "title": "Noise-contrastive estimation: A new estimation principle for unnormalized statistical models"
+        },
+        {
+            "paperId": "83b625ae40c921c47255da5f2e24266e75a48d9b",
+            "title": "Tempered Markov Chain Monte Carlo for training of Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": "930bde26f600dade443e88af0e81c9695a96294e",
+            "title": "Language recognition using deep-structured conditional random fields"
+        },
+        {
+            "paperId": "c68647356ba8ca962c24df08eb03ecae7b05f1a1",
+            "title": "Learning in Markov Random Fields using Tempered Transitions"
+        },
+        {
+            "paperId": "3137bc367c61c0e507a5e3c1f8caeb26f292d79f",
+            "title": "Measuring Invariances in Deep Networks"
+        },
+        {
+            "paperId": "0516a57a202bf7f279a1dc781393bd71f7570572",
+            "title": "Slow, Decorrelated Features for Pretraining Complex Cell-like Networks"
+        },
+        {
+            "paperId": "1f88427d7aa8225e47f946ac41a0667d7b69ac52",
+            "title": "What is the best multi-stage architecture for object recognition?"
+        },
+        {
+            "paperId": "e337c5e4c23999c36f64bcb33ebe6b284e1bcbf1",
+            "title": "Large-scale deep unsupervised learning using graphics processors"
+        },
+        {
+            "paperId": "8de174ab5419b9d3127695405efd079808e956e8",
+            "title": "Curriculum learning"
+        },
+        {
+            "paperId": "346fbcffe4237aa60e8bcb3d4294a8b99436f1d0",
+            "title": "Factored conditional restricted Boltzmann Machines for modeling motion style"
+        },
+        {
+            "paperId": "12439a6ff384e95ee2262ee982bc055534e30487",
+            "title": "Online dictionary learning for sparse coding"
+        },
+        {
+            "paperId": "910f8df95db7849036910e5773dcc9b09e70f03f",
+            "title": "Structured Variable Selection with Sparsity-Inducing Norms"
+        },
+        {
+            "paperId": "ddc45fad8d15771d9f1f8579331458785b2cdd93",
+            "title": "Deep Boltzmann Machines"
+        },
+        {
+            "paperId": "c3a9654a830fc891b015b1799b14eb43e40b292e",
+            "title": "Differentiable Sparse Coding"
+        },
+        {
+            "paperId": "a9fc84f8abe740cdc7ee82e69444d1d00dbe0ceb",
+            "title": "A Scalable Hierarchical Distributed Language Model"
+        },
+        {
+            "paperId": "a53da9916b87fa295837617c16ef2ca6462cafb8",
+            "title": "Classification using discriminative restricted Boltzmann machines"
+        },
+        {
+            "paperId": "57458bc1cffe5caa45a885af986d70f723f406b4",
+            "title": "A unified architecture for natural language processing: deep neural networks with multitask learning"
+        },
+        {
+            "paperId": "843959ffdccf31c6694d135fad07425924f785b1",
+            "title": "Extracting and composing robust features with denoising autoencoders"
+        },
+        {
+            "paperId": "7ee368e60d0b826e78f965aad8d6c7d406127104",
+            "title": "Deep learning via semi-supervised embedding"
+        },
+        {
+            "paperId": "98449bcf80e52e0e902efd288b68c701d5392099",
+            "title": "Neural net language models"
+        },
+        {
+            "paperId": "6ed460701019072ee2e364a1a491f73dd931f27f",
+            "title": "Topmoumoute Online Natural Gradient Algorithm"
+        },
+        {
+            "paperId": "41fef1a197fab9684a4608b725d3ae72e1ab4b39",
+            "title": "Sparse Feature Learning for Deep Belief Networks"
+        },
+        {
+            "paperId": "325ea1f2022ee3886a5810df76dcfbe4010ad439",
+            "title": "Structured Learning with Approximate Inference"
+        },
+        {
+            "paperId": "202cbbf671743aefd380d2f23987bd46b9caaf97",
+            "title": "Sparse deep belief net model for visual area V2"
+        },
+        {
+            "paperId": "e7a29a6a8b25c59c87ae87fb06cdcc34d62538b5",
+            "title": "Shift-invariant sparse coding for audio classification"
+        },
+        {
+            "paperId": "b3852f0113fcf8a3913c55ae92393ae6ccde347e",
+            "title": "Self-taught learning: transfer learning from unlabeled data"
+        },
+        {
+            "paperId": "1626c940a64ad96a7ed53d7d6c0df63c6696956b",
+            "title": "Restricted Boltzmann machines for collaborative filtering"
+        },
+        {
+            "paperId": "355d44f53428b1ac4fb2ab468d593c720640e5bd",
+            "title": "Greedy Layer-Wise Training of Deep Networks"
+        },
+        {
+            "paperId": "932c2a02d462abd75af018125413b1ceaa1ee3f4",
+            "title": "Efficient Learning of Sparse Representations with an Energy-Based Model"
+        },
+        {
+            "paperId": "497a80b2813cffb17f46af50e621a71505094528",
+            "title": "Modeling Human Motion Using Binary Latent Variables"
+        },
+        {
+            "paperId": "e64a9960734215e2b1866ea3cb723ffa5585ac14",
+            "title": "Efficient sparse coding algorithms"
+        },
+        {
+            "paperId": "89a1c14547d99a18af3d6060c071686beb7c2870",
+            "title": "Nonlocal Estimation of Manifold Structure"
+        },
+        {
+            "paperId": "668b1277fbece28c4841eeab1c97e4ebd0079700",
+            "title": "Pattern Recognition and Machine Learning"
+        },
+        {
+            "paperId": "8978cf7574ceb35f4c3096be768c7547b28a35d0",
+            "title": "A Fast Learning Algorithm for Deep Belief Nets"
+        },
+        {
+            "paperId": "b145c84cb7a7c691cbd6ced92195b098be11ba7b",
+            "title": "Non-Local Manifold Parzen Windows"
+        },
+        {
+            "paperId": "dc97e7dbb821a4edfb5151bff4352655eedca9ee",
+            "title": "Large Margin Methods for Structured and Interdependent Output Variables"
+        },
+        {
+            "paperId": "9966e890f2eedb4577e11b9d5a66380a4d9341fe",
+            "title": "Estimation of Non-Normalized Statistical Models by Score Matching"
+        },
+        {
+            "paperId": "6c2b28f9354f667cd5bd07afc0471d8334430da7",
+            "title": "A Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "7bb0f5f20883db8c69b53ba4e52eded325b25f43",
+            "title": "Scaling Large Learning Problems with Hard Parallel Mixtures"
+        },
+        {
+            "paperId": "5127759530ce213f488af2859190697770f557f3",
+            "title": "Slow Feature Analysis: Unsupervised Learning of Invariances"
+        },
+        {
+            "paperId": "149a57ec380c38762f3e392560ef3ad3e1ab8ebd",
+            "title": "Learning Iterative Image Reconstruction in the Neural Abstraction Pyramid"
+        },
+        {
+            "paperId": "5e5c5141207588ab25f7c11c9989827ed8457084",
+            "title": "EXTENDED ENSEMBLE MONTE CARLO"
+        },
+        {
+            "paperId": "f02f3eccc1cf74e435721d09e4834aff6c1d12ed",
+            "title": "Emergence of Phase- and Shift-Invariant Features by Decomposition of Natural Images into Independent Feature Subspaces"
+        },
+        {
+            "paperId": "7e85f7d59e37972ec52cbabfef0512588d87f125",
+            "title": "Separating Style and Content with Bilinear Models"
+        },
+        {
+            "paperId": "12d8ecf781a13d8d33262ccdfe831c58f75ca4b4",
+            "title": "Taking on the curse of dimensionality in joint distributions using neural networks"
+        },
+        {
+            "paperId": "0011ea4b31ca1ad4409c4b57fc99591aa6652997",
+            "title": "Quantum annealing of a disordered magnet"
+        },
+        {
+            "paperId": "629cc74dcaf655feea40f64cd74617ac884ed0f8",
+            "title": "Graphical Models for Machine Learning and Digital Communication"
+        },
+        {
+            "paperId": "9b20ad513361a26e98289e5a517291c6ff49960d",
+            "title": "Learning Continuous Attractors in Recurrent Networks"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "12cb553fdcad05b2f36f4fb314873e794b3afa1c",
+            "title": "Emergence of invariant-feature detectors in the adaptive-subspace self-organizing map"
+        },
+        {
+            "paperId": "8012c4a1e2ca663f1a04e80cbb19631a00cbab27",
+            "title": "Emergence of simple-cell receptive field properties by learning a sparse code for natural images"
+        },
+        {
+            "paperId": "e9a54374aec5c92296c7b24436f08934643829ae",
+            "title": "Exploiting Tractable Substructures in Intractable Networks"
+        },
+        {
+            "paperId": "6dd01cd9c17d1491ead8c9f97597fbc61dead8ea",
+            "title": "The \"wake-sleep\" algorithm for unsupervised neural networks."
+        },
+        {
+            "paperId": "d0be39ee052d246ae99c082a565aba25b811be2d",
+            "title": "Learning long-term dependencies with gradient descent is difficult"
+        },
+        {
+            "paperId": "2c85b7fe70dda0adbbd7630e2a341a904c74fbd2",
+            "title": "Self-organizing neural network that discovers surfaces in random-dot stereograms"
+        },
+        {
+            "paperId": "052b1d8ce63b07fec3de9dbb583772d860b7c769",
+            "title": "Learning representations by back-propagating errors"
+        },
+        {
+            "paperId": "dd5061631a4d11fa394f4421700ebf7e78dcbc59",
+            "title": "Optimization by Simulated Annealing"
+        },
+        {
+            "paperId": "ef2bd2abef903295bbd3bd0f7443c7c61f226273",
+            "title": "J un 2 01 3 Deep Learning of Representations : Looking Forward"
+        },
+        {
+            "paperId": "f34607a6aa2d984e34a5ce7f0bdac4a860fa98a4",
+            "title": "Training Recurrent Neural Networks"
+        },
+        {
+            "paperId": "3ec10bc12d9e40b1a43eaf0f4d7e3320ac5e7dc8",
+            "title": "Theano: Deep Learning on GPUs with Python"
+        },
+        {
+            "paperId": "b87274e6d9aa4e6ba5148898aa92941617d2b6ed",
+            "title": "Efficient BackProp"
+        },
+        {
+            "paperId": "360ca02e6f5a5e1af3dce4866a257aafc2d6d6f5",
+            "title": "Machine learning - a probabilistic perspective"
+        },
+        {
+            "paperId": "96364af2d208ea75ca3aeb71892d2f7ce7326b55",
+            "title": "Statistical Language Models Based on Neural Networks"
+        },
+        {
+            "paperId": "1671a665c636bec7d2eaff137d74e9b7f074892f",
+            "title": "Learning Algorithms for the Classification Restricted Boltzmann Machine"
+        },
+        {
+            "paperId": null,
+            "title": "Deep networks for predicting ad click through rates"
+        },
+        {
+            "paperId": null,
+            "title": "Learning approximate inference policies for fast prediction"
+        },
+        {
+            "paperId": "31868290adf1c000c611dfc966b514d5a34e8d23",
+            "title": "FUNDAMENTAL TECHNOLOGIES IN MODERN SPEECH RECOGNITION Digital Object Identifier 10.1109/MSP.2012.2205597"
+        },
+        {
+            "paperId": "b893e7053c9c7e266a23fb13a42261a88f650210",
+            "title": "The Neural Autoregressive Distribution Estimator"
+        },
+        {
+            "paperId": "63936fa32f9e75ab2a864daae6791ce02112183d",
+            "title": "Theano: A CPU and GPU Math Compiler in Python"
+        },
+        {
+            "paperId": null,
+            "title": "The bigchaos solution to the netflix grand prize"
+        },
+        {
+            "paperId": "d04d6db5f0df11d0cff57ec7e15134990ac07a4f",
+            "title": "Learning Deep Architectures for AI"
+        },
+        {
+            "paperId": null,
+            "title": "An introduction to quantum annelaing . Technical report , D - Wave Systems ."
+        },
+        {
+            "paperId": "7fc604e1a3e45cd2d2742f96d62741930a363efa",
+            "title": "A Tutorial on Energy-Based Learning"
+        },
+        {
+            "paperId": "100dcf6aa83ac559c83518c8a41676b1a3a55fc0",
+            "title": "Algorithms for manifold learning"
+        },
+        {
+            "paperId": "c19fbefdeead6a4154a22a9c8551a18b1530033a",
+            "title": "Hierarchical Probabilistic Neural Network Language Model"
+        },
+        {
+            "paperId": "30afca3a4056bc54deadc1c5794048436d1c9eb4",
+            "title": "Dependency Networks for Inference, Collaborative Filtering, and Data Visualization"
+        },
+        {
+            "paperId": "5bf65452ae566a052b00d919404f462470869600",
+            "title": "Products of experts"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "75a026ddfdd9c219d69fe8af816f085ea1b3877d",
+            "title": "Centering Neural Network Gradient Factors"
+        },
+        {
+            "paperId": null,
+            "title": "Does the wake-sleep algorithm learn good density estimators? In NIPS\u201995 , pages 661\u2013670"
+        },
+        {
+            "paperId": "a22b36cf5dba3e85eb064220be7ef03be4efba48",
+            "title": "Bayesian learning for neural networks"
+        },
+        {
+            "paperId": "3f3d13e95c25a8f6a753e38dfce88885097cbd43",
+            "title": "Untersuchungen zu dynamischen neuronalen Netzen"
+        },
+        {
+            "paperId": "749ce8ccd9453d1b34901143cddf5f9bee2977cf",
+            "title": "Learning representations by back-propagation errors, nature"
+        },
+        {
+            "paperId": "425a9bf18cd22b9511a043b223e72a2764065203",
+            "title": "I. The Ising model"
+        },
+        {
+            "paperId": null,
+            "title": "Markov Random Fields and Their Applications (Contemporary Mathematics"
+        }
+    ]
+}

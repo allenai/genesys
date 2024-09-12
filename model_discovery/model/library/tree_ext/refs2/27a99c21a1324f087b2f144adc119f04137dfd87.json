@@ -1,0 +1,231 @@
+{
+    "paperId": "27a99c21a1324f087b2f144adc119f04137dfd87",
+    "externalIds": {
+        "ArXiv": "1412.7149",
+        "MAG": "2152332944",
+        "DBLP": "journals/corr/YangMDFSSW14",
+        "DOI": "10.1109/ICCV.2015.173",
+        "CorpusId": 8132136
+    },
+    "title": "Deep Fried Convnets",
+    "abstract": "The fully-connected layers of deep convolutional neural networks typically contain over 90% of the network parameters. Reducing the number of parameters while preserving predictive performance is critically important for training big models in distributed systems and for deployment in embedded devices. In this paper, we introduce a novel Adaptive Fastfood transform to reparameterize the matrix-vector multiplication of fully connected layers. Reparameterizing a fully connected layer with d inputs and n outputs with the Adaptive Fastfood transform reduces the storage and computational costs costs from O(nd) to O(n) and O(n log d) respectively. Using the Adaptive Fastfood transform in convolutional networks results in what we call a deep fried convnet. These convnets are end-to-end trainable, and enable us to attain substantial reductions in the number of parameters without affecting prediction accuracy on the MNIST and ImageNet datasets.",
+    "venue": "IEEE International Conference on Computer Vision",
+    "year": 2014,
+    "referenceCount": 44,
+    "citationCount": 263,
+    "influentialCitationCount": 26,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel Adaptive Fastfood transform is introduced to reparameterize the matrix-vector multiplication of fully connected layers of deep convolutional neural networks, resulting in what is called a deep fried convnet."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "8387085",
+            "name": "Zichao Yang"
+        },
+        {
+            "authorId": "3009779",
+            "name": "Marcin Moczulski"
+        },
+        {
+            "authorId": "1715051",
+            "name": "Misha Denil"
+        },
+        {
+            "authorId": "1737568",
+            "name": "Nando de Freitas"
+        },
+        {
+            "authorId": "46234526",
+            "name": "Alex Smola"
+        },
+        {
+            "authorId": "1779453",
+            "name": "Le Song"
+        },
+        {
+            "authorId": "47197117",
+            "name": "Ziyu Wang"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "62adfea3cc1cd9eb6b53e0e8a40be5dfda2adf8d",
+            "title": "Weight Uncertainty in Neural Network"
+        },
+        {
+            "paperId": "1ff9a37d766e3a4f39757f5e1b235a42dacf18ff",
+            "title": "Learning both Weights and Connections for Efficient Neural Network"
+        },
+        {
+            "paperId": "d559dd84fc473fca7e91b9075675750823935afa",
+            "title": "Sparse Convolutional Neural Networks"
+        },
+        {
+            "paperId": "da6057368920585bcf2443295b98418840f1fc80",
+            "title": "Weight Uncertainty in Neural Networks"
+        },
+        {
+            "paperId": "efb5032e6199c80f83309fd866b25be9545831fd",
+            "title": "Compressing Neural Networks with the Hashing Trick"
+        },
+        {
+            "paperId": "7de11e686c16f7dbe720bef17345bd5c4dd50b84",
+            "title": "Speeding Up Neural Networks for Large Scale Classification using WTA Hashing"
+        },
+        {
+            "paperId": "0c908739fbff75f03469d13d4a1a07de3414ee19",
+            "title": "Distilling the Knowledge in a Neural Network"
+        },
+        {
+            "paperId": "08d8758581af226e678a6b0dd9d4646d129f205d",
+            "title": "A la Carte - Learning Fast Kernels"
+        },
+        {
+            "paperId": "8604f376633af8b347e31d84c6150a93b11e34c2",
+            "title": "FitNets: Hints for Thin Deep Nets"
+        },
+        {
+            "paperId": "e7bf9803705f2eb608db1e59e5c7636a3f171916",
+            "title": "Compressing Deep Convolutional Networks using Vector Quantization"
+        },
+        {
+            "paperId": "54724d8ff8ac884affe9f2a70e50d2763a6854b6",
+            "title": "Highly Efficient Forward and Backward Propagation of Convolutional Neural Networks for Pixelwise Classification"
+        },
+        {
+            "paperId": "2a4117849c88d4728c33b1becaa9fb6ed7030725",
+            "title": "Memory Bounded Deep Convolutional Networks"
+        },
+        {
+            "paperId": "081651b38ff7533550a3adfc1c00da333a8fe86c",
+            "title": "How transferable are features in deep neural networks?"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "18c7fb55ff796db5c5a604e0ca44b6baaeb12239",
+            "title": "Fastfood: Approximate Kernel Expansions in Loglinear Time"
+        },
+        {
+            "paperId": "6007164957cced3e5d5b02d3402ea82c3530d852",
+            "title": "Scalable Kernel Methods via Doubly Stochastic Gradients"
+        },
+        {
+            "paperId": "6fe78db480995464bd97ba3b712ecc82129e6179",
+            "title": "Learning by Stretching Deep Networks"
+        },
+        {
+            "paperId": "6bdb186ec4726e00a8051119636d4df3b94043b5",
+            "title": "Caffe: Convolutional Architecture for Fast Feature Embedding"
+        },
+        {
+            "paperId": "6eee8041415facc9823d6b93ddb67a3773a3e1e3",
+            "title": "Convolutional Kernel Networks"
+        },
+        {
+            "paperId": "021fc345d40d3e6332cd2ef276e2eaa5e71102e4",
+            "title": "Speeding up Convolutional Neural Networks with Low Rank Expansions"
+        },
+        {
+            "paperId": "b3c879b2430a61d8c4393436685c85bcfbd6c6d8",
+            "title": "Kernel methods match Deep Neural Networks on TIMIT"
+        },
+        {
+            "paperId": "80d800dfadbe2e6c7b2367d9229cc82912d55889",
+            "title": "One weird trick for parallelizing convolutional neural networks"
+        },
+        {
+            "paperId": "e5ae8ab688051931b4814f6d32b18391f8d1fa8d",
+            "title": "Exploiting Linear Structure Within Convolutional Networks for Efficient Evaluation"
+        },
+        {
+            "paperId": "5e83ab70d0cbc003471e87ec306d27d9c80ecb16",
+            "title": "Network In Network"
+        },
+        {
+            "paperId": "eff61216e0136886e1158625b1e5a88ed1a7cbce",
+            "title": "Predicting Parameters in Deep Learning"
+        },
+        {
+            "paperId": "5cea23330c76994cb626df20bed31cc2588033df",
+            "title": "Low-rank matrix factorization for Deep Neural Network training with high-dimensional output targets"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "7ae42cc4b475a2192707d0ada7b3c60c347b621e",
+            "title": "Approximate Nearest Neighbor: Towards Removing the Curse of Dimensionality"
+        },
+        {
+            "paperId": "72829d537f0ec8b1cc0ced2f278bb56ce89f1b0c",
+            "title": "Learning Where to Attend with Deep Architectures for Image Tracking"
+        },
+        {
+            "paperId": "265069b3670930fd884b02062d7e7b79ff2a49d5",
+            "title": "On Random Weights and Unsupervised Feature Learning"
+        },
+        {
+            "paperId": "c3c82b476162d2d006e02180530875a64af18154",
+            "title": "Hardware accelerated convolutional neural networks for synthetic vision systems"
+        },
+        {
+            "paperId": "77e379fd57ea44638fc628623e383eccada82689",
+            "title": "Kernel Methods for Deep Learning"
+        },
+        {
+            "paperId": "2a941e7c5f374f8f8dba0daf6ffc6504a2779473",
+            "title": "The Fast Johnson--Lindenstrauss Transform and Approximate Nearest Neighbors"
+        },
+        {
+            "paperId": "00bbfde6af97ce5efcf86b3401d265d42a95603d",
+            "title": "Feature hashing for large scale multitask learning"
+        },
+        {
+            "paperId": "7a59fde27461a3ef4a21a249cc403d0d96e4a0d7",
+            "title": "Random Features for Large-Scale Kernel Machines"
+        },
+        {
+            "paperId": "46857f0c98f223622ad530b6fc4e446fb9187082",
+            "title": "Harnessing Nonlinearity: Predicting Chaotic Systems and Saving Energy in Wireless Communication"
+        },
+        {
+            "paperId": "24763030fb1e9813dad51d28bea9c5d1414f9cda",
+            "title": "Finding frequent items in data streams"
+        },
+        {
+            "paperId": "e4351041d25c272a008bcd5765868dc3a28fe470",
+            "title": "Under Review as a Conference Paper at Iclr 2017 Delving into Transferable Adversarial Ex- Amples and Black-box Attacks"
+        },
+        {
+            "paperId": null,
+            "title": "and N"
+        },
+        {
+            "paperId": "6d9429b96d9bb40e2d0d9c3f57d0b97f61db8503",
+            "title": "Restructuring of deep neural network acoustic models with singular value decomposition"
+        },
+        {
+            "paperId": null,
+            "title": "Synopses for Massive Data: Samples, Histograms, Wavelets, Sketches"
+        },
+        {
+            "paperId": "6d4cc5a2702ed95f620e8232e3bbe49fd7e42d4c",
+            "title": "Probability and Computing: Randomized Algorithms and Probabilistic Analysis"
+        },
+        {
+            "paperId": null,
+            "title": "Database-friendly random projections: Johnson-Lindenstrauss with binary coins"
+        }
+    ]
+}

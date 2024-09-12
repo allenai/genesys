@@ -1,0 +1,301 @@
+{
+    "paperId": "8277d67853a3b4dd3060a7aab1ae1c4af6c81211",
+    "externalIds": {
+        "MAG": "347952836",
+        "DBLP": "journals/neco/Paninski03",
+        "DOI": "10.1162/089976603321780272",
+        "CorpusId": 2034914
+    },
+    "title": "Estimation of Entropy and Mutual Information",
+    "abstract": "We present some new results on the nonparametric estimation of entropy and mutual information. First, we use an exact local expansion of the entropy function to prove almost sure consistency and central limit theorems for three of the most commonly used discretized information estimators. The setup is related to Grenander's method of sieves and places no assumptions on the underlying probability measure generating the data. Second, we prove a converse to these consistency theorems, demonstrating that a misapplication of the most common estimation techniques leads to an arbitrarily poor estimate of the true information, even given unlimited data. This inconsistency theorem leads to an analytical approximation of the bias, valid in surprisingly small sample regimes and more accurate than the usual formula of Miller and Madow over a large region of parameter space. The two most practical implications of these results are negative: (1) information estimates in a certain data regime are likely contaminated by bias, even if bias-corrected estimators are used, and (2) confidence intervals calculated by standard techniques drastically underestimate the error of the most common estimation methods. Finally, we note a very useful connection between the bias of entropy estimators and a certain polynomial approximation problem. By casting bias calculation problems in this approximation theory framework, we obtain the best possible generalization of known asymptotic bias results. More interesting, this framework leads to an estimator with some nice properties: the estimator comes equipped with rigorous bounds on the maximum error over all possible underlying probability distributions, and this maximum error turns out to be surprisingly small. We demonstrate the application of this new estimator on both real and simulated data.",
+    "venue": "Neural Computation",
+    "year": 2003,
+    "referenceCount": 67,
+    "citationCount": 1458,
+    "influentialCitationCount": 96,
+    "openAccessPdf": {
+        "url": "http://www.cns.nyu.edu/pub/eero/paninski03-reprint.pdf",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An exact local expansion of the entropy function is used to prove almost sure consistency and central limit theorems for three of the most commonly used discretized information estimators, and leads to an estimator with some nice properties: the estimator comes equipped with rigorous bounds on the maximum error over all possible underlying probability distributions, and this maximum error turns out to be surprisingly small."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1763504",
+            "name": "L. Paninski"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "7dbdb4209626fd92d2436a058663206216036e68",
+            "title": "Elements of Information Theory"
+        },
+        {
+            "paperId": "5e9950a0d24bd78629f3ea9c62f5f1ef76c219b9",
+            "title": "Estimating entropy on m bins given fewer than m samples"
+        },
+        {
+            "paperId": "aa560c6c24ec49ea315f29a7e7a9e3106f5268d9",
+            "title": "Advances in quantitative electroencephalogram analysis methods."
+        },
+        {
+            "paperId": "341c1ea49d974975c6561c8b63a1895360f8e34d",
+            "title": "Universal entropy estimation via block sorting"
+        },
+        {
+            "paperId": "4b19e11ab422721afb20a38c6608a1439f485e74",
+            "title": "Estimating the Entropy Rate of Spike Trains via Lempel-Ziv Complexity"
+        },
+        {
+            "paperId": "dc6ecf66dff044cc6e16bb91631a8f5fd76860b0",
+            "title": "Bias analysis in entropy estimation"
+        },
+        {
+            "paperId": "00d248b580b519d4f0a37b4c5902ce9e6fa9279d",
+            "title": "Entropy and information in neural spike trains: progress on the sampling problem."
+        },
+        {
+            "paperId": "7e4d2a32c8b88c9c6a2d5da4952612afd33231c3",
+            "title": "Noise-driven adaptation: in vitro and mathematical analysis"
+        },
+        {
+            "paperId": "e56cc328a85c1c0b6f15d35a4651e837703f2951",
+            "title": "Analysis of neural coding through quantization with an information-based distortion measure"
+        },
+        {
+            "paperId": "88ddb7205b70a2f53b4972366d1d8634712c064e",
+            "title": "Analyzing Neural Responses to Natural Signals: Maximally Informative Dimensions"
+        },
+        {
+            "paperId": "9f4bb448547ac667f730c0969b7bd1153879c539",
+            "title": "Binless strategies for estimation of information from neural data."
+        },
+        {
+            "paperId": "2b33f69095c7f32eb955f91bd6dbaa0296a61cc6",
+            "title": "On Choosing and Bounding Probability Metrics"
+        },
+        {
+            "paperId": "7b2dd79083a74699e4e0509ac3f0a8a302b4eabe",
+            "title": "On the mathematical foundations of learning"
+        },
+        {
+            "paperId": "473ad681ca6e407e114a4435ed9491f8fb1b3304",
+            "title": "Convergence properties of functional estimates for discrete distributions"
+        },
+        {
+            "paperId": "b84071eec05b1699b1bcae2dec715b8535ae00f3",
+            "title": "Cramer-Rao type integral inequalities for general loss functions"
+        },
+        {
+            "paperId": "007584cbd3bb0b5e20b1c8b240e6040dc40ab2b4",
+            "title": "Entropy and Inference, Revisited"
+        },
+        {
+            "paperId": "04d6aff0c6f792585129b59b37d57f23562c97a3",
+            "title": "Asymptotic Bias in Information Estimates and the Exponential (Bell) Polynomials"
+        },
+        {
+            "paperId": "de9677b75d62a7f6d2866aaee9bacd866f2c9f57",
+            "title": "How the brain uses time to represent and process visual information\n 1\n \n \n 1\n Published on the World Wide Web on 16 August 2000.\n \n"
+        },
+        {
+            "paperId": "727081de1c3bdf08fee56848e7c2d2f497521b7b",
+            "title": "Minimax lower bounds and moduli of continuity"
+        },
+        {
+            "paperId": "4ef483f819e11873822416042a4b6dc4652e010c",
+            "title": "The information bottleneck method"
+        },
+        {
+            "paperId": "70cf87cf18db32faf6c92d4820ff513dd97a6da5",
+            "title": "Estimation of the Information by an Adaptive Partitioning of the Observation Space"
+        },
+        {
+            "paperId": "96b15f6665bb04ddd8d5bdc3fc52949ca45dd19d",
+            "title": "Efficient Discrimination of Temporal Patterns by Motion-Sensitive Neurons in Primate Visual Cortex"
+        },
+        {
+            "paperId": "118f4f5aa858470831302a559ae684daec6308f1",
+            "title": "Large Deviations Techniques and Applications"
+        },
+        {
+            "paperId": "50e1b8ff5d221200b9f1fefed52794b152f8e4b5",
+            "title": "Second-order noiseless source coding theorems"
+        },
+        {
+            "paperId": "87378cc06871a3812a0543be46455597eb108443",
+            "title": "Spikes: Exploring the Neural Code"
+        },
+        {
+            "paperId": "f25ce6b8ea2d741ebd57ba9bab3222fc4cc729d3",
+            "title": "Entropy and Information in Neural Spike Trains"
+        },
+        {
+            "paperId": "45ee7447b9dd406496c4a5d9d8fb6556366a01c6",
+            "title": "Weak Convergence and Empirical Processes: With Applications to Statistics"
+        },
+        {
+            "paperId": "4800e711589ef6dd45976182375f8f1b8d425621",
+            "title": "Limit theorems for the logarithm of sample spacings"
+        },
+        {
+            "paperId": "7e54b87fda65159b5a7fb9bd12a7c9deda074c3d",
+            "title": "The Upward Bias in Measures of Information Derived from Limited Data Samples"
+        },
+        {
+            "paperId": "204cdd68379d2c59e548514eb6a3954f7e5be4e8",
+            "title": "Estimating functions of probability distributions from a finite set of samples."
+        },
+        {
+            "paperId": "c84c360e64b8bcaa4f4545d220fb46e1f4f80c45",
+            "title": "Reading a Neural Code"
+        },
+        {
+            "paperId": "07a9aac052e6af4f1ee625d77460b4b75216f28f",
+            "title": "Geometrizing Rates of Convergence, III"
+        },
+        {
+            "paperId": "ec7dc7374cca3b0b26ad498c6b6dbb3709f8595e",
+            "title": "Achieving Information Bounds in Non and Semiparametric Models"
+        },
+        {
+            "paperId": "6bbb79cc026ecca4264d95c4551fc58205b09533",
+            "title": "Surveys in Combinatorics, 1989: On the method of bounded differences"
+        },
+        {
+            "paperId": "7ceb6dd86e22d5c20b4c131c1af31ef7205695ce",
+            "title": "An Efron-Stein inequality for nonsymmetric statistics"
+        },
+        {
+            "paperId": "2620fdf0c3925f5f873c0c88e85cc8b059dda875",
+            "title": "Numerical Recipes in C: The Art of Sci-entific Computing"
+        },
+        {
+            "paperId": "af67eba4bb789b20fbf3abb94713606a9344f27d",
+            "title": "The Jackknife Estimate of Variance"
+        },
+        {
+            "paperId": "0d2e8d420f3932945ab92c44bc9e44ac78cf8db6",
+            "title": "Approximation Theorems of Mathematical Statistics"
+        },
+        {
+            "paperId": "cac068ecb5eb2fca2166bcda4e4338a6396041d1",
+            "title": "Ergodic theory and information"
+        },
+        {
+            "paperId": "46ac5512f0d5b29671c549a653638e3747eb2481",
+            "title": "On a Class of Problems Related to the Random Division of an Interval"
+        },
+        {
+            "paperId": "bc22d1610ce680c91b4323a1899b1f22cfdf533f",
+            "title": "A Measure of Asymptotic Efficiency for Tests of a Hypothesis Based on the sum of Observations"
+        },
+        {
+            "paperId": "faa975eaeb6a45031f77d6d7344ac905f74fb962",
+            "title": "The mathematical theory of communication"
+        },
+        {
+            "paperId": "a54194422c56399b2923b2ad706b8175c8c48258",
+            "title": "A mathematical theory of communication"
+        },
+        {
+            "paperId": null,
+            "title": "2003).Temporal tuning properties for hand position and velocity in motor cortical neurons. Manuscript submitted for publication"
+        },
+        {
+            "paperId": "ca2832d2c30287a9ee5b8584cc498d2b1cb14753",
+            "title": "Numerical recipes in C"
+        },
+        {
+            "paperId": "df0c7e5806f035a47b80c3626c510eef586a4cf3",
+            "title": "Information Distortion and Neural Coding"
+        },
+        {
+            "paperId": "fa1b1b08bb155a4b30ff15a1ca4cba091a847d42",
+            "title": "Cramer-Rao type integral inequalities for general loss functions"
+        },
+        {
+            "paperId": null,
+            "title": "Coding dynamic variables in populations of motor cortex neurons"
+        },
+        {
+            "paperId": "14ba9dccf06355d1c6478b843ccb8f56d7374409",
+            "title": "Nonparametric entropy estimation. An overview"
+        },
+        {
+            "paperId": "43fcdee6c6d885ac2bd32e122dbf282f93720c22",
+            "title": "A Probabilistic Theory of Pattern Recognition"
+        },
+        {
+            "paperId": "2a18da050602d0dbe40e437e04b3f8414c54cda0",
+            "title": "The theory of statistics"
+        },
+        {
+            "paperId": "eec451b2c5c5d87658b8427aec4fabe90959b546",
+            "title": "Analytical estimates of limited sampling biases in different information measures."
+        },
+        {
+            "paperId": "cc4f9cd158b8448cc5426fc806af45000e852423",
+            "title": "Consistency of Data-driven Histogram Methods for Density Estimation and Classification"
+        },
+        {
+            "paperId": "b00b8538d266d83138068a63750d30afa95190b9",
+            "title": "Constructive Approximation"
+        },
+        {
+            "paperId": null,
+            "title": "Information theory and the theory of algorithms. Boston: Kluwer"
+        },
+        {
+            "paperId": null,
+            "title": "1989).On the method of bounded differences. In J.Siemons (Ed.), Surveys in combinatorics (pp. 148\u2013188)"
+        },
+        {
+            "paperId": "61f5c115ceb934ab5dde5a53b0cacdd7821f779d",
+            "title": "Moduli of smoothness"
+        },
+        {
+            "paperId": null,
+            "title": "Abstract inference. New York: Wiley"
+        },
+        {
+            "paperId": "52f863329807fbf9479ace645fb0700b1263bdd2",
+            "title": "Approximation Theorems of Mathematical Statistics"
+        },
+        {
+            "paperId": "5bb16ddcca35748e8de03c906457034dad84dc11",
+            "title": "Approximation theory and numerical methods"
+        },
+        {
+            "paperId": "e28f9fcb242c728373f8900b9991a5b68e05bd3b",
+            "title": "Probability Theory"
+        },
+        {
+            "paperId": "a36b028d024bf358c4af1a5e1dc3ca0aed23b553",
+            "title": "Chervonenkis: On the uniform convergence of relative frequencies of events to their probabilities"
+        },
+        {
+            "paperId": "02c31a30b058dfd3079117574d0f66e90668e1c2",
+            "title": "On the bias of information estimates."
+        },
+        {
+            "paperId": "08f186c9dba4e25c9d91e64d88d9bf9512da8230",
+            "title": "WEIGHTED SUMS OF CERTAIN DEPENDENT RANDOM VARIABLES"
+        },
+        {
+            "paperId": "723f2cc60d70539508995a481d61e500c149ad03",
+            "title": "Probability theory"
+        },
+        {
+            "paperId": "1aa383691766dae369005e011b5480815341b4a3",
+            "title": "On a Statistical Estimate for the Entropy of a Sequence of Independent Random Variables"
+        },
+        {
+            "paperId": "922ef4c778a7145da54b0de3e8ef5240a8584cd7",
+            "title": "Note on the bias of information estimates"
+        }
+    ]
+}

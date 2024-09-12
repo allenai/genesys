@@ -1,0 +1,266 @@
+{
+    "paperId": "b68811a9b5cafe4795a11c1048541750068b7ad0",
+    "externalIds": {
+        "MAG": "2949901290",
+        "ArXiv": "1706.04261",
+        "DBLP": "conf/iccv/GoyalKMMWKHFYMH17",
+        "DOI": "10.1109/ICCV.2017.622",
+        "CorpusId": 834612
+    },
+    "title": "The \u201cSomething Something\u201d Video Database for Learning and Evaluating Visual Common Sense",
+    "abstract": "Neural networks trained on datasets such as ImageNet have led to major advances in visual object classification. One obstacle that prevents networks from reasoning more deeply about complex scenes and situations, and from integrating visual knowledge with natural language, like humans do, is their lack of common sense knowledge about the physical world. Videos, unlike still images, contain a wealth of detailed information about the physical world. However, most labelled video datasets represent high-level concepts rather than detailed physical aspects about actions and scenes. In this work, we describe our ongoing collection of the \u201csomething-something\u201d database of video prediction tasks whose solutions require a common sense understanding of the depicted situation. The database currently contains more than 100,000 videos across 174 classes, which are defined as caption-templates. We also describe the challenges in crowd-sourcing this data at scale.",
+    "venue": "IEEE International Conference on Computer Vision",
+    "year": 2017,
+    "referenceCount": 45,
+    "citationCount": 1273,
+    "influentialCitationCount": 211,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1706.04261",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work describes the ongoing collection of the \u201csomething-something\u201d database of video prediction tasks whose solutions require a common sense understanding of the depicted situation, and describes the challenges in crowd-sourcing this data at scale."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "38962424",
+            "name": "Raghav Goyal"
+        },
+        {
+            "authorId": "3127597",
+            "name": "Samira Ebrahimi Kahou"
+        },
+        {
+            "authorId": "1748421",
+            "name": "Vincent Michalski"
+        },
+        {
+            "authorId": "2273472082",
+            "name": "Joanna Materzynska"
+        },
+        {
+            "authorId": "12929417",
+            "name": "S. Westphal"
+        },
+        {
+            "authorId": "2233986",
+            "name": "Heuna Kim"
+        },
+        {
+            "authorId": "7241984",
+            "name": "V. Haenel"
+        },
+        {
+            "authorId": "1848689",
+            "name": "Ingo Fr\u00fcnd"
+        },
+        {
+            "authorId": "3203897",
+            "name": "P. Yianilos"
+        },
+        {
+            "authorId": "1414405239",
+            "name": "Moritz Mueller-Freitag"
+        },
+        {
+            "authorId": "2069898274",
+            "name": "F. Hoppe"
+        },
+        {
+            "authorId": "2020614",
+            "name": "Christian Thurau"
+        },
+        {
+            "authorId": "2443288",
+            "name": "Ingo Bax"
+        },
+        {
+            "authorId": "1710604",
+            "name": "R. Memisevic"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "96dd1fc39a368d23291816d57763bc6eb4f7b8d6",
+            "title": "Dense-Captioning Events in Videos"
+        },
+        {
+            "paperId": "904949e9bf204c275ce366237ec1d3ebcf864a1a",
+            "title": "Generating captions without looking beyond objects"
+        },
+        {
+            "paperId": "d9671ec394ec374021702642713aa634b8556312",
+            "title": "Harnessing Object and Scene Semantics for Large-Scale Video Understanding"
+        },
+        {
+            "paperId": "8cf83c619423a1504f26495d5f6a495054c46462",
+            "title": "Learning to Poke by Poking: Experiential Learning of Intuitive Physics"
+        },
+        {
+            "paperId": "b65faba7088864e134e7eb3b68c8e2f18cc5b4f6",
+            "title": "Situation Recognition: Visual Semantic Role Labeling for Image Understanding"
+        },
+        {
+            "paperId": "e1ce8d00729f9e61eeb315f3cbd7b5354706adbd",
+            "title": "Synthesizing the preferred inputs for neurons in neural networks via deep generator networks"
+        },
+        {
+            "paperId": "21334d1aac5422da88780f8e24e181bfa15ef0e1",
+            "title": "Hollywood in Homes: Crowdsourcing Data Collection for Activity Understanding"
+        },
+        {
+            "paperId": "d93ececdc44e7700cd84fc75ca069125022d8c9d",
+            "title": "The Curious Robot: Learning Visual Representations via Physical Interactions"
+        },
+        {
+            "paperId": "b9dd7a59a101fcecc6fe0e7aed517e84a7df7d2e",
+            "title": "Learning Physical Intuition of Block Towers by Example"
+        },
+        {
+            "paperId": "b8e2e9f3ba008e28257195ec69a00e07f260131d",
+            "title": "MSR-VTT: A Large Video Description Dataset for Bridging Video and Language"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "16aac81ae033f7295d82e5b679400d105170a3e1",
+            "title": "Oracle Performance for Visual Captioning"
+        },
+        {
+            "paperId": "0a28efacb92d16e6e0dd4d87b5aca91b28be8853",
+            "title": "ActivityNet: A large-scale video benchmark for human activity understanding"
+        },
+        {
+            "paperId": "0fb3b63090f95af97723efe565893eb25ea9188c",
+            "title": "Anticipating the future by watching unlabeled video"
+        },
+        {
+            "paperId": "b1ddb2994e49a6a4f45e878c1cda7562b03177e6",
+            "title": "Using Descriptive Video Services to Create a Large Data Source for Video Annotation Research"
+        },
+        {
+            "paperId": "1a0a01c78b746f44575f0c4f297e1621eb212dde",
+            "title": "Exploiting Feature and Class Relationships in Video Categorization with Regularized Deep Neural Networks"
+        },
+        {
+            "paperId": "a5ea0da7b93452bec54b5034706f2255bfb5a8f3",
+            "title": "A dataset for Movie Description"
+        },
+        {
+            "paperId": "355f98e4827a1b6ad3f29d07ea2bcf9ad078295c",
+            "title": "Video (language) modeling: a baseline for generative models of natural videos"
+        },
+        {
+            "paperId": "544b80ef13bb0d4288c6a1f50c504c03d3a14d37",
+            "title": "Modeling Deep Temporal Dependencies with Recurrent \"Grammar Cells\""
+        },
+        {
+            "paperId": "d25c65d261ea0e6a458be4c50c40ffe5bc508f77",
+            "title": "Learning Spatiotemporal Features with 3D Convolutional Networks"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "6d4c9c923e9f145d1c01a2de2afc38ec23c44253",
+            "title": "Large-Scale Video Classification with Convolutional Neural Networks"
+        },
+        {
+            "paperId": "6270baedeba28001cd1b563a199335720d6e0fe0",
+            "title": "CNN Features Off-the-Shelf: An Astounding Baseline for Recognition"
+        },
+        {
+            "paperId": "b8de958fead0d8a9619b55c7299df3257c624a96",
+            "title": "DeCAF: A Deep Convolutional Activation Feature for Generic Visual Recognition"
+        },
+        {
+            "paperId": "79b949d9b35c3f51dd20fb5c746cc81fc87147eb",
+            "title": "Vision meets robotics: The KITTI dataset"
+        },
+        {
+            "paperId": "21b3007f967d39e1346bc91e0fc8b3f16121300c",
+            "title": "Grounding Action Descriptions in Videos"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "49435aab7cdf259335725acc96691f755e436f55",
+            "title": "A database for fine grained activity detection of cooking activities"
+        },
+        {
+            "paperId": "f282338fa4cd5516cdcd33cd4b6034f9739c45f4",
+            "title": "Learning to Relate Images"
+        },
+        {
+            "paperId": "0302bb2d5476540cfb21467473f5eca843caf90b",
+            "title": "Unbiased look at dataset bias"
+        },
+        {
+            "paperId": "128cb6b891aee1b5df099acb48e2efecfcff689f",
+            "title": "The Winograd Schema Challenge"
+        },
+        {
+            "paperId": "d2c733e34d48784a37d717fe43d9e93277a8c53e",
+            "title": "ImageNet: A large-scale hierarchical image database"
+        },
+        {
+            "paperId": "66bf90eb1a737279abf028239bd4d0a318d3328e",
+            "title": "Actions in context"
+        },
+        {
+            "paperId": "8de174ab5419b9d3127695405efd079808e956e8",
+            "title": "Curriculum learning"
+        },
+        {
+            "paperId": "1c2629d53fd73ee42fb9a67b4d656688ef6a005f",
+            "title": "Action MACH a spatio-temporal Maximum Average Correlation Height filter for action recognition"
+        },
+        {
+            "paperId": "b480f6a3750b4cebaf1db205692c8321d45926a2",
+            "title": "Recognizing human actions: a local SVM approach"
+        },
+        {
+            "paperId": "1456fba651c261326d8cbec451aca4925092141f",
+            "title": "Metaphors We Live by"
+        },
+        {
+            "paperId": "099b097ecbadf722489f2ff9c1a1fcfc28ac7dbb",
+            "title": "Physics 101: Learning Physical Object Properties from Unlabeled Videos"
+        },
+        {
+            "paperId": null,
+            "title": "Computational perception of physical object properties"
+        },
+        {
+            "paperId": null,
+            "title": "Surfaces and Essences. Basic Books"
+        },
+        {
+            "paperId": "2d757edc96f1933e5a49ae6a251271fb9b7571bf",
+            "title": "Wikipedia"
+        },
+        {
+            "paperId": "d274dfd00aaac4c4f50030c489c31ea1b6169376",
+            "title": "Multiple View Geometry in Computer Vision"
+        },
+        {
+            "paperId": null,
+            "title": "Class labels and their corresponding action-groups for all 175 classes Class Labels Action Groups Trying but failing to attach"
+        },
+        {
+            "paperId": null,
+            "title": "Affordance -wikipedia, the free encyclopedia"
+        }
+    ]
+}

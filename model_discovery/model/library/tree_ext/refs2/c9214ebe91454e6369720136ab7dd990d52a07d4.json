@@ -1,0 +1,70 @@
+{
+    "paperId": "c9214ebe91454e6369720136ab7dd990d52a07d4",
+    "externalIds": {
+        "MAG": "1973923101",
+        "DBLP": "conf/acl/OchN00",
+        "ACL": "P00-1056",
+        "DOI": "10.3115/1075218.1075274",
+        "CorpusId": 5284722
+    },
+    "title": "Improved Statistical Alignment Models",
+    "abstract": "In this paper, we present and compare various single-word based alignment models for statistical machine translation. We discuss the five IBM alignment models, the Hidden-Markov alignment model, smoothing techniques and various modifications. We present different methods to combine alignments. As evaluation criterion we use the quality of the resulting Viterbi alignment compared to a manually produced reference alignment. We show that models with a first-order dependence and a fertility model lead to significantly better results than the simple models IBM-1 or IBM-2, which are not able to go beyond zero-order dependencies.",
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2000,
+    "referenceCount": 8,
+    "citationCount": 1185,
+    "influentialCitationCount": 139,
+    "openAccessPdf": {
+        "url": "http://dl.acm.org/ft_gateway.cfm?id=1075274&type=pdf",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that models with a first-order dependence and a fertility model lead to significantly better results than the simple models IBM-1 or IBM-2, which are not able to go beyond zero-order dependencies."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2002316",
+            "name": "F. Och"
+        },
+        {
+            "authorId": "145322333",
+            "name": "H. Ney"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "d18af6780f9242ec988c89ed0b67dc7d05a7785a",
+            "title": "A Comparison of Alignment Models for Statistical Machine Translation"
+        },
+        {
+            "paperId": "027224cecc5cc50f664e7fd249bd4f4545397b96",
+            "title": "Manual Annotation of Translational Equivalence: The Blinker Project"
+        },
+        {
+            "paperId": "59c442932e9fcfcac6df5566c2bcd1ec331548c9",
+            "title": "HMM-Based Word Alignment in Statistical Translation"
+        },
+        {
+            "paperId": "ab7b5917515c460b90451e67852171a531671ab8",
+            "title": "The Mathematics of Statistical Machine Translation: Parameter Estimation"
+        },
+        {
+            "paperId": "fc593d91a7974bb1d3fac1ffe47b787ce1853a88",
+            "title": "But Dictionaries Are Data Too"
+        },
+        {
+            "paperId": "ae1ccb729fa24d448eb4073771933d5cda7ef364",
+            "title": "Evaluation of Word Alignment Systems"
+        },
+        {
+            "paperId": "01a9a9686d45a3dc8182f59a1a77f1ac4f233761",
+            "title": "Forming Word Classes by Statistical Clustering for Statistical Language Modelling"
+        },
+        {
+            "paperId": "539036ab9e8f038c8a948596e77cc0dfcfa91fb3",
+            "title": "An inequality and associated maximization technique in statistical estimation of probabilistic functions of a Markov process"
+        }
+    ]
+}

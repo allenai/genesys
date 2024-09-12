@@ -1,0 +1,178 @@
+{
+    "paperId": "cd721502bf415bc6e47b51f373ca3619e311f797",
+    "externalIds": {
+        "ArXiv": "1802.07535",
+        "DBLP": "conf/nips/KorshunovaDHGGD18",
+        "MAG": "2951658004",
+        "CorpusId": 54088378
+    },
+    "title": "BRUNO: A Deep Recurrent Model for Exchangeable Data",
+    "abstract": "We present a novel model architecture which leverages deep learning tools to perform exact Bayesian inference on sets of high dimensional, complex observations. Our model is provably exchangeable, meaning that the joint distribution over observations is invariant under permutation: this property lies at the heart of Bayesian inference. The model does not require variational approximations to train, and new samples can be generated conditional on previous samples, with cost linear in the size of the conditioning set. The advantages of our architecture are demonstrated on learning tasks that require generalisation from short observed sequences while modelling sequence variability, such as conditional image generation, few-shot learning, and anomaly detection.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2018,
+    "referenceCount": 32,
+    "citationCount": 33,
+    "influentialCitationCount": 4,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel model architecture which leverages deep learning tools to perform exact Bayesian inference on sets of high dimensional, complex observations and is provably exchangeable, meaning that the joint distribution over observations is invariant under permutation."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "46400982",
+            "name": "I. Korshunova"
+        },
+        {
+            "authorId": "3110620",
+            "name": "Jonas Degrave"
+        },
+        {
+            "authorId": "3108066",
+            "name": "Ferenc Husz\u00e1r"
+        },
+        {
+            "authorId": "2681954",
+            "name": "Y. Gal"
+        },
+        {
+            "authorId": "1708497",
+            "name": "A. Gretton"
+        },
+        {
+            "authorId": "2309489",
+            "name": "J. Dambre"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "8e21d353ba283bee8fd18285558e5e8df39d46e8",
+            "title": "Federated Meta-Learning for Recommendation"
+        },
+        {
+            "paperId": "4514be5d1e4719c4701527ca6569899d8be297ef",
+            "title": "Federated Meta-Learning with Fast Convergence and Efficient Communication"
+        },
+        {
+            "paperId": "f9c602cc436a9ea2f9e7db48c77d924e09ce3c32",
+            "title": "Fashion-MNIST: a Novel Image Dataset for Benchmarking Machine Learning Algorithms"
+        },
+        {
+            "paperId": "585bf7bea8fa5267738bc465611d6f197e0f87dd",
+            "title": "Masked Autoregressive Flow for Density Estimation"
+        },
+        {
+            "paperId": "a456265138c088a894301c0433dae938705a9bec",
+            "title": "Deep Sets"
+        },
+        {
+            "paperId": "be1bb4e4aa1fcf70281b4bd24d8cd31c04864bb6",
+            "title": "Matching Networks for One Shot Learning"
+        },
+        {
+            "paperId": "405c31c85a324942811f3c9dc53ce3528f9284df",
+            "title": "Towards a Neural Statistician"
+        },
+        {
+            "paperId": "09879f7956dddc2a9328f5c1472feeb8402bcbcf",
+            "title": "Density estimation using Real NVP"
+        },
+        {
+            "paperId": "3d2c6941a9b4608ba52b328369a3352db2092ae0",
+            "title": "Weight Normalization: A Simple Reparameterization to Accelerate Training of Deep Neural Networks"
+        },
+        {
+            "paperId": "815c84ab906e43f3e6322f2ca3fd5e1360c64285",
+            "title": "Human-level concept learning through probabilistic program induction"
+        },
+        {
+            "paperId": "f63e917638553414526a0cc8550de4ad2d83fe7a",
+            "title": "Fast and Accurate Deep Network Learning by Exponential Linear Units (ELUs)"
+        },
+        {
+            "paperId": "d01379ebb53c66a4ccf5f4959d904dcf9e161e41",
+            "title": "Order Matters: Sequence to sequence for sets"
+        },
+        {
+            "paperId": "39e0c341351f8f4a39ac890b96217c7f4bde5369",
+            "title": "A note on the evaluation of generative models"
+        },
+        {
+            "paperId": "0f899b92b7fb03b609fee887e4b6f3b633eaf30d",
+            "title": "Variational Inference with Normalizing Flows"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "e215b1b54f5a1682466a0e4034984dda61d3c6f8",
+            "title": "Learning Theory for Distribution Regression"
+        },
+        {
+            "paperId": "dc8301b67f98accbb331190dd7bd987952a692af",
+            "title": "NICE: Non-linear Independent Components Estimation"
+        },
+        {
+            "paperId": "ab6bcd19b7b411ddc3f247215b57e5db3ae67bbc",
+            "title": "Student-t Processes as Alternatives to Gaussian Processes"
+        },
+        {
+            "paperId": "484ad17c926292fbe0d5211540832a8c8a8e958b",
+            "title": "Stochastic Backpropagation and Approximate Inference in Deep Generative Models"
+        },
+        {
+            "paperId": "312cc116df382b9e53ad6899736f65f12114d47d",
+            "title": "A Simple Bayesian Framework for Content-Based Image Retrieval"
+        },
+        {
+            "paperId": "ffbd6c56c3c8a99bad668746cf41c34877201e55",
+            "title": "Bayesian Sets"
+        },
+        {
+            "paperId": "0796972867a3053062044bc594655dfd65383425",
+            "title": "Polar generation of random variates with the t -distribution"
+        },
+        {
+            "paperId": "ef4f5a50837a7c1b3e87b9300ffc7ba00d461a0f",
+            "title": "AUTO-ENCODING VARIATIONAL BAYES"
+        },
+        {
+            "paperId": "a5fa05875e00479ba977caf9f80b99ffa6ddcc12",
+            "title": "\u00c9cole d'\u00e9t\u00e9 de probabilit\u00e9s de Saint-Flour XLVI"
+        },
+        {
+            "paperId": "05ee96e89a3e215e2f028561e1eeffbde1afa850",
+            "title": "Ecole d'\u00e9t\u00e9 de probabilit\u00e9s de Saint-Flour XLV"
+        },
+        {
+            "paperId": null,
+            "title": "Lecture 6.5 - RmsProp: Divide the gradient by a running average of its recent magnitude. COURSERA: Neural Networks for Machine Learning"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        },
+        {
+            "paperId": "dc52d1ede1b90bf9d296bc5b34c9310b7eaa99a2",
+            "title": "The mnist database of handwritten digits"
+        },
+        {
+            "paperId": null,
+            "title": "Gaussian Processes for Machine Learning (Adaptive Computation and Machine Learning)"
+        },
+        {
+            "paperId": "e21aebdef3c5549b49687c794bace5ad60ba30a3",
+            "title": "\u00c9cole d'\u00e9t\u00e9 de probabilit\u00e9s de Saint-Flour XIII - 1983"
+        },
+        {
+            "paperId": null,
+            "title": "15: Samples from a non-convolutional model trained on MNIST. The model was trained the set with 10 classes. Conditioning images in the top row of each subplot come from the test set 20"
+        }
+    ]
+}

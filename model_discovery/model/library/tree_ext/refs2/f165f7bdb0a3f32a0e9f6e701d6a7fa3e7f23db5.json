@@ -1,0 +1,29 @@
+{
+    "paperId": "f165f7bdb0a3f32a0e9f6e701d6a7fa3e7f23db5",
+    "externalIds": {
+        "MAG": "1966320607",
+        "DBLP": "journals/siammax/Demmel92",
+        "DOI": "10.1137/0613003",
+        "CorpusId": 120337228
+    },
+    "title": "The Componentwise Distance to the Nearest Singular Matrix",
+    "abstract": "The singular value decomposition of a square matrix A answers two questions. First, it measures the distance from A to the nearest singular matrix, measuring distance with the two-norm. It also computes the condition number, or the sensitivity of $A^{ - 1} $ to perturbations in A, where sensitivity is also measured with the two-norm. As is well known, these two quantities, the minimum distance to singularity and the condition number, are essentially reciprocals. Using the algorithm of Golub and Kahan [SIAM J. Numer. Anal., Ser. B, 2 (1965), pp. 205\u2013224] and its descendants, these quantities may be computed in $O(n^3 )$ operations. More recent sensitivity analysis extends this analysis to perturbations of different maximum sizes in each entry of A. One may again ask about distance to singularity, condition numbers, and complexity in this new context. It is shown that there can be no simple relationship between distance to singularity and condition number, because the condition number can be computed in pol...",
+    "venue": "SIAM Journal on Matrix Analysis and Applications",
+    "year": 1992,
+    "referenceCount": 0,
+    "citationCount": 114,
+    "influentialCitationCount": 9,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that there can be no simple relationship between distance to singularity and condition number, because the condition number can be computed in pol..."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1700326",
+            "name": "J. Demmel"
+        }
+    ],
+    "references": []
+}

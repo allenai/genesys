@@ -1,0 +1,80 @@
+{
+    "paperId": "e4b42df388fc94e243f8049033ad48c18270f743",
+    "externalIds": {
+        "DBLP": "conf/iccad/KapurL97",
+        "CorpusId": 7231238
+    },
+    "title": "IES3: a fast integral equation solver for efficient 3-dimensional extraction",
+    "abstract": "Integral equation techniques are often used to extract models of integrated circuit structures. This extraction involves solving a dense system of linear equations, and using direct solution methods is prohibitive for large problems. In this paper, we present IES/sup 3/ (pronounced \"ice cube\"), a fast Integral Equation Solver for three-dimensional problems with arbitrary kernels. Extraction methods based on IES/sup 3/ are substantially more efficient than existing multipole-based approaches.",
+    "venue": "International Conference on Computer Aided Design",
+    "year": 1997,
+    "referenceCount": 12,
+    "citationCount": 165,
+    "influentialCitationCount": 16,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "IES/sup 3/ (pronounced \"ice cube\"), a fast Integral Equation Solver for three-dimensional problems with arbitrary kernels is presented, which is substantially more efficient than existing multipole-based approaches."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2865786",
+            "name": "S. Kapur"
+        },
+        {
+            "authorId": "122557506",
+            "name": "D. Long"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "bf9a234d04fb13a63ca4a4f3889ef9bbca8ba35c",
+            "title": "A Fast Method Of Moments Solver For Efficient Parameter Extraction Of MCMs"
+        },
+        {
+            "paperId": "e72e1f48bac8d1426e598938af7748aeccd6f00d",
+            "title": "A new version of the Fast Multipole Method for the Laplace equation in three dimensions"
+        },
+        {
+            "paperId": "06f415998c0b6a33b2efca06eeedefa2a8ed5577",
+            "title": "A Precorrected-fft Method For Capacitance Extraction of Complicated 3-D Structures"
+        },
+        {
+            "paperId": "cdce291cc26f9a6bd327e73ac30aa552fe0bed25",
+            "title": "FastHenry: A Multipole-Accelerated 3-D Inductance Extraction Program"
+        },
+        {
+            "paperId": "688384fc5e643445e835435e96b9dfcfb6598d36",
+            "title": "A fast algorithm for particle simulations"
+        },
+        {
+            "paperId": "7bb9bab74df4d2939bbdf41fc33027b59e0f229e",
+            "title": "GMRES: a generalized minimal residual algorithm for solving nonsymmetric linear systems"
+        },
+        {
+            "paperId": "f800974945ececc1ed23cf839bf0eab9c184a1db",
+            "title": "The Electrostatic Field of Conducting Bodies in Multiple Dielectric Media"
+        },
+        {
+            "paperId": "258ee1c9436311a2152cc3c03c13ff5926d27e9c",
+            "title": "FastCap: A Multipole Accelerated 3-D Extraction Program"
+        },
+        {
+            "paperId": "e9104cbd71c526f7979dbaa30af0bd851e762f9b",
+            "title": "Calculation of Coefficients of Capacitance of Multiconductor Transmission Lines in the Presence of a Dielectric Interface"
+        },
+        {
+            "paperId": "6012f4ad15ba4eb7888e43daf69f11041ab56dbd",
+            "title": "Field computation by moment methods"
+        },
+        {
+            "paperId": null,
+            "title": "Multipole-accelerated capacitance extraction for 3-d structures with multiple dielectrics"
+        },
+        {
+            "paperId": null,
+            "title": "LAPACK User's Guide, Release 2.0"
+        }
+    ]
+}

@@ -1,0 +1,210 @@
+{
+    "paperId": "a3c5cdf7819086368629c4d08334288cbdc31a98",
+    "externalIds": {
+        "DBLP": "journals/tog/KondapaneniVGSS19",
+        "MAG": "2956353133",
+        "DOI": "10.1145/3306346.3323009",
+        "CorpusId": 180260647
+    },
+    "title": "Optimal multiple importance sampling",
+    "abstract": "Multiple Importance Sampling (MIS) is a key technique for achieving robustness of Monte Carlo estimators in computer graphics and other fields. We derive optimal weighting functions for MIS that provably minimize the variance of an MIS estimator, given a set of sampling techniques. We show that the resulting variance reduction over the balance heuristic can be higher than predicted by the variance bounds derived by Veach and Guibas, who assumed only non-negative weights in their proof. We theoretically analyze the variance of the optimal MIS weights and show the relation to the variance of the balance heuristic. Furthermore, we establish a connection between the new weighting functions and control variates as previously applied to mixture sampling. We apply the new optimal weights to integration problems in light transport and show that they allow for new design considerations when choosing the appropriate sampling techniques for a given integration problem.",
+    "venue": "ACM Transactions on Graphics",
+    "year": 2019,
+    "referenceCount": 40,
+    "citationCount": 48,
+    "influentialCitationCount": 5,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work derive optimal weighting functions for MIS that provably minimize the variance of an MIS estimator, given a set of sampling techniques, and shows that the resulting variance reduction can be higher than predicted by the variance bounds derived by Veach and Guibas."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2888291",
+            "name": "Ivo Kondapaneni"
+        },
+        {
+            "authorId": "2784301",
+            "name": "Petr V\u00e9voda"
+        },
+        {
+            "authorId": "51131491",
+            "name": "Pascal Grittmann"
+        },
+        {
+            "authorId": "51151783",
+            "name": "Tom\u00e1s Skrivan"
+        },
+        {
+            "authorId": "143673845",
+            "name": "P. Slusallek"
+        },
+        {
+            "authorId": "39369855",
+            "name": "Jaroslav K\u0159iv\u00e1nek"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "05b13765177526adda8b666cd865651a5009dae0",
+            "title": "Bayesian online regression for adaptive direct illumination sampling"
+        },
+        {
+            "paperId": "4a0d868304d7e5ea25027926cec8d05b8e071cd7",
+            "title": "Multiple importance sampling revisited: breaking the bounds"
+        },
+        {
+            "paperId": "588d4a44a27f436cd2c72ac2477eb15f3641cee1",
+            "title": "Practical Path Guiding for Efficient Light\u2010Transport Simulation"
+        },
+        {
+            "paperId": "b17db695d76ab16b9969e655500d408a903fe31a",
+            "title": "Adaptive multiple importance sampling for general functions"
+        },
+        {
+            "paperId": "197f58d6993357f40b5115c9b8c5bb00b1bf2c81",
+            "title": "A Spatial Target Function for Metropolis Photon Tracing"
+        },
+        {
+            "paperId": "c783555182c6631fccce5de98a6f5d7dac56342f",
+            "title": "Robust light transport simulation via metropolised bidirectional estimators"
+        },
+        {
+            "paperId": "bdaec07419818594a5a183a07828f104e37ddd1c",
+            "title": "Variance Analysis of Multi\u2010sample and One\u2010sample Multiple Importance Sampling"
+        },
+        {
+            "paperId": "7259cfd8b902bbdae0bbee199e0424b8266d9e76",
+            "title": "Heretical Multiple Importance Sampling"
+        },
+        {
+            "paperId": "93dba56dcf8a528c04617de80ce668a04888c8d2",
+            "title": "Product Importance Sampling for Light Transport Path Guiding"
+        },
+        {
+            "paperId": "475fef9a26cd38c3904ba932f32aabcca7579836",
+            "title": "Generalized Multiple Importance Sampling"
+        },
+        {
+            "paperId": "ccb142a204f3ce7ceecf9fbfc5d7e4439205bfc7",
+            "title": "The path tracing revolution in the movie industry"
+        },
+        {
+            "paperId": "8d9df9b34a184ec1624eb8f2ec5ce66afdeb9070",
+            "title": "Probabilistic Connections for Bidirectional Path Tracing"
+        },
+        {
+            "paperId": "12e1fe69473a52d51661b46340b4f1a0e5c08022",
+            "title": "Optimal combination of techniques in multiple importance sampling"
+        },
+        {
+            "paperId": "bc765a342f3ec1ac1e557f3ea1e34b1419604480",
+            "title": "Optimal mixture weights in multiple importance sampling"
+        },
+        {
+            "paperId": "da3098dee8bb835dae8e976d1676bc193bb8eae6",
+            "title": "On-line learning of parametric mixture models for light transport simulation"
+        },
+        {
+            "paperId": "bede6d1f09bc98ba6011923a24124f06a85603d9",
+            "title": "Unifying points, beams, and paths in volumetric light transport simulation"
+        },
+        {
+            "paperId": "4057be09cfd011861eade2787f6ec77eb82ba53a",
+            "title": "Multiplexed metropolis light transport"
+        },
+        {
+            "paperId": "fb391692cf4e3e24864969db2cf82db0d7e1fff3",
+            "title": "Second-Order Approximation for Variance Reduction in Multiple Importance Sampling"
+        },
+        {
+            "paperId": "65d4bad6f027397da369364ed5adc8f5bdbcc308",
+            "title": "A path space extension for robust light transport simulation"
+        },
+        {
+            "paperId": "1b08f4e0c0f70769ce36a23c03e5a1583f3e8064",
+            "title": "Light transport simulation with vertex connection and merging"
+        },
+        {
+            "paperId": "6069ce7dfad938bf9ecd021fdda13fdd31d6a38b",
+            "title": "Importance Caching for Complex Illumination"
+        },
+        {
+            "paperId": "024cfa72792b6f6dc893e40278744e2d10ff39a3",
+            "title": "Representativity for Robust and Adaptive Multiple Importance Sampling"
+        },
+        {
+            "paperId": "93aeb19a54780c66662000dcfbef238fdcfcc10f",
+            "title": "Mathematical problems in image processing - partial differential equations and the calculus of variations"
+        },
+        {
+            "paperId": "c31fade2d9bdace078ddfa913e4020603fa1f3e4",
+            "title": "Adaptive importance sampling in general mixture classes"
+        },
+        {
+            "paperId": "26d7e108e8b141afd56a2bc1d6771e47f35d72fe",
+            "title": "Optimizing Control Variate Estimators for Rendering"
+        },
+        {
+            "paperId": "9903e6c9c6462b91e37cc64ec161c88f20f2ba58",
+            "title": "Physically Based Rendering: From Theory to Implementation"
+        },
+        {
+            "paperId": "92fb3a4f5153b050b880d1278e9f02ad44686c13",
+            "title": "Monte Carlo Methods in Financial Engineering"
+        },
+        {
+            "paperId": "e86f5e41cd8c8db88ca44986b8a0cd47b9811b8c",
+            "title": "Safe and Effective Importance Sampling"
+        },
+        {
+            "paperId": "d64a1588bc3dacfeacf39ff1fa543c6832e051e2",
+            "title": "Optimally combining sampling techniques for Monte Carlo rendering"
+        },
+        {
+            "paperId": "5b5eafcb0346178caaf5ce644ece2a048e067db3",
+            "title": "Stratified sampling of spherical triangles"
+        },
+        {
+            "paperId": "004de8ae9597ce85b26d2127501dd92bcf2af539",
+            "title": "The efficiency of control variates in multiresponse simulation"
+        },
+        {
+            "paperId": "d8e6b6ccb4294645951bce25903d15009b8aba35",
+            "title": "Efficiency of Multivariate Control Variates in Monte Carlo Simulation"
+        },
+        {
+            "paperId": "9cf06c87e0e8236cd1736c6b01efc4ce3c2f93c0",
+            "title": "Statistical Results on Control Variables with Application to Queueing Network Simulation"
+        },
+        {
+            "paperId": null,
+            "title": "Rendering resources"
+        },
+        {
+            "paperId": "82d2aacf01f9b3ae22c8b8e9330a2c1332f83572",
+            "title": "Monte-Carlo method in financial engineering"
+        },
+        {
+            "paperId": "139e0b2e2919839f58ed8f6cf56b88ec77d38d84",
+            "title": "Simple and Robust Mutation Strategy for Metropolis Light Transport Algorithm"
+        },
+        {
+            "paperId": "8eb0816c5134ec18e3ccf59e3468ca3b4588fa75",
+            "title": "Robust Monte Carlo methods for light transport simulation"
+        },
+        {
+            "paperId": null,
+            "title": "obtain the functional derivative, we 1) replace any occurrence of h in the functional by h + \u03b5\u03b4 , 2) take derivative wrt \u03b5 , 3) set \u03b5 = 0"
+        },
+        {
+            "paperId": null,
+            "title": "\u2202 h , \u03b4 = d\u03b5 (cid:12)(cid:12)(cid:12) \u03b5 = 0 F ( h + \u03b5\u03b4 ) , (25) where \u03b4 \u2208 \u2126 is a variation (a function), while \u03b5 \u2208 IR is a number"
+        },
+        {
+            "paperId": null,
+            "title": "B PROOF OF THEOREM"
+        }
+    ]
+}

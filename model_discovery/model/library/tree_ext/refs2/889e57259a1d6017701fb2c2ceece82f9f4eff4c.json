@@ -1,0 +1,194 @@
+{
+    "paperId": "889e57259a1d6017701fb2c2ceece82f9f4eff4c",
+    "externalIds": {
+        "MAG": "2963077125",
+        "DBLP": "conf/naacl/TranBM16",
+        "ACL": "N16-1036",
+        "DOI": "10.18653/v1/N16-1036",
+        "CorpusId": 11637332
+    },
+    "title": "Recurrent Memory Networks for Language Modeling",
+    "abstract": "Recurrent Neural Networks (RNN) have obtained excellent result in many natural language processing (NLP) tasks. However, understanding and interpreting the source of this success remains a challenge. In this paper, we propose Recurrent Memory Network (RMN), a novel RNN architecture, that not only amplifies the power of RNN but also facilitates our understanding of its internal functioning and allows us to discover underlying patterns in data. We demonstrate the power of RMN on language modeling and sentence completion tasks. On language modeling, RMN outperforms Long Short-Term Memory (LSTM) network on three large German, Italian, and English dataset. Additionally we perform in-depth analysis of various linguistic dimensions that RMN captures. On Sentence Completion Challenge, for which it is essential to capture sentence coherence, our RMN obtains 69.2% accuracy, surpassing the previous state-of-the-art by a large margin.",
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2016,
+    "referenceCount": 38,
+    "citationCount": 89,
+    "influentialCitationCount": 8,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/N16-1036.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Recurrent Memory Network (RMN) is proposed, a novel RNN architecture that not only amplifies the power of RNN but also facilitates the understanding of its internal functioning and allows us to discover underlying patterns in data."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2748455",
+            "name": "Ke M. Tran"
+        },
+        {
+            "authorId": "3242253",
+            "name": "Arianna Bisazza"
+        },
+        {
+            "authorId": "1696402",
+            "name": "Christof Monz"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "759956bb98689dbcc891528636d8994e54318f85",
+            "title": "Strategies for Training Large Vocabulary Neural Language Models"
+        },
+        {
+            "paperId": "b064b714107ffc724e0d477f4083e9e507c22fec",
+            "title": "Sentence Compression by Deletion with LSTMs"
+        },
+        {
+            "paperId": "feb420a4ac7c5719d51480053cd3e8669d5f2062",
+            "title": "Findings of the 2015 Workshop on Statistical Machine Translation"
+        },
+        {
+            "paperId": "5b791cd374c7109693aaddee2c12d659ae4e3ec0",
+            "title": "Grid Long Short-Term Memory"
+        },
+        {
+            "paperId": "5b8364c21155d3d2cd38ea4c8b8580beba9a3250",
+            "title": "An Empirical Exploration of Recurrent Network Architectures"
+        },
+        {
+            "paperId": "4b762c0344f14bb00d590f5666c27b3aac7b0a7d",
+            "title": "Dependency Recurrent Neural Language Models for Sentence Completion"
+        },
+        {
+            "paperId": "04d1a26c2516dc14a765112a63ec60dc3cb3de72",
+            "title": "Tree-Structured Composition in Neural Networks without Tree-Structured Architectures"
+        },
+        {
+            "paperId": "40be3888daa5c2e5af4d36ae22f690bcc8caf600",
+            "title": "Visualizing and Understanding Recurrent Networks"
+        },
+        {
+            "paperId": "b36b7f7c68923d14ba2859b5d28a1124616a8c89",
+            "title": "Transition-Based Dependency Parsing with Stack Long Short-Term Memory"
+        },
+        {
+            "paperId": "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e",
+            "title": "End-To-End Memory Networks"
+        },
+        {
+            "paperId": "a7976c2bacfbb194ddbe7fd10c2e50a545cf4081",
+            "title": "LSTM: A Search Space Odyssey"
+        },
+        {
+            "paperId": "a2785f66c20fbdf30ec26c0931584c6d6a0f4fca",
+            "title": "DRAW: A Recurrent Neural Network For Image Generation"
+        },
+        {
+            "paperId": "ac3ee98020251797c2b401e1389461df88e52e62",
+            "title": "Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "1eb09fecd75eb27825dce4f964b97f4f5cc399d7",
+            "title": "On the Properties of Neural Machine Translation: Encoder\u2013Decoder Approaches"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "999937e3a5937822a02fa4ea67d8b6dc7565cfb6",
+            "title": "Less is More? Towards a Reduced Inventory of Categories for Training a Parser for the Italian Stanford Dependencies"
+        },
+        {
+            "paperId": "8dfdc63897da53c737a6f357e428534efea7a50a",
+            "title": "The PAIS\u00c0 Corpus of Italian Web Texts"
+        },
+        {
+            "paperId": "5d833331b0e22ff359db05c62a8bca18c4f04b68",
+            "title": "One billion word benchmark for measuring progress in statistical language modeling"
+        },
+        {
+            "paperId": "53ca064b9f1b92951c1997e90b776e95b0880e52",
+            "title": "Learning word embeddings efficiently with noise-contrastive estimation"
+        },
+        {
+            "paperId": "c0b624c46b51920dfec5aa02cc86323c0beb0df5",
+            "title": "Dropout Improves Recurrent Neural Networks for Handwriting Recognition"
+        },
+        {
+            "paperId": "86065cfb8c0052342d5ddc834ed76c7b4d7f5339",
+            "title": "Exploiting Synergies Between Open Resources for German Dependency Parsing, POS-tagging, and Morphological Analysis"
+        },
+        {
+            "paperId": "f6b51c8753a871dc94ff32152c00c01e94f90f09",
+            "title": "Efficient Estimation of Word Representations in Vector Space"
+        },
+        {
+            "paperId": "84069287da0a6b488b8c933f3cb5be759cb6237e",
+            "title": "On the difficulty of training recurrent neural networks"
+        },
+        {
+            "paperId": "7ec3a89dc9b2f51c5224eb020e86c86c8498da00",
+            "title": "A Challenge Set for Advancing Language Modeling"
+        },
+        {
+            "paperId": "cfa2646776405d50533055ceb1b7f050e9014dcb",
+            "title": "Semi-Supervised Recursive Autoencoders for Predicting Sentiment Distributions"
+        },
+        {
+            "paperId": "6c2b28f9354f667cd5bd07afc0471d8334430da7",
+            "title": "A Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "d0be39ee052d246ae99c082a565aba25b811be2d",
+            "title": "Learning long-term dependencies with gradient descent is difficult"
+        },
+        {
+            "paperId": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+            "title": "Building a Large Annotated Corpus of English: The Penn Treebank"
+        },
+        {
+            "paperId": "668087f0ae7ce1de6e0bd0965dbb480c08103260",
+            "title": "Finding Structure in Time"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "b0b33aaed1d408d04fadf9ff2a080e47ef8cb7b1",
+            "title": "Training and Analysing Deep Recurrent Neural Networks"
+        },
+        {
+            "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+            "title": "Recurrent neural network based language model"
+        },
+        {
+            "paperId": "a84159a9c59a7199b16e7ff1cb02be6f51fdde82",
+            "title": "Accurate Dependency Parsing with a Stacked Multilayer Perceptron"
+        },
+        {
+            "paperId": "e8f2883bcee2c95065dd6296772dc9f6e2a740b4",
+            "title": "Eine umfassende Constraint-Dependenz-Grammatik des Deutschen"
+        },
+        {
+            "paperId": null,
+            "title": "in most of the cases closest positions are attended the most"
+        }
+    ]
+}

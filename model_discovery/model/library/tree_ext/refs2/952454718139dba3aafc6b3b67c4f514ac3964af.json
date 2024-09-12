@@ -1,0 +1,182 @@
+{
+    "paperId": "952454718139dba3aafc6b3b67c4f514ac3964af",
+    "externalIds": {
+        "ArXiv": "1603.09025",
+        "MAG": "2326533993",
+        "DBLP": "conf/iclr/CooijmansBLGC17",
+        "CorpusId": 1107124
+    },
+    "title": "Recurrent Batch Normalization",
+    "abstract": "We propose a reparameterization of LSTM that brings the benefits of batch normalization to recurrent neural networks. Whereas previous works only apply batch normalization to the input-to-hidden transformation of RNNs, we demonstrate that it is both possible and beneficial to batch-normalize the hidden-to-hidden transition, thereby reducing internal covariate shift between time steps. We evaluate our proposal on various sequential problems such as sequence classification, language modeling and question answering. Our empirical results show that our batch-normalized LSTM consistently leads to faster convergence and improved generalization.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2016,
+    "referenceCount": 35,
+    "citationCount": 405,
+    "influentialCitationCount": 61,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is demonstrated that it is both possible and beneficial to batch-normalize the hidden-to-hidden transition, thereby reducing internal covariate shift between time steps."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2348758",
+            "name": "Tim Cooijmans"
+        },
+        {
+            "authorId": "2482072",
+            "name": "Nicolas Ballas"
+        },
+        {
+            "authorId": "40201308",
+            "name": "C\u00e9sar Laurent"
+        },
+        {
+            "authorId": "1760871",
+            "name": "Aaron C. Courville"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "65eee67dee969fdf8b44c87c560d66ad4d78e233",
+            "title": "Hierarchical Multiscale Recurrent Neural Networks"
+        },
+        {
+            "paperId": "97fb4e3d45bb098e27e0071448b6152217bd35a5",
+            "title": "Layer Normalization"
+        },
+        {
+            "paperId": "9f0687bcd0a7d7fc91b8c5d36c003a38b8853105",
+            "title": "Zoneout: Regularizing RNNs by Randomly Preserving Hidden Activations"
+        },
+        {
+            "paperId": "6b570069f14c7588e066f7138e1f21af59d62e61",
+            "title": "Theano: A Python framework for fast computation of mathematical expressions"
+        },
+        {
+            "paperId": "aaf08e37bcd0f4624d8eb04f301bfa98b0456641",
+            "title": "Bridging the Gaps Between Residual Learning, Recurrent Neural Networks and Visual Cortex"
+        },
+        {
+            "paperId": "f6fda11d2b31ad66dd008a65f7e708aa64a27703",
+            "title": "Architectural Complexity Measures of Recurrent Neural Networks"
+        },
+        {
+            "paperId": "13497bd108d4412d02050e646235f456568cf822",
+            "title": "Deep Speech 2 : End-to-End Speech Recognition in English and Mandarin"
+        },
+        {
+            "paperId": "f84d5add20d4df0a6c89c47a920354c272cbdbd8",
+            "title": "Regularizing RNNs by Stabilizing Activations"
+        },
+        {
+            "paperId": "e9c771197a6564762754e48c1daafb066f449f2e",
+            "title": "Unitary Evolution Recurrent Neural Networks"
+        },
+        {
+            "paperId": "f95adc1d8daaa07a0c956826ec274ca9e2515ddc",
+            "title": "Batch normalized recurrent neural networks"
+        },
+        {
+            "paperId": "d1505c6123c102e53eb19dff312cb25cea840b72",
+            "title": "Teaching Machines to Read and Comprehend"
+        },
+        {
+            "paperId": "59b81ff81da55efc724c84ddc9d3ffd8e57a8d0e",
+            "title": "Blocks and Fuel: Frameworks for deep learning"
+        },
+        {
+            "paperId": "d46b81707786d18499f911b4ab72bb10c65406ba",
+            "title": "A Simple Way to Initialize Recurrent Networks of Rectified Linear Units"
+        },
+        {
+            "paperId": "5f425b7abf2ed3172ed060df85bb1885860a297e",
+            "title": "Describing Videos by Exploiting Temporal Structure"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17",
+            "title": "Generating Sequences With Recurrent Neural Networks"
+        },
+        {
+            "paperId": "359917bd41e0d460f3e321415285e9d60e2e3b99",
+            "title": "Persistent Contextual Neural Networks for learning symbolic data sequences"
+        },
+        {
+            "paperId": "4ef03716945bd3907458efbe1bbf8928dafc1efc",
+            "title": "Regularization and nonlinearities for neural language models: when are they needed?"
+        },
+        {
+            "paperId": "855d0f722d75cc56a66a00ede18ace96bafee6bd",
+            "title": "Theano: new features and speed improvements"
+        },
+        {
+            "paperId": "84069287da0a6b488b8c933f3cb5be759cb6237e",
+            "title": "On the difficulty of training recurrent neural networks"
+        },
+        {
+            "paperId": "bd5fc28c7356915ec71abafbe86b7596c60720aa",
+            "title": "The conference paper"
+        },
+        {
+            "paperId": "0d6203718c15f137fda2f295c96269bc2b254644",
+            "title": "Learning Recurrent Neural Networks with Hessian-Free Optimization"
+        },
+        {
+            "paperId": "235723a15c86c369c99a42e7b666dfe156ad2cba",
+            "title": "Improving predictive inference under covariate shift by weighting the log-likelihood function"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "d0be39ee052d246ae99c082a565aba25b811be2d",
+            "title": "Learning long-term dependencies with gradient descent is difficult"
+        },
+        {
+            "paperId": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+            "title": "Building a Large Annotated Corpus of English: The Penn Treebank"
+        },
+        {
+            "paperId": "bcd857d75841aa3e92cd4284a8818aba9f6c0c3f",
+            "title": "Published as a conference paper at ICLR 2018 S IMULATING A CTION D YNAMICS WITH N EURAL P ROCESS N ETWORKS"
+        },
+        {
+            "paperId": null,
+            "title": "Lecture 6.5\u2014RmsProp: Divide the gradient by a running average of its recent magnitude"
+        },
+        {
+            "paperId": "1fd7fc06653723b05abe5f3d1de393ddcf6bdddb",
+            "title": "SUBWORD LANGUAGE MODELING WITH NEURAL NETWORKS"
+        },
+        {
+            "paperId": null,
+            "title": "Large text compression benchmark"
+        },
+        {
+            "paperId": "3f3d13e95c25a8f6a753e38dfce88885097cbd43",
+            "title": "Untersuchungen zu dynamischen neuronalen Netzen"
+        }
+    ]
+}

@@ -1,0 +1,303 @@
+{
+    "paperId": "66e9dc728b5041271bff0cd6ac0d7eadcd88442f",
+    "externalIds": {
+        "DBLP": "journals/pami/DongLHT16",
+        "MAG": "2949064199",
+        "ArXiv": "1501.00092",
+        "DOI": "10.1109/TPAMI.2015.2439281",
+        "CorpusId": 6593498,
+        "PubMed": "26761735"
+    },
+    "title": "Image Super-Resolution Using Deep Convolutional Networks",
+    "abstract": "We propose a deep learning method for single image super-resolution (SR). Our method directly learns an end-to-end mapping between the low/high-resolution images. The mapping is represented as a deep convolutional neural network (CNN) that takes the low-resolution image as the input and outputs the high-resolution one. We further show that traditional sparse-coding-based SR methods can also be viewed as a deep convolutional network. But unlike traditional methods that handle each component separately, our method jointly optimizes all layers. Our deep CNN has a lightweight structure, yet demonstrates state-of-the-art restoration quality, and achieves fast speed for practical on-line usage. We explore different network structures and parameter settings to achieve trade-offs between performance and speed. Moreover, we extend our network to cope with three color channels simultaneously, and show better overall reconstruction quality.",
+    "venue": "IEEE Transactions on Pattern Analysis and Machine Intelligence",
+    "year": 2014,
+    "referenceCount": 64,
+    "citationCount": 7286,
+    "influentialCitationCount": 940,
+    "openAccessPdf": {
+        "url": "http://arxiv.org/pdf/1501.00092",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a deep learning method for single image super-resolution (SR) that directly learns an end-to-end mapping between the low/high-resolution images, represented as a deep convolutional neural network (CNN) that takes the low-resolution image as the input and outputs the high-resolution one."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "30459277",
+            "name": "Chao Dong"
+        },
+        {
+            "authorId": "1717179",
+            "name": "Chen Change Loy"
+        },
+        {
+            "authorId": "39353098",
+            "name": "Kaiming He"
+        },
+        {
+            "authorId": "50295995",
+            "name": "Xiaoou Tang"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "6d0096f31fca8948b255c72a683fe951954ef334",
+            "title": "Fast and accurate image upscaling with super-resolution forests"
+        },
+        {
+            "paperId": "2946c4e29b057d3543f09b89f547965895676d19",
+            "title": "Single image super-resolution from transformed self-exemplars"
+        },
+        {
+            "paperId": "fc3ae73f825259131c2259d0f0fab435594a9e69",
+            "title": "Jointly Optimized Regressors for Image Super\u2010resolution"
+        },
+        {
+            "paperId": "5b249cf39370503f22fc7d4b257d735555d647ce",
+            "title": "DeepID-Net: Deformable deep convolutional neural networks for object detection"
+        },
+        {
+            "paperId": "8ad35df17ae4064dd174690efb04d347428f1117",
+            "title": "Convolutional neural networks at constrained time cost"
+        },
+        {
+            "paperId": "4328ec9d98eff5d7eb70997f76d81b27849f3220",
+            "title": "Scalable, High-Quality Object Detection"
+        },
+        {
+            "paperId": "ca5766b91da4903ad6f6d40a5b31a3ead1f7f6de",
+            "title": "A+: Adjusted Anchored Neighborhood Regression for Fast Super-Resolution"
+        },
+        {
+            "paperId": "15e28e884fb6c7eba2610e3dfcd5b40dadb14155",
+            "title": "DeepID-Net: multi-stage and deformable deep convolutional neural networks for object detection"
+        },
+        {
+            "paperId": "0504945cc2d03550fecb6ff02e637f9421107c25",
+            "title": "Learning a Deep Convolutional Network for Image Super-Resolution"
+        },
+        {
+            "paperId": "5c1250cb989e7824432c3a15afcd9283b63d008b",
+            "title": "Deep Network Cascade for Image Super-resolution"
+        },
+        {
+            "paperId": "c02b9f59444f50d57306df473888bd616ec22c40",
+            "title": "Single-Image Super-Resolution: A Benchmark"
+        },
+        {
+            "paperId": "98bb60748eb8ef7a671cdd22faa87e377fd13060",
+            "title": "Part-Based R-CNNs for Fine-Grained Category Detection"
+        },
+        {
+            "paperId": "6bdb186ec4726e00a8051119636d4df3b94043b5",
+            "title": "Caffe: Convolutional Architecture for Fast Feature Embedding"
+        },
+        {
+            "paperId": "cbb19236820a96038d000dc629225d36e0b6294a",
+            "title": "Spatial Pyramid Pooling in Deep Convolutional Networks for Visual Recognition"
+        },
+        {
+            "paperId": "91bdaf3f1226e4065c4296d5c362906ceadfc631",
+            "title": "Deep Learning Face Representation by Joint Identification-Verification"
+        },
+        {
+            "paperId": "021fc345d40d3e6332cd2ef276e2eaa5e71102e4",
+            "title": "Speeding up Convolutional Neural Networks with Low Rank Expansions"
+        },
+        {
+            "paperId": "e5ae8ab688051931b4814f6d32b18391f8d1fa8d",
+            "title": "Exploiting Linear Structure Within Convolutional Networks for Efficient Evaluation"
+        },
+        {
+            "paperId": "2814db29a34e4ddc83f63c1c0d7b2ae467d337c6",
+            "title": "Restoring an Image Taken through a Window Covered with Dirt or Rain"
+        },
+        {
+            "paperId": "8b9e0187c0a3850c9d0e6833640b6ab8a1623bfc",
+            "title": "Joint Deep Learning for Pedestrian Detection"
+        },
+        {
+            "paperId": "028496484cd84d778f736798463de1e4b8df3c49",
+            "title": "Fast Direct Super-Resolution by Simple Functions"
+        },
+        {
+            "paperId": "f3cb2b0b4c1fc5cd06d20ceabb7ebfccdce90ad8",
+            "title": "Anchored Neighborhood Regression for Fast Example-Based Super-Resolution"
+        },
+        {
+            "paperId": "239833ef8a8e1bc039ab57663054774b521e2ef7",
+            "title": "Example-Based Super-Resolution With Soft Information and Decision"
+        },
+        {
+            "paperId": "0ca7a1ad5be90c59d700704d5baff7da63b95937",
+            "title": "Fast Image Super-Resolution Based on In-Place Example Regression"
+        },
+        {
+            "paperId": "b7c565e002471173b1b342dbee9c593b52e96f50",
+            "title": "A Machine Learning Approach for Non-blind Image Deconvolution"
+        },
+        {
+            "paperId": "3be73fa0dbe180d555e5b99c827918ba2978098d",
+            "title": "Image Transformation Based on Learning Dictionaries across Image Spaces"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "40053e6660cb3d7e5cabec757cab5f4800dcfee8",
+            "title": "Image Super-Resolution: Use of Self-learning and Gabor Prior"
+        },
+        {
+            "paperId": "d6fa5497ccf88bcf4eeef071b500fe5f1806342c",
+            "title": "Image Super-Resolution Using Local Learnable Kernel Regression"
+        },
+        {
+            "paperId": "4dbc68cf2e14155edb6da0def30661aca8c96c22",
+            "title": "Simplifying ConvNets for Fast Learning"
+        },
+        {
+            "paperId": "c7338140c446bb1b8c1a2c24aa380890214dc0d7",
+            "title": "Low-Complexity Single-Image Super-Resolution based on Nonnegative Neighbor Embedding"
+        },
+        {
+            "paperId": "7aa18f27d6dd0237b7c2590d4be64170c984ec28",
+            "title": "Coupled Dictionary Training for Image Super-Resolution"
+        },
+        {
+            "paperId": "1d70937202d843664c5591fde4fb0d48627d1cf6",
+            "title": "Image denoising: Can plain neural networks compete with BM3D?"
+        },
+        {
+            "paperId": "95064fdabc04e1621ec1e46ff85f74163ba2f766",
+            "title": "Image and video upscaling from local self-examples"
+        },
+        {
+            "paperId": "17841a596d7ccb3467cfbf21ec48ac891be8abec",
+            "title": "Exploiting Self-similarities for Single Frame Super-Resolution"
+        },
+        {
+            "paperId": "a230000e34fbd0e5e16be6cb89d998691b62ccc2",
+            "title": "Image Super-Resolution Via Sparse Representation"
+        },
+        {
+            "paperId": "d1dce9ad419d8c7037980a9ea28506ed0e640bba",
+            "title": "On Single Image Scale-Up Using Sparse-Representations"
+        },
+        {
+            "paperId": "a538b05ebb01a40323997629e171c91aa28b8e2f",
+            "title": "Rectified Linear Units Improve Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": "aad0fde4edffe4d394e59e337c00741bcd339552",
+            "title": "Context-constrained hallucination for image super-resolution"
+        },
+        {
+            "paperId": "95898347e4ea59fd1a1a2071abc6ad6636acbb59",
+            "title": "Single-Image Super-Resolution Using Sparse Regression and Natural Image Prior"
+        },
+        {
+            "paperId": "89f62dd328cb3e0e7b1a7e03e5b39084b4a91d18",
+            "title": "Super-resolution from a single image"
+        },
+        {
+            "paperId": "d2c733e34d48784a37d717fe43d9e93277a8c53e",
+            "title": "ImageNet: A large-scale hierarchical image database"
+        },
+        {
+            "paperId": "7fc814c3e1ffc2cac3ffb58ba86251201c63b2ff",
+            "title": "SoftCuts: A Soft Edge Smoothness Prior for Color Image Super-Resolution"
+        },
+        {
+            "paperId": "b2af2a2f2d1be22ebf473f7e0f501f1f5c02f222",
+            "title": "Natural Image Denoising with Convolutional Networks"
+        },
+        {
+            "paperId": "844236f08ea07371c71b7da2d8183fbd4ac5d799",
+            "title": "Image super-resolution as sparse representation of raw image patches"
+        },
+        {
+            "paperId": "470a6b517b36ed5c8125f93bb8a82984e8835c55",
+            "title": "Image super-resolution using gradient profile prior"
+        },
+        {
+            "paperId": "c0e5ebcfa7fd20fa688e6623fdd0dfd5eefc2fad",
+            "title": "Face Hallucination: Theory and Practice"
+        },
+        {
+            "paperId": "e64a9960734215e2b1866ea3cb723ffa5585ac14",
+            "title": "Efficient sparse coding algorithms"
+        },
+        {
+            "paperId": "83b522f4bfa5db7f7d34f839475af7d078107634",
+            "title": "$rm K$-SVD: An Algorithm for Designing Overcomplete Dictionaries for Sparse Representation"
+        },
+        {
+            "paperId": "70e7c8eb9077f163d924258bb04d55a8390bb3cd",
+            "title": "An information fidelity criterion for image quality assessment using natural scene statistics"
+        },
+        {
+            "paperId": "5fbfac24409ce3cb1dbafd0a8227fd1d569ba208",
+            "title": "Super-resolution through neighbor embedding"
+        },
+        {
+            "paperId": "eae2e0fa72e898c289365c0af16daf57a7a6cf40",
+            "title": "Image quality assessment: from error visibility to structural similarity"
+        },
+        {
+            "paperId": "554cb0e8a604701ca78f2d782f2a26119eadaa81",
+            "title": "Multiscale structural similarity for image quality assessment"
+        },
+        {
+            "paperId": "e484ef6b9a1b38a86a8c79b5559a3070f327a033",
+            "title": "Example-Based Super-Resolution"
+        },
+        {
+            "paperId": "9a1ed876196ec9733acb1daa6d65e35ff0414291",
+            "title": "A database of human segmented natural images and its application to evaluating segmentation algorithms and measuring ecological statistics"
+        },
+        {
+            "paperId": "b97f4bcfe9c9b240689855ce83c1412e2db98393",
+            "title": "Image quality assessment based on a degradation model"
+        },
+        {
+            "paperId": "861897df39716877fb1e03a7d09a234faca076e9",
+            "title": "Learning Low-Level Vision"
+        },
+        {
+            "paperId": "42d60f7faaa2f6fdd2b928c352d65eb57b4791aa",
+            "title": "Improving resolution by image registration"
+        },
+        {
+            "paperId": "a8e8f3c8d4418c8d62e306538c9c1292635e9d27",
+            "title": "Backpropagation Applied to Handwritten Zip Code Recognition"
+        },
+        {
+            "paperId": null,
+            "title": "He is currently working toward the PhD degree in the Department of Information Engineering His research interests include image super-resolution and denoising"
+        },
+        {
+            "paperId": null,
+            "title": "IEEE Conf. Comput. Vis. Pattern Recog"
+        },
+        {
+            "paperId": "f6e0fb4c77906bc23fe59a8f848ce62ba9687181",
+            "title": "K-SVD : An Algorithm for Designing of Overcomplete Dictionaries for Sparse Representation"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": null,
+            "title": "Discriminant Adaptive Nearest Neighbor Classification"
+        },
+        {
+            "paperId": null,
+            "title": "The \" butterfly \" image from Set5 with an upscaling factor 3"
+        }
+    ]
+}

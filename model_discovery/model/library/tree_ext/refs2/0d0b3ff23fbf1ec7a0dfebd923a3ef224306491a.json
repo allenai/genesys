@@ -1,0 +1,150 @@
+{
+    "paperId": "0d0b3ff23fbf1ec7a0dfebd923a3ef224306491a",
+    "externalIds": {
+        "DBLP": "journals/corr/ZarembaS14",
+        "ArXiv": "1410.4615",
+        "MAG": "1581407678",
+        "CorpusId": 12730022
+    },
+    "title": "Learning to Execute",
+    "abstract": "Recurrent Neural Networks (RNNs) with Long Short-Term Memory units (LSTM) are widely used because they are expressive and are easy to train. Our interest lies in empirically evaluating the expressiveness and the learnability of LSTMs in the sequence-to-sequence regime by training them to evaluate short computer programs, a domain that has traditionally been seen as too complex for neural networks. We consider a simple class of programs that can be evaluated with a single left-to-right pass using constant memory. Our main result is that LSTMs can learn to map the character-level representations of such programs to their correct outputs. Notably, it was necessary to use curriculum learning, and while conventional curriculum learning proved ineffective, we developed a new variant of curriculum learning that improved our networks' performance in all experimental conditions. The improved curriculum had a dramatic impact on an addition problem, making it possible to train an LSTM to add two 9-digit numbers with 99% accuracy.",
+    "venue": "arXiv.org",
+    "year": 2014,
+    "referenceCount": 29,
+    "citationCount": 539,
+    "influentialCitationCount": 25,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work developed a new variant of curriculum learning that improved the networks' performance in all experimental conditions and had a dramatic impact on an addition problem, making an LSTM to add two 9-digit numbers with 99% accuracy."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2563432",
+            "name": "Wojciech Zaremba"
+        },
+        {
+            "authorId": "1701686",
+            "name": "I. Sutskever"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "47225c992d7086cf5d113942212edb4a57401130",
+            "title": "Building Program Vector Representations for Deep Learning"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "f264e8b33c0d49a692a6ce2c4bcb28588aeb7d97",
+            "title": "Recurrent Neural Network Regularization"
+        },
+        {
+            "paperId": "7c05a4ffee7e159e34b2efea7e44d994333ec628",
+            "title": "Recursive Neural Networks Can Learn Logical Semantics"
+        },
+        {
+            "paperId": "4ea80c206b8ad73a6d320c9d8ed0321d84fe6d85",
+            "title": "Recursive Neural Networks for Learning Logical Semantics"
+        },
+        {
+            "paperId": "7d335f988990f20e0e2d0085e60be24ff3bd56d6",
+            "title": "Learning to Discover Efficient Mathematical Identities"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "5522764282c85aea422f1c4dc92ff7e0ca6987bc",
+            "title": "A Clockwork RNN"
+        },
+        {
+            "paperId": "215999a0e155a21255e4655d4eac312858058a84",
+            "title": "Structured Generative Models of Natural Source Code"
+        },
+        {
+            "paperId": "533ee188324b833e059cb59b654e6160776d5812",
+            "title": "How to Construct Deep Recurrent Neural Networks"
+        },
+        {
+            "paperId": "08caf0d048cfbe528f8d9db7005d040f76b55c24",
+            "title": "Can recursive neural tensor networks learn logical reasoning?"
+        },
+        {
+            "paperId": "c0b624c46b51920dfec5aa02cc86323c0beb0df5",
+            "title": "Dropout Improves Recurrent Neural Networks for Handwriting Recognition"
+        },
+        {
+            "paperId": "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17",
+            "title": "Generating Sequences With Recurrent Neural Networks"
+        },
+        {
+            "paperId": "4177ec52d1b80ed57f2e72b0f9a42365f1a8598d",
+            "title": "Speech recognition with deep recurrent neural networks"
+        },
+        {
+            "paperId": "ded103d0613e1a8f51f586cc1678aee3ff26e811",
+            "title": "Advances in optimizing recurrent networks"
+        },
+        {
+            "paperId": "8a1440354e299d5cac6f80f1f4102cc6c6546311",
+            "title": "Learning the easy things first: Self-paced visual category discovery"
+        },
+        {
+            "paperId": "52121b38358023f1aa3c010434f605e69b612043",
+            "title": "On the training of recurrent neural networks"
+        },
+        {
+            "paperId": "a049555721f17ed79a97fd492c8fc9a3f8f8aa17",
+            "title": "Self-Paced Learning for Latent Variable Models"
+        },
+        {
+            "paperId": "4c46347fbc272b21468efe3d9af34b4b2bad6684",
+            "title": "Deep learning via Hessian-free optimization"
+        },
+        {
+            "paperId": "8de174ab5419b9d3127695405efd079808e956e8",
+            "title": "Curriculum learning"
+        },
+        {
+            "paperId": "370984d3910e61d41ee8318714cd610b689de726",
+            "title": "2007 Special Issue: Optimization and applications of echo state networks with leaky- integrator neurons"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "bb34958574c3866bc8f096c344b476548c56f5b1",
+            "title": "A Statistical Derivation of the Significant-Digit Law"
+        },
+        {
+            "paperId": "f34607a6aa2d984e34a5ce7f0bdac4a860fa98a4",
+            "title": "Training Recurrent Neural Networks"
+        },
+        {
+            "paperId": "96364af2d208ea75ca3aeb71892d2f7ce7326b55",
+            "title": "Statistical Language Models Based on Neural Networks"
+        },
+        {
+            "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+            "title": "Recurrent neural network based language model"
+        },
+        {
+            "paperId": "03bc854feaee144b54924b440eff02ed9082cc6b",
+            "title": "THE USE OF RECURRENT NEURAL NETWORKS IN CONTINUOUS SPEECH RECOGNITION"
+        },
+        {
+            "paperId": null,
+            "title": "Baseline \" prediction: -278797 Naive \" prediction: -241144 Mix \" prediction: -252080 Combined \" prediction: -277882. Input: g=801925; print((58095+(g+(824920 if 842317>176260 else 570318))))"
+        },
+        {
+            "paperId": null,
+            "title": "Baseline \" prediction: 24000349 Naive \" prediction: 24018872. \" Mix \" prediction: 23017572"
+        }
+    ]
+}

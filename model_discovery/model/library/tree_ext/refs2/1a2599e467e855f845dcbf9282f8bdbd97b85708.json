@@ -1,0 +1,206 @@
+{
+    "paperId": "1a2599e467e855f845dcbf9282f8bdbd97b85708",
+    "externalIds": {
+        "MAG": "2964243274",
+        "DBLP": "journals/corr/abs-1712-05884",
+        "ArXiv": "1712.05884",
+        "DOI": "10.1109/ICASSP.2018.8461368",
+        "CorpusId": 206742911
+    },
+    "title": "Natural TTS Synthesis by Conditioning Wavenet on MEL Spectrogram Predictions",
+    "abstract": "This paper describes Tacotron 2, a neural network architecture for speech synthesis directly from text. The system is composed of a recurrent sequence-to-sequence feature prediction network that maps character embeddings to mel-scale spectrograms, followed by a modified WaveNet model acting as a vocoder to synthesize time-domain waveforms from those spectrograms. Our model achieves a mean opinion score (MOS) of 4.53 comparable to a MOS of 4.58 for professionally recorded speech. To validate our design choices, we present ablation studies of key components of our system and evaluate the impact of using mel spectrograms as the conditioning input to WaveNet instead of linguistic, duration, and $F_{0}$ features. We further show that using this compact acoustic intermediate representation allows for a significant reduction in the size of the WaveNet architecture.",
+    "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+    "year": 2017,
+    "referenceCount": 31,
+    "citationCount": 2423,
+    "influentialCitationCount": 368,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1712.05884",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Tacotron 2, a neural network architecture for speech synthesis directly from text that is composed of a recurrent sequence-to-sequence feature prediction network that maps character embeddings to mel-scale spectrograms, followed by a modified WaveNet model acting as a vocoder to synthesize time-domain waveforms from those Spectrograms is described."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "143724108",
+            "name": "Jonathan Shen"
+        },
+        {
+            "authorId": "34320634",
+            "name": "Ruoming Pang"
+        },
+        {
+            "authorId": "39571582",
+            "name": "Ron J. Weiss"
+        },
+        {
+            "authorId": "144927151",
+            "name": "M. Schuster"
+        },
+        {
+            "authorId": "3111912",
+            "name": "N. Jaitly"
+        },
+        {
+            "authorId": "2109479107",
+            "name": "Zongheng Yang"
+        },
+        {
+            "authorId": "2545358",
+            "name": "Z. Chen"
+        },
+        {
+            "authorId": "2153632494",
+            "name": "Yu Zhang"
+        },
+        {
+            "authorId": "2115828379",
+            "name": "Yuxuan Wang"
+        },
+        {
+            "authorId": "1380248814",
+            "name": "R. Skerry-Ryan"
+        },
+        {
+            "authorId": "2278009",
+            "name": "R. Saurous"
+        },
+        {
+            "authorId": "2259013",
+            "name": "Yannis Agiomyrgiannakis"
+        },
+        {
+            "authorId": "48607963",
+            "name": "Yonghui Wu"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "f6cbf83e1ce3b099d656d2346b261d5ef7f2b62e",
+            "title": "Parallel WaveNet: Fast High-Fidelity Speech Synthesis"
+        },
+        {
+            "paperId": "852120feb37d2dc136d1c6916b52b9baabfc2e11",
+            "title": "Deep Voice 3: 2000-Speaker Neural Text-to-Speech"
+        },
+        {
+            "paperId": "487aa8076bf3c0edb4134759e1ddf09d64f21476",
+            "title": "Speaker-Dependent WaveNet Vocoder"
+        },
+        {
+            "paperId": "5a5bcfda3b753f8266b9ba27d34fc86b6d374a1b",
+            "title": "Deep Voice 2: Multi-Speaker Neural Text-to-Speech"
+        },
+        {
+            "paperId": "a072c2a400f62f720b68dc54a662fb1ae115bf06",
+            "title": "Tacotron: Towards End-to-End Speech Synthesis"
+        },
+        {
+            "paperId": "63880b57b95de8afd73036e55b9c4bccb7a528b9",
+            "title": "Deep Voice: Real-time Neural Text-to-Speech"
+        },
+        {
+            "paperId": "9203d6c076bffe87336f2ea91f5851436c02dbe6",
+            "title": "Char2Wav: End-to-End Speech Synthesis"
+        },
+        {
+            "paperId": "2e77b99e8bd10b9e4551a780c0bde9dd10fdbe9b",
+            "title": "PixelCNN++: Improving the PixelCNN with Discretized Logistic Mixture Likelihood and Other Modifications"
+        },
+        {
+            "paperId": "df0402517a7338ae28bc54acaac400de6b456a46",
+            "title": "WaveNet: A Generative Model for Raw Audio"
+        },
+        {
+            "paperId": "21c82f0bc54af14bc7c596a9512ec9e190dd936b",
+            "title": "Recent Advances in Google Real-Time HMM-Driven Unit Selection Synthesizer"
+        },
+        {
+            "paperId": "16fea85194803a3980bf0381fa5ec997d3de178c",
+            "title": "Fast, Compact, and High Quality LSTM-RNN Based Statistical Parametric Speech Synthesizers for Mobile Devices"
+        },
+        {
+            "paperId": "9f0687bcd0a7d7fc91b8c5d36c003a38b8853105",
+            "title": "Zoneout: Regularizing RNNs by Randomly Preserving Hidden Activations"
+        },
+        {
+            "paperId": "b624504240fa52ab76167acfe3156150ca01cf3b",
+            "title": "Attention-Based Models for Speech Recognition"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "20969e35837d93b6e4eb52d75c8713abc6069f4a",
+            "title": "Statistical parametric speech synthesis using deep neural networks"
+        },
+        {
+            "paperId": "490554b93ef10f5b9ba700ad9731315227301282",
+            "title": "Speech Synthesis Based on Hidden Markov Models"
+        },
+        {
+            "paperId": "ef6e869b2efa6cbd2a9c40185d464a9b4540c5a0",
+            "title": "Text-to-Speech Synthesis"
+        },
+        {
+            "paperId": "317d2b6e97b878e77f8aad964575bcaadddb83cf",
+            "title": "Statistical Parametric Speech Synthesis"
+        },
+        {
+            "paperId": "3d7465338dd3a93f171786e2e858faf18b47cc51",
+            "title": "Speech parameter generation algorithms for HMM-based speech synthesis"
+        },
+        {
+            "paperId": "ebb53aebcbc8edf6c52d94d5f75f16d1c8cf88f2",
+            "title": "On supervised learning from sequential data with applications for speech regognition"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "e23c34414e66118ecd9b08cf0cd4d016f59b0b85",
+            "title": "Bidirectional recurrent neural networks"
+        },
+        {
+            "paperId": "fba783843fe3197d956170f096f8cad6209457bc",
+            "title": "Automatically clustering similar units for unit selection in speech synthesis"
+        },
+        {
+            "paperId": "1dd0140d51e870a713340ae30734c8438b03d1a3",
+            "title": "Unit selection in a concatenative speech synthesis system using a large speech database"
+        },
+        {
+            "paperId": "14bc876fae55faf5669beb01667a4f3bd324a4f1",
+            "title": "Signal estimation from modified short-time Fourier transform"
+        },
+        {
+            "paperId": "7c9f80b5d265463bcb17cf19d941b05f4c0f1986",
+            "title": "Comparison of Parametric Representation for Monosyllabic Word Recognition in Continuously Spoken Sentences"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "d4ca18249446328c86d9da295a21c679aea1ed77",
+            "title": "Mixture Density Networks"
+        }
+    ]
+}

@@ -1,0 +1,222 @@
+{
+    "paperId": "10428cdda9387933c64f518cefe6ca0a685f579e",
+    "externalIds": {
+        "DBLP": "journals/corr/abs-1804-04849",
+        "MAG": "2797349519",
+        "ArXiv": "1804.04849",
+        "CorpusId": 4875423
+    },
+    "title": "The unreasonable effectiveness of the forget gate",
+    "abstract": "Given the success of the gated recurrent unit, a natural question is whether all the gates of the long short-term memory (LSTM) network are necessary. Previous research has shown that the forget gate is one of the most important gates in the LSTM. Here we show that a forget-gate-only version of the LSTM with chrono-initialized biases, not only provides computational savings but outperforms the standard LSTM on multiple benchmark datasets and competes with some of the best contemporary models. Our proposed network, the JANET, achieves accuracies of 99% and 92.5% on the MNIST and pMNIST datasets, outperforming the standard LSTM which yields accuracies of 98.5% and 91%.",
+    "venue": "arXiv.org",
+    "year": 2018,
+    "referenceCount": 47,
+    "citationCount": 78,
+    "influentialCitationCount": 8,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work shows that a forget-gate-only version of the LSTM with chrono-initialized biases, not only provides computational savings but outperforms the standard L STM on multiple benchmark datasets and competes with some of the best contemporary models."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "12821478",
+            "name": "J. Westhuizen"
+        },
+        {
+            "authorId": "1764249",
+            "name": "Joan Lasenby"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "0e9822e6c78b752f13ccf2943a8e41f9997f4a22",
+            "title": "Can recurrent neural networks warp time?"
+        },
+        {
+            "paperId": "a90282db2928e787492e938fd9e4c48dbf2ad8f4",
+            "title": "Wider and Deeper, Cheaper and Faster: Tensorized LSTMs for Sequence Learning"
+        },
+        {
+            "paperId": "2dad7e558a1e2982d0d42042021f4cde4af04abf",
+            "title": "Dilated Recurrent Neural Networks"
+        },
+        {
+            "paperId": "47a03d2e792a94cbcc92a279d3c2e5ac9c94697e",
+            "title": "Accelerating Recurrent Neural Networks: A Memory-Efficient Approach"
+        },
+        {
+            "paperId": "f301caa8489afe96411ceb58633e48c57ab65667",
+            "title": "Learning Simpler Language Models with the Differential State Framework"
+        },
+        {
+            "paperId": "a4b6b32c21609b9b093e0aacc5c0d82e70a9be52",
+            "title": "Phased LSTM: Accelerating Recurrent Network Training for Long or Event-based Sequences"
+        },
+        {
+            "paperId": "df0402517a7338ae28bc54acaac400de6b456a46",
+            "title": "WaveNet: A Generative Model for Raw Audio"
+        },
+        {
+            "paperId": "a4fb215dc03f5a2ff0e394ce9b68e493bd811f0d",
+            "title": "Fathom: reference workloads for modern deep learning methods"
+        },
+        {
+            "paperId": "9f0687bcd0a7d7fc91b8c5d36c003a38b8853105",
+            "title": "Zoneout: Regularizing RNNs by Randomly Preserving Hidden Activations"
+        },
+        {
+            "paperId": "8de1d8425937890522118ca63781c3b318e79f2f",
+            "title": "Sequential Neural Models with Stochastic Layers"
+        },
+        {
+            "paperId": "fc34e0d51c6260b0d3c8e77e03f59ee463b20401",
+            "title": "Beyond CPU: Considering memory power consumption of software"
+        },
+        {
+            "paperId": "874a9ad1e0a0196b439ba72f09fe356278800434",
+            "title": "Minimal gated unit for recurrent neural networks"
+        },
+        {
+            "paperId": "952454718139dba3aafc6b3b67c4f514ac3964af",
+            "title": "Recurrent Batch Normalization"
+        },
+        {
+            "paperId": "f6fda11d2b31ad66dd008a65f7e708aa64a27703",
+            "title": "Architectural Complexity Measures of Recurrent Neural Networks"
+        },
+        {
+            "paperId": "6c69741caf61da2c57246ed62a5fe3e3e098f57e",
+            "title": "Investigating gated recurrent neural networks for speech synthesis"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "5bfec86bb67a1c49359e8a171917311d48688068",
+            "title": "Natural Language Understanding with Distributed Representation"
+        },
+        {
+            "paperId": "e9c771197a6564762754e48c1daafb066f449f2e",
+            "title": "Unitary Evolution Recurrent Neural Networks"
+        },
+        {
+            "paperId": "bf76be8df2f2bc56edac98a5d0dfc19c85882eaa",
+            "title": "Structured Transforms for Small-Footprint Deep Learning"
+        },
+        {
+            "paperId": "642d0f49b7826adcf986616f4af77e736229990f",
+            "title": "Deep Compression: Compressing Deep Neural Network with Pruning, Trained Quantization and Huffman Coding"
+        },
+        {
+            "paperId": "a739ae988ba0e3ff232f4507627dfc282ba7b3f4",
+            "title": "Depth-Gated LSTM"
+        },
+        {
+            "paperId": "b777a55505ee2ffb4f8f9ada916e4e4a5f13a4ed",
+            "title": "Depth-Gated Recurrent Neural Networks"
+        },
+        {
+            "paperId": "b92aa7024b87f50737b372e5df31ef091ab54e62",
+            "title": "Training Very Deep Networks"
+        },
+        {
+            "paperId": "5b8364c21155d3d2cd38ea4c8b8580beba9a3250",
+            "title": "An Empirical Exploration of Recurrent Network Architectures"
+        },
+        {
+            "paperId": "a6336fa1bcdeb7c84d2c4189728f0c1b2b7d0883",
+            "title": "A Critical Review of Recurrent Neural Networks for Sequence Learning"
+        },
+        {
+            "paperId": "d46b81707786d18499f911b4ab72bb10c65406ba",
+            "title": "A Simple Way to Initialize Recurrent Networks of Rectified Linear Units"
+        },
+        {
+            "paperId": "a7976c2bacfbb194ddbe7fd10c2e50a545cf4081",
+            "title": "LSTM: A Search Space Odyssey"
+        },
+        {
+            "paperId": "0c908739fbff75f03469d13d4a1a07de3414ee19",
+            "title": "Distilling the Knowledge in a Neural Network"
+        },
+        {
+            "paperId": "d6f2f611da110b5b5061731be3fc4c7f45d8ee23",
+            "title": "Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "5a9ef216bf11f222438fff130c778267d39a9564",
+            "title": "Practical Variational Inference for Neural Networks"
+        },
+        {
+            "paperId": "ea9d2a2b4ce11aaf85136840c65f3bc9c03ab649",
+            "title": "Understanding the difficulty of training deep feedforward neural networks"
+        },
+        {
+            "paperId": "616e2a9ac12789255215859053e20ee1934a85c6",
+            "title": "Open source ECG analysis"
+        },
+        {
+            "paperId": "072a0db716fb6f8332323f076b71554716a7271c",
+            "title": "The impact of the MIT-BIH Arrhythmia Database"
+        },
+        {
+            "paperId": "11540131eae85b2e11d53df7f1360eeb6476e7f4",
+            "title": "Learning to Forget: Continual Prediction with LSTM"
+        },
+        {
+            "paperId": "545a4e23bf00ddbc1d3325324b4c61f57cf45081",
+            "title": "Recurrent nets that time and count"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "f6e91c9e7e8f8a577a98ecfcfa998212a683195a",
+            "title": "Learning long-term dependencies in NARX recurrent neural networks"
+        },
+        {
+            "paperId": "aa7bd176c83cef1ccad8cfcfb10e73713bfa8e8d",
+            "title": "A Real-Time QRS Detection Algorithm"
+        },
+        {
+            "paperId": "4f8d648c52edf74e41b0996128aa536e13cc7e82",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": null,
+            "title": "TensorFlow : Large - Scale Machine Learning on Heterogeneous Systems"
+        },
+        {
+            "paperId": null,
+            "title": "BioSPPy Biosignal processing in Python"
+        },
+        {
+            "paperId": "dc52d1ede1b90bf9d296bc5b34c9310b7eaa99a2",
+            "title": "The mnist database of handwritten digits"
+        },
+        {
+            "paperId": null,
+            "title": "Tutorial on Training Recurrent Neural Networks, Covering BPPT, RTRL"
+        },
+        {
+            "paperId": "2304be7d4f14b28d266e2102444a2dbfeb432d43",
+            "title": "Physionet: Components of a New Research Resource for Complex Physiologic Signals\". Circu-lation Vol"
+        },
+        {
+            "paperId": null,
+            "title": "Physiobank, physiotoolkit, and physionet. Circulation, 101(23):e215\u2013e220"
+        }
+    ]
+}

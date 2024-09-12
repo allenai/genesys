@@ -1,0 +1,210 @@
+{
+    "paperId": "d0156126edbfc524c8d108bdc0cf811cfe3129aa",
+    "externalIds": {
+        "DBLP": "conf/iclr/LarssonMS17",
+        "MAG": "2963975324",
+        "ArXiv": "1605.07648",
+        "CorpusId": 3067546
+    },
+    "title": "FractalNet: Ultra-Deep Neural Networks without Residuals",
+    "abstract": "We introduce a design strategy for neural network macro-architecture based on self-similarity. Repeated application of a simple expansion rule generates deep networks whose structural layouts are precisely truncated fractals. These networks contain interacting subpaths of different lengths, but do not include any pass-through or residual connections; every internal signal is transformed by a filter and nonlinearity before being seen by subsequent layers. In experiments, fractal networks match the excellent performance of standard residual networks on both CIFAR and ImageNet classification tasks, thereby demonstrating that residual representations may not be fundamental to the success of extremely deep convolutional neural networks. Rather, the key may be the ability to transition, during training, from effectively shallow to deep. We note similarities with student-teacher behavior and develop drop-path, a natural extension of dropout, to regularize co-adaptation of subpaths in fractal architectures. Such regularization allows extraction of high-performance fixed-depth subnetworks. Additionally, fractal networks exhibit an anytime property: shallow subnetworks provide a quick answer, while deeper subnetworks, with higher latency, provide a more accurate answer.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2016,
+    "referenceCount": 43,
+    "citationCount": 880,
+    "influentialCitationCount": 88,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "In experiments, fractal networks match the excellent performance of standard residual networks on both CIFAR and ImageNet classification tasks, thereby demonstrating that residual representations may not be fundamental to the success of extremely deep convolutional neural networks."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "34652567",
+            "name": "Gustav Larsson"
+        },
+        {
+            "authorId": "145854440",
+            "name": "M. Maire"
+        },
+        {
+            "authorId": "2490189",
+            "name": "Gregory Shakhnarovich"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "535347e07b2ce5ac229349156db1e7bed0486b91",
+            "title": "Highway and Residual Networks learn Unrolled Iterative Estimation"
+        },
+        {
+            "paperId": "5694e46284460a648fe29117cbc55f6c9be3fa3c",
+            "title": "Densely Connected Convolutional Networks"
+        },
+        {
+            "paperId": "1c4e9156ca07705531e45960b7a919dc473abb51",
+            "title": "Wide Residual Networks"
+        },
+        {
+            "paperId": "2a24b68ef180c0c8742bd494a55fb6f68864efed",
+            "title": "Residual Networks Behave Like Ensembles of Relatively Shallow Networks"
+        },
+        {
+            "paperId": "51db1f3c8dfc7d4077da39c96bb90a6358128111",
+            "title": "Deep Networks with Stochastic Depth"
+        },
+        {
+            "paperId": "def52f9e3650ec4e9cc18b3e316f48e9bf046adf",
+            "title": "Do Deep Convolutional Nets Really Need to be Deep and Convolutional?"
+        },
+        {
+            "paperId": "62a66116e1cfd08da7fed6556db404a89a203926",
+            "title": "Do Deep Convolutional Nets Really Need to be Deep (Or Even Convolutional)?"
+        },
+        {
+            "paperId": "77f0a39b8e02686fd85b01971f8feb7f60971f80",
+            "title": "Identity Mappings in Deep Residual Networks"
+        },
+        {
+            "paperId": "592d2e65489f23ebd993dbdc0c84eda9ac8aadbe",
+            "title": "SqueezeNet: AlexNet-level accuracy with 50x fewer parameters and <1MB model size"
+        },
+        {
+            "paperId": "06a81b3b11f4f51a6b72f009841378547f85674c",
+            "title": "Resnet in Resnet: Generalizing Residual Architectures"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "f63e917638553414526a0cc8550de4ad2d83fe7a",
+            "title": "Fast and Accurate Deep Network Learning by Exponential Linear Units (ELUs)"
+        },
+        {
+            "paperId": "97dc8df45972e4ed7423fc992a5092ba25b33411",
+            "title": "All you need is a good init"
+        },
+        {
+            "paperId": "f8eb2f58d8cf96d11252f158222266bdaa0ccdbf",
+            "title": "Competitive Multi-scale Convolution"
+        },
+        {
+            "paperId": "4b88e948121a87f00fb5aa0081d2044dde51ee36",
+            "title": "Generalizing Pooling Functions in Convolutional Neural Networks: Mixed, Gated, and Tree"
+        },
+        {
+            "paperId": "6fe02ad979baad659f04c3376a77dbb2cb4699a5",
+            "title": "Path-SGD: Path-Normalized Optimization in Deep Neural Networks"
+        },
+        {
+            "paperId": "4b39a79a1dc8e578e38ee4b7f00b4ec9ded50dd0",
+            "title": "Recurrent convolutional neural network for object recognition"
+        },
+        {
+            "paperId": "e0945081b5b87187a53d4329cf77cd8bff635795",
+            "title": "Highway Networks"
+        },
+        {
+            "paperId": "d46b81707786d18499f911b4ab72bb10c65406ba",
+            "title": "A Simple Way to Initialize Recurrent Networks of Rectified Linear Units"
+        },
+        {
+            "paperId": "93bc65d2842b8cc5f3cf72ebc5b8f75daeacea35",
+            "title": "Scalable Bayesian Optimization Using Deep Neural Networks"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "d6f2f611da110b5b5061731be3fc4c7f45d8ee23",
+            "title": "Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification"
+        },
+        {
+            "paperId": "33af9298e5399269a12d4b9901492fe406af62b4",
+            "title": "Striving for Simplicity: The All Convolutional Net"
+        },
+        {
+            "paperId": "8604f376633af8b347e31d84c6150a93b11e34c2",
+            "title": "FitNets: Hints for Thin Deep Nets"
+        },
+        {
+            "paperId": "55dda8f230566867acbfaa7bdd08fd8c7b8721ed",
+            "title": "Fractional Max-Pooling"
+        },
+        {
+            "paperId": "428db42e86f6d51292e23fa57797e35cecd0e2ee",
+            "title": "Hypercolumns for object segmentation and fine-grained localization"
+        },
+        {
+            "paperId": "c0f945be994e931a0f48119076f87d870e08612a",
+            "title": "Reconstructive Sparse Code Transfer for Contour Detection and Semantic Labeling"
+        },
+        {
+            "paperId": "fb91db6aa4f710814f8aec28a7f3ecbc4e5ad4fd",
+            "title": "Deeply-Supervised Nets"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "6bdb186ec4726e00a8051119636d4df3b94043b5",
+            "title": "Caffe: Convolutional Architecture for Fast Feature Embedding"
+        },
+        {
+            "paperId": "d770060812fb646b3846a7d398a3066145b5e3c8",
+            "title": "Do Deep Nets Really Need to be Deep?"
+        },
+        {
+            "paperId": "5e83ab70d0cbc003471e87ec306d27d9c80ecb16",
+            "title": "Network In Network"
+        },
+        {
+            "paperId": "38f35dd624cd1cf827416e31ac5e0e0454028eca",
+            "title": "Regularization of Neural Networks using DropConnect"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "0060745e006c5f14ec326904119dca19c6545e51",
+            "title": "Improving neural networks by preventing co-adaptation of feature detectors"
+        },
+        {
+            "paperId": "a538b05ebb01a40323997629e171c91aa28b8e2f",
+            "title": "Rectified Linear Units Improve Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": "ea9d2a2b4ce11aaf85136840c65f3bc9c03ab649",
+            "title": "Understanding the difficulty of training deep feedforward neural networks"
+        },
+        {
+            "paperId": "d2c733e34d48784a37d717fe43d9e93277a8c53e",
+            "title": "ImageNet: A large-scale hierarchical image database"
+        },
+        {
+            "paperId": "bc6dff14a130c57a91d5a21339c23471faf1d46f",
+            "title": "Et al"
+        },
+        {
+            "paperId": "bcd857d75841aa3e92cd4284a8818aba9f6c0c3f",
+            "title": "Published as a conference paper at ICLR 2018 S IMULATING A CTION D YNAMICS WITH N EURAL P ROCESS N ETWORKS"
+        },
+        {
+            "paperId": "02227c94dd41fe0b439e050d377b0beb5d427cda",
+            "title": "Reading Digits in Natural Images with Unsupervised Feature Learning"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        }
+    ]
+}

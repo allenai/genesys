@@ -1,0 +1,207 @@
+{
+    "paperId": "92e121c6e114fe3cfb89370df03847c66a9b4e28",
+    "externalIds": {
+        "CorpusId": 199370376
+    },
+    "title": "An Adversarial Winograd Schema Challenge at Scale",
+    "abstract": "The Winograd Schema Challenge (WSC), proposed by Levesque et al. (2011) as an alternative to the Turing Test, was originally designed as a pronoun resolution problem that cannot be solved based on statistical patterns in large text corpora. However, recent studies suggest that current WSC datasets, even when composed carefully by experts, are still prone to such biases that statistical methods can exploit. We introduce WINOGRANDE, a new collection of WSC problems that are adversarially constructed to be robust against spurious statistical biases. While the original WSC dataset provided only 273 instances, WINOGRANDE includes 43,985 instances, half of which are determined as adversarial. Key to our approach is a novel adversarial filtering algorithm AFLITE for systematic bias reduction, combined with a careful crowdsourcing design. Despite the significant increase in training data, the performance of existing stateof-the-art methods remains modest (61.6%) and contrasts with high human performance (90.8%) for the binary questions. In addition, WINOGRANDE allows us to use transfer learning for achieving new state-of-the-art results on the original WSC and related datasets. Finally, we discuss how biases lead to overestimating the true capabilities of machine commonsense.",
+    "venue": "",
+    "year": 2019,
+    "referenceCount": 42,
+    "citationCount": 1072,
+    "influentialCitationCount": 88,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "While the original WSC dataset provided only 273 instances, WINOGRANDE includes 43,985 instances, half of which are determined as adversarial, including a novel adversarial filtering algorithm AFLITE for systematic bias reduction, combined with a careful crowdsourcing design."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2325708",
+            "name": "Keisuke Sakaguchi"
+        },
+        {
+            "authorId": "39227408",
+            "name": "Ronan Le Bras"
+        },
+        {
+            "authorId": "1857797",
+            "name": "Chandra Bhagavatula"
+        },
+        {
+            "authorId": "1699545",
+            "name": "Yejin Choi"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "ebe84feeed3cf6a297f5a2fa504647e3eeba05b5",
+            "title": "Solving Hard Coreference Problems"
+        },
+        {
+            "paperId": "000ea515050fba000709ccfeeac9efb0c7fabd05",
+            "title": "On Adversarial Removal of Hypothesis-only Bias in Natural Language Inference"
+        },
+        {
+            "paperId": "c57298fe3faf87f9f24414821b0df7ebb7634320",
+            "title": "A Surprisingly Robust Trick for the Winograd Schema Challenge"
+        },
+        {
+            "paperId": "d9f6ada77448664b71128bb19df15765336974a6",
+            "title": "SuperGLUE: A Stickier Benchmark for General-Purpose Language Understanding Systems"
+        },
+        {
+            "paperId": "80b583413b6e4ce0ccef908612634ef9e0d06531",
+            "title": "On the Evaluation of Common-Sense Reasoning in Natural Language Understanding"
+        },
+        {
+            "paperId": "d5629135ec1f29c6dc1ffd5cc5a65fe67445eee0",
+            "title": "Adversarial Removal of Demographic Attributes from Text Data"
+        },
+        {
+            "paperId": "af5c4b80fbf847f69a202ba5a780a3dd18c1a027",
+            "title": "SWAG: A Large-Scale Adversarial Dataset for Grounded Commonsense Inference"
+        },
+        {
+            "paperId": "d7b6753a2d4a2b286c396854063bde3a91b75535",
+            "title": "A Simple Method for Commonsense Reasoning"
+        },
+        {
+            "paperId": "fa7cf61a0a2b79633b275a4a7cff739a34607895",
+            "title": "A Generalized Knowledge Hunting Framework for the Winograd Schema Challenge"
+        },
+        {
+            "paperId": "8c6427cc1f4e1bbe5d6da34a4511842361f4fbb6",
+            "title": "Hypothesis Only Baselines in Natural Language Inference"
+        },
+        {
+            "paperId": "9967cb4fd949039c6f04dd9f2f4c3331dbebe6f7",
+            "title": "Gender Bias in Coreference Resolution"
+        },
+        {
+            "paperId": "0be19fd9896e5d40222c690cc3ff553adc7c0e27",
+            "title": "Gender Bias in Coreference Resolution: Evaluation and Debiasing Methods"
+        },
+        {
+            "paperId": "aa7b074f9e6043f95fb28c32cc37313ddb597156",
+            "title": "Performance Impact Caused by Hidden Bias of Training Data for Recognizing Textual Entailment"
+        },
+        {
+            "paperId": "2997b26ffb8c291ce478bd8a6e47979d5a55c466",
+            "title": "Annotation Artifacts in Natural Language Inference Data"
+        },
+        {
+            "paperId": "700db9f849e9a0a6fec8a28a1e0ea00b4ed4558f",
+            "title": "Multinomial Adversarial Networks for Multi-Domain Text Classification"
+        },
+        {
+            "paperId": "765bdcf27ebc1eb03a14f1e47aefa4dda1e03073",
+            "title": "Synthetic and Natural Noise Both Break Neural Machine Translation"
+        },
+        {
+            "paperId": "120aae102e17be4f1cc2b3c69a84229c60de8b9d",
+            "title": "Commonsense Knowledge Enhanced Embeddings for Solving Pronoun Disambiguation Problems in Winograd Schema Challenge"
+        },
+        {
+            "paperId": "314ee6b03f8c6c3533d2107fe05f9909b9202cbd",
+            "title": "Deep Reinforcement Learning for Mention-Ranking Coreference Models"
+        },
+        {
+            "paperId": "575d8de14fd7b6881345fc3d65310443c50d7d45",
+            "title": "Planning, Executing, and Evaluating the Winograd Schema Challenge"
+        },
+        {
+            "paperId": "2bf2c3598f1ee3a2fa22185cb2aaeb425de004ad",
+            "title": "Commonsense reasoning and commonsense knowledge in artificial intelligence"
+        },
+        {
+            "paperId": "c319af92127378e7ee64ec6a3e2e8752fe1421c7",
+            "title": "Towards Addressing the Winograd Schema Challenge - Building and Using a Semantic Parser and a Knowledge Hunting Module"
+        },
+        {
+            "paperId": "35a198b491246f989574a6edc7f2550664e8fb11",
+            "title": "Scoring Coreference Partitions of Predicted Mentions: A Reference Implementation"
+        },
+        {
+            "paperId": "cceb698cbbb828537f2f195fb70b6fdc586d3327",
+            "title": "Reporting bias and knowledge acquisition"
+        },
+        {
+            "paperId": "3054726d298d3c5f7b95b224e4e5b17d88068c3f",
+            "title": "Easy Victories and Uphill Battles in Coreference Resolution"
+        },
+        {
+            "paperId": "050214e4103ead7ec414b635ea08ca5e9de6d736",
+            "title": "Dynamic Knowledge-Base Alignment for Coreference Resolution"
+        },
+        {
+            "paperId": "b0c5f72790cca220541ea4809d1e43b4bdad1124",
+            "title": "Resolving Complex Cases of Definite Pronouns: The Winograd Schema Challenge"
+        },
+        {
+            "paperId": "a57cbc8cf3998db4917b442b9e6166961a9114e8",
+            "title": "Learning-based Multi-Sieve Co-reference Resolution with Knowledge"
+        },
+        {
+            "paperId": "90f443971c9d7f35b616d0889940f80abc664fec",
+            "title": "Coreference Semantics from Web Features"
+        },
+        {
+            "paperId": "41d103f751d47f0c140d21c5baa4981b3d4c9a76",
+            "title": "Commonsense Causal Reasoning Using Millions of Personal Stories"
+        },
+        {
+            "paperId": "865bd9a32fb375a80fca9f04bead4d0d96576709",
+            "title": "Bootstrapping coreference resolution using word associations"
+        },
+        {
+            "paperId": "128cb6b891aee1b5df099acb48e2efecfcff689f",
+            "title": "The Winograd Schema Challenge"
+        },
+        {
+            "paperId": "5cfbbf3cdff0f905874589bcd21b2646340a5447",
+            "title": "Choice of Plausible Alternatives: An Evaluation of Commonsense Causal Reasoning"
+        },
+        {
+            "paperId": "026bf70e9164fa05e6467d419b999537777b8b40",
+            "title": "Creativity from Constraints: The Psychology of Breakthrough"
+        },
+        {
+            "paperId": "2d5673caa9e6af3a7b82a43f19ee920992db07ad",
+            "title": "Computing Machinery and Intelligence"
+        },
+        {
+            "paperId": "df2b0e26d0599ce3e70df8a9da02e51594e0e992",
+            "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding"
+        },
+        {
+            "paperId": "9405cc0d6169988371b2755e573cc28650d14dfe",
+            "title": "Language Models are Unsupervised Multitask Learners"
+        },
+        {
+            "paperId": "c21a4d70d83e0f6eb2a9e1c41d034842dd561e47",
+            "title": "CommonsenseQA: A Question Answering Challenge Targeting Commonsense Knowledge"
+        },
+        {
+            "paperId": "cd18800a0fe0b668a1cc19f2ec95b5003d0a5035",
+            "title": "Improving Language Understanding by Generative Pre-Training"
+        },
+        {
+            "paperId": "da9225a30b44afa24b819d9188bfc1a6e790ab96",
+            "title": "Handling Multiword Expressions in Causality Estimation"
+        },
+        {
+            "paperId": "13463717354ab61348a0141ebd3b0fdf28e91af8",
+            "title": "Establishing a Human Baseline for the Winograd Schema Challenge"
+        },
+        {
+            "paperId": "a26dcade716a2fed8b6c5a0ac96c93dfd948be75",
+            "title": "What Kinds of Knowledge are Needed for Genuine Understanding? \u2217"
+        },
+        {
+            "paperId": "6d5ff1e0d334e0236ba6eaa905bd681695051a83",
+            "title": "Stanford\u2019s Multi-Pass Sieve Coreference Resolution System at the CoNLL-2011 Shared Task"
+        }
+    ]
+}

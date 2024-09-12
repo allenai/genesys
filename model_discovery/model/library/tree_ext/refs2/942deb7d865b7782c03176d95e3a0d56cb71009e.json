@@ -1,0 +1,122 @@
+{
+    "paperId": "942deb7d865b7782c03176d95e3a0d56cb71009e",
+    "externalIds": {
+        "DBLP": "journals/corr/ChenXZG16",
+        "ArXiv": "1604.06174",
+        "MAG": "2338908902",
+        "CorpusId": 15865278
+    },
+    "title": "Training Deep Nets with Sublinear Memory Cost",
+    "abstract": "We propose a systematic approach to reduce the memory consumption of deep neural network training. Specifically, we design an algorithm that costs O( \u221a n) memory to train a n layer network, with only the computational cost of an extra forward pass per mini-batch. As many of the state-of-the-art models hit the upper bound of the GPU memory, our algorithm allows deeper and more complex models to be explored, and helps advance the innovations in deep learning research. We focus on reducing the memory cost to store the intermediate feature maps and gradients during training. Computation graph analysis is used for automatic in-place operation and memory sharing optimizations. We show that it is possible to trade computation for memory giving a more memory efficient training algorithm with a little extra computation cost. In the extreme case, our analysis also shows that the memory consumption can be reduced to O(logn) with as little as O(n logn) extra cost for forward computation. Our experiments show that we can reduce the memory cost of a 1,000-layer deep residual network from 48G to 7G on ImageNet problems. Similarly, significant memory cost reduction is observed in training complex recurrent neural networks on very long sequences.",
+    "venue": "arXiv.org",
+    "year": 2016,
+    "referenceCount": 20,
+    "citationCount": 978,
+    "influentialCitationCount": 92,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work designs an algorithm that costs O( \u221a n) memory to train a n layer network, with only the computational cost of an extra forward pass per mini-batch, and shows that it is possible to trade computation for memory giving a more memory efficient training algorithm with a little extra computation cost."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1913774",
+            "name": "Tianqi Chen"
+        },
+        {
+            "authorId": "2113742783",
+            "name": "Bing Xu"
+        },
+        {
+            "authorId": "151505981",
+            "name": "Chiyuan Zhang"
+        },
+        {
+            "authorId": "1730156",
+            "name": "Carlos Guestrin"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "77f0a39b8e02686fd85b01971f8feb7f60971f80",
+            "title": "Identity Mappings in Deep Residual Networks"
+        },
+        {
+            "paperId": "aac5e480250d2f9f64fdde11c461974964841812",
+            "title": "Virtualizing Deep Neural Networks for Memory-Efficient Neural Network Design"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "62df84d6a4d26f95e4714796c2337c9848cc13b5",
+            "title": "MXNet: A Flexible and Efficient Machine Learning Library for Heterogeneous Distributed Systems"
+        },
+        {
+            "paperId": "9cee45ef1212ebbc7d468f9b1d7df24f5005e64d",
+            "title": "Highway long short-term memory RNNS for distant speech recognition"
+        },
+        {
+            "paperId": "b92aa7024b87f50737b372e5df31ef091ab54e62",
+            "title": "Training Very Deep Networks"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "3fc68a68225edce1635bc32054c1425db287fba3",
+            "title": "An introduction to computational networks and the computational network toolkit (invited talk)"
+        },
+        {
+            "paperId": "aeb38c8c4b826ad0dc63911dc5198f8c565298f5",
+            "title": "Joint Training of Deep Boltzmann Machines"
+        },
+        {
+            "paperId": "3127190433230b3dc1abd0680bb58dced4bcd90e",
+            "title": "Large Scale Distributed Deep Networks"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "855d0f722d75cc56a66a00ede18ace96bafee6bd",
+            "title": "Theano: new features and speed improvements"
+        },
+        {
+            "paperId": "766cd91c0d8650495529cab7d4eeed482729cf89",
+            "title": "Algorithm 799: revolve: an implementation of checkpointing for the reverse or adjoint mode of computational differentiation"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "d26a6a734112b264bd98691a7988375c382b2037",
+            "title": "Compilers Principles Techniques And Tools"
+        },
+        {
+            "paperId": "4f8d648c52edf74e41b0996128aa536e13cc7e82",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": null,
+            "title": "Software available from tensorflow.org"
+        },
+        {
+            "paperId": "067e07b725ab012c80aa2f87857f6791c1407f6d",
+            "title": "Long short-term memory recurrent neural network architectures for large scale acoustic modeling"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": null,
+            "title": ", Razvan Pascanu , Guillaume Desjardins , Joseph Turian , David Warde - Farley , and Yoshua Bengio . Theano : a CPU and GPU math expression compiler"
+        }
+    ]
+}

@@ -1,0 +1,110 @@
+{
+    "paperId": "a6e4beb28b345fce7470da122b4e45e2cd0dcd12",
+    "externalIds": {
+        "DBLP": "conf/icassp/PoveyHGLK18",
+        "MAG": "2802023636",
+        "DOI": "10.1109/ICASSP.2018.8462497",
+        "CorpusId": 46974195
+    },
+    "title": "A Time-Restricted Self-Attention Layer for ASR",
+    "abstract": "Self-attention - an attention mechanism where the input and output sequence lengths are the same - has recently been successfully applied to machine translation, caption generation, and phoneme recognition. In this paper we apply a restricted self-attention mechanism (with multiple heads) to speech recognition. By \u201crestricted\u201d we mean that the mechanism at a particular frame only sees input from a limited number of frames to the left and right. Restricting the context makes it easier to encode the position of the input - we use a I-hot encoding of the frame offset. We try introducing attention layers into TDNN architectures, and replacing LSTM layers with attention layers in TDNN+LSTM architectures. We show experiments on a number of ASR setups. We observe improvements compared to the TDNN and TDNN+LSTM baselines. Attention layers are also faster than LSTM layers in test time, since they lack recurrence.",
+    "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+    "year": 2018,
+    "referenceCount": 16,
+    "citationCount": 148,
+    "influentialCitationCount": 10,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper applies a restricted self-attention mechanism (with multiple heads) to speech recognition, and tries introducing attention layers into TDNN architectures, and replacing LSTM layers with attention layers in TDNN+LSTM architectures."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1792214",
+            "name": "Daniel Povey"
+        },
+        {
+            "authorId": "145630755",
+            "name": "Hossein Hadian"
+        },
+        {
+            "authorId": "2835722",
+            "name": "Pegah Ghahremani"
+        },
+        {
+            "authorId": "144954689",
+            "name": "Ke Li"
+        },
+        {
+            "authorId": "2803071",
+            "name": "S. Khudanpur"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "8d17bea79cf9b9f8b7edb5ea9770ca2544b7343f",
+            "title": "Low latency modeling of temporal contexts for speech recognition"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "6ce6a9a30cd69bd2842a4b581cf48c6815bdfdd8",
+            "title": "Purely Sequence-Trained Neural Networks for ASR Based on Lattice-Free MMI"
+        },
+        {
+            "paperId": "878ba5458e9e51f0b341fd9117fa0b43ef4096d3",
+            "title": "End-to-end attention-based large vocabulary speech recognition"
+        },
+        {
+            "paperId": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+            "title": "Effective Approaches to Attention-based Neural Machine Translation"
+        },
+        {
+            "paperId": "b624504240fa52ab76167acfe3156150ca01cf3b",
+            "title": "Attention-Based Models for Speech Recognition"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "47d2dc34e1d02a8109f5c04bb6939725de23716d",
+            "title": "End-to-end Continuous Speech Recognition using Attention-based Recurrent NN: First Results"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "2df0053debb85d1e6d5b3737b46e157547e7b3ff",
+            "title": "Enhancing the TED-LIUM Corpus with Selected Data for Language Modeling and More TED Talks"
+        },
+        {
+            "paperId": "d80000d84223e177d070a01a734dba56d5f5c069",
+            "title": "SWITCHBOARD: telephone speech corpus for research and development"
+        },
+        {
+            "paperId": "8648dbfff9662fa9c62a95622712dd2951b5b3a3",
+            "title": "The Design for the Wall Street Journal-based CSR Corpus"
+        },
+        {
+            "paperId": null,
+            "title": "\u201cKaldi rnnlm, an importance-sampling based neural network language modeling toolkit,\u201d"
+        },
+        {
+            "paperId": "067e07b725ab012c80aa2f87857f6791c1407f6d",
+            "title": "Long short-term memory recurrent neural network architectures for large scale acoustic modeling"
+        },
+        {
+            "paperId": "3a1a2cff2b70fb84a7ca7d97f8adcc5855851795",
+            "title": "The Kaldi Speech Recognition Toolkit"
+        }
+    ]
+}

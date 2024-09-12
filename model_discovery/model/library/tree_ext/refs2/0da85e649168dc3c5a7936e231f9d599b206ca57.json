@@ -1,0 +1,98 @@
+{
+    "paperId": "0da85e649168dc3c5a7936e231f9d599b206ca57",
+    "externalIds": {
+        "MAG": "1821505243",
+        "ArXiv": "1504.06804",
+        "DBLP": "journals/corr/Thorup15",
+        "CorpusId": 5917689
+    },
+    "title": "High Speed Hashing for Integers and Strings",
+    "abstract": "These notes describe the most efficient hash functions currently known for hashing integers and strings. These modern hash functions are often an order of magnitude faster than those presented in standard text books. They are also simpler to implement, and hence a clear win in practice, but their analysis is harder. Some of the most practical hash functions have only appeared in theory papers, and some of them requires combining results from different theory papers. The goal here is to combine the information in lecture-style notes that can be used by theoreticians and practitioners alike, thus making these practical fruits of theory more widely accessible.",
+    "venue": "arXiv.org",
+    "year": 2015,
+    "referenceCount": 17,
+    "citationCount": 27,
+    "influentialCitationCount": 0,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "These notes describe the most efficient hash functions currently known for hashing integers and strings in lecture-style notes that can be used by theoreticians and practitioners alike, thus making these practical fruits of theory more widely accessible."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1695440",
+            "name": "M. Thorup"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "334ef1dd7c508e69f4b2ddd9114859f3cadbb87b",
+            "title": "Fast and powerful hashing using tabulation"
+        },
+        {
+            "paperId": "c143b5431952f38179649a5218e1cf70ddddef3e",
+            "title": "The power of simple tabulation hashing"
+        },
+        {
+            "paperId": "92c5f0dc1c33339ed3444cbbb0c4e5806ae2b632",
+            "title": "String hashing for linear probing"
+        },
+        {
+            "paperId": "bfdd0a9b7ea4120c7a5e1cc33a8f7b4e2481073d",
+            "title": "Randomized algorithms"
+        },
+        {
+            "paperId": "86529d86e4ca3122e0b0f7e24c6c034a7d3a82ff",
+            "title": "Trajectory Sampling With Unreliable Reporting"
+        },
+        {
+            "paperId": "820aa1cc4195007c64716ac24731c3f9129c053e",
+            "title": "UMAC: Fast and Secure Message Authentication"
+        },
+        {
+            "paperId": "0de55531910795c20f60b48e2cba7212a20da894",
+            "title": "A Reliable Randomized Algorithm for the Closest-Pair Problem"
+        },
+        {
+            "paperId": "f2c1830eedc095b92a78dc3afa39a36343ed81ad",
+            "title": "Introduction to algorithms"
+        },
+        {
+            "paperId": "5d957cf2066ff7b08bdab20d0fe473b2e78d129d",
+            "title": "Universal Hashing and k-Wise Independent Random Variables via Integer Arithmetic without Primes"
+        },
+        {
+            "paperId": "317b7ac58ed080a466f544394654926b737c77a7",
+            "title": "Polynomial Hash Functions Are Reliable (Extended Abstract)"
+        },
+        {
+            "paperId": "345e83dd58f26f51d75e2fef330c02c9aa01e61b",
+            "title": "New Hash Functions and Their Use in Authentication and Set Equality"
+        },
+        {
+            "paperId": "feb061b699a2249f803baf159a991d63c64f9c99",
+            "title": "Universal Classes of Hash Functions"
+        },
+        {
+            "paperId": null,
+            "title": "Indexing for rapid random access memory syst  ems.Computers and Automation"
+        },
+        {
+            "paperId": null,
+            "title": "Major open problem Can we get something simple and fast like multiply-shift to work directly for strings, so that we do not need to compute polynomials over prime fields? References"
+        },
+        {
+            "paperId": null,
+            "title": "we can let u be any value bounded by p. With p = 2 89 \u2212 1, we could use u = 2 64 thus dividing the string into 64-bit characters"
+        },
+        {
+            "paperId": null,
+            "title": "Exercise 4.5 Implement the above scheme and run it to get a 32-bit signature of a book"
+        },
+        {
+            "paperId": null,
+            "title": "Exercise 4.6 Prove that if r has collision probability"
+        }
+    ]
+}

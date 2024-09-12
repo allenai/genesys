@@ -1,0 +1,274 @@
+{
+    "paperId": "1071b2435e0afa04c797dc09bf4ed9a630767b0c",
+    "externalIds": {
+        "ArXiv": "1704.00805",
+        "DBLP": "journals/corr/abs-1704-00805",
+        "MAG": "2606101940",
+        "CorpusId": 52066912
+    },
+    "title": "On the Properties of the Softmax Function with Application in Game Theory and Reinforcement Learning",
+    "abstract": "In this paper, we utilize results from convex analysis and monotone operator theory to derive additional properties of the softmax function that have not yet been covered in the existing literature. In particular, we show that the softmax function is the monotone gradient map of the log-sum-exp function. By exploiting this connection, we show that the inverse temperature parameter determines the Lipschitz and co-coercivity properties of the softmax function. We then demonstrate the usefulness of these properties through an application in game-theoretic reinforcement learning.",
+    "venue": "arXiv.org",
+    "year": 2017,
+    "referenceCount": 60,
+    "citationCount": 266,
+    "influentialCitationCount": 12,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper shows that the softmax function is the monotone gradient map of the log-sum-exp function and exploits the inverse temperature parameter to derive the Lipschitz and co-coercivity properties of thesoftmax function."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "23296189",
+            "name": "Bolin Gao"
+        },
+        {
+            "authorId": "145274326",
+            "name": "Lacra Pavel"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "eb5b2cb4fedb083158ed9001ac72c9b1affba641",
+            "title": "Hessian Riemannian Gradient Flows in Convex Programming"
+        },
+        {
+            "paperId": "0ca51467d034828689a723b6faeccbbbcada5485",
+            "title": "An Alternative Softmax Operator for Reinforcement Learning"
+        },
+        {
+            "paperId": "01434a4153d5340c00d9e2f910f462a841a7bca3",
+            "title": "One-vs-Each Approximation to Softmax for Scalable Estimation of Probabilities"
+        },
+        {
+            "paperId": "195043e4c13a635555c28dfab7ac534d10d78c12",
+            "title": "Introduction to Online Convex Optimization"
+        },
+        {
+            "paperId": "79a5d535508cc96185b9969c1e00aa5b7f8cf865",
+            "title": "Quantal Response Equilibrium: A Stochastic Theory of Games"
+        },
+        {
+            "paperId": "70a9686088dcd843a64c8dc29e12993b6000be75",
+            "title": "Bio-inspired feedback-circuit implementation of discrete, free energy optimizing, winner-take-all computations"
+        },
+        {
+            "paperId": "c1e3a26fb88c6720f4e84b7118e6f2df7dc8efa3",
+            "title": "From Softmax to Sparsemax: A Sparse Model of Attention and Multi-Label Classification"
+        },
+        {
+            "paperId": "4facd30798f0e640250d92825a6bc6de278faece",
+            "title": "From behavioural economics to neuroeconomics to decision neuroscience: the ascent of biology in research on human decision making"
+        },
+        {
+            "paperId": "194ca9d4118ccb3689ec72a3ab7dca6144c51b55",
+            "title": "Convex Optimization in Normed Spaces: Theory, Methods and Examples"
+        },
+        {
+            "paperId": "e8808ddb817871a4e6bc0b594c76b67a97ee3bf2",
+            "title": "Parameter Estimation in Softmax Decision-Making Models With Linear Objective Functions"
+        },
+        {
+            "paperId": "bed9515a1445d0ebd8ef90a7d22e6df6411df3a7",
+            "title": "Learning in Games via Reinforcement and Regularization"
+        },
+        {
+            "paperId": "d0b0c3e5a1e768490bc9b759685930541957508b",
+            "title": "Introductory Lectures on Convex Optimization - A Basic Course"
+        },
+        {
+            "paperId": "7cfd9a7188d6212b9614eea77863c3790c8bc41a",
+            "title": "Penalty-Regulated Dynamics and Robust Learning Procedures in Games"
+        },
+        {
+            "paperId": "4a78dd1db31329244adb7b15e366edd55fac310d",
+            "title": "Matrix exponential learning: Distributed optimization in MIMO systems"
+        },
+        {
+            "paperId": "35e56ed2e6ab7728aec140ce60cca8eb7a8e6bf1",
+            "title": "Higher order game dynamics"
+        },
+        {
+            "paperId": "bcce96a2a074448953fc61a29a84afbdfc8db55a",
+            "title": "Online Learning and Online Convex Optimization"
+        },
+        {
+            "paperId": "3234fcfdf06a8d085f0e6bef86eca167bab3fbbd",
+            "title": "Dynamics of Boltzmann Q learning in two-player two-action games."
+        },
+        {
+            "paperId": "8af74907c5d0b825c3e9419da64903f614aefd7c",
+            "title": "Convex Analysis and Monotone Operator Theory in Hilbert Spaces"
+        },
+        {
+            "paperId": "b7fd45acdecaa0dfbb05cbedf6abd98c23955640",
+            "title": "Population Games And Evolutionary Dynamics"
+        },
+        {
+            "paperId": "98bd2336c14146636672a670f3b98bc52b7c20d5",
+            "title": "The Replicator Equation as an Inference Dynamic"
+        },
+        {
+            "paperId": "c60bfedc45c35dea59e1259e9d229cb2aef2f23b",
+            "title": "Stable games and their dynamics"
+        },
+        {
+            "paperId": "3cc37648ad9205817292727db724debfd175c6d7",
+            "title": "An evolutionary model of multi-agent learning with a varying exploration rate"
+        },
+        {
+            "paperId": "3f98509bc03f7f4e1ad94312017bd48cf32a3914",
+            "title": "On the Dual Formulation of Boosting Algorithms"
+        },
+        {
+            "paperId": "314f2dc9be8c5b489a6d710cc06b55e173098722",
+            "title": "The projection dynamic and the replicator dynamic"
+        },
+        {
+            "paperId": "c439172c327c8ba2eda4b40b2a81d7a51ec52f49",
+            "title": "Reinforcement learning and evolutionary algorithms for non-stationary multi-armed bandit problems"
+        },
+        {
+            "paperId": "532551ab6713a9fdab7c517401dd6d81b102c3dd",
+            "title": "Should I stay or should I go? How the human brain manages the trade-off between exploitation and exploration"
+        },
+        {
+            "paperId": "668b1277fbece28c4841eeab1c97e4ebd0079700",
+            "title": "Pattern Recognition and Machine Learning"
+        },
+        {
+            "paperId": "46bd1f8a9a7ce3c44b553d63c8c0644fcef8a14f",
+            "title": "Neuroeconomics: Best to go with what you know?"
+        },
+        {
+            "paperId": "7033a4e5775684734eb22be87c5d72caa06983a3",
+            "title": "Cortical substrates for exploratory decisions in humans"
+        },
+        {
+            "paperId": "63620b015bd6b59883d388d881136c12254f3dfe",
+            "title": "Individual Q-Learning in Normal Form Games"
+        },
+        {
+            "paperId": "28374e337f3dc00a4c3bf00ce7ae5f0b89d6b266",
+            "title": "Learning in perturbed asymmetric games"
+        },
+        {
+            "paperId": "097a812840d7791ff2ade6625ee64846db189578",
+            "title": "A selection-mutation model for q-learning in multi-agent systems"
+        },
+        {
+            "paperId": "4f0df7ed89d9a5bb5bafa5727ccdc0b6e2fb463d",
+            "title": "Mirror descent and nonlinear projected subgradient methods for convex optimization"
+        },
+        {
+            "paperId": "10c048c51263aeb850f5419f0677fa5d756d4f87",
+            "title": "Two Competing Models of How People Learn in Games"
+        },
+        {
+            "paperId": "1f205b089182fe827c243ee2f645dcc14042f562",
+            "title": "Analog implementation of the SoftMax function"
+        },
+        {
+            "paperId": "a2b2ca71cf478ddb233ca937693bd2c9b45760ed",
+            "title": "Coupled replicator equations for the dynamics of learning in multiagent systems."
+        },
+        {
+            "paperId": "d39f230f4e58fd362058d81e25cf1ae690645b37",
+            "title": "Self-annealing and self-annihilation: unifying deterministic annealing and relaxation labeling"
+        },
+        {
+            "paperId": "09b059735bede89dce184029e7ff3d7e41042ffc",
+            "title": "Winner-take-all mechanisms"
+        },
+        {
+            "paperId": "8d8f92271f0ffccd3b161b243d0324f7e801c017",
+            "title": "Evolutionary Game Theory"
+        },
+        {
+            "paperId": "cbc6853ac9b52712d048ea1275b0c22033f156af",
+            "title": "Convex Potentials and their Conjugates in Analog Mean-Field Optimization"
+        },
+        {
+            "paperId": "5b706b9bf333922df42cd4790549f081bbc8cab4",
+            "title": "Quantal Response Equilibria for Normal Form Games"
+        },
+        {
+            "paperId": "e638882c232350afa5f2ab1249fc107a05d13898",
+            "title": "The Softmax Nonlinearity: Derivation Using Statistical Mechanics and Useful Properties as a Multiterminal Analog Circuit Element"
+        },
+        {
+            "paperId": "76473802cd427a8efcc9958ef86f897eccf3af58",
+            "title": "Introduction to Machine Learning"
+        },
+        {
+            "paperId": "f8222304ca201f8d524b3aa270673023334e7ed1",
+            "title": "Individual Choice Behavior: A Theoretical Analysis"
+        },
+        {
+            "paperId": "d446d6e197bb572174912c04b72eabfc5bdbea0f",
+            "title": "Quelques propri\u00e9t\u00e9s des op\u00e9rateurs angle-born\u00e9s etn-cycliquement monotones"
+        },
+        {
+            "paperId": "65f00fc243eb98d83c2e2a76f867bb4d1d3be9d5",
+            "title": "The Logic of Animal Conflict"
+        },
+        {
+            "paperId": "d244943df2e046157057220e46b64a868fed3549",
+            "title": "Individual Choice Behavior: A Theoretical Analysis."
+        },
+        {
+            "paperId": "4f8d648c52edf74e41b0996128aa536e13cc7e82",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": "9a305c20c3e037604451d9e471a281f238b825e6",
+            "title": "Fundamentals Of Convex Analysis"
+        },
+        {
+            "paperId": "e46c3bc2670ad1c3192e5f174271ff3f760efd70",
+            "title": "Evolutionary Dynamics of Multi-Agent Learning: A Survey"
+        },
+        {
+            "paperId": "54e95370ca644f0753c4f4f8deb585980cbaf56b",
+            "title": "Variational Analysis"
+        },
+        {
+            "paperId": "140bef0e2c40772a59ee47690620febc7818e0d9",
+            "title": "HANDBOOK OF GAME THEORY"
+        },
+        {
+            "paperId": null,
+            "title": "\u201cValue-difference based exploration: Adaptive control between (cid:15) -greedy and softmax\u201d"
+        },
+        {
+            "paperId": "155ac6f23ff00c082767a81a5a9da2e7569abd85",
+            "title": "of nonlinear systems"
+        },
+        {
+            "paperId": "21834079d92cf20ae60d8e73ee426a8a8f3c058a",
+            "title": "Multi agent systems"
+        },
+        {
+            "paperId": "e500153f067cfc219d229c15b0ed00524ef06ca1",
+            "title": "Finite-Dimensional Variational Inequalities and Complementarity Problems"
+        },
+        {
+            "paperId": "97efafdb4a3942ab3efba53ded7413199f79c054",
+            "title": "Reinforcement Learning: An Introduction"
+        },
+        {
+            "paperId": "06e9fd76f501531560fc4d9d688c4d0f041891f2",
+            "title": "Evolutionary Games and Population Dynamics"
+        },
+        {
+            "paperId": "1f462943c8d0af69c12a09058251848324135e5a",
+            "title": "Probabilistic Interpretation of Feedforward Classification Network Outputs, with Relationships to Statistical Pattern Recognition"
+        },
+        {
+            "paperId": "1cd8950bb61cd658b8a8e39613c17d98f8d3253a",
+            "title": "Author's Personal Copy Games and Economic Behavior a Payoff-based Learning Procedure and Its Application to Traffic Games"
+        }
+    ]
+}

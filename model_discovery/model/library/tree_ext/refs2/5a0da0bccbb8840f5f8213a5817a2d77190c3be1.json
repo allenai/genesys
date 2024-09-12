@@ -1,0 +1,122 @@
+{
+    "paperId": "5a0da0bccbb8840f5f8213a5817a2d77190c3be1",
+    "externalIds": {
+        "ArXiv": "1805.12301",
+        "MAG": "2806209507",
+        "DBLP": "journals/corr/abs-1805-12301",
+        "CorpusId": 44145079
+    },
+    "title": "Rotation Equivariance and Invariance in Convolutional Neural Networks",
+    "abstract": "Performance of neural networks can be significantly improved by encoding known invariance for particular tasks. Many image classification tasks, such as those related to cellular imaging, exhibit invariance to rotation. We present a novel scheme using the magnitude response of the 2D-discrete-Fourier transform (2D-DFT) to encode rotational invariance in neural networks, along with a new, efficient convolutional scheme for encoding rotational equivariance throughout convolutional layers. We implemented this scheme for several image classification tasks and demonstrated improved performance, in terms of classification accuracy, time required to train the model, and robustness to hyperparameter selection, over a standard CNN and another state-of-the-art method.",
+    "venue": "arXiv.org",
+    "year": 2018,
+    "referenceCount": 21,
+    "citationCount": 33,
+    "influentialCitationCount": 0,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents a novel scheme using the magnitude response of the 2D-discrete-Fourier transform (2D-DFT) to encode rotational invariance in neural networks, along with a new, efficient convolutional scheme for encoding rotational equivariance throughout Convolutional layers."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2252364",
+            "name": "Benjamin Chidester"
+        },
+        {
+            "authorId": "1834451",
+            "name": "M. Do"
+        },
+        {
+            "authorId": "2146392673",
+            "name": "Jian Ma"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "4a73a1840945e87583d89ca0216a2c449d50a4a3",
+            "title": "Deformable Convolutional Networks"
+        },
+        {
+            "paperId": "11aada215e6f72cbd5928619de839ba35106a88f",
+            "title": "Harmonic Networks: Deep Translation and Rotation Equivariance"
+        },
+        {
+            "paperId": "771479c18b586eafae21baf262a220aaa7b2eef6",
+            "title": "Learning Rotation-Invariant Convolutional Neural Networks for Object Detection in VHR Optical Remote Sensing Images"
+        },
+        {
+            "paperId": "fafcaf5ca3fab8dc4fad15c2391c0fdb4a7dc005",
+            "title": "Group Equivariant Convolutional Networks"
+        },
+        {
+            "paperId": "b2e8f988e4c4ef0b38f6c8766aca7f2e5a2575db",
+            "title": "Exploiting Cyclic Symmetry in Convolutional Neural Networks"
+        },
+        {
+            "paperId": "dbb6ded623159c867fbeca0772db7b2eb9489523",
+            "title": "Spatial Transformer Networks"
+        },
+        {
+            "paperId": "67544e4467432aa001f6fb0e9aadfd3d5aa603e0",
+            "title": "Yeast Proteome Dynamics from Single Cell Imaging and Automated Analysis"
+        },
+        {
+            "paperId": "7bbba97c0dcd3ac659381555da091ede27e18421",
+            "title": "CYCLoPs: A Comprehensive Database Constructed from Automated Analysis of Protein Abundance and Subcellular Localization Patterns in Saccharomyces cerevisiae"
+        },
+        {
+            "paperId": "1f3d5f8130c4be8517f8d63467599a207cbb0aae",
+            "title": "Automated learning of generative models for subcellular location: Building blocks for systems biology"
+        },
+        {
+            "paperId": "b8012351bc5ebce4a4b3039bbbba3ce393bc3315",
+            "title": "An empirical evaluation of deep architectures on problems with many factors of variation"
+        },
+        {
+            "paperId": "c46646a3ee9fc296df039ba05eddbeeabb02e54c",
+            "title": "Rotation-invariant multiresolution texture analysis using Radon and wavelet transforms"
+        },
+        {
+            "paperId": "84ce907636665f476765a20e9cd060c0104d7554",
+            "title": "Rotation invariant texture characterization and retrieval using steerable wavelet-domain hidden Markov models"
+        },
+        {
+            "paperId": "5a07d9cf2fcfb87125d771eff00c87b845f8c11b",
+            "title": "Wavelet-based rotational invariant roughness features for texture classification and segmentation"
+        },
+        {
+            "paperId": "f11a7136b6b7854bd0998ef463ffa8e907c411a2",
+            "title": "Multiresolution Gray-Scale and Rotation Invariant Texture Classification with Local Binary Patterns"
+        },
+        {
+            "paperId": "7e69f6339d3684adfeec45254fdd73b7e88e5c4e",
+            "title": "A neural network classifier capable of recognizing the patterns of all major subcellular structures in fluorescence microscope images of HeLa cells"
+        },
+        {
+            "paperId": "2fd1c99edbb3d22cec4adc9ba9319cfc2360e903",
+            "title": "Rotation invariant neural network-based face detection"
+        },
+        {
+            "paperId": "d630075f0d6fa5ffeb10265fdbc56d8d1c96d7c3",
+            "title": "Rotation-invariant neural pattern recognition system estimating a rotation angle"
+        },
+        {
+            "paperId": "05fe0a2c2af903bb7bd80e18a1981507976d5cbb",
+            "title": "Classification of invariant image representations using a neural network"
+        },
+        {
+            "paperId": "39043d9af3aa14c4dbcf91518b71ff7ba357469c",
+            "title": "Layered neural nets for pattern recognition"
+        },
+        {
+            "paperId": "01b6affe3ea4eae1978aec54e87087feb76d9215",
+            "title": "Generalization and network design strategies"
+        },
+        {
+            "paperId": "68b695b1e80c075c71ad0691342593864c67ce7b",
+            "title": "Molecular Systems Biology Peer Review Process File Automated Analysis of High-content Microscopy Data with Deep Learning Editor: Maria Polychronidou Transaction Report"
+        }
+    ]
+}

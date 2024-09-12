@@ -1,0 +1,94 @@
+{
+    "paperId": "9ceb1dea15ac3df3d610fd0b3cc52b9a4e9141a3",
+    "externalIds": {
+        "DBLP": "conf/icml/PaisleyBJ12",
+        "MAG": "2951493172",
+        "ArXiv": "1206.6430",
+        "CorpusId": 1758804
+    },
+    "title": "Variational Bayesian Inference with Stochastic Search",
+    "abstract": "Mean-field variational inference is a method for approximate Bayesian posterior inference. It approximates a full posterior distribution with a factorized set of distributions by maximizing a lower bound on the marginal likelihood. This requires the ability to integrate a sum of terms in the log joint likelihood using this factorized distribution. Often not all integrals are in closed form, which is typically handled by using a lower bound. We present an alternative algorithm based on stochastic optimization that allows for direct optimization of the variational lower bound. This method uses control variates to reduce the variance of the stochastic search gradient, in which existing lower bounds can play an important role. We demonstrate the approach on two non-conjugate models: logistic regression and an approximation to the HDP.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2012,
+    "referenceCount": 14,
+    "citationCount": 464,
+    "influentialCitationCount": 35,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents an alternative algorithm based on stochastic optimization that allows for direct optimization of the variational lower bound and demonstrates the approach on two non-conjugate models: logistic regression and an approximation to the HDP."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "143855009",
+            "name": "J. Paisley"
+        },
+        {
+            "authorId": "1796335",
+            "name": "D. Blei"
+        },
+        {
+            "authorId": "1694621",
+            "name": "Michael I. Jordan"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "15bbea3d58ac3f7c21392eaba72b8b166888f81f",
+            "title": "Non-conjugate Variational Message Passing for Multinomial and Binary Regression"
+        },
+        {
+            "paperId": "5a9ef216bf11f222438fff130c778267d39a9564",
+            "title": "Practical Variational Inference for Neural Networks"
+        },
+        {
+            "paperId": "81f2ede5c1e11c0e92a33430f25a7e3a8c39c918",
+            "title": "Piecewise Bounds for Estimating Bernoulli-Logistic Latent Gaussian Models"
+        },
+        {
+            "paperId": "93792105974f4d42c83172c4fc9f24be77fe781b",
+            "title": "Online Variational Inference for the Hierarchical Dirichlet Process"
+        },
+        {
+            "paperId": "2d8cbd7370b4ce666edd864e66f83ebf20963516",
+            "title": "Online Learning for Latent Dirichlet Allocation"
+        },
+        {
+            "paperId": "ade741995dd4c20edb0225a721ddf179c58fde05",
+            "title": "Nonparametric factor analysis with beta process priors"
+        },
+        {
+            "paperId": "c980686b001f55b1e514efaccb6cfbe1a8726db8",
+            "title": "Stochastic search using the natural gradient"
+        },
+        {
+            "paperId": "b90d922ff07d0eb8d77b8687aba7f55bd3926436",
+            "title": "Hierarchical Dirichlet Processes"
+        },
+        {
+            "paperId": "e996344199af190bdd47ee31a652e76811a5487b",
+            "title": "Variational inference for Dirichlet process mixtures"
+        },
+        {
+            "paperId": "6120cc252bc74239012f11b8b075cb7cb16bee26",
+            "title": "An Introduction to Variational Methods for Graphical Models"
+        },
+        {
+            "paperId": "4574d77fff19e093782178595a8988a7f3aa1969",
+            "title": "Latent Dirichlet Allocation"
+        },
+        {
+            "paperId": "00cf63a7926a826f7cf73c1d5edb117f98d70c2c",
+            "title": "Variational algorithms for approximate Bayesian inference"
+        },
+        {
+            "paperId": "b7819760c0642eb7e4e6a46479f7a3800e661c59",
+            "title": "A Tighter Bound for Graphical Models"
+        },
+        {
+            "paperId": "ee606afe92d1998d516f1e2599ddf8a386880d2a",
+            "title": "Bayesian parameter estimation via variational methods"
+        }
+    ]
+}

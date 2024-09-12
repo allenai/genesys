@@ -1,0 +1,203 @@
+{
+    "paperId": "9c5c89199114858eafbe50b46d77d38ffd03b28a",
+    "externalIds": {
+        "DBLP": "journals/corr/abs-1802-06901",
+        "ArXiv": "1802.06901",
+        "ACL": "D18-1149",
+        "MAG": "2953322184",
+        "DOI": "10.18653/v1/D18-1149",
+        "CorpusId": 3438497
+    },
+    "title": "Deterministic Non-Autoregressive Neural Sequence Modeling by Iterative Refinement",
+    "abstract": "We propose a conditional non-autoregressive neural sequence model based on iterative refinement. The proposed model is designed based on the principles of latent variable models and denoising autoencoders, and is generally applicable to any sequence generation task. We extensively evaluate the proposed model on machine translation (En-De and En-Ro) and image caption generation, and observe that it significantly speeds up decoding while maintaining the generation quality comparable to the autoregressive counterpart.",
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2018,
+    "referenceCount": 40,
+    "citationCount": 438,
+    "influentialCitationCount": 87,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/D18-1149.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The proposed conditional non-autoregressive neural sequence model is evaluated on machine translation and image caption generation, and it is observed that it significantly speeds up decoding while maintaining the generation quality comparable to the autoregressive counterpart."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "100811091",
+            "name": "Jason Lee"
+        },
+        {
+            "authorId": "2711409",
+            "name": "Elman Mansimov"
+        },
+        {
+            "authorId": "1979489",
+            "name": "Kyunghyun Cho"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "c6b61535f1544835cca3851ceb34222ebc5b4377",
+            "title": "State-of-the-Art Speech Recognition with Sequence-to-Sequence Models"
+        },
+        {
+            "paperId": "0106ac3ed6867af22d732cf7640b766cc98d256b",
+            "title": "Deliberation Networks: Sequence Generation Beyond One-Pass Decoding"
+        },
+        {
+            "paperId": "f6cbf83e1ce3b099d656d2346b261d5ef7f2b62e",
+            "title": "Parallel WaveNet: Fast High-Fidelity Speech Synthesis"
+        },
+        {
+            "paperId": "931014018fe18cb7bb3d629b14d19528347529c7",
+            "title": "QuickEdit: Editing Text & Translations via Simple Delete Actions"
+        },
+        {
+            "paperId": "15e81c8d1c21f9e928c72721ac46d458f3341454",
+            "title": "Non-Autoregressive Neural Machine Translation"
+        },
+        {
+            "paperId": "e3d772986d176057aca2f5e3eb783da53b559134",
+            "title": "Unsupervised Machine Translation Using Monolingual Corpora Only"
+        },
+        {
+            "paperId": "c2a7afbb5609a723f8eea91bfde4b02579b048d6",
+            "title": "Unsupervised Neural Machine Translation"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "2dfeb5a90abc49ab2a80a492a01a4e2c8e92ec22",
+            "title": "In-datacenter performance analysis of a tensor processing unit"
+        },
+        {
+            "paperId": "d2860bb05f747e4628e95e4d84018263831bab0d",
+            "title": "Learning to Generate Samples from Noise through Infusion Training"
+        },
+        {
+            "paperId": "dd7d3a100807353b6dce13a8056d65a51425d1aa",
+            "title": "Decoding as Continuous Optimization in Neural Machine Translation"
+        },
+        {
+            "paperId": "0269e74017b160ef3a0a49dff6f6c27a8adf93cf",
+            "title": "Towards Decoding as Continuous Optimisation in Neural Machine Translation"
+        },
+        {
+            "paperId": "735d547fc75e0772d2a78c46a1cc5fad7da1474c",
+            "title": "Can Active Memory Replace Attention?"
+        },
+        {
+            "paperId": "eace9788f095b975454d403d396d7bd57524096e",
+            "title": "Iterative Refinement for Machine Translation"
+        },
+        {
+            "paperId": "df0402517a7338ae28bc54acaac400de6b456a46",
+            "title": "WaveNet: A Generative Model for Raw Audio"
+        },
+        {
+            "paperId": "57a10537978600fd33dcdd48922c791609a4851a",
+            "title": "Sequence-Level Knowledge Distillation"
+        },
+        {
+            "paperId": "6a97d2668187965743d1b825b306defccbabbb4c",
+            "title": "Improved Variational Inference with Inverse Autoregressive Flow"
+        },
+        {
+            "paperId": "f0085dc1fe376ef240f233002b8ce57c2cfe0106",
+            "title": "Noisy Parallel Approximate Decoding for Conditional Recurrent Language Model"
+        },
+        {
+            "paperId": "26e743d5bd465f49b9538deaf116c15e61b7951f",
+            "title": "Learning Distributed Representations of Sentences from Unlabelled Data"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "5e4eb58d5b47ac1c73f4cf189497170e75ae6237",
+            "title": "Neural GPUs Learn Algorithms"
+        },
+        {
+            "paperId": "1518039b5001f1836565215eb047526b3ac7f462",
+            "title": "Neural Machine Translation of Rare Words with Subword Units"
+        },
+        {
+            "paperId": "654a3e53fb41d8168798ee0ee61dfab73739b1ed",
+            "title": "Describing Multimedia Content Using Attention-Based Encoder-Decoder Networks"
+        },
+        {
+            "paperId": "b624504240fa52ab76167acfe3156150ca01cf3b",
+            "title": "Attention-Based Models for Speech Recognition"
+        },
+        {
+            "paperId": "e0945081b5b87187a53d4329cf77cd8bff635795",
+            "title": "Highway Networks"
+        },
+        {
+            "paperId": "0c908739fbff75f03469d13d4a1a07de3414ee19",
+            "title": "Distilling the Knowledge in a Neural Network"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "55e022fb7581bb9e1fce678d21fb25ffbb3fbb88",
+            "title": "Deep visual-semantic alignments for generating image descriptions"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "c175081733d98e63fa68a70405a35804c318afc5",
+            "title": "Iterative Neural Autoregressive Distribution Estimator NADE-k"
+        },
+        {
+            "paperId": "71b7178df5d2b112d07e45038cb5637208659ff7",
+            "title": "Microsoft COCO: Common Objects in Context"
+        },
+        {
+            "paperId": "944a1cfd79dbfb6fef460360a0765ba790f4027a",
+            "title": "Recurrent Continuous Translation Models"
+        },
+        {
+            "paperId": "7b5e31257f01aba987f16e175a3e49e00a5bd3bb",
+            "title": "A Simple, Fast, and Effective Reparameterization of IBM Model 2"
+        },
+        {
+            "paperId": "5f08df805f14baa826dbddcb002277b15d3f1556",
+            "title": "Continuous Space Translation Models for Phrase-Based Statistical Machine Translation"
+        },
+        {
+            "paperId": "31a2053ebda7f6f77afe8c3fc53269b73567e446",
+            "title": "What regularized auto-encoders learn from the data-generating distribution"
+        },
+        {
+            "paperId": "d2c733e34d48784a37d717fe43d9e93277a8c53e",
+            "title": "ImageNet: A large-scale hierarchical image database"
+        },
+        {
+            "paperId": "4ee2eab4c298c1824a9fb8799ad8eed21be38d21",
+            "title": "Moses: Open Source Toolkit for Statistical Machine Translation"
+        },
+        {
+            "paperId": "d7da009f457917aa381619facfa5ffae9329a6e9",
+            "title": "Bleu: a Method for Automatic Evaluation of Machine Translation"
+        },
+        {
+            "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+            "title": "Recurrent neural network based language model"
+        }
+    ]
+}

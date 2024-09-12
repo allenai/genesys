@@ -1,0 +1,262 @@
+{
+    "paperId": "01eb299fec9b9f5f499d0ce9702d5aeb77848d88",
+    "externalIds": {
+        "MAG": "2962754271",
+        "DBLP": "conf/aistats/WangGWSHPSC18",
+        "ArXiv": "1712.09783",
+        "CorpusId": 3505576
+    },
+    "title": "Topic Compositional Neural Language Model",
+    "abstract": "We propose a Topic Compositional Neural Language Model (TCNLM), a novel method designed to simultaneously capture both the global semantic meaning and the local word ordering structure in a document. The TCNLM learns the global semantic coherence of a document via a neural topic model, and the probability of each learned latent topic is further used to build a Mixture-of-Experts (MoE) language model, where each expert (corresponding to one topic) is a recurrent neural network (RNN) that accounts for learning the local structure of a word sequence. In order to train the MoE model efficiently, a matrix factorization method is applied, by extending each weight matrix of the RNN to be an ensemble of topic-dependent weight matrices. The degree to which each member of the ensemble is used is tied to the document-dependent probability of the corresponding topics. Experimental results on several corpora show that the proposed approach outperforms both a pure RNN-based model and other topic-guided language models. Further, our model yields sensible topics, and also has the capacity to generate meaningful sentences conditioned on given topics.",
+    "venue": "International Conference on Artificial Intelligence and Statistics",
+    "year": 2017,
+    "referenceCount": 51,
+    "citationCount": 77,
+    "influentialCitationCount": 10,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The TCNLM learns the global semantic coherence of a document via a neural topic model, and the probability of each learned latent topic is used to build a Mixture-of-Experts language model, where each expert is a recurrent neural network that accounts for learning the local structure of a word sequence."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2900282",
+            "name": "Wenlin Wang"
+        },
+        {
+            "authorId": "144702900",
+            "name": "Zhe Gan"
+        },
+        {
+            "authorId": "2108476666",
+            "name": "Wenqi Wang"
+        },
+        {
+            "authorId": "19178763",
+            "name": "Dinghan Shen"
+        },
+        {
+            "authorId": "34060310",
+            "name": "Jiaji Huang"
+        },
+        {
+            "authorId": "2056440915",
+            "name": "Wei Ping"
+        },
+        {
+            "authorId": "145031342",
+            "name": "S. Satheesh"
+        },
+        {
+            "authorId": "145006560",
+            "name": "L. Carin"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "7603cd7bdc0b686971ceb2a26b31b2e2bd874184",
+            "title": "Zero-Shot Learning via Class-Conditioned Deep Generative Models"
+        },
+        {
+            "paperId": "cf7c18411a9063b0db8a4b1c173e9862c7ee3cc4",
+            "title": "Continuous-Time Flows for Efficient Inference and Density Estimation"
+        },
+        {
+            "paperId": "86424e28cfabef09f9651a27c5aa609147129bd6",
+            "title": "Continuous-Time Flows for Deep Generative Models"
+        },
+        {
+            "paperId": "33125ec92a0b4b1687ccd153762d6275668e3d09",
+            "title": "Cold Fusion: Training Seq2Seq Models Together with Language Models"
+        },
+        {
+            "paperId": "4f4837c1f8a194d8b7fe7d6073ce44876f08ad6c",
+            "title": "Discovering Discrete Latent Topics with Neural Variational Inference"
+        },
+        {
+            "paperId": "facca89eb95fb42cd1b56b40b971ebb72b2413b5",
+            "title": "Topically Driven Neural Language Model"
+        },
+        {
+            "paperId": "510e26733aaff585d65701b9f1be7ca9d5afc586",
+            "title": "Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer"
+        },
+        {
+            "paperId": "778ce81457383bd5e3fdb11b145ded202ebb4970",
+            "title": "Semantic Compositional Networks for Visual Captioning"
+        },
+        {
+            "paperId": "7ab2166f6cdb1737e000df66d29c6538afc6811d",
+            "title": "TopicRNN: A Recurrent Neural Network with Long-Range Semantic Dependency"
+        },
+        {
+            "paperId": "f4c5d13a8e9e80edcd4f69f0eab0b4434364c6dd",
+            "title": "Variational Autoencoder for Deep Learning of Images, Labels and Captions"
+        },
+        {
+            "paperId": "9ec499af9b85f30bdbdd6cdfbb07d484808c526a",
+            "title": "Efficient softmax approximation for GPUs"
+        },
+        {
+            "paperId": "0fa5142f908afc94c923ca2adbe14a5673bc76eb",
+            "title": "A Neural Knowledge Language Model"
+        },
+        {
+            "paperId": "03df3c827e6597f41bd31d64883686b33d792e9d",
+            "title": "Factored Temporal Sigmoid Belief Networks for Sequence Learning"
+        },
+        {
+            "paperId": "2f2d8f8072e5cc9b296fad551f65f183bdbff7aa",
+            "title": "Exploring the Limits of Language Modeling"
+        },
+        {
+            "paperId": "c873e87dbccc13299989f2301288f5ce2f0c6bec",
+            "title": "Deep Poisson Factor Modeling"
+        },
+        {
+            "paperId": "73e8633886dc380a46fc02f2e1ec5bf68dba0734",
+            "title": "Neural Variational Inference for Text Processing"
+        },
+        {
+            "paperId": "722e01d5ba05083f7a091f3188cfdfcf183a325d",
+            "title": "Larger-Context Language Modelling with Recurrent Neural Network"
+        },
+        {
+            "paperId": "69d9857b09207da5b5e0726330ad4d04f2e093c1",
+            "title": "The Poisson Gamma Belief Network"
+        },
+        {
+            "paperId": "1c2cd4a54d4bd4cc596fb1e5e3a5132327a4e5e6",
+            "title": "Diversifying Restricted Boltzmann Machine for Document Modeling"
+        },
+        {
+            "paperId": "b4c460410cdb5061a207c2eb5eff5c894e94de6e",
+            "title": "Scalable Deep Poisson Factor Analysis for Topic Modeling"
+        },
+        {
+            "paperId": "86311b182786bfde19446f6ded0854de973d4060",
+            "title": "A Neural Conversational Model"
+        },
+        {
+            "paperId": "f142c849ffef66f7520aff4e0b40ac964ccb8cc1",
+            "title": "Language Models for Image Captioning: The Quirks and What Works"
+        },
+        {
+            "paperId": "d10b7c5dd80f866cff7280f6516ca5041924d6c0",
+            "title": "A Novel Neural Topic Model and Its Supervised Extension"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "54b2b6f35f1b5704dddfaa3a137a2f4ad3dfe745",
+            "title": "Deep Captioning with Multimodal Recurrent Neural Networks (m-RNN)"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "2f5102ec3f70d0dea98c957cc2cab4d15d83a2da",
+            "title": "The Stanford CoreNLP Natural Language Processing Toolkit"
+        },
+        {
+            "paperId": "4987baca7365133a03b8a0849bae337d8bf0c3c4",
+            "title": "Machine Reading Tea Leaves: Automatically Evaluating Topic Coherence and Topic Model Quality"
+        },
+        {
+            "paperId": "5f5dc5b9a2ba710937e2c413b37b053cd673df02",
+            "title": "Auto-Encoding Variational Bayes"
+        },
+        {
+            "paperId": "71480da09af638260801af1db8eff6acb4e1122f",
+            "title": "Decoding with Large-Scale Neural Language Models Improves Translation"
+        },
+        {
+            "paperId": "d1b78d136e9e6be0aeb814027f0f3fd843606155",
+            "title": "A Neural Autoregressive Topic Model"
+        },
+        {
+            "paperId": "d1275b2a2ab53013310e759e5c6878b96df643d4",
+            "title": "Context dependent recurrent neural network language model"
+        },
+        {
+            "paperId": "a17745f1d7045636577bcd5d513620df5860e9e5",
+            "title": "Deep Neural Network Language Models"
+        },
+        {
+            "paperId": "e1f27c00ead87b2bde0e1a4ef732677dd9b989ff",
+            "title": "Large, Pruned or Continuous Space Language Models on a GPU for Statistical Machine Translation"
+        },
+        {
+            "paperId": "d94072c75fce4f8984db863c85e78fa4895cdb59",
+            "title": "A Hybrid Neural Network-Latent Topic Model"
+        },
+        {
+            "paperId": "ef2d64e448ee5ed2dc26179c8570803ded123a5e",
+            "title": "Optimizing Semantic Coherence in Topic Models"
+        },
+        {
+            "paperId": "1c61f9ef06fe74505775a833ff849185757199e7",
+            "title": "Learning Word Vectors for Sentiment Analysis"
+        },
+        {
+            "paperId": "a538b05ebb01a40323997629e171c91aa28b8e2f",
+            "title": "Rectified Linear Units Improve Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": "8e31f3c7e70e9a5f8afafd86cebc004d5eca8c2b",
+            "title": "Automatic Evaluation of Topic Coherence"
+        },
+        {
+            "paperId": "b32de117302258dd29919435cd001a8bcdfee3b3",
+            "title": "Replicated Softmax: an Undirected Topic Model"
+        },
+        {
+            "paperId": "00facc08b06e5a8ce32278e8d0072b59fcf9f252",
+            "title": "Reading Tea Leaves: How Humans Interpret Topic Models"
+        },
+        {
+            "paperId": "e981f16fde9185373634b53d94baa1f9185ff890",
+            "title": "A correlated topic model of Science"
+        },
+        {
+            "paperId": null,
+            "title": "Dynamic topic models"
+        },
+        {
+            "paperId": "6d78b877f810d267035ef308d017628d4e0829e5",
+            "title": "Sharing Clusters among Related Groups: Hierarchical Dirichlet Processes"
+        },
+        {
+            "paperId": "65a7a75b60353b59ccd4d69d06c8a24fb60fb12e",
+            "title": "Latent Dirichlet Allocation"
+        },
+        {
+            "paperId": "d7da009f457917aa381619facfa5ffae9329a6e9",
+            "title": "Bleu: a Method for Automatic Evaluation of Machine Translation"
+        },
+        {
+            "paperId": "6120cc252bc74239012f11b8b075cb7cb16bee26",
+            "title": "An Introduction to Variational Methods for Graphical Models"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "bc75a3bed1607531b5cc67628639f15f2db8fc50",
+            "title": "A patient-adaptable ECG beat classifier using a mixture of experts approach"
+        },
+        {
+            "paperId": "b806606a08cf97bc48adcde9abd34732c37c2774",
+            "title": "The British national corpus"
+        },
+        {
+            "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+            "title": "Recurrent neural network based language model"
+        }
+    ]
+}

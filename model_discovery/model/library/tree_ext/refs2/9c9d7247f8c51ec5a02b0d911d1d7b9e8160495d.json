@@ -1,0 +1,402 @@
+{
+    "paperId": "9c9d7247f8c51ec5a02b0d911d1d7b9e8160495d",
+    "externalIds": {
+        "MAG": "2271840356",
+        "ArXiv": "1603.04467",
+        "DBLP": "journals/corr/AbadiABBCCCDDDG16",
+        "CorpusId": 5707386
+    },
+    "title": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems",
+    "abstract": "TensorFlow is an interface for expressing machine learning algorithms, and an implementation for executing such algorithms. A computation expressed using TensorFlow can be executed with little or no change on a wide variety of heterogeneous systems, ranging from mobile devices such as phones and tablets up to large-scale distributed systems of hundreds of machines and thousands of computational devices such as GPU cards. The system is flexible and can be used to express a wide variety of algorithms, including training and inference algorithms for deep neural network models, and it has been used for conducting research and for deploying machine learning systems into production across more than a dozen areas of computer science and other fields, including speech recognition, computer vision, robotics, information retrieval, natural language processing, geographic information extraction, and computational drug discovery. This paper describes the TensorFlow interface and an implementation of that interface that we have built at Google. The TensorFlow API and a reference implementation were released as an open-source package under the Apache 2.0 license in November, 2015 and are available at www.tensorflow.org.",
+    "venue": "arXiv.org",
+    "year": 2016,
+    "referenceCount": 54,
+    "citationCount": 10712,
+    "influentialCitationCount": 1054,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The TensorFlow interface and an implementation of that interface that is built at Google are described, which has been used for conducting research and for deploying machine learning systems into production across more than a dozen areas of computer science and other fields."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2057642721",
+            "name": "Mart\u00edn Abadi"
+        },
+        {
+            "authorId": "2078528337",
+            "name": "Ashish Agarwal"
+        },
+        {
+            "authorId": "144758007",
+            "name": "P. Barham"
+        },
+        {
+            "authorId": "2445241",
+            "name": "E. Brevdo"
+        },
+        {
+            "authorId": "2545358",
+            "name": "Z. Chen"
+        },
+        {
+            "authorId": "48738717",
+            "name": "C. Citro"
+        },
+        {
+            "authorId": "32131713",
+            "name": "G. Corrado"
+        },
+        {
+            "authorId": "36347083",
+            "name": "Andy Davis"
+        },
+        {
+            "authorId": "49959210",
+            "name": "J. Dean"
+        },
+        {
+            "authorId": "145139947",
+            "name": "M. Devin"
+        },
+        {
+            "authorId": "1780892",
+            "name": "Sanjay Ghemawat"
+        },
+        {
+            "authorId": "153440022",
+            "name": "I. Goodfellow"
+        },
+        {
+            "authorId": "2064102917",
+            "name": "A. Harp"
+        },
+        {
+            "authorId": "2060655766",
+            "name": "G. Irving"
+        },
+        {
+            "authorId": "2090818",
+            "name": "M. Isard"
+        },
+        {
+            "authorId": "39978391",
+            "name": "Yangqing Jia"
+        },
+        {
+            "authorId": "1944541",
+            "name": "R. J\u00f3zefowicz"
+        },
+        {
+            "authorId": "40527594",
+            "name": "Lukasz Kaiser"
+        },
+        {
+            "authorId": "1942300",
+            "name": "M. Kudlur"
+        },
+        {
+            "authorId": "3369421",
+            "name": "J. Levenberg"
+        },
+        {
+            "authorId": "30415265",
+            "name": "Dandelion Man\u00e9"
+        },
+        {
+            "authorId": "3089272",
+            "name": "R. Monga"
+        },
+        {
+            "authorId": "144375552",
+            "name": "Sherry Moore"
+        },
+        {
+            "authorId": "20154699",
+            "name": "D. Murray"
+        },
+        {
+            "authorId": "37232298",
+            "name": "C. Olah"
+        },
+        {
+            "authorId": "144927151",
+            "name": "M. Schuster"
+        },
+        {
+            "authorId": "1789737",
+            "name": "Jonathon Shlens"
+        },
+        {
+            "authorId": "32163737",
+            "name": "Benoit Steiner"
+        },
+        {
+            "authorId": "1701686",
+            "name": "I. Sutskever"
+        },
+        {
+            "authorId": "35210462",
+            "name": "Kunal Talwar"
+        },
+        {
+            "authorId": "2080690",
+            "name": "P. Tucker"
+        },
+        {
+            "authorId": "2657155",
+            "name": "Vincent Vanhoucke"
+        },
+        {
+            "authorId": "2053781980",
+            "name": "Vijay Vasudevan"
+        },
+        {
+            "authorId": "1765169",
+            "name": "F. Vi\u00e9gas"
+        },
+        {
+            "authorId": "1689108",
+            "name": "O. Vinyals"
+        },
+        {
+            "authorId": "47941411",
+            "name": "Pete Warden"
+        },
+        {
+            "authorId": "145233583",
+            "name": "M. Wattenberg"
+        },
+        {
+            "authorId": "35078078",
+            "name": "M. Wicke"
+        },
+        {
+            "authorId": "2117163698",
+            "name": "Yuan Yu"
+        },
+        {
+            "authorId": "2152198093",
+            "name": "Xiaoqiang Zheng"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "d5ed07113ddcd038062525a5a54550c012ac9a74",
+            "title": "Massively Parallel Methods for Deep Reinforcement Learning"
+        },
+        {
+            "paperId": "9653d5c2c7844347343d073bbedd96e05d52f69b",
+            "title": "Pointer Networks"
+        },
+        {
+            "paperId": "91cf0cafdf8a610c6c0b58e16724c5ecd5ce7261",
+            "title": "Pedestrian detection with a Large-Field-Of-View deep network"
+        },
+        {
+            "paperId": "3a043714354fe498752b45e4cf429dbae0fb2558",
+            "title": "Large-scale cluster management at Google with Borg"
+        },
+        {
+            "paperId": "4f0ea476d0aa1315c940988a593a1d4055695c79",
+            "title": "Frame-by-frame language identification in short utterances using deep neural networks"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "72de1bfa528c9450a57394c900361acf1e85b8d0",
+            "title": "Massively Multitask Networks for Drug Discovery"
+        },
+        {
+            "paperId": "7845f1d3e796b5704d4bd37a945e0cf3fb8bbf1f",
+            "title": "Multiple Object Recognition with Visual Attention"
+        },
+        {
+            "paperId": "47570e7f63e296f224a0e7f9a0d08b0de3cbaf40",
+            "title": "Grammar as a Foreign Language"
+        },
+        {
+            "paperId": "127f464c2dc8d85b7612a6924495f79e5458710f",
+            "title": "Move Evaluation in Go Using Deep Convolutional Neural Networks"
+        },
+        {
+            "paperId": "e69c8b5df8a4178b1c8c7f154a761147a6f030be",
+            "title": "Project Adam: Building an Efficient and Scalable Deep Learning Training System"
+        },
+        {
+            "paperId": "31c36d445367ba204244bb74893c5654e31c3869",
+            "title": "cuDNN: Efficient Primitives for Deep Learning"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "3fc68a68225edce1635bc32054c1425db287fba3",
+            "title": "An introduction to computational networks and the computational network toolkit (invited talk)"
+        },
+        {
+            "paperId": "6d4c9c923e9f145d1c01a2de2afc38ec23c44253",
+            "title": "Large-Scale Video Classification with Convolutional Neural Networks"
+        },
+        {
+            "paperId": "6bdb186ec4726e00a8051119636d4df3b94043b5",
+            "title": "Caffe: Convolutional Architecture for Fast Feature Embedding"
+        },
+        {
+            "paperId": "80d800dfadbe2e6c7b2367d9229cc82912d55889",
+            "title": "One weird trick for parallelizing convolutional neural networks"
+        },
+        {
+            "paperId": "b3d8dffb73bc93de239998548386c84177caa2ad",
+            "title": "Multi-digit Number Recognition from Street View Imagery using Deep Convolutional Neural Networks"
+        },
+        {
+            "paperId": "4aa4069693bee00d1b0759ca3df35e59284e9845",
+            "title": "DeViSE: A Deep Visual-Semantic Embedding Model"
+        },
+        {
+            "paperId": "98ca08bdb4092d59ef6efcedf8003239f89cf58f",
+            "title": "Naiad: a timely dataflow system"
+        },
+        {
+            "paperId": "45fcaf11eaf31228a218a24663067dab509a1031",
+            "title": "Dandelion: a compiler and runtime for heterogeneous systems"
+        },
+        {
+            "paperId": "4d23db55e6671a82c95dacec33b2967a4b8b677d",
+            "title": "Halide: a language and compiler for optimizing parallelism, locality, and recomputation in image processing pipelines"
+        },
+        {
+            "paperId": "64da1980714cfc130632c5b92b9d98c2f6763de6",
+            "title": "On rectified linear units for speech processing"
+        },
+        {
+            "paperId": "a41b826d23957d6ad4e9e794d20a583a9b567c5d",
+            "title": "Multilingual acoustic models using distributed deep neural networks"
+        },
+        {
+            "paperId": "f6b51c8753a871dc94ff32152c00c01e94f90f09",
+            "title": "Efficient Estimation of Word Representations in Vector Space"
+        },
+        {
+            "paperId": "3127190433230b3dc1abd0680bb58dced4bcd90e",
+            "title": "Large Scale Distributed Deep Networks"
+        },
+        {
+            "paperId": "798cc254a94dc6f72896bcdc518a3447fbc94c3d",
+            "title": "Resilient Distributed Datasets: A Fault-Tolerant Abstraction for In-Memory Cluster Computing"
+        },
+        {
+            "paperId": "72e93aa6767ee683de7f001fa72f1314e40a8f35",
+            "title": "Building high-level features using large scale unsupervised learning"
+        },
+        {
+            "paperId": "36f49b05d764bf5c10428b082c2d96c13c4203b9",
+            "title": "Hogwild: A Lock-Free Approach to Parallelizing Stochastic Gradient Descent"
+        },
+        {
+            "paperId": "730091c46c13943bef832d8b602d9c2aaca12fe5",
+            "title": "CIEL: A Universal Execution Engine for Distributed Data-Flow Computing"
+        },
+        {
+            "paperId": "3b6dd340fb5442e0c31d73f40e241fdd73d42330",
+            "title": "FlumeJava: easy, efficient data-parallel pipelines"
+        },
+        {
+            "paperId": "ed8f6a72bd8903078cfaef866ca7d71e12c5b8f1",
+            "title": "Dryad: distributed data-parallel programs from sequential building blocks"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "06fbe2327c538749037336dafbd855bbbd89330f",
+            "title": "Global code motion/global value numbering"
+        },
+        {
+            "paperId": "166641a1c482e2aadbafed7d5f7e637924442237",
+            "title": "A set of level 3 basic linear algebra subprograms"
+        },
+        {
+            "paperId": "0cc5df7888aba64f33b8ec9d360765f5f89d390e",
+            "title": "Executing a Program on the MIT Tagged-Token Dataflow Architecture"
+        },
+        {
+            "paperId": "0728769ffa44d0be3f64416fe31e5665db623fcf",
+            "title": "Annual review of computer science vol. 1, 1986"
+        },
+        {
+            "paperId": "052b1d8ce63b07fec3de9dbb583772d860b7c769",
+            "title": "Learning representations by back-propagating errors"
+        },
+        {
+            "paperId": null,
+            "title": "Google Voice Search: faster and more accurate"
+        },
+        {
+            "paperId": null,
+            "title": "Cuda-convnet"
+        },
+        {
+            "paperId": null,
+            "title": "Deep neural networks for acoustic modeling in speech recognition: The shared views of four research groups"
+        },
+        {
+            "paperId": null,
+            "title": "Theano: A CPU and GPU math expression compiler"
+        },
+        {
+            "paperId": null,
+            "title": "Cublas library. NVIDIA Corporation"
+        },
+        {
+            "paperId": "dc52d1ede1b90bf9d296bc5b34c9310b7eaa99a2",
+            "title": "The mnist database of handwritten digits"
+        },
+        {
+            "paperId": "464d94b3dc9a109dd64008a41a00181830f285aa",
+            "title": "Torch: a modular machine learning software library"
+        },
+        {
+            "paperId": null,
+            "title": "How Google Translate squeezes deep learning onto a phone, 2015. googleresearch.blogspot.com/2015/07/how-google- translate-squeezes-deep.html"
+        },
+        {
+            "paperId": null,
+            "title": "The CIFAR-10 dataset"
+        },
+        {
+            "paperId": null,
+            "title": "Eigen library for linear algebra"
+        },
+        {
+            "paperId": null,
+            "title": "Chainer: A powerful, flexible and intuitive framework of neural networks"
+        },
+        {
+            "paperId": null,
+            "title": "The neural networks behind Google Voice transcription, 2015. googleresearch.blogspot.com/2015/08/the-neural- networks-behind-google-voice.html"
+        },
+        {
+            "paperId": null,
+            "title": "Improving Photo Search: A step across the semantic gap, 2013. googleresearch.blogspot.com/2013/06/improving- photo-search-step-across.html"
+        },
+        {
+            "paperId": null,
+            "title": "Speech recognition and deep learning , 2015. googleresearch.blogspot.com/2012/08/speech- recognition-and-deep-learning.html"
+        },
+        {
+            "paperId": null,
+            "title": "www.bloomberg.com/news/articles/2015-10-26/google- turning-its-lucrative-web-search-over-to-ai-machines"
+        }
+    ]
+}

@@ -1,0 +1,122 @@
+{
+    "paperId": "5efadc9019ce3378a0eb6c8f939cdde6c8918b1e",
+    "externalIds": {
+        "MAG": "2988975212",
+        "DBLP": "conf/emnlp/GhazvininejadLL19",
+        "ACL": "D19-1633",
+        "DOI": "10.18653/v1/D19-1633",
+        "CorpusId": 202538740
+    },
+    "title": "Mask-Predict: Parallel Decoding of Conditional Masked Language Models",
+    "abstract": "Most machine translation systems generate text autoregressively from left to right. We, instead, use a masked language modeling objective to train a model to predict any subset of the target words, conditioned on both the input text and a partially masked target translation. This approach allows for efficient iterative decoding, where we first predict all of the target words non-autoregressively, and then repeatedly mask out and regenerate the subset of words that the model is least confident about. By applying this strategy for a constant number of iterations, our model improves state-of-the-art performance levels for non-autoregressive and parallel decoding translation models by over 4 BLEU on average. It is also able to reach within about 1 BLEU point of a typical left-to-right transformer model, while decoding significantly faster.",
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2019,
+    "referenceCount": 19,
+    "citationCount": 516,
+    "influentialCitationCount": 162,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/D19-1633.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This model improves state-of-the-art performance levels for non-autoregressive and parallel decoding translation models by over 4 BLEU on average, and is able to reach within about 1 BLEu point of a typical left-to-right transformer model, while decoding significantly faster."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2320509",
+            "name": "Marjan Ghazvininejad"
+        },
+        {
+            "authorId": "39455775",
+            "name": "Omer Levy"
+        },
+        {
+            "authorId": "11323179",
+            "name": "Yinhan Liu"
+        },
+        {
+            "authorId": "1982950",
+            "name": "Luke Zettlemoyer"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "145b8b5d99a2beba6029418ca043585b90138d12",
+            "title": "MASS: Masked Sequence to Sequence Pre-training for Language Generation"
+        },
+        {
+            "paperId": "9237d6efc603465765e80eb5ca1268c2bd7b5c24",
+            "title": "compare-mt: A Tool for Holistic Comparison of Language Generation Systems"
+        },
+        {
+            "paperId": "d79ac7a7bafdc9a782fb8c53285ca11c7f2e3f18",
+            "title": "BERT has a Mouth, and It Must Speak: BERT as a Markov Random Field Language Model"
+        },
+        {
+            "paperId": "58d34a4fb936ffe95917d8fb4016ff5e3520429a",
+            "title": "Insertion Transformer: Flexible Sequence Generation via Insertion Operations"
+        },
+        {
+            "paperId": "132b07740db20df2c36d6f939d296a7e941feac7",
+            "title": "Insertion-based Decoding with Automatically Inferred Generation Order"
+        },
+        {
+            "paperId": "fea820b7d953d32069e189af2961c28fd213470b",
+            "title": "Pay Less Attention with Lightweight and Dynamic Convolutions"
+        },
+        {
+            "paperId": "ec4eba83f6b3266d9ae7cabb2b2cb1518f727edc",
+            "title": "Cross-lingual Language Model Pretraining"
+        },
+        {
+            "paperId": "5dc1a37bf05fddcdb77efafec3bc50c8ded7cef0",
+            "title": "End-to-End Non-Autoregressive Neural Machine Translation with Connectionist Temporal Classification"
+        },
+        {
+            "paperId": "b4bfadfca9742bb3ee98a0cd322d5ce4e59a3ceb",
+            "title": "A Call for Clarity in Reporting BLEU Scores"
+        },
+        {
+            "paperId": "9c5c89199114858eafbe50b46d77d38ffd03b28a",
+            "title": "Deterministic Non-Autoregressive Neural Sequence Modeling by Iterative Refinement"
+        },
+        {
+            "paperId": "15e81c8d1c21f9e928c72721ac46d458f3341454",
+            "title": "Non-Autoregressive Neural Machine Translation"
+        },
+        {
+            "paperId": "e7fd6848cb29ca221a7e17d823e06fb566f1f135",
+            "title": "Mixed Precision Training"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "43428880d75b3a14257c3ee9bda054e61eb869c0",
+            "title": "Convolutional Sequence to Sequence Learning"
+        },
+        {
+            "paperId": "1518039b5001f1836565215eb047526b3ac7f462",
+            "title": "Neural Machine Translation of Rare Words with Subword Units"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "d7da009f457917aa381619facfa5ffae9329a6e9",
+            "title": "Bleu: a Method for Automatic Evaluation of Machine Translation"
+        },
+        {
+            "paperId": "df2b0e26d0599ce3e70df8a9da02e51594e0e992",
+            "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding"
+        },
+        {
+            "paperId": "261a056f8b21918e8616a429b2df6e1d5d33be41",
+            "title": "Connectionist Temporal Classi\ufb01cation: Labelling Unsegmented Sequence Data with Recurrent Neural Networks"
+        }
+    ]
+}

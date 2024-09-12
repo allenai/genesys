@@ -1,0 +1,182 @@
+{
+    "paperId": "cf0e9724e51b420bc51a1d0625410c86d36641db",
+    "externalIds": {
+        "DBLP": "journals/corr/abs-1712-03133",
+        "ArXiv": "1712.03133",
+        "MAG": "2949060504",
+        "DOI": "10.1109/ICASSP.2018.8461935",
+        "CorpusId": 1582664
+    },
+    "title": "Building Competitive Direct Acoustics-to-Word Models for English Conversational Speech Recognition",
+    "abstract": "Direct acoustics-to-word (A2W) models in the end-to-end paradigm have received increasing attention compared to conventional subword based automatic speech recognition models using phones, characters, or context-dependent hidden Markov model states. This is because A2W models recognize words from speech without any decoder, pronunciation lexicon, or externally-trained language model, making training and decoding with such models simple. Prior work has shown that A2W models require orders of magnitude more training data in order to perform comparably to conventional models. Our work also showed this accuracy gap when using the English Switchboard-Fisher data set. This paper describes a recipe to train an A2W model that closes this gap and is at-par with state-of-the-art sub-word based models. We achieve a word error rate of 8.8.8%/13.9% on the Hub5-2000 Switchboard/CallHome test sets without any decoder or language model. We find that model initialization, training data order, and regularization have the most impact on the A2W model performance. Next, we present a joint word-character A2W model that learns to first spell the word and then recognize it. This model provides a rich output to the user instead of simple word hypotheses, making it especially useful in the case of words unseen or rarely-seen during training.",
+    "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+    "year": 2017,
+    "referenceCount": 33,
+    "citationCount": 151,
+    "influentialCitationCount": 14,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1712.03133",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A joint word-character A2W model that learns to first spell the word and then recognize it and provides a rich output to the user instead of simple word hypotheses, making it especially useful in the case of words unseen or rarely-seen during training."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3104038",
+            "name": "Kartik Audhkhasi"
+        },
+        {
+            "authorId": "144707379",
+            "name": "Brian Kingsbury"
+        },
+        {
+            "authorId": "1720857",
+            "name": "B. Ramabhadran"
+        },
+        {
+            "authorId": "1698208",
+            "name": "G. Saon"
+        },
+        {
+            "authorId": "1774515",
+            "name": "M. Picheny"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "7703a2c5468ecbee5b62c048339a03358ed5fe19",
+            "title": "Recurrent Neural Aligner: An Encoder-Decoder Neural Network Model for Sequence to Sequence Mapping"
+        },
+        {
+            "paperId": "1cfcdf0cec5636066a4c2aa60b4451462ed49fca",
+            "title": "Exploring neural transducers for end-to-end speech recognition"
+        },
+        {
+            "paperId": "1f2c92c53cc5ad80bc929ff3b0ad746da0bb5f30",
+            "title": "Direct Acoustics-to-Word Models for English Conversational Speech Recognition"
+        },
+        {
+            "paperId": "c9bd15c7838c1d3cdd5f5113a2efd9440f86b3da",
+            "title": "English Conversational Telephone Speech Recognition by Humans and Machines"
+        },
+        {
+            "paperId": "e10030a7ad71b7954a81de57e5e60de768a905a0",
+            "title": "Gram-CTC: Automatic Unit Selection and Target Decomposition for Sequence Labelling"
+        },
+        {
+            "paperId": "bcfdafc2627fafb739b9e22670d9853f889bc9b4",
+            "title": "Dense Prediction on Sequences with Time-Dilated Convolutions for Speech Recognition"
+        },
+        {
+            "paperId": "b1cb867270f87f96397cb5f0d76cbb58cdf2c2f2",
+            "title": "Neural Speech Recognizer: Acoustic-to-Word LSTM Model for Large Vocabulary Speech Recognition"
+        },
+        {
+            "paperId": "579e0077a3810510a7965224a8782ecc01766ea0",
+            "title": "Achieving Human Parity in Conversational Speech Recognition"
+        },
+        {
+            "paperId": "105788dd22393d5a4333c167814ec3d38c7d6612",
+            "title": "Latent Sequence Decompositions"
+        },
+        {
+            "paperId": "ba950c7e734110c5284682fbd522eb6c71a561d7",
+            "title": "Advances in all-neural speech recognition"
+        },
+        {
+            "paperId": "ac94ef90be9b0c3bf744d6744e47b38855f9a4c7",
+            "title": "The microsoft 2016 conversational speech recognition system"
+        },
+        {
+            "paperId": "6ce6a9a30cd69bd2842a4b581cf48c6815bdfdd8",
+            "title": "Purely Sequence-Trained Neural Networks for ASR Based on Lattice-Free MMI"
+        },
+        {
+            "paperId": "d155d64bdd86edf33f4395c5aec0388ffed69f99",
+            "title": "An empirical exploration of CTC acoustic models"
+        },
+        {
+            "paperId": "13497bd108d4412d02050e646235f456568cf822",
+            "title": "Deep Speech 2 : End-to-End Speech Recognition in English and Mandarin"
+        },
+        {
+            "paperId": "878ba5458e9e51f0b341fd9117fa0b43ef4096d3",
+            "title": "End-to-end attention-based large vocabulary speech recognition"
+        },
+        {
+            "paperId": "3056add22b20e3361c38c0472d294a79d4031cb4",
+            "title": "Listen, attend and spell: A neural network for large vocabulary conversational speech recognition"
+        },
+        {
+            "paperId": "97acdfb3d247f8250d865ef8a9169f06e40f138b",
+            "title": "EESEN: End-to-end speech recognition using deep RNN models and WFST-based decoding"
+        },
+        {
+            "paperId": "9fca2af9a0e3f2c5c3ed47abb3ebd21b7265ac2b",
+            "title": "Fast and accurate recurrent neural network acoustic models for speech recognition"
+        },
+        {
+            "paperId": "24741d280869ad9c60321f5ab6e5f01b7852507d",
+            "title": "Deep Speech: Scaling up end-to-end speech recognition"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "0fa553cfa0cf3cbdf7a913aa2ae789a757dfb32f",
+            "title": "Towards End-To-End Speech Recognition with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "5cea23330c76994cb626df20bed31cc2588033df",
+            "title": "Low-rank matrix factorization for Deep Neural Network training with high-dimensional output targets"
+        },
+        {
+            "paperId": "ea9d2a2b4ce11aaf85136840c65f3bc9c03ab649",
+            "title": "Understanding the difficulty of training deep feedforward neural networks"
+        },
+        {
+            "paperId": "8de174ab5419b9d3127695405efd079808e956e8",
+            "title": "Curriculum learning"
+        },
+        {
+            "paperId": "c516a0af72b9d524c36f7ee09589a252297b2df2",
+            "title": "Fast decoding for open vocabulary spoken term detection"
+        },
+        {
+            "paperId": "55ee875b9039febd378a3f8ac4e3d7603f83d57c",
+            "title": "Lexicon-Free Conversational Speech Recognition with Neural Networks"
+        },
+        {
+            "paperId": "31868290adf1c000c611dfc966b514d5a34e8d23",
+            "title": "FUNDAMENTAL TECHNOLOGIES IN MODERN SPEECH RECOGNITION Digital Object Identifier 10.1109/MSP.2012.2205597"
+        },
+        {
+            "paperId": "96ba5f76c1bb49bc1a8c294382a30be8dbf6c3d2",
+            "title": "Towards using hybrid word and fragment units for vocabulary independent LVCSR systems"
+        },
+        {
+            "paperId": "28eaf6abe26c92a06efbc894044185e469dd0cbf",
+            "title": "Fast vocabulary-independent audio search using path-based graph indexing"
+        },
+        {
+            "paperId": "231f6de83cfa4d641da1681e97a11b689a48e3aa",
+            "title": "Statistical methods for speech recognition"
+        },
+        {
+            "paperId": "261a056f8b21918e8616a429b2df6e1d5d33be41",
+            "title": "Connectionist Temporal Classi\ufb01cation: Labelling Unsegmented Sequence Data with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "845ee9838c1f5bf63b7db2c95ec5d27af14a4e02",
+            "title": "Connectionist Temporal Classi\ufb01cation: Labelling Unsegmented Sequences with Recurrent Neural Networks"
+        }
+    ]
+}

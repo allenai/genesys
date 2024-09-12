@@ -1,0 +1,37 @@
+{
+    "paperId": "1ff9332f2b62ccdded3f46320fd3661d99155652",
+    "externalIds": {
+        "DBLP": "journals/ppl/SaxenaBP94",
+        "MAG": "2091586606",
+        "DOI": "10.1142/S0129626494000399",
+        "CorpusId": 41219507
+    },
+    "title": "On Parallel Prefix Computation",
+    "abstract": "We prove that prefix sums of n integers of at most b bits can be found on a COMMON CRCW PRAM in time with a linear time-processor product. The algorithm is optimally fast, for any polynomial number of processors. In particular, if the time taken is . This is a generalisation of previous result. The previous time algorithm was valid only for O(log n)-bit numbers. Application of this algorithm to r-way parallel merge sort algorithm is also considered. We also consider a more realistic PRAM variant, in which the word size, m, may be smaller than b (m\u2265log n). On this model, prefix sums can be found in optimal time.",
+    "venue": "Parallel Processing Letters",
+    "year": 1994,
+    "referenceCount": 0,
+    "citationCount": 474,
+    "influentialCitationCount": 37,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is proved that prefix sums of n integers of at most b bits can be found on a COMMON CRCW PRAM in time with a linear time-processor product, and the algorithm is optimally fast, for any polynomial number of processors."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "152684509",
+            "name": "Sanjeev Saxena"
+        },
+        {
+            "authorId": "1692045",
+            "name": "P. Bhatt"
+        },
+        {
+            "authorId": "145193793",
+            "name": "V. C. Prasad"
+        }
+    ],
+    "references": []
+}

@@ -1,0 +1,106 @@
+{
+    "paperId": "cf3229e74f912ef365d67d1954441b32ce2573ee",
+    "externalIds": {
+        "MAG": "2964072166",
+        "ArXiv": "1312.4461",
+        "DBLP": "journals/corr/DavisA13",
+        "CorpusId": 7047554
+    },
+    "title": "Low-Rank Approximations for Conditional Feedforward Computation in Deep Neural Networks",
+    "abstract": "Scalability properties of deep neural networks raise key research questions, particularly as the problems considered become larger and more challenging. This paper expands on the idea of conditional computation introduced by Bengio, et. al., where the nodes of a deep network are augmented by a set of gating units that determine when a node should be calculated. By factorizing the weight matrix into a low-rank approximation, an estimation of the sign of the pre-nonlinearity activation can be efficiently obtained. For networks using rectified-linear hidden units, this implies that the computation of a hidden unit with an estimated negative pre-nonlinearity can be ommitted altogether, as its value will become zero when nonlinearity is applied. For sparse neural networks, this can result in considerable speed gains. Experimental results using the MNIST and SVHN data sets with a fully-connected deep neural network demonstrate the performance robustness of the proposed scheme with respect to the error introduced by the conditional computation process.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2013,
+    "referenceCount": 18,
+    "citationCount": 73,
+    "influentialCitationCount": 3,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Experimental results using the MNIST and SVHN data sets with a fully-connected deep neural network demonstrate the performance robustness of the proposed scheme with respect to the error introduced by the conditional computation process."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2113797986",
+            "name": "Andrew S. Davis"
+        },
+        {
+            "authorId": "1804314",
+            "name": "I. Arel"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "f9f19bee621faf46f90b023f8de8248b57becbc4",
+            "title": "Adaptive dropout for training deep neural networks"
+        },
+        {
+            "paperId": "62c76ca0b2790c34e85ba1cce09d47be317c7235",
+            "title": "Estimating or Propagating Gradients Through Stochastic Neurons for Conditional Computation"
+        },
+        {
+            "paperId": "d1208ac421cf8ff67b27d93cd19ae42b8d596f95",
+            "title": "Deep learning with COTS HPC systems"
+        },
+        {
+            "paperId": "eff61216e0136886e1158625b1e5a88ed1a7cbce",
+            "title": "Predicting Parameters in Deep Learning"
+        },
+        {
+            "paperId": "72d32c986b47d6b880dad0c3f155fe23d2939038",
+            "title": "Deep Learning of Representations: Looking Forward"
+        },
+        {
+            "paperId": "0a9cbc7484a0da0962b39ca880ee63b398746170",
+            "title": "Saturating Auto-Encoders"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "0060745e006c5f14ec326904119dca19c6545e51",
+            "title": "Improving neural networks by preventing co-adaptation of feature detectors"
+        },
+        {
+            "paperId": "72e93aa6767ee683de7f001fa72f1314e40a8f35",
+            "title": "Building high-level features using large scale unsupervised learning"
+        },
+        {
+            "paperId": "be53d4def5e0601f2416e9345babc7ef1b30a664",
+            "title": "Deep Belief Networks using discriminative features for phone recognition"
+        },
+        {
+            "paperId": "1f88427d7aa8225e47f946ac41a0667d7b69ac52",
+            "title": "What is the best multi-stage architecture for object recognition?"
+        },
+        {
+            "paperId": "e64a9960734215e2b1866ea3cb723ffa5585ac14",
+            "title": "Efficient sparse coding algorithms"
+        },
+        {
+            "paperId": "8112c4305b88d85199267e9e03d3a0aca4432059",
+            "title": "The approximation of one matrix by another of lower rank"
+        },
+        {
+            "paperId": "5d5d4f49d6443c8529a6f5ebef5c499d47a869da",
+            "title": "Improving Neural Networks with Dropout"
+        },
+        {
+            "paperId": "dab50f7682bf410743e2d2447eb5d2bc652f1463",
+            "title": "Saturating Auto-Encoder"
+        },
+        {
+            "paperId": "7c616fe341381a4866135042dbb565d2eda415c3",
+            "title": "Prediction as a candidate for learning deep hierarchical models of data"
+        },
+        {
+            "paperId": "02227c94dd41fe0b439e050d377b0beb5d427cda",
+            "title": "Reading Digits in Natural Images with Unsupervised Feature Learning"
+        },
+        {
+            "paperId": null,
+            "title": "Deep sparse rectifier networks"
+        }
+    ]
+}

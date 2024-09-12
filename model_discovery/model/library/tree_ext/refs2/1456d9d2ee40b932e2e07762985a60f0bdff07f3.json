@@ -1,0 +1,300 @@
+{
+    "paperId": "1456d9d2ee40b932e2e07762985a60f0bdff07f3",
+    "externalIds": {
+        "MAG": "2990032740",
+        "PubMedCentral": "6864102",
+        "ArXiv": "1810.06721",
+        "DBLP": "journals/corr/abs-1810-06721",
+        "DOI": "10.1038/s41467-019-13073-w",
+        "CorpusId": 53113739,
+        "PubMed": "31745075"
+    },
+    "title": "Optimizing agent behavior over long time scales by transporting value",
+    "abstract": null,
+    "venue": "Nature Communications",
+    "year": 2018,
+    "referenceCount": 59,
+    "citationCount": 111,
+    "influentialCitationCount": 12,
+    "openAccessPdf": {
+        "url": "https://www.nature.com/articles/s41467-019-13073-w.pdf",
+        "status": "GOLD"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Here, the authors show how a mechanism that connects learning from delayed rewards with memory retrieval can enable AI agents to discover links between past events to help decide better courses of action in the future."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2143897443",
+            "name": "Chia-Chun Hung"
+        },
+        {
+            "authorId": "2542999",
+            "name": "T. Lillicrap"
+        },
+        {
+            "authorId": "3041463",
+            "name": "Josh Abramson"
+        },
+        {
+            "authorId": "1834814485",
+            "name": "Yan Wu"
+        },
+        {
+            "authorId": "153583218",
+            "name": "Mehdi Mirza"
+        },
+        {
+            "authorId": "32561676",
+            "name": "Federico Carnevale"
+        },
+        {
+            "authorId": "37968006",
+            "name": "Arun Ahuja"
+        },
+        {
+            "authorId": "89504302",
+            "name": "Greg Wayne"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "3e2ba8aabd85c01897dd81ae93dba96779a5468a",
+            "title": "The Book of Why: The New Science of Cause and Effect\u2020"
+        },
+        {
+            "paperId": "ddea0e5c27ff91cda7ba50e1231aa7f7d076e58b",
+            "title": "Reinforcement Learning, Fast and Slow"
+        },
+        {
+            "paperId": "8ede7ddf99986d69562455bc8d69222fc3e27350",
+            "title": "Recurrent Experience Replay in Distributed Reinforcement Learning"
+        },
+        {
+            "paperId": "fa0beb3f4d7f6e7e49b153af7e8a7c30f2937b60",
+            "title": "Sparse Attentive Backtracking: Temporal CreditAssignment Through Reminding"
+        },
+        {
+            "paperId": "41cca0b0a27ba363ca56e7033569aeb1922b0ac9",
+            "title": "Recurrent World Models Facilitate Policy Evolution"
+        },
+        {
+            "paperId": "bad355642cd299caca2328dae02563278ea74e8c",
+            "title": "RUDDER: Return Decomposition for Delayed Rewards"
+        },
+        {
+            "paperId": "f4ba3aabd5cc4f021f2b316ab7f8d46635d1018a",
+            "title": "Been There, Done That: Meta-Learning with Episodic Recall"
+        },
+        {
+            "paperId": "c6a5e6a594adcfb8b1a9bb67975ebc439ceab4a9",
+            "title": "Unsupervised Predictive Memory in a Goal-Directed Agent"
+        },
+        {
+            "paperId": "927d904d2aad002eb71e8c6ee45218f31a103100",
+            "title": "Psychlab: A Psychology Laboratory for Deep Reinforcement Learning Agents"
+        },
+        {
+            "paperId": "5870d0edaaa0f28bbe657238febaaf1181e81378",
+            "title": "Neuroscience-Inspired Artificial Intelligence"
+        },
+        {
+            "paperId": "d98ed6612f4d7efc3211131378d592de10bfc636",
+            "title": "Reinforcement Learning and Episodic Memory in Humans and Animals: An Integrative Framework"
+        },
+        {
+            "paperId": "784ee73d5363c711118f784428d1ab89f019daa5",
+            "title": "Hybrid computing using a neural network with dynamic external memory"
+        },
+        {
+            "paperId": "ba378579fb44007db9f02699889721dcd2b5b3a0",
+            "title": "Model-Free Episodic Control"
+        },
+        {
+            "paperId": "f19284f6ab802c8a1fcde076fcb3fba195a71723",
+            "title": "A guide to convolution arithmetic for deep learning"
+        },
+        {
+            "paperId": "69e76e16740ed69f4dc55361a3d319ac2f1293dd",
+            "title": "Asynchronous Methods for Deep Reinforcement Learning"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "d316c82c12cf4c45f9e85211ef3d1fa62497bff8",
+            "title": "High-Dimensional Continuous Control Using Generalized Advantage Estimation"
+        },
+        {
+            "paperId": "340f48901f72278f6bf78a04ee5b01df208cc508",
+            "title": "Human-level control through deep reinforcement learning"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "3df673220e67cc55d40fbe495c9fba999d820613",
+            "title": "Bias in Natural Actor-Critic Algorithms"
+        },
+        {
+            "paperId": "0281cbbae925cbfb00ca60a9950d2613962ff14a",
+            "title": "The Recursive Mind"
+        },
+        {
+            "paperId": "dc6ac3437f0a6e64e4404b1b9d188394f8a3bf71",
+            "title": "Deep Inside Convolutional Networks: Visualising Image Classification Models and Saliency Maps"
+        },
+        {
+            "paperId": "4177ec52d1b80ed57f2e72b0f9a42365f1a8598d",
+            "title": "Speech recognition with deep recurrent neural networks"
+        },
+        {
+            "paperId": "913986cd716de15a3077172612810be330207356",
+            "title": "The recursive mind: the origins of human language, thought and civilization"
+        },
+        {
+            "paperId": "52121b38358023f1aa3c010434f605e69b612043",
+            "title": "On the training of recurrent neural networks"
+        },
+        {
+            "paperId": "6c68006eedd8aeacb37aaae6997d9e4afce2e5cd",
+            "title": "Episodic Future Thinking Reduces Reward Delay Discounting through an Enhancement of Prefrontal-Mediotemporal Interactions"
+        },
+        {
+            "paperId": "0bcdc0143a1bff5a1cbea7bc38157bb821ae1b9c",
+            "title": "Signal-to-Noise Ratio Analysis of Policy Gradient Algorithms"
+        },
+        {
+            "paperId": "8458e49fb08d2cca3a8d7355465e182c30785220",
+            "title": "Visual long-term memory has a massive storage capacity for object details"
+        },
+        {
+            "paperId": "4dcb5efefcff6ea05a041771a8f13d643b5ca8d2",
+            "title": "Sample-based learning and search with permanent and transient memories"
+        },
+        {
+            "paperId": "ca20e01398931da57a981d039780bbf8685e9b61",
+            "title": "Solving the credit assignment problem: explicit and implicit learning of action sequences with probabilistic outcomes"
+        },
+        {
+            "paperId": "a943bb51790e7f5606cd6d4f8b829ed567265c3e",
+            "title": "Using Imagination to Understand the Neural Basis of Episodic Memory"
+        },
+        {
+            "paperId": "c8e337a12df57783edb75eace2b8d67270a6823c",
+            "title": "Hippocampal Contributions to Control: The Third Way"
+        },
+        {
+            "paperId": "c2dde76f9ad60d7c5814cd1cd08d2ae38f9769a0",
+            "title": "Remembering the past to imagine the future: the prospective brain"
+        },
+        {
+            "paperId": "fa85f48cf394f6e12852aa46c85c6b4178808980",
+            "title": "Dopamine D1/D5 Receptors Gate the Acquisition of Novel Information through Hippocampal Long-Term Potentiation and Long-Term Depression"
+        },
+        {
+            "paperId": "d27cfeb0fde452d7d3e434df8e609e2451c81a51",
+            "title": "A Dual Self Model of Impulse Control"
+        },
+        {
+            "paperId": "50b3e77fec6a1a5fb0f70f9b4306e33bafaf9468",
+            "title": "Dopamine-dependent facilitation of LTP induction in hippocampal CA1 by exposure to spatial novelty"
+        },
+        {
+            "paperId": "2e9ea1313f2b352a86385be9c6ca3b29ba409ac4",
+            "title": "A Gentle Introduction to The Universal Algorithmic Agent AIXI"
+        },
+        {
+            "paperId": "b2369c0575d060872a7b980315f38103bbaaae1c",
+            "title": "Time Discounting and Time Preference: A Critical Review"
+        },
+        {
+            "paperId": "085fb3acabcbf80ef1bf47daec50d246475b072b",
+            "title": "Infinite-Horizon Policy-Gradient Estimation"
+        },
+        {
+            "paperId": "a20f0ce0616def7cc9a87446c228906cd5da093b",
+            "title": "Policy Gradient Methods for Reinforcement Learning with Function Approximation"
+        },
+        {
+            "paperId": "d8e1d445848f0c94e28ac2c1e79a0a9052f08ec1",
+            "title": "Intrahousehold Resource Allocation in Developing Countries: Methods, Models, and Policy"
+        },
+        {
+            "paperId": "b8ff8c7ab23eb70d4179c15a8a6b0efa1a493b8b",
+            "title": "Steps toward Artificial Intelligence"
+        },
+        {
+            "paperId": "a34e35dbbc6911fa7b94894dffdc0076a261b6f0",
+            "title": "Neural Networks and the Bias/Variance Dilemma"
+        },
+        {
+            "paperId": "e9e6bb5f2a04ae30d8ecc9287f8b702eedd7b772",
+            "title": "Some Studies in Machine Learning Using the Game of Checkers"
+        },
+        {
+            "paperId": "09c2bea7aba02571609c56fa4d27f77dcf7cd600",
+            "title": "The chess machine: an example of dealing with a complex task by adaptation"
+        },
+        {
+            "paperId": "e84d660ebf894e2fb85d7b27985bfbf07b9acd22",
+            "title": "Cognitive maps in rats and men."
+        },
+        {
+            "paperId": "783c98b1a9b11386cec93d73a710e3a73ca436d3",
+            "title": "A Note on Measurement of Utility"
+        },
+        {
+            "paperId": "e31692a74427b58b6154e37da7535e142ceceb4b",
+            "title": "Optimizing Expectations: From Deep Reinforcement Learning to Stochastic Computation Graphs"
+        },
+        {
+            "paperId": null,
+            "title": "The CIFAR - 10 dataset"
+        },
+        {
+            "paperId": "f34607a6aa2d984e34a5ce7f0bdac4a860fa98a4",
+            "title": "Training Recurrent Neural Networks"
+        },
+        {
+            "paperId": "4c915c1eecb217c123a36dc6d3ce52d12c742614",
+            "title": "Simple Statistical Gradient-Following Algorithms for Connectionist Reinforcement Learning"
+        },
+        {
+            "paperId": "ad521a7cad29edff251bd1a20d7b92c332db1cf8",
+            "title": "The dawn of human culture"
+        },
+        {
+            "paperId": "97efafdb4a3942ab3efba53ded7413199f79c054",
+            "title": "Reinforcement Learning: An Introduction"
+        },
+        {
+            "paperId": "69bd34fafbe1cfc12caee013533cba39e15a0c35",
+            "title": "The effect of the introduction of reward upon the maze performance of rats"
+        },
+        {
+            "paperId": "42a2f54a8db026f9f3459bd0d7a93f313b4a6cf1",
+            "title": "(www.interscience.wiley.com) DOI: 10.1002/acp.1002 Delaying Execution of Intentions: Overcoming the Costs of Interruptions"
+        },
+        {
+            "paperId": null,
+            "title": "6.4 Key-to-Door-to-Match"
+        }
+    ]
+}

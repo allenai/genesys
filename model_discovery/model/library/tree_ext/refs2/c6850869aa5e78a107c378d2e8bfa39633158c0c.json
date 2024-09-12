@@ -1,0 +1,362 @@
+{
+    "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+    "externalIds": {
+        "ArXiv": "1609.08144",
+        "MAG": "2525778437",
+        "DBLP": "journals/corr/WuSCLNMKCGMKSJL16",
+        "CorpusId": 3603249
+    },
+    "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation",
+    "abstract": "Neural Machine Translation (NMT) is an end-to-end learning approach for automated translation, with the potential to overcome many of the weaknesses of conventional phrase-based translation systems. Unfortunately, NMT systems are known to be computationally expensive both in training and in translation inference. Also, most NMT systems have difficulty with rare words. These issues have hindered NMT's use in practical deployments and services, where both accuracy and speed are essential. In this work, we present GNMT, Google's Neural Machine Translation system, which attempts to address many of these issues. Our model consists of a deep LSTM network with 8 encoder and 8 decoder layers using attention and residual connections. To improve parallelism and therefore decrease training time, our attention mechanism connects the bottom layer of the decoder to the top layer of the encoder. To accelerate the final translation speed, we employ low-precision arithmetic during inference computations. To improve handling of rare words, we divide words into a limited set of common sub-word units (\"wordpieces\") for both input and output. This method provides a good balance between the flexibility of \"character\"-delimited models and the efficiency of \"word\"-delimited models, naturally handles translation of rare words, and ultimately improves the overall accuracy of the system. Our beam search technique employs a length-normalization procedure and uses a coverage penalty, which encourages generation of an output sentence that is most likely to cover all the words in the source sentence. On the WMT'14 English-to-French and English-to-German benchmarks, GNMT achieves competitive results to state-of-the-art. Using a human side-by-side evaluation on a set of isolated simple sentences, it reduces translation errors by an average of 60% compared to Google's phrase-based production system.",
+    "venue": "arXiv.org",
+    "year": 2016,
+    "referenceCount": 53,
+    "citationCount": 6422,
+    "influentialCitationCount": 433,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "GNMT, Google's Neural Machine Translation system, is presented, which attempts to address many of the weaknesses of conventional phrase-based translation systems and provides a good balance between the flexibility of \"character\"-delimited models and the efficiency of \"word\"-delicited models."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "48607963",
+            "name": "Yonghui Wu"
+        },
+        {
+            "authorId": "144927151",
+            "name": "M. Schuster"
+        },
+        {
+            "authorId": "2545358",
+            "name": "Z. Chen"
+        },
+        {
+            "authorId": "2827616",
+            "name": "Quoc V. Le"
+        },
+        {
+            "authorId": "144739074",
+            "name": "Mohammad Norouzi"
+        },
+        {
+            "authorId": "3153147",
+            "name": "Wolfgang Macherey"
+        },
+        {
+            "authorId": "2048712",
+            "name": "M. Krikun"
+        },
+        {
+            "authorId": "145144022",
+            "name": "Yuan Cao"
+        },
+        {
+            "authorId": "145312180",
+            "name": "Qin Gao"
+        },
+        {
+            "authorId": "113439369",
+            "name": "Klaus Macherey"
+        },
+        {
+            "authorId": "2367620",
+            "name": "J. Klingner"
+        },
+        {
+            "authorId": "145825976",
+            "name": "Apurva Shah"
+        },
+        {
+            "authorId": "145657834",
+            "name": "Melvin Johnson"
+        },
+        {
+            "authorId": "2109059862",
+            "name": "Xiaobing Liu"
+        },
+        {
+            "authorId": "40527594",
+            "name": "Lukasz Kaiser"
+        },
+        {
+            "authorId": "2776283",
+            "name": "Stephan Gouws"
+        },
+        {
+            "authorId": "2739610",
+            "name": "Yoshikiyo Kato"
+        },
+        {
+            "authorId": "1765329",
+            "name": "Taku Kudo"
+        },
+        {
+            "authorId": "1754386",
+            "name": "H. Kazawa"
+        },
+        {
+            "authorId": "144077726",
+            "name": "K. Stevens"
+        },
+        {
+            "authorId": "1753079661",
+            "name": "George Kurian"
+        },
+        {
+            "authorId": "2056800684",
+            "name": "Nishant Patil"
+        },
+        {
+            "authorId": "49337181",
+            "name": "Wei Wang"
+        },
+        {
+            "authorId": "39660914",
+            "name": "C. Young"
+        },
+        {
+            "authorId": "2119125158",
+            "name": "Jason R. Smith"
+        },
+        {
+            "authorId": "2909504",
+            "name": "Jason Riesa"
+        },
+        {
+            "authorId": "29951847",
+            "name": "Alex Rudnick"
+        },
+        {
+            "authorId": "1689108",
+            "name": "O. Vinyals"
+        },
+        {
+            "authorId": "32131713",
+            "name": "G. Corrado"
+        },
+        {
+            "authorId": "48342565",
+            "name": "Macduff Hughes"
+        },
+        {
+            "authorId": "49959210",
+            "name": "J. Dean"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "1d9600229a4cf8ba5e8f5ad4d05b41af9c8f80a6",
+            "title": "Reward Augmented Maximum Likelihood for Neural Structured Prediction"
+        },
+        {
+            "paperId": "b60abe57bc195616063be10638c6437358c81d1e",
+            "title": "Deep Recurrent Models with Fast-Forward Connections for Neural Machine Translation"
+        },
+        {
+            "paperId": "4954fa180728932959997a4768411ff9136aac81",
+            "title": "TensorFlow: A system for large-scale machine learning"
+        },
+        {
+            "paperId": "733b821faeebe49b6efcf5369e3b9902b476529e",
+            "title": "Achieving Open Vocabulary Neural Machine Translation with Hybrid Word-Character Models"
+        },
+        {
+            "paperId": "aa5b35dcf8b024f5352db73cc3944e8fad4f3793",
+            "title": "Pointing the Unknown Words"
+        },
+        {
+            "paperId": "acec46ffd3f6046af97529127d98f1d623816ea4",
+            "title": "A Character-level Decoder without Explicit Segmentation for Neural Machine Translation"
+        },
+        {
+            "paperId": "4d070993cb75407b285e14cb8aac0077624ef4d9",
+            "title": "Character-based Neural Machine Translation"
+        },
+        {
+            "paperId": "44a9d4711a5e9fa36bbd56aed8d5291acd9e8876",
+            "title": "Coverage-based Neural Machine Translation"
+        },
+        {
+            "paperId": "d3cb9bad655197b52932978dd8186b36c512bf92",
+            "title": "Quantized Convolutional Neural Networks for Mobile Devices"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "9f2a8e923965b23c11066a2ead79658208f1fae1",
+            "title": "Minimum Risk Training for Neural Machine Translation"
+        },
+        {
+            "paperId": "b7aee9dfb027d6061c6a653684c0fa9a9bba750d",
+            "title": "Sequence Level Training with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "d76c07211479e233f7c6a6f32d5346c983c5598f",
+            "title": "Multi-task Sequence to Sequence Learning"
+        },
+        {
+            "paperId": "642d0f49b7826adcf986616f4af77e736229990f",
+            "title": "Deep Compression: Compressing Deep Neural Network with Pruning, Trained Quantization and Huffman Coding"
+        },
+        {
+            "paperId": "1518039b5001f1836565215eb047526b3ac7f462",
+            "title": "Neural Machine Translation of Rare Words with Subword Units"
+        },
+        {
+            "paperId": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+            "title": "Effective Approaches to Attention-based Neural Machine Translation"
+        },
+        {
+            "paperId": "83cf4b2f39bcc802b09fd59b69e23068447b26b7",
+            "title": "Multi-Task Learning for Multiple Language Translation"
+        },
+        {
+            "paperId": "e0945081b5b87187a53d4329cf77cd8bff635795",
+            "title": "Highway Networks"
+        },
+        {
+            "paperId": "b7cf49e30355633af2db19f35189410c8515e91f",
+            "title": "Deep Learning with Limited Numerical Precision"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "1938624bb9b0f999536dcc8d8f519810bb4e1b3b",
+            "title": "On Using Very Large Target Vocabulary for Neural Machine Translation"
+        },
+        {
+            "paperId": "1956c239b3552e030db1b78951f64781101125ed",
+            "title": "Addressing the Rare Word Problem in Neural Machine Translation"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "f264e8b33c0d49a692a6ce2c4bcb28588aeb7d97",
+            "title": "Recurrent Neural Network Regularization"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "97cedf99252026f58e8154bc61d49cf885d42030",
+            "title": "Edinburgh\u2019s Phrase-based Machine Translation Systems for WMT-14"
+        },
+        {
+            "paperId": "0894b06cff1cd0903574acaa7fcf071b144ae775",
+            "title": "Fast and Robust Neural Network Joint Models for Statistical Machine Translation"
+        },
+        {
+            "paperId": "8e4fb17fff38a7834af5b4eaafcbbde02bf00975",
+            "title": "N-gram Counts and Language Models from the Common Crawl"
+        },
+        {
+            "paperId": "944a1cfd79dbfb6fef460360a0765ba790f4027a",
+            "title": "Recurrent Continuous Translation Models"
+        },
+        {
+            "paperId": "3127190433230b3dc1abd0680bb58dced4bcd90e",
+            "title": "Large Scale Distributed Deep Networks"
+        },
+        {
+            "paperId": "c5145b1d15fea9340840cc8bb6f0e46e8934827f",
+            "title": "Understanding the exploding gradient problem"
+        },
+        {
+            "paperId": "ed6262b569c0a62c51d941228c54f34e563af022",
+            "title": "Japanese and Korean voice search"
+        },
+        {
+            "paperId": "a4b828609b60b06e61bea7a4029cc9e1cad5df87",
+            "title": "Statistical Phrase-Based Translation"
+        },
+        {
+            "paperId": "11540131eae85b2e11d53df7f1360eeb6476e7f4",
+            "title": "Learning to Forget: Continual Prediction with LSTM"
+        },
+        {
+            "paperId": "e23c34414e66118ecd9b08cf0cd4d016f59b0b85",
+            "title": "Bidirectional recurrent neural networks"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "ab7b5917515c460b90451e67852171a531671ab8",
+            "title": "The Mathematics of Statistical Machine Translation: Parameter Estimation"
+        },
+        {
+            "paperId": "a1066659ec1afee9dce586f6f49b7d44527827e1",
+            "title": "A Statistical Approach to Machine Translation"
+        },
+        {
+            "paperId": "2166fa493a8c6e40f7f8562d15712dd3c75f03df",
+            "title": "A Statistical Approach to Language Translation"
+        },
+        {
+            "paperId": null,
+            "title": "Ternary weight networks. CoRR abs/1605"
+        },
+        {
+            "paperId": "2e5f2b57f4c476dd69dc22ccdf547e48f40a994c",
+            "title": "Gradient Flow in Recurrent Nets: the Difficulty of Learning Long-Term Dependencies"
+        },
+        {
+            "paperId": "26affdaceca32cd4a5fde0db61ffef02a59baa13",
+            "title": "Learning Recursive Distributed Representations for Holistic Computation"
+        },
+        {
+            "paperId": "995a3b11cc8a4751d8e167abc4aa937abc934df0",
+            "title": "The Cascade-Correlation Learning Architecture"
+        },
+        {
+            "paperId": null,
+            "title": "PBMT Martin a d\u00e9clar\u00e9 \u00e0 CNN qu'il a demand\u00e9 Daley si son patron de l'\u00e9poque connaissaient le potentiel remaniement minist\u00e9riel"
+        },
+        {
+            "paperId": null,
+            "title": "Source She was spotted three days later by a dog walker trapped in the quarry PBMT Elle a \u00e9t\u00e9 rep\u00e9r\u00e9 trois jours plus tard par un promeneur de chien pi\u00e9g\u00e9 dans la carri\u00e8re 6"
+        },
+        {
+            "paperId": null,
+            "title": "Human Les analystes pensent que le pays ne devrait pas retomber dans un conflit ouvert, mais les r\u00e9cents \u00e9v\u00e8nements ont \u00e9branl\u00e9 les investisseurs \u00e9trangers et la population locale"
+        },
+        {
+            "paperId": null,
+            "title": "Source Analysts believe the country is unlikely to slide back into full-blown conflict, but recent events have unnerved foreign investors and locals"
+        },
+        {
+            "paperId": null,
+            "title": "Source Martin told CNN that he asked Daley whether his then-boss knew about the potential shuffle"
+        },
+        {
+            "paperId": null,
+            "title": "Les Etats-Unis n'est pas effectuer une surveillance \u00e9lectronique destin\u00e9 aux bureaux de la Banque mondiale et du FMI \u00e0 Washington"
+        },
+        {
+            "paperId": null,
+            "title": "GNMT Martin a dit \u00e0 CNN qu'il avait demand\u00e9 \u00e0 Daley si son patron d'alors"
+        },
+        {
+            "paperId": null,
+            "title": "La raison pour laquelle Boeing fait cela est de cr\u00e9er plus de si\u00e8ges pour rendre son avion plus comp\u00e9titif avec nos produits"
+        },
+        {
+            "paperId": null,
+            "title": "Human Elle a \u00e9t\u00e9 rep\u00e9r\u00e9e trois jours plus tard par une personne qui promenait son chien coinc\u00e9e dans la carri\u00e8re 5"
+        }
+    ]
+}

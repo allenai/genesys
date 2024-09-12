@@ -1,0 +1,78 @@
+{
+    "paperId": "58e00cde75cf11589ca53e7d2e62179a80cad19a",
+    "externalIds": {
+        "MAG": "193524605",
+        "ACL": "L10-1531",
+        "DBLP": "conf/lrec/BaccianellaES10",
+        "CorpusId": 13886408
+    },
+    "title": "SentiWordNet 3.0: An Enhanced Lexical Resource for Sentiment Analysis and Opinion Mining",
+    "abstract": "In this work we present SENTIWORDNET 3.0, a lexical resource explicitly devised for supporting sentiment classification and opinion mining applications. SENTIWORDNET 3.0 is an improved version of SENTIWORDNET 1.0, a lexical resource publicly available for research purposes, now currently licensed to more than 300 research groups and used in a variety of research projects worldwide. Both SENTIWORDNET 1.0 and 3.0 are the result of automatically annotating all WORDNET synsets according to their degrees of positivity, negativity, and neutrality. SENTIWORDNET 1.0 and 3.0 differ (a) in the versions of WORDNET which they annotate (WORDNET 2.0 and 3.0, respectively), (b) in the algorithm used for automatically annotating WORDNET, which now includes (additionally to the previous semi-supervised learning step) a random-walk step for refining the scores. We here discuss SENTIWORDNET 3.0, especially focussing on the improvements concerning aspect (b) that it embodies with respect to version 1.0. We also report the results of evaluating SENTIWORDNET 3.0 against a fragment of WORDNET 3.0 manually annotated for positivity, negativity, and neutrality; these results indicate accuracy improvements of about 20% with respect to SENTIWORDNET 1.0.",
+    "venue": "International Conference on Language Resources and Evaluation",
+    "year": 2010,
+    "referenceCount": 10,
+    "citationCount": 3220,
+    "influentialCitationCount": 486,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work discusses SENTIWORDNET 3.0, a lexical resource explicitly devised for supporting sentiment classification and opinion mining applications, and reports on the improvements concerning aspect (b) that it embodies with respect to version 1.0."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1766896",
+            "name": "Stefano Baccianella"
+        },
+        {
+            "authorId": "1699411",
+            "name": "Andrea Esuli"
+        },
+        {
+            "authorId": "145077269",
+            "name": "F. Sebastiani"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "c39f9bbe3ccc32879168bd687f7aa178785987e9",
+            "title": "Automatic generation of lexical resources for opinion mining: models, algorithms and applications"
+        },
+        {
+            "paperId": "2a1aa2b44445b318d6fa01803c3d603d65f6e7ec",
+            "title": "Comparing and aggregating rankings with ties"
+        },
+        {
+            "paperId": "5c8d05e27e36ebd64ee43fe1670262cdcc2123ba",
+            "title": "Measuring praise and criticism: Inference of semantic orientation from association"
+        },
+        {
+            "paperId": null,
+            "title": "Opinion mining and sentiment analysis. Foundations and Trends in Information Retrieval"
+        },
+        {
+            "paperId": null,
+            "title": "Micro-WNOp: A gold standard for the evaluation of automatically compiled lexical resources for opinion mining"
+        },
+        {
+            "paperId": "32f82a9a872faafe491d7ef2eaba4f41a5d11918",
+            "title": "Random-Walk Models of Term Semantics: An Application to Opinion-Related Properties"
+        },
+        {
+            "paperId": "96761dc3d8adaeff44eb9c07501eb3109802ee4b",
+            "title": "SENTIWORDNET: A Publicly Available Lexical Resource for Opinion Mining"
+        },
+        {
+            "paperId": "80389d4f528ccd8a658416ae4c912b74f5fd009e",
+            "title": "SentiWordNet: A High-Coverage Lexical Resource for Opinion Mining"
+        },
+        {
+            "paperId": "be2a4895a1e90ff1206103a860edbabd4174eacd",
+            "title": "WordNet 2 - A Morphologically and Semantically Enhanced Resource"
+        },
+        {
+            "paperId": null,
+            "title": "all W"
+        }
+    ]
+}

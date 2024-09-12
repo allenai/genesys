@@ -1,0 +1,286 @@
+{
+    "paperId": "72e93aa6767ee683de7f001fa72f1314e40a8f35",
+    "externalIds": {
+        "DBLP": "conf/icassp/Le13",
+        "MAG": "2253807446",
+        "ArXiv": "1112.6209",
+        "DOI": "10.1109/ICASSP.2013.6639343",
+        "CorpusId": 206741597
+    },
+    "title": "Building high-level features using large scale unsupervised learning",
+    "abstract": "We consider the problem of building high-level, class-specific feature detectors from only unlabeled data. For example, is it possible to learn a face detector using only unlabeled images? To answer this, we train a deep sparse autoencoder on a large dataset of images (the model has 1 billion connections, the dataset has 10 million 200\u00d7200 pixel images downloaded from the Internet). We train this network using model parallelism and asynchronous SGD on a cluster with 1,000 machines (16,000 cores) for three days. Contrary to what appears to be a widely-held intuition, our experimental results reveal that it is possible to train a face detector without having to label images as containing a face or not. Control experiments show that this feature detector is robust not only to translation but also to scaling and out-of-plane rotation. We also find that the same network is sensitive to other high-level concepts such as cat faces and human bodies. Starting from these learned features, we trained our network to recognize 22,000 object categories from ImageNet and achieve a leap of 70% relative improvement over the previous state-of-the-art.",
+    "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+    "year": 2011,
+    "referenceCount": 56,
+    "citationCount": 2237,
+    "influentialCitationCount": 103,
+    "openAccessPdf": {
+        "url": "http://www.robotics.stanford.edu/%7Eang/papers/icml12-HighLevelFeaturesUsingUnsupervisedLearning.pdf",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Contrary to what appears to be a widely-held intuition, the experimental results reveal that it is possible to train a face detector without having to label images as containing a face or not."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2827616",
+            "name": "Quoc V. Le"
+        },
+        {
+            "authorId": "1706809",
+            "name": "Marc'Aurelio Ranzato"
+        },
+        {
+            "authorId": "3089272",
+            "name": "R. Monga"
+        },
+        {
+            "authorId": "145139947",
+            "name": "M. Devin"
+        },
+        {
+            "authorId": "32131713",
+            "name": "G. Corrado"
+        },
+        {
+            "authorId": "2118440152",
+            "name": "Kai Chen"
+        },
+        {
+            "authorId": "49959210",
+            "name": "J. Dean"
+        },
+        {
+            "authorId": "34699434",
+            "name": "A. Ng"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "3127190433230b3dc1abd0680bb58dced4bcd90e",
+            "title": "Large Scale Distributed Deep Networks"
+        },
+        {
+            "paperId": "0d77e82e45bea1ab04703373c37c9aead7481303",
+            "title": "How Does the Brain Solve Visual Object Recognition?"
+        },
+        {
+            "paperId": "51e93552fe55be91a5711ff2aabc04b742503e68",
+            "title": "ICA with Reconstruction Cost for Efficient Overcomplete Feature Learning"
+        },
+        {
+            "paperId": "be9a17321537d9289875fe475b71f4821457b435",
+            "title": "An Analysis of Single-Layer Networks in Unsupervised Feature Learning"
+        },
+        {
+            "paperId": "9ab0de951cc9cdf16887b1f841f8da6affc9c0de",
+            "title": "Traffic sign recognition with multi-scale Convolutional Networks"
+        },
+        {
+            "paperId": "053912e76e50c9f923a1fc1c173f1365776060cc",
+            "title": "On optimization methods for deep learning"
+        },
+        {
+            "paperId": "eefcc7bcc05436dac9881acb4ff4e4a0b730e175",
+            "title": "High-dimensional signature compression for large-scale image classification"
+        },
+        {
+            "paperId": "b2ce846cd30c942529af9d12268590ddace22d9a",
+            "title": "A new benchmark for stereo-based pedestrian detection"
+        },
+        {
+            "paperId": "05cc38e249a6f642363b5a5cbd71cda67cea5893",
+            "title": "Tiled convolutional neural networks"
+        },
+        {
+            "paperId": "908040d7ebdd79d824d1a297214584d8b5a4bccc",
+            "title": "Layer-wise analysis of deep networks with Gaussian kernels"
+        },
+        {
+            "paperId": "9800e3c3394c569be83379ee2ebe3424e09c2919",
+            "title": "What Does Classifying More Than 10, 000 Image Categories Tell Us?"
+        },
+        {
+            "paperId": "31f04f8f83365fabf7ba9c9be1179c0da6815128",
+            "title": "Emergence of Complex-Like Cells in a Temporal Product Network with Local Receptive Fields"
+        },
+        {
+            "paperId": "894705894b9d51ff933ddab964c4536fdcd47fb5",
+            "title": "The chains model for detecting parts by their context"
+        },
+        {
+            "paperId": "b98cd08b75ebf2bd1d1ec47c51ef75777a7e64bd",
+            "title": "Deep, Big, Simple Neural Nets for Handwritten Digit Recognition"
+        },
+        {
+            "paperId": "3137bc367c61c0e507a5e3c1f8caeb26f292d79f",
+            "title": "Measuring Invariances in Deep Networks"
+        },
+        {
+            "paperId": "c9a80b7bce8276c978b323585fd3164a61b6ea13",
+            "title": "SENSC: a Stable and Efficient Algorithm for Nonnegative Sparse Coding: SENSC: a Stable and Efficient Algorithm for Nonnegative Sparse Coding"
+        },
+        {
+            "paperId": "1f88427d7aa8225e47f946ac41a0667d7b69ac52",
+            "title": "What is the best multi-stage architecture for object recognition?"
+        },
+        {
+            "paperId": "d2c733e34d48784a37d717fe43d9e93277a8c53e",
+            "title": "ImageNet: A large-scale hierarchical image database"
+        },
+        {
+            "paperId": "1e80f755bcbf10479afd2338cec05211fdbd325c",
+            "title": "Convolutional deep belief networks for scalable unsupervised learning of hierarchical representations"
+        },
+        {
+            "paperId": "e337c5e4c23999c36f64bcb33ebe6b284e1bcbf1",
+            "title": "Large-scale deep unsupervised learning using graphics processors"
+        },
+        {
+            "paperId": "3596cc61267bdae97bb1df9b01a8e9a1b8dca450",
+            "title": "Natural Image Statistics - A Probabilistic Approach to Early Computational Vision"
+        },
+        {
+            "paperId": "93b8b54c709a798f6958ce77b4652810d9027ce5",
+            "title": "Cat Head Detection - How to Effectively Exploit Shape and Texture Features"
+        },
+        {
+            "paperId": "c6b3ca4f939e36a9679a70e14ce8b1bbbc5618f3",
+            "title": "Labeled Faces in the Wild: A Database forStudying Face Recognition in Unconstrained Environments"
+        },
+        {
+            "paperId": "25d92fe0ab92ae57bd8fed87c95fa9a207ec61aa",
+            "title": "Nonlinear image representation using divisive normalization"
+        },
+        {
+            "paperId": "688b6fbc3c5c06e254961f70de9d855d3d008d09",
+            "title": "Why is Real-World Visual Object Recognition Hard?"
+        },
+        {
+            "paperId": "202cbbf671743aefd380d2f23987bd46b9caaf97",
+            "title": "Sparse deep belief net model for visual area V2"
+        },
+        {
+            "paperId": "b3852f0113fcf8a3913c55ae92393ae6ccde347e",
+            "title": "Self-taught learning: transfer learning from unlabeled data"
+        },
+        {
+            "paperId": "ccd52aff02b0f902f4ce7247c4fee7273014c41c",
+            "title": "Unsupervised Learning of Invariant Feature Hierarchies with Applications to Object Recognition"
+        },
+        {
+            "paperId": "e64a9960734215e2b1866ea3cb723ffa5585ac14",
+            "title": "Efficient sparse coding algorithms"
+        },
+        {
+            "paperId": "355d44f53428b1ac4fb2ab468d593c720640e5bd",
+            "title": "Greedy Layer-Wise Training of Deep Networks"
+        },
+        {
+            "paperId": "8978cf7574ceb35f4c3096be768c7547b28a35d0",
+            "title": "A Fast Learning Algorithm for Deep Belief Nets"
+        },
+        {
+            "paperId": "4d6109548fab119d5edfb7a77b63eb10ca58f4a4",
+            "title": "Invariant visual representation by single neurons in the human brain"
+        },
+        {
+            "paperId": "2af18c7b3495955d1ffa4f1b4c4ae5ea786cdedb",
+            "title": "Slow feature analysis yields a rich repertoire of complex cell properties."
+        },
+        {
+            "paperId": "dc7d03d05a437aaf0cc02a4ed36339cc259d2583",
+            "title": "Receptive fields"
+        },
+        {
+            "paperId": "7c7c04323f6ba96c32c47fc3159cc30614c2e822",
+            "title": "Aging and the human neocortex"
+        },
+        {
+            "paperId": "a31b7bc899fd23a8ffdd769b25abe59977f22f54",
+            "title": "Developmental psychology: Rational imitation in preverbal infants"
+        },
+        {
+            "paperId": "85abadb689897997f1e37baa7b5fc6f7d497518b",
+            "title": "Hierarchical models of object recognition in cortex"
+        },
+        {
+            "paperId": "8012c4a1e2ca663f1a04e80cbb19631a00cbab27",
+            "title": "Emergence of simple-cell receptive field properties by learning a sparse code for natural images"
+        },
+        {
+            "paperId": "2990a8414fcffdae2469d0d86eb45f584bd6b283",
+            "title": "Stimulus-selective properties of inferior temporal neurons in the macaque"
+        },
+        {
+            "paperId": "6f20e254e3993538c79e0ff2b9b8f198d3359cb3",
+            "title": "Receptive fields of single neurones in the cat's striate cortex"
+        },
+        {
+            "paperId": "17aa78bd4331ef490f24bdd4d4cd21d22a18c09c",
+            "title": "Appendix: Building high-level features using large scale unsupervised learning"
+        },
+        {
+            "paperId": null,
+            "title": "Learning hierarchical spatio-temporal features for action recognition with independent subspace analysis"
+        },
+        {
+            "paperId": null,
+            "title": "and Building high-level features using large-scale unsupervised learning Schmidhuber, J. Deep big simple neural nets excel on handwritten digit recognition"
+        },
+        {
+            "paperId": "65d994fb778a8d9e0f632659fb33a082949a50d3",
+            "title": "Visualizing Higher-Layer Features of a Deep Network"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        },
+        {
+            "paperId": null,
+            "title": "Trueswell. \"Use of speaker's gaze and syntax in verb learning.\" Language Learning and Development"
+        },
+        {
+            "paperId": "586d7b215d1174f01a1dc2f6abf6b2eb0f740ab6",
+            "title": "Unsupervised Learning of Invariant Feature Hierarchies with Applications to Object Recognition"
+        },
+        {
+            "paperId": "6fdb77260fc83dff91c44fea0f31a2cb8ed13d04",
+            "title": "Scaling learning algorithms towards AI"
+        },
+        {
+            "paperId": "7c59908c946a4157abc030cdbe2b63d08ba97db3",
+            "title": "Supporting Online Material for Reducing the Dimensionality of Data with Neural Networks"
+        },
+        {
+            "paperId": "4eb35c07a0d6162ac09c0269b473ef464d920e0d",
+            "title": "Theoretical Neuroscience: Computational and Mathematical Modeling of Neural Systems"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "9aec973227713cd45f156090d82a3056cca8060f",
+            "title": "Neocognitron: A new algorithm for pattern recognition tolerant of deformations and shifts in position"
+        },
+        {
+            "paperId": "6b4fe4aa4d66fecc7b2869569002714d91d0b3f7",
+            "title": "Receptive fields, binocular interaction and functional architecture in the cat's visual cortex"
+        },
+        {
+            "paperId": "f12f7c9981615ef5fb3515b166fc939a1ca82121",
+            "title": "Proceedings of the Twenty-Second International Joint Conference on Artificial Intelligence WSABIE: Scaling Up To Large Vocabulary Image Annotation"
+        },
+        {
+            "paperId": null,
+            "title": "Acknowledgements: We thank Samy Bengio"
+        },
+        {
+            "paperId": null,
+            "title": "Our high-level detectors also outperform standard baselines in terms of recognition rates, achieving 74.8% and 76.7% on cat and human body respectively."
+        }
+    ]
+}

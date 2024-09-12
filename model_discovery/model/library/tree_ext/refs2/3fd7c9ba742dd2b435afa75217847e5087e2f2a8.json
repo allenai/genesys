@@ -1,0 +1,258 @@
+{
+    "paperId": "3fd7c9ba742dd2b435afa75217847e5087e2f2a8",
+    "externalIds": {
+        "DBLP": "conf/sosp/NarayananHPSDGG19",
+        "MAG": "2969388332",
+        "DOI": "10.1145/3341301.3359646",
+        "CorpusId": 202488191
+    },
+    "title": "PipeDream: generalized pipeline parallelism for DNN training",
+    "abstract": "DNN training is extremely time-consuming, necessitating efficient multi-accelerator parallelization. Current approaches to parallelizing training primarily use intra-batch parallelization, where a single iteration of training is split over the available workers, but suffer from diminishing returns at higher worker counts. We present PipeDream, a system that adds inter-batch pipelining to intra-batch parallelism to further improve parallel training throughput, helping to better overlap computation with communication and reduce the amount of communication when possible. Unlike traditional pipelining, DNN training is bi-directional, where a forward pass through the computation graph is followed by a backward pass that uses state and intermediate data computed during the forward pass. Na\u00efve pipelining can thus result in mismatches in state versions used in the forward and backward passes, or excessive pipeline flushes and lower hardware efficiency. To address these challenges, PipeDream versions model parameters for numerically correct gradient computations, and schedules forward and backward passes of different minibatches concurrently on different workers with minimal pipeline stalls. PipeDream also automatically partitions DNN layers among workers to balance work and minimize communication. Extensive experimentation with a range of DNN tasks, models, and hardware configurations shows that PipeDream trains models to high accuracy up to 5.3X faster than commonly used intra-batch parallelism techniques.",
+    "venue": "Symposium on Operating Systems Principles",
+    "year": 2019,
+    "referenceCount": 50,
+    "citationCount": 683,
+    "influentialCitationCount": 102,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "PipeDream is presented, a system that adds inter-batch pipelining to intra-batch parallelism to further improve parallel training throughput, helping to better overlap computation with communication and reduce the amount of communication when possible."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "22252150",
+            "name": "D. Narayanan"
+        },
+        {
+            "authorId": "3459901",
+            "name": "A. Harlap"
+        },
+        {
+            "authorId": "3078275",
+            "name": "Amar Phanishayee"
+        },
+        {
+            "authorId": "1720084",
+            "name": "Vivek Seshadri"
+        },
+        {
+            "authorId": "7692691",
+            "name": "Nikhil R. Devanur"
+        },
+        {
+            "authorId": "1707164",
+            "name": "G. Ganger"
+        },
+        {
+            "authorId": "1974678",
+            "name": "Phillip B. Gibbons"
+        },
+        {
+            "authorId": "143834867",
+            "name": "M. Zaharia"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "d79a26226393f687ddbc375e32055b40b8ad8d38",
+            "title": "GPipe: Efficient Training of Giant Neural Networks using Pipeline Parallelism"
+        },
+        {
+            "paperId": "a82fc0115c1802d48d352b35595204738fad84f0",
+            "title": "Highly Scalable Deep Learning Training System with Mixed-Precision: Training ImageNet in Four Minutes"
+        },
+        {
+            "paperId": "f971658ab845d7573c4bbb760d5e7e5332025254",
+            "title": "Beyond Data and Model Parallelism for Deep Neural Networks"
+        },
+        {
+            "paperId": "c314d97d75b4a988b106ddcec8a40a4d3bcdb8bd",
+            "title": "PipeDream: Fast and Efficient Pipeline Parallel DNN Training"
+        },
+        {
+            "paperId": "b2c3f631999857d26a9abc4895ca6a9531d54a8e",
+            "title": "Analysis of DAWNBench, a Time-to-Accuracy Machine Learning Performance Benchmark"
+        },
+        {
+            "paperId": "aa0e749388e10318d9bfab43400e1f303a9e7394",
+            "title": "Gist: Efficient Data Encoding for Deep Neural Network Training"
+        },
+        {
+            "paperId": "7f2406aba47ac90dcc92f890dca3d9b647d11894",
+            "title": "Decoupled Parallel Backpropagation with Convergence Guarantee"
+        },
+        {
+            "paperId": "03cf148638e007ddb42ac49f91225712b6c66a08",
+            "title": "Revisiting Small Batch Training for Deep Neural Networks"
+        },
+        {
+            "paperId": "3ea088eae8637530d1108065acab244f3b6c280d",
+            "title": "Exploring Hidden Dimensions in Parallelizing Convolutional Neural Networks"
+        },
+        {
+            "paperId": "58c6f890a1ae372958b7decf56132fe258152722",
+            "title": "Regularizing and Optimizing LSTM Language Models"
+        },
+        {
+            "paperId": "bfbd10ebffc9494423770a5bd30ebd0f9cbce66d",
+            "title": "Device Placement Optimization with Reinforcement Learning"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "079932bf6ff8b99c899172ba60071818f6b5dfcb",
+            "title": "Poseidon: An Efficient Communication Architecture for Distributed Deep Learning on GPU Clusters"
+        },
+        {
+            "paperId": "0d57ba12a6d958e178d83be4c84513f7e42b24e5",
+            "title": "Accurate, Large Minibatch SGD: Training ImageNet in 1 Hour"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "1ee88e64945503c93b68344e639a7ae085f6e37d",
+            "title": "CNTK: Microsoft's Open-Source Deep-Learning Toolkit"
+        },
+        {
+            "paperId": "4954fa180728932959997a4768411ff9136aac81",
+            "title": "TensorFlow: A system for large-scale machine learning"
+        },
+        {
+            "paperId": "942deb7d865b7782c03176d95e3a0d56cb71009e",
+            "title": "Training Deep Nets with Sublinear Memory Cost"
+        },
+        {
+            "paperId": "7707082cc4522a91057fa3a8031d67fe3ff1f5a9",
+            "title": "GeePS: scalable deep learning on distributed GPUs with a GPU-specialized parameter server"
+        },
+        {
+            "paperId": "25fb5a6abcd88ee52bdb3165b844c941e90eb9bf",
+            "title": "Revisiting Distributed Synchronous SGD"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "62df84d6a4d26f95e4714796c2337c9848cc13b5",
+            "title": "MXNet: A Flexible and Efficient Machine Learning Library for Heterogeneous Distributed Systems"
+        },
+        {
+            "paperId": "83ec245d470a3b75c0861acd5e67db5216e8e049",
+            "title": "Automating model search for large scale machine learning"
+        },
+        {
+            "paperId": "e58a110fa1e4ddf247d5c614d117d64bfbe135c4",
+            "title": "Sequence to Sequence -- Video to Text"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "50684b147b752a07c313cb73d864f7b21bd8b703",
+            "title": "Scaling Distributed Machine Learning with the Parameter Server"
+        },
+        {
+            "paperId": "e69c8b5df8a4178b1c8c7f154a761147a6f030be",
+            "title": "Project Adam: Building an Efficient and Scalable Deep Learning Training System"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "3439a127e45fb763881f03ef3ec735a1db0e0ccc",
+            "title": "1-bit stochastic gradient descent and its application to data-parallel distributed training of speech DNNs"
+        },
+        {
+            "paperId": "6bdb186ec4726e00a8051119636d4df3b94043b5",
+            "title": "Caffe: Convolutional Architecture for Fast Feature Embedding"
+        },
+        {
+            "paperId": "b0f63c7878841d847c59254ffc34c4a8ed08c809",
+            "title": "Exploiting Bounded Staleness to Speed Up Big Data Analytics"
+        },
+        {
+            "paperId": "a5e4377d2149a8167d89383d785793967cf74602",
+            "title": "Meteor Universal: Language Specific Translation Evaluation for Any Target Language"
+        },
+        {
+            "paperId": "e376cc4e3cb763ba927ccd94867ba7f083729ba7",
+            "title": "On parallelizability of stochastic gradient descent for speech DNNS"
+        },
+        {
+            "paperId": "acbd13c7be621a7284da4ab9d8caa40f1a558ce2",
+            "title": "More Effective Distributed ML via a Stale Synchronous Parallel Parameter Server"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "3127190433230b3dc1abd0680bb58dced4bcd90e",
+            "title": "Large Scale Distributed Deep Networks"
+        },
+        {
+            "paperId": "d1443e4af5f4ca00bc43b2018c3b33955a197e97",
+            "title": "Pipelined Back-Propagation for Context-Dependent Deep Neural Networks"
+        },
+        {
+            "paperId": "36f49b05d764bf5c10428b082c2d96c13c4203b9",
+            "title": "Hogwild: A Lock-Free Approach to Parallelizing Stochastic Gradient Descent"
+        },
+        {
+            "paperId": "72729882f8fa3d9084eaece513f6bf9630be5901",
+            "title": "Collecting Highly Parallel Data for Paraphrase Evaluation"
+        },
+        {
+            "paperId": "5936754b5762260bf102ac95d7b26cfc9d31956a",
+            "title": "The Tradeoffs of Large Scale Learning"
+        },
+        {
+            "paperId": "b471f0b45d69c3fd3333f0322bab64b2a4ae9369",
+            "title": "Optimization of Collective Communication Operations in MPICH"
+        },
+        {
+            "paperId": "8665c9b459e4161825baf1f25b5141f41a5085ff",
+            "title": "A bridging model for parallel computation"
+        },
+        {
+            "paperId": null,
+            "title": "VGG-16 target accuracy using Caffe model"
+        },
+        {
+            "paperId": null,
+            "title": "https:/"
+        },
+        {
+            "paperId": "b245959da6bdaa0b711341844aeaa473b7706453",
+            "title": "DAWNBench : An End-to-End Deep Learning Benchmark and Competition"
+        },
+        {
+            "paperId": null,
+            "title": "Bringing HPC Techniques to Deep Learning"
+        },
+        {
+            "paperId": null,
+            "title": "Meet Horovod: Uber\u2019s Open Source Distributed Deep Learning Framework for TensorFlow"
+        },
+        {
+            "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+            "title": "Recurrent neural network based language model"
+        },
+        {
+            "paperId": null,
+            "title": "SOSP \u201919, October 27\u201330, 2019"
+        }
+    ]
+}

@@ -1,0 +1,168 @@
+{
+    "paperId": "b587ee7c802a5bd222a69090f59285e0dfdb29f1",
+    "externalIds": {
+        "MAG": "2594171637",
+        "ArXiv": "1702.03118",
+        "DBLP": "journals/corr/ElfwingUD17",
+        "DOI": "10.1016/j.neunet.2017.12.012",
+        "CorpusId": 6940861,
+        "PubMed": "29395652"
+    },
+    "title": "Sigmoid-Weighted Linear Units for Neural Network Function Approximation in Reinforcement Learning",
+    "abstract": null,
+    "venue": "Neural Networks",
+    "year": 2017,
+    "referenceCount": 32,
+    "citationCount": 1210,
+    "influentialCitationCount": 56,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This study proposes two activation functions for neural network function approximation in reinforcement learning: the sigmoid-weighted linear unit (SiLU) and its derivative function (dSiLU), and suggests the more traditional approach of using on-policy learning with eligibility traces, instead of experience replay, and softmax action selection can be competitive with DQN, without the need for a separate target network."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2169762",
+            "name": "Stefan Elfwing"
+        },
+        {
+            "authorId": "1773761",
+            "name": "E. Uchibe"
+        },
+        {
+            "authorId": "1714997",
+            "name": "K. Doya"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "c27db32efa8137cbf654902f8f728f338e55cd1c",
+            "title": "Mastering the game of Go without human knowledge"
+        },
+        {
+            "paperId": "db8ef16d8eff463836787f96ff093cabbb30f17c",
+            "title": "From free energy to expected energy: Improving energy-based value function approximation in reinforcement learning"
+        },
+        {
+            "paperId": "69e76e16740ed69f4dc55361a3d319ac2f1293dd",
+            "title": "Asynchronous Methods for Deep Reinforcement Learning"
+        },
+        {
+            "paperId": "846aedd869a00c09b40f1f1f35673cb22bc87490",
+            "title": "Mastering the game of Go with deep neural networks and tree search"
+        },
+        {
+            "paperId": "4c05d7caa357148f0bbd61720bdd35f0bc05eb81",
+            "title": "Dueling Network Architectures for Deep Reinforcement Learning"
+        },
+        {
+            "paperId": "c6170fa90d3b2efede5a2e1660cb23e1c824f2ca",
+            "title": "Prioritized Experience Replay"
+        },
+        {
+            "paperId": "3b9732bb07dc99bde5e1f9f75251c6ea5039373e",
+            "title": "Deep Reinforcement Learning with Double Q-Learning"
+        },
+        {
+            "paperId": "d5ed07113ddcd038062525a5a54550c012ac9a74",
+            "title": "Massively Parallel Methods for Deep Reinforcement Learning"
+        },
+        {
+            "paperId": "5a5e702ac3f9daeb608a4f2f4ea82e8a5cbf2c12",
+            "title": "High-Dimensional Function Approximation for Knowledge-Free Reinforcement Learning: a Case Study in SZ-Tetris"
+        },
+        {
+            "paperId": "fa4be40f8e32fe7f8834127d3154ebf089f2318d",
+            "title": "Expected energy-based restricted Boltzmann machine for classification"
+        },
+        {
+            "paperId": "340f48901f72278f6bf78a04ee5b01df208cc508",
+            "title": "Human-level control through deep reinforcement learning"
+        },
+        {
+            "paperId": "3fb7fc198443ca76c3d0d4ab04e7825b00818b1f",
+            "title": "Neural Network Ensembles in Reinforcement Learning"
+        },
+        {
+            "paperId": "f53564f282f3cc78b4ac9d127992627eebb678dd",
+            "title": "Approximate Dynamic Programming Finally Performs Well in the Game of Tetris"
+        },
+        {
+            "paperId": "f82e4ff4f003581330338aaae71f60316e58dd26",
+            "title": "The Arcade Learning Environment: An Evaluation Platform for General Agents"
+        },
+        {
+            "paperId": "644a079073969a92674f69483c4a85679d066545",
+            "title": "Double Q-learning"
+        },
+        {
+            "paperId": "d2c733e34d48784a37d717fe43d9e93277a8c53e",
+            "title": "ImageNet: A large-scale hierarchical image database"
+        },
+        {
+            "paperId": "52070af952474cf13ecd015d42979373ff7c1c00",
+            "title": "Training Products of Experts by Minimizing Contrastive Divergence"
+        },
+        {
+            "paperId": "03de8578480c53677c484e1facfced74f4f5b045",
+            "title": "Digital selection and analogue amplification coexist in a cortex-inspired silicon circuit"
+        },
+        {
+            "paperId": "11c12871bfa138fa8bb93a4e5dbcca36c5d214fa",
+            "title": "How to lose at Tetris"
+        },
+        {
+            "paperId": "7ca8ac34767d6e6cb389eeebcdabc4225b39edfe",
+            "title": "Generalization in Reinforcement Learning: Successful Examples Using Sparse Coarse Coding"
+        },
+        {
+            "paperId": "2b11305f69641ecb8bd4a5e59cfebe41ad9ed989",
+            "title": "TD-Gammon, a Self-Teaching Backgammon Program, Achieves Master-Level Play"
+        },
+        {
+            "paperId": "939d584316be99e2db3fec3fbf7d71f22a477f67",
+            "title": "Unsupervised learning of distributions on binary vectors using two layer networks"
+        },
+        {
+            "paperId": "a91635f8d0e7fb804efd1c38d9c24ee952ba7076",
+            "title": "Learning to predict by the methods of temporal differences"
+        },
+        {
+            "paperId": "4f7476037408ac3d993f5088544aab427bc319c1",
+            "title": "Information processing in dynamical systems: foundations of harmony theory"
+        },
+        {
+            "paperId": "a6ee4ae5344033fee613898841e2b9894bbfe4b7",
+            "title": "Approximate modified policy iteration and its application to the game of Tetris"
+        },
+        {
+            "paperId": "7bea02dfd7225cb47689ccae90a5383444294a32",
+            "title": "Improvements on Learning Tetris with Cross Entropy"
+        },
+        {
+            "paperId": null,
+            "title": "Tetris AI, computer plays tetris"
+        },
+        {
+            "paperId": "26b8747eb4d7fb4d4fc45707606d5e969b9afb0c",
+            "title": "Issues in Using Function Approximation for Reinforcement Learning"
+        },
+        {
+            "paperId": "97efafdb4a3942ab3efba53ded7413199f79c054",
+            "title": "Reinforcement Learning: An Introduction"
+        },
+        {
+            "paperId": "573ca3cd9bf91340952970d5d579f395f0f95fca",
+            "title": "Temporal Dierences-Based Policy Iteration and Applications in Neuro-Dynamic Programming 1"
+        },
+        {
+            "paperId": "9e387d1a700aa2dd8cca4ed9cb1264430d7762f1",
+            "title": "Temporal Differences-Based Policy Iteration and Applications in Neuro-Dynamic Programming"
+        },
+        {
+            "paperId": "7a09464f26e18a25a948baaa736270bfb84b5e12",
+            "title": "On-line Q-learning using connectionist systems"
+        }
+    ]
+}

@@ -1,0 +1,219 @@
+{
+    "paperId": "942e1b9a15c4271fe3fde3151f839e8fc07ebcc7",
+    "externalIds": {
+        "PubMedCentral": "5870728",
+        "DBLP": "journals/bioinformatics/YangZSM17",
+        "MAG": "2735099323",
+        "DOI": "10.1093/bioinformatics/btx257",
+        "CorpusId": 4638772,
+        "PubMed": "28881991"
+    },
+    "title": "Exploiting sequence-based features for predicting enhancer\u2013promoter interactions",
+    "abstract": "Motivation: A large number of distal enhancers and proximal promoters form enhancer\u2010promoter interactions to regulate target genes in the human genome. Although recent high\u2010throughput genome\u2010wide mapping approaches have allowed us to more comprehensively recognize potential enhancer\u2010promoter interactions, it is still largely unknown whether sequence\u2010based features alone are sufficient to predict such interactions. Results: Here, we develop a new computational method (named PEP) to predict enhancer\u2010promoter interactions based on sequence\u2010based features only, when the locations of putative enhancers and promoters in a particular cell type are given. The two modules in PEP (PEP\u2010Motif and PEP\u2010Word) use different but complementary feature extraction strategies to exploit sequence\u2010based information. The results across six different cell types demonstrate that our method is effective in predicting enhancer\u2010promoter interactions as compared to the state\u2010of\u2010the\u2010art methods that use functional genomic signals. Our work demonstrates that sequence\u2010based features alone can reliably predict enhancer\u2010promoter interactions genome\u2010wide, which could potentially facilitate the discovery of important sequence determinants for long\u2010range gene regulation. Availability and Implementation: The source code of PEP is available at: https://github.com/ma\u2010compbio/PEP. Contact: jianma@cs.cmu.edu Supplementary information: Supplementary data are available at Bioinformatics online.",
+    "venue": "Bioinform.",
+    "year": 2017,
+    "referenceCount": 43,
+    "citationCount": 77,
+    "influentialCitationCount": 2,
+    "openAccessPdf": {
+        "url": "https://academic.oup.com/bioinformatics/article-pdf/33/14/i252/25156878/btx257.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work demonstrates that sequence\u2010based features alone can reliably predict enhancer\u2010promoter interactions genome\u2010wide, which could potentially facilitate the discovery of important sequence determinants for long\u2010range gene regulation."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2152918443",
+            "name": "Yang Yang"
+        },
+        {
+            "authorId": "144906126",
+            "name": "Ruochi Zhang"
+        },
+        {
+            "authorId": "2145893729",
+            "name": "Shashank Singh"
+        },
+        {
+            "authorId": "153155904",
+            "name": "Jian Ma"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "803c2fbd967512a1bd4edfaa9fc8623a429509be",
+            "title": "Organization and function of the 3D genome"
+        },
+        {
+            "paperId": "6178a4ba59bc0dd95779f794cf9efd088dc89d97",
+            "title": "ZNF143 is involved in CTCF-mediated chromatin interactions by cooperation with cohesin and other partners"
+        },
+        {
+            "paperId": "b95c401804c13979e517ab553a509d626d01f380",
+            "title": "Enhancer\u2013promoter interactions are encoded by complex genomic signatures on looping chromatin"
+        },
+        {
+            "paperId": "26bc9195c6343e4d7f434dd65b4ad67efe2be27a",
+            "title": "XGBoost: A Scalable Tree Boosting System"
+        },
+        {
+            "paperId": "2125e85c434a737a11022d62179afac78683d657",
+            "title": "Action recognition using edge trajectories and motion acceleration descriptor"
+        },
+        {
+            "paperId": "a0f64fc74e7e4a1949826d5dba869ce826eee089",
+            "title": "CTCF-Mediated Human 3D Genome Architecture Reveals Chromatin Topology for Transcription"
+        },
+        {
+            "paperId": "fb1e1b820c37d797dde72e2870e9f9c0bd95aa16",
+            "title": "HOCOMOCO: expansion and enhancement of the collection of transcription factor binding sites models"
+        },
+        {
+            "paperId": "30f68bd0e53a93bd4999dbe771a7f24a4a21a411",
+            "title": "A predictive modeling approach for cell line-specific long-range regulatory interactions"
+        },
+        {
+            "paperId": "e6ea8e2219f5c914d22fe20c111db2f999f04e05",
+            "title": "A predictive modeling approach for cell line-specific long-range regulatory interactions"
+        },
+        {
+            "paperId": "60dbfd78e66aa78cd6bb106861640eedf1a7aa10",
+            "title": "Chromatin architecture reorganization during stem cell differentiation"
+        },
+        {
+            "paperId": "fbc8263ab515a54a904f00d53315864eb38ab97c",
+            "title": "ZNF143 provides sequence specificity to secure chromatin interactions at gene promoters"
+        },
+        {
+            "paperId": "fd89721f007f62d52cbc3ac329aa5e36a6e0f8d9",
+            "title": "Integrative analysis of 111 reference human epigenomes"
+        },
+        {
+            "paperId": "eb9a0cf8f006fa24eea5af405c7f088073e486a1",
+            "title": "A 3D Map of the Human Genome at Kilobase Resolution Reveals Principles of Chromatin Looping"
+        },
+        {
+            "paperId": "8215fb083cb4b0ed2b6858b81dcc30fbd0afb6e1",
+            "title": "Mining of Massive Datasets"
+        },
+        {
+            "paperId": "0e146180b5255408631aeb159059ac7d239569fb",
+            "title": "CTCF: an architectural protein bridging genome topology and function"
+        },
+        {
+            "paperId": "2012f32199adc88747d5a1b47c7b4ba1cb3cb995",
+            "title": "word2vec Explained: deriving Mikolov et al.'s negative-sampling word-embedding method"
+        },
+        {
+            "paperId": "53ca064b9f1b92951c1997e90b776e95b0880e52",
+            "title": "Learning word embeddings efficiently with noise-contrastive estimation"
+        },
+        {
+            "paperId": "162de5fb4549b1ace8839e754a0e845042c45eb8",
+            "title": "Chromatin connectivity maps reveal dynamic promoter\u2013enhancer long-range associations"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "66bf5c1b4cc072c216ff35641c7ed6f246885503",
+            "title": "Klf4 organizes long-range chromosomal interactions with the oct4 locus in reprogramming and pluripotency."
+        },
+        {
+            "paperId": "f6b51c8753a871dc94ff32152c00c01e94f90f09",
+            "title": "Efficient Estimation of Word Representations in Vector Space"
+        },
+        {
+            "paperId": "f1846682fef3edbc9192fdd3a3dc0fe4b1c3c2ba",
+            "title": "The long-range interaction landscape of gene promoters"
+        },
+        {
+            "paperId": "8bcc4170f64cd26db2935ee042c6d533d1767014",
+            "title": "An Integrated Encyclopedia of DNA Elements in the Human Genome"
+        },
+        {
+            "paperId": "99270113a61c85098ca13013aa1e081991eb855b",
+            "title": "Extensive Promoter-Centered Chromatin Interactions Provide a Topological Basis for Transcription Regulation"
+        },
+        {
+            "paperId": "29b04105cba18e20bf480666d25d89b3d8cdd63e",
+            "title": "Imbalanced Classification Problems: Systematic Study, Issues and Best Practices"
+        },
+        {
+            "paperId": "7c303c889a395457d0af263760ad2bdd6da7959a",
+            "title": "FIMO: scanning for occurrences of a given motif"
+        },
+        {
+            "paperId": "83a6cacc126d85c45605797406262677c256a6af",
+            "title": "Software Framework for Topic Modelling with Large Corpora"
+        },
+        {
+            "paperId": "474afa1564971a8e6e7c4bf4de43522f175a0ff1",
+            "title": "Quantifying similarity between motifs"
+        },
+        {
+            "paperId": "a883cacbc8f9b021b2a63f0453307855fa075d33",
+            "title": "The relationship between Precision-Recall and ROC curves"
+        },
+        {
+            "paperId": "8397ab573dd6c97a39ff4feb9c2d9b3c1e16c705",
+            "title": "Understanding inverse document frequency: on theoretical arguments for IDF"
+        },
+        {
+            "paperId": "8bdda840ec8990e24c5a70db171edac330ebf650",
+            "title": "Stochastic gradient boosting"
+        },
+        {
+            "paperId": "1679beddda3a183714d380e944fe6bf586c083cd",
+            "title": "Greedy function approximation: A gradient boosting machine."
+        },
+        {
+            "paperId": "c4f70586901303d76523c49b7cc5b7dde1ac0246",
+            "title": "A clustering algorithm based on graph connectivity"
+        },
+        {
+            "paperId": "c403d5ea5094e9f66f4184fdf7291c0239f3e0ac",
+            "title": "Selective Binding of Steroid Hormone Receptors to Octamer Transcription Factors Determines Transcriptional Synergism at the Mouse Mammary Tumor Virus Promoter*"
+        },
+        {
+            "paperId": "48ddd9101a90fe65e3061de69626741b843ff5e4",
+            "title": "The use of the area under the ROC curve in the evaluation of machine learning algorithms"
+        },
+        {
+            "paperId": "e50a316f97c9a405aa000d883a633bd5707f1a34",
+            "title": "Term-Weighting Approaches in Automatic Text Retrieval"
+        },
+        {
+            "paperId": "076077a5771747ad7355120f1ba64cfd603141c6",
+            "title": "A Statistical Approach to Mechanized Encoding and Searching of Literary Information"
+        },
+        {
+            "paperId": null,
+            "title": "XGBoost Feature Interactions Reshaped"
+        },
+        {
+            "paperId": "0fca9a022f4910dda7f8bdc92bbbe8a9c6e35303",
+            "title": "Accelerating t-SNE using tree-based algorithms"
+        },
+        {
+            "paperId": null,
+            "title": "Classi\ufb01cation with class imbalance problem"
+        },
+        {
+            "paperId": "3a771dd40873131c4583896708fce0e2756dc4a5",
+            "title": "Comprehensive mapping of long range interactions reveals folding principles of the human genome"
+        },
+        {
+            "paperId": null,
+            "title": "Additive logistic regression: a statistical view of boosting (with discussion and a rejoinder by the authors)"
+        },
+        {
+            "paperId": null,
+            "title": "HUVEC 65358 8180"
+        }
+    ]
+}

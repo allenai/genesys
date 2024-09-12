@@ -1,0 +1,173 @@
+{
+    "paperId": "d07284a6811f1b2745d91bdb06b040b57f226882",
+    "externalIds": {
+        "MAG": "2950541952",
+        "DBLP": "conf/iclr/LoshchilovH19",
+        "CorpusId": 53592270
+    },
+    "title": "Decoupled Weight Decay Regularization",
+    "abstract": "L$_2$ regularization and weight decay regularization are equivalent for standard stochastic gradient descent (when rescaled by the learning rate), but as we demonstrate this is \\emph{not} the case for adaptive gradient algorithms, such as Adam. While common implementations of these algorithms employ L$_2$ regularization (often calling it \"weight decay\" in what may be misleading due to the inequivalence we expose), we propose a simple modification to recover the original formulation of weight decay regularization by \\emph{decoupling} the weight decay from the optimization steps taken w.r.t. the loss function. We provide empirical evidence that our proposed modification (i) decouples the optimal choice of weight decay factor from the setting of the learning rate for both standard SGD and Adam and (ii) substantially improves Adam's generalization performance, allowing it to compete with SGD with momentum on image classification datasets (on which it was previously typically outperformed by the latter). Our proposed decoupled weight decay has already been adopted by many researchers, and the community has implemented it in TensorFlow and PyTorch; the complete source code for our experiments is available at this https URL",
+    "venue": "International Conference on Learning Representations",
+    "year": 2017,
+    "referenceCount": 35,
+    "citationCount": 16912,
+    "influentialCitationCount": 3007,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a simple modification to recover the original formulation of weight decay regularization by decoupling the weight decay from the optimization steps taken w.r.t. the loss function, and provides empirical evidence that this modification substantially improves Adam's generalization performance."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1678656",
+            "name": "I. Loshchilov"
+        },
+        {
+            "authorId": "144661829",
+            "name": "F. Hutter"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "ba618ec05a9dbef75310c5e4bcce8a559e0270b5",
+            "title": "Three Mechanisms of Weight Decay Regularization"
+        },
+        {
+            "paperId": "4f48446ebbff9475b4c10b6504cb4b15d6a5c87a",
+            "title": "A unified theory of adaptive stochastic gradient descent as Bayesian filtering"
+        },
+        {
+            "paperId": "f723eb3e7159f07b97464c8d947d15e78612abe4",
+            "title": "AutoAugment: Learning Augmentation Policies from Data"
+        },
+        {
+            "paperId": "9ecdcb2d03e6b4816cac030e62392ee8fe6fff89",
+            "title": "Intracranial Error Detection via Deep Learning"
+        },
+        {
+            "paperId": "e065a2cb4534492ccf46d0afc81b9ad8b420c5ec",
+            "title": "SFace: An Efficient Network for Face Detection in Large Scale Variations"
+        },
+        {
+            "paperId": "c983653841b6987d9959318f074a595783838576",
+            "title": "On the Convergence of Adam and Beyond"
+        },
+        {
+            "paperId": "6baca6351dc55baac44f0416e74a7e0ba2bfd03e",
+            "title": "Visualizing the Loss Landscape of Neural Nets"
+        },
+        {
+            "paperId": "430de87a0a8996bc93b1998f9a6261f7558a5679",
+            "title": "Generalization in Deep Learning"
+        },
+        {
+            "paperId": "6104568e318f140d7adcf646412f182906db69b1",
+            "title": "High-dimensional dynamics of generalization error in neural networks"
+        },
+        {
+            "paperId": "51ed8996e6bb192c4d56cf16d27ce31c4fdb687e",
+            "title": "Normalized Direction-preserving Adam"
+        },
+        {
+            "paperId": "e644a409b4a4c6eaedffe27efbc5c76280b34c61",
+            "title": "A Downsampled Variant of ImageNet as an Alternative to the CIFAR datasets"
+        },
+        {
+            "paperId": "d0611891b9e8a7c5731146097b6f201578f47b2f",
+            "title": "Learning Transferable Architectures for Scalable Image Recognition"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "1ecc2bd0bc6ffa0a2f466a058589c20593e3e57c",
+            "title": "The Marginal Value of Adaptive Gradient Methods in Machine Learning"
+        },
+        {
+            "paperId": "3fea412361b2d14cb3c6723968b421c1c8cb38e8",
+            "title": "Shake-Shake regularization"
+        },
+        {
+            "paperId": "b134d0911e2e13ac169ffa5f478a39e6ef77869a",
+            "title": "Snapshot Ensembles: Train 1, get M for free"
+        },
+        {
+            "paperId": "58123025178256279bb060ca5da971b62bc329ee",
+            "title": "Sharp Minima Can Generalize For Deep Nets"
+        },
+        {
+            "paperId": "8ec5896b4490c6e127d1718ffc36a3439d84cb81",
+            "title": "On Large-Batch Training for Deep Learning: Generalization Gap and Sharp Minima"
+        },
+        {
+            "paperId": "5694e46284460a648fe29117cbc55f6c9be3fa3c",
+            "title": "Densely Connected Convolutional Networks"
+        },
+        {
+            "paperId": "b022f2a277a4bf5f42382e86e4380b96340b9e86",
+            "title": "SGDR: Stochastic Gradient Descent with Warm Restarts"
+        },
+        {
+            "paperId": "3d2c6941a9b4608ba52b328369a3352db2092ae0",
+            "title": "Weight Normalization: A Simple Reparameterization to Accelerate Training of Deep Neural Networks"
+        },
+        {
+            "paperId": "52d7eb0fbc3522434c13cc247549f74bb9609c5d",
+            "title": "WIDER FACE: A Face Detection Benchmark"
+        },
+        {
+            "paperId": "8388f1be26329fa45e5807e968a641ce170ea078",
+            "title": "Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks"
+        },
+        {
+            "paperId": "76690f5e2d33da6b7bd4cdec5affe5aa9ed83ff9",
+            "title": "Beyond Convexity: Stochastic Quasi-Convex Optimization"
+        },
+        {
+            "paperId": "37b5dfe87d82ba8f310155165d5bf841dc92dea2",
+            "title": "Cyclical Learning Rates for Training Neural Networks"
+        },
+        {
+            "paperId": "cb4dc7277d1c8c3bc76dd7425eb1cc7cbaf99487",
+            "title": "Optimizing Neural Networks with Kronecker-factored Approximate Curvature"
+        },
+        {
+            "paperId": "a2785f66c20fbdf30ec26c0931584c6d6a0f4fca",
+            "title": "DRAW: A Recurrent Neural Network For Image Generation"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "413c1142de9d91804d6d11c67ff3fed59c9fc279",
+            "title": "Adaptive Subgradient Methods for Online Learning and Stochastic Optimization"
+        },
+        {
+            "paperId": null,
+            "title": "Title to be disclosed upon request during the rebuttal"
+        },
+        {
+            "paperId": null,
+            "title": "Lecture 6.5-rmsprop: Divide the gradient by a running average of its recent magnitude"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        },
+        {
+            "paperId": "f4ea5a6ff3ffcd11ec2e6ed7828a7d41279fb3ad",
+            "title": "Comparing Biases for Minimal Network Construction with Back-Propagation"
+        },
+        {
+            "paperId": null,
+            "title": "L 2 regularization is not effective in Adam"
+        }
+    ]
+}

@@ -1,0 +1,155 @@
+{
+    "paperId": "531a7f2c659787165df4fd5b4580590b953448e4",
+    "externalIds": {
+        "MAG": "2963912046",
+        "ACL": "W17-5525",
+        "DBLP": "conf/sigdial/NovikovaDR17",
+        "ArXiv": "1706.09254",
+        "DOI": "10.18653/v1/W17-5525",
+        "CorpusId": 19662556
+    },
+    "title": "The E2E Dataset: New Challenges For End-to-End Generation",
+    "abstract": "This paper describes the E2E data, a new dataset for training end-to-end, data-driven natural language generation systems in the restaurant domain, which is ten times bigger than existing, frequently used datasets in this area. The E2E dataset poses new challenges: (1) its human reference texts show more lexical richness and syntactic variation, including discourse phenomena; (2) generating from this set requires content selection. As such, learning from this dataset promises more natural, varied and less template-like system utterances. We also establish a baseline on this dataset, which illustrates some of the difficulties associated with this data.",
+    "venue": "SIGDIAL Conference",
+    "year": 2017,
+    "referenceCount": 28,
+    "citationCount": 402,
+    "influentialCitationCount": 93,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/W17-5525.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The E2E dataset poses new challenges: (1) its human reference texts show more lexical richness and syntactic variation, including discourse phenomena; (2) generating from this set requires content selection, which promises more natural, varied and less template-like system utterances."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2848048",
+            "name": "Jekaterina Novikova"
+        },
+        {
+            "authorId": "2544049",
+            "name": "Ondrej Dusek"
+        },
+        {
+            "authorId": "1681799",
+            "name": "Verena Rieser"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "17a3c997aa774842e303734ea40cca291b39be79",
+            "title": "Analysing Data-To-Text Generation Benchmarks"
+        },
+        {
+            "paperId": "d2f327736c9b68f68ad64d0b1cefed9b4dd83313",
+            "title": "Imitation learning for language generation from unaligned data"
+        },
+        {
+            "paperId": "9fb07b2dbb488b8890debf62c1689d5700e12383",
+            "title": "A Context-aware Natural Language Generator for Dialogue Systems"
+        },
+        {
+            "paperId": "bbba1704b3253134c5edf9c9e6c9816ff88c8f7e",
+            "title": "Crowd-sourcing NLG Data: Pictures Elicit Better Data."
+        },
+        {
+            "paperId": "8932c433b41c955ef87acefbdbfcbf81a00faeef",
+            "title": "Natural Language Generation in Dialogue using Lexicalized and Delexicalized Data"
+        },
+        {
+            "paperId": "663dc7723e1748f1e28ac18f3e1a4c1212f2385e",
+            "title": "Sequence-to-Sequence Generation for Spoken Dialogue via Deep Syntax Trees and Strings"
+        },
+        {
+            "paperId": "9ffaa3a91071f0b9b7676b8cfc73e06069329724",
+            "title": "Multi-domain Neural Network Language Generation for Spoken Dialogue Systems"
+        },
+        {
+            "paperId": "f273adbfe0e6ba39a583b9669d94cc8d828d8c25",
+            "title": "What to talk about and how? Selective Generation using LSTMs with Coarse-to-Fine Alignment"
+        },
+        {
+            "paperId": "4d4b46e545e1a3f6871b49cc69640ef2eb1a4654",
+            "title": "Semantically Conditioned LSTM-based Natural Language Generation for Spoken Dialogue Systems"
+        },
+        {
+            "paperId": "40052387f2b90315e1b0d85c638180c30f0f7afe",
+            "title": "Training a Natural Language Generator From Unaligned Data"
+        },
+        {
+            "paperId": "696ca58d93f6404fea0fc75c62d1d7b378f47628",
+            "title": "Microsoft COCO Captions: Data Collection and Evaluation Server"
+        },
+        {
+            "paperId": "258986132bf17755fe8263e42429fe73218c1534",
+            "title": "CIDEr: Consensus-based image description evaluation"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "86cbaf2f62b5689c45d128800ddede5f920ab65b",
+            "title": "Natural Language Generation as Incremental Planning Under Uncertainty: Adaptive Information Presentation for Statistical Dialogue Systems"
+        },
+        {
+            "paperId": "5e25a28525f5da915d1a136d1caabaee32635596",
+            "title": "Computational Methods for Corpus Annotation and Analysis"
+        },
+        {
+            "paperId": "ac35c677538c4999a3e9887cd3ea1ec205fd5bf2",
+            "title": "The Relationship of Lexical Richness to the Quality of ESL Learners' Oral Narratives."
+        },
+        {
+            "paperId": "5cb674c5a2253c977dea903ce33f7e09a99156dc",
+            "title": "Phrase-Based Statistical Language Generation Using Graphical Models and Active Learning"
+        },
+        {
+            "paperId": "8166c77053eb4c1d99e39ad2191338f337f53c52",
+            "title": "Natural Language Generation as Planning Under Uncertainty for Spoken Dialogue Systems"
+        },
+        {
+            "paperId": "0008076a1968d9fb590c9013ab27b824849a4e80",
+            "title": "Learning to sportscast: a test of grounded language acquisition"
+        },
+        {
+            "paperId": "34d7a07c493ca6336c92156806a2947e115caadc",
+            "title": "METEOR: An Automatic Metric for MT Evaluation with High Levels of Correlation with Human Judgments"
+        },
+        {
+            "paperId": "f02100bc2486c164bc57f4c60c5be71a33c7b01b",
+            "title": "Information Presentation in Spoken Dialogue Systems"
+        },
+        {
+            "paperId": "1070a6c1c1fec877666a6aeae4d33ab938c32cf3",
+            "title": "Generation and evaluation of user tailored responses in multimodal dialogue"
+        },
+        {
+            "paperId": "60b05f32c32519a809f21642ef1eb3eaf3848008",
+            "title": "ROUGE: A Package for Automatic Evaluation of Summaries"
+        },
+        {
+            "paperId": "36d6ca6d47fa3a74d7698f0aa39605c29c594a3b",
+            "title": "Trainable Sentence Planning for Complex Information Presentations in Spoken Dialog Systems"
+        },
+        {
+            "paperId": "d7da009f457917aa381619facfa5ffae9329a6e9",
+            "title": "Bleu: a Method for Automatic Evaluation of Machine Translation"
+        },
+        {
+            "paperId": "3af95af0d1534b24df7ea4d94cbedba0b9663e37",
+            "title": "Automatic evaluation of machine translation quality using n-gram co-occurrence statistics"
+        },
+        {
+            "paperId": "8832806467c8f637452eecdb6bb8d9af57d6c852",
+            "title": "Automatic measurement of syntactic complexity in child language acquisition"
+        },
+        {
+            "paperId": "780b7c5e2440459bcc532b251e51c9223037acc2",
+            "title": "Proceedings of the 41st Annual Meeting of the Association for Computational Linguistics"
+        }
+    ]
+}

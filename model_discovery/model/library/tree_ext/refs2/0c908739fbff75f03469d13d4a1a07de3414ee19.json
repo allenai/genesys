@@ -1,0 +1,74 @@
+{
+    "paperId": "0c908739fbff75f03469d13d4a1a07de3414ee19",
+    "externalIds": {
+        "ArXiv": "1503.02531",
+        "MAG": "1821462560",
+        "DBLP": "journals/corr/HintonVD15",
+        "CorpusId": 7200347
+    },
+    "title": "Distilling the Knowledge in a Neural Network",
+    "abstract": "A very simple way to improve the performance of almost any machine learning algorithm is to train many different models on the same data and then to average their predictions. Unfortunately, making predictions using a whole ensemble of models is cumbersome and may be too computationally expensive to allow deployment to a large number of users, especially if the individual models are large neural nets. Caruana and his collaborators have shown that it is possible to compress the knowledge in an ensemble into a single model which is much easier to deploy and we develop this approach further using a different compression technique. We achieve some surprising results on MNIST and we show that we can significantly improve the acoustic model of a heavily used commercial system by distilling the knowledge in an ensemble of models into a single model. We also introduce a new type of ensemble composed of one or more full models and many specialist models which learn to distinguish fine-grained classes that the full models confuse. Unlike a mixture of experts, these specialist models can be trained rapidly and in parallel.",
+    "venue": "arXiv.org",
+    "year": 2015,
+    "referenceCount": 9,
+    "citationCount": 16879,
+    "influentialCitationCount": 2168,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work shows that it can significantly improve the acoustic model of a heavily used commercial system by distilling the knowledge in an ensemble of models into a single model and introduces a new type of ensemble composed of one or more full models and many specialist models which learn to distinguish fine-grained classes that the full models confuse."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1695689",
+            "name": "Geoffrey E. Hinton"
+        },
+        {
+            "authorId": "1689108",
+            "name": "O. Vinyals"
+        },
+        {
+            "authorId": "49959210",
+            "name": "J. Dean"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "3127190433230b3dc1abd0680bb58dced4bcd90e",
+            "title": "Large Scale Distributed Deep Networks"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "0060745e006c5f14ec326904119dca19c6545e51",
+            "title": "Improving neural networks by preventing co-adaptation of feature detectors"
+        },
+        {
+            "paperId": "30c9bb327b7f2b9f1d1e5b69b9d0c97b410948d9",
+            "title": "Model compression"
+        },
+        {
+            "paperId": "a0456c27cdd58f197032c1c8b4f304f09d4c9bc5",
+            "title": "Multiple Classifier Systems"
+        },
+        {
+            "paperId": "c8d90974c3f3b40fa05e322df2905fc16204aa56",
+            "title": "Adaptive Mixtures of Local Experts"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "8d25d04051074be7590cbe5e4e34c45bb26674e1",
+            "title": "Learning small-size DNN with output-distribution-based criteria"
+        },
+        {
+            "paperId": "31868290adf1c000c611dfc966b514d5a34e8d23",
+            "title": "FUNDAMENTAL TECHNOLOGIES IN MODERN SPEECH RECOGNITION Digital Object Identifier 10.1109/MSP.2012.2205597"
+        }
+    ]
+}

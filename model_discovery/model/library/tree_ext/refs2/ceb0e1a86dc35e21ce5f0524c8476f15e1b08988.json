@@ -1,0 +1,218 @@
+{
+    "paperId": "ceb0e1a86dc35e21ce5f0524c8476f15e1b08988",
+    "externalIds": {
+        "DBLP": "conf/cvpr/ZhangBMM06",
+        "MAG": "2165828254",
+        "DOI": "10.1109/CVPR.2006.301",
+        "CorpusId": 274094
+    },
+    "title": "SVM-KNN: Discriminative Nearest Neighbor Classification for Visual Category Recognition",
+    "abstract": "We consider visual category recognition in the framework of measuring similarities, or equivalently perceptual distances, to prototype examples of categories. This approach is quite flexible, and permits recognition based on color, texture, and particularly shape, in a homogeneous framework. While nearest neighbor classifiers are natural in this setting, they suffer from the problem of high variance (in bias-variance decomposition) in the case of limited sampling. Alternatively, one could use support vector machines but they involve time-consuming optimization and computation of pairwise distances. We propose a hybrid of these two methods which deals naturally with the multiclass setting, has reasonable computational complexity both in training and at run time, and yields excellent results in practice. The basic idea is to find close neighbors to a query sample and train a local support vector machine that preserves the distance function on the collection of neighbors. Our method can be applied to large, multiclass data sets for which it outperforms nearest neighbor and support vector machines, and remains efficient when the problem becomes intractable for support vector machines. A wide variety of distance functions can be used and our experiments show state-of-the-art performance on a number of benchmark data sets for shape and texture classification (MNIST, USPS, CUReT) and object recognition (Caltech- 101). On Caltech-101 we achieved a correct classification rate of 59.05%(\u00b10.56%) at 15 training images per class, and 66.23%(\u00b10.48%) at 30 training images.",
+    "venue": "Computer Vision and Pattern Recognition",
+    "year": 2006,
+    "referenceCount": 44,
+    "citationCount": 1342,
+    "influentialCitationCount": 122,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work considers visual category recognition in the framework of measuring similarities, or equivalently perceptual distances, to prototype examples of categories and proposes a hybrid of these two methods which deals naturally with the multiclass setting, has reasonable computational complexity both in training and at run time, and yields excellent results in practice."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145140331",
+            "name": "Haotong Zhang"
+        },
+        {
+            "authorId": "39668247",
+            "name": "A. Berg"
+        },
+        {
+            "authorId": "145854440",
+            "name": "M. Maire"
+        },
+        {
+            "authorId": "143751119",
+            "name": "Jitendra Malik"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "ca021face4bc8dcb10f404b2f7ec03487336bddf",
+            "title": "Using Dependent Regions for Object Categorization in a Generative Framework"
+        },
+        {
+            "paperId": "f9e65fcb0e04174577f211d702d3f837e3624c5b",
+            "title": "Multiclass Object Recognition with Sparse, Localized Features"
+        },
+        {
+            "paperId": "6dbaff29d3898cf60f63f5a34cb9610ebb75220c",
+            "title": "Beyond Bags of Features: Spatial Pyramid Matching for Recognizing Natural Scene Categories"
+        },
+        {
+            "paperId": "c99ce493a3c6b1548024f419a0810c6bf95281a5",
+            "title": "Learning Compositional Categorization Models"
+        },
+        {
+            "paperId": "fc3098cff5469c55c3e81dc127563afe6dbadf22",
+            "title": "Pyramid Match Kernels: Discriminative Classification with Sets of Image Features (version 2)"
+        },
+        {
+            "paperId": "ff412399f71d907cea8b15e3ecde14e249e358cb",
+            "title": "Combining generative models and Fisher kernels for object recognition"
+        },
+        {
+            "paperId": "625bce34ec80d29242340400d916e799d2975430",
+            "title": "The pyramid match kernel: discriminative classification with sets of image features"
+        },
+        {
+            "paperId": "12c7fc38debaf3589e712973642246bd54fe63b3",
+            "title": "Shape matching and object recognition using low distortion correspondences"
+        },
+        {
+            "paperId": "040c23e5a409fbdedd5032263dfcb1a4d7dfd200",
+            "title": "Object recognition with features inspired by visual cortex"
+        },
+        {
+            "paperId": "8c04f169203f9e55056a6f7f956695babe622a38",
+            "title": "Distinctive Image Features from Scale-Invariant Keypoints"
+        },
+        {
+            "paperId": "ed9db7b20e019cdb1c7db8b7921221ee2d9f36e2",
+            "title": "Learning Generative Visual Models from Few Training Examples: An Incremental Bayesian Approach Tested on 101 Object Categories"
+        },
+        {
+            "paperId": "42de22c119f25d303032396b8f7d962f62d6498b",
+            "title": "Sharing features: efficient boosting procedures for multiclass object detection"
+        },
+        {
+            "paperId": "9cc1b4ca121fef59517f24863b113bce3e5acd1a",
+            "title": "Estimating Human Body Configurations Using Shape Context Matching"
+        },
+        {
+            "paperId": "3b44c301a4e6e441bade4a0a04fe8a993c1179c4",
+            "title": "Shape Matching and Object Recognition Using Shape Contexts"
+        },
+        {
+            "paperId": "cfc6d0c8260594ebc5dd20ee558d29b1014ed41a",
+            "title": "On the Algorithmic Implementation of Multiclass Kernel-based Vector Machines"
+        },
+        {
+            "paperId": "249297cebeede0304f2d88e7dee04fe1979bbada",
+            "title": "A Generalized Kernel Approach to Dissimilarity-based Classification"
+        },
+        {
+            "paperId": "0b8be52a054a5a3800e65170c02d688a80e6bab3",
+            "title": "Shape contexts enable efficient retrieval of similar shapes"
+        },
+        {
+            "paperId": "6cd135bf1fafd67ca284f3168ee88269789d8f9c",
+            "title": "Geometric blur for template matching"
+        },
+        {
+            "paperId": "90d6e7f2202f754d8588f9536e3f5b4a24701f24",
+            "title": "Representing and Recognizing the Visual Appearance of Materials using Three-dimensional Textons"
+        },
+        {
+            "paperId": "fc04643fec8b23b418611a92fb7dadc38e4ffc7e",
+            "title": "K-Local Hyperplane and Convex Distance Nearest Neighbor Algorithms"
+        },
+        {
+            "paperId": "61ad1950b11acd319949ce8523e899b31cad4d82",
+            "title": "Adaptive Nearest Neighbor Classification Using Support Vector Machines"
+        },
+        {
+            "paperId": "32484f6d111bf21f1395a34a087991a9041dd0ae",
+            "title": "Large Margin DAGs for Multiclass Classification"
+        },
+        {
+            "paperId": "8aaff7e62c4ce8724298a276a56ac519c804bb74",
+            "title": "Using Analytic QP and Sparseness to Speed Training of Support Vector Machines"
+        },
+        {
+            "paperId": "addbd39fc775c12aa453ebd0cb77ea1bd3389572",
+            "title": "Speed of processing in the human visual system"
+        },
+        {
+            "paperId": "09370d132a1e238a778f5e39a7a096994dc25ec1",
+            "title": "Discriminant Adaptive Nearest Neighbor Classification"
+        },
+        {
+            "paperId": "d7877c7a8256177432e6a5f4a4903d99a505bed0",
+            "title": "On growth and form"
+        },
+        {
+            "paperId": "8314dda1ec43ce57ff877f8f02ed89acb68ca035",
+            "title": "Efficient Pattern Recognition Using a New Transformation Distance"
+        },
+        {
+            "paperId": "1ca97e1668e305fb719845f84a05a62dfb946a5d",
+            "title": "Local Learning Algorithms"
+        },
+        {
+            "paperId": "0c38350207412dea323b14afad1016cc713da952",
+            "title": "MOVPE growth for the fabrication of OEICs"
+        },
+        {
+            "paperId": "a8e8f3c8d4418c8d62e306538c9c1292635e9d27",
+            "title": "Backpropagation Applied to Handwritten Zip Code Recognition"
+        },
+        {
+            "paperId": "cc1d7345c22c17735222762ba8bac4ffa348b85d",
+            "title": "Shape Matching and Object Recognition"
+        },
+        {
+            "paperId": null,
+            "title": "Proceedings of the 2006 IEEE Computer Society Conference on Computer Vision and Pattern Recognition"
+        },
+        {
+            "paperId": "7e3c3fee11758b15b56d719cca819303eca9b54b",
+            "title": "A Statistical Approach to Texture Classification from Single Images"
+        },
+        {
+            "paperId": "94b295e711ec744583597432c19749a5cd61038e",
+            "title": "Multicategory Support Vector Machines , Theory , and Application to the Classification of Microarray Data and Satellite Radiance Data"
+        },
+        {
+            "paperId": null,
+            "title": "Statistical Issues in Texture Analysis"
+        },
+        {
+            "paperId": "f42b865e20e61a954239f421b42007236e671f19",
+            "title": "GradientBased Learning Applied to Document Recognition"
+        },
+        {
+            "paperId": null,
+            "title": "Mathematical statistics, volume 1"
+        },
+        {
+            "paperId": "8e7ed0922e9af120a20ccaaa53158c26354683b7",
+            "title": "The Kernel Trick for Distances"
+        },
+        {
+            "paperId": "1e0bf0fbefbb0404c3c18740123a969091c67ef4",
+            "title": "Reflectance and texture of real-world surfaces"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "153f64ab7c1c24b1b136d8da2f36c6333b8dbfdd",
+            "title": "Transformation Invariance in Pattern Recognition-Tangent Distance and Tangent Propagation"
+        },
+        {
+            "paperId": null,
+            "title": "Natural categories"
+        },
+        {
+            "paperId": "a9c8b68d5e980acf6123ecb33ff45b71754dbc68",
+            "title": "Similarity in visually perceived forms."
+        },
+        {
+            "paperId": "32ba0664f51c88960fc9b783a9c0adb6b0546e73",
+            "title": "Estimation by the nearest neighbor rule"
+        }
+    ]
+}

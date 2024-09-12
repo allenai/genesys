@@ -1,0 +1,150 @@
+{
+    "paperId": "cf18287e79b1fd73cd333fc914bb24c00a537f4c",
+    "externalIds": {
+        "DBLP": "journals/corr/abs-1710-05268",
+        "MAG": "2765349170",
+        "ArXiv": "1710.05268",
+        "CorpusId": 28326841
+    },
+    "title": "Self-Supervised Visual Planning with Temporal Skip Connections",
+    "abstract": "In order to autonomously learn wide repertoires of complex skills, robots must be able to learn from their own autonomously collected data, without human supervision. One learning signal that is always available for autonomously collected data is prediction: if a robot can learn to predict the future, it can use this predictive model to take actions to produce desired outcomes, such as moving an object to a particular location. However, in complex open-world scenarios, designing a representation for prediction is difficult. In this work, we instead aim to enable self-supervised robotic learning through direct video prediction: instead of attempting to design a good representation, we directly predict what the robot will see next, and then use this model to achieve desired goals. A key challenge in video prediction for robotic manipulation is handling complex spatial arrangements such as occlusions. To that end, we introduce a video prediction model that can keep track of objects through occlusion by incorporating temporal skip-connections. Together with a novel planning criterion and action space formulation, we demonstrate that this model substantially outperforms prior work on video prediction-based control. Our results show manipulation of objects not seen during training, handling multiple objects, and pushing objects around obstructions. These results represent a significant advance in the range and complexity of skills that can be performed entirely with self-supervised robotic learning.",
+    "venue": "Conference on Robot Learning",
+    "year": 2017,
+    "referenceCount": 27,
+    "citationCount": 292,
+    "influentialCitationCount": 44,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces a video prediction model that can keep track of objects through occlusion by incorporating temporal skip-connections and demonstrates that this model substantially outperforms prior work on video prediction-based control."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "27535721",
+            "name": "F. Ebert"
+        },
+        {
+            "authorId": "46881670",
+            "name": "Chelsea Finn"
+        },
+        {
+            "authorId": "49250083",
+            "name": "Alex X. Lee"
+        },
+        {
+            "authorId": "1736651",
+            "name": "S. Levine"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "532534c7f8de3060d11819a032ff8b570185f976",
+            "title": "Learning to fly by crashing"
+        },
+        {
+            "paperId": "bb430ec2f25e4a1513073a2a4098cbb942c2e3e0",
+            "title": "Recurrent Environment Simulators"
+        },
+        {
+            "paperId": "2d1b8f60f2724efd6c9344870fb60e8525157d70",
+            "title": "Parallel Multiscale Autoregressive Density Estimation"
+        },
+        {
+            "paperId": "f2c20cb6ebd2ad704c5bcae4eb8b942d3c62f8e0",
+            "title": "Uncertainty-Aware Reinforcement Learning for Collision Avoidance"
+        },
+        {
+            "paperId": "8f92b4ea04758df2acfb49bd46a4cde923c3ddcb",
+            "title": "Deep visual foresight for planning robot motion"
+        },
+        {
+            "paperId": "b01871c114b122340209562972ff515b86b16ccf",
+            "title": "Video Pixel Networks"
+        },
+        {
+            "paperId": "ee091ccf24c4f053c5c3dfbefe4a7975ed3447c1",
+            "title": "Generating Videos with Scene Dynamics"
+        },
+        {
+            "paperId": "8cf83c619423a1504f26495d5f6a495054c46462",
+            "title": "Learning to Poke by Poking: Experiential Learning of Intuitive Physics"
+        },
+        {
+            "paperId": "0dabf715e6ee979a5bae576ec2678c2a13109d70",
+            "title": "SE3-nets: Learning rigid body motion using deep neural networks"
+        },
+        {
+            "paperId": "aba48504f4f9563eafa44e0cfb22e1345d767c80",
+            "title": "Dynamic Filter Networks"
+        },
+        {
+            "paperId": "ad367b44f3434b9ba6b46b41ab083210f6827a9f",
+            "title": "Deep Predictive Coding Networks for Video Prediction and Unsupervised Learning"
+        },
+        {
+            "paperId": "f110cfdbe9ded7a384bcf5c0d56e536bd275a7eb",
+            "title": "Unsupervised Learning for Physical Interaction through Video Prediction"
+        },
+        {
+            "paperId": "494e2d5b40dcebde349f9872c7317e5003f9c5d2",
+            "title": "Learning hand-eye coordination for robotic grasping with deep learning and large-scale data collection"
+        },
+        {
+            "paperId": "17fa1c2a24ba8f731c8b21f1244463bc4b465681",
+            "title": "Deep multi-scale video prediction beyond mean square error"
+        },
+        {
+            "paperId": "f03b4ff1b4943691cec703b508c0a91f2d97a881",
+            "title": "Supersizing self-supervision: Learning to grasp from 50K tries and 700 robot hours"
+        },
+        {
+            "paperId": "e4257bc131c36504a04382290cbc27ca8bb27813",
+            "title": "Action-Conditional Video Prediction using Deep Networks in Atari Games"
+        },
+        {
+            "paperId": "e89d656a39fc3b08af47ebb9a583e182a596dabe",
+            "title": "DeepMPC: Learning Deep Latent Features for Model Predictive Control"
+        },
+        {
+            "paperId": "f9c990b1b5724e50e5632b94fdb7484ece8a6ce7",
+            "title": "Convolutional LSTM Network: A Machine Learning Approach for Precipitation Nowcasting"
+        },
+        {
+            "paperId": "098fa9b4c3f7fb41c7a178d36f5dbb50a3ffa377",
+            "title": "Dense Optical Flow Prediction from a Static Image"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "1366799c0328fa9231f0b74a43e247441d537605",
+            "title": "Learning predictive models of a depth camera & manipulator from raw execution traces"
+        },
+        {
+            "paperId": "5c5e69387020d7ca7d49487ca841958dc5e08ce6",
+            "title": "The Cross-Entropy Method: A Unified Approach to Combinatorial Optimization, Monte-Carlo Simulation, and Machine Learning"
+        },
+        {
+            "paperId": "7a0379749caf8166b56031f0ce1388af9d73a5b8",
+            "title": "Infinite horizon model predictive control for tracking problems"
+        },
+        {
+            "paperId": "28271f5e25cabca2905d4c9113f0fef3f16751c8",
+            "title": "The Cross-Entropy Method"
+        },
+        {
+            "paperId": "957a353fb9e4bda1baccbf7b7335e544e75c16a0",
+            "title": "Object Permanence in Five-and-a-Half-Month-Old Infants?"
+        },
+        {
+            "paperId": "77c91e7ae3a9319cbca7e0798626b06998d3084f",
+            "title": "Autonomously Acquiring Instance-Based Object Models from Experience"
+        },
+        {
+            "paperId": null,
+            "title": "Figure 10: General SNA model based on Equation (1). where \u02dc I 0 is the transformed background. We tested this model on various pushing task and found that performance is comparable to the SNA model"
+        }
+    ]
+}

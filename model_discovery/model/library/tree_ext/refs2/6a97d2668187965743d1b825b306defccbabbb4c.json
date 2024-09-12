@@ -1,0 +1,182 @@
+{
+    "paperId": "6a97d2668187965743d1b825b306defccbabbb4c",
+    "externalIds": {
+        "MAG": "2431962807",
+        "ArXiv": "1606.04934",
+        "DBLP": "journals/corr/KingmaSW16",
+        "CorpusId": 11514441
+    },
+    "title": "Improved Variational Inference with Inverse Autoregressive Flow",
+    "abstract": "The framework of normalizing flows provides a general strategy for flexible variational inference of posteriors over latent variables. We propose a new type of normalizing flow, inverse autoregressive flow (IAF), that, in contrast to earlier published flows, scales well to high-dimensional latent spaces. The proposed flow consists of a chain of invertible transformations, where each transformation is based on an autoregressive neural network. In experiments, we show that IAF significantly improves upon diagonal Gaussian approximate posteriors. In addition, we demonstrate that a novel type of variational autoencoder, coupled with IAF, is competitive with neural autoregressive models in terms of attained log-likelihood on natural images, while allowing significantly faster synthesis.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2016,
+    "referenceCount": 36,
+    "citationCount": 1691,
+    "influentialCitationCount": 250,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new type of normalizing flow, inverse autoregressive flow (IAF), is proposed that, in contrast to earlier published flows, scales well to high-dimensional latent spaces and significantly improves upon diagonal Gaussian approximate posteriors."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1726807",
+            "name": "Diederik P. Kingma"
+        },
+        {
+            "authorId": "2887364",
+            "name": "Tim Salimans"
+        },
+        {
+            "authorId": "1678311",
+            "name": "M. Welling"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "df0402517a7338ae28bc54acaac400de6b456a46",
+            "title": "WaveNet: A Generative Model for Raw Audio"
+        },
+        {
+            "paperId": "0936352b78a52bc5d2b5e3f04233efc56664af51",
+            "title": "Conditional Image Generation with PixelCNN Decoders"
+        },
+        {
+            "paperId": "09879f7956dddc2a9328f5c1472feeb8402bcbcf",
+            "title": "Density estimation using Real NVP"
+        },
+        {
+            "paperId": "1c4e9156ca07705531e45960b7a919dc473abb51",
+            "title": "Wide Residual Networks"
+        },
+        {
+            "paperId": "bda89e0d181eda7e49ea831225eda86d075e111c",
+            "title": "Towards Conceptual Compression"
+        },
+        {
+            "paperId": "77f0a39b8e02686fd85b01971f8feb7f60971f80",
+            "title": "Identity Mappings in Deep Residual Networks"
+        },
+        {
+            "paperId": "58c9300e702fdaada83f4a359669dc7b6b3facb6",
+            "title": "A Structured Variational Auto-encoder for Learning Deep Hierarchies of Sparse Features"
+        },
+        {
+            "paperId": "3d2c6941a9b4608ba52b328369a3352db2092ae0",
+            "title": "Weight Normalization: A Simple Reparameterization to Accelerate Training of Deep Neural Networks"
+        },
+        {
+            "paperId": "2ad303a88ba4fe57a4a3618aa42be90335481acc",
+            "title": "How to Train Deep Variational Autoencoders and Probabilistic Ladder Networks"
+        },
+        {
+            "paperId": "64d698ecd01eab99e81e586400e86d3d70b9cba7",
+            "title": "Ladder Variational Autoencoders"
+        },
+        {
+            "paperId": "41f1d50c85d3180476c4c7b3eea121278b0d8474",
+            "title": "Pixel Recurrent Neural Networks"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "f63e917638553414526a0cc8550de4ad2d83fe7a",
+            "title": "Fast and Accurate Deep Network Learning by Exponential Linear Units (ELUs)"
+        },
+        {
+            "paperId": "2cc3fbf8e36667fa2bec9ea047076b79304e2eee",
+            "title": "The Variational Gaussian Process"
+        },
+        {
+            "paperId": "d82b55c35c8673774a708353838918346f6c006f",
+            "title": "Generating Sentences from a Continuous Space"
+        },
+        {
+            "paperId": "f31ac36adbd24c43dcd28397081702e98e026b34",
+            "title": "Hierarchical Variational Models"
+        },
+        {
+            "paperId": "3e47c4c2dd98c49b7771c7228812d5fd9eee56a3",
+            "title": "Importance Weighted Autoencoders"
+        },
+        {
+            "paperId": "5b8364c21155d3d2cd38ea4c8b8580beba9a3250",
+            "title": "An Empirical Exploration of Recurrent Network Architectures"
+        },
+        {
+            "paperId": "0f899b92b7fb03b609fee887e4b6f3b633eaf30d",
+            "title": "Variational Inference with Normalizing Flows"
+        },
+        {
+            "paperId": "2dcef55a07f8607a819c21fe84131ea269cc2e3c",
+            "title": "Deep Unsupervised Learning using Nonequilibrium Thermodynamics"
+        },
+        {
+            "paperId": "90f72fbbe5f0a29e627db28999e01a30a9655bc6",
+            "title": "MADE: Masked Autoencoder for Distribution Estimation"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "0523e14247d74c4505cd5e32e1f0495f291ec432",
+            "title": "Factoring Variations in Natural Images with Deep Gaussian Mixture Models"
+        },
+        {
+            "paperId": "dc8301b67f98accbb331190dd7bd987952a692af",
+            "title": "NICE: Non-linear Independent Components Estimation"
+        },
+        {
+            "paperId": "484ad17c926292fbe0d5211540832a8c8a8e958b",
+            "title": "Stochastic Backpropagation and Approximate Inference in Deep Generative Models"
+        },
+        {
+            "paperId": "5f5dc5b9a2ba710937e2c413b37b053cd673df02",
+            "title": "Auto-Encoding Variational Bayes"
+        },
+        {
+            "paperId": "695a2c95eacdbccb7a73d2f1e90e7b35b4b3d864",
+            "title": "Deep AutoRegressive Networks"
+        },
+        {
+            "paperId": "309494da0769345cb35ca0b7b0aae8143eee85a2",
+            "title": "RNADE: The real-valued neural autoregressive density-estimator"
+        },
+        {
+            "paperId": "bccb2f99a9d1c105699f5d88c479569085e2c7ba",
+            "title": "Stochastic variational inference"
+        },
+        {
+            "paperId": "9ceb1dea15ac3df3d610fd0b3cc52b9a4e9141a3",
+            "title": "Variational Bayesian Inference with Stochastic Search"
+        },
+        {
+            "paperId": "83dfe3980b875c4e5fe6f2cb1df131cc46d175c8",
+            "title": "Deconvolutional networks"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "6dc61f37ecc552413606d8c89ffbc46ec98ed887",
+            "title": "Acceleration of stochastic approximation by averaging"
+        },
+        {
+            "paperId": "c7e07cf8ba4ad956483f9dd37a168355ef16a041",
+            "title": "Markov Chain Monte Carlo and Variational Inference: Bridging the Gap"
+        },
+        {
+            "paperId": "b893e7053c9c7e266a23fb13a42261a88f650210",
+            "title": "The Neural Autoregressive Distribution Estimator"
+        },
+        {
+            "paperId": "56f50f070a861923707d1faba7e9144ea99be6e8",
+            "title": "Higher Order Statistical Decorrelation without Information Loss"
+        }
+    ]
+}

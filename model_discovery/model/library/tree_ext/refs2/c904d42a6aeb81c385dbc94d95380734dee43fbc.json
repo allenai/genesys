@@ -1,0 +1,178 @@
+{
+    "paperId": "c904d42a6aeb81c385dbc94d95380734dee43fbc",
+    "externalIds": {
+        "MAG": "2791673912",
+        "DBLP": "journals/corr/abs-1803-04014",
+        "ArXiv": "1803.04014",
+        "DOI": "10.1109/IPDPSW.2018.00091",
+        "CorpusId": 3887305
+    },
+    "title": "NVIDIA Tensor Core Programmability, Performance & Precision",
+    "abstract": "The NVIDIA Volta GPU microarchitecture introduces a specialized unit, called Tensor Core that performs one matrix-multiply-and-accumulate on 4x4 matrices per clock cycle. The NVIDIA Tesla V100 accelerator, featuring the Volta microarchitecture, provides 640 Tensor Cores with a theoretical peak performance of 125 Tflops/s in mixed precision. In this paper, we investigate current approaches to program NVIDIA Tensor Cores, their performances and the precision loss due to computation in mixed precision. Currently, NVIDIA provides three different ways of programming matrix-multiply-and-accumulate on Tensor Cores: the CUDA Warp Matrix Multiply Accumulate (WMMA) API, CUTLASS, a templated library based on WMMA, and cuBLAS GEMM. After experimenting with different approaches, we found that NVIDIA Tensor Cores can deliver up to 83 Tflops/s in mixed precision on a Tesla V100 GPU, seven and three times the performance in single and half precision respectively. A WMMA implementation of batched GEMM reaches a performance of 4 Tflops/s. While precision loss due to matrix multiplication with half precision input might be critical in many HPC applications, it can be considerably reduced at the cost of increased computation. Our results indicate that HPC applications using matrix multiplications can strongly benefit from using of NVIDIA Tensor Cores.",
+    "venue": "IEEE International Symposium on Parallel & Distributed Processing, Workshops and Phd Forum",
+    "year": 2018,
+    "referenceCount": 32,
+    "citationCount": 315,
+    "influentialCitationCount": 21,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1803.04014",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is found that NVIDIA Tensor Cores can deliver up to 83 Tflops/s in mixed precision on a Tesla V100 GPU, seven and three times the performance in single and half precision respectively."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2279799",
+            "name": "S. Markidis"
+        },
+        {
+            "authorId": "37360922",
+            "name": "Steven W. D. Chien"
+        },
+        {
+            "authorId": "1758463",
+            "name": "E. Laure"
+        },
+        {
+            "authorId": "2580938",
+            "name": "I. Peng"
+        },
+        {
+            "authorId": "7553591",
+            "name": "J. Vetter"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "0afa68d18d098fd1271cb014e1a786055a9afe9c",
+            "title": "Low Communication FMM-Accelerated FFT on GPUs"
+        },
+        {
+            "paperId": "a0a22e8776f65d4addd140e46713097fc9706907",
+            "title": "Investigating half precision arithmetic to accelerate dense linear system solvers"
+        },
+        {
+            "paperId": "cd14707ba72d0d13c8bf42bfd9d072122db7c711",
+            "title": "Flexpoint: An Adaptive Numerical Format for Efficient Training of Deep Neural Networks"
+        },
+        {
+            "paperId": "e7fd6848cb29ca221a7e17d823e06fb566f1f135",
+            "title": "Mixed Precision Training"
+        },
+        {
+            "paperId": "a9f4920167a1ff5d30f51c4c2986c12b854f952b",
+            "title": "Towards numerical benchmark for half-precision floating point arithmetic"
+        },
+        {
+            "paperId": "2dfeb5a90abc49ab2a80a492a01a4e2c8e92ec22",
+            "title": "In-datacenter performance analysis of a tensor processing unit"
+        },
+        {
+            "paperId": "ac473f1674f14253da0e50c25b8cb86f8801a808",
+            "title": "LIBXSMM: Accelerating Small Matrix Multiplications by Runtime Code Generation"
+        },
+        {
+            "paperId": "4954fa180728932959997a4768411ff9136aac81",
+            "title": "TensorFlow: A system for large-scale machine learning"
+        },
+        {
+            "paperId": "aa11256641a1d7c0fa21f7133115d335098f6b88",
+            "title": "On the Strong Scaling of the Spectral Element Solver Nek5000 on Petascale Systems"
+        },
+        {
+            "paperId": "4a64335f7ba0c931209c0d8360d367f7f1ba04e8",
+            "title": "OpenACC acceleration of the Nek5000 spectral element code"
+        },
+        {
+            "paperId": "b7cf49e30355633af2db19f35189410c8515e91f",
+            "title": "Deep Learning with Limited Numerical Precision"
+        },
+        {
+            "paperId": "32d5405ac92a13d7f38e2313574dfd6238125a94",
+            "title": "Always-on Vision Processing Unit for Mobile Applications"
+        },
+        {
+            "paperId": "851c27d7cdb74b0b21bd84a9333bca106f486713",
+            "title": "Low precision storage for deep learning"
+        },
+        {
+            "paperId": "1b82d54e9a3b06c603d7987ba3ecf437425f6330",
+            "title": "Training deep neural networks with low precision multiplications"
+        },
+        {
+            "paperId": "e25c39846d814f0eda33871c4b11c37855b9a70e",
+            "title": "A reconfigurable fabric for accelerating large-scale datacenter services"
+        },
+        {
+            "paperId": "31c36d445367ba204244bb74893c5654e31c3869",
+            "title": "cuDNN: Efficient Primitives for Deep Learning"
+        },
+        {
+            "paperId": "680a38e8f025685b192e9e0cf755c6b664963551",
+            "title": "A million spiking-neuron integrated circuit with a scalable communication network and interface"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "fa6509ebe8c0264da3ce7e1c5794100d25ff1997",
+            "title": "SpiNNaker: Mapping neural networks onto a massively-parallel chip multiprocessor"
+        },
+        {
+            "paperId": "94c1379548ab1348d1ff2b3e69a411a385b39433",
+            "title": "Mixed Precision Iterative Refinement Techniques for the Solution of Dense Linear Systems"
+        },
+        {
+            "paperId": "5c179d447a27c40a54b2bf8b1b2d6819e63c1a69",
+            "title": "The Accuracy of Floating Point Summation"
+        },
+        {
+            "paperId": "76825f444e26a8367fb4bc2900f1faddecb52859",
+            "title": "The Design and Performance of Batched BLAS on Modern High-Performance Computing Systems"
+        },
+        {
+            "paperId": null,
+            "title": "CUTLASS: Fast linear algebra in CUDA C++"
+        },
+        {
+            "paperId": null,
+            "title": "Inside Volta: The world\u2019s most advanced data center GPU"
+        },
+        {
+            "paperId": null,
+            "title": "NVIDIA Tesla V100 GPU architecture"
+        },
+        {
+            "paperId": null,
+            "title": "Intel Nervana Neural Network Processor: Architecture Update"
+        },
+        {
+            "paperId": "2913c2bf3f92b5ae369400a42b2d27cc5bc05ecb",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": "d5bedd8aad7a5fe511fee016b17c4f197b9ec6d4",
+            "title": "Precision and Performance: Floating Point and IEEE 754 Compliance for NVIDIA GPUs"
+        },
+        {
+            "paperId": "08608bcd652f947bf596b6886f669a03e670505d",
+            "title": "Programming Massively Parallel Processors. A Hands-on Approach"
+        },
+        {
+            "paperId": null,
+            "title": "NVIDIA Corporation"
+        },
+        {
+            "paperId": null,
+            "title": "cuBLAS library"
+        },
+        {
+            "paperId": null,
+            "title": "NVIDIA CUDA toolkit release notes"
+        }
+    ]
+}

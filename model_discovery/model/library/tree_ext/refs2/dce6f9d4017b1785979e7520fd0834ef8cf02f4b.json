@@ -1,0 +1,102 @@
+{
+    "paperId": "dce6f9d4017b1785979e7520fd0834ef8cf02f4b",
+    "externalIds": {
+        "MAG": "2736601468",
+        "ArXiv": "1707.06347",
+        "DBLP": "journals/corr/SchulmanWDRK17",
+        "CorpusId": 28695052
+    },
+    "title": "Proximal Policy Optimization Algorithms",
+    "abstract": "We propose a new family of policy gradient methods for reinforcement learning, which alternate between sampling data through interaction with the environment, and optimizing a \"surrogate\" objective function using stochastic gradient ascent. Whereas standard policy gradient methods perform one gradient update per data sample, we propose a novel objective function that enables multiple epochs of minibatch updates. The new methods, which we call proximal policy optimization (PPO), have some of the benefits of trust region policy optimization (TRPO), but they are much simpler to implement, more general, and have better sample complexity (empirically). Our experiments test PPO on a collection of benchmark tasks, including simulated robotic locomotion and Atari game playing, and we show that PPO outperforms other online policy gradient methods, and overall strikes a favorable balance between sample complexity, simplicity, and wall-time.",
+    "venue": "arXiv.org",
+    "year": 2017,
+    "referenceCount": 14,
+    "citationCount": 14668,
+    "influentialCitationCount": 3148,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new family of policy gradient methods for reinforcement learning, which alternate between sampling data through interaction with the environment, and optimizing a \"surrogate\" objective function using stochastic gradient ascent, are proposed."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "47971768",
+            "name": "John Schulman"
+        },
+        {
+            "authorId": "143909660",
+            "name": "Filip Wolski"
+        },
+        {
+            "authorId": "6515819",
+            "name": "Prafulla Dhariwal"
+        },
+        {
+            "authorId": "38909097",
+            "name": "Alec Radford"
+        },
+        {
+            "authorId": "2067138712",
+            "name": "Oleg Klimov"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "a762ae907b7dd71a59bd8bd98aba69dfe2de13a2",
+            "title": "Emergence of Locomotion Behaviours in Rich Environments"
+        },
+        {
+            "paperId": "6a43d91c8d883e3463b358571125fa0ec7298b3a",
+            "title": "Sample Efficient Actor-Critic with Experience Replay"
+        },
+        {
+            "paperId": "2b10281297ee001a9f3f4ea1aa9bea6b638c27df",
+            "title": "OpenAI Gym"
+        },
+        {
+            "paperId": "1464776f20e2bccb6182f183b5ff2e15b0ae5e56",
+            "title": "Benchmarking Deep Reinforcement Learning for Continuous Control"
+        },
+        {
+            "paperId": "69e76e16740ed69f4dc55361a3d319ac2f1293dd",
+            "title": "Asynchronous Methods for Deep Reinforcement Learning"
+        },
+        {
+            "paperId": "d316c82c12cf4c45f9e85211ef3d1fa62497bff8",
+            "title": "High-Dimensional Continuous Control Using Generalized Advantage Estimation"
+        },
+        {
+            "paperId": "340f48901f72278f6bf78a04ee5b01df208cc508",
+            "title": "Human-level control through deep reinforcement learning"
+        },
+        {
+            "paperId": "449532187c94af3dd3aa55e16d2c50f7854d2199",
+            "title": "Trust Region Policy Optimization"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "b354ee518bfc1ac0d8ac447eece9edb69e92eae1",
+            "title": "MuJoCo: A physics engine for model-based control"
+        },
+        {
+            "paperId": "f82e4ff4f003581330338aaae71f60316e58dd26",
+            "title": "The Arcade Learning Environment: An Evaluation Platform for General Agents"
+        },
+        {
+            "paperId": "0ff188986e48d17fc4b59e6c4c00681794c9fd08",
+            "title": "Learning Tetris Using the Noisy Cross-Entropy Method"
+        },
+        {
+            "paperId": "523b4ce1c2a1336962444abc1dec215756c2f3e6",
+            "title": "Approximately Optimal Approximate Reinforcement Learning"
+        },
+        {
+            "paperId": "4c915c1eecb217c123a36dc6d3ce52d12c742614",
+            "title": "Simple Statistical Gradient-Following Algorithms for Connectionist Reinforcement Learning"
+        }
+    ]
+}

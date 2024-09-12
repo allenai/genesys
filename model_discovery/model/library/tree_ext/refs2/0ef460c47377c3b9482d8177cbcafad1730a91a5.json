@@ -1,0 +1,274 @@
+{
+    "paperId": "0ef460c47377c3b9482d8177cbcafad1730a91a5",
+    "externalIds": {
+        "MAG": "2950406360",
+        "ArXiv": "1804.00857",
+        "DBLP": "conf/iclr/ShenZL0Z18",
+        "CorpusId": 4564356
+    },
+    "title": "Bi-Directional Block Self-Attention for Fast and Memory-Efficient Sequence Modeling",
+    "abstract": "Recurrent neural networks (RNN), convolutional neural networks (CNN) and self-attention networks (SAN) are commonly used to produce context-aware representations. RNN can capture long-range dependency but is hard to parallelize and not time-efficient. CNN focuses on local dependency but does not perform well on some tasks. SAN can model both such dependencies via highly parallelizable computation, but memory requirement grows rapidly in line with sequence length. In this paper, we propose a model, called \"bi-directional block self-attention network (Bi-BloSAN)\", for RNN/CNN-free sequence encoding. It requires as little memory as RNN but with all the merits of SAN. Bi-BloSAN splits the entire sequence into blocks, and applies an intra-block SAN to each block for modeling local context, then applies an inter-block SAN to the outputs for all blocks to capture long-range dependency. Thus, each SAN only needs to process a short sequence, and only a small amount of memory is required. Additionally, we use feature-level attention to handle the variation of contexts around the same word, and use forward/backward masks to encode temporal order information. On nine benchmark datasets for different NLP tasks, Bi-BloSAN achieves or improves upon state-of-the-art accuracy, and shows better efficiency-memory trade-off than existing RNN/CNN/SAN.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2018,
+    "referenceCount": 57,
+    "citationCount": 144,
+    "influentialCitationCount": 10,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a model, called \"bi-directional block self-attention network (Bi-BloSAN), for RNN/CNN-free sequence encoding that achieves or improves upon state-of-the-art accuracy, and shows better efficiency-memory trade-off than existing RNN /CNN/SAN."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "143681703",
+            "name": "Tao Shen"
+        },
+        {
+            "authorId": "1805655",
+            "name": "Tianyi Zhou"
+        },
+        {
+            "authorId": "2062835",
+            "name": "Guodong Long"
+        },
+        {
+            "authorId": "1746594",
+            "name": "Jing Jiang"
+        },
+        {
+            "authorId": "48934799",
+            "name": "Chengqi Zhang"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "adc276e6eae7051a027a4c269fb21dae43cadfed",
+            "title": "DiSAN: Directional Self-Attention Network for RNN/CNN-free Language Understanding"
+        },
+        {
+            "paperId": "ad45b1291067120bf9e55ac7424eb627e0aab149",
+            "title": "Training RNNs as Fast as CNNs"
+        },
+        {
+            "paperId": "85031a4873fe4ddda4a0841b9169b2f164980f3d",
+            "title": "End-to-End Adversarial Memory Network for Cross-domain Sentiment Classification"
+        },
+        {
+            "paperId": "ceb7dddbd0c51f511c4ba97d328b48fd10d2a7fc",
+            "title": "Recurrent Neural Network-Based Sentence Encoder with Gated Attention for Natural Language Inference"
+        },
+        {
+            "paperId": "b798cfd967e1a9ca5e7bc995d33a907bf65d1c7f",
+            "title": "Gated Self-Matching Networks for Reading Comprehension and Question Answering"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "43428880d75b3a14257c3ee9bda054e61eb869c0",
+            "title": "Convolutional Sequence to Sequence Learning"
+        },
+        {
+            "paperId": "42d2338a8c2e44154e10ff4d68a3c389aeca3913",
+            "title": "Reinforced Mnemonic Reader for Machine Comprehension"
+        },
+        {
+            "paperId": "c50cd7df4271ef94a0a60894f0e2cf4ef89fb912",
+            "title": "Ruminating Reader: Reasoning with Gated Multi-hop Attention"
+        },
+        {
+            "paperId": "e3196bc12bcbf2eb51658f78e844517fb9a47b5d",
+            "title": "More is Less: A More Complicated Network with Less Inference Complexity"
+        },
+        {
+            "paperId": "204a4a70428f3938d2c538a4d74c7ae0416306d8",
+            "title": "A Structured Self-attentive Sentence Embedding"
+        },
+        {
+            "paperId": "13d9323a8716131911bfda048a40e2cde1a76a46",
+            "title": "Structured Attention Networks"
+        },
+        {
+            "paperId": "1101f2f30bc603d4b84f2ad922097b8595014322",
+            "title": "Structural Attention Neural Networks for improved sentiment analysis"
+        },
+        {
+            "paperId": "88caa4a0253a8b0076176745ebc072864eab66e1",
+            "title": "Language Modeling with Gated Convolutional Networks"
+        },
+        {
+            "paperId": "e94697b98b707f557436e025bdc8498fa261d3bc",
+            "title": "Multi-Perspective Context Matching for Machine Comprehension"
+        },
+        {
+            "paperId": "94520b6174890cde55e188210681ebc561c872a7",
+            "title": "Bidirectional Tree-Structured LSTM with Head Lexicalization"
+        },
+        {
+            "paperId": "98445f4172659ec5e891e031d8202c102135c644",
+            "title": "Neural Machine Translation in Linear Time"
+        },
+        {
+            "paperId": "705dcc8eadba137834e4b0359e2d696d4b209f5b",
+            "title": "Neural Tree Indexers for Text Understanding"
+        },
+        {
+            "paperId": "cff79255a94b9b05a4ce893eb403a522e0923f04",
+            "title": "Neural Semantic Encoders"
+        },
+        {
+            "paperId": "05dd7254b632376973f3a1b4d39485da17814df5",
+            "title": "SQuAD: 100,000+ Questions for Machine Comprehension of Text"
+        },
+        {
+            "paperId": "455afd748e8834ef521e4b67c7c056d3c33429e2",
+            "title": "Hierarchical Attention Networks for Document Classification"
+        },
+        {
+            "paperId": "f93a0a3e8a3e6001b4482430254595cf737697fa",
+            "title": "Learning Natural Language Inference using Bidirectional LSTM model and Inner-Attention"
+        },
+        {
+            "paperId": "36c097a225a95735271960e2b63a2cb9e98bff83",
+            "title": "A Fast Unified Model for Parsing and Sentence Understanding"
+        },
+        {
+            "paperId": "ea407573bfcd39f9a478fe33cf6ce0ee1780a5f0",
+            "title": "Natural Language Inference by Tree-Based Convolution and Heuristic Matching"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "46b8cbcdff87b842c2c1d4a003c831f845096ba7",
+            "title": "Order-Embeddings of Images and Language"
+        },
+        {
+            "paperId": "1ac30af5522c7a50ec4d1ee43fd2bd8652a9bd52",
+            "title": "A Neural Attention Model for Abstractive Sentence Summarization"
+        },
+        {
+            "paperId": "f04df4e20a18358ea2f689b4c129781628ef7fc1",
+            "title": "A large annotated corpus for learning natural language inference"
+        },
+        {
+            "paperId": "a79ac27b270772c79b80d2235ca5ff2df2d2d370",
+            "title": "Molding CNNs for text: non-linear, non-consecutive convolutions"
+        },
+        {
+            "paperId": "6e795c6e9916174ae12349f5dc3f516570c17ce8",
+            "title": "Skip-Thought Vectors"
+        },
+        {
+            "paperId": "d41cfe9b2ada4e09d53262bc75c473d8043936fc",
+            "title": "Self-Adaptive Hierarchical Sentence Model"
+        },
+        {
+            "paperId": "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e",
+            "title": "End-To-End Memory Networks"
+        },
+        {
+            "paperId": "ba49d3823d43515e447296ca4e1e55d3f1fd8c4d",
+            "title": "Neural Responding Machine for Short-Text Conversation"
+        },
+        {
+            "paperId": "32de44f01a96d4473d21099d15e25bc2b9f08e2f",
+            "title": "Improved Semantic Representations From Tree-Structured Long Short-Term Memory Networks"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "ac3ee98020251797c2b401e1389461df88e52e62",
+            "title": "Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "1f6ba0782862ec12a5ec6d7fb608523d55b0c6ba",
+            "title": "Convolutional Neural Networks for Sentence Classification"
+        },
+        {
+            "paperId": "f795853dba1b4dc7ead4c4c5d94d4e1666a5df24",
+            "title": "ECNU: One Stone Two Birds: Ensemble of Heterogenous Measures for Semantic Relatedness and Textual Entailment"
+        },
+        {
+            "paperId": "ac991aa2072cf22fee83db7aa536137e666ed9d1",
+            "title": "The Meaning Factory: Formal Semantics for Recognizing Textual Entailment and Determining Semantic Similarity"
+        },
+        {
+            "paperId": "0ca7d208ff8d81377e0eaa9723820aeae7a7322d",
+            "title": "Grounded Compositional Semantics for Finding and Describing Images with Sentences"
+        },
+        {
+            "paperId": "27725a2d2a8cee9bf9fffc6c2167017103aba0fa",
+            "title": "A Convolutional Neural Network for Modelling Sentences"
+        },
+        {
+            "paperId": "1149888d75af4ed5dffc25731b875651c3ccdeb2",
+            "title": "Hybrid speech recognition with Deep Bidirectional LSTM"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "687bac2d3320083eb4530bf18bb8f8f721477600",
+            "title": "Recursive Deep Models for Semantic Compositionality Over a Sentiment Treebank"
+        },
+        {
+            "paperId": "f6b51c8753a871dc94ff32152c00c01e94f90f09",
+            "title": "Efficient Estimation of Word Representations in Vector Space"
+        },
+        {
+            "paperId": "8729441d734782c3ed532a7d2d9611b438c0a09a",
+            "title": "ADADELTA: An Adaptive Learning Rate Method"
+        },
+        {
+            "paperId": "67107f78a84bdb2411053cb54e94fa226eea6d8e",
+            "title": "Deep Sparse Rectifier Neural Networks"
+        },
+        {
+            "paperId": "ea9d2a2b4ce11aaf85136840c65f3bc9c03ab649",
+            "title": "Understanding the difficulty of training deep feedforward neural networks"
+        },
+        {
+            "paperId": "6af58c061f2e4f130c3b795c21ff0c7e3903278f",
+            "title": "Seeing Stars: Exploiting Class Relationships for Sentiment Categorization with Respect to Rating Scales"
+        },
+        {
+            "paperId": "cdcf7cb29f37ac0546961ea8a076075b9cc1f992",
+            "title": "Mining and summarizing customer reviews"
+        },
+        {
+            "paperId": "167e1359943b96b9e92ee73db1df69a1f65d731d",
+            "title": "A Sentimental Education: Sentiment Analysis Using Subjectivity Summarization Based on Minimum Cuts"
+        },
+        {
+            "paperId": "2c8ac3e1f0edeed1fbd76813e61efdc384c319c7",
+            "title": "Learning Question Classifiers"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "1cff7cc15555c38607016aaba24059e76b160adb",
+            "title": "Annotating Expressions of Opinions and Emotions in Language"
+        }
+    ]
+}

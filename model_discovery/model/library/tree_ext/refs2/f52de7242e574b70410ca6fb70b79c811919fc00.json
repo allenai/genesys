@@ -1,0 +1,126 @@
+{
+    "paperId": "f52de7242e574b70410ca6fb70b79c811919fc00",
+    "externalIds": {
+        "ACL": "P06-1055",
+        "MAG": "2139621418",
+        "DBLP": "conf/acl/PetrovBTK06",
+        "DOI": "10.3115/1220175.1220230",
+        "CorpusId": 6684426
+    },
+    "title": "Learning Accurate, Compact, and Interpretable Tree Annotation",
+    "abstract": "We present an automatic approach to tree annotation in which basic nonterminal symbols are alternately split and merged to maximize the likelihood of a training treebank. Starting with a simple X-bar grammar, we learn a new grammar whose nonterminals are subsymbols of the original nonterminals. In contrast with previous work, we are able to split various terminals to different degrees, as appropriate to the actual complexity in the data. Our grammars automatically learn the kinds of linguistic distinctions exhibited in previous work on manual tree annotation. On the other hand, our grammars are much more compact and substantially more accurate than previous work on automatic annotation. Despite its simplicity, our best grammar achieves an F1 of 90.2% on the Penn Treebank, higher than fully lexicalized systems.",
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2006,
+    "referenceCount": 20,
+    "citationCount": 980,
+    "influentialCitationCount": 149,
+    "openAccessPdf": {
+        "url": "https://dl.acm.org/doi/pdf/10.3115/1220175.1220230",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An automatic approach to tree annotation in which basic nonterminal symbols are alternately split and merged to maximize the likelihood of a training treebank is presented."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1754497",
+            "name": "Slav Petrov"
+        },
+        {
+            "authorId": "37157794",
+            "name": "Leon Barrett"
+        },
+        {
+            "authorId": "3323298",
+            "name": "R. Thibaux"
+        },
+        {
+            "authorId": "38666915",
+            "name": "D. Klein"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "93231398214275e4316aa19ced49a508ace56ffa",
+            "title": "Inducing Head-Driven PCFGs with Latent Heads: Refining a Tree-Bank Grammar for Parsing"
+        },
+        {
+            "paperId": "713a4825ea09801ebc24ce207ca9ae5fbc97ac65",
+            "title": "Probabilistic CFG with Latent Annotations"
+        },
+        {
+            "paperId": "0ecb33ced5b0976accdf13817151f80568b6fdcb",
+            "title": "Coarse-to-Fine n-Best Parsing and MaxEnt Discriminative Reranking"
+        },
+        {
+            "paperId": "1174297ddcf08937a94d8efe4c1efb65f3b92fd8",
+            "title": "Discriminative Training of a Neural Network Statistical Parser"
+        },
+        {
+            "paperId": "3fc44ff7f37ec5585310666c183c65e0a0bb2446",
+            "title": "Head-Driven Statistical Models for Natural Language Parsing"
+        },
+        {
+            "paperId": "a600850ac0120cb09a0b7de7da80bb6a7a76de06",
+            "title": "Accurate Unlexicalized Parsing"
+        },
+        {
+            "paperId": "b8f896caa1226713ed2731101cb8de21195dbf0b",
+            "title": "Recovering Latent Information in Treebanks"
+        },
+        {
+            "paperId": "4b0b7070fef64969bded8332ca0d33d872366476",
+            "title": "Computational Complexity of Probabilistic Disambiguation"
+        },
+        {
+            "paperId": "76d5e3fa888bee872b7adb7fa810089aa8ab1d58",
+            "title": "A Maximum-Entropy-Inspired Parser"
+        },
+        {
+            "paperId": "6c9f553e723a40a6713453b734b552c1928bf52b",
+            "title": "PCFG Models of Linguistic Tree Representations"
+        },
+        {
+            "paperId": "a7b6f6f2a07725ee66f7a5a7862d148b998789a5",
+            "title": "New Figures of Merit for Best-First Probabilistic Chart Parsing"
+        },
+        {
+            "paperId": "3cd9fd8a36c8feb74bb20ae25817edb9c6a0518c",
+            "title": "Automatic Word Sense Discrimination"
+        },
+        {
+            "paperId": "aad8c5ae265e8f645101245afb9d9c9cdf40b4ca",
+            "title": "Tree-Bank Grammars"
+        },
+        {
+            "paperId": "dd85cca2c133835ea29069a6a4438c70185bd427",
+            "title": "Parsing Algorithms and Metrics"
+        },
+        {
+            "paperId": "0bf69a49c2baed67fa9a044daa24b9e199e73093",
+            "title": "Inducing Probabilistic Grammars by Bayesian Model Merging"
+        },
+        {
+            "paperId": "15e4843e2c55843b5c5b429f89dad3d99e801f02",
+            "title": "Inside-Outside Reestimation From Partially Bracketed Corpora"
+        },
+        {
+            "paperId": "f7d04596a7a0e6e6b8c9199ce4aba2d2a6f3dbc6",
+            "title": "A clustering technique for summarizing multivariate data."
+        },
+        {
+            "paperId": null,
+            "title": "Comparison of our results with those of others. human-interpretable. It shows most of the manually introduced annotations discussed by"
+        },
+        {
+            "paperId": null,
+            "title": "EVALB bracket scoring program"
+        },
+        {
+            "paperId": null,
+            "title": "1965.Aspects of the Theory of Syntax"
+        }
+    ]
+}

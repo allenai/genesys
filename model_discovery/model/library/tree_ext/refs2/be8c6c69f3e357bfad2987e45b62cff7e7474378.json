@@ -1,0 +1,146 @@
+{
+    "paperId": "be8c6c69f3e357bfad2987e45b62cff7e7474378",
+    "externalIds": {
+        "ArXiv": "1610.09027",
+        "MAG": "2952556884",
+        "DBLP": "journals/corr/RaeHHDSWGL16",
+        "CorpusId": 11792642
+    },
+    "title": "Scaling Memory-Augmented Neural Networks with Sparse Reads and Writes",
+    "abstract": "Neural networks augmented with external memory have the ability to learn algorithmic solutions to complex tasks. These models appear promising for applications such as language modeling and machine translation. However, they scale poorly in both space and time as the amount of memory grows \u2014 limiting their applicability to real-world domains. Here, we present an end-to-end differentiable memory access scheme, which we call Sparse Access Memory (SAM), that retains the representational power of the original approaches whilst training efficiently with very large memories. We show that SAM achieves asymptotic lower bounds in space and time complexity, and find that an implementation runs 1,000 x faster and with 3,000x less physical memory than non-sparse models. SAM learns with comparable data efficiency to existing models on a range of synthetic tasks and one-shot Omniglot character recognition, and can scale to tasks requiring 100,000s of time steps and memories. As well, we show how our approach can be adapted for models that maintain temporal associations between memories, as with the recently introduced Differentiable Neural Computer.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2016,
+    "referenceCount": 22,
+    "citationCount": 154,
+    "influentialCitationCount": 20,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents an end-to-end differentiable memory access scheme, which they call Sparse Access Memory (SAM), that retains the representational power of the original approaches whilst training efficiently with very large memories, and achieves asymptotic lower bounds in space and time complexity."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "34269227",
+            "name": "Jack W. Rae"
+        },
+        {
+            "authorId": "2323922",
+            "name": "Jonathan J. Hunt"
+        },
+        {
+            "authorId": "1841008",
+            "name": "Ivo Danihelka"
+        },
+        {
+            "authorId": "3367786",
+            "name": "Tim Harley"
+        },
+        {
+            "authorId": "33666044",
+            "name": "A. Senior"
+        },
+        {
+            "authorId": "89504302",
+            "name": "Greg Wayne"
+        },
+        {
+            "authorId": "1753223",
+            "name": "Alex Graves"
+        },
+        {
+            "authorId": "2542999",
+            "name": "T. Lillicrap"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "784ee73d5363c711118f784428d1ab89f019daa5",
+            "title": "Hybrid computing using a neural network with dynamic external memory"
+        },
+        {
+            "paperId": "3904315e2eca50d0086e4b7273f7fd707c652230",
+            "title": "Meta-Learning with Memory-Augmented Neural Networks"
+        },
+        {
+            "paperId": "815c84ab906e43f3e6322f2ca3fd5e1360c64285",
+            "title": "Human-level concept learning through probabilistic program induction"
+        },
+        {
+            "paperId": "35b91b365ceb016fb3e022577cec96fb9b445dc5",
+            "title": "The Goldilocks Principle: Reading Children's Books with Explicit Memory Representations"
+        },
+        {
+            "paperId": "5259755f9c100e220ffaa7e08439c5d34be7757a",
+            "title": "Reinforcement Learning Neural Turing Machines - Revised"
+        },
+        {
+            "paperId": "c9d7afd65b2127e6f0651bc7e13eeec1897ac8dd",
+            "title": "Reinforcement Learning Neural Turing Machines"
+        },
+        {
+            "paperId": "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e",
+            "title": "End-To-End Memory Networks"
+        },
+        {
+            "paperId": "abb33d75dc297993fcc3fb75e0f4498f413eb4f6",
+            "title": "Towards AI-Complete Question Answering: A Set of Prerequisite Toy Tasks"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "71ae756c75ac89e2d731c9c79649562b5768ff39",
+            "title": "Memory Networks"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "ab4ad6454a299a8d8b4258b242bd5c2fd134ca3f",
+            "title": "Mondrian Forests: Efficient Online Random Forests"
+        },
+        {
+            "paperId": "a85e512d8845bd007b0866b4a97e8341463f8190",
+            "title": "Scalable Nearest Neighbor Algorithms for High Dimensional Data"
+        },
+        {
+            "paperId": "4177ec52d1b80ed57f2e72b0f9a42365f1a8598d",
+            "title": "Speech recognition with deep recurrent neural networks"
+        },
+        {
+            "paperId": "8458e49fb08d2cca3a8d7355465e182c30785220",
+            "title": "Visual long-term memory has a massive storage capacity for object details"
+        },
+        {
+            "paperId": "a81f31dce2341b638c2f0fe83a93bc74b905f55f",
+            "title": "Lower bounds on locality sensitive hashing"
+        },
+        {
+            "paperId": "22cc0ac7fdf06de9a8edb58fd1a1518c0c04d376",
+            "title": "LSH forest: self-tuning indexes for similarity search"
+        },
+        {
+            "paperId": "c923be743ee3990e1ac0f29bd53531a8d54832e1",
+            "title": "An optimal algorithm for approximate nearest neighbor searching fixed dimensions"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": null,
+            "title": "Lecture 6.5-rmsprop: Divide the gradient by a running average of its recent magnitude"
+        },
+        {
+            "paperId": "3449b65008b27f6e60a73d80c1fd990f0481126b",
+            "title": "Torch7: A Matlab-like Environment for Machine Learning"
+        }
+    ]
+}

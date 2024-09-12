@@ -1,0 +1,158 @@
+{
+    "paperId": "c17b6f2d9614878e3f860c187f72a18ffb5aabb6",
+    "externalIds": {
+        "MAG": "2400680200",
+        "DBLP": "journals/corr/ChandarALVTB16",
+        "ArXiv": "1605.07427",
+        "CorpusId": 18813614
+    },
+    "title": "Hierarchical Memory Networks",
+    "abstract": "Memory networks are neural networks with an explicit memory component that can be both read and written to by the network. The memory is often addressed in a soft way using a softmax function, making end-to-end training with backpropagation possible. However, this is not computationally scalable for applications which require the network to read from extremely large memories. On the other hand, it is well known that hard attention mechanisms based on reinforcement learning are challenging to train successfully. In this paper, we explore a form of hierarchical memory network, which can be considered as a hybrid between hard and soft attention memory networks. The memory is organized in a hierarchical structure such that reading from it is done with less computation than soft attention over a flat memory, while also being easier to train than hard attention over a flat memory. Specifically, we propose to incorporate Maximum Inner Product Search (MIPS) in the training and inference procedures for our hierarchical memory network. We explore the use of various state-of-the art approximate MIPS techniques and report results on SimpleQuestions, a challenging large scale factoid question answering task.",
+    "venue": "arXiv.org",
+    "year": 2016,
+    "referenceCount": 27,
+    "citationCount": 80,
+    "influentialCitationCount": 2,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A form of hierarchical memory network is explored, which can be considered as a hybrid between hard and soft attention memory networks, and is organized in a hierarchical structure such that reading from it is done with less computation than soft attention over a flat memory, while also being easier to train than hard attention overA flat memory."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "144631588",
+            "name": "A. Chandar"
+        },
+        {
+            "authorId": "3103594",
+            "name": "Sungjin Ahn"
+        },
+        {
+            "authorId": "1777528",
+            "name": "H. Larochelle"
+        },
+        {
+            "authorId": "145467703",
+            "name": "Pascal Vincent"
+        },
+        {
+            "authorId": "1699108",
+            "name": "G. Tesauro"
+        },
+        {
+            "authorId": "1751762",
+            "name": "Yoshua Bengio"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "be8c6c69f3e357bfad2987e45b62cff7e7474378",
+            "title": "Scaling Memory-Augmented Neural Networks with Sparse Reads and Writes"
+        },
+        {
+            "paperId": "f96898d15a1bf1fa8925b1280d0e07a7a8e72194",
+            "title": "Dynamic Memory Networks for Visual and Textual Question Answering"
+        },
+        {
+            "paperId": "21f13f1ed074eb8504d8b856460d04ec672e7dd4",
+            "title": "Scalable and Sustainable Deep Learning via Randomized Hashing"
+        },
+        {
+            "paperId": "be3a65ef15f79ebb8296e6a0e8d1a9cb5c0f3638",
+            "title": "Evaluating Prerequisite Qualities for Learning End-to-End Dialog Systems"
+        },
+        {
+            "paperId": "a2e2970dd99b86fd6198c0b756c6cd4d52e34c3b",
+            "title": "Clustering is Efficient for Approximate Maximum Inner Product Search"
+        },
+        {
+            "paperId": "a390fccb835d3a4e0b05252e7ad706ba8f118685",
+            "title": "Clustering is Efficient for Approximate Maximum Inner Product Search"
+        },
+        {
+            "paperId": "452059171226626718eb677358836328f884298e",
+            "title": "Ask Me Anything: Dynamic Memory Networks for Natural Language Processing"
+        },
+        {
+            "paperId": "6e565308c8081e807709cb4a917443b737e6cdb4",
+            "title": "Large-scale Simple Question Answering with Memory Networks"
+        },
+        {
+            "paperId": "c9d7afd65b2127e6f0651bc7e13eeec1897ac8dd",
+            "title": "Reinforcement Learning Neural Turing Machines"
+        },
+        {
+            "paperId": "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e",
+            "title": "End-To-End Memory Networks"
+        },
+        {
+            "paperId": "abb33d75dc297993fcc3fb75e0f4498f413eb4f6",
+            "title": "Towards AI-Complete Question Answering: A Set of Prerequisite Toy Tasks"
+        },
+        {
+            "paperId": "8250ecbaef057bdb5390ef4e4be798f1523a23f6",
+            "title": "Deep Networks With Large Output Spaces"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "1938624bb9b0f999536dcc8d8f519810bb4e1b3b",
+            "title": "On Using Very Large Target Vocabulary for Neural Machine Translation"
+        },
+        {
+            "paperId": "5b0a88bdec473552c6a386cd94fdac53c74b79a8",
+            "title": "On Symmetric and Asymmetric LSHs for Inner Product Search"
+        },
+        {
+            "paperId": "61a5de284be0243ff811c4ffb96c788cd9dd6999",
+            "title": "Improved Asymmetric Locality Sensitive Hashing (ALSH) for Maximum Inner Product Search (MIPS)"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "71ae756c75ac89e2d731c9c79649562b5768ff39",
+            "title": "Memory Networks"
+        },
+        {
+            "paperId": "d8aad5d9c2c336c550ca9621b73c7688f184d50b",
+            "title": "Speeding up the Xbox recommender system using a euclidean transformation for inner-product spaces"
+        },
+        {
+            "paperId": "6dbffa57b3c6c5645cf701b9b444984a4b61bb57",
+            "title": "Asymmetric LSH (ALSH) for Sublinear Time Maximum Inner Product Search (MIPS)"
+        },
+        {
+            "paperId": "331f0fb3b6176c6e463e0401025b04f6ace9ccd3",
+            "title": "Neural Variational Inference and Learning in Belief Networks"
+        },
+        {
+            "paperId": "2582ab7c70c9e7fcb84545944eba8f3a7f253248",
+            "title": "Translating Embeddings for Modeling Multi-relational Data"
+        },
+        {
+            "paperId": "f6b51c8753a871dc94ff32152c00c01e94f90f09",
+            "title": "Efficient Estimation of Word Representations in Vector Space"
+        },
+        {
+            "paperId": "dcd2755f4e7b5ed96571ec6a741b172a217cabe2",
+            "title": "Maximum inner-product search using cone trees"
+        },
+        {
+            "paperId": "9a6824ffa600f06aca27b9dd54fa8d75a5cf4a16",
+            "title": "Efficient online spherical k-means clustering"
+        },
+        {
+            "paperId": "c19fbefdeead6a4154a22a9c8551a18b1530033a",
+            "title": "Hierarchical Probabilistic Neural Network Language Model"
+        },
+        {
+            "paperId": "4c915c1eecb217c123a36dc6d3ce52d12c742614",
+            "title": "Simple Statistical Gradient-Following Algorithms for Connectionist Reinforcement Learning"
+        }
+    ]
+}

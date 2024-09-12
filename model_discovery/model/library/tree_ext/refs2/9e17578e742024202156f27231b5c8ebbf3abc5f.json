@@ -1,0 +1,129 @@
+{
+    "paperId": "9e17578e742024202156f27231b5c8ebbf3abc5f",
+    "externalIds": {
+        "DBLP": "conf/cvpr/YeLJC12",
+        "MAG": "2024051019",
+        "DOI": "10.1109/CVPR.2012.6248032",
+        "CorpusId": 8020583
+    },
+    "title": "Robust late fusion with rank minimization",
+    "abstract": "In this paper, we propose a rank minimization method to fuse the predicted confidence scores of multiple models, each of which is obtained based on a certain kind of feature. Specifically, we convert each confidence score vector obtained from one model into a pairwise relationship matrix, in which each entry characterizes the comparative relationship of scores of two test samples. Our hypothesis is that the relative score relations are consistent among component models up to certain sparse deviations, despite the large variations that may exist in the absolute values of the raw scores. Then we formulate the score fusion problem as seeking a shared rank-2 pairwise relationship matrix based on which each original score matrix from individual model can be decomposed into the common rank-2 matrix and sparse deviation errors. A robust score vector is then extracted to fit the recovered low rank score relation matrix. We formulate the problem as a nuclear norm and \u21131 norm optimization objective function and employ the Augmented Lagrange Multiplier (ALM) method for the optimization. Our method is isotonic (i.e., scale invariant) to the numeric scales of the scores originated from different models. We experimentally show that the proposed method achieves significant performance gains on various tasks including object categorization and video event detection.",
+    "venue": "2012 IEEE Conference on Computer Vision and Pattern Recognition",
+    "year": 2012,
+    "referenceCount": 21,
+    "citationCount": 210,
+    "influentialCitationCount": 19,
+    "openAccessPdf": {
+        "url": "http://www.ee.columbia.edu/ln/dvmm/publications/12/CVPR_LateFusion.pdf",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper converts each confidence score vector obtained from one model into a pairwise relationship matrix, in which each entry characterizes the comparative relationship of scores of two test samples, to fuse the predicted confidence scores of multiple models."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "35984288",
+            "name": "Guangnan Ye"
+        },
+        {
+            "authorId": "1718355",
+            "name": "Dong Liu"
+        },
+        {
+            "authorId": "1740784",
+            "name": "I-Hong Jhuo"
+        },
+        {
+            "authorId": "9546964",
+            "name": "Shih-Fu Chang"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "a8359e3a7cf20fde8eda51c0ad1a17917f675105",
+            "title": "Consumer video understanding: a benchmark database and an evaluation of human and machine performance"
+        },
+        {
+            "paperId": "8ab0fb99ceadad107fe351104a0cec15829f6e66",
+            "title": "Rank aggregation via nuclear norm minimization"
+        },
+        {
+            "paperId": "657ae1548cc926a82e811f4287d800acd837fcff",
+            "title": "The Augmented Lagrange Multiplier Method for Exact Recovery of Corrupted Low-Rank Matrices"
+        },
+        {
+            "paperId": "017438e9f62834694a4ea85f87f48bfcbd0490d7",
+            "title": "Robust Principal Component Analysis: Exact Recovery of Corrupted Low-Rank Matrices via Convex Optimization"
+        },
+        {
+            "paperId": "ba0548583a5ab3dca551f60e30f85ea42b2a4873",
+            "title": "On feature combination for multiclass object classification"
+        },
+        {
+            "paperId": "563192d3763ccfe879a981dd65af0da219851688",
+            "title": "Optimal Classifier Fusion in a Non-Bayesian Probabilistic Framework"
+        },
+        {
+            "paperId": "02b28f3b71138a06e40dbd614abf8568420ae183",
+            "title": "Automated Flower Classification over a Large Number of Classes"
+        },
+        {
+            "paperId": "b1cda064decc073881941c6d4f4ef3d6a3daafb4",
+            "title": "Statistical ranking and combinatorial Hodge theory"
+        },
+        {
+            "paperId": "023f6fc69fe1f6498e35dbf85932ecb549d36ca4",
+            "title": "A Singular Value Thresholding Algorithm for Matrix Completion"
+        },
+        {
+            "paperId": "07b5e2f08bc1be6da9269e9c61e113d6e3526ff0",
+            "title": "Fixed-Point Continuation for l1-Minimization: Methodology and Convergence"
+        },
+        {
+            "paperId": "7dc28b288a5429561cdd6f3a9f0ecd4b2d336fa5",
+            "title": "Likelihood Ratio-Based Biometric Score Fusion"
+        },
+        {
+            "paperId": "36316e01657459c3d4c1e1ba3985881377b40b83",
+            "title": "Learning The Discriminative Power-Invariance Trade-Off"
+        },
+        {
+            "paperId": "e9dd235240904627b12782653b66318712780703",
+            "title": "A Visual Vocabulary for Flower Classification"
+        },
+        {
+            "paperId": "0a00f3ca6efe78953b40c68ad13fbd1b01a1d4e6",
+            "title": "Score normalization in multimodal biometric systems"
+        },
+        {
+            "paperId": "39dc218eb5582e861e53c8451586786cfaca08ec",
+            "title": "On Space-Time Interest Points"
+        },
+        {
+            "paperId": "8c04f169203f9e55056a6f7f956695babe622a38",
+            "title": "Distinctive Image Features from Scale-Invariant Keypoints"
+        },
+        {
+            "paperId": "141e6c1dd532504611266d08458dbe2a0dbb4e98",
+            "title": "Multiple kernel learning, conic duality, and the SMO algorithm"
+        },
+        {
+            "paperId": "41f60ec620a226df0556a4d0d9d9b19b5ed785b2",
+            "title": "Multimedia semantic indexing using model vectors"
+        },
+        {
+            "paperId": "7ef4098aee79574b8c2fecabcd85550627e60010",
+            "title": "Columbia-UCF TRECVID2010 Multimedia Event Detection: Combining Multiple Modalities, Contextual Concepts, and Temporal Matching"
+        },
+        {
+            "paperId": null,
+            "title": "Simplemkl. JMLR"
+        },
+        {
+            "paperId": "f7e9fc8dbf1288d1ae2ec7be7518ccd38588e8d8",
+            "title": "Spectral analysis and identification of Dutch vowels in monosyllabic words"
+        }
+    ]
+}

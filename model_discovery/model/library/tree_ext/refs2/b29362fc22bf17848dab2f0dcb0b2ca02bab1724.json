@@ -1,0 +1,209 @@
+{
+    "paperId": "b29362fc22bf17848dab2f0dcb0b2ca02bab1724",
+    "externalIds": {
+        "MAG": "2897513296",
+        "DBLP": "journals/corr/abs-1810-08272",
+        "CorpusId": 53042166
+    },
+    "title": "BabyAI: First Steps Towards Grounded Language Learning With a Human In the Loop",
+    "abstract": "Allowing humans to interactively train artificial agents to understand language instructions is desirable for both practical and scientific reasons, but given the poor data efficiency of the current learning methods, this goal may require substantial research efforts. Here, we introduce the BabyAI research platform to support investigations towards including humans in the loop for grounded language learning. The BabyAI platform comprises an extensible suite of 19 levels of increasing difficulty. The levels gradually lead the agent towards acquiring a combinatorially rich synthetic language which is a proper subset of English. The platform also provides a heuristic expert agent for the purpose of simulating a human teacher. We report baseline results and estimate the amount of human involvement that would be required to train a neural network-based agent on some of the BabyAI levels. We put forward strong evidence that current deep learning methods are not yet sufficiently sample efficient when it comes to learning a language with compositional properties.",
+    "venue": "arXiv.org",
+    "year": 2018,
+    "referenceCount": 39,
+    "citationCount": 146,
+    "influentialCitationCount": 30,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The BabyAI research platform is introduced to support investigations towards including humans in the loop for grounded language learning and puts forward strong evidence that current deep learning methods are not yet sufficiently sample efficient when it comes to learning a language with compositional properties."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1400415653",
+            "name": "Maxime Chevalier-Boisvert"
+        },
+        {
+            "authorId": "3335364",
+            "name": "Dzmitry Bahdanau"
+        },
+        {
+            "authorId": "51474466",
+            "name": "Salem Lahlou"
+        },
+        {
+            "authorId": "152910863",
+            "name": "Lucas Willems"
+        },
+        {
+            "authorId": "51497543",
+            "name": "Chitwan Saharia"
+        },
+        {
+            "authorId": "1811211",
+            "name": "Thien Huu Nguyen"
+        },
+        {
+            "authorId": "1751762",
+            "name": "Yoshua Bengio"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "71b152f65fd9967ec39f1e1f359ad0d99be1bab2",
+            "title": "Learning to Follow Language Instructions with Adversarial Reward Induction"
+        },
+        {
+            "paperId": "6609eed6e39ccb6ee8761bb895218b1b384b23ae",
+            "title": "Learning to Parse Natural Language to Grounded Reward Functions with Weak Supervision"
+        },
+        {
+            "paperId": "80196cdfcd0c6ce2953bf65a7f019971e2026386",
+            "title": "IMPALA: Scalable Distributed Deep-RL with Importance Weighted Actor-Learner Architectures"
+        },
+        {
+            "paperId": "4adfa52793b0f6f70915383bf12114f4824897e1",
+            "title": "Building Generalizable Agents with a Realistic and Rich 3D Environment"
+        },
+        {
+            "paperId": "c37c23b12e00168833eccff8025a830ce27c5abc",
+            "title": "Vision-and-Language Navigation: Interpreting Visually-Grounded Navigation Instructions in Real Environments"
+        },
+        {
+            "paperId": "7cfa5c97164129ce3630511f639040d28db1d4b7",
+            "title": "FiLM: Visual Reasoning with a General Conditioning Layer"
+        },
+        {
+            "paperId": "abcf11a9af3d83f85c5fbfffc5901d416ca7a73f",
+            "title": "Deep TAMER: Interactive Agent Shaping in High-Dimensional State Spaces"
+        },
+        {
+            "paperId": "dce6f9d4017b1785979e7520fd0834ef8cf02f4b",
+            "title": "Proximal Policy Optimization Algorithms"
+        },
+        {
+            "paperId": "88347f9f12b50590f50aefce4cf71b3a3f0bd138",
+            "title": "Gated-Attention Architectures for Task-Oriented Language Grounding"
+        },
+        {
+            "paperId": "019923afa86036b69c0e423f3c2188bfa7050923",
+            "title": "Grounded Language Learning in a Simulated 3D World"
+        },
+        {
+            "paperId": "5bbb6f9a8204eb13070b6f033e61c84ef8ee68dd",
+            "title": "Deep Reinforcement Learning from Human Preferences"
+        },
+        {
+            "paperId": "784ee73d5363c711118f784428d1ab89f019daa5",
+            "title": "Hybrid computing using a neural network with dynamic external memory"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "13d156f37ecea807706fd117547ac1b805d5c5aa",
+            "title": "Learning Language Games through Interaction"
+        },
+        {
+            "paperId": "b90e5b8cb0357a412770a8f3aa820ee292686d5e",
+            "title": "MazeBase: A Sandbox for Learning from Games"
+        },
+        {
+            "paperId": "b59d91e0699d4e1896a15bae13fd180bdaf77ea5",
+            "title": "Neural Programmer-Interpreters"
+        },
+        {
+            "paperId": "21c99706bb26e9012bfb4d8d48009a3d45af59b2",
+            "title": "Neural Module Networks"
+        },
+        {
+            "paperId": "80f15048f9774191c3ae2ab8950b6d49f2d05295",
+            "title": "Listen, Attend, and Walk: Neural Mapping of Navigational Instructions to Action Sequences"
+        },
+        {
+            "paperId": "d316c82c12cf4c45f9e85211ef3d1fa62497bff8",
+            "title": "High-Dimensional Continuous Control Using Generalized Advantage Estimation"
+        },
+        {
+            "paperId": "abb33d75dc297993fcc3fb75e0f4498f413eb4f6",
+            "title": "Towards AI-Complete Question Answering: A Set of Prerequisite Toy Tasks"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "0d0b3ff23fbf1ec7a0dfebd923a3ef224306491a",
+            "title": "Learning to Execute"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "cde902f11b0870c695428d865a35eb819b1d24b7",
+            "title": "Weakly Supervised Learning of Semantic Parsers for Mapping Instructions to Actions"
+        },
+        {
+            "paperId": "b3af2e367d7297775c71fa9a61b0b49fb888bc38",
+            "title": "A Bayesian Approach for Policy Learning from Trajectory Preference Queries"
+        },
+        {
+            "paperId": "f82e4ff4f003581330338aaae71f60316e58dd26",
+            "title": "The Arcade Learning Environment: An Evaluation Platform for General Agents"
+        },
+        {
+            "paperId": "a389456fdc46e458d0a813a608b71b44b2ff8e62",
+            "title": "Understanding Natural Language Commands for Robotic Navigation and Mobile Manipulation"
+        },
+        {
+            "paperId": "4b17662f21c6313907a022af20f88616d11620eb",
+            "title": "Learning to Interpret Natural Language Navigation Instructions from Observations"
+        },
+        {
+            "paperId": "a049555721f17ed79a97fd492c8fc9a3f8f8aa17",
+            "title": "Self-Paced Learning for Latent Variable Models"
+        },
+        {
+            "paperId": "79ab3c49903ec8cb339437ccf5cf998607fc313e",
+            "title": "A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning"
+        },
+        {
+            "paperId": "8de174ab5419b9d3127695405efd079808e956e8",
+            "title": "Curriculum learning"
+        },
+        {
+            "paperId": "526e22c130b18924976553d29ba11bc9d898d58b",
+            "title": "Search-based structured prediction"
+        },
+        {
+            "paperId": "c8221c054459e37edbf313668523d667fe5c1536",
+            "title": "Maximum Entropy Inverse Reinforcement Learning"
+        },
+        {
+            "paperId": "851f27df3a1ec8daa693f6642194562e3fe9769a",
+            "title": "Walk the Talk: Connecting Language, Knowledge, and Action in Route Instructions"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": null,
+            "title": "Interactive Grounded Language Acquisition and Generalization in 2d Environment"
+        },
+        {
+            "paperId": null,
+            "title": "A method for stochastic optimization"
+        }
+    ]
+}

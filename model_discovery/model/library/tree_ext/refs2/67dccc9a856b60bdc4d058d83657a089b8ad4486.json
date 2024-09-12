@@ -1,0 +1,166 @@
+{
+    "paperId": "67dccc9a856b60bdc4d058d83657a089b8ad4486",
+    "externalIds": {
+        "MAG": "2952186347",
+        "DBLP": "conf/nips/SimonyanZ14",
+        "ArXiv": "1406.2199",
+        "CorpusId": 11797475
+    },
+    "title": "Two-Stream Convolutional Networks for Action Recognition in Videos",
+    "abstract": "We investigate architectures of discriminatively trained deep Convolutional Networks (ConvNets) for action recognition in video. The challenge is to capture the complementary information on appearance from still frames and motion between frames. We also aim to generalise the best performing hand-crafted features within a data-driven learning framework. \n \nOur contribution is three-fold. First, we propose a two-stream ConvNet architecture which incorporates spatial and temporal networks. Second, we demonstrate that a ConvNet trained on multi-frame dense optical flow is able to achieve very good performance in spite of limited training data. Finally, we show that multitask learning, applied to two different action classification datasets, can be used to increase the amount of training data and improve the performance on both. Our architecture is trained and evaluated on the standard video actions benchmarks of UCF-101 and HMDB-51, where it is competitive with the state of the art. It also exceeds by a large margin previous attempts to use deep nets for video classification.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2014,
+    "referenceCount": 33,
+    "citationCount": 7134,
+    "influentialCitationCount": 1012,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a two-stream ConvNet architecture which incorporates spatial and temporal networks and demonstrates that a ConvNet trained on multi-frame dense optical flow is able to achieve very good performance in spite of limited training data."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "34838386",
+            "name": "K. Simonyan"
+        },
+        {
+            "authorId": "1688869",
+            "name": "Andrew Zisserman"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "34f2f2dbaca68eb05426b51620673e71b69e1b37",
+            "title": "Action Recognition with Stacked Fisher Vectors"
+        },
+        {
+            "paperId": "6d4c9c923e9f145d1c01a2de2afc38ec23c44253",
+            "title": "Large-Scale Video Classification with Convolutional Neural Networks"
+        },
+        {
+            "paperId": "6bdb186ec4726e00a8051119636d4df3b94043b5",
+            "title": "Caffe: Convolutional Architecture for Fast Feature Embedding"
+        },
+        {
+            "paperId": "facbedfe90956c720f70aab14767b5e25dcc6478",
+            "title": "Bag of visual words and fusion methods for action recognition: Comprehensive study and good practice"
+        },
+        {
+            "paperId": "14d9be7962a4ec5a6e55755f4c7588ea00793652",
+            "title": "Return of the Devil in the Details: Delving Deep into Convolutional Nets"
+        },
+        {
+            "paperId": "6d77482b5e3478f4616f7467054ad50505207958",
+            "title": "Deep Fisher Networks for Large-Scale Image Classification"
+        },
+        {
+            "paperId": "1a2a770d23b4a171fa81de62a78a3deb0588f238",
+            "title": "Visualizing and Understanding Convolutional Networks"
+        },
+        {
+            "paperId": "9a4bff7e93a2d2d50495d873890cf52f868d3b66",
+            "title": "Better Exploiting Motion for Better Action Recognition"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "da9e411fcf740569b6b356f330a1d0fc077c8d7c",
+            "title": "UCF101: A Dataset of 101 Human Actions Classes From Videos in The Wild"
+        },
+        {
+            "paperId": "398c296d0cc7f9d180f84969f8937e6d3a413796",
+            "title": "Multi-column deep neural networks for image classification"
+        },
+        {
+            "paperId": "8b3b8848a311c501e704c45c6d50430ab7068956",
+            "title": "HMDB: A large video database for human motion recognition"
+        },
+        {
+            "paperId": "aba7b76c300db4159592ee2933d8796176d1e737",
+            "title": "Action recognition by dense trajectories"
+        },
+        {
+            "paperId": "42269d0438c0ae4ca892334946ed779999691074",
+            "title": "Learning hierarchical invariant spatio-temporal features for action recognition with independent subspace analysis"
+        },
+        {
+            "paperId": "39f3b1804b8df5be645a1dcb4a876e128385d9be",
+            "title": "Improving the Fisher Kernel for Large-Scale Image Classification"
+        },
+        {
+            "paperId": "4d476b96be73fccc61f2076befbf5a468caa4180",
+            "title": "Convolutional Learning of Spatio-temporal Features"
+        },
+        {
+            "paperId": "a39e6968580762ac5ae3cd064e86e1849f3efb7f",
+            "title": "Evaluation of Local Spatio-temporal Features for Action Recognition"
+        },
+        {
+            "paperId": "57458bc1cffe5caa45a885af986d70f723f406b4",
+            "title": "A unified architecture for natural language processing: deep neural networks with multitask learning"
+        },
+        {
+            "paperId": "02a98118ce990942432c0147ff3c0de756b4b76a",
+            "title": "Learning realistic human actions from movies"
+        },
+        {
+            "paperId": "124d967683544973581f951ee93b3f7c069e3ced",
+            "title": "A Biologically Inspired System for Action Recognition"
+        },
+        {
+            "paperId": "44f3ac3277c2eb6e5599739eb875888c46e21d4c",
+            "title": "Human Detection Using Oriented Histograms of Flow and Appearance"
+        },
+        {
+            "paperId": "e8b12467bdc20bde976750b8a28decdb33246d1d",
+            "title": "Histograms of oriented gradients for human detection"
+        },
+        {
+            "paperId": "91228e00fe33ed6072cfe849ab9e98160461549d",
+            "title": "High Accuracy Optical Flow Estimation Based on a Theory for Warping"
+        },
+        {
+            "paperId": "534805683c27accb27d66d9425f759b798df380a",
+            "title": "Two-Frame Motion Estimation Based on Polynomial Expansion"
+        },
+        {
+            "paperId": "cfc6d0c8260594ebc5dd20ee558d29b1014ed41a",
+            "title": "On the Algorithmic Implementation of Multiclass Kernel-based Vector Machines"
+        },
+        {
+            "paperId": "0a995afa8d3c114b2b431c4e2737777a0e051bff",
+            "title": "Separate visual pathways for perception and action"
+        },
+        {
+            "paperId": "a8e8f3c8d4418c8d62e306538c9c1292635e9d27",
+            "title": "Backpropagation Applied to Handwritten Zip Code Recognition"
+        },
+        {
+            "paperId": "7dffe7498c67e9451db2d04bb8408f376ae86992",
+            "title": "LEAR-INRIA submission for the THUMOS workshop"
+        },
+        {
+            "paperId": "d9f7fbbadc09a032d70f751f1fc865ecf044c03f",
+            "title": "Author manuscript, published in \"IEEE Intenational Conference on Computer Vision (ICCV), Sydney: Australie (2013)\" DeepFlow: Large displacement optical flow with deep matching"
+        },
+        {
+            "paperId": "66cb5df52535faa1df90272619c7fc81e335a088",
+            "title": "Deep Learning of Invariant Spatio-Temporal Features from Video"
+        },
+        {
+            "paperId": null,
+            "title": "Large scale visual recognition challenge (ILSVRC), 2010. URL http://www.image-net.org/challenges"
+        },
+        {
+            "paperId": "070874b011f8eb2b18c8aa521ad0a7a932b4d9ad",
+            "title": "Action Recognition with Improved Trajectories"
+        },
+        {
+            "paperId": "52dfa20f6fdfcda8c11034e3d819f4bd47e6207d",
+            "title": "Ieee Transactions on Pattern Analysis and Machine Intelligence 1 3d Convolutional Neural Networks for Human Action Recognition"
+        }
+    ]
+}

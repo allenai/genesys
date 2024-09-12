@@ -1,0 +1,202 @@
+{
+    "paperId": "44fca068eecce2203d111213e3691647914a3945",
+    "externalIds": {
+        "ArXiv": "1109.2128",
+        "DBLP": "journals/jair/ErkanR04",
+        "MAG": "2110693578",
+        "DOI": "10.1613/jair.1523",
+        "CorpusId": 506350
+    },
+    "title": "LexRank: Graph-based Lexical Centrality as Salience in Text Summarization",
+    "abstract": "We introduce a stochastic graph-based method for computing relative importance of textual units for Natural Language Processing. We test the technique on the problem of Text Summarization (TS). Extractive TS relies on the concept of sentence salience to identify the most important sentences in a document or set of documents. Salience is typically defined in terms of the presence of particular important words or in terms of similarity to a centroid pseudo-sentence. We consider a new approach, LexRank, for computing sentence importance based on the concept of eigenvector centrality in a graph representation of sentences. In this model, a connectivity matrix based on intra-sentence cosine similarity is used as the adjacency matrix of the graph representation of sentences. Our system, based on LexRank ranked in first place in more than one task in the recent DUC 2004 evaluation. In this paper we present a detailed analysis of our approach and apply it to a larger data set including data from earlier DUC evaluations. We discuss several methods to compute centrality using the similarity graph. The results show that degree-based methods (including LexRank) outperform both centroid-based methods and other systems participating in DUC in most of the cases. Furthermore, the LexRank with threshold method outperforms the other degree-based techniques including continuous LexRank. We also show that our approach is quite insensitive to the noise in the data that may result from an imperfect topical clustering of documents.",
+    "venue": "Journal of Artificial Intelligence Research",
+    "year": 2004,
+    "referenceCount": 41,
+    "citationCount": 2974,
+    "influentialCitationCount": 358,
+    "openAccessPdf": {
+        "url": "https://jair.org/index.php/jair/article/download/10396/24901",
+        "status": "GOLD"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new approach, LexRank, for computing sentence importance based on the concept of eigenvector centrality in a graph representation of sentences is considered and the LexRank with threshold method outperforms the other degree-based techniques including continuous LexRank."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2158159",
+            "name": "G\u00fcnes Erkan"
+        },
+        {
+            "authorId": "9215251",
+            "name": "Dragomir R. Radev"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "4f09e6ec1b7d4390d23881852fd7240994abeb58",
+            "title": "A statistical interpretation of term specificity and its application in retrieval"
+        },
+        {
+            "paperId": "5330c869c67e39b7d2d61e555f69807a49064de4",
+            "title": "PageRank on Semantic Networks, with Application to Word Sense Disambiguation"
+        },
+        {
+            "paperId": "f9ffdfa91157726b7ca5b676f323f709ad897616",
+            "title": "Learning random walk models for inducing word dependency distributions"
+        },
+        {
+            "paperId": "e6a4c9c918a4d8154b08bbdc3673da6a6eaeba3c",
+            "title": "LexPageRank: Prestige in Multi-Document Text Summarization"
+        },
+        {
+            "paperId": "7b95d389bc6affe6a127d53b04bcfd68138f1a1a",
+            "title": "TextRank: Bringing Order into Text"
+        },
+        {
+            "paperId": "c63bb976dc0d3a897f3b0920170a4c573ef904c6",
+            "title": "Automatic Evaluation of Summaries Using N-gram Co-occurrence Statistics"
+        },
+        {
+            "paperId": "10b8f21e57b3392ce623c374c2c039f811ce5f69",
+            "title": "Learning to Paraphrase: An Unsupervised Approach Using Multiple-Sequence Alignment"
+        },
+        {
+            "paperId": "92ba9c288cbd0089cf6e9d988c9672f095a67109",
+            "title": "Using Hidden Markov Modeling to Decompose Human-Written Summaries"
+        },
+        {
+            "paperId": "42e0376c29ad9510464b7a643a49cfc3b60c2cad",
+            "title": "Generic summarization and keyphrase extraction using mutual reinforcement principle and sentence clustering"
+        },
+        {
+            "paperId": "8f54b66017b99c4ee525e91f389f9f6417cf2e88",
+            "title": "Using maximum entropy for sentence extraction"
+        },
+        {
+            "paperId": "465d2b389d0bca094d0348be69bb8d1d3f10ea61",
+            "title": "Spectral Clustering for German Verbs"
+        },
+        {
+            "paperId": "d746c3b6c05dc77c72bf5f3aa100b4e61d0befc3",
+            "title": "Columbia multi-document summarization : Approach and evaluation"
+        },
+        {
+            "paperId": "0af651764f9b3af12596a55d036498da13d0937e",
+            "title": "SIMFINDER: A Flexible Clustering Tool for Summarization"
+        },
+        {
+            "paperId": "7d567a104ed5e206229c6d98e4190135f336448d",
+            "title": "A Common Theory of Information Fusion from Multiple Text Sources Step One: Cross-Document Structure"
+        },
+        {
+            "paperId": "25f51f4132626a645924b3c8b3edcbdcc35c48a3",
+            "title": "Statistics-Based Summarization - Step One: Sentence Compression"
+        },
+        {
+            "paperId": "ffb46f26ebff29b31b16c6e4b60d85019e19ac75",
+            "title": "Centroid-based summarization of multiple documents: sentence extraction, utility-based evaluation, and user studies"
+        },
+        {
+            "paperId": "eb82d3035849cd23578096462ba419b53198a556",
+            "title": "The PageRank Citation Ranking : Bringing Order to the Web"
+        },
+        {
+            "paperId": "1989b568d8c5a8cc1874ac2a155aea2ed8e82062",
+            "title": "Training a selection function for extraction"
+        },
+        {
+            "paperId": "8b43d11ca01316f0e96c07f6481b6b3a04a78040",
+            "title": "Ultra-summarization (poster abstract): a statistical approach to generating highly condensed non-extractive summaries"
+        },
+        {
+            "paperId": "a4e4473cf464da378e0fef11ffefd80f5cd811e3",
+            "title": "Abstracting of Legal Cases: The Potential of Clustering Based on the Selection of Representative Objects"
+        },
+        {
+            "paperId": "2b013ebac519c005f91c18284eb2351830507f6e",
+            "title": "Generating Natural Language Summaries from Multiple On-Line Sources"
+        },
+        {
+            "paperId": "10d6778bc45aebcd58d336b4062b935861d2fe8a",
+            "title": "The Anatomy of a Large-Scale Hypertextual Web Search Engine"
+        },
+        {
+            "paperId": "97c0af623d9eac54abb076da8c2282e9c8b0bbb0",
+            "title": "Multi-Document Summarization by Graph Search and Matching"
+        },
+        {
+            "paperId": "0ffa423a5283396c88ff3d4033d541796bd039cc",
+            "title": "Three Generative, Lexicalised Models for Statistical Parsing"
+        },
+        {
+            "paperId": "1828ee56303a37025da428d3dcd671b4fd489b94",
+            "title": "Automatic Text Structuring and Summarization"
+        },
+        {
+            "paperId": "f1df590365a5e12878d5ebdd0da8783a79fe51c7",
+            "title": "Automatic Condensation of Electronic Publications by Sentence Selection"
+        },
+        {
+            "paperId": "d80a6a85b0c263d638877fff66ddc12963e3c34f",
+            "title": "A trainable document summarizer"
+        },
+        {
+            "paperId": "944cba683d10d8c1a902e05cd68e32a9f47b372e",
+            "title": "Unsupervised Word Sense Disambiguation Rivaling Supervised Methods"
+        },
+        {
+            "paperId": "24c5941e64909877b8c6ea05f41aebb6698f290f",
+            "title": "Non\u2010Negative Matrices and Markov Chains"
+        },
+        {
+            "paperId": "3c493143e49ef3304e85222c16c1cfde2b058dd9",
+            "title": "New Methods in Automatic Extracting"
+        },
+        {
+            "paperId": "bfbe08fc74b5bd893ef04571ccdc0642901ad558",
+            "title": "Machine-Made Index for Technical Literature - An Experiment"
+        },
+        {
+            "paperId": "a6dcc17c6f3dbc2d203ade9ff671a895a9dead7c",
+            "title": "The Automatic Creation of Literature Abstracts"
+        },
+        {
+            "paperId": "b3fd7dea94cfc9526e4cd4f15f30c32ad047b8ec",
+            "title": "A Phrase-Based HMM Approach to Document/Abstract Alignment"
+        },
+        {
+            "paperId": "bb7ab784ec1bf0b863738e3e2ea12bfc70f8e2d3",
+            "title": "The University of Michigan at DUC 2004"
+        },
+        {
+            "paperId": "0c4dbf4cd8dba81e94fd74831c3f0268efa8dfa7",
+            "title": "HLT-NAACL 2003 : Human Language Technology conference of the North American Chapter of the Association for Computational Linguistics : proceedings of the main conference : May 27 to June 1, 2003, Edmonton, Alberta, Canada"
+        },
+        {
+            "paperId": "866819263d1efc5d9774db368a26a68ff84600a3",
+            "title": "Experiments in Single and Multi-Document Summarization Using MEAD"
+        },
+        {
+            "paperId": null,
+            "title": "Schi(cid:11)man"
+        },
+        {
+            "paperId": "0541579506575301ba7457d5a7f16b45e08a300c",
+            "title": "The use of MMR, diversity-based reranking for reordering documents and producing summaries"
+        },
+        {
+            "paperId": "cc7371cb1fe7c020aa13610d384cf869062700d6",
+            "title": "Ultra-Summarization: A Statistical Approach to Generating Highly Condensed Non-Extractive Summaries (poster abstract)."
+        },
+        {
+            "paperId": "e17283db2dadc7467802648ac2a94945dc7a5242",
+            "title": "Using Lexical Chains for Text Summarization"
+        },
+        {
+            "paperId": null,
+            "title": "d3s3 Nevertheless"
+        }
+    ]
+}

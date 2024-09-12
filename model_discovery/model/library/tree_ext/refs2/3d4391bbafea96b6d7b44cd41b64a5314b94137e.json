@@ -1,0 +1,217 @@
+{
+    "paperId": "3d4391bbafea96b6d7b44cd41b64a5314b94137e",
+    "externalIds": {
+        "MAG": "1964613733",
+        "DBLP": "conf/wsdm/DingLY08",
+        "DOI": "10.1145/1341531.1341561",
+        "CorpusId": 12442299
+    },
+    "title": "A holistic lexicon-based approach to opinion mining",
+    "abstract": "One of the important types of information on the Web is the opinions expressed in the user generated content, e.g., customer reviews of products, forum posts, and blogs. In this paper, we focus on customer reviews of products. In particular, we study the problem of determining the semantic orientations (positive, negative or neutral) of opinions expressed on product features in reviews. This problem has many applications, e.g., opinion mining, summarization and search. Most existing techniques utilize a list of opinion (bearing) words (also called opinion lexicon) for the purpose. Opinion words are words that express desirable (e.g., great, amazing, etc.) or undesirable (e.g., bad, poor, etc) states. These approaches, however, all have some major shortcomings. In this paper, we propose a holistic lexicon-based approach to solving the problem by exploiting external evidences and linguistic conventions of natural language expressions. This approach allows the system to handle opinion words that are context dependent, which cause major difficulties for existing algorithms. It also deals with many special words, phrases and language constructs which have impacts on opinions based on their linguistic patterns. It also has an effective function for aggregating multiple conflicting opinion words in a sentence. A system, called Opinion Observer, based on the proposed technique has been implemented. Experimental results using a benchmark product review data set and some additional reviews show that the proposed technique is highly effective. It outperforms existing methods significantly",
+    "venue": "Web Search and Data Mining",
+    "year": 2008,
+    "referenceCount": 44,
+    "citationCount": 1576,
+    "influentialCitationCount": 105,
+    "openAccessPdf": {
+        "url": "http://www.cs.uic.edu/~liub/FBS/opinion-mining-final-WSDM.pdf",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a holistic lexicon-based approach to solving the problem of determining the semantic orientations (positive, negative or neutral) of opinions expressed on product features in reviews by exploiting external evidences and linguistic conventions of natural language expressions."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2117435181",
+            "name": "Xiaowen Ding"
+        },
+        {
+            "authorId": "145321667",
+            "name": "B. Liu"
+        },
+        {
+            "authorId": "144019071",
+            "name": "Philip S. Yu"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "acc895879714ed3e947be7dfdcb7cc28d777722f",
+            "title": "The utility of linguistic rules in opinion mining"
+        },
+        {
+            "paperId": "308b39ea5aaf6f9a9d182142786c1b21d991dfd4",
+            "title": "Movie review mining and summarization"
+        },
+        {
+            "paperId": "8ec5c6abf7b8c64d5939285bfe97b56d9bd2c6f4",
+            "title": "Fully Automatic Lexicon Expansion for Domain-oriented Sentiment Analysis"
+        },
+        {
+            "paperId": "b804a95eeda8c36a44df7c3bfb4a5ff1af15f497",
+            "title": "Toward Opinion Summarization: Linking the Sources"
+        },
+        {
+            "paperId": "8fa7f405009ca0d6a6c63afbf1bd193fde54b9b8",
+            "title": "Word Sense and Subjectivity"
+        },
+        {
+            "paperId": "658e4cca762ef94bcf5c79416d13ce5ecc58b76e",
+            "title": "Examining the Role of Linguistic Knowledge Sources in the Automatic Identification and Classification of Reviews"
+        },
+        {
+            "paperId": "1291d6e5b27c6688a7d66a97963b8f529d5de6ea",
+            "title": "Automatic Construction of Polarity-Tagged Corpus from HTML Documents"
+        },
+        {
+            "paperId": "cfbd2ff1ed1d463a55928138faebb4f166ef2d13",
+            "title": "Automatic Identification of Pro and Con Reasons in Online Reviews"
+        },
+        {
+            "paperId": "9e0912807f1f6891188d1006f550d446886adc93",
+            "title": "Mining Comparative Sentences and Relations"
+        },
+        {
+            "paperId": "6fc5fdae585e2c4876e077274fbdd17cc9987cfa",
+            "title": "Interactive multimedia summaries of evaluative text"
+        },
+        {
+            "paperId": "ff75055d4e47737702d3b550879d6128cec13233",
+            "title": "Extracting Product Features and Opinions from Reviews"
+        },
+        {
+            "paperId": "b61edf6d800e8e4f9285f0fb3707938ce9c03661",
+            "title": "Pulse: Mining Customer Opinions from Free Text"
+        },
+        {
+            "paperId": "6af58c061f2e4f130c3b795c21ff0c7e3903278f",
+            "title": "Seeing Stars: Exploiting Class Relationships for Sentiment Categorization with Respect to Rating Scales"
+        },
+        {
+            "paperId": "2671e9ff0eb68739d6610cf67937e6b34a2fcf10",
+            "title": "Opinion observer: analyzing and comparing opinions on the Web"
+        },
+        {
+            "paperId": "879e4dd192cdaa71a63f05eb1317380d8ad7f041",
+            "title": "Creating Subjective and Objective Sentence Classifiers from Unannotated Texts"
+        },
+        {
+            "paperId": "97bdc5522ae46b281389654199d656eb67728a32",
+            "title": "Determining the Sentiment of Opinions"
+        },
+        {
+            "paperId": "cdcf7cb29f37ac0546961ea8a076075b9cc1f992",
+            "title": "Mining and summarizing customer reviews"
+        },
+        {
+            "paperId": "b419fb257870fe8024fb3f07dddd66328ae644cb",
+            "title": "Just How Mad Are You? Finding Strong and Weak Opinion Clauses"
+        },
+        {
+            "paperId": "ababc1999b5f31409c78c39d1842219821e37a6d",
+            "title": "Sentiment analysis: capturing favorability using natural language processing"
+        },
+        {
+            "paperId": "ab3eec0a211e16751effa729281dd448001203db",
+            "title": "Learning Extraction Patterns for Subjective Expressions"
+        },
+        {
+            "paperId": "3f46b61a7216e5763ffab5d33e06b88c9d490c85",
+            "title": "Towards Answering Opinion Questions: Separating Facts from Opinions and Identifying the Polarity of Opinion Sentences"
+        },
+        {
+            "paperId": "338a891907dce447da9a0fa2f27221bd35164163",
+            "title": "Mining the peanut gallery: opinion extraction and semantic classification of product reviews"
+        },
+        {
+            "paperId": "4f0d67a3a8a61d3a7ef0f940274ecff5f0d640ea",
+            "title": "Mining product reputations on the Web"
+        },
+        {
+            "paperId": "9e7c7853a16a378cc24a082153b282257a9675b7",
+            "title": "Thumbs Up or Thumbs Down? Semantic Orientation Applied to Unsupervised Classification of Reviews"
+        },
+        {
+            "paperId": "12d0353ce8b41b7e5409e5a4a611110aee33c7bc",
+            "title": "Thumbs up? Sentiment Classification using Machine Learning Techniques"
+        },
+        {
+            "paperId": "3a8d4fd2c30e5031a574bc25363c8639912b3bbd",
+            "title": "Effects of Adjective Orientation and Gradability on Sentence Subjectivity"
+        },
+        {
+            "paperId": "b62b80384f402d38c3425db6a99899d1cb9c50c6",
+            "title": "Predicting the Semantic Orientation of Adjectives"
+        },
+        {
+            "paperId": "dc0da561f3b41ed88035813f8c769a576d337aec",
+            "title": "Problem (2)"
+        },
+        {
+            "paperId": "3c4e3462e3e9f0dd7b379f3e300ff47eefa803e5",
+            "title": "Direction-based text interpretation as an information access refinement"
+        },
+        {
+            "paperId": "af5c4034493461af13a7f5480e081becf0218511",
+            "title": "Determining Term Subjectivity and Term Orientation for Opinion Mining"
+        },
+        {
+            "paperId": "d78b8c05e8d3eacc7c58865cff09dd29d3815ae8",
+            "title": "Opinion Extraction, Summarization and Tracking in News and Blog Corpora"
+        },
+        {
+            "paperId": "d2d8b52f59945b4a3ef9d20ab44e108319eead6f",
+            "title": "Mining WordNet for a Fuzzy Sentiment: Sentiment Tag Extraction from WordNet Glosses"
+        },
+        {
+            "paperId": null,
+            "title": "Opinion Mining on the Web by Extracting Subject-Attribute-Value Relations"
+        },
+        {
+            "paperId": "cd6005c83831416e8a5d599403d29e353cacd1db",
+            "title": "An exploration of sentiment summarization"
+        },
+        {
+            "paperId": null,
+            "title": "An Operational System for Detecting and Tracking Opinions in on-line discussion"
+        },
+        {
+            "paperId": null,
+            "title": "Identification and Classification of Reviews. ACL\u201906 , 2006. [25]"
+        },
+        {
+            "paperId": "d87ceda3042f781c341ac17109d1e94a717f5f60",
+            "title": "Book Reviews: WordNet: An Electronic Lexical Database"
+        },
+        {
+            "paperId": null,
+            "title": "Task 1: Identifying and extracting object features that have been commented on in each review d \u2208 D"
+        },
+        {
+            "paperId": null,
+            "title": "feature \u201csize\u201d"
+        },
+        {
+            "paperId": null,
+            "title": "Explicit features that"
+        },
+        {
+            "paperId": null,
+            "title": "Adjectives as feature indicators"
+        },
+        {
+            "paperId": null,
+            "title": "Problem 3: W is known"
+        },
+        {
+            "paperId": null,
+            "title": "Task 3: Grouping synonyms of features"
+        },
+        {
+            "paperId": null,
+            "title": "Task 2: Determining whether the opinions on the features are positive, negative or neutral"
+        }
+    ]
+}

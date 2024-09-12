@@ -1,0 +1,93 @@
+{
+    "paperId": "424710825d726e10b016204ed2bc979e2a342d10",
+    "externalIds": {
+        "MAG": "1984205520",
+        "DOI": "10.1080/09540098908915631",
+        "CorpusId": 60666828
+    },
+    "title": "Experimental Analysis of the Real-time Recurrent Learning Algorithm",
+    "abstract": "Abstract The real-time recurrent learning algorithm is a gradient-following learning algorithm for completely recurrent networks running in continually sampled time. Here we use a series of simulation experiments to investigate the power and properties of this algorithm. In the recurrent networks studied here, any unit can be connected to any other, and any unit can receive external input. These networks run continually in the sense that they sample their inputs on every update cycle, and any unit can have a training target on any cycle. The storage required and computation time on each step are independent of time and are completely determined by the size of the network, so no prior knowledge of the temporal structure of the task being learned is required. The algorithm is nonlocal in the sense that each unit must have knowledge of the complete recurrent weight matrix and error vector. The algorithm is computationally intensive in sequential computers, requiring a storage capacity of the order of the thi...",
+    "venue": "",
+    "year": 1989,
+    "referenceCount": 15,
+    "citationCount": 353,
+    "influentialCitationCount": 33,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A series of simulation experiments are used to investigate the power and properties of the real-time recurrent learning algorithm, a gradient-following learning algorithm for completely recurrent networks running in continually sampled time."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2116648700",
+            "name": "Ronald J. Williams"
+        },
+        {
+            "authorId": "1895771",
+            "name": "D. Zipser"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "8be3f21ab796bd9811382b560507c1c679fae37f",
+            "title": "A learning rule for asynchronous perceptrons with feedback in a combinatorial environment"
+        },
+        {
+            "paperId": "d76aafbeb54575859441a442376766c597f6bb52",
+            "title": "Attractor dynamics and parallelism in a connectionist sequential machine"
+        },
+        {
+            "paperId": "ce9a21b93ba29d4145a8ef6bf401e77f261848de",
+            "title": "A Learning Algorithm for Continually Running Fully Recurrent Neural Networks"
+        },
+        {
+            "paperId": "34468c0aa95a7aea212d8738ab899a69b2fc14c6",
+            "title": "Learning State Space Trajectories in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "5146d7902132bcb0b2e6fe5f607358768fc47323",
+            "title": "Dynamics and architecture for neural computation"
+        },
+        {
+            "paperId": "319f22bd5abfd67ac15988aa5c7f705f018c3ccd",
+            "title": "Learning internal representations by error propagation"
+        },
+        {
+            "paperId": "3c4b219d75906253512b5b857db7ce8024622cb6",
+            "title": "Adaptive Signal Processing"
+        },
+        {
+            "paperId": null,
+            "title": "I. This derivation has been presented in shorter form in Williams & Zipser"
+        },
+        {
+            "paperId": "d0d7f8b5d54e3d68fd45a70d4a0d13f42e8d71ff",
+            "title": "Learning Subsequential Structure in Simple Recurrent Networks"
+        },
+        {
+            "paperId": null,
+            "title": "Learning to represent state"
+        },
+        {
+            "paperId": null,
+            "title": "A focused back-propagation algorithm for temporal partem recognirion"
+        },
+        {
+            "paperId": "268e772554222e1dc738f87077b64f1b67258225",
+            "title": "A Dynamical Approach to Temporal Pattern Processing"
+        },
+        {
+            "paperId": null,
+            "title": "Center for Research in Language"
+        },
+        {
+            "paperId": "451468d7d3bf65f024cc4cd126dcbf4abac461fd",
+            "title": "The theory of computer science: A programming approach"
+        },
+        {
+            "paperId": "02f38b2d72d7b3243b5ba4005f814f71b80eec00",
+            "title": "The Utility Driven Dynamic Error Propagation Network"
+        }
+    ]
+}

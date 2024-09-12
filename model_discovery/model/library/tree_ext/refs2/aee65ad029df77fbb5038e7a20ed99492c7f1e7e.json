@@ -1,0 +1,158 @@
+{
+    "paperId": "aee65ad029df77fbb5038e7a20ed99492c7f1e7e",
+    "externalIds": {
+        "DBLP": "conf/icail/ChalkidisAM17",
+        "MAG": "2779545291",
+        "DOI": "10.1145/3086512.3086515",
+        "CorpusId": 5667369
+    },
+    "title": "Extracting contract elements",
+    "abstract": "We study how contract element extraction can be automated. We provide a labeled dataset with gold contract element annotations, along with an unlabeled dataset of contracts that can be used to pre-train word embeddings. Both datasets are provided in an encoded form to bypass privacy issues. We describe and experimentally compare several contract element extraction methods that use manually written rules and linear classifiers (logistic regression, SVMs) with hand-crafted features, word embeddings, and part-of-speech tag embeddings. The best results are obtained by a hybrid method that combines machine learning (with hand-crafted features and embeddings) and manually written post-processing rules.",
+    "venue": "International Conference on Artificial Intelligence and Law",
+    "year": 2017,
+    "referenceCount": 30,
+    "citationCount": 112,
+    "influentialCitationCount": 9,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work provides a labeled dataset with gold contract element annotations, along with an unlabeled dataset of contracts that can be used to pre-train word embeddings and experimentally compares several contract element extraction methods that use manually written rules and linear classifiers with hand-crafted features, word embedDings, and part-of-speech tag embeddINGS."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "10783142",
+            "name": "Ilias Chalkidis"
+        },
+        {
+            "authorId": "1752430",
+            "name": "Ion Androutsopoulos"
+        },
+        {
+            "authorId": "31837709",
+            "name": "A. Michos"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "56edaa1368ff4dfa45388e4be24fdfbded7d88a7",
+            "title": "A Primer on Neural Network Models for Natural Language Processing"
+        },
+        {
+            "paperId": "6dab1c6491929d396e9e5463bc2e87af88602aa2",
+            "title": "Finding Function in Form: Compositional Character Models for Open Vocabulary Word Representation"
+        },
+        {
+            "paperId": "6aa3d8bcca2ebdc52ef7cd786204c338f9d609f2",
+            "title": "Improving Distributional Similarity with Lessons Learned from Word Embeddings"
+        },
+        {
+            "paperId": "f4c018bcc8ea707b83247866bdc8ccb87cd9f5da",
+            "title": "Neural Word Embedding as Implicit Matrix Factorization"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "500d570ce02abf42bc1bc535620741d4c5665e6a",
+            "title": "Linguistic Regularities in Sparse and Explicit Word Representations"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "53ab89807caead278d3deb7b6a4180b277d3cb77",
+            "title": "Better Word Representations with Recursive Neural Networks for Morphology"
+        },
+        {
+            "paperId": "c4fd9c86b2b41df51a6fe212406dda81b1997fd4",
+            "title": "Linguistic Regularities in Continuous Space Word Representations"
+        },
+        {
+            "paperId": "f6b51c8753a871dc94ff32152c00c01e94f90f09",
+            "title": "Efficient Estimation of Word Representations in Vector Space"
+        },
+        {
+            "paperId": "5a9183849c797a4bd06184ccff9045b23ea2eb53",
+            "title": "Mining Business Contracts for Service Exceptions"
+        },
+        {
+            "paperId": "be1716fbce0c1d0613cfe36508c3ca3b87a6ac8e",
+            "title": "Dual coordinate descent methods for logistic regression and maximum entropy models"
+        },
+        {
+            "paperId": "184f5f64da7613f9445e830835a969987840f7ff",
+            "title": "Corpus Based Classification of Text in Australian Contracts"
+        },
+        {
+            "paperId": "5b3af4b667b3a50746a443394a50349ec455fb8b",
+            "title": "Mining e-contract documents to classify clauses"
+        },
+        {
+            "paperId": "7e88518961940fa051101089c771d08d915807d0",
+            "title": "Segmentation of legal documents"
+        },
+        {
+            "paperId": "d39904acf2ec57a2ddb3f12bfcf4cbfd541f5fde",
+            "title": "Segmentation of Legislative Documents Using a Domain-Specific Lexicon"
+        },
+        {
+            "paperId": "e0246335fe86033160cdd707591a12f31e241196",
+            "title": "Knowledge Discovery from Legal Databases"
+        },
+        {
+            "paperId": "a7226627420d3e71bf50a5d65c164d6eff5ee826",
+            "title": "Automatic semantics extraction in law documents"
+        },
+        {
+            "paperId": "6f43557952166068d45466be038ae89ef8c326ce",
+            "title": "On design and implementation of a contract monitoring facility"
+        },
+        {
+            "paperId": "ef8772242235273359511b139691f2f88eb5e87a",
+            "title": "Generalized Linear Models"
+        },
+        {
+            "paperId": "f4ba954b0412773d047dc41231c733de0c1f4926",
+            "title": "Conditional Random Fields: Probabilistic Models for Segmenting and Labeling Sequence Data"
+        },
+        {
+            "paperId": "0e90a73f03902cbe915af1aff54ea7f0b3373680",
+            "title": "An Introduction to Support Vector Machines and Other Kernel-Based Learning Methods"
+        },
+        {
+            "paperId": "46711283e72e45dc2efe1b86db8db6ce65efd82c",
+            "title": "An experimental comparison of naive Bayesian and keyword-based anti-spam filtering with personal e-mail messages"
+        },
+        {
+            "paperId": "927abef52678ed23edf6c508ef7a26569440a329",
+            "title": "An Algorithm that Learns What's in a Name"
+        },
+        {
+            "paperId": "4f8d648c52edf74e41b0996128aa536e13cc7e82",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": "3cc09c21bcbbd6d10a7c7cad6c941886136ec891",
+            "title": "Using Linguistic Information and Machine Learning Techniques to Identify Entities from Juridical Documents"
+        },
+        {
+            "paperId": "dd878843d0416f726262a9b4c5ad8bedf84ae5d7",
+            "title": "Named Entity Recognition and Resolution in Legal Text"
+        },
+        {
+            "paperId": "ccf15786cbe69825709dbde53f5d2a521372707e",
+            "title": "Semantic Processing of Legal Texts"
+        },
+        {
+            "paperId": "4a554da55fd9ff76c99e25d2ce937b225dc1100c",
+            "title": "A survey of named entity recognition and classification"
+        },
+        {
+            "paperId": "8213dbed4db44e113af3ed17d6dad57471a0c048",
+            "title": "The Nature of Statistical Learning Theory"
+        }
+    ]
+}

@@ -1,0 +1,194 @@
+{
+    "paperId": "e1f2a547ca6aeac20765eabd11042dd2ae25d66d",
+    "externalIds": {
+        "DBLP": "journals/corr/GonzalezVKT16",
+        "MAG": "2569680626",
+        "ArXiv": "1612.09346",
+        "DOI": "10.1109/ICCV.2017.540",
+        "CorpusId": 14077561
+    },
+    "title": "Rotation Equivariant Vector Field Networks",
+    "abstract": "In many computer vision tasks, we expect a particular behavior of the output with respect to rotations of the input image. If this relationship is explicitly encoded, instead of treated as any other variation, the complexity of the problem is decreased, leading to a reduction in the size of the required model. In this paper, we propose the Rotation Equivariant Vector Field Networks (RotEqNet), a Convolutional Neural Network (CNN) architecture encoding rotation equivariance, invariance and covariance. Each convolutional filter is applied at multiple orientations and returns a vector field representing magnitude and angle of the highest scoring orientation at every spatial location. We develop a modified convolution operator relying on this representation to obtain deep architectures. We test RotEqNet on several problems requiring different responses with respect to the inputs\u2019 rotation: image classification, biomedical image segmentation, orientation estimation and patch matching. In all cases, we show that RotEqNet offers extremely compact models in terms of number of parameters and provides results in line to those of networks orders of magnitude larger.",
+    "venue": "IEEE International Conference on Computer Vision",
+    "year": 2016,
+    "referenceCount": 37,
+    "citationCount": 254,
+    "influentialCitationCount": 25,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1612.09346",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Rotation Equivariant Vector Field Networks (RotEqNet), a Convolutional Neural Network architecture encoding rotation equivariance, invariance and covariance, is proposed and a modified convolution operator relying on this representation to obtain deep architectures is developed."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "144173388",
+            "name": "Diego Marcos"
+        },
+        {
+            "authorId": "47253054",
+            "name": "M. Volpi"
+        },
+        {
+            "authorId": "2505902",
+            "name": "N. Komodakis"
+        },
+        {
+            "authorId": "2977931",
+            "name": "D. Tuia"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "1a970066e726c74484a6ba943959f81fe57c6f96",
+            "title": "Oriented Response Networks"
+        },
+        {
+            "paperId": "db1207440d20104854464d51da4cf5f79c5de240",
+            "title": "Steerable CNNs"
+        },
+        {
+            "paperId": "11aada215e6f72cbd5928619de839ba35106a88f",
+            "title": "Harmonic Networks: Deep Translation and Rotation Equivariance"
+        },
+        {
+            "paperId": "735ddb889acc11adbbc7f3d5261259b3a03bb2cd",
+            "title": "An Efficient Fusion Move Algorithm for the Minimum Cost Lifted Multicut Problem"
+        },
+        {
+            "paperId": "675768fece136751be9673c16bcadf459ae4e476",
+            "title": "Warped Convolutions: Efficient Invariance to Spatial Transformations"
+        },
+        {
+            "paperId": "7f167d10e6fb57f4aa95fb7099a76ba9b5671025",
+            "title": "The Importance of Skip Connections in Biomedical Image Segmentation"
+        },
+        {
+            "paperId": "dee296eea2f7039c74e12d6aa7fc40404b97f227",
+            "title": "Deep models for brain EM image segmentation: novel insights and improved performance"
+        },
+        {
+            "paperId": "3bde1aae1db3577938ffe910a9de5a1f187840e9",
+            "title": "RIFD-CNN: Rotation-Invariant and Fisher Discriminative Convolutional Neural Networks for Object Detection"
+        },
+        {
+            "paperId": "59da3fc6f47c19d7950a7f98e7cc750f0bd55861",
+            "title": "Learning rotation invariant convolutional filters for texture classification"
+        },
+        {
+            "paperId": "049a5a81bd664c27a6f5c973f253c7664463d13b",
+            "title": "TI-POOLING: Transformation-Invariant Pooling for Feature Learning in Convolutional Neural Networks"
+        },
+        {
+            "paperId": "fafcaf5ca3fab8dc4fad15c2391c0fdb4a7dc005",
+            "title": "Group Equivariant Convolutional Networks"
+        },
+        {
+            "paperId": "49a86f6bf8f684f2d5cbb01dca7da03ee53b69d5",
+            "title": "Deep Contextual Networks for Neuronal Structure Segmentation"
+        },
+        {
+            "paperId": "3f12f001fdabf293e273e960c7756cb379c50b66",
+            "title": "Discriminative Learning of Deep Convolutional Feature Point Descriptors"
+        },
+        {
+            "paperId": "14d792772da62654f5c568153222ae1523659b96",
+            "title": "Surpassing Humans in Boundary Detection using Deep Learning"
+        },
+        {
+            "paperId": "86da68568ad3c22154f56f4f821ba7954109c11c",
+            "title": "Pushing the Boundaries of Boundary Detection using Deep Learning"
+        },
+        {
+            "paperId": "e07e61de05d30a348cb7b4cb38aede541f80941c",
+            "title": "Crowdsourcing the creation of image segmentation algorithms for connectomics"
+        },
+        {
+            "paperId": "dbb6ded623159c867fbeca0772db7b2eb9489523",
+            "title": "Spatial Transformer Networks"
+        },
+        {
+            "paperId": "6364fdaa0a0eccd823a779fcdd489173f938e91a",
+            "title": "U-Net: Convolutional Networks for Biomedical Image Segmentation"
+        },
+        {
+            "paperId": "cf986bfe13a24d4739f95df3a856a3c6e4ed4c1c",
+            "title": "Learning Deconvolution Network for Semantic Segmentation"
+        },
+        {
+            "paperId": "adcf9bdac7f05ba2bc003256a6794974aa571e0c",
+            "title": "Learning to compare image patches via convolutional neural networks"
+        },
+        {
+            "paperId": "a3cbdf7f87205b1808f62ae6676e2bbfa7847dde",
+            "title": "When Face Recognition Meets with Deep Learning: An Evaluation of Convolutional Neural Networks for Face Recognition"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "0bde8d9367d1004c7396dd69cb27ed97dc2f8d77",
+            "title": "MatConvNet: Convolutional Neural Networks for MATLAB"
+        },
+        {
+            "paperId": "4f939bb8dd6a660a8f6851bf8ad2ce8a55c974ae",
+            "title": "Deep Symmetry Networks"
+        },
+        {
+            "paperId": "371400e61632592146f40b621fb3dbb6971721be",
+            "title": "Understanding Image Representations by Measuring Their Equivariance and Equivalence"
+        },
+        {
+            "paperId": "60a15269fb2e6d031d2dad4bb9c4225b18bbf1eb",
+            "title": "Designing deep networks for surface normal estimation"
+        },
+        {
+            "paperId": "6fc6803df5f9ae505cae5b2f178ade4062c768d0",
+            "title": "Fully convolutional networks for semantic segmentation"
+        },
+        {
+            "paperId": "528beaa995bf1bd1ae451b18218674af9ecd2b50",
+            "title": "Rotation, Scaling and Deformation Invariant Scattering for Texture Discrimination"
+        },
+        {
+            "paperId": "8f7214bafbed6d4dfd397c35315c7275d5608f61",
+            "title": "Learning Invariant Representations with Local Transformations"
+        },
+        {
+            "paperId": "6d215dbccc56528137591b2c33c43bc67c2d131a",
+            "title": "Transformation Equivariant Boltzmann Machines"
+        },
+        {
+            "paperId": "05cc38e249a6f642363b5a5cbd71cda67cea5893",
+            "title": "Tiled convolutional neural networks"
+        },
+        {
+            "paperId": "3874df6410a20b1d7ba7091d596398f72bcb93cf",
+            "title": "An Integrated Micro- and Macroarchitectural Analysis of the Drosophila Brain by Computer-Assisted Serial Section Electron Microscopy"
+        },
+        {
+            "paperId": "b8012351bc5ebce4a4b3039bbbba3ce393bc3315",
+            "title": "An empirical evaluation of deep architectures on problems with many factors of variation"
+        },
+        {
+            "paperId": "65cccb5b4aec5dd9a7161ddebcb0213b39f53439",
+            "title": "Learning Local Image Descriptors"
+        },
+        {
+            "paperId": "5562a56da3a96dae82add7de705e2bd841eb00fc",
+            "title": "Best practices for convolutional neural networks applied to visual document analysis"
+        },
+        {
+            "paperId": "a4bfe622ab32e6c645eb4be2079734355b22d304",
+            "title": "Handwritten zip code recognition with multilayer networks"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        }
+    ]
+}

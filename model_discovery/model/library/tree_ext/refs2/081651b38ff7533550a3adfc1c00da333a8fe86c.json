@@ -1,0 +1,114 @@
+{
+    "paperId": "081651b38ff7533550a3adfc1c00da333a8fe86c",
+    "externalIds": {
+        "DBLP": "conf/nips/YosinskiCBL14",
+        "ArXiv": "1411.1792",
+        "MAG": "2149933564",
+        "CorpusId": 362467
+    },
+    "title": "How transferable are features in deep neural networks?",
+    "abstract": "Many deep neural networks trained on natural images exhibit a curious phenomenon in common: on the first layer they learn features similar to Gabor filters and color blobs. Such first-layer features appear not to be specific to a particular dataset or task, but general in that they are applicable to many datasets and tasks. Features must eventually transition from general to specific by the last layer of the network, but this transition has not been studied extensively. In this paper we experimentally quantify the generality versus specificity of neurons in each layer of a deep convolutional neural network and report a few surprising results. Transferability is negatively affected by two distinct issues: (1) the specialization of higher layer neurons to their original task at the expense of performance on the target task, which was expected, and (2) optimization difficulties related to splitting networks between co-adapted neurons, which was not expected. In an example network trained on ImageNet, we demonstrate that either of these two issues may dominate, depending on whether features are transferred from the bottom, middle, or top of the network. We also document that the transferability of features decreases as the distance between the base task and target task increases, but that transferring features even from distant tasks can be better than using random features. A final surprising result is that initializing a network with transferred features from almost any number of layers can produce a boost to generalization that lingers even after fine-tuning to the target dataset.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2014,
+    "referenceCount": 18,
+    "citationCount": 7807,
+    "influentialCitationCount": 409,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper quantifies the generality versus specificity of neurons in each layer of a deep convolutional neural network and reports a few surprising results, including that initializing a network with transferred features from almost any number of layers can produce a boost to generalization that lingers even after fine-tuning to the target dataset."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2965424",
+            "name": "J. Yosinski"
+        },
+        {
+            "authorId": "2552141",
+            "name": "J. Clune"
+        },
+        {
+            "authorId": "1751762",
+            "name": "Yoshua Bengio"
+        },
+        {
+            "authorId": "1747909",
+            "name": "Hod Lipson"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "6bdb186ec4726e00a8051119636d4df3b94043b5",
+            "title": "Caffe: Convolutional Architecture for Fast Feature Embedding"
+        },
+        {
+            "paperId": "1109b663453e78a59e4f66446d71720ac58cec25",
+            "title": "OverFeat: Integrated Recognition, Localization and Detection using Convolutional Networks"
+        },
+        {
+            "paperId": "1a2a770d23b4a171fa81de62a78a3deb0588f238",
+            "title": "Visualizing and Understanding Convolutional Networks"
+        },
+        {
+            "paperId": "2f4df08d9072fc2ac181b7fced6a245315ce05c8",
+            "title": "Rich Feature Hierarchies for Accurate Object Detection and Semantic Segmentation"
+        },
+        {
+            "paperId": "b8de958fead0d8a9619b55c7299df3257c624a96",
+            "title": "DeCAF: A Deep Convolutional Activation Feature for Generic Visual Recognition"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "0060745e006c5f14ec326904119dca19c6545e51",
+            "title": "Improving neural networks by preventing co-adaptation of feature detectors"
+        },
+        {
+            "paperId": "51e93552fe55be91a5711ff2aabc04b742503e68",
+            "title": "ICA with Reconstruction Cost for Efficient Overcomplete Feature Learning"
+        },
+        {
+            "paperId": "a6c1a120f6c84eff4fb0facf404094f840105b9f",
+            "title": "Deep Learning of Representations for Unsupervised and Transfer Learning"
+        },
+        {
+            "paperId": "38fb40f6b6c2498069d2bd0352b8dc3377fde8f0",
+            "title": "Deep Learners Benefit More from Out-of-Distribution Examples"
+        },
+        {
+            "paperId": "1f88427d7aa8225e47f946ac41a0667d7b69ac52",
+            "title": "What is the best multi-stage architecture for object recognition?"
+        },
+        {
+            "paperId": "d2c733e34d48784a37d717fe43d9e93277a8c53e",
+            "title": "ImageNet: A large-scale hierarchical image database"
+        },
+        {
+            "paperId": "1e80f755bcbf10479afd2338cec05211fdbd325c",
+            "title": "Convolutional deep belief networks for scalable unsupervised learning of hierarchical representations"
+        },
+        {
+            "paperId": "ed9db7b20e019cdb1c7db8b7921221ee2d9f36e2",
+            "title": "Learning Generative Visual Models from Few Training Examples: An Incremental Bayesian Approach Tested on 101 Object Categories"
+        },
+        {
+            "paperId": null,
+            "title": "On the relatively large ImageNet dataset, we \ufb01nd lower performance than has been previously reported for smaller datasets"
+        },
+        {
+            "paperId": "210da45e57f86a50c04bdd7b37d498c8ecc288da",
+            "title": "Learning Many Related Tasks at the Same Time with Backpropagation"
+        },
+        {
+            "paperId": "cdf99beb49db4af5e3043867ff3383ef04b1e7b2",
+            "title": "Supplementary References"
+        },
+        {
+            "paperId": null,
+            "title": "We quantify how the performance bene\ufb01ts of transferring features decreases the more dissimilar the base task and target task are"
+        }
+    ]
+}

@@ -1,0 +1,85 @@
+{
+    "paperId": "7fc3a6862f746c9988d82c023d2b7aaf0e089168",
+    "externalIds": {
+        "DBLP": "journals/cacm/Denning83",
+        "MAG": "2142098074",
+        "DOI": "10.1145/357980.357997",
+        "CorpusId": 38344265
+    },
+    "title": "The working set model for program behavior",
+    "abstract": "Probably the most basic reason behind the absence of a general treatment of resource allocation in modern computer systems is an adequate model for program behavior. In this paper a new model, the \u201cworking set model,\u201d is developed. The working set of pages associated with a process, defined to be the collection of its most recently used pages, provides knowledge vital to the dynamic management of paged memories. \u201cProcess\u201d and \u201cworking set\u201d are shown to be manifestations of the same ongoing computational activity; then \u201cprocessor demand\u201d and \u201cmemory demand\u201d are defined; and resource allocation is formulated as the problem of balancing demands against available equipment.",
+    "venue": "CACM",
+    "year": 1968,
+    "referenceCount": 13,
+    "citationCount": 794,
+    "influentialCitationCount": 37,
+    "openAccessPdf": {
+        "url": "https://dl.acm.org/doi/pdf/10.1145/357980.357997",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new model, the \u201cworking set model,\u201d is developed, defined to be the collection of its most recently used pages, which provides knowledge vital to the dynamic management of paged memories."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1729148",
+            "name": "P. Denning"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "1679a014fb3a5ef34add723994a34fb8a73e7578",
+            "title": "Resource management for a medium scale time-sharing operating system"
+        },
+        {
+            "paperId": "2da7952ffd8c6e7c17ff89fcd5c26c3ecb04b0b7",
+            "title": "An empirical study of the behavior of programs in a paging environment"
+        },
+        {
+            "paperId": "0157ec8878caeaa39f415ce8b98ae9fe078c013e",
+            "title": "TRAFFIC CONTROL IN A MULTIPLEXED COMPUTER"
+        },
+        {
+            "paperId": "7779c10dfa1f84953016b6292844815c5faf84f5",
+            "title": "A Study of Replacement Algorithms for Virtual-Storage Computer"
+        },
+        {
+            "paperId": "0ebd26197902f98f2a3bde3445207c608fb93c6d",
+            "title": "Programming semantics for multiprogrammed computations"
+        },
+        {
+            "paperId": "b9599069b1ed2ea0487ad3913d8680d9f2ddfc44",
+            "title": "Segmentation and the Design of Multiprogrammed Computer Systems"
+        },
+        {
+            "paperId": "b7786ecb76d827aafc590027e2460c6c62d7e1a6",
+            "title": "PROGRAM STRUCTURE IN A MULTI-ACCESS COMPUTER"
+        },
+        {
+            "paperId": "9d7bbf669ce96e022379bc99f8b9aa6083400829",
+            "title": "One-Level Storage System"
+        },
+        {
+            "paperId": "b8721cf4bca1ecbdc6ade7b6ffab9a06aa5dda42",
+            "title": "An optimization model for time-sharing"
+        },
+        {
+            "paperId": "bb80360821fc4d2bc04ae205ea120326d8e65083",
+            "title": "Traffic control in a multiplexed computer system"
+        },
+        {
+            "paperId": "ef9024789a611eb6d05363b5aa071f6fef3232d1",
+            "title": "The Challenge of the Computer Utility"
+        },
+        {
+            "paperId": "0e97752c75b3ad97d1c31943fcb479c45d3f3ddb",
+            "title": "Program and Addressing Structure in a Time-Sharing Environment"
+        },
+        {
+            "paperId": "b91bde7ecf0555f3e52d400154640a81b1ab9e85",
+            "title": "The analytic design of a dynamic look ahead and program segmenting system for multiprogrammed computers"
+        }
+    ]
+}

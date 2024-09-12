@@ -1,0 +1,158 @@
+{
+    "paperId": "e5c98541d7ba1cdf92a853d731c4bb1b531aa5d9",
+    "externalIds": {
+        "MAG": "2962935966",
+        "DBLP": "journals/corr/abs-1711-00541",
+        "ArXiv": "1711.00541",
+        "DOI": "10.1109/ICASSP.2018.8462116",
+        "CorpusId": 4923261
+    },
+    "title": "TaSNet: Time-Domain Audio Separation Network for Real-Time, Single-Channel Speech Separation",
+    "abstract": "Robust speech processing in multi-talker environments requires effective speech separation. Recent deep learning systems have made significant progress toward solving this problem, yet it remains challenging particularly in real-time, short latency applications. Most methods attempt to construct a mask for each source in time-frequency representation of the mixture signal which is not necessarily an optimal representation for speech separation. In addition, time-frequency decomposition results in inherent problems such as phase/magnitude decoupling and long time window which is required to achieve sufficient frequency resolution. We propose Time-domain Audio Separation Network (TasNet) to overcome these limitations. We directly model the signal in the time-domain using an encoder-decoder framework and perform the source separation on nonnegative encoder outputs. This method removes the frequency decomposition step and reduces the separation problem to estimation of source masks on encoder outputs which is then synthesized by the decoder. Our system outperforms the current state-of-the-art causal and noncausal speech separation algorithms, reduces the computational cost of speech separation, and significantly reduces the minimum required latency of the output. This makes TasNet suitable for applications where low-power, real-time implementation is desirable such as in hearable and telecommunication devices.",
+    "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+    "year": 2017,
+    "referenceCount": 30,
+    "citationCount": 570,
+    "influentialCitationCount": 73,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1711.00541",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Time-domain Audio Separation Network (TasNet) is proposed, which outperforms the current state-of-the-art causal and noncausal speech separation algorithms, reduces the computational cost of speech separation, and significantly reduces the minimum required latency of the output."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145714738",
+            "name": "Yi Luo"
+        },
+        {
+            "authorId": "1686269",
+            "name": "N. Mesgarani"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "55677ec0eea25c19691c2cf8bbc639a06388a29b",
+            "title": "Understanding the Representation and Computation of Multilayer Perceptrons: A Case Study in Speech Recognition"
+        },
+        {
+            "paperId": "7aa505f90d2b0d6fd9a4d878d4cf3f0bd37e7cc2",
+            "title": "Speaker-Independent Speech Separation With Deep Attractor Network"
+        },
+        {
+            "paperId": "12279a0a09d13a8465b0a4bf9007bcdc3c1aad38",
+            "title": "End-To-End Source Separation With Adaptive Front-Ends"
+        },
+        {
+            "paperId": "f8d43ff00585c53f65eb04e15477113c2d2b758b",
+            "title": "SEGAN: Speech Enhancement Generative Adversarial Network"
+        },
+        {
+            "paperId": "256ad591c6fd5269fc6f88b9715bf379f210f53d",
+            "title": "Multitalker Speech Separation With Utterance-Level Permutation Invariant Training of Deep Recurrent Neural Networks"
+        },
+        {
+            "paperId": "88caa4a0253a8b0076176745ebc072864eab66e1",
+            "title": "Language Modeling with Gated Convolutional Networks"
+        },
+        {
+            "paperId": "5c46e8c6dbfac2fb298e592b74057b372917695c",
+            "title": "Deep attractor network for single-microphone speaker separation"
+        },
+        {
+            "paperId": "1a3f032007526110439f0ab006c1e6df7fb87a63",
+            "title": "Deep clustering and conventional networks for music separation: Stronger together"
+        },
+        {
+            "paperId": "e221e2c2ca8bd74a7b818406c8a2a342760e7d65",
+            "title": "SampleRNN: An Unconditional End-to-End Neural Audio Generation Model"
+        },
+        {
+            "paperId": "675ac07ad45971043dd41be4b62b92f4435fbda4",
+            "title": "A neural network alternative to non-negative audio models"
+        },
+        {
+            "paperId": "df0402517a7338ae28bc54acaac400de6b456a46",
+            "title": "WaveNet: A Generative Model for Raw Audio"
+        },
+        {
+            "paperId": "a2909b69cdabb614496371163754f2850ca2b2a0",
+            "title": "Acoustic Modelling from the Signal Domain Using CNNs"
+        },
+        {
+            "paperId": "97fb4e3d45bb098e27e0071448b6152217bd35a5",
+            "title": "Layer Normalization"
+        },
+        {
+            "paperId": "ab94fae3d49cd7016a47020469dc257d8090f5bb",
+            "title": "Single-Channel Multi-Speaker Separation Using Deep Clustering"
+        },
+        {
+            "paperId": "90a048e70a4c468de38b1e2912f9c101fbb8fd25",
+            "title": "A Deep Ensemble Learning Method for Monaural Speech Separation"
+        },
+        {
+            "paperId": "f19284f6ab802c8a1fcde076fcb3fba195a71723",
+            "title": "A guide to convolution arithmetic for deep learning"
+        },
+        {
+            "paperId": "77f0a39b8e02686fd85b01971f8feb7f60971f80",
+            "title": "Identity Mappings in Deep Residual Networks"
+        },
+        {
+            "paperId": "0a852f4ff2acb409730cf6f0038d6537848a6a53",
+            "title": "Complex Ratio Masking for Monaural Speech Separation"
+        },
+        {
+            "paperId": "997a4e8fb93433f2583e2174ad815516b3cbcb5b",
+            "title": "Deep Learning of Part-Based Representation of Data Using Sparse Autoencoders With Nonnegativity Constraints"
+        },
+        {
+            "paperId": "3004a3e4d8969dc3c36c9274b0f76ecc874f2e6a",
+            "title": "Phase-sensitive and recognition-boosted speech separation using deep recurrent neural networks"
+        },
+        {
+            "paperId": "4c5562bcc6e2fb58cd69952a3b74c88626ce5185",
+            "title": "Joint Optimization of Masks and Deep Recurrent Neural Networks for Monaural Source Separation"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "f4d67c30dd332286c49d510ab8929d129bbd9bd0",
+            "title": "Online learning and generalization of parts-based image representations by non-negative sparse autoencoders"
+        },
+        {
+            "paperId": "394047a89e05629e28ce61e841d00133ae40a4e1",
+            "title": "Nonnegative Least-Correlated Component Analysis for Separation of Dependent Sources by Volume Maximization"
+        },
+        {
+            "paperId": "8de174ab5419b9d3127695405efd079808e956e8",
+            "title": "Curriculum learning"
+        },
+        {
+            "paperId": "29de8281b8cbc764d605a20d00b818eba6d47da1",
+            "title": "Performance measurement in blind audio source separation"
+        },
+        {
+            "paperId": null,
+            "title": "Nal Kalchbrenner, Andrew Senior, and Koray Kavukcuoglu"
+        },
+        {
+            "paperId": "fd5474f21495989777cbff507ecf1b37b7091475",
+            "title": "Learning the speech front-end with raw waveform CLDNNs"
+        },
+        {
+            "paperId": "339d637dd2d29f0f412e28965fdec41e7bfbc5bd",
+            "title": "Learning Understandable Neural Networks With Nonnegative Weight Constraints"
+        },
+        {
+            "paperId": "1e1d1c9a3cc9991bf64b075be899bff7440f895a",
+            "title": "Convex and Semi-Nonnegative Matrix Factorizations"
+        }
+    ]
+}

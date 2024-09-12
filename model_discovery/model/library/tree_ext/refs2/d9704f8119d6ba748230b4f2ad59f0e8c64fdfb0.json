@@ -1,0 +1,118 @@
+{
+    "paperId": "d9704f8119d6ba748230b4f2ad59f0e8c64fdfb0",
+    "externalIds": {
+        "DBLP": "conf/nips/BengioYAV13",
+        "ArXiv": "1305.6663",
+        "MAG": "2134842679",
+        "CorpusId": 5554756
+    },
+    "title": "Generalized Denoising Auto-Encoders as Generative Models",
+    "abstract": "Recent work has shown how denoising and contractive autoencoders implicitly capture the structure of the data-generating density, in the case where the corruption noise is Gaussian, the reconstruction error is the squared error, and the data is continuous-valued. This has led to various proposals for sampling from this implicitly learned density function, using Langevin and Metropolis-Hastings MCMC. However, it remained unclear how to connect the training procedure of regularized auto-encoders to the implicit estimation of the underlying data-generating distribution when the data are discrete, or using other forms of corruption process and reconstruction errors. Another issue is the mathematical justification which is only valid in the limit of small corruption noise. We propose here a different attack on the problem, which deals with all these issues: arbitrary (but noisy enough) corruption, arbitrary reconstruction loss (seen as a log-likelihood), handling both discrete and continuous-valued variables, and removing the bias due to non-infinitesimal corruption noise (or non-infinitesimal contractive penalty).",
+    "venue": "Neural Information Processing Systems",
+    "year": 2013,
+    "referenceCount": 19,
+    "citationCount": 513,
+    "influentialCitationCount": 34,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A different attack on the problem is proposed, which deals with arbitrary (but noisy enough) corruption, arbitrary reconstruction loss, handling both discrete and continuous-valued variables, and removing the bias due to non-infinitesimal corruption noise."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1751762",
+            "name": "Yoshua Bengio"
+        },
+        {
+            "authorId": "145095579",
+            "name": "L. Yao"
+        },
+        {
+            "authorId": "1815021",
+            "name": "Guillaume Alain"
+        },
+        {
+            "authorId": "145467703",
+            "name": "Pascal Vincent"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "5ba578d8f82ec99459df675537d393778a7b1992",
+            "title": "Bounding the Test Log-Likelihood of Generative Models"
+        },
+        {
+            "paperId": "5ffa8bf1bf3e39227be28de4ff6915d3b21eb52d",
+            "title": "Deep Generative Stochastic Networks Trainable by Backprop"
+        },
+        {
+            "paperId": "1ee03cbf30ba273ee9ec1995d1958732df0161f3",
+            "title": "Enhanced Gradient for Training Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": "31a2053ebda7f6f77afe8c3fc53269b73567e446",
+            "title": "What regularized auto-encoders learn from the data-generating distribution"
+        },
+        {
+            "paperId": "d0965d8f9842f2db960b36b528107ca362c00d1a",
+            "title": "Better Mixing via Deep Representations"
+        },
+        {
+            "paperId": "6bf0414dae4f10c7e54fb9e5e8af5d0d0cab290b",
+            "title": "A Generative Process for Contractive Auto-Encoders"
+        },
+        {
+            "paperId": "f8c8619ea7d68e604e40b814b40c72888a755e95",
+            "title": "Unsupervised Feature Learning and Deep Learning: A Review and New Perspectives"
+        },
+        {
+            "paperId": "872bae24c109f7c30e052ac218b17a8b028d08a0",
+            "title": "A Connection Between Score Matching and Denoising Autoencoders"
+        },
+        {
+            "paperId": "195d0a8233a7a46329c742eaff56c276f847fadc",
+            "title": "Contractive Auto-Encoders: Explicit Invariance During Feature Extraction"
+        },
+        {
+            "paperId": "2d851f681f82c71a934aebd16e8112adf1239f85",
+            "title": "On Autoencoders and Score Matching for Energy Based Models"
+        },
+        {
+            "paperId": "74706fab48249b071e10615f8da60b8401fb9f3f",
+            "title": "Regularized estimation of image statistics by Score Matching"
+        },
+        {
+            "paperId": "41fef1a197fab9684a4608b725d3ae72e1ab4b39",
+            "title": "Sparse Feature Learning for Deep Belief Networks"
+        },
+        {
+            "paperId": "89a1c14547d99a18af3d6060c071686beb7c2870",
+            "title": "Nonlocal Estimation of Manifold Structure"
+        },
+        {
+            "paperId": "8978cf7574ceb35f4c3096be768c7547b28a35d0",
+            "title": "A Fast Learning Algorithm for Deep Belief Nets"
+        },
+        {
+            "paperId": "b145c84cb7a7c691cbd6ced92195b098be11ba7b",
+            "title": "Non-Local Manifold Parzen Windows"
+        },
+        {
+            "paperId": "9966e890f2eedb4577e11b9d5a66380a4d9341fe",
+            "title": "Estimation of Non-Normalized Statistical Models by Score Matching"
+        },
+        {
+            "paperId": null,
+            "title": "Theano: a CPU and GPU math expression compiler"
+        },
+        {
+            "paperId": "0fe51325d0ad3ab7b774fe07043bc6d36e24f66f",
+            "title": "Products of Experts"
+        },
+        {
+            "paperId": "30afca3a4056bc54deadc1c5794048436d1c9eb4",
+            "title": "Dependency Networks for Inference, Collaborative Filtering, and Data Visualization"
+        }
+    ]
+}

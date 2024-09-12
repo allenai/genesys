@@ -1,0 +1,141 @@
+{
+    "paperId": "c19fbefdeead6a4154a22a9c8551a18b1530033a",
+    "externalIds": {
+        "DBLP": "conf/aistats/MorinB05",
+        "MAG": "36903255",
+        "CorpusId": 1326925
+    },
+    "title": "Hierarchical Probabilistic Neural Network Language Model",
+    "abstract": "In recent years, variants of a neural network architecture for statistical language modeling have been proposed and successfully applied, e.g. in the language modeling component of speech recognizers. The main advantage of these architectures is that they learn an embedding for words (or other symbols) in a continuous space that helps to smooth the language model and provide good generalization even when the number of training examples is insufficient. However, these models are extremely slow in comparison to the more commonly used n-gram models, both for training and recognition. As an alternative to an importance sampling method proposed to speed-up training, we introduce a hierarchical decomposition of the conditional probabilities that yields a speed-up of about 200 both during training and recognition. The hierarchical decomposition is a binary hierarchical clustering constrained by the prior knowledge extracted from the WordNet semantic hierarchy.",
+    "venue": "International Conference on Artificial Intelligence and Statistics",
+    "year": 2005,
+    "referenceCount": 27,
+    "citationCount": 1021,
+    "influentialCitationCount": 53,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A hierarchical decomposition of the conditional probabilities that yields a speed-up of about 200 both during training and recognition, constrained by the prior knowledge extracted from the WordNet semantic hierarchy is introduced."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2057272295",
+            "name": "Frederic Morin"
+        },
+        {
+            "authorId": "1751762",
+            "name": "Yoshua Bengio"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "d6fb7546a29320eadad868af66835059db93d99f",
+            "title": "Efficient training of large neural networks for language modeling"
+        },
+        {
+            "paperId": "3bb45466dfb9770e706d1e63205e266e7761f915",
+            "title": "Training Connectionist Models for the Structured Language Model"
+        },
+        {
+            "paperId": "6c2b28f9354f667cd5bd07afc0471d8334430da7",
+            "title": "A Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "399da68d3b97218b6c80262df7963baa89dcc71b",
+            "title": "SRILM - an extensible language modeling toolkit"
+        },
+        {
+            "paperId": "52070af952474cf13ecd015d42979373ff7c1c00",
+            "title": "Training Products of Experts by Minimizing Contrastive Divergence"
+        },
+        {
+            "paperId": "e41498c05d4c68e4750fb84a380317a112d97b01",
+            "title": "Connectionist language modeling for large vocabulary continuous speech recognition"
+        },
+        {
+            "paperId": "09c76da2361d46689825c4efc37ad862347ca577",
+            "title": "A bit of progress in language modeling"
+        },
+        {
+            "paperId": "4af41f4d838daa7ca6995aeb4918b61989d1ed80",
+            "title": "Classes for fast maximum entropy training"
+        },
+        {
+            "paperId": "bfab4ffa229c8af0174a683ff1eda524c4f59d00",
+            "title": "Can artificial neural networks learn language models?"
+        },
+        {
+            "paperId": "7369fab6762902a3d92f122ad24c61d5cc4f4455",
+            "title": "Distributional clustering of words for text classification"
+        },
+        {
+            "paperId": "a8ca92770bce439a207cc75fd28a749b51b5a516",
+            "title": "Comparison of part-of-speech and automatically derived category-based language models for speech recognition"
+        },
+        {
+            "paperId": "fb486e03369a64de2d5b0df86ec0a7b55d3907db",
+            "title": "A Maximum Entropy Approach to Natural Language Processing"
+        },
+        {
+            "paperId": "b9ed0b35c9eaba0328492de65c4cdc5545094df4",
+            "title": "Improved clustering techniques for class-based statistical language modelling"
+        },
+        {
+            "paperId": "3de5d40b60742e3dfa86b19e7f660962298492af",
+            "title": "Class-Based n-gram Models of Natural Language"
+        },
+        {
+            "paperId": "5d24afe3a62331ebfad400c3fec77c836d2b99db",
+            "title": "Word Space"
+        },
+        {
+            "paperId": "33995b0f996229742b9ca28916c73d51f55766d2",
+            "title": "Natural Language Processing With Modular PDP Networks and Distributed Lexicon"
+        },
+        {
+            "paperId": "164125a65d42a791d2c1e108559344caef96d08b",
+            "title": "Indexing by Latent Semantic Analysis"
+        },
+        {
+            "paperId": "668087f0ae7ce1de6e0bd0965dbb480c08103260",
+            "title": "Finding Structure in Time"
+        },
+        {
+            "paperId": "e50a316f97c9a405aa000d883a633bd5707f1a34",
+            "title": "Term-Weighting Approaches in Automatic Text Retrieval"
+        },
+        {
+            "paperId": "b0130277677e5b915d5cd86b3afafd77fd08eb2e",
+            "title": "Estimation of probabilities from sparse data for the language model component of a speech recognizer"
+        },
+        {
+            "paperId": null,
+            "title": "Advances in Neural Information Processing Systems 13 (NIPS\u201900), pages 933\u2013938"
+        },
+        {
+            "paperId": "6b388f0151ab37adb3d57738b8f52a3f943f86c8",
+            "title": "Quick Training of Probabilistic Neural Nets by Importance Sampling"
+        },
+        {
+            "paperId": "d87ceda3042f781c341ac17109d1e94a717f5f60",
+            "title": "Book Reviews: WordNet: An Electronic Lexical Database"
+        },
+        {
+            "paperId": "79521a6d8814f9162ed1f7028e9e007c4df7181a",
+            "title": "Sequential neural text compression"
+        },
+        {
+            "paperId": "9b30e7c50d8aa3d872a63d7ca2e18ebf6a23c031",
+            "title": "Natural Language Processingwith Modular Neural Networks and Distributed Lexicon"
+        },
+        {
+            "paperId": "4ade4934db522fe6d634ff6f48887da46eedb4d1",
+            "title": "Learning distributed representations of concepts."
+        },
+        {
+            "paperId": "6a923c9f89ed53b6e835b3807c0c1bd8d532687b",
+            "title": "Interpolated estimation of Markov source parameters from sparse data"
+        }
+    ]
+}

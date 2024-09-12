@@ -1,0 +1,130 @@
+{
+    "paperId": "79ab3c49903ec8cb339437ccf5cf998607fc313e",
+    "externalIds": {
+        "MAG": "2962957031",
+        "ArXiv": "1011.0686",
+        "DBLP": "journals/jmlr/RossGB11",
+        "CorpusId": 103456
+    },
+    "title": "A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning",
+    "abstract": "Sequential prediction problems such as imitation learning, where future observations depend on previous predictions (actions), violate the common i.i.d. assumptions made in statistical learning. This leads to poor performance in theory and often in practice. Some recent approaches provide stronger guarantees in this setting, but remain somewhat unsatisfactory as they train either non-stationary or stochastic policies and require a large number of iterations. In this paper, we propose a new iterative algorithm, which trains a stationary deterministic policy, that can be seen as a no regret algorithm in an online learning setting. We show that any such no regret algorithm, combined with additional reduction assumptions, must find a policy with good performance under the distribution of observations it induces in such sequential settings. We demonstrate that this new approach outperforms previous approaches on two challenging imitation learning problems and a benchmark sequence labeling problem.",
+    "venue": "International Conference on Artificial Intelligence and Statistics",
+    "year": 2010,
+    "referenceCount": 23,
+    "citationCount": 2836,
+    "influentialCitationCount": 421,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a new iterative algorithm, which trains a stationary deterministic policy, that can be seen as a no regret algorithm in an online learning setting and demonstrates that this new approach outperforms previous approaches on two challenging imitation learning problems and a benchmark sequence labeling problem."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1700433",
+            "name": "St\u00e9phane Ross"
+        },
+        {
+            "authorId": "21889436",
+            "name": "Geoffrey J. Gordon"
+        },
+        {
+            "authorId": "1756566",
+            "name": "J. Bagnell"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "e40a0969aac73d50485c05de7f1c0ab081d77028",
+            "title": "Interactive Policy Learning through Confidence-Based Autonomy"
+        },
+        {
+            "paperId": "70e10a5459c6f1aaf346ee4f2dcc837151fbe75c",
+            "title": "Efficient Reductions for Imitation Learning"
+        },
+        {
+            "paperId": "0a63cca6749d5a6f20e779c315a0b07d91c3c977",
+            "title": "Mario AI competition"
+        },
+        {
+            "paperId": "526e22c130b18924976553d29ba11bc9d898d58b",
+            "title": "Search-based structured prediction"
+        },
+        {
+            "paperId": "825f3932a53fd25628ab74c9faac19810dc27545",
+            "title": "On the Generalization Ability of Online Strongly Convex Programming Algorithms"
+        },
+        {
+            "paperId": "db1ebbf72e6b3097ec5cc1f853ab9c975454ea39",
+            "title": "Mind the Duality Gap: Logarithmic regret algorithms for online optimization"
+        },
+        {
+            "paperId": "a4cf35b6772b57aa838f7d6d0daad83d3e36cbb6",
+            "title": "Fast Rates for Regularized Objectives"
+        },
+        {
+            "paperId": "251635bcb60d730d17391d54f418e01c787791bb",
+            "title": "High Performance Outdoor Navigation from Overhead Data using Imitation Learning"
+        },
+        {
+            "paperId": "a9452a000f05bc6c52bf8d2e34e086fc60fa1999",
+            "title": "Boosting Structured Prediction for Imitation Learning"
+        },
+        {
+            "paperId": "c883f38d202548c1d89ef5de8892d53227842092",
+            "title": "Logarithmic regret algorithms for online convex optimization"
+        },
+        {
+            "paperId": "1521e475bc6d8ed07c95a46ec099377a8584ba7d",
+            "title": "Error limiting reductions between classification tasks"
+        },
+        {
+            "paperId": "f65020fc3b1692d7989e099d6b6e698be5a50a93",
+            "title": "Apprenticeship learning via inverse reinforcement learning"
+        },
+        {
+            "paperId": "0c450531e1121cfb657be5195e310217a4675397",
+            "title": "Max-Margin Markov Networks"
+        },
+        {
+            "paperId": "523b4ce1c2a1336962444abc1dec215756c2f3e6",
+            "title": "Approximately Optimal Approximate Reinforcement Learning"
+        },
+        {
+            "paperId": "78396e535101308d4431c08f0e85b18c920ee44f",
+            "title": "On the generalization ability of on-line learning algorithms"
+        },
+        {
+            "paperId": "f69e05a32fd1541bb41d981bdb013366c9150a85",
+            "title": "Is imitation learning the route to humanoid robots?"
+        },
+        {
+            "paperId": "54d47af5a99eb31ce0d9b38edd0d03022be34841",
+            "title": "Robotics and autonomous systems"
+        },
+        {
+            "paperId": null,
+            "title": "Comparison of imitation learning approaches on Super Tux Kart"
+        },
+        {
+            "paperId": null,
+            "title": "sgd code"
+        },
+        {
+            "paperId": "45372f73a0e40da428595597816ac4cae1469cec",
+            "title": "Online) Subgradient Methods for Structured Prediction"
+        },
+        {
+            "paperId": "90202e14d00a74dd667058f4270770deb8421833",
+            "title": "Subgradient Methods for Structured Prediction"
+        },
+        {
+            "paperId": null,
+            "title": "Lower bounds for reductions"
+        },
+        {
+            "paperId": null,
+            "title": "Andrew Bagnell References"
+        }
+    ]
+}

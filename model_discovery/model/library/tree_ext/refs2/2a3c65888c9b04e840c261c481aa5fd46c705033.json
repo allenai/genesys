@@ -1,0 +1,162 @@
+{
+    "paperId": "2a3c65888c9b04e840c261c481aa5fd46c705033",
+    "externalIds": {
+        "ACL": "P14-1029",
+        "MAG": "2250374929",
+        "DBLP": "conf/acl/ZhuGMK14",
+        "DOI": "10.3115/v1/P14-1029",
+        "CorpusId": 2251834
+    },
+    "title": "An Empirical Study on the Effect of Negation Words on Sentiment",
+    "abstract": "Negation words, such as no and not, play a fundamental role in modifying sentiment of textual expressions. We will refer to a negation word as the negator and the text span within the scope of the negator as the argument. Commonly used heuristics to estimate the sentiment of negated expressions rely simply on the sentiment of argument (and not on the negator or the argument itself). We use a sentiment treebank to show that these existing heuristics are poor estimators of sentiment. We then modify these heuristics to be dependent on the negators and show that this improves prediction. Next, we evaluate a recently proposed composition model (Socher et al., 2013) that relies on both the negator and the argument. This model learns the syntax and semantics of the negator\u2019s argument with a recursive neural network. We show that this approach performs better than those mentioned above. In addition, we explicitly incorporate the prior sentiment of the argument and observe that this information can help reduce fitting errors.",
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2014,
+    "referenceCount": 29,
+    "citationCount": 79,
+    "influentialCitationCount": 2,
+    "openAccessPdf": {
+        "url": "https://aclanthology.org/P14-1029.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A sentiment treebank is used to show that existing heuristics used to estimate the sentiment of negated expressions are poor estimators of sentiment and a recently proposed composition model that relies on both the negator and the argument is evaluated."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1854999",
+            "name": "Xiao-Dan Zhu"
+        },
+        {
+            "authorId": "1694050",
+            "name": "Hongyu Guo"
+        },
+        {
+            "authorId": "143880621",
+            "name": "Saif M. Mohammad"
+        },
+        {
+            "authorId": "2886725",
+            "name": "S. Kiritchenko"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "e2ae833ec0bf4a0435d7feea94a48c027e06a0e1",
+            "title": "Sentiment Analysis of Short Informal Texts"
+        },
+        {
+            "paperId": "687bac2d3320083eb4530bf18bb8f8f721477600",
+            "title": "Recursive Deep Models for Semantic Compositionality Over a Sentiment Treebank"
+        },
+        {
+            "paperId": "99c79882697a801fc95638a91ff39f420152f9ca",
+            "title": "Computing Lexical Contrast"
+        },
+        {
+            "paperId": "09a470daad7f0db3efa3cd0e402a0129dedfba1f",
+            "title": "Representing and Resolving Negation for Sentiment Analysis"
+        },
+        {
+            "paperId": "11c9674a5ab75fe68c3d8b53128d54c58e3b83fb",
+            "title": "How do Negation and Modality Impact on Opinions?"
+        },
+        {
+            "paperId": "27e38351e48fe4b7da2775bf94341738bc4da07e",
+            "title": "Semantic Compositionality through Recursive Matrix-Vector Spaces"
+        },
+        {
+            "paperId": "522495b0475a5864c02bb1bab72318b48c086674",
+            "title": "Modality and Negation: An Introduction to the Special Issue"
+        },
+        {
+            "paperId": "3582b911525f01329c6770fd1be988fd4bcbf162",
+            "title": "Can prosody inform sentiment analysis? Experiments on short spoken reviews"
+        },
+        {
+            "paperId": "76bdf3df25274660fdcb4eed4e0aafcdbf56354f",
+            "title": "Lexicon-Based Methods for Sentiment Analysis"
+        },
+        {
+            "paperId": "c4a5ef385e966517da0587325f37d16c15aec256",
+            "title": "A survey on the role of negation in sentiment analysis"
+        },
+        {
+            "paperId": "e4c0f58a39ca6e8644281ae5de961af5ed020fd2",
+            "title": "The effect of negation on sentiment analysis and retrieval effectiveness"
+        },
+        {
+            "paperId": "7f8ad1f2e13d27b43ed142cdfd5105095c69afc9",
+            "title": "Review Sentiment Scoring via a Parse-and-Paraphrase Paradigm"
+        },
+        {
+            "paperId": "b35e340a4356eb8953b04c17375ffb631da68916",
+            "title": "Learning with Compositional Semantics as Structural Inference for Subsentential Sentiment Analysis"
+        },
+        {
+            "paperId": "02b3e1a74d6f09a467823ade1460fb950b7f609b",
+            "title": "Proceedings of the Conference on Empirical Methods in Natural Language Processing"
+        },
+        {
+            "paperId": "095fc8aac545cc280199fd2770b46ea54ed6c720",
+            "title": "Negation, Contrast and Contradiction in Text Processing"
+        },
+        {
+            "paperId": "e14609a3a6c6f8ef3269d3e0728f88da57826698",
+            "title": "SENTIMENT CLASSIFICATION of MOVIE REVIEWS USING CONTEXTUAL VALENCE SHIFTERS"
+        },
+        {
+            "paperId": "9b4876f7313b111074e79a01f570e6e9e02c0dce",
+            "title": "Recognizing Contextual Polarity in Phrase-Level Sentiment Analysis"
+        },
+        {
+            "paperId": "6af58c061f2e4f130c3b795c21ff0c7e3903278f",
+            "title": "Seeing Stars: Exploiting Class Relationships for Sentiment Categorization with Respect to Rating Scales"
+        },
+        {
+            "paperId": "a600850ac0120cb09a0b7de7da80bb6a7a76de06",
+            "title": "Accurate Unlexicalized Parsing"
+        },
+        {
+            "paperId": "85f8f74fd5b5a0aeb4c24c40b00208624d643065",
+            "title": "Proceedings of the 41st Annual Meeting on Association for Computational Linguistics - Volume 1"
+        },
+        {
+            "paperId": "9e7c7853a16a378cc24a082153b282257a9675b7",
+            "title": "Thumbs Up or Thumbs Down? Semantic Orientation Applied to Unsupervised Classification of Reviews"
+        },
+        {
+            "paperId": "12d0353ce8b41b7e5409e5a4a611110aee33c7bc",
+            "title": "Thumbs up? Sentiment Classification using Machine Learning Techniques"
+        },
+        {
+            "paperId": "b62b80384f402d38c3425db6a99899d1cb9c50c6",
+            "title": "Predicting the Semantic Orientation of Adjectives"
+        },
+        {
+            "paperId": "adfffadbac235d89bed96aeecb6911c9b2cf6267",
+            "title": "A Survey of Opinion Mining and Sentiment Analysis"
+        },
+        {
+            "paperId": null,
+            "title": "Opinion mining and sentiment analysis. Foundations and Trends in Information Retrieval"
+        },
+        {
+            "paperId": "d9b0190b06ac7270e9052895f8592beb4959ccfd",
+            "title": "Sentiment Composition"
+        },
+        {
+            "paperId": "a8ddcabf410b5691cd73880df2ee4b83a9799a5d",
+            "title": "Contextual Valence Shifters"
+        },
+        {
+            "paperId": null,
+            "title": "Machine learning"
+        },
+        {
+            "paperId": null,
+            "title": "Learning task-dependent distributed representations by backpropagation through structure"
+        }
+    ]
+}

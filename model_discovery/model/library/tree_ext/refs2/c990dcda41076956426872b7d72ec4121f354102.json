@@ -1,0 +1,335 @@
+{
+    "paperId": "c990dcda41076956426872b7d72ec4121f354102",
+    "externalIds": {
+        "MAG": "2461470610",
+        "DBLP": "journals/jcisd/SubramanianRPD16",
+        "DOI": "10.1021/acs.jcim.6b00290",
+        "CorpusId": 3595906,
+        "PubMed": "27689393"
+    },
+    "title": "Computational Modeling of \u03b2-Secretase 1 (BACE-1) Inhibitors Using Ligand Based Approaches",
+    "abstract": "The binding affinities (IC50) reported for diverse structural and chemical classes of human \u03b2-secretase 1 (BACE-1) inhibitors in literature were modeled using multiple in silico ligand based modeling approaches and statistical techniques. The descriptor space encompasses simple binary molecular fingerprint, one- and two-dimensional constitutional, physicochemical, and topological descriptors, and sophisticated three-dimensional molecular fields that require appropriate structural alignments of varied chemical scaffolds in one universal chemical space. The affinities were modeled using qualitative classification or quantitative regression schemes involving linear, nonlinear, and deep neural network (DNN) machine-learning methods used in the scientific literature for quantitative-structure activity relationships (QSAR). In a departure from tradition, \u223c20% of the chemically diverse data set (205 compounds) was used to train the model with the remaining \u223c80% of the structural and chemical analogs used as part of an external validation (1273 compounds) and prospective test (69 compounds) sets respectively to ascertain the model performance. The machine-learning methods investigated herein performed well in both the qualitative classification (\u223c70% accuracy) and quantitative IC50 predictions (RMSE \u223c 1 log). The success of the 2D descriptor based machine learning approach when compared against the 3D field based technique pursued for hBACE-1 inhibitors provides a strong impetus for systematically applying such methods during the lead identification and optimization efforts for other protein families as well.",
+    "venue": "Journal of Chemical Information and Modeling",
+    "year": 2016,
+    "referenceCount": 73,
+    "citationCount": 220,
+    "influentialCitationCount": 11,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The success of the 2D descriptor based machine learning approach when compared against the 3D field based technique pursued for hBACE-1 inhibitors provides a strong impetus for systematically applying such methods during the lead identification and optimization efforts for other protein families as well."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "144865677",
+            "name": "G. Subramanian"
+        },
+        {
+            "authorId": "2378027",
+            "name": "Bharath Ramsundar"
+        },
+        {
+            "authorId": "1806271",
+            "name": "V. Pande"
+        },
+        {
+            "authorId": "144030239",
+            "name": "R. Denny"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "b767b185a29d44167995132b8b771a7124ab4467",
+            "title": "Application of Free Energy Perturbation for the Design of BACE1 Inhibitors"
+        },
+        {
+            "paperId": "d74325db351cbe29cca48509e3f78d225fcdffb8",
+            "title": "A comprehensive company database analysis of biological assay variability."
+        },
+        {
+            "paperId": "22ba1b83844ee7e860a64937bb1f049988052880",
+            "title": "Integration of Ligand and Structure Based Approaches for CSAR-2014"
+        },
+        {
+            "paperId": "716d537f75360f064848d940b65eb3f8e73dcfe7",
+            "title": "HybridDock: A Hybrid Protein-Ligand Docking Protocol Integrating Protein- and Ligand-Based Approaches"
+        },
+        {
+            "paperId": "7749824fdcb4e6143e51c63d2becb261f866b026",
+            "title": "Compound high-quality criteria: a new vision to guide the development of drugs, current situation."
+        },
+        {
+            "paperId": "569328500f911cd5e72916eab779affc7e472e77",
+            "title": "Alzheimer\u2019s Next Chapter"
+        },
+        {
+            "paperId": "30501640908567ef13640d82c633b6ac6b265dfc",
+            "title": "Applications of Deep Learning in Biomedicine."
+        },
+        {
+            "paperId": "9ee966e61a66cadb399b0b61b48137942132a494",
+            "title": "Binding Mode and Induced Fit Predictions for Prospective Computational Drug Design"
+        },
+        {
+            "paperId": "8d54bb1968deeb7932a5bb7fb4375aaeeee846b2",
+            "title": "Interaction mechanism exploration of HEA derivatives as BACE1 inhibitors by in silico analysis."
+        },
+        {
+            "paperId": "27d95e62ac6844b7659a796886b3324887b5104e",
+            "title": "Avoiding Missed Opportunities by Analyzing the Sensitivity of Our Decisions."
+        },
+        {
+            "paperId": "04a402fd05b0faa3daa5e0620e9522da36ee5772",
+            "title": "Role of Molecular Dynamics and Related Methods in Drug Discovery."
+        },
+        {
+            "paperId": "6273d56ff74d8f12537f327d4f8b288f66beb7de",
+            "title": "Improving quantitative structure\u2013activity relationship models using Artificial Neural Networks trained with dropout"
+        },
+        {
+            "paperId": "7c94393300daf5c673df0c529f0c4ef0567e2538",
+            "title": "Understanding the Roles of the \"Two QSARs\""
+        },
+        {
+            "paperId": "793e5431c0943d84b4df4add474e86814727827a",
+            "title": "High\u2010resolution crystal structures leverage protein binding affinity predictions"
+        },
+        {
+            "paperId": "4286abc71594117f019a09d3505332ca83b4b6c8",
+            "title": "Deep Learning in Drug Discovery"
+        },
+        {
+            "paperId": "db0f059b80acd2e9e494f42b49c8e6066294866a",
+            "title": "Deep Learning for Drug-Induced Liver Injury"
+        },
+        {
+            "paperId": "1384055edcabdda885467551fb4b9daaf42eb7ea",
+            "title": "Accurate calculation of the absolute free energy of binding for drug molecules"
+        },
+        {
+            "paperId": "f484aa5117767ee5a146fee8688e0f11fd891e3b",
+            "title": "Progress in visual representations of chemical space"
+        },
+        {
+            "paperId": "64c5b567ab0c51bcc98c10e65365e051b03af13c",
+            "title": "Role of computer-aided drug design in modern drug discovery"
+        },
+        {
+            "paperId": "fc23c76c5229e68d081d88dcf6ada78e6b955a98",
+            "title": "pH-Dependent Population Shift Regulates BACE1 Activity and Inhibition."
+        },
+        {
+            "paperId": "a965f60970b71212d1da51b92a4c3e86d4589bb7",
+            "title": "Target specific proteochemometric model development for BACE1 - protein flexibility and structural water are critical in virtual screening."
+        },
+        {
+            "paperId": "ee2ca6de1bbc0060f955586cb441cd1e11d0ddfd",
+            "title": "Template CoMFA Generates Single 3D-QSAR Models that, for Twelve of Twelve Biological Targets, Predict All ChEMBL-Tabulated Affinities"
+        },
+        {
+            "paperId": "970cdddf6b4480fab50df40129eafe0f31499dc1",
+            "title": "The Relative Importance of Domain Applicability Metrics for Estimating Prediction Errors in QSAR Varies with Training Set Diversity"
+        },
+        {
+            "paperId": "bc6e27349a0d06a5dceee70455ac83bc982432b1",
+            "title": "Ligand Binding Thermodynamics in Drug Discovery: Still a Hot Tip?"
+        },
+        {
+            "paperId": "f25e0cf86e97e4169f63cb856e93a1753b6aa358",
+            "title": "JPred4: a protein secondary structure prediction server"
+        },
+        {
+            "paperId": "596919645bf7f9daf9559f676603fb6dc7d6be32",
+            "title": "Accurate and reliable prediction of relative ligand binding potency in prospective drug discovery by way of a modern free-energy calculation protocol and force field."
+        },
+        {
+            "paperId": "3043787501b31391232fac5da3c53a01c7eda976",
+            "title": "DataWarrior: An Open-Source Program For Chemistry Aware Data Visualization And Analysis"
+        },
+        {
+            "paperId": "e319807248c74d66d3703b385958819be79020a5",
+            "title": "Exploring conformational search protocols for ligand-based virtual screening and 3-D QSAR modeling"
+        },
+        {
+            "paperId": "b6828f826e2c9257aff3c44068f85720e5f1356f",
+            "title": "Alzheimer\u2019s disease drug-development pipeline: few candidates, frequent failures"
+        },
+        {
+            "paperId": "68ed2f9e36e8951d3431df88a697ad9e0216b24c",
+            "title": "Binding Free Energy Calculations for Lead Optimization: Assessment of Their Accuracy in an Industrial Drug Design Context."
+        },
+        {
+            "paperId": "6d2478628d08fec863b15f0682ad3984a09219cc",
+            "title": "Template CoMFA Applied to 116 Biological Targets"
+        },
+        {
+            "paperId": "2a056728e01504b82cce824ed5873d46b19d8f73",
+            "title": "Practical Aspects of Free-Energy Calculations: A Review."
+        },
+        {
+            "paperId": "f7a5d5f78fdba88719ea722f2fc6c897f97aa464",
+            "title": "Best of Both Worlds: On the Complementarity of Ligand-Based and Structure-Based Virtual Screening"
+        },
+        {
+            "paperId": "ac353858e883f7adaca8cbc0f0dcda53c6901889",
+            "title": "Advances in quantitative structure\u2013activity relationship models of anti-Alzheimer\u2019s agents"
+        },
+        {
+            "paperId": "2d7a3785dcd5c196b46388588eba5ad6f61ace08",
+            "title": "Multiple e-Pharmacophore Modeling, 3D-QSAR, and High-Throughput Virtual Screening of Hepatitis C Virus NS5B Polymerase Inhibitors"
+        },
+        {
+            "paperId": "7161afdf983e824fe30bbdf1364fc3f58226a259",
+            "title": "Template CoMFA: The 3D-QSAR Grail?"
+        },
+        {
+            "paperId": "454e56efab708e876271764ce0d1fb34e12793e6",
+            "title": "QSAR modeling: where have you been? Where are you going to?"
+        },
+        {
+            "paperId": "b3b02d61bdb1e19225ae9043b78d8412c0b1d48e",
+            "title": "Computational Methods in Drug Discovery"
+        },
+        {
+            "paperId": "29ffbd2dfd3d248fba6efae5ccfef31f0e7c2308",
+            "title": "Combination of ligand- and structure-based methods in virtual screening."
+        },
+        {
+            "paperId": "ae0bbaa82ee08d3a571ada0eb12b453d19ff98b4",
+            "title": "Kernel-Based Partial Least Squares: Application to Fingerprint-Based QSAR with Model Visualization"
+        },
+        {
+            "paperId": "15a094e66afb1e81227ee7291280890c120acfed",
+            "title": "X-ray Crystallographic Structures as a Source of Ligand Alignment in 3D-QSAR"
+        },
+        {
+            "paperId": "6820296a23b937b95aba2e75430927b35e73ac2e",
+            "title": "Computational tools and resources for metabolism-related property predictions. 1. Overview of publicly available (free and commercial) databases and software."
+        },
+        {
+            "paperId": "63a632328e202d6596c028daf12ac7e8e919ed61",
+            "title": "Comparative Analysis of Pharmacophore Screening Tools"
+        },
+        {
+            "paperId": "fdd507101d1e937be0413d48a37bf4dbd5bfdc28",
+            "title": "Potential and Limitations of Ensemble Docking"
+        },
+        {
+            "paperId": "7028ac0b0cbd24c01c7a99ff5dff68a489787268",
+            "title": "An integrated computational workflow for efficient and quantitative modeling of renin inhibitors."
+        },
+        {
+            "paperId": "13172d0f755885a734208d77dad1ddae15ae1dd1",
+            "title": "In-silico ADME models: a general assessment of their utility in drug discovery applications."
+        },
+        {
+            "paperId": "9f9810b31d9ab147db9bf50c2d5dc128e258ebc1",
+            "title": "Ligand efficiency indices for an effective mapping of chemico-biological space: the concept of an atlas-like representation."
+        },
+        {
+            "paperId": "dd6f44d48736f8b8375fc29797f2e995cbe56688",
+            "title": "Effect of the protonation state of the titratable residues on the inhibitor affinity to BACE-1."
+        },
+        {
+            "paperId": "634559d6b0c803fb450a81325e485272edaae0bf",
+            "title": "Large-Scale Systematic Analysis of 2D Fingerprint Methods and Parameters to Improve Virtual Screening Enrichments"
+        },
+        {
+            "paperId": "6420a334687d290d77c6b5ec99ca17f9d069df4a",
+            "title": "Extended-Connectivity Fingerprints"
+        },
+        {
+            "paperId": "3daac4ba3d34121e3145a2c8d02f619998aa8224",
+            "title": "Ensemble Docking into Multiple Crystallographically Derived Protein Structures: An Evaluation Based on the Statistical Analysis of Enrichments"
+        },
+        {
+            "paperId": "e1225701eed723ed95931258ccfae588e5d7f0eb",
+            "title": "Crystal Structure of an Active Form of BACE1, an Enzyme Responsible for Amyloid \u03b2 Protein Production"
+        },
+        {
+            "paperId": "7000d3b30c81c05154b3af85c339a7015d08fa11",
+            "title": "Structure-Activity Landscape Index: Identifying and Quantifying Activity Cliffs"
+        },
+        {
+            "paperId": "4e0c9dc3ee27856080692fa98e1d07f667515733",
+            "title": "In silico pharmacology for drug discovery: methods for virtual ligand screening and profiling"
+        },
+        {
+            "paperId": "ec024a8b9fd12921e71b8c384aba25365a623804",
+            "title": "In silico pharmacology for drug discovery: applications to targets and beyond"
+        },
+        {
+            "paperId": "e49f393fa84fb699032998a4c91d39e7fdcf9087",
+            "title": "A\u03b2 Oligomers \u2013 a decade of discovery"
+        },
+        {
+            "paperId": "676bf1b2e452cbf7854e0d5ea64387be83e1360a",
+            "title": "Ligand efficiency indices for effective drug discovery"
+        },
+        {
+            "paperId": "c7b9e9bbfb36934ec30641cabda76671b447ab9e",
+            "title": "Soluble protein oligomers in neurodegeneration: lessons from the Alzheimer's amyloid \u03b2-peptide"
+        },
+        {
+            "paperId": "ccffec5bc71ad0015e90558cc3c160109d1c4b07",
+            "title": "A critical assessment of docking programs and scoring functions."
+        },
+        {
+            "paperId": "483490db0da765fe3985f4a0078f28e1f7428836",
+            "title": "Ligand efficiency indices as guideposts for drug discovery."
+        },
+        {
+            "paperId": "a09401bda09519144ef2eeb9efb026764e221e6e",
+            "title": "Docking and scoring in virtual screening for drug discovery: methods and applications"
+        },
+        {
+            "paperId": "1b04112a3c11a2bd5a32abc678ebb944fa4ac065",
+            "title": "The process of structure-based drug design."
+        },
+        {
+            "paperId": "9cafec6d5f412d8c45d63a1f8271f673192c150f",
+            "title": "Structure of the protease domain of memapsin 2 (beta-secretase) complexed with inhibitor."
+        },
+        {
+            "paperId": "c85d9b8b684367b44b924529fb6dd2913350d3c4",
+            "title": "The properties of known drugs. 1. Molecular frameworks."
+        },
+        {
+            "paperId": "344ad5fb963a87135b44f23f8a5cf99f234846f4",
+            "title": "Comparative molecular field analysis (CoMFA). 1. Effect of shape on binding of steroids to carrier proteins."
+        },
+        {
+            "paperId": "caa965cd5fde15a82e260b94a84ff7380954f053",
+            "title": "How good are predictions of protein secondary structure?"
+        },
+        {
+            "paperId": "38347685f4e4e351defe61cea2d424207843733e",
+            "title": "A geometric approach to macromolecule-ligand interactions."
+        },
+        {
+            "paperId": "c598538ec6b062b57fabc142f25ecd25f1f38adf",
+            "title": "Conformational parameters for amino acids in helical, beta-sheet, and random coil regions calculated from proteins."
+        },
+        {
+            "paperId": "65fb06de927561aa801a9f20b38e6cc6a1f1a6cc",
+            "title": "Correlation of Biological Activity of Phenoxyacetic Acids with Hammett Substituent Constants and Partition Coefficients"
+        },
+        {
+            "paperId": "3b30f29a15fa5a7a1577c6f18de68a990219ada6",
+            "title": "Pharmacophore Identification and Pseudo-Receptor Modeling"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "c08c95ae2ef6d35b912ce277e97f431e1b7c39a1",
+            "title": "Flexibility of the flap in the active site of BACE1 as revealed by crystal structures and molecular dynamics simulations."
+        },
+        {
+            "paperId": "30be50414070e80ca001a79ee32f69e05b4af025",
+            "title": "Comparative Molecular Similarity Index Analysis (CoMSIA) to study hydrogen-bonding properties and to score combinatorial libraries"
+        }
+    ]
+}

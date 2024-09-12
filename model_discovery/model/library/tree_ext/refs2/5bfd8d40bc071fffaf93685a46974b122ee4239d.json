@@ -1,0 +1,134 @@
+{
+    "paperId": "5bfd8d40bc071fffaf93685a46974b122ee4239d",
+    "externalIds": {
+        "DBLP": "conf/emnlp/HuangH09",
+        "ACL": "D09-1087",
+        "MAG": "2113691817",
+        "DOI": "10.3115/1699571.1699621",
+        "CorpusId": 447315
+    },
+    "title": "Self-Training PCFG Grammars with Latent Annotations Across Languages",
+    "abstract": "We investigate the effectiveness of self-training PCFG grammars with latent annotations (PCFG-LA) for parsing languages with different amounts of labeled training data. Compared to Charniak's lexicalized parser, the PCFG-LA parser was more effectively adapted to a language for which parsing has been less well developed (i.e., Chinese) and benefited more from self-training. We show for the first time that self-training is able to significantly improve the performance of the PCFG-LA parser, a single generative parser, on both small and large amounts of labeled training data. Our approach achieves state-of-the-art parsing accuracies for a single parser on both English (91.5%) and Chinese (85.2%).",
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2009,
+    "referenceCount": 24,
+    "citationCount": 104,
+    "influentialCitationCount": 10,
+    "openAccessPdf": {
+        "url": "https://dl.acm.org/doi/pdf/10.5555/1699571.1699621",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown for the first time that self-training is able to significantly improve the performance of the PCFG-LA parser, a single generative parser, on both small and large amounts of labeled training data."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "34227637",
+            "name": "Zhongqiang Huang"
+        },
+        {
+            "authorId": "1999488",
+            "name": "M. Harper"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "082aa12d63d6196815ae4ebe24c88a3e9521cdd1",
+            "title": "Sparse Multi-Scale Grammars for Discriminative Latent Variable Parsing"
+        },
+        {
+            "paperId": "13392a6b2d27a7c8c79b3dbe9be7b3f42e42c24c",
+            "title": "When is Self-Training Effective for Parsing?"
+        },
+        {
+            "paperId": "5b2beddeb063bd5988da70ae58f3e0a6564e647a",
+            "title": "Optimizing Chinese Word Segmentation for Machine Translation Performance"
+        },
+        {
+            "paperId": "1ba700aec9f23ecb76622f2202badf25f6ad896e",
+            "title": "Forest Reranking: Discriminative Parsing with Non-Local Features"
+        },
+        {
+            "paperId": "790ecefeaf2b471b439743a772ccce026131bef5",
+            "title": "Simple Semi-supervised Dependency Parsing"
+        },
+        {
+            "paperId": "7a8475e88bef685273bfc0795f6ac68adf210a2a",
+            "title": "Semi-Supervised Convex Training for Dependency Parsing"
+        },
+        {
+            "paperId": "9e71fb31ee25a4117509f79e21b4a2518dc9137d",
+            "title": "Mandarin Part-of-Speech Tagging and Discriminative Reranking"
+        },
+        {
+            "paperId": "8067a93316a34181fbb4b765310f15e11925d5f3",
+            "title": "Self-Training for Enhancement and Domain Adaptation of Statistical Parsers Trained on Small Datasets"
+        },
+        {
+            "paperId": "6e1b12dd7ca3443ba6e0fb38dfa3587a4eb5d539",
+            "title": "Improved Inference for Unlexicalized Parsing"
+        },
+        {
+            "paperId": "f52de7242e574b70410ca6fb70b79c811919fc00",
+            "title": "Learning Accurate, Compact, and Interpretable Tree Annotation"
+        },
+        {
+            "paperId": "78a9513e70f596077179101f6cb6eadc51602039",
+            "title": "Effective Self-Training for Parsing"
+        },
+        {
+            "paperId": "4e751a9017dbd825418d35afba6442df958a973c",
+            "title": "Tregex and Tsurgeon: tools for querying and manipulating tree data structures"
+        },
+        {
+            "paperId": "0ecb33ced5b0976accdf13817151f80568b6fdcb",
+            "title": "Coarse-to-Fine n-Best Parsing and MaxEnt Discriminative Reranking"
+        },
+        {
+            "paperId": "713a4825ea09801ebc24ce207ca9ae5fbc97ac65",
+            "title": "Probabilistic CFG with Latent Annotations"
+        },
+        {
+            "paperId": "2c72257ae7a4a32dc60569f4e1fe4504b2678112",
+            "title": "The Penn Chinese TreeBank: Phrase structure annotation of a large corpus"
+        },
+        {
+            "paperId": "3fc44ff7f37ec5585310666c183c65e0a0bb2446",
+            "title": "Head-Driven Statistical Models for Natural Language Parsing"
+        },
+        {
+            "paperId": "2f6070f88ecca9a4d20167571a856d6884d6cb1a",
+            "title": "Is it Harder to Parse Chinese, or the Chinese Treebank?"
+        },
+        {
+            "paperId": "b16fc0643c715813c2eafc3f6d0e2bd59354b236",
+            "title": "Bootstrapping statistical parsers from small datasets"
+        },
+        {
+            "paperId": "b5b0ab2d445a393341d292b26c8a9a6d01c62051",
+            "title": "Two Statistical Parsing Models Applied to the Chinese Treebank"
+        },
+        {
+            "paperId": "76d5e3fa888bee872b7adb7fa810089aa8ab1d58",
+            "title": "A Maximum-Entropy-Inspired Parser"
+        },
+        {
+            "paperId": "2a5e619f2c5f4220438b1357e596db5b1578398d",
+            "title": "Statistical Parsing with a Context-Free Grammar and Word Statistics"
+        },
+        {
+            "paperId": "b84db61bf5ffba650f40de655b8174283be107b2",
+            "title": "Chinese Statistical Parsing"
+        },
+        {
+            "paperId": null,
+            "title": "Evaluation of decatur text normalizer for language model training"
+        },
+        {
+            "paperId": null,
+            "title": "Third Workshop on Statistical Machine Translation"
+        }
+    ]
+}

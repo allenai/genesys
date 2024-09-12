@@ -1,0 +1,32 @@
+{
+    "paperId": "672a99813f52aed720d3508d6be7db461328b064",
+    "externalIds": {
+        "MAG": "1986624837",
+        "DBLP": "journals/cacm/Kahan65",
+        "DOI": "10.1145/363707.363723",
+        "CorpusId": 22584810
+    },
+    "title": "Pracniques: further remarks on reducing truncation errors",
+    "abstract": "the symbol f'l denotes an AND operation and the symbol \u2022 denotes a multiplication operation. (2) The result of an OR operation w i t h any number of Boolean variables is the same as the (arithmetic) addition of tile x, y, z integer variables after the following t e s t is made: (a) If the sum is equal to zero, the result is correct; (b) If the sum is larger thart zero, the answer is a 1; i.e. where the symbol O denotes an OR (}peration and the symbol-{-denotes an addition operation. (3) The result of a NOT operation with a Bo{}lean variable is the same as subtracting an integer variable x from 1; i.e. i = (1-x) (3) because if A = x = l, t h e n A = 1-1 = 0 ; a n d i f A = x = 0, then /[ = I-0 = I. The FOUTm~N program in Figure 1 illustrates the method presented. It simulates the logic of a full-adder as described by the folh}wing two Boolean flmctions: (5) where K~ , K.a and Ka are the two i n p u t bits attd previous carry to be added, L is the output carry, and M is the output sum. htteger variables were chosen for compatibility with the FOEn'R~N language. The AND and NOT operatimts are transf0rlned to multiplication and subtraction operations as described in (1) and (3). The OR operation needs a control IF s t a t e m e n t after the arithmetic addition is performed in order to restore the value of tile variable to unity. This may be simplified by using a li'unction subprogram to calculate tile result of the OIL operation, thus eliminating the need for repetition of the IF s t a t e m e n t s. It was not done in this example because of the limitatien of the FOremAN colnpiier in the 1620 Model 1 computer where this p r o g r a m was checked out, and where the use of subprograms is not pernfitted.1] proposed the use o f accumulators to evaluate a sum of the form S = when N is large and all the y's are of rougMy the s a m (magnitude. His intention was to alleviate tile accumula~tion 0/ rounding or truncation errors which otherwise occurs wlmn S i~ \u2026",
+    "venue": "CACM",
+    "year": 1965,
+    "referenceCount": 0,
+    "citationCount": 466,
+    "influentialCitationCount": 22,
+    "openAccessPdf": {
+        "url": "https://dl.acm.org/doi/pdf/10.1145/363707.363723",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The AND and NOT operatimts are transf0rlned to multiplication and subtraction operations as described in (1) and (3)."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3238706",
+            "name": "W. Kahan"
+        }
+    ],
+    "references": []
+}

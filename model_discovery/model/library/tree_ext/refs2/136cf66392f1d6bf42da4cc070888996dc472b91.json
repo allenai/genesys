@@ -1,0 +1,182 @@
+{
+    "paperId": "136cf66392f1d6bf42da4cc070888996dc472b91",
+    "externalIds": {
+        "DBLP": "journals/corr/WuZZBS16",
+        "MAG": "2950107897",
+        "ArXiv": "1606.06630",
+        "CorpusId": 7386147
+    },
+    "title": "On Multiplicative Integration with Recurrent Neural Networks",
+    "abstract": "We introduce a general and simple structural design called Multiplicative Integration (MI) to improve recurrent neural networks (RNNs). MI changes the way in which information from difference sources flows and is integrated in the computational building block of an RNN, while introducing almost no extra parameters. The new structure can be easily embedded into many popular RNN models, including LSTMs and GRUs. We empirically analyze its learning behaviour and conduct evaluations on several tasks using different RNN models. Our experimental results demonstrate that Multiplicative Integration can provide a substantial performance boost over many of the existing RNN models.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2016,
+    "referenceCount": 34,
+    "citationCount": 150,
+    "influentialCitationCount": 28,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces a general and simple structural design called Multiplicative Integration, which changes the way in which information from difference sources flows and is integrated in the computational building block of an RNN, while introducing almost no extra parameters."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3374063",
+            "name": "Yuhuai Wu"
+        },
+        {
+            "authorId": "35097114",
+            "name": "Saizheng Zhang"
+        },
+        {
+            "authorId": "48379623",
+            "name": "Y. Zhang"
+        },
+        {
+            "authorId": "1751762",
+            "name": "Yoshua Bengio"
+        },
+        {
+            "authorId": "145124475",
+            "name": "R. Salakhutdinov"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "6b570069f14c7588e066f7138e1f21af59d62e61",
+            "title": "Theano: A Python framework for fast computation of mathematical expressions"
+        },
+        {
+            "paperId": "952454718139dba3aafc6b3b67c4f514ac3964af",
+            "title": "Recurrent Batch Normalization"
+        },
+        {
+            "paperId": "f6fda11d2b31ad66dd008a65f7e708aa64a27703",
+            "title": "Architectural Complexity Measures of Recurrent Neural Networks"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "f84d5add20d4df0a6c89c47a920354c272cbdbd8",
+            "title": "Regularizing RNNs by Stabilizing Activations"
+        },
+        {
+            "paperId": "2579b2066d0fcbeda5498f5053f201b10a8e254b",
+            "title": "Deconstructing the Ladder Network Architecture"
+        },
+        {
+            "paperId": "878ba5458e9e51f0b341fd9117fa0b43ef4096d3",
+            "title": "End-to-end attention-based large vocabulary speech recognition"
+        },
+        {
+            "paperId": "97acdfb3d247f8250d865ef8a9169f06e40f138b",
+            "title": "EESEN: End-to-end speech recognition using deep RNN models and WFST-based decoding"
+        },
+        {
+            "paperId": "cddf8a10c7f48df67a797808a615be0d4acf9a8e",
+            "title": "Semi-supervised Learning with Ladder Networks"
+        },
+        {
+            "paperId": "5b791cd374c7109693aaddee2c12d659ae4e3ec0",
+            "title": "Grid Long Short-Term Memory"
+        },
+        {
+            "paperId": "5b8364c21155d3d2cd38ea4c8b8580beba9a3250",
+            "title": "An Empirical Exploration of Recurrent Network Architectures"
+        },
+        {
+            "paperId": "6e795c6e9916174ae12349f5dc3f516570c17ce8",
+            "title": "Skip-Thought Vectors"
+        },
+        {
+            "paperId": "d1505c6123c102e53eb19dff312cb25cea840b72",
+            "title": "Teaching Machines to Read and Comprehend"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "d14c7e5f5cace4c925abc74c88baa474e9f31a28",
+            "title": "Gated Feedback Recurrent Neural Networks"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "86412306b777ee35aba71d4795b02915cb8a04c3",
+            "title": "Embedding Entities and Relations for Learning and Inference in Knowledge Bases"
+        },
+        {
+            "paperId": "79d1e429c241d0aa47a2194246256a5bc79585bc",
+            "title": "First-Pass Large Vocabulary Continuous Speech Recognition using Bi-Directional Recurrent DNNs"
+        },
+        {
+            "paperId": "0fa553cfa0cf3cbdf7a913aa2ae789a757dfb32f",
+            "title": "Towards End-To-End Speech Recognition with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17",
+            "title": "Generating Sequences With Recurrent Neural Networks"
+        },
+        {
+            "paperId": "4ef03716945bd3907458efbe1bbf8928dafc1efc",
+            "title": "Regularization and nonlinearities for neural language models: when are they needed?"
+        },
+        {
+            "paperId": "93c20e38c85b69fc2d2eb314b3c1217913f7db11",
+            "title": "Generating Text with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "c1607ec8037513959c883f00e956b19dcf9bb9d9",
+            "title": "Refining hidden Markov models with recurrent neural networks"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "160ad1b01973986944a5f9a17924711ee1861552",
+            "title": "First-order versus second-order single-layer recurrent neural networks"
+        },
+        {
+            "paperId": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+            "title": "Building a Large Annotated Corpus of English: The Penn Treebank"
+        },
+        {
+            "paperId": "cea0fe8c2a77c84f9bbb172a9f65f2cb9ba9d24d",
+            "title": "Second-order recurrent neural networks for grammatical inference"
+        },
+        {
+            "paperId": "69fc8c03d21e22e30d6642824c37158b314f36c3",
+            "title": "An inequality with applications to statistical estimation for probabilistic functions of Markov processes and to a model for ecology"
+        },
+        {
+            "paperId": null,
+            "title": "GitHub repository: https://github.com/fchollet/keras"
+        },
+        {
+            "paperId": "1fd7fc06653723b05abe5f3d1de393ddcf6bdddb",
+            "title": "SUBWORD LANGUAGE MODELING WITH NEURAL NETWORKS"
+        },
+        {
+            "paperId": "a80a452e587bd7f06ece1be101d6775fcee0f7af",
+            "title": "Weighted finite-state transducers in speech recognition"
+        },
+        {
+            "paperId": "261a056f8b21918e8616a429b2df6e1d5d33be41",
+            "title": "Connectionist Temporal Classi\ufb01cation: Labelling Unsegmented Sequence Data with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "845ee9838c1f5bf63b7db2c95ec5d27af14a4e02",
+            "title": "Connectionist Temporal Classi\ufb01cation: Labelling Unsegmented Sequences with Recurrent Neural Networks"
+        }
+    ]
+}

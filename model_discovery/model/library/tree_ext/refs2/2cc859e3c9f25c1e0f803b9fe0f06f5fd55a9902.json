@@ -1,0 +1,161 @@
+{
+    "paperId": "2cc859e3c9f25c1e0f803b9fe0f06f5fd55a9902",
+    "externalIds": {
+        "DBLP": "journals/corr/abs-1809-04281",
+        "MAG": "2891815651",
+        "CorpusId": 52194391
+    },
+    "title": "An Improved Relative Self-Attention Mechanism for Transformer with Application to Music Generation",
+    "abstract": "Music relies heavily on self-reference to build structure and meaning. We explore the Transformer architecture [27] as a generative model for music, as self-attention has shown compelling results on tasks that require long-term structure such as Wikipedia summary generation [18]. However, timing information is critical for polyphonic music, and Transformer does not explicitly model absolute or relative timing in its structure. To address this challenge, Shaw et al. [22] introduced relative position representations to self-attention to improve machine translation. However, the formulation was not scalable to longer sequences. We propose an improved formulation which reduces the memory requirements of the relative position computation from O(ld) to O(ld), where l is the length of sequences and d is the hidden size, making it possible to train much longer sequences and achieve faster convergence. In experiments on symbolic music we find that relative selfattention substantially improves sample quality for unconditioned generation and is able to generate sequences of lengths longer than those from the training set. When primed with an initial sequence, the model generates continuations that develop the prime coherently and exhibit long-term structure. Relative self-attention can be instrumental in capturing richer relationships within a musical piece 2 3.",
+    "venue": "arXiv.org",
+    "year": 2018,
+    "referenceCount": 26,
+    "citationCount": 70,
+    "influentialCitationCount": 6,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "In experiments on symbolic music, relative selfattention substantially improves sample quality for unconditioned generation and is able to generate sequences of lengths longer than those from the training set, making it possible to train much longer sequences and achieve faster convergence."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "7900665",
+            "name": "Cheng-Zhi Anna Huang"
+        },
+        {
+            "authorId": "40348417",
+            "name": "Ashish Vaswani"
+        },
+        {
+            "authorId": "39328010",
+            "name": "Jakob Uszkoreit"
+        },
+        {
+            "authorId": "1846258",
+            "name": "Noam M. Shazeer"
+        },
+        {
+            "authorId": "41231781",
+            "name": "Curtis Hawthorne"
+        },
+        {
+            "authorId": "2555924",
+            "name": "Andrew M. Dai"
+        },
+        {
+            "authorId": "28552618",
+            "name": "M. Hoffman"
+        },
+        {
+            "authorId": "2396681",
+            "name": "D. Eck"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "889c3b4394826639d483c039467cd9a05e68e73c",
+            "title": "Counterpoint by Convolution"
+        },
+        {
+            "paperId": "c8efcc854d97dfc2a42b83316a2109f9d166e43f",
+            "title": "Self-Attention with Relative Position Representations"
+        },
+        {
+            "paperId": "8691706ad0cf5e83969658b2e6bfffdc379440c9",
+            "title": "Generating Wikipedia by Summarizing Long Sequences"
+        },
+        {
+            "paperId": "4275d4c4bd10742b321467f175f16198ed7d17d7",
+            "title": "MuseGAN: Symbolic-domain Music Generation and Accompaniment with Multi-track Sequential Generative Adversarial Networks"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "54ca2690b17d4381b562d3cbc95a753d6fb3318f",
+            "title": "Imposing higher-level Structure in Polyphonic Music Generation using Convolutional Restricted Boltzmann Machines and Constraints"
+        },
+        {
+            "paperId": "a066233a0b52a0e07197540ff2c73f42daf198f4",
+            "title": "DeepBach: a Steerable Model for Bach Chorales Generation"
+        },
+        {
+            "paperId": "a0295975f9e9c662b99cb007c6d14a226334ad57",
+            "title": "Style Imitation and Chord Invention in Polyphonic Music with Exponential Families"
+        },
+        {
+            "paperId": "3cccc93064dae265eeb7bc76d02cdc67c942f0a5",
+            "title": "Neural Autoregressive Distribution Estimation"
+        },
+        {
+            "paperId": "9a2acc56f9d262767472d69f81df6bddefabf01f",
+            "title": "Polyphonic Music Generation by Modeling Temporal Dependencies Using a RNN-DBN"
+        },
+        {
+            "paperId": "13bc4e683075bdd6a3f0155241c276a772d4aa06",
+            "title": "Generative adversarial networks"
+        },
+        {
+            "paperId": "705fd4febe2fff810d2f72f48dcda20826eca77a",
+            "title": "A Deep and Tractable Density Estimator"
+        },
+        {
+            "paperId": "07c43a3ff15f2104022f2b1ca8ec4128a930b414",
+            "title": "Modeling Temporal Dependencies in High-Dimensional Sequences: Application to Polyphonic Music Generation and Transcription"
+        },
+        {
+            "paperId": "8978cf7574ceb35f4c3096be768c7547b28a35d0",
+            "title": "A Fast Learning Algorithm for Deep Belief Nets"
+        },
+        {
+            "paperId": "5536d42ce80e129be8cae172ed1b7659c769d31d",
+            "title": "2005 Special Issue: Framewise phoneme classification with bidirectional LSTM and other neural network architectures"
+        },
+        {
+            "paperId": "0f3bd4e6b16817e332b9be8357e3eddb8a461990",
+            "title": "Harmonising Chorales by Probabilistic Inference"
+        },
+        {
+            "paperId": "a4ffd2f5dd98ee744c013060c5bc06503336d931",
+            "title": "Finding temporal structure in music: blues improvisation with LSTM recurrent networks"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "052b1d8ce63b07fec3de9dbb583772d860b7c769",
+            "title": "Learning representations by back-propagating errors"
+        },
+        {
+            "paperId": "4f7476037408ac3d993f5088544aab427bc319c1",
+            "title": "Information processing in dynamical systems: foundations of harmony theory"
+        },
+        {
+            "paperId": "603bdbb17ba1f909280405a076455ac4f878fbf3",
+            "title": "Statistical Inference for Probabilistic Functions of Finite State Markov Chains"
+        },
+        {
+            "paperId": null,
+            "title": "Performance rnn: Generating music with expressive timing and dynamics"
+        },
+        {
+            "paperId": null,
+            "title": "Generating long-term structure in songs and stories"
+        },
+        {
+            "paperId": null,
+            "title": "Bachbot: Automatic composition in the style of bach chorales"
+        },
+        {
+            "paperId": "b893e7053c9c7e266a23fb13a42261a88f650210",
+            "title": "The Neural Autoregressive Distribution Estimator"
+        },
+        {
+            "paperId": "16517d233873a40d7fd5b79250946082ed6bfea1",
+            "title": "Analysis and Synthesis of Palestrina-Style Counterpoint Using Markov Chains"
+        }
+    ]
+}

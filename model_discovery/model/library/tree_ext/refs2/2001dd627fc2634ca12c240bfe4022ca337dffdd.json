@@ -1,0 +1,182 @@
+{
+    "paperId": "2001dd627fc2634ca12c240bfe4022ca337dffdd",
+    "externalIds": {
+        "DBLP": "journals/corr/abs-1806-04936",
+        "ArXiv": "1806.04936",
+        "MAG": "2807747378",
+        "CorpusId": 49188736
+    },
+    "title": "On Accurate Evaluation of GANs for Language Generation",
+    "abstract": "Generative Adversarial Networks (GANs) are a promising approach to language generation. The latest works introducing novel GAN models for language generation use n-gram based metrics for evaluation and only report single scores of the best run. In this paper, we argue that this often misrepresents the true picture and does not tell the full story, as GAN models can be extremely sensitive to the random initialization and small deviations from the best hyperparameter choice. In particular, we demonstrate that the previously used BLEU score is not sensitive to semantic deterioration of generated texts and propose alternative metrics that better capture the quality and diversity of the generated samples. We also conduct a set of experiments comparing a number of GAN models for text with a conventional Language Model (LM) and find that neither of the considered models performs convincingly better than the LM.",
+    "venue": "arXiv.org",
+    "year": 2018,
+    "referenceCount": 36,
+    "citationCount": 78,
+    "influentialCitationCount": 11,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is demonstrated that the previously used BLEU score is not sensitive to semantic deterioration of generated texts and proposed alternative metrics that better capture the quality and diversity of the generated samples are proposed."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1700431",
+            "name": "Stanislau Semeniuta"
+        },
+        {
+            "authorId": "3091861",
+            "name": "Aliaksei Severyn"
+        },
+        {
+            "authorId": "1802148",
+            "name": "S. Gelly"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "39d56e05caa642bdb292832fa5a01c5c597a0203",
+            "title": "Eval all, trust a few, do wrong to none: Comparing sentence generation models"
+        },
+        {
+            "paperId": "a76706d350b8c483a3aff73e61b91d15b5687335",
+            "title": "Universal Sentence Encoder"
+        },
+        {
+            "paperId": "914ea7a3cc3bc3a0ba3be3ceec1a4f6971c8ff90",
+            "title": "Neural Text Generation: Past, Present and Beyond"
+        },
+        {
+            "paperId": "fc1d981dd051063ae586a56b05390fe3ea82f040",
+            "title": "Achieving Human Parity on Automatic Chinese to English News Translation"
+        },
+        {
+            "paperId": "43019d1a1fafff6c1da5f0a5ec2c76b00887e03c",
+            "title": "DP-GAN: Diversity-Promoting Generative Adversarial Network for Generating Informative and Diversified Text"
+        },
+        {
+            "paperId": "7f4afc1bf3272ae6ec00b46e27efc4a4f6b0826d",
+            "title": "MaskGAN: Better Text Generation via Filling in the ______"
+        },
+        {
+            "paperId": "9723066a5587e6267d8abfd7feefd0637a5a211c",
+            "title": "Demystifying MMD GANs"
+        },
+        {
+            "paperId": "c88e8d85fd5160b0793598bda037f977366acf7a",
+            "title": "Are GANs Created Equal? A Large-Scale Study"
+        },
+        {
+            "paperId": "744fe47157477235032f7bb3777800f9f2f45e52",
+            "title": "Progressive Growing of GANs for Improved Quality, Stability, and Variation"
+        },
+        {
+            "paperId": "485552d2711868b54d5fcddc92c746b09afeab07",
+            "title": "Long Text Generation via Adversarial Training with Leaked Information"
+        },
+        {
+            "paperId": "231af7dc01a166cac3b5b01ca05778238f796e41",
+            "title": "GANs Trained by a Two Time-Scale Update Rule Converge to a Local Nash Equilibrium"
+        },
+        {
+            "paperId": "56f5005c4be6f816f6f43795cc4825d798cd53ef",
+            "title": "GANs Trained by a Two Time-Scale Update Rule Converge to a Nash Equilibrium"
+        },
+        {
+            "paperId": "89b139b8b507bdfb8f57b9cc0f09bfcf859bc966",
+            "title": "Adversarially Regularized Autoencoders for Generating Discrete Structures"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "ee7b883e35d754ae4f71c21bb71f9f03e4ffbb2c",
+            "title": "Supervised Learning of Universal Sentence Representations from Natural Language Inference Data"
+        },
+        {
+            "paperId": "5ded2b8c64491b4a67f6d39ce473d4b9347a672e",
+            "title": "A Broad-Coverage Challenge Corpus for Sentence Understanding through Inference"
+        },
+        {
+            "paperId": "edf73ab12595c6709f646f542a0d2b33eb20a3f4",
+            "title": "Improved Training of Wasserstein GANs"
+        },
+        {
+            "paperId": "aa6f7ad0a06b52a8be89dbd8d056561418276ff2",
+            "title": "BEGAN: Boundary Equilibrium Generative Adversarial Networks"
+        },
+        {
+            "paperId": "81aee1c76e6bd4b915b016f7a8b70abe42841dd8",
+            "title": "A Hybrid Convolutional Variational Autoencoder for Text Generation"
+        },
+        {
+            "paperId": "29e944711a354c396fad71936f536e83025b6ce0",
+            "title": "Categorical Reparameterization with Gumbel-Softmax"
+        },
+        {
+            "paperId": "ecc0edd450ae7e52f65ddf61405b30ad6dbabdd7",
+            "title": "Conditional Image Synthesis with Auxiliary Classifier GANs"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "32c4e19f4a757f6c6984416b97d69e287d1d0ecd",
+            "title": "SeqGAN: Sequence Generative Adversarial Nets with Policy Gradient"
+        },
+        {
+            "paperId": "0d24a0695c9fc669e643bad51d4e14f056329dec",
+            "title": "An Actor-Critic Algorithm for Sequence Prediction"
+        },
+        {
+            "paperId": "6c7f040a150abf21dbcefe1f22e0f98fa184f41a",
+            "title": "Generative Adversarial Text to Image Synthesis"
+        },
+        {
+            "paperId": "d82b55c35c8673774a708353838918346f6c006f",
+            "title": "Generating Sentences from a Continuous Space"
+        },
+        {
+            "paperId": "f04df4e20a18358ea2f689b4c129781628ef7fc1",
+            "title": "A large annotated corpus for learning natural language inference"
+        },
+        {
+            "paperId": "df137487e20ba7c6e1e2b9a1e749f2a578b5ad99",
+            "title": "Scheduled Sampling for Sequence Prediction with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "62c76ca0b2790c34e85ba1cce09d47be317c7235",
+            "title": "Estimating or Propagating Gradients Through Stochastic Neurons for Conditional Computation"
+        },
+        {
+            "paperId": "60b05f32c32519a809f21642ef1eb3eaf3848008",
+            "title": "ROUGE: A Package for Automatic Evaluation of Summaries"
+        },
+        {
+            "paperId": "d7da009f457917aa381619facfa5ffae9329a6e9",
+            "title": "Bleu: a Method for Automatic Evaluation of Machine Translation"
+        },
+        {
+            "paperId": null,
+            "title": "Chris Tar, Yun-Hsuan Sung, Brian Strope, and Ray Kurzweil. Universal sentence encoder. CoRR, abs/1803.11175"
+        },
+        {
+            "paperId": null,
+            "title": "Goodfellow , Jean Pouget - Abadie , Mehdi Mirza , Bing Xu , David Warde - Farley , Sherjil Ozair , Aaron C . Courville , and Yoshua Bengio . Generative adversarial networks"
+        },
+        {
+            "paperId": null,
+            "title": "Goodfellow , and Andrew M . Dai . Maskgan : Better text generation via filling in the _ _ _ _ _ _ . CoRR , abs / 1801 . 07736 , 2018"
+        }
+    ]
+}

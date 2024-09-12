@@ -1,0 +1,1098 @@
+{
+    "paperId": "87e43e9eba01a4eb03436c9946bf6aa031a5d5af",
+    "externalIds": {
+        "DBLP": "journals/siamrev/KoldaB09",
+        "MAG": "2024165284",
+        "DOI": "10.1137/07070111X",
+        "CorpusId": 16074195
+    },
+    "title": "Tensor Decompositions and Applications",
+    "abstract": "This survey provides an overview of higher-order tensor decompositions, their applications, and available software. A tensor is a multidimensional or $N$-way array. Decompositions of higher-order tensors (i.e., $N$-way arrays with $N \\geq 3$) have applications in psycho-metrics, chemometrics, signal processing, numerical linear algebra, computer vision, numerical analysis, data mining, neuroscience, graph analysis, and elsewhere. Two particular tensor decompositions can be considered to be higher-order extensions of the matrix singular value decomposition: CANDECOMP/PARAFAC (CP) decomposes a tensor as a sum of rank-one tensors, and the Tucker decomposition is a higher-order form of principal component analysis. There are many other tensor decompositions, including INDSCAL, PARAFAC2, CANDELINC, DEDICOM, and PARATUCK2 as well as nonnegative variants of all of the above. The N-way Toolbox, Tensor Toolbox, and Multilinear Engine are examples of software packages for working with tensors.",
+    "venue": "SIAM Review",
+    "year": 2009,
+    "referenceCount": 266,
+    "citationCount": 9014,
+    "influentialCitationCount": 1301,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This survey provides an overview of higher-order tensor decompositions, their applications, and available software."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1744364",
+            "name": "T. Kolda"
+        },
+        {
+            "authorId": "31431661",
+            "name": "Brett W. Bader"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "1cd0b645f442a65d4a4d6f9e22f198951f97991b",
+            "title": "Linear Algebra"
+        },
+        {
+            "paperId": "92489908f26d9a769f189fdb03c2b01bf2dd80a0",
+            "title": "Modeling multi\u2010way data with linearly dependent loadings"
+        },
+        {
+            "paperId": "95f9a180eb01c892227bced4966a2aebb67c167b",
+            "title": "Generic and typical ranks of multi-way arrays"
+        },
+        {
+            "paperId": "eed0454d90623d1fc65f5a463249720320f03475",
+            "title": "A Newton-Grassmann Method for Computing the Best Multilinear Rank-(r1, r2, r3) Approximation of a Tensor"
+        },
+        {
+            "paperId": "8d40bd15f6c8271e01889ae31802d4c2a4e66ce7",
+            "title": "A Method to Avoid Diverging Components in the Candecomp/Parafac Model for Generic I\u02dfJ\u02df2 Arrays"
+        },
+        {
+            "paperId": "f88ebc87ae7ebd91854789510908b13984ec4c9d",
+            "title": "Decompositions of a Higher-Order Tensor in Block Terms - Part I: Lemmas for Partitioned Matrices"
+        },
+        {
+            "paperId": "abf8552208d52de45fdaa551b3b8fe69bea5cea8",
+            "title": "Decompositions of a Higher-Order Tensor in Block Terms - Part II: Definitions and Uniqueness"
+        },
+        {
+            "paperId": "8d4253cb0277a527a2d2a2c76e2ed767eb13b1b5",
+            "title": "Decompositions of a Higher-Order Tensor in Block Terms - Part III: Alternating Least Squares Algorithms"
+        },
+        {
+            "paperId": "0eec6f189e1dc987c5ed8cda2de84907e978508b",
+            "title": "A Jacobi-Type Method for Computing Orthogonal Tensor Decompositions"
+        },
+        {
+            "paperId": "03eee9834dee3bdcfc64ac247d08e80f0ed0e060",
+            "title": "Computing non-negative tensor factorizations"
+        },
+        {
+            "paperId": "3fefe62de138b94583c8edb6a48a0e3cca9c841a",
+            "title": "Blind Deconvolution of DS-CDMA Signals by Means of Decomposition in Rank-$(1,L,L)$ Terms"
+        },
+        {
+            "paperId": "b6ca785bc7fa5b803c1c9a4f80b6630551e7a261",
+            "title": "Blind Identification of Underdetermined Mixtures by Simultaneous Matrix Diagonalization"
+        },
+        {
+            "paperId": "07f5d991de06e6299fa64e832a79697b0b832604",
+            "title": "An enhanced line search scheme for complex-valued tensor decompositions. Application in DS-CDMA"
+        },
+        {
+            "paperId": "6bc3d649616b0a03778c1eab0f3b6b22103ca97e",
+            "title": "Symmetric Tensors and Symmetric Tensor Rank"
+        },
+        {
+            "paperId": "9f3ed5cf6af0117ec7769d65b98f9685a9697640",
+            "title": "Applied Multiway Data Analysis"
+        },
+        {
+            "paperId": "c7f347d9eeffb856755bbbd53b32d11963502a19",
+            "title": "Numerical multilinear algebra and its applications"
+        },
+        {
+            "paperId": "bae04d54db545d1be4240a5d7675d6cd7e843182",
+            "title": "Tensor product methods for stochastic problems"
+        },
+        {
+            "paperId": "55ec095dc9454ea69c2f2983cc2b576478cc580f",
+            "title": "Canonical Decomposition of Ictal Scalp EEG and Accurate Source Localisation: Principles and Simulation Study"
+        },
+        {
+            "paperId": "39d61c55cdf80bcb473a320492ddb64a308e54c0",
+            "title": "Temporal Analysis of Semantic Graphs Using ASALSAN"
+        },
+        {
+            "paperId": "1ef579077b449265c60db16d885f8c920b8d09cd",
+            "title": "Canonical decomposition of ictal scalp EEG reliably detects the seizure onset zone"
+        },
+        {
+            "paperId": "a8a16b2849644965a95f4bb3f88c5b8db14809d4",
+            "title": "MPEG Video Watermarking Using Tensor Singular Value Decomposition"
+        },
+        {
+            "paperId": "8606203791ecd8afed9c01ceee36afeeddc4593b",
+            "title": "Robust Tensor Classifiers for Color Object Recognition"
+        },
+        {
+            "paperId": "0bd1ee0f0f01411f55aa86be3beead7ef263bd26",
+            "title": "Degeneracy in Candecomp/Parafac and Indscal Explained For Several Three-Sliced Arrays With A Two-Valued Typical Rank"
+        },
+        {
+            "paperId": "cafd21a9559255e496465ece76d398f51cbd3d39",
+            "title": "Multiway analysis of epilepsy tensors"
+        },
+        {
+            "paperId": "2e7a1734955345b2ce679aec93dd7dd26d4c2263",
+            "title": "Fourth-Order Cumulant-Based Blind Identification of Underdetermined Mixtures"
+        },
+        {
+            "paperId": "c99c4621599f61c1701abff882b94d51baa2824b",
+            "title": "ERPWAVELAB A toolbox for multi-channel analysis of time\u2013frequency transformed event related potentials"
+        },
+        {
+            "paperId": "a8c3a77302d729743cd1e9e01aacef5b24cc0a5d",
+            "title": "Non-Negative Tensor Factorization using Alpha and Beta Divergences"
+        },
+        {
+            "paperId": "3fb2b600cc4fea27dea7514929208bd1b5237cc6",
+            "title": "Geometry and the complexity of matrix multiplication"
+        },
+        {
+            "paperId": "577a357339a2d73d3045d888afa6fb121274fda8",
+            "title": "Handwritten digit classification using higher order singular value decomposition"
+        },
+        {
+            "paperId": "2009fc64d4e6ac448dff2526d67302f995b0d117",
+            "title": "Tensor-based techniques for the blind separation of DS-CDMA signals"
+        },
+        {
+            "paperId": "30861b5a7876d674dd55634e890f19b6b5cf4263",
+            "title": "On Kruskal's uniqueness condition for the Candecomp/Parafac decomposition"
+        },
+        {
+            "paperId": "6a8a8052530f8bc7b1cffda453122a4f11399948",
+            "title": "A randomized algorithm for a tensor-based generalization of the singular value decomposition"
+        },
+        {
+            "paperId": "1bbac2d13acacb8e67bbc7306fa651d3295b589a",
+            "title": "Window-based Tensor Analysis on High-dimensional and Multi-aspect Streams"
+        },
+        {
+            "paperId": "91178c1f93676b13e6a7ffe01d0db7fc7ca3e3f5",
+            "title": "Review on Multiway Analysis in Chemistry\u20142000\u20132005"
+        },
+        {
+            "paperId": "cec3c4ef49af1751a6ac233e9d4892653b7d39d5",
+            "title": "Convergence of the sequence of parameters generated by alternating least squares algorithms"
+        },
+        {
+            "paperId": "8fe5c1e1e994c7483eadec87a31332579a18f07b",
+            "title": "Degeneracy in Candecomp/Parafac explained for p \u00d7 p \u00d7 2 arrays of rank p + 1 or higher"
+        },
+        {
+            "paperId": "b0c74ddf2f90d929d11ac2d4c51953185db195d7",
+            "title": "Tensor-CUR decompositions for tensor-based data"
+        },
+        {
+            "paperId": "19680a17240eb1eab6cfec04e3faa2bd5be61ab9",
+            "title": "Beyond streams and graphs: dynamic tensor analysis"
+        },
+        {
+            "paperId": "6e9ee9b193b0551070d76b2374b56f5e4ad048e7",
+            "title": "MATLAB Tensor Toolbox"
+        },
+        {
+            "paperId": "8ac98d52fac0929bddee0704329d4cd55253a1e6",
+            "title": "A Link between the Canonical Decomposition in Multilinear Algebra and Simultaneous Matrix Diagonalization"
+        },
+        {
+            "paperId": "22d2a467ef03ffbd9bf244620fd0350d30cf8c49",
+            "title": "Tensor Rank and the Ill-Posedness of the Best Low-Rank Approximation Problem"
+        },
+        {
+            "paperId": "f7e1a7f89cafcfcac57a82c2de945b9372029df7",
+            "title": "The constrained block-PARAFAC decomposition"
+        },
+        {
+            "paperId": "663339987aaa5d654e28dde4dd905e4eeb8de2bd",
+            "title": "Sufficient conditions for uniqueness in Candecomp/Parafac and Indscal with random component matrices"
+        },
+        {
+            "paperId": "a08e50d6d1d253006ce901acad28f4518ad44d8f",
+            "title": "Collective Sampling and Analysis of High Order Tensors for Chatroom Communications"
+        },
+        {
+            "paperId": "50f58d7090fcf64228131cc9b902f718d6118653",
+            "title": "Multi-way Clustering Using Super-Symmetric Non-negative Tensor Factorization"
+        },
+        {
+            "paperId": "c342df2df61ee808fab724aec79f51ba814277cb",
+            "title": "Selecting among three-mode principal component models of different types and complexities: a numerical convex hull based method."
+        },
+        {
+            "paperId": "c942411505c8fc82d16de865629aa8518fe676b5",
+            "title": "A comparison of algorithms for fitting the PARAFAC model"
+        },
+        {
+            "paperId": "5084d5c3ea15bf6c11d8c8a2dceec6162b776d71",
+            "title": "Multilinear operators for higher-order decompositions"
+        },
+        {
+            "paperId": "fc580b164571081892b6252d3d6148e72dc75a03",
+            "title": "Parallel Factor Analysis as an exploratory tool for wavelet transformed event-related EEG"
+        },
+        {
+            "paperId": "689552d6e1f83984c3bd4d0af3bc33304931d1ca",
+            "title": "Singular values and eigenvalues of tensors: a variational approach"
+        },
+        {
+            "paperId": "41cef633b01c5cae5c9dde2ccc06ffc15b93fb8f",
+            "title": "Multidimensional filtering based on a tensor approach"
+        },
+        {
+            "paperId": "fc59a0420364f87c2844ec68ff26af8a8ffe5b81",
+            "title": "Eigenvalues of a real supersymmetric tensor"
+        },
+        {
+            "paperId": "16dace2a89d39676515dfaea18ca82b90e884200",
+            "title": "Higher-order Web link analysis using multilinear algebra"
+        },
+        {
+            "paperId": "ff1d3b38fc9aedc88dd231aa558b62cd9253ab39",
+            "title": "Text representation: from vector to tensor"
+        },
+        {
+            "paperId": "ec0d183dbf4481de6c9bf8f5b3ca8ad44bcbf14f",
+            "title": "Multi-Way Analysis: Applications in the Chemical Sciences"
+        },
+        {
+            "paperId": "674cf95b789e371df069894d748a9d9ce7d87787",
+            "title": "Sparse image coding using a 3D non-negative tensor factorization"
+        },
+        {
+            "paperId": "8157c948dcb8095c37fe8d5adea30cb617c33c6a",
+            "title": "The border rank of the multiplication of 2\u00d72 matrices is seven"
+        },
+        {
+            "paperId": "348748d92c433f8061800ccf7ed4822d36701a14",
+            "title": "Enhanced Line Search: A novel method to accelerate Parafac"
+        },
+        {
+            "paperId": "3605d6dd16c087e7b194313e89d6bd5c921d0462",
+            "title": "Non-negative tensor factorization with applications to statistics and computer vision"
+        },
+        {
+            "paperId": "a2290765ce72ea84af8ac7535d4159f223eefdd3",
+            "title": "Face transfer with multilinear models"
+        },
+        {
+            "paperId": "14f1b9584ffbb7b5f981377fb94c7751e69af691",
+            "title": "Multilinear independent components analysis"
+        },
+        {
+            "paperId": "1e9e01bbe1adfbc3203836099aa5b0e79059855e",
+            "title": "Algorithms for Numerical Analysis in High Dimensions"
+        },
+        {
+            "paperId": null,
+            "title": "Hierarchical Kronecker tensor-product approximations"
+        },
+        {
+            "paperId": "485c7e87c2ff94423ba54ffc741cfbe8588a2736",
+            "title": "CuBatch, a MATLAB\u00ae interface for n-mode data analysis"
+        },
+        {
+            "paperId": "33054d1dd83b36187b0d15e11162232a4cbc80e5",
+            "title": "Tensor decomposition and approximation schemes for constraint satisfaction problems"
+        },
+        {
+            "paperId": "158415ae990b78023a3e1af851c418a94da91325",
+            "title": "CubeSVD: a novel approach to personalized Web search"
+        },
+        {
+            "paperId": "55e3c12898d41ca863834fd1e70ff3b31c6770cb",
+            "title": "Modeling and Multiway Analysis of Chatroom Tensors"
+        },
+        {
+            "paperId": "86756e579c78889ca305a50897e2f9070363fe95",
+            "title": "Tensorial extensions of independent component analysis for multisubject FMRI analysis"
+        },
+        {
+            "paperId": "a02d3a6275d337e0672446d3d7f20f9cc243abfa",
+            "title": "PARAFAC and missing values"
+        },
+        {
+            "paperId": "1783bbe4b7dc90e73cf4dd2f2c670fd609fcab4e",
+            "title": "MultiArray: a C++ library for generic programming with arrays"
+        },
+        {
+            "paperId": "57e2f581dcb1b47c02902490f6640ffae1bd4561",
+            "title": "Note: Correction to the 1997 tutorial on Reed\u2013Solomon coding"
+        },
+        {
+            "paperId": "9024873a3600f3aa4684437cc43dfe40befc40a1",
+            "title": "Computation of the Canonical Decomposition by Means of a Simultaneous Generalized Schur Decomposition"
+        },
+        {
+            "paperId": "b37b5109e7f247848f30999989b178edc2a7dc2c",
+            "title": "From Vectors to Tensors"
+        },
+        {
+            "paperId": "d0967b497f246db3690d8ac28b5afab403bf75ad",
+            "title": "Dimensionality reduction in higher-order signal processing and rank-(R1,R2,\u2026,RN) reduction in multilinear algebra"
+        },
+        {
+            "paperId": "762dfc26cfefc9f8a2598271004ac1e34a75e313",
+            "title": "A Kronecker product approximate preconditioner for SANs"
+        },
+        {
+            "paperId": "586eaed7c94a8a37397cb1374bfd97db753f232c",
+            "title": "Kruskal's permutation lemma and the identification of CANDECOMP/PARAFAC and bilinear models with constant modulus constraints"
+        },
+        {
+            "paperId": "73262256a3fa69263c6d0fa8960cc7ee88a5fd7b",
+            "title": "A general algorithm to fit constrained DEDICOM models"
+        },
+        {
+            "paperId": "eaa86f05d73777dc8f5527af26c8d426a714102a",
+            "title": "Typical rank and indscal dimensionality for symmetric three-way arrays of order I\u00d72\u00d72 or I\u00d73\u00d73"
+        },
+        {
+            "paperId": "13d5ec0b30fa4b850d1384ecb16c9a88a17a34b7",
+            "title": "Compact representation of multidimensional data using tensor rank-one decomposition"
+        },
+        {
+            "paperId": "ed01bcccea14710da1a8d42d3a89b52fc399d9e5",
+            "title": "TensorTextures"
+        },
+        {
+            "paperId": "3966b33f9bee0c7891f9f42c9b45bd3e404e8dd0",
+            "title": "Concurrent EEG/fMRI analysis by multiway Partial Least Squares"
+        },
+        {
+            "paperId": "45d035883c6d8c646128e603c495d51306f77520",
+            "title": "Decomposing EEG data into space\u2013time\u2013frequency components using Parallel Factor Analysis"
+        },
+        {
+            "paperId": "f432eef8708d235022c4cb9f0a6fb0e51b3e654f",
+            "title": "Structure-seeking multilinear methods for the analysis of fMRI data"
+        },
+        {
+            "paperId": "0102897f885ad366934a381e50a5a3dd8cf9353e",
+            "title": "Existence and Computation of Low Kronecker-Rank Approximations for Large Linear Systems of Tensor Product Structure"
+        },
+        {
+            "paperId": "22bd500ea023c5b0aa6a361efac672d0d9fbbe61",
+            "title": "Partial uniqueness in CANDECOMP/PARAFAC"
+        },
+        {
+            "paperId": "f7be7d2bc27808cd63ac909801e8de258ddd45b8",
+            "title": "Implementing a high performance tensor library"
+        },
+        {
+            "paperId": "a9d5810d5bc50dadd598db0454db7ad6def41ffe",
+            "title": "Efficient Data Compression Methods for Multidimensional Sparse Array Operations Based on the EKMR Scheme"
+        },
+        {
+            "paperId": "ac694e8bfc224683312df6e5a9f2ba9049afecc0",
+            "title": "Facial expression decomposition"
+        },
+        {
+            "paperId": "adb99a119c98d80154fed0d3390c17a72bf5f424",
+            "title": "Shifted factor analysis\u2014Part I: Models and properties"
+        },
+        {
+            "paperId": "e5143491912de0fb7f49c70036ca9a8a8023bf3e",
+            "title": "Multilinear subspace analysis of image ensembles"
+        },
+        {
+            "paperId": "0762ad520bd4e199523483c5053d91d22726c0c7",
+            "title": "A fast method for choosing the numbers of components in Tucker3 analysis."
+        },
+        {
+            "paperId": "8050743bdccda5070f7c96f87a9d451da40f988b",
+            "title": "A new efficient method for determining the number of components in PARAFAC models"
+        },
+        {
+            "paperId": "66d09f8e06d9da311802de218c88bdc10d2e45b2",
+            "title": "Practical aspects of PARAFAC modeling of fluorescence excitation\u2010emission data"
+        },
+        {
+            "paperId": "ac03230e2ca94598d590acece6d9ef438c82ad08",
+            "title": "On the complexity of the multiplication of matrices of small formats"
+        },
+        {
+            "paperId": "e44f173a79d573d6442187a88143af1ba308a6f8",
+            "title": "Recent developments in CANDECOMP/PARAFAC algorithms: a critical review"
+        },
+        {
+            "paperId": "6d2c9d009cf6244d03e8f3d88da1d995519c6e66",
+            "title": "Centering and scaling in component analysis"
+        },
+        {
+            "paperId": "069b6fd90506709fd4e7c15963f256d5946c943f",
+            "title": "Multilinear image analysis for facial recognition"
+        },
+        {
+            "paperId": "b4b19e6e98da1f63d753125592b2adac68be5778",
+            "title": "Khatri-Rao space-time codes"
+        },
+        {
+            "paperId": "b2ca9357988261aa0f81a3465ac1ba6ed36ca7fc",
+            "title": "Application of the three\u2010way decomposition for matrix compression"
+        },
+        {
+            "paperId": "3992d87f261d1631e710d1280794beb3cd41cbdd",
+            "title": "Human motion signatures: analysis, synthesis, recognition"
+        },
+        {
+            "paperId": "4407f78bf886924005d237abae41d3b3775c6546",
+            "title": "Maximum likelihood fitting using ordinary least squares algorithms"
+        },
+        {
+            "paperId": "a8101325c9219731fc3b8b7933c3221062e3f34b",
+            "title": "Appearance Based Object Modeling using Texture Database: Acquisition Compression and Rendering"
+        },
+        {
+            "paperId": "796e0d92db89a196498f74261d3769a4da6723a3",
+            "title": "Numerical operator calculus in higher dimensions"
+        },
+        {
+            "paperId": "048bfc88b9f54512304433bb2eeb68a3172159a8",
+            "title": "Multilinear Analysis of Image Ensembles: TensorFaces"
+        },
+        {
+            "paperId": "93ffa0cb08f4b6334701e5a2cc49ea86507ceb5d",
+            "title": "\u2018Stretch\u2019 vs \u2018slice\u2019 methods for representing three\u2010way structure via matrix notation"
+        },
+        {
+            "paperId": "5664cade03eced5609460d71546880f0536ab88e",
+            "title": "A Counterexample to the Possibility of an Extension of the Eckart-Young Low-Rank Approximation Theorem for the Orthogonal Rank Tensor Decomposition"
+        },
+        {
+            "paperId": "294923b4c90cd695a1321341ff0fb30797edf020",
+            "title": "Efficient Representation Scheme for Multidimensional Array Operations"
+        },
+        {
+            "paperId": "477d34d7cefd57c35685090880fe490279997a4a",
+            "title": "Linear image coding for regression and classification using the tensor-rank principle"
+        },
+        {
+            "paperId": "c562bc3187f6831635c8649ee0ed81efd6c9d422",
+            "title": "Independent component analysis and (simultaneous) third-order tensor diagonalization"
+        },
+        {
+            "paperId": "18c8f13b7b77bd0c67ddbdadf21cc3545b443068",
+            "title": "Positive tensor factorization"
+        },
+        {
+            "paperId": "b18102e0ccbb011e201b107b54900646a9d35aa4",
+            "title": "An index formalism that generalizes the capabilities of matrix notation and algebra to n\u2010way arrays"
+        },
+        {
+            "paperId": "830a28543424f578353f604eb5416726593f991f",
+            "title": "Cramer-Rao lower bounds for low-rank decomposition of multidimensional arrays"
+        },
+        {
+            "paperId": "c4e42a4b92fba0b1cc359a922b344b720c447030",
+            "title": "Application of PARAFAC2 to fault detection and diagnosis in semiconductor etch"
+        },
+        {
+            "paperId": "cc0c6fd5343938428baecbfcaf4a6268050ef757",
+            "title": "On the Best Rank-1 Approximation of Higher-Order Supersymmetric Tensors"
+        },
+        {
+            "paperId": "1a5ff99adceb40fbaeda66a093b90643a542a9ee",
+            "title": "Rank-One Approximation to High Order Tensors"
+        },
+        {
+            "paperId": "79ee008657541f8a263c1a49635d193642aeaf75",
+            "title": "The typical rank of tall three-way arrays"
+        },
+        {
+            "paperId": "d506c529cf94b186525101c8098130771742bce8",
+            "title": "The ubiquitous Kronecker product"
+        },
+        {
+            "paperId": "032ad810aae2a7547a9481777f1ca3c3ba6b8632",
+            "title": "The N-way Toolbox for MATLAB"
+        },
+        {
+            "paperId": "d3d7e7eefe26f8102d1efff3bb3e32cafee5cd61",
+            "title": "Parallel factor analysis in sensor array processing"
+        },
+        {
+            "paperId": "56b456e40c0d41c49a53df1bd60e4a57437fda53",
+            "title": "Construction and analysis of degenerate PARAFAC models"
+        },
+        {
+            "paperId": "6179b2232c635008fed0f5ea0c8c5c82ccd1bdda",
+            "title": "Towards a standardized notation and terminology in multiway analysis"
+        },
+        {
+            "paperId": "bced963ba7966b0566bafa909914b857079cb816",
+            "title": "On the uniqueness of multilinear decomposition of N\u2010way arrays"
+        },
+        {
+            "paperId": "39a723f3cefe28a4fbca03a0a126b4b8636d78a7",
+            "title": "An introduction to independent component analysis"
+        },
+        {
+            "paperId": "62006dabdb449e842a03d3dfd96b6d2485b6726f",
+            "title": "Orthogonal Tensor Decompositions"
+        },
+        {
+            "paperId": "274bc40268671fa3fff54d2ef89454b13fb026da",
+            "title": "A Multilinear Singular Value Decomposition"
+        },
+        {
+            "paperId": "c7709875e6d71994d8c197df09b8945e6813b342",
+            "title": "Blind PARAFAC receivers for DS-CDMA systems"
+        },
+        {
+            "paperId": "a311254f1296a2885c99b422301a8f868c3d10e9",
+            "title": "On the Best Rank-1 and Rank-(R1 , R2, ... , RN) Approximation of Higher-Order Tensors"
+        },
+        {
+            "paperId": "65e376e1ae5e82ee1a282b2384a3952d12d542f8",
+            "title": "Polynomial interpolation in several variables"
+        },
+        {
+            "paperId": "2f42b9bd4fa5a0b23d47989302ebffc33cee6501",
+            "title": "The Multilinear Engine\u2014A Table-Driven, Least Squares Program for Solving Multilinear Problems, Including the n-Way Parallel Factor Analysis Model"
+        },
+        {
+            "paperId": "29bae9472203546847ec1352a604566d0f602728",
+            "title": "Learning the parts of objects by non-negative matrix factorization"
+        },
+        {
+            "paperId": "837f6e1cef2a3cb290a43d6a415fd433ba1155fa",
+            "title": "Fast reliable algorithms for matrices with structure"
+        },
+        {
+            "paperId": "126a6f37c5d78e48ce9cc5f152db696ef1abb6b0",
+            "title": "Tensor displacement structures and polyspectral matching"
+        },
+        {
+            "paperId": "188a7ece7b94d0c0ebb1462070dacd3150efc135",
+            "title": "A general algorithm for obtaining simple structure of core arrays in N -way PCA with application to fluorometric data"
+        },
+        {
+            "paperId": "67f022536cb66be847bc45b28dbdb92d7188ac2e",
+            "title": "Simplicity of core arrays in three-way principal component analysis and the typical rank of p\u00d7q\u00d72 arrays"
+        },
+        {
+            "paperId": "0ccfc172cc3ba9ee0d9b1f00ecbcca182aca6d6e",
+            "title": "PARAFAC2\u2014Part II. Modeling chromatographic data with retention time shifts"
+        },
+        {
+            "paperId": "a2c846e976575e84a1471fb1d042d7f5e04b3417",
+            "title": "PARAFAC2\u2014Part I. A direct fitting algorithm for the PARAFAC2 model"
+        },
+        {
+            "paperId": "9c1f4b8c4a9907cace3f79fba42d50c7854c7551",
+            "title": "A case of extreme simplicity of the core matrix in three-mode principal components analysis"
+        },
+        {
+            "paperId": "47bdd48a1ae334f297008b42723238198d055e15",
+            "title": "Improving the speed of multiway algorithms: Part II: Compression"
+        },
+        {
+            "paperId": "ed16095f07730c7ee0a5108d72d77f835b4024a5",
+            "title": "Improving the speed of multi-way algorithms:: Part I. Tucker3"
+        },
+        {
+            "paperId": "c4d505319a913d959bed688484e37994a7671946",
+            "title": "A three\u2013step algorithm for CANDECOMP/PARAFAC analysis of large data sets with multicollinearity"
+        },
+        {
+            "paperId": "81816fb01984b3b18cbf935fafa75a6723a0375a",
+            "title": "Joint Orthomax Rotation of the Core and Component Matrices Resulting from Three-mode Principal Components Analysis"
+        },
+        {
+            "paperId": "1b4ed31ada179944df8e94d0d283c6948804746d",
+            "title": "Two-factor degeneracies and a stabilization of PARAFAC"
+        },
+        {
+            "paperId": "87b6ee1252a52a17a4b9c4b7297de1ec1214f293",
+            "title": "A weighted non-negative least squares algorithm for three-way \u2018PARAFAC\u2019 factor analysis"
+        },
+        {
+            "paperId": "49cc2f20f47047579a636816113a92d82e1485c7",
+            "title": "PARAFAC. Tutorial and applications"
+        },
+        {
+            "paperId": "6ff715c841b0e7d0642649ecfb22a5c033414230",
+            "title": "A fast non\u2010negativity\u2010constrained least squares algorithm"
+        },
+        {
+            "paperId": "a27110148e34f961218c7379a85a33717409bb06",
+            "title": "Uniqueness of three-mode factor models with sparse cores: The 3 \u00d7 3 \u00d7 3 case"
+        },
+        {
+            "paperId": "49f2dc6c7661b93b894af87392f04db3506bbe4d",
+            "title": "Weighted least squares fitting using ordinary least squares algorithms"
+        },
+        {
+            "paperId": "589c77262cde07b03e30d702fd562f22459fb900",
+            "title": "Relating two proposed methods for speedup of algorithms for fitting two- and three-way principal component and related multilinear models"
+        },
+        {
+            "paperId": "a7d9544b0aa1cb4e9fd0b6fa8ea4c46f5aafb303",
+            "title": "Decomposition of quantics in sums of powers of linear forms"
+        },
+        {
+            "paperId": "e9ba1e7f1a6cb2d66b7baf5c25cbc355a408838f",
+            "title": "Uniqueness proof for a family of models sharing features of Tucker's three-mode factor analysis and PARAFAC/candecomp"
+        },
+        {
+            "paperId": "b0ef840f2b55f8b85c8a2c62eb02f7861a5578fe",
+            "title": "Some uniqueness results for PARAFAC2"
+        },
+        {
+            "paperId": "06871028d4e71ceefe879853e9dc2183ea81bb32",
+            "title": "Using Linear Algebra for Intelligent Information Retrieval"
+        },
+        {
+            "paperId": "048b16f164f718433624cf53a2b77aee61704d2a",
+            "title": "N-WAY PRINCIPAL COMPONENT ANALYSIS : THEORY, ALGORITHMS AND APPLICATIONS"
+        },
+        {
+            "paperId": "c1eebff5e1b41283d45b0aa2d3770a2021efa672",
+            "title": "Positive matrix factorization: A non-negative factor model with optimal utilization of error estimates of data values\u2020"
+        },
+        {
+            "paperId": "6601ee8d7377c0499e348c1da76446101b1bcc93",
+            "title": "Polynomial interpolation in several variables"
+        },
+        {
+            "paperId": "6b62c3cc5251e4dbae8035f0bf68f4dee95c5684",
+            "title": "Slowly converging parafac sequences: Swamps and two\u2010factor degeneracies"
+        },
+        {
+            "paperId": "51d56692db531db4b4e0c3514a638a6da4011f35",
+            "title": "Body diagonalization of core matrices in three\u2010way principal components analysis: Theoretical bounds and simulation"
+        },
+        {
+            "paperId": "a68554d16e5c829b57aa426c98c73d720fab44d0",
+            "title": "An alternating least squares algorithms for PARAFAC2 and three-way DEDICOM"
+        },
+        {
+            "paperId": "67e4de5fae3e3f4b216630397a00fe08a2edeea3",
+            "title": "Principles of Continuum Mechanics"
+        },
+        {
+            "paperId": "27e1688f6babef7cfe2186cd1ec9f13ecc3ecf6a",
+            "title": "Multilinear Models: Applications in Spectroscopy"
+        },
+        {
+            "paperId": "89b0762453283eea4c830ba5b4ec878918ae3a4d",
+            "title": "Kruskal's polynomial for 2\u00d72\u00d72 arrays and a generalization to 2\u00d7n\u00d7n arrays"
+        },
+        {
+            "paperId": "164125a65d42a791d2c1e108559344caef96d08b",
+            "title": "Indexing by Latent Semantic Analysis"
+        },
+        {
+            "paperId": "d369306b34550a02e7d734e4b2782a3fec90cce2",
+            "title": "Maximal Rank of m x n x (mn - k) Tensors"
+        },
+        {
+            "paperId": "7b7e507aba77d19e7e40af0105b9b0312a1c6c1a",
+            "title": "A generalization of Takane's algorithm for dedicom"
+        },
+        {
+            "paperId": "3844d8c320bbf9898e267a572c79cf7339f61919",
+            "title": "Tensorial resolution: A direct trilinear decomposition"
+        },
+        {
+            "paperId": "b5986f85ff1e1dfa5cf800eb4a602be25be3c45d",
+            "title": "How 3-MFA data can cause degenerate parafac solutions, among other relationships"
+        },
+        {
+            "paperId": "91aac80bbf96069e3a0326bd8108a7ce52b49a17",
+            "title": "A two-stage procedure incorporating good features of both trilinear and quadrilinear models"
+        },
+        {
+            "paperId": "84db347d9974cddedc8d5338cfae400009c245f3",
+            "title": "Rank, decomposition, and uniqueness for 3-way and n -way arrays"
+        },
+        {
+            "paperId": "6717c996e6e870512c3e3fe5a8de32ae82a1454d",
+            "title": "An alternating least squares algorithm for fitting the two- and three-way dedicom model and the idioscal model"
+        },
+        {
+            "paperId": "f0a473202af221e7765bd634391236367b062e2b",
+            "title": "Tensor Rank is NP-Complete"
+        },
+        {
+            "paperId": "260c0927e04a7de56f5193c39a60a3fb516bdff4",
+            "title": "Multiway Data Analysis"
+        },
+        {
+            "paperId": "c4499345e814269de53be12437220cc9c6013c57",
+            "title": "Explicit candecomp/parafac solutions for a contrived 2 \u00d7 2 \u00d7 2 array of rank three"
+        },
+        {
+            "paperId": "11d0506eb9739cfbcc5742d0f5c38cd6f4d96f5f",
+            "title": "Using latent semantic analysis to improve access to textual information"
+        },
+        {
+            "paperId": "998f5b2e195857f395738b73554c6dd95c3025d3",
+            "title": "An approach ton-mode components analysis"
+        },
+        {
+            "paperId": "29a75744790b01500c044fdde88566623e43f815",
+            "title": "Three-mode principal component analysis : theory and applications"
+        },
+        {
+            "paperId": "f63ee2cb59e589f5925c6cd5ba492496e6e030ba",
+            "title": "A Model for the Analysis of Asymmetric Data in Marketing Research"
+        },
+        {
+            "paperId": "0b505a249f5c968ae512b3588e3f79f9af46a7f8",
+            "title": "Strategies for analyzing data from video fluorometric monitoring of liquid chromatographic effluents"
+        },
+        {
+            "paperId": "3d8be4f0d7fb8a63c94ee5a3cc7feb1b466689a1",
+            "title": "Partial and Total Matrix Multiplication"
+        },
+        {
+            "paperId": "016f1605fcb960a0c6aefdb2cea897984bb6ed3f",
+            "title": "Candelinc: A general approach to multidimensional analysis of many-way arrays with linear constraints on parameters"
+        },
+        {
+            "paperId": "51ed7e1d94897cf88cc364db48fcda06e65b5530",
+            "title": "Principal component analysis of three-mode data by means of alternating least squares algorithms"
+        },
+        {
+            "paperId": "0f60967a581b0e055b393d4778d34ac0340f309c",
+            "title": "Optimal Evaluation of Pairs of Bilinear Forms"
+        },
+        {
+            "paperId": "d01e00939c1773366237e744ff0047fc55a53453",
+            "title": "O(n2.7799) Complexity for n*n Approximate Matrix Multiplication"
+        },
+        {
+            "paperId": "9ffff65e6faf5a4690bf5165ebfa320b8b780cc6",
+            "title": "Global properties of tensor rank"
+        },
+        {
+            "paperId": "8daa923d93dff6d0102c85e42735eabc1fe2db3f",
+            "title": "A Noncommutative Algorithm for Multiplying 5*5 Matrices Using 103 Multiplications"
+        },
+        {
+            "paperId": "b35e036e0226d923d03c06ae393084b40c9dec7e",
+            "title": "Solving least squares problems"
+        },
+        {
+            "paperId": "8f0b1ebf499e0485fd7b947155772ed9bcd8779f",
+            "title": "Efficient Computer Manipulation of Tensor Products with Applications to Multidimensional Approximation"
+        },
+        {
+            "paperId": "757cb62e3d1c0643c9f83bf57d45e427bd76e235",
+            "title": "Analysis of individual differences in multidimensional scaling via an n-way generalization of \u201cEckart-Young\u201d decomposition"
+        },
+        {
+            "paperId": "2f05f96a53f94c9da24fbcca5c3df1d7e159c63d",
+            "title": "The Art of Computer Programming, Volume II: Seminumerical Algorithms"
+        },
+        {
+            "paperId": "cb80b424db4c94cbaf4c3ae0e570ac3eb6f3bcf3",
+            "title": "Gaussian elimination is not optimal"
+        },
+        {
+            "paperId": "6661789de63b3cebe2eafdd7e9e7a316ad1f0b8f",
+            "title": "Some mathematical notes on three-mode factor analysis"
+        },
+        {
+            "paperId": "1525978ca2c861952420711871d46dbf6bac1d84",
+            "title": "Three-mode factor analysis."
+        },
+        {
+            "paperId": "fb0b812d9ba1a4b33f399fd51b56693e1935c745",
+            "title": "The varimax criterion for analytic rotation in factor analysis"
+        },
+        {
+            "paperId": "9f2ec981a54c77e67d58659e08292faf710766f2",
+            "title": "The three basic factor-analytic research designs-their interrelations and derivatives."
+        },
+        {
+            "paperId": "72cc2058d40143a5deb98cde2543b8c3c2220855",
+            "title": "\u201cParallel proportional profiles\u201d and other principles for determining the choice of factors by rotation"
+        },
+        {
+            "paperId": "8112c4305b88d85199267e9e03d3a0aca4432059",
+            "title": "The approximation of one matrix by another of lower rank"
+        },
+        {
+            "paperId": "5d66fc93f9a14977730194384d6f313310bcba6d",
+            "title": "Multiple Invariants and Generalized Rank of a P\u2010Way Matrix or Tensor"
+        },
+        {
+            "paperId": "5265853dd172f6afe0ff1e820a0cc7bd0e58c765",
+            "title": "The Expression of a Tensor or a Polyadic as a Sum of Products"
+        },
+        {
+            "paperId": "444d70e3331b5083b40ef32e49390ef683a65e67",
+            "title": "Matrix Computations"
+        },
+        {
+            "paperId": "3bd7cc37a4fae124c0d5a69b00043072b38f7269",
+            "title": "An enhanced plane search scheme for complex-valued tensor decompositions"
+        },
+        {
+            "paperId": "5979666682daad35c7cf72e139902c000cbd6b37",
+            "title": "Unsupervised Multiway Data Analysis: A Literature Survey"
+        },
+        {
+            "paperId": "e4b728c0526ef73a05ce9e14da551047dce88e64",
+            "title": "Modeling multiway data with linearly dependent loadings y"
+        },
+        {
+            "paperId": "a2268d7e1770d48b513c80af347c7bece2a274ec",
+            "title": "Swamp reducing technique for tensor decomposition"
+        },
+        {
+            "paperId": "a9cb4d751a45665b4f81b54b91a014eda46b7b47",
+            "title": "Discussion Tracking in Enron Email using PARAFAC."
+        },
+        {
+            "paperId": null,
+            "title": "Preprint of article to appear in SIAM Review"
+        },
+        {
+            "paperId": "fd1d5e30ad675c290b3012553796376071b4eb52",
+            "title": "Mathematik in den Naturwissenschaften Leipzig Tensor-Product Approximation to Operators and Functions in High Dimensions"
+        },
+        {
+            "paperId": "5981f712a9d354ea69cf15a1cf7ffa2cd1f8c9ac",
+            "title": "Shift Invariant Sparse Coding of Image and Music Data"
+        },
+        {
+            "paperId": "5a23092af9d6b0216dce1f39ed24d6e04e919174",
+            "title": "Seizure Recognition on Epilepsy Feature Tensor"
+        },
+        {
+            "paperId": "2f5ac415db76cb3dc5dded2654b137ad5412faa7",
+            "title": "Comparing Independent Component Analysis and the Parafac model for artificial multi-subject fMRI data"
+        },
+        {
+            "paperId": null,
+            "title": "The Role of Tensor Rank in the Complexity Analysis of Bilinear Forms , presentation at ICIAM07, Z\u00a8urich, Switzerland"
+        },
+        {
+            "paperId": "21c2071bd83f4e124d5ec79ebac371d50aee220d",
+            "title": "The TOPHITS Model for Higher-Order Web Link Analysis\u2217"
+        },
+        {
+            "paperId": "1563643c9f57893567450cee9dc24476bcaab1cf",
+            "title": "Decomposing the time-frequency representation of EEG using non-negative matrix and multi-way factorization"
+        },
+        {
+            "paperId": null,
+            "title": "Stat. Data. An"
+        },
+        {
+            "paperId": null,
+            "title": "Math. Statist. Psych"
+        },
+        {
+            "paperId": "bbc1c2ed4be33f71e9fcb4c9df11d0cde80913dd",
+            "title": "Unlimited Release"
+        },
+        {
+            "paperId": "0072eb224991ada6fc8a4e2d3465e4a51c0b26bc",
+            "title": "National Nuclear Security Administration under Contract DE-AC04-94AL85000."
+        },
+        {
+            "paperId": null,
+            "title": "HUJI Tensor Library"
+        },
+        {
+            "paperId": null,
+            "title": "Structured rank-(r1"
+        },
+        {
+            "paperId": null,
+            "title": "Structured rank-(r 1 , . . . , r d ) decomposition of function-related operators in r d"
+        },
+        {
+            "paperId": null,
+            "title": "Algorithms for Sparse Non-negative TUCKER (also named HONMF)"
+        },
+        {
+            "paperId": null,
+            "title": "Practical and Computational Aspects in Chemometric Data Analysis , Ph.D."
+        },
+        {
+            "paperId": null,
+            "title": "Available at http"
+        },
+        {
+            "paperId": null,
+            "title": "Practical and computational aspects in chemometric data analysis Department of Food Science, The Royal Veterinary and Agricultural University"
+        },
+        {
+            "paperId": "81b2b0b7f96ebafa975fe22d7c03fb703c83090a",
+            "title": "Non-negative Tensor Factorisation for Sound Source Separation"
+        },
+        {
+            "paperId": "a6d3bf1089d431115cf689e316e592319f2f95ce",
+            "title": "Topographic component (Parallel Factor) analysis of multichannel evoked potentials: Practical issues in trilinear spatiotemporal decomposition"
+        },
+        {
+            "paperId": "16aa761ebd719624f1b1d76904058fec9e2f3bf1",
+            "title": "From Vectors to Tensors"
+        },
+        {
+            "paperId": null,
+            "title": "Use of the properties of the Khatri-Rao product for the computation of Jacobian, Hessian, and gradient of the PARAFAC model under MATLAB"
+        },
+        {
+            "paperId": "a5d23054c5845b92368440fffa6091c61dcf8d3a",
+            "title": "Analyses and Tests of Handwritten Digit Recognition Algorithms"
+        },
+        {
+            "paperId": "0445e28cc07c6399ef01cf341dedfb1a0c677b4b",
+            "title": "Kronecker Product Approximation for Three-Dimensional Imaging Applications"
+        },
+        {
+            "paperId": "33b6f4116479c92ddeb28cb963003ae5b846ed32",
+            "title": "CANONICAL TENSOR DECOMPOSITIONS"
+        },
+        {
+            "paperId": "6f880c722e513754ef719555aa13c1e01834c603",
+            "title": "A COUNTEREXAMPLE TO THE POSSIBILITY OF AN EXTENSION OF THE ECKART \u2013 YOUNG LOW-RANK APPROXIMATION THEOREM FOR THE ORTHOGONAL RANK TENSOR DECOMPOSITION"
+        },
+        {
+            "paperId": null,
+            "title": "Application of the 3-way DEDICOM model to skew-symmetric data for paired preference ratings of treatments for chronic back pain. Presentation at TRICAP2003"
+        },
+        {
+            "paperId": "2730c751f378fbc5ae91aa04b45be188f4b82984",
+            "title": "Blind Identification of Convolutive MIMO Systems with 3 Sources and 2 Sensors"
+        },
+        {
+            "paperId": "05fc805d4ab89e6b7b1c9e63bb69f870d5564bb5",
+            "title": "On uniqueness in candecomp/parafac"
+        },
+        {
+            "paperId": "d00863432c1d08ccb21fdcff51cbc4e82800bcac",
+            "title": "Three-way component analysis: principles and illustrative application."
+        },
+        {
+            "paperId": null,
+            "title": "McWhirter and"
+        },
+        {
+            "paperId": "59640d08616af089de6cc7e6a8957982e51dd54c",
+            "title": "Three\u2010way data resolution by alternating slice\u2010wise diagonalization (ASD) method"
+        },
+        {
+            "paperId": "4fcfbc9e00e459d8ff273898c6c15f77a77e809c",
+            "title": "An alternating trilinear decomposition algorithm with application to calibration of HPLC\u2013DAD for simultaneous determination of overlapped chlorinated aromatic hydrocarbons"
+        },
+        {
+            "paperId": "f2bdc868e33937a52c519bdf13e51a7afffbc03c",
+            "title": "MULTI-WAY ANALYSIS IN THE FOOD INDUSTRY Models, Algorithms & Applications"
+        },
+        {
+            "paperId": null,
+            "title": "Bader processing, in Mathematics in Signal Processing"
+        },
+        {
+            "paperId": "54c5e21c2bc7acdf2258a59caa20bac7f353cb67",
+            "title": "From Matrix to Tensor : Multilinear Algebra and Signal Processing"
+        },
+        {
+            "paperId": null,
+            "title": "and G"
+        },
+        {
+            "paperId": "62b3ba2f68510cd3aaa05bdb5afb60964a44126a",
+            "title": "Theory of medium\u2010rank second\u2010order calibration with restricted\u2010Tucker models"
+        },
+        {
+            "paperId": "f110bf7494b0b304fe509a180478f6aff42fa9aa",
+            "title": "Constrained DEDICOM"
+        },
+        {
+            "paperId": null,
+            "title": "Psychometrika"
+        },
+        {
+            "paperId": "78f7e7455bffa09bdaa34827dbdb191b99ac3a99",
+            "title": "TUCKALS core rotations and constrained TUCKALS modelling"
+        },
+        {
+            "paperId": "3e9824f5ed17186b2498210ab6bef6b501236c03",
+            "title": "SIGNAL PROCESSING Independent component analysis , A new concept ? *"
+        },
+        {
+            "paperId": null,
+            "title": "Three-way DEDICOM: Analyzing multiple matrices of asymmetric relationships. Paper presented at the Annual Meeting of the North"
+        },
+        {
+            "paperId": "c9d055b070cc888b4bc24a2e9a23755d64b614ef",
+            "title": "Topographic components model for event-related potentials and some biophysical considerations."
+        },
+        {
+            "paperId": "3008df27b38dd7e407eb1c009598c417917ed35c",
+            "title": "Data preprocessing and the extended PARAFAC model"
+        },
+        {
+            "paperId": null,
+            "title": "Statement of some current results about three-way arrays. Unpublished manuscript"
+        },
+        {
+            "paperId": "80e2951b1af87a73458e40ee675575a4eef8f419",
+            "title": "Notation and preliminaries"
+        },
+        {
+            "paperId": null,
+            "title": "Models for analysis of asymmetrical relationships among N objects or stimuli"
+        },
+        {
+            "paperId": "d87b35774d1641bff1f4867e736b108c69fcf9ce",
+            "title": "Three-way arrays: rank and uniqueness of trilinear decompositions, with application to arithmetic complexity and statistics"
+        },
+        {
+            "paperId": "46bd6052db1995d434ab38404eb5bbe503d23021",
+            "title": "A noncommutative algorithm for multiplying $3 \\times 3$ matrices using 23 multiplications"
+        },
+        {
+            "paperId": "4625c313c8d68d107470641f65803975dc03d824",
+            "title": "Determination and Proof of Minimum Uniqueness Conditions for PARAFAC1"
+        },
+        {
+            "paperId": "c5b28cae82b14417f1250e58bb241367248e827d",
+            "title": "Foundations of the PARAFAC procedure: Models and conditions for an \"explanatory\" multi-model factor analysis"
+        },
+        {
+            "paperId": "748f27587c37d8b0882a20692967901b81429fce",
+            "title": "The Art of Computer Programming"
+        },
+        {
+            "paperId": null,
+            "title": "The extension of factor analysis to three-dimensional matrices"
+        },
+        {
+            "paperId": null,
+            "title": "Implications of factor analysis of three-way matrices for measurement of change"
+        },
+        {
+            "paperId": null,
+            "title": "Parafac2: Mathematical and Technical Notes"
+        },
+        {
+            "paperId": "909a2c6186e24af11d01f165965ad1730c1c379c",
+            "title": "MATLAB tensor classes for fast algorithm prototyping."
+        },
+        {
+            "paperId": null,
+            "title": "Tensor Decompositions State of the Art and Applications"
+        },
+        {
+            "paperId": "8df5f4d71515db39d6836e540ba55ff6f3fa540d",
+            "title": "Published online in Wiley InterScience (www.interscience.wiley.com). DOI: 10.1002/cem.789 Maximum likelihood parallel factor analysis (MLPARAFAC)"
+        },
+        {
+            "paperId": "a76a03f102241dbce7c64569ed9f75b645532294",
+            "title": "A least-squares approximation of high-dimensional uncertain systems"
+        },
+        {
+            "paperId": "4bb149d0f5d0a06321e29f5cba38522148c1f24c",
+            "title": "f\u00a8ur Mathematik in den Naturwissenschaften Leipzig Low Rank Tucker-Type Tensor Approximation to Classical Potentials"
+        },
+        {
+            "paperId": null,
+            "title": "Tensor: Definition and much more from answers"
+        }
+    ]
+}

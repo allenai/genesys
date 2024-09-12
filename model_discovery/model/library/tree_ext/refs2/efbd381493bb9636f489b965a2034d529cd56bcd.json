@@ -1,0 +1,158 @@
+{
+    "paperId": "efbd381493bb9636f489b965a2034d529cd56bcd",
+    "externalIds": {
+        "ArXiv": "1609.07843",
+        "MAG": "2525332836",
+        "DBLP": "journals/corr/MerityXBS16",
+        "CorpusId": 16299141
+    },
+    "title": "Pointer Sentinel Mixture Models",
+    "abstract": "Recent neural network sequence models with softmax classifiers have achieved their best language modeling performance only with very large hidden states and large vocabularies. Even then they struggle to predict rare or unseen words even if the context makes the prediction unambiguous. We introduce the pointer sentinel mixture architecture for neural sequence models which has the ability to either reproduce a word from the recent context or produce a word from a standard softmax classifier. Our pointer sentinel-LSTM model achieves state of the art language modeling performance on the Penn Treebank (70.9 perplexity) while using far fewer parameters than a standard softmax LSTM. In order to evaluate how well language models can exploit longer contexts and deal with more realistic vocabularies and larger corpora we also introduce the freely available WikiText corpus.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2016,
+    "referenceCount": 29,
+    "citationCount": 2175,
+    "influentialCitationCount": 373,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The pointer sentinel-LSTM model achieves state of the art language modeling performance on the Penn Treebank while using far fewer parameters than a standard softmax LSTM and the freely available WikiText corpus is introduced."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3375440",
+            "name": "Stephen Merity"
+        },
+        {
+            "authorId": "2228109",
+            "name": "Caiming Xiong"
+        },
+        {
+            "authorId": "40518045",
+            "name": "James Bradbury"
+        },
+        {
+            "authorId": "2166511",
+            "name": "R. Socher"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "e44da7d8c71edcc6e575fa7faadd5e75785a7901",
+            "title": "Fine-grained Analysis of Sentence Embeddings Using Auxiliary Prediction Tasks"
+        },
+        {
+            "paperId": "0fa5142f908afc94c923ca2adbe14a5673bc76eb",
+            "title": "A Neural Knowledge Language Model"
+        },
+        {
+            "paperId": "7dba53e72c182e25e98e8f73a99d75ff69dda0c2",
+            "title": "Recurrent Highway Networks"
+        },
+        {
+            "paperId": "9f0687bcd0a7d7fc91b8c5d36c003a38b8853105",
+            "title": "Zoneout: Regularizing RNNs by Randomly Preserving Hidden Activations"
+        },
+        {
+            "paperId": "aa5b35dcf8b024f5352db73cc3944e8fad4f3793",
+            "title": "Pointing the Unknown Words"
+        },
+        {
+            "paperId": "e957747f4f8600940be4c5bb001aa70c84e53a53",
+            "title": "Latent Predictor Networks for Code Generation"
+        },
+        {
+            "paperId": "02534853626c18c9a097c2712f1ddf3613257d35",
+            "title": "Incorporating Copying Mechanism in Sequence-to-Sequence Learning"
+        },
+        {
+            "paperId": "f2e50e2ee4021f199877c8920f1f984481c723aa",
+            "title": "Text Understanding with the Attention Sum Reader Network"
+        },
+        {
+            "paperId": "f96898d15a1bf1fa8925b1280d0e07a7a8e72194",
+            "title": "Dynamic Memory Networks for Visual and Textual Question Answering"
+        },
+        {
+            "paperId": "0c1f9ca23f4f09ecfc44bcc8ca1c2736624f4652",
+            "title": "A Theoretically Grounded Application of Dropout in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "891ce1687e2befddd19f54e4eef1d3f39c8dbaf7",
+            "title": "Character-Aware Neural Language Models"
+        },
+        {
+            "paperId": "452059171226626718eb677358836328f884298e",
+            "title": "Ask Me Anything: Dynamic Memory Networks for Natural Language Processing"
+        },
+        {
+            "paperId": "9653d5c2c7844347343d073bbedd96e05d52f69b",
+            "title": "Pointer Networks"
+        },
+        {
+            "paperId": "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e",
+            "title": "End-To-End Memory Networks"
+        },
+        {
+            "paperId": "f264e8b33c0d49a692a6ce2c4bcb28588aeb7d97",
+            "title": "Recurrent Neural Network Regularization"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "533ee188324b833e059cb59b654e6160776d5812",
+            "title": "How to Construct Deep Recurrent Neural Networks"
+        },
+        {
+            "paperId": "5d833331b0e22ff359db05c62a8bca18c4f04b68",
+            "title": "One billion word benchmark for measuring progress in statistical language modeling"
+        },
+        {
+            "paperId": "d1275b2a2ab53013310e759e5c6878b96df643d4",
+            "title": "Context dependent recurrent neural network language model"
+        },
+        {
+            "paperId": "84069287da0a6b488b8c933f3cb5be759cb6237e",
+            "title": "On the difficulty of training recurrent neural networks"
+        },
+        {
+            "paperId": "4ee2eab4c298c1824a9fb8799ad8eed21be38d21",
+            "title": "Moses: Open Source Toolkit for Statistical Machine Translation"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "076fa8d095c37c657f2aff39cf90bc2ea883b7cb",
+            "title": "A maximum entropy approach to adaptive statistical language modelling"
+        },
+        {
+            "paperId": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+            "title": "Building a Large Annotated Corpus of English: The Penn Treebank"
+        },
+        {
+            "paperId": null,
+            "title": "Long Pointer Sentinel Mixture Models Short-Term Memory-Networks for Machine Reading"
+        },
+        {
+            "paperId": "2a76c2121eee30af82a24058b4e149f05bcda911",
+            "title": "Language modeling with sum-product networks"
+        },
+        {
+            "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+            "title": "Recurrent neural network based language model"
+        },
+        {
+            "paperId": "b0b36cd24cbb45bc11140def9245af79c313e609",
+            "title": "Open Source Toolkit for Statistical Machine Translation: Factored Translation Models and Lattice Decoding"
+        },
+        {
+            "paperId": null,
+            "title": "Pointer Sentinel Mixture Models"
+        }
+    ]
+}

@@ -1,0 +1,182 @@
+{
+    "paperId": "0936352b78a52bc5d2b5e3f04233efc56664af51",
+    "externalIds": {
+        "MAG": "2952276259",
+        "DBLP": "conf/nips/OordKEKVG16",
+        "ArXiv": "1606.05328",
+        "CorpusId": 14989939
+    },
+    "title": "Conditional Image Generation with PixelCNN Decoders",
+    "abstract": "This work explores conditional image generation with a new image density model based on the PixelCNN architecture. The model can be conditioned on any vector, including descriptive labels or tags, or latent embeddings created by other networks. When conditioned on class labels from the ImageNet database, the model is able to generate diverse, realistic scenes representing distinct animals, objects, landscapes and structures. When conditioned on an embedding produced by a convolutional network given a single image of an unseen face, it generates a variety of new portraits of the same person with different facial expressions, poses and lighting conditions. We also show that conditional PixelCNN can serve as a powerful decoder in an image autoencoder. Additionally, the gated convolutional layers in the proposed model improve the log-likelihood of PixelCNN to match the state-of-the-art performance of PixelRNN on ImageNet, with greatly reduced computational cost.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2016,
+    "referenceCount": 33,
+    "citationCount": 2282,
+    "influentialCitationCount": 189,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The gated convolutional layers in the proposed model improve the log-likelihood of PixelCNN to match the state-of-the-art performance of PixelRNN on ImageNet, with greatly reduced computational cost."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3422336",
+            "name": "A\u00e4ron van den Oord"
+        },
+        {
+            "authorId": "2583391",
+            "name": "Nal Kalchbrenner"
+        },
+        {
+            "authorId": "2311318",
+            "name": "L. Espeholt"
+        },
+        {
+            "authorId": "2645384",
+            "name": "K. Kavukcuoglu"
+        },
+        {
+            "authorId": "1689108",
+            "name": "O. Vinyals"
+        },
+        {
+            "authorId": "1753223",
+            "name": "Alex Graves"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "6e90fd78e8a3b98af3954aae5209703aa966603e",
+            "title": "Unifying Count-Based Exploration and Intrinsic Motivation"
+        },
+        {
+            "paperId": "6c7f040a150abf21dbcefe1f22e0f98fa184f41a",
+            "title": "Generative Adversarial Text to Image Synthesis"
+        },
+        {
+            "paperId": "3cccc93064dae265eeb7bc76d02cdc67c942f0a5",
+            "title": "Neural Autoregressive Distribution Estimation"
+        },
+        {
+            "paperId": "bda89e0d181eda7e49ea831225eda86d075e111c",
+            "title": "Towards Conceptual Compression"
+        },
+        {
+            "paperId": "0811597b0851b7ebe21aadce7cb4daac4664b44f",
+            "title": "One-Shot Generalization in Deep Generative Models"
+        },
+        {
+            "paperId": "9c9d7247f8c51ec5a02b0d911d1d7b9e8160495d",
+            "title": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems"
+        },
+        {
+            "paperId": "41f1d50c85d3180476c4c7b3eea121278b0d8474",
+            "title": "Pixel Recurrent Neural Networks"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "5e4eb58d5b47ac1c73f4cf189497170e75ae6237",
+            "title": "Neural GPUs Learn Algorithms"
+        },
+        {
+            "paperId": "0875fc92cce33df5cf7df169590dbf0ca00d2652",
+            "title": "Generating Images from Captions with Attention"
+        },
+        {
+            "paperId": "39e0c341351f8f4a39ac890b96217c7f4bde5369",
+            "title": "A note on the evaluation of generative models"
+        },
+        {
+            "paperId": "f37e90c0bd5c4a9619ccfb763c45cb2d84abd3e6",
+            "title": "A Neural Algorithm of Artistic Style"
+        },
+        {
+            "paperId": "e4257bc131c36504a04382290cbc27ca8bb27813",
+            "title": "Action-Conditional Video Prediction using Deep Networks in Atari Games"
+        },
+        {
+            "paperId": "b92aa7024b87f50737b372e5df31ef091ab54e62",
+            "title": "Training Very Deep Networks"
+        },
+        {
+            "paperId": "5b791cd374c7109693aaddee2c12d659ae4e3ec0",
+            "title": "Grid Long Short-Term Memory"
+        },
+        {
+            "paperId": "47900aca2f0b50da3010ad59b394c870f0e6c02e",
+            "title": "Deep Generative Image Models using a Laplacian Pyramid of Adversarial Networks"
+        },
+        {
+            "paperId": "f267934e9de60c5badfa9d3f28918e67ae7a2bf4",
+            "title": "Generative Image Modeling Using Spatial LSTMs"
+        },
+        {
+            "paperId": "5aa26299435bdf7db874ef1640a6c3b5a4a2c394",
+            "title": "FaceNet: A unified embedding for face recognition and clustering"
+        },
+        {
+            "paperId": "2dcef55a07f8607a819c21fe84131ea269cc2e3c",
+            "title": "Deep Unsupervised Learning using Nonequilibrium Thermodynamics"
+        },
+        {
+            "paperId": "a2785f66c20fbdf30ec26c0931584c6d6a0f4fca",
+            "title": "DRAW: A Recurrent Neural Network For Image Generation"
+        },
+        {
+            "paperId": "0523e14247d74c4505cd5e32e1f0495f291ec432",
+            "title": "Factoring Variations in Natural Images with Deep Gaussian Mixture Models"
+        },
+        {
+            "paperId": "dc8301b67f98accbb331190dd7bd987952a692af",
+            "title": "NICE: Non-linear Independent Components Estimation"
+        },
+        {
+            "paperId": "484ad17c926292fbe0d5211540832a8c8a8e958b",
+            "title": "Stochastic Backpropagation and Approximate Inference in Deep Generative Models"
+        },
+        {
+            "paperId": "695a2c95eacdbccb7a73d2f1e90e7b35b4b3d864",
+            "title": "Deep AutoRegressive Networks"
+        },
+        {
+            "paperId": "8948bea1e2436e51316f131170923cb5b7d870db",
+            "title": "Learning with Hierarchical-Deep Models"
+        },
+        {
+            "paperId": "1c6d990c80e60aa0b0059415444cdf94b3574f0f",
+            "title": "Stacked Convolutional Auto-Encoders for Hierarchical Feature Extraction"
+        },
+        {
+            "paperId": "2c377d9dcf88d00019f0b2ed9068f183024cd9d3",
+            "title": "Offline Handwriting Recognition with Multidimensional Recurrent Neural Networks"
+        },
+        {
+            "paperId": "c68796f833a7151f0a63d1d1608dc902b4fdc9b6",
+            "title": "GENERATIVE ADVERSARIAL NETS"
+        },
+        {
+            "paperId": "e193734562261e42e207de81a44b8f874c9faf0a",
+            "title": "Locally-connected transformations for deep GMMs"
+        },
+        {
+            "paperId": "ad2469bff83c9d5a55dd81040d369c8af29be132",
+            "title": "Inceptionism: Going Deeper into Neural Networks"
+        },
+        {
+            "paperId": "f4278dac2abafb66a0a824f1d59e72b67e7540a1",
+            "title": "The student-t mixture as a natural image patch prior with application to image compression"
+        },
+        {
+            "paperId": "b893e7053c9c7e266a23fb13a42261a88f650210",
+            "title": "The Neural Autoregressive Distribution Estimator"
+        },
+        {
+            "paperId": "c08d0525bd42fa1c24f9f5df72f4c8fcf7063b22",
+            "title": "Offline Handwriting Recognition with Multidimensional Recurrent Neural Networks"
+        }
+    ]
+}

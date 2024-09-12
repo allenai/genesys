@@ -1,0 +1,210 @@
+{
+    "paperId": "032274e57f7d8b456bd255fe76b909b2c1d7458e",
+    "externalIds": {
+        "ArXiv": "1705.04304",
+        "DBLP": "journals/corr/PaulusXS17",
+        "MAG": "2612675303",
+        "CorpusId": 21850704
+    },
+    "title": "A Deep Reinforced Model for Abstractive Summarization",
+    "abstract": "Attentional, RNN-based encoder-decoder models for abstractive summarization have achieved good performance on short input and output sequences. For longer documents and summaries however these models often include repetitive and incoherent phrases. We introduce a neural network model with a novel intra-attention that attends over the input and continuously generated output separately, and a new training method that combines standard supervised word prediction and reinforcement learning (RL). Models trained only with supervised learning often exhibit \"exposure bias\" - they assume ground truth is provided at each step during training. However, when standard word prediction is combined with the global sequence prediction training of RL the resulting summaries become more readable. We evaluate this model on the CNN/Daily Mail and New York Times datasets. Our model obtains a 41.16 ROUGE-1 score on the CNN/Daily Mail dataset, an improvement over previous state-of-the-art models. Human evaluation also shows that our model produces higher quality summaries.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2017,
+    "referenceCount": 43,
+    "citationCount": 1480,
+    "influentialCitationCount": 175,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A neural network model with a novel intra-attention that attends over the input and continuously generated output separately, and a new training method that combines standard supervised word prediction and reinforcement learning (RL) that produces higher quality summaries."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2896063",
+            "name": "Romain Paulus"
+        },
+        {
+            "authorId": "2228109",
+            "name": "Caiming Xiong"
+        },
+        {
+            "authorId": "2166511",
+            "name": "R. Socher"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "668db48c6a79826456341680ee1175dfc4cced71",
+            "title": "Get To The Point: Summarization with Pointer-Generator Networks"
+        },
+        {
+            "paperId": "6c8353697cdbb98dfba4f493875778c4286d3e3a",
+            "title": "Self-Critical Sequence Training for Image Captioning"
+        },
+        {
+            "paperId": "1bc49abe5145055f1fa259bd4e700b1eb6b7f08d",
+            "title": "SummaRuNNer: A Recurrent Neural Network Based Sequence Model for Extractive Summarization of Documents"
+        },
+        {
+            "paperId": "b108211139032738c21d2937a63433b97b31e77d",
+            "title": "Efficient Summarization with Read-Again and Copy Mechanism"
+        },
+        {
+            "paperId": "424aef7340ee618132cc3314669400e23ad910ba",
+            "title": "Tying Word Vectors and Word Classifiers: A Loss Framework for Language Modeling"
+        },
+        {
+            "paperId": "efbd381493bb9636f489b965a2034d529cd56bcd",
+            "title": "Pointer Sentinel Mixture Models"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "1d9600229a4cf8ba5e8f5ad4d05b41af9c8f80a6",
+            "title": "Reward Augmented Maximum Likelihood for Neural Structured Prediction"
+        },
+        {
+            "paperId": "267aef492d17592a293aa17ec8a25f7264645bcb",
+            "title": "The Role of Discourse Units in Near-Extractive Summarization"
+        },
+        {
+            "paperId": "63e39cdf1ad884da6bc69096bb3413b5b1100559",
+            "title": "Using the Output Embedding to Improve Language Models"
+        },
+        {
+            "paperId": "2f160ce71f01ac2043de67536ff0e413ff6f58c5",
+            "title": "Temporal Attention Model for Neural Machine Translation"
+        },
+        {
+            "paperId": "5ab72d44237533534de8402e30f3ccce25ce30de",
+            "title": "Distraction-Based Neural Networks for Modeling Document"
+        },
+        {
+            "paperId": "7a67159fc7bc76d0b37930b55005a69b51241635",
+            "title": "Abstractive Sentence Summarization with Attentive Recurrent Neural Networks"
+        },
+        {
+            "paperId": "507d6e09f51b2fc93f756ab748f6eadd11b7b86e",
+            "title": "Learning-Based Single-Document Summarization with Compression and Anaphoricity Constraints"
+        },
+        {
+            "paperId": "aa5b35dcf8b024f5352db73cc3944e8fad4f3793",
+            "title": "Pointing the Unknown Words"
+        },
+        {
+            "paperId": "129cbad01be98ee88a930e31898cb76be79c41c1",
+            "title": "How NOT To Evaluate Your Dialogue System: An Empirical Study of Unsupervised Evaluation Metrics for Dialogue Response Generation"
+        },
+        {
+            "paperId": "e957747f4f8600940be4c5bb001aa70c84e53a53",
+            "title": "Latent Predictor Networks for Code Generation"
+        },
+        {
+            "paperId": "f37076f426023241f19cdc2fb0a0fd733a6fa7fa",
+            "title": "Abstractive Text Summarization using Sequence-to-sequence RNNs and Beyond"
+        },
+        {
+            "paperId": "13fe71da009484f240c46f14d9330e932f8de210",
+            "title": "Long Short-Term Memory-Networks for Machine Reading"
+        },
+        {
+            "paperId": "adcfef04625c2763028815759750d47c7c3fe689",
+            "title": "\u5927\u898f\u6a21\u8981\u7d04\u8cc7\u6e90\u3068\u3057\u3066\u306eNew York Times Annotated Corpus"
+        },
+        {
+            "paperId": "b7aee9dfb027d6061c6a653684c0fa9a9bba750d",
+            "title": "Sequence Level Training with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "1ac30af5522c7a50ec4d1ee43fd2bd8652a9bd52",
+            "title": "A Neural Attention Model for Abstractive Sentence Summarization"
+        },
+        {
+            "paperId": "0403ca8ad125899996c783f6481c78d432a77106",
+            "title": "System Combination for Multi-document Summarization"
+        },
+        {
+            "paperId": "d1505c6123c102e53eb19dff312cb25cea840b72",
+            "title": "Teaching Machines to Read and Comprehend"
+        },
+        {
+            "paperId": "9653d5c2c7844347343d073bbedd96e05d52f69b",
+            "title": "Pointer Networks"
+        },
+        {
+            "paperId": "d5d46991c7e92352865dbf442be7c74d0d560dd8",
+            "title": "Improving Multi-Step Prediction of Learned Time Series Models"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "1da34969c5ba489292cef82bd62206feb016486f",
+            "title": "Detecting Information-Dense Texts in Multiple News Domains"
+        },
+        {
+            "paperId": "2f5102ec3f70d0dea98c957cc2cab4d15d83a2da",
+            "title": "The Stanford CoreNLP Natural Language Processing Toolkit"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "5f176a929d9eaa569b430cb784280802cf8fca79",
+            "title": "Overcoming the Lack of Parallel Data in Sentence Compression"
+        },
+        {
+            "paperId": "60b05f32c32519a809f21642ef1eb3eaf3848008",
+            "title": "ROUGE: A Package for Automatic Evaluation of Summaries"
+        },
+        {
+            "paperId": "8bb5860185c6a8656176e64ce239c320d387a53e",
+            "title": "Hedge Trimmer: A Parse-and-Trim Approach to Headline Generation"
+        },
+        {
+            "paperId": "30e128568200e6777dc629bc6fb2fb95833aa98c",
+            "title": "Automatic Text Summarization Using a Machine Learning Approach"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "ce9a21b93ba29d4145a8ef6bf401e77f261848de",
+            "title": "A Learning Algorithm for Continually Running Fully Recurrent Neural Networks"
+        },
+        {
+            "paperId": "e374ffb49d8492ece0f54697499a7c78e2201f70",
+            "title": "Improving the Estimation of Word Importance for News Multi-Document Summarization - Extended Technical Report"
+        },
+        {
+            "paperId": "a9614b05461bb306cc47c8cd645b9b67bb1227ba",
+            "title": "HEADS: Headline Generation as Sequence Prediction Using an Abstract Feature-Rich Space"
+        },
+        {
+            "paperId": "4c915c1eecb217c123a36dc6d3ce52d12c742614",
+            "title": "Simple Statistical Gradient-Following Algorithms for Connectionist Reinforcement Learning"
+        },
+        {
+            "paperId": "c572e596c3bdd365f43d82ddea1e0d95b8697033",
+            "title": "Identi\ufb01cation and Characterization of Newsworthy Verbs in World News"
+        }
+    ]
+}

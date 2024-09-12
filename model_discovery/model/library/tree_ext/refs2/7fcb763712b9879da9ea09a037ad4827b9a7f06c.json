@@ -1,0 +1,194 @@
+{
+    "paperId": "7fcb763712b9879da9ea09a037ad4827b9a7f06c",
+    "externalIds": {
+        "MAG": "2097780146",
+        "DBLP": "journals/tvlsi/AyinalaBP12",
+        "DOI": "10.1109/TVLSI.2011.2147338",
+        "CorpusId": 4855912
+    },
+    "title": "Pipelined Parallel FFT Architectures via Folding Transformation",
+    "abstract": "This paper presents a novel approach to develop parallel pipelined architectures for the fast Fourier transform (FFT). A formal procedure for designing FFT architectures using folding transformation and register minimization techniques is proposed. Novel parallel-pipelined architectures for the computation of complex and real valued fast Fourier transform are derived. For complex valued Fourier transform (CFFT), the proposed architecture takes advantage of under utilized hardware in the serial architecture to derive L-parallel architectures without increasing the hardware complexity by a factor of L. The operating frequency of the proposed architecture can be decreased which in turn reduces the power consumption. Further, this paper presents new parallel-pipelined architectures for the computation of real-valued fast Fourier transform (RFFT). The proposed architectures exploit redundancy in the computation of FFT samples to reduce the hardware complexity. A comparison is drawn between the proposed designs and the previous architectures. The power consumption can be reduced up to 37% and 50% in 2-parallel CFFT and RFFT architectures, respectively. The output samples are obtained in a scrambled order in the proposed architectures. Circuits to reorder these scrambled output sequences to a desired order are presented.",
+    "venue": "IEEE Transactions on Very Large Scale Integration (VLSI) Systems",
+    "year": 2012,
+    "referenceCount": 39,
+    "citationCount": 197,
+    "influentialCitationCount": 12,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A formal procedure for designing FFT architectures using folding transformation and register minimization techniques is proposed and new parallel-pipelined architectures for the computation of real-valued fast Fourier transform (RFFT) are derived."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1788955",
+            "name": "M. Ayinala"
+        },
+        {
+            "authorId": "2215696548",
+            "name": "M. J. Brown"
+        },
+        {
+            "authorId": "144062727",
+            "name": "K. Parhi"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "d113788973f34fd1681c96489f980ced4cf077ed",
+            "title": "Parallel - pipelined radix-22 FFT architecture for real valued signals"
+        },
+        {
+            "paperId": "697d1a1a92829563b0039973dac571643701266e",
+            "title": "Seizure prediction using cost-sensitive support vector machine"
+        },
+        {
+            "paperId": "34b4027791e8c397db3279259804ab06aa21db40",
+            "title": "A Pipelined FFT Architecture for Real-Valued Signals"
+        },
+        {
+            "paperId": "b59554184109b0659d38f89b5b4fea022c4e1a71",
+            "title": "A real-time maximum-likelihood heart-rate estimator for wearable textile sensors"
+        },
+        {
+            "paperId": "8b06019f0e9a1e37f9fc60a09a2e3a0fc5de0059",
+            "title": "A high-speed four-parallel radix-24 FFT/IFFT processor for UWB applications"
+        },
+        {
+            "paperId": "594de4a55935788f4717d5fe804fa01268aac1e0",
+            "title": "A High-Speed Two-Parallel Radix-24 FFT/IFFT Processor for MB-OFDM UWB Systems"
+        },
+        {
+            "paperId": "7876bd0b96cedbba045a54ebad75ea28fc611eef",
+            "title": "TDCS, OFDM, and MC-CDMA: a brief tutorial"
+        },
+        {
+            "paperId": "aa023a08c77ba60fffcc98e281b8c8e2d7e7c2fd",
+            "title": "A Parallel FFT Architecture for FPGAs"
+        },
+        {
+            "paperId": "3a34b76c7ceb64b3792b22e1e39a0555770fe91d",
+            "title": "Radix-2 decimation-in-frequency algorithm for the computation of the real-valued FFT"
+        },
+        {
+            "paperId": "0866b82275cd66e7c087333eec48a84b40c0882b",
+            "title": "ILP-based cost-optimal DSP synthesis with module selection and data format conversion"
+        },
+        {
+            "paperId": "1d4df8bb293a05177f0804cfa4e14dd1f35fa79b",
+            "title": "Designing pipeline FFT processor for OFDM (de)modulation"
+        },
+        {
+            "paperId": "b2c39cdaea33f5245ce0225370c832891d3d1687",
+            "title": "Exhaustive scheduling and retiming of digital signal processing systems"
+        },
+        {
+            "paperId": "7a37298e16e3b21e3c6726f4e638f7a25d625b62",
+            "title": "A new approach to pipeline FFT processor"
+        },
+        {
+            "paperId": "e76d532afe02a993ba9b8b712ddaddc5438ad2a1",
+            "title": "Handbook of Real-Time Fast Fourier Transforms: Algorithms to Product Testing"
+        },
+        {
+            "paperId": "0be2f945f781d5af953b2b36441ceac6fef3ed08",
+            "title": "Calculation of minimum number of registers in arbitrary life time chart"
+        },
+        {
+            "paperId": "dacf8f2252cc4406125ff3cd2949cf113a7c1a6f",
+            "title": "Signal modeling techniques in speech recognition"
+        },
+        {
+            "paperId": "17c4e16f5d467b1cb549b9b2ade3cded22d54044",
+            "title": "A radix-8 wafer scale FFT processor"
+        },
+        {
+            "paperId": "524da02f3034060d6aaef190e3aa9d03da1a5ef4",
+            "title": "Fast prototyping of datapath-intensive architectures"
+        },
+        {
+            "paperId": "74f2e79b1e314ab5d964b2de6dbd87b270d8aec3",
+            "title": "Architecture-driven synthesis techniques for VLSI implementation of DSP algorithms"
+        },
+        {
+            "paperId": "7eb198d604d58570490187fb49d6c494e73b1d16",
+            "title": "A pipelined FFT processor for word-sequential data"
+        },
+        {
+            "paperId": "958c200f8d07e503be1e4f9d0475cf19497d5aa8",
+            "title": "A novel radix-2 pipeline architecture for the computation of the DFT"
+        },
+        {
+            "paperId": "11544f07bb1059c4168fc72a50263c1426e98b74",
+            "title": "Implementation of \"Split-radix\" FFT algorithms for complex, real, and real-symmetric data"
+        },
+        {
+            "paperId": "c0aab0d1add5edb81ac3bd960b53081c10911aa0",
+            "title": "Pipeline and Parallel-Pipeline FFT Processors for VLSI Implementations"
+        },
+        {
+            "paperId": "50ecf28814b3350b1a1a01fec88c5a457a648f07",
+            "title": "Fourier Transform Computers Using CORDIC Iterations"
+        },
+        {
+            "paperId": "0e6beb95b5150ce99b108acdefabf70ccd3fee30",
+            "title": "An algorithm for the machine calculation of complex Fourier series"
+        },
+        {
+            "paperId": "0a2c1509c36c80fe7457df33d94c0d0550681a40",
+            "title": "Engineering"
+        },
+        {
+            "paperId": "315a721287694208d68f02107319e4151aff9eed",
+            "title": "Vlsi Digital Signal Processing Systems Design And Implementation"
+        },
+        {
+            "paperId": "e0efada078620c80f7bb4d78be59f02ddd49567b",
+            "title": "Efficient hardware architectures for the computation of the FFT and other related signal processing algorithms in real time"
+        },
+        {
+            "paperId": "8daf4d1cd5811bd9c2cca9fe1d4956249eb4ee3a",
+            "title": "A 1-GS/s FFT/IFFT processor for UWB applications"
+        },
+        {
+            "paperId": null,
+            "title": "Discrete-Time Singal Processing , 2nd ed. Englewood Cliffs, NJ"
+        },
+        {
+            "paperId": "c05733ae351c9574fe2bdf7f7841393d779fef4f",
+            "title": "High-level DSP synthesis using concurrent transformations, scheduling, and allocation"
+        },
+        {
+            "paperId": "d49425a1c1907b3feabb65e15c73cd0418f24b1a",
+            "title": "Handbook of Real-Time Fast Fourier Transforms"
+        },
+        {
+            "paperId": "0682e696daab375bce51a2f716faeddfba5488a6",
+            "title": "Synthesis of control circuits in folded pipelined DSP architectures"
+        },
+        {
+            "paperId": "bcb29eb6cfaf36af6f36a7797493116a155bd331",
+            "title": "Systematic synthesis of DSP data format converters using life-time analysis and forward-backward register allocation"
+        },
+        {
+            "paperId": "a05a0a8d7a10e8e52dc1df8374459a03dd3ff33e",
+            "title": "New FFT structures based on the Bruun algorithm"
+        },
+        {
+            "paperId": "571ab9ac84ce3605a6b1b7bdc451821a2ba877a5",
+            "title": "A radix 4 delay commutator for fast Fourier transform processor implementation"
+        },
+        {
+            "paperId": "f5ed53760000b1851c10734f271a97b7017ecfb8",
+            "title": "Theory and application of digital signal processing"
+        },
+        {
+            "paperId": "3c366307ce3973d241faea3b13df9c75ba6614d1",
+            "title": "Efficient hardware architectures for the computation of the FFT and other related signal processing algorithms in real time"
+        },
+        {
+            "paperId": null,
+            "title": "[ a Distinguished McKnight University with the Department of Electrical and"
+        }
+    ]
+}

@@ -1,0 +1,202 @@
+{
+    "paperId": "3c019693f59a32bf2fe5e99e93372c2816705139",
+    "externalIds": {
+        "MAG": "1605715232",
+        "DBLP": "conf/icpp/Blelloch87",
+        "DOI": "10.1109/12.42122",
+        "CorpusId": 15020969
+    },
+    "title": "Scans as Primitive Parallel Operations",
+    "abstract": "A study of the effects of adding two scan primitives as unit-time primitives to PRAM (parallel random access machine) models is presented. It is shown that the primitives improve the asymptotic running time of many algorithms by an O(log n) factor, greatly simplifying the description of many algorithms, and are significantly easier to implement than memory references. It is argued that the algorithm designer should feel free to use these operations as if they were as cheap as a memory reference. The author describes five algorithms that clearly illustrate how the scan primitives can be used in algorithm design: a radix-sort algorithm, a quicksort algorithm, a minimum-spanning-tree algorithm, a line-drawing algorithm, and a merging algorithm. These all run on an EREW (exclusive read, exclusive write) PRAM with the addition of two scan primitives and are either simpler or more efficient than their pure PRAM counterparts. The scan primitives have been implemented in microcode on the Connection Machine system, are available in PARIS (the parallel instruction set of the machine). >",
+    "venue": "International Conference on Parallel Processing",
+    "year": 1989,
+    "referenceCount": 43,
+    "citationCount": 598,
+    "influentialCitationCount": 36,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A study of the effects of adding two scan primitives as unit-time primitives to PRAM (parallel random access machine) models is presented and it is shown that the primitives improve the asymptotic running time of many algorithms by an O(log n) factor, greatly simplifying the description of many technologies."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1717462",
+            "name": "G. Blelloch"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "79164fe72e6b54d09a9b70453804557241a149e1",
+            "title": "Faster Optimal Parallel Prefix Sums and List Ranking"
+        },
+        {
+            "paperId": "8e3f7c6b6e43ac101cf40f610adfbb88ebc1eb99",
+            "title": "Approximate and exact parallel scheduling with applications to list, tree and graph problems"
+        },
+        {
+            "paperId": "fc311144b9e7a185cf7472cefa4d9d2343b9b07a",
+            "title": "Parallel tree contraction and its application"
+        },
+        {
+            "paperId": "383614086d00cbd0b0cdfd784fe67ac00fe12560",
+            "title": "The power of parallel prefix"
+        },
+        {
+            "paperId": "6e7c0ba85e98691460970212bce4e660752ce20e",
+            "title": "\u201cHot spot\u201d contention and combining in multistage interconnection networks"
+        },
+        {
+            "paperId": "2a9a049c4d4d283477f6d8e3d1109c99651c5f16",
+            "title": "The cosmic cube"
+        },
+        {
+            "paperId": "3b2849c55fe6fd719cc298be03292a93ce78d107",
+            "title": "Tight Bounds on the Complexity of Parallel Sorting"
+        },
+        {
+            "paperId": "acf58c9c53c735c2739b4d2c2f80e37da8cd5bec",
+            "title": "O(n LOG n) SORTING NETWORK."
+        },
+        {
+            "paperId": "a3c49750cb342fffc26d1bf95235ac6c64ca0cc0",
+            "title": "An 0(n log n) sorting network"
+        },
+        {
+            "paperId": "a75e50b42d3ae946620d4f9429d617458b9aceef",
+            "title": "New bounds for parallel prefix circuits"
+        },
+        {
+            "paperId": "4a83ef19f14498aa4ef29b4c295c6d4487493c59",
+            "title": "Basic Techniques for the Efficient Coordination of Very Large Numbers of Cooperating Sequential Processors"
+        },
+        {
+            "paperId": "12cfebd40a360e884943a456bccec37ebee7f990",
+            "title": "The NYU Ultracomputer&#8212;Designing an MIMD Shared Memory Parallel Computer"
+        },
+        {
+            "paperId": "5ab98728f8682c1e2a057f46eeea5c3038e022c7",
+            "title": "A universal interconnection pattern for parallel computers"
+        },
+        {
+            "paperId": "98ae1d41deab44c3bfdbac51ccbcc5faf7cd0bcf",
+            "title": "An O(log n) Parallel Connectivity Algorithm"
+        },
+        {
+            "paperId": "0293073057c763ceca9890f6f5452093432b561a",
+            "title": "An O(n\u00b2 log n) Parallel MAX-FLOW Algorithm"
+        },
+        {
+            "paperId": "ccb48b185d073f14aeec66e35fe20063ccd3f7e7",
+            "title": "Fast, Efficient Parallel Algorithms for Some Graph Problems"
+        },
+        {
+            "paperId": "485db3b845b6d2b1668572661e47d8440366818a",
+            "title": "Finding the Maximum, Merging, and Sorting in a Parallel Computation Model"
+        },
+        {
+            "paperId": "7c6e08e5be50148dba03375fd1d05f29b2e361d3",
+            "title": "The chip complexity of binary arithmetic"
+        },
+        {
+            "paperId": "535d6114109bb103cc65d188b0c3237fc43b444a",
+            "title": "Computing connected components on parallel computers"
+        },
+        {
+            "paperId": "98da568adc7858630e26d0563304a495f90608d0",
+            "title": "Parallelism in random access machines"
+        },
+        {
+            "paperId": "3a5913530437e463e6160012eb3f97812d5eaedc",
+            "title": "A Chronology of Computer Chess and its Literature"
+        },
+        {
+            "paperId": "6e82369b52a588d8cc00f68e55067aa741e860c2",
+            "title": "Sorting on a mesh-connected parallel computer"
+        },
+        {
+            "paperId": "774099ea09501c765d9a4e4f67e07b5f7aed4f7e",
+            "title": "Merging with parallel processors"
+        },
+        {
+            "paperId": "a1efad845665fbb645614f535348ec3048f5869d",
+            "title": "Parallel Processing with the Perfect Shuffle"
+        },
+        {
+            "paperId": "7dbddffae13f5cbea1cccbd65525817a0df2aa47",
+            "title": "Sorting networks and their applications"
+        },
+        {
+            "paperId": "61d0d4f69571996a1d07545b530f9fc84a734b8a",
+            "title": "Programming, Games and Transportation Networks"
+        },
+        {
+            "paperId": "cb862825014f93eae561fbad95f14ad8a6f550e3",
+            "title": "Random-Access Stored-Program Machines, an Approach to Programming Languages"
+        },
+        {
+            "paperId": "2d0622a9412c6d73c6409c0e96857ae4ae665f78",
+            "title": "A programming language"
+        },
+        {
+            "paperId": "76f64ea2efb2a6660e0b81d79080aeb8916c4b4f",
+            "title": "Scan primitives and parallel vector models"
+        },
+        {
+            "paperId": "a1d635ec98788fe161c1e2d12ac79143d0c25e52",
+            "title": "Fluent parallel computation"
+        },
+        {
+            "paperId": null,
+            "title": "New York: Plenum"
+        },
+        {
+            "paperId": "746085d18a41041bdc13a206aae72a191c2d7d05",
+            "title": "Optimal Tree Contraction in the EREW Model"
+        },
+        {
+            "paperId": "e8e7d619a0caf5ef5ef7161a39bbea6728b44f58",
+            "title": "Simple, Efficient Asynchronous Parallel Prefix Algorithms"
+        },
+        {
+            "paperId": "951a6dd76273470f04b38884fc3b3632e27a954a",
+            "title": "The BBN multiprocessors: Butterfly and Monarch"
+        },
+        {
+            "paperId": "7f3ad73b38bfeecb5ee0c8cc9ffc02ef8d1d34c4",
+            "title": "New Connectivity and MSF Algorithms for Ultracomputer and PRAM"
+        },
+        {
+            "paperId": "e60cbae0a44a5b5d94888946ef2a15c7036ce853",
+            "title": "Data structures and network algorithms"
+        },
+        {
+            "paperId": null,
+            "title": "Blelloch received the B.A. degree in physics in 1983 from Swarthmore College, Swarthmore, PA, and the M.S. and Ph.D. degree in computer science"
+        },
+        {
+            "paperId": null,
+            "title": "Area-efficient layouts (for VLSI)"
+        },
+        {
+            "paperId": "80edde97ddab0949b9b921215c72731dd52c2ea1",
+            "title": "The Complexity of Parallel Computations"
+        },
+        {
+            "paperId": "470e2225313b70f659ccae6a3dfe0b683864ae35",
+            "title": "Principles in interactive computer graphics"
+        },
+        {
+            "paperId": "3dbe2ee8de3c3bf06ed722b36cef75152f3d5997",
+            "title": "On the Algorithmic Complexity of Discrete Functions"
+        },
+        {
+            "paperId": null,
+            "title": "0 jistem problen minimdim Praca Moravske PfhodovedeckC Spolecnosti"
+        },
+        {
+            "paperId": null,
+            "title": "Leiserson for his ideas, support, and enthusiasm, A. Ranade for first pointing out to me that scans can be bit pipelined, and to A Steele for their helpful comments"
+        }
+    ]
+}

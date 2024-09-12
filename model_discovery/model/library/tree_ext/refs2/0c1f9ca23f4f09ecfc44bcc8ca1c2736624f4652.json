@@ -1,0 +1,178 @@
+{
+    "paperId": "0c1f9ca23f4f09ecfc44bcc8ca1c2736624f4652",
+    "externalIds": {
+        "MAG": "2963266340",
+        "DBLP": "conf/nips/GalG16",
+        "ArXiv": "1512.05287",
+        "CorpusId": 15953218
+    },
+    "title": "A Theoretically Grounded Application of Dropout in Recurrent Neural Networks",
+    "abstract": "Recurrent neural networks (RNNs) stand at the forefront of many recent developments in deep learning. Yet a major difficulty with these models is their tendency to overfit, with dropout shown to fail when applied to recurrent layers. Recent results at the intersection of Bayesian modelling and deep learning offer a Bayesian interpretation of common deep learning techniques such as dropout. This grounding of dropout in approximate Bayesian inference suggests an extension of the theoretical results, offering insights into the use of dropout with RNN models. We apply this new variational inference based dropout technique in LSTM and GRU models, assessing it on language modelling and sentiment analysis tasks. The new approach outperforms existing techniques, and to the best of our knowledge improves on the single model state-of-the-art in language modelling with the Penn Treebank (73.4 test perplexity). This extends our arsenal of variational tools in deep learning.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2015,
+    "referenceCount": 36,
+    "citationCount": 1589,
+    "influentialCitationCount": 237,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work applies a new variational inference based dropout technique in LSTM and GRU models, which outperforms existing techniques, and to the best of the knowledge improves on the single model state-of-the-art in language modelling with the Penn Treebank."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2681954",
+            "name": "Y. Gal"
+        },
+        {
+            "authorId": "1744700",
+            "name": "Zoubin Ghahramani"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "4a5e68033940785468cbe34bd6249106c311acfb",
+            "title": "RNNDROP: A novel dropout for RNNS in ASR"
+        },
+        {
+            "paperId": "a946fa85ade4306d8912c75ed0186a83404ada0a",
+            "title": "Where to apply dropout in recurrent neural networks for handwriting recognition?"
+        },
+        {
+            "paperId": "62adfea3cc1cd9eb6b53e0e8a40be5dfda2adf8d",
+            "title": "Weight Uncertainty in Neural Network"
+        },
+        {
+            "paperId": "01e2ea72b42b8cdbb723c7a1cdae5563db46aace",
+            "title": "Bayesian dark knowledge"
+        },
+        {
+            "paperId": "4443e2e5bfd112562ecef578f772cee3c692f19f",
+            "title": "Variational Dropout and the Local Reparameterization Trick"
+        },
+        {
+            "paperId": "f35de4f9b1a7c4d3fa96a0d2ab1bf8937671f6b6",
+            "title": "Dropout as a Bayesian Approximation: Representing Model Uncertainty in Deep Learning"
+        },
+        {
+            "paperId": "31b7afa0a6d0968382804e2e7a1470f11b6fb1ac",
+            "title": "Bayesian Convolutional Neural Networks with Bernoulli Approximate Variational Inference"
+        },
+        {
+            "paperId": "da6057368920585bcf2443295b98418840f1fc80",
+            "title": "Weight Uncertainty in Neural Networks"
+        },
+        {
+            "paperId": "7e17a3c231dc37d162b9ad74043afc1cee4ee2dd",
+            "title": "Probabilistic Backpropagation for Scalable Learning of Bayesian Neural Networks"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "f264e8b33c0d49a692a6ce2c4bcb28588aeb7d97",
+            "title": "Recurrent Neural Network Regularization"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "90ddcc563c29921882af539f243a9493bc6e10e8",
+            "title": "Bayesian recurrent neural network language model"
+        },
+        {
+            "paperId": "484ad17c926292fbe0d5211540832a8c8a8e958b",
+            "title": "Stochastic Backpropagation and Approximate Inference in Deep Generative Models"
+        },
+        {
+            "paperId": "c0b624c46b51920dfec5aa02cc86323c0beb0df5",
+            "title": "Dropout Improves Recurrent Neural Networks for Handwriting Recognition"
+        },
+        {
+            "paperId": "ba0c34d72dd42ef78c1f1514d92c2c22b9c0d454",
+            "title": "On Fast Dropout and its Applicability to Recurrent Networks"
+        },
+        {
+            "paperId": "944a1cfd79dbfb6fef460360a0765ba790f4027a",
+            "title": "Recurrent Continuous Translation Models"
+        },
+        {
+            "paperId": "4177ec52d1b80ed57f2e72b0f9a42365f1a8598d",
+            "title": "Speech recognition with deep recurrent neural networks"
+        },
+        {
+            "paperId": "4ef03716945bd3907458efbe1bbf8928dafc1efc",
+            "title": "Regularization and nonlinearities for neural language models: when are they needed?"
+        },
+        {
+            "paperId": "0060745e006c5f14ec326904119dca19c6545e51",
+            "title": "Improving neural networks by preventing co-adaptation of feature detectors"
+        },
+        {
+            "paperId": "6b280bede3c3f16b5ea4a38edb365d58bca14d38",
+            "title": "Recognizing recurrent neural networks (rRNN): Bayesian inference for recurrent neural networks"
+        },
+        {
+            "paperId": "5a9ef216bf11f222438fff130c778267d39a9564",
+            "title": "Practical Variational Inference for Neural Networks"
+        },
+        {
+            "paperId": "6af58c061f2e4f130c3b795c21ff0c7e3903278f",
+            "title": "Seeing Stars: Exploiting Class Relationships for Sentiment Categorization with Respect to Rating Scales"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "25c9f33aceac6dcff357727cbe2faf145b01d13c",
+            "title": "Keeping the neural networks simple by minimizing the description length of the weights"
+        },
+        {
+            "paperId": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+            "title": "Building a Large Annotated Corpus of English: The Penn Treebank"
+        },
+        {
+            "paperId": "b959164d1efca4b73986ba5d21e664aadbbc0457",
+            "title": "A Practical Bayesian Framework for Backpropagation Networks"
+        },
+        {
+            "paperId": null,
+            "title": "https://github.com/fchollet/keras"
+        },
+        {
+            "paperId": null,
+            "title": "fchollet"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "f9a1b3850dfd837793743565a8af95973d395a4e",
+            "title": "LSTM Neural Networks for Language Modeling"
+        },
+        {
+            "paperId": null,
+            "title": "Theano: a CPU and GPU math expression compiler"
+        },
+        {
+            "paperId": "78d19e190dc5ece1e4e42a76662c5e98c2bb0842",
+            "title": "Ensemble learning in Bayesian neural networks"
+        },
+        {
+            "paperId": "a22b36cf5dba3e85eb064220be7ef03be4efba48",
+            "title": "Bayesian learning for neural networks"
+        },
+        {
+            "paperId": null,
+            "title": "Test error for Variational LSTM with various settings on the sentiment analysis task. Different dropout probabilities are used with the recurrent layer (p U ) and embedding layer"
+        }
+    ]
+}

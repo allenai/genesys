@@ -1,0 +1,45 @@
+{
+    "paperId": "387eed2d96c099655168c4cfa52ec71ada48ca2d",
+    "externalIds": {
+        "MAG": "2037221767",
+        "DOI": "10.1109/TASSP.1980.1163351",
+        "CorpusId": 53666083
+    },
+    "title": "A fast cosine transform in one and two dimensions",
+    "abstract": "The discrete cosine transform (DCT) of an N-point real signal is derived by taking the discrete Fourier transform (DFT) of a 2N-point even extension of the signal. It is shown that the same result may be obtained using only an N-point DFT of a reordered version of the original signal, with a resulting saving of 1/2. If the fast Fourier transform (FFT) is used to compute the DFT, the result is a fast cosine transform (FCT) that can be computed using on the order of N \\log_{2} N real multiplications. The method is then extended to two dimensions, with a saving of 1/4 over the traditional method that uses the DFT.",
+    "venue": "",
+    "year": 1980,
+    "referenceCount": 4,
+    "citationCount": 333,
+    "influentialCitationCount": 25,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The discrete cosine transform (DCT) of an N-point real signal is derived by taking the discrete Fourier transform (DFT) of a 2N-point even extension of the signal and the method is extended to two dimensions, with a saving of 1/4 over the traditional method that uses the DFT."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "10080270",
+            "name": "J. Makhoul"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "7a52b2d33f0c3bb175aadee3456666b08a820075",
+            "title": "On the Computation of the Discrete Cosine Transform"
+        },
+        {
+            "paperId": "f3aeb3a51e73237c17d3c4805cbc3dc26eda1031",
+            "title": "A Fast Computational Algorithm for the Discrete Cosine Transform"
+        },
+        {
+            "paperId": "3cdd20860b28b82af877923ee0cf7bf3c49f587c",
+            "title": "Adaptive transform coding of speech signals"
+        },
+        {
+            "paperId": "5da4980d2e3f83f153af4e53544b5746e6d7841d",
+            "title": "Discrete Cosine Transform"
+        }
+    ]
+}

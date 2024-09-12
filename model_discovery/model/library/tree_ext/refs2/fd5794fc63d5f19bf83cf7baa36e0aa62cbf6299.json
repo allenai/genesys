@@ -1,0 +1,159 @@
+{
+    "paperId": "fd5794fc63d5f19bf83cf7baa36e0aa62cbf6299",
+    "externalIds": {
+        "ACL": "P18-1027",
+        "ArXiv": "1805.04623",
+        "DBLP": "journals/corr/abs-1805-04623",
+        "MAG": "2963951265",
+        "DOI": "10.18653/v1/P18-1027",
+        "CorpusId": 21700944
+    },
+    "title": "Sharp Nearby, Fuzzy Far Away: How Neural Language Models Use Context",
+    "abstract": "We know very little about how neural language models (LM) use prior linguistic context. In this paper, we investigate the role of context in an LSTM LM, through ablation studies. Specifically, we analyze the increase in perplexity when prior context words are shuffled, replaced, or dropped. On two standard datasets, Penn Treebank and WikiText-2, we find that the model is capable of using about 200 tokens of context on average, but sharply distinguishes nearby context (recent 50 tokens) from the distant history. The model is highly sensitive to the order of words within the most recent sentence, but ignores word order in the long-range context (beyond 50 tokens), suggesting the distant past is modeled only as a rough semantic field or topic. We further find that the neural caching model (Grave et al., 2017b) especially helps the LSTM to copy words from within this distant context. Overall, our analysis not only provides a better understanding of how neural LMs use their context, but also sheds light on recent success from cache-based models.",
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2018,
+    "referenceCount": 28,
+    "citationCount": 279,
+    "influentialCitationCount": 17,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/P18-1027.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper investigates the role of context in an LSTM LM, through ablation studies, and analyzes the increase in perplexity when prior context words are shuffled, replaced, or dropped to provide a better understanding of how neural LMs use their context."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3030219",
+            "name": "Urvashi Khandelwal"
+        },
+        {
+            "authorId": "144533687",
+            "name": "He He"
+        },
+        {
+            "authorId": "50531624",
+            "name": "Peng Qi"
+        },
+        {
+            "authorId": "1746807",
+            "name": "Dan Jurafsky"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "ef9ddbc35676ce8ffc2a8067044473727839dbac",
+            "title": "Breaking the Softmax Bottleneck: A High-Rank RNN Language Model"
+        },
+        {
+            "paperId": "2ed4ebe1878fd8e421f24e1aac76fbdc89e9d381",
+            "title": "Unbounded cache model for online language modeling with open vocabulary"
+        },
+        {
+            "paperId": "58c6f890a1ae372958b7decf56132fe258152722",
+            "title": "Regularizing and Optimizing LSTM Language Models"
+        },
+        {
+            "paperId": "2397ce306e5d7f3d0492276e357fb1833536b5d8",
+            "title": "On the State of the Art of Evaluation in Neural Language Models"
+        },
+        {
+            "paperId": "facca89eb95fb42cd1b56b40b971ebb72b2413b5",
+            "title": "Topically Driven Neural Language Model"
+        },
+        {
+            "paperId": "a23744c15f86025a789126a7fc7a6ba54d797782",
+            "title": "N-gram Language Modeling using Recurrent Neural Network Estimation"
+        },
+        {
+            "paperId": "88caa4a0253a8b0076176745ebc072864eab66e1",
+            "title": "Language Modeling with Gated Convolutional Networks"
+        },
+        {
+            "paperId": "2d7782c225e0fc123d6e227f2cb253e58279ac73",
+            "title": "Improving Neural Language Models with a Continuous Cache"
+        },
+        {
+            "paperId": "424aef7340ee618132cc3314669400e23ad910ba",
+            "title": "Tying Word Vectors and Word Classifiers: A Loss Framework for Language Modeling"
+        },
+        {
+            "paperId": "3aa52436575cf6768a0a1a476601825f6a62e58f",
+            "title": "Assessing the Ability of LSTMs to Learn Syntax-Sensitive Dependencies"
+        },
+        {
+            "paperId": "efbd381493bb9636f489b965a2034d529cd56bcd",
+            "title": "Pointer Sentinel Mixture Models"
+        },
+        {
+            "paperId": "63e39cdf1ad884da6bc69096bb3413b5b1100559",
+            "title": "Using the Output Embedding to Improve Language Models"
+        },
+        {
+            "paperId": "e44da7d8c71edcc6e575fa7faadd5e75785a7901",
+            "title": "Fine-grained Analysis of Sentence Embeddings Using Auxiliary Prediction Tasks"
+        },
+        {
+            "paperId": "6067628004373e61b962bd4b470308882e57448b",
+            "title": "Contextual LSTM (CLSTM) models for Large scale NLP tasks"
+        },
+        {
+            "paperId": "2f2d8f8072e5cc9b296fad551f65f183bdbff7aa",
+            "title": "Exploring the Limits of Language Modeling"
+        },
+        {
+            "paperId": "0c1f9ca23f4f09ecfc44bcc8ca1c2736624f4652",
+            "title": "A Theoretically Grounded Application of Dropout in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "722e01d5ba05083f7a091f3188cfdfcf183a325d",
+            "title": "Larger-Context Language Modelling with Recurrent Neural Network"
+        },
+        {
+            "paperId": "35b91b365ceb016fb3e022577cec96fb9b445dc5",
+            "title": "The Goldilocks Principle: Reading Children's Books with Explicit Memory Representations"
+        },
+        {
+            "paperId": "fafa541419b3756968fe5b3156c6f0257cb29c23",
+            "title": "Visualizing and Understanding Neural Models in NLP"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "2f5102ec3f70d0dea98c957cc2cab4d15d83a2da",
+            "title": "The Stanford CoreNLP Natural Language Processing Toolkit"
+        },
+        {
+            "paperId": "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17",
+            "title": "Generating Sequences With Recurrent Neural Networks"
+        },
+        {
+            "paperId": "38f35dd624cd1cf827416e31ac5e0e0454028eca",
+            "title": "Regularization of Neural Networks using DropConnect"
+        },
+        {
+            "paperId": "01387a1c1d4ee037374f06f8ee3a1ea107a8b02b",
+            "title": "Syntactic Topic Models"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+            "title": "Building a Large Annotated Corpus of English: The Penn Treebank"
+        },
+        {
+            "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+            "title": "Recurrent neural network based language model"
+        },
+        {
+            "paperId": null,
+            "title": "Hotel was adapted for use as a county annex building"
+        }
+    ]
+}

@@ -1,0 +1,310 @@
+{
+    "paperId": "9f56bda06700297fe8a8aab4bb429451cee9a441",
+    "externalIds": {
+        "MAG": "2895992958",
+        "ArXiv": "1810.08033",
+        "DBLP": "journals/corr/abs-1810-08033",
+        "CorpusId": 53015027
+    },
+    "title": "Adaptivity of deep ReLU network for learning in Besov and mixed smooth Besov spaces: optimal rate and curse of dimensionality",
+    "abstract": "Deep learning has shown high performances in various types of tasks from visual recognition to natural language processing, which indicates superior flexibility and adaptivity of deep learning. To understand this phenomenon theoretically, we develop a new approximation and estimation error analysis of deep learning with the ReLU activation for functions in a Besov space and its variant with mixed smoothness. The Besov space is a considerably general function space including the Holder space and Sobolev space, and especially can capture spatial inhomogeneity of smoothness. Through the analysis in the Besov space, it is shown that deep learning can achieve the minimax optimal rate and outperform any non-adaptive (linear) estimator such as kernel ridge regression, which shows that deep learning has higher adaptivity to the spatial inhomogeneity of the target function than other estimators such as linear ones. In addition to this, it is shown that deep learning can avoid the curse of dimensionality if the target function is in a mixed smooth Besov space. We also show that the dependency of the convergence rate on the dimensionality is tight due to its minimax optimality. These results support high adaptivity of deep learning and its superior ability as a feature extractor.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2018,
+    "referenceCount": 70,
+    "citationCount": 219,
+    "influentialCitationCount": 40,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new approximation and estimation error analysis of deep learning with the ReLU activation for functions in a Besov space and its variant with mixed smoothness shows that deep learning has higher adaptivity to the spatial inhomogeneity of the target function than other estimators such as linear ones."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2026193813",
+            "name": "Taiji Suzuki"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "65305349aacab45ea652d3b6af0700c99aa2cc1f",
+            "title": "Deep Neural Networks Learn Non-Smooth Functions Effectively"
+        },
+        {
+            "paperId": "8429e7cec72cb133dc05491fb3d438b6a4443361",
+            "title": "Deep ReLU networks lessen the curse of dimensionality"
+        },
+        {
+            "paperId": "8d4f727b181e14632b7dd15435e4f756e2926ad9",
+            "title": "Optimal approximation of piecewise smooth functions using deep ReLU neural networks"
+        },
+        {
+            "paperId": "396bc378026271f5e5f87794004fac49996791c8",
+            "title": "Nonparametric regression using deep neural networks with ReLU activation function"
+        },
+        {
+            "paperId": "23effc082f2582b39e277dfc99bbce198cf36451",
+            "title": "Optimal Approximation with Sparsely Connected Deep Neural Networks"
+        },
+        {
+            "paperId": "8c48d3746d0732a08f1fa46aa2c3b634f913aab0",
+            "title": "Kolmogorov Widths of the Anisotropic Besov Classes of Periodic Functions of Many Variables"
+        },
+        {
+            "paperId": "87524c2bb725f967b7fac73442d6412b43d422d1",
+            "title": "Why Deep Neural Networks for Function Approximation?"
+        },
+        {
+            "paperId": "4d74c808f5720eb9eb312f7be85be03bd7207071",
+            "title": "Error bounds for approximations with deep ReLU networks"
+        },
+        {
+            "paperId": "4e63518bd1378d5e76ef99029ebb512721783d03",
+            "title": "Risk Bounds for High-dimensional Ridge Function Combinations Including Neural Networks"
+        },
+        {
+            "paperId": "a210ef10db9cbbc1481df1452bcee6593370e4f5",
+            "title": "Gaussian process nonparametric tensor estimator and its minimax optimality"
+        },
+        {
+            "paperId": "6e997fec1412abb4b630d0e6d4df95813a01e093",
+            "title": "Exponential expressivity in deep neural networks through transient chaos"
+        },
+        {
+            "paperId": "7db73b56ca014d44b925ed6ad6d1fe18a774ecd1",
+            "title": "Convolutional Rectifier Networks as Generalized Tensor Decompositions"
+        },
+        {
+            "paperId": "e76f5ed127eec643b7bc07e1c2c93412ea4a2965",
+            "title": "Hyperbolic Cross Approximation"
+        },
+        {
+            "paperId": "7acb2f72bdfb505233fec1e9521d9a7d70ddcde4",
+            "title": "Mathematical Foundations of Infinite-Dimensional Statistical Models"
+        },
+        {
+            "paperId": "325e51cdb065666f3c9e21e70a823bbe33fefae7",
+            "title": "On the Expressive Power of Deep Learning: A Tensor Analysis"
+        },
+        {
+            "paperId": "d0e48a4d5d6d0b4aa2dbab2c50560945e62a3817",
+            "title": "Neural Network with Unbounded Activation Functions is Universal Approximator"
+        },
+        {
+            "paperId": "b034b5769ab94acf9fb8ae48c7edb560a300bb63",
+            "title": "On the Number of Linear Regions of Deep Neural Networks"
+        },
+        {
+            "paperId": "085d57b7f44e97ba6fa54543170b884a7461fc08",
+            "title": "On the Complexity of Neural Network Classifiers: A Comparison Between Shallow and Deep Architectures"
+        },
+        {
+            "paperId": "86b4032236ed259d2d7a017621dd780f7f95ee31",
+            "title": "B-spline quasi-interpolant representations and sampling recovery of functions with mixed smoothness"
+        },
+        {
+            "paperId": "67107f78a84bdb2411053cb54e94fa226eea6d8e",
+            "title": "Deep Sparse Rectifier Neural Networks"
+        },
+        {
+            "paperId": "116c71248f5f6a8e0555c84702ed69dd376be350",
+            "title": "Spline interpolation on sparse grids"
+        },
+        {
+            "paperId": "02191b2273074f87479201326bed6e4d204bbdd4",
+            "title": "B-spline quasi-interpolant representations and sampling recovery of functions with mixed smoothness"
+        },
+        {
+            "paperId": "c562a2479094768fcf76bcc992cdbf12227a98fe",
+            "title": "Minimax-Optimal Rates For Sparse Additive Models Over Kernel Classes Via Convex Programming"
+        },
+        {
+            "paperId": "a538b05ebb01a40323997629e171c91aa28b8e2f",
+            "title": "Rectified Linear Units Improve Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": "75fb7ba47bb83dcfcf75846d689e2eff4d26f783",
+            "title": "Tensor products of Sobolev-Besov spaces and applications to approximation from the hyperbolic cross"
+        },
+        {
+            "paperId": "9772271fc19d4280d3c5a98e6c548b86a8607c7a",
+            "title": "Widths of embeddings in function spaces"
+        },
+        {
+            "paperId": "90cbd93cdda5e8d4d921a7d55c4604b1e44878d7",
+            "title": "High-dimensional additive modeling"
+        },
+        {
+            "paperId": "994c83c5017d75480172a1542756f4935bd69c09",
+            "title": "Wavelet Threshold Estimation of a Regression Function with Random Design"
+        },
+        {
+            "paperId": "b6803a4b9c7222be408a63a470ddd6aed677ec2d",
+            "title": "Tree Approximation and Optimal Encoding"
+        },
+        {
+            "paperId": "b400437510dd252afa5c12b4f786ad8b960f20fd",
+            "title": "Linear Widths of the Besov Classes of Periodic Functions of Many Variables. II"
+        },
+        {
+            "paperId": "6e37979d2a910e8a2337927731619fd789a5213b",
+            "title": "Approximation theory of the MLP model in neural networks"
+        },
+        {
+            "paperId": "16eafce11acdd0034a3f7b76987aeab54ae9c09a",
+            "title": "Minimax estimation via wavelet shrinkage"
+        },
+        {
+            "paperId": "9f6058c289adb7a91b1ddcc904ff23094edaa92f",
+            "title": "Nonlinear approximation"
+        },
+        {
+            "paperId": "a77e16494c61440e242515e0dad47b92b3edc239",
+            "title": "Density estimation by wavelet thresholding"
+        },
+        {
+            "paperId": "45ee7447b9dd406496c4a5d9d8fb6556366a01c6",
+            "title": "Weak Convergence and Empirical Processes: With Applications to Statistics"
+        },
+        {
+            "paperId": "48f4029ea907d50b1d7ec5a315cda4777b005710",
+            "title": "Linear widths of H\u00f6lder-Nikol'skii classes of periodic functions of several variables"
+        },
+        {
+            "paperId": "88314173209c284cb2e66e9849bb76ef3b58fcf0",
+            "title": "Neural networks for localized approximation"
+        },
+        {
+            "paperId": "5c68588e3b403158691ac88de8a7738a81f6683c",
+            "title": "Wavelet compression and nonlinearn-widths"
+        },
+        {
+            "paperId": "04113e8974341f97258800126d05fd8df2751b7e",
+            "title": "Universal approximation bounds for superpositions of a sigmoidal function"
+        },
+        {
+            "paperId": "c6a5dbe92d57b47b37762aa8cb97b6245545cc74",
+            "title": "On Approximate Recovery of Functions with Bounded Mixed Derivative"
+        },
+        {
+            "paperId": "9134c6e67cca05c93bf8a865b1960049c1064025",
+            "title": "Approximation properties of a multilayered feedforward artificial neural network"
+        },
+        {
+            "paperId": "ebf2bc6f41d19d5fe39f93006be5677d28db2ac1",
+            "title": "Approximation by superposition of sigmoidal and radial basis functions"
+        },
+        {
+            "paperId": "6baabedcb3136d6c38871718fffabefb0ae52c0c",
+            "title": "Density estimation in Besov spaces"
+        },
+        {
+            "paperId": "f58e174a7a1d9d88a3cc1d48311a27f158492646",
+            "title": "Splines, Rational Functions and Neural Networks"
+        },
+        {
+            "paperId": "a9209f90c02a378720879a3bb93aa2f7181cf5f2",
+            "title": "Approximation and Estimation Bounds for Artificial Neural Networks"
+        },
+        {
+            "paperId": "d35f1e533b72370683d8fa2dabff5f0fc16490cc",
+            "title": "Approximation capabilities of multilayer feedforward networks"
+        },
+        {
+            "paperId": "8da1dda34ecc96263102181448c94ec7d645d085",
+            "title": "Approximation by superpositions of a sigmoidal function"
+        },
+        {
+            "paperId": "d1bfddd839ee19415227408e8a66ec5fd7b1856c",
+            "title": "An unconditional basis in periodic spaces with dominating mixed smoothness properties"
+        },
+        {
+            "paperId": "684e1dab94d8936f97b4a8274d2c658fa4651597",
+            "title": "APPROXIMATION OF PERIODIC FUNCTIONS OF SEVERAL VARIABLES WITH BOUNDED MIXED DIFFERENCE"
+        },
+        {
+            "paperId": "365971b705d921c85f64d6256db32e5a39a9c1ba",
+            "title": "DIAMETERS OF SETS IN FUNCTION SPACES AND THE THEORY OF BEST APPROXIMATIONS"
+        },
+        {
+            "paperId": "60c1ee6fd1e7570a8a8364e5f33d9764a5b4381a",
+            "title": "Minimax Optimal Alternating Minimization for Kernel Nonparametric Tensor Learning"
+        },
+        {
+            "paperId": "38f72c963350ca9ae397f245dc0196386f7f75e7",
+            "title": "Sobolev Spaces"
+        },
+        {
+            "paperId": "66db32170f8c4ed3e3e097584f7a539402759c57",
+            "title": "Optimal adaptive sampling recovery"
+        },
+        {
+            "paperId": "469a8b9eb02d8d1efb9ae56ff1a36f921879fd2e",
+            "title": "Nuclear Norms for Tensors and Their Use for Convex Multilinear Estimation"
+        },
+        {
+            "paperId": null,
+            "title": "Bilinear approximations and Kolmogorov widths of periodic Besov classes"
+        },
+        {
+            "paperId": "722c52711a8014694d68839f0ffc52ba8f7fc621",
+            "title": "Approximation and estimation bounds for artificial neural networks"
+        },
+        {
+            "paperId": "b42439aac6c0de3ce890520e9c26353fff199070",
+            "title": "Linear Widths of the Besov Classes of Periodic Functions of Many Variables. I"
+        },
+        {
+            "paperId": "fdc1aedb894ec17932ce6db0860ccee240e44d5a",
+            "title": "MULTIVARIATE WAVELET THRESHOLDING IN ANISOTROPIC FUNCTION SPACES"
+        },
+        {
+            "paperId": "3b4e7bcda1ea3855585e1f951e154720a9713ea3",
+            "title": "Approximation by ridge functions and neural networks"
+        },
+        {
+            "paperId": null,
+            "title": "2012a) utilized the techniques developed by Yang & Barron (1999) to show the following inequality in their proof of Theorem"
+        },
+        {
+            "paperId": "c53acdacb1e4131a996b0deee882b345e835e23c",
+            "title": "A wavelet tour of signal processing"
+        },
+        {
+            "paperId": "0e168de5975a9dfbe12837ef19a0366d938bc1d7",
+            "title": "Neural Networks for Optimal Approximation of Smooth and Analytic Functions"
+        },
+        {
+            "paperId": "2a2aa03475f984ae6d203e29313a3fbf5d50fa54",
+            "title": "On Optimal Recovery of Multivariate Periodic Functions"
+        },
+        {
+            "paperId": "8fbbcd4d166a52d02cebf3b820c8532ff1498dd5",
+            "title": "ON THE RECOVERY AND ONE-SIDED APPROXIMATION OF PERIODIC FUNCTIONS OF SEVERAL VARIABLES"
+        },
+        {
+            "paperId": "1bda4f1e183d49b66a1fcd76832b098b7c29e9c2",
+            "title": "Interpolation of Besov-Spaces"
+        },
+        {
+            "paperId": "2d11cca86b1075fa73543f1da3591c4e7d784aba",
+            "title": "Theory Of Function Spaces"
+        },
+        {
+            "paperId": null,
+            "title": "Mathematics Dept. New thoughts on Besov spaces"
+        },
+        {
+            "paperId": "dac7a87578dae890191c71ed4e2a28bea98c743b",
+            "title": "Approximation of periodic functions"
+        },
+        {
+            "paperId": null,
+            "title": "Quadrature and interpolation formulas for tensor products of certain classes of functions"
+        },
+        {
+            "paperId": null,
+            "title": "1+1/\u03bd){1\u2228(1/p\u2212s)+}. D PROOF OF THEOREM 5 D.1 PREPARATION: SPARSE GRID Here, we give technical details behind the approximation bound. The analysis utilizes the so called sparse grid technique Smolyak"
+        }
+    ]
+}

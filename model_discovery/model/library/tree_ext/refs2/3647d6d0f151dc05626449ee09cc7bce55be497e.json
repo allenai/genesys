@@ -1,0 +1,210 @@
+{
+    "paperId": "3647d6d0f151dc05626449ee09cc7bce55be497e",
+    "externalIds": {
+        "DBLP": "journals/corr/HowardZCKWWAA17",
+        "ArXiv": "1704.04861",
+        "MAG": "2612445135",
+        "CorpusId": 12670695
+    },
+    "title": "MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications",
+    "abstract": "We present a class of efficient models called MobileNets for mobile and embedded vision applications. MobileNets are based on a streamlined architecture that uses depth-wise separable convolutions to build light weight deep neural networks. We introduce two simple global hyper-parameters that efficiently trade off between latency and accuracy. These hyper-parameters allow the model builder to choose the right sized model for their application based on the constraints of the problem. We present extensive experiments on resource and accuracy tradeoffs and show strong performance compared to other popular models on ImageNet classification. We then demonstrate the effectiveness of MobileNets across a wide range of applications and use cases including object detection, finegrain classification, face attributes and large scale geo-localization.",
+    "venue": "arXiv.org",
+    "year": 2017,
+    "referenceCount": 38,
+    "citationCount": 18302,
+    "influentialCitationCount": 2609,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces two simple global hyper-parameters that efficiently trade off between latency and accuracy and demonstrates the effectiveness of MobileNets across a wide range of applications and use cases including object detection, finegrain classification, face attributes and large scale geo-localization."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "144727050",
+            "name": "Andrew G. Howard"
+        },
+        {
+            "authorId": "2717876",
+            "name": "Menglong Zhu"
+        },
+        {
+            "authorId": null,
+            "name": "Bo Chen"
+        },
+        {
+            "authorId": "2741985",
+            "name": "Dmitry Kalenichenko"
+        },
+        {
+            "authorId": "2108301072",
+            "name": "Weijun Wang"
+        },
+        {
+            "authorId": "47447630",
+            "name": "Tobias Weyand"
+        },
+        {
+            "authorId": "2612392",
+            "name": "M. Andreetto"
+        },
+        {
+            "authorId": "2595180",
+            "name": "Hartwig Adam"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "a312a573ef81793d56401e932ef6c9498791a3d1",
+            "title": "Speed/Accuracy Trade-Offs for Modern Convolutional Object Detectors"
+        },
+        {
+            "paperId": "5b6ec746d309b165f9f9def873a2375b6fb40f3d",
+            "title": "Xception: Deep Learning with Depthwise Separable Convolutions"
+        },
+        {
+            "paperId": "d2e4147eecae6f914e9e1e9aece8fdd2eaed809f",
+            "title": "Quantized Neural Networks: Training Neural Networks with Low Precision Weights and Activations"
+        },
+        {
+            "paperId": "977bf40fe28f773b95d6802e694505beac78441d",
+            "title": "Factorized Convolutional Neural Networks"
+        },
+        {
+            "paperId": "d20da75866f500ee9fbfa859e69556702e1f50a4",
+            "title": "Design of Efficient Convolutional Layers using Single Intra-channel Convolution, Topological Subdivisioning and Spatial \"Bottleneck\" Structure"
+        },
+        {
+            "paperId": "b649a98ce77ece8cd7638bb74ab77d22d9be77e7",
+            "title": "XNOR-Net: ImageNet Classification Using Binary Convolutional Neural Networks"
+        },
+        {
+            "paperId": "592d2e65489f23ebd993dbdc0c84eda9ac8aadbe",
+            "title": "SqueezeNet: AlexNet-level accuracy with 50x fewer parameters and <1MB model size"
+        },
+        {
+            "paperId": "b5c26ab8767d046cb6e32d959fdf726aee89bb62",
+            "title": "Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning"
+        },
+        {
+            "paperId": "1b93a123d352ea09b4c8aaac933f1d4c8bd42009",
+            "title": "PlaNet - Photo Geolocation with Convolutional Neural Networks"
+        },
+        {
+            "paperId": "d3cb9bad655197b52932978dd8186b36c512bf92",
+            "title": "Quantized Convolutional Neural Networks for Mobile Devices"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "4d7a9197433acbfb24ef0e9d0f33ed1699e4a5b0",
+            "title": "SSD: Single Shot MultiBox Detector"
+        },
+        {
+            "paperId": "23ffaa0fe06eae05817f527a47ac3291077f9e58",
+            "title": "Rethinking the Inception Architecture for Computer Vision"
+        },
+        {
+            "paperId": "4e6d882a4d2e6351cdf3013f0f7785941e3efd00",
+            "title": "The Unreasonable Effectiveness of Noisy Data for Fine-Grained Recognition"
+        },
+        {
+            "paperId": "bf76be8df2f2bc56edac98a5d0dfc19c85882eaa",
+            "title": "Structured Transforms for Small-Footprint Deep Learning"
+        },
+        {
+            "paperId": "642d0f49b7826adcf986616f4af77e736229990f",
+            "title": "Deep Compression: Compressing Deep Neural Network with Pruning, Trained Quantization and Huffman Coding"
+        },
+        {
+            "paperId": "424561d8585ff8ebce7d5d07de8dbf7aae5e7270",
+            "title": "Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks"
+        },
+        {
+            "paperId": "efb5032e6199c80f83309fd866b25be9545831fd",
+            "title": "Compressing Neural Networks with the Hashing Trick"
+        },
+        {
+            "paperId": "5aa26299435bdf7db874ef1640a6c3b5a4a2c394",
+            "title": "FaceNet: A unified embedding for face recognition and clustering"
+        },
+        {
+            "paperId": "0c908739fbff75f03469d13d4a1a07de3414ee19",
+            "title": "Distilling the Knowledge in a Neural Network"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "27a99c21a1324f087b2f144adc119f04137dfd87",
+            "title": "Deep Fried Convnets"
+        },
+        {
+            "paperId": "1b82d54e9a3b06c603d7987ba3ecf437425f6330",
+            "title": "Training deep neural networks with low precision multiplications"
+        },
+        {
+            "paperId": "62e348e26976c3ef77909b9af9788ebc2509009a",
+            "title": "Speeding-up Convolutional Neural Networks Using Fine-tuned CP-Decomposition"
+        },
+        {
+            "paperId": "30ae2bdef407e7a05b83781907ad7fb257dcd7a1",
+            "title": "Flattened Convolutional Neural Networks for Feedforward Acceleration"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "6bdb186ec4726e00a8051119636d4df3b94043b5",
+            "title": "Caffe: Convolutional Architecture for Fast Feature Embedding"
+        },
+        {
+            "paperId": "021fc345d40d3e6332cd2ef276e2eaa5e71102e4",
+            "title": "Speeding up Convolutional Neural Networks with Low Rank Expansions"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "b48d90cfebb8fbff29d161f6704d31b6909eb7ad",
+            "title": "IM2GPS: estimating geographic information from a single image"
+        },
+        {
+            "paperId": null,
+            "title": "Yfcc100m: The new data in multimedia research"
+        },
+        {
+            "paperId": "08f920757176deea8f6a84fbcbc1c1841ad5b463",
+            "title": "Large-Scale Image Geolocalization"
+        },
+        {
+            "paperId": null,
+            "title": "Tensorflow: Large-scale machine learning on heterogeneous systems"
+        },
+        {
+            "paperId": null,
+            "title": "Rigid-motion scattering for image classification"
+        },
+        {
+            "paperId": "b5e3beb791cc17cdaf131d5cca6ceb796226d832",
+            "title": "Novel Dataset for Fine-Grained Image Categorization : Stanford Dogs"
+        },
+        {
+            "paperId": null,
+            "title": "Lecture 6.5-rmsprop: Divide the gradient by a running average of its recent magnitude"
+        }
+    ]
+}

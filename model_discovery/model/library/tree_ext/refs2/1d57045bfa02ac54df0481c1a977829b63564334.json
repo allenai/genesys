@@ -1,0 +1,194 @@
+{
+    "paperId": "1d57045bfa02ac54df0481c1a977829b63564334",
+    "externalIds": {
+        "MAG": "2953003692",
+        "DBLP": "journals/corr/abs-1806-00952",
+        "ArXiv": "1806.00952",
+        "CorpusId": 46935943
+    },
+    "title": "Stochastic Gradient/Mirror Descent: Minimax Optimality and Implicit Regularization",
+    "abstract": "Stochastic descent methods (of the gradient and mirror varieties) have become increasingly popular in optimization. In fact, it is now widely recognized that the success of deep learning is not only due to the special deep architecture of the models, but also due to the behavior of the stochastic descent methods used, which play a key role in reaching \"good\" solutions that generalize well to unseen data. In an attempt to shed some light on why this is the case, we revisit some minimax properties of stochastic gradient descent (SGD) for the square loss of linear models---originally developed in the 1990's---and extend them to general stochastic mirror descent (SMD) algorithms for general loss functions and nonlinear models. In particular, we show that there is a fundamental identity which holds for SMD (and SGD) under very general conditions, and which implies the minimax optimality of SMD (and SGD) for sufficiently small step size, and for a general class of loss functions and general nonlinear models. We further show that this identity can be used to naturally establish other properties of SMD (and SGD), namely convergence and implicit regularization for over-parameterized linear models (in what is now being called the \"interpolating regime\"), some of which have been shown in certain cases in prior literature. We also argue how this identity can be used in the so-called \"highly over-parameterized\" nonlinear setting (where the number of parameters far exceeds the number of data points) to provide insights into why SMD (and SGD) may have similar convergence and implicit regularization properties for deep learning.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2018,
+    "referenceCount": 40,
+    "citationCount": 57,
+    "influentialCitationCount": 2,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is argued how this identity can be used in the so-called \"highly over-parameterized\" nonlinear setting to provide insights into why SMD (and SGD) may have similar convergence and implicit regularization properties for deep learning."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2082417",
+            "name": "Navid Azizan"
+        },
+        {
+            "authorId": "1736279",
+            "name": "B. Hassibi"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "67a97032fd3ad81cda45e1e5d4a1a7d851494525",
+            "title": "Implicit Bias of Gradient Descent on Linear Convolutional Networks"
+        },
+        {
+            "paperId": "33416f2dc49db24cca520a3b234f02463a4e833e",
+            "title": "Characterizing Implicit Bias in Terms of Optimization Geometry"
+        },
+        {
+            "paperId": "f8dccc59fae4b86b955630f21f9558a194ca4f70",
+            "title": "The Power of Interpolation: Understanding the Effectiveness of SGD in Modern Over-parametrized Learning"
+        },
+        {
+            "paperId": "5cfc2401750216f189a2753f17ba7d392d386843",
+            "title": "Stochastic Mirror Descent in Variationally Coherent Optimization Problems"
+        },
+        {
+            "paperId": "15f482d59820225c0b9451118b4ca785ba423e4b",
+            "title": "Implicit Regularization in Nonconvex Statistical Estimation: Gradient Descent Converges Linearly for Phase Retrieval, Matrix Completion, and Blind Deconvolution"
+        },
+        {
+            "paperId": "940912cfc9190f5cc79e3867060e543634b6b22e",
+            "title": "Stochastic Gradient Descent Performs Variational Inference, Converges to Limit Cycles for Deep Networks"
+        },
+        {
+            "paperId": "11adc8bd35bd897502f9b5452ab7ac668ec9b0fb",
+            "title": "The Implicit Bias of Gradient Descent on Separable Data"
+        },
+        {
+            "paperId": "fa3cd1f68783c160f7acf9ef857f1e3254ff95db",
+            "title": "Theoretical Insights Into the Optimization Landscape of Over-Parameterized Shallow Neural Networks"
+        },
+        {
+            "paperId": "4d7574c0c4aca70e5811a8e33906f0106d6b76e6",
+            "title": "Emergence of Invariance and Disentanglement in Deep Representations"
+        },
+        {
+            "paperId": "4e8917e73e02c76d55ded62e43541d44684a4c8a",
+            "title": "Implicit Regularization in Matrix Factorization"
+        },
+        {
+            "paperId": "1ecc2bd0bc6ffa0a2f466a058589c20593e3e57c",
+            "title": "The Marginal Value of Adaptive Gradient Methods in Machine Learning"
+        },
+        {
+            "paperId": "b3c22857095db1df0609975df3359c873ddfaf35",
+            "title": "Geometry of Optimization and Implicit Regularization in Deep Learning"
+        },
+        {
+            "paperId": "267980e417f1d01a897e87fa409f64e2a76b96cd",
+            "title": "Opening the Black Box of Deep Neural Networks via Information"
+        },
+        {
+            "paperId": "54ddb00fa691728944fd8becea90a373d21597cf",
+            "title": "Understanding deep learning requires rethinking generalization"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "195043e4c13a635555c28dfab7ac534d10d78c12",
+            "title": "Introduction to Online Convex Optimization"
+        },
+        {
+            "paperId": "9dd705a9974c6ac7bb8a32d89ce2841bb1ac66af",
+            "title": "Gradient Descent Only Converges to Minimizers"
+        },
+        {
+            "paperId": "07925910d45761d96269fc3bdfdc21b1d20d84ad",
+            "title": "Deep Learning without Poor Local Minima"
+        },
+        {
+            "paperId": "846aedd869a00c09b40f1f1f35673cb22bc87490",
+            "title": "Mastering the game of Go with deep neural networks and tree search"
+        },
+        {
+            "paperId": "340f48901f72278f6bf78a04ee5b01df208cc508",
+            "title": "Human-level control through deep reinforcement learning"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "bcce96a2a074448953fc61a29a84afbdfc8db55a",
+            "title": "Online Learning and Online Convex Optimization"
+        },
+        {
+            "paperId": "c5dbe315e4623eaaeba9c904c641cfc40a551d1a",
+            "title": "Mirror Descent Meets Fixed Share (and feels no regret)"
+        },
+        {
+            "paperId": "413c1142de9d91804d6d11c67ff3fed59c9fc279",
+            "title": "Adaptive Subgradient Methods for Online Learning and Stochastic Optimization"
+        },
+        {
+            "paperId": "231b5f02444562e43eec48eceea42c706c4fc997",
+            "title": "Optimal State Estimation: Kalman, H Infinity, and Nonlinear Approaches"
+        },
+        {
+            "paperId": "4f0df7ed89d9a5bb5bafa5727ccdc0b6e2fb463d",
+            "title": "Mirror descent and nonlinear projected subgradient methods for convex optimization"
+        },
+        {
+            "paperId": "110e91fa494ea7b329634cddf9f0cd31cd85ffea",
+            "title": "The Robustness of the p-Norm Algorithms"
+        },
+        {
+            "paperId": "14bbc2e82820211dd4aa34caf999d5db6e38eb8f",
+            "title": "Indefinite-quadratic estimation and control: a unified approach to H 2 and H \u221e theories"
+        },
+        {
+            "paperId": "42d8f3b200f31a356505968b35d41852990374a5",
+            "title": "General Convergence Results for Linear Discriminant Updates"
+        },
+        {
+            "paperId": "fda6ba40c325b6fae89ddf2713832387eeaf2af8",
+            "title": "H\u221e-0ptimal Control and Related Minimax Design Problems: A Dynamic Game Approach"
+        },
+        {
+            "paperId": "65bca4224a3f704bae29571d0edf05ad4370f118",
+            "title": "H\u221e optimality of the LMS algorithm"
+        },
+        {
+            "paperId": "830bd3d21dca907c696308fe11d3d04341e4d713",
+            "title": "Hoo Optimality Criteria for LMS and Backpropagation"
+        },
+        {
+            "paperId": "94eeae23786e128c0635f305ba7eebbb89af0023",
+            "title": "Emergence of invariance and disentangling in deep representations"
+        },
+        {
+            "paperId": "4f8d648c52edf74e41b0996128aa536e13cc7e82",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": null,
+            "title": "Lecture 6.5-rmsprop: Divide the gradient by a running average of its recent magnitude. COURSERA: Neural networks for machine learning"
+        },
+        {
+            "paperId": "62f81c9abf36d8be1fb3ee1cee902cc37ccbaa68",
+            "title": "H\u221e Optimal Training Algorithms and their Relation to Backpropagation"
+        },
+        {
+            "paperId": "b75d8b206ae09843d456d56f27d12952cdd9a299",
+            "title": "A course in H [infinity] control theory"
+        },
+        {
+            "paperId": "29f8b7112fb4660a64df8ac34a5d85c119019efe",
+            "title": "Problem Complexity and Method Efficiency in Optimization"
+        },
+        {
+            "paperId": "16c666dc85fb6505ee21f25696024c7e4c0177e6",
+            "title": "The{dollar}p{dollar}-Norm Generalization of the LMS Algorithm for Adaptive Filtering"
+        }
+    ]
+}

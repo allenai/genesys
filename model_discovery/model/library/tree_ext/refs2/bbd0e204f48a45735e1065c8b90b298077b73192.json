@@ -1,0 +1,130 @@
+{
+    "paperId": "bbd0e204f48a45735e1065c8b90b298077b73192",
+    "externalIds": {
+        "ArXiv": "1605.06065",
+        "MAG": "2399033357",
+        "DBLP": "journals/corr/SantoroBBWL16",
+        "CorpusId": 16660179
+    },
+    "title": "One-shot Learning with Memory-Augmented Neural Networks",
+    "abstract": "Despite recent breakthroughs in the applications of deep neural networks, one setting that presents a persistent challenge is that of \u201cone-shot learning.\u201d Traditional gradient-based networks require a lot of data to learn, often through extensive iterative training. When new data is encountered, the models must inefficiently relearn their parameters to adequately incorporate the new information without catastrophic interference. Architectures with augmented memory capacities, such as Neural Turing Machines (NTMs), offer the ability to quickly encode and retrieve new information, and hence can potentially obviate the downsides of conventional models. Here, we demonstrate the ability of a memory-augmented neural network to rapidly assimilate new data, and leverage this data to make accurate predictions after only a few samples. We also introduce a new method for accessing an external memory that focuses on memory content, unlike previous methods that additionally use memory locationbased focusing mechanisms.",
+    "venue": "arXiv.org",
+    "year": 2016,
+    "referenceCount": 21,
+    "citationCount": 517,
+    "influentialCitationCount": 30,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The ability of a memory-augmented neural network to rapidly assimilate new data, and leverage this data to make accurate predictions after only a few samples is demonstrated."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "35030998",
+            "name": "Adam Santoro"
+        },
+        {
+            "authorId": "2258504",
+            "name": "Sergey Bartunov"
+        },
+        {
+            "authorId": "46378362",
+            "name": "M. Botvinick"
+        },
+        {
+            "authorId": "1688276",
+            "name": "Daan Wierstra"
+        },
+        {
+            "authorId": "2542999",
+            "name": "T. Lillicrap"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "846aedd869a00c09b40f1f1f35673cb22bc87490",
+            "title": "Mastering the game of Go with deep neural networks and tree search"
+        },
+        {
+            "paperId": "815c84ab906e43f3e6322f2ca3fd5e1360c64285",
+            "title": "Human-level concept learning through probabilistic program induction"
+        },
+        {
+            "paperId": "340f48901f72278f6bf78a04ee5b01df208cc508",
+            "title": "Human-level control through deep reinforcement learning"
+        },
+        {
+            "paperId": "d6f2f611da110b5b5061731be3fc4c7f45d8ee23",
+            "title": "Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "71ae756c75ac89e2d731c9c79649562b5768ff39",
+            "title": "Memory Networks"
+        },
+        {
+            "paperId": "475468f90bd44d34e30991873a37c38e75ff3ffe",
+            "title": "Meta-Learning in Computational Intelligence"
+        },
+        {
+            "paperId": "c0a2f643d8fb0c793387b7d78f755167670271ff",
+            "title": "Motor Task Variation Induces Structural Learning"
+        },
+        {
+            "paperId": "79b765d91c6ecd0a7d9dda734fa2505552f62478",
+            "title": "Introduction to the Special Issue on Meta-Learning"
+        },
+        {
+            "paperId": "c8b5825b8994ce3c4dc7e603423d7d43a5ead15c",
+            "title": "Ranking Learning Algorithms: Using IBL and Meta-Learning on Accuracy and Time Results"
+        },
+        {
+            "paperId": "98f8a0055bb28133efcff359a92937324d0e6f51",
+            "title": "A Perspective View and Survey of Meta-Learning"
+        },
+        {
+            "paperId": "dde691805cfa7d6f1bb88c7411c1c3377b6cdc67",
+            "title": "Lifelong Learning Algorithms"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "161ffb54a3fdf0715b198bb57bd22f910242eb49",
+            "title": "Multitask Learning"
+        },
+        {
+            "paperId": "6e7241121c688abbd9329bdcebce4b6320fc619d",
+            "title": "Shifting Inductive Bias with Success-Story Algorithm, Adaptive Levin Search, and Incremental Self-Improvement"
+        },
+        {
+            "paperId": "d24ffc3e48cab4b9271981ccf82bbd1838361daf",
+            "title": "Layered Concept-Learning and Dynamically Variable Bias Management"
+        },
+        {
+            "paperId": null,
+            "title": "The magical mystery four how is working memory capacity limited, and why?"
+        },
+        {
+            "paperId": "a733492f597c4d0a27a24c8fffdf5d116fa7e09f",
+            "title": "Automatic Speech Recognition"
+        },
+        {
+            "paperId": "6b3f41d409d7e2031ce55b2a7e85a9a621ae39fa",
+            "title": "Meta-learning in Reinforcement Learning"
+        },
+        {
+            "paperId": "c5b4337a952f602f90edb7b68995441259cd8674",
+            "title": "Interference and forgetting."
+        },
+        {
+            "paperId": "a6bcf0e9b5034c4c9cbea839baadd69a42b05cc1",
+            "title": "Learning curves for stochastic gradient descent in linear feedforward networks"
+        }
+    ]
+}

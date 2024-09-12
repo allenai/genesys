@@ -1,0 +1,154 @@
+{
+    "paperId": "34ca2c54b21d5ad088e3138fb844dbbd496b7e3c",
+    "externalIds": {
+        "ACL": "W18-0607",
+        "MAG": "2805917671",
+        "DBLP": "conf/acl-clpsych/IveGDSV18",
+        "DOI": "10.18653/v1/W18-0607",
+        "CorpusId": 46979776
+    },
+    "title": "Hierarchical neural model with attention mechanisms for the classification of social media text related to mental health",
+    "abstract": "Mental health problems represent a major public health challenge. Automated analysis of text related to mental health is aimed to help medical decision-making, public health policies and to improve health care. Such analysis may involve text classification. Traditionally, automated classification has been performed mainly using machine learning methods involving costly feature engineering. Recently, the performance of those methods has been dramatically improved by neural methods. However, mainly Convolutional neural networks (CNNs) have been explored. In this paper, we apply a hierarchical Recurrent neural network (RNN) architecture with an attention mechanism on social media data related to mental health. We show that this architecture improves overall classification results as compared to previously reported results on the same data. Benefitting from the attention mechanism, it can also efficiently select text elements crucial for classification decisions, which can also be used for in-depth analysis.",
+    "venue": "CLPsych@NAACL-HTL",
+    "year": 2018,
+    "referenceCount": 26,
+    "citationCount": 49,
+    "influentialCitationCount": 0,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/W18-0607.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A hierarchical Recurrent neural network architecture with an attention mechanism is applied on social media data related to mental health and it is shown that this architecture improves overall classification results as compared to previously reported results on the same data."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3456894",
+            "name": "Julia Ive"
+        },
+        {
+            "authorId": "2221116",
+            "name": "G. Gkotsis"
+        },
+        {
+            "authorId": "1898360",
+            "name": "R. Dutta"
+        },
+        {
+            "authorId": "152572738",
+            "name": "R. Stewart"
+        },
+        {
+            "authorId": "2292466",
+            "name": "S. Velupillai"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "c89a18ada38b8413a3991a31c4f6ad6ab24a69f7",
+            "title": "Depression and Self-Harm Risk Assessment in Online Forums"
+        },
+        {
+            "paperId": "3d6fca4617916c2507b4db008b09b3f9d5b14d6d",
+            "title": "Accurate Supervised and Semi-Supervised Machine Reading for Long Documents"
+        },
+        {
+            "paperId": "3261f21fd2849ac70bf71ee139bc5257354b70e2",
+            "title": "Making Sense of Big Textual Data for Health Care: Findings from the Section on Clinical Natural Language Processing"
+        },
+        {
+            "paperId": "20de699c041ffc9e242cfdb03d4938ec5f849785",
+            "title": "Capturing the Patient\u2019s Perspective: a Review of Advances in Natural Language Processing of Health-Related Text"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "f11c7e7332dfbccc39ce17110efed73527e465a2",
+            "title": "Researching Mental Health Disorders in the Era of Social Media: Systematic Review"
+        },
+        {
+            "paperId": "29219d826ead654f2b863de6eceb69811850b7d4",
+            "title": "Learning Structured Text Representations"
+        },
+        {
+            "paperId": "24d021303e7434e4692200750ebfdcc7ddf84c25",
+            "title": "Ethical Research Protocols for Social Media Health Research"
+        },
+        {
+            "paperId": "17efe7dde9547fdc43b7eb78e17f95b0da92c5bf",
+            "title": "Characterisation of mental health conditions in social media using Informed Deep Learning"
+        },
+        {
+            "paperId": "46a48f597f9391a0ab9cdf7655447325fd1cab13",
+            "title": "Predicting early psychiatric readmission with natural language processing of narrative discharge summaries"
+        },
+        {
+            "paperId": "8107d4fcb1e8d77e7340d7272f91cf7b2339017c",
+            "title": "\u2018Big data\u2019 in mental health research: current status and emerging possibilities"
+        },
+        {
+            "paperId": "c4020f1a9154102ba70456f4fbe5080dc51c8de3",
+            "title": "The language of mental health problems in social media"
+        },
+        {
+            "paperId": "455afd748e8834ef521e4b67c7c056d3c33429e2",
+            "title": "Hierarchical Attention Networks for Document Classification"
+        },
+        {
+            "paperId": "2ae90646e4b86a322e0b3ed36a57f9de30a95221",
+            "title": "Towards Early Dementia Detection: Fusing Linguistic and Non-Linguistic Clinical Data"
+        },
+        {
+            "paperId": "9ecd006903cb436936aa24c664871439ffb4d598",
+            "title": "Social Media, Big Data, and Mental Health: Current Advances and Ethical Implications."
+        },
+        {
+            "paperId": "3f76c49d7ace8f8e6934590954d978337c52bb52",
+            "title": "Ethical issues in using Twitter for population-level depression monitoring: a qualitative study"
+        },
+        {
+            "paperId": "bb24c9661655035a1e61cce7f2084075b6fa1194",
+            "title": "Social Media Mining for Toxicovigilance: Automatic Monitoring of Prescription Medication Abuse from Twitter"
+        },
+        {
+            "paperId": "baecca1f56514fa57bde1f2b3a05ecfb3903d4e4",
+            "title": "Beyond LDA: Exploring Supervised Topic Modeling for Depression-Related Language in Twitter"
+        },
+        {
+            "paperId": "b21c78a62fbb945a19ae9a8935933711647e7d70",
+            "title": "A Hierarchical Neural Autoencoder for Paragraphs and Documents"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "7a6b0e84893186577f3602691708d77fdb6048f9",
+            "title": "Social Media Mining: An Introduction"
+        },
+        {
+            "paperId": "8b9b5c3dcadaa2d03f15dca2c60f348e33252041",
+            "title": "Characterizing and predicting postpartum depression from shared facebook data"
+        },
+        {
+            "paperId": "52b7bf3ba59b31f362aa07f957f1543a29a4279e",
+            "title": "Support-Vector Networks"
+        },
+        {
+            "paperId": null,
+            "title": "Initial-izing neural networks for hierarchical multi-label text classi\ufb01cation"
+        },
+        {
+            "paperId": "9c747bcf9ae4067e45f894c7948020b4041b4261",
+            "title": "Why Psychiatry Needs Data Science and Data Science Needs Psychiatry: Connecting With Technology."
+        },
+        {
+            "paperId": "ed25bfe4416bb1437ba41f66bc494be3ea12b8d6",
+            "title": "Language of men"
+        }
+    ]
+}

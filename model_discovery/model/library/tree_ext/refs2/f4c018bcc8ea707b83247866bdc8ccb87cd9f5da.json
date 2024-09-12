@@ -1,0 +1,153 @@
+{
+    "paperId": "f4c018bcc8ea707b83247866bdc8ccb87cd9f5da",
+    "externalIds": {
+        "MAG": "2125031621",
+        "DBLP": "conf/nips/LevyG14",
+        "CorpusId": 1190093
+    },
+    "title": "Neural Word Embedding as Implicit Matrix Factorization",
+    "abstract": "We analyze skip-gram with negative-sampling (SGNS), a word embedding method introduced by Mikolov et al., and show that it is implicitly factorizing a word-context matrix, whose cells are the pointwise mutual information (PMI) of the respective word and context pairs, shifted by a global constant. We find that another embedding method, NCE, is implicitly factorizing a similar matrix, where each cell is the (shifted) log conditional probability of a word given its context. We show that using a sparse Shifted Positive PMI word-context matrix to represent words improves results on two word similarity tasks and one of two analogy tasks. When dense low-dimensional vectors are preferred, exact factorization with SVD can achieve solutions that are at least as good as SGNS's solutions for word similarity tasks. On analogy questions SGNS remains superior to SVD. We conjecture that this stems from the weighted nature of SGNS's factorization.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2014,
+    "referenceCount": 30,
+    "citationCount": 1863,
+    "influentialCitationCount": 220,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that using a sparse Shifted Positive PMI word-context matrix to represent words improves results on two word similarity tasks and one of two analogy tasks, and conjecture that this stems from the weighted nature of SGNS's factorization."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "39455775",
+            "name": "Omer Levy"
+        },
+        {
+            "authorId": "2089067",
+            "name": "Yoav Goldberg"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "3cfbb77e5a0e24772cfdb2eb3d4f35dead54b118",
+            "title": "Don\u2019t count, predict! A systematic comparison of context-counting vs. context-predicting semantic vectors"
+        },
+        {
+            "paperId": "0183b3e9d84c15c7048e6c2149ed86257ccdc6cb",
+            "title": "Dependency-Based Word Embeddings"
+        },
+        {
+            "paperId": "500d570ce02abf42bc1bc535620741d4c5665e6a",
+            "title": "Linguistic Regularities in Sparse and Explicit Word Representations"
+        },
+        {
+            "paperId": "52d199be8845bf2529aaf3d0931e103d9ef01ade",
+            "title": "A Systematic Study of Semantic Vector Space Model Parameters"
+        },
+        {
+            "paperId": "2012f32199adc88747d5a1b47c7b4ba1cb3cb995",
+            "title": "word2vec Explained: deriving Mikolov et al.'s negative-sampling word-embedding method"
+        },
+        {
+            "paperId": "53ca064b9f1b92951c1997e90b776e95b0880e52",
+            "title": "Learning word embeddings efficiently with noise-contrastive estimation"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "c4fd9c86b2b41df51a6fe212406dda81b1997fd4",
+            "title": "Linguistic Regularities in Continuous Space Word Representations"
+        },
+        {
+            "paperId": "f6b51c8753a871dc94ff32152c00c01e94f90f09",
+            "title": "Efficient Estimation of Word Representations in Vector Space"
+        },
+        {
+            "paperId": "917fbd64a435cb33e0e5b4cd73fe830db7b166db",
+            "title": "Distributional Semantics in Technicolor"
+        },
+        {
+            "paperId": "dbb3b9c94129fe7a29cfdbd97f0ad5b5224ae246",
+            "title": "Domain and Function: A Dual-Space Model of Semantic Relations and Compositions"
+        },
+        {
+            "paperId": "715115f21d206ac35c488d775fe30b14b262c327",
+            "title": "Extracting semantic representations from word co-occurrence statistics: stop-lists, stemming, and SVD"
+        },
+        {
+            "paperId": "bc1022b031dc6c7019696492e8116598097a8c12",
+            "title": "Natural Language Processing (Almost) from Scratch"
+        },
+        {
+            "paperId": "ce4d33595e192e0894f857db88af2a847a932c97",
+            "title": "Distributional Memory: A General Framework for Corpus-Based Semantics"
+        },
+        {
+            "paperId": "8492070dc4031ed825e95e4803781752bb5e909f",
+            "title": "Word Representations: A Simple and General Method for Semi-Supervised Learning"
+        },
+        {
+            "paperId": "3a0e788268fafb23ab20da0e98bb578b06830f7d",
+            "title": "From Frequency to Meaning: Vector Space Models of Semantics"
+        },
+        {
+            "paperId": "d4bbcc842f22547eaf5884251eaa68251895dccb",
+            "title": "Matrix Factorization Techniques for Recommender Systems"
+        },
+        {
+            "paperId": "a9fc84f8abe740cdc7ee82e69444d1d00dbe0ceb",
+            "title": "A Scalable Hierarchical Distributed Language Model"
+        },
+        {
+            "paperId": "57458bc1cffe5caa45a885af986d70f723f406b4",
+            "title": "A unified architecture for natural language processing: deep neural networks with multitask learning"
+        },
+        {
+            "paperId": "f76807536e7f6542a72609929a9630de802a597f",
+            "title": "Extracting semantic representations from word co-occurrence statistics: A computational study"
+        },
+        {
+            "paperId": "755e566d3f10d057bc9e4908e4016ae6f7ca0753",
+            "title": "Weighted Low-Rank Approximations"
+        },
+        {
+            "paperId": "6c2b28f9354f667cd5bd07afc0471d8334430da7",
+            "title": "A Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "e517e1645708e7b050787bb4734002ea194a1958",
+            "title": "Mining the Web for Synonyms: PMI-IR versus LSA on TOEFL"
+        },
+        {
+            "paperId": "1524c838710bf79ca98dd22cb3f7f7018ef01079",
+            "title": "Similarity-Based Estimation of Word Cooccurrence Probabilities"
+        },
+        {
+            "paperId": "9e2caa39ac534744a180972a30a320ad0ae41ea3",
+            "title": "Word Association Norms, Mutual Information, and Lexicography"
+        },
+        {
+            "paperId": "8112c4305b88d85199267e9e03d3a0aca4432059",
+            "title": "The approximation of one matrix by another of lower rank"
+        },
+        {
+            "paperId": "e0c01df98a6b633b25c96c1a99b713ac96f1c5be",
+            "title": "Placing search in context: the concept revisited"
+        },
+        {
+            "paperId": "488fc9c4a28cf943d31697ddc538ef6080c94025",
+            "title": "Experiments with LSA scoring: optimal rank and basis"
+        },
+        {
+            "paperId": "decd9bc0385612bdf936928206d83730718e737e",
+            "title": "Distributional Structure"
+        },
+        {
+            "paperId": null,
+            "title": "MEN (WORDSIM)"
+        }
+    ]
+}

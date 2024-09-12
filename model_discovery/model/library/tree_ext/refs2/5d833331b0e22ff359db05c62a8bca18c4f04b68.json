@@ -1,0 +1,198 @@
+{
+    "paperId": "5d833331b0e22ff359db05c62a8bca18c4f04b68",
+    "externalIds": {
+        "ArXiv": "1312.3005",
+        "DBLP": "journals/corr/ChelbaMSGBK13",
+        "MAG": "2611669587",
+        "DOI": "10.21437/Interspeech.2014-564",
+        "CorpusId": 14136307
+    },
+    "title": "One billion word benchmark for measuring progress in statistical language modeling",
+    "abstract": "We propose a new benchmark corpus to be used for measuring progress in statistical language modeling. With almost one billion words of training data, we hope this benchmark will be useful to quickly evaluate novel language modeling techniques, and to compare their contribution when combined with other advanced techniques. We show performance of several well-known types of language models, with the best results achieved with a recurrent neural network based language model. The baseline unpruned KneserNey 5-gram model achieves perplexity 67.6. A combination of techniques leads to 35% reduction in perplexity, or 10% reduction in cross-entropy (bits), over that baseline. The benchmark is available as a code.google.com project; besides the scripts needed to rebuild the training/held-out data, it also makes available log-probability values for each word in each of ten held-out data sets, for each of the baseline n-gram models.",
+    "venue": "Interspeech",
+    "year": 2013,
+    "referenceCount": 35,
+    "citationCount": 1059,
+    "influentialCitationCount": 126,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1312.3005",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new benchmark corpus to be used for measuring progress in statistical language modeling, with almost one billion words of training data, is proposed, which is useful to quickly evaluate novel language modeling techniques, and to compare their contribution when combined with other advanced techniques."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1802969",
+            "name": "Ciprian Chelba"
+        },
+        {
+            "authorId": "2047446108",
+            "name": "Tomas Mikolov"
+        },
+        {
+            "authorId": "144927151",
+            "name": "M. Schuster"
+        },
+        {
+            "authorId": "2055641376",
+            "name": "Qi Ge"
+        },
+        {
+            "authorId": "1784037",
+            "name": "T. Brants"
+        },
+        {
+            "authorId": "152124726",
+            "name": "P. Koehn"
+        },
+        {
+            "authorId": "144711425",
+            "name": "T. Robinson"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "25eb5bb4eba859b1eaac200ec0c2e4638b7e83b5",
+            "title": "Speed regularization and optimality in word classing"
+        },
+        {
+            "paperId": "cb45e9217fe323fbc199d820e7735488fca2a9b3",
+            "title": "Strategies for training large scale neural network language models"
+        },
+        {
+            "paperId": "77dfe038a9bdab27c4505444931eaa976e9ec667",
+            "title": "Empirical Evaluation and Combination of Advanced Language Modeling Techniques"
+        },
+        {
+            "paperId": "3b56693f6fe6b82092c4adc756f20fb9b7710ac5",
+            "title": "Efficient Subsampling for Training Complex Language Models"
+        },
+        {
+            "paperId": "07ca885cb5cc4328895bfaec9ab752d5801b14cd",
+            "title": "Extensions of recurrent neural network language model"
+        },
+        {
+            "paperId": "a1a4d2f3621ce7c56d7c396bb59f4eaf0e2b14fa",
+            "title": "Shrinking Exponential Language Models"
+        },
+        {
+            "paperId": "0fcc184b3b90405ec3ceafd6a4007c749df7c363",
+            "title": "Continuous space language models"
+        },
+        {
+            "paperId": "ba786c46373892554b98df42df7af6f5da343c9d",
+            "title": "Large Language Models in Machine Translation"
+        },
+        {
+            "paperId": "bd7d93193aad6c4b71cc8942e808753019e87706",
+            "title": "Three new graphical models for statistical language modelling"
+        },
+        {
+            "paperId": "6bf6c77b895069239ef7a180aee5332ed7b40c79",
+            "title": "A Hierarchical Bayesian Language Model Based On Pitman-Yor Processes"
+        },
+        {
+            "paperId": "ffea7f0fd89dc940107cdf94f7decfcc42315c67",
+            "title": "A Neural Syntactic Language Model"
+        },
+        {
+            "paperId": "567dc4e26ece98e96c2e798ae8acafa5883945a9",
+            "title": "Discriminative Language Modeling with Conditional Random Fields and the Perceptron Algorithm"
+        },
+        {
+            "paperId": "6c2b28f9354f667cd5bd07afc0471d8334430da7",
+            "title": "A Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "09c76da2361d46689825c4efc37ad862347ca577",
+            "title": "A bit of progress in language modeling"
+        },
+        {
+            "paperId": "4af41f4d838daa7ca6995aeb4918b61989d1ed80",
+            "title": "Classes for fast maximum entropy training"
+        },
+        {
+            "paperId": "a1c3748820d6b5ab4e7334524815df9bb6d20aed",
+            "title": "Structured language modeling"
+        },
+        {
+            "paperId": "29053eab305c2b585bcfbb713243b05646e7d62d",
+            "title": "Entropy-based Pruning of Backoff Language Models"
+        },
+        {
+            "paperId": "d4e8bed3b50a035e1eabad614fe4218a34b3b178",
+            "title": "An Empirical Study of Smoothing Techniques for Language Modeling"
+        },
+        {
+            "paperId": "9548ac30c113562a51e603dbbc8e9fa651cfd3ab",
+            "title": "Improved backing-off for M-gram language modeling"
+        },
+        {
+            "paperId": "0b26fa1b848ed808a0511db34bce2426888f0b68",
+            "title": "Adaptive Statistical Language Modeling; A Maximum Entropy Approach"
+        },
+        {
+            "paperId": "3de5d40b60742e3dfa86b19e7f660962298492af",
+            "title": "Class-Based n-gram Models of Natural Language"
+        },
+        {
+            "paperId": "0687165a9f0360bde0469fd401d966540e0897c3",
+            "title": "A Dynamic Language Model for Speech Recognition"
+        },
+        {
+            "paperId": "668087f0ae7ce1de6e0bd0965dbb480c08103260",
+            "title": "Finding Structure in Time"
+        },
+        {
+            "paperId": "b0130277677e5b915d5cd86b3afafd77fd08eb2e",
+            "title": "Estimation of probabilities from sparse data for the language model component of a speech recognizer"
+        },
+        {
+            "paperId": "96364af2d208ea75ca3aeb71892d2f7ce7326b55",
+            "title": "Statistical Language Models Based on Neural Networks"
+        },
+        {
+            "paperId": "3d2218b17e7898a222e5fc2079a3f1531990708f",
+            "title": "I and J"
+        },
+        {
+            "paperId": "f9a1b3850dfd837793743565a8af95973d395a4e",
+            "title": "LSTM Neural Networks for Language Modeling"
+        },
+        {
+            "paperId": "28f0f57da04fc891c68e23ba9d11f89807f56bca",
+            "title": "Factored recurrent neural network language model in TED lecture transcription"
+        },
+        {
+            "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+            "title": "Recurrent neural network based language model"
+        },
+        {
+            "paperId": "60650f0a6530cebd78d894c15f7c06738dc65418",
+            "title": "Study on interaction between entropy pruning and kneser-ney smoothing"
+        },
+        {
+            "paperId": "ff80a400198f0ce26887672407d8872825e663bf",
+            "title": "Random forests and the data sparseness problem in language modeling"
+        },
+        {
+            "paperId": "ca5cb4e0826b424adb81cbb4f2e3c88c391a4075",
+            "title": "Influence of cultivation temperature on the ligninolytic activity of selected fungal strains"
+        },
+        {
+            "paperId": "c19fbefdeead6a4154a22a9c8551a18b1530033a",
+            "title": "Hierarchical Probabilistic Neural Network Language Model"
+        },
+        {
+            "paperId": null,
+            "title": "2005.Random forests and the data"
+        },
+        {
+            "paperId": "1d453386011ef21285fa81fb4f87fdf811c6ad7a",
+            "title": "Learning internal representations by back-propagating errors"
+        }
+    ]
+}

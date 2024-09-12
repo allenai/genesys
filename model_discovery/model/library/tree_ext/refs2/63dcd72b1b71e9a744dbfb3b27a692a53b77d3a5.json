@@ -1,0 +1,206 @@
+{
+    "paperId": "63dcd72b1b71e9a744dbfb3b27a692a53b77d3a5",
+    "externalIds": {
+        "MAG": "2947590214",
+        "PubMedCentral": "6549219",
+        "DOI": "10.3389/fgene.2019.00432",
+        "CorpusId": 167218287,
+        "PubMed": "31191597"
+    },
+    "title": "NCNet: Deep Learning Network Models for Predicting Function of Non-coding DNA",
+    "abstract": "The human genome consists of 98.5% non-coding DNA sequences, and most of them have no known function. However, a majority of disease-associated variants lie in these regions. Therefore, it is critical to predict the function of non-coding DNA. Hence, we propose the NCNet, which integrates deep residual learning and sequence-to-sequence learning networks, to predict the transcription factor (TF) binding sites, which can then be used to predict non-coding functions. In NCNet, deep residual learning networks are used to enhance the identification rate of regulatory patterns of motifs, so that the sequence-to-sequence learning network may make the most out of the sequential dependency between the patterns. With the identity shortcut technique and deep architectures of the networks, NCNet achieves significant improvement compared to the original hybrid model in identifying regulatory markers.",
+    "venue": "Frontiers in Genetics",
+    "year": 2019,
+    "referenceCount": 39,
+    "citationCount": 11,
+    "influentialCitationCount": 2,
+    "openAccessPdf": {
+        "url": "https://www.frontiersin.org/articles/10.3389/fgene.2019.00432/pdf",
+        "status": "GOLD"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The NCNet is proposed, which integrates deep residual learning and sequence-to-sequence learning networks, to predict the transcription factor (TF) binding sites, which can then be used to predict non-coding functions."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "9184703",
+            "name": "Hanyu Zhang"
+        },
+        {
+            "authorId": "1808859",
+            "name": "Che-Lun Hung"
+        },
+        {
+            "authorId": "11248640",
+            "name": "Meiyuan Liu"
+        },
+        {
+            "authorId": "2109687610",
+            "name": "Xiaoye Hu"
+        },
+        {
+            "authorId": "2107896908",
+            "name": "Yi-Yang Lin"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "9f5b82d9915d0752957602224c5056be7e749c83",
+            "title": "Foundations of Machine Learning"
+        },
+        {
+            "paperId": "85b09cdea57abc5a2a48fd2f4bcf309c0c54508f",
+            "title": "Integration of deep feature representations and handcrafted features to improve the prediction of N6-methyladenosine sites"
+        },
+        {
+            "paperId": "2bec766a7fc8910b8ad872c1f15fce0ab4c60e25",
+            "title": "Scalable Big Data Analytics for Protein Bioinformatics: Efficient Computational Solutions for Protein Structures"
+        },
+        {
+            "paperId": "2a1001bcc90c4138dc090f3a02ff8a403b349fe6",
+            "title": "Spark-IDPP: high-throughput and scalable prediction of intrinsically disordered protein regions with Spark clusters on the Cloud"
+        },
+        {
+            "paperId": "fb37561499573109fc2cebb6a7b08f44917267dd",
+            "title": "Squeeze-and-Excitation Networks"
+        },
+        {
+            "paperId": "de11ef44f5ae6323dab6392906520966e684d58d",
+            "title": "Prediction of human protein subcellular localization using deep learning"
+        },
+        {
+            "paperId": "d0611891b9e8a7c5731146097b6f201578f47b2f",
+            "title": "Learning Transferable Architectures for Scalable Image Recognition"
+        },
+        {
+            "paperId": "ee4a012a4b12d11d7ab8c0e79c61e807927a163c",
+            "title": "Rethinking Atrous Convolution for Semantic Image Segmentation"
+        },
+        {
+            "paperId": "5694e46284460a648fe29117cbc55f6c9be3fa3c",
+            "title": "Densely Connected Convolutional Networks"
+        },
+        {
+            "paperId": "67336354f6915e184b5a1f085389d2f5d7d865a2",
+            "title": "HDInsight4PSi: Boosting performance of 3D protein structure similarity searching with HDInsight clusters in Microsoft Azure cloud"
+        },
+        {
+            "paperId": "da398dd57a31a663eb572ec85db7cdfe2f70dc99",
+            "title": "Associative Long Short-Term Memory"
+        },
+        {
+            "paperId": "98b2df80e7850ab71933a278eec5504c7d04e1d3",
+            "title": "DanQ: a hybrid convolutional and recurrent deep neural network for quantifying the function of DNA sequences"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "19bcb1b3fd7cfd8f2e4ea4579effa32d808adb0e",
+            "title": "Basset: learning the regulatory code of the accessible genome with deep convolutional neural networks"
+        },
+        {
+            "paperId": "e018d3883c82c9f85a4c8b7698c3fe52cc40eb39",
+            "title": "Predicting effects of noncoding variants with deep learning\u2013based sequence model"
+        },
+        {
+            "paperId": "42d3ae61ca296558cba61446bd95b8a6e5b1082d",
+            "title": "Predicting the sequence specificities of DNA- and RNA-binding proteins by deep learning"
+        },
+        {
+            "paperId": "5b791cd374c7109693aaddee2c12d659ae4e3ec0",
+            "title": "Grid Long Short-Term Memory"
+        },
+        {
+            "paperId": "70c996bd3be274964c7a3500d42743738dbd342b",
+            "title": "Hybrid Speech Recognition"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "fd89721f007f62d52cbc3ac329aa5e36a6e0f8d9",
+            "title": "Integrative analysis of 111 reference human epigenomes"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "1eb09fecd75eb27825dce4f964b97f4f5cc399d7",
+            "title": "On the Properties of Neural Machine Translation: Encoder\u2013Decoder Approaches"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "5e83ab70d0cbc003471e87ec306d27d9c80ecb16",
+            "title": "Network In Network"
+        },
+        {
+            "paperId": "1149888d75af4ed5dffc25731b875651c3ccdeb2",
+            "title": "Hybrid speech recognition with Deep Bidirectional LSTM"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "e33cbb25a8c7390aec6a398e36381f4f7770c283",
+            "title": "Deep Neural Networks for Acoustic Modeling in Speech Recognition"
+        },
+        {
+            "paperId": "8bcc4170f64cd26db2935ee042c6d533d1767014",
+            "title": "An Integrated Encyclopedia of DNA Elements in the Human Genome"
+        },
+        {
+            "paperId": "ea9d2a2b4ce11aaf85136840c65f3bc9c03ab649",
+            "title": "Understanding the difficulty of training deep feedforward neural networks"
+        },
+        {
+            "paperId": "aee835ea79cdc045568a4092a3883b3129599445",
+            "title": "Statistical machine translation"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": null,
+            "title": "be construed as a potential con\ufb02ict of interest"
+        },
+        {
+            "paperId": "ac6283a991c0b334a4cefe2f88566e20813fa1c0",
+            "title": "Scalable Big Data Analytics for Protein Bioinformatics"
+        },
+        {
+            "paperId": "85fa09523724489648d900c67c7ba1d9e24375c3",
+            "title": "Top Downloads in IEEE Xplore [Reader's Choice]"
+        },
+        {
+            "paperId": "2913c2bf3f92b5ae369400a42b2d27cc5bc05ecb",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": null,
+            "title": "Recognition and Understanding (Olomouc)"
+        },
+        {
+            "paperId": null,
+            "title": "Lecture 6.5-rmsprop: divide the gradient by a running average of its recent magnitude"
+        },
+        {
+            "paperId": null,
+            "title": "publication in this journal is cited, in accordance with accepted academic No use, distribution or reproduction is permitted which does not comply with terms"
+        }
+    ]
+}

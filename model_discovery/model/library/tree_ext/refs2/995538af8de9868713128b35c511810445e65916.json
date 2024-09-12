@@ -1,0 +1,81 @@
+{
+    "paperId": "995538af8de9868713128b35c511810445e65916",
+    "externalIds": {
+        "DBLP": "journals/jacm/LadnerF80",
+        "MAG": "2143462372",
+        "DOI": "10.1145/322217.322232",
+        "CorpusId": 207568668
+    },
+    "title": "Parallel Prefix Computation",
+    "abstract": "The prefix problem is to compute all the products x t o x2 . . . . o xk for i ~ k .~ n, where o is an associative operation A recurstve construction IS used to obtain a product circuit for solving the prefix problem which has depth exactly [log:n] and size bounded by 4n An application yields fast, small Boolean ctrcmts to simulate fimte-state transducers. By simulating a sequentml adder, a Boolean clrcmt which has depth 2[Iog2n] + 2 and size bounded by 14n Is obtained for n-bit binary addmon The size can be decreased significantly by permitting the depth to increase by an addmve constant",
+    "venue": "Journal of the ACM",
+    "year": 1980,
+    "referenceCount": 11,
+    "citationCount": 850,
+    "influentialCitationCount": 45,
+    "openAccessPdf": {
+        "url": "https://dl.acm.org/doi/pdf/10.1145/322217.322232",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A recurstve construction is used to obtain a product circuit for solving the prefix problem and a Boolean clrcmt which has depth 2[Iog2n] + 2 and size bounded by 14n is obtained for n-bit binary addmon."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1762656",
+            "name": "Richard E. Ladner"
+        },
+        {
+            "authorId": "145298802",
+            "name": "M. Fischer"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "b5d8a1e1714c521106ca03e26926ebe377ddcc0b",
+            "title": "An Introduction to Boolean Function Complexity."
+        },
+        {
+            "paperId": "45d13b6c243da49043307eeffe14a928192bf3ea",
+            "title": "A Lower Bound for the Length of Addition Chains"
+        },
+        {
+            "paperId": "7457476bd4719212ab257ad96483a642a35d61bd",
+            "title": "The Art of Computer Programming"
+        },
+        {
+            "paperId": "1c9d9759fbcd508993f216ceeeb47ce760b7a7da",
+            "title": "Sequential Machines and Automata Theory"
+        },
+        {
+            "paperId": "d153ab1f313363917bf0b459dbfd534d5e6b82a2",
+            "title": "Sequential machines and automata theory"
+        },
+        {
+            "paperId": null,
+            "title": "Journal ofthe Assoaatton for Computing Mactnnery"
+        },
+        {
+            "paperId": null,
+            "title": "ACCEPTED DECEMBER"
+        },
+        {
+            "paperId": null,
+            "title": "On the addiUon ofbmary numbers"
+        },
+        {
+            "paperId": null,
+            "title": "Asymptotic estimation of addition time of a parallel adder Syst"
+        },
+        {
+            "paperId": "748f27587c37d8b0882a20692967901b81429fce",
+            "title": "The Art of Computer Programming"
+        },
+        {
+            "paperId": "3dbe2ee8de3c3bf06ed722b36cef75152f3d5997",
+            "title": "On the Algorithmic Complexity of Discrete Functions"
+        }
+    ]
+}

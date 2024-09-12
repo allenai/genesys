@@ -1,0 +1,235 @@
+{
+    "paperId": "26e743d5bd465f49b9538deaf116c15e61b7951f",
+    "externalIds": {
+        "MAG": "2951416398",
+        "ACL": "N16-1162",
+        "DBLP": "conf/naacl/HillCK16",
+        "ArXiv": "1602.03483",
+        "DOI": "10.18653/v1/N16-1162",
+        "CorpusId": 2937095
+    },
+    "title": "Learning Distributed Representations of Sentences from Unlabelled Data",
+    "abstract": "Unsupervised methods for learning distributed representations of words are ubiquitous in today's NLP research, but far less is known about the best ways to learn distributed phrase or sentence representations from unlabelled data. This paper is a systematic comparison of models that learn such representations. We find that the optimal approach depends critically on the intended application. Deeper, more complex models are preferable for representations to be used in supervised systems, but shallow log-linear models work best for building representation spaces that can be decoded with simple spatial distance metrics. We also propose two new unsupervised representation-learning objectives designed to optimise the trade-off between training time, domain portability and performance.",
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2016,
+    "referenceCount": 48,
+    "citationCount": 555,
+    "influentialCitationCount": 81,
+    "openAccessPdf": {
+        "url": "https://doi.org/10.18653/v1/n16-1162",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A systematic comparison of models that learn distributed phrase or sentence representations from unlabelled data finds that the optimal approach depends critically on the intended application."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145783676",
+            "name": "Felix Hill"
+        },
+        {
+            "authorId": "1979489",
+            "name": "Kyunghyun Cho"
+        },
+        {
+            "authorId": "145762466",
+            "name": "A. Korhonen"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "4aa9f5150b46320f534de4747a2dd0cd7f3fe292",
+            "title": "Semi-supervised Sequence Learning"
+        },
+        {
+            "paperId": "72f5b51f87f0d461c1832d6b776112e16e00ecef",
+            "title": "Learning Distributed Representations from Reviews for Collaborative Filtering"
+        },
+        {
+            "paperId": "fb256cee9d3e0ec52f071a8d674517b62f0828d0",
+            "title": "An Exploration of Discourse-Based Sentence Spaces for Compositional Distributional Semantics"
+        },
+        {
+            "paperId": "17f5c7411eeeeedf25b0db99a9130aa353aee4ba",
+            "title": "Building End-To-End Dialogue Systems Using Generative Hierarchical Neural Network Models"
+        },
+        {
+            "paperId": "55ba959b0193c418399fdda2a38d913a7f0b6ac4",
+            "title": "Jointly optimizing word representations for lexical and sentential tasks with the C-PHRASE model"
+        },
+        {
+            "paperId": "80a624b9327d9050244dfebac96f7f6cf806880f",
+            "title": "Deep Unordered Composition Rivals Syntactic Methods for Text Classification"
+        },
+        {
+            "paperId": "6e795c6e9916174ae12349f5dc3f516570c17ce8",
+            "title": "Skip-Thought Vectors"
+        },
+        {
+            "paperId": "6aa3d8bcca2ebdc52ef7cd786204c338f9d609f2",
+            "title": "Improving Distributional Similarity with Lessons Learned from Word Embeddings"
+        },
+        {
+            "paperId": "c1088267b10e19d565865c2dcf0bc0f94696bf2e",
+            "title": "Learning to Understand Phrases by Embedding the Dictionary"
+        },
+        {
+            "paperId": "696ca58d93f6404fea0fc75c62d1d7b378f47628",
+            "title": "Microsoft COCO Captions: Data Collection and Evaluation Server"
+        },
+        {
+            "paperId": "54b2b6f35f1b5704dddfaa3a137a2f4ad3dfe745",
+            "title": "Deep Captioning with Multimodal Recurrent Neural Networks (m-RNN)"
+        },
+        {
+            "paperId": "f4c018bcc8ea707b83247866bdc8ccb87cd9f5da",
+            "title": "Neural Word Embedding as Implicit Matrix Factorization"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "3f3d110cf78f759760c354bfde1b2ceb9883c544",
+            "title": "Evaluating Neural Word Representations in Tensor-Based Compositional Settings"
+        },
+        {
+            "paperId": "7a96765c147c9c814803c8c9de28a1dd069271da",
+            "title": "SimLex-999: Evaluating Semantic Models With (Genuine) Similarity Estimation"
+        },
+        {
+            "paperId": "16084914bc3729f86f46ac6267ea7a42e7951d41",
+            "title": "SemEval-2014 Task 10: Multilingual Semantic Textual Similarity"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "3cfbb77e5a0e24772cfdb2eb3d4f35dead54b118",
+            "title": "Don\u2019t count, predict! A systematic comparison of context-counting vs. context-predicting semantic vectors"
+        },
+        {
+            "paperId": "f3de86aeb442216a8391befcacb49e58b478f512",
+            "title": "Distributed Representations of Sentences and Documents"
+        },
+        {
+            "paperId": "c333778104f648c385b4631f7b4a859787e9d3d3",
+            "title": "A SICK cure for the evaluation of compositional distributional semantic models"
+        },
+        {
+            "paperId": "27725a2d2a8cee9bf9fffc6c2167017103aba0fa",
+            "title": "A Convolutional Neural Network for Modelling Sentences"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "0e5fa90e28fab414c8ef3ac6ca937c6195c2860e",
+            "title": "Discriminative Improvements to Distributional Sentence Similarity"
+        },
+        {
+            "paperId": "f6b51c8753a871dc94ff32152c00c01e94f90f09",
+            "title": "Efficient Estimation of Word Representations in Vector Space"
+        },
+        {
+            "paperId": "cfa2646776405d50533055ceb1b7f050e9014dcb",
+            "title": "Semi-Supervised Recursive Autoencoders for Predicting Sentiment Distributions"
+        },
+        {
+            "paperId": "93c20e38c85b69fc2d2eb314b3c1217913f7db11",
+            "title": "Generating Text with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "bc1022b031dc6c7019696492e8116598097a8c12",
+            "title": "Natural Language Processing (Almost) from Scratch"
+        },
+        {
+            "paperId": "745d86adca56ec50761591733e157f84cfb19671",
+            "title": "Composition in Distributional Models of Semantics"
+        },
+        {
+            "paperId": "e2b7f37cd97a7907b1b8a41138721ed06a0b76cd",
+            "title": "Stacked Denoising Autoencoders: Learning Useful Representations in a Deep Network with a Local Denoising Criterion"
+        },
+        {
+            "paperId": "843959ffdccf31c6694d135fad07425924f785b1",
+            "title": "Extracting and composing robust features with denoising autoencoders"
+        },
+        {
+            "paperId": "b5d67d1dc671bce42a9daac0c3605adb3fcfc697",
+            "title": "Vector-based Models of Semantic Composition"
+        },
+        {
+            "paperId": "6af58c061f2e4f130c3b795c21ff0c7e3903278f",
+            "title": "Seeing Stars: Exploiting Class Relationships for Sentiment Categorization with Respect to Rating Scales"
+        },
+        {
+            "paperId": "7acfdc905f734abf966aed58abb983bc015ff7fe",
+            "title": "Unsupervised Construction of Large Paraphrase Corpora: Exploiting Massively Parallel News Sources"
+        },
+        {
+            "paperId": "cdcf7cb29f37ac0546961ea8a076075b9cc1f992",
+            "title": "Mining and summarizing customer reviews"
+        },
+        {
+            "paperId": "167e1359943b96b9e92ee73db1df69a1f65d731d",
+            "title": "A Sentimental Education: Sentiment Analysis Using Subjectivity Summarization Based on Minimum Cuts"
+        },
+        {
+            "paperId": "1a5a60233da0feec4d6c3c22f9b3b8656d0dbd84",
+            "title": "Overview of the TREC 2003 Question Answering Track"
+        },
+        {
+            "paperId": "bf458faea311e85d1d87ea4320c1a37227f62f52",
+            "title": "Vectors"
+        },
+        {
+            "paperId": "5035b271e52bcb022fa537578cfa2c2dd130e811",
+            "title": "Memory, knowledge, and the answering of questions."
+        },
+        {
+            "paperId": "5ba082218dc3230fe840890e0e7ad71291992c55",
+            "title": "Proceedings of the 54th Annual Meeting of the Association for Computational Linguistics"
+        },
+        {
+            "paperId": null,
+            "title": "Fethi Bougares"
+        },
+        {
+            "paperId": "83a768a0720d0a1f68792827a422395001291614",
+            "title": "Multimodal Distributional Semantics"
+        },
+        {
+            "paperId": "c7e9224d7d9ee2e9673a4bc1c3c92e0b25ad8c3b",
+            "title": "Frege in Space: A Program of Compositional Distributional Semantics"
+        },
+        {
+            "paperId": "73e897104540642698321c106cc9c35af369fe12",
+            "title": "Combining Symbolic and Distributional Models of Meaning"
+        },
+        {
+            "paperId": "1cff7cc15555c38607016aaba24059e76b160adb",
+            "title": "Annotating Expressions of Opinions and Emotions in Language"
+        },
+        {
+            "paperId": "decd9bc0385612bdf936928206d83730718e737e",
+            "title": "Distributional Structure"
+        },
+        {
+            "paperId": null,
+            "title": "We make all code for training and evaluating these new models publicly available, together with pre-trained models and an online demo of the FastSent sentence space"
+        }
+    ]
+}

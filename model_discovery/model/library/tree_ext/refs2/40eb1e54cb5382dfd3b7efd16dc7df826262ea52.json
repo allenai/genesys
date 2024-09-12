@@ -1,0 +1,226 @@
+{
+    "paperId": "40eb1e54cb5382dfd3b7efd16dc7df826262ea52",
+    "externalIds": {
+        "ArXiv": "1711.08488",
+        "MAG": "2769205412",
+        "DBLP": "journals/corr/abs-1711-08488",
+        "DOI": "10.1109/CVPR.2018.00102",
+        "CorpusId": 4868248
+    },
+    "title": "Frustum PointNets for 3D Object Detection from RGB-D Data",
+    "abstract": "In this work, we study 3D object detection from RGBD data in both indoor and outdoor scenes. While previous methods focus on images or 3D voxels, often obscuring natural 3D patterns and invariances of 3D data, we directly operate on raw point clouds by popping up RGB-D scans. However, a key challenge of this approach is how to efficiently localize objects in point clouds of large-scale scenes (region proposal). Instead of solely relying on 3D proposals, our method leverages both mature 2D object detectors and advanced 3D deep learning for object localization, achieving efficiency as well as high recall for even small objects. Benefited from learning directly in raw point clouds, our method is also able to precisely estimate 3D bounding boxes even under strong occlusion or with very sparse points. Evaluated on KITTI and SUN RGB-D 3D detection benchmarks, our method outperforms the state of the art by remarkable margins while having real-time capability.",
+    "venue": "2018 IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "year": 2017,
+    "referenceCount": 44,
+    "citationCount": 2101,
+    "influentialCitationCount": 288,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1711.08488",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work directly operates on raw point clouds by popping up RGBD scans and leverages both mature 2D object detectors and advanced 3D deep learning for object localization, achieving efficiency as well as high recall for even small objects."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "144329939",
+            "name": "C. Qi"
+        },
+        {
+            "authorId": "46641573",
+            "name": "W. Liu"
+        },
+        {
+            "authorId": "2484982",
+            "name": "Chenxia Wu"
+        },
+        {
+            "authorId": "1423723631",
+            "name": "Hao Su"
+        },
+        {
+            "authorId": "51352814",
+            "name": "L. Guibas"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "f4a9e26a38a7b05baccc38fd563a3c24b80eb56f",
+            "title": "2D-Driven 3D Object Detection in RGB-D Images"
+        },
+        {
+            "paperId": "b1ecc077d3bbab92bfba0e49b0fb90cbdd015b01",
+            "title": "Vehicle detection and localization on bird's eye view elevation images using convolutional neural network"
+        },
+        {
+            "paperId": "79cfb51a51fc093f66aac8e858afe2e14d4a1f20",
+            "title": "Focal Loss for Dense Object Detection"
+        },
+        {
+            "paperId": "38a935e212c8e10460545b74a7888e3966c03e74",
+            "title": "Amodal Detection of 3D Objects: Inferring 3D Bounding Boxes from 2D Ones in RGB-Depth Images"
+        },
+        {
+            "paperId": "8760bc7631c0cb04e7138254e9fd6451b7def8ca",
+            "title": "Revisiting Unreasonable Effectiveness of Data in Deep Learning Era"
+        },
+        {
+            "paperId": "8674494bd7a076286b905912d26d47f7501c4046",
+            "title": "PointNet++: Deep Hierarchical Feature Learning on Point Sets in a Metric Space"
+        },
+        {
+            "paperId": "597c506316d53962e3e6a89e3437067c8d682e2d",
+            "title": "Accurate Single Stage Detector Using Recurrent Rolling Convolution"
+        },
+        {
+            "paperId": "1a0912bb76777469295bb2c059faee907e7f3258",
+            "title": "Mask R-CNN"
+        },
+        {
+            "paperId": "e94183191183a368bf07eb544654bae4b3cbf407",
+            "title": "DSSD : Deconvolutional Single Shot Detector"
+        },
+        {
+            "paperId": "2a94c84383ee3de5e6211d43d16e7de387f68878",
+            "title": "Feature Pyramid Networks for Object Detection"
+        },
+        {
+            "paperId": "d997beefc0922d97202789d2ac307c55c2c52fba",
+            "title": "PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation"
+        },
+        {
+            "paperId": "9e880a4283a3a4e67304f54e00daf30cc535eeef",
+            "title": "3D Bounding Box Estimation Using Deep Learning and Geometry"
+        },
+        {
+            "paperId": "6d7d48fdde91604d8047e8574b11d05465d9e0be",
+            "title": "3D fully convolutional network for vehicle detection in point cloud"
+        },
+        {
+            "paperId": "dc200ab22bf63e10e8b2af328a9e072d82cf75b7",
+            "title": "Multi-view 3D Object Detection Network for Autonomous Driving"
+        },
+        {
+            "paperId": "511ff60d4aa5ab2660552f02ee85692425912b46",
+            "title": "OctNet: Learning Deep 3D Representations at High Resolutions"
+        },
+        {
+            "paperId": "da09eaa1412aaf0a62622f01f50e2e801a3b4c52",
+            "title": "Vote3Deep: Fast object detection in 3D point clouds using efficient convolutional neural networks"
+        },
+        {
+            "paperId": "9187cf65f80b13daf7db69564d444cece34f9a0e",
+            "title": "Three-Dimensional Object Detection and Layout Prediction Using Clouds of Oriented Gradients"
+        },
+        {
+            "paperId": "d821767b7c7315c69daa39fbb0f4a44426bfaf41",
+            "title": "Monocular 3D Object Detection for Autonomous Driving"
+        },
+        {
+            "paperId": "7a6ca00c0e2ec1bf97352e13cd3e5f35d608567d",
+            "title": "Vehicle Detection from 3D Lidar Using Fully Convolutional Network"
+        },
+        {
+            "paperId": "15ca7adccf5cd4dc309cdcaa6328f4c429ead337",
+            "title": "FPNN: Field Probing Neural Networks for 3D Data"
+        },
+        {
+            "paperId": "4cdcf2ae5e1fafebd9b3613247a7b1962584da34",
+            "title": "Volumetric and Multi-view CNNs for Object Classification on 3D Data"
+        },
+        {
+            "paperId": "9c9d7247f8c51ec5a02b0d911d1d7b9e8160495d",
+            "title": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems"
+        },
+        {
+            "paperId": "4d7a9197433acbfb24ef0e9d0f33ed1699e4a5b0",
+            "title": "SSD: Single Shot MultiBox Detector"
+        },
+        {
+            "paperId": "f5a0d356e70bde8f5ec503618d15d1966dc31626",
+            "title": "3D Object Proposals for Accurate Object Class Detection"
+        },
+        {
+            "paperId": "dc0d60f6e8bb7a04ba8a77d51d10b6dba8117480",
+            "title": "Deep Sliding Shapes for Amodal 3D Object Detection in RGB-D Images"
+        },
+        {
+            "paperId": "3f1c6749edfaf4f89bac38b2d15a0493bd9aa253",
+            "title": "VoxNet: A 3D Convolutional Neural Network for real-time object recognition"
+        },
+        {
+            "paperId": "8154027ed2e0c1772b54e79c40d30ae9ee468331",
+            "title": "Voting for Voting in Online Point Cloud Object Detection"
+        },
+        {
+            "paperId": "b73e2d40da901ad3da3813670a51c52803d7af7e",
+            "title": "SUN RGB-D: A RGB-D scene understanding benchmark suite"
+        },
+        {
+            "paperId": "dbb6ded623159c867fbeca0772db7b2eb9489523",
+            "title": "Spatial Transformer Networks"
+        },
+        {
+            "paperId": "424561d8585ff8ebce7d5d07de8dbf7aae5e7270",
+            "title": "Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks"
+        },
+        {
+            "paperId": "54c19a4891b1151e7d225b5ab3ebe4dbd2df5ce0",
+            "title": "Data-driven 3D Voxel Patterns for object category recognition"
+        },
+        {
+            "paperId": "1ba8376f416e90fe434977ae9f300997667498d2",
+            "title": "Multi-view Convolutional Neural Networks for 3D Shape Recognition"
+        },
+        {
+            "paperId": "7ffdbc358b63378f07311e883dddacc9faeeaf4b",
+            "title": "Fast R-CNN"
+        },
+        {
+            "paperId": "8f8ef3403cd6350f41610be7046c04db3e35fc51",
+            "title": "Sliding Shapes for 3D Object Detection in Depth Images"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "7c8a51d04522496c43db68f2582efd45eaf59fea",
+            "title": "3D ShapeNets: A deep representation for volumetric shapes"
+        },
+        {
+            "paperId": "2f4df08d9072fc2ac181b7fced6a245315ce05c8",
+            "title": "Rich Feature Hierarchies for Accurate Object Detection and Semantic Segmentation"
+        },
+        {
+            "paperId": "79b949d9b35c3f51dd20fb5c746cc81fc87147eb",
+            "title": "Vision meets robotics: The KITTI dataset"
+        },
+        {
+            "paperId": "de5b0fd02ea4f4d67fe3ae0d74603b9822df4e42",
+            "title": "Are we ready for autonomous driving? The KITTI vision benchmark suite"
+        },
+        {
+            "paperId": "bc6dff14a130c57a91d5a21339c23471faf1d46f",
+            "title": "Et al"
+        },
+        {
+            "paperId": null,
+            "title": "B. Details on Frustum PointNets (Sec 4.2, 4.3) B.1"
+        },
+        {
+            "paperId": null,
+            "title": "we provide more details on our Frustum Point-Net architectures and training parameters while explains more about our 2D detector"
+        },
+        {
+            "paperId": null,
+            "title": "This supplementary document provides additional technical details, extra analysis experiments, more quantitative results and qualitative test results to the main paper"
+        },
+        {
+            "paperId": null,
+            "title": "3d object detection benchmark leader board"
+        }
+    ]
+}

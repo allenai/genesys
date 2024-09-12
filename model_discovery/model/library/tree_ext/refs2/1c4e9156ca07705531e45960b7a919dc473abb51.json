@@ -1,0 +1,166 @@
+{
+    "paperId": "1c4e9156ca07705531e45960b7a919dc473abb51",
+    "externalIds": {
+        "MAG": "2964137095",
+        "DBLP": "conf/bmvc/ZagoruykoK16",
+        "ArXiv": "1605.07146",
+        "DOI": "10.5244/C.30.87",
+        "CorpusId": 15276198
+    },
+    "title": "Wide Residual Networks",
+    "abstract": "Deep residual networks were shown to be able to scale up to thousands of layers and still have improving performance. However, each fraction of a percent of improved accuracy costs nearly doubling the number of layers, and so training very deep residual networks has a problem of diminishing feature reuse, which makes these networks very slow to train. To tackle these problems, in this paper we conduct a detailed experimental study on the architecture of ResNet blocks, based on which we propose a novel architecture where we decrease depth and increase width of residual networks. We call the resulting network structures wide residual networks (WRNs) and show that these are far superior over their commonly used thin and very deep counterparts. For example, we demonstrate that even a simple 16-layer-deep wide residual network outperforms in accuracy and efficiency all previous deep residual networks, including thousand-layer-deep networks, achieving new state-of-the-art results on CIFAR, SVHN, COCO, and significant improvements on ImageNet. Our code and models are available at this https URL",
+    "venue": "British Machine Vision Conference",
+    "year": 2016,
+    "referenceCount": 32,
+    "citationCount": 7293,
+    "influentialCitationCount": 1187,
+    "openAccessPdf": {
+        "url": "http://www.bmva.org/bmvc/2016/papers/paper087/abstract087.pdf",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper conducts a detailed experimental study on the architecture of ResNet blocks and proposes a novel architecture where the depth and width of residual networks are decreased and the resulting network structures are called wide residual networks (WRNs), which are far superior over their commonly used thin and very deep counterparts."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2134433",
+            "name": "Sergey Zagoruyko"
+        },
+        {
+            "authorId": "2505902",
+            "name": "N. Komodakis"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "0aeae528df555192420bd799ca5f31899b64ed59",
+            "title": "A MultiPath Network for Object Detection"
+        },
+        {
+            "paperId": "51db1f3c8dfc7d4077da39c96bb90a6358128111",
+            "title": "Deep Networks with Stochastic Depth"
+        },
+        {
+            "paperId": "77f0a39b8e02686fd85b01971f8feb7f60971f80",
+            "title": "Identity Mappings in Deep Residual Networks"
+        },
+        {
+            "paperId": "b5c26ab8767d046cb6e32d959fdf726aee89bb62",
+            "title": "Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "deb254cabc940ee0b08dd59662bf0e31ae83c568",
+            "title": "LocNet: Improving Localization Accuracy for Object Detection"
+        },
+        {
+            "paperId": "f63e917638553414526a0cc8550de4ad2d83fe7a",
+            "title": "Fast and Accurate Deep Network Learning by Exponential Linear Units (ELUs)"
+        },
+        {
+            "paperId": "16cb6876666f3a7b56a636c1d85ad00bd0d98bf3",
+            "title": "Net2Net: Accelerating Learning via Knowledge Transfer"
+        },
+        {
+            "paperId": "e0945081b5b87187a53d4329cf77cd8bff635795",
+            "title": "Highway Networks"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "d6f2f611da110b5b5061731be3fc4c7f45d8ee23",
+            "title": "Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification"
+        },
+        {
+            "paperId": "8604f376633af8b347e31d84c6150a93b11e34c2",
+            "title": "FitNets: Hints for Thin Deep Nets"
+        },
+        {
+            "paperId": "55dda8f230566867acbfaa7bdd08fd8c7b8721ed",
+            "title": "Fractional Max-Pooling"
+        },
+        {
+            "paperId": "fb91db6aa4f710814f8aec28a7f3ecbc4e5ad4fd",
+            "title": "Deeply-Supervised Nets"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "b034b5769ab94acf9fb8ae48c7edb560a300bb63",
+            "title": "On the Number of Linear Regions of Deep Neural Networks"
+        },
+        {
+            "paperId": "5e83ab70d0cbc003471e87ec306d27d9c80ecb16",
+            "title": "Network In Network"
+        },
+        {
+            "paperId": "aa7bfd2304201afbb19971ebde87b17e40242e91",
+            "title": "On the importance of initialization and momentum in deep learning"
+        },
+        {
+            "paperId": "b7b915d508987b73b61eccd2b237e7ed099a2d29",
+            "title": "Maxout Networks"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "b8ef1230a5cc9ea7cd8358f1ae7d1af97813ba14",
+            "title": "Deep Learning Made Easier by Linear Transformations in Perceptrons"
+        },
+        {
+            "paperId": "ea9d2a2b4ce11aaf85136840c65f3bc9c03ab649",
+            "title": "Understanding the difficulty of training deep feedforward neural networks"
+        },
+        {
+            "paperId": "b8012351bc5ebce4a4b3039bbbba3ce393bc3315",
+            "title": "An empirical evaluation of deep architectures on problems with many factors of variation"
+        },
+        {
+            "paperId": "50c770b425a5bb25c77387f687a9910a9d130722",
+            "title": "Learning Complex, Extended Sequences Using the Principle of History Compression"
+        },
+        {
+            "paperId": "2786feab5c644bf0bde98fb6f9d1dbd0b58ca80c",
+            "title": "On the complexity of shallow and deep neural network classifiers"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "3449b65008b27f6e60a73d80c1fd990f0481126b",
+            "title": "Torch7: A Matlab-like Environment for Machine Learning"
+        },
+        {
+            "paperId": "6fdb77260fc83dff91c44fea0f31a2cb8ed13d04",
+            "title": "Scaling learning algorithms towards AI"
+        },
+        {
+            "paperId": null,
+            "title": "Cifar-10 (canadian institute for advanced research)"
+        },
+        {
+            "paperId": null,
+            "title": "Optnet -reducing memory usage in torch neural networks, 2016. URL https://github.com/fmassa/optimize-net"
+        },
+        {
+            "paperId": null,
+            "title": "Training and investigating residual nets"
+        }
+    ]
+}

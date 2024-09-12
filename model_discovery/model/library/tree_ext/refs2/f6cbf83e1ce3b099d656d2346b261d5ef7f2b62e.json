@@ -1,0 +1,238 @@
+{
+    "paperId": "f6cbf83e1ce3b099d656d2346b261d5ef7f2b62e",
+    "externalIds": {
+        "DBLP": "conf/icml/OordLBSVKDLCSCG18",
+        "MAG": "2950362437",
+        "ArXiv": "1711.10433",
+        "CorpusId": 27706557
+    },
+    "title": "Parallel WaveNet: Fast High-Fidelity Speech Synthesis",
+    "abstract": "The recently-developed WaveNet architecture is the current state of the art in realistic speech synthesis, consistently rated as more natural sounding for many different languages than any previous system. However, because WaveNet relies on sequential generation of one audio sample at a time, it is poorly suited to today's massively parallel computers, and therefore hard to deploy in a real-time production setting. This paper introduces Probability Density Distillation, a new method for training a parallel feed-forward network from a trained WaveNet with no significant difference in quality. The resulting system is capable of generating high-fidelity speech samples at more than 20 times faster than real-time, and is deployed online by Google Assistant, including serving multiple English and Japanese voices.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2017,
+    "referenceCount": 31,
+    "citationCount": 820,
+    "influentialCitationCount": 80,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": null
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3422336",
+            "name": "A\u00e4ron van den Oord"
+        },
+        {
+            "authorId": "2144417088",
+            "name": "Yazhe Li"
+        },
+        {
+            "authorId": "2256699276",
+            "name": "Igor Babuschkin"
+        },
+        {
+            "authorId": "34838386",
+            "name": "K. Simonyan"
+        },
+        {
+            "authorId": "1689108",
+            "name": "O. Vinyals"
+        },
+        {
+            "authorId": "2645384",
+            "name": "K. Kavukcuoglu"
+        },
+        {
+            "authorId": "47568983",
+            "name": "George van den Driessche"
+        },
+        {
+            "authorId": "49860549",
+            "name": "Edward Lockhart"
+        },
+        {
+            "authorId": "38712164",
+            "name": "Luis C. Cobo"
+        },
+        {
+            "authorId": "3205302",
+            "name": "Florian Stimberg"
+        },
+        {
+            "authorId": "2670752",
+            "name": "Norman Casagrande"
+        },
+        {
+            "authorId": "2401609",
+            "name": "Dominik Grewe"
+        },
+        {
+            "authorId": "30155667",
+            "name": "Seb Noury"
+        },
+        {
+            "authorId": "48373216",
+            "name": "S. Dieleman"
+        },
+        {
+            "authorId": "152585800",
+            "name": "Erich Elsen"
+        },
+        {
+            "authorId": "2583391",
+            "name": "Nal Kalchbrenner"
+        },
+        {
+            "authorId": "1691713",
+            "name": "H. Zen"
+        },
+        {
+            "authorId": "1753223",
+            "name": "Alex Graves"
+        },
+        {
+            "authorId": "143776287",
+            "name": "Helen King"
+        },
+        {
+            "authorId": "2066221078",
+            "name": "T. Walters"
+        },
+        {
+            "authorId": "143813532",
+            "name": "Dan Belov"
+        },
+        {
+            "authorId": "48987704",
+            "name": "D. Hassabis"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "15e81c8d1c21f9e928c72721ac46d458f3341454",
+            "title": "Non-Autoregressive Neural Machine Translation"
+        },
+        {
+            "paperId": "585bf7bea8fa5267738bc465611d6f197e0f87dd",
+            "title": "Masked Autoregressive Flow for Density Estimation"
+        },
+        {
+            "paperId": "2e77b99e8bd10b9e4551a780c0bde9dd10fdbe9b",
+            "title": "PixelCNN++: Improving the PixelCNN with Discretized Logistic Mixture Likelihood and Other Modifications"
+        },
+        {
+            "paperId": "df9aa3438af7a0938cf1829f4c2f20b3f9bd05f5",
+            "title": "Fast Wavenet Generation Algorithm"
+        },
+        {
+            "paperId": "590c9a1ff422b03477f7830b20609f212c85aa13",
+            "title": "Variational Lossy Autoencoder"
+        },
+        {
+            "paperId": "3c7092347a5b7804d9534b6f3f52032c1502cbf8",
+            "title": "Amortised MAP Inference for Image Super-resolution"
+        },
+        {
+            "paperId": "b01871c114b122340209562972ff515b86b16ccf",
+            "title": "Video Pixel Networks"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "df0402517a7338ae28bc54acaac400de6b456a46",
+            "title": "WaveNet: A Generative Model for Raw Audio"
+        },
+        {
+            "paperId": "0936352b78a52bc5d2b5e3f04233efc56664af51",
+            "title": "Conditional Image Generation with PixelCNN Decoders"
+        },
+        {
+            "paperId": "6a97d2668187965743d1b825b306defccbabbb4c",
+            "title": "Improved Variational Inference with Inverse Autoregressive Flow"
+        },
+        {
+            "paperId": "09879f7956dddc2a9328f5c1472feeb8402bcbcf",
+            "title": "Density estimation using Real NVP"
+        },
+        {
+            "paperId": "915c4bb289b3642489e904c65a47fa56efb60658",
+            "title": "Perceptual Losses for Real-Time Style Transfer and Super-Resolution"
+        },
+        {
+            "paperId": "9c9d7247f8c51ec5a02b0d911d1d7b9e8160495d",
+            "title": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems"
+        },
+        {
+            "paperId": "41f1d50c85d3180476c4c7b3eea121278b0d8474",
+            "title": "Pixel Recurrent Neural Networks"
+        },
+        {
+            "paperId": "f37e90c0bd5c4a9619ccfb763c45cb2d84abd3e6",
+            "title": "A Neural Algorithm of Artistic Style"
+        },
+        {
+            "paperId": "f267934e9de60c5badfa9d3f28918e67ae7a2bf4",
+            "title": "Generative Image Modeling Using Spatial LSTMs"
+        },
+        {
+            "paperId": "0f899b92b7fb03b609fee887e4b6f3b633eaf30d",
+            "title": "Variational Inference with Normalizing Flows"
+        },
+        {
+            "paperId": "0c908739fbff75f03469d13d4a1a07de3414ee19",
+            "title": "Distilling the Knowledge in a Neural Network"
+        },
+        {
+            "paperId": "90f72fbbe5f0a29e627db28999e01a30a9655bc6",
+            "title": "MADE: Masked Autoencoder for Distribution Estimation"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "dc8301b67f98accbb331190dd7bd987952a692af",
+            "title": "NICE: Non-linear Independent Components Estimation"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17",
+            "title": "Generating Sequences With Recurrent Neural Networks"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "6dc61f37ecc552413606d8c89ffbc46ec98ed887",
+            "title": "Acceleration of stochastic approximation by averaging"
+        },
+        {
+            "paperId": "c68796f833a7151f0a63d1d1608dc902b4fdc9b6",
+            "title": "GENERATIVE ADVERSARIAL NETS"
+        },
+        {
+            "paperId": "31868290adf1c000c611dfc966b514d5a34e8d23",
+            "title": "FUNDAMENTAL TECHNOLOGIES IN MODERN SPEECH RECOGNITION Digital Object Identifier 10.1109/MSP.2012.2205597"
+        },
+        {
+            "paperId": "b893e7053c9c7e266a23fb13a42261a88f650210",
+            "title": "The Neural Autoregressive Distribution Estimator"
+        },
+        {
+            "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+            "title": "Recurrent neural network based language model"
+        },
+        {
+            "paperId": null,
+            "title": "inverse-autoregressive \ufb02ows (IAFs) and autoregressive models can in principle model the same distributions [2"
+        }
+    ]
+}

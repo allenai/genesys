@@ -1,0 +1,222 @@
+{
+    "paperId": "0877b3cabd96c3f763d3195d1a2ea92832412ae0",
+    "externalIds": {
+        "MAG": "2952102074",
+        "ArXiv": "1808.01491",
+        "DBLP": "conf/mm/LiHZCDL18",
+        "DOI": "10.1145/3240508.3240636",
+        "CorpusId": 51925059
+    },
+    "title": "Non-locally Enhanced Encoder-Decoder Network for Single Image De-raining",
+    "abstract": "Single image rain streaks removal has recently witnessed substantial progress due to the development of deep convolutional neural networks. However, existing deep learning based methods either focus on the entrance and exit of the network by decomposing the input image into high and low frequency information and employing residual learning to reduce the mapping range, or focus on the introduction of cascaded learning scheme to decompose the task of rain streaks removal into multi-stages. These methods treat the convolutional neural network as an encapsulated end-to-end mapping module without deepening into the rationality and superiority of neural network design. In this paper, we delve into an effective end-to-end neural network structure for stronger feature expression and spatial correlation learning. Specifically, we propose a non-locally enhanced encoder-decoder network framework, which consists of a pooling indices embedded encoder-decoder network to efficiently learn increasingly abstract feature representation for more accurate rain streaks modeling while perfectly preserving the image detail. The proposed encoder-decoder framework is composed of a series of non-locally enhanced dense blocks that are designed to not only fully exploit hierarchical features from all the convolutional layers but also well capture the long-distance dependencies and structural information. Extensive experiments on synthetic and real datasets demonstrate that the proposed method can effectively remove rain-streaks on rainy image of various densities while well preserving the image details, which achieves significant improvements over the recent state-of-the-art methods.",
+    "venue": "ACM Multimedia",
+    "year": 2018,
+    "referenceCount": 42,
+    "citationCount": 232,
+    "influentialCitationCount": 26,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1808.01491",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A non-locally enhanced encoder-decoder network framework that can effectively remove rain-streaks on rainy image of various densities while well preserving the image details, which achieves significant improvements over the recent state-of-the-art methods."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "144958813",
+            "name": "Guanbin Li"
+        },
+        {
+            "authorId": "2143944993",
+            "name": "Xiang He"
+        },
+        {
+            "authorId": "2155469084",
+            "name": "Wei Zhang"
+        },
+        {
+            "authorId": "2291217",
+            "name": "Huiyou Chang"
+        },
+        {
+            "authorId": "145834008",
+            "name": "Le Dong"
+        },
+        {
+            "authorId": "1737218",
+            "name": "Liang Lin"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "e50298e1c2c21cd4f33bc4b68d5da6f6d04796b5",
+            "title": "Flow Guided Recurrent Neural Encoder for Video Salient Object Detection"
+        },
+        {
+            "paperId": "31603f17397f0c69a8b02041d05abe9c96357996",
+            "title": "Contrast-Oriented Deep Neural Networks for Salient Object Detection"
+        },
+        {
+            "paperId": "4ef1476dec02c62227187edbba88615278b3edba",
+            "title": "Residual Dense Network for Image Super-Resolution"
+        },
+        {
+            "paperId": "34aaa735409b666b8dc678c23acb600b1d87913b",
+            "title": "Density-Aware Single Image De-raining Using a Multi-stream Dense Network"
+        },
+        {
+            "paperId": "2f578680eb02e6eac6dd2ace8192b7248e5c7e14",
+            "title": "Context-Aware Semantic Inpainting"
+        },
+        {
+            "paperId": "7a0feeee49ac7692257fb21041e25511bc45192a",
+            "title": "Zero-Shot Super-Resolution Using Deep Internal Learning"
+        },
+        {
+            "paperId": "8899094797e82c5c185a0893896320ef77f60e64",
+            "title": "Non-local Neural Networks"
+        },
+        {
+            "paperId": "b5718e1b87a0e4784640a60ba517c63476c45b7e",
+            "title": "Joint Bi-layer Optimization for Single-Image Rain Streak Removal"
+        },
+        {
+            "paperId": "29ad37a306732676a41f25e05960ff0adbca631e",
+            "title": "Removing Rain from Single Images via a Deep Detail Network"
+        },
+        {
+            "paperId": "1903276bb462d3ccd4f1fac3a8e34a53045ef8a1",
+            "title": "Attention-Aware Face Hallucination via Deep Reinforcement Learning"
+        },
+        {
+            "paperId": "41b8ef0c19170205d9c3c2a994b5f0f80636aaa9",
+            "title": "Automatic Colorization with Improved Spatial Coherence and Boundary Localization"
+        },
+        {
+            "paperId": "88d346374f17189cebef7394ae5d39492443df89",
+            "title": "Deep Laplacian Pyramid Networks for Fast and Accurate Super-Resolution"
+        },
+        {
+            "paperId": "4afc04da0d58df97fec5c0f912a9650ad5057b25",
+            "title": "Instance-Level Salient Object Segmentation"
+        },
+        {
+            "paperId": "6de27f256e97c014a95706c72af7fa651e8fa34a",
+            "title": "Deep Joint Rain Detection and Removal from a Single Image"
+        },
+        {
+            "paperId": "df0c54fe61f0ffb9f0e36a17c2038d9a1964cba3",
+            "title": "Photo-Realistic Single Image Super-Resolution Using a Generative Adversarial Network"
+        },
+        {
+            "paperId": "db029abd3316af48bd97a6552c586f2913631748",
+            "title": "Visual Saliency Detection Based on Multiscale Deep CNN Features"
+        },
+        {
+            "paperId": "5694e46284460a648fe29117cbc55f6c9be3fa3c",
+            "title": "Densely Connected Convolutional Networks"
+        },
+        {
+            "paperId": "7c17025c540b88df14da35229618b5e896ab9528",
+            "title": "Rain Streak Removal Using Layer Priors"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "2f50ae8b643f062c6c81b6e366d1d28db6ce0917",
+            "title": "Removing Rain from a Single Image via Discriminative Sparse Coding"
+        },
+        {
+            "paperId": "7f5fc84819c0cf94b771fe15141f65b123f7b8ec",
+            "title": "Multi-Scale Context Aggregation by Dilated Convolutions"
+        },
+        {
+            "paperId": "b0c065cd43aa7280e766b5dcbcc7e26abce59330",
+            "title": "SegNet: A Deep Convolutional Encoder-Decoder Architecture for Image Segmentation"
+        },
+        {
+            "paperId": "3925447a37c9a767a5322fe946179d0db2ca4ab3",
+            "title": "Video Deraining and Desnowing Using Temporal Correlation and Low-Rank Matrix Completion"
+        },
+        {
+            "paperId": "4af21d85776575dacd374b5d69e4712789a30a62",
+            "title": "Utilizing Local Phase Information to Remove Rain from Video"
+        },
+        {
+            "paperId": "66e9dc728b5041271bff0cd6ac0d7eadcd88442f",
+            "title": "Image Super-Resolution Using Deep Convolutional Networks"
+        },
+        {
+            "paperId": "e1dc80c7cad6315c5594051c0fcc601c2d8da9ee",
+            "title": "Exploiting image structural similarity for single image rain removal"
+        },
+        {
+            "paperId": "d61fadf436e4163dd99d73a28ad478c7c93973f2",
+            "title": "A Generalized Low-Rank Appearance Model for Spatio-temporally Correlated Rain Streaks"
+        },
+        {
+            "paperId": "3c7c98316e5fa6f51130ca3a750e7e2866521582",
+            "title": "Single-image deraining using an adaptive nonlocal means filter"
+        },
+        {
+            "paperId": "ced2511ff8a32309083dbc7a08f74ecaf4676845",
+            "title": "Motion robust rain detection and removal from videos"
+        },
+        {
+            "paperId": "a9fee56e6e2dad7170931c531e4c595f09b926f4",
+            "title": "Context-Aware Single Image Rain Removal"
+        },
+        {
+            "paperId": "7dced2b91599b7dff946a13b007d2e43a0647b8c",
+            "title": "Automatic Single-Image-Based Rain Streaks Removal via Image Decomposition"
+        },
+        {
+            "paperId": "af3ffdfd446b0c13a69afd4dbbfbc87060e18a2b",
+            "title": "A fast algorithm for rain detection and removal from videos"
+        },
+        {
+            "paperId": "d9efeb0df96c5a50d4c4342189c2ea53c43072fc",
+            "title": "Rain or Snow Detection in Image Sequences Through Use of\u00a0a\u00a0Histogram of Orientation of Streaks"
+        },
+        {
+            "paperId": "a3008bbfbb323346c9ef0cfee65a930059b4fc66",
+            "title": "Rain sensor for automatic systems on vehicles"
+        },
+        {
+            "paperId": "dad5932e2a40c87d17e40cf8d072ffdb43046fd9",
+            "title": "Scope of validity of PSNR in image/video quality assessment"
+        },
+        {
+            "paperId": "094dffafa3e2220ae6db6f76ffa8246723236da9",
+            "title": "Rain Removal in Video by Combining Temporal and Chromatic Properties"
+        },
+        {
+            "paperId": "440d3980e529e394d258d5c1e52bbd9a23f21610",
+            "title": "When does a camera see rain?"
+        },
+        {
+            "paperId": "2b462365914b0c139ff04fe7bf6362b0f53f2bec",
+            "title": "Rainy weather recognition from in-vehicle camera images for driver assistance"
+        },
+        {
+            "paperId": "371616e0e6ffdfdd1690337a9c1d7ed5b6d47766",
+            "title": "Detection and removal of rain from videos"
+        },
+        {
+            "paperId": "eae2e0fa72e898c289365c0af16daf57a7a6cf40",
+            "title": "Image quality assessment: from error visibility to structural similarity"
+        },
+        {
+            "paperId": "9a1ed876196ec9733acb1daa6d65e35ff0414291",
+            "title": "A database of human segmented natural images and its application to evaluating segmentation algorithms and measuring ecological statistics"
+        },
+        {
+            "paperId": null,
+            "title": "Abhinav Gupta, and Kaiming He"
+        }
+    ]
+}

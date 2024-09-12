@@ -1,0 +1,351 @@
+{
+    "paperId": "3069b8a2e7ff22020e0cf9a6f8a2c6cf33a736f2",
+    "externalIds": {
+        "MAG": "2951232369",
+        "ArXiv": "1804.02967",
+        "DBLP": "journals/corr/abs-1804-02967",
+        "DOI": "10.1109/TMI.2018.2878669",
+        "CorpusId": 4717251,
+        "PubMed": "30387726"
+    },
+    "title": "HyperDense-Net: A Hyper-Densely Connected CNN for Multi-Modal Image Segmentation",
+    "abstract": "Recently, dense connections have attracted substantial attention in computer vision because they facilitate gradient flow and implicit deep supervision during training. Particularly, DenseNet that connects each layer to every other layer in a feed-forward fashion and has shown impressive performances in natural image classification tasks. We propose HyperDenseNet, a 3-D fully convolutional neural network that extends the definition of dense connectivity to multi-modal segmentation problems. Each imaging modality has a path, and dense connections occur not only between the pairs of layers within the same path but also between those across different paths. This contrasts with the existing multi-modal CNN approaches, in which modeling several modalities relies entirely on a single joint layer (or level of abstraction) for fusion, typically either at the input or at the output of the network. Therefore, the proposed network has total freedom to learn more complex combinations between the modalities, within and in-between all the levels of abstraction, which increases significantly the learning representation. We report extensive evaluations over two different and highly competitive multi-modal brain tissue segmentation challenges, iSEG 2017 and MRBrainS 2013, with the former focusing on six month infant data and the latter on adult images. HyperDenseNet yielded significant improvements over many state-of-the-art segmentation networks, ranking at the top on both benchmarks. We further provide a comprehensive experimental analysis of features re-use, which confirms the importance of hyper-dense connections in multi-modal representation learning. Our code is publicly available.",
+    "venue": "IEEE Transactions on Medical Imaging",
+    "year": 2018,
+    "referenceCount": 74,
+    "citationCount": 395,
+    "influentialCitationCount": 21,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1804.02967",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "HyperDenseNet is proposed, a 3-D fully convolutional neural network that extends the definition of dense connectivity to multi-modal segmentation problems and has total freedom to learn more complex combinations between the modalities, within and in-between all the levels of abstraction, which increases significantly the learning representation."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "144702316",
+            "name": "J. Dolz"
+        },
+        {
+            "authorId": "46989664",
+            "name": "Karthik Gopinath"
+        },
+        {
+            "authorId": "1698556",
+            "name": "Jing Yuan"
+        },
+        {
+            "authorId": "2358407",
+            "name": "H. Lombaert"
+        },
+        {
+            "authorId": "1739646",
+            "name": "Christian Desrosiers"
+        },
+        {
+            "authorId": "47414570",
+            "name": "Ismail ben Ayed"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "53fad2b305ba6e068bec80e8c3f224b9bf07062d",
+            "title": "Benchmark on Automatic Six-Month-Old Infant Brain Segmentation Algorithms: The iSeg-2017 Challenge"
+        },
+        {
+            "paperId": "a86d7289c76d832e83c99539859b7b186e4ea6c8",
+            "title": "H-DenseUNet: Hybrid Densely Connected UNet for Liver and Tumor Segmentation From CT Volumes"
+        },
+        {
+            "paperId": "d952e3ef252564f5697937707dcabb3c46a44edc",
+            "title": "MRI tumor segmentation with densely connected 3D CNN"
+        },
+        {
+            "paperId": "d87b10ff891d74e63839f7404967a26afdf9f061",
+            "title": "Deep CNN ensembles and suggestive annotations for infant brain MRI segmentation"
+        },
+        {
+            "paperId": "be729fe226d7eddcde501eadc275c61b60483a55",
+            "title": "Esophagus segmentation in CT via 3D fully convolutional neural network and random walk"
+        },
+        {
+            "paperId": "f9bd2628b585158dded75b368cc8500fd25a262c",
+            "title": "DLTK: State of the Art Reference Implementations for Deep Learning on Medical Images"
+        },
+        {
+            "paperId": "d7d5bdf7c8ca2f76f9fb76c7f5f1f18f5be08e17",
+            "title": "Isointense infant brain segmentation with a hyper-dense connected convolutional neural network"
+        },
+        {
+            "paperId": "b9fd6c8ae5c3dce4a7a40989d6dbf62f0093dc6e",
+            "title": "Interleaved Group Convolutions"
+        },
+        {
+            "paperId": "23b65a5cd20ce5499ac1a692549d5c5736bb126a",
+            "title": "H-DenseUNet: Hybrid Densely Connected UNet for Liver and Liver Tumor Segmentation from CT Volumes"
+        },
+        {
+            "paperId": "e3c836f4945396dac7f13f6f72af0bed0b299a0b",
+            "title": "Automatic 3D Cardiovascular MR Segmentation with Densely-Connected Volumetric ConvNets"
+        },
+        {
+            "paperId": "9da734397acd7ff7c557960c62fb1b400b27bd89",
+            "title": "ShuffleNet: An Extremely Efficient Convolutional Neural Network for Mobile Devices"
+        },
+        {
+            "paperId": "7a7ffe42d8dc92b1aa70ba14c9bb6b8224397acf",
+            "title": "Regularization of convolutional neural networks using ShuffleNode"
+        },
+        {
+            "paperId": "53e24c00e4683e16d4968805e397b86ad4645f5e",
+            "title": "A review on automatic fetal and neonatal brain MRI segmentation"
+        },
+        {
+            "paperId": "395092396585b7979ddb6186a286b010ec128f53",
+            "title": "Scalable multimodal convolutional networks for brain tumour segmentation"
+        },
+        {
+            "paperId": "a63d0576a8ebbb2ddeef6b84f86311c87ba0cdac",
+            "title": "VoxResNet: Deep voxelwise residual networks for brain segmentation from 3D MR images"
+        },
+        {
+            "paperId": "6b867004cda7d2682159bc745d5ea1ef1bff48fc",
+            "title": "Multi-Scale Dense Convolutional Networks for Efficient Prediction"
+        },
+        {
+            "paperId": "714d4502529ef6433c9f5f58ce2337cbac1dbb6f",
+            "title": "Improving automated multiple sclerosis lesion segmentation with a cascaded 3D convolutional neural network approach"
+        },
+        {
+            "paperId": "c1cc356ae6303b254ce88919ade3907221a5b58d",
+            "title": "Unsupervised domain adaptation in brain lesion segmentation with adversarial networks"
+        },
+        {
+            "paperId": "090dc6adb27cd5e4048746f0ee2a2fd087746530",
+            "title": "3D fully convolutional networks for subcortical segmentation in MRI: A large-scale study"
+        },
+        {
+            "paperId": "5e23a28063b395bdaf784dc548a046885cb90cf2",
+            "title": "Understanding intermediate layers using linear classifier probes"
+        },
+        {
+            "paperId": "82db2c51f7cc1b3b73bf288e231a42799a61f018",
+            "title": "A review on brain structures segmentation in magnetic resonance imaging"
+        },
+        {
+            "paperId": "5694e46284460a648fe29117cbc55f6c9be3fa3c",
+            "title": "Densely Connected Convolutional Networks"
+        },
+        {
+            "paperId": "1a07daa88a366c10afa80cbdf63ad1b5d0759d1e",
+            "title": "HeMIS: Hetero-Modal Image Segmentation"
+        },
+        {
+            "paperId": "7fc464470b441c691d10e7331b14a525bc79b8bb",
+            "title": "3D U-Net: Learning Dense Volumetric Segmentation from Sparse Annotation"
+        },
+        {
+            "paperId": "d0156126edbfc524c8d108bdc0cf811cfe3129aa",
+            "title": "FractalNet: Ultra-Deep Neural Networks without Residuals"
+        },
+        {
+            "paperId": "1c4e9156ca07705531e45960b7a919dc473abb51",
+            "title": "Wide Residual Networks"
+        },
+        {
+            "paperId": "a2700a5942208de1ab1966ee60bf38bf30bbbac5",
+            "title": "Fully convolutional networks for multi-modality isointense infant brain image segmentation"
+        },
+        {
+            "paperId": "51db1f3c8dfc7d4077da39c96bb90a6358128111",
+            "title": "Deep Networks with Stochastic Depth"
+        },
+        {
+            "paperId": "8668404abea4588ad67787b56ef35abe2a819914",
+            "title": "Automatic Segmentation of MR Brain Images With a Convolutional Neural Network"
+        },
+        {
+            "paperId": "7c2bcf6f32b05a04cd3444c030db743e5666af88",
+            "title": "Efficient multi\u2010scale 3D CNN with fully connected CRF for accurate brain lesion segmentation"
+        },
+        {
+            "paperId": "77f0a39b8e02686fd85b01971f8feb7f60971f80",
+            "title": "Identity Mappings in Deep Residual Networks"
+        },
+        {
+            "paperId": "b5c26ab8767d046cb6e32d959fdf726aee89bb62",
+            "title": "Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "ccf019ea2f82a1f880d95649432882c48bfd8c99",
+            "title": "MRBrainS Challenge: Online Evaluation Framework for Brain Image Segmentation in 3T MRI Scans"
+        },
+        {
+            "paperId": "aa72ed89f6b084341d133ed20149c009dcfbe5b7",
+            "title": "Random Walk and Graph Cut for Co-Segmentation of Lung Tumor on PET-CT Images"
+        },
+        {
+            "paperId": "8a25125427b1b438311281b60b452d04252fa764",
+            "title": "Multi-scale 3D convolutional neural networks for lesion segmentation in brain MRI"
+        },
+        {
+            "paperId": "580062407427236ced45253a2ff7df2e147a81e2",
+            "title": "The Multimodal Brain Tumor Image Segmentation Benchmark (BRATS)"
+        },
+        {
+            "paperId": "ec8ad9784823cc27b1c4221d732392a4d0780a2d",
+            "title": "Parallel Multi-Dimensional LSTM, With Application to Fast Biomedical Volumetric Image Segmentation"
+        },
+        {
+            "paperId": "1e17cc9d319f5dc886bf1382acaf3318de9b2e7f",
+            "title": "Deep convolutional neural networks for multi-modality isointense infant brain image segmentation"
+        },
+        {
+            "paperId": "d6f2f611da110b5b5061731be3fc4c7f45d8ee23",
+            "title": "Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification"
+        },
+        {
+            "paperId": "6fc6803df5f9ae505cae5b2f178ade4062c768d0",
+            "title": "Fully convolutional networks for semantic segmentation"
+        },
+        {
+            "paperId": "fb91db6aa4f710814f8aec28a7f3ecbc4e5ad4fd",
+            "title": "Deeply-Supervised Nets"
+        },
+        {
+            "paperId": "0a219f49dd1aa73e83f7f5135abd1a65065368a7",
+            "title": "Integration of sparse multi-modality representation and anatomical constraint for isointense infant brain MR image segmentation"
+        },
+        {
+            "paperId": "4bb437ce87190eef73a4c9ba78567247a920b970",
+            "title": "Lung Tumor Delineation Based on Novel Tumor-Background Likelihood Models in PET-CT Images"
+        },
+        {
+            "paperId": "27d536e945c8140f227b55dcd7977a5805e0aad4",
+            "title": "Segmentation of neonatal brain MR images using patch-driven level sets"
+        },
+        {
+            "paperId": "254cc225960781747a7bea9f02897ce1e5714b41",
+            "title": "Joint segmentation of anatomical and functional images: Applications in quantification of lesions from PET, PET-CT, MRI-PET, and MRI-PET-CT images"
+        },
+        {
+            "paperId": "d835c62f28c2c6c8c2bb699b086f9831bc19d8e3",
+            "title": "Disruption of the Cerebral White Matter Network Is Related to Slowing of Information Processing Speed in Patients With Type 2 Diabetes"
+        },
+        {
+            "paperId": "363850a782ad92811a5f4a72b89d6136db32b8a3",
+            "title": "Optimal Co-Segmentation of Tumor in PET-CT Images With Context Information"
+        },
+        {
+            "paperId": "5c15e2afe2bef2273ab39f0c4e3a838c192793c1",
+            "title": "Automatic Segmentation of Lung Carcinoma Using 3D Texture Features in 18-FDG PET/CT"
+        },
+        {
+            "paperId": "1f61db5812513c913a1e6a48477c3e573a2ac639",
+            "title": "AdaPT: An adaptive preterm segmentation algorithm for neonatal brain MRI"
+        },
+        {
+            "paperId": "adb4ea2c0f3eff8a17c97a67f28b923e8e5bdff1",
+            "title": "Multimodal learning with deep Boltzmann machines"
+        },
+        {
+            "paperId": "638e8b894e686d76f4fe22c1776dd0f62ebfa991",
+            "title": "Co-segmentation of Functional and Anatomical Images"
+        },
+        {
+            "paperId": "28b509db8ec813588c98886674e4318748c44fbb",
+            "title": "Segmentation of multiple sclerosis lesions in brain MRI: A review of automated approaches"
+        },
+        {
+            "paperId": "75b389af404baa22c14e2f4f4dccf0e4a78b2b17",
+            "title": "Automatic segmentation of neonatal images using convex optimization and coupled level sets"
+        },
+        {
+            "paperId": "d4afe78643aceaa64df11e3e11ce3ea222e2d0d8",
+            "title": "Globally Optimal Tumor Segmentation in PET-CT Images: A Graph-Based Co-segmentation Method"
+        },
+        {
+            "paperId": "671ca18838677c234f4ce2780be56ebf842daff2",
+            "title": "Hybrid imaging (SPECT/CT and PET/CT): improving therapeutic decisions."
+        },
+        {
+            "paperId": "f88da74fdccd8a00dca1a1a7e163a9d2685fe6a9",
+            "title": "Automatic segmentation of newborn brain MRI"
+        },
+        {
+            "paperId": "b417ab1ae2c5b203a27814d7a51dc371980d0ace",
+            "title": "Coregistered FDG PET/CT-Based Textural Characterization of Head and Neck Cancer for Radiation Treatment Planning"
+        },
+        {
+            "paperId": "43ab49d7a803558e530f7f8eabf8335af36d8370",
+            "title": "Probabilistic Brain Tissue Segmentation in Neonatal Magnetic Resonance Imaging"
+        },
+        {
+            "paperId": "a8ad174e405250d3443a25d0ad087ab447f608d7",
+            "title": "Segmentation of thalamic nuclei using a modified k-means clustering algorithm and high-resolution quantitative magnetic resonance imaging at 1.5 T"
+        },
+        {
+            "paperId": "37d4eb94e160914db51c1e0fe99ba241adc0d610",
+            "title": "Segmentation of newborn brain MRI"
+        },
+        {
+            "paperId": "b6324a86003abd1b3206843151b9d34cf94f5f12",
+            "title": "Automatic segmentation of MR images of the developing newborn brain"
+        },
+        {
+            "paperId": "23045299013e8738bc8eff73827ef8de256aef66",
+            "title": "Measures of the Amount of Ecologic Association Between Species"
+        },
+        {
+            "paperId": "04eed24e26d9e6aaf2ca434cad20facd5feb83d0",
+            "title": "HyperFace: A Deep Multi-Task Learning Framework for Face Detection, Landmark Localization, Pose Estimation, and Gender Recognition"
+        },
+        {
+            "paperId": "cf8573cd7653817c940febeceef5d160083fa9f3",
+            "title": "Automatic brain segmentation using artificial neural networks with shape context"
+        },
+        {
+            "paperId": "7127a32a7dd33a9cb53bf8ef96034994e5789f08",
+            "title": "HyperDense-Net : A densely connected CNN for multi-modal image segmentation"
+        },
+        {
+            "paperId": "00095244a9369f0e8028c24ead1cf1010d34a6ae",
+            "title": "MSSEG Challenge Proceedings: Multiple Sclerosis Lesions Segmentation Challenge Using a Data Management and Processing Infrastructure"
+        },
+        {
+            "paperId": "f6c8de941330197cc120aec69c2dc957b9da69b2",
+            "title": "Statistical Parametric Mapping The Analysis Of Functional Brain Images"
+        },
+        {
+            "paperId": "00eddf30e1668a33d6c70580d5b76d4ddb7cd61b",
+            "title": "Primary lung tumor segmentation from PET\u2013CT volumes with spatial\u2013topological constraint"
+        },
+        {
+            "paperId": "7f34dc0af62ef8dce12f66609a1da879e53307f3",
+            "title": "Automatic segmentation of neonatal brain MRI using atlas based segmentation and machine learning approach"
+        },
+        {
+            "paperId": null,
+            "title": "Proceedings of the MICCAI Grand Challenge: Neonatal Brain Segmentation"
+        },
+        {
+            "paperId": null,
+            "title": "An atlasbased method for neonatal MR brain tissue segmentation"
+        },
+        {
+            "paperId": "f900f21f960b334907d1d54783927922fc949c98",
+            "title": "elastix: A Toolbox for Intensity-Based Medical Image Registration"
+        },
+        {
+            "paperId": "9d45d7e6b85496e255e732254e7fbb918c43074a",
+            "title": "Concurrent multimodality image segmentation by active contours for radiotherapy treatment planning."
+        }
+    ]
+}

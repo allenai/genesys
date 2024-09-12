@@ -1,0 +1,158 @@
+{
+    "paperId": "aa50768a67b9f3f578ab5eb300a248ebc33b7da6",
+    "externalIds": {
+        "DBLP": "conf/icassp/ZhaoLWL19",
+        "MAG": "2936078256",
+        "DOI": "10.1109/ICASSP.2019.8682586",
+        "CorpusId": 146108083
+    },
+    "title": "The Speechtransformer for Large-scale Mandarin Chinese Speech Recognition",
+    "abstract": "Attention-based sequence-to-sequence architectures have made great progress in the speech recognition task. The SpeechTransformer, a no-recurrence encoder-decoder architecture, has shown promising results on small-scale speech recognition data sets in previous works. In this paper, we focus on a large-scale Mandarin Chinese speech recognition task and propose three optimization strategies to further improve the performance and efficiency of the SpeechTransformer. Our first improvement is to use a much lower frame rate, which is shown very beneficial to not only the computation efficiency but also the model performance. The other two strategies are scheduled sampling and focal loss, which are both very effective to reduce the character error rate (CER). On a 8,000 hours task, the proposed improvements yield 10.8%-26.1% relative gain in CER on four different test sets. Compared to a strong hybrid TDNN-LSTM system, which is trained with LF-MMI criterion and decoded with a large 4-gram LM, the final optimized Speech-Transformer gives 12.2%-19.1% relative CER reduction without any explicit language models.",
+    "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+    "year": 2019,
+    "referenceCount": 29,
+    "citationCount": 65,
+    "influentialCitationCount": 3,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper focuses on a large-scale Mandarin Chinese speech recognition task and proposes three optimization strategies to further improve the performance and efficiency of the SpeechTransformer, including a much lower frame rate."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2110151580",
+            "name": "Yuanyuan Zhao"
+        },
+        {
+            "authorId": "2155871822",
+            "name": "Jie Li"
+        },
+        {
+            "authorId": "2108159566",
+            "name": "Xiaorui Wang"
+        },
+        {
+            "authorId": "5226356",
+            "name": "Yan Li"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "da6a90a65e995fe25774a88e581c276418db6546",
+            "title": "Improving Attention Based Sequence-to-Sequence Models for End-to-End English Conversational Speech Recognition"
+        },
+        {
+            "paperId": "f38e047932ddee5614c68214e427215320c22b6c",
+            "title": "A Comparison of Modeling Units in Sequence-to-Sequence Speech Recognition with the Transformer on Mandarin Chinese"
+        },
+        {
+            "paperId": "53dcd6068586d50169877d145df550ff3f568221",
+            "title": "Syllable-Based Sequence-to-Sequence Speech Recognition with the Transformer in Mandarin Chinese"
+        },
+        {
+            "paperId": "a6e4beb28b345fce7470da122b4e45e2cd0dcd12",
+            "title": "A Time-Restricted Self-Attention Layer for ASR"
+        },
+        {
+            "paperId": "41a78e2885b5dc8c719495a33985b5f4880f5b48",
+            "title": "Speech-Transformer: A No-Recurrence Sequence-to-Sequence Model for Speech Recognition"
+        },
+        {
+            "paperId": "c52ac453e154953abdb06fc041023e327ea609a4",
+            "title": "Self-Attentional Acoustic Models"
+        },
+        {
+            "paperId": "4c0f4fa6f38f14c66c89528d9d62bc868bdc2d4a",
+            "title": "Low Latency Acoustic Modeling Using Temporal Convolution and LSTMs"
+        },
+        {
+            "paperId": "cf0e9724e51b420bc51a1d0625410c86d36641db",
+            "title": "Building Competitive Direct Acoustics-to-Word Models for English Conversational Speech Recognition"
+        },
+        {
+            "paperId": "c6b61535f1544835cca3851ceb34222ebc5b4377",
+            "title": "State-of-the-Art Speech Recognition with Sequence-to-Sequence Models"
+        },
+        {
+            "paperId": "bd62a42eed5991958b30934c557c33d0c6f0f25e",
+            "title": "Improving the Performance of Online Neural Transducer Models"
+        },
+        {
+            "paperId": "422500bbb1fb7a48709673f09e44bb5aac2b35d1",
+            "title": "Acoustic-to-word model without OOV"
+        },
+        {
+            "paperId": "5a8bb7b192373d8222a6efd99de4f9042da06f37",
+            "title": "AISHELL-1: An open-source Mandarin speech corpus and a speech recognition baseline"
+        },
+        {
+            "paperId": "15067b905682139b5c4d0f642bb019249923a56b",
+            "title": "CTC Training of Multi-Phone Acoustic Models for Speech Recognition"
+        },
+        {
+            "paperId": "79cfb51a51fc093f66aac8e858afe2e14d4a1f20",
+            "title": "Focal Loss for Dense Object Detection"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "b1cb867270f87f96397cb5f0d76cbb58cdf2c2f2",
+            "title": "Neural Speech Recognizer: Acoustic-to-Word LSTM Model for Large Vocabulary Speech Recognition"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "6ce6a9a30cd69bd2842a4b581cf48c6815bdfdd8",
+            "title": "Purely Sequence-Trained Neural Networks for ASR Based on Lattice-Free MMI"
+        },
+        {
+            "paperId": "f79925410329ab4e3045243f4a652dd03afd4cc8",
+            "title": "Lower Frame Rate Neural Network Acoustic Models"
+        },
+        {
+            "paperId": "23ffaa0fe06eae05817f527a47ac3291077f9e58",
+            "title": "Rethinking the Inception Architecture for Computer Vision"
+        },
+        {
+            "paperId": "878ba5458e9e51f0b341fd9117fa0b43ef4096d3",
+            "title": "End-to-end attention-based large vocabulary speech recognition"
+        },
+        {
+            "paperId": "3056add22b20e3361c38c0472d294a79d4031cb4",
+            "title": "Listen, attend and spell: A neural network for large vocabulary conversational speech recognition"
+        },
+        {
+            "paperId": "9fca2af9a0e3f2c5c3ed47abb3ebd21b7265ac2b",
+            "title": "Fast and accurate recurrent neural network acoustic models for speech recognition"
+        },
+        {
+            "paperId": "b624504240fa52ab76167acfe3156150ca01cf3b",
+            "title": "Attention-Based Models for Speech Recognition"
+        },
+        {
+            "paperId": "df137487e20ba7c6e1e2b9a1e749f2a578b5ad99",
+            "title": "Scheduled Sampling for Sequence Prediction with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "24741d280869ad9c60321f5ab6e5f01b7852507d",
+            "title": "Deep Speech: Scaling up end-to-end speech recognition"
+        },
+        {
+            "paperId": "47d2dc34e1d02a8109f5c04bb6939725de23716d",
+            "title": "End-to-end Continuous Speech Recognition using Attention-based Recurrent NN: First Results"
+        },
+        {
+            "paperId": "7b4f3d0e4e2486a8d5d3f8e00549cf9a117bf88f",
+            "title": "Sequence Transduction with Recurrent Neural Networks"
+        },
+        {
+            "paperId": null,
+            "title": "Parallel training of dnns with natural gradient and parameter averaging"
+        }
+    ]
+}

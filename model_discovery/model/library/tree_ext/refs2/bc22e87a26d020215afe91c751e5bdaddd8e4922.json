@@ -1,0 +1,102 @@
+{
+    "paperId": "bc22e87a26d020215afe91c751e5bdaddd8e4922",
+    "externalIds": {
+        "DBLP": "journals/neco/Schmidhuber92",
+        "MAG": "2089217417",
+        "DOI": "10.1162/neco.1992.4.1.131",
+        "CorpusId": 16683347
+    },
+    "title": "Learning to Control Fast-Weight Memories: An Alternative to Dynamic Recurrent Networks",
+    "abstract": "Previous algorithms for supervised sequence learning are based on dynamic recurrent networks. This paper describes an alternative class of gradient-based systems consisting of two feedforward nets that learn to deal with temporal sequences using fast weights: The first net learns to produce context-dependent weight changes for the second net whose weights may vary very quickly. The method offers the potential for STM storage efficiency: A single weight (instead of a full-fledged unit) may be sufficient for storing temporal information. Various learning methods are derived. Two experiments with unknown time delays illustrate the approach. One experiment shows how the system can be used for adaptive temporary variable binding.",
+    "venue": "Neural Computation",
+    "year": 1992,
+    "referenceCount": 18,
+    "citationCount": 428,
+    "influentialCitationCount": 8,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper describes an alternative class of gradient-based systems consisting of two feedforward nets that learn to deal with temporal sequences using fast weights: the first net learns to produce context-dependent weight changes for the second net whose weights may vary very quickly."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145341374",
+            "name": "J. Schmidhuber"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "89b9a181801f32bf62c4237c4265ba036a79f9dc",
+            "title": "A Fixed Size Storage O(n3) Time Complexity Learning Algorithm for Fully Recurrent Continually Running Networks"
+        },
+        {
+            "paperId": "15d53378d17badc6739e56d6bc17f1ae43534adf",
+            "title": "Learning to generate subgoals for action sequences"
+        },
+        {
+            "paperId": "34468c0aa95a7aea212d8738ab899a69b2fc14c6",
+            "title": "Learning State Space Trajectories in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "319f22bd5abfd67ac15988aa5c7f705f018c3ccd",
+            "title": "Learning internal representations by error propagation"
+        },
+        {
+            "paperId": "481bd6ad5263dc818a32e6fbb5bd96b1159b33d5",
+            "title": "Learning to generate sub-goals for action sequences"
+        },
+        {
+            "paperId": "b2449109d042d4d88acf89956c70945bc6f2b934",
+            "title": "An O(n3) learning algorithm for fully recurrent networks"
+        },
+        {
+            "paperId": "676c922b522bb1099e04c4a984ec44d1c6bac403",
+            "title": "Dynamische neuronale Netze und das fundamentale raumzeitliche Lernproblem"
+        },
+        {
+            "paperId": "ce03ad84b59a616368035f1f73ed666dfaadd16c",
+            "title": "Learning Algorithms for Networks with Internal and External Feedback"
+        },
+        {
+            "paperId": "a3381b80c07a3752570fa2287118b3d8c2b8eb8c",
+            "title": "Learning Algorithms for Networks with Internal and External Feedback"
+        },
+        {
+            "paperId": "6d72a0e83e772468c6084ae7c79e43a4f5989feb",
+            "title": "A local learning algorithm for dynamic feedforward and recurrent networks"
+        },
+        {
+            "paperId": "b530a2d70e060ccdae685084a5387075c3f3f04c",
+            "title": "Towards compositional learning with dynamic neural networks"
+        },
+        {
+            "paperId": null,
+            "title": "Task modularization by network modulation"
+        },
+        {
+            "paperId": "424710825d726e10b016204ed2bc979e2a342d10",
+            "title": "Experimental Analysis of the Real-time Recurrent Learning Algorithm"
+        },
+        {
+            "paperId": "266e07d0dd9a75b61e3632e9469993dbaf063f1c",
+            "title": "Generalization of backpropagation with application to a recurrent gas market model"
+        },
+        {
+            "paperId": null,
+            "title": "Toward a theory of reinforcement-learning connectionist systems"
+        },
+        {
+            "paperId": null,
+            "title": "Abteilung f ur Neurobiologie, Max-Planck Institut f ur Biophysik und Chemie, G ottingen"
+        },
+        {
+            "paperId": "56623a496727d5c71491850e04512ddf4152b487",
+            "title": "Beyond Regression : \"New Tools for Prediction and Analysis in the Behavioral Sciences"
+        },
+        {
+            "paperId": "02f38b2d72d7b3243b5ba4005f814f71b80eec00",
+            "title": "The Utility Driven Dynamic Error Propagation Network"
+        }
+    ]
+}

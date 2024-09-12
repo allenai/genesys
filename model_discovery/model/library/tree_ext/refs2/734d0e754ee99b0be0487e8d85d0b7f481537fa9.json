@@ -1,0 +1,178 @@
+{
+    "paperId": "734d0e754ee99b0be0487e8d85d0b7f481537fa9",
+    "externalIds": {
+        "DBLP": "conf/kdd/WangZQZ14",
+        "MAG": "2106546616",
+        "DOI": "10.1145/2623330.2623614",
+        "CorpusId": 9560952
+    },
+    "title": "Improving the modified nystr\u00f6m method using spectral shifting",
+    "abstract": "The Nystrom method is an efficient approach to enabling large-scale kernel methods. The Nystrom method generates a fast approximation to any large-scale symmetric positive semidefinete (SPSD) matrix using only a few columns of the SPSD matrix. However, since the Nystrom approximation is low-rank, when the spectrum of the SPSD matrix decays slowly, the Nystrom approximation is of low accuracy. In this paper, we propose a variant of the Nystrom method called the modified Nystrom by spectral shifting (SS-Nystrom). The SS-Nystrom method works well no matter whether the spectrum of SPSD matrix decays fast or slow. We prove that our SS-Nystrom has a much stronger error bound than the standard and modified Nystrom methods, and that SS-Nystrom can be even more accurate than the truncated SVD of the same scale in some cases. We also devise an algorithm such that the SS-Nystrom approximation can be computed nearly as efficient as the modified Nystrom approximation. Finally, our SS-Nystrom method demonstrates significant improvements over the standard and modified Nystrom methods on several real-world datasets.",
+    "venue": "Knowledge Discovery and Data Mining",
+    "year": 2014,
+    "referenceCount": 34,
+    "citationCount": 18,
+    "influentialCitationCount": 2,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is proved that the SS-Nystrom has a much stronger error bound than the standard and modified Nystrom methods, and that it can be even more accurate than the truncated SVD of the same scale in some cases."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145940973",
+            "name": "Shusen Wang"
+        },
+        {
+            "authorId": null,
+            "name": "Chao Zhang"
+        },
+        {
+            "authorId": "33441723",
+            "name": "Hui Qian"
+        },
+        {
+            "authorId": "47294286",
+            "name": "Zhihua Zhang"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "a13d1abfd5594cc8067abc4f6c095ad0ca1c2a88",
+            "title": "Using The Matrix Ridge Approximation to Speedup Determinantal Point Processes Sampling Algorithms"
+        },
+        {
+            "paperId": "58c85498e23c86f526223e661e250007794c8d67",
+            "title": "Memory Efficient Kernel Approximation"
+        },
+        {
+            "paperId": "e8e321cbb55d0e2034e3505f88fbcefa755bf682",
+            "title": "Efficient Algorithms and Error Analysis for the Modified Nystrom Method"
+        },
+        {
+            "paperId": "b56fe3324787962ccad3f8ae9976b3064e63259f",
+            "title": "The matrix ridge approximation: algorithms and applications"
+        },
+        {
+            "paperId": "1bde7783f6fc67351e3f52c17b5eee85c91a11ed",
+            "title": "Nystrom Approximation for Large-Scale Determinantal Processes"
+        },
+        {
+            "paperId": "cd3586e010828cd8a3dda7160f56eeaaf63970d7",
+            "title": "Improving CUR matrix decomposition and the Nystr\u00f6m approximation via adaptive sampling"
+        },
+        {
+            "paperId": "7cda32aeefdd3cabd76871b8ee06bd1a1ea2ba10",
+            "title": "Revisiting the Nystrom Method for Improved Large-scale Machine Learning"
+        },
+        {
+            "paperId": "8f77e16f2834eb23307b0436f5422a9752339f0a",
+            "title": "Nystr\u00f6m Method vs Random Fourier Features: A Theoretical and Empirical Comparison"
+        },
+        {
+            "paperId": "50353738eb935a0546aeb2e81882e2f334e32ab8",
+            "title": "Sampling Methods for the Nystr\u00f6m Method"
+        },
+        {
+            "paperId": "049feb51a90330591d9f755c3ff98465f37d42eb",
+            "title": "Improved Bounds for the Nystr\u00f6m Method With Application to Kernel Classification"
+        },
+        {
+            "paperId": "43a8b6aa05996d25b1c501258a7fd4f32a8d5a4b",
+            "title": "Time and space efficient spectral clustering via column sampling"
+        },
+        {
+            "paperId": "7e0887e4578d043f4b45114cf7718bf6271d9117",
+            "title": "Optimal column-based low-rank matrix reconstruction"
+        },
+        {
+            "paperId": "22979772d0cf1caac9a65975ddd7d170bfae5d56",
+            "title": "Near Optimal Column-Based Matrix Reconstruction"
+        },
+        {
+            "paperId": "5e86db3683931837a68e9843686be16b42510ea1",
+            "title": "Clustered Nystr\u00f6m Method for Large Scale Manifold Learning and Dimension Reduction"
+        },
+        {
+            "paperId": "a035cccf0f57b505229f0e5db1a1dfedde062d43",
+            "title": "On the Impact of Kernel Approximation on Learning Accuracy"
+        },
+        {
+            "paperId": "df7e1cfa5999c3746a3bbc9817d924677ac8b8f0",
+            "title": "Finding Structure with Randomness: Probabilistic Algorithms for Constructing Approximate Matrix Decompositions"
+        },
+        {
+            "paperId": "fad1bd501aa769f7701c1016f8a4d1473ca77601",
+            "title": "Machine Learning, Neural and Statistical Classification"
+        },
+        {
+            "paperId": "ed2f7914bf51168842f33618d50f1e5f21622548",
+            "title": "Improved Nystr\u00f6m low-rank approximation and error analysis"
+        },
+        {
+            "paperId": "7ab959ec1915f63bb91dd706f6b177cef0abde84",
+            "title": "Relative-Error CUR Matrix Decompositions"
+        },
+        {
+            "paperId": "0df92684396540f140094ec304871164dc385c9d",
+            "title": "Matrix approximation and projective clustering via volume sampling"
+        },
+        {
+            "paperId": "11e6b5a30a921e6028662105148fac41a76f0500",
+            "title": "On the Nystr\u00f6m Method for Approximating a Gram Matrix for Improved Kernel-Based Learning"
+        },
+        {
+            "paperId": "2ec49fe2817423b2153d8f6b1c36b5c24f93f5a3",
+            "title": "Determinantal Processes and Independence"
+        },
+        {
+            "paperId": "fc8cda36a0972e7de1ac3a7bcb81dc32da79bee4",
+            "title": "Learning with Kernels: Support Vector Machines, Regularization, Optimization, and Beyond"
+        },
+        {
+            "paperId": "fb829c5e6b406bb325fa5a02e05073df12b1772b",
+            "title": "Classes of Kernels for Machine Learning: A Statistics Perspective"
+        },
+        {
+            "paperId": "ccce1cf96f641b3581fba6f4ce2545f4135a15e3",
+            "title": "Least Squares Support Vector Machine Classifiers"
+        },
+        {
+            "paperId": "922b81f11a71aa64cda78914e6356cce89cd4f86",
+            "title": "Ridge Regression Learning Algorithm in Dual Variables"
+        },
+        {
+            "paperId": "9fb56ea269e075245def08a4b9b9b8aa021134b3",
+            "title": "\u00dcber Die Praktische Aufl\u00f6sung von Integralgleichungen mit Anwendungen auf Randwertaufgaben"
+        },
+        {
+            "paperId": "702049aa4b4255a7c40acde1cbc15787f38140f5",
+            "title": "Large-scale SVD and manifold learning"
+        },
+        {
+            "paperId": null,
+            "title": "UCI machine learning repository"
+        },
+        {
+            "paperId": "13c82489c1568b67265d17a15720001a5737171e",
+            "title": "Spectral grouping using the Nystrom method"
+        },
+        {
+            "paperId": "baedf3036e56edddf400f04e5a68b167014991ef",
+            "title": "Kernel Methods for Pattern Analysis"
+        },
+        {
+            "paperId": "b6fff8b8ea77f157913986e7af53951d9fc1128e",
+            "title": "Using the Nystr\u00f6m Method to Speed Up Kernel Machines"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "a26eb90a8766449b942547b02b4f82ecfab0875c",
+            "title": "Stat260/cs294: Randomized Algorithms for Matrices and Data"
+        }
+    ]
+}

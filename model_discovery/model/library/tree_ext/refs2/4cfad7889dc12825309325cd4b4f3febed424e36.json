@@ -1,0 +1,142 @@
+{
+    "paperId": "4cfad7889dc12825309325cd4b4f3febed424e36",
+    "externalIds": {
+        "ArXiv": "1412.1632",
+        "DBLP": "journals/corr/YuHBP14",
+        "MAG": "1591825359",
+        "CorpusId": 12211448
+    },
+    "title": "Deep Learning for Answer Sentence Selection",
+    "abstract": "Answer sentence selection is the task of identifying sentences that contain the answer to a given question. This is an important problem in its own right as well as in the larger context of open domain question answering. We propose a novel approach to solving this task via means of distributed representations, and learn to match questions with answers by considering their semantic encoding. This contrasts prior work on this task, which typically relies on classifiers with large numbers of hand-crafted syntactic and semantic features and various external resources. Our approach does not require any feature engineering nor does it involve specialist linguistic data, making this model easily applicable to a wide range of domains and languages. Experimental results on a standard benchmark dataset from TREC demonstrate that---despite its simplicity---our model matches state of the art performance on the answer sentence selection task.",
+    "venue": "arXiv.org",
+    "year": 2014,
+    "referenceCount": 25,
+    "citationCount": 406,
+    "influentialCitationCount": 52,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a novel approach to solving the answer sentence selection task via means of distributed representations, and learns to match questions with answers by considering their semantic encoding."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2109352263",
+            "name": "Lei Yu"
+        },
+        {
+            "authorId": "2910877",
+            "name": "Karl Moritz Hermann"
+        },
+        {
+            "authorId": "1685771",
+            "name": "Phil Blunsom"
+        },
+        {
+            "authorId": "50419262",
+            "name": "S. Pulman"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "921da70f380e9f9082e5594b128369cfd0fdf120",
+            "title": "A Neural Network for Factoid Question Answering over Paragraphs"
+        },
+        {
+            "paperId": "33261d252218007147a71e40f8367ed152fa2fe0",
+            "title": "Question Answering with Subgraph Embeddings"
+        },
+        {
+            "paperId": "a129f612a9eff903d9133244a6f0914ef3cbda72",
+            "title": "Semantic Parsing for Single-Relation Question Answering"
+        },
+        {
+            "paperId": "4b75d707eb3ffe4607c8cdd5436c8d7f8573fed9",
+            "title": "Multilingual Models for Compositional Distributed Semantics"
+        },
+        {
+            "paperId": "a584211768d49f80192f13b8ed2fda9c058dec34",
+            "title": "Open Question Answering with Weakly Supervised Embedding Models"
+        },
+        {
+            "paperId": "27725a2d2a8cee9bf9fffc6c2167017103aba0fa",
+            "title": "A Convolutional Neural Network for Modelling Sentences"
+        },
+        {
+            "paperId": "c20ed3a1600122e6cf03b8ed74d3d2920ad0a8c6",
+            "title": "Multilingual Distributed Representations without Word Alignment"
+        },
+        {
+            "paperId": "7aa63f414a4d7c6e4369a15a04dc5d3eb5da2b0e",
+            "title": "Automatic Feature Engineering for Answer Selection and Extraction"
+        },
+        {
+            "paperId": "f1aa6df7f18f9cb7d6b6c5c190aeade47b450656",
+            "title": "Question Answering Using Enhanced Lexical Semantic Models"
+        },
+        {
+            "paperId": "79c0b2f44bbc2bc51de554b88ebe46204413f884",
+            "title": "The Role of Syntax in Vector Space Models of Compositional Semantics"
+        },
+        {
+            "paperId": "228920ddc0d376c376ae534ceed589005f51867a",
+            "title": "Answer Extraction as Sequence Tagging with Tree Edit Distance"
+        },
+        {
+            "paperId": "1277fa879c4ac2be8025de3aa7e13db7309b0fa4",
+            "title": "Polarity Inducing Latent Semantic Analysis"
+        },
+        {
+            "paperId": "27e38351e48fe4b7da2775bf94341738bc4da07e",
+            "title": "Semantic Compositionality through Recursive Matrix-Vector Spaces"
+        },
+        {
+            "paperId": "413c1142de9d91804d6d11c67ff3fed59c9fc279",
+            "title": "Adaptive Subgradient Methods for Online Learning and Stochastic Optimization"
+        },
+        {
+            "paperId": "eaf63218521a6678d46e77767aaf23f4ff12920c",
+            "title": "Probabilistic Tree-Edit Models with Structured Latent Variables for Textual Entailment and Question Answering"
+        },
+        {
+            "paperId": "8492070dc4031ed825e95e4803781752bb5e909f",
+            "title": "Word Representations: A Simple and General Method for Semi-Supervised Learning"
+        },
+        {
+            "paperId": "0fd0e3854ee696148e978ec33d5c042554cd4d23",
+            "title": "Tree Edit Models for Recognizing Textual Entailments, Paraphrases, and Answers to Questions"
+        },
+        {
+            "paperId": "57458bc1cffe5caa45a885af986d70f723f406b4",
+            "title": "A unified architecture for natural language processing: deep neural networks with multitask learning"
+        },
+        {
+            "paperId": "5ab6ddd1d45302bf635cce5cb93fbaf4ea79458a",
+            "title": "What is the Jeopardy Model? A Quasi-Synchronous Grammar for QA"
+        },
+        {
+            "paperId": "d6bf67fac447ce6e7c1ec546ca56af30a4060040",
+            "title": "Quasi-Synchronous Grammars: Alignment by Soft Projection of Syntactic Dependencies"
+        },
+        {
+            "paperId": "1aac9a51700b4f548ed4d406d3987c8008876521",
+            "title": "Finding Predominant Word Senses in Untagged Text"
+        },
+        {
+            "paperId": "6c2b28f9354f667cd5bd07afc0471d8334430da7",
+            "title": "A Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "f86ef3e7b856d61ade62e643d87d288fef8827dd",
+            "title": "A Compositional Distributional Model of Meaning"
+        },
+        {
+            "paperId": null,
+            "title": "A co mpositional distributional model of meaning.Proceedings of the Second Symposium on Quantum Interaction"
+        },
+        {
+            "paperId": "4471e3117cdac2fae74d305d54b237bb3addd749",
+            "title": "Explorations in automatic thesaurus discovery"
+        }
+    ]
+}

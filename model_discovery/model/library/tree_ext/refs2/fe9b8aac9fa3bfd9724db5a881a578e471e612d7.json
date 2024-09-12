@@ -1,0 +1,262 @@
+{
+    "paperId": "fe9b8aac9fa3bfd9724db5a881a578e471e612d7",
+    "externalIds": {
+        "ArXiv": "1802.03268",
+        "DBLP": "conf/icml/PhamGZLD18",
+        "MAG": "2785366763",
+        "CorpusId": 3638969
+    },
+    "title": "Efficient Neural Architecture Search via Parameter Sharing",
+    "abstract": "We propose Efficient Neural Architecture Search (ENAS), a fast and inexpensive approach for automatic model design. In ENAS, a controller learns to discover neural network architectures by searching for an optimal subgraph within a large computational graph. The controller is trained with policy gradient to select a subgraph that maximizes the expected reward on the validation set. Meanwhile the model corresponding to the selected subgraph is trained to minimize a canonical cross entropy loss. Thanks to parameter sharing between child models, ENAS is fast: it delivers strong empirical performances using much fewer GPU-hours than all existing automatic model design approaches, and notably, 1000x less expensive than standard Neural Architecture Search. On the Penn Treebank dataset, ENAS discovers a novel architecture that achieves a test perplexity of 55.8, establishing a new state-of-the-art among all methods without post-training processing. On the CIFAR-10 dataset, ENAS designs novel architectures that achieve a test error of 2.89%, which is on par with NASNet (Zoph et al., 2018), whose test error is 2.65%.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2018,
+    "referenceCount": 54,
+    "citationCount": 2581,
+    "influentialCitationCount": 479,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Efficient Neural Architecture Search is a fast and inexpensive approach for automatic model design that establishes a new state-of-the-art among all methods without post-training processing and delivers strong empirical performances using much fewer GPU-hours."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "143950636",
+            "name": "Hieu Pham"
+        },
+        {
+            "authorId": "152565355",
+            "name": "M. Guan"
+        },
+        {
+            "authorId": "2368067",
+            "name": "Barret Zoph"
+        },
+        {
+            "authorId": "2827616",
+            "name": "Quoc V. Le"
+        },
+        {
+            "authorId": "48448318",
+            "name": "J. Dean"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "a8fd9be2f7775b123f62094eadd59d18bbbef027",
+            "title": "Peephole: Predicting Network Performance Before Training"
+        },
+        {
+            "paperId": "5f79398057bf0bbda9ff50067bc1f2950c2a2266",
+            "title": "Progressive Neural Architecture Search"
+        },
+        {
+            "paperId": "ef9ddbc35676ce8ffc2a8067044473727839dbac",
+            "title": "Breaking the Softmax Bottleneck: A High-Rank RNN Language Model"
+        },
+        {
+            "paperId": "856451974cce2d353d5d8a5a72104984a252375c",
+            "title": "Hierarchical Representations for Efficient Architecture Search"
+        },
+        {
+            "paperId": "fa9decd1395cc2f39e9921f870ebc8a8ec2bd08d",
+            "title": "Dynamic Evaluation of Neural Sequence Models"
+        },
+        {
+            "paperId": "7e259f2582c32755b968cb725c5c04a00e481417",
+            "title": "Practical Network Blocks Design with Q-Learning"
+        },
+        {
+            "paperId": "e56b10f7cd4bf037beac84da5925dc4544fab974",
+            "title": "SMASH: One-Shot Model Architecture Search through HyperNetworks"
+        },
+        {
+            "paperId": "eb35fdc11a325f21a8ce0ca65058f7480a2fc91f",
+            "title": "Improved Regularization of Convolutional Neural Networks with Cutout"
+        },
+        {
+            "paperId": "58c6f890a1ae372958b7decf56132fe258152722",
+            "title": "Regularizing and Optimizing LSTM Language Models"
+        },
+        {
+            "paperId": "168b7d0ab57a331a228ce21ffd1becbb93066f79",
+            "title": "Neural Optimizer Search with Reinforcement Learning"
+        },
+        {
+            "paperId": "d0611891b9e8a7c5731146097b6f201578f47b2f",
+            "title": "Learning Transferable Architectures for Scalable Image Recognition"
+        },
+        {
+            "paperId": "2397ce306e5d7f3d0492276e357fb1833536b5d8",
+            "title": "On the State of the Art of Evaluation in Neural Language Models"
+        },
+        {
+            "paperId": "84e65a5bdb735d62eef4f72c2f01af354b2285ba",
+            "title": "Efficient Architecture Search by Network Transformation"
+        },
+        {
+            "paperId": "da6d086617239f5668076515bf78790d4ec0af2a",
+            "title": "Learning Time-Efficient Deep Architectures with Budgeted Super Networks"
+        },
+        {
+            "paperId": "2ddc07ca7af4578fde868f102d178dc3ba6a0751",
+            "title": "Accelerating Neural Architecture Search using Performance Prediction"
+        },
+        {
+            "paperId": "71a80e7342e56f33fd120246e907151a0cf1b4d0",
+            "title": "DeepArchitect: Automatically Designing and Training Deep Architectures"
+        },
+        {
+            "paperId": "f108b65fe0003e387e1cd7e50f537af0531818e4",
+            "title": "Large-Scale Evolution of Image Classifiers"
+        },
+        {
+            "paperId": "22aa426aeffb77339646cc03da8e94de22396efc",
+            "title": "Shake-Shake regularization of 3-branch residual networks"
+        },
+        {
+            "paperId": "d7878c2044fb699e0ce0cad83e411824b1499dc8",
+            "title": "Neural Combinatorial Optimization with Reinforcement Learning"
+        },
+        {
+            "paperId": "67d968c7450878190e45ac7886746de867bf673d",
+            "title": "Neural Architecture Search with Reinforcement Learning"
+        },
+        {
+            "paperId": "424aef7340ee618132cc3314669400e23ad910ba",
+            "title": "Tying Word Vectors and Word Classifiers: A Loss Framework for Language Modeling"
+        },
+        {
+            "paperId": "6cd5dfccd9f52538b19a415e00031d0ee4e5b181",
+            "title": "Designing Neural Network Architectures using Reinforcement Learning"
+        },
+        {
+            "paperId": "401d68e1a930b0f7e02030cab4c185fb1839cb11",
+            "title": "Capacity and Trainability in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "2d7782c225e0fc123d6e227f2cb253e58279ac73",
+            "title": "Improving Neural Language Models with a Continuous Cache"
+        },
+        {
+            "paperId": "5b6ec746d309b165f9f9def873a2375b6fb40f3d",
+            "title": "Xception: Deep Learning with Depthwise Separable Convolutions"
+        },
+        {
+            "paperId": "563783de03452683a9206e85fe6d661714436686",
+            "title": "HyperNetworks"
+        },
+        {
+            "paperId": "5694e46284460a648fe29117cbc55f6c9be3fa3c",
+            "title": "Densely Connected Convolutional Networks"
+        },
+        {
+            "paperId": "b022f2a277a4bf5f42382e86e4380b96340b9e86",
+            "title": "SGDR: Stochastic Gradient Descent with Warm Restarts"
+        },
+        {
+            "paperId": "7dba53e72c182e25e98e8f73a99d75ff69dda0c2",
+            "title": "Recurrent Highway Networks"
+        },
+        {
+            "paperId": "197c8988ef21d0b58d363c21bafe1900c3089e3e",
+            "title": "Convolutional Neural Fabrics"
+        },
+        {
+            "paperId": "d0156126edbfc524c8d108bdc0cf811cfe3129aa",
+            "title": "FractalNet: Ultra-Deep Neural Networks without Residuals"
+        },
+        {
+            "paperId": "1cd7f2c74bd7ffb3a8b1527bec8795d0876a40b6",
+            "title": "Transfer Learning for Low-Resource Neural Machine Translation"
+        },
+        {
+            "paperId": "77f0a39b8e02686fd85b01971f8feb7f60971f80",
+            "title": "Identity Mappings in Deep Residual Networks"
+        },
+        {
+            "paperId": "0c1f9ca23f4f09ecfc44bcc8ca1c2736624f4652",
+            "title": "A Theoretically Grounded Application of Dropout in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "d76c07211479e233f7c6a6f32d5346c983c5598f",
+            "title": "Multi-task Sequence to Sequence Learning"
+        },
+        {
+            "paperId": "438bb3d46e72b177ed1c9b7cd2c11a045644a1f4",
+            "title": "Gradient Estimation Using Stochastic Computation Graphs"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "d6f2f611da110b5b5061731be3fc4c7f45d8ee23",
+            "title": "Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "f264e8b33c0d49a692a6ce2c4bcb28588aeb7d97",
+            "title": "Recurrent Neural Network Regularization"
+        },
+        {
+            "paperId": "6270baedeba28001cd1b563a199335720d6e0fe0",
+            "title": "CNN Features Off-the-Shelf: An Astounding Baseline for Recognition"
+        },
+        {
+            "paperId": "5e83ab70d0cbc003471e87ec306d27d9c80ecb16",
+            "title": "Network In Network"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "59ce9cdbde13affc05a6c1f48a51ee7b0fcb154b",
+            "title": "The Penn Treebank: Annotating Predicate Argument Structure"
+        },
+        {
+            "paperId": "a8672dcbb4086aedbc8fbc163fa1a5c8625c39e9",
+            "title": "Recurrent Neural Network"
+        },
+        {
+            "paperId": null,
+            "title": "Experiments We find the following tricks crucial for achieving good performance with ENAS"
+        },
+        {
+            "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+            "title": "Recurrent neural network based language model"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        },
+        {
+            "paperId": "4c915c1eecb217c123a36dc6d3ce52d12c742614",
+            "title": "Simple Statistical Gradient-Following Algorithms for Connectionist Reinforcement Learning"
+        },
+        {
+            "paperId": "8d3a318b62d2e970122da35b2a2e70a5d12cc16f",
+            "title": "A method for solving the convex programming problem with convergence rate O(1/k^2)"
+        },
+        {
+            "paperId": null,
+            "title": "Since all nodes but h 4 were used as inputs to at least another node, the only loose end, h 4"
+        },
+        {
+            "paperId": null,
+            "title": "At node 4: the controller samples"
+        },
+        {
+            "paperId": null,
+            "title": "At node 3: the controller samples two previous nodes and two operations"
+        }
+    ]
+}

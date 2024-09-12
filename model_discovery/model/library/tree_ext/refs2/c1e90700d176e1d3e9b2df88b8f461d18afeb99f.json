@@ -1,0 +1,222 @@
+{
+    "paperId": "c1e90700d176e1d3e9b2df88b8f461d18afeb99f",
+    "externalIds": {
+        "MAG": "2009287791",
+        "DBLP": "journals/siamco/ZhangCC07",
+        "DOI": "10.1137/050643416",
+        "CorpusId": 28161044
+    },
+    "title": "Performance Recovery in Digital Implementation of Analogue Systems",
+    "abstract": "In this paper, the generalized bilinear transformation (GBT) is proposed. Compared with the traditional bilinear, zero-order hold (ZOH) and first-order hold transformations, one advantage of GBT is that it may convert unstable poles (zeros) to stable poles (zeros). It is proved that controllability and observability are invariant under GBT. After that, it is shown that the performance of a sampled-data system obtained via GBT approaches that of the analogue system as the underlying sampling period goes to zero. Performance studied here is characterized in terms of internal stability and $\\ell_{p}$ induced norms for all $1 \\leq p \\leq \\infty$. This results extends the main results in [G. Zhang and T. Chen, Dyn. Contin. Discrete Impuls. Syst. Ser. B Appl. Algorithms, Suppl., 2003, pp. 28-33] and [G. Zhang and T. Chen, Automatica J. IFAC, 40 (2004), pp. 327-330] from SISO to MIMO and also removes the limitation on the \u201cA\u201d matrix of the system. Finally, an example is employed to compare digital implementations via GBT and the ZOH transformation.",
+    "venue": "SIAM Journal of Control and Optimization",
+    "year": 2007,
+    "referenceCount": 46,
+    "citationCount": 12,
+    "influentialCitationCount": 1,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is proved that controllability and observability are invariant under GBT, and it is shown that the performance of a sampled-data system obtained via GBT approaches that of the analogue system as the underlying sampling period goes to zero."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2116174733",
+            "name": "Guofeng Zhang"
+        },
+        {
+            "authorId": "9162446",
+            "name": "Tongwen Chen"
+        },
+        {
+            "authorId": "46772865",
+            "name": "Xiang Chen"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "91dfaf6cf4e6dece24932774ac7109f71aa54216",
+            "title": "Dynamical Analysis of a Networked Control System"
+        },
+        {
+            "paperId": "acecf71dcc1a4c837a18ebcc7dea36c4dc8a4511",
+            "title": "Networked Control Systems: Theory and Applications"
+        },
+        {
+            "paperId": "200b8235ca6336cdf4fd5a98738f809ebcd5acd7",
+            "title": "Sampling theory and practice."
+        },
+        {
+            "paperId": "6b71abc86809a1f96c5d7f5207f070ab1e23b80f",
+            "title": "Analysis of a type of nonsmooth dynamical systems"
+        },
+        {
+            "paperId": "310124fbb065102c05c0fe9c2db8c77350b1c52d",
+            "title": "Networked Control Systems: a Perspective from Chaos"
+        },
+        {
+            "paperId": "bd04ea943fab1fc48157fca21822daa5e5631a73",
+            "title": "Limiting sampling results for continuous-time ARMA systems"
+        },
+        {
+            "paperId": "9ddc444135c9b1b2287494e6cb1a245cdd07790f",
+            "title": "When bode meets shannon: control-oriented feedback communication schemes"
+        },
+        {
+            "paperId": "f7a6f9511d4dfbd35470b91cd6a71e1795c413f0",
+            "title": "Stochastic linear control over a communication channel"
+        },
+        {
+            "paperId": "72f814b1bcd97aa4caa0f5896493c00d1fb68669",
+            "title": "Control under communication constraints"
+        },
+        {
+            "paperId": "5959f715c62ff6002876443a539f3f5fad93c3d6",
+            "title": "Control over noisy channels"
+        },
+        {
+            "paperId": "75dc697ff3d7646053ca94ed6b16ff82dcb59d95",
+            "title": "Convergence of sampled-data models in digital redesign"
+        },
+        {
+            "paperId": "a7f4f435106f3ae4c4a4a43f278732144aaeda95",
+            "title": "Technical communique: Comparing digital implementation via the bilinear and step-invariant transformations"
+        },
+        {
+            "paperId": "dfdb40d31b9d649ada6a1b1ef5189186e7fbd0d4",
+            "title": "Limiting performance of optimal linear discrete filters"
+        },
+        {
+            "paperId": "f6960c58a69874e98ed571b8b52fa09b3c07d04f",
+            "title": "Network design consideration for distributed control systems"
+        },
+        {
+            "paperId": "9d444b891f14e46058f2ef239416052e42918295",
+            "title": "Stabilization of linear systems with limited information"
+        },
+        {
+            "paperId": "8ad434bd176317c76e942b3c9fd22abfada8247f",
+            "title": "Asymptotic properties of the best sampled-data control performance"
+        },
+        {
+            "paperId": "5c8350df5136ce4a50dd1b457c22de3f995d763c",
+            "title": "Sampling in Digital Signal Processing and Control"
+        },
+        {
+            "paperId": "715164ec906095fa7695d6dc65daef844f073b1b",
+            "title": "Integral constraints and performance limits on complementary sensitivity: Discrete-time systems"
+        },
+        {
+            "paperId": "f61117966b1ef9cf9f016e62bca19509dae33a9b",
+            "title": "Essentials of Robust Control"
+        },
+        {
+            "paperId": "410a03459ed42eb63452aa264dbc2713e85d4b83",
+            "title": "Computer-controlled systems (3rd ed.)"
+        },
+        {
+            "paperId": "f0d618282e9580c6ab194bddbd5c18553eb4017e",
+            "title": "Fundamental Limitations in Filtering and Control"
+        },
+        {
+            "paperId": "13e8c313f3f932a84a89ee51568afa1c73b6ed0e",
+            "title": "Intersample and finite wordlength effects in sampled-data problems"
+        },
+        {
+            "paperId": "c94ec693e6c45c1f4bfa1c8a0ad5cdbb59f1dd9a",
+            "title": "Sensitivity integrals and transformation techniques: a new perspective"
+        },
+        {
+            "paperId": "5dd2c5c3e3765f138f12e3256a5179f24e28a983",
+            "title": "Bilinear transformation and generalized singular perturbation model reduction"
+        },
+        {
+            "paperId": "0d428c3a501dce7150ec32beb50a5e3df2c68eb9",
+            "title": "Optimal Sampled-Data Control Systems"
+        },
+        {
+            "paperId": "7089fd68dbea964c17de5a5841c3c443e0cf3566",
+            "title": "Stability of the limiting zeros of sampled-data systems with zero-and first-order holds"
+        },
+        {
+            "paperId": "d3255dfa1067cf68d81bee7e18a630a0d3858944",
+            "title": "Discrete approximation of continuous-time systems: a survey"
+        },
+        {
+            "paperId": "843e55939184ecb7666aaca67249a5fb7649a976",
+            "title": "Discrete-time loop transfer recovery for systems with nonminimum phase zeros and time delays,"
+        },
+        {
+            "paperId": "3927bf7c0277de2daa02bbda66fb71112f14f6a8",
+            "title": "Performance limitations of non-minimum phase systems in the servomechanism problem,"
+        },
+        {
+            "paperId": "b2eac7705c1a8e60c78b9bd1cfb4ad43a9594406",
+            "title": "Performance analysis of sampled-data control systems"
+        },
+        {
+            "paperId": "f02bf0bdee4c3ce623fe17e634eaebb622c0588f",
+            "title": "Pointwise gap metrics on transfer matrices"
+        },
+        {
+            "paperId": "5332e0e00c8305f0b1fc8b2a9ae37b9ba5ed0585",
+            "title": "Digital control and estimation : a unified approach"
+        },
+        {
+            "paperId": "939a6acd6609591dbb20bc088d430e4d82c057c3",
+            "title": "Stabilizing a linear system with quantized state feedback"
+        },
+        {
+            "paperId": "ab769639d3a6046b09f9cd59a33f64a538edc597",
+            "title": "A new approach to the discretization of continuous-time controllers"
+        },
+        {
+            "paperId": "1bcc07856b5f9e405dd0290a502c2cac71d7cdc6",
+            "title": "The graph metric for unstable plants and robustness estimates for feedback stability"
+        },
+        {
+            "paperId": "92cb40222a4aa3d95e5f3e2f8f8683c52f1cd7d1",
+            "title": "Zeros of sampled systems"
+        },
+        {
+            "paperId": "e9cbb1cea6b97a6cd5b6192452d2202d99926e74",
+            "title": "Single-loop feedback-stabilization of linear multivariable dynamical plants"
+        },
+        {
+            "paperId": "29089cdc3505ddd0418d74335d37a6004600af10",
+            "title": "Computer Control: An Overview"
+        },
+        {
+            "paperId": "8341409a842d031ba2ad1df933a47a376a400aab",
+            "title": "Nonuniform sampling : theory and practice"
+        },
+        {
+            "paperId": "4f74f6e12dbfc2d90cea9b319d8325e810b73308",
+            "title": "Mappings of the finite and infinite zero structures and invertibility structures of general linear multivariable systems under the bilinear transformation"
+        },
+        {
+            "paperId": "d3e69d1208ad348a6c336179c214d7e77e45af8a",
+            "title": "A simplified approach to Bode's theorem for continuous-time and discrete-time systems"
+        },
+        {
+            "paperId": "f6775bdb1b216fec9c2cb8f24c2ed50c636fcbce",
+            "title": "Input - Output Stability of Sampled-Data"
+        },
+        {
+            "paperId": "bb36c5ec5702947724ca4525d360a93f65596905",
+            "title": "Computer Controlled Systems"
+        },
+        {
+            "paperId": "d7bbb37d295c6049f8ee1555772c3e4b351906ce",
+            "title": "On zero locations for sampled stochastic systems"
+        },
+        {
+            "paperId": "3b4b424cacb82239abb25f0a85d4f5cd24e8ad0d",
+            "title": "Robust process control"
+        },
+        {
+            "paperId": "e78f0ba78e2e7d857fa890dde320b144a916716b",
+            "title": "Digital Control Systems"
+        }
+    ]
+}

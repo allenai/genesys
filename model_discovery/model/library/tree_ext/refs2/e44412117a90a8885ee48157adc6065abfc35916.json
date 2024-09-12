@@ -1,0 +1,266 @@
+{
+    "paperId": "e44412117a90a8885ee48157adc6065abfc35916",
+    "externalIds": {
+        "DBLP": "conf/sc/DanalisKPS05",
+        "MAG": "2132777761",
+        "DOI": "10.1109/SC.2005.75",
+        "CorpusId": 1626216
+    },
+    "title": "Transformations to Parallel Codes for Communication-Computation Overlap",
+    "abstract": "This paper presents program transformations directed toward improving communication-computation overlap in parallel programs that use MPI\u2019s collective operations. Our transformations target a wide variety of applications focusing on scientific codes with computation loops that exhibit limited dependence among iterations. We include guidance for developers for transforming an application code in order to exploit the communicationcomputation overlap available in the underlying cluster, as well as a discussion of the performance improvements achieved by our transformations. We present results from a detailed study of the effect of the problem and message size, level of communication-computation overlap, and amount of communication aggregation on runtime performance in a cluster environment based on an RDMA-enabled network. The targets of our study are two scientific codes written by domain scientists, but the applicability of our work extends far beyond the scope of these two applications.",
+    "venue": "International Conference on Software Composition",
+    "year": 2005,
+    "referenceCount": 56,
+    "citationCount": 81,
+    "influentialCitationCount": 2,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper presents program transformations directed toward improving communication-computation overlap in parallel programs that use MPI\u2019s collective operations, targeting a wide variety of applications focusing on scientific codes with computation loops that exhibit limited dependence among iterations."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3295217",
+            "name": "Anthony Danalis"
+        },
+        {
+            "authorId": "2117850015",
+            "name": "Ki-Yong Kim"
+        },
+        {
+            "authorId": "1699934",
+            "name": "L. Pollock"
+        },
+        {
+            "authorId": "2273524208",
+            "name": "M. Swany"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "4dac56501a9c5a4b04630242394e151743f59974",
+            "title": "An automated approach to improve communication-computation overlap in clusters"
+        },
+        {
+            "paperId": "cabbbb99f0be5ec102d30df305777f1bd7ab1a03",
+            "title": "Predicting and Evaluating Distributed Communication Performance"
+        },
+        {
+            "paperId": "8684e555b62a2115824268c5775a90f1488a43ce",
+            "title": "An efficient fully implicit spectral scheme for DNS of turbulent viscoelastic channel flow"
+        },
+        {
+            "paperId": "261201a03614dd2bf1100e02b9cdbfa086600dfe",
+            "title": "Message Strip-Mining Heuristics for High Speed Networks"
+        },
+        {
+            "paperId": "360915b39022ba743f664daf50f58a3bf81c5671",
+            "title": "An analysis of the impact of MPI overlap and independent progress"
+        },
+        {
+            "paperId": "70df06b97055e1389be9ba1765d22544edfa92cf",
+            "title": "CC--MPI: a compiled communication capable MPI prototype for ethernet switched clusters"
+        },
+        {
+            "paperId": "18d2f44f6746ce2e2c9d4176ceae898bd6834eef",
+            "title": "Algorithms for Supporting Compiled Communication"
+        },
+        {
+            "paperId": "dda89a5913ec3d28fdea8b1391188f4824ac5a23",
+            "title": "Protocol-dependent message-passing performance on Linux clusters"
+        },
+        {
+            "paperId": "a8e1dfa31007c9a2a4b1006e920f01a8af6b1b9d",
+            "title": "The Virtual Interface Architecture"
+        },
+        {
+            "paperId": "ba422d06c0846da22c9d462d79447ad0c8946de6",
+            "title": "Scalable parallel FFT for spectral simulations on a Beowulf cluster"
+        },
+        {
+            "paperId": "a5a3d35c739d3dd0f2b4cb042f26767df5d6cacb",
+            "title": "LogGPS: a parallel computational model for synchronization analysis"
+        },
+        {
+            "paperId": "1fb31b1031dbe93bde81e4c282f267b1f3446a5f",
+            "title": "Minimizing completion time for loop tiling with computation and communication overlapping"
+        },
+        {
+            "paperId": "537469c83cb8fc66fe8e1cfc845d3f3fd2d6ba5b",
+            "title": "Data Locality Exploitation in the Decomposition of Regular Domain Problems"
+        },
+        {
+            "paperId": "be27f1e0b5db3cb0b5a25ba2693a5ea8f1665f23",
+            "title": "Asynchronous Communications in MPL - The BIP/Myrinet Approach"
+        },
+        {
+            "paperId": "214a0d9c93720aa8c3d10710bca8308e3f2618f5",
+            "title": "Automatically Tuned Linear Algebra Software"
+        },
+        {
+            "paperId": "ac69645193a866cbe0be123d776ef722d32713b7",
+            "title": "Titanium: A High-performance Java Dialect"
+        },
+        {
+            "paperId": "c59b3120e0f1468f72513bc246c2d2fdc81f531c",
+            "title": "Co-array Fortran for parallel programming"
+        },
+        {
+            "paperId": "1f369705f5329c7a8e2fca98628791cf34476c71",
+            "title": "High-performance local area communication with fast sockets"
+        },
+        {
+            "paperId": "1d7a88409d0c6fc97b76bdc3add25ee9b9a35146",
+            "title": "Compiled Communication for All-Optical TDM Networks"
+        },
+        {
+            "paperId": "5b28df6eae4bf3d368a9ebac392624946f3d2731",
+            "title": "Parallel programming with MPI"
+        },
+        {
+            "paperId": "9b98119f212fa6a0c700148840c5f162c05f7a9e",
+            "title": "High Performance Messaging on Workstations: Illinois Fast Messages (FM) for Myrinet"
+        },
+        {
+            "paperId": "f48add3944e39e2ec1364ec9e344bd72b705ffd0",
+            "title": "U-Net: a user-level network interface for parallel and distributed computing"
+        },
+        {
+            "paperId": "6eb2fa406d2dd60a1cfd82627f231c4806ce481a",
+            "title": "Overlapping Computations, Communications and I/O in parallel Sorting"
+        },
+        {
+            "paperId": "3762c8b5c51267a4885736f7407fb60895860e1f",
+            "title": "Performance Study of LU Factorization with Low Communication Overhead on Multiprocessors"
+        },
+        {
+            "paperId": "2aa128a9eeb620f79e3cec46499579e7f9c098e7",
+            "title": "Myrinet: A Gigabit-per-Second Local Area Network"
+        },
+        {
+            "paperId": "da21d187b3513db7a4970a459a4a363a85c92fcc",
+            "title": "Parallel programming in Split-C"
+        },
+        {
+            "paperId": "fa67567c3a0ba748fea0fd7661003f3dac94caf0",
+            "title": "Active Messages: A Mechanism for Integrated Communication and Computation"
+        },
+        {
+            "paperId": "e9433f449f64ec8e8db572bbc0926f266256f6e3",
+            "title": "Compiler optimizations for Fortran D on MIMD distributed-memory machines"
+        },
+        {
+            "paperId": "835be1ba6c1d9acf188dbe59e52bc4076314bf80",
+            "title": "Image Algebra Techniques for Parallel Image Processing"
+        },
+        {
+            "paperId": "b00eaa9513fec865ab363ba058074552a10e9a6f",
+            "title": "Problems with using MPI 1.1 and 2.0 as compilation targets for parallel language implementations"
+        },
+        {
+            "paperId": "ac69ef1403280098154fd5841090018c30b5b074",
+            "title": "The Case Against User-Level Networking"
+        },
+        {
+            "paperId": "b0a4f5ccd8a1813a65a5370c3298bbdb73a2596f",
+            "title": "Automatic MPI Counter Profiling of All Users: First Results on a CRAY T3E 900-512"
+        },
+        {
+            "paperId": null,
+            "title": "Upc specification v"
+        },
+        {
+            "paperId": "6be9a4981804c1c7aa3b25e5642f7ee78e92cc13",
+            "title": "The Quadrics Network: High-Performance Clustering Technology"
+        },
+        {
+            "paperId": "40919d09b26e2c8b1f2c60ca8a518af5473b99e5",
+            "title": "Computation-Communication Overlap on Network-of-Workstation Multiprocessors"
+        },
+        {
+            "paperId": null,
+            "title": "InfiniBand Trade Association InfiniBand Architecture Specification, Release 1"
+        },
+        {
+            "paperId": null,
+            "title": "In\ufb01niBand Trade Association"
+        },
+        {
+            "paperId": null,
+            "title": "Using VIA to build distributed, multithreaded runtime systems: a case study"
+        },
+        {
+            "paperId": "f4c217923ceebd709e8eb106b1f7d25fd5d088c2",
+            "title": "LogGP: Incorporating Long Messages into the LogP Model for Parallel Computation"
+        },
+        {
+            "paperId": "df131535bdb368f73cbb7f347a56c2b57272c130",
+            "title": "The Paradigm Compiler for Distributed-memory Message Passing Multicomputers"
+        },
+        {
+            "paperId": null,
+            "title": "High Performance Fortran Forum. High Performance Fortran language speci\ufb01cation, version 1.0. CRPC-TR92225,"
+        },
+        {
+            "paperId": null,
+            "title": "For each collective send call c , replace c by a loop of asynchronous calls c\u2019"
+        },
+        {
+            "paperId": "fee6ab37cc91741c281853b0ac023fb7e3de6bb3",
+            "title": "An Analysis of Popular Mpi Implementations"
+        },
+        {
+            "paperId": "73f36ff3a6d340606e09d2d0091da27a13af7a6f",
+            "title": "and as an in"
+        },
+        {
+            "paperId": null,
+            "title": "each c\u2019"
+        },
+        {
+            "paperId": null,
+            "title": "MPICH-GM iSEND - The program is structured in the same way as scheme 3, but the MPI implementation is MPICH-GM"
+        },
+        {
+            "paperId": null,
+            "title": "How sensitive is the overhead of each communication strategy to the number of processors?"
+        },
+        {
+            "paperId": null,
+            "title": "MPICH iSEND"
+        },
+        {
+            "paperId": null,
+            "title": "How does the specialization of the MPI library to a particular interconnecting network a\ufb00ect the answer to the previous question?"
+        },
+        {
+            "paperId": null,
+            "title": "our transformations were performed by the process"
+        },
+        {
+            "paperId": null,
+            "title": "it is otherwise a set of wrappers for the GM API"
+        },
+        {
+            "paperId": null,
+            "title": "Modify each communication call c in C so that c sends only the data generated by one tile and place c inside the outer loop of LN , after the execution of the tile (inner loop)"
+        },
+        {
+            "paperId": null,
+            "title": "What is the performance gain that can be attained if one-sided communication operations are used?"
+        },
+        {
+            "paperId": null,
+            "title": "Tile the loop L by restructuring the computation into a double nested loop structure LN semantically equivalent to the original loop L"
+        },
+        {
+            "paperId": null,
+            "title": "What performance gain can be attained when non-blocking I/O is overlapped with the computation compared to the case where communication is not overlapped with the computation?"
+        },
+        {
+            "paperId": null,
+            "title": "From the set SC in step 2, select the calls C where parts of the data are ready before the end of the entire computation loop"
+        }
+    ]
+}

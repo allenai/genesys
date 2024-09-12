@@ -1,0 +1,345 @@
+{
+    "paperId": "10fda03f3ea1735795f747863d3d1662e14449b0",
+    "externalIds": {
+        "DBLP": "journals/ijcv/GuillauminKF14",
+        "MAG": "2117741877",
+        "DOI": "10.1007/s11263-014-0713-9",
+        "CorpusId": 1005559
+    },
+    "title": "ImageNet Auto-Annotation with Segmentation Propagation",
+    "abstract": null,
+    "venue": "International Journal of Computer Vision",
+    "year": 2014,
+    "referenceCount": 76,
+    "citationCount": 132,
+    "influentialCitationCount": 14,
+    "openAccessPdf": {
+        "url": "https://www.pure.ed.ac.uk/ws/files/17793379/Guillaumin_et_al_2013_ImageNet_Auto_annotation_with_Segmentation_Propagation.pdf",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes to automatically populate ImageNet with pixelwise object-background segmentations, by leveraging existing manual annotations in the form of class labels and bounding-boxes, to recursively exploit images segmented so far to guide the segmentation of new images."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2737253",
+            "name": "M. Guillaumin"
+        },
+        {
+            "authorId": "40462943",
+            "name": "Daniel K\u00fcttel"
+        },
+        {
+            "authorId": "143865718",
+            "name": "V. Ferrari"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "8ebab07c3b09c09fee2ddaea4ef7f04fb15e7f13",
+            "title": "Analyzing the Subspace Structure of Related Images: Concurrent Segmentation of Image Sets"
+        },
+        {
+            "paperId": "c48364ff33b5bd106d616777b29f2de8abb83cf2",
+            "title": "Segmentation Propagation in ImageNet"
+        },
+        {
+            "paperId": "597269acea22109d2927f64e103ba4f7593fb123",
+            "title": "TriCoS: A Tri-level Class-Discriminative Co-segmentation Method for Image Classification"
+        },
+        {
+            "paperId": "683874b070da69ce358ed5dd673ebe3e42fc2137",
+            "title": "Figure-ground segmentation by transferring window masks"
+        },
+        {
+            "paperId": "eb4f27d02b997025f9163b62c04ae7ef61802e3a",
+            "title": "Hedging your bets: Optimizing accuracy-specificity trade-offs in large scale visual recognition"
+        },
+        {
+            "paperId": "1da7d851c8d6761b4e1ab3e037596969a295ae50",
+            "title": "Fast search in Hamming space with multi-index hashing"
+        },
+        {
+            "paperId": "ae2d76ec5d26a83343a5e1f51003f1eb84d46f46",
+            "title": "Large-scale knowledge transfer for object localization in ImageNet"
+        },
+        {
+            "paperId": "96fda2ce5803979ba0295413b2750e9733619dd5",
+            "title": "Fast and Balanced: Efficient Label Tree Learning for Large Scale Object Recognition"
+        },
+        {
+            "paperId": "dff46d30064338fc07b4b4be2c6f93aadcf1a8c7",
+            "title": "BiCoS: A Bi-level co-segmentation method for image classification"
+        },
+        {
+            "paperId": "4682fee7dc045aea7177d7f3bfe344aabf153bd5",
+            "title": "Tabula rasa: Model transfer for object category detection"
+        },
+        {
+            "paperId": "d124f004fed2ee15860f624005b2215cfaeff276",
+            "title": "Ensemble of exemplar-SVMs for object detection and beyond"
+        },
+        {
+            "paperId": "b6300de4a7d20d3d6d86f691db1beecc2cb9609b",
+            "title": "Distributed cosegmentation via submodular optimization on anisotropic diffusion"
+        },
+        {
+            "paperId": "37e41557932cc0035eab23fd767bde68f6475c3a",
+            "title": "Segmentation as selective search for object recognition"
+        },
+        {
+            "paperId": "29c58c7a7593051dc0b1ba82d1430da84e87b666",
+            "title": "Object cosegmentation"
+        },
+        {
+            "paperId": "47d588f746949b066af6957a524d82ca3c6c961b",
+            "title": "Learning to share visual appearance for multiclass object detection"
+        },
+        {
+            "paperId": "6ce77f485677387a791f41c0f2130e84ce8a8a1d",
+            "title": "Visual and semantic similarity in ImageNet"
+        },
+        {
+            "paperId": "cade16378ca4815ea006be13e2d4a2fbd7baa3c5",
+            "title": "Shared parts for deformable part-based models"
+        },
+        {
+            "paperId": "b3f09ea2a8cc1d82c2b27d71dd8f7451d178beaf",
+            "title": "Iterative quantization: A procrustean approach to learning binary codes"
+        },
+        {
+            "paperId": "54d48a42a34f368240b79e7c98c7d9283f79b350",
+            "title": "Large-scale image classification: Fast feature extraction and SVM training"
+        },
+        {
+            "paperId": "d8be51d4a941b9db67b13278a2d033e28517bfaa",
+            "title": "Kernelized structural SVM learning for supervised object segmentation"
+        },
+        {
+            "paperId": "914f6db28db0de5f439e891dac38f09bbdc5a452",
+            "title": "Superparsing"
+        },
+        {
+            "paperId": "d957ad316f7145c054d2dcbd47949869e46776b0",
+            "title": "ClassCut for Unsupervised Class Segmentation"
+        },
+        {
+            "paperId": "f0640da2565bad7037d969e9f07276c10102083d",
+            "title": "Category Independent Object Proposals"
+        },
+        {
+            "paperId": "9800e3c3394c569be83379ee2ebe3424e09c2919",
+            "title": "What Does Classifying More Than 10, 000 Image Categories Tell Us?"
+        },
+        {
+            "paperId": "ddd36382c3034cd9eebe18a61e8bedd2d1a40601",
+            "title": "Superpixels and Supervoxels in an Energy Optimization Framework"
+        },
+        {
+            "paperId": "42bb241681c4bec1fa36211a204fa0dc8158e5ff",
+            "title": "Localizing Objects While Learning Their Appearance"
+        },
+        {
+            "paperId": "2dd55b3bcaf50c1228569d0efe5620a910c1cd07",
+            "title": "What is an object?"
+        },
+        {
+            "paperId": "aef84912576b251c7ef2a9668f7f15a3cc667c8a",
+            "title": "iCoseg: Interactive co-segmentation with intelligent scribble guidance"
+        },
+        {
+            "paperId": "1d385429e7d8e0552824366d1f70d13781ef789f",
+            "title": "Discriminative clustering for image co-segmentation"
+        },
+        {
+            "paperId": "222eb8a73386c9a3ba4a83cd0a785961b3a3a943",
+            "title": "Constrained parametric min-cuts for automatic object segmentation"
+        },
+        {
+            "paperId": "8ec1f8cbe8c9da709d519f99fc670604c268742f",
+            "title": "Object recognition as ranking holistic figure-ground hypotheses"
+        },
+        {
+            "paperId": "b185089e8b66ba3446c1b945c0f509b41a4f23c3",
+            "title": "Safety in numbers: Learning categories from few examples with multi model knowledge transfer"
+        },
+        {
+            "paperId": "4a4b5ae5793696b861aa009932e7a121d36ad67a",
+            "title": "What helps where \u2013 and why? Semantic relatedness for knowledge transfer"
+        },
+        {
+            "paperId": "1949636081c32463b3fea0afc6ba8198cfbd325d",
+            "title": "A shape-based object class model for knowledge transfer"
+        },
+        {
+            "paperId": "5e796ec9be0009b8f6ae7b1ccba1c9c055328d14",
+            "title": "Associative hierarchical CRFs for object class image segmentation"
+        },
+        {
+            "paperId": "3971349aa161f410e7439af896382146edc4a865",
+            "title": "TagProp: Discriminative metric learning in nearest neighbor models for image auto-annotation"
+        },
+        {
+            "paperId": "827f74372444fb7983be6d8f136ec90baf0a860d",
+            "title": "Human pose estimation using consistent max-covering"
+        },
+        {
+            "paperId": "0566bf06a0368b518b8b474166f7b1dfef3f9283",
+            "title": "Learning to detect unseen object classes by between-class attribute transfer"
+        },
+        {
+            "paperId": "ef2448cf2eae2bc2fc1d83f1da0fbaba188ecec7",
+            "title": "Nonparametric scene parsing: Label transfer via dense scene alignment"
+        },
+        {
+            "paperId": "d2c733e34d48784a37d717fe43d9e93277a8c53e",
+            "title": "ImageNet: A large-scale hierarchical image database"
+        },
+        {
+            "paperId": "654e21974b8fede873ebf7947620bb63a3bd6f75",
+            "title": "Stel component analysis: Modeling spatial correlations in image class structure"
+        },
+        {
+            "paperId": "eb86d3cd5d18477be5164b5c9335bfb79e7124a7",
+            "title": "Learning CRFs Using Graph Cuts"
+        },
+        {
+            "paperId": "6d3657222978b48c1523e4772c962b5942f0a69f",
+            "title": "Graph cut based image segmentation with connectivity priors"
+        },
+        {
+            "paperId": "953e2cfa58679ff6ea8c0bb432afd641f15d3657",
+            "title": "Transfer learning for image classification with sparse prototype representations"
+        },
+        {
+            "paperId": "993cb3c7167b34b033c66cc4b2af87ff4781c6d4",
+            "title": "Small codes and large image databases for recognition"
+        },
+        {
+            "paperId": "f77f0cc48b36646636764a5c62b9280835f1d6d7",
+            "title": "Introducing Curvature into Globally Optimal Image Segmentation: Minimum Ratio Cycles on Product Graphs"
+        },
+        {
+            "paperId": "2809f3a7f192f617a5cdf4c4e6b0fa84fb95aa50",
+            "title": "Object Recognition by Scene Alignment"
+        },
+        {
+            "paperId": "3a3aa31045bb79ecded928347f26685f180807ff",
+            "title": "Scene Completion Using Millions of Photographs"
+        },
+        {
+            "paperId": "14db2003a56ae6d41c171089c68eca695a81e8c5",
+            "title": "Region Classification with Markov Field Aspect Models"
+        },
+        {
+            "paperId": "632042b27eb63cc3758ec6c91f5ed76fabccefef",
+            "title": "Unsupervised Segmentation of Objects using Efficient Learning"
+        },
+        {
+            "paperId": "1e464278808ac3dc549e3176430d4900017f6db9",
+            "title": "Accelerated EM-based clustering of large data sets"
+        },
+        {
+            "paperId": "2fbfd6a9daa73756196ec663d65019a7a9b58600",
+            "title": "Cosegmentation of Image Pairs by Histogram Matching - Incorporating a Global Constraint into MRFs"
+        },
+        {
+            "paperId": "f07260deea7dea6dfe82d208731f4790e37cb3b3",
+            "title": "TextonBoost: Joint Appearance, Shape and Context Modeling for Multi-class Object Recognition and Segmentation"
+        },
+        {
+            "paperId": "dc97e7dbb821a4edfb5151bff4352655eedca9ee",
+            "title": "Large Margin Methods for Structured and Interdependent Output Variables"
+        },
+        {
+            "paperId": "9336ef5f5afcb1abc24443c20e72514caafa1cda",
+            "title": "Contour-based learning for object detection"
+        },
+        {
+            "paperId": "2fe5f6e1d597e982024439d81b4440275bbc9362",
+            "title": "An iterative optimization approach for unified image segmentation and matting"
+        },
+        {
+            "paperId": "79bd5e61e20594c13a90e66293e1abb4179935a2",
+            "title": "LOCUS: learning object classes with unsupervised segmentation"
+        },
+        {
+            "paperId": "e8b12467bdc20bde976750b8a28decdb33246d1d",
+            "title": "Histograms of oriented gradients for human detection"
+        },
+        {
+            "paperId": "aeeffe327e6c93e9010c7b1e401caa9113723851",
+            "title": "Efficient Graph-Based Image Segmentation"
+        },
+        {
+            "paperId": "f26d35d2e32934150cd27b030d4d769942126184",
+            "title": "\"GrabCut\""
+        },
+        {
+            "paperId": "2c3f0fe9478e9785c206b2087ad82849c464bc68",
+            "title": "Combining Top-Down and Bottom-Up Segmentation"
+        },
+        {
+            "paperId": "ed9db7b20e019cdb1c7db8b7921221ee2d9f36e2",
+            "title": "Learning Generative Visual Models from Few Training Examples: An Incremental Bayesian Approach Tested on 101 Object Categories"
+        },
+        {
+            "paperId": "ddf8e27c6686a8ee276a709f0bf98f32f7d41252",
+            "title": "Interactive Image Segmentation Using an Adaptive GMMRF Model"
+        },
+        {
+            "paperId": "cca9200d9da958b7f90eab901b2f30c04f1e0e9c",
+            "title": "Image Parsing: Unifying Segmentation, Detection, and Recognition"
+        },
+        {
+            "paperId": "0d3b177e8d027d44c191e739a3a70ccacc2eac82",
+            "title": "Interactive graph cuts for optimal boundary & region segmentation of objects in N-D images"
+        },
+        {
+            "paperId": "869171b2f56cfeaa9b81b2626cb4956fea590a57",
+            "title": "Modeling the Shape of the Scene: A Holistic Representation of the Spatial Envelope"
+        },
+        {
+            "paperId": "3fc32a55db03af15228b5e141761b89a6475712f",
+            "title": "Enhancing Exemplar SVMs using Part Level Transfer Regularization"
+        },
+        {
+            "paperId": null,
+            "title": "Extracting foreground masks towards object recognition"
+        },
+        {
+            "paperId": "06b176770fc8c420bbda28a9a1eb2925308a484a",
+            "title": "What Helps Where \\textendash And Why? Semantic Relatedness for Knowledge Transfer"
+        },
+        {
+            "paperId": "13ef25201af7f2a7e401ef31a6197f66357f6f01",
+            "title": "The PASCAL Visual Object Classes Challenge"
+        },
+        {
+            "paperId": "5736760928c3384564ad52cd09c5cc3f49ce90b6",
+            "title": "Noname manuscript No. (will be inserted by the editor) Interactively Co-segmentating Topically Related Images with Intelligent Scribble Guidance"
+        },
+        {
+            "paperId": null,
+            "title": "ImageNet Auto-annotation with Segmentation"
+        },
+        {
+            "paperId": null,
+            "title": "Matthieu"
+        },
+        {
+            "paperId": null,
+            "title": "Int J Comput Vis"
+        }
+    ]
+}

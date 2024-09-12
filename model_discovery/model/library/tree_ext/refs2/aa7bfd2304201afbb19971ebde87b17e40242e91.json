@@ -1,0 +1,169 @@
+{
+    "paperId": "aa7bfd2304201afbb19971ebde87b17e40242e91",
+    "externalIds": {
+        "MAG": "104184427",
+        "DBLP": "conf/icml/SutskeverMDH13",
+        "CorpusId": 10940950
+    },
+    "title": "On the importance of initialization and momentum in deep learning",
+    "abstract": "Deep and recurrent neural networks (DNNs and RNNs respectively) are powerful models that were considered to be almost impossible to train using stochastic gradient descent with momentum. In this paper, we show that when stochastic gradient descent with momentum uses a well-designed random initialization and a particular type of slowly increasing schedule for the momentum parameter, it can train both DNNs and RNNs (on datasets with long-term dependencies) to levels of performance that were previously achievable only with Hessian-Free optimization. We find that both the initialization and the momentum are crucial since poorly initialized networks cannot be trained with momentum and well-initialized networks perform markedly worse when the momentum is absent or poorly tuned. \n \nOur success training these models suggests that previous attempts to train deep and recurrent neural networks from random initializations have likely failed due to poor initialization schemes. Furthermore, carefully tuned momentum methods suffice for dealing with the curvature issues in deep and recurrent network training objectives without the need for sophisticated second-order methods.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2013,
+    "referenceCount": 32,
+    "citationCount": 4576,
+    "influentialCitationCount": 604,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that when stochastic gradient descent with momentum uses a well-designed random initialization and a particular type of slowly increasing schedule for the momentum parameter, it can train both DNNs and RNNs to levels of performance that were previously achievable only with Hessian-Free optimization."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1701686",
+            "name": "I. Sutskever"
+        },
+        {
+            "authorId": "145704247",
+            "name": "James Martens"
+        },
+        {
+            "authorId": "35188630",
+            "name": "George E. Dahl"
+        },
+        {
+            "authorId": "1695689",
+            "name": "Geoffrey E. Hinton"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "d0b0c3e5a1e768490bc9b759685930541957508b",
+            "title": "Introductory Lectures on Convex Optimization - A Basic Course"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "7b4f3d0e4e2486a8d5d3f8e00549cf9a117bf88f",
+            "title": "Sequence Transduction with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "b305c18d17fd6a17e8e52a21bcd680220d322cc3",
+            "title": "Neural Networks: Tricks of the Trade"
+        },
+        {
+            "paperId": "e33cbb25a8c7390aec6a398e36381f4f7770c283",
+            "title": "Deep Neural Networks for Acoustic Modeling in Speech Recognition"
+        },
+        {
+            "paperId": "b8ef1230a5cc9ea7cd8358f1ae7d1af97813ba14",
+            "title": "Deep Learning Made Easier by Linear Transformations in Perceptrons"
+        },
+        {
+            "paperId": "6658bbf68995731b2083195054ff45b4eca38b3a",
+            "title": "Context-Dependent Pre-Trained Deep Neural Networks for Large-Vocabulary Speech Recognition"
+        },
+        {
+            "paperId": "0d6203718c15f137fda2f295c96269bc2b254644",
+            "title": "Learning Recurrent Neural Networks with Hessian-Free Optimization"
+        },
+        {
+            "paperId": "93c20e38c85b69fc2d2eb314b3c1217913f7db11",
+            "title": "Generating Text with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "e7590aa6a2e74642e82586b5713661b18cd84e20",
+            "title": "Better Mini-Batch Algorithms via Accelerated Gradient Methods"
+        },
+        {
+            "paperId": "1621f05894ad5fd6a8fcb8827a8c7aca36c81775",
+            "title": "An optimal method for stochastic composite optimization"
+        },
+        {
+            "paperId": "4c46347fbc272b21468efe3d9af34b4b2bad6684",
+            "title": "Deep learning via Hessian-free optimization"
+        },
+        {
+            "paperId": "ea9d2a2b4ce11aaf85136840c65f3bc9c03ab649",
+            "title": "Understanding the difficulty of training deep feedforward neural networks"
+        },
+        {
+            "paperId": "355d44f53428b1ac4fb2ab468d593c720640e5bd",
+            "title": "Greedy Layer-Wise Training of Deep Networks"
+        },
+        {
+            "paperId": "8978cf7574ceb35f4c3096be768c7547b28a35d0",
+            "title": "A Fast Learning Algorithm for Deep Belief Nets"
+        },
+        {
+            "paperId": "46857f0c98f223622ad530b6fc4e446fb9187082",
+            "title": "Harnessing Nonlinearity: Predicting Chaotic Systems and Saving Energy in Wireless Communication"
+        },
+        {
+            "paperId": "133809cf62bf67f0a63b35e5ef5180d20c9aec19",
+            "title": "Large Scale Online Learning"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "ea2ef02e0749fa7f42c7c64e4020065144bd4281",
+            "title": "Dynamics and algorithms for stochastic search"
+        },
+        {
+            "paperId": "71ab580b72ec5a5b6d0884a54485cd69b9af21bb",
+            "title": "Stochastic dynamics of learning with momentum in neural networks"
+        },
+        {
+            "paperId": "d0be39ee052d246ae99c082a565aba25b811be2d",
+            "title": "Learning long-term dependencies with gradient descent is difficult"
+        },
+        {
+            "paperId": "fe8ccac35b0291c381964c75bf03718e356fb069",
+            "title": "Towards Faster Stochastic Gradient Search"
+        },
+        {
+            "paperId": "f2a0fbba89f0d18ea0abd29639d4e43babe59cf3",
+            "title": "Training Deep and Recurrent Networks with Hessian-Free Optimization"
+        },
+        {
+            "paperId": "d2b62f77cb2864e465aa60bca6c26bb1d2f84963",
+            "title": "Acoustic Modeling Using Deep Belief Networks"
+        },
+        {
+            "paperId": "b87274e6d9aa4e6ba5148898aa92941617d2b6ed",
+            "title": "Efficient BackProp"
+        },
+        {
+            "paperId": "b0ced8ba22674b3b948c22deb0f43df93c82f87f",
+            "title": "Improved Preconditioner for Hessian Free Optimization"
+        },
+        {
+            "paperId": "1fd7fc06653723b05abe5f3d1de393ddcf6bdddb",
+            "title": "SUBWORD LANGUAGE MODELING WITH NEURAL NETWORKS"
+        },
+        {
+            "paperId": "7c59908c946a4157abc030cdbe2b63d08ba97db3",
+            "title": "Supporting Online Material for Reducing the Dimensionality of Data with Neural Networks"
+        },
+        {
+            "paperId": "b1a5961609c623fc816aaa77565ba38b25531a8e",
+            "title": "Neural Networks: Tricks of the Trade"
+        },
+        {
+            "paperId": null,
+            "title": "A method of solving a convex programming problem with convergence rate O(1/sqr(k)). Soviet Mathematics Doklady"
+        },
+        {
+            "paperId": "4b53e3f719ff983eef867c6d8deac5dbe38aecb4",
+            "title": "Some methods of speeding up the convergence of iteration methods"
+        },
+        {
+            "paperId": "a0251bba5ff01beb36908dfeaec9e863c5560088",
+            "title": "Journal of Graph Algorithms and Applications Many-to-one Boundary Labeling"
+        }
+    ]
+}

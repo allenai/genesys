@@ -1,0 +1,210 @@
+{
+    "paperId": "cfa2646776405d50533055ceb1b7f050e9014dcb",
+    "externalIds": {
+        "DBLP": "conf/emnlp/SocherPHNM11",
+        "MAG": "71795751",
+        "ACL": "D11-1014",
+        "CorpusId": 3116311
+    },
+    "title": "Semi-Supervised Recursive Autoencoders for Predicting Sentiment Distributions",
+    "abstract": "We introduce a novel machine learning framework based on recursive autoencoders for sentence-level prediction of sentiment label distributions. Our method learns vector space representations for multi-word phrases. In sentiment prediction tasks these representations outperform other state-of-the-art approaches on commonly used datasets, such as movie reviews, without using any pre-defined sentiment lexica or polarity shifting rules. We also evaluate the model's ability to predict sentiment distributions on a new dataset based on confessions from the experience project. The dataset consists of personal user stories annotated with multiple labels which, when aggregated, form a multinomial distribution that captures emotional reactions. Our algorithm can more accurately predict distributions over such labels compared to several competitive baselines.",
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2011,
+    "referenceCount": 41,
+    "citationCount": 1332,
+    "influentialCitationCount": 143,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel machine learning framework based on recursive autoencoders for sentence-level prediction of sentiment label distributions that outperform other state-of-the-art approaches on commonly used datasets, without using any pre-defined sentiment lexica or polarity shifting rules."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2166511",
+            "name": "R. Socher"
+        },
+        {
+            "authorId": "143845796",
+            "name": "Jeffrey Pennington"
+        },
+        {
+            "authorId": "40150953",
+            "name": "E. Huang"
+        },
+        {
+            "authorId": "34699434",
+            "name": "A. Ng"
+        },
+        {
+            "authorId": "144783904",
+            "name": "Christopher D. Manning"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "9c0ddf74f87d154db88d79c640578c1610451eec",
+            "title": "Parsing Natural Scenes and Natural Language with Recursive Neural Networks"
+        },
+        {
+            "paperId": "23072946b57bb808eee20e14799f1ffa43d84c01",
+            "title": "On the negativity of negation"
+        },
+        {
+            "paperId": "8492070dc4031ed825e95e4803781752bb5e909f",
+            "title": "Word Representations: A Simple and General Method for Semi-Supervised Learning"
+        },
+        {
+            "paperId": "da5cd00115f7ec108de8eebf071c5f3f19807df4",
+            "title": "Dependency Tree-based Sentiment Classification using CRFs with Hidden Variables"
+        },
+        {
+            "paperId": "5d3e816a4012a8a96d3cca688a7aeaeaae8257cd",
+            "title": "The viability of web-derived polarity lexicons"
+        },
+        {
+            "paperId": "b35e340a4356eb8953b04c17375ffb631da68916",
+            "title": "Learning with Compositional Semantics as Structural Inference for Subsentential Sentiment Analysis"
+        },
+        {
+            "paperId": "57458bc1cffe5caa45a885af986d70f723f406b4",
+            "title": "A unified architecture for natural language processing: deep neural networks with multitask learning"
+        },
+        {
+            "paperId": "3d4391bbafea96b6d7b44cd41b64a5314b94137e",
+            "title": "A holistic lexicon-based approach to opinion mining"
+        },
+        {
+            "paperId": "f79d39537d30a92d3eedc444f3458185e4cc4219",
+            "title": "PageRanking WordNet Synsets: An Application to Opinion Mining"
+        },
+        {
+            "paperId": "988155ac58c515346b31b49791652559a9087d96",
+            "title": "Crystal: Analyzing Predictive Opinions on the Web"
+        },
+        {
+            "paperId": "2ab8faaa1ee1791e6da911e408dee97681cfa58e",
+            "title": "Multiple Aspect Ranking Using the Good Grief Algorithm"
+        },
+        {
+            "paperId": "6d66bf5e174f1edf74b46b34cebfb1dcf2439b57",
+            "title": "Isotonic Conditional Random Fields and Local Sentiment Flow"
+        },
+        {
+            "paperId": "f52de7242e574b70410ca6fb70b79c811919fc00",
+            "title": "Learning Accurate, Compact, and Interpretable Tree Annotation"
+        },
+        {
+            "paperId": "9b4876f7313b111074e79a01f570e6e9e02c0dce",
+            "title": "Recognizing Contextual Polarity in Phrase-Level Sentiment Analysis"
+        },
+        {
+            "paperId": "bcd6791de4a6d2d90c620048f37b2831cc574ac6",
+            "title": "Linear recursive distributed representations"
+        },
+        {
+            "paperId": "6af58c061f2e4f130c3b795c21ff0c7e3903278f",
+            "title": "Seeing Stars: Exploiting Class Relationships for Sentiment Categorization with Respect to Rating Scales"
+        },
+        {
+            "paperId": "167e1359943b96b9e92ee73db1df69a1f65d731d",
+            "title": "A Sentimental Education: Sentiment Analysis Using Subjectivity Summarization Based on Minimum Cuts"
+        },
+        {
+            "paperId": "9d8f6567b84e04439d17b8ac0405684fa3360673",
+            "title": "Coupling Niche Browsers and Affect Analysis for an Opinion Mining Application"
+        },
+        {
+            "paperId": "3f46b61a7216e5763ffab5d33e06b88c9d490c85",
+            "title": "Towards Answering Opinion Questions: Separating Facts from Opinions and Identifying the Polarity of Opinion Sentences"
+        },
+        {
+            "paperId": "338a891907dce447da9a0fa2f27221bd35164163",
+            "title": "Mining the peanut gallery: opinion extraction and semantic classification of product reviews"
+        },
+        {
+            "paperId": "6c2b28f9354f667cd5bd07afc0471d8334430da7",
+            "title": "A Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "9e7c7853a16a378cc24a082153b282257a9675b7",
+            "title": "Thumbs Up or Thumbs Down? Semantic Orientation Applied to Unsupervised Classification of Reviews"
+        },
+        {
+            "paperId": "12d0353ce8b41b7e5409e5a4a611110aee33c7bc",
+            "title": "Thumbs up? Sentiment Classification using Machine Learning Techniques"
+        },
+        {
+            "paperId": "605d738a39df3c5e596613ab0ca6925f0eecdf35",
+            "title": "Distributed representations, simple recurrent networks, and grammatical structure"
+        },
+        {
+            "paperId": "6a835df43fdc2f79126319f6fa033bb42147c6f6",
+            "title": "Recursive Distributed Representations"
+        },
+        {
+            "paperId": "c13d3506f716fb9fb0c417b5132144db42f80dd4",
+            "title": "The general inquirer: A computer approach to content analysis."
+        },
+        {
+            "paperId": "92cee8c0e159561aa1b3ad3f55c10bd57e5d5853",
+            "title": "Extracting Information. (Book Reviews: The General Inquirer. A Computer Approach to Content Analysis)"
+        },
+        {
+            "paperId": "81b3b3fe994a9eda6d3f9d2149aa4492d1933975",
+            "title": "Learning Continuous Phrase Representations and Syntactic Parsing with Recursive Neural Networks"
+        },
+        {
+            "paperId": "80922663aaa7b09e86276ab97210ab2372d3f61a",
+            "title": "Dynamic auto-encoders for semantic indexing"
+        },
+        {
+            "paperId": "4574d77fff19e093782178595a8988a7f3aa1969",
+            "title": "Latent Dirichlet Allocation"
+        },
+        {
+            "paperId": "a9c15a179f3e4ad60eee6fbd0b731cc6ac17c8ac",
+            "title": "Learning to Shift the Polarity of Words for Sentiment Classification"
+        },
+        {
+            "paperId": null,
+            "title": "Opinion mining and sentiment analysis. Foundations and Trends in Information Retrieval"
+        },
+        {
+            "paperId": "e4d739ffa79a607008f3a251912083a23ce37607",
+            "title": "Linguistic Inquiry and Word Count (LIWC2007)"
+        },
+        {
+            "paperId": "a8ddcabf410b5691cd73880df2ee4b83a9799a5d",
+            "title": "Contextual Valence Shifters"
+        },
+        {
+            "paperId": "1cff7cc15555c38607016aaba24059e76b160adb",
+            "title": "Annotating Expressions of Opinions and Emotions in Language"
+        },
+        {
+            "paperId": "5ccef5423f3cb428121eb6fef2224d803c136806",
+            "title": "Exploring Sentiment Summarization"
+        },
+        {
+            "paperId": null,
+            "title": "Yahoo! for Amazon: Extracting market sentiment from stock message boards"
+        },
+        {
+            "paperId": null,
+            "title": "Learning taskdependent distributed representations by backpropagation through structure"
+        },
+        {
+            "paperId": null,
+            "title": "Random Since there are \ufb01ve classes, this gives 20% accuracy"
+        },
+        {
+            "paperId": null,
+            "title": "Most Frequent Selecting the class which most frequently has the most votes (the class I understand )"
+        },
+        {
+            "paperId": null,
+            "title": "Baseline 1: Binary BoW This baseline uses logistic regression on binary bag-of-word representations that are 1 if a word is present and 0"
+        }
+    ]
+}

@@ -1,0 +1,242 @@
+{
+    "paperId": "d9ede71b944460c1293294c9f64bd88a8cc400de",
+    "externalIds": {
+        "ArXiv": "1805.12168",
+        "DBLP": "conf/uai/PariaKP19",
+        "MAG": "2896993302",
+        "CorpusId": 53034523
+    },
+    "title": "A Flexible Framework for Multi-Objective Bayesian Optimization using Random Scalarizations",
+    "abstract": "Many real world applications can be framed as multi-objective optimization problems, where we wish to simultaneously optimize for multiple criteria. Bayesian optimization techniques for the multi-objective setting are pertinent when the evaluation of the functions in question are expensive. Traditional methods for multi-objective optimization, both Bayesian and otherwise, are aimed at recovering the Pareto front of these objectives. However, in certain cases a practitioner might desire to identify Pareto optimal points only in a subset of the Pareto front due to external considerations. In this work, we propose a strategy based on random scalarizations of the objectives that addresses this problem. Our approach is able to flexibly sample from desired regions of the Pareto front and, computationally, is considerably cheaper than most approaches for MOO. We also study a notion of regret in the multi-objective setting and show that our strategy achieves sublinear regret. We experiment with both synthetic and real-life problems, and demonstrate superior performance of our proposed algorithm in terms of the flexibility and regret.",
+    "venue": "Conference on Uncertainty in Artificial Intelligence",
+    "year": 2018,
+    "referenceCount": 51,
+    "citationCount": 110,
+    "influentialCitationCount": 13,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a strategy based on random scalarizations of the objectives that is able to flexibly sample from desired regions of the Pareto front and, computationally, is considerably cheaper than most approaches for MOO."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1920895",
+            "name": "Biswajit Paria"
+        },
+        {
+            "authorId": "1887808",
+            "name": "Kirthevasan Kandasamy"
+        },
+        {
+            "authorId": "1719347",
+            "name": "B. P\u00f3czos"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "a91fe6d228cac7f52c27f9760faf4cbcb1d5528f",
+            "title": "Interactive multi-objective reinforcement learning in multi-armed bandits for any utility function"
+        },
+        {
+            "paperId": "f02d80cc16630cd5ebfe69bd313bcefdf70af2d6",
+            "title": "Tuning Hyperparameters without Grad Students: Scalable and Robust Bayesian Optimisation with Dragonfly"
+        },
+        {
+            "paperId": "94803757d72a4f22b5f96fdd79af50bfbeaea456",
+            "title": "Parallelised Bayesian Optimisation via Thompson Sampling"
+        },
+        {
+            "paperId": "c63afcf8b9fc708100c2143e41abc2b363d43e11",
+            "title": "Ordered Preference Elicitation Strategies for Supporting Multi-Objective Decision Making"
+        },
+        {
+            "paperId": "98ec237ea2e957771f7c7cb8ff7f30e4c8c453eb",
+            "title": "Interactive Thompson Sampling for Multi-objective Multi-armed Bandits"
+        },
+        {
+            "paperId": "6eed3c7589dbb2e3eaa1a963704366b05a7f79e6",
+            "title": "Parallel and Distributed Thompson Sampling for Large-scale Accelerated Exploration of Chemical Space"
+        },
+        {
+            "paperId": "3f1142d9d86ebbf2f93b8feff326702977f990db",
+            "title": "On Using Decision Maker Preferences with ParEGO"
+        },
+        {
+            "paperId": "e29b7b30a2436de582087ada7574152ce2259151",
+            "title": "Query efficient posterior estimation in scientific experiments via Bayesian active learning"
+        },
+        {
+            "paperId": "00c9a40b17bdadb5b29de663ef5dd0b5cae32a94",
+            "title": "Predictive Entropy Search for Multi-objective Bayesian Optimization with Constraints"
+        },
+        {
+            "paperId": "59211f86a4da458239af7b45f0ff38b26e701732",
+            "title": "Preference-based multiobjective optimization using truncated expected hypervolume improvement"
+        },
+        {
+            "paperId": "133c1f5ebc8a9baf716383771d15b32378539cc2",
+            "title": "Predictive Entropy Search for Multi-objective Bayesian Optimization"
+        },
+        {
+            "paperId": "50645e3dc912d597e89d59bffb96ccc0f8e1aefa",
+            "title": "Practical and Optimal LSH for Angular Distance"
+        },
+        {
+            "paperId": "950d65c97c198287ec8fe165c8c9dfdc959831c4",
+            "title": "Quality Assessment of MORL Algorithms: A Utility-Based Approach"
+        },
+        {
+            "paperId": "789c97c0eeb2a4f5d4b472976ad4cf1cdb595b5f",
+            "title": "Bayesian Optimization for Synthetic Gene Design"
+        },
+        {
+            "paperId": "7282c7f7f138bc79f8eb5482020684424433a4f2",
+            "title": "High Dimensional Bayesian Optimisation and Bandits via Additive Models"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "ee7b9708ffe15e3e7f41e3fe89295ccf52428f0d",
+            "title": "Active Learning of Pareto Fronts"
+        },
+        {
+            "paperId": "88049e4953f1c2e3e455e6e9121454316d74d10b",
+            "title": "Multiobjective optimization using Gaussian process emulators via stepwise uncertainty reduction"
+        },
+        {
+            "paperId": "a82795a372cec5266e7247054e9aace8f3b6a4f3",
+            "title": "A Survey of Multi-Objective Sequential Decision-Making"
+        },
+        {
+            "paperId": "15ffa843c9d277981cc9239cd374e47957cb117f",
+            "title": "Active Learning for Multi-Objective Optimization"
+        },
+        {
+            "paperId": "28cf1bd6110e734e20fc63f727d0d5bba612b921",
+            "title": "Learning to Optimize via Posterior Sampling"
+        },
+        {
+            "paperId": "86ea0c2feaf4284de694afe07ff6dd323b77ae63",
+            "title": "Learning Probability Measures with respect to Optimal Transport Metrics"
+        },
+        {
+            "paperId": "2e2089ae76fe914706e6fa90081a79c8fe01611e",
+            "title": "Practical Bayesian Optimization of Machine Learning Algorithms"
+        },
+        {
+            "paperId": "421f6882344034e6c3ac75034cfd4b7a95a7d4ae",
+            "title": "Preference-Based Solution Selection Algorithm for Evolutionary Multiobjective Optimization"
+        },
+        {
+            "paperId": "c6aacb107b0d5b0e13493ccdad22e81301c715f8",
+            "title": "Expensive Multiobjective Optimization by MOEA/D With Gaussian Process Model"
+        },
+        {
+            "paperId": "7238f36410c5b04b7d3af735e38951bfd1a5d4e6",
+            "title": "A Preference-Based Evolutionary Algorithm for Multi-Objective Optimization"
+        },
+        {
+            "paperId": "5053797507fc7ae1b079ffeafd7d296b538ab5e2",
+            "title": "Sequential Approximate Multiobjective Optimization Using Computational Intelligence"
+        },
+        {
+            "paperId": "7f05b312f2de7e59c7869558507fa4a9fa0d0971",
+            "title": "Optimal Transport: Old and New"
+        },
+        {
+            "paperId": "a73fbdf9de5ce66ac6f5f3065e3cd8086967326b",
+            "title": "Consideration of Partial User Preferences in Evolutionary Multiobjective Optimization"
+        },
+        {
+            "paperId": "9fdc5b56f5af2bbe07f38e395a2ea8c01783bc06",
+            "title": "Multiobjective Optimization on a Limited Budget of Evaluations Using Model-Assisted -Metric Selection"
+        },
+        {
+            "paperId": "93b9c81f1c43acd0b79985b0e9d0d2f19cfe6159",
+            "title": "Evolutionary many-objective optimization: A short review"
+        },
+        {
+            "paperId": "b76be6707fa5858cc5378bc11f10ec6f6a97d85c",
+            "title": "MOEA/D: A Multiobjective Evolutionary Algorithm Based on Decomposition"
+        },
+        {
+            "paperId": "45aa6a67ce508ccbe74b74f5d60acb626727e914",
+            "title": "Active Policy Learning for Robot Planning and Exploration under Uncertainty"
+        },
+        {
+            "paperId": "fbedf135003bb6e0cc0c14517dd9c5a83906a74a",
+            "title": "Controlling Dominance Area of Solutions and Its Impact on the Performance of MOEAs"
+        },
+        {
+            "paperId": "7b5cca2eafa3d2485475d0564630b1af621c68a1",
+            "title": "Posterior consistency of Gaussian process prior for nonparametric binary regression"
+        },
+        {
+            "paperId": "ced0f69e72037218918c27a9e8463bb0ac7ccb11",
+            "title": "Reference point based multi-objective optimization using evolutionary algorithms"
+        },
+        {
+            "paperId": "5810a043c519b6df5ec876baec71d244b9312f02",
+            "title": "Bayesian model selection analysis of WMAP3"
+        },
+        {
+            "paperId": "73b5b196b35fb23e1f908d73b787c2c2942fadb5",
+            "title": "ParEGO: a hybrid algorithm with on-line landscape approximation for expensive multiobjective optimization problems"
+        },
+        {
+            "paperId": "554894f70b28dba58b396c2d84080ac01051261b",
+            "title": "Gaussian Processes For Machine Learning"
+        },
+        {
+            "paperId": "103f6fe35033f9327611ddafde74a2b544072980",
+            "title": "Using Confidence Bounds for Exploitation-Exploration Trade-offs"
+        },
+        {
+            "paperId": "d7808f2ad77de7b71e83a2e79d27f2e3e12be8d5",
+            "title": "Lipschitzian optimization without the Lipschitz constant"
+        },
+        {
+            "paperId": "ee2cd1d17f833d3c157a1016a778c7c22af555a2",
+            "title": "ON THE LIKELIHOOD THAT ONE UNKNOWN PROBABILITY EXCEEDS ANOTHER IN VIEW OF THE EVIDENCE OF TWO SAMPLES"
+        },
+        {
+            "paperId": "ae93e240b7cf188c413d06b8cf2a13069dc87823",
+            "title": "\u03b5-PAL: an active learning approach to the multi-objective optimization problem"
+        },
+        {
+            "paperId": null,
+            "title": "Proofs Russo and Van Roy (2014) introduce a general approach to proving bounds on posterior sampling by decomposing the regret into two sums, one capturing the fact that"
+        },
+        {
+            "paperId": null,
+            "title": "Gaussian process optimization in the bandit setting: no regret and experimental design"
+        },
+        {
+            "paperId": null,
+            "title": "2009), the above can be bounded in terms of the MIG as T"
+        },
+        {
+            "paperId": "2e3ab3c8dd2887ac7e7b0f3bb770312e1307332a",
+            "title": "The computation of the expected improvement in dominated hypervolume of Pareto front approximations"
+        },
+        {
+            "paperId": "767256cacd1eeaaab0e1ecb158317389e0a9bf69",
+            "title": "Practical bayesian optimization"
+        },
+        {
+            "paperId": "38036f1f1abc2d3f7ae5cb6e14c9dd784c8dbbc2",
+            "title": "Integrating User Preferences into Evolutionary Multi-Objective Optimization"
+        },
+        {
+            "paperId": "714c6edbebe8a1bc6a85bf2b30603ab8196005b1",
+            "title": "Bandit Problems"
+        },
+        {
+            "paperId": null,
+            "title": "M\u00e9moire sur la th\u00e9orie des d\u00e9blais et des remblais. Histoire de l'Acad\u00e9mie royale des sciences de Paris"
+        }
+    ]
+}

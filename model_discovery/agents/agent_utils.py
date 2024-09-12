@@ -372,17 +372,18 @@ def call_model_claude(model,message,system,response_format, logprobs=False,use_c
     Use with LangChain: https://github.com/langchain-ai/langchain/pull/25644
 
     Suppose 5 rounds, each round generates 1K tokens, 1K input sys/round (2K INCRE/round), 2K system, input costs:
-    No cache: 2K+4K+6K+8K+10K = 30K * 1 = SR+I(R-1)R/2
+    No cache: 2K+4K+6K+8K+10K = 30K * 1 = SR+I(R-1)R/2 = ( SR + 0.5IR^2 - 0.5IR ) * C 
     Cache: 2K*1.25 + (2*0.1)+2*1.25 + (4*0.1)+2*1.25 + (6*0.1)+2*1.25 + (8*0.1)+2*1.25 
          = Write: 1.25(S+(R-1)I) + Read: 0.1(S(R-1)+I(R-1)(R-2)/2)  # R>=2
+         = ( 1.15S + 1.1RI - 1.15I + 0.1SR + 0.05IR^2 ) * C
     R: num of rounds
     I: incremental input tokens per round
     S: system tokens
-    
+    C: input cost per token
+
     R=5, I=4K, S=3K
     No cache: SR+I(R-1)R/2 = 3K*5+(5-1)*5/2*4K = 15+40 = 55K
     Cache: 1.25(S+(R-1)I) + 0.1(S(R-1)+I(R-1)(R-2)/2) = 19*1.25 + 0.1*(12+24)=3.6+23.75=27.35K
-
     """
 
     if use_cache: # XXX: not working with structured outputs now!

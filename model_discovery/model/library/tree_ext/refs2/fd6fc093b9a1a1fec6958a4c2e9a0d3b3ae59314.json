@@ -1,0 +1,354 @@
+{
+    "paperId": "fd6fc093b9a1a1fec6958a4c2e9a0d3b3ae59314",
+    "externalIds": {
+        "DBLP": "journals/corr/cmp-lg-9805007",
+        "MAG": "1583697620",
+        "ArXiv": "cmp-lg/9805007",
+        "CorpusId": 24059522
+    },
+    "title": "Parsing Inside-Out",
+    "abstract": "Probabilistic Context-Free Grammars (PCFGs) and variations on them have recently become some of the most common formalisms for parsing. It is common with PCFGs to compute the inside and outside probabilities. When these probabilities are multiplied together and normalized, they produce the probability that any given non-terminal covers any piece of the input sentence. The traditional use of these probabilities is to improve the probabilities of grammar rules. In this thesis we show that these values are useful for solving many other problems in Statistical Natural Language Processing. \nWe give a framework for describing parsers. The framework generalizes the inside and outside values to semirings. It makes it easy to describe parsers that compute a wide variety of interesting quantities, including the inside and outside probabilities, as well as related quantities such as Viterbi probabilities and n-best lists. We also present three novel uses for the inside and outside probabilities. The first novel use is an algorithm that gets improved performance by optimizing metrics other than the exact match rate. The next novel use is a similar algorithm that, in combination with other techniques, speeds Data-Oriented Parsing, by a factor of 500. The third use is to speed parsing for PCFGs using thresholding techniques that approximate the inside-outside product; the thresholding techniques lead to a 30 times speedup at the same accuracy level as conventional methods. At the time this research was done, no state of the art grammar formalism could be used to compute inside and outside probabilities. We present the Probabilistic Feature Grammar formalism, which achieves state of the art accuracy, and can compute these probabilities.",
+    "venue": "arXiv.org",
+    "year": 1998,
+    "referenceCount": 81,
+    "citationCount": 177,
+    "influentialCitationCount": 15,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Probabilistic Feature Grammar formalism is presented, which achieves state of the art accuracy, and can compute inside and outside probabilities of probabilistic Context-Free Grammars."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "17446277",
+            "name": "J. Goodman"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "277b475e46c2c4dd8e1d1420318472371af82888",
+            "title": "Semiring Parsing"
+        },
+        {
+            "paperId": "d0d5641c979c4597afd4f61c009798a17a367dc6",
+            "title": "Estimation of Probabilistic Context-Free Grammars"
+        },
+        {
+            "paperId": "a7b6f6f2a07725ee66f7a5a7862d148b998789a5",
+            "title": "New Figures of Merit for Best-First Probabilistic Chart Parsing"
+        },
+        {
+            "paperId": "c4cb0bbb0e0101af4fa1d8e343ee34ee29f85b6c",
+            "title": "Computing Abstract Decorations of Parse Forests Using Dynamic Programming and Algebraic Power Series"
+        },
+        {
+            "paperId": "65dc3dc3a4c78f5a5875da24b152ab6a2b2da5e5",
+            "title": "Global Thresholding and Multiple-Pass Parsing"
+        },
+        {
+            "paperId": "2a5e619f2c5f4220438b1357e596db5b1578398d",
+            "title": "Statistical Parsing with a Context-Free Grammar and Word Statistics"
+        },
+        {
+            "paperId": "0ffa423a5283396c88ff3d4033d541796bd039cc",
+            "title": "Three Generative, Lexicalised Models for Statistical Parsing"
+        },
+        {
+            "paperId": "54c846ee00c6132d70429cc279e8577f63ed05e4",
+            "title": "A Linear Observed Time Statistical Parser Based on Maximum Entropy Models"
+        },
+        {
+            "paperId": "f4cc5563c694355ddcf746ff9a55ccdb22d86a98",
+            "title": "Finite-State Transducers in Language and Speech Processing"
+        },
+        {
+            "paperId": "f1680c993e6457660a59d94aa891793bb3231479",
+            "title": "Semirings and Formal Power Series: Their Relevance to Formal Languages and Automata"
+        },
+        {
+            "paperId": "61dffff2116f3543e71d536a18308fa4fc5e53c3",
+            "title": "Stochastic Attribute-Value Grammars"
+        },
+        {
+            "paperId": "f2c1830eedc095b92a78dc3afa39a36343ed81ad",
+            "title": "Introduction to algorithms"
+        },
+        {
+            "paperId": "aad8c5ae265e8f645101245afb9d9c9cdf40b4ca",
+            "title": "Tree-Bank Grammars"
+        },
+        {
+            "paperId": "4711ff01d8eff9b9d10deeb3b68f366f7944c208",
+            "title": "A Polynomial-Time Algorithm for Statistical Machine Translation"
+        },
+        {
+            "paperId": "e9c1f510bcf5933d3cf8ec8108a04a9ba601a843",
+            "title": "A Fully Statistical Approach to Natural Language Interfaces"
+        },
+        {
+            "paperId": "f0b9b14218c530f7ccea91873ae7a0136506801e",
+            "title": "Computational Complexity of Probabilistic Disambiguation by means of Tree-Grammars"
+        },
+        {
+            "paperId": "78104a2f742b9aa60e716d8ba46b0b813e36da16",
+            "title": "Computational Complexity of Probabilistic Disambiguation by means of Tree-Grammars"
+        },
+        {
+            "paperId": "dd85cca2c133835ea29069a6a4438c70185bd427",
+            "title": "Parsing Algorithms and Metrics"
+        },
+        {
+            "paperId": "1f8767043cb4dcc4799468e1e85a221b2a938d29",
+            "title": "Efficient Algorithms for Parsing the DOP Model? A Reply to Joshua Goodman"
+        },
+        {
+            "paperId": "2136b1fc1b9430289ff5164663b1414605b157d1",
+            "title": "Statistical natural language understanding using hidden clumpings"
+        },
+        {
+            "paperId": "3764baa7465201f054083d02b58fa75f883c4461",
+            "title": "A New Statistical Parser Based on Bigram Lexical Dependencies"
+        },
+        {
+            "paperId": "b12e55b31e3b750f8b65df07d8a3094a291a328a",
+            "title": "Fast Parsing Using Pruning and Grammar Specialization"
+        },
+        {
+            "paperId": "155a2680a1a7fe495d0ab47224fcdbbfb3d1caaa",
+            "title": "Efficient Algorithms for Parsing the DOP Model"
+        },
+        {
+            "paperId": "5d444bcda3c8b44f77a385c048f77aa014539ba4",
+            "title": "A possibilistic linear program is equivalent to a stochastic linear program in a special case"
+        },
+        {
+            "paperId": "0ee4f73ec449bd96cd98296e0401eaac99c8769b",
+            "title": "The Problem of Computing the Most Probable Tree in Data-Oriented Parsing and Stochastic Tree Grammars"
+        },
+        {
+            "paperId": "3c17fcc6bc26a1911b36d93c7d7da4cdd9263a53",
+            "title": "Stochastic HPSG"
+        },
+        {
+            "paperId": "79fbfc1dc8846379074aaf4deb7fb0a96722eeed",
+            "title": "An Efficient Probabilistic Context-Free Parsing Algorithm that Computes Prefix Probabilities"
+        },
+        {
+            "paperId": "9e78155b28b1f4db52a7c9076c89e81ac4b7d8ce",
+            "title": "Natural Language Parsing as Statistical Pattern Recognition"
+        },
+        {
+            "paperId": "06e0f2d078af6144bdc14d3bdb06df4f7306d587",
+            "title": "Principles and Implementation of Deductive Parsing"
+        },
+        {
+            "paperId": "d0ccae6c9f33e41de9c00053aac0bc6c615c7b4a",
+            "title": "Towards History-based Grammars: Using Richer Models for Probabilistic Parsing"
+        },
+        {
+            "paperId": "bcc803463b113efcb98709fabe29fa605c1664b9",
+            "title": "Using an Annotated Corpus as a Stochastic Grammar"
+        },
+        {
+            "paperId": "f88deef9ad93bdfbcf4c157402121823eb65a359",
+            "title": "Parsing the Wall Street Journal with the Inside-Outside Algorithm"
+        },
+        {
+            "paperId": "8ad8e98574a275930bf04a477ce3532fd13c503c",
+            "title": "Generalized Probabilistic LR Parsing of Natural Language (Corpora) with Unification-Based Grammars"
+        },
+        {
+            "paperId": "9d3a863b71f093e1cbc9304a3287c1ddc48c6f31",
+            "title": "Grammatical Trigrams: A Probabilistic Model of Link Grammar"
+        },
+        {
+            "paperId": "d607ed3aa8a1762e06988329aeb0c05b997023db",
+            "title": "Stochastic Lexicalized Tree-adjoining Grammars"
+        },
+        {
+            "paperId": "01d88ddd3e7a9c5af2acc91a05734b7f066908dc",
+            "title": "Probabilistic Tree-Adjoining Grammar as a Framework for Statistical Natural Language Processing"
+        },
+        {
+            "paperId": "f3a19430f47bf8370a894c93857c0be0f913ac3b",
+            "title": "Development and Evaluation of a Broad-Coverage Probabilistic Grammar of English-Language Computer Manuals"
+        },
+        {
+            "paperId": "fe3788f2de079b08a6b2b130bba17ec0429c7f04",
+            "title": "Efficiency, Robustness and Accuracy in picky Chart Parsing"
+        },
+        {
+            "paperId": "4ee315a9781d37f6dd9efd452eb5ebc796f6e6d7",
+            "title": "New uses for the N-Best sentence hypotheses within the BYBLOS speech recognition system"
+        },
+        {
+            "paperId": "15e4843e2c55843b5c5b429f89dad3d99e801f02",
+            "title": "Inside-Outside Reestimation From Partially Bracketed Corpora"
+        },
+        {
+            "paperId": "3f881781e79b5838ad35a510b6b8c0ad5d7d5584",
+            "title": "Computation of the Probability of Initial Substring Generation by Stochastic Context-Free Grammars"
+        },
+        {
+            "paperId": "1d19708290ef3cc3f43c2c95b07acdd4f52f5cda",
+            "title": "The ATIS Spoken Language Systems Pilot Corpus"
+        },
+        {
+            "paperId": "71dca76db17b03a2f65081704776b2ea67131466",
+            "title": "How to cover a grammar"
+        },
+        {
+            "paperId": "8c457a4aebde4119a170af5cb12b9ab2dcb36434",
+            "title": "The Structure of Shared Forests in Ambiguous Parsing"
+        },
+        {
+            "paperId": "8fe2ea0a67954f1380b3387e3262f1cdb9f9b3e5",
+            "title": "A tutorial on hidden Markov models and selected applications in speech recognition"
+        },
+        {
+            "paperId": "d26844d389df6aa01152bbe31832ff4ab73f5b01",
+            "title": "Rational series and their languages"
+        },
+        {
+            "paperId": "547d483ed1e80066693af561f63daa30ffa8e9fa",
+            "title": "Prolog and Natural-Language Analysis"
+        },
+        {
+            "paperId": "b9043cc0ad5e73749f0338950a118c98c607f539",
+            "title": "Semirings, Automata, Languages"
+        },
+        {
+            "paperId": "f786bd12cc8b0717a1904f1c188fe5d0fa3bd00c",
+            "title": "Parsing as Deduction"
+        },
+        {
+            "paperId": "4b411dd48ea2831e75a0270b2a781474d2a6f601",
+            "title": "Context-free grammars: Covers, normal forms, and parsing"
+        },
+        {
+            "paperId": "9274889f719b8308a0e389b2251d2a2b64c03e84",
+            "title": "An Improved Context-Free Recognizer"
+        },
+        {
+            "paperId": "6c79a9bb8f885050cad70b4c69e016b186ffa538",
+            "title": "Trainable grammars for speech recognition"
+        },
+        {
+            "paperId": "8b62ee686ea6eeb16027eabb5c9ff1fee9d53122",
+            "title": "Context-free error analysis by evaluation of algebraic power series"
+        },
+        {
+            "paperId": "62ea2ef8b7d98cf3a3b912a62a7a42ee82650e6b",
+            "title": "An efficient context-free parsing algorithm"
+        },
+        {
+            "paperId": "19d5965db5de8e37c4122528bad34594a7c49565",
+            "title": "Introduction to Automata"
+        },
+        {
+            "paperId": "69fc8c03d21e22e30d6642824c37158b314f36c3",
+            "title": "An inequality with applications to statistical estimation for probabilistic functions of Markov processes and to a model for ecology"
+        },
+        {
+            "paperId": "145c0b53514b02bdc3dadfb2e1cea124f2abd99b",
+            "title": "Error bounds for convolutional codes and an asymptotically optimum decoding algorithm"
+        },
+        {
+            "paperId": "30da8ecce8b3ebc3e9344a79e5c2f8dc4c423bd2",
+            "title": "Recognition and Parsing of Context-Free Languages in Time n^3"
+        },
+        {
+            "paperId": "af66165c454a0e94afbab36271fe3deaae0b421a",
+            "title": "An Efficient Recognition and Syntax-Analysis Algorithm for Context-Free Languages"
+        },
+        {
+            "paperId": "453405d997796648306b671e3e4b8d37e3c2048b",
+            "title": "An Earley Algorithm for Generic Attribute Augmented Grammars and Applications"
+        },
+        {
+            "paperId": "693fe8c8c1e3b2ae2bd63ab9e2a3b5e86b74344d",
+            "title": "Figures of Merit for Best-First Probabilistic Chart Parsing"
+        },
+        {
+            "paperId": "389689f5e256abba46b3f5b7bb5d3704f752dd81",
+            "title": "The Problem of Computing the Most Probable Tree in Data-Oriented Parsing and Stochastic Tree Grammars"
+        },
+        {
+            "paperId": null,
+            "title": "Enriching Linguistics with Statistics: Performance Models of Natural Language. University of Amsterdam ILLC Dissertation Series 1995-14. Academische Pers"
+        },
+        {
+            "paperId": null,
+            "title": "Statistical decision\u2013models for parsing"
+        },
+        {
+            "paperId": "9ba64db2212ffc56be4ce2a3840695edd1a784eb",
+            "title": "Tree Insertion Grammar: A Cubic-Time, Parsable Formalism that Lexicalizes Context-Free Grammar without Changing the Trees Produced"
+        },
+        {
+            "paperId": "61b0da0cf405ad84ed1fcf2cde7076516084d774",
+            "title": "Efficient Disambiguation by means of Stochastic Tree Substitution Grammars"
+        },
+        {
+            "paperId": null,
+            "title": "Improved search, acoustic and language modeling in the BBN Byblos large vocabulary CSR system"
+        },
+        {
+            "paperId": null,
+            "title": "Towards probabilistic extensions of constraintbased grammars. DYANA-2 Deliverable R1.2.B, September. Available from ftp://ftp.ims.uni-stuttgart.de/pub/papers/DYANA2/R1.2.B"
+        },
+        {
+            "paperId": "4f11e1b9d2656d8738329458ef3d325e6c6194a5",
+            "title": "A corpus-based approach to language learning"
+        },
+        {
+            "paperId": "fa990351f8235b31efc015a2be7f0be5b5b2f979",
+            "title": "Monte Carlo Parsing"
+        },
+        {
+            "paperId": null,
+            "title": "Data-oriented parsing as a general framework for stochastic language"
+        },
+        {
+            "paperId": null,
+            "title": "Mathematical properties of the data-oriented parsing model"
+        },
+        {
+            "paperId": "96cb7602a8b77bed593732c6d6d7ec903fe72e7e",
+            "title": "Probabilistic Normalisation and Unpacking of Packed Parse Forests for Unification-based Grammars"
+        },
+        {
+            "paperId": "9ba08e0a53bfdcbe0b70a4761c3e2b62f150fc74",
+            "title": "Applications of stochastic context-free grammars using the Inside-Outside algorithm"
+        },
+        {
+            "paperId": null,
+            "title": "Language theory and language technology; competence and performance"
+        },
+        {
+            "paperId": "c66cf3657e2c0bffe2e7861b840d3f9786323908",
+            "title": "A Tutorial on Hidden Markov Models and Selected Applications"
+        },
+        {
+            "paperId": "41a88a490d7ba9e383ecb16c4290083413a08258",
+            "title": "Introduction to Automata Theory, Languages and Computation"
+        },
+        {
+            "paperId": "7560519aefdb0fcd0db6bda1794eae9d571c6bc8",
+            "title": "Automata-Theoretic Aspects of Formal Power Series"
+        },
+        {
+            "paperId": "539036ab9e8f038c8a948596e77cc0dfcfa91fb3",
+            "title": "An inequality and associated maximization technique in statistical estimation of probabilistic functions of a Markov process"
+        },
+        {
+            "paperId": null,
+            "title": "An inequality with application to statistical estimation"
+        },
+        {
+            "paperId": "ed1fbc8829224a446bcd79f324cc71579e3794fe",
+            "title": "The Algebraic Theory of Context-Free Languages*"
+        }
+    ]
+}

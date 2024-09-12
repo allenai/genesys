@@ -1,0 +1,242 @@
+{
+    "paperId": "4fc0ea6db600850908264652e1a5d7904f66ca58",
+    "externalIds": {
+        "ArXiv": "1702.07983",
+        "MAG": "2593383075",
+        "DBLP": "journals/corr/CheLZHLSB17",
+        "CorpusId": 9803807
+    },
+    "title": "Maximum-Likelihood Augmented Discrete Generative Adversarial Networks",
+    "abstract": "Despite the successes in capturing continuous distributions, the application of generative adversarial networks (GANs) to discrete settings, like natural language tasks, is rather restricted. The fundamental reason is the difficulty of back-propagation through discrete random variables combined with the inherent instability of the GAN training objective. To address these problems, we propose Maximum-Likelihood Augmented Discrete Generative Adversarial Networks. Instead of directly optimizing the GAN objective, we derive a novel and low-variance objective using the discriminator's output that follows corresponds to the log-likelihood. Compared with the original, the new objective is proved to be consistent in theory and beneficial in practice. The experimental results on various discrete datasets demonstrate the effectiveness of the proposed approach.",
+    "venue": "arXiv.org",
+    "year": 2017,
+    "referenceCount": 47,
+    "citationCount": 226,
+    "influentialCitationCount": 32,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work derives a novel and low-variance GAN objective using the discriminator's output that follows corresponds to the log-likelihood, which is proved to be consistent in theory and beneficial in practice."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "47828117",
+            "name": "Tong Che"
+        },
+        {
+            "authorId": "3305402",
+            "name": "Yanran Li"
+        },
+        {
+            "authorId": "2311636918",
+            "name": "Ruixiang Zhang"
+        },
+        {
+            "authorId": "40482726",
+            "name": "R. Devon Hjelm"
+        },
+        {
+            "authorId": "2138991880",
+            "name": "Wenjie Li"
+        },
+        {
+            "authorId": "1809614",
+            "name": "Yangqiu Song"
+        },
+        {
+            "authorId": "1751762",
+            "name": "Yoshua Bengio"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "042116e805aa3b5171efaf0c822dc142310ceefe",
+            "title": "Boundary-Seeking Generative Adversarial Networks"
+        },
+        {
+            "paperId": "2f85b7376769473d2bed56f855f115e23d727094",
+            "title": "Wasserstein GAN"
+        },
+        {
+            "paperId": "176f1d608b918eec8dc4b75e7b6e0acaba84a447",
+            "title": "Adversarial Learning for Neural Dialogue Generation"
+        },
+        {
+            "paperId": "9a700c7a7e7468e436f00c34551fbe3e0f70e42f",
+            "title": "Towards Principled Methods for Training Generative Adversarial Networks"
+        },
+        {
+            "paperId": "ea67d2d5f2a7d5760ec6b67ea93d11dd5affa921",
+            "title": "StackGAN: Text to Photo-Realistic Image Synthesis with Stacked Generative Adversarial Networks"
+        },
+        {
+            "paperId": "062c41dad67bb68fefd9ff0c5c4d296e796004dc",
+            "title": "Temporal Generative Adversarial Nets with Singular Value Clipping"
+        },
+        {
+            "paperId": "f0f4f16d5b5f9efe304369120651fa688a03d495",
+            "title": "Temporal Generative Adversarial Nets"
+        },
+        {
+            "paperId": "024d30897e0a2b036bc122163a954b7f1a1d0679",
+            "title": "Mode Regularized Generative Adversarial Networks"
+        },
+        {
+            "paperId": "3c7092347a5b7804d9534b6f3f52032c1502cbf8",
+            "title": "Amortised MAP Inference for Image Super-resolution"
+        },
+        {
+            "paperId": "2fe874a1c85ecc9e848bf9defd76535e19d51f39",
+            "title": "Professor Forcing: A New Algorithm for Training Recurrent Networks"
+        },
+        {
+            "paperId": "32c4e19f4a757f6c6984416b97d69e287d1d0ecd",
+            "title": "SeqGAN: Sequence Generative Adversarial Nets with Policy Gradient"
+        },
+        {
+            "paperId": "df0c54fe61f0ffb9f0e36a17c2038d9a1964cba3",
+            "title": "Photo-Realistic Single Image Super-Resolution Using a Generative Adversarial Network"
+        },
+        {
+            "paperId": "fc7822f56dd255a872326b9536a0821bbf0277dd",
+            "title": "Generative Visual Manipulation on the Natural Image Manifold"
+        },
+        {
+            "paperId": "1d9600229a4cf8ba5e8f5ad4d05b41af9c8f80a6",
+            "title": "Reward Augmented Maximum Likelihood for Neural Structured Prediction"
+        },
+        {
+            "paperId": "5bf3b2a5591f2a2f0c648dc5a1f4ff3bd6b9102a",
+            "title": "Learning Temporal Transformations from Time-Lapse Videos"
+        },
+        {
+            "paperId": "571b0750085ae3d939525e62af510ee2cee9d5ea",
+            "title": "Improved Techniques for Training GANs"
+        },
+        {
+            "paperId": "5507dc32b368c8afd3b9507e9b5888da7bd7d7cd",
+            "title": "Sequence-to-Sequence Learning as Beam-Search Optimization"
+        },
+        {
+            "paperId": "ceb154e8f8ac411914f3327d67257776db3aa413",
+            "title": "Variational Neural Machine Translation"
+        },
+        {
+            "paperId": "6c7f040a150abf21dbcefe1f22e0f98fa184f41a",
+            "title": "Generative Adversarial Text to Image Synthesis"
+        },
+        {
+            "paperId": "609e0f0e60ddfe83fdc71bf5397205323888289d",
+            "title": "A Hierarchical Latent Variable Encoder-Decoder Model for Generating Dialogues"
+        },
+        {
+            "paperId": "4be0dd53aa1c751219fa6f19fed8a6324f6d2766",
+            "title": "Globally Normalized Transition-Based Neural Networks"
+        },
+        {
+            "paperId": "846aedd869a00c09b40f1f1f35673cb22bc87490",
+            "title": "Mastering the game of Go with deep neural networks and tree search"
+        },
+        {
+            "paperId": "b7aee9dfb027d6061c6a653684c0fa9a9bba750d",
+            "title": "Sequence Level Training with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "d82b55c35c8673774a708353838918346f6c006f",
+            "title": "Generating Sentences from a Continuous Space"
+        },
+        {
+            "paperId": "73e8633886dc380a46fc02f2e1ec5bf68dba0734",
+            "title": "Neural Variational Inference for Text Processing"
+        },
+        {
+            "paperId": "8388f1be26329fa45e5807e968a641ce170ea078",
+            "title": "Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks"
+        },
+        {
+            "paperId": "17fa1c2a24ba8f731c8b21f1244463bc4b465681",
+            "title": "Deep multi-scale video prediction beyond mean square error"
+        },
+        {
+            "paperId": "17f5c7411eeeeedf25b0db99a9130aa353aee4ba",
+            "title": "Building End-To-End Dialogue Systems Using Generative Hierarchical Neural Network Models"
+        },
+        {
+            "paperId": "5247a6e3a60ff0381355e66bfc313bf27512ae0c",
+            "title": "A Neural Network Approach to Context-Sensitive Generation of Conversational Responses"
+        },
+        {
+            "paperId": "df137487e20ba7c6e1e2b9a1e749f2a578b5ad99",
+            "title": "Scheduled Sampling for Sequence Prediction with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "353ecf7b66b3e9ff5e9f41145a147e899a2eea5c",
+            "title": "Conditional Generative Adversarial Nets"
+        },
+        {
+            "paperId": "229ec55602143271867682d181ec35f2e43e06e8",
+            "title": "Chinese Poetry Generation with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "1eb09fecd75eb27825dce4f964b97f4f5cc399d7",
+            "title": "On the Properties of Neural Machine Translation: Encoder\u2013Decoder Approaches"
+        },
+        {
+            "paperId": "7a24ec97e7f2881e245d20c46a56cbbfc734a4ff",
+            "title": "Reweighted Wake-Sleep"
+        },
+        {
+            "paperId": "5d833331b0e22ff359db05c62a8bca18c4f04b68",
+            "title": "One billion word benchmark for measuring progress in statistical language modeling"
+        },
+        {
+            "paperId": "ddc45fad8d15771d9f1f8579331458785b2cdd93",
+            "title": "Deep Boltzmann Machines"
+        },
+        {
+            "paperId": "d7da009f457917aa381619facfa5ffae9329a6e9",
+            "title": "Bleu: a Method for Automatic Evaluation of Machine Translation"
+        },
+        {
+            "paperId": "a20f0ce0616def7cc9a87446c228906cd5da093b",
+            "title": "Policy Gradient Methods for Reinforcement Learning with Function Approximation"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+            "title": "Building a Large Annotated Corpus of English: The Penn Treebank"
+        },
+        {
+            "paperId": "ce9a21b93ba29d4145a8ef6bf401e77f261848de",
+            "title": "A Learning Algorithm for Continually Running Fully Recurrent Neural Networks"
+        },
+        {
+            "paperId": "c68796f833a7151f0a63d1d1608dc902b4fdc9b6",
+            "title": "GENERATIVE ADVERSARIAL NETS"
+        },
+        {
+            "paperId": "237175d9a7864dcf396751593605ea022c31421b",
+            "title": "Supplementary materials for: Plug & Play Generative Networks: Conditional Iterative Generation of Images in Latent Space"
+        },
+        {
+            "paperId": "f1aeb751d9cefc9d784d8862562f5a3fe15821ae",
+            "title": "International Conference on Learning Representations (ICLR)"
+        },
+        {
+            "paperId": null,
+            "title": "Optimization of image description metrics using policy gradient methods"
+        },
+        {
+            "paperId": "f6f80f4d7af095a5dd8742f1a352c4d2dbc9b50d",
+            "title": "Deep Belief Networks"
+        },
+        {
+            "paperId": "4c915c1eecb217c123a36dc6d3ce52d12c742614",
+            "title": "Simple Statistical Gradient-Following Algorithms for Connectionist Reinforcement Learning"
+        }
+    ]
+}

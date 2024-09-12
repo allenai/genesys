@@ -1,0 +1,166 @@
+{
+    "paperId": "f2c882fd290d616ff96c1c5d6af4578682e26556",
+    "externalIds": {
+        "ArXiv": "1802.08435",
+        "MAG": "2788851830",
+        "DBLP": "conf/icml/KalchbrennerESN18",
+        "CorpusId": 3524525
+    },
+    "title": "Efficient Neural Audio Synthesis",
+    "abstract": "Sequential models achieve state-of-the-art results in audio, visual and textual domains with respect to both estimating the data distribution and generating high-quality samples. Efficient sampling for this class of models has however remained an elusive problem. With a focus on text-to-speech synthesis, we describe a set of general techniques for reducing sampling time while maintaining high output quality. We first describe a single-layer recurrent neural network, the WaveRNN, with a dual softmax layer that matches the quality of the state-of-the-art WaveNet model. The compact form of the network makes it possible to generate 24kHz 16-bit audio 4x faster than real time on a GPU. Second, we apply a weight pruning technique to reduce the number of weights in the WaveRNN. We find that, for a constant number of parameters, large sparse networks perform better than small dense networks and this relationship holds for sparsity levels beyond 96%. The small number of weights in a Sparse WaveRNN makes it possible to sample high-fidelity audio on a mobile CPU in real time. Finally, we propose a new generation scheme based on subscaling that folds a long sequence into a batch of shorter sequences and allows one to generate multiple samples at once. The Subscale WaveRNN produces 16 samples per step without loss of quality and offers an orthogonal method for increasing sampling efficiency.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2018,
+    "referenceCount": 25,
+    "citationCount": 812,
+    "influentialCitationCount": 82,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A single-layer recurrent neural network with a dual softmax layer that matches the quality of the state-of-the-art WaveNet model, the WaveRNN, and a new generation scheme based on subscaling that folds a long sequence into a batch of shorter sequences and allows one to generate multiple samples at once."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2583391",
+            "name": "Nal Kalchbrenner"
+        },
+        {
+            "authorId": "152585800",
+            "name": "Erich Elsen"
+        },
+        {
+            "authorId": "34838386",
+            "name": "K. Simonyan"
+        },
+        {
+            "authorId": "30155667",
+            "name": "Seb Noury"
+        },
+        {
+            "authorId": "2670752",
+            "name": "Norman Casagrande"
+        },
+        {
+            "authorId": "49860549",
+            "name": "Edward Lockhart"
+        },
+        {
+            "authorId": "3205302",
+            "name": "Florian Stimberg"
+        },
+        {
+            "authorId": "3422336",
+            "name": "A\u00e4ron van den Oord"
+        },
+        {
+            "authorId": "48373216",
+            "name": "S. Dieleman"
+        },
+        {
+            "authorId": "2645384",
+            "name": "K. Kavukcuoglu"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "ad3e968a38a5b2d1e72997f978c556a06f625e48",
+            "title": "Viterbi-based Pruning for Sparse Matrix with Fixed and High Index Compression Ratio"
+        },
+        {
+            "paperId": "f6cbf83e1ce3b099d656d2346b261d5ef7f2b62e",
+            "title": "Parallel WaveNet: Fast High-Fidelity Speech Synthesis"
+        },
+        {
+            "paperId": "e60f693cb12132c7fffc34dc141bcc3c9dfd4961",
+            "title": "MorphNet: Fast & Simple Resource-Constrained Structure Learning of Deep Networks"
+        },
+        {
+            "paperId": "56257b0804c9c2418b32337d3af0970f7b67b084",
+            "title": "Block-Sparse Recurrent Neural Networks"
+        },
+        {
+            "paperId": "15e81c8d1c21f9e928c72721ac46d458f3341454",
+            "title": "Non-Autoregressive Neural Machine Translation"
+        },
+        {
+            "paperId": "3b4d671a8c7018c0b42673ba581e5ff3ae762d6c",
+            "title": "To prune, or not to prune: exploring the efficacy of pruning for model compression"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "1cc2f313bcb3b106af081f7031b924c9ad2662bd",
+            "title": "Exploring Sparsity in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "97c01b6cef7d7d88ec7eda488bfdc46fd601e76a",
+            "title": "Neural Audio Synthesis of Musical Notes with WaveNet Autoencoders"
+        },
+        {
+            "paperId": "4185286ec9d65086803c3ddf1cae1b27a9d6b5bb",
+            "title": "Tacotron: A Fully End-to-End Text-To-Speech Synthesis Model"
+        },
+        {
+            "paperId": "2d1b8f60f2724efd6c9344870fb60e8525157d70",
+            "title": "Parallel Multiscale Autoregressive Density Estimation"
+        },
+        {
+            "paperId": "63880b57b95de8afd73036e55b9c4bccb7a528b9",
+            "title": "Deep Voice: Real-time Neural Text-to-Speech"
+        },
+        {
+            "paperId": "2e77b99e8bd10b9e4551a780c0bde9dd10fdbe9b",
+            "title": "PixelCNN++: Improving the PixelCNN with Discretized Logistic Mixture Likelihood and Other Modifications"
+        },
+        {
+            "paperId": "e221e2c2ca8bd74a7b818406c8a2a342760e7d65",
+            "title": "SampleRNN: An Unconditional End-to-End Neural Audio Generation Model"
+        },
+        {
+            "paperId": "98445f4172659ec5e891e031d8202c102135c644",
+            "title": "Neural Machine Translation in Linear Time"
+        },
+        {
+            "paperId": "b01871c114b122340209562972ff515b86b16ccf",
+            "title": "Video Pixel Networks"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "df0402517a7338ae28bc54acaac400de6b456a46",
+            "title": "WaveNet: A Generative Model for Raw Audio"
+        },
+        {
+            "paperId": "56172b6fe2613c37d9790bde8ab6ccda14b35678",
+            "title": "Persistent RNNs: Stashing Recurrent Weights On-Chip"
+        },
+        {
+            "paperId": "41f1d50c85d3180476c4c7b3eea121278b0d8474",
+            "title": "Pixel Recurrent Neural Networks"
+        },
+        {
+            "paperId": "ac3ee98020251797c2b401e1389461df88e52e62",
+            "title": "Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling"
+        },
+        {
+            "paperId": "aab81ae281ad8c9e22611a63bf8fb215e9c265c6",
+            "title": "Inter-block GPU communication via fast barrier synchronization"
+        },
+        {
+            "paperId": null,
+            "title": "URL https://blog"
+        },
+        {
+            "paperId": null,
+            "title": "Performance RNN: Generating music with expressive timing and dynamics"
+        },
+        {
+            "paperId": null,
+            "title": "Optimizing RNNs with differentiable graphs"
+        }
+    ]
+}

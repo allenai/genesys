@@ -1,0 +1,105 @@
+{
+    "paperId": "38f35dd624cd1cf827416e31ac5e0e0454028eca",
+    "externalIds": {
+        "DBLP": "conf/icml/WanZZLF13",
+        "MAG": "4919037",
+        "CorpusId": 2936324
+    },
+    "title": "Regularization of Neural Networks using DropConnect",
+    "abstract": "We introduce DropConnect, a generalization of Dropout (Hinton et al., 2012), for regularizing large fully-connected layers within neural networks. When training with Dropout, a randomly selected subset of activations are set to zero within each layer. DropConnect instead sets a randomly selected subset of weights within the network to zero. Each unit thus receives input from a random subset of units in the previous layer. We derive a bound on the generalization performance of both Dropout and DropConnect. We then evaluate DropConnect on a range of datasets, comparing to Dropout, and show state-of-the-art results on several image recognition benchmarks by aggregating multiple DropConnect-trained models.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2013,
+    "referenceCount": 15,
+    "citationCount": 2441,
+    "influentialCitationCount": 297,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces DropConnect, a generalization of Dropout, for regularizing large fully-connected layers within neural networks, and derives a bound on the generalization performance of both Dropout and DropConnect."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2053671127",
+            "name": "Li Wan"
+        },
+        {
+            "authorId": "48799969",
+            "name": "Matthew D. Zeiler"
+        },
+        {
+            "authorId": "33551113",
+            "name": "Sixin Zhang"
+        },
+        {
+            "authorId": "1688882",
+            "name": "Yann LeCun"
+        },
+        {
+            "authorId": "2276554",
+            "name": "R. Fergus"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "0abb49fe138e8fb7332c26b148a48d0db39724fc",
+            "title": "Stochastic Pooling for Regularization of Deep Convolutional Neural Networks"
+        },
+        {
+            "paperId": "0060745e006c5f14ec326904119dca19c6545e51",
+            "title": "Improving neural networks by preventing co-adaptation of feature detectors"
+        },
+        {
+            "paperId": "2e2089ae76fe914706e6fa90081a79c8fe01611e",
+            "title": "Practical Bayesian Optimization of Machine Learning Algorithms"
+        },
+        {
+            "paperId": "398c296d0cc7f9d180f84969f8937e6d3a413796",
+            "title": "Multi-column deep neural networks for image classification"
+        },
+        {
+            "paperId": "a538b05ebb01a40323997629e171c91aa28b8e2f",
+            "title": "Rectified Linear Units Improve Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": "f354310098e09c1e1dc88758fca36767fd9d084d",
+            "title": "Learning methods for generic object recognition with invariance to pose and lighting"
+        },
+        {
+            "paperId": "6388150296152c8173fae995e30c80a86d7cf1f7",
+            "title": "Empirical margin distributions and bounding the generalization error of combined classifiers"
+        },
+        {
+            "paperId": "f707a81a278d1598cd0a4493ba73f22dcdf90639",
+            "title": "Generalization by Weight-Elimination with Application to Forecasting"
+        },
+        {
+            "paperId": null,
+            "title": "cuda-convnet. http://code.google. com/p/cuda-convnet"
+        },
+        {
+            "paperId": "02227c94dd41fe0b439e050d377b0beb5d427cda",
+            "title": "Reading Digits in Natural Images with Unsupervised Feature Learning"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "3ce9da2d2182a2fbc4b460bdb56d3c34110b3e39",
+            "title": "Probable networks and plausible predictions - a review of practical Bayesian methods for supervised neural networks"
+        },
+        {
+            "paperId": "5546b2d40ca53da8d34d8cd3c3ea4d736cd1a3b2",
+            "title": "Probability on Banach spaces"
+        },
+        {
+            "paperId": null,
+            "title": "3. Softmax Classi\ufb01cation Layer: o = s ( r ; W s ) takes as input r and uses parameters W s to map this to a k dimensional output ( k being the number of classes)"
+        }
+    ]
+}

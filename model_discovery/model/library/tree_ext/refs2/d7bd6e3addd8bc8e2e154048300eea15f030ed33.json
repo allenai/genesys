@@ -1,0 +1,190 @@
+{
+    "paperId": "d7bd6e3addd8bc8e2e154048300eea15f030ed33",
+    "externalIds": {
+        "ArXiv": "1611.05397",
+        "DBLP": "conf/iclr/JaderbergMCSLSK17",
+        "MAG": "2950872548",
+        "CorpusId": 14717992
+    },
+    "title": "Reinforcement Learning with Unsupervised Auxiliary Tasks",
+    "abstract": "Deep reinforcement learning agents have achieved state-of-the-art results by directly maximising cumulative reward. However, environments contain a much wider variety of possible training signals. In this paper, we introduce an agent that also maximises many other pseudo-reward functions simultaneously by reinforcement learning. All of these tasks share a common representation that, like unsupervised learning, continues to develop in the absence of extrinsic rewards. We also introduce a novel mechanism for focusing this representation upon extrinsic rewards, so that learning can rapidly adapt to the most relevant aspects of the actual task. Our agent significantly outperforms the previous state-of-the-art on Atari, averaging 880\\% expert human performance, and a challenging suite of first-person, three-dimensional \\emph{Labyrinth} tasks leading to a mean speedup in learning of 10$\\times$ and averaging 87\\% expert human performance on Labyrinth.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2016,
+    "referenceCount": 34,
+    "citationCount": 1178,
+    "influentialCitationCount": 92,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper significantly outperforms the previous state-of-the-art on Atari, averaging 880\\% expert human performance, and a challenging suite of first-person, three-dimensional \\emph{Labyrinth} tasks leading to a mean speedup in learning of 10$\\times$ and averaging 87\\% Expert human performance on Labyrinth."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3093886",
+            "name": "Max Jaderberg"
+        },
+        {
+            "authorId": "3255983",
+            "name": "Volodymyr Mnih"
+        },
+        {
+            "authorId": "144792148",
+            "name": "Wojciech M. Czarnecki"
+        },
+        {
+            "authorId": "1725157",
+            "name": "T. Schaul"
+        },
+        {
+            "authorId": "1700356",
+            "name": "Joel Z. Leibo"
+        },
+        {
+            "authorId": "145824029",
+            "name": "David Silver"
+        },
+        {
+            "authorId": "2645384",
+            "name": "K. Kavukcuoglu"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "d35b05f440b5ba00d9429139edef7182bf9f7ce7",
+            "title": "Learning to Navigate in Complex Environments"
+        },
+        {
+            "paperId": "e0b65d3839e3bf703d156b524d7db7a5e10a2623",
+            "title": "Playing FPS Games with Deep Reinforcement Learning"
+        },
+        {
+            "paperId": "d8686b657b61a37da351af2952aabd8b281de408",
+            "title": "Successor Features for Transfer in Reinforcement Learning"
+        },
+        {
+            "paperId": "10a4992ece5baea79326a8878a6244eeacbc6af5",
+            "title": "Deep Successor Reinforcement Learning"
+        },
+        {
+            "paperId": "5129a9cbb6de3c6579f6a7d974394d392ac29829",
+            "title": "Control of Memory, Active Perception, and Action in Minecraft"
+        },
+        {
+            "paperId": "a473f545318325ba23b7a6b477485d29777ba873",
+            "title": "ViZDoom: A Doom-based AI research platform for visual reinforcement learning"
+        },
+        {
+            "paperId": "3c3861c607fb79f3fbf79552018724617fc8ba1b",
+            "title": "A Deep Hierarchical Approach to Lifelong Learning in Minecraft"
+        },
+        {
+            "paperId": "7200969d70cf6f3fd343f48e97b8ebf7d563a584",
+            "title": "Graying the black box: Understanding DQNs"
+        },
+        {
+            "paperId": "69e76e16740ed69f4dc55361a3d319ac2f1293dd",
+            "title": "Asynchronous Methods for Deep Reinforcement Learning"
+        },
+        {
+            "paperId": "846aedd869a00c09b40f1f1f35673cb22bc87490",
+            "title": "Mastering the game of Go with deep neural networks and tree search"
+        },
+        {
+            "paperId": "4c05d7caa357148f0bbd61720bdd35f0bc05eb81",
+            "title": "Dueling Network Architectures for Deep Reinforcement Learning"
+        },
+        {
+            "paperId": "c6170fa90d3b2efede5a2e1660cb23e1c824f2ca",
+            "title": "Prioritized Experience Replay"
+        },
+        {
+            "paperId": "abaa1a3a8468473fd2827e49623eabc36ffaf8fe",
+            "title": "Model-based reinforcement learning with parametrized physical models and optimism-driven exploration"
+        },
+        {
+            "paperId": "c9804e5df4ea3f4fcc5379ad44bdd0ff743ab20e",
+            "title": "Recurrent Reinforcement Learning: A Hybrid Approach"
+        },
+        {
+            "paperId": "e4257bc131c36504a04382290cbc27ca8bb27813",
+            "title": "Action-Conditional Video Prediction using Deep Networks in Atari Games"
+        },
+        {
+            "paperId": "5dc2a215bd7cd5bdd3a0baa8c967575632696fac",
+            "title": "Universal Value Function Approximators"
+        },
+        {
+            "paperId": "340f48901f72278f6bf78a04ee5b01df208cc508",
+            "title": "Human-level control through deep reinforcement learning"
+        },
+        {
+            "paperId": "2319a491378867c7049b3da055c5df60e1671158",
+            "title": "Playing Atari with Deep Reinforcement Learning"
+        },
+        {
+            "paperId": "4a6472998c8da1a20213877cca72d9966aea08e7",
+            "title": "The Future of Memory: Remembering, Imagining, and the Brain"
+        },
+        {
+            "paperId": "f82e4ff4f003581330338aaae71f60316e58dd26",
+            "title": "The Arcade Learning Environment: An Evaluation Platform for General Agents"
+        },
+        {
+            "paperId": "6797312891a6fdbb1ec71ede57d95670254b4e90",
+            "title": "Compositional Planning Using Optimal Option Models"
+        },
+        {
+            "paperId": "50e9a441f56124b7b969e6537b66469a0e1aa707",
+            "title": "Horde: a scalable real-time architecture for learning knowledge from unsupervised sensorimotor interaction"
+        },
+        {
+            "paperId": "33224ad0cdf6e2dc4893194dd587309c7887f0ba",
+            "title": "Formal Theory of Creativity, Fun, and Intrinsic Motivation (1990\u20132010)"
+        },
+        {
+            "paperId": "bdc5a10aa5805808cfca58ac527ddc23e737bee8",
+            "title": "Skill Discovery in Continuous Reinforcement Learning Domains using Skill Chaining"
+        },
+        {
+            "paperId": "11540131eae85b2e11d53df7f1360eeb6476e7f4",
+            "title": "Learning to Forget: Continual Prediction with LSTM"
+        },
+        {
+            "paperId": "a20f0ce0616def7cc9a87446c228906cd5da093b",
+            "title": "Policy Gradient Methods for Reinforcement Learning with Function Approximation"
+        },
+        {
+            "paperId": "0e7638dc16a5e5e9e46c91272bfb9c3dd242ef6d",
+            "title": "Between MDPs and Semi-MDPs: A Framework for Temporal Abstraction in Reinforcement Learning"
+        },
+        {
+            "paperId": "59b50a775542e87f078db35b868ac10ab43d4c75",
+            "title": "Learning from delayed rewards"
+        },
+        {
+            "paperId": "f3e10675b2ef79d8431b8011f909ee0d05e92d92",
+            "title": "Incremental multi-step Q-learning"
+        },
+        {
+            "paperId": "c2e8806f0bd1d504bcb395ef1f6fe509a023a048",
+            "title": "Improving Generalization for Temporal Difference Learning: The Successor Representation"
+        },
+        {
+            "paperId": "f2eb733470921af04df5c611a6a3c76c281ce498",
+            "title": "Memory Approaches to Reinforcement Learning in Non-Markovian Domains"
+        },
+        {
+            "paperId": null,
+            "title": "OpenArena contributors"
+        },
+        {
+            "paperId": null,
+            "title": "id software"
+        },
+        {
+            "paperId": null,
+            "title": "URL https://github.com/id-Software/ Quake-III-Arena"
+        }
+    ]
+}

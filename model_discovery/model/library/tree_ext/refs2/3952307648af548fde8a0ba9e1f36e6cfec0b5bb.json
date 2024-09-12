@@ -1,0 +1,165 @@
+{
+    "paperId": "3952307648af548fde8a0ba9e1f36e6cfec0b5bb",
+    "externalIds": {
+        "MAG": "2970617576",
+        "DBLP": "conf/nips/ChenXS19",
+        "CorpusId": 202775400
+    },
+    "title": "Fast and Accurate Stochastic Gradient Estimation",
+    "abstract": "Stochastic Gradient Descent or SGD is the most popular optimization algorithm for large-scale problems. SGD estimates the gradient by uniform sampling with sample size one. There have been several other works that suggest faster epoch-wise convergence by using weighted non-uniform sampling for better gradient estimates. Unfortunately, the per-iteration cost of maintaining this adaptive distribution for gradient estimation is more than calculating the full gradient itself, which we call the chicken-and-the-egg loop. As a result, the false impression of faster convergence in iterations, in reality, leads to slower convergence in time. In this paper, we break this barrier by providing the first demonstration of a scheme, Locality sensitive hashing (LSH) sampled Stochastic Gradient Descent (LGD), which leads to superior gradient estimation while keeping the sampling cost per iteration similar to that of the uniform sampling. Such an algorithm is possible due to the sampling view of LSH, which came to light recently. As a consequence of superior and fast estimation, we reduce the running time of all existing gradient descent algorithms, that relies on gradient estimates including Adam, Ada-grad, etc. We demonstrate the effectiveness of our proposal with experiments on linear models as well as the non-linear BERT, which is a recent popular deep learning based language representation model.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2019,
+    "referenceCount": 32,
+    "citationCount": 25,
+    "influentialCitationCount": 0,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper provides the first demonstration of a scheme, Locality sensitive hashing sampled Stochastic Gradient Descent (LGD), which leads to superior gradient estimation while keeping the sampling cost per iteration similar to that of the uniform sampling."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "4319427",
+            "name": "Beidi Chen"
+        },
+        {
+            "authorId": "2145204794",
+            "name": "Yingchen Xu"
+        },
+        {
+            "authorId": "4260659",
+            "name": "Anshumali Shrivastava"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "71a906c1dca08af227d7311c2018932ea616bffa",
+            "title": "SLIDE : In Defense of Smart Algorithms over Hardware Acceleration for Large-Scale Deep Learning Systems"
+        },
+        {
+            "paperId": "451d4a16e425ecbf38c4b1cca0dcf5d9bec8255c",
+            "title": "GLUE: A Multi-Task Benchmark and Analysis Platform for Natural Language Understanding"
+        },
+        {
+            "paperId": "b36a5bb1707bb9c70025294b3a310138aae8327a",
+            "title": "Automatic differentiation in PyTorch"
+        },
+        {
+            "paperId": "daa32966409f35eea416d2b83ced0107df1202fa",
+            "title": "Unique Entity Estimation with Application to the Syrian Conflict"
+        },
+        {
+            "paperId": "a953cacb510035198235a10235121e42c8eef579",
+            "title": "Hashing-Based-Estimators for Kernel Density in High Dimensions"
+        },
+        {
+            "paperId": "c982c90a52ecd4e6c8509a2f20c0908704032ede",
+            "title": "Adaptive Sampling Probabilities for Non-Smooth Optimization"
+        },
+        {
+            "paperId": "db9b52b7890e165554e513006f1a44a9a2ffe41c",
+            "title": "A New Unbiased and Efficient Class of LSH-Based Samplers and Estimators for Partition Function Computation in Log-Linear Models"
+        },
+        {
+            "paperId": "4fa367fae831e151e27e519b269b0501902016ea",
+            "title": "Faster Coordinate Descent via Adaptive Importance Sampling"
+        },
+        {
+            "paperId": "f198db531c93486c583dfc53f464c63e44445258",
+            "title": "Adaptive Sampling for SGD by Exploiting Side Information"
+        },
+        {
+            "paperId": "d21703674ae562bae4a849a75847cdd9ead417df",
+            "title": "Optimization Methods for Large-Scale Machine Learning"
+        },
+        {
+            "paperId": "9c9d7247f8c51ec5a02b0d911d1d7b9e8160495d",
+            "title": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems"
+        },
+        {
+            "paperId": "21f13f1ed074eb8504d8b856460d04ec672e7dd4",
+            "title": "Scalable and Sustainable Deep Learning via Randomized Hashing"
+        },
+        {
+            "paperId": "be38b06e010b500f8ac137432ade82d0028dd233",
+            "title": "Variance Reduction in SGD by Distributed Importance Sampling"
+        },
+        {
+            "paperId": "0b5af8d20009f30ec66088e2cd090531a62a7239",
+            "title": "Weighted SGD for \u2113p Regression with Randomized Preconditioning"
+        },
+        {
+            "paperId": "749459f306eaaa3c09913a092c370dcc21d321e0",
+            "title": "UJIIndoorLoc: A new multi-building and multi-floor database for WLAN fingerprint-based indoor localization problems"
+        },
+        {
+            "paperId": "3c5de84e9c18c9a80eec3762515a0be2f7481910",
+            "title": "Accelerating Minibatch Stochastic Gradient Descent using Stratified Sampling"
+        },
+        {
+            "paperId": "8221da402eb27e415d08d7a5b43517cc0fa2f9f1",
+            "title": "Stochastic Optimization with Importance Sampling for Regularized Loss Minimization"
+        },
+        {
+            "paperId": "35c69ff966267a10d72791174e55db8012c410bc",
+            "title": "Stochastic gradient descent, weighted sampling, and the randomized Kaczmarz algorithm"
+        },
+        {
+            "paperId": "2672ba89286367fe312f167d85a75b3fbe64b2ab",
+            "title": "Stochastic Gradient Descent for Non-smooth Optimization: Convergence Results and Optimal Averaging Schemes"
+        },
+        {
+            "paperId": "7ae42cc4b475a2192707d0ada7b3c60c347b621e",
+            "title": "Approximate Nearest Neighbor: Towards Removing the Curse of Dimensionality"
+        },
+        {
+            "paperId": "58c1e98af6f8445c1a43268bc3ff4b360ac8be15",
+            "title": "Nearest Neighbor based Greedy Coordinate Descent"
+        },
+        {
+            "paperId": "aef0161883cfd49bbe26826cf2e40f8195ce59cf",
+            "title": "Fast approximation of matrix coherence and statistical leverage"
+        },
+        {
+            "paperId": "a7e2d53c47bdef073add879557270d915d80a098",
+            "title": "Towards Optimal One Pass Large Scale Learning with Averaged Stochastic Gradient Descent"
+        },
+        {
+            "paperId": "413c1142de9d91804d6d11c67ff3fed59c9fc279",
+            "title": "Adaptive Subgradient Methods for Online Learning and Stochastic Optimization"
+        },
+        {
+            "paperId": "5936754b5762260bf102ac95d7b26cfc9d31956a",
+            "title": "The Tradeoffs of Large Scale Learning"
+        },
+        {
+            "paperId": "42bb0ac384fb87933be67f63b98d90a45d2fe6e9",
+            "title": "Similarity estimation techniques from rounding algorithms"
+        },
+        {
+            "paperId": "34ddd8865569c2c32dec9bf7ffc817ff42faaa01",
+            "title": "A Stochastic Approximation Method"
+        },
+        {
+            "paperId": "df2b0e26d0599ce3e70df8a9da02e51594e0e992",
+            "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding"
+        },
+        {
+            "paperId": "fbc6562814e08e416e28a268ce7beeaa3d0708c8",
+            "title": "Large-Scale Machine Learning with Stochastic Gradient Descent"
+        },
+        {
+            "paperId": "e2a91be544723b9b3cf864822eed60b84b377657",
+            "title": "Pareto and Generalized Pareto Distributions"
+        },
+        {
+            "paperId": "475354f10798f110d34792b6d88f31d6d5cb099e",
+            "title": "Automatically Constructing a Corpus of Sentential Paraphrases"
+        },
+        {
+            "paperId": null,
+            "title": "UCI Machine Learning Repository"
+        }
+    ]
+}

@@ -1,0 +1,142 @@
+{
+    "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+    "externalIds": {
+        "ArXiv": "1310.4546",
+        "MAG": "2950133940",
+        "DBLP": "conf/nips/MikolovSCCD13",
+        "CorpusId": 16447573
+    },
+    "title": "Distributed Representations of Words and Phrases and their Compositionality",
+    "abstract": "The recently introduced continuous Skip-gram model is an efficient method for learning high-quality distributed vector representations that capture a large number of precise syntactic and semantic word relationships. In this paper we present several extensions that improve both the quality of the vectors and the training speed. By subsampling of the frequent words we obtain significant speedup and also learn more regular word representations. We also describe a simple alternative to the hierarchical softmax called negative sampling. \n \nAn inherent limitation of word representations is their indifference to word order and their inability to represent idiomatic phrases. For example, the meanings of \"Canada\" and \"Air\" cannot be easily combined to obtain \"Air Canada\". Motivated by this example, we present a simple method for finding phrases in text, and show that learning good vector representations for millions of phrases is possible.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2013,
+    "referenceCount": 24,
+    "citationCount": 32116,
+    "influentialCitationCount": 4000,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper presents a simple method for finding phrases in text, and shows that learning good vector representations for millions of phrases is possible and describes a simple alternative to the hierarchical softmax called negative sampling."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2047446108",
+            "name": "Tomas Mikolov"
+        },
+        {
+            "authorId": "1701686",
+            "name": "I. Sutskever"
+        },
+        {
+            "authorId": "2118440152",
+            "name": "Kai Chen"
+        },
+        {
+            "authorId": "32131713",
+            "name": "G. Corrado"
+        },
+        {
+            "authorId": "49959210",
+            "name": "J. Dean"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "9606ff5bdeb6b9bde63c5bf6ad22edeca51d35db",
+            "title": "Distributional Semantics Beyond Words: Supervised Learning of Analogy and Paraphrase"
+        },
+        {
+            "paperId": "c4fd9c86b2b41df51a6fe212406dda81b1997fd4",
+            "title": "Linguistic Regularities in Continuous Space Word Representations"
+        },
+        {
+            "paperId": "f6b51c8753a871dc94ff32152c00c01e94f90f09",
+            "title": "Efficient Estimation of Word Representations in Vector Space"
+        },
+        {
+            "paperId": "27e38351e48fe4b7da2775bf94341738bc4da07e",
+            "title": "Semantic Compositionality through Recursive Matrix-Vector Spaces"
+        },
+        {
+            "paperId": "5b0d644f5c4b9880cbaf79932c0a4fa98996f068",
+            "title": "A fast and simple algorithm for training neural probabilistic language models"
+        },
+        {
+            "paperId": "cb45e9217fe323fbc199d820e7735488fca2a9b3",
+            "title": "Strategies for training large scale neural network language models"
+        },
+        {
+            "paperId": "6f4065f0cc99a0839b0248ffb4457e5f0277b30d",
+            "title": "Domain Adaptation for Large-Scale Sentiment Classification: A Deep Learning Approach"
+        },
+        {
+            "paperId": "9c0ddf74f87d154db88d79c640578c1610451eec",
+            "title": "Parsing Natural Scenes and Natural Language with Recursive Neural Networks"
+        },
+        {
+            "paperId": "07ca885cb5cc4328895bfaec9ab752d5801b14cd",
+            "title": "Extensions of recurrent neural network language model"
+        },
+        {
+            "paperId": "8492070dc4031ed825e95e4803781752bb5e909f",
+            "title": "Word Representations: A Simple and General Method for Semi-Supervised Learning"
+        },
+        {
+            "paperId": "3a0e788268fafb23ab20da0e98bb578b06830f7d",
+            "title": "From Frequency to Meaning: Vector Space Models of Semantics"
+        },
+        {
+            "paperId": "a9fc84f8abe740cdc7ee82e69444d1d00dbe0ceb",
+            "title": "A Scalable Hierarchical Distributed Language Model"
+        },
+        {
+            "paperId": "57458bc1cffe5caa45a885af986d70f723f406b4",
+            "title": "A unified architecture for natural language processing: deep neural networks with multitask learning"
+        },
+        {
+            "paperId": "0fcc184b3b90405ec3ceafd6a4007c749df7c363",
+            "title": "Continuous space language models"
+        },
+        {
+            "paperId": "28209ce8d0ac1cf4ceea3eeddf4630e1032fa0ef",
+            "title": "A neural probabilistic language model"
+        },
+        {
+            "paperId": "6c2b28f9354f667cd5bd07afc0471d8334430da7",
+            "title": "A Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "052b1d8ce63b07fec3de9dbb583772d860b7c769",
+            "title": "Learning representations by back-propagating errors"
+        },
+        {
+            "paperId": "23a99224c7b7d148675c1798c796ec1b0904620a",
+            "title": "Noise-Contrastive Estimation of Unnormalized Statistical Models, with Applications to Natural Image Statistics"
+        },
+        {
+            "paperId": "96364af2d208ea75ca3aeb71892d2f7ce7326b55",
+            "title": "Statistical Language Models Based on Neural Networks"
+        },
+        {
+            "paperId": null,
+            "title": "Statistical Language Models Based on Neu ral Networks.PhD thesis, PhD Thesis, Brno University of Technology"
+        },
+        {
+            "paperId": null,
+            "title": "Word rep resentations: a simple and general method for semi-supervised learning. In  Proceedings of the 48th Annual Meeting of the Association fo  r Computational Linguistics, pages 384\u2013394"
+        },
+        {
+            "paperId": "c19fbefdeead6a4154a22a9c8551a18b1530033a",
+            "title": "Hierarchical Probabilistic Neural Network Language Model"
+        },
+        {
+            "paperId": null,
+            "title": "Hierarchical probab ilistic neural network language model. In Proceedings of the international workshop on artificial intell igence and statistics"
+        },
+        {
+            "paperId": "f12f7c9981615ef5fb3515b166fc939a1ca82121",
+            "title": "Proceedings of the Twenty-Second International Joint Conference on Artificial Intelligence WSABIE: Scaling Up To Large Vocabulary Image Annotation"
+        }
+    ]
+}

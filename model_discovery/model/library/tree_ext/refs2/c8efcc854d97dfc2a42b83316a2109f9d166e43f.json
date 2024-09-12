@@ -1,0 +1,99 @@
+{
+    "paperId": "c8efcc854d97dfc2a42b83316a2109f9d166e43f",
+    "externalIds": {
+        "MAG": "2963925437",
+        "ACL": "N18-2074",
+        "ArXiv": "1803.02155",
+        "DBLP": "journals/corr/abs-1803-02155",
+        "DOI": "10.18653/v1/N18-2074",
+        "CorpusId": 3725815
+    },
+    "title": "Self-Attention with Relative Position Representations",
+    "abstract": "Relying entirely on an attention mechanism, the Transformer introduced by Vaswani et al. (2017) achieves state-of-the-art results for machine translation. In contrast to recurrent and convolutional neural networks, it does not explicitly model relative or absolute position information in its structure. Instead, it requires adding representations of absolute positions to its inputs. In this work we present an alternative approach, extending the self-attention mechanism to efficiently consider representations of the relative positions, or distances between sequence elements. On the WMT 2014 English-to-German and English-to-French translation tasks, this approach yields improvements of 1.3 BLEU and 0.3 BLEU over absolute position representations, respectively. Notably, we observe that combining relative and absolute position representations yields no further improvement in translation quality. We describe an efficient implementation of our method and cast it as an instance of relation-aware self-attention mechanisms that can generalize to arbitrary graph-labeled inputs.",
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2018,
+    "referenceCount": 14,
+    "citationCount": 2007,
+    "influentialCitationCount": 220,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/N18-2074.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents an alternative approach, extending the self-attention mechanism to efficiently consider representations of the relative positions, or distances between sequence elements, on the WMT 2014 English-to-German and English- to-French translation tasks."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "38759328",
+            "name": "Peter Shaw"
+        },
+        {
+            "authorId": "39328010",
+            "name": "Jakob Uszkoreit"
+        },
+        {
+            "authorId": "40348417",
+            "name": "Ashish Vaswani"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "33998aff64ce51df8dee45989cdca4b6b1329ec4",
+            "title": "Graph Attention Networks"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "43428880d75b3a14257c3ee9bda054e61eb869c0",
+            "title": "Convolutional Sequence to Sequence Learning"
+        },
+        {
+            "paperId": "98445f4172659ec5e891e031d8202c102135c644",
+            "title": "Neural Machine Translation in Linear Time"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "97fb4e3d45bb098e27e0071448b6152217bd35a5",
+            "title": "Layer Normalization"
+        },
+        {
+            "paperId": "2cd8e8f510c89c7c18268e8ad51c061e459ad321",
+            "title": "A Decomposable Attention Model for Natural Language Inference"
+        },
+        {
+            "paperId": "23ffaa0fe06eae05817f527a47ac3291077f9e58",
+            "title": "Rethinking the Inception Architecture for Computer Vision"
+        },
+        {
+            "paperId": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+            "title": "Effective Approaches to Attention-based Neural Machine Translation"
+        },
+        {
+            "paperId": "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e",
+            "title": "End-To-End Memory Networks"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        }
+    ]
+}

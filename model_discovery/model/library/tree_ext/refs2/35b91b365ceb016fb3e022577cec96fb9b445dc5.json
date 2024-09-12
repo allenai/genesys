@@ -1,0 +1,198 @@
+{
+    "paperId": "35b91b365ceb016fb3e022577cec96fb9b445dc5",
+    "externalIds": {
+        "MAG": "2953040645",
+        "ArXiv": "1511.02301",
+        "DBLP": "journals/corr/HillBCW15",
+        "CorpusId": 14915449
+    },
+    "title": "The Goldilocks Principle: Reading Children's Books with Explicit Memory Representations",
+    "abstract": "We introduce a new test of how well language models capture meaning in children's books. Unlike standard language modelling benchmarks, it distinguishes the task of predicting syntactic function words from that of predicting lower-frequency words, which carry greater semantic content. We compare a range of state-of-the-art models, each with a different way of encoding what has been previously read. We show that models which store explicit representations of long-term contexts outperform state-of-the-art neural language models at predicting semantic content words, although this advantage is not observed for syntactic function words. Interestingly, we find that the amount of text encoded in a single memory representation is highly influential to the performance: there is a sweet-spot, not too big and not too small, between single words and full sentences that allows the most meaningful information in a text to be effectively retained and recalled. Further, the attention over such window-based memories can be trained effectively through self-supervision. We then assess the generality of this principle by applying it to the CNN QA benchmark, which involves identifying named entities in paraphrased summaries of news articles, and achieve state-of-the-art performance.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2015,
+    "referenceCount": 39,
+    "citationCount": 614,
+    "influentialCitationCount": 99,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "There is a sweet-spot, not too big and not too small, between single words and full sentences that allows the most meaningful information in a text to be effectively retained and recalled, and models which store explicit representations of long-term contexts outperform state-of-the-art neural language models at predicting semantic content words."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145783676",
+            "name": "Felix Hill"
+        },
+        {
+            "authorId": "1713934",
+            "name": "Antoine Bordes"
+        },
+        {
+            "authorId": "3295092",
+            "name": "S. Chopra"
+        },
+        {
+            "authorId": "145183709",
+            "name": "J. Weston"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "1ac30af5522c7a50ec4d1ee43fd2bd8652a9bd52",
+            "title": "A Neural Attention Model for Abstractive Sentence Summarization"
+        },
+        {
+            "paperId": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+            "title": "Effective Approaches to Attention-based Neural Machine Translation"
+        },
+        {
+            "paperId": "452059171226626718eb677358836328f884298e",
+            "title": "Ask Me Anything: Dynamic Memory Networks for Natural Language Processing"
+        },
+        {
+            "paperId": "d1505c6123c102e53eb19dff312cb25cea840b72",
+            "title": "Teaching Machines to Read and Comprehend"
+        },
+        {
+            "paperId": "e837b79de602c69395498c1fbbe39bbb4e6f75ad",
+            "title": "Learning to Transduce with Unbounded Memory"
+        },
+        {
+            "paperId": "6e565308c8081e807709cb4a917443b737e6cdb4",
+            "title": "Large-scale Simple Question Answering with Memory Networks"
+        },
+        {
+            "paperId": "b36b7f7c68923d14ba2859b5d28a1124616a8c89",
+            "title": "Transition-Based Dependency Parsing with Stack Long Short-Term Memory"
+        },
+        {
+            "paperId": "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e",
+            "title": "End-To-End Memory Networks"
+        },
+        {
+            "paperId": "d38e8631bba0720becdaf7b89f79d9f9dca45d82",
+            "title": "Inferring Algorithmic Patterns with Stack-Augmented Recurrent Nets"
+        },
+        {
+            "paperId": "abb33d75dc297993fcc3fb75e0f4498f413eb4f6",
+            "title": "Towards AI-Complete Question Answering: A Set of Prerequisite Toy Tasks"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "71ae756c75ac89e2d731c9c79649562b5768ff39",
+            "title": "Memory Networks"
+        },
+        {
+            "paperId": "2f5102ec3f70d0dea98c957cc2cab4d15d83a2da",
+            "title": "The Stanford CoreNLP Natural Language Processing Toolkit"
+        },
+        {
+            "paperId": "564257469fa44cdb57e4272f85253efb9acfd69d",
+            "title": "MCTest: A Challenge Dataset for the Open-Domain Machine Comprehension of Text"
+        },
+        {
+            "paperId": "774e560a2cadcb84f4b1def7b152e5398b062efb",
+            "title": "Scalable Modified Kneser-Ney Language Model Estimation"
+        },
+        {
+            "paperId": "38f35dd624cd1cf827416e31ac5e0e0454028eca",
+            "title": "Regularization of Neural Networks using DropConnect"
+        },
+        {
+            "paperId": "d1275b2a2ab53013310e759e5c6878b96df643d4",
+            "title": "Context dependent recurrent neural network language model"
+        },
+        {
+            "paperId": "2b669398c4cf2ebe04375c8b1beae20f4ac802fa",
+            "title": "Improving Word Representations via Global Context and Multiple Word Prototypes"
+        },
+        {
+            "paperId": "0060745e006c5f14ec326904119dca19c6545e51",
+            "title": "Improving neural networks by preventing co-adaptation of feature detectors"
+        },
+        {
+            "paperId": "bd5fc28c7356915ec71abafbe86b7596c60720aa",
+            "title": "The conference paper"
+        },
+        {
+            "paperId": "fac2ca048fdd7e848f0b9ba2f7be25bb49186770",
+            "title": "The Microsoft Research Sentence Completion Challenge"
+        },
+        {
+            "paperId": "15de5528b04bf3d9cf741122677588140c25ebff",
+            "title": "The neurobiology of semantic memory"
+        },
+        {
+            "paperId": "aea0f946e8dcddb65cc2e907456c42453f246a50",
+            "title": "Large scale image annotation: learning\u00a0to\u00a0rank with\u00a0joint word-image embeddings"
+        },
+        {
+            "paperId": "68db33b01ef82cbafb440e5f4bee30458cbb9871",
+            "title": "Unconstrained On-line Handwriting Recognition with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "0b5b121d65b268286d81a0a0e954ec57debd2002",
+            "title": "Goldilocks and the Three Bears"
+        },
+        {
+            "paperId": "d1bcbdef7fdd5f3a84afde08a958a6701241e5b0",
+            "title": "Word frequency distributions and lexical semantics"
+        },
+        {
+            "paperId": "d0be39ee052d246ae99c082a565aba25b811be2d",
+            "title": "Learning long-term dependencies with gradient descent is difficult"
+        },
+        {
+            "paperId": "be1fed9544830df1137e72b1d2396c40d3e18365",
+            "title": "A Cache-Based Natural Language Model for Speech Recognition"
+        },
+        {
+            "paperId": "4e91cf1e102ff02077ade48ac80806afb7a0e96a",
+            "title": "Interaction with context during human sentence processing"
+        },
+        {
+            "paperId": "bcd857d75841aa3e92cd4284a8818aba9f6c0c3f",
+            "title": "Published as a conference paper at ICLR 2018 S IMULATING A CTION D YNAMICS WITH N EURAL P ROCESS N ETWORKS"
+        },
+        {
+            "paperId": "e4351041d25c272a008bcd5765868dc3a28fe470",
+            "title": "Under Review as a Conference Paper at Iclr 2017 Delving into Transferable Adversarial Ex- Amples and Black-box Attacks"
+        },
+        {
+            "paperId": "4c915c1eecb217c123a36dc6d3ce52d12c742614",
+            "title": "Simple Statistical Gradient-Following Algorithms for Connectionist Reinforcement Learning"
+        },
+        {
+            "paperId": null,
+            "title": "\u2022 Embedding model (query): p = 300"
+        },
+        {
+            "paperId": null,
+            "title": "query & context+query): p = 512, \u03bb = 0.5, 1 layer, gradient clipping factor: 5, learning rate shrinking factor: 2"
+        },
+        {
+            "paperId": null,
+            "title": "Optimal hyper-parameter values on CBT: @BULLET Embedding model (context+query): p = 300, \u03bb = 0.01. @BULLET Embedding model (query): p = 300, \u03bb = 0.01. @BULLET Embedding model (window): p = 300, \u03bb = 0"
+        },
+        {
+            "paperId": null,
+            "title": "window memory + self-sup.): n = all, b = 5, \u03bb = 0.025, p = 300, K = 1. \u2022 MemNNs (window memory + ensemble): 7 models with b = 5. \u2022 MemNNs (window memory + self-sup"
+        },
+        {
+            "paperId": null,
+            "title": "All models were implemented using the Torch library (see torch.ch). For CBT, all models have been trained on all question types altogether"
+        },
+        {
+            "paperId": null,
+            "title": "For CBT, all models have been trained on all question types altogether. We did not try to experiment with word embeddings pre-trained on a bigger corpus"
+        },
+        {
+            "paperId": null,
+            "title": "\u2022 Embedding model (window+position): p = 300, \u03bb = 0.01, b = 5"
+        }
+    ]
+}

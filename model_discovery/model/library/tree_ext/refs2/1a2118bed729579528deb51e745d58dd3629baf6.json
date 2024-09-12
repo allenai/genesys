@@ -1,0 +1,106 @@
+{
+    "paperId": "1a2118bed729579528deb51e745d58dd3629baf6",
+    "externalIds": {
+        "MAG": "2605409611",
+        "DBLP": "conf/icml/ShrikumarGK17",
+        "ArXiv": "1704.02685",
+        "CorpusId": 3385018
+    },
+    "title": "Learning Important Features Through Propagating Activation Differences",
+    "abstract": "The purported \"black box\" nature of neural networks is a barrier to adoption in applications where interpretability is essential. Here we present DeepLIFT (Deep Learning Important FeaTures), a method for decomposing the output prediction of a neural network on a specific input by backpropagating the contributions of all neurons in the network to every feature of the input. DeepLIFT compares the activation of each neuron to its 'reference activation' and assigns contribution scores according to the difference. By optionally giving separate consideration to positive and negative contributions, DeepLIFT can also reveal dependencies which are missed by other approaches. Scores can be computed efficiently in a single backward pass. We apply DeepLIFT to models trained on MNIST and simulated genomic data, and show significant advantages over gradient-based methods. Video tutorial: http://goo.gl/qKb7pL, code: http://goo.gl/RM8jvH.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2017,
+    "referenceCount": 17,
+    "citationCount": 3421,
+    "influentialCitationCount": 370,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "DeepLIFT (Deep Learning Important FeaTures), a method for decomposing the output prediction of a neural network on a specific input by backpropagating the contributions of all neurons in the network to every feature of the input, is presented."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3407268",
+            "name": "Avanti Shrikumar"
+        },
+        {
+            "authorId": "3407175",
+            "name": "Peyton Greenside"
+        },
+        {
+            "authorId": "2844479",
+            "name": "A. Kundaje"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "29069976eb7f828de91ed243cd12fd99fef56d94",
+            "title": "Visualizing Deep Neural Network Decisions: Prediction Difference Analysis"
+        },
+        {
+            "paperId": "2ce17f17ab4d9ce280265a5147e0e6f62bebc8a7",
+            "title": "An unexpected unity among methods for interpreting model predictions"
+        },
+        {
+            "paperId": "e81317c5166b7c53654ea2ffa91484a08bc772ff",
+            "title": "Investigating the influence of noise and distractors on the interpretation of neural networks"
+        },
+        {
+            "paperId": "aa1101cd38bcfbf51b7811cebea70e42078df44b",
+            "title": "Gradients of Counterfactuals"
+        },
+        {
+            "paperId": "2ac9995a47f9753041e8e760fb083dfb83998267",
+            "title": "Not Just a Black Box: Learning Important Features Through Propagating Activation Differences"
+        },
+        {
+            "paperId": "e018d3883c82c9f85a4c8b7698c3fe52cc40eb39",
+            "title": "Predicting effects of noncoding variants with deep learning\u2013based sequence model"
+        },
+        {
+            "paperId": "17a273bbd4448083b01b5a9389b3c37f5425aac0",
+            "title": "On Pixel-Wise Explanations for Non-Linear Classifier Decisions by Layer-Wise Relevance Propagation"
+        },
+        {
+            "paperId": "33af9298e5399269a12d4b9901492fe406af62b4",
+            "title": "Striving for Simplicity: The All Convolutional Net"
+        },
+        {
+            "paperId": "dc6ac3437f0a6e64e4404b1b9d188394f8a3bf71",
+            "title": "Deep Inside Convolutional Networks: Visualising Image Classification Models and Saliency Maps"
+        },
+        {
+            "paperId": "020fcf4cd4a0822a2aa6b36b001e4f5cfe3719ab",
+            "title": "Systematic discovery and characterization of regulatory motifs in ENCODE TF binding experiments"
+        },
+        {
+            "paperId": "1a2a770d23b4a171fa81de62a78a3deb0588f238",
+            "title": "Visualizing and Understanding Convolutional Networks"
+        },
+        {
+            "paperId": "7d76a09aa363685bc0f04a502ed853dc09a574e2",
+            "title": "Grad-CAM: Why did you say that? Visual Explanations from Deep Networks via Gradient-based Localization"
+        },
+        {
+            "paperId": null,
+            "title": "Franois. keras. https://github.com/ fchollet/keras"
+        },
+        {
+            "paperId": null,
+            "title": "Andrew"
+        },
+        {
+            "paperId": "dc52d1ede1b90bf9d296bc5b34c9310b7eaa99a2",
+            "title": "The mnist database of handwritten digits"
+        },
+        {
+            "paperId": null,
+            "title": "International Student Research Fellowship and a Bio-X Bowes Fellowship. PG is supported by a Bio-X Stanford Interdisciplinary Graduate Fellowship. AK was supported by NIH grants"
+        },
+        {
+            "paperId": null,
+            "title": "We thank Anna Shcherbina for early experiments applying DeepLIFT to image data and beta-testing. We thank Sinhan Kang of Korea University for identifying a typing error"
+        }
+    ]
+}

@@ -1,0 +1,150 @@
+{
+    "paperId": "54feb392b834c56f45d92e2bdbebf74038126faf",
+    "externalIds": {
+        "MAG": "2964058413",
+        "DBLP": "conf/icassp/RouxWEH19",
+        "ArXiv": "1811.02508",
+        "DOI": "10.1109/ICASSP.2019.8683855",
+        "CorpusId": 53246666
+    },
+    "title": "SDR \u2013 Half-baked or Well Done?",
+    "abstract": "In speech enhancement and source separation, signal-to-noise ratio is a ubiquitous objective measure of denoising/separation quality. A decade ago, the BSS_eval toolkit was developed to give researchers worldwide a way to evaluate the quality of their algorithms in a simple, fair, and hopefully insightful way: it attempted to account for channel variations, and to not only evaluate the total distortion in the estimated signal but also split it in terms of various factors such as remaining interference, newly added artifacts, and channel errors. In recent years, hundreds of papers have been relying on this toolkit to evaluate their proposed methods and compare them to previous works, often arguing that differences on the order of 0.1 dB proved the effectiveness of a method over others. We argue here that the signal-to-distortion ratio (SDR) implemented in the BSS_eval toolkit has generally been improperly used and abused, especially in the case of single-channel separation, resulting in misleading results. We propose to use a slightly modified definition, resulting in a simpler, more robust measure, called scale-invariant SDR (SI-SDR). We present various examples of critical failure of the original SDR that SI-SDR overcomes.",
+    "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+    "year": 2018,
+    "referenceCount": 26,
+    "citationCount": 974,
+    "influentialCitationCount": 133,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1811.02508",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is argued here that the signal-to-distortion ratio (SDR) implemented in the BSS_eval toolkit has generally been improperly used and abused, especially in the case of single-channel separation, resulting in misleading results."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "9332945",
+            "name": "Jonathan Le Roux"
+        },
+        {
+            "authorId": "2249568",
+            "name": "Scott Wisdom"
+        },
+        {
+            "authorId": "143873859",
+            "name": "Hakan Erdogan"
+        },
+        {
+            "authorId": "2387467",
+            "name": "J. Hershey"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "a072603ea39723a9010e0585c0cc4ff906ff6a72",
+            "title": "Performance Based Cost Functions for End-to-End Speech Separation"
+        },
+        {
+            "paperId": "080e1bb6bbebeb78f822b3998b7ed898ab6457aa",
+            "title": "End-to-End Speech Separation with Unfolded Iterative Phase Reconstruction"
+        },
+        {
+            "paperId": "48ba025acf306b0b422859a2e523838fe4c0c4bc",
+            "title": "The 2018 Signal Separation Evaluation Campaign"
+        },
+        {
+            "paperId": "a965235c0280290a08e3dd48d009c4a50f82e3e7",
+            "title": "Alternative Objective Functions for Deep Clustering"
+        },
+        {
+            "paperId": "e5c98541d7ba1cdf92a853d731c4bb1b531aa5d9",
+            "title": "TaSNet: Time-Domain Audio Separation Network for Real-Time, Single-Channel Speech Separation"
+        },
+        {
+            "paperId": "ae523e2f137fa2a4f5a6cbcc443ba63db2642a96",
+            "title": "Supervised Speech Separation Based on Deep Learning: An Overview"
+        },
+        {
+            "paperId": "7aa505f90d2b0d6fd9a4d878d4cf3f0bd37e7cc2",
+            "title": "Speaker-Independent Speech Separation With Deep Attractor Network"
+        },
+        {
+            "paperId": "256ad591c6fd5269fc6f88b9715bf379f210f53d",
+            "title": "Multitalker Speech Separation With Utterance-Level Permutation Invariant Training of Deep Recurrent Neural Networks"
+        },
+        {
+            "paperId": "5c46e8c6dbfac2fb298e592b74057b372917695c",
+            "title": "Deep attractor network for single-microphone speaker separation"
+        },
+        {
+            "paperId": "1a3f032007526110439f0ab006c1e6df7fb87a63",
+            "title": "Deep clustering and conventional networks for music separation: Stronger together"
+        },
+        {
+            "paperId": "ab94fae3d49cd7016a47020469dc257d8090f5bb",
+            "title": "Single-Channel Multi-Speaker Separation Using Deep Clustering"
+        },
+        {
+            "paperId": "d4f62ffbf7c51a5ad01b89c6889c649bf48baac8",
+            "title": "Permutation invariant training of deep models for speaker-independent multi-talker speech separation"
+        },
+        {
+            "paperId": "70dc18bb6607e408ec1cd3f71c0fdac3534c288d",
+            "title": "Speech Enhancement with LSTM Recurrent Neural Networks and its Application to Noise-Robust ASR"
+        },
+        {
+            "paperId": "3332dc72fbe3907e45e8a500c6a1202ad5092c0f",
+            "title": "Deep clustering: Discriminative embeddings for segmentation and separation"
+        },
+        {
+            "paperId": "3004a3e4d8969dc3c36c9274b0f76ecc874f2e6a",
+            "title": "Phase-sensitive and recognition-boosted speech separation using deep recurrent neural networks"
+        },
+        {
+            "paperId": "21b4617a211eab4cfc03e0b769798b1d6709c93b",
+            "title": "Discriminatively trained recurrent neural networks for single-channel speech separation"
+        },
+        {
+            "paperId": "1a72a7155d50f9b2e0e3c78244de2eb6b940d331",
+            "title": "Subjective and Objective Quality Assessment of Audio Source Separation"
+        },
+        {
+            "paperId": "584ab846ba7585ae5cc58aa75a3a6bfe2eb7c096",
+            "title": "A short-time objective intelligibility measure for time-frequency weighted noisy speech"
+        },
+        {
+            "paperId": "514552938459a623683c072ab1360efd24d4765d",
+            "title": "Speech Enhancement: Theory and Practice"
+        },
+        {
+            "paperId": "cb9abaf9d9b40fe95cf416c4ca041575c53c52ec",
+            "title": "PEMO-Q&#8212;A New Method for Objective Audio Quality Assessment Using a Model of Auditory Perception"
+        },
+        {
+            "paperId": "29de8281b8cbc764d605a20d00b818eba6d47da1",
+            "title": "Performance measurement in blind audio source separation"
+        },
+        {
+            "paperId": "dd5e786fd6ced91db79105ca289f49816fe17c80",
+            "title": "Perceptual evaluation of speech quality (PESQ)-a new method for speech quality assessment of telephone networks and codecs"
+        },
+        {
+            "paperId": "6d37fbd2fccaef3ecdf75d34a7aee18ab9519a6f",
+            "title": "MIR_EVAL: A Transparent Implementation of Common MIR Metrics"
+        },
+        {
+            "paperId": "2978880d0c3a469a1420411d4b0b30a7b3fe56e9",
+            "title": "An Experimental Study on Speech Enhancement Based on Deep Neural Networks"
+        },
+        {
+            "paperId": "367437d5ee2ffbfee1076cf21c3852b2ec50d734",
+            "title": "Speech enhancement based on deep denoising autoencoder"
+        },
+        {
+            "paperId": null,
+            "title": "TasNet: Surpassing ideal timefrequency masking for speech separation"
+        }
+    ]
+}

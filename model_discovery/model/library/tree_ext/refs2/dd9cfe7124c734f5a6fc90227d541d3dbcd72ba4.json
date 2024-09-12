@@ -1,0 +1,254 @@
+{
+    "paperId": "dd9cfe7124c734f5a6fc90227d541d3dbcd72ba4",
+    "externalIds": {
+        "MAG": "2796438033",
+        "DBLP": "conf/cvpr/SandlerHZZC18",
+        "ArXiv": "1801.04381",
+        "DOI": "10.1109/CVPR.2018.00474",
+        "CorpusId": 4555207
+    },
+    "title": "MobileNetV2: Inverted Residuals and Linear Bottlenecks",
+    "abstract": "In this paper we describe a new mobile architecture, MobileNetV2, that improves the state of the art performance of mobile models on multiple tasks and benchmarks as well as across a spectrum of different model sizes. We also describe efficient ways of applying these mobile models to object detection in a novel framework we call SSDLite. Additionally, we demonstrate how to build mobile semantic segmentation models through a reduced form of DeepLabv3 which we call Mobile DeepLabv3. is based on an inverted residual structure where the shortcut connections are between the thin bottleneck layers. The intermediate expansion layer uses lightweight depthwise convolutions to filter features as a source of non-linearity. Additionally, we find that it is important to remove non-linearities in the narrow layers in order to maintain representational power. We demonstrate that this improves performance and provide an intuition that led to this design. Finally, our approach allows decoupling of the input/output domains from the expressiveness of the transformation, which provides a convenient framework for further analysis. We measure our performance on ImageNet [1] classification, COCO object detection [2], VOC image segmentation [3]. We evaluate the trade-offs between accuracy, and number of operations measured by multiply-adds (MAdd), as well as actual latency, and the number of parameters.",
+    "venue": "2018 IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "year": 2018,
+    "referenceCount": 51,
+    "citationCount": 16336,
+    "influentialCitationCount": 2611,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1801.04381",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new mobile architecture, MobileNetV2, is described that improves the state of the art performance of mobile models on multiple tasks and benchmarks as well as across a spectrum of different model sizes and allows decoupling of the input/output domains from the expressiveness of the transformation."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "144882893",
+            "name": "M. Sandler"
+        },
+        {
+            "authorId": "144727050",
+            "name": "Andrew G. Howard"
+        },
+        {
+            "authorId": "2717876",
+            "name": "Menglong Zhu"
+        },
+        {
+            "authorId": "3422677",
+            "name": "A. Zhmoginov"
+        },
+        {
+            "authorId": "34192119",
+            "name": "Liang-Chieh Chen"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "610eaed09988471e49fc458a9dd828889dff23b0",
+            "title": "Connectivity Learning in Multi-Branch Networks"
+        },
+        {
+            "paperId": "d0611891b9e8a7c5731146097b6f201578f47b2f",
+            "title": "Learning Transferable Architectures for Scalable Image Recognition"
+        },
+        {
+            "paperId": "9da734397acd7ff7c557960c62fb1b400b27bd89",
+            "title": "ShuffleNet: An Extremely Efficient Convolutional Neural Network for Mobile Devices"
+        },
+        {
+            "paperId": "ee4a012a4b12d11d7ab8c0e79c61e807927a163c",
+            "title": "Rethinking Atrous Convolution for Semantic Image Segmentation"
+        },
+        {
+            "paperId": "3b8aa7a38bc60f7b42757e53a0801f6e71dcef5c",
+            "title": "Learning Time/Memory-Efficient Deep Architectures with Budgeted Super Networks"
+        },
+        {
+            "paperId": "da6d086617239f5668076515bf78790d4ec0af2a",
+            "title": "Learning Time-Efficient Deep Architectures with Budgeted Super Networks"
+        },
+        {
+            "paperId": "3647d6d0f151dc05626449ee09cc7bce55be497e",
+            "title": "MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications"
+        },
+        {
+            "paperId": "f108b65fe0003e387e1cd7e50f537af0531818e4",
+            "title": "Large-Scale Evolution of Image Classifiers"
+        },
+        {
+            "paperId": "d5710bce2dda5d01cb14644281731394ff719265",
+            "title": "The Power of Sparsity in Convolutional Neural Networks"
+        },
+        {
+            "paperId": "7d39d69b23424446f0400ef603b2e3e22d0309d6",
+            "title": "YOLO9000: Better, Faster, Stronger"
+        },
+        {
+            "paperId": "a312a573ef81793d56401e932ef6c9498791a3d1",
+            "title": "Speed/Accuracy Trade-Offs for Modern Convolutional Object Detectors"
+        },
+        {
+            "paperId": "f6e0856b4a9199fa968ac00da612a9407b5cb85c",
+            "title": "Aggregated Residual Transformations for Deep Neural Networks"
+        },
+        {
+            "paperId": "67d968c7450878190e45ac7886746de867bf673d",
+            "title": "Neural Architecture Search with Reinforcement Learning"
+        },
+        {
+            "paperId": "5bdf07c9897ca70788fff61dec56178a2bd0c29c",
+            "title": "Deep Pyramidal Residual Networks"
+        },
+        {
+            "paperId": "5b6ec746d309b165f9f9def873a2375b6fb40f3d",
+            "title": "Xception: Deep Learning with Depthwise Separable Convolutions"
+        },
+        {
+            "paperId": "c2a1cb1612ba21e067a5c3ba478a8d73b796b77a",
+            "title": "Pruning Filters for Efficient ConvNets"
+        },
+        {
+            "paperId": "c220cdbcec6f92e4bc0f58c5fa6c1183105be1f9",
+            "title": "Dynamic Network Surgery for Efficient DNNs"
+        },
+        {
+            "paperId": "d20da75866f500ee9fbfa859e69556702e1f50a4",
+            "title": "Design of Efficient Convolutional Layers using Single Intra-channel Convolution, Topological Subdivisioning and Spatial \"Bottleneck\" Structure"
+        },
+        {
+            "paperId": "4690ff0ccfe8d160dd456d1d7900f8fd3b6ad782",
+            "title": "DSD: Regularizing Deep Neural Networks with Dense-Sparse-Dense Training Flow"
+        },
+        {
+            "paperId": "cab372bc3824780cce20d9dd1c22d4df39ed081a",
+            "title": "DeepLab: Semantic Image Segmentation with Deep Convolutional Nets, Atrous Convolution, and Fully Connected CRFs"
+        },
+        {
+            "paperId": "b724c3f7ff395235b62537203ddeb710f0eb27bb",
+            "title": "R-FCN: Object Detection via Region-based Fully Convolutional Networks"
+        },
+        {
+            "paperId": "ec6bb39f18f20dbb504790a5f7089e40de33b169",
+            "title": "Residual Networks are Exponential Ensembles of Relatively Shallow Networks"
+        },
+        {
+            "paperId": "b5c26ab8767d046cb6e32d959fdf726aee89bb62",
+            "title": "Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "4d7a9197433acbfb24ef0e9d0f33ed1699e4a5b0",
+            "title": "SSD: Single Shot MultiBox Detector"
+        },
+        {
+            "paperId": "2173f1b8172c9b5bed4650c81b69988717bd6df6",
+            "title": "ParseNet: Looking Wider to See Better"
+        },
+        {
+            "paperId": "1ff9a37d766e3a4f39757f5e1b235a42dacf18ff",
+            "title": "Learning both Weights and Connections for Efficient Neural Network"
+        },
+        {
+            "paperId": "91768b21a2f8a65f1dede87adb0cec2b621ce1f9",
+            "title": "Modeling local and global deformations in Deep Learning: Epitomic convolution, Multiple Instance Learning, and sliding window detection"
+        },
+        {
+            "paperId": "424561d8585ff8ebce7d5d07de8dbf7aae5e7270",
+            "title": "Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks"
+        },
+        {
+            "paperId": "93bc65d2842b8cc5f3cf72ebc5b8f75daeacea35",
+            "title": "Scalable Bayesian Optimization Using Deep Neural Networks"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "616b246e332573af1f4859aa91440280774c183a",
+            "title": "The Pascal Visual Object Classes Challenge: A Retrospective"
+        },
+        {
+            "paperId": "6bdb186ec4726e00a8051119636d4df3b94043b5",
+            "title": "Caffe: Convolutional Architecture for Fast Feature Embedding"
+        },
+        {
+            "paperId": "71b7178df5d2b112d07e45038cb5637208659ff7",
+            "title": "Microsoft COCO: Common Objects in Context"
+        },
+        {
+            "paperId": "b034b5769ab94acf9fb8ae48c7edb560a300bb63",
+            "title": "On the Number of Linear Regions of Deep Neural Networks"
+        },
+        {
+            "paperId": "1109b663453e78a59e4f66446d71720ac58cec25",
+            "title": "OverFeat: Integrated Recognition, Localization and Detection using Convolutional Networks"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "2e2089ae76fe914706e6fa90081a79c8fe01611e",
+            "title": "Practical Bayesian Optimization of Machine Learning Algorithms"
+        },
+        {
+            "paperId": "188e247506ad992b8bc62d6c74789e89891a984f",
+            "title": "Random Search for Hyper-Parameter Optimization"
+        },
+        {
+            "paperId": "82fae97673a353271b1d4c001afda1af6ef6dc23",
+            "title": "Semantic contours from inverse detectors"
+        },
+        {
+            "paperId": "a42954d4b9d0ccdf1036e0af46d87a01b94c3516",
+            "title": "Second Order Derivatives for Network Pruning: Optimal Brain Surgeon"
+        },
+        {
+            "paperId": null,
+            "title": "Tensorflow object detection api, 2017"
+        },
+        {
+            "paperId": null,
+            "title": "TensorFlow: Large-scale machine learning"
+        },
+        {
+            "paperId": "d92bf274d0a28378c3638d18415be4756ffa1c52",
+            "title": "A solvable connectionist model of immediate recall of ordered lists"
+        },
+        {
+            "paperId": "e7297db245c3feb1897720b173a59fe7e36babb7",
+            "title": "Optimal Brain Damage"
+        },
+        {
+            "paperId": "ef3ed634a28eee78a7e31fc525cf7083e6689345",
+            "title": "A real-time algorithm for signal analysis with the help of the wavelet transform"
+        },
+        {
+            "paperId": null,
+            "title": ", if n (cid:28) m , such highly non-linear but still invertible with probability (for the initial random weights)"
+        },
+        {
+            "paperId": null,
+            "title": "[ does not contain points with negative points with zero-valued coordinates can points. Therefore for each x \u2208 S (cid:48) , x desired."
+        },
+        {
+            "paperId": null,
+            "title": "Mobilenetv2 source code"
+        }
+    ]
+}

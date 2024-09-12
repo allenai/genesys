@@ -1,0 +1,175 @@
+{
+    "paperId": "6b17c713dc45235a1a3c6372ad819b7ffb8db971",
+    "externalIds": {
+        "DBLP": "journals/pami/Yang15",
+        "MAG": "2039699512",
+        "DOI": "10.1109/TPAMI.2014.2353642",
+        "CorpusId": 12427351,
+        "PubMed": "26353297"
+    },
+    "title": "Stereo Matching Using Tree Filtering",
+    "abstract": "Matching cost aggregation is one of the oldest and still popular methods for stereo correspondence. While effective and efficient, cost aggregation methods typically aggregate the matching cost by summing/averaging over a user-specified, local support region. This is obviously only locally-optimal, and the computational complexity of the full-kernel implementation usually depends on the region size. In this paper, the cost aggregation problem is re-examined and a non-local solution is proposed. The matching cost values are aggregated adaptively based on pixel similarity on a tree structure derived from the stereo image pair to preserve depth edges. The nodes of this tree are all the image pixels, and the edges are all the edges between the nearest neighboring pixels. The similarity between any two pixels is decided by their shortest distance on the tree. The proposed method is non-local as every node receives supports from all other nodes on the tree. The proposed method can be naturally extended to the time domain for enforcing temporal coherence. Unlike previous methods, the non-local property guarantees that the depth edges will be preserved when the temporal coherency between all the video frames are considered. A non-local weighted median filter is also proposed based on the non-local cost aggregation algorithm. It has been demonstrated to outperform all local weighted median filters on disparity/depth upsampling and refinement.",
+    "venue": "IEEE Transactions on Pattern Analysis and Machine Intelligence",
+    "year": 2015,
+    "referenceCount": 36,
+    "citationCount": 180,
+    "influentialCitationCount": 28,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The cost aggregation problem is re-examined and a non-local solution is proposed that guarantees that the depth edges will be preserved when the temporal coherency between all the video frames are considered."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1777434",
+            "name": "Qingxiong Yang"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "0959ba9874c9225cef08de110be7300715a2b792",
+            "title": "Hardware-Efficient Bilateral Filtering for Stereo Matching"
+        },
+        {
+            "paperId": "fc55058169d3b93d2708f405d8f89da8d12b5d3e",
+            "title": "Patch Match Filter: Efficient Edge-Aware Filtering Meets Randomized Search for Fast Correspondence Field Estimation"
+        },
+        {
+            "paperId": "b0382b60b30be6998a7d68fe62ea4377f8cb41f9",
+            "title": "Recursive Bilateral Filtering"
+        },
+        {
+            "paperId": "d1e3105945396eedc986c99477cbfd12812982e1",
+            "title": "Cross-based local multipoint filtering"
+        },
+        {
+            "paperId": "3250eec6214d2634d09ed5e8673bfce10d7ec042",
+            "title": "A non-local cost aggregation method for stereo matching"
+        },
+        {
+            "paperId": "4e5d8d9d2f0fd9f1a24567efbcd9eadb414fd76c",
+            "title": "Depth Video Enhancement Based on Weighted Mode Filtering"
+        },
+        {
+            "paperId": "f908d2fb9cfcaff17030a912e4811fb02aaeec03",
+            "title": "Fast cost-volume filtering for visual correspondence and beyond"
+        },
+        {
+            "paperId": "1b7fc36dc56a400f7a7f4c75e53550bbb6a0a4d8",
+            "title": "Guided Image Filtering"
+        },
+        {
+            "paperId": "9156493fcdd37a17e38876b4e261f08c422a5df6",
+            "title": "Real-Time Spatiotemporal Stereo Matching Using the Dual-Cross-Bilateral Grid"
+        },
+        {
+            "paperId": "b2d5b1d4a196e8c5000bfc6d3b172dbdfc273755",
+            "title": "Real-time O(1) bilateral filtering"
+        },
+        {
+            "paperId": "b8b4eeddaa5b8bca921d1dc2f9e1ad0a3edbfae0",
+            "title": "Constant time O(1) bilateral filtering"
+        },
+        {
+            "paperId": "a0a5a80e019c6eb501d32e4250b1be91dc27047e",
+            "title": "Median Filtering in Constant Time"
+        },
+        {
+            "paperId": "0f3d5fe40ff9f7c4e424d302d8cb1eeae679694c",
+            "title": "Spatial-Depth Super Resolution for Range Images"
+        },
+        {
+            "paperId": "ca2d5bb3c771d9286e9b2cef3f86eb5553cc4f6f",
+            "title": "Real-Time Plane-Sweeping Stereo with Multiple Sweeping Directions"
+        },
+        {
+            "paperId": "2c8cbeb547f3c982c820794ec9cf431b133aba57",
+            "title": "A Fast Approximation of the Bilateral Filter Using a Signal Processing Approach"
+        },
+        {
+            "paperId": "0bd3984c75ea99ab214b1dc72d2d487d652f7e25",
+            "title": "Adaptive Support-Weight Approach for Correspondence Search"
+        },
+        {
+            "paperId": "11e3856c5f02ea0f6e3134086f8ba629ced587c6",
+            "title": "Stereo correspondence by dynamic programming on a tree"
+        },
+        {
+            "paperId": "14a3fc7ae953657c5149c5f80b62019813c695d1",
+            "title": "A fast, parallel spanning tree algorithm for symmetric multiprocessors"
+        },
+        {
+            "paperId": "b81293c99535d5faff42c15e61bf52fbc6a36bb5",
+            "title": "Stereo Matching Using Belief Propagation"
+        },
+        {
+            "paperId": "d2f78c2b2b325d72f359d4c797c9aab6a8e60942",
+            "title": "A Taxonomy and Evaluation of Dense Two-Frame Stereo Correspondence Algorithms"
+        },
+        {
+            "paperId": "3120324069ec20eed853d3f9bbbceb32e4173b93",
+            "title": "Fast approximate energy minimization via graph cuts"
+        },
+        {
+            "paperId": "8d314c440a537f9338358ef1fa3cc49664c98d8a",
+            "title": "Robust Real-Time Face Detection"
+        },
+        {
+            "paperId": "861897df39716877fb1e03a7d09a234faca076e9",
+            "title": "Learning Low-Level Vision"
+        },
+        {
+            "paperId": "1b994e917d107ca26dee9f3975c3737aac19d2be",
+            "title": "Large Occlusion Stereo"
+        },
+        {
+            "paperId": "bfeaf424a2ea6ca4702d545c6e959e2caeb68e9b",
+            "title": "Bilateral filtering for gray and color images"
+        },
+        {
+            "paperId": "5fc29042a1ce1b1f9ad5fffd797a5570f8ed6834",
+            "title": "Weighted median filters: a tutorial"
+        },
+        {
+            "paperId": "1acb12f20b5f74e9813d8faeaeed1577b6d5b3a0",
+            "title": "The Minimum Spanning Tree Problem on a Planar Graph"
+        },
+        {
+            "paperId": "8b22e1751f75be137b7b210981baccc1b9ab9222",
+            "title": "Summed-area tables for texture mapping"
+        },
+        {
+            "paperId": "a1fbe390aedc05a87e5903ba83978b57d883a298",
+            "title": "Finding Minimum Spanning Trees"
+        },
+        {
+            "paperId": null,
+            "title": "Optimizing software in C++: An optimization guide for Windows, Linux and Mac platforms"
+        },
+        {
+            "paperId": "b91145a71ac54977d5661077ad75f1847c2c5d3b",
+            "title": "Simple but Effective Tree Structures for Dynamic Programming-Based Stereo Matching"
+        },
+        {
+            "paperId": null,
+            "title": "Adaptive support-weight approach for correspondence search"
+        },
+        {
+            "paperId": null,
+            "title": "Middlebury stereo evaluation"
+        },
+        {
+            "paperId": "d9d24ad7625fa0790cb2289b56dccba29539b438",
+            "title": "Ieee Transaction on Pattern Analysis and Machine Intelligence 1 Joint Histogram Based Cost Aggregation for Stereo Matching"
+        },
+        {
+            "paperId": "bcd84d8bd864ff903e3fe5b91bed3f2eedacc324",
+            "title": "Ieee Transactions on Pattern Analysis and Machine Intelligence 1 Stereo Processing by Semi-global Matching and Mutual Information"
+        },
+        {
+            "paperId": null,
+            "title": "The Book Arrival data set"
+        }
+    ]
+}

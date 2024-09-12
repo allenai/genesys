@@ -1,0 +1,503 @@
+{
+    "paperId": "3efd851140aa28e95221b55fcc5659eea97b172d",
+    "externalIds": {
+        "DBLP": "journals/tnn/ScarselliGTHM09",
+        "MAG": "2116341502",
+        "DOI": "10.1109/TNN.2008.2005605",
+        "CorpusId": 206756462,
+        "PubMed": "19068426"
+    },
+    "title": "The Graph Neural Network Model",
+    "abstract": "Many underlying relationships among data in several areas of science and engineering, e.g., computer vision, molecular chemistry, molecular biology, pattern recognition, and data mining, can be represented in terms of graphs. In this paper, we propose a new neural network model, called graph neural network (GNN) model, that extends existing neural network methods for processing the data represented in graph domains. This GNN model, which can directly process most of the practically useful types of graphs, e.g., acyclic, cyclic, directed, and undirected, implements a function tau(G,n) isin IRm that maps a graph G and one of its nodes n into an m-dimensional Euclidean space. A supervised learning algorithm is derived to estimate the parameters of the proposed GNN model. The computational cost of the proposed algorithm is also considered. Some experimental results are shown to validate the proposed learning algorithm, and to demonstrate its generalization capabilities.",
+    "venue": "IEEE Transactions on Neural Networks",
+    "year": 2009,
+    "referenceCount": 114,
+    "citationCount": 6365,
+    "influentialCitationCount": 387,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new neural network model, called graph neural network (GNN) model, that extends existing neural network methods for processing the data represented in graph domains, and implements a function tau(G,n) isin IRm that maps a graph G and one of its nodes n into an m-dimensional Euclidean space."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "47260481",
+            "name": "F. Scarselli"
+        },
+        {
+            "authorId": "145467467",
+            "name": "M. Gori"
+        },
+        {
+            "authorId": "1733691",
+            "name": "A. Tsoi"
+        },
+        {
+            "authorId": "1784450",
+            "name": "M. Hagenbuchner"
+        },
+        {
+            "authorId": "3073217",
+            "name": "G. Monfardini"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "4c75b748911ddcd888c5122f7672f69caa5d661f",
+            "title": "Statistical Learning Theory"
+        },
+        {
+            "paperId": "554aabebf17b11046ac734aac8ef5a71872e93e3",
+            "title": "Semi-Supervised Learning"
+        },
+        {
+            "paperId": "29258e7c8a2d43c77933900f4b66e8bdc002943e",
+            "title": "Non-negative Matrices and Markov Chains"
+        },
+        {
+            "paperId": "4e11ebdc3e4f30d774458fab9e4b45ff0d0aa971",
+            "title": "Logical and relational learning"
+        },
+        {
+            "paperId": "e012d6bc0e511dca63e70efb2748dc0d12944f89",
+            "title": "Logical and Relational Learning: From ILP to MRDM (Cognitive Technologies)"
+        },
+        {
+            "paperId": "5ad41f9ebbc6b6b02d61932a15ae254ba33a687f",
+            "title": "Introduction to statistical relational learning"
+        },
+        {
+            "paperId": "b87edd8d4583d1135428245548c68ba03c3fc6eb",
+            "title": "Document Mining Using Graph Neural Network"
+        },
+        {
+            "paperId": "7f7942ca5bad4668eb2246fccc497095c6afcad7",
+            "title": "Computing customized page ranks"
+        },
+        {
+            "paperId": "a92d7de31100a0fee816f0cb61b4a2a5a2d5e37a",
+            "title": "Semi-Supervised Learning"
+        },
+        {
+            "paperId": "521fc80ac1ee85527386e5354cc0efcf95a70572",
+            "title": "Learning to rank networked entities"
+        },
+        {
+            "paperId": "a725e8cf01b687a1d61ba8d9b760f4e0c0a3c50d",
+            "title": "A Comparison between Recursive Neural Networks and Graph Neural Networks"
+        },
+        {
+            "paperId": "db5aa767a0e8ceb09e7202f708e15a37bbc7ca01",
+            "title": "Universal Approximation using Incremental Constructive Feedforward Networks with Random Hidden Nodes"
+        },
+        {
+            "paperId": "c2f40c13c39dbad40db88cbe17bb57ca9896e302",
+            "title": "Graph Neural Networks for Object Localization"
+        },
+        {
+            "paperId": "9ca9f28676ad788d04ba24a51141a9a0a0df4d67",
+            "title": "A new model for learning in graph domains"
+        },
+        {
+            "paperId": "2e53fa69c2238057d5e8bc2d5bae20bc43453738",
+            "title": "2005 Special Issue: Recursive neural networks for processing graphs with labelled edges: theory and applications"
+        },
+        {
+            "paperId": "769bfd4a4b45979cf83bb56c054ebcaaaf8b35d7",
+            "title": "Graph neural networks for ranking Web pages"
+        },
+        {
+            "paperId": "b9778d713deb2955c2ca8d3e9e88571e5466ae84",
+            "title": "Recursive neural networks learn to localize faces"
+        },
+        {
+            "paperId": "94c5993239ff6688a9585e377684f275e88fc9a1",
+            "title": "A supervised training algorithm for self-organizing maps for structures"
+        },
+        {
+            "paperId": "3a87c3104202e3095d9a618d4588b26006c21ce2",
+            "title": "Machine Learning for Systems Biology"
+        },
+        {
+            "paperId": "74544c9ee49ef8ec0f3d10561c78e45aac531618",
+            "title": "Pattern recognition using finite-iteration cellular systems"
+        },
+        {
+            "paperId": "09300d908a38b92946f049c4e67f9e244baf1f8f",
+            "title": "Supervised relevance neural gas and unified maximum separability analysis for classification of mass spectrometric data"
+        },
+        {
+            "paperId": "10af2b2a76a8be9b0835cfe5d4e6b36c7f5dd16d",
+            "title": "Kernels and Distances for Structured Data"
+        },
+        {
+            "paperId": "7f4e4e87e0103e2280feec7db79aeac410df37cf",
+            "title": "Convolution Kernels with Feature Selection for Natural Language Processing Tasks"
+        },
+        {
+            "paperId": "524cf28a5abbd2ba32ae579c3fe7110a0deb220b",
+            "title": "Extensions of marginalized graph kernels"
+        },
+        {
+            "paperId": "3e650da7f66a51d785cf68393c3497f012967ca7",
+            "title": "Computing personalized pageranks"
+        },
+        {
+            "paperId": "f3ab61d9faace6cfffcfc89503c0b804206d9641",
+            "title": "Thirty Years Of Graph Matching In Pattern Recognition"
+        },
+        {
+            "paperId": "799cda5e1a6015dc5f0a2a14acf96e1fa7d300dc",
+            "title": "Kernels for Structured Natural Language Data"
+        },
+        {
+            "paperId": "1b7a0048801f9d43dc48a8f04367be813146b05a",
+            "title": "The Principled Design of Large-Scale Recursive Neural Network Architectures--DAG-RNNs and the Protein Structure Prediction Problem"
+        },
+        {
+            "paperId": "9ed7dc93a34e6c711aa1910135d6894d50f1f318",
+            "title": "Comparative Evaluation of Approaches to Propositionalization"
+        },
+        {
+            "paperId": "2dfd92c808487049ab4c9b45db77e9055b9da5a2",
+            "title": "Marginalized Kernels Between Labeled Graphs"
+        },
+        {
+            "paperId": "56fd28e8db60a696adc5b0f7acb9ef41d9ce1ec4",
+            "title": "A survey of kernels for structured data"
+        },
+        {
+            "paperId": "dc59a32f70d7ed615cea9faee2379de777363986",
+            "title": "A system for graph-based visualization of the evolution of software"
+        },
+        {
+            "paperId": "01cf13f3bc7a70f1e6c2fc065324bc8e83df9c2b",
+            "title": "Adaptive ranking of web pages"
+        },
+        {
+            "paperId": "4d1ebc191df29fa577b8c8bc2f85c15202e9df20",
+            "title": "Scaling personalized web search"
+        },
+        {
+            "paperId": "26d24fc001bc5a8bf375b2f35f4f2e222995165c",
+            "title": "A self-organizing map for adaptive processing of structured data"
+        },
+        {
+            "paperId": "41c9dc539074b54acd79e3eaa43982add8b0d05e",
+            "title": "Graph-Based Generation of Referring Expressions"
+        },
+        {
+            "paperId": "1c96d058b293b1da80d103f31d5a14bc6a738ab8",
+            "title": "Tutorial Introduction to Graph Transformation: A Software Engineering Perspective"
+        },
+        {
+            "paperId": "9af905708c142c7521ae372b864e454c2e1c4cf0",
+            "title": "Recursive Neural Networks Applied to Discourse Representation Theory"
+        },
+        {
+            "paperId": "6320770fe216ebbba769b9f0a006669b616a03d0",
+            "title": "Diffusion Kernels on Graphs and Other Discrete Input Spaces"
+        },
+        {
+            "paperId": "e1ca9b6a4171642c69262fe88695a5c7a1672b99",
+            "title": "Topic-sensitive PageRank"
+        },
+        {
+            "paperId": "36931412c9dc79c9d55751ea46b518bff9fcd3b8",
+            "title": "Web page scoring systems for horizontal and vertical search"
+        },
+        {
+            "paperId": "028abccb539fecfc1c990035f05e1a260075f767",
+            "title": "Thesis: clustering and instance based learning in first order logic"
+        },
+        {
+            "paperId": "25ec680e94d84e93e3bd0409d6084bfb43c4cdb6",
+            "title": "Processing directed acyclic graphs with recursive neural networks"
+        },
+        {
+            "paperId": "9988d78b3a8c0bca0559cf10378a3b04f589acc0",
+            "title": "Feature Construction with Version Spaces for Biochemical Applications"
+        },
+        {
+            "paperId": "f4ba954b0412773d047dc41231c733de0c1f4926",
+            "title": "Conditional Random Fields: Probabilistic Models for Segmenting and Labeling Sequence Data"
+        },
+        {
+            "paperId": "56402b8f02babbd5adfd293cfbc71617bd1138a0",
+            "title": "Analysis of the Internal Representations Developed by Neural Networks for Structures Applied to Quantitative Structure-Activity Relationship Studies of Benzodiazepines"
+        },
+        {
+            "paperId": "46cb7584ba5838c67368fbb98748a662bd3b427e",
+            "title": "An Introduction to Metric Spaces and Fixed Point Theory"
+        },
+        {
+            "paperId": "e6c7adc28e20d361d5c35aa9808094b10f6a34d1",
+            "title": "Convolution Kernels for Natural Language"
+        },
+        {
+            "paperId": "d35c80386ab042c56ee9623eefcfa716c24f2027",
+            "title": "Learning User Profiles in NAUTILUS"
+        },
+        {
+            "paperId": "785bc0d87e345c2e32eea398a56790012264a242",
+            "title": "Learning to Create Customized Authority Lists"
+        },
+        {
+            "paperId": "010b04b8a4d2effc3a314ffee796f1fe13bf97d5",
+            "title": "Relational Learning and Inductive Logic Programming Made Easy Abstract of Tutorial"
+        },
+        {
+            "paperId": "f1962baa356e10c4fd936b9e9f910869a5864a75",
+            "title": "Authoritative sources in a hyperlinked environment"
+        },
+        {
+            "paperId": "a5eb96540ef53b49eac2246d6b13635fe6e54451",
+            "title": "A general framework for adaptive processing of data structures"
+        },
+        {
+            "paperId": "10d6778bc45aebcd58d336b4062b935861d2fe8a",
+            "title": "The Anatomy of a Large-Scale Hypertextual Web Search Engine"
+        },
+        {
+            "paperId": "2a56a1a776beda725f8d1873eef6dc82396c90d1",
+            "title": "Efficient Crawling Through URL Ordering"
+        },
+        {
+            "paperId": "c872ca2b87c35dbc4927c22dd4508a1ea1399bcc",
+            "title": "Using Logical Decision Trees for Clustering"
+        },
+        {
+            "paperId": "40ee1e498d79ceeddb4760c94e6153cbc36f9b50",
+            "title": "Gradient Based Learning Methods"
+        },
+        {
+            "paperId": "964f5e0fe674788e13152eb236eeaf580cfad589",
+            "title": "Logo Recognition by Recursive Neural Networks"
+        },
+        {
+            "paperId": "3e33eca03933caaec671e20692e79d1acc9527e1",
+            "title": "Supervised neural networks for the classification of structures"
+        },
+        {
+            "paperId": "f441c4fa4ec413037576800137f9f475804922ce",
+            "title": "Constructive algorithms for structure learning in feedforward neural networks for regression problems"
+        },
+        {
+            "paperId": "7e1d105273bae6a9c0fe37c5cd709490282fe83a",
+            "title": "Boosting First-Order Learning"
+        },
+        {
+            "paperId": "aa14d921c3efb1e2b73aa8c44f801dc92c6b6e7a",
+            "title": "Inductive Learning in Symbolic Domains Using Structure-Driven Recurrent Neural Networks"
+        },
+        {
+            "paperId": "0d82c68980943718a306df67c3ed95f782e9f93a",
+            "title": "Pruning algorithms-a survey"
+        },
+        {
+            "paperId": "f2cf9ae81b38f7637899f19274226e623f9b153b",
+            "title": "FOIL: A Midterm Report"
+        },
+        {
+            "paperId": "916ceefae4b11dadc3ee754ce590381c568c90de",
+            "title": "A direct adaptive method for faster backpropagation learning: the RPROP algorithm"
+        },
+        {
+            "paperId": "88b0535e38ac35abe13b2c9376c73cd05b45381d",
+            "title": "Cellular neural networks"
+        },
+        {
+            "paperId": "91c8a01ec6d3dd4ebf0fdc90302b852c8535d5e0",
+            "title": "Counting stable equilibria of cellular neural networks-A graph theoretic approach"
+        },
+        {
+            "paperId": "ef77a8b0db638c675d032bd05dc3a012a2899da4",
+            "title": "Structure-activity relationship of mutagenic aromatic and heteroaromatic nitro compounds. Correlation with molecular orbital energies and hydrophobicity."
+        },
+        {
+            "paperId": "8be3f21ab796bd9811382b560507c1c679fae37f",
+            "title": "A learning rule for asynchronous perceptrons with feedback in a combinatorial environment"
+        },
+        {
+            "paperId": "8c3b56709b8bbf173849f03ba69bc638067a902b",
+            "title": "Neural networks for control"
+        },
+        {
+            "paperId": "819a4efc6c66563912d262ff2bf2e99d890fafa8",
+            "title": "Cellular neural networks: applications"
+        },
+        {
+            "paperId": "0f9aa550e542b6f75a1d1c79db644ec226ce52f8",
+            "title": "Cellular neural networks: theory"
+        },
+        {
+            "paperId": "18e05aa52d1fb62a6956d2e47a4101e3792cb977",
+            "title": "Parallel Distributed Processing: Explorations in the Microstructures of Cognition"
+        },
+        {
+            "paperId": "6602985bd326d9996c68627b56ed389e2c90fd08",
+            "title": "Generalization of back-propagation to recurrent neural networks."
+        },
+        {
+            "paperId": "4bb08f30bb2c83334b21fbbc68c3f2622d4fb04b",
+            "title": "Parallel distributed processing: explorations in the microstructure of cognition, vol. 1: foundations"
+        },
+        {
+            "paperId": "24c5941e64909877b8c6ea05f41aebb6698f290f",
+            "title": "Non\u2010Negative Matrices and Markov Chains"
+        },
+        {
+            "paperId": "98b4d4e24aab57ab4e1124ff8106909050645cfa",
+            "title": "Neural networks and physical systems with emergent collective computational abilities."
+        },
+        {
+            "paperId": "f20b8e819512d17f59435043a18573127fea7d82",
+            "title": "Real and complex analysis"
+        },
+        {
+            "paperId": "104c4017c200f434dc7ecfbef143b5f135497abc",
+            "title": "Computational Capabilities of Graph Neural Networks"
+        },
+        {
+            "paperId": "7e9690058b4f04875a2c7781efd1247a43bf6747",
+            "title": "Introduction to Statistical Relational Learning"
+        },
+        {
+            "paperId": "64ec3fa56511ee336075c5b2368366c255524204",
+            "title": "Two connectionist models for graph processing: An experimental comparison on relational data"
+        },
+        {
+            "paperId": "faa8790a869e28f375da264b88f1e6003ecf72e0",
+            "title": "Matching Based Kernels for Labeled Graphs"
+        },
+        {
+            "paperId": null,
+            "title": "Mining Graphs Trees"
+        },
+        {
+            "paperId": null,
+            "title": "Proc. Int. Workshop Sub-Symbol. Paradigms Structured Domains"
+        },
+        {
+            "paperId": null,
+            "title": "3rd Int"
+        },
+        {
+            "paperId": null,
+            "title": "Proc. 3rd Int. Workshop Mining Graphs Trees Sequences"
+        },
+        {
+            "paperId": "b98587d738c1923d3f465ea5d0a0f9ad319220a4",
+            "title": "Neural methods for non-standard data"
+        },
+        {
+            "paperId": null,
+            "title": "Proc. Int. Workshop Statist. Relat. Learn. Connect. Other Fields"
+        },
+        {
+            "paperId": "cf595db00e479b8214e040e0c7daf48d5e3a517f",
+            "title": "Recursive Neural Networks for Processing Graphs with Labelled Edges"
+        },
+        {
+            "paperId": "16ea3e44b748148303cbf5ea12def51e16d68898",
+            "title": "GRAPH MATCHING APPLICATIONS IN PATTERN RECOGNITION AND IMAGE PROCESSING"
+        },
+        {
+            "paperId": "12182b550685b5097a1539c8dfa18c8aa49bba36",
+            "title": "Face Spotting in Color Images using Recursive Neural Networks"
+        },
+        {
+            "paperId": "33d348a82b9d12270b9c12774454f832a52f073d",
+            "title": "Neural Network Control"
+        },
+        {
+            "paperId": null,
+            "title": "\u201cKernel-based learning in multi-relational data mining,\u201d"
+        },
+        {
+            "paperId": "a9e51a86d106e73e60650f2c4784c5271e8c9735",
+            "title": "Diffusion kernels on graphs and other discrete structures"
+        },
+        {
+            "paperId": "03d6b40caff82c191d5329d6355c1c57abcd9d8f",
+            "title": "Clustering and instance based learning in first order logic"
+        },
+        {
+            "paperId": "e75933b26d243005df0c31849fcb5797f1b4bda2",
+            "title": "A Supervised Self-Organizing Map for Structured Data"
+        },
+        {
+            "paperId": "ce0dc432fe08a02a5d8583aed73674ca845ac58c",
+            "title": "Multirelational distance based clustering"
+        },
+        {
+            "paperId": "8005c36bb502e2d264bbae1ed929eda0111a8daa",
+            "title": "A Graphical Representation of the State Spaces of Hierarchical Level-of-Detail Scene Descriptions"
+        },
+        {
+            "paperId": "ca91cd1e67cb558dd2b7d94d37c3dba208b7cd40",
+            "title": "Haykin, Simon. Neural networks: A comprehensive foundation, Prentice Hall, Inc. Segunda Edici\u00f3n, 1999"
+        },
+        {
+            "paperId": "5126188f4b8180a648b7fda958e354d923afda35",
+            "title": "Universal Approximation Using Feedforward Neural Networks: A Survey of Some Existing Methods, and Some New Results"
+        },
+        {
+            "paperId": "a6ebd4387d697cd6f6476474c8806461f0b71907",
+            "title": "Adaptive Processing of Sequences and Data Structures"
+        },
+        {
+            "paperId": "b28aa3e3b951931e07284cc605a40220f1f37d35",
+            "title": "Relating Chemical Structure to Activity: An Application of the Neural Folding Architecture"
+        },
+        {
+            "paperId": "06b5a8b704743711eeab68b51a58602db3acdced",
+            "title": "Adaptive processing of sequences and data structures : International Summer School on Neural Networks \"E.R. Caianiello\", Vietri sul Mare, Salerno, Italy, September 6-13, 1997, tutorial lectures"
+        },
+        {
+            "paperId": "76151976bd5e0de5e93e7a7f33d88a020d3c2552",
+            "title": "Mutagenesis: ILP experiments in a non-determinate biological domain"
+        },
+        {
+            "paperId": "045310b06e8a3983a363a118cc9dcc3f292970b4",
+            "title": "Neural Networks: A Comprehensive Foundation"
+        },
+        {
+            "paperId": "83b6755242f1cff6bacf270f65b4626d4d118f32",
+            "title": "Neural Networks for Pattern Recognition"
+        },
+        {
+            "paperId": "995a3b11cc8a4751d8e167abc4aa937abc934df0",
+            "title": "The Cascade-Correlation Learning Architecture"
+        },
+        {
+            "paperId": "60bf28bc5d451235829bd5dd3329df3c97bd7795",
+            "title": "Real and complex analysis, 3rd ed."
+        },
+        {
+            "paperId": "43a49dc7dccbebb06c0bee9f455dabd177df67f9",
+            "title": "Kronecker Products and Matrix Calculus: With Applications"
+        },
+        {
+            "paperId": "aefcabfce7023d770b3496d93a7e9b5e2a3f7a1a",
+            "title": "Markov Chains and Finite Stochastic Matrices"
+        },
+        {
+            "paperId": "0e9e7ad902fd8f516577ce56dd8d9cba78164eca",
+            "title": "Structural pattern recognition"
+        },
+        {
+            "paperId": "027e3321f34c9b2af721f9d102b9d9eb85147dcf",
+            "title": "An efficient method for finding the minimum of a function of several variables without calculating derivatives"
+        },
+        {
+            "paperId": "d50b8ab51231f7c7c0d33f9f55c499ac7b5e3b9b",
+            "title": "Graph Matching : Theoretical Foundations , Algorithms , and Applications"
+        },
+        {
+            "paperId": null,
+            "title": "The GNN Toolbox"
+        }
+    ]
+}

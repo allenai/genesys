@@ -1,0 +1,193 @@
+{
+    "paperId": "4f00db92bd7c1fd7b41d361c13797b9ff45a5b91",
+    "externalIds": {
+        "MAG": "2906987001",
+        "DBLP": "conf/iclr/WangXHTQZL19",
+        "CorpusId": 108303466
+    },
+    "title": "Multi-Agent Dual Learning",
+    "abstract": "Dual learning has attracted much attention in machine learning, computer vision and natural language processing communities. The core idea of dual learning is to leverage the duality between the primal task (mapping from domain X to domain Y) and dual task (mapping from domain Y to X ) to boost the performances of both tasks. Existing dual learning framework forms a system with two agents (one primal model and one dual model) to utilize such duality. In this paper, we extend this framework by introducing multiple primal and dual models, and propose the multi-agent dual learning framework. Experiments on neural machine translation and image translation tasks demonstrate the effectiveness of the new framework. In particular, we set a new record on IWSLT 2014 German-to-English translation with a 35.44 BLEU score, achieve a 31.03 BLEU score on WMT 2014 English-toGerman translation with over 2.6 BLEU improvement over the strong Transformer baseline, and set a new record of 49.61 BLEU score on the recent WMT 2018 English-to-German translation.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2019,
+    "referenceCount": 35,
+    "citationCount": 58,
+    "influentialCitationCount": 4,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper introduces multiple primal and dual models, and proposes the multi-agent dual learning framework, which sets a new record on IWSLT 2014 German-to-English translation and demonstrates the effectiveness of the new framework on neural machine translation and image translation."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "7707551",
+            "name": "Yiren Wang"
+        },
+        {
+            "authorId": "2794096",
+            "name": "Yingce Xia"
+        },
+        {
+            "authorId": "47237216",
+            "name": "Tianyu He"
+        },
+        {
+            "authorId": "143853336",
+            "name": "Fei Tian"
+        },
+        {
+            "authorId": "2066169687",
+            "name": "Tao Qin"
+        },
+        {
+            "authorId": "143869012",
+            "name": "Chengxiang Zhai"
+        },
+        {
+            "authorId": "2110264337",
+            "name": "Tie-Yan Liu"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "9bbeee98a1dfacbbe44b0fffb4ba717e0af536b3",
+            "title": "Joint Learning of Question Answering and Question Generation"
+        },
+        {
+            "paperId": "648429b5dec8c8ebb87ad05d5be0b8bb0fb089ef",
+            "title": "Ensemble Methods"
+        },
+        {
+            "paperId": "665480b3d3a0b91b361d1742f2c54407b49f1e4e",
+            "title": "Non-Autoregressive Machine Translation with Auxiliary Regularization"
+        },
+        {
+            "paperId": "9d9c4a3b27dab2293ed915ad69662ea09901ccab",
+            "title": "Non-Autoregressive Neural Machine Translation with Enhanced Decoder Input"
+        },
+        {
+            "paperId": "59a166b16b11e6045eea55a81f7f7679f1d96115",
+            "title": "Microsoft\u2019s Submission to the WMT2018 News Translation Task: How I Learned to Stop Worrying and Love the Data"
+        },
+        {
+            "paperId": "051ab78d38cde2d409cfa093bfdb78341e053526",
+            "title": "Model-Level Dual Learning"
+        },
+        {
+            "paperId": "a484b7eda0e5389ae62ab1549f27594050a60f71",
+            "title": "Turbo Learning for Captionbot and Drawingbot"
+        },
+        {
+            "paperId": "48925fef94500cf19ee220ed74217816f1ab5e60",
+            "title": "Phrase-Based & Neural Unsupervised Machine Translation"
+        },
+        {
+            "paperId": "fc1d981dd051063ae586a56b05390fe3ea82f040",
+            "title": "Achieving Human Parity on Automatic Chinese to English News Translation"
+        },
+        {
+            "paperId": "062be14f127e590a8476fdb535337d4d7e1caad9",
+            "title": "Dual Transfer Learning for Neural Machine Translation with Marginal Distribution Regularization"
+        },
+        {
+            "paperId": "c88e8d85fd5160b0793598bda037f977366acf7a",
+            "title": "Are GANs Created Equal? A Large-Scale Study"
+        },
+        {
+            "paperId": "3fc5ed18c2294596af072df929c8ee12c71f96a2",
+            "title": "Classical Structured Prediction Losses for Sequence to Sequence Learning"
+        },
+        {
+            "paperId": "15e81c8d1c21f9e928c72721ac46d458f3341454",
+            "title": "Non-Autoregressive Neural Machine Translation"
+        },
+        {
+            "paperId": "baf9657d66845e47413510e8ab53fdb73ebba27f",
+            "title": "Deep Dual Learning for Semantic Image Segmentation"
+        },
+        {
+            "paperId": "eac21b22b2bba3a2311820c3f98702fa1d380ad5",
+            "title": "Question Generation for Question Answering"
+        },
+        {
+            "paperId": "426b8a0e4314a7d7db210177b625cf4052283cf0",
+            "title": "Dual Inference for Machine Learning"
+        },
+        {
+            "paperId": "52b15103417a47ad20465bccf86e6302391fe9ce",
+            "title": "Dual Supervised Learning"
+        },
+        {
+            "paperId": "231af7dc01a166cac3b5b01ca05778238f796e41",
+            "title": "GANs Trained by a Two Time-Scale Update Rule Converge to a Local Nash Equilibrium"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "43428880d75b3a14257c3ee9bda054e61eb869c0",
+            "title": "Convolutional Sequence to Sequence Learning"
+        },
+        {
+            "paperId": "ef3c1f6c177e37f1d0d2a61702b60c766971700b",
+            "title": "DualGAN: Unsupervised Dual Learning for Image-to-Image Translation"
+        },
+        {
+            "paperId": "8acbe90d5b852dadea7810345451a99608ee54c7",
+            "title": "Image-to-Image Translation with Conditional Adversarial Networks"
+        },
+        {
+            "paperId": "a486e2839291111bb44fa1f07731ada123539f75",
+            "title": "Google\u2019s Multilingual Neural Machine Translation System: Enabling Zero-Shot Translation"
+        },
+        {
+            "paperId": "23b559b5ab27f2fca6f56c0a7b6478bcf69db509",
+            "title": "Dual Learning for Machine Translation"
+        },
+        {
+            "paperId": "e2dba792360873aef125572812f3673b1a85d850",
+            "title": "Enriching Word Vectors with Subword Information"
+        },
+        {
+            "paperId": "57a10537978600fd33dcdd48922c791609a4851a",
+            "title": "Sequence-Level Knowledge Distillation"
+        },
+        {
+            "paperId": "c8c494ee5488fe20e0aa01bddf3fc4632086d654",
+            "title": "The Cityscapes Dataset for Semantic Urban Scene Understanding"
+        },
+        {
+            "paperId": "f3b96ef2dc1fc5e14982f1b963db8db6a54183bb",
+            "title": "Improving Neural Machine Translation Models with Monolingual Data"
+        },
+        {
+            "paperId": "0c908739fbff75f03469d13d4a1a07de3414ee19",
+            "title": "Distilling the Knowledge in a Neural Network"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "6fc6803df5f9ae505cae5b2f178ade4062c768d0",
+            "title": "Fully convolutional networks for semantic segmentation"
+        },
+        {
+            "paperId": "13bc4e683075bdd6a3f0155241c276a772d4aa06",
+            "title": "Generative adversarial networks"
+        },
+        {
+            "paperId": "398c296d0cc7f9d180f84969f8937e6d3a413796",
+            "title": "Multi-column deep neural networks for image classification"
+        },
+        {
+            "paperId": "d7da009f457917aa381619facfa5ffae9329a6e9",
+            "title": "Bleu: a Method for Automatic Evaluation of Machine Translation"
+        },
+        {
+            "paperId": null,
+            "title": "Understanding back-translation at scale"
+        }
+    ]
+}

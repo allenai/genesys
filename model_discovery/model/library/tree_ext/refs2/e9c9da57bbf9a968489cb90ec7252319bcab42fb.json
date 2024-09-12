@@ -1,0 +1,126 @@
+{
+    "paperId": "e9c9da57bbf9a968489cb90ec7252319bcab42fb",
+    "externalIds": {
+        "MAG": "2949392504",
+        "DBLP": "journals/corr/GrossRS17",
+        "ArXiv": "1704.06363",
+        "DOI": "10.1109/CVPR.2017.540",
+        "CorpusId": 6869636
+    },
+    "title": "Hard Mixtures of Experts for Large Scale Weakly Supervised Vision",
+    "abstract": "Training convolutional networks (CNNs) that fit on a single GPU with minibatch stochastic gradient descent has become effective in practice. However, there is still no effective method for training large networks that do not fit in the memory of a few GPU cards, or for parallelizing CNN training. In this work we show that a simple hard mixture of experts model can be efficiently trained to good effect on large scale hashtag (multilabel) prediction tasks. Mixture of experts models are not new [7, 3], but in the past, researchers have had to devise sophisticated methods to deal with data fragmentation. We show empirically that modern weakly supervised data sets are large enough to support naive partitioning schemes where each data point is assigned to a single expert. Because the experts are independent, training them in parallel is easy, and evaluation is cheap for the size of the model. Furthermore, we show that we can use a single decoding layer for all the experts, allowing a unified feature embedding space. We demonstrate that it is feasible (and in fact relatively painless) to train far larger models than could be practically trained with standard CNN architectures, and that the extra capacity can be well used on current datasets.",
+    "venue": "Computer Vision and Pattern Recognition",
+    "year": 2017,
+    "referenceCount": 21,
+    "citationCount": 89,
+    "influentialCitationCount": 6,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1704.06363",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work shows that a simple hard mixture of experts model can be efficiently trained to good effect on large scale hashtag (multilabel) prediction tasks, and demonstrates that it is feasible (and in fact relatively painless) to train far larger models than could be practically trained with standard CNN architectures, and that the extra capacity can be well used on current datasets."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "39793298",
+            "name": "Sam Gross"
+        },
+        {
+            "authorId": "1706809",
+            "name": "Marc'Aurelio Ranzato"
+        },
+        {
+            "authorId": "3149531",
+            "name": "Arthur Szlam"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "510e26733aaff585d65701b9f1be7ca9d5afc586",
+            "title": "Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer"
+        },
+        {
+            "paperId": "9559668dc4a593ee9ed5f241dae1fbd70a3c91bf",
+            "title": "Network of Experts for Large-Scale Image Categorization"
+        },
+        {
+            "paperId": "77f0a39b8e02686fd85b01971f8feb7f60971f80",
+            "title": "Identity Mappings in Deep Residual Networks"
+        },
+        {
+            "paperId": "8c30968d96e0c601adaa74db8907fa6ad73bae31",
+            "title": "Learning Visual Features from Large Weakly Supervised Data"
+        },
+        {
+            "paperId": "4645661d49e3b4b767b104336fa966bff1335705",
+            "title": "Webly Supervised Learning of Convolutional Networks"
+        },
+        {
+            "paperId": "0c908739fbff75f03469d13d4a1a07de3414ee19",
+            "title": "Distilling the Knowledge in a Neural Network"
+        },
+        {
+            "paperId": "354c029c88be2bbc27dfd2e2e729c0ae622511e6",
+            "title": "YFCC100M"
+        },
+        {
+            "paperId": "94354f96272f803ea6df591078be58c07ef90727",
+            "title": "Self-informed neural network structure learning"
+        },
+        {
+            "paperId": "ccd8a298081f9813592e42ea2d84ea798ef0dbbb",
+            "title": "HD-CNN: Hierarchical Deep Convolutional Neural Networks for Large Scale Visual Recognition"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "c9a6c7bfe831f2b154deac4409c35633c63ef326",
+            "title": "SUN Database: Exploring a Large Collection of Scene Categories"
+        },
+        {
+            "paperId": "b0ab8aa7a5b684532b4ff30f8d34b35a99759a46",
+            "title": "Learning Everything about Anything: Webly-Supervised Visual Concept Learning"
+        },
+        {
+            "paperId": "6270baedeba28001cd1b563a199335720d6e0fe0",
+            "title": "CNN Features Off-the-Shelf: An Astounding Baseline for Recognition"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "8e15dc51de6da2bc5cabbb733cf2adf5a2c1f72c",
+            "title": "Human action recognition by learning bases of action attributes and parts"
+        },
+        {
+            "paperId": "a48a56b0727d09f599676524fe190308d9e88bf1",
+            "title": "Caltech-UCSD Birds 200"
+        },
+        {
+            "paperId": "c82d90336ba365c7914fe4bd6c292a8c6916a801",
+            "title": "Recognizing indoor scenes"
+        },
+        {
+            "paperId": "e9dd235240904627b12782653b66318712780703",
+            "title": "A Visual Vocabulary for Flower Classification"
+        },
+        {
+            "paperId": "7bb0f5f20883db8c69b53ba4e52eded325b25f43",
+            "title": "Scaling Large Learning Problems with Hard Parallel Mixtures"
+        },
+        {
+            "paperId": "c8d90974c3f3b40fa05e322df2905fc16204aa56",
+            "title": "Adaptive Mixtures of Local Experts"
+        },
+        {
+            "paperId": "3d2218b17e7898a222e5fc2079a3f1531990708f",
+            "title": "I and J"
+        }
+    ]
+}

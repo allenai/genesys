@@ -1,0 +1,162 @@
+{
+    "paperId": "3bbf2ee642ed311e500017def1f54df453a935c1",
+    "externalIds": {
+        "MAG": "2950991101",
+        "ArXiv": "1604.06045",
+        "DBLP": "journals/corr/Weston16",
+        "CorpusId": 2017135
+    },
+    "title": "Dialog-based Language Learning",
+    "abstract": "A long-term goal of machine learning research is to build an intelligent dialog agent. Most research in natural language understanding has focused on learning from fixed training sets of labeled data, with supervision either at the word level (tagging, parsing tasks) or sentence level (question answering, machine translation). This kind of supervision is not realistic of how humans learn, where language is both learned by, and used for, communication. In this work, we study dialog-based language learning, where supervision is given naturally and implicitly in the response of the dialog partner during the conversation. We study this setup in two domains: the bAbI dataset of (Weston et al., 2015) and large-scale question answering from (Dodge et al., 2015). We evaluate a set of baseline learning strategies on these tasks, and show that a novel model incorporating predictive lookahead is a promising approach for learning from a teacher's response. In particular, a surprising result is that it can learn to answer questions correctly without any reward-based supervision at all.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2016,
+    "referenceCount": 33,
+    "citationCount": 106,
+    "influentialCitationCount": 5,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work studies dialog-based language learning, where supervision is given naturally and implicitly in the response of the dialog partner during the conversation, and shows that a novel model incorporating predictive lookahead is a promising approach for learning from a teacher's response."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145183709",
+            "name": "J. Weston"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "3457ddb9b9f614aad52052d680f9b11c08b3a4cf",
+            "title": "A Roadmap Towards Machine Intelligence"
+        },
+        {
+            "paperId": "b90e5b8cb0357a412770a8f3aa820ee292686d5e",
+            "title": "MazeBase: A Sandbox for Learning from Games"
+        },
+        {
+            "paperId": "be3a65ef15f79ebb8296e6a0e8d1a9cb5c0f3638",
+            "title": "Evaluating Prerequisite Qualities for Learning End-to-End Dialog Systems"
+        },
+        {
+            "paperId": "b7aee9dfb027d6061c6a653684c0fa9a9bba750d",
+            "title": "Sequence Level Training with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "35b91b365ceb016fb3e022577cec96fb9b445dc5",
+            "title": "The Goldilocks Principle: Reading Children's Books with Explicit Memory Representations"
+        },
+        {
+            "paperId": "df931ac9d80844394b356b0d05a77a40f291f7b2",
+            "title": "Reward Shaping with Recurrent Neural Networks for Speeding up On-Line Policy Learning in Spoken Dialogue Systems"
+        },
+        {
+            "paperId": "e4257bc131c36504a04382290cbc27ca8bb27813",
+            "title": "Action-Conditional Video Prediction using Deep Networks in Atari Games"
+        },
+        {
+            "paperId": "e89d656a39fc3b08af47ebb9a583e182a596dabe",
+            "title": "DeepMPC: Learning Deep Latent Features for Model Predictive Control"
+        },
+        {
+            "paperId": "2470fcf0f89082de874ac9133ccb3a8667dd89a8",
+            "title": "Incentivizing Exploration In Reinforcement Learning With Deep Predictive Models"
+        },
+        {
+            "paperId": "d00e7779c39dc7b06d7d43cf6de6d734c8edc4b8",
+            "title": "Language Understanding for Text-based Games using Deep Reinforcement Learning"
+        },
+        {
+            "paperId": "5247a6e3a60ff0381355e66bfc313bf27512ae0c",
+            "title": "A Neural Network Approach to Context-Sensitive Generation of Conversational Responses"
+        },
+        {
+            "paperId": "6e565308c8081e807709cb4a917443b737e6cdb4",
+            "title": "Large-scale Simple Question Answering with Memory Networks"
+        },
+        {
+            "paperId": "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e",
+            "title": "End-To-End Memory Networks"
+        },
+        {
+            "paperId": "abb33d75dc297993fcc3fb75e0f4498f413eb4f6",
+            "title": "Towards AI-Complete Question Answering: A Set of Prerequisite Toy Tasks"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "71ae756c75ac89e2d731c9c79649562b5768ff39",
+            "title": "Memory Networks"
+        },
+        {
+            "paperId": "37b0d1436f4ae77dc5c69db0c7d5f42fee9f0fae",
+            "title": "Hierarchical Control Using Networks Trained with Higher-Level Forward Models"
+        },
+        {
+            "paperId": "1cb4efcf22589fcb4e0c880d8e589acd1cd1ffda",
+            "title": "Predicting Tasks in Goal-Oriented Spoken Dialog Systems using Semantic Knowledge Bases"
+        },
+        {
+            "paperId": "db4efefd5e84ba56b92cc1be6b345eda3bfa7c79",
+            "title": "Reinforcement Learning for Adaptive Dialogue Systems - A Data-driven Methodology for Dialogue Management and Natural Language Generation"
+        },
+        {
+            "paperId": "e103706139b301eb34ae122248c03e9fd0ca4d4e",
+            "title": "Interactional Feedback and the Impact of Attitude and Motivation on Noticing L2 Form"
+        },
+        {
+            "paperId": "92fb5e045bb23f13c11d8bb277925013b24b5930",
+            "title": "Driving Semantic Parsing from the World\u2019s Response"
+        },
+        {
+            "paperId": "bc6dff14a130c57a91d5a21339c23471faf1d46f",
+            "title": "Et al"
+        },
+        {
+            "paperId": "dd2d5ddc0399e0b87c339ebea4042ef2ad6f0317",
+            "title": "Guiding a Reinforcement Learner with Natural Language Advice: Initial Results in RoboCup Soccer"
+        },
+        {
+            "paperId": "c856ecabe5d61e936bf02fe9e9ca116822d78b7a",
+            "title": "Early language acquisition: cracking the speech code"
+        },
+        {
+            "paperId": "c02ffa7b9f05eb6e3eaf492915ddd0b938790e4c",
+            "title": "The Conscientious Consumer: Reconsidering the role of assessment feedback in student learning"
+        },
+        {
+            "paperId": "57f0fa77405ec4cdb352f8a28e5c592c574744cc",
+            "title": "Instructive feedback: Review of parameters and effects"
+        },
+        {
+            "paperId": "14c532418723f576d5d3eeb593f5ac62c9ea501f",
+            "title": "Negative evidence in language acquisition"
+        },
+        {
+            "paperId": "3aa372484e7480eefa061277cd53d49172738915",
+            "title": "Learning Knowledge Graphs for Question Answering through Conversational Dialog"
+        },
+        {
+            "paperId": "4c915c1eecb217c123a36dc6d3ce52d12c742614",
+            "title": "Simple Statistical Gradient-Following Algorithms for Connectionist Reinforcement Learning"
+        },
+        {
+            "paperId": "dafb111b23786058bd8943a6f1a5b4afc68cb3b3",
+            "title": "Learning to Generate Artificial Fovea Trajectories for Target Detection"
+        },
+        {
+            "paperId": "4be32787b8932eed75303c3643e1c8c4a8c31fd8",
+            "title": "Learning through feedback"
+        },
+        {
+            "paperId": "e3d8e925ec4f938620a8d76bb50a1b2fc95e7f5e",
+            "title": "DOI: 10.1017/S000000000000000 Printed in the United Kingdom A Survey of Statistical User Simulation Techniques for Reinforcement-Learning of Dialogue Management Strategies"
+        },
+        {
+            "paperId": "2aba84801935041774c1e2b749e0331efa322ed8",
+            "title": "Proceedings of the Twenty-Second International Joint Conference on Artificial Intelligence Learning from Natural Instructions"
+        }
+    ]
+}

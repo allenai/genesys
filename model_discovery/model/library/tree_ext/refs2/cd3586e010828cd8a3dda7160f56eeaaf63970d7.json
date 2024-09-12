@@ -1,0 +1,247 @@
+{
+    "paperId": "cd3586e010828cd8a3dda7160f56eeaaf63970d7",
+    "externalIds": {
+        "ArXiv": "1303.4207",
+        "DBLP": "journals/jmlr/WangZ13",
+        "MAG": "2949650663",
+        "DOI": "10.5555/2567709.2567748",
+        "CorpusId": 6204627
+    },
+    "title": "Improving CUR matrix decomposition and the Nystr\u00f6m approximation via adaptive sampling",
+    "abstract": "The CUR matrix decomposition and the Nystrom approximation are two important low-rank matrix approximation techniques. The Nystrom method approximates a symmetric positive semidefinite matrix in terms of a small number of its columns, while CUR approximates an arbitrary data matrix by a small number of its columns and rows. Thus, CUR decomposition can be regarded as an extension of the Nystrom approximation. \n \nIn this paper we establish a more general error bound for the adaptive column/row sampling algorithm, based on which we propose more accurate CUR and Nystrom algorithms with expected relative-error bounds. The proposed CUR and Nystrom algorithms also have low time complexity and can avoid maintaining the whole data matrix in RAM. In addition, we give theoretical analysis for the lower error bounds of the standard Nystrom method and the ensemble Nystrom method. The main theoretical results established in this paper are novel, and our analysis makes no special assumption on the data matrices.",
+    "venue": "Journal of machine learning research",
+    "year": 2013,
+    "referenceCount": 53,
+    "citationCount": 197,
+    "influentialCitationCount": 17,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A more general error bound is established for the adaptive column/row sampling algorithm, based on which more accurate CUR and Nystrom algorithms with expected relative-error bounds are proposed."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145940973",
+            "name": "Shusen Wang"
+        },
+        {
+            "authorId": "47294286",
+            "name": "Zhihua Zhang"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "50353738eb935a0546aeb2e81882e2f334e32ab8",
+            "title": "Sampling Methods for the Nystr\u00f6m Method"
+        },
+        {
+            "paperId": "049feb51a90330591d9f755c3ff98465f37d42eb",
+            "title": "Improved Bounds for the Nystr\u00f6m Method With Application to Kernel Classification"
+        },
+        {
+            "paperId": "7391d93df90db5cff54d8cf419d6096f06d2cae1",
+            "title": "The spectral norm error of the naive Nystrom extension"
+        },
+        {
+            "paperId": "aef0161883cfd49bbe26826cf2e40f8195ce59cf",
+            "title": "Fast approximation of matrix coherence and statistical leverage"
+        },
+        {
+            "paperId": "ac82b7cc52fcea43de0470971560b02ecff33bbc",
+            "title": "Active learning using on-line algorithms"
+        },
+        {
+            "paperId": "5e307a51a6c520797027c84789c7eace612e51fd",
+            "title": "Divide-and-Conquer Matrix Factorization"
+        },
+        {
+            "paperId": "7e0887e4578d043f4b45114cf7718bf6271d9117",
+            "title": "Optimal column-based low-rank matrix reconstruction"
+        },
+        {
+            "paperId": "22979772d0cf1caac9a65975ddd7d170bfae5d56",
+            "title": "Near Optimal Column-Based Matrix Reconstruction"
+        },
+        {
+            "paperId": "f636f268a0e109f12137cb79bbd167b27bfe2efc",
+            "title": "CUR from a Sparse Optimization Viewpoint"
+        },
+        {
+            "paperId": "5e86db3683931837a68e9843686be16b42510ea1",
+            "title": "Clustered Nystr\u00f6m Method for Large Scale Manifold Learning and Dimension Reduction"
+        },
+        {
+            "paperId": "a67530a9e9e96720278ae1278baa53f48b944bd6",
+            "title": "Making Large-Scale Nystr\u00f6m Approximation Possible"
+        },
+        {
+            "paperId": "2fb52821286cfc05eb82ebed4b09bc9ec91dd5a5",
+            "title": "Efficient Volume Sampling for Row/Column Subset Selection"
+        },
+        {
+            "paperId": "33ff17cf904ae10c5b845eb553995f7b7f5a453f",
+            "title": "Matrix Coherence and the Nystrom Method"
+        },
+        {
+            "paperId": "780165c9c7ebfed946bf47ad8afe471e8680fb25",
+            "title": "Ensemble Nystrom Method"
+        },
+        {
+            "paperId": "bf15a0ccc14ac1deb5cea570c870389c16be019c",
+            "title": "Modeling wine preferences by data mining from physicochemical properties"
+        },
+        {
+            "paperId": "df7e1cfa5999c3746a3bbc9817d924677ac8b8f0",
+            "title": "Finding Structure with Randomness: Probabilistic Algorithms for Constructing Approximate Matrix Decompositions"
+        },
+        {
+            "paperId": "fad1bd501aa769f7701c1016f8a4d1473ca77601",
+            "title": "Machine Learning, Neural and Statistical Classification"
+        },
+        {
+            "paperId": "75bc44168b0f32f8a2df7398745908383124b8b3",
+            "title": "CUR matrix decompositions for improved data analysis"
+        },
+        {
+            "paperId": "8957ede0022ee678f7b4b65e8b16e9f517b31bb8",
+            "title": "Spectral methods in machine learning and new strategies for very large datasets"
+        },
+        {
+            "paperId": "ed2f7914bf51168842f33618d50f1e5f21622548",
+            "title": "Improved Nystr\u00f6m low-rank approximation and error analysis"
+        },
+        {
+            "paperId": "68d54eca0cbd3a6bc45227bcec0efa5dbb9b1cc1",
+            "title": "Large-scale manifold learning"
+        },
+        {
+            "paperId": "7ab959ec1915f63bb91dd706f6b177cef0abde84",
+            "title": "Relative-Error CUR Matrix Decompositions"
+        },
+        {
+            "paperId": "b0c74ddf2f90d929d11ac2d4c51953185db195d7",
+            "title": "Tensor-CUR decompositions for tensor-based data"
+        },
+        {
+            "paperId": "0df92684396540f140094ec304871164dc385c9d",
+            "title": "Matrix approximation and projective clustering via volume sampling"
+        },
+        {
+            "paperId": "11e6b5a30a921e6028662105148fac41a76f0500",
+            "title": "On the Nystr\u00f6m Method for Approximating a Gram Matrix for Improved Kernel-Based Learning"
+        },
+        {
+            "paperId": "5baccc0d10ee60206dba7c4ccb6dfa03be0965ff",
+            "title": "Algorithm 844: Computing sparse reduced-rank approximations to sparse matrices"
+        },
+        {
+            "paperId": "e1bfd52ce6e38e3e542df2b977ee2c1481f8782a",
+            "title": "Result Analysis of the NIPS 2003 Feature Selection Challenge"
+        },
+        {
+            "paperId": "d3f27fcb3cae41f2d4cc990674908b3201c14d4b",
+            "title": "Pass efficient algorithms for approximating large matrices"
+        },
+        {
+            "paperId": "f7bf09287d31175afa91162b10096044fef05a71",
+            "title": "Vector algebra in the analysis of genome-wide expression data"
+        },
+        {
+            "paperId": "c6df01b05cbdeeaba4f9dbbcfa2793a905ab5ed1",
+            "title": "Incomplete Cross Approximation in the Mosaic-Skeleton Method"
+        },
+        {
+            "paperId": "27ff6ac7291cddd3e03ae04c596203d2ae928ca8",
+            "title": "Four algorithms for the the efficient computation of truncated pivoted QR approximations to a sparse matrix"
+        },
+        {
+            "paperId": "bbc531f6ca5e83c6fa507bdf6399ecf76ef2e614",
+            "title": "Fast Monte-Carlo algorithms for finding low-rank approximations"
+        },
+        {
+            "paperId": "ec9d9acd9556c7b274ce0752330586661784bb36",
+            "title": "A Theory of Pseudoskeleton Approximations"
+        },
+        {
+            "paperId": "0c5f7dd4ccaf7df883a99752c0d6d49bb369f320",
+            "title": "Efficient Algorithms for Computing a Strong Rank-Revealing QR Factorization"
+        },
+        {
+            "paperId": "186032fe99518c6fd8d24b97052a65788f711c31",
+            "title": "On Rank-Revealing Factorisations"
+        },
+        {
+            "paperId": "38a55b7d22b8c5ff3164c5cde8438b3c0a51264c",
+            "title": "Structure-Preserving and Rank-Revealing QR-Factorizations"
+        },
+        {
+            "paperId": "164125a65d42a791d2c1e108559344caef96d08b",
+            "title": "Indexing by Latent Semantic Analysis"
+        },
+        {
+            "paperId": "2a62d0cca2fabf1d6f6ee15e4c14cef415b657d1",
+            "title": "Low-dimensional procedure for the characterization of human faces."
+        },
+        {
+            "paperId": "38efb9690a18bb058db7e45bda33e7db84086844",
+            "title": "Rank and null space calculations using matrix decomposition without column interchanges"
+        },
+        {
+            "paperId": "5ea0a751daa6fe3a5242600e8c31ffbb3539653e",
+            "title": "Generalized Inverses (Theory And Applications) (Adi Ben-Israel and Thomas N. E. Greville)"
+        },
+        {
+            "paperId": "7dcd5149168b30dd0c16959e804fe4c6cf04788e",
+            "title": "Rank revealing QR factorizations"
+        },
+        {
+            "paperId": "b05142d3acc1c780d4a890f5fddf1f95c4e5fae1",
+            "title": "Improved Bound for the Nystrom's Method and its Application to Kernel Classification"
+        },
+        {
+            "paperId": null,
+            "title": "UCI machine learning repository"
+        },
+        {
+            "paperId": "a9ec30ec1543df4c111cb069b733c330ae53cf8e",
+            "title": "Generalized Inverses (Theory and Applications. Second edition) by A. Ben-Israel and T.N.E. Neville (deceased)"
+        },
+        {
+            "paperId": "857e0bdfc1f1115e56a736819ae7bd6a0bb5b1f0",
+            "title": "FAST MONTE CARLO ALGORITHMS FOR MATRICES III: COMPUTING A COMPRESSED APPROXIMATE MATRIX DECOMPOSITION\u2217"
+        },
+        {
+            "paperId": "13c82489c1568b67265d17a15720001a5737171e",
+            "title": "Spectral grouping using the Nystrom method"
+        },
+        {
+            "paperId": "b6fff8b8ea77f157913986e7af53951d9fc1128e",
+            "title": "Using the Nystr\u00f6m Method to Speed Up Kernel Machines"
+        },
+        {
+            "paperId": "4879a2ff601bd4c1544cd877fd90583cbe2a348a",
+            "title": "Rank-Revealing QR Factorizations and the Singular Value Decomposition"
+        },
+        {
+            "paperId": "a6f1dfcc44277d4cfd8507284d994c9283dc3a2f",
+            "title": "Eigenfaces for Recognition"
+        },
+        {
+            "paperId": "3478ff51521bbcc27b2fc04ea75aa27c611f6df4",
+            "title": "Generalized inverses: theory and applications"
+        },
+        {
+            "paperId": "a26eb90a8766449b942547b02b4f82ecfab0875c",
+            "title": "Stat260/cs294: Randomized Algorithms for Matrices and Data"
+        },
+        {
+            "paperId": "842ddf0c7d5e4dc9768b8778488d35db14b542f7",
+            "title": "Pseudo-Skeleton Approximations by Matrices of Maximal Volume"
+        },
+        {
+            "paperId": null,
+            "title": "Proof The theorem follows directly from Theorem 24 and Lemma 19 by setting \u03b1 \u2192 1"
+        }
+    ]
+}

@@ -1,0 +1,290 @@
+{
+    "paperId": "f8e9b050c93af6dea582563f61b6460b590bc3af",
+    "externalIds": {
+        "MAG": "2102182691",
+        "DBLP": "journals/pieee/FrigoJ05",
+        "DOI": "10.1109/JPROC.2004.840301",
+        "CorpusId": 6644892
+    },
+    "title": "The Design and Implementation of FFTW3",
+    "abstract": "FFTW is an implementation of the discrete Fourier transform (DFT) that adapts to the hardware in order to maximize performance. This paper shows that such an approach can yield an implementation that is competitive with hand-optimized libraries, and describes the software structure that makes our current FFTW3 version flexible and adaptive. We further discuss a new algorithm for real-data DFTs of prime size, a new way of implementing DFTs by means of machine-specific single-instruction, multiple-data (SIMD) instructions, and how a special-purpose compiler can derive optimized implementations of the discrete cosine and sine transforms automatically from a DFT algorithm.",
+    "venue": "Proceedings of the IEEE",
+    "year": 2005,
+    "referenceCount": 64,
+    "citationCount": 4897,
+    "influentialCitationCount": 413,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that such an approach can yield an implementation of the discrete Fourier transform that is competitive with hand-optimized libraries, and the software structure that makes the current FFTW3 version flexible and adaptive is described."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "48230516",
+            "name": "Matteo Frigo"
+        },
+        {
+            "authorId": "2097716",
+            "name": "Steven G. Johnson"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "0221bee380311d75ffcc11fd66be7d5cf632f636",
+            "title": "SPIRAL: Code Generation for DSP Transforms"
+        },
+        {
+            "paperId": "9a5a5e6ec436029dfe501c30b968cc94b54e8a87",
+            "title": "Efficient Utilization of SIMD Extensions"
+        },
+        {
+            "paperId": "63c15149986f30ead7bc7c05881216adc23c4844",
+            "title": "Spiral: A Generator for Platform-Adapted Libraries of Signal Processing Alogorithms"
+        },
+        {
+            "paperId": "04aeb6c8ffdf32b33f7952dc83428d9fa2e9e865",
+            "title": "Learning to Construct Fast Signal Processing Implementations"
+        },
+        {
+            "paperId": "0a57cd63d079d4c46b2cfa9d9525afccce8e14f6",
+            "title": "A Blocking Algorithm for FFT on Cache-Based Processors"
+        },
+        {
+            "paperId": "640bbae6c4d28f7a40fc844e4c4bf0049f79a74b",
+            "title": "SPL: a language and compiler for DSP algorithms"
+        },
+        {
+            "paperId": "9325cb2800cc453ece8366be4238acf0013e06ea",
+            "title": "Architecture independent short vector FFTs"
+        },
+        {
+            "paperId": "e40fed3076ff9393f417d14bb261855c68db3d31",
+            "title": "A Comprehensive DFT API for Scientific Computing"
+        },
+        {
+            "paperId": "db97fa48a1f06c50f7531f5732d4291b73b26a6d",
+            "title": "An efficient design for one-dimensional discrete Hartley transform using parallel additions"
+        },
+        {
+            "paperId": "5361977785b1df6d8d0dddc70797db6b4132b64b",
+            "title": "Code Generators for Automatic Tuning of Numerical Kernels: Experiences with FFTW"
+        },
+        {
+            "paperId": "050443c7cbe8cad3f6542908f38f8be05691de97",
+            "title": "Cache-oblivious algorithms"
+        },
+        {
+            "paperId": "214a0d9c93720aa8c3d10710bca8308e3f2618f5",
+            "title": "Automatically Tuned Linear Algebra Software"
+        },
+        {
+            "paperId": "eeb2eb44102bf289db4a22635261d82ffa7dc7db",
+            "title": "FFTW: an adaptive software architecture for the FFT"
+        },
+        {
+            "paperId": "91dbc267fa1814990b295ac53412a2f8051e61c0",
+            "title": "Improving data cache performance by pre-executing instructions under a cache miss"
+        },
+        {
+            "paperId": "9939893e66a57e89271c5bcd2d64b2a961cf4425",
+            "title": "Accuracy of the Discrete Fourier Transform and the Fast Fourier Transform"
+        },
+        {
+            "paperId": "f2c1830eedc095b92a78dc3afa39a36343ed81ad",
+            "title": "Introduction to algorithms"
+        },
+        {
+            "paperId": "c29f4ea23c7af4a2d6628761a9fd2444b339681d",
+            "title": "Bit Reversal on Uniprocessors"
+        },
+        {
+            "paperId": "30b3994df04b1a9af47f4de7d1c6525e1e9cb1cc",
+            "title": "Transposing a Matrix on a Vector Computer"
+        },
+        {
+            "paperId": "6695755831fde8d9b37e33ed11f3f2291b904286",
+            "title": "Self-sorting in-place FFT algorithm with minimum working space"
+        },
+        {
+            "paperId": "4f2b124f6479d413b1cfc077702eb354fe50d055",
+            "title": "A self-sorting in-place fast Fourier\ntransform algorithm suitable for vector and parallel\nprocessing\n"
+        },
+        {
+            "paperId": "8d878b21ac506e9d995ecbdaf7a496aca332fa4c",
+            "title": "Decimation-in-time-frequency FFT algorithm"
+        },
+        {
+            "paperId": "c0ae841f6aa11e8d32446fd9e3e18804b7667f1a",
+            "title": "Symmetric convolution and the discrete sine and cosine transforms"
+        },
+        {
+            "paperId": "f03dffc42adc12891c93d3d4b98363a3e190f154",
+            "title": "Fast algorithms for computing the discrete cosine transform"
+        },
+        {
+            "paperId": "344c4bf928226fe609ad89c504a9e05ae14c785b",
+            "title": "Self-Sorting In-Place Fast Fourier Transforms"
+        },
+        {
+            "paperId": "dbdf9036fa3e747e686c55a5b196f43bf508972c",
+            "title": "Direct methods for computing discrete sinusoidal transforms"
+        },
+        {
+            "paperId": "29774eec7448f2a869a88376197297b4e8c9215f",
+            "title": "Discrete Cosine Transform: Algorithms, Advantages, Applications"
+        },
+        {
+            "paperId": "e9ce5ad132f753624a017dc036f45eff45839265",
+            "title": "The MD4 Message-Digest Algorithm"
+        },
+        {
+            "paperId": "a14eced30f66e3794770084d38925fabcfcd49d9",
+            "title": "Fast Fourier transforms: a tutorial review and a state of the art"
+        },
+        {
+            "paperId": "8e980fbf251ecb28ba85eb092fc66ce284bb63be",
+            "title": "Numerical Recipes in C: The Art of Scientific Computing"
+        },
+        {
+            "paperId": "30e4c372514c568955826abd84676c9392dd7e71",
+            "title": "FFTs in external or hierarchical memory"
+        },
+        {
+            "paperId": "a187371a23e7390c044fa669e1fd61125942c5f4",
+            "title": "An improved fast Fourier transform algorithm using mixed frequency and time decimations"
+        },
+        {
+            "paperId": "b9addc8ce998f6892120c2c8b23ae183312bfa6c",
+            "title": "Superoptimizer: a look at the smallest program"
+        },
+        {
+            "paperId": "9cd4d0cee6c22a65dd6e5ae51c9b6cdbaeb550df",
+            "title": "Real-valued fast Fourier transform algorithms"
+        },
+        {
+            "paperId": "405a6b0d59b56c1a9a5b562b59e32faac2224718",
+            "title": "A Framework for Generating Distributed-Memory Parallel Programs for Block Recursive Algorithms"
+        },
+        {
+            "paperId": "78f88a81ecc0191531413f6484cc5db07eb842fe",
+            "title": "On computing the split-radix FFT"
+        },
+        {
+            "paperId": "4041282f738521ce66588d8b42fe860df11792b4",
+            "title": "On computing the discrete Fourier and cosine transforms"
+        },
+        {
+            "paperId": "1790fe007bc1ab161a1ea814748b42e3acbdc958",
+            "title": "Gauss and the history of the fast Fourier transform"
+        },
+        {
+            "paperId": "387ad3e72385bf5239415aed79a8bd39a205404c",
+            "title": "Fast algorithms for the discrete W transform and for the discrete Fourier transform"
+        },
+        {
+            "paperId": "55ffdcab5daf1b87b870c62bfe70929694f7e189",
+            "title": "FFT algorithms for vector computers"
+        },
+        {
+            "paperId": "8773149ed0d8fbe752491437166540566cb7dcac",
+            "title": "An in-order, in-place radix-2 FFT"
+        },
+        {
+            "paperId": "b7cf33f4a59099160339c4ee18b46d2afedb5ada",
+            "title": "Fast Mixed-Radix Real Fourier Transforms"
+        },
+        {
+            "paperId": "387eed2d96c099655168c4cfa52ec71ada48ca2d",
+            "title": "A fast cosine transform in one and two dimensions"
+        },
+        {
+            "paperId": "94cdd3ab950bab8c59e721fda10af0122f98993c",
+            "title": "Algorithm 513: Analysis of In-Situ Transposition [F1]"
+        },
+        {
+            "paperId": "7af534a971b05b26b9758cdb7253b849d0de956e",
+            "title": "On computing the Discrete Fourier Transform."
+        },
+        {
+            "paperId": "2d85353c0c3439664e8ae54c8e37c97110eee39c",
+            "title": "A linear filtering approach to the computation of discrete Fourier transform"
+        },
+        {
+            "paperId": "a603fa2bbee1912a58676ce243b4f3e615fa76d7",
+            "title": "An algorithm for computing the mixed radix fast Fourier transform"
+        },
+        {
+            "paperId": "030bd4c198f4325d11482f086ecd61acc15bc00b",
+            "title": "Numerical Analysis: A fast fourier transform algorithm for real-valued series"
+        },
+        {
+            "paperId": "93c670c45373a746a44c8ff74939a31417ca9750",
+            "title": "Discrete Fourier transforms when the number of data samples is prime"
+        },
+        {
+            "paperId": "bc2b36d62a698f2ea2bd3c4499d60799c5376182",
+            "title": "On computing the fast Fourier transform"
+        },
+        {
+            "paperId": "e4a80900817cbaddee9a81c67a44da0dfcfae7c4",
+            "title": "Fast Fourier Transforms: for fun and profit"
+        },
+        {
+            "paperId": "99c1db6625fb266fff953480075b6b25362e6214",
+            "title": "High-speed convolution and correlation"
+        },
+        {
+            "paperId": "0e6beb95b5150ce99b108acdefabf70ccd3fee30",
+            "title": "An algorithm for the machine calculation of complex Fourier series"
+        },
+        {
+            "paperId": "99a2d9669ec13c19cb95fd11f9b5895588feefba",
+            "title": "A fast Fourier transform compiler"
+        },
+        {
+            "paperId": "1cbfa10be8f8744a3e84e3f60b59f28ee4d17435",
+            "title": "Discrete Time Signal Processing"
+        },
+        {
+            "paperId": null,
+            "title": "The FFTW web page,"
+        },
+        {
+            "paperId": "3a034f504105ba4e8d986c75d4f9ed971071c451",
+            "title": "Portable high performance programming via architecture-cognizant divide-and-conquer algorithms"
+        },
+        {
+            "paperId": "99d03dc3437b5c4ed1b3e54d65a030330e32c6cb",
+            "title": "Discrete-time signal processing (2nd ed.)"
+        },
+        {
+            "paperId": "603c13d83bdcab014f05901f669f1a8216f1db10",
+            "title": "Computational Frameworks for the Fast Fourier Transform"
+        },
+        {
+            "paperId": "19e661a2285985b69c5e3f330e91f8b84abdc74f",
+            "title": "Searching for the best Cooley-Tukey FFT algorithms"
+        },
+        {
+            "paperId": null,
+            "title": "and C"
+        },
+        {
+            "paperId": "493629cfb4cd87f1c6f54f1ca4f5ca98ad3a13b5",
+            "title": "Vectorizing the FFTs"
+        },
+        {
+            "paperId": "a5fc76be274e8dfc739be67f6cef2deb6e47304b",
+            "title": "Fast Fourier transform and convolution algorithms"
+        },
+        {
+            "paperId": "3bd8741f562289fadde61e4709844b24a3757e8f",
+            "title": "A Linear Filtering Approach to the Computation of the Discrete Fourier Transform"
+        },
+        {
+            "paperId": null,
+            "title": "clinical tests on lungs. Dr. Frigo is a Joint Recipient (with S. G. Johnson) of the 1999 J. H. Wilkinson Prize for Numerical Software, in recognition of their work"
+        }
+    ]
+}

@@ -1,0 +1,247 @@
+{
+    "paperId": "4b1c6f6521da545892f3f5dc39461584d4a27ec0",
+    "externalIds": {
+        "DBLP": "journals/pami/MiyatoMKI19",
+        "MAG": "2949983636",
+        "ArXiv": "1704.03976",
+        "DOI": "10.1109/TPAMI.2018.2858821",
+        "CorpusId": 17504174,
+        "PubMed": "30040630"
+    },
+    "title": "Virtual Adversarial Training: A Regularization Method for Supervised and Semi-Supervised Learning",
+    "abstract": "We propose a new regularization method based on virtual adversarial loss: a new measure of local smoothness of the conditional label distribution given input. Virtual adversarial loss is defined as the robustness of the conditional label distribution around each input data point against local perturbation. Unlike adversarial training, our method defines the adversarial direction without label information and is hence applicable to semi-supervised learning. Because the directions in which we smooth the model are only \u201cvirtually\u201d adversarial, we call our method virtual adversarial training (VAT). The computational cost of VAT is relatively low. For neural networks, the approximated gradient of virtual adversarial loss can be computed with no more than two pairs of forward- and back-propagations. In our experiments, we applied VAT to supervised and semi-supervised learning tasks on multiple benchmark datasets. With a simple enhancement of the algorithm based on the entropy minimization principle, our VAT achieves state-of-the-art performance for semi-supervised learning tasks on SVHN and CIFAR-10.",
+    "venue": "IEEE Transactions on Pattern Analysis and Machine Intelligence",
+    "year": 2017,
+    "referenceCount": 50,
+    "citationCount": 2499,
+    "influentialCitationCount": 350,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1704.03976",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new regularization method based on virtual adversarial loss: a new measure of local smoothness of the conditional label distribution given input that achieves state-of-the-art performance for semi-supervised learning tasks on SVHN and CIFAR-10."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3213400",
+            "name": "Takeru Miyato"
+        },
+        {
+            "authorId": "35647224",
+            "name": "S. Maeda"
+        },
+        {
+            "authorId": "2877296",
+            "name": "Masanori Koyama"
+        },
+        {
+            "authorId": "145516720",
+            "name": "S. Ishii"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "d2e4587744a89bad95fea69e08842cad6c8ff0dd",
+            "title": "Temporal Ensembling for Semi-Supervised Learning"
+        },
+        {
+            "paperId": "5694e46284460a648fe29117cbc55f6c9be3fa3c",
+            "title": "Densely Connected Convolutional Networks"
+        },
+        {
+            "paperId": "4c20e7f95448ca3c1042a6d7fa5fa15ec27e9aeb",
+            "title": "Regularization With Stochastic Transformations and Perturbations for Deep Semi-Supervised Learning"
+        },
+        {
+            "paperId": "571b0750085ae3d939525e62af510ee2cee9d5ea",
+            "title": "Improved Techniques for Training GANs"
+        },
+        {
+            "paperId": "6b570069f14c7588e066f7138e1f21af59d62e61",
+            "title": "Theano: A Python framework for fast computation of mathematical expressions"
+        },
+        {
+            "paperId": "77f0a39b8e02686fd85b01971f8feb7f60971f80",
+            "title": "Identity Mappings in Deep Residual Networks"
+        },
+        {
+            "paperId": "9c9d7247f8c51ec5a02b0d911d1d7b9e8160495d",
+            "title": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems"
+        },
+        {
+            "paperId": "729b18d8d91035f4bb84bf2e61b0517824e5d31b",
+            "title": "Auxiliary Deep Generative Models"
+        },
+        {
+            "paperId": "543f21d81bbea89f901dfcc01f4e332a9af6682d",
+            "title": "Unsupervised and Semi-supervised Learning with Categorical Generative Adversarial Networks"
+        },
+        {
+            "paperId": "cddf8a10c7f48df67a797808a615be0d4acf9a8e",
+            "title": "Semi-supervised Learning with Ladder Networks"
+        },
+        {
+            "paperId": "d450b0f12ae0437048e4047a630c31d902002d0c",
+            "title": "Distributional Smoothing with Virtual Adversarial Training"
+        },
+        {
+            "paperId": "cba5fbd40767a27d20e346a108b8867ac8591a27",
+            "title": "Stacked What-Where Auto-encoders"
+        },
+        {
+            "paperId": "f35de4f9b1a7c4d3fa96a0d2ab1bf8937671f6b6",
+            "title": "Dropout as a Bayesian Approximation: Representing Model Uncertainty in Deep Learning"
+        },
+        {
+            "paperId": "e0945081b5b87187a53d4329cf77cd8bff635795",
+            "title": "Highway Networks"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "1bbcd95db9f72cc02aa2f996e80893599b22e0fd",
+            "title": "A Bayesian encourages dropout"
+        },
+        {
+            "paperId": "33af9298e5399269a12d4b9901492fe406af62b4",
+            "title": "Striving for Simplicity: The All Convolutional Net"
+        },
+        {
+            "paperId": "bee044c8e8903fb67523c1f8c105ab4718600cdb",
+            "title": "Explaining and Harnessing Adversarial Examples"
+        },
+        {
+            "paperId": "4f9f7434f06cbe31e54a0bb118975340b9e0a4c9",
+            "title": "Towards Deep Neural Network Architectures Robust to Adversarial Examples"
+        },
+        {
+            "paperId": "03cd6f2297637a322bdd4519b8cee331ef42984b",
+            "title": "Learning with Pseudo-Ensembles"
+        },
+        {
+            "paperId": "fb91db6aa4f710814f8aec28a7f3ecbc4e5ad4fd",
+            "title": "Deeply-Supervised Nets"
+        },
+        {
+            "paperId": "66ad2fbc8b73242a889699868611fcf239e3435d",
+            "title": "Semi-supervised Learning with Deep Generative Models"
+        },
+        {
+            "paperId": "d891dc72cbd40ffaeefdc79f2e7afe1e530a23ad",
+            "title": "Intriguing properties of neural networks"
+        },
+        {
+            "paperId": "5e83ab70d0cbc003471e87ec306d27d9c80ecb16",
+            "title": "Network In Network"
+        },
+        {
+            "paperId": "d124a098cdc6f99b9a152fcf8afa9327dac583be",
+            "title": "Dropout Training as Adaptive Regularization"
+        },
+        {
+            "paperId": "67107f78a84bdb2411053cb54e94fa226eea6d8e",
+            "title": "Deep Sparse Rectifier Neural Networks"
+        },
+        {
+            "paperId": "a538b05ebb01a40323997629e171c91aa28b8e2f",
+            "title": "Rectified Linear Units Improve Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": "1f88427d7aa8225e47f946ac41a0667d7b69ac52",
+            "title": "What is the best multi-stage architecture for object recognition?"
+        },
+        {
+            "paperId": "007e186fd05b41f68b03d1ef0a5a65bebf1d6b83",
+            "title": "Large Scale Transductive SVMs"
+        },
+        {
+            "paperId": "668b1277fbece28c4841eeab1c97e4ebd0079700",
+            "title": "Pattern Recognition and Machine Learning"
+        },
+        {
+            "paperId": "ad67ccee45b801b0138016e2f44a566344e77320",
+            "title": "Semi-supervised Learning by Entropy Minimization"
+        },
+        {
+            "paperId": "2a4ca461fa847e8433bab67e7bfe4620371c1f77",
+            "title": "Learning from labeled and unlabeled data with label propagation"
+        },
+        {
+            "paperId": "14299f5eb9efa328ee6b59b5ee3ff335fc07e175",
+            "title": "Eigenvalue computation in the 20th century"
+        },
+        {
+            "paperId": "614b6a1f6fd2b6ab99c4c8503d61678d8f0b13ca",
+            "title": "Regularization using jittered training data"
+        },
+        {
+            "paperId": "e786caa59202d923ccaae00ae6a4682eec92699b",
+            "title": "Spline Models for Observational Data"
+        },
+        {
+            "paperId": "122dc2de3138070e9bcceba7c4ddc681712b9aec",
+            "title": "Dataset"
+        },
+        {
+            "paperId": "c68796f833a7151f0a63d1d1608dc902b4fdc9b6",
+            "title": "GENERATIVE ADVERSARIAL NETS"
+        },
+        {
+            "paperId": "7db2c7b114c28de8f91ebb49e1aa883d587bf02f",
+            "title": "Understanding Regularization by Virtual Adversarial Training, Ladder Networks and Others"
+        },
+        {
+            "paperId": "4f8d648c52edf74e41b0996128aa536e13cc7e82",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": "67156902beca9bc90b728c8d5dd4ac9d8b27d3a3",
+            "title": "Chainer : a Next-Generation Open Source Framework for Deep Learning"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "367f2c63a6f6a10b3b64b8729d601e69337ee3cc",
+            "title": "Rectifier Nonlinearities Improve Neural Network Acoustic Models"
+        },
+        {
+            "paperId": "02227c94dd41fe0b439e050d377b0beb5d427cda",
+            "title": "Reading Digits in Natural Images with Unsupervised Feature Learning"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        },
+        {
+            "paperId": null,
+            "title": "Algebraic geometry and statistical learning theory"
+        },
+        {
+            "paperId": "bc14819e745cd7af37efd09ea29773dc0065119e",
+            "title": "Solutions of ill-posed problems"
+        },
+        {
+            "paperId": "7d35fdb4e676200a61d88fb06a9bbe0bf7cd7c28",
+            "title": "Mathematical Methods of Classical Mechanics"
+        },
+        {
+            "paperId": "400b45a803d642b752a84147ef547af7811e8f3f",
+            "title": "Information Theory and an Extension of the Maximum Likelihood Principle"
+        },
+        {
+            "paperId": "c3ecd8e19e016d15670c8953b4b9afaa5186b0f3",
+            "title": "Current address: Microsoft Research,"
+        }
+    ]
+}

@@ -1,0 +1,370 @@
+{
+    "paperId": "3cccc93064dae265eeb7bc76d02cdc67c942f0a5",
+    "externalIds": {
+        "MAG": "2962990490",
+        "DBLP": "journals/jmlr/UriaCGML16",
+        "ArXiv": "1605.02226",
+        "CorpusId": 327844
+    },
+    "title": "Neural Autoregressive Distribution Estimation",
+    "abstract": "We present Neural Autoregressive Distribution Estimation (NADE) models, which are neural network architectures applied to the problem of unsupervised distribution and density estimation. They leverage the probability product rule and a weight sharing scheme inspired from restricted Boltzmann machines, to yield an estimator that is both tractable and has good generalization performance. We discuss how they achieve competitive performance in modeling both binary and real-valued observations. We also present how deep NADE models can be trained to be agnostic to the ordering of input dimensions used by the autoregressive product rule decomposition. Finally, we also show how to exploit the topological structure of pixels in images using a deep convolutional architecture for NADE.",
+    "venue": "Journal of machine learning research",
+    "year": 2016,
+    "referenceCount": 81,
+    "citationCount": 294,
+    "influentialCitationCount": 24,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Neural Autoregressive Distribution Estimation models, which are neural network architectures applied to the problem of unsupervised distribution and density estimation, leverage the probability product rule and a weight sharing scheme inspired from restricted Boltzmann machines to yield an estimator that is both tractable and has good generalization performance."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2825051",
+            "name": "Benigno Uria"
+        },
+        {
+            "authorId": "40638665",
+            "name": "Marc-Alexandre C\u00f4t\u00e9"
+        },
+        {
+            "authorId": "144717963",
+            "name": "Karol Gregor"
+        },
+        {
+            "authorId": "145797336",
+            "name": "Iain Murray"
+        },
+        {
+            "authorId": "1777528",
+            "name": "H. Larochelle"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "23c5cae365e161ef4f05816229b7038c1b3187f6",
+            "title": "Connectionist multivariate density-estimation and its application to speech synthesis"
+        },
+        {
+            "paperId": "6b570069f14c7588e066f7138e1f21af59d62e61",
+            "title": "Theano: A Python framework for fast computation of mathematical expressions"
+        },
+        {
+            "paperId": "41f1d50c85d3180476c4c7b3eea121278b0d8474",
+            "title": "Pixel Recurrent Neural Networks"
+        },
+        {
+            "paperId": "3e47c4c2dd98c49b7771c7228812d5fd9eee56a3",
+            "title": "Importance Weighted Autoencoders"
+        },
+        {
+            "paperId": "47900aca2f0b50da3010ad59b394c870f0e6c02e",
+            "title": "Deep Generative Image Models using a Laplacian Pyramid of Adversarial Networks"
+        },
+        {
+            "paperId": "f267934e9de60c5badfa9d3f28918e67ae7a2bf4",
+            "title": "Generative Image Modeling Using Spatial LSTMs"
+        },
+        {
+            "paperId": "3445cc781ebdcf65840bd6314bc0c8c634f1ef5e",
+            "title": "A Neural Autoregressive Approach to Attention-based Recognition"
+        },
+        {
+            "paperId": "a2785f66c20fbdf30ec26c0931584c6d6a0f4fca",
+            "title": "DRAW: A Recurrent Neural Network For Image Generation"
+        },
+        {
+            "paperId": "90f72fbbe5f0a29e627db28999e01a30a9655bc6",
+            "title": "MADE: Masked Autoencoder for Distribution Estimation"
+        },
+        {
+            "paperId": "2904a9932f4cd0f0886121dc1f2d4aaac0455176",
+            "title": "Generative Moment Matching Networks"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "33af9298e5399269a12d4b9901492fe406af62b4",
+            "title": "Striving for Simplicity: The All Convolutional Net"
+        },
+        {
+            "paperId": "bb2a8a12be00b8376d100f1d69611ab27cf13fda",
+            "title": "A Deep and Autoregressive Approach for Topic Modeling of Multimodal Data"
+        },
+        {
+            "paperId": "7a24ec97e7f2881e245d20c46a56cbbfc734a4ff",
+            "title": "Reweighted Wake-Sleep"
+        },
+        {
+            "paperId": "c175081733d98e63fa68a70405a35804c318afc5",
+            "title": "Iterative Neural Autoregressive Distribution Estimator NADE-k"
+        },
+        {
+            "paperId": "484ad17c926292fbe0d5211540832a8c8a8e958b",
+            "title": "Stochastic Backpropagation and Approximate Inference in Deep Generative Models"
+        },
+        {
+            "paperId": "5f5dc5b9a2ba710937e2c413b37b053cd673df02",
+            "title": "Auto-Encoding Variational Bayes"
+        },
+        {
+            "paperId": "695a2c95eacdbccb7a73d2f1e90e7b35b4b3d864",
+            "title": "Deep AutoRegressive Networks"
+        },
+        {
+            "paperId": "705fd4febe2fff810d2f72f48dcda20826eca77a",
+            "title": "A Deep and Tractable Density Estimator"
+        },
+        {
+            "paperId": "309494da0769345cb35ca0b7b0aae8143eee85a2",
+            "title": "RNADE: The real-valued neural autoregressive density-estimator"
+        },
+        {
+            "paperId": "1a3c74c7b11ad5635570932577cdde2a3f7a6a5c",
+            "title": "Improving deep neural networks for LVCSR using rectified linear units and dropout"
+        },
+        {
+            "paperId": "1ee03cbf30ba273ee9ec1995d1958732df0161f3",
+            "title": "Enhanced Gradient for Training Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": "1a6c8861e12ff031217286f9d04be0192efb85ea",
+            "title": "\"Natural Images, Gaussian Mixtures and Dead Leaves\""
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "d1b78d136e9e6be0aeb814027f0f3fd843606155",
+            "title": "A Neural Autoregressive Topic Model"
+        },
+        {
+            "paperId": "68e3fca8f6f60ca1c70854b9d09228ece37f02b2",
+            "title": "Deep Boltzmann Machines and the Centering Trick"
+        },
+        {
+            "paperId": "07c43a3ff15f2104022f2b1ca8ec4128a930b414",
+            "title": "Modeling Temporal Dependencies in High-Dimensional Sequences: Application to Polyphonic Music Generation and Transcription"
+        },
+        {
+            "paperId": "f50dfcc143bc1cc8ded1d88d31a59140b0a0ebd8",
+            "title": "Deep Mixtures of Factor Analysers"
+        },
+        {
+            "paperId": "5a9ef216bf11f222438fff130c778267d39a9564",
+            "title": "Practical Variational Inference for Neural Networks"
+        },
+        {
+            "paperId": "529403ab43b381b942b67751862b614cbd94341b",
+            "title": "From learning models of natural image patches to whole image restoration"
+        },
+        {
+            "paperId": "bf326ddb9b9b15f5a285600af29e43c558ac890f",
+            "title": "Learning Representations by Maximizing Compression"
+        },
+        {
+            "paperId": "b68c34c55925a75804f97491b745de66b1ffc4be",
+            "title": "Learning Deep Energy Models"
+        },
+        {
+            "paperId": "bc5bb2a48cadee643a96138dbcd7131ab6bb2ccc",
+            "title": "Greedy Learning of Binary Latent Trees"
+        },
+        {
+            "paperId": "7146bbe4b6b0ab52acee3af1aae6ea7a312aad9f",
+            "title": "Mixed Cumulative Distribution Networks"
+        },
+        {
+            "paperId": "755d7b81010b665a52a7d136cce3c2af3a76d940",
+            "title": "Parallel tempering is efficient for learning restricted Boltzmann machines"
+        },
+        {
+            "paperId": "6032773345c73957f87178fd5d0556870299c4e1",
+            "title": "Learning Deep Boltzmann Machines using Adaptive MCMC"
+        },
+        {
+            "paperId": "00cd1dab559a9671b692f39f14c1573ab2d1416b",
+            "title": "Efficient Learning of Deep Boltzmann Machines"
+        },
+        {
+            "paperId": "83b625ae40c921c47255da5f2e24266e75a48d9b",
+            "title": "Tempered Markov Chain Monte Carlo for training of Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": "bf79c966b293dbc5551de9785a696c099dff355b",
+            "title": "Inductive Principles for Restricted Boltzmann Machine Learning"
+        },
+        {
+            "paperId": "e3ce36b9deb47aa6bb2aa19c4bfa71283b505025",
+            "title": "Noise-contrastive estimation: A new estimation principle for unnormalized statistical models"
+        },
+        {
+            "paperId": "c68647356ba8ca962c24df08eb03ecae7b05f1a1",
+            "title": "Learning in Markov Random Fields using Tempered Transitions"
+        },
+        {
+            "paperId": "35e57c040ddf95eca2a9bd6e1c532a08147b1f29",
+            "title": "Minimum Probability Flow Learning"
+        },
+        {
+            "paperId": "03057ea57d9f2d9bbc8a141d51f76d5bbc715234",
+            "title": "Using fast weights to improve persistent contrastive divergence"
+        },
+        {
+            "paperId": "ddc45fad8d15771d9f1f8579331458785b2cdd93",
+            "title": "Deep Boltzmann Machines"
+        },
+        {
+            "paperId": "08d0ea90b53aba0008d25811268fe46562cfb38c",
+            "title": "On the quantitative analysis of deep belief networks"
+        },
+        {
+            "paperId": "843959ffdccf31c6694d135fad07425924f785b1",
+            "title": "Extracting and composing robust features with denoising autoencoders"
+        },
+        {
+            "paperId": "73d6a26f407db77506959fdf3f7b853e44f3844a",
+            "title": "Training restricted Boltzmann machines using approximations to the likelihood gradient"
+        },
+        {
+            "paperId": "1d6793a163426b9c060de7588aef4fed8da6d16c",
+            "title": "Connections Between Score Matching, Contrastive Divergence, and Pseudolikelihood for Continuous-Valued Variables"
+        },
+        {
+            "paperId": "ce06539ba8e6b33045a9cfe9167026ebe5a980be",
+            "title": "Some extensions of score matching"
+        },
+        {
+            "paperId": "9bca4d7b932e0854c3325f1578cfd17341dd8ea8",
+            "title": "A Kernel Method for the Two-Sample-Problem"
+        },
+        {
+            "paperId": "8978cf7574ceb35f4c3096be768c7547b28a35d0",
+            "title": "A Fast Learning Algorithm for Deep Belief Nets"
+        },
+        {
+            "paperId": "9966e890f2eedb4577e11b9d5a66380a4d9341fe",
+            "title": "Estimation of Non-Normalized Statistical Models by Score Matching"
+        },
+        {
+            "paperId": "2184fb6d32bc46f252b940035029273563c4fc82",
+            "title": "Exponential Family Harmoniums with an Application to Information Retrieval"
+        },
+        {
+            "paperId": "52070af952474cf13ecd015d42979373ff7c1c00",
+            "title": "Training Products of Experts by Minimizing Contrastive Divergence"
+        },
+        {
+            "paperId": "9a1ed876196ec9733acb1daa6d65e35ff0414291",
+            "title": "A database of human segmented natural images and its application to evaluating segmentation algorithms and measuring ecological statistics"
+        },
+        {
+            "paperId": "02700d61313c25ad5b88629d343817ff260b8bf2",
+            "title": "Mixtures of Factor Analyzers"
+        },
+        {
+            "paperId": "190e4800c67ef445e4bd0944a55debaccebcf43f",
+            "title": "Modeling High-Dimensional Discrete Data with Multi-Layer Neural Networks"
+        },
+        {
+            "paperId": "84e92c573b4cf5bd7e9dde5a436ec8fdeac244b4",
+            "title": "Linearly Combining Density Estimators via Stacking"
+        },
+        {
+            "paperId": "09ef86868035bbfd4803a9e1c98640804bf8f4a4",
+            "title": "The EM algorithm for mixtures of factor analyzers"
+        },
+        {
+            "paperId": "ed511a9f4277e4d55862c8290ea311be06a0d142",
+            "title": "Improved Gaussian Mixture Density Estimates Using Bayesian Penalty Terms and Network Averaging"
+        },
+        {
+            "paperId": "cbb0362cbfef094dbed0907329e6057dc5d09714",
+            "title": "Does the Wake-sleep Algorithm Produce Good Density Estimators?"
+        },
+        {
+            "paperId": "605402e235bd62437baf3c9ebefe77fb4d92ee95",
+            "title": "The Helmholtz Machine"
+        },
+        {
+            "paperId": "6dd01cd9c17d1491ead8c9f97597fbc61dead8ea",
+            "title": "The \"wake-sleep\" algorithm for unsupervised neural networks."
+        },
+        {
+            "paperId": "47128bb3ce4ed00691c0d7d58c02791c3e963ab7",
+            "title": "Darpa Timit Acoustic-Phonetic Continuous Speech Corpus CD-ROM {TIMIT} | NIST"
+        },
+        {
+            "paperId": "b3db94f62118e192ef0465ca9edafcd6c074c137",
+            "title": "DARPA TIMIT:: acoustic-phonetic continuous speech corpus CD-ROM, NIST speech disc 1-1.1"
+        },
+        {
+            "paperId": "a120c05ad7cd4ce2eb8fb9697e16c7c4877208a5",
+            "title": "Connectionist Learning of Belief Networks"
+        },
+        {
+            "paperId": "939d584316be99e2db3fec3fbf7d71f22a477f67",
+            "title": "Unsupervised learning of distributions on binary vectors using two layer networks"
+        },
+        {
+            "paperId": "7380c7350fe716379415c2c156d11457c9127ad5",
+            "title": "Parametric Inference for imperfectly observed Gibbsian fields"
+        },
+        {
+            "paperId": "4f7476037408ac3d993f5088544aab427bc319c1",
+            "title": "Information processing in dynamical systems: foundations of harmony theory"
+        },
+        {
+            "paperId": "1406b6d771c270aff4dcb1c96e4f5c62c02c00a5",
+            "title": "Statistical Analysis of Non-Lattice Data"
+        },
+        {
+            "paperId": "f07f9dfe18d1af54409924746523677a5b3359e3",
+            "title": "Approximating discrete probability distributions with dependence trees"
+        },
+        {
+            "paperId": "c68796f833a7151f0a63d1d1608dc902b4fdc9b6",
+            "title": "GENERATIVE ADVERSARIAL NETS"
+        },
+        {
+            "paperId": "2913c2bf3f92b5ae369400a42b2d27cc5bc05ecb",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": null,
+            "title": "UCI machine learning repository"
+        },
+        {
+            "paperId": "b893e7053c9c7e266a23fb13a42261a88f650210",
+            "title": "The Neural Autoregressive Distribution Estimator"
+        },
+        {
+            "paperId": "d04d6db5f0df11d0cff57ec7e15134990ac07a4f",
+            "title": "Learning Deep Architectures for AI"
+        },
+        {
+            "paperId": null,
+            "title": "Greedy layer-wise training o Advances in Neural Information Pro"
+        },
+        {
+            "paperId": null,
+            "title": "Graphical models for ing and digital communication"
+        },
+        {
+            "paperId": null,
+            "title": "Does the wake-sleep algorithm learn good density estimators? In Advances in Neural Information Processing Systems 8 (NIPS\u201995), pages 661\u2013670"
+        },
+        {
+            "paperId": "4cf3569e045993dfe090749f26a55a768684ab86",
+            "title": "Mixture density networks"
+        },
+        {
+            "paperId": null,
+            "title": "A fast and exact learning rule for a restricted class of {Boltzmann} machines"
+        }
+    ]
+}

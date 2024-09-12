@@ -1,0 +1,218 @@
+{
+    "paperId": "a1c922be467d1c0c64b963e65dae41778b81b2a0",
+    "externalIds": {
+        "DBLP": "journals/corr/abs-1712-00409",
+        "ArXiv": "1712.00409",
+        "MAG": "2775461895",
+        "CorpusId": 2222076
+    },
+    "title": "Deep Learning Scaling is Predictable, Empirically",
+    "abstract": "Deep learning (DL) creates impactful advances following a virtuous recipe: model architecture search, creating large training data sets, and scaling computation. It is widely believed that growing training sets and models should improve accuracy and result in better products. As DL application domains grow, we would like a deeper understanding of the relationships between training set size, computational scale, and model accuracy improvements to advance the state-of-the-art. \nThis paper presents a large scale empirical characterization of generalization error and model size growth as training sets grow. We introduce a methodology for this measurement and test four machine learning domains: machine translation, language modeling, image processing, and speech recognition. Our empirical results show power-law generalization error scaling across a breadth of factors, resulting in power-law exponents---the \"steepness\" of the learning curve---yet to be explained by theoretical work. Further, model improvements only shift the error but do not appear to affect the power-law exponent. We also show that model size scales sublinearly with data size. These scaling relationships have significant implications on deep learning research, practice, and systems. They can assist model debugging, setting accuracy targets, and decisions about data set growth. They can also guide computing system design and underscore the importance of continued computational scaling.",
+    "venue": "arXiv.org",
+    "year": 2017,
+    "referenceCount": 39,
+    "citationCount": 595,
+    "influentialCitationCount": 33,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A large scale empirical characterization of generalization error and model size growth as training sets grow is presented and it is shown that model size scales sublinearly with data size."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3130228",
+            "name": "Joel Hestness"
+        },
+        {
+            "authorId": "46617804",
+            "name": "Sharan Narang"
+        },
+        {
+            "authorId": "2774880",
+            "name": "Newsha Ardalani"
+        },
+        {
+            "authorId": "2040049",
+            "name": "G. Diamos"
+        },
+        {
+            "authorId": "35450887",
+            "name": "Heewoo Jun"
+        },
+        {
+            "authorId": "7880519",
+            "name": "Hassan Kianinejad"
+        },
+        {
+            "authorId": "8176660",
+            "name": "Md. Mostofa Ali Patwary"
+        },
+        {
+            "authorId": "2152916796",
+            "name": "Yang Yang"
+        },
+        {
+            "authorId": "2389316",
+            "name": "Yanqi Zhou"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "ae4b0b63ff26e52792be7f60bda3ed5db83c1577",
+            "title": "A Bayesian Perspective on Generalization and Stochastic Gradient Descent"
+        },
+        {
+            "paperId": "430de87a0a8996bc93b1998f9a6261f7558a5679",
+            "title": "Generalization in Deep Learning"
+        },
+        {
+            "paperId": "1cfcdf0cec5636066a4c2aa60b4451462ed49fca",
+            "title": "Exploring neural transducers for end-to-end speech recognition"
+        },
+        {
+            "paperId": "8760bc7631c0cb04e7138254e9fd6451b7def8ca",
+            "title": "Revisiting Unreasonable Effectiveness of Data in Deep Learning Era"
+        },
+        {
+            "paperId": "5ddd38a5df945e4afee68d96ed51fd6ca1f7d4cf",
+            "title": "A Closer Look at Memorization in Deep Networks"
+        },
+        {
+            "paperId": "540c226fdf7047ac602c7cb05a18db19ee595df0",
+            "title": "Computing Nonvacuous Generalization Bounds for Deep (Stochastic) Neural Networks with Many More Parameters than Training Data"
+        },
+        {
+            "paperId": "8edbd132765e72f5887b7ef8c38624f31dd53a77",
+            "title": "Nearly-tight VC-dimension bounds for piecewise linear neural networks"
+        },
+        {
+            "paperId": "aab5002a22b9b4244a8329b140bd0a86021aa2d1",
+            "title": "OpenNMT: Open-Source Toolkit for Neural Machine Translation"
+        },
+        {
+            "paperId": "54ddb00fa691728944fd8becea90a373d21597cf",
+            "title": "Understanding deep learning requires rethinking generalization"
+        },
+        {
+            "paperId": "401d68e1a930b0f7e02030cab4c185fb1839cb11",
+            "title": "Capacity and Trainability in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "7dba53e72c182e25e98e8f73a99d75ff69dda0c2",
+            "title": "Recurrent Highway Networks"
+        },
+        {
+            "paperId": "2f2d8f8072e5cc9b296fad551f65f183bdbff7aa",
+            "title": "Exploring the Limits of Language Modeling"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "13497bd108d4412d02050e646235f456568cf822",
+            "title": "Deep Speech 2 : End-to-End Speech Recognition in English and Mandarin"
+        },
+        {
+            "paperId": "1518039b5001f1836565215eb047526b3ac7f462",
+            "title": "Neural Machine Translation of Rare Words with Subword Units"
+        },
+        {
+            "paperId": "878ba5458e9e51f0b341fd9117fa0b43ef4096d3",
+            "title": "End-to-end attention-based large vocabulary speech recognition"
+        },
+        {
+            "paperId": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+            "title": "Effective Approaches to Attention-based Neural Machine Translation"
+        },
+        {
+            "paperId": "b624504240fa52ab76167acfe3156150ca01cf3b",
+            "title": "Attention-Based Models for Speech Recognition"
+        },
+        {
+            "paperId": "24741d280869ad9c60321f5ab6e5f01b7852507d",
+            "title": "Deep Speech: Scaling up end-to-end speech recognition"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "5d833331b0e22ff359db05c62a8bca18c4f04b68",
+            "title": "One billion word benchmark for measuring progress in statistical language modeling"
+        },
+        {
+            "paperId": "4ee2eab4c298c1824a9fb8799ad8eed21be38d21",
+            "title": "Moses: Open Source Toolkit for Statistical Machine Translation"
+        },
+        {
+            "paperId": "009f35c0e453f2435efd8d8ef8086b76b294967a",
+            "title": "Rademacher and Gaussian Complexities: Risk Bounds and Structural Results"
+        },
+        {
+            "paperId": "7628b62d64d2e5c33a13a5a473bc41b2391c1ebc",
+            "title": "Scaling to Very Very Large Corpora for Natural Language Disambiguation"
+        },
+        {
+            "paperId": "4609f6bdc3beab00c9beceaa12dd8101fefe6f1c",
+            "title": "An overview of statistical learning theory"
+        },
+        {
+            "paperId": "fa34ab3c4532b22af861ba55db3dafdaf1b6f616",
+            "title": "A universal theorem on learning curves"
+        },
+        {
+            "paperId": "882b6899d07ce3498a04195885150ef87c02d1c3",
+            "title": "Statistical Theory of Learning Curves under Entropic Loss Criterion"
+        },
+        {
+            "paperId": "58a68c71bdecf0c1eca0325c7455a84bc4193c0e",
+            "title": "Statistical Mechanics of Learning in a Large Committee Machine"
+        },
+        {
+            "paperId": "a5319b1136149a2dd2b37eba90ef03d1f717a857",
+            "title": "Four Types of Learning Curves"
+        },
+        {
+            "paperId": "2498a4e1755f047accc06a6e0fab0b0eb1b37ae0",
+            "title": "Statistical mechanics of learning from examples."
+        },
+        {
+            "paperId": "e0b8fa3496283d4d808fba9ff62d5f024bcf23be",
+            "title": "Learnability and the Vapnik-Chervonenkis dimension"
+        },
+        {
+            "paperId": "b83396caf4762c906530c9219a9e4dd0658232b0",
+            "title": "A general lower bound on the number of examples needed for learning"
+        },
+        {
+            "paperId": "3b814ad3055d6bfd7828effdbfbf1372646b7c22",
+            "title": "Quantifying Inductive Bias: AI Learning Algorithms and Valiant's Learning Framework"
+        },
+        {
+            "paperId": "19fb2282e9ed9d5ab3678175a5dd18ff060cd404",
+            "title": "A Generalization of the Glivenko-Cantelli Theorem"
+        },
+        {
+            "paperId": "e3ce71a26872c7755e6d8b8fc45bf00c8be64193",
+            "title": "Neural Machine Translation Systems for WMT 16"
+        },
+        {
+            "paperId": "b0b36cd24cbb45bc11140def9245af79c313e609",
+            "title": "Open Source Toolkit for Statistical Machine Translation: Factored Translation Models and Lattice Decoding"
+        },
+        {
+            "paperId": "93d9c85fedffac8d4fd7a66e8861bad55599a16b",
+            "title": "Rigorous Learning Curve Bounds from Statistical Mechanics"
+        },
+        {
+            "paperId": "261a056f8b21918e8616a429b2df6e1d5d33be41",
+            "title": "Connectionist Temporal Classi\ufb01cation: Labelling Unsegmented Sequence Data with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "845ee9838c1f5bf63b7db2c95ec5d27af14a4e02",
+            "title": "Connectionist Temporal Classi\ufb01cation: Labelling Unsegmented Sequences with Recurrent Neural Networks"
+        }
+    ]
+}

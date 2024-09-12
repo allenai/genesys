@@ -1,0 +1,194 @@
+{
+    "paperId": "9dad5f3b491fba9496c90bb7cfe10d1c0f00fadc",
+    "externalIds": {
+        "MAG": "2950695498",
+        "DBLP": "conf/aaai/YaoCXZN19",
+        "ArXiv": "1811.00206",
+        "DOI": "10.1609/AAAI.V33I01.33015676",
+        "CorpusId": 53155421
+    },
+    "title": "Balanced Sparsity for Efficient DNN Inference on GPU",
+    "abstract": "In trained deep neural networks, unstructured pruning can reduce redundant weights to lower storage cost. However, it requires the customization of hardwares to speed up practical inference. Another trend accelerates sparse model inference on general-purpose hardwares by adopting coarse-grained sparsity to prune or regularize consecutive weights for efficient computation. But this method often sacrifices model accuracy. In this paper, we propose a novel fine-grained sparsity approach, Balanced Sparsity, to achieve high model accuracy with commercial hardwares efficiently. Our approach adapts to high parallelism property of GPU, showing incredible potential for sparsity in the widely deployment of deep learning services. Experiment results show that Balanced Sparsity achieves up to 3.1x practical speedup for model inference on GPU, while retains the same high model accuracy as finegrained sparsity.",
+    "venue": "AAAI Conference on Artificial Intelligence",
+    "year": 2018,
+    "referenceCount": 36,
+    "citationCount": 84,
+    "influentialCitationCount": 11,
+    "openAccessPdf": {
+        "url": "https://ojs.aaai.org/index.php/AAAI/article/download/4512/4390",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a novel fine-grained sparsity approach, Balanced Sparsity, to achieve high model accuracy with commercial hardwares efficiently and adapts to high parallelism property of GPU, showing incredible potential for sparsity in the widely deployment of deep learning services."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "32532300",
+            "name": "Zhuliang Yao"
+        },
+        {
+            "authorId": "2072595192",
+            "name": "Shijie Cao"
+        },
+        {
+            "authorId": "9754946",
+            "name": "Wencong Xiao"
+        },
+        {
+            "authorId": "2111573991",
+            "name": "Chen Zhang"
+        },
+        {
+            "authorId": "49954387",
+            "name": "Lanshun Nie"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "317b886336e3f5b599ab21795f4a4fef56f727f4",
+            "title": "Efficient Sparse-Winograd Convolutional Neural Networks"
+        },
+        {
+            "paperId": "56257b0804c9c2418b32337d3af0970f7b67b084",
+            "title": "Block-Sparse Recurrent Neural Networks"
+        },
+        {
+            "paperId": "3b4d671a8c7018c0b42673ba581e5ff3ae762d6c",
+            "title": "To prune, or not to prune: exploring the efficacy of pruning for model compression"
+        },
+        {
+            "paperId": "f3671a07bd8726f7dd413fc648ea659ce47f0edd",
+            "title": "Structured Probabilistic Pruning for Convolutional Neural Network Acceleration"
+        },
+        {
+            "paperId": "ca1060c50642f9f05735d3007873439347b3bea5",
+            "title": "Learning Intrinsic Sparse Structures within Long Short-term Memory"
+        },
+        {
+            "paperId": "ee53c9480132fc0d09b1192226cb2c460462fd6d",
+            "title": "Channel Pruning for Accelerating Very Deep Neural Networks"
+        },
+        {
+            "paperId": "6a821cb17b30c26218e3eb5c20d609dc04a47bcb",
+            "title": "Exploring the Regularity of Sparse Structure in Convolutional Neural Networks"
+        },
+        {
+            "paperId": "402f850dff86fb601d34b2841e6083ac0f928edd",
+            "title": "SCNN: An accelerator for compressed-sparse convolutional neural networks"
+        },
+        {
+            "paperId": "d773718f36ee1cc5bb9bc5b01afa8f76d09f452f",
+            "title": "Structured Bayesian Pruning via Log-Normal Multiplicative Noise"
+        },
+        {
+            "paperId": "b71ae4f14d329268baa5d280734054b449e6ea1b",
+            "title": "ESE: Efficient Speech Recognition Engine with Sparse LSTM on FPGA"
+        },
+        {
+            "paperId": "026ecf916023e13191331a354271b7f9b86e50a1",
+            "title": "Pruning Convolutional Neural Networks for Resource Efficient Transfer Learning"
+        },
+        {
+            "paperId": "6e1ee3bef407bf5562bedbc56e719e0829fa0a64",
+            "title": "Net-Trim: Convex Pruning of Deep Neural Networks with Performance Guarantee"
+        },
+        {
+            "paperId": "bc20f523a6e97800340e57a94d79926fce05572c",
+            "title": "Cambricon-X: An accelerator for sparse neural networks"
+        },
+        {
+            "paperId": "c2a1cb1612ba21e067a5c3ba478a8d73b796b77a",
+            "title": "Pruning Filters for Efficient ConvNets"
+        },
+        {
+            "paperId": "c220cdbcec6f92e4bc0f58c5fa6c1183105be1f9",
+            "title": "Dynamic Network Surgery for Efficient DNNs"
+        },
+        {
+            "paperId": "7601b995303f953955004db7b9b8b206c0e02ff8",
+            "title": "Learning Structured Sparsity in Deep Neural Networks"
+        },
+        {
+            "paperId": "791a3e9eca83dd161ea372a97ca9fd5bf4f7854a",
+            "title": "CUDA Kernel Based Collective Reduction Operations on Large-scale GPU Clusters"
+        },
+        {
+            "paperId": "3d2c6941a9b4608ba52b328369a3352db2092ae0",
+            "title": "Weight Normalization: A Simple Reparameterization to Accelerate Training of Deep Neural Networks"
+        },
+        {
+            "paperId": "2e2b189f668cf2c06ebc44dc9b166648256cf457",
+            "title": "EIE: Efficient Inference Engine on Compressed Deep Neural Network"
+        },
+        {
+            "paperId": "642d0f49b7826adcf986616f4af77e736229990f",
+            "title": "Deep Compression: Compressing Deep Neural Network with Pruning, Trained Quantization and Huffman Coding"
+        },
+        {
+            "paperId": "62adfea3cc1cd9eb6b53e0e8a40be5dfda2adf8d",
+            "title": "Weight Uncertainty in Neural Network"
+        },
+        {
+            "paperId": "1ff9a37d766e3a4f39757f5e1b235a42dacf18ff",
+            "title": "Learning both Weights and Connections for Efficient Neural Network"
+        },
+        {
+            "paperId": "d559dd84fc473fca7e91b9075675750823935afa",
+            "title": "Sparse Convolutional Neural Networks"
+        },
+        {
+            "paperId": "7e17a3c231dc37d162b9ad74043afc1cee4ee2dd",
+            "title": "Probabilistic Backpropagation for Scalable Learning of Bayesian Neural Networks"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "021fc345d40d3e6332cd2ef276e2eaa5e71102e4",
+            "title": "Speeding up Convolutional Neural Networks with Low Rank Expansions"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "2cc157afda51873c30b195fff56e917b9c06b853",
+            "title": "High Performance Convolutional Neural Networks for Document Processing"
+        },
+        {
+            "paperId": "5b9e3b5b27a4b09ffb7492c2b2572dab063e8a0a",
+            "title": "A new pruning heuristic based on variance analysis of sensitivity information"
+        },
+        {
+            "paperId": "bd997b28b102e51a92f30fcf8bb056a69f56d800",
+            "title": "Pruning recurrent neural networks for improved generalization performance"
+        },
+        {
+            "paperId": "88cd4209db62a34d9cba0b9cbe9d45d1e57d21e5",
+            "title": "Runtime Neural Pruning"
+        },
+        {
+            "paperId": "a07609c2ed39d049d3e59b61408fb600c6ab0950",
+            "title": "GPU Kernels for Block-Sparse Weights"
+        },
+        {
+            "paperId": null,
+            "title": "Treebank-3 ldc99t42. CD-ROM. Philadelphia, Penn"
+        },
+        {
+            "paperId": "e7297db245c3feb1897720b173a59fe7e36babb7",
+            "title": "Optimal Brain Damage"
+        },
+        {
+            "paperId": "261a056f8b21918e8616a429b2df6e1d5d33be41",
+            "title": "Connectionist Temporal Classi\ufb01cation: Labelling Unsegmented Sequence Data with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "845ee9838c1f5bf63b7db2c95ec5d27af14a4e02",
+            "title": "Connectionist Temporal Classi\ufb01cation: Labelling Unsegmented Sequences with Recurrent Neural Networks"
+        }
+    ]
+}

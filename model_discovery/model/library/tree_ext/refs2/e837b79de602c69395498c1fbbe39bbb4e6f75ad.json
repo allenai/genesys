@@ -1,0 +1,130 @@
+{
+    "paperId": "e837b79de602c69395498c1fbbe39bbb4e6f75ad",
+    "externalIds": {
+        "MAG": "2951777936",
+        "ArXiv": "1506.02516",
+        "DBLP": "conf/nips/GrefenstetteHSB15",
+        "CorpusId": 7831483
+    },
+    "title": "Learning to Transduce with Unbounded Memory",
+    "abstract": "Recently, strong results have been demonstrated by Deep Recurrent Neural Networks on natural language transduction problems. In this paper we explore the representational power of these models using synthetic grammars designed to exhibit phenomena similar to those found in real transduction problems such as machine translation. These experiments lead us to propose new memory-based recurrent networks that implement continuously differentiable analogues of traditional data structures such as Stacks, Queues, and DeQues. We show that these architectures exhibit superior generalisation performance to Deep RNNs and are often able to learn the underlying generating algorithms in our transduction experiments.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2015,
+    "referenceCount": 22,
+    "citationCount": 288,
+    "influentialCitationCount": 22,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes new memory-based recurrent networks that implement continuously differentiable analogues of traditional data structures such as Stacks, Queues, and DeQues and shows that these architectures exhibit superior generalisation performance to Deep RNNs and are often able to learn the underlying generating algorithms in the transduction experiments."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1864353",
+            "name": "Edward Grefenstette"
+        },
+        {
+            "authorId": "2910877",
+            "name": "Karl Moritz Hermann"
+        },
+        {
+            "authorId": "2573615",
+            "name": "Mustafa Suleyman"
+        },
+        {
+            "authorId": "1685771",
+            "name": "Phil Blunsom"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "2a1483397106807e74ab422dd8330d56a3cc6db5",
+            "title": "The Neural Network Pushdown Automaton: Model, Stack and Learning Simulations"
+        },
+        {
+            "paperId": "b36b7f7c68923d14ba2859b5d28a1124616a8c89",
+            "title": "Transition-Based Dependency Parsing with Stack Long Short-Term Memory"
+        },
+        {
+            "paperId": "c9d7afd65b2127e6f0651bc7e13eeec1897ac8dd",
+            "title": "Reinforcement Learning Neural Turing Machines"
+        },
+        {
+            "paperId": "5259755f9c100e220ffaa7e08439c5d34be7757a",
+            "title": "Reinforcement Learning Neural Turing Machines - Revised"
+        },
+        {
+            "paperId": "a583af2696030bcf5f556edc74573fbee902be0b",
+            "title": "Weakly Supervised Memory Networks"
+        },
+        {
+            "paperId": "d38e8631bba0720becdaf7b89f79d9f9dca45d82",
+            "title": "Inferring Algorithmic Patterns with Stack-Augmented Recurrent Nets"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "c5145b1d15fea9340840cc8bb6f0e46e8934827f",
+            "title": "Understanding the exploding gradient problem"
+        },
+        {
+            "paperId": "7b4f3d0e4e2486a8d5d3f8e00549cf9a117bf88f",
+            "title": "Sequence Transduction with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "a97b5db17acc731ef67321832dbbaf5766153135",
+            "title": "Supervised Sequence Labelling with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "a538b05ebb01a40323997629e171c91aa28b8e2f",
+            "title": "Rectified Linear Units Improve Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": "62ac088d966d4a9122959f13301759c6bbda6c36",
+            "title": "Latent-Variable Modeling of String Transductions with Finite-State Methods"
+        },
+        {
+            "paperId": "31e105cac80aa8f1646dfb22c95d035564ea4998",
+            "title": "OpenFst: A General and Efficient Weighted Finite-State Transducer Library"
+        },
+        {
+            "paperId": "be4fd29e3225d8451b02683f1a32baef0483266a",
+            "title": "Ensembling neural networks: Many could be better than all"
+        },
+        {
+            "paperId": "b2e03d014ac0bf8df47821a2a3e10015c87ceda5",
+            "title": "Machine Translation with a Stochastic Grammatical Channel"
+        },
+        {
+            "paperId": "13b6eeb28328252a35cdcbe3ab8d09d2a9caf99d",
+            "title": "Stochastic Inversion Transduction Grammars and Bilingual Parsing of Parallel Corpora"
+        },
+        {
+            "paperId": "1811f708b8b7456a3708fabd2fd638da36bd7ba0",
+            "title": "Using Prior Knowledge in a {NNPDA} to Learn Context-Free Languages"
+        },
+        {
+            "paperId": null,
+            "title": "Lecture 6.5-rmsprop: Divide the gradient by a running average of its recent magnitude"
+        },
+        {
+            "paperId": "30110856f45fde473f1903f686aa365cf70ed4c7",
+            "title": "Learning Context-free Grammars: Capabilities and Limitations of a Recurrent Neural Network with an External Stack Memory (cid:3)"
+        },
+        {
+            "paperId": "40dbb25a15b63af3faccb81c8e64a3f5d659e07e",
+            "title": "The Theory of Parsing, Translation, and Compiling"
+        }
+    ]
+}

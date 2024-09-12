@@ -4,3 +4,4 @@ from .design import design
 from .evolve import evolve
 from .engine import engine
 from .prompt import prompt
+from .search import search

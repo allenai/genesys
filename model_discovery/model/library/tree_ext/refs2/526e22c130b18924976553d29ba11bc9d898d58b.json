@@ -1,0 +1,366 @@
+{
+    "paperId": "526e22c130b18924976553d29ba11bc9d898d58b",
+    "externalIds": {
+        "MAG": "2158349948",
+        "ArXiv": "0907.0786",
+        "DBLP": "journals/corr/abs-0907-0786",
+        "DOI": "10.1007/s10994-009-5106-x",
+        "CorpusId": 704519
+    },
+    "title": "Search-based structured prediction",
+    "abstract": null,
+    "venue": "Machine-mediated learning",
+    "year": 2009,
+    "referenceCount": 81,
+    "citationCount": 574,
+    "influentialCitationCount": 47,
+    "openAccessPdf": {
+        "url": "https://link.springer.com/content/pdf/10.1007/s10994-009-5106-x.pdf",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Searn is an algorithm for integrating search and learning to solve complex structured prediction problems such as those that occur in natural language, speech, computational biology, and vision and comes with a strong, natural theoretical guarantee: good performance on the derived classification problems implies goodperformance on the structured prediction problem."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1722360",
+            "name": "Hal Daum\u00e9"
+        },
+        {
+            "authorId": "2315815023",
+            "name": "John Langford"
+        },
+        {
+            "authorId": "2315815335",
+            "name": "Daniel Marcu"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "273dfbcb68080251f5e9ff38b4413d7bd84b10a1",
+            "title": "LIBSVM: A library for support vector machines"
+        },
+        {
+            "paperId": "7142185fd2e86e922f609562f30820cd7c5af7f4",
+            "title": "Advances in Neural Information Processing Systems (NIPS)"
+        },
+        {
+            "paperId": "6503a3d9fb204c2a08ecfcfe6ba5b815fc65a030",
+            "title": "Guided Learning for Bidirectional Sequence Classification"
+        },
+        {
+            "paperId": "685f806fb9ea12ab2795ada01b57a414a9d3e45d",
+            "title": "Large Margin Hidden Markov Models for Automatic Speech Recognition"
+        },
+        {
+            "paperId": "f3d831a9447ae7a8f9aa5c5beef8a28dbfacf352",
+            "title": "Estimating the \"Wrong\" Graphical Model: Benefits in the Computation-Limited Setting"
+        },
+        {
+            "paperId": "a28aeb725556736d3954d17e599b93367ff8dd3f",
+            "title": "Advances in Discriminative Parsing"
+        },
+        {
+            "paperId": "10d21ca7728cb3dd15731accedda9ea711d8a0f4",
+            "title": "An End-to-End Discriminative Approach to Machine Translation"
+        },
+        {
+            "paperId": "cc8fe65096cc0971aebe45c50c64a173b94a36d5",
+            "title": "Bayesian Query-Focused Summarization"
+        },
+        {
+            "paperId": "117a50fbdfd473e43e550c6103733e6cb4aecb4c",
+            "title": "Maximum margin planning"
+        },
+        {
+            "paperId": "f56405a2e323af6dcbbc0a94c08ecc9f94740242",
+            "title": "Discriminative Sentence Compression with Soft Syntactic Evidence"
+        },
+        {
+            "paperId": "dc97e7dbb821a4edfb5151bff4352655eedca9ee",
+            "title": "Large Margin Methods for Structured and Interdependent Output Variables"
+        },
+        {
+            "paperId": "944e1a7b2c5c62e952418d7684e3cade89c76f87",
+            "title": "A Framework for Learning Predictive Structures from Multiple Tasks and Unlabeled Data"
+        },
+        {
+            "paperId": "220611a719c9fd800ce9ee4af936814d73e43ef4",
+            "title": "Machine Translation as Lexicalized Parsing with Hooks"
+        },
+        {
+            "paperId": "9c6653ec2e01d379a77adb61d209020d75c9505b",
+            "title": "A Large-Scale Exploration of Effective Global Features for a Joint Entity Detection and Tracking Model"
+        },
+        {
+            "paperId": "e85ea7311e8fcc6c0a603ca39a74b99109e185e9",
+            "title": "Bidirectional Inference with the Easiest-First Strategy for Tagging Sequence Data"
+        },
+        {
+            "paperId": "1521e475bc6d8ed07c95a46ec099377a8584ba7d",
+            "title": "Error limiting reductions between classification tasks"
+        },
+        {
+            "paperId": "175c1bb60ee46dac56d942ef8c7339977b4ebb0e",
+            "title": "A support vector method for multivariate performance measures"
+        },
+        {
+            "paperId": "bc1955ec9542acf180ee67f33e72a6881977bd5e",
+            "title": "Relating reinforcement learning performance to classification performance"
+        },
+        {
+            "paperId": "a5c48c673b0d3152010e3374cac189314a13df10",
+            "title": "Learning as search optimization: approximate large margin methods for structured prediction"
+        },
+        {
+            "paperId": "8d56b2a75aa5624660b60787e1f38ee2c70d493a",
+            "title": "Learning structured prediction models: a large margin approach"
+        },
+        {
+            "paperId": "31274eabb84407e3bc2c1d14b804cb7bcc068111",
+            "title": "The Necessity of Syntactic Parsing for Semantic Role Labeling"
+        },
+        {
+            "paperId": "89c2b3bfcc309ce16c85d2ab0c8cac5295400715",
+            "title": "Stacked Sequential Learning"
+        },
+        {
+            "paperId": "64141d2e7a3cab0be864bbe2d5c7e0212fb17d27",
+            "title": "Learning and Inference over Constrained Output"
+        },
+        {
+            "paperId": "a89ac9902ccb889d096ec74f980fe8fc00940390",
+            "title": "Supervised and Unsupervised Learning for Sentence Compression"
+        },
+        {
+            "paperId": "221c9834f5a26d9156734003dd83ccd314e4c100",
+            "title": "Identifying gene and protein mentions in text using conditional random fields"
+        },
+        {
+            "paperId": "135ace829b6ad2ec9db040d8e5fd137034e83665",
+            "title": "Semi-Markov Conditional Random Fields for Information Extraction"
+        },
+        {
+            "paperId": "0606291dae96446e812ea8f09d9fbdc6acc3ec37",
+            "title": "Intricacies of Collins\u2019 Parsing Model"
+        },
+        {
+            "paperId": "41828fc3dab24784f95e6976e8aaa73f68e1840e",
+            "title": "Incremental Parsing with the Perceptron Algorithm"
+        },
+        {
+            "paperId": "94f5431413f2ad94a42d5fd5fd4ab30134f044d3",
+            "title": "Case-factor diagrams for structured probabilistic modeling"
+        },
+        {
+            "paperId": "0329663498462521483612649c0dffc85d9d9419",
+            "title": "Dynamic conditional random fields: factorized probabilistic models for labeling and segmenting sequence data"
+        },
+        {
+            "paperId": "a2182e5a37f5fc04ce23bd2f4d6b5070382c8c5e",
+            "title": "Gaussian process classification for segmenting and annotating sequences"
+        },
+        {
+            "paperId": "4b56b3008918d07165d765285808a11edd971091",
+            "title": "SVMTool: A general POS Tagger Generator Based on Support Vector Machines"
+        },
+        {
+            "paperId": "6c057bb2bfd42f316edd0972c43a78bd8acf6e92",
+            "title": "Fast and optimal decoding for machine translation"
+        },
+        {
+            "paperId": "0c450531e1121cfb657be5195e310217a4675397",
+            "title": "Max-Margin Markov Networks"
+        },
+        {
+            "paperId": "d925fca2d6859c43e4c91a53fca96528de0c28dc",
+            "title": "Policy Search by Dynamic Programming"
+        },
+        {
+            "paperId": "3fc44ff7f37ec5585310666c183c65e0a0bb2446",
+            "title": "Head-Driven Statistical Models for Natural Language Parsing"
+        },
+        {
+            "paperId": "757628481a4bddecd0b7bc63ecb5946f31a20f37",
+            "title": "Cost-sensitive learning by cost-proportionate example weighting"
+        },
+        {
+            "paperId": "6fe1db3f50a528b60c2cfc8f60c33073e07e031d",
+            "title": "Fast Methods for Kernel-Based Text Analysis"
+        },
+        {
+            "paperId": "c63bb976dc0d3a897f3b0920170a4c573ef904c6",
+            "title": "Automatic Evaluation of Summaries Using N-gram Co-occurrence Statistics"
+        },
+        {
+            "paperId": "23c3953fb45536c9129e86ac7a23098bd9f1381d",
+            "title": "Machine Learning for Sequential Data: A Review"
+        },
+        {
+            "paperId": "523b4ce1c2a1336962444abc1dec215756c2f3e6",
+            "title": "Approximately Optimal Approximate Reinforcement Learning"
+        },
+        {
+            "paperId": "16477724d72072898c9c9d7fb75e21c6ee54ff38",
+            "title": "An Alternate Objective Function for Markovian Fields"
+        },
+        {
+            "paperId": "5a7958b418bceb48a315384568091ab1898b1640",
+            "title": "Discriminative Training Methods for Hidden Markov Models: Theory and Experiments with Perceptron Algorithms"
+        },
+        {
+            "paperId": "b4d4304597b6a6c56e71846f68d5eb64385837d3",
+            "title": "A Noisy-Channel Model for Document Compression"
+        },
+        {
+            "paperId": "9c1a028299cc2b7f4cbdbe6e19abfc844a6ead6b",
+            "title": "From Single to Multi-document Summarization"
+        },
+        {
+            "paperId": "fa07fa673d8c908e91d22c4566572a72548ccee9",
+            "title": "Summarization beyond sentence extraction: A probabilistic approach to sentence compression"
+        },
+        {
+            "paperId": "cfc6d0c8260594ebc5dd20ee558d29b1014ed41a",
+            "title": "On the Algorithmic Implementation of Multiclass Kernel-based Vector Machines"
+        },
+        {
+            "paperId": "8f96cb4cfc30edaeada36d18336b0e04f9119114",
+            "title": "Learn"
+        },
+        {
+            "paperId": "3fab92869cfab684b3ffb1c16a771e9c3b774acd",
+            "title": "The Use of Classifiers in Sequential Inference"
+        },
+        {
+            "paperId": "dd5514876b7e1c09b6d2f931d90bb34aa3501441",
+            "title": "Fast Decoding and Optimal Decoding for Machine Translation"
+        },
+        {
+            "paperId": "f4ba954b0412773d047dc41231c733de0c1f4926",
+            "title": "Conditional Random Fields: Probabilistic Models for Segmenting and Labeling Sequence Data"
+        },
+        {
+            "paperId": "6ffea7929f0e4bbee9e98755eb3d8fc09e89cf4e",
+            "title": "Chunking with Support Vector Machines"
+        },
+        {
+            "paperId": "d51fe3976ab4f4dc60745433c8638a2ecc3bf123",
+            "title": "PEGASUS: A policy search method for large MDPs and POMDPs"
+        },
+        {
+            "paperId": "bece46ed303f8eaef2affae2cba4e0aef51fe636",
+            "title": "Maximum Entropy Markov Models for Information Extraction and Segmentation"
+        },
+        {
+            "paperId": "2479a5cf6cefefb83166c612564787414e47131f",
+            "title": "Large Margin Classification Using the Perceptron Algorithm"
+        },
+        {
+            "paperId": "a56ef182b5d7484ed4bd3602cfe7829ed53636f6",
+            "title": "On the complexity of protein folding (extended abstract)"
+        },
+        {
+            "paperId": "d9c71db75046473f0e3d3229950d7c84c09afd5e",
+            "title": "Text Chunking using Transformation-Based Learning"
+        },
+        {
+            "paperId": "04dbac7624026a74aa9dff920b52a228975b437a",
+            "title": "The steiner problem in phylogeny is NP-complete"
+        },
+        {
+            "paperId": "5d11aad09f65431b5d3cb1d85328743c9e53ba96",
+            "title": "The perceptron: a probabilistic model for information storage and organization in the brain."
+        },
+        {
+            "paperId": "e1d77997b84c56a4d1865f4386a04c820fd1491a",
+            "title": "Practical structured learning techniques for natural language processing"
+        },
+        {
+            "paperId": null,
+            "title": "Personal communication , June 2006 ."
+        },
+        {
+            "paperId": null,
+            "title": "Doing named entity recognition? Don't optimize for F 1 . Post on the NLPers Blog"
+        },
+        {
+            "paperId": null,
+            "title": "Lower bounds for reductions. In The atomic learning workshop (TTI-C)"
+        },
+        {
+            "paperId": "643e3a133916e2affb0181e1e35c910c123b7f9d",
+            "title": "Feature Bagging: Preventing Weight Undertraining in Structured Discriminative Learning"
+        },
+        {
+            "paperId": "4e95782aabb9cd083ea2c03d57135576978cc8ac",
+            "title": "NUS at DUC 2005: Understanding Documents via Concept Links"
+        },
+        {
+            "paperId": null,
+            "title": "Fifth document understanding conference (DUC-2005)"
+        },
+        {
+            "paperId": null,
+            "title": "Large margin online learning algorithms for scalable structured classi\ufb01cation"
+        },
+        {
+            "paperId": "2c6e8c365ee78cbbb2e6278b5329710063a297ea",
+            "title": "Optimizing F-Measure with Support Vector Machines"
+        },
+        {
+            "paperId": null,
+            "title": "American Chapter of the Association for Computational Linguistics and Human Language Technology (NAACL/HLT)"
+        },
+        {
+            "paperId": "359300ac4a78687d60e18681925709b404b8fa54",
+            "title": "Kernel Dependency Estimation"
+        },
+        {
+            "paperId": "4a7d40ba2e553ab481526b2b6e6df5bd2cd9952f",
+            "title": "Applying Support Vector Machines to the TREC-2001 Batch Filtering and Routing Tasks"
+        },
+        {
+            "paperId": null,
+            "title": "Single Monte-Carlo sampling: draw a single path and use the corresponding cost, with tied randomization as per Pegasus"
+        },
+        {
+            "paperId": "492cbadcc1bb2875209004e6ad93f391d2e6cf9b",
+            "title": "On the Complexity of Protein Folding"
+        },
+        {
+            "paperId": "343219e299d980873c72f37c21841a0ea54b2c1d",
+            "title": "Sentence extraction as a classification task"
+        },
+        {
+            "paperId": "d3b97beda33f190487eaeb411ee81627f2efcff6",
+            "title": "A comparison of approaches to on-line handwritten character recognition"
+        },
+        {
+            "paperId": null,
+            "title": "Arti\ufb01cial intelligence: a modern approach"
+        },
+        {
+            "paperId": "eff5625ea1fd51a6675f86827f719b68a9e1591a",
+            "title": "Bayesian Summarization at DUC and a Suggestion for Extrinsic Evaluation"
+        },
+        {
+            "paperId": null,
+            "title": "Monte-Carlo sampling: one draws many paths according to h beginning at s (cid:8) and average over the costs"
+        },
+        {
+            "paperId": null,
+            "title": "Labeled structured prediction training data"
+        },
+        {
+            "paperId": null,
+            "title": "Search-based Structured Prediction"
+        },
+        {
+            "paperId": null,
+            "title": "A known loss function"
+        }
+    ]
+}

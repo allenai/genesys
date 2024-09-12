@@ -1,0 +1,125 @@
+{
+    "paperId": "7b9dfa74e2df9b659934e73482b374a6b2b62600",
+    "externalIds": {
+        "MAG": "2129342593",
+        "DBLP": "conf/icml/KalaitzisLLZ13",
+        "CorpusId": 14020951
+    },
+    "title": "The Bigraphical Lasso",
+    "abstract": "The i.i.d. assumption in machine learning is endemic, but often flawed. Complex data sets exhibit partial correlations between both instances and features. A model specifying both types of correlation can have a number of parameters that scales quadratically with the number of features and data points. We introduce the bigraphical lasso, an estimator for precision matrices of matrix-normals based on the Cartesian product of graphs. A prominent product in spectral graph theory, this structure has appealing properties for regression, enhanced sparsity and interpretability. To deal with the parameter explosion we introduce l1 penalties and fit the model through a flip-flop algorithm that results in a linear number of lasso regressions. We demonstrate the performance of our approach with simulations and an example from the COIL image data set.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2013,
+    "referenceCount": 21,
+    "citationCount": 44,
+    "influentialCitationCount": 10,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The bigraphical lasso is introduced, an estimator for precision matrices of matrix-normals based on the Cartesian product of graph theory, a prominent product in spectral graph theory that has appealing properties for regression, enhanced sparsity and interpretability."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1815080",
+            "name": "Freddie Kalaitzis"
+        },
+        {
+            "authorId": "1739581",
+            "name": "J. Lafferty"
+        },
+        {
+            "authorId": "145306271",
+            "name": "Neil D. Lawrence"
+        },
+        {
+            "authorId": "33542690",
+            "name": "Shuheng Zhou"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "3eacf6a59043385e9244192656fef27e865c7c91",
+            "title": "Sparse Matrix Graphical Models"
+        },
+        {
+            "paperId": "407b18c598f775d1e268e46cbd6c1b8e3c583af6",
+            "title": "On Convergence of Kronecker Graphical Lasso Algorithms"
+        },
+        {
+            "paperId": "430e4ebbe8be1ec46d2725f8348a823bd9b1d694",
+            "title": "Efficient inference in matrix-variate Gaussian models with \\iid observation noise"
+        },
+        {
+            "paperId": "744785be39435883b65d8badcb423e1584a3fabf",
+            "title": "Learning Multiple Tasks with a Sparse Matrix-Normal Penalty"
+        },
+        {
+            "paperId": "4b090d17e728a48cb6b6dfab2038469cbfff2f96",
+            "title": "A Unifying Probabilistic Perspective for Spectral Dimensionality Reduction: Insights and New Models"
+        },
+        {
+            "paperId": "a83bfe8999ba5f6c4baceb03e7a212a9d3b18e00",
+            "title": "Topics in Graph Theory: Graphs and Their Cartesian Product"
+        },
+        {
+            "paperId": "10d10df314c1b58f5c83629e73a35185876cd4e2",
+            "title": "Multi-task Gaussian Process Prediction"
+        },
+        {
+            "paperId": "8d60f04d9677f1a5c439b6b1cef41606bd0ca646",
+            "title": "Probabilistic Non-linear Principal Component Analysis with Gaussian Process Latent Variable Models"
+        },
+        {
+            "paperId": "0ca9e4ef717ce1c1f251508e920c4b9400f84443",
+            "title": "Multivariate Geostatistics"
+        },
+        {
+            "paperId": "58db9852fedd50a4732e3c174383710422c32ecc",
+            "title": "Variable Selection via Nonconcave Penalized Likelihood and its Oracle Properties"
+        },
+        {
+            "paperId": "f0a3e1752e1146da927adc24ae07144ab2e744ec",
+            "title": "Nonlinear dimensionality reduction by locally linear embedding."
+        },
+        {
+            "paperId": "1655a0a81de71b713a283006dac3b1b5e9e756cc",
+            "title": "Matrix Variate Distributions"
+        },
+        {
+            "paperId": "c0a27ece169b14fd5b2190c776fc59aa2425b892",
+            "title": "The mle algorithm for the matrix normal distribution"
+        },
+        {
+            "paperId": "c3fe6c2e7009c89baba89589e12016c4c5512d12",
+            "title": "A note on the efficiency of seemingly unrelated regression"
+        },
+        {
+            "paperId": "6bf4e723fec2f0d9ff11fff4b96ebdb5296c2866",
+            "title": "Some matrix-variate distribution theory: Notational considerations and a Bayesian application"
+        },
+        {
+            "paperId": null,
+            "title": "An Efficient Method of Estimating Seemingly Unrelated Regressions and Tests for Aggregation Bias"
+        },
+        {
+            "paperId": "2e643248b0580292f6d3bdcb731f7f0c00f95907",
+            "title": "A Markov Property for Covariance Structures"
+        },
+        {
+            "paperId": "9c1e8ad4b51e69d2ce8cd20fb4988974269453da",
+            "title": "Probabilistic Principal Component Analysis"
+        },
+        {
+            "paperId": null,
+            "title": "Graphical models, volume 17"
+        },
+        {
+            "paperId": "efdcc9d121825adee070a8f28e090d586569773c",
+            "title": "Graph multiplication"
+        },
+        {
+            "paperId": "5006e66095e3a42634e5ee4de59f10220c204778",
+            "title": "Model Selection Through Sparse Max Likelihood Estimation Model Selection Through Sparse Maximum Likelihood Estimation for Multivariate Gaussian or Binary Data"
+        }
+    ]
+}

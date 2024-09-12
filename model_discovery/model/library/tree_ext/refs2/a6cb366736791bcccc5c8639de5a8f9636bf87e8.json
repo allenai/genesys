@@ -1,0 +1,138 @@
+{
+    "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+    "externalIds": {
+        "MAG": "2964121744",
+        "DBLP": "journals/corr/KingmaB14",
+        "ArXiv": "1412.6980",
+        "CorpusId": 6628106
+    },
+    "title": "Adam: A Method for Stochastic Optimization",
+    "abstract": "We introduce Adam, an algorithm for first-order gradient-based optimization of stochastic objective functions, based on adaptive estimates of lower-order moments. The method is straightforward to implement, is computationally efficient, has little memory requirements, is invariant to diagonal rescaling of the gradients, and is well suited for problems that are large in terms of data and/or parameters. The method is also appropriate for non-stationary objectives and problems with very noisy and/or sparse gradients. The hyper-parameters have intuitive interpretations and typically require little tuning. Some connections to related algorithms, on which Adam was inspired, are discussed. We also analyze the theoretical convergence properties of the algorithm and provide a regret bound on the convergence rate that is comparable to the best known results under the online convex optimization framework. Empirical results demonstrate that Adam works well in practice and compares favorably to other stochastic optimization methods. Finally, we discuss AdaMax, a variant of Adam based on the infinity norm.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2014,
+    "referenceCount": 26,
+    "citationCount": 139149,
+    "influentialCitationCount": 21930,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces Adam, an algorithm for first-order gradient-based optimization of stochastic objective functions, based on adaptive estimates of lower-order moments, and provides a regret bound on the convergence rate that is comparable to the best known results under the online convex optimization framework."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1726807",
+            "name": "Diederik P. Kingma"
+        },
+        {
+            "authorId": "2503659",
+            "name": "Jimmy Ba"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "5f5dc5b9a2ba710937e2c413b37b053cd673df02",
+            "title": "Auto-Encoding Variational Bayes"
+        },
+        {
+            "paperId": "af0ee019dcc1fe7eab918e3c670a6c47e48d17f6",
+            "title": "Fast large-scale optimization by unifying stochastic gradient and quasi-Newton methods"
+        },
+        {
+            "paperId": "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17",
+            "title": "Generating Sequences With Recurrent Neural Networks"
+        },
+        {
+            "paperId": "ec92efde21707ddf4b81f301cd58e2051c1a2443",
+            "title": "Fast dropout training"
+        },
+        {
+            "paperId": "aa7bfd2304201afbb19971ebde87b17e40242e91",
+            "title": "On the importance of initialization and momentum in deep learning"
+        },
+        {
+            "paperId": "6bdccfe195bc49d218acc5be750aa49e41f408e4",
+            "title": "Recent advances in deep learning for speech research at Microsoft"
+        },
+        {
+            "paperId": "4177ec52d1b80ed57f2e72b0f9a42365f1a8598d",
+            "title": "Speech recognition with deep recurrent neural networks"
+        },
+        {
+            "paperId": "e8f95ccfd13689f672c39dca3eccf1c484533bcc",
+            "title": "Revisiting Natural Gradient for Deep Networks"
+        },
+        {
+            "paperId": "8729441d734782c3ed532a7d2d9611b438c0a09a",
+            "title": "ADADELTA: An Adaptive Learning Rate Method"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "0060745e006c5f14ec326904119dca19c6545e51",
+            "title": "Improving neural networks by preventing co-adaptation of feature detectors"
+        },
+        {
+            "paperId": "e5a685f40338f9c2f3e68e142efa217aad16dd56",
+            "title": "No more pesky learning rates"
+        },
+        {
+            "paperId": "7658cecad68afc970f18cadbf6390439b17def87",
+            "title": "Non-Asymptotic Analysis of Stochastic Approximation Algorithms for Machine Learning"
+        },
+        {
+            "paperId": "1c61f9ef06fe74505775a833ff849185757199e7",
+            "title": "Learning Word Vectors for Sentiment Analysis"
+        },
+        {
+            "paperId": "413c1142de9d91804d6d11c67ff3fed59c9fc279",
+            "title": "Adaptive Subgradient Methods for Online Learning and Stochastic Optimization"
+        },
+        {
+            "paperId": "f7cc843c318d8862357485488971b26527ef1a8e",
+            "title": "A fast natural Newton method"
+        },
+        {
+            "paperId": "e1f153c6df86d1ca8ecb9561daddfe7a54f901e7",
+            "title": "Online Convex Programming and Generalized Infinitesimal Gradient Ascent"
+        },
+        {
+            "paperId": "5a767a341364de1f75bea85e0b12ba7d3586a461",
+            "title": "Natural Gradient Works Efficiently in Learning"
+        },
+        {
+            "paperId": "6dc61f37ecc552413606d8c89ffbc46ec98ed887",
+            "title": "Acceleration of stochastic approximation by averaging"
+        },
+        {
+            "paperId": "2991f9bb677b71c33945e89ac0c7dcf7a36fa198",
+            "title": "Efficient Estimations from a Slowly Convergent Robbins-Monro Process"
+        },
+        {
+            "paperId": "31868290adf1c000c611dfc966b514d5a34e8d23",
+            "title": "FUNDAMENTAL TECHNOLOGIES IN MODERN SPEECH RECOGNITION Digital Object Identifier 10.1109/MSP.2012.2205597"
+        },
+        {
+            "paperId": null,
+            "title": "Lecture 6.5 - RMSProp, COURSERA: Neural Networks for Machine Learning"
+        },
+        {
+            "paperId": "c50dca78e97e335d362d6b991ae0e1448914e9a3",
+            "title": "Reducing the Dimensionality of Data with Neural"
+        },
+        {
+            "paperId": "7c59908c946a4157abc030cdbe2b63d08ba97db3",
+            "title": "Supporting Online Material for Reducing the Dimensionality of Data with Neural Networks"
+        },
+        {
+            "paperId": null,
+            "title": "\u2022 Works well in practice and compares favorably to other stochastic optimization methods"
+        },
+        {
+            "paperId": null,
+            "title": "\u25cb default configuration parameters do well on most problems"
+        }
+    ]
+}

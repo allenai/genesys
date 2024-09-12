@@ -1,0 +1,162 @@
+{
+    "paperId": "f445493badf53febbaeab340a4fca98d9e4ab7f7",
+    "externalIds": {
+        "MAG": "2806021783",
+        "DBLP": "journals/corr/abs-1806-00451",
+        "ArXiv": "1806.00451",
+        "CorpusId": 44141423
+    },
+    "title": "Do CIFAR-10 Classifiers Generalize to CIFAR-10?",
+    "abstract": "Machine learning is currently dominated by largely experimental work focused on improvements in a few key tasks. However, the impressive accuracy numbers of the best performing models are questionable because the same test sets have been used to select these models for multiple years now. To understand the danger of overfitting, we measure the accuracy of CIFAR-10 classifiers by creating a new test set of truly unseen images. Although we ensure that the new test set is as close to the original data distribution as possible, we find a large drop in accuracy (4% to 10%) for a broad range of deep learning models. Yet more recent models with higher original accuracy show a smaller drop and better overall performance, indicating that this drop is likely not due to overfitting based on adaptivity. Instead, we view our results as evidence that current accuracy numbers are brittle and susceptible to even minute natural variations in the data distribution.",
+    "venue": "arXiv.org",
+    "year": 2018,
+    "referenceCount": 30,
+    "citationCount": 375,
+    "influentialCitationCount": 30,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work measures the accuracy of CIFAR-10 classifiers by creating a new test set of truly unseen images and finds a large drop in accuracy for a broad range of deep learning models."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "9229182",
+            "name": "B. Recht"
+        },
+        {
+            "authorId": "40458654",
+            "name": "R. Roelofs"
+        },
+        {
+            "authorId": "152772922",
+            "name": "Ludwig Schmidt"
+        },
+        {
+            "authorId": "34961417",
+            "name": "Vaishaal Shankar"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "653715c1854b2f575054249f04d3dda02846dca3",
+            "title": "ShakeDrop regularization"
+        },
+        {
+            "paperId": "50bdda28de3dcf82a0e10f9ec13eea248b19edb5",
+            "title": "Regularized Evolution for Image Classifier Architecture Search"
+        },
+        {
+            "paperId": "430de87a0a8996bc93b1998f9a6261f7558a5679",
+            "title": "Generalization in Deep Learning"
+        },
+        {
+            "paperId": "eb35fdc11a325f21a8ce0ca65058f7480a2fc91f",
+            "title": "Improved Regularization of Convolutional Neural Networks with Cutout"
+        },
+        {
+            "paperId": "d0611891b9e8a7c5731146097b6f201578f47b2f",
+            "title": "Learning Transferable Architectures for Scalable Image Recognition"
+        },
+        {
+            "paperId": "3fea412361b2d14cb3c6723968b421c1c8cb38e8",
+            "title": "Shake-Shake regularization"
+        },
+        {
+            "paperId": "f6e0856b4a9199fa968ac00da612a9407b5cb85c",
+            "title": "Aggregated Residual Transformations for Deep Neural Networks"
+        },
+        {
+            "paperId": "5bdf07c9897ca70788fff61dec56178a2bd0c29c",
+            "title": "Deep Pyramidal Residual Networks"
+        },
+        {
+            "paperId": "5694e46284460a648fe29117cbc55f6c9be3fa3c",
+            "title": "Densely Connected Convolutional Networks"
+        },
+        {
+            "paperId": "1c4e9156ca07705531e45960b7a919dc473abb51",
+            "title": "Wide Residual Networks"
+        },
+        {
+            "paperId": "77f0a39b8e02686fd85b01971f8feb7f60971f80",
+            "title": "Identity Mappings in Deep Residual Networks"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "ae708bf2cd98fb583c92bd05b5584e117c5b273a",
+            "title": "Very deep convolutional neural network based image classification using small training sample size"
+        },
+        {
+            "paperId": "848e3ed9b9b14f648b63ea66cbf2a5663bd22fdd",
+            "title": "The Ladder: A Reliable Leaderboard for Machine Learning Competitions"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "0060745e006c5f14ec326904119dca19c6545e51",
+            "title": "Improving neural networks by preventing co-adaptation of feature detectors"
+        },
+        {
+            "paperId": "be9a17321537d9289875fe475b71f4821457b435",
+            "title": "An Analysis of Single-Layer Networks in Unsupervised Feature Learning"
+        },
+        {
+            "paperId": "47aa6d7381cc9993da60e4547b01f415a04f3cf2",
+            "title": "Weighted Sums of Random Kitchen Sinks: Replacing minimization with randomization in learning"
+        },
+        {
+            "paperId": "68c03788224000794d5491ab459be0b2a2c38677",
+            "title": "WordNet: A Lexical Database for English"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        },
+        {
+            "paperId": null,
+            "title": "collecting about 2000 new images"
+        },
+        {
+            "paperId": "54d2b5c64a67f65c5dd812b89e07973f97699552",
+            "title": "Ieee Transactions on Pattern Analysis and Machine Intelligence 1 80 Million Tiny Images: a Large Dataset for Non-parametric Object and Scene Recognition"
+        },
+        {
+            "paperId": null,
+            "title": "Popular datasets over time"
+        },
+        {
+            "paperId": null,
+            "title": "batch size 128, lr 0.5, shared gradient input, 4 GPUS \u2022 shake_shake_32d : Shake-shake [4] with depth 26, base channels 32, S-S-I model \u2022 shake_shake_64d: Shake-shake [4] with depth 26"
+        },
+        {
+            "paperId": null,
+            "title": "ResNeXt [20] with depth 29, cardinality 8, base channels 64, batch size 64 and initial learning rate 0"
+        },
+        {
+            "paperId": null,
+            "title": "Shake-shake [4] with depth 26, base channels 96, S-S-I model \u2022 shake_shake_64d_cutout: Shake-shake [4] with depth 26, base channels 64, S-S-I model"
+        },
+        {
+            "paperId": null,
+            "title": "\u201cExplaining the Gap\""
+        },
+        {
+            "paperId": null,
+            "title": "PyramidNet [6] with depth 110, block type \"basic"
+        },
+        {
+            "paperId": null,
+            "title": "Random 1 layer convolutional network with 256k filters sampled from image patches, patch size = 6, pool size 15"
+        }
+    ]
+}

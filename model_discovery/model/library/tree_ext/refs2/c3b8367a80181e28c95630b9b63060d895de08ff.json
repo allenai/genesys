@@ -1,0 +1,222 @@
+{
+    "paperId": "c3b8367a80181e28c95630b9b63060d895de08ff",
+    "externalIds": {
+        "DBLP": "conf/naacl/LiuGHDDW15",
+        "ACL": "N15-1092",
+        "MAG": "2295072214",
+        "DOI": "10.3115/v1/N15-1092",
+        "CorpusId": 11754890
+    },
+    "title": "Representation Learning Using Multi-Task Deep Neural Networks for Semantic Classification and Information Retrieval",
+    "abstract": "Methods of deep neural networks (DNNs) have recently demonstrated superior performance on a number of natural language processing tasks. However, in most previous work, the models are learned based on either unsupervised objectives, which does not directly optimize the desired task, or singletask supervised objectives, which often suffer from insufficient training data. We develop a multi-task DNN for learning representations across multiple tasks, not only leveraging large amounts of cross-task data, but also benefiting from a regularization effect that leads to more general representations to help tasks in new domains. Our multi-task DNN approach combines tasks of multiple-domain classification (for query classification) and information retrieval (ranking for web search), and demonstrates significant gains over strong baselines in a comprehensive set of domain adaptation.",
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2015,
+    "referenceCount": 42,
+    "citationCount": 422,
+    "influentialCitationCount": 21,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/N15-1092.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work develops a multi-task DNN for learning representations across multiple tasks, not only leveraging large amounts of cross-task data, but also benefiting from a regularization effect that leads to more general representations to help tasks in new domains."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2108860856",
+            "name": "Xiaodong Liu"
+        },
+        {
+            "authorId": "1800422",
+            "name": "Jianfeng Gao"
+        },
+        {
+            "authorId": "144137069",
+            "name": "Xiaodong He"
+        },
+        {
+            "authorId": "144718788",
+            "name": "L. Deng"
+        },
+        {
+            "authorId": "1800354",
+            "name": "Kevin Duh"
+        },
+        {
+            "authorId": "30844359",
+            "name": "Ye-Yi Wang"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "60dda7f5efd67758bde1ee7f45e6d3ef86445495",
+            "title": "Deep Recursive Neural Networks for Compositionality in Language"
+        },
+        {
+            "paperId": "7e8d5a108c28cdfb92f419ce919fbf7993dfebfc",
+            "title": "A Latent Semantic Model with Convolutional-Pooling Structure for Information Retrieval"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "921da70f380e9f9082e5594b128369cfd0fdf120",
+            "title": "A Neural Network for Factoid Question Answering over Paragraphs"
+        },
+        {
+            "paperId": "3f3d110cf78f759760c354bfde1b2ceb9883c544",
+            "title": "Evaluating Neural Word Representations in Tensor-Based Compositional Settings"
+        },
+        {
+            "paperId": "3cfbb77e5a0e24772cfdb2eb3d4f35dead54b118",
+            "title": "Don\u2019t count, predict! A systematic comparison of context-counting vs. context-predicting semantic vectors"
+        },
+        {
+            "paperId": "34992ceb89e251f2ed5c1a792fbd594bcf8246c2",
+            "title": "Learning Continuous Phrase Representations for Translation Modeling"
+        },
+        {
+            "paperId": "f3de86aeb442216a8391befcacb49e58b478f512",
+            "title": "Distributed Representations of Sentences and Documents"
+        },
+        {
+            "paperId": "27725a2d2a8cee9bf9fffc6c2167017103aba0fa",
+            "title": "A Convolutional Neural Network for Modelling Sentences"
+        },
+        {
+            "paperId": "53ca064b9f1b92951c1997e90b776e95b0880e52",
+            "title": "Learning word embeddings efficiently with noise-contrastive estimation"
+        },
+        {
+            "paperId": "fdb813d8b927bdd21ae1858cafa6c34b66a36268",
+            "title": "Learning deep structured semantic models for web search using clickthrough data"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "687bac2d3320083eb4530bf18bb8f8f721477600",
+            "title": "Recursive Deep Models for Semantic Compositionality Over a Sentiment Treebank"
+        },
+        {
+            "paperId": "c4fd9c86b2b41df51a6fe212406dda81b1997fd4",
+            "title": "Linguistic Regularities in Continuous Space Word Representations"
+        },
+        {
+            "paperId": "b305c18d17fd6a17e8e52a21bcd680220d322cc3",
+            "title": "Neural Networks: Tricks of the Trade"
+        },
+        {
+            "paperId": "f2f72cfb48d15d4d2bd1e91a92e7f3ac8635d433",
+            "title": "Joint Learning of Words and Meaning Representations for Open-Text Semantic Parsing"
+        },
+        {
+            "paperId": "83e89037edfa113cf15b01a218cfcf12c6463bcb",
+            "title": "Clickthrough-based latent semantic models for web search"
+        },
+        {
+            "paperId": "bc1022b031dc6c7019696492e8116598097a8c12",
+            "title": "Natural Language Processing (Almost) from Scratch"
+        },
+        {
+            "paperId": "413c1142de9d91804d6d11c67ff3fed59c9fc279",
+            "title": "Adaptive Subgradient Methods for Online Learning and Stochastic Optimization"
+        },
+        {
+            "paperId": "981124696585b4a7db5c217fa4e066e3850a9eae",
+            "title": "Clickthrough-based translation models for web search: from word models to phrase models"
+        },
+        {
+            "paperId": "8492070dc4031ed825e95e4803781752bb5e909f",
+            "title": "Word Representations: A Simple and General Method for Semi-Supervised Learning"
+        },
+        {
+            "paperId": "a9fee459ed211f53bfadef22e3ab774d0e927358",
+            "title": "Computing Semantic Relatedness Using Wikipedia-based Explicit Semantic Analysis"
+        },
+        {
+            "paperId": "0a3a68dfbd5dc1c51bac29b7716497efbf9dd987",
+            "title": "Query enrichment for web-query classification"
+        },
+        {
+            "paperId": "63aaf12163fe9735dfe9a69114937c4fa34f303a",
+            "title": "Learning to rank using gradient descent"
+        },
+        {
+            "paperId": "211d7f4534bb3d98893fad74e0690e17b1861942",
+            "title": "A Study of Smoothing Methods for Language Models Applied to Ad Hoc Information Retrieval"
+        },
+        {
+            "paperId": "93b9d22e6b1f3fc05feba3c5c3922a23dce09ea9",
+            "title": "IR evaluation methods for retrieving highly relevant documents"
+        },
+        {
+            "paperId": "69a2479a49154e3bd51e44e636ab5692ed20b142",
+            "title": "Probabilistic Latent Semantic Indexing"
+        },
+        {
+            "paperId": "3f600e6c6cf93e78c9e6e690443d6d22c4bf18b9",
+            "title": "Nonlinear Component Analysis as a Kernel Eigenvalue Problem"
+        },
+        {
+            "paperId": "e65c869dc481c1aaa3293625ae35ace6f98e3916",
+            "title": "Principal component neural networks \u2014 Theory and applications"
+        },
+        {
+            "paperId": "161ffb54a3fdf0715b198bb57bd22f910242eb49",
+            "title": "Multitask Learning"
+        },
+        {
+            "paperId": "48ddd9101a90fe65e3061de69626741b843ff5e4",
+            "title": "The use of the area under the ROC curve in the evaluation of machine learning algorithms"
+        },
+        {
+            "paperId": "164125a65d42a791d2c1e108559344caef96d08b",
+            "title": "Indexing by Latent Semantic Analysis"
+        },
+        {
+            "paperId": "1e7cf9047604f39e517951d129b2b3eecf9e1cfb",
+            "title": "Modeling Interestingness with Deep Neural Networks"
+        },
+        {
+            "paperId": "a14045a751f5d8ed387c8630a86a3a2861b90643",
+            "title": "A Fast and Accurate Dependency Parser using Neural Networks"
+        },
+        {
+            "paperId": "c7e9224d7d9ee2e9673a4bc1c3c92e0b25ad8c3b",
+            "title": "Frege in Space: A Program of Compositional Distributional Semantics"
+        },
+        {
+            "paperId": "4574d77fff19e093782178595a8988a7f3aa1969",
+            "title": "Latent Dirichlet Allocation"
+        },
+        {
+            "paperId": "b1a5961609c623fc816aaa77565ba38b25531a8e",
+            "title": "Neural Networks: Tricks of the Trade"
+        },
+        {
+            "paperId": "054080d32f41ec461758fdc382935a45b033836b",
+            "title": "A study of smoothing methods for language models applied to Ad Hoc information retrieval"
+        },
+        {
+            "paperId": "3464374899e799cbd516d00f75e425efd495150e",
+            "title": "IR evaluation methods for retrieving highly relevant documents"
+        },
+        {
+            "paperId": "2f1a9350fd8141bcda3068aec33aef385d5c02eb",
+            "title": "Principal Component Neural Networks: Theory and Applications"
+        },
+        {
+            "paperId": null,
+            "title": "Methods in Natural"
+        },
+        {
+            "paperId": null,
+            "title": "we use the liblinear to build SVM classi\ufb01ers and optimize the corresponding parameter C by using 5-fold cross-validation in training data"
+        }
+    ]
+}

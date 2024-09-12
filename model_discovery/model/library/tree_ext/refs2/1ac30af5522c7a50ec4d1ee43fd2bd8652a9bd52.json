@@ -1,0 +1,219 @@
+{
+    "paperId": "1ac30af5522c7a50ec4d1ee43fd2bd8652a9bd52",
+    "externalIds": {
+        "MAG": "2952820801",
+        "ArXiv": "1509.00685",
+        "DBLP": "journals/corr/RushCW15",
+        "ACL": "D15-1044",
+        "DOI": "10.18653/v1/D15-1044",
+        "CorpusId": 1918428
+    },
+    "title": "A Neural Attention Model for Abstractive Sentence Summarization",
+    "abstract": "Summarization based on text extraction is inherently limited, but generation-style abstractive methods have proven challenging to build. In this work, we propose a fully data-driven approach to abstractive sentence summarization. Our method utilizes a local attention-based model that generates each word of the summary conditioned on the input sentence. While the model is structurally simple, it can easily be trained end-to-end and scales to a large amount of training data. The model shows significant performance gains on the DUC-2004 shared task compared with several strong baselines.",
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2015,
+    "referenceCount": 44,
+    "citationCount": 2618,
+    "influentialCitationCount": 279,
+    "openAccessPdf": {
+        "url": "https://aclanthology.org/D15-1044.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a fully data-driven approach to abstractive sentence summarization by utilizing a local attention-based model that generates each word of the summary conditioned on the input sentence."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2531268",
+            "name": "Alexander M. Rush"
+        },
+        {
+            "authorId": "3295092",
+            "name": "S. Chopra"
+        },
+        {
+            "authorId": "145183709",
+            "name": "J. Weston"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "b064b714107ffc724e0d477f4083e9e507c22fec",
+            "title": "Sentence Compression by Deletion with LSTMs"
+        },
+        {
+            "paperId": "1956c239b3552e030db1b78951f64781101125ed",
+            "title": "Addressing the Rare Word Problem in Neural Machine Translation"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "2f5102ec3f70d0dea98c957cc2cab4d15d83a2da",
+            "title": "The Stanford CoreNLP Natural Language Processing Toolkit"
+        },
+        {
+            "paperId": "944a1cfd79dbfb6fef460360a0765ba790f4027a",
+            "title": "Recurrent Continuous Translation Models"
+        },
+        {
+            "paperId": "5f176a929d9eaa569b430cb784280802cf8fca79",
+            "title": "Overcoming the Lack of Parallel Data in Sentence Compression"
+        },
+        {
+            "paperId": "50dfb7358cc85cc7ab0eda68c517164ebd205d42",
+            "title": "Sentence Simplification by Monolingual Machine Translation"
+        },
+        {
+            "paperId": "0060745e006c5f14ec326904119dca19c6545e51",
+            "title": "Improving neural networks by preventing co-adaptation of feature detectors"
+        },
+        {
+            "paperId": "1d1d8900596aec8759239e2739f777a9ed77b717",
+            "title": "Annotated Gigaword"
+        },
+        {
+            "paperId": "77dfe038a9bdab27c4505444931eaa976e9ec667",
+            "title": "Empirical Evaluation and Combination of Advanced Language Modeling Techniques"
+        },
+        {
+            "paperId": "b5766259b181803f27ea4e908e6e34aa0395d0ea",
+            "title": "Z-MERT: A Fully Configurable Open Source Tool for Minimum Error Rate Training of Machine Translation Systems"
+        },
+        {
+            "paperId": "9c818fe59a76b242dcca62579bd353fe9cf01c0d",
+            "title": "Sentence Compression Beyond Word Deletion"
+        },
+        {
+            "paperId": "19e8869f4c29353de0d9b52542c1fe9def4cbc7d",
+            "title": "Introduction to Information Retrieval"
+        },
+        {
+            "paperId": "0be949cc24188ef7205bdaaeb7df2508344b8d5a",
+            "title": "DUC in context"
+        },
+        {
+            "paperId": "4ee2eab4c298c1824a9fb8799ad8eed21be38d21",
+            "title": "Moses: Open Source Toolkit for Statistical Machine Translation"
+        },
+        {
+            "paperId": "60b05f32c32519a809f21642ef1eb3eaf3848008",
+            "title": "ROUGE: A Package for Automatic Evaluation of Summaries"
+        },
+        {
+            "paperId": "1f12451245667a85d0ee225a80880fc93c71cc8b",
+            "title": "Minimum Error Rate Training in Statistical Machine Translation"
+        },
+        {
+            "paperId": "8bb5860185c6a8656176e64ce239c320d387a53e",
+            "title": "Hedge Trimmer: A Parse-and-Trim Approach to Headline Generation"
+        },
+        {
+            "paperId": "6c2b28f9354f667cd5bd07afc0471d8334430da7",
+            "title": "A Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "92ba9c288cbd0089cf6e9d988c9672f095a67109",
+            "title": "Using Hidden Markov Modeling to Decompose Human-Written Summaries"
+        },
+        {
+            "paperId": "b4d4304597b6a6c56e71846f68d5eb64385837d3",
+            "title": "A Noisy-Channel Model for Document Compression"
+        },
+        {
+            "paperId": "fa07fa673d8c908e91d22c4566572a72548ccee9",
+            "title": "Summarization beyond sentence extraction: A probabilistic approach to sentence compression"
+        },
+        {
+            "paperId": "9d08213ede54c4e205d18b4400288831af918ec8",
+            "title": "Headline Generation Based on Statistical Translation"
+        },
+        {
+            "paperId": "ea67efe9866b245ea2b0bbb526239fbd7070f635",
+            "title": "An Introduction to Information Retrieval"
+        },
+        {
+            "paperId": null,
+            "title": "Generation with quasi-synchronous grammar"
+        },
+        {
+            "paperId": "1ec86811a79fb02a1c551b8f418314a00f5f5a99",
+            "title": "Global inference for sentence compression : an integer linear programming approach"
+        },
+        {
+            "paperId": "c19fbefdeead6a4154a22a9c8551a18b1530033a",
+            "title": "Hierarchical Probabilistic Neural Network Language Model"
+        },
+        {
+            "paperId": "462886d6616c358d627fc3690ed78990a94900e3",
+            "title": "BBN/UMD at DUC-2004: Topiary"
+        },
+        {
+            "paperId": null,
+            "title": "English gigaword \" . In: Linguistic Data Consortium"
+        },
+        {
+            "paperId": null,
+            "title": "Abs+: explosion in restive northeastern province kills two us soldiers Rush, Chopra, Weston (Facebook AI) Neural Abstractive Summarization 34 / 42 References I"
+        },
+        {
+            "paperId": null,
+            "title": "Ref: two us soldiers killed in iraq blast december toll ### Abs: # us two soldiers killed in restive northeast province"
+        },
+        {
+            "paperId": null,
+            "title": "two drunken south african fans hurled racist abuse at the country \u2019s rugby sevens coach after the team were eliminated from the weekend \u2019s hong kong tournament"
+        },
+        {
+            "paperId": null,
+            "title": "european mediterranean ministers gather for landmark conference by julie bradford"
+        },
+        {
+            "paperId": null,
+            "title": "australian foreign minister stephen smith sunday congratulated new zealand \u2019s new prime minister-elect john key as he praised ousted leader helen clark as a \u201c gutsy \u201d and respected politician"
+        },
+        {
+            "paperId": null,
+            "title": "detained iranian-american academic released from jail after posting bail"
+        },
+        {
+            "paperId": null,
+            "title": "thousands attend rally for kashmir"
+        },
+        {
+            "paperId": null,
+            "title": "ministersfromtheeuropeanunionanditsmediterraneanneighbors gathered here under heavy security on monday for an unprecedented conference on economic and political cooperation"
+        },
+        {
+            "paperId": null,
+            "title": "australian foreign minister congratulates new nz pm after election A+: australian foreign minister congratulates smith new zealand as leader"
+        },
+        {
+            "paperId": null,
+            "title": "mediterranean neighbors gather for unprecedented conference on heavy security"
+        },
+        {
+            "paperId": null,
+            "title": "christian conservatives \u2013 kingmakers in the last two us presidential elections \u2013 may have less success in getting their pick elected in ####"
+        },
+        {
+            "paperId": null,
+            "title": "Facebook AI) Neural Abstractive Summarization 40 / 42 References III"
+        },
+        {
+            "paperId": null,
+            "title": "an explosion in iraq \u2019s restive northeastern province of diyala killed two us soldiers and wounded two more"
+        }
+    ]
+}

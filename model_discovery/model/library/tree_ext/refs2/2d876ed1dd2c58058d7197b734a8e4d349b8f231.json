@@ -1,0 +1,198 @@
+{
+    "paperId": "2d876ed1dd2c58058d7197b734a8e4d349b8f231",
+    "externalIds": {
+        "MAG": "2553397501",
+        "DBLP": "journals/corr/BradburyMXS16",
+        "ArXiv": "1611.01576",
+        "CorpusId": 51559
+    },
+    "title": "Quasi-Recurrent Neural Networks",
+    "abstract": "Recurrent neural networks are a powerful tool for modeling sequential data, but the dependence of each timestep's computation on the previous timestep's output limits parallelism and makes RNNs unwieldy for very long sequences. We introduce quasi-recurrent neural networks (QRNNs), an approach to neural sequence modeling that alternates convolutional layers, which apply in parallel across timesteps, and a minimalist recurrent pooling function that applies in parallel across channels. Despite lacking trainable recurrent layers, stacked QRNNs have better predictive accuracy than stacked LSTMs of the same hidden size. Due to their increased parallelism, they are up to 16 times faster at train and test time. Experiments on language modeling, sentiment classification, and character-level neural machine translation demonstrate these advantages and underline the viability of QRNNs as a basic building block for a variety of sequence tasks.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2016,
+    "referenceCount": 39,
+    "citationCount": 421,
+    "influentialCitationCount": 66,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Quasi-recurrent neural networks (QRNNs), an approach to neural sequence modeling that alternates convolutional layers, which apply in parallel across timesteps, and a minimalist recurrent pooling function that applies inallel across channels are introduced."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "40518045",
+            "name": "James Bradbury"
+        },
+        {
+            "authorId": "3375440",
+            "name": "Stephen Merity"
+        },
+        {
+            "authorId": "2228109",
+            "name": "Caiming Xiong"
+        },
+        {
+            "authorId": "2166511",
+            "name": "R. Socher"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "ae1c0ee5189a0b906ae26af638c22b66a0daf2d4",
+            "title": "A Way out of the Odyssey: Analyzing and Combining Recent Insights for LSTMs"
+        },
+        {
+            "paperId": "98445f4172659ec5e891e031d8202c102135c644",
+            "title": "Neural Machine Translation in Linear Time"
+        },
+        {
+            "paperId": "b8bc86a1bc281b15ce45e967cbdd045bcf23a952",
+            "title": "Fully Character-Level Neural Machine Translation without Explicit Segmentation"
+        },
+        {
+            "paperId": "efbd381493bb9636f489b965a2034d529cd56bcd",
+            "title": "Pointer Sentinel Mixture Models"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "5694e46284460a648fe29117cbc55f6c9be3fa3c",
+            "title": "Densely Connected Convolutional Networks"
+        },
+        {
+            "paperId": "9442255fa45da581257b965beceb012901e8d866",
+            "title": "MetaMind Neural Machine Translation System for WMT 2016"
+        },
+        {
+            "paperId": "0936352b78a52bc5d2b5e3f04233efc56664af51",
+            "title": "Conditional Image Generation with PixelCNN Decoders"
+        },
+        {
+            "paperId": "4bf7edee5a4c4cfdbdd43a607c402420129fa277",
+            "title": "Query-Reduction Networks for Question Answering"
+        },
+        {
+            "paperId": "9f0687bcd0a7d7fc91b8c5d36c003a38b8853105",
+            "title": "Zoneout: Regularizing RNNs by Randomly Preserving Hidden Activations"
+        },
+        {
+            "paperId": "5507dc32b368c8afd3b9507e9b5888da7bd7d7cd",
+            "title": "Sequence-to-Sequence Learning as Beam-Search Optimization"
+        },
+        {
+            "paperId": "93d8d45fe8101545ae6d9fab3dbb38f904ff7b4e",
+            "title": "Virtual Adversarial Training for Semi-Supervised Text Classification"
+        },
+        {
+            "paperId": "f96898d15a1bf1fa8925b1280d0e07a7a8e72194",
+            "title": "Dynamic Memory Networks for Visual and Textual Question Answering"
+        },
+        {
+            "paperId": "7e45b68037b5f86c4bce305b2725f4871c6b091e",
+            "title": "Strongly-Typed Recurrent Neural Networks"
+        },
+        {
+            "paperId": "573f0e60493e26558dd71f4c2ecc8d3b4784cbbd",
+            "title": "Efficient Character-level Document Classification by Combining Convolution and Recurrent Layers"
+        },
+        {
+            "paperId": "41f1d50c85d3180476c4c7b3eea121278b0d8474",
+            "title": "Pixel Recurrent Neural Networks"
+        },
+        {
+            "paperId": "0c1f9ca23f4f09ecfc44bcc8ca1c2736624f4652",
+            "title": "A Theoretically Grounded Application of Dropout in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "10f62af29c3fc5e2572baddca559ffbfd6be8787",
+            "title": "A C-LSTM Neural Network for Text Classification"
+        },
+        {
+            "paperId": "b7aee9dfb027d6061c6a653684c0fa9a9bba750d",
+            "title": "Sequence Level Training with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "51a55df1f023571a7e07e338ee45a3e3d66ef73e",
+            "title": "Character-level Convolutional Networks for Text Classification"
+        },
+        {
+            "paperId": "891ce1687e2befddd19f54e4eef1d3f39c8dbaf7",
+            "title": "Character-Aware Neural Language Models"
+        },
+        {
+            "paperId": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+            "title": "Effective Approaches to Attention-based Neural Machine Translation"
+        },
+        {
+            "paperId": "db123f73012677c3272b7381d86a8fd85bf61659",
+            "title": "Predicting Polarities of Tweets by Composing Word Embeddings with Long Short-Term Memory"
+        },
+        {
+            "paperId": "452059171226626718eb677358836328f884298e",
+            "title": "Ask Me Anything: Dynamic Memory Networks for Natural Language Processing"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "54e840c8973db7665a6388b2d992ef08ed7f0260",
+            "title": "Ensemble of Generative and Discriminative Techniques for Sentiment Analysis of Movie Reviews"
+        },
+        {
+            "paperId": "fbf417c83ae5b895fc645346e4efbf3a0aabeac9",
+            "title": "Effective Use of Word Order for Text Categorization with Convolutional Neural Networks"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "f264e8b33c0d49a692a6ce2c4bcb28588aeb7d97",
+            "title": "Recurrent Neural Network Regularization"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "5e9fa46f231c59e6573f9a116f77f53703347659",
+            "title": "Baselines and Bigrams: Simple, Good Sentiment and Topic Classification"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "0c2563caba6bcdb113817d560ce9492467e45873",
+            "title": "Under review as a conference paper at ICLR 2020 many domain adaptation methods"
+        },
+        {
+            "paperId": null,
+            "title": "In Proceedings of the First Conference on Machine Translation, Berlin, Germany"
+        },
+        {
+            "paperId": "67156902beca9bc90b728c8d5dd4ac9d8b27d3a3",
+            "title": "Chainer : a Next-Generation Open Source Framework for Deep Learning"
+        },
+        {
+            "paperId": "f60bddb446944593a022a38c77ba3d17c91928b3",
+            "title": "Multi-Dimensional Sentiment Analysis with Learned Representations"
+        },
+        {
+            "paperId": null,
+            "title": "Lecture 6.5-rmsprop: Divide the gradient by a running average of its recent magnitude"
+        },
+        {
+            "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+            "title": "Recurrent neural network based language model"
+        }
+    ]
+}

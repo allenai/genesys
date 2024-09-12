@@ -1,16 +1,12 @@
 import os
-import numpy as np
-from typing import Any,Dict, List, Union
 from enum import Enum
 import inspect
 import copy
-import requests
-import backoff
-import time
 
 from exec_utils.models.model import ModelOutput
 from .alang import FlowCreator,register_module,ROLE,SYSTEM_CALLER,USER_CALLER,AgentContext
 from .gau_utils import check_and_reformat_gau_code
+from ..search_utils import SuperScholarSearcher
 
 # from model_discovery.system import ModelDiscoverySystem
 import model_discovery.agents.prompts.prompts as P
@@ -806,46 +802,6 @@ def gu_design_scratch(cls,instruct,stream,status_handler,seed,references=None):
 # region MUTATION
 
 
-def on_backoff(details):
-    print(
-        f"Backing off {details['wait']:0.1f} seconds after {details['tries']} tries "
-        f"calling function {details['target'].__name__} at {time.strftime('%X')}"
-    )
-
-@backoff.on_exception(
-    backoff.expo, requests.exceptions.HTTPError, on_backoff=on_backoff
-)
-def search_for_papers(query, result_limit=10) -> Union[None, List[Dict]]:
-    # https://api.semanticscholar.org/api-docs/graph#tag/Paper-Data/operation/post_graph_get_papers
-    # should also search from the internal base or KGs
-    if not query:
-        return None
-    S2_API_KEY=os.environ['S2_API_KEY']
-    rsp = requests.get(
-        "https://api.semanticscholar.org/graph/v1/paper/search",
-        headers={"X-API-KEY": S2_API_KEY},
-        params={
-            "query": query,
-            "limit": result_limit,
-            "fields": "title,authors,venue,year,abstract,citationStyles,citationCount",
-            'fieldsOfStudy': 'Computer Science,Mathematics,Physics'
-        },
-    )
-    print(f"Response Status Code: {rsp.status_code}")
-    print(
-        f"Response Content: {rsp.text[:500]}"
-    )  # Print the first 500 characters of the response content
-    rsp.raise_for_status()
-    results = rsp.json()
-    total = results["total"]
-    time.sleep(1.0)
-    if not total:
-        return None
-
-    papers = results["data"]
-    return papers
-
-
 class EndReasons(Enum):
     PROPOSAL_FAILED='Proposal Failed'
     MAX_POST_REFINEMENT_REACHED='Max Post Refinement Reached'
@@ -978,7 +934,7 @@ class GUFlowMutation(FlowCreator):
         return query,state,{}
     
 
-    def search_proposal(self,main_tid,ideation,instructions):
+    def search_for_proposal(self,main_tid,ideation,instructions):
         S2_SEARCH_SYSTEM=P.S2_SEARCH_ASSISTANT_SYSTEM()
         S2_SEARCH_ASSISTANT=reload_role('search_assistant',self.agents['SEARCH_ASSISTANT'],S2_SEARCH_SYSTEM)
         context_search_assistant=AgentContext()
@@ -1088,7 +1044,7 @@ class GUFlowMutation(FlowCreator):
                     self.print_raw_output(out,'DESIGN_PROPOSER')
 
                 with self.status_handler('Searching from S2...'):
-                    search_report,search_references=self.search_proposal(main_tid,ideation,instructions)
+                    search_report,search_references=self.search_for_proposal(main_tid,ideation,instructions)
 
                 with self.status_handler('Generating proposal...'):
                     proposal_prompt_stage2=GUM_DESIGN_PROPOSAL_STAGE2(GATHERED_INFO=search_report)

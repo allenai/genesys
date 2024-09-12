@@ -1,0 +1,254 @@
+{
+    "paperId": "0d24a0695c9fc669e643bad51d4e14f056329dec",
+    "externalIds": {
+        "MAG": "2964352247",
+        "DBLP": "conf/iclr/BahdanauBXGLPCB17",
+        "ArXiv": "1607.07086",
+        "CorpusId": 14096841
+    },
+    "title": "An Actor-Critic Algorithm for Sequence Prediction",
+    "abstract": "We present an approach to training neural networks to generate sequences using actor-critic methods from reinforcement learning (RL). Current log-likelihood training methods are limited by the discrepancy between their training and testing modes, as models must generate tokens conditioned on their previous guesses rather than the ground-truth tokens. We address this problem by introducing a \\textit{critic} network that is trained to predict the value of an output token, given the policy of an \\textit{actor} network. This results in a training procedure that is much closer to the test phase, and allows us to directly optimize for a task-specific score such as BLEU. Crucially, since we leverage these techniques in the supervised learning setting rather than the traditional RL setting, we condition the critic network on the ground-truth output. We show that our method leads to improved performance on both a synthetic task, and for German-English machine translation. Our analysis paves the way for such methods to be applied in natural language generation tasks, such as machine translation, caption generation, and dialogue modelling.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2016,
+    "referenceCount": 49,
+    "citationCount": 610,
+    "influentialCitationCount": 73,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An approach to training neural networks to generate sequences using actor-critic methods from reinforcement learning (RL) that condition the critic network on the ground-truth output, and shows that this method leads to improved performance on both a synthetic task, and for German-English machine translation."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3335364",
+            "name": "Dzmitry Bahdanau"
+        },
+        {
+            "authorId": "2616163",
+            "name": "Philemon Brakel"
+        },
+        {
+            "authorId": "36303818",
+            "name": "Kelvin Xu"
+        },
+        {
+            "authorId": "1996705",
+            "name": "Anirudh Goyal"
+        },
+        {
+            "authorId": "2054294",
+            "name": "Ryan Lowe"
+        },
+        {
+            "authorId": "145134886",
+            "name": "Joelle Pineau"
+        },
+        {
+            "authorId": "1760871",
+            "name": "Aaron C. Courville"
+        },
+        {
+            "authorId": "1751762",
+            "name": "Yoshua Bengio"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "5507dc32b368c8afd3b9507e9b5888da7bd7d7cd",
+            "title": "Sequence-to-Sequence Learning as Beam-Search Optimization"
+        },
+        {
+            "paperId": "6b570069f14c7588e066f7138e1f21af59d62e61",
+            "title": "Theano: A Python framework for fast computation of mathematical expressions"
+        },
+        {
+            "paperId": "9f2a8e923965b23c11066a2ead79658208f1fae1",
+            "title": "Minimum Risk Training for Neural Machine Translation"
+        },
+        {
+            "paperId": "49e24b1fd415e20839c09b5dd68a01f61d1681d9",
+            "title": "Learning Simple Algorithms from Examples"
+        },
+        {
+            "paperId": "b7aee9dfb027d6061c6a653684c0fa9a9bba750d",
+            "title": "Sequence Level Training with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "024006d4c2a89f7acacc6e4438d156525b60a98f",
+            "title": "Continuous control with deep reinforcement learning"
+        },
+        {
+            "paperId": "1ac30af5522c7a50ec4d1ee43fd2bd8652a9bd52",
+            "title": "A Neural Attention Model for Abstractive Sentence Summarization"
+        },
+        {
+            "paperId": "b624504240fa52ab76167acfe3156150ca01cf3b",
+            "title": "Attention-Based Models for Speech Recognition"
+        },
+        {
+            "paperId": "df137487e20ba7c6e1e2b9a1e749f2a578b5ad99",
+            "title": "Scheduled Sampling for Sequence Prediction with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "59b81ff81da55efc724c84ddc9d3ffd8e57a8d0e",
+            "title": "Blocks and Fuel: Frameworks for deep learning"
+        },
+        {
+            "paperId": "340f48901f72278f6bf78a04ee5b01df208cc508",
+            "title": "Human-level control through deep reinforcement learning"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "55e022fb7581bb9e1fce678d21fb25ffbb3fbb88",
+            "title": "Deep visual-semantic alignments for generating image descriptions"
+        },
+        {
+            "paperId": "d4dc1012d780e8e2547237eb5a6dc7b1bf47d2f0",
+            "title": "Show and tell: A neural image caption generator"
+        },
+        {
+            "paperId": "f01fc808592ea7c473a69a6e7484040a435f36d9",
+            "title": "Long-term recurrent convolutional networks for visual recognition and description"
+        },
+        {
+            "paperId": "2e36ea91a3c8fbff92be2989325531b4002e2afc",
+            "title": "Unifying Visual-Semantic Embeddings with Multimodal Neural Language Models"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "79d1e429c241d0aa47a2194246256a5bc79585bc",
+            "title": "First-Pass Large Vocabulary Continuous Speech Recognition using Bi-Directional Recurrent DNNs"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "5d833331b0e22ff359db05c62a8bca18c4f04b68",
+            "title": "One billion word benchmark for measuring progress in statistical language modeling"
+        },
+        {
+            "paperId": "bd5fc28c7356915ec71abafbe86b7596c60720aa",
+            "title": "The conference paper"
+        },
+        {
+            "paperId": "028023317d7dc87b6e640da6ce04cbd25da5afb4",
+            "title": "Direct Loss Minimization for Structured Prediction"
+        },
+        {
+            "paperId": "79ab3c49903ec8cb339437ccf5cf998607fc313e",
+            "title": "A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning"
+        },
+        {
+            "paperId": "c931e44c3cc089f514ec74a27df396b2523ee100",
+            "title": "Structured prediction with reinforcement learning"
+        },
+        {
+            "paperId": "526e22c130b18924976553d29ba11bc9d898d58b",
+            "title": "Search-based structured prediction"
+        },
+        {
+            "paperId": "a5c48c673b0d3152010e3374cac189314a13df10",
+            "title": "Learning as search optimization: approximate large margin methods for structured prediction"
+        },
+        {
+            "paperId": "1f12451245667a85d0ee225a80880fc93c71cc8b",
+            "title": "Minimum Error Rate Training in Statistical Machine Translation"
+        },
+        {
+            "paperId": "c63bb976dc0d3a897f3b0920170a4c573ef904c6",
+            "title": "Automatic Evaluation of Summaries Using N-gram Co-occurrence Statistics"
+        },
+        {
+            "paperId": "d7da009f457917aa381619facfa5ffae9329a6e9",
+            "title": "Bleu: a Method for Automatic Evaluation of Machine Translation"
+        },
+        {
+            "paperId": "cd5a169879504ea91660a443b9151753cc29c42f",
+            "title": "Minimum Bayes-risk automatic speech recognition"
+        },
+        {
+            "paperId": "a20f0ce0616def7cc9a87446c228906cd5da093b",
+            "title": "Policy Gradient Methods for Reinforcement Learning with Function Approximation"
+        },
+        {
+            "paperId": "94066dc12fe31e96af7557838159bde598cb4f10",
+            "title": "Policy Invariance Under Reward Transformations: Theory and Application to Reward Shaping"
+        },
+        {
+            "paperId": "e23c34414e66118ecd9b08cf0cd4d016f59b0b85",
+            "title": "Bidirectional recurrent neural networks"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "2b11305f69641ecb8bd4a5e59cfebe41ad9ed989",
+            "title": "TD-Gammon, a Self-Teaching Backgammon Program, Achieves Master-Level Play"
+        },
+        {
+            "paperId": "8c3b56709b8bbf173849f03ba69bc638067a902b",
+            "title": "Neural networks for control"
+        },
+        {
+            "paperId": "a91635f8d0e7fb804efd1c38d9c24ee952ba7076",
+            "title": "Learning to predict by the methods of temporal differences"
+        },
+        {
+            "paperId": "8a7acaf6469c06ae5876d92f013184db5897bb13",
+            "title": "Neuronlike adaptive elements that can solve difficult learning control problems"
+        },
+        {
+            "paperId": "3a5ac09e759f3223ee78b995ae2b519efc0f9292",
+            "title": "Introduction to Reinforcement Learning"
+        },
+        {
+            "paperId": "bcd857d75841aa3e92cd4284a8818aba9f6c0c3f",
+            "title": "Published as a conference paper at ICLR 2018 S IMULATING A CTION D YNAMICS WITH N EURAL P ROCESS N ETWORKS"
+        },
+        {
+            "paperId": "81aace0e90c6a962059b117c24db0d856f340f41",
+            "title": "Report on the 11th IWSLT evaluation campaign"
+        },
+        {
+            "paperId": "c688e187cede868e35fc1b53913e0fbbe6e38ea0",
+            "title": "An investigation of imitation learning algorithms for structured prediction"
+        },
+        {
+            "paperId": "4c915c1eecb217c123a36dc6d3ce52d12c742614",
+            "title": "Simple Statistical Gradient-Following Algorithms for Connectionist Reinforcement Learning"
+        },
+        {
+            "paperId": "24da3011dfdefbdcee20d12ca3c2a348ad6f3aad",
+            "title": "An Analysis of Temporal-Difference Learning with Function Approximation"
+        },
+        {
+            "paperId": "da22a85b3e859139ff4aa40f85597e69ba3ff76d",
+            "title": "Neural Networks for Control"
+        },
+        {
+            "paperId": "22069cd4504656d3bb85748a4d43be7a4d7d5545",
+            "title": "Temporal credit assignment in reinforcement learning"
+        }
+    ]
+}

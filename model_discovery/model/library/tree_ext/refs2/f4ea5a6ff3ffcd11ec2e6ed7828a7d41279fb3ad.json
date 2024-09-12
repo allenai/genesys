@@ -1,0 +1,45 @@
+{
+    "paperId": "f4ea5a6ff3ffcd11ec2e6ed7828a7d41279fb3ad",
+    "externalIds": {
+        "MAG": "2120972216",
+        "DBLP": "conf/nips/HansonP88",
+        "CorpusId": 9344018
+    },
+    "title": "Comparing Biases for Minimal Network Construction with Back-Propagation",
+    "abstract": "Rumelhart (1987), has proposed a method for choosing minimal or \"simple\" representations during learning in Back-propagation networks. This approach can be used to (a) dynamically select the number of hidden units, (b) construct a representation that is appropriate for the problem and (c) thus improve the generalization ability of Back-propagation networks. The method Rumelhart suggests involves adding penalty terms to the usual error function. In this paper we introduce Rumelhart's minimal networks idea and compare two possible biases on the weight search space. These biases are compared in both simple counting problems and a speech recognition problem. In general, the constrained search does seem to minimize the number of hidden units required with an expected increase in local minima.",
+    "venue": "Neural Information Processing Systems",
+    "year": 1988,
+    "referenceCount": 3,
+    "citationCount": 627,
+    "influentialCitationCount": 16,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper introduces Rumelhart's minimal networks idea and compares two possible biases on the weight search space that are compared in both simple counting problems and a speech recognition problem."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1727849",
+            "name": "S. Hanson"
+        },
+        {
+            "authorId": "144442133",
+            "name": "L. Pratt"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "319f22bd5abfd67ac15988aa5c7f705f018c3ccd",
+            "title": "Learning internal representations by error propagation"
+        },
+        {
+            "paperId": "dd5061631a4d11fa394f4421700ebf7e78dcbc59",
+            "title": "Optimization by Simulated Annealing"
+        },
+        {
+            "paperId": "8dc764799971b9e1d63c5d37905f810ae01512bf",
+            "title": "Applied Regression Analysis."
+        }
+    ]
+}

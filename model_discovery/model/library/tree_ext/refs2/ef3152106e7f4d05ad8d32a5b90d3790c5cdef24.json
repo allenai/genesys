@@ -1,0 +1,118 @@
+{
+    "paperId": "ef3152106e7f4d05ad8d32a5b90d3790c5cdef24",
+    "externalIds": {
+        "MAG": "2963755273",
+        "DBLP": "conf/icml/HenaffSL16",
+        "ArXiv": "1602.06662",
+        "CorpusId": 1158122
+    },
+    "title": "Recurrent Orthogonal Networks and Long-Memory Tasks",
+    "abstract": "Although RNNs have been shown to be powerful tools for processing sequential data, finding architectures or optimization strategies that allow them to model very long term dependencies is still an active area of research. In this work, we carefully analyze two synthetic datasets originally outlined in (Hochreiter and Schmidhuber, 1997) which are used to evaluate the ability of RNNs to store information over many time steps. We explicitly construct RNN solutions to these problems, and using these constructions, illuminate both the problems themselves and the way in which RNNs store different types of information in their hidden states. These constructions furthermore explain the success of recent methods that specify unitary initializations or constraints on the transition matrices.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2016,
+    "referenceCount": 20,
+    "citationCount": 125,
+    "influentialCitationCount": 11,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work carefully analyzes two synthetic datasets originally outlined in (Hochreiter and Schmidhuber, 1997) which are used to evaluate the ability of RNNs to store information over many time steps and explicitly construct RNN solutions to these problems."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "39713408",
+            "name": "Mikael Henaff"
+        },
+        {
+            "authorId": "3149531",
+            "name": "Arthur Szlam"
+        },
+        {
+            "authorId": "1688882",
+            "name": "Yann LeCun"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "f84d5add20d4df0a6c89c47a920354c272cbdbd8",
+            "title": "Regularizing RNNs by Stabilizing Activations"
+        },
+        {
+            "paperId": "e9c771197a6564762754e48c1daafb066f449f2e",
+            "title": "Unitary Evolution Recurrent Neural Networks"
+        },
+        {
+            "paperId": "d46b81707786d18499f911b4ab72bb10c65406ba",
+            "title": "A Simple Way to Initialize Recurrent Networks of Rectified Linear Units"
+        },
+        {
+            "paperId": "9665247ea3421929f9b6ad721f139f11edb1dbb8",
+            "title": "Learning Longer Memory in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "f264e8b33c0d49a692a6ce2c4bcb28588aeb7d97",
+            "title": "Recurrent Neural Network Regularization"
+        },
+        {
+            "paperId": "99c970348b8f70ce23d6641e201904ea49266b6e",
+            "title": "Exact solutions to the nonlinear dynamics of learning in deep linear neural networks"
+        },
+        {
+            "paperId": "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17",
+            "title": "Generating Sequences With Recurrent Neural Networks"
+        },
+        {
+            "paperId": "4177ec52d1b80ed57f2e72b0f9a42365f1a8598d",
+            "title": "Speech recognition with deep recurrent neural networks"
+        },
+        {
+            "paperId": "84069287da0a6b488b8c933f3cb5be759cb6237e",
+            "title": "On the difficulty of training recurrent neural networks"
+        },
+        {
+            "paperId": "0d6203718c15f137fda2f295c96269bc2b254644",
+            "title": "Learning Recurrent Neural Networks with Hessian-Free Optimization"
+        },
+        {
+            "paperId": "80c77d57a4e1c365d1feb7c0a1ba165b10f7de7c",
+            "title": "Memory traces in dynamical systems"
+        },
+        {
+            "paperId": "e1e770e3ee4a45c6b384b4f647e40c180643d39e",
+            "title": "Short-term memory in orthogonal neural networks."
+        },
+        {
+            "paperId": "047655e733a9eed9a500afd916efa566915b9110",
+            "title": "Learning Precise Timing with LSTM Recurrent Networks"
+        },
+        {
+            "paperId": "3efcb97c1de1c87832a7a1d99e91801992a938ec",
+            "title": "Crafting Papers on Machine Learning"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "d0be39ee052d246ae99c082a565aba25b811be2d",
+            "title": "Learning long-term dependencies with gradient descent is difficult"
+        },
+        {
+            "paperId": "668087f0ae7ce1de6e0bd0965dbb480c08103260",
+            "title": "Finding Structure in Time"
+        },
+        {
+            "paperId": "96364af2d208ea75ca3aeb71892d2f7ce7326b55",
+            "title": "Statistical Language Models Based on Neural Networks"
+        },
+        {
+            "paperId": null,
+            "title": "Recurrent Orthogonal Networks and Long-Memory Tasks"
+        }
+    ]
+}

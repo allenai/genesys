@@ -1,0 +1,142 @@
+{
+    "paperId": "5c5a42ffcf045ef86b0b2a29aded5525fac0345b",
+    "externalIds": {
+        "MAG": "2149053506",
+        "DBLP": "conf/ipps/HurseyG11a",
+        "DOI": "10.1109/IPDPS.2011.308",
+        "CorpusId": 8889543
+    },
+    "title": "Building a Fault Tolerant MPI Application: A Ring Communication Example",
+    "abstract": "Process failure is projected to become a normal event for many long running and scalable High Performance Computing (HPC) applications. As such many application developers are investigating Algorithm Based Fault Tolerance (ABFT) techniques to improve the efficiency of application recovery beyond what existing checkpoint/restart techniques alone can provide. Unfortunately for these application developers the libraries that their applications depend upon, like Message Passing Interface (MPI), do not have standardized fault tolerance semantics. This paper introduces the reader to a set of run-through stabilization semantics being developed by the MPI Forum's Fault Tolerance Working Group to support ABFT. Using a well-known ring communication program as the running example, this paper illustrates to application developers new to ABFT some of the issues that arise when designing a fault tolerant application. The ring program allows the paper to focus on the communication-level issues rather than the data preservation mechanisms covered by existing literature. This paper highlights a common set of issues that application developers must address in their design including program control management, duplicate message detection, termination detection, and testing. The discussion provides application developers new to ABFT with an introduction to both new interfaces becoming available, and a range of design issues that they will likely need to address regardless of their research domain.",
+    "venue": "IEEE International Symposium on Parallel & Distributed Processing, Workshops and Phd Forum",
+    "year": 2011,
+    "referenceCount": 27,
+    "citationCount": 22,
+    "influentialCitationCount": 0,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper introduces the reader to a set of run-through stabilization semantics being developed by the MPI Forum's Fault Tolerance Working Group to support ABFT and illustrates to application developers new to ABFT some of the issues that arise when designing a fault tolerant application."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1784108",
+            "name": "Joshua Hursey"
+        },
+        {
+            "authorId": "1783428",
+            "name": "R. Graham"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "39ef5d362200126497b2f74c33338383dcc9589c",
+            "title": "Toward Exascale Resilience"
+        },
+        {
+            "paperId": "627a32d5f5c0f848e8d6b522fa101f82f856d7b8",
+            "title": "Algorithm-Based Fault Tolerance for Fail-Stop Failures"
+        },
+        {
+            "paperId": "471bfc60715d9495857c9e20303aed558b5a7351",
+            "title": "Fault tolerant algorithms for heat transfer problems"
+        },
+        {
+            "paperId": "9ecf169ff4e7d65ef70799a92ee23bddc2fb23aa",
+            "title": "Recovery Patterns for Iterative Methods in a Parallel Unstable Environment"
+        },
+        {
+            "paperId": "704ba4f8974fa3f470841a91a2a68db03062917c",
+            "title": "Building Single Fault Survivable Parallel Algorithms for Matrix Operations Using Redundant Parallel Computation"
+        },
+        {
+            "paperId": "76aad5b272219c6745c76b7874129797e97e6041",
+            "title": "Paxos made live: an engineering perspective"
+        },
+        {
+            "paperId": "78df7a454cbc13c919323cc25764653553b959fb",
+            "title": "Understanding failures in petascale computers"
+        },
+        {
+            "paperId": "e00efb98568b66653518f3d892ee9d08b4d8486e",
+            "title": "Process Fault Tolerance: Semantics, Design and Applications for High Performance Computing"
+        },
+        {
+            "paperId": "0dc74cb0957688216bfa3f76e82a2c731f220212",
+            "title": "Super-Scalable Algorithms for Computing on 100, 000 Processors"
+        },
+        {
+            "paperId": "b27542559edf6cc867afdc1637fe36b9a4e250e6",
+            "title": "Open MPI: Goals, Concept, and Design of a Next Generation MPI Implementation"
+        },
+        {
+            "paperId": "eda48f5cc8ccd37a082b04fc16e79ca4b5cbc409",
+            "title": "Fault Tolerance in Message Passing Interface Programs"
+        },
+        {
+            "paperId": "cf1b89dba937fb08b329c9e37bfb76322f7775e7",
+            "title": "FIMD-MPI: a tool for injecting faults into MPI application"
+        },
+        {
+            "paperId": "8b3235bbd59d3b85081d9c22cf1af494e2d1159a",
+            "title": "Diskless Checkpointing"
+        },
+        {
+            "paperId": "ebefbee5e96fc2217d651266eb35a0759672e7ca",
+            "title": "The part-time parliament"
+        },
+        {
+            "paperId": "52e1f3c9d0d4a84d12f100b4934ff71f9976f295",
+            "title": "Fault Injection Techniques and Tools"
+        },
+        {
+            "paperId": "9bdd1ee918c171b541c616704447b1e06b88f14a",
+            "title": "Unreliable failure detectors for reliable distributed systems"
+        },
+        {
+            "paperId": "87853ba3a1cc43708deecc95d2ecad03fd8a0948",
+            "title": "Fault Injection: A Method for Validating Computer-System Dependability"
+        },
+        {
+            "paperId": "52ea04c3bbf64f3645cfa6b17b49ce2199b262ea",
+            "title": "MPI: A Message-Passing Interface"
+        },
+        {
+            "paperId": "018f64cdd415e0e25e8cff83b8c157c4010036ed",
+            "title": "The consensus problem in fault-tolerant computing"
+        },
+        {
+            "paperId": "4e63eed9e709b6c8e20a4a68300883898c7d8f37",
+            "title": "Consensus in the presence of partial synchrony"
+        },
+        {
+            "paperId": "fc91c9ed938f49810983af69a5ccdc9df499d98b",
+            "title": "Reliable broadcast protocols"
+        },
+        {
+            "paperId": "5c0e8af36e20b8ea213561e8c3d706b4e2f2cc8d",
+            "title": "Algorithm-Based Fault Tolerance for Matrix Operations"
+        },
+        {
+            "paperId": "1689f401f9cd18c8fd033d99d1e2ce99b71e6047",
+            "title": "The Byzantine Generals Problem"
+        },
+        {
+            "paperId": "489415a03ef65b47aac4001e5f94e70bcc5d65e4",
+            "title": "Nonblocking commit protocols"
+        },
+        {
+            "paperId": "b12b05f8a8a7401d41e9019d76f01f22f2615a59",
+            "title": "System structure for software fault tolerance"
+        },
+        {
+            "paperId": "28c794957a109acbaa4be0d7f853edb6a9a748ce",
+            "title": "Development of Naturally Fault Tolerant Algorithms for Computing on 100,000 Processors"
+        },
+        {
+            "paperId": null,
+            "title": "Run-though stabilization interfaces and semantics, \" svn.mpi-forum.org/trac/mpi-forum-web/wiki/ft/ run through stabilization"
+        }
+    ]
+}

@@ -1,0 +1,58 @@
+{
+    "paperId": "30feade758d15844a5746fd0de7983d5a0e4af02",
+    "externalIds": {
+        "MAG": "2793429163",
+        "DBLP": "journals/corr/abs-1803-01937",
+        "ArXiv": "1803.01937",
+        "CorpusId": 3714849
+    },
+    "title": "ROUGE 2.0: Updated and Improved Measures for Evaluation of Summarization Tasks",
+    "abstract": "Evaluation of summarization tasks is extremely crucial to determining the quality of machine generated summaries. Over the last decade, ROUGE has become the standard automatic evaluation measure for evaluating summarization tasks. While ROUGE has been shown to be effective in capturing n-gram overlap between system and human composed summaries, there are several limitations with the existing ROUGE measures in terms of capturing synonymous concepts and coverage of topics. Thus, often times ROUGE scores do not reflect the true quality of summaries and prevents multi-faceted evaluation of summaries (i.e. by topics, by overall content coverage and etc). In this paper, we introduce ROUGE 2.0, which has several updated measures of ROUGE: ROUGE-N+Synonyms, ROUGE-Topic, ROUGE-Topic+Synonyms, ROUGE-TopicUniq and ROUGE-TopicUniq+Synonyms; all of which are improvements over the core ROUGE measures.",
+    "venue": "arXiv.org",
+    "year": 2015,
+    "referenceCount": 7,
+    "citationCount": 129,
+    "influentialCitationCount": 21,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "ROUGE 2.0 is introduced, which has several updated measures of ROUGE: R OUGE-N+Synonyms, ROUge-Topic, RouGE-Topic+Synonym, R RouGE- Topic-Uniq and ROUAGE-TopicUniq+ Synonyms; all of which are improvements over the core ROU GE measures."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1777736",
+            "name": "Kavita A. Ganesan"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "60b05f32c32519a809f21642ef1eb3eaf3848008",
+            "title": "ROUGE: A Package for Automatic Evaluation of Summaries"
+        },
+        {
+            "paperId": "c63bb976dc0d3a897f3b0920170a4c573ef904c6",
+            "title": "Automatic Evaluation of Summaries Using N-gram Co-occurrence Statistics"
+        },
+        {
+            "paperId": "eb42a490cf4f186d3383c92963817d100afd81e2",
+            "title": "Feature-Rich Part-of-Speech Tagging with a Cyclic Dependency Network"
+        },
+        {
+            "paperId": "33b4fa7bef0372c5bbeca887a5d20327be569e3b",
+            "title": "Overview of the TAC 2008 Update Summarization Task"
+        },
+        {
+            "paperId": "dc954000617ae982f83b7f1ed4bd72b95e38aa88",
+            "title": "Overview of DUC 2005"
+        },
+        {
+            "paperId": null,
+            "title": "ROUGE Perl Implementation Download"
+        },
+        {
+            "paperId": null,
+            "title": "WordNet"
+        }
+    ]
+}

@@ -1,0 +1,179 @@
+{
+    "paperId": "b60abe57bc195616063be10638c6437358c81d1e",
+    "externalIds": {
+        "DBLP": "journals/tacl/ZhouCWLX16",
+        "MAG": "2426188458",
+        "ACL": "Q16-1027",
+        "ArXiv": "1606.04199",
+        "DOI": "10.1162/tacl_a_00105",
+        "CorpusId": 8586038
+    },
+    "title": "Deep Recurrent Models with Fast-Forward Connections for Neural Machine Translation",
+    "abstract": "Neural machine translation (NMT) aims at solving machine translation (MT) problems using neural networks and has exhibited promising results in recent years. However, most of the existing NMT models are shallow and there is still a performance gap between a single NMT model and the best conventional MT system. In this work, we introduce a new type of linear connections, named fast-forward connections, based on deep Long Short-Term Memory (LSTM) networks, and an interleaved bi-directional architecture for stacking the LSTM layers. Fast-forward connections play an essential role in propagating the gradients and building a deep topology of depth 16. On the WMT\u201914 English-to-French task, we achieve BLEU=37.7 with a single attention model, which outperforms the corresponding single shallow model by 6.2 BLEU points. This is the first time that a single NMT model achieves state-of-the-art performance and outperforms the best conventional model by 0.7 BLEU points. We can still achieve BLEU=36.3 even without using an attention mechanism. After special handling of unknown words and model ensembling, we obtain the best score reported to date on this task with BLEU=40.4. Our models are also validated on the more difficult WMT\u201914 English-to-German task.",
+    "venue": "Transactions of the Association for Computational Linguistics",
+    "year": 2016,
+    "referenceCount": 32,
+    "citationCount": 210,
+    "influentialCitationCount": 29,
+    "openAccessPdf": {
+        "url": "http://www.mitpressjournals.org/doi/pdf/10.1162/tacl_a_00105",
+        "status": "GOLD"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces a new type of linear connections, named fast-forward connections, based on deep Long Short-Term Memory (LSTM) networks, and an interleaved bi-directional architecture for stacking the LSTM layers, and achieves state-of-the-art performance and outperforms the best conventional model by 0.7 BLEU points."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "49178343",
+            "name": "Jie Zhou"
+        },
+        {
+            "authorId": "2112866139",
+            "name": "Ying Cao"
+        },
+        {
+            "authorId": "2108084524",
+            "name": "Xuguang Wang"
+        },
+        {
+            "authorId": "144326610",
+            "name": "Peng Li"
+        },
+        {
+            "authorId": "145738410",
+            "name": "W. Xu"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "d3e1c2d8eddbfd01dce03b5d9ff3c6df8259dbbe",
+            "title": "Empirical Study on Deep Learning Models for QA"
+        },
+        {
+            "paperId": "a739ae988ba0e3ff232f4507627dfc282ba7b3f4",
+            "title": "Depth-Gated LSTM"
+        },
+        {
+            "paperId": "5b791cd374c7109693aaddee2c12d659ae4e3ec0",
+            "title": "Grid Long Short-Term Memory"
+        },
+        {
+            "paperId": "c34e41312b47f60986458759d5cc546c2b53f748",
+            "title": "End-to-end learning of semantic role labeling using recurrent neural networks"
+        },
+        {
+            "paperId": "86311b182786bfde19446f6ded0854de973d4060",
+            "title": "A Neural Conversational Model"
+        },
+        {
+            "paperId": "d1505c6123c102e53eb19dff312cb25cea840b72",
+            "title": "Teaching Machines to Read and Comprehend"
+        },
+        {
+            "paperId": "e0945081b5b87187a53d4329cf77cd8bff635795",
+            "title": "Highway Networks"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "54b2b6f35f1b5704dddfaa3a137a2f4ad3dfe745",
+            "title": "Deep Captioning with Multimodal Recurrent Neural Networks (m-RNN)"
+        },
+        {
+            "paperId": "1938624bb9b0f999536dcc8d8f519810bb4e1b3b",
+            "title": "On Using Very Large Target Vocabulary for Neural Machine Translation"
+        },
+        {
+            "paperId": "1956c239b3552e030db1b78951f64781101125ed",
+            "title": "Addressing the Rare Word Problem in Neural Machine Translation"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "97cedf99252026f58e8154bc61d49cf885d42030",
+            "title": "Edinburgh\u2019s Phrase-based Machine Translation Systems for WMT-14"
+        },
+        {
+            "paperId": "8e4fb17fff38a7834af5b4eaafcbbde02bf00975",
+            "title": "N-gram Counts and Language Models from the Common Crawl"
+        },
+        {
+            "paperId": "944a1cfd79dbfb6fef460360a0765ba790f4027a",
+            "title": "Recurrent Continuous Translation Models"
+        },
+        {
+            "paperId": "8729441d734782c3ed532a7d2d9611b438c0a09a",
+            "title": "ADADELTA: An Adaptive Learning Rate Method"
+        },
+        {
+            "paperId": "0060745e006c5f14ec326904119dca19c6545e51",
+            "title": "Improving neural networks by preventing co-adaptation of feature detectors"
+        },
+        {
+            "paperId": "522e90b9fccfd3c1c0603359eb04757d770c1ab5",
+            "title": "Practical Recommendations for Gradient-Based Training of Deep Architectures"
+        },
+        {
+            "paperId": "937d3a404b8870fb3ff3e243e6a0c6024eef491b",
+            "title": "A Novel Connectionist System for Unconstrained Handwriting Recognition"
+        },
+        {
+            "paperId": "f4f6bfacb4cd508df62540f5aa9ba30cd83dd127",
+            "title": "Alignment by Agreement"
+        },
+        {
+            "paperId": "a4b828609b60b06e61bea7a4029cc9e1cad5df87",
+            "title": "Statistical Phrase-Based Translation"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "9d6c43ad7f4cf7ebcd4245510df2880f3d3b0964",
+            "title": "Biological and Artificial Computation: From Neuroscience to Technology"
+        },
+        {
+            "paperId": "73c2a58c936ba2d269491548ef32644c5e982199",
+            "title": "Recursive Hetero-associative Memories for Translation"
+        },
+        {
+            "paperId": "d0be39ee052d246ae99c082a565aba25b811be2d",
+            "title": "Learning long-term dependencies with gradient descent is difficult"
+        },
+        {
+            "paperId": null,
+            "title": "http://www-lium.univlemans .fr/\u223cschwenk/cslm joint paper [online; accessed 03-september-2014]"
+        },
+        {
+            "paperId": null,
+            "title": "Lecture 6.5-rmsprop: Divide the gradient by a running average of its recent magnitude"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        }
+    ]
+}

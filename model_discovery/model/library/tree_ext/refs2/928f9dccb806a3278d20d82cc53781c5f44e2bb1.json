@@ -1,0 +1,123 @@
+{
+    "paperId": "928f9dccb806a3278d20d82cc53781c5f44e2bb1",
+    "externalIds": {
+        "MAG": "2950268825",
+        "ArXiv": "1805.01052",
+        "DBLP": "conf/acl/KleinK18",
+        "ACL": "P18-1249",
+        "DOI": "10.18653/v1/P18-1249",
+        "CorpusId": 19206893
+    },
+    "title": "Constituency Parsing with a Self-Attentive Encoder",
+    "abstract": "We demonstrate that replacing an LSTM encoder with a self-attentive architecture can lead to improvements to a state-of-the-art discriminative constituency parser. The use of attention makes explicit the manner in which information is propagated between different locations in the sentence, which we use to both analyze our model and propose potential improvements. For example, we find that separating positional and content information in the encoder can lead to improved parsing accuracy. Additionally, we evaluate different approaches for lexical representation. Our parser achieves new state-of-the-art results for single models trained on the Penn Treebank: 93.55 F1 without the use of any external data, and 95.13 F1 when using pre-trained word representations. Our parser also outperforms the previous best-published accuracy figures on 8 of the 9 languages in the SPMRL dataset.",
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2018,
+    "referenceCount": 21,
+    "citationCount": 502,
+    "influentialCitationCount": 74,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/P18-1249.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is demonstrated that replacing an LSTM encoder with a self-attentive architecture can lead to improvements to a state-of-the-art discriminative constituency parser, and it is found that separating positional and content information in the encoder canlead to improved parsing accuracy."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "143808231",
+            "name": "Nikita Kitaev"
+        },
+        {
+            "authorId": "38666915",
+            "name": "D. Klein"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "b69a57c878960636bdf6e844541c3f40827296b5",
+            "title": "What\u2019s Going On in Neural Constituency Parsers? An Analysis"
+        },
+        {
+            "paperId": "3febb2bed8865945e7fddc99efd791887bb7e14f",
+            "title": "Deep Contextualized Word Representations"
+        },
+        {
+            "paperId": "80af06c29cf82381325849aa4bca7902d554f607",
+            "title": "In-Order Transition-based Constituent Parsing"
+        },
+        {
+            "paperId": "2cd7c3ed5a06c461b259694376820dcfcfbe94a9",
+            "title": "Effective Inference for Generative Neural Parsing"
+        },
+        {
+            "paperId": "78d57a1ecd724c5f8b1534372969d5b35daa6d4b",
+            "title": "Improving Neural Parsing by Disentangling Model Combination and Reranking Effects"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "593e4e749bd2dbcaf8dc25298d830b41d435e435",
+            "title": "A Minimal Span-Based Neural Constituency Parser"
+        },
+        {
+            "paperId": "1e37139204f51ae1bd01013f0de5c04b3a27cb0c",
+            "title": "Multilingual Lexicalized Constituency Parsing with Word-Level Auxiliary Tasks"
+        },
+        {
+            "paperId": "715dde17239c52b3f9924a5a35edc32b0f27830b",
+            "title": "Span-Based Constituency Parsing with a Structure-Label System and Provably Optimal Dynamic Oracles"
+        },
+        {
+            "paperId": "39f1b108687f643015f96a0c800585a44621f99c",
+            "title": "Parsing as Language Modeling"
+        },
+        {
+            "paperId": "97fb4e3d45bb098e27e0071448b6152217bd35a5",
+            "title": "Layer Normalization"
+        },
+        {
+            "paperId": "7345843e87c81e24e42264859b214d26042f8d51",
+            "title": "Recurrent Neural Network Grammars"
+        },
+        {
+            "paperId": "bb50784deeb9d74106de7639db775ec3bfa43df3",
+            "title": "Neural CRF Parsing"
+        },
+        {
+            "paperId": "47570e7f63e296f224a0e7f9a0d08b0de3cbaf40",
+            "title": "Grammar as a Foreign Language"
+        },
+        {
+            "paperId": "192e272a26bd3a7de037a80a19cd0d273db6f0e3",
+            "title": "Less Grammar, More Features"
+        },
+        {
+            "paperId": "ed8d90fe462f27dde0bfe30c0584c780b73aae79",
+            "title": "Overview of the SPMRL 2013 Shared Task: A Cross-Framework Evaluation of Parsing Morphologically Rich Languages"
+        },
+        {
+            "paperId": "15f8f9944ac89df883545d3395fe5af8df7816dc",
+            "title": "(Re)ranking Meets Morphosyntax: State-of-the-art Results from the SPMRL 2013 Shared Task"
+        },
+        {
+            "paperId": null,
+            "title": "2017)), and to pick an appropriate learning rate"
+        },
+        {
+            "paperId": null,
+            "title": "2017) consistently performed worse than using learned embeddings"
+        },
+        {
+            "paperId": null,
+            "title": "Hinton"
+        },
+        {
+            "paperId": "bb0ea54ed6b1b7c8b521a0c6cde7aed609e06b18",
+            "title": "The IMS-Wroc\u0142aw-Szeged-CIS Entry at the SPMRL 2014 Shared Task: Reranking and Morphosyntax Meet Unlabeled Data\u21e4"
+        }
+    ]
+}

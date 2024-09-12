@@ -1,0 +1,126 @@
+{
+    "paperId": "77021fb48704b860fa850dd103b79db4dcf920ee",
+    "externalIds": {
+        "ACL": "P02-1017",
+        "MAG": "2129882630",
+        "DBLP": "conf/acl/KleinM02",
+        "DOI": "10.3115/1073083.1073106",
+        "CorpusId": 5729159
+    },
+    "title": "A Generative Constituent-Context Model for Improved Grammar Induction",
+    "abstract": "We present a generative distributional model for the unsupervised induction of natural language syntax which explicitly models constituent yields and contexts. Parameter search with EM produces higher quality analyses than previously exhibited by unsupervised systems, giving the best published un-supervised parsing results on the ATIS corpus. Experiments on Penn treebank sentences of comparable length show an even higher F1 of 71% on non-trivial brackets. We compare distributionally induced and actual part-of-speech tags as input data, and examine extensions to the basic model. We discuss errors made by the system, compare the system to previous models, and discuss upper bounds, lower bounds, and stability for this task.",
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2002,
+    "referenceCount": 22,
+    "citationCount": 271,
+    "influentialCitationCount": 37,
+    "openAccessPdf": {
+        "url": "https://dl.acm.org/doi/pdf/10.3115/1073083.1073106",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A generative distributional model for the unsupervised induction of natural language syntax which explicitly models constituent yields and contexts is presented, giving the best published un-supervised parsing results on the ATIS corpus."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "38666915",
+            "name": "D. Klein"
+        },
+        {
+            "authorId": "144783904",
+            "name": "Christopher D. Manning"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "85d1f9caecdb03fa8e754c280afe9191b44c0619",
+            "title": "Distributional phrase structure induction"
+        },
+        {
+            "paperId": "771f5c0bf2540c71ad0ca05c2b9840ca7ef3850a",
+            "title": "Unsupervised induction of stochastic context-free grammars using distributional clustering"
+        },
+        {
+            "paperId": "76f4e5c43af5473a54157d6e40c6673e3f5b28ce",
+            "title": "Grammar Induction as Substructural Inductive Logic Programming"
+        },
+        {
+            "paperId": "5feb019135e705641380ec0dd9be8cc7bdcd973b",
+            "title": "Natural Language Grammar Induction Using a Constituent-Context Model"
+        },
+        {
+            "paperId": "1d96b86ff1a3f34f576212f5e205900e0f7665d8",
+            "title": "Inducing Syntactic Categories by Context Distribution Clustering"
+        },
+        {
+            "paperId": "3a76d832acb7e4cc43d0d41489d2a3cc0d75e24d",
+            "title": "ABL: Alignment-Based Learning"
+        },
+        {
+            "paperId": "fcd018b02cad508d8f849a1638c0d69019c6dcfb",
+            "title": "Bayesian Grammar Induction for Language Modeling"
+        },
+        {
+            "paperId": "aadd4657c4260f2885cd536b1ce54ec7845b7f44",
+            "title": "Distributional Part-of-Speech Tagging"
+        },
+        {
+            "paperId": "0bf69a49c2baed67fa9a044daa24b9e199e73093",
+            "title": "Inducing Probabilistic Grammars by Bayesian Model Merging"
+        },
+        {
+            "paperId": "7a1ef964ad68f23fb4e22b637e4b27e136876a8f",
+            "title": "Part-of-Speech Induction From Scratch"
+        },
+        {
+            "paperId": "ad120a6635aeb1f0fbf798e5a1b97b65e25b716e",
+            "title": "Automatic Grammar Induction and Parsing Free Text: A Transformation-Based Approach"
+        },
+        {
+            "paperId": "eb34c9981c50bde33d165a7f5faeb72018aa4d09",
+            "title": "Two Experiments on Learning Probabilistic Dependency Grammars from Corpora"
+        },
+        {
+            "paperId": "15e4843e2c55843b5c5b429f89dad3d99e801f02",
+            "title": "Inside-Outside Reestimation From Partially Bracketed Corpora"
+        },
+        {
+            "paperId": "7c9d538b9919855532cb046aab046b100c336cc4",
+            "title": "What was transformational grammar"
+        },
+        {
+            "paperId": "6c79a9bb8f885050cad70b4c69e016b186ffa538",
+            "title": "Trainable grammars for speech recognition"
+        },
+        {
+            "paperId": "c655420146f87152f86d3ddaccd155cea256ad5f",
+            "title": "The estimation of stochastic context-free grammars using the Inside-Outside algorithm"
+        },
+        {
+            "paperId": "cfc0b24738f3611f50bad6d56ee4d48610321af1",
+            "title": "Finding structure in language"
+        },
+        {
+            "paperId": "9ba08e0a53bfdcbe0b70a4761c3e2b62f150fc74",
+            "title": "Applications of stochastic context-free grammars using the Inside-Outside algorithm"
+        },
+        {
+            "paperId": "98c5fea671c8d9f87d1a9a4e39bf98edd621ed20",
+            "title": "Learning Syntax and Meanings Through Optimization and Distributional Analysis"
+        },
+        {
+            "paperId": "7ee0c476a3e3d248ceee026302235cab4018d910",
+            "title": "An Introduction to Functional Grammar"
+        },
+        {
+            "paperId": "0d93468c3af3bf1018476a73a80b0deb1d7232fe",
+            "title": "The English Noun Phrase in its Sentential Aspect"
+        },
+        {
+            "paperId": null,
+            "title": "Stochastic Grammars and Language Acquisition Mechanisms"
+        }
+    ]
+}

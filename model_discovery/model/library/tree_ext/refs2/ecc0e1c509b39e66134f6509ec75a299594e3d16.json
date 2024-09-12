@@ -1,0 +1,122 @@
+{
+    "paperId": "ecc0e1c509b39e66134f6509ec75a299594e3d16",
+    "externalIds": {
+        "DBLP": "journals/siamsc/KramerG18",
+        "MAG": "2789371860",
+        "DOI": "10.1137/17M1137632",
+        "CorpusId": 37970802
+    },
+    "title": "System Identification via CUR-Factored Hankel Approximation",
+    "abstract": "Subspace-based system identification for dynamical systems is a sound, system-theoretic way to obtain linear, time-invariant system models from data. The interplay of data and systems theory is reflected in the Hankel matrix, a block-structured matrix whose factorization is used for system identification. For systems with many inputs, many outputs, or large time-series of system-response data, established methods based on the singular value decomposition (SVD)---such as the eigensystem realization algorithm (ERA)---are prohibitively expensive. In this paper, we propose an algorithm to reduce the complexity of the ERA from cubic to linear, with respect to the Hankel matrix size. Furthermore, our memory requirements scale at the same rate because we never require loading the entire Hankel matrix into memory. These reductions are realized by replacing the SVD with a CUR decomposition that directly seeks a low-rank approximation of the Hankel matrix. The CUR decomposition is obtained using a maximum-volume--b...",
+    "venue": "SIAM Journal on Scientific Computing",
+    "year": 2018,
+    "referenceCount": 22,
+    "citationCount": 27,
+    "influentialCitationCount": 5,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes an algorithm to reduce the complexity of the eigensystem realization algorithm (ERA) from cubic to linear, with respect to the Hankel matrix size, by replacing the SVD with a CUR decomposition that directly seeks a low-rank approximation of theHankel matrix."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2053218326",
+            "name": "B. Kramer"
+        },
+        {
+            "authorId": "2439226",
+            "name": "A. Gorodetsky"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "f7ca54a85c9e48ad7f1f04e54bffe0272451b95f",
+            "title": "A Cell-Autonomous Mammalian 12\u00a0hr Clock Coordinates Metabolic and Stress Rhythms."
+        },
+        {
+            "paperId": "da14160756443d826acb7ea16d5dc4ca9096efbc",
+            "title": "Tangential interpolation-based eigensystem realization algorithm for MIMO systems"
+        },
+        {
+            "paperId": "a18b329403ea7561c9829803d22c3d11e0d70c97",
+            "title": "A New Selection Operator for the Discrete Empirical Interpolation Method - Improved A Priori Error Bound and Extensions"
+        },
+        {
+            "paperId": "19c3dc08741cb0a017a2d79f2bde5e1a13e1809a",
+            "title": "A DEIM Induced CUR Factorization"
+        },
+        {
+            "paperId": "8c937e245dc17c9d908dc1686964a3d8c524ca19",
+            "title": "Numerically Stable and Statistically Efficient Algorithms for Large Scale Exponential Fitting"
+        },
+        {
+            "paperId": "8ebbcc30a79333be10057109b6caf9e4e66cca5e",
+            "title": "Quasioptimality of skeleton approximation of a matrix in the Chebyshev norm"
+        },
+        {
+            "paperId": "75bc44168b0f32f8a2df7398745908383124b8b3",
+            "title": "CUR matrix decompositions for improved data analysis"
+        },
+        {
+            "paperId": "21072f6ae4aed8b50285ec4fd7110e149e4d4653",
+            "title": "Reduced-order models for control of fluids using the eigensystem realization algorithm"
+        },
+        {
+            "paperId": "08a757bb53efafbb0eec6cd0a9ab3f128b6d01d3",
+            "title": "A Randomized Algorithm for Principal Component Analysis"
+        },
+        {
+            "paperId": "7ab959ec1915f63bb91dd706f6b177cef0abde84",
+            "title": "Relative-Error CUR Matrix Decompositions"
+        },
+        {
+            "paperId": "31a9c66730500929663f23fc8350a190b471422e",
+            "title": "Approximation of Large-Scale Dynamical Systems"
+        },
+        {
+            "paperId": "12abcb004981dd44b839cfefb6e22147fa681356",
+            "title": "On the Compression of Low Rank Matrices"
+        },
+        {
+            "paperId": "ec9d9acd9556c7b274ce0752330586661784bb36",
+            "title": "A Theory of Pseudoskeleton Approximations"
+        },
+        {
+            "paperId": "8626a4961319e05224955ea90ec730cc4eb82061",
+            "title": "An eigensystem realization algorithm for modal parameter identification and model reduction. [control systems design for large space structures]"
+        },
+        {
+            "paperId": "8ae0cbae42a5fb9b340adaed9ed39569eb96b42d",
+            "title": "Singular value decomposition and least squares solutions"
+        },
+        {
+            "paperId": "a43ef07b442261ad120c3bf550d6a6141707a51e",
+            "title": "Structure-preserving tangential-interpolation based model reduction of port-Hamiltonian systems"
+        },
+        {
+            "paperId": "62501a878223c7179fd03c7d5b7278a96a5e221e",
+            "title": "How to find a good submatrix"
+        },
+        {
+            "paperId": "89aed8a29472d6fe31c00df61aeae80401fec20e",
+            "title": "TT-cross approximation for multidimensional arrays"
+        },
+        {
+            "paperId": "e593db4d0e29e431c0885d2d99a50140aec28952",
+            "title": "Reverse order law for the Moore\u2013Penrose inverse"
+        },
+        {
+            "paperId": "3ca6f4d92d1ea57c5f52170a85d63da1f1355a81",
+            "title": "The maximum-volume concept in approximation by low-rank matrices"
+        },
+        {
+            "paperId": "225ca57add3b3fb12ef01cc97c4683350dc93fe4",
+            "title": "Matrix computations"
+        },
+        {
+            "paperId": "1d0f9897b3cc4843fe596726c3695ce597cbcfdc",
+            "title": "A new identification and model reduction algorithm via singular value decomposition"
+        }
+    ]
+}

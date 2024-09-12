@@ -1,0 +1,73 @@
+{
+    "paperId": "3baa69d314e8ef130e3c5ceccb74f5ea24616db4",
+    "externalIds": {
+        "MAG": "2157998899",
+        "DBLP": "conf/icml/KulisB10",
+        "CorpusId": 7603660
+    },
+    "title": "Implicit Online Learning",
+    "abstract": "Online learning algorithms have recently risen to prominence due to their strong theoretical guarantees and an increasing number of practical applications for large-scale data analysis problems. In this paper, we analyze a class of online learning algorithms based on fixed potentials and non-linearized losses, which yields algorithms with implicit update rules. We show how to efficiently compute these updates, and we prove regret bounds for the algorithms. We apply our formulation to several special cases where our approach has benefits over existing online learning methods. In particular, we provide improved algorithms and bounds for the online metric learning problem, and show improved robustness for online linear prediction problems. Results over a variety of data sets demonstrate the advantages of our framework.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2010,
+    "referenceCount": 10,
+    "citationCount": 90,
+    "influentialCitationCount": 15,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper analyzes a class of online learning algorithms based on fixed potentials and non-linearized losses, which yields algorithms with implicit update rules, and provides improved algorithms and bounds for the online metric learning problem, and shows improved robustness for online linear prediction problems."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1692670",
+            "name": "Brian Kulis"
+        },
+        {
+            "authorId": "1745169",
+            "name": "P. Bartlett"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "0b14178e7d79ac426d0a39700e1ac8b2c6f2e752",
+            "title": "Convex Optimization"
+        },
+        {
+            "paperId": "9df3542f670302e101943a65362c4c6c0df727d9",
+            "title": "Low-Rank Kernel Learning with Bregman Matrix Divergences"
+        },
+        {
+            "paperId": "3263ff3c16220322a3989d4f8bde16a53d9b8d45",
+            "title": "Online Metric Learning and Fast Similarity Search"
+        },
+        {
+            "paperId": "db1ebbf72e6b3097ec5cc1f853ab9c975454ea39",
+            "title": "Mind the Duality Gap: Logarithmic regret algorithms for online optimization"
+        },
+        {
+            "paperId": "c883f38d202548c1d89ef5de8892d53227842092",
+            "title": "Logarithmic regret algorithms for online convex optimization"
+        },
+        {
+            "paperId": "0538e399046c74d95124c715760aa51ab4716dce",
+            "title": "Prediction, learning, and games"
+        },
+        {
+            "paperId": "e1f153c6df86d1ca8ecb9561daddfe7a54f901e7",
+            "title": "Online Convex Programming and Generalized Infinitesimal Gradient Ascent"
+        },
+        {
+            "paperId": "53537c0dcc57c93c12bcf0e0f4eb86cde3f7ddc7",
+            "title": "Relative Loss Bounds for On-Line Density Estimation with the Exponential Family of Distributions"
+        },
+        {
+            "paperId": "98eed3f082351c4821d1edb315846207a8fefbe9",
+            "title": "Exponentiated Gradient Versus Gradient Descent for Linear Predictors"
+        },
+        {
+            "paperId": null,
+            "title": "Convex Analysis"
+        }
+    ]
+}

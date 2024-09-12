@@ -1,0 +1,150 @@
+{
+    "paperId": "568374ac9433e29b812008b2a01f81e657bdbd34",
+    "externalIds": {
+        "DBLP": "conf/icml/GulcehreMDB16",
+        "ArXiv": "1603.00391",
+        "MAG": "2292877769",
+        "CorpusId": 9198110
+    },
+    "title": "Noisy Activation Functions",
+    "abstract": "Common nonlinear activation functions used in neural networks can cause training difficulties due to the saturation behavior of the activation function, which may hide dependencies that are not visible to vanilla-SGD (using first order gradients only). Gating mechanisms that use softly saturating activation functions to emulate the discrete switching of digital logic circuits are good examples of this. We propose to exploit the injection of appropriate noise so that the gradients may flow easily, even if the noiseless application of the activation function would yield zero gradient. Large noise will dominate the noise-free gradient and allow stochastic gradient descent toexplore more. By adding noise only to the problematic parts of the activation function, we allow the optimization procedure to explore the boundary between the degenerate (saturating) and the well-behaved parts of the activation function. We also establish connections to simulated annealing, when the amount of noise is annealed down, making it easier to optimize hard objective functions. We find experimentally that replacing such saturating activation functions by noisy variants helps training in many contexts, yielding state-of-the-art or competitive results on different datasets and task, especially when training seems to be the most difficult, e.g., when curriculum learning is necessary to obtain good results.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2016,
+    "referenceCount": 27,
+    "citationCount": 267,
+    "influentialCitationCount": 16,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes to exploit the injection of appropriate noise so that the gradients may flow easily, even if the noiseless application of the activation function would yield zero gradient, and establishes connections to simulated annealing, making it easier to optimize hard objective functions."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1854385",
+            "name": "\u00c7aglar G\u00fcl\u00e7ehre"
+        },
+        {
+            "authorId": "3009779",
+            "name": "Marcin Moczulski"
+        },
+        {
+            "authorId": "1715051",
+            "name": "Misha Denil"
+        },
+        {
+            "authorId": "1751762",
+            "name": "Yoshua Bengio"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "1db9ad7582ff6052f2a2cdc2d0a1bbfeeb399725",
+            "title": "Training Recurrent Neural Networks by Diffusion"
+        },
+        {
+            "paperId": "a546966db50cc8fdef98bb744990f35248932930",
+            "title": "Adding Gradient Noise Improves Learning for Very Deep Networks"
+        },
+        {
+            "paperId": "d1505c6123c102e53eb19dff312cb25cea840b72",
+            "title": "Teaching Machines to Read and Comprehend"
+        },
+        {
+            "paperId": "40be3888daa5c2e5af4d36ae22f690bcc8caf600",
+            "title": "Visualizing and Understanding Recurrent Networks"
+        },
+        {
+            "paperId": "adf3b591281688b7e71b254ab931b2aa39b4b59f",
+            "title": "Empirical Evaluation of Rectified Activations in Convolutional Network"
+        },
+        {
+            "paperId": "d46b81707786d18499f911b4ab72bb10c65406ba",
+            "title": "A Simple Way to Initialize Recurrent Networks of Rectified Linear Units"
+        },
+        {
+            "paperId": "a70c24f8e97aea58d6fe913372abab1daeaf1264",
+            "title": "Escaping From Saddle Points - Online Stochastic Gradient for Tensor Decomposition"
+        },
+        {
+            "paperId": "5f425b7abf2ed3172ed060df85bb1885860a297e",
+            "title": "Describing Videos by Exploiting Temporal Structure"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "24741d280869ad9c60321f5ab6e5f01b7852507d",
+            "title": "Deep Speech: Scaling up end-to-end speech recognition"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "0d0b3ff23fbf1ec7a0dfebd923a3ef224306491a",
+            "title": "Learning to Execute"
+        },
+        {
+            "paperId": "f264e8b33c0d49a692a6ce2c4bcb28588aeb7d97",
+            "title": "Recurrent Neural Network Regularization"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "62c76ca0b2790c34e85ba1cce09d47be317c7235",
+            "title": "Estimating or Propagating Gradients Through Stochastic Neurons for Conditional Computation"
+        },
+        {
+            "paperId": "3832057ac487f43e885cdb485a6ca1462834bb8d",
+            "title": "Estimating or Propagating Gradients Through Stochastic Neurons"
+        },
+        {
+            "paperId": "b7b915d508987b73b61eccd2b237e7ed099a2d29",
+            "title": "Maxout Networks"
+        },
+        {
+            "paperId": "67107f78a84bdb2411053cb54e94fa226eea6d8e",
+            "title": "Deep Sparse Rectifier Neural Networks"
+        },
+        {
+            "paperId": "a538b05ebb01a40323997629e171c91aa28b8e2f",
+            "title": "Rectified Linear Units Improve Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": "8de174ab5419b9d3127695405efd079808e956e8",
+            "title": "Curriculum learning"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "dd9dddf15874a30d6b95c0db9401be7ca136306e",
+            "title": "Numerical continuation methods - an introduction"
+        },
+        {
+            "paperId": "dd5061631a4d11fa394f4421700ebf7e78dcbc59",
+            "title": "Optimization by Simulated Annealing"
+        },
+        {
+            "paperId": "2913c2bf3f92b5ae369400a42b2d27cc5bc05ecb",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": "24a6bfcaf8857da93f8bdaa50c03d7bc0ca298ee",
+            "title": "Numerical Continuation Methods"
+        },
+        {
+            "paperId": null,
+            "title": "Acknowledgements The authors would like to acknowledge the support of the following agencies for research funding and computing support: NSERC, Calcul Qu\u00e9bec"
+        }
+    ]
+}

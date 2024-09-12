@@ -1,0 +1,142 @@
+{
+    "paperId": "773d5ddc414424a8948446ddaa5275b944f50891",
+    "externalIds": {
+        "ArXiv": "1705.07565",
+        "DBLP": "journals/corr/DongCP17",
+        "MAG": "2618305643",
+        "CorpusId": 5750817
+    },
+    "title": "Learning to Prune Deep Neural Networks via Layer-wise Optimal Brain Surgeon",
+    "abstract": "How to develop slim and accurate deep neural networks has become crucial for real- world applications, especially for those employed in embedded systems. Though previous work along this research line has shown some promising results, most existing methods either fail to significantly compress a well-trained deep network or require a heavy retraining process for the pruned deep network to re-boost its prediction performance. In this paper, we propose a new layer-wise pruning method for deep neural networks. In our proposed method, parameters of each individual layer are pruned independently based on second order derivatives of a layer-wise error function with respect to the corresponding parameters. We prove that the final prediction performance drop after pruning is bounded by a linear combination of the reconstructed errors caused at each layer. Therefore, there is a guarantee that one only needs to perform a light retraining process on the pruned network to resume its original prediction performance. We conduct extensive experiments on benchmark datasets to demonstrate the effectiveness of our pruning method compared with several state-of-the-art baseline methods.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2017,
+    "referenceCount": 26,
+    "citationCount": 447,
+    "influentialCitationCount": 38,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is proved that the final prediction performance drop after pruning is bounded by a linear combination of the reconstructed errors caused at each layer, so there is a guarantee that one only needs to perform a light retraining process on the pruned network to resume its original prediction performance."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2031471015",
+            "name": "Xin Dong"
+        },
+        {
+            "authorId": "7159786",
+            "name": "Shangyu Chen"
+        },
+        {
+            "authorId": "1746914",
+            "name": "Sinno Jialin Pan"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "29db0663ef1b7b975b8fee0c198d26f52eeeeef9",
+            "title": "Ultrastructural evidence for synaptic scaling across the wake/sleep cycle"
+        },
+        {
+            "paperId": "dda8e1d5252615b395d5ae480b1740811494cbb4",
+            "title": "The Incredible Shrinking Neural Network: New Perspectives on Learning Representations Through The Lens of Pruning"
+        },
+        {
+            "paperId": "18d9d9e8363bf946c6a09d4a35230bb2db0e35f6",
+            "title": "Net-Trim: A Layer-wise Convex Pruning of Deep Neural Networks"
+        },
+        {
+            "paperId": "c2a1cb1612ba21e067a5c3ba478a8d73b796b77a",
+            "title": "Pruning Filters for Efficient ConvNets"
+        },
+        {
+            "paperId": "c220cdbcec6f92e4bc0f58c5fa6c1183105be1f9",
+            "title": "Dynamic Network Surgery for Efficient DNNs"
+        },
+        {
+            "paperId": "64ade6c659f6deeed5527bdd81619cdba90af29a",
+            "title": "Training Skinny Deep Neural Networks with Iterative Hard Thresholding Methods"
+        },
+        {
+            "paperId": "60ae4f18cb53efff0174e3fea7064049737e1e67",
+            "title": "Network Trimming: A Data-Driven Neuron Pruning Approach towards Efficient Deep Architectures"
+        },
+        {
+            "paperId": "9c9d7247f8c51ec5a02b0d911d1d7b9e8160495d",
+            "title": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "a2167238d7b54cf294251542047cc8d74b9bab5b",
+            "title": "Sparsifying Neural Network Connections for Face Recognition"
+        },
+        {
+            "paperId": "d5b4721c8188269b120d3d06149a04435753e755",
+            "title": "Convolutional neural networks with low-rank regularization"
+        },
+        {
+            "paperId": "1ff9a37d766e3a4f39757f5e1b235a42dacf18ff",
+            "title": "Learning both Weights and Connections for Efficient Neural Network"
+        },
+        {
+            "paperId": "d559dd84fc473fca7e91b9075675750823935afa",
+            "title": "Sparse Convolutional Neural Networks"
+        },
+        {
+            "paperId": "e7bf9803705f2eb608db1e59e5c7636a3f171916",
+            "title": "Compressing Deep Convolutional Networks using Vector Quantization"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "eff61216e0136886e1158625b1e5a88ed1a7cbce",
+            "title": "Predicting Parameters in Deep Learning"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "67107f78a84bdb2411053cb54e94fa226eea6d8e",
+            "title": "Deep Sparse Rectifier Neural Networks"
+        },
+        {
+            "paperId": "0d82c68980943718a306df67c3ed95f782e9f93a",
+            "title": "Pruning algorithms-a survey"
+        },
+        {
+            "paperId": "a42954d4b9d0ccdf1036e0af46d87a01b94c3516",
+            "title": "Second Order Derivatives for Network Pruning: Optimal Brain Surgeon"
+        },
+        {
+            "paperId": "2913c2bf3f92b5ae369400a42b2d27cc5bc05ecb",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": null,
+            "title": "Convex analysis"
+        },
+        {
+            "paperId": "e7297db245c3feb1897720b173a59fe7e36babb7",
+            "title": "Optimal Brain Damage"
+        },
+        {
+            "paperId": null,
+            "title": "Linear systems, volume 156"
+        }
+    ]
+}

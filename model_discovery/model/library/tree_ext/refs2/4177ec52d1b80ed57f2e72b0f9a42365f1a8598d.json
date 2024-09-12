@@ -1,0 +1,162 @@
+{
+    "paperId": "4177ec52d1b80ed57f2e72b0f9a42365f1a8598d",
+    "externalIds": {
+        "DBLP": "journals/corr/abs-1303-5778",
+        "MAG": "2950689855",
+        "ArXiv": "1303.5778",
+        "DOI": "10.1109/ICASSP.2013.6638947",
+        "CorpusId": 206741496
+    },
+    "title": "Speech recognition with deep recurrent neural networks",
+    "abstract": "Recurrent neural networks (RNNs) are a powerful model for sequential data. End-to-end training methods such as Connectionist Temporal Classification make it possible to train RNNs for sequence labelling problems where the input-output alignment is unknown. The combination of these methods with the Long Short-term Memory RNN architecture has proved particularly fruitful, delivering state-of-the-art results in cursive handwriting recognition. However RNN performance in speech recognition has so far been disappointing, with better results returned by deep feedforward networks. This paper investigates deep recurrent neural networks, which combine the multiple levels of representation that have proved so effective in deep networks with the flexible use of long range context that empowers RNNs. When trained end-to-end with suitable regularisation, we find that deep Long Short-term Memory RNNs achieve a test set error of 17.7% on the TIMIT phoneme recognition benchmark, which to our knowledge is the best recorded score.",
+    "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+    "year": 2013,
+    "referenceCount": 30,
+    "citationCount": 8195,
+    "influentialCitationCount": 405,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1303.5778",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper investigates deep recurrent neural networks, which combine the multiple levels of representation that have proved so effective in deep networks with the flexible use of long range context that empowers RNNs."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1753223",
+            "name": "Alex Graves"
+        },
+        {
+            "authorId": "40360972",
+            "name": "Abdel-rahman Mohamed"
+        },
+        {
+            "authorId": "1695689",
+            "name": "Geoffrey E. Hinton"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "7b4f3d0e4e2486a8d5d3f8e00549cf9a117bf88f",
+            "title": "Sequence Transduction with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "e33cbb25a8c7390aec6a398e36381f4f7770c283",
+            "title": "Deep Neural Networks for Acoustic Modeling in Speech Recognition"
+        },
+        {
+            "paperId": "dbee79ac1865cd42780215d8fb2da4bc2ab7f381",
+            "title": "Revisiting Recurrent Neural Networks for robust ASR"
+        },
+        {
+            "paperId": "9a9f4bf3bfe133e1c70f6b60654c238b677c66d0",
+            "title": "Applying Convolutional Neural Networks concepts to hybrid NN-HMM model for speech recognition"
+        },
+        {
+            "paperId": "a97b5db17acc731ef67321832dbbaf5766153135",
+            "title": "Supervised Sequence Labelling with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "5a9ef216bf11f222438fff130c778267d39a9564",
+            "title": "Practical Variational Inference for Neural Networks"
+        },
+        {
+            "paperId": "d0191c9b53a99942a9b4ec39dc30489e41c7aaa1",
+            "title": "Investigation of full-sequence training of deep belief networks for speech recognition"
+        },
+        {
+            "paperId": "a2cd4d03695b9d5f4440f38e89e7a39b43ffa7f0",
+            "title": "Discriminatively estimated joint acoustic, duration, and language model for speech recognition"
+        },
+        {
+            "paperId": "67eaa328fec030ec9db049d5022cc6d5fca22c12",
+            "title": "SCARF: A Segmental CRF Speech Recognition System"
+        },
+        {
+            "paperId": "68db33b01ef82cbafb440e5f4bee30458cbb9871",
+            "title": "Unconstrained On-line Handwriting Recognition with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "5536d42ce80e129be8cae172ed1b7659c769d31d",
+            "title": "2005 Special Issue: Framewise phoneme classification with bidirectional LSTM and other neural network architectures"
+        },
+        {
+            "paperId": "dfae87ca0cf2cc3f3ebd60b0d8a94222eab18812",
+            "title": "Tandem Connectionist Feature Extraction for Conversational Speech Recognition"
+        },
+        {
+            "paperId": "047655e733a9eed9a500afd916efa566915b9110",
+            "title": "Learning Precise Timing with LSTM Recurrent Networks"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "e23c34414e66118ecd9b08cf0cd4d016f59b0b85",
+            "title": "Bidirectional recurrent neural networks"
+        },
+        {
+            "paperId": "030a977bf32e81fb694117d78ac84a3fbe2a1d81",
+            "title": "An analysis of noise in recurrent neural networks: convergence and generalization"
+        },
+        {
+            "paperId": "c25e9ebd8fe9d761f4738f7936ef114f7f6afe5d",
+            "title": "Forward-backward retraining of recurrent neural networks"
+        },
+        {
+            "paperId": "c6629770cb6a00ad585918e71fe6dbad829ad0d1",
+            "title": "An application of recurrent nets to phone probability estimation"
+        },
+        {
+            "paperId": "3d82e058a5c40954b8f5db170a298a889a254c37",
+            "title": "Connectionist Speech Recognition: A Hybrid Approach"
+        },
+        {
+            "paperId": "25c9f33aceac6dcff357727cbe2faf145b01d13c",
+            "title": "Keeping the neural networks simple by minimizing the description length of the weights"
+        },
+        {
+            "paperId": "3034afcd45fc190ed71982828b77f6e4154bdc5c",
+            "title": "Speaker-independent phone recognition using hidden Markov models"
+        },
+        {
+            "paperId": "052b1d8ce63b07fec3de9dbb583772d860b7c769",
+            "title": "Learning representations by back-propagating errors"
+        },
+        {
+            "paperId": "d2b62f77cb2864e465aa60bca6c26bb1d2f84963",
+            "title": "Acoustic Modeling Using Deep Belief Networks"
+        },
+        {
+            "paperId": "c1bca434074c447a31fa227059baccee66b48387",
+            "title": "Recurrent Neural Networks for Noise Reduction in Robust ASR"
+        },
+        {
+            "paperId": "31868290adf1c000c611dfc966b514d5a34e8d23",
+            "title": "FUNDAMENTAL TECHNOLOGIES IN MODERN SPEECH RECOGNITION Digital Object Identifier 10.1109/MSP.2012.2205597"
+        },
+        {
+            "paperId": "c08d0525bd42fa1c24f9f5df72f4c8fcf7063b22",
+            "title": "Offline Handwriting Recognition with Multidimensional Recurrent Neural Networks"
+        },
+        {
+            "paperId": "a0aca3246845016bd8dc996944476f3dd5a5ba56",
+            "title": "Unconstrained Online Handwriting Recognition with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "90f4ef44e84be07c1fabd8c6bc6060fb96af79d2",
+            "title": "2005 Special Issue"
+        },
+        {
+            "paperId": null,
+            "title": "The DARPA TIMIT Acoustic-Phonetic Continuous Speech Corpus (TIMIT), speech disc cd1- 1.1 edition"
+        },
+        {
+            "paperId": "261a056f8b21918e8616a429b2df6e1d5d33be41",
+            "title": "Connectionist Temporal Classi\ufb01cation: Labelling Unsegmented Sequence Data with Recurrent Neural Networks"
+        }
+    ]
+}

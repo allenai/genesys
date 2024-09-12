@@ -1,0 +1,130 @@
+{
+    "paperId": "7380e343dd4547e21d5118b16daf03d021d98c4e",
+    "externalIds": {
+        "MAG": "2950438205",
+        "DBLP": "conf/iccv/FongV17",
+        "ArXiv": "1704.03296",
+        "DOI": "10.1109/ICCV.2017.371",
+        "CorpusId": 1633753
+    },
+    "title": "Interpretable Explanations of Black Boxes by Meaningful Perturbation",
+    "abstract": "As machine learning algorithms are increasingly applied to high impact yet high risk tasks, such as medical diagnosis or autonomous driving, it is critical that researchers can explain how such algorithms arrived at their predictions. In recent years, a number of image saliency methods have been developed to summarize where highly complex neural networks \u201clook\u201d in an image for evidence for their predictions. However, these techniques are limited by their heuristic nature and architectural constraints. In this paper, we make two main contributions: First, we propose a general framework for learning different kinds of explanations for any black box algorithm. Second, we specialise the framework to find the part of an image most responsible for a classifier decision. Unlike previous works, our method is model-agnostic and testable because it is grounded in explicit and interpretable image perturbations.",
+    "venue": "IEEE International Conference on Computer Vision",
+    "year": 2017,
+    "referenceCount": 23,
+    "citationCount": 1408,
+    "influentialCitationCount": 159,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1704.03296",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A general framework for learning different kinds of explanations for any black box algorithm is proposed and the framework to find the part of an image most responsible for a classifier decision is specialised."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "25576460",
+            "name": "Ruth C. Fong"
+        },
+        {
+            "authorId": "1687524",
+            "name": "A. Vedaldi"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "5f456ac2ea2126b6af8d9b335eec662a0c1af422",
+            "title": "Salient Deconvolutional Networks"
+        },
+        {
+            "paperId": "5582bebed97947a41e3ddd9bd1f284b73f1648c2",
+            "title": "Grad-CAM: Visual Explanations from Deep Networks via Gradient-Based Localization"
+        },
+        {
+            "paperId": "5d656b0b964d370fc97b0f1b1e1213a1cb179203",
+            "title": "A model explanation system"
+        },
+        {
+            "paperId": "7361e42c5eb0d5438c4294cc7ea3f9a53d326309",
+            "title": "Top-Down Neural Attention by Excitation Backprop"
+        },
+        {
+            "paperId": "b544ca32b66b4c9c69bcfa00d63ee4b799d8ab6b",
+            "title": "Adversarial examples in the physical world"
+        },
+        {
+            "paperId": "c0883f5930a232a9c1ad601c978caede29155979",
+            "title": "\u201cWhy Should I Trust You?\u201d: Explaining the Predictions of Any Classifier"
+        },
+        {
+            "paperId": "31f9eb39d840821979e5df9f34a6e92dd9c879f2",
+            "title": "Learning Deep Features for Discriminative Localization"
+        },
+        {
+            "paperId": "8d5d3ca4ec7e4eb0b7d0c482f96ef06e43b53613",
+            "title": "Visualizing Deep Convolutional Neural Networks Using Natural Pre-images"
+        },
+        {
+            "paperId": "2260ad2f72b319b6b30569d451026b6290f5ebee",
+            "title": "Look and Think Twice: Capturing Top-Down Visual Attention with Feedback Convolutional Neural Networks"
+        },
+        {
+            "paperId": "17a273bbd4448083b01b5a9389b3c37f5425aac0",
+            "title": "On Pixel-Wise Explanations for Non-Linear Classifier Decisions by Layer-Wise Relevance Propagation"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "33af9298e5399269a12d4b9901492fe406af62b4",
+            "title": "Striving for Simplicity: The All Convolutional Net"
+        },
+        {
+            "paperId": "401192b00b650adfa5ac49de59b720e1c81f1410",
+            "title": "Object Detectors Emerge in Deep Scene CNNs"
+        },
+        {
+            "paperId": "4543670c4b2d88a9b67525e0084044adef94ae76",
+            "title": "Deep neural networks are easily fooled: High confidence predictions for unrecognizable images"
+        },
+        {
+            "paperId": "4d790c8fae40357d24813d085fa74a436847fb49",
+            "title": "Understanding deep image representations by inverting them"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "71b7178df5d2b112d07e45038cb5637208659ff7",
+            "title": "Microsoft COCO: Common Objects in Context"
+        },
+        {
+            "paperId": "dc6ac3437f0a6e64e4404b1b9d188394f8a3bf71",
+            "title": "Deep Inside Convolutional Networks: Visualising Image Classification Models and Saliency Maps"
+        },
+        {
+            "paperId": "1a2a770d23b4a171fa81de62a78a3deb0588f238",
+            "title": "Visualizing and Understanding Convolutional Networks"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "99ceb2354c50ea8934254422d7d3b79f15f0e994",
+            "title": "I Have Seen Enough: Transferring Parts Across Categories"
+        },
+        {
+            "paperId": "7d76a09aa363685bc0f04a502ed853dc09a574e2",
+            "title": "Grad-CAM: Why did you say that? Visual Explanations from Deep Networks via Gradient-based Localization"
+        }
+    ]
+}

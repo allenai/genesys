@@ -1,0 +1,151 @@
+{
+    "paperId": "fdbdd4e0461d23905104460a02a176907d945f44",
+    "externalIds": {
+        "DBLP": "conf/emnlp/LiTYLZ18",
+        "MAG": "2962822108",
+        "ArXiv": "1810.10183",
+        "ACL": "D18-1317",
+        "DOI": "10.18653/v1/D18-1317",
+        "CorpusId": 53081097
+    },
+    "title": "Multi-Head Attention with Disagreement Regularization",
+    "abstract": "Multi-head attention is appealing for the ability to jointly attend to information from different representation subspaces at different positions. In this work, we introduce a disagreement regularization to explicitly encourage the diversity among multiple attention heads. Specifically, we propose three types of disagreement regularization, which respectively encourage the subspace, the attended positions, and the output representation associated with each attention head to be different from other heads. Experimental results on widely-used WMT14 English-German and WMT17 Chinese-English translation tasks demonstrate the effectiveness and universality of the proposed approach.",
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2018,
+    "referenceCount": 25,
+    "citationCount": 142,
+    "influentialCitationCount": 8,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/D18-1317.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes three types of disagreement regularization, which respectively encourage the subspace, the attended positions, and the output representation associated with each attention head to be different from other heads."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "71003878",
+            "name": "Jian Li"
+        },
+        {
+            "authorId": "2909321",
+            "name": "Zhaopeng Tu"
+        },
+        {
+            "authorId": "21299583",
+            "name": "Baosong Yang"
+        },
+        {
+            "authorId": "1785083",
+            "name": "Michael R. Lyu"
+        },
+        {
+            "authorId": "38144094",
+            "name": "T. Zhang"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "8442d6e33a6b6d9db248cf9f12d292601740d47f",
+            "title": "THUMT: An Open-Source Toolkit for Neural Machine Translation"
+        },
+        {
+            "paperId": "7e960b6479d1071b507d0014776adecb3480748d",
+            "title": "Exploiting Deep Representations for Neural Machine Translation"
+        },
+        {
+            "paperId": "1af138dc72fa855cc3bc9c0b83750b461c26e29d",
+            "title": "Modeling Localness for Self-Attention Networks"
+        },
+        {
+            "paperId": "0ef460c47377c3b9482d8177cbcafad1730a91a5",
+            "title": "Bi-Directional Block Self-Attention for Fast and Memory-Efficient Sequence Modeling"
+        },
+        {
+            "paperId": "fc1d981dd051063ae586a56b05390fe3ea82f040",
+            "title": "Achieving Human Parity on Automatic Chinese to English News Translation"
+        },
+        {
+            "paperId": "c8efcc854d97dfc2a42b83316a2109f9d166e43f",
+            "title": "Self-Attention with Relative Position Representations"
+        },
+        {
+            "paperId": "3861ae2a6bdd2a759c2d901a6583e63a216bc2fc",
+            "title": "Weighted Transformer Network for Machine Translation"
+        },
+        {
+            "paperId": "adc276e6eae7051a027a4c269fb21dae43cadfed",
+            "title": "DiSAN: Directional Self-Attention Network for RNN/CNN-free Language Understanding"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "43428880d75b3a14257c3ee9bda054e61eb869c0",
+            "title": "Convolutional Sequence to Sequence Learning"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "3445f2d635ef18a60e409d070921737876e96f6b",
+            "title": "Conference on Empirical Methods in Natural Language Processing EMNLP 2016"
+        },
+        {
+            "paperId": "33108287fbc8d94160787d7b2c7ef249d3ad6437",
+            "title": "Modeling Coverage for Neural Machine Translation"
+        },
+        {
+            "paperId": "de45a6f4473a321d3dd70b0f5e327a0783b57326",
+            "title": "Agreement-Based Joint Training for Bidirectional Attention-Based Neural Machine Translation"
+        },
+        {
+            "paperId": "1518039b5001f1836565215eb047526b3ac7f462",
+            "title": "Neural Machine Translation of Rare Words with Subword Units"
+        },
+        {
+            "paperId": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+            "title": "Effective Approaches to Attention-based Neural Machine Translation"
+        },
+        {
+            "paperId": "b624504240fa52ab76167acfe3156150ca01cf3b",
+            "title": "Attention-Based Models for Speech Recognition"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "03a4049dc8737e6f27cb72e635b4abd528c13929",
+            "title": "Agreement-Based Learning"
+        },
+        {
+            "paperId": "f4f6bfacb4cd508df62540f5aa9ba30cd83dd127",
+            "title": "Alignment by Agreement"
+        },
+        {
+            "paperId": "f5b1146b7ca79322aab124fd63825b9c175c02cf",
+            "title": "Clause Restructuring for Statistical Machine Translation"
+        },
+        {
+            "paperId": "a4b828609b60b06e61bea7a4029cc9e1cad5df87",
+            "title": "Statistical Phrase-Based Translation"
+        },
+        {
+            "paperId": "d7da009f457917aa381619facfa5ffae9329a6e9",
+            "title": "Bleu: a Method for Automatic Evaluation of Machine Translation"
+        },
+        {
+            "paperId": "00d9f17b6a9a24af68c04e87fb62e4d1f1e3ecce",
+            "title": "Model Invertibility Regularization: Sequence Alignment With or Without Parallel Data"
+        }
+    ]
+}

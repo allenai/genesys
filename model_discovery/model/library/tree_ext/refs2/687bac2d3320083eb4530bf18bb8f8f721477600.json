@@ -1,0 +1,234 @@
+{
+    "paperId": "687bac2d3320083eb4530bf18bb8f8f721477600",
+    "externalIds": {
+        "ACL": "D13-1170",
+        "DBLP": "conf/emnlp/SocherPWCMNP13",
+        "MAG": "2251939518",
+        "CorpusId": 990233
+    },
+    "title": "Recursive Deep Models for Semantic Compositionality Over a Sentiment Treebank",
+    "abstract": "Semantic word spaces have been very useful but cannot express the meaning of longer phrases in a principled way. Further progress towards understanding compositionality in tasks such as sentiment detection requires richer supervised training and evaluation resources and more powerful models of composition. To remedy this, we introduce a Sentiment Treebank. It includes fine grained sentiment labels for 215,154 phrases in the parse trees of 11,855 sentences and presents new challenges for sentiment compositionality. To address them, we introduce the Recursive Neural Tensor Network. When trained on the new treebank, this model outperforms all previous methods on several metrics. It pushes the state of the art in single sentence positive/negative classification from 80% up to 85.4%. The accuracy of predicting fine-grained sentiment labels for all phrases reaches 80.7%, an improvement of 9.7% over bag of features baselines. Lastly, it is the only model that can accurately capture the effects of negation and its scope at various tree levels for both positive and negative phrases.",
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2013,
+    "referenceCount": 45,
+    "citationCount": 7757,
+    "influentialCitationCount": 1274,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A Sentiment Treebank that includes fine grained sentiment labels for 215,154 phrases in the parse trees of 11,855 sentences and presents new challenges for sentiment compositionality, and introduces the Recursive Neural Tensor Network."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2166511",
+            "name": "R. Socher"
+        },
+        {
+            "authorId": "24590005",
+            "name": "Alex Perelygin"
+        },
+        {
+            "authorId": "2110402830",
+            "name": "Jean Wu"
+        },
+        {
+            "authorId": "1964541",
+            "name": "Jason Chuang"
+        },
+        {
+            "authorId": "144783904",
+            "name": "Christopher D. Manning"
+        },
+        {
+            "authorId": "34699434",
+            "name": "A. Ng"
+        },
+        {
+            "authorId": "144922861",
+            "name": "Christopher Potts"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "607cca37c1429b7380df35b3f761ae1499aa84ab",
+            "title": "Multi-Step Regression Learning for Compositional Distributional Semantics"
+        },
+        {
+            "paperId": "04cc04457e09e17897f9256c86b45b92d70a401f",
+            "title": "A latent factor model for highly multi-relational data"
+        },
+        {
+            "paperId": "a07982a704e117ea9970654d8a2697355d15142d",
+            "title": "Large Vocabulary Speech Recognition Using Deep Tensor Neural Networks"
+        },
+        {
+            "paperId": "27e38351e48fe4b7da2775bf94341738bc4da07e",
+            "title": "Semantic Compositionality through Recursive Matrix-Vector Spaces"
+        },
+        {
+            "paperId": "f798edd26edbc5faa4a9b61c2a269b2662d861da",
+            "title": "A System for Real-time Twitter Sentiment Analysis of 2012 U.S. Presidential Election Cycle"
+        },
+        {
+            "paperId": "2b669398c4cf2ebe04375c8b1beae20f4ac802fa",
+            "title": "Improving Word Representations via Global Context and Multiple Word Prototypes"
+        },
+        {
+            "paperId": "cfa2646776405d50533055ceb1b7f050e9014dcb",
+            "title": "Semi-Supervised Recursive Autoencoders for Predicting Sentiment Distributions"
+        },
+        {
+            "paperId": "2063745d08868c928455f422202b72146a1960fb",
+            "title": "Compositional Matrix-Space Models for Sentiment Analysis"
+        },
+        {
+            "paperId": "9c0ddf74f87d154db88d79c640578c1610451eec",
+            "title": "Parsing Natural Scenes and Natural Language with Recursive Neural Networks"
+        },
+        {
+            "paperId": "3c5126da7ce388c64b796c80d15a3c3629d6ad58",
+            "title": "Experimental Support for a Categorical Compositional Distributional Model of Meaning"
+        },
+        {
+            "paperId": "ab4850b6151ca9a9337dbba94115bde342876d50",
+            "title": "From machine learning to machine reasoning"
+        },
+        {
+            "paperId": "413c1142de9d91804d6d11c67ff3fed59c9fc279",
+            "title": "Adaptive Subgradient Methods for Online Learning and Stochastic Optimization"
+        },
+        {
+            "paperId": "ce4d33595e192e0894f857db88af2a847a932c97",
+            "title": "Distributional Memory: A General Framework for Corpus-Based Semantics"
+        },
+        {
+            "paperId": "745d86adca56ec50761591733e157f84cfb19671",
+            "title": "Composition in Distributional Models of Semantics"
+        },
+        {
+            "paperId": "8d9da542a6aa92fece5dfb7eecfb44ae7de0f664",
+            "title": "Estimating Linear Models for Compositional Distributional Semantics"
+        },
+        {
+            "paperId": "d9269fd1efeb87000d346cc8514dec3fc6ec01d6",
+            "title": "Compositional Matrix-Space Models of Language"
+        },
+        {
+            "paperId": "da5cd00115f7ec108de8eebf071c5f3f19807df4",
+            "title": "Dependency Tree-based Sentiment Classification using CRFs with Hidden Variables"
+        },
+        {
+            "paperId": "346549b3ea0dab07a26c9354e1855b74f2f18609",
+            "title": "United we Stand: Improving Sentiment Analysis by Joining Machine Learning and Rule Based Methods"
+        },
+        {
+            "paperId": "e7c64258997838087c9ba4e87225627b015122b2",
+            "title": "Factored 3-Way Restricted Boltzmann Machines For Modeling Natural Images"
+        },
+        {
+            "paperId": "3a0e788268fafb23ab20da0e98bb578b06830f7d",
+            "title": "From Frequency to Meaning: Vector Space Models of Semantics"
+        },
+        {
+            "paperId": "81bbe42e3ec09c28b8864956148e58f4cb5aa860",
+            "title": "Modelling Relational Data using Bayesian Clustered Tensor Factorization"
+        },
+        {
+            "paperId": "6d0b27c8bbc5bf4f4304725edd91dc4b236bd58b",
+            "title": "Multi-entity Sentiment Scoring"
+        },
+        {
+            "paperId": "cb9cc883bdd08d58feee5c7da01acff6fdb4ad78",
+            "title": "A Structured Vector Space Model for Word Meaning in Context"
+        },
+        {
+            "paperId": "57458bc1cffe5caa45a885af986d70f723f406b4",
+            "title": "A unified architecture for natural language processing: deep neural networks with multitask learning"
+        },
+        {
+            "paperId": "7441116c5b5a745708a9d7c5aa0ecf04e0c76c93",
+            "title": "Dependency-Based Construction of Semantic Space Models"
+        },
+        {
+            "paperId": "2ab8faaa1ee1791e6da911e408dee97681cfa58e",
+            "title": "Multiple Aspect Ranking Using the Good Grief Algorithm"
+        },
+        {
+            "paperId": "74fe7ec751cd50295b15cfd46389a8fefb37c414",
+            "title": "Learning to Map Sentences to Logical Form: Structured Classification with Probabilistic Categorial Grammars"
+        },
+        {
+            "paperId": "6af58c061f2e4f130c3b795c21ff0c7e3903278f",
+            "title": "Seeing Stars: Exploiting Class Relationships for Sentiment Categorization with Respect to Rating Scales"
+        },
+        {
+            "paperId": "a600850ac0120cb09a0b7de7da80bb6a7a76de06",
+            "title": "Accurate Unlexicalized Parsing"
+        },
+        {
+            "paperId": "6c2b28f9354f667cd5bd07afc0471d8334430da7",
+            "title": "A Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "6735700adb3e46c0ff6e13d54f2a3c95415d39f2",
+            "title": "Minimizers, Maximizers and the Rhetoric of Scalar Reasoning"
+        },
+        {
+            "paperId": "0c4d193b4e8520dbc583cc7ee59c8417869f67ce",
+            "title": "Holographic reduced representations"
+        },
+        {
+            "paperId": "44a83a681461b6511f06bc68697edf56255252d5",
+            "title": "A natural history of negation"
+        },
+        {
+            "paperId": "71dd4d477ca17b4db3b270d25225822ff3a41fac",
+            "title": "Mapping Part-Whole Hierarchies into Connectionist Networks"
+        },
+        {
+            "paperId": "6a835df43fdc2f79126319f6fa033bb42147c6f6",
+            "title": "Recursive Distributed Representations"
+        },
+        {
+            "paperId": "0f717bda5ae5a37bbafb842492cdb90aae61cf51",
+            "title": "Denial and contrast: A relevance theoretic analysis ofbut"
+        },
+        {
+            "paperId": "81b3b3fe994a9eda6d3f9d2149aa4492d1933975",
+            "title": "Learning Continuous Phrase Representations and Syntactic Parsing with Recursive Neural Networks"
+        },
+        {
+            "paperId": "7c69a90236f1c57348de858918c554a9420f1521",
+            "title": "Semantic Vector Products: Some Initial Investigations"
+        },
+        {
+            "paperId": null,
+            "title": "Opinion mining and sentiment analysis. Foundations and Trends in Information Retrieval"
+        },
+        {
+            "paperId": "73e897104540642698321c106cc9c35af369fe12",
+            "title": "Combining Symbolic and Distributional Models of Meaning"
+        },
+        {
+            "paperId": "d9b0190b06ac7270e9052895f8592beb4959ccfd",
+            "title": "Sentiment Composition"
+        },
+        {
+            "paperId": "a8ddcabf410b5691cd73880df2ee4b83a9799a5d",
+            "title": "Contextual Valence Shifters"
+        },
+        {
+            "paperId": "6957a4e222d0a2b357e4e095f7e1ebe0dfa5a3e4",
+            "title": "Information, relevance, and social decisionmaking: some principles and results of decision-theoretic semantics"
+        },
+        {
+            "paperId": null,
+            "title": "Learning task-dependent distributed representations by backpropagation through structure"
+        },
+        {
+            "paperId": null,
+            "title": "If\u2019s, and\u2019s, and but\u2019s about conjunction"
+        }
+    ]
+}

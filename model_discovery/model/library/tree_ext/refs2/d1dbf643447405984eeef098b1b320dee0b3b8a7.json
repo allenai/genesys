@@ -1,0 +1,246 @@
+{
+    "paperId": "d1dbf643447405984eeef098b1b320dee0b3b8a7",
+    "externalIds": {
+        "MAG": "2950745363",
+        "DBLP": "conf/aistats/McMahanMRHA17",
+        "ArXiv": "1602.05629",
+        "CorpusId": 14955348
+    },
+    "title": "Communication-Efficient Learning of Deep Networks from Decentralized Data",
+    "abstract": "Modern mobile devices have access to a wealth of data suitable for learning models, which in turn can greatly improve the user experience on the device. For example, language models can improve speech recognition and text entry, and image models can automatically select good photos. However, this rich data is often privacy sensitive, large in quantity, or both, which may preclude logging to the data center and training there using conventional approaches. We advocate an alternative that leaves the training data distributed on the mobile devices, and learns a shared model by aggregating locally-computed updates. We term this decentralized approach Federated Learning. \nWe present a practical method for the federated learning of deep networks based on iterative model averaging, and conduct an extensive empirical evaluation, considering five different model architectures and four datasets. These experiments demonstrate the approach is robust to the unbalanced and non-IID data distributions that are a defining characteristic of this setting. Communication costs are the principal constraint, and we show a reduction in required communication rounds by 10-100x as compared to synchronized stochastic gradient descent.",
+    "venue": "International Conference on Artificial Intelligence and Statistics",
+    "year": 2016,
+    "referenceCount": 50,
+    "citationCount": 13530,
+    "influentialCitationCount": 3298,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents a practical method for the federated learning of deep networks based on iterative model averaging, and conducts an extensive empirical evaluation, considering five different model architectures and four datasets."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145057514",
+            "name": "H. B. McMahan"
+        },
+        {
+            "authorId": "31449330",
+            "name": "Eider Moore"
+        },
+        {
+            "authorId": "1878835",
+            "name": "Daniel Ramage"
+        },
+        {
+            "authorId": "37089174",
+            "name": "S. Hampson"
+        },
+        {
+            "authorId": "2661025",
+            "name": "B. A. Y. Arcas"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "a97dc4eba33a2756d73178cd945f465fb4e193b1",
+            "title": "Practical Secure Aggregation for Federated Learning on User-Held Data"
+        },
+        {
+            "paperId": "7fcb90f68529cbfab49f471b54719ded7528d0ef",
+            "title": "Federated Learning: Strategies for Improving Communication Efficiency"
+        },
+        {
+            "paperId": "e9a986c8ff6c2f381d026fe014f6aaa865f34da7",
+            "title": "Deep Learning with Differential Privacy"
+        },
+        {
+            "paperId": "25fb5a6abcd88ee52bdb3165b844c941e90eb9bf",
+            "title": "Revisiting Distributed Synchronous SGD"
+        },
+        {
+            "paperId": "23585503b9204a45eafd330e0aff59beaf139169",
+            "title": "Learning Human Identity From Motion Patterns"
+        },
+        {
+            "paperId": "f2f8f7a2ec1b2ede48cbcd189b376ab9fa0735ef",
+            "title": "Privacy-preserving deep learning"
+        },
+        {
+            "paperId": "891ce1687e2befddd19f54e4eef1d3f39c8dbaf7",
+            "title": "Character-Aware Neural Language Models"
+        },
+        {
+            "paperId": "11baf177fa3b72ad9cc67464a98aab526608211f",
+            "title": "Regression Model Fitting under Differential Privacy and Model Inversion Attack"
+        },
+        {
+            "paperId": "bd2cb4546fc01074d55a183a68ce0a0f7be43a43",
+            "title": "Communication Complexity of Distributed Convex Learning and Optimization"
+        },
+        {
+            "paperId": "9d72c286f24a51e24ae9e80e957d1f999baee17b",
+            "title": "Adding vs. Averaging in Distributed Primal-Dual Optimization"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "5ca4d70ceb3e01dbc4470645281bd9d40ed53817",
+            "title": "Communication-Efficient Distributed Optimization of Self-Concordant Empirical Loss"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "d1e4365de165463e51134f10bf3939f2b00a6667",
+            "title": "Deep learning with Elastic Averaging SGD"
+        },
+        {
+            "paperId": "4d4d09ae8f6a11547441f7fee36405758102a801",
+            "title": "Qualitatively characterizing neural network optimization problems"
+        },
+        {
+            "paperId": "55dda8f230566867acbfaa7bdd08fd8c7b8721ed",
+            "title": "Fractional Max-Pooling"
+        },
+        {
+            "paperId": "ad8a12a19e74d9788f8fe92f5c0dfea7b6a52aba",
+            "title": "The Loss Surfaces of Multilayer Networks"
+        },
+        {
+            "paperId": "4030a62e75313110dc4a4c78483f4459dc4526bc",
+            "title": "Parallel training of Deep Neural Networks with Natural Gradient and Parameter Averaging"
+        },
+        {
+            "paperId": "98024b18f7e78d9a3568b67336d9aa81321a7c42",
+            "title": "Distributed stochastic optimization and learning"
+        },
+        {
+            "paperId": "0023582fde36430c7e3ae81611a14e558c8f4bae",
+            "title": "The Algorithmic Foundations of Differential Privacy"
+        },
+        {
+            "paperId": "990a17a9f9d02bf489a25e2e2980fab4e6f52642",
+            "title": "Asynchronous Distributed ADMM for Consensus Optimization"
+        },
+        {
+            "paperId": "981ce6b655cc06416ff6bf7fac8c6c2076fd7fac",
+            "title": "Identifying and attacking the saddle point problem in high-dimensional non-convex optimization"
+        },
+        {
+            "paperId": "70ff40fdd2aef1f342cdc34c586f672e41dd20ce",
+            "title": "Fast distributed coordinate descent for non-strongly convex losses"
+        },
+        {
+            "paperId": "8467bb300494a1f5c13fa3248e2cd630a6033fae",
+            "title": "Communication-Efficient Distributed Optimization using an Approximate Newton-type Method"
+        },
+        {
+            "paperId": "a310cf55afffe76aa627b79ae8744c2a90f27818",
+            "title": "Information-theoretic lower bounds for distributed statistical estimation with communication constraints"
+        },
+        {
+            "paperId": "f2a21683cba4cc77433070877b4cfc8dc2d761cb",
+            "title": "Trading Computation for Communication: Distributed Stochastic Dual Coordinate Ascent"
+        },
+        {
+            "paperId": "d6b4a72e057415df2b0bb747766ac0d5fb131af1",
+            "title": "Secure multiparty aggregation with differential privacy: a comparative study"
+        },
+        {
+            "paperId": "890b643699690e4dab50c87d3987af3bf9b4e4f5",
+            "title": "Consumer Data Privacy in a Networked World: A Framework for Protecting Privacy and Promoting Innovation in the Global Digital Economy"
+        },
+        {
+            "paperId": "3127190433230b3dc1abd0680bb58dced4bcd90e",
+            "title": "Large Scale Distributed Deep Networks"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "2820973cf69daba62547f76de082bed5e1c646e6",
+            "title": "Communication-efficient algorithms for statistical optimization"
+        },
+        {
+            "paperId": "39ec863025e8d1c1bbe78517abfc2fb6c5e196bd",
+            "title": "Privacy Aware Learning"
+        },
+        {
+            "paperId": "83e9565cede81b2b88a9fa241833135da142f4d3",
+            "title": "Parallelized Stochastic Gradient Descent"
+        },
+        {
+            "paperId": "371bd20afe88e73eafea2298b52beca7b9b5660a",
+            "title": "Distributed Training Strategies for the Structured Perceptron"
+        },
+        {
+            "paperId": "172a5ffc5a9b5b64c781d85dddc605c8b96b8abd",
+            "title": "Adaptive Bound Optimization for Online Convex Optimization"
+        },
+        {
+            "paperId": "8c23ea0ed7badd70a8e26dcea73f2d673cc0c74d",
+            "title": "What Can We Learn Privately?"
+        },
+        {
+            "paperId": "6c2b28f9354f667cd5bd07afc0471d8334430da7",
+            "title": "A Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "2949851ab9827fdd334ecc3b392296df2aacaf92",
+            "title": "Untraceable electronic mail, return addresses, and digital pseudonyms"
+        },
+        {
+            "paperId": "4f8d648c52edf74e41b0996128aa536e13cc7e82",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": null,
+            "title": "Smartphone ownership and internet usage continues to climb in emerging economies"
+        },
+        {
+            "paperId": null,
+            "title": "TensorFlow team. Tensorflow convolutional neural networks tutorial"
+        },
+        {
+            "paperId": null,
+            "title": "Technology device ownership: 2015"
+        },
+        {
+            "paperId": null,
+            "title": "Computer, respond to this email"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        },
+        {
+            "paperId": "2743dc2833f55a01e5e73c03fc5570e8d36afdab",
+            "title": "Simple Demographics Often Identify People Uniquely"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "53ffa5693b05ebe6d0b02ba0261d912548d63100",
+            "title": "Complete Works of William Shakespeare"
+        },
+        {
+            "paperId": "80c148d8d60a9755df95b4bef18148eba0f38a69",
+            "title": "25th Annual Conference on Learning Theory Distributed Learning, Communication Complexity and Privacy"
+        }
+    ]
+}

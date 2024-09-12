@@ -1,0 +1,154 @@
+{
+    "paperId": "c52ac453e154953abdb06fc041023e327ea609a4",
+    "externalIds": {
+        "DBLP": "journals/corr/abs-1803-09519",
+        "ArXiv": "1803.09519",
+        "MAG": "2964089206",
+        "DOI": "10.21437/Interspeech.2018-1910",
+        "CorpusId": 4427800
+    },
+    "title": "Self-Attentional Acoustic Models",
+    "abstract": "Self-attention is a method of encoding sequences of vectors by relating these vectors to each-other based on pairwise similarities. These models have recently shown promising results for modeling discrete sequences, but they are non-trivial to apply to acoustic modeling due to computational and modeling issues. In this paper, we apply self-attention to acoustic modeling, proposing several improvements to mitigate these issues: First, self-attention memory grows quadratically in the sequence length, which we address through a downsampling technique. Second, we find that previous approaches to incorporate position information into the model are unsuitable and explore other representations and hybrid models to this end. Third, to stress the importance of local context in the acoustic signal, we propose a Gaussian biasing approach that allows explicit control over the context range. Experiments find that our model approaches a strong baseline based on LSTMs with network-in-network connections while being much faster to compute. Besides speed, we find that interpretability is a strength of self-attentional acoustic models, and demonstrate that self-attention heads learn a linguistically plausible division of labor.",
+    "venue": "Interspeech",
+    "year": 2018,
+    "referenceCount": 26,
+    "citationCount": 146,
+    "influentialCitationCount": 14,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1803.09519",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is found that interpretability is a strength of self-attentional acoustic models, and the proposed Gaussian biasing approach that allows explicit control over the context range is found to be much faster to compute."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3011998",
+            "name": "Matthias Sperber"
+        },
+        {
+            "authorId": "2920247",
+            "name": "J. Niehues"
+        },
+        {
+            "authorId": "1700325",
+            "name": "Graham Neubig"
+        },
+        {
+            "authorId": "11126660",
+            "name": "Sebastian St\u00fcker"
+        },
+        {
+            "authorId": "1724972",
+            "name": "A. Waibel"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "a6e4beb28b345fce7470da122b4e45e2cd0dcd12",
+            "title": "A Time-Restricted Self-Attention Layer for ASR"
+        },
+        {
+            "paperId": "6c82727731955a2332a0cc38ec56b35a971061eb",
+            "title": "XNMT: The eXtensible Neural Machine Translation Toolkit"
+        },
+        {
+            "paperId": "d12ae90771d14555a64aa48b8a3f638e7d14426d",
+            "title": "Distance-based Self-Attention Network for Natural Language Inference"
+        },
+        {
+            "paperId": "3acf8313546def523da334cb3324806ac229769f",
+            "title": "Improving Lexical Choice in Neural Machine Translation"
+        },
+        {
+            "paperId": "adc276e6eae7051a027a4c269fb21dae43cadfed",
+            "title": "DiSAN: Directional Self-Attention Network for RNN/CNN-free Language Understanding"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "43428880d75b3a14257c3ee9bda054e61eb869c0",
+            "title": "Convolutional Sequence to Sequence Learning"
+        },
+        {
+            "paperId": "204a4a70428f3938d2c538a4d74c7ae0416306d8",
+            "title": "A Structured Self-attentive Sentence Embedding"
+        },
+        {
+            "paperId": "8aa3358a34a17abd0a65622aad8c85317b851af4",
+            "title": "Very deep convolutional networks for end-to-end speech recognition"
+        },
+        {
+            "paperId": "97fb4e3d45bb098e27e0071448b6152217bd35a5",
+            "title": "Layer Normalization"
+        },
+        {
+            "paperId": "2cd8e8f510c89c7c18268e8ad51c061e459ad321",
+            "title": "A Decomposable Attention Model for Natural Language Inference"
+        },
+        {
+            "paperId": "13fe71da009484f240c46f14d9330e932f8de210",
+            "title": "Long Short-Term Memory-Networks for Machine Reading"
+        },
+        {
+            "paperId": "0c1f9ca23f4f09ecfc44bcc8ca1c2736624f4652",
+            "title": "A Theoretically Grounded Application of Dropout in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "23ffaa0fe06eae05817f527a47ac3291077f9e58",
+            "title": "Rethinking the Inception Architecture for Computer Vision"
+        },
+        {
+            "paperId": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+            "title": "Effective Approaches to Attention-based Neural Machine Translation"
+        },
+        {
+            "paperId": "3056add22b20e3361c38c0472d294a79d4031cb4",
+            "title": "Listen, attend and spell: A neural network for large vocabulary conversational speech recognition"
+        },
+        {
+            "paperId": "5b8364c21155d3d2cd38ea4c8b8580beba9a3250",
+            "title": "An Empirical Exploration of Recurrent Network Architectures"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "2df0053debb85d1e6d5b3737b46e157547e7b3ff",
+            "title": "Enhancing the TED-LIUM Corpus with Selected Data for Language Modeling and More TED Talks"
+        },
+        {
+            "paperId": "944a1cfd79dbfb6fef460360a0765ba790f4027a",
+            "title": "Recurrent Continuous Translation Models"
+        },
+        {
+            "paperId": "067e07b725ab012c80aa2f87857f6791c1407f6d",
+            "title": "Long short-term memory recurrent neural network architectures for large scale acoustic modeling"
+        },
+        {
+            "paperId": "3a1a2cff2b70fb84a7ca7d97f8adcc5855851795",
+            "title": "The Kaldi Speech Recognition Toolkit"
+        },
+        {
+            "paperId": "a49e06419f8e3cecbbedd4e7c71b52f1107bff62",
+            "title": "THE \u2018 BEADS-ONA-STRING \u2019 MODEL OF SPEECH"
+        },
+        {
+            "paperId": "760581764f93c71d745346a5ed2a07ab094c565c",
+            "title": "Moving beyond the 'beads-on-a-string' model of speech"
+        }
+    ]
+}

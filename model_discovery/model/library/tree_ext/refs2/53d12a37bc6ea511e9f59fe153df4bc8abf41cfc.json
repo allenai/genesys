@@ -1,0 +1,182 @@
+{
+    "paperId": "53d12a37bc6ea511e9f59fe153df4bc8abf41cfc",
+    "externalIds": {
+        "DBLP": "journals/corr/abs-0808-4134",
+        "MAG": "2129575457",
+        "ArXiv": "0808.4134",
+        "DOI": "10.1137/08074489X",
+        "CorpusId": 9646279
+    },
+    "title": "Spectral Sparsification of Graphs",
+    "abstract": "We introduce a new notion of graph sparsification based on spectral similarity of graph Laplacians: spectral sparsification requires that the Laplacian quadratic form of the sparsifier approximate that of the original. This is equivalent to saying that the Laplacian of the sparsifier is a good preconditioner for the Laplacian of the original. We prove that every graph has a spectral sparsifier of nearly linear size. Moreover, we present an algorithm that produces spectral sparsifiers in time $O(m\\log^{c}m)$, where $m$ is the number of edges in the original graph and $c$ is some absolute constant. This construction is a key component of a nearly linear time algorithm for solving linear equations in diagonally dominant matrices. Our sparsification algorithm makes use of a nearly linear time algorithm for graph partitioning that satisfies a strong guarantee: if the partition it outputs is very unbalanced, then the larger part is contained in a subgraph of high conductance.",
+    "venue": "SIAM journal on computing (Print)",
+    "year": 2008,
+    "referenceCount": 36,
+    "citationCount": 482,
+    "influentialCitationCount": 49,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/0808.4134.pdf",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is proved that every graph has a spectral sparsifier of nearly linear size, and an algorithm is presented that produces spectralSparsifiers in time $O(m\\log^{c}m)$, where $m$ is the number of edges in the original graph and $c$ is some absolute constant."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2417095",
+            "name": "D. Spielman"
+        },
+        {
+            "authorId": "144461956",
+            "name": "S. Teng"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "692dcd0882d9ad2168bdffc9ab6a31c9a90dd943",
+            "title": "Numerical Linear Algebra"
+        },
+        {
+            "paperId": "ff2200f48c5ba0522d34d0e337ab06b81f4e98f3",
+            "title": "Approaching optimality for solving SDD systems"
+        },
+        {
+            "paperId": "88f11f6ebd6d50e0a994ef8fc183484c3806be4c",
+            "title": "Finding sparse cuts locally using evolving sets"
+        },
+        {
+            "paperId": "c996c17c72b8d526e3e0c9abb9f83c9acfc98a5d",
+            "title": "A Local Clustering Algorithm for Massive Graphs and Its Application to Nearly Linear Time Graph Partitioning"
+        },
+        {
+            "paperId": "f1a2ec7363fbdfff3e84a88d2401d1862e3ef146",
+            "title": "Twice-ramanujan sparsifiers"
+        },
+        {
+            "paperId": "b542c6847fd5ce9624d354041ac514d9764e60a8",
+            "title": "Graph sparsification by effective resistances"
+        },
+        {
+            "paperId": "2b5bc598cd02362874245ccfd932f65f6bc571d9",
+            "title": "Local Graph Partitioning using PageRank Vectors"
+        },
+        {
+            "paperId": "aba4633d0fae8a6d82d1c7b3450edab70f72129f",
+            "title": "Support-Graph Preconditioners"
+        },
+        {
+            "paperId": "e897efb6909dab0a5733d11d8ea9464ca1a7309d",
+            "title": "Approximation algorithms for unique games"
+        },
+        {
+            "paperId": "ae0f884156418831ef5876936362d5e4f799fa59",
+            "title": "Spectral norm of random matrices"
+        },
+        {
+            "paperId": "407b1ad9d0dbcef919a0c4624b65323cafcb5f11",
+            "title": "Nearly-linear time algorithms for graph partitioning, graph sparsification, and solving linear systems"
+        },
+        {
+            "paperId": "b38b8415ff84c3f70cfd8f3d4c3746536b00cb7a",
+            "title": "Support Theory for Preconditioning"
+        },
+        {
+            "paperId": "45c20cb40e1e7f3c32a5189732810fca5e8d8868",
+            "title": "ALGEBRAIC GRAPH THEORY (Graduate Texts in Mathematics 207) By CHRIS GODSIL and GORDON ROYLE: 439 pp., \u00a330.50, ISBN 0-387-95220-9 (Springer, New York, 2001)."
+        },
+        {
+            "paperId": "9fe4e58bcf31d528a30f15bd0b180fbe298f91ef",
+            "title": "Fast computation of low rank matrix approximations"
+        },
+        {
+            "paperId": "b28544a8d4bf5d24e70689730a11ed01feafef3e",
+            "title": "The Laplacian spectrum of graphs"
+        },
+        {
+            "paperId": "b07c157e7d40e06a4f2d486b16d5180d8b24acb9",
+            "title": "Algebraic Graph Theory"
+        },
+        {
+            "paperId": "f36bfb04f8ff4d10aaa204b5338d2234f05c97d2",
+            "title": "On clusterings-good, bad and spectral"
+        },
+        {
+            "paperId": "8cbad9bdbf91f2704fa547ceb80256ef42c856ae",
+            "title": "Balls and Bins: A Study in Negative Dependence"
+        },
+        {
+            "paperId": "b0ad6f6529a10be556805b422e2246c400dfc575",
+            "title": "Geometric Bounds for Eigenvalues of Markov Chains"
+        },
+        {
+            "paperId": "9092f77da0ab4a244d6e66b112947ef9a48dbf54",
+            "title": "There are Planar Graphs Almost as Good as the Complete Graph"
+        },
+        {
+            "paperId": "e20157fc681a32ad133cda9d6325e9fbdb535c0f",
+            "title": "Probabilistic Construction of Deterministic Algorithms: Approximating Packing Integer Programs"
+        },
+        {
+            "paperId": "3c01b0ae05bbda8a61753acb030fe533b3545a69",
+            "title": "Approximate Counting, Uniform Generation and Rapidly Mixing Markov Chains"
+        },
+        {
+            "paperId": "649ba43d594b8b594c88acdb32afcba37e14e75b",
+            "title": "Probabilistic construction of deterministic algorithms: Approximating packing integer programs"
+        },
+        {
+            "paperId": "ad7f50f7b0d209b9d120406dec019e7ed90760a0",
+            "title": "There is a planar graph almost as good as the complete graph"
+        },
+        {
+            "paperId": "87ef10f2a6b8f143eaa91427497ee85d27c1e660",
+            "title": "A survey of preconditioned iterative methods for linear systems of algebraic equations"
+        },
+        {
+            "paperId": "671e4480ab175a07d3f30f7965189d7c3c5c85ff",
+            "title": "The eigenvalues of random symmetric matrices"
+        },
+        {
+            "paperId": "449230e4ebcf6ba071636e07cdca76ef85213a43",
+            "title": "Efficiency of a Good But Not Linear Set Union Algorithm"
+        },
+        {
+            "paperId": "fc9051185b4879606ed006d00055940aee4da5e1",
+            "title": "Modern Graph Theory"
+        },
+        {
+            "paperId": null,
+            "title": "diagonally dominant linear systems"
+        },
+        {
+            "paperId": "02678fe75012986ee59be79b628dd0e0cea0a9f1",
+            "title": "Approximating s \u2013 t Minimum Cuts in ~ O(n 2 ) Time"
+        },
+        {
+            "paperId": null,
+            "title": "Proceedings: 47th Annual Symposium on Foundations of Computer Science"
+        },
+        {
+            "paperId": "6f76d209c8fe6d8309b257a315e81952698b29dc",
+            "title": "THE LAPLACIAN SPECTRUM OF GRAPHS y"
+        },
+        {
+            "paperId": null,
+            "title": "pages 871\u2013898"
+        },
+        {
+            "paperId": null,
+            "title": "Explicit group theoretical constructions of combinatorial schemes and their application to the design of expanders and concentrators"
+        },
+        {
+            "paperId": "3f3a83d5f2892cbc6a31bcbd1a6f57d923b1fa82",
+            "title": "A lower bound for the smallest eigenvalue of the Laplacian"
+        },
+        {
+            "paperId": "3742c17f24437a310b05888de2618212fe82cedf",
+            "title": "Ramanujan Graphs"
+        }
+    ]
+}

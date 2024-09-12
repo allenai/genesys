@@ -1,0 +1,170 @@
+{
+    "paperId": "fb9d253258d6b3beceb9d6cd7bba6e0a29ab875b",
+    "externalIds": {
+        "MAG": "2963668159",
+        "ArXiv": "1606.00061",
+        "DBLP": "journals/corr/LuYBP16",
+        "CorpusId": 868693
+    },
+    "title": "Hierarchical Question-Image Co-Attention for Visual Question Answering",
+    "abstract": "A number of recent works have proposed attention models for Visual Question Answering (VQA) that generate spatial maps highlighting image regions relevant to answering the question. In this paper, we argue that in addition to modeling \"where to look\" or visual attention, it is equally important to model \"what words to listen to\" or question attention. We present a novel co-attention model for VQA that jointly reasons about image and question attention. In addition, our model reasons about the question (and consequently the image via the co-attention mechanism) in a hierarchical fashion via a novel 1-dimensional convolution neural networks (CNN). Our model improves the state-of-the-art on the VQA dataset from 60.3% to 60.5%, and from 61.6% to 63.3% on the COCO-QA dataset. By using ResNet, the performance is further improved to 62.1% for VQA and 65.4% for COCO-QA.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2016,
+    "referenceCount": 32,
+    "citationCount": 1526,
+    "influentialCitationCount": 146,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper presents a novel co-attention model for VQA that jointly reasons about image and question attention in a hierarchical fashion via a novel 1-dimensional convolution neural networks (CNN)."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "8553015",
+            "name": "Jiasen Lu"
+        },
+        {
+            "authorId": "145743311",
+            "name": "Jianwei Yang"
+        },
+        {
+            "authorId": "1746610",
+            "name": "Dhruv Batra"
+        },
+        {
+            "authorId": "153432684",
+            "name": "Devi Parikh"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "58cb0c24c936b8a14ca7b2d56ba80de733c545b3",
+            "title": "Human Attention in Visual Question Answering: Do Humans and Deep Networks look at the same regions?"
+        },
+        {
+            "paperId": "12f7de07f9b00315418e381b2bd797d21f12b419",
+            "title": "Multimodal Compact Bilinear Pooling for Visual Question Answering and Visual Grounding"
+        },
+        {
+            "paperId": "1afb710a5b35a2352a6495e4bf6eef66808daf1b",
+            "title": "Multimodal Residual Learning for Visual QA"
+        },
+        {
+            "paperId": "caf912b716905ccbf46d6d00d6a0b622834a7cd9",
+            "title": "Measuring Machine Intelligence Through Visual Question Answering"
+        },
+        {
+            "paperId": "7214daf035ab005b3d1e739750dd597b4f4513fa",
+            "title": "A Focused Dynamic Attention Model for Visual Question Answering"
+        },
+        {
+            "paperId": "f96898d15a1bf1fa8925b1280d0e07a7a8e72194",
+            "title": "Dynamic Memory Networks for Visual and Textual Question Answering"
+        },
+        {
+            "paperId": "afcf4dbd2ef300e5c4b35043d4fbe516807cdf7d",
+            "title": "Visual Genome: Connecting Language and Vision Using Crowdsourced Dense Image Annotations"
+        },
+        {
+            "paperId": "a2dc06c8da0ff9344dc558d6df571fc704b81ae7",
+            "title": "Attentive Pooling Networks"
+        },
+        {
+            "paperId": "7f3ae283243e15e05f188a05779ccfae9a3567f4",
+            "title": "ABCNN: Attention-Based Convolutional Neural Network for Modeling Sentence Pairs"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "175e9bb50cc062c6c1742a5d90c8dfe31d2e4e22",
+            "title": "Where to Look: Focus Regions for Visual Question Answering"
+        },
+        {
+            "paperId": "1cf6bc0866226c1f8e282463adc8b75d92fba9bb",
+            "title": "Ask, Attend and Answer: Exploring Question-Guided Spatial Attention for Visual Question Answering"
+        },
+        {
+            "paperId": "5fa973b8d284145bf0ced9acf2913a74674260f6",
+            "title": "Yin and Yang: Balancing and Answering Binary Visual Questions"
+        },
+        {
+            "paperId": "def584565d05d6a8ba94de6621adab9e301d375d",
+            "title": "Visual7W: Grounded Question Answering in Images"
+        },
+        {
+            "paperId": "0ac8f1a3c679b90d22c1f840cdc8d61ffef750ac",
+            "title": "Deep Compositional Question Answering with Neural Module Networks"
+        },
+        {
+            "paperId": "2c1890864c1c2b750f48316dc8b650ba4772adc5",
+            "title": "Stacked Attention Networks for Image Question Answering"
+        },
+        {
+            "paperId": "2846e83d405cbe3bf2f0f3b5f635dd8b3c680c45",
+            "title": "Reasoning about Entailment with Neural Attention"
+        },
+        {
+            "paperId": "d1505c6123c102e53eb19dff312cb25cea840b72",
+            "title": "Teaching Machines to Read and Comprehend"
+        },
+        {
+            "paperId": "98bd5dd1740f585bf25320ba504e2c1ae57f2e5f",
+            "title": "Learning to Answer Questions from Image Using Convolutional Neural Network"
+        },
+        {
+            "paperId": "2fcd5cff2b4743ea640c4af68bf4143f4a2cccb1",
+            "title": "Are You Talking to a Machine? Dataset and Methods for Multilingual Image Question"
+        },
+        {
+            "paperId": "62a956d7600b10ca455076cd56e604dfd106072a",
+            "title": "Exploring Models and Data for Image Question Answering"
+        },
+        {
+            "paperId": "bd7bd1d2945a58cdcc1797ba9698b8810fe68f60",
+            "title": "Ask Your Neurons: A Neural-Based Approach to Answering Questions about Images"
+        },
+        {
+            "paperId": "97ad70a9fa3f99adf18030e5e38ebe3d90daa2db",
+            "title": "VQA: Visual Question Answering"
+        },
+        {
+            "paperId": "9f08b01251cb99f4ffae8c7b3e4468d3af9c98d3",
+            "title": "Convolutional Neural Network Architectures for Matching Natural Language Sentences"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "71b7178df5d2b112d07e45038cb5637208659ff7",
+            "title": "Microsoft COCO: Common Objects in Context"
+        },
+        {
+            "paperId": "0e3e3c3d8ae5cb7c4636870d69967c197484d3bb",
+            "title": "Verb Semantics and Lexical Selection"
+        },
+        {
+            "paperId": null,
+            "title": "Mustafa Suleyman, and Phil Blunsom. Teaching machines to read and comprehend. In NIPS"
+        },
+        {
+            "paperId": null,
+            "title": "Lecture 6.5 - rmsprop, coursera: Neural networks for machine learning"
+        },
+        {
+            "paperId": "3449b65008b27f6e60a73d80c1fd990f0481126b",
+            "title": "Torch7: A Matlab-like Environment for Machine Learning"
+        }
+    ]
+}

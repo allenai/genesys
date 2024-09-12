@@ -1,0 +1,183 @@
+{
+    "paperId": "9081823129a5a9035247c56e73cccc035fc8818d",
+    "externalIds": {
+        "MAG": "2939265332",
+        "DBLP": "journals/corr/JingGPSTSB17",
+        "ArXiv": "1706.02761",
+        "DOI": "10.1162/neco_a_01174",
+        "CorpusId": 13383426,
+        "PubMed": "30764742"
+    },
+    "title": "Gated Orthogonal Recurrent Units: On Learning to Forget",
+    "abstract": "We present a novel recurrent neural network (RNN)\u2013based model that combines the remembering ability of unitary evolution RNNs with the ability of gated RNNs to effectively forget redundant or irrelevant information in its memory. We achieve this by extending restricted orthogonal evolution RNNs with a gating mechanism similar to gated recurrent unit RNNs with a reset gate and an update gate. Our model is able to outperform long short-term memory, gated recurrent units, and vanilla unitary or orthogonal RNNs on several long-term-dependency benchmark tasks. We empirically show that both orthogonal and unitary RNNs lack the ability to forget. This ability plays an important role in RNNs. We provide competitive results along with an analysis of our model on many natural sequential tasks, including question answering, speech spectrum prediction, character-level language modeling, and synthetic tasks that involve long-term dependencies such as algorithmic, denoising, and copying tasks.",
+    "venue": "Neural Computation",
+    "year": 2017,
+    "referenceCount": 31,
+    "citationCount": 119,
+    "influentialCitationCount": 12,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1706.02761",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel recurrent neural network (RNN)\u2013based model that combines the remembering ability of unitary evolution RNNs with the ability of gated Rnns to effectively forget redundant or irrelevant information in its memory is presented."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "50780902",
+            "name": "Li Jing"
+        },
+        {
+            "authorId": "1854385",
+            "name": "\u00c7aglar G\u00fcl\u00e7ehre"
+        },
+        {
+            "authorId": "143977609",
+            "name": "J. Peurifoy"
+        },
+        {
+            "authorId": "4013480",
+            "name": "Yichen Shen"
+        },
+        {
+            "authorId": "2011933",
+            "name": "Max Tegmark"
+        },
+        {
+            "authorId": "1973666",
+            "name": "M. Solja\u010di\u0107"
+        },
+        {
+            "authorId": "1751762",
+            "name": "Yoshua Bengio"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "1d782819afafe0d391e5b67151cb510e621f243d",
+            "title": "Tunable Efficient Unitary Neural Networks (EUNN) and their application to RNNs"
+        },
+        {
+            "paperId": "6e99f4859eb420ace7f03f098940135c1c355075",
+            "title": "Efficient Orthogonal Parametrisation of Recurrent Neural Networks Using Householder Reflections"
+        },
+        {
+            "paperId": "012720b3bcd89c920c1de15df4908b062850d693",
+            "title": "Input Switched Affine Networks: An RNN Architecture Designed for Interpretability"
+        },
+        {
+            "paperId": "82abca98f2b208d681bb681c518a79f4accbc9a4",
+            "title": "Intelligible Language Modeling with Input Switched Affine Networks"
+        },
+        {
+            "paperId": "79c78c98ea317ba8cdf25a9783ef4b8a7552db75",
+            "title": "Full-Capacity Unitary Recurrent Neural Networks"
+        },
+        {
+            "paperId": "00c04118a0d0f1ff855ad4597025448c5daf873d",
+            "title": "Learning Unitary Operators with Help From u(n)"
+        },
+        {
+            "paperId": "952454718139dba3aafc6b3b67c4f514ac3964af",
+            "title": "Recurrent Batch Normalization"
+        },
+        {
+            "paperId": "ef3152106e7f4d05ad8d32a5b90d3790c5cdef24",
+            "title": "Recurrent Orthogonal Networks and Long-Memory Tasks"
+        },
+        {
+            "paperId": "da398dd57a31a663eb572ec85db7cdfe2f70dc99",
+            "title": "Associative Long Short-Term Memory"
+        },
+        {
+            "paperId": "e9c771197a6564762754e48c1daafb066f449f2e",
+            "title": "Unitary Evolution Recurrent Neural Networks"
+        },
+        {
+            "paperId": "492f57ee9ceb61fb5a47ad7aebfec1121887a175",
+            "title": "Gated Graph Sequence Neural Networks"
+        },
+        {
+            "paperId": "3056add22b20e3361c38c0472d294a79d4031cb4",
+            "title": "Listen, attend and spell: A neural network for large vocabulary conversational speech recognition"
+        },
+        {
+            "paperId": "b624504240fa52ab76167acfe3156150ca01cf3b",
+            "title": "Attention-Based Models for Speech Recognition"
+        },
+        {
+            "paperId": "40be3888daa5c2e5af4d36ae22f690bcc8caf600",
+            "title": "Visualizing and Understanding Recurrent Networks"
+        },
+        {
+            "paperId": "d46b81707786d18499f911b4ab72bb10c65406ba",
+            "title": "A Simple Way to Initialize Recurrent Networks of Rectified Linear Units"
+        },
+        {
+            "paperId": "abb33d75dc297993fcc3fb75e0f4498f413eb4f6",
+            "title": "Towards AI-Complete Question Answering: A Set of Prerequisite Toy Tasks"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "1eb09fecd75eb27825dce4f964b97f4f5cc399d7",
+            "title": "On the Properties of Neural Machine Translation: Encoder\u2013Decoder Approaches"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "84069287da0a6b488b8c933f3cb5be759cb6237e",
+            "title": "On the difficulty of training recurrent neural networks"
+        },
+        {
+            "paperId": "11540131eae85b2e11d53df7f1360eeb6476e7f4",
+            "title": "Learning to Forget: Continual Prediction with LSTM"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "d0be39ee052d246ae99c082a565aba25b811be2d",
+            "title": "Learning long-term dependencies with gradient descent is difficult"
+        },
+        {
+            "paperId": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+            "title": "Building a Large Annotated Corpus of English: The Penn Treebank"
+        },
+        {
+            "paperId": "b3db94f62118e192ef0465ca9edafcd6c074c137",
+            "title": "DARPA TIMIT:: acoustic-phonetic continuous speech corpus CD-ROM, NIST speech disc 1-1.1"
+        },
+        {
+            "paperId": null,
+            "title": "Lecture 6.5-rmsprop: Divide the gradient by a running average of its recent magnitude"
+        },
+        {
+            "paperId": "7a046308275557bf424fbf4ccae26da2919c848e",
+            "title": "Long short-term memory in recurrent neural networks"
+        },
+        {
+            "paperId": "caa5eec3feba1e3f4c421f28daaa6d1906b573ec",
+            "title": "Serial Order: A Parallel Distributed Processing Approach"
+        },
+        {
+            "paperId": "3f3d13e95c25a8f6a753e38dfce88885097cbd43",
+            "title": "Untersuchungen zu dynamischen neuronalen Netzen"
+        }
+    ]
+}

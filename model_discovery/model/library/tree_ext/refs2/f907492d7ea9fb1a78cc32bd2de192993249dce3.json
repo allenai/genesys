@@ -1,0 +1,151 @@
+{
+    "paperId": "f907492d7ea9fb1a78cc32bd2de192993249dce3",
+    "externalIds": {
+        "DBLP": "journals/tcbb/LinLTC19",
+        "MAG": "2587688848",
+        "DOI": "10.1109/TCBB.2017.2666141",
+        "CorpusId": 206629632,
+        "PubMed": "28186907"
+    },
+    "title": "Identifying Sigma70 Promoters with Novel Pseudo Nucleotide Composition",
+    "abstract": "Promoters are DNA regulatory elements located directly upstream or at the 5\u2019 end of the transcription initiation site (TSS), which are in charge of gene transcription initiation. With the completion of a large number of microorganism genomics, it is urgent to predict promoters accurately in bacteria by using the computational method. In this work, a sequence-based predictor named \u201ciPro70-PseZNC\u201d was designed for identifying sigma70 promoters in prokaryote. In the predictor, the samples of DNA sequences are formulated by a novel pseudo nucleotide composition, called PseZNC, into which the multi-window Z-curve composition and six local DNA structural properties are incorporated. In the 5-fold cross-validation, the area under the curve of receiver operating characteristic of 0.909 was obtained on our benchmark dataset, indicating that the proposed predictor is promising and will provide an important guide in this area. Further studies showed that the performance of PseZNC is better than it of multi-window Z-curve composition. For the sake of convenience for researchers, a user-friendly online service was established and can be freely accessible at http://lin.uestc.edu.cn/server/iPro70-PseZNC. The PseZNC approach can be also extended to other DNA-related problems.",
+    "venue": "IEEE/ACM Transactions on Computational Biology & Bioinformatics",
+    "year": 2019,
+    "referenceCount": 27,
+    "citationCount": 147,
+    "influentialCitationCount": 7,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A sequence-based predictor named \u201ciPro70-PseZNC\u201d was designed for identifying sigma70 promoters in prokaryote and studies showed that the performance of PseZNC is better than it of multi-window Z-curve composition."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2051534436",
+            "name": "Hao Lin"
+        },
+        {
+            "authorId": "2113515577",
+            "name": "Zhi-Yong Liang"
+        },
+        {
+            "authorId": "144256490",
+            "name": "Hua Tang"
+        },
+        {
+            "authorId": "2154940228",
+            "name": "Wei Chen"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "5ff3987e265efe403dece2acfe7caeebabceaafd",
+            "title": "iOri-Human: identify human origin of replication by incorporating dinucleotide physicochemical properties into pseudo nucleotide composition"
+        },
+        {
+            "paperId": "3e573c4324704f0176403bbc8644ea17ec861a2f",
+            "title": "Identification of immunoglobulins using Chou's pseudo amino acid composition with feature selection technique."
+        },
+        {
+            "paperId": "753b392250e50427f96d6de5376e6ccc37b4eef6",
+            "title": "RegulonDB version 9.0: high-level integration of gene regulation, coexpression, motif clustering and beyond"
+        },
+        {
+            "paperId": "6b4cc054facf43ca69c746f671e170e1d975b323",
+            "title": "iPro54-PseKNC: a sequence-based predictor for identifying sigma-54 promoters in prokaryote with pseudo k-tuple nucleotide composition"
+        },
+        {
+            "paperId": "a3cd3c201fabee39873216daa9f708a0be541099",
+            "title": "iNuc-PseKNC: a sequence-based predictor for predicting nucleosome positioning in genomes with pseudo k-tuple nucleotide composition"
+        },
+        {
+            "paperId": "bc9e927b42131be8ec89ec352020ee9d7d6d016e",
+            "title": "iHSP-PseRAAAC: Identifying the heat shock protein families using pseudo reduced amino acid alphabet composition."
+        },
+        {
+            "paperId": "8b006d5474eb6a28b3d9fec17d572ac1e5eca124",
+            "title": "Unravelling the hidden DNA structural/physical code provides novel insights on promoter location"
+        },
+        {
+            "paperId": "de7af5c28270f70a5fc287cc2f5b5191d83644bc",
+            "title": "Recognition of prokaryotic promoters based on a novel variable-window Z-curve method"
+        },
+        {
+            "paperId": "efca31f83ab827519a3ca1751c3be9e4eee4fba4",
+            "title": "Eukaryotic and prokaryotic promoter prediction using hybrid approach"
+        },
+        {
+            "paperId": "273dfbcb68080251f5e9ff38b4413d7bd84b10a1",
+            "title": "LIBSVM: A library for support vector machines"
+        },
+        {
+            "paperId": "6349792b929c2e5a840fb761c3e868f2db0f5d04",
+            "title": "The hidden physical codes for modulating the prokaryotic transcription initiation"
+        },
+        {
+            "paperId": "d5aabebc56ba2a238d792cdbd694e38800511a63",
+            "title": "An iterative strategy combining biophysical criteria and duration hidden Markov models for structural predictions of Chlamydia trachomatis \u03c366 promoters"
+        },
+        {
+            "paperId": "7f3540e213676d709e336df2889f732c9563c1e0",
+            "title": "An Improved Position Weight Matrix Method Based on an Entropy Measure for the Recognition of Prokaryotic Promoters"
+        },
+        {
+            "paperId": "31325862fcabbde37379a0aa61556408ceaea1f6",
+            "title": "DNAlive: a tool for the physical analysis of DNA at the genomic scale"
+        },
+        {
+            "paperId": "2ce63f828a53195cf564ada4945b7971e9d2aad6",
+            "title": "DNA physical properties determine nucleosome occupancy from yeast to fly"
+        },
+        {
+            "paperId": "fce71ae4be65625191df38de722f245882ddb7ff",
+            "title": "Recent progress in protein subcellular location prediction."
+        },
+        {
+            "paperId": "b6a1b1eba092698e011695ee94aea622f033f79a",
+            "title": "Using stacked generalization to predict membrane protein types based on pseudo-amino acid composition."
+        },
+        {
+            "paperId": "2c23aab97d7661159ecc60775f9e810911befe2d",
+            "title": "Sigma70 promoters in Escherichia coli: specific transcription in dense regions of overlapping promoter-like signals."
+        },
+        {
+            "paperId": "2c91083178da2c042f4524ef5bbef15e246db731",
+            "title": "Support vector machines for predicting membrane protein types by using functional domain composition."
+        },
+        {
+            "paperId": "49aaaf1b2a9ce4ea93e2f2dec953341ba850bebc",
+            "title": "The Z curve database: a graphic representation of genome sequences"
+        },
+        {
+            "paperId": "a4016425c8a037aece8f7768a41ac41846a9abdb",
+            "title": "Using Functional Domain Composition and Support Vector Machines for Prediction of Protein Subcellular Location*"
+        },
+        {
+            "paperId": "67644967420fa5aa1e1de17a6a6764a95e99eee2",
+            "title": "Designer gene networks: Towards fundamental cellular control."
+        },
+        {
+            "paperId": "5794141889d0e994c3103b0aaab08a18222c9c43",
+            "title": "Support vector machine classification and validation of cancer tissue samples using microarray expression data"
+        },
+        {
+            "paperId": "e2605e298891a84006a4976e8b79ae597ab5d598",
+            "title": "Modeling transcriptional control in gene networks\u2014methods, recent results, and future directions"
+        },
+        {
+            "paperId": "f50ee38a670f00e9ae1b7fd6e960243298a09c66",
+            "title": "A symmetrical theory of DNA sequences and its applications."
+        },
+        {
+            "paperId": "76a7268198d006d5580d60539087c8c0acb566d4",
+            "title": "An assessment of neural network and statistical approaches for prediction of E. coli promoter sites."
+        },
+        {
+            "paperId": "d42745471b48d61460424a7d71acae71584279b9",
+            "title": "Neural network optimization for E. coli promoter prediction."
+        }
+    ]
+}

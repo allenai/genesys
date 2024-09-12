@@ -1,0 +1,190 @@
+{
+    "paperId": "e4c8447e56fc9cc3867087748acc4b259b9efe19",
+    "externalIds": {
+        "ArXiv": "1703.02620",
+        "MAG": "2604685013",
+        "DBLP": "journals/corr/DhingraYCS17",
+        "CorpusId": 15135049
+    },
+    "title": "Linguistic Knowledge as Memory for Recurrent Neural Networks",
+    "abstract": "Training recurrent neural networks to model long term dependencies is difficult. Hence, we propose to use external linguistic knowledge as an explicit signal to inform the model which memories it should utilize. Specifically, external knowledge is used to augment a sequence with typed edges between arbitrarily distant elements, and the resulting graph is decomposed into directed acyclic subgraphs. We introduce a model that encodes such graphs as explicit memory in recurrent neural networks, and use it to model coreference relations in text. We apply our model to several text comprehension tasks and achieve new state-of-the-art results on all considered benchmarks, including CNN, bAbi, and LAMBADA. On the bAbi QA tasks, our model solves 15 out of the 20 tasks with only 1000 training examples per task. Analysis of the learned representations further demonstrates the ability of our model to encode fine-grained entity information across a document.",
+    "venue": "arXiv.org",
+    "year": 2017,
+    "referenceCount": 37,
+    "citationCount": 37,
+    "influentialCitationCount": 4,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces a model that encodes graphs as explicit memory in recurrent neural networks, and uses it to model coreference relations in text and achieve new state-of-the-art results on all considered benchmarks, including CNN, bAbi, and LAMBADA."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "34994191",
+            "name": "Bhuwan Dhingra"
+        },
+        {
+            "authorId": "2109512754",
+            "name": "Zhilin Yang"
+        },
+        {
+            "authorId": "50056360",
+            "name": "William W. Cohen"
+        },
+        {
+            "authorId": "145124475",
+            "name": "R. Salakhutdinov"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "58eb3a2f0a67acf2f5c7c2cb4a22852b65314eb5",
+            "title": "Frustratingly Short Attention Spans in Neural Language Modeling"
+        },
+        {
+            "paperId": "99e763d3835686b8e1285c2a498766044fbc88ad",
+            "title": "Emergent Logical Structure in Vector Representations of Neural Readers"
+        },
+        {
+            "paperId": "26e9eb44ed8065122d37b0c429a8d341bfeea9a5",
+            "title": "Reference-Aware Language Models"
+        },
+        {
+            "paperId": "3a7b63b50c64f4ec3358477790e84cbd6be2a0b4",
+            "title": "Bidirectional Attention Flow for Machine Comprehension"
+        },
+        {
+            "paperId": "033dd6cf61a6017e9aa9b46068d3c89082849cf3",
+            "title": "Tracking the World State with Recurrent Entity Networks"
+        },
+        {
+            "paperId": "e86e81ad3fa4ab0b736f7fef721689e293ee788e",
+            "title": "Broad Context Language Modeling as Reading Comprehension"
+        },
+        {
+            "paperId": "24021461b49c726606bb9acdedd05cea5277c491",
+            "title": "Reasoning with Memory Augmented Neural Networks for Language Comprehension"
+        },
+        {
+            "paperId": "a39ffa57ef8e538b3c6a6c2bbc0b641f7cdc60dc",
+            "title": "Who did What: A Large-Scale Person-Centered Cloze Dataset"
+        },
+        {
+            "paperId": "0fa5142f908afc94c923ca2adbe14a5673bc76eb",
+            "title": "A Neural Knowledge Language Model"
+        },
+        {
+            "paperId": "5ed791f810da580c78df6a052c6b9f2e258f6b0a",
+            "title": "The LAMBADA dataset: Word prediction requiring a broad discourse context"
+        },
+        {
+            "paperId": "05dd7254b632376973f3a1b4d39485da17814df5",
+            "title": "SQuAD: 100,000+ Questions for Machine Comprehension of Text"
+        },
+        {
+            "paperId": "4bf7edee5a4c4cfdbdd43a607c402420129fa277",
+            "title": "Query-Reduction Networks for Question Answering"
+        },
+        {
+            "paperId": "bba5f2852b1db8a18004eb7328efa5e1d57cc62a",
+            "title": "Key-Value Memory Networks for Directly Reading Documents"
+        },
+        {
+            "paperId": "b1e20420982a4f923c08652941666b189b11b7fe",
+            "title": "A Thorough Examination of the CNN/Daily Mail Reading Comprehension Task"
+        },
+        {
+            "paperId": "0f2ea810c16275dc74e880296e20dbd83b1bae1c",
+            "title": "Gated-Attention Readers for Text Comprehension"
+        },
+        {
+            "paperId": "f2e50e2ee4021f199877c8920f1f984481c723aa",
+            "title": "Text Understanding with the Attention Sum Reader Network"
+        },
+        {
+            "paperId": "41f1d50c85d3180476c4c7b3eea121278b0d8474",
+            "title": "Pixel Recurrent Neural Networks"
+        },
+        {
+            "paperId": "492f57ee9ceb61fb5a47ad7aebfec1121887a175",
+            "title": "Gated Graph Sequence Neural Networks"
+        },
+        {
+            "paperId": "7ff93e69010392c338d9f2fac81cb1ac11a27d07",
+            "title": "DAG-Recurrent Neural Networks for Scene Labeling"
+        },
+        {
+            "paperId": "cc664b1109f9784d0d3d79e25653c4f1ae0695e9",
+            "title": "Entity-Centric Coreference Resolution with Model Stacking"
+        },
+        {
+            "paperId": "6e795c6e9916174ae12349f5dc3f516570c17ce8",
+            "title": "Skip-Thought Vectors"
+        },
+        {
+            "paperId": "d1505c6123c102e53eb19dff312cb25cea840b72",
+            "title": "Teaching Machines to Read and Comprehend"
+        },
+        {
+            "paperId": "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e",
+            "title": "End-To-End Memory Networks"
+        },
+        {
+            "paperId": "32de44f01a96d4473d21099d15e25bc2b9f08e2f",
+            "title": "Improved Semantic Representations From Tree-Structured Long Short-Term Memory Networks"
+        },
+        {
+            "paperId": "abb33d75dc297993fcc3fb75e0f4498f413eb4f6",
+            "title": "Towards AI-Complete Question Answering: A Set of Prerequisite Toy Tasks"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "71ae756c75ac89e2d731c9c79649562b5768ff39",
+            "title": "Memory Networks"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "1eb09fecd75eb27825dce4f964b97f4f5cc399d7",
+            "title": "On the Properties of Neural Machine Translation: Encoder\u2013Decoder Approaches"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "5522764282c85aea422f1c4dc92ff7e0ca6987bc",
+            "title": "A Clockwork RNN"
+        },
+        {
+            "paperId": "1976c9eeccc7115d18a04f1e7fb5145db6b96002",
+            "title": "Freebase: a collaboratively created graph database for structuring human knowledge"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "d0be39ee052d246ae99c082a565aba25b811be2d",
+            "title": "Learning long-term dependencies with gradient descent is difficult"
+        },
+        {
+            "paperId": "4bd970a37c59c97804ff93cbb2c108e081de3a37",
+            "title": "Introduction to WordNet: An On-line Lexical Database"
+        },
+        {
+            "paperId": "3efd851140aa28e95221b55fcc5659eea97b172d",
+            "title": "The Graph Neural Network Model"
+        }
+    ]
+}

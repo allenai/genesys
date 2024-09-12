@@ -1,0 +1,282 @@
+{
+    "paperId": "d63cc4709045d58c4024901f56bb5f613379dce0",
+    "externalIds": {
+        "MAG": "2968352263",
+        "DBLP": "conf/icra/LechnerHZHG19",
+        "DOI": "10.1109/ICRA.2019.8793840",
+        "CorpusId": 199542392
+    },
+    "title": "Designing Worm-inspired Neural Networks for Interpretable Robotic Control",
+    "abstract": "In this paper, we design novel liquid time-constant recurrent neural networks for robotic control, inspired by the brain of the nematode, C. elegans. In the worm\u2019s nervous system, neurons communicate through nonlinear time-varying synaptic links established amongst them by their particular wiring structure. This property enables neurons to express liquid time-constants dynamics and therefore allows the network to originate complex behaviors with a small number of neurons. We identify neuron-pair communication motifs as design operators and use them to configure compact neuronal network structures to govern sequential robotic tasks. The networks are systematically designed to map the environmental observations to motor actions, by their hierarchical topology from sensory neurons, through recurrently-wired interneurons, to motor neurons. The networks are then parametrized in a supervised-learning scheme by a search-based algorithm. We demonstrate that obtained networks realize interpretable dynamics. We evaluate their performance in controlling mobile and arm robots, and compare their attributes to other artificial neural network-based control agents. Finally, we experimentally show their superior resilience to environmental noise, compared to the existing machine learning-based methods.",
+    "venue": "IEEE International Conference on Robotics and Automation",
+    "year": 2019,
+    "referenceCount": 59,
+    "citationCount": 48,
+    "influentialCitationCount": 2,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper designs novel liquid time-constant recurrent neural networks for robotic control, inspired by the brain of the nematode, C. elegans, and demonstrates their superior resilience to environmental noise, compared to the existing machine learning-based methods."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "39083616",
+            "name": "Mathias Lechner"
+        },
+        {
+            "authorId": "8252176",
+            "name": "Ramin M. Hasani"
+        },
+        {
+            "authorId": "15271521",
+            "name": "M. Zimmer"
+        },
+        {
+            "authorId": "1710285",
+            "name": "T. Henzinger"
+        },
+        {
+            "authorId": "1787208",
+            "name": "R. Grosu"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "9a068346faa69aa917c3e89f48ecab893720e824",
+            "title": "Liquid Time-constant Recurrent Neural Networks as Universal Approximators"
+        },
+        {
+            "paperId": "a6d098f7505ccc7c26251592af45daadb2b4f656",
+            "title": "Response Characterization for Auditing Cell Dynamics in Long Short-term Memory Networks"
+        },
+        {
+            "paperId": "1c672c8d7d0d3845919feaa082c7c055bfaceec3",
+            "title": "Re-purposing Compact Neuronal Circuit Policies to Govern Reinforcement Learning Tasks"
+        },
+        {
+            "paperId": "5c97a43ece687508ef243b83c9a42dbdf528fa0b",
+            "title": "c302: a multiscale framework for modelling the nervous system of Caenorhabditis elegans"
+        },
+        {
+            "paperId": "abc8415a73e9056fdd8a7bf529b2c86898f29501",
+            "title": "Simple random search provides a competitive approach to reinforcement learning"
+        },
+        {
+            "paperId": "21af4ed208ea3ecdb20b75aa27cddd0bfe683eec",
+            "title": "The Building Blocks of Interpretability"
+        },
+        {
+            "paperId": "0af8cdb71ce9e5bf37ad2a11f05af293cfe62172",
+            "title": "Sim-to-Real Transfer of Robotic Control with Dynamics Randomization"
+        },
+        {
+            "paperId": "2fcef5e373adfbf1782b8c1310dec361e12dd379",
+            "title": "A global brain state underlies C. elegans sleep behavior"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "a59c2e60f47bea82a90ccb0cc47e8aed54bf08ca",
+            "title": "SIM-CE: An Advanced Simulink Platform for Studying the Brain of Caenorhabditis elegans"
+        },
+        {
+            "paperId": "4ee802a58d32aa049d549d06be440ac947b53987",
+            "title": "Evolution Strategies as a Scalable Alternative to Reinforcement Learning"
+        },
+        {
+            "paperId": "f568e3473a577c5920c0bba7acee239d2a29fdad",
+            "title": "Non-Associative Learning Representation in the Nervous System of the Nematode Caenorhabditis elegans"
+        },
+        {
+            "paperId": "9e756f8859f296a1d6583dee01c5fa6fdfe26821",
+            "title": "Design process and tools for dynamic neuromechanical models and robot controllers"
+        },
+        {
+            "paperId": "2b5f6c63b5e7507c078cb372d75d5e6577ad0f66",
+            "title": "Dynamical System Based Robotic Motion Generation With Obstacle Avoidance"
+        },
+        {
+            "paperId": "41ef1bfe4a3504f36dea474de77d3443f34a5455",
+            "title": "A Model-Predictive Motion Planner for the IARA autonomous car"
+        },
+        {
+            "paperId": "68c96ff82d35252779eb3d026ccb9f9471eff2d3",
+            "title": "Deep reinforcement learning for tensegrity robot locomotion"
+        },
+        {
+            "paperId": "19608143057bb691ee6ddc511ac50a79666a2ac4",
+            "title": "Incremental Task and Motion Planning: A Constraint-Based Approach"
+        },
+        {
+            "paperId": "7fa869f033d3caffeb5bb495a49431720419a464",
+            "title": "High-dimensional Winding-Augmented Motion Planning with 2D topological task projections and persistent homology"
+        },
+        {
+            "paperId": "1464776f20e2bccb6182f183b5ff2e15b0ae5e56",
+            "title": "Benchmarking Deep Reinforcement Learning for Continuous Control"
+        },
+        {
+            "paperId": "339ccc82a60e6be6ccb292f184d610454361084a",
+            "title": "Introducing MantisBot: Hexapod robot controlled by a high-fidelity, real-time neural simulation"
+        },
+        {
+            "paperId": "93c17ac1f38caf727c0a1a4a0453aa54359b11f9",
+            "title": "Global Brain Dynamics Embed the Motor Command Sequence of Caenorhabditis elegans"
+        },
+        {
+            "paperId": "7c86fbae4300c03e91faa37804e492618e38f8d9",
+            "title": "SMT-based synthesis of integrated task and motion plans from plan outlines"
+        },
+        {
+            "paperId": "d754d51437eb4e0983ad2349cb3b9c84a8f1a613",
+            "title": "Motion planning with Satisfiability Modulo Theories"
+        },
+        {
+            "paperId": "cf570e633e6c6929cc807445916d7e520f667554",
+            "title": "Nonlinear System Identification: NARMAX Methods in the Time, Frequency, and Spatio-Temporal Domains"
+        },
+        {
+            "paperId": "2e6e7937a641821dd68743aa01c2ce694024eec6",
+            "title": "A Biomimetic Neuronal Network-Based Controller for Guided Helicopter Flight"
+        },
+        {
+            "paperId": "2a702be0ca11fe4e1e8165148e1f443f723ff865",
+            "title": "Proprioceptive Coupling within Motor Neurons Drives C. elegans Forward Locomotion"
+        },
+        {
+            "paperId": "e54ef623fa6a60166165e672f5b4d3106a982af8",
+            "title": "A compact evolutionary algorithm for integer spiking neural network robot controllers"
+        },
+        {
+            "paperId": "67b85786cc4b92e0acd207d39c6b92c8f365dd42",
+            "title": "An elegant mind: learning and memory in Caenorhabditis elegans."
+        },
+        {
+            "paperId": "3c3fbadbcfe98e3dd096865948c486bb3b3ac386",
+            "title": "Model Predictive Control"
+        },
+        {
+            "paperId": "f91f997a356bd6207c3b55c9ffdaf77c4e25afbb",
+            "title": "Numerical Recipes 3rd Edition: The Art of Scientific Computing"
+        },
+        {
+            "paperId": "3ca5ef46265d58fbb65ad4bf514cf5eb72b149a1",
+            "title": "Network motifs: theory and experimental approaches"
+        },
+        {
+            "paperId": "7954272d443084a065b08f0dc4b13d1aeca0854f",
+            "title": "Classic and Heuristic Approaches in Robot Motion Planning A Chronological Review"
+        },
+        {
+            "paperId": "44dc01cb651d9a9659cc281d5d3d6dee13cf3f50",
+            "title": "Introduction to Stochastic Search and Optimization. Estimation, Simulation, and Control (Spall, J.C.; 2003) [book review]"
+        },
+        {
+            "paperId": "29be07da607847ef30b73648a617a9b0ed545ddb",
+            "title": "A BioInspired Neural Controller For a Mobile Robot"
+        },
+        {
+            "paperId": "c6139a5d76314e63b34edefec1fb0b41984995de",
+            "title": "Chemosensation in C. elegans."
+        },
+        {
+            "paperId": "9705c275c3d13493c25a0924491527ec1a5adedf",
+            "title": "Wiring optimization can relate neuronal structure and function."
+        },
+        {
+            "paperId": "1b6f306c0f4e9492c2d63397f26e97749224f22e",
+            "title": "Introduction to Stochastic Search and Optimization: Estimation, Simulation, and Control"
+        },
+        {
+            "paperId": "9c0802c1ab769743e518ecdb69795f7d1942e168",
+            "title": "Evolving spiking neural network controllers for autonomous robots"
+        },
+        {
+            "paperId": "87ad24efd5329046d37cd704f970323e878710ca",
+            "title": "Superfamilies of Evolved and Designed Networks"
+        },
+        {
+            "paperId": "894b7897dc2143c5e8db666766cf59637a7c7b82",
+            "title": "Network motifs: simple building blocks of complex networks."
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "86aa9077d7a1acf7780580f7e7cc866445b2f544",
+            "title": "A Distributed Neural Network Architecture for Hexapod Robot Locomotion"
+        },
+        {
+            "paperId": "cd62c9976534a6a2096a38244f6cbb03635a127e",
+            "title": "Phoneme recognition using time-delay neural networks"
+        },
+        {
+            "paperId": "b43ad123af7ec46e48645004a19511cae93b9920",
+            "title": "The neural circuit for touch sensitivity in Caenorhabditis elegans"
+        },
+        {
+            "paperId": "94b55ef97084f34bd59213726b20feaca43838d0",
+            "title": "Privacy-Preserving and Auditable Federated Deep Reinforcement Learning for Robotic Manipulation"
+        },
+        {
+            "paperId": "24c79e5438875e80c6401c7c47395f94ca421f4e",
+            "title": "High-dimensional Winding-Augmented Motion Planning with 2D topological task projections and persistent homology"
+        },
+        {
+            "paperId": "4f8d648c52edf74e41b0996128aa536e13cc7e82",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": null,
+            "title": "Cyton Epsilon 300 Arm Specifications, Robai Corporation"
+        },
+        {
+            "paperId": null,
+            "title": "Natural Computing Algorithms , 1st ed"
+        },
+        {
+            "paperId": null,
+            "title": "Nonlinear system identi\ufb01cation: NARMAX methods"
+        },
+        {
+            "paperId": null,
+            "title": "Datasheet: Pioneer 3-AT robot"
+        },
+        {
+            "paperId": "884727c55ccb1dc3cc91b5dca78f1f0bcccfcee6",
+            "title": "Spot Locator for Autonomous Parking"
+        },
+        {
+            "paperId": "4a75e90dc520430ce5038b45eb588dcb0459b0c4",
+            "title": "Motion Planning"
+        },
+        {
+            "paperId": "3d538490d2882ef8f492529762b0e3a7ea31774c",
+            "title": "An Introduction to Systems Biology Design Principles of Biological Circuits"
+        },
+        {
+            "paperId": "007f078d532ece61325da1030a1b8d6532e260d5",
+            "title": "Planning Algorithms: Motion Planning"
+        },
+        {
+            "paperId": "d967d9550f831a8b3f5cb00f8835a4c866da60ad",
+            "title": "Rapidly-exploring random trees : a new tool for path planning"
+        },
+        {
+            "paperId": null,
+            "title": "Robot Motion Planning, ser. The Springer International Series in Engineering and Computer Science"
+        },
+        {
+            "paperId": null,
+            "title": "L\u2019quilibre d\u2019une masse fluide anime d\u2019un mouvement de rotation"
+        },
+        {
+            "paperId": null,
+            "title": "Experimental demonstrations of the superiority of the performance of DO-based networks in terms of their compactness, robustness to noise and their inter-pretable dynamics, compared to common RNNs"
+        }
+    ]
+}

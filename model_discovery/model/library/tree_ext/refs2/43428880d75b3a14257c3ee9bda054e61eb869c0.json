@@ -1,0 +1,250 @@
+{
+    "paperId": "43428880d75b3a14257c3ee9bda054e61eb869c0",
+    "externalIds": {
+        "ArXiv": "1705.03122",
+        "MAG": "2950686565",
+        "DBLP": "journals/corr/GehringAGYD17",
+        "CorpusId": 3648736
+    },
+    "title": "Convolutional Sequence to Sequence Learning",
+    "abstract": "The prevalent approach to sequence to sequence learning maps an input sequence to a variable length output sequence via recurrent neural networks. We introduce an architecture based entirely on convolutional neural networks. Compared to recurrent models, computations over all elements can be fully parallelized during training and optimization is easier since the number of non-linearities is fixed and independent of the input length. Our use of gated linear units eases gradient propagation and we equip each decoder layer with a separate attention module. We outperform the accuracy of the deep LSTM setup of Wu et al. (2016) on both WMT'14 English-German and WMT'14 English-French translation at an order of magnitude faster speed, both on GPU and CPU.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2017,
+    "referenceCount": 51,
+    "citationCount": 3112,
+    "influentialCitationCount": 306,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces an architecture based entirely on convolutional neural networks, which outperform the accuracy of the deep LSTM setup of Wu et al. (2016) on both WMT'14 English-German and WMT-French translation at an order of magnitude faster speed, both on GPU and CPU."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2401865",
+            "name": "Jonas Gehring"
+        },
+        {
+            "authorId": "2325985",
+            "name": "Michael Auli"
+        },
+        {
+            "authorId": "2529182",
+            "name": "David Grangier"
+        },
+        {
+            "authorId": "13759615",
+            "name": "Denis Yarats"
+        },
+        {
+            "authorId": "2921469",
+            "name": "Yann Dauphin"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "510e26733aaff585d65701b9f1be7ca9d5afc586",
+            "title": "Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer"
+        },
+        {
+            "paperId": "364f7f7bac907ce326dce84b26eb857f186d3dc2",
+            "title": "Cutting-off Redundant Repeating Generations for Neural Abstractive Summarization"
+        },
+        {
+            "paperId": "88caa4a0253a8b0076176745ebc072864eab66e1",
+            "title": "Language Modeling with Gated Convolutional Networks"
+        },
+        {
+            "paperId": "f958d4921951e394057a1c4ec33bad9a34e5dad1",
+            "title": "A Convolutional Encoder Model for Neural Machine Translation"
+        },
+        {
+            "paperId": "2d876ed1dd2c58058d7197b734a8e4d349b8f231",
+            "title": "Quasi-Recurrent Neural Networks"
+        },
+        {
+            "paperId": "98445f4172659ec5e891e031d8202c102135c644",
+            "title": "Neural Machine Translation in Linear Time"
+        },
+        {
+            "paperId": "9486f640f90b7c3ddb0d8adff6fa16dd9758746a",
+            "title": "Vocabulary Selection Strategies for Neural Machine Translation"
+        },
+        {
+            "paperId": "563783de03452683a9206e85fe6d661714436686",
+            "title": "HyperNetworks"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "1a327709cc53ff9e52454e50a643abf4a0ac92af",
+            "title": "Findings of the 2016 Conference on Machine Translation"
+        },
+        {
+            "paperId": "97fb4e3d45bb098e27e0071448b6152217bd35a5",
+            "title": "Layer Normalization"
+        },
+        {
+            "paperId": "a3fbd2bd5dc1de28a36da5503030d9c648ce7f6d",
+            "title": "Neural Machine Translation with Recurrent Attention Modeling"
+        },
+        {
+            "paperId": "0936352b78a52bc5d2b5e3f04233efc56664af51",
+            "title": "Conditional Image Generation with PixelCNN Decoders"
+        },
+        {
+            "paperId": "b60abe57bc195616063be10638c6437358c81d1e",
+            "title": "Deep Recurrent Models with Fast-Forward Connections for Neural Machine Translation"
+        },
+        {
+            "paperId": "bba5f2852b1db8a18004eb7328efa5e1d57cc62a",
+            "title": "Key-Value Memory Networks for Directly Reading Documents"
+        },
+        {
+            "paperId": "cd0009c2819f9566930d520da46ca67e4ccf226d",
+            "title": "Vocabulary Manipulation for Neural Machine Translation"
+        },
+        {
+            "paperId": "03ee3c8994edfc3bca62b51fb4d4cc13595b5046",
+            "title": "Neural Headline Generation with Sentence-wise Optimization"
+        },
+        {
+            "paperId": "3d2c6941a9b4608ba52b328369a3352db2092ae0",
+            "title": "Weight Normalization: A Simple Reparameterization to Accelerate Training of Deep Neural Networks"
+        },
+        {
+            "paperId": "f37076f426023241f19cdc2fb0a0fd733a6fa7fa",
+            "title": "Abstractive Text Summarization using Sequence-to-sequence RNNs and Beyond"
+        },
+        {
+            "paperId": "41f1d50c85d3180476c4c7b3eea121278b0d8474",
+            "title": "Pixel Recurrent Neural Networks"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "1ac30af5522c7a50ec4d1ee43fd2bd8652a9bd52",
+            "title": "A Neural Attention Model for Abstractive Sentence Summarization"
+        },
+        {
+            "paperId": "1518039b5001f1836565215eb047526b3ac7f462",
+            "title": "Neural Machine Translation of Rare Words with Subword Units"
+        },
+        {
+            "paperId": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+            "title": "Effective Approaches to Attention-based Neural Machine Translation"
+        },
+        {
+            "paperId": "b624504240fa52ab76167acfe3156150ca01cf3b",
+            "title": "Attention-Based Models for Speech Recognition"
+        },
+        {
+            "paperId": "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e",
+            "title": "End-To-End Memory Networks"
+        },
+        {
+            "paperId": "eb5eb891061c78f4fcbc9deb3df8bca7fd005acd",
+            "title": "Encoding Source Language with Convolutional Neural Network for Machine Translation"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "d6f2f611da110b5b5061731be3fc4c7f45d8ee23",
+            "title": "Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "aa7bfd2304201afbb19971ebde87b17e40242e91",
+            "title": "On the importance of initialization and momentum in deep learning"
+        },
+        {
+            "paperId": "7b5e31257f01aba987f16e175a3e49e00a5bd3bb",
+            "title": "A Simple, Fast, and Effective Reparameterization of IBM Model 2"
+        },
+        {
+            "paperId": "84069287da0a6b488b8c933f3cb5be759cb6237e",
+            "title": "On the difficulty of training recurrent neural networks"
+        },
+        {
+            "paperId": "ed6262b569c0a62c51d941228c54f34e563af022",
+            "title": "Japanese and Korean voice search"
+        },
+        {
+            "paperId": "ea9d2a2b4ce11aaf85136840c65f3bc9c03ab649",
+            "title": "Understanding the difficulty of training deep feedforward neural networks"
+        },
+        {
+            "paperId": "0be949cc24188ef7205bdaaeb7df2508344b8d5a",
+            "title": "DUC in context"
+        },
+        {
+            "paperId": "60b05f32c32519a809f21642ef1eb3eaf3848008",
+            "title": "ROUGE: A Package for Automatic Evaluation of Summaries"
+        },
+        {
+            "paperId": "563e821bb5ea825efb56b77484f5287f08cf3753",
+            "title": "Convolutional networks for images, speech, and time series"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "668087f0ae7ce1de6e0bd0965dbb480c08103260",
+            "title": "Finding Structure in Time"
+        },
+        {
+            "paperId": "cd62c9976534a6a2096a38244f6cbb03635a127e",
+            "title": "Phoneme recognition using time-delay neural networks"
+        },
+        {
+            "paperId": "8fd61ae673e79de6723f800e06b38b2bda1dc3db",
+            "title": "Convolutional Sequence to Sequence Learning"
+        },
+        {
+            "paperId": "e3ce71a26872c7755e6d8b8fc45bf00c8be64193",
+            "title": "Neural Machine Translation Systems for WMT 16"
+        },
+        {
+            "paperId": "25eb839f39507fe6983ad3e692b2f8d93a5cb0cc",
+            "title": "Neural Machine Translation Systems for WMT \u2019 15"
+        },
+        {
+            "paperId": null,
+            "title": "2015b) by focusing on the variance"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "3449b65008b27f6e60a73d80c1fd990f0481126b",
+            "title": "Torch7: A Matlab-like Environment for Machine Learning"
+        },
+        {
+            "paperId": null,
+            "title": "English gigaword"
+        },
+        {
+            "paperId": "742cceb35a8de2ab06828b7f4d5ded3e6a3c3ffd",
+            "title": "Library of Congress Cataloging-in-publication Data Sparse Coding in the Primate Cortex"
+        }
+    ]
+}

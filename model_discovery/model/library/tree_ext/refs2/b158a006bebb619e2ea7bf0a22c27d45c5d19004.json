@@ -1,0 +1,117 @@
+{
+    "paperId": "b158a006bebb619e2ea7bf0a22c27d45c5d19004",
+    "externalIds": {
+        "MAG": "2136939460",
+        "DBLP": "conf/nips/HochreiterS96",
+        "CorpusId": 7452865
+    },
+    "title": "LSTM can Solve Hard Long Time Lag Problems",
+    "abstract": "Standard recurrent nets cannot deal with long minimal time lags between relevant signals. Several recent NIPS papers propose alternative methods. We first show: problems used to promote various previous algorithms can be solved more quickly by random weight guessing than by the proposed algorithms. We then use LSTM, our own recent algorithm, to solve a hard problem that can neither be quickly solved by random search nor by any other recurrent net algorithm we are aware of.",
+    "venue": "Neural Information Processing Systems",
+    "year": 1996,
+    "referenceCount": 21,
+    "citationCount": 925,
+    "influentialCitationCount": 78,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work shows that problems used to promote various previous algorithms can be solved more quickly by random weight guessing than by the proposed algorithms, and uses LSTM, its own recent algorithm, to solve a hard problem."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3308557",
+            "name": "Sepp Hochreiter"
+        },
+        {
+            "authorId": "145341374",
+            "name": "J. Schmidhuber"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "b13813b49f160e1a2010c44bd4fb3d09a28446e3",
+            "title": "Hierarchical Recurrent Neural Networks for Long-Term Dependencies"
+        },
+        {
+            "paperId": "32e97eef94beacace020e79322cef0e1e5a76ee0",
+            "title": "Gradient calculations for dynamic recurrent neural networks: a survey"
+        },
+        {
+            "paperId": "063fe6ed19c0204d55bde174483c5a93eb4819c0",
+            "title": "Learning long-term dependencies is not as difficult with NARX recurrent neural networks"
+        },
+        {
+            "paperId": "e59f5ce9008c5edeff783411853f6607e2652c31",
+            "title": "First-Order Recurrent Neural Networks and Deterministic Finite State Automata"
+        },
+        {
+            "paperId": "d0be39ee052d246ae99c082a565aba25b811be2d",
+            "title": "Learning long-term dependencies with gradient descent is difficult"
+        },
+        {
+            "paperId": "13369d124474b5f8dcbc70d12296a185832192b2",
+            "title": "Credit Assignment through Time: Alternatives to Backpropagation"
+        },
+        {
+            "paperId": "34f8c5769899dfd9450bb13c3f52c18c88444515",
+            "title": "Experimental Comparison of the Effect of Order in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "50c770b425a5bb25c77387f687a9910a9d130722",
+            "title": "Learning Complex, Extended Sequences Using the Principle of History Compression"
+        },
+        {
+            "paperId": "e141d68065ce638f9fc4f006eab2f66711e89768",
+            "title": "Induction of Multiscale Temporal Structure"
+        },
+        {
+            "paperId": "2d86ff53e0cbf244eb0aac8189ced50b39196185",
+            "title": "Induction of Finite-State Automata Using Second-Order Recurrent Networks"
+        },
+        {
+            "paperId": "86dee86ea1b2eb5651e9ef9a4962460718d2ebd4",
+            "title": "Learning Sequential Structure with the Real-Time Recurrent Learning Algorithm"
+        },
+        {
+            "paperId": "2ae5a5507253aa3cada113d41d35fada1e84555f",
+            "title": "An Efficient Gradient-Based Algorithm for On-Line Training of Recurrent Network Trajectories"
+        },
+        {
+            "paperId": "9e8cf03655d224b0994d0f9d4f5aa80bca07021a",
+            "title": "The Recurrent Cascade-Correlation Architecture"
+        },
+        {
+            "paperId": "bd46c1b5948abe04e565a8bae6454da63a1b021e",
+            "title": "Finite State Automata and Simple Recurrent Networks"
+        },
+        {
+            "paperId": null,
+            "title": "Learning long-term dependencies is  not as di cult with NARX recurrent neural networks. Technical Report UMIACS-  TR-95-78 and CS-TR-3500, Institute for Advanced Computer Studies"
+        },
+        {
+            "paperId": "680335c0de8300117aeb1639ab94580d947b154a",
+            "title": "An Input Output HMM Architecture"
+        },
+        {
+            "paperId": "3f3d13e95c25a8f6a753e38dfce88885097cbd43",
+            "title": "Untersuchungen zu dynamischen neuronalen Netzen"
+        },
+        {
+            "paperId": null,
+            "title": "Dynamic construction of finite automata from examples using hill climbing"
+        },
+        {
+            "paperId": null,
+            "title": "can Solve 4 ............ oIIL.J"
+        },
+        {
+            "paperId": "02f38b2d72d7b3243b5ba4005f814f71b80eec00",
+            "title": "The Utility Driven Dynamic Error Propagation Network"
+        }
+    ]
+}

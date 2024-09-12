@@ -1,0 +1,165 @@
+{
+    "paperId": "843959ffdccf31c6694d135fad07425924f785b1",
+    "externalIds": {
+        "MAG": "2025768430",
+        "DBLP": "conf/icml/VincentLBM08",
+        "DOI": "10.1145/1390156.1390294",
+        "CorpusId": 207168299
+    },
+    "title": "Extracting and composing robust features with denoising autoencoders",
+    "abstract": "Previous work has shown that the difficulties in learning deep generative or discriminative models can be overcome by an initial unsupervised learning step that maps inputs to useful intermediate representations. We introduce and motivate a new training principle for unsupervised learning of a representation based on the idea of making the learned representations robust to partial corruption of the input pattern. This approach can be used to train autoencoders, and these denoising autoencoders can be stacked to initialize deep architectures. The algorithm can be motivated from a manifold learning and information theoretic perspective or from a generative model perspective. Comparative experiments clearly show the surprising advantage of corrupting the input of autoencoders on a pattern classification benchmark suite.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2008,
+    "referenceCount": 30,
+    "citationCount": 7090,
+    "influentialCitationCount": 472,
+    "openAccessPdf": {
+        "url": "http://www.iro.umontreal.ca/~vincentp/Publications/denoising_autoencoders_tr1316.pdf",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces and motivate a new training principle for unsupervised learning of a representation based on the idea of making the learned representations robust to partial corruption of the input pattern."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "120247189",
+            "name": "Pascal Vincent"
+        },
+        {
+            "authorId": "1777528",
+            "name": "H. Larochelle"
+        },
+        {
+            "authorId": "1751762",
+            "name": "Yoshua Bengio"
+        },
+        {
+            "authorId": "1798462",
+            "name": "Pierre-Antoine Manzagol"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "202cbbf671743aefd380d2f23987bd46b9caaf97",
+            "title": "Sparse deep belief net model for visual area V2"
+        },
+        {
+            "paperId": "41fef1a197fab9684a4608b725d3ae72e1ab4b39",
+            "title": "Sparse Feature Learning for Deep Belief Networks"
+        },
+        {
+            "paperId": "d90df19826e5ccf940f8259c7d7ca054e1506b00",
+            "title": "A Machine Learning Framework for Adaptive Combination of Signal Denoising Methods"
+        },
+        {
+            "paperId": "63f27307cb028f9341544fff32eceb2c3c652bf2",
+            "title": "Large-scale kernel machines"
+        },
+        {
+            "paperId": "b8012351bc5ebce4a4b3039bbbba3ce393bc3315",
+            "title": "An empirical evaluation of deep architectures on problems with many factors of variation"
+        },
+        {
+            "paperId": "355d44f53428b1ac4fb2ab468d593c720640e5bd",
+            "title": "Greedy Layer-Wise Training of Deep Networks"
+        },
+        {
+            "paperId": "5018fd71c98ae0db263be1c976440fd4014d79e4",
+            "title": "A Theory of Retinal Population Coding"
+        },
+        {
+            "paperId": "932c2a02d462abd75af018125413b1ceaa1ee3f4",
+            "title": "Efficient Learning of Sparse Representations with an Energy-Based Model"
+        },
+        {
+            "paperId": "e07416eabd4ba6c69fa473756bb04ae7161177be",
+            "title": "Image Denoising Via Sparse and Redundant Representations Over Learned Dictionaries"
+        },
+        {
+            "paperId": "8978cf7574ceb35f4c3096be768c7547b28a35d0",
+            "title": "A Fast Learning Algorithm for Deep Belief Nets"
+        },
+        {
+            "paperId": "c1d428e32ede50c4d4854fd2f712eee44c96d676",
+            "title": "A Theoretical Analysis of Robust Coding over Noisy Overcomplete Channels"
+        },
+        {
+            "paperId": "2077d0f30507d51a0d3bbec4957d55e817d66a59",
+            "title": "Fields of Experts: a framework for learning image priors"
+        },
+        {
+            "paperId": "47c82826782c574ddd9478f19136e22e32ca3192",
+            "title": "Many-Layered Learning"
+        },
+        {
+            "paperId": "78f6f0ac3d501cb0073a7d94edde5267044a59ae",
+            "title": "Parallel Distributed Processing: Explorations in the Microstructure of Cognition, vol 1: Foundations, vol 2: Psychological and Biological Models"
+        },
+        {
+            "paperId": "a57c6d627ffc667ae3547073876c35d6420accff",
+            "title": "Connectionist Learning Procedures"
+        },
+        {
+            "paperId": "18e05aa52d1fb62a6956d2e47a4101e3792cb977",
+            "title": "Parallel Distributed Processing: Explorations in the Microstructures of Cognition"
+        },
+        {
+            "paperId": "052b1d8ce63b07fec3de9dbb583772d860b7c769",
+            "title": "Learning representations by back-propagating errors"
+        },
+        {
+            "paperId": "4bb08f30bb2c83334b21fbbc68c3f2622d4fb04b",
+            "title": "Parallel distributed processing: explorations in the microstructure of cognition, vol. 1: foundations"
+        },
+        {
+            "paperId": "98b4d4e24aab57ab4e1124ff8106909050645cfa",
+            "title": "Neural networks and physical systems with emergent collective computational abilities."
+        },
+        {
+            "paperId": "61eb977ee0041a0213dfebc13161888b5f9a909b",
+            "title": "Non-linear Latent Factor Models for Revealing Structure in High-dimensional Data"
+        },
+        {
+            "paperId": null,
+            "title": "Extracting and composing robust features with denoising autoencoders (Technical Report 1316)"
+        },
+        {
+            "paperId": "6fdb77260fc83dff91c44fea0f31a2cb8ed13d04",
+            "title": "Scaling learning algorithms towards AI"
+        },
+        {
+            "paperId": "d04d6db5f0df11d0cff57ec7e15134990ac07a4f",
+            "title": "Learning Deep Architectures for AI"
+        },
+        {
+            "paperId": "fe95a7a1d66ebdc7d3097ebbe97de60c9630bf84",
+            "title": "Advances in Neural Information Processing Systems 20"
+        },
+        {
+            "paperId": "7c59908c946a4157abc030cdbe2b63d08ba97db3",
+            "title": "Supporting Online Material for Reducing the Dimensionality of Data with Neural Networks"
+        },
+        {
+            "paperId": "b667bca895b762611fe65929421e66181c7f23bc",
+            "title": "Memoires associatives distribuees: Une comparaison (Distributed associative memories: A comparison)"
+        },
+        {
+            "paperId": null,
+            "title": "Mod`eles connexionistes de l\u2019apprentissage"
+        },
+        {
+            "paperId": null,
+            "title": "Memoires associatives distribuees. Proceedings of COGNITIVA 87"
+        },
+        {
+            "paperId": "c3ecd8e19e016d15670c8953b4b9afaa5186b0f3",
+            "title": "Current address: Microsoft Research,"
+        },
+        {
+            "paperId": null,
+            "title": "Pierre-Antoine Manzagol Extracting and Composing Robust Features with Denoising Autoencoders Performance comparison Dataset SVM rbf SVM poly DBN-1 DBN-3 SAA-3 SdA-3 (\u03bd)"
+        }
+    ]
+}

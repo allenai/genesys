@@ -1,0 +1,214 @@
+{
+    "paperId": "d18b48f77eb5c517a6d2c1fa434d2952a1b0a825",
+    "externalIds": {
+        "ArXiv": "1806.08804",
+        "MAG": "2811124557",
+        "DBLP": "journals/corr/abs-1806-08804",
+        "CorpusId": 49420315
+    },
+    "title": "Hierarchical Graph Representation Learning with Differentiable Pooling",
+    "abstract": "Recently, graph neural networks (GNNs) have revolutionized the field of graph representation learning through effectively learned node embeddings, and achieved state-of-the-art results in tasks such as node classification and link prediction. However, current GNN methods are inherently flat and do not learn hierarchical representations of graphs---a limitation that is especially problematic for the task of graph classification, where the goal is to predict the label associated with an entire graph. Here we propose DiffPool, a differentiable graph pooling module that can generate hierarchical representations of graphs and can be combined with various graph neural network architectures in an end-to-end fashion. DiffPool learns a differentiable soft cluster assignment for nodes at each layer of a deep GNN, mapping nodes to a set of clusters, which then form the coarsened input for the next GNN layer. Our experimental results show that combining existing GNN methods with DiffPool yields an average improvement of 5-10% accuracy on graph classification benchmarks, compared to all existing pooling approaches, achieving a new state-of-the-art on four out of five benchmark datasets.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2018,
+    "referenceCount": 41,
+    "citationCount": 1929,
+    "influentialCitationCount": 278,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "DiffPool is proposed, a differentiable graph pooling module that can generate hierarchical representations of graphs and can be combined with various graph neural network architectures in an end-to-end fashion."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "83539859",
+            "name": "Rex Ying"
+        },
+        {
+            "authorId": "145829303",
+            "name": "Jiaxuan You"
+        },
+        {
+            "authorId": "143622465",
+            "name": "Christopher Morris"
+        },
+        {
+            "authorId": "145201124",
+            "name": "Xiang Ren"
+        },
+        {
+            "authorId": "49437682",
+            "name": "William L. Hamilton"
+        },
+        {
+            "authorId": "1702139",
+            "name": "J. Leskovec"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "1a8ee9382e79b92986f9d780a929fc2d2be2f47b",
+            "title": "Graph Capsule Convolutional Neural Networks"
+        },
+        {
+            "paperId": "d81fc968196e06ccafd7ea4c008b13e1cad1be64",
+            "title": "An End-to-End Deep Learning Architecture for Graph Classification"
+        },
+        {
+            "paperId": "89b1766a77f7a34aadd67861123d5cf3cd3ece52",
+            "title": "Neural Relational Inference for Interacting Systems"
+        },
+        {
+            "paperId": "4aa8e316bc1c5959537517ed16b4bf81b4bd73ed",
+            "title": "Graph Partition Neural Networks for Semi-Supervised Classification"
+        },
+        {
+            "paperId": "a73531abe4cafbccd5b3e949e84410a50016bd33",
+            "title": "SplineCNN: Fast Geometric Deep Learning with Continuous B-Spline Kernels"
+        },
+        {
+            "paperId": "c751ab01aedc2888a7fe6e8b4f77ab1afa94072f",
+            "title": "Protein Interface Prediction using Graph Convolutional Networks"
+        },
+        {
+            "paperId": "33998aff64ce51df8dee45989cdca4b6b1329ec4",
+            "title": "Graph Attention Networks"
+        },
+        {
+            "paperId": "ecf6c42d84351f34e1625a6a2e4cc6526da45c74",
+            "title": "Representation Learning on Graphs: Methods and Applications"
+        },
+        {
+            "paperId": "aaf046c4da99ee6184f3fd31961a9967272152f9",
+            "title": "Predicting Organic Reaction Outcomes with Weisfeiler-Lehman Network"
+        },
+        {
+            "paperId": "5bf31dc4bd54b623008c13f8bc8954dc7c9a2d80",
+            "title": "SchNet: A continuous-filter convolutional neural network for modeling quantum interactions"
+        },
+        {
+            "paperId": "6b7d6e6416343b2a122f8416e69059ce919026ef",
+            "title": "Inductive Representation Learning on Large Graphs"
+        },
+        {
+            "paperId": "ee9c6aeb6e29cf3c9081df2cc100b8203ebf5cff",
+            "title": "Deriving Neural Architectures from Sequence and Graph Kernels"
+        },
+        {
+            "paperId": "1a39bb2caa151d15efd6718f3a80d9f4bff95af2",
+            "title": "Dynamic Edge-Conditioned Filters in Convolutional Neural Networks on Graphs"
+        },
+        {
+            "paperId": "e24cdf73b3e7e590c2fe5ecac9ae8aa983801367",
+            "title": "Neural Message Passing for Quantum Chemistry"
+        },
+        {
+            "paperId": "cd8a9914d50b0ac63315872530274d158d6aff09",
+            "title": "Modeling Relational Data with Graph Convolutional Networks"
+        },
+        {
+            "paperId": "0e779fd59353a7f1f5b559b9d65fa4bfe367890c",
+            "title": "Geometric Deep Learning: Going beyond Euclidean data"
+        },
+        {
+            "paperId": "36eff562f65125511b5dfab68ce7f7a943c27478",
+            "title": "Semi-Supervised Classification with Graph Convolutional Networks"
+        },
+        {
+            "paperId": "c41eb895616e453dcba1a70c9b942c5063cc656c",
+            "title": "Convolutional Neural Networks on Graphs with Fast Localized Spectral Filtering"
+        },
+        {
+            "paperId": "da2e04453b6f0d89ee75e6f68d619d936cd9c0b5",
+            "title": "On Valid Optimal Assignment Kernels and Applications to Graph Classification"
+        },
+        {
+            "paperId": "7c6de5a9e02a779e24504619050c6118f4eac181",
+            "title": "Learning Convolutional Neural Networks for Graphs"
+        },
+        {
+            "paperId": "322cf9bcde458a45eaeca989a1eec92f7c6db984",
+            "title": "Discriminative Embeddings of Latent Variable Models for Structured Data"
+        },
+        {
+            "paperId": "3ce05152dbedab572167e031b90d677c13b49767",
+            "title": "A Structural Smoothing Framework For Robust Graph Comparison"
+        },
+        {
+            "paperId": "d01379ebb53c66a4ccf5f4959d904dcf9e161e41",
+            "title": "Order Matters: Sequence to sequence for sets"
+        },
+        {
+            "paperId": "492f57ee9ceb61fb5a47ad7aebfec1121887a175",
+            "title": "Gated Graph Sequence Neural Networks"
+        },
+        {
+            "paperId": "5d1bfeed240709725c78bc72ea40e55410b373dc",
+            "title": "Convolutional Networks on Graphs for Learning Molecular Fingerprints"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "5e925a9f1e20df61d1e860a7aa71894b35a1c186",
+            "title": "Spectral Networks and Locally Connected Networks on Graphs"
+        },
+        {
+            "paperId": "d87762aa2ef5a259825cf75d5865d7ddf86b7018",
+            "title": "Scalable kernels for graphs with continuous attributes"
+        },
+        {
+            "paperId": "b3e025049142be3d97d559cca12b027f16c6349e",
+            "title": "Deep Architectures and Deep Learning in Chemoinformatics: The Prediction of Aqueous Solubility for Drug-Like Molecules"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "273dfbcb68080251f5e9ff38b4413d7bd84b10a1",
+            "title": "LIBSVM: A library for support vector machines"
+        },
+        {
+            "paperId": "7e1874986cf6433fabf96fff93ef42b60bdc49f8",
+            "title": "Weisfeiler-Lehman Graph Kernels"
+        },
+        {
+            "paperId": "a7fc751cd95bd1a409a26daaef69fc3aa8a35e0e",
+            "title": "Efficient graphlet kernels for large graph comparison"
+        },
+        {
+            "paperId": "34795caa356317f2c662bd4553cd7608e0aeb657",
+            "title": "Weighted Graph Cuts without Eigenvectors A Multilevel Approach"
+        },
+        {
+            "paperId": "70ff05e93f4eaeef4b8b51ba4e11d1c4cdf856ca",
+            "title": "Shortest-path kernels on graphs"
+        },
+        {
+            "paperId": "20036cd7fac884130f642d3df30b1fd7fb24c6d2",
+            "title": "Automatic Generation of Complementary Descriptors with Molecular Graph Networks"
+        },
+        {
+            "paperId": "c2815f76c690ec2ca6523b1faacf9b6a401bdff1",
+            "title": "Distinguishing enzyme structures from non-enzymes without alignments."
+        },
+        {
+            "paperId": "25ec680e94d84e93e3bd0409d6084bfb43c4cdb6",
+            "title": "Processing directed acyclic graphs with recursive neural networks"
+        },
+        {
+            "paperId": null,
+            "title": "Benchmark data sets for graph kernels, 2016"
+        },
+        {
+            "paperId": "3efd851140aa28e95221b55fcc5659eea97b172d",
+            "title": "The Graph Neural Network Model"
+        },
+        {
+            "paperId": "ba640c0682b242cb480bb4eb5b934ee6db949269",
+            "title": "Protein function prediction via graph kernels"
+        }
+    ]
+}

@@ -1,0 +1,129 @@
+{
+    "paperId": "5fb8a9271af105a5065a5a855e71a7d25c7a6f1b",
+    "externalIds": {
+        "MAG": "2145832734",
+        "DBLP": "conf/nips/WangCSX13",
+        "CorpusId": 933167
+    },
+    "title": "Variance Reduction for Stochastic Gradient Optimization",
+    "abstract": "Stochastic gradient optimization is a class of widely used algorithms for training machine learning models. To optimize an objective, it uses the noisy gradient computed from the random data samples instead of the true gradient computed from the entire dataset. However, when the variance of the noisy gradient is large, the algorithm might spend much time bouncing around, leading to slower convergence and worse performance. In this paper, we develop a general approach of using control variate for variance reduction in stochastic gradient. Data statistics such as low-order moments (pre-computed or estimated online) is used to form the control variate. We demonstrate how to construct the control variate for two practical problems using stochastic gradient optimization. One is convex\u2014the MAP estimation for logistic regression, and the other is non-convex\u2014stochastic variational inference for latent Dirichlet allocation. On both problems, our approach shows faster convergence and better performance than the classical approach.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2013,
+    "referenceCount": 22,
+    "citationCount": 136,
+    "influentialCitationCount": 6,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper demonstrates how to construct the control variate for two practical problems using stochastic gradient optimization, one is convex\u2014the MAP estimation for logistic regression, and the other is non-converage\u2014stochastic variational inference for latent Dirichlet allocation."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2108881999",
+            "name": "Chong Wang"
+        },
+        {
+            "authorId": "1683647",
+            "name": "X. Chen"
+        },
+        {
+            "authorId": "46234526",
+            "name": "Alex Smola"
+        },
+        {
+            "authorId": "143977260",
+            "name": "E. Xing"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "7ce557aa5ee42846061a7ee5344ee56b43775ee0",
+            "title": "An Adaptive Learning Rate for Stochastic Variational Inference"
+        },
+        {
+            "paperId": "03d2ca08088f2efbcebcb76f053deaca99b7e95e",
+            "title": "Optimal Regularized Dual Averaging Methods for Stochastic Optimization"
+        },
+        {
+            "paperId": "bccb2f99a9d1c105699f5d88c479569085e2c7ba",
+            "title": "Stochastic variational inference"
+        },
+        {
+            "paperId": "9ceb1dea15ac3df3d610fd0b3cc52b9a4e9141a3",
+            "title": "Variational Bayesian Inference with Stochastic Search"
+        },
+        {
+            "paperId": "e5a685f40338f9c2f3e68e142efa217aad16dd56",
+            "title": "No more pesky learning rates"
+        },
+        {
+            "paperId": "93792105974f4d42c83172c4fc9f24be77fe781b",
+            "title": "Online Variational Inference for the Hierarchical Dirichlet Process"
+        },
+        {
+            "paperId": "1621f05894ad5fd6a8fcb8827a8c7aca36c81775",
+            "title": "An optimal method for stochastic composite optimization"
+        },
+        {
+            "paperId": "2d8cbd7370b4ce666edd864e66f83ebf20963516",
+            "title": "Online Learning for Latent Dirichlet Allocation"
+        },
+        {
+            "paperId": "0b14178e7d79ac426d0a39700e1ac8b2c6f2e752",
+            "title": "Convex Optimization"
+        },
+        {
+            "paperId": "239243dfa44e14b4fca15675d25cb655fb91a7b7",
+            "title": "On Smoothing and Inference for Topic Models"
+        },
+        {
+            "paperId": "da0877799c8daab985853c0aeed7c04f987bad4a",
+            "title": "Robust Stochastic Approximation Approach to Stochastic Programming"
+        },
+        {
+            "paperId": "44dc01cb651d9a9659cc281d5d3d6dee13cf3f50",
+            "title": "Introduction to Stochastic Search and Optimization. Estimation, Simulation, and Control (Spall, J.C.; 2003) [book review]"
+        },
+        {
+            "paperId": "b90d922ff07d0eb8d77b8687aba7f55bd3926436",
+            "title": "Hierarchical Dirichlet Processes"
+        },
+        {
+            "paperId": "668b1277fbece28c4841eeab1c97e4ebd0079700",
+            "title": "Pattern Recognition and Machine Learning"
+        },
+        {
+            "paperId": "1b6f306c0f4e9492c2d63397f26e97749224f22e",
+            "title": "Introduction to Stochastic Search and Optimization: Estimation, Simulation, and Control"
+        },
+        {
+            "paperId": "115e9ae70393b0d26463cd1ebc4109e7a2f5eeb9",
+            "title": "Introduction to stochastic search and optimization - estimation, simulation, and control"
+        },
+        {
+            "paperId": "6120cc252bc74239012f11b8b075cb7cb16bee26",
+            "title": "An Introduction to Variational Methods for Graphical Models"
+        },
+        {
+            "paperId": "5a767a341364de1f75bea85e0b12ba7d3586a461",
+            "title": "Natural Gradient Works Efficiently in Learning"
+        },
+        {
+            "paperId": "4574d77fff19e093782178595a8988a7f3aa1969",
+            "title": "Latent Dirichlet Allocation"
+        },
+        {
+            "paperId": "7b0db6135b8dd3e2a9efa86163e91c0cd0fdf660",
+            "title": "Stochastic Learning"
+        },
+        {
+            "paperId": "6fb07b90b7fd2785ffec0da1069e75c53f7313c2",
+            "title": "Algorithms for Non-negative Matrix Factorization"
+        },
+        {
+            "paperId": "e407ea7fda6d152d2186f4b5e27aa04ec2d32dcd",
+            "title": "A Variational Approach to Bayesian Logistic Regression Models and their Extensions"
+        }
+    ]
+}

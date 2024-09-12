@@ -1,0 +1,286 @@
+{
+    "paperId": "563783de03452683a9206e85fe6d661714436686",
+    "externalIds": {
+        "DBLP": "journals/corr/HaDL16",
+        "MAG": "2884340900",
+        "ArXiv": "1609.09106",
+        "CorpusId": 208981547
+    },
+    "title": "HyperNetworks",
+    "abstract": "This work explores hypernetworks: an approach of using one network, also known as a hypernetwork, to generate the weights for another network. We apply hypernetworks to generate adaptive weights for recurrent networks. In this case, hypernetworks can be viewed as a relaxed form of weight-sharing across layers. In our implementation, hypernetworks are are trained jointly with the main network in an end-to-end fashion. Our main result is that hypernetworks can generate non-shared weights for LSTM and achieve state-of-the-art results on a variety of sequence modelling tasks including character-level language modelling, handwriting generation and neural machine translation, challenging the weight-sharing paradigm for recurrent networks.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2016,
+    "referenceCount": 62,
+    "citationCount": 1405,
+    "influentialCitationCount": 139,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": null
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1389041357",
+            "name": "David Ha"
+        },
+        {
+            "authorId": "2555924",
+            "name": "Andrew M. Dai"
+        },
+        {
+            "authorId": "2827616",
+            "name": "Quoc V. Le"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "e12359bfbee8bf069a51c7ce8a0d448b59eadbc3",
+            "title": "Roman"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "65eee67dee969fdf8b44c87c560d66ad4d78e233",
+            "title": "Hierarchical Multiscale Recurrent Neural Networks"
+        },
+        {
+            "paperId": "5694e46284460a648fe29117cbc55f6c9be3fa3c",
+            "title": "Densely Connected Convolutional Networks"
+        },
+        {
+            "paperId": "ca9d174c70c9102d88f2707bc395d6a384e1de1d",
+            "title": "Surprisal-Driven Feedback in Recurrent Networks"
+        },
+        {
+            "paperId": "27760cc69be4ce445962ccb270a02d1944a9d4c9",
+            "title": "Decoupled Neural Interfaces using Synthetic Gradients"
+        },
+        {
+            "paperId": "5543b8f38cdb1b6bc618f3e25c5f10e57ec01d15",
+            "title": "Residual Networks of Residual Networks: Multilevel Residual Networks"
+        },
+        {
+            "paperId": "97fb4e3d45bb098e27e0071448b6152217bd35a5",
+            "title": "Layer Normalization"
+        },
+        {
+            "paperId": "7dba53e72c182e25e98e8f73a99d75ff69dda0c2",
+            "title": "Recurrent Highway Networks"
+        },
+        {
+            "paperId": "7dded890956b37df5ac4c42b8ffbc142725f2801",
+            "title": "Recurrent Memory Array Structures"
+        },
+        {
+            "paperId": "136cf66392f1d6bf42da4cc070888996dc472b91",
+            "title": "On Multiplicative Integration with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "4423357dd21cc59662c6fabaf9839b15ef0fb8a8",
+            "title": "Learning feed-forward one-shot learners"
+        },
+        {
+            "paperId": "71683e224ab91617950956b5005ed0439a733a71",
+            "title": "Learning to learn by gradient descent by gradient descent"
+        },
+        {
+            "paperId": "b60abe57bc195616063be10638c6437358c81d1e",
+            "title": "Deep Recurrent Models with Fast-Forward Connections for Neural Machine Translation"
+        },
+        {
+            "paperId": "99901920de0ca5e129cc2b3fbdcdd257a105f16a",
+            "title": "Convolution by Evolution: Differentiable Pattern Producing Networks"
+        },
+        {
+            "paperId": "9f0687bcd0a7d7fc91b8c5d36c003a38b8853105",
+            "title": "Zoneout: Regularizing RNNs by Randomly Preserving Hidden Activations"
+        },
+        {
+            "paperId": "aba48504f4f9563eafa44e0cfb22e1345d767c80",
+            "title": "Dynamic Filter Networks"
+        },
+        {
+            "paperId": "1c4e9156ca07705531e45960b7a919dc473abb51",
+            "title": "Wide Residual Networks"
+        },
+        {
+            "paperId": "952454718139dba3aafc6b3b67c4f514ac3964af",
+            "title": "Recurrent Batch Normalization"
+        },
+        {
+            "paperId": "51db1f3c8dfc7d4077da39c96bb90a6358128111",
+            "title": "Deep Networks with Stochastic Depth"
+        },
+        {
+            "paperId": "cf76789618f5db929393c1187514ce6c3502c3cd",
+            "title": "Recurrent Dropout without Memory Loss"
+        },
+        {
+            "paperId": "77f0a39b8e02686fd85b01971f8feb7f60971f80",
+            "title": "Identity Mappings in Deep Residual Networks"
+        },
+        {
+            "paperId": "9c9d7247f8c51ec5a02b0d911d1d7b9e8160495d",
+            "title": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems"
+        },
+        {
+            "paperId": "4ca151307e3be93c6cd14ed403f6162892e7fbed",
+            "title": "Orthogonal RNNs and Long-Memory Tasks"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "f63e917638553414526a0cc8550de4ad2d83fe7a",
+            "title": "Fast and Accurate Deep Network Learning by Exponential Linear Units (ELUs)"
+        },
+        {
+            "paperId": "54c3e878bf0ff2fdde16e439b5579ee99ee0d0d8",
+            "title": "ACDC: A Structured Efficient Linear Layer"
+        },
+        {
+            "paperId": "b92aa7024b87f50737b372e5df31ef091ab54e62",
+            "title": "Training Very Deep Networks"
+        },
+        {
+            "paperId": "5b791cd374c7109693aaddee2c12d659ae4e3ec0",
+            "title": "Grid Long Short-Term Memory"
+        },
+        {
+            "paperId": "d14c7e5f5cace4c925abc74c88baa474e9f31a28",
+            "title": "Gated Feedback Recurrent Neural Networks"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "27a99c21a1324f087b2f144adc119f04137dfd87",
+            "title": "Deep Fried Convnets"
+        },
+        {
+            "paperId": "8604f376633af8b347e31d84c6150a93b11e34c2",
+            "title": "FitNets: Hints for Thin Deep Nets"
+        },
+        {
+            "paperId": "44a47c2bee3ea51c17bd8d16a64053c18856d427",
+            "title": "Regularizing Recurrent Networks - On Injected Noise and Norm-based Methods"
+        },
+        {
+            "paperId": "fb91db6aa4f710814f8aec28a7f3ecbc4e5ad4fd",
+            "title": "Deeply-Supervised Nets"
+        },
+        {
+            "paperId": "5e83ab70d0cbc003471e87ec306d27d9c80ecb16",
+            "title": "Network In Network"
+        },
+        {
+            "paperId": "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17",
+            "title": "Generating Sequences With Recurrent Neural Networks"
+        },
+        {
+            "paperId": "eff61216e0136886e1158625b1e5a88ed1a7cbce",
+            "title": "Predicting Parameters in Deep Learning"
+        },
+        {
+            "paperId": "0060745e006c5f14ec326904119dca19c6545e51",
+            "title": "Improving neural networks by preventing co-adaptation of feature detectors"
+        },
+        {
+            "paperId": "93c20e38c85b69fc2d2eb314b3c1217913f7db11",
+            "title": "Generating Text with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "7613796ad094e7e17efc789c35a9e3301ed712ce",
+            "title": "Fast algorithms for hierarchically semiseparable matrices"
+        },
+        {
+            "paperId": "490f43dcb4d875cf4170a0f454df9a29d4a1bd20",
+            "title": "Evolving neural networks in compressed weight space"
+        },
+        {
+            "paperId": "6e744cf0273a84b087e94191fd654210e8fec8e9",
+            "title": "A Hypercube-Based Encoding for Evolving Large-Scale Neural Networks"
+        },
+        {
+            "paperId": "9382c0ec9904ea93089f439479607f7fd0195505",
+            "title": "Evolving Modular Fast-Weight Networks for Control"
+        },
+        {
+            "paperId": "9eb7daa88879f283ae05e359d6c502a320b833c9",
+            "title": "IAM-OnDB - an on-line English sentence database acquired from handwritten text on a whiteboard"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "160ad1b01973986944a5f9a17924711ee1861552",
+            "title": "First-order versus second-order single-layer recurrent neural networks"
+        },
+        {
+            "paperId": "7ee98330fb5969839d88bcabdb44d03848dc9d35",
+            "title": "A \u2018Self-Referential\u2019 Weight Matrix"
+        },
+        {
+            "paperId": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+            "title": "Building a Large Annotated Corpus of English: The Penn Treebank"
+        },
+        {
+            "paperId": "bc22e87a26d020215afe91c751e5bdaddd8e4922",
+            "title": "Learning to Control Fast-Weight Memories: An Alternative to Dynamic Recurrent Networks"
+        },
+        {
+            "paperId": null,
+            "title": "The human knowledge compression contest"
+        },
+        {
+            "paperId": null,
+            "title": "URL http://prize"
+        },
+        {
+            "paperId": "1fd7fc06653723b05abe5f3d1de393ddcf6bdddb",
+            "title": "SUBWORD LANGUAGE MODELING WITH NEURAL NETWORKS"
+        },
+        {
+            "paperId": "4cf3569e045993dfe090749f26a55a768684ab86",
+            "title": "Mixture density networks"
+        },
+        {
+            "paperId": "86ab4cae682fbd49c5a5bedb630e5a40fa7529f6",
+            "title": "Handwritten Digit Recognition with a Back-Propagation Network"
+        },
+        {
+            "paperId": null,
+            "title": "The Melchizedek Minister Qut"
+        },
+        {
+            "paperId": null,
+            "title": "French Marines"
+        },
+        {
+            "paperId": null,
+            "title": "Auschwitz controversial map.png|frame|The \u2019\u2019Austrian Spelling\u2019\u2019"
+        },
+        {
+            "paperId": null,
+            "title": "Sexual intimacy was traditionally performed by a male race of the [[ mitochondria]] of living things. The next geneme is used by \u2019\u2019 Clitoron\u2019\u2019 into short forms of [[sexual reproduction]]."
+        },
+        {
+            "paperId": null,
+            "title": "[Image:Czech Middle East SSR chief state 103.JPG|thumb|Serbian Russia movement]] [[1593]]&amp;ndash;[[1719]], and set up a law of [[ parliamentary sovereignty]] and unity in Eastern churches"
+        },
+        {
+            "paperId": null,
+            "title": "Seymour was barged at poverty of young English children, which cost almost the preparation of the marriage to him"
+        },
+        {
+            "paperId": null,
+            "title": "Publications in the Greek movie ''[[The Great Theory of"
+        }
+    ]
+}

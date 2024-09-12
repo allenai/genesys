@@ -1,0 +1,318 @@
+{
+    "paperId": "523b12db4004b89284387f978c2af8ae0e79d54b",
+    "externalIds": {
+        "MAG": "2614311475",
+        "ArXiv": "1301.4083",
+        "DBLP": "journals/corr/abs-1301-4083",
+        "CorpusId": 2745955
+    },
+    "title": "Knowledge Matters: Importance of Prior Information for Optimization",
+    "abstract": "We explore the effect of introducing prior information into the intermediate level of neural networks for a learning task on which all the state-of-the-art machine learning algorithms tested failed to learn. We motivate our work from the hypothesis that humans learn such intermediate concepts from other individuals via a form of supervision or guidance using a curriculum. The experiments we have conducted provide positive evidence in favor of this hypothesis. In our experiments, a two-tiered MLP architecture is trained on a dataset with 64x64 binary inputs images, each image with three sprites. The final task is to decide whether all the sprites are the same or one of them is different. Sprites are pentomino tetris shapes and they are placed in an image with different locations using scaling and rotation transformations. The first part of the two-tiered MLP is pre-trained with intermediate-level targets being the presence of sprites at each location, while the second part takes the output of the first part as input and predicts the final task's target binary event. The two-tiered MLP architecture, with a few tens of thousand examples, was able to learn the task perfectly, whereas all other algorithms (include unsupervised pre-training, but also traditional algorithms like SVMs, decision trees and boosting) all perform no better than chance. We hypothesize that the optimization difficulty involved when the intermediate pre-training is not performed is due to the {\\em composition} of two highly non-linear tasks. Our findings are also consistent with hypotheses on cultural learning inspired by the observations of optimization problems with deep learning, presumably because of effective local minima.",
+    "venue": "Journal of machine learning research",
+    "year": 2013,
+    "referenceCount": 71,
+    "citationCount": 161,
+    "influentialCitationCount": 11,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The effect of introducing prior information into the intermediate level of neural networks for a learning task on which all the state-of-the-art machine learning algorithms tested failed to learn is explored."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1854385",
+            "name": "\u00c7aglar G\u00fcl\u00e7ehre"
+        },
+        {
+            "authorId": "1751762",
+            "name": "Yoshua Bengio"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "ad8a12a19e74d9788f8fe92f5c0dfea7b6a52aba",
+            "title": "The Loss Surfaces of Multilayer Networks"
+        },
+        {
+            "paperId": "6d9cb3d3c0330a6c2f42d159a3a706b6b49744b2",
+            "title": "The Loss Surface of Multilayer Networks"
+        },
+        {
+            "paperId": "981ce6b655cc06416ff6bf7fac8c6c2076fd7fac",
+            "title": "Identifying and attacking the saddle point problem in high-dimensional non-convex optimization"
+        },
+        {
+            "paperId": "6c902b2076a948ad994a542bb9c93e1a6513fc40",
+            "title": "Learned-norm pooling for deep neural networks"
+        },
+        {
+            "paperId": "b7b915d508987b73b61eccd2b237e7ed099a2d29",
+            "title": "Maxout Networks"
+        },
+        {
+            "paperId": "306c7cd74beda5a09662b5f289bba50a2b5ea308",
+            "title": "Big Neural Networks Waste Capacity"
+        },
+        {
+            "paperId": "f72c079d9179cfaada1135a7e4c77d48b6309a30",
+            "title": "Pushing Stochastic Gradient towards Second-Order Methods -- Backpropagation Learning with Transformations in Nonlinearities"
+        },
+        {
+            "paperId": "8729441d734782c3ed532a7d2d9611b438c0a09a",
+            "title": "ADADELTA: An Adaptive Learning Rate Method"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "0060745e006c5f14ec326904119dca19c6545e51",
+            "title": "Improving neural networks by preventing co-adaptation of feature detectors"
+        },
+        {
+            "paperId": "6bf0414dae4f10c7e54fb9e5e8af5d0d0cab290b",
+            "title": "A Generative Process for Contractive Auto-Encoders"
+        },
+        {
+            "paperId": "184ac0766262312ba76bbdece4e7ffad0aa8180b",
+            "title": "Representation Learning: A Review and New Perspectives"
+        },
+        {
+            "paperId": "522e90b9fccfd3c1c0603359eb04757d770c1ab5",
+            "title": "Practical Recommendations for Gradient-Based Training of Deep Architectures"
+        },
+        {
+            "paperId": "f8c8619ea7d68e604e40b814b40c72888a755e95",
+            "title": "Unsupervised Feature Learning and Deep Learning: A Review and New Perspectives"
+        },
+        {
+            "paperId": "b8ef1230a5cc9ea7cd8358f1ae7d1af97813ba14",
+            "title": "Deep Learning Made Easier by Linear Transformations in Perceptrons"
+        },
+        {
+            "paperId": "694b96886f45b8e6542863d8ac18de0910ab566a",
+            "title": "Evolving Culture vs Local Minima"
+        },
+        {
+            "paperId": "fbf9f8650c9521472f0297e7c82292235738449b",
+            "title": "Classification and regression trees"
+        },
+        {
+            "paperId": "f9a824511dc4d73a09a077414ea18018cea3e49d",
+            "title": "How Do Humans Teach: On Curriculum Learning and Teaching Dimension"
+        },
+        {
+            "paperId": "2ef26af206f7ebbbd90a7d68d77a7639c8dfc6b6",
+            "title": "Comparing machines and humans on a visual categorization test"
+        },
+        {
+            "paperId": "195d0a8233a7a46329c742eaff56c276f847fadc",
+            "title": "Contractive Auto-Encoders: Explicit Invariance During Feature Extraction"
+        },
+        {
+            "paperId": "67107f78a84bdb2411053cb54e94fa226eea6d8e",
+            "title": "Deep Sparse Rectifier Neural Networks"
+        },
+        {
+            "paperId": "168f28ac3c8c7ea63bf7ed25f2288e8b67e2fe74",
+            "title": "Scikit-learn: Machine Learning in Python"
+        },
+        {
+            "paperId": "413c1142de9d91804d6d11c67ff3fed59c9fc279",
+            "title": "Adaptive Subgradient Methods for Online Learning and Stochastic Optimization"
+        },
+        {
+            "paperId": "a538b05ebb01a40323997629e171c91aa28b8e2f",
+            "title": "Rectified Linear Units Improve Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": "ea9d2a2b4ce11aaf85136840c65f3bc9c03ab649",
+            "title": "Understanding the difficulty of training deep feedforward neural networks"
+        },
+        {
+            "paperId": "0d2336389dff3031910bd21dd1c44d1b4cd51725",
+            "title": "Why Does Unsupervised Pre-training Help Deep Learning?"
+        },
+        {
+            "paperId": "b98cd08b75ebf2bd1d1ec47c51ef75777a7e64bd",
+            "title": "Deep, Big, Simple Neural Nets for Handwritten Digit Recognition"
+        },
+        {
+            "paperId": "e2b7f37cd97a7907b1b8a41138721ed06a0b76cd",
+            "title": "Stacked Denoising Autoencoders: Learning Useful Representations in a Deep Network with a Local Denoising Criterion"
+        },
+        {
+            "paperId": "1f88427d7aa8225e47f946ac41a0667d7b69ac52",
+            "title": "What is the best multi-stage architecture for object recognition?"
+        },
+        {
+            "paperId": "8de174ab5419b9d3127695405efd079808e956e8",
+            "title": "Curriculum learning"
+        },
+        {
+            "paperId": "05fd1da7b2e34f86ec7f010bef068717ae964332",
+            "title": "Exploring Strategies for Training Deep Neural Networks"
+        },
+        {
+            "paperId": "ddc45fad8d15771d9f1f8579331458785b2cdd93",
+            "title": "Deep Boltzmann Machines"
+        },
+        {
+            "paperId": "d73b02fb80bec1b65bd6187148fd6371e9c669df",
+            "title": "Flexible shaping: How learning in small steps helps"
+        },
+        {
+            "paperId": "7ee368e60d0b826e78f965aad8d6c7d406127104",
+            "title": "Deep learning via semi-supervised embedding"
+        },
+        {
+            "paperId": "355d44f53428b1ac4fb2ab468d593c720640e5bd",
+            "title": "Greedy Layer-Wise Training of Deep Networks"
+        },
+        {
+            "paperId": "8978cf7574ceb35f4c3096be768c7547b28a35d0",
+            "title": "A Fast Learning Algorithm for Deep Belief Nets"
+        },
+        {
+            "paperId": "273bf4ff0b43e376a94073603af9e000ffb30111",
+            "title": "A day of great illumination: B. F. Skinner's discovery of shaping."
+        },
+        {
+            "paperId": "3d9e24e36725f3a138452636abb481d1d601ed89",
+            "title": "CAPTCHA: Using Hard AI Problems for Security"
+        },
+        {
+            "paperId": "9caf5445e47af0fc0782bec1f26e4de840a0b5a9",
+            "title": "Knowledge-Based Artificial Neural Networks"
+        },
+        {
+            "paperId": "aad7acb39cfb1c2e52f0e4cf7b2ba70a98d18e45",
+            "title": "Explanation-Based Neural Network Learning for Robot Control"
+        },
+        {
+            "paperId": "ca27a55410b1bc0e487e65bc8db9a24940097161",
+            "title": "Decrease of human skull size in the Holocene."
+        },
+        {
+            "paperId": "121a02474d35546e478c71c15bfaa310f3324a9d",
+            "title": "The generative process."
+        },
+        {
+            "paperId": null,
+            "title": "Aaron Courville, and Yoshua Bengio. Maxout networks. In ICML'2013"
+        },
+        {
+            "paperId": null,
+            "title": "Lecture 6.5-rmsprop: Divide the gradient by a running average of its recent magnitude"
+        },
+        {
+            "paperId": "ca5caa49de91b215a704269f5e687f7a09ff57aa",
+            "title": "The Adviceptron: Giving Advice to the Perceptron"
+        },
+        {
+            "paperId": "f7da121cc6353003069e895dd655d79c38243cfb",
+            "title": "A user's guide to support vector machines."
+        },
+        {
+            "paperId": "fbc6562814e08e416e28a268ce7beeaa3d0708c8",
+            "title": "Large-Scale Machine Learning with Stochastic Gradient Descent"
+        },
+        {
+            "paperId": null,
+            "title": "Theano: a CPU and GPU math expression compiler"
+        },
+        {
+            "paperId": "8b9cd90af0631bbed04c0718230f0faed1eca209",
+            "title": "A Practical Guide to Support Vector Classification"
+        },
+        {
+            "paperId": "7abeda3a20c13bfee416d94efa313ff870656fec",
+            "title": "A Practical Guide to Support Vector Classication"
+        },
+        {
+            "paperId": "d04d6db5f0df11d0cff57ec7e15134990ac07a4f",
+            "title": "Learning Deep Architectures for AI"
+        },
+        {
+            "paperId": "6cf35ec34efa592f83e3a1b748aea14957fc784a",
+            "title": "The Need for Biases in Learning Generalizations"
+        },
+        {
+            "paperId": "dce68ed63e91338e13d0dd3d6d4839a70f48795a",
+            "title": "Appendix"
+        },
+        {
+            "paperId": "8caefda9c77e6c82aa23be3736973dd2939be049",
+            "title": "The evolution of cultural evolution"
+        },
+        {
+            "paperId": "0a8149fb5aa8a5684e7d530c264451a5cb9250f5",
+            "title": "Recent Advances in Hierarchical Reinforcement Learning"
+        },
+        {
+            "paperId": "a28c4a55514bf6a8ddd536e2aeaa4fc6a31018c8",
+            "title": "Recent Advances in Hierarchical Reinforcement Learning"
+        },
+        {
+            "paperId": "8e0be569ea77b8cb29bb0e8b031887630fe7a96c",
+            "title": "Random Forests"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "679f7231bd7960d4c4fae577e224bb5e4b93d530",
+            "title": "Integrating Initialization Bias and Search Bias in Neural Network Learning"
+        },
+        {
+            "paperId": "70ce166454dc25bdc72e97e01667871e887e7eb7",
+            "title": "Trends in cranial capacity and cranial index in Subsaharan Africa during the Holocene"
+        },
+        {
+            "paperId": "d2eb637e121efa43f7a32c0c86ad42b3a1974483",
+            "title": "A SYSTEM FOR INCREMENTAL LEARNING BASED ON ALGORITHMIC PROBABILITY"
+        },
+        {
+            "paperId": "604d409e562833e02c4711a26b248ddc5ebdc342",
+            "title": "A SYSTEM FOR INCREMENTAL LEARNING BASED ON ALGORITHMIC PROBABILITY"
+        },
+        {
+            "paperId": null,
+            "title": "The Selfish Gene"
+        },
+        {
+            "paperId": null,
+            "title": "Reinforcement today"
+        },
+        {
+            "paperId": null,
+            "title": "Experiment 2-Disentangled representations"
+        },
+        {
+            "paperId": null,
+            "title": "s ij from S without replacement"
+        },
+        {
+            "paperId": null,
+            "title": "Experiment 1-Onehot representation without transformations"
+        },
+        {
+            "paperId": null,
+            "title": "A human learner does not seem to need to be taught the shape categories of each Pentomino sprite in order to solve the task"
+        },
+        {
+            "paperId": null,
+            "title": "Experiment 3-Onehot representation with transformations: For each of the ten object types there are 8 = 4 \u00d7 2 possible transformations. Two objects"
+        },
+        {
+            "paperId": null,
+            "title": "Journal of Machine Learning Research"
+        },
+        {
+            "paperId": null,
+            "title": "Knowledge Matters: Importance of Prior Information for Optimization"
+        }
+    ]
+}

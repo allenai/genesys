@@ -1,0 +1,178 @@
+{
+    "paperId": "f302e136c41db5de1d624412f68c9174cf7ae8be",
+    "externalIds": {
+        "DBLP": "journals/corr/SundararajanTY17",
+        "MAG": "2949197630",
+        "ArXiv": "1703.01365",
+        "CorpusId": 16747630
+    },
+    "title": "Axiomatic Attribution for Deep Networks",
+    "abstract": "We study the problem of attributing the prediction of a deep network to its input features, a problem previously studied by several other works. We identify two fundamental axioms\u2014 Sensitivity and Implementation Invariance that attribution methods ought to satisfy. We show that they are not satisfied by most known attribution methods, which we consider to be a fundamental weakness of those methods. We use the axioms to guide the design of a new attribution method called Integrated Gradients. Our method requires no modification to the original network and is extremely simple to implement; it just needs a few calls to the standard gradient operator. We apply this method to a couple of image models, a couple of text models and a chemistry model, demonstrating its ability to debug networks, to extract rules from a network, and to enable users to engage with models better.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2017,
+    "referenceCount": 35,
+    "citationCount": 5037,
+    "influentialCitationCount": 780,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The problem of attributing the prediction of a deep network to its input features, a problem previously studied by several other works, is studied and two fundamental axioms\u2014 Sensitivity and Implementation Invariance that attribution methods ought to satisfy are identified."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "30740726",
+            "name": "Mukund Sundararajan"
+        },
+        {
+            "authorId": "40511120",
+            "name": "Ankur Taly"
+        },
+        {
+            "authorId": "34789908",
+            "name": "Qiqi Yan"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "1a2118bed729579528deb51e745d58dd3629baf6",
+            "title": "Learning Important Features Through Propagating Activation Differences"
+        },
+        {
+            "paperId": "5c45a5d05ac564adb67811eeb9d41d6460c70135",
+            "title": "Development and Validation of a Deep Learning Algorithm for Detection of Diabetic Retinopathy in Retinal Fundus Photographs."
+        },
+        {
+            "paperId": "2ce17f17ab4d9ce280265a5147e0e6f62bebc8a7",
+            "title": "An unexpected unity among methods for interpreting model predictions"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "fdd025e077a36166b10120b448d0c4e4009824a9",
+            "title": "Model-Agnostic Interpretability of Machine Learning"
+        },
+        {
+            "paperId": "b2681fbc27089797cedc1a454b0c1b94c6482abe",
+            "title": "Algorithmic Transparency via Quantitative Input Influence: Theory and Experiments with Learning Systems"
+        },
+        {
+            "paperId": "2ac9995a47f9753041e8e760fb083dfb83998267",
+            "title": "Not Just a Black Box: Learning Important Features Through Propagating Activation Differences"
+        },
+        {
+            "paperId": "d7192b47b259a249f055cd448f6381088601354d",
+            "title": "Layer-Wise Relevance Propagation for Neural Networks with Local Renormalization Layers"
+        },
+        {
+            "paperId": "c03dfb9f47b512b87a407f5bccdd250eb2d52138",
+            "title": "Learning executable semantic parsers for natural language understanding"
+        },
+        {
+            "paperId": "561c3fa53d36405186da9cab02bd68635c3738aa",
+            "title": "Molecular graph convolutions: moving beyond fingerprints"
+        },
+        {
+            "paperId": "c0883f5930a232a9c1ad601c978caede29155979",
+            "title": "\u201cWhy Should I Trust You?\u201d: Explaining the Predictions of Any Classifier"
+        },
+        {
+            "paperId": "6df11b0bb0244d4d36e8955436067cc5d19734fa",
+            "title": "Evaluating the Visualization of What a Deep Neural Network Has Learned"
+        },
+        {
+            "paperId": "b41e95c8c97846d5ca4c11ef79d7814499cc9663",
+            "title": "Compositional Semantic Parsing on Semi-Structured Tables"
+        },
+        {
+            "paperId": "1b5a24639fa80056d1a17b15f6997d10e76cc731",
+            "title": "Understanding Neural Networks Through Deep Visualization"
+        },
+        {
+            "paperId": "125f7b539e89cd0940ff89c231902b1d4023b3ba",
+            "title": "Inverting Visual Representations with Convolutional Networks"
+        },
+        {
+            "paperId": "33af9298e5399269a12d4b9901492fe406af62b4",
+            "title": "Striving for Simplicity: The All Convolutional Net"
+        },
+        {
+            "paperId": "bee044c8e8903fb67523c1f8c105ab4718600cdb",
+            "title": "Explaining and Harnessing Adversarial Examples"
+        },
+        {
+            "paperId": "4d790c8fae40357d24813d085fa74a436847fb49",
+            "title": "Understanding deep image representations by inverting them"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "f264e8b33c0d49a692a6ce2c4bcb28588aeb7d97",
+            "title": "Recurrent Neural Network Regularization"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "1f6ba0782862ec12a5ec6d7fb608523d55b0c6ba",
+            "title": "Convolutional Neural Networks for Sentence Classification"
+        },
+        {
+            "paperId": "dc6ac3437f0a6e64e4404b1b9d188394f8a3bf71",
+            "title": "Deep Inside Convolutional Networks: Visualising Image Classification Models and Saliency Maps"
+        },
+        {
+            "paperId": "1a2a770d23b4a171fa81de62a78a3deb0588f238",
+            "title": "Visualizing and Understanding Convolutional Networks"
+        },
+        {
+            "paperId": "72e93aa6767ee683de7f001fa72f1314e40a8f35",
+            "title": "Building high-level features using large scale unsupervised learning"
+        },
+        {
+            "paperId": "4e6238c8613b5b81f81552939bce33296aedfbfe",
+            "title": "How to Explain Individual Classification Decisions"
+        },
+        {
+            "paperId": "97a38d5a5149f956e0f24851c1649e73cc161d9d",
+            "title": "Paths and consistency in additive cost sharing"
+        },
+        {
+            "paperId": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+            "title": "Building a Large Annotated Corpus of English: The Penn Treebank"
+        },
+        {
+            "paperId": "59e35288e6c252ac1a9d8e1ad359b82722792e9a",
+            "title": "Values of Non-Atomic Games"
+        },
+        {
+            "paperId": "66f14c55f525728e11d9135851481b7321162cbc",
+            "title": "The assignment game I: The core"
+        },
+        {
+            "paperId": "65d994fb778a8d9e0f632659fb33a082949a50d3",
+            "title": "Visualizing Higher-Layer Features of a Deep Network"
+        },
+        {
+            "paperId": null,
+            "title": "Define function f : x \u2208 [0, 1] n \u2192 R as 0 if min(x i , x j ) \u2264 a, as (b \u2212 a) 2 if max(x i , x j ) \u2265 b, and as (x i \u2212 a)(x j \u2212 a) otherwise. Next we compute the attributions of f at x = 1"
+        },
+        {
+            "paperId": null,
+            "title": "LRP x 1 = 2 , x 2 = \u2212 1"
+        },
+        {
+            "paperId": null,
+            "title": "Axiomatic Attribution for Deep Networks"
+        }
+    ]
+}

@@ -1,0 +1,142 @@
+{
+    "paperId": "d155d64bdd86edf33f4395c5aec0388ffed69f99",
+    "externalIds": {
+        "DBLP": "conf/icassp/MiaoGNKMW16",
+        "MAG": "2395416438",
+        "DOI": "10.1109/ICASSP.2016.7472152",
+        "CorpusId": 9110872
+    },
+    "title": "An empirical exploration of CTC acoustic models",
+    "abstract": "The connectionist temporal classification (CTC) loss function has several interesting properties relevant for automatic speech recognition (ASR): applied on top of deep recurrent neural networks (RNNs), CTC learns the alignments between speech frames and label sequences automatically, which removes the need for pre-generated frame-level labels. CTC systems also do not require context decision trees for good performance, using context-independent (CI) phonemes or characters as targets. This paper presents an extensive exploration of CTC-based acoustic models applied to a variety of ASR tasks, including an empirical study of the optimal configuration and architectural variants for CTC. We observe that on large amounts of training data, CTC models tend to outperform state-of-the-art hybrid approach. Further experiments reveal that CTC can be readily ported to syllable-based languages, and can be enhanced by employing improved feature front-ends.",
+    "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+    "year": 2016,
+    "referenceCount": 23,
+    "citationCount": 78,
+    "influentialCitationCount": 6,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper presents an extensive exploration of CTC-based acoustic models applied to a variety of ASR tasks, including an empirical study of the optimal configuration and architectural variants for CTC."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "37467623",
+            "name": "Yajie Miao"
+        },
+        {
+            "authorId": "1939851",
+            "name": "M. Gowayyed"
+        },
+        {
+            "authorId": "2519438",
+            "name": "Xingyu Na"
+        },
+        {
+            "authorId": "3023507",
+            "name": "Tom Ko"
+        },
+        {
+            "authorId": "1740721",
+            "name": "Florian Metze"
+        },
+        {
+            "authorId": "1724972",
+            "name": "A. Waibel"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "62270c3dbbbf2f2892b2316acb14403f451ca5b8",
+            "title": "Speaker Adaptive Training of Deep Neural Network Acoustic Models Using I-Vectors"
+        },
+        {
+            "paperId": "dec2ccce1ecb34bab02c42c2dd18cb468470adf8",
+            "title": "Convolutional, Long Short-Term Memory, fully connected Deep Neural Networks"
+        },
+        {
+            "paperId": "97acdfb3d247f8250d865ef8a9169f06e40f138b",
+            "title": "EESEN: End-to-end speech recognition using deep RNN models and WFST-based decoding"
+        },
+        {
+            "paperId": "9fca2af9a0e3f2c5c3ed47abb3ebd21b7265ac2b",
+            "title": "Fast and accurate recurrent neural network acoustic models for speech recognition"
+        },
+        {
+            "paperId": "5b8364c21155d3d2cd38ea4c8b8580beba9a3250",
+            "title": "An Empirical Exploration of Recurrent Network Architectures"
+        },
+        {
+            "paperId": "24741d280869ad9c60321f5ab6e5f01b7852507d",
+            "title": "Deep Speech: Scaling up end-to-end speech recognition"
+        },
+        {
+            "paperId": "0fa553cfa0cf3cbdf7a913aa2ae789a757dfb32f",
+            "title": "Towards End-To-End Speech Recognition with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "080644c599b813b920053a760d744d8abd615250",
+            "title": "A pitch extraction algorithm tuned for automatic speech recognition"
+        },
+        {
+            "paperId": "1149888d75af4ed5dffc25731b875651c3ccdeb2",
+            "title": "Hybrid speech recognition with Deep Bidirectional LSTM"
+        },
+        {
+            "paperId": "6658bbf68995731b2083195054ff45b4eca38b3a",
+            "title": "Context-Dependent Pre-Trained Deep Neural Networks for Large-Vocabulary Speech Recognition"
+        },
+        {
+            "paperId": "d2740ebd37a35ecf6f7d713558308eeb28311961",
+            "title": "HKUST/MTS: A Very Large Scale Mandarin Telephone Speech Corpus"
+        },
+        {
+            "paperId": "2109f8f91301abec8497286160cd6b0f2e65ed05",
+            "title": "Maximum likelihood linear transformations for HMM-based speech recognition"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "0554e1b91ce57bba5dd4ec4db89862b9d36ab103",
+            "title": "Vocal Tract Length Normalization for Large Vocabulary Continuous Speech Recognition"
+        },
+        {
+            "paperId": "cd62c9976534a6a2096a38244f6cbb03635a127e",
+            "title": "Phoneme recognition using time-delay neural networks"
+        },
+        {
+            "paperId": "85fa09523724489648d900c67c7ba1d9e24375c3",
+            "title": "Top Downloads in IEEE Xplore [Reader's Choice]"
+        },
+        {
+            "paperId": "0722696399480ffdd18dfe64159081c4a9de5ddc",
+            "title": "On speaker adaptation of long short-term memory recurrent neural networks"
+        },
+        {
+            "paperId": "b2703d6bcc09671a028de0aabecd37e1db1c0406",
+            "title": "Towards end-to-end speech recognition for Chinese Mandarin using long short-term memory recurrent neural networks"
+        },
+        {
+            "paperId": "05de249c56353b8916d3eb2fec76ddf7fbd47f33",
+            "title": "Towards speaker adaptive training of deep neural network acoustic models"
+        },
+        {
+            "paperId": "067e07b725ab012c80aa2f87857f6791c1407f6d",
+            "title": "Long short-term memory recurrent neural network architectures for large scale acoustic modeling"
+        },
+        {
+            "paperId": "3a1a2cff2b70fb84a7ca7d97f8adcc5855851795",
+            "title": "The Kaldi Speech Recognition Toolkit"
+        },
+        {
+            "paperId": "261a056f8b21918e8616a429b2df6e1d5d33be41",
+            "title": "Connectionist Temporal Classi\ufb01cation: Labelling Unsegmented Sequence Data with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "845ee9838c1f5bf63b7db2c95ec5d27af14a4e02",
+            "title": "Connectionist Temporal Classi\ufb01cation: Labelling Unsegmented Sequences with Recurrent Neural Networks"
+        }
+    ]
+}

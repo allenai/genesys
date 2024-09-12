@@ -1,0 +1,146 @@
+{
+    "paperId": "1ec5f3b55a90c1b32ad74dbe4423019d006b6bd3",
+    "externalIds": {
+        "ACL": "P19-1623",
+        "MAG": "2951902588",
+        "DBLP": "conf/acl/YangCLS19",
+        "DOI": "10.18653/v1/P19-1623",
+        "CorpusId": 196208119
+    },
+    "title": "Reducing Word Omission Errors in Neural Machine Translation: A Contrastive Learning Approach",
+    "abstract": "While neural machine translation (NMT) has achieved remarkable success, NMT systems are prone to make word omission errors. In this work, we propose a contrastive learning approach to reducing word omission errors in NMT. The basic idea is to enable the NMT model to assign a higher probability to a ground-truth translation and a lower probability to an erroneous translation, which is automatically constructed from the ground-truth translation by omitting words. We design different types of negative examples depending on the number of omitted words, word frequency, and part of speech. Experiments on Chinese-to-English, German-to-English, and Russian-to-English translation tasks show that our approach is effective in reducing word omission errors and achieves better translation performance than three baseline methods.",
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2019,
+    "referenceCount": 25,
+    "citationCount": 66,
+    "influentialCitationCount": 6,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/P19-1623.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a contrastive learning approach to reducing word omission errors in NMT that achieves better translation performance than three baseline methods and designs different types of negative examples depending on the number of omitted words, word frequency, and part of speech."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "19343873",
+            "name": "Zonghan Yang"
+        },
+        {
+            "authorId": "145161801",
+            "name": "Yong Cheng"
+        },
+        {
+            "authorId": "40457423",
+            "name": "Yang Liu"
+        },
+        {
+            "authorId": "1753344",
+            "name": "Maosong Sun"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "ac5925e0be9695c70e01aa87aa7cf49d2a7f3db4",
+            "title": "Large Margin Neural Language Model"
+        },
+        {
+            "paperId": "eaaf7b9166934e379f10a038ac5610d3360c12b3",
+            "title": "Adversarial Contrastive Estimation"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "e782437503f2a24fd1a836a434da395bf15c88c2",
+            "title": "Context-Aware Captions from Context-Agnostic Supervision"
+        },
+        {
+            "paperId": "31fc1b0fd5ec43863f1a502f6fc3df2cc71b6e6f",
+            "title": "Neural Machine Translation with Reconstruction"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "5507dc32b368c8afd3b9507e9b5888da7bd7d7cd",
+            "title": "Sequence-to-Sequence Learning as Beam-Search Optimization"
+        },
+        {
+            "paperId": "f997c2f1f668b942c4cccd425bc192df651ed516",
+            "title": "Coverage Embedding Models for Neural Machine Translation"
+        },
+        {
+            "paperId": "f0652f506a9369e95aa94f9717e2c5e92844ab17",
+            "title": "A Novel Approach to Dropped Pronoun Translation"
+        },
+        {
+            "paperId": "33108287fbc8d94160787d7b2c7ef249d3ad6437",
+            "title": "Modeling Coverage for Neural Machine Translation"
+        },
+        {
+            "paperId": "f3b96ef2dc1fc5e14982f1b963db8db6a54183bb",
+            "title": "Improving Neural Machine Translation Models with Monolingual Data"
+        },
+        {
+            "paperId": "46b8cbcdff87b842c2c1d4a003c831f845096ba7",
+            "title": "Order-Embeddings of Images and Language"
+        },
+        {
+            "paperId": "e65142010431ffc089b272a1174214e00693e503",
+            "title": "Generation and Comprehension of Unambiguous Object Descriptions"
+        },
+        {
+            "paperId": "1518039b5001f1836565215eb047526b3ac7f462",
+            "title": "Neural Machine Translation of Rare Words with Subword Units"
+        },
+        {
+            "paperId": "994afdf0db0cb0456f4f76468380822c2f532726",
+            "title": "Learning Entity and Relation Embeddings for Knowledge Graph Completion"
+        },
+        {
+            "paperId": "86412306b777ee35aba71d4795b02915cb8a04c3",
+            "title": "Embedding Entities and Relations for Learning and Inference in Knowledge Bases"
+        },
+        {
+            "paperId": "62c0ac04b5b4e9e67efb0027c983eb0f211671d0",
+            "title": "Contrastive Unsupervised Word Alignment with Non-Local Features"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "2f5102ec3f70d0dea98c957cc2cab4d15d83a2da",
+            "title": "The Stanford CoreNLP Natural Language Processing Toolkit"
+        },
+        {
+            "paperId": "53ca064b9f1b92951c1997e90b776e95b0880e52",
+            "title": "Learning word embeddings efficiently with noise-contrastive estimation"
+        },
+        {
+            "paperId": "71480da09af638260801af1db8eff6acb4e1122f",
+            "title": "Decoding with Large-Scale Neural Language Models Improves Translation"
+        },
+        {
+            "paperId": "a4b828609b60b06e61bea7a4029cc9e1cad5df87",
+            "title": "Statistical Phrase-Based Translation"
+        },
+        {
+            "paperId": "d7da009f457917aa381619facfa5ffae9329a6e9",
+            "title": "Bleu: a Method for Automatic Evaluation of Machine Translation"
+        },
+        {
+            "paperId": "23a99224c7b7d148675c1798c796ec1b0904620a",
+            "title": "Noise-Contrastive Estimation of Unnormalized Statistical Models, with Applications to Natural Image Statistics"
+        }
+    ]
+}

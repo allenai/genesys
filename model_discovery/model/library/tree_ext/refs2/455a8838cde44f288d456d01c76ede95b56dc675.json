@@ -1,0 +1,155 @@
+{
+    "paperId": "455a8838cde44f288d456d01c76ede95b56dc675",
+    "externalIds": {
+        "ACL": "N19-1419",
+        "MAG": "2946359678",
+        "DBLP": "conf/naacl/HewittM19",
+        "DOI": "10.18653/v1/N19-1419",
+        "CorpusId": 106402715
+    },
+    "title": "A Structural Probe for Finding Syntax in Word Representations",
+    "abstract": "Recent work has improved our ability to detect linguistic knowledge in word representations. However, current methods for detecting syntactic knowledge do not test whether syntax trees are represented in their entirety. In this work, we propose a structural probe, which evaluates whether syntax trees are embedded in a linear transformation of a neural network\u2019s word representation space. The probe identifies a linear transformation under which squared L2 distance encodes the distance between words in the parse tree, and one in which squared L2 norm encodes depth in the parse tree. Using our probe, we show that such transformations exist for both ELMo and BERT but not in baselines, providing evidence that entire syntax trees are embedded implicitly in deep models\u2019 vector geometry.",
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2019,
+    "referenceCount": 30,
+    "citationCount": 976,
+    "influentialCitationCount": 73,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A structural probe is proposed, which evaluates whether syntax trees are embedded in a linear transformation of a neural network\u2019s word representation space, and shows that such transformations exist for both ELMo and BERT but not in baselines, providing evidence that entire syntax Trees are embedded implicitly in deep models\u2019 vector geometry."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145430120",
+            "name": "John Hewitt"
+        },
+        {
+            "authorId": "144783904",
+            "name": "Christopher D. Manning"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "e2587eddd57bc4ba286d91b27c185083f16f40ee",
+            "title": "What do you learn from context? Probing for sentence structure in contextualized word representations"
+        },
+        {
+            "paperId": "b0bd1b23c8bcbffd3297ac893cfc29a96563288a",
+            "title": "What can linguistics and deep learning contribute to each other? Response to Pater"
+        },
+        {
+            "paperId": "31f48073366d5fad7b1c9e60af315690475b52f6",
+            "title": "RNNs as psycholinguistic subjects: Syntactic state and grammatical dependency"
+        },
+        {
+            "paperId": "ac11062f1f368d97f4c826c317bf50dcc13fdb59",
+            "title": "Dissecting Contextual Word Embeddings: Architecture and Representation"
+        },
+        {
+            "paperId": "e3ee61f49cd2639c15c8662a45f1d0c2b83a60c1",
+            "title": "Why Self-Attention? A Targeted Evaluation of Neural Machine Translation Architectures"
+        },
+        {
+            "paperId": "6cbf16d6dd50e43b142cc3c3b2e23595c0f53c25",
+            "title": "Distinct patterns of syntactic agreement errors in recurrent networks and humans"
+        },
+        {
+            "paperId": "3abc5ffb1757ec3f35cb7b4100410570b0b51e09",
+            "title": "LSTMs Can Learn Syntax-Sensitive Dependencies Well, But Modeling Structure Makes Them Better"
+        },
+        {
+            "paperId": "efef34c1caef102ad5cc052642d75beaaf5adcaf",
+            "title": "Deep RNNs Encode Soft Hierarchical Syntax"
+        },
+        {
+            "paperId": "c41516420ddbd0f29e010ca259a74c1fc2da0466",
+            "title": "What you can cram into a single $&!#* vector: Probing sentence embeddings for linguistic properties"
+        },
+        {
+            "paperId": "3d42ddf7c5ce59ae04d1d27085be9f736d1be04b",
+            "title": "Colorless Green Recurrent Networks Dream Hierarchically"
+        },
+        {
+            "paperId": "3febb2bed8865945e7fddc99efd791887bb7e14f",
+            "title": "Deep Contextualized Word Representations"
+        },
+        {
+            "paperId": "f170fed9acd71bd5feb20901c7ec1fe395f3fae5",
+            "title": "Visualisation and 'diagnostic classifiers' reveal how recurrent and recursive neural networks process hierarchical structure"
+        },
+        {
+            "paperId": "b36a5bb1707bb9c70025294b3a310138aae8327a",
+            "title": "Automatic differentiation in PyTorch"
+        },
+        {
+            "paperId": "ecf6c42d84351f34e1625a6a2e4cc6526da45c74",
+            "title": "Representation Learning on Graphs: Methods and Applications"
+        },
+        {
+            "paperId": "263210f256603e3b62476ffb5b9bbbbc6403b646",
+            "title": "What do Neural Machine Translation Models Learn about Morphology?"
+        },
+        {
+            "paperId": "480d545ac4a4ffff5b1bc291c2de613192e35d91",
+            "title": "DyNet: The Dynamic Neural Network Toolkit"
+        },
+        {
+            "paperId": "3aa52436575cf6768a0a1a476601825f6a62e58f",
+            "title": "Assessing the Ability of LSTMs to Learn Syntax-Sensitive Dependencies"
+        },
+        {
+            "paperId": "e44da7d8c71edcc6e575fa7faadd5e75785a7901",
+            "title": "Fine-grained Analysis of Sentence Embeddings Using Auxiliary Prediction Tasks"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "3cc228402f31ca749112197720b9ef6af0c16790",
+            "title": "Generating Typed Dependency Parses from Phrase Structure Parses"
+        },
+        {
+            "paperId": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+            "title": "Building a Large Annotated Corpus of English: The Penn Treebank"
+        },
+        {
+            "paperId": "df2b0e26d0599ce3e70df8a9da02e51594e0e992",
+            "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding"
+        },
+        {
+            "paperId": "4f46eb81bec369d3ecfb27c847a0239d7af6b83a",
+            "title": "Modeling garden path effects without explicit hierarchical syntax"
+        },
+        {
+            "paperId": "22e22162c5334df0948f7c7a69bd086085ab102a",
+            "title": "Visualisation and \u2018diagnostic classifiers\u2019 reveal how recurrent and recursive neural networks process hierarchical structure"
+        },
+        {
+            "paperId": null,
+            "title": "A long sentence with gold dependency parse depths (grey) and dependency parse depths (squared) as extracted by BERTLARGE16 (blue, top), ELMO1 (red, middle), and the baseline PROJ0 (purple, bottom)"
+        },
+        {
+            "paperId": null,
+            "title": ": Strong character-level word embed-dings with no contextual information. As these representations lack even position information, we should be completely unable to \ufb01nd syntax trees embedded"
+        },
+        {
+            "paperId": null,
+            "title": "A.2 Probe training details All probes are trained to minimize L1 loss of the predicted squared distance or squared norm w.r.t. the true distance or norm"
+        },
+        {
+            "paperId": null,
+            "title": "same tree is encoded either way, and none of quantitative metrics will change"
+        },
+        {
+            "paperId": null,
+            "title": "The tree resulting from the assumption that English parse trees form a left-to-right chain. A model that encodes the positions of words should be able to meet this baseline"
+        }
+    ]
+}

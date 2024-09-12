@@ -1,0 +1,303 @@
+{
+    "paperId": "4a3684ee0c64d22386a44c0ddfbf8d609cd2de48",
+    "externalIds": {
+        "MAG": "2098166271",
+        "DBLP": "journals/pami/ChenBW06",
+        "DOI": "10.1109/TPAMI.2006.248",
+        "CorpusId": 18137821,
+        "PubMed": "17108368"
+    },
+    "title": "MILES: Multiple-Instance Learning via Embedded Instance Selection",
+    "abstract": "Multiple-instance problems arise from the situations where training class labels are attached to sets of samples (named bags), instead of individual samples within each bag (called instances). Most previous multiple-instance learning (MIL) algorithms are developed based on the assumption that a bag is positive if and only if at least one of its instances is positive. Although the assumption works well in a drug activity prediction problem, it is rather restrictive for other applications, especially those in the computer vision area. We propose a learning method, MILES (multiple-instance learning via embedded instance selection), which converts the multiple-instance learning problem to a standard supervised learning problem that does not impose the assumption relating instance labels to bag labels. MILES maps each bag into a feature space defined by the instances in the training bags via an instance similarity measure. This feature mapping often provides a large number of redundant or irrelevant features. Hence, 1-norm SVM is applied to select important features as well as construct classifiers simultaneously. We have performed extensive experiments. In comparison with other methods, MILES demonstrates competitive classification accuracy, high computation efficiency, and robustness to labeling uncertainty",
+    "venue": "IEEE Transactions on Pattern Analysis and Machine Intelligence",
+    "year": 2006,
+    "referenceCount": 66,
+    "citationCount": 765,
+    "influentialCitationCount": 153,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a learning method, MILES (multiple-instance learning via embedded instance selection), which converts the multiple- instance learning problem to a standard supervised learning problem that does not impose the assumption relating instance labels to bag labels."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "49069391",
+            "name": "Yixin Chen"
+        },
+        {
+            "authorId": "38370684",
+            "name": "J. Bi"
+        },
+        {
+            "authorId": "48094094",
+            "name": "James Ze Wang"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "a737c107623bcffefa0bac20f1b64677f6a1255a",
+            "title": "Discovering objects and their location in images"
+        },
+        {
+            "paperId": "52ccf1254dd4b48b72d75c207bf9d8dcc26a0517",
+            "title": "Supervised versus multiple instance learning: an empirical comparison"
+        },
+        {
+            "paperId": "c93b9fa05a96b241135c83ed117415203d170a36",
+            "title": "Object class recognition by boosting a part-based model"
+        },
+        {
+            "paperId": "9993acdb19c299593e6d3c522eea1a7fd6c1ff9c",
+            "title": "On Generalized Multiple-instance Learning"
+        },
+        {
+            "paperId": "97c2c77cd76ed176683fac79c115729ad45482bc",
+            "title": "Discovering object categories in image collections"
+        },
+        {
+            "paperId": "7a8665ada37b8a26f2a68c0b9c3f3ceb1e0f655a",
+            "title": "Image Categorization by Learning and Reasoning with Regions"
+        },
+        {
+            "paperId": "de3b02b459a37cfc71f9675647eba8d71aa57476",
+            "title": "Efficient Feature Selection via Analysis of Relevance and Redundancy"
+        },
+        {
+            "paperId": "3329c9855e4743742062781d427a526df0a4a6b6",
+            "title": "Scale & Affine Invariant Interest Point Detectors"
+        },
+        {
+            "paperId": "2a3e107dad356099205fb86a44ede8dfd4d9956e",
+            "title": "Simultaneous feature selection and clustering using mixture models"
+        },
+        {
+            "paperId": "147c108eee01b9b1757bc7b760888526e3bc4fb1",
+            "title": "A Bayesian approach to joint feature selection and classifier design"
+        },
+        {
+            "paperId": "021bdc52f560900052a30b2feefca83f7a797904",
+            "title": "Matching Widely Separated Views Based on Affine Invariant Regions"
+        },
+        {
+            "paperId": "d4e5fad62fa025c969e8195858a0788b1c0c3c3b",
+            "title": "Fast branch & bound algorithms for optimal feature selection"
+        },
+        {
+            "paperId": "f63038f4dcdb97f2572f233c43d6f0875ac976c0",
+            "title": "Logistic Regression and Boosting for Labeled Bags of Instances"
+        },
+        {
+            "paperId": "0c91808994a250d7be332400a534a9291ca3b60e",
+            "title": "Weak Hypotheses and Boosting for Generic Object Detection and Recognition"
+        },
+        {
+            "paperId": "5a3ad8b87e865665d6879a63578990af1bde8055",
+            "title": "An Affine Invariant Salient Region Detector"
+        },
+        {
+            "paperId": "50750c472d1f3545c692cfc5f90ffdb78a8af4ab",
+            "title": "Improve Multi-Instance Neural Networks through Feature Selection"
+        },
+        {
+            "paperId": "dc388273acf8cf112160bab5aa6d491e240a18e1",
+            "title": "Multiple-Instance Learning via Disjunctive Programming Boosting"
+        },
+        {
+            "paperId": "e5a3b6c3a0f55976b70aeb5ead058891bfbee097",
+            "title": "1-norm Support Vector Machines"
+        },
+        {
+            "paperId": "96d9ab468299fe51a4e14d86d8ea953ccf62b900",
+            "title": "Selection of scale-invariant parts for object class recognition"
+        },
+        {
+            "paperId": "0eea7fceaf3fc0d5ca6a6ac10ace157c1a574b99",
+            "title": "On the Selection and Classification of Independent Features"
+        },
+        {
+            "paperId": "b58137ada024d74f8e946dceb169a32c02a24ba7",
+            "title": "Ensembles of Multi-instance Learners"
+        },
+        {
+            "paperId": "9691ec2ce81f6b09e9b2a5b077c8b1f59e41c172",
+            "title": "A Two-Level Learning Method for Generalized Multi-instance Problems"
+        },
+        {
+            "paperId": "f39d3e88cce063ccd3ca01100efd44dcabc9d3b4",
+            "title": "Automatic Linguistic Indexing of Pictures by a Statistical Modeling Approach"
+        },
+        {
+            "paperId": "62837ab473124ea43cb8d7c6a4b4ee0f6f14e8c5",
+            "title": "Object class recognition by unsupervised scale-invariant learning"
+        },
+        {
+            "paperId": "1468251456faef0ef2dfa87937fda2aea0bacb90",
+            "title": "3D object modeling and recognition using affine-invariant patches and multi-view spatial constraints"
+        },
+        {
+            "paperId": "73658d7859b5155d7cae317258cac2ded557897f",
+            "title": "Feature Selection for Multiclass Discrimination via Mixed-Integer Linear Programming"
+        },
+        {
+            "paperId": "e571ffbb8f4d9f8c45d8df13b235498a8b2ebd17",
+            "title": "Dimensionality Reduction via Sparse Support Vector Machines"
+        },
+        {
+            "paperId": "6a26268d2ba9d34e5b59ae6e5c11a83cdca1a85e",
+            "title": "Matching Words and Pictures"
+        },
+        {
+            "paperId": "1d4c3311375d7a9e6b9672988a1bff3c90adbf05",
+            "title": "Input Feature Selection by Mutual Information Based on Parzen Window"
+        },
+        {
+            "paperId": "e2a0a5fc0a33a8df662b840ecc80ad5530ae4bf5",
+            "title": "A Region-Based Fuzzy Feature Matching Approach to Content-Based Image Retrieval"
+        },
+        {
+            "paperId": "614c5b171b9926d5a3d3228da809c114821aef27",
+            "title": "Content-Based Image Retrieval Using Multiple-Instance Learning"
+        },
+        {
+            "paperId": "10c1ab4e9ad4b5c6f8298812e2aed1c615ee3ebb",
+            "title": "Multi-Instance Kernels"
+        },
+        {
+            "paperId": "3d081b80b1850df9b1e382f97a7a244890d6485e",
+            "title": "Learning a Sparse Representation for Object Detection"
+        },
+        {
+            "paperId": "0764b853fcfca05b94b95a4b625935af8544dd6e",
+            "title": "Unsupervised Feature Selection Using Feature Similarity"
+        },
+        {
+            "paperId": "254be2055a84c4d80c4c8eb8e6090b3977cc6fb6",
+            "title": "Saliency, Scale and Image Description"
+        },
+        {
+            "paperId": "8a1c226500e75aa724b5e829dd3552506a6b7030",
+            "title": "Solving Multiple-Instance and Multiple-Part Learning Problems with Decision Trees and Rule Sets. Application to the Mutagenesis Problem"
+        },
+        {
+            "paperId": "d19f4e66544ca92a3a5d3a6b72a2c63ef33271b2",
+            "title": "Example-Based Object Detection in Images by Components"
+        },
+        {
+            "paperId": "fb98ba3aa910e0ea4bd16c755832a086dc2bb2a2",
+            "title": "EM-DD: An Improved Multiple-Instance Learning Technique"
+        },
+        {
+            "paperId": "2a41681900f295a3098592c1040b35b6e3767c96",
+            "title": "SIMPLIcity: Semantics-Sensitive Integrated Matching for Picture LIbraries"
+        },
+        {
+            "paperId": "8b8fe662b83884580f7684fc5f05b9986f0f8cca",
+            "title": "Solving the Multiple-Instance Problem: A Lazy Learning Approach"
+        },
+        {
+            "paperId": "0348334886843e6f5104a6bbfee21ebbbe069663",
+            "title": "Image database retrieval with multiple-instance learning techniques"
+        },
+        {
+            "paperId": "5e078e6b70d692b56aa56745ce6790be55b5f6bc",
+            "title": "Combining support vector and mathematical programming methods for classification"
+        },
+        {
+            "paperId": "9af121fbed84c3484ab86df8f17f1f198ed790a0",
+            "title": "Atomic Decomposition by Basis Pursuit"
+        },
+        {
+            "paperId": "e2a6ebf4f1789ca34a3b204977b9ab0dc3b28f44",
+            "title": "Multiple-Instance Learning for Natural Scene Classification"
+        },
+        {
+            "paperId": "1c52ade8c536137b0e742ff2af6a6601654f020c",
+            "title": "Attribute-Value Learning Versus Inductive Logic Programming: The Missing Links (Extended Abstract)"
+        },
+        {
+            "paperId": "4d8340eae2c98ab5e0a3b1a7e071a7ddb9106cff",
+            "title": "A Framework for Multiple-Instance Learning"
+        },
+        {
+            "paperId": "004888621a4e4cee56b6633338a89aa036cf5ae5",
+            "title": "Wrappers for Feature Subset Selection"
+        },
+        {
+            "paperId": "f688a4182ae65fc4ff695981527bd884b0c32fd0",
+            "title": "On Learning From Multi-Instance Examples: Empirical Evaluation of a Theoretical Approach"
+        },
+        {
+            "paperId": "2a5b31aaefd943b8eb3334fda53311b06f0bdbf5",
+            "title": "Feature Selection: Evaluation, Application, and Small Sample Performance"
+        },
+        {
+            "paperId": "1c7d38f68fe1150895a186e30b60c02dd89a676a",
+            "title": "Solving the Multiple Instance Problem with Axis-Parallel Rectangles"
+        },
+        {
+            "paperId": "d1ee87290fa827f1217b8fa2bccb3485da1a300e",
+            "title": "Bagging Predictors"
+        },
+        {
+            "paperId": "2989b07819dfd279222a3755d3b7862f1a1a7f53",
+            "title": "Texture Features for Browsing and Retrieval of Image Data"
+        },
+        {
+            "paperId": "c1459dee216e0c82867c1871a38a9aab7d9ebb76",
+            "title": "Divergence Based Feature Selection for Multimodal Class Densities"
+        },
+        {
+            "paperId": "6251ac542eb04037f657779037848e727701c338",
+            "title": "Model-directed learning of production rules"
+        },
+        {
+            "paperId": "a6733337cf6ce414652b0f16177fc21bddaa9148",
+            "title": "Towards Inferring Protein Interactions: Challenges and Solutions"
+        },
+        {
+            "paperId": "b1e2303333eebbbabbe1985f4051bd51871e64d8",
+            "title": "A Note on Learning from Multiple-Instance Examples"
+        },
+        {
+            "paperId": "02e68b069d9cf13c082049429ffed18a5ca5f6d0",
+            "title": "Support Vector Machines for Multiple-Instance Learning"
+        },
+        {
+            "paperId": "b91180d8853d00e8f2df7ee3532e07d3d0cce2af",
+            "title": "Visual categorization with bags of keypoints"
+        },
+        {
+            "paperId": "4ca96fa2cacda1793660b8470f10a9a5232ed7e9",
+            "title": "Multi instance neural networks"
+        },
+        {
+            "paperId": null,
+            "title": "Learning Single and Multiple Decision Trees for Security Applications"
+        },
+        {
+            "paperId": "9f342960b82c1709ffb79b951bee866514aa71ae",
+            "title": "Linear programs for automatic accuracy control in regression."
+        },
+        {
+            "paperId": "30918b62bb8fe863bb145625655c892ce0525d68",
+            "title": "Learning from Ambiguity"
+        },
+        {
+            "paperId": "e068be31ded63600aea068eacd12931efd2a1029",
+            "title": "UCI Repository of machine learning databases"
+        },
+        {
+            "paperId": "b365b8e45b7d81f081de44ac8f9eadf9144f3ca5",
+            "title": "Regression Shrinkage and Selection via the Lasso"
+        },
+        {
+            "paperId": "9e728ed5dc6243afdbd57f6c85f353974351692b",
+            "title": "PAC Learning Axis-aligned Rectangles with Respect to Product Distributions from Multiple-Instance Examples"
+        },
+        {
+            "paperId": "d98b8ecb14ba3eb2c67249540c03e0c13ff5ce78",
+            "title": "MODEL-DIRECTED LEARNING OF PRODUCTION RULES1"
+        }
+    ]
+}

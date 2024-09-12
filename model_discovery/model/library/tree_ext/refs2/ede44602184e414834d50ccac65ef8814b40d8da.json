@@ -1,0 +1,189 @@
+{
+    "paperId": "ede44602184e414834d50ccac65ef8814b40d8da",
+    "externalIds": {
+        "DBLP": "journals/tac/Tabuada07",
+        "MAG": "1978518835",
+        "DOI": "10.1109/TAC.2007.904277",
+        "CorpusId": 17405814
+    },
+    "title": "Event-Triggered Real-Time Scheduling of Stabilizing Control Tasks",
+    "abstract": "In this note, we revisit the problem of scheduling stabilizing control tasks on embedded processors. We start from the paradigm that a real-time scheduler could be regarded as a feedback controller that decides which task is executed at any given instant. This controller has for objective guaranteeing that (control unrelated) software tasks meet their deadlines and that stabilizing control tasks asymptotically stabilize the plant. We investigate a simple event-triggered scheduler based on this feedback paradigm and show how it leads to guaranteed performance thus relaxing the more traditional periodic execution requirements.",
+    "venue": "IEEE Transactions on Automatic Control",
+    "year": 2007,
+    "referenceCount": 39,
+    "citationCount": 3766,
+    "influentialCitationCount": 325,
+    "openAccessPdf": {
+        "url": "http://www.ee.ucla.edu/~tabuada/Papers/EventTriggered.pdf",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This note investigates a simple event-triggered scheduler based on the paradigm that a real-time scheduler could be regarded as a feedback controller that decides which task is executed at any given instant and shows how it leads to guaranteed performance thus relaxing the more traditional periodic execution requirements."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1791875",
+            "name": "P. Tabuada"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "788289d6e1f95ed39b678e9d31fec557a671b5fc",
+            "title": "Preliminary results on state-trigered scheduling of stabilizing control tasks"
+        },
+        {
+            "paperId": "d4b5656c99812deefffe3af890f644b898340403",
+            "title": "Passivity of Nonlinear Incremental Systems: Application to PI Stabilization of Nonlinear RLC Circuits"
+        },
+        {
+            "paperId": "a832a414ecfc81e7c831eabbfa9867859674bf38",
+            "title": "On the Stability of Zeno Equilibria"
+        },
+        {
+            "paperId": "414f21b198f3f8150ca2b355393e00e070dc0dd2",
+            "title": "Schedulability analysis of fixed-priority systems using timed automata"
+        },
+        {
+            "paperId": "64c2fc6d179981273b269fb6fa2419db3085069d",
+            "title": "Maximizing the stability radius of a set of systems under real-time scheduling constraints"
+        },
+        {
+            "paperId": "c1392acb834fdea5bf024ee0fd703635771cf02f",
+            "title": "Input-to-state stability of networked control systems"
+        },
+        {
+            "paperId": "e4a94fdd94b795f97575aa91d644a6fc34399b3d",
+            "title": "Stability of model-based networked control systems with time-varying transmission times"
+        },
+        {
+            "paperId": "41f85a6a63151083ef8db07caafb52b50377cce2",
+            "title": "Firm real-time system scheduling based on a novel QoS constraint"
+        },
+        {
+            "paperId": "2d59918113b26d8660925613379e30ebffc25282",
+            "title": "Hybrid feedback stabilization of systems with quantized signals"
+        },
+        {
+            "paperId": "4ed369b29eeacc3516fbf55977f81effe1b1b10d",
+            "title": "On the Scheduling of Flexible and Reliable Real-Time Control Systems"
+        },
+        {
+            "paperId": "b46a278a78fa46576a87d5752895e7d9d41c47d3",
+            "title": "Scheduling and feedback co-design for networked control systems"
+        },
+        {
+            "paperId": "41c53f39d7b0b2f86f202b5196abe151455929e2",
+            "title": "Comparison of Riemann and Lebesgue sampling for first order stochastic systems"
+        },
+        {
+            "paperId": "b21994109453aacb921a3286d3ab697dfff49c3f",
+            "title": "Trading computation for bandwidth: reducing communication in distributed control systems using state estimators"
+        },
+        {
+            "paperId": "fc029020f9c61d0bff9c7f23a268832e3f9abfa3",
+            "title": "Feedback\u2013Feedforward Scheduling of Control Tasks"
+        },
+        {
+            "paperId": "a4771af344953804b02b7c74d2bcbf5a3635e0c7",
+            "title": "Adaptive Workload Management through Elastic Scheduling"
+        },
+        {
+            "paperId": "979763965f98ddfa25d7fcd679cbee256607ca59",
+            "title": "Scheduler Modeling Based on the Controller Synthesis Paradigm"
+        },
+        {
+            "paperId": "b002dfd2a2db34cf737fde998a0b89f764f0b822",
+            "title": "Synthesis of Robust Control Systems under Resource Constraints"
+        },
+        {
+            "paperId": "9d444b891f14e46058f2ef239416052e42918295",
+            "title": "Stabilization of linear systems with limited information"
+        },
+        {
+            "paperId": "ebdfa562dc56f74a1e8492f07fe86da2fdd1438f",
+            "title": "Feedback scheduling of control tasks"
+        },
+        {
+            "paperId": "5a3b1968013cea29f1dbde36776e42db9435fc55",
+            "title": "RT control scheduling to reduce control performance degrading"
+        },
+        {
+            "paperId": "c6d6328522511d25d4831ec41c6b4f4ba3fd9b92",
+            "title": "Stabilization with data-rate-limited feedback: tightest attainable bounds"
+        },
+        {
+            "paperId": "6e3bd793772a2b00e83344e954fef3b36d2a5238",
+            "title": "Quantized feedback stabilization of linear systems"
+        },
+        {
+            "paperId": "a3e14141ed60c6fb56b108940019a3a3af087dab",
+            "title": "On task schedulability in real-time control systems"
+        },
+        {
+            "paperId": "e536dab0d1454e942b471019792f629bbac1da19",
+            "title": "New Jersey"
+        },
+        {
+            "paperId": "83496eb2edfb7a730c88a93258f86afaea061c40",
+            "title": "Input to State Stability: Basic Concepts and Results"
+        },
+        {
+            "paperId": "1af2bad56736b381fb4a7a586b1b7a9ac8f6c326",
+            "title": "Proceedings of the 45th IEEE Conference on Decision and Control"
+        },
+        {
+            "paperId": null,
+            "title": "editors"
+        },
+        {
+            "paperId": "ec03eaa292e954fa8bccebcb9e530b6dfea61f72",
+            "title": "Nonlinear Systems"
+        },
+        {
+            "paperId": null,
+            "title": "Automatica"
+        },
+        {
+            "paperId": "f93bc71d8d0f831bdcd6e1f96ca7aa5c3b34f494",
+            "title": "Open- and Closed-Loop Dissipation Inequalities Under Sampling and Controller Emulation"
+        },
+        {
+            "paperId": "a3efd562d9e360360ec5793237fdeae4648865e1",
+            "title": "Proceedings of the 41st IEEE Conference on Decision and Control"
+        },
+        {
+            "paperId": "1ecbfab4cbefe879c7ee39878d2f8293b17f2a15",
+            "title": "Online control optimization using load driven scheduling"
+        },
+        {
+            "paperId": "f902f4445ad79579fd8cee0bf457b58621b1c3bd",
+            "title": "Proceedings of the 39th IEEE Conference on Decision and Control"
+        },
+        {
+            "paperId": "9be755a3da248904d89f0316f59bcc8540158b9e",
+            "title": "Fast Sampling and Stability of Nonlinear Sampled-Data Systems: Part 2. Sampling Rate Estimations"
+        },
+        {
+            "paperId": null,
+            "title": "UCLA Electrical Engineering Department, 66-147F Engineering IV Building"
+        },
+        {
+            "paperId": null,
+            "title": "are given for preliminaries"
+        },
+        {
+            "paperId": null,
+            "title": "controllable based on the Jordan canonical form and a method is proposed to test the positive controllability"
+        },
+        {
+            "paperId": null,
+            "title": "discussed"
+        },
+        {
+            "paperId": null,
+            "title": "E-mail address: tabuada@ee.ucla.edu"
+        }
+    ]
+}

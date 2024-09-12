@@ -1,0 +1,174 @@
+{
+    "paperId": "3bd8c180acd9363c5d177c04b2973f2a3ffef068",
+    "externalIds": {
+        "DBLP": "conf/acml/Glasmachers17",
+        "MAG": "2951876076",
+        "ArXiv": "1704.08305",
+        "CorpusId": 22954308
+    },
+    "title": "Limits of End-to-End Learning",
+    "abstract": "End-to-end learning refers to training a possibly complex learning system by applying gradient-based learning to the system as a whole. End-to-end learning system is specifically designed so that all modules are differentiable. In effect, not only a central learning machine, but also all \"peripheral\" modules like representation learning and memory formation are covered by a holistic learning process. The power of end-to-end learning has been demonstrated on many tasks, like playing a whole array of Atari video games with a single architecture. While pushing for solutions to more challenging tasks, network architectures keep growing more and more complex. \nIn this paper we ask the question whether and to what extent end-to-end learning is a future-proof technique in the sense of scaling to complex and diverse data processing architectures. We point out potential inefficiencies, and we argue in particular that end-to-end learning does not make optimal use of the modular design of present neural networks. Our surprisingly simple experiments demonstrate these inefficiencies, up to the complete breakdown of learning.",
+    "venue": "Asian Conference on Machine Learning",
+    "year": 2017,
+    "referenceCount": 36,
+    "citationCount": 144,
+    "influentialCitationCount": 2,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The question whether and to what extent end-to-end learning is a future-proof technique in the sense of scaling to complex and diverse data processing architectures is asked."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1756710",
+            "name": "T. Glasmachers"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "fb26716bc79b0a1a3f31d00946fd57a6e0d5ab87",
+            "title": "Failures of Deep Learning"
+        },
+        {
+            "paperId": "d35b05f440b5ba00d9429139edef7182bf9f7ce7",
+            "title": "Learning to Navigate in Complex Environments"
+        },
+        {
+            "paperId": "784ee73d5363c711118f784428d1ab89f019daa5",
+            "title": "Hybrid computing using a neural network with dynamic external memory"
+        },
+        {
+            "paperId": "6b570069f14c7588e066f7138e1f21af59d62e61",
+            "title": "Theano: A Python framework for fast computation of mathematical expressions"
+        },
+        {
+            "paperId": "9c9d7247f8c51ec5a02b0d911d1d7b9e8160495d",
+            "title": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems"
+        },
+        {
+            "paperId": "84680b30a20775e5d319419a7f3f2a93e57c2a61",
+            "title": "Value Iteration Networks"
+        },
+        {
+            "paperId": "846aedd869a00c09b40f1f1f35673cb22bc87490",
+            "title": "Mastering the game of Go with deep neural networks and tree search"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "340f48901f72278f6bf78a04ee5b01df208cc508",
+            "title": "Human-level control through deep reinforcement learning"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "0bde8d9367d1004c7396dd69cb27ed97dc2f8d77",
+            "title": "MatConvNet: Convolutional Neural Networks for MATLAB"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "6bdb186ec4726e00a8051119636d4df3b94043b5",
+            "title": "Caffe: Convolutional Architecture for Fast Feature Embedding"
+        },
+        {
+            "paperId": "193edd20cae92c6759c18ce93eeea96afd9528eb",
+            "title": "Deep learning in neural networks: An overview"
+        },
+        {
+            "paperId": "43c05444fbc239321f6676f3cd539cac34fde7b8",
+            "title": "Accelerating Stochastic Gradient Descent using Predictive Variance Reduction"
+        },
+        {
+            "paperId": "73068d3d5dacf987848eadd9af5b5fad8f7cf9c6",
+            "title": "Minimizing finite sums with the stochastic average gradient"
+        },
+        {
+            "paperId": "8729441d734782c3ed532a7d2d9611b438c0a09a",
+            "title": "ADADELTA: An Adaptive Learning Rate Method"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "dd7f8b53e6802787179a961e766760cbbe2d5011",
+            "title": "A committee of neural networks for traffic sign classification"
+        },
+        {
+            "paperId": "bc1022b031dc6c7019696492e8116598097a8c12",
+            "title": "Natural Language Processing (Almost) from Scratch"
+        },
+        {
+            "paperId": "33224ad0cdf6e2dc4893194dd587309c7887f0ba",
+            "title": "Formal Theory of Creativity, Fun, and Intrinsic Motivation (1990\u20132010)"
+        },
+        {
+            "paperId": "ea9d2a2b4ce11aaf85136840c65f3bc9c03ab649",
+            "title": "Understanding the difficulty of training deep feedforward neural networks"
+        },
+        {
+            "paperId": "d2c733e34d48784a37d717fe43d9e93277a8c53e",
+            "title": "ImageNet: A large-scale hierarchical image database"
+        },
+        {
+            "paperId": "8de174ab5419b9d3127695405efd079808e956e8",
+            "title": "Curriculum learning"
+        },
+        {
+            "paperId": "843959ffdccf31c6694d135fad07425924f785b1",
+            "title": "Extracting and composing robust features with denoising autoencoders"
+        },
+        {
+            "paperId": "8978cf7574ceb35f4c3096be768c7547b28a35d0",
+            "title": "A Fast Learning Algorithm for Deep Belief Nets"
+        },
+        {
+            "paperId": "c63d2e3b11d25971cc50cde869f59d34c62a1291",
+            "title": "Off-Road Obstacle Avoidance through End-to-End Learning"
+        },
+        {
+            "paperId": "f65020fc3b1692d7989e099d6b6e698be5a50a93",
+            "title": "Apprenticeship learning via inverse reinforcement learning"
+        },
+        {
+            "paperId": "54d1ef1ad676ebb553ddba2f7ed217509e81797f",
+            "title": "Optimal Ordered Problem Solver"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "44b6da0cd36c0fa2f7d3485c6dc0b6d2fbe379bb",
+            "title": "Learning how to learn"
+        },
+        {
+            "paperId": null,
+            "title": "Keras"
+        },
+        {
+            "paperId": null,
+            "title": "Li-Jia Li"
+        },
+        {
+            "paperId": "082b1f5c791cadef18c4920ecc1396615a3fe7cb",
+            "title": "Continual learning in reinforcement environments"
+        },
+        {
+            "paperId": "aab6ee61647e95ca24c2609ced0985c01e614ac2",
+            "title": "Gradient methods for the minimisation of functionals"
+        }
+    ]
+}

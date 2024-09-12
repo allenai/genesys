@@ -1,0 +1,242 @@
+{
+    "paperId": "ba378579fb44007db9f02699889721dcd2b5b3a0",
+    "externalIds": {
+        "DBLP": "journals/corr/BlundellUPLRLRW16",
+        "MAG": "2436711315",
+        "ArXiv": "1606.04460",
+        "CorpusId": 2398966
+    },
+    "title": "Model-Free Episodic Control",
+    "abstract": "State of the art deep reinforcement learning algorithms take many millions of interactions to attain human-level performance. Humans, on the other hand, can very quickly exploit highly rewarding nuances of an environment upon first discovery. In the brain, such rapid learning is thought to depend on the hippocampus and its capacity for episodic memory. Here we investigate whether a simple model of hippocampal episodic control can learn to solve difficult sequential decision-making tasks. We demonstrate that it not only attains a highly rewarding strategy significantly faster than state-of-the-art deep reinforcement learning algorithms, but also achieves a higher overall reward on some of the more challenging domains.",
+    "venue": "arXiv.org",
+    "year": 2016,
+    "referenceCount": 45,
+    "citationCount": 228,
+    "influentialCitationCount": 38,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work demonstrates that a simple model of hippocampal episodic control can learn to solve difficult sequential decision-making tasks and attains a highly rewarding strategy significantly faster than state-of-the-art deep reinforcement learning algorithms, but also achieves a higher overall reward on some of the more challenging domains."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2065066249",
+            "name": "Charles Blundell"
+        },
+        {
+            "authorId": "2064430351",
+            "name": "Benigno Uria"
+        },
+        {
+            "authorId": "2064022681",
+            "name": "Alexander Pritzel"
+        },
+        {
+            "authorId": "2110452463",
+            "name": "Yazhe Li"
+        },
+        {
+            "authorId": "2065757507",
+            "name": "Avraham Ruderman"
+        },
+        {
+            "authorId": "2066450556",
+            "name": "Joel Z. Leibo"
+        },
+        {
+            "authorId": "2065432208",
+            "name": "Jack W. Rae"
+        },
+        {
+            "authorId": "2064632007",
+            "name": "Daan Wierstra"
+        },
+        {
+            "authorId": "2064163661",
+            "name": "Demis Hassabis"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "5f0625c30014c12f333eb518268647673d18f9f1",
+            "title": "What can the brain teach us about building artificial intelligence?"
+        },
+        {
+            "paperId": "69e76e16740ed69f4dc55361a3d319ac2f1293dd",
+            "title": "Asynchronous Methods for Deep Reinforcement Learning"
+        },
+        {
+            "paperId": "846aedd869a00c09b40f1f1f35673cb22bc87490",
+            "title": "Mastering the game of Go with deep neural networks and tree search"
+        },
+        {
+            "paperId": "6bd469b981b90cac34651b52579e99de3a9ab9a7",
+            "title": "Approximate Hubel-Wiesel Modules and the Data Structures of Neural Computation"
+        },
+        {
+            "paperId": "c6170fa90d3b2efede5a2e1660cb23e1c824f2ca",
+            "title": "Prioritized Experience Replay"
+        },
+        {
+            "paperId": "e4257bc131c36504a04382290cbc27ca8bb27813",
+            "title": "Action-Conditional Video Prediction using Deep Networks in Atari Games"
+        },
+        {
+            "paperId": "340f48901f72278f6bf78a04ee5b01df208cc508",
+            "title": "Human-level control through deep reinforcement learning"
+        },
+        {
+            "paperId": "b437b5a0445f17b06b12791bc48aeb8110e95dc5",
+            "title": "Learning to generate chairs with convolutional neural networks"
+        },
+        {
+            "paperId": "66ad2fbc8b73242a889699868611fcf239e3435d",
+            "title": "Semi-supervised Learning with Deep Generative Models"
+        },
+        {
+            "paperId": "484ad17c926292fbe0d5211540832a8c8a8e958b",
+            "title": "Stochastic Backpropagation and Approximate Inference in Deep Generative Models"
+        },
+        {
+            "paperId": "5f5dc5b9a2ba710937e2c413b37b053cd673df02",
+            "title": "Auto-Encoding Variational Bayes"
+        },
+        {
+            "paperId": "608bb7b2fd464bcfdae73acd8533a3fb3d991cfd",
+            "title": "Decay happens: the role of active forgetting in memory"
+        },
+        {
+            "paperId": "f82e4ff4f003581330338aaae71f60316e58dd26",
+            "title": "The Arcade Learning Environment: An Evaluation Platform for General Agents"
+        },
+        {
+            "paperId": "a538b05ebb01a40323997629e171c91aa28b8e2f",
+            "title": "Rectified Linear Units Improve Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": "c8e337a12df57783edb75eace2b8d67270a6823c",
+            "title": "Hippocampal Contributions to Control: The Third Way"
+        },
+        {
+            "paperId": "80159c6b24653d8d9797075d2b96dccc3c39a345",
+            "title": "Reverse replay of behavioural sequences in hippocampal place cells during the awake state"
+        },
+        {
+            "paperId": "767ed9b4c974411b46c445bd3e235515760ecc65",
+            "title": "Uncertainty-based competition between prefrontal and dorsolateral striatal systems for behavioral control"
+        },
+        {
+            "paperId": "fe415ecc9f8f6ca21825775eb1fc647d54b50efc",
+            "title": "Memory systems of the brain: A brief history and current perspective"
+        },
+        {
+            "paperId": "cd26ecb91359be2a0ea62a01a249d2c557b86688",
+            "title": "Modeling hippocampal and neocortical contributions to recognition memory: a complementary-learning-systems approach."
+        },
+        {
+            "paperId": "84500eaf9569a06ce654fb3ee6d584fb90b57960",
+            "title": "Requirement for Hippocampal CA3 NMDA Receptors in Associative Memory Recall"
+        },
+        {
+            "paperId": "8c63689611fd1bf40d6a5ca14ba730ca7e62d283",
+            "title": "Reinforcement Learning: : An Introduction"
+        },
+        {
+            "paperId": "48f7d92f22d475e0404499653f428b20eb0f1ec4",
+            "title": "Episodic-like memory during cache recovery by scrub jays"
+        },
+        {
+            "paperId": "2ebf18e7892e660a833152ddc6cf8f1d21a7b881",
+            "title": "Why there are complementary learning systems in the hippocampus and neocortex: insights from the successes and failures of connectionist models of learning and memory."
+        },
+        {
+            "paperId": "6da16d28a3210055206a155e9102c91377f38d58",
+            "title": "Perirhinal and parahippocampal cortices of the macaque monkey: Cortical afferents"
+        },
+        {
+            "paperId": "bd994771b7602b24630644dfd4fffc83c7d4e0c8",
+            "title": "Computational analysis of the role of the hippocampus in memory"
+        },
+        {
+            "paperId": "69f6963992e7b82f6c58855af35d661e3fea6036",
+            "title": "Memory and the hippocampus: a synthesis from findings with rats, monkeys, and humans."
+        },
+        {
+            "paperId": "91793bc88c4aaf42d0bd691d51b063bc66ec80f7",
+            "title": "Long-lasting perceptual priming and semantic learning in amnesia: a case experiment."
+        },
+        {
+            "paperId": "00d39b664112de7cd734774d75f8ff5970867076",
+            "title": "Configural association theory: The role of the hippocampal formation in learning, memory, and amnesia"
+        },
+        {
+            "paperId": "a79a2fa3748765f23415ce9e2d344d929fe03155",
+            "title": "Hippocampal synaptic enhancement and information storage within a distributed memory system"
+        },
+        {
+            "paperId": "6449a50b27031adf546f69ad64e97c7d0f3d45eb",
+            "title": "A behavioural analysis of spatial localization following electrolytic, kainate- or colchicine-induced damage to the hippocampal formation in the rat"
+        },
+        {
+            "paperId": "1028b3f1808b5bcc72b018d157db952bb8282205",
+            "title": "Place navigation impaired in rats with hippocampal lesions"
+        },
+        {
+            "paperId": "98b4d4e24aab57ab4e1124ff8106909050645cfa",
+            "title": "Neural networks and physical systems with emergent collective computational abilities."
+        },
+        {
+            "paperId": "ee5fe18b5e245a454525d3c1d71ff08f16115c40",
+            "title": "In Memory"
+        },
+        {
+            "paperId": "03854785c693f07eeb1cc64c15c21e6b92699e0c",
+            "title": "Simple memory: a theory for archicortex."
+        },
+        {
+            "paperId": "2eae2935841029505e8bae7a3da929d90210e746",
+            "title": "The Hippocampus Book"
+        },
+        {
+            "paperId": "8a3bcf4f3e1c3420a923484953ebe0cb4c3a823b",
+            "title": "The Curse of Planning: Dissecting Multiple Reinforcement-Learning Systems by Taxing the Central Executive"
+        },
+        {
+            "paperId": null,
+            "title": "Lecture 6.5-rmsprop: Divide the gradient by a running average of its recent magnitude"
+        },
+        {
+            "paperId": "f7f15848cd0fbb3d08f351595da833b1627de9c3",
+            "title": "Information Theory, Inference, and Learning Algorithms"
+        },
+        {
+            "paperId": "d95e60267c937dfeb83a4931c043e98d7625af0a",
+            "title": "Recognition memory: What are the roles of the perirhinal cortex and hippocampus?"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "97efafdb4a3942ab3efba53ded7413199f79c054",
+            "title": "Reinforcement Learning: An Introduction"
+        },
+        {
+            "paperId": "fb2a9cdd3bcd040770d13c5c04ee1d5d252e5fae",
+            "title": "Considerations arising from a complementary learning systems perspective on hippocampus and neocortex"
+        },
+        {
+            "paperId": "1d0635cda34b8af995313848a0c42bac6efe79ec",
+            "title": "Extensions of Lipschitz mappings into Hilbert space"
+        },
+        {
+            "paperId": null,
+            "title": "A Variational autoencoders for representation learning"
+        },
+        {
+            "paperId": null,
+            "title": "x x Figure 4: Diagram of a variational autoencoder"
+        }
+    ]
+}

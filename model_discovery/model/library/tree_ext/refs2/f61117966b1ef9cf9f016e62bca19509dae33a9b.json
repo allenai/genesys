@@ -1,0 +1,869 @@
+{
+    "paperId": "f61117966b1ef9cf9f016e62bca19509dae33a9b",
+    "externalIds": {
+        "MAG": "1588998206",
+        "CorpusId": 117003857
+    },
+    "title": "Essentials of Robust Control",
+    "abstract": "1. Introduction. 2. Linear Algebra. 3. Linear Systems. 4. H2 and Ha Spaces. 5. Internal Stability. 6. Performance Specifications and Limitations. 7. Balanced Model Reduction. 8. Uncertainty and Robustness. 9. Linear Fractional Transformation. 10. m and m- Synthesis. 11. Controller Parameterization. 12. Algebraic Riccati Equations. 13. H2 Optimal Control. 14. Ha Control. 15. Controller Reduction. 16. Ha Loop Shaping. 17. Gap Metric and ...u- Gap Metric. 18. Miscellaneous Topics. Bibliography. Index.",
+    "venue": "",
+    "year": 1997,
+    "referenceCount": 210,
+    "citationCount": 3700,
+    "influentialCitationCount": 337,
+    "openAccessPdf": null,
+    "tldr": null,
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "48918787",
+            "name": "Xiao Zhou"
+        },
+        {
+            "authorId": "145838181",
+            "name": "J. Doyle"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "f0d618282e9580c6ab194bddbd5c18553eb4017e",
+            "title": "Fundamental Limitations in Filtering and Control"
+        },
+        {
+            "paperId": "39f492f2b471c2228c4cbc7997aebec9107dae45",
+            "title": "Chain-Scattering Approach to H\u221eControl"
+        },
+        {
+            "paperId": "b7eee5f8913d3a79dd92a7ad666d46ba809b8f62",
+            "title": "A set-based approach for white noise modeling"
+        },
+        {
+            "paperId": "bd9122844284d98dee67c7c6360067eec252e28f",
+            "title": "A revisit to the gain and phase margins of linear quadratic regulators"
+        },
+        {
+            "paperId": "fda6ba40c325b6fae89ddf2713832387eeaf2af8",
+            "title": "H\u221e-0ptimal Control and Related Minimax Design Problems: A Dynamic Game Approach"
+        },
+        {
+            "paperId": "226c23634210ef2421678d60086364156682f6f6",
+            "title": "Continuous-time control model validation using finite experimental data"
+        },
+        {
+            "paperId": "e29fa72e0c42633db986af454751bac5ba9efcbc",
+            "title": "A counterexample to Mustafa-Glovers' monotonicity conjecture"
+        },
+        {
+            "paperId": "b136d6dd8e9ac83676c7fad0f2f4a9a1ebacd4c2",
+            "title": "Explicit controller formulas for LMI-based H\u221e synthesis"
+        },
+        {
+            "paperId": "3dc9e01b686d5e618d6a9d60aad92e9f61f874eb",
+            "title": "Time-domain validation for sample-data uncertainty models"
+        },
+        {
+            "paperId": "5af958203f8a300f35c84888e5b5cad7794d79bb",
+            "title": "On the Algebraic Approach to H\u221e Control"
+        },
+        {
+            "paperId": "c301560867512dd65b288df5c37bdb50d4a36766",
+            "title": "H\u221e design with pole placement constraints: an LMI approach"
+        },
+        {
+            "paperId": "643c5339ece588100f53266f3e18d329bbda1f40",
+            "title": "A low order controller design method"
+        },
+        {
+            "paperId": "c2fb4a61cf02282c27232c23d5cd2f91900186d6",
+            "title": "On the robustness of symmetric systems"
+        },
+        {
+            "paperId": "f9064895c879a6fd38492676069b3c42f9e0ba82",
+            "title": "Frequency-weighted \ud835\udcdb\u221e norm and optimal Hankel norm model reduction"
+        },
+        {
+            "paperId": "fc3c372a73e654360ade17ed346f06b642b34693",
+            "title": "Robust performance against time-varying structured perturbations"
+        },
+        {
+            "paperId": "b0dc50b566596f4b74a6317e260fee169336dc48",
+            "title": "Robust and optimal control"
+        },
+        {
+            "paperId": "56a818fae35d2863a3b7a920a02c96285f6df436",
+            "title": "Validation of linear fractional uncertain models: solutions via matrix inequalities"
+        },
+        {
+            "paperId": "06605a9be8e062ce9ee188b52fc176d3d9e462cb",
+            "title": "Performance bounds for coprime factor controller reductions"
+        },
+        {
+            "paperId": "ef879d603716774f59c426ca112d0c91b057b6c5",
+            "title": "On the /spl Nscr//spl Pscr/-hardness of the purely complex /spl mu/ computation, analysis/synthesis, and some related problems in multidimensional systems"
+        },
+        {
+            "paperId": "35c0183e9940feb567b4417115be8460bc127cfa",
+            "title": "Linear System Theory and Design"
+        },
+        {
+            "paperId": "0bb4db9ad2bc7fb3d6c4976b6504c1600ef92c7f",
+            "title": "A formula for computation of the real stability radius"
+        },
+        {
+            "paperId": "5d759fb51d58463368a6fb9e4a0dea6fe07d5329",
+            "title": "Control of Uncertain Systems: A Linear Programming Approach"
+        },
+        {
+            "paperId": "10eef2880e22fa0e52edf188b5fbe8ebcce67b47",
+            "title": "Performance-preserving frequency weighted controller approximation: a coprime factorisation approach"
+        },
+        {
+            "paperId": "51aa01beb6b5c2a55e65b15a15b99164a6bf194b",
+            "title": "Mixed \ud835\udcd72 and \ud835\udcd7\u221e performance objectives. I. Robust performance analysis"
+        },
+        {
+            "paperId": "e644dbd47300ef204b4e344f12a57ad6341fb99d",
+            "title": "Mixed \ud835\udcd72 and \ud835\udcd7\u221e performance objectives. II. Optimal control"
+        },
+        {
+            "paperId": "cb6073f986ff903dfefb95b14a1b382062d92db5",
+            "title": "Linear Robust Control"
+        },
+        {
+            "paperId": "5d4da2b8c0f15512d54042cfa5c0b1022ac08534",
+            "title": "Computational complexity of \u03bc calculation"
+        },
+        {
+            "paperId": "ba278be5f615c71b966052133499ad24f10c7f69",
+            "title": "Robust stability with time-varying structured uncertainty"
+        },
+        {
+            "paperId": "5e3629334ecdd8a67587f5eae5175b1b152ec928",
+            "title": "Gain scheduling via linear fractional transformations"
+        },
+        {
+            "paperId": "b33fdb12aba64f28281ad028fad97c8ac2d5a473",
+            "title": "Controller reduction: weights for stability and performance preservation"
+        },
+        {
+            "paperId": "d979f7efc76cca36d7874f628d00a92e891c4b5f",
+            "title": "Frequency domain uncertainty and the graph topology"
+        },
+        {
+            "paperId": "89b357ec32f452d0ee06aaed36952cb37b4e80a3",
+            "title": "The application of scheduled H\u221e controllers to a VSTOL aircraft"
+        },
+        {
+            "paperId": "dd357fbb919818460d52bb15e6ac3ad18692b317",
+            "title": "Computational complexity of \u03bc calculation"
+        },
+        {
+            "paperId": "32bb052dd0c82d7c373a591e01c2e1847119559a",
+            "title": "Limits on Achievable Robustness Against Coprime Factor Uncertainty"
+        },
+        {
+            "paperId": "f65f63d8fee64ebe3dad86aa932aa49648ca9590",
+            "title": "Sensitivity Integral Relations and Design Tradeoffs in Linear Multivariable Feedback Systems"
+        },
+        {
+            "paperId": "13d0102a98d49c7999c93d1b55c9efe4d41e9211",
+            "title": "Continuity properties of the real/complex structured singular value"
+        },
+        {
+            "paperId": "aebdcb5902054b2bbe5aece43c0e84d56c4beb09",
+            "title": "Optimal, constant I/O similarity scaling for full-information and state-feedback control problems"
+        },
+        {
+            "paperId": "09c345d6bfdb826d654a8b2e5b905780782f0624",
+            "title": "A loop-shaping design procedure using H/sub infinity / synthesis"
+        },
+        {
+            "paperId": "46451a9672f3d7c0c73d332a8b85238d60c2329d",
+            "title": "On the parameterization H/sub infinity / controllers"
+        },
+        {
+            "paperId": "164d28017a05e888b524c5aac89bf7ae00714daa",
+            "title": "Model validation: a connection between robust control and identification"
+        },
+        {
+            "paperId": "8fdc2faba57b2e5dd5b69ac9b1d94fa5764f4b0e",
+            "title": "On the Frequency Response Interpretation of an Indexed L2-gap Metric"
+        },
+        {
+            "paperId": "b96587682c69d7fa62c44845663380dee9b87f39",
+            "title": "Robust Design in the Graph Topology; A Benchmark Example"
+        },
+        {
+            "paperId": "afe93a2e1c039f98d465c1c9b31e3fe6797ff83f",
+            "title": "A Time-Domain Approach to Model Validation"
+        },
+        {
+            "paperId": "f8d0c1df4079406aa6b3eb5582b4eaddce5e4701",
+            "title": "H8 controller synthesis by J-lossless coprime factorization"
+        },
+        {
+            "paperId": "448b1313e9eddec74a097db31755bc403f24cd3d",
+            "title": "A structured approximation problem with applications to frequency weighted model reduction"
+        },
+        {
+            "paperId": "a00a13161d7185729d1dc81fa1254bfc4fb9579b",
+            "title": "A game theoretic approach to H \u221e control for time-varying systems"
+        },
+        {
+            "paperId": "a47c16d5bcb553fe1cf72501a156527923fcf7b7",
+            "title": "Review of LFTs, LMIs, and mu"
+        },
+        {
+            "paperId": "5b811d475f1803f5028174d676e877425d97c4e4",
+            "title": "Controller reduction by H/sub infinity /-balanced truncation"
+        },
+        {
+            "paperId": "660a1d587b2fa4e74dbf5945ab12c1a185ddd1a4",
+            "title": "H/sub 2/-optimal sampled-data control"
+        },
+        {
+            "paperId": "7309ce9a95585712029aace8b76f1b4568f1e6b9",
+            "title": "Beyond singular values and loop shapes"
+        },
+        {
+            "paperId": "80ff861a2ac8c495fa676826d39bdfbbb3f00c7a",
+            "title": "A characterization of all solutions to the four block general distance problem"
+        },
+        {
+            "paperId": "705f548415b5ed2a4821464f82c188344102a5c0",
+            "title": "Linear controller design: limits of performance"
+        },
+        {
+            "paperId": "f02bf0bdee4c3ce623fe17e634eaebb622c0588f",
+            "title": "Pointwise gap metrics on transfer matrices"
+        },
+        {
+            "paperId": "ac1bab3b5bc1247e3bfebe73b77bb18e13d4ef4f",
+            "title": "Fractional balanced reduction: model reduction via fractional representation"
+        },
+        {
+            "paperId": "8b8ad703428b5c5d5e3efad070802b7e088bfef1",
+            "title": "Worst-case design in the time domain: The maximum principle and the standardH\u221e problem"
+        },
+        {
+            "paperId": "9fc7467f694fa01a7b6d6007b94e020594a544c7",
+            "title": "A J-Spectral Factorization Approach to H\u221e Control"
+        },
+        {
+            "paperId": "5985d16aec1e400b29905c628aa4b9e5ce97ba3f",
+            "title": "All stabilizing controllers as frequency-shaped state estimate feedback"
+        },
+        {
+            "paperId": "c665677f5d4f850f200e0daa458a8858ce06bec4",
+            "title": "Robust Stabilization in the Gap Metric: Controller Design for Distributed Plants"
+        },
+        {
+            "paperId": "be211c63ea20ff454127ceaa9a21307e64eb71b2",
+            "title": "Simultaneous H2/H\u221e optimal control with state feedback"
+        },
+        {
+            "paperId": "8515d3a47ddefc39e58a623dde157fada63bd69a",
+            "title": "Frequency weighted controller reduction methods and loop transfer recovery"
+        },
+        {
+            "paperId": "a7520e6563edcb28c2b38ce98da152c118e67bf3",
+            "title": "A fast algorithm to computer the H \u221e -norm of a transfer function matrix"
+        },
+        {
+            "paperId": "804ad629661cdeb44bd26d721b54bd96b4de8113",
+            "title": "Coprime factorization controller reduction with bezout identity induced frequency weighting"
+        },
+        {
+            "paperId": "6cf4201cd2a45d60f25c09562523ab965d7af829",
+            "title": "An improved error estimate for reduced-order models of discrete-time systems"
+        },
+        {
+            "paperId": "f532c3f49e62c9d5daccf714c192c31d4c506e37",
+            "title": "Reduced-order controller design using coprime factor model reduction"
+        },
+        {
+            "paperId": "bb39a25ecf877b06bc932c8bcb5f7748b67364bd",
+            "title": "Robust stabilization of uncertain linear systems: quadratic stabilizability and H/sup infinity / control theory"
+        },
+        {
+            "paperId": "a96fa4666dd614fac10ec7c09774e01199457134",
+            "title": "An algebraic approach to H \u221e output feedback control problems"
+        },
+        {
+            "paperId": "a948d4821954132de57542c276ed8b770a7d9a13",
+            "title": "Optimal control: linear quadratic methods"
+        },
+        {
+            "paperId": "7f028b943269b099849722e44a9cc035723274a6",
+            "title": "Optimal robustness in the gap metric"
+        },
+        {
+            "paperId": "43ca95aaed9dac24e0aa7ce76ab55ff3f0b49b5e",
+            "title": "Filtering and smoothing in an H/sup infinity / setting"
+        },
+        {
+            "paperId": "980a19c740c7214ed756ba3fc04c6db07bddfc34",
+            "title": "Robust control design using normal-ized coprime factor plant descriptions"
+        },
+        {
+            "paperId": "6bc60663ee8d6508afeea6996aacc283e0249fd5",
+            "title": "Simplifying the H\u221e theory via loop-shifting, matrix-pencil and descriptor concepts"
+        },
+        {
+            "paperId": "a526b939ad03fad0c34d9c8b6e7a732b6629e1fe",
+            "title": "Multivariable Feedback Design"
+        },
+        {
+            "paperId": "e1e504ff372b9f889a6abf697439142ad567fead",
+            "title": "Singular perturbation approximation of balanced systems"
+        },
+        {
+            "paperId": "dd807011d9db8e68b3695b9564bb2cc5a85bb099",
+            "title": "Derivation of the maximum entropy H \u221e-controller and a state-space formula for its entropy"
+        },
+        {
+            "paperId": "41dd0444be32a4c1516ed8875a15754dba9ca511",
+            "title": "Robust stabilization of normalized coprime factor plant descriptions with H/sub infinity /-bounded uncertainty"
+        },
+        {
+            "paperId": "d78f3565aeb7e38440bb3e81155d73d21e5960b9",
+            "title": "A bisection method for computing the H\u221e norm of a transfer matrix and related problems"
+        },
+        {
+            "paperId": "d990ef5f3e4c74724cf7d568035721675b135e0b",
+            "title": "A state space approach to H \u221e optimal control"
+        },
+        {
+            "paperId": "089d1de7f75ca3a5be217e299ade735361467bb8",
+            "title": "Graph topology and gap topology for unstable systems"
+        },
+        {
+            "paperId": "4ec0f12fc619ee605ec3a6125a7b4612d758d625",
+            "title": "State-space solutions to standard H/sub 2/ and H/sub infinity / control problems"
+        },
+        {
+            "paperId": "e4e6c22cad0ce71b0e82f8cc0bbff42e84048c0c",
+            "title": "Relations between maximum-entropy/H8 control and combined H8/LQG control"
+        },
+        {
+            "paperId": "037d5ddcaf85bb39c25f0fbde89c45433b8fd5eb",
+            "title": "A relative error bound for balanced stochastic truncation"
+        },
+        {
+            "paperId": "294dd2869432f42315f8e7e3ece1b8008e16f2bc",
+            "title": "On the computation of the gap metric"
+        },
+        {
+            "paperId": "e90b177c55495859d3450ed429930284e2e59fa9",
+            "title": "State-space formulae for all stabilizing controllers that satisfy and H \u221e norm bound and relations to risk sensitivity"
+        },
+        {
+            "paperId": "ea2bdfff371844189c233937b85660f2f36e80f1",
+            "title": "An algebraic Riccati equation approach to H \u221e optimization"
+        },
+        {
+            "paperId": "d62d22339871f2e733f0ee085101d8c00c67d1fe",
+            "title": "H/sub infinity /-optimal control with state-feedback"
+        },
+        {
+            "paperId": "303ec3ca04846816b98fa57ed8d69a3af5fe7f62",
+            "title": "Model reduction via balanced realizations: an extension and frequency weighting techniques"
+        },
+        {
+            "paperId": "6ba5d52f0315d0c1d21e6bab03c46e26f540bb35",
+            "title": "Structured singular value with repeated scalar blocks"
+        },
+        {
+            "paperId": "3e57b4a4716352fd9d0dc48c123e25dbd1376b34",
+            "title": "LQG control with an H\u221e performance bound: a riccati equation approach"
+        },
+        {
+            "paperId": "3ff955fc21a4c5f641007fa7b3afa9f98e8185bf",
+            "title": "Controller Order Reduction with Guaranteed Stability and Performance"
+        },
+        {
+            "paperId": "959b4f2b1f2fa8439a47d60f761eaee7a3312d5c",
+            "title": "Frequency Domain Properties of Scalar and Multivariable Feedback Systems"
+        },
+        {
+            "paperId": "617979d9b9fb0992f652977d884c66cc5e43104f",
+            "title": "Normalised coprime factorizations for nonstrictly proper systems"
+        },
+        {
+            "paperId": "1ef45be8844a70ba0913cbb727372057be455b2c",
+            "title": "Existence and comparison theorems for algebraic Riccati equations for continuous- and discrete-time systems"
+        },
+        {
+            "paperId": "95466536302e9ca8d5f35bd42f1d067542562db0",
+            "title": "An error bound for a discrete reduced order model of a linear multivariable system"
+        },
+        {
+            "paperId": "c87e4c234e9c653ac1d43f86340ce0637d8df23b",
+            "title": "Linear control theory with an H \u221e 0E optimality criterion"
+        },
+        {
+            "paperId": "b63035641e0a2bab0c2f342d197489a112a828d0",
+            "title": "Controller Reduction: Concepts and Approaches"
+        },
+        {
+            "paperId": "0c7781c5d033740be66c35644e4a2bc8395fe5ba",
+            "title": "Control of Plants with Input Saturation Nonlinearities"
+        },
+        {
+            "paperId": "1afe4429ef7f84a8cd431a193dcdcd9035811496",
+            "title": "An Explicit Formula and an Optimal Weight for the 2-Block Structured Singular Value Interaction Measure"
+        },
+        {
+            "paperId": "1fcf555861c28a65195398207995907b4fb675fc",
+            "title": "Disturbance attenuation and H^{\u221e} optimization: A design method based on the algebraic Riccati equation"
+        },
+        {
+            "paperId": "e1a7ec60ef11def041ed92fbfd73cdebd19fce60",
+            "title": "A connection between normalized coprime factorizations and linear quadratic regulator theory"
+        },
+        {
+            "paperId": "e3cf605c2a6d1f207cd474f87e53a70b0639629b",
+            "title": "Design examples using \u00b5-synthesis: Space shuttle lateral axis FCS during reentry"
+        },
+        {
+            "paperId": "6bb8775f8ac8a5ba5513893b807e3e3a2e51244a",
+            "title": "On hermitian solutions of the symmetric algebraic Riccati equation"
+        },
+        {
+            "paperId": "1839fcf31a0b0560576ac9aa06c614ac02b22987",
+            "title": "Robust stabilization of linear multivariable systems: relations to approximation"
+        },
+        {
+            "paperId": "b1312da4a11f3a98f57d6c9f79a5d0c24994d618",
+            "title": "Characterization and efficient computation of the structured singular value"
+        },
+        {
+            "paperId": "89d2a9d25b52d4440e87735475eb31af21f7fe7b",
+            "title": "Multiplicative approximation of linear multivariable systems with L\u221e error bounds"
+        },
+        {
+            "paperId": "730c76cdab6eab80b4d00aae1b12fc92cb08ef79",
+            "title": "Optimal Hankel-norm approximation for stable systems with first-order stable weighting functions"
+        },
+        {
+            "paperId": "c3a0afbb48588beaf84ffde23f95897da434981a",
+            "title": "Principal direction alignment: a geometric framework for the complete solution to the \u03bc-problem"
+        },
+        {
+            "paperId": "d3a72337493d9be00717f5a9804ce303b0e6cea1",
+            "title": "Singular optimal control: A geometric approach"
+        },
+        {
+            "paperId": "5be4b70a5fe02b7edf06222a75ce86c9e47ff65c",
+            "title": "Structured uncertainty in control system design"
+        },
+        {
+            "paperId": "721f54f6fa32f5f02c5124a2b73ce5f4280b4eaf",
+            "title": "Matrix analysis"
+        },
+        {
+            "paperId": "e0739310c5f149c84ca1c35e1f41b21d413dc568",
+            "title": "Non-Euclidian metrics and the robust stabilization of systems with parameter uncertainty"
+        },
+        {
+            "paperId": "75cf5db416d03522fe0623ce5d8cd0366c2b9219",
+            "title": "Monotonicity of maximal solutions of algebraic Riccati equations"
+        },
+        {
+            "paperId": "0b189e00d1f4356b54144bf287f1d4c119da4969",
+            "title": "The gap metric: Robustness of stabilization of feedback systems"
+        },
+        {
+            "paperId": "b1756b51ebeed8ff82ac0b00f822299a3ea7f5fa",
+            "title": "Robust Control of Multivariable and Large Scale Systems."
+        },
+        {
+            "paperId": "4bef4e6d7f9f4edc03b571be8a00838d16bac642",
+            "title": "Frequency-weighted optimal Hankel-norm approximation of stable transfer functions"
+        },
+        {
+            "paperId": "3feeddeb22d07179cf284abaf1d396c2cfd3157e",
+            "title": "Generalized eigenproblem algorithms and software for algebraic Riccati equations"
+        },
+        {
+            "paperId": "a6ddee8f3e4839bfa9da9ecfc24439ea5709828e",
+            "title": "Model reduction with balanced realizations: An error bound and a frequency weighted generalization"
+        },
+        {
+            "paperId": "74d8f49b04dd7689e61ab7066de67356cf36c235",
+            "title": "Subharmonic functions and performance bounds on linear time-invariant feedback systems"
+        },
+        {
+            "paperId": "2b92fc3b3c3b048703bf88048a8c14d3c6277da1",
+            "title": "A connection between state-space and doubly coprime fractional representations"
+        },
+        {
+            "paperId": "96c75be8d051a44cbefa697ad4cca0b8d3e1a980",
+            "title": "Robust controllers for uncertain linear multivariable systems"
+        },
+        {
+            "paperId": "b9823cce9065719ba9277851d94a72323466d149",
+            "title": "A Feedback Theory of Two-Degree-of-Freedom Optimal Wiener-Hopf Design"
+        },
+        {
+            "paperId": "73fcf308f76d7bf7a4602116ff80c873ff099df0",
+            "title": "All optimal Hankel-norm approximations of linear multivariable systems and their L, \u221e -error bounds\u2020"
+        },
+        {
+            "paperId": "9d2eea1e868b50024b9dbd186252c1d74aa8cd81",
+            "title": "A new set of invariants for linear systems--Application to reduced order compensator design"
+        },
+        {
+            "paperId": "0c1cd8f6ae4802f177e9041ed5cccd387f28ce9d",
+            "title": "Performance and robustness analysis for structured uncertainty"
+        },
+        {
+            "paperId": "1bcc07856b5f9e405dd0290a502c2cac71d7cdc6",
+            "title": "The graph metric for unstable plants and robustness estimates for feedback stability"
+        },
+        {
+            "paperId": "155702680fe38e9044c1d3d779a5b1d13112a876",
+            "title": "Analysis of Feedback Systems with Structured Uncertainty"
+        },
+        {
+            "paperId": "dc3dc5b8b5180c88c1c7cacef6e70f689447e661",
+            "title": "Model reduction via balanced state space representations"
+        },
+        {
+            "paperId": "908143e5eedc352f2066e3b565376819bf3a64c5",
+            "title": "Almost invariant subspaces: An approach to high gain feedback design"
+        },
+        {
+            "paperId": "25147c258db782cc9fb1e6fe4614cb6a967c4543",
+            "title": "Stability margins of diagonally perturbed multivariable feedback systems"
+        },
+        {
+            "paperId": "5a1c08aebda1a8b0a62d68c245cd9e784ed8172f",
+            "title": "Multivariable feedback design: Concepts for a classical/modern synthesis"
+        },
+        {
+            "paperId": "187c4d5717b6d525eb943282daac2cf26745eb5e",
+            "title": "Principal component analysis in linear systems: Controllability, observability, and model reduction"
+        },
+        {
+            "paperId": "819cac32cc79f3aaee4a5ac2f5196e018ee4c859",
+            "title": "Almost invariant subspaces: An approach to high gain feedback design--Part II: Almost conditionally invariant subspaces"
+        },
+        {
+            "paperId": "730cf64f89d8750ffcd7d0951e84acb2bce784b6",
+            "title": "On the relation between stable matrix fraction factorizations and regulable realizations of linear systems over rings"
+        },
+        {
+            "paperId": "942fb03de9a07acd93c4f662004d1c78cf34e0b9",
+            "title": "A Generalized Eigenvalue Approach for Solving Riccati Equations"
+        },
+        {
+            "paperId": "fdd1b7fe5a1a4f8593fd851d681d994b265d6f09",
+            "title": "Stability and Robustness of Multivariable Feedback Systems"
+        },
+        {
+            "paperId": "8dcd72265debc105e69de70bfb0672b12a2c19a3",
+            "title": "Feedback system design: The fractional representation approach to analysis and synthesis"
+        },
+        {
+            "paperId": "362a6561e55212e87966ee7121941b2a7dc7e27a",
+            "title": "Synthesis of minimum roundoff noise fixed point digital filters"
+        },
+        {
+            "paperId": "803cc47ac2e83f8fe6ba097a04044a38cff8bc8b",
+            "title": "Decentralized stabilization via game theoretic methods"
+        },
+        {
+            "paperId": "3c29b2fee0f4f622cc1467401e1541adc6056416",
+            "title": "Modern Wiener-Hopf Design of Optimal Controllers. Part I"
+        },
+        {
+            "paperId": "ee94dbb62196c734c88b195c7459bf65c0ff34d1",
+            "title": "Modern Wiener--Hopf design of optimal controllers Part I: The single-input-output case"
+        },
+        {
+            "paperId": "faab99b42b63a670e5a6a78ee02c8662f52d9398",
+            "title": "The stabilizing solution of the discrete algebraic riccati equation"
+        },
+        {
+            "paperId": "b8d380f19075df46adc189956d094cf518542cac",
+            "title": "Additions"
+        },
+        {
+            "paperId": "69959c900bed00fd7466bbde335cf9541ad705bf",
+            "title": "Computer Aided Control System Design"
+        },
+        {
+            "paperId": "e9cbb1cea6b97a6cd5b6192452d2202d99926e74",
+            "title": "Single-loop feedback-stabilization of linear multivariable dynamical plants"
+        },
+        {
+            "paperId": "814ed8bec026e4eb2e3db4c3af3ece4a0670115f",
+            "title": "A contribution to matrix quadratic equations"
+        },
+        {
+            "paperId": "1ac49fbb2277fdf15d8484c3243404cc7e92db46",
+            "title": "An introduction to observers"
+        },
+        {
+            "paperId": "267f5e3270718ef8995d35ffa4e788ced2d2379e",
+            "title": "Least squares stationary optimal control and the algebraic Riccati equation"
+        },
+        {
+            "paperId": "0c7ae4373eb450848eec42a6bd981a7add4727e4",
+            "title": "Interpolation with positive real functions"
+        },
+        {
+            "paperId": "b5d589668130681c351dee779ea57a3682eaee83",
+            "title": "An algebraic solution to the spectral factorization problem"
+        },
+        {
+            "paperId": "c051bc17106ce60ae4119300b6e582d0ca806b1f",
+            "title": "On the input-output stability of time-varying nonlinear feedback systems Part one: Conditions derived using concepts of loop gain, conicity, and positivity"
+        },
+        {
+            "paperId": "5c2f635fd11d2d001b7f9921007c6d3cf201eebf",
+            "title": "New Results in Linear Filtering and Prediction Theory"
+        },
+        {
+            "paperId": "be5844bdfe5453cc8c1df1dde53593324a3c021f",
+            "title": "On a Certain Linear Fractional Transformation"
+        },
+        {
+            "paperId": "cdcb9ff996d306398bcb98169983dd497b2e54eb",
+            "title": "Bounded analytic functions"
+        },
+        {
+            "paperId": "f203c78ca2a3bb62af7465b0eafb90afe696355c",
+            "title": "Chain-scattering approach to H[\u221e] control"
+        },
+        {
+            "paperId": "a8d05986beebe393812b6ab7d44c2fa0a9fb7543",
+            "title": "Model validation for robust control"
+        },
+        {
+            "paperId": "c5aeb5d078cfa7d676b967cdaa4ff96b8a53f2f0",
+            "title": "Algebraic Riccati equations"
+        },
+        {
+            "paperId": null,
+            "title": "Necessary and sufficient conditions for robust H2 performance,"
+        },
+        {
+            "paperId": null,
+            "title": "On the small mu theorem,"
+        },
+        {
+            "paperId": "dac221530885f75c07d928925f057b76198a84a2",
+            "title": "A linear matrix inequality approach to H\u221e control"
+        },
+        {
+            "paperId": "46a16d3648aa719abaf319b7ca474cfde62f76e4",
+            "title": "Linear Matrix Inequalities in Systems and Control Theory"
+        },
+        {
+            "paperId": null,
+            "title": "\u03bc-Analysis and Synthesis Toolbox, MUSYN Inc. and The MathWorks, Inc"
+        },
+        {
+            "paperId": "82d321832077825fe1e08d2d378c2bc4aa3ba29d",
+            "title": "Robustness with parametric and dynamic uncertainty"
+        },
+        {
+            "paperId": "c16316910a806b6dddce4113a20012b1bd10900d",
+            "title": "The complex structured singular value"
+        },
+        {
+            "paperId": null,
+            "title": "Bode Prize Lecture (Control design: moving from theory to practice),"
+        },
+        {
+            "paperId": null,
+            "title": "Measuring the Robustness of Feedback Systems, Ph.D. dissertation, Cambridge University"
+        },
+        {
+            "paperId": "da2fee68894bd57ac317f972adb430852fbd60d3",
+            "title": "Feedback stability under simultaneous gap metric uncertainties in plant and controller"
+        },
+        {
+            "paperId": "5dcb6e2752aaeb6dca130f3860ca4ae4d8491a71",
+            "title": "H\u221e -optimization without assumptions on finite or infinite zeros"
+        },
+        {
+            "paperId": null,
+            "title": "Minimal H\u221e-norm of transfer functions consistent with prescribed finite input-output data,"
+        },
+        {
+            "paperId": null,
+            "title": "H\u221e control for plants with zeros on the imaginary axis,"
+        },
+        {
+            "paperId": "4645bec4bf86a94265039a357166db457b3f7aad",
+            "title": "Feedback Control Theory"
+        },
+        {
+            "paperId": "6f2d5d03a276c4e1ed7f397f7259438123440341",
+            "title": "Robustness in the presence of mixed parametric uncertainty and unmodeled dynamics"
+        },
+        {
+            "paperId": "443bf2f0c34d0d2e58200d8e1cb49884573bf465",
+            "title": "Topics in Matrix Analysis"
+        },
+        {
+            "paperId": "14c5c63a61c829826a4acb1ba450c271f5d35927",
+            "title": "Risk-Sensitive Optimal Control"
+        },
+        {
+            "paperId": "d798a8004ca4ac9cfc487870d6bed1348771d107",
+            "title": "Robust control of flexible structures: theory and experiments"
+        },
+        {
+            "paperId": "c28024f4d02a2ecf52f6992eecbbe0a33147e66b",
+            "title": "An introduction to hilbert space"
+        },
+        {
+            "paperId": "1c401249a94fa034f54aecbb860301bc57fadd64",
+            "title": "Parametrization of state feedback H\u221e controllers"
+        },
+        {
+            "paperId": "90356afb5564e76c1547a587a0e6d9bb917f84e3",
+            "title": "Robust stabilization of normalized coprime factor plant descriptions"
+        },
+        {
+            "paperId": "ff0bc36cca8a69b917155255c97c3fb6faef8474",
+            "title": "The commutant lifting approach to interpolation problems"
+        },
+        {
+            "paperId": null,
+            "title": "Minimum Entropy H\u221e Control, Lecture Notes in Control and Information"
+        },
+        {
+            "paperId": "5097bb830231bd610d75633218e0ada080d8de87",
+            "title": "LQG control with an H/sup infinity / performance bound: a Riccati equation approach"
+        },
+        {
+            "paperId": null,
+            "title": "control\u2013Part I: model matching, \u2013 Part II: solution for controllers,"
+        },
+        {
+            "paperId": "54d3dd8e4ce0d293fd97d17656444b8fd837cd85",
+            "title": "Control System Synthesis : A Factorization Approach"
+        },
+        {
+            "paperId": "3b4b424cacb82239abb25f0a85d4f5cd24e8ad0d",
+            "title": "Robust process control"
+        },
+        {
+            "paperId": "21baa434e8ce8c08c158b2c20bf6db881a371e43",
+            "title": "A Course in H Control Theory"
+        },
+        {
+            "paperId": null,
+            "title": "The general structured singular problem with two blocks of uncertainty."
+        },
+        {
+            "paperId": "1ec2dc30e823fe534e6965f653f11a125a47250a",
+            "title": "The theory of matrices : with applications"
+        },
+        {
+            "paperId": "920965bce8fdf148c8e2236c4f41e6da3fe64666",
+            "title": "Minimizing Conservativeness of Robustness Singular Values"
+        },
+        {
+            "paperId": "d12243f31985824d9bc7a8959ceb4aac69a9ca1d",
+            "title": "Stability of interconnected systems having slope-bounded nonlinearities"
+        },
+        {
+            "paperId": "4010b3e937425686790221e043c06ba0cd1e9766",
+            "title": "Model reduction for control system design"
+        },
+        {
+            "paperId": null,
+            "title": "Lecture notes in advances in multivariable control,"
+        },
+        {
+            "paperId": "225ca57add3b3fb12ef01cc97c4683350dc93fe4",
+            "title": "Matrix computations"
+        },
+        {
+            "paperId": "9fb684db7b6299bda8deba5e7dc2508fca495229",
+            "title": "Basic Operator Theory"
+        },
+        {
+            "paperId": "7b44e14fdfd9b000a20e9f5dd02031cbc3f2813c",
+            "title": "Computation of \"Balancing\" transformations"
+        },
+        {
+            "paperId": "76c5f23b78a637647efde10616c4359f500ad0d2",
+            "title": "Digital control of dynamic systems"
+        },
+        {
+            "paperId": null,
+            "title": "Unstable systems and feedback: The gap metric,"
+        },
+        {
+            "paperId": "17c53c77ba81dd54f8ad9df3aef486a6f872434d",
+            "title": "Linear Systems"
+        },
+        {
+            "paperId": "12e270d3e6723432e10afcf9af3177d773c96828",
+            "title": "Feedback systems: Input-output properties"
+        },
+        {
+            "paperId": null,
+            "title": "Applied Optimal Control, Hemisphere Publishing Corporation"
+        },
+        {
+            "paperId": "b6e1d4f6bd21c664e15ae91276e5c875a062931e",
+            "title": "Linear Multivariable Control: A Geometric Approach"
+        },
+        {
+            "paperId": null,
+            "title": "Network Analysis and Synthesis: A Modern System Theory Approach"
+        },
+        {
+            "paperId": "ae44f5b83f90b46e8ff0a9703070aad87c87cf8a",
+            "title": "Guaranteed Margins for LQG Regulators"
+        },
+        {
+            "paperId": "7e5c6cad7edb75fbcd917668c06f4f4c8032aa3e",
+            "title": "On the matrix riccati equation"
+        },
+        {
+            "paperId": "8ae23f17f5e2ea010484844ea95b5828ff0a6326",
+            "title": "On the matrix riccati equation"
+        },
+        {
+            "paperId": "f486eec927478caa4d70e34e543dad80ba66cd1e",
+            "title": "Modern Control Theory"
+        },
+        {
+            "paperId": "df53c8b06b6d888f1337d9fa8da9e05b9f75985e",
+            "title": "Linear Operator Theory in Engineering and Science"
+        },
+        {
+            "paperId": null,
+            "title": "On the input-output stability of nonlinear time-varying feedback systems, parts I and II,"
+        },
+        {
+            "paperId": "e1bad0cb5cdde32933019a89b1d0a3843976805a",
+            "title": "Synthesis of feedback systems"
+        },
+        {
+            "paperId": "20f3c0c8f238f7b4642c170a9fe35cec397f37a1",
+            "title": "Banach Spaces of Analytic Functions"
+        },
+        {
+            "paperId": "1222964072cbc1dfc33993273be85b893f0ffc8e",
+            "title": "Inequalities for a Matrix Riccati Equation"
+        },
+        {
+            "paperId": "21bd79e20725425b0b886240048651ebac402dfe",
+            "title": "On Bounded Bilinear Forms"
+        },
+        {
+            "paperId": null,
+            "title": "Network Analysis and Feedback Amplifier Design, Van Nostrand, Princeton"
+        }
+    ]
+}

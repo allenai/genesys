@@ -1,0 +1,202 @@
+{
+    "paperId": "893c713c6bde0a78661c13e6962050c006f7fcb0",
+    "externalIds": {
+        "ACL": "C18-1041",
+        "MAG": "2856961199",
+        "DBLP": "conf/coling/HuLT0S18",
+        "CorpusId": 52011555
+    },
+    "title": "Few-Shot Charge Prediction with Discriminative Legal Attributes",
+    "abstract": "Automatic charge prediction aims to predict the final charges according to the fact descriptions in criminal cases and plays a crucial role in legal assistant systems. Existing works on charge prediction perform adequately on those high-frequency charges but are not yet capable of predicting few-shot charges with limited cases. Moreover, these exist many confusing charge pairs, whose fact descriptions are fairly similar to each other. To address these issues, we introduce several discriminative attributes of charges as the internal mapping between fact descriptions and charges. These attributes provide additional information for few-shot charges, as well as effective signals for distinguishing confusing charges. More specifically, we propose an attribute-attentive charge prediction model to infer the attributes and charges simultaneously. Experimental results on real-work datasets demonstrate that our proposed model achieves significant and consistent improvements than other state-of-the-art baselines. Specifically, our model outperforms other baselines by more than 50% in the few-shot scenario. Our codes and datasets can be obtained from https://github.com/thunlp/attribute_charge.",
+    "venue": "International Conference on Computational Linguistics",
+    "year": 2018,
+    "referenceCount": 39,
+    "citationCount": 190,
+    "influentialCitationCount": 34,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes an attribute-attentive charge prediction model to infer the attributes and charges simultaneously and achieves significant and consistent improvements than other state-of-the-art baselines in the few-shot scenario."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "51193721",
+            "name": "Zikun Hu"
+        },
+        {
+            "authorId": "2144439382",
+            "name": "Xiang Li"
+        },
+        {
+            "authorId": "2652217",
+            "name": "Cunchao Tu"
+        },
+        {
+            "authorId": "49293587",
+            "name": "Zhiyuan Liu"
+        },
+        {
+            "authorId": "1753344",
+            "name": "Maosong Sun"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "b9a89d15532d15de86a81674ef0fcba02553f85c",
+            "title": "Exploring the Use of Text Classification in the Legal Domain"
+        },
+        {
+            "paperId": "8513e433d5bbf26c2305895128557ed1f795842a",
+            "title": "Zero-Shot Activity Recognition with Verb Attribute Induction"
+        },
+        {
+            "paperId": "dd589899bc03fe2fba72502f5a34b14674a9180b",
+            "title": "Learning to Predict Charges for Criminal Cases with Legal Basis"
+        },
+        {
+            "paperId": "61b3b14977068904450bcba9a76c7d58bfc89ce8",
+            "title": "A general approach for predicting the behavior of the Supreme Court of the United States"
+        },
+        {
+            "paperId": "455afd748e8834ef521e4b67c7c056d3c33429e2",
+            "title": "Hierarchical Attention Networks for Document Classification"
+        },
+        {
+            "paperId": "ecb5336bf7b54a62109f325e7152bb74c4c7f527",
+            "title": "Document Modeling with Gated Recurrent Neural Network for Sentiment Classification"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "1938624bb9b0f999536dcc8d8f519810bb4e1b3b",
+            "title": "On Using Very Large Target Vocabulary for Neural Machine Translation"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "018e730f8947173e1140210d4d1760d05c9d3854",
+            "title": "Zero-shot recognition with unreliable attributes"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "1f6ba0782862ec12a5ec6d7fb608523d55b0c6ba",
+            "title": "Convolutional Neural Networks for Sentence Classification"
+        },
+        {
+            "paperId": "16a4e39dfa15e9ae5906a521464e008a24e628b4",
+            "title": "Zero-Shot Event Detection Using Multi-modal Fusion of Weakly Supervised Concepts"
+        },
+        {
+            "paperId": "33261d252218007147a71e40f8367ed152fa2fe0",
+            "title": "Question Answering with Subgraph Embeddings"
+        },
+        {
+            "paperId": "12ecc2d786080f638a01b9999518e9386baa157d",
+            "title": "Joint Training of a Convolutional Network and a Graphical Model for Human Pose Estimation"
+        },
+        {
+            "paperId": "f038e8c3656f5c7a4846a7eca731eb567255adcb",
+            "title": "Write a Classifier: Zero-Shot Learning Using Purely Textual Descriptions"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "237a04dd8291cbdb59b6dc4b53e689af743fe2a3",
+            "title": "Learning Hierarchical Features for Scene Labeling"
+        },
+        {
+            "paperId": "caa632d101a41a7860562e4399a5eaa9a4088b55",
+            "title": "Label-Embedding for Attribute-Based Classification"
+        },
+        {
+            "paperId": "24e555913192d8722f4a0240445bf73db71bd884",
+            "title": "Deep convolutional neural networks for LVCSR"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "d1aa8dfc588a4053be238333be809ae101bab2b7",
+            "title": "\u5229\u7528\u6a5f\u5668\u5b78\u7fd2\u65bc\u4e2d\u6587\u6cd5\u5f8b\u6587\u4ef6\u4e4b\u6a19\u8a18\u3001\u6848\u4ef6\u5206\u985e\u53ca\u91cf\u5211\u9810\u6e2c (Exploiting Machine Learning Models for Chinese Legal Documents Labeling, Case Classification, and Sentencing Prediction) [In Chinese]"
+        },
+        {
+            "paperId": "6658bbf68995731b2083195054ff45b4eca38b3a",
+            "title": "Context-Dependent Pre-Trained Deep Neural Networks for Large-Vocabulary Speech Recognition"
+        },
+        {
+            "paperId": "cb45e9217fe323fbc199d820e7735488fca2a9b3",
+            "title": "Strategies for training large scale neural network language models"
+        },
+        {
+            "paperId": "bc1022b031dc6c7019696492e8116598097a8c12",
+            "title": "Natural Language Processing (Almost) from Scratch"
+        },
+        {
+            "paperId": "5a9e85af0bc45472e9c14e956819f1324085aaa1",
+            "title": "A Review of Machine Learning Algorithms for Text-Documents Classification"
+        },
+        {
+            "paperId": "9497e6bcc43a9830c2784aa20bbe22f1796cd2f6",
+            "title": "Exploring Phrase-Based Classification of Judicial Documents for Criminal Charges in Chinese"
+        },
+        {
+            "paperId": "d839f40a66b96c0742bd63f650867a584859022d",
+            "title": "Case Instance Generation and Refinement for Case-Based Criminal Summary Judgments in Chinese"
+        },
+        {
+            "paperId": "ccce1cf96f641b3581fba6f4ce2545f4135a15e3",
+            "title": "Least Squares Support Vector Machine Classifiers"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "e50a316f97c9a405aa000d883a633bd5707f1a34",
+            "title": "Term-Weighting Approaches in Automatic Text Retrieval"
+        },
+        {
+            "paperId": "cbb6d425b933031fb87c22fff550caf05cef0e88",
+            "title": "Predicting Supreme Court Decisions Mathematically: A Quantitative Analysis of the \u201cRight to Counsel\u201d Cases"
+        },
+        {
+            "paperId": null,
+            "title": "THULAC: An efficient lexical analyzer for chinese"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "31868290adf1c000c611dfc966b514d5a34e8d23",
+            "title": "FUNDAMENTAL TECHNOLOGIES IN MODERN SPEECH RECOGNITION Digital Object Identifier 10.1109/MSP.2012.2205597"
+        },
+        {
+            "paperId": null,
+            "title": "Mathematical models for legal prediction"
+        },
+        {
+            "paperId": "4f8c53f5a2e416d65819164cbad3bd9d3cbcda84",
+            "title": "Predicting judicial decisions: The nearest neighbor rule and visual representa-tion of case patterns"
+        },
+        {
+            "paperId": null,
+            "title": "Applying correlation analysis to case prediction"
+        },
+        {
+            "paperId": "3fd90098551bf88c7509521adf1c0ba9b5dfeb57",
+            "title": "Attribute-Based Classification for Zero-Shot Visual Object Categorization"
+        }
+    ]
+}

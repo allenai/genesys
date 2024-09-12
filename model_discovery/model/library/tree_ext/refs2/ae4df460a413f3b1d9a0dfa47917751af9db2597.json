@@ -1,0 +1,161 @@
+{
+    "paperId": "ae4df460a413f3b1d9a0dfa47917751af9db2597",
+    "externalIds": {
+        "DBLP": "conf/nips/RangapuramSGSWJ18",
+        "MAG": "2889928394",
+        "CorpusId": 53991169
+    },
+    "title": "Deep State Space Models for Time Series Forecasting",
+    "abstract": "We present a novel approach to probabilistic time series forecasting that combines state space models with deep learning. By parametrizing a per-time-series linear state space model with a jointly-learned recurrent neural network, our method retains desired properties of state space models such as data efficiency and interpretability, while making use of the ability to learn complex patterns from raw data offered by deep learning approaches. Our method scales gracefully from regimes where little training data is available to regimes where data from millions of time series can be leveraged to learn accurate models. We provide qualitative as well as quantitative results with the proposed method, showing that it compares favorably to the state-of-the-art.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2018,
+    "referenceCount": 28,
+    "citationCount": 579,
+    "influentialCitationCount": 40,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel approach to probabilistic time series forecasting that combines state space models with deep learning by parametrizing a per-time-series linear state space model with a jointly-learned recurrent neural network, which compares favorably to the state-of-the-art."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "26320653",
+            "name": "Syama Sundar Rangapuram"
+        },
+        {
+            "authorId": "1680574",
+            "name": "M. Seeger"
+        },
+        {
+            "authorId": "2113062",
+            "name": "Jan Gasthaus"
+        },
+        {
+            "authorId": "2066263165",
+            "name": "Lorenzo Stella"
+        },
+        {
+            "authorId": "49416149",
+            "name": "Bernie Wang"
+        },
+        {
+            "authorId": "2166235",
+            "name": "Tim Januschowski"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "d378cafff41fafb84b3c9c4dff239dbae7718322",
+            "title": "The M4 Competition: Results, findings, conclusion and way forward"
+        },
+        {
+            "paperId": "44d055e10bdadaa6a7633ccd08818a70b21be80f",
+            "title": "State Space LSTM Models with Particle MCMC Inference"
+        },
+        {
+            "paperId": "92aacdebbf5c768abb8169047ae7d2702894259e",
+            "title": "A Multi-Horizon Quantile Recurrent Forecaster"
+        },
+        {
+            "paperId": "cff1f36b3f4b998b70732c3a2803a24485f220ed",
+            "title": "A Disentangled Recognition and Nonlinear Dynamics Model for Unsupervised Learning"
+        },
+        {
+            "paperId": "e59643ada78468eee9aa4150839e05bdcd43d18e",
+            "title": "Approximate Bayesian Inference in Linear State Space Models for Intermittent Demand Forecasting at Scale"
+        },
+        {
+            "paperId": "55470ea8858d18e5c7675d2e717e2a0cd9a1e319",
+            "title": "Latent LSTM Allocation: Joint Clustering and Non-Linear Dynamic Modeling of Sequence Data"
+        },
+        {
+            "paperId": "4eebe0d12aefeedf3ca85256bc8aa3b4292d47d9",
+            "title": "DeepAR: Probabilistic Forecasting with Autoregressive Recurrent Networks"
+        },
+        {
+            "paperId": "bf2f247e9f514ee5f4dc0fe912d726bcf6ed2aad",
+            "title": "Temporal Regularized Matrix Factorization for High-dimensional Time Series Prediction"
+        },
+        {
+            "paperId": "59402496779a6d92afd70a551b64be4356e1a781",
+            "title": "Bayesian Intermittent Demand Forecasting for Large Inventories"
+        },
+        {
+            "paperId": "2af17f153e3fd71e15db9216b972aef222f46617",
+            "title": "Structured Inference Networks for Nonlinear State Space Models"
+        },
+        {
+            "paperId": "df0402517a7338ae28bc54acaac400de6b456a46",
+            "title": "WaveNet: A Generative Model for Raw Audio"
+        },
+        {
+            "paperId": "8de1d8425937890522118ca63781c3b318e79f2f",
+            "title": "Sequential Neural Models with Stochastic Layers"
+        },
+        {
+            "paperId": "6768ed8d51d1eb0d06f9726a42cef2f17a401f65",
+            "title": "Deep Variational Bayes Filters: Unsupervised Learning of State Space Models from Raw Data"
+        },
+        {
+            "paperId": "9ca3af4440eb4aa4fd0a65dfa559685b2c39cd42",
+            "title": "Composing graphical models with neural networks for structured representations and fast inference"
+        },
+        {
+            "paperId": "89e7593359c4e07b34a02644bfd9a2b5dd6c36f6",
+            "title": "Deep Kalman Filters"
+        },
+        {
+            "paperId": "0c3b69b5247ef18fd5bab1109d87a04184ea8f4b",
+            "title": "A Recurrent Latent Variable Model for Sequential Data"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "68eebc23539f2e1bfec854f90e43f722643c3c6c",
+            "title": "Effective Bayesian Modeling of Groups of Related Count Time Series"
+        },
+        {
+            "paperId": "484ad17c926292fbe0d5211540832a8c8a8e958b",
+            "title": "Stochastic Backpropagation and Approximate Inference in Deep Generative Models"
+        },
+        {
+            "paperId": "5f5dc5b9a2ba710937e2c413b37b053cd673df02",
+            "title": "Auto-Encoding Variational Bayes"
+        },
+        {
+            "paperId": "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17",
+            "title": "Generating Sequences With Recurrent Neural Networks"
+        },
+        {
+            "paperId": "92ace17730c2173e642934d64f96d359697b7a93",
+            "title": "Bayesian reasoning and machine learning"
+        },
+        {
+            "paperId": "4d97f54381f8f4afa5c612ba9d8c1cbb254ae175",
+            "title": "The Tourism Forecasting Competition"
+        },
+        {
+            "paperId": "5b69af911774f667c212e24c2c891d5f91422cc9",
+            "title": "Some Recent Advances in Forecasting and Control"
+        },
+        {
+            "paperId": "6e820cf11712b9041bb625634612a535476f0960",
+            "title": "An Analysis of Transformations"
+        },
+        {
+            "paperId": "a9b077367a8ca4cfa8425db31dd339673ddf1579",
+            "title": "Time-series Extreme Event Forecasting with Neural Networks at Uber"
+        },
+        {
+            "paperId": null,
+            "title": "Time series analysis by state space methods, volume 38"
+        },
+        {
+            "paperId": "68c8684df93f6bed671ef27e95ff6ab3a93d2853",
+            "title": "Forecasting with Exponential Smoothing"
+        }
+    ]
+}

@@ -1,0 +1,934 @@
+{
+    "paperId": "3a58efcc4558727cc5c131c44923635da4524f33",
+    "externalIds": {
+        "ArXiv": "1806.01261",
+        "DBLP": "journals/corr/abs-1806-01261",
+        "MAG": "2805516822",
+        "CorpusId": 46935302
+    },
+    "title": "Relational inductive biases, deep learning, and graph networks",
+    "abstract": "Artificial intelligence (AI) has undergone a renaissance recently, making major progress in key domains such as vision, language, control, and decision-making. This has been due, in part, to cheap data and cheap compute resources, which have fit the natural strengths of deep learning. However, many defining characteristics of human intelligence, which developed under much different pressures, remain out of reach for current approaches. In particular, generalizing beyond one's experiences--a hallmark of human intelligence from infancy--remains a formidable challenge for modern AI. \nThe following is part position paper, part review, and part unification. We argue that combinatorial generalization must be a top priority for AI to achieve human-like abilities, and that structured representations and computations are key to realizing this objective. Just as biology uses nature and nurture cooperatively, we reject the false choice between \"hand-engineering\" and \"end-to-end\" learning, and instead advocate for an approach which benefits from their complementary strengths. We explore how using relational inductive biases within deep learning architectures can facilitate learning about entities, relations, and rules for composing them. We present a new building block for the AI toolkit with a strong relational inductive bias--the graph network--which generalizes and extends various approaches for neural networks that operate on graphs, and provides a straightforward interface for manipulating structured knowledge and producing structured behaviors. We discuss how graph networks can support relational reasoning and combinatorial generalization, laying the foundation for more sophisticated, interpretable, and flexible patterns of reasoning. As a companion to this paper, we have released an open-source software library for building graph networks, with demonstrations of how to use them in practice.",
+    "venue": "arXiv.org",
+    "year": 2018,
+    "referenceCount": 200,
+    "citationCount": 2845,
+    "influentialCitationCount": 260,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is argued that combinatorial generalization must be a top priority for AI to achieve human-like abilities, and that structured representations and computations are key to realizing this objective."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2019153",
+            "name": "P. Battaglia"
+        },
+        {
+            "authorId": "2158860",
+            "name": "Jessica B. Hamrick"
+        },
+        {
+            "authorId": "2603033",
+            "name": "V. Bapst"
+        },
+        {
+            "authorId": "1398105826",
+            "name": "Alvaro Sanchez-Gonzalez"
+        },
+        {
+            "authorId": "3133079",
+            "name": "V. Zambaldi"
+        },
+        {
+            "authorId": "145478807",
+            "name": "Mateusz Malinowski"
+        },
+        {
+            "authorId": "2844530",
+            "name": "A. Tacchetti"
+        },
+        {
+            "authorId": "143724694",
+            "name": "David Raposo"
+        },
+        {
+            "authorId": "35030998",
+            "name": "Adam Santoro"
+        },
+        {
+            "authorId": null,
+            "name": "Ryan Faulkner"
+        },
+        {
+            "authorId": "1854385",
+            "name": "\u00c7aglar G\u00fcl\u00e7ehre"
+        },
+        {
+            "authorId": "2107148568",
+            "name": "H. F. Song"
+        },
+        {
+            "authorId": "5055381",
+            "name": "A. J. Ballard"
+        },
+        {
+            "authorId": "2058362",
+            "name": "J. Gilmer"
+        },
+        {
+            "authorId": "35188630",
+            "name": "George E. Dahl"
+        },
+        {
+            "authorId": "40348417",
+            "name": "Ashish Vaswani"
+        },
+        {
+            "authorId": "145254624",
+            "name": "Kelsey R. Allen"
+        },
+        {
+            "authorId": "36942233",
+            "name": "C. Nash"
+        },
+        {
+            "authorId": "2066201331",
+            "name": "Victoria Langston"
+        },
+        {
+            "authorId": "1745899",
+            "name": "Chris Dyer"
+        },
+        {
+            "authorId": "2801204",
+            "name": "N. Heess"
+        },
+        {
+            "authorId": "1688276",
+            "name": "Daan Wierstra"
+        },
+        {
+            "authorId": "143967473",
+            "name": "Pushmeet Kohli"
+        },
+        {
+            "authorId": "46378362",
+            "name": "M. Botvinick"
+        },
+        {
+            "authorId": "1689108",
+            "name": "O. Vinyals"
+        },
+        {
+            "authorId": "47002813",
+            "name": "Yujia Li"
+        },
+        {
+            "authorId": "1996134",
+            "name": "Razvan Pascanu"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "83040001210751239553269727b9ea53e152af71",
+            "title": "Building Machines that Learn and Think Like People"
+        },
+        {
+            "paperId": "5e49c80f8b12a100c5f4518897c4cbf72710c252",
+            "title": "Relational Deep Reinforcement Learning"
+        },
+        {
+            "paperId": "43879cf527f4918955fd55128baa6745174d8555",
+            "title": "Graph networks as learnable physics engines for inference and control"
+        },
+        {
+            "paperId": "4a18affba68096f53a8a884e4a9ebd34e65d305f",
+            "title": "Relational inductive bias for physical construction in humans and machines"
+        },
+        {
+            "paperId": "def1049b5aae96c8e1eab0ca58d77ac9c2f0e3e9",
+            "title": "MolGAN: An implicit generative model for small molecular graphs"
+        },
+        {
+            "paperId": "ebff4eb2f94dcf38171a5ca6a24ee95bc8e88c10",
+            "title": "Hyperbolic Attention Networks"
+        },
+        {
+            "paperId": "6c44f8e62d824bcda4f291c679a5518bbd4225f6",
+            "title": "Adversarial Attacks on Neural Networks for Graph Data"
+        },
+        {
+            "paperId": "e33bc0cd79d92d6868989a29c3ab06b75f808590",
+            "title": "Deep Nets: What have They Ever Done for Vision?"
+        },
+        {
+            "paperId": "6fe338f8741c41e18f7efbe6767ca5b2b099ce6c",
+            "title": "Behavior Is Everything: Towards Representing Concepts with Sensorimotor Contingencies"
+        },
+        {
+            "paperId": "30de3c20bbe9562e1fbce162d84de593a073bc15",
+            "title": "Prefrontal cortex as a meta-reinforcement learning system"
+        },
+        {
+            "paperId": "57c36f13b188816051a27478e2f56bb284f4fb13",
+            "title": "Iterative Visual Reasoning Beyond Convolutions"
+        },
+        {
+            "paperId": "0a69a34408555a6fcdb0491e9bf82af8675876ae",
+            "title": "Attention Solves Your TSP"
+        },
+        {
+            "paperId": "a3eb4996ca07058de31c07a0462aac958c3cb3e7",
+            "title": "Inference in Probabilistic Graphical Models by Graph Neural Networks"
+        },
+        {
+            "paperId": "a1172d0de6164bb7eaadbcdbc10e7b03b773b6ad",
+            "title": "Deep Models of Interactions Across Sets"
+        },
+        {
+            "paperId": "c8efcc854d97dfc2a42b83316a2109f9d166e43f",
+            "title": "Self-Attention with Relative Position Representations"
+        },
+        {
+            "paperId": "dcd5b17b26c028b574cfcadd0d4e47b8d169ce5c",
+            "title": "NetGAN: Generating Graphs via Random Walks"
+        },
+        {
+            "paperId": "e0155830d8982da4631cb71546fca782b2e00c20",
+            "title": "Composable Planning with Attributes"
+        },
+        {
+            "paperId": "2afa9966c37b7747d954a4dcd61e986247783683",
+            "title": "GraphRNN: A Deep Generative Model for Graphs"
+        },
+        {
+            "paperId": "f32f16ca3c27ff945198c6551a5d35fae3b1a660",
+            "title": "Learning Deep Generative Models of Graphs"
+        },
+        {
+            "paperId": "249408527106d7595d45dd761dd53c83e5a02613",
+            "title": "NerveNet: Learning Structured Policy with Graph Neural Networks"
+        },
+        {
+            "paperId": "5c1a251a6609ddfb6d6d7425169c8170d95db638",
+            "title": "Relational Neural Expectation Maximization: Unsupervised Discovery of Objects and their Interactions"
+        },
+        {
+            "paperId": "bdea8b6ceabaeb86bd23c2d2585da1ff3858d968",
+            "title": "Can Neural Networks Understand Logical Entailment?"
+        },
+        {
+            "paperId": "289fb3709475f5c87df8d97f129af54029d27fee",
+            "title": "Compositional Attention Networks for Machine Reasoning"
+        },
+        {
+            "paperId": "89b1766a77f7a34aadd67861123d5cf3cd3ece52",
+            "title": "Neural Relational Inference for Interacting Systems"
+        },
+        {
+            "paperId": "86de01329bd423fee0996d0bd7eb52f097d96926",
+            "title": "Learning to Search with MCTSnets"
+        },
+        {
+            "paperId": "fe257027193ea4a74fdab99d7509ce4002ad7de6",
+            "title": "Learning a SAT Solver from Single-Bit Supervision"
+        },
+        {
+            "paperId": "84032c19bad3493957d1319babd19bde2821fee3",
+            "title": "On the Generalization of Equivariance and Convolution in Neural Networks to the Action of Compact Groups"
+        },
+        {
+            "paperId": "6c6170ffb39cdc8cfffbeda9c7a2259eda5875f2",
+            "title": "Tree-to-tree Neural Networks for Program Translation"
+        },
+        {
+            "paperId": "e156edf6d11dc19580c2e70940645fb107893817",
+            "title": "High-Order Graph Convolutional Recurrent Neural Network: A Deep Learning Framework for Network-Scale Traffic Learning and Forecasting"
+        },
+        {
+            "paperId": "adfc4a14e319bd4a49b88452c74b03d7ae4400eb",
+            "title": "From Skills to Symbols: Learning Symbolic Representations for Abstract High-Level Planning"
+        },
+        {
+            "paperId": "e1799aaf23c12af6932dc0ef3dfb1638f01413d1",
+            "title": "Dynamic Graph CNN for Learning on Point Clouds"
+        },
+        {
+            "paperId": "67b25141426bd0956439bce9aa3f2624d2bd3594",
+            "title": "Innateness, AlphaZero, and Artificial Intelligence"
+        },
+        {
+            "paperId": "f615bd164110160e160c98f59d7bfcc931a3cdc1",
+            "title": "Theoretical Impediments to Machine Learning With Seven Sparks from the Causal Revolution"
+        },
+        {
+            "paperId": "afd76be183d34af3bf944debd73db1c77987a8c6",
+            "title": "Covariant Compositional Networks For Learning Graphs"
+        },
+        {
+            "paperId": "5e2bb96c47ccaa16a4e7192e8fadb3b3e1c3acdc",
+            "title": "Deep Learning: A Critical Appraisal"
+        },
+        {
+            "paperId": "6a0aaefce8a27a8727d896fa444ba27558b2d381",
+            "title": "Relation Networks for Object Detection"
+        },
+        {
+            "paperId": "8899094797e82c5c185a0893896320ef77f60e64",
+            "title": "Non-local Neural Networks"
+        },
+        {
+            "paperId": "4df7bbe3ca7806f39a490c99f17867a0ac299bc3",
+            "title": "Learning Explanatory Rules from Noisy Data"
+        },
+        {
+            "paperId": "572a1f77306e160c3893299c18f3ed862fb5f6d9",
+            "title": "Few-Shot Learning with Graph Neural Networks"
+        },
+        {
+            "paperId": "5f1d429ba574581ac14effe3ebab654a57dc0e39",
+            "title": "Learning to Represent Programs with Graphs"
+        },
+        {
+            "paperId": "856451974cce2d353d5d8a5a72104984a252375c",
+            "title": "Hierarchical Representations for Efficient Architecture Search"
+        },
+        {
+            "paperId": "eecab00a7c6d58792ec5e620ab1fc37043545a14",
+            "title": "Still not systematic after all these years: On the compositional skills of sequence-to-sequence recurrent networks"
+        },
+        {
+            "paperId": "da1d97dba0a34b1cc9171eb5b0e24d331eceb15c",
+            "title": "TreeQN and ATreeC: Differentiable Tree Planning for Deep Reinforcement Learning"
+        },
+        {
+            "paperId": "33998aff64ce51df8dee45989cdca4b6b1329ec4",
+            "title": "Graph Attention Networks"
+        },
+        {
+            "paperId": "cfa75e0a93337adb1ee4fbc93775b84ca724db2c",
+            "title": "Semantic Code Repair using Neuro-Symbolic Transformation Networks"
+        },
+        {
+            "paperId": "c4c06578f4870e4b126e6837907929f3c900b99f",
+            "title": "Dynamic Routing Between Capsules"
+        },
+        {
+            "paperId": "b00cea45c85e68002d34b608aecb4fddd18210aa",
+            "title": "Learning Graph Representations with Embedding Propagation"
+        },
+        {
+            "paperId": "d798756dd70dea6064e0cb2a6a9fd159aff84828",
+            "title": "Action Schema Networks: Generalised Policies with Deep Learning"
+        },
+        {
+            "paperId": "12d64afc8a19b1234a766aba5684036ce7937d0d",
+            "title": "Answering Visual-Relational Queries in Web-Extracted Knowledge Graphs"
+        },
+        {
+            "paperId": "e4ee8e2fcbdf2b65ca39c28f36c81d4c56b82d0d",
+            "title": "Representation Learning for Visual-Relational Knowledge Graphs"
+        },
+        {
+            "paperId": "0fe30b40d443dfd808a64bc5a8d62a9875adc872",
+            "title": "Mind Games: Game Engines as an Architecture for Intuitive Physics"
+        },
+        {
+            "paperId": "bd1d59433e3b7ae7207c24b4cd1838acea91425c",
+            "title": "Learning model-based planning from scratch"
+        },
+        {
+            "paperId": "0c31441de0e50b3a76a2e7908835d42a815a7e7f",
+            "title": "graph2vec: Learning Distributed Representations of Graphs"
+        },
+        {
+            "paperId": "9ba0186ed40656329c421f55ada7313293e13f17",
+            "title": "Diffusion Convolutional Recurrent Neural Network: Data-Driven Traffic Forecasting"
+        },
+        {
+            "paperId": "3e2742cbc683e2422e504f248ccf63f1a7983c69",
+            "title": "A Note on Learning Algorithms for Quadratic Assignment with Graph Neural Networks"
+        },
+        {
+            "paperId": "046c4ff0b08361b1ee84fecf1292d385d7bca277",
+            "title": "Programmable Agents"
+        },
+        {
+            "paperId": "5808f5285bc60a73bc240621ad0fce606867ebc1",
+            "title": "VAIN: Attentional Multi-agent Predictive Modeling"
+        },
+        {
+            "paperId": "a625dee1fb23d1c842a961bc354c0aef3a20c132",
+            "title": "Knowledge Transfer for Out-of-Knowledge-Base Entities : A Graph Neural Network Approach"
+        },
+        {
+            "paperId": "157f77a508c1645a2609c9b265391e9d1bfa95e4",
+            "title": "Schema Networks: Zero-shot Transfer with a Generative Causal Model of Intuitive Physics"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "6b7d6e6416343b2a122f8416e69059ce919026ef",
+            "title": "Inductive Representation Learning on Large Graphs"
+        },
+        {
+            "paperId": "414ab203d8fc3ecfbf40d004960d3a4774830b48",
+            "title": "Visual Interaction Networks: Learning a Physics Simulator from Video"
+        },
+        {
+            "paperId": "007112213ece771be72cbecfd59f048209facabd",
+            "title": "A simple neural network module for relational reasoning"
+        },
+        {
+            "paperId": "099cdb087f240352a02286bf9a3e7810c7ebb02b",
+            "title": "Metacontrol for Adaptive Imagination-Based Optimization"
+        },
+        {
+            "paperId": "1e819f533ef2bf5ca50a6b2008d96eaea2a2706e",
+            "title": "Learning Combinatorial Optimization Algorithms over Graphs"
+        },
+        {
+            "paperId": "e24cdf73b3e7e590c2fe5ecac9ae8aa983801367",
+            "title": "Neural Message Passing for Quantum Chemistry"
+        },
+        {
+            "paperId": "98e8b2f6a8583e83ce0159dd29cf5d848adcbd24",
+            "title": "Failures of Gradient-Based Deep Learning"
+        },
+        {
+            "paperId": "a456265138c088a894301c0433dae938705a9bec",
+            "title": "Deep Sets"
+        },
+        {
+            "paperId": "c889d6f98e6d79b89c3a6adf8a921f88fa6ba518",
+            "title": "Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks"
+        },
+        {
+            "paperId": "204a4a70428f3938d2c538a4d74c7ae0416306d8",
+            "title": "A Structured Self-attentive Sentence Embedding"
+        },
+        {
+            "paperId": "15f91ae7590b88c4a533daeefa4b6fa7c0c277e5",
+            "title": "Discovering objects and their relations from entangled scene representations"
+        },
+        {
+            "paperId": "a2155552ca5afb784a3c1d67a5bcbd4e688b6e05",
+            "title": "DeepStack: Expert-level artificial intelligence in heads-up no-limit poker"
+        },
+        {
+            "paperId": "d997beefc0922d97202789d2ac307c55c2c52fba",
+            "title": "PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation"
+        },
+        {
+            "paperId": "ae42c0cff384495683192b06bd985cdd7a54632a",
+            "title": "Interaction Networks for Learning about Objects, Relations and Physics"
+        },
+        {
+            "paperId": "d7878c2044fb699e0ce0cad83e411824b1499dc8",
+            "title": "Neural Combinatorial Optimization with Reinforcement Learning"
+        },
+        {
+            "paperId": "f09f7888aa5aeaf88a2a44aea768d9a8747e97d2",
+            "title": "Geometric Deep Learning on Graphs and Manifolds Using Mixture Model CNNs"
+        },
+        {
+            "paperId": "0e779fd59353a7f1f5b559b9d65fa4bfe367890c",
+            "title": "Geometric Deep Learning: Going beyond Euclidean data"
+        },
+        {
+            "paperId": "282a380fb5ac26d99667224cef8c630f6882704f",
+            "title": "Learning to reinforcement learn"
+        },
+        {
+            "paperId": "75bcac37b154eec4623c1423d7b330fc2055a67e",
+            "title": "Differentiable Programs with Neural Libraries"
+        },
+        {
+            "paperId": "3a13f7c43b767b1fb72ef107ef62a4ddd48dd2a7",
+            "title": "Modular Multitask Reinforcement Learning with Policy Sketches"
+        },
+        {
+            "paperId": "a1786540a4e15f0757e1b84a02f98ed436a969e0",
+            "title": "A Compositional Object-Based Approach to Learning Physical Dynamics"
+        },
+        {
+            "paperId": "644ca74f80463415613847ab01cff067fb58f0ad",
+            "title": "Neuro-Symbolic Program Synthesis"
+        },
+        {
+            "paperId": "53e6f10e70393bdbafa98238272977760196fddf",
+            "title": "Learning Continuous Semantic Representations of Symbolic Expressions"
+        },
+        {
+            "paperId": "edbc873a248768a626ef2bc57b3d1eff30de0e11",
+            "title": "Learning Graphical State Transitions"
+        },
+        {
+            "paperId": "a438fbb5124d446b4ef6a78c5c1a161e26d967c2",
+            "title": "Deep Amortized Inference for Probabilistic Programs"
+        },
+        {
+            "paperId": "784ee73d5363c711118f784428d1ab89f019daa5",
+            "title": "Hybrid computing using a neural network with dynamic external memory"
+        },
+        {
+            "paperId": "fdadf9f863a3d09e42f7fcdbbd8d3e088679ebbd",
+            "title": "Using Neural Network Formalism to Solve Multiple-Instance Problems"
+        },
+        {
+            "paperId": "376f23cce537235122fdce5524d084e3a869c403",
+            "title": "Towards Deep Symbolic Reinforcement Learning"
+        },
+        {
+            "paperId": "36eff562f65125511b5dfab68ce7f7a943c27478",
+            "title": "Semi-Supervised Classification with Graph Convolutional Networks"
+        },
+        {
+            "paperId": "97fb4e3d45bb098e27e0071448b6152217bd35a5",
+            "title": "Layer Normalization"
+        },
+        {
+            "paperId": "36ee2c8bd605afd48035d15fdc6b8c8842363376",
+            "title": "node2vec: Scalable Feature Learning for Networks"
+        },
+        {
+            "paperId": "c41eb895616e453dcba1a70c9b942c5063cc656c",
+            "title": "Convolutional Neural Networks on Graphs with Fast Localized Spectral Filtering"
+        },
+        {
+            "paperId": "e02f59cf876cb40233573ff78a1609f969d301cc",
+            "title": "subgraph2vec: Learning Distributed Representations of Rooted Sub-graphs from Large Graphs"
+        },
+        {
+            "paperId": "405c31c85a324942811f3c9dc53ce3528f9284df",
+            "title": "Towards a Neural Statistician"
+        },
+        {
+            "paperId": "50295c19e177480ba3599300de1ab837cc62b08c",
+            "title": "Learning Multiagent Communication with Backpropagation"
+        },
+        {
+            "paperId": "0772905d40b9afa3dc087a88184f09f3b3e1464f",
+            "title": "Learning to Communicate with Deep Multi-Agent Reinforcement Learning"
+        },
+        {
+            "paperId": "7c6de5a9e02a779e24504619050c6118f4eac181",
+            "title": "Learning Convolutional Neural Networks for Graphs"
+        },
+        {
+            "paperId": "2b5f51588f1c4cdca0865de20c1e2e1ff3570fd1",
+            "title": "Attend, Infer, Repeat: Fast Scene Understanding with Generative Models"
+        },
+        {
+            "paperId": "322cf9bcde458a45eaeca989a1eec92f7c6db984",
+            "title": "Discriminative Embeddings of Latent Variable Models for Structured Data"
+        },
+        {
+            "paperId": "561c3fa53d36405186da9cab02bd68635c3738aa",
+            "title": "Molecular graph convolutions: moving beyond fingerprints"
+        },
+        {
+            "paperId": "fafcaf5ca3fab8dc4fad15c2391c0fdb4a7dc005",
+            "title": "Group Equivariant Convolutional Networks"
+        },
+        {
+            "paperId": "b5c26ab8767d046cb6e32d959fdf726aee89bb62",
+            "title": "Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning"
+        },
+        {
+            "paperId": "846aedd869a00c09b40f1f1f35673cb22bc87490",
+            "title": "Mastering the game of Go with deep neural networks and tree search"
+        },
+        {
+            "paperId": "815c84ab906e43f3e6322f2ca3fd5e1360c64285",
+            "title": "Human-level concept learning through probabilistic program induction"
+        },
+        {
+            "paperId": "b59d91e0699d4e1896a15bae13fd180bdaf77ea5",
+            "title": "Neural Programmer-Interpreters"
+        },
+        {
+            "paperId": "a2499dd426c46c645ee805d7594b6687547c72d4",
+            "title": "Neural Random Access Machines"
+        },
+        {
+            "paperId": "492f57ee9ceb61fb5a47ad7aebfec1121887a175",
+            "title": "Gated Graph Sequence Neural Networks"
+        },
+        {
+            "paperId": "21c99706bb26e9012bfb4d8d48009a3d45af59b2",
+            "title": "Neural Module Networks"
+        },
+        {
+            "paperId": "5d1bfeed240709725c78bc72ea40e55410b373dc",
+            "title": "Convolutional Networks on Graphs for Learning Molecular Fingerprints"
+        },
+        {
+            "paperId": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+            "title": "Effective Approaches to Attention-based Neural Machine Translation"
+        },
+        {
+            "paperId": "e49ff72d420c8d72e62a9353e3abc053445e59bd",
+            "title": "Deep Convolutional Networks on Graph-Structured Data"
+        },
+        {
+            "paperId": "e837b79de602c69395498c1fbbe39bbb4e6f75ad",
+            "title": "Learning to Transduce with Unbounded Memory"
+        },
+        {
+            "paperId": "b36b7f7c68923d14ba2859b5d28a1124616a8c89",
+            "title": "Transition-Based Dependency Parsing with Stack Long Short-Term Memory"
+        },
+        {
+            "paperId": "60e801e3dfc9812e294ed9de6d579e0293d61643",
+            "title": "Probabilistic machine learning and artificial intelligence"
+        },
+        {
+            "paperId": "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e",
+            "title": "End-To-End Memory Networks"
+        },
+        {
+            "paperId": "0834e74304b547c9354b6d7da6fa78ef47a48fa8",
+            "title": "LINE: Large-scale Information Network Embedding"
+        },
+        {
+            "paperId": "d38e8631bba0720becdaf7b89f79d9f9dca45d82",
+            "title": "Inferring Algorithmic Patterns with Stack-Augmented Recurrent Nets"
+        },
+        {
+            "paperId": "32de44f01a96d4473d21099d15e25bc2b9f08e2f",
+            "title": "Improved Semantic Representations From Tree-Structured Long Short-Term Memory Networks"
+        },
+        {
+            "paperId": "340f48901f72278f6bf78a04ee5b01df208cc508",
+            "title": "Human-level control through deep reinforcement learning"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "8a756d4d25511d92a45d0f4545fa819de993851d",
+            "title": "Recurrent Models of Visual Attention"
+        },
+        {
+            "paperId": "0289597a130c7cb4fc543cbe0d8c779b829fce96",
+            "title": "Concepts in a Probabilistic Language of Thought"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "193edd20cae92c6759c18ce93eeea96afd9528eb",
+            "title": "Deep learning in neural networks: An overview"
+        },
+        {
+            "paperId": "fff114cbba4f3ba900f33da574283e3de7f26c83",
+            "title": "DeepWalk: online learning of social representations"
+        },
+        {
+            "paperId": "5e925a9f1e20df61d1e860a7aa71894b35a1c186",
+            "title": "Spectral Networks and Locally Connected Networks on Graphs"
+        },
+        {
+            "paperId": "2582ab7c70c9e7fcb84545944eba8f3a7f253248",
+            "title": "Translating Embeddings for Modeling Multi-relational Data"
+        },
+        {
+            "paperId": "29ade9f04f11dd8d434f051563f03928ed62c21b",
+            "title": "Simulation as an engine of physical scene understanding"
+        },
+        {
+            "paperId": "687bac2d3320083eb4530bf18bb8f8f721477600",
+            "title": "Recursive Deep Models for Semantic Compositionality Over a Sentiment Treebank"
+        },
+        {
+            "paperId": "c4fd9c86b2b41df51a6fe212406dda81b1997fd4",
+            "title": "Linguistic Regularities in Continuous Space Word Representations"
+        },
+        {
+            "paperId": "03954dcf415daab102fcbfee95d0ec9e4532ec26",
+            "title": "How to Build a Brain: A Neural Architecture for Biological Cognition"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "27e38351e48fe4b7da2775bf94341738bc4da07e",
+            "title": "Semantic Compositionality through Recursive Matrix-Vector Spaces"
+        },
+        {
+            "paperId": "803a88246aa31981ac46e3db3b612c6129ae4781",
+            "title": "Bayesian Nonparametrics"
+        },
+        {
+            "paperId": "cfa2646776405d50533055ceb1b7f050e9014dcb",
+            "title": "Semi-Supervised Recursive Autoencoders for Predicting Sentiment Distributions"
+        },
+        {
+            "paperId": "9c0ddf74f87d154db88d79c640578c1610451eec",
+            "title": "Parsing Natural Scenes and Natural Language with Recursive Neural Networks"
+        },
+        {
+            "paperId": "2a3842f6070b4554ff21fe62b2a486657d9a304a",
+            "title": "How to Grow a Mind: Statistics, Structure, and Abstraction"
+        },
+        {
+            "paperId": "7e1874986cf6433fabf96fff93ef42b60bdc49f8",
+            "title": "Weisfeiler-Lehman Graph Kernels"
+        },
+        {
+            "paperId": "ee2e8566ee16aebc8991b64a9286f8083b39c44c",
+            "title": "Probabilistic models of cognition: exploring representations and inductive biases"
+        },
+        {
+            "paperId": "36eb6fea39ce06e2807f074fa3d5e79ed0f2bcef",
+            "title": "Probabilistic Graphical Models: Principles and Techniques - Adaptive Computation and Machine Learning"
+        },
+        {
+            "paperId": "5b2403afd150bdf0b916f87eecd67d6bcc077ae2",
+            "title": "The discovery of structural form"
+        },
+        {
+            "paperId": "b8f57509a228f1c84bf67094ec1fa8a99407368b",
+            "title": "Church: a language for generative models"
+        },
+        {
+            "paperId": "393055f1cca23f9248cd8b1496814d7140fb217c",
+            "title": "Hierarchical models of behavior and prefrontal function"
+        },
+        {
+            "paperId": "54fa671463d476a2c41ff3e4b8129b07b77c099e",
+            "title": "Five Rules for the Evolution of Cooperation"
+        },
+        {
+            "paperId": "14f16a6d737a82a8b026ba6e378f84eb1e5d377c",
+            "title": "Theory-based Bayesian models of inductive learning and reasoning"
+        },
+        {
+            "paperId": "ee557d8918504b3098de11e696b9b5c484702ae1",
+            "title": "A simple rule for the evolution of cooperation on graphs and social networks"
+        },
+        {
+            "paperId": "9ca9f28676ad788d04ba24a51141a9a0a0df4d67",
+            "title": "A new model for learning in graph domains"
+        },
+        {
+            "paperId": "769bfd4a4b45979cf83bb56c054ebcaaaf8b35d7",
+            "title": "Graph neural networks for ranking Web pages"
+        },
+        {
+            "paperId": "fd38622d5e7f433d442a41eeedfea0470bdab566",
+            "title": "Introduction to real-time ray tracing"
+        },
+        {
+            "paperId": "134152cb1d5803351756c65d8321c7dbc47a954d",
+            "title": "Reasoning about relations."
+        },
+        {
+            "paperId": "b8d9ed504f70e38f9674df05bf3aadf729b5d379",
+            "title": "A symbolic-connectionist theory of relational inference and generalization."
+        },
+        {
+            "paperId": "5703c2643f7e8012b9bfb2ed53f34114acfc10f8",
+            "title": "Relational Reinforcement Learning"
+        },
+        {
+            "paperId": "e8d0c714ef6c60f82f41268c26d15b50f8bdc398",
+            "title": "On Language: On the Diversity of Human Language Construction and Its Influence on the Mental Development of the Human Species"
+        },
+        {
+            "paperId": "0c4d193b4e8520dbc583cc7ee59c8417869f67ce",
+            "title": "Holographic reduced representations"
+        },
+        {
+            "paperId": "cd7cb71039105686bc041de166ad7449176b2ac5",
+            "title": "Origins of knowledge."
+        },
+        {
+            "paperId": "a34e35dbbc6911fa7b94894dffdc0076a261b6f0",
+            "title": "Neural Networks and the Bias/Variance Dilemma"
+        },
+        {
+            "paperId": "605d738a39df3c5e596613ab0ca6925f0eecdf35",
+            "title": "Distributed representations, simple recurrent networks, and grammatical structure"
+        },
+        {
+            "paperId": "18aa8a0502e717c114312a3ba63dbb76fbcab47c",
+            "title": "Probabilistic reasoning in intelligent systems: Networks of plausible inference"
+        },
+        {
+            "paperId": "71dd4d477ca17b4db3b270d25225822ff3a41fac",
+            "title": "Mapping Part-Whole Hierarchies into Connectionist Networks"
+        },
+        {
+            "paperId": "6a835df43fdc2f79126319f6fa033bb42147c6f6",
+            "title": "Recursive Distributed Representations"
+        },
+        {
+            "paperId": "668087f0ae7ce1de6e0bd0965dbb480c08103260",
+            "title": "Finding Structure in Time"
+        },
+        {
+            "paperId": "a8e8f3c8d4418c8d62e306538c9c1292635e9d27",
+            "title": "Backpropagation Applied to Handwritten Zip Code Recognition"
+        },
+        {
+            "paperId": "052008dc9dca0f5d7ad0f9a856fee3e8ee9103e9",
+            "title": "On language and connectionism: Analysis of a parallel distributed processing model of language acquisition"
+        },
+        {
+            "paperId": "56cbfcbfffd8c54bd8477d10b6e0e17e097b97c7",
+            "title": "Connectionism and cognitive architecture: A critical analysis"
+        },
+        {
+            "paperId": "bb0419bccc2244ed33c9c42341f342511262daa3",
+            "title": "Fusion, Propagation, and Structuring in Belief Networks"
+        },
+        {
+            "paperId": "eb324f42d42dc29d9f89e044a76516227e4e2c66",
+            "title": "Acquisition of cognitive skill."
+        },
+        {
+            "paperId": "e6af68db1e6a291cbf6afb265f5fc2e82423b71b",
+            "title": "An interactive activation model of context effects in letter perception: I. An account of basic findings."
+        },
+        {
+            "paperId": "69e68bfaadf2dccff800158749f5a50fe82d173b",
+            "title": "Neocognitron: A self-organizing neural network model for a mechanism of pattern recognition unaffected by shift in position"
+        },
+        {
+            "paperId": "9f7d9abb2277e924a291033d5c3d1195989e80ff",
+            "title": "Forest before trees: The precedence of global features in visual perception"
+        },
+        {
+            "paperId": "c547e1f79e6039d05c5ae433a36612d7f8e4d3f5",
+            "title": "STRIPS: A New Approach to the Application of Theorem Proving to Problem Solving"
+        },
+        {
+            "paperId": "9b486c647916df9f8be0f8d4fc5c94c493bfaa80",
+            "title": "PRINCIPLES OF NEURODYNAMICS. PERCEPTRONS AND THE THEORY OF BRAIN MECHANISMS"
+        },
+        {
+            "paperId": "07941d79ab0f885349121b2e5a369afb3fc57eaf",
+            "title": "On the new Riddle of induction"
+        },
+        {
+            "paperId": "ee66f87c06337fb430a90897112de06fb61f6a9f",
+            "title": "The Nature of Explanation"
+        },
+        {
+            "paperId": "8603193192a64f0c9943989d209e7492689045c1",
+            "title": "Artificial Intelligence A Modern Approach 3rd Edition"
+        },
+        {
+            "paperId": null,
+            "title": "Stretching beyond the specific"
+        },
+        {
+            "paperId": "eb597cceec6e0889d1423ae688e8854bfa6f822d",
+            "title": "Learning to See Physics via Visual De-animation"
+        },
+        {
+            "paperId": "4f8d648c52edf74e41b0996128aa536e13cc7e82",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "15cad06c606ce6c4f88e186d4e3bbb78aca648e3",
+            "title": "LANGUAGE OF THOUGHT"
+        },
+        {
+            "paperId": "104c4017c200f434dc7ecfbef143b5f135497abc",
+            "title": "Computational Capabilities of Graph Neural Networks"
+        },
+        {
+            "paperId": "3efd851140aa28e95221b55fcc5659eea97b172d",
+            "title": "The Graph Neural Network Model"
+        },
+        {
+            "paperId": "6cf35ec34efa592f83e3a1b748aea14957fc784a",
+            "title": "The Need for Biases in Learning Generalizations"
+        },
+        {
+            "paperId": "1207aa55c8a2b47a25fc17c18328910daf3feb71",
+            "title": "Core knowledge."
+        },
+        {
+            "paperId": "7e9690058b4f04875a2c7781efd1247a43bf6747",
+            "title": "Introduction to Statistical Relational Learning"
+        },
+        {
+            "paperId": null,
+            "title": "The algebraic mind"
+        },
+        {
+            "paperId": "78a2da4c615fd064cdf6a04840af6acf12038531",
+            "title": "On language : on the diversity of human language construction and its influence on the mental development of the human species"
+        },
+        {
+            "paperId": "053a25c6b6b63f95fb4e1577f0d4cf26eacae0a1",
+            "title": "Structure mapping in analogy and similarity."
+        },
+        {
+            "paperId": "05581f42968029766c5877329fe2ca9f60461a6d",
+            "title": "Understanding normal and impaired word reading: computational principles in quasi-regular domains."
+        },
+        {
+            "paperId": "9438172bfbb74a6a4ea4242b180d4335bb1f18b7",
+            "title": "Tensor Product Variable Binding and the Representation of Symbolic Structures in Connectionist Systems"
+        },
+        {
+            "paperId": null,
+            "title": "Arti\ufb01cial Intelligence , volume 46."
+        },
+        {
+            "paperId": "cccc0a4817fd5f6d8758c66b4065a23897d49f1d",
+            "title": "Principles of neurodynamics"
+        },
+        {
+            "paperId": null,
+            "title": "Syntactic Structures"
+        },
+        {
+            "paperId": "9d90cb376b472d079b50282f7d253ac8b33e8149",
+            "title": "The interaction of nature and nurture."
+        },
+        {
+            "paperId": "404d1df16b673659f52a8017bde4ba00f901e8bd",
+            "title": "Causality : Models , Reasoning , and Inference"
+        },
+        {
+            "paperId": null,
+            "title": "d master serves a roughly similar purpose to the GN\u2019s u , but is de\ufb01ned as an extra node connected to all others, and thus does not in\ufb02uence the edge and global updates directly"
+        },
+        {
+            "paperId": null,
+            "title": "\u03c6 u is applied once per graph, and computes an update for the global attribute, u (cid:48)"
+        },
+        {
+            "paperId": null,
+            "title": "\u03c1 v \u2192 u is applied to V (cid:48) , and aggregates all node updates, into \u00afv (cid:48) , which will then"
+        }
+    ]
+}

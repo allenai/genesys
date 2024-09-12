@@ -1,0 +1,186 @@
+{
+    "paperId": "b471f0b45d69c3fd3333f0322bab64b2a4ae9369",
+    "externalIds": {
+        "MAG": "2131613942",
+        "DBLP": "journals/ijhpca/ThakurRG05",
+        "DOI": "10.1177/1094342005051521",
+        "CorpusId": 90404
+    },
+    "title": "Optimization of Collective Communication Operations in MPICH",
+    "abstract": "We describe our work on improving the performance of collective communication operations in MPICH for clusters connected by switched networks. For each collective operation, we use multiple algorithms depending on the message size, with the goal of minimizing latency for short messages and minimizing bandwidth use for long messages. Although we have implemented new algorithms for all MPI (Message Passing Interface) collective operations, because of limited space we describe only the algorithms for allgather, broadcast, all-to-all, reduce-scatter, reduce, and allreduce. Performance results on a Myrinet-connected Linux cluster and an IBM SP indicate that, in all cases, the new algorithms significantly outperform the old algorithms used in MPICH on the Myrinet cluster, and, in many cases, they outperform the algorithms used in IBM's MPI on the SP. We also explore in further detail the optimization of two of the most commonly used collective operations, allreduce and reduce, particularly for long messages and nonpower-of-two numbers of processes. The optimized algorithms for these operations perform several times better than the native algorithms on a Myrinet cluster, IBM SP, and Cray T3E. Our results indicate that to achieve the best performance for a collective communication operation, one needs to use a number of different algorithms and select the right algorithm for a particular message size and number of processes.",
+    "venue": "The international journal of high performance computing applications",
+    "year": 2005,
+    "referenceCount": 37,
+    "citationCount": 876,
+    "influentialCitationCount": 94,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The work on improving the performance of collective communication operations in MPICH is described, with results indicating that to achieve the best performance for a collective communication operation, one needs to use a number of different algorithms and select the right algorithm for a particular message size and number of processes."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "143994696",
+            "name": "R. Thakur"
+        },
+        {
+            "authorId": "1753145",
+            "name": "R. Rabenseifner"
+        },
+        {
+            "authorId": "1703559",
+            "name": "W. Gropp"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "5a92a26a2550ca38f2b4e7b1252cb678f5d48e55",
+            "title": "On optimizing collective communication"
+        },
+        {
+            "paperId": "e7383fe7a7c6a9d5eed0237890dcd603ef1dbd27",
+            "title": "A Comparison of MPICH Allgather Algorithms on Switched Networks"
+        },
+        {
+            "paperId": "cfbf608d1a22b4f174832d069fa9b30bc9b175cd",
+            "title": "Fast collective operations using shared and remote memory access protocols on clusters"
+        },
+        {
+            "paperId": "ad61fea095b11c4bb636a4a78c36dca52131e4f3",
+            "title": "A framework for collective personalized communication"
+        },
+        {
+            "paperId": "2d316449c1dd845808e8f154b2e7828d5f94ca00",
+            "title": "Communication and Optimization Aspects of Parallel Programming Models on Hybrid Architectures"
+        },
+        {
+            "paperId": "67cd98288b0b50335b5f908f9033cbd2c30af5e7",
+            "title": "On Benchmarking Collective MPI Operations"
+        },
+        {
+            "paperId": "72b85ba01265e98643e94017e2ac74619cab5c2b",
+            "title": "Improved MPI All-to-all Communication on a Giganet SMP Cluster"
+        },
+        {
+            "paperId": "7573ab5b7dcc35343658894624c4e7fed800e530",
+            "title": "Parallel Computing for the Simulation of 3D Free Surface Flows in Environmental Applications"
+        },
+        {
+            "paperId": "c7862cd2594b9d71bad6f48e17ffdd87d220c81f",
+            "title": "The Hierarchical Factor Algorithm for All-to-All Communication (Research Note)"
+        },
+        {
+            "paperId": "bdc476cb6f7393eb489858a008d327e2bf03d8fa",
+            "title": "Automatically Tuned Collective Communications"
+        },
+        {
+            "paperId": "8ccb88d2bec40086bf32b33084ddbd6dce352db1",
+            "title": "Exploiting hierarchy in parallel computer networks to optimize collective operation performance"
+        },
+        {
+            "paperId": "dd25b7916d46b0b329d8965bc4e205b818ce6ac1",
+            "title": "MagPIe: MPI's collective communication operations for clustered wide area systems"
+        },
+        {
+            "paperId": "0e6585ce2cbdbf75716bd4b8b9e59ac999115faf",
+            "title": "Recent Advances in Parallel Virtual Machine and Message Passing Interface, 14th European PVM/MPI User's Group Meeting, Paris, France, September 30 - October 3, 2007, Proceedings"
+        },
+        {
+            "paperId": "1a2854bf189847a53c3ccea4dc443809d165aa44",
+            "title": "Efficient Algorithms for All-to-All Communications in Multiport Message-Passing Systems"
+        },
+        {
+            "paperId": "faa2112bcc16f40f3bf2638d21e99fd0cde70515",
+            "title": "Efficient Algorithms for the Reduce-Scatter Operation in LogGP"
+        },
+        {
+            "paperId": "5d8a7209d82c539b409c67c0e207cf2d5557a190",
+            "title": "Users guide for mpich, a portable implementation of MPI"
+        },
+        {
+            "paperId": "27330a51b4feeb5945bdb2dfe67a4419fdd2af31",
+            "title": "Fast Collective Communication Libraries, Please"
+        },
+        {
+            "paperId": "9de0cbb8384dd7246a9d753f03102b2df29a0807",
+            "title": "Interprocessor collective communication library (InterCom)"
+        },
+        {
+            "paperId": "d160d309b7d6cc1eb4382bba08ca61cd302fe735",
+            "title": "The Communication Challenge for MPP: Intel Paragon and Meiko CS-2"
+        },
+        {
+            "paperId": "6bc70aec3415944b461bef65b8444cd84d11667c",
+            "title": "LogP: towards a realistic model of parallel computation"
+        },
+        {
+            "paperId": "60b5371e6c665a57c00eee5c4720da93ca69fafb",
+            "title": "Global combine on mesh architectures with wormhole routing"
+        },
+        {
+            "paperId": "5561137c858c949ac1eb861bc14c617089d171fc",
+            "title": "Complete exchange on a circuit switched mesh"
+        },
+        {
+            "paperId": "25edd45b882da1b3192a7e9c82768ba1de278019",
+            "title": "Efficient All-to-All Communication Patterns in Hypercube and Mesh Topologies"
+        },
+        {
+            "paperId": "aae636bd99bc4bae4cd4afcfa4621ef573a55c26",
+            "title": "Two algorithms for barrier synchronization"
+        },
+        {
+            "paperId": "835be1ba6c1d9acf188dbe59e52bc4076314bf80",
+            "title": "Image Algebra Techniques for Parallel Image Processing"
+        },
+        {
+            "paperId": "1c1e96f64d6b27422fea467923402f54cc869bab",
+            "title": "Parallel processing"
+        },
+        {
+            "paperId": "b0a4f5ccd8a1813a65a5370c3298bbdb73a2596f",
+            "title": "Automatic MPI Counter Profiling of All Users: First Results on a CRAY T3E 900-512"
+        },
+        {
+            "paperId": "08a2acbf231dad019ceed053733dc21cbacbc94a",
+            "title": "Recent Advances in Parallel Virtual Machine (PVM) and Message Passing Interface (MPI) - 10th European PVM/MPI Users' Group Meeting, Venice, Italy, September 29 - October 2, 2003, Proceedings"
+        },
+        {
+            "paperId": null,
+            "title": "Lecture Notes in Computer Science"
+        },
+        {
+            "paperId": "1531f9edf4841d1b35cf1491e64910b26725a829",
+            "title": "CollMark: MPI Collective Communication Benchmark"
+        },
+        {
+            "paperId": "6473f5c8cff506e46c38d4e21dda4bdcf22afef0",
+            "title": "A Critical Assessment of LogP : Towards a Realistic Model of Parallel Computation"
+        },
+        {
+            "paperId": "c04a21147c9c50c5ef1cf2b0e3a164f4297572e7",
+            "title": "Optimization of MPI Collectives on Clusters of Large-Scale SMP&#146;s"
+        },
+        {
+            "paperId": "f4c217923ceebd709e8eb106b1f7d25fd5d088c2",
+            "title": "LogGP: Incorporating Long Messages into the LogP Model for Parallel Computation"
+        },
+        {
+            "paperId": "501c484cd5c62950fab4cdaa4ab9631c16e72c9d",
+            "title": "Algorithmic trends in computational fluid dynamics; The Institute for Computer Applications in Science and Engineering (ICASE)/LaRC Workshop, NASA Langley Research Center, Hampton, VA, US, Sep. 15-17, 1991"
+        },
+        {
+            "paperId": "3d35b8b5f443bd1a14cae6bad414a2e9ef357715",
+            "title": "Complete exchange on the iPSC-860"
+        },
+        {
+            "paperId": null,
+            "title": "New optimized MPI reduce algorithm"
+        },
+        {
+            "paperId": null,
+            "title": "Effective bandwidth (b eff) benchmark"
+        }
+    ]
+}

@@ -1,0 +1,165 @@
+{
+    "paperId": "84898960f68fa78296a102edc8ac81739f9a9408",
+    "externalIds": {
+        "DBLP": "conf/aaai/GuoZL19",
+        "MAG": "2905016804",
+        "DOI": "10.1609/AAAI.V33I01.33016489",
+        "CorpusId": 57823006
+    },
+    "title": "Gaussian Transformer: A Lightweight Approach for Natural Language Inference",
+    "abstract": "Natural Language Inference (NLI) is an active research area, where numerous approaches based on recurrent neural networks (RNNs), convolutional neural networks (CNNs), and self-attention networks (SANs) has been proposed. Although obtaining impressive performance, previous recurrent approaches are hard to train in parallel; convolutional models tend to cost more parameters, while self-attention networks are not good at capturing local dependency of texts. To address this problem, we introduce a Gaussian prior to selfattention mechanism, for better modeling the local structure of sentences. Then we propose an efficient RNN/CNN-free architecture named Gaussian Transformer for NLI, which consists of encoding blocks modeling both local and global dependency, high-order interaction blocks collecting the evidence of multi-step inference, and a lightweight comparison block saving lots of parameters. Experiments show that our model achieves new state-of-the-art performance on both SNLI and MultiNLI benchmarks with significantly fewer parameters and considerably less training time. Besides, evaluation using the Hard NLI datasets demonstrates that our approach is less affected by the undesirable annotation artifacts.",
+    "venue": "AAAI Conference on Artificial Intelligence",
+    "year": 2019,
+    "referenceCount": 31,
+    "citationCount": 99,
+    "influentialCitationCount": 6,
+    "openAccessPdf": {
+        "url": "https://ojs.aaai.org/index.php/AAAI/article/download/4614/4492",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An efficient RNN/CNN-free architecture named Gaussian Transformer for NLI, which consists of encoding blocks modeling both local and global dependency, high-order interaction blocks collecting the evidence of multi-step inference, and a lightweight comparison block saving lots of parameters."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3371598",
+            "name": "Maosheng Guo"
+        },
+        {
+            "authorId": "1682848",
+            "name": "Yu Zhang"
+        },
+        {
+            "authorId": "40282288",
+            "name": "Ting Liu"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "48758697a493e9a970c51a6198fbb20133d7ae97",
+            "title": "Discourse Marker Augmented Network with Reinforcement Learning for Natural Language Inference"
+        },
+        {
+            "paperId": "2b32b4fa1e28c256745f1573b5444b1b2c8df30e",
+            "title": "Multiway Attention Networks for Modeling Sentence Pairs"
+        },
+        {
+            "paperId": "b5388cfc06688fe3c6937c65025442fdf9a1e6b9",
+            "title": "Semantic Sentence Matching with Densely-connected Recurrent and Co-attentive Information"
+        },
+        {
+            "paperId": "6084b58d8b4b0caf3a2a7f3a1bee1cc527927e39",
+            "title": "Stochastic Answer Networks for Natural Language Inference"
+        },
+        {
+            "paperId": "642c1b4a9da95ea4239708afc5929a5007a1870d",
+            "title": "Tensor2Tensor for Neural Machine Translation"
+        },
+        {
+            "paperId": "2997b26ffb8c291ce478bd8a6e47979d5a55c466",
+            "title": "Annotation Artifacts in Natural Language Inference Data"
+        },
+        {
+            "paperId": "8c1b00128e74f1cd92aede3959690615695d5101",
+            "title": "QANet: Combining Local Convolution with Global Self-Attention for Reading Comprehension"
+        },
+        {
+            "paperId": "3febb2bed8865945e7fddc99efd791887bb7e14f",
+            "title": "Deep Contextualized Word Representations"
+        },
+        {
+            "paperId": "3c1d781f2dab8da12e3cb0e4d7abfb440a340a09",
+            "title": "DR-BiLSTM: Dependent Reading Bidirectional LSTM for Natural Language Inference"
+        },
+        {
+            "paperId": "f14dc3dba4a58fd380cce41e44552fd5f7812a4c",
+            "title": "A Compare-Propagate Architecture with Alignment Factorization for Natural Language Inference"
+        },
+        {
+            "paperId": "d12ae90771d14555a64aa48b8a3f638e7d14426d",
+            "title": "Distance-based Self-Attention Network for Natural Language Inference"
+        },
+        {
+            "paperId": "45dfef0cc1ed96558c1c650432ce39d6a1050b6a",
+            "title": "Fixing Weight Decay Regularization in Adam"
+        },
+        {
+            "paperId": "7b7ee580284cc148cf67b42c8a26f72cbcdb9452",
+            "title": "Natural Language Inference with External Knowledge"
+        },
+        {
+            "paperId": "adc276e6eae7051a027a4c269fb21dae43cadfed",
+            "title": "DiSAN: Directional Self-Attention Network for RNN/CNN-free Language Understanding"
+        },
+        {
+            "paperId": "1778e32c18bd611169e64c1805a51abff341ca53",
+            "title": "Natural Language Inference over Interaction Space"
+        },
+        {
+            "paperId": "bc8fa64625d9189f5801837e7b133e7fe3c581f7",
+            "title": "Learned in Translation: Contextualized Word Vectors"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "5ded2b8c64491b4a67f6d39ce473d4b9347a672e",
+            "title": "A Broad-Coverage Challenge Corpus for Sentence Understanding through Inference"
+        },
+        {
+            "paperId": "f056fb8cca0c30f59c22513d0dcd444f53cfa151",
+            "title": "Neural Paraphrase Identification of Questions with Noisy Pretraining"
+        },
+        {
+            "paperId": "a9df777e4d8100e52e90fa4bd2d783d25a2fd173",
+            "title": "Bilateral Multi-Perspective Matching for Natural Language Sentences"
+        },
+        {
+            "paperId": "162db03ef3cb50a07ff54ae4a1d4ea120e4162f2",
+            "title": "Enhancing and Combining Sequential and Tree LSTM for Natural Language Inference"
+        },
+        {
+            "paperId": "97fb4e3d45bb098e27e0071448b6152217bd35a5",
+            "title": "Layer Normalization"
+        },
+        {
+            "paperId": "e2dba792360873aef125572812f3673b1a85d850",
+            "title": "Enriching Word Vectors with Subword Information"
+        },
+        {
+            "paperId": "2cd8e8f510c89c7c18268e8ad51c061e459ad321",
+            "title": "A Decomposable Attention Model for Natural Language Inference"
+        },
+        {
+            "paperId": "4954fa180728932959997a4768411ff9136aac81",
+            "title": "TensorFlow: A system for large-scale machine learning"
+        },
+        {
+            "paperId": "f04df4e20a18358ea2f689b4c129781628ef7fc1",
+            "title": "A large annotated corpus for learning natural language inference"
+        },
+        {
+            "paperId": "71b4ca7440a06094f58a4dace1a455ad6430bead",
+            "title": "Recognizing Textual Entailment: Models and Applications Ido Dagan1, Dan Roth2, Mark Sammons2, and Fabio Massimo Zanzotto3 (1Bar-Ilan University, Israel, 2University of Illinois, Urbana, IL, and 3University of Rome \u201cTor Vergata,\u201d Italy) Morgan & Claypool (Synthesis Lectures on Human Language Technolo"
+        },
+        {
+            "paperId": "68c03788224000794d5491ab459be0b2a2c38677",
+            "title": "WordNet: A Lexical Database for English"
+        },
+        {
+            "paperId": "cb9d065354020f9704585637c19f15bdac652c05",
+            "title": "A Modest Proposal: A New Standard for the Normal"
+        },
+        {
+            "paperId": "cd18800a0fe0b668a1cc19f2ec95b5003d0a5035",
+            "title": "Improving Language Understanding by Generative Pre-Training"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        }
+    ]
+}

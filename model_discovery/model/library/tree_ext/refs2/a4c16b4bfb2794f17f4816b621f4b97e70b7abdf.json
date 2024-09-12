@@ -1,0 +1,73 @@
+{
+    "paperId": "a4c16b4bfb2794f17f4816b621f4b97e70b7abdf",
+    "externalIds": {
+        "MAG": "2128882956",
+        "DBLP": "conf/nips/Bartlett96",
+        "CorpusId": 14197727
+    },
+    "title": "For Valid Generalization the Size of the Weights is More Important than the Size of the Network",
+    "abstract": "This paper shows that if a large neural network is used for a pattern classification problem, and the learning algorithm finds a network with small weights that has small squared error on the training patterns, then the generalization performance depends on the size of the weights rather than the number of weights. More specifically, consider an l-layer feed-forward network of sigmoid units, in which the sum of the magnitudes of the weights associated with each unit is bounded by A. The misclassification probability converges to an error estimate (that is closely related to squared error on the training set) at rate O((cA)l(l+1)/2 \u221a(log n)/m) ignoring log factors, where m is the number of training patterns, n is the input dimension, and c is a constant. This may explain the generalization performance of neural networks, particularly when the number of training examples is considerably smaller than the number of weights. It also supports heuristics (such as weight decay and early stopping) that attempt to keep the weights small during training.",
+    "venue": "Neural Information Processing Systems",
+    "year": 1996,
+    "referenceCount": 11,
+    "citationCount": 296,
+    "influentialCitationCount": 18,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper shows that if a large neural network is used for a pattern classification problem, and the learning algorithm finds a network with small weights that has small squared error on the training patterns, then the generalization performance depends on the size of the weights rather than the number of weights."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1745169",
+            "name": "P. Bartlett"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "1f5a3dc5867218b86ab29cbf0046f2a02ee6ded5",
+            "title": "Structural Risk Minimization Over Data-Dependent Hierarchies"
+        },
+        {
+            "paperId": "015999a72c70a960e59c51078b09c8f672af0d2c",
+            "title": "The Sample Complexity of Pattern Classification with Neural Networks: The Size of the Weights is More Important than the Size of the Network"
+        },
+        {
+            "paperId": "0e6ce43aceab1c52056f8c41d9d6b01634620c51",
+            "title": "Covering numbers for real-valued function classes"
+        },
+        {
+            "paperId": "f57e37b749dacb987e2e14d1e0e4ee13db599798",
+            "title": "Approximation and Learning of Convex Superpositions"
+        },
+        {
+            "paperId": "6c0cbbd275bb43e09f0527a31ddd61824eca295b",
+            "title": "Introduction to the theory of neural computation"
+        },
+        {
+            "paperId": "a5a86656448540a91ec06dbe017231d16862a502",
+            "title": "Scale-sensitive dimensions, uniform convergence, and learnability"
+        },
+        {
+            "paperId": "fedfc9fbcfe46d50b81078560bce724678f90176",
+            "title": "Decision Theoretic Generalizations of the PAC Model for Neural Net and Other Learning Applications"
+        },
+        {
+            "paperId": "e0b8fa3496283d4d808fba9ff62d5f024bcf23be",
+            "title": "Learnability and the Vapnik-Chervonenkis dimension"
+        },
+        {
+            "paperId": "67f9e3de2fb39f051ef23b8fbed6d72de7b02900",
+            "title": "A framework for structural risk minimisation"
+        },
+        {
+            "paperId": "10e59b273d8fc2866df6d4655e4bf65d1d05666e",
+            "title": "A data-dependent skeleton estimate for learning"
+        },
+        {
+            "paperId": "25406e6733a698bfc4ac836f8e74f458e75dad4f",
+            "title": "What Size Net Gives Valid Generalization?"
+        }
+    ]
+}

@@ -1,0 +1,85 @@
+{
+    "paperId": "e141d68065ce638f9fc4f006eab2f66711e89768",
+    "externalIds": {
+        "MAG": "2128499899",
+        "DBLP": "conf/nips/Mozer91",
+        "CorpusId": 5355536
+    },
+    "title": "Induction of Multiscale Temporal Structure",
+    "abstract": "Learning structure in temporally-extended sequences is a difficult computational problem because only a fraction of the relevant information is available at any instant. Although variants of back propagation can in principle be used to find structure in sequences, in practice they are not sufficiently powerful to discover arbitrary contingencies, especially those spanning long temporal intervals or involving high order statistics. For example, in designing a connectionist network for music composition, we have encountered the problem that the net is able to learn musical structure that occurs locally in time--e.g., relations among notes within a musical phrase--but not structure that occurs over longer time periods--e.g., relations among phrases. To address this problem, we require a means of constructing a reduced description of the sequence that makes global aspects more explicit or more readily detectable. I propose to achieve this using hidden units that operate with different time constants. Simulation experiments indicate that slower time-scale hidden units are able to pick up global structure, structure that simply can not be learned by standard back propagation.",
+    "venue": "Neural Information Processing Systems",
+    "year": 1991,
+    "referenceCount": 14,
+    "citationCount": 184,
+    "influentialCitationCount": 11,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Simulation experiments indicate that slower time-scale hidden units are able to pick up global structure, structure that simply can not be learned by standard back propagation, using hidden units that operate with different time constants."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "144473519",
+            "name": "M. Mozer"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "8183b1548750e5750d509af6a9fdc8f9a5a9252d",
+            "title": "Hierarchical recurrent networks for learning musical structure"
+        },
+        {
+            "paperId": "d76aafbeb54575859441a442376766c597f6bb52",
+            "title": "Attractor dynamics and parallelism in a connectionist sequential machine"
+        },
+        {
+            "paperId": "ce9a21b93ba29d4145a8ef6bf401e77f261848de",
+            "title": "A Learning Algorithm for Continually Running Fully Recurrent Neural Networks"
+        },
+        {
+            "paperId": "34468c0aa95a7aea212d8738ab899a69b2fc14c6",
+            "title": "Learning State Space Trajectories in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "6602985bd326d9996c68627b56ed389e2c90fd08",
+            "title": "Generalization of back-propagation to recurrent neural networks."
+        },
+        {
+            "paperId": "319f22bd5abfd67ac15988aa5c7f705f018c3ccd",
+            "title": "Learning internal representations by error propagation"
+        },
+        {
+            "paperId": "7a4038ec7f07b3d765260b9f17da386a85d4f7d1",
+            "title": "On the time relations of mental processes: An examination of systems of processes in cascade."
+        },
+        {
+            "paperId": null,
+            "title": "Neural sequence chunkers (Report FKI-148-91)"
+        },
+        {
+            "paperId": null,
+            "title": "CONCERT: A connectionist composer of erudite tunes"
+        },
+        {
+            "paperId": null,
+            "title": "Neural ,equence chunker, (Report FKI-148-91). Munich, Germany: Technische Universitaet Muenchen, Institut fuel Informatik"
+        },
+        {
+            "paperId": "af7802a50a8c294ebfd539ad72158475e5ecd9f2",
+            "title": "The \"Moving Targets\" Training Algorithm"
+        },
+        {
+            "paperId": "7fb4d10f6d2ee3133135958aefd50bf22dcced9d",
+            "title": "A Focused Backpropagation Algorithm for Temporal Pattern Recognition"
+        },
+        {
+            "paperId": null,
+            "title": "Representing part-whole hierarchies in connectionist networks"
+        },
+        {
+            "paperId": "eccfb47fa72551b2951ab927eadc8358b2609027",
+            "title": "Learning Internal Representations by Error Propagation, Parallel Distributed Processing"
+        }
+    ]
+}

@@ -1,0 +1,167 @@
+{
+    "paperId": "1492ddfd4f4b152b83f11db8c9ecdfd0d2543294",
+    "externalIds": {
+        "MAG": "2164859115",
+        "DBLP": "journals/corr/LeZ15",
+        "ACL": "S15-1002",
+        "ArXiv": "1503.02510",
+        "DOI": "10.18653/v1/S15-1002",
+        "CorpusId": 11094441
+    },
+    "title": "Compositional Distributional Semantics with Long Short Term Memory",
+    "abstract": "We are proposing an extension of the recursive neural network that makes use of a variant of the long short-term memory architecture. The extension allows information low in parse trees to be stored in a memory register (the `memory cell') and used much later higher up in the parse tree. This provides a solution to the vanishing gradient problem and allows the network to capture long range dependencies. Experimental results show that our composition outperformed the traditional neural-network composition on the Stanford Sentiment Treebank.",
+    "venue": "International Workshop on Semantic Evaluation",
+    "year": 2015,
+    "referenceCount": 32,
+    "citationCount": 102,
+    "influentialCitationCount": 9,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/S15-1002.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An extension of the recursive neural network that makes use of a variant of the long short-term memory architecture that provides a solution to the vanishing gradient problem and allows the network to capture long range dependencies."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "144106794",
+            "name": "Phong Le"
+        },
+        {
+            "authorId": "1787819",
+            "name": "Willem H. Zuidema"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "4b9af9b9ed1bfb6b0688019d9fa79875bbcd8f3f",
+            "title": "Long Short-Term Memory Over Tree Structures"
+        },
+        {
+            "paperId": "32de44f01a96d4473d21099d15e25bc2b9f08e2f",
+            "title": "Improved Semantic Representations From Tree-Structured Long Short-Term Memory Networks"
+        },
+        {
+            "paperId": "60dda7f5efd67758bde1ee7f45e6d3ef86445495",
+            "title": "Deep Recursive Neural Networks for Compositionality in Language"
+        },
+        {
+            "paperId": "964153213e608b65ebd49684fa9dcbfe1c720fb4",
+            "title": "Global Belief Recursive Neural Networks"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "2672f1ab4e31a6cbdfc77563a81318aec27cdd04",
+            "title": "The Inside-Outside Recursive Neural Network model for Dependency Parsing"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "1f6ba0782862ec12a5ec6d7fb608523d55b0c6ba",
+            "title": "Convolutional Neural Networks for Sentence Classification"
+        },
+        {
+            "paperId": "f3de86aeb442216a8391befcacb49e58b478f512",
+            "title": "Distributed Representations of Sentences and Documents"
+        },
+        {
+            "paperId": "27725a2d2a8cee9bf9fffc6c2167017103aba0fa",
+            "title": "A Convolutional Neural Network for Modelling Sentences"
+        },
+        {
+            "paperId": "687bac2d3320083eb4530bf18bb8f8f721477600",
+            "title": "Recursive Deep Models for Semantic Compositionality Over a Sentiment Treebank"
+        },
+        {
+            "paperId": "acc4e56c44771ebf69302a06af51498aeb0a6ac8",
+            "title": "Parsing with Compositional Vector Grammars"
+        },
+        {
+            "paperId": "ded103d0613e1a8f51f586cc1678aee3ff26e811",
+            "title": "Advances in optimizing recurrent networks"
+        },
+        {
+            "paperId": "a97b5db17acc731ef67321832dbbaf5766153135",
+            "title": "Supervised Sequence Labelling with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "ae5e6c6f5513613a161b2c85563f9708bf2e9178",
+            "title": "Dynamic Pooling and Unfolding Recursive Autoencoders for Paraphrase Detection"
+        },
+        {
+            "paperId": "cfa2646776405d50533055ceb1b7f050e9014dcb",
+            "title": "Semi-Supervised Recursive Autoencoders for Predicting Sentiment Distributions"
+        },
+        {
+            "paperId": "9c0ddf74f87d154db88d79c640578c1610451eec",
+            "title": "Parsing Natural Scenes and Natural Language with Recursive Neural Networks"
+        },
+        {
+            "paperId": "413c1142de9d91804d6d11c67ff3fed59c9fc279",
+            "title": "Adaptive Subgradient Methods for Online Learning and Stochastic Optimization"
+        },
+        {
+            "paperId": "ea9d2a2b4ce11aaf85136840c65f3bc9c03ab649",
+            "title": "Understanding the difficulty of training deep feedforward neural networks"
+        },
+        {
+            "paperId": "e420f393bc23839a65a1a32778026bb6eae25fa2",
+            "title": "Language Models Based on Semantic Composition"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "1a3d22599028a05669e884f3eaf19a342e190a87",
+            "title": "Backpropagation Through Time: What It Does and How to Do It"
+        },
+        {
+            "paperId": "668087f0ae7ce1de6e0bd0965dbb480c08103260",
+            "title": "Finding Structure in Time"
+        },
+        {
+            "paperId": "8da1dda34ecc96263102181448c94ec7d645d085",
+            "title": "Approximation by superpositions of a sigmoidal function"
+        },
+        {
+            "paperId": "052b1d8ce63b07fec3de9dbb583772d860b7c769",
+            "title": "Learning representations by back-propagating errors"
+        },
+        {
+            "paperId": "de93f011bd95a7ba720a2bfe588d5188bd4351c4",
+            "title": "Inside-Outside Semantics : A Framework for Neural Models of Semantic Composition"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "c7e9224d7d9ee2e9673a4bc1c3c92e0b25ad8c3b",
+            "title": "Frege in Space: A Program of Compositional Distributional Semantics"
+        },
+        {
+            "paperId": "81b3b3fe994a9eda6d3f9d2149aa4492d1933975",
+            "title": "Learning Continuous Phrase Representations and Syntactic Parsing with Recursive Neural Networks"
+        },
+        {
+            "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+            "title": "Recurrent neural network based language model"
+        },
+        {
+            "paperId": "7a046308275557bf424fbf4ccae26da2919c848e",
+            "title": "Long short-term memory in recurrent neural networks"
+        },
+        {
+            "paperId": "2e5f2b57f4c476dd69dc22ccdf547e48f40a994c",
+            "title": "Gradient Flow in Recurrent Nets: the Difficulty of Learning Long-Term Dependencies"
+        }
+    ]
+}

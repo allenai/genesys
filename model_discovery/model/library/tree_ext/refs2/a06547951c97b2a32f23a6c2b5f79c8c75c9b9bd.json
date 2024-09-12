@@ -1,0 +1,73 @@
+{
+    "paperId": "a06547951c97b2a32f23a6c2b5f79c8c75c9b9bd",
+    "externalIds": {
+        "MAG": "2118877769",
+        "DBLP": "conf/ijcai/LucasK81",
+        "CorpusId": 2121536
+    },
+    "title": "An Iterative Image Registration Technique with an Application to Stereo Vision",
+    "abstract": "Image registration finds a variety of applications in computer vision. Unfortunately, traditional image registration techniques tend to be costly. We present a new image registration technique that makes use of the spatial intensity gradient of the images to find a good match using a type of Newton-Raphson iteration. Our technique is taster because it examines far fewer potential matches between the images than existing techniques Furthermore, this registration technique can be generalized to handle rotation, scaling and shearing. We show how our technique can be adapted tor use in a stereo vision system.",
+    "venue": "International Joint Conference on Artificial Intelligence",
+    "year": 1981,
+    "referenceCount": 10,
+    "citationCount": 14439,
+    "influentialCitationCount": 1020,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents a new image registration technique that makes use of the spatial intensity gradient of the images to find a good match using a type of Newton-Raphson iteration, and can be generalized to handle rotation, scaling and shearing."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "40588702",
+            "name": "B. D. Lucas"
+        },
+        {
+            "authorId": "1733113",
+            "name": "T. Kanade"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "b4008bc1650321437ae014994ed1b208f06f0a7c",
+            "title": "Visual Mapping by a Robot Rover"
+        },
+        {
+            "paperId": "e52346937763610de63e5c867d5686c20f4ffa3a",
+            "title": "Introduction to Statistics and Probability"
+        },
+        {
+            "paperId": "420c844a992231a1e6efdd389a4521c205615b1d",
+            "title": "Introduction to statistics and probability"
+        },
+        {
+            "paperId": "4d59ffbf69dac108bf29c7b522ad72c19679e773",
+            "title": "Figure"
+        },
+        {
+            "paperId": "e6b0088219fa42ec6a04560421540d2518ba004c",
+            "title": "A Class of Algorithms for Fast Digital Image Registration"
+        },
+        {
+            "paperId": "b49bb7ecd2afd6461c78ff29536839b5ee45cd15",
+            "title": "Problem-solving methods in artificial intelligence"
+        },
+        {
+            "paperId": "93b376bd451db8ed94a18c556da16f25a3e7961b",
+            "title": "Obstacle avoidance and navigation in the real world by a seeing robot rover"
+        },
+        {
+            "paperId": null,
+            "title": "Edge Based Stereo Correlation"
+        },
+        {
+            "paperId": "94645777d9ace911a1be34c7147c52bce1a17534",
+            "title": "A computational theory of human stereo vision."
+        },
+        {
+            "paperId": null,
+            "title": "Proceedings: Image Understanding Workshop"
+        }
+    ]
+}

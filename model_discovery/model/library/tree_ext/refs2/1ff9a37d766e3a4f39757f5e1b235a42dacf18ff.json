@@ -1,0 +1,178 @@
+{
+    "paperId": "1ff9a37d766e3a4f39757f5e1b235a42dacf18ff",
+    "externalIds": {
+        "ArXiv": "1506.02626",
+        "MAG": "2951882884",
+        "DBLP": "journals/corr/HanPTD15",
+        "CorpusId": 2238772
+    },
+    "title": "Learning both Weights and Connections for Efficient Neural Network",
+    "abstract": "Neural networks are both computationally intensive and memory intensive, making them difficult to deploy on embedded systems. Also, conventional networks fix the architecture before training starts; as a result, training cannot improve the architecture. To address these limitations, we describe a method to reduce the storage and computation required by neural networks by an order of magnitude without affecting their accuracy by learning only the important connections. Our method prunes redundant connections using a three-step method. First, we train the network to learn which connections are important. Next, we prune the unimportant connections. Finally, we retrain the network to fine tune the weights of the remaining connections. On the ImageNet dataset, our method reduced the number of parameters of AlexNet by a factor of 9x, from 61 million to 6.7 million, without incurring accuracy loss. Similar experiments with VGG-16 found that the number of parameters can be reduced by 13x, from 138 million to 10.3 million, again with no loss of accuracy.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2015,
+    "referenceCount": 34,
+    "citationCount": 6004,
+    "influentialCitationCount": 656,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A method to reduce the storage and computation required by neural networks by an order of magnitude without affecting their accuracy by learning only the important connections, and prunes redundant connections using a three-step method."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "143840275",
+            "name": "Song Han"
+        },
+        {
+            "authorId": "47325862",
+            "name": "Jeff Pool"
+        },
+        {
+            "authorId": "2066786849",
+            "name": "J. Tran"
+        },
+        {
+            "authorId": "80724002",
+            "name": "W. Dally"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "642d0f49b7826adcf986616f4af77e736229990f",
+            "title": "Deep Compression: Compressing Deep Neural Network with Pruning, Trained Quantization and Huffman Coding"
+        },
+        {
+            "paperId": "b0bd441a0cc04cdd0d0e469fe4c5184ee148a97d",
+            "title": "Data-free Parameter Pruning for Deep Neural Networks"
+        },
+        {
+            "paperId": "efb5032e6199c80f83309fd866b25be9545831fd",
+            "title": "Compressing Neural Networks with the Hashing Trick"
+        },
+        {
+            "paperId": "27a99c21a1324f087b2f144adc119f04137dfd87",
+            "title": "Deep Fried Convnets"
+        },
+        {
+            "paperId": "e7bf9803705f2eb608db1e59e5c7636a3f171916",
+            "title": "Compressing Deep Convolutional Networks using Vector Quantization"
+        },
+        {
+            "paperId": "2a4117849c88d4728c33b1becaa9fb6ed7030725",
+            "title": "Memory Bounded Deep Convolutional Networks"
+        },
+        {
+            "paperId": "081651b38ff7533550a3adfc1c00da333a8fe86c",
+            "title": "How transferable are features in deep neural networks?"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "6bdb186ec4726e00a8051119636d4df3b94043b5",
+            "title": "Caffe: Convolutional Architecture for Fast Feature Embedding"
+        },
+        {
+            "paperId": "9f2efadf66817f1b38f58b3f50c7c8f34c69d89a",
+            "title": "DeepFace: Closing the Gap to Human-Level Performance in Face Verification"
+        },
+        {
+            "paperId": "e5ae8ab688051931b4814f6d32b18391f8d1fa8d",
+            "title": "Exploiting Linear Structure Within Convolutional Networks for Efficient Evaluation"
+        },
+        {
+            "paperId": "5e83ab70d0cbc003471e87ec306d27d9c80ecb16",
+            "title": "Network In Network"
+        },
+        {
+            "paperId": "3a7e1eff382dea7522eb7a649e0e0d6fd844b77f",
+            "title": "Peter Huttenlocher (1931\u20132013)"
+        },
+        {
+            "paperId": "d1208ac421cf8ff67b27d93cd19ae42b8d596f95",
+            "title": "Deep learning with COTS HPC systems"
+        },
+        {
+            "paperId": "38f35dd624cd1cf827416e31ac5e0e0454028eca",
+            "title": "Regularization of Neural Networks using DropConnect"
+        },
+        {
+            "paperId": "eff61216e0136886e1158625b1e5a88ed1a7cbce",
+            "title": "Predicting Parameters in Deep Learning"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "bc1022b031dc6c7019696492e8116598097a8c12",
+            "title": "Natural Language Processing (Almost) from Scratch"
+        },
+        {
+            "paperId": "9a2aa2aee8926ec07a4a76324b7665f678d3517c",
+            "title": "Hash Kernels for Structured Data"
+        },
+        {
+            "paperId": "00bbfde6af97ce5efcf86b3401d265d42a95603d",
+            "title": "Feature hashing for large scale multitask learning"
+        },
+        {
+            "paperId": "5536d42ce80e129be8cae172ed1b7659c769d31d",
+            "title": "2005 Special Issue: Framewise phoneme classification with bidirectional LSTM and other neural network architectures"
+        },
+        {
+            "paperId": "d0be39ee052d246ae99c082a565aba25b811be2d",
+            "title": "Learning long-term dependencies with gradient descent is difficult"
+        },
+        {
+            "paperId": "a42954d4b9d0ccdf1036e0af46d87a01b94c3516",
+            "title": "Second Order Derivatives for Network Pruning: Optimal Brain Surgeon"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "fbeaa499e10e98515f7e1c4ad89165e8c0677427",
+            "title": "Improving the speed of neural networks on CPUs"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "c46adbba6ba189311fd01efefb081316437b9875",
+            "title": "Improving Generalization of Neural Networks Through Pruning"
+        },
+        {
+            "paperId": "e7297db245c3feb1897720b173a59fe7e36babb7",
+            "title": "Optimal Brain Damage"
+        },
+        {
+            "paperId": "f4ea5a6ff3ffcd11ec2e6ed7828a7d41279fb3ad",
+            "title": "Comparing Biases for Minimal Network Construction with Back-Propagation"
+        },
+        {
+            "paperId": "bcc388871c9cdbbdfef9616a0a644d12ccf05040",
+            "title": "Neuronal mechanisms of developmental plasticity in the cat's visual system."
+        },
+        {
+            "paperId": "dd62fe71c093844ba21f8f3d1bc17acb6b54a6a5",
+            "title": "Neuronal mechanisms of developmental plasticity in the cat's visual system."
+        },
+        {
+            "paperId": null,
+            "title": "Nature"
+        },
+        {
+            "paperId": null,
+            "title": "Energy table for 45nm process, Stanford VLSI wiki"
+        }
+    ]
+}

@@ -1,0 +1,194 @@
+{
+    "paperId": "d1c424c261c577958917055f72fb9e2ad0348865",
+    "externalIds": {
+        "ArXiv": "1712.09763",
+        "MAG": "2951777598",
+        "DBLP": "conf/iclr/0022MRA18",
+        "CorpusId": 6199526
+    },
+    "title": "PixelSNAIL: An Improved Autoregressive Generative Model",
+    "abstract": "Autoregressive generative models consistently achieve the best results in density estimation tasks involving high dimensional data, such as images or audio. They pose density estimation as a sequence modeling task, where a recurrent neural network (RNN) models the conditional distribution over the next element conditioned on all previous elements. In this paradigm, the bottleneck is the extent to which the RNN can model long-range dependencies, and the most successful approaches rely on causal convolutions, which offer better access to earlier parts of the sequence than conventional RNNs. Taking inspiration from recent work in meta reinforcement learning, where dealing with long-range dependencies is also essential, we introduce a new generative model architecture that combines causal convolutions with self attention. In this note, we describe the resulting model and present state-of-the-art log-likelihood results on CIFAR-10 (2.85 bits per dim) and $32 \\times 32$ ImageNet (3.80 bits per dim). Our implementation is available at this https URL",
+    "venue": "International Conference on Machine Learning",
+    "year": 2017,
+    "referenceCount": 38,
+    "citationCount": 239,
+    "influentialCitationCount": 25,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces a new generative model architecture that combines causal convolutions with self attention and presents state-of-the-art log-likelihood results on CIFAR-10 and ImageNet."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "41192764",
+            "name": "Xi Chen"
+        },
+        {
+            "authorId": "3414570",
+            "name": "Nikhil Mishra"
+        },
+        {
+            "authorId": "22222033",
+            "name": "Mostafa Rohaninejad"
+        },
+        {
+            "authorId": "1689992",
+            "name": "P. Abbeel"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "1db9bd18681b96473f3c82b21edc9240b44dc329",
+            "title": "Image Transformer"
+        },
+        {
+            "paperId": "8899094797e82c5c185a0893896320ef77f60e64",
+            "title": "Non-local Neural Networks"
+        },
+        {
+            "paperId": "7e9c1e0d247b20a0683f4797d9ea248c3b53d424",
+            "title": "A Simple Neural Attentive Meta-Learner"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "2d1b8f60f2724efd6c9344870fb60e8525157d70",
+            "title": "Parallel Multiscale Autoregressive Density Estimation"
+        },
+        {
+            "paperId": "2e77b99e8bd10b9e4551a780c0bde9dd10fdbe9b",
+            "title": "PixelCNN++: Improving the PixelCNN with Discretized Logistic Mixture Likelihood and Other Modifications"
+        },
+        {
+            "paperId": "2c740e574eea66fdcf473e15ed2c228baef2eccd",
+            "title": "NIPS 2016 Tutorial: Generative Adversarial Networks"
+        },
+        {
+            "paperId": "120adede81dc6b3bfcb4cd276f0b73cc58a96c1a",
+            "title": "PixelCNN Models with Auxiliary Variables for Natural Image Modeling"
+        },
+        {
+            "paperId": "590c9a1ff422b03477f7830b20609f212c85aa13",
+            "title": "Variational Lossy Autoencoder"
+        },
+        {
+            "paperId": "42e9055ec712ec9c7f0a79d963ea034a72dc7fa8",
+            "title": "PixelVAE: A Latent Variable Model for Natural Images"
+        },
+        {
+            "paperId": "98445f4172659ec5e891e031d8202c102135c644",
+            "title": "Neural Machine Translation in Linear Time"
+        },
+        {
+            "paperId": "b01871c114b122340209562972ff515b86b16ccf",
+            "title": "Video Pixel Networks"
+        },
+        {
+            "paperId": "df0402517a7338ae28bc54acaac400de6b456a46",
+            "title": "WaveNet: A Generative Model for Raw Audio"
+        },
+        {
+            "paperId": "0936352b78a52bc5d2b5e3f04233efc56664af51",
+            "title": "Conditional Image Generation with PixelCNN Decoders"
+        },
+        {
+            "paperId": "6a97d2668187965743d1b825b306defccbabbb4c",
+            "title": "Improved Variational Inference with Inverse Autoregressive Flow"
+        },
+        {
+            "paperId": "09879f7956dddc2a9328f5c1472feeb8402bcbcf",
+            "title": "Density estimation using Real NVP"
+        },
+        {
+            "paperId": "8de1d8425937890522118ca63781c3b318e79f2f",
+            "title": "Sequential Neural Models with Stochastic Layers"
+        },
+        {
+            "paperId": "bda89e0d181eda7e49ea831225eda86d075e111c",
+            "title": "Towards Conceptual Compression"
+        },
+        {
+            "paperId": "d095ef67a82120593b393619543661df64641cb1",
+            "title": "Semi-supervised Variational Autoencoders for Sequence Classification"
+        },
+        {
+            "paperId": "3d2c6941a9b4608ba52b328369a3352db2092ae0",
+            "title": "Weight Normalization: A Simple Reparameterization to Accelerate Training of Deep Neural Networks"
+        },
+        {
+            "paperId": "41f1d50c85d3180476c4c7b3eea121278b0d8474",
+            "title": "Pixel Recurrent Neural Networks"
+        },
+        {
+            "paperId": "2cc3fbf8e36667fa2bec9ea047076b79304e2eee",
+            "title": "The Variational Gaussian Process"
+        },
+        {
+            "paperId": "d82b55c35c8673774a708353838918346f6c006f",
+            "title": "Generating Sentences from a Continuous Space"
+        },
+        {
+            "paperId": "f267934e9de60c5badfa9d3f28918e67ae7a2bf4",
+            "title": "Generative Image Modeling Using Spatial LSTMs"
+        },
+        {
+            "paperId": "0c3b69b5247ef18fd5bab1109d87a04184ea8f4b",
+            "title": "A Recurrent Latent Variable Model for Sequential Data"
+        },
+        {
+            "paperId": "0f899b92b7fb03b609fee887e4b6f3b633eaf30d",
+            "title": "Variational Inference with Normalizing Flows"
+        },
+        {
+            "paperId": "a2785f66c20fbdf30ec26c0931584c6d6a0f4fca",
+            "title": "DRAW: A Recurrent Neural Network For Image Generation"
+        },
+        {
+            "paperId": "90f72fbbe5f0a29e627db28999e01a30a9655bc6",
+            "title": "MADE: Masked Autoencoder for Distribution Estimation"
+        },
+        {
+            "paperId": "dc8301b67f98accbb331190dd7bd987952a692af",
+            "title": "NICE: Non-linear Independent Components Estimation"
+        },
+        {
+            "paperId": "484ad17c926292fbe0d5211540832a8c8a8e958b",
+            "title": "Stochastic Backpropagation and Approximate Inference in Deep Generative Models"
+        },
+        {
+            "paperId": "309494da0769345cb35ca0b7b0aae8143eee85a2",
+            "title": "RNADE: The real-valued neural autoregressive density-estimator"
+        },
+        {
+            "paperId": "1542fe458849b1ce26306f68200f6c71ae2ed147",
+            "title": "Variational MCMC"
+        },
+        {
+            "paperId": "605402e235bd62437baf3c9ebefe77fb4d92ee95",
+            "title": "The Helmholtz Machine"
+        },
+        {
+            "paperId": "6dc61f37ecc552413606d8c89ffbc46ec98ed887",
+            "title": "Acceleration of stochastic approximation by averaging"
+        },
+        {
+            "paperId": "ef4f5a50837a7c1b3e87b9300ffc7ba00d461a0f",
+            "title": "AUTO-ENCODING VARIATIONAL BAYES"
+        },
+        {
+            "paperId": "c68796f833a7151f0a63d1d1608dc902b4fdc9b6",
+            "title": "GENERATIVE ADVERSARIAL NETS"
+        },
+        {
+            "paperId": null,
+            "title": "Block-sparse gpu kernels"
+        },
+        {
+            "paperId": "b893e7053c9c7e266a23fb13a42261a88f650210",
+            "title": "The Neural Autoregressive Distribution Estimator"
+        }
+    ]
+}

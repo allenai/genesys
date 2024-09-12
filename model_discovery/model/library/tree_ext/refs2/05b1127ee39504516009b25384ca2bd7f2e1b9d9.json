@@ -1,0 +1,195 @@
+{
+    "paperId": "05b1127ee39504516009b25384ca2bd7f2e1b9d9",
+    "externalIds": {
+        "ACL": "N18-1150",
+        "ArXiv": "1803.10357",
+        "MAG": "2794945088",
+        "DBLP": "conf/naacl/CelikyilmazBHC18",
+        "DOI": "10.18653/v1/N18-1150",
+        "CorpusId": 4406182
+    },
+    "title": "Deep Communicating Agents for Abstractive Summarization",
+    "abstract": "We present deep communicating agents in an encoder-decoder architecture to address the challenges of representing a long document for abstractive summarization. With deep communicating agents, the task of encoding a long text is divided across multiple collaborating agents, each in charge of a subsection of the input text. These encoders are connected to a single decoder, trained end-to-end using reinforcement learning to generate a focused and coherent summary. Empirical results demonstrate that multiple communicating encoders lead to a higher quality summary compared to several strong baselines, including those based on a single encoder or multiple non-communicating encoders.",
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2018,
+    "referenceCount": 37,
+    "citationCount": 296,
+    "influentialCitationCount": 30,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/N18-1150.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Empirical results demonstrate that multiple communicating encoders lead to a higher quality summary compared to several strong baselines, including those based on a single encoder or multiple non-communicating encoder."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1709797",
+            "name": "Asli Celikyilmaz"
+        },
+        {
+            "authorId": "2691021",
+            "name": "Antoine Bosselut"
+        },
+        {
+            "authorId": "144137069",
+            "name": "Xiaodong He"
+        },
+        {
+            "authorId": "1699545",
+            "name": "Yejin Choi"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "9b4a861151fabae1dfd61c917d031c86d26be704",
+            "title": "Controllable Abstractive Summarization"
+        },
+        {
+            "paperId": "6127b8dc39497a2388a0fce2512595e0dcb7121b",
+            "title": "StarCraft II: A New Challenge for Reinforcement Learning"
+        },
+        {
+            "paperId": "53bed2d3d75c4320ad5af4a85e31bf92e3c704ef",
+            "title": "Reinforced Video Captioning with Entailment Rewards"
+        },
+        {
+            "paperId": "c624c38e53f321a6df2d16bd707499ce744ca114",
+            "title": "Abstractive Document Summarization with a Graph-Based Attentional Neural Model"
+        },
+        {
+            "paperId": "2b292ff89d808fba10579871591a22f1649cd039",
+            "title": "Counterfactual Multi-Agent Policy Gradients"
+        },
+        {
+            "paperId": "032274e57f7d8b456bd255fe76b909b2c1d7458e",
+            "title": "A Deep Reinforced Model for Abstractive Summarization"
+        },
+        {
+            "paperId": "c18df1edc0a45891806d44896a8f666944e93d01",
+            "title": "Learning Cooperative Visual Dialog Agents with Deep Reinforcement Learning"
+        },
+        {
+            "paperId": "5d2f5c2dc11c18c0d45203e2b980fe375a56d774",
+            "title": "Emergence of Grounded Compositional Language in Multi-Agent Populations"
+        },
+        {
+            "paperId": "6c8353697cdbb98dfba4f493875778c4286d3e3a",
+            "title": "Self-Critical Sequence Training for Image Captioning"
+        },
+        {
+            "paperId": "1bc49abe5145055f1fa259bd4e700b1eb6b7f08d",
+            "title": "SummaRuNNer: A Recurrent Neural Network Based Sequence Model for Extractive Summarization of Documents"
+        },
+        {
+            "paperId": "b108211139032738c21d2937a63433b97b31e77d",
+            "title": "Efficient Summarization with Read-Again and Copy Mechanism"
+        },
+        {
+            "paperId": "a870df7e7d43c9144e2520ef4e4779f1672dd654",
+            "title": "Sequence Tutor: Conservative Fine-Tuning of Sequence Generation Models with KL-control"
+        },
+        {
+            "paperId": "2e0bed618d023cad81eae218e69afce8bef8e4d6",
+            "title": "Multi-view Response Selection for Human-Computer Conversation"
+        },
+        {
+            "paperId": "4ff5cdeeed3dfeeea542d463dc2f5ad64fd38281",
+            "title": "Neural Sentiment Classification with User and Product Attention"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "267aef492d17592a293aa17ec8a25f7264645bcb",
+            "title": "The Role of Discourse Units in Near-Extractive Summarization"
+        },
+        {
+            "paperId": "455afd748e8834ef521e4b67c7c056d3c33429e2",
+            "title": "Hierarchical Attention Networks for Document Classification"
+        },
+        {
+            "paperId": "7a67159fc7bc76d0b37930b55005a69b51241635",
+            "title": "Abstractive Sentence Summarization with Attentive Recurrent Neural Networks"
+        },
+        {
+            "paperId": "50295c19e177480ba3599300de1ab837cc62b08c",
+            "title": "Learning Multiagent Communication with Backpropagation"
+        },
+        {
+            "paperId": "e91196c1d0234da60314945c4812eda631004d8f",
+            "title": "Towards Multi-Agent Communication-Based Language Learning"
+        },
+        {
+            "paperId": "0772905d40b9afa3dc087a88184f09f3b3e1464f",
+            "title": "Learning to Communicate with Deep Multi-Agent Reinforcement Learning"
+        },
+        {
+            "paperId": "507d6e09f51b2fc93f756ab748f6eadd11b7b86e",
+            "title": "Learning-Based Single-Document Summarization with Compression and Anaphoricity Constraints"
+        },
+        {
+            "paperId": "29a294eaec7b485245aa21d994f7300f6b5da8fc",
+            "title": "Neural Summarization by Extracting Sentences and Words"
+        },
+        {
+            "paperId": "adcfef04625c2763028815759750d47c7c3fe689",
+            "title": "\u5927\u898f\u6a21\u8981\u7d04\u8cc7\u6e90\u3068\u3057\u3066\u306eNew York Times Annotated Corpus"
+        },
+        {
+            "paperId": "1ac30af5522c7a50ec4d1ee43fd2bd8652a9bd52",
+            "title": "A Neural Attention Model for Abstractive Sentence Summarization"
+        },
+        {
+            "paperId": "0403ca8ad125899996c783f6481c78d432a77106",
+            "title": "System Combination for Multi-document Summarization"
+        },
+        {
+            "paperId": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+            "title": "Effective Approaches to Attention-based Neural Machine Translation"
+        },
+        {
+            "paperId": "d1505c6123c102e53eb19dff312cb25cea840b72",
+            "title": "Teaching Machines to Read and Comprehend"
+        },
+        {
+            "paperId": "9653d5c2c7844347343d073bbedd96e05d52f69b",
+            "title": "Pointer Networks"
+        },
+        {
+            "paperId": "47570e7f63e296f224a0e7f9a0d08b0de3cbaf40",
+            "title": "Grammar as a Foreign Language"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "2f5102ec3f70d0dea98c957cc2cab4d15d83a2da",
+            "title": "The Stanford CoreNLP Natural Language Processing Toolkit"
+        },
+        {
+            "paperId": "f6bc340af859e8a9ec2d97d77042eb14084c0446",
+            "title": "Improving the Estimation of Word Importance for News Multi-Document Summarization"
+        },
+        {
+            "paperId": null,
+            "title": "2017; Hermann et al., 2015) is a collection of online news articles along with multisentence summaries. We use the same data splits as in Nallapati et al. (2017)"
+        },
+        {
+            "paperId": null,
+            "title": "2016) to extract and preprocess the NYT dataset with some modifications in order to replicate the pre-processing steps presented in Paulus et al"
+        }
+    ]
+}

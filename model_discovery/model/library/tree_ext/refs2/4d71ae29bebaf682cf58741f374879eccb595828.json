@@ -1,0 +1,375 @@
+{
+    "paperId": "4d71ae29bebaf682cf58741f374879eccb595828",
+    "externalIds": {
+        "MAG": "2773393927",
+        "DBLP": "journals/neco/VoelkerE18",
+        "DOI": "10.1162/neco_a_01046",
+        "CorpusId": 3740005,
+        "PubMed": "29220306"
+    },
+    "title": "Improving Spiking Dynamical Networks: Accurate Delays, Higher-Order Synapses, and Time Cells",
+    "abstract": "Researchers building spiking neural networks face the challenge of improving the biological plausibility of their model networks while maintaining the ability to quantitatively characterize network behavior. In this work, we extend the theory behind the neural engineering framework (NEF), a method of building spiking dynamical networks, to permit the use of a broad class of synapse models while maintaining prescribed dynamics up to a given order. This theory improves our understanding of how low-level synaptic properties alter the accuracy of high-level computations in spiking dynamical networks. For completeness, we provide characterizations for both continuous-time (i.e., analog) and discrete-time (i.e., digital) simulations. We demonstrate the utility of these extensions by mapping an optimal delay line onto various spiking dynamical networks using higher-order models of the synapse. We show that these networks nonlinearly encode rolling windows of input history, using a scale invariant representation, with accuracy depending on the frequency content of the input signal. Finally, we reveal that these methods provide a novel explanation of time cell responses during a delay task, which have been observed throughout hippocampus, striatum, and cortex.",
+    "venue": "Neural Computation",
+    "year": 2018,
+    "referenceCount": 85,
+    "citationCount": 35,
+    "influentialCitationCount": 3,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The theory behind the neural engineering framework is extended to permit the use of a broad class of synapse models while maintaining prescribed dynamics up to a given order, which improves the understanding of how low-level synaptic properties alter the accuracy of high-level computations in spiking dynamical networks."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2140152",
+            "name": "Aaron R. Voelker"
+        },
+        {
+            "authorId": "1690396",
+            "name": "C. Eliasmith"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "47b459d6637eed7e2e207d759b4336301e12dd8d",
+            "title": "Sequential Firing Codes for Time in Rodent Medial Prefrontal Cortex"
+        },
+        {
+            "paperId": "1ef86385ae33f04d20efbcfff96462a00c1bc8c1",
+            "title": "Point Neurons with Conductance-Based Synapses in the Neural Engineering Framework"
+        },
+        {
+            "paperId": "6168a89efa6c4ec846aa29db996b895d98bea3b0",
+            "title": "Methods for applying the Neural Engineering Framework to neuromorphic hardware"
+        },
+        {
+            "paperId": "bb7331dd99f452d532c277f4de39028d9b368bb2",
+            "title": "Gradient Descent for Spiking Neural Networks"
+        },
+        {
+            "paperId": "fe1136c46ffdc2a8d507e6cd1f7af422de9d91f9",
+            "title": "Learning arbitrary dynamics in efficient, balanced spiking networks using local plasticity rules"
+        },
+        {
+            "paperId": "0a017b7da2b113194b6937feba3669072bafd626",
+            "title": "Extending the neural engineering framework for nonideal silicon synapses"
+        },
+        {
+            "paperId": "9b5b5ed906e40f135182e6206dd43910f7043127",
+            "title": "A population-level approach to temperature robustness in neuromorphic systems"
+        },
+        {
+            "paperId": "37671e53c9949fa08d9dc150adf1ecaaca6f1880",
+            "title": "A Neuromorph's Prospectus"
+        },
+        {
+            "paperId": "b4af86801d7349d55ec8e8c29543da5832207ab7",
+            "title": "Low Dimensional Activity in Spiking Neuronal Networks"
+        },
+        {
+            "paperId": "b1a7464c8bc6a190bc7804e876a9085c55a658f5",
+            "title": "Predicting non-linear dynamics: a stable local learning scheme for recurrent spiking neural networks."
+        },
+        {
+            "paperId": "ba4b683857844492ecc8bff5bc5fcf06d3ec9301",
+            "title": "Efficient SpiNNaker simulation of a heteroassociative memory using the Neural Engineering Framework"
+        },
+        {
+            "paperId": "ed03b049f78f4f4e51293b6867582128c0959299",
+            "title": "Supervised learning in spiking neural networks with FORCE training"
+        },
+        {
+            "paperId": "f3b4b43c77e342883c8fedb059c60384b592b1e9",
+            "title": "Real-Time FPGA Simulation of Surrogate Models of Large Spiking Networks"
+        },
+        {
+            "paperId": "8c824c098e5c8bdfb0c3d57561dd0303e252481c",
+            "title": "Large-scale cognitive model design using the Nengo neural simulator"
+        },
+        {
+            "paperId": "e332a12da8a6466803326df75a61aecf7451ee2d",
+            "title": "Efficient codes and balanced networks"
+        },
+        {
+            "paperId": "fd0b9d1268cb11e9f5fe0885ff4084f97a04532b",
+            "title": "Building functional networks of spiking model neurons"
+        },
+        {
+            "paperId": "68789d141d46ec8422d87cc38174601949a8ec95",
+            "title": "Human-Inspired Neurorobotic System for Classifying Surface Textures by Touch"
+        },
+        {
+            "paperId": "aecb95717d82d547bcc11ee4b74f714b9d656091",
+            "title": "Lambert-W Function"
+        },
+        {
+            "paperId": "e205baaf37669eabc75e9bf9af43550743545ef2",
+            "title": "Packet-based communication in the cortex"
+        },
+        {
+            "paperId": "805bc8321faea55f3fe016ae5ff21ecaf908700c",
+            "title": "An efficient SpiNNaker implementation of the Neural Engineering Framework"
+        },
+        {
+            "paperId": "8b82ef3a045a338145b02a8204b0dfff6f71d7e9",
+            "title": "Learning Universal Computations with Spikes"
+        },
+        {
+            "paperId": "91b9bd77c89458a8f42a630e9ef81257a5323f6f",
+            "title": "A Scalable Population Code for Time in the Striatum"
+        },
+        {
+            "paperId": "ce80fdc763ba12afcdccb3a01aa6486d2842e952",
+            "title": "A Simple biophysically plausible model for long time constants in single neurons"
+        },
+        {
+            "paperId": "21892c4a7bef2b90cd2c34a2bdac63effe379b8d",
+            "title": "A compact neural core for digital implementation of the Neural Engineering Framework"
+        },
+        {
+            "paperId": "9b6d25de5fd05ca45e1d8cee13f8a388e0e70b8b",
+            "title": "Time cells in the hippocampus: a new dimension for mapping memories"
+        },
+        {
+            "paperId": "c4a8c6c678619357e8ebc00098d5eab9af1887aa",
+            "title": "Dimensionality reduction for large-scale neural recordings"
+        },
+        {
+            "paperId": "56492d19d384b6099824c3d1cd6819071c0d4de8",
+            "title": "Mapping arbitrary mathematical functions and dynamical systems to neuromorphic VLSI circuits for spike-based neural computation"
+        },
+        {
+            "paperId": "c4d91ce5efc1514e68f60448216cd4a8030b8de2",
+            "title": "A Unified Mathematical Framework for Coding Time, Space, and Sequences in the Hippocampal Region"
+        },
+        {
+            "paperId": "939be55e4c179b8f306445e85656d437282ec1d9",
+            "title": "Nengo: a Python tool for building large-scale functional brain models"
+        },
+        {
+            "paperId": "754236b956f350f2e78086325daa3bdfd0158b18",
+            "title": "Predictive Coding of Dynamical Variables in Balanced Spiking Networks"
+        },
+        {
+            "paperId": "91bd2fb3a032aa8de725bc828ce17e4491d088a8",
+            "title": "Neural Correlates of Interval Timing in Rodent Prefrontal Cortex"
+        },
+        {
+            "paperId": "03954dcf415daab102fcbfee95d0ec9e4532ec26",
+            "title": "How to Build a Brain: A Neural Architecture for Biological Cognition"
+        },
+        {
+            "paperId": "38f97960be98c9b523befc21f8f1724715d4184c",
+            "title": "A Large-Scale Model of the Functioning Brain"
+        },
+        {
+            "paperId": "db059cc9ba125bb627076541ce9a0824f5b2d634",
+            "title": "Reservoir Computing and Self-Organized Neural Hierarchies"
+        },
+        {
+            "paperId": "2c94451cfcd8399fd0030c1846a5a012b49660a6",
+            "title": "Silicon Neurons That Compute"
+        },
+        {
+            "paperId": "d607b9831d19b5bdd92c6a4ecd60941e302f1af1",
+            "title": "A Scale-Invariant Internal Representation of Time"
+        },
+        {
+            "paperId": "97e82bdbb17e0a79e21c54a504ddac2494dd2d66",
+            "title": "Information processing using a single dynamical node as complex system"
+        },
+        {
+            "paperId": "97dbba9dad4060c758a27270fa1ccfe9e40b096a",
+            "title": "Population Models of Temporal Differentiation"
+        },
+        {
+            "paperId": "5e01be6b9cd090d207e91d953c6e901be179f8c1",
+            "title": "Generating Coherent Patterns of Activity from Chaotic Neural Networks"
+        },
+        {
+            "paperId": "80c77d57a4e1c365d1feb7c0a1ba165b10f7de7c",
+            "title": "Memory traces in dynamical systems"
+        },
+        {
+            "paperId": "22fe8a384e78d81187ef37de318df46a8e322c18",
+            "title": "Fractional differentiation by neocortical pyramidal neurons"
+        },
+        {
+            "paperId": "342fe6a6338e73fd4d34c4f37f41e3bbad274dd2",
+            "title": "Networks"
+        },
+        {
+            "paperId": "3946adfc6ccd5b170d8fc54c008c74b1ccda87e2",
+            "title": "On computing the worst-case norm of linear systems subject to inputs with magnitude bound and rate limit"
+        },
+        {
+            "paperId": "b06fd5d92e3af5f297cce93cffa76803c27dcd9f",
+            "title": "Higher-Dimensional Neurons Explain the Tuning and Dynamics of Working Memory Cells"
+        },
+        {
+            "paperId": "a84651f68977524f26523fcf773248eb5fc7853d",
+            "title": "Role of delays in shaping spatiotemporal dynamics of neuronal activity in large networks."
+        },
+        {
+            "paperId": "ff398331d3fe1d7a5686fb3ecfc5342d93fbe1dd",
+            "title": "A Unified Approach to Building and Controlling Spiking Attractor Networks"
+        },
+        {
+            "paperId": "e1e770e3ee4a45c6b384b4f647e40c180643d39e",
+            "title": "Short-term memory in orthogonal neural networks."
+        },
+        {
+            "paperId": "3dad4759369babe8412dbcf966c68c2b9bf02640",
+            "title": "Bandpass Filtering at the Rod to Second-Order Cell Synapse in Salamander (Ambystoma tigrinum) Retina"
+        },
+        {
+            "paperId": "e0535dedb8607d83cd2614317c99913378e89e26",
+            "title": "Real-Time Computing Without Stable States: A New Framework for Neural Computation Based on Perturbations"
+        },
+        {
+            "paperId": "255f85e2b283ca85455683818403c898b8e1e6e4",
+            "title": "Rethinking central pattern generators: A general approach"
+        },
+        {
+            "paperId": "4977756d2f23c07292d8d7ca28098bcd5bdf3f89",
+            "title": "Neuronal Synchrony: A Versatile Code for the Definition of Relations?"
+        },
+        {
+            "paperId": "d8b3078a9bae2f0b9a76ed6d6089a318554b6715",
+            "title": "Developing and applying a toolkit from a general neurocomputational framework"
+        },
+        {
+            "paperId": "f2df790bd1fe4d81157b0185cf7097cf63e503d1",
+            "title": "Estimating the Time Course of the Excitatory Synaptic Conductance in Neocortical Pyramidal Cells Using a Novel Voltage Jump Method"
+        },
+        {
+            "paperId": "5c40b55f2ec0ba6025ca13625d79e3843d4a9b2e",
+            "title": "High-frequency brain activity: Its possible role in attention, perception and language processing"
+        },
+        {
+            "paperId": "3b39fc342a654025279daca13fda8b0242c40ef2",
+            "title": "On the LambertW function"
+        },
+        {
+            "paperId": "08a03d5b370189794a6fb8d37cf307742f8d2e4f",
+            "title": "Number-theoretic Methods in Statistics"
+        },
+        {
+            "paperId": "31a97e91c047053fe0cda6fc92a476144f8a6885",
+            "title": "Reliability of spike timing in neocortical neurons."
+        },
+        {
+            "paperId": "6e5cf51ae03633808c2cd63ff862d590450548db",
+            "title": "Synthesis of models for excitable membranes, synaptic transmission and neuromodulation using a common kinetic formalism"
+        },
+        {
+            "paperId": "d821279670a12f9e97f306fc860d13f4762ce5c0",
+            "title": "Original Contribution: The gamma model-A new neural model for temporal processing"
+        },
+        {
+            "paperId": "1703b7295f2ae692af4239b9c75d4e77baf30e19",
+            "title": "Modern control theory (3rd ed.)"
+        },
+        {
+            "paperId": "c2a8d8eada9db437257d3985775b4760107c9356",
+            "title": "The simulation of large-scale neural networks"
+        },
+        {
+            "paperId": "23c68bf419ab5922832d26b4e93e559504c7ddd9",
+            "title": "Bounds on the achievable accuracy in model reduction"
+        },
+        {
+            "paperId": "e0668c2565adc3856ec10b529c48f1d36ecf3f6e",
+            "title": "Computation of system balancing transformations and other applications of simultaneous diagonalization algorithms"
+        },
+        {
+            "paperId": "8c602f489939387e3ba2fdec783edf336354b667",
+            "title": "Distinguishing theoretical synaptic potentials computed for different soma-dendritic distributions of synaptic input."
+        },
+        {
+            "paperId": null,
+            "title": "Nengolib: Additional extensions and tools for modelling dynamical systems in Nengo"
+        },
+        {
+            "paperId": null,
+            "title": "Efficiently sampling vectors and coordinates from the n-sphere and n-ball (Tech. Rep.) Waterloo"
+        },
+        {
+            "paperId": "1831d7b8db8c7e88ebc130ab5e7cdfabaac379d3",
+            "title": "NEURAL SCALE-INVARIANT TIME-FREQUENCY DECOMPOSITION FOR DETECTION OF SPATIOTEMPORAL FEATURES"
+        },
+        {
+            "paperId": "61f4071146c25e80c42b38d8c530d3b8c6af8455",
+            "title": "Modelling Robustness And Sensitivity Reduction In Control Systems"
+        },
+        {
+            "paperId": "b370ea017e3f659b7dc07bc5f3dd363bc97f1756",
+            "title": "Computing with temporal representations using recurrently connected populations of spiking neurons"
+        },
+        {
+            "paperId": null,
+            "title": "seaborn: v0.6.0"
+        },
+        {
+            "paperId": "6e464b33c1ff9d2efa5b03efad3e60c482614442",
+            "title": "Modeling Synapses"
+        },
+        {
+            "paperId": "37feef9dfbb121dc526a676dbd6d867e099ea4f2",
+            "title": "Approximation of Pure Time Delay Elements by Using Hankel Norm and Balanced Realizations"
+        },
+        {
+            "paperId": "b3d8c70e2a25bf8cd41eecadd11c143e340dc72e",
+            "title": "Practical extrapolation methods: theory and applications"
+        },
+        {
+            "paperId": "6f093c5ec100804c98a25d9831b025949e5cb78e",
+            "title": "Neural Engineering: Computation, Representation, and Dynamics in Neurobiological Systems"
+        },
+        {
+            "paperId": "41351e5b997dc2555d330e54493c54583437c75a",
+            "title": "Synaptic computation"
+        },
+        {
+            "paperId": null,
+            "title": "A dynamic model of working memory in the PFC"
+        },
+        {
+            "paperId": "8430c0b9afa478ae660398704b11dca1221ccf22",
+            "title": "The''echo state''approach to analysing and training recurrent neural networks"
+        },
+        {
+            "paperId": "6fc49182af4becb41cb917c3d3e59d27e4fb2fdf",
+            "title": "The ratio of the arithmetic to the geometric mean: a cross-entropy interpretation"
+        },
+        {
+            "paperId": "fda8ec0c958b0b3bb5226c67b4f2ebfd9528d59a",
+            "title": "Some remarks on Pad\u00e9-approximations"
+        },
+        {
+            "paperId": null,
+            "title": "Principles of neural science (Vol. 4)"
+        },
+        {
+            "paperId": "c3abd4c8977e7d5fcafba79805cc5e939fdad43e",
+            "title": "Kinetic Models of Synaptic Transmission"
+        },
+        {
+            "paperId": "4168dc3d35bea2106934edc0460c5c84cd43cc8e",
+            "title": "An Efficient Method for Computing Synaptic Conductances Based on a Kinetic Model of Receptor Binding"
+        },
+        {
+            "paperId": null,
+            "title": "Methods in neural modeling"
+        },
+        {
+            "paperId": "4e78dbdf7b463f21bbb100723415d06284f3ccbc",
+            "title": "Sur la repr\u00e9sentation approch\u00e9e d'une fonction par des fractions rationnelles"
+        },
+        {
+            "paperId": null,
+            "title": "Improving Spiking"
+        }
+    ]
+}

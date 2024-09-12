@@ -1,0 +1,97 @@
+{
+    "paperId": "d64a1588bc3dacfeacf39ff1fa543c6832e051e2",
+    "externalIds": {
+        "MAG": "72422402",
+        "DBLP": "conf/siggraph/VeachG95",
+        "DOI": "10.1145/218380.218498",
+        "CorpusId": 207194026
+    },
+    "title": "Optimally combining sampling techniques for Monte Carlo rendering",
+    "abstract": "Monte Carlo integration is a powerful technique for the evaluation of difficult integrals. Applications in rendering include distribution ray tracing, Monte Carlo path tracing, and form-factor computation for radiosity methods. In these cases variance can often be significantly reduced by drawing samples from several distributions, each designed to sample well some difficult aspect of the integrand. Normally this is done by explicitly partitioning the integration domain into regions that are sampled differently. We present a powerful alternative for constructing robust Monte Carlo estimators, by combining samples from several distributions in a way that is provably good. These estimators are unbiased, and can reduce variance significantly at little additional cost. We present experiments and measurements from several areas in rendering: calculation of glossy highlights from area light sources, the \u201cfinal gather\u201d pass of some radiosity algorithms, and direct solution of the rendering equation using bidirectional path tracing. CR Categories: I.3.7 [Computer Graphics]: Three-Dimensional Graphics and Realism; I.3.3 [Computer Graphics]: Picture/Image Generation; G.1.9 [Numerical Analysis]: Integral Equations\u2014 Fredholm equations. Additional",
+    "venue": "International Conference on Computer Graphics and Interactive Techniques",
+    "year": 1995,
+    "referenceCount": 15,
+    "citationCount": 756,
+    "influentialCitationCount": 96,
+    "openAccessPdf": {
+        "url": "https://dl.acm.org/doi/pdf/10.1145/218380.218498",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents a powerful alternative for constructing robust Monte Carlo estimators, by combining samples from several distributions in a way that is provably good, and can reduce variance significantly at little additional cost."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3230876",
+            "name": "Eric Veach"
+        },
+        {
+            "authorId": "2231847421",
+            "name": "L. Guibas"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "1965ddcbedcdbb3c225a6ac63513d9e879fe5dac",
+            "title": "A Theoretical Framework for Physically Based Rendering"
+        },
+        {
+            "paperId": "c480a06ab16aa18673cc872f811e5177a74fb790",
+            "title": "Bi-directional path tracing"
+        },
+        {
+            "paperId": "65c0b6bfa930b887244069899505fd5166abd036",
+            "title": "Unbiased sampling techniques for image synthesis"
+        },
+        {
+            "paperId": "ce1fd5d4badfb39e60b12850da46dd9bf3e8a421",
+            "title": "A progressive multi-pass method for global illumination"
+        },
+        {
+            "paperId": "ef927a7e67979d43c9f2e29bf203be702ec992c6",
+            "title": "Systems programming in modula-3"
+        },
+        {
+            "paperId": "8089e2bb668f29e690da638db96315ef63fe6a99",
+            "title": "Particle transport and image synthesis"
+        },
+        {
+            "paperId": "718a77d3986a28a81733d264f599ee9acb9f92f9",
+            "title": "Book review:Monte Carlo methods. Volume I: Basics"
+        },
+        {
+            "paperId": "e5e921184ac27fb8d1da2a5d1404c6c814685b04",
+            "title": "The rendering equation"
+        },
+        {
+            "paperId": "84529c119b80fc6aaa808f180c52dc8507e251b9",
+            "title": "Distributed ray tracing"
+        },
+        {
+            "paperId": "32acb3168c3cd091ae8c80fab36f173e6b978e38",
+            "title": "Monte Carlo techniques for direct lighting calculations"
+        },
+        {
+            "paperId": "432163344c4367db1ff6fce41cdecdce1b583096",
+            "title": "Bidirectional Estimators for Light Transport"
+        },
+        {
+            "paperId": "b29290e5c40396b40171f2bbed6ed29843be6e31",
+            "title": "Radiosity and realistic image synthesis"
+        },
+        {
+            "paperId": "c74883d2561aff648776b6e278bb0fcc1585659e",
+            "title": "Distribution Ray Tracing: Theory and Practice"
+        },
+        {
+            "paperId": null,
+            "title": "editor"
+        },
+        {
+            "paperId": "7d0e99dfdb23711526f49a2c5a831244116fc9a0",
+            "title": "Realistic image synthesis for scenes with radiatively participating media"
+        }
+    ]
+}

@@ -1,0 +1,305 @@
+{
+    "paperId": "d2946a868682e4141beabc288d79253ae254c6e1",
+    "externalIds": {
+        "DBLP": "journals/semweb/LehmannIJJKMHMK15",
+        "MAG": "1552847225",
+        "DOI": "10.3233/SW-140134",
+        "CorpusId": 1181640
+    },
+    "title": "DBpedia - A large-scale, multilingual knowledge base extracted from Wikipedia",
+    "abstract": "The DBpedia community project extracts structured, multilingual knowledge from Wikipedia and makes it freely available on the Web using Semantic Web and Linked Data technologies. The project extracts knowledge from 111 different language editions of Wikipedia. The largest DBpedia knowledge base which is extracted from the English edition of Wikipedia consists of over 400 million facts that describe 3.7 million things. The DBpedia knowledge bases that are extracted from the other 110 Wikipedia editions together consist of 1.46 billion facts and describe 10 million additional things. The DBpedia project maps Wikipedia infoboxes from 27 different language editions to a single shared ontology consisting of 320 classes and 1,650 properties. The mappings are created via a world-wide crowd-sourcing effort and enable knowledge from the different Wikipedia editions to be combined. The project publishes releases of all DBpedia knowledge bases for download and provides SPARQL query access to 14 out of the 111 language editions via a global network of local DBpedia chapters. In addition to the regular releases, the project maintains a live knowledge base which is updated whenever a page in Wikipedia changes. DBpedia sets 27 million RDF links pointing into over 30 external data sources and thus enables data from these sources to be used together with DBpedia data. Several hundred data sets on the Web publish RDF links pointing to DBpedia themselves and make DBpedia one of the central interlinking hubs in the Linked Open Data (LOD) cloud. In this system report, we give an overview of the DBpedia community project, including its architecture, technical implementation, maintenance, internationalisation, usage statistics and applications.",
+    "venue": "Semantic Web",
+    "year": 2015,
+    "referenceCount": 58,
+    "citationCount": 3146,
+    "influentialCitationCount": 399,
+    "openAccessPdf": {
+        "url": "https://www.semantic-web-journal.net/system/files/swj558.pdf",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An overview of the DBpedia community project is given, including its architecture, technical implementation, maintenance, internationalisation, usage statistics and applications, including DBpedia one of the central interlinking hubs in the Linked Open Data (LOD) cloud."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "144568027",
+            "name": "Jens Lehmann"
+        },
+        {
+            "authorId": "2968874",
+            "name": "Robert Isele"
+        },
+        {
+            "authorId": "2065890993",
+            "name": "Max Jakob"
+        },
+        {
+            "authorId": "2856259",
+            "name": "Anja Jentzsch"
+        },
+        {
+            "authorId": "2627116",
+            "name": "D. Kontokostas"
+        },
+        {
+            "authorId": "1692493",
+            "name": "Pablo N. Mendes"
+        },
+        {
+            "authorId": "2024066",
+            "name": "Sebastian Hellmann"
+        },
+        {
+            "authorId": "145022718",
+            "name": "M. Morsey"
+        },
+        {
+            "authorId": "2141758",
+            "name": "Patrick van Kleef"
+        },
+        {
+            "authorId": "145044578",
+            "name": "S. Auer"
+        },
+        {
+            "authorId": "1729154",
+            "name": "Christian Bizer"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "ba08cc0fe1718215192aac22cd0c672207b657e4",
+            "title": "Increasing the financial transparency of European Commission project funding"
+        },
+        {
+            "paperId": "1e4da4caf8a65081b5704549fbc580736cf8e8d8",
+            "title": "TripleCheckMate: A Tool for Crowdsourcing the Quality Assessment of Linked Data"
+        },
+        {
+            "paperId": "1fc92ed664beba81fbb9240aa5ef233f99c61090",
+            "title": "User-driven quality evaluation of DBpedia"
+        },
+        {
+            "paperId": "4dfe43ddfcfbe00dd663a4d70b0df9dcc8c92184",
+            "title": "YAGO2: A Spatially and Temporally Enhanced Knowledge Base from Wikipedia: Extended Abstract"
+        },
+        {
+            "paperId": "9c20754475d5654b5d2b0615f7e324357722a40f",
+            "title": "Leveraging the Crowdsourcing of Lexical Resources for Bootstrapping a Linguistic Data Cloud"
+        },
+        {
+            "paperId": "6514c7b21056e8201b9c4728189b041da1301d62",
+            "title": "QAKiS: an Open Domain QA System based on Relational Patterns"
+        },
+        {
+            "paperId": "b79afc88fdcd437d11eda9aa09d4d77c376d3f01",
+            "title": "LinkedGeoData: A core for a web of spatial open data"
+        },
+        {
+            "paperId": "9d254b35ada38a82d3a8008b39b0cf5cb135f795",
+            "title": "LodLive, exploring the web of data"
+        },
+        {
+            "paperId": "5384c51c8de65efa57490b735c1f8cef6d27064b",
+            "title": "Introducing RDF Graph Summary with Application to Assisted SPARQL Formulation"
+        },
+        {
+            "paperId": "48d7245f5f84926571e73c3d1bd61b0bb90de03f",
+            "title": "Internationalization of Linked Data: The case of the Greek DBpedia edition"
+        },
+        {
+            "paperId": "d924813612e5fafdcd628c390e81195958cdbaba",
+            "title": "Semantic turkey: a browser-integrated environment for knowledge acquisition and management"
+        },
+        {
+            "paperId": "669e43e6f142a8be393b1003b219a3ff26af109f",
+            "title": "DBpedia: A Multilingual Cross-domain Knowledge Base"
+        },
+        {
+            "paperId": "593f1b2f4ff837378fe48ffa39c101895049391d",
+            "title": "DBpedia and the live extraction of structured data from Wikipedia"
+        },
+        {
+            "paperId": "eb04bd49bdc2c9218624435eb277be2a973b21a5",
+            "title": "Template-based question answering over RDF data"
+        },
+        {
+            "paperId": "0f12659990a8795269a02e733090651ff801b84e",
+            "title": "Cross-lingual knowledge linking across wiki knowledge bases"
+        },
+        {
+            "paperId": "bcba14af18dafd6a742ab4a57bac65cb34cdb1df",
+            "title": "Zhishi.me - Weaving Chinese Linking Open Data"
+        },
+        {
+            "paperId": "3f0bfc78e9fa507d306665613629ece88d4ff6fb",
+            "title": "SemLens: visual analysis of semantic data with scatter plots and semantic lenses"
+        },
+        {
+            "paperId": "af297bc9b0d2d36a048350139b203ad3bda6e1ee",
+            "title": "DBpedia spotlight: shedding light on the web of documents"
+        },
+        {
+            "paperId": "37eee6ea505cf551e8248ae7460380850f09d6f2",
+            "title": "Multipedia: enriching DBpedia with multimedia information"
+        },
+        {
+            "paperId": "4d7ba77451f4036a13ffb0d8bf29a6d971d9bfaa",
+            "title": "FREyA: An Interactive Way of Querying Linked Data Using Natural Language"
+        },
+        {
+            "paperId": "3ff2862a8121cc823a8eb72f3e0a97bbf25c82ec",
+            "title": "Building Watson: An Overview of the DeepQA Project"
+        },
+        {
+            "paperId": "bd191970e0d8581002347afb18179d87ca4e02d0",
+            "title": "Optimizing schema-last tuple-store queries in graphd"
+        },
+        {
+            "paperId": "a52b838acff9c9c7d22bacb9396a74d182bc71b5",
+            "title": "Facet Graphs: Complex Semantic Querying Made Easy"
+        },
+        {
+            "paperId": "fa2eb905f8aef491665de5afbe49c0b283a282d8",
+            "title": "Faceted Wikipedia Search"
+        },
+        {
+            "paperId": "1d7824a7b251b752594d1793649fe3b0eafb2039",
+            "title": "Exploring the Geospatial Semantic Web with DBpedia Mobile"
+        },
+        {
+            "paperId": "6db0be752abf47b2253ed7d3440633d20bfef6b0",
+            "title": "RelFinder: Revealing Relationships in RDF Knowledge Bases"
+        },
+        {
+            "paperId": "226d5b4eb537ce725b82d5ed209d1c18d2da8a5d",
+            "title": "DBpedia Live Extraction"
+        },
+        {
+            "paperId": "58f72b53d576c6e4a42b4d8812e5542ffa2c03cc",
+            "title": "DBpedia - A crystallization point for the Web of Data"
+        },
+        {
+            "paperId": "dae55b233334487e4e7b4fdb90802124cb41d6da",
+            "title": "Preliminary Results in Tag Disambiguation using DBpedia"
+        },
+        {
+            "paperId": "b84011c59324447c1b2557f937e031291003d390",
+            "title": "Media Meets Semantic Web - How the BBC Uses DBpedia and Linked Data to Make Connections"
+        },
+        {
+            "paperId": "2a790cd7f766951791789115c221ba02dce09c21",
+            "title": "WikiTaxonomy: A Large Scale Knowledge Resource"
+        },
+        {
+            "paperId": "0c236e611a90018e84d9de23d1cff241354079be",
+            "title": "Automatically refining the wikipedia infobox ontology"
+        },
+        {
+            "paperId": "2b2c30dfd3968c5d9418bb2c14b2382d3ccc64b2",
+            "title": "DBpedia: A Nucleus for a Web of Open Data"
+        },
+        {
+            "paperId": "57faa0e5f99442d1723d2c5ccb70b1461987a7ed",
+            "title": "Autonomously semantifying wikipedia"
+        },
+        {
+            "paperId": "bd29c41f42d188e138fb27008df51bb59652b93c",
+            "title": "What Have Innsbruck and Leipzig in Common? Extracting Semantics from Wiki Content"
+        },
+        {
+            "paperId": "5740f80fb61c4489674c9a0beb40c4f5e0ed19ff",
+            "title": "YAGO: A Core of Semantic Knowledge Unifying WordNet and Wikipedia"
+        },
+        {
+            "paperId": "9ef07373873cc0f0b940512dcdde4e7b54b0cfb0",
+            "title": "Web-scale information extraction in knowitall: (preliminary results)"
+        },
+        {
+            "paperId": "cec852f9c844972cd2805e2196fb248136b8a32e",
+            "title": "The Automated Acquisition of Topic Signatures for Text Summarization"
+        },
+        {
+            "paperId": "b1e7bf85c7caf1306fa27802218a8e2cdc8f4268",
+            "title": "CYC: a large-scale investment in knowledge infrastructure"
+        },
+        {
+            "paperId": "bc68ec44a97b0ffb7dfc11fac3dd203b3d15c67a",
+            "title": "Parsing"
+        },
+        {
+            "paperId": "40f2e8130027b61c4f1fa8f3c79860045f17559c",
+            "title": "PowerAqua: Supporting users in querying and exploring the Semantic Web"
+        },
+        {
+            "paperId": null,
+            "title": "Design of a quality assessment framework for the DBpedia knowledge base"
+        },
+        {
+            "paperId": "7214d16222c2563ebae83c59535a9c92308273dd",
+            "title": "LCC Approaches to Knowledge Base Population at TAC 2010"
+        },
+        {
+            "paperId": "b7fb11ef06b0dcdc89ef0a5507c6c9ccea4206d8",
+            "title": "Overview of the TAC 2010 Knowledge Base Population Track"
+        },
+        {
+            "paperId": "b375ee6710e8f147921aaa0d1415082c193f065b",
+            "title": "Experiments with Wikipedia Cross-Language Data Fusion"
+        },
+        {
+            "paperId": "3c4c67caad8c1d8757af92ee185089f4d1f30568",
+            "title": "The Open Archives Initiative Protocol for Metadata Harvesting"
+        },
+        {
+            "paperId": "dbb769403fd59c28a2ec57782f94d3b243d2c85c",
+            "title": "Entity Linking and Slot Filling through Statistical Processing and Inference Rules"
+        },
+        {
+            "paperId": "fdf5ce89cf54d16ce2509e9e528f3daacc4c5a27",
+            "title": "Sindice.com: a document-oriented lookup index for open linked data"
+        },
+        {
+            "paperId": "354a726f4c0a438a0ba8bb1a09d81c30d4b06862",
+            "title": "Extracting Lexical Semantic Knowledge from Wikipedia and Wiktionary"
+        },
+        {
+            "paperId": "074a960ad3b842061a2aeddb4a157f2a4d48931c",
+            "title": "Wikipedia Mining Wikipedia as a Corpus for Knowledge Extraction"
+        },
+        {
+            "paperId": "dfda0913a2df8e408f4af79e73347dc441abef09",
+            "title": "RDF Support in the Virtuoso DBMS"
+        },
+        {
+            "paperId": null,
+            "title": "Input: Wikipedia pages are read from an external source. Pages can either be read from a Wikipedia dump or directly fetched from a MediaWiki installation using the MediaWiki API"
+        },
+        {
+            "paperId": null,
+            "title": "?target any23:domain_uri ?Target_Dataset"
+        },
+        {
+            "paperId": null,
+            "title": "Extraction: The Abstract Syntax Tree of each Wikipedia page is forwarded to the extractors"
+        },
+        {
+            "paperId": null,
+            "title": "edge an:source ?source ; 12 an:target ?target ; 13 an:label ?predicate; 14 an:cardinality ?cardinality; 15 an:publishedIn ?Dataset"
+        },
+        {
+            "paperId": null,
+            "title": "The type of Wikipedia content that is most valuable for the DBpedia extraction are infoboxes"
+        },
+        {
+            "paperId": null,
+            "title": "source any23:domain_uri ?Dataset . 18 19 FILTER (?Dataset != ?Target_Dataset) } Listing 1: SPARQL query on the Sindice summary graph for obtaining the number of incoming links"
+        },
+        {
+            "paperId": null,
+            "title": "/sindice.com/dataspace/default/ domain/> 7 SELECT ?Dataset ?Target_Datatset ?predicate SUM(xsd:long(?cardinality)) AS ?total 8 FROM <http://sindice"
+        }
+    ]
+}

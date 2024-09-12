@@ -1,0 +1,222 @@
+{
+    "paperId": "97acdfb3d247f8250d865ef8a9169f06e40f138b",
+    "externalIds": {
+        "DBLP": "journals/corr/MiaoGM15",
+        "MAG": "2963211739",
+        "ArXiv": "1507.08240",
+        "DOI": "10.1109/ASRU.2015.7404790",
+        "CorpusId": 206514100
+    },
+    "title": "EESEN: End-to-end speech recognition using deep RNN models and WFST-based decoding",
+    "abstract": "The performance of automatic speech recognition (ASR) has improved tremendously due to the application of deep neural networks (DNNs). Despite this progress, building a new ASR system remains a challenging task, requiring various resources, multiple training stages and significant expertise. This paper presents our Eesen framework which drastically simplifies the existing pipeline to build state-of-the-art ASR systems. Acoustic modeling in Eesen involves learning a single recurrent neural network (RNN) predicting context-independent targets (phonemes or characters). To remove the need for pre-generated frame labels, we adopt the connectionist temporal classification (CTC) objective function to infer the alignments between speech and label sequences. A distinctive feature of Eesen is a generalized decoding approach based on weighted finite-state transducers (WFSTs), which enables the efficient incorporation of lexicons and language models into CTC decoding. Experiments show that compared with the standard hybrid DNN systems, Eesen achieves comparable word error rates (WERs), while at the same time speeding up decoding significantly.",
+    "venue": "Automatic Speech Recognition & Understanding",
+    "year": 2015,
+    "referenceCount": 45,
+    "citationCount": 733,
+    "influentialCitationCount": 94,
+    "openAccessPdf": {
+        "url": "http://arxiv.org/pdf/1507.08240",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper presents the Eesen framework which drastically simplifies the existing pipeline to build state-of-the-art ASR systems and achieves comparable word error rates (WERs), while at the same time speeding up decoding significantly."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "37467623",
+            "name": "Yajie Miao"
+        },
+        {
+            "authorId": "1939851",
+            "name": "M. Gowayyed"
+        },
+        {
+            "authorId": "1740721",
+            "name": "Florian Metze"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "62270c3dbbbf2f2892b2316acb14403f451ca5b8",
+            "title": "Speaker Adaptive Training of Deep Neural Network Acoustic Models Using I-Vectors"
+        },
+        {
+            "paperId": "dec2ccce1ecb34bab02c42c2dd18cb468470adf8",
+            "title": "Convolutional, Long Short-Term Memory, fully connected Deep Neural Networks"
+        },
+        {
+            "paperId": "878ba5458e9e51f0b341fd9117fa0b43ef4096d3",
+            "title": "End-to-end attention-based large vocabulary speech recognition"
+        },
+        {
+            "paperId": "fa7d8aadf92fa9761506780a72f8992ec8504fc0",
+            "title": "Learning acoustic frame labeling for speech recognition with recurrent neural networks"
+        },
+        {
+            "paperId": "8ef763cb4f13f8dc9d4376b5ad8f377331e8572d",
+            "title": "Deep Convolutional Neural Networks for Large-scale Speech Tasks"
+        },
+        {
+            "paperId": "24741d280869ad9c60321f5ab6e5f01b7852507d",
+            "title": "Deep Speech: Scaling up end-to-end speech recognition"
+        },
+        {
+            "paperId": "47d2dc34e1d02a8109f5c04bb6939725de23716d",
+            "title": "End-to-end Continuous Speech Recognition using Attention-based Recurrent NN: First Results"
+        },
+        {
+            "paperId": "11c25a938c7aaf159b00c2964d8f1e749e92a000",
+            "title": "Improvements to speaker adaptive training of deep neural networks"
+        },
+        {
+            "paperId": "79d1e429c241d0aa47a2194246256a5bc79585bc",
+            "title": "First-Pass Large Vocabulary Continuous Speech Recognition using Bi-Directional Recurrent DNNs"
+        },
+        {
+            "paperId": "0fa553cfa0cf3cbdf7a913aa2ae789a757dfb32f",
+            "title": "Towards End-To-End Speech Recognition with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "efbdeb8d4b7b999c19b76b9ddaf49ac668d88c55",
+            "title": "GMM-free DNN acoustic model training"
+        },
+        {
+            "paperId": "1149888d75af4ed5dffc25731b875651c3ccdeb2",
+            "title": "Hybrid speech recognition with Deep Bidirectional LSTM"
+        },
+        {
+            "paperId": "c0ac73f8cb1630cddc9c8f953ed4d30a6cb6a5b4",
+            "title": "Proceedings of the 2013 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies"
+        },
+        {
+            "paperId": "cb4d59854786c57e3da4ca2a433b826e2f7a2ef4",
+            "title": "Speaker adaptation of context dependent deep neural networks"
+        },
+        {
+            "paperId": "4177ec52d1b80ed57f2e72b0f9a42365f1a8598d",
+            "title": "Speech recognition with deep recurrent neural networks"
+        },
+        {
+            "paperId": "177496ecd8b485679d00839a1e19dadcab1f802e",
+            "title": "Adaptation of context-dependent deep neural networks for automatic speech recognition"
+        },
+        {
+            "paperId": "6658bbf68995731b2083195054ff45b4eca38b3a",
+            "title": "Context-Dependent Pre-Trained Deep Neural Networks for Large-Vocabulary Speech Recognition"
+        },
+        {
+            "paperId": "7599dfed1de67c726f9e4fd372cc9ef03d2cf3e9",
+            "title": "Feature engineering in Context-Dependent Deep Neural Networks for conversational speech transcription"
+        },
+        {
+            "paperId": "342fe6a6338e73fd4d34c4f37f41e3bbad274dd2",
+            "title": "Networks"
+        },
+        {
+            "paperId": "31e105cac80aa8f1646dfb22c95d035564ea4998",
+            "title": "OpenFst: A General and Efficient Weighted Finite-State Transducer Library"
+        },
+        {
+            "paperId": "8978cf7574ceb35f4c3096be768c7547b28a35d0",
+            "title": "A Fast Learning Algorithm for Deep Belief Nets"
+        },
+        {
+            "paperId": "047655e733a9eed9a500afd916efa566915b9110",
+            "title": "Learning Precise Timing with LSTM Recurrent Networks"
+        },
+        {
+            "paperId": "f14ae3ccf0b77ef4fa13e06282cca67e13bce43f",
+            "title": "A one-pass decoder based on polymorphic linguistic context assignment"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "d0be39ee052d246ae99c082a565aba25b811be2d",
+            "title": "Learning long-term dependencies with gradient descent is difficult"
+        },
+        {
+            "paperId": "6b4081a0b5d775172269854c07dadb0c07977806",
+            "title": "A novel objective function for improved phoneme recognition using time delay neural networks"
+        },
+        {
+            "paperId": "cd62c9976534a6a2096a38244f6cbb03635a127e",
+            "title": "Phoneme recognition using time-delay neural networks"
+        },
+        {
+            "paperId": "8fe2ea0a67954f1380b3387e3262f1cdb9f9b3e5",
+            "title": "A tutorial on hidden Markov models and selected applications in speech recognition"
+        },
+        {
+            "paperId": "85fa09523724489648d900c67c7ba1d9e24375c3",
+            "title": "Top Downloads in IEEE Xplore [Reader's Choice]"
+        },
+        {
+            "paperId": "0722696399480ffdd18dfe64159081c4a9de5ddc",
+            "title": "On speaker adaptation of long short-term memory recurrent neural networks"
+        },
+        {
+            "paperId": "55ee875b9039febd378a3f8ac4e3d7603f83d57c",
+            "title": "Lexicon-Free Conversational Speech Recognition with Neural Networks"
+        },
+        {
+            "paperId": "b2703d6bcc09671a028de0aabecd37e1db1c0406",
+            "title": "Towards end-to-end speech recognition for Chinese Mandarin using long short-term memory recurrent neural networks"
+        },
+        {
+            "paperId": null,
+            "title": "Listen, attend and spell"
+        },
+        {
+            "paperId": "05de249c56353b8916d3eb2fec76ddf7fbd47f33",
+            "title": "Towards speaker adaptive training of deep neural network acoustic models"
+        },
+        {
+            "paperId": "067e07b725ab012c80aa2f87857f6791c1407f6d",
+            "title": "Long short-term memory recurrent neural network architectures for large scale acoustic modeling"
+        },
+        {
+            "paperId": "cf718c4365b2688759d9ad109f21dfcf173390a8",
+            "title": "GMM-Free DNN Training"
+        },
+        {
+            "paperId": "21eb6c112ec30b8dbdcdc4898c27a6f384db5c1b",
+            "title": "Asynchronous, online, GMM-free training of a context dependent acoustic model for speech recognition"
+        },
+        {
+            "paperId": "3341f29110a1e1921df7ce4c47e20ba82adf3462",
+            "title": "Distributed learning of multilingual DNN feature extractors using GPUs"
+        },
+        {
+            "paperId": "5d3efa59ccb8d1566cc7965452b30253d9d8ba18",
+            "title": "Improving language-universal feature extraction with deep maxout and convolutional neural networks"
+        },
+        {
+            "paperId": "c1bca434074c447a31fa227059baccee66b48387",
+            "title": "Recurrent Neural Networks for Noise Reduction in Robust ASR"
+        },
+        {
+            "paperId": "3a1a2cff2b70fb84a7ca7d97f8adcc5855851795",
+            "title": "The Kaldi Speech Recognition Toolkit"
+        },
+        {
+            "paperId": "a80a452e587bd7f06ece1be101d6775fcee0f7af",
+            "title": "Weighted finite-state transducers in speech recognition"
+        },
+        {
+            "paperId": "b462184f09696a8d819e28346747073f337b49a9",
+            "title": "Weighted finite state transducers in speech recognition"
+        },
+        {
+            "paperId": "261a056f8b21918e8616a429b2df6e1d5d33be41",
+            "title": "Connectionist Temporal Classi\ufb01cation: Labelling Unsegmented Sequence Data with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "845ee9838c1f5bf63b7db2c95ec5d27af14a4e02",
+            "title": "Connectionist Temporal Classi\ufb01cation: Labelling Unsegmented Sequences with Recurrent Neural Networks"
+        }
+    ]
+}

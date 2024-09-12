@@ -1,0 +1,77 @@
+{
+    "paperId": "bbcdbd5711d2f02e5fe07316669264334d193e88",
+    "externalIds": {
+        "MAG": "1568325880",
+        "ArXiv": "1311.2540",
+        "CorpusId": 13409455
+    },
+    "title": "Asymmetric numeral systems: entropy coding combining speed of Huffman coding with compression rate of arithmetic coding",
+    "abstract": "The modern data compression is mainly based on two approaches to entropy coding: Huffman (HC) and arithmetic/range coding (AC). The former is much faster, but approximates probabilities with powers of 2, usually leading to relatively low compression rates. The latter uses nearly exact probabilities - easily approaching theoretical compression rate limit (Shannon entropy), but at cost of much larger computational cost. \nAsymmetric numeral systems (ANS) is a new approach to accurate entropy coding, which allows to end this trade-off between speed and rate: the recent implementation [1] provides about $50\\%$ faster decoding than HC for 256 size alphabet, with compression rate similar to provided by AC. This advantage is due to being simpler than AC: using single natural number as the state, instead of two to represent a range. Beside simplifying renormalization, it allows to put the entire behavior for given probability distribution into a relatively small table: defining entropy coding automaton. The memory cost of such table for 256 size alphabet is a few kilobytes. There is a large freedom while choosing a specific table - using pseudorandom number generator initialized with cryptographic key for this purpose allows to simultaneously encrypt the data. \nThis article also introduces and discusses many other variants of this new entropy coding approach, which can provide direct alternatives for standard AC, for large alphabet range coding, or for approximated quasi arithmetic coding.",
+    "venue": "",
+    "year": 2013,
+    "referenceCount": 12,
+    "citationCount": 153,
+    "influentialCitationCount": 26,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Asymmetric numeral systems (ANS) is a new approach to accurate entropy coding, which allows to end this trade-off between speed and rate and can provide direct alternatives for standard AC, for large alphabet range coding, or for approximated quasi arithmetic coding."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "34645702",
+            "name": "J. Duda"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "3b003beb9d8186c51b4912933b1ff75eef0a3c6c",
+            "title": "Asymmetric numeral systems"
+        },
+        {
+            "paperId": "c3a7229504cdb0648a21dcf62fe108354cd49ca1",
+            "title": "Optimal encoding on discrete lattice with translational invariant constrains using statistical algorithms"
+        },
+        {
+            "paperId": "be97dbaf083fb59d0b1cbce7e35bf6607891cf6f",
+            "title": "Context-based adaptive binary arithmetic coding in the H.264/AVC video compression standard"
+        },
+        {
+            "paperId": "964bd0c958c60c0ad3329424cd42d3d784b2cfd7",
+            "title": "Asymptotic average redundancy of Huffman (and other) block codes"
+        },
+        {
+            "paperId": "852580f604792cd814b50265c463e33477cba58d",
+            "title": "Practical Implementations of Arithmetic Coding"
+        },
+        {
+            "paperId": "9fcb8d85e3d429f3816861fc7999e1bb68eefd39",
+            "title": "Generalized Kraft Inequality and Arithmetic Coding"
+        },
+        {
+            "paperId": "a068df4c5f829bd0b85bf72fd919006c563c6345",
+            "title": "A method for the construction of minimum-redundancy codes"
+        },
+        {
+            "paperId": "3a46423f866d53d4e0328faf365c4c9101f82577",
+            "title": "* Range encoding: an algorithm for removing redundancy from a digitised message"
+        },
+        {
+            "paperId": "4289cb1f5a86232df0edd3b29d139e18239196ee",
+            "title": "Enumerative source encoding"
+        },
+        {
+            "paperId": null,
+            "title": "Finite State Entropy, https://github.com/Cyan4973/FiniteStateEntropy"
+        },
+        {
+            "paperId": null,
+            "title": "Data Compression Using Asymmetric Numeral Systems, Wolfram Demonstration Project"
+        },
+        {
+            "paperId": null,
+            "title": "Data Compression Programs website, http://mattmahoney.net/dc"
+        }
+    ]
+}

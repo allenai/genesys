@@ -1,0 +1,46 @@
+{
+    "paperId": "6ca3455b28e165ab5c772bdb6048c312d06d1d1e",
+    "externalIds": {
+        "MAG": "2024585065",
+        "DBLP": "journals/tc/SteinbuchP63",
+        "DOI": "10.1109/PGEC.1963.263588",
+        "CorpusId": 28608197
+    },
+    "title": "Learning Matrices and Their Applications",
+    "abstract": "The paper gives a survey of the learning circuits which became known as learning matrices and some of their possible technological applications. The first section describes the principle of learning matrices. So-called conditioned connections between the characteristics of an object and the meaning of an object are formed in the learning phase. During the operation of connecting the characteristics of an object with its meaning (EB operation of the knowing phase) upon presenting the object characteristics, the associated most similar meaning is realized in the form of a signal by maximum likelihood decoding. Conversely, in operation from the meaning of an object to its characteristics (BE operation) the associated object characteristics are obtained as signals by parallel reading upon application of an object meaning. According to the characteristic signals processed (binary or analog signals) discrimination must be made between binary and nonbinary learning matrices. In the case of the binary learning matrix the conditioned connections are a statistical measure for the frequency of the coordination of object characteristics and object meaning, in the case of the nonbinary learning matrix they are a measure for an analog value proportional to a characteristic. Both types of matrices allow for the characteristic sets applied during EB operation to be unsystematically disturbed within limits. Moreover, the nonbinary learning matrix is invariant to systematic deviations between presented and learned characteristic sets (invariance to affine transformation, translation and rotated skewness).",
+    "venue": "IEEE Transactions on Electronic Computers",
+    "year": 1963,
+    "referenceCount": 3,
+    "citationCount": 124,
+    "influentialCitationCount": 1,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A survey of the learning circuits which became known as learning matrices and some of their possible technological applications is given."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "16003990",
+            "name": "K. Steinbuch"
+        },
+        {
+            "authorId": "16917921",
+            "name": "U. Piske"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "be1558b852a05bf626e4736d4e12721707065913",
+            "title": "STELLA: A scheme for a learning machine"
+        },
+        {
+            "paperId": "8c52171aadcba819a95380f2ca22614dafde14d3",
+            "title": "A consistency technique for pattern association"
+        },
+        {
+            "paperId": "aab5ad344a307004300ab7075b52bb49d6678c8e",
+            "title": "Informationspsychologie und Nachrichtentechnik"
+        }
+    ]
+}

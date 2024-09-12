@@ -1,0 +1,173 @@
+{
+    "paperId": "677d17e00fcdad5baffc4fcd3925442f62fc9307",
+    "externalIds": {
+        "DBLP": "journals/jacm/OmlinG96",
+        "MAG": "1998937898",
+        "DOI": "10.1145/235809.235811",
+        "CorpusId": 228941
+    },
+    "title": "Constructing deterministic finite-state automata in recurrent neural networks",
+    "abstract": "Recurrent neural networks that are <italic>trained</italic> to behave like deterministic finite-state automata (DFAs) can show deteriorating performance when tested on long strings. This deteriorating performance can be attributed to the instability of the internal representation of the learned DFA states. The use of a sigmoidel discriminant function together with the recurrent structure contribute to this instability. We prove that a simple algorithm can <italic>construct</italic> second-order recurrent neural networks with a sparse interconnection topology and sigmoidal discriminant function such that the internal DFA state representations are stable, that is, the constructed network correctly classifies strings of <italic>arbitrary length</italic>. The algorithm is based on encoding strengths of weights directly into the neural network. We derive a relationship between the weight strength and the number of DFA states for robust string classification. For a DFA with <italic>n</italic> state and <italic>m</italic>input alphabet symbols, the constructive algorithm generates a \u201cprogrammed\u201d neural network with <italic>O</italic>(<italic>n</italic>) neurons and <italic>O</italic>(<italic>mn</italic>) weights. We compare our algorithm to other methods proposed in the literature.",
+    "venue": "JACM",
+    "year": 1996,
+    "referenceCount": 34,
+    "citationCount": 195,
+    "influentialCitationCount": 11,
+    "openAccessPdf": {
+        "url": "https://dl.acm.org/doi/pdf/10.1145/235809.235811",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is proved that a simple algorithm can construct second-order recurrent neural networks with a sparse interconnection topology and sigmoidel discriminant function such that the internal DFA state representations are stable, that is, the constructed network correctly classifies strings of arbitrary length."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1740471",
+            "name": "C. Omlin"
+        },
+        {
+            "authorId": "145157784",
+            "name": "C. Lee Giles"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "693a614718a96d61968ec573b2932a3301092c9a",
+            "title": "Neural Networks: A Comprehensive Foundation"
+        },
+        {
+            "paperId": "225cfcc2bdb0fd6ab1b831257009032232688c2f",
+            "title": "The Dynamics of Discrete-Time Computation, with Application to Recurrent Neural Networks and Finite State Machine Extraction"
+        },
+        {
+            "paperId": "5ceae5a1244468f29b4e19e17b4954f632a71411",
+            "title": "Stable Encoding of Large Finite-State Automata in Recurrent Neural Networks with Sigmoid Discriminants"
+        },
+        {
+            "paperId": "980dd4e8a423438e5b13e5476438658c9e8f3157",
+            "title": "Rule Revision With Recurrent Neural Networks"
+        },
+        {
+            "paperId": "20b844e395355b40fa5940c61362ec40e56027aa",
+            "title": "Neural networks"
+        },
+        {
+            "paperId": "380d2e61a39ed8d6769e7e249669030aa8101a1c",
+            "title": "Fixed points in two-neuron discrete time recurrent networks: stability and bifurcation considerations"
+        },
+        {
+            "paperId": "40c39070027c046407d7654ee2934df610b1a69a",
+            "title": "Refining algorithms with knowledge-based neural networks: improving the Chou-Fasman algorithm for protein folding"
+        },
+        {
+            "paperId": "3d4dab465143d7f39abff24136a52f6e8a388d12",
+            "title": "Saturation at high gain in discrete time recurrent networks"
+        },
+        {
+            "paperId": "2a6f3efc7e27e2d873af9f358e32d4b38251792a",
+            "title": "Dynamic recurrent neural networks: Theory and applications"
+        },
+        {
+            "paperId": "70fba86a4c43568d0ec1aa414778be4abf829470",
+            "title": "Bounds on the complexity of recurrent neural network implementations of finite state machines"
+        },
+        {
+            "paperId": "0d3b51f94a5934fdda8f1e728f1b56c9bfeb1cb6",
+            "title": "Learning Finite State Machines With Self-Clustering Recurrent Networks"
+        },
+        {
+            "paperId": "ecbd5246d1b6acecd618facb72944139c3c36802",
+            "title": "Rule refinement with recurrent neural networks"
+        },
+        {
+            "paperId": "b107cfe948f5d3c6e00b7cf1ebeacadd40224e0d",
+            "title": "Inserting rules into recurrent neural networks"
+        },
+        {
+            "paperId": "eb512c593f089cdb5ed63c8acd44eff5a531601c",
+            "title": "Training Second-Order Recurrent Neural Networks using Hints"
+        },
+        {
+            "paperId": "a64ca771a733d58dcbf8f7a3fe65a09310424bf8",
+            "title": "Induction of Finite-State Languages Using Second-Order Recurrent Networks"
+        },
+        {
+            "paperId": "872cdc269f3cb59f8a227818f35041415091545f",
+            "title": "Learning and Extracting Finite State Automata with Second-Order Recurrent Neural Networks"
+        },
+        {
+            "paperId": "a34e35dbbc6911fa7b94894dffdc0076a261b6f0",
+            "title": "Neural Networks and the Bias/Variance Dilemma"
+        },
+        {
+            "paperId": "cea0fe8c2a77c84f9bbb172a9f65f2cb9ba9d24d",
+            "title": "Second-order recurrent neural networks for grammatical inference"
+        },
+        {
+            "paperId": "4709fccef5e7b1734f71ca49708c8d3dee867777",
+            "title": "An unified approach for integrating explicit knowledge and learning by example in recurrent networks"
+        },
+        {
+            "paperId": "0e714d7f0801a4b7cf0e08d9993f204bee61f899",
+            "title": "Efficient simulation of finite automata by neural nets"
+        },
+        {
+            "paperId": "4918b7578a0fa4a9d88d4de54b14a7307172d5a5",
+            "title": "Refinement ofApproximate Domain Theories by Knowledge-Based Neural Networks"
+        },
+        {
+            "paperId": "668087f0ae7ce1de6e0bd0965dbb480c08103260",
+            "title": "Finding Structure in Time"
+        },
+        {
+            "paperId": "7dcd68d2421c1d065c88810d8685582546f25252",
+            "title": "Convergent activation dynamics in continuous time networks"
+        },
+        {
+            "paperId": "a829359eafd034a784293152f8a7ce972e7901a4",
+            "title": "An Introduction to Automata Theory"
+        },
+        {
+            "paperId": "ca5cb4e0826b424adb81cbb4f2e3c88c391a4075",
+            "title": "Influence of cultivation temperature on the ligninolytic activity of selected fungal strains"
+        },
+        {
+            "paperId": null,
+            "title": "Soda, \\Representation of nite state automata in recurrent radial basis function networks"
+        },
+        {
+            "paperId": "79872bd2095559be5ef0bf17c5570272545d322e",
+            "title": "Neural information processing and VLSI"
+        },
+        {
+            "paperId": null,
+            "title": "Soda, \\Recurrent neural networks and prior knowledge for sequence processing: A constrained nondeterminstic approach"
+        },
+        {
+            "paperId": null,
+            "title": "RECEIVED MAY REVISED DECEMBER Journal of the ACM"
+        },
+        {
+            "paperId": null,
+            "title": "Refinement of approximately correct"
+        },
+        {
+            "paperId": "3f1ff3c401126449300b4f521107484379a1be3b",
+            "title": "Analog VLSI and neural systems"
+        },
+        {
+            "paperId": "a74526dd2bc6ee413c02e1d164374ddfd0c2725e",
+            "title": "Fractals everywhere"
+        },
+        {
+            "paperId": "41a88a490d7ba9e383ecb16c4290083413a08258",
+            "title": "Introduction to Automata Theory, Languages and Computation"
+        },
+        {
+            "paperId": "1c771595221341d5b0647921b26e229fc7887395",
+            "title": "Computation: Finite and Infinite Machines"
+        }
+    ]
+}

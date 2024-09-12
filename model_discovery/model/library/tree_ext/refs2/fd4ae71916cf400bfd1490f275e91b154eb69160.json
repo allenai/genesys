@@ -1,0 +1,258 @@
+{
+    "paperId": "fd4ae71916cf400bfd1490f275e91b154eb69160",
+    "externalIds": {
+        "MAG": "2951646478",
+        "ArXiv": "1806.01822",
+        "DBLP": "conf/nips/SantoroFRRCWWVP18",
+        "CorpusId": 46940459
+    },
+    "title": "Relational recurrent neural networks",
+    "abstract": "Memory-based neural networks model temporal data by leveraging an ability to remember information for long periods. It is unclear, however, whether they also have an ability to perform complex relational reasoning with the information they remember. Here, we first confirm our intuitions that standard memory architectures may struggle at tasks that heavily involve an understanding of the ways in which entities are connected -- i.e., tasks involving relational reasoning. We then improve upon these deficits by using a new memory module -- a \\textit{Relational Memory Core} (RMC) -- which employs multi-head dot product attention to allow memories to interact. Finally, we test the RMC on a suite of tasks that may profit from more capable relational reasoning across sequential information, and show large gains in RL domains (e.g. Mini PacMan), program evaluation, and language modeling, achieving state-of-the-art results on the WikiText-103, Project Gutenberg, and GigaWord datasets.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2018,
+    "referenceCount": 48,
+    "citationCount": 204,
+    "influentialCitationCount": 27,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new memory module -- a \\textit{Relational Memory Core} (RMC) -- is used which employs multi-head dot product attention to allow memories to interact and achieves state-of-the-art results on the WikiText-103, Project Gutenberg, and GigaWord datasets."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "35030998",
+            "name": "Adam Santoro"
+        },
+        {
+            "authorId": null,
+            "name": "Ryan Faulkner"
+        },
+        {
+            "authorId": "143724694",
+            "name": "David Raposo"
+        },
+        {
+            "authorId": "34269227",
+            "name": "Jack W. Rae"
+        },
+        {
+            "authorId": "35977287",
+            "name": "Mike Chrzanowski"
+        },
+        {
+            "authorId": "143947744",
+            "name": "T. Weber"
+        },
+        {
+            "authorId": "1688276",
+            "name": "Daan Wierstra"
+        },
+        {
+            "authorId": "1689108",
+            "name": "O. Vinyals"
+        },
+        {
+            "authorId": "1996134",
+            "name": "Razvan Pascanu"
+        },
+        {
+            "authorId": "2542999",
+            "name": "T. Lillicrap"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "cbd65255f6266f798326acc8e0654e40ea0918cf",
+            "title": "Non-Local Recurrent Network for Image Restoration"
+        },
+        {
+            "paperId": "5e49c80f8b12a100c5f4518897c4cbf72710c252",
+            "title": "Relational Deep Reinforcement Learning"
+        },
+        {
+            "paperId": "73791346e46032c70322589051e6cbaa17c9dd0f",
+            "title": "Working Memory Networks: Augmenting Memory Networks with a Relational Reasoning Module"
+        },
+        {
+            "paperId": "69ac3b35887eb42e8fe554619fc7255e6e95a4cb",
+            "title": "Fast Parametric Learning with Activation Memorization"
+        },
+        {
+            "paperId": "3bb63fdb4670745f8c97d8cad1a8a9603b1c16f5",
+            "title": "Convolutional Sequence Modeling Revisited"
+        },
+        {
+            "paperId": "80196cdfcd0c6ce2953bf65a7f019971e2026386",
+            "title": "IMPALA: Scalable Distributed Deep-RL with Importance Weighted Actor-Learner Architectures"
+        },
+        {
+            "paperId": "6a0aaefce8a27a8727d896fa444ba27558b2d381",
+            "title": "Relation Networks for Object Detection"
+        },
+        {
+            "paperId": "8899094797e82c5c185a0893896320ef77f60e64",
+            "title": "Non-local Neural Networks"
+        },
+        {
+            "paperId": "ef9ddbc35676ce8ffc2a8067044473727839dbac",
+            "title": "Breaking the Softmax Bottleneck: A High-Rank RNN Language Model"
+        },
+        {
+            "paperId": "33998aff64ce51df8dee45989cdca4b6b1329ec4",
+            "title": "Graph Attention Networks"
+        },
+        {
+            "paperId": "600bfe5f0597ebd84898f0c4270ddfb3750594f5",
+            "title": "Imagination-Augmented Agents for Deep Reinforcement Learning"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "007112213ece771be72cbecfd59f048209facabd",
+            "title": "A simple neural network module for relational reasoning"
+        },
+        {
+            "paperId": "e24cdf73b3e7e590c2fe5ecac9ae8aa983801367",
+            "title": "Neural Message Passing for Quantum Chemistry"
+        },
+        {
+            "paperId": "15f91ae7590b88c4a533daeefa4b6fa7c0c277e5",
+            "title": "Discovering objects and their relations from entangled scene representations"
+        },
+        {
+            "paperId": "88caa4a0253a8b0076176745ebc072864eab66e1",
+            "title": "Language Modeling with Gated Convolutional Networks"
+        },
+        {
+            "paperId": "ae42c0cff384495683192b06bd985cdd7a54632a",
+            "title": "Interaction Networks for Learning about Objects, Relations and Physics"
+        },
+        {
+            "paperId": "033dd6cf61a6017e9aa9b46068d3c89082849cf3",
+            "title": "Tracking the World State with Recurrent Entity Networks"
+        },
+        {
+            "paperId": "2d7782c225e0fc123d6e227f2cb253e58279ac73",
+            "title": "Improving Neural Language Models with a Continuous Cache"
+        },
+        {
+            "paperId": "784ee73d5363c711118f784428d1ab89f019daa5",
+            "title": "Hybrid computing using a neural network with dynamic external memory"
+        },
+        {
+            "paperId": "efbd381493bb9636f489b965a2034d529cd56bcd",
+            "title": "Pointer Sentinel Mixture Models"
+        },
+        {
+            "paperId": "36eff562f65125511b5dfab68ce7f7a943c27478",
+            "title": "Semi-Supervised Classification with Graph Convolutional Networks"
+        },
+        {
+            "paperId": "3904315e2eca50d0086e4b7273f7fd707c652230",
+            "title": "Meta-Learning with Memory-Augmented Neural Networks"
+        },
+        {
+            "paperId": "2f2d8f8072e5cc9b296fad551f65f183bdbff7aa",
+            "title": "Exploring the Limits of Language Modeling"
+        },
+        {
+            "paperId": "492f57ee9ceb61fb5a47ad7aebfec1121887a175",
+            "title": "Gated Graph Sequence Neural Networks"
+        },
+        {
+            "paperId": "878ba5458e9e51f0b341fd9117fa0b43ef4096d3",
+            "title": "End-to-end attention-based large vocabulary speech recognition"
+        },
+        {
+            "paperId": "df137487e20ba7c6e1e2b9a1e749f2a578b5ad99",
+            "title": "Scheduled Sampling for Sequence Prediction with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e",
+            "title": "End-To-End Memory Networks"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "0d0b3ff23fbf1ec7a0dfebd923a3ef224306491a",
+            "title": "Learning to Execute"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "533ee188324b833e059cb59b654e6160776d5812",
+            "title": "How to Construct Deep Recurrent Neural Networks"
+        },
+        {
+            "paperId": "5d833331b0e22ff359db05c62a8bca18c4f04b68",
+            "title": "One billion word benchmark for measuring progress in statistical language modeling"
+        },
+        {
+            "paperId": "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17",
+            "title": "Generating Sequences With Recurrent Neural Networks"
+        },
+        {
+            "paperId": "d953c0717cd1ba64c64862efd729fb1494258b32",
+            "title": "A neurocomputational system for relational reasoning"
+        },
+        {
+            "paperId": null,
+            "title": "Using language models for information retrieval"
+        },
+        {
+            "paperId": "11540131eae85b2e11d53df7f1360eeb6476e7f4",
+            "title": "Learning to Forget: Continual Prediction with LSTM"
+        },
+        {
+            "paperId": "5385a494e90c6fc01195bf44d680c6e01cf687b5",
+            "title": "A System for Relational Reasoning in Human Prefrontal Cortex"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+            "title": "Building a Large Annotated Corpus of English: The Penn Treebank"
+        },
+        {
+            "paperId": "060400d658b8d271bcc6072416c177ecc8c2f827",
+            "title": "Scalable Language Modeling: WikiText-103 on a Single GPU in 12 hours Extended"
+        },
+        {
+            "paperId": null,
+            "title": "English gigaword fifth edition ldc2011t07"
+        },
+        {
+            "paperId": "3efd851140aa28e95221b55fcc5659eea97b172d",
+            "title": "The Graph Neural Network Model"
+        },
+        {
+            "paperId": "8a6257b2355975a54beb7b1d4b669e2760a9139c",
+            "title": "Memory Systems 1994"
+        },
+        {
+            "paperId": null,
+            "title": "Acknowledgements We"
+        }
+    ]
+}

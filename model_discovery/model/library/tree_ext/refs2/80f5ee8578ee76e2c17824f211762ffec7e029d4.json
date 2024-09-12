@@ -1,0 +1,222 @@
+{
+    "paperId": "80f5ee8578ee76e2c17824f211762ffec7e029d4",
+    "externalIds": {
+        "DBLP": "conf/cvpr/ZhouT18",
+        "MAG": "2963727135",
+        "ArXiv": "1711.06396",
+        "DOI": "10.1109/CVPR.2018.00472",
+        "CorpusId": 42427078
+    },
+    "title": "VoxelNet: End-to-End Learning for Point Cloud Based 3D Object Detection",
+    "abstract": "Accurate detection of objects in 3D point clouds is a central problem in many applications, such as autonomous navigation, housekeeping robots, and augmented/virtual reality. To interface a highly sparse LiDAR point cloud with a region proposal network (RPN), most existing efforts have focused on hand-crafted feature representations, for example, a bird's eye view projection. In this work, we remove the need of manual feature engineering for 3D point clouds and propose VoxelNet, a generic 3D detection network that unifies feature extraction and bounding box prediction into a single stage, end-to-end trainable deep network. Specifically, VoxelNet divides a point cloud into equally spaced 3D voxels and transforms a group of points within each voxel into a unified feature representation through the newly introduced voxel feature encoding (VFE) layer. In this way, the point cloud is encoded as a descriptive volumetric representation, which is then connected to a RPN to generate detections. Experiments on the KITTI car detection benchmark show that VoxelNet outperforms the state-of-the-art LiDAR based 3D detection methods by a large margin. Furthermore, our network learns an effective discriminative representation of objects with various geometries, leading to encouraging results in 3D detection of pedestrians and cyclists, based on only LiDAR.",
+    "venue": "2018 IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "year": 2017,
+    "referenceCount": 46,
+    "citationCount": 3178,
+    "influentialCitationCount": 424,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1711.06396",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "VoxelNet is proposed, a generic 3D detection network that unifies feature extraction and bounding box prediction into a single stage, end-to-end trainable deep network and learns an effective discriminative representation of objects with various geometries, leading to encouraging results in3D detection of pedestrians and cyclists."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2118860832",
+            "name": "Yin Zhou"
+        },
+        {
+            "authorId": "2577513",
+            "name": "Oncel Tuzel"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "04ee2f5afb0883803f31397aa32ec62a5691d94c",
+            "title": "On-Board Object Detection: Multicue, Multimodal, and Multiview Random Forest of Local Experts"
+        },
+        {
+            "paperId": "79cfb51a51fc093f66aac8e858afe2e14d4a1f20",
+            "title": "Focal Loss for Dense Object Detection"
+        },
+        {
+            "paperId": "8674494bd7a076286b905912d26d47f7501c4046",
+            "title": "PointNet++: Deep Hierarchical Feature Learning on Point Sets in a Metric Space"
+        },
+        {
+            "paperId": "7d39d69b23424446f0400ef603b2e3e22d0309d6",
+            "title": "YOLO9000: Better, Faster, Stronger"
+        },
+        {
+            "paperId": "d997beefc0922d97202789d2ac307c55c2c52fba",
+            "title": "PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation"
+        },
+        {
+            "paperId": "6d7d48fdde91604d8047e8574b11d05465d9e0be",
+            "title": "3D fully convolutional network for vehicle detection in point cloud"
+        },
+        {
+            "paperId": "dc200ab22bf63e10e8b2af328a9e072d82cf75b7",
+            "title": "Multi-view 3D Object Detection Network for Autonomous Driving"
+        },
+        {
+            "paperId": "a0d4b0fd59c2bfba02b79309d9c62ca64ee6d457",
+            "title": "PL-SVO: Semi-direct Monocular Visual Odometry by combining points and line segments"
+        },
+        {
+            "paperId": "da09eaa1412aaf0a62622f01f50e2e801a3b4c52",
+            "title": "Vote3Deep: Fast object detection in 3D point clouds using efficient convolutional neural networks"
+        },
+        {
+            "paperId": "d821767b7c7315c69daa39fbb0f4a44426bfaf41",
+            "title": "Monocular 3D Object Detection for Autonomous Driving"
+        },
+        {
+            "paperId": "7a6ca00c0e2ec1bf97352e13cd3e5f35d608567d",
+            "title": "Vehicle Detection from 3D Lidar Using Fully Convolutional Network"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "4d7a9197433acbfb24ef0e9d0f33ed1699e4a5b0",
+            "title": "SSD: Single Shot MultiBox Detector"
+        },
+        {
+            "paperId": "f5a0d356e70bde8f5ec503618d15d1966dc31626",
+            "title": "3D Object Proposals for Accurate Object Class Detection"
+        },
+        {
+            "paperId": "dc0d60f6e8bb7a04ba8a77d51d10b6dba8117480",
+            "title": "Deep Sliding Shapes for Amodal 3D Object Detection in RGB-D Images"
+        },
+        {
+            "paperId": "3f1c6749edfaf4f89bac38b2d15a0493bd9aa253",
+            "title": "VoxNet: A 3D Convolutional Neural Network for real-time object recognition"
+        },
+        {
+            "paperId": "2c9b45fff959cbfb0deab239ebea0340318c7f5a",
+            "title": "Multiview random forest of local experts combining RGB and LIDAR data for pedestrian detection"
+        },
+        {
+            "paperId": "8154027ed2e0c1772b54e79c40d30ae9ee468331",
+            "title": "Voting for Voting in Online Point Cloud Object Detection"
+        },
+        {
+            "paperId": "dc2e78581e12132fe446fc3c515feaf8239d8215",
+            "title": "Joint SFM and detection cues for monocular 3D localization in road scenes"
+        },
+        {
+            "paperId": "424561d8585ff8ebce7d5d07de8dbf7aae5e7270",
+            "title": "Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks"
+        },
+        {
+            "paperId": "54c19a4891b1151e7d225b5ab3ebe4dbd2df5ce0",
+            "title": "Data-driven 3D Voxel Patterns for object category recognition"
+        },
+        {
+            "paperId": "dac1fdc4dd7469261f7a1f329f54fa62a55b7d49",
+            "title": "3D Convolutional Neural Networks for landing zone detection from LiDAR"
+        },
+        {
+            "paperId": "7ffdbc358b63378f07311e883dddacc9faeeaf4b",
+            "title": "Fast R-CNN"
+        },
+        {
+            "paperId": "c6e34156d4a303e1ed6d02351c542e42a229653d",
+            "title": "Pedestrian detection combining RGB and dense LIDAR data"
+        },
+        {
+            "paperId": "3344e90cc33ae9c4b7b9d6b5f8a4b91bf38f1044",
+            "title": "Learning to Rank 3D Features"
+        },
+        {
+            "paperId": "8f8ef3403cd6350f41610be7046c04db3e35fc51",
+            "title": "Sliding Shapes for 3D Object Detection in Depth Images"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "4d3aee063c906f19f1b8695174d0557a93aa2fda",
+            "title": "Are Cars Just 3D Boxes? Jointly Estimating the 3D Shape of Multiple Objects"
+        },
+        {
+            "paperId": "d67175d17c450ab0ac9c256103828f9e9a0acb85",
+            "title": "Some Improvements on Deep Convolutional Neural Network Based Image Classification"
+        },
+        {
+            "paperId": "2f4df08d9072fc2ac181b7fced6a245315ce05c8",
+            "title": "Rich Feature Hierarchies for Accurate Object Detection and Semantic Segmentation"
+        },
+        {
+            "paperId": "514fdf2152dda3a39fc05eb6e1c80314837d96a2",
+            "title": "Detailed 3D Representations for Object Recognition and Modeling"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "de5b0fd02ea4f4d67fe3ae0d74603b9822df4e42",
+            "title": "Are we ready for autonomous driving? The KITTI vision benchmark suite"
+        },
+        {
+            "paperId": "d9cdbcf2bb77fb7c9946b4562b3107dedae27b17",
+            "title": "Voting-based pose estimation for robotic assembly using a 3D sensor"
+        },
+        {
+            "paperId": "9a27d256f00f6e282b215ef29db6474c523f4827",
+            "title": "Depth kernel descriptors for object recognition"
+        },
+        {
+            "paperId": "33cc9cfc8f495a3a24f0fbd5bd8664806814c1da",
+            "title": "A Multilevel Mixture-of-Experts Framework for Pedestrian Classification"
+        },
+        {
+            "paperId": "2915510a39448503ee873f9693cd3808ca74bd81",
+            "title": "Real-time human pose recognition in parts from single depth images"
+        },
+        {
+            "paperId": "1f7dc18dc1e4850866e47d77f19be2da9d4b44b6",
+            "title": "Scale-hierarchical 3D object recognition in cluttered scenes"
+        },
+        {
+            "paperId": "bd47b1f3e2839af705187de7fe7d51a514997765",
+            "title": "On the Repeatability and Quality of Keypoints for Local Feature-based 3D Object Retrieval from Cluttered Scenes"
+        },
+        {
+            "paperId": "940dd2fa074ad97d5e8efa7e867b1f4460cfb8d5",
+            "title": "Fast Point Feature Histograms (FPFH) for 3D registration"
+        },
+        {
+            "paperId": "95a365c4d7c75b6b8e8d93cee4c929d7e11d9da4",
+            "title": "Multiple 3D Object tracking for augmented reality"
+        },
+        {
+            "paperId": "c36d7ce9467dcebfb84fec6d03447dd98d4cb38c",
+            "title": "Development of small robot for home floor cleaning"
+        },
+        {
+            "paperId": "df6c0c55864252090b4099237aa821a6c75b52c2",
+            "title": "Using Spin Images for Efficient Object Recognition in Cluttered 3D Scenes"
+        },
+        {
+            "paperId": "9c99ce2dc572e3e2a3753c8dfa0027338fff2c07",
+            "title": "Point Signatures: A New Representation for 3D Object Recognition"
+        },
+        {
+            "paperId": "650b4f98a00b286b3f852e2ce86b767e68f26ab5",
+            "title": "COSMOS - A Representation Scheme for 3D Free-Form Objects"
+        },
+        {
+            "paperId": "7ef554b855d29292238ffafbc3f5479f4b9527b6",
+            "title": "Structural Indexing: Efficient 3-D Object Recognition"
+        }
+    ]
+}

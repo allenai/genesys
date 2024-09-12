@@ -1,0 +1,144 @@
+{
+    "paperId": "c652b6d6879b6d4c7b764f9228a21659644c789d",
+    "externalIds": {
+        "MAG": "2004175622",
+        "DOI": "10.1080/00207179508921536",
+        "CorpusId": 119465091
+    },
+    "title": "Nonlinear system identification using neural state space models, applicable to robust control design",
+    "abstract": "Prediction error learning algorithms for neural state space models are developed, both for the deterministic case and the stochastic case with measurement and process noise. For the stochastic case, a predictor with direct parametrization of the Kalman gain by a neural net architecture is proposed. Expressions for the gradients are derived by applying Narendra's sensitivity model approach. Finally a linear fractional transformation representation is given for neural state space models, which makes it possible to use these models, obtained from input/output measurements on a plant, in a standard robust performance control scheme.",
+    "venue": "",
+    "year": 1995,
+    "referenceCount": 26,
+    "citationCount": 88,
+    "influentialCitationCount": 3,
+    "openAccessPdf": {
+        "url": "https://lirias.kuleuven.be/bitstream/20.500.12942/728515/2/94-07.pdf",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A linear fractional transformation representation is given for neural state space models, which makes it possible to use these models, obtained from input/output measurements on a plant, in a standard robust performance control scheme."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1744439",
+            "name": "J. Suykens"
+        },
+        {
+            "authorId": "143750713",
+            "name": "B. Moor"
+        },
+        {
+            "authorId": "1704135",
+            "name": "J. Vandewalle"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "a4e414dfbd9bb425516f866c57213ca43dd54260",
+            "title": "Practical optimization"
+        },
+        {
+            "paperId": "7dd4988825be031c2bec973a81ee7b714228af28",
+            "title": "N4SID: Subspace algorithms for the identification of combined deterministic-stochastic systems"
+        },
+        {
+            "paperId": "8d48bd2071d0efdc1586b2c363d51270dcc9da37",
+            "title": "Working with neural networks"
+        },
+        {
+            "paperId": "990504fc9e5a1f3619ace4fa7f5bf667069018b1",
+            "title": "Original Contribution: Multilayer feedforward networks with a nonpolynomial activation function can approximate any function"
+        },
+        {
+            "paperId": "210225cacf1460daba8fa8c604b44f27a825da9c",
+            "title": "Neural networks for control systems - A survey"
+        },
+        {
+            "paperId": "164d28017a05e888b524c5aac89bf7ae00714daa",
+            "title": "Model validation: a connection between robust control and identification"
+        },
+        {
+            "paperId": "126328957fb7c4ad747b570949d2c8068714c692",
+            "title": "Uncertainty modelling and structured singular-value computation applied to an electromechanical system"
+        },
+        {
+            "paperId": "a47c16d5bcb553fe1cf72501a156527923fcf7b7",
+            "title": "Review of LFTs, LMIs, and mu"
+        },
+        {
+            "paperId": "705f548415b5ed2a4821464f82c188344102a5c0",
+            "title": "Linear controller design: limits of performance"
+        },
+        {
+            "paperId": "10a9286df1d47b4a4bd91d0c0d41129edca6e622",
+            "title": "Identification and control of dynamical systems using neural networks"
+        },
+        {
+            "paperId": "a526b939ad03fad0c34d9c8b6e7a732b6629e1fe",
+            "title": "Multivariable Feedback Design"
+        },
+        {
+            "paperId": "f22f6972e66bdd2e769fa64b0df0a13063c0c101",
+            "title": "Multilayer feedforward networks are universal approximators"
+        },
+        {
+            "paperId": "386cbc45ceb59a7abb844b5078e5c944f17723b4",
+            "title": "On the approximate realization of continuous mappings by neural networks"
+        },
+        {
+            "paperId": "1b84b383ad59f79e607ad0f08a8a10876631a0cd",
+            "title": "Practical Methods of Optimization"
+        },
+        {
+            "paperId": "052b1d8ce63b07fec3de9dbb583772d860b7c769",
+            "title": "Learning representations by back-propagating errors"
+        },
+        {
+            "paperId": "ca0f71204ff16b46cb7e682e8cbcfe74261e0d45",
+            "title": "The Extended Kalman Filter as a Parameter Estimator for Linear Systems"
+        },
+        {
+            "paperId": "c16316910a806b6dddce4113a20012b1bd10900d",
+            "title": "The complex structured singular value"
+        },
+        {
+            "paperId": "1e259027a164e10b21db5f9623559e098116a667",
+            "title": "Neural network models as linear systems with bounded uncertainty, applicable to robust controller design"
+        },
+        {
+            "paperId": "268be8f37dde22c64051fa40fb835f8964d75287",
+            "title": "Controller design for plants with structured uncertainty"
+        },
+        {
+            "paperId": "6c478d52956afe5befbb48a2eb5c1f3b038ad50d",
+            "title": "Properties of neural networks with applications to modelling non-linear dynamical systems"
+        },
+        {
+            "paperId": "a8edd60a3be9a6e09bd4c6c586a109e4f3f7b116",
+            "title": "Introduction to artificial neural systems"
+        },
+        {
+            "paperId": "21e82ed12c620fba1f5ee42162962aae74a23510",
+            "title": "Approximation by superpositions of a sigmoidal function"
+        },
+        {
+            "paperId": "e3f0e673b4fe04807183278e768a455773804ac6",
+            "title": "Subspace algorithms for system identification and stochastic realization"
+        },
+        {
+            "paperId": "92ba330f091692a2f961c3156499578b2069227d",
+            "title": "Parallel recursive prediction error algorithm for training layered neural networks"
+        },
+        {
+            "paperId": "6b235711b35468bed92c4ea5c089221f81abd962",
+            "title": "Non-linear system identification using neural networks"
+        },
+        {
+            "paperId": "ff9da0b0a16634f76422d8533e1996aac9b871bc",
+            "title": "Adaptive filtering prediction and control"
+        }
+    ]
+}

@@ -1,0 +1,174 @@
+{
+    "paperId": "1bf3d761b701e58da088a476a37963610ea23a60",
+    "externalIds": {
+        "ACL": "W18-3002",
+        "MAG": "2883402437",
+        "DBLP": "conf/rep4nlp/GaoRT18",
+        "DOI": "10.18653/v1/W18-3002",
+        "CorpusId": 51882139
+    },
+    "title": "Hierarchical Convolutional Attention Networks for Text Classification",
+    "abstract": "Recent work in machine translation has demonstrated that self-attention mechanisms can be used in place of recurrent neural networks to increase training speed without sacrificing model accuracy. We propose combining this approach with the benefits of convolutional filters and a hierarchical structure to create a document classification model that is both highly accurate and fast to train \u2013 we name our method Hierarchical Convolutional Attention Networks. We demonstrate the effectiveness of this architecture by surpassing the accuracy of the current state-of-the-art on several classification tasks while being twice as fast to train.",
+    "venue": "Rep4NLP@ACL",
+    "year": 2018,
+    "referenceCount": 33,
+    "citationCount": 48,
+    "influentialCitationCount": 3,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/W18-3002.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The method is named Hierarchical Convolutional Attention Networks and it is demonstrated by surpassing the accuracy of the current state-of-the-art on several classification tasks while being twice as fast to train."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145369990",
+            "name": "Shang Gao"
+        },
+        {
+            "authorId": "46431693",
+            "name": "A. Ramanathan"
+        },
+        {
+            "authorId": "1783513",
+            "name": "G. Tourassi"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "ce2d5b5856bb6c9ab5c2390eb8b180c75a162055",
+            "title": "Recent Trends in Deep Learning Based Natural Language Processing"
+        },
+        {
+            "paperId": "c73d507abd4f4f917e1e020df6ff0750eb5be6d8",
+            "title": "Do Convolutional Networks need to be Deep for Text Classification ?"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "032274e57f7d8b456bd255fe76b909b2c1d7458e",
+            "title": "A Deep Reinforced Model for Abstractive Summarization"
+        },
+        {
+            "paperId": "43428880d75b3a14257c3ee9bda054e61eb869c0",
+            "title": "Convolutional Sequence to Sequence Learning"
+        },
+        {
+            "paperId": "aa873542b1152cf11cd59b99e4de709679f66cbb",
+            "title": "Comparing Rule-Based and Deep Learning Models for Patient Phenotyping"
+        },
+        {
+            "paperId": "204a4a70428f3938d2c538a4d74c7ae0416306d8",
+            "title": "A Structured Self-attentive Sentence Embedding"
+        },
+        {
+            "paperId": "f52b48a988489ed4d1c53f98e77aa34669547a94",
+            "title": "Comparative Study of CNN and RNN for Natural Language Processing"
+        },
+        {
+            "paperId": "97fb4e3d45bb098e27e0071448b6152217bd35a5",
+            "title": "Layer Normalization"
+        },
+        {
+            "paperId": "455afd748e8834ef521e4b67c7c056d3c33429e2",
+            "title": "Hierarchical Attention Networks for Document Classification"
+        },
+        {
+            "paperId": "f797fd44b9ddd5845611eb7a705ca9464a8819d1",
+            "title": "Very Deep Convolutional Networks for Text Classification"
+        },
+        {
+            "paperId": "e28ab7c3b994dd4e30baac1eb67c7f87e40c2b7b",
+            "title": "Recurrent Neural Network for Text Classification with Multi-Task Learning"
+        },
+        {
+            "paperId": "13fe71da009484f240c46f14d9330e932f8de210",
+            "title": "Long Short-Term Memory-Networks for Machine Reading"
+        },
+        {
+            "paperId": "f63e917638553414526a0cc8550de4ad2d83fe7a",
+            "title": "Fast and Accurate Deep Network Learning by Exponential Linear Units (ELUs)"
+        },
+        {
+            "paperId": "51a55df1f023571a7e07e338ee45a3e3d66ef73e",
+            "title": "Character-level Convolutional Networks for Text Classification"
+        },
+        {
+            "paperId": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+            "title": "Effective Approaches to Attention-based Neural Machine Translation"
+        },
+        {
+            "paperId": "d6cee0b6f1605331a7992f99ffc8c9ce1cb34e50",
+            "title": "A Comparative Study on Regularization Strategies for Embedding-based Neural Networks"
+        },
+        {
+            "paperId": "d1505c6123c102e53eb19dff312cb25cea840b72",
+            "title": "Teaching Machines to Read and Comprehend"
+        },
+        {
+            "paperId": "c8434b04acfe1d300b56c0d369092038ec899a2b",
+            "title": "Classifying Relations by Ranking with Convolutional Neural Networks"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "ac3ee98020251797c2b401e1389461df88e52e62",
+            "title": "Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling"
+        },
+        {
+            "paperId": "71e90c4015e3dea597dbd583f3d3d08cdc0077fb",
+            "title": "Opinion Mining with Deep Recurrent Neural Networks"
+        },
+        {
+            "paperId": "1f6ba0782862ec12a5ec6d7fb608523d55b0c6ba",
+            "title": "Convolutional Neural Networks for Sentence Classification"
+        },
+        {
+            "paperId": "b0aca3e7877c3c20958b0fae5cbf2dd602104859",
+            "title": "Deep Convolutional Neural Networks for Sentiment Analysis of Short Texts"
+        },
+        {
+            "paperId": "791b65c65f8ae7e16c1ee9203cdc3ee59ffeb99f",
+            "title": "Relation Classification via Convolutional Deep Neural Network"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "ab001d508fbb4160e53686e05b800ab4baeb9728",
+            "title": "Learning Sentiment-Specific Word Embedding for Twitter Sentiment Classification"
+        },
+        {
+            "paperId": "006ac3ad7fe848fbb11b2755ae3e7e852f1676e5",
+            "title": "Accelerating recurrent neural network training via two stage classes and parallelization"
+        },
+        {
+            "paperId": "665f89a20b05472d82df0a12f2dd63e8fcc4f3ea",
+            "title": "Hidden factors and hidden topics: understanding rating dimensions with review text"
+        },
+        {
+            "paperId": "26cb14c9d22cf946314d685fe3541ef9f641e429",
+            "title": "End-to-end text recognition with convolutional neural networks"
+        },
+        {
+            "paperId": "245551f8b3f98de846ce3334a9f27228fe3229df",
+            "title": "Deep Learning for Automated Extraction of Primary Sites From Cancer Pathology Reports"
+        },
+        {
+            "paperId": "31b076a7840bde861f47056f0d29f2225470db7d",
+            "title": "Text categorization"
+        }
+    ]
+}

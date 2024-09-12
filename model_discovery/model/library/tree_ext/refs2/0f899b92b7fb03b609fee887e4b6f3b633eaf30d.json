@@ -1,0 +1,194 @@
+{
+    "paperId": "0f899b92b7fb03b609fee887e4b6f3b633eaf30d",
+    "externalIds": {
+        "MAG": "299440670",
+        "ArXiv": "1505.05770",
+        "DBLP": "journals/corr/RezendeM15",
+        "CorpusId": 12554042
+    },
+    "title": "Variational Inference with Normalizing Flows",
+    "abstract": "The choice of approximate posterior distribution is one of the core problems in variational inference. Most applications of variational inference employ simple families of posterior approximations in order to allow for efficient inference, focusing on mean-field or other simple structured approximations. This restriction has a significant impact on the quality of inferences made using variational methods. We introduce a new approach for specifying flexible, arbitrarily complex and scalable approximate posterior distributions. Our approximations are distributions constructed through a normalizing flow, whereby a simple initial density is transformed into a more complex one by applying a sequence of invertible transformations until a desired level of complexity is attained. We use this view of normalizing flows to develop categories of finite and infinitesimal flows and provide a unified view of approaches for constructing rich posterior approximations. We demonstrate that the theoretical advantages of having posteriors that better match the true posterior, combined with the scalability of amortized variational approaches, provides a clear improvement in performance and applicability of variational inference.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2015,
+    "referenceCount": 40,
+    "citationCount": 3663,
+    "influentialCitationCount": 288,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is demonstrated that the theoretical advantages of having posteriors that better match the true posterior, combined with the scalability of amortized variational approaches, provides a clear improvement in performance and applicability of variational inference."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1748523",
+            "name": "Danilo Jimenez Rezende"
+        },
+        {
+            "authorId": "14594344",
+            "name": "S. Mohamed"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "a2785f66c20fbdf30ec26c0931584c6d6a0f4fca",
+            "title": "DRAW: A Recurrent Neural Network For Image Generation"
+        },
+        {
+            "paperId": "dc8301b67f98accbb331190dd7bd987952a692af",
+            "title": "NICE: Non-linear Independent Components Estimation"
+        },
+        {
+            "paperId": "2538378f9b2aee6d2cfe106138070274f8edaa1f",
+            "title": "Doubly Stochastic Variational Bayes for non-Conjugate Inference"
+        },
+        {
+            "paperId": "66ad2fbc8b73242a889699868611fcf239e3435d",
+            "title": "Semi-supervised Learning with Deep Generative Models"
+        },
+        {
+            "paperId": "331f0fb3b6176c6e463e0401025b04f6ace9ccd3",
+            "title": "Neural Variational Inference and Learning in Belief Networks"
+        },
+        {
+            "paperId": "484ad17c926292fbe0d5211540832a8c8a8e958b",
+            "title": "Stochastic Backpropagation and Approximate Inference in Deep Generative Models"
+        },
+        {
+            "paperId": "6a667700100e228cb30a5d884258a0db921603fe",
+            "title": "Black Box Variational Inference"
+        },
+        {
+            "paperId": "5f5dc5b9a2ba710937e2c413b37b053cd673df02",
+            "title": "Auto-Encoding Variational Bayes"
+        },
+        {
+            "paperId": "f887b89684157c2c842010ed63f12bea7787745b",
+            "title": "Learning Stochastic Inverses"
+        },
+        {
+            "paperId": "695a2c95eacdbccb7a73d2f1e90e7b35b4b3d864",
+            "title": "Deep AutoRegressive Networks"
+        },
+        {
+            "paperId": "705fd4febe2fff810d2f72f48dcda20826eca77a",
+            "title": "A Deep and Tractable Density Estimator"
+        },
+        {
+            "paperId": "638f454d6ccb6fb3e5cea263dafdd5ec51aaa536",
+            "title": "High-Dimensional Probability Estimation with Deep Density Models"
+        },
+        {
+            "paperId": "b7b915d508987b73b61eccd2b237e7ed099a2d29",
+            "title": "Maxout Networks"
+        },
+        {
+            "paperId": "7304b5ae51dc9d91bd988141d6d7b1f02aa3f86f",
+            "title": "A Family of Nonparametric Density Estimation Algorithms"
+        },
+        {
+            "paperId": "4ed6688adb26026eee306c95dccb816b97b45f4a",
+            "title": "Automated Variational Inference in Probabilistic Programming"
+        },
+        {
+            "paperId": "338af964c9543f4b8c72da4922d6b5c932c25379",
+            "title": "Affine Independent Variational Inference"
+        },
+        {
+            "paperId": "bccb2f99a9d1c105699f5d88c479569085e2c7ba",
+            "title": "Stochastic variational inference"
+        },
+        {
+            "paperId": "57f3faa06d215481d04238a3c6ee75828863d6e4",
+            "title": "Bayesian Posterior Sampling via Stochastic Gradient Fisher Scoring"
+        },
+        {
+            "paperId": "6ba0491f9dde8ea042ea4a49df34838b345f23c2",
+            "title": "Nonparametric variational inference"
+        },
+        {
+            "paperId": "aeed631d6a84100b5e9a021ec1914095c66de415",
+            "title": "Bayesian Learning via Stochastic Gradient Langevin Dynamics"
+        },
+        {
+            "paperId": "b716f735fb9b229c8227495e596e2d52f2981c33",
+            "title": "MCMC Using Hamiltonian Dynamics"
+        },
+        {
+            "paperId": "aaca093827e826a1118a4d2a93b0e42a09308be7",
+            "title": "Two problems with variational expectation maximisation for time-series models"
+        },
+        {
+            "paperId": "413c1142de9d91804d6d11c67ff3fed59c9fc279",
+            "title": "Adaptive Subgradient Methods for Online Learning and Stochastic Optimization"
+        },
+        {
+            "paperId": "e778cb18fbdd7c06adae3cb3650c090bd6eb48f3",
+            "title": "DENSITY ESTIMATION BY DUAL ASCENT OF THE LOG-LIKELIHOOD \u2217"
+        },
+        {
+            "paperId": "668b1277fbece28c4841eeab1c97e4ebd0079700",
+            "title": "Pattern Recognition and Machine Learning"
+        },
+        {
+            "paperId": "8407bb99cf9df6a32a69afa7307860eb5e283972",
+            "title": "One-step neural network inversion with PDF learning and emulation"
+        },
+        {
+            "paperId": "4cebd982e88a3bbe8f91315aab6b5ddf816f97fb",
+            "title": "Convergence and Asymptotic Normality of Variational Bayesian Approximations for Expon"
+        },
+        {
+            "paperId": "6120cc252bc74239012f11b8b075cb7cb16bee26",
+            "title": "An Introduction to Variational Methods for Graphical Models"
+        },
+        {
+            "paperId": "01214343041e0f5b388e833deb7da7e5a6e17d27",
+            "title": "Improving the Mean Field Approximation Via the Use of Mixture Distributions"
+        },
+        {
+            "paperId": "e7542e8981bf05ffb1d0991bd9f7143700d8e608",
+            "title": "On-Line Learning Fokker-Planck Machine"
+        },
+        {
+            "paperId": "c7e07cf8ba4ad956483f9dd37a168355ef16a041",
+            "title": "Markov Chain Monte Carlo and Variational Inference: Bridging the Gap"
+        },
+        {
+            "paperId": "93f5a28d16e04334fcb71cb62d0fd9b1c68883bb",
+            "title": "Amortized Inference in Probabilistic Reasoning"
+        },
+        {
+            "paperId": "bea5780d621e669e8069f05d0f2fc0db9df4b50f",
+            "title": "Convolutional Deep Belief Networks on CIFAR-10"
+        },
+        {
+            "paperId": "dc52d1ede1b90bf9d296bc5b34c9310b7eaa99a2",
+            "title": "The mnist database of handwritten digits"
+        },
+        {
+            "paperId": "4c915c1eecb217c123a36dc6d3ce52d12c742614",
+            "title": "Simple Statistical Gradient-Following Algorithms for Connectionist Reinforcement Learning"
+        },
+        {
+            "paperId": "7c264b6ec998204f342c0ede541e613e41b133f9",
+            "title": "Non-centred parameterisations for hierarchical models and data augmentation."
+        },
+        {
+            "paperId": "7b85fb48a077c679c325433fbe13b87560e12886",
+            "title": "Non-Centered Parameterisations for Hierarchical Models and Data Augmentation"
+        },
+        {
+            "paperId": "dd8cda00ccb0af1594fbaa5d41ee639d053a9cb2",
+            "title": "Helmholtz Machines and Wake-Sleep Learning"
+        },
+        {
+            "paperId": "7016f1e9b6272fcd227b0c4f3a2d0527c4163de0",
+            "title": "Methods for Generating Random Orthogonal Matrices"
+        },
+        {
+            "paperId": "742cceb35a8de2ab06828b7f4d5ded3e6a3c3ffd",
+            "title": "Library of Congress Cataloging-in-publication Data Sparse Coding in the Primate Cortex"
+        }
+    ]
+}

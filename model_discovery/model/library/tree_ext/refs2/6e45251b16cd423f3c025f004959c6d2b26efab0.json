@@ -1,0 +1,135 @@
+{
+    "paperId": "6e45251b16cd423f3c025f004959c6d2b26efab0",
+    "externalIds": {
+        "MAG": "2964213727",
+        "ACL": "P18-1166",
+        "DBLP": "journals/corr/abs-1805-00631",
+        "ArXiv": "1805.00631",
+        "DOI": "10.18653/v1/P18-1166",
+        "CorpusId": 25113027
+    },
+    "title": "Accelerating Neural Transformer via an Average Attention Network",
+    "abstract": "With parallelizable attention networks, the neural Transformer is very fast to train. However, due to the auto-regressive architecture and self-attention in the decoder, the decoding procedure becomes slow. To alleviate this issue, we propose an average attention network as an alternative to the self-attention network in the decoder of the neural Transformer. The average attention network consists of two layers, with an average layer that models dependencies on previous positions and a gating layer that is stacked over the average layer to enhance the expressiveness of the proposed attention network. We apply this network on the decoder part of the neural Transformer to replace the original target-side self-attention model. With masking tricks and dynamic programming, our model enables the neural Transformer to decode sentences over four times faster than its original version with almost no loss in training time and translation performance. We conduct a series of experiments on WMT17 translation tasks, where on 6 different language pairs, we obtain robust and consistent speed-ups in decoding.",
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2018,
+    "referenceCount": 23,
+    "citationCount": 117,
+    "influentialCitationCount": 19,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/P18-1166.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The proposed average attention network is applied on the decoder part of the neural Transformer to replace the original target-side self-attention model and enables the neuralTransformer to decode sentences over four times faster than its original version with almost no loss in training time and translation performance."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "48335426",
+            "name": "Biao Zhang"
+        },
+        {
+            "authorId": "2694222",
+            "name": "Deyi Xiong"
+        },
+        {
+            "authorId": "34739384",
+            "name": "Jinsong Su"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "8442d6e33a6b6d9db248cf9f12d292601740d47f",
+            "title": "THUMT: An Open-Source Toolkit for Neural Machine Translation"
+        },
+        {
+            "paperId": "15e81c8d1c21f9e928c72721ac46d458f3341454",
+            "title": "Non-Autoregressive Neural Machine Translation"
+        },
+        {
+            "paperId": "adc276e6eae7051a027a4c269fb21dae43cadfed",
+            "title": "DiSAN: Directional Self-Attention Network for RNN/CNN-free Language Understanding"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "43428880d75b3a14257c3ee9bda054e61eb869c0",
+            "title": "Convolutional Sequence to Sequence Learning"
+        },
+        {
+            "paperId": "a3143ea1bc45933da261af5b01fd4040ac47b0b6",
+            "title": "A GRU-Gated Attention Model for Neural Machine Translation"
+        },
+        {
+            "paperId": "13d9323a8716131911bfda048a40e2cde1a76a46",
+            "title": "Structured Attention Networks"
+        },
+        {
+            "paperId": "f958d4921951e394057a1c4ec33bad9a34e5dad1",
+            "title": "A Convolutional Encoder Model for Neural Machine Translation"
+        },
+        {
+            "paperId": "7f12bd8efc6791399abdc587a1ca4f52776e2b88",
+            "title": "Neural Machine Translation with Supervised Attention"
+        },
+        {
+            "paperId": "d4a887499773ff32aae898711e595654f3f65199",
+            "title": "Supervised Attentions for Neural Machine Translation"
+        },
+        {
+            "paperId": "65161b91378d0ee020f79a467c3646c801c24a0f",
+            "title": "Recurrent Neural Machine Translation"
+        },
+        {
+            "paperId": "a3fbd2bd5dc1de28a36da5503030d9c648ce7f6d",
+            "title": "Neural Machine Translation with Recurrent Attention Modeling"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "1518039b5001f1836565215eb047526b3ac7f462",
+            "title": "Neural Machine Translation of Rare Words with Subword Units"
+        },
+        {
+            "paperId": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+            "title": "Effective Approaches to Attention-based Neural Machine Translation"
+        },
+        {
+            "paperId": "e0945081b5b87187a53d4329cf77cd8bff635795",
+            "title": "Highway Networks"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "ac3ee98020251797c2b401e1389461df88e52e62",
+            "title": "Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "d7da009f457917aa381619facfa5ffae9329a6e9",
+            "title": "Bleu: a Method for Automatic Evaluation of Machine Translation"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "6a07515741593b34b9a60db857703b6255b76122",
+            "title": "What will you need"
+        }
+    ]
+}

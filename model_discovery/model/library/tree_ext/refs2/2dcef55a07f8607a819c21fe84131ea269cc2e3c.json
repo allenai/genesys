@@ -1,0 +1,282 @@
+{
+    "paperId": "2dcef55a07f8607a819c21fe84131ea269cc2e3c",
+    "externalIds": {
+        "MAG": "2129069237",
+        "DBLP": "journals/corr/Sohl-DicksteinW15",
+        "ArXiv": "1503.03585",
+        "CorpusId": 14888175
+    },
+    "title": "Deep Unsupervised Learning using Nonequilibrium Thermodynamics",
+    "abstract": "A central problem in machine learning involves modeling complex data-sets using highly flexible families of probability distributions in which learning, sampling, inference, and evaluation are still analytically or computationally tractable. Here, we develop an approach that simultaneously achieves both flexibility and tractability. The essential idea, inspired by non-equilibrium statistical physics, is to systematically and slowly destroy structure in a data distribution through an iterative forward diffusion process. We then learn a reverse diffusion process that restores structure in data, yielding a highly flexible and tractable generative model of the data. This approach allows us to rapidly learn, sample from, and evaluate probabilities in deep generative models with thousands of layers or time steps, as well as to compute conditional and posterior probabilities under the learned model. We additionally release an open source reference implementation of the algorithm.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2015,
+    "referenceCount": 60,
+    "citationCount": 4609,
+    "influentialCitationCount": 352,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work develops an approach to systematically and slowly destroy structure in a data distribution through an iterative forward diffusion process, then learns a reverse diffusion process that restores structure in data, yielding a highly flexible and tractable generative model of the data."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1407546424",
+            "name": "Jascha Narain Sohl-Dickstein"
+        },
+        {
+            "authorId": "2144479710",
+            "name": "Eric A. Weiss"
+        },
+        {
+            "authorId": "2333223",
+            "name": "Niru Maheswaranathan"
+        },
+        {
+            "authorId": "25769960",
+            "name": "S. Ganguli"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "39e0c341351f8f4a39ac890b96217c7f4bde5369",
+            "title": "A note on the evaluation of generative models"
+        },
+        {
+            "paperId": "e70dc6ad191734e60c0b2d98e434a13e807ccbc6",
+            "title": "Blocks and Fuel"
+        },
+        {
+            "paperId": "80a63f7e42166c64e330934339d18a72c330ae35",
+            "title": "Accurate and conservative estimates of MRF log-likelihood using reverse annealing"
+        },
+        {
+            "paperId": "dc8301b67f98accbb331190dd7bd987952a692af",
+            "title": "NICE: Non-linear Independent Components Estimation"
+        },
+        {
+            "paperId": "b3ccb7fff54b2b328945fcbe465931193ceecf62",
+            "title": "Deep Directed Generative Autoencoders"
+        },
+        {
+            "paperId": "fa1213960a755fcc5efab9e07d57dcccc0dc6edc",
+            "title": "On the Equivalence between Deep NADE and Generative Stochastic Networks"
+        },
+        {
+            "paperId": "7a24ec97e7f2881e245d20c46a56cbbfc734a4ff",
+            "title": "Reweighted Wake-Sleep"
+        },
+        {
+            "paperId": "484ad17c926292fbe0d5211540832a8c8a8e958b",
+            "title": "Stochastic Backpropagation and Approximate Inference in Deep Generative Models"
+        },
+        {
+            "paperId": "f87247fb37f6b48da0757d7a1acf38da44510cdb",
+            "title": "Stochastic Back-propagation and Variational Inference in Deep Latent Gaussian Models"
+        },
+        {
+            "paperId": "5f5dc5b9a2ba710937e2c413b37b053cd673df02",
+            "title": "Auto-Encoding Variational Bayes"
+        },
+        {
+            "paperId": "f1422fa2b097b68ab9c4baf6b54a2184ae868299",
+            "title": "Annealing between distributions by averaging moments"
+        },
+        {
+            "paperId": "f887b89684157c2c842010ed63f12bea7787745b",
+            "title": "Learning Stochastic Inverses"
+        },
+        {
+            "paperId": "6c5616a24c80915f52bac2321dbb6bb296375095",
+            "title": "Volumetric Semantic Segmentation Using Pyramid Context Features"
+        },
+        {
+            "paperId": "af0ee019dcc1fe7eab918e3c670a6c47e48d17f6",
+            "title": "Fast large-scale optimization by unifying stochastic gradient and quasi-Newton methods"
+        },
+        {
+            "paperId": "695a2c95eacdbccb7a73d2f1e90e7b35b4b3d864",
+            "title": "Deep AutoRegressive Networks"
+        },
+        {
+            "paperId": "705fd4febe2fff810d2f72f48dcda20826eca77a",
+            "title": "A Deep and Tractable Density Estimator"
+        },
+        {
+            "paperId": "5ffa8bf1bf3e39227be28de4ff6915d3b21eb52d",
+            "title": "Deep Generative Stochastic Networks Trainable by Backprop"
+        },
+        {
+            "paperId": "309494da0769345cb35ca0b7b0aae8143eee85a2",
+            "title": "RNADE: The real-valued neural autoregressive density-estimator"
+        },
+        {
+            "paperId": "638f454d6ccb6fb3e5cea263dafdd5ec51aaa536",
+            "title": "High-Dimensional Probability Estimation with Deep Density Models"
+        },
+        {
+            "paperId": "d0965d8f9842f2db960b36b528107ca362c00d1a",
+            "title": "Better Mixing via Deep Representations"
+        },
+        {
+            "paperId": "7ecb1bde128ddfdaeb97088238ab9cf5bbd02e9c",
+            "title": "Fluctuation Relations: A Pedagogical Overview"
+        },
+        {
+            "paperId": "70ffbf8b2caa2237850d651d7074d771728c1480",
+            "title": "Unifying Non-Maximum Likelihood Learning Objectives with Minimum KL Contraction"
+        },
+        {
+            "paperId": "57df462188c1b97bd3898f54161ba85f474116b6",
+            "title": "A Tutorial on Bayesian Nonparametric Models"
+        },
+        {
+            "paperId": "e2ba7bf26dc2cbc8e9faa5cb21bdce5244521e51",
+            "title": "Equalities and Inequalities: Irreversibility and the Second Law of Thermodynamics at the Nanoscale"
+        },
+        {
+            "paperId": "2d1b584ea292ab6619ac558607a0b07805227634",
+            "title": "Proper local scoring rules"
+        },
+        {
+            "paperId": "c63ef05c5f9c424b5cfeeed90dbe35eedf6cb8ec",
+            "title": "Fast Inference in Sparse Coding Algorithms with Applications to Object Recognition"
+        },
+        {
+            "paperId": "35e57c040ddf95eca2a9bd6e1c532a08147b1f29",
+            "title": "Minimum Probability Flow Learning"
+        },
+        {
+            "paperId": "6bbd8fc39487249bd1b6886e4dc763550877b758",
+            "title": "Strictly Proper Scoring Rules, Prediction, and Estimation"
+        },
+        {
+            "paperId": "1af67fb5c15470c9e8954cae66702293dd66bae8",
+            "title": "Learning Joint Top-Down and Bottom-up Processes for 3D Visual Inference"
+        },
+        {
+            "paperId": "9966e890f2eedb4577e11b9d5a66380a4d9341fe",
+            "title": "Estimation of Non-Normalized Statistical Models by Score Matching"
+        },
+        {
+            "paperId": "72bf4b2ce534b95bc24118491dbc4f8d550734a2",
+            "title": "A sparse texture representation using local affine regions"
+        },
+        {
+            "paperId": "b7b5bea7b4d40003a6887794652ea07196a97134",
+            "title": "A New Learning Algorithm for Mean Field Boltzmann Machines"
+        },
+        {
+            "paperId": "52070af952474cf13ecd015d42979373ff7c1c00",
+            "title": "Training Products of Experts by Minimizing Contrastive Divergence"
+        },
+        {
+            "paperId": "19908640236767427ebf0524dc3a4bb09d65145e",
+            "title": "Loopy Belief Propagation for Approximate Inference: An Empirical Study"
+        },
+        {
+            "paperId": "6120cc252bc74239012f11b8b075cb7cb16bee26",
+            "title": "An Introduction to Variational Methods for Graphical Models"
+        },
+        {
+            "paperId": "b8d90e4b3f68044727973d62a17ca8a6dec6e9c5",
+            "title": "Mean-field theory of Boltzmann machine learning"
+        },
+        {
+            "paperId": "2f59406cce55c7bb9a78521bd14755a0db0aee7d",
+            "title": "Annealed importance sampling"
+        },
+        {
+            "paperId": "bb32bc8bc76ead611110fb02ed580954a316c192",
+            "title": "Paul Langevin\u2019s 1908 paper \u201cOn the Theory of Brownian Motion\u201d [\u201cSur la th\u00e9orie du mouvement brownien,\u201d C. R. Acad. Sci. (Paris) 146, 530\u2013533 (1908)]"
+        },
+        {
+            "paperId": "b178806f589c589429f5d51f3cd8ffc75b5546b3",
+            "title": "Equilibrium free-energy differences from nonequilibrium measurements: A master-equation approach"
+        },
+        {
+            "paperId": "605402e235bd62437baf3c9ebefe77fb4d92ee95",
+            "title": "The Helmholtz Machine"
+        },
+        {
+            "paperId": "6dd01cd9c17d1491ead8c9f97597fbc61dead8ea",
+            "title": "The \"wake-sleep\" algorithm for unsupervised neural networks."
+        },
+        {
+            "paperId": "f2861a5e59de4d61bcd8a9ae4785978ac11fc9c1",
+            "title": "Bayesian neural networks and density networks"
+        },
+        {
+            "paperId": "675d381653da0d2825ae37ab06069a1525fafb79",
+            "title": "Learning Factorial Codes by Predictability Minimization"
+        },
+        {
+            "paperId": "753761f39e455948779771e9a6b25ade1a4456f1",
+            "title": "Convergence condition of the TAP equation for the infinite-ranged Ising spin glass model"
+        },
+        {
+            "paperId": "1406b6d771c270aff4dcb1c96e4f5c62c02c00a5",
+            "title": "Statistical Analysis of Non-Lattice Data"
+        },
+        {
+            "paperId": "30fbbcf99fb5a9ce553f82ed3a3a9ebc1cf0131f",
+            "title": "Nuclear Instruments and Methods in Physics Research Section A: Accelerators, Spectrometers, Detectors and Associated Equipment"
+        },
+        {
+            "paperId": null,
+            "title": "Aaron Courville, and Yoshua Bengio. Generative Adversarial Nets. Advances in Neural Information Processing Systems"
+        },
+        {
+            "paperId": null,
+            "title": "Mixtures of Conditional Gaussian Scale Mixtures Applied to Multiscale Image Representations"
+        },
+        {
+            "paperId": null,
+            "title": "New Method forParameterEstimationinProbabilisticModels: MinimumProbabilityFlow"
+        },
+        {
+            "paperId": "b893e7053c9c7e266a23fb13a42261a88f650210",
+            "title": "The Neural Autoregressive Distribution Estimator"
+        },
+        {
+            "paperId": "63936fa32f9e75ab2a864daae6791ce02112183d",
+            "title": "Theano: A CPU and GPU Math Compiler in Python"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        },
+        {
+            "paperId": "dc52d1ede1b90bf9d296bc5b34c9310b7eaa99a2",
+            "title": "The mnist database of handwritten digits"
+        },
+        {
+            "paperId": "1c7f6cea2236150f7e9c6b2e2347487ed981efb1",
+            "title": "Occlusion Models for Natural Images: A Statistical Study of a Scale-Invariant Dead Leaves Model"
+        },
+        {
+            "paperId": "2639515c248f220c73d44688c0097a99b01e1474",
+            "title": "GTM: The Generative Topographic Mapping"
+        },
+        {
+            "paperId": "9170d193fd72c3a3b42f7d56153487b72626e424",
+            "title": "Nonconvex optimization using a Fokker-Planck learning machine"
+        },
+        {
+            "paperId": "4cdcf495232f3ec44183dc74cd8eca4b44c2de64",
+            "title": "On the Theory of Stochastic Processes, with Particular Reference to Applications"
+        },
+        {
+            "paperId": null,
+            "title": "Sur la th{\u00e9}orie du mouvement brownien"
+        },
+        {
+            "paperId": null,
+            "title": "We train models with thousands of layers (or time steps), rather than only a handful of layers"
+        },
+        {
+            "paperId": null,
+            "title": "We show how to easily multiply the learned distribution with another probability distribution (eg with a conditional distribution in order to compute a posterior)"
+        }
+    ]
+}

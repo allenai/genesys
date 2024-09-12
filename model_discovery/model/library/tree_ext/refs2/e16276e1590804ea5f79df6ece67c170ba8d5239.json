@@ -1,0 +1,258 @@
+{
+    "paperId": "e16276e1590804ea5f79df6ece67c170ba8d5239",
+    "externalIds": {
+        "ArXiv": "1503.03893",
+        "DBLP": "journals/corr/YuKRC15",
+        "MAG": "1814624729",
+        "CorpusId": 15101058
+    },
+    "title": "Compact Nonlinear Maps and Circulant Extensions",
+    "abstract": "Kernel approximation via nonlinear random feature maps is widely used in speeding up kernel machines. There are two main challenges for the conventional kernel approximation methods. First, before performing kernel approximation, a good kernel has to be chosen. Picking a good kernel is a very challenging problem in itself. Second, high-dimensional maps are often required in order to achieve good performance. This leads to high computational cost in both generating the nonlinear maps, and in the subsequent learning and prediction process. In this work, we propose to optimize the nonlinear maps directly with respect to the classification objective in a data-dependent fashion. The proposed approach achieves kernel approximation and kernel learning in a joint framework. This leads to much more compact maps without hurting the performance. As a by-product, the same framework can also be used to achieve more compact kernel maps to approximate a known kernel. We also introduce Circulant Nonlinear Maps, which uses a circulant-structured projection matrix to speed up the nonlinear maps for high-dimensional data.",
+    "venue": "arXiv.org",
+    "year": 2015,
+    "referenceCount": 54,
+    "citationCount": 48,
+    "influentialCitationCount": 4,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes to optimize the nonlinear maps directly with respect to the classification objective in a data-dependent fashion to achieve kernel approximation and kernel learning in a joint framework, which leads to much more compact maps without hurting the performance."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1815972",
+            "name": "Felix X. Yu"
+        },
+        {
+            "authorId": "152663162",
+            "name": "Sanjiv Kumar"
+        },
+        {
+            "authorId": "39682833",
+            "name": "H. Rowley"
+        },
+        {
+            "authorId": "9546964",
+            "name": "Shih-Fu Chang"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "9e75ebb1225bf605814deac5d01ca8d0002552c6",
+            "title": "Fast Neural Networks with Circulant Projections"
+        },
+        {
+            "paperId": "5934400081d9541339da0f16d2613263f1a4c2a2",
+            "title": "An Exploration of Parameter Redundancy in Deep Networks with Circulant Projections"
+        },
+        {
+            "paperId": "ef2cb3b03f95de248be6530c38fea525e5e817ba",
+            "title": "Fast Prediction for Large-Scale Kernel Machines"
+        },
+        {
+            "paperId": "18c7fb55ff796db5c5a604e0ca44b6baaeb12239",
+            "title": "Fastfood: Approximate Kernel Expansions in Loglinear Time"
+        },
+        {
+            "paperId": "19cd6053bbb9b9c67da0c0881e31019f9ce28154",
+            "title": "Random Laplace Feature Maps for Semigroup Kernels on Histograms"
+        },
+        {
+            "paperId": "2b55f034a3874ad4a4b7f389e6f89e3bf2d1801e",
+            "title": "Quasi-Monte Carlo Feature Maps for Shift-Invariant Kernels"
+        },
+        {
+            "paperId": "46abc8d639f1b8595ad241e44ac5dae61075ea80",
+            "title": "Circulant Binary Embedding"
+        },
+        {
+            "paperId": "b03e90e1d44af90f296706098b1a5ea747b72ba9",
+            "title": "Compact Random Feature Maps"
+        },
+        {
+            "paperId": "a3b39efea137930d7534baa40c480324fba1e84c",
+            "title": "A Divide-and-Conquer Solver for Kernel Support Vector Machines"
+        },
+        {
+            "paperId": "87ee6fc7501edc541b5c0620fd1d0435d2a35b7b",
+            "title": "New bounds for circulant Johnson-Lindenstrauss embeddings"
+        },
+        {
+            "paperId": "ed4847b6ea369b7f4f1419d1a49504a534b2e3b4",
+            "title": "Fast and scalable polynomial kernels via explicit feature maps"
+        },
+        {
+            "paperId": "8dcdd6d61b735c529bf50b514a262d9e40f633d9",
+            "title": "Local Deep Kernel Learning for Efficient Non-linear SVM Prediction"
+        },
+        {
+            "paperId": "8f77e16f2834eb23307b0436f5422a9752339f0a",
+            "title": "Nystr\u00f6m Method vs Random Fourier Features: A Theoretical and Empirical Comparison"
+        },
+        {
+            "paperId": "323bff633ef0270405072bf04c4eaf1bb1316218",
+            "title": "Fourier Kernel Learning"
+        },
+        {
+            "paperId": "236a1facf2bbd96608763363390f7acff9dd764a",
+            "title": "Efficient Additive Kernels via Explicit Feature Maps"
+        },
+        {
+            "paperId": "03a3ba746584c01ed62c73e805d62336839582ae",
+            "title": "Random Feature Maps for Dot Product Kernels"
+        },
+        {
+            "paperId": "40349f066fd2ced16138a016256755dc45ff031c",
+            "title": "Fast locality-sensitive hashing"
+        },
+        {
+            "paperId": "85b3a4c4f08f15b4e7accd31315db57cce3a5b4e",
+            "title": "Locally Linear Support Vector Machines"
+        },
+        {
+            "paperId": "273dfbcb68080251f5e9ff38b4413d7bd84b10a1",
+            "title": "LIBSVM: A library for support vector machines"
+        },
+        {
+            "paperId": "9a7332e7af8e9faf832c59c1fb0b985bfccd0b53",
+            "title": "Multiple Kernel Learning Algorithms"
+        },
+        {
+            "paperId": "458d437f2b8d882d59bade4f9bbbdd3015f232a2",
+            "title": "Random Fourier Approximations for Skewed Multiplicative Histogram Kernels"
+        },
+        {
+            "paperId": "43dd4561038718c805facc9a2186d785c735e424",
+            "title": "Weakly-supervised hashing in kernel space"
+        },
+        {
+            "paperId": "98ddb5f09e1e4480394b6e3a03cf1aa2442b01f7",
+            "title": "Efficient additive kernels via explicit feature maps"
+        },
+        {
+            "paperId": "883982ff94333a472aa3422deeb7ae1098966e0c",
+            "title": "Learning Translation Invariant Kernels for Classification"
+        },
+        {
+            "paperId": "9da848e8e3893afc33417803cf2629cc8617df39",
+            "title": "A variant of the Johnson-Lindenstrauss lemma for circulant matrices"
+        },
+        {
+            "paperId": "2cde78f9dc1f35d7d38801f4d5168a2df26c328e",
+            "title": "Johnson\u2010Lindenstrauss lemma for circulant matrices* *"
+        },
+        {
+            "paperId": "4eeac07324e5b15bca90295c66b21c05726ea2bb",
+            "title": "Learning Non-Linear Combinations of Kernels"
+        },
+        {
+            "paperId": "03a8f53058127798bc2bc0245d21e78354f6c93b",
+            "title": "Max-margin additive classifiers for detection"
+        },
+        {
+            "paperId": "25f7cdba90ff53b40ff865a4e088ee5749f34210",
+            "title": "Sampling Techniques for the Nystrom Method"
+        },
+        {
+            "paperId": "e434679ddb8c7eb6a98831fd4264a6a42f4d0e70",
+            "title": "Infinite Kernel Learning"
+        },
+        {
+            "paperId": "268a4f8da15a42f3e0e71691f760ff5edbf9cec8",
+            "title": "LIBLINEAR: A Library for Large Linear Classification"
+        },
+        {
+            "paperId": "7a59fde27461a3ef4a21a249cc403d0d96e4a0d7",
+            "title": "Random Features for Large-Scale Kernel Machines"
+        },
+        {
+            "paperId": "63f27307cb028f9341544fff32eceb2c3c652bf2",
+            "title": "Large-scale kernel machines"
+        },
+        {
+            "paperId": "9691f67f5075bde2fd70da0135a4a70f25ef042b",
+            "title": "Pegasos: primal estimated sub-gradient solver for SVM"
+        },
+        {
+            "paperId": "0182a87bc94d18dfaac6f197f414069cfe7e574f",
+            "title": "An Efficient Method for Gradient-Based Adaptation of Hyperparameters in SVM Models"
+        },
+        {
+            "paperId": "e44e0167ef3ff820917425839be0c145179c5a5a",
+            "title": "Building Support Vector Machines with Reduced Classifier Complexity"
+        },
+        {
+            "paperId": "427b168f490b56716f22b129ac93aba5425ea08f",
+            "title": "Training linear SVMs in linear time"
+        },
+        {
+            "paperId": "b1fcab63606efa8df7c76c15d569afe8c188349e",
+            "title": "A DC-programming algorithm for kernel selection"
+        },
+        {
+            "paperId": "b4d6a34f9d25b7a7ca665087ad7cb82f58d89d51",
+            "title": "Approximate nearest neighbors and the fast Johnson-Lindenstrauss transform"
+        },
+        {
+            "paperId": "56c9ddaca9bf54f5e491ce11b71af1e19b5ea2ce",
+            "title": "Predictive low-rank decomposition for kernel methods"
+        },
+        {
+            "paperId": "11e6b5a30a921e6028662105148fac41a76f0500",
+            "title": "On the Nystr\u00f6m Method for Approximating a Gram Matrix for Improved Kernel-Based Learning"
+        },
+        {
+            "paperId": "141e6c1dd532504611266d08458dbe2a0dbb4e98",
+            "title": "Multiple kernel learning, conic duality, and the SMO algorithm"
+        },
+        {
+            "paperId": "626a5da1bfc0f4b38be27f867f95daa061655f94",
+            "title": "Choosing Multiple Parameters for Support Vector Machines"
+        },
+        {
+            "paperId": "0db7af02be7cbadc029f9104a8c784d02de42df7",
+            "title": "Efficient SVM Training Using Low-Rank Kernel Representations"
+        },
+        {
+            "paperId": "9fe4e58bcf31d528a30f15bd0b180fbe298f91ef",
+            "title": "Fast computation of low rank matrix approximations"
+        },
+        {
+            "paperId": "891b7ca85d61f3775701d9c0c7cac4b29c2620e1",
+            "title": "Towards scalable support vector machines using squashing"
+        },
+        {
+            "paperId": "68c4749d9d3f1724aa01778d69a3774c732ca44c",
+            "title": "Support Vector Machines: Training and Applications"
+        },
+        {
+            "paperId": "52b7bf3ba59b31f362aa07f957f1543a29a4279e",
+            "title": "Support-Vector Networks"
+        },
+        {
+            "paperId": "54c922b956f8d07a81799b8f94d241b3ec0d40fa",
+            "title": "Harmonic Analysis and the Theory of Probability"
+        },
+        {
+            "paperId": "5578f3d9e6931c3762b2275f5265113e8f94369a",
+            "title": "Generalized RBF feature maps for Efficient Detection"
+        },
+        {
+            "paperId": "1cbfa10be8f8744a3e84e3f60b59f28ee4d17435",
+            "title": "Discrete Time Signal Processing"
+        },
+        {
+            "paperId": "6d7a8d3e234616af588e242e992cba82704f39be",
+            "title": "Decomposition techniques for support vector machines training and applications"
+        },
+        {
+            "paperId": "b6fff8b8ea77f157913986e7af53951d9fc1128e",
+            "title": "Using the Nystr\u00f6m Method to Speed Up Kernel Machines"
+        },
+        {
+            "paperId": "99d03dc3437b5c4ed1b3e54d65a030330e32c6cb",
+            "title": "Discrete-time signal processing (2nd ed.)"
+        }
+    ]
+}

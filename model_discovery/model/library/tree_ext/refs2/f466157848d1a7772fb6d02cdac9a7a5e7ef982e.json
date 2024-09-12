@@ -1,0 +1,210 @@
+{
+    "paperId": "f466157848d1a7772fb6d02cdac9a7a5e7ef982e",
+    "externalIds": {
+        "MAG": "2752796333",
+        "ArXiv": "1711.00937",
+        "DBLP": "conf/nips/OordVK17",
+        "CorpusId": 20282961
+    },
+    "title": "Neural Discrete Representation Learning",
+    "abstract": "Learning useful representations without supervision remains a key challenge in machine learning. In this paper, we propose a simple yet powerful generative model that learns such discrete representations. Our model, the Vector Quantised-Variational AutoEncoder (VQ-VAE), differs from VAEs in two key ways: the encoder network outputs discrete, rather than continuous, codes; and the prior is learnt rather than static. In order to learn a discrete latent representation, we incorporate ideas from vector quantisation (VQ). Using the VQ method allows the model to circumvent issues of \"posterior collapse\" -- where the latents are ignored when they are paired with a powerful autoregressive decoder -- typically observed in the VAE framework. Pairing these representations with an autoregressive prior, the model can generate high quality images, videos, and speech as well as doing high quality speaker conversion and unsupervised learning of phonemes, providing further evidence of the utility of the learnt representations.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2017,
+    "referenceCount": 43,
+    "citationCount": 3617,
+    "influentialCitationCount": 602,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Pairing these representations with an autoregressive prior, the model can generate high quality images, videos, and speech as well as doing high quality speaker conversion and unsupervised learning of phonemes, providing further evidence of the utility of the learnt representations."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3422336",
+            "name": "A\u00e4ron van den Oord"
+        },
+        {
+            "authorId": "1689108",
+            "name": "O. Vinyals"
+        },
+        {
+            "authorId": "2645384",
+            "name": "K. Kavukcuoglu"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "68c1e2d4e1bedaec12bc9ca401d2c8e6e2fe7a25",
+            "title": "Soft-to-Hard Vector Quantization for End-to-End Learned Compression of Images and Neural Networks"
+        },
+        {
+            "paperId": "90ab469425b772008f7c409972aa520f92dc7a77",
+            "title": "Soft-to-Hard Vector Quantization for End-to-End Learning Compressible Representations"
+        },
+        {
+            "paperId": "977560251c2bd4c28a6c7c707c29f4091c5e6247",
+            "title": "Lossy Image Compression with Compressive Autoencoders"
+        },
+        {
+            "paperId": "7d77a29f2e1dc796d202d6cf01f299da7c197c22",
+            "title": "Improved Variational Autoencoders for Text Modeling using Dilated Convolutions"
+        },
+        {
+            "paperId": "8acbe90d5b852dadea7810345451a99608ee54c7",
+            "title": "Image-to-Image Translation with Conditional Adversarial Networks"
+        },
+        {
+            "paperId": "6139ed57b3fe91915991897723aed6a98cd32f82",
+            "title": "Semi-Supervised Learning with Context-Conditional Generative Adversarial Networks"
+        },
+        {
+            "paperId": "590c9a1ff422b03477f7830b20609f212c85aa13",
+            "title": "Variational Lossy Autoencoder"
+        },
+        {
+            "paperId": "42e9055ec712ec9c7f0a79d963ea034a72dc7fa8",
+            "title": "PixelVAE: A Latent Variable Model for Natural Images"
+        },
+        {
+            "paperId": "e221e2c2ca8bd74a7b818406c8a2a342760e7d65",
+            "title": "SampleRNN: An Unconditional End-to-End Neural Audio Generation Model"
+        },
+        {
+            "paperId": "29e944711a354c396fad71936f536e83025b6ce0",
+            "title": "Categorical Reparameterization with Gumbel-Softmax"
+        },
+        {
+            "paperId": "515a21e90117941150923e559729c59f5fdade1c",
+            "title": "The Concrete Distribution: A Continuous Relaxation of Discrete Random Variables"
+        },
+        {
+            "paperId": "d4903c15a7aba8e2c2386b2fe95edf0905144d6a",
+            "title": "SUPERSEDED - CSTR VCTK Corpus: English Multi-speaker Corpus for CSTR Voice Cloning Toolkit"
+        },
+        {
+            "paperId": "b01871c114b122340209562972ff515b86b16ccf",
+            "title": "Video Pixel Networks"
+        },
+        {
+            "paperId": "df0c54fe61f0ffb9f0e36a17c2038d9a1964cba3",
+            "title": "Photo-Realistic Single Image Super-Resolution Using a Generative Adversarial Network"
+        },
+        {
+            "paperId": "df0402517a7338ae28bc54acaac400de6b456a46",
+            "title": "WaveNet: A Generative Model for Raw Audio"
+        },
+        {
+            "paperId": "0936352b78a52bc5d2b5e3f04233efc56664af51",
+            "title": "Conditional Image Generation with PixelCNN Decoders"
+        },
+        {
+            "paperId": "6a97d2668187965743d1b825b306defccbabbb4c",
+            "title": "Improved Variational Inference with Inverse Autoregressive Flow"
+        },
+        {
+            "paperId": "eb7ee0bc355652654990bcf9f92f124688fde493",
+            "title": "InfoGAN: Interpretable Representation Learning by Information Maximizing Generative Adversarial Nets"
+        },
+        {
+            "paperId": "09879f7956dddc2a9328f5c1472feeb8402bcbcf",
+            "title": "Density estimation using Real NVP"
+        },
+        {
+            "paperId": "f110cfdbe9ded7a384bcf5c0d56e536bd275a7eb",
+            "title": "Unsupervised Learning for Physical Interaction through Video Prediction"
+        },
+        {
+            "paperId": "bbd0e204f48a45735e1065c8b90b298077b73192",
+            "title": "One-shot Learning with Memory-Augmented Neural Networks"
+        },
+        {
+            "paperId": "bda89e0d181eda7e49ea831225eda86d075e111c",
+            "title": "Towards Conceptual Compression"
+        },
+        {
+            "paperId": "266e8622d57457ad76224649c6b00adf23c0b76d",
+            "title": "Variational Inference for Monte Carlo Objectives"
+        },
+        {
+            "paperId": "41f1d50c85d3180476c4c7b3eea121278b0d8474",
+            "title": "Pixel Recurrent Neural Networks"
+        },
+        {
+            "paperId": "d82b55c35c8673774a708353838918346f6c006f",
+            "title": "Generating Sentences from a Continuous Space"
+        },
+        {
+            "paperId": "3e47c4c2dd98c49b7771c7228812d5fd9eee56a3",
+            "title": "Importance Weighted Autoencoders"
+        },
+        {
+            "paperId": "0f899b92b7fb03b609fee887e4b6f3b633eaf30d",
+            "title": "Variational Inference with Normalizing Flows"
+        },
+        {
+            "paperId": "34038d9424ce602d7ac917a4e582d977725d4393",
+            "title": "Librispeech: An ASR corpus based on public domain audio books"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "d4dc1012d780e8e2547237eb5a6dc7b1bf47d2f0",
+            "title": "Show and tell: A neural image caption generator"
+        },
+        {
+            "paperId": "331f0fb3b6176c6e463e0401025b04f6ace9ccd3",
+            "title": "Neural Variational Inference and Learning in Belief Networks"
+        },
+        {
+            "paperId": "484ad17c926292fbe0d5211540832a8c8a8e958b",
+            "title": "Stochastic Backpropagation and Approximate Inference in Deep Generative Models"
+        },
+        {
+            "paperId": "5f5dc5b9a2ba710937e2c413b37b053cd673df02",
+            "title": "Auto-Encoding Variational Bayes"
+        },
+        {
+            "paperId": "695a2c95eacdbccb7a73d2f1e90e7b35b4b3d864",
+            "title": "Deep AutoRegressive Networks"
+        },
+        {
+            "paperId": "62c76ca0b2790c34e85ba1cce09d47be317c7235",
+            "title": "Estimating or Propagating Gradients Through Stochastic Neurons for Conditional Computation"
+        },
+        {
+            "paperId": "260aed27abfe751b3d90aad9c0805d35c359ebd5",
+            "title": "Efficient Learning of Domain-invariant Image Representations"
+        },
+        {
+            "paperId": "78c91d969c55a4a61184f81001c376810cdbd541",
+            "title": "A Spike and Slab Restricted Boltzmann Machine"
+        },
+        {
+            "paperId": "e2b7f37cd97a7907b1b8a41138721ed06a0b76cd",
+            "title": "Stacked Denoising Autoencoders: Learning Useful Representations in a Deep Network with a Local Denoising Criterion"
+        },
+        {
+            "paperId": "ddc45fad8d15771d9f1f8579331458785b2cdd93",
+            "title": "Deep Boltzmann Machines"
+        },
+        {
+            "paperId": "c68796f833a7151f0a63d1d1608dc902b4fdc9b6",
+            "title": "GENERATIVE ADVERSARIAL NETS"
+        },
+        {
+            "paperId": "c50dca78e97e335d362d6b991ae0e1448914e9a3",
+            "title": "Reducing the Dimensionality of Data with Neural"
+        },
+        {
+            "paperId": "7c59908c946a4157abc030cdbe2b63d08ba97db3",
+            "title": "Supporting Online Material for Reducing the Dimensionality of Data with Neural Networks"
+        },
+        {
+            "paperId": "97efafdb4a3942ab3efba53ded7413199f79c054",
+            "title": "Reinforcement Learning: An Introduction"
+        }
+    ]
+}

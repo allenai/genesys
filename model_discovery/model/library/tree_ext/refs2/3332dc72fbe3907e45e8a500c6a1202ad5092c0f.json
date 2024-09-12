@@ -1,0 +1,222 @@
+{
+    "paperId": "3332dc72fbe3907e45e8a500c6a1202ad5092c0f",
+    "externalIds": {
+        "ArXiv": "1508.04306",
+        "MAG": "2950354455",
+        "DBLP": "conf/icassp/HersheyCRW16",
+        "DOI": "10.1109/ICASSP.2016.7471631",
+        "CorpusId": 206742191
+    },
+    "title": "Deep clustering: Discriminative embeddings for segmentation and separation",
+    "abstract": "We address the problem of \"cocktail-party\" source separation in a deep learning framework called deep clustering. Previous deep network approaches to separation have shown promising performance in scenarios with a fixed number of sources, each belonging to a distinct signal class, such as speech and noise. However, for arbitrary source classes and number, \"class-based\" methods are not suitable. Instead, we train a deep network to assign contrastive embedding vectors to each time-frequency region of the spectrogram in order to implicitly predict the segmentation labels of the target spectrogram from the input mixtures. This yields a deep network-based analogue to spectral clustering, in that the embeddings form a low-rank pair-wise affinity matrix that approximates the ideal affinity matrix, while enabling much faster performance. At test time, the clustering step \"decodes\" the segmentation implicit in the embeddings by optimizing K-means with respect to the unknown assignments. Preliminary experiments on single-channel mixtures from multiple speakers show that a speaker-independent model trained on two-speaker mixtures can improve signal quality for mixtures of held-out speakers by an average of 6dB. More dramatically, the same model does surprisingly well with three-speaker mixtures.",
+    "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+    "year": 2015,
+    "referenceCount": 44,
+    "citationCount": 1225,
+    "influentialCitationCount": 157,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1508.04306",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Preliminary experiments on single-channel mixtures from multiple speakers show that a speaker-independent model trained on two-speaker mixtures can improve signal quality for mixtures of held-out speakers by an average of 6dB, and the same model does surprisingly well with three-speakers mixtures."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2387467",
+            "name": "J. Hershey"
+        },
+        {
+            "authorId": "145718850",
+            "name": "Zhuo Chen"
+        },
+        {
+            "authorId": "9332945",
+            "name": "Jonathan Le Roux"
+        },
+        {
+            "authorId": "1746678",
+            "name": "Shinji Watanabe"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "5bb86aacb5faaea4876a3241841d0c2447a3e640",
+            "title": "Auditory Scene Analysis: The Perceptual Organization of Sound by Albert Bregman (review)"
+        },
+        {
+            "paperId": "70dc18bb6607e408ec1cd3f71c0fdac3534c288d",
+            "title": "Speech Enhancement with LSTM Recurrent Neural Networks and its Application to Noise-Robust ASR"
+        },
+        {
+            "paperId": "f2f85ec20bcae8d67035fd446b855a75b9a0aa8d",
+            "title": "On comparing partitions"
+        },
+        {
+            "paperId": "4c5562bcc6e2fb58cd69952a3b74c88626ce5185",
+            "title": "Joint Optimization of Masks and Deep Recurrent Neural Networks for Monaural Source Separation"
+        },
+        {
+            "paperId": "13f85f3b4d9a9607069d419e646d6fce8a35e8fe",
+            "title": "Recursive Context Propagation Network for Semantic Scene Labeling"
+        },
+        {
+            "paperId": "7e0f013e85eff9b089f58d9a3e98605ae1a7ba18",
+            "title": "On Training Targets for Supervised Speech Separation"
+        },
+        {
+            "paperId": "1e20f9de45d26950ecd11965989d2b15a5d0d86b",
+            "title": "Deep Unfolding: Model-Based Inspiration of Novel Deep Architectures"
+        },
+        {
+            "paperId": "b48a428e10dca5c31d7666c555c2375e47e1df11",
+            "title": "Deep Embedding Network for Clustering"
+        },
+        {
+            "paperId": "df787a974fff59f557ed1ec620fc345568aec491",
+            "title": "Learning Deep Representations for Graph Clustering"
+        },
+        {
+            "paperId": "344de81d9964699e7d1d9a03d194b28db1061dbb",
+            "title": "Single-channel speech separation with memory-enhanced recurrent neural networks"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "237a04dd8291cbdb59b6dc4b53e689af743fe2a3",
+            "title": "Learning Hierarchical Features for Scene Labeling"
+        },
+        {
+            "paperId": "6f22bea906bb4fa0759da6954aaf0fdf860d4688",
+            "title": "Towards Scaling Up Classification-Based Speech Separation"
+        },
+        {
+            "paperId": "20f2205672351d07aad7c45f100080ea4144d001",
+            "title": "An iterative model-based approach to cochannel speech separation"
+        },
+        {
+            "paperId": "946dffe06446c38a397fafb8d54e48c764196712",
+            "title": "A Source Book Of Gestalt Psychology"
+        },
+        {
+            "paperId": "79ed47afa52b9a0ab28f6f1f365e942da8e6364e",
+            "title": "Exploring Monaural Features for Classification-Based Speech Segregation"
+        },
+        {
+            "paperId": "1e7923946fd04b74c83ff558ee09f24e343a39ed",
+            "title": "The signal separation evaluation campaign (2007-2010): Achievements and remaining challenges"
+        },
+        {
+            "paperId": "032b0cc16aafda9da2747b134d6d202841f5dcb8",
+            "title": "Local equivalences of distances between clusterings\u2014a geometric perspective"
+        },
+        {
+            "paperId": "216052f8101243d9171523a00f3ee1251a2c91be",
+            "title": "Single-Channel Multitalker Speech Recognition"
+        },
+        {
+            "paperId": "52bc2f301aa791d2391882971b9969d563b8e2c4",
+            "title": "An algorithm that improves speech intelligibility in noise for normal-hearing listeners."
+        },
+        {
+            "paperId": "1879378a9af4b3125e55d98337000cd862e2b75b",
+            "title": "Learning Spectral Clustering, With Application To Speech Separation"
+        },
+        {
+            "paperId": "29de8281b8cbc764d605a20d00b818eba6d47da1",
+            "title": "Performance measurement in blind audio source separation"
+        },
+        {
+            "paperId": "004b7b9dc61c0305cc11fab536c1544e94adb8d9",
+            "title": "Factorial models and refiltering for speech separation and denoising"
+        },
+        {
+            "paperId": "0e2dac76a5876104f273b0a30617dac4c1c3033f",
+            "title": "Learning affinity functions for image segmentation: combining patch-based and gradient-based approaches"
+        },
+        {
+            "paperId": "c02dfd94b11933093c797c362e2f8f6a3b9b8012",
+            "title": "On Spectral Clustering: Analysis and an algorithm"
+        },
+        {
+            "paperId": "803528d41993cfe4277ed5541a833d2959a415e9",
+            "title": "Auditory grouping"
+        },
+        {
+            "paperId": "b94c7ff9532ab26c3aedbee3988ec4c7a237c173",
+            "title": "Normalized cuts and image segmentation"
+        },
+        {
+            "paperId": "86be427bcc9d5547ddfe79490c8b9ed22a7d5849",
+            "title": "Modelling auditory processing and organisation"
+        },
+        {
+            "paperId": "45d995c0b89db5ec6c03b930f9503323c29465b2",
+            "title": "Book Review: Auditory Scene Analysis: The Perceptual Organization of Sound"
+        },
+        {
+            "paperId": "03e02525d80f1d5cf91af8879c773456bae3521a",
+            "title": "Sparse NMF \u2013 half-baked or well done?"
+        },
+        {
+            "paperId": "2978880d0c3a469a1420411d4b0b30a7b3fe56e9",
+            "title": "An Experimental Study on Speech Enhancement Based on Deep Neural Networks"
+        },
+        {
+            "paperId": "307c8207802370a7321fa0c80448423bf6a7bd42",
+            "title": "An Unsupervised Approach to Cochannel Speech Separation"
+        },
+        {
+            "paperId": "ea3ff57922ed73d9fa76cf88c049d574b7b902eb",
+            "title": "The stability of a good clustering"
+        },
+        {
+            "paperId": "7032a6e6540183bac5bb5321c808df37ddcd7722",
+            "title": "Monaural speech separation and recognition challenge"
+        },
+        {
+            "paperId": "2c092c017ea7ffa7eb247ce2652a9ff9e1030ede",
+            "title": "Super-human multi-talker speech recognition: A graphical modeling approach"
+        },
+        {
+            "paperId": "b346ef7c9a703b52f47a02e72d10560e925f3b51",
+            "title": "Underdetermined source separation using speaker subspace models"
+        },
+        {
+            "paperId": "150bbc9c982c9f99e956444473cd7b99295cebb9",
+            "title": "Convolutive Speech Bases and Their Application to Supervised Speech Separation"
+        },
+        {
+            "paperId": "90bc7d8beae294dbd1fead2e9c613665f281d4a9",
+            "title": "Single-channel speech separation using sparse non-negative matrix factorization"
+        },
+        {
+            "paperId": "0059ca7e69bf34516b548bf83238e1f6f0141802",
+            "title": "Estimating single-channel source separation masks: relevance vector machine classifiers vs. pitch-based masking"
+        },
+        {
+            "paperId": "cc030827f5a95cdbdeea50ac8262990dc5765727",
+            "title": "Speech recognition using factorial hidden Markov models for separation in the feature space"
+        },
+        {
+            "paperId": "f2b9de0e150798ed3c8c365c1ac51564b0d32fdb",
+            "title": "On Ideal Binary Mask As the Computational Goal of Auditory Scene Analysis"
+        },
+        {
+            "paperId": "13c82489c1568b67265d17a15720001a5737171e",
+            "title": "Spectral grouping using the Nystrom method"
+        },
+        {
+            "paperId": "1fee153d9ee59a1048656acf31814a651fe18be5",
+            "title": "Prediction-driven computational auditory scene analysis"
+        },
+        {
+            "paperId": "43a0503e38b4c47a5b794c04439299bd78310189",
+            "title": "Laws of organization in perceptual forms."
+        }
+    ]
+}

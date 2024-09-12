@@ -1,0 +1,114 @@
+{
+    "paperId": "bee044c8e8903fb67523c1f8c105ab4718600cdb",
+    "externalIds": {
+        "MAG": "2952181735",
+        "DBLP": "journals/corr/GoodfellowSS14",
+        "ArXiv": "1412.6572",
+        "CorpusId": 6706414
+    },
+    "title": "Explaining and Harnessing Adversarial Examples",
+    "abstract": "Several machine learning models, including neural networks, consistently misclassify adversarial examples---inputs formed by applying small but intentionally worst-case perturbations to examples from the dataset, such that the perturbed input results in the model outputting an incorrect answer with high confidence. Early attempts at explaining this phenomenon focused on nonlinearity and overfitting. We argue instead that the primary cause of neural networks' vulnerability to adversarial perturbation is their linear nature. This explanation is supported by new quantitative results while giving the first explanation of the most intriguing fact about them: their generalization across architectures and training sets. Moreover, this view yields a simple and fast method of generating adversarial examples. Using this approach to provide examples for adversarial training, we reduce the test set error of a maxout network on the MNIST dataset.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2014,
+    "referenceCount": 19,
+    "citationCount": 16967,
+    "influentialCitationCount": 3635,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is argued that the primary cause of neural networks' vulnerability to adversarial perturbation is their linear nature, supported by new quantitative results while giving the first explanation of the most intriguing fact about them: their generalization across architectures and training sets."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "153440022",
+            "name": "I. Goodfellow"
+        },
+        {
+            "authorId": "1789737",
+            "name": "Jonathon Shlens"
+        },
+        {
+            "authorId": "2574060",
+            "name": "Christian Szegedy"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "4f9f7434f06cbe31e54a0bb118975340b9e0a4c9",
+            "title": "Towards Deep Neural Network Architectures Robust to Adversarial Examples"
+        },
+        {
+            "paperId": "218d50faffca29a2e7bf53c2b9b52e60760e8072",
+            "title": "Visual Causal Feature Learning"
+        },
+        {
+            "paperId": "4543670c4b2d88a9b67525e0084044adef94ae76",
+            "title": "Deep neural networks are easily fooled: High confidence predictions for unrecognizable images"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "d891dc72cbd40ffaeefdc79f2e7afe1e530a23ad",
+            "title": "Intriguing properties of neural networks"
+        },
+        {
+            "paperId": "5656fa5aa6e1beeb98703fc53ec112ad227c49ca",
+            "title": "Multi-Prediction Deep Boltzmann Machines"
+        },
+        {
+            "paperId": "2f7ad26514bce4df6c8ebc42c90383ef3a974df4",
+            "title": "Pylearn2: a machine learning research library"
+        },
+        {
+            "paperId": "b7b915d508987b73b61eccd2b237e7ed099a2d29",
+            "title": "Maxout Networks"
+        },
+        {
+            "paperId": "3127190433230b3dc1abd0680bb58dced4bcd90e",
+            "title": "Large Scale Distributed Deep Networks"
+        },
+        {
+            "paperId": "855d0f722d75cc56a66a00ede18ace96bafee6bd",
+            "title": "Theano: new features and speed improvements"
+        },
+        {
+            "paperId": "67107f78a84bdb2411053cb54e94fa226eea6d8e",
+            "title": "Deep Sparse Rectifier Neural Networks"
+        },
+        {
+            "paperId": "1f88427d7aa8225e47f946ac41a0667d7b69ac52",
+            "title": "What is the best multi-stage architecture for object recognition?"
+        },
+        {
+            "paperId": "d2c733e34d48784a37d717fe43d9e93277a8c53e",
+            "title": "ImageNet: A large-scale hierarchical image database"
+        },
+        {
+            "paperId": "73a162532b82af5be7692d33ef660a8675fd55c9",
+            "title": "Spatiotemporal Elements of Macaque V1 Receptive Fields"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "f22f6972e66bdd2e769fa64b0df0a13063c0c101",
+            "title": "Multilayer feedforward networks are universal approximators"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": null,
+            "title": "Theano: a CPU and GPU math expression compiler"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        }
+    ]
+}

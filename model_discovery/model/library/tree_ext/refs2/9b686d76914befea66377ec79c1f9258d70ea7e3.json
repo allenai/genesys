@@ -1,0 +1,242 @@
+{
+    "paperId": "9b686d76914befea66377ec79c1f9258d70ea7e3",
+    "externalIds": {
+        "MAG": "2190691619",
+        "ArXiv": "1512.03012",
+        "DBLP": "journals/corr/ChangFGHHLSSSSX15",
+        "CorpusId": 2554264
+    },
+    "title": "ShapeNet: An Information-Rich 3D Model Repository",
+    "abstract": "We present ShapeNet: a richly-annotated, large-scale repository of shapes represented by 3D CAD models of objects. ShapeNet contains 3D models from a multitude of semantic categories and organizes them under the WordNet taxonomy. It is a collection of datasets providing many semantic annotations for each 3D model such as consistent rigid alignments, parts and bilateral symmetry planes, physical sizes, keywords, as well as other planned annotations. Annotations are made available through a public web-based interface to enable data visualization of object attributes, promote data-driven geometric analysis, and provide a large-scale quantitative benchmark for research in computer graphics and vision. At the time of this technical report, ShapeNet has indexed more than 3,000,000 models, 220,000 models out of which are classified into 3,135 categories (WordNet synsets). In this report we describe the ShapeNet effort as a whole, provide details for all currently available datasets, and summarize future plans.",
+    "venue": "arXiv.org",
+    "year": 2015,
+    "referenceCount": 41,
+    "citationCount": 4783,
+    "influentialCitationCount": 1005,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "ShapeNet contains 3D models from a multitude of semantic categories and organizes them under the WordNet taxonomy, a collection of datasets providing many semantic annotations for each 3D model such as consistent rigid alignments, parts and bilateral symmetry planes, physical sizes, keywords, as well as other planned annotations."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145830541",
+            "name": "Angel X. Chang"
+        },
+        {
+            "authorId": "1807080",
+            "name": "T. Funkhouser"
+        },
+        {
+            "authorId": "51352814",
+            "name": "L. Guibas"
+        },
+        {
+            "authorId": "144872229",
+            "name": "P. Hanrahan"
+        },
+        {
+            "authorId": "151485038",
+            "name": "Qi-Xing Huang"
+        },
+        {
+            "authorId": "2825680",
+            "name": "Zimo Li"
+        },
+        {
+            "authorId": "1702137",
+            "name": "S. Savarese"
+        },
+        {
+            "authorId": "2295141",
+            "name": "M. Savva"
+        },
+        {
+            "authorId": "3340170",
+            "name": "Shuran Song"
+        },
+        {
+            "authorId": "144914140",
+            "name": "Hao Su"
+        },
+        {
+            "authorId": "40599257",
+            "name": "Jianxiong Xiao"
+        },
+        {
+            "authorId": "47782132",
+            "name": "L. Yi"
+        },
+        {
+            "authorId": "1807197",
+            "name": "F. Yu"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "07e559fb8d929e077bb1028e38599f4c1086b345",
+            "title": "Semantically-enriched 3D models for common-sense knowledge"
+        },
+        {
+            "paperId": "a6037a7d36ddfd4bf4b90b1f443dd71cf1692c15",
+            "title": "On being the right scale: sizing large collections of 3D models"
+        },
+        {
+            "paperId": "33932140df2fbfb685256006f15d99a7e1a37fed",
+            "title": "Creating consistent scene graphs using a probabilistic grammar"
+        },
+        {
+            "paperId": "8f8ef3403cd6350f41610be7046c04db3e35fc51",
+            "title": "Sliding Shapes for 3D Object Detection in Depth Images"
+        },
+        {
+            "paperId": "7c8a51d04522496c43db68f2582efd45eaf59fea",
+            "title": "3D ShapeNets: A deep representation for volumetric shapes"
+        },
+        {
+            "paperId": "9e8dda416dc24b8a65012e746f9afcc5bf0854ce",
+            "title": "SHREC'14 Track: Large Scale Comprehensive 3D Shape Retrieval"
+        },
+        {
+            "paperId": "50282bb314dc1388cff9190d71fb5e9f4bc4bb49",
+            "title": "Large Scale Comprehensive 3D Shape Retrieval"
+        },
+        {
+            "paperId": "60c7a5d919806e18e31f139b7df9f1172b776f17",
+            "title": "Beyond PASCAL: A benchmark for 3D object detection in the wild"
+        },
+        {
+            "paperId": "a45cce258c195fbf6a042abee865c34d4aac0770",
+            "title": "3D Model Retrieval"
+        },
+        {
+            "paperId": "a83cec6a91701bd8500f8c43ad731d4353c71d55",
+            "title": "3D Object Representations for Fine-Grained Categorization"
+        },
+        {
+            "paperId": "723e52c0d0140df7a6e264f1042af89ce9277e6e",
+            "title": "SUN3D: A Database of Big Spaces Reconstructed Using SfM and Object Labels"
+        },
+        {
+            "paperId": "a10f68e919a1615877f3c9837ab3dc3f1741b029",
+            "title": "Fine-grained semi-supervised labeling of large shape collections"
+        },
+        {
+            "paperId": "3a81ea76d2f1f496dfe3be903f50a0d81883bfa1",
+            "title": "Symmetry in 3D Geometry: Extraction and Applications"
+        },
+        {
+            "paperId": "76ea5272598fe943c60cfdc875fa3d8635f77e92",
+            "title": "Learning part-based templates from large collections of 3D shapes"
+        },
+        {
+            "paperId": "feace8965f465d4330d04835be789e137b4a6d3c",
+            "title": "A large-scale Shape Benchmark for 3D object retrieval: Toyohashi shape benchmark"
+        },
+        {
+            "paperId": "2039f127f8c567691418e925b7582e69f7cdd861",
+            "title": "Example-based synthesis of 3D object arrangements"
+        },
+        {
+            "paperId": "1fb4d85ebae0b7daf59456daed7b1143e2df007a",
+            "title": "Protein data bank"
+        },
+        {
+            "paperId": "0e870469f332b3f787559b1ecc54909e41307d73",
+            "title": "A probabilistic model for component-based shape synthesis"
+        },
+        {
+            "paperId": "978f97de2925870fdf1c04bf3693925685b44f1a",
+            "title": "Schelling points on 3D surface meshes"
+        },
+        {
+            "paperId": "3fea105669a1bb0997615a59019732b8ddfb87d0",
+            "title": "Exploring collections of 3D models using fuzzy correspondences"
+        },
+        {
+            "paperId": "1483934c708d5e2a6c561802591689135776e845",
+            "title": "SHREC'12 Track: Generic 3D Shape Retrieval"
+        },
+        {
+            "paperId": "c9ad53c09b784e9dc7b50fd6219b8648c83ef33f",
+            "title": "M\u00f6bius Transformations For Global Intrinsic Symmetry Analysis"
+        },
+        {
+            "paperId": "29306620dd921b7d3c2f368962ae40d3c43c32a2",
+            "title": "Multi-view object class detection with a 3D geometric model"
+        },
+        {
+            "paperId": "22ec32ab1494698e25aa895092203cb71864b742",
+            "title": "LabelMe: Online Image Annotation and Applications"
+        },
+        {
+            "paperId": "0cf2fa36135344d1be1549a2e1502b005d44c920",
+            "title": "A benchmark for 3D mesh segmentation"
+        },
+        {
+            "paperId": "504b4a437754308d7ae3f1f1d9082f9cbba15fc7",
+            "title": "Building a database of 3D scenes from user annotations"
+        },
+        {
+            "paperId": "d2c733e34d48784a37d717fe43d9e93277a8c53e",
+            "title": "ImageNet: A large-scale hierarchical image database"
+        },
+        {
+            "paperId": "f558a78c595d17fa1f2712cd0257d898dd79857b",
+            "title": "A 3D Shape Benchmark for Retrieval and Automatic Classification of Architectural Data"
+        },
+        {
+            "paperId": "0dafdea62c2bcb1475e810c4d216b4b8bc92a89c",
+            "title": "Developing an engineering shape benchmark for CAD models"
+        },
+        {
+            "paperId": "a135354f78e08b827954dec3758c0d15fca72aca",
+            "title": "Retrieving Articulated 3-D Models Using Medial Surfaces and Their Graph Spectra"
+        },
+        {
+            "paperId": "1db8a0b13b9561b3a5ed1c5962989199982de470",
+            "title": "The Princeton Shape Benchmark"
+        },
+        {
+            "paperId": "bed5d5aa3dcf785e64261f55a6054ba090611322",
+            "title": "Simplification and Repair of Polygonal Models Using Volumetric Techniques"
+        },
+        {
+            "paperId": "4be3f0ee999dc83585c5d3b70b8551223cfe8866",
+            "title": "PDBsum: a Web-based database of summaries and analyses of all PDB structures."
+        },
+        {
+            "paperId": "68c03788224000794d5491ab459be0b2a2c38677",
+            "title": "WordNet: A Lexical Database for English"
+        },
+        {
+            "paperId": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+            "title": "Building a Large Annotated Corpus of English: The Penn Treebank"
+        },
+        {
+            "paperId": "3bc9f8eb5ba303816fd5f642f2e7408f0752d3c4",
+            "title": "WordNet: A Lexical Database for English"
+        },
+        {
+            "paperId": null,
+            "title": "3d shape retrieval contest"
+        },
+        {
+            "paperId": "13bba1e3fcb5c8411d3a0c30f19864e2b65c7bc7",
+            "title": "SHREC 2007 3 D Shape Retrieval Contest"
+        },
+        {
+            "paperId": "179610957ea34566e01544f98eda5fcf70a0e8a5",
+            "title": "3D Model Retrieval"
+        },
+        {
+            "paperId": null,
+            "title": "the upright orientations. For those that are not"
+        },
+        {
+            "paperId": null,
+            "title": "A. Appendix A.1. Hierarchical Rigid Alignment In the following, we describe our hierarchical rigid alignment algorithm in more detail"
+        }
+    ]
+}

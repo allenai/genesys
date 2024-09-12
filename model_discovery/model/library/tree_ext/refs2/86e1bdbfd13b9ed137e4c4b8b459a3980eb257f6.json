@@ -1,0 +1,186 @@
+{
+    "paperId": "86e1bdbfd13b9ed137e4c4b8b459a3980eb257f6",
+    "externalIds": {
+        "DBLP": "journals/corr/KayCSZHVVGBNSZ17",
+        "ArXiv": "1705.06950",
+        "MAG": "2619947201",
+        "CorpusId": 27300853
+    },
+    "title": "The Kinetics Human Action Video Dataset",
+    "abstract": "We describe the DeepMind Kinetics human action video dataset. The dataset contains 400 human action classes, with at least 400 video clips for each action. Each clip lasts around 10s and is taken from a different YouTube video. The actions are human focussed and cover a broad range of classes including human-object interactions such as playing instruments, as well as human-human interactions such as shaking hands. We describe the statistics of the dataset, how it was collected, and give some baseline performance figures for neural network architectures trained and tested for human action classification on this dataset. We also carry out a preliminary analysis of whether imbalance in the dataset leads to bias in the classifiers.",
+    "venue": "arXiv.org",
+    "year": 2017,
+    "referenceCount": 28,
+    "citationCount": 3364,
+    "influentialCitationCount": 549,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The dataset is described, the statistics are described, how it was collected, and some baseline performance figures for neural network architectures trained and tested for human action classification on this dataset are given."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2062879616",
+            "name": "W. Kay"
+        },
+        {
+            "authorId": "35681810",
+            "name": "Jo\u00e3o Carreira"
+        },
+        {
+            "authorId": "34838386",
+            "name": "K. Simonyan"
+        },
+        {
+            "authorId": "2125058045",
+            "name": "Brian Zhang"
+        },
+        {
+            "authorId": "38961760",
+            "name": "Chloe Hillier"
+        },
+        {
+            "authorId": "2259154",
+            "name": "Sudheendra Vijayanarasimhan"
+        },
+        {
+            "authorId": "47963165",
+            "name": "Fabio Viola"
+        },
+        {
+            "authorId": "1484039896",
+            "name": "Tim Green"
+        },
+        {
+            "authorId": "2830305",
+            "name": "T. Back"
+        },
+        {
+            "authorId": "1820908",
+            "name": "Apostol Natsev"
+        },
+        {
+            "authorId": "2573615",
+            "name": "Mustafa Suleyman"
+        },
+        {
+            "authorId": "1688869",
+            "name": "Andrew Zisserman"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "b61a3f8b80bbd44f24544dc915f52fd30bbdf485",
+            "title": "Quo Vadis, Action Recognition? A New Model and the Kinetics Dataset"
+        },
+        {
+            "paperId": "5966d7c7f60898d610812e24c64d4d57855ad86a",
+            "title": "Semantics derived automatically from language corpora contain human-like biases"
+        },
+        {
+            "paperId": "9d9aced120e530484609164c836da64548693484",
+            "title": "Convolutional Two-Stream Network Fusion for Video Action Recognition"
+        },
+        {
+            "paperId": "9c9d7247f8c51ec5a02b0d911d1d7b9e8160495d",
+            "title": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "8d093efcfadda3ac7de7b0e1ca7d9aa2005c2ec3",
+            "title": "Actions ~ Transformations"
+        },
+        {
+            "paperId": "0a28efacb92d16e6e0dd4d87b5aca91b28be8853",
+            "title": "ActivityNet: A large-scale video benchmark for human activity understanding"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "d25c65d261ea0e6a458be4c50c40ffe5bc508f77",
+            "title": "Learning Spatiotemporal Features with 3D Convolutional Networks"
+        },
+        {
+            "paperId": "f01fc808592ea7c473a69a6e7484040a435f36d9",
+            "title": "Long-term recurrent convolutional networks for visual recognition and description"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "616b246e332573af1f4859aa91440280774c183a",
+            "title": "The Pascal Visual Object Classes Challenge: A Retrospective"
+        },
+        {
+            "paperId": "6d4c9c923e9f145d1c01a2de2afc38ec23c44253",
+            "title": "Large-Scale Video Classification with Convolutional Neural Networks"
+        },
+        {
+            "paperId": "67dccc9a856b60bdc4d058d83657a089b8ad4486",
+            "title": "Two-Stream Convolutional Networks for Action Recognition in Videos"
+        },
+        {
+            "paperId": "da8d53f9a85b40a695585aa461286e373c6b74d4",
+            "title": "2D Human Pose Estimation: New Benchmark and State of the Art Analysis"
+        },
+        {
+            "paperId": "da9e411fcf740569b6b356f330a1d0fc077c8d7c",
+            "title": "UCF101: A Dataset of 101 Human Actions Classes From Videos in The Wild"
+        },
+        {
+            "paperId": "8b3b8848a311c501e704c45c6d50430ab7068956",
+            "title": "HMDB: A large video database for human motion recognition"
+        },
+        {
+            "paperId": "0302bb2d5476540cfb21467473f5eca843caf90b",
+            "title": "Unbiased look at dataset bias"
+        },
+        {
+            "paperId": "4d476b96be73fccc61f2076befbf5a468caa4180",
+            "title": "Convolutional Learning of Spatio-temporal Features"
+        },
+        {
+            "paperId": "02a98118ce990942432c0147ff3c0de756b4b76a",
+            "title": "Learning realistic human actions from movies"
+        },
+        {
+            "paperId": "0eefe92e151cca891de7dcc1ad9b70b8ef42b086",
+            "title": "Unsupervised Learning of Human Action Categories Using Spatial-Temporal Words"
+        },
+        {
+            "paperId": "5a5effa909cdeafaddbbb7855037e02f8e25d632",
+            "title": "Caltech-256 Object Category Dataset"
+        },
+        {
+            "paperId": null,
+            "title": "Class 1 Class 2 confusion \u2018riding mule\u2019 \u2018riding or walking with horse"
+        },
+        {
+            "paperId": null,
+            "title": "Beyond short snip-pets: Deep networks for video classi\ufb01cation"
+        },
+        {
+            "paperId": "070874b011f8eb2b18c8aa521ad0a7a932b4d9ad",
+            "title": "Action Recognition with Improved Trajectories"
+        },
+        {
+            "paperId": "52dfa20f6fdfcda8c11034e3d819f4bd47e6207d",
+            "title": "Ieee Transactions on Pattern Analysis and Machine Intelligence 1 3d Convolutional Neural Networks for Human Action Recognition"
+        },
+        {
+            "paperId": null,
+            "title": "the list of classes included in the video dataset. The number of clips for each"
+        },
+        {
+            "paperId": null,
+            "title": "given by the number in brackets following each class 1"
+        }
+    ]
+}

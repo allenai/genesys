@@ -1,0 +1,282 @@
+{
+    "paperId": "03e7e8663c69e691be6b6403b1eb1bbf593d31f2",
+    "externalIds": {
+        "DBLP": "conf/icml/DuLL0Z19",
+        "MAG": "2899790086",
+        "ArXiv": "1811.03804",
+        "CorpusId": 53250419
+    },
+    "title": "Gradient Descent Finds Global Minima of Deep Neural Networks",
+    "abstract": "Gradient descent finds a global minimum in training deep neural networks despite the objective function being non-convex. The current paper proves gradient descent achieves zero training loss in polynomial time for a deep over-parameterized neural network with residual connections (ResNet). Our analysis relies on the particular structure of the Gram matrix induced by the neural network architecture. This structure allows us to show the Gram matrix is stable throughout the training process and this stability implies the global optimality of the gradient descent algorithm. We further extend our analysis to deep residual convolutional neural networks and obtain a similar convergence result.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2018,
+    "referenceCount": 59,
+    "citationCount": 1051,
+    "influentialCitationCount": 147,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The current paper proves gradient descent achieves zero training loss in polynomial time for a deep over-parameterized neural network with residual connections (ResNet) and extends the analysis to deep residual convolutional neural networks and obtains a similar convergence result."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145697585",
+            "name": "S. Du"
+        },
+        {
+            "authorId": "2421201",
+            "name": "J. Lee"
+        },
+        {
+            "authorId": "2145536854",
+            "name": "Haochuan Li"
+        },
+        {
+            "authorId": "24952249",
+            "name": "Liwei Wang"
+        },
+        {
+            "authorId": "22226408",
+            "name": "Xiyu Zhai"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "14558cb69319eed0d5bfc5648aafcd09d882f443",
+            "title": "Fine-Grained Analysis of Optimization and Generalization for Overparameterized Two-Layer Neural Networks"
+        },
+        {
+            "paperId": "aa3a7e7f4fbb3587122d869056b4f0509a6318ae",
+            "title": "A Note on Lazy Training in Supervised Differentiable Programming"
+        },
+        {
+            "paperId": "313b368457e54e6a7482b008d5eb4182eb1b4d1c",
+            "title": "Stochastic Gradient Descent Optimizes Over-parameterized Deep ReLU Networks"
+        },
+        {
+            "paperId": "611fe6e34df07ea1b2104899e49642b4531b53e9",
+            "title": "Learning and Generalization in Overparameterized Neural Networks, Going Beyond Two Layers"
+        },
+        {
+            "paperId": "1228a5f81dd6d169858cc3378a59065166583126",
+            "title": "On the Convergence Rate of Training Recurrent Neural Networks"
+        },
+        {
+            "paperId": "9c985db0a4a255a06e0fbf2ce147ea741720f9f0",
+            "title": "Regularization Matters: Generalization and Optimization of Neural Nets v.s. their Induced Kernel"
+        },
+        {
+            "paperId": "d6f6d1504cfedde4efb23e7ec0f42f006062c6a0",
+            "title": "Gradient Descent Provably Optimizes Over-parameterized Neural Networks"
+        },
+        {
+            "paperId": "4dd674450405d787b5cd1f6d314286235988e637",
+            "title": "On the Margin Theory of Feedforward Neural Networks"
+        },
+        {
+            "paperId": "42ec3db12a2e4628885451b13035c2e975220a25",
+            "title": "A Convergence Theory for Deep Learning via Over-Parameterization"
+        },
+        {
+            "paperId": "ccb1bafdae68c635cbd30d49fda7dbf88a3ce1b6",
+            "title": "Learning Overparameterized Neural Networks via Stochastic Gradient Descent on Structured Data"
+        },
+        {
+            "paperId": "397d70c77e3c8e16cd6d556472207fffdaa28564",
+            "title": "Learning One-hidden-layer ReLU Networks via Gradient Descent"
+        },
+        {
+            "paperId": "7a84a692327534fd227fa1e07fcb3816b633c591",
+            "title": "Neural Tangent Kernel: Convergence and Generalization in Neural Networks"
+        },
+        {
+            "paperId": "9c7de616d16e5643e9e29dfdf2d7d6001c548132",
+            "title": "On the Global Convergence of Gradient Descent for Over-parameterized Models using Optimal Transport"
+        },
+        {
+            "paperId": "50ad17c11eeae5982f81e90385a2182f30330afa",
+            "title": "Neural Networks as Interacting Particle Systems: Asymptotic Convexity of the Loss Landscape and Universal Scaling of the Approximation Error"
+        },
+        {
+            "paperId": "f1d48ad5a04360bf65e793b84298d8e0570bf1cc",
+            "title": "A mean field view of the landscape of two-layer neural networks"
+        },
+        {
+            "paperId": "33dba18656dc9d601af266cab7754d69e2144673",
+            "title": "Stability and Convergence Trade-off of Iterative Optimization Algorithms"
+        },
+        {
+            "paperId": "ec6977956cfa40baca1453d37b80f1faf55f0d5f",
+            "title": "On the Power of Over-parametrization in Neural Networks with Quadratic Activation"
+        },
+        {
+            "paperId": "111489fe8ca23c3314caef484558b244f5311fa4",
+            "title": "Neural Networks with Finite Intrinsic Dimension have no Spurious Valleys"
+        },
+        {
+            "paperId": "fb350d3b03e9308ccbd131d3d45dd44e383e6227",
+            "title": "Gaussian Process Behaviour in Wide Deep Neural Networks"
+        },
+        {
+            "paperId": "178339ef29211540683b36c0e1c6acffd998cddd",
+            "title": "Fix your classifier: the marginal value of training the last weight layer"
+        },
+        {
+            "paperId": "99d1d9367879c5f3adc3aa78a2e68b5b165176cd",
+            "title": "Spurious Local Minima are Common in Two-Layer ReLU Neural Networks"
+        },
+        {
+            "paperId": "f91248a4f587f89f1d1d8e557cee08b8114686d9",
+            "title": "Gradient Descent Learns One-hidden-layer CNN: Don't be Afraid of Spurious Local Minima"
+        },
+        {
+            "paperId": "97326ad593fc141e2cf3f9f6450ea523f443ff20",
+            "title": "Learning Non-overlapping Convolutional Neural Networks with Multiple Kernels"
+        },
+        {
+            "paperId": "075556dd42900a6bc4552a2f2531ba21b9b7b4c0",
+            "title": "Deep Neural Networks as Gaussian Processes"
+        },
+        {
+            "paperId": "03969bd0084af1e4247b2fe7e714c82eaaa710fe",
+            "title": "Critical Points of Neural Networks: Analytical Forms and Landscape Properties"
+        },
+        {
+            "paperId": "fbe1d29737b66840d2bb9b74cd093858ef1805dd",
+            "title": "When is a Convolutional Filter Easy To Learn?"
+        },
+        {
+            "paperId": "53bfec9b34e40000d9f2174c8ac6191087fe4d57",
+            "title": "The Expressive Power of Neural Networks: A View from the Width"
+        },
+        {
+            "paperId": "b74f852a082b5c9396aa14d2c965b05a505340d1",
+            "title": "Generalization Bounds of SGLD for Non-convex Learning: Two Theoretical Viewpoints"
+        },
+        {
+            "paperId": "fa3cd1f68783c160f7acf9ef857f1e3254ff95db",
+            "title": "Theoretical Insights Into the Optimization Landscape of Over-Parameterized Shallow Neural Networks"
+        },
+        {
+            "paperId": "99ed21b585f4d6cbc4e20002bedca8d6c08169c6",
+            "title": "Recovery Guarantees for One-hidden-layer Neural Networks"
+        },
+        {
+            "paperId": "2103cf5f7ad126e21d0e4258ad2872abab0bebed",
+            "title": "Gradient Descent Can Take Exponential Time to Escape Saddle Points"
+        },
+        {
+            "paperId": "97db7860df3ee3624f8b55d5820b00f893bc4f9a",
+            "title": "Learning ReLUs via Gradient Descent"
+        },
+        {
+            "paperId": "353f07a8c8a35a6b121d891d81e1f4ebec0d849a",
+            "title": "Convergence Analysis of Two-layer Neural Networks with ReLU Activation"
+        },
+        {
+            "paperId": "feb6e2d46ce707094b24f5ace9456aa0aff3119e",
+            "title": "The Loss Surface of Deep and Wide Neural Networks"
+        },
+        {
+            "paperId": "eacded78298ede0956a1a130a52572aedaaa540d",
+            "title": "How to Escape Saddle Points Efficiently"
+        },
+        {
+            "paperId": "c6f2f35169abb6bfeb4dd2deec15d38587910168",
+            "title": "An Analytical Formula of Population Gradient for two-layered ReLU network and its Applications in Convergence and Critical Point Analysis"
+        },
+        {
+            "paperId": "6783b727e7de7d6d826e765e48406aacf103e63d",
+            "title": "SGD Learns the Conjugate Kernel Class of the Network"
+        },
+        {
+            "paperId": "fc756b45678ef7ffc1a796de62365013011b659e",
+            "title": "Globally Optimal Gradient Descent for a ConvNet with Gaussian Inputs"
+        },
+        {
+            "paperId": "1f759e21d2da1e8a66aeaac8b8c7a8d6ee6b7189",
+            "title": "Exponentially vanishing sub-optimal local minima in multilayer neural networks"
+        },
+        {
+            "paperId": "8fbb115c578e8bfbcc1615bd7af990396abf6776",
+            "title": "Identity Matters in Deep Learning"
+        },
+        {
+            "paperId": "0f94591cc05e6f75c21749d507ef58d204f63b7d",
+            "title": "Topology and Geometry of Half-Rectified Network Optimization"
+        },
+        {
+            "paperId": "54ddb00fa691728944fd8becea90a373d21597cf",
+            "title": "Understanding deep learning requires rethinking generalization"
+        },
+        {
+            "paperId": "4fdc7df2c737141a1bf5aec27a438b77d01f8af0",
+            "title": "Deep Information Propagation"
+        },
+        {
+            "paperId": "03e04983f7ce6a9c2b42948840b3312aea33f9f3",
+            "title": "On the Expressive Power of Deep Neural Networks"
+        },
+        {
+            "paperId": "9dd705a9974c6ac7bb8a32d89ce2841bb1ac66af",
+            "title": "Gradient Descent Only Converges to Minimizers"
+        },
+        {
+            "paperId": "97616121e0153bdd279630a645751d6616451f30",
+            "title": "No bad local minima: Data independent training error guarantees for multilayer neural networks"
+        },
+        {
+            "paperId": "07925910d45761d96269fc3bdfdc21b1d20d84ad",
+            "title": "Deep Learning without Poor Local Minima"
+        },
+        {
+            "paperId": "1c4e9156ca07705531e45960b7a919dc473abb51",
+            "title": "Wide Residual Networks"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "32d9191eee3ad542a92d9203d3d1fd4e8e6fbb1e",
+            "title": "On the Quality of the Initial Basin in Overspecified Neural Networks"
+        },
+        {
+            "paperId": "0f7c85357c366b314b5b55c400869a62fd23372c",
+            "title": "Train faster, generalize better: Stability of stochastic gradient descent"
+        },
+        {
+            "paperId": "41525db1ecc54a02db08f398c7b52dec8fa1362e",
+            "title": "Global Optimality in Tensor Factorization, Deep Learning, and Beyond"
+        },
+        {
+            "paperId": "a70c24f8e97aea58d6fe913372abab1daeaf1264",
+            "title": "Escaping From Saddle Points - Online Stochastic Gradient for Tensor Decomposition"
+        },
+        {
+            "paperId": "c8f73baeeeb9dc189753f3c2a275303b242187cf",
+            "title": "Learning Polynomials with Neural Networks"
+        },
+        {
+            "paperId": "4406c54f40e0f73db2180704d454951649df32f2",
+            "title": "Introduction to the non-asymptotic analysis of random matrices"
+        },
+        {
+            "paperId": null,
+            "title": "Residual learning without normalization via better initialization"
+        },
+        {
+            "paperId": null,
+            "title": "this, we use a similar approach as in (Du et al., 2018b)"
+        },
+        {
+            "paperId": null,
+            "title": "The unreasonable effectiveness of (zero) initialization in deep residual learning"
+        },
+        {
+            "paperId": "a6ecbeb48a25e122d0131e01eb1ead0b4e530fd2",
+            "title": "Gaussian Sobolev Spaces and Stochastic Calculus of Variations"
+        }
+    ]
+}

@@ -1,0 +1,218 @@
+{
+    "paperId": "0d3bbe47fe67e5a125a2547913ac0e4a30f18c8d",
+    "externalIds": {
+        "ArXiv": "1802.04208",
+        "MAG": "2950299304",
+        "DBLP": "conf/iclr/DonahueMP19",
+        "CorpusId": 52890982
+    },
+    "title": "Adversarial Audio Synthesis",
+    "abstract": "Audio signals are sampled at high temporal resolutions, and learning to synthesize audio requires capturing structure across a range of timescales. Generative adversarial networks (GANs) have seen wide success at generating images that are both locally and globally coherent, but they have seen little application to audio generation. In this paper we introduce WaveGAN, a first attempt at applying GANs to unsupervised synthesis of raw-waveform audio. WaveGAN is capable of synthesizing one second slices of audio waveforms with global coherence, suitable for sound effect generation. Our experiments demonstrate that, without labels, WaveGAN learns to produce intelligible words when trained on a small-vocabulary speech dataset, and can also synthesize audio from other domains such as drums, bird vocalizations, and piano. We compare WaveGAN to a method which applies GANs designed for image generation on image-like audio feature representations, finding both approaches to be promising.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2018,
+    "referenceCount": 45,
+    "citationCount": 552,
+    "influentialCitationCount": 85,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "WaveGAN is a first attempt at applying GANs to unsupervised synthesis of raw-waveform audio, capable of synthesizing one second slices of audio waveforms with global coherence, suitable for sound effect generation."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1872307",
+            "name": "Chris Donahue"
+        },
+        {
+            "authorId": "35660011",
+            "name": "Julian McAuley"
+        },
+        {
+            "authorId": "1721259",
+            "name": "M. Puckette"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "725c650ae8db8d9a57e4a7b15a555dbe69b67054",
+            "title": "GANSynth: Adversarial Neural Audio Synthesis"
+        },
+        {
+            "paperId": "da6e404d8911b0e5785019a79dc8607e0b313dc4",
+            "title": "Speech Commands: A Dataset for Limited-Vocabulary Speech Recognition"
+        },
+        {
+            "paperId": "1a2599e467e855f845dcbf9282f8bdbd97b85708",
+            "title": "Natural TTS Synthesis by Conditioning Wavenet on MEL Spectrogram Predictions"
+        },
+        {
+            "paperId": "c0d387cfc583f97fc16b122d10394a1dd2abd88d",
+            "title": "Exploring Speech Enhancement with Generative Adversarial Networks for Robust Speech Recognition"
+        },
+        {
+            "paperId": "0bc8f5ef582b663e87577bc7d1c2eb2b58620317",
+            "title": "SVSGAN: Singing Voice Separation Via Generative Adversarial Network"
+        },
+        {
+            "paperId": "744fe47157477235032f7bb3777800f9f2f45e52",
+            "title": "Progressive Growing of GANs for Improved Quality, Stability, and Variation"
+        },
+        {
+            "paperId": "852120feb37d2dc136d1c6916b52b9baabfc2e11",
+            "title": "Deep Voice 3: 2000-Speaker Neural Text-to-Speech"
+        },
+        {
+            "paperId": "36b3865f944c74c6d782c26dfe7be04ef9664a67",
+            "title": "Conditional Generative Adversarial Networks for Speech Enhancement and Noise-Robust Speaker Verification"
+        },
+        {
+            "paperId": "5a5bcfda3b753f8266b9ba27d34fc86b6d374a1b",
+            "title": "Deep Voice 2: Multi-Speaker Neural Text-to-Speech"
+        },
+        {
+            "paperId": "27e8965cc9c166e9afee46e611039f0ce8263e51",
+            "title": "Deep Cross-Modal Audio-Visual Generation"
+        },
+        {
+            "paperId": "97c01b6cef7d7d88ec7eda488bfdc46fd601e76a",
+            "title": "Neural Audio Synthesis of Musical Notes with WaveNet Autoencoders"
+        },
+        {
+            "paperId": "edf73ab12595c6709f646f542a0d2b33eb20a3f4",
+            "title": "Improved Training of Wasserstein GANs"
+        },
+        {
+            "paperId": "aa6f7ad0a06b52a8be89dbd8d056561418276ff2",
+            "title": "BEGAN: Boundary Equilibrium Generative Adversarial Networks"
+        },
+        {
+            "paperId": "a072c2a400f62f720b68dc54a662fb1ae115bf06",
+            "title": "Tacotron: Towards End-to-End Speech Synthesis"
+        },
+        {
+            "paperId": "f8d43ff00585c53f65eb04e15477113c2d2b758b",
+            "title": "SEGAN: Speech Enhancement Generative Adversarial Network"
+        },
+        {
+            "paperId": "bd1406070bb7cd4e740672ca018fdeb4e805ebc7",
+            "title": "Sample-level Deep Convolutional Neural Networks for Music Auto-tagging Using Raw Waveforms"
+        },
+        {
+            "paperId": "9203d6c076bffe87336f2ea91f5851436c02dbe6",
+            "title": "Char2Wav: End-to-End Speech Synthesis"
+        },
+        {
+            "paperId": "2f85b7376769473d2bed56f855f115e23d727094",
+            "title": "Wasserstein GAN"
+        },
+        {
+            "paperId": "68cb9fce1e6af2740377494350b650533c9a29e1",
+            "title": "Learning from Simulated and Unsupervised Images through Adversarial Training"
+        },
+        {
+            "paperId": "74ff6d48f9c62e937023106629d27ef2d2ddf8bc",
+            "title": "Least Squares Generative Adversarial Networks"
+        },
+        {
+            "paperId": "e221e2c2ca8bd74a7b818406c8a2a342760e7d65",
+            "title": "SampleRNN: An Unconditional End-to-End Neural Audio Generation Model"
+        },
+        {
+            "paperId": "d9dab7574d56ae81efe6c90c213c6509b36cf950",
+            "title": "Deconvolution and Checkerboard Artifacts"
+        },
+        {
+            "paperId": "59d8c68de09da69a608ceb149f40114f5538c5b1",
+            "title": "CNN architectures for large-scale audio classification"
+        },
+        {
+            "paperId": "df0402517a7338ae28bc54acaac400de6b456a46",
+            "title": "WaveNet: A Generative Model for Raw Audio"
+        },
+        {
+            "paperId": "ba91dabec842d507a647aab97ad224b4abdc1635",
+            "title": "WORLD: A Vocoder-Based High-Quality Speech Synthesis System for Real-Time Applications"
+        },
+        {
+            "paperId": "571b0750085ae3d939525e62af510ee2cee9d5ea",
+            "title": "Improved Techniques for Training GANs"
+        },
+        {
+            "paperId": "23ffaa0fe06eae05817f527a47ac3291077f9e58",
+            "title": "Rethinking the Inception Architecture for Computer Vision"
+        },
+        {
+            "paperId": "8388f1be26329fa45e5807e968a641ce170ea078",
+            "title": "Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks"
+        },
+        {
+            "paperId": "39e0c341351f8f4a39ac890b96217c7f4bde5369",
+            "title": "A note on the evaluation of generative models"
+        },
+        {
+            "paperId": "849c9a0b3c76c7e65e3e5f0bdfd56921731ea043",
+            "title": "Deep Learning for Acoustic Modeling in Parametric Speech Generation: A systematic review of existing techniques and future trends"
+        },
+        {
+            "paperId": "ac3ee98020251797c2b401e1389461df88e52e62",
+            "title": "Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling"
+        },
+        {
+            "paperId": "13bc4e683075bdd6a3f0155241c276a772d4aa06",
+            "title": "Generative adversarial networks"
+        },
+        {
+            "paperId": "490554b93ef10f5b9ba700ad9731315227301282",
+            "title": "Speech Synthesis Based on Hidden Markov Models"
+        },
+        {
+            "paperId": "317d2b6e97b878e77f8aad964575bcaadddb83cf",
+            "title": "Statistical Parametric Speech Synthesis"
+        },
+        {
+            "paperId": "1dd0140d51e870a713340ae30734c8438b03d1a3",
+            "title": "Unit selection in a concatenative speech synthesis system using a large speech database"
+        },
+        {
+            "paperId": "d31898b96c994fb8d661a8094344a379712b672b",
+            "title": "Pitch-synchronous waveform processing techniques for text-to-speech synthesis using diphones"
+        },
+        {
+            "paperId": "14bc876fae55faf5669beb01667a4f3bd324a4f1",
+            "title": "Signal estimation from modified short-time Fourier transform"
+        },
+        {
+            "paperId": "637ed0d38532aaa93c39cadebda96a3d99ecc8b5",
+            "title": "Speech Enhancement with a Generative Adversarial Network"
+        },
+        {
+            "paperId": null,
+            "title": "Bird recordings"
+        },
+        {
+            "paperId": null,
+            "title": "Synthetic speech commands dataset"
+        },
+        {
+            "paperId": "fd5474f21495989777cbff507ecf1b37b7091475",
+            "title": "Learning the speech front-end with raw waveform CLDNNs"
+        },
+        {
+            "paperId": "3911933c247f705b2488fdd067330820e8db07bf",
+            "title": "TIMIT Acoustic-Phonetic Continuous Speech Corpus"
+        },
+        {
+            "paperId": "c61926496fa04d04d937740aa31437485ed91b64",
+            "title": "Simultaneous modeling of phonetic and prosodic parameters,and characteristic conversion for HMM-based text-to-speech systems"
+        },
+        {
+            "paperId": null,
+            "title": "Remaking speech"
+        },
+        {
+            "paperId": "443d0dfeb2a6416911d90ee809d5bff8f153941e",
+            "title": "A Scale for the Measurement of the Psychological Magnitude Pitch"
+        }
+    ]
+}

@@ -1,0 +1,282 @@
+{
+    "paperId": "2b55f034a3874ad4a4b7f389e6f89e3bf2d1801e",
+    "externalIds": {
+        "DBLP": "journals/corr/YangSAM14",
+        "MAG": "2951926559",
+        "ArXiv": "1412.8293",
+        "CorpusId": 5433838
+    },
+    "title": "Quasi-Monte Carlo Feature Maps for Shift-Invariant Kernels",
+    "abstract": "We consider the problem of improving the efficiency of randomized Fourier feature maps to accelerate training and testing speed of kernel methods on large datasets. These approximate feature maps arise as Monte Carlo approximations to integral representations of shift-invariant kernel functions (e.g., Gaussian kernel). In this paper, we propose to use Quasi-Monte Carlo (QMC) approximations instead, where the relevant integrands are evaluated on a low-discrepancy sequence of points as opposed to random point sets as in the Monte Carlo approach. We derive a new discrepancy measure called box discrepancy based on theoretical characterizations of the integration error with respect to a given sequence. We then propose to learn QMC sequences adapted to our setting based on explicit box discrepancy minimization. Our theoretical analyses are complemented with empirical results that demonstrate the effectiveness of classical and adaptive QMC techniques for this problem.",
+    "venue": "Journal of machine learning research",
+    "year": 2014,
+    "referenceCount": 60,
+    "citationCount": 161,
+    "influentialCitationCount": 22,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new discrepancy measure called box discrepancy is derived based on theoretical characterizations of the integration error with respect to a given sequence based on explicit box discrepancy minimization in Quasi-Monte Carlo (QMC) approximations."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1922753",
+            "name": "H. Avron"
+        },
+        {
+            "authorId": "1808676",
+            "name": "Vikas Sindhwani"
+        },
+        {
+            "authorId": "2791531",
+            "name": "Jiyan Yang"
+        },
+        {
+            "authorId": "143884206",
+            "name": "Michael W. Mahoney"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "503347a28184ec6d92137cfcab11a2f862318fcb",
+            "title": "Subspace Embeddings for the Polynomial Kernel"
+        },
+        {
+            "paperId": "bd47e101c7f869fffc57f529e532a0b9cf275a26",
+            "title": "How to Scale Up Kernel Methods to Be As Good As Deep Neural Nets"
+        },
+        {
+            "paperId": "5b238e057930222ce4e492bd2a55d4ad65d2810f",
+            "title": "Fast Randomized Kernel Methods With Statistical Guarantees"
+        },
+        {
+            "paperId": "1f67e62968cb22d6a7dcab57da01aca684e871b5",
+            "title": "Introduction to Quasi-Monte Carlo Integration and Applications"
+        },
+        {
+            "paperId": "6a698d083dbf55c477e0fc1bac00406aa92ed348",
+            "title": "High-Performance Kernel Machines With Implicit Distributed Optimization and Randomization"
+        },
+        {
+            "paperId": "18c7fb55ff796db5c5a604e0ca44b6baaeb12239",
+            "title": "Fastfood: Approximate Kernel Expansions in Loglinear Time"
+        },
+        {
+            "paperId": "6007164957cced3e5d5b02d3402ea82c3530d852",
+            "title": "Scalable Kernel Methods via Doubly Stochastic Gradients"
+        },
+        {
+            "paperId": "19cd6053bbb9b9c67da0c0881e31019f9ce28154",
+            "title": "Random Laplace Feature Maps for Semigroup Kernels on Histograms"
+        },
+        {
+            "paperId": "b3c879b2430a61d8c4393436685c85bcfbd6c6d8",
+            "title": "Kernel methods match Deep Neural Networks on TIMIT"
+        },
+        {
+            "paperId": "b03e90e1d44af90f296706098b1a5ea747b72ba9",
+            "title": "Compact Random Feature Maps"
+        },
+        {
+            "paperId": "74a50d2b8386fe508160c1a26176dc20622137b2",
+            "title": "Hilbert Space Embeddings of Predictive State Representations"
+        },
+        {
+            "paperId": "ed4847b6ea369b7f4f1419d1a49504a534b2e3b4",
+            "title": "Fast and scalable polynomial kernels via explicit feature maps"
+        },
+        {
+            "paperId": "aa42fbb3695f363754206a0620dbfafb5f52d3d9",
+            "title": "Kernel-Based Methods for Hypothesis Testing: A Unified View"
+        },
+        {
+            "paperId": "4b7ee3d29188fb1d3a24c2d4cf120f648ebded76",
+            "title": "High-dimensional integration: The quasi-Monte Carlo way*\u2020"
+        },
+        {
+            "paperId": "7cda32aeefdd3cabd76871b8ee06bd1a1ea2ba10",
+            "title": "Revisiting the Nystrom Method for Improved Large-scale Machine Learning"
+        },
+        {
+            "paperId": "7a76cd1bbd8f374c7e6bcb36296e9b7530c0e477",
+            "title": "Sharp analysis of low-rank kernel matrix approximations"
+        },
+        {
+            "paperId": "035007348f6f9590df8a95876da0ae18506f726a",
+            "title": "Optimally-Weighted Herding is Bayesian Quadrature"
+        },
+        {
+            "paperId": "6f0aef1646a83f81029204794c1950d61388ab9f",
+            "title": "On the Equivalence between Herding and Conditional Gradient Algorithms"
+        },
+        {
+            "paperId": "236a1facf2bbd96608763363390f7acff9dd764a",
+            "title": "Efficient Additive Kernels via Explicit Feature Maps"
+        },
+        {
+            "paperId": "03a3ba746584c01ed62c73e805d62336839582ae",
+            "title": "Random Feature Maps for Dot Product Kernels"
+        },
+        {
+            "paperId": "0a5ee656e9bf9e18fdee1655f545d5c62527fc33",
+            "title": "Kernel-based Conditional Independence Test and Application in Causal Discovery"
+        },
+        {
+            "paperId": "458d437f2b8d882d59bade4f9bbbdd3015f232a2",
+            "title": "Random Fourier Approximations for Skewed Multiplicative Histogram Kernels"
+        },
+        {
+            "paperId": "1ad0ffeb6e69a5bc09ffa53712888b84a3b9df95",
+            "title": "Super-Samples from Kernel Herding"
+        },
+        {
+            "paperId": "83610a58a7580a5451f4a123b025714e2814ed74",
+            "title": "Hilbert Space Embeddings of Hidden Markov Models"
+        },
+        {
+            "paperId": "98ddb5f09e1e4480394b6e3a03cf1aa2442b01f7",
+            "title": "Efficient additive kernels via explicit feature maps"
+        },
+        {
+            "paperId": "03a8f53058127798bc2bc0245d21e78354f6c93b",
+            "title": "Max-margin additive classifiers for detection"
+        },
+        {
+            "paperId": "f2fdb43f594b9ae0c32e1d52cf2d6b82dfe46dc3",
+            "title": "Hilbert Space Embeddings and Metrics on Probability Measures"
+        },
+        {
+            "paperId": "cc58edaacecbcc20b8a54ad4f68648415a7b974a",
+            "title": "Herding dynamical weights to learn"
+        },
+        {
+            "paperId": "7a59fde27461a3ef4a21a249cc403d0d96e4a0d7",
+            "title": "Random Features for Large-Scale Kernel Machines"
+        },
+        {
+            "paperId": "7142185fd2e86e922f609562f30820cd7c5af7f4",
+            "title": "Advances in Neural Information Processing Systems (NIPS)"
+        },
+        {
+            "paperId": "3d808cb2cf3dda6c3f24d9dafdc001ad99ba00c2",
+            "title": "A Hilbert Space Embedding for Distributions"
+        },
+        {
+            "paperId": "63f27307cb028f9341544fff32eceb2c3c652bf2",
+            "title": "Large-scale kernel machines"
+        },
+        {
+            "paperId": "e44e0167ef3ff820917425839be0c145179c5a5a",
+            "title": "Building Support Vector Machines with Reduced Classifier Complexity"
+        },
+        {
+            "paperId": "19bb0dce99466077e9bc5a2ad4941607fc28b40c",
+            "title": "Manifold Regularization: A Geometric Framework for Learning from Labeled and Unlabeled Examples"
+        },
+        {
+            "paperId": "8608a48f6a5850259afb036b70fd289b4c174cc6",
+            "title": "Core Vector Machines: Fast SVM Training on Very Large Data Sets"
+        },
+        {
+            "paperId": "fc8cda36a0972e7de1ac3a7bcb81dc32da79bee4",
+            "title": "Learning with Kernels: Support Vector Machines, Regularization, Optimization, and Beyond"
+        },
+        {
+            "paperId": "7b2dd79083a74699e4e0509ac3f0a8a302b4eabe",
+            "title": "On the mathematical foundations of learning"
+        },
+        {
+            "paperId": "054a203422d121cd4464d953846f53576a41c573",
+            "title": "When Are Quasi-Monte Carlo Algorithms Efficient for High Dimensional Integrals?"
+        },
+        {
+            "paperId": "85b597939f26a4f7a149887e00e83e2f5ba35c8f",
+            "title": "Monte Carlo and quasi-Monte Carlo methods"
+        },
+        {
+            "paperId": "5a53097aac21f5d28b2cedc00c4e16d4b54bfc67",
+            "title": "Computations of the complex error function"
+        },
+        {
+            "paperId": "e786caa59202d923ccaae00ae6a4682eec92699b",
+            "title": "Spline Models for Observational Data"
+        },
+        {
+            "paperId": "5715c0ff79ef3970845ce9de95b80c5f6e5c1846",
+            "title": "A Method for Evaluation of the Error Function of Real and Complex Variable with High Relative Accuracy"
+        },
+        {
+            "paperId": "8671e29eb2e443b33b7bdbea0988a9639fc98ae2",
+            "title": "STATISTICAL INFERENCE ON TIME SERIES BY RKHS METHODS."
+        },
+        {
+            "paperId": "ba46425da085d177ac69993325b65a74a0ba800d",
+            "title": "Applications of Reproducing Kernel Hilbert Spaces-Bandlimited Signal Models"
+        },
+        {
+            "paperId": "00906ea65f379dc4af7d41e39c538fb15d536dad",
+            "title": "Positive definite functions on spheres"
+        },
+        {
+            "paperId": "f59ec2b1eefe33818a96052b3baf7ec8000a1cd9",
+            "title": "Monotone Funktionen, Stieltjessche Integrale und harmonische Analyse"
+        },
+        {
+            "paperId": "bf5f122fb8fd28f2a33981444fa843e5e8634254",
+            "title": "Kernels"
+        },
+        {
+            "paperId": "8c3a8b4b82310234c24b9272fa72cb392804e44e",
+            "title": "CLASSICAL SPACES OF HOLOMORPHIC FUNCTIONS"
+        },
+        {
+            "paperId": null,
+            "title": "CVX: Matlab software for disciplined convex programming, version 2.1"
+        },
+        {
+            "paperId": "5578f3d9e6931c3762b2275f5265113e8f94369a",
+            "title": "Generalized RBF feature maps for Efficient Detection"
+        },
+        {
+            "paperId": "f1ffa948988c6c2a66796ec4033fa8a8188756c7",
+            "title": "Graph Implementations for Nonsmooth Convex Programs"
+        },
+        {
+            "paperId": "b6aef0d4d0b12748a84c22cfdef6b0fb55c0cd24",
+            "title": "Recent Advances in Learning and Control"
+        },
+        {
+            "paperId": "aa83e435487321b9400eb184e85e638fa7f847c6",
+            "title": "Fast large scale Gaussian process regression using approximate matrix-vector products"
+        },
+        {
+            "paperId": "730eff08764b46b174c00c4d53dbe71182bba65f",
+            "title": "Reproducing kernel Hilbert spaces in probability and statistics"
+        },
+        {
+            "paperId": "93b0eff68081abfa51e499733ffea7188f7a4cf0",
+            "title": "Bayesian Monte Carlo"
+        },
+        {
+            "paperId": "b6fff8b8ea77f157913986e7af53951d9fc1128e",
+            "title": "Using the Nystr\u00f6m Method to Speed Up Kernel Machines"
+        },
+        {
+            "paperId": null,
+            "title": "Breaking intractability"
+        },
+        {
+            "paperId": "2454e846733f0f0d6ae98c489a632a7199d07ed6",
+            "title": "Random number generation and Quasi-Monte Carlo methods"
+        },
+        {
+            "paperId": "a93d16604bd9cd394b37825ac42c60399c9d8bae",
+            "title": "Average case complexity of multivariate integration"
+        },
+        {
+            "paperId": "89558a43b3b0a24cd0fdb6d5c2283112493af3a0",
+            "title": "In Advances in Neural Information Processing Systems 12"
+        }
+    ]
+}

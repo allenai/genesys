@@ -1,0 +1,866 @@
+{
+    "paperId": "f7d8783648ef685eb020bda8a41b8bc5ced5c2a1",
+    "externalIds": {
+        "MAG": "2898323475",
+        "PubMedCentral": "6209684",
+        "DOI": "10.3389/fnins.2018.00774",
+        "CorpusId": 53086859,
+        "PubMed": "30410432"
+    },
+    "title": "Deep Learning With Spiking Neurons: Opportunities and Challenges",
+    "abstract": "Spiking neural networks (SNNs) are inspired by information processing in biology, where sparse and asynchronous binary signals are communicated and processed in a massively parallel fashion. SNNs on neuromorphic hardware exhibit favorable properties such as low power consumption, fast inference, and event-driven information processing. This makes them interesting candidates for the efficient implementation of deep neural networks, the method of choice for many machine learning tasks. In this review, we address the opportunities that deep spiking networks offer and investigate in detail the challenges associated with training SNNs in a way that makes them competitive with conventional deep learning, but simultaneously allows for efficient mapping to hardware. A wide range of training methods for SNNs is presented, ranging from the conversion of conventional deep networks into SNNs, constrained training before conversion, spiking variants of backpropagation, and biologically motivated variants of STDP. The goal of our review is to define a categorization of SNN training methods, and summarize their advantages and drawbacks. We further discuss relationships between SNNs and binary networks, which are becoming popular for efficient digital hardware implementation. Neuromorphic hardware platforms have great potential to enable deep spiking networks in real-world applications. We compare the suitability of various neuromorphic systems that have been developed over the past years, and investigate potential use cases. Neuromorphic approaches and conventional machine learning should not be considered simply two solutions to the same classes of problems, instead it is possible to identify and exploit their task-specific advantages. Deep SNNs offer great opportunities to work with new types of event-based sensors, exploit temporal codes and local on-chip learning, and we have so far just scratched the surface of realizing these advantages in practical applications.",
+    "venue": "Frontiers in Neuroscience",
+    "year": 2018,
+    "referenceCount": 207,
+    "citationCount": 527,
+    "influentialCitationCount": 23,
+    "openAccessPdf": {
+        "url": "https://www.frontiersin.org/articles/10.3389/fnins.2018.00774/pdf",
+        "status": "GOLD"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This review addresses the opportunities that deep spiking networks offer and investigates in detail the challenges associated with training SNNs in a way that makes them competitive with conventional deep learning, but simultaneously allows for efficient mapping to hardware."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "144578436",
+            "name": "Michael Pfeiffer"
+        },
+        {
+            "authorId": "46818707",
+            "name": "Thomas Pfeil"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "a6bc0cea3f6f4bf3ced87ffc7c0c1903ef90566e",
+            "title": "Deep Spiking Convolutional Neural Network Trained With Unsupervised Spike-Timing-Dependent Plasticity"
+        },
+        {
+            "paperId": "0d50b1e804c33a28718edbff78314d651b9c7205",
+            "title": "EMVS: Event-Based Multi-View Stereo\u20143D Reconstruction with an Event Camera in Real-Time"
+        },
+        {
+            "paperId": "3eb9c35ec6a6ac6a6816c160bb771755779cb2e4",
+            "title": "Spiking neural networks for handwritten digit recognition - Supervised learning and network optimization"
+        },
+        {
+            "paperId": "c898161e3691625bcef780b78100f70e8bb94154",
+            "title": "Assessing the Scalability of Biologically-Motivated Deep Learning Algorithms and Architectures"
+        },
+        {
+            "paperId": "2e7dfcebe9362cff3154e4f9a1e7e523454750bd",
+            "title": "Event-Based, Timescale Invariant Unsupervised Online Deep Learning With STDP"
+        },
+        {
+            "paperId": "99967d34b2fc185090ab05494bf1b2a9b2609f8d",
+            "title": "The streaming rollout of deep networks - towards fully model-parallel execution"
+        },
+        {
+            "paperId": "885d85299b7202d2fd509fac543dd4bb1d176f15",
+            "title": "An Active Approach to Solving the Stereo Matching Problem using Event-Based Sensors"
+        },
+        {
+            "paperId": "7bb5bd134bdc733f472ac7e98bad923ebff25002",
+            "title": "Large-Scale Neuromorphic Spiking Array Processors: A Quest to Mimic the Brain"
+        },
+        {
+            "paperId": "b22c5eff98c104404614363d191ddaf0dac5ae98",
+            "title": "Hybrid Macro/Micro Level Backpropagation for Training Deep Spiking Neural Networks"
+        },
+        {
+            "paperId": "59898f4cfae23eaa8a32aca01596b9549b26016d",
+            "title": "Spiking Deep Residual Network"
+        },
+        {
+            "paperId": "1a13bec308614ed56b9af2532a3d5e4cd8e2af94",
+            "title": "Deep Learning in Spiking Neural Networks"
+        },
+        {
+            "paperId": "991bc343a71c352f13bad1a734e93a87a1512d66",
+            "title": "An Accelerated LIF Neuronal Network Array for a Large-Scale Mixed-Signal Neuromorphic Architecture"
+        },
+        {
+            "paperId": "9e0b0999313cf52f4d34e8914cd001723c657451",
+            "title": "Combining STDP and Reward-Modulated STDP in Deep Convolutional Spiking Neural Networks for Digit Recognition"
+        },
+        {
+            "paperId": "80eec7deeffd76a42db351409d85e4a9165542b0",
+            "title": "Long short-term memory and Learning-to-learn in networks of spiking neurons"
+        },
+        {
+            "paperId": "a60f20adc4fc9f363465de327dc2f3f1ab7b624c",
+            "title": "HATS: Histograms of Averaged Time Surfaces for Robust Event-Based Object Classification"
+        },
+        {
+            "paperId": "b4dcf7678ab7342d367039bd5fa3e7571ea88bb3",
+            "title": "Neuromodulated Synaptic Plasticity on the SpiNNaker Neuromorphic System"
+        },
+        {
+            "paperId": "ca9cf0ca19dc3da09a5bd383cbbd7ad61b08b7ef",
+            "title": "Programming Spiking Neural Networks on Intel\u2019s Loihi"
+        },
+        {
+            "paperId": "f6a4bf043af1a9ec7f104a7b7ab56806b241ceda",
+            "title": "Model compression via distillation and quantization"
+        },
+        {
+            "paperId": "b20ace3f79c502b29e2e3e0a211880957652e622",
+            "title": "Going Deeper in Spiking Neural Networks: VGG and Residual Architectures"
+        },
+        {
+            "paperId": "a67b7966cd8cdff0c9195cf719ac8ebf38c40b8e",
+            "title": "Loihi: A Neuromorphic Manycore Processor with On-Chip Learning"
+        },
+        {
+            "paperId": "a553a54d31b3949cc6191801b8a69a58ab6fc380",
+            "title": "Learning to Generate Sequences with Combination of Hebbian and Non-hebbian Plasticity in Recurrent Spiking Neural Networks"
+        },
+        {
+            "paperId": "915cc4b359863f256957485c8a60f2cceb78ab5f",
+            "title": "Conversion of Continuous-Valued Deep Networks to Efficient Event-Driven Networks for Image Classification"
+        },
+        {
+            "paperId": "de7264dde174f912ce3be57d95ea6e8e3ad952ab",
+            "title": "Deep Supervised Learning Using Local Errors"
+        },
+        {
+            "paperId": "64520a1f652ebd04565354fbb8a6281606c9724d",
+            "title": "Attacking Binarized Neural Networks"
+        },
+        {
+            "paperId": "ac4cd0cb132e34dc20a25c2fe14edd84dbf27ad3",
+            "title": "Learning to Recognize Actions From Limited Training Examples Using a Recurrent Spiking Neural Model"
+        },
+        {
+            "paperId": "773f448639766fa98e71e733fab5564466acfafa",
+            "title": "Ultimate SLAM? Combining Events, Images, and IMU for Robust Visual SLAM in HDR and High-Speed Scenarios"
+        },
+        {
+            "paperId": "b18b2f8f6e55789b03f983f02f33283c39e6e36a",
+            "title": "WRPN: Wide Reduced-Precision Networks"
+        },
+        {
+            "paperId": "d7a0de77a7a25943cb99d8301a839cfe54bc6e7b",
+            "title": "A Scalable Multicore Architecture With Heterogeneous Memory Structures for Dynamic Neuromorphic Asynchronous Processors (DYNAPs)"
+        },
+        {
+            "paperId": "1e5f6ff1971072530a8bc50036d7de5fc3e80f67",
+            "title": "A Low Power, Fully Event-Based Gesture Recognition System"
+        },
+        {
+            "paperId": "c0b0216e87a3784e8580c533e9bf283a99be8d7e",
+            "title": "Memristive neural network for on-line learning and tracking with brain-inspired spike timing dependent plasticity"
+        },
+        {
+            "paperId": "73ade9124ef6935e1b9b17243a48fa5320737f94",
+            "title": "HOTS: A Hierarchy of Event-Based Time-Surfaces for Pattern Recognition"
+        },
+        {
+            "paperId": "6e728e96d00b0d93c1bc1be98715fc76d1a93846",
+            "title": "An Event-Driven Classifier for Spiking Neural Networks Fed with Synthetic or Dynamic Vision Sensor Data"
+        },
+        {
+            "paperId": "1d1802480eeb320d2f48bccee669c02804dbaa99",
+            "title": "Spatio-Temporal Backpropagation for Training High-Performance Spiking Neural Networks"
+        },
+        {
+            "paperId": "e9496ccf44f6ebca4f01c31a012bdab7cac4a65c",
+            "title": "DDD17: End-To-End DAVIS Driving Dataset"
+        },
+        {
+            "paperId": "5690cae43495be52bab835023e34997ea2784abf",
+            "title": "Training Quantized Nets: A Deeper Understanding"
+        },
+        {
+            "paperId": "1cc2c4ccad54fa1a82e345ce0b7a09f18f3389d2",
+            "title": "GXNOR-Net: Training deep neural networks with ternary weights and activations without full-precision memory under a unified discretization framework"
+        },
+        {
+            "paperId": "6107eb561441f5196197de0e9cb3a1de02c94389",
+            "title": "Fast classification using sparsely active spiking networks"
+        },
+        {
+            "paperId": "33d86819ef59d145c8a406328a4ec28c1f9fd7ec",
+            "title": "Learning through ferroelectric domain dynamics in solid-state synapses"
+        },
+        {
+            "paperId": "3f116042f50a499ab794bcc1255915bee507413c",
+            "title": "Efficient Processing of Deep Neural Networks: A Tutorial and Survey"
+        },
+        {
+            "paperId": "e4505acf172f6649795befe15957b5cea4b9c31b",
+            "title": "Pattern representation and recognition with accelerated analog neuromorphic systems"
+        },
+        {
+            "paperId": "c40c5100a8afb207b6a7efd385894008319dd7b8",
+            "title": "Convolutional Spike Timing Dependent Plasticity based Feature Learning in Spiking Neural Networks"
+        },
+        {
+            "paperId": "8ab8aeaa3a2c2d34b4b0dda0b06825ef8f659d58",
+            "title": "Neuromorphic hardware in the loop: Training a deep spiking network on the BrainScaleS wafer-scale system"
+        },
+        {
+            "paperId": "75dd30fde950bc8996b5105fff6f9fc3c1d2dbae",
+            "title": "How to Train a Compact Binary Neural Network with High Accuracy?"
+        },
+        {
+            "paperId": "07419ef51584e24e8212ee8e94b68a1aa86e35c9",
+            "title": "STDP-Compatible Approximation of Backpropagation in an Energy-Based Model"
+        },
+        {
+            "paperId": "809ee571625135728e6ebb8968099900383a4169",
+            "title": "A spiking neural network model of 3D perception for event-based neuromorphic stereo vision systems"
+        },
+        {
+            "paperId": "41c35fbd3cf42ac544446b2050be4a07a0fc5217",
+            "title": "Neuromorphic computing using non-volatile memory"
+        },
+        {
+            "paperId": "a844595c3b561b00325c75d00e5cc7f639e8ed9a",
+            "title": "Event-Driven Random Back-Propagation: Enabling Neuromorphic Deep Learning Machines"
+        },
+        {
+            "paperId": "c04c7d4abc5f0774b2dfd4e44ed183630da53e38",
+            "title": "Simultaneous Optical Flow and Intensity Estimation from an Event Camera"
+        },
+        {
+            "paperId": "824c9aecbf48021b6ede016f8e6447c70b80fe24",
+            "title": "A Bidirectional Brain-Machine Interface Featuring a Neuromorphic Hardware Decoder"
+        },
+        {
+            "paperId": "896de8418884f4aab1ae4a60027500c9e8baffc3",
+            "title": "BranchyNet: Fast inference via early exiting from deep neural networks"
+        },
+        {
+            "paperId": "783886a7861c5eb14c4814337b3d74564d6c6f6b",
+            "title": "Training Spiking Deep Networks for Neuromorphic Hardware"
+        },
+        {
+            "paperId": "17ebe1eb19655543a6b876f91d41917488e70f55",
+            "title": "Random synaptic feedback weights support error backpropagation for deep learning"
+        },
+        {
+            "paperId": "19751e0f81a103658bbac2506f5d5c8e06a1c06a",
+            "title": "STDP-based spiking deep neural networks for object recognition"
+        },
+        {
+            "paperId": "015146a94f41db5abd92551a4334fd7daae468bf",
+            "title": "Benchmarking Spike-Based Visual Recognition: A Dataset and Evaluation"
+        },
+        {
+            "paperId": "a4b6b32c21609b9b093e0aacc5c0d82e70a9be52",
+            "title": "Phased LSTM: Accelerating Recurrent Network Training for Long or Event-based Sequences"
+        },
+        {
+            "paperId": "8da267f7dec1cedc59f9c9aa7c4e1f88e3dcc62b",
+            "title": "The event-camera dataset and simulator: Event-based data for pose estimation, visual odometry, and SLAM"
+        },
+        {
+            "paperId": "30f46fdfe1fdab60bdecaa27aaa94526dfd87ac1",
+            "title": "Real-Time 3D Reconstruction and 6-DoF Tracking with an Event Camera"
+        },
+        {
+            "paperId": "d6c850b41500be8cfadb5aa710934d9c5c7bc100",
+            "title": "Towards deep learning with segregated dendrites"
+        },
+        {
+            "paperId": "827bf6a2cac877c430a82f56fd95e58643233355",
+            "title": "Fast and Efficient Asynchronous Neural Computation with Adapting Spiking Neural Networks"
+        },
+        {
+            "paperId": "c99537a3f0ce446df31942b78fb8337edb0c0c07",
+            "title": "Training Deep Spiking Neural Networks Using Backpropagation"
+        },
+        {
+            "paperId": "188ddfd39338984a813f929235a20b553956eb7b",
+            "title": "DVS Benchmark Datasets for Object Tracking, Action Recognition, and Object Recognition"
+        },
+        {
+            "paperId": "883146a5aa46aaaa2c348d38c4e8b51ec2e74237",
+            "title": "Large-scale neuromorphic computing systems"
+        },
+        {
+            "paperId": "287f2ed4e37a634c955b3afb05905403bf830811",
+            "title": "Event-Based, 6-DOF Camera Tracking from Photometric Depth Maps"
+        },
+        {
+            "paperId": "83e51128c4315799854ee645dac576d9c8331756",
+            "title": "Supervised Learning Based on Temporal Coding in Spiking Neural Networks"
+        },
+        {
+            "paperId": "4500d9f74ee8cfeeba24643f3248fdb439f31976",
+            "title": "Deep neural networks are robust to weight binarization and other non-linear distortions"
+        },
+        {
+            "paperId": "27695627043ab77e121b6e2a5c3ecc53dad80766",
+            "title": "Demonstrating Hybrid Learning in a Flexible Neuromorphic Hardware System"
+        },
+        {
+            "paperId": "a975ea4cc0078ca31d9c100cdb53a352c751ca68",
+            "title": "Binarized Neural Networks on the ImageNet Classification Task"
+        },
+        {
+            "paperId": "c52ed856e1818c4ed0b6debb6701430b3d8a8b38",
+            "title": "Learning to be efficient: algorithms for training low-latency, low-compute deep spiking neural networks"
+        },
+        {
+            "paperId": "29316449c7cc52ad326c5d1bd5b0dc5af27c1496",
+            "title": "Convolutional networks for fast, energy-efficient neuromorphic computing"
+        },
+        {
+            "paperId": "b649a98ce77ece8cd7638bb74ab77d22d9be77e7",
+            "title": "XNOR-Net: ImageNet Classification Using Binary Convolutional Neural Networks"
+        },
+        {
+            "paperId": "8b67f0d7c2f3ded3e22a200deb98030fc6811477",
+            "title": "Recurrent Network Models of Sequence Generation and Memory"
+        },
+        {
+            "paperId": "cb4a372ae84b3ff3a6cc4e60c327f8108a83551f",
+            "title": "Deep Spiking Networks"
+        },
+        {
+            "paperId": "94c4ba7246f781632aa68ca5b1acff0fdbb2d92f",
+            "title": "Using goal-driven deep learning models to understand sensory cortex"
+        },
+        {
+            "paperId": "a4d51f8bcabfcd9e69dee25eef470411f3794e87",
+            "title": "A Dataset for Visual Navigation with Neuromorphic Methods"
+        },
+        {
+            "paperId": "f7bbdd3d030c05b747e8e3d8be0e4b0948337f24",
+            "title": "Unsupervised regenerative learning of hierarchical features in Spiking Deep Networks for object recognition"
+        },
+        {
+            "paperId": "846aedd869a00c09b40f1f1f35673cb22bc87490",
+            "title": "Mastering the game of Go with deep neural networks and tree search"
+        },
+        {
+            "paperId": "8fcfd67f21738eff12d853fdf2b31ee192e2312a",
+            "title": "Bitwise Neural Networks"
+        },
+        {
+            "paperId": "e457aabc35b6a7bd07ea8efc2d9d2700ff27c2ee",
+            "title": "Conversion of artificial recurrent neural networks to spiking neural networks for low-power neuromorphic hardware"
+        },
+        {
+            "paperId": "1fc09cefcb408e2edea8672952ac715727d4edc1",
+            "title": "Poker-DVS and MNIST-DVS. Their History, How They Were Made, and Other Details"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "13497bd108d4412d02050e646235f456568cf822",
+            "title": "Deep Speech 2 : End-to-End Speech Recognition in English and Mandarin"
+        },
+        {
+            "paperId": "04105898efe96c7f2d876e6bcb9e19afd3e23635",
+            "title": "Backpropagation for Energy-Efficient Neuromorphic Computing"
+        },
+        {
+            "paperId": "00d0ad750f3eeb9eab4b806f407182eea526b90b",
+            "title": "Neuromorphic architectures for spiking deep neural networks"
+        },
+        {
+            "paperId": "a47077a665e7df36690db3b493a0ab0da76ac220",
+            "title": "Convolutional Clustering for Unsupervised Learning"
+        },
+        {
+            "paperId": "ea48e430f381b9cead0393ef3737058da2ed314a",
+            "title": "Adjustable Bounded Rectifiers: Towards Deep Binary Representations"
+        },
+        {
+            "paperId": "b6ecc22f427bceb662adb0832201bde7ae37e852",
+            "title": "Reduced-Precision Strategies for Bounded Memory in Deep Neural Nets"
+        },
+        {
+            "paperId": "eb57423ec2673dc9f880938643fa422966b4464e",
+            "title": "Stochastic Synapses Enable Efficient Brain-Inspired Learning Machines"
+        },
+        {
+            "paperId": "a5733ff08daff727af834345b9cfff1d0aa109ec",
+            "title": "BinaryConnect: Training Deep Neural Networks with binary weights during propagations"
+        },
+        {
+            "paperId": "0a76cdb10b244d90770888f72ee46ca3ea1d918d",
+            "title": "Spiking Deep Networks with LIF Neurons"
+        },
+        {
+            "paperId": "fd882a24391a05bf4cf92e8259101f7944d88a56",
+            "title": "Deep neural networks: a new framework for modelling biological vision and brain information processing"
+        },
+        {
+            "paperId": "d950a9505605199e1870fde08236e04d3ebda0d7",
+            "title": "A Neuromorphic Event-Based Neural Recording System for Smart Brain-Machine-Interfaces"
+        },
+        {
+            "paperId": "ac559888f996923c06b1cf90db6b57b12e582289",
+            "title": "Benchmarking neuromorphic vision: lessons learnt from computer vision"
+        },
+        {
+            "paperId": "71bb19dfc671eec57ca7aa7b243640dae47f5203",
+            "title": "STDP as presynaptic activity times rate of change of postsynaptic activity"
+        },
+        {
+            "paperId": "9b2c1eccbc3ba4790a2a3cb0f4188f565d4b5673",
+            "title": "HFirst: A Temporal Approach to Object Recognition"
+        },
+        {
+            "paperId": "5c7a3b1479c4200b856bab148db374f0890a3a1a",
+            "title": "Asynchronous Event-Based Multikernel Algorithm for High-Speed Visual Features Tracking"
+        },
+        {
+            "paperId": "f8b2c2a8c2369f4c40a9cf5e8599bf4ece665200",
+            "title": "Converting Static Image Datasets to Spiking Neuromorphic Datasets Using Saccades"
+        },
+        {
+            "paperId": "1a0be4f0d7d8ea3db7bd79e190072a87321a1652",
+            "title": "STICK: Spike Time Interval Computational Kernel, a Framework for General Purpose Computation Using Neurons, Precise Timing, Delays, and Synchrony"
+        },
+        {
+            "paperId": "1cb3a0ff57de3199fe7029db7a1b8bac310fa5f8",
+            "title": "Fast-classifying, high-accuracy spiking deep networks through weight and threshold balancing"
+        },
+        {
+            "paperId": "c215387f8f208718288991fc0fa17d4c9ab60829",
+            "title": "Scalable energy-efficient, low-latency implementations of trained spiking Deep Belief Networks on SpiNNaker"
+        },
+        {
+            "paperId": "c3497ea4c3f7c51bd6a242eafc0f88c7d5d5a9ac",
+            "title": "Memory and Information Processing in Neuromorphic Systems"
+        },
+        {
+            "paperId": "07e89af6769c4ed9c77dcaf034c8c458b76e8294",
+            "title": "Spiking Deep Convolutional Neural Networks for Energy-Efficient Object Recognition"
+        },
+        {
+            "paperId": "1d7a1c2c01fb47460c5a29ba15b08e3192202c53",
+            "title": "A reconfigurable on-line learning spiking neuromorphic processor comprising 256 neurons and 128K synapses"
+        },
+        {
+            "paperId": "70c5ba72150c9f64c0d524e6f1fb7fc3fe5053cf",
+            "title": "Plasticity in memristive devices for spiking neural networks"
+        },
+        {
+            "paperId": "1c3e323d69a41ca914f714e6c1c88ee1e1d9c06a",
+            "title": "Towards Biologically Plausible Deep Learning"
+        },
+        {
+            "paperId": "1302319324d2ad831a5da553d03aba2c9259fc21",
+            "title": "A Digital Liquid State Machine With Biologically Inspired Learning and Its Application to Speech Recognition"
+        },
+        {
+            "paperId": "326f4fa7f68a902085925b8037d05d63dde3f214",
+            "title": "Event-Based Neuromorphic Systems"
+        },
+        {
+            "paperId": "1b82d54e9a3b06c603d7987ba3ecf437425f6330",
+            "title": "Training deep neural networks with low precision multiplications"
+        },
+        {
+            "paperId": "740a06a9727718d6a1102cc9b4e0a57d5d3682a6",
+            "title": "Event-driven sensing and processing for high-speed robotic vision"
+        },
+        {
+            "paperId": "f0ad9d515070e1d9b46ef103248ab0e72e47f8b7",
+            "title": "A 65k-neuron 73-Mevents/s 22-pJ/event asynchronous micro-pipelined integrate-and-fire array transceiver"
+        },
+        {
+            "paperId": "feaa7e295c7a43ec52091ed9ade1a9a1e5d9bed2",
+            "title": "Expectation Backpropagation: Parameter-Free Training of Multilayer Neural Networks with Continuous or Discrete Weights"
+        },
+        {
+            "paperId": "e7238dfbcef847edb9eaae6308e931c01aaa8b94",
+            "title": "Event-based, 6-DOF pose tracking for high-speed maneuvers"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "c1641d86b94704c696ff4bec3816b861e77d4649",
+            "title": "PyNCS: a microkernel for high-level definition and configuration of neuromorphic electronic systems"
+        },
+        {
+            "paperId": "ab571351c3d45d8da67daa0956a5de8486d4145f",
+            "title": "Retinomorphic Event-Based Vision Sensors: Bioinspired Cameras With Spiking Output"
+        },
+        {
+            "paperId": "680a38e8f025685b192e9e0cf755c6b664963551",
+            "title": "A million spiking-neuron integrated circuit with a scalable communication network and interface"
+        },
+        {
+            "paperId": "d7e293687b47f24943ced291a01cb08b60588189",
+            "title": "Event-based 3D SLAM with a depth-augmented dynamic vision sensor"
+        },
+        {
+            "paperId": "193edd20cae92c6759c18ce93eeea96afd9528eb",
+            "title": "Deep learning in neural networks: An overview"
+        },
+        {
+            "paperId": "336d333bcd1feb6d14f13a478534c808bf7e7e53",
+            "title": "Neurogrid: A Mixed-Analog-Digital Multichip System for Large-Scale Neural Simulations"
+        },
+        {
+            "paperId": "99034e12e0efba0c4dcddc2ce87e6992515175e8",
+            "title": "To spike, or when to spike?"
+        },
+        {
+            "paperId": "62bdc8ec0f4987f80100cd825dce9cb102c1e7fa",
+            "title": "Spiking Neural Networks: Principles and Challenges"
+        },
+        {
+            "paperId": "73323c582540745cf484de0195451609920811b9",
+            "title": "Real-Time Gesture Interface Based on Event-Driven Processing From Stereo Silicon Retinas"
+        },
+        {
+            "paperId": "28ba0ed8526e4322d81602a1da21b2b43fbe9b10",
+            "title": "The SpiNNaker Project"
+        },
+        {
+            "paperId": "313010c775cccf3a51fa49aad15d76e280284eaf",
+            "title": "Event-Based Visual Flow"
+        },
+        {
+            "paperId": "94182a52c5ea20073ab3e8d110ecb832592c09ed",
+            "title": "A neuromorphic network for generic multivariate data classification"
+        },
+        {
+            "paperId": "94d0a3f76eb60e8cb2de01816e723c33f3696218",
+            "title": "Minitaur, an Event-Driven FPGA-Based Spiking Network Accelerator"
+        },
+        {
+            "paperId": "43603db3411879ab9cad17fea6e8222b16af02d7",
+            "title": "Overview of the SpiNNaker System Architecture"
+        },
+        {
+            "paperId": "4ef4ab1766614b8a605cb3308a07bc68ac3b03c4",
+            "title": "Event-driven contrastive divergence for spiking neuromorphic systems"
+        },
+        {
+            "paperId": "eb0976cb154e82d0744b63238c0a12f749cf8d13",
+            "title": "Mapping from frame-driven to frame-free event-driven vision systems by low-rate rate coding and coincidence processing--application to feedforward ConvNets."
+        },
+        {
+            "paperId": "aeb2607db853918c031dd3bf7c488cd26180935a",
+            "title": "Real-time classification and sensor fusion with a spiking deep belief network"
+        },
+        {
+            "paperId": "70bf72c6f75662daf4d498f38e33aad2eaa3c193",
+            "title": "Event-based 3D reconstruction from neuromorphic retinas"
+        },
+        {
+            "paperId": "62c76ca0b2790c34e85ba1cce09d47be317c7235",
+            "title": "Estimating or Propagating Gradients Through Stochastic Neurons for Conditional Computation"
+        },
+        {
+            "paperId": "4d87a172647ec5d8365846ada01cf2d4d939a6f1",
+            "title": "Neuromorphic learning towards nano second precision"
+        },
+        {
+            "paperId": "4bd5637188d783b9b6bcd5859fbee9930ab89f73",
+            "title": "The handbook of brain theory and neural networks"
+        },
+        {
+            "paperId": "899ab1abc923819e6ea2bd55724c2e7a83aed9bb",
+            "title": "Supervised learning in spiking neurons"
+        },
+        {
+            "paperId": "b3900904f0098cf9af135c8c13cfdea5a5904af7",
+            "title": "Synthesis of neural networks for spatio-temporal spike pattern recognition and processing"
+        },
+        {
+            "paperId": "7fb93a1fdc3709aa3c90550d89eeca3fda20737f",
+            "title": "Fast Neuromimetic Object Recognition Using FPGA Outperforms GPU Implementations"
+        },
+        {
+            "paperId": "b81b633ce12e04be781425d82d8b1474abc119ea",
+            "title": "Design and validation of a real-time spiking-neural-network decoder for brain\u2013machine interfaces"
+        },
+        {
+            "paperId": "24d54b44151bc1161f66249f75d049a88f22e0c7",
+            "title": "Bayesian Computation Emerges in Generic Cortical Microcircuits through Spike-Timing-Dependent Plasticity"
+        },
+        {
+            "paperId": "6759bb74e22dbe89f0a5ca17cd7c09c87a58727c",
+            "title": "Anatomy of hierarchy: Feedforward and feedback pathways in macaque visual cortex"
+        },
+        {
+            "paperId": "61e0e8a824ced37ae8e702935cf2d9b52430fbe9",
+            "title": "Six Networks on a Universal Neuromorphic Computing Substrate"
+        },
+        {
+            "paperId": "18816aa33e7afd3eabfa7ac6437e90220aa5b317",
+            "title": "Comparison between Frame-Constrained Fix-Pixel-Value and Frame-Free Spiking-Dynamic-Pixel ConvNets for Visual Processing"
+        },
+        {
+            "paperId": "12f19710b5156ce802c137c2658f6edbae90550d",
+            "title": "Asynchronous Event-Based Binocular Stereo Matching"
+        },
+        {
+            "paperId": "85644dc35f42e2c65ed6419fb8c2efaea594f1ee",
+            "title": "Is a 4-Bit Synaptic Weight Resolution Enough? \u2013 Constraints on Enabling Spike-Timing Dependent Plasticity in Neuromorphic Hardware"
+        },
+        {
+            "paperId": "088c2cf86dc366fd6e659605f1f88d13de32dd50",
+            "title": "Introduction to spiking neural networks: Information processing, learning and applications."
+        },
+        {
+            "paperId": "be9a17321537d9289875fe475b71f4821457b435",
+            "title": "An Analysis of Single-Layer Networks in Unsupervised Feature Learning"
+        },
+        {
+            "paperId": "38ad1e2d6e85d2e68901fe20c45769fa343726d1",
+            "title": "Neuromorphic Silicon Neuron Circuits"
+        },
+        {
+            "paperId": "162c3543405ae3871690d3eb4cdf47ed9758acd7",
+            "title": "A comprehensive workflow for general-purpose neural modeling with highly configurable neuromorphic hardware systems"
+        },
+        {
+            "paperId": "393f2c36aa0233ebbe367af3099e459f53fee8ee",
+            "title": "Timing is not Everything: Neuromodulation Opens the STDP Gate"
+        },
+        {
+            "paperId": "7c32e01d3b8511fe16d0bd1f385c43f95d2cc772",
+            "title": "A wafer-scale neuromorphic hardware system for large-scale neural modeling"
+        },
+        {
+            "paperId": "f16193fa0cc523fcc4dae3eadcfe1a6cde68d480",
+            "title": "Implementing spike-timing-dependent plasticity on SpiNNaker neuromorphic hardware"
+        },
+        {
+            "paperId": "a538b05ebb01a40323997629e171c91aa28b8e2f",
+            "title": "Rectified Linear Units Improve Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": "37b85fce300a49f629084dc57878d0c7e67a547b",
+            "title": "Nanoscale memristor device as synapse in neuromorphic systems."
+        },
+        {
+            "paperId": "779b7bb1a872862fe5cbb6778f0a09fafd1d40fe",
+            "title": "Supervised Learning in Spiking Neural Networks with ReSuMe: Sequence Learning, Classification, and Spike Shifting"
+        },
+        {
+            "paperId": "2c161f127148404b8265de2821d978422e0c4c1c",
+            "title": "CAVIAR: A 45k Neuron, 5M Synapse, 12G Connects/s AER Hardware Sensory\u2013Processing\u2013 Learning\u2013Actuating System for High-Speed Visual Object Recognition and Tracking"
+        },
+        {
+            "paperId": "80b01ba81ac71d574a761f85682d6d3f8014685e",
+            "title": "Competitive STDP-Based Spike Pattern Learning"
+        },
+        {
+            "paperId": "80850148a5ea9b0a40ac52b7ecb5a05f12ca4f2c",
+            "title": "Spike-Phase Coding Boosts and Stabilizes Information Carried by Spatial and Temporal Spike Patterns"
+        },
+        {
+            "paperId": "08b206c08215bf98b072bd34ac456bf70fb4dcf2",
+            "title": "Phase-of-Firing Coding of Natural Visual Stimuli in Primary Visual Cortex"
+        },
+        {
+            "paperId": "5339f1ab6666abdedcec3d138f12d05b16e08770",
+            "title": "A 128$\\times$ 128 120 dB 15 $\\mu$s Latency Asynchronous Temporal Contrast Vision Sensor"
+        },
+        {
+            "paperId": "2da5d454c0e4e73816b55f66a872f77bfd948f0f",
+            "title": "Implementing Synaptic Plasticity in a VLSI Spiking Neural Network Model"
+        },
+        {
+            "paperId": "61a531cefa14a5bdf4b218e2c20bf909521c18d8",
+            "title": "Fast Modifications of the SpikeProp Algorithm"
+        },
+        {
+            "paperId": "8978cf7574ceb35f4c3096be768c7547b28a35d0",
+            "title": "A Fast Learning Algorithm for Deep Belief Nets"
+        },
+        {
+            "paperId": "cb234efd512cfd2062b35b31ea02cc460dc409b9",
+            "title": "A Review of the Integrate-and-fire Neuron Model: I. Homogeneous Synaptic Input"
+        },
+        {
+            "paperId": "eaba315d5f972c059ab2d0315f2aeada27c1becd",
+            "title": "The tempotron: a neuron that learns spike timing\u2013based decisions"
+        },
+        {
+            "paperId": "e734a067f2d2efbc462e5b0875a11b77274a75a2",
+            "title": "A gradient descent rule for spiking neurons emitting multiple spikes"
+        },
+        {
+            "paperId": "26651d3e05be1432c2783fa78f1b310852d25454",
+            "title": "Communication in Neuronal Networks"
+        },
+        {
+            "paperId": "0e1b58052faf535ca4230ed55a8fe9315f0a9eeb",
+            "title": "Biophysiologically Plausible Implementations of the Maximum Operation"
+        },
+        {
+            "paperId": "e0535dedb8607d83cd2614317c99913378e89e26",
+            "title": "Real-Time Computing Without Stable States: A New Framework for Neural Computation Based on Perturbations"
+        },
+        {
+            "paperId": "410be00c7a7e9959167ede3666dd43b7e3c8f4f6",
+            "title": "Error-backpropagation in temporally encoded networks of spiking neurons"
+        },
+        {
+            "paperId": "77c53d8d539f2b48f7b71d4e2f8041a43b0e1800",
+            "title": "Competitive Hebbian learning through spike-timing-dependent synaptic plasticity"
+        },
+        {
+            "paperId": "bf533762bda3087966344c731bdb1351328515eb",
+            "title": "Point-to-point connectivity between neuromorphic chips using address events"
+        },
+        {
+            "paperId": "85abadb689897997f1e37baa7b5fc6f7d497518b",
+            "title": "Hierarchical models of object recognition in cortex"
+        },
+        {
+            "paperId": "5c129f56b872c5c540f6d72b443c08b29f571c4c",
+            "title": "Spiking neurons"
+        },
+        {
+            "paperId": "e5f231cdfbf7499a7af1d2775f250b715f79ba58",
+            "title": "Synaptic Modifications in Cultured Hippocampal Neurons: Dependence on Spike Timing, Synaptic Strength, and Postsynaptic Cell Type"
+        },
+        {
+            "paperId": "e480ed7b2617c20ca52486864b4a9b2d2bfff127",
+            "title": "Networks of spiking neurons: the third generation of neural network models"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "679f48306b47634b3ad6b64d8505d36e09dadfe3",
+            "title": "Regulation of Synaptic Efficacy by Coincidence of Postsynaptic APs and EPSPs"
+        },
+        {
+            "paperId": "87378cc06871a3812a0543be46455597eb108443",
+            "title": "Spikes: Exploring the Neural Code"
+        },
+        {
+            "paperId": "256ee8f7db207787e79c273c785670b0efd8846d",
+            "title": "A neuronal learning rule for sub-millisecond temporal coding"
+        },
+        {
+            "paperId": "addbd39fc775c12aa453ebd0cb77ea1bd3389572",
+            "title": "Speed of processing in the human visual system"
+        },
+        {
+            "paperId": "459c554583c9a2f70dd36e84149989fde1e9f833",
+            "title": "Neuromorphic electronic systems"
+        },
+        {
+            "paperId": "6f20e254e3993538c79e0ff2b9b8f198d3359cb3",
+            "title": "Receptive fields of single neurones in the cat's striate cortex"
+        },
+        {
+            "paperId": "b9164335be5808ddd59786869a9f992331af5218",
+            "title": "The organization of behavior: A neuropsychological theory"
+        },
+        {
+            "paperId": "c68796f833a7151f0a63d1d1608dc902b4fdc9b6",
+            "title": "GENERATIVE ADVERSARIAL NETS"
+        },
+        {
+            "paperId": null,
+            "title": "Neural Networks (IJCNN) (Dallas, TX: IJCNN)"
+        },
+        {
+            "paperId": null,
+            "title": "Intelligent Robots and Systems (Chicago, IL: IROS)"
+        },
+        {
+            "paperId": "28135fd3e80dda50a673cd556f10b9b972005d27",
+            "title": "Binarized Neural Networks"
+        },
+        {
+            "paperId": "2913c2bf3f92b5ae369400a42b2d27cc5bc05ecb",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": "eabf117aae614d6b65cc33a3a4bbb22b9a5014d9",
+            "title": "GPU-Based Deep Learning Inference: A Performance and Power Analysis"
+        },
+        {
+            "paperId": "a5117e86265f42f90a6cecae49527a0e69e2708b",
+            "title": "Mapping from Frame-Driven to Frame-Free Event-Driven Vision Systems by Low-Rate Rate Coding and Coincidence Processing--Application to Feedforward ConvNets"
+        },
+        {
+            "paperId": "e40c9af28642e54d7dbb3aacf2e9f6e885229345",
+            "title": "Supplementary Materials for A Large-Scale Model of the Functioning Brain"
+        },
+        {
+            "paperId": "4720fea0096dad1ea6eaf5b8329c897476255abd",
+            "title": "Spiking networks and their rate-based equivalents : does it make sense to use Siegert neurons ?"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        },
+        {
+            "paperId": null,
+            "title": "Automated Experimentation the Philosophy of Scientific Experimentation: a Review the Rise of Experimental Science"
+        },
+        {
+            "paperId": "91cba491a9ce333bc992f4280f8ba750a45eac88",
+            "title": "Improving SpikeProp: Enhancements to An Error-Backpropagation Rule for Spiking Neural Networks"
+        },
+        {
+            "paperId": "6f093c5ec100804c98a25d9831b025949e5cb78e",
+            "title": "Neural Engineering: Computation, Representation, and Dynamics in Neurobiological Systems"
+        },
+        {
+            "paperId": "0364c5b622f86462daf6aae566ec20b7ae564e16",
+            "title": "Single auditory neurons rapidly discriminate conspecific communication signals"
+        },
+        {
+            "paperId": "849f849f647bc8d49c025dc408f4e927e12bceec",
+            "title": "SPIKING NEURON MODELS Single Neurons , Populations , Plasticity"
+        },
+        {
+            "paperId": "a424ec3b8846f57b8ffdb566d272e28d5a525909",
+            "title": "Predictive coding in the visual cortex: a functional interpretation of some extra-classical receptive-field effects."
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "23636530e7e5ad60c696663b656c0bcba1fe05da",
+            "title": "A single spike suffices: the simplest form of stochastic resonance in model neurons"
+        },
+        {
+            "paperId": "9ef2c863159e9f9a79000e3c35cb3f41536897fd",
+            "title": "Networks of Spiking Neurons: The Third Generation of Neural Network Models"
+        },
+        {
+            "paperId": "2e366ebef778263a39fb549b12e1fb5332a3e3ed",
+            "title": "An Analog VLSI System for Stereoscopic Vision"
+        },
+        {
+            "paperId": "33c3e56439b11e2d77d99da667ae86afbf6e1ec3",
+            "title": "Neocognitron: A hierarchical neural network capable of visual pattern recognition"
+        },
+        {
+            "paperId": null,
+            "title": "Training of constrained networks: Before conversion, conventional DNN training methods are used together with constraints that model the properties of the spiking neuron models"
+        },
+        {
+            "paperId": null,
+            "title": "Conversion from ANNs: Conventional DNNs are trained with backpropagation, and then all analog neurons are converted into spiking ones"
+        },
+        {
+            "paperId": null,
+            "title": "Con\ufb02ict of Interest Statement"
+        },
+        {
+            "paperId": null,
+            "title": "Pfeiffer"
+        }
+    ]
+}

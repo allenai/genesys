@@ -1,0 +1,231 @@
+{
+    "paperId": "ee7b883e35d754ae4f71c21bb71f9f03e4ffbb2c",
+    "externalIds": {
+        "ArXiv": "1705.02364",
+        "DBLP": "conf/emnlp/ConneauKSBB17",
+        "MAG": "2612953412",
+        "ACL": "D17-1070",
+        "DOI": "10.18653/v1/D17-1070",
+        "CorpusId": 28971531
+    },
+    "title": "Supervised Learning of Universal Sentence Representations from Natural Language Inference Data",
+    "abstract": "Many modern NLP systems rely on word embeddings, previously trained in an unsupervised manner on large corpora, as base features. Efforts to obtain embeddings for larger chunks of text, such as sentences, have however not been so successful. Several attempts at learning unsupervised representations of sentences have not reached satisfactory enough performance to be widely adopted. In this paper, we show how universal sentence representations trained using the supervised data of the Stanford Natural Language Inference datasets can consistently outperform unsupervised methods like SkipThought vectors on a wide range of transfer tasks. Much like how computer vision uses ImageNet to obtain features, which can then be transferred to other tasks, our work tends to indicate the suitability of natural language inference for transfer learning to other NLP tasks. Our encoder is publicly available.",
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2017,
+    "referenceCount": 45,
+    "citationCount": 2013,
+    "influentialCitationCount": 313,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/D17-1070.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown how universal sentence representations trained using the supervised data of the Stanford Natural Language Inference datasets can consistently outperform unsupervised methods like SkipThought vectors on a wide range of transfer tasks."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2480903",
+            "name": "Alexis Conneau"
+        },
+        {
+            "authorId": "1743722",
+            "name": "Douwe Kiela"
+        },
+        {
+            "authorId": "144518416",
+            "name": "Holger Schwenk"
+        },
+        {
+            "authorId": "2934336",
+            "name": "Lo\u00efc Barrault"
+        },
+        {
+            "authorId": "1713934",
+            "name": "Antoine Bordes"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "7113bd87c3e6f727efae24ee52f20c81358da761",
+            "title": "SentEval: An Evaluation Toolkit for Universal Sentence Representations"
+        },
+        {
+            "paperId": "f269968ee8192f3cf663efd6d1dcdff22aabdefe",
+            "title": "Learning Visually Grounded Sentence Representations"
+        },
+        {
+            "paperId": "3f1802d3f4f5f6d66875dac09112f978f12e1e1e",
+            "title": "A Simple but Tough-to-Beat Baseline for Sentence Embeddings"
+        },
+        {
+            "paperId": "5ded2b8c64491b4a67f6d39ce473d4b9347a672e",
+            "title": "A Broad-Coverage Challenge Corpus for Sentence Understanding through Inference"
+        },
+        {
+            "paperId": "204a4a70428f3938d2c538a4d74c7ae0416306d8",
+            "title": "A Structured Self-attentive Sentence Embedding"
+        },
+        {
+            "paperId": "88caa4a0253a8b0076176745ebc072864eab66e1",
+            "title": "Language Modeling with Gated Convolutional Networks"
+        },
+        {
+            "paperId": "97fb4e3d45bb098e27e0071448b6152217bd35a5",
+            "title": "Layer Normalization"
+        },
+        {
+            "paperId": "e2dba792360873aef125572812f3673b1a85d850",
+            "title": "Enriching Word Vectors with Subword Information"
+        },
+        {
+            "paperId": "12e9d005c77f76e344361f79c4b008034ae547eb",
+            "title": "Charagram: Embedding Words and Sentences via Character n-grams"
+        },
+        {
+            "paperId": "f93a0a3e8a3e6001b4482430254595cf737697fa",
+            "title": "Learning Natural Language Inference using Bidirectional LSTM model and Inner-Attention"
+        },
+        {
+            "paperId": "f21b36a5cfba94bbc6ed5c3642e1e46057deccaf",
+            "title": "How Transferable are Neural Networks in NLP Applications?"
+        },
+        {
+            "paperId": "26e743d5bd465f49b9538deaf116c15e61b7951f",
+            "title": "Learning Distributed Representations of Sentences from Unlabelled Data"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "e8822df50f1eb6d3c94662da158f027e728318d8",
+            "title": "The Multiverse Loss for Robust Transfer Learning"
+        },
+        {
+            "paperId": "395044a2e3f5624b2471fb28826e7dbb1009356e",
+            "title": "Towards Universal Paraphrastic Sentence Embeddings"
+        },
+        {
+            "paperId": "46b8cbcdff87b842c2c1d4a003c831f845096ba7",
+            "title": "Order-Embeddings of Images and Language"
+        },
+        {
+            "paperId": "f04df4e20a18358ea2f689b4c129781628ef7fc1",
+            "title": "A large annotated corpus for learning natural language inference"
+        },
+        {
+            "paperId": "6e795c6e9916174ae12349f5dc3f516570c17ce8",
+            "title": "Skip-Thought Vectors"
+        },
+        {
+            "paperId": "0e6824e137847be0599bb0032e37042ed2ef5045",
+            "title": "Aligning Books and Movies: Towards Story-Like Visual Explanations by Watching Movies and Reading Books"
+        },
+        {
+            "paperId": "97ad70a9fa3f99adf18030e5e38ebe3d90daa2db",
+            "title": "VQA: Visual Question Answering"
+        },
+        {
+            "paperId": "153d6feb7149e063b33e8ee437b74e4a2def8057",
+            "title": "Multimodal Convolutional Neural Networks for Matching Image and Sentence"
+        },
+        {
+            "paperId": "d41cfe9b2ada4e09d53262bc75c473d8043936fc",
+            "title": "Self-Adaptive Hierarchical Sentence Model"
+        },
+        {
+            "paperId": "32de44f01a96d4473d21099d15e25bc2b9f08e2f",
+            "title": "Improved Semantic Representations From Tree-Structured Long Short-Term Memory Networks"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "55e022fb7581bb9e1fce678d21fb25ffbb3fbb88",
+            "title": "Deep visual-semantic alignments for generating image descriptions"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "1eb09fecd75eb27825dce4f964b97f4f5cc399d7",
+            "title": "On the Properties of Neural Machine Translation: Encoder\u2013Decoder Approaches"
+        },
+        {
+            "paperId": "16084914bc3729f86f46ac6267ea7a42e7951d41",
+            "title": "SemEval-2014 Task 10: Multilingual Semantic Textual Similarity"
+        },
+        {
+            "paperId": "f529dc492b7f3d1b22db64bc7ad36b1f13641a84",
+            "title": "Illinois-LH: A Denotational and Distributional Approach to Semantics"
+        },
+        {
+            "paperId": "9f2efadf66817f1b38f58b3f50c7c8f34c69d89a",
+            "title": "DeepFace: Closing the Gap to Human-Level Performance in Face Verification"
+        },
+        {
+            "paperId": "f3de86aeb442216a8391befcacb49e58b478f512",
+            "title": "Distributed Representations of Sentences and Documents"
+        },
+        {
+            "paperId": "c333778104f648c385b4631f7b4a859787e9d3d3",
+            "title": "A SICK cure for the evaluation of compositional distributional semantic models"
+        },
+        {
+            "paperId": "71b7178df5d2b112d07e45038cb5637208659ff7",
+            "title": "Microsoft COCO: Common Objects in Context"
+        },
+        {
+            "paperId": "6270baedeba28001cd1b563a199335720d6e0fe0",
+            "title": "CNN Features Off-the-Shelf: An Astounding Baseline for Recognition"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "0e5fa90e28fab414c8ef3ac6ca937c6195c2860e",
+            "title": "Discriminative Improvements to Distributional Sentence Similarity"
+        },
+        {
+            "paperId": "ef12383f516840ec1ec998cd5921dfc6e197c9b2",
+            "title": "PPDB: The Paraphrase Database"
+        },
+        {
+            "paperId": "9814df8bd00ba999c4d1e305a7e9bca579dc7c75",
+            "title": "Framing Image Description as a Ranking Task: Data, Models and Evaluation Metrics"
+        },
+        {
+            "paperId": "bc1022b031dc6c7019696492e8116598097a8c12",
+            "title": "Natural Language Processing (Almost) from Scratch"
+        },
+        {
+            "paperId": "d2c733e34d48784a37d717fe43d9e93277a8c53e",
+            "title": "ImageNet: A large-scale hierarchical image database"
+        },
+        {
+            "paperId": "57458bc1cffe5caa45a885af986d70f723f406b4",
+            "title": "A unified architecture for natural language processing: deep neural networks with multitask learning"
+        },
+        {
+            "paperId": "6c2b28f9354f667cd5bd07afc0471d8334430da7",
+            "title": "A Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": null,
+            "title": ", Gabor Angeli , Christopher Potts , and Christopher D . Manning"
+        }
+    ]
+}

@@ -1,0 +1,162 @@
+{
+    "paperId": "c102ac8c779ee0a53dc8e4ee20b4088ac2c7e186",
+    "externalIds": {
+        "MAG": "2627092829",
+        "DBLP": "conf/interspeech/HoriWZC17",
+        "ArXiv": "1706.02737",
+        "DOI": "10.21437/Interspeech.2017-1296",
+        "CorpusId": 19423475
+    },
+    "title": "Advances in Joint CTC-Attention Based End-to-End Speech Recognition with a Deep CNN Encoder and RNN-LM",
+    "abstract": "We present a state-of-the-art end-to-end Automatic Speech Recognition (ASR) model. We learn to listen and write characters with a joint Connectionist Temporal Classification (CTC) and attention-based encoder-decoder network. The encoder is a deep Convolutional Neural Network (CNN) based on the VGG network. The CTC network sits on top of the encoder and is jointly trained with the attention-based decoder. During the beam search process, we combine the CTC predictions, the attention-based decoder predictions and a separately trained LSTM language model. We achieve a 5-10\\% error reduction compared to prior systems on spontaneous Japanese and Chinese speech, and our end-to-end model beats out traditional hybrid ASR systems.",
+    "venue": "Interspeech",
+    "year": 2017,
+    "referenceCount": 29,
+    "citationCount": 280,
+    "influentialCitationCount": 16,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1706.02737",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work learns to listen and write characters with a joint Connectionist Temporal Classification (CTC) and attention-based encoder-decoder network and beats out traditional hybrid ASR systems on spontaneous Japanese and Chinese speech."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145443186",
+            "name": "Takaaki Hori"
+        },
+        {
+            "authorId": "1746678",
+            "name": "Shinji Watanabe"
+        },
+        {
+            "authorId": "2153632494",
+            "name": "Yu Zhang"
+        },
+        {
+            "authorId": "144333684",
+            "name": "William Chan"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "105788dd22393d5a4333c167814ec3d38c7d6612",
+            "title": "Latent Sequence Decompositions"
+        },
+        {
+            "paperId": "8aa3358a34a17abd0a65622aad8c85317b851af4",
+            "title": "Very deep convolutional networks for end-to-end speech recognition"
+        },
+        {
+            "paperId": "9af2264799bdc3490e4650e2f5d126762caf420f",
+            "title": "Joint CTC-attention based end-to-end speech recognition using multi-task learning"
+        },
+        {
+            "paperId": "721fa4f0dd8a6d4f9d07bd8167ebd68aa68f8d0e",
+            "title": "Maximum a posteriori Based Decoding for CTC Acoustic Models"
+        },
+        {
+            "paperId": "6ce6a9a30cd69bd2842a4b581cf48c6815bdfdd8",
+            "title": "Purely Sequence-Trained Neural Networks for ASR Based on Lattice-Free MMI"
+        },
+        {
+            "paperId": "e0b207e96351671453aa8bf05b7225c8a340a0b2",
+            "title": "Towards End-to-End Speech Recognition with Deep Convolutional Neural Networks"
+        },
+        {
+            "paperId": "39a8ce943d0b4171e7fa6e4cab2d80cdb23cdbf1",
+            "title": "On Online Attention-Based Speech Recognition and Joint Mandarin Character-Pinyin Training"
+        },
+        {
+            "paperId": "d155d64bdd86edf33f4395c5aec0388ffed69f99",
+            "title": "An empirical exploration of CTC acoustic models"
+        },
+        {
+            "paperId": "77854e1a86835065b77b7b15ffabb34f3853f4a2",
+            "title": "On training the recurrent neural network encoder-decoder for large vocabulary end-to-end speech recognition"
+        },
+        {
+            "paperId": "13497bd108d4412d02050e646235f456568cf822",
+            "title": "Deep Speech 2 : End-to-End Speech Recognition in English and Mandarin"
+        },
+        {
+            "paperId": "dec2ccce1ecb34bab02c42c2dd18cb468470adf8",
+            "title": "Convolutional, Long Short-Term Memory, fully connected Deep Neural Networks"
+        },
+        {
+            "paperId": "3056add22b20e3361c38c0472d294a79d4031cb4",
+            "title": "Listen, attend and spell: A neural network for large vocabulary conversational speech recognition"
+        },
+        {
+            "paperId": "97acdfb3d247f8250d865ef8a9169f06e40f138b",
+            "title": "EESEN: End-to-end speech recognition using deep RNN models and WFST-based decoding"
+        },
+        {
+            "paperId": "b624504240fa52ab76167acfe3156150ca01cf3b",
+            "title": "Attention-Based Models for Speech Recognition"
+        },
+        {
+            "paperId": "47d2dc34e1d02a8109f5c04bb6939725de23716d",
+            "title": "End-to-end Continuous Speech Recognition using Attention-based Recurrent NN: First Results"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "0fa553cfa0cf3cbdf7a913aa2ae789a757dfb32f",
+            "title": "Towards End-To-End Speech Recognition with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "080644c599b813b920053a760d744d8abd615250",
+            "title": "A pitch extraction algorithm tuned for automatic speech recognition"
+        },
+        {
+            "paperId": "8729441d734782c3ed532a7d2d9611b438c0a09a",
+            "title": "ADADELTA: An Adaptive Learning Rate Method"
+        },
+        {
+            "paperId": "84069287da0a6b488b8c933f3cb5be759cb6237e",
+            "title": "On the difficulty of training recurrent neural networks"
+        },
+        {
+            "paperId": "a97b5db17acc731ef67321832dbbaf5766153135",
+            "title": "Supervised Sequence Labelling with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "d2740ebd37a35ecf6f7d713558308eeb28311961",
+            "title": "HKUST/MTS: A Very Large Scale Mandarin Telephone Speech Corpus"
+        },
+        {
+            "paperId": "ac23e62a18186c9a51dfea16d3602f52ff8c3b3a",
+            "title": "Spontaneous Speech Corpus of Japanese"
+        },
+        {
+            "paperId": "32a175b36ec7f2f08cb3dfac30ce141e144ec9e9",
+            "title": "Continuous speech recognition by statistical methods"
+        },
+        {
+            "paperId": "85fa09523724489648d900c67c7ba1d9e24375c3",
+            "title": "Top Downloads in IEEE Xplore [Reader's Choice]"
+        },
+        {
+            "paperId": "67156902beca9bc90b728c8d5dd4ac9d8b27d3a3",
+            "title": "Chainer : a Next-Generation Open Source Framework for Deep Learning"
+        },
+        {
+            "paperId": null,
+            "title": "Kaldi recipe for Japanese spontaneous speech recognition and its evaluation"
+        },
+        {
+            "paperId": "3a1a2cff2b70fb84a7ca7d97f8adcc5855851795",
+            "title": "The Kaldi Speech Recognition Toolkit"
+        },
+        {
+            "paperId": "261a056f8b21918e8616a429b2df6e1d5d33be41",
+            "title": "Connectionist Temporal Classi\ufb01cation: Labelling Unsegmented Sequence Data with Recurrent Neural Networks"
+        }
+    ]
+}

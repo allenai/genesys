@@ -1,0 +1,742 @@
+{
+    "paperId": "97d6efc6b524bff216c5a77f243821c2980b2073",
+    "externalIds": {
+        "ArXiv": "1810.01075",
+        "DBLP": "journals/corr/abs-1810-01075",
+        "MAG": "2895616758",
+        "CorpusId": 52910453
+    },
+    "title": "Implicit Self-Regularization in Deep Neural Networks: Evidence from Random Matrix Theory and Implications for Learning",
+    "abstract": "Random Matrix Theory (RMT) is applied to analyze weight matrices of Deep Neural Networks (DNNs), including both production quality, pre-trained models such as AlexNet and Inception, and smaller models trained from scratch, such as LeNet5 and a miniature-AlexNet. Empirical and theoretical results clearly indicate that the DNN training process itself implicitly implements a form of Self-Regularization. The empirical spectral density (ESD) of DNN layer matrices displays signatures of traditionally-regularized statistical models, even in the absence of exogenously specifying traditional forms of explicit regularization. Building on relatively recent results in RMT, most notably its extension to Universality classes of Heavy-Tailed matrices, we develop a theory to identify 5+1 Phases of Training, corresponding to increasing amounts of Implicit Self-Regularization. These phases can be observed during the training process as well as in the final learned DNNs. For smaller and/or older DNNs, this Implicit Self-Regularization is like traditional Tikhonov regularization, in that there is a \"size scale\" separating signal from noise. For state-of-the-art DNNs, however, we identify a novel form of Heavy-Tailed Self-Regularization, similar to the self-organization seen in the statistical physics of disordered systems. This results from correlations arising at all size scales, which arises implicitly due to the training process itself. This implicit Self-Regularization can depend strongly on the many knobs of the training process. By exploiting the generalization gap phenomena, we demonstrate that we can cause a small model to exhibit all 5+1 phases of training simply by changing the batch size. This demonstrates that---all else being equal---DNN optimization with larger batch sizes leads to less-well implicitly-regularized models, and it provides an explanation for the generalization gap phenomena.",
+    "venue": "Journal of machine learning research",
+    "year": 2018,
+    "referenceCount": 177,
+    "citationCount": 162,
+    "influentialCitationCount": 17,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A theory to identify 5+1 Phases of Training, corresponding to increasing amounts of Implicit Self-Regularization, which demonstrates that DNN optimization with larger batch sizes leads to less-well implicitly-regularized models, and it provides an explanation for the generalization gap phenomena."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2115336940",
+            "name": "Charles H. Martin"
+        },
+        {
+            "authorId": "143884206",
+            "name": "Michael W. Mahoney"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "bacf872232350bb744fad6040842cda8e0d37fcd",
+            "title": "Post-mortem on a deep learning contest: a Simpson's paradox and the complementary roles of scale metrics versus shape metrics"
+        },
+        {
+            "paperId": "a747905cc60cde18a8c1fc1e365e319cea0ff49b",
+            "title": "Noisy Recurrent Neural Networks"
+        },
+        {
+            "paperId": "fcfe652eac7ecae9be5f90ae628ca8ee1122bb82",
+            "title": "NeurIPS 2020 Competition: Predicting Generalization in Deep Learning"
+        },
+        {
+            "paperId": "313340a7355fcb7ad5ef23dd1d99662316585227",
+            "title": "Good linear classifiers are abundant in the interpolating regime"
+        },
+        {
+            "paperId": "740b7fa3e391509f05f4035819618c56778a57f5",
+            "title": "The Heavy-Tail Phenomenon in SGD"
+        },
+        {
+            "paperId": "b45c30bba7aeda03d80c7403346f3c20b36f244e",
+            "title": "A random matrix analysis of random Fourier features: beyond the Gaussian kernel, a precise phase transition, and the corresponding double descent"
+        },
+        {
+            "paperId": "394478a4736819854ebdd43b9a6f7032fcd55b60",
+            "title": "Neural Kernels Without Tangents"
+        },
+        {
+            "paperId": "0cb3a51d3e259be342ca3ef0fb1afb665f3af130",
+            "title": "Predicting trends in the quality of state-of-the-art neural networks without access to training or testing data"
+        },
+        {
+            "paperId": "eb8f0607224bfe5aff027218623189f01312eb97",
+            "title": "Exact expressions for double descent and implicit regularization via surrogate random design"
+        },
+        {
+            "paperId": "740d3706b1b4aae35aaa67d44461d13133124094",
+            "title": "Harnessing the Power of Infinitely Wide Deep Nets on Small-data Tasks"
+        },
+        {
+            "paperId": "41c0be3adfd33cb6d0cb24c6fb1de109929276ca",
+            "title": "The Generalization Error of Random Features Regression: Precise Asymptotics and the Double Descent Curve"
+        },
+        {
+            "paperId": "00005a12a7b159be5ecc76294225bb709644c53d",
+            "title": "Random matrix theory"
+        },
+        {
+            "paperId": "1029daa28aa772e441470e61bdd610c222e92932",
+            "title": "On Exact Computation with an Infinitely Wide Neural Net"
+        },
+        {
+            "paperId": "2b627185499791048681e8d24190c31dea928f16",
+            "title": "Uniform convergence may be unable to explain generalization in deep learning"
+        },
+        {
+            "paperId": "f86f1748d1b6d22870f4347fd5d65314ba800583",
+            "title": "Reconciling modern machine-learning practice and the classical bias\u2013variance trade-off"
+        },
+        {
+            "paperId": "b2c8e834ac5f7be68b9ca3691d39925036dd74a3",
+            "title": "Measuring the Effects of Data Parallelism on Neural Network Training"
+        },
+        {
+            "paperId": "3fd9e04da135496bcd75e884b5cd2ecee656a67d",
+            "title": "On the Computational Inefficiency of Large Batch Sizes for Stochastic Gradient Descent"
+        },
+        {
+            "paperId": "bcd470c36c43565d891d2896599f609f0a2f1073",
+            "title": "A Surprising Linear Relationship Predicts Test Performance in Deep Networks"
+        },
+        {
+            "paperId": "714e3e81ce270518e20d56c56967475eaffedee3",
+            "title": "On the Implicit Bias of Dropout"
+        },
+        {
+            "paperId": "7a84a692327534fd227fa1e07fcb3816b633c591",
+            "title": "Neural Tangent Kernel: Convergence and Generalization in Neural Networks"
+        },
+        {
+            "paperId": "8858f0265df83345335ab5629bf957560b9583d8",
+            "title": "The Dynamics of Learning: A Random Matrix Approach"
+        },
+        {
+            "paperId": "b7c7b62b0a40e8bbf972273e7315abd2b62f1223",
+            "title": "How Robust are Deep Neural Networks?"
+        },
+        {
+            "paperId": "03cf148638e007ddb42ac49f91225712b6c66a08",
+            "title": "Revisiting Small Batch Training for Deep Neural Networks"
+        },
+        {
+            "paperId": "3ffc862ab46bde05b0f95c376fb593c0ec4863f1",
+            "title": "Understanding Convolutional Neural Network Training with Information Theory"
+        },
+        {
+            "paperId": "f1d48ad5a04360bf65e793b84298d8e0570bf1cc",
+            "title": "A mean field view of the landscape of two-layer neural networks"
+        },
+        {
+            "paperId": "93b4cc549a1bc4bc112189da36c318193d05d806",
+            "title": "AllenNLP: A Deep Semantic Natural Language Processing Platform"
+        },
+        {
+            "paperId": "fc998c5e7b0fd1609d5a91d700fec3ec9c72838c",
+            "title": "Comparing dynamics: deep neural networks versus glassy systems"
+        },
+        {
+            "paperId": "78ac8ee86f7e69b91450bffe2bc651a53276b058",
+            "title": "A Walk with SGD"
+        },
+        {
+            "paperId": "f322a04e51e50a5896a2d28da0beba12a0a49d1b",
+            "title": "Hessian-based Analysis of Large Batch Training and Robustness to Adversaries"
+        },
+        {
+            "paperId": "3e9201d31975c5a7d3724c0c8c317ac2e5e1a299",
+            "title": "An analysis of training and generalization errors in shallow and deep networks"
+        },
+        {
+            "paperId": "d55d1d035e91220335edff0fe8f5d249d8c4a00b",
+            "title": "Measuring the Intrinsic Dimension of Objective Landscapes"
+        },
+        {
+            "paperId": "0a255e716a89b787336ab956f0aa74424629c950",
+            "title": "On the information bottleneck theory of deep learning"
+        },
+        {
+            "paperId": "a9022d8ffb5e417458fba9a280f90c1b08cb6c73",
+            "title": "Stronger generalization bounds for deep nets via a compression approach"
+        },
+        {
+            "paperId": "033f7570be9877c5a4bcbb71f6aec8f95cee3608",
+            "title": "To understand deep learning we need to understand kernel learning"
+        },
+        {
+            "paperId": "6baca6351dc55baac44f0416e74a7e0ba2bfd03e",
+            "title": "Visualizing the Loss Landscape of Neural Nets"
+        },
+        {
+            "paperId": "f9e6af73d33e7aac3f349bef927fcd666e8e00db",
+            "title": "Three Factors Influencing Minima in SGD"
+        },
+        {
+            "paperId": "9edf1a25ebc182355c5584fb7f5d234e75ccf3d1",
+            "title": "Resurrecting the sigmoid in deep learning through dynamical isometry: theory and practice"
+        },
+        {
+            "paperId": "3299aee7a354877e43339d06abb967af2be8b872",
+            "title": "Don't Decay the Learning Rate, Increase the Batch Size"
+        },
+        {
+            "paperId": "f152cfd441a52c9ceb2ae724d601fb4fb9ec77ea",
+            "title": "Regularization for Deep Learning: A Taxonomy"
+        },
+        {
+            "paperId": "0a2c983595ced223b6d29e940851b3767c1c65c9",
+            "title": "Rethinking generalization requires revisiting old ideas: statistical mechanics approaches and complex learning behavior"
+        },
+        {
+            "paperId": "6104568e318f140d7adcf646412f182906db69b1",
+            "title": "High-dimensional dynamics of generalization error in neural networks"
+        },
+        {
+            "paperId": "e86c281d75de524552df49f6e5753ecb268f9af7",
+            "title": "Statistical physics and representations in real and artificial neural networks"
+        },
+        {
+            "paperId": "a1fdb0f3b3cd2d9b01dd829295d7d9113c782d15",
+            "title": "Geometry of Neural Network Loss Surfaces via Random Matrix Theory"
+        },
+        {
+            "paperId": "b64f19eec18ca872b5fb82c733f824bac3441570",
+            "title": "Estimation of the covariance structure of heavy-tailed distributions"
+        },
+        {
+            "paperId": "33472f3b55747e8aa36f4db57070de1e0e321218",
+            "title": "Towards Understanding Generalization of Deep Learning: Perspective of Loss Landscapes"
+        },
+        {
+            "paperId": "d53fb3feeeab07a0d70bf466dd473ec6052ecc07",
+            "title": "Exploring Generalization in Deep Learning"
+        },
+        {
+            "paperId": "9753967a3af8e1db1e2da52a9bb3255bd1ce5c51",
+            "title": "Spectrally-normalized margin bounds for neural networks"
+        },
+        {
+            "paperId": "cf1fae2d34647f01829c69fe7e5fb98ca3ceff57",
+            "title": "The energy landscape of a simple neural network"
+        },
+        {
+            "paperId": "5ddd38a5df945e4afee68d96ed51fd6ca1f7d4cf",
+            "title": "A Closer Look at Memorization in Deep Networks"
+        },
+        {
+            "paperId": "0d57ba12a6d958e178d83be4c84513f7e42b24e5",
+            "title": "Accurate, Large Minibatch SGD: Training ImageNet in 1 Hour"
+        },
+        {
+            "paperId": "7149eabfc4d1e3614dac768156beb66cb7a118e4",
+            "title": "Criticality & Deep Learning II: Momentum Renormalisation Group"
+        },
+        {
+            "paperId": "f07c036a26bfca2b043f7c85f0326b177cd5561f",
+            "title": "Spectral Norm Regularization for Improving the Generalizability of Deep Learning"
+        },
+        {
+            "paperId": "96f4d4fc345698b9b44f034c0d63b704772c8386",
+            "title": "Deep Learning is Robust to Massive Label Noise"
+        },
+        {
+            "paperId": "8501e330d78391f4e690886a8eb8fac867704ea6",
+            "title": "Train longer, generalize better: closing the generalization gap in large batch training of neural networks"
+        },
+        {
+            "paperId": "feb6e2d46ce707094b24f5ace9456aa0aff3119e",
+            "title": "The Loss Surface of Deep and Wide Neural Networks"
+        },
+        {
+            "paperId": "9eb9829aed2b91681341631155d95fe8dc963d8c",
+            "title": "Spectral Ergodicity in Deep Learning Architectures via Surrogate Random Matrices"
+        },
+        {
+            "paperId": "649693b2437378699945d36e8203d79a93454273",
+            "title": "Local minima in training of deep networks"
+        },
+        {
+            "paperId": "c9316491b8d991fabbf9b28c449d66df6a50f841",
+            "title": "Deep Learning and Quantum Entanglement: Fundamental Connections with Implications to Network Design"
+        },
+        {
+            "paperId": "267980e417f1d01a897e87fa409f64e2a76b96cd",
+            "title": "Opening the Black Box of Deep Neural Networks via Information"
+        },
+        {
+            "paperId": "f70bc6661c774ee45bb773e995c1a5351856db5b",
+            "title": "Criticality & Deep Learning I: Generally Weighted Nets"
+        },
+        {
+            "paperId": "1f759e21d2da1e8a66aeaac8b8c7a8d6ee6b7189",
+            "title": "Exponentially vanishing sub-optimal local minima in multilayer neural networks"
+        },
+        {
+            "paperId": "5f7308ea1735cdeadc84c960a5769abb49792609",
+            "title": "A Random Matrix Approach to Neural Networks"
+        },
+        {
+            "paperId": "0ebb83e5c28719c7b5cb5bc482e62f835fb0d116",
+            "title": "Deep Nets Don't Learn via Memorization"
+        },
+        {
+            "paperId": "af1765c5fa55a13f33bbca91a73c9e93d77b6056",
+            "title": "Batch Renormalization: Towards Reducing Minibatch Dependence in Batch-Normalized Models"
+        },
+        {
+            "paperId": "35819effb02747c49d67d605d579b1678b76fa65",
+            "title": "An empirical analysis of the optimization of deep network loss surfaces"
+        },
+        {
+            "paperId": "b6583fe9c9dc52bb129aff4cefc60519349f3b4c",
+            "title": "Entropy-SGD: biasing gradient descent into wide valleys"
+        },
+        {
+            "paperId": "815ae2909fd7fc536afa9773228dab40872d5cb7",
+            "title": "An Empirical Analysis of Deep Network Loss Surfaces"
+        },
+        {
+            "paperId": "4fdc7df2c737141a1bf5aec27a438b77d01f8af0",
+            "title": "Deep Information Propagation"
+        },
+        {
+            "paperId": "54ddb00fa691728944fd8becea90a373d21597cf",
+            "title": "Understanding deep learning requires rethinking generalization"
+        },
+        {
+            "paperId": "0f94591cc05e6f75c21749d507ef58d204f63b7d",
+            "title": "Topology and Geometry of Half-Rectified Network Optimization"
+        },
+        {
+            "paperId": "76fe7cce8f8d28e35536f53b41308eb5e074f5e3",
+            "title": "Topology and Geometry of Deep Rectified Network Optimization Landscapes"
+        },
+        {
+            "paperId": "fdbe123a6535720274db2518af49abe9e9daac87",
+            "title": "Why and when can deep-but not shallow-networks avoid the curse of dimensionality: A review"
+        },
+        {
+            "paperId": "ed7fc3328ce64cfb8cf0b96cbe5f74b421078e14",
+            "title": "Cleaning large correlation matrices: tools from random matrix theory"
+        },
+        {
+            "paperId": "a9d676cf9b996ae5a8bdb324fa1034a3b583ad97",
+            "title": "Fitting power-laws in empirical data with estimators that work for all exponents"
+        },
+        {
+            "paperId": "8ec5896b4490c6e127d1718ffc36a3439d84cb81",
+            "title": "On Large-Batch Training for Deep Learning: Generalization Gap and Sharp Minima"
+        },
+        {
+            "paperId": "9e52ade2f71f358a5aa3852d9b410c6cc2cf01cc",
+            "title": "Deep vs. shallow networks : An approximation theory perspective"
+        },
+        {
+            "paperId": "03e04983f7ce6a9c2b42948840b3312aea33f9f3",
+            "title": "On the Expressive Power of Deep Neural Networks"
+        },
+        {
+            "paperId": "6e997fec1412abb4b630d0e6d4df95813a01e093",
+            "title": "Exponential expressivity in deep neural networks through transient chaos"
+        },
+        {
+            "paperId": "c8179f5dcdaba9458a3e67dae66964ff8665c356",
+            "title": "Unreasonable effectiveness of learning neural networks: From accessible states and robust ensembles to basic algorithmic schemes"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "ac86e29a0f57cca917de79e2b91257936e89b982",
+            "title": "On the energy landscape of deep networks"
+        },
+        {
+            "paperId": "ccc9489fded48935a6b19e6107815289df39e6b9",
+            "title": "The Effect of Gradient Noise on the Energy Landscape of Deep Networks"
+        },
+        {
+            "paperId": "d181ee5ea23ce57b0e673dfc5724dcc316013429",
+            "title": "Why are deep nets reversible: A simple theory, with implications for training"
+        },
+        {
+            "paperId": "87a8f13d815b60df0e06046924f066981291a073",
+            "title": "Extreme eigenvalues of sparse, heavy tailed random matrices"
+        },
+        {
+            "paperId": "9d0959c438e2947cf4604d9e23ef0f03269047dd",
+            "title": "Deep Neural Networks with Random Gaussian Weights: A Universal Classification Strategy?"
+        },
+        {
+            "paperId": "2dcef55a07f8607a819c21fe84131ea269cc2e3c",
+            "title": "Deep Unsupervised Learning using Nonequilibrium Thermodynamics"
+        },
+        {
+            "paperId": "415229903f91a1f3fc7404f5e5997fde025c221d",
+            "title": "Deep learning and the information bottleneck principle"
+        },
+        {
+            "paperId": "02480b5d060eb4cb2228ac7e824fda22b29c3e9e",
+            "title": "Norm-Based Capacity Control in Neural Networks"
+        },
+        {
+            "paperId": "4b675d8f63888d7d6d7d77a0834efa5eaded64c5",
+            "title": "In Search of the Real Inductive Bias: On the Role of Implicit Regularization in Deep Learning"
+        },
+        {
+            "paperId": "540393e544757f103efd549ac5196de117950f94",
+            "title": "Explorations on high dimensional landscapes"
+        },
+        {
+            "paperId": "4d4d09ae8f6a11547441f7fee36405758102a801",
+            "title": "Qualitatively characterizing neural network optimization problems"
+        },
+        {
+            "paperId": "ad8a12a19e74d9788f8fe92f5c0dfea7b6a52aba",
+            "title": "The Loss Surfaces of Multilayer Networks"
+        },
+        {
+            "paperId": "fe6ffb82e465478b347808ab2af729791fba5b71",
+            "title": "Self-organized criticality as a fundamental property of neural systems"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "6d70c576a8e06c55c7d5db619d68326f826c2794",
+            "title": "Random matrix theory in statistics: A review"
+        },
+        {
+            "paperId": "26815359d454f17bfdd1ff46e482182b6ff85929",
+            "title": "Extreme value statistics of correlated random variables"
+        },
+        {
+            "paperId": "ccf9c00b5175d99e90e0e1e9d4c49b22c1a710b9",
+            "title": "Anti-differentiating approximation algorithms: A case study with min-cuts, spectral, and flow"
+        },
+        {
+            "paperId": "981ce6b655cc06416ff6bf7fac8c6c2076fd7fac",
+            "title": "Identifying and attacking the saddle point problem in high-dimensional non-convex optimization"
+        },
+        {
+            "paperId": "9f59d0a003558066d2ff4fc1c77f461b4d233663",
+            "title": "Training Convolutional Networks with Noisy Labels"
+        },
+        {
+            "paperId": "2ebf8b602cf02cac58857c15bf986d5d042b1d4c",
+            "title": "Beyond Universality in Random Matrix Theory"
+        },
+        {
+            "paperId": "8710635f1b6acceaeec1bd3422b9120a54df9dab",
+            "title": "On the saddle point problem for non-convex optimization"
+        },
+        {
+            "paperId": "342f747b3a9c8179827267bb060c547c02489e1f",
+            "title": "Self\u2010Organized Criticality and Near\u2010Criticality in Neural Networks"
+        },
+        {
+            "paperId": "1a2a770d23b4a171fa81de62a78a3deb0588f238",
+            "title": "Visualizing and Understanding Convolutional Networks"
+        },
+        {
+            "paperId": "93f16ee8f675c6a31e69a17fbf0c00d9faecbff7",
+            "title": "Central limit theorem for eigenvectors of heavy tailed matrices"
+        },
+        {
+            "paperId": "410e56d58adb95bd2fb6cf6b259e43c621d78d11",
+            "title": "powerlaw: A Python Package for Analysis of Heavy-Tailed Distributions"
+        },
+        {
+            "paperId": "a681a397040ffb7584cff8f65d2e2af5512e6939",
+            "title": "Fitting and goodness-of-fit test of non-truncated and truncated power-law distributions"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "4dabf9538be652910be449fb47a225b99fc6c69b",
+            "title": "Pattern Classification"
+        },
+        {
+            "paperId": "7d44846b7a7644043a4654cfed4f69d4fe5e87e6",
+            "title": "Power-law distributions in binned empirical data"
+        },
+        {
+            "paperId": "93981aa8d87957242865c24cb95049df2327244c",
+            "title": "How glassy are neural networks?"
+        },
+        {
+            "paperId": "f4dde4778f3555fd8e669dd3dd710b22195ac237",
+            "title": "Approximate computation and implicit regularization for very large-scale data analysis"
+        },
+        {
+            "paperId": "ddb36951b545834cc4fdf451c5b8abc366ff3156",
+            "title": "Regularized Laplacian Estimation and Fast Eigenvector Approximation"
+        },
+        {
+            "paperId": "ae407dd31671f4753f6a287008b556cda60ad3e0",
+            "title": "Limit theory for the largest eigenvalues of sample covariance matrices with heavy-tails"
+        },
+        {
+            "paperId": "fd8919cbb83ba6ed5e88e126e60e75400483d206",
+            "title": "Statistical Analyses Support Power Law Distributions Found in Neuronal Avalanches"
+        },
+        {
+            "paperId": "79499daa7699dae1b0b403df5bf9da7613d27376",
+            "title": "Implementing regularization implicitly via approximate eigenvector computation"
+        },
+        {
+            "paperId": "ea9d2a2b4ce11aaf85136840c65f3bc9c03ab649",
+            "title": "Understanding the difficulty of training deep feedforward neural networks"
+        },
+        {
+            "paperId": "0d2336389dff3031910bd21dd1c44d1b4cd51725",
+            "title": "Why Does Unsupervised Pre-training Help Deep Learning?"
+        },
+        {
+            "paperId": "e86abc6b417af99ff36a78ff469799bde9438d6a",
+            "title": "Financial Applications of Random Matrix Theory: a short review"
+        },
+        {
+            "paperId": "86471c4d1ed4abb88549f108f3da16430723b478",
+            "title": "Heavy-tailed random matrices"
+        },
+        {
+            "paperId": "6b0345fe5dbf7a8551edd7ae3f56f803fc21378a",
+            "title": "On Consistency and Sparsity for Principal Components Analysis in High Dimensions"
+        },
+        {
+            "paperId": "5ead5549d54e3abff77ef4793a07fc80be05f6b3",
+            "title": "Central limit theorems for correlated variables: some critical remarks"
+        },
+        {
+            "paperId": "1ac199b38c0985849941791eb511dceaec60bcfa",
+            "title": "Learning and generalization with the information bottleneck"
+        },
+        {
+            "paperId": "5d1ccbfcfd57ef31273a062069811113f92cd788",
+            "title": "Poisson convergence for the largest eigenvalues of heavy tailed random matrices"
+        },
+        {
+            "paperId": "7aa56d4e2417d27e4125bdaae9a6bb8e1d0e101c",
+            "title": "The Spectrum of Heavy Tailed Random Matrices"
+        },
+        {
+            "paperId": "7dcc27e011874c43463b80257d8ff3d797411844",
+            "title": "Power-Law Distributions in Empirical Data"
+        },
+        {
+            "paperId": "9abfd5555ae5fca02d1d63c3edb63d9d3efeec0d",
+            "title": "Parameter estimation for power-law distributions \n by maximum likelihood methods"
+        },
+        {
+            "paperId": "48f8c83b61f01a934aab9d1d5f7ee45908791626",
+            "title": "Extreme value problems in random matrix theory and other disordered systems"
+        },
+        {
+            "paperId": "986ca9abbb6470b83703d5c86a5eea3adb010f41",
+            "title": "Heavy-Tail Phenomena: Probabilistic and Statistical Modeling"
+        },
+        {
+            "paperId": "d800e8764a784ca37df42d938260f0d90a2c9347",
+            "title": "Eigenvalue spectra of random matrices for neural networks."
+        },
+        {
+            "paperId": "cccb4f7ba1fca0356586aee08114f40e9e9c49cb",
+            "title": "On the top eigenvalue of heavy-tailed random matrices"
+        },
+        {
+            "paperId": "229294caba130ae69c3f6b9af3f4192bb1aece30",
+            "title": "The Largest Eigenvalue of Rank One Deformation of Large Wigner Matrices"
+        },
+        {
+            "paperId": "99000ee73e17120ef3d45c90d2136a00e6985b94",
+            "title": "Spectral properties of empirical covariance matrices for data with power-law tails."
+        },
+        {
+            "paperId": "19cd34af80f224e91ab1409d8cb5bc8e27d565c3",
+            "title": "Generalized extreme value statistics and sum of correlated variables"
+        },
+        {
+            "paperId": "f96702f70c1134c437421f6027d1669d9bfedc66",
+            "title": "Recent Results About the Largest Eigenvalue of Random Covariance Matrices and Statistical Application"
+        },
+        {
+            "paperId": "eeabd28948cd27434cce67e2fdb9d0aa43812f00",
+            "title": "Power laws, Pareto distributions and Zipf's law"
+        },
+        {
+            "paperId": "ef509c9d5744f3d30041d788f17a24f850d6f0aa",
+            "title": "Critical Phenomena in Natural Sciences: Chaos, Fractals, Selforganization and Disorder: Concepts and Tools"
+        },
+        {
+            "paperId": "2c1a96e25d567fe347574339ca2c22d920f8b9e5",
+            "title": "Random Matrix Theory and Wireless Communications"
+        },
+        {
+            "paperId": "5d3cf783fc33f2b4f81c7e4ff56d3788994eb76e",
+            "title": "Phase transition of the largest eigenvalue for nonnull complex sample covariance matrices"
+        },
+        {
+            "paperId": "918d186c59f1172843b0fa5530f515d0ca2505c8",
+            "title": "Problems with fitting to the power-law distribution"
+        },
+        {
+            "paperId": "671a4a7caa303f6f87b8ac3941e0175745f9a861",
+            "title": "The general inefficiency of batch training for gradient descent learning"
+        },
+        {
+            "paperId": "e41ba5dc12c79a64dfa905c0328f95976252ffe0",
+            "title": "The Elements of Statistical Learning"
+        },
+        {
+            "paperId": "16e78ec399ca5b71ce6fdc269d2e7c8be12c9411",
+            "title": "Empirical distributions of stock returns: between the stretched exponential and the power law?"
+        },
+        {
+            "paperId": "1384d42b8df88bab0ce38c21144e154d1afed238",
+            "title": "Statistical Mechanics of Learning"
+        },
+        {
+            "paperId": "225cbd16bf3f529c574866c0b48a21cd8e655601",
+            "title": "On the distribution of the largest eigenvalue in principal components analysis"
+        },
+        {
+            "paperId": "941b53660174d4a553a5bdd6eee7cbf17df534a8",
+            "title": "RANDOM MATRIX THEORY AND FINANCIAL CORRELATIONS"
+        },
+        {
+            "paperId": "4ef483f819e11873822416042a4b6dc4652e010c",
+            "title": "The information bottleneck method"
+        },
+        {
+            "paperId": "adad44d34d45e693c585d30916596848ede332de",
+            "title": "Portfolios with nonlinear constraints and spin glasses"
+        },
+        {
+            "paperId": "acc99d8db48d4b836f784dd850698791abff0ebd",
+            "title": "Noise Dressing of Financial Correlation Matrices"
+        },
+        {
+            "paperId": "ce00e789d74a674b8c77876850d40b26fbd5f433",
+            "title": "Rational Decisions, Random Matrices and Spin Glasses"
+        },
+        {
+            "paperId": "a4c16b4bfb2794f17f4816b621f4b97e70b7abdf",
+            "title": "For Valid Generalization the Size of the Weights is More Important than the Size of the Network"
+        },
+        {
+            "paperId": "12f3a36d577cafd9f3d6c4c25d0fe6d98b1f7d58",
+            "title": "Microscopic Equations in Rough Energy Landscape for Neural Networks"
+        },
+        {
+            "paperId": "899defb6a100af509547b8d74bb626533ee87da4",
+            "title": "Measuring the VC-Dimension of a Learning Machine"
+        },
+        {
+            "paperId": "3b6c8998c1a9ef64190535fd2f9115584d5c8a75",
+            "title": "Theory of L\u00e9vy matrices."
+        },
+        {
+            "paperId": "957687487abf4f8a3bf6c61d5e4e7f62e10da2ab",
+            "title": "Rigorous learning curve bounds from statistical mechanics"
+        },
+        {
+            "paperId": "598b1a0a6451f58298c38955ca2acebf84437211",
+            "title": "The spectrum edge of random matrix ensembles"
+        },
+        {
+            "paperId": "438bf2c47c4544064684931259305714207528d9",
+            "title": "THE STATISTICAL-MECHANICS OF LEARNING A RULE"
+        },
+        {
+            "paperId": "616e063169ce24439bf35e4cf5875382860a4b6b",
+            "title": "Mean field theory of dilute spin-glasses with power-law interactions"
+        },
+        {
+            "paperId": "2498a4e1755f047accc06a6e0fab0b0eb1b37ae0",
+            "title": "Statistical mechanics of learning from examples."
+        },
+        {
+            "paperId": "0c43153a3627c7d98cc09f909c232f3899597204",
+            "title": "Second Order Properties of Error Surfaces: Learning Time and Generalization"
+        },
+        {
+            "paperId": "f73ce8b20c451e88e9eeac0e55478fae2063bfbb",
+            "title": "Self-organized criticality."
+        },
+        {
+            "paperId": "978ee44dd0292ddfdb745e03f26508b31df2c83b",
+            "title": "Spectrum of large random asymmetric matrices."
+        },
+        {
+            "paperId": "438e5cde7a1de0a25c12b3689b86e8eb3f4fd461",
+            "title": "Fluctuations of Nuclear Reaction Widths"
+        },
+        {
+            "paperId": "5307c283c61e8c2f8597c3c450cac44936e19471",
+            "title": "Supplementary material for \u201c Multiplicative Noise and Heavy Tails in Stochastic Optimization"
+        },
+        {
+            "paperId": "4ad1485d3cda8ea035085e6d58c7b091b4ce066c",
+            "title": "ournal of Statistical Mechanics : J Theory and Experiment"
+        },
+        {
+            "paperId": null,
+            "title": "Batch Kalman normalization: Towards training deep networks with micro-batches"
+        },
+        {
+            "paperId": null,
+            "title": "On the spectrum of random feature maps of high dimensional data"
+        },
+        {
+            "paperId": null,
+            "title": "Appendix A. Appendix A.1 More historical perspective More recently (than the early work from the 1990s), theoretical results of Choromanska et al"
+        },
+        {
+            "paperId": "1a11817a58028cf5b528bfc5df42f41a5a6fc15f",
+            "title": "Random Matrix Theory and Its Innovative Applications"
+        },
+        {
+            "paperId": "eb80034e64e96bc955f772d902ce47a4c47194ba",
+            "title": "The Distributions of Random Matrix Theory and their Applications"
+        },
+        {
+            "paperId": "bc1eb681a5561f4f38153d274824d95fbc76e90b",
+            "title": "ASYMPTOTICS OF SAMPLE EIGENSTRUCTURE FOR A LARGE DIMENSIONAL SPIKED COVARIANCE MODEL"
+        },
+        {
+            "paperId": null,
+            "title": "body of related work, much of which either informed our approach or should be informed by our results"
+        },
+        {
+            "paperId": null,
+            "title": "Collective origin of the coexistence of apparent RMT noise and factors in large sample correlation matrices"
+        },
+        {
+            "paperId": "b1a5961609c623fc816aaa77565ba38b25531a8e",
+            "title": "Neural Networks: Tricks of the Trade"
+        },
+        {
+            "paperId": "a383be0e428c9a2b1cae3abd4a54670f2cc813dc",
+            "title": "Statistical physics of spin glasses and information processing : an introduction"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "43858f60612518ca3c9536d4cbb4e2c63d40a8c9",
+            "title": "Universality classes for extreme-value statistics"
+        }
+    ]
+}

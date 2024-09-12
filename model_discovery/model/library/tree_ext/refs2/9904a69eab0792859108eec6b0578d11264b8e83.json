@@ -1,0 +1,207 @@
+{
+    "paperId": "9904a69eab0792859108eec6b0578d11264b8e83",
+    "externalIds": {
+        "MAG": "2950860539",
+        "ArXiv": "1610.04989",
+        "DBLP": "conf/emnlp/XuCQH16",
+        "ACL": "D16-1172",
+        "DOI": "10.18653/v1/D16-1172",
+        "CorpusId": 15124020
+    },
+    "title": "Cached Long Short-Term Memory Neural Networks for Document-Level Sentiment Classification",
+    "abstract": "Recently, neural networks have achieved great success on sentiment classification due to their ability to alleviate feature engineering. However, one of the remaining challenges is to model long texts in document-level sentiment classification under a recurrent architecture because of the deficiency of the memory unit. To address this problem, we present a Cached Long Short-Term Memory neural networks (CLSTM) to capture the overall semantic information in long texts. CLSTM introduces a cache mechanism, which divides memory into several groups with different forgetting rates and thus enables the network to keep sentiment information better within a recurrent unit. The proposed CLSTM outperforms the state-of-the-art models on three publicly available document-level sentiment analysis datasets.",
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2016,
+    "referenceCount": 40,
+    "citationCount": 152,
+    "influentialCitationCount": 6,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/D16-1172.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A Cached Long Short-Term Memory neural networks (CLSTM) to capture the overall semantic information in long texts and introduces a cache mechanism, which divides memory into several groups with different forgetting rates and thus enables the network to keep sentiment information better within a recurrent unit."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "34837371",
+            "name": "Jiacheng Xu"
+        },
+        {
+            "authorId": "7167137",
+            "name": "Danlu Chen"
+        },
+        {
+            "authorId": "1767521",
+            "name": "Xipeng Qiu"
+        },
+        {
+            "authorId": "1790227",
+            "name": "Xuanjing Huang"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "e28ab7c3b994dd4e30baac1eb67c7f87e40c2b7b",
+            "title": "Recurrent Neural Network for Text Classification with Multi-Task Learning"
+        },
+        {
+            "paperId": "393ddf850d806c4eeaec52a1e2ea4c4dcc5c76ee",
+            "title": "Learning Over Long Time Lags"
+        },
+        {
+            "paperId": "889e57259a1d6017701fb2c2ceece82f9f4eff4c",
+            "title": "Recurrent Memory Networks for Language Modeling"
+        },
+        {
+            "paperId": "9e975e86fff32a9f901b2035688970fcd0fca2a0",
+            "title": "Sentence Modeling with Gated Recursive Neural Network"
+        },
+        {
+            "paperId": "ecb5336bf7b54a62109f325e7152bb74c4c7f527",
+            "title": "Document Modeling with Gated Recurrent Neural Network for Sentiment Classification"
+        },
+        {
+            "paperId": "93547ca277f93ae8cde856f66bf54166d64b4dcf",
+            "title": "Better Document-level Sentiment Analysis from RST Discourse Parsing"
+        },
+        {
+            "paperId": "cdd2906f29d8103632dba24484571a8a05c09076",
+            "title": "Multi-Timescale Long Short-Term Memory Neural Network for Modelling Sentences and Documents"
+        },
+        {
+            "paperId": "1f600f213dbbd70f06093438855f39022957b4bf",
+            "title": "Long Short-Term Memory Over Recursive Structures"
+        },
+        {
+            "paperId": "6ee62c42bb00d8ddbff898ca82cf1c7699ec79e9",
+            "title": "Learning Semantic Representations of Users and Products for Document Level Sentiment Classification"
+        },
+        {
+            "paperId": "40be3888daa5c2e5af4d36ae22f690bcc8caf600",
+            "title": "Visualizing and Understanding Recurrent Networks"
+        },
+        {
+            "paperId": "d46b81707786d18499f911b4ab72bb10c65406ba",
+            "title": "A Simple Way to Initialize Recurrent Networks of Rectified Linear Units"
+        },
+        {
+            "paperId": "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e",
+            "title": "End-To-End Memory Networks"
+        },
+        {
+            "paperId": "a7976c2bacfbb194ddbe7fd10c2e50a545cf4081",
+            "title": "LSTM: A Search Space Odyssey"
+        },
+        {
+            "paperId": "df77714269f1f88182092f8535b1bc290fcd835d",
+            "title": "When Are Tree Structures Necessary for Deep Learning of Representations?"
+        },
+        {
+            "paperId": "32de44f01a96d4473d21099d15e25bc2b9f08e2f",
+            "title": "Improved Semantic Representations From Tree-Structured Long Short-Term Memory Networks"
+        },
+        {
+            "paperId": "ac3ee98020251797c2b401e1389461df88e52e62",
+            "title": "Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "1f6ba0782862ec12a5ec6d7fb608523d55b0c6ba",
+            "title": "Convolutional Neural Networks for Sentence Classification"
+        },
+        {
+            "paperId": "6cb94b140baf03efb8e56a3715221120aadebbe9",
+            "title": "Jointly modeling aspects, ratings and sentiments for movie recommendation (JMARS)"
+        },
+        {
+            "paperId": "f9791399e87bba3f911fd8f570443cf721cf7b1e",
+            "title": "Modelling, Visualising and Summarising Documents with a Single Convolutional Neural Network"
+        },
+        {
+            "paperId": "f3de86aeb442216a8391befcacb49e58b478f512",
+            "title": "Distributed Representations of Sentences and Documents"
+        },
+        {
+            "paperId": "5522764282c85aea422f1c4dc92ff7e0ca6987bc",
+            "title": "A Clockwork RNN"
+        },
+        {
+            "paperId": "1149888d75af4ed5dffc25731b875651c3ccdeb2",
+            "title": "Hybrid speech recognition with Deep Bidirectional LSTM"
+        },
+        {
+            "paperId": "687bac2d3320083eb4530bf18bb8f8f721477600",
+            "title": "Recursive Deep Models for Semantic Compositionality Over a Sentiment Treebank"
+        },
+        {
+            "paperId": "48c5818ff11b865a471c0cd3b426b5eeb47dcfb2",
+            "title": "Document-level sentiment classification: An empirical comparison between SVM and ANN"
+        },
+        {
+            "paperId": "f6b51c8753a871dc94ff32152c00c01e94f90f09",
+            "title": "Efficient Estimation of Word Representations in Vector Space"
+        },
+        {
+            "paperId": "413c1142de9d91804d6d11c67ff3fed59c9fc279",
+            "title": "Adaptive Subgradient Methods for Online Learning and Stochastic Optimization"
+        },
+        {
+            "paperId": "f7ec67967561387d81629f75b4995a7576ccf21a",
+            "title": "Multi-Level Structured Models for Document-Level Sentiment Classification"
+        },
+        {
+            "paperId": "157d40d3e7fba266544cbbfd5f84852ddd944f8b",
+            "title": "Recognizing Contextual Polarity in Phrase-Level Sentiment Analysis"
+        },
+        {
+            "paperId": "3fee8e69b8e2df25030cf331b28b37f4dd13086c",
+            "title": "From Tweets to Polls: Linking Text Sentiment to Public Opinion Time Series"
+        },
+        {
+            "paperId": "dea301ddc616ed7da7568b91a6627699fcbd07cd",
+            "title": "Structured Models for Fine-to-Coarse Sentiment Analysis"
+        },
+        {
+            "paperId": "5536d42ce80e129be8cae172ed1b7659c769d31d",
+            "title": "2005 Special Issue: Framewise phoneme classification with bidirectional LSTM and other neural network architectures"
+        },
+        {
+            "paperId": "167e1359943b96b9e92ee73db1df69a1f65d731d",
+            "title": "A Sentimental Education: Sentiment Analysis Using Subjectivity Summarization Based on Minimum Cuts"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "b13813b49f160e1a2010c44bd4fb3d09a28446e3",
+            "title": "Hierarchical Recurrent Neural Networks for Long-Term Dependencies"
+        },
+        {
+            "paperId": "605d738a39df3c5e596613ab0ca6925f0eecdf35",
+            "title": "Distributed representations, simple recurrent networks, and grammatical structure"
+        },
+        {
+            "paperId": "297d01ff6731c3bd917ede3d378c94cb84650e8f",
+            "title": "Opinion Mining and Sentiment Analysis"
+        },
+        {
+            "paperId": "6b7fc158541d5a7be2b2465f7d8a42afa97d7ae9",
+            "title": "Twitter as a Corpus for Sentiment Analysis and Opinion Mining"
+        },
+        {
+            "paperId": "56c16d9e2a5270ba6b1d83271e2c10916591968d",
+            "title": "Human Memory: A Proposed System and its Control Processes"
+        },
+        {
+            "paperId": null,
+            "title": "EMNLP"
+        }
+    ]
+}

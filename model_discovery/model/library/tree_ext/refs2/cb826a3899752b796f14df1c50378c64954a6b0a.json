@@ -1,0 +1,94 @@
+{
+    "paperId": "cb826a3899752b796f14df1c50378c64954a6b0a",
+    "externalIds": {
+        "ACL": "W04-3250",
+        "DBLP": "conf/emnlp/Koehn04",
+        "MAG": "222053410",
+        "CorpusId": 15119437
+    },
+    "title": "Statistical Significance Tests for Machine Translation Evaluation",
+    "abstract": "If two translation systems differ differ in performance on a test set, can we trust that this indicates a difference in true system quality? To answer this question, we describe bootstrap resampling methods to compute statistical significance of test results, and validate them on the concrete example of the BLEU score. Even for small test sizes of only 300 sentences, our methods may give us assurances that test result differences are real.",
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2004,
+    "referenceCount": 16,
+    "citationCount": 1741,
+    "influentialCitationCount": 182,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": null
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1755162",
+            "name": "Philipp Koehn"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "50b8e8d48f4973cdeefa835807b4e1a8ca65ced3",
+            "title": "Pharaoh: A Beam Search Decoder for Phrase-Based Statistical Machine Translation Models"
+        },
+        {
+            "paperId": "e2a68774f92d1e894cbbbef2c819e4592990eb4b",
+            "title": "Minimum Bayes-Risk Decoding for Statistical Machine Translation"
+        },
+        {
+            "paperId": "f013d1eaf0b5e089281c64c8a75d2b7ec390891d",
+            "title": "A Projection Extension Algorithm for Statistical Machine Translation"
+        },
+        {
+            "paperId": "1f12451245667a85d0ee225a80880fc93c71cc8b",
+            "title": "Minimum Error Rate Training in Statistical Machine Translation"
+        },
+        {
+            "paperId": "e0cf7771a02921f9d4725f973a01c240d1a20634",
+            "title": "Precision and Recall of Machine Translation"
+        },
+        {
+            "paperId": "b4cb8d14b8ad5ace94d41e0459ea912cbaa9905c",
+            "title": "Greedy Decoding for Statistical Machine Translation in Almost Linear Time"
+        },
+        {
+            "paperId": "a4b828609b60b06e61bea7a4029cc9e1cad5df87",
+            "title": "Statistical Phrase-Based Translation"
+        },
+        {
+            "paperId": "eddf69c43844a1c3e37eaa8996734c29ae06ee3c",
+            "title": "Phrase-Based Statistical Machine Translation"
+        },
+        {
+            "paperId": "d7da009f457917aa381619facfa5ffae9329a6e9",
+            "title": "Bleu: a Method for Automatic Evaluation of Machine Translation"
+        },
+        {
+            "paperId": "85a8a97f614b2b6823e035bcc9abcb0f3d27be4d",
+            "title": "An Introduction to the Bootstrap"
+        },
+        {
+            "paperId": "5b74d6c7cd6b7c172ffce98f80b2f7b810d49abc",
+            "title": "The mathematics of statistical machine translation"
+        },
+        {
+            "paperId": "a1066659ec1afee9dce586f6f49b7d44527827e1",
+            "title": "A Statistical Approach to Machine Translation"
+        },
+        {
+            "paperId": "a6ed57eabb350b220836a910045c45d069817e98",
+            "title": "The CMU statistical machine translation system"
+        },
+        {
+            "paperId": "ca2832d2c30287a9ee5b8584cc498d2b1cb14753",
+            "title": "Numerical recipes in C"
+        },
+        {
+            "paperId": "30e8ccc7ec5b1388523c8d672ca78b8bd2354676",
+            "title": "Statistical machine translation: from single word models to alignment templates"
+        },
+        {
+            "paperId": null,
+            "title": "Europarl: A multilingual corpus for evaluation of machine translation. Unpublished, http://www.isi.edu/ koehn/europarl"
+        }
+    ]
+}

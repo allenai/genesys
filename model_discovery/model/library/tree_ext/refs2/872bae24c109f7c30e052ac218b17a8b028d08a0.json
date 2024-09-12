@@ -1,0 +1,130 @@
+{
+    "paperId": "872bae24c109f7c30e052ac218b17a8b028d08a0",
+    "externalIds": {
+        "MAG": "2013035813",
+        "DBLP": "journals/neco/Vincent11",
+        "DOI": "10.1162/NECO_a_00142",
+        "CorpusId": 5560643,
+        "PubMed": "21492012"
+    },
+    "title": "A Connection Between Score Matching and Denoising Autoencoders",
+    "abstract": "Denoising autoencoders have been previously shown to be competitive alternatives to restricted Boltzmann machines for unsupervised pretraining of each layer of a deep architecture. We show that a simple denoising autoencoder training criterion is equivalent to matching the score (with respect to the data) of a specific energy-based model to that of a nonparametric Parzen density estimator of the data. This yields several useful insights. It defines a proper probabilistic model for the denoising autoencoder technique, which makes it in principle possible to sample from them or rank examples by their energy. It suggests a different way to apply score matching that is related to learning to denoise and does not require computing second derivatives. It justifies the use of tied weights between the encoder and decoder and suggests ways to extend the success of denoising autoencoders to a larger family of energy-based models.",
+    "venue": "Neural Computation",
+    "year": 2011,
+    "referenceCount": 24,
+    "citationCount": 1210,
+    "influentialCitationCount": 145,
+    "openAccessPdf": {
+        "url": "http://www.iro.umontreal.ca/%7Evincentp/Publications/smdae_techreport_1358.pdf",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A proper probabilistic model for the denoising autoencoder technique is defined, which makes it in principle possible to sample from them or rank examples by their energy, and a different way to apply score matching that is related to learning to denoise and does not require computing second derivatives is suggested."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145467703",
+            "name": "Pascal Vincent"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "184ac0766262312ba76bbdece4e7ffad0aa8180b",
+            "title": "Representation Learning: A Review and New Perspectives"
+        },
+        {
+            "paperId": "74706fab48249b071e10615f8da60b8401fb9f3f",
+            "title": "Regularized estimation of image statistics by Score Matching"
+        },
+        {
+            "paperId": "bf79c966b293dbc5551de9785a696c099dff355b",
+            "title": "Inductive Principles for Restricted Boltzmann Machine Learning"
+        },
+        {
+            "paperId": "e2b7f37cd97a7907b1b8a41138721ed06a0b76cd",
+            "title": "Stacked Denoising Autoencoders: Learning Useful Representations in a Deep Network with a Local Denoising Criterion"
+        },
+        {
+            "paperId": "0d2336389dff3031910bd21dd1c44d1b4cd51725",
+            "title": "Why Does Unsupervised Pre-training Help Deep Learning?"
+        },
+        {
+            "paperId": "35e57c040ddf95eca2a9bd6e1c532a08147b1f29",
+            "title": "Minimum Probability Flow Learning"
+        },
+        {
+            "paperId": "6463cac46c43625ef78a9e0a3c2fc19affead187",
+            "title": "Interpretation and Generalization of Score Matching"
+        },
+        {
+            "paperId": "eb0f291887bb11e1e5b55d6b3f38582113a0eb3a",
+            "title": "Optimal Approximation of Signal Priors"
+        },
+        {
+            "paperId": "4ad1afdd6cb59d1128ee59f9979ce23006f6031b",
+            "title": "Contrastive Divergence in Gaussian Diffusions"
+        },
+        {
+            "paperId": "843959ffdccf31c6694d135fad07425924f785b1",
+            "title": "Extracting and composing robust features with denoising autoencoders"
+        },
+        {
+            "paperId": "546c1da4b79661c8ffc794ab508565292cff50d9",
+            "title": "Topical N-Grams: Phrase and Topic Discovery, with an Application to Information Retrieval"
+        },
+        {
+            "paperId": "1d6793a163426b9c060de7588aef4fed8da6d16c",
+            "title": "Connections Between Score Matching, Contrastive Divergence, and Pseudolikelihood for Continuous-Valued Variables"
+        },
+        {
+            "paperId": "ce06539ba8e6b33045a9cfe9167026ebe5a980be",
+            "title": "Some extensions of score matching"
+        },
+        {
+            "paperId": "355d44f53428b1ac4fb2ab468d593c720640e5bd",
+            "title": "Greedy Layer-Wise Training of Deep Networks"
+        },
+        {
+            "paperId": "8978cf7574ceb35f4c3096be768c7547b28a35d0",
+            "title": "A Fast Learning Algorithm for Deep Belief Nets"
+        },
+        {
+            "paperId": "9966e890f2eedb4577e11b9d5a66380a4d9341fe",
+            "title": "Estimation of Non-Normalized Statistical Models by Score Matching"
+        },
+        {
+            "paperId": "2184fb6d32bc46f252b940035029273563c4fc82",
+            "title": "Exponential Family Harmoniums with an Application to Information Retrieval"
+        },
+        {
+            "paperId": "b7b5bea7b4d40003a6887794652ea07196a97134",
+            "title": "A New Learning Algorithm for Mean Field Boltzmann Machines"
+        },
+        {
+            "paperId": "52070af952474cf13ecd015d42979373ff7c1c00",
+            "title": "Training Products of Experts by Minimizing Contrastive Divergence"
+        },
+        {
+            "paperId": "9b20ad513361a26e98289e5a517291c6ff49960d",
+            "title": "Learning Continuous Attractors in Recurrent Networks"
+        },
+        {
+            "paperId": "75f063c9b32912f4b1b1f08dbcf6b0575ce16bf1",
+            "title": "Hybrid Monte Carlo"
+        },
+        {
+            "paperId": "77ae3c150dfe502ec4bb4f0ac1abe4e328135bb9",
+            "title": "Inductive Principles for Learning Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": null,
+            "title": "Memoires associatives distribu\u00b4es"
+        },
+        {
+            "paperId": null,
+            "title": "Mod`eles connexionistes de l\u2019apprentissage"
+        }
+    ]
+}

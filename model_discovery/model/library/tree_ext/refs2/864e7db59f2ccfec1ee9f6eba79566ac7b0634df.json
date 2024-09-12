@@ -1,0 +1,234 @@
+{
+    "paperId": "864e7db59f2ccfec1ee9f6eba79566ac7b0634df",
+    "externalIds": {
+        "ArXiv": "1602.00134",
+        "MAG": "2951987817",
+        "DBLP": "journals/corr/WeiRKS16",
+        "DOI": "10.1109/CVPR.2016.511",
+        "CorpusId": 163946
+    },
+    "title": "Convolutional Pose Machines",
+    "abstract": "Pose Machines provide a sequential prediction framework for learning rich implicit spatial models. In this work we show a systematic design for how convolutional networks can be incorporated into the pose machine framework for learning image features and image-dependent spatial models for the task of pose estimation. The contribution of this paper is to implicitly model long-range dependencies between variables in structured prediction tasks such as articulated pose estimation. We achieve this by designing a sequential architecture composed of convolutional networks that directly operate on belief maps from previous stages, producing increasingly refined estimates for part locations, without the need for explicit graphical model-style inference. Our approach addresses the characteristic difficulty of vanishing gradients during training by providing a natural learning objective function that enforces intermediate supervision, thereby replenishing back-propagated gradients and conditioning the learning procedure. We demonstrate state-of-the-art performance and outperform competing methods on standard benchmarks including the MPII, LSP, and FLIC datasets.",
+    "venue": "Computer Vision and Pattern Recognition",
+    "year": 2016,
+    "referenceCount": 47,
+    "citationCount": 2631,
+    "influentialCitationCount": 306,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1602.00134",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work designs a sequential architecture composed of convolutional networks that directly operate on belief maps from previous stages, producing increasingly refined estimates for part locations, without the need for explicit graphical model-style inference in structured prediction tasks such as articulated pose estimation."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2797981",
+            "name": "S. Wei"
+        },
+        {
+            "authorId": "20569810",
+            "name": "V. Ramakrishna"
+        },
+        {
+            "authorId": "1733113",
+            "name": "T. Kanade"
+        },
+        {
+            "authorId": "1774867",
+            "name": "Yaser Sheikh"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "c10d25ca31df02571df8958d531995e7bbf6d0b3",
+            "title": "DeepCut: Joint Subset Partition and Labeling for Multi Person Pose Estimation"
+        },
+        {
+            "paperId": "66d4475f0eee4b65983e06b1fbafad533eb81b2a",
+            "title": "Human Pose Estimation with Iterative Error Feedback"
+        },
+        {
+            "paperId": "ef0a32525869ac3a2bd4cbacb18343d737c5916d",
+            "title": "End-to-End People Detection in Crowded Scenes"
+        },
+        {
+            "paperId": "f22f25904f85c657e10fcc262653ebb6187193f9",
+            "title": "Flowing ConvNets for Human Pose Estimation in Videos"
+        },
+        {
+            "paperId": "ebcea2d842d3d4e320500086aff0deb4cb4412ff",
+            "title": "Efficient object localization using Convolutional Networks"
+        },
+        {
+            "paperId": "6fc6803df5f9ae505cae5b2f178ade4062c768d0",
+            "title": "Fully convolutional networks for semantic segmentation"
+        },
+        {
+            "paperId": "fb91db6aa4f710814f8aec28a7f3ecbc4e5ad4fd",
+            "title": "Deeply-Supervised Nets"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "1aa295c00c37e7a3b4dc56ec2e40793b1617bcb3",
+            "title": "Pose Machines: Articulated Pose Estimation via Inference Machines"
+        },
+        {
+            "paperId": "7dc308f4fc14b92a7adda7f6f652969f6bf2f8b5",
+            "title": "Human Pose Estimation with Fields of Parts"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "ed9a133865295aee70c62f8764a904be0498350e",
+            "title": "Articulated Pose Estimation by a Graphical Model with Image Dependent Pairwise Relations"
+        },
+        {
+            "paperId": "1a9658c0b7bea22075c0ea3c229b8c70c1790153",
+            "title": "Recurrent Convolutional Neural Networks for Scene Labeling"
+        },
+        {
+            "paperId": "6bdb186ec4726e00a8051119636d4df3b94043b5",
+            "title": "Caffe: Convolutional Architecture for Fast Feature Embedding"
+        },
+        {
+            "paperId": "12ecc2d786080f638a01b9999518e9386baa157d",
+            "title": "Joint Training of a Convolutional Network and a Graphical Model for Human Pose Estimation"
+        },
+        {
+            "paperId": "da8d53f9a85b40a695585aa461286e373c6b74d4",
+            "title": "2D Human Pose Estimation: New Benchmark and State of the Art Analysis"
+        },
+        {
+            "paperId": "05ffc37ed1289c9dbd01f1cd96d5a5ae908b12cb",
+            "title": "Multi-source Deep Learning for Human Pose Estimation"
+        },
+        {
+            "paperId": "2a002ce457f7ab3088fbd2691734f1ce79f750c4",
+            "title": "DeepPose: Human Pose Estimation via Deep Neural Networks"
+        },
+        {
+            "paperId": "016dd886d5cb01c55a0204e2988274cf9417b564",
+            "title": "Strong Appearance and Expressive Spatial Models for Human Pose Estimation"
+        },
+        {
+            "paperId": "9f04d907ba87261d4e46ed03dd7de0ec7a1a125f",
+            "title": "Articulated Human Detection with Flexible Mixtures of Parts"
+        },
+        {
+            "paperId": "113c22eed8383c74fe6b218743395532e2897e71",
+            "title": "MODEC: Multimodal Decomposable Models for Human Pose Estimation"
+        },
+        {
+            "paperId": "ed662a8f1444578f6b4b47a3bb87e72b583d28b4",
+            "title": "Poselet Conditioned Pictorial Structures"
+        },
+        {
+            "paperId": "8d90c2b57a61d4203498ecd6a10803e130bab9b2",
+            "title": "Human Pose Estimation Using Body Parts Dependent Joint Regressors"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "7e6a2518cc5a1cab9d2a7ccdac69fd4a1bbcba08",
+            "title": "Using Linking Features in Learning Non-parametric Part Models"
+        },
+        {
+            "paperId": "a6b2c5c527557cc86ae2ce4332b18a7850ee4e1e",
+            "title": "Exploring the Spatial Hierarchy of Mixture Models for Human Pose Estimation"
+        },
+        {
+            "paperId": "d4a7c54390a3be6822e22e3ead0ad88399cbb188",
+            "title": "Articulated part-based model for joint object detection and pose estimation"
+        },
+        {
+            "paperId": "633664376ffadc1396d86e476925121ac3d4cf86",
+            "title": "Learning message-passing inference machines for structured prediction"
+        },
+        {
+            "paperId": "5310c57262146852280fb6ee4006c4abc91a7569",
+            "title": "Articulated pose estimation with flexible mixtures-of-parts"
+        },
+        {
+            "paperId": "50f3cd71a30ac6155e032c636d37d50e31cb09c2",
+            "title": "Learning effective human pose estimation from inaccurate annotation"
+        },
+        {
+            "paperId": "0ba6f4fb548d8289fb42d68ac64d55f9e3a274ca",
+            "title": "Auto-Context and Its Application to High-Level Vision Tasks and 3D Brain Image Segmentation"
+        },
+        {
+            "paperId": "370308ad57aa43a29df1a9500c813c13254e16cd",
+            "title": "Stacked Hierarchical Labeling"
+        },
+        {
+            "paperId": "f042e85c26cd3638fcdc6599aa546d85045a7c5d",
+            "title": "Monocular 3D pose estimation and tracking by detection"
+        },
+        {
+            "paperId": "ea9d2a2b4ce11aaf85136840c65f3bc9c03ab649",
+            "title": "Understanding the difficulty of training deep feedforward neural networks"
+        },
+        {
+            "paperId": "d9279fe29ae1e4ecd0ee34d546560f8a70d17d1d",
+            "title": "Pictorial structures revisited: People detection and articulated pose estimation"
+        },
+        {
+            "paperId": "5edfa28559c054b23acc43ce0f975a04ae27b331",
+            "title": "Multiple Tree Models for Occlusion and Spatial Constraints in Human Pose Estimation"
+        },
+        {
+            "paperId": "46626dce354feb5e21fde1095cd436e2a7d0c03a",
+            "title": "Measure Locally, Reason Globally: Occlusion-sensitive Articulated Pose Estimation"
+        },
+        {
+            "paperId": "f1a6af296b99e2c6cd58a49533b49f3c7cdab02c",
+            "title": "Beyond trees: common-factor models for 2D human pose recovery"
+        },
+        {
+            "paperId": "14eacd0e48a160bfc935cd4d419772f0110b1a0f",
+            "title": "Strike a pose: tracking people by finding stylized poses"
+        },
+        {
+            "paperId": "d0be39ee052d246ae99c082a565aba25b811be2d",
+            "title": "Learning long-term dependencies with gradient descent is difficult"
+        },
+        {
+            "paperId": "a8e8f3c8d4418c8d62e306538c9c1292635e9d27",
+            "title": "Backpropagation Applied to Handwritten Zip Code Recognition"
+        },
+        {
+            "paperId": "3d2218b17e7898a222e5fc2079a3f1531990708f",
+            "title": "I and J"
+        },
+        {
+            "paperId": "c32715b5106f46eb6761531704cd2a9b5571832e",
+            "title": "Clustered Pose and Nonlinear Appearance Models for Human Pose Estimation"
+        },
+        {
+            "paperId": "bfa588775eaebcaa94bdcb488393accc8347f039",
+            "title": "Learning in modular systems"
+        },
+        {
+            "paperId": "34d21e6bf1586715e233248dee787afc66a1fbe7",
+            "title": "Pictorial Structures for Object Recognition"
+        },
+        {
+            "paperId": "2e5f2b57f4c476dd69dc22ccdf547e48f40a994c",
+            "title": "Gradient Flow in Recurrent Nets: the Difficulty of Learning Long-Term Dependencies"
+        }
+    ]
+}

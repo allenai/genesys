@@ -1,0 +1,113 @@
+{
+    "paperId": "c5145b1d15fea9340840cc8bb6f0e46e8934827f",
+    "externalIds": {
+        "MAG": "2402302915",
+        "DBLP": "journals/corr/abs-1211-5063",
+        "CorpusId": 16074905
+    },
+    "title": "Understanding the exploding gradient problem",
+    "abstract": "Training Recurrent Neural Networks is more troublesome than feedforward ones because of the vanishing and exploding gradient problems detailed in Bengio et al. (1994). In this paper we attempt to understand the fundamental issues underlying the exploding gradient problem by exploring it from an analytical, a geometric and a dynamical system perspective. Our analysis is used to justify the simple yet effective solution of norm clipping the exploded gradient. In the experimental section, the comparison between this heuristic solution and standard SGD provides empirical evidence towards our hypothesis as well as it shows that such a heuristic is required to reach state of the art results on a character prediction task and a polyphonic music prediction one.",
+    "venue": "arXiv.org",
+    "year": 2012,
+    "referenceCount": 19,
+    "citationCount": 541,
+    "influentialCitationCount": 31,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The analysis is used to justify the simple yet effective solution of norm clipping the exploded gradient, and the comparison between this heuristic solution and standard SGD provides empirical evidence towards the hypothesis that such a heuristic is required to reach state of the art results on a character prediction task and a polyphonic music prediction one."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1996134",
+            "name": "Razvan Pascanu"
+        },
+        {
+            "authorId": "2047446108",
+            "name": "Tomas Mikolov"
+        },
+        {
+            "authorId": "1751762",
+            "name": "Yoshua Bengio"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "07c43a3ff15f2104022f2b1ca8ec4128a930b414",
+            "title": "Modeling Temporal Dependencies in High-Dimensional Sequences: Application to Polyphonic Music Generation and Transcription"
+        },
+        {
+            "paperId": "93c20e38c85b69fc2d2eb314b3c1217913f7db11",
+            "title": "Generating Text with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "4f317d3533d814512a18a427f4c901aae23ea42c",
+            "title": "A neurodynamical model for working memory"
+        },
+        {
+            "paperId": "413c1142de9d91804d6d11c67ff3fed59c9fc279",
+            "title": "Adaptive Subgradient Methods for Online Learning and Stochastic Optimization"
+        },
+        {
+            "paperId": "69e5339c0c3928a354e848b9ccf5349f6397e60b",
+            "title": "Reservoir computing approaches to recurrent neural network training"
+        },
+        {
+            "paperId": "6bdabcdcde21d4d71321935e2e0332e32eda5366",
+            "title": "New results on recurrent network training: unifying the algorithms and accelerating convergence"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "d0be39ee052d246ae99c082a565aba25b811be2d",
+            "title": "Learning long-term dependencies with gradient descent is difficult"
+        },
+        {
+            "paperId": "3f1d04f57e420f0f1b2cd059deab309bc7073ca1",
+            "title": "The problem of learning long-term dependencies in recurrent networks"
+        },
+        {
+            "paperId": "17594df98c222217a11510dd454ba52a5a737378",
+            "title": "On the computational power of neural nets"
+        },
+        {
+            "paperId": "27effe5b6f077bf9cef35832495ab651291b2909",
+            "title": "Adaptive Synchronization of Neural and Physical Oscillators"
+        },
+        {
+            "paperId": "668087f0ae7ce1de6e0bd0965dbb480c08103260",
+            "title": "Finding Structure in Time"
+        },
+        {
+            "paperId": "ce9a21b93ba29d4145a8ef6bf401e77f261848de",
+            "title": "A Learning Algorithm for Continually Running Fully Recurrent Neural Networks"
+        },
+        {
+            "paperId": "052b1d8ce63b07fec3de9dbb583772d860b7c769",
+            "title": "Learning representations by back-propagating errors"
+        },
+        {
+            "paperId": "96364af2d208ea75ca3aeb71892d2f7ce7326b55",
+            "title": "Statistical Language Models Based on Neural Networks"
+        },
+        {
+            "paperId": "1fd7fc06653723b05abe5f3d1de393ddcf6bdddb",
+            "title": "SUBWORD LANGUAGE MODELING WITH NEURAL NETWORKS"
+        },
+        {
+            "paperId": "6b82ecf6f2dd87f5c47b5ca122a7e75d848a9caa",
+            "title": "Neural Networks with Adaptive Learning Rate and Momentum Terms"
+        },
+        {
+            "paperId": "b57927b713a6f9b73c7941f99144165396483478",
+            "title": "Bifurcations of Recurrent Neural Networks in Gradient Descent Learning"
+        },
+        {
+            "paperId": "266e07d0dd9a75b61e3632e9469993dbaf063f1c",
+            "title": "Generalization of backpropagation with application to a recurrent gas market model"
+        }
+    ]
+}

@@ -1,0 +1,314 @@
+{
+    "paperId": "32ceb28e45a445df4d89df281bb0e3ab5aab1a2a",
+    "externalIds": {
+        "DBLP": "journals/corr/TobinFRSZA17",
+        "ArXiv": "1703.06907",
+        "MAG": "2605102758",
+        "DOI": "10.1109/IROS.2017.8202133",
+        "CorpusId": 2413610
+    },
+    "title": "Domain randomization for transferring deep neural networks from simulation to the real world",
+    "abstract": "Bridging the \u2018reality gap\u2019 that separates simulated robotics from experiments on hardware could accelerate robotic research through improved data availability. This paper explores domain randomization, a simple technique for training models on simulated images that transfer to real images by randomizing rendering in the simulator. With enough variability in the simulator, the real world may appear to the model as just another variation. We focus on the task of object localization, which is a stepping stone to general robotic manipulation skills. We find that it is possible to train a real-world object detector that is accurate to 1.5 cm and robust to distractors and partial occlusions using only data from a simulator with non-realistic random textures. To demonstrate the capabilities of our detectors, we show they can be used to perform grasping in a cluttered environment. To our knowledge, this is the first successful transfer of a deep neural network trained only on simulated RGB images (without pre-training on real images) to the real world for the purpose of robotic control.",
+    "venue": "IEEE/RJS International Conference on Intelligent RObots and Systems",
+    "year": 2017,
+    "referenceCount": 65,
+    "citationCount": 2584,
+    "influentialCitationCount": 167,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1703.06907",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper explores domain randomization, a simple technique for training models on simulated images that transfer to real images by randomizing rendering in the simulator, and achieves the first successful transfer of a deep neural network trained only on simulated RGB images to the real world for the purpose of robotic control."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2052880384",
+            "name": "Joshua Tobin"
+        },
+        {
+            "authorId": "2062025076",
+            "name": "Rachel Fong"
+        },
+        {
+            "authorId": "2064770039",
+            "name": "Alex Ray"
+        },
+        {
+            "authorId": "2113526509",
+            "name": "Jonas Schneider"
+        },
+        {
+            "authorId": "2563432",
+            "name": "Wojciech Zaremba"
+        },
+        {
+            "authorId": "1689992",
+            "name": "P. Abbeel"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "f2d6a2b4ab9b962b3337011fa34ed23bb7754966",
+            "title": "Empagliflozin for Type 2 Diabetes Mellitus: An Overview of Phase 3 Clinical Trials"
+        },
+        {
+            "paperId": "d19cfe3efe4165df42020ea362e4aadf141fb7bd",
+            "title": "A self-supervised learning system for object detection using physics simulation and multi-view pose estimation"
+        },
+        {
+            "paperId": "7f710932a0aa99f2c2ddbec6e7765f10c48d3fc2",
+            "title": "Learning Invariant Feature Spaces to Transfer Skills with Reinforcement Learning"
+        },
+        {
+            "paperId": "dcdb8fab7b127eea0198b0622dda05557c8b4262",
+            "title": "Deep predictive policy training using reinforcement learning"
+        },
+        {
+            "paperId": "c8a30bbbe787bca245dede9f0e789c62388e4482",
+            "title": "Reinforcement Learning for Pivoting Task"
+        },
+        {
+            "paperId": "e29782c2cc679e8ee035e823276a75e4cc9c44ab",
+            "title": "DepthSynth: Real-Time Realistic Synthetic Data Generation from CAD Models for 2.5D Recognition"
+        },
+        {
+            "paperId": "6bd1e6f70626772013a3c969c4b11d17dbb3d599",
+            "title": "Preparing for the Unknown: Learning a Universal Policy with Online System Identification"
+        },
+        {
+            "paperId": "f7ac2479e686eb2a7a8afc23f99f213fcd3c5292",
+            "title": "(CAD)$^2$RL: Real Single-Image Flight without a Single Real Image"
+        },
+        {
+            "paperId": "04bd2907111855b9fde9413bb25b9788a4c03f26",
+            "title": "Unsupervised Cross-Domain Image Generation"
+        },
+        {
+            "paperId": "248ac48fe2276c7ba4b232f12c59226308e1570c",
+            "title": "Vision-Based Reaching Using Modular Deep Networks: from Simulation to the Real World"
+        },
+        {
+            "paperId": "505808c55b2d96ad72f4b7bca04572655742b87d",
+            "title": "Sim-to-Real Robot Learning from Pixels with Progressive Nets"
+        },
+        {
+            "paperId": "9228fa3b363229780da4cb1d258942e0c13c2947",
+            "title": "EPOpt: Learning Robust Neural Network Policies Using Model Ensembles"
+        },
+        {
+            "paperId": "7cdc9d3520b63a880174ef43ac4fcc7d34e1c50d",
+            "title": "3D Simulation for Robot Arm Control with Deep Q-Learning"
+        },
+        {
+            "paperId": "4d9d25e67ebabbfc0acd63798f1a260cb2c8a9bd",
+            "title": "Playing for Data: Ground Truth from Computer Games"
+        },
+        {
+            "paperId": "53c9443e4e667170acc60ca1b31a0ec7151fe753",
+            "title": "Progressive Neural Networks"
+        },
+        {
+            "paperId": "92e4bccf9ab17244dcefc50a547e87a23e1fd3bb",
+            "title": "How Useful Is Photo-Realistic Rendering for Visual Learning?"
+        },
+        {
+            "paperId": "24da6180db314619060d7b8fc798390f0c7a139a",
+            "title": "Revisiting Batch Normalization For Practical Domain Adaptation"
+        },
+        {
+            "paperId": "11bc9b640e5bcf36747cf6bcb334cb7baa6cc951",
+            "title": "Ensemble-CIO: Full-body dynamic motion planning that transfers to physical humanoids"
+        },
+        {
+            "paperId": "54913e375f1d3fa6b018e6897957943dbef462f0",
+            "title": "Adapting Deep Visuomotor Representations with Weak Pairwise Constraints"
+        },
+        {
+            "paperId": "ecb09b54ea93f0fb25ad5211bfbbf26a5483f59e",
+            "title": "The YCB object and Model set: Towards common benchmarks for manipulation research"
+        },
+        {
+            "paperId": "936be530d31fa7ee03de9bd1551cc149408d0432",
+            "title": "Efficient reinforcement learning for robots using informative simulated priors"
+        },
+        {
+            "paperId": "6f115fffa3a2af837cf869996e76b805e8f8cea4",
+            "title": "Render for CNN: Viewpoint Estimation in Images Using CNNs Trained with Rendered 3D Model Views"
+        },
+        {
+            "paperId": "b6b8a1b80891c96c28cc6340267b58186157e536",
+            "title": "End-to-End Training of Deep Visuomotor Policies"
+        },
+        {
+            "paperId": "340f48901f72278f6bf78a04ee5b01df208cc508",
+            "title": "Human-level control through deep reinforcement learning"
+        },
+        {
+            "paperId": "449532187c94af3dd3aa55e16d2c50f7854d2199",
+            "title": "Trust Region Policy Optimization"
+        },
+        {
+            "paperId": "7340f090f8a0df5b109682e9f6d57e4b8ca1a2f7",
+            "title": "Learning Transferable Features with Deep Adaptation Networks"
+        },
+        {
+            "paperId": "dfff09a657b77989ef83b6d61cac05059426ad0a",
+            "title": "Learning Deep Object Detectors from 3D Models"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "1c734a14c2325cb76783ca0431862c7f04a69268",
+            "title": "Deep Domain Confusion: Maximizing for Domain Invariance"
+        },
+        {
+            "paperId": "081651b38ff7533550a3adfc1c00da333a8fe86c",
+            "title": "How transferable are features in deep neural networks?"
+        },
+        {
+            "paperId": "aa2787a4dd6fdc14f7ca36d80ec469cb2435c44a",
+            "title": "Reinforcement learning with multi-fidelity simulators"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "40eac6e6bb54e0da7885989f220f4d3f70249950",
+            "title": "LSDA: Large Scale Detection through Adaptation"
+        },
+        {
+            "paperId": "1a632fb89b6b05dc16fbc026d86e390e22ca6ac3",
+            "title": "Robots that can adapt like animals"
+        },
+        {
+            "paperId": "18c125ce0f64e85577f7d30132cf0e92ec664bf4",
+            "title": "Describing Textures in the Wild"
+        },
+        {
+            "paperId": "046bd183f26390acabab8ef6daeea281382b1582",
+            "title": "Artificial neural networks for spatial perception: Towards visual object localisation in humanoid robots"
+        },
+        {
+            "paperId": "9665f5d0834a8d9759a8dc4a337296d44b36369d",
+            "title": "The Transferability Approach: Crossing the Reality Gap in Evolutionary Robotics"
+        },
+        {
+            "paperId": "260aed27abfe751b3d90aad9c0805d35c359ebd5",
+            "title": "Efficient Learning of Domain-invariant Image Representations"
+        },
+        {
+            "paperId": "b354ee518bfc1ac0d8ac447eece9edb69e92eae1",
+            "title": "MuJoCo: A physics engine for model-based control"
+        },
+        {
+            "paperId": "e3edc9408ba82dd3a8194ace30bed5dd87c0d365",
+            "title": "Learning with Augmented Features for Heterogeneous Domain Adaptation"
+        },
+        {
+            "paperId": "96d90797b26cce9caf1502e908385e25d97fca1c",
+            "title": "A textured object recognition pipeline for color and depth image data"
+        },
+        {
+            "paperId": "e15ad9df6dd14709d1489c3d90a466223a24552a",
+            "title": "The MOPED framework: Object recognition and pose estimation for manipulation"
+        },
+        {
+            "paperId": "feca3cf344320e3d14045c3dcc8a9975f39c8791",
+            "title": "What you saw is not what you get: Domain adaptation using asymmetric kernel transforms"
+        },
+        {
+            "paperId": "be1bdccb5c0830313c28c56d9390e491579eff2b",
+            "title": "Model learning for robot control: a survey"
+        },
+        {
+            "paperId": "32dd7ffb64e9080f15c327b9cd749653a1689576",
+            "title": "Efficient multi-view object recognition and full pose estimation"
+        },
+        {
+            "paperId": "15d49a607aea846488ca90588de7972ce87e0ed7",
+            "title": "Superhuman performance of surgical tasks by robots using iterative learning from human-guided demonstrations"
+        },
+        {
+            "paperId": "8ee174f53bf7fa3e2e43eaf60553601f7e9f8022",
+            "title": "Object recognition and full pose registration from a single image for robotic manipulation"
+        },
+        {
+            "paperId": "a9606fe31a66df53cd36ceffbcb44a68e3b52d67",
+            "title": "Domain Adaptation: Learning Bounds and Algorithms"
+        },
+        {
+            "paperId": "5b4ecd2d39b4ee76fa231bf1362dcc9cb67fa036",
+            "title": "Cross-domain video concept detection using adaptive svms"
+        },
+        {
+            "paperId": "64a9fea05ff78283f05f396f2ce68e8ee7ccbf2c",
+            "title": "Learning omnidirectional path following using dimensionality reduction"
+        },
+        {
+            "paperId": "d1ead43c840a92a87511d1d162e3c0dfb8bb7e7b",
+            "title": "Detection and Localization of Multiple Objects"
+        },
+        {
+            "paperId": "30d8e493ae35a64b2bebbe6ec90dc190488f82fa",
+            "title": "Using inaccurate models in reinforcement learning"
+        },
+        {
+            "paperId": "a964961ebc799b0b68ea92226ab2ebc8a0b90321",
+            "title": "Object recognition and pose estimation using color cooccurrence histograms and geometric modeling"
+        },
+        {
+            "paperId": "8b033b13b7e6269eae9a70f6573b7eafc3991d98",
+            "title": "Evolutionary Robotics and the Radical Envelope-of-Noise Hypothesis"
+        },
+        {
+            "paperId": "880ac8672aad57fe641b76950963808249008784",
+            "title": "Real-time visual tracking of 3D objects with dynamic handling of occlusion"
+        },
+        {
+            "paperId": "8735690a9e8f8884bf27717877ddf7f9071472e5",
+            "title": "Three-Dimensional Object Recognition from Single Two-Dimensional Images"
+        },
+        {
+            "paperId": "4dd5ad87ccf9b8493625e38514e2f37ab9ce99cb",
+            "title": "Description and Recognition of Curved Objects"
+        },
+        {
+            "paperId": "569cd8dd665f78ae021b715adea6dd30db5e499d",
+            "title": "Fetch & Freight : Standard Platforms for Service Robot Applications"
+        },
+        {
+            "paperId": "4f8d648c52edf74e41b0996128aa536e13cc7e82",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": "236db916e2c73eccfe8821110274affcc9b54360",
+            "title": "From Virtual to Reality: Fast Adaptation of Virtual Object Detectors to Real Domains"
+        },
+        {
+            "paperId": "8705d72e80b70f8ba38dd922975563dc7f61d575",
+            "title": "Learning Omnidirectional Path Following Using Dimensionality Reduction"
+        },
+        {
+            "paperId": "31cf3853c378c340ce55f9e5d9527cc851e91b46",
+            "title": "What and Where: 3D Object Recognition with Accurate Pose"
+        },
+        {
+            "paperId": null,
+            "title": "APPENDIX Randomly generated samples from our method"
+        },
+        {
+            "paperId": null,
+            "title": "Assess which elements of our approach are most critical for achieving transfer from simulation to the real world"
+        },
+        {
+            "paperId": null,
+            "title": "a) Evaluate the localization accuracy of our trained detectors in the real world, including in the presence of distractor objects and partial occlusions"
+        }
+    ]
+}

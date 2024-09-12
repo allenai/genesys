@@ -1,0 +1,642 @@
+{
+    "paperId": "791ca7f9f3eb5c0914880711f109e7372fb05959",
+    "externalIds": {
+        "MAG": "2935703330",
+        "DOI": "10.1038/s41576-019-0122-6",
+        "CorpusId": 106411220,
+        "PubMed": "30971806"
+    },
+    "title": "Deep learning: new computational modelling techniques for genomics",
+    "abstract": null,
+    "venue": "Nature reviews genetics",
+    "year": 2019,
+    "referenceCount": 150,
+    "citationCount": 765,
+    "influentialCitationCount": 18,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This Review describes different deep learning techniques and how they can be applied to extract biologically relevant information from large, complex genomic data sets."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "38086241",
+            "name": "G\u00f6k\u00e7en Eraslan"
+        },
+        {
+            "authorId": "52204747",
+            "name": "\u017diga Avsec"
+        },
+        {
+            "authorId": "89030634",
+            "name": "J. Gagneur"
+        },
+        {
+            "authorId": "2958299",
+            "name": "Fabian J Theis"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "36047f63b4825b13893825d44db9627d3b37fd9b",
+            "title": "MMSplice: modular modeling improves the predictions of genetic variant effects on splicing"
+        },
+        {
+            "paperId": "84651a9c11e6cc4f1532a81e93a193c9cbc44859",
+            "title": "Loss Landscapes of Regularized Linear Autoencoders"
+        },
+        {
+            "paperId": "7fa30c8af436b7df513ef41e2cccd8a2404f37f8",
+            "title": "Predicting Splicing from Primary Sequence with Deep Learning"
+        },
+        {
+            "paperId": "faece74722f29827ea979c8878669ccabe045ffc",
+            "title": "Generative modeling and latent space arithmetics predict single-cell perturbation response across cell types, studies and species"
+        },
+        {
+            "paperId": "35b8f503ddc0e41cddb170be7f31b85fbff63c55",
+            "title": "AutoImpute: Autoencoder based imputation of single-cell RNA-seq data"
+        },
+        {
+            "paperId": "c60b4a626f6df833c74a2a5c5dd60734203e59c7",
+            "title": "TF-MoDISco v0.4.4.2-alpha: Technical Note"
+        },
+        {
+            "paperId": "ed5d6be2eb8fc1d42f9a0e3c50abaf5439bbd8dd",
+            "title": "Deep Generative Modeling for Single-cell Transcriptomics"
+        },
+        {
+            "paperId": "595f720b000160a70bd18f4044733872bad7b7a6",
+            "title": "A primer on deep learning in genomics"
+        },
+        {
+            "paperId": "39dc4ad4f83dfc9816138695355809eb0451b81c",
+            "title": "VASC: Dimension Reduction and Visualization of Single-cell RNA-seq Data by Deep Variational Autoencoder"
+        },
+        {
+            "paperId": "a82a54cfee4556191546b57d3fd94f00c03dc95c",
+            "title": "A universal SNP and small-indel variant caller using deep neural networks"
+        },
+        {
+            "paperId": "995495e36f4a2af999875ea4f197ca98c5e5c8de",
+            "title": "Dynamic Task Prioritization for Multitask Learning"
+        },
+        {
+            "paperId": "8c113fc0b05da2fa0e73ccdf3b039a1fe02ba1b6",
+            "title": "Deep learning in biomedicine"
+        },
+        {
+            "paperId": "164d76410a47d00313fdafca520e43bd4a55d2e8",
+            "title": "Parameter tuning is a key part of dimensionality reduction via deep variational autoencoders for single cell RNA transcriptomics"
+        },
+        {
+            "paperId": "e62f5b8dc4ae036fe697d1bc737e5feb9fa0bc0c",
+            "title": "Generalizable and Scalable Visualization of Single-Cell Data Using Neural Networks."
+        },
+        {
+            "paperId": "fd3ed94ad0545fbe9b2000ae144356d30fdf20e2",
+            "title": "Deep learning to predict the lab-of-origin of engineered DNA"
+        },
+        {
+            "paperId": "88cd60e99dbdf0a027fa39a3ca076c0a6f6cf006",
+            "title": "Kipoi: accelerating the community exchange and reuse of predictive models for genomics"
+        },
+        {
+            "paperId": "2134b04cae1a0600c183f9e20e4d0b3031d392b4",
+            "title": "Machine Learning for Integrating Data in Biology and Medicine: Principles, Practice, and Opportunities"
+        },
+        {
+            "paperId": "1b697c261749ad26f7d10892d31f6b9a02770d16",
+            "title": "Towards Gene Expression Convolutions using Gene Interaction Graphs"
+        },
+        {
+            "paperId": "3a58efcc4558727cc5c131c44923635da4524f33",
+            "title": "Relational inductive biases, deep learning, and graph networks"
+        },
+        {
+            "paperId": "fa423270f2d032f7f4225b275a349580303393e7",
+            "title": "Predicting the clinical impact of human mutation with deep neural networks"
+        },
+        {
+            "paperId": "04b3d8f9d191cbf259c459b9f9f2e249db5270ba",
+            "title": "How artificial intelligence is changing drug discovery"
+        },
+        {
+            "paperId": "3a33ede29fa853c17e0dc410deb5aec327e623d8",
+            "title": "OUTRIDER: A statistical method for detecting aberrantly expressed genes in RNA sequencing data"
+        },
+        {
+            "paperId": "8a8cfa45b4c0d071fbffa091c02670b19c94b693",
+            "title": "Do Better ImageNet Models Transfer Better?"
+        },
+        {
+            "paperId": "9de0901ddd7ca487d29aa1e21e6a979da62a62e3",
+            "title": "scVAE: Variational auto-encoders for single-cell gene expression data"
+        },
+        {
+            "paperId": "14e3d020bd9978082730614701a913a1dfa753d7",
+            "title": "Deep learning sequence-based ab initio prediction of variant effects on expression and disease risk"
+        },
+        {
+            "paperId": "6c9f35ccacab6de2bcf527b9242584c85506a7e0",
+            "title": "Massive single-cell RNA-seq analysis and imputation via deep learning"
+        },
+        {
+            "paperId": "2635176a5f9ef5c78786d75cced1dd4f7d1a16d6",
+            "title": "Clairvoyante: a multi-task convolutional deep neural network for variant calling in Single Molecule Sequencing"
+        },
+        {
+            "paperId": "3d4dc879166e902ede476a079684b9f5b5143e13",
+            "title": "From Principal Subspaces to Principal Components with Linear Autoencoders"
+        },
+        {
+            "paperId": "ad99a4a43ff7ccd04a2724dbe03482ad663f4fcc",
+            "title": "Discovering epistatic feature interactions from neural network models of regulatory DNA sequences"
+        },
+        {
+            "paperId": "d9c208af563534ed6add7b8e1e9372909e850f83",
+            "title": "Single-cell RNA-seq denoising using a deep count autoencoder"
+        },
+        {
+            "paperId": "ab610cce472c930387659950edee755201bed031",
+            "title": "pysster: classification of biological sequences by learning sequence and structure motifs with convolutional neural networks"
+        },
+        {
+            "paperId": "04f56bfa55da269f2cb614b157880cb045cb44f6",
+            "title": "Feedback GAN (FBGAN) for DNA: a Novel Feedback-Loop Architecture for Optimizing Protein Functions"
+        },
+        {
+            "paperId": "75bfec7d03aa922b6e2d37b5f92bc37c3025e825",
+            "title": "DeFine: deep convolutional neural networks accurately quantify intensities of transcription factor-DNA binding and facilitate evaluation of functional non-coding variants"
+        },
+        {
+            "paperId": "921196c32213a229245a9705ee4768bc941e7a26",
+            "title": "An Empirical Evaluation of Generic Convolutional and Recurrent Networks for Sequence Modeling"
+        },
+        {
+            "paperId": "ea23236a47ab54b3099753a4cdad1ed55678e24c",
+            "title": "Enhancing Hi-C data resolution with deep convolutional neural network HiCPlus"
+        },
+        {
+            "paperId": "d4dc19e5255d3135f63d5b51b0eeac6af699e2b0",
+            "title": "End-to-end differentiable learning of protein structure"
+        },
+        {
+            "paperId": "29b3088eb732e24da810a45a293fdc64ae3230be",
+            "title": "MAGAN: Aligning Biological Manifolds"
+        },
+        {
+            "paperId": "0a063d1ec630a7cecaad253c34f190cc2db2241e",
+            "title": "Using deep learning to model the hierarchical structure and function of a cell"
+        },
+        {
+            "paperId": "957eb35190e513230ac82f92517b4f42582eda8b",
+            "title": "Generative adversarial networks simulate gene expression and predict perturbations in single cells"
+        },
+        {
+            "paperId": "046c4276b72e21731150c0655519ec717d8f5bad",
+            "title": "Modeling polypharmacy side effects with graph convolutional networks"
+        },
+        {
+            "paperId": "2503dff90685857ce7295e37d0045e2eef41c8b8",
+            "title": "FastGCN: Fast Learning with Graph Convolutional Networks via Importance Sampling"
+        },
+        {
+            "paperId": "70cb60793c160708286fe0182b4552edeb001ccb",
+            "title": "Deep learning improves prediction of CRISPR\u2013Cpf1 guide RNA activity"
+        },
+        {
+            "paperId": "9f9f641d9ecd235ed7455d2a5976a2855313a2b0",
+            "title": "Deep Learning in Pharmacogenomics: From Gene Regulation to Patient Stratification"
+        },
+        {
+            "paperId": "6dc34651b369fd2b1199f6d493aa7e0b87bb94d6",
+            "title": "Structure via super-resolution"
+        },
+        {
+            "paperId": "50a635231911a749374eb4c88ba80fd9c5092522",
+            "title": "Spatial transcriptomics"
+        },
+        {
+            "paperId": "33c019d2643a4eac1bc5eb5889cb3314a0884b64",
+            "title": "Exploring single-cell data with deep multitasking neural networks"
+        },
+        {
+            "paperId": "f1865727b9b3c681c09b7e8429affe316cc4eb17",
+            "title": "Generating and designing DNA with deep generative models"
+        },
+        {
+            "paperId": "a8a259dfc14cfb0d747746b23d97c2dc622a7b75",
+            "title": "Computational biology: deep learning"
+        },
+        {
+            "paperId": "582157494d72dd28dc28172f04dfd5f25fb17bff",
+            "title": "GradNorm: Gradient Normalization for Adaptive Loss Balancing in Deep Multitask Networks"
+        },
+        {
+            "paperId": "b36a5bb1707bb9c70025294b3a310138aae8327a",
+            "title": "Automatic differentiation in PyTorch"
+        },
+        {
+            "paperId": "3df0df43e225794b27f3bcfbaf55098bc6134ad6",
+            "title": "Interpretable dimensionality reduction of single cell transcriptome data with deep generative models"
+        },
+        {
+            "paperId": "5c8a622955c7da0dc68919d9b331ffb8f65d5500",
+            "title": "Single cells make big data: New challenges and opportunities in transcriptomics"
+        },
+        {
+            "paperId": "c4d33e602615608d29bb296591591fe4e51b7bf2",
+            "title": "Using neural networks for reducing the dimensions of single-cell RNA-Seq data"
+        },
+        {
+            "paperId": "50cf4cf8be84a953ba1ad86d71f7f599656bc561",
+            "title": "Modeling positional effects of regulatory sequences with spline transformations increases prediction accuracy of deep neural networks"
+        },
+        {
+            "paperId": "b7c4570d7d97f327e7f82fe28100172ec5e94cac",
+            "title": "Predicting multicellular function through multi-layer tissue networks"
+        },
+        {
+            "paperId": "09f804b59c8fc356273f98b273290ad6fbdb443b",
+            "title": "Sequential regulatory activity prediction across chromosomes with convolutional neural networks"
+        },
+        {
+            "paperId": "041ed3b277e5852a28acd23740b0772a7ce3c6ef",
+            "title": "Privacy-Preserving Generative Deep Neural Networks Support Clinical Data Sharing"
+        },
+        {
+            "paperId": "6dba2b577577ed7eee476ef492438dd81129fd68",
+            "title": "Unsupervised Extraction of Stable Expression Signatures from Public Compendia with an Ensemble of Neural Networks."
+        },
+        {
+            "paperId": "8bf9342a647fe4eb6f46f8e045806a1c0069bf16",
+            "title": "ADAGE signature analysis: differential expression analysis with data-defined gene sets"
+        },
+        {
+            "paperId": "591ce4784236c6b75635d9c7b7617d7d946d21f7",
+            "title": "FactorNet: a deep learning framework for predicting cell type specific transcription factor binding from nucleotide-resolution sequential data"
+        },
+        {
+            "paperId": "a1379b953cd1a573b0eb162730cb954e6976d30f",
+            "title": "Prediction of RNA-protein sequence and structure binding preferences using deep convolutional and recurrent neural networks"
+        },
+        {
+            "paperId": "6b7d6e6416343b2a122f8416e69059ce919026ef",
+            "title": "Inductive Representation Learning on Large Graphs"
+        },
+        {
+            "paperId": "ca1a5064de08a56e6dcbf72c58600c98a62a6059",
+            "title": "Reconstructing cell cycle and disease progression using deep learning"
+        },
+        {
+            "paperId": "dc0c84b7c5e6521216da789f8171544709120cf0",
+            "title": "Opportunities and obstacles for deep learning in biology and medicine"
+        },
+        {
+            "paperId": "89fdf12b4ae446197ddee88ca3d2bddf81bd4c78",
+            "title": "Deep learning of the regulatory grammar of yeast 5\u2032 untranslated regions from 500,000 random sequences"
+        },
+        {
+            "paperId": "f302e136c41db5de1d624412f68c9174cf7ae8be",
+            "title": "Axiomatic Attribution for Deep Networks"
+        },
+        {
+            "paperId": "d2c45f31c0f3b6f1fb89e6de09a934522f36f322",
+            "title": "Integrative deep models for alternative splicing"
+        },
+        {
+            "paperId": "8462a568c3acc6b9babfa52d758c0c3eb44700cb",
+            "title": "Nucleotide sequence and DNaseI sensitivity are predictive of 3D chromatin architecture"
+        },
+        {
+            "paperId": "e1ec11a1cb3d9745fb18d3bf74247f95a6663d08",
+            "title": "Dermatologist-level classification of skin cancer with deep neural networks"
+        },
+        {
+            "paperId": "6ebb35205b829eafa235fd3e9846b35c5a86ecd8",
+            "title": "RNA-protein binding motifs mining with a new hybrid deep learning based cross-domain knowledge integration approach"
+        },
+        {
+            "paperId": "a9425407f20d081f66c0b9a2d86c066b0b2e24e6",
+            "title": "Automating Morphological Profiling with Generic Deep Convolutional Networks"
+        },
+        {
+            "paperId": "5e007edf739f29b4a191f34b7bd5f5a9afd2b82e",
+            "title": "MiRTDL: A Deep Learning Approach for miRNA Target Prediction"
+        },
+        {
+            "paperId": "a248ef9aadc90d7732ce20f202c17a04bc84a50b",
+            "title": "Removal of batch effects using distribution\u2010matching residual networks"
+        },
+        {
+            "paperId": "561269a24f2f2a06409109723a8ab93a01696efc",
+            "title": "Federated Optimization: Distributed Machine Learning for On-Device Intelligence"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "36eff562f65125511b5dfab68ce7f7a943c27478",
+            "title": "Semi-Supervised Classification with Graph Convolutional Networks"
+        },
+        {
+            "paperId": "638ebc12f9d7dce45c79d80c78b19d5df1ca8330",
+            "title": "Predicting the impact of non-coding variants on DNA methylation"
+        },
+        {
+            "paperId": "b6287a88ceb7f98e52c9142c61432ab91d0f0f19",
+            "title": "Deep Motif Dashboard: Visualizing and Understanding Genomic Sequences Using Deep Neural Networks"
+        },
+        {
+            "paperId": "edf4f6905c8059df8bf1b9166875fc00342e0688",
+            "title": "Points of Significance: Classification evaluation"
+        },
+        {
+            "paperId": "efd68f3724942c9de5dc804d3c7cb3f70f42234b",
+            "title": "Deep learning for computational biology"
+        },
+        {
+            "paperId": "837566abb925a33b33544965bbe8d9bb710af7d6",
+            "title": "DeepCpG: accurate prediction of single-cell DNA methylation states using deep learning"
+        },
+        {
+            "paperId": "38b85aa3e3c1bee070b8f80f84a016873e158dc8",
+            "title": "PEDLA: predicting enhancers with a deep learning-based algorithmic framework"
+        },
+        {
+            "paperId": "1824ed7b6034b3ec1a7f76fd686796d6a11fc2ca",
+            "title": "Denoising genome-wide histone ChIP-seq with convolutional neural networks"
+        },
+        {
+            "paperId": "2ac9995a47f9753041e8e760fb083dfb83998267",
+            "title": "Not Just a Black Box: Learning Important Features Through Propagating Activation Differences"
+        },
+        {
+            "paperId": "9d9c573ca0da8daf06fb2627e792d23e59da4bb4",
+            "title": "deepMiRGene: Deep Neural Network based Precursor microRNA Prediction"
+        },
+        {
+            "paperId": "e85d3bd319512966bb61f4a56e196f89fd4554c2",
+            "title": "DeepNano: Deep recurrent neural networks for base calling in MinION nanopore reads"
+        },
+        {
+            "paperId": "cc384cff27d8a609f89f9e915c26bf31c39749a1",
+            "title": "Deep learning in bioinformatics"
+        },
+        {
+            "paperId": "892f9a2f69241feec647856cd26bed37e04fd747",
+            "title": "Hyperband: A Novel Bandit-Based Approach to Hyperparameter Optimization"
+        },
+        {
+            "paperId": "9c9d7247f8c51ec5a02b0d911d1d7b9e8160495d",
+            "title": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems"
+        },
+        {
+            "paperId": "561c3fa53d36405186da9cab02bd68635c3738aa",
+            "title": "Molecular graph convolutions: moving beyond fingerprints"
+        },
+        {
+            "paperId": "883cb6915efa000d6fb99b1e1108e10c0cbeae86",
+            "title": "Genome-wide prediction of cis-regulatory regions using supervised deep learning methods"
+        },
+        {
+            "paperId": "effbd1194199216b74ad4b9c3058dfa089a6eff3",
+            "title": "ADAGE-Based Integration of Publicly Available Pseudomonas aeruginosa Gene Expression Data with Denoising Autoencoders Illuminates Microbe-Host Interactions"
+        },
+        {
+            "paperId": "98b2df80e7850ab71933a278eec5504c7d04e1d3",
+            "title": "DanQ: a hybrid convolutional and recurrent deep neural network for quantifying the function of DNA sequences"
+        },
+        {
+            "paperId": "19bcb1b3fd7cfd8f2e4ea4579effa32d808adb0e",
+            "title": "Basset: learning the regulatory code of the accessible genome with deep convolutional neural networks"
+        },
+        {
+            "paperId": "e018d3883c82c9f85a4c8b7698c3fe52cc40eb39",
+            "title": "Predicting effects of noncoding variants with deep learning\u2013based sequence model"
+        },
+        {
+            "paperId": "42d3ae61ca296558cba61446bd95b8a6e5b1082d",
+            "title": "Predicting the sequence specificities of DNA- and RNA-binding proteins by deep learning"
+        },
+        {
+            "paperId": "5e4de22e6e3f8c49bf5573aaba10f1985b8d17b9",
+            "title": "Deep convolutional neural networks for annotating gene expression patterns in the mouse brain"
+        },
+        {
+            "paperId": "9873d43696165b50fab955d27b9dde838c0a0152",
+            "title": "Machine learning applications in genetics and genomics"
+        },
+        {
+            "paperId": "a5c20296d24648ed1a30f208d8a0e4ca2630ef53",
+            "title": "DANN: a deep learning approach for annotating the pathogenicity of genetic variants"
+        },
+        {
+            "paperId": "509b63e1f5ca0ad0bc13f863a3cb562f148fc2c5",
+            "title": "The human splicing code reveals new insights into the genetic determinants of disease"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "24741d280869ad9c60321f5ab6e5f01b7852507d",
+            "title": "Deep Speech: Scaling up end-to-end speech recognition"
+        },
+        {
+            "paperId": "18bd7cc631398a2b73dfcddb9c89afef604b0d83",
+            "title": "A first look at the Oxford Nanopore MinION sequencer"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "1671e83110a4a9b141de8e0888f5c3464844f2e0",
+            "title": "Enhanced Regulatory Sequence Prediction Using Gapped k-mer Features"
+        },
+        {
+            "paperId": "193edd20cae92c6759c18ce93eeea96afd9528eb",
+            "title": "Deep learning in neural networks: An overview"
+        },
+        {
+            "paperId": "dc6ac3437f0a6e64e4404b1b9d188394f8a3bf71",
+            "title": "Deep Inside Convolutional Networks: Visualising Image Classification Models and Saliency Maps"
+        },
+        {
+            "paperId": "06482e7f6fbead4d7ca3f526a99e83daca9c0097",
+            "title": "Integrative approaches for finding modular structure in biological networks"
+        },
+        {
+            "paperId": "624b56a8a8a0499ceb2d4287562f3eb3bb76f1f9",
+            "title": "Evaluation of methods for modeling transcription factor sequence specificity"
+        },
+        {
+            "paperId": "98ac9cc09fd81741408ad5eba2c951bd86006ffc",
+            "title": "Systematic Localization of Common Disease-Associated Variation in Regulatory DNA"
+        },
+        {
+            "paperId": "8bcc4170f64cd26db2935ee042c6d533d1767014",
+            "title": "An Integrated Encyclopedia of DNA Elements in the Human Genome"
+        },
+        {
+            "paperId": "522e90b9fccfd3c1c0603359eb04757d770c1ab5",
+            "title": "Practical Recommendations for Gradient-Based Training of Deep Architectures"
+        },
+        {
+            "paperId": "188e247506ad992b8bc62d6c74789e89891a984f",
+            "title": "Random Search for Hyper-Parameter Optimization"
+        },
+        {
+            "paperId": "7d3839c638ce7d85ea67e16d06c6cd3791bf0160",
+            "title": "Discriminative prediction of mammalian enhancers from DNA sequence."
+        },
+        {
+            "paperId": "268b8f10a45e71f63daab6403bb453da31ae28a7",
+            "title": "Melting of Peridotite to 140 Gigapascals"
+        },
+        {
+            "paperId": "e79272fe3d65197100eae8be9fec6469107969ae",
+            "title": "Object Detection with Discriminatively Trained Part Based Models"
+        },
+        {
+            "paperId": "e2b7f37cd97a7907b1b8a41138721ed06a0b76cd",
+            "title": "Stacked Denoising Autoencoders: Learning Useful Representations in a Deep Network with a Local Denoising Criterion"
+        },
+        {
+            "paperId": "ad07a438761a4ec34dfa78191f94dedd60d714af",
+            "title": "ChIP\u2013seq: advantages and challenges of a maturing technology"
+        },
+        {
+            "paperId": "9c6bf5157ad2fb538089de9fc9c3c453025d4d17",
+            "title": "Genome-wide profiles of STAT1 DNA association using chromatin immunoprecipitation and massively parallel sequencing"
+        },
+        {
+            "paperId": "c5d15702ed2bed2160e668ce5197c1005db8ca70",
+            "title": "Genome-Wide Mapping of in Vivo Protein-DNA Interactions"
+        },
+        {
+            "paperId": "4ae155011e8d7ab3da901acbd449510da9a533b1",
+            "title": "High-Resolution Profiling of Histone Methylations in the Human Genome"
+        },
+        {
+            "paperId": "65d1a9e819961fc6c23fd7451306da4470cc7282",
+            "title": "What are DNA sequence motifs?"
+        },
+        {
+            "paperId": "61adfc005eb0421c64a1d077810a8dbb86c0f217",
+            "title": "Non-linear PCA: a missing data approach"
+        },
+        {
+            "paperId": "a740f0d0055af7974b3fc63be5bf307f007438b6",
+            "title": "Functional SNPs in the lymphotoxin-\u03b1 gene that are associated with susceptibility to myocardial infarction"
+        },
+        {
+            "paperId": "1679beddda3a183714d380e944fe6bf586c083cd",
+            "title": "Greedy function approximation: A gradient boosting machine."
+        },
+        {
+            "paperId": "e5df6bc6da5653ad98e754b08f63326c2e52b372",
+            "title": "Statistical Modeling: The Two Cultures (with comments and a rejoinder by the author)"
+        },
+        {
+            "paperId": "70b6cffd868290b93c71bdd1b6c81cf02d78fd9b",
+            "title": "Proteomics: Guilt-by-association goes global"
+        },
+        {
+            "paperId": "41c6f229c4b149d502f89ffc386febb24116bd25",
+            "title": "Molecular classification of cancer: class discovery and class prediction by gene expression monitoring."
+        },
+        {
+            "paperId": "d30cf4154da4dc8c8073c2f59cc35b1e7d453a65",
+            "title": "Biological Sequence Analysis: Probabilistic Models of Proteins and Nucleic Acids"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "2061d53d1b31225a7edb79f0cb18f8ce703ed3bb",
+            "title": "Functional genomics: it's all how you read it."
+        },
+        {
+            "paperId": "87c280d0dc204ca5db0d325991a21c211aeec866",
+            "title": "Nonlinear principal component analysis using autoassociative neural networks"
+        },
+        {
+            "paperId": "668087f0ae7ce1de6e0bd0965dbb480c08103260",
+            "title": "Finding Structure in Time"
+        },
+        {
+            "paperId": "1034b6e579d2ce1f60e521236e4b11c3eb0ecd18",
+            "title": "Use of the 'Perceptron' algorithm to distinguish translational initiation sites in E. coli."
+        },
+        {
+            "paperId": "957728a4244d3b323e98e351098a0125382f1199",
+            "title": "Problems in the Analysis of Survey Data, and a Proposal"
+        },
+        {
+            "paperId": "ef4f5a50837a7c1b3e87b9300ffc7ba00d461a0f",
+            "title": "AUTO-ENCODING VARIATIONAL BAYES"
+        },
+        {
+            "paperId": null,
+            "title": "Neural architecture search: a survey"
+        },
+        {
+            "paperId": "0a2586e0a5f8bb4e35aa0763a6b8bca428af6bd2",
+            "title": "Taking the Human Out of the Loop: A Review of Bayesian Optimization"
+        },
+        {
+            "paperId": null,
+            "title": "Pattern Recognition and Machine Learning (Springer, New York, 2016)"
+        },
+        {
+            "paperId": "2913c2bf3f92b5ae369400a42b2d27cc5bc05ecb",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": "360ca02e6f5a5e1af3dce4866a257aafc2d6d6f5",
+            "title": "Machine learning - a probabilistic perspective"
+        },
+        {
+            "paperId": null,
+            "title": "Lecture 6.5 - RMSProp, COURSERA: neural networks for machine learning"
+        },
+        {
+            "paperId": "3d188c6936ad6dd478e01f2dd34bb2167f43e7d7",
+            "title": "Network medicine: a network-based approach to human disease"
+        },
+        {
+            "paperId": "ae7b96d287893d246313ccd0566cc4a17f863d44",
+            "title": "Principal Component Analysis"
+        },
+        {
+            "paperId": "3efd851140aa28e95221b55fcc5659eea97b172d",
+            "title": "The Graph Neural Network Model"
+        },
+        {
+            "paperId": "7c59908c946a4157abc030cdbe2b63d08ba97db3",
+            "title": "Supporting Online Material for Reducing the Dimensionality of Data with Neural Networks"
+        },
+        {
+            "paperId": "8e0be569ea77b8cb29bb0e8b031887630fe7a96c",
+            "title": "Random Forests"
+        },
+        {
+            "paperId": "df20e7cbcd2f3b4f56114eab12a6d1d1a352cf14",
+            "title": "DNA binding sites: representation and discovery"
+        },
+        {
+            "paperId": "50e79aec902e7794ed9cc10ffbc9d058c99faca1",
+            "title": "Array of hope"
+        },
+        {
+            "paperId": "088eb2d102c6bb486f5270d0b2adff76961994cf",
+            "title": "Example-Based Learning for View-Based Human Face Detection"
+        }
+    ]
+}

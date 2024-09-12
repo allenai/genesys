@@ -1,0 +1,126 @@
+{
+    "paperId": "523f420cb55d8070f565c87a50099a9a5b0b9206",
+    "externalIds": {
+        "ACL": "C08-1066",
+        "DBLP": "conf/coling/MacCartneyM08",
+        "MAG": "2066770300",
+        "DOI": "10.3115/1599081.1599147",
+        "CorpusId": 5617715
+    },
+    "title": "Modeling Semantic Containment and Exclusion in Natural Language Inference",
+    "abstract": "We propose an approach to natural language inference based on a model of natural logic, which identifies valid inferences by their lexical and syntactic features, without full semantic interpretation. We greatly extend past work in natural logic, which has focused solely on semantic containment and monotonicity, to incorporate both semantic exclusion and implicativity. Our system decomposes an inference problem into a sequence of atomic edits linking premise to hypothesis; predicts a lexical entailment relation for each edit using a statistical classifier; propagates these relations upward through a syntax tree according to semantic properties of intermediate nodes; and composes the resulting entailment relations across the edit sequence. We evaluate our system on the FraCaS test suite, and achieve a 27% reduction in error from previous work. We also show that hybridizing an existing RTE system with our natural logic system yields significant gains on the RTE3 test suite.",
+    "venue": "International Conference on Computational Linguistics",
+    "year": 2008,
+    "referenceCount": 22,
+    "citationCount": 203,
+    "influentialCitationCount": 20,
+    "openAccessPdf": {
+        "url": "http://dl.acm.org/ft_gateway.cfm?id=1599147&type=pdf",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes an approach to natural language inference based on a model of natural logic, which identifies valid inferences by their lexical and syntactic features, without full semantic interpretation, to incorporate both semantic exclusion and implicativity."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3257930",
+            "name": "Bill MacCartney"
+        },
+        {
+            "authorId": "144783904",
+            "name": "Christopher D. Manning"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "4639cb3718e4eb698a0285548ed2bf23ad9908a9",
+            "title": "Natural Logic for Textual Inference"
+        },
+        {
+            "paperId": "ae83cc2a1425196215a06aec25032b305896d223",
+            "title": "An Extensible Probabilistic Transformation-based Approach to the Third Recognizing Textual Entailment Challenge"
+        },
+        {
+            "paperId": "ea88970b4c3188f09f388f6f2fa54a6e81aacf08",
+            "title": "Using Scenario Knowledge in Automatic Question Answering"
+        },
+        {
+            "paperId": "757a192157d7587433db93a899d32c4c5e832489",
+            "title": "Learning to recognize features of valid textual entailments"
+        },
+        {
+            "paperId": "4e751a9017dbd825418d35afba6442df958a973c",
+            "title": "Tregex and Tsurgeon: tools for querying and manipulating tree data structures"
+        },
+        {
+            "paperId": "dce3bcaf68e10992a49189c1227a3ccd4cc8a11d",
+            "title": "Classification of Semantic Relations by Humans and Machines"
+        },
+        {
+            "paperId": "37c5bd3db1444d6ad331b876fbccb6e009eef44d",
+            "title": "Applying COGEX to Recognize Textual Entailment"
+        },
+        {
+            "paperId": "a600850ac0120cb09a0b7de7da80bb6a7a76de06",
+            "title": "Accurate Unlexicalized Parsing"
+        },
+        {
+            "paperId": "6b64e068a8face2540fc436af40dbcd2b0912bbf",
+            "title": "Semantic Similarity Based on Corpus Statistics and Lexical Taxonomy"
+        },
+        {
+            "paperId": "291e2f2b3f4dd1007d72b66256810344d0f0f74b",
+            "title": "A note on existential import"
+        },
+        {
+            "paperId": "e6d2b9265b639d0905595a3d5c394b727d62e742",
+            "title": "Essays in Logical Semantics"
+        },
+        {
+            "paperId": "3d0f57ebc7de2b83802f8633c21152100493c7c5",
+            "title": "Linguistics and natural logic"
+        },
+        {
+            "paperId": "2f39ea8457f3c8ef100f314a8fa580cd4108a984",
+            "title": "Investigating a Generic Paraphrase-Based Approach for Relation Extraction"
+        },
+        {
+            "paperId": "d3b11693dc209e117ca9bc3812d783d3fd0424d2",
+            "title": "Learning to distinguish valid textual entailments"
+        },
+        {
+            "paperId": "fd2b5c820c10763277fa9dbee2e370d8750552be",
+            "title": "Computing relative polarity for textual inference"
+        },
+        {
+            "paperId": "e808f28d411a958c5db81ceb111beb2638698f47",
+            "title": "The PASCAL Recognising Textual Entailment Challenge"
+        },
+        {
+            "paperId": "a508159293cdfc7fcc8d5027097a7c699a1aa10b",
+            "title": "Recognizing Textual Entailment with LCC\u2019s G ROUNDHOG System"
+        },
+        {
+            "paperId": "77836624ea89c3abf54a2be4f8e7feef40eb7b45",
+            "title": "Textual Entailment Resolution via Atomic Propositions"
+        },
+        {
+            "paperId": "4c5e22a533d3862f284e3efa391d87f01e3b39c1",
+            "title": "Recognizing Textual Entailment Using Lexical Similarity"
+        },
+        {
+            "paperId": "1446d3f9b912a46ee1211e88408843745c751a4b",
+            "title": "Presupposition Projection as Anaphora Resolution"
+        },
+        {
+            "paperId": "6fae7fe80de4e3f358d5f0cc57dac4de26e5f41b",
+            "title": "Studies on Natural Logic and Categorial Grammar"
+        },
+        {
+            "paperId": "51c85b779c5bb2efd2c736c85c14930a0a78db1d",
+            "title": "When logical inference helps determining textual entailment ( and when it doesn \u2019 t )"
+        }
+    ]
+}

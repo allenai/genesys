@@ -1,0 +1,190 @@
+{
+    "paperId": "a2785f66c20fbdf30ec26c0931584c6d6a0f4fca",
+    "externalIds": {
+        "MAG": "1850742715",
+        "DBLP": "journals/corr/GregorDGW15",
+        "ArXiv": "1502.04623",
+        "CorpusId": 1930231
+    },
+    "title": "DRAW: A Recurrent Neural Network For Image Generation",
+    "abstract": "This paper introduces the Deep Recurrent Attentive Writer (DRAW) neural network architecture for image generation. DRAW networks combine a novel spatial attention mechanism that mimics the foveation of the human eye, with a sequential variational auto-encoding framework that allows for the iterative construction of complex images. The system substantially improves on the state of the art for generative models on MNIST, and, when trained on the Street View House Numbers dataset, it generates images that cannot be distinguished from real data with the naked eye.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2015,
+    "referenceCount": 36,
+    "citationCount": 1896,
+    "influentialCitationCount": 136,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Deep Recurrent Attentive Writer neural network architecture for image generation substantially improves on the state of the art for generative models on MNIST, and, when trained on the Street View House Numbers dataset, it generates images that cannot be distinguished from real data with the naked eye."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "144717963",
+            "name": "Karol Gregor"
+        },
+        {
+            "authorId": "1841008",
+            "name": "Ivo Danihelka"
+        },
+        {
+            "authorId": "1753223",
+            "name": "Alex Graves"
+        },
+        {
+            "authorId": "1748523",
+            "name": "Danilo Jimenez Rezende"
+        },
+        {
+            "authorId": "1688276",
+            "name": "Daan Wierstra"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "3445cc781ebdcf65840bd6314bc0c8c634f1ef5e",
+            "title": "A Neural Autoregressive Approach to Attention-based Recognition"
+        },
+        {
+            "paperId": "7845f1d3e796b5704d4bd37a945e0cf3fb8bbf1f",
+            "title": "Multiple Object Recognition with Visual Attention"
+        },
+        {
+            "paperId": "6ef259c2f6d50373abfec14fcb8fa924f7b7af0b",
+            "title": "Attention for Fine-Grained Categorization"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "b712ccc32236afe9f8a13d9871911b30aa069e2b",
+            "title": "Optimizing Neural Networks that Generate Iimages"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "8a756d4d25511d92a45d0f4545fa819de993851d",
+            "title": "Recurrent Models of Visual Attention"
+        },
+        {
+            "paperId": "c175081733d98e63fa68a70405a35804c318afc5",
+            "title": "Iterative Neural Autoregressive Distribution Estimator NADE-k"
+        },
+        {
+            "paperId": "331f0fb3b6176c6e463e0401025b04f6ace9ccd3",
+            "title": "Neural Variational Inference and Learning in Belief Networks"
+        },
+        {
+            "paperId": "484ad17c926292fbe0d5211540832a8c8a8e958b",
+            "title": "Stochastic Backpropagation and Approximate Inference in Deep Generative Models"
+        },
+        {
+            "paperId": "0ca6cccbfcf3df972a470c7fe18f7eaed9420cd6",
+            "title": "Learning Generative Models with Visual Attention"
+        },
+        {
+            "paperId": "b3d8dffb73bc93de239998548386c84177caa2ad",
+            "title": "Multi-digit Number Recognition from Street View Imagery using Deep Convolutional Neural Networks"
+        },
+        {
+            "paperId": "5f5dc5b9a2ba710937e2c413b37b053cd673df02",
+            "title": "Auto-Encoding Variational Bayes"
+        },
+        {
+            "paperId": "695a2c95eacdbccb7a73d2f1e90e7b35b4b3d864",
+            "title": "Deep AutoRegressive Networks"
+        },
+        {
+            "paperId": "705fd4febe2fff810d2f72f48dcda20826eca77a",
+            "title": "A Deep and Tractable Density Estimator"
+        },
+        {
+            "paperId": "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17",
+            "title": "Generating Sequences With Recurrent Neural Networks"
+        },
+        {
+            "paperId": "72829d537f0ec8b1cc0ced2f278bb56ce89f1b0c",
+            "title": "Learning Where to Attend with Deep Architectures for Image Tracking"
+        },
+        {
+            "paperId": "0bff8898e3ebb1ab67fd20b5db00c6cb1938e6c3",
+            "title": "Learning to combine foveal glimpses with a third-order Boltzmann machine"
+        },
+        {
+            "paperId": "ddc45fad8d15771d9f1f8579331458785b2cdd93",
+            "title": "Deep Boltzmann Machines"
+        },
+        {
+            "paperId": "4341446db90f569e689cddf2b08a5093a5bb83ae",
+            "title": "Evaluating probabilities under high-dimensional latent variable models"
+        },
+        {
+            "paperId": "08d0ea90b53aba0008d25811268fe46562cfb38c",
+            "title": "On the quantitative analysis of deep belief networks"
+        },
+        {
+            "paperId": "11540131eae85b2e11d53df7f1360eeb6476e7f4",
+            "title": "Learning to Forget: Continual Prediction with LSTM"
+        },
+        {
+            "paperId": "5d09fc5fcad9be43e97987980238031ffcaddba7",
+            "title": "Learning where to look"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "605402e235bd62437baf3c9ebefe77fb4d92ee95",
+            "title": "The Helmholtz Machine"
+        },
+        {
+            "paperId": "c7e07cf8ba4ad956483f9dd37a168355ef16a041",
+            "title": "Markov Chain Monte Carlo and Variational Inference: Bridging the Gap"
+        },
+        {
+            "paperId": "02227c94dd41fe0b439e050d377b0beb5d427cda",
+            "title": "Reading Digits in Natural Images with Unsupervised Feature Learning"
+        },
+        {
+            "paperId": "b893e7053c9c7e266a23fb13a42261a88f650210",
+            "title": "The Neural Autoregressive Distribution Estimator"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        },
+        {
+            "paperId": "7c59908c946a4157abc030cdbe2b63d08ba97db3",
+            "title": "Supporting Online Material for Reducing the Dimensionality of Data with Neural Networks"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": null,
+            "title": "Experiments \u2013 Generating CIFAR Images"
+        },
+        {
+            "paperId": null,
+            "title": "Experiments \u2013 Cluttered MNIST Classification Experiments \u2013 MNIST Generation"
+        },
+        {
+            "paperId": null,
+            "title": "Experiments \u2013 MNIST Generation with Two Digits 13 / 16"
+        },
+        {
+            "paperId": null,
+            "title": "Experiments \u2013 Street View House Number Generation 14 / 16"
+        }
+    ]
+}

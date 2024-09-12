@@ -1,0 +1,162 @@
+{
+    "paperId": "b7c7b62b0a40e8bbf972273e7315abd2b62f1223",
+    "externalIds": {
+        "MAG": "2799132109",
+        "ArXiv": "1804.11313",
+        "DBLP": "journals/corr/abs-1804-11313",
+        "CorpusId": 13743800
+    },
+    "title": "How Robust are Deep Neural Networks?",
+    "abstract": "Convolutional and Recurrent, deep neural networks have been successful in machine learning systems for computer vision, reinforcement learning, and other allied fields. However, the robustness of such neural networks is seldom apprised, especially after high classification accuracy has been attained. In this paper, we evaluate the robustness of three recurrent neural networks to tiny perturbations, on three widely used datasets, to argue that high accuracy does not always mean a stable and a robust (to bounded perturbations, adversarial attacks, etc.) system. Especially, normalizing the spectrum of the discrete recurrent network to bound the spectrum (using power method, Rayleigh quotient, etc.) on a unit disk produces stable, albeit highly non-robust neural networks. Furthermore, using the $\\epsilon$-pseudo-spectrum, we show that training of recurrent networks, say using gradient-based methods, often result in non-normal matrices that may or may not be diagonalizable. Therefore, the open problem lies in constructing methods that optimize not only for accuracy but also for the stability and the robustness of the underlying neural network, a criterion that is distinct from the other.",
+    "venue": "arXiv.org",
+    "year": 2018,
+    "referenceCount": 32,
+    "citationCount": 31,
+    "influentialCitationCount": 0,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper evaluates the robustness of three recurrent neural networks to tiny perturbations, on three widely used datasets, to argue that high accuracy does not always mean a stable and a robust system."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "39599054",
+            "name": "B. Sengupta"
+        },
+        {
+            "authorId": "1737497",
+            "name": "Karl J. Friston"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "c7b013e1cb9a676922afbb639af5eeb6a51809b4",
+            "title": "LatentPoison - Adversarial Attacks On The Latent Space"
+        },
+        {
+            "paperId": "2454a14b6667c927d132210b550f37f8ac5cc2fd",
+            "title": "GeoSeq2Seq: Information Geometric Sequence-to-Sequence Networks"
+        },
+        {
+            "paperId": "01868a1c7a4e1a882c9045136f033d79273f889e",
+            "title": "StackSeq2Seq: Dual Encoder Seq2Seq Recurrent Networks"
+        },
+        {
+            "paperId": "eda82ed58b77186c4093380a4a9b5394ede0f4d6",
+            "title": "Approximating meta-heuristics with homotopic recurrent neural networks"
+        },
+        {
+            "paperId": "b74bfb6afd5abcb2c6fe0b2f8d60b97cdb80ca55",
+            "title": "Orthogonal Recurrent Neural Networks with Scaled Cayley Transform"
+        },
+        {
+            "paperId": "0359739027d44f2baa0ae7e99fca8e3400b8181f",
+            "title": "Evolving Deep Neural Networks"
+        },
+        {
+            "paperId": "9d1fb89b99aafc01ee56fc92df1ad150fba67c22",
+            "title": "On orthogonality and learning recurrent networks with long term dependencies"
+        },
+        {
+            "paperId": "6e99f4859eb420ace7f03f098940135c1c355075",
+            "title": "Efficient Orthogonal Parametrisation of Recurrent Neural Networks Using Householder Reflections"
+        },
+        {
+            "paperId": "79c78c98ea317ba8cdf25a9783ef4b8a7552db75",
+            "title": "Full-Capacity Unitary Recurrent Neural Networks"
+        },
+        {
+            "paperId": "b818cb3cb5cebae2251706f97d41b3c20f4b7b9b",
+            "title": "Towards a Neuronal Gauge Theory"
+        },
+        {
+            "paperId": "e9c771197a6564762754e48c1daafb066f449f2e",
+            "title": "Unitary Evolution Recurrent Neural Networks"
+        },
+        {
+            "paperId": "86311b182786bfde19446f6ded0854de973d4060",
+            "title": "A Neural Conversational Model"
+        },
+        {
+            "paperId": "d46b81707786d18499f911b4ab72bb10c65406ba",
+            "title": "A Simple Way to Initialize Recurrent Networks of Rectified Linear Units"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "84069287da0a6b488b8c933f3cb5be759cb6237e",
+            "title": "On the difficulty of training recurrent neural networks"
+        },
+        {
+            "paperId": "87c75ff29d956034f8f0a951e370b693addb165d",
+            "title": "Perception and self-organized instability"
+        },
+        {
+            "paperId": "1c61f9ef06fe74505775a833ff849185757199e7",
+            "title": "Learning Word Vectors for Sentiment Analysis"
+        },
+        {
+            "paperId": "03cbad7e7d88c3d4aafbe96af8ae3dade3772963",
+            "title": "Post hoc Bayesian model selection"
+        },
+        {
+            "paperId": "116ae9841bbbcd940ba219f8c75e0218da56dbad",
+            "title": "Comparing Families of Dynamic Causal Models"
+        },
+        {
+            "paperId": "69e5339c0c3928a354e848b9ccf5349f6397e60b",
+            "title": "Reservoir computing approaches to recurrent neural network training"
+        },
+        {
+            "paperId": "bce0beb84ff26f7a0ca701142f97f9223dd4564a",
+            "title": "Balanced Amplification: A New Mechanism of Selective Amplification of Neural Activity Patterns"
+        },
+        {
+            "paperId": "2ab80fd2f97e908b43cd8c010b71dbeda69aef74",
+            "title": "Memory without Feedback in a Neural Network"
+        },
+        {
+            "paperId": "80c77d57a4e1c365d1feb7c0a1ba165b10f7de7c",
+            "title": "Memory traces in dynamical systems"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "5b458ee989583e9a6a67046ed9441e254a49b1da",
+            "title": "Matrix computations (3rd ed.)"
+        },
+        {
+            "paperId": "d0be39ee052d246ae99c082a565aba25b811be2d",
+            "title": "Learning long-term dependencies with gradient descent is difficult"
+        },
+        {
+            "paperId": "bab8954585196bf5226130291297ec417bf84964",
+            "title": "Feedback stabilization of linear dynamical plants with uncertainty in the gain factor"
+        },
+        {
+            "paperId": null,
+            "title": "Approximate Bayesian inference as a gauge theory"
+        },
+        {
+            "paperId": "4f8d648c52edf74e41b0996128aa536e13cc7e82",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": "b87274e6d9aa4e6ba5148898aa92941617d2b6ed",
+            "title": "Efficient BackProp"
+        },
+        {
+            "paperId": "7c89526e7a429b44dd610a2da67f80ad47d963a2",
+            "title": "Feedback and Optimal Sensitivity: Model Reference Transformations, Multiplicative Seminorms, and Approximate Inverses"
+        },
+        {
+            "paperId": null,
+            "title": "Illustrate that the learned weight matrices of RNN, LSTM and GRU can often be non-normal"
+        }
+    ]
+}

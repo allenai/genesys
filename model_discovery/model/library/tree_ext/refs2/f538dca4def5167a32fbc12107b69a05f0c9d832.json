@@ -1,0 +1,150 @@
+{
+    "paperId": "f538dca4def5167a32fbc12107b69a05f0c9d832",
+    "externalIds": {
+        "DBLP": "journals/corr/SmilkovTKVW17",
+        "MAG": "2626639386",
+        "ArXiv": "1706.03825",
+        "CorpusId": 11695878
+    },
+    "title": "SmoothGrad: removing noise by adding noise",
+    "abstract": "Explaining the output of a deep network remains a challenge. In the case of an image classifier, one type of explanation is to identify pixels that strongly influence the final decision. A starting point for this strategy is the gradient of the class score function with respect to the input image. This gradient can be interpreted as a sensitivity map, and there are several techniques that elaborate on this basic idea. This paper makes two contributions: it introduces SmoothGrad, a simple method that can help visually sharpen gradient-based sensitivity maps, and it discusses lessons in the visualization of these maps. We publish the code for our experiments and a website with our results.",
+    "venue": "arXiv.org",
+    "year": 2017,
+    "referenceCount": 26,
+    "citationCount": 1983,
+    "influentialCitationCount": 287,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "SmoothGrad is introduced, a simple method that can help visually sharpen gradient-based sensitivity maps and lessons in the visualization of these maps are discussed."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2842148",
+            "name": "D. Smilkov"
+        },
+        {
+            "authorId": "144203200",
+            "name": "Nikhil Thorat"
+        },
+        {
+            "authorId": "3351164",
+            "name": "Been Kim"
+        },
+        {
+            "authorId": "1765169",
+            "name": "F. Vi\u00e9gas"
+        },
+        {
+            "authorId": "145233583",
+            "name": "M. Wattenberg"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "1a2118bed729579528deb51e745d58dd3629baf6",
+            "title": "Learning Important Features Through Propagating Activation Differences"
+        },
+        {
+            "paperId": "f302e136c41db5de1d624412f68c9174cf7ae8be",
+            "title": "Axiomatic Attribution for Deep Networks"
+        },
+        {
+            "paperId": "5c39e37022661f81f79e481240ed9b175dec6513",
+            "title": "Towards A Rigorous Science of Interpretable Machine Learning"
+        },
+        {
+            "paperId": "3bef0e31f88e5ff528741ce442e1aa0d765646bd",
+            "title": "Exploiting Saliency for Object Segmentation from Image Level Labels"
+        },
+        {
+            "paperId": "224f281c0e3ffd2ff45b8510ebf9926d0137f7e1",
+            "title": "Supervised topic models for clinical interpretability"
+        },
+        {
+            "paperId": "bc568d4dd0dfb489b73d718ae4613f8caf4fda77",
+            "title": "Grad-CAM: Why did you say that?"
+        },
+        {
+            "paperId": "e0c17a08c30ef9aaee54563a439d05cae6fa2dbf",
+            "title": "A New Method to Visualize Deep Neural Networks"
+        },
+        {
+            "paperId": "31f9eb39d840821979e5df9f34a6e92dd9c879f2",
+            "title": "Learning Deep Features for Discriminative Localization"
+        },
+        {
+            "paperId": "23ffaa0fe06eae05817f527a47ac3291077f9e58",
+            "title": "Rethinking the Inception Architecture for Computer Vision"
+        },
+        {
+            "paperId": "17a273bbd4448083b01b5a9389b3c37f5425aac0",
+            "title": "On Pixel-Wise Explanations for Non-Linear Classifier Decisions by Layer-Wise Relevance Propagation"
+        },
+        {
+            "paperId": "b3b465d29cc5eb5a38e596e1774a3ef0c373c3ec",
+            "title": "iBCM: Interactive Bayesian Case Model Empowering Humans via Intuitive Interaction"
+        },
+        {
+            "paperId": "33af9298e5399269a12d4b9901492fe406af62b4",
+            "title": "Striving for Simplicity: The All Convolutional Net"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "35db1c68ac5ac1156ef3df48e5fe7d7ded2689df",
+            "title": "Comprehensible classification models: a position paper"
+        },
+        {
+            "paperId": "a24f24b1d55eb3059cd30a5d7b8fa8053c667e96",
+            "title": "Comorbidity Clusters in Autism Spectrum Disorders: An Electronic Health Record Time-Series Analysis"
+        },
+        {
+            "paperId": "dc6ac3437f0a6e64e4404b1b9d188394f8a3bf71",
+            "title": "Deep Inside Convolutional Networks: Visualising Image Classification Models and Saliency Maps"
+        },
+        {
+            "paperId": "d891dc72cbd40ffaeefdc79f2e7afe1e530a23ad",
+            "title": "Intriguing properties of neural networks"
+        },
+        {
+            "paperId": "1a2a770d23b4a171fa81de62a78a3deb0588f238",
+            "title": "Visualizing and Understanding Convolutional Networks"
+        },
+        {
+            "paperId": "86b5493a336cc4e44ba192e7fdc5b5ecf97343ca",
+            "title": "Intelligible models for classification and regression"
+        },
+        {
+            "paperId": "4e6238c8613b5b81f81552939bce33296aedfbfe",
+            "title": "How to Explain Individual Classification Decisions"
+        },
+        {
+            "paperId": null,
+            "title": "TensorFlow"
+        },
+        {
+            "paperId": null,
+            "title": "Andrew"
+        },
+        {
+            "paperId": null,
+            "title": "Mnist handwritten digit database"
+        },
+        {
+            "paperId": "65d994fb778a8d9e0f632659fb33a082949a50d3",
+            "title": "Visualizing Higher-Layer Features of a Deep Network"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "c3ecd8e19e016d15670c8953b4b9afaa5186b0f3",
+            "title": "Current address: Microsoft Research,"
+        }
+    ]
+}

@@ -1,0 +1,94 @@
+{
+    "paperId": "03057ea57d9f2d9bbc8a141d51f76d5bbc715234",
+    "externalIds": {
+        "MAG": "2150529939",
+        "DBLP": "conf/icml/TielemanH09",
+        "DOI": "10.1145/1553374.1553506",
+        "CorpusId": 415956
+    },
+    "title": "Using fast weights to improve persistent contrastive divergence",
+    "abstract": "The most commonly used learning algorithm for restricted Boltzmann machines is contrastive divergence which starts a Markov chain at a data point and runs the chain for only a few iterations to get a cheap, low variance estimate of the sufficient statistics under the model. Tieleman (2008) showed that better learning can be achieved by estimating the model's statistics using a small set of persistent \"fantasy particles\" that are not reinitialized to data points after each weight update. With sufficiently small weight updates, the fantasy particles represent the equilibrium distribution accurately but to explain why the method works with much larger weight updates it is necessary to consider the interaction between the weight updates and the Markov chain. We show that the weight updates force the Markov chain to mix fast, and using this insight we develop an even faster mixing chain that uses an auxiliary set of \"fast weights\" to implement a temporary overlay on the energy landscape. The fast weights learn rapidly but also decay rapidly and do not contribute to the normal energy landscape that defines the model.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2009,
+    "referenceCount": 15,
+    "citationCount": 308,
+    "influentialCitationCount": 35,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that the weight updates force the Markov chain to mix fast, and using this insight, an even faster mixing chain is developed that uses an auxiliary set of \"fast weights\" to implement a temporary overlay on the energy landscape."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2957517",
+            "name": "T. Tieleman"
+        },
+        {
+            "authorId": "1695689",
+            "name": "Geoffrey E. Hinton"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "73d6a26f407db77506959fdf3f7b853e44f3844a",
+            "title": "Training restricted Boltzmann machines using approximations to the likelihood gradient"
+        },
+        {
+            "paperId": "a53da9916b87fa295837617c16ef2ca6462cafb8",
+            "title": "Classification using discriminative restricted Boltzmann machines"
+        },
+        {
+            "paperId": "27b659a8598acbfcadf37cdfeb90bbdbfbba9ccb",
+            "title": "Generalized Darting Monte Carlo"
+        },
+        {
+            "paperId": "8978cf7574ceb35f4c3096be768c7547b28a35d0",
+            "title": "A Fast Learning Algorithm for Deep Belief Nets"
+        },
+        {
+            "paperId": "f354310098e09c1e1dc88758fca36767fd9d084d",
+            "title": "Learning methods for generic object recognition with invariance to pose and lighting"
+        },
+        {
+            "paperId": "b7b5bea7b4d40003a6887794652ea07196a97134",
+            "title": "A New Learning Algorithm for Mean Field Boltzmann Machines"
+        },
+        {
+            "paperId": "52070af952474cf13ecd015d42979373ff7c1c00",
+            "title": "Training Products of Experts by Minimizing Contrastive Divergence"
+        },
+        {
+            "paperId": "f3629aab9d0d59b9e8158ec2823bf9d1743bb69f",
+            "title": "Stochastic approximation algorithms: Overview and recent trends"
+        },
+        {
+            "paperId": "6120cc252bc74239012f11b8b075cb7cb16bee26",
+            "title": "An Introduction to Variational Methods for Graphical Models"
+        },
+        {
+            "paperId": "9f87a11a523e4680e61966e36ea2eac516096f23",
+            "title": "A View of the Em Algorithm that Justifies Incremental, Sparse, and other Variants"
+        },
+        {
+            "paperId": "15220e36102081ca2bbcfa04e05a4dc141d99239",
+            "title": "Taboo Search: An Approach to the Multiple Minima Problem"
+        },
+        {
+            "paperId": "a120c05ad7cd4ce2eb8fb9697e16c7c4877208a5",
+            "title": "Connectionist Learning of Belief Networks"
+        },
+        {
+            "paperId": "4f7476037408ac3d993f5088544aab427bc319c1",
+            "title": "Information processing in dynamical systems: foundations of harmony theory"
+        },
+        {
+            "paperId": "34ddd8865569c2c32dec9bf7ffc817ff42faaa01",
+            "title": "A Stochastic Approximation Method"
+        },
+        {
+            "paperId": "dc52d1ede1b90bf9d296bc5b34c9310b7eaa99a2",
+            "title": "The mnist database of handwritten digits"
+        }
+    ]
+}

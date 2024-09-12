@@ -1,0 +1,147 @@
+{
+    "paperId": "5c9071391823bd9b4458669c262344fd5daed676",
+    "externalIds": {
+        "MAG": "2734730176",
+        "DBLP": "conf/psb/LeslieEN02",
+        "DOI": "10.1142/9789812799623_0053",
+        "CorpusId": 9725578,
+        "PubMed": "11928508"
+    },
+    "title": "The Spectrum Kernel: A String Kernel for SVM Protein Classification",
+    "abstract": "We introduce a new sequence-similarity kernel, the spectrum kernel, for use with support vector machines (SVMs) in a discriminative approach to the protein classification problem. Our kernel is conceptually simple and efficient to compute and, in experiments on the SCOP database, performs well in comparison with state-of-the-art methods for homology detection. Moreover, our method produces an SVM classifier that allows linear time classification of test sequences. Our experiments provide evidence that string-based kernels, in conjunction with SVMs, could offer a viable and computationally efficient alternative to other methods of protein classification and homology detection.",
+    "venue": "Pacific Symposium on Biocomputing",
+    "year": 2001,
+    "referenceCount": 27,
+    "citationCount": 1139,
+    "influentialCitationCount": 91,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new sequence-similarity kernel, the spectrum kernel, is introduced for use with support vector machines (SVMs) in a discriminative approach to the protein classification problem and performs well in comparison with state-of-the-art methods for homology detection."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3209133",
+            "name": "C. Leslie"
+        },
+        {
+            "authorId": "1709847",
+            "name": "E. Eskin"
+        },
+        {
+            "authorId": "144458655",
+            "name": "William Stafford Noble"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "4c75b748911ddcd888c5122f7672f69caa5d661f",
+            "title": "Statistical Learning Theory"
+        },
+        {
+            "paperId": "144a0f13ea5fedcc6f142b9845fc99e61fd99eb3",
+            "title": "Multi-class protein fold recognition using support vector machines and neural networks"
+        },
+        {
+            "paperId": "b886db9751d35e28e92e544428a2b403e8ae7aa5",
+            "title": "Frequency-domain analysis of biomolecular sequences"
+        },
+        {
+            "paperId": "313f0f58bcdb0d31ca980f7936cbfe4fa19621fd",
+            "title": "Spectrum Alignment: Efficient Resequencing by Hybridization"
+        },
+        {
+            "paperId": "8e2dd064daaac3603581ec65b580b7b5385e2c2b",
+            "title": "A Discriminative Framework for Detecting Remote Protein Homologies"
+        },
+        {
+            "paperId": "5f2be15cdf6f5b461b9c61495eb496351d7fc91a",
+            "title": "Using the Fisher Kernel Method to Detect Remote Protein Homologies"
+        },
+        {
+            "paperId": "02613d6e3ecf67ed9ae8ce67a35a92f3986bc4cf",
+            "title": "Gapped BLAST and PSI-BLAST: a new generation of protein database search programs."
+        },
+        {
+            "paperId": "fa742eb0e9065e76b83e157cbc17392d6d997226",
+            "title": "Embedding strategies for effective use of information from multiple sequence alignments"
+        },
+        {
+            "paperId": "2729e17d1e6557b5835c8dd91dcf55e6250672eb",
+            "title": "On Comparing Classifiers: Pitfalls to Avoid and a Recommended Approach"
+        },
+        {
+            "paperId": "73aaa386f93bbdea33184fdceacdbb9d9bd24cf8",
+            "title": "Use of Receiver Operating Characteristic (ROC) Analysis to Evaluate Sequence Matching"
+        },
+        {
+            "paperId": "5ef2cf7b7aa6f7e44488d5db5409ef7f76b9ef9a",
+            "title": "SCOP: a structural classification of proteins database for the investigation of sequences and structures."
+        },
+        {
+            "paperId": "7a68a57a90611629ee21f4cb3b8a2ddadbb6b41b",
+            "title": "Hidden Markov models of biological primary sequence information."
+        },
+        {
+            "paperId": "5d28fc1a4027d23cc9e4ad8555361d48940e9be8",
+            "title": "Hidden Markov models in computational biology. Applications to protein modeling."
+        },
+        {
+            "paperId": "46b4c636467847de9ddcee5b1936ef8b8aa97e80",
+            "title": "Amino acid substitution matrices from protein blocks."
+        },
+        {
+            "paperId": "2541c204b2fc6b9383dec7c116904db5b3027309",
+            "title": "PROSITE: a dictionary of sites and patterns in proteins."
+        },
+        {
+            "paperId": "a03dc4d8aa1c2ebd5c3a3c1d87d531f52d63c120",
+            "title": "Basic local alignment search tool."
+        },
+        {
+            "paperId": "916ee375df259fbc28ac1ac832e2c7bd7491a93c",
+            "title": "Basic local alignment search tool. Journal of Molecular Biology"
+        },
+        {
+            "paperId": "3dc27727dae48875962b98970099f4077a16fa22",
+            "title": "Profile analysis: detection of distantly related proteins."
+        },
+        {
+            "paperId": "ea2ea7c6e280c1cfb67ee38ea63a327b1ba3ca36",
+            "title": "Introduction to Support Vector Machines"
+        },
+        {
+            "paperId": "f330f1f472f860212b980bb9be81eff884f7f0e1",
+            "title": "Classification using String Kernels"
+        },
+        {
+            "paperId": "e003f0a280275de163269d32046950ad37aa37f0",
+            "title": "Dynamic Alignment Kernels"
+        },
+        {
+            "paperId": "7dd9743183f07b7653cc0335fcc1042aa71032c6",
+            "title": "Dynamic Alignment Kernels"
+        },
+        {
+            "paperId": "5ee0d8aeb2cb01ef4d8a858d234e72a7400c03ac",
+            "title": "Convolution kernels on discrete structures"
+        },
+        {
+            "paperId": "c44d7ba7d26864e50e182803b53e9cbe423de1b0",
+            "title": "The PRINTS protein fingerprint database in its fifth year"
+        },
+        {
+            "paperId": "1756503d08a3bbbe1635e6c64c327e1251a1023e",
+            "title": "Multiple Alignment Using Hidden Markov Models"
+        },
+        {
+            "paperId": null,
+            "title": "On-line construction of su(cid:14)x trees"
+        },
+        {
+            "paperId": null,
+            "title": "Computer alignment of sequences , chapter Phylogenetic Analysis of DNA Sequences"
+        }
+    ]
+}

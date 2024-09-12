@@ -1,0 +1,246 @@
+{
+    "paperId": "c889d6f98e6d79b89c3a6adf8a921f88fa6ba518",
+    "externalIds": {
+        "MAG": "2604763608",
+        "DBLP": "journals/corr/FinnAL17",
+        "ArXiv": "1703.03400",
+        "CorpusId": 6719686
+    },
+    "title": "Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks",
+    "abstract": "We propose an algorithm for meta-learning that is model-agnostic, in the sense that it is compatible with any model trained with gradient descent and applicable to a variety of different learning problems, including classification, regression, and reinforcement learning. The goal of meta-learning is to train a model on a variety of learning tasks, such that it can solve new learning tasks using only a small number of training samples. In our approach, the parameters of the model are explicitly trained such that a small number of gradient steps with a small amount of training data from a new task will produce good generalization performance on that task. In effect, our method trains the model to be easy to fine-tune. We demonstrate that this approach leads to state-of-the-art performance on two few-shot image classification benchmarks, produces good results on few-shot regression, and accelerates fine-tuning for policy gradient reinforcement learning with neural network policies.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2017,
+    "referenceCount": 52,
+    "citationCount": 10355,
+    "influentialCitationCount": 2316,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An algorithm for meta-learning that is model-agnostic, in the sense that it is compatible with any model trained with gradient descent and applicable to a variety of different learning problems, including classification, regression, and reinforcement learning is proposed."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "46881670",
+            "name": "Chelsea Finn"
+        },
+        {
+            "authorId": "1689992",
+            "name": "P. Abbeel"
+        },
+        {
+            "authorId": "1736651",
+            "name": "S. Levine"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "239c033b4f5d935e3a0b469d9611823ccec7cb68",
+            "title": "How to train your MAML"
+        },
+        {
+            "paperId": "a2e6ee708ef5b258415076c4f5484fa1e0f42afa",
+            "title": "Model-Agnostic Meta-Learning for Multimodal Task Distributions"
+        },
+        {
+            "paperId": "90dc22818bd2d97d8deaff168b0137b75a962767",
+            "title": "On First-Order Meta-Learning Algorithms"
+        },
+        {
+            "paperId": "d33ad6a25264ba1747d8c93f6621c7f90a7ec601",
+            "title": "Meta-SGD: Learning to Learn Quickly for Few Shot Learning"
+        },
+        {
+            "paperId": "c269858a7bb34e8350f2442ccf37797856ae9bca",
+            "title": "Prototypical Networks for Few-shot Learning"
+        },
+        {
+            "paperId": "29092f0deaac3898e43b3f094bf15d82b6a99afd",
+            "title": "Learning to Remember Rare Events"
+        },
+        {
+            "paperId": "a3cd82aeecb75ef339889174706d168c40187d7d",
+            "title": "Attentive Recurrent Comparators"
+        },
+        {
+            "paperId": "470d11b8ca4586c930adbbfc3f60bff08f2a0161",
+            "title": "Meta Networks"
+        },
+        {
+            "paperId": "2e55ba6c97ce5eb55abd959909403fe8da7e9fe9",
+            "title": "Overcoming catastrophic forgetting in neural networks"
+        },
+        {
+            "paperId": "282a380fb5ac26d99667224cef8c630f6882704f",
+            "title": "Learning to reinforcement learn"
+        },
+        {
+            "paperId": "cb1c0d6be4c22c1f18b0ba20dddd93890f17add6",
+            "title": "One-Shot Video Object Segmentation"
+        },
+        {
+            "paperId": "29c887794eed2ca9462638ff853e6fe1ab91d5d8",
+            "title": "Optimization as a Model for Few-Shot Learning"
+        },
+        {
+            "paperId": "954b01151ff13aef416d27adc60cd9a076753b1a",
+            "title": "RL$^2$: Fast Reinforcement Learning via Slow Reinforcement Learning"
+        },
+        {
+            "paperId": "c91ae35dbcb6d479580ecd235eabf98374acdb55",
+            "title": "Using Fast Weights to Attend to the Recent Past"
+        },
+        {
+            "paperId": "563783de03452683a9206e85fe6d661714436686",
+            "title": "HyperNetworks"
+        },
+        {
+            "paperId": "26ae046d8d8bf5b3721734a3cf441f6d204bb6d7",
+            "title": "Evolvability Search: Directly Selecting for Evolvability in order to Study and Produce It"
+        },
+        {
+            "paperId": "3904315e2eca50d0086e4b7273f7fd707c652230",
+            "title": "Meta-Learning with Memory-Augmented Neural Networks"
+        },
+        {
+            "paperId": "71683e224ab91617950956b5005ed0439a733a71",
+            "title": "Learning to learn by gradient descent by gradient descent"
+        },
+        {
+            "paperId": "be1bb4e4aa1fcf70281b4bd24d8cd31c04864bb6",
+            "title": "Matching Networks for One Shot Learning"
+        },
+        {
+            "paperId": "405c31c85a324942811f3c9dc53ce3528f9284df",
+            "title": "Towards a Neural Statistician"
+        },
+        {
+            "paperId": "ead9a671428631e44f6fe49324efe69da628bc47",
+            "title": "Learning to Optimize"
+        },
+        {
+            "paperId": "1464776f20e2bccb6182f183b5ff2e15b0ae5e56",
+            "title": "Benchmarking Deep Reinforcement Learning for Continuous Control"
+        },
+        {
+            "paperId": "0811597b0851b7ebe21aadce7cb4daac4664b44f",
+            "title": "One-Shot Generalization in Deep Generative Models"
+        },
+        {
+            "paperId": "9c9d7247f8c51ec5a02b0d911d1d7b9e8160495d",
+            "title": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems"
+        },
+        {
+            "paperId": "3d2c6941a9b4608ba52b328369a3352db2092ae0",
+            "title": "Weight Normalization: A Simple Reparameterization to Accelerate Training of Deep Neural Networks"
+        },
+        {
+            "paperId": "c3af47db3186691270192d5399bb5259e05c87a7",
+            "title": "Data-dependent Initializations of Convolutional Neural Networks"
+        },
+        {
+            "paperId": "1def5d3711ebd1d86787b1ed57c91832c5ddc90b",
+            "title": "Actor-Mimic: Deep Multitask and Transfer Reinforcement Learning"
+        },
+        {
+            "paperId": "a40a55bfd25c8ef69c27a02073f34a194b4e9124",
+            "title": "Online Representation Learning in Recurrent Neural Language Models"
+        },
+        {
+            "paperId": "449532187c94af3dd3aa55e16d2c50f7854d2199",
+            "title": "Trust Region Policy Optimization"
+        },
+        {
+            "paperId": "e2820bffe5b42cb7d88b7f65c12171c62ab4aae2",
+            "title": "Gradient-based Hyperparameter Optimization through Reversible Learning"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "bee044c8e8903fb67523c1f8c105ab4718600cdb",
+            "title": "Explaining and Harnessing Adversarial Examples"
+        },
+        {
+            "paperId": "99c970348b8f70ce23d6641e201904ea49266b6e",
+            "title": "Exact solutions to the nonlinear dynamics of learning in deep linear neural networks"
+        },
+        {
+            "paperId": "b8de958fead0d8a9619b55c7299df3257c624a96",
+            "title": "DeCAF: A Deep Convolutional Activation Feature for Generic Visual Recognition"
+        },
+        {
+            "paperId": "b354ee518bfc1ac0d8ac447eece9edb69e92eae1",
+            "title": "MuJoCo: A physics engine for model-based control"
+        },
+        {
+            "paperId": "b64e846fe88acaf302248249696c3b7badde41b5",
+            "title": "Meta-neural networks that learn by learning"
+        },
+        {
+            "paperId": "bc22e87a26d020215afe91c751e5bdaddd8e4922",
+            "title": "Learning to Control Fast-Weight Memories: An Alternative to Dynamic Recurrent Networks"
+        },
+        {
+            "paperId": "d130325c41947a41a55a4431e9e8e15be89da8ea",
+            "title": "Learning a synaptic learning rule"
+        },
+        {
+            "paperId": "44b6da0cd36c0fa2f7d3485c6dc0b6d2fbe379bb",
+            "title": "Learning how to learn"
+        },
+        {
+            "paperId": "1b4995b61b60793866a59065f69f76f2f6571f09",
+            "title": "Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks"
+        },
+        {
+            "paperId": null,
+            "title": "Meta-SGD: Parameter Space Noise for Exploration"
+        },
+        {
+            "paperId": "f1aeb751d9cefc9d784d8862562f5a3fe15821ae",
+            "title": "International Conference on Learning Representations (ICLR)"
+        },
+        {
+            "paperId": "f216444d4f2959b4520c61d20003fa30a199670a",
+            "title": "Siamese Neural Networks for One-Shot Image Recognition"
+        },
+        {
+            "paperId": null,
+            "title": "Context vector adaptation Rei (2015) developed a method which learns a context vector that can be adapted online, with an application to recurrent language models. The parameters in this context"
+        },
+        {
+            "paperId": "100a038fdf29b4b20801887f0ec40e3f10d9a4f9",
+            "title": "One shot learning of simple visual concepts"
+        },
+        {
+            "paperId": "8784f905f4f9fb6fa4a3cc9b0faa5b5479c687ec",
+            "title": "On the Optimization of a Synaptic Learning Rule"
+        },
+        {
+            "paperId": "4c915c1eecb217c123a36dc6d3ce52d12c742614",
+            "title": "Simple Statistical Gradient-Following Algorithms for Connectionist Reinforcement Learning"
+        },
+        {
+            "paperId": "946ec39029db3ae6f9a1b3ce13fb3f4a7d37bb5e",
+            "title": "Fast learning for problem classes using knowledge based network initialization"
+        },
+        {
+            "paperId": "7257eacd80458e70c74494eb1b6759b52ff21399",
+            "title": "Using fast weights to deblur old memories"
+        },
+        {
+            "paperId": "bdaec1b3eb9a8f7a2b296be009a148c35236f3ce",
+            "title": "Evolutionary principles in self-referential learning, or on learning how to learn: The meta-meta-. hook"
+        },
+        {
+            "paperId": "a6bcf0e9b5034c4c9cbea839baadd69a42b05cc1",
+            "title": "Learning curves for stochastic gradient descent in linear feedforward networks"
+        }
+    ]
+}

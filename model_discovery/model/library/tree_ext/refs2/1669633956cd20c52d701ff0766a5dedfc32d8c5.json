@@ -1,0 +1,114 @@
+{
+    "paperId": "1669633956cd20c52d701ff0766a5dedfc32d8c5",
+    "externalIds": {
+        "MAG": "2007988810",
+        "DBLP": "conf/stoc/OlshevskyS00",
+        "DOI": "10.1145/335305.335380",
+        "CorpusId": 15443819
+    },
+    "title": "Matrix-vector product for confluent Cauchy-like matrices with application to confluent rational interpolation",
+    "abstract": "Many important problems in pure and applied mathematics and engineering can be reduced to linear algebra on dense structured matrices. The structure of these dense matrices is understood in the sense that their n2 entries can be \"compressed\" to a smaller number O(n) of parameters. Operating directly on these parameters allows one to design efficient fast algorithms for these matrices. One of the most prominent matrix problems is that of multiplying a (structured) matrix with a vector. Many fundamental algorithms like convolution, Fast Fourier Transform, Fast Cosine/Sine Transform, and polynomial and rational multipoint evaluation and interpolation can be interpreted as superfast multiplication of a vector by structured matrices (like Toeplitz, DFT, Vandermonde, Cauchy). In this paper, we introduce a novel and fairly general class of structured matrices, which we call confluent Cauchy- like matrices, that contains all the above classes as a special case, and we will des a confluent Cauchy-like matrix by a vector. This is precisely what has been done in this paper",
+    "venue": "Symposium on the Theory of Computing",
+    "year": 2000,
+    "referenceCount": 20,
+    "citationCount": 17,
+    "influentialCitationCount": 5,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel and fairly general class of structured matrices are introduced, which are called confluent Cauchy- like matrices, that contains all the above classes as a special case, and the structure of these dense matrices is understood in the sense that their n2 entries can be \"compressed\" to a smaller number O(n) of parameters."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "144177101",
+            "name": "V. Olshevsky"
+        },
+        {
+            "authorId": "143916589",
+            "name": "A. Shokrollahi"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "816d537e26f2bd00a87b8bc5cc44082191dadb96",
+            "title": "A displacement approach to efficient decoding of algebraic-geometric codes"
+        },
+        {
+            "paperId": "df079b389b4d88c9f7637b0c552d4676100515d3",
+            "title": "Eigenvector computation for almost unitary Hessenberg matrices and inversion of Szeg\u0151-Vandermonde matrices via discrete transmission lines"
+        },
+        {
+            "paperId": "dc3efdd991621d8f18a013ad1d013a24b86ccf90",
+            "title": "A unified superfast algorithm for boundary rational tangential interpolation problems and for inversion and factorization of dense structured matrices"
+        },
+        {
+            "paperId": "46b15fae0960101c974429eaef2b0f51f289695f",
+            "title": "Displacement-structure approach to polynomial Vandermonde and related matrices"
+        },
+        {
+            "paperId": "6e9b532b336bc3690cd3154489bdac1f1c86b8bb",
+            "title": "Diagonal pivoting for partially reconstructible Cauchy-like Matrices"
+        },
+        {
+            "paperId": "54946e3ef95b6eb93d89346a768a9c73053870d0",
+            "title": "Algebraic complexity theory"
+        },
+        {
+            "paperId": "c72d3de95adde34a66c73f6358fd5eae0c067195",
+            "title": "Displacement Structure: Theory and Applications"
+        },
+        {
+            "paperId": "910eea963f1ef8bf1324d77b9f864a9a04c9dbfc",
+            "title": "Complexity of multiplication with vectors for structured matrices"
+        },
+        {
+            "paperId": "3f5baeadccc6e59341ebd7b8585600d229c082bc",
+            "title": "Fast state space algorithms for matrix Nehari and Nehari-Takagi interpolation problems"
+        },
+        {
+            "paperId": "8e6f55e6f6e8c3035ede024ea181913bb8223963",
+            "title": "Fast inversion of Chebyshev--Vandermonde\nmatrices\n"
+        },
+        {
+            "paperId": "49e8d3523d63bb34cbd5fbecbf3fcd5f0f44fa42",
+            "title": "Rapid solution of integral equations of classical potential theory"
+        },
+        {
+            "paperId": "0f79df045b1f5e534b9576dd19b5ae78fa38d2cb",
+            "title": "Algebraic Methods for Toeplitz-like Matrices and Operators"
+        },
+        {
+            "paperId": "190365f3877dd03aeb9c3224d652ea3e00725d0d",
+            "title": "On the role of the Nevanlinna\u2013Pick problem in circuit and system theory\u2020"
+        },
+        {
+            "paperId": "56dd0bd32ff2d50b2e3209d851288414a1d6d96b",
+            "title": "Doubling algorithms for Toeplitz and related equations"
+        },
+        {
+            "paperId": "cf961811732b7e1f253883e0345f679ff57ac3a9",
+            "title": "New inversion formulas for matrices classified in terms of their distance from Toeplitz matrices"
+        },
+        {
+            "paperId": "d493518549ee5b182f3ae1c472343ced383185d3",
+            "title": "Pivoting for structured matrices with applications"
+        },
+        {
+            "paperId": "4098fbe931e60ce7f87a1925a348c9e6fce2a970",
+            "title": "Polynomial and Matrix Computations"
+        },
+        {
+            "paperId": "5d4cc55685a2d65f33db2f61e34c092fa52feab9",
+            "title": "Interpolation of Rational Matrix Functions"
+        },
+        {
+            "paperId": "9930152298b5973e5bea53a26716df3e28131ff0",
+            "title": "A fast algorithm for the multiplication of generalized Hilbert matrices with vectors"
+        },
+        {
+            "paperId": "ee5b05c2c8a0c2c6778dce25683d1bf7f1c895dd",
+            "title": "Fast Algorithms for Multivariable Systems"
+        }
+    ]
+}

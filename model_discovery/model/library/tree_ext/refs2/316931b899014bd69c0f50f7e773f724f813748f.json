@@ -1,0 +1,170 @@
+{
+    "paperId": "316931b899014bd69c0f50f7e773f724f813748f",
+    "externalIds": {
+        "MAG": "2250988012",
+        "ACL": "D15-1288",
+        "DBLP": "conf/emnlp/ShareghiPHC15",
+        "DOI": "10.18653/v1/D15-1288",
+        "CorpusId": 225428
+    },
+    "title": "Compact, Efficient and Unlimited Capacity: Language Modeling with Compressed Suffix Trees",
+    "abstract": "Efficient methods for storing and querying language models are critical for scaling to large corpora and high Markov orders. In this paper we propose methods for modeling extremely large corpora without imposing a Markov condition. At its core, our approach uses a succinct index \u2010 a compressed suffix tree \u2010 which provides near optimal compression while supporting efficient search. We present algorithms for on-the-fly computation of probabilities under a Kneser-Ney language model. Our technique is exact and although slower than leading LM toolkits, it shows promising scaling properties, which we demonstrate through1-order modeling over the full Wikipedia collection.",
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2015,
+    "referenceCount": 31,
+    "citationCount": 12,
+    "influentialCitationCount": 0,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/D15-1288.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes methods for modeling extremely large corpora without imposing a Markov condition and uses a succinct index \u2010 a compressed suffix tree \u2010 which provides near optimal compression while supporting efficient search."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2888926",
+            "name": "Ehsan Shareghi"
+        },
+        {
+            "authorId": "48939684",
+            "name": "M. Petri"
+        },
+        {
+            "authorId": "2561045",
+            "name": "Gholamreza Haffari"
+        },
+        {
+            "authorId": "143620680",
+            "name": "Trevor Cohn"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "de7a529d144f0a78dd75864dd6012f969521f7f8",
+            "title": "From Theory to Practice: Plug and Play with Succinct Data Structures"
+        },
+        {
+            "paperId": "698da00df1cedebd5d92019f23051255d29222e9",
+            "title": "Suffix Trees as Language Models"
+        },
+        {
+            "paperId": "a440d5be91964cd87958ea80f0d1be26721b91a0",
+            "title": "SRILM at Sixteen: Update and Outlook"
+        },
+        {
+            "paperId": "883d1d06d857a85a0e64bb19f0b17d56f2cc9d7b",
+            "title": "KenLM: Faster and Smaller Language Model Queries"
+        },
+        {
+            "paperId": "2bb1df67e235015d867bc2d3fdbf12028976a299",
+            "title": "Faster and Smaller N-Gram Language Models"
+        },
+        {
+            "paperId": "ea9a3a0aaee44cf95d61cd7134c26b8d5e5f4b0e",
+            "title": "The sequence memoizer"
+        },
+        {
+            "paperId": "fc1ae71b79870a7a48f49a8d19a600561c5effaa",
+            "title": "Storing the Web in Memory: Space Efficient Language Models with Constant Time Retrieval"
+        },
+        {
+            "paperId": "93b1d8937c3f31788c09fbe87b91a2f4abae96b6",
+            "title": "Bidirectional Search in a String with Wavelet Trees"
+        },
+        {
+            "paperId": "7b11c263dde88960c4ab27c267d5e100b269bf53",
+            "title": "A Succinct N-gram Language Model"
+        },
+        {
+            "paperId": "ed71b0b2bb44289e41807a740d4cfbcfdd7f6372",
+            "title": "Tightly Packed Tries: How to Fit Large Models into Memory, and Make them Load Fast, Too"
+        },
+        {
+            "paperId": "0af81925ffade8b0ddaf84d5fb64a8fa5cbd4c5c",
+            "title": "Statistical machine translation"
+        },
+        {
+            "paperId": "3687a379156716e8609408255c9e9447fbf7c5bf",
+            "title": "Fully compressed suffix trees"
+        },
+        {
+            "paperId": "f048c01ac4a63eae7cc319d4b0f054f2a19c4fc2",
+            "title": "Compressed text indexes: From theory to practice"
+        },
+        {
+            "paperId": "0d6d52d5c7d0a97870a6da2323a0a44b3b1a1a27",
+            "title": "Compressed Suffix Trees with Full Functionality"
+        },
+        {
+            "paperId": "ba786c46373892554b98df42df7af6f5da343c9d",
+            "title": "Large Language Models in Machine Translation"
+        },
+        {
+            "paperId": "1375ffa728c1c7ae2b471fc2443d8342cfea84d1",
+            "title": "Randomised Language Modelling for Statistical Machine Translation"
+        },
+        {
+            "paperId": "caf5d5581384d5e39786880877d6b13e35e11dae",
+            "title": "Compressed representations of sequences and full-text indexes"
+        },
+        {
+            "paperId": "fe6efcacf4be13ce7bdc643c9248442377e4081a",
+            "title": "Linear work suffix array construction"
+        },
+        {
+            "paperId": "182f32790af12408a5656e59356e4ce6873e2066",
+            "title": "The Bloomier filter: an efficient data structure for static support lookup tables"
+        },
+        {
+            "paperId": "399da68d3b97218b6c80262df7963baa89dcc71b",
+            "title": "SRILM - an extensible language modeling toolkit"
+        },
+        {
+            "paperId": "34d8d1ff189fa4104d285592715d19e6448fe844",
+            "title": "Reducing the space requirement of suffix trees"
+        },
+        {
+            "paperId": "d4e8bed3b50a035e1eabad614fe4218a34b3b178",
+            "title": "An Empirical Study of Smoothing Techniques for Language Modeling"
+        },
+        {
+            "paperId": "a70deaad3a2079cb5c0c54442c29d6225e6bd4f8",
+            "title": "On-line construction of suffix trees"
+        },
+        {
+            "paperId": "9548ac30c113562a51e603dbbc8e9fa651cfd3ab",
+            "title": "Improved backing-off for M-gram language modeling"
+        },
+        {
+            "paperId": "1337a72073e2c80da6e53b776ccb469d5abb0579",
+            "title": "Suffix arrays: a new method for on-line string searches"
+        },
+        {
+            "paperId": "d3390f13eed511cde1116446e71c3d462fd6a004",
+            "title": "Linear Pattern Matching Algorithms"
+        },
+        {
+            "paperId": "42aa510e9f6d7ca86c6ccc84c0a2daad6d0b1560",
+            "title": "Tables"
+        },
+        {
+            "paperId": "eca55efcd8b290fe7ff24fafa6d9ab6b1ad5e9ad",
+            "title": "Unary Data Structures for Language Models"
+        },
+        {
+            "paperId": null,
+            "title": "Proc. FSTTCS"
+        },
+        {
+            "paperId": "af56e6d4901dcd0f589bf969e604663d40f1be5d",
+            "title": "A Block-sorting Lossless Data Compression Algorithm"
+        },
+        {
+            "paperId": "2392e94df520e707e8b1422311bfdc552954dea9",
+            "title": "Fundamentals of speech recognition"
+        }
+    ]
+}

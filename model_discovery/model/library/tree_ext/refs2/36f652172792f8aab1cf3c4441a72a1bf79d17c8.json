@@ -1,0 +1,202 @@
+{
+    "paperId": "36f652172792f8aab1cf3c4441a72a1bf79d17c8",
+    "externalIds": {
+        "MAG": "2294501066",
+        "ArXiv": "1602.01585",
+        "DBLP": "conf/www/HeM16",
+        "DOI": "10.1145/2872427.2883037",
+        "CorpusId": 1964279
+    },
+    "title": "Ups and Downs: Modeling the Visual Evolution of Fashion Trends with One-Class Collaborative Filtering",
+    "abstract": "Building a successful recommender system depends on understanding both the dimensions of people's preferences as well as their dynamics. In certain domains, such as fashion, modeling such preferences can be incredibly difficult, due to the need to simultaneously model the visual appearance of products as well as their evolution over time. The subtle semantics and non-linear dynamics of fashion evolution raise unique challenges especially considering the sparsity and large scale of the underlying datasets. In this paper we build novel models for the One-Class Collaborative Filtering setting, where our goal is to estimate users' fashion-aware personalized ranking functions based on their past feedback. To uncover the complex and evolving visual factors that people consider when evaluating products, our method combines high-level visual features extracted from a deep convolutional neural network, users' past feedback, as well as evolving trends within the community. Experimentally we evaluate our method on two large real-world datasets from Amazon.com, where we show it to outperform state-of-the-art personalized ranking measures, and also use it to visualize the high-level fashion trends across the 11-year span of our dataset.",
+    "venue": "The Web Conference",
+    "year": 2016,
+    "referenceCount": 41,
+    "citationCount": 1847,
+    "influentialCitationCount": 176,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1602.01585",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper builds novel models for the One-Class Collaborative Filtering setting, where the goal is to estimate users' fashion-aware personalized ranking functions based on their past feedback and combines high-level visual features extracted from a deep convolutional neural network, users' past feedback, as well as evolving trends within the community."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2933399",
+            "name": "Ruining He"
+        },
+        {
+            "authorId": "35660011",
+            "name": "Julian McAuley"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "bbb4a5e24d8b227e553b9efd6f1d62a56b7fba92",
+            "title": "VBPR: Visual Bayesian Personalized Ranking from Implicit Feedback"
+        },
+        {
+            "paperId": "6b858b9cc99af35b14b65616f389690ac0952baf",
+            "title": "Learning Visual Clothing Style with Heterogeneous Dyadic Co-Occurrences"
+        },
+        {
+            "paperId": "fab4d19ed77dad7c437d885eceb8aa65fae5a783",
+            "title": "Image-Based Recommendations on Styles and Substitutes"
+        },
+        {
+            "paperId": "297f483d0639ab65bc5a876b235e3054acbd33b3",
+            "title": "Neuroaesthetics in fashion: Modeling the perception of fashionability"
+        },
+        {
+            "paperId": "bae2cbe50c62798305acbaf9eaeebbba27afdf81",
+            "title": "Daily-Aware Personalized Recommendation based on Feature-Level Time Series Analysis"
+        },
+        {
+            "paperId": "c48e85a7a4ed7895096ae074a6c544415e6c4b85",
+            "title": "RAPID: Rating Pictorial Aesthetics using Deep Learning"
+        },
+        {
+            "paperId": "236c4613771834d3cfb43c450305ade107813198",
+            "title": "Leveraging Social Connections to Improve Personalized Ranking for Collaborative Filtering"
+        },
+        {
+            "paperId": "86e042df57619af7916b4caaa74386c2cc3f2fd1",
+            "title": "Beyond clicks: dwell time for personalization"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "6bdb186ec4726e00a8051119636d4df3b94043b5",
+            "title": "Caffe: Convolutional Architecture for Fast Feature Embedding"
+        },
+        {
+            "paperId": "26f3419811f3a0e68fbcaf45fe38774438293828",
+            "title": "Is a picture really worth a thousand words?: - on the role of images in e-commerce"
+        },
+        {
+            "paperId": "cb18f52d0cd1fdc5e020e84e84a9fcd8056ec77c",
+            "title": "Large scale visual recommendations from street fashion images"
+        },
+        {
+            "paperId": "c62a99e6491e14c32aac6bfea01ef3f943ce9129",
+            "title": "Recognizing Image Style"
+        },
+        {
+            "paperId": "b8de958fead0d8a9619b55c7299df3257c624a96",
+            "title": "DeCAF: A Deep Convolutional Activation Feature for Generic Visual Recognition"
+        },
+        {
+            "paperId": "d93c2f64294b80f573d5d1f2da44b196a78e2ed2",
+            "title": "One-class collaborative filtering with random graphs"
+        },
+        {
+            "paperId": "1c404de2c85a1b58cf7048ca645de6d392358779",
+            "title": "Getting the look: clothing recognition and segmentation for automatic product suggestions in everyday photos"
+        },
+        {
+            "paperId": "4d7bb722ff0a1bd5894cd8a620d5fe0673cbf721",
+            "title": "From amateurs to connoisseurs: modeling the evolution of user expertise through online reviews"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "87e528285e989e3c4c7d581c33e13be6dbd54893",
+            "title": "Multi-relational matrix factorization using bayesian personalized ranking for social network data"
+        },
+        {
+            "paperId": "b41b641daf967130a61ded4a979444ffbdc8bd88",
+            "title": "MyMediaLite: a free recommender system library"
+        },
+        {
+            "paperId": "5cae1ff77d4ca06b7433a9284be1bb5e7e1ab378",
+            "title": "A study on the impact of product images on user clicks for online shopping"
+        },
+        {
+            "paperId": "22ca35775b5a487b0babebffbf08741c73b788f6",
+            "title": "Music recommendations with temporal context awareness"
+        },
+        {
+            "paperId": "ed43d7ddcc7c3b066de9196a64fade9e67d354a5",
+            "title": "Temporal diversity in recommender systems"
+        },
+        {
+            "paperId": "c1aa28159e768b75d0f4637a71d20da02efe1ef2",
+            "title": "Collaborative filtering with temporal dynamics"
+        },
+        {
+            "paperId": "db16e908246f32b60a6e0a8e27093aa145fbb1ed",
+            "title": "BPR: Bayesian Personalized Ranking from Implicit Feedback"
+        },
+        {
+            "paperId": "184b7281a87ee16228b24716ca02b29519d52eb5",
+            "title": "Collaborative Filtering for Implicit Feedback Datasets"
+        },
+        {
+            "paperId": "109de4531e279681919f7330f01b532a7201e4b9",
+            "title": "One-Class Collaborative Filtering"
+        },
+        {
+            "paperId": "6ce18f996c5d8fb6855fdcf256ec0915ec7523aa",
+            "title": "Time weight collaborative filtering"
+        },
+        {
+            "paperId": "bfbdc3374125aa4ae76951d0ee352c15d02f33cf",
+            "title": "Learning drifting concepts: Example selection vs. example weighting"
+        },
+        {
+            "paperId": "7b82a0c254969df37638798cea2d6febe19b2824",
+            "title": "Learning drifting concepts: Example selection vs. example weighting"
+        },
+        {
+            "paperId": "bc416c3e4f5cc637921346d4869834ec39f58fd9",
+            "title": "Mining concept-drifting data streams using ensemble classifiers"
+        },
+        {
+            "paperId": "6550dd3c2b64ce8295f75d5dace078e6db4a6537",
+            "title": "Determinants of internet auction success and closing price: An exploratory study"
+        },
+        {
+            "paperId": "1306f8f79a46b55aa83b1413588fa1e75ce9d3d1",
+            "title": "On the approximation of curves by line segments using dynamic programming"
+        },
+        {
+            "paperId": "0fca9a022f4910dda7f8bdc92bbbe8a9c6e35303",
+            "title": "Accelerating t-SNE using tree-based algorithms"
+        },
+        {
+            "paperId": "480ca76957e066eb6b24cd28df998d30310b4ced",
+            "title": "Advances in Collaborative Filtering"
+        },
+        {
+            "paperId": "31af4b8793e93fd35e89569ccd663ae8777f0072",
+            "title": "The Netflix Prize"
+        },
+        {
+            "paperId": "f4ebb542c752a0dc423f94fd121e2edb8f6275ba",
+            "title": "The BellKor solution to the Netflix Prize"
+        },
+        {
+            "paperId": "30eac73e9b482bc28b5b68cd585557de48d0618f",
+            "title": "The problem of concept drift: definitions and related work"
+        },
+        {
+            "paperId": "cfcf4b5277f074a6d4e73c11ee60a3cea1fc0b50",
+            "title": "Instance-based learning algorithms"
+        },
+        {
+            "paperId": "abfb3352a188c7f3e7ad518dcf0dbcff480bcec4",
+            "title": "Matchbox: large scale online bayesian recommendations"
+        },
+        {
+            "paperId": "7811dff921a6d8275136530d99b80580e3adbe0b",
+            "title": "Proceedings of the Twenty-Third International Joint Conference on Artificial Intelligence GBPR: Group Preference Based Bayesian Personalized Ranking for One-Class Collaborative Filtering"
+        }
+    ]
+}

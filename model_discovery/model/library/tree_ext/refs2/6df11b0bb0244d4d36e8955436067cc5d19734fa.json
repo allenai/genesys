@@ -1,0 +1,227 @@
+{
+    "paperId": "6df11b0bb0244d4d36e8955436067cc5d19734fa",
+    "externalIds": {
+        "MAG": "2240067561",
+        "ArXiv": "1509.06321",
+        "DBLP": "journals/corr/SamekBMBM15",
+        "DOI": "10.1109/TNNLS.2016.2599820",
+        "CorpusId": 7689122,
+        "PubMed": "27576267"
+    },
+    "title": "Evaluating the Visualization of What a Deep Neural Network Has Learned",
+    "abstract": "Deep neural networks (DNNs) have demonstrated impressive performance in complex machine learning tasks such as image classification or speech recognition. However, due to their multilayer nonlinear structure, they are not transparent, i.e., it is hard to grasp what makes them arrive at a particular classification or recognition decision, given a new unseen data sample. Recently, several approaches have been proposed enabling one to understand and interpret the reasoning embodied in a DNN for a single test image. These methods quantify the \u201cimportance\u201d of individual pixels with respect to the classification decision and allow a visualization in terms of a heatmap in pixel/input space. While the usefulness of heatmaps can be judged subjectively by a human, an objective quality measure is missing. In this paper, we present a general methodology based on region perturbation for evaluating ordered collections of pixels such as heatmaps. We compare heatmaps computed by three different methods on the SUN397, ILSVRC2012, and MIT Places data sets. Our main result is that the recently proposed layer-wise relevance propagation algorithm qualitatively and quantitatively provides a better explanation of what made a DNN arrive at a particular classification decision than the sensitivity-based approach or the deconvolution method. We provide theoretical arguments to explain this result and discuss its practical implications. Finally, we investigate the use of heatmaps for unsupervised assessment of the neural network performance.",
+    "venue": "IEEE Transactions on Neural Networks and Learning Systems",
+    "year": 2015,
+    "referenceCount": 44,
+    "citationCount": 1080,
+    "influentialCitationCount": 87,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1509.06321",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A general methodology based on region perturbation for evaluating ordered collections of pixels such as heatmaps and shows that the recently proposed layer-wise relevance propagation algorithm qualitatively and quantitatively provides a better explanation of what made a DNN arrive at a particular classification decision than the sensitivity-based approach or the deconvolution method."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1699054",
+            "name": "W. Samek"
+        },
+        {
+            "authorId": "49345823",
+            "name": "Alexander Binder"
+        },
+        {
+            "authorId": "144535526",
+            "name": "G. Montavon"
+        },
+        {
+            "authorId": "3633358",
+            "name": "Sebastian Lapuschkin"
+        },
+        {
+            "authorId": "145034054",
+            "name": "K. M\u00fcller"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "43dc45dca9c1e641c7855a033a91a71746ca8832",
+            "title": "Analyzing Classifiers: Fisher Vectors and Deep Neural Networks"
+        },
+        {
+            "paperId": "17a273bbd4448083b01b5a9389b3c37f5425aac0",
+            "title": "On Pixel-Wise Explanations for Non-Linear Classifier Decisions by Layer-Wise Relevance Propagation"
+        },
+        {
+            "paperId": "1b5a24639fa80056d1a17b15f6997d10e76cc731",
+            "title": "Understanding Neural Networks Through Deep Visualization"
+        },
+        {
+            "paperId": "125f7b539e89cd0940ff89c231902b1d4023b3ba",
+            "title": "Inverting Visual Representations with Convolutional Networks"
+        },
+        {
+            "paperId": "993c55eef970c6a11ec367dbb1bf1f0c1d5d72a6",
+            "title": "Inverting Convolutional Networks with Convolutional Networks"
+        },
+        {
+            "paperId": "1d5972b32a9b5a455a6eef389de5b7fca25771ad",
+            "title": "Domain-Adversarial Training of Neural Networks"
+        },
+        {
+            "paperId": "401192b00b650adfa5ac49de59b720e1c81f1410",
+            "title": "Object Detectors Emerge in Deep Scene CNNs"
+        },
+        {
+            "paperId": "bee044c8e8903fb67523c1f8c105ab4718600cdb",
+            "title": "Explaining and Harnessing Adversarial Examples"
+        },
+        {
+            "paperId": "9667f8264745b626c6173b1310e2ff0298b09cfc",
+            "title": "Learning Deep Features for Scene Recognition using Places Database"
+        },
+        {
+            "paperId": "4543670c4b2d88a9b67525e0084044adef94ae76",
+            "title": "Deep neural networks are easily fooled: High confidence predictions for unrecognizable images"
+        },
+        {
+            "paperId": "4d790c8fae40357d24813d085fa74a436847fb49",
+            "title": "Understanding deep image representations by inverting them"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "dc6ac3437f0a6e64e4404b1b9d188394f8a3bf71",
+            "title": "Deep Inside Convolutional Networks: Visualising Image Classification Models and Saliency Maps"
+        },
+        {
+            "paperId": "d891dc72cbd40ffaeefdc79f2e7afe1e530a23ad",
+            "title": "Intriguing properties of neural networks"
+        },
+        {
+            "paperId": "1a2a770d23b4a171fa81de62a78a3deb0588f238",
+            "title": "Visualizing and Understanding Convolutional Networks"
+        },
+        {
+            "paperId": "687bac2d3320083eb4530bf18bb8f8f721477600",
+            "title": "Recursive Deep Models for Semantic Compositionality Over a Sentiment Treebank"
+        },
+        {
+            "paperId": "e39b6176a355f4cbd9c77352db4046c339b218ca",
+            "title": "Analyzing Local Structure in Kernel-Based Learning: Explanation, Complexity, and Reliability Assessment"
+        },
+        {
+            "paperId": "4a77a2ed53529431d816c42ec4554364e80ee18b",
+            "title": "Machine learning of molecular electronic properties in chemical compound space"
+        },
+        {
+            "paperId": "09193e19b59fc8f05bee9d6efbfb1607ca5b6501",
+            "title": "Deep Neural Networks Segment Neuronal Membranes in Electron Microscopy Images"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "398c296d0cc7f9d180f84969f8937e6d3a413796",
+            "title": "Multi-column deep neural networks for image classification"
+        },
+        {
+            "paperId": "e36c6ca35e1aa6a9c89abb155ae707333c6fc3c4",
+            "title": "Visual Interpretation of Kernel\u2010Based Prediction Models"
+        },
+        {
+            "paperId": "42269d0438c0ae4ca892334946ed779999691074",
+            "title": "Learning hierarchical invariant spatio-temporal features for action recognition with independent subspace analysis"
+        },
+        {
+            "paperId": "bc1022b031dc6c7019696492e8116598097a8c12",
+            "title": "Natural Language Processing (Almost) from Scratch"
+        },
+        {
+            "paperId": "3c53291e21e4f13d2fb64a5eeb12cf51e5fcab56",
+            "title": "Kernel Analysis of Deep Networks"
+        },
+        {
+            "paperId": "908091b4a8757c3b2f7d9cfa2c4f616ee12c5157",
+            "title": "SUN database: Large-scale scene recognition from abbey to zoo"
+        },
+        {
+            "paperId": "4e6238c8613b5b81f81552939bce33296aedfbfe",
+            "title": "How to Explain Individual Classification Decisions"
+        },
+        {
+            "paperId": "2d3ce845bd2ad9014fbfa3f00a3284a4048bbdf4",
+            "title": "On Relevant Dimensions in Kernel Feature Spaces"
+        },
+        {
+            "paperId": "320b36777d57e772d88d278ceeccd1f5e746304c",
+            "title": "Computational modelling of visual attention"
+        },
+        {
+            "paperId": "7b4b801de1ba8a4456adcde7b1a9c5bc5cf09fc3",
+            "title": "A saliency-based search mechanism for overt and covert shifts of visual attention"
+        },
+        {
+            "paperId": "682bed63aa347fa601f5c85c452332e646ac9849",
+            "title": "Computational models of cortical visual processing."
+        },
+        {
+            "paperId": "052b1d8ce63b07fec3de9dbb583772d860b7c769",
+            "title": "Learning representations by back-propagating errors"
+        },
+        {
+            "paperId": "d59626caefc05fa51806596909e3cbf5514fa2fd",
+            "title": "The LRP Toolbox for Artificial Neural Networks"
+        },
+        {
+            "paperId": null,
+            "title": "Caffe: An Open Source Convolutional Architecture for Fast Feature Embedding"
+        },
+        {
+            "paperId": "b87274e6d9aa4e6ba5148898aa92941617d2b6ed",
+            "title": "Efficient BackProp"
+        },
+        {
+            "paperId": "41172dbdab7c4646c5584da8b5a44b5538e86eba",
+            "title": "Visualization of Nonlinear Classification Models in Neuroimaging - Signed Sensitivity Maps"
+        },
+        {
+            "paperId": "01373261bfbba42a806d21d5b759d5a27f509892",
+            "title": "Understanding Representations Learned in Deep Architectures"
+        },
+        {
+            "paperId": "190cb6561961f9989c5071736e85ab2a40b9a818",
+            "title": "Author ' s personal copy A Fast Quartet tree heuristic for hierarchical clustering"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        },
+        {
+            "paperId": "d8384f7ef288d2d5cb267128471c5427fc98b54b",
+            "title": "An Introduction to Variable and Feature Selection"
+        },
+        {
+            "paperId": "b1a5961609c623fc816aaa77565ba38b25531a8e",
+            "title": "Neural Networks: Tricks of the Trade"
+        },
+        {
+            "paperId": "d5ad1fdd277219257c38df86770c9fd68f4c74f0",
+            "title": "Natural image statistics and neural representation."
+        },
+        {
+            "paperId": "52dfa20f6fdfcda8c11034e3d819f4bd47e6207d",
+            "title": "Ieee Transactions on Pattern Analysis and Machine Intelligence 1 3d Convolutional Neural Networks for Human Action Recognition"
+        }
+    ]
+}

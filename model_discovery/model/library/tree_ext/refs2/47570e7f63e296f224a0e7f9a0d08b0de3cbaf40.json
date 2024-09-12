@@ -1,0 +1,194 @@
+{
+    "paperId": "47570e7f63e296f224a0e7f9a0d08b0de3cbaf40",
+    "externalIds": {
+        "DBLP": "conf/nips/VinyalsKKPSH15",
+        "MAG": "2951648188",
+        "ArXiv": "1412.7449",
+        "CorpusId": 14223
+    },
+    "title": "Grammar as a Foreign Language",
+    "abstract": "Syntactic constituency parsing is a fundamental problem in natural language processing and has been the subject of intensive research and engineering for decades. As a result, the most accurate parsers are domain specific, complex, and inefficient. In this paper we show that the domain agnostic attention-enhanced sequence-to-sequence model achieves state-of-the-art results on the most widely used syntactic constituency parsing dataset, when trained on a large synthetic corpus that was annotated using existing parsers. It also matches the performance of standard parsers when trained only on a small human-annotated dataset, which shows that this model is highly data-efficient, in contrast to sequence-to-sequence models without the attention mechanism. Our parser is also fast, processing over a hundred sentences per second with an unoptimized CPU implementation.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2014,
+    "referenceCount": 36,
+    "citationCount": 916,
+    "influentialCitationCount": 97,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The domain agnostic attention-enhanced sequence-to-sequence model achieves state-of-the-art results on the most widely used syntactic constituency parsing dataset, when trained on a large synthetic corpus that was annotated using existing parsers."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1689108",
+            "name": "O. Vinyals"
+        },
+        {
+            "authorId": "40527594",
+            "name": "Lukasz Kaiser"
+        },
+        {
+            "authorId": "2060101052",
+            "name": "Terry Koo"
+        },
+        {
+            "authorId": "1754497",
+            "name": "Slav Petrov"
+        },
+        {
+            "authorId": "1701686",
+            "name": "I. Sutskever"
+        },
+        {
+            "authorId": "1695689",
+            "name": "Geoffrey E. Hinton"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "1938624bb9b0f999536dcc8d8f519810bb4e1b3b",
+            "title": "On Using Very Large Target Vocabulary for Neural Machine Translation"
+        },
+        {
+            "paperId": "47d2dc34e1d02a8109f5c04bb6939725de23716d",
+            "title": "End-to-end Continuous Speech Recognition using Attention-based Recurrent NN: First Results"
+        },
+        {
+            "paperId": "d4dc1012d780e8e2547237eb5a6dc7b1bf47d2f0",
+            "title": "Show and tell: A neural image caption generator"
+        },
+        {
+            "paperId": "1956c239b3552e030db1b78951f64781101125ed",
+            "title": "Addressing the Rare Word Problem in Neural Machine Translation"
+        },
+        {
+            "paperId": "0d0b3ff23fbf1ec7a0dfebd923a3ef224306491a",
+            "title": "Learning to Execute"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "1e9febd1a88c44843e5f865c3b679174688b1d27",
+            "title": "Sparser, Better, Faster GPU Parsing"
+        },
+        {
+            "paperId": "016842482d3d733d8b999f6b9735a15906a12b53",
+            "title": "Ambiguity-aware Ensemble Training for Semi-supervised Dependency Parsing"
+        },
+        {
+            "paperId": "944a1cfd79dbfb6fef460360a0765ba790f4027a",
+            "title": "Recurrent Continuous Translation Models"
+        },
+        {
+            "paperId": "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17",
+            "title": "Generating Sequences With Recurrent Neural Networks"
+        },
+        {
+            "paperId": "174bbdb96252454cbb40a9c4e53335996235a008",
+            "title": "Fast and Accurate Shift-Reduce Constituent Parsing"
+        },
+        {
+            "paperId": "f6b51c8753a871dc94ff32152c00c01e94f90f09",
+            "title": "Efficient Estimation of Word Representations in Vector Space"
+        },
+        {
+            "paperId": "9c0ddf74f87d154db88d79c640578c1610451eec",
+            "title": "Parsing Natural Scenes and Natural Language with Recursive Neural Networks"
+        },
+        {
+            "paperId": "d6d931fe9bfe7223165b14ec85d79d56e406e38a",
+            "title": "Deep Learning for Efficient Discriminative Parsing"
+        },
+        {
+            "paperId": "e441126a8dd0cb8363272b7b54207ae92e155bc0",
+            "title": "Self-Training with Products of Latent Variable Grammars"
+        },
+        {
+            "paperId": "9dccaf6ea0fa19772cf8067295b16df3eb7b4dda",
+            "title": "Products of Random Latent Variable Grammars"
+        },
+        {
+            "paperId": "266185b76db9143a4f1d695c8f1fd5cc48a2c829",
+            "title": "Incremental Sigmoid Belief Networks for Grammar Learning"
+        },
+        {
+            "paperId": "5bfd8d40bc071fffaf93685a46974b122ee4239d",
+            "title": "Self-Training PCFG Grammars with Latent Annotations Across Languages"
+        },
+        {
+            "paperId": "053f1cf10ced2321c1853f307075f0a6a83b6840",
+            "title": "Algorithms for Deterministic Incremental Dependency Parsing"
+        },
+        {
+            "paperId": "2fd9983d42eba7f25f27d437df8c5d8bdb2b778e",
+            "title": "Constituent Parsing with Incremental Sigmoid Belief Networks"
+        },
+        {
+            "paperId": "f52de7242e574b70410ca6fb70b79c811919fc00",
+            "title": "Learning Accurate, Compact, and Interpretable Tree Annotation"
+        },
+        {
+            "paperId": "956d4b97f5814dd9e53abf286cc8cfe1283a01eb",
+            "title": "QuestionBank: Creating a Corpus of Parse-Annotated Questions"
+        },
+        {
+            "paperId": "78a9513e70f596077179101f6cb6eadc51602039",
+            "title": "Effective Self-Training for Parsing"
+        },
+        {
+            "paperId": "e54d8b07ef659f9ee2671441c4355e414e408836",
+            "title": "OntoNotes: The 90% Solution"
+        },
+        {
+            "paperId": "1174297ddcf08937a94d8efe4c1efb65f3b92fd8",
+            "title": "Discriminative Training of a Neural Network Statistical Parser"
+        },
+        {
+            "paperId": "41828fc3dab24784f95e6976e8aaa73f68e1840e",
+            "title": "Incremental Parsing with the Perceptron Algorithm"
+        },
+        {
+            "paperId": "a600850ac0120cb09a0b7de7da80bb6a7a76de06",
+            "title": "Accurate Unlexicalized Parsing"
+        },
+        {
+            "paperId": "2ae8397c07bd3c76f84c7cdac7897e8b7dec9029",
+            "title": "Inducing History Representations for Broad Coverage Statistical Parsing"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "0ffa423a5283396c88ff3d4033d541796bd039cc",
+            "title": "Three Generative, Lexicalised Models for Statistical Parsing"
+        },
+        {
+            "paperId": "54c846ee00c6132d70429cc279e8577f63ed05e4",
+            "title": "A Linear Observed Time Statistical Parser Based on Maximum Entropy Models"
+        },
+        {
+            "paperId": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+            "title": "Building a Large Annotated Corpus of English: The Penn Treebank"
+        },
+        {
+            "paperId": "a0bf3a18ea98f259c029827a7c1f7d5822642db8",
+            "title": "Overview of the 2012 Shared Task on Parsing the Web"
+        },
+        {
+            "paperId": null,
+            "title": "A neural network for learning how to parse tree adjoining grammar"
+        },
+        {
+            "paperId": "89b1be291ad824d5652c8f6953c1c32dc55abbe1",
+            "title": "Under review as a conference paper at ICLR 2019 softmax Transpose Updated Memory Memory embedded input linear concat Attention Weights concat"
+        }
+    ]
+}

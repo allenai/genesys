@@ -1,0 +1,194 @@
+{
+    "paperId": "1db4d7cf784e53f62ffe414bbde2cdcd770e579f",
+    "externalIds": {
+        "ArXiv": "1803.09017",
+        "MAG": "2963272440",
+        "DBLP": "journals/corr/abs-1803-09017",
+        "CorpusId": 4349820
+    },
+    "title": "Style Tokens: Unsupervised Style Modeling, Control and Transfer in End-to-End Speech Synthesis",
+    "abstract": "In this work, we propose \"global style tokens\" (GSTs), a bank of embeddings that are jointly trained within Tacotron, a state-of-the-art end-to-end speech synthesis system. The embeddings are trained with no explicit labels, yet learn to model a large range of acoustic expressiveness. GSTs lead to a rich set of significant results. The soft interpretable \"labels\" they generate can be used to control synthesis in novel ways, such as varying speed and speaking style - independently of the text content. They can also be used for style transfer, replicating the speaking style of a single audio clip across an entire long-form text corpus. When trained on noisy, unlabeled found data, GSTs learn to factorize noise and speaker identity, providing a path towards highly scalable but robust speech synthesis.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2018,
+    "referenceCount": 32,
+    "citationCount": 741,
+    "influentialCitationCount": 88,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "\"global style tokens\" (GSTs), a bank of embeddings that are jointly trained within Tacotron, a state-of-the-art end-to-end speech synthesis system, learn to factorize noise and speaker identity, providing a path towards highly scalable but robust speech synthesis."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2115828379",
+            "name": "Yuxuan Wang"
+        },
+        {
+            "authorId": "39741369",
+            "name": "Daisy Stanton"
+        },
+        {
+            "authorId": "2153632494",
+            "name": "Yu Zhang"
+        },
+        {
+            "authorId": "1380248814",
+            "name": "R. Skerry-Ryan"
+        },
+        {
+            "authorId": "5697774",
+            "name": "Eric Battenberg"
+        },
+        {
+            "authorId": "30418264",
+            "name": "Joel Shor"
+        },
+        {
+            "authorId": "152130121",
+            "name": "Y. Xiao"
+        },
+        {
+            "authorId": "2056628054",
+            "name": "Fei Ren"
+        },
+        {
+            "authorId": "1691944",
+            "name": "Ye Jia"
+        },
+        {
+            "authorId": "2278009",
+            "name": "R. Saurous"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "fe44d87cd328c2be24ba8b9c494f0af0ac958e68",
+            "title": "Front-End Factor Analysis For Speaker Verification"
+        },
+        {
+            "paperId": "3ab94d79b76d5a9488ce84e3f7490c3c48f2cc33",
+            "title": "Towards End-to-End Prosody Transfer for Expressive Speech Synthesis with Tacotron"
+        },
+        {
+            "paperId": "1a2599e467e855f845dcbf9282f8bdbd97b85708",
+            "title": "Natural TTS Synthesis by Conditioning Wavenet on MEL Spectrogram Predictions"
+        },
+        {
+            "paperId": "f466157848d1a7772fb6d02cdac9a7a5e7ef982e",
+            "title": "Neural Discrete Representation Learning"
+        },
+        {
+            "paperId": "ea4c597cc45c47791def32f9a480f70c8b005bc3",
+            "title": "Uncovering Latent Style Factors for Expressive Speech Synthesis"
+        },
+        {
+            "paperId": "feca3f41b5b4cc13368d53f3168cc55a2420ec16",
+            "title": "Deep Voice 3: Scaling Text-to-Speech with Convolutional Sequence Learning"
+        },
+        {
+            "paperId": "852120feb37d2dc136d1c6916b52b9baabfc2e11",
+            "title": "Deep Voice 3: 2000-Speaker Neural Text-to-Speech"
+        },
+        {
+            "paperId": "c955f0a5a70ae458084998ceee20e402ecc6504a",
+            "title": "Unsupervised Learning of Disentangled and Interpretable Representations from Sequential Data"
+        },
+        {
+            "paperId": "db101350696cd5930c1cde5bfb463619e4e05af1",
+            "title": "Unsupervised Learning for Expressive Speech Synthesis"
+        },
+        {
+            "paperId": "49636d64a097f708ac131eb24c46719dfcd6d6b2",
+            "title": "Generation of Large-Scale Simulated Utterances in Virtual Rooms to Train Deep-Neural Networks for Far-Field Speech Recognition in Google Home"
+        },
+        {
+            "paperId": "d4cf7ae17f851f3c6f48381fdfb9b1060928b8b7",
+            "title": "Voice Synthesis for in-the-Wild Speakers via a Phonological Loop"
+        },
+        {
+            "paperId": "471685d00567fca097fee98f1e622d7e33152469",
+            "title": "Adapting and controlling DNN-based speech synthesis using input codes"
+        },
+        {
+            "paperId": "4cbec83906d7e24f5f3279f9f3704baa08fff755",
+            "title": "Non-parallel voice conversion using i-vector PLDA: towards unifying speaker verification and transformation"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "a072c2a400f62f720b68dc54a662fb1ae115bf06",
+            "title": "Tacotron: Towards End-to-End Speech Synthesis"
+        },
+        {
+            "paperId": "63880b57b95de8afd73036e55b9c4bccb7a528b9",
+            "title": "Deep Voice: Real-time Neural Text-to-Speech"
+        },
+        {
+            "paperId": "c62833cb5721351189d6897bfa093584951f3a93",
+            "title": "Non-Parallel Training in Voice Conversion Using an Adaptive Restricted Boltzmann Machine"
+        },
+        {
+            "paperId": "df0402517a7338ae28bc54acaac400de6b456a46",
+            "title": "WaveNet: A Generative Model for Raw Audio"
+        },
+        {
+            "paperId": "16fea85194803a3980bf0381fa5ec997d3de178c",
+            "title": "Fast, Compact, and High Quality LSTM-RNN Based Statistical Parametric Speech Synthesizers for Mobile Devices"
+        },
+        {
+            "paperId": "9f0687bcd0a7d7fc91b8c5d36c003a38b8853105",
+            "title": "Zoneout: Regularizing RNNs by Randomly Preserving Hidden Activations"
+        },
+        {
+            "paperId": "39e0c341351f8f4a39ac890b96217c7f4bde5369",
+            "title": "A note on the evaluation of generative models"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "971cdc8f7291fc28d755996144ad76bcafc884b7",
+            "title": "Conditional restricted Boltzmann machine for voice conversion"
+        },
+        {
+            "paperId": "822dcba7c665a8861b7e4849d4e9e16ec53c34df",
+            "title": "Unsupervised clustering of emotion and voice styles for expressive TTS"
+        },
+        {
+            "paperId": "9982d1d7f36d7da865faf74b6a0c5c4f6dd45c8d",
+            "title": "Front-End Factor Analysis for Speaker Verification"
+        },
+        {
+            "paperId": "a35bdd7516503261a1de4e781b27f384dcf4dbb3",
+            "title": "ToBI or not toBI?"
+        },
+        {
+            "paperId": "a410c0e50f52d3313bc9270d45e26795607562ef",
+            "title": "TOBI: a standard for labeling English prosody"
+        },
+        {
+            "paperId": "14bc876fae55faf5669beb01667a4f3bd324a4f1",
+            "title": "Signal estimation from modified short-time Fourier transform"
+        },
+        {
+            "paperId": null,
+            "title": "Style Tokens: Unsupervised Style Modeling, Control and Transfer in End-to-End Speech Synthesis Graves"
+        },
+        {
+            "paperId": "664f90dae8756d96dc0a8c39d26015c5e0756866",
+            "title": "AutoBI - a tool for automatic toBI annotation"
+        },
+        {
+            "paperId": "1c46943103bd7b7a2c7be86859995a4144d1938b",
+            "title": "Visualizing Data using t-SNE"
+        },
+        {
+            "paperId": "b522252d4e370708a5bdd43f4f0bfd9103f808bb",
+            "title": "Text-to-speech synthesis"
+        }
+    ]
+}

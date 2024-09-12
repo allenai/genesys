@@ -1,0 +1,74 @@
+{
+    "paperId": "8b22e1751f75be137b7b210981baccc1b9ab9222",
+    "externalIds": {
+        "MAG": "2143425433",
+        "DBLP": "conf/siggraph/Crow84",
+        "DOI": "10.1145/800031.808600",
+        "CorpusId": 2210332
+    },
+    "title": "Summed-area tables for texture mapping",
+    "abstract": "Texture-map computations can be made tractable through use of precalculated tables which allow computational costs independent of the texture density. The first example of this technique, the \u201cmip\u201d map, uses a set of tables containing successively lower-resolution representations filtered down from the discrete texture function. An alternative method using a single table of values representing the integral over the texture function rather than the function itself may yield superior results at similar cost. The necessary algorithms to support the new technique are explained. Finally, the cost and performance of the new technique is compared to previous techniques.",
+    "venue": "International Conference on Computer Graphics and Interactive Techniques",
+    "year": 1984,
+    "referenceCount": 11,
+    "citationCount": 1518,
+    "influentialCitationCount": 71,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Texture-map computations can be made tractable through use of precalculated tables which allow computational costs independent of the texture density, and the cost and performance of the new technique is compared to previous techniques."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1832462",
+            "name": "F. Crow"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "fb7d07295261b6a25084a989770497b597b3b339",
+            "title": "Using Stochastic Modeling for Texture Generation"
+        },
+        {
+            "paperId": "63ffc8b9e57ba55c4e4eb499c73b664238ff711f",
+            "title": "Pyramidal parametrics"
+        },
+        {
+            "paperId": "985297534ba9ee5ce4d488fba92f1e8c2753f460",
+            "title": "Clamping: A method of antialiasing textured surfaces by bandwidth limiting in object space"
+        },
+        {
+            "paperId": "1ef833ac2fc74a31a864416659a5f7bc5e4a63c5",
+            "title": "Computer rendering of stochastic models"
+        },
+        {
+            "paperId": "a97e117427f3672fad3804dca3815fca0250de57",
+            "title": "Synthetic texturing using digital filters"
+        },
+        {
+            "paperId": "958dc5c29c0f46fd988eb75a24ac4a7a17e5497c",
+            "title": "3-D transformations of images in scanline order"
+        },
+        {
+            "paperId": "2053c6bfd6ff3fc78eb08f82279b5596e2f37b36",
+            "title": "Computer Graphics"
+        },
+        {
+            "paperId": "40a6fff1cf2b6f43d4ecdefdf32a7138cf33be93",
+            "title": "Texture and reflection in computer generated images"
+        },
+        {
+            "paperId": "144fcbc54abee41d12639e1612b1d427d912d29f",
+            "title": "A subdivision algorithm for computer display of curved surfaces."
+        },
+        {
+            "paperId": "e1e71a43b41452f7389420a3a6c1a1c32149c5c9",
+            "title": "Computer Display of Curved Surfaces"
+        },
+        {
+            "paperId": null,
+            "title": "middle: multiple table (2 1/4 min"
+        }
+    ]
+}

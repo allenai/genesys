@@ -1,0 +1,229 @@
+{
+    "paperId": "7c8a51d04522496c43db68f2582efd45eaf59fea",
+    "externalIds": {
+        "MAG": "2951755740",
+        "DBLP": "conf/cvpr/WuSKYZTX15",
+        "DOI": "10.1109/CVPR.2015.7298801",
+        "CorpusId": 206592833
+    },
+    "title": "3D ShapeNets: A deep representation for volumetric shapes",
+    "abstract": "3D shape is a crucial but heavily underutilized cue in today's computer vision systems, mostly due to the lack of a good generic shape representation. With the recent availability of inexpensive 2.5D depth sensors (e.g. Microsoft Kinect), it is becoming increasingly important to have a powerful 3D shape representation in the loop. Apart from category recognition, recovering full 3D shapes from view-based 2.5D depth maps is also a critical part of visual understanding. To this end, we propose to represent a geometric 3D shape as a probability distribution of binary variables on a 3D voxel grid, using a Convolutional Deep Belief Network. Our model, 3D ShapeNets, learns the distribution of complex 3D shapes across different object categories and arbitrary poses from raw CAD data, and discovers hierarchical compositional part representation automatically. It naturally supports joint object recognition and shape completion from 2.5D depth maps, and it enables active object recognition through view planning. To train our 3D deep learning model, we construct ModelNet - a large-scale 3D CAD model dataset. Extensive experiments show that our 3D deep representation enables significant performance improvement over the-state-of-the-arts in a variety of tasks.",
+    "venue": "Computer Vision and Pattern Recognition",
+    "year": 2014,
+    "referenceCount": 43,
+    "citationCount": 4960,
+    "influentialCitationCount": 1072,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1406.5670",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes to represent a geometric 3D shape as a probability distribution of binary variables on a 3D voxel grid, using a Convolutional Deep Belief Network, and shows that this 3D deep representation enables significant performance improvement over the-state-of-the-arts in a variety of tasks."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "152247501",
+            "name": "Zhirong Wu"
+        },
+        {
+            "authorId": "3340170",
+            "name": "Shuran Song"
+        },
+        {
+            "authorId": "2556428",
+            "name": "A. Khosla"
+        },
+        {
+            "authorId": "1807197",
+            "name": "F. Yu"
+        },
+        {
+            "authorId": "3064662",
+            "name": "Linguang Zhang"
+        },
+        {
+            "authorId": "50295995",
+            "name": "Xiaoou Tang"
+        },
+        {
+            "authorId": "40599257",
+            "name": "Jianxiong Xiao"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "2c0b510ebf995ef172cb64ed7ce24aa7903dced8",
+            "title": "Learning Rich Features from RGB-D Images for Object Detection and Segmentation"
+        },
+        {
+            "paperId": "71f36c8e17a5c080fab31fce1ffea9551fc49e47",
+            "title": "Predicting Failures of Vision Systems"
+        },
+        {
+            "paperId": "1c9b2396a0f76ff9695fc6024b8e8650b4127db1",
+            "title": "Nonmyopic View Planning for Active Object Detection"
+        },
+        {
+            "paperId": "e0852bb74a39b747b0c044a469f0465d42fafacd",
+            "title": "Hypothesis testing framework for active object detection"
+        },
+        {
+            "paperId": "cc75c81148245198d4c6d4c8fcbbae487215903b",
+            "title": "Convolutional-Recursive Deep Learning for 3D Object Classification"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "c15d9bb03260c30b5c0fc4ed58abab5fef0e1614",
+            "title": "Structure recovery by part assembly"
+        },
+        {
+            "paperId": "c1994ba5946456fc70948c549daf62363f13fa2d",
+            "title": "Indoor Segmentation and Support Inference from RGBD Images"
+        },
+        {
+            "paperId": "0e870469f332b3f787559b1ecc54909e41307d73",
+            "title": "A probabilistic model for component-based shape synthesis"
+        },
+        {
+            "paperId": "2375de37c64bb47795beb28b763f923afd85a638",
+            "title": "The Shape Boltzmann Machine: A Strong Model of Object Shape"
+        },
+        {
+            "paperId": "96d90797b26cce9caf1502e908385e25d97fca1c",
+            "title": "A textured object recognition pipeline for color and depth image data"
+        },
+        {
+            "paperId": "ad8c2721ef54c9326684762db7c9fc1378e83797",
+            "title": "Unsupervised learning of hierarchical representations with convolutional deep belief networks"
+        },
+        {
+            "paperId": "d473dfe0a0b941305028110c89aea392e1ad1827",
+            "title": "Probabilistic reasoning for assembly-based 3D modeling"
+        },
+        {
+            "paperId": "dbebc3af7f644116d50ee350adc910c3a2354b6e",
+            "title": "Autonomous generation of complete 3D object models using next best view manipulation planning"
+        },
+        {
+            "paperId": "5fa49c3b4760892a7fe9abcb866f496af94397a8",
+            "title": "Cone carving for surface reconstruction"
+        },
+        {
+            "paperId": "461dae710ffa6205f684354a7927e2f74d7cc1bc",
+            "title": "A lightweight approach to repairing digitized polygon meshes"
+        },
+        {
+            "paperId": "e79272fe3d65197100eae8be9fec6469107969ae",
+            "title": "Object Detection with Discriminatively Trained Part Based Models"
+        },
+        {
+            "paperId": "908091b4a8757c3b2f7d9cfa2c4f616ee12c5157",
+            "title": "SUN database: Large-scale scene recognition from abbey to zoo"
+        },
+        {
+            "paperId": "37933e8bfc74cfc42caa54ec15598798eb80a824",
+            "title": "Active view selection for object and pose recognition"
+        },
+        {
+            "paperId": "03057ea57d9f2d9bbc8a141d51f76d5bbc715234",
+            "title": "Using fast weights to improve persistent contrastive divergence"
+        },
+        {
+            "paperId": "202cbbf671743aefd380d2f23987bd46b9caaf97",
+            "title": "Sparse deep belief net model for visual area V2"
+        },
+        {
+            "paperId": "8978cf7574ceb35f4c3096be768c7547b28a35d0",
+            "title": "A Fast Learning Algorithm for Deep Belief Nets"
+        },
+        {
+            "paperId": "a6f3b1d94193a76f9f06d26e67cb22fd31aa735f",
+            "title": "3D Object Modeling and Recognition Using Local Affine-Invariant Image Descriptors and Multi-View Spatial Constraints"
+        },
+        {
+            "paperId": "e11e2e9b414631bc31edce9396fc58fea90cbb8b",
+            "title": "Modeling by example"
+        },
+        {
+            "paperId": "1db8a0b13b9561b3a5ed1c5962989199982de470",
+            "title": "The Princeton Shape Benchmark"
+        },
+        {
+            "paperId": "7393d2defe5353d416384fbfb24a1182269480be",
+            "title": "The Princeton Shape Benchmark (Figures 1 and 2)"
+        },
+        {
+            "paperId": "dc01194dca94f0cde2f98caa93f9740d7cbd1642",
+            "title": "On Visual Similarity Based 3D Model Retrieval"
+        },
+        {
+            "paperId": "da275dcffd835ddfd41fd73ea147c767c605d3f0",
+            "title": "Rotation Invariant Spherical Harmonic Representation of 3D Shape Descriptors"
+        },
+        {
+            "paperId": "0559a78eb4428a097f7b1baf535b0a01cea05e29",
+            "title": "View planning for automated three-dimensional object reconstruction and inspection"
+        },
+        {
+            "paperId": "52070af952474cf13ecd015d42979373ff7c1c00",
+            "title": "Training Products of Experts by Minimizing Contrastive Divergence"
+        },
+        {
+            "paperId": "74539169fee8c2c34ce4d821884ae78d2edb19b5",
+            "title": "Information Theoretic Sensor Data Selection for Active Object Recognition and State Estimation"
+        },
+        {
+            "paperId": "62afffb9749acff67e9533d5bb6d2b40ba6625e4",
+            "title": "Active Object Recognition: Looking for Differences"
+        },
+        {
+            "paperId": "58bd5ba08aa4d0cef1ff5ad2033fc0aa7fd0c2e7",
+            "title": "Next best view system in a 3D object modeling task"
+        },
+        {
+            "paperId": "66c7be6562e9d09de33c3abb8a594b65fb489080",
+            "title": "Creating generative models from range images"
+        },
+        {
+            "paperId": "81c4ec8a05ca8bb2cb0db8c636696cab2f1fdba3",
+            "title": "Solution to the next best view problem for automated CAD model acquisiton of free-form objects using range cameras"
+        },
+        {
+            "paperId": "8458412282496da39f71c9f80b266a173e26027e",
+            "title": "A Method for Registration of 3-D Shapes"
+        },
+        {
+            "paperId": "8b37258659bcdbc380b1e6c4e22cce9ea06397a1",
+            "title": "Recognition-by-components: a theory of human image understanding."
+        },
+        {
+            "paperId": null,
+            "title": "Sliding Shapes for 3D object detection in RGB-D images"
+        },
+        {
+            "paperId": "e95d3934e51107da7610acd0b1bcb6551671f9f1",
+            "title": "A Practical Guide to Training Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": "2e75497eb3293e3c172dde4e2b6dd8215f56dc83",
+            "title": "Object Recognition in the Geometric Era: A Retrospective"
+        },
+        {
+            "paperId": null,
+            "title": "Example-based 3D scan completion"
+        },
+        {
+            "paperId": "64ae5cc6e3aa3fa919729a587fb0de5a02766e37",
+            "title": "3 D Object Modeling and Recognition Using Local Affine-Invariant Image Descriptors and MultiView Spatial Constraints"
+        },
+        {
+            "paperId": "0498f9eb68902b46b0c7e3c997243a54e5f8382c",
+            "title": "A Next-Best-View Algorithm for 3D Scene Recovery with 5 Degrees of Freedom"
+        }
+    ]
+}

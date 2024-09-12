@@ -1,0 +1,175 @@
+{
+    "paperId": "668db48c6a79826456341680ee1175dfc4cced71",
+    "externalIds": {
+        "MAG": "2952913664",
+        "DBLP": "journals/corr/SeeLM17",
+        "ArXiv": "1704.04368",
+        "ACL": "P17-1099",
+        "DOI": "10.18653/v1/P17-1099",
+        "CorpusId": 8314118
+    },
+    "title": "Get To The Point: Summarization with Pointer-Generator Networks",
+    "abstract": "Neural sequence-to-sequence models have provided a viable new approach for abstractive text summarization (meaning they are not restricted to simply selecting and rearranging passages from the original text). However, these models have two shortcomings: they are liable to reproduce factual details inaccurately, and they tend to repeat themselves. In this work we propose a novel architecture that augments the standard sequence-to-sequence attentional model in two orthogonal ways. First, we use a hybrid pointer-generator network that can copy words from the source text via pointing, which aids accurate reproduction of information, while retaining the ability to produce novel words through the generator. Second, we use coverage to keep track of what has been summarized, which discourages repetition. We apply our model to the CNN / Daily Mail summarization task, outperforming the current abstractive state-of-the-art by at least 2 ROUGE points.",
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2017,
+    "referenceCount": 33,
+    "citationCount": 3744,
+    "influentialCitationCount": 759,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/P17-1099.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel architecture that augments the standard sequence-to-sequence attentional model in two orthogonal ways, using a hybrid pointer-generator network that can copy words from the source text via pointing, which aids accurate reproduction of information, while retaining the ability to produce novel words through the generator."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "13070498",
+            "name": "A. See"
+        },
+        {
+            "authorId": "35025299",
+            "name": "Peter J. Liu"
+        },
+        {
+            "authorId": "144783904",
+            "name": "Christopher D. Manning"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "538e5fe30f8c1f0125a2c6a7c2cceda3bfa723e4",
+            "title": "From Extractive to Abstractive Summarization: A Journey"
+        },
+        {
+            "paperId": "1bc49abe5145055f1fa259bd4e700b1eb6b7f08d",
+            "title": "SummaRuNNer: A Recurrent Neural Network Based Sequence Model for Extractive Summarization of Documents"
+        },
+        {
+            "paperId": "b108211139032738c21d2937a63433b97b31e77d",
+            "title": "Efficient Summarization with Read-Again and Copy Mechanism"
+        },
+        {
+            "paperId": "4d1f12f1a28afc30aab6f5086b3f2e481cf1f49f",
+            "title": "Neural Headline Generation on Abstract Meaning Representation"
+        },
+        {
+            "paperId": "efbd381493bb9636f489b965a2034d529cd56bcd",
+            "title": "Pointer Sentinel Mixture Models"
+        },
+        {
+            "paperId": "c78468c2f87efabf8845ccd210ced364d45e5eab",
+            "title": "Language as a Latent Variable: Discrete Generative Models for Sentence Compression"
+        },
+        {
+            "paperId": "2f160ce71f01ac2043de67536ff0e413ff6f58c5",
+            "title": "Temporal Attention Model for Neural Machine Translation"
+        },
+        {
+            "paperId": "5ab72d44237533534de8402e30f3ccce25ce30de",
+            "title": "Distraction-Based Neural Networks for Modeling Document"
+        },
+        {
+            "paperId": "7a67159fc7bc76d0b37930b55005a69b51241635",
+            "title": "Abstractive Sentence Summarization with Attentive Recurrent Neural Networks"
+        },
+        {
+            "paperId": "f997c2f1f668b942c4cccd425bc192df651ed516",
+            "title": "Coverage Embedding Models for Neural Machine Translation"
+        },
+        {
+            "paperId": "aa5b35dcf8b024f5352db73cc3944e8fad4f3793",
+            "title": "Pointing the Unknown Words"
+        },
+        {
+            "paperId": "02534853626c18c9a097c2712f1ddf3613257d35",
+            "title": "Incorporating Copying Mechanism in Sequence-to-Sequence Learning"
+        },
+        {
+            "paperId": "f37076f426023241f19cdc2fb0a0fd733a6fa7fa",
+            "title": "Abstractive Text Summarization using Sequence-to-sequence RNNs and Beyond"
+        },
+        {
+            "paperId": "33108287fbc8d94160787d7b2c7ef249d3ad6437",
+            "title": "Modeling Coverage for Neural Machine Translation"
+        },
+        {
+            "paperId": "b7aee9dfb027d6061c6a653684c0fa9a9bba750d",
+            "title": "Sequence Level Training with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "1ac30af5522c7a50ec4d1ee43fd2bd8652a9bd52",
+            "title": "A Neural Attention Model for Abstractive Sentence Summarization"
+        },
+        {
+            "paperId": "d1505c6123c102e53eb19dff312cb25cea840b72",
+            "title": "Teaching Machines to Read and Comprehend"
+        },
+        {
+            "paperId": "9653d5c2c7844347343d073bbedd96e05d52f69b",
+            "title": "Pointer Networks"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "59d2ce57f42f26d8bba11e5d76fa72a518eff00f",
+            "title": "Unsupervised Sentence Enhancement for Automatic Summarization"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "a5e4377d2149a8167d89383d785793967cf74602",
+            "title": "Meteor Universal: Language Specific Translation Evaluation for Any Target Language"
+        },
+        {
+            "paperId": "413c1142de9d91804d6d11c67ff3fed59c9fc279",
+            "title": "Adaptive Subgradient Methods for Online Learning and Stochastic Optimization"
+        },
+        {
+            "paperId": "0af81925ffade8b0ddaf84d5fb64a8fa5cbd4c5c",
+            "title": "Statistical machine translation"
+        },
+        {
+            "paperId": "60b05f32c32519a809f21642ef1eb3eaf3848008",
+            "title": "ROUGE: A Package for Automatic Evaluation of Summaries"
+        },
+        {
+            "paperId": "2c5a6286e7d2f6a7faa7786d0fba21ea63fc5891",
+            "title": "Looking for a Few Good Metrics: Automatic Summarization Evaluation - How Many Samples Are Enough?"
+        },
+        {
+            "paperId": "a4b828609b60b06e61bea7a4029cc9e1cad5df87",
+            "title": "Statistical Phrase-Based Translation"
+        },
+        {
+            "paperId": "5f9623a2959117dc05f2af3b961fd035a3f22d41",
+            "title": "Sentence Reduction for Automatic Text Summarization"
+        },
+        {
+            "paperId": "d80a6a85b0c263d638877fff66ddc12963e3c34f",
+            "title": "A trainable document summarizer"
+        },
+        {
+            "paperId": "7cb63b055d43aadfa0912e69106d96f6016e962d",
+            "title": "Constructing literature abstracts by computer: Techniques and prospects"
+        },
+        {
+            "paperId": "5fde224a6f06a1c5a2145107af485716939c32cb",
+            "title": "RNN-based Encoder-decoder Approach with Word Frequency Estimation"
+        },
+        {
+            "paperId": "6c1403d5d7968ee79cf5076cf3bf598a2d8133c4",
+            "title": "Automatic Text Summarization: Past, Present and Future"
+        }
+    ]
+}

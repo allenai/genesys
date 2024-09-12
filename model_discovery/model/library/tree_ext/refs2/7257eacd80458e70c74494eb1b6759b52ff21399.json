@@ -1,0 +1,64 @@
+{
+    "paperId": "7257eacd80458e70c74494eb1b6759b52ff21399",
+    "externalIds": {
+        "MAG": "1525859397",
+        "CorpusId": 16710884
+    },
+    "title": "Using fast weights to deblur old memories",
+    "abstract": "Connectionist models usually have a single weight on each connection. Some interesting new properties emerge if each connection has two weights: A slowly changing, plastic weight which stores long-term knowledge and a fast-changing, elastic weight which stores temporary knowledge and spontaneously decays towards zero. If a network learns a set of associations and then these associations are \"blurred\" by subsequent learning, all the original associations can be \"deblurred\" by rehearsing on just a few of them. The rehearsal allows the fast weights to take on values that temporarily cancel out the changes in the slow weights caused by the subsequent learning.",
+    "venue": "",
+    "year": 1987,
+    "referenceCount": 9,
+    "citationCount": 249,
+    "influentialCitationCount": 11,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "All the original associations of a network can be \"deblurred\" by rehearsing on just a few of them by allowing the fast weights to take on values that temporarily cancel out the changes in the slow weights caused by the subsequent learning."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1695689",
+            "name": "Geoffrey E. Hinton"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "052b1d8ce63b07fec3de9dbb583772d860b7c769",
+            "title": "Learning representations by back-propagating errors"
+        },
+        {
+            "paperId": "8592e46a5435d18bba70557846f47290b34c1aa5",
+            "title": "Learning and relearning in Boltzmann machines"
+        },
+        {
+            "paperId": "9928cac725ebe6db7b974bbd65738d33dc95332d",
+            "title": "Mechanisms of Sentence Processing: Assigning Roles to Constituents of Sentences"
+        },
+        {
+            "paperId": "4bb08f30bb2c83334b21fbbc68c3f2622d4fb04b",
+            "title": "Parallel distributed processing: explorations in the microstructure of cognition, vol. 1: foundations"
+        },
+        {
+            "paperId": "b0cb3be87b7f4f50d62d8dbba5a2e8d78c7d90a9",
+            "title": "Symbols Among the Neurons: Details of a Connectionist Inference Architecture"
+        },
+        {
+            "paperId": null,
+            "title": "Mechanisms of Slow Synaptic Potentials"
+        },
+        {
+            "paperId": null,
+            "title": "Malsburg. The Correlation Theory of Brain Function . Technical Report 81-2, Max-Plank-Institute for Biophysical Chemistry, Department of"
+        },
+        {
+            "paperId": null,
+            "title": "It can be used for creating temporary bindings between features"
+        },
+        {
+            "paperId": "15b71eb8c6dae17bc3657be49071ad4b3a5850d1",
+            "title": "Modulatory actions of neurotransmitters."
+        }
+    ]
+}

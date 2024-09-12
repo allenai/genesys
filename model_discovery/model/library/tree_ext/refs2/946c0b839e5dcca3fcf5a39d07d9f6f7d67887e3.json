@@ -1,0 +1,30 @@
+{
+    "paperId": "946c0b839e5dcca3fcf5a39d07d9f6f7d67887e3",
+    "externalIds": {
+        "MAG": "1987034518",
+        "DOI": "10.1080/00401706.1962.10490022",
+        "CorpusId": 120126049
+    },
+    "title": "Note on a Method for Calculating Corrected Sums of Squares and Products",
+    "abstract": "In many problems the \"corrected sum of squares\" of a set of values must be calculated i.e. the sum of squares of the deviations of the values about their mean. The most usual way is to calculate the sum of squares of the values (the \"crude\" sum of squares) and then to subtract a correction factor (which is the product of the total of the values and the mean of the values). This subtraction results in a loss of significant figures and if a large set of values is being handled by a computer, this can result in a corrected sum of squares which has many fewer, accurate significant figures than the computer uses in calculations. Various alternative schemes are available to combat this. One method is to scale the values to an arbitrary origin which is approximately equal to the mean: if successful, this will reduce the loss in significant figures. An alternative method is to first calculate the mean and then sum the powers of the deviations from the mean. This involves each value being considered twice: first in evaluating the mean and then when calculating its deviation from the mean. If the set of values is large and is being handled by a computer this can involve either storing the data in a slow speed store or reading the same data into the computer twice. A third method which is less cumbersome than either of these is outlined below. The basis of the method is an iteration formula for deriving the corrected sum of squares for n values from the corrected sum of squares for the first (n 1) of these. We are given a set of xi's (i = 1, * *, k,) for which we require the corrected sum of squares.",
+    "venue": "",
+    "year": 1962,
+    "referenceCount": 1,
+    "citationCount": 650,
+    "influentialCitationCount": 34,
+    "openAccessPdf": null,
+    "tldr": null,
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "72272433",
+            "name": "B. Welford"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "497bf9112365699ac79b8695b1128d9925b79f60",
+            "title": "Condensed Calculations for Evolutionary Operation Programs"
+        }
+    ]
+}

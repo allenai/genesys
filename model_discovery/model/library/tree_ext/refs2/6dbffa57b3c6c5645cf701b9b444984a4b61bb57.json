@@ -1,0 +1,314 @@
+{
+    "paperId": "6dbffa57b3c6c5645cf701b9b444984a4b61bb57",
+    "externalIds": {
+        "MAG": "2169054943",
+        "DBLP": "journals/corr/Shrivastava014b",
+        "ArXiv": "1405.5869",
+        "CorpusId": 1653222
+    },
+    "title": "Asymmetric LSH (ALSH) for Sublinear Time Maximum Inner Product Search (MIPS)",
+    "abstract": "We present the first provably sublinear time algorithm for approximate \\emph{Maximum Inner Product Search} (MIPS). Our proposal is also the first hashing algorithm for searching with (un-normalized) inner product as the underlying similarity measure. Finding hashing schemes for MIPS was considered hard. We formally show that the existing Locality Sensitive Hashing (LSH) framework is insufficient for solving MIPS, and then we extend the existing LSH framework to allow asymmetric hashing schemes. Our proposal is based on an interesting mathematical phenomenon in which inner products, after independent asymmetric transformations, can be converted into the problem of approximate near neighbor search. This key observation makes efficient sublinear hashing scheme for MIPS possible. In the extended asymmetric LSH (ALSH) framework, we provide an explicit construction of provably fast hashing scheme for MIPS. The proposed construction and the extended LSH framework could be of independent theoretical interest. Our proposed algorithm is simple and easy to implement. We evaluate the method, for retrieving inner products, in the collaborative filtering task of item recommendations on Netflix and Movielens datasets.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2014,
+    "referenceCount": 70,
+    "citationCount": 451,
+    "influentialCitationCount": 58,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents the first provably sublinear time algorithm for approximateMaximum Inner Product Search (MIPS), and is also the first hashing algorithm for searching with (un-normalized) inner product as the underlying similarity measure."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "4260659",
+            "name": "Anshumali Shrivastava"
+        },
+        {
+            "authorId": "144785135",
+            "name": "Ping Li"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "fcc39d4c696bb9f4cda0789ae6703c5218c79a39",
+            "title": "Asymmetric Minwise Hashing for Indexing Binary Inner Products and Set Containment"
+        },
+        {
+            "paperId": "d8ab7a72b48e323e36233e2ea39d6bb2bde499c5",
+            "title": "Min-Max Kernels"
+        },
+        {
+            "paperId": "34791c7cd7a2a60040adb870e9153b76f63ff284",
+            "title": "Asymmetric Minwise Hashing"
+        },
+        {
+            "paperId": "3d5571549bf43ac1789c99e1aac9410addd28a81",
+            "title": "A simpler and better LSH for Maximum Inner Product Search (MIPS)"
+        },
+        {
+            "paperId": "5b0a88bdec473552c6a386cd94fdac53c74b79a8",
+            "title": "On Symmetric and Asymmetric LSHs for Inner Product Search"
+        },
+        {
+            "paperId": "61a5de284be0243ff811c4ffb96c788cd9dd6999",
+            "title": "Improved Asymmetric Locality Sensitive Hashing (ALSH) for Maximum Inner Product Search (MIPS)"
+        },
+        {
+            "paperId": "8fb105b2f2cdf0d86df020fe27b67b670a2fb005",
+            "title": "An Improved Scheme for Asymmetric LSH"
+        },
+        {
+            "paperId": "26f03040cd2c82f1e1c4283a2b37b4d6deb9e4ed",
+            "title": "Consistent Weighted Sampling Made Fast, Small, and Easy"
+        },
+        {
+            "paperId": "d8aad5d9c2c336c550ca9621b73c7688f184d50b",
+            "title": "Speeding up the Xbox recommender system using a euclidean transformation for inner-product spaces"
+        },
+        {
+            "paperId": "c8c3cd883f73ae6fe465f6c8d4f7f96c8bbe989e",
+            "title": "In Defense of Minhash over Simhash"
+        },
+        {
+            "paperId": "6d552d38404a5e01d142322c456c50ffaf3d3a1f",
+            "title": "Densifying One Permutation Hashing via Rotation for Fast Near Neighbor Search"
+        },
+        {
+            "paperId": "1b16571a4bbdcb916b250d3640e683700de143b8",
+            "title": "Improved Densification of One Permutation Hashing"
+        },
+        {
+            "paperId": "4b60c10581092de846176602199e70a9c4e35af6",
+            "title": "Coding for Random Projections and Approximate Near Neighbor Search"
+        },
+        {
+            "paperId": "e53ed25493ef26efaf64e6cafb97009ede2d8409",
+            "title": "Beyond Pairwise: Provably Fast Algorithms for Approximate k-Way Similarity Search"
+        },
+        {
+            "paperId": "3904edd8da84d2cdb0bde76a16a8cc7dba81c495",
+            "title": "The Power of Asymmetry in Binary Hashing"
+        },
+        {
+            "paperId": "e61cb0cc0274df98de89d6b387a6ef7252d23315",
+            "title": "Coding for Random Projections"
+        },
+        {
+            "paperId": "954ec02492cecbf8a4fc1c8e37179fae613dbfc9",
+            "title": "Fast, Accurate Detection of 100,000 Object Classes on a Single Machine"
+        },
+        {
+            "paperId": "a25ffed05d66950ee3ca99ce0625621d5d104d87",
+            "title": "One Permutation Hashing"
+        },
+        {
+            "paperId": "f87786cc77c8a0d85fd6a1d746d9e78583c1e94d",
+            "title": "Efficient retrieval of recommendations in a matrix factorization framework"
+        },
+        {
+            "paperId": "f88e4bdf3add2ff586fed3ff0084d07ea753abe9",
+            "title": "Fast Exact Max-Kernel Search"
+        },
+        {
+            "paperId": "7ae42cc4b475a2192707d0ada7b3c60c347b621e",
+            "title": "Approximate Nearest Neighbor: Towards Removing the Curse of Dimensionality"
+        },
+        {
+            "paperId": "dcd2755f4e7b5ed96571ec6a741b172a217cabe2",
+            "title": "Maximum inner-product search using cone trees"
+        },
+        {
+            "paperId": "6b505fdee8d1a397fa66b3a7d09c05f375070f84",
+            "title": "LSH-Preserving Functions and Their Applications"
+        },
+        {
+            "paperId": "437a48a476268ec4bfa40b7446a3ff95291a4fe0",
+            "title": "Mining of Massive Datasets"
+        },
+        {
+            "paperId": "2946f03fa14f29c54f2bd1b0c6b767bc887489b3",
+            "title": "TOPSIG: topology preserving document signatures"
+        },
+        {
+            "paperId": "40349f066fd2ced16138a016256755dc45ff031c",
+            "title": "Fast locality-sensitive hashing"
+        },
+        {
+            "paperId": "76e3e31f9f6aef622ec3f51744a260fe3a38b5a9",
+            "title": "Theory and applications of b-bit minwise hashing"
+        },
+        {
+            "paperId": "74bee1ebf204dba4b2da0399a25a5ac9253a824e",
+            "title": "Improved Consistent Sampling, Weighted Minhash and L1 Sketching"
+        },
+        {
+            "paperId": "9cbac60932dcc27fe45d0d1d777a0b534615b821",
+            "title": "b-Bit Minwise Hashing for Estimating Three-Way Similarities"
+        },
+        {
+            "paperId": "d5fdc3c0b2049a025091179a73e0e4174105fcd4",
+            "title": "Performance of recommender algorithms on top-n recommendation tasks"
+        },
+        {
+            "paperId": "e79272fe3d65197100eae8be9fec6469107969ae",
+            "title": "Object Detection with Discriminatively Trained Part Based Models"
+        },
+        {
+            "paperId": "13bdd9e36a503aca3732c6b5d6f3f60905755f5d",
+            "title": "On indexing error-tolerant set containment"
+        },
+        {
+            "paperId": "f30aba767d71c1db5ea70b041d9fcc2b9b1ddad4",
+            "title": "Cutting-plane training of structural SVMs"
+        },
+        {
+            "paperId": "af4fef4d9ced245f2d17e5f9a6a542686fcbdc17",
+            "title": "Mining Document Collections to Facilitate Accurate Approximate Entity Matching"
+        },
+        {
+            "paperId": "d4bbcc842f22547eaf5884251eaa68251895dccb",
+            "title": "Matrix Factorization Techniques for Recommender Systems"
+        },
+        {
+            "paperId": "bec897482496ff42e6bc0922654052cb2a3dbb0e",
+            "title": "Sketching Techniques for Collaborative Filtering"
+        },
+        {
+            "paperId": "f8fda7abca9a2af1b572ead5cbb9655daa7aa4f1",
+            "title": "On compressing social networks"
+        },
+        {
+            "paperId": "cf6f83fcce274606bf0264c59d1c78a30c9c9d18",
+            "title": "Factorization meets the neighborhood: a multifaceted collaborative filtering model"
+        },
+        {
+            "paperId": "886980d1f5fb87fe5c83cd28d0fa7fae3e99b395",
+            "title": "Asymmetric distance estimation with sketches for similarity search in high-dimensional spaces"
+        },
+        {
+            "paperId": "f153f9a68f73e4f3982ae3bcd83eeed1ceeb7a90",
+            "title": "A Sketch Algorithm for Estimating Two-Way and Multi-Way Associations"
+        },
+        {
+            "paperId": "6f060b0e84e941d7f187d6419a29f818ee6ae7c1",
+            "title": "Towards optimal bag-of-features for object categorization and semantic video retrieval"
+        },
+        {
+            "paperId": "6bb43e5f2621f8b8048bf953fce6d96621a05ec9",
+            "title": "Approximate Nearest Subspace Search with Applications to Pattern Recognition"
+        },
+        {
+            "paperId": "f6857f0243a8f7d47a5fc6e94c71f3b5322a1de7",
+            "title": "Detecting near-duplicates for web crawling"
+        },
+        {
+            "paperId": "7e104b1968b9ec09af0f6b480a46fc1ce884c3bc",
+            "title": "Google news personalization: scalable online collaborative filtering"
+        },
+        {
+            "paperId": "c129e8025fffa065edb5b27dd7c2269abc0a138b",
+            "title": "Very sparse random projections"
+        },
+        {
+            "paperId": "b6f3576c31ee197afcc91ae7ef23c82eab41aad5",
+            "title": "Finding near-duplicate web pages: a large-scale evaluation of algorithms"
+        },
+        {
+            "paperId": "72c16b9622725a2c9b3395247c4499bd24bb72ea",
+            "title": "Record linkage: similarity measures and algorithms"
+        },
+        {
+            "paperId": "b4d6a34f9d25b7a7ca665087ad7cb82f58d89d51",
+            "title": "Approximate nearest neighbors and the fast Johnson-Lindenstrauss transform"
+        },
+        {
+            "paperId": "1059ec978c6625b2dba2c965bd98b0e47aff2123",
+            "title": "A Primitive Operator for Similarity Joins in Data Cleaning"
+        },
+        {
+            "paperId": "22f76c16e5c8aca3ee2f0df3deb0139ee8cb7d3f",
+            "title": "Space efficient mining of multigraph streams"
+        },
+        {
+            "paperId": "3f1e54ed3bd801766e1897d53a9fc962524dd3c2",
+            "title": "Locality-sensitive hashing scheme based on p-stable distributions"
+        },
+        {
+            "paperId": "ec8b22b475753cb59a831c4b8052a6db487fe7d2",
+            "title": "Adaptive algorithms for set containment joins"
+        },
+        {
+            "paperId": "42bb0ac384fb87933be67f63b98d90a45d2fe6e9",
+            "title": "Similarity estimation techniques from rounding algorithms"
+        },
+        {
+            "paperId": "89ba27c30a893c1c9fb69984bc4246e2bb562e12",
+            "title": "Set Containment Joins: The Good, The Bad and The Ugly"
+        },
+        {
+            "paperId": "d09deeb2eb6b1175d13817284d967189a83dbdde",
+            "title": "Support vector machines for histogram-based image classification"
+        },
+        {
+            "paperId": "63eaeb0c48175065ffd096aad10aed712c6d7bbb",
+            "title": "A Quantitative Analysis and Performance Study for Similarity-Search Methods in High-Dimensional Spaces"
+        },
+        {
+            "paperId": "70ac255db930b424371a366f14ad8117e5580277",
+            "title": "Min-wise independent permutations (extended abstract)"
+        },
+        {
+            "paperId": "8addb1718c2bc6bbb0d82cd1a57b41198bf65965",
+            "title": "On the resemblance and containment of documents"
+        },
+        {
+            "paperId": "2776d54485c112ceda70c4fee2ba6d85a331de0a",
+            "title": "Improved approximation algorithms for maximum cut and satisfiability problems using semidefinite programming"
+        },
+        {
+            "paperId": "278566fc127158de6f27b6d9365f4567d27c93b9",
+            "title": "A Projection Pursuit Algorithm for Exploratory Data Analysis"
+        },
+        {
+            "paperId": "1798fff700cbe84d96ece4ce3ec7dca1362f2459",
+            "title": "Scaling up all pairs similarity search pdf"
+        },
+        {
+            "paperId": null,
+            "title": "Reviewers of KDD 2014 and NIPS"
+        },
+        {
+            "paperId": "7f47a319c9bf0a5e0e9246354f64e52e39356c96",
+            "title": "Consistent Weighted Sampling"
+        },
+        {
+            "paperId": "782269ba228ab3c245ea62f8da2fee141a40f486",
+            "title": "Hilbertian Metrics and Positive Definite Kernels on Probability Measures"
+        },
+        {
+            "paperId": null,
+            "title": "E2lsh: Exact euclidean locality sensitive hashing. Technical report"
+        },
+        {
+            "paperId": "813dbeefb304f377d572d0be0f473db342fa704d",
+            "title": "Scalable Techniques for Clustering the Web"
+        },
+        {
+            "paperId": null,
+            "title": "Thorsten Joachims and Class of CS 6784 at Cornell University (Spring 2014) for feedbacks and suggestions. Thanks for Your Attention"
+        },
+        {
+            "paperId": null,
+            "title": "Sibyl: a system for large scale machine learning"
+        },
+        {
+            "paperId": null,
+            "title": "Competing Hash Functions We consider the following hash functions for evaluations: 1. Asymmetric minwise hashing (Proposed): This is our proposal , the asymmetric minhash"
+        },
+        {
+            "paperId": null,
+            "title": "L2 based Asymmetric LSH for Inner products (L2-ALSH): This is the asymmetric LSH of [35] for general inner products based on LSH for L2 distance"
+        }
+    ]
+}

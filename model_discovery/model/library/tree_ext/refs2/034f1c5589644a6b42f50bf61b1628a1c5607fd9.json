@@ -1,0 +1,370 @@
+{
+    "paperId": "034f1c5589644a6b42f50bf61b1628a1c5607fd9",
+    "externalIds": {
+        "DBLP": "journals/corr/abs-1806-06176",
+        "ArXiv": "1806.06176",
+        "MAG": "2951575728",
+        "CorpusId": 49303347
+    },
+    "title": "Learning Factorized Multimodal Representations",
+    "abstract": "Learning multimodal representations is a fundamentally complex research problem due to the presence of multiple heterogeneous sources of information. Although the presence of multiple modalities provides additional valuable information, there are two key challenges to address when learning from multimodal data: 1) models must learn the complex intra-modal and cross-modal interactions for prediction and 2) models must be robust to unexpected missing or noisy modalities during testing. In this paper, we propose to optimize for a joint generative-discriminative objective across multimodal data and labels. We introduce a model that factorizes representations into two sets of independent factors: multimodal discriminative and modality-specific generative factors. Multimodal discriminative factors are shared across all modalities and contain joint multimodal features required for discriminative tasks such as sentiment prediction. Modality-specific generative factors are unique for each modality and contain the information required for generating data. Experimental results show that our model is able to learn meaningful multimodal representations that achieve state-of-the-art or competitive performance on six multimodal datasets. Our model demonstrates flexible generative capabilities by conditioning on independent factors and can reconstruct missing modalities without significantly impacting performance. Lastly, we interpret our factorized representations to understand the interactions that influence multimodal learning.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2018,
+    "referenceCount": 81,
+    "citationCount": 340,
+    "influentialCitationCount": 41,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A model that factorizes representations into two sets of independent factors: multimodal discriminative and modality-specific generative factors is introduced that demonstrates flexible generative capabilities by conditioning on independent factors and can reconstruct missing modalities without significantly impacting performance."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145639633",
+            "name": "Yao-Hung Hubert Tsai"
+        },
+        {
+            "authorId": "28130078",
+            "name": "P. Liang"
+        },
+        {
+            "authorId": "144802290",
+            "name": "Amir Zadeh"
+        },
+        {
+            "authorId": "49933077",
+            "name": "Louis-Philippe Morency"
+        },
+        {
+            "authorId": "145124475",
+            "name": "R. Salakhutdinov"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "079673e3482cb00cdbc38c74ea77dd9c069fe320",
+            "title": "Multimodal Local-Global Ranking Fusion for Emotion Recognition"
+        },
+        {
+            "paperId": "9d55bd57e64c8e48c61e4f1746a2c280d608a8d2",
+            "title": "Seq2Seq2Sentiment: Multimodal Sequence to Sequence Models for Sentiment Analysis"
+        },
+        {
+            "paperId": "2275ab31b4ea01ac6ac3a07855747213d1ed7d0f",
+            "title": "Disentangling by Partitioning: A Representation Learning Framework for Multimodal Sensory Data"
+        },
+        {
+            "paperId": "85653b72209fbf6cb0b9d4f5da2be4d35678ec73",
+            "title": "Efficient Low-rank Multimodal Fusion With Modality-Specific Factors"
+        },
+        {
+            "paperId": "2b05c5f61265199f01261b205a76233983ac3008",
+            "title": "\"Dependency Bottleneck\" in Auto-encoding Architectures: an Empirical Study"
+        },
+        {
+            "paperId": "af103883c0da95b386abb9af01b6b726e209194f",
+            "title": "On the Latent Space of Wasserstein Auto-Encoders"
+        },
+        {
+            "paperId": "609512f19e06bf393cb79fbf57183f75b8d889d2",
+            "title": "Memory Fusion Network for Multi-view Sequential Learning"
+        },
+        {
+            "paperId": "90f3bd3141026e3a15358149e7de42a3c7ed7f31",
+            "title": "Multi-attention Recurrent Network for Human Communication Comprehension"
+        },
+        {
+            "paperId": "6745c95b88ff9b12401a9ba6f4007f036be591a0",
+            "title": "Wasserstein Auto-Encoders"
+        },
+        {
+            "paperId": "81980911e5d7c4776962c0f6ae3fe58b5ef07b80",
+            "title": "Multimodal sentiment analysis with word-level fusion and reinforcement learning"
+        },
+        {
+            "paperId": "03dd212cfc1c3d54a97ba0b7c6883593a5e301e4",
+            "title": "Improving One-Shot Learning through Fusing Side Information"
+        },
+        {
+            "paperId": "1bd4e97b9157436ca4d5c4038f675f497d15f267",
+            "title": "A facial expression emotion recognition based human-robot interaction system"
+        },
+        {
+            "paperId": "5a96f2bfa2deae2bc35b250251d5fbe82ef4932b",
+            "title": "Tensor Fusion Network for Multimodal Sentiment Analysis"
+        },
+        {
+            "paperId": "75d17e8fa5165a849ebe5f0475bdf77bf0b6be74",
+            "title": "Context-Dependent Sentiment Analysis in User-Generated Videos"
+        },
+        {
+            "paperId": "88347f9f12b50590f50aefce4cf71b3a3f0bd138",
+            "title": "Gated-Attention Architectures for Task-Oriented Language Grounding"
+        },
+        {
+            "paperId": "6f88397a7df1861d18303b19a77d6453ed32621e",
+            "title": "InfoVAE: Information Maximizing Variational Autoencoders"
+        },
+        {
+            "paperId": "6bc4b1376ec2812b6d752c4f6bc8d8fd0512db91",
+            "title": "Multimodal Machine Learning: A Survey and Taxonomy"
+        },
+        {
+            "paperId": "70bcc6766f055fc279bbb07af967c026ff8a2d9c",
+            "title": "Learning Robust Visual-Semantic Embeddings"
+        },
+        {
+            "paperId": "c37412a3b5c38443e413b6a943a0cebaca9715e8",
+            "title": "Emotion Recognition in Affective Tutoring Systems"
+        },
+        {
+            "paperId": "19db8f6acb84546930c6ba22b6fde1c73cfcc4ba",
+            "title": "Joint Multimodal Learning with Deep Generative Models"
+        },
+        {
+            "paperId": "a90226c41b79f8b06007609f39f82757073641e2",
+            "title": "beta-VAE: Learning Basic Visual Concepts with a Constrained Variational Framework"
+        },
+        {
+            "paperId": "efe353682061e0f929e8c916b64b84ff88297e47",
+            "title": "Multimodal Sentiment Intensity Analysis in Videos: Facial Gestures and Verbal Messages"
+        },
+        {
+            "paperId": "aaa439c0a1094438b97ed251c968e15e37a47e45",
+            "title": "Deep multimodal fusion for persuasiveness prediction"
+        },
+        {
+            "paperId": "88e350a82fc6a30a33f231666455d5076f6c3731",
+            "title": "Extending Long Short-Term Memory for Multi-View Structured Learning"
+        },
+        {
+            "paperId": "eb7ee0bc355652654990bcf9f92f124688fde493",
+            "title": "InfoGAN: Interpretable Representation Learning by Information Maximizing Generative Adversarial Nets"
+        },
+        {
+            "paperId": "5f0625c30014c12f333eb518268647673d18f9f1",
+            "title": "What can the brain teach us about building artificial intelligence?"
+        },
+        {
+            "paperId": "3411535f7888a943853895e8eef2bb0b6d328c2a",
+            "title": "Weakly-supervised Disentangling with Recurrent Transformations for 3D View Synthesis"
+        },
+        {
+            "paperId": "654a3e53fb41d8168798ee0ee61dfab73739b1ed",
+            "title": "Describing Multimedia Content Using Attention-Based Encoder-Decoder Networks"
+        },
+        {
+            "paperId": "c84347fdd5d10d9bff8c4e35d7fd6d9a4bc33fd5",
+            "title": "Bayesian representation learning with oracle constraints"
+        },
+        {
+            "paperId": "687e80eb70c7bbad6001006d9269b202650a3354",
+            "title": "Deep Convolutional Inverse Graphics Network"
+        },
+        {
+            "paperId": "64bfeb1ddd35838706e4fffc469234cc2f215631",
+            "title": "Improved Multimodal Deep Learning with Variation of Information"
+        },
+        {
+            "paperId": "887c457b96ee0ab8ef6be6cd69962f8aa31ea476",
+            "title": "Multi-View Perceptron: a Deep Model for Learning Face Identity and View Representations"
+        },
+        {
+            "paperId": "f6f5ca064e91b7836f728e313d0c92666756914d",
+            "title": "Discovering Hidden Factors of Variation in Deep Networks"
+        },
+        {
+            "paperId": "6eeb620e1487e4bf30ac0117dcc8261102fdc065",
+            "title": "Computational Analysis of Persuasiveness in Social Multimedia: A Novel Dataset and Multimodal Prediction Approach"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "82b8cf061d53c32ab5a403543d1c440bc502416a",
+            "title": "Learning to Disentangle Factors of Variation with Manifold Interaction"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "511cbe73e535d9afb6c2c4f37c93a7f0e7d54f28",
+            "title": "COVAREP \u2014 A collaborative voice analysis repository for speech technologies"
+        },
+        {
+            "paperId": "36184d6a9b8e43bc8ec69a3fcb142dba5cb1c09e",
+            "title": "Hidden Conditional Random Fields\u306b\u3088\u308b\u6620\u50cf\u306e\u69cb\u9020\u89e3\u6790\u306b\u57fa\u3065\u304f\u30b7\u30fc\u30f3\u5206\u5272\u306e\u9ad8\u7cbe\u5ea6\u5316\u306b\u95a2\u3059\u308b\u691c\u8a0e (\u30e1\u30c7\u30a3\u30a2\u5de5\u5b66 \u6620\u50cf\u8868\u73fe&\u30b3\u30f3\u30d4\u30e5\u30fc\u30bf\u30b0\u30e9\u30d5\u30a3\u30c3\u30af\u30b9 \u30d2\u30e5\u30fc\u30de\u30f3\u30a4\u30f3\u30d5\u30a9\u30e1\u30fc\u30b7\u30e7\u30f3)"
+        },
+        {
+            "paperId": "5f5dc5b9a2ba710937e2c413b37b053cd673df02",
+            "title": "Auto-Encoding Variational Bayes"
+        },
+        {
+            "paperId": "4aa4069693bee00d1b0759ca3df35e59284e9845",
+            "title": "DeViSE: A Deep Visual-Semantic Embedding Model"
+        },
+        {
+            "paperId": "530b9939c077bab5c8d7e9bae01d1b5251cb769f",
+            "title": "Action Recognition by Hierarchical Sequence Summarization"
+        },
+        {
+            "paperId": "be32d87c03d8c49a2b48f88b9f3f17340e7c8e6f",
+            "title": "YouTube Movie Reviews: Sentiment Analysis in an Audio-Visual Context"
+        },
+        {
+            "paperId": "4177ec52d1b80ed57f2e72b0f9a42365f1a8598d",
+            "title": "Speech recognition with deep recurrent neural networks"
+        },
+        {
+            "paperId": "755e9f43ce398ae8737366720c5f82685b0c253e",
+            "title": "Zero-Shot Learning Through Cross-Modal Transfer"
+        },
+        {
+            "paperId": "adb4ea2c0f3eff8a17c97a67f28b923e8e5bdff1",
+            "title": "Multimodal learning with deep Boltzmann machines"
+        },
+        {
+            "paperId": "184ac0766262312ba76bbdece4e7ffad0aa8180b",
+            "title": "Representation Learning: A Review and New Perspectives"
+        },
+        {
+            "paperId": "8b5445594dbf9904ea5bb3f2cc4111d75ae83f4a",
+            "title": "Multi-view latent variable discriminative models for action recognition"
+        },
+        {
+            "paperId": "075328aaca4423288d953620be4aaf769eb96533",
+            "title": "Intricate Correlation between Body Posture, Personality Trait and Incidence of Body Pain: A Cross-Referential Study Report"
+        },
+        {
+            "paperId": "225f78ae8a44723c136646044fd5c5d7f1d3d15a",
+            "title": "A Kernel Two-Sample Test"
+        },
+        {
+            "paperId": "0cbeb3cce2947fec2f790b1a28fd182640251b4e",
+            "title": "Towards multimodal sentiment analysis: harvesting opinions from the web"
+        },
+        {
+            "paperId": "a78273144520d57e150744cf75206e881e11cc5b",
+            "title": "Multimodal Deep Learning"
+        },
+        {
+            "paperId": "7ad59b7d31d39d320600866097ea33ef51291208",
+            "title": "Facial Expression Analysis"
+        },
+        {
+            "paperId": "929232a07284dc983c32d4057decc4fd771cc5eb",
+            "title": "The voice of personality: mapping nonverbal vocal behavior into trait attributions"
+        },
+        {
+            "paperId": "83dfe3980b875c4e5fe6f2cb1df131cc46d175c8",
+            "title": "Deconvolutional networks"
+        },
+        {
+            "paperId": "e3e2fb6b9fa75229be40ce817de8f044b9cf3df9",
+            "title": "Emotion recognition and adaptation in spoken dialogue systems"
+        },
+        {
+            "paperId": "30e957aa84080fee448c36d8bb3070a1c43b5990",
+            "title": "On the Classification of Emotional Biosignals Evoked While Viewing Affective Pictures: An Integrated Data-Mining-Based Approach for Healthcare Applications"
+        },
+        {
+            "paperId": "4ec15e17977b1b93e8a87de3b31d6024028727a4",
+            "title": "Real-time prosody-driven synthesis of body language"
+        },
+        {
+            "paperId": "5cf0d213f3253cd46673d955209f8463db73cc51",
+            "title": "IEMOCAP: interactive emotional dyadic motion capture database"
+        },
+        {
+            "paperId": "5e5ed888bd2f603ada808a571a3f0d1d91dae7be",
+            "title": "Speaker identification on the SCOTUS corpus"
+        },
+        {
+            "paperId": "c29f33e3d13a6447ea0ece36cf5add5f5e32fab2",
+            "title": "Hidden Conditional Random Fields"
+        },
+        {
+            "paperId": "e4d628ea1c03b9f70b1a23a61129aeee91e35062",
+            "title": "Latent-Dynamic Discriminative Models for Continuous Gesture Recognition"
+        },
+        {
+            "paperId": "0b771778298718f1656c332beb931a6c452988c4",
+            "title": "A Kernel for Time Series Based on Global Alignments"
+        },
+        {
+            "paperId": "397306cada03c29ab9c3d5a7991a343cae92f2e3",
+            "title": "Measuring Statistical Dependence with Hilbert-Schmidt Norms"
+        },
+        {
+            "paperId": "4ea6e708012a19bcd4674f1607fd1e1a03b93eaf",
+            "title": "A new view of language acquisition."
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "e23c34414e66118ecd9b08cf0cd4d016f59b0b85",
+            "title": "Bidirectional recurrent neural networks"
+        },
+        {
+            "paperId": "bfdbfe3bf703594b884ae69f505f94ce7e98141e",
+            "title": "An argument for basic emotions"
+        },
+        {
+            "paperId": "98b41e682c80232be7a7741f46404a6118e19fc2",
+            "title": "Facial signs of emotional experience."
+        },
+        {
+            "paperId": null,
+            "title": "2018) use an additional hinge loss to separate the latent factors"
+        },
+        {
+            "paperId": null,
+            "title": "YouTube and MOUD datasets to test the disentanglement and prediction performance for the model described in Hsu & Glass"
+        },
+        {
+            "paperId": null,
+            "title": "MFM considers multimodal and unimodal inference in a single network (see Figure 1(b)), while Hsu & Glass (2018) considers separate networks (see Figure"
+        },
+        {
+            "paperId": null,
+            "title": "MFM learns to predict the labels using a generative framework (see Figure 1(a))"
+        },
+        {
+            "paperId": null,
+            "title": "MFM is a flexible framework that can be combined with any multimodal fusion encoder (see Section 2.4), while Hsu & Glass (2018) considers a fixed multimodal encoder (similar to early fusion"
+        },
+        {
+            "paperId": "b73b8aa885d972a1f5fafc87208d2f8baa9f83c4",
+            "title": "Utterance-Level Multimodal Sentiment Analysis"
+        },
+        {
+            "paperId": "21d6a5ccc57137cf2ddb6a4000ac04c0a9f8390d",
+            "title": "Transactions on Information and Systems"
+        },
+        {
+            "paperId": "02227c94dd41fe0b439e050d377b0beb5d427cda",
+            "title": "Reading Digits in Natural Images with Unsupervised Feature Learning"
+        },
+        {
+            "paperId": "d0a21f94de312a0ff31657fd103d6b29db823caa",
+            "title": "Facial Expression Analysis"
+        },
+        {
+            "paperId": null,
+            "title": "extensive hyperparameter search for fair comparison. D INFORMATION AND GRADIENT-BASED INTERPRETATION Information-Based Interpretation: We choose the normalized Hilbert-Schmidt Independence Criterion"
+        },
+        {
+            "paperId": "8e0be569ea77b8cb29bb0e8b031887630fe7a96c",
+            "title": "Random Forests"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        }
+    ]
+}

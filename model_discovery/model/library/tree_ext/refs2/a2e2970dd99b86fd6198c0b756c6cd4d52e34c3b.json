@@ -1,0 +1,140 @@
+{
+    "paperId": "a2e2970dd99b86fd6198c0b756c6cd4d52e34c3b",
+    "externalIds": {
+        "MAG": "980713158",
+        "CorpusId": 8043680
+    },
+    "title": "Clustering is Efficient for Approximate Maximum Inner Product Search",
+    "abstract": "Efficient Maximum Inner Product Search (MIPS) is an important task that has a wide applicability in recommendation systems and classification with a large number of classes. Solutions based on locality-sensitive hashing (LSH) as well as tree-based solutions have been investigated in the recent literature, to perform approximate MIPS in sublinear time. In this paper, we compare these to another extremely simple approach for solving approximate MIPS, based on variants of the k-means clustering algorithm. Specifically, we propose to train a spherical k-means, after having reduced the MIPS problem to a Maximum Cosine Similarity Search (MCSS). Experiments on two standard recommendation system benchmarks as well as on large vocabulary word embeddings, show that this simple approach yields much higher speedups, for the same retrieval precision, than current state-of-the-art hashing-based and tree-based methods. This simple method also yields more robust retrievals when the query is corrupted by noise.",
+    "venue": "",
+    "year": 2015,
+    "referenceCount": 24,
+    "citationCount": 40,
+    "influentialCitationCount": 8,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes to train a spherical k-means, after having reduced the MIPS problem to a Maximum Cosine Similarity Search (MCSS), and shows that this simple approach yields much higher speedups, for the same retrieval precision, than current state-of-the-art hashing-based and tree-based methods."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3082019",
+            "name": "Alex Auvolat"
+        },
+        {
+            "authorId": "123607932",
+            "name": "Sarath Chandar"
+        },
+        {
+            "authorId": "145467703",
+            "name": "Pascal Vincent"
+        },
+        {
+            "authorId": "2259486759",
+            "name": "Hugo Larochelle"
+        },
+        {
+            "authorId": "1865800402",
+            "name": "Y. Bengio"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "e15fdad9f7d160e11e9a313bd80ebe99952eff08",
+            "title": "Quantization based Fast Inner Product Search"
+        },
+        {
+            "paperId": "8250ecbaef057bdb5390ef4e4be798f1523a23f6",
+            "title": "Deep Networks With Large Output Spaces"
+        },
+        {
+            "paperId": "1938624bb9b0f999536dcc8d8f519810bb4e1b3b",
+            "title": "On Using Very Large Target Vocabulary for Neural Machine Translation"
+        },
+        {
+            "paperId": "61a5de284be0243ff811c4ffb96c788cd9dd6999",
+            "title": "Improved Asymmetric Locality Sensitive Hashing (ALSH) for Maximum Inner Product Search (MIPS)"
+        },
+        {
+            "paperId": "5b0a88bdec473552c6a386cd94fdac53c74b79a8",
+            "title": "On Symmetric and Asymmetric LSHs for Inner Product Search"
+        },
+        {
+            "paperId": "d8aad5d9c2c336c550ca9621b73c7688f184d50b",
+            "title": "Speeding up the Xbox recommender system using a euclidean transformation for inner-product spaces"
+        },
+        {
+            "paperId": "6dbffa57b3c6c5645cf701b9b444984a4b61bb57",
+            "title": "Asymmetric LSH (ALSH) for Sublinear Time Maximum Inner Product Search (MIPS)"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "c5bce0ff47e945d00de85170ac4fd21b6c2ae1be",
+            "title": "RNN language model with word clustering and class-based output layer"
+        },
+        {
+            "paperId": "f6b51c8753a871dc94ff32152c00c01e94f90f09",
+            "title": "Efficient Estimation of Word Representations in Vector Space"
+        },
+        {
+            "paperId": "f87786cc77c8a0d85fd6a1d746d9e78583c1e94d",
+            "title": "Efficient retrieval of recommendations in a matrix factorization framework"
+        },
+        {
+            "paperId": "dcd2755f4e7b5ed96571ec6a741b172a217cabe2",
+            "title": "Maximum inner-product search using cone trees"
+        },
+        {
+            "paperId": "aa1762a629b31d254450e37ce8baa235d729d82b",
+            "title": "Large-Scale Learning of Embeddings with Reconstruction Sampling"
+        },
+        {
+            "paperId": "d5fdc3c0b2049a025091179a73e0e4174105fcd4",
+            "title": "Performance of recommender algorithms on top-n recommendation tasks"
+        },
+        {
+            "paperId": "e3ce36b9deb47aa6bb2aa19c4bfa71283b505025",
+            "title": "Noise-contrastive estimation: A new estimation principle for unnormalized statistical models"
+        },
+        {
+            "paperId": "a9fc84f8abe740cdc7ee82e69444d1d00dbe0ceb",
+            "title": "A Scalable Hierarchical Distributed Language Model"
+        },
+        {
+            "paperId": "9a6824ffa600f06aca27b9dd54fa8d75a5cf4a16",
+            "title": "Efficient online spherical k-means clustering"
+        },
+        {
+            "paperId": "3f1e54ed3bd801766e1897d53a9fc962524dd3c2",
+            "title": "Locality-sensitive hashing scheme based on p-stable distributions"
+        },
+        {
+            "paperId": "6c2b28f9354f667cd5bd07afc0471d8334430da7",
+            "title": "A Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "9241ea3d8cb85633d314ecb74b31567b8e73f6af",
+            "title": "Least squares quantization in PCM"
+        },
+        {
+            "paperId": "e4351041d25c272a008bcd5765868dc3a28fe470",
+            "title": "Under Review as a Conference Paper at Iclr 2017 Delving into Transferable Adversarial Ex- Amples and Black-box Attacks"
+        },
+        {
+            "paperId": null,
+            "title": "Theano: a CPU and GPU math expression compiler"
+        },
+        {
+            "paperId": "c19fbefdeead6a4154a22a9c8551a18b1530033a",
+            "title": "Hierarchical Probabilistic Neural Network Language Model"
+        },
+        {
+            "paperId": "ac8ab51a86f1a9ae74dd0e4576d1a019f5e654ed",
+            "title": "Some methods for classification and analysis of multivariate observations"
+        }
+    ]
+}

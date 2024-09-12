@@ -1,0 +1,226 @@
+{
+    "paperId": "58c6f890a1ae372958b7decf56132fe258152722",
+    "externalIds": {
+        "DBLP": "conf/iclr/MerityKS18",
+        "ArXiv": "1708.02182",
+        "MAG": "2952022146",
+        "CorpusId": 212756
+    },
+    "title": "Regularizing and Optimizing LSTM Language Models",
+    "abstract": "Recurrent neural networks (RNNs), such as long short-term memory networks (LSTMs), serve as a fundamental building block for many sequence learning tasks, including machine translation, language modeling, and question answering. In this paper, we consider the specific problem of word-level language modeling and investigate strategies for regularizing and optimizing LSTM-based models. We propose the weight-dropped LSTM which uses DropConnect on hidden-to-hidden weights as a form of recurrent regularization. Further, we introduce NT-ASGD, a variant of the averaged stochastic gradient method, wherein the averaging trigger is determined using a non-monotonic condition as opposed to being tuned by the user. Using these and other regularization strategies, we achieve state-of-the-art word level perplexities on two data sets: 57.3 on Penn Treebank and 65.8 on WikiText-2. In exploring the effectiveness of a neural cache in conjunction with our proposed model, we achieve an even lower state-of-the-art perplexity of 52.8 on Penn Treebank and 52.0 on WikiText-2.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2017,
+    "referenceCount": 47,
+    "citationCount": 1050,
+    "influentialCitationCount": 199,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes the weight-dropped LSTM which uses DropConnect on hidden-to-hidden weights as a form of recurrent regularization and introduces NT-ASGD, a variant of the averaged stochastic gradient method, wherein the averaging trigger is determined using a non-monotonic condition as opposed to being tuned by the user."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3375440",
+            "name": "Stephen Merity"
+        },
+        {
+            "authorId": "2844898",
+            "name": "N. Keskar"
+        },
+        {
+            "authorId": "2166511",
+            "name": "R. Socher"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "737fee76a437be2346bee4261e05707bf6a74be1",
+            "title": "Revisiting Activation Regularization for Language RNNs"
+        },
+        {
+            "paperId": "2397ce306e5d7f3d0492276e357fb1833536b5d8",
+            "title": "On the State of the Art of Evaluation in Neural Language Models"
+        },
+        {
+            "paperId": "0d57ba12a6d958e178d83be4c84513f7e42b24e5",
+            "title": "Accurate, Large Minibatch SGD: Training ImageNet in 1 Hour"
+        },
+        {
+            "paperId": "7d0aadef7fb03d6bcf03c329d6b606a1798b248a",
+            "title": "Unbiasing Truncated Backpropagation Through Time"
+        },
+        {
+            "paperId": "1ecc2bd0bc6ffa0a2f466a058589c20593e3e57c",
+            "title": "The Marginal Value of Adaptive Gradient Methods in Machine Learning"
+        },
+        {
+            "paperId": "ea68a5c75e0e228e54efd91db972f71c1a917e51",
+            "title": "Stochastic Gradient Descent as Approximate Bayesian Inference"
+        },
+        {
+            "paperId": "1d782819afafe0d391e5b67151cb510e621f243d",
+            "title": "Tunable Efficient Unitary Neural Networks (EUNN) and their application to RNNs"
+        },
+        {
+            "paperId": "2d876ed1dd2c58058d7197b734a8e4d349b8f231",
+            "title": "Quasi-Recurrent Neural Networks"
+        },
+        {
+            "paperId": "67d968c7450878190e45ac7886746de867bf673d",
+            "title": "Neural Architecture Search with Reinforcement Learning"
+        },
+        {
+            "paperId": "424aef7340ee618132cc3314669400e23ad910ba",
+            "title": "Tying Word Vectors and Word Classifiers: A Loss Framework for Language Modeling"
+        },
+        {
+            "paperId": "2d7782c225e0fc123d6e227f2cb253e58279ac73",
+            "title": "Improving Neural Language Models with a Continuous Cache"
+        },
+        {
+            "paperId": "79c78c98ea317ba8cdf25a9783ef4b8a7552db75",
+            "title": "Full-Capacity Unitary Recurrent Neural Networks"
+        },
+        {
+            "paperId": "efbd381493bb9636f489b965a2034d529cd56bcd",
+            "title": "Pointer Sentinel Mixture Models"
+        },
+        {
+            "paperId": "63e39cdf1ad884da6bc69096bb3413b5b1100559",
+            "title": "Using the Output Embedding to Improve Language Models"
+        },
+        {
+            "paperId": "97fb4e3d45bb098e27e0071448b6152217bd35a5",
+            "title": "Layer Normalization"
+        },
+        {
+            "paperId": "7dba53e72c182e25e98e8f73a99d75ff69dda0c2",
+            "title": "Recurrent Highway Networks"
+        },
+        {
+            "paperId": "d21703674ae562bae4a849a75847cdd9ead417df",
+            "title": "Optimization Methods for Large-Scale Machine Learning"
+        },
+        {
+            "paperId": "4bf7edee5a4c4cfdbdd43a607c402420129fa277",
+            "title": "Query-Reduction Networks for Question Answering"
+        },
+        {
+            "paperId": "9f0687bcd0a7d7fc91b8c5d36c003a38b8853105",
+            "title": "Zoneout: Regularizing RNNs by Randomly Preserving Hidden Activations"
+        },
+        {
+            "paperId": "0b432b0930d0c656e93d0c0506f7a5ae26fe4157",
+            "title": "Gradient Descent Converges to Minimizers: The Case of Non-Isolated Critical Points"
+        },
+        {
+            "paperId": "952454718139dba3aafc6b3b67c4f514ac3964af",
+            "title": "Recurrent Batch Normalization"
+        },
+        {
+            "paperId": "cf76789618f5db929393c1187514ce6c3502c3cd",
+            "title": "Recurrent Dropout without Memory Loss"
+        },
+        {
+            "paperId": "7e45b68037b5f86c4bce305b2725f4871c6b091e",
+            "title": "Strongly-Typed Recurrent Neural Networks"
+        },
+        {
+            "paperId": "0c1f9ca23f4f09ecfc44bcc8ca1c2736624f4652",
+            "title": "A Theoretically Grounded Application of Dropout in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "e9c771197a6564762754e48c1daafb066f449f2e",
+            "title": "Unitary Evolution Recurrent Neural Networks"
+        },
+        {
+            "paperId": "0f7c85357c366b314b5b55c400869a62fd23372c",
+            "title": "Train faster, generalize better: Stability of stochastic gradient descent"
+        },
+        {
+            "paperId": "891ce1687e2befddd19f54e4eef1d3f39c8dbaf7",
+            "title": "Character-Aware Neural Language Models"
+        },
+        {
+            "paperId": "dc93f6d1b704abf12bbbb296f4ec250467bcb882",
+            "title": "Learning state representations with robotic priors"
+        },
+        {
+            "paperId": "cf61e34f6843be64e7d39bf11670ebd11747be24",
+            "title": "A nonmonotone learning rate strategy for SGD training of deep neural networks"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "f264e8b33c0d49a692a6ce2c4bcb28588aeb7d97",
+            "title": "Recurrent Neural Network Regularization"
+        },
+        {
+            "paperId": "38f35dd624cd1cf827416e31ac5e0e0454028eca",
+            "title": "Regularization of Neural Networks using DropConnect"
+        },
+        {
+            "paperId": "aa7bfd2304201afbb19971ebde87b17e40242e91",
+            "title": "On the importance of initialization and momentum in deep learning"
+        },
+        {
+            "paperId": "d1275b2a2ab53013310e759e5c6878b96df643d4",
+            "title": "Context dependent recurrent neural network language model"
+        },
+        {
+            "paperId": "d74d305d96f9c34d61b4c5f49e41859ef5935e1c",
+            "title": "Low Complexity Proto-Value Function Learning from Sensory Observations with Incremental Slow Feature Analysis"
+        },
+        {
+            "paperId": "413c1142de9d91804d6d11c67ff3fed59c9fc279",
+            "title": "Adaptive Subgradient Methods for Online Learning and Stochastic Optimization"
+        },
+        {
+            "paperId": "4ee2eab4c298c1824a9fb8799ad8eed21be38d21",
+            "title": "Moses: Open Source Toolkit for Statistical Machine Translation"
+        },
+        {
+            "paperId": "6dc61f37ecc552413606d8c89ffbc46ec98ed887",
+            "title": "Acceleration of stochastic approximation by averaging"
+        },
+        {
+            "paperId": "effea397115304d32b954ac3e7fe69ed8c3fe3c3",
+            "title": "Learning Invariance from Transformation Sequences"
+        },
+        {
+            "paperId": "a57c6d627ffc667ae3547073876c35d6420accff",
+            "title": "Connectionist Learning Procedures"
+        },
+        {
+            "paperId": "cab2ba3bd239c8f698fb628396895077310e7b54",
+            "title": "Tunable Efficient Unitary Neural Networks (EUNN) and their application to RNN"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": null,
+            "title": "Lecture 6.5-rmsprop: Divide the gradient by a running average of its recent magnitude. COURSERA: Neural networks for machine learning"
+        },
+        {
+            "paperId": null,
+            "title": "Regularizing and Optimizing"
+        },
+        {
+            "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+            "title": "Recurrent neural network based language model"
+        },
+        {
+            "paperId": "b0b36cd24cbb45bc11140def9245af79c313e609",
+            "title": "Open Source Toolkit for Statistical Machine Translation: Factored Translation Models and Lattice Decoding"
+        }
+    ]
+}

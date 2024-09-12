@@ -1,0 +1,286 @@
+{
+    "paperId": "042116e805aa3b5171efaf0c822dc142310ceefe",
+    "externalIds": {
+        "DBLP": "journals/corr/HjelmJCCB17",
+        "ArXiv": "1702.08431",
+        "MAG": "2592298275",
+        "CorpusId": 646822
+    },
+    "title": "Boundary-Seeking Generative Adversarial Networks",
+    "abstract": "Generative adversarial networks (GANs) are a learning framework that rely on training a discriminator to estimate a measure of difference between a target and generated distributions. GANs, as normally formulated, rely on the generated samples being completely differentiable w.r.t. the generative parameters, and thus do not work for discrete data. We introduce a method for training GANs with discrete data that uses the estimated difference measure from the discriminator to compute importance weights for generated samples, thus providing a policy gradient for training the generator. The importance weights have a strong connection to the decision boundary of the discriminator, and we call our method boundary-seeking GANs (BGANs). We demonstrate the effectiveness of the proposed algorithm with discrete image and character-based natural language generation. In addition, the boundary-seeking objective extends to continuous data, which can be used to improve stability of training.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2017,
+    "referenceCount": 60,
+    "citationCount": 161,
+    "influentialCitationCount": 14,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces a method for training GANs with discrete data that uses the estimated difference measure from the discriminator to compute importance weights for generated samples, thus providing a policy gradient for training the generator."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "40482726",
+            "name": "R. Devon Hjelm"
+        },
+        {
+            "authorId": "12782441",
+            "name": "Athul Paul Jacob"
+        },
+        {
+            "authorId": "47828117",
+            "name": "Tong Che"
+        },
+        {
+            "authorId": "1979489",
+            "name": "Kyunghyun Cho"
+        },
+        {
+            "authorId": "1751762",
+            "name": "Yoshua Bengio"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "c4b00181967236cfa953597ad59988925c4c9ba2",
+            "title": "Parametric Adversarial Divergences are Good Task Losses for Generative Modeling"
+        },
+        {
+            "paperId": "89b139b8b507bdfb8f57b9cc0f09bfcf859bc966",
+            "title": "Adversarially Regularized Autoencoders for Generating Discrete Structures"
+        },
+        {
+            "paperId": "698d3b667a7f3073eed8368d9daf84f990c24a65",
+            "title": "Stabilizing Training of Generative Adversarial Networks through Regularization"
+        },
+        {
+            "paperId": "edf73ab12595c6709f646f542a0d2b33eb20a3f4",
+            "title": "Improved Training of Wasserstein GANs"
+        },
+        {
+            "paperId": "aa6f7ad0a06b52a8be89dbd8d056561418276ff2",
+            "title": "BEGAN: Boundary Equilibrium Generative Adversarial Networks"
+        },
+        {
+            "paperId": "24dc571a49d3431e8cb1f1008f86d5dd5b7a1613",
+            "title": "Towards Diverse and Natural Image Descriptions via a Conditional GAN"
+        },
+        {
+            "paperId": "375aa8e5ed444c6f83e2abeff8475f76833a0a2e",
+            "title": "Hierarchical Implicit Models and Likelihood-Free Variational Inference"
+        },
+        {
+            "paperId": "e57c09d50d67060b18806f9597674fdc28320dd2",
+            "title": "Deep and Hierarchical Implicit Models"
+        },
+        {
+            "paperId": "3b07d6a163c3b6cc75c3805dfbff60f1458e121b",
+            "title": "Variational Inference using Implicit Distributions"
+        },
+        {
+            "paperId": "1e190ed315233b0a5cfe6dc8c72e9c91be97c032",
+            "title": "McGan: Mean and Covariance Feature Matching GAN"
+        },
+        {
+            "paperId": "4fc0ea6db600850908264652e1a5d7904f66ca58",
+            "title": "Maximum-Likelihood Augmented Discrete Generative Adversarial Networks"
+        },
+        {
+            "paperId": "a642bbbaf8822565f9b812ea279c596cc54ce4c3",
+            "title": "REBAR: Low-variance, unbiased gradient estimates for discrete latent variable models"
+        },
+        {
+            "paperId": "2f85b7376769473d2bed56f855f115e23d727094",
+            "title": "Wasserstein GAN"
+        },
+        {
+            "paperId": "176f1d608b918eec8dc4b75e7b6e0acaba84a447",
+            "title": "Adversarial Learning for Neural Dialogue Generation"
+        },
+        {
+            "paperId": "90c10cc419420e18ed8649967c2cf3ae45c42057",
+            "title": "AdaGAN: Boosting Generative Models"
+        },
+        {
+            "paperId": "2c740e574eea66fdcf473e15ed2c228baef2eccd",
+            "title": "NIPS 2016 Tutorial: Generative Adversarial Networks"
+        },
+        {
+            "paperId": "74ff6d48f9c62e937023106629d27ef2d2ddf8bc",
+            "title": "Least Squares Generative Adversarial Networks"
+        },
+        {
+            "paperId": "858dc7408c27702ec42778599fc8d11f73ef3f76",
+            "title": "On the Quantitative Analysis of Decoder-Based Generative Models"
+        },
+        {
+            "paperId": "d772a21f2f687985b41bec2dc47bc2760c57ed2f",
+            "title": "Generative Models and Model Criticism via Optimized Maximum Mean Discrepancy"
+        },
+        {
+            "paperId": "29e944711a354c396fad71936f536e83025b6ce0",
+            "title": "Categorical Reparameterization with Gumbel-Softmax"
+        },
+        {
+            "paperId": "515a21e90117941150923e559729c59f5fdade1c",
+            "title": "The Concrete Distribution: A Continuous Relaxation of Discrete Random Variables"
+        },
+        {
+            "paperId": "2a124978220b2214929d6e6c6cee0a4598d8f3d1",
+            "title": "Learning in Implicit Generative Models"
+        },
+        {
+            "paperId": "2fe874a1c85ecc9e848bf9defd76535e19d51f39",
+            "title": "Professor Forcing: A New Algorithm for Training Recurrent Networks"
+        },
+        {
+            "paperId": "32c4e19f4a757f6c6984416b97d69e287d1d0ecd",
+            "title": "SeqGAN: Sequence Generative Adversarial Nets with Policy Gradient"
+        },
+        {
+            "paperId": "571b0750085ae3d939525e62af510ee2cee9d5ea",
+            "title": "Improved Techniques for Training GANs"
+        },
+        {
+            "paperId": "fcf43325529c8b1cc26aeb52fd5d7e532abb0a40",
+            "title": "Adversarially Learned Inference"
+        },
+        {
+            "paperId": "ffdcad14d2f6a12f607b59f88da4a939f4821691",
+            "title": "f-GAN: Training Generative Neural Samplers using Variational Divergence Minimization"
+        },
+        {
+            "paperId": "6b570069f14c7588e066f7138e1f21af59d62e61",
+            "title": "Theano: A Python framework for fast computation of mathematical expressions"
+        },
+        {
+            "paperId": "266e8622d57457ad76224649c6b00adf23c0b76d",
+            "title": "Variational Inference for Monte Carlo Objectives"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "8388f1be26329fa45e5807e968a641ce170ea078",
+            "title": "Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks"
+        },
+        {
+            "paperId": "c25b7e6f45a7bb15a23c737c711f200c131d6b68",
+            "title": "MuProp: Unbiased Backpropagation for Stochastic Neural Networks"
+        },
+        {
+            "paperId": "83f200fdef3f1b1778a3b46eabd44d5e2b305e2e",
+            "title": "Simultaneous Deep Transfer Across Domains and Tasks"
+        },
+        {
+            "paperId": "4dcdae25a5e33682953f0853ee4cf7ca93be58a9",
+            "title": "LSUN: Construction of a Large-scale Image Dataset using Deep Learning with Humans in the Loop"
+        },
+        {
+            "paperId": "59b81ff81da55efc724c84ddc9d3ffd8e57a8d0e",
+            "title": "Blocks and Fuel: Frameworks for deep learning"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "6424b69f3ff4d35249c0bb7ef912fbc2c86f4ff4",
+            "title": "Deep Learning Face Attributes in the Wild"
+        },
+        {
+            "paperId": "7a24ec97e7f2881e245d20c46a56cbbfc734a4ff",
+            "title": "Reweighted Wake-Sleep"
+        },
+        {
+            "paperId": "331f0fb3b6176c6e463e0401025b04f6ace9ccd3",
+            "title": "Neural Variational Inference and Learning in Belief Networks"
+        },
+        {
+            "paperId": "5f5dc5b9a2ba710937e2c413b37b053cd673df02",
+            "title": "Auto-Encoding Variational Bayes"
+        },
+        {
+            "paperId": "5d833331b0e22ff359db05c62a8bca18c4f04b68",
+            "title": "One billion word benchmark for measuring progress in statistical language modeling"
+        },
+        {
+            "paperId": "62c76ca0b2790c34e85ba1cce09d47be317c7235",
+            "title": "Estimating or Propagating Gradients Through Stochastic Neurons for Conditional Computation"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "93c20e38c85b69fc2d2eb314b3c1217913f7db11",
+            "title": "Generating Text with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "43308a6a0d34b9d33b8f420e1678d54640a25a47",
+            "title": "On a Connection between Importance Sampling and the Likelihood Ratio Policy Gradient"
+        },
+        {
+            "paperId": "ddc45fad8d15771d9f1f8579331458785b2cdd93",
+            "title": "Deep Boltzmann Machines"
+        },
+        {
+            "paperId": "5e706a090b154018caeb33b48c21df4d902a6079",
+            "title": "On integral probability metrics, \u03c6-divergences and binary classification"
+        },
+        {
+            "paperId": "e0293e4a293ff1a0137c6fcfd3be3274c16b9959",
+            "title": "Estimating Divergence Functionals and the Likelihood Ratio by Convex Risk Minimization"
+        },
+        {
+            "paperId": "08d0ea90b53aba0008d25811268fe46562cfb38c",
+            "title": "On the quantitative analysis of deep belief networks"
+        },
+        {
+            "paperId": "52070af952474cf13ecd015d42979373ff7c1c00",
+            "title": "Training Products of Experts by Minimizing Contrastive Divergence"
+        },
+        {
+            "paperId": "0a79433b5feacd9e8feeafa629dae5a85f362fef",
+            "title": "Mean Field Theory for Sigmoid Belief Networks"
+        },
+        {
+            "paperId": "605402e235bd62437baf3c9ebefe77fb4d92ee95",
+            "title": "The Helmholtz Machine"
+        },
+        {
+            "paperId": "d36efb9ad91e00faa334b549ce989bfae7e2907a",
+            "title": "Maximum likelihood from incomplete data via the EM - algorithm plus discussions on the paper"
+        },
+        {
+            "paperId": "c68796f833a7151f0a63d1d1608dc902b4fdc9b6",
+            "title": "GENERATIVE ADVERSARIAL NETS"
+        },
+        {
+            "paperId": "96364af2d208ea75ca3aeb71892d2f7ce7326b55",
+            "title": "Statistical Language Models Based on Neural Networks"
+        },
+        {
+            "paperId": "02227c94dd41fe0b439e050d377b0beb5d427cda",
+            "title": "Reading Digits in Natural Images with Unsupervised Feature Learning"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        },
+        {
+            "paperId": null,
+            "title": "Journal of the royal statistical society. Series B (methodological)"
+        },
+        {
+            "paperId": "6e103f45ce2f653fd7aafcf67afa80c39130294f",
+            "title": "Statistical Theory of Extreme Values and Some Practical Applications : A Series of Lectures"
+        }
+    ]
+}

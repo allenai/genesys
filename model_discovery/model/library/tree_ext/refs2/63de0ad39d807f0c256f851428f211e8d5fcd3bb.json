@@ -1,0 +1,54 @@
+{
+    "paperId": "63de0ad39d807f0c256f851428f211e8d5fcd3bb",
+    "externalIds": {
+        "DBLP": "journals/corr/UlyanovVL16",
+        "ArXiv": "1607.08022",
+        "MAG": "2502312327",
+        "CorpusId": 16516553
+    },
+    "title": "Instance Normalization: The Missing Ingredient for Fast Stylization",
+    "abstract": "It this paper we revisit the fast stylization method introduced in Ulyanov et. al. (2016). We show how a small change in the stylization architecture results in a significant qualitative improvement in the generated images. The change is limited to swapping batch normalization with instance normalization, and to apply the latter both at training and testing times. The resulting method can be used to train high-performance architectures for real-time image generation. The code will is made available on github at this https URL. Full paper can be found at arXiv:1701.02096.",
+    "venue": "arXiv.org",
+    "year": 2016,
+    "referenceCount": 4,
+    "citationCount": 3438,
+    "influentialCitationCount": 184,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A small change in the stylization architecture results in a significant qualitative improvement in the generated images, and can be used to train high-performance architectures for real-time image generation."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145276680",
+            "name": "Dmitry Ulyanov"
+        },
+        {
+            "authorId": "1687524",
+            "name": "A. Vedaldi"
+        },
+        {
+            "authorId": "1740145",
+            "name": "V. Lempitsky"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "7568d13a82f7afa4be79f09c295940e48ec6db89",
+            "title": "Image Style Transfer Using Convolutional Neural Networks"
+        },
+        {
+            "paperId": "915c4bb289b3642489e904c65a47fa56efb60658",
+            "title": "Perceptual Losses for Real-Time Style Transfer and Super-Resolution"
+        },
+        {
+            "paperId": "ed16b5a85e06fc0e6c81b3843a5bb2bb50a35ac1",
+            "title": "Texture Networks: Feed-forward Synthesis of Textures and Stylized Images"
+        },
+        {
+            "paperId": null,
+            "title": "Qualitative comparison of generators"
+        }
+    ]
+}

@@ -1,0 +1,195 @@
+{
+    "paperId": "1ea75cdb7ce8c4f5f2599165e3698034b4142e08",
+    "externalIds": {
+        "MAG": "2311783643",
+        "ArXiv": "1603.06155",
+        "DBLP": "journals/corr/LiGBGD16",
+        "ACL": "P16-1094",
+        "DOI": "10.18653/v1/P16-1094",
+        "CorpusId": 2955580
+    },
+    "title": "A Persona-Based Neural Conversation Model",
+    "abstract": "We present persona-based models for handling the issue of speaker consistency in neural response generation. A speaker model encodes personas in distributed embeddings that capture individual characteristics such as background information and speaking style. A dyadic speaker-addressee model captures properties of interactions between two interlocutors. Our models yield qualitative performance improvements in both perplexity and BLEU scores over baseline sequence-to-sequence models, with similar gains in speaker consistency as measured by human judges.",
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2016,
+    "referenceCount": 35,
+    "citationCount": 1003,
+    "influentialCitationCount": 156,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/P16-1094.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents persona-based models for handling the issue of speaker consistency in neural response generation that yield qualitative performance improvements in both perplexity and BLEU scores over baseline sequence-to-sequence models."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "49298465",
+            "name": "Jiwei Li"
+        },
+        {
+            "authorId": "1947267",
+            "name": "Michel Galley"
+        },
+        {
+            "authorId": "3125776",
+            "name": "Chris Brockett"
+        },
+        {
+            "authorId": "3130583",
+            "name": "Georgios P. Spithourakis"
+        },
+        {
+            "authorId": "1800422",
+            "name": "Jianfeng Gao"
+        },
+        {
+            "authorId": "83415753",
+            "name": "W. Dolan"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "c25e3fc7bb2c890c692b500dcd4e774e66081aab",
+            "title": "Attention with Intention for a Neural Network Conversation Model"
+        },
+        {
+            "paperId": "651e5bcc14f14605a879303e97572a27ea8c7956",
+            "title": "A Diversity-Promoting Objective Function for Neural Conversation Models"
+        },
+        {
+            "paperId": "4d4b46e545e1a3f6871b49cc69640ef2eb1a4654",
+            "title": "Semantically Conditioned LSTM-based Natural Language Generation for Spoken Dialogue Systems"
+        },
+        {
+            "paperId": "17f5c7411eeeeedf25b0db99a9130aa353aee4ba",
+            "title": "Building End-To-End Dialogue Systems Using Generative Hierarchical Neural Network Models"
+        },
+        {
+            "paperId": "7d0684b19ba46e739e28baa1e180c008226f793a",
+            "title": "deltaBLEU: A Discriminative Metric for Generation Tasks with Intrinsically Diverse Targets"
+        },
+        {
+            "paperId": "5247a6e3a60ff0381355e66bfc313bf27512ae0c",
+            "title": "A Neural Network Approach to Context-Sensitive Generation of Conversational Responses"
+        },
+        {
+            "paperId": "86311b182786bfde19446f6ded0854de973d4060",
+            "title": "A Neural Conversational Model"
+        },
+        {
+            "paperId": "ba49d3823d43515e447296ca4e1e55d3f1fd8c4d",
+            "title": "Neural Responding Machine for Short-Text Conversation"
+        },
+        {
+            "paperId": "1956c239b3552e030db1b78951f64781101125ed",
+            "title": "Addressing the Rare Word Problem in Neural Machine Translation"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "2de0401b5f019fb8646a27a3cc50429b38693dd6",
+            "title": "Luke, I am Your Father: Dealing with Out-of-Domain Requests by Using Movies Subtitles"
+        },
+        {
+            "paperId": "34992ceb89e251f2ed5c1a792fbd594bcf8246c2",
+            "title": "Learning Continuous Phrase Representations for Translation Modeling"
+        },
+        {
+            "paperId": "bc1f09a48e173a9e0f516d7384acec49e0e9ba60",
+            "title": "An empirical investigation of sparse log-linear models for improved dialogue act classification"
+        },
+        {
+            "paperId": "9528fa09fbd918618dbd1bac72fe8c24f5574400",
+            "title": "IRIS: a Chat-oriented Dialogue System based on the Vector Space Model"
+        },
+        {
+            "paperId": "29f3ca22913373c29816ee8c4ba8c2c5fe4d2a4c",
+            "title": "An Annotated Corpus of Film Dialogue for Learning and Characterizing Character Style"
+        },
+        {
+            "paperId": "7a19d3bb3b7b8dba3122c911fb66db749447e765",
+            "title": "Perceived or Not Perceived: Film Character Models for Expressive NLG"
+        },
+        {
+            "paperId": "ef14d4823582b4e7a9bb657fb6a0d07458b8330b",
+            "title": "All the World's a Stage: Learning Character Models from Film"
+        },
+        {
+            "paperId": "5b6f048840ded1a27b9830f78f4d48b3ededb3ea",
+            "title": "Data-Driven Response Generation in Social Media"
+        },
+        {
+            "paperId": "2a69b0f09cf3375c7e12404307adbdf6b3be4122",
+            "title": "Improving Spoken Dialogue Understanding Using Phonetic Mixture Models"
+        },
+        {
+            "paperId": "b4300fbc44973301810017cf917bd6e5b1eadd3f",
+            "title": "The Hidden Information State model: A practical framework for POMDP-based spoken dialogue management"
+        },
+        {
+            "paperId": "fbd201207e51f50f14235c5ea864ccccb6425325",
+            "title": "News from OPUS \u2014 A collection of multilingual parallel corpora with tools and interfaces"
+        },
+        {
+            "paperId": "1d1861764141b0255389fecfc309ef74151033fc",
+            "title": "Are We There Yet? Research in Commercial Spoken Dialog Systems"
+        },
+        {
+            "paperId": "b207e7ec5c3c09e02f938ac152406ebc68bd9b45",
+            "title": "Effects of the user model on simulation-based learning of dialogue strategies"
+        },
+        {
+            "paperId": "3385397d3be400c3f4a6f79f9c47e67e50333b45",
+            "title": "A trainable generator for recommendations in multimodal dialog"
+        },
+        {
+            "paperId": "1f12451245667a85d0ee225a80880fc93c71cc8b",
+            "title": "Minimum Error Rate Training in Statistical Machine Translation"
+        },
+        {
+            "paperId": "d7da009f457917aa381619facfa5ffae9329a6e9",
+            "title": "Bleu: a Method for Automatic Evaluation of Machine Translation"
+        },
+        {
+            "paperId": "8f4c9f5877fbd287785466d59877ef870c5e53c4",
+            "title": "Trainable approaches to surface natural language generation and their application to conversational dialog systems"
+        },
+        {
+            "paperId": "f3db747cbb304dbad722aecf5ae527b242c60e2b",
+            "title": "Stochastic Language Generation for Spoken Dialogue Systems"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "42cbb68df3b0730d73c5dbfdb519ab7fa7fb9c96",
+            "title": "User modeling in dialog systems: Potentials and hazards"
+        },
+        {
+            "paperId": "3eec7dce7d7ed9fc28c30c03d4eadc5a26fb81a8",
+            "title": "User Models in Dialog Systems"
+        },
+        {
+            "paperId": "dccc109d17e42ceb90b30b6fb22284b63af46b1b",
+            "title": "Social interaction and the development of definite descriptions"
+        },
+        {
+            "paperId": "2a94fa0de804b5efaae1a66f50c3ea96539c46b8",
+            "title": "Developing Non-goal Dialog System Based on Examples of Drama Television"
+        },
+        {
+            "paperId": "abe0bd94e134c7ac0b1c78922ed17cf3bec08d5e",
+            "title": "A stochastic model of human-machine interaction for learning dialog strategies"
+        }
+    ]
+}

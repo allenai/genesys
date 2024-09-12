@@ -1,0 +1,150 @@
+{
+    "paperId": "d559dd84fc473fca7e91b9075675750823935afa",
+    "externalIds": {
+        "DBLP": "conf/cvpr/LiuWFTP15",
+        "MAG": "1935978687",
+        "DOI": "10.1109/CVPR.2015.7298681",
+        "CorpusId": 1617104
+    },
+    "title": "Sparse Convolutional Neural Networks",
+    "abstract": "Deep neural networks have achieved remarkable performance in both image classification and object detection problems, at the cost of a large number of parameters and computational complexity. In this work, we show how to reduce the redundancy in these parameters using a sparse decomposition. Maximum sparsity is obtained by exploiting both inter-channel and intra-channel redundancy, with a fine-tuning step that minimize the recognition loss caused by maximizing sparsity. This procedure zeros out more than 90% of parameters, with a drop of accuracy that is less than 1% on the ILSVRC2012 dataset. We also propose an efficient sparse matrix multiplication algorithm on CPU for Sparse Convolutional Neural Networks (SCNN) models. Our CPU implementation demonstrates much higher efficiency than the off-the-shelf sparse matrix libraries, with a significant speedup realized over the original dense network. In addition, we apply the SCNN model to the object detection problem, in conjunction with a cascade model and sparse fully connected layers, to achieve significant speedups.",
+    "venue": "Computer Vision and Pattern Recognition",
+    "year": 2015,
+    "referenceCount": 26,
+    "citationCount": 779,
+    "influentialCitationCount": 47,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work shows how to reduce the redundancy in these parameters using a sparse decomposition, and proposes an efficient sparse matrix multiplication algorithm on CPU for Sparse Convolutional Neural Networks (SCNN) models."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3169689",
+            "name": "Baoyuan Liu"
+        },
+        {
+            "authorId": "2145298940",
+            "name": "Min Wang"
+        },
+        {
+            "authorId": "1691260",
+            "name": "H. Foroosh"
+        },
+        {
+            "authorId": "1802944",
+            "name": "M. Tappen"
+        },
+        {
+            "authorId": "2734333",
+            "name": "M. Pensky"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "6bdb186ec4726e00a8051119636d4df3b94043b5",
+            "title": "Caffe: Convolutional Architecture for Fast Feature Embedding"
+        },
+        {
+            "paperId": "cbb19236820a96038d000dc629225d36e0b6294a",
+            "title": "Spatial Pyramid Pooling in Deep Convolutional Networks for Visual Recognition"
+        },
+        {
+            "paperId": "021fc345d40d3e6332cd2ef276e2eaa5e71102e4",
+            "title": "Speeding up Convolutional Neural Networks with Low Rank Expansions"
+        },
+        {
+            "paperId": "e5ae8ab688051931b4814f6d32b18391f8d1fa8d",
+            "title": "Exploiting Linear Structure Within Convolutional Networks for Efficient Evaluation"
+        },
+        {
+            "paperId": "a7621b4ec18719b08f3a2a444b6d37a2e20227b7",
+            "title": "Fast Training of Convolutional Networks through FFTs"
+        },
+        {
+            "paperId": "2f4df08d9072fc2ac181b7fced6a245315ce05c8",
+            "title": "Rich Feature Hierarchies for Accurate Object Detection and Semantic Segmentation"
+        },
+        {
+            "paperId": "d4bc968e3a349e49027490478bd2b1f9f45cdb6f",
+            "title": "Effects of Ordering Strategies and Programming Paradigms on Sparse Matrix Computations"
+        },
+        {
+            "paperId": "47a6a274c648aeb5ff02eb09aff7ea310eae122e",
+            "title": "Efficient sparse matrix-vector multiplication on x86-based many-core processors"
+        },
+        {
+            "paperId": "eff61216e0136886e1158625b1e5a88ed1a7cbce",
+            "title": "Predicting Parameters in Deep Learning"
+        },
+        {
+            "paperId": "9b223c8a31e0ea1d1f2c9787ffd8416dfc90c912",
+            "title": "Selective Search for Object Recognition"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "657a403fa4d37ef13493ec88276ea5c5017cda2f",
+            "title": "Cascade object detection with deformable part models"
+        },
+        {
+            "paperId": "0acd9738dc6df6f48b99897b6162c6958a437ce8",
+            "title": "Performance evaluation of the sparse matrix-vector multiplication on modern architectures"
+        },
+        {
+            "paperId": "d2c733e34d48784a37d717fe43d9e93277a8c53e",
+            "title": "ImageNet: A large-scale hierarchical image database"
+        },
+        {
+            "paperId": "12439a6ff384e95ee2262ee982bc055534e30487",
+            "title": "Online dictionary learning for sparse coding"
+        },
+        {
+            "paperId": "da5f6c3f436d6ec554113ba4590fe0a5cc049ab4",
+            "title": "When cache blocking of sparse matrix vector multiply works and why"
+        },
+        {
+            "paperId": "bc31e8f6e35852934b6019d7a59a82074f224a01",
+            "title": "Accelerating sparse matrix computations via data compression"
+        },
+        {
+            "paperId": "66ba6dd1b746aa0e10c3a4f62a5c4dd6b955b503",
+            "title": "Sparsity: Optimization Framework for Sparse Matrix Kernels"
+        },
+        {
+            "paperId": null,
+            "title": "Openblas"
+        },
+        {
+            "paperId": "b970c9d53c699a8e09f1d8dbe440b6f309712a89",
+            "title": "Large-Scale FPGA-based Convolutional Networks"
+        },
+        {
+            "paperId": "fbeaa499e10e98515f7e1c4ad89165e8c0677427",
+            "title": "Improving the speed of neural networks on CPUs"
+        },
+        {
+            "paperId": "e9ac3f57c39aa80f618a4821c9d98310b54808e8",
+            "title": "Templates for the Solution of Linear Systems: Building Blocks for Iterative Methods"
+        },
+        {
+            "paperId": null,
+            "title": "and H"
+        },
+        {
+            "paperId": "aa1a45a3fed94a2d4b5b1515814063eaf3816b50",
+            "title": "Templates for the solution of linear systems: building blocks for iterative methods"
+        },
+        {
+            "paperId": null,
+            "title": "Edinburgh Research Explorer The PASCAL Visual Object Classes (VOC) Challenge"
+        }
+    ]
+}

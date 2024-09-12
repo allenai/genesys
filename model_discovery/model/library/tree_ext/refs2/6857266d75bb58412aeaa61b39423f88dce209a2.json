@@ -1,0 +1,95 @@
+{
+    "paperId": "6857266d75bb58412aeaa61b39423f88dce209a2",
+    "externalIds": {
+        "CorpusId": 21598599
+    },
+    "title": "Data Compression Explained",
+    "abstract": "Matt Mahoney Copyright (C) 2010, Ocarina Networks. You are permitted to copy and distribute material from this book provided (1) any material you distribute includes this license, (2) the material is not modified, and (3) you do not charge a fee or require any other considerations for copies or for any works that incorporate material from this book. These restrictions do not apply to normal \"fair use\", defined as cited quotations totaling less than one page. This book may be downloaded without charge from http://mattmahoney.net/dc/dce.html. Last update: Feb. 26, 2010. About this Book This book is for the reader who wants to understand how data compression works, or who wants to write data compression software. Prior programming ability and some math skills will be needed. Specific topics include: \uf0b7 Information theory: entropy and algorithmic complexity, and the relationship to artificial intelligence. \uf0b7 Benchmarks. \uf0b7 Coding: Huffman, arithmetic, asymmetric binary. \uf0b7 Modeling: fixed order, variable order (PPM), context mixing (PAQ). Static vs. dynamic. \uf0b7 Transforms: run length, string matching (LZ77), dictionary (LZW), context sorting (BWT), symbol ranking, predictive filters, E8E9, recompression. \uf0b7 Lossy compression for images (JPEG), video (MPEG), and audio (MP3). This book is intended to be self contained. Sources are linked when appropriate, but you don't need to click on them to understand the material.",
+    "venue": "",
+    "year": 2010,
+    "referenceCount": 15,
+    "citationCount": 41,
+    "influentialCitationCount": 7,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This book is for the reader who wants to understand how data compression works, or who want to write data compression software, and is intended to be self contained."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2056271150",
+            "name": "Maxim Smirnov"
+        },
+        {
+            "authorId": "67329034",
+            "name": "S. Voskoboynikov"
+        },
+        {
+            "authorId": "1712199505",
+            "name": "Alex Ratushnyak"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "c3a7229504cdb0648a21dcf62fe108354cd49ca1",
+            "title": "Optimal encoding on discrete lattice with translational invariant constrains using statistical algorithms"
+        },
+        {
+            "paperId": "3b80f7c07b9d51cde4552d140c665112128435ea",
+            "title": "PPM: one step to practicality"
+        },
+        {
+            "paperId": "ba80821017853e45c3de12a2823d2ea698de2bc2",
+            "title": "Experiments on the zero frequency problem"
+        },
+        {
+            "paperId": "1f5d21625f8264f455591b3c7cbdac18b983b3c0",
+            "title": "The zero-frequency problem: Estimating the probabilities of novel events in adaptive text compression"
+        },
+        {
+            "paperId": "d7d07b2b2ca6e28561fa142fd6f2fd020bcb40a7",
+            "title": "Modeling for text compression"
+        },
+        {
+            "paperId": "f39fcc3a36d6813721bc1c8254f9a2b292d12901",
+            "title": "How Much do People Remember? Some Estimates of the Quantity of Learned Information in Long-Term Memory"
+        },
+        {
+            "paperId": "a76525ea99fc37f3611b669bb030ec67bf076b92",
+            "title": "Randomness Conservation Inequalities; Information and Independence in Mathematical Theories"
+        },
+        {
+            "paperId": "5be4e0eccca2892d31406a03b0c485f7a395fe5a",
+            "title": "Compression of individual sequences via variable-rate coding"
+        },
+        {
+            "paperId": "9fcb8d85e3d429f3816861fc7999e1bb68eefd39",
+            "title": "Generalized Kraft Inequality and Arithmetic Coding"
+        },
+        {
+            "paperId": "b85ae9f4367548a7dac7eae1a2a8d5866d27813a",
+            "title": "On the Length of Programs for Computing Finite Binary Sequences"
+        },
+        {
+            "paperId": "a068df4c5f829bd0b85bf72fd919006c563c6345",
+            "title": "A method for the construction of minimum-redundancy codes"
+        },
+        {
+            "paperId": "79521a6d8814f9162ed1f7028e9e007c4df7181a",
+            "title": "Sequential neural text compression"
+        },
+        {
+            "paperId": "83077865493592cd8ebc5c9a8b900521428491ad",
+            "title": "Three approaches to the quantitative definition of information"
+        },
+        {
+            "paperId": null,
+            "title": "Computing Machinery and Intelligence, Mind, 59:433-460"
+        },
+        {
+            "paperId": null,
+            "title": "Universal sequential search problems"
+        }
+    ]
+}

@@ -1,0 +1,166 @@
+{
+    "paperId": "10f62af29c3fc5e2572baddca559ffbfd6be8787",
+    "externalIds": {
+        "MAG": "2284289336",
+        "DBLP": "journals/corr/ZhouSLL15b",
+        "ArXiv": "1511.08630",
+        "CorpusId": 15500867
+    },
+    "title": "A C-LSTM Neural Network for Text Classification",
+    "abstract": "Neural network models have been demonstrated to be capable of achieving remarkable performance in sentence and document modeling. Convolutional neural network (CNN) and recurrent neural network (RNN) are two mainstream architectures for such modeling tasks, which adopt totally different ways of understanding natural languages. In this work, we combine the strengths of both architectures and propose a novel and unified model called C-LSTM for sentence representation and text classification. C-LSTM utilizes CNN to extract a sequence of higher-level phrase representations, and are fed into a long short-term memory recurrent neural network (LSTM) to obtain the sentence representation. C-LSTM is able to capture both local features of phrases as well as global and temporal sentence semantics. We evaluate the proposed architecture on sentiment classification and question classification tasks. The experimental results show that the C-LSTM outperforms both CNN and LSTM and can achieve excellent performance on these tasks.",
+    "venue": "arXiv.org",
+    "year": 2015,
+    "referenceCount": 31,
+    "citationCount": 819,
+    "influentialCitationCount": 78,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "C-LSTM is a novel and unified model for sentence representation and text classification that outperforms both CNN and LSTM and can achieve excellent performance on these tasks."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2384711",
+            "name": "Chunting Zhou"
+        },
+        {
+            "authorId": "152873559",
+            "name": "Chonglin Sun"
+        },
+        {
+            "authorId": "49293587",
+            "name": "Zhiyuan Liu"
+        },
+        {
+            "authorId": "1697834",
+            "name": "F. Lau"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "dec2ccce1ecb34bab02c42c2dd18cb468470adf8",
+            "title": "Convolutional, Long Short-Term Memory, fully connected Deep Neural Networks"
+        },
+        {
+            "paperId": "ecb5336bf7b54a62109f325e7152bb74c4c7f527",
+            "title": "Document Modeling with Gated Recurrent Neural Network for Sentiment Classification"
+        },
+        {
+            "paperId": "a79ac27b270772c79b80d2235ca5ff2df2d2d370",
+            "title": "Molding CNNs for text: non-linear, non-consecutive convolutions"
+        },
+        {
+            "paperId": "d41cfe9b2ada4e09d53262bc75c473d8043936fc",
+            "title": "Self-Adaptive Hierarchical Sentence Model"
+        },
+        {
+            "paperId": "bd32ebb9fac53a14202fb1a4f76ef96d1ff68c6c",
+            "title": "Discriminative Neural Sentence Modeling by Tree-Based Convolution"
+        },
+        {
+            "paperId": "df77714269f1f88182092f8535b1bc290fcd835d",
+            "title": "When Are Tree Structures Necessary for Deep Learning of Representations?"
+        },
+        {
+            "paperId": "32de44f01a96d4473d21099d15e25bc2b9f08e2f",
+            "title": "Improved Semantic Representations From Tree-Structured Long Short-Term Memory Networks"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "60dda7f5efd67758bde1ee7f45e6d3ef86445495",
+            "title": "Deep Recursive Neural Networks for Compositionality in Language"
+        },
+        {
+            "paperId": "fbf417c83ae5b895fc645346e4efbf3a0aabeac9",
+            "title": "Effective Use of Word Order for Text Categorization with Convolutional Neural Networks"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "1f6ba0782862ec12a5ec6d7fb608523d55b0c6ba",
+            "title": "Convolutional Neural Networks for Sentence Classification"
+        },
+        {
+            "paperId": "f9791399e87bba3f911fd8f570443cf721cf7b1e",
+            "title": "Modelling, Visualising and Summarising Documents with a Single Convolutional Neural Network"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "0894b06cff1cd0903574acaa7fcf071b144ae775",
+            "title": "Fast and Robust Neural Network Joint Models for Statistical Machine Translation"
+        },
+        {
+            "paperId": "f3de86aeb442216a8391befcacb49e58b478f512",
+            "title": "Distributed Representations of Sentences and Documents"
+        },
+        {
+            "paperId": "27725a2d2a8cee9bf9fffc6c2167017103aba0fa",
+            "title": "A Convolutional Neural Network for Modelling Sentences"
+        },
+        {
+            "paperId": "533ee188324b833e059cb59b654e6160776d5812",
+            "title": "How to Construct Deep Recurrent Neural Networks"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "687bac2d3320083eb4530bf18bb8f8f721477600",
+            "title": "Recursive Deep Models for Semantic Compositionality Over a Sentiment Treebank"
+        },
+        {
+            "paperId": "acc4e56c44771ebf69302a06af51498aeb0a6ac8",
+            "title": "Parsing with Compositional Vector Grammars"
+        },
+        {
+            "paperId": "855d0f722d75cc56a66a00ede18ace96bafee6bd",
+            "title": "Theano: new features and speed improvements"
+        },
+        {
+            "paperId": "27e38351e48fe4b7da2775bf94341738bc4da07e",
+            "title": "Semantic Compositionality through Recursive Matrix-Vector Spaces"
+        },
+        {
+            "paperId": "0060745e006c5f14ec326904119dca19c6545e51",
+            "title": "Improving neural networks by preventing co-adaptation of feature detectors"
+        },
+        {
+            "paperId": "bc1022b031dc6c7019696492e8116598097a8c12",
+            "title": "Natural Language Processing (Almost) from Scratch"
+        },
+        {
+            "paperId": "044b239c207a9decc77a7c2eb6de1f95b92c9fc3",
+            "title": "From symbolic to sub-symbolic information in question classification"
+        },
+        {
+            "paperId": "a538b05ebb01a40323997629e171c91aa28b8e2f",
+            "title": "Rectified Linear Units Improve Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": "2c8ac3e1f0edeed1fbd76813e61efdc384c319c7",
+            "title": "Learning Question Classifiers"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": null,
+            "title": "Lecture 6.5 - rmsprop, coursera: Neural networks for machine learning"
+        },
+        {
+            "paperId": null,
+            "title": "Version, 5. [Nair and Hinton2010] Vinod Nair and Geoffrey E Hinton"
+        }
+    ]
+}

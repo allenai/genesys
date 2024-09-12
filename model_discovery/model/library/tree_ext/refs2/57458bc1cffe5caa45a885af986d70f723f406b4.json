@@ -1,0 +1,126 @@
+{
+    "paperId": "57458bc1cffe5caa45a885af986d70f723f406b4",
+    "externalIds": {
+        "DBLP": "conf/icml/CollobertW08",
+        "MAG": "2117130368",
+        "DOI": "10.1145/1390156.1390177",
+        "CorpusId": 2617020
+    },
+    "title": "A unified architecture for natural language processing: deep neural networks with multitask learning",
+    "abstract": "We describe a single convolutional neural network architecture that, given a sentence, outputs a host of language processing predictions: part-of-speech tags, chunks, named entity tags, semantic roles, semantically similar words and the likelihood that the sentence makes sense (grammatically and semantically) using a language model. The entire network is trained jointly on all these tasks using weight-sharing, an instance of multitask learning. All the tasks use labeled data except the language model which is learnt from unlabeled text and represents a novel form of semi-supervised learning for the shared tasks. We show how both multitask learning and semi-supervised learning improve the generalization of the shared tasks, resulting in state-of-the-art-performance.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2008,
+    "referenceCount": 23,
+    "citationCount": 5729,
+    "influentialCitationCount": 297,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work describes a single convolutional neural network architecture that, given a sentence, outputs a host of language processing predictions: part-of-speech tags, chunks, named entity tags, semantic roles, semantically similar words and the likelihood that the sentence makes sense using a language model."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2939803",
+            "name": "R. Collobert"
+        },
+        {
+            "authorId": "145183709",
+            "name": "J. Weston"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "554aabebf17b11046ac734aac8ef5a71872e93e3",
+            "title": "Semi-Supervised Learning"
+        },
+        {
+            "paperId": "3fcc3bbdfd2e0421dde947c5485e3ff1abe471d7",
+            "title": "Using Corpus Statistics on Entities to Improve Semi-supervised Relation Extraction from the Web"
+        },
+        {
+            "paperId": "022f600ff683d0b5158dac85832b8aecd00fe86f",
+            "title": "Transductive learning for statistical machine translation"
+        },
+        {
+            "paperId": "060d5bb21f318efd785e86aa50cb97aed090a0fb",
+            "title": "A discriminative language model with pseudo-negative samples"
+        },
+        {
+            "paperId": "463565c30b7a9c12c2ef0558a51cfc7b05055737",
+            "title": "Semi-Supervised Learning (Adaptive Computation and Machine Learning)"
+        },
+        {
+            "paperId": "78a9513e70f596077179101f6cb6eadc51602039",
+            "title": "Effective Self-Training for Parsing"
+        },
+        {
+            "paperId": "944e1a7b2c5c62e952418d7684e3cade89c76f87",
+            "title": "A Framework for Learning Predictive Structures from Multiple Tasks and Unlabeled Data"
+        },
+        {
+            "paperId": "caa317c56e5373cc9f293f10c24270596c60cc7b",
+            "title": "Composition of Conditional Random Fields for Transfer Learning"
+        },
+        {
+            "paperId": "48b4524a3b1207157b1b2f87885c434c96fc7a19",
+            "title": "Joint Parsing and Semantic Role Labeling"
+        },
+        {
+            "paperId": "99d2dcdcf4cf05facaa101a48c7e31d140b4736d",
+            "title": "The Proposition Bank: An Annotated Corpus of Semantic Roles"
+        },
+        {
+            "paperId": "0329663498462521483612649c0dffc85d9d9419",
+            "title": "Dynamic conditional random fields: factorized probabilistic models for labeling and segmenting sequence data"
+        },
+        {
+            "paperId": "6c2b28f9354f667cd5bd07afc0471d8334430da7",
+            "title": "A Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "3e5652cca6464981a065184dceb2672bd13984b7",
+            "title": "The Necessity of Parsing for Predicate Argument Recognition"
+        },
+        {
+            "paperId": "e41498c05d4c68e4750fb84a380317a112d97b01",
+            "title": "Connectionist language modeling for large vocabulary continuous speech recognition"
+        },
+        {
+            "paperId": "f2124f8995a9cdf4e168baba426472d2d811c0f1",
+            "title": "A Novel Use of Statistical Parsing to Extract Information from Text"
+        },
+        {
+            "paperId": "74b1a9e50f18af8a7b9f8dd38f40e0466ad7a8e8",
+            "title": "Transductive Inference for Text Classification using Support Vector Machines"
+        },
+        {
+            "paperId": "161ffb54a3fdf0715b198bb57bd22f910242eb49",
+            "title": "Multitask Learning"
+        },
+        {
+            "paperId": "cd62c9976534a6a2096a38244f6cbb03635a127e",
+            "title": "Phoneme recognition using time-delay neural networks"
+        },
+        {
+            "paperId": "03539fc7a0dada577db3fc9bc2b3c8e091877108",
+            "title": "Fast Semantic Extraction Using a Novel Neural Network Architecture"
+        },
+        {
+            "paperId": "d20f3d1f6a8949bb7703910e154d0e3f4b14716b",
+            "title": "Robust Parsing of the Proposition Bank"
+        },
+        {
+            "paperId": "a16e484824b2580e092c985aa659e8680aeda5ee",
+            "title": "Shallow Semantic Parsing using Support Vector Machines"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "1f462943c8d0af69c12a09058251848324135e5a",
+            "title": "Probabilistic Interpretation of Feedforward Classification Network Outputs, with Relationships to Statistical Pattern Recognition"
+        }
+    ]
+}

@@ -1,0 +1,148 @@
+{
+    "paperId": "1679beddda3a183714d380e944fe6bf586c083cd",
+    "externalIds": {
+        "MAG": "1678356000",
+        "DOI": "10.1214/AOS/1013203451",
+        "CorpusId": 39450643
+    },
+    "title": "Greedy function approximation: A gradient boosting machine.",
+    "abstract": "Function estimation/approximation is viewed from the perspective of numerical optimization in function space, rather than parameter space. A connection is made between stagewise additive expansions and steepest-descent minimization. A general gradient descent boosting paradigm is developed for additive expansions based on any fitting criterion. Specific algorithms are presented for least-squares, least absolute deviation, and Huber-M loss functions for regression, and multiclass logistic likelihood for classification. Special enhancements are derived for the particular case where the individual additive components are regression trees, and tools for interpreting such TreeBoost models are presented. Gradient boosting of regression trees produces competitive, highly robust, interpretable procedures for both regression and classification, especially appropriate for mining less than clean data. Connections between this approach and the boosting methods of Freund and Shapire and Friedman, Hastie and Tibshirani are discussed.",
+    "venue": "",
+    "year": 2001,
+    "referenceCount": 29,
+    "citationCount": 21008,
+    "influentialCitationCount": 1898,
+    "openAccessPdf": {
+        "url": "https://projecteuclid.org/journals/annals-of-statistics/volume-29/issue-5/Greedy-function-approximation-A-gradient-boosting-machine/10.1214/aos/1013203451.pdf",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A general gradient descent boosting paradigm is developed for additive expansions based on any fitting criterion, and specific algorithms are presented for least-squares, least absolute deviation, and Huber-M loss functions for regression, and multiclass logistic likelihood for classification."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3056361",
+            "name": "J. Friedman"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "3a4daec37859e154f86d91619e77b4428dcd7fe3",
+            "title": "Radial Basis Functions: Theory and Implementations: Preface"
+        },
+        {
+            "paperId": "6f4493eff2531536a7aeb3fc11d62c30a8f487f6",
+            "title": "Special Invited Paper-Additive logistic regression: A statistical view of boosting"
+        },
+        {
+            "paperId": "a92684c164b0c46020a371ae5116df74bb37a412",
+            "title": "Prediction Games and Arcing Algorithms"
+        },
+        {
+            "paperId": "ee6139e7f174fff4ae6b22299e80bf0151b0a64e",
+            "title": "A geometric approach to leveraging weak learners"
+        },
+        {
+            "paperId": "14e53403a0055dbe5faaf9f1f3be96ca0e692a4d",
+            "title": "Improved Boosting Algorithms Using Confidence-rated Predictions"
+        },
+        {
+            "paperId": "6d8226a52ebc70c8d97ccae10a74e1b0a3908ec1",
+            "title": "Improving Regressors using Boosting Techniques"
+        },
+        {
+            "paperId": "68c1bfe375dde46777fe1ac8f3636fb651e3f0f8",
+            "title": "Experiments with a New Boosting Algorithm"
+        },
+        {
+            "paperId": "319c6098f7f94cf24c5c637b718e721449fd4a70",
+            "title": "The Visual Design and Control of Trellis Display"
+        },
+        {
+            "paperId": "6c16cf47f2b872e7b2ad06facb5d491857650514",
+            "title": "C4.5: Programs for Machine Learning (\u66f8\u8a55)"
+        },
+        {
+            "paperId": "2210a7157565422261b03cf2cdf4e91b583df5a0",
+            "title": "Matching pursuits with time-frequency dictionaries"
+        },
+        {
+            "paperId": "807c1f19047f96083e13614f7ce20f2ac98c239a",
+            "title": "C4.5: Programs for Machine Learning"
+        },
+        {
+            "paperId": "052b1d8ce63b07fec3de9dbb583772d860b7c769",
+            "title": "Learning representations by back-propagating errors"
+        },
+        {
+            "paperId": "972eee57d686a4f520e7d6c769423c723887e615",
+            "title": "Generalized Additive Models"
+        },
+        {
+            "paperId": "8213dbed4db44e113af3ed17d6dad57471a0c048",
+            "title": "The Nature of Statistical Learning Theory"
+        },
+        {
+            "paperId": "15a2c58b29c5a84a134d1504faff528101321f21",
+            "title": "Additive Logistic Regression : a Statistical"
+        },
+        {
+            "paperId": null,
+            "title": "Soft margins for"
+        },
+        {
+            "paperId": null,
+            "title": "Cr{Pyrope garnets in lithospheric mantle"
+        },
+        {
+            "paperId": "0c326a656ae9ca3a9cd5d7030e6bad0de2b394bb",
+            "title": "Pasting Bites Together For Prediction In Large Data Sets And On-Line"
+        },
+        {
+            "paperId": "21fffbcc74a9ea0129b75240051daffd7b20fc9d",
+            "title": "Pattern recognition and neural networks"
+        },
+        {
+            "paperId": null,
+            "title": "The design and control"
+        },
+        {
+            "paperId": "5451278e1a11cf3f1be28a05f38d36c8641e68f7",
+            "title": "The Nature of Statistical Learning"
+        },
+        {
+            "paperId": "bf7e1b6997433dcb2121b07cce1de1c61471ff2d",
+            "title": "Pattern Recognition and Neural Networks"
+        },
+        {
+            "paperId": null,
+            "title": "Nonlinear wavelete methods for recovery of signals, densities, and spectra from indirect and noisy data"
+        },
+        {
+            "paperId": null,
+            "title": "Multivariate adaptive regression splines (with discussion)"
+        },
+        {
+            "paperId": "c71ca26b183025b9f39f940f5e730f2c9a64e414",
+            "title": "Radial basis functions for multivariable interpolation: a review"
+        },
+        {
+            "paperId": null,
+            "title": "Regression, prediction, and shrinkage (with discussion)"
+        },
+        {
+            "paperId": null,
+            "title": "Classi cation and Regression Trees"
+        },
+        {
+            "paperId": "c87d57da3b1f2b467ef4995d30df832ee2281107",
+            "title": "On robust estimation of the location parameter"
+        },
+        {
+            "paperId": null,
+            "title": "A mathematical model for medical diagnosis { application to congenital heart disease"
+        }
+    ]
+}

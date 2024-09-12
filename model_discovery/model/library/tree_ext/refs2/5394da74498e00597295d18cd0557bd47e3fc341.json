@@ -1,0 +1,122 @@
+{
+    "paperId": "5394da74498e00597295d18cd0557bd47e3fc341",
+    "externalIds": {
+        "DBLP": "conf/nips/ChoromanskiRW17",
+        "MAG": "2950981196",
+        "ArXiv": "1703.00864",
+        "CorpusId": 6780217
+    },
+    "title": "The Unreasonable Effectiveness of Structured Random Orthogonal Embeddings",
+    "abstract": "We examine a class of embeddings based on structured random matrices with orthogonal rows which can be applied in many machine learning applications including dimensionality reduction and kernel approximation. For both the Johnson-Lindenstrauss transform and the angular kernel, we show that we can select matrices yielding guaranteed improved performance in accuracy and/or speed compared to earlier methods. We introduce matrices with complex entries which give significant further accuracy improvement. We provide geometric and Markov chain-based perspectives to help understand the benefits, and empirical results which suggest that the approach is helpful in a wider range of applications.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2017,
+    "referenceCount": 21,
+    "citationCount": 78,
+    "influentialCitationCount": 4,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work examines a class of embeddings based on structured random matrices with orthogonal rows which can be applied in many machine learning applications including dimensionality reduction and kernel approximation, and can select matrices yielding guaranteed improved performance in accuracy and/or speed compared to earlier methods."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1805203",
+            "name": "K. Choromanski"
+        },
+        {
+            "authorId": "144845456",
+            "name": "Mark Rowland"
+        },
+        {
+            "authorId": "145689461",
+            "name": "Adrian Weller"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "32e934094c4d17fe4d734b2e169ba5e3cd0ee05e",
+            "title": "Orthogonal Random Features"
+        },
+        {
+            "paperId": "6fc8bc53a706f7ca32b7c539844e66c3eb03b608",
+            "title": "Structured adaptive and random spinners for fast machine learning computations"
+        },
+        {
+            "paperId": "559faf4b49ef3f317e894f7ba3947d1769bdeb8c",
+            "title": "Recycling Randomness with Structure for Sublinear time Kernel Expansions"
+        },
+        {
+            "paperId": "2d33cbf5e62d0cbff5079b0ea0678892c4cc982e",
+            "title": "Fast Orthogonal Projection Based on Kronecker Product"
+        },
+        {
+            "paperId": "16a26289d7c37e6a0179fa57b14a327286696d33",
+            "title": "Binary embeddings with structured hashed projections"
+        },
+        {
+            "paperId": "50645e3dc912d597e89d59bffb96ccc0f8e1aefa",
+            "title": "Practical and Optimal LSH for Angular Distance"
+        },
+        {
+            "paperId": "3b941fb8827a4436474b202eba28cfef4ac446c7",
+            "title": "Generalized Spectral Kernels"
+        },
+        {
+            "paperId": "7f74703f583650ec274d25d15e1b51ba084d8661",
+            "title": "Soft Similarity and Soft Cosine Measure: Similarity of Features in Vector Space Model"
+        },
+        {
+            "paperId": "18c7fb55ff796db5c5a604e0ca44b6baaeb12239",
+            "title": "Fastfood: Approximate Kernel Expansions in Loglinear Time"
+        },
+        {
+            "paperId": "46dff004006db5d150d4def329c0a500d1ba8798",
+            "title": "Large-scale speaker identification"
+        },
+        {
+            "paperId": "a2ce28e04242421d704b87158ad2270271c91d80",
+            "title": "Streaming Similarity Search over one Billion Tweets using Parallel Locality-Sensitive Hashing"
+        },
+        {
+            "paperId": "87ee6fc7501edc541b5c0620fd1d0435d2a35b7b",
+            "title": "New bounds for circulant Johnson-Lindenstrauss embeddings"
+        },
+        {
+            "paperId": "9da848e8e3893afc33417803cf2629cc8617df39",
+            "title": "A variant of the Johnson-Lindenstrauss lemma for circulant matrices"
+        },
+        {
+            "paperId": "2cde78f9dc1f35d7d38801f4d5168a2df26c328e",
+            "title": "Johnson\u2010Lindenstrauss lemma for circulant matrices* *"
+        },
+        {
+            "paperId": "77e379fd57ea44638fc628623e383eccada82689",
+            "title": "Kernel Methods for Deep Learning"
+        },
+        {
+            "paperId": "7a59fde27461a3ef4a21a249cc403d0d96e4a0d7",
+            "title": "Random Features for Large-Scale Kernel Machines"
+        },
+        {
+            "paperId": "427b168f490b56716f22b129ac93aba5425ea08f",
+            "title": "Training linear SVMs in linear time"
+        },
+        {
+            "paperId": "b4d6a34f9d25b7a7ca665087ad7cb82f58d89d51",
+            "title": "Approximate nearest neighbors and the fast Johnson-Lindenstrauss transform"
+        },
+        {
+            "paperId": "a9d2f88abcf919ae4215d5d0d9c332db5ece3e05",
+            "title": "Computation with Infinite Neural Networks"
+        },
+        {
+            "paperId": "4748d22348e72e6e06c2476486afddbc76e5eca7",
+            "title": "Product Quantization for Nearest Neighbor Search"
+        },
+        {
+            "paperId": "1d0635cda34b8af995313848a0c42bac6efe79ec",
+            "title": "Extensions of Lipschitz mappings into Hilbert space"
+        }
+    ]
+}

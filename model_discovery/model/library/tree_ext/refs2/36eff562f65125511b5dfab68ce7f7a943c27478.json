@@ -1,0 +1,190 @@
+{
+    "paperId": "36eff562f65125511b5dfab68ce7f7a943c27478",
+    "externalIds": {
+        "ArXiv": "1609.02907",
+        "MAG": "2519887557",
+        "DBLP": "journals/corr/KipfW16",
+        "CorpusId": 3144218
+    },
+    "title": "Semi-Supervised Classification with Graph Convolutional Networks",
+    "abstract": "We present a scalable approach for semi-supervised learning on graph-structured data that is based on an efficient variant of convolutional neural networks which operate directly on graphs. We motivate the choice of our convolutional architecture via a localized first-order approximation of spectral graph convolutions. Our model scales linearly in the number of graph edges and learns hidden layer representations that encode both local graph structure and features of nodes. In a number of experiments on citation networks and on a knowledge graph dataset we demonstrate that our approach outperforms related methods by a significant margin.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2016,
+    "referenceCount": 38,
+    "citationCount": 25032,
+    "influentialCitationCount": 6174,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A scalable approach for semi-supervised learning on graph-structured data that is based on an efficient variant of convolutional neural networks which operate directly on graphs which outperforms related methods by a significant margin."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "41016725",
+            "name": "Thomas Kipf"
+        },
+        {
+            "authorId": "1678311",
+            "name": "M. Welling"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "36ee2c8bd605afd48035d15fdc6b8c8842363376",
+            "title": "node2vec: Scalable Feature Learning for Networks"
+        },
+        {
+            "paperId": "c41eb895616e453dcba1a70c9b942c5063cc656c",
+            "title": "Convolutional Neural Networks on Graphs with Fast Localized Spectral Filtering"
+        },
+        {
+            "paperId": "7c6de5a9e02a779e24504619050c6118f4eac181",
+            "title": "Learning Convolutional Neural Networks for Graphs"
+        },
+        {
+            "paperId": "3d846cb01f6a975554035d2210b578ca61344b22",
+            "title": "Revisiting Semi-Supervised Learning with Graph Embeddings"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "492f57ee9ceb61fb5a47ad7aebfec1121887a175",
+            "title": "Gated Graph Sequence Neural Networks"
+        },
+        {
+            "paperId": "18b47b83a373f33d6b902a3615f42c10f7600d72",
+            "title": "Diffusion-Convolutional Neural Networks"
+        },
+        {
+            "paperId": "5d1bfeed240709725c78bc72ea40e55410b373dc",
+            "title": "Convolutional Networks on Graphs for Learning Molecular Fingerprints"
+        },
+        {
+            "paperId": "0834e74304b547c9354b6d7da6fa78ef47a48fa8",
+            "title": "LINE: Large-scale Information Network Embedding"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "fff114cbba4f3ba900f33da574283e3de7f26c83",
+            "title": "DeepWalk: online learning of social representations"
+        },
+        {
+            "paperId": "5e925a9f1e20df61d1e860a7aa71894b35a1c186",
+            "title": "Spectral Networks and Locally Connected Networks on Graphs"
+        },
+        {
+            "paperId": "c26a059c1fe11c1936400cc38a6135e692c21f49",
+            "title": "Wavelet-regularized graph semi-supervised learning"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "bd5fc28c7356915ec71abafbe86b7596c60720aa",
+            "title": "The conference paper"
+        },
+        {
+            "paperId": "9b44a53069dcf4dc10c34e456bf3a5ff160d3ede",
+            "title": "The Weisfeiler-Lehman Method and Graph Isomorphism Testing"
+        },
+        {
+            "paperId": "ddf0f2226cc837750eb1eb57c43d8192ef0fc2b3",
+            "title": "Toward an Architecture for Never-Ending Language Learning"
+        },
+        {
+            "paperId": "ea9d2a2b4ce11aaf85136840c65f3bc9c03ab649",
+            "title": "Understanding the difficulty of training deep feedforward neural networks"
+        },
+        {
+            "paperId": "8e8152d46c8ff1070805096c214df7f389c57b80",
+            "title": "Wavelets on Graphs via Spectral Graph Theory"
+        },
+        {
+            "paperId": "43d2ed5c3c55c1100450cd74dc1031afa24d37b2",
+            "title": "Collective Classification in Network Data"
+        },
+        {
+            "paperId": "7ee368e60d0b826e78f965aad8d6c7d406127104",
+            "title": "Deep learning via semi-supervised embedding"
+        },
+        {
+            "paperId": "f99939c9c396de3ba12b3326c50dca00dab4060d",
+            "title": "On Modularity Clustering"
+        },
+        {
+            "paperId": "19bb0dce99466077e9bc5a2ad4941607fc28b40c",
+            "title": "Manifold Regularization: A Geometric Framework for Learning from Labeled and Unlabeled Examples"
+        },
+        {
+            "paperId": "9ca9f28676ad788d04ba24a51141a9a0a0df4d67",
+            "title": "A new model for learning in graph domains"
+        },
+        {
+            "paperId": "46770a8e7e2af28f5253e5961f709be74e34c1f6",
+            "title": "Learning with Local and Global Consistency"
+        },
+        {
+            "paperId": "125842668eab7decac136db8a59d392dc5e4e395",
+            "title": "Combining active learning and semi-supervised learning using Gaussian fields and harmonic functions"
+        },
+        {
+            "paperId": "784220a5a2ad452282f8af006a6cb5715d54d0ed",
+            "title": "Link-Based Classification"
+        },
+        {
+            "paperId": "74b1a9e50f18af8a7b9f8dd38f40e0466ad7a8e8",
+            "title": "Transductive Inference for Text Classification using Support Vector Machines"
+        },
+        {
+            "paperId": "0de728ad1b67221d7a7302f809f987bb926f4504",
+            "title": "An Information Flow Model for Conflict and Fission in Small Groups"
+        },
+        {
+            "paperId": "0c2563caba6bcdb113817d560ce9492467e45873",
+            "title": "Under review as a conference paper at ICLR 2020 many domain adaptation methods"
+        },
+        {
+            "paperId": "bcd857d75841aa3e92cd4284a8818aba9f6c0c3f",
+            "title": "Published as a conference paper at ICLR 2018 S IMULATING A CTION D YNAMICS WITH N EURAL P ROCESS N ETWORKS"
+        },
+        {
+            "paperId": null,
+            "title": "TensorFlow: Large-scale machine learning on heterogeneous systems"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "4a5a12f0ffaad71edd2d77a0fdd134f65d0e90f4",
+            "title": "Semi-Supervised Learning with Spectral Graph Wavelets"
+        },
+        {
+            "paperId": "3efd851140aa28e95221b55fcc5659eea97b172d",
+            "title": "The Graph Neural Network Model"
+        },
+        {
+            "paperId": "1c46943103bd7b7a2c7be86859995a4144d1938b",
+            "title": "Visualizing Data using t-SNE"
+        },
+        {
+            "paperId": "b6b26564df790262abbe48fa18079d9610189b29",
+            "title": "Collective Classi!cation in Network Data"
+        },
+        {
+            "paperId": null,
+            "title": "A reduction of a graph to a canonical form and an algebra arising during this reduction"
+        },
+        {
+            "paperId": null,
+            "title": "A reduction of a graph to a canonical form and an algebra arising during this reduction. Nauchno-Technicheskaya Informatsia"
+        }
+    ]
+}

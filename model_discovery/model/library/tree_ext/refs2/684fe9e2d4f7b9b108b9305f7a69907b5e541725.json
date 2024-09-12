@@ -1,0 +1,238 @@
+{
+    "paperId": "684fe9e2d4f7b9b108b9305f7a69907b5e541725",
+    "externalIds": {
+        "DBLP": "journals/corr/abs-1708-07860",
+        "MAG": "2750912449",
+        "ArXiv": "1708.07860",
+        "DOI": "10.1109/ICCV.2017.226",
+        "CorpusId": 473729
+    },
+    "title": "Multi-task Self-Supervised Visual Learning",
+    "abstract": "We investigate methods for combining multiple selfsupervised tasks\u2014i.e., supervised tasks where data can be collected without manual labeling\u2014in order to train a single visual representation. First, we provide an apples-toapples comparison of four different self-supervised tasks using the very deep ResNet-101 architecture. We then combine tasks to jointly train a network. We also explore lasso regularization to encourage the network to factorize the information in its representation, and methods for \u201charmonizing\u201d network inputs in order to learn a more unified representation. We evaluate all methods on ImageNet classification, PASCAL VOC detection, and NYU depth prediction. Our results show that deeper networks work better, and that combining tasks\u2014even via a na\u00a8\u00fdve multihead architecture\u2014always improves performance. Our best joint network nearly matches the PASCAL performance of a model pre-trained on ImageNet classification, and matches the ImageNet network on NYU depth prediction.",
+    "venue": "IEEE International Conference on Computer Vision",
+    "year": 2017,
+    "referenceCount": 50,
+    "citationCount": 605,
+    "influentialCitationCount": 40,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1708.07860",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The results show that deeper networks work better, and that combining tasks\u2014even via a na\u00a8\u00fdve multihead architecture\u2014always improves performance."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2786693",
+            "name": "Carl Doersch"
+        },
+        {
+            "authorId": "1688869",
+            "name": "Andrew Zisserman"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "35d181da0b939bdf3bdf579969e5fe69e277e03e",
+            "title": "Learning Features by Watching Objects Move"
+        },
+        {
+            "paperId": "6139ed57b3fe91915991897723aed6a98cd32f82",
+            "title": "Semi-Supervised Learning with Context-Conditional Generative Adversarial Networks"
+        },
+        {
+            "paperId": "54ddb00fa691728944fd8becea90a373d21597cf",
+            "title": "Understanding deep learning requires rethinking generalization"
+        },
+        {
+            "paperId": "7ab8d3af6f78f9c9f64a2f2d38471401ad0988a9",
+            "title": "SoundNet: Learning Sound Representations from Unlabeled Video"
+        },
+        {
+            "paperId": "c5bfae879f62848cfa27f85562179e258b1ff5a4",
+            "title": "Generic 3D Representation via Pose Estimation and Matching"
+        },
+        {
+            "paperId": "e5d27d25c906e89e753b2bb18645be3511b8a97c",
+            "title": "Supervision via competition: Robot adversaries for learning tasks"
+        },
+        {
+            "paperId": "6cb26f4d6c7726abab06f4815185a8483e30ac08",
+            "title": "Learning to push by grasping: Using multiple tasks for effective learning"
+        },
+        {
+            "paperId": "922197906907dc0a5e1b51fae40d3149333ecacf",
+            "title": "UberNet: Training a Universal Convolutional Neural Network for Low-, Mid-, and High-Level Vision Using Diverse Datasets and Limited Memory"
+        },
+        {
+            "paperId": "5694e46284460a648fe29117cbc55f6c9be3fa3c",
+            "title": "Densely Connected Convolutional Networks"
+        },
+        {
+            "paperId": "5e96c4626e4b3d09727bcbfbdb2672dd9b886743",
+            "title": "An Uncertain Future: Forecasting from Static Images Using Variational Autoencoders"
+        },
+        {
+            "paperId": "8cf83c619423a1504f26495d5f6a495054c46462",
+            "title": "Learning to Poke by Poking: Experiential Learning of Intuitive Physics"
+        },
+        {
+            "paperId": "53c9443e4e667170acc60ca1b31a0ec7151fe753",
+            "title": "Progressive Neural Networks"
+        },
+        {
+            "paperId": "2f7ae3361b2aafa24fc289252a9cad8f1135edae",
+            "title": "Deeper Depth Prediction with Fully Convolutional Residual Networks"
+        },
+        {
+            "paperId": "7d0effebfa4bed19b6ba41f3af5b7e5b6890de87",
+            "title": "Context Encoders: Feature Learning by Inpainting"
+        },
+        {
+            "paperId": "2976605dc3b73377696537291d45f09f1ab1fbf5",
+            "title": "Cross-Stitch Networks for Multi-task Learning"
+        },
+        {
+            "paperId": "d93ececdc44e7700cd84fc75ca069125022d8c9d",
+            "title": "The Curious Robot: Learning Visual Representations via Physical Interactions"
+        },
+        {
+            "paperId": "2ec8f7e0257a07d3914322b36072d1bbcd58a1e0",
+            "title": "Unsupervised Learning of Visual Representations by Solving Jigsaw Puzzles"
+        },
+        {
+            "paperId": "8201e6e687f2de477258e9be53ba7b73ee30d7de",
+            "title": "Colorful Image Colorization"
+        },
+        {
+            "paperId": "6d4e3616d0b27957c4107ae877dc0dd4504b69ab",
+            "title": "Shuffle and Learn: Unsupervised Learning Using Temporal Order Verification"
+        },
+        {
+            "paperId": "8e63784bd5a24d5e3035e2a11753e65e6e56625d",
+            "title": "Learning Representations for Automatic Colorization"
+        },
+        {
+            "paperId": "77f0a39b8e02686fd85b01971f8feb7f60971f80",
+            "title": "Identity Mappings in Deep Residual Networks"
+        },
+        {
+            "paperId": "b5c26ab8767d046cb6e32d959fdf726aee89bb62",
+            "title": "Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning"
+        },
+        {
+            "paperId": "25fb5a6abcd88ee52bdb3165b844c941e90eb9bf",
+            "title": "Revisiting Distributed Synchronous SGD"
+        },
+        {
+            "paperId": "f5952835e5e57ce3d5b5f3f851f852aeb3e47d96",
+            "title": "Unsupervised Learning of Edges"
+        },
+        {
+            "paperId": "f03b4ff1b4943691cec703b508c0a91f2d97a881",
+            "title": "Supersizing self-supervision: Learning to grasp from 50K tries and 700 robot hours"
+        },
+        {
+            "paperId": "424561d8585ff8ebce7d5d07de8dbf7aae5e7270",
+            "title": "Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks"
+        },
+        {
+            "paperId": "fc1b1c9364c58ec406f494dd944b609a6a038ba6",
+            "title": "Unsupervised Visual Representation Learning by Context Prediction"
+        },
+        {
+            "paperId": "c426ba865e9158a0f7962a86a50575aa943051b1",
+            "title": "Learning Image Representations Tied to Ego-Motion"
+        },
+        {
+            "paperId": "dfbfaaec46d38392f61d683c340ee92a0a66e5d9",
+            "title": "Learning to See by Moving"
+        },
+        {
+            "paperId": "1ab237d7eb9dec8416947fce0b0cbf6c688a7229",
+            "title": "Contextual Action Recognition with R*CNN"
+        },
+        {
+            "paperId": "098fa9b4c3f7fb41c7a178d36f5dbb50a3ffa377",
+            "title": "Dense Optical Flow Prediction from a Static Image"
+        },
+        {
+            "paperId": "428db42e86f6d51292e23fa57797e35cecd0e2ee",
+            "title": "Hypercolumns for object segmentation and fine-grained localization"
+        },
+        {
+            "paperId": "cb3a2ddcf305e2ec0f6b94af13d1e631ed261bdc",
+            "title": "Predicting Depth, Surface Normals and Semantic Labels with a Common Multi-scale Convolutional Architecture"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "a6fd96a900d4130940b488863b71fd09ad41ccb9",
+            "title": "Discriminative Unsupervised Feature Learning with Convolutional Neural Networks"
+        },
+        {
+            "paperId": "1109b663453e78a59e4f66446d71720ac58cec25",
+            "title": "OverFeat: Integrated Recognition, Localization and Detection using Convolutional Networks"
+        },
+        {
+            "paperId": "aefc7c708269b874182a5c877fb6dae06da210d4",
+            "title": "Deep Learning of Invariant Features via Simulated Fixations in Video"
+        },
+        {
+            "paperId": "3127190433230b3dc1abd0680bb58dced4bcd90e",
+            "title": "Large Scale Distributed Deep Networks"
+        },
+        {
+            "paperId": "36f49b05d764bf5c10428b082c2d96c13c4203b9",
+            "title": "Hogwild: A Lock-Free Approach to Parallelizing Stochastic Gradient Descent"
+        },
+        {
+            "paperId": "e2c477de72bb7718f5304c6f38457fda9c8334b1",
+            "title": "Deep learning from temporal coherence in video"
+        },
+        {
+            "paperId": "bc6dff14a130c57a91d5a21339c23471faf1d46f",
+            "title": "Et al"
+        },
+        {
+            "paperId": "5127759530ce213f488af2859190697770f557f3",
+            "title": "Slow Feature Analysis: Unsupervised Learning of Invariances"
+        },
+        {
+            "paperId": "effea397115304d32b954ac3e7fe69ed8c3fe3c3",
+            "title": "Learning Invariance from Transformation Sequences"
+        },
+        {
+            "paperId": "90d47ab24f7db639e0fb0bc2087c10a3987117ed",
+            "title": "Visual Learning"
+        },
+        {
+            "paperId": null,
+            "title": "and L"
+        },
+        {
+            "paperId": null,
+            "title": "Inceptionv4"
+        },
+        {
+            "paperId": null,
+            "title": "Tensorflow-slim"
+        },
+        {
+            "paperId": "6c11626ae08706e6185fceff0a6d05e4bfd6bd06",
+            "title": "Unsupervised Learning of Visual Representations using Videos"
+        },
+        {
+            "paperId": "070874b011f8eb2b18c8aa521ad0a7a932b4d9ad",
+            "title": "Action Recognition with Improved Trajectories"
+        },
+        {
+            "paperId": "9dc6c401381b27a34e91f4b4f498f5e65904468d",
+            "title": "UvA-DARE (Digital Academic Repository) Self-Supervised Video Representation Learning With Odd-One-Out Networks"
+        }
+    ]
+}

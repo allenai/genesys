@@ -1,0 +1,86 @@
+{
+    "paperId": "4cef3559ba4120ed064bc397d94da4a625feb5d5",
+    "externalIds": {
+        "DBLP": "conf/acl/BrillM00",
+        "ACL": "P00-1037",
+        "MAG": "2057900969",
+        "DOI": "10.3115/1075218.1075255",
+        "CorpusId": 472478
+    },
+    "title": "An Improved Error Model for Noisy Channel Spelling Correction",
+    "abstract": "The noisy channel model has been applied to a wide range of problems, including spelling correction. These models consist of two components: a source model and a channel model. Very little research has gone into improving the channel model for spelling correction. This paper describes a new channel model for spelling correction, based on generic string to string edits. Using this model gives significant performance improvements compared to previously proposed models.",
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2000,
+    "referenceCount": 12,
+    "citationCount": 611,
+    "influentialCitationCount": 47,
+    "openAccessPdf": {
+        "url": "http://dl.acm.org/ft_gateway.cfm?id=1075255&type=pdf",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new channel model for spelling correction, based on generic string to string edits, is described, which gives significant performance improvements compared to previously proposed models."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145022783",
+            "name": "Eric Brill"
+        },
+        {
+            "authorId": "143767423",
+            "name": "Robert C. Moore"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "21924168415196b125c9cb09578774cdae2d9f5a",
+            "title": "Learning String-Edit Distance"
+        },
+        {
+            "paperId": "cd093baf720f495630153234af6af9dc9af194dd",
+            "title": "Spelling Correction in Agglutinative Languages"
+        },
+        {
+            "paperId": "d2044ca37a948fc34ea1f3f87e9090ec8bda4a33",
+            "title": "Techniques for automatically correcting words in text"
+        },
+        {
+            "paperId": "d8d59ed7bfde36fd640cec30b2537630f3e30ff7",
+            "title": "Probability scoring for spelling correction"
+        },
+        {
+            "paperId": "7e8b2d1c6c8be30cbf8e19b99a20186411ef1ba8",
+            "title": "Context based spelling correction"
+        },
+        {
+            "paperId": "b54c53ad5b8dc0af62395d0873fef6f12178d5c2",
+            "title": "Speech and Language Processing"
+        },
+        {
+            "paperId": "ead03592e343d3e82567237d7ec23cecc209a508",
+            "title": "A note on undetected typing errors"
+        },
+        {
+            "paperId": "d36efb9ad91e00faa334b549ce989bfae7e2907a",
+            "title": "Maximum likelihood from incomplete data via the EM - algorithm plus discussions on the paper"
+        },
+        {
+            "paperId": "d2767a9010ae11b10be2589f4f433174e7aab6e5",
+            "title": "A technique for computer detection and correction of spelling errors"
+        },
+        {
+            "paperId": "1254c99a381d1f9d6abb23c74be060e4e7876985",
+            "title": "Book Reviews: Speech and Language Processing: An Introduction to Natural Language Processing, Computational Linguistics, and Speech Recognition"
+        },
+        {
+            "paperId": "455e1168304e0eb2909093d5ab9b5ec85cda5028",
+            "title": "The String-to-String Correction Problem"
+        },
+        {
+            "paperId": "b2f8876482c97e804bb50a5e2433881ae31d0cdd",
+            "title": "Binary codes capable of correcting deletions, insertions, and reversals"
+        }
+    ]
+}

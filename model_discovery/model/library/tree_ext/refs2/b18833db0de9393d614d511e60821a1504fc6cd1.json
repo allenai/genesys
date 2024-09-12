@@ -1,0 +1,77 @@
+{
+    "paperId": "b18833db0de9393d614d511e60821a1504fc6cd1",
+    "externalIds": {
+        "MAG": "2130801532",
+        "DBLP": "conf/nips/Kakade01",
+        "CorpusId": 14540458
+    },
+    "title": "A Natural Policy Gradient",
+    "abstract": "We provide a natural gradient method that represents the steepest descent direction based on the underlying structure of the parameter space. Although gradient methods cannot make large changes in the values of the parameters, we show that the natural gradient is moving toward choosing a greedy optimal action rather than just a better action. These greedy optimal actions are those that would be chosen under one improvement step of policy iteration with approximate, compatible value functions, as defined by Sutton et al. [9]. We then show drastic performance improvements in simple MDPs and in the more challenging MDP of Tetris.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2001,
+    "referenceCount": 12,
+    "citationCount": 1165,
+    "influentialCitationCount": 163,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work provides a natural gradient method that represents the steepest descent direction based on the underlying structure of the parameter space and shows drastic performance improvements in simple MDPs and in the more challenging MDP of Tetris."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "144695232",
+            "name": "S. Kakade"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "8042a45d099442072f736ef812181c21b20d2df2",
+            "title": "Optimizing Average Reward Using Discounted Rewards"
+        },
+        {
+            "paperId": "eb90da5397051ed15079a378ca2bb4dbeee888c1",
+            "title": "Direct gradient-based reinforcement learning"
+        },
+        {
+            "paperId": "a20f0ce0616def7cc9a87446c228906cd5da093b",
+            "title": "Policy Gradient Methods for Reinforcement Learning with Function Approximation"
+        },
+        {
+            "paperId": "f608268033a797a38047575e6b4de65899eedd5f",
+            "title": "Simulation-based optimization of Markov reward processes"
+        },
+        {
+            "paperId": "5a767a341364de1f75bea85e0b12ba7d3586a461",
+            "title": "Natural Gradient Works Efficiently in Learning"
+        },
+        {
+            "paperId": "628b80ac7952a67155d62e10dc2854ac8c04a6e4",
+            "title": "Using Expectation-Maximization for Reinforcement Learning"
+        },
+        {
+            "paperId": "6837be732ea83290a4061458b0f3e1ef921fc7dc",
+            "title": "Using EM for Reinforcement Learning"
+        },
+        {
+            "paperId": "ac4af1df88e178386d782705acc159eaa0c3904a",
+            "title": "Actor-Critic Algorithms"
+        },
+        {
+            "paperId": "44d24c25b30d8fdf7e0b4e31f57fcb4d14ceabed",
+            "title": "On Convergence Properties of the EM Algorithm for Gaussian Mixtures"
+        },
+        {
+            "paperId": "074dc8903635bd463499a634f24d67638da80b46",
+            "title": "Maximum Likelihood and Covariant Algorithms for Independent Component Analysis"
+        },
+        {
+            "paperId": null,
+            "title": "Neuro-Dynami Programming"
+        },
+        {
+            "paperId": "e1c2a2fd6a26947e5bbb8df47e30c1199ab1270d",
+            "title": "Natural Gradient Works Eciently in Learning"
+        }
+    ]
+}

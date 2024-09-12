@@ -1,0 +1,258 @@
+{
+    "paperId": "69ac3b35887eb42e8fe554619fc7255e6e95a4cb",
+    "externalIds": {
+        "MAG": "2795285343",
+        "ArXiv": "1803.10049",
+        "DBLP": "conf/icml/RaeDDL18",
+        "CorpusId": 4347492
+    },
+    "title": "Fast Parametric Learning with Activation Memorization",
+    "abstract": "Neural networks trained with backpropagation often struggle to identify classes that have been observed a small number of times. In applications where most class labels are rare, such as language modelling, this can become a performance bottleneck. One potential remedy is to augment the network with a fast-learning non-parametric model which stores recent activations and class labels into an external memory. We explore a simplified architecture where we treat a subset of the model parameters as fast memory stores. This can help retain information over longer time intervals than a traditional memory, and does not require additional space or compute. In the case of image classification, we display faster binding of novel classes on an Omniglot image curriculum task. We also show improved performance for word-based language models on news reports (GigaWord), books (Project Gutenberg) and Wikipedia articles (WikiText-103) --- the latter achieving a state-of-the-art perplexity of 29.2.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2018,
+    "referenceCount": 54,
+    "citationCount": 46,
+    "influentialCitationCount": 4,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work explores a simplified architecture where a subset of the model parameters are treated as fast memory stores, which can help retain information over longer time intervals than a traditional memory, and does not require additional space or compute."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "34269227",
+            "name": "Jack W. Rae"
+        },
+        {
+            "authorId": "1745899",
+            "name": "Chris Dyer"
+        },
+        {
+            "authorId": "1790646",
+            "name": "P. Dayan"
+        },
+        {
+            "authorId": "2542999",
+            "name": "T. Lillicrap"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "0be49527df4869a0132f5cbc8d4cfa3304ab5843",
+            "title": "Memory-based Parameter Adaptation"
+        },
+        {
+            "paperId": "3bb63fdb4670745f8c97d8cad1a8a9603b1c16f5",
+            "title": "Convolutional Sequence Modeling Revisited"
+        },
+        {
+            "paperId": "35ad6ba10006975c2bc67ecefaa9ee6af2453bdc",
+            "title": "Deep Meta-Learning: Learning to Learn in the Concept Space"
+        },
+        {
+            "paperId": "ef9ddbc35676ce8ffc2a8067044473727839dbac",
+            "title": "Breaking the Softmax Bottleneck: A High-Rank RNN Language Model"
+        },
+        {
+            "paperId": "2ed4ebe1878fd8e421f24e1aac76fbdc89e9d381",
+            "title": "Unbounded cache model for online language modeling with open vocabulary"
+        },
+        {
+            "paperId": "2397ce306e5d7f3d0492276e357fb1833536b5d8",
+            "title": "On the State of the Art of Evaluation in Neural Language Models"
+        },
+        {
+            "paperId": "181ec35e1da386cd5e38ef54c20af63e41def3b0",
+            "title": "Search Engine Guided Non-Parametric Neural Machine Translation"
+        },
+        {
+            "paperId": "ed5003e6a2b97dd4b65c5190ccb88b9c45b032b8",
+            "title": "Learning to Create and Reuse Words in Open-Vocabulary Neural Language Modeling"
+        },
+        {
+            "paperId": "29092f0deaac3898e43b3f094bf15d82b6a99afd",
+            "title": "Learning to Remember Rare Events"
+        },
+        {
+            "paperId": "c889d6f98e6d79b89c3a6adf8a921f88fa6ba518",
+            "title": "Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks"
+        },
+        {
+            "paperId": "88caa4a0253a8b0076176745ebc072864eab66e1",
+            "title": "Language Modeling with Gated Convolutional Networks"
+        },
+        {
+            "paperId": "2d7782c225e0fc123d6e227f2cb253e58279ac73",
+            "title": "Improving Neural Language Models with a Continuous Cache"
+        },
+        {
+            "paperId": "29c887794eed2ca9462638ff853e6fe1ab91d5d8",
+            "title": "Optimization as a Model for Few-Shot Learning"
+        },
+        {
+            "paperId": "be8c6c69f3e357bfad2987e45b62cff7e7474378",
+            "title": "Scaling Memory-Augmented Neural Networks with Sparse Reads and Writes"
+        },
+        {
+            "paperId": "c91ae35dbcb6d479580ecd235eabf98374acdb55",
+            "title": "Using Fast Weights to Attend to the Recent Past"
+        },
+        {
+            "paperId": "784ee73d5363c711118f784428d1ab89f019daa5",
+            "title": "Hybrid computing using a neural network with dynamic external memory"
+        },
+        {
+            "paperId": "efbd381493bb9636f489b965a2034d529cd56bcd",
+            "title": "Pointer Sentinel Mixture Models"
+        },
+        {
+            "paperId": "9ec499af9b85f30bdbdd6cdfbb07d484808c526a",
+            "title": "Efficient softmax approximation for GPUs"
+        },
+        {
+            "paperId": "97fb4e3d45bb098e27e0071448b6152217bd35a5",
+            "title": "Layer Normalization"
+        },
+        {
+            "paperId": "71683e224ab91617950956b5005ed0439a733a71",
+            "title": "Learning to learn by gradient descent by gradient descent"
+        },
+        {
+            "paperId": "be1bb4e4aa1fcf70281b4bd24d8cd31c04864bb6",
+            "title": "Matching Networks for One Shot Learning"
+        },
+        {
+            "paperId": "bbd0e204f48a45735e1065c8b90b298077b73192",
+            "title": "One-shot Learning with Memory-Augmented Neural Networks"
+        },
+        {
+            "paperId": "aa5b35dcf8b024f5352db73cc3944e8fad4f3793",
+            "title": "Pointing the Unknown Words"
+        },
+        {
+            "paperId": "2f2d8f8072e5cc9b296fad551f65f183bdbff7aa",
+            "title": "Exploring the Limits of Language Modeling"
+        },
+        {
+            "paperId": "759956bb98689dbcc891528636d8994e54318f85",
+            "title": "Strategies for Training Large Vocabulary Neural Language Models"
+        },
+        {
+            "paperId": "815c84ab906e43f3e6322f2ca3fd5e1360c64285",
+            "title": "Human-level concept learning through probabilistic program induction"
+        },
+        {
+            "paperId": "9653d5c2c7844347343d073bbedd96e05d52f69b",
+            "title": "Pointer Networks"
+        },
+        {
+            "paperId": "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e",
+            "title": "End-To-End Memory Networks"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "1938624bb9b0f999536dcc8d8f519810bb4e1b3b",
+            "title": "On Using Very Large Target Vocabulary for Neural Machine Translation"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "27725a2d2a8cee9bf9fffc6c2167017103aba0fa",
+            "title": "A Convolutional Neural Network for Modelling Sentences"
+        },
+        {
+            "paperId": "413c1142de9d91804d6d11c67ff3fed59c9fc279",
+            "title": "Adaptive Subgradient Methods for Online Learning and Stochastic Optimization"
+        },
+        {
+            "paperId": "ea9d2a2b4ce11aaf85136840c65f3bc9c03ab649",
+            "title": "Understanding the difficulty of training deep feedforward neural networks"
+        },
+        {
+            "paperId": "57458bc1cffe5caa45a885af986d70f723f406b4",
+            "title": "A unified architecture for natural language processing: deep neural networks with multitask learning"
+        },
+        {
+            "paperId": "4af41f4d838daa7ca6995aeb4918b61989d1ed80",
+            "title": "Classes for fast maximum entropy training"
+        },
+        {
+            "paperId": "dde691805cfa7d6f1bb88c7411c1c3377b6cdc67",
+            "title": "Lifelong Learning Algorithms"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "ed9133009dd451bd64215cca7deba6e0b8d7c7b1",
+            "title": "Biologically Plausible Error-Driven Learning Using Local Activation Differences: The Generalized Recirculation Algorithm"
+        },
+        {
+            "paperId": "2ebf18e7892e660a833152ddc6cf8f1d21a7b881",
+            "title": "Why there are complementary learning systems in the hippocampus and neocortex: insights from the successes and failures of connectionist models of learning and memory."
+        },
+        {
+            "paperId": "9548ac30c113562a51e603dbbc8e9fa651cfd3ab",
+            "title": "Improved backing-off for M-gram language modeling"
+        },
+        {
+            "paperId": "997089ee7c067081f20857e6f56ae6970b5d532a",
+            "title": "Psychology of Language"
+        },
+        {
+            "paperId": "f9a1b3850dfd837793743565a8af95973d395a4e",
+            "title": "LSTM Neural Networks for Language Modeling"
+        },
+        {
+            "paperId": null,
+            "title": "Lecture 6.5-rmsprop: Divide the gradient by a running average of its recent magnitude. COURSERA: Neural networks for machine learning"
+        },
+        {
+            "paperId": null,
+            "title": "English gigaword fifth edition ldc2011t07. dvd. Philadelphia: Linguistic Data Consortium"
+        },
+        {
+            "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+            "title": "Recurrent neural network based language model"
+        },
+        {
+            "paperId": null,
+            "title": "The Leabra model of neural interactions and learning in the neocortex"
+        },
+        {
+            "paperId": "830ccb44084d9d6cdcb70d623df5012ae4835142",
+            "title": "Training Stochastic Model Recognition Algorithms as Networks can Lead to Maximum Mutual Information Estimation of Parameters"
+        },
+        {
+            "paperId": null,
+            "title": "The organization of behavior: A neuro-physiological approach"
+        },
+        {
+            "paperId": "a6bcf0e9b5034c4c9cbea839baadd69a42b05cc1",
+            "title": "Learning curves for stochastic gradient descent in linear feedforward networks"
+        },
+        {
+            "paperId": null,
+            "title": "We selected 2042 English-language books under the /1 subdirectory. Each book has a unique id, we shuffled the books and split out a reasonably sized train, validation and test set"
+        },
+        {
+            "paperId": null,
+            "title": "For the mixture of Neural Cache and MbPA we swept over the same cache parameters, alongside: \u2022 MbPA output interpolation: \u03bb mbpa \u2208 {0"
+        },
+        {
+            "paperId": null,
+            "title": "\u2022 Cache size n cache \u2208 {1000"
+        }
+    ]
+}

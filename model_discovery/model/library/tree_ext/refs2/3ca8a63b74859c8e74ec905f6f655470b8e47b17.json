@@ -1,0 +1,594 @@
+{
+    "paperId": "3ca8a63b74859c8e74ec905f6f655470b8e47b17",
+    "externalIds": {
+        "MAG": "2909691537",
+        "DBLP": "journals/corr/abs-1901-02324",
+        "ArXiv": "1901.02324",
+        "CorpusId": 57721258
+    },
+    "title": "Learning with Fenchel-Young Losses",
+    "abstract": "Over the past decades, numerous loss functions have been been proposed for a variety of supervised learning tasks, including regression, classification, ranking, and more generally structured prediction. Understanding the core principles and theoretical properties underpinning these losses is key to choose the right loss for the right problem, as well as to create new losses which combine their strengths. In this paper, we introduce Fenchel-Young losses, a generic way to construct a convex loss function for a regularized prediction function. We provide an in-depth study of their properties in a very broad setting, covering all the aforementioned supervised learning tasks, and revealing new connections between sparsity, generalized entropies, and separation margins. We show that Fenchel-Young losses unify many well-known loss functions and allow to create useful new ones easily. Finally, we derive efficient predictive and training algorithms, making Fenchel-Young losses appealing both in theory and practice.",
+    "venue": "Journal of machine learning research",
+    "year": 2019,
+    "referenceCount": 139,
+    "citationCount": 106,
+    "influentialCitationCount": 11,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Fenchel-Young losses are introduced, a generic way to construct a convex loss function for a regularized prediction function, and an in-depth study of their properties in a very broad setting, covering all the aforementioned supervised learning tasks, and revealing new connections between sparsity, generalized entropies, and separation margins."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "27257992",
+            "name": "Mathieu Blondel"
+        },
+        {
+            "authorId": "145644643",
+            "name": "Andr\u00e9 F. T. Martins"
+        },
+        {
+            "authorId": "2114966",
+            "name": "Vlad Niculae"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "4c75b748911ddcd888c5122f7672f69caa5d661f",
+            "title": "Statistical Learning Theory"
+        },
+        {
+            "paperId": "aa6c2814ff94ca098d90f188f95126b5b06ebb69",
+            "title": "Nonlinear Programming"
+        },
+        {
+            "paperId": "a916ce29404f991ea0978a0dff1ac8b3fc8ba858",
+            "title": "Structured Prediction with Projection Oracles"
+        },
+        {
+            "paperId": "1e007cb313de9cb4d71ea9d0a77172209ad0ad0d",
+            "title": "A Smoother Way to Train Structured Prediction Models"
+        },
+        {
+            "paperId": "da20c7af9833a4485ad646909ad4534d29e066bd",
+            "title": "A General Theory for Structured Prediction with Smooth Convex Surrogates"
+        },
+        {
+            "paperId": "43c3bfffdcd313c549b2045980855ea001d6f13b",
+            "title": "Numerical Optimization"
+        },
+        {
+            "paperId": "c9552f9e2a7a7656c4c9ef9569a824dffa1fd181",
+            "title": "Learning Classifiers with Fenchel-Young Losses: Generalized Entropies, Margins, and Algorithms"
+        },
+        {
+            "paperId": "8e51d68250db5637cd6bc1de98a99396441399b2",
+            "title": "Computational Optimal Transport"
+        },
+        {
+            "paperId": "bd575b481405fa6d6ada0277c30cb8f58a4e6d44",
+            "title": "SparseMAP: Differentiable Sparse Structured Inference"
+        },
+        {
+            "paperId": "f1fa4fd79ee58a491687a537aa876628d302ff16",
+            "title": "Differentiable Dynamic Programming for Structured Prediction and Attention"
+        },
+        {
+            "paperId": "ed16116eeeb5b68e865432e7fe3c0ee5ceb0a274",
+            "title": "Smooth and Sparse Optimal Transport"
+        },
+        {
+            "paperId": "ebfcd6b96109aabda57ebb1831f5485b67421f12",
+            "title": "Two-temperature logistic regression based on the Tsallis divergence"
+        },
+        {
+            "paperId": "ba6b48ef52e2432a0d6342381e0863fd82a8687b",
+            "title": "A Regularized Framework for Sparse and Structured Neural Attention"
+        },
+        {
+            "paperId": "9958095e44b0c845c6b4b08936419e83f08e4d93",
+            "title": "Greedy Algorithms for Cone Constrained Optimization with Convergence Guarantees"
+        },
+        {
+            "paperId": "e426802db996881e0f0c22e74a11f4317b242aa8",
+            "title": "Fast column generation for atomic norm regularization"
+        },
+        {
+            "paperId": "08a426042c9926419198ee22c9bf80e6e4b5791b",
+            "title": "Soft-DTW: a Differentiable Loss Function for Time-Series"
+        },
+        {
+            "paperId": "222c23cba96dd487eee0722d3d302cc97e70d18e",
+            "title": "Inside-Outside and Forward-Backward Algorithms Are Just Backprop (tutorial paper)"
+        },
+        {
+            "paperId": "9610ec402a1205cdad534ca7402d6e269e35fd07",
+            "title": "Regularized Optimal Transport and the Rot Mover's Distance"
+        },
+        {
+            "paperId": "5ad5838f1c6d6ce0c9f6ae53be8d9dd26a82f659",
+            "title": "Efficient Bregman Projections onto the Permutahedron and Related Polytopes"
+        },
+        {
+            "paperId": "d115eceab7153d2a1dc6fbf6b99c3bdf1b0cdd46",
+            "title": "Universal Dependencies v1: A Multilingual Treebank Collection"
+        },
+        {
+            "paperId": "eec3a236ecd185712ce65fb336141f8656eea13d",
+            "title": "Simple and Accurate Dependency Parsing Using Bidirectional LSTM Feature Representations"
+        },
+        {
+            "paperId": "f5a7da72496e2ca8edcd9f9123773012c010cfc6",
+            "title": "Neural Architectures for Named Entity Recognition"
+        },
+        {
+            "paperId": "be754d05404b1ec24fa14a5b2219a6b821dbf0dd",
+            "title": "Multiclass classification, information, divergence and surrogate risk"
+        },
+        {
+            "paperId": "c1e3a26fb88c6720f4e84b7118e6f2df7dc8efa3",
+            "title": "From Softmax to Sparsemax: A Sparse Model of Attention and Multi-Label Classification"
+        },
+        {
+            "paperId": "6c986b56a76a8b61f11615cd03442bb895dbeb6e",
+            "title": "Efficient Bregman projections onto the simplex"
+        },
+        {
+            "paperId": "21ffd44e545b82c843c89c1793e90c8a8817fc1d",
+            "title": "Top-k Multiclass SVM"
+        },
+        {
+            "paperId": "8b56449fa9aeadcf86181697e9ec2269419d8817",
+            "title": "On the Global Linear Convergence of Frank-Wolfe Optimization Variants"
+        },
+        {
+            "paperId": "ccf9b939330f73d7f87d3d606349c3352bf2713d",
+            "title": "Barrier Frank-Wolfe for Marginal Inference"
+        },
+        {
+            "paperId": "c1626528298f39c11834a66b34e21f645e46690c",
+            "title": "Fast projection onto the simplex and the l1\\documentclass[12pt]{minimal} \\usepackage{amsmath} \\usepackage{wasysym} \\usepackage{amsfonts} \\usepackage{amssymb} \\usepackage{amsbsy} \\usepackage{mathrsfs} \\usepackage{upgreek} \\setlength{\\oddsidemargin}{-69pt} \\begin{document}$$\\pmb {l}_\\mathbf {1}$$\\end{"
+        },
+        {
+            "paperId": "3dba006990a306420dcde24bdd48420def1c7e17",
+            "title": "Sequential Kernel Herding: Frank-Wolfe Optimization for Particle Filtering"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "46971770f947ded5d1ad22012c720fcd7cc08a56",
+            "title": "Orbit Regularization"
+        },
+        {
+            "paperId": "ace8de3be77302f1d2932a2a2e5e49c37d811447",
+            "title": "Convex foundations for generalized MaxEnt models"
+        },
+        {
+            "paperId": "2f168528dd77998bb3648efccb194f99a7ec5d79",
+            "title": "Metric Learning for Temporal Sequence Alignment"
+        },
+        {
+            "paperId": "4daec165c1f4aa1206b0d91c0b26f0287d1ef52d",
+            "title": "SAGA: A Fast Incremental Gradient Method With Support for Non-Strongly Convex Composite Objectives"
+        },
+        {
+            "paperId": "680e3de379ca4613fbe5a5d0e09d3028ffaad573",
+            "title": "On learning to localize objects with minimal supervision"
+        },
+        {
+            "paperId": "ec85dfb942debaea73f54f934e9a3d80d3a3636d",
+            "title": "Bandit online optimization over the permutahedron"
+        },
+        {
+            "paperId": "d9bdff5eac0d0d1ebd8d09960f195b838ce16f4e",
+            "title": "Accelerated proximal stochastic dual coordinate ascent for regularized loss minimization"
+        },
+        {
+            "paperId": "961eabeaebd7035cd7668c9917fa9c39462e1113",
+            "title": "Revisiting Frank-Wolfe: Projection-Free Sparse Convex Optimization"
+        },
+        {
+            "paperId": "0080118b0eb02af581ff32b85a1bb6aed7081f45",
+            "title": "Sinkhorn Distances: Lightspeed Computation of Optimal Transport"
+        },
+        {
+            "paperId": "9f4f30780d9aa3ec21b5fd0c2d669ceb05178c07",
+            "title": "Information geometry and its applications"
+        },
+        {
+            "paperId": "2134cb9a1279b199e9756f7d939ae8383a0f5081",
+            "title": "Multiclass Learning with Simplex Coding"
+        },
+        {
+            "paperId": "b832e1ce81132533c01c2170a88009673d902fa9",
+            "title": "Block-Coordinate Frank-Wolfe Optimization for Structural SVMs"
+        },
+        {
+            "paperId": "07b60016c9931075c74e933b84e0fc043f40f395",
+            "title": "Online Prediction under Submodular Constraints"
+        },
+        {
+            "paperId": "ce22bbb46de506de554b96f32f3e7f7d30304fe9",
+            "title": "Sparse projections onto the simplex"
+        },
+        {
+            "paperId": "9df16ee1828f8d46cfc6c817dfef540f4c1af51e",
+            "title": "Smoothing and First Order Methods: A Unified Framework"
+        },
+        {
+            "paperId": "6f0aef1646a83f81029204794c1950d61388ab9f",
+            "title": "On the Equivalence between Herding and Conditional Gradient Algorithms"
+        },
+        {
+            "paperId": "225f78ae8a44723c136646044fd5c5d7f1d3d15a",
+            "title": "A Kernel Two-Sample Test"
+        },
+        {
+            "paperId": "8babd9c1243af3edc3884a4c491c26e1c3292924",
+            "title": "Composite Multiclass Losses"
+        },
+        {
+            "paperId": "3a6f0f3ce52fd547cb37a1ecc6c031171442f2c6",
+            "title": "On NDCG Consistency of Listwise Ranking Methods"
+        },
+        {
+            "paperId": "6fe9627bda9c8de82720614b6519c3760e4f695c",
+            "title": "Learning with Kernels"
+        },
+        {
+            "paperId": "8af74907c5d0b825c3e9419da64903f614aefd7c",
+            "title": "Convex Analysis and Monotone Operator Theory in Hilbert Spaces"
+        },
+        {
+            "paperId": "bc1022b031dc6c7019696492e8116598097a8c12",
+            "title": "Natural Language Processing (Almost) from Scratch"
+        },
+        {
+            "paperId": "8a0ba3ac7b1f8a07b8f6c6273d796e79c4b23736",
+            "title": "A Primal-Dual Convergence Analysis of Boosting"
+        },
+        {
+            "paperId": "65311ed8bb113763b747ea4ac7baed97ef3623c3",
+            "title": "On the equivalence of weak learnability and linear separability: new relaxations and efficient boosting algorithms"
+        },
+        {
+            "paperId": "62aa502beefaef48af6631e0adb4463ca823cc56",
+            "title": "On the Consistency of Ranking Algorithms"
+        },
+        {
+            "paperId": "3b3d08cd37320ef91304118412d67cc2de2e356a",
+            "title": "Softmax-Margin CRFs: Training Log-Linear Models with Cost Functions"
+        },
+        {
+            "paperId": "0b14178e7d79ac426d0a39700e1ac8b2c6f2e752",
+            "title": "Convex Optimization"
+        },
+        {
+            "paperId": "c41b4357b315e1196f13fd1d966309cc0024326f",
+            "title": "Bregman Divergences and Surrogates for Learning"
+        },
+        {
+            "paperId": "60df78bc14265d4b87ae5993d6b5781ccf7ec5d8",
+            "title": "Concise Integer Linear Programming Formulations for Dependency Parsing"
+        },
+        {
+            "paperId": "8f97634fb20a5ca9b3ea8e8c028b0e22df05cf45",
+            "title": "Ranking with ordered weighted pairwise classification"
+        },
+        {
+            "paperId": "3f98509bc03f7f4e1ad94312017bd48cf32a3914",
+            "title": "On the Dual Formulation of Boosting Algorithms"
+        },
+        {
+            "paperId": "10d6987cba3dfb696990df7f1f5727a38b98e78e",
+            "title": "Information, Divergence and Risk for Binary Experiments"
+        },
+        {
+            "paperId": "d98d0d1900b13b87aa4ffd6b69c046beb63f0434",
+            "title": "Graphical Models, Exponential Families, and Variational Inference"
+        },
+        {
+            "paperId": "ae6e206c8c2994e04c3fdc5bd97d81fdd0f27493",
+            "title": "On the Complexity of Linear Prediction: Risk Bounds, Margin Bounds, and Regularization"
+        },
+        {
+            "paperId": "db1ebbf72e6b3097ec5cc1f853ab9c975454ea39",
+            "title": "Mind the Duality Gap: Logarithmic regret algorithms for online optimization"
+        },
+        {
+            "paperId": "ed7c7c079c8c54d3b82e016cc52a7a2c3a61f237",
+            "title": "Efficient projections onto the l1-ball for learning in high dimensions"
+        },
+        {
+            "paperId": "64e9a50ebaa20fb34414c3fd0668bfef93e2366c",
+            "title": "Sparse Reconstruction by Separable Approximation"
+        },
+        {
+            "paperId": "1da3495d34bd518f72f5208bb0fe005826a315ce",
+            "title": "VC Theory of Large Margin Multi-Category Classifiers"
+        },
+        {
+            "paperId": "4502543533659ea4ee7dc4aa97e967eb523761ee",
+            "title": "On the Consistency of Multiclass Classification Methods"
+        },
+        {
+            "paperId": "3d0f3f4af77b156351d230f25854275756739216",
+            "title": "Learning Permutations with Exponential Weights"
+        },
+        {
+            "paperId": "2f73168a5fd8658166f7882d0621c6cbbabe9fd3",
+            "title": "Structured Prediction Models via the Matrix-Tree Theorem"
+        },
+        {
+            "paperId": "5fd5ab03ca26ff796d6c17db5aa49dc4caa31c70",
+            "title": "Probabilistic Models of Nonprojective Dependency Trees"
+        },
+        {
+            "paperId": "1caeddb73d1ab51e283c201dcfad5d634000e5c2",
+            "title": "Value Regularization and Fenchel Duality"
+        },
+        {
+            "paperId": "6bbd8fc39487249bd1b6886e4dc763550877b758",
+            "title": "Strictly Proper Scoring Rules, Prediction, and Estimation"
+        },
+        {
+            "paperId": "2854f89db06b8c4dc499591947d87c3ef2d47ffa",
+            "title": "Convex Repeated Games and Fenchel Duality"
+        },
+        {
+            "paperId": "1c1ea4eaf2c5ec2fb55debcbfa2bc8c07a821435",
+            "title": "Convexity, Classification, and Risk Bounds"
+        },
+        {
+            "paperId": "dc97e7dbb821a4edfb5151bff4352655eedca9ee",
+            "title": "Large Margin Methods for Structured and Interdependent Output Variables"
+        },
+        {
+            "paperId": "f312852b31a76bc09b59aca6e4017a9382f9cb39",
+            "title": "Clustering with Bregman Divergences"
+        },
+        {
+            "paperId": "936d36404165a724f90e4483eee34e65c28feeb1",
+            "title": "Non-Projective Dependency Parsing using Spanning Tree Algorithms"
+        },
+        {
+            "paperId": "8d56b2a75aa5624660b60787e1f38ee2c70d493a",
+            "title": "Learning structured prediction models: a large margin approach"
+        },
+        {
+            "paperId": "8e6c6086ea725737aa6081a57ea68d43a24ca3b9",
+            "title": "Smooth minimization of non-smooth functions"
+        },
+        {
+            "paperId": "8c44749c8496a82512047aad0fd5e31e1b979d6a",
+            "title": "In Defense of One-Vs-All Classification"
+        },
+        {
+            "paperId": "eb6e94817bc64429adfc786574696d6dea633939",
+            "title": "Game theory, maximum entropy, minimum discrepancy and robust Bayesian decision theory"
+        },
+        {
+            "paperId": "5a59da819ddfe6467bffd1798f669acf1f940e25",
+            "title": "Generalization of Shannon-Khinchin axioms to nonextensive systems and the uniqueness theorem for the nonextensive entropy"
+        },
+        {
+            "paperId": "9761fec71c7c525c75ed27445606fc451560da24",
+            "title": "Nonextensive Entropy: Interdisciplinary Applications"
+        },
+        {
+            "paperId": "7678da8b2eb70a5383f203d948564d8f48c0c62a",
+            "title": "Statistical behavior and consistency of classification methods based on convex risk minimization"
+        },
+        {
+            "paperId": "ef8772242235273359511b139691f2f88eb5e87a",
+            "title": "Generalized Linear Models"
+        },
+        {
+            "paperId": "cfd4259d305a00f13d5f08841230389f61322422",
+            "title": "Optimizing search engines using clickthrough data"
+        },
+        {
+            "paperId": "5a7958b418bceb48a315384568091ab1898b1640",
+            "title": "Discriminative Training Methods for Hidden Markov Models: Theory and Experiments with Perceptron Algorithms"
+        },
+        {
+            "paperId": "cfc6d0c8260594ebc5dd20ee558d29b1014ed41a",
+            "title": "On the Algorithmic Implementation of Multiclass Kernel-based Vector Machines"
+        },
+        {
+            "paperId": "f4ba954b0412773d047dc41231c733de0c1f4926",
+            "title": "Conditional Random Fields: Probabilistic Models for Segmenting and Labeling Sequence Data"
+        },
+        {
+            "paperId": "efe5519409c823737c75e0826ae00efa325f7721",
+            "title": "Convex Analysis And Nonlinear Optimization"
+        },
+        {
+            "paperId": "1267fe36b5ece49a9d8f913eb67716a040bbcced",
+            "title": "On the limited memory BFGS method for large scale optimization"
+        },
+        {
+            "paperId": "b20c0758a38bd5a4083f64eff53af924499a8e29",
+            "title": "Possible generalization of Boltzmann-Gibbs statistics"
+        },
+        {
+            "paperId": "6398f2a25cb985ee48e985314510b9f16b708397",
+            "title": "On ordered weighted averaging aggregation operators in multicriteria decisionmaking"
+        },
+        {
+            "paperId": "ccbe40d7e91e451d10069d1f1b0e7989af528644",
+            "title": "A shortest augmenting path algorithm for dense and sparse linear assignment problems"
+        },
+        {
+            "paperId": "0363376e26eaa8070fa2f0f158c0aaacee5b4097",
+            "title": "Review of recent development: An O( n) algorithm for quadratic knapsack problems"
+        },
+        {
+            "paperId": "90c05a30cd36269b90d772ca35471f823d4de057",
+            "title": "Information and Exponential Families in Statistical Theory"
+        },
+        {
+            "paperId": "18f355d7ef4aa9f82bf5c00f84e46714efa5fd77",
+            "title": "Dynamic programming algorithm optimization for spoken word recognition"
+        },
+        {
+            "paperId": "80216d7ae014fe9325857f4f2bb541230ae7afee",
+            "title": "Conditional gradient algorithms with open loop step size rules"
+        },
+        {
+            "paperId": "051149a8858877820e1a272c925f9d9379aa1502",
+            "title": "Finding the nearest point in A polytope"
+        },
+        {
+            "paperId": "72b2aeeb76dbff312321ccbcc58e85009e0b57ae",
+            "title": "$I$-Divergence Geometry of Probability Distributions and Minimization Problems"
+        },
+        {
+            "paperId": "0763865ef0555d4b24c3802f8110313a3abedb6c",
+            "title": "Elicitation of Personal Probabilities and Expectations"
+        },
+        {
+            "paperId": "8da8dcc203430464bf55980c12bf555df052505b",
+            "title": "Diversity of Planktonic Foraminifera in Deep-Sea Sediments"
+        },
+        {
+            "paperId": "70e0d2487440b519b392503f4fa6b94891238c90",
+            "title": "Concerning nonnegative matrices and doubly stochastic matrices"
+        },
+        {
+            "paperId": "145c0b53514b02bdc3dadfb2e1cea124f2abd99b",
+            "title": "Error bounds for convolutional codes and an asymptotically optimum decoding algorithm"
+        },
+        {
+            "paperId": "603bdbb17ba1f909280405a076455ac4f878fbf3",
+            "title": "Statistical Inference for Probabilistic Functions of Finite State Markov Chains"
+        },
+        {
+            "paperId": "7878499969cec365c14d129c9ea14a2967653407",
+            "title": "The Theory of Max-Min, with Applications"
+        },
+        {
+            "paperId": "0a4a3b1efafb09be3f97061dba18eea2116ad4b2",
+            "title": "Uncertainty, Information, and Sequential Experiments"
+        },
+        {
+            "paperId": "5d11aad09f65431b5d3cb1d85328743c9e53ba96",
+            "title": "The perceptron: a probabilistic model for information storage and organization in the brain."
+        },
+        {
+            "paperId": "37ae0ead03605de4c72f6d77af19b9001c0937f9",
+            "title": "An algorithm for quadratic programming"
+        },
+        {
+            "paperId": "b6a0f30260302a2001da9999096cfdd89bc1f7fb",
+            "title": "The Hungarian method for the assignment problem"
+        },
+        {
+            "paperId": "aecf46bca84b4854e725f1458f107c435d81ff6e",
+            "title": "Variabilita e Mutabilita."
+        },
+        {
+            "paperId": null,
+            "title": "Speech and Language Processing (3rd ed.)"
+        },
+        {
+            "paperId": "ea40fba2dc52bde32dedd45b05f83d27dc2ea6c7",
+            "title": "Tokenizing, POS Tagging, Lemmatizing and Parsing UD 2.0 with UDPipe"
+        },
+        {
+            "paperId": "2676540843915141bcbb046a3f89da954f43bc09",
+            "title": "On Measures of Entropy and Information"
+        },
+        {
+            "paperId": "38280a89a306389282404fcdbbaf9682649b3526",
+            "title": "Marginal Inference in MRFs using Frank-Wolfe"
+        },
+        {
+            "paperId": "94e45cd3097e249840fea686a2092e8d6010d49a",
+            "title": "THE GENERALIZED SIMPLEX METHOD FOR MINIMIZING A LINEAR FORM UNDER LINEAR INEQUALITY RESTRAINTS"
+        },
+        {
+            "paperId": "73a91e80d0e57c177e90e43e04a7340d54804c6b",
+            "title": "Online Linear Optimization over Permutations"
+        },
+        {
+            "paperId": "a8697665a7545e5af460a11112afdab7c2332124",
+            "title": "The design of Bayes consistent loss functions for classification"
+        },
+        {
+            "paperId": null,
+            "title": "Nonextensive information theoretic kernels on"
+        },
+        {
+            "paperId": "3c718363c22221fd16771672da3bfd5f67d2c34c",
+            "title": "A Fast Iterative Shrinkage-Thresholding Algorithm for Linear Inverse Problems"
+        },
+        {
+            "paperId": "5e4b3058c489dfed6bf481722e1c56d36c3c9402",
+            "title": "Randomized Online PCA Algorithms with Regret Bounds that are Logarithmic in the Dimension"
+        },
+        {
+            "paperId": "75a4cb6cf9b157325aa4ae362f2de6698727b58c",
+            "title": "ON SURROGATE LOSS FUNCTIONS AND f -DIVERGENCES 1"
+        },
+        {
+            "paperId": "6d12a1d23b21a9b170118a56386552bc5d4727de",
+            "title": "A Mathematical Theory of Communication"
+        },
+        {
+            "paperId": "d6706b6e626c15680688b0774419662f2341caee",
+            "title": "Loss Functions for Binary Class Probability Estimation and Classification: Structure and Applications"
+        },
+        {
+            "paperId": "9fb015b1666ae5d99492e7bc8ce2ea6019bd324f",
+            "title": "Cyberterrorism?"
+        },
+        {
+            "paperId": "c87d57da3b1f2b467ef4995d30df832ee2281107",
+            "title": "On robust estimation of the location parameter"
+        },
+        {
+            "paperId": "9c188b3291a7e83d667764be3377a99e15b4d988",
+            "title": "The Complexity of Computing the Permanent"
+        },
+        {
+            "paperId": "44a6b76e5cbc61330663d0a9f393caf91a3a1be8",
+            "title": "The relaxation method of finding the common point of convex sets and its application to the solution of problems in convex programming"
+        },
+        {
+            "paperId": null,
+            "title": "Optimum branchings"
+        },
+        {
+            "paperId": "22f68108d30112fcc6c5ba86ba79868e61f94f41",
+            "title": "Proximit\u00e9 et dualit\u00e9 dans un espace hilbertien"
+        },
+        {
+            "paperId": "b0d3ae537a926245cfa6686383cd2ec4375d616d",
+            "title": "PSEUDO-CONVEX FUNCTIONS"
+        },
+        {
+            "paperId": null,
+            "title": "On the shortest arborescence of a directed graph"
+        },
+        {
+            "paperId": "feee6551179612b9691f021b583d8a99b81b9b86",
+            "title": "VERIFICATION OF FORECASTS EXPRESSED IN TERMS OF PROBABILITY"
+        },
+        {
+            "paperId": null,
+            "title": "Tres observaciones sobre el algebra lineal"
+        },
+        {
+            "paperId": "ac59d1818ba8b37266a9ddce9095f74fa93f4c20",
+            "title": "Ueber die Aufl\u00f6sung der Gleichungen, auf welche man bei der Untersuchung der linearen Vertheilung galvanischer Str\u00f6me gef\u00fchrt wird"
+        },
+        {
+            "paperId": "a6f32ef525241d569953e4ab3830712968dcc4b0",
+            "title": "25th Annual Conference on Learning Theory Divergences and Risks for Multiclass Experiments"
+        }
+    ]
+}

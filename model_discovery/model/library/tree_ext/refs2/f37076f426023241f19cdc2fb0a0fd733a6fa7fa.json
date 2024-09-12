@@ -1,0 +1,187 @@
+{
+    "paperId": "f37076f426023241f19cdc2fb0a0fd733a6fa7fa",
+    "externalIds": {
+        "MAG": "2341401723",
+        "ArXiv": "1602.06023",
+        "ACL": "K16-1028",
+        "DBLP": "conf/conll/NallapatiZSGX16",
+        "DOI": "10.18653/v1/K16-1028",
+        "CorpusId": 8928715
+    },
+    "title": "Abstractive Text Summarization using Sequence-to-sequence RNNs and Beyond",
+    "abstract": "In this work, we model abstractive text summarization using Attentional Encoder-Decoder Recurrent Neural Networks, and show that they achieve state-of-the-art performance on two different corpora. We propose several novel models that address critical problems in summarization that are not adequately modeled by the basic architecture, such as modeling key-words, capturing the hierarchy of sentence-to-word structure, and emitting words that are rare or unseen at training time. Our work shows that many of our proposed models contribute to further improvement in performance. We also propose a new dataset consisting of multi-sentence summaries, and establish performance benchmarks for further research.",
+    "venue": "Conference on Computational Natural Language Learning",
+    "year": 2016,
+    "referenceCount": 34,
+    "citationCount": 2327,
+    "influentialCitationCount": 323,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/K16-1028.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes several novel models that address critical problems in summarization that are not adequately modeled by the basic architecture, such as modeling key-words, capturing the hierarchy of sentence-to-word structure, and emitting words that are rare or unseen at training time."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1701451",
+            "name": "Ramesh Nallapati"
+        },
+        {
+            "authorId": "145218984",
+            "name": "Bowen Zhou"
+        },
+        {
+            "authorId": "1790831",
+            "name": "C. D. Santos"
+        },
+        {
+            "authorId": "1854385",
+            "name": "\u00c7aglar G\u00fcl\u00e7ehre"
+        },
+        {
+            "authorId": "144028698",
+            "name": "Bing Xiang"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "2f160ce71f01ac2043de67536ff0e413ff6f58c5",
+            "title": "Temporal Attention Model for Neural Machine Translation"
+        },
+        {
+            "paperId": "7a67159fc7bc76d0b37930b55005a69b51241635",
+            "title": "Abstractive Sentence Summarization with Attentive Recurrent Neural Networks"
+        },
+        {
+            "paperId": "aa5b35dcf8b024f5352db73cc3944e8fad4f3793",
+            "title": "Pointing the Unknown Words"
+        },
+        {
+            "paperId": "29a294eaec7b485245aa21d994f7300f6b5da8fc",
+            "title": "Neural Summarization by Extracting Sentences and Words"
+        },
+        {
+            "paperId": "221ef0a2f185036c06f9fb089109ded5c888c4c6",
+            "title": "Sequence-to-Sequence RNNs for Text Summarization"
+        },
+        {
+            "paperId": "13fe71da009484f240c46f14d9330e932f8de210",
+            "title": "Long Short-Term Memory-Networks for Machine Reading"
+        },
+        {
+            "paperId": "1ac30af5522c7a50ec4d1ee43fd2bd8652a9bd52",
+            "title": "A Neural Attention Model for Abstractive Sentence Summarization"
+        },
+        {
+            "paperId": "878ba5458e9e51f0b341fd9117fa0b43ef4096d3",
+            "title": "End-to-end attention-based large vocabulary speech recognition"
+        },
+        {
+            "paperId": "b122a828f5fee3c6afc54e70f41b00184d6383fc",
+            "title": "LCSTS: A Large Scale Chinese Short Text Summarization Dataset"
+        },
+        {
+            "paperId": "d1505c6123c102e53eb19dff312cb25cea840b72",
+            "title": "Teaching Machines to Read and Comprehend"
+        },
+        {
+            "paperId": "9653d5c2c7844347343d073bbedd96e05d52f69b",
+            "title": "Pointer Networks"
+        },
+        {
+            "paperId": "b21c78a62fbb945a19ae9a8935933711647e7d70",
+            "title": "A Hierarchical Neural Autoencoder for Paragraphs and Documents"
+        },
+        {
+            "paperId": "e58a110fa1e4ddf247d5c614d117d64bfbe135c4",
+            "title": "Sequence to Sequence -- Video to Text"
+        },
+        {
+            "paperId": "ac3ee98020251797c2b401e1389461df88e52e62",
+            "title": "Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling"
+        },
+        {
+            "paperId": "1938624bb9b0f999536dcc8d8f519810bb4e1b3b",
+            "title": "On Using Very Large Target Vocabulary for Neural Machine Translation"
+        },
+        {
+            "paperId": "1956c239b3552e030db1b78951f64781101125ed",
+            "title": "Addressing the Rare Word Problem in Neural Machine Translation"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "5f176a929d9eaa569b430cb784280802cf8fca79",
+            "title": "Overcoming the Lack of Parallel Data in Sentence Compression"
+        },
+        {
+            "paperId": "5aec25faf4d02fc3b4c3470dd0085479fb14ed7e",
+            "title": "Self reinforcement for important passage retrieval"
+        },
+        {
+            "paperId": "8729441d734782c3ed532a7d2d9611b438c0a09a",
+            "title": "ADADELTA: An Adaptive Learning Rate Method"
+        },
+        {
+            "paperId": "bc1022b031dc6c7019696492e8116598097a8c12",
+            "title": "Natural Language Processing (Almost) from Scratch"
+        },
+        {
+            "paperId": "b6103f9f466e23c4897f47b4cc427fae29d6333d",
+            "title": "Title Generation with Quasi-Synchronous Grammar"
+        },
+        {
+            "paperId": "f147ee441e8229b817d7d8a68847131231f26df7",
+            "title": "Long story short - Global unsupervised models for keyphrase based meeting summarization"
+        },
+        {
+            "paperId": "f7fe3f870ef5e1a74600c8808c07732cd2e5142d",
+            "title": "Graph-Based Keyword Extraction for Single-Document Summarization"
+        },
+        {
+            "paperId": "9c818fe59a76b242dcca62579bd353fe9cf01c0d",
+            "title": "Sentence Compression Beyond Word Deletion"
+        },
+        {
+            "paperId": "d0c92b106f758b045643a1ea8a82864bece2bfb6",
+            "title": "Extractive Summarization Using Supervised and Semi-Supervised Learning"
+        },
+        {
+            "paperId": "44fca068eecce2203d111213e3691647914a3945",
+            "title": "LexRank: Graph-based Lexical Centrality as Salience in Text Summarization"
+        },
+        {
+            "paperId": "30e128568200e6777dc629bc6fb2fb95833aa98c",
+            "title": "Automatic Text Summarization Using a Machine Learning Approach"
+        },
+        {
+            "paperId": "9d08213ede54c4e205d18b4400288831af918ec8",
+            "title": "Headline Generation Based on Statistical Translation"
+        },
+        {
+            "paperId": "a9614b05461bb306cc47c8cd645b9b67bb1227ba",
+            "title": "HEADS: Headline Generation as Sequence Prediction Using an Abstract Feature-Rich Space"
+        },
+        {
+            "paperId": null,
+            "title": "Fortunato, and N. Jaitly. 2015. Pointer Networks. ArXiv e-prints"
+        },
+        {
+            "paperId": null,
+            "title": "Dmitriy Serdyuk, Philemon Brakel, and Yoshua Bengio"
+        },
+        {
+            "paperId": "462886d6616c358d627fc3690ed78990a94900e3",
+            "title": "BBN/UMD at DUC-2004: Topiary"
+        }
+    ]
+}

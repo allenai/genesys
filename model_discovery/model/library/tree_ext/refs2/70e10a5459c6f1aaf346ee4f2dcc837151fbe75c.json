@@ -1,0 +1,101 @@
+{
+    "paperId": "70e10a5459c6f1aaf346ee4f2dcc837151fbe75c",
+    "externalIds": {
+        "DBLP": "journals/jmlr/RossB10",
+        "MAG": "2142641780",
+        "CorpusId": 8498625
+    },
+    "title": "Efficient Reductions for Imitation Learning",
+    "abstract": "Imitation Learning, while applied successfully on many large real-world problems, is typically addressed as a standard supervised learning problem, where it is assumed the training and testing data are i.i.d.. This is not true in imitation learning as the learned policy influences the future test inputs (states) upon which it will be tested. We show that this leads to compounding errors and a regret bound that grows quadratically in the time horizon of the task. We propose two alternative algorithms for imitation learning where training occurs over several episodes of interaction. These two approaches share in common that the learner\u2019s policy is slowly modified from executing the expert\u2019s policy to the learned policy. We show that this leads to stronger performance guarantees and demonstrate the improved performance on two challenging problems: training a learner to play 1) a 3D racing game (Super Tux Kart) and 2) Mario Bros.; given input images from the games and corresponding actions taken by a human expert and near-optimal planner respectively.",
+    "venue": "International Conference on Artificial Intelligence and Statistics",
+    "year": 2010,
+    "referenceCount": 17,
+    "citationCount": 798,
+    "influentialCitationCount": 73,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes two alternative algorithms for imitation learning where training occurs over several episodes of interaction and shows that this leads to stronger performance guarantees and improved performance on two challenging problems: training a learner to play a 3D racing game and Mario Bros."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1700433",
+            "name": "St\u00e9phane Ross"
+        },
+        {
+            "authorId": "72545155",
+            "name": "Drew Bagnell"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "e40a0969aac73d50485c05de7f1c0ab081d77028",
+            "title": "Interactive Policy Learning through Confidence-Based Autonomy"
+        },
+        {
+            "paperId": "0a63cca6749d5a6f20e779c315a0b07d91c3c977",
+            "title": "Mario AI competition"
+        },
+        {
+            "paperId": "526e22c130b18924976553d29ba11bc9d898d58b",
+            "title": "Search-based structured prediction"
+        },
+        {
+            "paperId": "251635bcb60d730d17391d54f418e01c787791bb",
+            "title": "High Performance Outdoor Navigation from Overhead Data using Imitation Learning"
+        },
+        {
+            "paperId": "a9452a000f05bc6c52bf8d2e34e086fc60fa1999",
+            "title": "Boosting Structured Prediction for Imitation Learning"
+        },
+        {
+            "paperId": "1521e475bc6d8ed07c95a46ec099377a8584ba7d",
+            "title": "Error limiting reductions between classification tasks"
+        },
+        {
+            "paperId": "89c2b3bfcc309ce16c85d2ab0c8cac5295400715",
+            "title": "Stacked Sequential Learning"
+        },
+        {
+            "paperId": "f65020fc3b1692d7989e099d6b6e698be5a50a93",
+            "title": "Apprenticeship learning via inverse reinforcement learning"
+        },
+        {
+            "paperId": "523b4ce1c2a1336962444abc1dec215756c2f3e6",
+            "title": "Approximately Optimal Approximate Reinforcement Learning"
+        },
+        {
+            "paperId": "f69e05a32fd1541bb41d981bdb013366c9150a85",
+            "title": "Is imitation learning the route to humanoid robots?"
+        },
+        {
+            "paperId": "a9cd8efe9184dddb1bedbbec3a356c4dfb22fe63",
+            "title": "Markov Decision Processes: Discrete Stochastic Dynamic Programming"
+        },
+        {
+            "paperId": "54d47af5a99eb31ce0d9b38edd0d03022be34841",
+            "title": "Robotics and autonomous systems"
+        },
+        {
+            "paperId": null,
+            "title": "Comparison of Supervised Learning and SMILe for Imitation Learning in Mario Bros"
+        },
+        {
+            "paperId": null,
+            "title": "Sparse NN library"
+        },
+        {
+            "paperId": null,
+            "title": "Lower bounds for reductions. Atomic Learning workshop"
+        },
+        {
+            "paperId": null,
+            "title": "Machine Learning"
+        },
+        {
+            "paperId": "4bc7a6dcb9e0e6c7a26800532e2a00f5572eea47",
+            "title": "Learning to Play the Game of Chess"
+        }
+    ]
+}

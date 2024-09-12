@@ -1,0 +1,162 @@
+{
+    "paperId": "08fbb1b4cfdc83977d2c8f08bdfb663f13c0e60a",
+    "externalIds": {
+        "DBLP": "journals/corr/abs-1802-06467",
+        "ArXiv": "1802.06467",
+        "MAG": "2788751659",
+        "CorpusId": 3355934
+    },
+    "title": "Memorize or generalize? Searching for a compositional RNN in a haystack",
+    "abstract": "Neural networks are very powerful learning systems, but they do not readily generalize from one task to the other. This is partly due to the fact that they do not learn in a compositional way, that is, by discovering skills that are shared by different tasks, and recombining them to solve new problems. In this paper, we explore the compositional generalization capabilities of recurrent neural networks (RNNs). We first propose the lookup table composition domain as a simple setup to test compositional behaviour and show that it is theoretically possible for a standard RNN to learn to behave compositionally in this domain when trained with standard gradient descent and provided with additional supervision. We then remove this additional supervision and perform a search over a large number of model initializations to investigate the proportion of RNNs that can still converge to a compositional solution. We discover that a small but non-negligible proportion of RNNs do reach partial compositional solutions even without special architectural constraints. This suggests that a combination of gradient descent and evolutionary strategies directly favouring the minority models that developed more compositional approaches might suffice to lead standard RNNs towards compositional solutions.",
+    "venue": "arXiv.org",
+    "year": 2018,
+    "referenceCount": 31,
+    "citationCount": 75,
+    "influentialCitationCount": 7,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes the lookup table composition domain as a simple setup to test compositional behaviour and shows that it is theoretically possible for a standard RNN to learn to behave compositionally in this domain when trained with standard gradient descent and provided with additional supervision."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145269663",
+            "name": "Adam Liska"
+        },
+        {
+            "authorId": "2067996",
+            "name": "Germ\u00e1n Kruszewski"
+        },
+        {
+            "authorId": "145283199",
+            "name": "Marco Baroni"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "37b5980cf1a202fbec2fec28b831b0f90b8d217a",
+            "title": "Learning to Compose Skills"
+        },
+        {
+            "paperId": "4e4cae6d93a1c2bdc2ac0fa2810a270052378fe2",
+            "title": "Extracting Automata from Recurrent Neural Networks Using Queries and Counterexamples"
+        },
+        {
+            "paperId": "856fe866bcce5e7a540655bea6ecc7406bdcfcba",
+            "title": "Generalization without Systematicity: On the Compositional Skills of Sequence-to-Sequence Recurrent Networks"
+        },
+        {
+            "paperId": "eecab00a7c6d58792ec5e620ab1fc37043545a14",
+            "title": "Still not systematic after all these years: On the compositional skills of sequence-to-sequence recurrent networks"
+        },
+        {
+            "paperId": "a396a6febdacb84340d139096455e67049ac1e22",
+            "title": "Learning to Reason: End-to-End Module Networks for Visual Question Answering"
+        },
+        {
+            "paperId": "ac3b0a08163a0fdd7c43f37502d02411eae0abc0",
+            "title": "Born to Learn: the Inspiration, Progress, and Future of Evolved Plastic Artificial Neural Networks"
+        },
+        {
+            "paperId": "03eb382e04cca8cca743f7799070869954f1402a",
+            "title": "CLEVR: A Diagnostic Dataset for Compositional Language and Elementary Visual Reasoning"
+        },
+        {
+            "paperId": "3a13f7c43b767b1fb72ef107ef62a4ddd48dd2a7",
+            "title": "Modular Multitask Reinforcement Learning with Policy Sketches"
+        },
+        {
+            "paperId": "e124f8ded570f5a100a0b540bfe3913df0f56608",
+            "title": "Compositional Reasoning in Early Childhood"
+        },
+        {
+            "paperId": "0bd373acdd3c3596d67db5dd544d9176dfd7ee9f",
+            "title": "Probing the Compositionality of Intuitive Functions"
+        },
+        {
+            "paperId": "5f0625c30014c12f333eb518268647673d18f9f1",
+            "title": "What can the brain teach us about building artificial intelligence?"
+        },
+        {
+            "paperId": "98ea4abc9bf0e30eb020db2075c9c8a039a848a3",
+            "title": "Learning to Compose Neural Networks for Question Answering"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "467568f1777bc51a15a5100516cd4fe8de62b9ab",
+            "title": "Transfer Learning for Reinforcement Learning Domains: A Survey"
+        },
+        {
+            "paperId": "beaca3493aed271bdfc42490fd22dd11cb40ce0e",
+            "title": "The faculty of language: what is it, who has it, and how did it evolve?"
+        },
+        {
+            "paperId": "d03c916d49268d48fde3b76a68e64af7761835e7",
+            "title": "Evolving Neural Networks through Augmenting Topologies"
+        },
+        {
+            "paperId": "0e7638dc16a5e5e9e46c91272bfb9c3dd242ef6d",
+            "title": "Between MDPs and Semi-MDPs: A Framework for Temporal Abstraction in Reinforcement Learning"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "872cdc269f3cb59f8a227818f35041415091545f",
+            "title": "Learning and Extracting Finite State Automata with Second-Order Recurrent Neural Networks"
+        },
+        {
+            "paperId": "5d68d1462966920e1c67702f47314e6403f7ab62",
+            "title": "Marvin Minsky, The Society of Mind"
+        },
+        {
+            "paperId": "668087f0ae7ce1de6e0bd0965dbb480c08103260",
+            "title": "Finding Structure in Time"
+        },
+        {
+            "paperId": "56cbfcbfffd8c54bd8477d10b6e0e17e097b97c7",
+            "title": "Connectionism and cognitive architecture: A critical analysis"
+        },
+        {
+            "paperId": "4f8d648c52edf74e41b0996128aa536e13cc7e82",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+            "title": "Recurrent neural network based language model"
+        },
+        {
+            "paperId": "087d5ea60b0b15fb9d3396ad321a7f941f88e720",
+            "title": "Transfer of learning by composing solutions of elemental sequential tasks"
+        },
+        {
+            "paperId": "0a8149fb5aa8a5684e7d530c264451a5cb9250f5",
+            "title": "Recent Advances in Hierarchical Reinforcement Learning"
+        },
+        {
+            "paperId": "6843890926bf0e5c887ffc78dcb1203135981bf1",
+            "title": "The compositionality papers"
+        },
+        {
+            "paperId": "eae22f46217dc8becef3b67cd71cef46bfc3a749",
+            "title": "Between MDPs and semi-MDPs: A framework for temporal abstraction in reinforcement learning"
+        },
+        {
+            "paperId": null,
+            "title": "Memorize or generalize? Searching for a compositional recurrent neural networks"
+        },
+        {
+            "paperId": "550e406b84e46cf8c77baa70a61704e93fd963bc",
+            "title": "Towards Compositional Learning in Dynamic Networks"
+        }
+    ]
+}

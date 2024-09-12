@@ -1,0 +1,145 @@
+{
+    "paperId": "962ba753d7ea794f4085f96ef191e9016aff31ac",
+    "externalIds": {
+        "DBLP": "conf/aistats/ChoromanskiRSST18",
+        "MAG": "2783173735",
+        "CorpusId": 3494587
+    },
+    "title": "The Geometry of Random Features",
+    "abstract": "We present an in-depth examination of the effectiveness of radial basis function kernel (beyond Gaussian) estimators based on orthogonal random feature maps. We show that orthogonal estimators outperform state-of-the-art mechanisms that use iid sampling under weak conditions for tails of the associated Fourier distributions. We prove that for the case of many dimensions, the superiority of the orthogonal transform can be accurately measured by a property we define called the charm of the kernel, and that orthogonal random features provide optimal (in terms of mean squared error) kernel estimators. We provide the first theoretical results which explain why orthogonal random features outperform unstructured on downstream tasks such as kernel ridge regression by showing that orthogonal random features provide kernel algorithms with better spectral properties than the previous state-of-the-art. Our results enable practitioners more generally to estimate the benefits from applying orthogonal transforms.",
+    "venue": "International Conference on Artificial Intelligence and Statistics",
+    "year": 2018,
+    "referenceCount": 24,
+    "citationCount": 39,
+    "influentialCitationCount": 1,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is proved that for the case of many dimensions, the superiority of the orthogonal transform can be accurately measured by a property called the charm of the kernel, and that Orthogonal random features provide optimal (in terms of mean squared error) kernel estimators."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1805203",
+            "name": "K. Choromanski"
+        },
+        {
+            "authorId": "144845456",
+            "name": "Mark Rowland"
+        },
+        {
+            "authorId": "2227764",
+            "name": "Tam\u00e1s Sarl\u00f3s"
+        },
+        {
+            "authorId": "1808676",
+            "name": "Vikas Sindhwani"
+        },
+        {
+            "authorId": "145369890",
+            "name": "Richard E. Turner"
+        },
+        {
+            "authorId": "145689461",
+            "name": "Adrian Weller"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "3e7bd1e5b0fe9fc64835519deeae1a3a6f4dc14a",
+            "title": "Random Fourier Features for Kernel Ridge Regression: Approximation Bounds and Statistical Guarantees"
+        },
+        {
+            "paperId": "5394da74498e00597295d18cd0557bd47e3fc341",
+            "title": "The Unreasonable Effectiveness of Structured Random Orthogonal Embeddings"
+        },
+        {
+            "paperId": "489f3f36a0606f03155701030081d98cc7090754",
+            "title": "Faster Kernel Ridge Regression Using Sketching and Preconditioning"
+        },
+        {
+            "paperId": "32e934094c4d17fe4d734b2e169ba5e3cd0ee05e",
+            "title": "Orthogonal Random Features"
+        },
+        {
+            "paperId": "6fc8bc53a706f7ca32b7c539844e66c3eb03b608",
+            "title": "Structured adaptive and random spinners for fast machine learning computations"
+        },
+        {
+            "paperId": "559faf4b49ef3f317e894f7ba3947d1769bdeb8c",
+            "title": "Recycling Randomness with Structure for Sublinear time Kernel Expansions"
+        },
+        {
+            "paperId": "7f9b369110af1a9ce2f0fb29e83444f50b1eaf61",
+            "title": "The Multivariate Generalised von Mises Distribution: Inference and Applications"
+        },
+        {
+            "paperId": "a549bed132e669b3f581df1ac029f4a09115dc3f",
+            "title": "Fast Randomized Kernel Ridge Regression with Statistical Guarantees"
+        },
+        {
+            "paperId": "16a26289d7c37e6a0179fa57b14a327286696d33",
+            "title": "Binary embeddings with structured hashed projections"
+        },
+        {
+            "paperId": "50645e3dc912d597e89d59bffb96ccc0f8e1aefa",
+            "title": "Practical and Optimal LSH for Angular Distance"
+        },
+        {
+            "paperId": "78e95099ec2ac3cb087eb47ba7c87ddb01a19405",
+            "title": "On the Error of Random Fourier Features"
+        },
+        {
+            "paperId": "18c7fb55ff796db5c5a604e0ca44b6baaeb12239",
+            "title": "Fastfood: Approximate Kernel Expansions in Loglinear Time"
+        },
+        {
+            "paperId": "87ee6fc7501edc541b5c0620fd1d0435d2a35b7b",
+            "title": "New bounds for circulant Johnson-Lindenstrauss embeddings"
+        },
+        {
+            "paperId": "56821642a035a01256c38e55a4e0889a68b6e4a7",
+            "title": "Divide and conquer kernel ridge regression: a distributed algorithm with minimax optimal rates"
+        },
+        {
+            "paperId": "7a76cd1bbd8f374c7e6bcb36296e9b7530c0e477",
+            "title": "Sharp analysis of low-rank kernel matrix approximations"
+        },
+        {
+            "paperId": "9da848e8e3893afc33417803cf2629cc8617df39",
+            "title": "A variant of the Johnson-Lindenstrauss lemma for circulant matrices"
+        },
+        {
+            "paperId": "2cde78f9dc1f35d7d38801f4d5168a2df26c328e",
+            "title": "Johnson\u2010Lindenstrauss lemma for circulant matrices* *"
+        },
+        {
+            "paperId": "7a59fde27461a3ef4a21a249cc403d0d96e4a0d7",
+            "title": "Random Features for Large-Scale Kernel Machines"
+        },
+        {
+            "paperId": "427b168f490b56716f22b129ac93aba5425ea08f",
+            "title": "Training linear SVMs in linear time"
+        },
+        {
+            "paperId": "b4d6a34f9d25b7a7ca665087ad7cb82f58d89d51",
+            "title": "Approximate nearest neighbors and the fast Johnson-Lindenstrauss transform"
+        },
+        {
+            "paperId": "8ca86e941da7254613a5d03dd7a6c36886fadc1d",
+            "title": "Gaussian Processes for Machine Learning (Adaptive Computation and Machine Learning)"
+        },
+        {
+            "paperId": "52b7bf3ba59b31f362aa07f957f1543a29a4279e",
+            "title": "Support-Vector Networks"
+        },
+        {
+            "paperId": "026c5719b82bda94d69022b2fac307ec0aa2e850",
+            "title": "Metric spaces and completely monotone functions"
+        },
+        {
+            "paperId": "18d700bf151eb6f13341b03c81ac3764d74196ea",
+            "title": "Kernel-Based Reinforcement Learning"
+        }
+    ]
+}

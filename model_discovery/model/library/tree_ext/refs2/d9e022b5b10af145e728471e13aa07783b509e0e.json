@@ -1,0 +1,355 @@
+{
+    "paperId": "d9e022b5b10af145e728471e13aa07783b509e0e",
+    "externalIds": {
+        "MAG": "2949706487",
+        "ArXiv": "1506.02285",
+        "DBLP": "journals/moc/Pan17",
+        "DOI": "10.1090/mcom/3204",
+        "CorpusId": 2993876
+    },
+    "title": "Fast approximate computations with Cauchy matrices and polynomials",
+    "abstract": "Multipoint polynomial evaluation and interpolation are fundamental for modern symbolic and numerical computing. The known algorithms solve both problems over any field of constants in nearly linear arithmetic time, but the cost grows to quadratic for numerical solution. We fix this discrepancy: our new numerical algorithms run in nearly linear arithmetic time. At first we restate our goals as the multiplication of an n-by-n Vandermonde matrix by a vector and the solution of a Vandermonde linear system of n equations. Then we transform the matrix into a Cauchy structured matrix with some special features. By exploiting them, we approximate the matrix by a generalized hierarchically semiseparable matrix, which is a structured matrix of a different class. Finally we accelerate our solution to the original problems by applying Fast Multipole Method to the latter matrix. Our resulting numerical algorithms run in nearly optimal arithmetic time when they perform the above fundamental computations with polynomials, Vandermonde matrices, transposed Vandermonde matrices, and a large class of Cauchy and Cauchy-like matrices. Some of our techniques may be of independent interest.",
+    "venue": "Mathematics of Computation",
+    "year": 2015,
+    "referenceCount": 81,
+    "citationCount": 24,
+    "influentialCitationCount": 1,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work transforms an n-by-n Vandermonde matrix into a Cauchy structured matrix with some special features and approximate the matrix by a generalized hierarchically semiseparable matrix, which is a structured matrix of a different class."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1766306",
+            "name": "V. Pan"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "d9e1261cef5c3ad7c8cc956a963b652fd41862b8",
+            "title": "Design"
+        },
+        {
+            "paperId": "2c19f597d3ffd5b447a34f01145ad06cce1fb98b",
+            "title": "Primitive and Cynical Low Rank Approximation, Preprocessing and Extensions"
+        },
+        {
+            "paperId": "2d35b938a317be1c73c89f941f527c6d2b96a893",
+            "title": "Superfast Low-Rank Approximation and Least Squares Regression"
+        },
+        {
+            "paperId": "8b67d364d5a4680c958205f60e2f34dc057d84ae",
+            "title": "How Bad Are Vandermonde Matrices?"
+        },
+        {
+            "paperId": "ecbea3b74deb06657a2d0100a717501f7d1a252a",
+            "title": "Sketching as a Tool for Numerical Linear Algebra"
+        },
+        {
+            "paperId": "2e8594817de7b0f968170ae6dfad9a3aec0be3aa",
+            "title": "Random multipliers numerically stabilize Gaussian and block Gaussian elimination: Proofs and an extension to low-rank approximation \u2606"
+        },
+        {
+            "paperId": "f0e08a11f425f765f6755c02070d794ed44f2f33",
+            "title": "Optimal CUR matrix decompositions"
+        },
+        {
+            "paperId": "eca5e4cfe3e72bdf70b13fecb76d8bda71694423",
+            "title": "Nearly optimal computations with structured matrices"
+        },
+        {
+            "paperId": "cb8339f128ae4e4ee94e98567f16c04af95f8f1d",
+            "title": "Superfast and Stable Structured Solvers for Toeplitz Least Squares via Randomized Sampling"
+        },
+        {
+            "paperId": "e5e809fbce8fa94b0b8676716abb9e49c800cb9b",
+            "title": "Separable Type Representations of Matrices and Fast Algorithms"
+        },
+        {
+            "paperId": "566d4c9bf9c5687ab53337a2b217c8b5befb1d36",
+            "title": "Randomized Sparse Direct Solvers"
+        },
+        {
+            "paperId": "5455ee98068cdf9b88467bc5ce10c4d8536f38e1",
+            "title": "Transformations of Matrix Structures Work Again"
+        },
+        {
+            "paperId": "da638625c1ce4a5bb3b2808b2dc28675ea7eb0f2",
+            "title": "A Superfast Structured Solver for Toeplitz Linear Systems via Randomized Sampling"
+        },
+        {
+            "paperId": "2d2f301c5ee96ba3efef4b70794cf55928f2d37b",
+            "title": "On the Complexity of Some Hierarchical Structured Matrix Algorithms"
+        },
+        {
+            "paperId": "df477cf83a7e76f599f5e62b08e6c130bfd80f0c",
+            "title": "Advances in Machine Learning and Data Mining for Astronomy"
+        },
+        {
+            "paperId": "cb13d6831bbf5a40c7caf6edf5fead628c076b4b",
+            "title": "A Fast Randomized Algorithm for Computing a Hierarchically Semiseparable Representation of a Matrix"
+        },
+        {
+            "paperId": "f2eb1dc4f670faa55cb2ea8fcacaef53320b35e3",
+            "title": "Efficient Numerical Methods for Non-local Operators"
+        },
+        {
+            "paperId": "35099635bceb88469f25e9c7c1bed19f57d222da",
+            "title": "Computations with quasiseparable polynomials and matrices"
+        },
+        {
+            "paperId": "51a20365c3440ec49747d867b49e244e051abb84",
+            "title": "Randomized algorithms for the low-rank approximation of matrices"
+        },
+        {
+            "paperId": "9da69f49086c12e12ffec40577ea2ff2444e23fa",
+            "title": "A Superfast Algorithm for Toeplitz Systems of Linear Equations"
+        },
+        {
+            "paperId": "b012d98c66756c05450e77317124058ba84b5856",
+            "title": "Construction of Data-Sparse H2-Matrices by Hierarchical Compression"
+        },
+        {
+            "paperId": "d15e9b192c5a3f29d9dc27ffb887388de1cf41ab",
+            "title": "A Fast Solver for HSS Representations via Sparse Matrices"
+        },
+        {
+            "paperId": "5b4f3a38272d8c62be72dd06de99d836783aa48d",
+            "title": "Introduction to Hierarchical Matrices with Applications"
+        },
+        {
+            "paperId": "a362feccc789fbc2929e59c53aa4f49540461bb2",
+            "title": "A modification of the Dewilde-van der Veen method for inversion of finite structured matrices"
+        },
+        {
+            "paperId": "c6df01b05cbdeeaba4f9dbbcfa2793a905ab5ed1",
+            "title": "Incomplete Cross Approximation in the Mosaic-Skeleton Method"
+        },
+        {
+            "paperId": "f57f9b791fcacc8614310e7f04ffd77168c2ac19",
+            "title": "Design, analysis, and implementation of a multiprecision polynomial rootfinder"
+        },
+        {
+            "paperId": "8df26a339b6cbb1089e02f2039ac6c30a6ec89d9",
+            "title": "On a new class of structured matrices"
+        },
+        {
+            "paperId": "24260cd230e92bd9975f48cf5c3d5fc36f0d70d5",
+            "title": "A Sparse Matrix Arithmetic Based on $\\Cal H$-Matrices. Part I: Introduction to ${\\Cal H}$-Matrices"
+        },
+        {
+            "paperId": "b61a8f623947a67c2178e81cbdbba2658385c767",
+            "title": "Time-Varying Systems and Computations"
+        },
+        {
+            "paperId": "1613227560752380d8b2452f8cf2bebc80934bf7",
+            "title": "Inversion formulas and linear complexity algorithm for diagonal plus semiseparable matrices"
+        },
+        {
+            "paperId": "ba72b59199f50db09a546fdbddd29e73550f4396",
+            "title": "Fast algorithms for polynomial interpolation, integration, and differentiation"
+        },
+        {
+            "paperId": "67e1e7388ebe742d3b44662db13022e7369cfe66",
+            "title": "Fast Gaussian elimination with partial pivoting for matrices with displacement structure"
+        },
+        {
+            "paperId": "5888ed382577bce3a5f745a4c9fe084472cd9df0",
+            "title": "How bad are Hankel matrices?"
+        },
+        {
+            "paperId": "fa472234610b1d1cc7c19975fbfa8853b7f8c8c0",
+            "title": "A new approach to fast polynomial interpolation and multipoint evaluation"
+        },
+        {
+            "paperId": "8210956117ffaa06f43921b72f2538e547758e1c",
+            "title": "The power of combining the techniques of algebraic and numerical computing: improved approximate multipoint polynomial evaluation and improved multipole algorithms"
+        },
+        {
+            "paperId": "9c9b7a9a3c0515e8d705748e84f46e29d63881e4",
+            "title": "On computations with dense structured matrices"
+        },
+        {
+            "paperId": "688384fc5e643445e835435e96b9dfcfb6598d36",
+            "title": "A fast algorithm for particle simulations"
+        },
+        {
+            "paperId": "f79fdb0178f8769fb5efb874d2d61c0d7c42f2f9",
+            "title": "Lower bounds for the condition number of Vandermonde matrices"
+        },
+        {
+            "paperId": "797246bc6c909836de64792c2ca038a5ed006bc6",
+            "title": "A fast algorithm for Trummer's problem"
+        },
+        {
+            "paperId": "50b23fa46d6ecaecc6f0102ba5145a1ddfca0365",
+            "title": "Linear complexity algorithm for semiseparable matrices"
+        },
+        {
+            "paperId": "49e8d3523d63bb34cbd5fbecbf3fcd5f0f44fa42",
+            "title": "Rapid solution of integral equations of classical potential theory"
+        },
+        {
+            "paperId": "bbd4f277d3980221b6a10fc365a187c9ea8d4dfa",
+            "title": "Lower bounds for algebraic computation trees"
+        },
+        {
+            "paperId": "9cc867094d4ec78ac488a6991670fc9acfae037a",
+            "title": "Generalized inverses of certain Toeplitz matrices"
+        },
+        {
+            "paperId": "6a2fd75ac636ce79f34aa50aba6d80f75c1f540b",
+            "title": "Die Berechnungskomplexit\u00e4t von elementarsymmetrischen Funktionen und von Interpolationskoeffizienten"
+        },
+        {
+            "paperId": "045ebb3eed461f550896f459cc852d4a34bd9293",
+            "title": "A Fast Method for Interpolation Using Preconditioning"
+        },
+        {
+            "paperId": "78d7faea99584e691ae2e89d769b278a54aa5674",
+            "title": "Polynomial evaluation via the division algorithm the fast Fourier transform revisited"
+        },
+        {
+            "paperId": "2d85353c0c3439664e8ae54c8e37c97110eee39c",
+            "title": "A linear filtering approach to the computation of discrete Fourier transform"
+        },
+        {
+            "paperId": "45b121dc1166c4b89860bf9c2c1eef9523a3a41f",
+            "title": "Solution of Vandermonde Systems of Equations"
+        },
+        {
+            "paperId": "7457476bd4719212ab257ad96483a642a35d61bd",
+            "title": "The Art of Computer Programming"
+        },
+        {
+            "paperId": "50f8aa267f38687ffda768ab0084d8434d7bda30",
+            "title": "The Fourier Transform and Its Applications"
+        },
+        {
+            "paperId": "d44a4a4e98460c56ed40e48ae8c2855563223ded",
+            "title": "METHODS OF COMPUTING VALUES OF POLYNOMIALS"
+        },
+        {
+            "paperId": "8fefa0bdcef423ee122e4f90ea7efd5f0f1e77ca",
+            "title": "Inverses of Vandermonde Matrices"
+        },
+        {
+            "paperId": "dca573c3e253fa7e0bf43a48ecca89dd7dc20b03",
+            "title": "Finding Structure with Randomness Probabilistic Algorithms for Approximate Matrix Decompositions Research Project Report \u2013 \u201cSparsity and Compressed Sensing\u201d course"
+        },
+        {
+            "paperId": null,
+            "title": "and Rational Functions"
+        },
+        {
+            "paperId": "6d73c9947d840cd84a8eee79c224add5fbbb929e",
+            "title": "FINDING STRUCTURE WITH RANDOMNESS : PROBABILISTIC ALGORITHMS FOR CONSTRUCTING"
+        },
+        {
+            "paperId": null,
+            "title": "Fast Approximation Algorithms for Computations with Cauchy Matrices, Polynomials, and Rational Functions, arXiv:1506.02285 [math.NA] 34 pages, 7 figures, 8 tables, June"
+        },
+        {
+            "paperId": null,
+            "title": "of the International Conference on Symbolic Numeric Computation (SNC 2014)"
+        },
+        {
+            "paperId": null,
+            "title": "How Will the Fast Multipole Method Fare in Exascale Era? SIAM News"
+        },
+        {
+            "paperId": null,
+            "title": "Design and Analysis of Algorithms"
+        },
+        {
+            "paperId": "62501a878223c7179fd03c7d5b7278a96a5e221e",
+            "title": "How to find a good submatrix"
+        },
+        {
+            "paperId": "ee725ccaa80179cb55604d83382149939abd457a",
+            "title": "MATRIX COMPUTATIONS AND SEMISEPARABLE MATRICES"
+        },
+        {
+            "paperId": "0be6c07a8543d07a9e1512c152ec61c85c5ed8fb",
+            "title": "A fast algorithm for the inversion of general Toeplitz matrices"
+        },
+        {
+            "paperId": "45219705c08c14dbfe565289596d8f58713cc8a3",
+            "title": "Digital Object Identifier (DOI) 10.1007/s00607-003-0019-1 Construction and Arithmetics of H-Matrices"
+        },
+        {
+            "paperId": "9498bb96328c3e9498772241b55031570e6577d1",
+            "title": "Digital Object Identifier (DOI) 10.1007/s00607-002-1450-4 Data-sparse Approximation by Adaptive H 2-Matrices"
+        },
+        {
+            "paperId": "7c9411bc50b6a33947575f37ae16931578beae23",
+            "title": "Structured Matrices and Polynomials: Unified Superfast Algorithms"
+        },
+        {
+            "paperId": "0e343cf071214253b8907ebdcfdc948af411489a",
+            "title": "Structured Matrices and Polynomials"
+        },
+        {
+            "paperId": null,
+            "title": "The Maximal-volume Concept in Approximation by Lowrank Matrices"
+        },
+        {
+            "paperId": "952896a6656080d1a0e021733bfaa237dd53f832",
+            "title": "A Sparse Matrix Arithmetic Based on H-Matrices. Part I: Introduction to H-Matrices"
+        },
+        {
+            "paperId": null,
+            "title": "Dordrecht"
+        },
+        {
+            "paperId": null,
+            "title": "Stable Efficient Algorithms for Structured Linear Systems"
+        },
+        {
+            "paperId": null,
+            "title": "Polynomial Factorization and Partial Fraction Decomposition by Simultaneous Newton's Iteration"
+        },
+        {
+            "paperId": null,
+            "title": "Y.Yu, Fast Multipoint Polynomial Evaluation and Interpolation via Computation with Structured Matrices"
+        },
+        {
+            "paperId": "19b3267eb3df51ac1bd6c2def4ac55b06a9d57f1",
+            "title": "An algebraic approach to approximate evaluation of a polynomial on a set of real points"
+        },
+        {
+            "paperId": null,
+            "title": "How Unstable are Vandermonde Systems? International Symposium on Asymptotic and Computational Analysis: Conference in"
+        },
+        {
+            "paperId": "9930152298b5973e5bea53a26716df3e28131ff0",
+            "title": "A fast algorithm for the multiplication of generalized Hilbert matrices with vectors"
+        },
+        {
+            "paperId": "225ca57add3b3fb12ef01cc97c4683350dc93fe4",
+            "title": "Matrix computations"
+        },
+        {
+            "paperId": "c640098d8fec542f85bab54fd02d8abc4a9b21ea",
+            "title": "The computational complexity of algebraic and numeric problems"
+        },
+        {
+            "paperId": null,
+            "title": "Evaluation of Polynomials at Fixed Sets of Points"
+        },
+        {
+            "paperId": null,
+            "title": "Fast Modular Transform via Division"
+        },
+        {
+            "paperId": "dbb42e49583829a013d72a3f918a07b2c16239ae",
+            "title": "c \u25cb 2003 Society for Industrial and Applied Mathematics INVERSION OF DISPLACEMENT OPERATORS \u2217"
+        },
+        {
+            "paperId": null,
+            "title": "By removing the h rightmost leaves for h < 7, represent balanced merging of 8 \u2212 h diagonal blocks. FIGURE 1: Balanced merging of diagonal blocks"
+        }
+    ]
+}

@@ -1,0 +1,186 @@
+{
+    "paperId": "2dad7e558a1e2982d0d42042021f4cde4af04abf",
+    "externalIds": {
+        "ArXiv": "1710.02224",
+        "DBLP": "conf/nips/ChangZHYGTCWHH17",
+        "MAG": "2952595200",
+        "CorpusId": 3345474
+    },
+    "title": "Dilated Recurrent Neural Networks",
+    "abstract": "Learning with recurrent neural networks (RNNs) on long sequences is a notoriously difficult task. There are three major challenges: 1) complex dependencies, 2) vanishing and exploding gradients, and 3) efficient parallelization. In this paper, we introduce a simple yet effective RNN connection structure, the DilatedRNN, which simultaneously tackles all of these challenges. The proposed architecture is characterized by multi-resolution dilated recurrent skip connections and can be combined flexibly with diverse RNN cells. Moreover, the DilatedRNN reduces the number of parameters needed and enhances training efficiency significantly, while matching state-of-the-art performance (even with standard RNN cells) in tasks involving very long-term dependencies. To provide a theory-based quantification of the architecture's advantages, we introduce a memory capacity measure, the mean recurrent length, which is more suitable for RNNs with long skip connections than existing measures. We rigorously prove the advantages of the DilatedRNN over other recurrent neural architectures. The code for our method is publicly available at this https URL",
+    "venue": "Neural Information Processing Systems",
+    "year": 2017,
+    "referenceCount": 30,
+    "citationCount": 277,
+    "influentialCitationCount": 40,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper introduces a simple yet effective RNN connection structure, the DilatedRNN, characterized by multi-resolution dilated recurrent skip connections and introduces a memory capacity measure, the mean recurrent length, which is more suitable for RNNs with long skip connections than existing measures."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3307026",
+            "name": "Shiyu Chang"
+        },
+        {
+            "authorId": "37873860",
+            "name": "Yang Zhang"
+        },
+        {
+            "authorId": "143911112",
+            "name": "Wei Han"
+        },
+        {
+            "authorId": "2482533",
+            "name": "Mo Yu"
+        },
+        {
+            "authorId": "121433787",
+            "name": "Xiaoxiao Guo"
+        },
+        {
+            "authorId": "46998284",
+            "name": "Wei Tan"
+        },
+        {
+            "authorId": "2357983",
+            "name": "Xiaodong Cui"
+        },
+        {
+            "authorId": "2819135",
+            "name": "M. Witbrock"
+        },
+        {
+            "authorId": "1399115926",
+            "name": "M. Hasegawa-Johnson"
+        },
+        {
+            "authorId": "153652752",
+            "name": "Thomas S. Huang"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "6f34b9a4a0e2ee90e86ed720dc26cc6ba9da8df0",
+            "title": "Dilated Residual Networks"
+        },
+        {
+            "paperId": "c25a67ad7e8629a9d12b9e2fc356cd73af99a060",
+            "title": "Learning to Skim Text"
+        },
+        {
+            "paperId": "049c6e5736313374c6e594c34b9be89a3a09dced",
+            "title": "FeUdal Networks for Hierarchical Reinforcement Learning"
+        },
+        {
+            "paperId": "79c78c98ea317ba8cdf25a9783ef4b8a7552db75",
+            "title": "Full-Capacity Unitary Recurrent Neural Networks"
+        },
+        {
+            "paperId": "a4b6b32c21609b9b093e0aacc5c0d82e70a9be52",
+            "title": "Phased LSTM: Accelerating Recurrent Network Training for Long or Event-based Sequences"
+        },
+        {
+            "paperId": "d4903c15a7aba8e2c2386b2fe95edf0905144d6a",
+            "title": "SUPERSEDED - CSTR VCTK Corpus: English Multi-speaker Corpus for CSTR Voice Cloning Toolkit"
+        },
+        {
+            "paperId": "563783de03452683a9206e85fe6d661714436686",
+            "title": "HyperNetworks"
+        },
+        {
+            "paperId": "df0402517a7338ae28bc54acaac400de6b456a46",
+            "title": "WaveNet: A Generative Model for Raw Audio"
+        },
+        {
+            "paperId": "65eee67dee969fdf8b44c87c560d66ad4d78e233",
+            "title": "Hierarchical Multiscale Recurrent Neural Networks"
+        },
+        {
+            "paperId": "97fb4e3d45bb098e27e0071448b6152217bd35a5",
+            "title": "Layer Normalization"
+        },
+        {
+            "paperId": "9f0687bcd0a7d7fc91b8c5d36c003a38b8853105",
+            "title": "Zoneout: Regularizing RNNs by Randomly Preserving Hidden Activations"
+        },
+        {
+            "paperId": "952454718139dba3aafc6b3b67c4f514ac3964af",
+            "title": "Recurrent Batch Normalization"
+        },
+        {
+            "paperId": "cf76789618f5db929393c1187514ce6c3502c3cd",
+            "title": "Recurrent Dropout without Memory Loss"
+        },
+        {
+            "paperId": "9c9d7247f8c51ec5a02b0d911d1d7b9e8160495d",
+            "title": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems"
+        },
+        {
+            "paperId": "f6fda11d2b31ad66dd008a65f7e708aa64a27703",
+            "title": "Architectural Complexity Measures of Recurrent Neural Networks"
+        },
+        {
+            "paperId": "7f5fc84819c0cf94b771fe15141f65b123f7b8ec",
+            "title": "Multi-Scale Context Aggregation by Dilated Convolutions"
+        },
+        {
+            "paperId": "e9c771197a6564762754e48c1daafb066f449f2e",
+            "title": "Unitary Evolution Recurrent Neural Networks"
+        },
+        {
+            "paperId": "d46b81707786d18499f911b4ab72bb10c65406ba",
+            "title": "A Simple Way to Initialize Recurrent Networks of Rectified Linear Units"
+        },
+        {
+            "paperId": "ac3ee98020251797c2b401e1389461df88e52e62",
+            "title": "Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling"
+        },
+        {
+            "paperId": "5522764282c85aea422f1c4dc92ff7e0ca6987bc",
+            "title": "A Clockwork RNN"
+        },
+        {
+            "paperId": "84069287da0a6b488b8c933f3cb5be759cb6237e",
+            "title": "On the difficulty of training recurrent neural networks"
+        },
+        {
+            "paperId": "019475245d325f70fc3c930b9e96c0c48196ca21",
+            "title": "A brief survey on sequence classification"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "b13813b49f160e1a2010c44bd4fb3d09a28446e3",
+            "title": "Hierarchical Recurrent Neural Networks for Long-Term Dependencies"
+        },
+        {
+            "paperId": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+            "title": "Building a Large Annotated Corpus of English: The Penn Treebank"
+        },
+        {
+            "paperId": "5970b69d573d2717e5f5be48aaff42d70f9107d7",
+            "title": "A SYSTEMIC STUDY OF MONETARY SYSTEMS"
+        },
+        {
+            "paperId": "fd5474f21495989777cbff507ecf1b37b7091475",
+            "title": "Learning the speech front-end with raw waveform CLDNNs"
+        },
+        {
+            "paperId": null,
+            "title": "Lecture 6.5-rmsprop: Divide the gradient by a running average of its recent magnitude. COURSERA: Neural networks for machine learning"
+        },
+        {
+            "paperId": null,
+            "title": "Short term memory in echo state networks , volume 5"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        }
+    ]
+}

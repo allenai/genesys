@@ -1,0 +1,147 @@
+{
+    "paperId": "a07609c2ed39d049d3e59b61408fb600c6ab0950",
+    "externalIds": {
+        "CorpusId": 52220661
+    },
+    "title": "GPU Kernels for Block-Sparse Weights",
+    "abstract": "We\u2019re releasing highly optimized GPU kernels for an underexplored class of neural network architectures: networks with block-sparse weights. The kernels allow for efficient evaluation and differentiation of linear layers, including convolutional layers, with flexibly configurable block-sparsity patterns in the weight matrix. We find that depending on the sparsity, these kernels can run orders of magnitude faster than the best available alternatives such as cuBLAS. Using the kernels we improve upon the state-of-the-art in text sentiment analysis and generative modeling of text and images. By releasing our kernels in the open we aim to spur further advancement in model and algorithm design.",
+    "venue": "",
+    "year": 2017,
+    "referenceCount": 28,
+    "citationCount": 149,
+    "influentialCitationCount": 12,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work releases highly optimized GPU kernels for an underexplored class of neural network architectures: networks with block-sparse weights, which improve upon the state-of-the-art in text sentiment analysis and generative modeling of text and images."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145565184",
+            "name": "Scott Gray"
+        },
+        {
+            "authorId": "38909097",
+            "name": "Alec Radford"
+        },
+        {
+            "authorId": "1726807",
+            "name": "Diederik P. Kingma"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "2ec7156913117949ab933f27f492d0149bc0031f",
+            "title": "Learning Sparse Neural Networks through L0 Regularization"
+        },
+        {
+            "paperId": "56257b0804c9c2418b32337d3af0970f7b67b084",
+            "title": "Block-Sparse Recurrent Neural Networks"
+        },
+        {
+            "paperId": "8dd85e38445a5ddb5dd71cabc3c4246de30c014f",
+            "title": "A Survey of Model Compression and Acceleration for Deep Neural Networks"
+        },
+        {
+            "paperId": "ca1060c50642f9f05735d3007873439347b3bea5",
+            "title": "Learning Intrinsic Sparse Structures within Long Short-term Memory"
+        },
+        {
+            "paperId": "9da734397acd7ff7c557960c62fb1b400b27bd89",
+            "title": "ShuffleNet: An Extremely Efficient Convolutional Neural Network for Mobile Devices"
+        },
+        {
+            "paperId": "718e1b453fe9dce79458e0db035091db603775fb",
+            "title": "Deep Pyramid Convolutional Neural Networks for Text Categorization"
+        },
+        {
+            "paperId": "3647d6d0f151dc05626449ee09cc7bce55be497e",
+            "title": "MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications"
+        },
+        {
+            "paperId": "664ec878de4b7170712baae4a7821fc2602bba25",
+            "title": "Learning to Generate Reviews and Discovering Sentiment"
+        },
+        {
+            "paperId": "79baf48bd560060549998d7b61751286de062e2a",
+            "title": "Factorization tricks for LSTM networks"
+        },
+        {
+            "paperId": "f6e0856b4a9199fa968ac00da612a9407b5cb85c",
+            "title": "Aggregated Residual Transformations for Deep Neural Networks"
+        },
+        {
+            "paperId": "5b6ec746d309b165f9f9def873a2375b6fb40f3d",
+            "title": "Xception: Deep Learning with Depthwise Separable Convolutions"
+        },
+        {
+            "paperId": "55cf59bfbb25d6363cab87cb747648ebe8a096e5",
+            "title": "Multiplicative LSTM for sequence modelling"
+        },
+        {
+            "paperId": "7dba53e72c182e25e98e8f73a99d75ff69dda0c2",
+            "title": "Recurrent Highway Networks"
+        },
+        {
+            "paperId": "2cd55ded95d5d13430edfa223ba591b514ebe8a5",
+            "title": "Adversarial Training Methods for Semi-Supervised Text Classification"
+        },
+        {
+            "paperId": "04cca8e341a5da42b29b0bc831cb25a0f784fa01",
+            "title": "Adaptive Computation Time for Recurrent Neural Networks"
+        },
+        {
+            "paperId": "9c9d7247f8c51ec5a02b0d911d1d7b9e8160495d",
+            "title": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems"
+        },
+        {
+            "paperId": "2f2d8f8072e5cc9b296fad551f65f183bdbff7aa",
+            "title": "Exploring the Limits of Language Modeling"
+        },
+        {
+            "paperId": "6505a9bd862fafcde0315a87695c504ced6c7df6",
+            "title": "Inferring Networks of Substitutable and Complementary Products"
+        },
+        {
+            "paperId": "6e795c6e9916174ae12349f5dc3f516570c17ce8",
+            "title": "Skip-Thought Vectors"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "b0e9ea2ce2ea9713c128f47db3f1aaf0c5c2f175",
+            "title": "Small-World Brain Networks"
+        },
+        {
+            "paperId": "d98ef875e2cbde3e2cc8fad521e3cbfe1bddbd69",
+            "title": "Model selection and estimation in regression with grouped variables"
+        },
+        {
+            "paperId": "c416e0295fee5a4b4ded400f28c57aaf727f3651",
+            "title": "Small worlds: the dynamics of networks between order and randomness"
+        },
+        {
+            "paperId": "d61031326150ba23f90e6587c13d99188209250e",
+            "title": "Collective dynamics of \u2018small-world\u2019 networks"
+        },
+        {
+            "paperId": null,
+            "title": "Pixelcnn++: A pixelcnn implementation with discretized logistic mixture likelihood and other modifications"
+        },
+        {
+            "paperId": "067e07b725ab012c80aa2f87857f6791c1407f6d",
+            "title": "Long short-term memory recurrent neural network architectures for large scale acoustic modeling"
+        },
+        {
+            "paperId": "6e003bb2481ef13eae918d4691101b24b7b3f786",
+            "title": "Six Degrees: The Science of a Connected Age"
+        },
+        {
+            "paperId": "a828fd17399d0ec9f59801e21230e7f6391757f4",
+            "title": "Emergence of Scaling in Random Networks"
+        }
+    ]
+}

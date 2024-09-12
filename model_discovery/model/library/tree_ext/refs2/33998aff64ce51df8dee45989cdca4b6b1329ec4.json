@@ -1,0 +1,235 @@
+{
+    "paperId": "33998aff64ce51df8dee45989cdca4b6b1329ec4",
+    "externalIds": {
+        "MAG": "2766453196",
+        "ArXiv": "1710.10903",
+        "DBLP": "journals/corr/abs-1710-10903",
+        "DOI": "10.17863/CAM.48429",
+        "CorpusId": 3292002
+    },
+    "title": "Graph Attention Networks",
+    "abstract": "We present graph attention networks (GATs), novel neural network architectures that operate on graph-structured data, leveraging masked self-attentional layers to address the shortcomings of prior methods based on graph convolutions or their approximations. By stacking layers in which nodes are able to attend over their neighborhoods' features, we enable (implicitly) specifying different weights to different nodes in a neighborhood, without requiring any kind of costly matrix operation (such as inversion) or depending on knowing the graph structure upfront. In this way, we address several key challenges of spectral-based graph neural networks simultaneously, and make our model readily applicable to inductive as well as transductive problems. Our GAT models have achieved or matched state-of-the-art results across four established transductive and inductive graph benchmarks: the Cora, Citeseer and Pubmed citation network datasets, as well as a protein-protein interaction dataset (wherein test graphs remain unseen during training).",
+    "venue": "International Conference on Learning Representations",
+    "year": 2017,
+    "referenceCount": 45,
+    "citationCount": 16585,
+    "influentialCitationCount": 2978,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": null
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3444569",
+            "name": "Petar Velickovic"
+        },
+        {
+            "authorId": "7153363",
+            "name": "Guillem Cucurull"
+        },
+        {
+            "authorId": "8742492",
+            "name": "Arantxa Casanova"
+        },
+        {
+            "authorId": "144290131",
+            "name": "Adriana Romero"
+        },
+        {
+            "authorId": "144269589",
+            "name": "P. Lio\u2019"
+        },
+        {
+            "authorId": "1751762",
+            "name": "Yoshua Bengio"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "b7c4570d7d97f327e7f82fe28100172ec5e94cac",
+            "title": "Predicting multicellular function through multi-layer tissue networks"
+        },
+        {
+            "paperId": "046c4ff0b08361b1ee84fecf1292d385d7bca277",
+            "title": "Programmable Agents"
+        },
+        {
+            "paperId": "5808f5285bc60a73bc240621ad0fce606867ebc1",
+            "title": "VAIN: Attentional Multi-agent Predictive Modeling"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "6b7d6e6416343b2a122f8416e69059ce919026ef",
+            "title": "Inductive Representation Learning on Large Graphs"
+        },
+        {
+            "paperId": "007112213ece771be72cbecfd59f048209facabd",
+            "title": "A simple neural network module for relational reasoning"
+        },
+        {
+            "paperId": "5c57bb5630835a05eb1c3d0df3e12d6180d75de2",
+            "title": "One-Shot Imitation Learning"
+        },
+        {
+            "paperId": "204a4a70428f3938d2c538a4d74c7ae0416306d8",
+            "title": "A Structured Self-attentive Sentence Embedding"
+        },
+        {
+            "paperId": "1d9df46f672b1e22b6f210343be8684f88c0ccca",
+            "title": "The One Hundred Layers Tiramisu: Fully Convolutional DenseNets for Semantic Segmentation"
+        },
+        {
+            "paperId": "f09f7888aa5aeaf88a2a44aea768d9a8747e97d2",
+            "title": "Geometric Deep Learning on Graphs and Manifolds Using Mixture Model CNNs"
+        },
+        {
+            "paperId": "f958d4921951e394057a1c4ec33bad9a34e5dad1",
+            "title": "A Convolutional Encoder Model for Neural Machine Translation"
+        },
+        {
+            "paperId": "36eff562f65125511b5dfab68ce7f7a943c27478",
+            "title": "Semi-Supervised Classification with Graph Convolutional Networks"
+        },
+        {
+            "paperId": "c41eb895616e453dcba1a70c9b942c5063cc656c",
+            "title": "Convolutional Neural Networks on Graphs with Fast Localized Spectral Filtering"
+        },
+        {
+            "paperId": "7c6de5a9e02a779e24504619050c6118f4eac181",
+            "title": "Learning Convolutional Neural Networks for Graphs"
+        },
+        {
+            "paperId": "3d846cb01f6a975554035d2210b578ca61344b22",
+            "title": "Revisiting Semi-Supervised Learning with Graph Embeddings"
+        },
+        {
+            "paperId": "13fe71da009484f240c46f14d9330e932f8de210",
+            "title": "Long Short-Term Memory-Networks for Machine Reading"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "f63e917638553414526a0cc8550de4ad2d83fe7a",
+            "title": "Fast and Accurate Deep Network Learning by Exponential Linear Units (ELUs)"
+        },
+        {
+            "paperId": "492f57ee9ceb61fb5a47ad7aebfec1121887a175",
+            "title": "Gated Graph Sequence Neural Networks"
+        },
+        {
+            "paperId": "18b47b83a373f33d6b902a3615f42c10f7600d72",
+            "title": "Diffusion-Convolutional Neural Networks"
+        },
+        {
+            "paperId": "5d1bfeed240709725c78bc72ea40e55410b373dc",
+            "title": "Convolutional Networks on Graphs for Learning Molecular Fingerprints"
+        },
+        {
+            "paperId": "e49ff72d420c8d72e62a9353e3abc053445e59bd",
+            "title": "Deep Convolutional Networks on Graph-Structured Data"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "71ae756c75ac89e2d731c9c79649562b5768ff39",
+            "title": "Memory Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "fff114cbba4f3ba900f33da574283e3de7f26c83",
+            "title": "DeepWalk: online learning of social representations"
+        },
+        {
+            "paperId": "5e925a9f1e20df61d1e860a7aa71894b35a1c186",
+            "title": "Spectral Networks and Locally Connected Networks on Graphs"
+        },
+        {
+            "paperId": "ea9d2a2b4ce11aaf85136840c65f3bc9c03ab649",
+            "title": "Understanding the difficulty of training deep feedforward neural networks"
+        },
+        {
+            "paperId": "43d2ed5c3c55c1100450cd74dc1031afa24d37b2",
+            "title": "Collective Classification in Network Data"
+        },
+        {
+            "paperId": "7ee368e60d0b826e78f965aad8d6c7d406127104",
+            "title": "Deep learning via semi-supervised embedding"
+        },
+        {
+            "paperId": "19bb0dce99466077e9bc5a2ad4941607fc28b40c",
+            "title": "Manifold Regularization: A Geometric Framework for Learning from Labeled and Unlabeled Examples"
+        },
+        {
+            "paperId": "9ca9f28676ad788d04ba24a51141a9a0a0df4d67",
+            "title": "A new model for learning in graph domains"
+        },
+        {
+            "paperId": "a7c1642509397ccebaa98bf5ec67b8b6ba219cc8",
+            "title": "From the Cover: Gene set enrichment analysis: A knowledge-based approach for interpreting genome-wide expression profiles"
+        },
+        {
+            "paperId": "125842668eab7decac136db8a59d392dc5e4e395",
+            "title": "Combining active learning and semi-supervised learning using Gaussian fields and harmonic functions"
+        },
+        {
+            "paperId": "784220a5a2ad452282f8af006a6cb5715d54d0ed",
+            "title": "Link-Based Classification"
+        },
+        {
+            "paperId": "f0a3e1752e1146da927adc24ae07144ab2e744ec",
+            "title": "Nonlinear dimensionality reduction by locally linear embedding."
+        },
+        {
+            "paperId": "a5eb96540ef53b49eac2246d6b13635fe6e54451",
+            "title": "A general framework for adaptive processing of data structures"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "3e33eca03933caaec671e20692e79d1acc9527e1",
+            "title": "Supervised neural networks for the classification of structures"
+        },
+        {
+            "paperId": null,
+            "title": "TensorFlow: Large-scale machine learning on heterogeneous systems"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "3efd851140aa28e95221b55fcc5659eea97b172d",
+            "title": "The Graph Neural Network Model"
+        },
+        {
+            "paperId": "b6b26564df790262abbe48fa18079d9610189b29",
+            "title": "Collective Classi!cation in Network Data"
+        },
+        {
+            "paperId": "1c46943103bd7b7a2c7be86859995a4144d1938b",
+            "title": "Visualizing Data using t-SNE"
+        },
+        {
+            "paperId": null,
+            "title": "TensorFlow: Large-scale machine learning on heterogeneous systems"
+        }
+    ]
+}

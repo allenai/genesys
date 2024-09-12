@@ -1,0 +1,227 @@
+{
+    "paperId": "5507dc32b368c8afd3b9507e9b5888da7bd7d7cd",
+    "externalIds": {
+        "DBLP": "journals/corr/WisemanR16",
+        "MAG": "2951867470",
+        "ArXiv": "1606.02960",
+        "ACL": "D16-1137",
+        "DOI": "10.18653/v1/D16-1137",
+        "CorpusId": 2783746
+    },
+    "title": "Sequence-to-Sequence Learning as Beam-Search Optimization",
+    "abstract": "Sequence-to-Sequence (seq2seq) modeling has rapidly become an important general-purpose NLP tool that has proven effective for many text-generation and sequence-labeling tasks. Seq2seq builds on deep neural language modeling and inherits its remarkable accuracy in estimating local, next-word distributions. In this work, we introduce a model and beam-search training scheme, based on the work of Daume III and Marcu (2005), that extends seq2seq to learn global sequence scores. This structured approach avoids classical biases associated with local training and unifies the training loss with the test-time usage, while preserving the proven model architecture of seq2seq and its efficient training approach. We show that our system outperforms a highly-optimized attention-based seq2seq system and other baselines on three different sequence to sequence tasks: word ordering, parsing, and machine translation.",
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2016,
+    "referenceCount": 47,
+    "citationCount": 575,
+    "influentialCitationCount": 50,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/D16-1137.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces a model and beam-search training scheme, based on the work of Daume III and Marcu (2005), that extends seq2seq to learn global sequence scores and shows that this system outperforms a highly-optimized attention-basedseq2seq system and other baselines on three different sequence to sequence tasks: word ordering, parsing, and machine translation."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2844243",
+            "name": "Sam Wiseman"
+        },
+        {
+            "authorId": "2531268",
+            "name": "Alexander M. Rush"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "2a51507fac6b1ca8b54b6050e5c40adad6c1fb5e",
+            "title": "A Simple LSTM model for Transition-based Dependency Parsing"
+        },
+        {
+            "paperId": "0d24a0695c9fc669e643bad51d4e14f056329dec",
+            "title": "An Actor-Critic Algorithm for Sequence Prediction"
+        },
+        {
+            "paperId": "7b5af1758963babf3740a39615b469b70513a413",
+            "title": "Word Ordering Without Syntax"
+        },
+        {
+            "paperId": "4be0dd53aa1c751219fa6f19fed8a6324f6d2766",
+            "title": "Globally Normalized Transition-Based Neural Networks"
+        },
+        {
+            "paperId": "9f2a8e923965b23c11066a2ead79658208f1fae1",
+            "title": "Minimum Risk Training for Neural Machine Translation"
+        },
+        {
+            "paperId": "b7aee9dfb027d6061c6a653684c0fa9a9bba750d",
+            "title": "Sequence Level Training with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "f67ec8d10f04442c55ada6821031cf39e06aaa8e",
+            "title": "Discriminative Syntax-Based Word Ordering for Text Generation"
+        },
+        {
+            "paperId": "b064b714107ffc724e0d477f4083e9e507c22fec",
+            "title": "Sentence Compression by Deletion with LSTMs"
+        },
+        {
+            "paperId": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+            "title": "Effective Approaches to Attention-based Neural Machine Translation"
+        },
+        {
+            "paperId": "17f5c7411eeeeedf25b0db99a9130aa353aee4ba",
+            "title": "Building End-To-End Dialogue Systems Using Generative Hierarchical Neural Network Models"
+        },
+        {
+            "paperId": "2c22177821ffebc8bbdd8fd0d10b91a48c18d495",
+            "title": "A Neural Probabilistic Structured-Prediction Model for Transition-Based Dependency Parsing"
+        },
+        {
+            "paperId": "2288985b24b95be22eb25bfba8a63e77d9c4115f",
+            "title": "Transition-based Neural Constituent Parsing"
+        },
+        {
+            "paperId": "5b0c87c3368f270137f5eec7fe1a52c6d98123ef",
+            "title": "Incremental Recurrent Neural Network Dependency Parser with Search-based Discriminative Training"
+        },
+        {
+            "paperId": "df137487e20ba7c6e1e2b9a1e749f2a578b5ad99",
+            "title": "Scheduled Sampling for Sequence Prediction with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "e58a110fa1e4ddf247d5c614d117d64bfbe135c4",
+            "title": "Sequence to Sequence -- Video to Text"
+        },
+        {
+            "paperId": "546dc0c9afad6cd11a53a837b40e905a13a50be1",
+            "title": "Sequence-discriminative training of recurrent neural networks"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "47570e7f63e296f224a0e7f9a0d08b0de3cbaf40",
+            "title": "Grammar as a Foreign Language"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "f264e8b33c0d49a692a6ce2c4bcb28588aeb7d97",
+            "title": "Recurrent Neural Network Regularization"
+        },
+        {
+            "paperId": "1eb09fecd75eb27825dce4f964b97f4f5cc399d7",
+            "title": "On the Properties of Neural Machine Translation: Encoder\u2013Decoder Approaches"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "1642c8a1ee5238efe524a27f4e42b70333c1baf6",
+            "title": "Efficient programmable learning to search"
+        },
+        {
+            "paperId": "934d1b9b8b2a83e69007f0e1445e64d19c84b333",
+            "title": "Learning Structured Perceptrons for Coreference Resolution with Latent Antecedents and Non-local Features"
+        },
+        {
+            "paperId": "8bc150dc49fc81c7c4dacd35a2b8b1afe1a1692a",
+            "title": "A Systematic Comparison of Smoothing Techniques for Sentence-Level BLEU"
+        },
+        {
+            "paperId": "c0b624c46b51920dfec5aa02cc86323c0beb0df5",
+            "title": "Dropout Improves Recurrent Neural Networks for Handwriting Recognition"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "91c3130e89d2fd37caface9047389c71de14e2a1",
+            "title": "Structured Perceptron with Inexact Search"
+        },
+        {
+            "paperId": "9a5fecbd0f24b57d260033ec6d87291bfac6b53d",
+            "title": "Syntax-Based Grammaticality Improvement using CCG and Guided Search"
+        },
+        {
+            "paperId": "93c20e38c85b69fc2d2eb314b3c1217913f7db11",
+            "title": "Generating Text with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "413c1142de9d91804d6d11c67ff3fed59c9fc279",
+            "title": "Adaptive Subgradient Methods for Online Learning and Stochastic Optimization"
+        },
+        {
+            "paperId": "79ab3c49903ec8cb339437ccf5cf998607fc313e",
+            "title": "A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning"
+        },
+        {
+            "paperId": "526e22c130b18924976553d29ba11bc9d898d58b",
+            "title": "Search-based structured prediction"
+        },
+        {
+            "paperId": "2443dc59cf3d6cc1deba6d3220d61664b1a7eada",
+            "title": "Lattice-based optimization of sequence classification criteria for neural-network acoustic modeling"
+        },
+        {
+            "paperId": "a5c48c673b0d3152010e3374cac189314a13df10",
+            "title": "Learning as search optimization: approximate large margin methods for structured prediction"
+        },
+        {
+            "paperId": "41828fc3dab24784f95e6976e8aaa73f68e1840e",
+            "title": "Incremental Parsing with the Perceptron Algorithm"
+        },
+        {
+            "paperId": "d7da009f457917aa381619facfa5ffae9329a6e9",
+            "title": "Bleu: a Method for Automatic Evaluation of Machine Translation"
+        },
+        {
+            "paperId": "f4ba954b0412773d047dc41231c733de0c1f4926",
+            "title": "Conditional Random Fields: Probabilistic Models for Segmenting and Labeling Sequence Data"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "8d586d7369abea6989ea443c62e6523881c817ab",
+            "title": "Transition-Based Syntactic Linearization"
+        },
+        {
+            "paperId": "965c9aec5e68d49142c5af6a9f0a984f6c2c743a",
+            "title": "Sequence discriminative distributed training of long short-term memory recurrent neural networks"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "a14045a751f5d8ed387c8630a86a3a2861b90643",
+            "title": "A Fast and Accurate Dependency Parser using Neural Networks"
+        },
+        {
+            "paperId": "81aace0e90c6a962059b117c24db0d856f340f41",
+            "title": "Report on the 11th IWSLT evaluation campaign"
+        },
+        {
+            "paperId": null,
+            "title": "Backprop only requires 2x time as standard methods"
+        },
+        {
+            "paperId": null,
+            "title": "Margin gradients are sparse, only violating sequences get updates"
+        },
+        {
+            "paperId": null,
+            "title": "Neural Comput"
+        }
+    ]
+}

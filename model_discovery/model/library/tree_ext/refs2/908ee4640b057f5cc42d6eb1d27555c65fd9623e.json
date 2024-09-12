@@ -1,0 +1,274 @@
+{
+    "paperId": "908ee4640b057f5cc42d6eb1d27555c65fd9623e",
+    "externalIds": {
+        "DBLP": "journals/tog/MullerMRGN19",
+        "ArXiv": "1808.03856",
+        "MAG": "2979652999",
+        "DOI": "10.1145/3341156",
+        "CorpusId": 51970108
+    },
+    "title": "Neural Importance Sampling",
+    "abstract": "We propose to use deep neural networks for generating samples in Monte Carlo integration. Our work is based on non-linear independent components estimation (NICE), which we extend in numerous ways to improve performance and enable its application to integration problems. First, we introduce piecewise-polynomial coupling transforms that greatly increase the modeling power of individual coupling layers. Second, we propose to preprocess the inputs of neural networks using one-blob encoding, which stimulates localization of computation and improves inference. Third, we derive a gradient-descent-based optimization for the Kullback-Leibler and the \u03c72 divergence for the specific application of Monte Carlo integration with unnormalized stochastic estimates of the target distribution. Our approach enables fast and accurate inference and efficient sample generation independently of the dimensionality of the integration domain. We show its benefits on generating natural images and in two applications to light-transport simulation: first, we demonstrate learning of joint path-sampling densities in the primary sample space and importance sampling of multi-dimensional path prefixes thereof. Second, we use our technique to extract conditional directional densities driven by the product of incident illumination and the BSDF in the rendering equation, and we leverage the densities for path guiding. In all applications, our approach yields on-par or higher performance than competing techniques at equal sample count.",
+    "venue": "ACM Transactions on Graphics",
+    "year": 2018,
+    "referenceCount": 56,
+    "citationCount": 313,
+    "influentialCitationCount": 26,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1808.03856",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces piecewise-polynomial coupling transforms that greatly increase the modeling power of individual coupling layers and derives a gradient-descent-based optimization for the Kullback-Leibler and the \u03c72 divergence for the specific application of Monte Carlo integration with unnormalized stochastic estimates of the target distribution."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2228259568",
+            "name": "T. M\u00fcller"
+        },
+        {
+            "authorId": "2953855",
+            "name": "B. McWilliams"
+        },
+        {
+            "authorId": "1801097",
+            "name": "Fabrice Rousselle"
+        },
+        {
+            "authorId": "2280075525",
+            "name": "M. Gross"
+        },
+        {
+            "authorId": "2052127348",
+            "name": "Jan Nov\u00e1k"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "4dee9dba49c3c2c9813798347562578f72d7c6c8",
+            "title": "Learning to Importance Sample in Primary Sample Space"
+        },
+        {
+            "paperId": "05b13765177526adda8b666cd865651a5009dae0",
+            "title": "Bayesian online regression for adaptive direct illumination sampling"
+        },
+        {
+            "paperId": "21b786b3f870fc7fa247c143aa41de88b1fc6141",
+            "title": "Glow: Generative Flow with Invertible 1x1 Convolutions"
+        },
+        {
+            "paperId": "16c05533339e2c9bd6658e4b035b394315717e1b",
+            "title": "Primary Sample Space Path Guiding"
+        },
+        {
+            "paperId": "c6c2ed0d2f750e4a2048f5fedcae3b43258dea6f",
+            "title": "A Unified Manifold Framework for Efficient BRDF Sampling based on Parametric Mixture Models"
+        },
+        {
+            "paperId": "449310e3538b08b43227d660227dfd2875c3c3c1",
+            "title": "Neural Ordinary Differential Equations"
+        },
+        {
+            "paperId": "f07d6814c33cd3384354a29d1d413b10540b10b3",
+            "title": "Neural Autoregressive Flows"
+        },
+        {
+            "paperId": "41a4383dc55f132c0910c430f6c2f04edb02d584",
+            "title": "Integral equations and machine learning"
+        },
+        {
+            "paperId": "883211a516a8ddf364178b310020cb6f726cfad7",
+            "title": "Machine Learning and Integral Equations"
+        },
+        {
+            "paperId": "f6cbf83e1ce3b099d656d2346b261d5ef7f2b62e",
+            "title": "Parallel WaveNet: Fast High-Fidelity Speech Synthesis"
+        },
+        {
+            "paperId": "744fe47157477235032f7bb3777800f9f2f45e52",
+            "title": "Progressive Growing of GANs for Improved Quality, Stability, and Variation"
+        },
+        {
+            "paperId": "6ed88382b8cecabb80430c0bada3e9c626e15ec7",
+            "title": "Notes on optimal approximations for importance sampling"
+        },
+        {
+            "paperId": "588d4a44a27f436cd2c72ac2477eb15f3641cee1",
+            "title": "Practical Path Guiding for Efficient Light\u2010Transport Simulation"
+        },
+        {
+            "paperId": "585bf7bea8fa5267738bc465611d6f197e0f87dd",
+            "title": "Masked Autoregressive Flow for Density Estimation"
+        },
+        {
+            "paperId": "b5fdbacc37f1d5e1a72c292ac2107c06c7bd6d4f",
+            "title": "Learning to Learn without Gradient Descent by Gradient Descent"
+        },
+        {
+            "paperId": "df0402517a7338ae28bc54acaac400de6b456a46",
+            "title": "WaveNet: A Generative Model for Raw Audio"
+        },
+        {
+            "paperId": "2b618b94fc73abd47e54c8f71215e036a4bae995",
+            "title": "Learning light transport the reinforced way"
+        },
+        {
+            "paperId": "93dba56dcf8a528c04617de80ce668a04888c8d2",
+            "title": "Product Importance Sampling for Light Transport Path Guiding"
+        },
+        {
+            "paperId": "6a97d2668187965743d1b825b306defccbabbb4c",
+            "title": "Improved Variational Inference with Inverse Autoregressive Flow"
+        },
+        {
+            "paperId": "71683e224ab91617950956b5005ed0439a733a71",
+            "title": "Learning to learn by gradient descent by gradient descent"
+        },
+        {
+            "paperId": "09879f7956dddc2a9328f5c1472feeb8402bcbcf",
+            "title": "Density estimation using Real NVP"
+        },
+        {
+            "paperId": "9c9d7247f8c51ec5a02b0d911d1d7b9e8160495d",
+            "title": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems"
+        },
+        {
+            "paperId": "41f1d50c85d3180476c4c7b3eea121278b0d8474",
+            "title": "Pixel Recurrent Neural Networks"
+        },
+        {
+            "paperId": "0f899b92b7fb03b609fee887e4b6f3b633eaf30d",
+            "title": "Variational Inference with Normalizing Flows"
+        },
+        {
+            "paperId": "90f72fbbe5f0a29e627db28999e01a30a9655bc6",
+            "title": "MADE: Masked Autoencoder for Distribution Estimation"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "6424b69f3ff4d35249c0bb7ef912fbc2c86f4ff4",
+            "title": "Deep Learning Face Attributes in the Wild"
+        },
+        {
+            "paperId": "dc8301b67f98accbb331190dd7bd987952a692af",
+            "title": "NICE: Non-linear Independent Components Estimation"
+        },
+        {
+            "paperId": "da3098dee8bb835dae8e976d1676bc193bb8eae6",
+            "title": "On-line learning of parametric mixture models for light transport simulation"
+        },
+        {
+            "paperId": "4057be09cfd011861eade2787f6ec77eb82ba53a",
+            "title": "Multiplexed metropolis light transport"
+        },
+        {
+            "paperId": "86ee1835a56722b76564119437070782fc90eb19",
+            "title": "Generative Adversarial Nets"
+        },
+        {
+            "paperId": "484ad17c926292fbe0d5211540832a8c8a8e958b",
+            "title": "Stochastic Backpropagation and Approximate Inference in Deep Generative Models"
+        },
+        {
+            "paperId": "5f5dc5b9a2ba710937e2c413b37b053cd673df02",
+            "title": "Auto-Encoding Variational Bayes"
+        },
+        {
+            "paperId": "d5ea15cda03410827fcbccb2680cf0a06a0a6926",
+            "title": "Adaptive sampling and reconstruction using greedy error minimization"
+        },
+        {
+            "paperId": "ea9d2a2b4ce11aaf85136840c65f3bc9c03ab649",
+            "title": "Understanding the difficulty of training deep feedforward neural networks"
+        },
+        {
+            "paperId": "d354f20a002bb5d67e5d2cc082aad7161c5e9ad2",
+            "title": "Towards interactive global illumination effects via sequential Monte Carlo adaptation"
+        },
+        {
+            "paperId": "cc6fae585dc15805a88ebb84e703776aa4146675",
+            "title": "Sequential Monte Carlo Adaptation in Low\u2010Anisotropy Participating Media"
+        },
+        {
+            "paperId": "a0bc2e40c3a6a02e882fb4a5bbe59fdfc61000fa",
+            "title": "Global Importance Sampling of Glossy Surfaces Using the Photon Map"
+        },
+        {
+            "paperId": "6d53137a4c6ed47590d67fc4acdcf5622afe89bc",
+            "title": "Importance sampling with hemispherical particle footprints"
+        },
+        {
+            "paperId": "6120cc252bc74239012f11b8b075cb7cb16bee26",
+            "title": "An Introduction to Variational Methods for Graphical Models"
+        },
+        {
+            "paperId": "d64a1588bc3dacfeacf39ff1fa543c6832e051e2",
+            "title": "Optimally combining sampling techniques for Monte Carlo rendering"
+        },
+        {
+            "paperId": "69694c8c9b0fce683960846944187dfcf939f352",
+            "title": "Importance Driven Path Tracing using the Photon Map"
+        },
+        {
+            "paperId": "2eb3ea13e2af59e9a24d9096ed96768116eb1e3c",
+            "title": "A 5D Tree to Reduce the Variance of Monte Carlo Ray Tracing"
+        },
+        {
+            "paperId": "e5e921184ac27fb8d1da2a5d1404c6c814685b04",
+            "title": "The rendering equation"
+        },
+        {
+            "paperId": "c68796f833a7151f0a63d1d1608dc902b4fdc9b6",
+            "title": "GENERATIVE ADVERSARIAL NETS"
+        },
+        {
+            "paperId": null,
+            "title": "Rendering resources"
+        },
+        {
+            "paperId": "6d5031a537a8a9d3064aeb8ab578f3c431dc547c",
+            "title": "Gaussian Kullback-Leibler approximate inference"
+        },
+        {
+            "paperId": "a79c8d30bfe1af5b24fb375d15d2988812f96a47",
+            "title": "Combinational Logic Design"
+        },
+        {
+            "paperId": null,
+            "title": "3.4.2 - State Encodings"
+        },
+        {
+            "paperId": null,
+            "title": "Mitsuba renderer"
+        },
+        {
+            "paperId": "139e0b2e2919839f58ed8f6cf56b88ec77d38d84",
+            "title": "Simple and Robust Mutation Strategy for Metropolis Light Transport Algorithm"
+        },
+        {
+            "paperId": null,
+            "title": "Graphical models and variational methods. Advanced mean field methods-theory and practice"
+        },
+        {
+            "paperId": "8eb0816c5134ec18e3ccf59e3468ca3b4588fa75",
+            "title": "Robust Monte Carlo methods for light transport simulation"
+        },
+        {
+            "paperId": "4d98ce60f4f8ed822503b8d13b0605f8c5d74ca7",
+            "title": "In Advances in Neural Information Processing Systems"
+        },
+        {
+            "paperId": "432163344c4367db1ff6fce41cdecdce1b583096",
+            "title": "Bidirectional Estimators for Light Transport"
+        },
+        {
+            "paperId": null,
+            "title": "nuclear physics, Bayesian statistics"
+        }
+    ]
+}

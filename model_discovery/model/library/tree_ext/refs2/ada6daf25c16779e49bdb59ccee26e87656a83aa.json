@@ -1,0 +1,201 @@
+{
+    "paperId": "ada6daf25c16779e49bdb59ccee26e87656a83aa",
+    "externalIds": {
+        "MAG": "2955134049",
+        "DBLP": "journals/access/QuLMF19",
+        "DOI": "10.1109/ACCESS.2019.2925468",
+        "CorpusId": 198146472
+    },
+    "title": "A Neural-Network-Based Method for RUL Prediction and SOH Monitoring of Lithium-Ion Battery",
+    "abstract": "The prognostic and health management (PHM) of lithium-ion batteries has received increasing attention in recent years. The remaining useful life (RUL) prediction and state of health (SOH) monitoring are two important parts in PHM of the lithium-ion battery. Nowadays, the development of signal processing technology and neural network technology introduces new data-driven methods to RUL prediction and SOH monitoring of the lithium-ion battery. This paper presents a neural-network-based method that combines long short-term memory (LSTM) network with particle swarm optimization and attention mechanism for RUL prediction and SOH monitoring of the lithium-ion battery. Before predicting RUL of the lithium-ion battery, the Complete Ensemble Empirical Mode Decomposition with Adaptive Noise (CEEMDAN) is utilized for the raw data denoising, which can improve the accuracy of prediction. A real-life cycle dataset of lithium-ion batteries from NASA is used to evaluate the proposed method, and the experiment results show that when compared with traditional methods, the proposed method has higher accuracy.",
+    "venue": "IEEE Access",
+    "year": 2019,
+    "referenceCount": 39,
+    "citationCount": 204,
+    "influentialCitationCount": 4,
+    "openAccessPdf": {
+        "url": "https://ieeexplore.ieee.org/ielx7/6287639/8600701/08747502.pdf",
+        "status": "GOLD"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A neural-network-based method that combines long short-term memory (LSTM) network with particle swarm optimization and attention mechanism for RUL prediction and SOH monitoring of the lithium-ion battery is presented."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "50811268",
+            "name": "Jiantao Qu"
+        },
+        {
+            "authorId": "48521790",
+            "name": "Feng Liu"
+        },
+        {
+            "authorId": "2142963712",
+            "name": "Yuxiang Ma"
+        },
+        {
+            "authorId": "151047565",
+            "name": "Jiaming Fan"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "c6c09c016f9e9f7766cd87751e1787c876c90bec",
+            "title": "Lithium-Ion Battery Remaining Useful Life Prediction With Box\u2013Cox Transformation and Monte Carlo Simulation"
+        },
+        {
+            "paperId": "c7f4181c75ded9db58f9e2e4575a02706f7be1bf",
+            "title": "Attention CoupleNet: Fully Convolutional Attention Coupling Network for Object Detection"
+        },
+        {
+            "paperId": "c8a6f5468a1da6a5c3fa71c4af60ad1ff1b51a57",
+            "title": "SG-FCN: A Motion and Memory-Based Deep Learning Model for Video Saliency Detection"
+        },
+        {
+            "paperId": "1b42b3cedee8104a0fcb07894691717bc6920df2",
+            "title": "Remaining Useful Life Prediction for Lithium-Ion Battery: A Deep Learning Approach"
+        },
+        {
+            "paperId": "1b769136233fa9fc08251c27afc7dabaf6d1340e",
+            "title": "Recurrent networks with attention and convolutional networks for sentence representation and classification"
+        },
+        {
+            "paperId": "5ddd7e3ef9fc413bc862dc2b7a18ad1a4eb417d4",
+            "title": "Bayesian hierarchical model-based prognostics for lithium-ion batteries"
+        },
+        {
+            "paperId": "c28779f95e90c15e915bde1e07d58b8eaf9d7efe",
+            "title": "Building a safer, denser lithium-ion battery"
+        },
+        {
+            "paperId": "648fff9d49c72bddc8271341f9bdea2d153b41c4",
+            "title": "Long Short-Term Memory Recurrent Neural Network for Remaining Useful Life Prediction of Lithium-Ion Batteries"
+        },
+        {
+            "paperId": "ba01d5417c28c01fe75665065620e65f391eb245",
+            "title": "Model-Based Lithium-Ion Battery Resistance Estimation From Electric Vehicle Operating Data"
+        },
+        {
+            "paperId": "33dd212f71d194394024ac7ea9e20b06759b2287",
+            "title": "Technological Developments in Batteries: A Survey of Principal Roles, Types, and Management Needs"
+        },
+        {
+            "paperId": "ad605a534a7518843b3d2e1bf717c07c5b483b3f",
+            "title": "Prognostics of remaining useful life for lithium-ion batteries based on a feature vector selection and relevance vector machine approach"
+        },
+        {
+            "paperId": "7d12d3355b85a20601a5e7e8fb4934ada454a6cb",
+            "title": "A state-space-based prognostics model for lithium-ion battery degradation"
+        },
+        {
+            "paperId": "a04e7a40a962046b3db346a17d0dad3568d3d578",
+            "title": "Destruction mechanism of the internal structure in Lithium-ion batteries used in aviation industry"
+        },
+        {
+            "paperId": "8cd142ea3063db9a9c4bad665326d86b275442db",
+            "title": "Heterogeneous ensemble for power load demand forecasting"
+        },
+        {
+            "paperId": "ec21491931d3fbae77375c2f5734466497f9006e",
+            "title": "Capacity fade modelling of lithium-ion battery under cyclic loading conditions"
+        },
+        {
+            "paperId": "9c48ddcb4f80e3d3ddb0bbb1e7687733ba51448e",
+            "title": "Lithium-ion batteries remaining useful life prediction based on a mixture of empirical mode decomposition and ARIMA model"
+        },
+        {
+            "paperId": "918025d64cb99a782ec70d85e31e8099d5f8cea6",
+            "title": "A remaining useful life prediction approach for lithium-ion batteries using Kalman filter and an improved particle filter"
+        },
+        {
+            "paperId": "85c720d1329ad7a24dfac402f28bc111288a5fb2",
+            "title": "A Data-Driven Bias-Correction-Method-Based Lithium-Ion Battery Modeling Approach for Electric Vehicle Applications"
+        },
+        {
+            "paperId": "9b6854952aaa456eabfef4fd30e522819095b2ac",
+            "title": "A Hierarchical Model for Lithium-Ion Battery Degradation Prediction"
+        },
+        {
+            "paperId": "87119572d1065fb079e1dee8fcdb6c4811143f96",
+            "title": "Feed-Forward Networks with Attention Can Solve Some Long-Term Memory Problems"
+        },
+        {
+            "paperId": "1ff9a37d766e3a4f39757f5e1b235a42dacf18ff",
+            "title": "Learning both Weights and Connections for Efficient Neural Network"
+        },
+        {
+            "paperId": "0cbbb7c44a32cada5ed592ee85c36fa6c5d4fba1",
+            "title": "A new prognostics method for state of health estimation of lithium-ion batteries based on a mixture of Gaussian process models and particle filter"
+        },
+        {
+            "paperId": "9632fd8e67a9475f3b0258b759dde0a42e7d5d37",
+            "title": "Dynamic Reliability Assessment for Multi-State Systems Utilizing System-Level Inspection Data"
+        },
+        {
+            "paperId": "a154789f337d35a51b9c485cecf8e7346deaa4fe",
+            "title": "Particle-Filtering-Based Discharge Time Prognosis for Lithium-Ion Batteries With a Statistical Characterization of Use Profiles"
+        },
+        {
+            "paperId": "569d11cd3871b12119dd2080835295d26294ce55",
+            "title": "An adaptive method for health trend prediction of rotating bearings"
+        },
+        {
+            "paperId": "fc0f9d8642a332a64481a790a4fa719aa1c7ed5b",
+            "title": "Improved complete ensemble EMD: A suitable tool for biomedical signal processing"
+        },
+        {
+            "paperId": "5ad2c07bef450fd34ef18e8cb0e1b2ca84daf894",
+            "title": "Condition assessment for the performance degradation of bearing based on a combinatorial feature extraction method"
+        },
+        {
+            "paperId": "3e88122f84be8c9b70a87e7d034ca698110cbb31",
+            "title": "Health diagnosis and remaining useful life prognostics of lithium-ion batteries using data-driven methods"
+        },
+        {
+            "paperId": "9a0bd3012b33388139bdce57bc69216504aabeb8",
+            "title": "Lessons Learned from the 787 Dreamliner Issue on Lithium-Ion Battery Reliability"
+        },
+        {
+            "paperId": "6c0c99d9c1ea3803d64283b362abb38726e53700",
+            "title": "On-board state of health monitoring of lithium-ion batteries using incremental capacity analysis with support vector regression"
+        },
+        {
+            "paperId": "2bd8892110e0c814c8e6011fd24d380e46a60af3",
+            "title": "A Joint Redundancy and Imperfect Maintenance Strategy Optimization for Multi-State Systems"
+        },
+        {
+            "paperId": "5fc336cd0d8963218aca311383e49417feb5a6c2",
+            "title": "An Adaptive Recurrent Neural Network for Remaining Useful Life Prediction of Lithium-ion Batteries"
+        },
+        {
+            "paperId": "346429f5aeacb711e739750474b9db7c2df4e95b",
+            "title": "Prognostics in Battery Health Management"
+        },
+        {
+            "paperId": "b0fa6699b932bf18c404f84bddc4b9fe8ab4a864",
+            "title": "Particle swarm optimization"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "bcdb931989935061c8d9f90cda9717cdca8fc89b",
+            "title": "An improved unscented particle filter approach for lithium-ion battery remaining useful life prediction"
+        },
+        {
+            "paperId": "d0e69de4d4d3f1042ad3169ad0f8e7960975ecd0",
+            "title": "Medium term electricity load forecasting based on CEEMDAN-permutation entropy and ESN with leaky integrator neurons"
+        },
+        {
+            "paperId": "50778f8c018bd883a76574b8b3701aa9e34926a0",
+            "title": "Multiscale Analysis of Suspended Sediment Concentration Data from Natural Channels Using the Hilbert-Huang Transform"
+        },
+        {
+            "paperId": null,
+            "title": "The lithium-ion battery stateof-charge estimation using random forest regression"
+        }
+    ]
+}

@@ -1,0 +1,322 @@
+{
+    "paperId": "daae2cdf397ccdc6b4c86b31f61720a956ce23a4",
+    "externalIds": {
+        "DBLP": "journals/corr/LarsenNNT16",
+        "MAG": "2964122023",
+        "ArXiv": "1604.01357",
+        "DOI": "10.1145/3339185",
+        "CorpusId": 1154979
+    },
+    "title": "Heavy Hitters via Cluster-Preserving Clustering",
+    "abstract": "In the turnstile \u2113<sub>p</sub> heavy hitters problem with parameter \u03b5, one must maintain a high-dimensional vector x \u2208 \u211d<sup>n</sup> subject to updates of the form update (i,\u0394) causing the change x<sub>i</sub> \u2190 x<sub>i</sub> + \u0394, where i \u03b5[n], \u0394 \u2208 \u211d. Upon receiving a query, the goal is to report every \"heavy hitter\" i \u2208 [n] with |x<sub>i</sub>| \u2265 \u03b5 \u2225x\u2225<sub>p</sub> as part of a list L \u2286 [n] of size O(1/\u03b5<sup>p</sup>), i.e. proportional to the maximum possible number of heavy hitters. For any p\u03b5(0,2] the COUNTSKETCH of [CCFC04] solves \u2113<sub>p</sub> heavy hitters using O(\u03b5<sup>-p</sup> lg n) words of space with O(lg n) update time, O(n lg n) query time to output L, and whose output after any query is correct with high probability (whp) 1 - 1/poly(n) [JST11, Section 4.4]. This space bound is optimal even in the strict turnstile model [JST11] in which it is promised that x<sub>i</sub> \u2265 0 for all i \u2208 [n] at all points in the stream, but unfortunately the query time is very slow. To remedy this, the work [CM05] proposed the \"dyadic trick\" for the COUNTMIN sketch for p = 1 in the strict turnstile model, which to maintain whp correctness achieves suboptimal space O(\u03b5<sup>-1</sup>lg<sup>2</sup> n), worse update time O(lg<sup>2</sup> n), but much better query time O(\u03b5<sup>-1</sup>poly(lg n)). An extension to all p \u2208 (0,2] appears in [KNPW11, Theorem 1], and can be obtained from [Pag13]. We show that this tradeoff between space and update time versus query time is unnecessary. We provide a new algorithm, EXPANDERSKETCH, which in the most general turnstile model achieves optimal O(\u03b5-plog n) space, O(log n) update time, and fast O(\u03b5-ppoly(log n)) query time, providing correctness whp. In fact, a simpler version of our algorithm for p = 1 in the strict turnstile model answers queries even faster than the \"dyadic trick\" by roughly a log n factor, dominating it in all regards. Our main innovation is an efficient reduction from the heavy hitters to a clustering problem in which each heavy hitter is encoded as some form of noisy spectral cluster in a much bigger graph, and the goal is to identify every cluster. Since every heavy hitter must be found, correctness requires that every cluster be found. We thus need a \"cluster-preserving clustering\" algorithm, that partitions the graph into clusters with the promise of not destroying any original cluster. To do this we first apply standard spectral graph partitioning, and then we use some novel combinatorial techniques to modify the cuts obtained so as to make sure that the original clusters are sufficiently preserved. Our cluster-preserving clustering may be of broader interest much beyond heavy hitters.",
+    "venue": "IEEE Annual Symposium on Foundations of Computer Science",
+    "year": 2016,
+    "referenceCount": 69,
+    "citationCount": 77,
+    "influentialCitationCount": 5,
+    "openAccessPdf": {
+        "url": "https://dl.acm.org/doi/pdf/10.1145/3339185",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The \"dyadic trick\" for the COUNTMIN sketch for p = 1 in the strict turnstile model is proposed, which to maintain whp correctness achieves suboptimal space O(\u03b5-plog n) space, O(log n) update time, and fast O(\ufffd-ppoly( log n) query time, providing correctness whp."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1741455",
+            "name": "Kasper Green Larsen"
+        },
+        {
+            "authorId": "49344061",
+            "name": "Jelani Nelson"
+        },
+        {
+            "authorId": "143679841",
+            "name": "Huy L. Nguyen"
+        },
+        {
+            "authorId": "1695440",
+            "name": "M. Thorup"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "e414f3b2938462604f4736555f1bcf769e74794a",
+            "title": "BPTree: An \u21132 Heavy Hitters Algorithm Using Constant Memory"
+        },
+        {
+            "paperId": "586e52c505910fc585174a57de4bdb50ab95b8bd",
+            "title": "An Optimal Algorithm for l1-Heavy Hitters in Insertion Streams and Related Problems"
+        },
+        {
+            "paperId": "e347c615b67d55076866a0cb0f0f65168ee4a825",
+            "title": "Beating CountSketch for heavy hitters in insertion streams"
+        },
+        {
+            "paperId": "e9d8bd7a2d73b0b8c2abd7cb0a7e20a3232dbe55",
+            "title": "Taylor Polynomial Estimator for Estimating Frequency Moments"
+        },
+        {
+            "paperId": "61715624c8b1a8f1737ff1c3d0495a37345ff854",
+            "title": "Linear-Time List Recovery of High-Rate Expander Codes"
+        },
+        {
+            "paperId": "92e92c60d139e4de87fe64218e79e2a40c653add",
+            "title": "Partitioning Well-Clustered Graphs: Spectral Clustering Works!"
+        },
+        {
+            "paperId": "27f68d4ab6690c82e406bcac44d337d8a3a7712d",
+            "title": "Universal Sketches for the Frequency Negative Moments and Other Decreasing Streaming Sums"
+        },
+        {
+            "paperId": "3763b88225427964e1d0235a6c0c2dae315a993e",
+            "title": "Time Lower Bounds for Nonadaptive Turnstile Streaming Algorithms"
+        },
+        {
+            "paperId": "7656bb67d135dd70e15c15d805f855136278525b",
+            "title": "Constant factor approximation for balanced cut in the PIE model"
+        },
+        {
+            "paperId": "467501aca85065ec2e8aa2332b0edcbeff9831b3",
+            "title": "For-All Sparse Recovery in Near-Optimal Time"
+        },
+        {
+            "paperId": "04e0fa09914c8d381ba7e46a5edbf05b0e38f0a4",
+            "title": "Identifying high-cardinality hosts from network-wide traffic measurements"
+        },
+        {
+            "paperId": "dc20724b064f464f6f3cc36ad1275abe14b728a1",
+            "title": "Partitioning into Expanders"
+        },
+        {
+            "paperId": "66f3e33261ca81f2c60e20da06290d6279574d48",
+            "title": "Compressed matrix multiplication"
+        },
+        {
+            "paperId": "8cb563ef865c8649893a5b32b4184d632e561259",
+            "title": "Flow-Based Algorithms for Local Graph Clustering"
+        },
+        {
+            "paperId": "65e632d57bd21af433881c5677c3a05f3e159022",
+            "title": "\u21132/\u21132-Foreach Sparse Recovery with Low Risk"
+        },
+        {
+            "paperId": "767f846dc06a21dad536442fb749ec2d28cf7808",
+            "title": "Approximating Large Frequency Moments with Pick-and-Drop Sampling"
+        },
+        {
+            "paperId": "69e3ec7fc5f783d8c8e1708375aecf2d93cfcb16",
+            "title": "On Deterministic Sketching and Streaming for Sparse Recovery and Norm Estimation"
+        },
+        {
+            "paperId": "bc2c9ed5b450646b093ab345ef408540c20ef066",
+            "title": "Approximation algorithms for semi-random partitioning problems"
+        },
+        {
+            "paperId": "49f2214fa494c034106e050ab6d140cc6d215c15",
+            "title": "Approximating the Expansion Profile and Almost Optimal Local Graph Clustering"
+        },
+        {
+            "paperId": "73e3e4bc4546c489009e8ad491ac0fe10b145c39",
+            "title": "Efficiently Decodable Compressed Sensing by List-Recoverable Codes and Recursion"
+        },
+        {
+            "paperId": "c5928c2aa35144306e91db2dcb070af8f0cf25c7",
+            "title": "Approximating the exponential, the lanczos method and an \u00d5(m)-time spectral algorithm for balanced separator"
+        },
+        {
+            "paperId": "0e5a262bf59b68ba8a7a1103d16fa33a9f5ffc28",
+            "title": "Contour Detection and Hierarchical Image Segmentation"
+        },
+        {
+            "paperId": "1e32ec997cd9f85b31aee87007d4b18841d6acd9",
+            "title": "Tight bounds for Lp samplers, finding duplicates in streams, and related problems"
+        },
+        {
+            "paperId": "7d71703c34f5596565a133e0f1598200c0cf2749",
+            "title": "Streaming Algorithms via Precision Sampling"
+        },
+        {
+            "paperId": "f00fdd61731daefcfd7f0788a2ab29edf0380d18",
+            "title": "Space-optimal heavy hitters with strong error bounds"
+        },
+        {
+            "paperId": "d7b735ea70ee89901117e47d44238ba8b1c745d9",
+            "title": "Towards an SDP-based approach to spectral methods: a nearly-linear-time algorithm for graph partitioning and decomposition"
+        },
+        {
+            "paperId": "806bd46599599c55a63d37a6e0d0923272f4d662",
+            "title": "Fast moment estimation in data streams in optimal space"
+        },
+        {
+            "paperId": "f87165166f2d085e815a8a9c1ba6ec96ffb82168",
+            "title": "Fast Manhattan sketches in data streams"
+        },
+        {
+            "paperId": "85f09d9c016d0296a6cbb778c49db2e934269df3",
+            "title": "Zero-one frequency laws"
+        },
+        {
+            "paperId": "14836d573c94dc8db699cd3f0a08373c50d73fc2",
+            "title": "Graph expansion and the unique games conjecture"
+        },
+        {
+            "paperId": "aaa4f1ccf8ce3f5e1fdcf5cbb99c507e6c694047",
+            "title": "A near-optimal algorithm for estimating the entropy of a stream"
+        },
+        {
+            "paperId": "ef2b72acdb481041cbf12604686fbe5485a7a2b9",
+            "title": "1-pass relative-error Lp-sampling with applications"
+        },
+        {
+            "paperId": "4eb9b7933c9ab2a4726342339a1fcff6e5ddec8d",
+            "title": "Efficiently decodable non-adaptive group testing"
+        },
+        {
+            "paperId": "dbeef54442f5fec26e5067a2f80949d1fff7f435",
+            "title": "On the exact space complexity of sketching and streaming small norms"
+        },
+        {
+            "paperId": "7561e82c58e16b92e401648d82aba9fcc749b435",
+            "title": "Bounded Independence Fools Degree-2 Threshold Functions"
+        },
+        {
+            "paperId": "780bcc007e5023958a9a9d9db4179987f6af2d72",
+            "title": "The Data Stream Space Complexity of Cascaded Norms"
+        },
+        {
+            "paperId": "3cc822be8d70e7e6bae5638c6e0248bf1debe1c2",
+            "title": "Hierarchical Sampling from Sketches: Estimating\u00a0Functions over Data Streams"
+        },
+        {
+            "paperId": "a543408d2e362e33a2403cce8403d88ec5329cae",
+            "title": "Finding duplicates in a data stream"
+        },
+        {
+            "paperId": "88f11f6ebd6d50e0a994ef8fc183484c3806be4c",
+            "title": "Finding sparse cuts locally using evolving sets"
+        },
+        {
+            "paperId": "45ad5b9680f2c25ffbddb34785db9907315898c3",
+            "title": "Noise-resilient group testing: Limitations and constructions"
+        },
+        {
+            "paperId": "1c044e893d7055327e2971a9a9b65a8c764ca174",
+            "title": "Finding frequent items in data streams"
+        },
+        {
+            "paperId": "ed85f37bfcee995a4ecaa6124aa174282a5332a6",
+            "title": "Sketching and Streaming Entropy via Approximation Theory"
+        },
+        {
+            "paperId": "ce56688ea6cf1761425d407ed4cf1c5d12e01212",
+            "title": "Interpreting the data: Parallel analysis with Sawzall"
+        },
+        {
+            "paperId": "9386590554c429e80402c082e9d6a2398bcc36b3",
+            "title": "Data streams: algorithms and applications"
+        },
+        {
+            "paperId": "881f6becd2db20d3edcf6e8ac0feb5ecb7ba50f6",
+            "title": "Optimal approximations of the frequency moments of data streams"
+        },
+        {
+            "paperId": "72f15aba2e67b1cc9cd1fb12c99e101c4c1aae4b",
+            "title": "Efficient Computation of Frequent and Top-k Elements in Data Streams"
+        },
+        {
+            "paperId": "03963368736aacb724b82900a01bf0313b609f5e",
+            "title": "Holistic UDAFs at streaming speeds"
+        },
+        {
+            "paperId": "f7c112a80dc91aeb2c2fffb96d46be230a553a38",
+            "title": "ENTROPY WAVES, THE ZIG-ZAG GRAPH PRODUCT, AND NEW CONSTANT-DEGREE"
+        },
+        {
+            "paperId": "cd873347660c2af6a70d623a9fb265893e64c98d",
+            "title": "An improved data stream summary: the count-min sketch and its applications"
+        },
+        {
+            "paperId": "407b1ad9d0dbcef919a0c4624b65323cafcb5f11",
+            "title": "Nearly-linear time algorithms for graph partitioning, graph sparsification, and solving linear systems"
+        },
+        {
+            "paperId": "2803e1343b09670ff68a2e33d1543d236fd93f26",
+            "title": "An information statistics approach to data stream and communication complexity"
+        },
+        {
+            "paperId": "ece890238d1cbc2bdd707cfea7e9877083d6e944",
+            "title": "Frequency Estimation of Internet Packet Streams with Limited Space"
+        },
+        {
+            "paperId": "24763030fb1e9813dad51d28bea9c5d1414f9cda",
+            "title": "Finding frequent items in data streams"
+        },
+        {
+            "paperId": "f36bfb04f8ff4d10aaa204b5338d2234f05c97d2",
+            "title": "On clusterings-good, bad and spectral"
+        },
+        {
+            "paperId": "3cb4d3811cb4c95d0f8b4694a5107864ed40f192",
+            "title": "Computing Iceberg Queries Efficiently"
+        },
+        {
+            "paperId": "b94c7ff9532ab26c3aedbee3988ec4c7a237c173",
+            "title": "Normalized cuts and image segmentation"
+        },
+        {
+            "paperId": "bdf1a72765e0841ac18329d7b9bf8d0d9331be4c",
+            "title": "Linear-time encodable and decodable error-correcting codes"
+        },
+        {
+            "paperId": "27ff3add3c9ef14e16b52615651fc4d248b4fc53",
+            "title": "Explicit construction of linear sized tolerant networks"
+        },
+        {
+            "paperId": "0016b9cc7a76a34719c8b1edd7be7e0936a4198e",
+            "title": "An approximate max-flow min-cut theorem for uniform multicommodity flow problems with applications to approximation algorithms"
+        },
+        {
+            "paperId": "3c01b0ae05bbda8a61753acb030fe533b3545a69",
+            "title": "Approximate Counting, Uniform Generation and Rapidly Mixing Markov Chains"
+        },
+        {
+            "paperId": "1ea6460b290976ec92bbf503c4568d76730a18c4",
+            "title": "Eigenvalues and expanders"
+        },
+        {
+            "paperId": "5285b2c3880c2fe5a93a9ed213a169facf6d6228",
+            "title": "Finding Repeated Elements"
+        },
+        {
+            "paperId": "feb061b699a2249f803baf159a991d63c64f9c99",
+            "title": "Universal Classes of Hash Functions"
+        },
+        {
+            "paperId": "3baa0b2dc11d623274daf067a84e8b51c44392e6",
+            "title": "An Optimal Algorithm for Large Frequency Moments Using O(n^(1-2/k)) Bits"
+        },
+        {
+            "paperId": "bef33daba19743dc38a068a12e832cc3c2f889e4",
+            "title": "il , , lsoperimetric Inequalities for Graphs , and Superconcentrators"
+        },
+        {
+            "paperId": "1c01e83768e9b877a8fe0c74605d2f7dd090fbd5",
+            "title": "lambda1, Isoperimetric inequalities for graphs, and superconcentrators"
+        },
+        {
+            "paperId": "892e4d061bee860096e151d80b349239b8b512c8",
+            "title": "Expander Flows, Geometric Embeddings and Graph Partitioning"
+        },
+        {
+            "paperId": null,
+            "title": "we re-execute the reduction in Section A, modified to the 1 setting. More specifically"
+        },
+        {
+            "paperId": null,
+            "title": "An elementary construction of constantdegree expanders"
+        }
+    ]
+}

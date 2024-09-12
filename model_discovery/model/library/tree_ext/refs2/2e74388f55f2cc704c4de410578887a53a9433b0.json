@@ -1,0 +1,237 @@
+{
+    "paperId": "2e74388f55f2cc704c4de410578887a53a9433b0",
+    "externalIds": {
+        "DBLP": "conf/vldb/GionisIM99",
+        "MAG": "1502916507",
+        "CorpusId": 1578969
+    },
+    "title": "Similarity Search in High Dimensions via Hashing",
+    "abstract": "The nearestor near-neighbor query problems arise in a large variety of database applications, usually in the context of similarity searching. Of late, there has been increasing interest in building search/index structures for performing similarity search over high-dimensional data, e.g., image databases, document collections, time-series databases, and genome databases. Unfortunately, all known techniques for solving this problem fall prey to the \\curse of dimensionality.\" That is, the data structures scale poorly with data dimensionality; in fact, if the number of dimensions exceeds 10 to 20, searching in k-d trees and related structures involves the inspection of a large fraction of the database, thereby doing no better than brute-force linear search. It has been suggested that since the selection of features and the choice of a distance metric in typical applications is rather heuristic, determining an approximate nearest neighbor should su ce for most practical purposes. In this paper, we examine a novel scheme for approximate similarity search based on hashing. The basic idea is to hash the points Supported by NAVY N00014-96-1-1221 grant and NSF Grant IIS-9811904. Supported by Stanford Graduate Fellowship and NSF NYI Award CCR-9357849. Supported by ARO MURI Grant DAAH04-96-1-0007, NSF Grant IIS-9811904, and NSF Young Investigator Award CCR9357849, with matching funds from IBM, Mitsubishi, Schlumberger Foundation, Shell Foundation, and Xerox Corporation. Permission to copy without fee all or part of this material is granted provided that the copies are not made or distributed for direct commercial advantage, the VLDB copyright notice and the title of the publication and its date appear, and notice is given that copying is by permission of the Very Large Data Base Endowment. To copy otherwise, or to republish, requires a fee and/or special permission from the Endowment. Proceedings of the 25th VLDB Conference, Edinburgh, Scotland, 1999. from the database so as to ensure that the probability of collision is much higher for objects that are close to each other than for those that are far apart. We provide experimental evidence that our method gives signi cant improvement in running time over other methods for searching in highdimensional spaces based on hierarchical tree decomposition. Experimental results also indicate that our scheme scales well even for a relatively large number of dimensions (more than 50).",
+    "venue": "Very Large Data Bases Conference",
+    "year": 1999,
+    "referenceCount": 50,
+    "citationCount": 3758,
+    "influentialCitationCount": 550,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Experimental results indicate that the novel scheme for approximate similarity search based on hashing scales well even for a relatively large number of dimensions, and provides experimental evidence that the method gives improvement in running time over other methods for searching in highdimensional spaces based on hierarchical tree decomposition."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1682878",
+            "name": "A. Gionis"
+        },
+        {
+            "authorId": "1688317",
+            "name": "P. Indyk"
+        },
+        {
+            "authorId": "84095744",
+            "name": "R. Motwani"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "0e341b2a181f71dea088dbba800e70262f91a79e",
+            "title": "Color Science: Concepts and Methods, Quantitative Data and Formulae, 2nd Edition"
+        },
+        {
+            "paperId": "8dc4edd931773be37410fe96fee46d22c913b099",
+            "title": "Finding interesting associations without support pruning"
+        },
+        {
+            "paperId": "63eaeb0c48175065ffd096aad10aed712c6d7bbb",
+            "title": "A Quantitative Analysis and Performance Study for Similarity-Search Methods in High-Dimensional Spaces"
+        },
+        {
+            "paperId": "b18cf2f7bcf6510d6552027baa212df07ca0524f",
+            "title": "Wavelet-based histograms for selectivity estimation"
+        },
+        {
+            "paperId": "4c57c83beae22795aa38bb42d97722fda3bc5fec",
+            "title": "Dimensionality reduction for similarity searching in dynamic databases"
+        },
+        {
+            "paperId": "919b593161e02ef8c04d82833e741982b844a696",
+            "title": "Approximate medians and other quantiles in one pass and with limited memory"
+        },
+        {
+            "paperId": "9c25dda859cf33cc9ebfa856a4e0c57e84a82970",
+            "title": "Random sampling for histogram construction: how much is enough?"
+        },
+        {
+            "paperId": "cb1e582197917e661e2bd0eec1b5e5106c27a23a",
+            "title": "High-dimensional index structures database support for next decade's applications (tutorial)"
+        },
+        {
+            "paperId": "0cbe845876953bdf12d720b06d4ec79344de4a68",
+            "title": "A cost model for similarity queries in metric spaces"
+        },
+        {
+            "paperId": "0cb25726485be62d979384f976ea407e2e4a38bf",
+            "title": "Multidimensional Access Methods: Trees Have Grown Everywhere"
+        },
+        {
+            "paperId": "98bfe40edf69f1c3a3f67ce1debfe9ff9ccb16e0",
+            "title": "Approximate Nearest Neighbor Queries Revisited"
+        },
+        {
+            "paperId": "25f862404925390572724bba9293e8f87825d03b",
+            "title": "Visually Searching the Web for Content"
+        },
+        {
+            "paperId": "35a5d120f3c3af9f20ed7d81c9bc9760c93b2bc0",
+            "title": "The SR-tree: an index structure for high-dimensional nearest neighbor queries"
+        },
+        {
+            "paperId": "2989b07819dfd279222a3755d3b7862f1a1a7f53",
+            "title": "Texture Features for Browsing and Retrieval of Image Data"
+        },
+        {
+            "paperId": "d577ef60c951ab6a8019702beca390d493dc5a42",
+            "title": "Query by Image and Video Content: The QBIC System"
+        },
+        {
+            "paperId": "08a8b05245edc89e24e40f23035fd10f3f623dab",
+            "title": "Accounting for boundary effects in nearest-neighbor searching"
+        },
+        {
+            "paperId": "09370d132a1e238a778f5e39a7a096994dc25ec1",
+            "title": "Discriminant Adaptive Nearest Neighbor Classification"
+        },
+        {
+            "paperId": "b2d4378915a68912b48532cba31bfcc4867f1ddb",
+            "title": "A survey of information retrieval and filtering methods"
+        },
+        {
+            "paperId": "826ad9d93afd1826a1b4146c88c1476cef5835df",
+            "title": "The geometry of graphs and some of its algorithmic applications"
+        },
+        {
+            "paperId": "7f3da293b74862e916ea40360262f3444c949e75",
+            "title": "An optimal algorithm for approximate nearest neighbor searching"
+        },
+        {
+            "paperId": "164125a65d42a791d2c1e108559344caef96d08b",
+            "title": "Indexing by Latent Semantic Analysis"
+        },
+        {
+            "paperId": "7de7722b368930284d53a059ac387c7aa9d59c76",
+            "title": "The Design and Analysis of Spatial Data Structures"
+        },
+        {
+            "paperId": "49af3e80343eb80c61e727ae0c27541628c7c5e2",
+            "title": "Introduction to Modern Information Retrieval"
+        },
+        {
+            "paperId": "cab3c73f1b2140231b98944c720100b356d91b28",
+            "title": "An Algorithm for Finding Best Matches in Logarithmic Expected Time"
+        },
+        {
+            "paperId": "36fc3482b0d3d3eb0d2976492ee2b304bf89887e",
+            "title": "The dimension of almost spherical sections of convex bodies"
+        },
+        {
+            "paperId": "cc73bacd6a00442570d15e122604ad6862b8663d",
+            "title": "Multidimensional binary search trees used for associative searching"
+        },
+        {
+            "paperId": "4091b8ec7c223cdfeb121eacb2117ba156d571cd",
+            "title": "Pattern classification and scene analysis"
+        },
+        {
+            "paperId": "b07ce649d6f6eb636872527104b0209d3edc8188",
+            "title": "Pattern classification and scene analysis"
+        },
+        {
+            "paperId": "25e0d93ca47d86510d6a0f9cda9ae3594f3d05b2",
+            "title": "Color Science: Concepts and Methods, Quantitative Data and Formulas"
+        },
+        {
+            "paperId": "9da96712b8790ded860fd610bbabbf9c29db1203",
+            "title": "Image Databases and Multi-Media Search"
+        },
+        {
+            "paperId": null,
+            "title": "Integrated Spatial and Feature Im-  age Systems: Retrieval, Analysis and Compression"
+        },
+        {
+            "paperId": "ad7bc6842bd0258b4ef1f46ce3bc5a1a2cdfef14",
+            "title": "Accounting for Boundary E ects in"
+        },
+        {
+            "paperId": null,
+            "title": "Randomized Algo-  rithms"
+        },
+        {
+            "paperId": "32a8660582f5b07727906a43d737fda902a312eb",
+            "title": "Photobook: tools for content-based manipulation of image databases"
+        },
+        {
+            "paperId": null,
+            "title": "Discriminant Adaptive Nearest Neighbor Classification"
+        },
+        {
+            "paperId": "c564aa7639a08c280423489e52b6e32055c9aa7f",
+            "title": "Vector quantization and signal compression"
+        },
+        {
+            "paperId": "777d4efa4622137282b469e12a06aa2a765cea7c",
+            "title": "Algorithms in Combinatorial Geometry"
+        },
+        {
+            "paperId": null,
+            "title": "\u000e cient and e ective querying by image content"
+        },
+        {
+            "paperId": "62003b171b30c3f05989fcce6b8462e0ca2a42d4",
+            "title": "Color Science Concepts and Methods"
+        },
+        {
+            "paperId": "6369dc4be83918fd1e9249947ab9fd9dec7115d4",
+            "title": "8 Nearest neighbor methods in discrimination"
+        },
+        {
+            "paperId": "0efb841403aa6252b39ae6975c1cc5410554ef7b",
+            "title": "Nearest neighbor pattern classification"
+        },
+        {
+            "paperId": null,
+            "title": "Fonctions aleastoires de second ordere. Processus Stochastiques et mouvement Brownian"
+        },
+        {
+            "paperId": "023b81a379bc957edcaa72429ea4c182dfd49ad2",
+            "title": "\u00dcber lineare Methoden in der Wahrscheinlichkeitsrechnung"
+        },
+        {
+            "paperId": "9ebb5c0d6d54707a4d6181a693b6f755ec8a45a9",
+            "title": "Analysis of a complex of statistical variables into principal components."
+        },
+        {
+            "paperId": null,
+            "title": "P1 If there exists p (cid:3) such that p (cid:3) 2 B (q;r1), then"
+        },
+        {
+            "paperId": null,
+            "title": "Nearest neighbor (cid:12)lters for multivariate data"
+        },
+        {
+            "paperId": null,
+            "title": "Lo(cid:19)eve. Fonctions aleastoires de second ordere"
+        },
+        {
+            "paperId": null,
+            "title": "Approximate matching with high dimensionality R-trees"
+        },
+        {
+            "paperId": null,
+            "title": "Airphoto dataset. http://vivaldi. ece.ucsb.edu/Manjunath/research Texture features for browsing and retrieval of large image data"
+        },
+        {
+            "paperId": null,
+            "title": "Finding pirated video sequences on the Internet"
+        }
+    ]
+}

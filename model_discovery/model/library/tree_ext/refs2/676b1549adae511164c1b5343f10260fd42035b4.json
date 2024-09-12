@@ -1,0 +1,128 @@
+{
+    "paperId": "676b1549adae511164c1b5343f10260fd42035b4",
+    "externalIds": {
+        "MAG": "100656083",
+        "CorpusId": 14102322
+    },
+    "title": "The Impact of Frequency on Summarization",
+    "abstract": "Most multi-document summarizers utilize term frequency related features to determine sentence importance. No empirical studies, however, have been carried out to isolate the contribution made by frequency information from that of other features. Here, we examine the impact of frequency on various aspects of summarization and the role of frequency in the design of a summarization system. We describe SumBasic, a summarization system that exploits frequency exclusively to create summaries. SumBasic outperforms many of the summarization systems in DUC 2004, and performs very well in the 2005 MSE evaluation, confirming that frequency alone is a powerful feature in summary creation. We also demonstrate how a frequency-based summarizer can incorporate context adjustment in a natural way, and show that this adjustment contributes to the good performance of the summarizer and is sufficient means for duplication removal in multi-document summarization.",
+    "venue": "",
+    "year": 2005,
+    "referenceCount": 23,
+    "citationCount": 328,
+    "influentialCitationCount": 33,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "SumBasic is described, a summarization system that exploits frequency exclusively to create summaries and it is demonstrated how a frequency-based summarizer can incorporate context adjustment in a natural way and show that this adjustment contributes to the good performance of the summarizer and is sufficient means for duplication removal in multi-document summarization."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3115414",
+            "name": "A. Nenkova"
+        },
+        {
+            "authorId": "1909300",
+            "name": "Lucy Vanderwende"
+        },
+        {
+            "authorId": "1909300",
+            "name": "Lucy Vanderwende"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "60b05f32c32519a809f21642ef1eb3eaf3848008",
+            "title": "ROUGE: A Package for Automatic Evaluation of Summaries"
+        },
+        {
+            "paperId": "74d2ad28be32a5802a1b15d4e9a430db2234a3dd",
+            "title": "Automatic Evaluation of Machine Translation Quality Using Longest Common Subsequence and Skip-Bigram Statistics"
+        },
+        {
+            "paperId": "361a8ae5d71635d526d3e54e09a9caec9824e4ff",
+            "title": "Using N-Grams To Understand the Nature of Summaries"
+        },
+        {
+            "paperId": "5a4ec35ccc0ee062af80154cd5ea8d5965181b0e",
+            "title": "Evaluation Challenges in Large-Scale Document Summarization"
+        },
+        {
+            "paperId": "1589a718d927964b12b916adb0ccdc7b9aa6d65e",
+            "title": "Examining the consensus between human summaries: initial experiments with factoid analysis"
+        },
+        {
+            "paperId": "c63bb976dc0d3a897f3b0920170a4c573ef904c6",
+            "title": "Automatic Evaluation of Summaries Using N-gram Co-occurrence Statistics"
+        },
+        {
+            "paperId": "590f1b352c848c84578e52a172a4ee8b17c0706d",
+            "title": "Automated multi-document summarization in NeATS"
+        },
+        {
+            "paperId": "557e2210ff97a69c601c94f8f3993455ba05cbfc",
+            "title": "On Judging the Significance of Differences by Examining the Overlap Between Confidence Intervals"
+        },
+        {
+            "paperId": "9dcf566fa1515896ac7df2c6ff4b158536cc584f",
+            "title": "More accurate tests for the statistical significance of result differences"
+        },
+        {
+            "paperId": "eb82d3035849cd23578096462ba419b53198a556",
+            "title": "The PageRank Citation Ranking : Bringing Order to the Web"
+        },
+        {
+            "paperId": "0f13d65762d257230438e4661fe9ba8962727521",
+            "title": "Information Fusion in the Context of Multi-Document Summarization"
+        },
+        {
+            "paperId": "10ce81dadc2e07d69c8a4f0bbdf7d14b3f37882e",
+            "title": "The Use of MMR, Diversity-Based Reranking for Reordering Documents and Producing Summaries"
+        },
+        {
+            "paperId": "d80a6a85b0c263d638877fff66ddc12963e3c34f",
+            "title": "A trainable document summarizer"
+        },
+        {
+            "paperId": "d4b4d601dc386a61110e4ab424f068d599c4913c",
+            "title": "The formation of abstracts by the selection of sentences"
+        },
+        {
+            "paperId": "5cf35c359c2ad20d958566552f868d0efb382bc0",
+            "title": "Identifying similarities and differences across English and Arabic news"
+        },
+        {
+            "paperId": "70cb232a6e391bfa49b0441a9956820c52ec32f2",
+            "title": "Evaluating Content Selection in Summarization: The Pyramid Method"
+        },
+        {
+            "paperId": "4c0d6180690141e5497686b0d4f05c62c1f93e3c",
+            "title": "Event-Centric Summary Generation"
+        },
+        {
+            "paperId": "644fee1210c7704a3d2273b63854057e0d698e1f",
+            "title": "Left-Brain/Right-Brain Multi-Document Summarization"
+        },
+        {
+            "paperId": "8937f6ecd5e19b85c2875bad3e10e320fd15623b",
+            "title": "LexRank: Graph-based Centrality as Salience in Text Summarization"
+        },
+        {
+            "paperId": "8974a2851439f916a4f3ce09535a65c80982cb8e",
+            "title": "Vocabulary Agreement Among Model Summaries And Source Documents 1"
+        },
+        {
+            "paperId": "23996d66d95bbd5dd85cf7c53ecae976c924008d",
+            "title": "Intrinsic Evaluation of Generic News Text Summarization Systems"
+        },
+        {
+            "paperId": "5fb43083c1473dbb368d1034c14bb22e95c91504",
+            "title": "Experiments in Multidocument Summarization"
+        },
+        {
+            "paperId": null,
+            "title": "Sentence simplification in automatic text summarization"
+        }
+    ]
+}

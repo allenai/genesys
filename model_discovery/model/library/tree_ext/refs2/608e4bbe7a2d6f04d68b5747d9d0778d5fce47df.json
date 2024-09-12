@@ -1,0 +1,262 @@
+{
+    "paperId": "608e4bbe7a2d6f04d68b5747d9d0778d5fce47df",
+    "externalIds": {
+        "MAG": "2793273050",
+        "DBLP": "journals/corr/abs-1803-00144",
+        "ArXiv": "1803.00144",
+        "CorpusId": 4760632
+    },
+    "title": "Learning Longer-term Dependencies in RNNs with Auxiliary Losses",
+    "abstract": "Despite recent advances in training recurrent neural networks (RNNs), capturing long-term dependencies in sequences remains a fundamental challenge. Most approaches use backpropagation through time (BPTT), which is difficult to scale to very long sequences. This paper proposes a simple method that improves the ability to capture long term dependencies in RNNs by adding an unsupervised auxiliary loss to the original objective. This auxiliary loss forces RNNs to either reconstruct previous events or predict next events in a sequence, making truncated backpropagation feasible for long sequences and also improving full BPTT. We evaluate our method on a variety of settings, including pixel-by-pixel image classification with sequence lengths up to 16\\,000, and a real document classification benchmark. Our results highlight good performance and resource efficiency of this approach over competitive baselines, including other recurrent models and a comparable sized Transformer. Further analyses reveal beneficial effects of the auxiliary loss on optimization and regularization, as well as extreme cases where there is little to no backpropagation.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2018,
+    "referenceCount": 55,
+    "citationCount": 170,
+    "influentialCitationCount": 27,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a simple method that improves the ability to capture long term dependencies in RNNs by adding an unsupervised auxiliary loss to the original objective, making truncated backpropagation feasible for long sequences and also improving full BPTT."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "40895509",
+            "name": "Trieu H. Trinh"
+        },
+        {
+            "authorId": "2555924",
+            "name": "Andrew M. Dai"
+        },
+        {
+            "authorId": "1821711",
+            "name": "Thang Luong"
+        },
+        {
+            "authorId": "2827616",
+            "name": "Quoc V. Le"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "0fe61aaa54ec4e37849330f2cbc4e7bb8ad7eb40",
+            "title": "Parallel Distributed Processing"
+        },
+        {
+            "paperId": "8691706ad0cf5e83969658b2e6bfffdc379440c9",
+            "title": "Generating Wikipedia by Summarizing Long Sequences"
+        },
+        {
+            "paperId": "2a785a4a824d1028988daecec54a81ce1999a41e",
+            "title": "Z-Forcing: Training Stochastic Recurrent Networks"
+        },
+        {
+            "paperId": "1e4cfedd79a108d0d04cc498bb146e4dcd4b5f0a",
+            "title": "Neural Speed Reading via Skim-RNN"
+        },
+        {
+            "paperId": "ae8d5be3caea59a21221f02ef04d49a86cb80191",
+            "title": "Skip RNN: Learning to Skip State Updates in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "ec34e40cfff80f3496bbec82658ba391fc6ded68",
+            "title": "Learning to skip state updates in recurrent neural networks"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "c25a67ad7e8629a9d12b9e2fc356cd73af99a060",
+            "title": "Learning to Skim Text"
+        },
+        {
+            "paperId": "2e77b99e8bd10b9e4551a780c0bde9dd10fdbe9b",
+            "title": "PixelCNN++: Improving the PixelCNN with Discretized Logistic Mixture Likelihood and Other Modifications"
+        },
+        {
+            "paperId": "85f94d8098322f8130512b4c6c4627548ce4a6cc",
+            "title": "Unsupervised Pretraining for Sequence to Sequence Learning"
+        },
+        {
+            "paperId": "27760cc69be4ce445962ccb270a02d1944a9d4c9",
+            "title": "Decoupled Neural Interfaces using Synthetic Gradients"
+        },
+        {
+            "paperId": "7dba53e72c182e25e98e8f73a99d75ff69dda0c2",
+            "title": "Recurrent Highway Networks"
+        },
+        {
+            "paperId": "136cf66392f1d6bf42da4cc070888996dc472b91",
+            "title": "On Multiplicative Integration with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "f61e9fd5a4878e1493f7a6b03774a61c17b7e9a4",
+            "title": "Memory-Efficient Backpropagation Through Time"
+        },
+        {
+            "paperId": "84ca430856a92000e90cd728445ca2241c10ddc3",
+            "title": "Very Deep Convolutional Networks for Natural Language Processing"
+        },
+        {
+            "paperId": "942deb7d865b7782c03176d95e3a0d56cb71009e",
+            "title": "Training Deep Nets with Sublinear Memory Cost"
+        },
+        {
+            "paperId": "ef3152106e7f4d05ad8d32a5b90d3790c5cdef24",
+            "title": "Recurrent Orthogonal Networks and Long-Memory Tasks"
+        },
+        {
+            "paperId": "573f0e60493e26558dd71f4c2ecc8d3b4784cbbd",
+            "title": "Efficient Character-level Document Classification by Combining Convolution and Recurrent Layers"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "e9c771197a6564762754e48c1daafb066f449f2e",
+            "title": "Unitary Evolution Recurrent Neural Networks"
+        },
+        {
+            "paperId": "4aa9f5150b46320f534de4747a2dd0cd7f3fe292",
+            "title": "Semi-supervised Sequence Learning"
+        },
+        {
+            "paperId": "51a55df1f023571a7e07e338ee45a3e3d66ef73e",
+            "title": "Character-level Convolutional Networks for Text Classification"
+        },
+        {
+            "paperId": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+            "title": "Effective Approaches to Attention-based Neural Machine Translation"
+        },
+        {
+            "paperId": "3056add22b20e3361c38c0472d294a79d4031cb4",
+            "title": "Listen, attend and spell: A neural network for large vocabulary conversational speech recognition"
+        },
+        {
+            "paperId": "df137487e20ba7c6e1e2b9a1e749f2a578b5ad99",
+            "title": "Scheduled Sampling for Sequence Prediction with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "d46b81707786d18499f911b4ab72bb10c65406ba",
+            "title": "A Simple Way to Initialize Recurrent Networks of Rectified Linear Units"
+        },
+        {
+            "paperId": "1c3e323d69a41ca914f714e6c1c88ee1e1d9c06a",
+            "title": "Towards Biologically Plausible Deep Learning"
+        },
+        {
+            "paperId": "9665247ea3421929f9b6ad721f139f11edb1dbb8",
+            "title": "Learning Longer Memory in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "6ef259c2f6d50373abfec14fcb8fa924f7b7af0b",
+            "title": "Attention for Fine-Grained Categorization"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "ac3ee98020251797c2b401e1389461df88e52e62",
+            "title": "Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "5522764282c85aea422f1c4dc92ff7e0ca6987bc",
+            "title": "A Clockwork RNN"
+        },
+        {
+            "paperId": "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17",
+            "title": "Generating Sequences With Recurrent Neural Networks"
+        },
+        {
+            "paperId": "38f35dd624cd1cf827416e31ac5e0e0454028eca",
+            "title": "Regularization of Neural Networks using DropConnect"
+        },
+        {
+            "paperId": "84069287da0a6b488b8c933f3cb5be759cb6237e",
+            "title": "On the difficulty of training recurrent neural networks"
+        },
+        {
+            "paperId": "9c0ddf74f87d154db88d79c640578c1610451eec",
+            "title": "Parsing Natural Scenes and Natural Language with Recursive Neural Networks"
+        },
+        {
+            "paperId": "0d6203718c15f137fda2f295c96269bc2b254644",
+            "title": "Learning Recurrent Neural Networks with Hessian-Free Optimization"
+        },
+        {
+            "paperId": "e1e770e3ee4a45c6b384b4f647e40c180643d39e",
+            "title": "Short-term memory in orthogonal neural networks."
+        },
+        {
+            "paperId": "11540131eae85b2e11d53df7f1360eeb6476e7f4",
+            "title": "Learning to Forget: Continual Prediction with LSTM"
+        },
+        {
+            "paperId": "a5eb96540ef53b49eac2246d6b13635fe6e54451",
+            "title": "A general framework for adaptive processing of data structures"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "3e33eca03933caaec671e20692e79d1acc9527e1",
+            "title": "Supervised neural networks for the classification of structures"
+        },
+        {
+            "paperId": "b13813b49f160e1a2010c44bd4fb3d09a28446e3",
+            "title": "Hierarchical Recurrent Neural Networks for Long-Term Dependencies"
+        },
+        {
+            "paperId": "78f6f0ac3d501cb0073a7d94edde5267044a59ae",
+            "title": "Parallel Distributed Processing: Explorations in the Microstructure of Cognition, vol 1: Foundations, vol 2: Psychological and Biological Models"
+        },
+        {
+            "paperId": "59ce9cdbde13affc05a6c1f48a51ee7b0fcb154b",
+            "title": "The Penn Treebank: Annotating Predicate Argument Structure"
+        },
+        {
+            "paperId": "50c770b425a5bb25c77387f687a9910a9d130722",
+            "title": "Learning Complex, Extended Sequences Using the Principle of History Compression"
+        },
+        {
+            "paperId": "7e06d68ea4ab3172755d385a0ebb65d23c4b3707",
+            "title": "Parallel Distributed Processing: Explorations in the Micro-structure of Cognition"
+        },
+        {
+            "paperId": null,
+            "title": "Learning Longer-term Dependencies in RNNs with Auxiliary Losses"
+        },
+        {
+            "paperId": null,
+            "title": "TensorFlow: Large-scale machine learning"
+        },
+        {
+            "paperId": "b5e3beb791cc17cdaf131d5cca6ceb796226d832",
+            "title": "Novel Dataset for Fine-Grained Image Categorization : Stanford Dogs"
+        },
+        {
+            "paperId": null,
+            "title": "Lecture 6.5\u2014RmsProp: Divide the gradient by a running average of its recent magnitude"
+        },
+        {
+            "paperId": null,
+            "title": "Kingma, Diederik P and Ba, Jimmy"
+        },
+        {
+            "paperId": "2e5f2b57f4c476dd69dc22ccdf547e48f40a994c",
+            "title": "Gradient Flow in Recurrent Nets: the Difficulty of Learning Long-Term Dependencies"
+        }
+    ]
+}

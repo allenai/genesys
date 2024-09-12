@@ -1,0 +1,262 @@
+{
+    "paperId": "488bb25e0b1777847f04c943e6dbc4f84415b712",
+    "externalIds": {
+        "DBLP": "journals/corr/MetzPPS16",
+        "ArXiv": "1611.02163",
+        "MAG": "2554314924",
+        "CorpusId": 6610705
+    },
+    "title": "Unrolled Generative Adversarial Networks",
+    "abstract": "We introduce a method to stabilize Generative Adversarial Networks (GANs) by defining the generator objective with respect to an unrolled optimization of the discriminator. This allows training to be adjusted between using the optimal discriminator in the generator's objective, which is ideal but infeasible in practice, and using the current value of the discriminator, which is often unstable and leads to poor solutions. We show how this technique solves the common problem of mode collapse, stabilizes training of GANs with complex recurrent generators, and increases diversity and coverage of the data distribution by the generator.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2016,
+    "referenceCount": 55,
+    "citationCount": 955,
+    "influentialCitationCount": 118,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces a method to stabilize Generative Adversarial Networks by defining the generator objective with respect to an unrolled optimization of the discriminator, and shows how this technique solves the common problem of mode collapse, stabilizes training of GANs with complex recurrent generators, and increases diversity and coverage of the data distribution by the generator."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2096458",
+            "name": "Luke Metz"
+        },
+        {
+            "authorId": "16443937",
+            "name": "Ben Poole"
+        },
+        {
+            "authorId": "144846367",
+            "name": "David Pfau"
+        },
+        {
+            "authorId": "1407546424",
+            "name": "Jascha Narain Sohl-Dickstein"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "9ed5757629a0fad4a1233af8ca02594078812bf8",
+            "title": "Improved generator objectives for GANs"
+        },
+        {
+            "paperId": "024d30897e0a2b036bc122163a954b7f1a1d0679",
+            "title": "Mode Regularized Generative Adversarial Networks"
+        },
+        {
+            "paperId": "ecc0edd450ae7e52f65ddf61405b30ad6dbabdd7",
+            "title": "Conditional Image Synthesis with Auxiliary Classifier GANs"
+        },
+        {
+            "paperId": "3c7092347a5b7804d9534b6f3f52032c1502cbf8",
+            "title": "Amortised MAP Inference for Image Super-resolution"
+        },
+        {
+            "paperId": "cad4ac0d2389a89cf1955dd4788278c1e8ac1af9",
+            "title": "Learning What and Where to Draw"
+        },
+        {
+            "paperId": "df0c54fe61f0ffb9f0e36a17c2038d9a1964cba3",
+            "title": "Photo-Realistic Single Image Super-Resolution Using a Generative Adversarial Network"
+        },
+        {
+            "paperId": "fc7822f56dd255a872326b9536a0821bbf0277dd",
+            "title": "Generative Visual Manipulation on the Natural Image Manifold"
+        },
+        {
+            "paperId": "2ba23d9b46027e47b4483243871760e315213ffe",
+            "title": "Energy-based Generative Adversarial Network"
+        },
+        {
+            "paperId": "7b07a87ff71b85f3493d1944034a960917b8482f",
+            "title": "Alternating Back-Propagation for Generator Network"
+        },
+        {
+            "paperId": "0936352b78a52bc5d2b5e3f04233efc56664af51",
+            "title": "Conditional Image Generation with PixelCNN Decoders"
+        },
+        {
+            "paperId": "6a97d2668187965743d1b825b306defccbabbb4c",
+            "title": "Improved Variational Inference with Inverse Autoregressive Flow"
+        },
+        {
+            "paperId": "71683e224ab91617950956b5005ed0439a733a71",
+            "title": "Learning to learn by gradient descent by gradient descent"
+        },
+        {
+            "paperId": "eb7ee0bc355652654990bcf9f92f124688fde493",
+            "title": "InfoGAN: Interpretable Representation Learning by Information Maximizing Generative Adversarial Nets"
+        },
+        {
+            "paperId": "571b0750085ae3d939525e62af510ee2cee9d5ea",
+            "title": "Improved Techniques for Training GANs"
+        },
+        {
+            "paperId": "fcf43325529c8b1cc26aeb52fd5d7e532abb0a40",
+            "title": "Adversarially Learned Inference"
+        },
+        {
+            "paperId": "ffdcad14d2f6a12f607b59f88da4a939f4821691",
+            "title": "f-GAN: Training Generative Neural Samplers using Variational Divergence Minimization"
+        },
+        {
+            "paperId": "e1ce8d00729f9e61eeb315f3cbd7b5354706adbd",
+            "title": "Synthesizing the preferred inputs for neurons in neural networks via deep generator networks"
+        },
+        {
+            "paperId": "09879f7956dddc2a9328f5c1472feeb8402bcbcf",
+            "title": "Density estimation using Real NVP"
+        },
+        {
+            "paperId": "6c7f040a150abf21dbcefe1f22e0f98fa184f41a",
+            "title": "Generative Adversarial Text to Image Synthesis"
+        },
+        {
+            "paperId": "915c4bb289b3642489e904c65a47fa56efb60658",
+            "title": "Perceptual Losses for Real-Time Style Transfer and Super-Resolution"
+        },
+        {
+            "paperId": "3e837ba2bfcb028e2331cd3b0e5fefddc5b1c2a4",
+            "title": "Semantic Style Transfer and Turning Two-Bit Doodles into Fine Artworks"
+        },
+        {
+            "paperId": "41f1d50c85d3180476c4c7b3eea121278b0d8474",
+            "title": "Pixel Recurrent Neural Networks"
+        },
+        {
+            "paperId": "8388f1be26329fa45e5807e968a641ce170ea078",
+            "title": "Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks"
+        },
+        {
+            "paperId": "bc82b4f9f202062857958f0336fc28327a75563b",
+            "title": "Structured Prediction Energy Networks"
+        },
+        {
+            "paperId": "39e0c341351f8f4a39ac890b96217c7f4bde5369",
+            "title": "A note on the evaluation of generative models"
+        },
+        {
+            "paperId": "3e47c4c2dd98c49b7771c7228812d5fd9eee56a3",
+            "title": "Importance Weighted Autoencoders"
+        },
+        {
+            "paperId": "1b5a24639fa80056d1a17b15f6997d10e76cc731",
+            "title": "Understanding Neural Networks Through Deep Visualization"
+        },
+        {
+            "paperId": "c5c3f64dea0971bd4babf017b6ce82115ea9e31e",
+            "title": "Bidirectional Helmholtz Machines"
+        },
+        {
+            "paperId": "f267934e9de60c5badfa9d3f28918e67ae7a2bf4",
+            "title": "Generative Image Modeling Using Spatial LSTMs"
+        },
+        {
+            "paperId": "94618b949f8f18a18f7289dc742162996d376433",
+            "title": "GSNs : Generative Stochastic Networks"
+        },
+        {
+            "paperId": "2dcef55a07f8607a819c21fe84131ea269cc2e3c",
+            "title": "Deep Unsupervised Learning using Nonequilibrium Thermodynamics"
+        },
+        {
+            "paperId": "687e80eb70c7bbad6001006d9269b202650a3354",
+            "title": "Deep Convolutional Inverse Graphics Network"
+        },
+        {
+            "paperId": "a2785f66c20fbdf30ec26c0931584c6d6a0f4fca",
+            "title": "DRAW: A Recurrent Neural Network For Image Generation"
+        },
+        {
+            "paperId": "e2820bffe5b42cb7d88b7f65c12171c62ab4aae2",
+            "title": "Gradient-based Hyperparameter Optimization through Reversible Learning"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "9e46f2b8e00a31d06662b276d46b37852ec725c9",
+            "title": "Example Selection For Dictionary Learning"
+        },
+        {
+            "paperId": "dc8301b67f98accbb331190dd7bd987952a692af",
+            "title": "NICE: Non-linear Independent Components Estimation"
+        },
+        {
+            "paperId": "f87247fb37f6b48da0757d7a1acf38da44510cdb",
+            "title": "Stochastic Back-propagation and Variational Inference in Deep Latent Gaussian Models"
+        },
+        {
+            "paperId": "dc6ac3437f0a6e64e4404b1b9d188394f8a3bf71",
+            "title": "Deep Inside Convolutional Networks: Visualising Image Classification Models and Saliency Maps"
+        },
+        {
+            "paperId": "5f5dc5b9a2ba710937e2c413b37b053cd673df02",
+            "title": "Auto-Encoding Variational Bayes"
+        },
+        {
+            "paperId": "bd5fc28c7356915ec71abafbe86b7596c60720aa",
+            "title": "The conference paper"
+        },
+        {
+            "paperId": "593678c350e955f9fe4e0b1ac7f51a74b026709a",
+            "title": "Multi-Agent Learning with Policy Prediction"
+        },
+        {
+            "paperId": "ea9d2a2b4ce11aaf85136840c65f3bc9c03ab649",
+            "title": "Understanding the difficulty of training deep feedforward neural networks"
+        },
+        {
+            "paperId": "e2b7f37cd97a7907b1b8a41138721ed06a0b76cd",
+            "title": "Stacked Denoising Autoencoders: Learning Useful Representations in a Deep Network with a Local Denoising Criterion"
+        },
+        {
+            "paperId": "904ab6edd082c70e18a657cb4fadacafcd094ca3",
+            "title": "Reverse-mode AD in a functional framework: Lambda the ultimate backpropagator"
+        },
+        {
+            "paperId": "05e4f9007e75d3e426ee2d6414a852e9cca8bcb2",
+            "title": "Multiagent learning using a variable learning rate"
+        },
+        {
+            "paperId": "a7c183abb9b044bfbe1f09199ee970ea3a01104f",
+            "title": "Nash Convergence of Gradient Dynamics in General-Sum Games"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "605402e235bd62437baf3c9ebefe77fb4d92ee95",
+            "title": "The Helmholtz Machine"
+        },
+        {
+            "paperId": "c68796f833a7151f0a63d1d1608dc902b4fdc9b6",
+            "title": "GENERATIVE ADVERSARIAL NETS"
+        },
+        {
+            "paperId": null,
+            "title": "Lecture 6.5\u2014RmsProp: Divide the gradient by a running average of its recent magnitude"
+        },
+        {
+            "paperId": "fe8ba7b83ba67351d36080aafc023461904fad22",
+            "title": "The Theory of Max-Min and its Application to Weapons Allocation Problems"
+        },
+        {
+            "paperId": "b2c6c4d0f9070c823c84db0b13eb2537942920a7",
+            "title": "First-order Methods for Nonsmooth Convex Large-scale Optimization, I: General Purpose Methods"
+        },
+        {
+            "paperId": null,
+            "title": "insightful conversation, as well as the rest of the Google Brain Team"
+        }
+    ]
+}

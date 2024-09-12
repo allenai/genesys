@@ -1,0 +1,182 @@
+{
+    "paperId": "a78273144520d57e150744cf75206e881e11cc5b",
+    "externalIds": {
+        "DBLP": "conf/icml/NgiamKKNLN11",
+        "ArXiv": "2301.04856",
+        "MAG": "2184188583",
+        "DOI": "10.48550/arXiv.2301.04856",
+        "CorpusId": 352650
+    },
+    "title": "Multimodal Deep Learning",
+    "abstract": "Deep networks have been successfully applied to unsupervised feature learning for single modalities (e.g., text, images or audio). In this work, we propose a novel application of deep networks to learn features over multiple modalities. We present a series of tasks for multimodal learning and show how to train deep networks that learn features to address these tasks. In particular, we demonstrate cross modality feature learning, where better features for one modality (e.g., video) can be learned if multiple modalities (e.g., audio and video) are present at feature learning time. Furthermore, we show how to learn a shared representation between modalities and evaluate it on a unique task, where the classifier is trained with audio-only data but tested with video-only data and vice-versa. Our models are validated on the CUAVE and AVLetters datasets on audio-visual speech classification, demonstrating best published visual speech classification on AVLetters and effective shared representation learning.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2011,
+    "referenceCount": 32,
+    "citationCount": 2997,
+    "influentialCitationCount": 222,
+    "openAccessPdf": {
+        "url": "http://arxiv.org/pdf/2301.04856",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents a series of tasks for multimodal learning and shows how to train deep networks that learn features to address these tasks, and demonstrates cross modality feature learning, where better features for one modality can be learned if multiple modalities are present at feature learning time."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2020608",
+            "name": "Jiquan Ngiam"
+        },
+        {
+            "authorId": "2556428",
+            "name": "A. Khosla"
+        },
+        {
+            "authorId": "1390603950",
+            "name": "Mingyu Kim"
+        },
+        {
+            "authorId": "145578392",
+            "name": "Juhan Nam"
+        },
+        {
+            "authorId": "1697141",
+            "name": "Honglak Lee"
+        },
+        {
+            "authorId": "34699434",
+            "name": "A. Ng"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "9814df8bd00ba999c4d1e305a7e9bca579dc7c75",
+            "title": "Framing Image Description as a Ranking Task: Data, Models and Evaluation Metrics"
+        },
+        {
+            "paperId": "48c6b1d7fd3d9b5e170481c255aaab8bd66d40ab",
+            "title": "Information Theoretic Feature Extraction for Audio-Visual Speech Recognition"
+        },
+        {
+            "paperId": "08635266c783a2b7158a8c46bde42655d036c0f1",
+            "title": "Lipreading With Local Spatiotemporal Descriptors"
+        },
+        {
+            "paperId": "cd5af41a81e7fc9588dc74f3831fb14daf2f8e2a",
+            "title": "Semantic hashing"
+        },
+        {
+            "paperId": "fa9816564cdb09ee7a581ec962e8a348421802a0",
+            "title": "Adaptive Multimodal Fusion by Uncertainty Compensation With Application to Audiovisual Speech Recognition"
+        },
+        {
+            "paperId": "3ccf2122a3890b062798790acc8d1d1c084a7b0f",
+            "title": "The challenge of multispeaker lip-reading"
+        },
+        {
+            "paperId": "843959ffdccf31c6694d135fad07425924f785b1",
+            "title": "Extracting and composing robust features with denoising autoencoders"
+        },
+        {
+            "paperId": "202cbbf671743aefd380d2f23987bd46b9caaf97",
+            "title": "Sparse deep belief net model for visual area V2"
+        },
+        {
+            "paperId": "30aabb8981195f0f608824622ba56800c1776677",
+            "title": "Multimodal Fusion and Learning with Uncertain Features Applied to Audiovisual Speech Recognition"
+        },
+        {
+            "paperId": "b3852f0113fcf8a3913c55ae92393ae6ccde347e",
+            "title": "Self-taught learning: transfer learning from unlabeled data"
+        },
+        {
+            "paperId": "9408ff9e3e826c22461f2e3b488dbfc760e9981e",
+            "title": "Patch-Based Representation of Visual Speech"
+        },
+        {
+            "paperId": "8978cf7574ceb35f4c3096be768c7547b28a35d0",
+            "title": "A Fast Learning Algorithm for Deep Belief Nets"
+        },
+        {
+            "paperId": "e8b12467bdc20bde976750b8a28decdb33246d1d",
+            "title": "Histograms of oriented gradients for human detection"
+        },
+        {
+            "paperId": "a6b5b20151c752beb74508f813699fa5216dedfa",
+            "title": "Canonical Correlation Analysis: An Overview with Application to Learning Methods"
+        },
+        {
+            "paperId": "52070af952474cf13ecd015d42979373ff7c1c00",
+            "title": "Training Products of Experts by Minimizing Contrastive Divergence"
+        },
+        {
+            "paperId": "dd70cd5c716b7c484f4a9833cf61453e1e70d387",
+            "title": "CUAVE: A new audio-visual database for multimodal human-computer interface research"
+        },
+        {
+            "paperId": "f78867834f7f6797ca6396f98edb10aad2a864fb",
+            "title": "Extraction of Visual Features for Lipreading"
+        },
+        {
+            "paperId": "161ffb54a3fdf0715b198bb57bd22f910242eb49",
+            "title": "Multitask Learning"
+        },
+        {
+            "paperId": "c4ce7832ea382432d8fb6286c834e0a4cde79145",
+            "title": "Adaptive bimodal sensor fusion for automatic speechreading"
+        },
+        {
+            "paperId": "c5c4330886e0bd27402eb8312f46704d04c0627a",
+            "title": "See me, hear me: integrating automatic speech recognition and lip-reading"
+        },
+        {
+            "paperId": "423a5882a9d04273d3d56ccaa06cd2e92cdd7d4a",
+            "title": "\"Eigenlips\" for robust speech recognition"
+        },
+        {
+            "paperId": "6da7738f4ab6789196f8980c9eec56e99e861c2e",
+            "title": "Lipreading and audio-visual speech perception."
+        },
+        {
+            "paperId": "f8bc7b83a70f4e1854c23a950ed168cbc3f98fec",
+            "title": "Integration of acoustic and visual speech signals using neural networks"
+        },
+        {
+            "paperId": "eef41ae597a20ea377461d522fd5100da6a7a9b7",
+            "title": "Hearing lips and seeing voices"
+        },
+        {
+            "paperId": "06a2d102a56a3c3bf05ffa361c12b413cc67ab16",
+            "title": "Where next?"
+        },
+        {
+            "paperId": null,
+            "title": "The DARPA speech recognition research database : Specification and status"
+        },
+        {
+            "paperId": "7b12bcbfd482bd935603c2f0e5f6bd5e85c25997",
+            "title": "Adaptive multimodal fusion by uncertainty compensation"
+        },
+        {
+            "paperId": "7c59908c946a4157abc030cdbe2b63d08ba97db3",
+            "title": "Supporting Online Material for Reducing the Dimensionality of Data with Neural Networks"
+        },
+        {
+            "paperId": "4f3656da4cbd1979a5fa763f90defa1f90d53583",
+            "title": "Audio-Visual Automatic Speech Recognition: An Overview"
+        },
+        {
+            "paperId": "704d9fbe2b36b5187abc6982f666558bdd4cf386",
+            "title": "See Me, Hear Me: Integrating Automatic Speech Recognition and Lip-reading"
+        },
+        {
+            "paperId": null,
+            "title": "and Goudie Marshall"
+        },
+        {
+            "paperId": null,
+            "title": "Exact same contrastive loss as earlier, but.. Transformers and *web data*! CLIP Robustness"
+        }
+    ]
+}

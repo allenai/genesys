@@ -1,0 +1,102 @@
+{
+    "paperId": "36d3a18a1519e27f7c9c8479b19fc00d4d805a00",
+    "externalIds": {
+        "ArXiv": "1812.01608",
+        "DBLP": "journals/corr/abs-1812-01608",
+        "MAG": "2950946978",
+        "CorpusId": 54458552
+    },
+    "title": "Generating High Fidelity Images with Subscale Pixel Networks and Multidimensional Upscaling",
+    "abstract": "The unconditional generation of high fidelity images is a longstanding benchmark for testing the performance of image decoders. Autoregressive image models have been able to generate small images unconditionally, but the extension of these methods to large images where fidelity can be more readily assessed has remained an open problem. Among the major challenges are the capacity to encode the vast previous context and the sheer difficulty of learning a distribution that preserves both global semantic coherence and exactness of detail. To address the former challenge, we propose the Subscale Pixel Network (SPN), a conditional decoder architecture that generates an image as a sequence of sub-images of equal size. The SPN compactly captures image-wide spatial dependencies and requires a fraction of the memory and the computation required by other fully autoregressive models. To address the latter challenge, we propose to use Multidimensional Upscaling to grow an image in both size and depth via intermediate stages utilising distinct SPNs. We evaluate SPNs on the unconditional generation of CelebAHQ of size 256 and of ImageNet from size 32 to 256. We achieve state-of-the-art likelihood results in multiple settings, set up new benchmark results in previously unexplored settings and are able to generate very high fidelity large scale samples on the basis of both datasets.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2018,
+    "referenceCount": 17,
+    "citationCount": 141,
+    "influentialCitationCount": 12,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Subscale Pixel Network (SPN) is proposed, a conditional decoder architecture that generates an image as a sequence of sub-images of equal size that compactly captures image-wide spatial dependencies and requires a fraction of the memory and the computation required by other fully autoregressive models."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "10698483",
+            "name": "Jacob Menick"
+        },
+        {
+            "authorId": "2583391",
+            "name": "Nal Kalchbrenner"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "21b786b3f870fc7fa247c143aa41de88b1fc6141",
+            "title": "Glow: Generative Flow with Invertible 1x1 Convolutions"
+        },
+        {
+            "paperId": "642c1b4a9da95ea4239708afc5929a5007a1870d",
+            "title": "Tensor2Tensor for Neural Machine Translation"
+        },
+        {
+            "paperId": "f2c882fd290d616ff96c1c5d6af4578682e26556",
+            "title": "Efficient Neural Audio Synthesis"
+        },
+        {
+            "paperId": "1db9bd18681b96473f3c82b21edc9240b44dc329",
+            "title": "Image Transformer"
+        },
+        {
+            "paperId": "40638a7a9e0a0499af46053c6efc05ce0b088a28",
+            "title": "On the convergence properties of GAN training"
+        },
+        {
+            "paperId": "d1c424c261c577958917055f72fb9e2ad0348865",
+            "title": "PixelSNAIL: An Improved Autoregressive Generative Model"
+        },
+        {
+            "paperId": "744fe47157477235032f7bb3777800f9f2f45e52",
+            "title": "Progressive Growing of GANs for Improved Quality, Stability, and Variation"
+        },
+        {
+            "paperId": "f89e5a8800b318fa03289b5cc67df54b956875b4",
+            "title": "Do GANs actually learn the distribution? An empirical study"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "2dfeb5a90abc49ab2a80a492a01a4e2c8e92ec22",
+            "title": "In-datacenter performance analysis of a tensor processing unit"
+        },
+        {
+            "paperId": "2d1b8f60f2724efd6c9344870fb60e8525157d70",
+            "title": "Parallel Multiscale Autoregressive Density Estimation"
+        },
+        {
+            "paperId": "db0d33590dc15de2d30cf0407b7a26ae79cd51b5",
+            "title": "Deep Probabilistic Modeling of Natural Images using a Pyramid Decomposition"
+        },
+        {
+            "paperId": "b01871c114b122340209562972ff515b86b16ccf",
+            "title": "Video Pixel Networks"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "df0402517a7338ae28bc54acaac400de6b456a46",
+            "title": "WaveNet: A Generative Model for Raw Audio"
+        },
+        {
+            "paperId": "0936352b78a52bc5d2b5e3f04233efc56664af51",
+            "title": "Conditional Image Generation with PixelCNN Decoders"
+        },
+        {
+            "paperId": "41f1d50c85d3180476c4c7b3eea121278b0d8474",
+            "title": "Pixel Recurrent Neural Networks"
+        }
+    ]
+}

@@ -1,0 +1,95 @@
+{
+    "paperId": "aa52f05176380ac84294d7e941bc036d1665aaac",
+    "externalIds": {
+        "DBLP": "journals/neco/KrotovH18",
+        "MAG": "2584321260",
+        "ArXiv": "1701.00939",
+        "DOI": "10.1162/neco_a_01143",
+        "CorpusId": 16892986,
+        "PubMed": "30314425"
+    },
+    "title": "Dense Associative Memory Is Robust to Adversarial Inputs",
+    "abstract": "Deep neural networks (DNNs) trained in a supervised way suffer from two known problems. First, the minima of the objective function used in learning correspond to data points (also known as rubbish examples or fooling images) that lack semantic similarity with the training data. Second, a clean input can be changed by a small, and often imperceptible for human vision, perturbation so that the resulting deformed input is misclassified by the network. These findings emphasize the differences between the ways DNNs and humans classify patterns and raise a question of designing learning algorithms that more accurately mimic human perception compared to the existing methods. Our article examines these questions within the framework of dense associative memory (DAM) models. These models are defined by the energy function, with higher-order (higher than quadratic) interactions between the neurons. We show that in the limit when the power of the interaction vertex in the energy function is sufficiently large, these models have the following three properties. First, the minima of the objective function are free from rubbish images, so that each minimum is a semantically meaningful pattern. Second, artificial patterns poised precisely at the decision boundary look ambiguous to human subjects and share aspects of both classes that are separated by that decision boundary. Third, adversarial images constructed by models with small power of the interaction vertex, which are equivalent to DNN with rectified linear units, fail to transfer to and fool the models with higher-order interactions. This opens up the possibility of using higher-order models for detecting and stopping malicious adversarial attacks. The results we present suggest that DAMs with higher-order energy functions are more robust to adversarial and rubbish inputs than DNNs with rectified linear units.",
+    "venue": "Neural Computation",
+    "year": 2017,
+    "referenceCount": 14,
+    "citationCount": 102,
+    "influentialCitationCount": 8,
+    "openAccessPdf": {
+        "url": "https://direct.mit.edu/neco/article-pdf/30/12/3151/1048104/neco_a_01143.pdf",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "DAMs with higher-order energy functions are more robust to adversarial and rubbish inputs than DNNs with rectified linear units and open up the possibility of using higher- order models for detecting and stopping malicious adversarial attacks."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145753925",
+            "name": "D. Krotov"
+        },
+        {
+            "authorId": "3219867",
+            "name": "J. Hopfield"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "6c2db999ddc5a0d2eb9b7c351181a96d80059d00",
+            "title": "Adversary Resistant Deep Neural Networks with an Application to Malware Detection"
+        },
+        {
+            "paperId": "9f5b4a6e368515995a3aba47528f6cde03a7d311",
+            "title": "Random Feature Nullification for Adversary Resistant Deep Architecture"
+        },
+        {
+            "paperId": "b544ca32b66b4c9c69bcfa00d63ee4b799d8ab6b",
+            "title": "Adversarial examples in the physical world"
+        },
+        {
+            "paperId": "ed332c92664cd64843a7ba9373d992e9547230f6",
+            "title": "Dense Associative Memory for Pattern Recognition"
+        },
+        {
+            "paperId": "78aa018ee7d52360e15d103390ea1cdb3a0beb41",
+            "title": "Transferability in Machine Learning: from Phenomena to Black-Box Attacks using Adversarial Samples"
+        },
+        {
+            "paperId": "94187ef33e34af2cdb42502083c6f9b4c3f5ba6b",
+            "title": "Practical Black-Box Attacks against Deep Learning Systems using Adversarial Examples"
+        },
+        {
+            "paperId": "d995e35afe0e75863a892224e75a046efefdc7d2",
+            "title": "Learning with a Strong Adversary"
+        },
+        {
+            "paperId": "9375267bd07c0a527771b352308a2408cb5199f0",
+            "title": "Improving Back-Propagation by Adding an Adversarial Gradient"
+        },
+        {
+            "paperId": "d450b0f12ae0437048e4047a630c31d902002d0c",
+            "title": "Distributional Smoothing with Virtual Adversarial Training"
+        },
+        {
+            "paperId": "bee044c8e8903fb67523c1f8c105ab4718600cdb",
+            "title": "Explaining and Harnessing Adversarial Examples"
+        },
+        {
+            "paperId": "4f9f7434f06cbe31e54a0bb118975340b9e0a4c9",
+            "title": "Towards Deep Neural Network Architectures Robust to Adversarial Examples"
+        },
+        {
+            "paperId": "4543670c4b2d88a9b67525e0084044adef94ae76",
+            "title": "Deep neural networks are easily fooled: High confidence predictions for unrecognizable images"
+        },
+        {
+            "paperId": "d891dc72cbd40ffaeefdc79f2e7afe1e530a23ad",
+            "title": "Intriguing properties of neural networks"
+        },
+        {
+            "paperId": "5562a56da3a96dae82add7de705e2bd841eb00fc",
+            "title": "Best practices for convolutional neural networks applied to visual document analysis"
+        }
+    ]
+}

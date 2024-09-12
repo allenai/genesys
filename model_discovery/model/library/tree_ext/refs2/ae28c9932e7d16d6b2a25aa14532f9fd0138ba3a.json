@@ -1,0 +1,279 @@
+{
+    "paperId": "ae28c9932e7d16d6b2a25aa14532f9fd0138ba3a",
+    "externalIds": {
+        "DBLP": "journals/corr/abs-1711-09367",
+        "MAG": "2769311391",
+        "ArXiv": "1711.09367",
+        "ACL": "Q18-1029",
+        "DOI": "10.1162/tacl_a_00029",
+        "CorpusId": 7421176
+    },
+    "title": "Learning to Remember Translation History with a Continuous Cache",
+    "abstract": "Existing neural machine translation (NMT) models generally translate sentences in isolation, missing the opportunity to take advantage of document-level information. In this work, we propose to augment NMT models with a very light-weight cache-like memory network, which stores recent hidden representations as translation history. The probability distribution over generated words is updated online depending on the translation history retrieved from the memory, endowing NMT models with the capability to dynamically adapt over time. Experiments on multiple domains with different topics and styles show the effectiveness of the proposed approach with negligible impact on the computational cost.",
+    "venue": "Transactions of the Association for Computational Linguistics",
+    "year": 2017,
+    "referenceCount": 58,
+    "citationCount": 174,
+    "influentialCitationCount": 23,
+    "openAccessPdf": {
+        "url": "http://www.mitpressjournals.org/doi/pdf/10.1162/tacl_a_00029",
+        "status": "GOLD"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes to augment NMT models with a very light-weight cache-like memory network, which stores recent hidden representations as translation history and the probability distribution over generated words is updated online depending on the translation history retrieved from the memory."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2909321",
+            "name": "Zhaopeng Tu"
+        },
+        {
+            "authorId": "2152798100",
+            "name": "Yang Liu"
+        },
+        {
+            "authorId": "34720053",
+            "name": "Shuming Shi"
+        },
+        {
+            "authorId": "38144094",
+            "name": "T. Zhang"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "fe4529d402c78bf708d001797e21f2e9bbfd2985",
+            "title": "Translating Pro-Drop Languages with Reconstruction Models"
+        },
+        {
+            "paperId": "9af39292b9407888b98df2c697d92be229be9a07",
+            "title": "Translating Phrases in Neural Machine Translation"
+        },
+        {
+            "paperId": "5616064812996ab1fae525f9679f300c7c307895",
+            "title": "Towards Neural Phrase-based Machine Translation"
+        },
+        {
+            "paperId": "4a07f0920fccb340ed46e719047a50bcb2fb1d4d",
+            "title": "Neural Phrase-based Machine Translation"
+        },
+        {
+            "paperId": "106d5e0cf44ea08500adc91c4d5bb3e6c8a4d627",
+            "title": "Six Challenges for Neural Machine Translation"
+        },
+        {
+            "paperId": "181ec35e1da386cd5e38ef54c20af63e41def3b0",
+            "title": "Search Engine Guided Non-Parametric Neural Machine Translation"
+        },
+        {
+            "paperId": "8cfcbe3a58be39092ec2d1ef86585179bf7654e0",
+            "title": "Chunk-Based Bi-Scale Decoder for Neural Machine Translation"
+        },
+        {
+            "paperId": "ebb222fff7b71b82d1a5971e198982858abcd03d",
+            "title": "Modeling Source Syntax for Neural Machine Translation"
+        },
+        {
+            "paperId": "ed5003e6a2b97dd4b65c5190ccb88b9c45b032b8",
+            "title": "Learning to Create and Reuse Words in Open-Vocabulary Neural Language Modeling"
+        },
+        {
+            "paperId": "fbe500cb74ea198227debe523e75ecff987153ea",
+            "title": "Does Neural Machine Translation Benefit from Larger Context?"
+        },
+        {
+            "paperId": "04d372284736c7c04c196cf535aed0c79320af81",
+            "title": "Exploiting Cross-Sentence Context for Neural Machine Translation"
+        },
+        {
+            "paperId": "29092f0deaac3898e43b3f094bf15d82b6a99afd",
+            "title": "Learning to Remember Rare Events"
+        },
+        {
+            "paperId": "37088dec26231bc5a4937054ebc862bb83a3db4d",
+            "title": "Neural Episodic Control"
+        },
+        {
+            "paperId": "58eb3a2f0a67acf2f5c7c2cb4a22852b65314eb5",
+            "title": "Frustratingly Short Attention Spans in Neural Language Modeling"
+        },
+        {
+            "paperId": "31fc1b0fd5ec43863f1a502f6fc3df2cc71b6e6f",
+            "title": "Neural Machine Translation with Reconstruction"
+        },
+        {
+            "paperId": "2d7782c225e0fc123d6e227f2cb253e58279ac73",
+            "title": "Improving Neural Language Models with a Continuous Cache"
+        },
+        {
+            "paperId": "5c97f52213c3414b70b9f507619669dfcc1749f9",
+            "title": "Neural Machine Translation Advised by Statistical Machine Translation"
+        },
+        {
+            "paperId": "8dde8967c8bf1c97a5614c70beb0eeeaf32d2e7c",
+            "title": "Context Gates for Neural Machine Translation"
+        },
+        {
+            "paperId": "7b4cd55ce7d7558eecb8d39f25a05cfd01ce4715",
+            "title": "Context-dependent word representation for neural machine translation"
+        },
+        {
+            "paperId": "bba5f2852b1db8a18004eb7328efa5e1d57cc62a",
+            "title": "Key-Value Memory Networks for Directly Reading Documents"
+        },
+        {
+            "paperId": "aa5b35dcf8b024f5352db73cc3944e8fad4f3793",
+            "title": "Pointing the Unknown Words"
+        },
+        {
+            "paperId": "02534853626c18c9a097c2712f1ddf3613257d35",
+            "title": "Incorporating Copying Mechanism in Sequence-to-Sequence Learning"
+        },
+        {
+            "paperId": "33108287fbc8d94160787d7b2c7ef249d3ad6437",
+            "title": "Modeling Coverage for Neural Machine Translation"
+        },
+        {
+            "paperId": "889e57259a1d6017701fb2c2ceece82f9f4eff4c",
+            "title": "Recurrent Memory Networks for Language Modeling"
+        },
+        {
+            "paperId": "9f2a8e923965b23c11066a2ead79658208f1fae1",
+            "title": "Minimum Risk Training for Neural Machine Translation"
+        },
+        {
+            "paperId": "961073143d3cfe662e9e820d24c0a88f0ae94c83",
+            "title": "Document Context Language Models"
+        },
+        {
+            "paperId": "722e01d5ba05083f7a091f3188cfdfcf183a325d",
+            "title": "Larger-Context Language Modelling with Recurrent Neural Network"
+        },
+        {
+            "paperId": "35b91b365ceb016fb3e022577cec96fb9b445dc5",
+            "title": "The Goldilocks Principle: Reading Children's Books with Explicit Memory Representations"
+        },
+        {
+            "paperId": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+            "title": "Effective Approaches to Attention-based Neural Machine Translation"
+        },
+        {
+            "paperId": "17f5c7411eeeeedf25b0db99a9130aa353aee4ba",
+            "title": "Building End-To-End Dialogue Systems Using Generative Hierarchical Neural Network Models"
+        },
+        {
+            "paperId": "b3e11af71552d39070dd9183acb8b8171bc22b38",
+            "title": "A Hierarchical Recurrent Encoder-Decoder for Generative Context-Aware Query Suggestion"
+        },
+        {
+            "paperId": "86311b182786bfde19446f6ded0854de973d4060",
+            "title": "A Neural Conversational Model"
+        },
+        {
+            "paperId": "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e",
+            "title": "End-To-End Memory Networks"
+        },
+        {
+            "paperId": "abb33d75dc297993fcc3fb75e0f4498f413eb4f6",
+            "title": "Towards AI-Complete Question Answering: A Set of Prerequisite Toy Tasks"
+        },
+        {
+            "paperId": "1938624bb9b0f999536dcc8d8f519810bb4e1b3b",
+            "title": "On Using Very Large Target Vocabulary for Neural Machine Translation"
+        },
+        {
+            "paperId": "1956c239b3552e030db1b78951f64781101125ed",
+            "title": "Addressing the Rare Word Problem in Neural Machine Translation"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "71ae756c75ac89e2d731c9c79649562b5768ff39",
+            "title": "Memory Networks"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "27725a2d2a8cee9bf9fffc6c2167017103aba0fa",
+            "title": "A Convolutional Neural Network for Modelling Sentences"
+        },
+        {
+            "paperId": "f62816ef08637ffdbe653c25e11bc5469393ff2f",
+            "title": "Dynamic Topic Adaptation for Phrase-based MT"
+        },
+        {
+            "paperId": "8729441d734782c3ed532a7d2d9611b438c0a09a",
+            "title": "ADADELTA: An Adaptive Learning Rate Method"
+        },
+        {
+            "paperId": "94a50b35da87ae82342f52dcbeb511fee1482901",
+            "title": "Document-Wide Decoding for Phrase-Based Statistical Machine Translation"
+        },
+        {
+            "paperId": "25afae03f68da6df953ec8ed0b0d29b0de0104f3",
+            "title": "A Topic Similarity Model for Hierarchical Phrase-based Translation"
+        },
+        {
+            "paperId": "0060745e006c5f14ec326904119dca19c6545e51",
+            "title": "Improving neural networks by preventing co-adaptation of feature detectors"
+        },
+        {
+            "paperId": "12141ca93b7f076e3918d3c26a2864d25ea7eb57",
+            "title": "The Trouble with SMT Consistency"
+        },
+        {
+            "paperId": "a2bf595e5a2dd9d005b8e5bc89029d03056ce4b1",
+            "title": "Cache-based Document-level Statistical Machine Translation"
+        },
+        {
+            "paperId": "9697b348053ceba765c7a007300e08ee266b4ab6",
+            "title": "Context Adaptation in Statistical Machine Translation Using Models with Exponentially Decaying Cache"
+        },
+        {
+            "paperId": "f5b1146b7ca79322aab124fd63825b9c175c02cf",
+            "title": "Clause Restructuring for Statistical Machine Translation"
+        },
+        {
+            "paperId": "26984ac6ef3120c24f4c7742ef901474814f02f2",
+            "title": "Adaptive Language and Translation Models for Interactive Machine Translation"
+        },
+        {
+            "paperId": "d7da009f457917aa381619facfa5ffae9329a6e9",
+            "title": "Bleu: a Method for Automatic Evaluation of Machine Translation"
+        },
+        {
+            "paperId": "09c76da2361d46689825c4efc37ad862347ca577",
+            "title": "A bit of progress in language modeling"
+        },
+        {
+            "paperId": "be1fed9544830df1137e72b1d2396c40d3e18365",
+            "title": "A Cache-Based Natural Language Model for Speech Recognition"
+        },
+        {
+            "paperId": "09cd7876b72d6105c83db59052572433a0a2b36c",
+            "title": "WIT3: Web Inventory of Transcribed and Translated Talks"
+        },
+        {
+            "paperId": "7a21b131a71d6abce291fccf35fa05d26467eeac",
+            "title": "Document-level Consistency Verification in Machine Translation"
+        },
+        {
+            "paperId": "93f6dd2c761fdeac0af6d2253d57834439d7794f",
+            "title": "IRSTLM: an open source toolkit for handling large scale language models"
+        }
+    ]
+}

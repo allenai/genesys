@@ -1,0 +1,230 @@
+{
+    "paperId": "71683e224ab91617950956b5005ed0439a733a71",
+    "externalIds": {
+        "MAG": "2427497464",
+        "DBLP": "conf/nips/AndrychowiczDCH16",
+        "ArXiv": "1606.04474",
+        "CorpusId": 2928017
+    },
+    "title": "Learning to learn by gradient descent by gradient descent",
+    "abstract": "The move from hand-designed features to learned features in machine learning has been wildly successful. In spite of this, optimization algorithms are still designed by hand. In this paper we show how the design of an optimization algorithm can be cast as a learning problem, allowing the algorithm to learn to exploit structure in the problems of interest in an automatic way. Our learned algorithms, implemented by LSTMs, outperform generic, hand-designed competitors on the tasks for which they are trained, and also generalize well to new tasks with similar structure. We demonstrate this on a number of tasks, including simple convex problems, training neural networks, and styling images with neural art.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2016,
+    "referenceCount": 44,
+    "citationCount": 1871,
+    "influentialCitationCount": 177,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper shows how the design of an optimization algorithm can be cast as a learning problem, allowing the algorithm to learn to exploit structure in the problems of interest in an automatic way."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2206490",
+            "name": "Marcin Andrychowicz"
+        },
+        {
+            "authorId": "1715051",
+            "name": "Misha Denil"
+        },
+        {
+            "authorId": "2016840",
+            "name": "Sergio Gomez Colmenarejo"
+        },
+        {
+            "authorId": "3243579",
+            "name": "Matthew W. Hoffman"
+        },
+        {
+            "authorId": "144846367",
+            "name": "David Pfau"
+        },
+        {
+            "authorId": "1725157",
+            "name": "T. Schaul"
+        },
+        {
+            "authorId": "1737568",
+            "name": "Nando de Freitas"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "43c3bfffdcd313c549b2045980855ea001d6f13b",
+            "title": "Numerical Optimization"
+        },
+        {
+            "paperId": "83040001210751239553269727b9ea53e152af71",
+            "title": "Building Machines that Learn and Think Like People"
+        },
+        {
+            "paperId": "3904315e2eca50d0086e4b7273f7fd707c652230",
+            "title": "Meta-Learning with Memory-Augmented Neural Networks"
+        },
+        {
+            "paperId": "fa2e56dce0718b922a2b61af48631f48126aff72",
+            "title": "Learning Step Size Controllers for Robust Neural Network Training"
+        },
+        {
+            "paperId": "f37e90c0bd5c4a9619ccfb763c45cb2d84abd3e6",
+            "title": "A Neural Algorithm of Artistic Style"
+        },
+        {
+            "paperId": "cb4dc7277d1c8c3bc76dd7425eb1cc7cbaf99487",
+            "title": "Optimizing Neural Networks with Kronecker-factored Approximate Curvature"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "7cf5a0c9734ffd13a2a9f8d6ec9fab98d3435a24",
+            "title": "Improved bounds on Restricted isometry for compressed sensing"
+        },
+        {
+            "paperId": "8729441d734782c3ed532a7d2d9611b438c0a09a",
+            "title": "ADADELTA: An Adaptive Learning Rate Method"
+        },
+        {
+            "paperId": "ded103d0613e1a8f51f586cc1678aee3ff26e811",
+            "title": "Advances in optimizing recurrent networks"
+        },
+        {
+            "paperId": "aad9544d3ffa4c146d5b528afe83ba4e656c62ee",
+            "title": "Optimization with Sparsity-Inducing Penalties (Foundations and Trends(R) in Machine Learning)"
+        },
+        {
+            "paperId": "224547e2d6991c0612830c28c269a569c5a33edc",
+            "title": "Optimization with Sparsity-Inducing Penalties"
+        },
+        {
+            "paperId": "413c1142de9d91804d6d11c67ff3fed59c9fc279",
+            "title": "Adaptive Subgradient Methods for Online Learning and Stochastic Optimization"
+        },
+        {
+            "paperId": "d2c733e34d48784a37d717fe43d9e93277a8c53e",
+            "title": "ImageNet: A large-scale hierarchical image database"
+        },
+        {
+            "paperId": "07a575ff2b4fdd892dfccefa38e4b24ec472663b",
+            "title": "Adaptive behavior with fixed weights in RNN: an overview"
+        },
+        {
+            "paperId": "c50e547cef9b1119324b7e483bf5503c1afc53be",
+            "title": "Meta-learning with backpropagation"
+        },
+        {
+            "paperId": "8ad9b6c56748ff12fb10536d0c189fb6835b2e43",
+            "title": "Evolution and design of distributed learning rules"
+        },
+        {
+            "paperId": "812b49a877b98941f258f7c2bfc8e890963142bd",
+            "title": "Local Gain Adaptation in Stochastic Gradient Descent"
+        },
+        {
+            "paperId": "f67e7dd2495500f3975f39e541fa38073d49a2ee",
+            "title": "Fixed-weight on-line learning"
+        },
+        {
+            "paperId": "1a296a1577478654a54a9f801f93f71b7d853c53",
+            "title": "An Incremental Gradient(-Projection) Method with Momentum Term and Adaptive Stepsize Rule"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "6e7241121c688abbd9329bdcebce4b6320fc619d",
+            "title": "Shifting Inductive Bias with Success-Story Algorithm, Adaptive Levin Search, and Incremental Self-Improvement"
+        },
+        {
+            "paperId": "8315dff3d304baf47c025f4b33535b9d693350c1",
+            "title": "No free lunch theorems for optimization"
+        },
+        {
+            "paperId": "04df5041de8c0ba7bdc6edb76ba3e77728b9e93f",
+            "title": "On the search for new learning rules for ANNs"
+        },
+        {
+            "paperId": "916ceefae4b11dadc3ee754ce590381c568c90de",
+            "title": "A direct adaptive method for faster backpropagation learning: the RPROP algorithm"
+        },
+        {
+            "paperId": "32437ae95b6c70517a325bb14d2b9c33473fb96f",
+            "title": "A neural network that embeds its own meta-levels"
+        },
+        {
+            "paperId": "c2dd697bbe99c2ec71c807580a00f7e723cc20ae",
+            "title": "Adapting Bias by Gradient Descent: An Incremental Version of Delta-Bar-Delta"
+        },
+        {
+            "paperId": "b64e846fe88acaf302248249696c3b7badde41b5",
+            "title": "Meta-neural networks that learn by learning"
+        },
+        {
+            "paperId": "bc22e87a26d020215afe91c751e5bdaddd8e4922",
+            "title": "Learning to Control Fast-Weight Memories: An Alternative to Dynamic Recurrent Networks"
+        },
+        {
+            "paperId": "d130325c41947a41a55a4431e9e8e15be89da8ea",
+            "title": "Learning a synaptic learning rule"
+        },
+        {
+            "paperId": "8001b80755bb8b189f3e1a51db8d108303b9fe7b",
+            "title": "Fixed-weight networks can learn"
+        },
+        {
+            "paperId": "4de3ad300efdafef428cce497af6d306442e59f0",
+            "title": "Integer and Combinatorial Optimization"
+        },
+        {
+            "paperId": null,
+            "title": "Lecture 6.5-rmsprop: Divide the gradient by a running average of its recent magnitude"
+        },
+        {
+            "paperId": null,
+            "title": "URL https://www.flickr.com/photos/taylortotz101/6280077898"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        },
+        {
+            "paperId": null,
+            "title": "brain-neurons"
+        },
+        {
+            "paperId": null,
+            "title": "URL https://www.flickr.com/photos/fbobolas/3822222947. Creative Commons Attribution-ShareAlike 2"
+        },
+        {
+            "paperId": "00b88ed75a401f1330b88e8ec9c869149ebfd6cc",
+            "title": "A Signal Processing Framework Based on Dynamic Neural Networks with Application to Problems in Adaptation, Filtering and Classification"
+        },
+        {
+            "paperId": null,
+            "title": "Joint Conference on Neural Networks"
+        },
+        {
+            "paperId": null,
+            "title": "Combinations of Evolutionary Computation and Neural Networks, pages 59\u201363"
+        },
+        {
+            "paperId": "bdaec1b3eb9a8f7a2b296be009a148c35236f3ce",
+            "title": "Evolutionary principles in self-referential learning, or on learning how to learn: The meta-meta-. hook"
+        },
+        {
+            "paperId": "8d3a318b62d2e970122da35b2a2e70a5d12cc16f",
+            "title": "A method for solving the convex programming problem with convergence rate O(1/k^2)"
+        },
+        {
+            "paperId": "a6bcf0e9b5034c4c9cbea839baadd69a42b05cc1",
+            "title": "Learning curves for stochastic gradient descent in linear feedforward networks"
+        }
+    ]
+}

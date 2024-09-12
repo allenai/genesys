@@ -1,0 +1,146 @@
+{
+    "paperId": "88141e44d400bd1b38f6420358d17e621d6472ee",
+    "externalIds": {
+        "MAG": "2788862106",
+        "ArXiv": "1802.08334",
+        "DBLP": "journals/corr/abs-1802-08334",
+        "CorpusId": 3507479
+    },
+    "title": "Learning Without Mixing: Towards A Sharp Analysis of Linear System Identification",
+    "abstract": "We prove that the ordinary least-squares (OLS) estimator attains nearly minimax optimal performance for the identification of linear dynamical systems from a single observed trajectory. Our upper bound relies on a generalization of Mendelson's small-ball method to dependent data, eschewing the use of standard mixing-time arguments. Our lower bounds reveal that these upper bounds match up to logarithmic factors. In particular, we capture the correct signal-to-noise behavior of the problem, showing that more unstable linear systems are easier to estimate. This behavior is qualitatively different from arguments which rely on mixing-time calculations that suggest that unstable systems are more difficult to estimate. We generalize our technique to provide bounds for a more general class of linear response time-series.",
+    "venue": "Annual Conference Computational Learning Theory",
+    "year": 2018,
+    "referenceCount": 25,
+    "citationCount": 305,
+    "influentialCitationCount": 46,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is proved that the ordinary least-squares (OLS) estimator attains nearly minimax optimal performance for the identification of linear dynamical systems from a single observed trajectory, and generalizes the technique to provide bounds for a more general class of linear response time-series."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3385674",
+            "name": "Max Simchowitz"
+        },
+        {
+            "authorId": "2595993",
+            "name": "Horia Mania"
+        },
+        {
+            "authorId": "1985955",
+            "name": "Stephen Tu"
+        },
+        {
+            "authorId": "1694621",
+            "name": "Michael I. Jordan"
+        },
+        {
+            "authorId": "9229182",
+            "name": "B. Recht"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "2e796350a9ef538bcf241036a6989dc713ece6c2",
+            "title": "Concentration Bounds for Single Parameter Adaptive Control"
+        },
+        {
+            "paperId": "f0638ac4a24d7fa6e770ac173ce46d74bc4d561f",
+            "title": "Spectral Filtering for General Linear Dynamical Systems"
+        },
+        {
+            "paperId": "1918ce252b2f4e103c59c90955c4a755ad09c9ec",
+            "title": "Finite Time Analysis of Optimal Adaptive Policies for Linear-Quadratic Systems"
+        },
+        {
+            "paperId": "73317dbc881f53ee7fc25a9899b8b5b6698fce55",
+            "title": "Learning Linear Dynamical Systems via Spectral Filtering"
+        },
+        {
+            "paperId": "7ad1694ae21469b374c4ae8505480390036979bd",
+            "title": "Finite Time Identification in Unstable Linear Systems"
+        },
+        {
+            "paperId": "e53eaf5a509763e376f9e5fb2b278318430d75e0",
+            "title": "On the Sample Complexity of the Linear Quadratic Regulator"
+        },
+        {
+            "paperId": "851d89b4ecd55237ea6456b9606c0cc883b43b10",
+            "title": "Non-Asymptotic Analysis of Robust Control from Coarse-Grained Identification"
+        },
+        {
+            "paperId": "8a765725a44b91b60d414551dc555175cfff3cd9",
+            "title": "Gradient Descent Learns Linear Dynamical Systems"
+        },
+        {
+            "paperId": "dfb0260b707152128b3d8fd94e2efc3be423c33e",
+            "title": "Learning without Concentration"
+        },
+        {
+            "paperId": "3f4ec4e24e3e13b30ee8528f709d29506467b62f",
+            "title": "Hanson-Wright inequality and sub-gaussian concentration"
+        },
+        {
+            "paperId": "2fb23de9524b13a32d9ed7f2441c46c81558a3c8",
+            "title": "Concentration Inequalities: A Nonasymptotic Theory of Independence"
+        },
+        {
+            "paperId": "11699a49dfe5c469267cfa63ae31e7fe176c7d52",
+            "title": "Nonparametric Risk Bounds for Time-Series Forecasting"
+        },
+        {
+            "paperId": "82b6605d74f93481a4e1ebe094fc12ab49be0c55",
+            "title": "Linear system identification via atomic norm regularization"
+        },
+        {
+            "paperId": "4406c54f40e0f73db2180704d454951649df32f2",
+            "title": "Introduction to the non-asymptotic analysis of random matrices"
+        },
+        {
+            "paperId": "f9141b9be748332c75420a5c6692cc1c28269be1",
+            "title": "Rademacher Complexity Bounds for Non-I.I.D. Processes"
+        },
+        {
+            "paperId": "7be6e3fee96ab9181cd7375119ee8588496b3bc1",
+            "title": "A learning theory approach to system identification and stochastic adaptive control"
+        },
+        {
+            "paperId": "696b352fbe16a23fe443f04d4add0c52d2152b3e",
+            "title": "Stability Bounds for Non-i.i.d. Processes"
+        },
+        {
+            "paperId": "8383e3cbda3e579d4cbf9a3c1b2b06f5f0b21ac8",
+            "title": "Finite sample properties of system identification methods"
+        },
+        {
+            "paperId": "509c556b9ec5a8f5bb0428f73b4dd11a8b23095b",
+            "title": "REPRESENTATION THEORY OF SEMISIMPLE GROUPS: An Overview Based on Examples"
+        },
+        {
+            "paperId": "4fe3ef015a3edc6b69dec41d0869c9aa90da8f8c",
+            "title": "Representation Theory of Semisimple Groups: An Overview Based on Examples. ."
+        },
+        {
+            "paperId": "635c1b75f3e29abbe5e64eec94101fe108f1d5d0",
+            "title": "THE LIMITING DISTRIBUTION OF THE SERIAL CORRELATION COEFFICIENT IN THE EXPLOSIVE CASE"
+        },
+        {
+            "paperId": null,
+            "title": "as long as \u2264 \u03c1 2048 , N = \u03c1N is a 2 -packing of the set \u03c1O(d), and for all \u03c1O"
+        },
+        {
+            "paperId": "63f0df30f6b7bc3ae48975c71aa5b3e373bbfcfc",
+            "title": "Generalization bounds for non-stationary mixing processes"
+        },
+        {
+            "paperId": "b80e2143bbe4999e83c708293e37066406534a61",
+            "title": "RATES OF CONVERGENCE FOR EMPIRICAL PROCESSES OF STATIONARY MIXING SEQUENCES"
+        },
+        {
+            "paperId": "a40fbfdc86172cd4bbca7b221a34034352483b3b",
+            "title": "25th Annual Conference on Learning Theory Random Design Analysis of Ridge Regression"
+        }
+    ]
+}

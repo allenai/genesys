@@ -1,0 +1,178 @@
+{
+    "paperId": "ab3976cc49b61845c54b5babbb0e0e011c85edc9",
+    "externalIds": {
+        "MAG": "2149599446",
+        "DBLP": "journals/siamcomp/DriscollHR97",
+        "DOI": "10.1137/S0097539792240121",
+        "CorpusId": 15209457
+    },
+    "title": "Fast Discrete Polynomial Transforms with Applications to Data Analysis for Distance Transitive Graphs",
+    "abstract": "Let $\\poly = \\{P_0,\\dots,P_{n-1}\\}$ denote a set of polynomials with complex coefficients. Let $\\pts = \\{z_0,\\dots,z_{n-1}\\}\\subset \\cplx$ denote any set of {\\it sample points}. For any $f = (f_0,\\dots,f_{n-1}) \\in \\cplx^n$, the {\\it discrete polynomial transform} of $f$ (with respect to $\\poly$ and $\\pts$) is defined as the collection of sums, $\\{\\fhat(P_0),\\dots,\\fhat(P_{n-1})\\}$, where $\\fhat(P_j) = \\langle f,P_j \\rangle = \\sum_{i=0}^{n-1} f_iP_j(z_i)w(i)$ for some associated weight function $w$. These sorts of transforms find important applications in areas such as medical imaging and signal processing. \nIn this paper, we present fast algorithms for computing discrete orthogonal polynomial transforms. For a system of $N$ orthogonal polynomials of degree at most $N-1$, we give an $O(N\\log^2 N)$ algorithm for computing a discrete polynomial transform at an arbitrary set of points instead of the $N^2$ operations required by direct evaluation. Our algorithm depends only on the fact that orthogonal polynomial sets satisfy a three-term recurrence and thus it may be applied to any such set of discretely sampled functions. \nIn particular, sampled orthogonal polynomials generate the vector space of functions on a distance transitive graph. As a direct application of our work, we are able to give a fast algorithm for computing subspace decompositions of this vector space which respect the action of the symmetry group of such a graph. This has direct applications to treating computational bottlenecks in the spectral analysis of data on distance transitive graphs, and we discuss this in some detail.",
+    "venue": "SIAM journal on computing (Print)",
+    "year": 1997,
+    "referenceCount": 35,
+    "citationCount": 104,
+    "influentialCitationCount": 10,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An O(N\\log^2 N) algorithm is given for computing a discrete polynomial transform at an arbitrary set of points instead of the $N^2 operations required by direct evaluation."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "153565250",
+            "name": "James R. Driscoll"
+        },
+        {
+            "authorId": "33886466",
+            "name": "D. Healy"
+        },
+        {
+            "authorId": "1923670",
+            "name": "D. Rockmore"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "cc9d149de3077ff8bd2712ffd07dc64a561561a7",
+            "title": "Computing Fourier Transforms and Convolutions on the 2-Sphere"
+        },
+        {
+            "paperId": "e13109dbb390e815a2e7ac328fbe4b6cb1113946",
+            "title": "Classical Orthogonal Polynomials of a Discrete Variable"
+        },
+        {
+            "paperId": "7d53a2a43d1b1a743ea6c8db427ca6efc095fe2f",
+            "title": "On Scalar and Vector Transform Methods for Global Spectral Models"
+        },
+        {
+            "paperId": "d6e78c6bd845b760e0fe7a4c88860f4e78eb4b38",
+            "title": "Some applications of Gelfand pairs to number theory"
+        },
+        {
+            "paperId": "e265052e44a88c8282d8243b23399774fed6f21b",
+            "title": "Algorithms for Discrete Fourier Transform and Convolution"
+        },
+        {
+            "paperId": "3714cf694e4484117e27db2c4b59dce95a918c98",
+            "title": "Chebyshev and Fourier Spectral Methods"
+        },
+        {
+            "paperId": "ba289824272afb21e05eb210ec5dffc4dbcfa7a1",
+            "title": "Fast Solution of Vandermonde-Like Systems Involving Orthogonal Polynomials"
+        },
+        {
+            "paperId": "a43ec8acc716ff6df1f939bea4f44463df2e0faf",
+            "title": "Addition Requirements for Matrix and Transposed Matrix Products"
+        },
+        {
+            "paperId": "1e1fad87fc5def9ca65044dd4a51402460dbc209",
+            "title": "Harmonics on Posets"
+        },
+        {
+            "paperId": "9bc26f4d94623e89d16b42dc87160e6a326ce3fc",
+            "title": "Fast transforms: Algorithms, analyses, applications"
+        },
+        {
+            "paperId": "d3d1a29dfd7e8201159e7f56ce1f5045bb72e7de",
+            "title": "Algebraic Combinatorics I: Association Schemes"
+        },
+        {
+            "paperId": "57923211710a9684f7156b8dc6ebd8dc0dba0e55",
+            "title": "An Introduction to Orthogonal Polynomials"
+        },
+        {
+            "paperId": "880be2b11351043647ee5f8a4baf20ccf1129939",
+            "title": "Spherical functions on finite groups"
+        },
+        {
+            "paperId": "7b3f9d0e62189e3e38ecae5c35b2e19f587fa88c",
+            "title": "On the construction of Gaussian quadrature rules from modified moments."
+        },
+        {
+            "paperId": null,
+            "title": "Representation Theory and ANOVA"
+        },
+        {
+            "paperId": "250460991ad8d2536b28d88b31ab9c8d8fa7200e",
+            "title": "Fast transforms and sampling for compact groups"
+        },
+        {
+            "paperId": null,
+            "title": "Applications of FFT ' s onthe 2 - sphere , in preparation"
+        },
+        {
+            "paperId": null,
+            "title": "E(cid:14)ciency and stability issues in the numerical computation of Fourier transforms on the 2-sphere"
+        },
+        {
+            "paperId": null,
+            "title": "Efficient computation of isotropic projections for the symmetric group, in DIMACS Series"
+        },
+        {
+            "paperId": null,
+            "title": "Matrix and polynomial computations"
+        },
+        {
+            "paperId": "a74ea9dfce7838849617d14eabfa4acccf497488",
+            "title": "An Introduction to Group Representations and Orthogonal Polynomials"
+        },
+        {
+            "paperId": "d1ccb1fa7dc12d24c21151b88673fb24bfe9fe6a",
+            "title": "Group representations in probability and statistics"
+        },
+        {
+            "paperId": null,
+            "title": "Linear Representations of Finite Groups, Springer-Verlag"
+        },
+        {
+            "paperId": "f27478ab8662e985b40af8552d409fd95dc759ec",
+            "title": "Orthogonal Polynomials and Chevalley Groups"
+        },
+        {
+            "paperId": "61adbe77d4c144eee1219c9271a976236130c241",
+            "title": "Groups and geometric analysis"
+        },
+        {
+            "paperId": "a5fc76be274e8dfc739be67f6cef2deb6e47304b",
+            "title": "Fast Fourier transform and convolution algorithms"
+        },
+        {
+            "paperId": "a36fe9bf9d9eb94254b6cd90bc1a87b131ee32af",
+            "title": "Questions of Numerical Condition Related to Polynomials"
+        },
+        {
+            "paperId": "c640098d8fec542f85bab54fd02d8abc4a9b21ea",
+            "title": "The computational complexity of algebraic and numeric problems"
+        },
+        {
+            "paperId": null,
+            "title": "Algebraic Graph Theory, Cambridge Tracts in Mathematics No"
+        },
+        {
+            "paperId": "57190a32370c6980f9cf342d0c6d0adad43214ab",
+            "title": "Academic press."
+        },
+        {
+            "paperId": null,
+            "title": "The Hahn polynomials, formulas and an application"
+        },
+        {
+            "paperId": null,
+            "title": "Our proof treats only the case of n equal to a power of 2, but may be extended to the general case in a straightforward manner with the same asymptotic result"
+        },
+        {
+            "paperId": null,
+            "title": "Symmetry stabilization for polynomial evaluationand interpolation"
+        },
+        {
+            "paperId": null,
+            "title": "1) The l 2 projections of a discrete function onto the monomials sampled at the points x0;x1;:::;xn(cid:0)1 in R; n(cid:0)1 X k=0 fkxk l ; l = 0"
+        },
+        {
+            "paperId": null,
+            "title": "Figure 6. Stages in the computation of the Zl for the Hahn polynomials. Z0 is projection onto the Chebyshev polynomials. The desired transform values are the Zl(0): This"
+        }
+    ]
+}

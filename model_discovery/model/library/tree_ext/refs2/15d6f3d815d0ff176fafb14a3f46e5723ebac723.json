@@ -1,0 +1,318 @@
+{
+    "paperId": "15d6f3d815d0ff176fafb14a3f46e5723ebac723",
+    "externalIds": {
+        "MAG": "2963411763",
+        "DBLP": "journals/corr/abs-1810-09536",
+        "ArXiv": "1810.09536",
+        "CorpusId": 53034786
+    },
+    "title": "Ordered Neurons: Integrating Tree Structures into Recurrent Neural Networks",
+    "abstract": "Natural language is hierarchically structured: smaller units (e.g., phrases) are nested within larger units (e.g., clauses). When a larger constituent ends, all of the smaller constituents that are nested within it must also be closed. While the standard LSTM architecture allows different neurons to track information at different time scales, it does not have an explicit bias towards modeling a hierarchy of constituents. This paper proposes to add such an inductive bias by ordering the neurons; a vector of master input and forget gates ensures that when a given neuron is updated, all the neurons that follow it in the ordering are also updated. Our novel recurrent architecture, ordered neurons LSTM (ON-LSTM), achieves good performance on four different tasks: language modeling, unsupervised parsing, targeted syntactic evaluation, and logical inference.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2018,
+    "referenceCount": 69,
+    "citationCount": 309,
+    "influentialCitationCount": 63,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The novel recurrent architecture, ordered neurons LSTM (ON-LSTM), achieves good performance on four different tasks: language modeling, unsupervised parsing, targeted syntactic evaluation, and logical inference."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2305979",
+            "name": "Yikang Shen"
+        },
+        {
+            "authorId": "145511547",
+            "name": "Shawn Tan"
+        },
+        {
+            "authorId": "2041695",
+            "name": "Alessandro Sordoni"
+        },
+        {
+            "authorId": "1760871",
+            "name": "Aaron C. Courville"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "95c20f35d352f23b19c378c0758b8dc1d7622872",
+            "title": "On Aspects of the Theory of Syntax"
+        },
+        {
+            "paperId": "cca6f4177921be0dd0ea2794d9d788f265b44da0",
+            "title": "The emergence of number and syntax units in LSTM language models"
+        },
+        {
+            "paperId": "952af139e6a49c5b6490663be967d312c438334d",
+            "title": "Grammar Induction with Neural Language Models: An Unusual Replication"
+        },
+        {
+            "paperId": "528a97b59f3d26ffe4549051ca5cf77cfdd5c559",
+            "title": "On Tree-Based Neural Sentence Modeling"
+        },
+        {
+            "paperId": "4d00097433a538002b36cfd7a621daddde3e4c0d",
+            "title": "Targeted Syntactic Evaluation of Language Models"
+        },
+        {
+            "paperId": "5ad6970ff332a20e45a7e71ec1dd85c44292cf5f",
+            "title": "Learning Hierarchical Structures On-The-Fly with a Recurrent-Recursive Model for Sequences"
+        },
+        {
+            "paperId": "3abc5ffb1757ec3f35cb7b4100410570b0b51e09",
+            "title": "LSTMs Can Learn Syntax-Sensitive Dependencies Well, But Modeling Structure Makes Them Better"
+        },
+        {
+            "paperId": "3d42ddf7c5ce59ae04d1d27085be9f736d1be04b",
+            "title": "Colorless Green Recurrent Networks Dream Hierarchically"
+        },
+        {
+            "paperId": "27981998aaef92952eabef2c1490b926f9150c4f",
+            "title": "Memory Architectures in Recurrent Neural Network Language Models"
+        },
+        {
+            "paperId": "2a1483397106807e74ab422dd8330d56a3cc6db5",
+            "title": "The Neural Network Pushdown Automaton: Model, Stack and Learning Simulations"
+        },
+        {
+            "paperId": "ef9ddbc35676ce8ffc2a8067044473727839dbac",
+            "title": "Breaking the Softmax Bottleneck: A High-Rank RNN Language Model"
+        },
+        {
+            "paperId": "f1cbf097ce436f7304a1984f4a29ab41f75ebfe3",
+            "title": "Neural Language Modeling by Jointly Learning Syntax and Lexicon"
+        },
+        {
+            "paperId": "8f46c21fef31a4cdf7b1808e67171466a9317882",
+            "title": "Do latent tree learning models identify meaningful structure in sentences?"
+        },
+        {
+            "paperId": "58c6f890a1ae372958b7decf56132fe258152722",
+            "title": "Regularizing and Optimizing LSTM Language Models"
+        },
+        {
+            "paperId": "2397ce306e5d7f3d0492276e357fb1833536b5d8",
+            "title": "On the State of the Art of Evaluation in Neural Language Models"
+        },
+        {
+            "paperId": "027f9695189355d18ec6be8e48f3d23ea25db35d",
+            "title": "Learning to Compose Task-Specific Tree Structures"
+        },
+        {
+            "paperId": "c79d8c3768b8dbde4e9fbbd8924805d4a02a1158",
+            "title": "Sequence-to-Dependency Neural Machine Translation"
+        },
+        {
+            "paperId": "29bda122ac5454879cb4248133cd6d5fbd5e59fd",
+            "title": "Generative Neural Machine for Tree Structures"
+        },
+        {
+            "paperId": "5ded2b8c64491b4a67f6d39ce473d4b9347a672e",
+            "title": "A Broad-Coverage Challenge Corpus for Sentence Understanding through Inference"
+        },
+        {
+            "paperId": "599f7863721d542dcef2da49b41d82b21e4f80b3",
+            "title": "Learning to Compose Words into Sentences with Reinforcement Learning"
+        },
+        {
+            "paperId": "67d968c7450878190e45ac7886746de867bf673d",
+            "title": "Neural Architecture Search with Reinforcement Learning"
+        },
+        {
+            "paperId": "424aef7340ee618132cc3314669400e23ad910ba",
+            "title": "Tying Word Vectors and Word Classifiers: A Loss Framework for Language Modeling"
+        },
+        {
+            "paperId": "2d7782c225e0fc123d6e227f2cb253e58279ac73",
+            "title": "Improving Neural Language Models with a Continuous Cache"
+        },
+        {
+            "paperId": "9c69926bdb72912725d20a55af7147f86bed01ae",
+            "title": "Tree-structured decoding with doubly-recurrent neural networks"
+        },
+        {
+            "paperId": "3aa52436575cf6768a0a1a476601825f6a62e58f",
+            "title": "Assessing the Ability of LSTMs to Learn Syntax-Sensitive Dependencies"
+        },
+        {
+            "paperId": "efbd381493bb9636f489b965a2034d529cd56bcd",
+            "title": "Pointer Sentinel Mixture Models"
+        },
+        {
+            "paperId": "65eee67dee969fdf8b44c87c560d66ad4d78e233",
+            "title": "Hierarchical Multiscale Recurrent Neural Networks"
+        },
+        {
+            "paperId": "63e39cdf1ad884da6bc69096bb3413b5b1100559",
+            "title": "Using the Output Embedding to Improve Language Models"
+        },
+        {
+            "paperId": "7dba53e72c182e25e98e8f73a99d75ff69dda0c2",
+            "title": "Recurrent Highway Networks"
+        },
+        {
+            "paperId": "36c097a225a95735271960e2b63a2cb9e98bff83",
+            "title": "A Fast Unified Model for Parsing and Sentence Understanding"
+        },
+        {
+            "paperId": "7345843e87c81e24e42264859b214d26042f8d51",
+            "title": "Recurrent Neural Network Grammars"
+        },
+        {
+            "paperId": "0c1f9ca23f4f09ecfc44bcc8ca1c2736624f4652",
+            "title": "A Theoretically Grounded Application of Dropout in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "e5f0762b9cfd07f88608f5502ed4467a8b5546cb",
+            "title": "Top-down Tree Long Short-Term Memory Networks"
+        },
+        {
+            "paperId": "5840ea4407fb4cfd42222ab9966855afdc8b5adf",
+            "title": "The Neural Representation of Sequences: From Transition Probabilities to Algebraic Patterns and Linguistic Trees"
+        },
+        {
+            "paperId": "891ce1687e2befddd19f54e4eef1d3f39c8dbaf7",
+            "title": "Character-Aware Neural Language Models"
+        },
+        {
+            "paperId": "438bb3d46e72b177ed1c9b7cd2c11a045644a1f4",
+            "title": "Gradient Estimation Using Stochastic Computation Graphs"
+        },
+        {
+            "paperId": "04d1a26c2516dc14a765112a63ec60dc3cb3de72",
+            "title": "Tree-Structured Composition in Neural Networks without Tree-Structured Architectures"
+        },
+        {
+            "paperId": "e837b79de602c69395498c1fbbe39bbb4e6f75ad",
+            "title": "Learning to Transduce with Unbounded Memory"
+        },
+        {
+            "paperId": "d38e8631bba0720becdaf7b89f79d9f9dca45d82",
+            "title": "Inferring Algorithmic Patterns with Stack-Augmented Recurrent Nets"
+        },
+        {
+            "paperId": "32de44f01a96d4473d21099d15e25bc2b9f08e2f",
+            "title": "Improved Semantic Representations From Tree-Structured Long Short-Term Memory Networks"
+        },
+        {
+            "paperId": "f264e8b33c0d49a692a6ce2c4bcb28588aeb7d97",
+            "title": "Recurrent Neural Network Regularization"
+        },
+        {
+            "paperId": "7c05a4ffee7e159e34b2efea7e44d994333ec628",
+            "title": "Recursive Neural Networks Can Learn Logical Semantics"
+        },
+        {
+            "paperId": "193edd20cae92c6759c18ce93eeea96afd9528eb",
+            "title": "Deep learning in neural networks: An overview"
+        },
+        {
+            "paperId": "5522764282c85aea422f1c4dc92ff7e0ca6987bc",
+            "title": "A Clockwork RNN"
+        },
+        {
+            "paperId": "7a6fd5573d2679506765d461ec4892fd4017b745",
+            "title": "Learning Ordered Representations with Nested Dropout"
+        },
+        {
+            "paperId": "687bac2d3320083eb4530bf18bb8f8f721477600",
+            "title": "Recursive Deep Models for Semantic Compositionality Over a Sentiment Treebank"
+        },
+        {
+            "paperId": "0f531f8db68e981bbf1f4e543d15b519ba3325b0",
+            "title": "Unsupervised Structure Prediction with Non-Parallel Multilingual Guidance"
+        },
+        {
+            "paperId": "42a9c575acb53fac332993087c1e1dbcc8161ccd",
+            "title": "An All-Subtrees Approach to Unsupervised Parsing"
+        },
+        {
+            "paperId": "3b98dc29eb5f95470d12d19ae528674129ca0411",
+            "title": "Natural language grammar induction with a generative constituent-context model"
+        },
+        {
+            "paperId": "a600850ac0120cb09a0b7de7da80bb6a7a76de06",
+            "title": "Accurate Unlexicalized Parsing"
+        },
+        {
+            "paperId": "77021fb48704b860fa850dd103b79db4dcf920ee",
+            "title": "A Generative Constituent-Context Model for Improved Grammar Induction"
+        },
+        {
+            "paperId": "1be8778de4c6eb623871fe08d0998016bd60936f",
+            "title": "LSTM recurrent networks learn simple context-free and context-sensitive languages"
+        },
+        {
+            "paperId": "436772d9a916f0382800cf18581cfdfd4f83c457",
+            "title": "Immediate-Head Parsing for Language Models"
+        },
+        {
+            "paperId": "e30d29fdf23e14623a2024d4fe0f7f3d5dc889d3",
+            "title": "Probabilistic Top-Down Parsing and Language Modeling"
+        },
+        {
+            "paperId": "a1c3748820d6b5ab4e7334524815df9bb6d20aed",
+            "title": "Structured language modeling"
+        },
+        {
+            "paperId": "11e8957985944c72ff9c8e49c81c5831207a0689",
+            "title": "Morphological structure, lexical representation and lexical access"
+        },
+        {
+            "paperId": "b13813b49f160e1a2010c44bd4fb3d09a28446e3",
+            "title": "Hierarchical Recurrent Neural Networks for Long-Term Dependencies"
+        },
+        {
+            "paperId": "063fe6ed19c0204d55bde174483c5a93eb4819c0",
+            "title": "Learning long-term dependencies is not as difficult with NARX recurrent neural networks"
+        },
+        {
+            "paperId": "fcd018b02cad508d8f849a1638c0d69019c6dcfb",
+            "title": "Bayesian Grammar Induction for Language Modeling"
+        },
+        {
+            "paperId": "e8b500640e2f1800ec98bfbc446f14109d3ddeac",
+            "title": "Productivity in language production"
+        },
+        {
+            "paperId": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+            "title": "Building a Large Annotated Corpus of English: The Penn Treebank"
+        },
+        {
+            "paperId": "6e785a402a60353e6e22d6883d3998940dcaea96",
+            "title": "Three models for the description of language"
+        },
+        {
+            "paperId": "1a6d4f39c7b80b07f0872d7a4793b2f8b78a93cd",
+            "title": "An Introduction To Syntactic Analysis And Theory"
+        },
+        {
+            "paperId": "2913c2bf3f92b5ae369400a42b2d27cc5bc05ecb",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": "96364af2d208ea75ca3aeb71892d2f7ce7326b55",
+            "title": "Statistical Language Models Based on Neural Networks"
+        },
+        {
+            "paperId": "81b3b3fe994a9eda6d3f9d2149aa4492d1933975",
+            "title": "Learning Continuous Phrase Representations and Syntactic Parsing with Recursive Neural Networks"
+        },
+        {
+            "paperId": "d04d6db5f0df11d0cff57ec7e15134990ac07a4f",
+            "title": "Learning Deep Architectures for AI"
+        },
+        {
+            "paperId": "c69201d091dd92699fd90a17b9e3407319726791",
+            "title": "Neural sequence chunkers"
+        },
+        {
+            "paperId": null,
+            "title": "a decision is n\u2019t expected until some time next year A decision is n\u2019t expected until some time next year Figure A.1:"
+        }
+    ]
+}

@@ -1,0 +1,237 @@
+{
+    "paperId": "66021a920001bc3e6258bffe7076d647614147b7",
+    "externalIds": {
+        "MAG": "658020064",
+        "DBLP": "conf/icml/KusnerSKW15",
+        "CorpusId": 14674248
+    },
+    "title": "From Word Embeddings To Document Distances",
+    "abstract": "We present the Word Mover's Distance (WMD), a novel distance function between text documents. Our work is based on recent results in word embeddings that learn semantically meaningful representations for words from local cooccurrences in sentences. The WMD distance measures the dissimilarity between two text documents as the minimum amount of distance that the embedded words of one document need to \"travel\" to reach the embedded words of another document. We show that this distance metric can be cast as an instance of the Earth Mover's Distance, a well studied transportation problem for which several highly efficient solvers have been developed. Our metric has no hyperparameters and is straight-forward to implement. Further, we demonstrate on eight real world document classification data sets, in comparison with seven state-of-the-art baselines, that the WMD metric leads to unprecedented low k-nearest neighbor document classification error rates.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2015,
+    "referenceCount": 49,
+    "citationCount": 1995,
+    "influentialCitationCount": 382,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is demonstrated on eight real world document classification data sets, in comparison with seven state-of-the-art baselines, that the Word Mover's Distance metric leads to unprecedented low k-nearest neighbor document classification error rates."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1940272",
+            "name": "Matt J. Kusner"
+        },
+        {
+            "authorId": "2117103358",
+            "name": "Yu Sun"
+        },
+        {
+            "authorId": "1971973",
+            "name": "Nicholas I. Kolkin"
+        },
+        {
+            "authorId": "7446832",
+            "name": "Kilian Q. Weinberger"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "5918ae75d71ff737ed002a0d2d4d720d8a94c6b6",
+            "title": "Bayesian Optimization with Inequality Constraints"
+        },
+        {
+            "paperId": "f3de86aeb442216a8391befcacb49e58b478f512",
+            "title": "Distributed Representations of Sentences and Documents"
+        },
+        {
+            "paperId": "30db7dff9104ac512c1d15c0f48dd4c1b930abcb",
+            "title": "Documents as multiple overlapping windows into grids of counts"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "0080118b0eb02af581ff32b85a1bb6aed7081f45",
+            "title": "Sinkhorn Distances: Lightspeed Computation of Optimal Transport"
+        },
+        {
+            "paperId": "c4fd9c86b2b41df51a6fe212406dda81b1997fd4",
+            "title": "Linguistic Regularities in Continuous Space Word Representations"
+        },
+        {
+            "paperId": "f6b51c8753a871dc94ff32152c00c01e94f90f09",
+            "title": "Efficient Estimation of Word Representations in Vector Space"
+        },
+        {
+            "paperId": "8db26a22942404bd435909a16bb3a50cd67b4318",
+            "title": "Marginalized Denoising Autoencoders for Domain Adaptation"
+        },
+        {
+            "paperId": "2e2089ae76fe914706e6fa90081a79c8fe01611e",
+            "title": "Practical Bayesian Optimization of Machine Learning Algorithms"
+        },
+        {
+            "paperId": "8deeb6091710caab295d66a1d9fa2485a83b7eac",
+            "title": "Probabilistic topic models"
+        },
+        {
+            "paperId": "cf88c2f3729b1486bfbf7d82c342ee2f71fe929f",
+            "title": "Robust hand gesture recognition based on finger-earth mover's distance with a commodity depth camera"
+        },
+        {
+            "paperId": "51f9b5ed22a49a95b2c51321ad52120f75abbbd2",
+            "title": "Multidimensional counting grids: Inferring word order from disordered bags of words"
+        },
+        {
+            "paperId": "6f4065f0cc99a0839b0248ffb4457e5f0277b30d",
+            "title": "Domain Adaptation for Large-Scale Sentiment Classification: A Deep Learning Approach"
+        },
+        {
+            "paperId": "b71ead55fd6520dd4604de66cbb732bc2b7a6070",
+            "title": "Language Modeling for Information Retrieval"
+        },
+        {
+            "paperId": "aa038e61cf34905f6fb18781fbbf9e7e511478dd",
+            "title": "Word Features for Latent Dirichlet Allocation"
+        },
+        {
+            "paperId": "8492070dc4031ed825e95e4803781752bb5e909f",
+            "title": "Word Representations: A Simple and General Method for Semi-Supervised Learning"
+        },
+        {
+            "paperId": "8ab6d616f812a3108ae85b4ab130b62b650c5677",
+            "title": "Fast and robust Earth Mover's Distances"
+        },
+        {
+            "paperId": "afcff5b881acf87aac9f78b4ab6f117d895f6684",
+            "title": "Kernelized Sorting"
+        },
+        {
+            "paperId": "a9fc84f8abe740cdc7ee82e69444d1d00dbe0ceb",
+            "title": "A Scalable Hierarchical Distributed Language Model"
+        },
+        {
+            "paperId": "57458bc1cffe5caa45a885af986d70f723f406b4",
+            "title": "A unified architecture for natural language processing: deep neural networks with multitask learning"
+        },
+        {
+            "paperId": "19b5899b6c13b967534059f40f21f437f20bea6b",
+            "title": "Approximate earth mover\u2019s distance in linear time"
+        },
+        {
+            "paperId": "19d2b786fec5ded4d6cdca0e21f3c3f5264ecadf",
+            "title": "Fast k nearest neighbor search using GPU"
+        },
+        {
+            "paperId": "78e5782c56129136b3d5788b7025120db36d6431",
+            "title": "A novel document similarity measure based on earth mover's distance"
+        },
+        {
+            "paperId": "45faced0ba839d79127a41707b225382ae856210",
+            "title": "An Efficient Earth Mover's Distance Algorithm for Robust Histogram Comparison"
+        },
+        {
+            "paperId": "e181167dc005da9e19f7ff16b4707c828d043dfb",
+            "title": "Handbook of latent semantic analysis"
+        },
+        {
+            "paperId": "e17529924798975856310a75cb3df3066ac7ccfa",
+            "title": "Near-Optimal Hashing Algorithms for Approximate Nearest Neighbor in High Dimensions"
+        },
+        {
+            "paperId": "9fa8d73e572c3ca824a04a5f551b602a17831bc5",
+            "title": "Domain Adaptation with Structural Correspondence Learning"
+        },
+        {
+            "paperId": "4bc1678b9d2ffc9af22a6c3b786ad79a941f0b86",
+            "title": "Practical solutions to the problem of diagonal dominance in kernel document clustering"
+        },
+        {
+            "paperId": "ed95a0639e622d46cc391546952252fe3d6b0af4",
+            "title": "Fast contour matching using approximate earth mover's distance"
+        },
+        {
+            "paperId": "1cf448ce6c54bad8b27b1ceb5dbedf1ec9ea4e6e",
+            "title": "An information-theoretic measure for document similarity"
+        },
+        {
+            "paperId": "73475607051d59edd786feccb4eb80acb77349b7",
+            "title": "A Kernel Approach for Learning from Almost Orthogonal Patterns"
+        },
+        {
+            "paperId": "554ed92c2af92d5a1456bed2ddc85fe59d5dae00",
+            "title": "The Earth Mover's distance is the Mallows distance: some insights from statistics"
+        },
+        {
+            "paperId": "15cac7c8d07407d5a4f4e780abe4e28e17605045",
+            "title": "Hyperbolic Self-Organizing Maps for Semantic Navigation"
+        },
+        {
+            "paperId": "b7934a6f3a23940b7562df4cf58366b1adce55a3",
+            "title": "A metric for distributions with applications to image databases"
+        },
+        {
+            "paperId": "c0a48ed7577a7b48288dfb2711cbd86e30636b5f",
+            "title": "Some simple effective approximations to the 2-Poisson model for probabilistic weighted retrieval"
+        },
+        {
+            "paperId": "c92968494a79135c7e8cfb48414312722f14d8a3",
+            "title": "Multi-Paragraph Segmentation Expository Text"
+        },
+        {
+            "paperId": "164125a65d42a791d2c1e108559344caef96d08b",
+            "title": "Indexing by Latent Semantic Analysis"
+        },
+        {
+            "paperId": "e50a316f97c9a405aa000d883a633bd5707f1a34",
+            "title": "Term-Weighting Approaches in Automatic Text Retrieval"
+        },
+        {
+            "paperId": "4de3ad300efdafef428cce497af6d306442e59f0",
+            "title": "Integer and Combinatorial Optimization"
+        },
+        {
+            "paperId": null,
+            "title": "Sanders-twitter sentiment corpus"
+        },
+        {
+            "paperId": "4574d77fff19e093782178595a8988a7f3aa1969",
+            "title": "Latent Dirichlet Allocation"
+        },
+        {
+            "paperId": "53bb7fa08ffeec5b50f8b84687d03ea40161a6c6",
+            "title": "The Collected Mathematical Papers: On Monge's \u201cM\u00e9moire sur la th\u00e9orie des d\u00e9blais et des remblais\u201d"
+        },
+        {
+            "paperId": "c2d47b4430fdab6da83a29419d3989448838240d",
+            "title": "Improving Methods for Single-label Text Categorization"
+        },
+        {
+            "paperId": "f8f7d51a42059d65696073631db40bb246604289",
+            "title": "Name that song"
+        },
+        {
+            "paperId": "fa8ffa9f8d8367b987845ae88f2adcac2689f110",
+            "title": "Okapi at TREC-3"
+        },
+        {
+            "paperId": "8b0d6d2e43a2c6b9e463845b5ebdab4a62236d66",
+            "title": "Data structures and algorithms for nearest neighbor search in general metric spaces"
+        },
+        {
+            "paperId": "939d409a615d4b88c0a84e1f9b99ed67a9053208",
+            "title": "The SMART Retrieval System\u2014Experiments in Automatic Document Processing"
+        },
+        {
+            "paperId": "0efb841403aa6252b39ae6975c1cc5410554ef7b",
+            "title": "Nearest neighbor pattern classification"
+        },
+        {
+            "paperId": null,
+            "title": "M\u00e9moire sur la th\u00e9orie des d\u00e9blais et des remblais . De l'Imprimerie Royale"
+        }
+    ]
+}

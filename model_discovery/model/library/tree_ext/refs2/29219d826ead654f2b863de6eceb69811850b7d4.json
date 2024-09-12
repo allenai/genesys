@@ -1,0 +1,271 @@
+{
+    "paperId": "29219d826ead654f2b863de6eceb69811850b7d4",
+    "externalIds": {
+        "DBLP": "journals/tacl/LiuL18",
+        "MAG": "2963899396",
+        "ACL": "Q18-1005",
+        "ArXiv": "1705.09207",
+        "DOI": "10.1162/tacl_a_00005",
+        "CorpusId": 39871772
+    },
+    "title": "Learning Structured Text Representations",
+    "abstract": "In this paper, we focus on learning structure-aware document representations from data without recourse to a discourse parser or additional annotations. Drawing inspiration from recent efforts to empower neural networks with a structural bias (Cheng et al., 2016; Kim et al., 2017), we propose a model that can encode a document while automatically inducing rich structural dependencies. Specifically, we embed a differentiable non-projective parsing algorithm into a neural model and use attention mechanisms to incorporate the structural biases. Experimental evaluations across different tasks and datasets show that the proposed model achieves state-of-the-art results on document modeling tasks while inducing intermediate structures which are both interpretable and meaningful.",
+    "venue": "Transactions of the Association for Computational Linguistics",
+    "year": 2017,
+    "referenceCount": 58,
+    "citationCount": 148,
+    "influentialCitationCount": 16,
+    "openAccessPdf": {
+        "url": "http://www.mitpressjournals.org/doi/pdf/10.1162/tacl_a_00005",
+        "status": "GOLD"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A model that can encode a document while automatically inducing rich structural dependencies is proposed that embeds a differentiable non-projective parsing algorithm into a neural model and uses attention mechanisms to incorporate the structural biases."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "39798499",
+            "name": "Yang Liu"
+        },
+        {
+            "authorId": "1747893",
+            "name": "Mirella Lapata"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "0e1fd49f928a1fb36f0e96d8e16c7aa1d1e559b3",
+            "title": "Learning Contextually Informed Representations for Linear-Time Discourse Parsing"
+        },
+        {
+            "paperId": "58eb3a2f0a67acf2f5c7c2cb4a22852b65314eb5",
+            "title": "Frustratingly Short Attention Spans in Neural Language Modeling"
+        },
+        {
+            "paperId": "13d9323a8716131911bfda048a40e2cde1a76a46",
+            "title": "Structured Attention Networks"
+        },
+        {
+            "paperId": "fe3bd7c7b36cc563c1bd54189b963e3244b74580",
+            "title": "Neural Discourse Structure for Text Categorization"
+        },
+        {
+            "paperId": "bc61c01ba76734b69a5216a082af1069cae5fddd",
+            "title": "Cross-lingual RST Discourse Parsing"
+        },
+        {
+            "paperId": "3aa52436575cf6768a0a1a476601825f6a62e58f",
+            "title": "Assessing the Ability of LSTMs to Learn Syntax-Sensitive Dependencies"
+        },
+        {
+            "paperId": "83e7654d545fbbaaf2328df365a781fb67b841b4",
+            "title": "Enhanced LSTM for Natural Language Inference"
+        },
+        {
+            "paperId": "162db03ef3cb50a07ff54ae4a1d4ea120e4162f2",
+            "title": "Enhancing and Combining Sequential and Tree LSTM for Natural Language Inference"
+        },
+        {
+            "paperId": "d2eb4bb6bc25254ca655aa111cbbbd22ac8ca21f",
+            "title": "Empirical comparison of dependency conversions for RST discourse trees"
+        },
+        {
+            "paperId": "5ab72d44237533534de8402e30f3ccce25ce30de",
+            "title": "Distraction-Based Neural Networks for Modeling Document"
+        },
+        {
+            "paperId": "455afd748e8834ef521e4b67c7c056d3c33429e2",
+            "title": "Hierarchical Attention Networks for Document Classification"
+        },
+        {
+            "paperId": "bba5f2852b1db8a18004eb7328efa5e1d57cc62a",
+            "title": "Key-Value Memory Networks for Directly Reading Documents"
+        },
+        {
+            "paperId": "2cd8e8f510c89c7c18268e8ad51c061e459ad321",
+            "title": "A Decomposable Attention Model for Natural Language Inference"
+        },
+        {
+            "paperId": "36c097a225a95735271960e2b63a2cb9e98bff83",
+            "title": "A Fast Unified Model for Parsing and Sentence Understanding"
+        },
+        {
+            "paperId": "13fe71da009484f240c46f14d9330e932f8de210",
+            "title": "Long Short-Term Memory-Networks for Machine Reading"
+        },
+        {
+            "paperId": "596c882de006e4bb4a93f1fa08a5dd467bee060a",
+            "title": "Learning Natural Language Inference with LSTM"
+        },
+        {
+            "paperId": "2846e83d405cbe3bf2f0f3b5f635dd8b3c680c45",
+            "title": "Reasoning about Entailment with Neural Attention"
+        },
+        {
+            "paperId": "ecb5336bf7b54a62109f325e7152bb74c4c7f527",
+            "title": "Document Modeling with Gated Recurrent Neural Network for Sentiment Classification"
+        },
+        {
+            "paperId": "93547ca277f93ae8cde856f66bf54166d64b4dcf",
+            "title": "Better Document-level Sentiment Analysis from RST Discourse Parsing"
+        },
+        {
+            "paperId": "f04df4e20a18358ea2f689b4c129781628ef7fc1",
+            "title": "A large annotated corpus for learning natural language inference"
+        },
+        {
+            "paperId": "6ee62c42bb00d8ddbff898ca82cf1c7699ec79e9",
+            "title": "Learning Semantic Representations of Users and Products for Document Level Sentiment Classification"
+        },
+        {
+            "paperId": "8390434afa296e48aa069864b4a6c2338545bc29",
+            "title": "Graph-based Coherence Modeling For Assessing Readability"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "6cb94b140baf03efb8e56a3715221120aadebbe9",
+            "title": "Jointly modeling aspects, ratings and sentiments for movie recommendation (JMARS)"
+        },
+        {
+            "paperId": "0014df0b10c9fadf82b4da18f8029aa598336107",
+            "title": "Linguistic Structured Sparsity in Text Categorization"
+        },
+        {
+            "paperId": "2f5102ec3f70d0dea98c957cc2cab4d15d83a2da",
+            "title": "The Stanford CoreNLP Natural Language Processing Toolkit"
+        },
+        {
+            "paperId": "8c37254eee17736b0c1ae890beccedfc712e6a40",
+            "title": "Text-level Discourse Dependency Parsing"
+        },
+        {
+            "paperId": "9204d5b82652ee69859b6de56eb9a189a458c97c",
+            "title": "Representation Learning for Text-level Discourse Parsing"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "ed0c8a7ab911cdb30b7e95edada3a55c01eb22c5",
+            "title": "Single-Document Summarization as a Tree Knapsack Problem"
+        },
+        {
+            "paperId": "250e4a8f5155f1f9f60b2dee3e8da8024338db4d",
+            "title": "Unsupervised Improving of Sentiment Analysis Using Global Target Context"
+        },
+        {
+            "paperId": "f858487ba5267ddba2fcf527f0edae59e6379867",
+            "title": "Integrating Document Clustering and Topic Modeling"
+        },
+        {
+            "paperId": "2c79f7f6435b617e53a644a1429eac078f867c52",
+            "title": "Implicitation of Discourse Connectives in (Machine) Translation"
+        },
+        {
+            "paperId": "4177ec52d1b80ed57f2e72b0f9a42365f1a8598d",
+            "title": "Speech recognition with deep recurrent neural networks"
+        },
+        {
+            "paperId": "68ee500a4126f1acb83af260806be942133f59be",
+            "title": "Constrained Decoding for Text-Level Discourse Parsing"
+        },
+        {
+            "paperId": "1f7956c5486778d79507be2e38eb72c87ddad84d",
+            "title": "On Speech Recognition"
+        },
+        {
+            "paperId": "38dd6e69be875011d9b73c1304777586e468e397",
+            "title": "Text-level Discourse Parsing with Rich Linguistic Features"
+        },
+        {
+            "paperId": "1fa3c7c81864bbdfab8fbefab470864646844ddb",
+            "title": "Automatically Evaluating Text Coherence Using Discourse Relations"
+        },
+        {
+            "paperId": "413c1142de9d91804d6d11c67ff3fed59c9fc279",
+            "title": "Adaptive Subgradient Methods for Online Learning and Stochastic Optimization"
+        },
+        {
+            "paperId": "a6c26e574d74346a2b5ade5412aee2138075463e",
+            "title": "The Penn Discourse TreeBank 2.0."
+        },
+        {
+            "paperId": "a36ae352278435fff228e4741a04437a97aea452",
+            "title": "On the Complexity of Non-Projective Data-Driven Dependency Parsing"
+        },
+        {
+            "paperId": "2f73168a5fd8658166f7882d0621c6cbbabe9fd3",
+            "title": "Structured Prediction Models via the Matrix-Tree Theorem"
+        },
+        {
+            "paperId": "729a54e4d4303d7d015ca690f95ce4680d33398b",
+            "title": "Complexity of Dependencies in Discourse: Are Dependencies in Discourse More Complex than in Syntax?"
+        },
+        {
+            "paperId": "dc832b298290e316d1218266f6f33de97c9b5679",
+            "title": "Get out the vote: Determining support or opposition from Congressional floor-debate transcripts"
+        },
+        {
+            "paperId": "9d74eca00d4d0c4aa7c7369ae37d67498b37bf2f",
+            "title": "Modeling Local Coherence: An Entity-Based Approach"
+        },
+        {
+            "paperId": "b349b855f47a3000062e1b08ec48651b28ce10f4",
+            "title": "The Penn Discourse Treebank"
+        },
+        {
+            "paperId": "07a78850c0c2ff11acf21fccca40bfcb79da282b",
+            "title": "Building a Discourse-Tagged Corpus in the Framework of Rhetorical Structure Theory"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "af5100605a3b6bfd0adf9a30e69a47d1b98340ba",
+            "title": "Rhetorical Structure Theory: Toward a functional theory of text organization"
+        },
+        {
+            "paperId": "6c79a9bb8f885050cad70b4c69e016b186ffa538",
+            "title": "Trainable grammars for speech recognition"
+        },
+        {
+            "paperId": "b48e01db71153a35efa06b4fd2b60db596697a81",
+            "title": "Book Reviews: Coherence in Natural Language: Data Stuctures and Applications, by Florian Wolf and Edward Gibson"
+        },
+        {
+            "paperId": "bc4b4854967230dbd3a3f7b5407681e4d2629489",
+            "title": "Discourse-based answering of why-questions"
+        },
+        {
+            "paperId": "1215415ac4e5abb82d7596538bc81e6247d4f020",
+            "title": "Dependency Syntax: Theory and Practice"
+        },
+        {
+            "paperId": null,
+            "title": "Optimum branchings"
+        },
+        {
+            "paperId": null,
+            "title": "On shortest arborescence of a directed graph"
+        },
+        {
+            "paperId": "28ae1b4f4e4bf55c27261259f25a15fe3f1c0916",
+            "title": "\u00c9l\u00e9ments de syntaxe structurale"
+        }
+    ]
+}

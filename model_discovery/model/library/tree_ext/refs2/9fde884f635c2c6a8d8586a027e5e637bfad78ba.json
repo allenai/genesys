@@ -1,0 +1,386 @@
+{
+    "paperId": "9fde884f635c2c6a8d8586a027e5e637bfad78ba",
+    "externalIds": {
+        "MAG": "2901549770",
+        "DBLP": "journals/corr/abs-1811-09736",
+        "ArXiv": "1811.09736",
+        "DOI": "10.1145/3330345.3331057",
+        "CorpusId": 53727173
+    },
+    "title": "Accelerating reduction and scan using tensor core units",
+    "abstract": "Driven by deep learning, there has been a surge of specialized processors for matrix multiplication, referred to as Tensor Core Units (TCUs). These TCUs are capable of performing matrix multiplications on small matrices (usually 4 \u00d7 4 or 16 \u00d7 16) to accelerate HPC and deep learning workloads. Although TCUs are prevalent and promise increase in performance and/or energy efficiency, they suffer from over specialization as only matrix multiplication on small matrices is supported. In this paper we express both reduction and scan in terms of matrix multiplication operations and map them onto TCUs. To our knowledge, this paper is the first to try to broaden the class of algorithms expressible as TCU operations and is the first to show benefits of this mapping in terms of: program simplicity, efficiency, and performance. We implemented the reduction and scan algorithms using NVIDIA's V100 TCUs and achieved 89% -- 98% of peak memory copy bandwidth. Our results are orders of magnitude faster (up to 100 \u00d7 for reduction and 3 \u00d7 for scan) than state-of-the-art methods for small segment sizes (common in HPC and deep learning applications). Our implementation achieves this speedup while decreasing the power consumption by up to 22% for reduction and 16% for scan.",
+    "venue": "International Conference on Supercomputing",
+    "year": 2018,
+    "referenceCount": 84,
+    "citationCount": 76,
+    "influentialCitationCount": 6,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1811.09736",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper is the first to try to broaden the class of algorithms expressible as TCU operations and is theFirst to show benefits of this mapping in terms of: program simplicity, efficiency, and performance."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2333308",
+            "name": "Abdul Dakkak"
+        },
+        {
+            "authorId": "2133092186",
+            "name": "Cheng Li"
+        },
+        {
+            "authorId": "2750421",
+            "name": "Isaac Gelado"
+        },
+        {
+            "authorId": "46590281",
+            "name": "Jinjun Xiong"
+        },
+        {
+            "authorId": "143668320",
+            "name": "Wen-mei W. Hwu"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "d61597f144e92a18f3794f6e8d7b569b5091031a",
+            "title": "Apple"
+        },
+        {
+            "paperId": "84c698463dc300ee5118c3410be59060f2ee7209",
+            "title": "Automatic Generation of Warp-Level Primitives and Atomic Instructions for Fast and Portable Parallel Reduction on GPUs"
+        },
+        {
+            "paperId": "ae64adf6fc9df5a3b24bd2c5152cda68323deb81",
+            "title": "Modeling Deep Learning Accelerator Enabled GPUs"
+        },
+        {
+            "paperId": "a82fc0115c1802d48d352b35595204738fad84f0",
+            "title": "Highly Scalable Deep Learning Training System with Mixed-Precision: Training ImageNet in Four Minutes"
+        },
+        {
+            "paperId": "0e5d529befc3ca2e3e3371a0c39dc05731c1d5b7",
+            "title": "Dissecting the NVIDIA Volta GPU Architecture via Microbenchmarking"
+        },
+        {
+            "paperId": "c136e7c2e0d9610c1bfdd274f1c5a9be78e12854",
+            "title": "CuLDA_CGS: solving large-scale LDA problems on GPUs"
+        },
+        {
+            "paperId": "c904d42a6aeb81c385dbc94d95380734dee43fbc",
+            "title": "NVIDIA Tensor Core Programmability, Performance & Precision"
+        },
+        {
+            "paperId": "fd05626fb93efbe9d5a8fb5effae1ae7e858d2c1",
+            "title": "Mobile Machine Learning Hardware at ARM: A Systems-on-Chip (SoC) Perspective"
+        },
+        {
+            "paperId": "93bb58cfdd34521c59e593d8f4332a75a18e3448",
+            "title": "Halide"
+        },
+        {
+            "paperId": "469ae33bcd02d9cecfd1dbde96b6cbf357b77ff5",
+            "title": "Efficient Multibyte Floating Point Data Formats Using Vectorization"
+        },
+        {
+            "paperId": "6409189c1949945e57fa9033c2ec26247cfffb39",
+            "title": "Introduction to Tensor Decompositions and their Applications in Machine Learning"
+        },
+        {
+            "paperId": "a0a22e8776f65d4addd140e46713097fc9706907",
+            "title": "Investigating half precision arithmetic to accelerate dense linear system solvers"
+        },
+        {
+            "paperId": "e7fd6848cb29ca221a7e17d823e06fb566f1f135",
+            "title": "Mixed Precision Training"
+        },
+        {
+            "paperId": "4c60f16b9998eca0ac4dadac14b7964f8ab90c2c",
+            "title": "Almost optimal column-wise prefix-sum computation on the GPU"
+        },
+        {
+            "paperId": "e37a78b98c438f1b6963e8ad82ad13f05c0a20d0",
+            "title": "Strategies for regular segmented reductions on GPU"
+        },
+        {
+            "paperId": "ce3e56ab7a72d5487038b00233d1a9775d63b097",
+            "title": "Deep Learning for Computer Architects"
+        },
+        {
+            "paperId": "e6e64043c66b83a8787a69a70d7c0a85fd9d23c3",
+            "title": "Scaling SGD Batch Size to 32K for ImageNet Training"
+        },
+        {
+            "paperId": "510eed08d43fb4d80fa84428f1cceae672e8cf35",
+            "title": "Accelerating the XGBoost algorithm using GPU computing"
+        },
+        {
+            "paperId": "abc8aafc50b5e81b29ee4d543261d04146f2e335",
+            "title": "Fast segmented sort on GPUs"
+        },
+        {
+            "paperId": "2dfeb5a90abc49ab2a80a492a01a4e2c8e92ec22",
+            "title": "In-datacenter performance analysis of a tensor processing unit"
+        },
+        {
+            "paperId": "aa3553beb4bfa0793a4bed05704e35412342800e",
+            "title": "LIFT: A functional data-parallel IR for high-performance GPU code generation"
+        },
+        {
+            "paperId": "3dd688dbd5d425340203e73ed6590e58c970b083",
+            "title": "An Accelerator for High Efficient Vision Processing"
+        },
+        {
+            "paperId": "060fb53379e9382490a5d737413e3fa4c45ecf53",
+            "title": "Efficient kernel synthesis for performance portable programming"
+        },
+        {
+            "paperId": "cfc5f759863cb7d26f05d6188dd6d7dd191db745",
+            "title": "Low-level functional GPU programming for parallel algorithms"
+        },
+        {
+            "paperId": "91d03e4bf98a03c827983457e6de43cbd4c6ccd7",
+            "title": "Minerva: Enabling Low-Power, Highly-Accurate Deep Neural Network Accelerators"
+        },
+        {
+            "paperId": "2fdaa46ed54c593f8558dd90857cc5cadbabfa30",
+            "title": "Dot-product engine for neuromorphic computing: Programming 1T1M crossbar to accelerate matrix-vector multiplication"
+        },
+        {
+            "paperId": "15c8ce173f29b56bd5bf21416ce057398a92e8e8",
+            "title": "Higher-order and tuple-based massively-parallel prefix sums"
+        },
+        {
+            "paperId": "9071775ebcfebddd54d879fe7e6c627673e4d305",
+            "title": "ISAAC: A Convolutional Neural Network Accelerator with In-Situ Analog Arithmetic in Crossbars"
+        },
+        {
+            "paperId": "ec66e8d0141f0088d6c895fdcd343d013f68fa0a",
+            "title": "Accelerating Set Similarity Joins Using GPUs"
+        },
+        {
+            "paperId": "ffdaa12ef011de9dbf43be46d45a3abcc8288965",
+            "title": "Eyeriss: An Energy-Efficient Reconfigurable Accelerator for Deep Convolutional Neural Networks"
+        },
+        {
+            "paperId": "cc9e2dbaa7562e30a70d79775676a6ef043d5459",
+            "title": "A Performance Comparison of Sort and Scan Libraries for GPUs"
+        },
+        {
+            "paperId": "82ef2354ca03cb3ad69e75a07d2a5163f82c4dbd",
+            "title": "Compiling high performance recursive filters"
+        },
+        {
+            "paperId": "c5e8b04a00f8d5dea248375c9b5e60abcecf808b",
+            "title": "Efficient Training of LDA on a GPU by Mean-for-Mode Estimation"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "b7cf49e30355633af2db19f35189410c8515e91f",
+            "title": "Deep Learning with Limited Numerical Precision"
+        },
+        {
+            "paperId": "6bdb186ec4726e00a8051119636d4df3b94043b5",
+            "title": "Caffe: Convolutional Architecture for Fast Feature Embedding"
+        },
+        {
+            "paperId": "75a6257773d941488019b6c4ef5f210bbd652958",
+            "title": "Optimising purely functional GPU programs"
+        },
+        {
+            "paperId": "d50d7cd78126cd4df5dda62f1a75c89d095bc8a5",
+            "title": "Convolution engine: balancing efficiency & flexibility in specialized computing"
+        },
+        {
+            "paperId": "423bd9c50aacd81e4a8e6b482e4b3ec058e4fcc6",
+            "title": "The CUDA Handbook: A Comprehensive Guide to GPU Programming"
+        },
+        {
+            "paperId": "514514e3f6150d1f36a7820fc5da5a17953d62f7",
+            "title": "StreamScan: fast scan algorithms for GPUs without global barrier synchronization"
+        },
+        {
+            "paperId": "e523a8e6d0c30ee51b71e094e735b17cde47eb68",
+            "title": "Parallel Scan for Stream Architectures"
+        },
+        {
+            "paperId": "fd4711f8cee7a6735107ee11d5887d9eb9ed0d88",
+            "title": "Structured Parallel Programming: Patterns for Efficient Computation"
+        },
+        {
+            "paperId": "d76126eeac4f191eeb4e98d0626a75f38bf210b3",
+            "title": "A Scalable Tridiagonal Solver for GPUs"
+        },
+        {
+            "paperId": "790ab5f286336dc6826df483d3adc96043f6834d",
+            "title": "Revisiting sorting for GPGPU stream architectures"
+        },
+        {
+            "paperId": "79716ddb8a1a204ea90cfcf8b89cf4550cfb72df",
+            "title": "PetaBricks"
+        },
+        {
+            "paperId": "87e43e9eba01a4eb03436c9946bf6aa031a5d5af",
+            "title": "Tensor Decompositions and Applications"
+        },
+        {
+            "paperId": "917fd12162c12c0fd2cb6409de1dd438531c553a",
+            "title": "Numerical linear algebra on emerging architectures: The PLASMA and MAGMA projects"
+        },
+        {
+            "paperId": "871411f0ea43c5dda953c22a64b7558b91e40bf8",
+            "title": "PetaBricks: a language and compiler for algorithmic choice"
+        },
+        {
+            "paperId": "ffcb7146dce1aebf47a910b51a873cfec897d602",
+            "title": "Fast scan algorithms on graphics processors"
+        },
+        {
+            "paperId": "5026aca3bd8fce0267d5cbeaf9f54c4770bbaf51",
+            "title": "More algorithms for all-pairs shortest paths in weighted graphs"
+        },
+        {
+            "paperId": "ee64ab6a05667113e2f6808dceed08a187387db6",
+            "title": "Fast Rectangular Matrix Multiplication and Applications"
+        },
+        {
+            "paperId": "c80336a0e19945a407d98e255adfddc0182acd30",
+            "title": "AD-A 270 601 Segmented Operations for Sparse Matrix Computation on Vector Multiprocessors"
+        },
+        {
+            "paperId": "bf0d08afb0e0c5f0035a9c6f4d3671c048f942c8",
+            "title": "A Survey of Matrix Computations"
+        },
+        {
+            "paperId": "3c019693f59a32bf2fe5e99e93372c2816705139",
+            "title": "Scans as Primitive Parallel Operations"
+        },
+        {
+            "paperId": "d668f12be54174141e6197fad737006b7b0c0571",
+            "title": "PyTorch"
+        },
+        {
+            "paperId": null,
+            "title": "NVVM IR Specification 1"
+        },
+        {
+            "paperId": null,
+            "title": "Arm Machine Learning Processor"
+        },
+        {
+            "paperId": null,
+            "title": "Parallel Thread Execution ISA Version 6.2"
+        },
+        {
+            "paperId": null,
+            "title": "Programming Tensor Cores in CUDA 9"
+        },
+        {
+            "paperId": null,
+            "title": "CUDA C Programming Guide"
+        },
+        {
+            "paperId": null,
+            "title": "WikiChip"
+        },
+        {
+            "paperId": null,
+            "title": "Caffe2"
+        },
+        {
+            "paperId": null,
+            "title": "Cooperative Groups: Flexible CUDA Thread Programming"
+        },
+        {
+            "paperId": null,
+            "title": "Kepler Shuffle: Tips and Tricks. http://on- demand.gputechconf.com/gtc/2013/presentations/S3174- Kepler-Shuffle-Tips-Tricks.pdf"
+        },
+        {
+            "paperId": null,
+            "title": "CUB v1.8.0: CUDA Unbound, a library of warp-wide, blockwide, and device-wide GPU parallel primitives"
+        },
+        {
+            "paperId": "acbd73e8a06f206b9086902f4834413b8a9bb9f9",
+            "title": "Lower Numerical Precision Deep Learning Inference and Training"
+        },
+        {
+            "paperId": null,
+            "title": "Modern mobile graphics processors. Science: Internet, Data and Things (CS-E4000), Spring 2018"
+        },
+        {
+            "paperId": null,
+            "title": "Xla: tensorflow, compiled"
+        },
+        {
+            "paperId": "d1cb1322fef3c2fd1d264ea7543f61e744625d3c",
+            "title": "Single-pass Parallel Prefix Scan with Decoupled Lookback"
+        },
+        {
+            "paperId": null,
+            "title": "Deep learning with int8 optimization on xilinx devices"
+        },
+        {
+            "paperId": "dada0d977dda217cf70d6cee35b3210d8f387189",
+            "title": "Multireduce and Multiscan on Modern GPUs"
+        },
+        {
+            "paperId": "215ba41bcfb1b53084ab25bdfeb68bdea1df57c2",
+            "title": "Thrust: A Productivity-Oriented Library for CUDA"
+        },
+        {
+            "paperId": "fc43e37c89681d280639243baf52128505d705d3",
+            "title": "Chapter 3 \u2013 Patterns"
+        },
+        {
+            "paperId": "aca75724674bd0f608086f90f3e229ae2c0f92a7",
+            "title": "Efficient Parallel Scan Algorithms for GPUs"
+        },
+        {
+            "paperId": "d0b4a903649fa45d5eb9e40edd632c607052aec8",
+            "title": "Parallel Prefix Sum (Scan) with CUDA"
+        },
+        {
+            "paperId": "8eebe71e9136d98b1c5b1574f84011911d0c33e7",
+            "title": "A Work-Efficient Step-Efficient Prefix Sum Algorithm"
+        },
+        {
+            "paperId": "6a630ac89d7c0a57eb7bf4cb30dd5946bcf3ccce",
+            "title": "google,\u6211,\u8428\u5a1c"
+        },
+        {
+            "paperId": "9e856e175f03a487ff590cff8ab3f6555d8e6c0c",
+            "title": "Oak Ridge National Laboratory"
+        },
+        {
+            "paperId": "32ef8d891edde06cc01357fa5c4d1ab7fe631720",
+            "title": "OpenMP: an industry standard API for shared-memory programming"
+        },
+        {
+            "paperId": "9efb6290fe463c09d55a39566dbb87c64863129a",
+            "title": "Chapter 6 A survey of matrix computations"
+        },
+        {
+            "paperId": "ec0bc920662693375a881d8beb8c97bf08281dba",
+            "title": "Prefix sums and their applications"
+        },
+        {
+            "paperId": null,
+            "title": "Cascade Lake -Microarchitectures -Intel"
+        },
+        {
+            "paperId": null,
+            "title": "Summit Supercomputer"
+        },
+        {
+            "paperId": null,
+            "title": "Tensor Cores"
+        }
+    ]
+}

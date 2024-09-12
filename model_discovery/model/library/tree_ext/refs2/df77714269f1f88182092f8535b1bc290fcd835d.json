@@ -1,0 +1,279 @@
+{
+    "paperId": "df77714269f1f88182092f8535b1bc290fcd835d",
+    "externalIds": {
+        "MAG": "2953391617",
+        "ACL": "D15-1278",
+        "DBLP": "conf/emnlp/LiLJH15",
+        "ArXiv": "1503.00185",
+        "DOI": "10.18653/v1/D15-1278",
+        "CorpusId": 9283982
+    },
+    "title": "When Are Tree Structures Necessary for Deep Learning of Representations?",
+    "abstract": "Recursive neural models, which use syntactic parse trees to recursively generate representations bottom-up, are a popular architecture. However there have not been rigorous evaluations showing for exactly which tasks this syntax-based method is appropriate. In this paper, we benchmark recursive neural models against sequential recurrent neural models, enforcing applesto-apples comparison as much as possible. We investigate 4 tasks: (1) sentiment classification at the sentence level and phrase level; (2) matching questions to answerphrases; (3) discourse parsing; (4) semantic relation extraction. Our goal is to understand better when, and why, recursive models can outperform simpler models. We find that recursive models help mainly on tasks (like semantic relation extraction) that require longdistance connection modeling, particularly on very long sequences. We then introduce a method for allowing recurrent models to achieve similar performance: breaking long sentences into clause-like units at punctuation and processing them separately before combining. Our results thus help understand the limitations of both classes of models, and suggest directions for improving recurrent models.",
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2015,
+    "referenceCount": 58,
+    "citationCount": 223,
+    "influentialCitationCount": 21,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/D15-1278.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper benchmarks recursive neural models against sequential recurrent neural models, enforcing applesto-apples comparison as much as possible, and introduces a method for allowing recurrent models to achieve similar performance: breaking long sentences into clause-like units at punctuation and processing them separately before combining."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "49298465",
+            "name": "Jiwei Li"
+        },
+        {
+            "authorId": "1821711",
+            "name": "Thang Luong"
+        },
+        {
+            "authorId": "1746807",
+            "name": "Dan Jurafsky"
+        },
+        {
+            "authorId": "144547315",
+            "name": "E. Hovy"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "1f600f213dbbd70f06093438855f39022957b4bf",
+            "title": "Long Short-Term Memory Over Recursive Structures"
+        },
+        {
+            "paperId": "04d1a26c2516dc14a765112a63ec60dc3cb3de72",
+            "title": "Tree-Structured Composition in Neural Networks without Tree-Structured Architectures"
+        },
+        {
+            "paperId": "32de44f01a96d4473d21099d15e25bc2b9f08e2f",
+            "title": "Improved Semantic Representations From Tree-Structured Long Short-Term Memory Networks"
+        },
+        {
+            "paperId": "47570e7f63e296f224a0e7f9a0d08b0de3cbaf40",
+            "title": "Grammar as a Foreign Language"
+        },
+        {
+            "paperId": "964153213e608b65ebd49684fa9dcbfe1c720fb4",
+            "title": "Global Belief Recursive Neural Networks"
+        },
+        {
+            "paperId": "60dda7f5efd67758bde1ee7f45e6d3ef86445495",
+            "title": "Deep Recursive Neural Networks for Compositionality in Language"
+        },
+        {
+            "paperId": "1956c239b3552e030db1b78951f64781101125ed",
+            "title": "Addressing the Rare Word Problem in Neural Machine Translation"
+        },
+        {
+            "paperId": "921da70f380e9f9082e5594b128369cfd0fdf120",
+            "title": "A Neural Network for Factoid Question Answering over Paragraphs"
+        },
+        {
+            "paperId": "41bfc1cbd32d897b02271dd6aa7895d1ce2c6003",
+            "title": "Recursive Deep Models for Discourse Parsing"
+        },
+        {
+            "paperId": "c945743ef99b1c897eaa07ba276dcec0fcdbc0b4",
+            "title": "A Model of Coherence Based on Distributed Sentence Representation"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "1eb09fecd75eb27825dce4f964b97f4f5cc399d7",
+            "title": "On the Properties of Neural Machine Translation: Encoder\u2013Decoder Approaches"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "7c05a4ffee7e159e34b2efea7e44d994333ec628",
+            "title": "Recursive Neural Networks Can Learn Logical Semantics"
+        },
+        {
+            "paperId": "4ea80c206b8ad73a6d320c9d8ed0321d84fe6d85",
+            "title": "Recursive Neural Networks for Learning Logical Semantics"
+        },
+        {
+            "paperId": "06e122f475a21d92dba137609c40f35690217475",
+            "title": "Adaptive Recursive Neural Network for Target-dependent Twitter Sentiment Classification"
+        },
+        {
+            "paperId": "9204d5b82652ee69859b6de56eb9a189a458c97c",
+            "title": "Representation Learning for Text-level Discourse Parsing"
+        },
+        {
+            "paperId": "f3de86aeb442216a8391befcacb49e58b478f512",
+            "title": "Distributed Representations of Sentences and Documents"
+        },
+        {
+            "paperId": "08caf0d048cfbe528f8d9db7005d040f76b55c24",
+            "title": "Can recursive neural tensor networks learn logical reasoning?"
+        },
+        {
+            "paperId": "d8aca5df42754338c7f15d1c473baefc516e6c9c",
+            "title": "Bidirectional Recursive Neural Networks for Token-Level Labeling with Structure"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "687bac2d3320083eb4530bf18bb8f8f721477600",
+            "title": "Recursive Deep Models for Semantic Compositionality Over a Sentiment Treebank"
+        },
+        {
+            "paperId": "944a1cfd79dbfb6fef460360a0765ba790f4027a",
+            "title": "Recurrent Continuous Translation Models"
+        },
+        {
+            "paperId": "c560e6b7c39fad6804dc0a3f3376b61dbc8f2434",
+            "title": "Simple Customization of Recursive Neural Networks for Semantic Relation Classification"
+        },
+        {
+            "paperId": "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17",
+            "title": "Generating Sequences With Recurrent Neural Networks"
+        },
+        {
+            "paperId": "c4fd9c86b2b41df51a6fe212406dda81b1997fd4",
+            "title": "Linguistic Regularities in Continuous Space Word Representations"
+        },
+        {
+            "paperId": "4177ec52d1b80ed57f2e72b0f9a42365f1a8598d",
+            "title": "Speech recognition with deep recurrent neural networks"
+        },
+        {
+            "paperId": "f6b51c8753a871dc94ff32152c00c01e94f90f09",
+            "title": "Efficient Estimation of Word Representations in Vector Space"
+        },
+        {
+            "paperId": "27e38351e48fe4b7da2775bf94341738bc4da07e",
+            "title": "Semantic Compositionality through Recursive Matrix-Vector Spaces"
+        },
+        {
+            "paperId": "a97b5db17acc731ef67321832dbbaf5766153135",
+            "title": "Supervised Sequence Labelling with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "ae5e6c6f5513613a161b2c85563f9708bf2e9178",
+            "title": "Dynamic Pooling and Unfolding Recursive Autoencoders for Paraphrase Detection"
+        },
+        {
+            "paperId": "cfa2646776405d50533055ceb1b7f050e9014dcb",
+            "title": "Semi-Supervised Recursive Autoencoders for Predicting Sentiment Distributions"
+        },
+        {
+            "paperId": "e7590aa6a2e74642e82586b5713661b18cd84e20",
+            "title": "Better Mini-Batch Algorithms via Accelerated Gradient Methods"
+        },
+        {
+            "paperId": "bc1022b031dc6c7019696492e8116598097a8c12",
+            "title": "Natural Language Processing (Almost) from Scratch"
+        },
+        {
+            "paperId": "413c1142de9d91804d6d11c67ff3fed59c9fc279",
+            "title": "Adaptive Subgradient Methods for Online Learning and Stochastic Optimization"
+        },
+        {
+            "paperId": "8ea8da551ef6b1c909ca5b37ba94be4cae02e9ac",
+            "title": "SemEval-2010 Task 8: Multi-Way Classification of Semantic Relations Between Pairs of Nominals"
+        },
+        {
+            "paperId": "12d0353ce8b41b7e5409e5a4a611110aee33c7bc",
+            "title": "Thumbs up? Sentiment Classification using Machine Learning Techniques"
+        },
+        {
+            "paperId": "07a78850c0c2ff11acf21fccca40bfcb79da282b",
+            "title": "Building a Discourse-Tagged Corpus in the Framework of Rhetorical Structure Theory"
+        },
+        {
+            "paperId": "e23c34414e66118ecd9b08cf0cd4d016f59b0b85",
+            "title": "Bidirectional recurrent neural networks"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "b158a006bebb619e2ea7bf0a22c27d45c5d19004",
+            "title": "LSTM can Solve Hard Long Time Lag Problems"
+        },
+        {
+            "paperId": "85a8a97f614b2b6823e035bcc9abcb0f3d27be4d",
+            "title": "An Introduction to the Bootstrap"
+        },
+        {
+            "paperId": "668087f0ae7ce1de6e0bd0965dbb480c08103260",
+            "title": "Finding Structure in Time"
+        },
+        {
+            "paperId": "34468c0aa95a7aea212d8738ab899a69b2fc14c6",
+            "title": "Learning State Space Trajectories in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "ce9a21b93ba29d4145a8ef6bf401e77f261848de",
+            "title": "A Learning Algorithm for Continually Running Fully Recurrent Neural Networks"
+        },
+        {
+            "paperId": "1528918ae0c9f70ba6da030cb8dbc72f71bc198b",
+            "title": "Review of Neural Networks for Speech Recognition"
+        },
+        {
+            "paperId": "17cfa8c38326a8c57c4c8510bfbdeac5dcfd7ede",
+            "title": "HILDA: A Discourse Parser Using Support Vector Machine Classification"
+        },
+        {
+            "paperId": "c08d0525bd42fa1c24f9f5df72f4c8fcf7063b22",
+            "title": "Offline Handwriting Recognition with Multidimensional Recurrent Neural Networks"
+        },
+        {
+            "paperId": "75f8a4d7ed6a0f32fa098cac967de247938d9ce5",
+            "title": "An Introduction to the Bootstrap"
+        },
+        {
+            "paperId": "b9a1c422c29b8e4dfb1a9c91d426fc3894726e88",
+            "title": "Neural Networks for Time Series Processing"
+        },
+        {
+            "paperId": "03bc854feaee144b54924b440eff02ed9082cc6b",
+            "title": "THE USE OF RECURRENT NEURAL NETWORKS IN CONTINUOUS SPEECH RECOGNITION"
+        },
+        {
+            "paperId": null,
+            "title": "Learning task-dependent distributed representations by backpropagation through structure"
+        },
+        {
+            "paperId": null,
+            "title": "to align and translate. arXiv preprint arXiv:1409"
+        },
+        {
+            "paperId": null,
+            "title": "Deep Bi-LSTM sequence models (denoted as Sequence ) that treat the whole sentence as just one sequence"
+        },
+        {
+            "paperId": null,
+            "title": "Semantic compositions such as negations or conjunctions usually appear at the clause level. Working on clauses individually and then combining them model inter-clause compositions"
+        },
+        {
+            "paperId": null,
+            "title": "Errors are back-propagated to individual to-kens using fewer steps in hierarchical models than in standard models"
+        },
+        {
+            "paperId": null,
+            "title": "Recent Achievements and Future Directions"
+        }
+    ]
+}

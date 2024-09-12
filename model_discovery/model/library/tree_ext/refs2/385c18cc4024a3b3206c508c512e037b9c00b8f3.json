@@ -1,0 +1,166 @@
+{
+    "paperId": "385c18cc4024a3b3206c508c512e037b9c00b8f3",
+    "externalIds": {
+        "DBLP": "conf/cvpr/NohSH16",
+        "MAG": "2964138017",
+        "ArXiv": "1511.05756",
+        "DOI": "10.1109/CVPR.2016.11",
+        "CorpusId": 14420812
+    },
+    "title": "Image Question Answering Using Convolutional Neural Network with Dynamic Parameter Prediction",
+    "abstract": "We tackle image question answering (ImageQA) problem by learning a convolutional neural network (CNN) with a dynamic parameter layer whose weights are determined adaptively based on questions. For the adaptive parameter prediction, we employ a separate parameter prediction network, which consists of gated recurrent unit (GRU) taking a question as its input and a fully-connected layer generating a set of candidate weights as its output. However, it is challenging to construct a parameter prediction network for a large number of parameters in the fully-connected dynamic parameter layer of the CNN. We reduce the complexity of this problem by incorporating a hashing technique, where the candidate weights given by the parameter prediction network are selected using a predefined hash function to determine individual weights in the dynamic parameter layer. The proposed network-joint network with the CNN for ImageQA and the parameter prediction network-is trained end-to-end through back-propagation, where its weights are initialized using a pre-trained CNN and GRU. The proposed algorithm illustrates the state-of-the-art performance on all available public ImageQA benchmarks.",
+    "venue": "Computer Vision and Pattern Recognition",
+    "year": 2015,
+    "referenceCount": 31,
+    "citationCount": 324,
+    "influentialCitationCount": 26,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1511.05756",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The proposed network-joint network with the CNN for ImageQA and the parameter prediction network-is trained end-to-end through back-propagation, where its weights are initialized using a pre-trained CNN and GRU."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2018393",
+            "name": "Hyeonwoo Noh"
+        },
+        {
+            "authorId": "14454974",
+            "name": "P. H. Seo"
+        },
+        {
+            "authorId": "40030651",
+            "name": "Bohyung Han"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "6e795c6e9916174ae12349f5dc3f516570c17ce8",
+            "title": "Skip-Thought Vectors"
+        },
+        {
+            "paperId": "98bd5dd1740f585bf25320ba504e2c1ae57f2e5f",
+            "title": "Learning to Answer Questions from Image Using Convolutional Neural Network"
+        },
+        {
+            "paperId": "6540cb7971d1a9d72562d465172e010fbb729bc3",
+            "title": "Predicting Deep Zero-Shot Convolutional Neural Networks Using Textual Descriptions"
+        },
+        {
+            "paperId": "2fcd5cff2b4743ea640c4af68bf4143f4a2cccb1",
+            "title": "Are You Talking to a Machine? Dataset and Methods for Multilingual Image Question"
+        },
+        {
+            "paperId": "62a956d7600b10ca455076cd56e604dfd106072a",
+            "title": "Exploring Models and Data for Image Question Answering"
+        },
+        {
+            "paperId": "bd7bd1d2945a58cdcc1797ba9698b8810fe68f60",
+            "title": "Ask Your Neurons: A Neural-Based Approach to Answering Questions about Images"
+        },
+        {
+            "paperId": "97ad70a9fa3f99adf18030e5e38ebe3d90daa2db",
+            "title": "VQA: Visual Question Answering"
+        },
+        {
+            "paperId": "efb5032e6199c80f83309fd866b25be9545831fd",
+            "title": "Compressing Neural Networks with the Hashing Trick"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "ac3ee98020251797c2b401e1389461df88e52e62",
+            "title": "Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling"
+        },
+        {
+            "paperId": "9667f8264745b626c6173b1310e2ff0298b09cfc",
+            "title": "Learning Deep Features for Scene Recognition using Places Database"
+        },
+        {
+            "paperId": "ac64fb7e6d2ddf236332ec9f371fe85d308c114d",
+            "title": "A Multi-World Approach to Question Answering about Real-World Scenes based on Uncertain Input"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "c08f5fa876181fc040d76c75fe2433eee3c9b001",
+            "title": "Learning and Transferring Mid-level Image Representations Using Convolutional Neural Networks"
+        },
+        {
+            "paperId": "9f2efadf66817f1b38f58b3f50c7c8f34c69d89a",
+            "title": "DeepFace: Closing the Gap to Human-Level Performance in Face Verification"
+        },
+        {
+            "paperId": "71b7178df5d2b112d07e45038cb5637208659ff7",
+            "title": "Microsoft COCO: Common Objects in Context"
+        },
+        {
+            "paperId": "18c125ce0f64e85577f7d30132cf0e92ec664bf4",
+            "title": "Describing Textures in the Wild"
+        },
+        {
+            "paperId": "b8de958fead0d8a9619b55c7299df3257c624a96",
+            "title": "DeCAF: A Deep Convolutional Activation Feature for Generic Visual Recognition"
+        },
+        {
+            "paperId": "eff61216e0136886e1158625b1e5a88ed1a7cbce",
+            "title": "Predicting Parameters in Deep Learning"
+        },
+        {
+            "paperId": "84069287da0a6b488b8c933f3cb5be759cb6237e",
+            "title": "On the difficulty of training recurrent neural networks"
+        },
+        {
+            "paperId": "c1994ba5946456fc70948c549daf62363f13fa2d",
+            "title": "Indoor Segmentation and Support Inference from RGBD Images"
+        },
+        {
+            "paperId": "8687d2dc63fa7b9d085712910d0e3b663b76ca0c",
+            "title": "Describing the scene as a whole: Joint object detection, scene classification and semantic segmentation"
+        },
+        {
+            "paperId": "d2c733e34d48784a37d717fe43d9e93277a8c53e",
+            "title": "ImageNet: A large-scale hierarchical image database"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "0e3e3c3d8ae5cb7c4636870d69967c197484d3bb",
+            "title": "Verb Semantics and Lexical Selection"
+        },
+        {
+            "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+            "title": "Recurrent neural network based language model"
+        },
+        {
+            "paperId": null,
+            "title": "Wordnet: An electronic database"
+        }
+    ]
+}

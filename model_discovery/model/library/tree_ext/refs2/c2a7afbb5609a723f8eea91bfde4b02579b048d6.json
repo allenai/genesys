@@ -1,0 +1,194 @@
+{
+    "paperId": "c2a7afbb5609a723f8eea91bfde4b02579b048d6",
+    "externalIds": {
+        "MAG": "2962824887",
+        "DBLP": "conf/iclr/ArtetxeLAC18",
+        "ArXiv": "1710.11041",
+        "CorpusId": 3515219
+    },
+    "title": "Unsupervised Neural Machine Translation",
+    "abstract": "In spite of the recent success of neural machine translation (NMT) in standard benchmarks, the lack of large parallel corpora poses a major practical problem for many language pairs. There have been several proposals to alleviate this issue with, for instance, triangulation and semi-supervised learning techniques, but they still require a strong cross-lingual signal. In this work, we completely remove the need of parallel data and propose a novel method to train an NMT system in a completely unsupervised manner, relying on nothing but monolingual corpora. Our model builds upon the recent work on unsupervised embedding mappings, and consists of a slightly modified attentional encoder-decoder model that can be trained on monolingual corpora alone using a combination of denoising and backtranslation. Despite the simplicity of the approach, our system obtains 15.56 and 10.21 BLEU points in WMT 2014 French-to-English and German-to-English translation. The model can also profit from small parallel corpora, and attains 21.81 and 15.24 points when combined with 100,000 parallel sentences, respectively. Our implementation is released as an open source project.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2017,
+    "referenceCount": 38,
+    "citationCount": 748,
+    "influentialCitationCount": 143,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a novel method to train an NMT system in a completely unsupervised manner, relying on nothing but monolingual corpora, and consists of a slightly modified attentional encoder-decoder model that can be trained on monolingUAL corpora alone using a combination of denoising and backtranslation."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2347956",
+            "name": "Mikel Artetxe"
+        },
+        {
+            "authorId": "3255091",
+            "name": "Gorka Labaka"
+        },
+        {
+            "authorId": "1733049",
+            "name": "Eneko Agirre"
+        },
+        {
+            "authorId": "1979489",
+            "name": "Kyunghyun Cho"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "92c22d3743bcc080783b3deb1ed4889f967df286",
+            "title": "Adversarial Training for Unsupervised Bilingual Lexicon Induction"
+        },
+        {
+            "paperId": "11fdffe08eb1b08bfa8e3fdabe1accfd0e336be3",
+            "title": "Learning bilingual word embeddings with (almost) no bilingual data"
+        },
+        {
+            "paperId": "106d5e0cf44ea08500adc91c4d5bb3e6c8a4d627",
+            "title": "Six Challenges for Neural Machine Translation"
+        },
+        {
+            "paperId": "e34159c0b822de99c5301bc7e2d800cf8ceec188",
+            "title": "A Teacher-Student Framework for Zero-Resource Neural Machine Translation"
+        },
+        {
+            "paperId": "02e45b3472fa4c879f8e9ca0dbb283c774a338cb",
+            "title": "Offline bilingual word vectors, orthogonal transformations and the inverted softmax"
+        },
+        {
+            "paperId": "2d9604cdc3ef786b50b53aaf440d451ad16e7fb9",
+            "title": "Toward Multilingual Neural Machine Translation with Universal Encoder and Decoder"
+        },
+        {
+            "paperId": "a486e2839291111bb44fa1f07731ada123539f75",
+            "title": "Google\u2019s Multilingual Neural Machine Translation System: Enabling Zero-Shot Translation"
+        },
+        {
+            "paperId": "85f94d8098322f8130512b4c6c4627548ce4a6cc",
+            "title": "Unsupervised Pretraining for Sequence to Sequence Learning"
+        },
+        {
+            "paperId": "23b559b5ab27f2fca6f56c0a7b6478bcf69db509",
+            "title": "Dual Learning for Machine Translation"
+        },
+        {
+            "paperId": "9a2eed5f8175275af0d55d4aed39afc8e2b2acf2",
+            "title": "Learning principled bilingual mappings of word embeddings while preserving monolingual invariance"
+        },
+        {
+            "paperId": "b8bc86a1bc281b15ce45e967cbdd045bcf23a952",
+            "title": "Fully Character-Level Neural Machine Translation without Explicit Segmentation"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "61f0d79531f1d4aaee31a5792aed05774bf1bd16",
+            "title": "Towards cross-lingual distributed representations without parallel text trained with adversarial autoencoders"
+        },
+        {
+            "paperId": "198ac64703e83d00eb0f51a4c4a7c77cb08a7e5c",
+            "title": "Zero-Resource Translation with Multi-Lingual Neural Machine Translation"
+        },
+        {
+            "paperId": "26e743d5bd465f49b9538deaf116c15e61b7951f",
+            "title": "Learning Distributed Representations of Sentences from Unlabelled Data"
+        },
+        {
+            "paperId": "9ed9bff37ec952134564b3b2a022b7aba9479ff2",
+            "title": "Multi-Way, Multilingual Neural Machine Translation with a Shared Attention Mechanism"
+        },
+        {
+            "paperId": "f3b96ef2dc1fc5e14982f1b963db8db6a54183bb",
+            "title": "Improving Neural Machine Translation Models with Monolingual Data"
+        },
+        {
+            "paperId": "4aa9f5150b46320f534de4747a2dd0cd7f3fe292",
+            "title": "Semi-supervised Sequence Learning"
+        },
+        {
+            "paperId": "1518039b5001f1836565215eb047526b3ac7f462",
+            "title": "Neural Machine Translation of Rare Words with Subword Units"
+        },
+        {
+            "paperId": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+            "title": "Effective Approaches to Attention-based Neural Machine Translation"
+        },
+        {
+            "paperId": "1ddb0c06d6497698f2189517e6a97d8a5e3fa1ac",
+            "title": "Unifying Bayesian Inference and Vector Space Models for Improved Decipherment"
+        },
+        {
+            "paperId": "501acb88710ac23a99562f3987b842c8a5e234bd",
+            "title": "Hubness and Pollution: Delving into Cross-Space Mapping for Zero-Shot Learning"
+        },
+        {
+            "paperId": "c7188396767227c0d9ed087a7b077f22fccd7372",
+            "title": "Bilingual Word Representations with Monolingual Quality in Mind"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "fc303b3b0be5b476ae5f3d8414b685e91d0378c6",
+            "title": "BilBOWA: Fast Bilingual Distributed Representations without Word Alignments"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "9d64d96cf633c3c6fbc86c9c5d74349799e305e3",
+            "title": "Dependency-Based Decipherment for Resource-Limited Machine Translation"
+        },
+        {
+            "paperId": "0157dcd6122c20b5afc359a799b2043453471f7f",
+            "title": "Exploiting Similarities among Languages for Machine Translation"
+        },
+        {
+            "paperId": "9334e1139b4058b8d9a830df72fa1677f7cb9dee",
+            "title": "Large Scale Decipherment for Out-of-Domain Machine Translation"
+        },
+        {
+            "paperId": "537018f8ee3502faea7fcd00f511f6cacf89ea68",
+            "title": "Deciphering Foreign Language"
+        },
+        {
+            "paperId": "e2b7f37cd97a7907b1b8a41138721ed06a0b76cd",
+            "title": "Stacked Denoising Autoencoders: Learning Useful Representations in a Deep Network with a Local Denoising Criterion"
+        },
+        {
+            "paperId": "9452e711ce2e7e0d4e35aaeb5ab8731de62a5809",
+            "title": "Contrastive Estimation: Training Log-Linear Models on Unlabeled Data"
+        },
+        {
+            "paperId": "4bba2d86f91612589b33bb13aaa927d430ed1dac",
+            "title": "Copied Monolingual Data Improves Low-Resource Neural Machine Translation"
+        },
+        {
+            "paperId": "a9075f6332542e12b2bf3cdbdb3a6ed44733fb41",
+            "title": "Proceedings of the 54th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)"
+        },
+        {
+            "paperId": "13167f9cd8c7906ca808b01d28dca6dd951da8a5",
+            "title": "of the Association for Computational Linguistics"
+        }
+    ]
+}

@@ -1,0 +1,114 @@
+{
+    "paperId": "01434a4153d5340c00d9e2f910f462a841a7bca3",
+    "externalIds": {
+        "MAG": "2554727591",
+        "DBLP": "conf/nips/Titsias16",
+        "ArXiv": "1609.07410",
+        "CorpusId": 8751806
+    },
+    "title": "One-vs-Each Approximation to Softmax for Scalable Estimation of Probabilities",
+    "abstract": "The softmax representation of probabilities for categorical variables plays a prominent role in modern machine learning with numerous applications in areas such as large scale classification, neural language modeling and recommendation systems. However, softmax estimation is very expensive for large scale inference because of the high cost associated with computing the normalizing constant. Here, we introduce an efficient approximation to softmax probabilities which takes the form of a rigorous lower bound on the exact probability. This bound is expressed as a product over pairwise probabilities and it leads to scalable estimation based on stochastic optimization. It allows us to perform doubly stochastic estimation by subsampling both training instances and class labels. We show that the new bound has interesting theoretical properties and we demonstrate its use in classification problems.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2016,
+    "referenceCount": 21,
+    "citationCount": 50,
+    "influentialCitationCount": 8,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An efficient approximation to softmax probabilities is introduced which takes the form of a rigorous lower bound on the exact probability and it leads to scalable estimation based on stochastic optimization."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1722732",
+            "name": "Michalis K. Titsias"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "7eb44c7bae8f364b0777c2bf3840cb0872667233",
+            "title": "Sparse Local Embeddings for Extreme Multi-label Classification"
+        },
+        {
+            "paperId": "12a5b7190b981bf478b4c9c04d3c0d41f13b9023",
+            "title": "BlackOut: Speeding up Recurrent Neural Network Language Models With Very Large Vocabularies"
+        },
+        {
+            "paperId": "8250ecbaef057bdb5390ef4e4be798f1523a23f6",
+            "title": "Deep Networks With Large Output Spaces"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "9c86e357143d1a7789189a726aaaf5ba4da47f38",
+            "title": "Scalable Bayesian Modelling of Paired Symbols"
+        },
+        {
+            "paperId": "0894b06cff1cd0903574acaa7fcf071b144ae775",
+            "title": "Fast and Robust Neural Network Joint Models for Statistical Machine Translation"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "c98e9f3d78fc530fe39fadedd67c0d7d4aa8401f",
+            "title": "Distributed training of Large-scale Logistic models"
+        },
+        {
+            "paperId": "5b0d644f5c4b9880cbaf79932c0a4fa98996f068",
+            "title": "A fast and simple algorithm for training neural probabilistic language models"
+        },
+        {
+            "paperId": "c0b59d80c6dd461a4430e989b27bf892256e4c32",
+            "title": "A Stick-Breaking Likelihood for Categorical Data Analysis with Latent Gaussian Models"
+        },
+        {
+            "paperId": "5feaa06ff389b385095beb28483ce4c6c3fe4414",
+            "title": "Generalized Bradley-Terry Models and Multi-Class Probability Estimates"
+        },
+        {
+            "paperId": "61a1565016477b2092a212e7af0e789a250bc552",
+            "title": "Pattern Recognition and Machine Learning (Information Science and Statistics)"
+        },
+        {
+            "paperId": "f04fdd5da07b0950692cf8982bef844702286f4a",
+            "title": "Multinomial logistic regression algorithm"
+        },
+        {
+            "paperId": "7d47ee5f84103529f84297c98c21dadb4742e3ff",
+            "title": "RANK ANALYSIS OF INCOMPLETE BLOCK DESIGNS THE METHOD OF PAIRED COMPARISONS"
+        },
+        {
+            "paperId": "4f8d648c52edf74e41b0996128aa536e13cc7e82",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": "23a99224c7b7d148675c1798c796ec1b0904620a",
+            "title": "Noise-Contrastive Estimation of Unnormalized Statistical Models, with Applications to Natural Image Statistics"
+        },
+        {
+            "paperId": "06577c0515f3163437e28c54fa48b0e74a14e65b",
+            "title": "Efficient Bounds for the Softmax Function and Applications to Approximate Inference in Hybrid models"
+        },
+        {
+            "paperId": "157099d6ffd3ffca8cfca7955aff7c5f1a979ac9",
+            "title": "Multilabel Text Classification for Automated Tag Suggestion"
+        },
+        {
+            "paperId": "c19fbefdeead6a4154a22a9c8551a18b1530033a",
+            "title": "Hierarchical Probabilistic Neural Network Language Model"
+        },
+        {
+            "paperId": "6b388f0151ab37adb3d57738b8f52a3f943f86c8",
+            "title": "Quick Training of Probabilistic Neural Nets by Importance Sampling"
+        },
+        {
+            "paperId": "5c1b3dc95d1ba44fd7d9e3f6dec60fdc46a0eb78",
+            "title": "RANK ANALYSIS OF INCOMPLETE BLOCK DESIGNS"
+        }
+    ]
+}

@@ -1,0 +1,206 @@
+{
+    "paperId": "6b7d6e6416343b2a122f8416e69059ce919026ef",
+    "externalIds": {
+        "DBLP": "conf/nips/HamiltonYL17",
+        "MAG": "2952779545",
+        "ArXiv": "1706.02216",
+        "CorpusId": 4755450
+    },
+    "title": "Inductive Representation Learning on Large Graphs",
+    "abstract": "Low-dimensional embeddings of nodes in large graphs have proved extremely useful in a variety of prediction tasks, from content recommendation to identifying protein functions. However, most existing approaches require that all nodes in the graph are present during training of the embeddings; these previous approaches are inherently transductive and do not naturally generalize to unseen nodes. Here we present GraphSAGE, a general, inductive framework that leverages node feature information (e.g., text attributes) to efficiently generate node embeddings for previously unseen data. Instead of training individual embeddings for each node, we learn a function that generates embeddings by sampling and aggregating features from a node's local neighborhood. Our algorithm outperforms strong baselines on three inductive node-classification benchmarks: we classify the category of unseen nodes in evolving information graphs based on citation and Reddit post data, and we show that our algorithm generalizes to completely unseen graphs using a multi-graph dataset of protein-protein interactions.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2017,
+    "referenceCount": 42,
+    "citationCount": 12640,
+    "influentialCitationCount": 2259,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "GraphSAGE is presented, a general, inductive framework that leverages node feature information (e.g., text attributes) to efficiently generate node embeddings for previously unseen data and outperforms strong baselines on three inductive node-classification benchmarks."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "49437682",
+            "name": "William L. Hamilton"
+        },
+        {
+            "authorId": "4058003",
+            "name": "Z. Ying"
+        },
+        {
+            "authorId": "1702139",
+            "name": "J. Leskovec"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "a60c69c2fae27ebbb73c87f7f2a4765556bd7f9f",
+            "title": "Stochastic Training of Graph Convolutional Networks with Variance Reduction"
+        },
+        {
+            "paperId": "861d72c7b1685c2bd5e72215807acdae30d9139f",
+            "title": "Stochastic Training of Graph Convolutional Networks"
+        },
+        {
+            "paperId": "b7c4570d7d97f327e7f82fe28100172ec5e94cac",
+            "title": "Predicting multicellular function through multi-layer tissue networks"
+        },
+        {
+            "paperId": "3f1802d3f4f5f6d66875dac09112f978f12e1e1e",
+            "title": "A Simple but Tough-to-Beat Baseline for Sentence Embeddings"
+        },
+        {
+            "paperId": "63b9f657a3133d62c97eadaf5ed7d6d0c2f5cf3d",
+            "title": "Embedding Identity and Interest for Social Networks"
+        },
+        {
+            "paperId": "d3e0d596efd9d19b93d357565a68dfa925dce2bb",
+            "title": "Community Preserving Network Embedding"
+        },
+        {
+            "paperId": "d997beefc0922d97202789d2ac307c55c2c52fba",
+            "title": "PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation"
+        },
+        {
+            "paperId": "54906484f42e871f7c47bbfe784a358b1448231f",
+            "title": "Variational Graph Auto-Encoders"
+        },
+        {
+            "paperId": "36eff562f65125511b5dfab68ce7f7a943c27478",
+            "title": "Semi-Supervised Classification with Graph Convolutional Networks"
+        },
+        {
+            "paperId": "d0b7c8828f0fca4dd901674e8fb5bd464a187664",
+            "title": "Structural Deep Network Embedding"
+        },
+        {
+            "paperId": "dc96f46f400eae1881a5ec13aa6afc37ee6910a7",
+            "title": "Higher-order organization of complex networks"
+        },
+        {
+            "paperId": "36ee2c8bd605afd48035d15fdc6b8c8842363376",
+            "title": "node2vec: Scalable Feature Learning for Networks"
+        },
+        {
+            "paperId": "c41eb895616e453dcba1a70c9b942c5063cc656c",
+            "title": "Convolutional Neural Networks on Graphs with Fast Localized Spectral Filtering"
+        },
+        {
+            "paperId": "7ee0a337faec1d87bbb15d84856a43a4aa64ac65",
+            "title": "Diachronic Word Embeddings Reveal Statistical Laws of Semantic Change"
+        },
+        {
+            "paperId": "7c6de5a9e02a779e24504619050c6118f4eac181",
+            "title": "Learning Convolutional Neural Networks for Graphs"
+        },
+        {
+            "paperId": "3d846cb01f6a975554035d2210b578ca61344b22",
+            "title": "Revisiting Semi-Supervised Learning with Graph Embeddings"
+        },
+        {
+            "paperId": "322cf9bcde458a45eaeca989a1eec92f7c6db984",
+            "title": "Discriminative Embeddings of Latent Variable Models for Structured Data"
+        },
+        {
+            "paperId": "77f0a39b8e02686fd85b01971f8feb7f60971f80",
+            "title": "Identity Mappings in Deep Residual Networks"
+        },
+        {
+            "paperId": "9c9d7247f8c51ec5a02b0d911d1d7b9e8160495d",
+            "title": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems"
+        },
+        {
+            "paperId": "492f57ee9ceb61fb5a47ad7aebfec1121887a175",
+            "title": "Gated Graph Sequence Neural Networks"
+        },
+        {
+            "paperId": "c2fd72cb2a77941e655b5d949d0d59b01e173c3b",
+            "title": "GraRep: Learning Graph Representations with Global Structural Information"
+        },
+        {
+            "paperId": "5d1bfeed240709725c78bc72ea40e55410b373dc",
+            "title": "Convolutional Networks on Graphs for Learning Molecular Fingerprints"
+        },
+        {
+            "paperId": "0834e74304b547c9354b6d7da6fa78ef47a48fa8",
+            "title": "LINE: Large-scale Information Network Embedding"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "f4c018bcc8ea707b83247866bdc8ccb87cd9f5da",
+            "title": "Neural Word Embedding as Implicit Matrix Factorization"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "fff114cbba4f3ba900f33da574283e3de7f26c83",
+            "title": "DeepWalk: online learning of social representations"
+        },
+        {
+            "paperId": "5e925a9f1e20df61d1e860a7aa71894b35a1c186",
+            "title": "Spectral Networks and Locally Connected Networks on Graphs"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "7e1874986cf6433fabf96fff93ef42b60bdc49f8",
+            "title": "Weisfeiler-Lehman Graph Kernels"
+        },
+        {
+            "paperId": "168f28ac3c8c7ea63bf7ed25f2288e8b67e2fe74",
+            "title": "Scikit-learn: Machine Learning in Python"
+        },
+        {
+            "paperId": "83a6cacc126d85c45605797406262677c256a6af",
+            "title": "Software Framework for Topic Modelling with Large Corpora"
+        },
+        {
+            "paperId": "9ca9f28676ad788d04ba24a51141a9a0a0df4d67",
+            "title": "A new model for learning in graph domains"
+        },
+        {
+            "paperId": "a7c1642509397ccebaa98bf5ec67b8b6ba219cc8",
+            "title": "From the Cover: Gene set enrichment analysis: A knowledge-based approach for interpreting genome-wide expression profiles"
+        },
+        {
+            "paperId": "c02dfd94b11933093c797c362e2f8f6a3b9b8012",
+            "title": "On Spectral Clustering: Analysis and an algorithm"
+        },
+        {
+            "paperId": "eb82d3035849cd23578096462ba419b53198a556",
+            "title": "The PageRank Citation Ranking : Bringing Order to the Web"
+        },
+        {
+            "paperId": "d61031326150ba23f90e6587c13d99188209250e",
+            "title": "Collective dynamics of \u2018small-world\u2019 networks"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "d35f1e533b72370683d8fa2dabff5f0fc16490cc",
+            "title": "Approximation capabilities of multilayer feedforward networks"
+        },
+        {
+            "paperId": "e04108dc293c9cd7cabf32ee1524eaab0d4641b3",
+            "title": "Multidimensional scaling by optimizing goodness of fit to a nonmetric hypothesis"
+        },
+        {
+            "paperId": "3efd851140aa28e95221b55fcc5659eea97b172d",
+            "title": "The Graph Neural Network Model"
+        },
+        {
+            "paperId": "3755994c4082b168b8b59f4af679c5259361c003",
+            "title": "Nonparametric statistics for the behavioral sciences"
+        }
+    ]
+}

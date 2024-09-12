@@ -1,0 +1,178 @@
+{
+    "paperId": "04cca8e341a5da42b29b0bc831cb25a0f784fa01",
+    "externalIds": {
+        "DBLP": "journals/corr/Graves16",
+        "ArXiv": "1603.08983",
+        "MAG": "2325237720",
+        "CorpusId": 8224916
+    },
+    "title": "Adaptive Computation Time for Recurrent Neural Networks",
+    "abstract": "This paper introduces Adaptive Computation Time (ACT), an algorithm that allows recurrent neural networks to learn how many computational steps to take between receiving an input and emitting an output. ACT requires minimal changes to the network architecture, is deterministic and differentiable, and does not add any noise to the parameter gradients. Experimental results are provided for four synthetic problems: determining the parity of binary vectors, applying binary logic operations, adding integers, and sorting real numbers. Overall, performance is dramatically improved by the use of ACT, which successfully adapts the number of computational steps to the requirements of the problem. We also present character-level language modelling results on the Hutter prize Wikipedia dataset. In this case ACT does not yield large gains in performance; however it does provide intriguing insight into the structure of the data, with more computation allocated to harder-to-predict transitions, such as spaces between words and ends of sentences. This suggests that ACT or other adaptive computation methods could provide a generic method for inferring segment boundaries in sequence data.",
+    "venue": "arXiv.org",
+    "year": 2016,
+    "referenceCount": 37,
+    "citationCount": 482,
+    "influentialCitationCount": 69,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Performance is dramatically improved and insight is provided into the structure of the data, with more computation allocated to harder-to-predict transitions, such as spaces between words and ends of sentences, which suggests that ACT or other adaptive computation methods could provide a generic method for inferring segment boundaries in sequence data."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1753223",
+            "name": "Alex Graves"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "2b5f51588f1c4cdca0865de20c1e2e1ff3570fd1",
+            "title": "Attend, Infer, Repeat: Fast Scene Understanding with Generative Models"
+        },
+        {
+            "paperId": "b59d91e0699d4e1896a15bae13fd180bdaf77ea5",
+            "title": "Neural Programmer-Interpreters"
+        },
+        {
+            "paperId": "d01379ebb53c66a4ccf5f4959d904dcf9e161e41",
+            "title": "Order Matters: Sequence to sequence for sets"
+        },
+        {
+            "paperId": "fba71eefd060e30f3516fdd46df9a191cd0aaaf7",
+            "title": "Conditional Computation in Neural Networks for faster models"
+        },
+        {
+            "paperId": "b92aa7024b87f50737b372e5df31ef091ab54e62",
+            "title": "Training Very Deep Networks"
+        },
+        {
+            "paperId": "5b791cd374c7109693aaddee2c12d659ae4e3ec0",
+            "title": "Grid Long Short-Term Memory"
+        },
+        {
+            "paperId": "9653d5c2c7844347343d073bbedd96e05d52f69b",
+            "title": "Pointer Networks"
+        },
+        {
+            "paperId": "e837b79de602c69395498c1fbbe39bbb4e6f75ad",
+            "title": "Learning to Transduce with Unbounded Memory"
+        },
+        {
+            "paperId": "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e",
+            "title": "End-To-End Memory Networks"
+        },
+        {
+            "paperId": "a2785f66c20fbdf30ec26c0931584c6d6a0f4fca",
+            "title": "DRAW: A Recurrent Neural Network For Image Generation"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "8829e3873846c6bbad5aca111e64f9d2c1b24299",
+            "title": "Deep Sequential Neural Network"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "f3de86aeb442216a8391befcacb49e58b478f512",
+            "title": "Distributed Representations of Sentences and Documents"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17",
+            "title": "Generating Sequences With Recurrent Neural Networks"
+        },
+        {
+            "paperId": "4177ec52d1b80ed57f2e72b0f9a42365f1a8598d",
+            "title": "Speech recognition with deep recurrent neural networks"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "934735587a2a899f4619e35331f302b220961183",
+            "title": "First Experiments with PowerPlay"
+        },
+        {
+            "paperId": "152d82025f02916019e4cfcc943dceecc159cda4",
+            "title": "Self-Delimiting Neural Networks"
+        },
+        {
+            "paperId": "398c296d0cc7f9d180f84969f8937e6d3a413796",
+            "title": "Multi-column deep neural networks for image classification"
+        },
+        {
+            "paperId": "6658bbf68995731b2083195054ff45b4eca38b3a",
+            "title": "Context-Dependent Pre-Trained Deep Neural Networks for Large-Vocabulary Speech Recognition"
+        },
+        {
+            "paperId": "36f49b05d764bf5c10428b082c2d96c13c4203b9",
+            "title": "Hogwild: A Lock-Free Approach to Parallelizing Stochastic Gradient Descent"
+        },
+        {
+            "paperId": "bc6dff14a130c57a91d5a21339c23471faf1d46f",
+            "title": "Et al"
+        },
+        {
+            "paperId": "30a64bdf778b8f561af9ae589e822c2c800920b1",
+            "title": "Universal artificial intelligence"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "8012c4a1e2ca663f1a04e80cbb19631a00cbab27",
+            "title": "Emergence of simple-cell receptive field properties by learning a sparse code for natural images"
+        },
+        {
+            "paperId": "762031682309e0124b2811ee05a798860dde82d1",
+            "title": "Guessing can Outperform Many Long Time Lag Algorithms"
+        },
+        {
+            "paperId": "f8d37cf4c4a2f15acd7c6ab2b4b4f25a3f3d7f9c",
+            "title": "The Effects of Adding Noise During Backpropagation Training on a Generalization Performance"
+        },
+        {
+            "paperId": "ed3d08eb4c69e4dd2c39b975571e50d81264f944",
+            "title": "Modular Elliptic Curves and Fermat\u2032s Last Theorem(\u629c\u7c8b) (\u30d5\u30a7\u30eb\u30de-\u4e88\u60f3\u304c\u3064\u3044\u306b\u89e3\u3051\u305f!?)"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "3d2218b17e7898a222e5fc2079a3f1531990708f",
+            "title": "I and J"
+        },
+        {
+            "paperId": "2e5f2b57f4c476dd69dc22ccdf547e48f40a994c",
+            "title": "Gradient Flow in Recurrent Nets: the Difficulty of Learning Long-Term Dependencies"
+        },
+        {
+            "paperId": "10dae7fca6b65b61d155a622f0c6ca2bc3922251",
+            "title": "Gradient-based learning algorithms for recurrent networks and their computational complexity"
+        },
+        {
+            "paperId": "e63360d91239921ef42acee9d3b687880a1cd194",
+            "title": "Paradigms and processes in reading comprehension."
+        }
+    ]
+}

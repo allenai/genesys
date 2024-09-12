@@ -1,0 +1,174 @@
+{
+    "paperId": "249ac07c5b87f44b85500e2d26b68a7edb93e83d",
+    "externalIds": {
+        "MAG": "2963168530",
+        "DBLP": "conf/icml/MiconiSC18",
+        "ArXiv": "1804.02464",
+        "CorpusId": 4714955
+    },
+    "title": "Differentiable plasticity: training plastic neural networks with backpropagation",
+    "abstract": "How can we build agents that keep learning from experience, quickly and efficiently, after their initial training? Here we take inspiration from the main mechanism of learning in biological brains: synaptic plasticity, carefully tuned by evolution to produce efficient lifelong learning. We show that plasticity, just like connection weights, can be optimized by gradient descent in large (millions of parameters) recurrent networks with Hebbian plastic connections. First, recurrent plastic networks with more than two million parameters can be trained to memorize and reconstruct sets of novel, high-dimensional 1000+ pixels natural images not seen during training. Crucially, traditional non-plastic recurrent networks fail to solve this task. Furthermore, trained plastic networks can also solve generic meta-learning tasks such as the Omniglot task, with competitive results and little parameter overhead. Finally, in reinforcement learning settings, plastic networks outperform a non-plastic equivalent in a maze exploration task. We conclude that differentiable plasticity may provide a powerful novel approach to the learning-to-learn problem.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2018,
+    "referenceCount": 34,
+    "citationCount": 142,
+    "influentialCitationCount": 16,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that plasticity, just like connection weights, can be optimized by gradient descent in large (millions of parameters) recurrent networks with Hebbian plastic connections, and it is concluded that differentiable plasticity may provide a powerful novel approach to the learning-to-learn problem."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1934321",
+            "name": "Thomas Miconi"
+        },
+        {
+            "authorId": "2552141",
+            "name": "J. Clune"
+        },
+        {
+            "authorId": "1846883",
+            "name": "Kenneth O. Stanley"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "7e9c1e0d247b20a0683f4797d9ea248c3b53d424",
+            "title": "A Simple Neural Attentive Meta-Learner"
+        },
+        {
+            "paperId": "ac3b0a08163a0fdd7c43f37502d02411eae0abc0",
+            "title": "Born to Learn: the Inspiration, Progress, and Future of Evolved Plastic Artificial Neural Networks"
+        },
+        {
+            "paperId": "c269858a7bb34e8350f2442ccf37797856ae9bca",
+            "title": "Prototypical Networks for Few-shot Learning"
+        },
+        {
+            "paperId": "c889d6f98e6d79b89c3a6adf8a921f88fa6ba518",
+            "title": "Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks"
+        },
+        {
+            "paperId": "29092f0deaac3898e43b3f094bf15d82b6a99afd",
+            "title": "Learning to Remember Rare Events"
+        },
+        {
+            "paperId": "282a380fb5ac26d99667224cef8c630f6882704f",
+            "title": "Learning to reinforcement learn"
+        },
+        {
+            "paperId": "954b01151ff13aef416d27adc60cd9a076753b1a",
+            "title": "RL$^2$: Fast Reinforcement Learning via Slow Reinforcement Learning"
+        },
+        {
+            "paperId": "c91ae35dbcb6d479580ecd235eabf98374acdb55",
+            "title": "Using Fast Weights to Attend to the Recent Past"
+        },
+        {
+            "paperId": "be1bb4e4aa1fcf70281b4bd24d8cd31c04864bb6",
+            "title": "Matching Networks for One Shot Learning"
+        },
+        {
+            "paperId": "bbd0e204f48a45735e1065c8b90b298077b73192",
+            "title": "One-shot Learning with Memory-Augmented Neural Networks"
+        },
+        {
+            "paperId": "69e76e16740ed69f4dc55361a3d319ac2f1293dd",
+            "title": "Asynchronous Methods for Deep Reinforcement Learning"
+        },
+        {
+            "paperId": "846aedd869a00c09b40f1f1f35673cb22bc87490",
+            "title": "Mastering the game of Go with deep neural networks and tree search"
+        },
+        {
+            "paperId": "815c84ab906e43f3e6322f2ca3fd5e1360c64285",
+            "title": "Human-level concept learning through probabilistic program induction"
+        },
+        {
+            "paperId": "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e",
+            "title": "End-To-End Memory Networks"
+        },
+        {
+            "paperId": "340f48901f72278f6bf78a04ee5b01df208cc508",
+            "title": "Human-level control through deep reinforcement learning"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "0b127ed9440c212376d424293d6488758118de77",
+            "title": "Optogenetic stimulation of a hippocampal engram activates fear memory recall"
+        },
+        {
+            "paperId": "d68f0a897ce6e729dc0c9d5dcfe3a6ae6d403d6f",
+            "title": "Oja learning rule"
+        },
+        {
+            "paperId": "764fd3bc54709bc77c35df7d081538809065bd19",
+            "title": "By Carrot or by Stick: Cognitive Reinforcement Learning in Parkinsonism"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "7ee98330fb5969839d88bcabdb44d03848dc9d35",
+            "title": "A \u2018Self-Referential\u2019 Weight Matrix"
+        },
+        {
+            "paperId": "61639af1a89c69094bcc0ed40fad752832b037c3",
+            "title": "Reducing the Ratio Between Learning Complexity and Number of Time Varying Variables in Fully Recurrent Nets"
+        },
+        {
+            "paperId": "d130325c41947a41a55a4431e9e8e15be89da8ea",
+            "title": "Learning a synaptic learning rule"
+        },
+        {
+            "paperId": "98b4d4e24aab57ab4e1124ff8106909050645cfa",
+            "title": "Neural networks and physical systems with emergent collective computational abilities."
+        },
+        {
+            "paperId": "b9164335be5808ddd59786869a9f992331af5218",
+            "title": "The organization of behavior: A neuropsychological theory"
+        },
+        {
+            "paperId": "44b6da0cd36c0fa2f7d3485c6dc0b6d2fbe379bb",
+            "title": "Learning how to learn"
+        },
+        {
+            "paperId": "11503f8f1d94607b46f58ad4188facdadf257fe4",
+            "title": "Gated Fast Weights for On-The-Fly Neural Program Generation"
+        },
+        {
+            "paperId": null,
+            "title": "Backpropagation of hebbian plasticity for continual learning"
+        },
+        {
+            "paperId": "d0ad17892ad626ec0b4c5a40011bbca01a59087b",
+            "title": "Evolutionary Advantages of Neuromodulated Plasticity in Dynamic, Reward-based Scenarios"
+        },
+        {
+            "paperId": null,
+            "title": "Theoretical neuroscience, volume 806"
+        },
+        {
+            "paperId": "bf0afaef99a2786692ccbdbe1fdca49c342586cd",
+            "title": "Synaptic plasticity and memory: an evaluation of the hypothesis."
+        },
+        {
+            "paperId": "a6bcf0e9b5034c4c9cbea839baadd69a42b05cc1",
+            "title": "Learning curves for stochastic gradient descent in linear feedforward networks"
+        }
+    ]
+}

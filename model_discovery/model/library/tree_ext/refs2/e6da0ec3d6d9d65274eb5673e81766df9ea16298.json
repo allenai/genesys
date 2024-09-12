@@ -1,0 +1,53 @@
+{
+    "paperId": "e6da0ec3d6d9d65274eb5673e81766df9ea16298",
+    "externalIds": {
+        "MAG": "2145366000",
+        "DBLP": "conf/nips/ChapelleVW99",
+        "CorpusId": 14021663
+    },
+    "title": "Transductive Inference for Estimating Values of Functions",
+    "abstract": "We introduce an algorithm for estimating the values of a function at a set of test points xl+1,..., xl+m given a set of training points (x1, Y1),...,(xl, yl) without estimating (as an intermediate step) the regression function. We demonstrate that this direct (transductive) way for estimating values of the regression (or classification in pattern recognition) can be more accurate than the traditional one based on two steps, first estimating the function and then calculating the values of this function at the points of interest.",
+    "venue": "Neural Information Processing Systems",
+    "year": 1999,
+    "referenceCount": 4,
+    "citationCount": 84,
+    "influentialCitationCount": 4,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This direct way for estimating values of the regression (or classification in pattern recognition) can be more accurate than the traditional one based on two steps, first estimating the function and then calculating the values of this function at the points of interest."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1730609",
+            "name": "O. Chapelle"
+        },
+        {
+            "authorId": "50560492",
+            "name": "V. Vapnik"
+        },
+        {
+            "authorId": "145183709",
+            "name": "J. Weston"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "1473110f6c33b483251ade10b79416d3efee2da4",
+            "title": "Ridge Regression: Biased Estimation for Nonorthogonal Problems"
+        },
+        {
+            "paperId": "922b81f11a71aa64cda78914e6356cce89cd4f86",
+            "title": "Ridge Regression Learning Algorithm in Dual Variables"
+        },
+        {
+            "paperId": null,
+            "title": "Estimating of values of regression at the point of interest"
+        },
+        {
+            "paperId": null,
+            "title": "On the estimation of characters obtained in statistical procedure of recognition"
+        }
+    ]
+}

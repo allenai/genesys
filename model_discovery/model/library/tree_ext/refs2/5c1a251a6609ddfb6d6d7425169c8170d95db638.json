@@ -1,0 +1,262 @@
+{
+    "paperId": "5c1a251a6609ddfb6d6d7425169c8170d95db638",
+    "externalIds": {
+        "MAG": "2786615588",
+        "DBLP": "conf/iclr/SteenkisteCGS18",
+        "ArXiv": "1802.10353",
+        "CorpusId": 3566136
+    },
+    "title": "Relational Neural Expectation Maximization: Unsupervised Discovery of Objects and their Interactions",
+    "abstract": "Common-sense physical reasoning is an essential ingredient for any intelligent agent operating in the real-world. For example, it can be used to simulate the environment, or to infer the state of parts of the world that are currently unobserved. In order to match real-world conditions this causal knowledge must be learned without access to supervised data. To address this problem we present a novel method that learns to discover objects and model their physical interactions from raw visual images in a purely \\emph{unsupervised} fashion. It incorporates prior knowledge about the compositional nature of human perception to factor interactions between object-pairs and learn efficiently. On videos of bouncing balls we show the superior modelling capabilities of our method compared to other unsupervised neural approaches that do not incorporate such prior knowledge. We demonstrate its ability to handle occlusion and show that it can extrapolate learned knowledge to scenes with different numbers of objects.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2018,
+    "referenceCount": 55,
+    "citationCount": 281,
+    "influentialCitationCount": 20,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents a novel method that learns to discover objects and model their physical interactions from raw visual images in a purely unsupervised fashion and incorporates prior knowledge about the compositional nature of human perception to factor interactions between object-pairs and learn efficiently."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3440930",
+            "name": "Sjoerd van Steenkiste"
+        },
+        {
+            "authorId": "47235561",
+            "name": "Michael Chang"
+        },
+        {
+            "authorId": "3035541",
+            "name": "Klaus Greff"
+        },
+        {
+            "authorId": "145341374",
+            "name": "J. Schmidhuber"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "83040001210751239553269727b9ea53e152af71",
+            "title": "Building Machines that Learn and Think Like People"
+        },
+        {
+            "paperId": "7cfa5c97164129ce3630511f639040d28db1d4b7",
+            "title": "FiLM: Visual Reasoning with a General Conditioning Layer"
+        },
+        {
+            "paperId": "0fe30b40d443dfd808a64bc5a8d62a9875adc872",
+            "title": "Mind Games: Game Engines as an Architecture for Intuitive Physics"
+        },
+        {
+            "paperId": "9f0b217cb21ec8c19610e28bd0805d7871456e4b",
+            "title": "Learning to Infer Graphics Programs from Hand-Drawn Images"
+        },
+        {
+            "paperId": "7ad5cc52733f8e8650da1af8698a44b64222e767",
+            "title": "Recurrent Ladder Networks"
+        },
+        {
+            "paperId": "046c4ff0b08361b1ee84fecf1292d385d7bca277",
+            "title": "Programmable Agents"
+        },
+        {
+            "paperId": "157f77a508c1645a2609c9b265391e9d1bfa95e4",
+            "title": "Schema Networks: Zero-shot Transfer with a Generative Causal Model of Intuitive Physics"
+        },
+        {
+            "paperId": "007112213ece771be72cbecfd59f048209facabd",
+            "title": "A simple neural network module for relational reasoning"
+        },
+        {
+            "paperId": "2e17cf6a339fd071ad222062f868e882ef4120a4",
+            "title": "Inferring and Executing Programs for Visual Reasoning"
+        },
+        {
+            "paperId": "6b024162f81e8ff7aa34c3a43d601a912d012c78",
+            "title": "Making Neural Programming Architectures Generalize via Recursion"
+        },
+        {
+            "paperId": "a396a6febdacb84340d139096455e67049ac1e22",
+            "title": "Learning to Reason: End-to-End Module Networks for Visual Question Answering"
+        },
+        {
+            "paperId": "e24cdf73b3e7e590c2fe5ecac9ae8aa983801367",
+            "title": "Neural Message Passing for Quantum Chemistry"
+        },
+        {
+            "paperId": "5c57bb5630835a05eb1c3d0df3e12d6180d75de2",
+            "title": "One-Shot Imitation Learning"
+        },
+        {
+            "paperId": "a456265138c088a894301c0433dae938705a9bec",
+            "title": "Deep Sets"
+        },
+        {
+            "paperId": "3532848bf87449d49fad7fdf774c3562127b0e78",
+            "title": "Neural Expectation Maximization"
+        },
+        {
+            "paperId": "ae42c0cff384495683192b06bd985cdd7a54632a",
+            "title": "Interaction Networks for Learning about Objects, Relations and Physics"
+        },
+        {
+            "paperId": "a1786540a4e15f0757e1b84a02f98ed436a969e0",
+            "title": "A Compositional Object-Based Approach to Learning Physical Dynamics"
+        },
+        {
+            "paperId": "15064b7e47b43a68b6661bc7c3eaaad207493191",
+            "title": "Neural Program Lattices"
+        },
+        {
+            "paperId": "d9dab7574d56ae81efe6c90c213c6509b36cf950",
+            "title": "Deconvolution and Checkerboard Artifacts"
+        },
+        {
+            "paperId": "8cf83c619423a1504f26495d5f6a495054c46462",
+            "title": "Learning to Poke by Poking: Experiential Learning of Intuitive Physics"
+        },
+        {
+            "paperId": "66eb9741cee7fdeac0a437cc5e737535b7314f06",
+            "title": "Tagger: Deep Unsupervised Perceptual Grouping"
+        },
+        {
+            "paperId": "09a6d7e831cf496fb5fb2903415eab4c73235715",
+            "title": "Programming with a Differentiable Forth Interpreter"
+        },
+        {
+            "paperId": "2b5f51588f1c4cdca0865de20c1e2e1ff3570fd1",
+            "title": "Attend, Infer, Repeat: Fast Scene Understanding with Generative Models"
+        },
+        {
+            "paperId": "b9dd7a59a101fcecc6fe0e7aed517e84a7df7d2e",
+            "title": "Learning Physical Intuition of Block Towers by Example"
+        },
+        {
+            "paperId": "74a6c2b6408fb1a14664b08c018fefa6aee22dc7",
+            "title": "Galileo: Perceiving Physical Object Properties by Integrating a Physics Engine with Deep Learning"
+        },
+        {
+            "paperId": "f0b9dc64f6df004d3f776031050317f0a7fb1bdc",
+            "title": "On Learning to Think: Algorithmic Information Theory for Novel Combinations of Reinforcement Learning Controllers and Recurrent Neural World Models"
+        },
+        {
+            "paperId": "39c02227c37f0856e368d3dd5899f0867195a92e",
+            "title": "Learning Visual Predictive Models of Physics for Playing Billiards"
+        },
+        {
+            "paperId": "b59d91e0699d4e1896a15bae13fd180bdaf77ea5",
+            "title": "Neural Programmer-Interpreters"
+        },
+        {
+            "paperId": "21c99706bb26e9012bfb4d8d48009a3d45af59b2",
+            "title": "Neural Module Networks"
+        },
+        {
+            "paperId": "f2f85ec20bcae8d67035fd446b855a75b9a0aa8d",
+            "title": "On comparing partitions"
+        },
+        {
+            "paperId": "a2785f66c20fbdf30ec26c0931584c6d6a0f4fca",
+            "title": "DRAW: A Recurrent Neural Network For Image Generation"
+        },
+        {
+            "paperId": "829510ad6f975c939d589eeb01a3cf6fc6c8ce4d",
+            "title": "Unsupervised Learning of Video Representations using LSTMs"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "544b80ef13bb0d4288c6a1f50c504c03d3a14d37",
+            "title": "Modeling Deep Temporal Dependencies with Recurrent \"Grammar Cells\""
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "5f5dc5b9a2ba710937e2c413b37b053cd673df02",
+            "title": "Auto-Encoding Variational Bayes"
+        },
+        {
+            "paperId": "2319a491378867c7049b3da055c5df60e1671158",
+            "title": "Playing Atari with Deep Reinforcement Learning"
+        },
+        {
+            "paperId": "29ade9f04f11dd8d434f051563f03928ed62c21b",
+            "title": "Simulation as an engine of physical scene understanding"
+        },
+        {
+            "paperId": "412ebbd85a2e1d1630481871f24323d478ec47f1",
+            "title": "Where Perceiving Ends and Thinking Begins: The Apprehension of Objects in Infancy"
+        },
+        {
+            "paperId": "f82e4ff4f003581330338aaae71f60316e58dd26",
+            "title": "The Arcade Learning Environment: An Evaluation Platform for General Agents"
+        },
+        {
+            "paperId": "0228810a988f6b8f06337e14f564e2fd3f6e1056",
+            "title": "The Recurrent Temporal Restricted Boltzmann Machine"
+        },
+        {
+            "paperId": "11540131eae85b2e11d53df7f1360eeb6476e7f4",
+            "title": "Learning to Forget: Continual Prediction with LSTM"
+        },
+        {
+            "paperId": "9e0020d2cc7d8255661063ea5fb87f2000df1b21",
+            "title": "NeuroAnimator: fast neural network emulation and control of physics-based models"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "6f2ed0dd9480431b237f5443ff590991a8876b8c",
+            "title": "Rethinking infant knowledge: toward an adaptive process account of successes and failures in object permanence tasks."
+        },
+        {
+            "paperId": "a2699a5fa0baff141f261f79b794884cd28a5229",
+            "title": "The status of the minimum principle in the theoretical analysis of visual perception."
+        },
+        {
+            "paperId": "d36efb9ad91e00faa334b549ce989bfae7e2907a",
+            "title": "Maximum likelihood from incomplete data via the EM - algorithm plus discussions on the paper"
+        },
+        {
+            "paperId": "c68796f833a7151f0a63d1d1608dc902b4fdc9b6",
+            "title": "GENERATIVE ADVERSARIAL NETS"
+        },
+        {
+            "paperId": null,
+            "title": "Visual Interaction Networks"
+        },
+        {
+            "paperId": "1207aa55c8a2b47a25fc17c18328910daf3feb71",
+            "title": "Core knowledge."
+        },
+        {
+            "paperId": "f3efe709a6833d19689ff7db8f38c9e4cb317084",
+            "title": "A Solution to the Binding Problem for Compositional Connectionism"
+        },
+        {
+            "paperId": "2b0752d91bde8b37e00e21219c441d9f6dfe74db",
+            "title": "Principles of Object Perception"
+        },
+        {
+            "paperId": null,
+            "title": "Complexity of exact gradient computation algorithms for recurrent neural networks. Technical report, Technical Report Technical Report NU-CCS-89-27, Boston"
+        },
+        {
+            "paperId": "266e07d0dd9a75b61e3632e9469993dbaf063f1c",
+            "title": "Generalization of backpropagation with application to a recurrent gas market model"
+        }
+    ]
+}

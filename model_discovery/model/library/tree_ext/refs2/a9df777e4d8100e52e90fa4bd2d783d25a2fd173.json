@@ -1,0 +1,218 @@
+{
+    "paperId": "a9df777e4d8100e52e90fa4bd2d783d25a2fd173",
+    "externalIds": {
+        "DBLP": "journals/corr/WangHF17",
+        "MAG": "2952113915",
+        "ArXiv": "1702.03814",
+        "DOI": "10.24963/ijcai.2017/579",
+        "CorpusId": 9395040
+    },
+    "title": "Bilateral Multi-Perspective Matching for Natural Language Sentences",
+    "abstract": "Natural language sentence matching is a fundamental technology for a variety of tasks. Previous approaches either match sentences from a single direction or only apply single granular (word-by-word or sentence-by-sentence) matching. In this work, we propose a bilateral multi-perspective matching (BiMPM) model under the \"matching-aggregation\" framework. Given two sentences $P$ and $Q$, our model first encodes them with a BiLSTM encoder. Next, we match the two encoded sentences in two directions $P \\rightarrow Q$ and $P \\leftarrow Q$. In each matching direction, each time step of one sentence is matched against all time-steps of the other sentence from multiple perspectives. Then, another BiLSTM layer is utilized to aggregate the matching results into a fix-length matching vector. Finally, based on the matching vector, the decision is made through a fully connected layer. We evaluate our model on three tasks: paraphrase identification, natural language inference and answer sentence selection. Experimental results on standard benchmark datasets show that our model achieves the state-of-the-art performance on all tasks.",
+    "venue": "International Joint Conference on Artificial Intelligence",
+    "year": 2017,
+    "referenceCount": 44,
+    "citationCount": 760,
+    "influentialCitationCount": 147,
+    "openAccessPdf": {
+        "url": "https://www.ijcai.org/proceedings/2017/0579.pdf",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a bilateral multi-perspective matching (BiMPM) model under the \"matching-aggregation\" framework that achieves the state-of-the-art performance on all tasks."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "40296541",
+            "name": "Zhiguo Wang"
+        },
+        {
+            "authorId": "1836135",
+            "name": "Wael Hamza"
+        },
+        {
+            "authorId": "1707117",
+            "name": "Radu Florian"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "01e27b6d1af4c9c2f50e2908b5f3b2331ff24846",
+            "title": "Toward Personalized Modeling: Incremental and Ensemble Alignment for Sequential Faces in the Wild"
+        },
+        {
+            "paperId": "e94697b98b707f557436e025bdc8498fa261d3bc",
+            "title": "Multi-Perspective Context Matching for Machine Comprehension"
+        },
+        {
+            "paperId": "4c7e85ff37dd8b99d8f443eabd3b163ff8b71538",
+            "title": "Reading and Thinking: Re-read LSTM Unit for Textual Entailment Recognition"
+        },
+        {
+            "paperId": "3f567d3d4975359fadfa9d750e1e4c4722d666c8",
+            "title": "A Compare-Aggregate Model for Matching Text Sequences"
+        },
+        {
+            "paperId": "336ce21be76879f19c01b68726558269907ea02b",
+            "title": "Noise-Contrastive Estimation for Answer Selection with Deep Neural Networks"
+        },
+        {
+            "paperId": "83e7654d545fbbaaf2328df365a781fb67b841b4",
+            "title": "Enhanced LSTM for Natural Language Inference"
+        },
+        {
+            "paperId": "162db03ef3cb50a07ff54ae4a1d4ea120e4162f2",
+            "title": "Enhancing and Combining Sequential and Tree LSTM for Natural Language Inference"
+        },
+        {
+            "paperId": "bf0fb5813903f8afaba2bc52fd3c886fc672d203",
+            "title": "A Recurrent Encoder-Decoder Network for Sequential Face Alignment"
+        },
+        {
+            "paperId": "52956422f86722aca6becb67ea4c3ad61f0c1aea",
+            "title": "Inner Attention based Recurrent Neural Networks for Answer Selection"
+        },
+        {
+            "paperId": "705dcc8eadba137834e4b0359e2d696d4b209f5b",
+            "title": "Neural Tree Indexers for Text Understanding"
+        },
+        {
+            "paperId": "2cd8e8f510c89c7c18268e8ad51c061e459ad321",
+            "title": "A Decomposable Attention Model for Natural Language Inference"
+        },
+        {
+            "paperId": "29006d8c9c2247fca4cd3a22822c2b042e85572d",
+            "title": "Pairwise Word Interaction Modeling with Deep Neural Networks for Semantic Similarity Measurement"
+        },
+        {
+            "paperId": "f93a0a3e8a3e6001b4482430254595cf737697fa",
+            "title": "Learning Natural Language Inference using Bidirectional LSTM model and Inner-Attention"
+        },
+        {
+            "paperId": "10d89efc96beb45676149c8a3237a86a72a2116e",
+            "title": "Modelling Interaction of Sentence Pair with Coupled-LSTMs"
+        },
+        {
+            "paperId": "e49500be3a48b5b34541c2e9d04ae689017362ec",
+            "title": "Sentence Similarity Learning by Lexical Decomposition and Composition"
+        },
+        {
+            "paperId": "a338daadf10943237effe2742958ac4d314e2399",
+            "title": "Semi-supervised Clustering for Short Text via Deep Representation Learning"
+        },
+        {
+            "paperId": "a2dc06c8da0ff9344dc558d6df571fc704b81ae7",
+            "title": "Attentive Pooling Networks"
+        },
+        {
+            "paperId": "13fe71da009484f240c46f14d9330e932f8de210",
+            "title": "Long Short-Term Memory-Networks for Machine Reading"
+        },
+        {
+            "paperId": "596c882de006e4bb4a93f1fa08a5dd467bee060a",
+            "title": "Learning Natural Language Inference with LSTM"
+        },
+        {
+            "paperId": "ea407573bfcd39f9a478fe33cf6ce0ee1780a5f0",
+            "title": "Natural Language Inference by Tree-Based Convolution and Heuristic Matching"
+        },
+        {
+            "paperId": "7f3ae283243e15e05f188a05779ccfae9a3567f4",
+            "title": "ABCNN: Attention-Based Convolutional Neural Network for Modeling Sentence Pairs"
+        },
+        {
+            "paperId": "89002a64e96a82486220b1d5c3f060654b24ef2a",
+            "title": "PIEFA: Personalized Incremental and Ensemble Face Alignment"
+        },
+        {
+            "paperId": "46b8cbcdff87b842c2c1d4a003c831f845096ba7",
+            "title": "Order-Embeddings of Images and Language"
+        },
+        {
+            "paperId": "73e8633886dc380a46fc02f2e1ec5bf68dba0734",
+            "title": "Neural Variational Inference for Text Processing"
+        },
+        {
+            "paperId": "bfccb2d6e3d9f9b6bd8b14b2d4c6efa36c79341b",
+            "title": "LSTM-based Deep Learning Models for non-factoid answer selection"
+        },
+        {
+            "paperId": "2846e83d405cbe3bf2f0f3b5f635dd8b3c680c45",
+            "title": "Reasoning about Entailment with Neural Attention"
+        },
+        {
+            "paperId": "f53e2ae46470b89cd1ce6e3bf1d60d9c59722ce1",
+            "title": "WikiQA: A Challenge Dataset for Open-Domain Question Answering"
+        },
+        {
+            "paperId": "f04df4e20a18358ea2f689b4c129781628ef7fc1",
+            "title": "A large annotated corpus for learning natural language inference"
+        },
+        {
+            "paperId": "64bb0792e187663e8589bc92a7824e00887febcb",
+            "title": "FAQ-based Question Answering via Word Alignment"
+        },
+        {
+            "paperId": "b84db2e3d3e38c02b635dd45c330e5cb57537f4b",
+            "title": "From circle to 3-sphere: Head pose estimation by instance parameterization"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "0fd0e3854ee696148e978ec33d5c042554cd4d23",
+            "title": "Tree Edit Models for Recognizing Textual Entailments, Paraphrases, and Answers to Questions"
+        },
+        {
+            "paperId": "5ab6ddd1d45302bf635cce5cb93fbaf4ea79458a",
+            "title": "What is the Jeopardy Model? A Quasi-Synchronous Grammar for QA"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "997dc5d9a058753f034422afe7bd0cc0b8ad808b",
+            "title": "Signature Verification Using A \"Siamese\" Time Delay Neural Network"
+        },
+        {
+            "paperId": "78d9bff0fbcebf710cecb2cefebea3da1b86adce",
+            "title": "Paraphrases"
+        },
+        {
+            "paperId": "4f8d648c52edf74e41b0996128aa536e13cc7e82",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": null,
+            "title": "pages 38\u201356"
+        },
+        {
+            "paperId": null,
+            "title": "Tom\u00b4a\u02c7s Ko\u02c7cisk`y, and"
+        },
+        {
+            "paperId": null,
+            "title": "Nature"
+        },
+        {
+            "paperId": "4d98ce60f4f8ed822503b8d13b0605f8c5d74ca7",
+            "title": "In Advances in Neural Information Processing Systems"
+        },
+        {
+            "paperId": "e1082fee59f00b1096b2206f3dc434e68f7ffac6",
+            "title": "Neural Computation"
+        }
+    ]
+}

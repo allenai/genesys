@@ -1,0 +1,66 @@
+{
+    "paperId": "d51114842599996d6c1d49fba79a6cd6d4542386",
+    "externalIds": {
+        "MAG": "117504094",
+        "DOI": "10.5301/JBM.2008.2127",
+        "CorpusId": 14065116,
+        "PubMed": "12113584"
+    },
+    "title": "Bravais-Pearson and Spearman correlation coefficients: meaning, test of hypothesis and confidence interval.",
+    "abstract": "many other biomedical journals dealing with cancer research, often publishes papers whose principal aim it is to test the association between quantative measurements of biological variables. When these are expressed on continuous scales, the statistics most frequently adopted to test their association are the Bravais-Pearson (parametric) and the Spearman (non-parametric) correlation coefficients. In this note the correlation coefficient estimate (statistic) will be denoted by the Latin letter r, while the \u201ctrue\u201d correlation coefficient (parameter) of the underlying population will be denoted by the Greek letter \u03c1. The Bravais-Pearson correlation coefficient (\u03c1BP) is a suitable measure of association when n couples of continuous data ((yi, xi) with i=1,2,...n), collected on the same experimental unit, follow a bivariate normal distribution. In this case the only relationship that can be postulated is the linear one. Two different regression lines (see Fig. 1) can be defined: the first (l1) corresponding to the linear regression of y on x and the second (l2) corresponding to the linear regression of x on y. The two straight lines intersect at a point whose coordinates are the means of the observed yi and xi, respectively; this point is the vertex of an angle \u03b8, defined by l1 and l2, which is an expression of the strength of the linear association between y and x. The Bravais-Pearson correlation coefficient (\u03c1BP) is the geometrical mean of the slopes of the two regression lines and corresponds to the cosine of \u03b8. In absence of association the two straight lines are perpendicular (\u03b8 = 90\u00b0), so that \u03c1BP = cos 90\u00b0 = 0. When there is a complete association the two straight lines overlap: if the resulting single straight line has a positive slope (i.e. y increases with increasing values of x), \u03b8 = 0\u00b0 and \u03c1BP = cos 0\u00b0 = 1; if it has a negative slope (i.e. y decreases with increasing values of x), \u03b8 = 180\u00b0 and \u03c1BP = cos 180\u00b0 = -1. The Spearman correlation coefficient (\u03c1S) is usually adopted when the assumption of the bivariate normal distribution is not tenable. It is known that \u03c1S is computed as \u03c1BP, changing the integer 1,2,...n to y1,y2,...yn according to their relative magnitude; the same procedure is performed for x1,x2,...xn. This transformation makes it possible to move from the scales in which the original data are collected towards the same scale, i.e. that of ranks. The ranks do not follow the normal bivariate distribution and therefore the correlation coefficient cannot The International Journal of Biological Markers, Vol. 17 no. 2, pp. 148-151 \u00a9 2002 Wichtig Editore",
+    "venue": "International Journal of Biological Markers",
+    "year": 2002,
+    "referenceCount": 7,
+    "citationCount": 123,
+    "influentialCitationCount": 8,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Bravais-Pearson correlation coefficient (\u03c1BP) is a suitable measure of association when n couples of continuous data ((yi, xi) with i=1,2,...n), collected on the same experimental unit, follow a bivariate normal distribution."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "4964550",
+            "name": "R. Artusi"
+        },
+        {
+            "authorId": "3209553",
+            "name": "P. Verderio"
+        },
+        {
+            "authorId": "3166274",
+            "name": "E. Marubini"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "4101620f119c012b4a96c53f13b362072f796b93",
+            "title": "Validation of Blood Collection Procedures for the Determination of Circulating Vascular Endothelial Growth Factor (VEGF) in Different Blood Compartments"
+        },
+        {
+            "paperId": "ff454c7b1fd5a0356661331b24a25e442839e55c",
+            "title": "Bootstrap confidence intervals: when, which, what? A practical guide for medical statisticians."
+        },
+        {
+            "paperId": "9816458dc5b51dfc1c1bb6fcd9f04ef4ee45ca84",
+            "title": "Introduzione alla statistica medica"
+        },
+        {
+            "paperId": "aa611200dc829cfacbb86deff9793ecb7f56eb3a",
+            "title": "Rank Transformations as a Bridge between Parametric and Nonparametric Statistics"
+        },
+        {
+            "paperId": null,
+            "title": "SAS Campus Drive Care"
+        },
+        {
+            "paperId": "7d2a6de98433e15e863b8cce9dbcf21d1db742d6",
+            "title": "Clinical Epidemiology and Biostatistics"
+        },
+        {
+            "paperId": null,
+            "title": "Mathematics of statistics \u2013 part two"
+        }
+    ]
+}

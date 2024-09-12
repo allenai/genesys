@@ -1,0 +1,281 @@
+{
+    "paperId": "58c85498e23c86f526223e661e250007794c8d67",
+    "externalIds": {
+        "DBLP": "conf/icml/SiHD14",
+        "MAG": "2606823780",
+        "CorpusId": 706449
+    },
+    "title": "Memory Efficient Kernel Approximation",
+    "abstract": "The scalability of kernel machines is a big challenge when facing millions of samples due to storage and computation issues for large kernel matrices, that are usually dense. Recently, many papers have suggested tackling this problem by using a low-rank approximation of the kernel matrix. In this paper, we first make the observation that the structure of shift-invariant kernels changes from low-rank to block-diagonal (without any low-rank structure) when varying the scale parameter. Based on this observation, we propose a new kernel approximation algorithm - Memory Efficient Kernel Approximation (MEKA), which considers both low-rank and clustering structure of the kernel matrix. We show that the resulting algorithm outperforms state-of-the-art low-rank kernel approximation methods in terms of speed, approximation error, and memory usage. As an example, on the mnist2m dataset with two-million samples, our method takes 550 seconds on a single machine using less than 500 MBytes memory to achieve 0.2313 test RMSE for kernel ridge regression, while standard Nystrom approximation takes more than 2700 seconds and uses more than 2 GBytes memory on the same problem to achieve 0.2318 test RMSE.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2014,
+    "referenceCount": 61,
+    "citationCount": 152,
+    "influentialCitationCount": 15,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a new kernel approximation algorithm - Memory Efficient Kernel Approximation (MEKA), which considers both low-rank and clustering structure of the kernel matrix and shows that the resulting algorithm outperforms state-of-the-art low- rank kernel approximation methods in terms of speed, approximation error, and memory usage."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3422911",
+            "name": "Si Si"
+        },
+        {
+            "authorId": "1793529",
+            "name": "Cho-Jui Hsieh"
+        },
+        {
+            "authorId": "1783667",
+            "name": "I. Dhillon"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "749d9a4f0d1217bb8d01e7f4ecf54d0b885afde8",
+            "title": "Kernel Ridge Regression via Partitioning"
+        },
+        {
+            "paperId": "ad8ab158ae8afeeab00a4aac46b0da6344518262",
+            "title": "Computationally Efficient Nystr\u00f6m Approximation using Fast Transforms"
+        },
+        {
+            "paperId": "31126c7e879a93122ccc62d3627300ee5a590cee",
+            "title": "Multi-Scale Spectral Decomposition of Massive Graphs"
+        },
+        {
+            "paperId": "ef2cb3b03f95de248be6530c38fea525e5e817ba",
+            "title": "Fast Prediction for Large-Scale Kernel Machines"
+        },
+        {
+            "paperId": "734d0e754ee99b0be0487e8d85d0b7f481537fa9",
+            "title": "Improving the modified nystr\u00f6m method using spectral shifting"
+        },
+        {
+            "paperId": "18c7fb55ff796db5c5a604e0ca44b6baaeb12239",
+            "title": "Fastfood: Approximate Kernel Expansions in Loglinear Time"
+        },
+        {
+            "paperId": "2b55f034a3874ad4a4b7f389e6f89e3bf2d1801e",
+            "title": "Quasi-Monte Carlo Feature Maps for Shift-Invariant Kernels"
+        },
+        {
+            "paperId": "b03e90e1d44af90f296706098b1a5ea747b72ba9",
+            "title": "Compact Random Feature Maps"
+        },
+        {
+            "paperId": "a3b39efea137930d7534baa40c480324fba1e84c",
+            "title": "A Divide-and-Conquer Solver for Kernel Support Vector Machines"
+        },
+        {
+            "paperId": "8685982bef8a77d48b25baf7b531481470075c13",
+            "title": "Divide and Conquer Kernel Ridge Regression"
+        },
+        {
+            "paperId": "7cda32aeefdd3cabd76871b8ee06bd1a1ea2ba10",
+            "title": "Revisiting the Nystrom Method for Improved Large-scale Machine Learning"
+        },
+        {
+            "paperId": "8f77e16f2834eb23307b0436f5422a9752339f0a",
+            "title": "Nystr\u00f6m Method vs Random Fourier Features: A Theoretical and Empirical Comparison"
+        },
+        {
+            "paperId": "50353738eb935a0546aeb2e81882e2f334e32ab8",
+            "title": "Sampling Methods for the Nystr\u00f6m Method"
+        },
+        {
+            "paperId": "ea544fbbe2fac4fcb2d5a69fcd11ad0bcaed08c6",
+            "title": "Scaling up Kernel SVM on Limited Resources: A Low-rank Linearization Approach"
+        },
+        {
+            "paperId": "03a3ba746584c01ed62c73e805d62336839582ae",
+            "title": "Random Feature Maps for Dot Product Kernels"
+        },
+        {
+            "paperId": "b9866f91d6ce82384e18e8e99f803cf817787f74",
+            "title": "Explicit Approximations of the Gaussian Kernel"
+        },
+        {
+            "paperId": "6fe9627bda9c8de82720614b6519c3760e4f695c",
+            "title": "Learning with Kernels"
+        },
+        {
+            "paperId": "e181a358e6800b3c260eafcfca0df7be0e886260",
+            "title": "Trading representability for scalability: adaptive multi-hyperplane machine for nonlinear classification"
+        },
+        {
+            "paperId": "273dfbcb68080251f5e9ff38b4413d7bd84b10a1",
+            "title": "LIBSVM: A library for support vector machines"
+        },
+        {
+            "paperId": "5e86db3683931837a68e9843686be16b42510ea1",
+            "title": "Clustered Nystr\u00f6m Method for Large Scale Manifold Learning and Dimension Reduction"
+        },
+        {
+            "paperId": "a67530a9e9e96720278ae1278baa53f48b944bd6",
+            "title": "Making Large-Scale Nystr\u00f6m Approximation Possible"
+        },
+        {
+            "paperId": "10b03c9611a31568082ff2c11cee824287204355",
+            "title": "Training and Testing Low-degree Polynomial Data Mappings via Linear SVM"
+        },
+        {
+            "paperId": "780165c9c7ebfed946bf47ad8afe471e8680fb25",
+            "title": "Ensemble Nystrom Method"
+        },
+        {
+            "paperId": "df7e1cfa5999c3746a3bbc9817d924677ac8b8f0",
+            "title": "Finding Structure with Randomness: Probabilistic Algorithms for Constructing Approximate Matrix Decompositions"
+        },
+        {
+            "paperId": "75bc44168b0f32f8a2df7398745908383124b8b3",
+            "title": "CUR matrix decompositions for improved data analysis"
+        },
+        {
+            "paperId": "47aa6d7381cc9993da60e4547b01f415a04f3cf2",
+            "title": "Weighted Sums of Random Kitchen Sinks: Replacing minimization with randomization in learning"
+        },
+        {
+            "paperId": "ed2f7914bf51168842f33618d50f1e5f21622548",
+            "title": "Improved Nystr\u00f6m low-rank approximation and error analysis"
+        },
+        {
+            "paperId": "0389a414c5d0ef50e06fe0c15f6102f374ce1b04",
+            "title": "A dual coordinate descent method for large-scale linear SVM"
+        },
+        {
+            "paperId": "7a59fde27461a3ef4a21a249cc403d0d96e4a0d7",
+            "title": "Random Features for Large-Scale Kernel Machines"
+        },
+        {
+            "paperId": "eda90bd43f4256986688e525b45b833a3addab97",
+            "title": "A tutorial on spectral clustering"
+        },
+        {
+            "paperId": "56c9ddaca9bf54f5e491ce11b71af1e19b5ea2ce",
+            "title": "Predictive low-rank decomposition for kernel methods"
+        },
+        {
+            "paperId": "11e6b5a30a921e6028662105148fac41a76f0500",
+            "title": "On the Nystr\u00f6m Method for Approximating a Gram Matrix for Improved Kernel-Based Learning"
+        },
+        {
+            "paperId": "0db7af02be7cbadc029f9104a8c784d02de42df7",
+            "title": "Efficient SVM Training Using Low-Rank Kernel Representations"
+        },
+        {
+            "paperId": "7b2dd79083a74699e4e0509ac3f0a8a302b4eabe",
+            "title": "On the mathematical foundations of learning"
+        },
+        {
+            "paperId": "e5e12dd2604cb7cc9cde165509ca8db764784688",
+            "title": "Sampling Techniques for Kernel Methods"
+        },
+        {
+            "paperId": "9ded923a192ffbf13e4466c6b7d2ede55724b716",
+            "title": "Sparse Greedy Matrix Approximation for Machine Learning"
+        },
+        {
+            "paperId": "922b81f11a71aa64cda78914e6356cce89cd4f86",
+            "title": "Ridge Regression Learning Algorithm in Dual Variables"
+        },
+        {
+            "paperId": "b94c7ff9532ab26c3aedbee3988ec4c7a237c173",
+            "title": "Normalized cuts and image segmentation"
+        },
+        {
+            "paperId": "52b7bf3ba59b31f362aa07f957f1543a29a4279e",
+            "title": "Support-Vector Networks"
+        },
+        {
+            "paperId": null,
+            "title": "Fastfood with \" Hadamard features"
+        },
+        {
+            "paperId": null,
+            "title": "use random Fourier features to approximate the kernel function"
+        },
+        {
+            "paperId": "0e8f04b358c6bd59919e91f4c33f69a638d7da6c",
+            "title": "Clustered low rank approximation of graphs in information science applications"
+        },
+        {
+            "paperId": null,
+            "title": "where the landmark points are the cluster centroids"
+        },
+        {
+            "paperId": null,
+            "title": "Robust to the number of clusters c and various \u03b3: (o) different \u03b3. (p) different c. Laplacian kernel: (q) memory vs approx"
+        },
+        {
+            "paperId": null,
+            "title": "Random Kitchen Sinks (denoted by RKS)("
+        },
+        {
+            "paperId": null,
+            "title": "LLSVM: improved Nystr\u00a8om method for nonlinear SVM by"
+        },
+        {
+            "paperId": null,
+            "title": "Results Methods compared in the experiments: 1 Standard Nystr\u00f6m Hadamard features \" (fastfood)(Le et al. 2013); 5 Ensemble Nystr\u00f6m (ENys)(Kumar et al. 2009); 6 Nystr\u00f6m using randomized SVD (RNys)"
+        },
+        {
+            "paperId": "b6fff8b8ea77f157913986e7af53951d9fc1128e",
+            "title": "Using the Nystr\u00f6m Method to Speed Up Kernel Machines"
+        },
+        {
+            "paperId": "6c09c25131ac2e7f01fd14ce2a576c209f8ad23e",
+            "title": "Matrix Perturbation Theory"
+        },
+        {
+            "paperId": null,
+            "title": "Experimental results on real-world datasets"
+        },
+        {
+            "paperId": null,
+            "title": "Code is available at: www.cs.utexas.edu/ ~ ssi"
+        },
+        {
+            "paperId": null,
+            "title": "Conclusions Observation: kernel matrices have block as well as low-rank structure. MEKA: a memory efficient and fast kernel approximation approach. k-means to capture block structure"
+        },
+        {
+            "paperId": null,
+            "title": "Dhillon Memory Efficient Kernel Approximation Robustness of MEKA Robust to the number of clusters c and various \u03b3: (o) different \u03b3"
+        },
+        {
+            "paperId": null,
+            "title": "Laplacian kernel: (q) memory vs approx. error. (r) time vs approx. error"
+        },
+        {
+            "paperId": null,
+            "title": "Low-rank approximation in each block to exploit low-rank structure. Theoretical guarantees"
+        },
+        {
+            "paperId": null,
+            "title": "References"
+        },
+        {
+            "paperId": "6be23d3a6e0a8f03b8d7758c533fc68002d23e5d",
+            "title": "Memory Efficient Kernel Approximation"
+        },
+        {
+            "paperId": null,
+            "title": "2009)(denoted by ENys). Due to concern for the computation cost, we set the number of \" experts"
+        },
+        {
+            "paperId": null,
+            "title": "2010) (denoted by RNys). We set the number of power iterations q = 1 and oversampling parameter p = 10"
+        },
+        {
+            "paperId": null,
+            "title": "2001) method(denoted by Nys) In the experiment, we uniformly sample 2k columns of G without replacement, and run Nystr\u00f6m for rank-k approximation"
+        },
+        {
+            "paperId": null,
+            "title": "UCI machine learning repository"
+        }
+    ]
+}

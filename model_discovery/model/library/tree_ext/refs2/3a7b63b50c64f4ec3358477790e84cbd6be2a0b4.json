@@ -1,0 +1,202 @@
+{
+    "paperId": "3a7b63b50c64f4ec3358477790e84cbd6be2a0b4",
+    "externalIds": {
+        "DBLP": "conf/iclr/SeoKFH17",
+        "MAG": "2551396370",
+        "ArXiv": "1611.01603",
+        "CorpusId": 8535316
+    },
+    "title": "Bidirectional Attention Flow for Machine Comprehension",
+    "abstract": "Machine comprehension (MC), answering a query about a given context paragraph, requires modeling complex interactions between the context and the query. Recently, attention mechanisms have been successfully extended to MC. Typically these methods use attention to focus on a small portion of the context and summarize it with a fixed-size vector, couple attentions temporally, and/or often form a uni-directional attention. In this paper we introduce the Bi-Directional Attention Flow (BIDAF) network, a multi-stage hierarchical process that represents the context at different levels of granularity and uses bi-directional attention flow mechanism to obtain a query-aware context representation without early summarization. Our experimental evaluations show that our model achieves the state-of-the-art results in Stanford Question Answering Dataset (SQuAD) and CNN/DailyMail cloze test.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2016,
+    "referenceCount": 40,
+    "citationCount": 2048,
+    "influentialCitationCount": 483,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The BIDAF network is introduced, a multi-stage hierarchical process that represents the context at different levels of granularity and uses bi-directional attention flow mechanism to obtain a query-aware context representation without early summarization."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "4418074",
+            "name": "Minjoon Seo"
+        },
+        {
+            "authorId": "2684226",
+            "name": "Aniruddha Kembhavi"
+        },
+        {
+            "authorId": "143787583",
+            "name": "Ali Farhadi"
+        },
+        {
+            "authorId": "2548384",
+            "name": "Hannaneh Hajishirzi"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "e978d832a4d86571e1b52aa1685dc32ccb250f50",
+            "title": "Dynamic Coattention Networks For Question Answering"
+        },
+        {
+            "paperId": "b7ffc8f44f7dafd7f51e4e7500842ec406b8e239",
+            "title": "Words or Characters? Fine-grained Gating for Reading Comprehension"
+        },
+        {
+            "paperId": "97e6ed1f7e5de0034f71c370c01f59c87aaf9a72",
+            "title": "Learning Recurrent Span Representations for Extractive Question Answering"
+        },
+        {
+            "paperId": "0680f04750b1e257ffdd161e85382031dc73ea7f",
+            "title": "End-to-End Answer Chunk Extraction and Ranking for Reading Comprehension"
+        },
+        {
+            "paperId": "a8c33413a626bafc67d46029ed28c2a28cc08899",
+            "title": "End-to-End Reading Comprehension with Dynamic Answer Chunk Ranking"
+        },
+        {
+            "paperId": "c636a2dd242908fe2e598a1077c0c57bfdea8633",
+            "title": "ReasoNet: Learning to Stop Reading in Machine Comprehension"
+        },
+        {
+            "paperId": "ff1861b71eaedba46cb679bbe2c585dbe18f9b19",
+            "title": "Machine Comprehension Using Match-LSTM and Answer Pointer"
+        },
+        {
+            "paperId": "c6e5df6322659276da6133f9b734a389d7a255e8",
+            "title": "Attention-over-Attention Neural Networks for Reading Comprehension"
+        },
+        {
+            "paperId": "05dd7254b632376973f3a1b4d39485da17814df5",
+            "title": "SQuAD: 100,000+ Questions for Machine Comprehension of Text"
+        },
+        {
+            "paperId": "b1e20420982a4f923c08652941666b189b11b7fe",
+            "title": "A Thorough Examination of the CNN/Daily Mail Reading Comprehension Task"
+        },
+        {
+            "paperId": "f314339651cb25e4234e0b96fe8bd87206847993",
+            "title": "Iterative Alternating Neural Attention for Machine Reading"
+        },
+        {
+            "paperId": "75fa915984f1903cd8d0e1ea54b9d008d5a87fe5",
+            "title": "Natural Language Comprehension with the EpiReader"
+        },
+        {
+            "paperId": "12f7de07f9b00315418e381b2bd797d21f12b419",
+            "title": "Multimodal Compact Bilinear Pooling for Visual Question Answering and Visual Grounding"
+        },
+        {
+            "paperId": "0f2ea810c16275dc74e880296e20dbd83b1bae1c",
+            "title": "Gated-Attention Readers for Text Comprehension"
+        },
+        {
+            "paperId": "c4916a5fb50bcc73213b6f054c42ad10c68c52cd",
+            "title": "Dynamic Entity Representation with Max-pooling Improves Machine Reading"
+        },
+        {
+            "paperId": "fb9d253258d6b3beceb9d6cd7bba6e0a29ab875b",
+            "title": "Hierarchical Question-Image Co-Attention for Visual Question Answering"
+        },
+        {
+            "paperId": "f2e50e2ee4021f199877c8920f1f984481c723aa",
+            "title": "Text Understanding with the Attention Sum Reader Network"
+        },
+        {
+            "paperId": "f96898d15a1bf1fa8925b1280d0e07a7a8e72194",
+            "title": "Dynamic Memory Networks for Visual and Textual Question Answering"
+        },
+        {
+            "paperId": "1cf6bc0866226c1f8e282463adc8b75d92fba9bb",
+            "title": "Ask, Attend and Answer: Exploring Question-Guided Spatial Attention for Visual Question Answering"
+        },
+        {
+            "paperId": "def584565d05d6a8ba94de6621adab9e301d375d",
+            "title": "Visual7W: Grounded Question Answering in Images"
+        },
+        {
+            "paperId": "35b91b365ceb016fb3e022577cec96fb9b445dc5",
+            "title": "The Goldilocks Principle: Reading Children's Books with Explicit Memory Representations"
+        },
+        {
+            "paperId": "2c1890864c1c2b750f48316dc8b650ba4772adc5",
+            "title": "Stacked Attention Networks for Image Question Answering"
+        },
+        {
+            "paperId": "d1505c6123c102e53eb19dff312cb25cea840b72",
+            "title": "Teaching Machines to Read and Comprehend"
+        },
+        {
+            "paperId": "bd7bd1d2945a58cdcc1797ba9698b8810fe68f60",
+            "title": "Ask Your Neurons: A Neural-Based Approach to Answering Questions about Images"
+        },
+        {
+            "paperId": "97ad70a9fa3f99adf18030e5e38ebe3d90daa2db",
+            "title": "VQA: Visual Question Answering"
+        },
+        {
+            "paperId": "e0945081b5b87187a53d4329cf77cd8bff635795",
+            "title": "Highway Networks"
+        },
+        {
+            "paperId": "71ae756c75ac89e2d731c9c79649562b5768ff39",
+            "title": "Memory Networks"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "1f6ba0782862ec12a5ec6d7fb608523d55b0c6ba",
+            "title": "Convolutional Neural Networks for Sentence Classification"
+        },
+        {
+            "paperId": "564257469fa44cdb57e4272f85253efb9acfd69d",
+            "title": "MCTest: A Challenge Dataset for the Open-Domain Machine Comprehension of Text"
+        },
+        {
+            "paperId": "8729441d734782c3ed532a7d2d9611b438c0a09a",
+            "title": "ADADELTA: An Adaptive Learning Rate Method"
+        },
+        {
+            "paperId": "bd5fc28c7356915ec71abafbe86b7596c60720aa",
+            "title": "The conference paper"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "0c2563caba6bcdb113817d560ce9492467e45873",
+            "title": "Under review as a conference paper at ICLR 2020 many domain adaptation methods"
+        },
+        {
+            "paperId": "bcd857d75841aa3e92cd4284a8818aba9f6c0c3f",
+            "title": "Published as a conference paper at ICLR 2018 S IMULATING A CTION D YNAMICS WITH N EURAL P ROCESS N ETWORKS"
+        },
+        {
+            "paperId": null,
+            "title": "2016) 71.3 72.9 - - Iterative Attention"
+        },
+        {
+            "paperId": null,
+            "title": "Ours) 76.3 76.9 80.3 79.6 MemNN * (Hill et al., 2016) 66.2 69"
+        },
+        {
+            "paperId": null,
+            "title": "Mustafa Suleyman, and Phil Blunsom. Teaching machines to read and comprehend. In NIPS"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        }
+    ]
+}

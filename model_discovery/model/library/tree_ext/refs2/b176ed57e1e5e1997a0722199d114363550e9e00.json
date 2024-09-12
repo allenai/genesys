@@ -1,0 +1,186 @@
+{
+    "paperId": "b176ed57e1e5e1997a0722199d114363550e9e00",
+    "externalIds": {
+        "DBLP": "journals/tcad/PhillipsW97",
+        "MAG": "2171879949",
+        "DOI": "10.1109/43.662670",
+        "CorpusId": 11261614
+    },
+    "title": "A precorrected-FFT method for electrostatic analysis of complicated 3-D structures",
+    "abstract": "In this paper we present a new algorithm for accelerating the potential calculation which occurs in the inner loop of iterative algorithms for solving electromagnetic boundary integral equations. Such integral equations arise, for example, in the extraction of coupling capacitances in three-dimensional (3-D) geometries. We present extensive experimental comparisons with the capacitance extraction code FASTCAP and demonstrate that, for a wide variety of geometries commonly encountered in integrated circuit packaging, on-chip interconnect and micro-electro-mechanical systems, the new \"precorrected-FFT\" algorithm is superior to the fast multipole algorithm used in FASTCAP in terms of execution time and memory use. At engineering accuracies, in terms of a speed-memory product, the new algorithm can be superior to the fast multipole based schemes by more than an order of magnitude.",
+    "venue": "IEEE Trans. Comput. Aided Des. Integr. Circuits Syst.",
+    "year": 1997,
+    "referenceCount": 38,
+    "citationCount": 724,
+    "influentialCitationCount": 61,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new algorithm for accelerating the potential calculation which occurs in the inner loop of iterative algorithms for solving electromagnetic boundary integral equations, which can be superior to the fast multipole based schemes by more than an order of magnitude."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "50679743",
+            "name": "J. Phillips"
+        },
+        {
+            "authorId": "4224085",
+            "name": "Jacob K. White"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "1f601b824b8f9e3b4d7abae3333a1ea9b4cacfd6",
+            "title": "Classical Electrodynamics"
+        },
+        {
+            "paperId": "cce3c31893c1d11229cbe5de64a75c1ce69d9379",
+            "title": "Error and Complexity Analysis for a Collocation-Grid-Projection Plus Precorrected-FFT Algorithm for Solving Potential Integral Equations with LaPlace or Helmholtz Kernels"
+        },
+        {
+            "paperId": "98ec6342f26c0a3c57edbc4e298f904a78a85c0b",
+            "title": "Grid-Multipole Calculations"
+        },
+        {
+            "paperId": "1514ad307f2471fd5dad7dc56979b1b1e3426839",
+            "title": "Multipole\u2010accelerated capacitance computation for 3\u2010D structures in a stratified dielectric medium using a closed\u2010form Green's function"
+        },
+        {
+            "paperId": "d7df101e8c6f91141275a27067c51067f42a649f",
+            "title": "Efficient capacitance extraction of 3D structures using generalized pre-corrected FFT methods"
+        },
+        {
+            "paperId": "05e5c64910324b370d02b4e24933c93c95e78ece",
+            "title": "Capacitance calculation of IC packages using the finite element method and planes of symmetry"
+        },
+        {
+            "paperId": "1b0c5679d26f3b5a1650ca188091e49f24d21648",
+            "title": "Preconditioned, Adaptive, Multipole-Accelerated Iterative Methods for Three-Dimensional First-Kind Integral Equations of Potential Theory"
+        },
+        {
+            "paperId": "427db903d740720229cb1db67a85b6b51a7fe0cc",
+            "title": "Hierarchical extraction of 3D interconnect capacitances in large regular VLSI structures"
+        },
+        {
+            "paperId": "020fb5c8e8b6b2fa3cba7df40832e6d7fac3195a",
+            "title": "An FFT-based approach to including non-ideal ground planes in a fast 3-D inductance extraction program"
+        },
+        {
+            "paperId": "c60fe381ae0d2417b492c0720f75aa34319d2a9a",
+            "title": "A stochastic algorithm for high speed capacitance extraction in integrated circuits"
+        },
+        {
+            "paperId": "221c143eaef757ecfbcb98b757edf9d98bd50797",
+            "title": "A computer-aided design system for microelectromechanical systems (MEMCAD)"
+        },
+        {
+            "paperId": "20f9dbd7c8382d61a4e47940dfdef50485e4f993",
+            "title": "FastCap: a multipole accelerated 3-D capacitance extraction program"
+        },
+        {
+            "paperId": "e5ac41f09b4e740d385b522d0e30f2a29ecf1de8",
+            "title": "Multilevel computations of integral transforms and particle interactions with oscillatory kernels"
+        },
+        {
+            "paperId": "56a03322e4a528d2fc56733cc8d96a94ad5ca25d",
+            "title": "Multilevel matrix multiplication and fast solution of integral equations"
+        },
+        {
+            "paperId": "d2302702ec651955701bb121d3e23ef64eb546c2",
+            "title": "Models for Large Integrated Circuits"
+        },
+        {
+            "paperId": "83329c802a4241631af6e9fedf3e95a30761661c",
+            "title": "Three-dimensional capacitance computations for VLSI/ULSI interconnections"
+        },
+        {
+            "paperId": "30580f5b130b79d60bf5a4f7e57fdd4d15adb933",
+            "title": "CAPCAL-a 3-D capacitance solver for support of CAD systems"
+        },
+        {
+            "paperId": "24bdfaa23f8e8cdbcd45342cf6fea4cb2c8a1ea1",
+            "title": "The Rapid Evaluation of Potential Fields in Particle Systems"
+        },
+        {
+            "paperId": "7bb9bab74df4d2939bbdf41fc33027b59e0f229e",
+            "title": "GMRES: a generalized minimal residual algorithm for solving nonsymmetric linear systems"
+        },
+        {
+            "paperId": "cf7a1888424f3603efa495ee761e121ae8c3bfff",
+            "title": "Comments on \"Application of FFT and the conjugate gradient method for the solution of electromagnetic radiation from electrically large and small conducting bodies\""
+        },
+        {
+            "paperId": "721f54f6fa32f5f02c5124a2b73ce5f4280b4eaf",
+            "title": "Matrix analysis"
+        },
+        {
+            "paperId": "49e8d3523d63bb34cbd5fbecbf3fcd5f0f44fa42",
+            "title": "Rapid solution of integral equations of classical potential theory"
+        },
+        {
+            "paperId": "f1cc327a3f49003fc928d70b5ff03ab9e9c76995",
+            "title": "Calculation of High-Resolution SAR Distributions in Biological Bodies Using the FFT Algorithm and Conjugate Gradient Method (Short Papers)"
+        },
+        {
+            "paperId": "b9a4dc441862899403eb74541c4087b26670fd3f",
+            "title": "VLSI wiring capacitance"
+        },
+        {
+            "paperId": "f800974945ececc1ed23cf839bf0eab9c184a1db",
+            "title": "The Electrostatic Field of Conducting Bodies in Multiple Dielectric Media"
+        },
+        {
+            "paperId": "f57fb382bda4f2536811c3312045478d2c281545",
+            "title": "Efficient Capacitance Calculations for Three-Dimensional Multiconductor Systems"
+        },
+        {
+            "paperId": "239e7a7f8127b25e046e53fd5f1951dd2af473cd",
+            "title": "The Fast Fourier Transform and Its Applications"
+        },
+        {
+            "paperId": "0e6beb95b5150ce99b108acdefabf70ccd3fee30",
+            "title": "An algorithm for the machine calculation of complex Fourier series"
+        },
+        {
+            "paperId": "cd9bc2fc8f3ba0c383f935b01a9b29397f255f2a",
+            "title": "Optimal numerical integration on a sphere"
+        },
+        {
+            "paperId": "69c9e9d211c89e9fa4997b76e7aaf5ea9abcf634",
+            "title": "The numerical treatment of differential equations"
+        },
+        {
+            "paperId": null,
+            "title": "and R"
+        },
+        {
+            "paperId": "4e92add83e36b7722792a1ae78284a0189b9665b",
+            "title": "Hierarchical extraction of 3D interconnect capacitances in large regular VLSI structures"
+        },
+        {
+            "paperId": "603c13d83bdcab014f05901f669f1a8216f1db10",
+            "title": "Computational Frameworks for the Fast Fourier Transform"
+        },
+        {
+            "paperId": null,
+            "title": "White was a 1988 Presidential Young Investigator, and an associate editor of the"
+        },
+        {
+            "paperId": "1c7a0f2ea4f7872f4ac96932afd08618f84d2e47",
+            "title": "A method of local corrections for computing the velocity field due to a distribution of vortex blobs"
+        },
+        {
+            "paperId": "ab098dde9645afe2801f3012d8ca341d96b78283",
+            "title": "Boundary Element Techniques"
+        },
+        {
+            "paperId": "6012f4ad15ba4eb7888e43daf69f11041ab56dbd",
+            "title": "Field computation by moment methods"
+        },
+        {
+            "paperId": "68b5fbe75891df4bb238eb1d44ba4181b89e8c83",
+            "title": "Computer Simulation Using Particles"
+        }
+    ]
+}

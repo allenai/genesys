@@ -1,0 +1,222 @@
+{
+    "paperId": "f03db79dc2922af3ec712592c8a3f69182ec5d65",
+    "externalIds": {
+        "MAG": "2158049821",
+        "DBLP": "conf/sigcomm/StoicaMKKB01",
+        "DOI": "10.1145/383059.383071",
+        "CorpusId": 207787803
+    },
+    "title": "Chord: A scalable peer-to-peer lookup service for internet applications",
+    "abstract": "A fundamental problem that confronts peer-to-peer applications is to efficiently locate the node that stores a particular data item. This paper presents Chord, a distributed lookup protocol that addresses this problem. Chord provides support for just one operation: given a key, it maps the key onto a node. Data location can be easily implemented on top of Chord by associating a key with each data item, and storing the key/data item pair at the node to which the key maps. Chord adapts efficiently as nodes join and leave the system, and can answer queries even if the system is continuously changing. Results from theoretical analysis, simulations, and experiments show that Chord is scalable, with communication cost and the state maintained by each node scaling logarithmically with the number of Chord nodes.",
+    "venue": "Conference on Applications, Technologies, Architectures, and Protocols for Computer Communication",
+    "year": 2001,
+    "referenceCount": 44,
+    "citationCount": 11762,
+    "influentialCitationCount": 1585,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Results from theoretical analysis, simulations, and experiments show that Chord is scalable, with communication cost and the state maintained by each node scaling logarithmically with the number of Chord nodes."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2263558370",
+            "name": "Ion Stoica"
+        },
+        {
+            "authorId": "2245506029",
+            "name": "R. Morris"
+        },
+        {
+            "authorId": "1743286",
+            "name": "David R Karger"
+        },
+        {
+            "authorId": "1681493",
+            "name": "M. Kaashoek"
+        },
+        {
+            "authorId": "145034082",
+            "name": "H. Balakrishnan"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "593ad933b7358991648b0bbcdd3f0c148632658c",
+            "title": "The impact of DHT routing geometry on resilience and proximity"
+        },
+        {
+            "paperId": "06631a1bd85d1cdfd3f7f1fe5496fa7ad0f758c6",
+            "title": "Host Mobility Using an Internet Indirection Infrastructure"
+        },
+        {
+            "paperId": "b8ea048b109fe7c05a43c78ad1760ce41e7992ea",
+            "title": "Security Considerations for Peer-to-Peer Distributed Hash Tables"
+        },
+        {
+            "paperId": "846ffb5816a9b75aca377e53a2cdfeff38a0ae41",
+            "title": "Serving DNS Using a Peer-to-Peer Lookup Service"
+        },
+        {
+            "paperId": "7cb2acdc24b7a3bd4ada103beb942d8725063fe3",
+            "title": "Internet indirection infrastructure"
+        },
+        {
+            "paperId": "7f4336ffcc7b635a8fb010447cd33333fa7b8d34",
+            "title": "Resilient overlay networks"
+        },
+        {
+            "paperId": "9444fdfd7bee92fdf71da6b82d6b66afe423898b",
+            "title": "Wide-area cooperative storage with CFS"
+        },
+        {
+            "paperId": "ce498b23777c56cd3f608451aaddbac7677b52bd",
+            "title": "Storage management and caching in PAST, a large-scale, persistent peer-to-peer storage utility"
+        },
+        {
+            "paperId": "680ba806b8a651e8cb2e2d64a9d6bc2325a8eea1",
+            "title": "A scalable content-addressable network"
+        },
+        {
+            "paperId": "fb1704f469b47f72658e0ac78265b8619e00dfd0",
+            "title": "Building peer-to-peer systems with chord, a distributed lookup service"
+        },
+        {
+            "paperId": "79e5947836d5e2845a3d390849c222f59106007c",
+            "title": "OceanStore: an architecture for global-scale persistent storage"
+        },
+        {
+            "paperId": "32a5db95cc0d8b501517634719ce691f0ca8ff84",
+            "title": "A scalable location service for geographic ad hoc routing"
+        },
+        {
+            "paperId": "3bd22a036ba66a34bb0812a913f4ff349a0c4ef1",
+            "title": "The Globe Distribution Network"
+        },
+        {
+            "paperId": "f99385a783fc629406c5316eeaa08430b53016e9",
+            "title": "The design and implementation of an intentional naming system"
+        },
+        {
+            "paperId": "cabd87a995986d2247b1b90b843d5ef89d178ebe",
+            "title": "Separating key management from file system security"
+        },
+        {
+            "paperId": "8821232578c1c40c0268323710985d85afdc099b",
+            "title": "A prototype implementation of archival Intermemory"
+        },
+        {
+            "paperId": "1abe5c7df2c7198cae007c149140f7d36fc13b58",
+            "title": "Accessing Nearby Copies of Replicated Objects in a Distributed Environment"
+        },
+        {
+            "paperId": "f025411fe3cfb029ffdd441d25d0b5b8e5391aa1",
+            "title": "Service Location Protocol"
+        },
+        {
+            "paperId": "02bb762c3bd1b3d1ad788340d8e9cdc3d85f33e1",
+            "title": "Consistent hashing and random trees: distributed caching protocols for relieving hot spots on the World Wide Web"
+        },
+        {
+            "paperId": "79067a2dec8d9818baaff8f39aecb5047609bb7d",
+            "title": "XDR: External Data Representation Standard"
+        },
+        {
+            "paperId": "bda1e138a95183096882cb14e4eeac3a8d4cadd0",
+            "title": "The synchronization of periodic routing messages"
+        },
+        {
+            "paperId": "0f869cbcd019de787d2e8721964663a7ebff1637",
+            "title": "Development of the domain name system"
+        },
+        {
+            "paperId": "370b57e3edbe9e13c90dafa5b9b53de28f5ea9e8",
+            "title": "Past: persistent and anonymous storage in a peer-to-peer networking environment"
+        },
+        {
+            "paperId": "9f4ec57919f892dc1e4b56637b3ef1f34c1b0316",
+            "title": "Freenet: A Distributed Anonymous Information Storage and Retrieval System"
+        },
+        {
+            "paperId": null,
+            "title": "FREENIXTrack) (SanDiego,CA, June2000),pp.141\u2013152"
+        },
+        {
+            "paperId": null,
+            "title": "Jini (TM). http://java.sun.com/products/jini"
+        },
+        {
+            "paperId": "91fa5d7aa60a2306af027b8a9a60fb42eac40978",
+            "title": "A distributed anonymous information storage and retrievalsystem"
+        },
+        {
+            "paperId": null,
+            "title": "A scalablelocationservicefor geographicadhocrouting.In Proceedingsof the6thACM InternationalConferenceonMobile ComputingandNetworking(Boston,Massachusetts"
+        },
+        {
+            "paperId": null,
+            "title": "SCHW  2  ARTZ"
+        },
+        {
+            "paperId": "f3ec2adb51b823e4ba7f8c86315c17c5547f88cc",
+            "title": "A Distributed Decentralised Information Storage and Retrieval System"
+        },
+        {
+            "paperId": null,
+            "title": "Web caching with consistent hashing Computer Networks"
+        },
+        {
+            "paperId": null,
+            "title": "Separatingkey management from file systemsecurity. In Pr  N oceedingsof the17thACM Symposiumon Operating SystemsPrinciples(SOSP\u201999) (Kiawah Island,SouthCarolina,December 1999).http://www.fs.net"
+        },
+        {
+            "paperId": "34cab9c34d6bd23d7d0c63be6b9d36fb0e3bca61",
+            "title": "Algorithmic Design of the Globe Wide-Area Location Service"
+        },
+        {
+            "paperId": "04b0df5597f7625ba537a47fddf830a1de073da5",
+            "title": "Consistent hashing and random trees : algorithms for caching in distributed networks"
+        },
+        {
+            "paperId": null,
+            "title": "Consistenthashingandrandomtrees:Algorithmsfor cachingin distributednetworks.Master\u2019  s thesis,Departmentof EECS,MIT, 1998.Availableat theMIT Library, http://thesis.mit.edu"
+        },
+        {
+            "paperId": null,
+            "title": "FIPS 180-1. Secure Hash Standard. U.S. Department of Commerce/NIST, National Technical Information Service"
+        },
+        {
+            "paperId": "c2d1c836fe2fe2419c88d770cbd9a858ed242ce1",
+            "title": "Randomized Algorithms: Tail Inequalities"
+        },
+        {
+            "paperId": null,
+            "title": "Ohaha , Smart decentralized peer - to - peer sharing"
+        },
+        {
+            "paperId": null,
+            "title": "Developmentof the DomainNameSystem.In Proc.ACM SIGCOMM(Stanford,CA, 1988),pp.123\u2013133"
+        },
+        {
+            "paperId": null,
+            "title": "Schl\u00fcssel zum neuen Knoten kopieren, falls vorhanden"
+        },
+        {
+            "paperId": null,
+            "title": "Platz durch Suchanfrage finden"
+        },
+        {
+            "paperId": null,
+            "title": "Alte Knoten updaten (Stabilisieren)"
+        },
+        {
+            "paperId": null,
+            "title": "Master's thesis, Department of EECS, MIT"
+        },
+        {
+            "paperId": null,
+            "title": "Chord : A scalable peer - to - peer lookup service for internet applications"
+        }
+    ]
+}

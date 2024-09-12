@@ -1,0 +1,287 @@
+{
+    "paperId": "39065a52092ab2e74b0f42caf274dabe484f8b3d",
+    "externalIds": {
+        "DBLP": "journals/neco/GershmanMTNS12",
+        "MAG": "2076546217",
+        "DOI": "10.1162/NECO_a_00282",
+        "CorpusId": 14623919,
+        "PubMed": "22364500"
+    },
+    "title": "The Successor Representation and Temporal Context",
+    "abstract": "The successor representation was introduced into reinforcement learning by Dayan (1993) as a means of facilitating generalization between states with similar successors. Although reinforcement learning in general has been used extensively as a model of psychological and neural processes, the psychological validity of the successor representation has yet to be explored. An interesting possibility is that the successor representation can be used not only for reinforcement learning but for episodic learning as well. Our main contribution is to show that a variant of the temporal context model (TCM; Howard & Kahana, 2002), an influential model of episodic memory, can be understood as directly estimating the successor representation using the temporal difference learning algorithm (Sutton & Barto, 1998). This insight leads to a generalization of TCM and new experimental predictions. In addition to casting a new normative light on TCM, this equivalence suggests a previously unexplored point of contact between different learning systems.",
+    "venue": "Neural Computation",
+    "year": 2012,
+    "referenceCount": 60,
+    "citationCount": 104,
+    "influentialCitationCount": 7,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that a variant of the temporal context model (TCM) can be understood as directly estimating the successor representation using the temporal difference learning algorithm (Sutton & Barto, 1998), which leads to a generalization of TCM and new experimental predictions."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1831199",
+            "name": "S. Gershman"
+        },
+        {
+            "authorId": "2114142388",
+            "name": "Christopher D. Moore"
+        },
+        {
+            "authorId": "27390359",
+            "name": "M. T. Todd"
+        },
+        {
+            "authorId": "1780319",
+            "name": "K. Norman"
+        },
+        {
+            "authorId": "2196760",
+            "name": "P. Sederberg"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "279beb46b49d01dd893bf942191f473cd37cde85",
+            "title": "A Neural Signature of Hierarchical Reinforcement Learning"
+        },
+        {
+            "paperId": "4dd9a8aa4dde9d92b9476439ac3d0eed1623c8e4",
+            "title": "The temporal contiguity effect predicts episodic memory performance"
+        },
+        {
+            "paperId": "2910ee0ac40abb61dbdd0d38861129a54eae5070",
+            "title": "States versus Rewards: Dissociable Neural Prediction Error Signals Underlying Model-Based and Model-Free Reinforcement Learning"
+        },
+        {
+            "paperId": "9dfcaad0c019a67c46e0156bc8da52e32628d446",
+            "title": "A Bayesian Analysis of Dynamics in Free Recall"
+        },
+        {
+            "paperId": "b9d5d3ab5e4344352f287eddc75fa40079ff0dc8",
+            "title": "Predicting the Optimal Spacing of Study: A Multiscale Context Model of Memory"
+        },
+        {
+            "paperId": "acc3bfc0251df05fbfeee3ad73e82e458bf89f53",
+            "title": "Sequential learning using temporal context"
+        },
+        {
+            "paperId": "3402002efd65b8002d03d1d455b196087abe7fc8",
+            "title": "Hierarchically organized behavior and its neural foundations: A reinforcement learning perspective"
+        },
+        {
+            "paperId": "8f4ea536ed154726d19ef3087aeb6c9e097258c9",
+            "title": "The construction system of the brain"
+        },
+        {
+            "paperId": "042251f2b4ee0f5d7124a6995c8719c4b8e03f76",
+            "title": "Prediction, sequences and the hippocampus"
+        },
+        {
+            "paperId": "3d168d44926f4bc4e702c5a82af973c373aca3d7",
+            "title": "Bridging the gap: transitive associations between items presented in similar temporal contexts."
+        },
+        {
+            "paperId": "ed63f501f204e79d92b61d1cb0cde1480d25e1b9",
+            "title": "The simplest complete model of choice response time: Linear ballistic accumulation"
+        },
+        {
+            "paperId": "fa6accdee5b06ea5a43bb3887990e090657122cf",
+            "title": "A context-based theory of recency and contiguity in free recall."
+        },
+        {
+            "paperId": "f9a639cfc52845c8a83ca00d6832495cd64f53e4",
+            "title": "Modeling the role of working memory and episodic memory in behavioral tasks"
+        },
+        {
+            "paperId": "eb12e5983dc1ef2c892cda84c1e32fa31fbc50d9",
+            "title": "Proto-value Functions: A Laplacian Framework for Learning Representation and Control in Markov Decision Processes"
+        },
+        {
+            "paperId": "571116382b1237844e8bd65cbc91370992a0a001",
+            "title": "Individual differences in working memory capacity and episodic retrieval: examining the dynamics of delayed and continuous distractor free recall."
+        },
+        {
+            "paperId": "c2dde76f9ad60d7c5814cd1cd08d2ae38f9769a0",
+            "title": "Remembering the past to imagine the future: the prospective brain"
+        },
+        {
+            "paperId": "5c544f46030cc9d99fb1b855c9709a5b4f297365",
+            "title": "Which computational mechanisms operate in the hippocampus during novelty detection?"
+        },
+        {
+            "paperId": "00e9e3984599b9ab357ac69af4f1a47fd23112f1",
+            "title": "A temporal ratio model of memory."
+        },
+        {
+            "paperId": "b978f372ba65014d60cee1f30a6fd9931a25a849",
+            "title": "Remembering the past and imagining the future: Common and distinct neural substrates during event construction and elaboration"
+        },
+        {
+            "paperId": "a931718587b83f5b965427ab48b48d819bb74422",
+            "title": "Remembering the past and imagining the future: a neural model of spatial memory and imagery."
+        },
+        {
+            "paperId": "5e7a1971abac5b5b0480e27061498b3de469d561",
+            "title": "Patients with hippocampal amnesia cannot imagine new experiences"
+        },
+        {
+            "paperId": "111ad05d2a7a1db7272f04901254380e1e3a405c",
+            "title": "Neural substrates of envisioning the future"
+        },
+        {
+            "paperId": "0ff04198bd616f9ae12d8e1b053c749d87c51d56",
+            "title": "2005 Special issue: Interpreting hippocampal function as recoding and forecasting"
+        },
+        {
+            "paperId": "f13a2ce689d15dd3bd7c63730df3cd803f44106d",
+            "title": "Spacing and lag effects in free recall of pure lists"
+        },
+        {
+            "paperId": "47759c5d28e38d61cd288d6a52227bee7c30fdb1",
+            "title": "The time-course of prediction in incremental sentence processing: Evidence from anticipatory eye-movements"
+        },
+        {
+            "paperId": "9b1df5b85c7e13edc350b68173eeb2b7840dffb1",
+            "title": "A distributed representation of temporal context"
+        },
+        {
+            "paperId": "7cf137c73fbf3febc37570b2f74d1e034672a5db",
+            "title": "Metalearning and neuromodulation"
+        },
+        {
+            "paperId": "1488dafff2e8357a1eb8efc2762faafadeb904dd",
+            "title": "Episodic future thinking"
+        },
+        {
+            "paperId": "2d0b84eb07af1e848cc8b3e17e07a2891393097f",
+            "title": "Hippocampus as comparator: Role of the two input and two output systems of the hippocampus in selection and registration of information"
+        },
+        {
+            "paperId": "9ae3280ebf70dacc53807fd9217af632b16b7372",
+            "title": "Storage, recall, and novelty detection of sequences by the hippocampus: Elaborating on the SOCRATIC model to account for normal and aberrant effects of dopamine"
+        },
+        {
+            "paperId": "1c53f6fdcef2afa88afe77332a9aa0ba2eb347a8",
+            "title": "The time course of perceptual choice: the leaky, competing accumulator model."
+        },
+        {
+            "paperId": "3ee6a5c813000fa4da8de9e8f3e314e9598089c7",
+            "title": "Incremental interpretation at verbs: restricting the domain of subsequent reference"
+        },
+        {
+            "paperId": "0e7638dc16a5e5e9e46c91272bfb9c3dd242ef6d",
+            "title": "Between MDPs and Semi-MDPs: A Framework for Temporal Abstraction in Reinforcement Learning"
+        },
+        {
+            "paperId": "d42ac107469b8ec6a8ba026e9513a06cd4a24ab5",
+            "title": "Prospective Coding for Objects in Primate Prefrontal Cortex"
+        },
+        {
+            "paperId": "56093736b8ed97fd9eb0a04659f9f455f337fc45",
+            "title": "Contextual variability and serial position effects in free recall."
+        },
+        {
+            "paperId": "8ae288db4f5a0b880fec9ca8877b440a5223c51b",
+            "title": "Adult age differences in the temporal characteristics of category free recall."
+        },
+        {
+            "paperId": "382f2d3c7e318c3ad2de028c6598a9700899ce80",
+            "title": "Introduction to Reinforcement Learning"
+        },
+        {
+            "paperId": "3b5db92ce2f86b2136fe7cf6a415fe1c0632a881",
+            "title": "TD Models: Modeling the World at a Mixture of Time Scales"
+        },
+        {
+            "paperId": "c2e8806f0bd1d504bcb395ef1f6fe509a023a048",
+            "title": "Improving Generalization for Temporal Difference Learning: The Successor Representation"
+        },
+        {
+            "paperId": "87a8a6df534481ac89e092c58c21fdc0f9f474c9",
+            "title": "Entorhinal-hippocampal connections: a speculative view of their function"
+        },
+        {
+            "paperId": "82ed0bc42108ea0ac45188d086476d621b67b649",
+            "title": "Neural organization for the long-term memory of paired associates"
+        },
+        {
+            "paperId": "62145416072162db4434b6c94866063bb7301258",
+            "title": "A model for interference and forgetting"
+        },
+        {
+            "paperId": "a91635f8d0e7fb804efd1c38d9c24ee952ba7076",
+            "title": "Learning to predict by the methods of temporal differences"
+        },
+        {
+            "paperId": "4ee237d215c41374cb94227a44d1a51af7d3873f",
+            "title": "RECOGNITION AND RETRIEVAL PROCESSES IN FREE RECALL"
+        },
+        {
+            "paperId": "4ad05ca339ba47609438c2f77ce09ba4c22efb6f",
+            "title": "Serial effects in recall of unorganized and sequentially organized verbal material."
+        },
+        {
+            "paperId": "7c8d0f122b4431db0dc8d7384df5ca5fd9cd3192",
+            "title": "Statistical theory of spontaneous recovery and regression."
+        },
+        {
+            "paperId": "08b654e84adae21f022dccc38a06ae48d094c9ba",
+            "title": "Constructing Semantic Representations From a Gradually Changing Representation of Temporal Context"
+        },
+        {
+            "paperId": null,
+            "title": "Received July"
+        },
+        {
+            "paperId": "f1990227a54e7c1460d05635011d398b7bfb6f73",
+            "title": "A context maintenance and retrieval model of organizational processes in free recall."
+        },
+        {
+            "paperId": "19b94c0811c1eefe66c11ed5c587cc17929b7bbf",
+            "title": "Associative Retrieval Processes in Episodic Memory"
+        },
+        {
+            "paperId": "e5890db4c6cf1264e31854c6be955120b3671dc9",
+            "title": "Learning and memory : a comprehensive reference"
+        },
+        {
+            "paperId": "68902dec52e32c270cec55f412277b3a6d24b182",
+            "title": "The temporal context model in spatial navigation and relational learning: toward a common explanation of medial temporal lobe function across domains."
+        },
+        {
+            "paperId": "c52d63a0fb7331b4ac898befb246856484cf585a",
+            "title": "FINITE MARKOV CHAINS"
+        },
+        {
+            "paperId": "97efafdb4a3942ab3efba53ded7413199f79c054",
+            "title": "Reinforcement Learning: An Introduction"
+        },
+        {
+            "paperId": "a96eed30b0ad0c77cf112adc5131b39d214e0dee",
+            "title": "Associative retrieval processes in free recall"
+        },
+        {
+            "paperId": null,
+            "title": "Temporal difference learning: Eligibility traces and the successor representation for actions. Unpublished master's thesis"
+        },
+        {
+            "paperId": "2b42adcad065108c586f23609b62f5e9859841a7",
+            "title": "Hebbian synapses: biophysical mechanisms and algorithms."
+        },
+        {
+            "paperId": "351e150e3242221b6bde689ea7ca3767e51f7cba",
+            "title": "A temporal distinctiveness theory of recency and modality effects."
+        },
+        {
+            "paperId": "afaf65883ff75cc19926f61f181a687927789ad1",
+            "title": "A theory of Pavlovian conditioning : Variations in the effectiveness of reinforcement and nonreinforcement"
+        },
+        {
+            "paperId": "94b2726d6f6b9d1c1e8c1cbef9f8c411a111330e",
+            "title": "Interpreting Hippocampal Function as Recoding and Forecasting"
+        }
+    ]
+}

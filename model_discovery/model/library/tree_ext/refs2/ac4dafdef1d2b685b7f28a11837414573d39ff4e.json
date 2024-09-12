@@ -1,0 +1,190 @@
+{
+    "paperId": "ac4dafdef1d2b685b7f28a11837414573d39ff4e",
+    "externalIds": {
+        "DBLP": "conf/iclr/DehghaniGVUK19",
+        "MAG": "2866343820",
+        "ArXiv": "1807.03819",
+        "CorpusId": 49667762
+    },
+    "title": "Universal Transformers",
+    "abstract": "Recurrent neural networks (RNNs) sequentially process data by updating their state with each new data point, and have long been the de facto choice for sequence modeling tasks. However, their inherently sequential computation makes them slow to train. Feed-forward and convolutional architectures have recently been shown to achieve superior results on some sequence modeling tasks such as machine translation, with the added advantage that they concurrently process all inputs in the sequence, leading to easy parallelization and faster training times. Despite these successes, however, popular feed-forward sequence models like the Transformer fail to generalize in many simple tasks that recurrent models handle with ease, e.g. copying strings or even simple logical inference when the string or formula lengths exceed those observed at training time. We propose the Universal Transformer (UT), a parallel-in-time self-attentive recurrent sequence model which can be cast as a generalization of the Transformer model and which addresses these issues. UTs combine the parallelizability and global receptive field of feed-forward sequence models like the Transformer with the recurrent inductive bias of RNNs. We also add a dynamic per-position halting mechanism and find that it improves accuracy on several tasks. In contrast to the standard Transformer, under certain assumptions, UTs can be shown to be Turing-complete. Our experiments show that UTs outperform standard Transformers on a wide range of algorithmic and language understanding tasks, including the challenging LAMBADA language modeling task where UTs achieve a new state of the art, and machine translation where UTs achieve a 0.9 BLEU improvement over Transformers on the WMT14 En-De dataset.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2018,
+    "referenceCount": 36,
+    "citationCount": 682,
+    "influentialCitationCount": 65,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Universal Transformer (UT), a parallel-in-time self-attentive recurrent sequence model which can be cast as a generalization of the Transformer model and which addresses issues of parallelizability and global receptive field, is proposed."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3226635",
+            "name": "Mostafa Dehghani"
+        },
+        {
+            "authorId": "2776283",
+            "name": "Stephan Gouws"
+        },
+        {
+            "authorId": "1689108",
+            "name": "O. Vinyals"
+        },
+        {
+            "authorId": "39328010",
+            "name": "Jakob Uszkoreit"
+        },
+        {
+            "authorId": "40527594",
+            "name": "Lukasz Kaiser"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "ebff4eb2f94dcf38171a5ca6a24ee95bc8e88c10",
+            "title": "Hyperbolic Attention Networks"
+        },
+        {
+            "paperId": "928f9dccb806a3278d20d82cc53781c5f44e2bb1",
+            "title": "Constituency Parsing with a Self-Attentive Encoder"
+        },
+        {
+            "paperId": "d0fbae81d870bbfb34430654f70fd6a21e8bd1cc",
+            "title": "Neural Models for Reasoning over Multiple Mentions Using Coreference"
+        },
+        {
+            "paperId": "642c1b4a9da95ea4239708afc5929a5007a1870d",
+            "title": "Tensor2Tensor for Neural Machine Translation"
+        },
+        {
+            "paperId": "997c55547aeca733dfc5dfebd12412612ecba022",
+            "title": "The Importance of Being Recurrent for Modeling Hierarchical Structure"
+        },
+        {
+            "paperId": "27981998aaef92952eabef2c1490b926f9150c4f",
+            "title": "Memory Architectures in Recurrent Neural Network Language Models"
+        },
+        {
+            "paperId": "3861ae2a6bdd2a759c2d901a6583e63a216bc2fc",
+            "title": "Weighted Transformer Network for Machine Translation"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "07c4fc48ad7b7d1a417b0bb72d0ae2d4efc5aa83",
+            "title": "Depthwise Separable Convolutions for Neural Machine Translation"
+        },
+        {
+            "paperId": "43428880d75b3a14257c3ee9bda054e61eb869c0",
+            "title": "Convolutional Sequence to Sequence Learning"
+        },
+        {
+            "paperId": "204a4a70428f3938d2c538a4d74c7ae0416306d8",
+            "title": "A Structured Self-attentive Sentence Embedding"
+        },
+        {
+            "paperId": "e4c8447e56fc9cc3867087748acc4b259b9efe19",
+            "title": "Linguistic Knowledge as Memory for Recurrent Neural Networks"
+        },
+        {
+            "paperId": "033dd6cf61a6017e9aa9b46068d3c89082849cf3",
+            "title": "Tracking the World State with Recurrent Entity Networks"
+        },
+        {
+            "paperId": "2d7782c225e0fc123d6e227f2cb253e58279ac73",
+            "title": "Improving Neural Language Models with a Continuous Cache"
+        },
+        {
+            "paperId": "3aa52436575cf6768a0a1a476601825f6a62e58f",
+            "title": "Assessing the Ability of LSTMs to Learn Syntax-Sensitive Dependencies"
+        },
+        {
+            "paperId": "be8c6c69f3e357bfad2987e45b62cff7e7474378",
+            "title": "Scaling Memory-Augmented Neural Networks with Sparse Reads and Writes"
+        },
+        {
+            "paperId": "e86e81ad3fa4ab0b736f7fef721689e293ee788e",
+            "title": "Broad Context Language Modeling as Reading Comprehension"
+        },
+        {
+            "paperId": "5b6ec746d309b165f9f9def873a2375b6fb40f3d",
+            "title": "Xception: Deep Learning with Depthwise Separable Convolutions"
+        },
+        {
+            "paperId": "97fb4e3d45bb098e27e0071448b6152217bd35a5",
+            "title": "Layer Normalization"
+        },
+        {
+            "paperId": "5ed791f810da580c78df6a052c6b9f2e258f6b0a",
+            "title": "The LAMBADA dataset: Word prediction requiring a broad discourse context"
+        },
+        {
+            "paperId": "4bf7edee5a4c4cfdbdd43a607c402420129fa277",
+            "title": "Query-Reduction Networks for Question Answering"
+        },
+        {
+            "paperId": "2cd8e8f510c89c7c18268e8ad51c061e459ad321",
+            "title": "A Decomposable Attention Model for Natural Language Inference"
+        },
+        {
+            "paperId": "04cca8e341a5da42b29b0bc831cb25a0f784fa01",
+            "title": "Adaptive Computation Time for Recurrent Neural Networks"
+        },
+        {
+            "paperId": "5e4eb58d5b47ac1c73f4cf189497170e75ae6237",
+            "title": "Neural GPUs Learn Algorithms"
+        },
+        {
+            "paperId": "452059171226626718eb677358836328f884298e",
+            "title": "Ask Me Anything: Dynamic Memory Networks for Natural Language Processing"
+        },
+        {
+            "paperId": "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e",
+            "title": "End-To-End Memory Networks"
+        },
+        {
+            "paperId": "d38e8631bba0720becdaf7b89f79d9f9dca45d82",
+            "title": "Inferring Algorithmic Patterns with Stack-Augmented Recurrent Nets"
+        },
+        {
+            "paperId": "abb33d75dc297993fcc3fb75e0f4498f413eb4f6",
+            "title": "Towards AI-Complete Question Answering: A Set of Prerequisite Toy Tasks"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "0d0b3ff23fbf1ec7a0dfebd923a3ef224306491a",
+            "title": "Learning to Execute"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17",
+            "title": "Generating Sequences With Recurrent Neural Networks"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "2e5f2b57f4c476dd69dc22ccdf547e48f40a994c",
+            "title": "Gradient Flow in Recurrent Nets: the Difficulty of Learning Long-Term Dependencies"
+        }
+    ]
+}

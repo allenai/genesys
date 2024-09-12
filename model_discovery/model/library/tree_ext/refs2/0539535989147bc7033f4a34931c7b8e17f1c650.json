@@ -1,0 +1,374 @@
+{
+    "paperId": "0539535989147bc7033f4a34931c7b8e17f1c650",
+    "externalIds": {
+        "ArXiv": "1712.01208",
+        "DBLP": "conf/sigmod/KraskaBCDP18",
+        "MAG": "2773466258",
+        "DOI": "10.1145/3183713.3196909",
+        "CorpusId": 6038777
+    },
+    "title": "The Case for Learned Index Structures",
+    "abstract": "Indexes are models: a \\btree-Index can be seen as a model to map a key to the position of a record within a sorted array, a Hash-Index as a model to map a key to a position of a record within an unsorted array, and a BitMap-Index as a model to indicate if a data record exists or not. In this exploratory research paper, we start from this premise and posit that all existing index structures can be replaced with other types of models, including deep-learning models, which we term \\em learned indexes. We theoretically analyze under which conditions learned indexes outperform traditional index structures and describe the main challenges in designing learned index structures. Our initial results show that our learned indexes can have significant advantages over traditional indexes. More importantly, we believe that the idea of replacing core components of a data management system through learned models has far reaching implications for future systems designs and that this work provides just a glimpse of what might be possible.",
+    "venue": "SIGMOD Conference",
+    "year": 2017,
+    "referenceCount": 81,
+    "citationCount": 897,
+    "influentialCitationCount": 156,
+    "openAccessPdf": {
+        "url": "https://dl.acm.org/doi/pdf/10.1145/3183713.3196909",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The idea of replacing core components of a data management system through learned models has far reaching implications for future systems designs and that this work provides just a glimpse of what might be possible."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1746961",
+            "name": "Tim Kraska"
+        },
+        {
+            "authorId": "2638246",
+            "name": "Alex Beutel"
+        },
+        {
+            "authorId": "2226805",
+            "name": "Ed H. Chi"
+        },
+        {
+            "authorId": "49959210",
+            "name": "J. Dean"
+        },
+        {
+            "authorId": "1763100",
+            "name": "N. Polyzotis"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "2f9aeb48ef39b7aaedc943518854dee6dc625536",
+            "title": "A Model for Learned Bloom Filters and Related Structures"
+        },
+        {
+            "paperId": "0026e358b3c35015683178a2c7959b91a06a7bc8",
+            "title": "A-Tree: A Bounded Approximate Index Structure"
+        },
+        {
+            "paperId": "6fc2ccc1cbb555955291b0989251bd77240dd551",
+            "title": "ImageNet Training in Minutes"
+        },
+        {
+            "paperId": "2d04ccb24f36a7be01f201a4ae41877443fb37da",
+            "title": "Deep Lattice Networks and Partial Monotonic Functions"
+        },
+        {
+            "paperId": "136dee73f203df2f4831994bf4f0c0a4ad2e764e",
+            "title": "Ensemble Adversarial Training: Attacks and Defenses"
+        },
+        {
+            "paperId": "510e26733aaff585d65701b9f1be7ca9d5afc586",
+            "title": "Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer"
+        },
+        {
+            "paperId": "faa58571c0249ba1ca7dfed31c2bf39a77673f66",
+            "title": "Two Birds, One Stone: A Fast, yet Lightweight, Indexing Scheme for Modern Database Systems"
+        },
+        {
+            "paperId": "c82e4900f35b549978f5ce58410c5279a686e277",
+            "title": "Hash function generation by neural network"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "572112aaa0e53bc5d85b75dadcc21aaaee8e89be",
+            "title": "The End of a Myth: Distributed Transaction Can Scale"
+        },
+        {
+            "paperId": "2dbd58aa9b36388c92d3ccb5bd1bc387ea712a30",
+            "title": "A Hybrid B+-tree as Solution for In-Memory Indexing on CPU-GPU Heterogeneous Computing Platforms"
+        },
+        {
+            "paperId": "a3973a054f42a3479a2af5f2b7b3fd7e905c941a",
+            "title": "Reducing the Storage Overhead of Main-Memory OLTP Databases with Hybrid Indexes"
+        },
+        {
+            "paperId": "4954fa180728932959997a4768411ff9136aac81",
+            "title": "TensorFlow: A system for large-scale machine learning"
+        },
+        {
+            "paperId": "f7f9844420e11e99b624716001a8700678e78f93",
+            "title": "A Seven-Dimensional Analysis of Hashing Methods and its Implications on Query Processing"
+        },
+        {
+            "paperId": "81b7e5635241f0fae8eac9f703f604a1a0073038",
+            "title": "Learning to Hash for Indexing Big Data\u2014A Survey"
+        },
+        {
+            "paperId": "5a4180317dac1975626f6a4a1bdba76a178f04ac",
+            "title": "CNN Based Hashing for Image Retrieval"
+        },
+        {
+            "paperId": "83ec245d470a3b75c0861acd5e67db5216e8e049",
+            "title": "Automating model search for large scale machine learning"
+        },
+        {
+            "paperId": "74241ccbd1045cf937ad8aeb44ed4e22bcdb9ea1",
+            "title": "An Architecture for Compiling UDF-centric Workflows"
+        },
+        {
+            "paperId": "aae4d93d5d356b858418e360a9d72257f2bb35a5",
+            "title": "Monotonic Calibrated Interpolated Look-Up Tables"
+        },
+        {
+            "paperId": "0c908739fbff75f03469d13d4a1a07de3414ee19",
+            "title": "Distilling the Knowledge in a Neural Network"
+        },
+        {
+            "paperId": "3a2f37d3648592ffb42155c28f71894ad61937fe",
+            "title": "Cuckoo Filter: Practically Better Than Bloom"
+        },
+        {
+            "paperId": "b96cbb75e8f35d02e53bd342fbd07841fe87d0e8",
+            "title": "BF-Tree: Approximate Tree Indexing"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "226bab70ecb9e13ef8fdb503a6183615d5c898ed",
+            "title": "Hashing for Similarity Search: A Survey"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "baf9678929731544a391a692cbea28b3ee52f3cc",
+            "title": "Order preserving hashing for approximate nearest neighbor search"
+        },
+        {
+            "paperId": "33df1af16bfcc241fe82324460512f9d8663c3da",
+            "title": "Adaptive Range Filters for Cold Data: Avoiding Trips to Siberia"
+        },
+        {
+            "paperId": "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17",
+            "title": "Generating Sequences With Recurrent Neural Networks"
+        },
+        {
+            "paperId": "6abf5107efc723c655956f027b4a67565b048799",
+            "title": "The adaptive radix tree: ARTful indexing for main-memory databases"
+        },
+        {
+            "paperId": "b925260926f0fadfca3ac3dee2a11aeefa21d33f",
+            "title": "B + -Tree Optimized for GPGPU"
+        },
+        {
+            "paperId": "1be04eef05d2547199ed787125f38610a2838658",
+            "title": "KISS-Tree: smart latch-free in-memory indexing on modern architectures"
+        },
+        {
+            "paperId": "ad6c1e7e9b9c345a8f0a37d667e5eaa345ecf5a9",
+            "title": "The wavelet trie: maintaining an indexed sequence of strings in compressed space"
+        },
+        {
+            "paperId": "413c1142de9d91804d6d11c67ff3fed59c9fc279",
+            "title": "Adaptive Subgradient Methods for Online Learning and Stochastic Optimization"
+        },
+        {
+            "paperId": "295521cfe1a56458d53a58613de5fb92c97c5c23",
+            "title": "FAST: fast architecture sensitive tree search on modern CPUs and GPUs"
+        },
+        {
+            "paperId": "32024f9a00f8659a0a25f72796b0d84d40159c7e",
+            "title": "Discriminative Learning Under Covariate Shift"
+        },
+        {
+            "paperId": "5192f6819d2dbd28ccd2b83fd673078fc3c5a240",
+            "title": "SCADS: Scale-Independent Storage for Social Computing Applications"
+        },
+        {
+            "paperId": "00bbfde6af97ce5efcf86b3401d265d42a95603d",
+            "title": "Feature hashing for large scale multitask learning"
+        },
+        {
+            "paperId": "7da8b094a558ec9265f37393fc80bd26039dff51",
+            "title": "RDF-3X: a RISC-style engine for RDF"
+        },
+        {
+            "paperId": "2fc78a7a10b7eb09dcad0777035e8698aecb49fb",
+            "title": "Cumulative Distribution Networks and the Derivative-sum-product Algorithm: Models and Inference for Cumulative Distribution Functions on Graphs"
+        },
+        {
+            "paperId": "d3928410725762070b2fd71e1432a8a0716d4e4f",
+            "title": "Building a database on S3"
+        },
+        {
+            "paperId": "fb64e4a6d7b6dfb4d96a482319da9c0837f303e6",
+            "title": "Bigtable: A Distributed Storage System for Structured Data"
+        },
+        {
+            "paperId": "fcb926027ba5001f8f69dc0f1de5ded7d003b6af",
+            "title": "A comparison of machine learning techniques for phishing detection"
+        },
+        {
+            "paperId": "18a5f443299784479e78d9e77f175af57cb2fa2b",
+            "title": "Bigtable: a distributed storage system for structured data"
+        },
+        {
+            "paperId": "e2af6e0e4d7cbaf19f3462077845a04a99398ac9",
+            "title": "B-tree indexes, interpolation search, and skew"
+        },
+        {
+            "paperId": "d40ee5dd758c525dfb9932d726bb4e844b7b8478",
+            "title": "An introduction to ROC analysis"
+        },
+        {
+            "paperId": "93b8a36dbbf1c5fc84845142b382a5b87dfdef47",
+            "title": "Network Applications of Bloom Filters: A Survey"
+        },
+        {
+            "paperId": "ea8bffcb56a412cf8843631c96797adf3b769aa8",
+            "title": "High-order entropy-compressed text indexes"
+        },
+        {
+            "paperId": "be2ec9469fac9f4a75bc52dd7dee7b52b4666a4d",
+            "title": "Cuckoo Hashing"
+        },
+        {
+            "paperId": "e685af30368397c623f146a42b95a46fee1cbd10",
+            "title": "Compressed bloom filters"
+        },
+        {
+            "paperId": "597a0e1e39c9285c6dbdec703700ce1365d0ed78",
+            "title": "B-tree indexes and CPU caches"
+        },
+        {
+            "paperId": "e542bb567661be100fe983209f223146ab437520",
+            "title": "Making B+- trees cache conscious in main memory"
+        },
+        {
+            "paperId": "0b4f04266dbaa4169fa83277dd425e48b513182b",
+            "title": "Neural Networks for Density Estimation"
+        },
+        {
+            "paperId": "31d2c9e85d395b0dcb48123d03b1b33440d389fb",
+            "title": "Small Materialized Aggregates: A Light Weight Index Structure for Data Warehousing"
+        },
+        {
+            "paperId": "a1bd3ca0e061cad69fc702ad28fa099c749c0f35",
+            "title": "Compressing relations and indexes"
+        },
+        {
+            "paperId": "c608ec27a937361122d178b38b6b7387440b58eb",
+            "title": "A Mixture of Experts Classifier with Learning Based on Both Labelled and Unlabelled Data"
+        },
+        {
+            "paperId": "6f417fb3a761da1f58171b34d062f5c040beea2f",
+            "title": "Dynamic Perfect Hashing: Upper and Lower Bounds"
+        },
+        {
+            "paperId": "b619a24a5dee708346c5fb97f9e99cfd9043d875",
+            "title": "High-speed Interconnect"
+        },
+        {
+            "paperId": "dbfd8fdac963bfb62f2f3eb362b0af2051894af0",
+            "title": "Efficient Rebalancing of Chromatic Search Trees"
+        },
+        {
+            "paperId": "9043d0e94ab9c4884682098e73dd61c1e289934a",
+            "title": "A Study of Index Structures for a Main Memory Database Management System"
+        },
+        {
+            "paperId": "a560e4a8264280ff5c4246d502beb351e564dea2",
+            "title": "The design of POSTGRES"
+        },
+        {
+            "paperId": "ea832119cc65e42777e1a22aed78d79f10153ec4",
+            "title": "Compact Hash Tables Using Bidirectional Linear Probing"
+        },
+        {
+            "paperId": "731471a2a8b613caccb0bb878695e8fd6210a389",
+            "title": "Differential files: their application to the maintenance of large databases"
+        },
+        {
+            "paperId": "0a47c2c8badbaf12c966b18f77c1b78296aa1ce8",
+            "title": "Differential files: their application to the maintenance of large data bases"
+        },
+        {
+            "paperId": "d6b2fdd44c9655d9193735ce6ef934076265ea59",
+            "title": "Symmetric binary B-Trees: Data structure and maintenance algorithms"
+        },
+        {
+            "paperId": "c83e04853768e172f32910db1f752d75de8124e7",
+            "title": "Organization and maintenance of large ordered indices"
+        },
+        {
+            "paperId": "316961b569563051f5bee4bd318e057fadca71b7",
+            "title": "Trie memory"
+        },
+        {
+            "paperId": "00936a6bb9d35908640da9043b3f5a955014d478",
+            "title": "Asymptotic Minimax Character of the Sample Distribution Function and of the Classical Multinomial Estimator"
+        },
+        {
+            "paperId": "c68796f833a7151f0a63d1d1608dc902b4fdc9b6",
+            "title": "GENERATIVE ADVERSARIAL NETS"
+        },
+        {
+            "paperId": null,
+            "title": "FAST source"
+        },
+        {
+            "paperId": "3afdc9f3ff5ce37bf204a4f92f4ab1a1bd0e7b5f",
+            "title": "Efficient In-Memory Indexing with Generalized Prefix Trees"
+        },
+        {
+            "paperId": "1f8f0329c8c4a9d006ec44dd80338b937afdb216",
+            "title": "Detection of Phishing Attacks: A Machine Learning Approach"
+        },
+        {
+            "paperId": "8079c80ffba93a358e60d6a3eb4ae0e4a926bc38",
+            "title": "Readings in Database Systems"
+        },
+        {
+            "paperId": "13781d147663c2bf60072a86d3e4a2adc4bb244b",
+            "title": "Compact Hash Tables Using Bidirectional Linear Probing"
+        },
+        {
+            "paperId": null,
+            "title": "Database architects blog: The case for b-tree index structures"
+        },
+        {
+            "paperId": null,
+            "title": "Google's sparsehash documentation"
+        },
+        {
+            "paperId": null,
+            "title": "The typical ML optimization goal is to minimize the average error"
+        },
+        {
+            "paperId": null,
+            "title": "Performance comparison: linear search vs binary search"
+        },
+        {
+            "paperId": null,
+            "title": "Trying to speed up binary search"
+        },
+        {
+            "paperId": null,
+            "title": "Moore Law is Dead but GPU will get 1000X faster by 2025"
+        },
+        {
+            "paperId": null,
+            "title": "An in-depth look at googles \ufb01rst tensor processing unit (tpu)"
+        },
+        {
+            "paperId": null,
+            "title": "OpenStreetMap database \u00a9OpenStreetMap contributors"
+        }
+    ]
+}

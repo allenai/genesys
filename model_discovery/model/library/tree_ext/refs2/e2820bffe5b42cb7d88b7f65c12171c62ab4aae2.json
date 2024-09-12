@@ -1,0 +1,206 @@
+{
+    "paperId": "e2820bffe5b42cb7d88b7f65c12171c62ab4aae2",
+    "externalIds": {
+        "MAG": "1868018859",
+        "DBLP": "conf/icml/MaclaurinDA15",
+        "ArXiv": "1502.03492",
+        "CorpusId": 8540522
+    },
+    "title": "Gradient-based Hyperparameter Optimization through Reversible Learning",
+    "abstract": "Tuning hyperparameters of learning algorithms is hard because gradients are usually unavailable. We compute exact gradients of cross-validation performance with respect to all hyperparameters by chaining derivatives backwards through the entire training procedure. These gradients allow us to optimize thousands of hyperparameters, including step-size and momentum schedules, weight initialization distributions, richly parameterized regularization schemes, and neural network architectures. We compute hyperparameter gradients by exactly reversing the dynamics of stochastic gradient descent with momentum.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2015,
+    "referenceCount": 42,
+    "citationCount": 893,
+    "influentialCitationCount": 66,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work computes exact gradients of cross-validation performance with respect to all hyperparameters by chaining derivatives backwards through the entire training procedure, which allows us to optimize thousands ofhyperparameters, including step-size and momentum schedules, weight initialization distributions, richly parameterized regularization schemes, and neural network architectures."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1683298",
+            "name": "D. Maclaurin"
+        },
+        {
+            "authorId": "1704657",
+            "name": "D. Duvenaud"
+        },
+        {
+            "authorId": "1722180",
+            "name": "Ryan P. Adams"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "d8c35c2c39fdd2ec6af37ddc8c51deb396aefef8",
+            "title": "Low precision arithmetic for deep learning"
+        },
+        {
+            "paperId": "1b82d54e9a3b06c603d7987ba3ecf437425f6330",
+            "title": "Training deep neural networks with low precision multiplications"
+        },
+        {
+            "paperId": "845e5cca35e1bd3eef4891e0eb33916ab24ded86",
+            "title": "Nested Variational Compression in Deep Gaussian Processes"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "455e630308f5a80bf3e33abff7b58c258d5ad837",
+            "title": "Multi-task Neural Networks for QSAR Predictions"
+        },
+        {
+            "paperId": "5086c85d15e363f3352a138457695b7e2ddf22fd",
+            "title": "Automatic Differentiation of Algorithms for Machine Learning"
+        },
+        {
+            "paperId": "29935173af73aef20336db72d608e0ef5b0e0c16",
+            "title": "Making a Science of Model Search: Hyperparameter Optimization in Hundreds of Dimensions for Vision Architectures"
+        },
+        {
+            "paperId": "aa7bfd2304201afbb19971ebde87b17e40242e91",
+            "title": "On the importance of initialization and momentum in deep learning"
+        },
+        {
+            "paperId": "855d0f722d75cc56a66a00ede18ace96bafee6bd",
+            "title": "Theano: new features and speed improvements"
+        },
+        {
+            "paperId": "84069287da0a6b488b8c933f3cb5be759cb6237e",
+            "title": "On the difficulty of training recurrent neural networks"
+        },
+        {
+            "paperId": "c5145b1d15fea9340840cc8bb6f0e46e8934827f",
+            "title": "Understanding the exploding gradient problem"
+        },
+        {
+            "paperId": "2e2089ae76fe914706e6fa90081a79c8fe01611e",
+            "title": "Practical Bayesian Optimization of Machine Learning Algorithms"
+        },
+        {
+            "paperId": "5b0a44014c24f9b584904bf223530a3b9fa9853f",
+            "title": "Generic Methods for Optimization-Based Modeling"
+        },
+        {
+            "paperId": "03911c85305d42aa2eeb02be82ef6fb7da644dd0",
+            "title": "Algorithms for Hyper-Parameter Optimization"
+        },
+        {
+            "paperId": "728744423ff0fb7e327664ed4e6352a95bb6c893",
+            "title": "Sequential Model-Based Optimization for General Algorithm Configuration"
+        },
+        {
+            "paperId": "0d2336389dff3031910bd21dd1c44d1b4cd51725",
+            "title": "Why Does Unsupervised Pre-training Help Deep Learning?"
+        },
+        {
+            "paperId": "904ab6edd082c70e18a657cb4fadacafcd094ca3",
+            "title": "Reverse-mode AD in a functional framework: Lambda the ultimate backpropagator"
+        },
+        {
+            "paperId": "811a7082c06cfcac981bb579ad0deff902140873",
+            "title": "Efficient multiple hyperparameter learning for log-linear models"
+        },
+        {
+            "paperId": "c647e8d93d85cdc6fb8c19deaf2eb9ec5c8d8941",
+            "title": "Python for Scientific Computing"
+        },
+        {
+            "paperId": "554894f70b28dba58b396c2d84080ac01051261b",
+            "title": "Gaussian Processes For Machine Learning"
+        },
+        {
+            "paperId": "626a5da1bfc0f4b38be27f867f95daa061655f94",
+            "title": "Choosing Multiple Parameters for Support Vector Machines"
+        },
+        {
+            "paperId": "e5ca0f1d79a5245ee5ddf6af80c01829bcac7340",
+            "title": "Gradient-Based Optimization of Hyperparameters"
+        },
+        {
+            "paperId": "90e00a911551cbd2206a9de8c3caf4d9426c8f73",
+            "title": "Gradient based adaptive regularization"
+        },
+        {
+            "paperId": "0223d3013045520e5b7e409fa4629d4cd2452bfb",
+            "title": "Optimal use of regularization and cross-validation in neural network modeling"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "c6aed8d8712d7a06183098aa62a329f96872ca3c",
+            "title": "Building a better leapfrog"
+        },
+        {
+            "paperId": "d0be39ee052d246ae99c082a565aba25b811be2d",
+            "title": "Learning long-term dependencies with gradient descent is difficult"
+        },
+        {
+            "paperId": "c6867b6b564462d6b902f68e0bfa58f4717ca1cc",
+            "title": "Fast Exact Multiplication by the Hessian"
+        },
+        {
+            "paperId": "a8e8f3c8d4418c8d62e306538c9c1292635e9d27",
+            "title": "Backpropagation Applied to Handwritten Zip Code Recognition"
+        },
+        {
+            "paperId": "e953da04138c64f5d7d0ba6d24e621fe15cb8ecc",
+            "title": "Towards more human-like concept learning in machines : compositionality, causality, and learning-to-learn"
+        },
+        {
+            "paperId": "c7e07cf8ba4ad956483f9dd37a168355ef16a041",
+            "title": "Markov Chain Monte Carlo and Variational Inference: Bridging the Gap"
+        },
+        {
+            "paperId": null,
+            "title": "Lecture 6.5-RmsProp: Divide the gradient by a running average of its recent magnitude. Coursera: Neural Networks for Machine Learning"
+        },
+        {
+            "paperId": "f2a0fbba89f0d18ea0abd29639d4e43babe59cf3",
+            "title": "Training Deep and Recurrent Networks with Hessian-Free Optimization"
+        },
+        {
+            "paperId": null,
+            "title": "Theano: a CPU and GPU math expression compiler"
+        },
+        {
+            "paperId": "cb06a240f80f6b963581541776420c14e69ec2f6",
+            "title": "Adaptive optimization of hyperparameters in L 2-regularised logistic regression"
+        },
+        {
+            "paperId": "f7f15848cd0fbb3d08f351595da833b1627de9c3",
+            "title": "Information Theory, Inference, and Learning Algorithms"
+        },
+        {
+            "paperId": "48a5c48e2aa8e1613501bb6001ae893a7c85f47f",
+            "title": "Derivative Observations in Gaussian Process Models of Dynamic Systems"
+        },
+        {
+            "paperId": "2a0e6578f71793d29f8272afae75f9d610e1da46",
+            "title": "An investigation of the gradient descent process in neural networks"
+        },
+        {
+            "paperId": "12120df7470eec41ccfe778bf075cd9f47cb57d9",
+            "title": "Adaptive Regularization in Neural Network Modeling"
+        },
+        {
+            "paperId": null,
+            "title": "Automatic relevance determination for neural networks"
+        }
+    ]
+}

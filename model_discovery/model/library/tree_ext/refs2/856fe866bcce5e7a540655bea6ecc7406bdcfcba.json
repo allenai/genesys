@@ -1,0 +1,213 @@
+{
+    "paperId": "856fe866bcce5e7a540655bea6ecc7406bdcfcba",
+    "externalIds": {
+        "MAG": "2950597552",
+        "DBLP": "conf/icml/LakeB18",
+        "CorpusId": 46761158
+    },
+    "title": "Generalization without Systematicity: On the Compositional Skills of Sequence-to-Sequence Recurrent Networks",
+    "abstract": "Humans can understand and produce new utterances effortlessly, thanks to their compositional skills. Once a person learns the meaning of a new verb \"dax,\" he or she can immediately understand the meaning of \"dax twice\" or \"sing and dax.\" In this paper, we introduce the SCAN domain, consisting of a set of simple compositional navigation commands paired with the corresponding action sequences. We then test the zero-shot generalization capabilities of a variety of recurrent neural networks (RNNs) trained on SCAN with sequence-to-sequence methods. We find that RNNs can make successful zero-shot generalizations when the differences between training and test commands are small, so that they can apply \"mix-and-match\" strategies to solve the task. However, when generalization requires systematic compositional skills (as in the \"dax\" example above), RNNs fail spectacularly. We conclude with a proof-of-concept experiment in neural machine translation, suggesting that lack of systematicity might be partially responsible for neural networks' notorious training data thirst.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2017,
+    "referenceCount": 45,
+    "citationCount": 710,
+    "influentialCitationCount": 99,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper introduces the SCAN domain, consisting of a set of simple compositional navigation commands paired with the corresponding action sequences, and tests the zero-shot generalization capabilities of a variety of recurrent neural networks trained on SCAN with sequence-to-sequence methods."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2373318",
+            "name": "B. Lake"
+        },
+        {
+            "authorId": "145283199",
+            "name": "Marco Baroni"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "83040001210751239553269727b9ea53e152af71",
+            "title": "Building Machines that Learn and Think Like People"
+        },
+        {
+            "paperId": "c6c171d2a9be192d60af7b434e4ba2fcbbad7f48",
+            "title": "Memory-augmented Neural Machine Translation"
+        },
+        {
+            "paperId": "2e17cf6a339fd071ad222062f868e882ef4120a4",
+            "title": "Inferring and Executing Programs for Visual Reasoning"
+        },
+        {
+            "paperId": "43428880d75b3a14257c3ee9bda054e61eb869c0",
+            "title": "Convolutional Sequence to Sequence Learning"
+        },
+        {
+            "paperId": "a396a6febdacb84340d139096455e67049ac1e22",
+            "title": "Learning to Reason: End-to-End Module Networks for Visual Question Answering"
+        },
+        {
+            "paperId": "c889d6f98e6d79b89c3a6adf8a921f88fa6ba518",
+            "title": "Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks"
+        },
+        {
+            "paperId": "bc7fcefa3e333d50463d524406d107060c4a0cec",
+            "title": "Neural Semantic Parsing over Multiple Knowledge-bases"
+        },
+        {
+            "paperId": "784ee73d5363c711118f784428d1ab89f019daa5",
+            "title": "Hybrid computing using a neural network with dynamic external memory"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "1a327709cc53ff9e52454e50a643abf4a0ac92af",
+            "title": "Findings of the 2016 Conference on Machine Translation"
+        },
+        {
+            "paperId": "b7eac64a8410976759445cce235469163d23ee65",
+            "title": "Data Recombination for Neural Semantic Parsing"
+        },
+        {
+            "paperId": "9e7ad19160313552175f7dc3e5acf94a430f66ac",
+            "title": "The Architecture of Cognition: Rethinking Fodor and Pylyshyn\u2019s Systematicity Challenge"
+        },
+        {
+            "paperId": "558ac446dc26bee9789d660a251b75728cb6eeb2",
+            "title": "Language to Logical Form with Neural Attention"
+        },
+        {
+            "paperId": "3457ddb9b9f614aad52052d680f9b11c08b3a4cf",
+            "title": "A Roadmap Towards Machine Intelligence"
+        },
+        {
+            "paperId": "b59d91e0699d4e1896a15bae13fd180bdaf77ea5",
+            "title": "Neural Programmer-Interpreters"
+        },
+        {
+            "paperId": "04d1a26c2516dc14a765112a63ec60dc3cb3de72",
+            "title": "Tree-Structured Composition in Neural Networks without Tree-Structured Architectures"
+        },
+        {
+            "paperId": "d38e8631bba0720becdaf7b89f79d9f9dca45d82",
+            "title": "Inferring Algorithmic Patterns with Stack-Augmented Recurrent Nets"
+        },
+        {
+            "paperId": "ac3ee98020251797c2b401e1389461df88e52e62",
+            "title": "Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "a2f09447e8f1ceda391101e5ae7f863a8f2b2836",
+            "title": "Efficient Gradient-Based Inference through Transformations between Bayes Nets and Neural Nets"
+        },
+        {
+            "paperId": "9ec7bdd58594c5da03b967c9f91dc31c5bd394c0",
+            "title": "A fundamental limitation of the conjunctive codes learned in PDP models of cognition: comment on Botvinick and Plaut (2006)."
+        },
+        {
+            "paperId": "e46f9f44dcb6970b5229b3047e20c1c8c80ca2f0",
+            "title": "Empirical and computational support for context-dependent representations of serial order: reply to Bowers, Damian, and Davis (2009)."
+        },
+        {
+            "paperId": "2b68712e29750f7ad530edd13e4eb1e3a67794cc",
+            "title": "How novelty search escapes the deceptive trap of learning to learn"
+        },
+        {
+            "paperId": "4731f53d939c190653f99f434886d358f196732b",
+            "title": "37. Distributions in text"
+        },
+        {
+            "paperId": "15c460439979d1ddf617ad343308359532f316d2",
+            "title": "Connectionist semantic systematicity"
+        },
+        {
+            "paperId": "3ccaa9d20e1f16f6c818853a970755ce888df792",
+            "title": "Generalisation towards Combinatorial Productivity in Language Acquisition by Simple Recurrent Networks"
+        },
+        {
+            "paperId": "08f2d51806af94338c4cc35024d553b362da797b",
+            "title": "Short-term memory for serial order: a recurrent neural network model."
+        },
+        {
+            "paperId": "a56ee505e5651d90210d7f19adb77b1a6a424d3a",
+            "title": "Lack of combinatorial productivity in language processing with simple recurrent networks"
+        },
+        {
+            "paperId": "2ced1a9aa4fd00b8da18b7b9c8f2274bd12ff608",
+            "title": "Symbolically speaking: a connectionist model of sentence production"
+        },
+        {
+            "paperId": "08dc7b19e679539f0f93db0192a8e8d11538b3dd",
+            "title": "Rethinking Eliminative Connectionism"
+        },
+        {
+            "paperId": "e78dd4aa91817bbeb2fd87c82ae4db91c23b0997",
+            "title": "Are Feedforward and Recurrent Networks Systematic? Analysis and Implications for a Connectionist Cognitive Architecture"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "ae1f906de7d0136acb8ba7b42665e9bdad245619",
+            "title": "Generalization and connectionist language learning"
+        },
+        {
+            "paperId": "668087f0ae7ce1de6e0bd0965dbb480c08103260",
+            "title": "Finding Structure in Time"
+        },
+        {
+            "paperId": "ce9a21b93ba29d4145a8ef6bf401e77f261848de",
+            "title": "A Learning Algorithm for Continually Running Fully Recurrent Neural Networks"
+        },
+        {
+            "paperId": "56cbfcbfffd8c54bd8477d10b6e0e17e097b97c7",
+            "title": "Connectionism and cognitive architecture: A critical analysis"
+        },
+        {
+            "paperId": "44b6da0cd36c0fa2f7d3485c6dc0b6d2fbe379bb",
+            "title": "Learning how to learn"
+        },
+        {
+            "paperId": "b4ff85584c7b5f487c735a131240c12d1baed9c2",
+            "title": "Getting real about systematicity"
+        },
+        {
+            "paperId": "73e66217e45235e123bc214ad8314235ef2aa263",
+            "title": "Strong systematicity in sentence processing by simple recurrent networks"
+        },
+        {
+            "paperId": "dfc79017e52efb270155ce8b93337467804cb697",
+            "title": "Constructions at Work: The Nature of Generalization in Language"
+        },
+        {
+            "paperId": "6843890926bf0e5c887ffc78dcb1203135981bf1",
+            "title": "The compositionality papers"
+        },
+        {
+            "paperId": "a6383f155fa9d3e9b15092bfefbf613f982eb263",
+            "title": "The Algebraic Mind: Integrating Connectionism and Cognitive Science"
+        },
+        {
+            "paperId": null,
+            "title": "Syntactic Structures"
+        },
+        {
+            "paperId": "a83699a15ce3364aeb0ccd049615adc90d04f50b",
+            "title": "Empirical and Computational Support for Context-dependent Representations of Serial Order: Reply to Bowers, Damian, and Davis (2009) Taking Account of the Empirical Data"
+        }
+    ]
+}

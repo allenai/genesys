@@ -1,0 +1,434 @@
+{
+    "paperId": "2c031aea0d2eec0ff0e1947bb3c94dc81b46e3a5",
+    "externalIds": {
+        "MAG": "2751366252",
+        "ArXiv": "1708.08917",
+        "DBLP": "conf/micro/DingLWLLZWQBYMZ17",
+        "DOI": "10.1145/3123939.3124552",
+        "CorpusId": 2084885
+    },
+    "title": "CirCNN: Accelerating and Compressing Deep Neural Networks Using Block-Circulant Weight Matrices",
+    "abstract": "Large-scale deep neural networks (DNNs) are both compute and memory intensive. As the size of DNNs continues to grow, it is critical to improve the energy efficiency and performance while maintaining accuracy. For DNNs, the model size is an important factor affecting performance, scalability and energy efficiency. Weight pruning achieves good compression ratios but suffers from three drawbacks: 1) the irregular network structure after pruning, which affects performance and throughput; 2) the increased training complexity; and 3) the lack of rigirous guarantee of compression ratio and inference accuracy.To overcome these limitations, this paper proposes CirCNN, a principled approach to represent weights and process neural networks using block-circulant matrices. CirCNN utilizes the Fast Fourier Transform (FFT)-based fast multiplication, simultaneously reducing the computational complexity (both in inference and training) from $\\mathrm {O}(n^{2})$ to $\\mathrm {O}(n$ log n) and the storage complexity from $\\mathrm {O}(n^{2})$ to O(n), with negligible accuracy loss. Compared to other approaches, CirCNN is distinct due to its mathematical rigor: the DNNs based on CirCNN can converge to the same \u201ceffectiveness\u201d as DNNs without compression. We propose the CirCNN architecture, a universal DNN inference engine that can be implemented in various hardware/software platforms with configurable network architecture (e.g., layer type, size, scales, etc In CirCNN architecture: 1) Due to the recursive property, FFT can be used as the key computing kernel which ensures universal and small-footprint implementations. 2) The compressed but regular network structure avoids the pitfalls of the network pruning and facilitates high performance and throughput with highly pipelined and parallel design. To demonstrate the performance and energy efficiency, we test CIR-CNN in FPGA, ASIC and embedded processors. Our results show that CirCNN architecture achieves very high energy efficiency and performance with a small hardware footprint. Based on the FPGA implementation and ASIC synthesis results, CirCNN achieves 6 - 102X energy efficiency improvements compared with the best state-of-the-art results.CCS Concepts\u2022 Computer systems organization$\\rightarrow $ Embedded hardware;",
+    "venue": "Micro",
+    "year": 2017,
+    "referenceCount": 85,
+    "citationCount": 244,
+    "influentialCitationCount": 18,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1708.08917",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The CirCNN architecture is proposed, a universal DNN inference engine that can be implemented in various hardware/software platforms with configurable network architecture (e.g., layer type, size, scales, etc) and FFT can be used as the key computing kernel which ensures universal and small-footprint implementations."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2881873",
+            "name": "Caiwen Ding"
+        },
+        {
+            "authorId": "145657535",
+            "name": "Siyu Liao"
+        },
+        {
+            "authorId": "46393431",
+            "name": "Yanzhi Wang"
+        },
+        {
+            "authorId": "2109738049",
+            "name": "Zhe Li"
+        },
+        {
+            "authorId": "2152354569",
+            "name": "Ning Liu"
+        },
+        {
+            "authorId": "49501910",
+            "name": "Youwei Zhuo"
+        },
+        {
+            "authorId": null,
+            "name": "Chao Wang"
+        },
+        {
+            "authorId": "2288203548",
+            "name": "Xuehai Qian"
+        },
+        {
+            "authorId": "2115834038",
+            "name": "Y. Bai"
+        },
+        {
+            "authorId": "9347641",
+            "name": "Geng Yuan"
+        },
+        {
+            "authorId": "151480882",
+            "name": "Xiaolong Ma"
+        },
+        {
+            "authorId": "2145027457",
+            "name": "Yipeng Zhang"
+        },
+        {
+            "authorId": "2115854503",
+            "name": "Jian Tang"
+        },
+        {
+            "authorId": "1862322",
+            "name": "Qinru Qiu"
+        },
+        {
+            "authorId": "145282404",
+            "name": "X. Lin"
+        },
+        {
+            "authorId": "144460251",
+            "name": "Bo Yuan"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "983db08bf7f6c837616780098cb363fd435c4d5c",
+            "title": "Theoretical Properties for Neural Networks with Weight Matrices of Low Displacement Rank"
+        },
+        {
+            "paperId": "95355936980ff7aa401c59265f1475c78999f788",
+            "title": "Accelerating Binarized Convolutional Neural Networks with Software-Programmable FPGAs"
+        },
+        {
+            "paperId": "b8242c9d0fb77a125c30d7b92e2e34a468c0d393",
+            "title": "14.5 Envision: A 0.26-to-10TOPS/W subword-parallel dynamic-voltage-accuracy-frequency-scalable Convolutional Neural Network processor in 28nm FDSOI"
+        },
+        {
+            "paperId": "6cfeabf652c10b266d853d2560c2d04622e2b29e",
+            "title": "14.7 A 288\u00b5W programmable deep-learning processor with 270KB on-chip weight storage using non-uniform memory hierarchy for mobile intelligence"
+        },
+        {
+            "paperId": "272e0074fdaa959005dfaba1fdf8bf5d6444ce1a",
+            "title": "14.3 A 28nm SoC with a 1.2GHz 568nJ/prediction sparse deep-neural-network engine with >0.1 timing error rate tolerance for IoT applications"
+        },
+        {
+            "paperId": "99e9955542c11d98e2723348b1f90974ea1fa7e7",
+            "title": "14.1 A 2.9TOPS/W deep convolutional neural network SoC in FD-SOI 28nm for intelligent embedded systems"
+        },
+        {
+            "paperId": "b71ae4f14d329268baa5d280734054b449e6ea1b",
+            "title": "ESE: Efficient Speech Recognition Engine with Sparse LSTM on FPGA"
+        },
+        {
+            "paperId": "3b2491ddeeaa7beae4d311b217c292a9e16112cf",
+            "title": "FINN: A Framework for Fast, Scalable Binarized Neural Network Inference"
+        },
+        {
+            "paperId": "e982fc566b0b98e94bf95b224e2b9c743eb503cc",
+            "title": "Caffeine: Towards uniformed representation and acceleration for deep convolutional neural networks"
+        },
+        {
+            "paperId": "ccebfc4bebf0654ced54c27d68b9e5f4a0152af2",
+            "title": "Energy-Efficient CNN Implementation on a Deeply Pipelined FPGA Cluster"
+        },
+        {
+            "paperId": "91d03e4bf98a03c827983457e6de43cbd4c6ccd7",
+            "title": "Minerva: Enabling Low-Power, Highly-Accurate Deep Neural Network Accelerators"
+        },
+        {
+            "paperId": "40faa4b9a95f42e8ae1dff96ee2059eb90e3b039",
+            "title": "Simplifying deep neural networks for neuromorphic architectures"
+        },
+        {
+            "paperId": "29316449c7cc52ad326c5d1bd5b0dc5af27c1496",
+            "title": "Convolutional networks for fast, energy-efficient neuromorphic computing"
+        },
+        {
+            "paperId": "160bd7cc365e55c966fea5e4624a8f736a7d979d",
+            "title": "TABLA: A unified template-based framework for accelerating statistical machine learning"
+        },
+        {
+            "paperId": "46494c6c0e2dd1dca8cd39d40a9681c7d5d6ba62",
+            "title": "14.6 A 1.42TOPS/W deep convolutional neural network recognition processor for intelligent IoE systems"
+        },
+        {
+            "paperId": "c382406fd8db2744b2a609837395e5da05e1d2ed",
+            "title": "Going Deeper with Embedded FPGA Platform for Convolutional Neural Network"
+        },
+        {
+            "paperId": "b4eac8295c90dbfb7d8d22ba560e025621287c58",
+            "title": "Throughput-Optimized OpenCL-based FPGA Accelerator for Large-Scale Convolutional Neural Networks"
+        },
+        {
+            "paperId": "2e2b189f668cf2c06ebc44dc9b166648256cf457",
+            "title": "EIE: Efficient Inference Engine on Compressed Deep Neural Network"
+        },
+        {
+            "paperId": "ffdaa12ef011de9dbf43be46d45a3abcc8288965",
+            "title": "Eyeriss: An Energy-Efficient Reconfigurable Accelerator for Deep Convolutional Neural Networks"
+        },
+        {
+            "paperId": "d3cb9bad655197b52932978dd8186b36c512bf92",
+            "title": "Quantized Convolutional Neural Networks for Mobile Devices"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "04105898efe96c7f2d876e6bcb9e19afd3e23635",
+            "title": "Backpropagation for Energy-Efficient Neuromorphic Computing"
+        },
+        {
+            "paperId": "33da17e0070dfceed05aec1602a7d1e3284cf715",
+            "title": "Fixed Point Quantization of Deep Convolutional Networks"
+        },
+        {
+            "paperId": "d5b4721c8188269b120d3d06149a04435753e755",
+            "title": "Convolutional neural networks with low-rank regularization"
+        },
+        {
+            "paperId": "642d0f49b7826adcf986616f4af77e736229990f",
+            "title": "Deep Compression: Compressing Deep Neural Network with Pruning, Trained Quantization and Huffman Coding"
+        },
+        {
+            "paperId": "bd6507b5c9deaf87bda81e59ce15b2309df0bf37",
+            "title": "ShiDianNao: Shifting vision processing closer to the sensor"
+        },
+        {
+            "paperId": "1ff9a37d766e3a4f39757f5e1b235a42dacf18ff",
+            "title": "Learning both Weights and Connections for Efficient Neural Network"
+        },
+        {
+            "paperId": "ef8536a209928c1596dfa1918fd853e5aaefc4bb",
+            "title": "EDA Challenges for Memristor-Crossbar based Neuromorphic Computing"
+        },
+        {
+            "paperId": "12806c298e01083a79db77927530367d85939907",
+            "title": "An Empirical Evaluation of Deep Learning on Highway Driving"
+        },
+        {
+            "paperId": "5934400081d9541339da0f16d2613263f1a4c2a2",
+            "title": "An Exploration of Parameter Redundancy in Deep Networks with Circulant Projections"
+        },
+        {
+            "paperId": "0bde8d9367d1004c7396dd69cb27ed97dc2f8d77",
+            "title": "MatConvNet: Convolutional Neural Networks for MATLAB"
+        },
+        {
+            "paperId": "4157ed3db4c656854e69931cb6089b64b08784b9",
+            "title": "DaDianNao: A Machine-Learning Supercomputer"
+        },
+        {
+            "paperId": "55e022fb7581bb9e1fce678d21fb25ffbb3fbb88",
+            "title": "Deep visual-semantic alignments for generating image descriptions"
+        },
+        {
+            "paperId": "a4db2d26b5d169de6b64de361dc7d4fd5b1f61a3",
+            "title": "Fixed-point feedforward deep neural network design using weights +1, 0, and \u22121"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "6d4c9c923e9f145d1c01a2de2afc38ec23c44253",
+            "title": "Large-Scale Video Classification with Convolutional Neural Networks"
+        },
+        {
+            "paperId": "6bdb186ec4726e00a8051119636d4df3b94043b5",
+            "title": "Caffe: Convolutional Architecture for Fast Feature Embedding"
+        },
+        {
+            "paperId": "9f2efadf66817f1b38f58b3f50c7c8f34c69d89a",
+            "title": "DeepFace: Closing the Gap to Human-Level Performance in Face Verification"
+        },
+        {
+            "paperId": "021fc345d40d3e6332cd2ef276e2eaa5e71102e4",
+            "title": "Speeding up Convolutional Neural Networks with Low Rank Expansions"
+        },
+        {
+            "paperId": "193edd20cae92c6759c18ce93eeea96afd9528eb",
+            "title": "Deep learning in neural networks: An overview"
+        },
+        {
+            "paperId": "22e477a9fdde86ab1f8f4dafdb4d88ea37e31fbd",
+            "title": "DianNao: a small-footprint high-throughput accelerator for ubiquitous machine-learning"
+        },
+        {
+            "paperId": "a7621b4ec18719b08f3a2a444b6d37a2e20227b7",
+            "title": "Fast Training of Convolutional Networks through FFTs"
+        },
+        {
+            "paperId": "d48fede5d00c55e115346dd0837cab4feb0ba7f5",
+            "title": "An In-Place FFT Architecture for Real-Valued Signals"
+        },
+        {
+            "paperId": "d67de58011d0c403682a55471f5adec702acdf0c",
+            "title": "Pipelined Architectures for Real-Valued FFT and Hermitian-Symmetric IFFT With Real Datapaths"
+        },
+        {
+            "paperId": "d1208ac421cf8ff67b27d93cd19ae42b8d596f95",
+            "title": "Deep learning with COTS HPC systems"
+        },
+        {
+            "paperId": "df4cbdbac85ebb122c821671100ca9391fe46eac",
+            "title": "FFT Architectures for Real-Valued Signals Based on Radix-$2^{3}$ and Radix-$2^{4}$ Algorithms"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "46f74231b9afeb0c290d6d550043c55045284e5f",
+            "title": "The MNIST Database of Handwritten Digit Images for Machine Learning Research [Best of the Web]"
+        },
+        {
+            "paperId": "398c296d0cc7f9d180f84969f8937e6d3a413796",
+            "title": "Multi-column deep neural networks for image classification"
+        },
+        {
+            "paperId": "72e93aa6767ee683de7f001fa72f1314e40a8f35",
+            "title": "Building high-level features using large scale unsupervised learning"
+        },
+        {
+            "paperId": "be9a17321537d9289875fe475b71f4821457b435",
+            "title": "An Analysis of Single-Layer Networks in Unsupervised Feature Learning"
+        },
+        {
+            "paperId": "6201fb6d59a909959edfb661f52470c04799b0e7",
+            "title": "Dynamic cache reconfiguration and partitioning for energy optimization in real-time multi-core systems"
+        },
+        {
+            "paperId": "d2c733e34d48784a37d717fe43d9e93277a8c53e",
+            "title": "ImageNet: A large-scale hierarchical image database"
+        },
+        {
+            "paperId": "1e80f755bcbf10479afd2338cec05211fdbd325c",
+            "title": "Convolutional deep belief networks for scalable unsupervised learning of hierarchical representations"
+        },
+        {
+            "paperId": "34b4027791e8c397db3279259804ab06aa21db40",
+            "title": "A Pipelined FFT Architecture for Real-Valued Signals"
+        },
+        {
+            "paperId": "57458bc1cffe5caa45a885af986d70f723f406b4",
+            "title": "A unified architecture for natural language processing: deep neural networks with multitask learning"
+        },
+        {
+            "paperId": "c2d4150a1200a055793bf4479456c3441a7d3652",
+            "title": "Phase-based cache reconfiguration for a highly-configurable two-level cache hierarchy"
+        },
+        {
+            "paperId": "dbdcf3e19600cc3ea964ab8fd9122d3a6242c483",
+            "title": "High-Throughput VLSI Architecture for FFT Computation"
+        },
+        {
+            "paperId": "a96d72a39f393cfc1d4b35e676c22f4e00153850",
+            "title": "CMOS VLSI Design: A Circuits and Systems Perspective"
+        },
+        {
+            "paperId": "a08a8cc71545480e01b25575e7da75c87e47da6b",
+            "title": "An efficient pipelined FFT architecture"
+        },
+        {
+            "paperId": "ae73fa99d777efd07ed5a73cdc695191862f9d9e",
+            "title": "Drug Design by Machine Learning: Support Vector Machines for Pharmaceutical Data Analysis"
+        },
+        {
+            "paperId": "d0be38dda74b0bb890359bb1205b4ad2f3623e8e",
+            "title": "Retrospective: improving direct-mapped cache performance by the addition of a small fully-associative cache and prefetch buffers"
+        },
+        {
+            "paperId": "91dbc267fa1814990b295ac53412a2f8051e61c0",
+            "title": "Improving data cache performance by pre-executing instructions under a cache miss"
+        },
+        {
+            "paperId": "b0c7c3988910d048062b168d02a2516853250b04",
+            "title": "The Hahn-Banach theorem: the life and times"
+        },
+        {
+            "paperId": "4cc1e62d4a41201f7b88c488e6ab65e2abeb3f93",
+            "title": "Polynomial and Matrix Computations Volume 1: Fundamental Algorithms (Dario Bini and Victor Pan)"
+        },
+        {
+            "paperId": "37150f76ed132b5d1452e2a0e9ffbb42eaf2af75",
+            "title": "Polynomial and matrix computations. volume 1:Fundamental algorithms : Dario Bini and Victor Pan Progress in Theoretical Computer Science, Birkh\u00e4user, 1994, xvi + 415 pages"
+        },
+        {
+            "paperId": "38166be5d6332043831e909e7346c39daf930842",
+            "title": "Polynomial and matrix computations (vol. 1): fundamental algorithms"
+        },
+        {
+            "paperId": null,
+            "title": "Presentation at MICRO'18 [slides]"
+        },
+        {
+            "paperId": null,
+            "title": "\u201cScalpel: Customizingdnnpruningtotheunderlyinghardwareparallelism,\u201din"
+        },
+        {
+            "paperId": "5bfecd14937da569eabec0afea710db846d3899b",
+            "title": "Stripes: Bit-serial deep neural network computing"
+        },
+        {
+            "paperId": "6d9429b96d9bb40e2d0d9c3f57d0b97f61db8503",
+            "title": "Restructuring of deep neural network acoustic models with singular value decomposition"
+        },
+        {
+            "paperId": "02227c94dd41fe0b439e050d377b0beb5d427cda",
+            "title": "Reading Digits in Natural Images with Unsupervised Feature Learning"
+        },
+        {
+            "paperId": "4c2fedecddcae64514ad99b7301ad6e04654f10d",
+            "title": "Deep Learning and Its Applications to Signal and Information Processing [Exploratory DSP]"
+        },
+        {
+            "paperId": "404f4095b86b12e2dd33a79fbb737171783ba955",
+            "title": "Deep Learning and Its Applications to Signal and Information Processing"
+        },
+        {
+            "paperId": null,
+            "title": "Fft mega-core function user guide"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        },
+        {
+            "paperId": "1cbfa10be8f8744a3e84e3f60b59f28ee4d17435",
+            "title": "Discrete Time Signal Processing"
+        },
+        {
+            "paperId": "7c9411bc50b6a33947575f37ae16931578beae23",
+            "title": "Structured Matrices and Polynomials: Unified Superfast Algorithms"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "dcddcdef6d28d8aac01b88a941d6f92262f58e36",
+            "title": "Improving direct-mapped cache performance by the addition of a small fully-associative cache and prefetch buffers"
+        },
+        {
+            "paperId": null,
+            "title": "www.altera.com/products/fpga/stratix-series/stratix-10"
+        },
+        {
+            "paperId": null,
+            "title": "Student Volunteer at ISCA'18"
+        },
+        {
+            "paperId": null,
+            "title": "AccPar: Tensor Partitioning for Heterogeneous Deep Learning Accelerator Arrays Linghao Song"
+        },
+        {
+            "paperId": null,
+            "title": "MICRO-50, October 14\u201318, 2017, Cambridge, MA, USA"
+        },
+        {
+            "paperId": null,
+            "title": "sdxcentral.com/articles/news"
+        }
+    ]
+}

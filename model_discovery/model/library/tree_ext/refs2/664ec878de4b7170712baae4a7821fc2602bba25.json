@@ -1,0 +1,282 @@
+{
+    "paperId": "664ec878de4b7170712baae4a7821fc2602bba25",
+    "externalIds": {
+        "MAG": "2606347107",
+        "DBLP": "journals/corr/RadfordJS17",
+        "ArXiv": "1704.01444",
+        "CorpusId": 14838925
+    },
+    "title": "Learning to Generate Reviews and Discovering Sentiment",
+    "abstract": "We explore the properties of byte-level recurrent language models. When given sufficient amounts of capacity, training data, and compute time, the representations learned by these models include disentangled features corresponding to high-level concepts. Specifically, we find a single unit which performs sentiment analysis. These representations, learned in an unsupervised manner, achieve state of the art on the binary subset of the Stanford Sentiment Treebank. They are also very data efficient. When using only a handful of labeled examples, our approach matches the performance of strong baselines trained on full datasets. We also demonstrate the sentiment unit has a direct influence on the generative process of the model. Simply fixing its value to be positive or negative generates samples with the corresponding positive or negative sentiment.",
+    "venue": "arXiv.org",
+    "year": 2017,
+    "referenceCount": 61,
+    "citationCount": 484,
+    "influentialCitationCount": 41,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The properties of byte-level recurrent language models are explored and a single unit which performs sentiment analysis is found which achieves state of the art on the binary subset of the Stanford Sentiment Treebank."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "38909097",
+            "name": "Alec Radford"
+        },
+        {
+            "authorId": "1944541",
+            "name": "R. J\u00f3zefowicz"
+        },
+        {
+            "authorId": "1701686",
+            "name": "I. Sutskever"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "f904a1037c4d31d441e5ecec479d08d9384426fd",
+            "title": "Learning to Generate Product Reviews from Attributes"
+        },
+        {
+            "paperId": "efbc200feab74e5087c4005d8759e5dadb3a3077",
+            "title": "Controllable Text Generation"
+        },
+        {
+            "paperId": "2a215755d7548ffc82079ce734c4ac60b62f6f56",
+            "title": "Toward Controlled Generation of Text"
+        },
+        {
+            "paperId": "7176fdb1c3618c26d331bc49e0d8d0874d2555ed",
+            "title": "Deep Learning with Dynamic Computation Graphs"
+        },
+        {
+            "paperId": "4c41104e871bccbd56494350a71d77a7f1da5bb0",
+            "title": "Understanding Neural Networks through Representation Erasure"
+        },
+        {
+            "paperId": "7ab2166f6cdb1737e000df66d29c6538afc6811d",
+            "title": "TopicRNN: A Recurrent Neural Network with Long-Range Semantic Dependency"
+        },
+        {
+            "paperId": "55cf59bfbb25d6363cab87cb747648ebe8a096e5",
+            "title": "Multiplicative LSTM for sequence modelling"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "97fb4e3d45bb098e27e0071448b6152217bd35a5",
+            "title": "Layer Normalization"
+        },
+        {
+            "paperId": "cff79255a94b9b05a4ce893eb403a522e0923f04",
+            "title": "Neural Semantic Encoders"
+        },
+        {
+            "paperId": "2cd55ded95d5d13430edfa223ba591b514ebe8a5",
+            "title": "Adversarial Training Methods for Semi-Supervised Text Classification"
+        },
+        {
+            "paperId": "3d2c6941a9b4608ba52b328369a3352db2092ae0",
+            "title": "Weight Normalization: A Simple Reparameterization to Accelerate Training of Deep Neural Networks"
+        },
+        {
+            "paperId": "26e743d5bd465f49b9538deaf116c15e61b7951f",
+            "title": "Learning Distributed Representations of Sentences from Unlabelled Data"
+        },
+        {
+            "paperId": "2f2d8f8072e5cc9b296fad551f65f183bdbff7aa",
+            "title": "Exploring the Limits of Language Modeling"
+        },
+        {
+            "paperId": "395044a2e3f5624b2471fb28826e7dbb1009356e",
+            "title": "Towards Universal Paraphrastic Sentence Embeddings"
+        },
+        {
+            "paperId": "4aa9f5150b46320f534de4747a2dd0cd7f3fe292",
+            "title": "Semi-supervised Sequence Learning"
+        },
+        {
+            "paperId": "51a55df1f023571a7e07e338ee45a3e3d66ef73e",
+            "title": "Character-level Convolutional Networks for Text Classification"
+        },
+        {
+            "paperId": "6505a9bd862fafcde0315a87695c504ced6c7df6",
+            "title": "Inferring Networks of Substitutable and Complementary Products"
+        },
+        {
+            "paperId": "452059171226626718eb677358836328f884298e",
+            "title": "Ask Me Anything: Dynamic Memory Networks for Natural Language Processing"
+        },
+        {
+            "paperId": "6e795c6e9916174ae12349f5dc3f516570c17ce8",
+            "title": "Skip-Thought Vectors"
+        },
+        {
+            "paperId": "40be3888daa5c2e5af4d36ae22f690bcc8caf600",
+            "title": "Visualizing and Understanding Recurrent Networks"
+        },
+        {
+            "paperId": "d41cfe9b2ada4e09d53262bc75c473d8043936fc",
+            "title": "Self-Adaptive Hierarchical Sentence Model"
+        },
+        {
+            "paperId": "32de44f01a96d4473d21099d15e25bc2b9f08e2f",
+            "title": "Improved Semantic Representations From Tree-Structured Long Short-Term Memory Networks"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "401192b00b650adfa5ac49de59b720e1c81f1410",
+            "title": "Object Detectors Emerge in Deep Scene CNNs"
+        },
+        {
+            "paperId": "54e840c8973db7665a6388b2d992ef08ed7f0260",
+            "title": "Ensemble of Generative and Discriminative Techniques for Sentiment Analysis of Movie Reviews"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "1f6ba0782862ec12a5ec6d7fb608523d55b0c6ba",
+            "title": "Convolutional Neural Networks for Sentence Classification"
+        },
+        {
+            "paperId": "11ec56898a9e7f401a2affe776b5297bd4e25025",
+            "title": "SemEval-2014 Task 1: Evaluation of Compositional Distributional Semantic Models on Full Sentences through Semantic Relatedness and Textual Entailment"
+        },
+        {
+            "paperId": "c08f5fa876181fc040d76c75fe2433eee3c9b001",
+            "title": "Learning and Transferring Mid-level Image Representations Using Convolutional Neural Networks"
+        },
+        {
+            "paperId": "1a2a770d23b4a171fa81de62a78a3deb0588f238",
+            "title": "Visualizing and Understanding Convolutional Networks"
+        },
+        {
+            "paperId": "687bac2d3320083eb4530bf18bb8f8f721477600",
+            "title": "Recursive Deep Models for Semantic Compositionality Over a Sentiment Treebank"
+        },
+        {
+            "paperId": "c4fd9c86b2b41df51a6fe212406dda81b1997fd4",
+            "title": "Linguistic Regularities in Continuous Space Word Representations"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "5e9fa46f231c59e6573f9a116f77f53703347659",
+            "title": "Baselines and Bigrams: Simple, Good Sentiment and Topic Classification"
+        },
+        {
+            "paperId": "184ac0766262312ba76bbdece4e7ffad0aa8180b",
+            "title": "Representation Learning: A Review and New Perspectives"
+        },
+        {
+            "paperId": "79d16c323cc2584178fbfd2cf4095f2a350fefb4",
+            "title": "Re-examining Machine Translation Metrics for Paraphrase Identification"
+        },
+        {
+            "paperId": "72e93aa6767ee683de7f001fa72f1314e40a8f35",
+            "title": "Building high-level features using large scale unsupervised learning"
+        },
+        {
+            "paperId": "be9a17321537d9289875fe475b71f4821457b435",
+            "title": "An Analysis of Single-Layer Networks in Unsupervised Feature Learning"
+        },
+        {
+            "paperId": "1c61f9ef06fe74505775a833ff849185757199e7",
+            "title": "Learning Word Vectors for Sentiment Analysis"
+        },
+        {
+            "paperId": "bc1022b031dc6c7019696492e8116598097a8c12",
+            "title": "Natural Language Processing (Almost) from Scratch"
+        },
+        {
+            "paperId": "843959ffdccf31c6694d135fad07425924f785b1",
+            "title": "Extracting and composing robust features with denoising autoencoders"
+        },
+        {
+            "paperId": "ccd52aff02b0f902f4ce7247c4fee7273014c41c",
+            "title": "Unsupervised Learning of Invariant Feature Hierarchies with Applications to Object Recognition"
+        },
+        {
+            "paperId": "6af58c061f2e4f130c3b795c21ff0c7e3903278f",
+            "title": "Seeing Stars: Exploiting Class Relationships for Sentiment Categorization with Respect to Rating Scales"
+        },
+        {
+            "paperId": "7acfdc905f734abf966aed58abb983bc015ff7fe",
+            "title": "Unsupervised Construction of Large Paraphrase Corpora: Exploiting Massively Parallel News Sources"
+        },
+        {
+            "paperId": "cdcf7cb29f37ac0546961ea8a076075b9cc1f992",
+            "title": "Mining and summarizing customer reviews"
+        },
+        {
+            "paperId": "167e1359943b96b9e92ee73db1df69a1f65d731d",
+            "title": "A Sentimental Education: Sentiment Analysis Using Subjectivity Summarization Based on Minimum Cuts"
+        },
+        {
+            "paperId": "ee6275a84962a0ffd6212585e4f7ee7ffb2b068a",
+            "title": "Feature selection, L1 vs. L2 regularization, and rotational invariance"
+        },
+        {
+            "paperId": "2805537bec87a6177037b18f9a3a9d3f1038867b",
+            "title": "Sparse coding with an overcomplete basis set: A strategy employed by V1?"
+        },
+        {
+            "paperId": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+            "title": "Building a Large Annotated Corpus of English: The Penn Treebank"
+        },
+        {
+            "paperId": "4f8d648c52edf74e41b0996128aa536e13cc7e82",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": "a14045a751f5d8ed387c8630a86a3a2861b90643",
+            "title": "A Fast and Accurate Dependency Parser using Neural Networks"
+        },
+        {
+            "paperId": "31868290adf1c000c611dfc966b514d5a34e8d23",
+            "title": "FUNDAMENTAL TECHNOLOGIES IN MODERN SPEECH RECOGNITION Digital Object Identifier 10.1109/MSP.2012.2205597"
+        },
+        {
+            "paperId": "4574d77fff19e093782178595a8988a7f3aa1969",
+            "title": "Latent Dirichlet Allocation"
+        },
+        {
+            "paperId": "c50dca78e97e335d362d6b991ae0e1448914e9a3",
+            "title": "Reducing the Dimensionality of Data with Neural"
+        },
+        {
+            "paperId": "586d7b215d1174f01a1dc2f6abf6b2eb0f740ab6",
+            "title": "Unsupervised Learning of Invariant Feature Hierarchies with Applications to Object Recognition"
+        },
+        {
+            "paperId": "7c59908c946a4157abc030cdbe2b63d08ba97db3",
+            "title": "Supporting Online Material for Reducing the Dimensionality of Data with Neural Networks"
+        },
+        {
+            "paperId": null,
+            "title": "URL http://prize"
+        },
+        {
+            "paperId": null,
+            "title": "Generating Reviews and Discovering Sentiment Hutter, Marcus. The human knowledge compression contest"
+        },
+        {
+            "paperId": "1cff7cc15555c38607016aaba24059e76b160adb",
+            "title": "Annotating Expressions of Opinions and Emotions in Language"
+        },
+        {
+            "paperId": "44ebfa961bf3296fb4997ff82808c0536c4e0bc1",
+            "title": "UTF-8, a transformation format of ISO 10646"
+        }
+    ]
+}

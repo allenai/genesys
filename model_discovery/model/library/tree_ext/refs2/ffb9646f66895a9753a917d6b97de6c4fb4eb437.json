@@ -1,0 +1,98 @@
+{
+    "paperId": "ffb9646f66895a9753a917d6b97de6c4fb4eb437",
+    "externalIds": {
+        "DBLP": "journals/corr/VasudevanAG17",
+        "MAG": "2953039696",
+        "ArXiv": "1704.04428",
+        "DOI": "10.1109/ASAP.2017.7995254",
+        "CorpusId": 3434575
+    },
+    "title": "Parallel Multi Channel convolution using General Matrix Multiplication",
+    "abstract": "Convolutional neural networks (CNNs) have emerged as one of the most successful machine learning technologies for image and video processing. The most computationally-intensive parts of CNNs are the convolutional layers, which convolve multi-channel images with multiple kernels. A common approach to implementing convolutional layers is to expand the image into a column matrix (im2col) and perform Multiple Channel Multiple Kernel (MCMK) convolution using an existing parallel General Matrix Multiplication (GEMM) library. This im2col conversion greatly increases the memory footprint of the input matrix and reduces data locality. In this paper we propose a new approach to MCMK convolution that is based on General Matrix Multiplication (GEMM), but not on im2col. Our algorithm eliminates the need for data replication on the input thereby enabling us to apply the convolution kernels on the input images directly. We have implemented several variants of our algorithm on a CPU processor and an embedded ARM processor. On the CPU, our algorithm is faster than im2col in most cases.",
+    "venue": "IEEE International Conference on Application-Specific Systems, Architectures, and Processors",
+    "year": 2017,
+    "referenceCount": 14,
+    "citationCount": 126,
+    "influentialCitationCount": 3,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1704.04428",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a new approach to MCMK convolution that is based on General Matrix Multiplication (GEMM), but not on im2col, which eliminates the need for data replication on the input thereby enabling the convolution kernels to apply to the input images directly."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2086488",
+            "name": "Aravind Vasudevan"
+        },
+        {
+            "authorId": "144390847",
+            "name": "Andrew Anderson"
+        },
+        {
+            "authorId": "145453252",
+            "name": "David Gregg"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "c335561f14717c2301007f9ac936edf63dff1def",
+            "title": "Performance-Portable Autotuning of OpenCL Kernels for Convolutional Layers of Deep Neural Networks"
+        },
+        {
+            "paperId": "fd701a9a62abc49bbe55cfaac63a3f7e3345f0e6",
+            "title": "Efficient Mobile Implementation of A CNN-based Object Recognition System"
+        },
+        {
+            "paperId": "010cd28dc1544e7e7f9cee30194fa2c013227a12",
+            "title": "Intel Xeon Phi Processor High Performance Programming: Knights Landing Edition 2nd Edition"
+        },
+        {
+            "paperId": "fd44c90baad34801358cfe7932a198c884f8491b",
+            "title": "OpenCL caffe: Accelerating and enabling a cross platform machine learning framework"
+        },
+        {
+            "paperId": "31c36d445367ba204244bb74893c5654e31c3869",
+            "title": "cuDNN: Efficient Primitives for Deep Learning"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "6bdb186ec4726e00a8051119636d4df3b94043b5",
+            "title": "Caffe: Convolutional Architecture for Fast Feature Embedding"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "2cc157afda51873c30b195fff56e917b9c06b853",
+            "title": "High Performance Convolutional Neural Networks for Document Processing"
+        },
+        {
+            "paperId": "ef62e60b81317a24dbeb8ded6dc4a8ed89b776a8",
+            "title": "Basic Linear Algebra Subprograms for Fortran Usage"
+        },
+        {
+            "paperId": null,
+            "title": "How to implement performance metrics in cuda c/c++"
+        },
+        {
+            "paperId": null,
+            "title": "How to benchmark code execution times on Intel IA-32 and IA-64 instruction set architectures"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        }
+    ]
+}

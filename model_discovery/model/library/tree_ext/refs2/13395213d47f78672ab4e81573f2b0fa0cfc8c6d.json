@@ -1,0 +1,267 @@
+{
+    "paperId": "13395213d47f78672ab4e81573f2b0fa0cfc8c6d",
+    "externalIds": {
+        "ACL": "D17-1239",
+        "ArXiv": "1707.08052",
+        "DBLP": "journals/corr/WisemanSR17",
+        "MAG": "2739046565",
+        "DOI": "10.18653/v1/D17-1239",
+        "CorpusId": 23892230
+    },
+    "title": "Challenges in Data-to-Document Generation",
+    "abstract": "Recent neural models have shown significant progress on the problem of generating short descriptive texts conditioned on a small number of database records. In this work, we suggest a slightly more difficult data-to-text generation task, and investigate how effective current approaches are on this task. In particular, we introduce a new, large-scale corpus of data records paired with descriptive documents, propose a series of extractive evaluation methods for analyzing performance, and obtain baseline results using current neural generation methods. Experiments show that these models produce fluent text, but fail to convincingly approximate human-generated documents. Moreover, even templated baselines exceed the performance of these neural models on some metrics, though copy- and reconstruction-based extensions lead to noticeable improvements.",
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2017,
+    "referenceCount": 56,
+    "citationCount": 559,
+    "influentialCitationCount": 107,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/D17-1239.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new, large-scale corpus of data records paired with descriptive documents is introduced, a series of extractive evaluation methods for analyzing performance are proposed, and baseline results are obtained using current neural generation methods."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2844243",
+            "name": "Sam Wiseman"
+        },
+        {
+            "authorId": "1692491",
+            "name": "Stuart M. Shieber"
+        },
+        {
+            "authorId": "2531268",
+            "name": "Alexander M. Rush"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "cb62f427698c4d4cb8e2f48057069af974ae8c7c",
+            "title": "Learning to generate one-sentence biographies from Wikidata"
+        },
+        {
+            "paperId": "9fedfd9914e90d6716645f6cdce127878a143f54",
+            "title": "Adversarial Evaluation of Dialogue Models"
+        },
+        {
+            "paperId": "176f1d608b918eec8dc4b75e7b6e0acaba84a447",
+            "title": "Adversarial Learning for Neural Dialogue Generation"
+        },
+        {
+            "paperId": "aab5002a22b9b4244a8329b140bd0a86021aa2d1",
+            "title": "OpenNMT: Open-Source Toolkit for Neural Machine Translation"
+        },
+        {
+            "paperId": "31fc1b0fd5ec43863f1a502f6fc3df2cc71b6e6f",
+            "title": "Neural Machine Translation with Reconstruction"
+        },
+        {
+            "paperId": "26e9eb44ed8065122d37b0c429a8d341bfeea9a5",
+            "title": "Reference-Aware Language Models"
+        },
+        {
+            "paperId": "efbd381493bb9636f489b965a2034d529cd56bcd",
+            "title": "Pointer Sentinel Mixture Models"
+        },
+        {
+            "paperId": "c6850869aa5e78a107c378d2e8bfa39633158c0c",
+            "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation"
+        },
+        {
+            "paperId": "b7eac64a8410976759445cce235469163d23ee65",
+            "title": "Data Recombination for Neural Semantic Parsing"
+        },
+        {
+            "paperId": "aa5b35dcf8b024f5352db73cc3944e8fad4f3793",
+            "title": "Pointing the Unknown Words"
+        },
+        {
+            "paperId": "129cbad01be98ee88a930e31898cb76be79c41c1",
+            "title": "How NOT To Evaluate Your Dialogue System: An Empirical Study of Unsupervised Evaluation Metrics for Dialogue Response Generation"
+        },
+        {
+            "paperId": "604764133befe7a0aaa692919545846197e6e065",
+            "title": "Neural Text Generation from Structured Data with Application to the Biography Domain"
+        },
+        {
+            "paperId": "02534853626c18c9a097c2712f1ddf3613257d35",
+            "title": "Incorporating Copying Mechanism in Sequence-to-Sequence Learning"
+        },
+        {
+            "paperId": "d82b55c35c8673774a708353838918346f6c006f",
+            "title": "Generating Sentences from a Continuous Space"
+        },
+        {
+            "paperId": "f273adbfe0e6ba39a583b9669d94cc8d828d8c25",
+            "title": "What to talk about and how? Selective Generation using LSTMs with Coarse-to-Fine Alignment"
+        },
+        {
+            "paperId": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+            "title": "Effective Approaches to Attention-based Neural Machine Translation"
+        },
+        {
+            "paperId": "c8434b04acfe1d300b56c0d369092038ec899a2b",
+            "title": "Classifying Relations by Ranking with Convolutional Neural Networks"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "1eb09fecd75eb27825dce4f964b97f4f5cc399d7",
+            "title": "On the Properties of Neural Machine Translation: Encoder\u2013Decoder Approaches"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "1f6ba0782862ec12a5ec6d7fb608523d55b0c6ba",
+            "title": "Convolutional Neural Networks for Sentence Classification"
+        },
+        {
+            "paperId": "791b65c65f8ae7e16c1ee9203cdc3ee59ffeb99f",
+            "title": "Relation Classification via Convolutional Deep Neural Network"
+        },
+        {
+            "paperId": "41de65f718207cc5f98b561a62b16d5e818cb98c",
+            "title": "A Global Model for Concept-to-Text Generation"
+        },
+        {
+            "paperId": "f152db85455116eb674d65f63407497564901512",
+            "title": "A Probabilistic Forest-to-String Model for Language Generation from Typed Lambda Calculus Expressions"
+        },
+        {
+            "paperId": "93c20e38c85b69fc2d2eb314b3c1217913f7db11",
+            "title": "Generating Text with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "bc1022b031dc6c7019696492e8116598097a8c12",
+            "title": "Natural Language Processing (Almost) from Scratch"
+        },
+        {
+            "paperId": "a5424051ab04689fc8bc175ff015c6f7cdc46014",
+            "title": "A Simple Domain-Independent Probabilistic Approach to Generation"
+        },
+        {
+            "paperId": "c058a83962e55411b5615ebdfba470b892420c18",
+            "title": "Generative Alignment and Semantic Parsing for Learning from Ambiguous Supervision"
+        },
+        {
+            "paperId": "b3051b3e18eee9c498a2e94d0811d1a3551e64e4",
+            "title": "Learning Semantic Correspondences with Less Supervision"
+        },
+        {
+            "paperId": "1a6b7cf5e1a3e069338498d1c17aa7d46c1ac7e9",
+            "title": "Automatic generation of weather forecast texts using comprehensive probabilistic generation-space models"
+        },
+        {
+            "paperId": "0008076a1968d9fb590c9013ab27b824849a4e80",
+            "title": "Learning to sportscast: a test of grounded language acquisition"
+        },
+        {
+            "paperId": "85fd72fe9a4fd351c6f9663fb0d808ebc9f6264e",
+            "title": "Generation by Inverting a Semantic Parser that Uses Statistical Machine Translation"
+        },
+        {
+            "paperId": "08e6c49c69f016308189fd2152bc31779c338f60",
+            "title": "Stochastic Language Generation Using WIDL-Expressions and its Application in Machine Translation and Summarization"
+        },
+        {
+            "paperId": "b2c1efcaac5e99083639994d0daa4ae05b3839d8",
+            "title": "Collective Content Selection for Concept-to-Text Generation"
+        },
+        {
+            "paperId": "cd60e751a02e7104a68717c5ba29f534d9037ace",
+            "title": "Choosing words in computer-generated weather forecasts"
+        },
+        {
+            "paperId": "5536d42ce80e129be8cae172ed1b7659c769d31d",
+            "title": "2005 Special Issue: Framewise phoneme classification with bidirectional LSTM and other neural network architectures"
+        },
+        {
+            "paperId": "7b6b3df70c9be3b49bd1d0c23ac61c13ca9f6ffd",
+            "title": "Weakly-supervised relation classification for information extraction"
+        },
+        {
+            "paperId": "1915c51bdfe10cc419858499e315ae30c4611575",
+            "title": "Statistical Acquisition of Content Selection Rules for Natural Language Generation"
+        },
+        {
+            "paperId": "d7da009f457917aa381619facfa5ffae9329a6e9",
+            "title": "Bleu: a Method for Automatic Evaluation of Machine Translation"
+        },
+        {
+            "paperId": "77a02706edbdca6ad63ddf903ebd559dd7d423ac",
+            "title": "NLTK: The Natural Language Toolkit"
+        },
+        {
+            "paperId": "4cef3559ba4120ed064bc397d94da4a625feb5d5",
+            "title": "An Improved Error Model for Noisy Channel Spelling Correction"
+        },
+        {
+            "paperId": "894149cb66e8af4a20c82840ea3f774888644fa6",
+            "title": "Speech and language processing: an introduction to natural language processing, computational linguistics, and speech recognition, 2nd Edition"
+        },
+        {
+            "paperId": "bf41999b37b7989d4ef43c19e108e5b21e80777a",
+            "title": "Reactive Content Selection in the Generation of Real-time Soccer Commentary"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "32622973ea102abb5f0dea32e2944b7656cd4798",
+            "title": "Building applied natural language generation systems"
+        },
+        {
+            "paperId": "1b947f31028c542bbbc75f64773f5e8488977109",
+            "title": "Revision-based generation of natural language summaries providing historical background: corpus-based analysis, design, implementation and evaluation"
+        },
+        {
+            "paperId": "2c12857db14cc8aeb70d8139b6e6bb4b7af95161",
+            "title": "Using Natural-Language Processing to Produce Weather Forecasts"
+        },
+        {
+            "paperId": "668087f0ae7ce1de6e0bd0965dbb480c08103260",
+            "title": "Finding Structure in Time"
+        },
+        {
+            "paperId": "641122f8703ea0df8535ab0365f6797dbeb17e3c",
+            "title": "Text generation: using discourse strategies and focus constraints to generate natural language text"
+        },
+        {
+            "paperId": "c94e2841531c8a43b4dd172897a93af01e89421e",
+            "title": "Design of a Knowledge-Based Report Generator"
+        },
+        {
+            "paperId": null,
+            "title": "Additional Dataset Details The ROTOWIRE data covers NBA games played between 1/1/2014 and 3/29/2017; some games have multiple summaries. The summaries"
+        },
+        {
+            "paperId": null,
+            "title": "You need to understand your corpora! the weathergov example"
+        },
+        {
+            "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+            "title": "Recurrent neural network based language model"
+        },
+        {
+            "paperId": "505234f56be43637a82761b2a7c3bd7c46f1e06c",
+            "title": "Semi-Supervised Learning for Relation Extraction"
+        },
+        {
+            "paperId": "9b00bf83c53eb385e547aea6a5a9100e1a524e88",
+            "title": "Towards broad coverage surface realization with CCG"
+        },
+        {
+            "paperId": "d4a6aa3421e82d4002939fe91fc69c262bdcabc8",
+            "title": "on the Properties"
+        }
+    ]
+}

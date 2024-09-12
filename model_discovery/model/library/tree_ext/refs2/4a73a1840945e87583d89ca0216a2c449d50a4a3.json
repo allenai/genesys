@@ -1,0 +1,286 @@
+{
+    "paperId": "4a73a1840945e87583d89ca0216a2c449d50a4a3",
+    "externalIds": {
+        "ArXiv": "1703.06211",
+        "DBLP": "conf/iccv/DaiQXLZHW17",
+        "MAG": "2950477723",
+        "DOI": "10.1109/ICCV.2017.89",
+        "CorpusId": 4028864
+    },
+    "title": "Deformable Convolutional Networks",
+    "abstract": "Convolutional neural networks (CNNs) are inherently limited to model geometric transformations due to the fixed geometric structures in their building modules. In this work, we introduce two new modules to enhance the transformation modeling capability of CNNs, namely, deformable convolution and deformable RoI pooling. Both are based on the idea of augmenting the spatial sampling locations in the modules with additional offsets and learning the offsets from the target tasks, without additional supervision. The new modules can readily replace their plain counterparts in existing CNNs and can be easily trained end-to-end by standard back-propagation, giving rise to deformable convolutional networks. Extensive experiments validate the performance of our approach. For the first time, we show that learning dense spatial transformation in deep CNNs is effective for sophisticated vision tasks such as object detection and semantic segmentation. The code is released at https://github.com/msracver/Deformable-ConvNets.",
+    "venue": "IEEE International Conference on Computer Vision",
+    "year": 2017,
+    "referenceCount": 57,
+    "citationCount": 4641,
+    "influentialCitationCount": 542,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1703.06211",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces two new modules to enhance the transformation modeling capability of CNNs, namely, deformable convolution and deformable RoI pooling, based on the idea of augmenting the spatial sampling locations in the modules with additional offsets and learning the offsets from the target tasks, without additional supervision."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3304536",
+            "name": "Jifeng Dai"
+        },
+        {
+            "authorId": "7217794",
+            "name": "Haozhi Qi"
+        },
+        {
+            "authorId": "3372084",
+            "name": "Yuwen Xiong"
+        },
+        {
+            "authorId": "2153682629",
+            "name": "Yi Li"
+        },
+        {
+            "authorId": "46266081",
+            "name": "Guodong Zhang"
+        },
+        {
+            "authorId": "1823518756",
+            "name": "Han Hu"
+        },
+        {
+            "authorId": "1732264",
+            "name": "Yichen Wei"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "6f34b9a4a0e2ee90e86ed720dc26cc6ba9da8df0",
+            "title": "Dilated Residual Networks"
+        },
+        {
+            "paperId": "e58a2289b13fe48044aa606644305b811614c355",
+            "title": "Active Convolution: Learning the Shape of Convolution for Image Classification"
+        },
+        {
+            "paperId": "11aada215e6f72cbd5928619de839ba35106a88f",
+            "title": "Harmonic Networks: Deep Translation and Rotation Equivariance"
+        },
+        {
+            "paperId": "6e090e5d90ead63922cc91c95200f9ca101ffdb0",
+            "title": "Inverse Compositional Spatial Transformer Networks"
+        },
+        {
+            "paperId": "2a94c84383ee3de5e6211d43d16e7de387f68878",
+            "title": "Feature Pyramid Networks for Object Detection"
+        },
+        {
+            "paperId": "01a4f33da8ad94ced3cf58548b28dbbb44148571",
+            "title": "Understanding the Effective Receptive Field in Deep Convolutional Neural Networks"
+        },
+        {
+            "paperId": "a312a573ef81793d56401e932ef6c9498791a3d1",
+            "title": "Speed/Accuracy Trade-Offs for Modern Convolutional Object Detectors"
+        },
+        {
+            "paperId": "cab372bc3824780cce20d9dd1c22d4df39ed081a",
+            "title": "DeepLab: Semantic Image Segmentation with Deep Convolutional Nets, Atrous Convolution, and Fully Connected CRFs"
+        },
+        {
+            "paperId": "aba48504f4f9563eafa44e0cfb22e1345d767c80",
+            "title": "Dynamic Filter Networks"
+        },
+        {
+            "paperId": "b724c3f7ff395235b62537203ddeb710f0eb27bb",
+            "title": "R-FCN: Object Detection via Region-based Fully Convolutional Networks"
+        },
+        {
+            "paperId": "6befc9fac6846df9f27e91ffbad5de58b77ffef1",
+            "title": "Structured Receptive Fields in CNNs"
+        },
+        {
+            "paperId": "049a5a81bd664c27a6f5c973f253c7664463d13b",
+            "title": "TI-POOLING: Transformation-Invariant Pooling for Feature Learning in Convolutional Neural Networks"
+        },
+        {
+            "paperId": "c8c494ee5488fe20e0aa01bddf3fc4632086d654",
+            "title": "The Cityscapes Dataset for Semantic Urban Scene Understanding"
+        },
+        {
+            "paperId": "b5c26ab8767d046cb6e32d959fdf726aee89bb62",
+            "title": "Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning"
+        },
+        {
+            "paperId": "b2e8f988e4c4ef0b38f6c8766aca7f2e5a2575db",
+            "title": "Exploiting Cyclic Symmetry in Convolutional Neural Networks"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "4d7a9197433acbfb24ef0e9d0f33ed1699e4a5b0",
+            "title": "SSD: Single Shot MultiBox Detector"
+        },
+        {
+            "paperId": "7f5fc84819c0cf94b771fe15141f65b123f7b8ec",
+            "title": "Multi-Scale Context Aggregation by Dilated Convolutions"
+        },
+        {
+            "paperId": "f8e79ac0ea341056ef20f2616628b3e964764cfd",
+            "title": "You Only Look Once: Unified, Real-Time Object Detection"
+        },
+        {
+            "paperId": "b5aff6158ddab11fc4af245f1128e86d6bd75ffb",
+            "title": "Transformation-Invariant Convolutional Jungles"
+        },
+        {
+            "paperId": "dbb6ded623159c867fbeca0772db7b2eb9489523",
+            "title": "Spatial Transformer Networks"
+        },
+        {
+            "paperId": "424561d8585ff8ebce7d5d07de8dbf7aae5e7270",
+            "title": "Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks"
+        },
+        {
+            "paperId": "020928259a848b91b7c36062e4bbc6df6398c02e",
+            "title": "Object Detection via a Multi-region and Semantic Segmentation-Aware CNN Model"
+        },
+        {
+            "paperId": "7ffdbc358b63378f07311e883dddacc9faeeaf4b",
+            "title": "Fast R-CNN"
+        },
+        {
+            "paperId": "39ad6c911f3351a3b390130a6e4265355b4d593b",
+            "title": "Semantic Image Segmentation with Deep Convolutional Nets and Fully Connected CRFs"
+        },
+        {
+            "paperId": "5b249cf39370503f22fc7d4b257d735555d647ce",
+            "title": "DeepID-Net: Deformable deep convolutional neural networks for object detection"
+        },
+        {
+            "paperId": "b9bc7f799ad6198ca085077710f31b77bd3ce77b",
+            "title": "Locally Scale-Invariant Convolutional Neural Networks"
+        },
+        {
+            "paperId": "4f939bb8dd6a660a8f6851bf8ad2ce8a55c974ae",
+            "title": "Deep Symmetry Networks"
+        },
+        {
+            "paperId": "4328ec9d98eff5d7eb70997f76d81b27849f3220",
+            "title": "Scalable, High-Quality Object Detection"
+        },
+        {
+            "paperId": "371400e61632592146f40b621fb3dbb6971721be",
+            "title": "Understanding Image Representations by Measuring Their Equivariance and Equivalence"
+        },
+        {
+            "paperId": "6fc6803df5f9ae505cae5b2f178ade4062c768d0",
+            "title": "Fully convolutional networks for semantic segmentation"
+        },
+        {
+            "paperId": "244bae85fda807361a51d4b26a14ecb2b2f8776b",
+            "title": "Deformable part models are convolutional neural networks"
+        },
+        {
+            "paperId": "342786659379879f58bf5c4ff43c84c83a6a7389",
+            "title": "Simultaneous Detection and Segmentation"
+        },
+        {
+            "paperId": "cbb19236820a96038d000dc629225d36e0b6294a",
+            "title": "Spatial Pyramid Pooling in Deep Convolutional Networks for Visual Recognition"
+        },
+        {
+            "paperId": "71b7178df5d2b112d07e45038cb5637208659ff7",
+            "title": "Microsoft COCO: Common Objects in Context"
+        },
+        {
+            "paperId": "2f4df08d9072fc2ac181b7fced6a245315ce05c8",
+            "title": "Rich Feature Hierarchies for Accurate Object Detection and Semantic Segmentation"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "8f7214bafbed6d4dfd397c35315c7275d5608f61",
+            "title": "Learning Invariant Representations with Local Transformations"
+        },
+        {
+            "paperId": "68447483e80991ca718cad40e73ac14c08da7413",
+            "title": "Beyond spatial pyramids: Receptive field learning for pooled image features"
+        },
+        {
+            "paperId": "30e2e85b7cf2e85f8965ec74b03f569caa2b5cdd",
+            "title": "Invariant Scattering Convolution Networks"
+        },
+        {
+            "paperId": "976e29fe6c9baeb39732bca0e35f66f84d5bdd90",
+            "title": "ORB: An efficient alternative to SIFT or SURF"
+        },
+        {
+            "paperId": "82fae97673a353271b1d4c001afda1af6ef6dc23",
+            "title": "Semantic contours from inverse detectors"
+        },
+        {
+            "paperId": "e79272fe3d65197100eae8be9fec6469107969ae",
+            "title": "Object Detection with Discriminatively Trained Part Based Models"
+        },
+        {
+            "paperId": "405aed4b8ecdd869b2e83095dde51c396334115f",
+            "title": "A Theoretical Analysis of Feature Pooling in Visual Recognition"
+        },
+        {
+            "paperId": "3a9b175324ba11bc0e16c0633912d897b2fac4e2",
+            "title": "The Pascal Visual Object Classes (VOC) Challenge"
+        },
+        {
+            "paperId": "d2c733e34d48784a37d717fe43d9e93277a8c53e",
+            "title": "ImageNet: A large-scale hierarchical image database"
+        },
+        {
+            "paperId": "6dbaff29d3898cf60f63f5a34cb9610ebb75220c",
+            "title": "Beyond Bags of Features: Spatial Pyramid Matching for Recognizing Natural Scene Categories"
+        },
+        {
+            "paperId": "f9f836d28f52ad260213d32224a6d227f8e8849a",
+            "title": "Object recognition from local scale-invariant features"
+        },
+        {
+            "paperId": "563e821bb5ea825efb56b77484f5287f08cf3753",
+            "title": "Convolutional networks for images, speech, and time series"
+        },
+        {
+            "paperId": "8944a3b8b385df07fe7da2d5d08938e2afeeeee2",
+            "title": "Wavelets: Time-Frequency Methods and Phase Space"
+        },
+        {
+            "paperId": "993b1083455b5c4d631eaf44f230b061994e75c3",
+            "title": "The Design and Use of Steerable Filters"
+        },
+        {
+            "paperId": "22800882fdf4db45847bc9e617dc3dd05caea88a",
+            "title": "Deformable kernels for early vision"
+        },
+        {
+            "paperId": "00aa5220d49f3fcf357c1b64ac14f24cd8afb76d",
+            "title": "Representation of local geometry in the visual system"
+        },
+        {
+            "paperId": null,
+            "title": "and  K"
+        },
+        {
+            "paperId": "ef3ed634a28eee78a7e31fc525cf7083e6689345",
+            "title": "A real-time algorithm for signal analysis with the help of the wavelet transform"
+        },
+        {
+            "paperId": "d7b064e6cb859db734fa0eb18da0c7df17cce416",
+            "title": "ORB: an ef\ufb01cient alternative to SIFT or SURF"
+        },
+        {
+            "paperId": null,
+            "title": "Aligned-inceptionresnet model, unpublished work"
+        }
+    ]
+}

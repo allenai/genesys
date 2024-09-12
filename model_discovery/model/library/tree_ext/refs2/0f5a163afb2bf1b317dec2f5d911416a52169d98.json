@@ -1,0 +1,137 @@
+{
+    "paperId": "0f5a163afb2bf1b317dec2f5d911416a52169d98",
+    "externalIds": {
+        "MAG": "1570348087",
+        "DBLP": "conf/icassp/MagoarouG15",
+        "DOI": "10.1109/ICASSP.2015.7178579",
+        "CorpusId": 7063041
+    },
+    "title": "Chasing butterflies: In search of efficient dictionaries",
+    "abstract": "Dictionary learning aims at finding a frame (called dictionary) in which some training data admits a sparse representation. Traditional dictionary learning is limited to relatively small-scale problems, because high-dimensional dense dictionaries can be costly to manipulate, both at the learning stage and when used for tasks such as sparse coding. In this paper, inspired by usual fast transforms, we consider a multi-layer sparse dictionary structure allowing cheaper manipulation, and propose a learning algorithm imposing this structure. The approach is demonstrated experimentally with a factorization of the Hadamard matrix and on image denoising.",
+    "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+    "year": 2015,
+    "referenceCount": 25,
+    "citationCount": 35,
+    "influentialCitationCount": 1,
+    "openAccessPdf": {
+        "url": "https://hal.archives-ouvertes.fr/hal-01104696v2/file/ICASSP_current.pdf",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Inspired by usual fast transforms, this paper considers a multi-layer sparse dictionary structure allowing cheaper manipulation, and proposes a learning algorithm imposing this structure."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2160959",
+            "name": "Luc Le Magoarou"
+        },
+        {
+            "authorId": "1731535",
+            "name": "R. Gribonval"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "d64304778eb9567e78040fe617ffb70843406132",
+            "title": "Toward Fast Transform Learning"
+        },
+        {
+            "paperId": "99d51e1e452cc977a5cdcd6877b25cb40890af03",
+            "title": "Learning computationally efficient dictionaries and their implementation as fast transforms"
+        },
+        {
+            "paperId": "b73813be17fde976b50cea7f12056829d08f3759",
+            "title": "Sample Complexity of Dictionary Learning and Other Matrix Factorizations"
+        },
+        {
+            "paperId": "ad666f71e3ce2af44418f8743a8a2c2b03a5620c",
+            "title": "On Algorithms for Sparse Multi-factor NMF"
+        },
+        {
+            "paperId": "5cb7da3814298c7c15310ceb684b50f18fd22615",
+            "title": "Sparse Matrix Factorization"
+        },
+        {
+            "paperId": "1d6e6adc7a841393fc10b78dc0018e550aff589d",
+            "title": "Provable Bounds for Learning Some Deep Representations"
+        },
+        {
+            "paperId": "f5016f1f2fc47aeaa983ed7323af34a51aa2473c",
+            "title": "Proximal alternating linearized minimization for nonconvex and nonsmooth problems"
+        },
+        {
+            "paperId": "0f94847d93b7d2e4292cdc0a946075e86e5d1f5a",
+            "title": "Learning Efficient Sparse and Low Rank Models"
+        },
+        {
+            "paperId": "d32fa4609ce38e77abcdfe740aeda20739bb3542",
+            "title": "The Sparse Matrix Transform for Covariance Estimation and Analysis of High Dimensional Signals"
+        },
+        {
+            "paperId": "67ff5e95f6a6285ea536b777ff78f972d59a4a1a",
+            "title": "The Sample Complexity of Dictionary Learning"
+        },
+        {
+            "paperId": "e8f811399746c059bf4d4c3d43334045e0222209",
+            "title": "Learning Fast Approximations of Sparse Coding"
+        },
+        {
+            "paperId": "18a1a63282e1c6bc2851ff435551444a11a5b81d",
+            "title": "Dictionaries for Sparse Representation Modeling"
+        },
+        {
+            "paperId": "054bbbab7d8324d381903b2f33d4e8a17b54eff0",
+            "title": "Double Sparsity: Learning Sparse Dictionaries for Sparse Signal Approximation"
+        },
+        {
+            "paperId": "9f1159d06aeb2438f9c0861a4cb432a889bd6cb8",
+            "title": "An algorithm for the rapid evaluation of special function transforms"
+        },
+        {
+            "paperId": "c9a1e390f06c967a30d7e2bb176245cc4cec1161",
+            "title": "$K$ -Dimensional Coding Schemes in Hilbert Spaces"
+        },
+        {
+            "paperId": "8e8152d46c8ff1070805096c214df7f389c57b80",
+            "title": "Wavelets on Graphs via Spectral Graph Theory"
+        },
+        {
+            "paperId": "ccd1282aea3cc7c3d40300d82472fc5f9f54cb8e",
+            "title": "Online Learning for Matrix Factorization and Sparse Coding"
+        },
+        {
+            "paperId": "e725f8145ebe0cce7635dcdebddf6f7b288ce123",
+            "title": "A Fast Butterfly Algorithm for the Computation of Fourier Integral Operators"
+        },
+        {
+            "paperId": "4aa37dac6cbd176e4ba42fb6cb261dbac5a10455",
+            "title": "Treelets--An adaptive multi-scale basis for sparse unordered data"
+        },
+        {
+            "paperId": "83b522f4bfa5db7f7d34f839475af7d078107634",
+            "title": "$rm K$-SVD: An Algorithm for Designing Overcomplete Dictionaries for Sparse Representation"
+        },
+        {
+            "paperId": "2210a7157565422261b03cf2cdf4e91b583df5a0",
+            "title": "Matching pursuits with time-frequency dictionaries"
+        },
+        {
+            "paperId": "b78626ce1a562c05b1c06f9c805e839f9760b9ab",
+            "title": "A Theory for Multiresolution Signal Decomposition: The Wavelet Representation"
+        },
+        {
+            "paperId": "0e6beb95b5150ce99b108acdefabf70ccd3fee30",
+            "title": "An algorithm for the machine calculation of complex Fourier series"
+        },
+        {
+            "paperId": "7f98bd398a6b422e140b9cd83f0d64444f8dbca5",
+            "title": "Efficient Implementation of the K-SVD Algorithm using Batch Orthogonal Matching Pursuit"
+        },
+        {
+            "paperId": "f6e0fb4c77906bc23fe59a8f848ce62ba9687181",
+            "title": "K-SVD : An Algorithm for Designing of Overcomplete Dictionaries for Sparse Representation"
+        }
+    ]
+}

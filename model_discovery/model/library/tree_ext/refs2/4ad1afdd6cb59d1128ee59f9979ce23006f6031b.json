@@ -1,0 +1,95 @@
+{
+    "paperId": "4ad1afdd6cb59d1128ee59f9979ce23006f6031b",
+    "externalIds": {
+        "DBLP": "journals/neco/Movellan08",
+        "MAG": "2161672593",
+        "DOI": "10.1162/neco.2008.01-07-430",
+        "CorpusId": 5190213,
+        "PubMed": "18439142"
+    },
+    "title": "Contrastive Divergence in Gaussian Diffusions",
+    "abstract": "This letter presents an analysis of the contrastive divergence (CD) learning algorithm when applied to continuous-time linear stochastic neural networks. For this case, powerful techniques exist that allow a detailed analysis of the behavior of CD. The analysis shows that CD converges to maximum likelihood solutions only when the network structure is such that it can match the first moments of the desired distribution. Otherwise, CD can converge to solutions arbitrarily different from the log-likelihood solutions, or they can even diverge. This result suggests the need to improve our theoretical understanding of the conditions under which CD is expected to be well behaved and the conditions under which it may fail. In, addition the results point to practical ideas on how to improve the performance of CD.",
+    "venue": "Neural Computation",
+    "year": 2008,
+    "referenceCount": 16,
+    "citationCount": 7,
+    "influentialCitationCount": 1,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The analysis of the contrastive divergence learning algorithm when applied to continuous-time linear stochastic neural networks shows that CD converges to maximum likelihood solutions only when the network structure is such that it can match the first moments of the desired distribution."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1741200",
+            "name": "J. Movellan"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "268b8f10a45e71f63daab6403bb453da31ae28a7",
+            "title": "Melting of Peridotite to 140 Gigapascals"
+        },
+        {
+            "paperId": "1d6793a163426b9c060de7588aef4fed8da6d16c",
+            "title": "Connections Between Score Matching, Contrastive Divergence, and Pseudolikelihood for Continuous-Valued Variables"
+        },
+        {
+            "paperId": "2077d0f30507d51a0d3bbec4957d55e817d66a59",
+            "title": "Fields of Experts: a framework for learning image priors"
+        },
+        {
+            "paperId": "e3b5bf2a8f1dc9dd99b3a54afb1306f85f72d353",
+            "title": "The Convergence of Contrastive Divergences"
+        },
+        {
+            "paperId": "52070af952474cf13ecd015d42979373ff7c1c00",
+            "title": "Training Products of Experts by Minimizing Contrastive Divergence"
+        },
+        {
+            "paperId": "e66ab48a1f62459644357e0fdf5719ded9a37efa",
+            "title": "A new approach for filtering nonlinear systems"
+        },
+        {
+            "paperId": "0f23db4606e4840d89ad88d987ccfec499ae3903",
+            "title": "Stochastic differential equations (3rd ed.): an introduction with applications"
+        },
+        {
+            "paperId": "d36efb9ad91e00faa334b549ce989bfae7e2907a",
+            "title": "Maximum likelihood from incomplete data via the EM - algorithm plus discussions on the paper"
+        },
+        {
+            "paperId": null,
+            "title": "Received January"
+        },
+        {
+            "paperId": null,
+            "title": "Matrix recipes. MPLab tutorials. Available online at http:// mplab.ucsd.edu"
+        },
+        {
+            "paperId": "e270bfa5b662c531a61a5b274da636603c23a734",
+            "title": "On Contrastive Divergence Learning"
+        },
+        {
+            "paperId": "f9b93a69f2ff9d1e5243a4a0cbc71813f8ea1d02",
+            "title": "An analysis of contrastive divergence learning in gaussian boltzmann machines"
+        },
+        {
+            "paperId": "6069ec0d0387b3f3516ae83ff108a581f10a76e4",
+            "title": "Failures of the One-Step Learning Algorithm"
+        },
+        {
+            "paperId": "a22b36cf5dba3e85eb064220be7ef03be4efba48",
+            "title": "Bayesian learning for neural networks"
+        },
+        {
+            "paperId": "fbbc2c872544225397d0cff190844c99fb872792",
+            "title": "Stochastic Differential Equations"
+        },
+        {
+            "paperId": null,
+            "title": "Movellan"
+        }
+    ]
+}

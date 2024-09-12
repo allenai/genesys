@@ -1,0 +1,106 @@
+{
+    "paperId": "5786917220aab2f6d0b00606eee9fe0ad0700f1b",
+    "externalIds": {
+        "MAG": "2963837241",
+        "ArXiv": "1810.02032",
+        "DBLP": "journals/corr/abs-1810-02032",
+        "CorpusId": 52920337
+    },
+    "title": "Gradient descent aligns the layers of deep linear networks",
+    "abstract": "This paper establishes risk convergence and asymptotic weight matrix alignment --- a form of implicit regularization --- of gradient flow and gradient descent when applied to deep linear networks on linearly separable data. In more detail, for gradient flow applied to strictly decreasing loss functions (with similar results for gradient descent with particular decreasing step sizes): (i) the risk converges to 0; (ii) the normalized i-th weight matrix asymptotically equals its rank-1 approximation $u_iv_i^{\\top}$; (iii) these rank-1 matrices are aligned across layers, meaning $|v_{i+1}^{\\top}u_i|\\to1$. In the case of the logistic loss (binary cross entropy), more can be said: the linear function induced by the network --- the product of its weight matrices --- converges to the same direction as the maximum margin solution. This last property was identified in prior work, but only under assumptions on gradient descent which here are implied by the alignment phenomenon.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2018,
+    "referenceCount": 18,
+    "citationCount": 224,
+    "influentialCitationCount": 28,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper establishes risk convergence and asymptotic weight matrix alignment --- a form of implicit regularization --- of gradient flow and gradient descent when applied to deep linear networks on linearly separable data."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2099822432",
+            "name": "Ziwei Ji"
+        },
+        {
+            "authorId": "1750943",
+            "name": "Matus Telgarsky"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "0e662587c790e5d11475f5b0bce3638b4d1effa0",
+            "title": "Algorithmic Regularization in Learning Deep Homogeneous Models: Layers are Automatically Balanced"
+        },
+        {
+            "paperId": "67a97032fd3ad81cda45e1e5d4a1a7d851494525",
+            "title": "Implicit Bias of Gradient Descent on Linear Convolutional Networks"
+        },
+        {
+            "paperId": "4a5a17d7849b91a3af583c7b99403844e1a5cdb1",
+            "title": "Risk and parameter convergence of logistic regression"
+        },
+        {
+            "paperId": "6ea8cbf0cc4cda3d981348a279b464524a8485cc",
+            "title": "On the Optimization of Deep Networks: Implicit Acceleration by Overparameterization"
+        },
+        {
+            "paperId": "e3b7201deb277dbc1ce1f1849cf099c71b2ff3a1",
+            "title": "Deep linear neural networks with arbitrary loss: All local minima are global"
+        },
+        {
+            "paperId": "f5b4a1e060161cdb07352dc66bf35690e5a3cfcd",
+            "title": "Critical Points of Linear Neural Networks: Analytical Forms and Landscape Properties"
+        },
+        {
+            "paperId": "11adc8bd35bd897502f9b5452ab7ac668ec9b0fb",
+            "title": "The Implicit Bias of Gradient Descent on Separable Data"
+        },
+        {
+            "paperId": "9753967a3af8e1db1e2da52a9bb3255bd1ce5c51",
+            "title": "Spectrally-normalized margin bounds for neural networks"
+        },
+        {
+            "paperId": "2f6e3ded0892422cdd61d407c5b2ee9e5e324929",
+            "title": "Depth Creates No Bad Local Minima"
+        },
+        {
+            "paperId": "54ddb00fa691728944fd8becea90a373d21597cf",
+            "title": "Understanding deep learning requires rethinking generalization"
+        },
+        {
+            "paperId": "9b8be6c3ebd7a79975067214e5eaea05d4ac2384",
+            "title": "Gradient Descent Converges to Minimizers"
+        },
+        {
+            "paperId": "075f328ef87a076151feb4d5b1f97b66aa597a90",
+            "title": "Convex Optimization: Algorithms and Complexity"
+        },
+        {
+            "paperId": "99c970348b8f70ce23d6641e201904ea49266b6e",
+            "title": "Exact solutions to the nonlinear dynamics of learning in deep linear neural networks"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": null,
+            "title": "Proof of Lemma 2. The first claim is true for k = L since WL is a row vector. For any 1 \u2264 k < L, recall that Arora et al"
+        },
+        {
+            "paperId": null,
+            "title": "2017) Lemma 12 proves that, with probability 1, there are at most d support vectors, and moreover, the i-th support vector zi has a positive dual variable \u03b1i"
+        },
+        {
+            "paperId": "9952d4d5717afd4a27157ed8b98b0ee3dcb70d6c",
+            "title": "ImageNet Classification with Deep Convolutional Neural"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        }
+    ]
+}

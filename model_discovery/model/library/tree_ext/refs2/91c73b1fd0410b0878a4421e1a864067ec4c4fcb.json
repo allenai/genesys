@@ -1,0 +1,94 @@
+{
+    "paperId": "91c73b1fd0410b0878a4421e1a864067ec4c4fcb",
+    "externalIds": {
+        "DBLP": "journals/tsp/BeliczynskiKC92",
+        "MAG": "2143511555",
+        "DOI": "10.1109/78.120796",
+        "CorpusId": 206461440
+    },
+    "title": "Approximation of FIR by IIR digital filters: an algorithm based on balanced model reduction",
+    "abstract": "An algorithm for the approximation of finite impulse response (FIR) filters by infinite impulse response (IIR) filters is presented. The algorithm is based on a concept of balanced model reduction. The matrix inversions normally associated with this procedure are notoriously error prone due to ill conditioning of the special matrix forms required. This difficulty is circumvented here by directly formulating a reduced state-space system description which is input/output equivalent to the system that would more conventionally be obtained following the explicit step of constructing an (interim) balanced realization. Examples of FIR by IIR filter approximations are included. >",
+    "venue": "IEEE Transactions on Signal Processing",
+    "year": 1992,
+    "referenceCount": 14,
+    "citationCount": 169,
+    "influentialCitationCount": 13,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An algorithm for the approximation of finite impulse response filters by infinite impulse response (IIR) filters is presented, based on a concept of balanced model reduction, which formulating a reduced state-space system description is input/output equivalent to the system that would more conventionally be obtained following the explicit step of constructing an (interim) balanced realization."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1685917",
+            "name": "B. Beliczynski"
+        },
+        {
+            "authorId": "1708095",
+            "name": "I. Kale"
+        },
+        {
+            "authorId": "34866863",
+            "name": "G. Cain"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "a6ddee8f3e4839bfa9da9ecfc24439ea5709828e",
+            "title": "Model reduction with balanced realizations: An error bound and a frequency weighted generalization"
+        },
+        {
+            "paperId": "73fcf308f76d7bf7a4602116ff80c873ff099df0",
+            "title": "All optimal Hankel-norm approximations of linear multivariable systems and their L, \u221e -error bounds\u2020"
+        },
+        {
+            "paperId": "b0bce605aa4b9b41db04380d8b30c9a9c3be07dd",
+            "title": "On the approximation of FIR by IIR digital filters"
+        },
+        {
+            "paperId": "dc3dc5b8b5180c88c1c7cacef6e70f689447e661",
+            "title": "Model reduction via balanced state space representations"
+        },
+        {
+            "paperId": "64b14a6fa2438ad0d38677aee7fbce4f592364ad",
+            "title": "On approximating an FIR filter using discrete orthonormal exponentials"
+        },
+        {
+            "paperId": "187c4d5717b6d525eb943282daac2cf26745eb5e",
+            "title": "Principal component analysis in linear systems: Controllability, observability, and model reduction"
+        },
+        {
+            "paperId": "20b5fa377889de0452cd8d3de62c9899b9a4ade8",
+            "title": "Optimal Hankel-norm model reductions: Multivariable systems"
+        },
+        {
+            "paperId": null,
+            "title": "An Introduction to Hilbert Spuce"
+        },
+        {
+            "paperId": null,
+            "title": "Approximation of the frequency response of a FIR filter by an IIR filter . \u201d in"
+        },
+        {
+            "paperId": "1b34fb035252965e7fca3a5338e6e009a1ba903c",
+            "title": "Optimal approximation of linear systems"
+        },
+        {
+            "paperId": "1d0f9897b3cc4843fe596726c3695ce597cbcfdc",
+            "title": "A new identification and model reduction algorithm via singular value decomposition"
+        },
+        {
+            "paperId": "265d331e31ba60b469c26c23e67c5964727c788a",
+            "title": "DIGITAL FILTER DESIGN"
+        },
+        {
+            "paperId": null,
+            "title": "Theory ofMotrices. Moscow: Nauka, 1966, second Ed.; English translation, New York: Chelsea, 1959"
+        },
+        {
+            "paperId": null,
+            "title": "\u201cBalanced approximation of digital FIR filter with linear phase characteristics.\u201d"
+        }
+    ]
+}

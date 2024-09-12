@@ -1,0 +1,97 @@
+{
+    "paperId": "774fb9d4934cfcbb2ed5d2b20d7b85735aed0e6a",
+    "externalIds": {
+        "DBLP": "journals/siamrev/GreengardL04",
+        "MAG": "2012300893",
+        "DOI": "10.1137/S003614450343200X",
+        "CorpusId": 9092824
+    },
+    "title": "Accelerating the Nonuniform Fast Fourier Transform",
+    "abstract": "The nonequispaced Fourier transform arises in a variety of application areas, from medical imaging to radio astronomy to the numerical solution of partial differential equations. In a typical problem, one is given an irregular sampling of N data in the frequency domain and one is interested in reconstructing the corresponding function in the physical domain. When the sampling is uniform, the fast Fourier transform (FFT) allows this calculation to be computed in O(N log N ) operations rather than O(N 2 ) operations. Unfortunately, when the sampling is nonuniform, the FFT does not apply. Over the last few years, a number of algorithms have been developed to overcome this limitation and are often referred to as nonuniform FFTs (NUFFTs). These rely on a mixture of interpolation and the judicious use of the FFT on an oversampled grid (A. Dutt and V. Rokhlin, SIAM J. Sci. Comput., 14 (1993), pp. 1368-1383). In this paper, we observe that one of the standard interpolation or \"gridding\" schemes, based on Gaussians, can be accelerated by a significant factor without precomputation and storage of the interpolation weights. This is of particular value in two- and three- dimensional settings, saving either 10 d N in storage in d dimensions or a factor of about 5-10 in CPUtime (independent of dimension).",
+    "venue": "SIAM Review",
+    "year": 2004,
+    "referenceCount": 15,
+    "citationCount": 713,
+    "influentialCitationCount": 80,
+    "openAccessPdf": {
+        "url": "http://math.nyu.edu/faculty/greengar/glee_nufft_sirev.pdf",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper observes that one of the standard interpolation or \"gridding\" schemes, based on Gaussians, can be accelerated by a significant factor without precomputation and storage of the interpolation weights, of particular value in two- and three- dimensional settings."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1809909",
+            "name": "L. Greengard"
+        },
+        {
+            "authorId": "102523585",
+            "name": "June-Yub Lee"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "d372abe997c24a58c29d13bdfbb1c92a3ba1eb72",
+            "title": "Nonuniform fast Fourier transforms using min-max interpolation"
+        },
+        {
+            "paperId": "f35326d8e2bc55a7a174c39948ecd23d2d56f267",
+            "title": "Direct reconstruction of non\u2010Cartesian k\u2010space data using a nonuniform fast Fourier transform"
+        },
+        {
+            "paperId": "91fcd433ea5701882091c13d22653ae9765b0a40",
+            "title": "Spectral Approximation of the Free-Space Heat Kernel"
+        },
+        {
+            "paperId": "3c3a6660d675ddb2239c1e8c253ff8b98eb3eb4d",
+            "title": "The Regular Fourier Matrices and Nonuniform Fast Fourier Transforms"
+        },
+        {
+            "paperId": "b49a55c1b3603eb1f58e114e7f37299468abc030",
+            "title": "Fast Approximate Fourier Transforms for Irregularly Spaced Data"
+        },
+        {
+            "paperId": "c0010b5cc9c23c5bdf324b2098fc0368e3db5d1a",
+            "title": "Rapid Computation of the Discrete Fourier Transform"
+        },
+        {
+            "paperId": "9fd91403d7cf0115c033dcc9320b8d11122ca32e",
+            "title": "On the Fast Fourier Transform of Functions with Singularities"
+        },
+        {
+            "paperId": "b8286cfb324be2162258decff7791d375b33d9bd",
+            "title": "Fast Fourier Transforms for Nonequispaced Data: A Tutorial"
+        },
+        {
+            "paperId": "3ca58ebd5572ef642cdbbda7db8d0a6952f8b9a4",
+            "title": "Reconstruction of MRI Images from Non-Uniform Sampling and Its Application to Intrascan Motion Correction in Functional MRI"
+        },
+        {
+            "paperId": "9e8e5f2ea067948fa3a5f6032bc2fcb6fecafbdc",
+            "title": "An accurate algorithm for nonuniform fast Fourier transforms (NUFFT's)"
+        },
+        {
+            "paperId": null,
+            "title": "Multidimensional Fourier transformation in magnetic resonance imaging, in The Fourier Transformation in Biomedical Engineering"
+        },
+        {
+            "paperId": "db27b037d4e40c3a4ac523056e7d62868aad8ae4",
+            "title": "Selection of a convolution function for Fourier inversion using gridding [computerised tomography application]."
+        },
+        {
+            "paperId": "0997d1898c85d7541462f7da5a5419a9c65df78e",
+            "title": "A Fast Sinc Function Gridding Algorithm for Fourier Inversion in Computer Tomography"
+        },
+        {
+            "paperId": "1c7c4254d54b941800170d54e9985c41c97a49f9",
+            "title": "Interpolation and Fourier transformation of fringe visibilities"
+        },
+        {
+            "paperId": "4ff27b81be60fe934b6581897c1e6f9067676dcf",
+            "title": "FAST FOURIER TRANSFORMS FOR NONEQUISPACED DATA *"
+        }
+    ]
+}

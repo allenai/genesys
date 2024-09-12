@@ -1,0 +1,162 @@
+{
+    "paperId": "fba71eefd060e30f3516fdd46df9a191cd0aaaf7",
+    "externalIds": {
+        "MAG": "2179423374",
+        "ArXiv": "1511.06297",
+        "DBLP": "journals/corr/BengioBPP15",
+        "CorpusId": 16049527
+    },
+    "title": "Conditional Computation in Neural Networks for faster models",
+    "abstract": "Deep learning has become the state-of-art tool in many applications, but the evaluation and training of deep models can be time-consuming and computationally expensive. The conditional computation approach has been proposed to tackle this problem (Bengio et al., 2013; Davis & Arel, 2013). It operates by selectively activating only parts of the network at a time. In this paper, we use reinforcement learning as a tool to optimize conditional computation policies. More specifically, we cast the problem of learning activation-dependent policies for dropping out blocks of units as a reinforcement learning problem. We propose a learning scheme motivated by computation speed, capturing the idea of wanting to have parsimonious activations while maintaining prediction accuracy. We apply a policy gradient algorithm for learning policies that optimize this loss function and propose a regularization mechanism that encourages diversification of the dropout policy. We present encouraging empirical results showing that this approach improves the speed of computation without impacting the quality of the approximation.",
+    "venue": "arXiv.org",
+    "year": 2015,
+    "referenceCount": 30,
+    "citationCount": 291,
+    "influentialCitationCount": 21,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper applies a policy gradient algorithm for learning policies that optimize this loss function and proposes a regularization mechanism that encourages diversification of the dropout policy and presents encouraging empirical results showing that this approach improves the speed of computation without impacting the quality of the approximation."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2416433",
+            "name": "Emmanuel Bengio"
+        },
+        {
+            "authorId": "145180695",
+            "name": "Pierre-Luc Bacon"
+        },
+        {
+            "authorId": "145134886",
+            "name": "Joelle Pineau"
+        },
+        {
+            "authorId": "144368601",
+            "name": "Doina Precup"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "a2785f66c20fbdf30ec26c0931584c6d6a0f4fca",
+            "title": "DRAW: A Recurrent Neural Network For Image Generation"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "d6f2f611da110b5b5061731be3fc4c7f45d8ee23",
+            "title": "Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification"
+        },
+        {
+            "paperId": "8829e3873846c6bbad5aca111e64f9d2c1b24299",
+            "title": "Deep Sequential Neural Network"
+        },
+        {
+            "paperId": "70155488a49d51755c1dfea728e03a6dd72703a1",
+            "title": "Deep Networks with Internal Selective Attention through Feedback Connections"
+        },
+        {
+            "paperId": "8a756d4d25511d92a45d0f4545fa819de993851d",
+            "title": "Recurrent Models of Visual Attention"
+        },
+        {
+            "paperId": "687d0e59d5c35f022ce4638b3e3a6142068efc94",
+            "title": "Deterministic Policy Gradient Algorithms"
+        },
+        {
+            "paperId": "cf3229e74f912ef365d67d1954441b32ce2573ee",
+            "title": "Low-Rank Approximations for Conditional Feedforward Computation in Deep Neural Networks"
+        },
+        {
+            "paperId": "f9f19bee621faf46f90b023f8de8248b57becbc4",
+            "title": "Adaptive dropout for training deep neural networks"
+        },
+        {
+            "paperId": "62c76ca0b2790c34e85ba1cce09d47be317c7235",
+            "title": "Estimating or Propagating Gradients Through Stochastic Neurons for Conditional Computation"
+        },
+        {
+            "paperId": "b6bfae6efa1110a57a4d8362721d152d78aae358",
+            "title": "A Survey on Policy Search for Robotics"
+        },
+        {
+            "paperId": "d124a098cdc6f99b9a152fcf8afa9327dac583be",
+            "title": "Dropout Training as Adaptive Regularization"
+        },
+        {
+            "paperId": "0060745e006c5f14ec326904119dca19c6545e51",
+            "title": "Improving neural networks by preventing co-adaptation of feature detectors"
+        },
+        {
+            "paperId": "4c46347fbc272b21468efe3d9af34b4b2bad6684",
+            "title": "Deep learning via Hessian-free optimization"
+        },
+        {
+            "paperId": "ea9d2a2b4ce11aaf85136840c65f3bc9c03ab649",
+            "title": "Understanding the difficulty of training deep feedforward neural networks"
+        },
+        {
+            "paperId": "61a1565016477b2092a212e7af0e789a250bc552",
+            "title": "Pattern Recognition and Machine Learning (Information Science and Statistics)"
+        },
+        {
+            "paperId": "a9cd8efe9184dddb1bedbbec3a356c4dfb22fe63",
+            "title": "Markov Decision Processes: Discrete Stochastic Dynamic Programming"
+        },
+        {
+            "paperId": "d0be39ee052d246ae99c082a565aba25b811be2d",
+            "title": "Learning long-term dependencies with gradient descent is difficult"
+        },
+        {
+            "paperId": "c6867b6b564462d6b902f68e0bfa58f4717ca1cc",
+            "title": "Fast Exact Multiplication by the Hessian"
+        },
+        {
+            "paperId": "052b1d8ce63b07fec3de9dbb583772d860b7c769",
+            "title": "Learning representations by back-propagating errors"
+        },
+        {
+            "paperId": "e4351041d25c272a008bcd5765868dc3a28fe470",
+            "title": "Under Review as a Conference Paper at Iclr 2017 Delving into Transferable Adversarial Ex- Amples and Black-box Attacks"
+        },
+        {
+            "paperId": "dcaedb77f2ece630e7510a20cc0f100fc5281017",
+            "title": "Advances in Neural Information Processing Systems 27"
+        },
+        {
+            "paperId": "02227c94dd41fe0b439e050d377b0beb5d427cda",
+            "title": "Reading Digits in Natural Images with Unsupervised Feature Learning"
+        },
+        {
+            "paperId": null,
+            "title": "Theano: a CPU and GPU math expression compiler"
+        },
+        {
+            "paperId": null,
+            "title": "Theano: a CPU Under review as a conference paper at ICLR 2016 and GPU math expression compiler"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        },
+        {
+            "paperId": "4c915c1eecb217c123a36dc6d3ce52d12c742614",
+            "title": "Simple Statistical Gradient-Following Algorithms for Connectionist Reinforcement Learning"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "97efafdb4a3942ab3efba53ded7413199f79c054",
+            "title": "Reinforcement Learning: An Introduction"
+        },
+        {
+            "paperId": "3f3d13e95c25a8f6a753e38dfce88885097cbd43",
+            "title": "Untersuchungen zu dynamischen neuronalen Netzen"
+        }
+    ]
+}

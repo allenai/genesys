@@ -1,0 +1,282 @@
+{
+    "paperId": "eefa0df7c5678fa6004f8b48dbbc1c2696702fee",
+    "externalIds": {
+        "DBLP": "journals/corr/abs-1812-06162",
+        "ArXiv": "1812.06162",
+        "MAG": "2903697572",
+        "CorpusId": 56262183
+    },
+    "title": "An Empirical Model of Large-Batch Training",
+    "abstract": "In an increasing number of domains it has been demonstrated that deep learning models can be trained using relatively large batch sizes without sacrificing data efficiency. However the limits of this massive data parallelism seem to differ from domain to domain, ranging from batches of tens of thousands in ImageNet to batches of millions in RL agents that play the game Dota 2. To our knowledge there is limited conceptual understanding of why these limits to batch size differ or how we might choose the correct batch size in a new domain. In this paper, we demonstrate that a simple and easy-to-measure statistic called the gradient noise scale predicts the largest useful batch size across many domains and applications, including a number of supervised learning datasets (MNIST, SVHN, CIFAR-10, ImageNet, Billion Word), reinforcement learning domains (Atari and Dota), and even generative model training (autoencoders on SVHN). We find that the noise scale increases as the loss decreases over a training run and depends on the model size primarily through improved model performance. Our empirically-motivated theory also describes the tradeoff between compute-efficiency and time-efficiency, and provides a rough model of the benefits of adaptive batch-size training.",
+    "venue": "arXiv.org",
+    "year": 2018,
+    "referenceCount": 60,
+    "citationCount": 224,
+    "influentialCitationCount": 29,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is demonstrated that a simple and easy-to-measure statistic called the gradient noise scale predicts the largest useful batch size across many domains and applications, including a number of supervised learning datasets, reinforcement learning domains, and even generative model training (autoencoders on SVHN)."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "52238703",
+            "name": "Sam McCandlish"
+        },
+        {
+            "authorId": "152724169",
+            "name": "J. Kaplan"
+        },
+        {
+            "authorId": "2698777",
+            "name": "Dario Amodei"
+        },
+        {
+            "authorId": "52238704",
+            "name": "OpenAI Dota Team"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "b2c8e834ac5f7be68b9ca3691d39925036dd74a3",
+            "title": "Measuring the Effects of Data Parallelism on Neural Network Training"
+        },
+        {
+            "paperId": "b940297d5e13c2c0d75c4d0acc8888084251058a",
+            "title": "Are Deep Policy Gradient Algorithms Truly Policy Gradient Algorithms?"
+        },
+        {
+            "paperId": "22aab110058ebbd198edb1f1e7b4f69fb13c0613",
+            "title": "Large Scale GAN Training for High Fidelity Natural Image Synthesis"
+        },
+        {
+            "paperId": "653335c645c594a02df3081a72ea3eb6bd39d311",
+            "title": "Gradient Descent Happens in a Tiny Subspace"
+        },
+        {
+            "paperId": "3fd9e04da135496bcd75e884b5cd2ecee656a67d",
+            "title": "On the Computational Inefficiency of Large Batch Sizes for Stochastic Gradient Descent"
+        },
+        {
+            "paperId": "cc99cea345e6905172c1661748b96744181196e4",
+            "title": "Large Scale Language Modeling: Converging on 40GB of Text in Four Hours"
+        },
+        {
+            "paperId": "a82fc0115c1802d48d352b35595204738fad84f0",
+            "title": "Highly Scalable Deep Learning Training System with Mixed-Precision: Training ImageNet in Four Minutes"
+        },
+        {
+            "paperId": "a138415032b1ee0cb2fa2763cba1f3f9e2d9bbe7",
+            "title": "The Effect of Network Width on the Performance of Large-batch Training"
+        },
+        {
+            "paperId": "bf8fe437f779f2098f9af82b534aa51dc9edb06f",
+            "title": "Scaling Neural Machine Translation"
+        },
+        {
+            "paperId": "67ee02edb5d969c0657314ed6c1a6ed62121ac29",
+            "title": "Accelerated Methods for Deep Reinforcement Learning"
+        },
+        {
+            "paperId": "9cb2a7e69daaefbe84e98cab721aa7db23ead5d6",
+            "title": "Understanding Short-Horizon Bias in Stochastic Meta-Optimization"
+        },
+        {
+            "paperId": "d55d1d035e91220335edff0fe8f5d249d8c4a00b",
+            "title": "Measuring the Intrinsic Dimension of Objective Landscapes"
+        },
+        {
+            "paperId": "601a2d349fc26d7b82f905e924e2f91b0ac4b310",
+            "title": "Distributed Prioritized Experience Replay"
+        },
+        {
+            "paperId": "211f5fe3fc083e02f209707cbd681a8b1ee2f65c",
+            "title": "Distributed Deep Reinforcement Learning: Learn how to play Atari games in 21 minutes"
+        },
+        {
+            "paperId": "f8dccc59fae4b86b955630f21f9558a194ca4f70",
+            "title": "The Power of Interpolation: Understanding the Effectiveness of SGD in Modern Over-parametrized Learning"
+        },
+        {
+            "paperId": "ebe8196d81e63691d2e91d2373a2f9980fc13aa2",
+            "title": "AdaBatch: Adaptive Batch Sizes for Training Deep Neural Networks"
+        },
+        {
+            "paperId": "a1c922be467d1c0c64b963e65dae41778b81b2a0",
+            "title": "Deep Learning Scaling is Predictable, Empirically"
+        },
+        {
+            "paperId": "6cd621c0973c915895d88a391783063b20e98855",
+            "title": "Extremely Large Minibatch SGD: Training ResNet-50 on ImageNet in 15 Minutes"
+        },
+        {
+            "paperId": "3299aee7a354877e43339d06abb967af2be8b872",
+            "title": "Don't Decay the Learning Rate, Increase the Batch Size"
+        },
+        {
+            "paperId": "ae4b0b63ff26e52792be7f60bda3ed5db83c1577",
+            "title": "A Bayesian Perspective on Generalization and Stochastic Gradient Descent"
+        },
+        {
+            "paperId": "6fc2ccc1cbb555955291b0989251bd77240dd551",
+            "title": "ImageNet Training in Minutes"
+        },
+        {
+            "paperId": "1e3d18beaf3921f561e1b999780f29f2b23f3b7d",
+            "title": "Large Batch Training of Convolutional Networks"
+        },
+        {
+            "paperId": "dce6f9d4017b1785979e7520fd0834ef8cf02f4b",
+            "title": "Proximal Policy Optimization Algorithms"
+        },
+        {
+            "paperId": "6cbbcfd0c5df424d66d4aae01bde0d8731384799",
+            "title": "Gradient Diversity: a Key Ingredient for Scalable Distributed Learning"
+        },
+        {
+            "paperId": "0d57ba12a6d958e178d83be4c84513f7e42b24e5",
+            "title": "Accurate, Large Minibatch SGD: Training ImageNet in 1 Hour"
+        },
+        {
+            "paperId": "8501e330d78391f4e690886a8eb8fac867704ea6",
+            "title": "Train longer, generalize better: closing the generalization gap in large batch training of neural networks"
+        },
+        {
+            "paperId": "ea68a5c75e0e228e54efd91db972f71c1a917e51",
+            "title": "Stochastic Gradient Descent as Approximate Bayesian Inference"
+        },
+        {
+            "paperId": "3e8ccf9d3d843c9855c5d76ab66d3e775384da72",
+            "title": "Why Momentum Really Works"
+        },
+        {
+            "paperId": "267980e417f1d01a897e87fa409f64e2a76b96cd",
+            "title": "Opening the Black Box of Deep Neural Networks via Information"
+        },
+        {
+            "paperId": "29d9fa0527ccc9d0092bad9deca4109288acd85f",
+            "title": "Coupling Adaptive Batch Sizes with Learning Rates"
+        },
+        {
+            "paperId": "0c7a93498360ce6c0ff1a7c37fd9b6aa0c054f85",
+            "title": "Distributed Second-Order Optimization using Kronecker-Factored Approximations"
+        },
+        {
+            "paperId": "efcdc46fb412775e0f80d9291f177439f664ebea",
+            "title": "Big Batch SGD: Automated Inference using Adaptive Batch Sizes"
+        },
+        {
+            "paperId": "8ec5896b4490c6e127d1718ffc36a3439d84cb81",
+            "title": "On Large-Batch Training for Deep Learning: Generalization Gap and Sharp Minima"
+        },
+        {
+            "paperId": "d21703674ae562bae4a849a75847cdd9ead417df",
+            "title": "Optimization Methods for Large-Scale Machine Learning"
+        },
+        {
+            "paperId": "eb7ee0bc355652654990bcf9f92f124688fde493",
+            "title": "InfoGAN: Interpretable Representation Learning by Information Maximizing Generative Adversarial Nets"
+        },
+        {
+            "paperId": "69e76e16740ed69f4dc55361a3d319ac2f1293dd",
+            "title": "Asynchronous Methods for Deep Reinforcement Learning"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "a546966db50cc8fdef98bb744990f35248932930",
+            "title": "Adding Gradient Noise Improves Learning for Very Deep Networks"
+        },
+        {
+            "paperId": "1518039b5001f1836565215eb047526b3ac7f462",
+            "title": "Neural Machine Translation of Rare Words with Subword Units"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "4d4d09ae8f6a11547441f7fee36405758102a801",
+            "title": "Qualitatively characterizing neural network optimization problems"
+        },
+        {
+            "paperId": "5f5dc5b9a2ba710937e2c413b37b053cd673df02",
+            "title": "Auto-Encoding Variational Bayes"
+        },
+        {
+            "paperId": "5d833331b0e22ff359db05c62a8bca18c4f04b68",
+            "title": "One billion word benchmark for measuring progress in statistical language modeling"
+        },
+        {
+            "paperId": "aa7bfd2304201afbb19971ebde87b17e40242e91",
+            "title": "On the importance of initialization and momentum in deep learning"
+        },
+        {
+            "paperId": "d254b4a5232f82d1bf4c76c04fd38f1f109a0d32",
+            "title": "Sample size selection in optimization methods for machine learning"
+        },
+        {
+            "paperId": "f82e4ff4f003581330338aaae71f60316e58dd26",
+            "title": "The Arcade Learning Environment: An Evaluation Platform for General Agents"
+        },
+        {
+            "paperId": "e5a685f40338f9c2f3e68e142efa217aad16dd56",
+            "title": "No more pesky learning rates"
+        },
+        {
+            "paperId": "d2c733e34d48784a37d717fe43d9e93277a8c53e",
+            "title": "ImageNet: A large-scale hierarchical image database"
+        },
+        {
+            "paperId": "6a1decd5e8507a845e77a43969d11592d9aa496f",
+            "title": "TrueSkillTM: A Bayesian Skill Rating System"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": null,
+            "title": "AI and Compute, May 2018"
+        },
+        {
+            "paperId": null,
+            "title": "Curtis , and Jorge Nocedal"
+        },
+        {
+            "paperId": "6e2336f6463b53eb48baff18abc51a08143692b6",
+            "title": "Sample Size Determination"
+        },
+        {
+            "paperId": "02227c94dd41fe0b439e050d377b0beb5d427cda",
+            "title": "Reading Digits in Natural Images with Unsupervised Feature Learning"
+        },
+        {
+            "paperId": null,
+            "title": "handwritten digit database"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        },
+        {
+            "paperId": null,
+            "title": "Selecting sample sizes"
+        },
+        {
+            "paperId": null,
+            "title": "More on Dota 2"
+        },
+        {
+            "paperId": null,
+            "title": "OpenAI Five"
+        },
+        {
+            "paperId": null,
+            "title": "Tensorflow official models"
+        }
+    ]
+}

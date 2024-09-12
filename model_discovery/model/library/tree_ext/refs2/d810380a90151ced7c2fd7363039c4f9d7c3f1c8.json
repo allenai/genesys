@@ -1,0 +1,101 @@
+{
+    "paperId": "d810380a90151ced7c2fd7363039c4f9d7c3f1c8",
+    "externalIds": {
+        "MAG": "3046292065",
+        "DBLP": "journals/siamsc/PanS91",
+        "DOI": "10.1137/0912058",
+        "CorpusId": 16099654
+    },
+    "title": "An Improved Newton Iteration for the Generalized Inverse of a Matrix, with Applications",
+    "abstract": "Pan and Reif have shown that Newton iteration may be used to compute the inverse of an $n \\times n$, well-conditioned matrix in parallel time $O(\\log ^2 n)$ and that this computation is processor efficient. Since the algorithm essentially amounts to a sequence of matrix\u2013matrix multiplications, it can be implemented with great efficiency on systolic arrays and parallel computers.Newton's method is expensive in terms of the arithmetic operation count. In this paper the cost of Newton's method is reduced with several new acceleration procedures. A speedup by a factor of two is obtained for arbitrary input matrices; for symmetric positive definite matrices, the factor is four. It is also shown that the accelerated procedure is a form of Tchebychev acceleration, whereas Newton's method uses a Neumann series approximation.In addition, Newton-like procedures are developed for a number of important related problems. It is also shown how to compute the nearest matrices of lower rank to a given matrix A, the generalized inverses of these nearby matrices, their ranks (as a function of their distances from A), and projections onto subspaces spanned by singular vectors; such computations are impodrtant in signal processing applications. Furthermore, it is demonstrated that the numerical instability of Newton's method when applied to a singular matrix is absent from these improved methods. Finally, the use of these tools to devise new polylog time parallel algorithms for the singular value decomposition is explored.",
+    "venue": "SIAM Journal on Scientific Computing",
+    "year": 1991,
+    "referenceCount": 16,
+    "citationCount": 197,
+    "influentialCitationCount": 17,
+    "openAccessPdf": {
+        "url": "https://ntrs.nasa.gov/api/citations/19920002505/downloads/19920002505.pdf",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is demonstrated that the numerical instability of Newton's method when applied to a singular matrix is absent from these improved methods, and the use of these tools to devise new polylog time parallel algorithms for the singular value decomposition is explored."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1766306",
+            "name": "V. Pan"
+        },
+        {
+            "authorId": "143986781",
+            "name": "R. Schreiber"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "166641a1c482e2aadbafed7d5f7e637924442237",
+            "title": "A set of level 3 basic linear algebra subprograms"
+        },
+        {
+            "paperId": "408a8e250316863da94ffb3eab077175d08c01bf",
+            "title": "Multiple emitter location and signal Parameter estimation"
+        },
+        {
+            "paperId": "d9747cf951d1a1acde04a9aa60e34b277d672731",
+            "title": "Efficient parallel solution of linear systems"
+        },
+        {
+            "paperId": "ab3c67dff1bf85038d59785e76b805a5452c4324",
+            "title": "Computing generalized inverses and eigenvalues of symmetric matrices using sytolic arrays"
+        },
+        {
+            "paperId": "531c0649f5c21ed5688385ea0af6bdcef34a9cd7",
+            "title": "On the Numerical Properties of an Iterative Method for Computing the Moore\u2013Penrose Generalized Inverse"
+        },
+        {
+            "paperId": "6000290a974012f7fb680d698261a625ba58d49d",
+            "title": "A note on an iterative method for generalized inversion of matrices"
+        },
+        {
+            "paperId": "709f3102347a44748a7bbcbe4b1273b07dc71661",
+            "title": "On Iterative Computation of Generalized Inverses and Associated Projections"
+        },
+        {
+            "paperId": "97bcf72235d145975e69969f251f6bc0e352582d",
+            "title": "Fast and Efficient Parallel Inversion of Toeplitz and Block Toeplitz Matrices"
+        },
+        {
+            "paperId": "026265fd001f8749aaed7169d679744bb6b41e62",
+            "title": "Fast and efficient parallel solution of dense linear systems"
+        },
+        {
+            "paperId": "9b0bd639ce23169a0194d6d99edb8e63e3453b7b",
+            "title": "Designing Efficient Algorithms for Parallel Computers"
+        },
+        {
+            "paperId": null,
+            "title": "Computation of the SingularValue Decomposition Using Mesh-Connected Processors"
+        },
+        {
+            "paperId": null,
+            "title": "The ConnectionMachine"
+        },
+        {
+            "paperId": null,
+            "title": "ComputationalMethods oflu'near Algebra"
+        },
+        {
+            "paperId": null,
+            "title": "New Effective Methods for Computations with Structured"
+        },
+        {
+            "paperId": null,
+            "title": "A New Acceleration of the Hilbert-Vandermonde Matrix Computations by Their Reduction to Hankel-Toeplitz Computations"
+        },
+        {
+            "paperId": null,
+            "title": "Iterative Bereclmung tier Rezipmken Matrix"
+        }
+    ]
+}

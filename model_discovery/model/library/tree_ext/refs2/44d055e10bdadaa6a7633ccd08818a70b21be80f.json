@@ -1,0 +1,178 @@
+{
+    "paperId": "44d055e10bdadaa6a7633ccd08818a70b21be80f",
+    "externalIds": {
+        "DBLP": "journals/corr/abs-1711-11179",
+        "ArXiv": "1711.11179",
+        "MAG": "2775002212",
+        "CorpusId": 21223277
+    },
+    "title": "State Space LSTM Models with Particle MCMC Inference",
+    "abstract": "Long Short-Term Memory (LSTM) is one of the most powerful sequence models. Despite the strong performance, however, it lacks the nice interpretability as in state space models. In this paper, we present a way to combine the best of both worlds by introducing State Space LSTM (SSL), which generalizes the earlier work \\cite{zaheer2017latent} of combining topic models with LSTM. However, unlike \\cite{zaheer2017latent}, we do not make any factorization assumptions in our inference algorithm. We present an efficient sampler based on sequential Monte Carlo (SMC) method that draws from the joint posterior directly. Experimental results confirms the superiority and stability of this SMC inference algorithm on a variety of domains.",
+    "venue": "arXiv.org",
+    "year": 2017,
+    "referenceCount": 32,
+    "citationCount": 43,
+    "influentialCitationCount": 3,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper presents an efficient sampler based on sequential Monte Carlo (SMC) method that draws from the joint posterior directly and confirms the superiority and stability of this SMC inference algorithm on a variety of domains."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2496226",
+            "name": "Xun Zheng"
+        },
+        {
+            "authorId": "1771307",
+            "name": "M. Zaheer"
+        },
+        {
+            "authorId": "143629707",
+            "name": "Amr Ahmed"
+        },
+        {
+            "authorId": "47905379",
+            "name": "Y. Wang"
+        },
+        {
+            "authorId": "143977260",
+            "name": "E. Xing"
+        },
+        {
+            "authorId": "46234526",
+            "name": "Alex Smola"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "55470ea8858d18e5c7675d2e717e2a0cd9a1e319",
+            "title": "Latent LSTM Allocation: Joint Clustering and Non-Linear Dynamic Modeling of Sequence Data"
+        },
+        {
+            "paperId": "fbb8aaac1b6bc7326fad06c4bb8ef10c61c8f1d2",
+            "title": "Variational Sequential Monte Carlo"
+        },
+        {
+            "paperId": "2d8ea7941e608dab54004eb13f494837dd96d83b",
+            "title": "Auto-Encoding Sequential Monte Carlo"
+        },
+        {
+            "paperId": "e55827ab064e5b807d7fb77ca961ea009013c75f",
+            "title": "Filtering Variational Objectives"
+        },
+        {
+            "paperId": "2af17f153e3fd71e15db9216b972aef222f46617",
+            "title": "Structured Inference Networks for Nonlinear State Space Models"
+        },
+        {
+            "paperId": "8de1d8425937890522118ca63781c3b318e79f2f",
+            "title": "Sequential Neural Models with Stochastic Layers"
+        },
+        {
+            "paperId": "6768ed8d51d1eb0d06f9726a42cef2f17a401f65",
+            "title": "Deep Variational Bayes Filters: Unsupervised Learning of State Space Models from Raw Data"
+        },
+        {
+            "paperId": "9ca3af4440eb4aa4fd0a65dfa559685b2c39cd42",
+            "title": "Composing graphical models with neural networks for structured representations and fast inference"
+        },
+        {
+            "paperId": "9c9d7247f8c51ec5a02b0d911d1d7b9e8160495d",
+            "title": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems"
+        },
+        {
+            "paperId": "9548025d2b14f887337e3972e20fb6a04ab8e09e",
+            "title": "BLACK BOX VARIATIONAL INFERENCE FOR STATE SPACE MODELS"
+        },
+        {
+            "paperId": "89e7593359c4e07b34a02644bfd9a2b5dd6c36f6",
+            "title": "Deep Kalman Filters"
+        },
+        {
+            "paperId": "0c3b69b5247ef18fd5bab1109d87a04184ea8f4b",
+            "title": "A Recurrent Latent Variable Model for Sequential Data"
+        },
+        {
+            "paperId": "40be3888daa5c2e5af4d36ae22f690bcc8caf600",
+            "title": "Visualizing and Understanding Recurrent Networks"
+        },
+        {
+            "paperId": "a2785f66c20fbdf30ec26c0931584c6d6a0f4fca",
+            "title": "DRAW: A Recurrent Neural Network For Image Generation"
+        },
+        {
+            "paperId": "cbec12feff814f4d4d11e892ecdbd93fd393cb64",
+            "title": "Learning Stochastic Recurrent Networks"
+        },
+        {
+            "paperId": "484ad17c926292fbe0d5211540832a8c8a8e958b",
+            "title": "Stochastic Backpropagation and Approximate Inference in Deep Generative Models"
+        },
+        {
+            "paperId": "e3417538b569b21971f3fbbdf8ea5ae5ebedfb48",
+            "title": "Learning visual motion in recurrent neural networks"
+        },
+        {
+            "paperId": "07c43a3ff15f2104022f2b1ca8ec4128a930b414",
+            "title": "Modeling Temporal Dependencies in High-Dimensional Sequences: Application to Polyphonic Music Generation and Transcription"
+        },
+        {
+            "paperId": "c52a9ee60e0c809a2cfafde72a0ced7ef694bcd6",
+            "title": "Particle Markov chain Monte Carlo methods"
+        },
+        {
+            "paperId": "36eb6fea39ce06e2807f074fa3d5e79ed0f2bcef",
+            "title": "Probabilistic Graphical Models: Principles and Techniques - Adaptive Computation and Machine Learning"
+        },
+        {
+            "paperId": "55ff7a422d828126f47762484548412954c32290",
+            "title": "Sequential Monte Carlo Methods in Practice"
+        },
+        {
+            "paperId": "f9d832f26883ef55433fc72c48f105b3de77e242",
+            "title": "Learning Nonlinear Dynamical Systems Using an EM Algorithm"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "a8b141556f2dd7694e5f6343f8ce3650f8ca5b60",
+            "title": "New extension of the Kalman filter to nonlinear systems"
+        },
+        {
+            "paperId": "2e3170f91e1d8037f8ba03286fa5ddd347a0b88e",
+            "title": "Parameter estimation for linear dynamical systems"
+        },
+        {
+            "paperId": "74510de3d1e995f065ce284f1a1a07ceb1446bcf",
+            "title": "On the maximum likelihood estimates for linear dynamic systems"
+        },
+        {
+            "paperId": "4574d77fff19e093782178595a8988a7f3aa1969",
+            "title": "Latent Dirichlet Allocation"
+        },
+        {
+            "paperId": "c19fbefdeead6a4154a22a9c8551a18b1530033a",
+            "title": "Hierarchical Probabilistic Neural Network Language Model"
+        },
+        {
+            "paperId": "255a77422b1da74da05d1714b7875356187385bd",
+            "title": "A New Approach to Linear Filtering and Prediction Problems"
+        },
+        {
+            "paperId": "4cf3569e045993dfe090749f26a55a768684ab86",
+            "title": "Mixture density networks"
+        },
+        {
+            "paperId": "41362d63f57e60f24d5060edc79181fb286de442",
+            "title": "CONDITIONAL MARKOV PROCESSES"
+        },
+        {
+            "paperId": null,
+            "title": "Kingma and Max Welling . Auto - Encoding Variational Bayes"
+        }
+    ]
+}

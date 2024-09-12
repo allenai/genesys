@@ -1,0 +1,174 @@
+{
+    "paperId": "5b8e5804c3adeb4a4e60f8f7d8d76aab0e02cfbe",
+    "externalIds": {
+        "MAG": "2593649546",
+        "ArXiv": "1703.00441",
+        "DBLP": "journals/corr/LiM17b",
+        "CorpusId": 3083502
+    },
+    "title": "Learning to Optimize Neural Nets",
+    "abstract": "Learning to Optimize is a recently proposed framework for learning optimization algorithms using reinforcement learning. In this paper, we explore learning an optimization algorithm for training shallow neural nets. Such high-dimensional stochastic optimization problems present interesting challenges for existing reinforcement learning algorithms. We develop an extension that is suited to learning optimization algorithms in this setting and demonstrate that the learned optimization algorithm consistently outperforms other known optimization algorithms even on unseen tasks and is robust to changes in stochasticity of gradients and the neural net architecture. More specifically, we show that an optimization algorithm trained with the proposed method on the problem of training a neural net on MNIST generalizes to the problems of training neural nets on the Toronto Faces Dataset, CIFAR-10 and CIFAR-100.",
+    "venue": "arXiv.org",
+    "year": 2017,
+    "referenceCount": 35,
+    "citationCount": 124,
+    "influentialCitationCount": 9,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An extension to Learning to Optimize is developed that is suited to learning optimization algorithms in this setting and it is demonstrated that the learned optimization algorithm consistently outperforms other known optimization algorithms even on unseen tasks and is robust to changes in stochasticity of gradients and the neural net architecture."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2149140383",
+            "name": "Ke Li"
+        },
+        {
+            "authorId": "143751119",
+            "name": "Jitendra Malik"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "71683e224ab91617950956b5005ed0439a733a71",
+            "title": "Learning to learn by gradient descent by gradient descent"
+        },
+        {
+            "paperId": "ead9a671428631e44f6fe49324efe69da628bc47",
+            "title": "Learning to Optimize"
+        },
+        {
+            "paperId": "1a3381c421b61bb1a133d96168fbd8634f6af331",
+            "title": "Deep Q-Networks for Accelerating the Training of Deep Neural Networks"
+        },
+        {
+            "paperId": "782869235b675af89e73a38a0ce209cfcdd5391b",
+            "title": "Using Deep Q-Learning to Control Optimization Hyperparameters"
+        },
+        {
+            "paperId": "fa2e56dce0718b922a2b61af48631f48126aff72",
+            "title": "Learning Step Size Controllers for Robust Neural Network Training"
+        },
+        {
+            "paperId": "b6b8a1b80891c96c28cc6340267b58186157e536",
+            "title": "End-to-End Training of Deep Visuomotor Policies"
+        },
+        {
+            "paperId": "e2820bffe5b42cb7d88b7f65c12171c62ab4aae2",
+            "title": "Gradient-based Hyperparameter Optimization through Reversible Learning"
+        },
+        {
+            "paperId": "9be7e7579fbec5d45e3e6ea1c4465258225a183d",
+            "title": "Initializing Bayesian Hyperparameter Optimization via Meta-Learning"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "35e7925616123355a232231deb2182fb38663214",
+            "title": "Multi-Task Bayesian Optimization"
+        },
+        {
+            "paperId": "cdfcac1e3291b10424b5858ac0ecc9daf702efc4",
+            "title": "Bregman Alternating Direction Method of Multipliers"
+        },
+        {
+            "paperId": "2e2089ae76fe914706e6fa90081a79c8fe01611e",
+            "title": "Practical Bayesian Optimization of Machine Learning Algorithms"
+        },
+        {
+            "paperId": "5b0a44014c24f9b584904bf223530a3b9fa9853f",
+            "title": "Generic Methods for Optimization-Based Modeling"
+        },
+        {
+            "paperId": "188e247506ad992b8bc62d6c74789e89891a984f",
+            "title": "Random Search for Hyper-Parameter Optimization"
+        },
+        {
+            "paperId": "03911c85305d42aa2eeb02be82ef6fb7da644dd0",
+            "title": "Algorithms for Hyper-Parameter Optimization"
+        },
+        {
+            "paperId": "413c1142de9d91804d6d11c67ff3fed59c9fc279",
+            "title": "Adaptive Subgradient Methods for Online Learning and Stochastic Optimization"
+        },
+        {
+            "paperId": "728744423ff0fb7e327664ed4e6352a95bb6c893",
+            "title": "Sequential Model-Based Optimization for General Algorithm Configuration"
+        },
+        {
+            "paperId": "e8f811399746c059bf4d4c3d43334045e0222209",
+            "title": "Learning Fast Approximations of Sparse Coding"
+        },
+        {
+            "paperId": "c26770f29afafe22f2a507506e3f43c413f6a619",
+            "title": "Learning Programs: A Hierarchical Bayesian Approach"
+        },
+        {
+            "paperId": "d1c1982954d44d06cedbfac67712397a3f37f466",
+            "title": "Optimization on a Budget: A Reinforcement Learning Approach"
+        },
+        {
+            "paperId": "9e6747daaf4608cca809470028d5083224a80025",
+            "title": "3D hand tracking by rapid stochastic gradient descent using a skinning model"
+        },
+        {
+            "paperId": "c8b5825b8994ce3c4dc7e603423d7d43a5ead15c",
+            "title": "Ranking Learning Algorithms: Using IBL and Meta-Learning on Accuracy and Time Results"
+        },
+        {
+            "paperId": "98f8a0055bb28133efcff359a92937324d0e6f51",
+            "title": "A Perspective View and Survey of Meta-Learning"
+        },
+        {
+            "paperId": "54d1ef1ad676ebb553ddba2f7ed217509e81797f",
+            "title": "Optimal Ordered Problem Solver"
+        },
+        {
+            "paperId": "e5ca0f1d79a5245ee5ddf6af80c01829bcac7340",
+            "title": "Gradient-Based Optimization of Hyperparameters"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "d130325c41947a41a55a4431e9e8e15be89da8ea",
+            "title": "Learning a synaptic learning rule"
+        },
+        {
+            "paperId": "21a364eb39c87b23a227194a12ec21117d5dfba6",
+            "title": "A Representation for the Adaptive Generation of Simple Sequential Programs"
+        },
+        {
+            "paperId": "44b6da0cd36c0fa2f7d3485c6dc0b6d2fbe379bb",
+            "title": "Learning how to learn"
+        },
+        {
+            "paperId": "3bda8866391247e03e1adb790d497360ae9242d8",
+            "title": "Supervised Sparse Analysis and Synthesis Operators"
+        },
+        {
+            "paperId": null,
+            "title": "Lecture 6.5-rmsprop: Divide the gradient by a running average of its recent magnitude. COURSERA: Neural networks for machine learning"
+        },
+        {
+            "paperId": "8c143e09bed093d9fb2ff1d3028e5cf22ed18885",
+            "title": "Metalearning - Applications to Data Mining"
+        },
+        {
+            "paperId": null,
+            "title": "NIPS 1995 workshop on learning to learn: Knowledge consolidation and transfer in inductive systems. https: //web.archive.org/web/20000618135816"
+        },
+        {
+            "paperId": "a6bcf0e9b5034c4c9cbea839baadd69a42b05cc1",
+            "title": "Learning curves for stochastic gradient descent in linear feedforward networks"
+        }
+    ]
+}

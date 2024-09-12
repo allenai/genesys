@@ -1,0 +1,226 @@
+{
+    "paperId": "35ed258aede3df17ee20a6635364cb5fd2461049",
+    "externalIds": {
+        "DBLP": "conf/cvpr/ZhouZCSX18",
+        "MAG": "2949624860",
+        "ArXiv": "1804.00819",
+        "DOI": "10.1109/CVPR.2018.00911",
+        "CorpusId": 4564155
+    },
+    "title": "End-to-End Dense Video Captioning with Masked Transformer",
+    "abstract": "Dense video captioning aims to generate text descriptions for all events in an untrimmed video. This involves both detecting and describing events. Therefore, all previous methods on dense video captioning tackle this problem by building two models, i.e. an event proposal and a captioning model, for these two sub-problems. The models are either trained separately or in alternation. This prevents direct influence of the language description to the event proposal, which is important for generating accurate descriptions. To address this problem, we propose an end-to-end transformer model for dense video captioning. The encoder encodes the video into appropriate representations. The proposal decoder decodes from the encoding with different anchors to form video event proposals. The captioning decoder employs a masking network to restrict its attention to the proposal event over the encoding feature. This masking network converts the event proposal to a differentiable mask, which ensures the consistency between the proposal and captioning during training. In addition, our model employs a self-attention mechanism, which enables the use of efficient non-recurrent structure during encoding and leads to performance improvements. We demonstrate the effectiveness of this end-to-end model on ActivityNet Captions and YouCookII datasets, where we achieved 10.12 and 6.58 METEOR score, respectively.",
+    "venue": "2018 IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "year": 2018,
+    "referenceCount": 44,
+    "citationCount": 489,
+    "influentialCitationCount": 69,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1804.00819",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes an end-to-end transformer model, which employs a self-attention mechanism, which enables the use of efficient non-recurrent structure during encoding and leads to performance improvements."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2677364",
+            "name": "Luowei Zhou"
+        },
+        {
+            "authorId": "34872128",
+            "name": "Yingbo Zhou"
+        },
+        {
+            "authorId": "3587688",
+            "name": "Jason J. Corso"
+        },
+        {
+            "authorId": "2166511",
+            "name": "R. Socher"
+        },
+        {
+            "authorId": "2228109",
+            "name": "Caiming Xiong"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "ba11083602568bbc2514c0905e0d831a65c2af6e",
+            "title": "ActivityNet Challenge 2017 Summary"
+        },
+        {
+            "paperId": "352b190acfe19406baee53a169a8732f9b2764d4",
+            "title": "SST: Single-Stream Temporal Action Proposals"
+        },
+        {
+            "paperId": "551cddb9a5e20861b491ec39f3ced933f6364a17",
+            "title": "SCC: Semantic Context Cascade for Efficient Action Detection"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "032274e57f7d8b456bd255fe76b909b2c1d7458e",
+            "title": "A Deep Reinforced Model for Abstractive Summarization"
+        },
+        {
+            "paperId": "96dd1fc39a368d23291816d57763bc6eb4f7b8d6",
+            "title": "Dense-Captioning Events in Videos"
+        },
+        {
+            "paperId": "f94841ec597dcf6d1c23e7f40ba35e121f6a81c1",
+            "title": "TURN TAP: Temporal Unit Regression Network for Temporal Action Proposals"
+        },
+        {
+            "paperId": "204a4a70428f3938d2c538a4d74c7ae0416306d8",
+            "title": "A Structured Self-attentive Sentence Embedding"
+        },
+        {
+            "paperId": "e10a5e0baf2aa87d804795af071808a9377cc80a",
+            "title": "Towards Automatic Learning of Procedures From Web Instructional Videos"
+        },
+        {
+            "paperId": "6c8353697cdbb98dfba4f493875778c4286d3e3a",
+            "title": "Self-Critical Sequence Training for Image Captioning"
+        },
+        {
+            "paperId": "778ce81457383bd5e3fdb11b145ded202ebb4970",
+            "title": "Semantic Compositional Networks for Visual Captioning"
+        },
+        {
+            "paperId": "0d3b5ffff118326fea73341a86a7c29423eb95f0",
+            "title": "Video Captioning with Transferred Semantic Attributes"
+        },
+        {
+            "paperId": "5785466bc14529e94e54baa4ed051f7037f3b1d3",
+            "title": "Boosting Image Captioning with Attributes"
+        },
+        {
+            "paperId": "c24bbbc5139eb2f8c5d0579174dbeae5cbaedbfc",
+            "title": "DAPs: Deep Action Proposals for Action Understanding"
+        },
+        {
+            "paperId": "b8d3b24cd4e6477e9dc7979580449db962d50e19",
+            "title": "CUHK & ETHZ & SIAT Submission to ActivityNet Challenge 2016"
+        },
+        {
+            "paperId": "97fb4e3d45bb098e27e0071448b6152217bd35a5",
+            "title": "Layer Normalization"
+        },
+        {
+            "paperId": "1e83adb616b8466639a14e78f3d26120be7caf48",
+            "title": "Watch What You Just Said: Image Captioning with Text-Conditional Attention"
+        },
+        {
+            "paperId": "1dbc12e54ceb70f2022f956aa0a46e2706e99962",
+            "title": "Video Summarization with Long Short-Term Memory"
+        },
+        {
+            "paperId": "bf55591e09b58ea9ce8d66110d6d3000ee804bdd",
+            "title": "Image Captioning with Semantic Attention"
+        },
+        {
+            "paperId": "317eaf94573857bec786bbf030605ccdb0fd624d",
+            "title": "Temporal Action Localization in Untrimmed Videos via Multi-stage CNNs"
+        },
+        {
+            "paperId": "0c1f9ca23f4f09ecfc44bcc8ca1c2736624f4652",
+            "title": "A Theoretically Grounded Application of Dropout in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "f678a0041f2c6f931168010e7418c500c3f14cdb",
+            "title": "Video Paragraph Captioning Using Hierarchical Recurrent Neural Networks"
+        },
+        {
+            "paperId": "e17ba2b5d0769e7f2602d859ea77a153846cf27d",
+            "title": "Unsupervised Learning from Narrated Instruction Videos"
+        },
+        {
+            "paperId": "df137487e20ba7c6e1e2b9a1e749f2a578b5ad99",
+            "title": "Scheduled Sampling for Sequence Prediction with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "0a28efacb92d16e6e0dd4d87b5aca91b28be8853",
+            "title": "ActivityNet: A large-scale video benchmark for human activity understanding"
+        },
+        {
+            "paperId": "424561d8585ff8ebce7d5d07de8dbf7aae5e7270",
+            "title": "Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks"
+        },
+        {
+            "paperId": "e58a110fa1e4ddf247d5c614d117d64bfbe135c4",
+            "title": "Sequence to Sequence -- Video to Text"
+        },
+        {
+            "paperId": "7ffdbc358b63378f07311e883dddacc9faeeaf4b",
+            "title": "Fast R-CNN"
+        },
+        {
+            "paperId": "5f425b7abf2ed3172ed060df85bb1885860a297e",
+            "title": "Describing Videos by Exploiting Temporal Structure"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "43795b7bac3d921c4e579964b54187bdbf6c6330",
+            "title": "Translating Videos to Natural Language Using Deep Recurrent Neural Networks"
+        },
+        {
+            "paperId": "f01fc808592ea7c473a69a6e7484040a435f36d9",
+            "title": "Long-term recurrent convolutional networks for visual recognition and description"
+        },
+        {
+            "paperId": "d4dc1012d780e8e2547237eb5a6dc7b1bf47d2f0",
+            "title": "Show and tell: A neural image caption generator"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "185f078accb52be4faa13e4f470a9909cc6fe814",
+            "title": "The Language of Actions: Recovering the Syntax and Semantics of Goal-Directed Human Activities"
+        },
+        {
+            "paperId": "96a0320ef14877038906947b684011cf7378c440",
+            "title": "Grounded Language Learning from Video Described with Sentences"
+        },
+        {
+            "paperId": "a23ab0fb7d9e9961e92d704ed71e3dbc15c0d908",
+            "title": "A Thousand Frames in Just a Few Words: Lingual Description of Videos through Latent Topics and Sparse Object Stitching"
+        },
+        {
+            "paperId": "84069287da0a6b488b8c933f3cb5be759cb6237e",
+            "title": "On the difficulty of training recurrent neural networks"
+        },
+        {
+            "paperId": "5536d42ce80e129be8cae172ed1b7659c769d31d",
+            "title": "2005 Special Issue: Framewise phoneme classification with bidirectional LSTM and other neural network architectures"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "083d1055f81dd7c9b41233a92b9768a857d1db58",
+            "title": "A Compositional Framework for Grounding Language Inference, Generation, and Acquisition in Video"
+        }
+    ]
+}

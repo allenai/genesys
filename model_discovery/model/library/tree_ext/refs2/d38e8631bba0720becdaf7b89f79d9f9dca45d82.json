@@ -1,0 +1,202 @@
+{
+    "paperId": "d38e8631bba0720becdaf7b89f79d9f9dca45d82",
+    "externalIds": {
+        "DBLP": "journals/corr/JoulinM15",
+        "MAG": "1732222442",
+        "ArXiv": "1503.01007",
+        "CorpusId": 172783
+    },
+    "title": "Inferring Algorithmic Patterns with Stack-Augmented Recurrent Nets",
+    "abstract": "Despite the recent achievements in machine learning, we are still very far from achieving real artificial intelligence. In this paper, we discuss the limitations of standard deep learning approaches and show that some of these limitations can be overcome by learning how to grow the complexity of a model in a structured way. Specifically, we study the simplest sequence prediction problems that are beyond the scope of what is learnable with standard recurrent networks, algorithmically generated sequences which can only be learned by models which have the capacity to count and to memorize sequences. We show that some basic algorithms can be learned from sequential data using a recurrent network associated with a trainable memory.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2015,
+    "referenceCount": 42,
+    "citationCount": 400,
+    "influentialCitationCount": 35,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The limitations of standard deep learning approaches are discussed and it is shown that some of these limitations can be overcome by learning how to grow the complexity of a model in a structured way."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2319608",
+            "name": "Armand Joulin"
+        },
+        {
+            "authorId": "2047446108",
+            "name": "Tomas Mikolov"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "84b740dafe54c7ebac7abb52f866c01d571e1ba2",
+            "title": "Perceptrons"
+        },
+        {
+            "paperId": "d14c7e5f5cace4c925abc74c88baa474e9f31a28",
+            "title": "Gated Feedback Recurrent Neural Networks"
+        },
+        {
+            "paperId": "9665247ea3421929f9b6ad721f139f11edb1dbb8",
+            "title": "Learning Longer Memory in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "0d0b3ff23fbf1ec7a0dfebd923a3ef224306491a",
+            "title": "Learning to Execute"
+        },
+        {
+            "paperId": "71ae756c75ac89e2d731c9c79649562b5768ff39",
+            "title": "Memory Networks"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "6658bbf68995731b2083195054ff45b4eca38b3a",
+            "title": "Context-Dependent Pre-Trained Deep Neural Networks for Large-Vocabulary Speech Recognition"
+        },
+        {
+            "paperId": "36f49b05d764bf5c10428b082c2d96c13c4203b9",
+            "title": "Hogwild: A Lock-Free Approach to Parallelizing Stochastic Gradient Descent"
+        },
+        {
+            "paperId": "82b9099ddf092463f497bd48bb112c46ca52c4d1",
+            "title": "High-Performance Neural Networks for Visual Object Classification"
+        },
+        {
+            "paperId": "668b1277fbece28c4841eeab1c97e4ebd0079700",
+            "title": "Pattern Recognition and Machine Learning"
+        },
+        {
+            "paperId": "1be8778de4c6eb623871fe08d0998016bd60936f",
+            "title": "LSTM recurrent networks learn simple context-free and context-sensitive languages"
+        },
+        {
+            "paperId": "bcf127b8fef69d4169dc6e985f5fbc263bb3652c",
+            "title": "Context-free and context-sensitive dynamics in recurrent neural networks"
+        },
+        {
+            "paperId": "8167af0a85073ac8f59bbb9f6efad1fada419d15",
+            "title": "Fractal encoding of context\u2010free grammars in connectionist networks"
+        },
+        {
+            "paperId": "45313a157dcaa1103eaa53f099204c66c7dd9cd9",
+            "title": "Toward a connectionist model of recursion in human linguistic performance"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "5ef19754541f8b368ce23ec579d968b96907d1bb",
+            "title": "Designing a Counter: Another Case Study of Dynamics and Activation Landscapes in Recurrent Networks"
+        },
+        {
+            "paperId": "bff3ea999978e8c9503b62510bba11c2a5f24e51",
+            "title": "Discrete recurrent neural networks for grammatical inference"
+        },
+        {
+            "paperId": "d0be39ee052d246ae99c082a565aba25b811be2d",
+            "title": "Learning long-term dependencies with gradient descent is difficult"
+        },
+        {
+            "paperId": "d5ddb30bf421bdfdf728b636993dc48b1e879176",
+            "title": "Learning and development in neural networks: the importance of starting small"
+        },
+        {
+            "paperId": "ef873b940a5acfeb45796fb6d98163300f8903e6",
+            "title": "A Connectionist Symbol Manipulator that Discovers the Structure of Context-Free Languages"
+        },
+        {
+            "paperId": "1811f708b8b7456a3708fabd2fd638da36bd7ba0",
+            "title": "Using Prior Knowledge in a {NNPDA} to Learn Context-Free Languages"
+        },
+        {
+            "paperId": "b185742930fd959aaccdfdecdb31641839a787c4",
+            "title": "The Induction of Dynamical Recognizers"
+        },
+        {
+            "paperId": "668087f0ae7ce1de6e0bd0965dbb480c08103260",
+            "title": "Finding Structure in Time"
+        },
+        {
+            "paperId": "319f22bd5abfd67ac15988aa5c7f705f018c3ccd",
+            "title": "Learning internal representations by error propagation"
+        },
+        {
+            "paperId": "96364af2d208ea75ca3aeb71892d2f7ce7326b55",
+            "title": "Statistical Language Models Based on Neural Networks"
+        },
+        {
+            "paperId": "fbc6562814e08e416e28a268ce7beeaa3d0708c8",
+            "title": "Large-Scale Machine Learning with Stochastic Gradient Descent"
+        },
+        {
+            "paperId": "6fdb77260fc83dff91c44fea0f31a2cb8ed13d04",
+            "title": "Scaling learning algorithms towards AI"
+        },
+        {
+            "paperId": "8e0be569ea77b8cb29bb0e8b031887630fe7a96c",
+            "title": "Random Forests"
+        },
+        {
+            "paperId": "57dbba9281cbd1b4dd5d1932f0dd605b8f498322",
+            "title": "A Recurrent Neural Network that Learns to Count"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "73ce506d16ad040aca09a4460018010b833e73d7",
+            "title": "A Recurrent Network that performs a Context-Sensitive Prediction Task"
+        },
+        {
+            "paperId": "ac781280fbed359d69ff577ca87a723cdd5a6aa2",
+            "title": "Mechanisms for Sentence Processing"
+        },
+        {
+            "paperId": "0b7005984749cf5f2caa1072866b36e17713ab84",
+            "title": "Learning to count without a counter: A case study of dynamics and activation landscapes in recurrent networks"
+        },
+        {
+            "paperId": "10dae7fca6b65b61d155a622f0c6ca2bc3922251",
+            "title": "Gradient-based learning algorithms for recurrent networks and their computational complexity"
+        },
+        {
+            "paperId": null,
+            "title": "Inferring Algorithmic Patterns with Stack-Augmented Recurrent Nets Das Using prior knowledge in a nnpda to learn context-free languages Advances in neural information processing systems"
+        },
+        {
+            "paperId": "30110856f45fde473f1903f686aa365cf70ed4c7",
+            "title": "Learning Context-free Grammars: Capabilities and Limitations of a Recurrent Neural Network with an External Stack Memory (cid:3)"
+        },
+        {
+            "paperId": "1f462943c8d0af69c12a09058251848324135e5a",
+            "title": "Probabilistic Interpretation of Feedforward Classification Network Outputs, with Relationships to Statistical Pattern Recognition"
+        },
+        {
+            "paperId": "266e07d0dd9a75b61e3632e9469993dbaf063f1c",
+            "title": "Generalization of backpropagation with application to a recurrent gas market model"
+        },
+        {
+            "paperId": "ea078d75e2180e471332c0318da7daa72fcd5c3b",
+            "title": "Context-free parsing in Connectionist Networks"
+        },
+        {
+            "paperId": null,
+            "title": "The code is available at https://github.com/facebook/Stack-RNN"
+        }
+    ]
+}

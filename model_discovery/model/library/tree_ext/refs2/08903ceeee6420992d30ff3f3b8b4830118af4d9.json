@@ -1,0 +1,210 @@
+{
+    "paperId": "08903ceeee6420992d30ff3f3b8b4830118af4d9",
+    "externalIds": {
+        "DBLP": "conf/iccv/HoriHLZHHMS17",
+        "MAG": "2584992898",
+        "ArXiv": "1701.03126",
+        "DOI": "10.1109/ICCV.2017.450",
+        "CorpusId": 6388927
+    },
+    "title": "Attention-Based Multimodal Fusion for Video Description",
+    "abstract": "Current methods for video description are based on encoder-decoder sentence generation using recurrent neural networks (RNNs). Recent work has demonstrated the advantages of integrating temporal attention mechanisms into these models, in which the decoder network predicts each word in the description by selectively giving more weight to encoded features from specific time frames. Such methods typically use two different types of features: image features (from an object classification model), and motion features (from an action recognition model), combined by naive concatenation in the model input. Because different feature modalities may carry task-relevant information at different times, fusing them by naive concatenation may limit the model's ability to dynamically determine the relevance of each type of feature to different parts of the description. In this paper, we incorporate audio features in addition to the image and motion features. To fuse these three modalities, we introduce a multimodal attention model that can selectively utilize features from different modalities for each word in the output description. Combining our new multimodal attention model with standard temporal attention outperforms state-of-the-art methods on two standard datasets: YouTube2Text and MSR-VTT.",
+    "venue": "IEEE International Conference on Computer Vision",
+    "year": 2017,
+    "referenceCount": 37,
+    "citationCount": 334,
+    "influentialCitationCount": 23,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1701.03126",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A multimodal attention model that can selectively utilize features from different modalities for each word in the output description is introduced that outperforms state-of-the-art methods on two standard datasets: YouTube2Text and MSR-VTT."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1765212",
+            "name": "Chiori Hori"
+        },
+        {
+            "authorId": "145443186",
+            "name": "Takaaki Hori"
+        },
+        {
+            "authorId": "1747615",
+            "name": "Teng-Yok Lee"
+        },
+        {
+            "authorId": "7969330",
+            "name": "Ziming Zhang"
+        },
+        {
+            "authorId": "145222187",
+            "name": "B. Harsham"
+        },
+        {
+            "authorId": "2387467",
+            "name": "J. Hershey"
+        },
+        {
+            "authorId": "34749896",
+            "name": "Tim K. Marks"
+        },
+        {
+            "authorId": "2207434330",
+            "name": "Kazuhiro Sumi"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "6b9ae17bc3d8d65112df335a3cfc700b9d65db28",
+            "title": "Machine Translation"
+        },
+        {
+            "paperId": "f8e580fcf34ee6da50989bbde685634018cbe224",
+            "title": "Dialog state tracking with attention-based sequence-to-sequence learning"
+        },
+        {
+            "paperId": "2abae43b4a7fd85473bd6c906a0fcfc403968e87",
+            "title": "Generating Natural Video Descriptions via Multimodal Processing"
+        },
+        {
+            "paperId": "f01f4808263ecfa221f856c34d3420166dbf5930",
+            "title": "Driver confusion status detection using recurrent neural networks"
+        },
+        {
+            "paperId": "b8e2e9f3ba008e28257195ec69a00e07f260131d",
+            "title": "MSR-VTT: A Large Video Description Dataset for Bridging Video and Language"
+        },
+        {
+            "paperId": "f678a0041f2c6f931168010e7418c500c3f14cdb",
+            "title": "Video Paragraph Captioning Using Hierarchical Recurrent Neural Networks"
+        },
+        {
+            "paperId": "878ba5458e9e51f0b341fd9117fa0b43ef4096d3",
+            "title": "End-to-end attention-based large vocabulary speech recognition"
+        },
+        {
+            "paperId": "916441619914101258c71669b5ccc36424b54a6c",
+            "title": "The Ubuntu Dialogue Corpus: A Large Dataset for Research in Unstructured Multi-Turn Dialogue Systems"
+        },
+        {
+            "paperId": "b624504240fa52ab76167acfe3156150ca01cf3b",
+            "title": "Attention-Based Models for Speech Recognition"
+        },
+        {
+            "paperId": "68478207cf3e4fc44bf1602abe82c7ac7f288872",
+            "title": "Jointly Modeling Embedding and Translation to Bridge Video and Language"
+        },
+        {
+            "paperId": "696ca58d93f6404fea0fc75c62d1d7b378f47628",
+            "title": "Microsoft COCO Captions: Data Collection and Evaluation Server"
+        },
+        {
+            "paperId": "5f425b7abf2ed3172ed060df85bb1885860a297e",
+            "title": "Describing Videos by Exploiting Temporal Structure"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "54b2b6f35f1b5704dddfaa3a137a2f4ad3dfe745",
+            "title": "Deep Captioning with Multimodal Recurrent Neural Networks (m-RNN)"
+        },
+        {
+            "paperId": "43795b7bac3d921c4e579964b54187bdbf6c6330",
+            "title": "Translating Videos to Natural Language Using Deep Recurrent Neural Networks"
+        },
+        {
+            "paperId": "d25c65d261ea0e6a458be4c50c40ffe5bc508f77",
+            "title": "Learning Spatiotemporal Features with 3D Convolutional Networks"
+        },
+        {
+            "paperId": "258986132bf17755fe8263e42429fe73218c1534",
+            "title": "CIDEr: Consensus-based image description evaluation"
+        },
+        {
+            "paperId": "d4dc1012d780e8e2547237eb5a6dc7b1bf47d2f0",
+            "title": "Show and tell: A neural image caption generator"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "1eb09fecd75eb27825dce4f964b97f4f5cc399d7",
+            "title": "On the Properties of Neural Machine Translation: Encoder\u2013Decoder Approaches"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "6d4c9c923e9f145d1c01a2de2afc38ec23c44253",
+            "title": "Large-Scale Video Classification with Convolutional Neural Networks"
+        },
+        {
+            "paperId": "6bdb186ec4726e00a8051119636d4df3b94043b5",
+            "title": "Caffe: Convolutional Architecture for Fast Feature Embedding"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "a5e4377d2149a8167d89383d785793967cf74602",
+            "title": "Meteor Universal: Language Specific Translation Evaluation for Any Target Language"
+        },
+        {
+            "paperId": "5e83ab70d0cbc003471e87ec306d27d9c80ecb16",
+            "title": "Network In Network"
+        },
+        {
+            "paperId": "d6a7a563640bf53953c4fda0997e4db176488510",
+            "title": "YouTube2Text: Recognizing and Describing Arbitrary Activities Using Semantic Hierarchies and Zero-Shot Recognition"
+        },
+        {
+            "paperId": "8729441d734782c3ed532a7d2d9611b438c0a09a",
+            "title": "ADADELTA: An Adaptive Learning Rate Method"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "aba7b76c300db4159592ee2933d8796176d1e737",
+            "title": "Action recognition by dense trajectories"
+        },
+        {
+            "paperId": "d7da009f457917aa381619facfa5ffae9329a6e9",
+            "title": "Bleu: a Method for Automatic Evaluation of Machine Translation"
+        },
+        {
+            "paperId": "9b641945f6695a3d7501a1cd66ebfe76ef1d305a",
+            "title": "Maximum entropy and MCE based HMM stream weight estimation for audio-visual ASR"
+        },
+        {
+            "paperId": "f7badd4c72a82ab0a3712a9da0347b7dd6ccffe1",
+            "title": "Robust Sensor Fusion: Analysis and Application to Audio Visual Speech Recognition"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "67156902beca9bc90b728c8d5dd4ac9d8b27d3a3",
+            "title": "Chainer : a Next-Generation Open Source Framework for Deep Learning"
+        },
+        {
+            "paperId": null,
+            "title": "Lecture 6.5\u2014RmsProp: Divide the gradient by a running average of its recent magnitude"
+        },
+        {
+            "paperId": "f48dd812be36503ea9dada921fdc642c939e6f27",
+            "title": "Visionary Speech: Looking Ahead to Practical Speechreading Systems"
+        }
+    ]
+}

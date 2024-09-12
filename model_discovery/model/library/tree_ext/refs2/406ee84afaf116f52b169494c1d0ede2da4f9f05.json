@@ -1,0 +1,201 @@
+{
+    "paperId": "406ee84afaf116f52b169494c1d0ede2da4f9f05",
+    "externalIds": {
+        "MAG": "2753604357",
+        "DBLP": "conf/nips/AlberKSMS17",
+        "CorpusId": 24579475
+    },
+    "title": "An Empirical Study on The Properties of Random Bases for Kernel Methods",
+    "abstract": "Kernel machines as well as neural networks possess universal function approximation properties. Nevertheless in practice their ways of choosing the appropriate function class differ. Specifically neural networks learn a representation by adapting their basis functions to the data and the task at hand, while kernel methods typically use a basis that is not adapted during training. In this work, we contrast random features of approximated kernel machines with learned features of neural networks. Our analysis reveals how these random and adaptive basis functions affect the quality of learning. Furthermore, we present basis adaptation schemes that allow for a more compact representation, while retaining the generalization properties of kernel machines.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2017,
+    "referenceCount": 39,
+    "citationCount": 15,
+    "influentialCitationCount": 0,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work contrasts random features of approximated kernel machines with learned features of neural networks, and presents basis adaptation schemes that allow for a more compact representation, while retaining the generalization properties of kernel machines."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "153628742",
+            "name": "M. Alber"
+        },
+        {
+            "authorId": "2113697",
+            "name": "Pieter-Jan Kindermans"
+        },
+        {
+            "authorId": "31961144",
+            "name": "Kristof Sch\u00fctt"
+        },
+        {
+            "authorId": "145034054",
+            "name": "K. M\u00fcller"
+        },
+        {
+            "authorId": "145757665",
+            "name": "Fei Sha"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "32e934094c4d17fe4d734b2e169ba5e3cd0ee05e",
+            "title": "Orthogonal Random Features"
+        },
+        {
+            "paperId": "34ab95637e7723302058f6526e33dc73857b9af2",
+            "title": "Deep Kernel Learning"
+        },
+        {
+            "paperId": "a04434c379f03cb4db02f71c313a417b363a31dc",
+            "title": "Random Feature Mapping with Signed Circulant Matrix Projection"
+        },
+        {
+            "paperId": "78e95099ec2ac3cb087eb47ba7c87ddb01a19405",
+            "title": "On the Error of Random Fourier Features"
+        },
+        {
+            "paperId": "e16276e1590804ea5f79df6ece67c170ba8d5239",
+            "title": "Compact Nonlinear Maps and Circulant Extensions"
+        },
+        {
+            "paperId": "27a99c21a1324f087b2f144adc119f04137dfd87",
+            "title": "Deep Fried Convnets"
+        },
+        {
+            "paperId": "08d8758581af226e678a6b0dd9d4646d129f205d",
+            "title": "A la Carte - Learning Fast Kernels"
+        },
+        {
+            "paperId": "bd47e101c7f869fffc57f529e532a0b9cf275a26",
+            "title": "How to Scale Up Kernel Methods to Be As Good As Deep Neural Nets"
+        },
+        {
+            "paperId": "6007164957cced3e5d5b02d3402ea82c3530d852",
+            "title": "Scalable Kernel Methods via Doubly Stochastic Gradients"
+        },
+        {
+            "paperId": "b3c879b2430a61d8c4393436685c85bcfbd6c6d8",
+            "title": "Kernel methods match Deep Neural Networks on TIMIT"
+        },
+        {
+            "paperId": "b034b5769ab94acf9fb8ae48c7edb560a300bb63",
+            "title": "On the Number of Linear Regions of Deep Neural Networks"
+        },
+        {
+            "paperId": "8ce9de8009d7186a16804e55ad7d2d8ce595d350",
+            "title": "Fastfood - Computing Hilbert Space Expansions in loglinear time"
+        },
+        {
+            "paperId": "8f77e16f2834eb23307b0436f5422a9752339f0a",
+            "title": "Nystr\u00f6m Method vs Random Fourier Features: A Theoretical and Empirical Comparison"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "be9a17321537d9289875fe475b71f4821457b435",
+            "title": "An Analysis of Single-Layer Networks in Unsupervised Feature Learning"
+        },
+        {
+            "paperId": "67107f78a84bdb2411053cb54e94fa226eea6d8e",
+            "title": "Deep Sparse Rectifier Neural Networks"
+        },
+        {
+            "paperId": "cef52bea3f13b20d6a31391034b0fccec71c6781",
+            "title": "The NumPy Array: A Structure for Efficient Numerical Computation"
+        },
+        {
+            "paperId": "168f28ac3c8c7ea63bf7ed25f2288e8b67e2fe74",
+            "title": "Scikit-learn: Machine Learning in Python"
+        },
+        {
+            "paperId": "3c53291e21e4f13d2fb64a5eeb12cf51e5fcab56",
+            "title": "Kernel Analysis of Deep Networks"
+        },
+        {
+            "paperId": "a538b05ebb01a40323997629e171c91aa28b8e2f",
+            "title": "Rectified Linear Units Improve Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": "f2b1b678ee6295136fdc25d04a804df95badd065",
+            "title": "Sparse Spectrum Gaussian Process Regression"
+        },
+        {
+            "paperId": "77e379fd57ea44638fc628623e383eccada82689",
+            "title": "Kernel Methods for Deep Learning"
+        },
+        {
+            "paperId": "47aa6d7381cc9993da60e4547b01f415a04f3cf2",
+            "title": "Weighted Sums of Random Kitchen Sinks: Replacing minimization with randomization in learning"
+        },
+        {
+            "paperId": "7a59fde27461a3ef4a21a249cc403d0d96e4a0d7",
+            "title": "Random Features for Large-Scale Kernel Machines"
+        },
+        {
+            "paperId": "397306cada03c29ab9c3d5a7991a343cae92f2e3",
+            "title": "Measuring Statistical Dependence with Hilbert-Schmidt Norms"
+        },
+        {
+            "paperId": "11e6b5a30a921e6028662105148fac41a76f0500",
+            "title": "On the Nystr\u00f6m Method for Approximating a Gram Matrix for Improved Kernel-Based Learning"
+        },
+        {
+            "paperId": "e1bfd52ce6e38e3e542df2b977ee2c1481f8782a",
+            "title": "Result Analysis of the NIPS 2003 Feature Selection Challenge"
+        },
+        {
+            "paperId": "f3e8ea03aa6555733f54bd9c8907ec982bac7760",
+            "title": "Using support vector machines for time series prediction"
+        },
+        {
+            "paperId": "36aa0d0936b2cf128c646c36a1981807b5a27aaf",
+            "title": "On Kernel-Target Alignment"
+        },
+        {
+            "paperId": "42fdf2999c46babe535974e14375fbb224445757",
+            "title": "Comparative accuracies of artificial neural networks and discriminant analysis in predicting forest cover types from cartographic variables"
+        },
+        {
+            "paperId": "4207699ff174b7c44337a9c30252db80e777dcfc",
+            "title": "Scaling Up the Accuracy of Naive-Bayes Classifiers: A Decision-Tree Hybrid"
+        },
+        {
+            "paperId": "62a134740314b4469c83c8921ae2e1beea22b8f5",
+            "title": "A Database for Handwritten Text Recognition Research"
+        },
+        {
+            "paperId": "1e7c4f513f24c3b82a1138b9f22ed87ed00cbe76",
+            "title": "Fast Learning in Networks of Locally-Tuned Processing Units"
+        },
+        {
+            "paperId": null,
+            "title": "A method for stochastic optimisation"
+        },
+        {
+            "paperId": "dc52d1ede1b90bf9d296bc5b34c9310b7eaa99a2",
+            "title": "The mnist database of handwritten digits"
+        },
+        {
+            "paperId": "b421fa2ce87913a88002e7a8f917afcd3733b8b4",
+            "title": "Letter recognition using Holland-style adaptive classifiers"
+        },
+        {
+            "paperId": "307827ec09187e9c6935e8ff5fd43eeefb901320",
+            "title": "SciPy: Open Source Scientific Tools for Python"
+        },
+        {
+            "paperId": "b6fff8b8ea77f157913986e7af53951d9fc1128e",
+            "title": "Using the Nystr\u00f6m Method to Speed Up Kernel Machines"
+        },
+        {
+            "paperId": "1b2e42d8510dca89629a61bb52f19f92fb3d23d2",
+            "title": "Advances in Kernel Methods - Support Vector Learning"
+        }
+    ]
+}

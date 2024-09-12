@@ -1,0 +1,118 @@
+{
+    "paperId": "64ca5f3e4fa2d33ae860bebaea81420fae0759af",
+    "externalIds": {
+        "MAG": "2774513877",
+        "DBLP": "conf/icacci/SelvinVGMS17",
+        "DOI": "10.1109/ICACCI.2017.8126078",
+        "CorpusId": 24976744
+    },
+    "title": "Stock price prediction using LSTM, RNN and CNN-sliding window model",
+    "abstract": "Stock market or equity market have a profound impact in today's economy. A rise or fall in the share price has an important role in determining the investor's gain. The existing forecasting methods make use of both linear (AR, MA, ARIMA) and non-linear algorithms (ARCH, GARCH, Neural Networks), but they focus on predicting the stock index movement or price forecasting for a single company using the daily closing price. The proposed method is a model independent approach. Here we are not fitting the data to a specific model, rather we are identifying the latent dynamics existing in the data using deep learning architectures. In this work we use three different deep learning architectures for the price prediction of NSE listed companies and compares their performance. We are applying a sliding window approach for predicting future values on a short term basis. The performance of the models were quantified using percentage error.",
+    "venue": "International Conference on Advances in Computing, Communications and Informatics",
+    "year": 2017,
+    "referenceCount": 18,
+    "citationCount": 615,
+    "influentialCitationCount": 17,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work uses three different deep learning architectures for the price prediction of NSE listed companies and compares their performance and applies a sliding window approach for predicting future values on a short term basis."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "30844652",
+            "name": "Sreelekshmy Selvin"
+        },
+        {
+            "authorId": "51162051",
+            "name": "R. Vinayakumar"
+        },
+        {
+            "authorId": "48817641",
+            "name": "E. Gopalakrishnan"
+        },
+        {
+            "authorId": "2189996194",
+            "name": "V. Menon"
+        },
+        {
+            "authorId": "51896152",
+            "name": "Kritik Soman"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "51d3696c474eb0e477cfd6c3d9aefd846361dcc4",
+            "title": "Measuring stock price and trading volume causality among Nifty50 stocks: The Toda Yamamoto method"
+        },
+        {
+            "paperId": "3942ed01252df79a1e65068f79591ebdc0797364",
+            "title": "Bulk Price Forecasting Using Spark over NSE Data Set"
+        },
+        {
+            "paperId": "5001262bb497f5064b777c41ac7a8999a2c0a5a6",
+            "title": "Investigation Into The Effectiveness Of Long Short Term Memory Networks For Stock Price Prediction"
+        },
+        {
+            "paperId": "0d79c56fe25c1c45b3c55dc9cda8cb863a045c09",
+            "title": "Deep Learning in Finance"
+        },
+        {
+            "paperId": "44229bef9966e65e7b13c2c9fe867afd9dd8b450",
+            "title": "Deep Learning for Event-Driven Stock Prediction"
+        },
+        {
+            "paperId": "ab3297f44f6cdaa778b97efe930f6534b3edc92f",
+            "title": "A Machine Learning Model for Stock Market Prediction"
+        },
+        {
+            "paperId": "f99beac140b6c7c52d721dd38bce953f95ff5156",
+            "title": "Forecasting of Stock Prices Using Multi Layer Perceptron"
+        },
+        {
+            "paperId": "669e3d70ddd5cd3b780e4d347df97d4d7485b393",
+            "title": "Efficient Market Hypothesis"
+        },
+        {
+            "paperId": "760a9643ca6f9ae519af9c33607c9e4bca4bd2c8",
+            "title": "Genetic algorithms approach to feature discretization in artificial neural networks for the prediction of stock price index"
+        },
+        {
+            "paperId": "5853eb9035a62449c39f213768a60603352bcf05",
+            "title": "FINANCIAL TIME SERIES FORECASTING BY NEURAL NETWORK USING CONJUGATE GRADIENT LEARNING ALGORITHM AND MULTIPLE LINEAR REGRESSION WEIGHT INITIALIZATION"
+        },
+        {
+            "paperId": "c56a5321893547f3333c06afe8ce595868c1c8aa",
+            "title": "Prediction of Stock Trends by Using the Wavelet Transform and the Multi-Stage Fuzzy Inference System Optimized by the GA"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "ca8b755ce444a378e746af641a3490d1c263230c",
+            "title": "Backpropagation and recurrent neural networks in financial analysis of multiple stock market returns"
+        },
+        {
+            "paperId": "a059ffef2efc6f7f2efd68a5bbf313dcd3072c42",
+            "title": "Economic prediction using neural networks: the case of IBM daily stock returns"
+        },
+        {
+            "paperId": "4f8d648c52edf74e41b0996128aa536e13cc7e82",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": "fd85d7246a612b9965b091fbd8d69ce728165121",
+            "title": "Deep learning for multivariate financial time series"
+        },
+        {
+            "paperId": "9f24d338b657f480df96743c638e2cdeef469dbe",
+            "title": "25 years of time series forecasting"
+        },
+        {
+            "paperId": null,
+            "title": "Comparative study of stock trend prediction using time delay, recurrent and probabilistic neural networks"
+        }
+    ]
+}

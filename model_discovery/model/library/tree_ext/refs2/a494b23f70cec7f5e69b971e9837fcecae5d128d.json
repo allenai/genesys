@@ -1,0 +1,362 @@
+{
+    "paperId": "a494b23f70cec7f5e69b971e9837fcecae5d128d",
+    "externalIds": {
+        "DBLP": "journals/tacl/XuNPCC16",
+        "MAG": "2534253848",
+        "ACL": "Q16-1029",
+        "DOI": "10.1162/tacl_a_00107",
+        "CorpusId": 2177849
+    },
+    "title": "Optimizing Statistical Machine Translation for Text Simplification",
+    "abstract": "Most recent sentence simplification systems use basic machine translation models to learn lexical and syntactic paraphrases from a manually simplified parallel corpus. These methods are limited by the quality and quantity of manually simplified corpora, which are expensive to build. In this paper, we conduct an in-depth adaptation of statistical machine translation to perform text simplification, taking advantage of large-scale paraphrases learned from bilingual texts and a small amount of manual simplifications with multiple references. Our work is the first to design automatic metrics that are effective for tuning and evaluating simplification systems, which will facilitate iterative development for this task.",
+    "venue": "Transactions of the Association for Computational Linguistics",
+    "year": 2016,
+    "referenceCount": 78,
+    "citationCount": 563,
+    "influentialCitationCount": 213,
+    "openAccessPdf": {
+        "url": "http://www.mitpressjournals.org/doi/pdf/10.1162/tacl_a_00107",
+        "status": "GOLD"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work is the first to design automatic metrics that are effective for tuning and evaluating simplification systems, which will facilitate iterative development for this task."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "30424564",
+            "name": "W. Xu"
+        },
+        {
+            "authorId": "3047950",
+            "name": "Courtney Napoles"
+        },
+        {
+            "authorId": "2949185",
+            "name": "Ellie Pavlick"
+        },
+        {
+            "authorId": "3207763",
+            "name": "Quan Ze Chen"
+        },
+        {
+            "authorId": "1763608",
+            "name": "Chris Callison-Burch"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "bc273c2f3b705bac59af7b93b2f416460f72f980",
+            "title": "Simple PPDB: A Paraphrase Database for Simplification"
+        },
+        {
+            "paperId": "1ac30af5522c7a50ec4d1ee43fd2bd8652a9bd52",
+            "title": "A Neural Attention Model for Abstractive Sentence Summarization"
+        },
+        {
+            "paperId": "b064b714107ffc724e0d477f4083e9e507c22fec",
+            "title": "Sentence Compression by Deletion with LSTMs"
+        },
+        {
+            "paperId": "93a9694b6a4149e815c30a360347593b75860761",
+            "title": "Variable-Length Word Encodings for Neural Translation Models"
+        },
+        {
+            "paperId": "c8bea10946adfe1ce68b0a6856e217c00e186542",
+            "title": "A Deeper Exploration of the Standard PB-SMT Approach to Text Simplification and its Evaluation"
+        },
+        {
+            "paperId": "452a675962ae0c525ce61c7c222e3de2e2e7742c",
+            "title": "Adding Semantics to Data-Driven Paraphrasing"
+        },
+        {
+            "paperId": "4af6bbbc01d4e5882b84963fb37a98f6dce2933b",
+            "title": "Ground Truth for Grammatical Error Correction Metrics"
+        },
+        {
+            "paperId": "7d0684b19ba46e739e28baa1e180c008226f793a",
+            "title": "deltaBLEU: A Discriminative Metric for Generation Tasks with Intrinsically Diverse Targets"
+        },
+        {
+            "paperId": "2b8da013966c0c5e020ebc842d49d8ed166c8783",
+            "title": "Problems in Current Text Simplification Research: New Data Can Help"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "dfe27c93914f0bd4ba73806533de796417efba75",
+            "title": "Tracking Human Process Using Crowd Collaboration to Enrich Data"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "42f864107534203f172b2f225ac0b8026348b08a",
+            "title": "Lexico-syntactic text simplification and compression with typed dependencies"
+        },
+        {
+            "paperId": "026f0e67ec1be21df58c5bda9cf6e20db84cd6eb",
+            "title": "Hybrid Simplification using Deep Semantics and Machine Translation"
+        },
+        {
+            "paperId": "aff6a14d587dde4b25165e6a221295fbda7b01e3",
+            "title": "Learning a Lexical Simplifier Using Wikipedia"
+        },
+        {
+            "paperId": "12c736eb9705c776fbd6729f9677840d75f9f621",
+            "title": "One Step Closer to Automatic Evaluation of Text Simplification Systems"
+        },
+        {
+            "paperId": "f69c373619536d9cf9f568512057eebcc2d72f59",
+            "title": "An evaluation of syntactic simplification rules for people with autism"
+        },
+        {
+            "paperId": "325516142be89a00a412357cda3d8420091730f5",
+            "title": "Hybrid text simplification using synchronous dependency grammars with hand-written and automatically harvested rules"
+        },
+        {
+            "paperId": "b8212b00e31022318f42bbe91b00377e0eb16748",
+            "title": "An Analysis of Crowdsourced Text Simplifications"
+        },
+        {
+            "paperId": "6ef56f3ec7a87e46cff8ede2301e6f8b837f199e",
+            "title": "An Open Corpus of Everyday Documents for Simplification Tasks"
+        },
+        {
+            "paperId": "911d79afaf3ca3e3b9634ec6ed16de450cce0c8c",
+            "title": "Improving Text Simplification Language Modeling Using Unsimplified Text Data"
+        },
+        {
+            "paperId": "530edaa8d1ac21428c5f4274988b5cc7af8c537e",
+            "title": "Joshua 5.0: Sparser, Better, Faster, Server"
+        },
+        {
+            "paperId": "eae056443e92e39627f1648f2daee90f4a2d8dd3",
+            "title": "Proceedings of the Eighth Workshop on Statistical Machine Translation, WMT@ACL 2013, August 8-9, 2013, Sofia, Bulgaria"
+        },
+        {
+            "paperId": "ef12383f516840ec1ec998cd5921dfc6e197c9b2",
+            "title": "PPDB: The Paraphrase Database"
+        },
+        {
+            "paperId": "3cc61fba407f9e94f835df68e78f8d2cbc4e7f3b",
+            "title": "The Impact of Lexical Simplification by Verbal Paraphrases for People with and without Dyslexia"
+        },
+        {
+            "paperId": "ed1d38a50464cb87a923ca4642a2e780545a5d71",
+            "title": "A Simplification-Translation-Restoration Framework for Cross-Domain SMT Applications"
+        },
+        {
+            "paperId": "50dfb7358cc85cc7ab0eda68c517164ebd205d42",
+            "title": "Sentence Simplification by Monolingual Machine Translation"
+        },
+        {
+            "paperId": "21fdd4f9c8cb1ee2b1da8d21a69729c515115f22",
+            "title": "PORT: a Precision-Order-Recall MT Evaluation Metric for Tuning"
+        },
+        {
+            "paperId": "8254d4bec451cc028d40e1c6cacec827694e74e8",
+            "title": "Joint Learning of a Dual SMT System for Paraphrase Generation"
+        },
+        {
+            "paperId": "1712a1fe73876f43b3637ef6490b57fae98e7b54",
+            "title": "Monolingual Distributional Similarity for Text-to-Text Generation"
+        },
+        {
+            "paperId": "d00185edf7ccc8025c7fd176708a66ee1af97a3c",
+            "title": "Joshua 4.0: Packing, PRO, and Paraphrases"
+        },
+        {
+            "paperId": "c762774ec24b92a2999afc3779aae17e994dc3ed",
+            "title": "SemEval-2012 Task 1: English Lexical Simplification"
+        },
+        {
+            "paperId": "1a2ea7741b7fa1156d6785f13f3d6fa949b4f6bc",
+            "title": "Better Evaluation for Grammatical Error Correction"
+        },
+        {
+            "paperId": "135ecd32a3a569efc7c7f24c9a95abc415b878f2",
+            "title": "Reranking Bilingually Extracted Paraphrases Using Monolingual Distributional Similarity"
+        },
+        {
+            "paperId": "56e650eee11956c2d95db454c0b1ce04837a9f3f",
+            "title": "Joshua 3.0: Syntax-based Machine Translation with the Thrax Grammar Extractor"
+        },
+        {
+            "paperId": "a13d46125ef505d4e687e25ded74b794efc18323",
+            "title": "Tuning as Ranking"
+        },
+        {
+            "paperId": "37ebbd68e9c04896d8ec3e86695ae389071530b9",
+            "title": "Learning to Simplify Sentences with Quasi-Synchronous Grammar and Integer Programming"
+        },
+        {
+            "paperId": "3b5b47c2527c6a77ccde8e64228966abc1c97e18",
+            "title": "Learning Sentential Paraphrases from Bilingual Parallel Corpora for Text-to-Text Generation"
+        },
+        {
+            "paperId": "5c37dbdfe70cf7b08aecb2b438685b61ebf09753",
+            "title": "Learning to Simplify Sentences Using Wikipedia"
+        },
+        {
+            "paperId": "40c0bab2595a146a5a46c89014172ced20b86866",
+            "title": "Simple English Wikipedia: A New Text Simplification Task"
+        },
+        {
+            "paperId": "c3864455523bbf00a61031b5b3f2ec43b14b02ff",
+            "title": "Putting it Simply: a Context-Aware Approach to Lexical Simplification"
+        },
+        {
+            "paperId": "72729882f8fa3d9084eaece513f6bf9630be5901",
+            "title": "Collecting Highly Parallel Data for Paraphrase Evaluation"
+        },
+        {
+            "paperId": "5a4f7c894f4560c3205978d9277d744a910560f6",
+            "title": "A Monolingual Tree-based Translation Model for Sentence Simplification"
+        },
+        {
+            "paperId": "6ac21818cdc54c59a319bc1e421738cb19249a55",
+            "title": "Entity-Focused Sentence Simplification for Relation Extraction"
+        },
+        {
+            "paperId": "bfd563c465866ddb07f3926bce68ecc8f2fecb32",
+            "title": "TESLA: Translation Evaluation of Sentences with Linear-Programming-Based Analysis"
+        },
+        {
+            "paperId": "e3116b7d204d17049b4c17f4fbe08d52e697dabf",
+            "title": "For the sake of simplicity: Unsupervised extraction of lexical simplifications from Wikipedia"
+        },
+        {
+            "paperId": "8dcc38d94088b43d3a2d7b049498463d80eef85c",
+            "title": "Reformulating Discourse Connectives for Non-Expert Readers"
+        },
+        {
+            "paperId": "9b59bd4268460a2181a431343044713aff4e768b",
+            "title": "A study of the role of relative clauses in the simplification of news texts for learners of English"
+        },
+        {
+            "paperId": "2444b9428e80fa503214f7244985123284ca36a1",
+            "title": "Facilita: reading assistance for low-literacy readers"
+        },
+        {
+            "paperId": "6d42e405d9b7270079eb33e228141de9d57bded7",
+            "title": "Dependency Tree Based Sentence Compression"
+        },
+        {
+            "paperId": "36eb5b36edac70cbc23507b825a3cec2e95d6b05",
+            "title": "Text simplification for language learners: a corpus analysis"
+        },
+        {
+            "paperId": "0db6eb46ca9941660acc775e3ca39bf4434c18be",
+            "title": "Hierarchical Phrase-Based Translation"
+        },
+        {
+            "paperId": "d9da9be266b1739dea7691302dc7eb4d33677802",
+            "title": "Models for Sentence Compression: A Comparison across Domains, Training Requirements and Evaluation Measures"
+        },
+        {
+            "paperId": "56bc078f0b7b4c6112001af12527b3f7fcf4f021",
+            "title": "Syntax Augmented Machine Translation via Chart Parsing"
+        },
+        {
+            "paperId": "090f4b588ba58c36a21eddd67ea33d59614480c1",
+            "title": "Syntactic Simplification and Text Cohesion"
+        },
+        {
+            "paperId": "36e8b8b35e51e5b39fcafdb5c2bc763796d0672e",
+            "title": "Paraphrasing with Bilingual Parallel Corpora"
+        },
+        {
+            "paperId": "0d8e3db6fcd99313773fcaa16074f2cc76ce1fef",
+            "title": "Syntactic Simplification for Improving Content Selection in Multi-Document Summarization"
+        },
+        {
+            "paperId": "288a0268d676d11bfda22226fe519d81f7e3f8dc",
+            "title": "Text Simplification for Reading Assistance: A Project Note"
+        },
+        {
+            "paperId": "1f12451245667a85d0ee225a80880fc93c71cc8b",
+            "title": "Minimum Error Rate Training in Statistical Machine Translation"
+        },
+        {
+            "paperId": "ed3cdb37a32c4989ed21dc6d0a406a88c0451a19",
+            "title": "Verb Paraphrase based on Case Frame Alignment"
+        },
+        {
+            "paperId": "fa07fa673d8c908e91d22c4566572a72548ccee9",
+            "title": "Summarization beyond sentence extraction: A probabilistic approach to sentence compression"
+        },
+        {
+            "paperId": "9015ba744841424d9ce7363149aa268ebd93b368",
+            "title": "Motivations and Methods for Text Simplification"
+        },
+        {
+            "paperId": "26d5981f7da4b508961aea01d53cd60e2202ff2d",
+            "title": "Derivation of New Readability Formulas (Automated Readability Index, Fog Count and Flesch Reading Ease Formula) for Navy Enlisted Personnel"
+        },
+        {
+            "paperId": null,
+            "title": "Optimizing Statistical Machine Translation for Simplification"
+        },
+        {
+            "paperId": "4fdacc3b2bb87040965ce7feac81899c1cfb37e4",
+            "title": "Cost Optimization in Crowdsourcing Translation: Low cost translations made even cheaper"
+        },
+        {
+            "paperId": "c39d40ab86c99586560ccb892417f788d9c5643a",
+            "title": "Aligning Sentences from Standard Wikipedia to Simple Wikipedia"
+        },
+        {
+            "paperId": "1a4c7736f3e0b4806dbd6b6ae24b258d83e81c2f",
+            "title": "Towards a standard evaluation method for grammatical error detection and correction"
+        },
+        {
+            "paperId": "e35d22622d470f142a48d53f07313d8c4e6c73d8",
+            "title": "Inducing Lexical Style Properties for Paraphrase and Genre Differentiation"
+        },
+        {
+            "paperId": "d3f125d8b1e9adeb5138172abf6b1b0753dd7679",
+            "title": "A survey of research on text simplification"
+        },
+        {
+            "paperId": "b88a0434c07188b21f36b0a3bc58ad81dbcdc8b4",
+            "title": "Paraphrasing for Style"
+        },
+        {
+            "paperId": "037aaa8d2090dc2f215da154e616842b8a6b90f9",
+            "title": "Text simplification for children"
+        },
+        {
+            "paperId": null,
+            "title": "Sentence sim-plication for semantic role labeling"
+        },
+        {
+            "paperId": null,
+            "title": "Text simplification: A survey. The City University of New York, Technical Report"
+        },
+        {
+            "paperId": null,
+            "title": "Sentence simplication for semantic role labeling. In Proceedings of the 46th Annual Meeting of the Association for Computational Linguistics: Human Language Technologies (ACL-HLT)"
+        },
+        {
+            "paperId": "eccbb42613cc8b0225802fe250b2e38f5af5356d",
+            "title": "Simplifying Text for Language-Impaired Readers"
+        },
+        {
+            "paperId": null,
+            "title": "The application of assistive technology in facilitating the comprehension of newspaper text by aphasic people"
+        },
+        {
+            "paperId": "dbb11d3c94d46eb884f6e6493296ac68cf7518d3",
+            "title": "Motivations and Methods for Text Simplification"
+        },
+        {
+            "paperId": null,
+            "title": "n l oaded f r o m h tt p :/ / d i r e c t. m i t. edu /t a c l / a r t i c l e - pd f/ do i / 10 . 1162 /t a c l _a _ 00107 / 1567406 /t a c l _a _ 00107 ."
+        }
+    ]
+}

@@ -1,0 +1,274 @@
+{
+    "paperId": "afc2850945a871e72c245818f9bc141bd659b453",
+    "externalIds": {
+        "MAG": "2786685006",
+        "ArXiv": "1804.00079",
+        "DBLP": "conf/iclr/SubramanianTBP18",
+        "CorpusId": 4567927
+    },
+    "title": "Learning General Purpose Distributed Sentence Representations via Large Scale Multi-task Learning",
+    "abstract": "A lot of the recent success in natural language processing (NLP) has been driven by distributed vector representations of words trained on large amounts of text in an unsupervised manner. These representations are typically used as general purpose features for words across a range of NLP problems. However, extending this success to learning representations of sequences of words, such as sentences, remains an open problem. Recent work has explored unsupervised as well as supervised learning techniques with different training objectives to learn general purpose fixed-length sentence representations. In this work, we present a simple, effective multi-task learning framework for sentence representations that combines the inductive biases of diverse training objectives in a single model. We train this model on several data sources with multiple training objectives on over 100 million sentences. Extensive experiments demonstrate that sharing a single recurrent sentence encoder across weakly related tasks leads to consistent improvements over previous methods. We present substantial improvements in the context of transfer learning and low-resource settings using our learned general-purpose representations.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2018,
+    "referenceCount": 58,
+    "citationCount": 321,
+    "influentialCitationCount": 28,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents a simple, effective multi-task learning framework for sentence representations that combines the inductive biases of diverse training objectives in a single model and demonstrates that sharing a single recurrent sentence encoder across weakly related tasks leads to consistent improvements over previous methods."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "50324141",
+            "name": "Sandeep Subramanian"
+        },
+        {
+            "authorId": "3382568",
+            "name": "Adam Trischler"
+        },
+        {
+            "authorId": "1751762",
+            "name": "Yoshua Bengio"
+        },
+        {
+            "authorId": "1972076",
+            "name": "C. Pal"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "b36a5bb1707bb9c70025294b3a310138aae8327a",
+            "title": "Automatic differentiation in PyTorch"
+        },
+        {
+            "paperId": "e886d951ae997399ab65a0fbbccd1ee9f1935c44",
+            "title": "DisSent: Sentence Representation Learning from Explicit Discourse Relations"
+        },
+        {
+            "paperId": "3c7106d758b4cde000f3641bf4da39fd096eb31c",
+            "title": "Deconvolutional Latent-Variable Model for Text Sequence Matching"
+        },
+        {
+            "paperId": "bc8fa64625d9189f5801837e7b133e7fe3c581f7",
+            "title": "Learned in Translation: Contextualized Word Vectors"
+        },
+        {
+            "paperId": "5033417a5cf2f2bd7c7a00c2059d2ffc45ba29fa",
+            "title": "Rethinking Skip-thought: A Neighborhood based Approach"
+        },
+        {
+            "paperId": "60dd2845a80474fd1b7a06b099819008cbfe16f2",
+            "title": "Semantic Specialisation of Distributional Word Vector Spaces using Monolingual and Cross-Lingual Constraints"
+        },
+        {
+            "paperId": "ee7b883e35d754ae4f71c21bb71f9f03e4ffbb2c",
+            "title": "Supervised Learning of Universal Sentence Representations from Natural Language Inference Data"
+        },
+        {
+            "paperId": "3f1802d3f4f5f6d66875dac09112f978f12e1e1e",
+            "title": "A Simple but Tough-to-Beat Baseline for Sentence Embeddings"
+        },
+        {
+            "paperId": "a97dc52807d80454e78d255f9fbd7b0fab56bd03",
+            "title": "Discourse-Based Objectives for Fast Unsupervised Sentence Representation Learning"
+        },
+        {
+            "paperId": "5ded2b8c64491b4a67f6d39ce473d4b9347a672e",
+            "title": "A Broad-Coverage Challenge Corpus for Sentence Understanding through Inference"
+        },
+        {
+            "paperId": "f056fb8cca0c30f59c22513d0dcd444f53cfa151",
+            "title": "Neural Paraphrase Identification of Questions with Noisy Pretraining"
+        },
+        {
+            "paperId": "263210f256603e3b62476ffb5b9bbbbc6403b646",
+            "title": "What do Neural Machine Translation Models Learn about Morphology?"
+        },
+        {
+            "paperId": "664ec878de4b7170712baae4a7821fc2602bba25",
+            "title": "Learning to Generate Reviews and Discovering Sentiment"
+        },
+        {
+            "paperId": "7228d90f4241c7da5ca8e53182a2d89bf74db565",
+            "title": "Unsupervised Learning of Sentence Embeddings Using Compositional n-Gram Features"
+        },
+        {
+            "paperId": "a9df777e4d8100e52e90fa4bd2d783d25a2fd173",
+            "title": "Bilateral Multi-Perspective Matching for Natural Language Sentences"
+        },
+        {
+            "paperId": "ad8c8baf4291ba1481d533b9f5d8ed2097e636a2",
+            "title": "How to evaluate word embeddings? On importance of data efficiency and simple supervised tasks"
+        },
+        {
+            "paperId": "612598389b4349fef728c80ab4202fee32f3a536",
+            "title": "Unsupervised Learning of Sentence Representations using Convolutional Neural Networks"
+        },
+        {
+            "paperId": "786f95cada23d4639aa1a8b922cdb9fb9a9c03fa",
+            "title": "Text Classification Improved by Integrating Bidirectional LSTM with Two-dimensional Max Pooling"
+        },
+        {
+            "paperId": "ade0c116120b54b57a91da51235108b75c28375a",
+            "title": "A Joint Many-Task Model: Growing a Neural Network for Multiple NLP Tasks"
+        },
+        {
+            "paperId": "d821ce08da6c0084d5eacbdf65e25556bc1b9bc3",
+            "title": "Does String-Based Neural MT Learn Source Syntax?"
+        },
+        {
+            "paperId": "922197906907dc0a5e1b51fae40d3149333ecacf",
+            "title": "UberNet: Training a Universal Convolutional Neural Network for Low-, Mid-, and High-Level Vision Using Diverse Datasets and Limited Memory"
+        },
+        {
+            "paperId": "e44da7d8c71edcc6e575fa7faadd5e75785a7901",
+            "title": "Fine-grained Analysis of Sentence Embeddings Using Auxiliary Prediction Tasks"
+        },
+        {
+            "paperId": "e2dba792360873aef125572812f3673b1a85d850",
+            "title": "Enriching Word Vectors with Subword Information"
+        },
+        {
+            "paperId": "cff79255a94b9b05a4ce893eb403a522e0923f04",
+            "title": "Neural Semantic Encoders"
+        },
+        {
+            "paperId": "12e9d005c77f76e344361f79c4b008034ae547eb",
+            "title": "Charagram: Embedding Words and Sentences via Character n-grams"
+        },
+        {
+            "paperId": "2cd8e8f510c89c7c18268e8ad51c061e459ad321",
+            "title": "A Decomposable Attention Model for Natural Language Inference"
+        },
+        {
+            "paperId": "f5a7da72496e2ca8edcd9f9123773012c010cfc6",
+            "title": "Neural Architectures for Named Entity Recognition"
+        },
+        {
+            "paperId": "36c097a225a95735271960e2b63a2cb9e98bff83",
+            "title": "A Fast Unified Model for Parsing and Sentence Understanding"
+        },
+        {
+            "paperId": "26e743d5bd465f49b9538deaf116c15e61b7951f",
+            "title": "Learning Distributed Representations of Sentences from Unlabelled Data"
+        },
+        {
+            "paperId": "395044a2e3f5624b2471fb28826e7dbb1009356e",
+            "title": "Towards Universal Paraphrastic Sentence Embeddings"
+        },
+        {
+            "paperId": "d76c07211479e233f7c6a6f32d5346c983c5598f",
+            "title": "Multi-task Sequence to Sequence Learning"
+        },
+        {
+            "paperId": "51a55df1f023571a7e07e338ee45a3e3d66ef73e",
+            "title": "Character-level Convolutional Networks for Text Classification"
+        },
+        {
+            "paperId": "14de10f81a45185f2c1391c416c553fb144b38db",
+            "title": "Evaluation of Word Vector Representations by Subspace Alignment"
+        },
+        {
+            "paperId": "f04df4e20a18358ea2f689b4c129781628ef7fc1",
+            "title": "A large annotated corpus for learning natural language inference"
+        },
+        {
+            "paperId": "83cf4b2f39bcc802b09fd59b69e23068447b26b7",
+            "title": "Multi-Task Learning for Multiple Language Translation"
+        },
+        {
+            "paperId": "0e6824e137847be0599bb0032e37042ed2ef5045",
+            "title": "Aligning Books and Movies: Towards Story-Like Visual Explanations by Watching Movies and Reading Books"
+        },
+        {
+            "paperId": "6e795c6e9916174ae12349f5dc3f516570c17ce8",
+            "title": "Skip-Thought Vectors"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "47570e7f63e296f224a0e7f9a0d08b0de3cbaf40",
+            "title": "Grammar as a Foreign Language"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "ac3ee98020251797c2b401e1389461df88e52e62",
+            "title": "Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling"
+        },
+        {
+            "paperId": "cb3a2ddcf305e2ec0f6b94af13d1e631ed261bdc",
+            "title": "Predicting Depth, Surface Normals and Semantic Labels with a Common Multi-scale Convolutional Architecture"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "613b3ca2628e5d9f0cc792789b0109fee107d46a",
+            "title": "Community Evaluation and Exchange of Word Vectors at wordvectors.org"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "b5d67d1dc671bce42a9daac0c3605adb3fcfc697",
+            "title": "Vector-based Models of Semantic Composition"
+        },
+        {
+            "paperId": "727e1e16ede6eaad241bad11c525da07b154c688",
+            "title": "A Model of Inductive Bias Learning"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "237175d9a7864dcf396751593605ea022c31421b",
+            "title": "Supplementary materials for: Plug & Play Generative Networks: Conditional Iterative Generation of Images in Latent Space"
+        },
+        {
+            "paperId": null,
+            "title": "2017) perform max-pooling across all of the hidden states"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "73e897104540642698321c106cc9c35af369fe12",
+            "title": "Combining Symbolic and Distributional Models of Meaning"
+        },
+        {
+            "paperId": null,
+            "title": "Extracting Tree-structured Representations of Trained Networks"
+        }
+    ]
+}

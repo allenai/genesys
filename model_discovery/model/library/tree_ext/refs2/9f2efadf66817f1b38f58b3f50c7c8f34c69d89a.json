@@ -1,0 +1,174 @@
+{
+    "paperId": "9f2efadf66817f1b38f58b3f50c7c8f34c69d89a",
+    "externalIds": {
+        "MAG": "2145287260",
+        "DBLP": "conf/cvpr/TaigmanYRW14",
+        "DOI": "10.1109/CVPR.2014.220",
+        "CorpusId": 2814088
+    },
+    "title": "DeepFace: Closing the Gap to Human-Level Performance in Face Verification",
+    "abstract": "In modern face recognition, the conventional pipeline consists of four stages: detect => align => represent => classify. We revisit both the alignment step and the representation step by employing explicit 3D face modeling in order to apply a piecewise affine transformation, and derive a face representation from a nine-layer deep neural network. This deep network involves more than 120 million parameters using several locally connected layers without weight sharing, rather than the standard convolutional layers. Thus we trained it on the largest facial dataset to-date, an identity labeled dataset of four million facial images belonging to more than 4, 000 identities. The learned representations coupling the accurate model-based alignment with the large facial database generalize remarkably well to faces in unconstrained environments, even with a simple classifier. Our method reaches an accuracy of 97.35% on the Labeled Faces in the Wild (LFW) dataset, reducing the error of the current state of the art by more than 27%, closely approaching human-level performance.",
+    "venue": "2014 IEEE Conference on Computer Vision and Pattern Recognition",
+    "year": 2014,
+    "referenceCount": 33,
+    "citationCount": 5953,
+    "influentialCitationCount": 444,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work revisits both the alignment step and the representation step by employing explicit 3D face modeling in order to apply a piecewise affine transformation, and derive a face representation from a nine-layer deep neural network."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2188620",
+            "name": "Yaniv Taigman"
+        },
+        {
+            "authorId": "41216159",
+            "name": "Ming Yang"
+        },
+        {
+            "authorId": "1706809",
+            "name": "Marc'Aurelio Ranzato"
+        },
+        {
+            "authorId": "145128145",
+            "name": "Lior Wolf"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "f11dda255eedb4674425b2b0a20acfa7b8d28300",
+            "title": "A Practical Transfer Learning Algorithm for Face Verification"
+        },
+        {
+            "paperId": "fe0324c1b6ae40df8ee4fa7d8ea5a4d73a352aef",
+            "title": "Fast High Dimensional Vector Multiplication Face Recognition"
+        },
+        {
+            "paperId": "6cf2b67bf414273e81f64f3e48b290de5540c87b",
+            "title": "Viewing Real-World Faces in 3D"
+        },
+        {
+            "paperId": "168c64fa2f42f1683ee2cdba9621ac825f5d946d",
+            "title": "Blessing of Dimensionality: High-Dimensional Feature and Its Efficient Compression for Face Verification"
+        },
+        {
+            "paperId": "224d0eee53c2aa5d426d2c9b7fa5d843a47cf1db",
+            "title": "Probabilistic Elastic Matching for Pose Variant Face Verification"
+        },
+        {
+            "paperId": "57ebeff9273dea933e2a75c306849baf43081a8c",
+            "title": "Deep Convolutional Network Cascade for Facial Point Detection"
+        },
+        {
+            "paperId": "427a517dad54942c9c0ca58ea5ce60359b3ddf9a",
+            "title": "The SVM-Minus Similarity Score for Video Face Recognition"
+        },
+        {
+            "paperId": "a8821587b8a28df19cb3025da38f8ced663e28e7",
+            "title": "Towards Pose Robust Face Recognition"
+        },
+        {
+            "paperId": "6f22324fab61fbc5df1aac2c0c9c497e0a7db608",
+            "title": "Volume structured ordinal features with background similarity measure for video face recognition"
+        },
+        {
+            "paperId": "b225a330e64de6540f634cd98499571dc6b2f2b4",
+            "title": "Fusing Robust Face Region Descriptors via Multiple Metric Learning for Face Recognition in the Wild"
+        },
+        {
+            "paperId": "1a3c74c7b11ad5635570932577cdde2a3f7a6a5c",
+            "title": "Improving deep neural networks for LVCSR using rectified linear units and dropout"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "3127190433230b3dc1abd0680bb58dced4bcd90e",
+            "title": "Large Scale Distributed Deep Networks"
+        },
+        {
+            "paperId": "4bd48e59590908d103e0c8b379002a64253f124a",
+            "title": "Learning to Align from Scratch"
+        },
+        {
+            "paperId": "a0d6390dd28d802152f207940c7716fe5fae8760",
+            "title": "Bayesian Face Revisited: A Joint Formulation"
+        },
+        {
+            "paperId": "21346e7fdffe3a388a62ef5edeb3a0a9736b903b",
+            "title": "Learning hierarchical representations for face verification with convolutional deep belief networks"
+        },
+        {
+            "paperId": "bb12b81196df90cad4a964bb14edfdb113aeb4ce",
+            "title": "Face detection, pose estimation, and landmark localization in the wild"
+        },
+        {
+            "paperId": "f80f453cf09a45fc57438ca0ddfc2439032b20b8",
+            "title": "Leveraging Billions of Faces to Overcome Performance Barriers in Unconstrained Face Recognition"
+        },
+        {
+            "paperId": "f61a7a7cd13e2702f0fbacc05e13b355c1e297e2",
+            "title": "Face recognition in unconstrained videos with matched background similarity"
+        },
+        {
+            "paperId": "c93fc7a4bd9dd566fe0cb8c3dfabbf04ac1c0c0c",
+            "title": "An introduction to the good, the bad, & the ugly face recognition challenge problem"
+        },
+        {
+            "paperId": "31f04f8f83365fabf7ba9c9be1179c0da6815128",
+            "title": "Emergence of Complex-Like Cells in a Temporal Product Network with Local Receptive Fields"
+        },
+        {
+            "paperId": "d3046251ec5d6e7f90ef5ef2b0ac885c01138555",
+            "title": "Attribute and simile classifiers for face verification"
+        },
+        {
+            "paperId": "c6b3ca4f939e36a9679a70e14ce8b1bbbc5618f3",
+            "title": "Labeled Faces in the Wild: A Database forStudying Face Recognition in Unconstrained Environments"
+        },
+        {
+            "paperId": "592e329fd243f38c4cd1ff393af1f24f6a10e3b8",
+            "title": "Unsupervised Joint Alignment of Complex Images"
+        },
+        {
+            "paperId": "e7c4665ce36a53484f8a7b7dfa821a9f6273eab4",
+            "title": "Face Description with Local Binary Patterns: Application to Face Recognition"
+        },
+        {
+            "paperId": "cfaae9b6857b834043606df3342d8dc97524aa9d",
+            "title": "Learning a similarity metric discriminatively, with application to face verification"
+        },
+        {
+            "paperId": "6b728a7442ca158f895d07c11c77d302269a832d",
+            "title": "Synergistic Face Detection and Pose Estimation with Energy-Based Models"
+        },
+        {
+            "paperId": "052b1d8ce63b07fec3de9dbb583772d860b7c769",
+            "title": "Learning representations by back-propagating errors"
+        },
+        {
+            "paperId": "f21aabf8dc2f713ff589f4a2769f6ae9719a4749",
+            "title": "Fisher Vector Faces in the Wild"
+        },
+        {
+            "paperId": "5f14a9595b0796ce6e5338f157b763326c1f632f",
+            "title": "Tom-vs-Pete Classifiers and Identity-Preserving Alignment for Face Verification"
+        },
+        {
+            "paperId": "23965bd9b557b04b2c81a35ee5c16951c0e420f3",
+            "title": "Multiple One-Shots for Utilizing Class Label Information"
+        },
+        {
+            "paperId": "d04d6db5f0df11d0cff57ec7e15134990ac07a4f",
+            "title": "Learning Deep Architectures for AI"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        }
+    ]
+}

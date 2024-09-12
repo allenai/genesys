@@ -1,0 +1,88 @@
+{
+    "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+    "externalIds": {
+        "MAG": "2945315962",
+        "CorpusId": 18268744
+    },
+    "title": "Learning Multiple Layers of Features from Tiny Images",
+    "abstract": "Groups at MIT and NYU have collected a dataset of millions of tiny colour images from the web. It is, in principle, an excellent dataset for unsupervised training of deep generative models, but previous researchers who have tried this have found it dicult to learn a good set of lters from the images. We show how to train a multi-layer generative model that learns to extract meaningful features which resemble those found in the human visual cortex. Using a novel parallelization algorithm to distribute the work among multiple machines connected on a network, we show how training such a model can be done in reasonable time. A second problematic aspect of the tiny images dataset is that there are no reliable class labels which makes it hard to use for object recognition experiments. We created two sets of reliable labels. The CIFAR-10 set has 6000 examples of each of 10 classes and the CIFAR-100 set has 600 examples of each of 100 non-overlapping classes. Using these labels, we show that object recognition is signicantly improved by pre-training a layer of features on a large set of unlabeled tiny images.",
+    "venue": "",
+    "year": 2009,
+    "referenceCount": 15,
+    "citationCount": 31014,
+    "influentialCitationCount": 7587,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown how to train a multi-layer generative model that learns to extract meaningful features which resemble those found in the human visual cortex, using a novel parallelization algorithm to distribute the work among multiple machines connected on a network."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2064160",
+            "name": "A. Krizhevsky"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "08d0ea90b53aba0008d25811268fe46562cfb38c",
+            "title": "On the quantitative analysis of deep belief networks"
+        },
+        {
+            "paperId": "73d6a26f407db77506959fdf3f7b853e44f3844a",
+            "title": "Training restricted Boltzmann machines using approximations to the likelihood gradient"
+        },
+        {
+            "paperId": "71e3d9fc53ba14c2feeb7390f0dc99076553b05a",
+            "title": "Robust Object Recognition with Cortex-Like Mechanisms"
+        },
+        {
+            "paperId": "355d44f53428b1ac4fb2ab468d593c720640e5bd",
+            "title": "Greedy Layer-Wise Training of Deep Networks"
+        },
+        {
+            "paperId": "52070af952474cf13ecd015d42979373ff7c1c00",
+            "title": "Training Products of Experts by Minimizing Contrastive Divergence"
+        },
+        {
+            "paperId": "ca1d23be869380ac9e900578c601c2d1febcc0c9",
+            "title": "The \u201cindependent components\u201d of natural scenes are edge filters"
+        },
+        {
+            "paperId": "68c03788224000794d5491ab459be0b2a2c38677",
+            "title": "WordNet: A Lexical Database for English"
+        },
+        {
+            "paperId": "939d584316be99e2db3fec3fbf7d71f22a477f67",
+            "title": "Unsupervised learning of distributions on binary vectors using two layer networks"
+        },
+        {
+            "paperId": "4f7476037408ac3d993f5088544aab427bc319c1",
+            "title": "Information processing in dynamical systems: foundations of harmony theory"
+        },
+        {
+            "paperId": "7c59908c946a4157abc030cdbe2b63d08ba97db3",
+            "title": "Supporting Online Material for Reducing the Dimensionality of Data with Neural Networks"
+        },
+        {
+            "paperId": "73e93d0346e8eee6c2ab45e46c26eaafb66e12a8",
+            "title": "Rate-coded Restricted Boltzmann Machines for Face Recognition"
+        },
+        {
+            "paperId": "54d2b5c64a67f65c5dd812b89e07973f97699552",
+            "title": "Ieee Transactions on Pattern Analysis and Machine Intelligence 1 80 Million Tiny Images: a Large Dataset for Non-parametric Object and Scene Recognition"
+        },
+        {
+            "paperId": null,
+            "title": "Bibliography"
+        },
+        {
+            "paperId": null,
+            "title": "WordNet can be found at http://wordnet.princeton"
+        },
+        {
+            "paperId": null,
+            "title": "If a category has two meanings (like mouse), only include the main meaning. If there is doubt about what this is, then ask"
+        }
+    ]
+}

@@ -1,0 +1,103 @@
+{
+    "paperId": "18b7c2bc5877485b23b50e58bc771b74f6823e30",
+    "externalIds": {
+        "CorpusId": 204797285
+    },
+    "title": "C L ] 1 4 O ct 2 01 9 Q 8 BERT : Quantized 8 Bit BERT",
+    "abstract": "Recently, pre-trained Transformer [14] based language models such as BERT [3] and GPT [9], have shown great improvement in many Natural Language Processing (NLP) tasks. However, these models contain a large amount of parameters. The emergence of even larger and more accurate models such as GPT2 [8] and Megatron, suggest a trend of large pre-trained Transformer models. As a result, using these models in production environments is a complex task requiring a large amount of compute, memory and power resources. In this work, we show how to perform quantization-aware training during the fine tuning phase of BERT in order to compress BERT by 4\u00d7 with minimal accuracy loss. Furthermore, the produced quantized model can accelerate inference speed by optimizing it to 8bit Integer supporting hardware.",
+    "venue": "",
+    "year": 2019,
+    "referenceCount": 16,
+    "citationCount": 5,
+    "influentialCitationCount": 0,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work shows how to perform quantization-aware training during the fine tuning phase of BERT in order to compress BERT by 4\u00d7 with minimal accuracy loss and the produced quantized model can accelerate inference speed by optimizing it to 8bit Integer supporting hardware."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1387202086",
+            "name": "Ofir Zafrir"
+        },
+        {
+            "authorId": "3150063",
+            "name": "Guy Boudoukh"
+        },
+        {
+            "authorId": "2477428",
+            "name": "Peter Izsak"
+        },
+        {
+            "authorId": "2134755",
+            "name": "Moshe Wasserblat"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "e0c6abdbdecf04ffac65c440da77fb9d66bb474c",
+            "title": "XLNet: Generalized Autoregressive Pretraining for Language Understanding"
+        },
+        {
+            "paperId": "3366e9eb81880d172752d4397cb8e9e6de02b935",
+            "title": "Efficient 8-Bit Quantization of Transformer Neural Machine Language Translation Model"
+        },
+        {
+            "paperId": "ec4eba83f6b3266d9ae7cabb2b2cb1518f727edc",
+            "title": "Cross-lingual Language Model Pretraining"
+        },
+        {
+            "paperId": "03f8754ab20732ebda02ce6e65ec9bfcce17528a",
+            "title": "Marian: Cost-effective High-Quality Neural Machine Translation in C++"
+        },
+        {
+            "paperId": "451d4a16e425ecbf38c4b1cca0dcf5d9bec8255c",
+            "title": "GLUE: A Multi-Task Benchmark and Analysis Platform for Natural Language Understanding"
+        },
+        {
+            "paperId": "59d0d7ccec2db66cad20cac5721ce54a8a058294",
+            "title": "Quantization and Training of Neural Networks for Efficient Integer-Arithmetic-Only Inference"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "05dd7254b632376973f3a1b4d39485da17814df5",
+            "title": "SQuAD: 100,000+ Questions for Machine Comprehension of Text"
+        },
+        {
+            "paperId": "642d0f49b7826adcf986616f4af77e736229990f",
+            "title": "Deep Compression: Compressing Deep Neural Network with Pruning, Trained Quantization and Huffman Coding"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "62c76ca0b2790c34e85ba1cce09d47be317c7235",
+            "title": "Estimating or Propagating Gradients Through Stochastic Neurons for Conditional Computation"
+        },
+        {
+            "paperId": "df2b0e26d0599ce3e70df8a9da02e51594e0e992",
+            "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding"
+        },
+        {
+            "paperId": "cd18800a0fe0b668a1cc19f2ec95b5003d0a5035",
+            "title": "Improving Language Understanding by Generative Pre-Training"
+        },
+        {
+            "paperId": "fbeaa499e10e98515f7e1c4ad89165e8c0677427",
+            "title": "Improving the speed of neural networks on CPUs"
+        },
+        {
+            "paperId": null,
+            "title": "Future directions for nlp in commercial environments"
+        },
+        {
+            "paperId": null,
+            "title": "Compressing bert for faster prediction"
+        }
+    ]
+}

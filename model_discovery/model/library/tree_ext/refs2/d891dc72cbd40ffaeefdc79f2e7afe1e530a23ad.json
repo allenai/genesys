@@ -1,0 +1,110 @@
+{
+    "paperId": "d891dc72cbd40ffaeefdc79f2e7afe1e530a23ad",
+    "externalIds": {
+        "ArXiv": "1312.6199",
+        "MAG": "2964153729",
+        "DBLP": "journals/corr/SzegedyZSBEGF13",
+        "CorpusId": 604334
+    },
+    "title": "Intriguing properties of neural networks",
+    "abstract": "Deep neural networks are highly expressive models that have recently achieved state of the art performance on speech and visual recognition tasks. While their expressiveness is the reason they succeed, it also causes them to learn uninterpretable solutions that could have counter-intuitive properties. In this paper we report two such properties. \nFirst, we find that there is no distinction between individual high level units and random linear combinations of high level units, according to various methods of unit analysis. It suggests that it is the space, rather than the individual units, that contains of the semantic information in the high layers of neural networks. \nSecond, we find that deep neural networks learn input-output mappings that are fairly discontinuous to a significant extend. We can cause the network to misclassify an image by applying a certain imperceptible perturbation, which is found by maximizing the network's prediction error. In addition, the specific nature of these perturbations is not a random artifact of learning: the same perturbation can cause a different network, that was trained on a different subset of the dataset, to misclassify the same input.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2013,
+    "referenceCount": 14,
+    "citationCount": 13669,
+    "influentialCitationCount": 1273,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is found that there is no distinction between individual highlevel units and random linear combinations of high level units, according to various methods of unit analysis, and it is suggested that it is the space, rather than the individual units, that contains of the semantic information in the high layers of neural networks."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2574060",
+            "name": "Christian Szegedy"
+        },
+        {
+            "authorId": "2563432",
+            "name": "Wojciech Zaremba"
+        },
+        {
+            "authorId": "1701686",
+            "name": "I. Sutskever"
+        },
+        {
+            "authorId": "143627859",
+            "name": "Joan Bruna"
+        },
+        {
+            "authorId": "1761978",
+            "name": "D. Erhan"
+        },
+        {
+            "authorId": "153440022",
+            "name": "I. Goodfellow"
+        },
+        {
+            "authorId": "2276554",
+            "name": "R. Fergus"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "1a2a770d23b4a171fa81de62a78a3deb0588f238",
+            "title": "Visualizing and Understanding Convolutional Networks"
+        },
+        {
+            "paperId": "fc26b9c1afe81e1b20195123fe6f3ced9520abb6",
+            "title": "Visualizing and Understanding Convolutional Neural Networks"
+        },
+        {
+            "paperId": "2f4df08d9072fc2ac181b7fced6a245315ce05c8",
+            "title": "Rich Feature Hierarchies for Accurate Object Detection and Semantic Segmentation"
+        },
+        {
+            "paperId": "f6b51c8753a871dc94ff32152c00c01e94f90f09",
+            "title": "Efficient Estimation of Word Representations in Vector Space"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "72e93aa6767ee683de7f001fa72f1314e40a8f35",
+            "title": "Building high-level features using large scale unsupervised learning"
+        },
+        {
+            "paperId": "3137bc367c61c0e507a5e3c1f8caeb26f292d79f",
+            "title": "Measuring Invariances in Deep Networks"
+        },
+        {
+            "paperId": "4e6238c8613b5b81f81552939bce33296aedfbfe",
+            "title": "How to Explain Individual Classification Decisions"
+        },
+        {
+            "paperId": "d2c733e34d48784a37d717fe43d9e93277a8c53e",
+            "title": "ImageNet: A large-scale hierarchical image database"
+        },
+        {
+            "paperId": "860a9d55d87663ca88e74b3ca357396cd51733d0",
+            "title": "A discriminatively trained, multiscale, deformable part model"
+        },
+        {
+            "paperId": "31868290adf1c000c611dfc966b514d5a34e8d23",
+            "title": "FUNDAMENTAL TECHNOLOGIES IN MODERN SPEECH RECOGNITION Digital Object Identifier 10.1109/MSP.2012.2205597"
+        },
+        {
+            "paperId": "65d994fb778a8d9e0f632659fb33a082949a50d3",
+            "title": "Visualizing Higher-Layer Features of a Deep Network"
+        },
+        {
+            "paperId": "d04d6db5f0df11d0cff57ec7e15134990ac07a4f",
+            "title": "Learning Deep Architectures for AI"
+        },
+        {
+            "paperId": "dc52d1ede1b90bf9d296bc5b34c9310b7eaa99a2",
+            "title": "The mnist database of handwritten digits"
+        }
+    ]
+}

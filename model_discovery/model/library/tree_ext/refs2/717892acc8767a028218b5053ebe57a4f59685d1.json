@@ -1,0 +1,166 @@
+{
+    "paperId": "717892acc8767a028218b5053ebe57a4f59685d1",
+    "externalIds": {
+        "ArXiv": "1805.09208",
+        "MAG": "2804845563",
+        "DBLP": "journals/corr/abs-1805-09208",
+        "CorpusId": 43922508
+    },
+    "title": "Pushing the bounds of dropout",
+    "abstract": "We show that dropout training is best understood as performing MAP estimation concurrently for a family of conditional models whose objectives are themselves lower bounded by the original dropout objective. This discovery allows us to pick any model from this family after training, which leads to a substantial improvement on regularisation-heavy language modelling. The family includes models that compute a power mean over the sampled dropout masks, and their less stochastic subvariants with tighter and higher lower bounds than the fully stochastic dropout objective. We argue that since the deterministic subvariant's bound is equal to its objective, and the highest amongst these models, the predominant view of it as a good approximation to MC averaging is misleading. Rather, deterministic dropout is the best available approximation to the true objective.",
+    "venue": "arXiv.org",
+    "year": 2018,
+    "referenceCount": 29,
+    "citationCount": 13,
+    "influentialCitationCount": 0,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that dropout training is best understood as performing MAP estimation concurrently for a family of conditional models whose objectives are themselves lower bounded by the original dropout objective, which allows us to pick any model from this family after training, which leads to a substantial improvement on regularisation-heavy language modelling."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "94303026",
+            "name": "G\u00e1bor Melis"
+        },
+        {
+            "authorId": "1723876",
+            "name": "C. Blundell"
+        },
+        {
+            "authorId": "2367821",
+            "name": "Tom\u00e1s Kocisk\u00fd"
+        },
+        {
+            "authorId": "2910877",
+            "name": "Karl Moritz Hermann"
+        },
+        {
+            "authorId": "1745899",
+            "name": "Chris Dyer"
+        },
+        {
+            "authorId": "1685771",
+            "name": "Phil Blunsom"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "ef9ddbc35676ce8ffc2a8067044473727839dbac",
+            "title": "Breaking the Softmax Bottleneck: A High-Rank RNN Language Model"
+        },
+        {
+            "paperId": "415f18130edbe06e3e4806dfb0a1edcab6c241eb",
+            "title": "Fraternal Dropout"
+        },
+        {
+            "paperId": "938f6ef7eed095919e6a482c7f1836a01d62db4b",
+            "title": "Google Vizier: A Service for Black-Box Optimization"
+        },
+        {
+            "paperId": "58c6f890a1ae372958b7decf56132fe258152722",
+            "title": "Regularizing and Optimizing LSTM Language Models"
+        },
+        {
+            "paperId": "14d89e1b9bdf418df88d19d14a2d7ff48e4c8582",
+            "title": "Sharpening Jensen's Inequality"
+        },
+        {
+            "paperId": "2397ce306e5d7f3d0492276e357fb1833536b5d8",
+            "title": "On the State of the Art of Evaluation in Neural Language Models"
+        },
+        {
+            "paperId": "e55827ab064e5b807d7fb77ca961ea009013c75f",
+            "title": "Filtering Variational Objectives"
+        },
+        {
+            "paperId": "11d3bac980b8d3d72f82719e47a4406916224bd6",
+            "title": "Concrete Dropout"
+        },
+        {
+            "paperId": "2d5069a99bfa0b47c095bbb5cefd6dba974f72a7",
+            "title": "Data Noising as Smoothing in Neural Network Language Models"
+        },
+        {
+            "paperId": "6ce1922802169f757bbafc6e087cc274a867c763",
+            "title": "Regularizing Neural Networks by Penalizing Confident Output Distributions"
+        },
+        {
+            "paperId": "437da3d1024f7312fde8a5287c99c36b559ed8f3",
+            "title": "Dropout with Expectation-linear Regularization"
+        },
+        {
+            "paperId": "cf76789618f5db929393c1187514ce6c3502c3cd",
+            "title": "Recurrent Dropout without Memory Loss"
+        },
+        {
+            "paperId": "0c1f9ca23f4f09ecfc44bcc8ca1c2736624f4652",
+            "title": "A Theoretically Grounded Application of Dropout in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "4443e2e5bfd112562ecef578f772cee3c692f19f",
+            "title": "Variational Dropout and the Local Reparameterization Trick"
+        },
+        {
+            "paperId": "f35de4f9b1a7c4d3fa96a0d2ab1bf8937671f6b6",
+            "title": "Dropout as a Bayesian Approximation: Representing Model Uncertainty in Deep Learning"
+        },
+        {
+            "paperId": "f264e8b33c0d49a692a6ce2c4bcb28588aeb7d97",
+            "title": "Recurrent Neural Network Regularization"
+        },
+        {
+            "paperId": "6ca1898dac153b8cd500c0c2633675b05d3c638c",
+            "title": "An empirical analysis of dropout in piecewise linear networks"
+        },
+        {
+            "paperId": "5f5dc5b9a2ba710937e2c413b37b053cd673df02",
+            "title": "Auto-Encoding Variational Bayes"
+        },
+        {
+            "paperId": "cc46229a7c47f485e090857cbab6e6bf68c09811",
+            "title": "Understanding Dropout"
+        },
+        {
+            "paperId": "ba0c34d72dd42ef78c1f1514d92c2c22b9c0d454",
+            "title": "On Fast Dropout and its Applicability to Recurrent Networks"
+        },
+        {
+            "paperId": "ec92efde21707ddf4b81f301cd58e2051c1a2443",
+            "title": "Fast dropout training"
+        },
+        {
+            "paperId": "4ef03716945bd3907458efbe1bbf8928dafc1efc",
+            "title": "Regularization and nonlinearities for neural language models: when are they needed?"
+        },
+        {
+            "paperId": "0060745e006c5f14ec326904119dca19c6545e51",
+            "title": "Improving neural networks by preventing co-adaptation of feature detectors"
+        },
+        {
+            "paperId": "5a9ef216bf11f222438fff130c778267d39a9564",
+            "title": "Practical Variational Inference for Neural Networks"
+        },
+        {
+            "paperId": "aaca093827e826a1118a4d2a93b0e42a09308be7",
+            "title": "Two problems with variational expectation maximisation for time-series models"
+        },
+        {
+            "paperId": "6e4ff932444f688c061fd02ef9002e60371b32d7",
+            "title": "The Psycho-Biology of Language"
+        },
+        {
+            "paperId": "dde4b95be20a160253a6cc9ecd75492a13d60c10",
+            "title": "Risk versus Uncertainty in Deep Learning: Bayes, Bootstrap and the Dangers of Dropout"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "b2c64d75c6cab419da9f876e2f55ff54480f07e8",
+            "title": "The Psycho-Biology of Language."
+        }
+    ]
+}

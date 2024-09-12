@@ -1,0 +1,250 @@
+{
+    "paperId": "5e2441b1b535dd36def485474fdec9e51a6d90b6",
+    "externalIds": {
+        "ArXiv": "1706.05439",
+        "MAG": "2951996235",
+        "DBLP": "journals/sac/BakerFFN19",
+        "DOI": "10.1007/s11222-018-9826-2",
+        "CorpusId": 22301362
+    },
+    "title": "Control variates for stochastic gradient MCMC",
+    "abstract": null,
+    "venue": "Statistics and computing",
+    "year": 2017,
+    "referenceCount": 51,
+    "citationCount": 95,
+    "influentialCitationCount": 21,
+    "openAccessPdf": {
+        "url": "https://link.springer.com/content/pdf/10.1007/s11222-018-9826-2.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An alternative log-posterior gradient estimate is suggested for stochastic gradient MCMC which uses control variates to reduce the variance, and it is shown that a different control-variate technique, known as zero variance control Variates, can be applied to SGMCMC algorithms for free."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2117188775",
+            "name": "Jack Baker"
+        },
+        {
+            "authorId": "3246901",
+            "name": "P. Fearnhead"
+        },
+        {
+            "authorId": "2394622",
+            "name": "E. Fox"
+        },
+        {
+            "authorId": "2064196771",
+            "name": "C. Nemeth"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "1ff84e90d54b12f54865800b073913100de91611",
+            "title": "On the Theory of Variance Reduction for Stochastic Gradient Monte Carlo"
+        },
+        {
+            "paperId": "d99cb3dec180a6541bd240845d9ddb1bfca5b12d",
+            "title": "Comparing consensus Monte Carlo strategies for distributed Bayesian computation"
+        },
+        {
+            "paperId": "c8a5c83d668a96c91162ea16df4a854b4df4c78d",
+            "title": "sgmcmc: An R Package for Stochastic Gradient Markov Chain Monte Carlo"
+        },
+        {
+            "paperId": "0c2c11db8a43964e139c65b23e02af31deb81be8",
+            "title": "User-friendly guarantees for the Langevin Monte Carlo with inaccurate gradient"
+        },
+        {
+            "paperId": "e7986771e3725a1d112de8fec0c6b9b9b4250abe",
+            "title": "A convergence analysis for a class of practical variance-reduction stochastic gradient MCMC"
+        },
+        {
+            "paperId": "b72a4c9057734342f123067d5d59e8e59934af1d",
+            "title": "The True Cost of Stochastic Gradient Langevin Dynamics"
+        },
+        {
+            "paperId": "f8110d834fcc9a3a1c4416d4b165984219fe26f4",
+            "title": "Stan: A Probabilistic Programming Language."
+        },
+        {
+            "paperId": "a0ebf91e3d32980c73022011236d8a7a172c4894",
+            "title": "Variance Reduction in Stochastic Gradient Langevin Dynamics"
+        },
+        {
+            "paperId": "157c7e7bd72ea08a712ca5b5b2b08c18e3310fe1",
+            "title": "Measuring Sample Quality with Diffusions"
+        },
+        {
+            "paperId": "d51fefa58ceafe9bebddf03f2379842068dae3bc",
+            "title": "Edward: A library for probabilistic modeling, inference, and criticism"
+        },
+        {
+            "paperId": "b9ac5d23ef5a0fb49f8bff07633cd68dcd2ca4fd",
+            "title": "Multilevel Monte Carlo for Scalable Bayesian Computations"
+        },
+        {
+            "paperId": "73c49be7e3c30a6aaa6e9ed417bc38e8529496ad",
+            "title": "The Scalable Langevin Exact Algorithm : Bayesian Inference for Big Data"
+        },
+        {
+            "paperId": "3600b1c25d9aba273140916e036e2432decc8517",
+            "title": "The Zig-Zag process and super-efficient sampling for Bayesian analysis of big data"
+        },
+        {
+            "paperId": "8c976530e5c3975a483e3a905de83e210de98693",
+            "title": "Merging MCMC Subposteriors through Gaussian-Process Approximations"
+        },
+        {
+            "paperId": "e242caa5e60776ab2df1ed758df66b4020ae4ded",
+            "title": "High-dimensional Bayesian inference via the unadjusted Langevin algorithm"
+        },
+        {
+            "paperId": "e55cfc9f3fbca6f4c519df0a73adeb0c5bce8974",
+            "title": "On the Convergence of Stochastic Gradient MCMC Algorithms with High-Order Integrators"
+        },
+        {
+            "paperId": "3250400791333697125b77aae218350bd183b0f7",
+            "title": "Scalable MCMC for Mixed Membership Stochastic Blockmodels"
+        },
+        {
+            "paperId": "1d5972b32a9b5a455a6eef389de5b7fca25771ad",
+            "title": "Domain-Adversarial Training of Neural Networks"
+        },
+        {
+            "paperId": "e01a2082464b3598962ed697e7b6942a0f8477f0",
+            "title": "On Markov chain Monte Carlo methods for tall data"
+        },
+        {
+            "paperId": "0a2b4b5ad9b1e1ea0314edd5713a08d246e4e127",
+            "title": "UvA-DARE (Digital Academic Repository) Large-Scale Distributed Bayesian Matrix Factorization using Stochastic Gradient Large-Scale Distributed Bayesian Matrix Factorization using Stochastic Gradient MCMC"
+        },
+        {
+            "paperId": "dae2961dd4be0e87b1800e290c7b6d8560c9419a",
+            "title": "WASP: Scalable Bayes via barycenters of subset posteriors"
+        },
+        {
+            "paperId": "c9c7a14b0bc1418f24625c0b32738c645154eafa",
+            "title": "(Non-) asymptotic properties of Stochastic Gradient Langevin Dynamics"
+        },
+        {
+            "paperId": "7263386863bee9e2c69b60162a38c9089811eb50",
+            "title": "Bayesian Sampling Using Stochastic Gradient Thermostats"
+        },
+        {
+            "paperId": "aaee41270a6397024a68188dbf61614d87f891fb",
+            "title": "Consistency and Fluctuations For Stochastic Gradient Langevin Dynamics"
+        },
+        {
+            "paperId": "416e2b7f2811d4d06f872b610bec30a64847a937",
+            "title": "Exploiting Multi-Core Architectures for Reduced-Variance Estimation with Intractable Likelihoods"
+        },
+        {
+            "paperId": "5cb36159a1bda5bd82ff4d04f1bd33a8b290d3eb",
+            "title": "Approximation Analysis of Stochastic Gradient Langevin Dynamics by using Fokker-Planck Equation and Ito Process"
+        },
+        {
+            "paperId": "752f854cc94797aa3fdf12c0bdc63407720d03c9",
+            "title": "Scalable and Robust Bayesian Inference via the Median Posterior"
+        },
+        {
+            "paperId": "87ffd2c4dac4ddcee5fcb366b7615ea85549e910",
+            "title": "Firefly Monte Carlo: Exact MCMC with Subsets of Data"
+        },
+        {
+            "paperId": "769cd9b99599346ca315fe05411dfd9f4fdd6403",
+            "title": "Zero Variance Differential Geometric Markov Chain Monte Carlo Algorithms"
+        },
+        {
+            "paperId": "9a471f962b3b2cbac5e84e876cd11f4921f339ec",
+            "title": "Stochastic Gradient Hamiltonian Monte Carlo"
+        },
+        {
+            "paperId": "92259b838d62537db3643f8f7a5a603a9d4e82d2",
+            "title": "Parallelizing MCMC via Weierstrass Sampler"
+        },
+        {
+            "paperId": "2939c42d40b6a45fef2429ad09f4a348911d1b48",
+            "title": "Stochastic Gradient Riemannian Langevin Dynamics on the Probability Simplex"
+        },
+        {
+            "paperId": "5aaa65fbe2abe27afb237b2f40909d686b14b1ee",
+            "title": "Asymptotically Exact, Embarrassingly Parallel MCMC"
+        },
+        {
+            "paperId": "8bc1e6228e47905f03b2c168bdc9e6fb90da82b3",
+            "title": "Austerity in MCMC Land: Cutting the Metropolis-Hastings Budget"
+        },
+        {
+            "paperId": "3b0821ff22fdffc95b0caae1f9660773eb54dc52",
+            "title": "MCMC using Hamiltonian dynamics"
+        },
+        {
+            "paperId": "a6c4839019e452834c3ab9a19a5c38615280111f",
+            "title": "Handbook of Markov Chain Monte Carlo: Hardcover: 619 pages Publisher: Chapman and Hall/CRC Press (first edition, May 2011) Language: English ISBN-10: 1420079417"
+        },
+        {
+            "paperId": "aeed631d6a84100b5e9a021ec1914095c66de415",
+            "title": "Bayesian Learning via Stochastic Gradient Langevin Dynamics"
+        },
+        {
+            "paperId": "15dec587f0db03b4119e568811bd7452798a30ae",
+            "title": "Zero variance Markov chain Monte Carlo for Bayesian estimators"
+        },
+        {
+            "paperId": "da0877799c8daab985853c0aeed7c04f987bad4a",
+            "title": "Robust Stochastic Approximation Approach to Stochastic Programming"
+        },
+        {
+            "paperId": "e19971e7d100386b9b4cf4ea1a0782b62fe036e5",
+            "title": "Probabilistic Matrix Factorization"
+        },
+        {
+            "paperId": "cd492b20c1d1912471920abe7db4d50e677ef475",
+            "title": "RECURSIVE COMPUTATION OF THE INVARIANT DISTRIBUTION OF A DIFFUSION: THE CASE OF A WEAKLY MEAN REVERTING DRIFT"
+        },
+        {
+            "paperId": "65a7a75b60353b59ccd4d69d06c8a24fb60fb12e",
+            "title": "Latent Dirichlet Allocation"
+        },
+        {
+            "paperId": "42fdf2999c46babe535974e14375fbb224445757",
+            "title": "Comparative accuracies of artificial neural networks and discriminant analysis in predicting forest cover types from cartographic variables"
+        },
+        {
+            "paperId": "0dffd5c04f5830deadd4fba16ee1575abc5ee051",
+            "title": "Exponential convergence of Langevin distributions and their discrete approximations"
+        },
+        {
+            "paperId": "34ddd8865569c2c32dec9bf7ffc817ff42faaa01",
+            "title": "A Stochastic Approximation Method"
+        },
+        {
+            "paperId": null,
+            "title": "FNN: fast nearest neighbor search algorithms and applications"
+        },
+        {
+            "paperId": "fbc6562814e08e416e28a268ce7beeaa3d0708c8",
+            "title": "Large-Scale Machine Learning with Stochastic Gradient Descent"
+        },
+        {
+            "paperId": "b4103e9b1d7e1699dd0d606b08c34394e2aff72d",
+            "title": "Optimal scaling of discrete approximations to Langevin diffusions"
+        },
+        {
+            "paperId": "fd70ca05d136298f9affd69574c409f71dc3dc90",
+            "title": "Stochastic simulation"
+        },
+        {
+            "paperId": "b79067beac10880ca286409277383e29a9bae0dd",
+            "title": "Asymptotic Methods In Statistical Decision Theory"
+        },
+        {
+            "paperId": null,
+            "title": "Publisher's Note Springer Nature remains neutral with regard to jurisdictional claims in published maps and institutional affiliations"
+        }
+    ]
+}

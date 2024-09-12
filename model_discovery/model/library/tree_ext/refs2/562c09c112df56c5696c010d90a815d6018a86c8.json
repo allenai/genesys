@@ -1,0 +1,258 @@
+{
+    "paperId": "562c09c112df56c5696c010d90a815d6018a86c8",
+    "externalIds": {
+        "MAG": "2963118869",
+        "DBLP": "journals/corr/abs-1710-04087",
+        "ArXiv": "1710.04087",
+        "CorpusId": 3470398
+    },
+    "title": "Word Translation Without Parallel Data",
+    "abstract": "State-of-the-art methods for learning cross-lingual word embeddings have relied on bilingual dictionaries or parallel corpora. Recent studies showed that the need for parallel data supervision can be alleviated with character-level information. While these methods showed encouraging results, they are not on par with their supervised counterparts and are limited to pairs of languages sharing a common alphabet. In this work, we show that we can build a bilingual dictionary between two languages without using any parallel corpora, by aligning monolingual word embedding spaces in an unsupervised way. Without using any character information, our model even outperforms existing supervised methods on cross-lingual tasks for some language pairs. Our experiments demonstrate that our method works very well also for distant language pairs, like English-Russian or English-Chinese. We finally describe experiments on the English-Esperanto low-resource language pair, on which there only exists a limited amount of parallel data, to show the potential impact of our method in fully unsupervised machine translation. Our code, embeddings and dictionaries are publicly available.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2017,
+    "referenceCount": 53,
+    "citationCount": 1558,
+    "influentialCitationCount": 408,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that a bilingual dictionary can be built between two languages without using any parallel corpora, by aligning monolingual word embedding spaces in an unsupervised way."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2480903",
+            "name": "Alexis Conneau"
+        },
+        {
+            "authorId": "1830914",
+            "name": "Guillaume Lample"
+        },
+        {
+            "authorId": "1706809",
+            "name": "Marc'Aurelio Ranzato"
+        },
+        {
+            "authorId": "8905591",
+            "name": "Ludovic Denoyer"
+        },
+        {
+            "authorId": "2065248680",
+            "name": "Herv'e J'egou"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "dfd122ebb40adf3666b0d526bb4009bedb28226b",
+            "title": "Deciphering Related Languages"
+        },
+        {
+            "paperId": "8d3feb186556ead77590979b42c42374549a1166",
+            "title": "Earth Mover\u2019s Distance Minimization for Unsupervised Bilingual Lexicon Induction"
+        },
+        {
+            "paperId": "9603a638f16825653a7e0c825005db0679d82847",
+            "title": "SemEval-2017 Task 2: Multilingual and Cross-lingual Semantic Word Similarity"
+        },
+        {
+            "paperId": "11fdffe08eb1b08bfa8e3fdabe1accfd0e336be3",
+            "title": "Learning bilingual word embeddings with (almost) no bilingual data"
+        },
+        {
+            "paperId": "92c22d3743bcc080783b3deb1ed4889f967df286",
+            "title": "Adversarial Training for Unsupervised Bilingual Lexicon Induction"
+        },
+        {
+            "paperId": "013efe3ff541e518c51f08d1b62a62e0c57c0b14",
+            "title": "Parseval Networks: Improving Robustness to Adversarial Examples"
+        },
+        {
+            "paperId": "f222fe9948231e08abc8472601f2876fd5e25697",
+            "title": "Bootstrapping Unsupervised Bilingual Lexicon Induction"
+        },
+        {
+            "paperId": "02e45b3472fa4c879f8e9ca0dbb283c774a338cb",
+            "title": "Offline bilingual word vectors, orthogonal transformations and the inverted softmax"
+        },
+        {
+            "paperId": "2c740e574eea66fdcf473e15ed2c228baef2eccd",
+            "title": "NIPS 2016 Tutorial: Generative Adversarial Networks"
+        },
+        {
+            "paperId": "4c365cf1f3227dba366704ef2cb0e16df4a34579",
+            "title": "A Distribution-based Model to Learn Bilingual Word Embeddings"
+        },
+        {
+            "paperId": "9a2eed5f8175275af0d55d4aed39afc8e2b2acf2",
+            "title": "Learning principled bilingual mappings of word embeddings while preserving monolingual invariance"
+        },
+        {
+            "paperId": "060e590a448d72187367e995c350ccf1cfa2b8b9",
+            "title": "Nasari: Integrating explicit knowledge and corpus statistics for a multilingual representation of concepts and entities"
+        },
+        {
+            "paperId": "e2dba792360873aef125572812f3673b1a85d850",
+            "title": "Enriching Word Vectors with Subword Information"
+        },
+        {
+            "paperId": "42636e49faeb9d8eefac065979115c685fec1bab",
+            "title": "Learning Crosslingual Word Embeddings without Bilingual Corpora"
+        },
+        {
+            "paperId": "23d4d2eb084e646261dd7c1f0b284f55f26f1b64",
+            "title": "Massively Multilingual Word Embeddings"
+        },
+        {
+            "paperId": "501acb88710ac23a99562f3987b842c8a5e234bd",
+            "title": "Hubness and Pollution: Delving into Cross-Space Mapping for Zero-Shot Learning"
+        },
+        {
+            "paperId": "8286f4d4e3cca04367f6d6a8e4381e1f2800a641",
+            "title": "Bilingual Word Embeddings from Non-Parallel Document-Aligned Data Applied to Bilingual Lexicon Induction"
+        },
+        {
+            "paperId": "1ddb0c06d6497698f2189517e6a97d8a5e3fa1ac",
+            "title": "Unifying Bayesian Inference and Vector Space Models for Improved Decipherment"
+        },
+        {
+            "paperId": "1d5972b32a9b5a455a6eef389de5b7fca25771ad",
+            "title": "Domain-Adversarial Training of Neural Networks"
+        },
+        {
+            "paperId": "b9da09d4828902ab8cb02aceb5495dc6064b220b",
+            "title": "Improving zero-shot learning by mitigating the hubness problem"
+        },
+        {
+            "paperId": "f4c018bcc8ea707b83247866bdc8ccb87cd9f5da",
+            "title": "Neural Word Embedding as Implicit Matrix Factorization"
+        },
+        {
+            "paperId": "fc303b3b0be5b476ae5f3d8414b685e91d0378c6",
+            "title": "BilBOWA: Fast Bilingual Distributed Representations without Word Alignments"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "9d3aaa919c78c06f24588d97ed1028d51860b321",
+            "title": "Improving Vector Space Word Representations Using Multilingual Correlation"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "0d3233d858660aff451a6c2561a05378ed09725a",
+            "title": "Bilingual Word Embeddings for Phrase-Based Machine Translation"
+        },
+        {
+            "paperId": "0157dcd6122c20b5afc359a799b2043453471f7f",
+            "title": "Exploiting Similarities among Languages for Machine Translation"
+        },
+        {
+            "paperId": "53ab89807caead278d3deb7b6a4180b277d3cb77",
+            "title": "Better Word Representations with Recursive Neural Networks for Morphology"
+        },
+        {
+            "paperId": "0f68ea4c0958539fa2b8badf61b8bc1d0e7d7085",
+            "title": "Supervised Bilingual Lexicon Induction with Multiple Monolingual Signals"
+        },
+        {
+            "paperId": "f6b51c8753a871dc94ff32152c00c01e94f90f09",
+            "title": "Efficient Estimation of Word Representations in Vector Space"
+        },
+        {
+            "paperId": "d1f37d9cab68eb8cda669cc949394732f33264b4",
+            "title": "Inducing Crosslingual Distributed Representations of Words"
+        },
+        {
+            "paperId": "25ca4a36df2955b345634b5f8a6b6bb66a774b3c",
+            "title": "Parallel Data, Tools and Interfaces in OPUS"
+        },
+        {
+            "paperId": "537018f8ee3502faea7fcd00f511f6cacf89ea68",
+            "title": "Deciphering Foreign Language"
+        },
+        {
+            "paperId": "f620ec7bc0632be5518718cb81e2bfb57c81e950",
+            "title": "Hubs in Space: Popular Nearest Neighbors in High-Dimensional Data"
+        },
+        {
+            "paperId": "8ec7a7b28f5237fa429e380f266f33548f3cff59",
+            "title": "The WaCky wide web: a collection of very large linguistically processed web-crawled corpora"
+        },
+        {
+            "paperId": "3709b6cb2ed14c04b60e38d5f75e89c41317e93d",
+            "title": "Learning Bilingual Lexicons from Monolingual Corpora"
+        },
+        {
+            "paperId": "50b7749edf80d160cf8e88e0c6e52004eac4a2ae",
+            "title": "Self-Tuning Spectral Clustering"
+        },
+        {
+            "paperId": "9c8d3801fbcb86fa66044484ea8ab9310ea9149c",
+            "title": "Inducing Translation Lexicons via Diverse Similarity Measures and Bridge Languages"
+        },
+        {
+            "paperId": "120ac09b2734ba9d785f6f3def85fe1936aa4322",
+            "title": "Learning a Translation Lexicon from Monolingual Corpora"
+        },
+        {
+            "paperId": "326cfa1ffff97bd923bb6ff58d9cb6a3f60edbe5",
+            "title": "The Earth Mover's Distance as a Metric for Image Retrieval"
+        },
+        {
+            "paperId": "bf6cefab34c62596d486a86a0187c427d38f0b29",
+            "title": "Automatic Identification of Word Translations from Unrelated English and German Corpora"
+        },
+        {
+            "paperId": "dd7edbb79b02e333145f645f897e55b9d387c29c",
+            "title": "An IR Approach for Translating New Words from Nonparallel, Comparable Texts"
+        },
+        {
+            "paperId": "6818f2b2fefee4ff9bc21ba67cb36e69a8a71b55",
+            "title": "Identifying Word Translations in Non-Parallel Texts"
+        },
+        {
+            "paperId": "d3886d4267d830d538074ecc4e6aa4ba22a16701",
+            "title": "An Eigendecomposition Approach to Weighted Graph Matching Problems"
+        },
+        {
+            "paperId": "956081123f4a530ccf93aa7bfe196412118fc41a",
+            "title": "A generalized solution of the orthogonal procrustes problem"
+        },
+        {
+            "paperId": "c68796f833a7151f0a63d1d1608dc902b4fdc9b6",
+            "title": "GENERATIVE ADVERSARIAL NETS"
+        },
+        {
+            "paperId": "77e576c02792d7df5b102bb81d49df4b5382e1cc",
+            "title": "Normalized Word Embedding and Orthogonal Transform for Bilingual Word Translation"
+        },
+        {
+            "paperId": null,
+            "title": "English gigaword"
+        },
+        {
+            "paperId": "39a31831797e6001c145de0dc5aea4a7060a2346",
+            "title": "Accurate Image Search Using the Contextual Dissimilarity Measure"
+        },
+        {
+            "paperId": null,
+            "title": "Lihi Zelnikmanor and Pietro Perona . Selftuning spectral clustering"
+        },
+        {
+            "paperId": "63a6f511fc9adb44da87ceccf9247d7fb5d42169",
+            "title": "Compiling Bilingual Lexicon Entries From a Non-Parallel English-Chinese Corpus"
+        },
+        {
+            "paperId": "decd9bc0385612bdf936928206d83730718e737e",
+            "title": "Distributional Structure"
+        },
+        {
+            "paperId": null,
+            "title": "European Language Resources Association (ELRA)"
+        }
+    ]
+}

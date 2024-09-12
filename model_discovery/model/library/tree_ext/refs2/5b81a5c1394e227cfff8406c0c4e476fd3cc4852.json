@@ -1,0 +1,207 @@
+{
+    "paperId": "5b81a5c1394e227cfff8406c0c4e476fd3cc4852",
+    "externalIds": {
+        "DBLP": "conf/cvpr/BabenkoL12",
+        "MAG": "2171572695",
+        "DOI": "10.1109/CVPR.2012.6248038",
+        "CorpusId": 15445563,
+        "PubMed": "26357346"
+    },
+    "title": "The Inverted Multi-Index",
+    "abstract": "A new data structure for efficient similarity search in very large datasets of high-dimensional vectors is introduced. This structure called the inverted multi-index generalizes the inverted index idea by replacing the standard quantization within inverted indices with product quantization. For very similar retrieval complexity and pre-processing time, inverted multi-indices achieve a much denser subdivision of the search space compared to inverted indices, while retaining their memory efficiency. Our experiments with large datasets of SIFT and GIST vectors demonstrate that because of the denser subdivision, inverted multi-indices are able to return much shorter candidate lists with higher recall. Augmented with a suitable reranking procedure, multi-indices were able to significantly improve the speed of approximate nearest neighbor search on the dataset of 1 billion SIFT vectors compared to the best previously published systems, while achieving better recall and incurring only few percent of memory overhead.",
+    "venue": "IEEE Transactions on Pattern Analysis and Machine Intelligence",
+    "year": 2012,
+    "referenceCount": 43,
+    "citationCount": 396,
+    "influentialCitationCount": 65,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Inverted multi-indices were able to significantly improve the speed of approximate nearest neighbor search on the dataset of 1 billion SIFT vectors compared to the best previously published systems, while achieving better recall and incurring only few percent of memory overhead."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "143743802",
+            "name": "Artem Babenko"
+        },
+        {
+            "authorId": "1740145",
+            "name": "V. Lempitsky"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "05634cabe22b43fe1f0da1a0b0b2f116bffa3324",
+            "title": "Locally Optimized Product Quantization for Approximate Nearest Neighbor Search"
+        },
+        {
+            "paperId": "c2e9300b0e72dca0b95ccd4181fc2a7a5178dea7",
+            "title": "Improving Bilayer Product Quantization for Billion-Scale Approximate Nearest Neighbors in High Dimensions"
+        },
+        {
+            "paperId": "d4beac7746fb4a12bb04287a6638236b5ae0cfd9",
+            "title": "Optimized Product Quantization"
+        },
+        {
+            "paperId": "0e2261c75bf0ac263ff4d2eaf90f996d82622633",
+            "title": "Cartesian K-Means"
+        },
+        {
+            "paperId": "3739b442f14badc0547ab780c77163e8ab7f6c00",
+            "title": "Optimized Product Quantization for Approximate Nearest Neighbor Search"
+        },
+        {
+            "paperId": "7ae42cc4b475a2192707d0ada7b3c60c347b621e",
+            "title": "Approximate Nearest Neighbor: Towards Removing the Curse of Dimensionality"
+        },
+        {
+            "paperId": "d124f004fed2ee15860f624005b2215cfaeff276",
+            "title": "Ensemble of exemplar-SVMs for object detection and beyond"
+        },
+        {
+            "paperId": "e50268ea05f1651d8f0286efa0c76a37af1ec771",
+            "title": "Exploiting descriptor distances for precise image search"
+        },
+        {
+            "paperId": "de90778bf9548820f32d5951ea936004ff17baff",
+            "title": "Image retrieval with geometry-preserving visual phrases"
+        },
+        {
+            "paperId": "15fb7f92096da5535a3c37092e707d53894351d9",
+            "title": "NV-Tree: nearest neighbors at the billion scale"
+        },
+        {
+            "paperId": "6d6e380c5f79189db00c87cad85abea878222a55",
+            "title": "Searching in one billion vectors: Re-rank with source coding"
+        },
+        {
+            "paperId": "d720a95e1501922ea17ee31f299f43b2db5e15ef",
+            "title": "Vlfeat: an open and portable library of computer vision algorithms"
+        },
+        {
+            "paperId": "9800e3c3394c569be83379ee2ebe3424e09c2919",
+            "title": "What Does Classifying More Than 10, 000 Image Categories Tell Us?"
+        },
+        {
+            "paperId": "f2859c9bddec9cc6af4792b0fdbaa9ee5f44f6bd",
+            "title": "Descriptor Learning for Efficient Retrieval"
+        },
+        {
+            "paperId": "a608f3866c8058c34d87d89a061142260e2ecc5f",
+            "title": "Partition Min-Hash for Partial Duplicate Image Discovery"
+        },
+        {
+            "paperId": "f0cc9d73b1e5d7f91f43071950bfda619b1443bf",
+            "title": "On the Annotation of Web Videos by Efficient Near-Duplicate Search"
+        },
+        {
+            "paperId": "a1855be6143291aeafb16338eb3327f903ac7618",
+            "title": "Aggregating local descriptors into a compact image representation"
+        },
+        {
+            "paperId": "1b20afbd2d2a349737ed3dc246e44bbdba203190",
+            "title": "Locality-sensitive binary codes from shift-invariant kernels"
+        },
+        {
+            "paperId": "6f99696049ebb0df7a20dbaa099b41833e6dca17",
+            "title": "Beyond Categories: The Visual Memex Model for Reasoning About Object Relationships"
+        },
+        {
+            "paperId": "51bdb7d535fb9ec20e696c256e945f8fcb620caa",
+            "title": "Evaluation of GIST descriptors for web-scale image search"
+        },
+        {
+            "paperId": "cd5af41a81e7fc9588dc74f3831fb14daf2f8e2a",
+            "title": "Semantic hashing"
+        },
+        {
+            "paperId": "5a2bfaa724ba37134eb55c29644f8576c3d64c96",
+            "title": "Hamming Embedding and Weak Geometric Consistency for Large Scale Image Search"
+        },
+        {
+            "paperId": "993cb3c7167b34b033c66cc4b2af87ff4781c6d4",
+            "title": "Small codes and large image databases for recognition"
+        },
+        {
+            "paperId": "7ae4d5ec354f2a54b5cd70395cb12283390d0638",
+            "title": "In defense of Nearest-Neighbor based image classification"
+        },
+        {
+            "paperId": "b6371f8c70c2684faefd99fffcc556c3a75dd7f4",
+            "title": "Lost in quantization: Improving particular object retrieval in large scale image databases"
+        },
+        {
+            "paperId": "bd6023341be8105298568655a5446e225da07e03",
+            "title": "Total Recall: Automatic Query Expansion with a Generative Feature Model for Object Retrieval"
+        },
+        {
+            "paperId": "3a3aa31045bb79ecded928347f26685f180807ff",
+            "title": "Scene Completion Using Millions of Photographs"
+        },
+        {
+            "paperId": "28e4b8ebbdb0e80f03b6f0578deeb38694af081e",
+            "title": "Object retrieval with large vocabularies and fast spatial matching"
+        },
+        {
+            "paperId": "b3e7d3e37e67af7f4546b46051063bea1b62dbae",
+            "title": "Scalable Recognition with a Vocabulary Tree"
+        },
+        {
+            "paperId": "2b9fcd29b8a109612e8f3523c6e3cd53cfaeb05a",
+            "title": "Image similarity search with compact data structures"
+        },
+        {
+            "paperId": "8c04f169203f9e55056a6f7f956695babe622a38",
+            "title": "Distinctive Image Features from Scale-Invariant Keypoints"
+        },
+        {
+            "paperId": "0cdd7368d49a14983ceb4254e8f43cc807468adc",
+            "title": "An efficient parts-based near-duplicate and sub-image retrieval system"
+        },
+        {
+            "paperId": "642e328cae81c5adb30069b680cf60ba6b475153",
+            "title": "Video Google: a text retrieval approach to object matching in videos"
+        },
+        {
+            "paperId": "42bb0ac384fb87933be67f63b98d90a45d2fe6e9",
+            "title": "Similarity estimation techniques from rounding algorithms"
+        },
+        {
+            "paperId": "869171b2f56cfeaa9b81b2626cb4956fea590a57",
+            "title": "Modeling the Shape of the Scene: A Holistic Representation of the Spatial Envelope"
+        },
+        {
+            "paperId": "cc73bacd6a00442570d15e122604ad6862b8663d",
+            "title": "Multidimensional binary search trees used for associative searching"
+        },
+        {
+            "paperId": "ea67efe9866b245ea2b0bbb526239fbd7070f635",
+            "title": "An Introduction to Information Retrieval"
+        },
+        {
+            "paperId": null,
+            "title": "The inverted multi-index"
+        },
+        {
+            "paperId": "4748d22348e72e6e06c2476486afddbc76e5eca7",
+            "title": "Product Quantization for Nearest Neighbor Search"
+        },
+        {
+            "paperId": null,
+            "title": "Scalable near identical image and shot detection"
+        },
+        {
+            "paperId": "f63635bb36a1e61d6bce0d96552e72f0eec62cd8",
+            "title": "Efficient Near-duplicate Detection and Sub-image Retrieval"
+        },
+        {
+            "paperId": "54d2b5c64a67f65c5dd812b89e07973f97699552",
+            "title": "Ieee Transactions on Pattern Analysis and Machine Intelligence 1 80 Million Tiny Images: a Large Dataset for Non-parametric Object and Scene Recognition"
+        },
+        {
+            "paperId": null,
+            "title": "Google Goggles. http://www.google.com/mobile/goggles"
+        }
+    ]
+}

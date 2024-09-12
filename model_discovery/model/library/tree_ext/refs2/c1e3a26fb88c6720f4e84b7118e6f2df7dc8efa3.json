@@ -1,0 +1,258 @@
+{
+    "paperId": "c1e3a26fb88c6720f4e84b7118e6f2df7dc8efa3",
+    "externalIds": {
+        "MAG": "2963123301",
+        "DBLP": "journals/corr/MartinsA16",
+        "ArXiv": "1602.02068",
+        "CorpusId": 16432551
+    },
+    "title": "From Softmax to Sparsemax: A Sparse Model of Attention and Multi-Label Classification",
+    "abstract": "We propose sparsemax, a new activation function similar to the traditional softmax, but able to output sparse probabilities. After deriving its properties, we show how its Jacobian can be efficiently computed, enabling its use in a network trained with backpropagation. Then, we propose a new smooth and convex loss function which is the sparsemax analogue of the logistic loss. We reveal an unexpected connection between this new loss and the Huber classification loss. We obtain promising empirical results in multi-label classification problems and in attention-based neural networks for natural language inference. For the latter, we achieve a similar performance as the traditional softmax, but with a selective, more compact, attention focus.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2016,
+    "referenceCount": 56,
+    "citationCount": 634,
+    "influentialCitationCount": 71,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Sparsemax, a new activation function similar to the traditional softmax, but able to output sparse probabilities, is proposed, and an unexpected connection between this new loss and the Huber classification loss is revealed."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145644643",
+            "name": "Andr\u00e9 F. T. Martins"
+        },
+        {
+            "authorId": "3394760",
+            "name": "Ram\u00f3n Fern\u00e1ndez Astudillo"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "19426460b5b8e2202d5dc2252823abd7eec8f48e",
+            "title": "Consistent Multilabel Classification"
+        },
+        {
+            "paperId": "3e498f3dc80b276defcede984f456f4fef1f2e1f",
+            "title": "An Exploration of Softmax Alternatives Belonging to the Spherical Loss Family"
+        },
+        {
+            "paperId": "2846e83d405cbe3bf2f0f3b5f635dd8b3c680c45",
+            "title": "Reasoning about Entailment with Neural Attention"
+        },
+        {
+            "paperId": "c1626528298f39c11834a66b34e21f645e46690c",
+            "title": "Fast projection onto the simplex and the l1\\documentclass[12pt]{minimal} \\usepackage{amsmath} \\usepackage{wasysym} \\usepackage{amsfonts} \\usepackage{amssymb} \\usepackage{amsbsy} \\usepackage{mathrsfs} \\usepackage{upgreek} \\setlength{\\oddsidemargin}{-69pt} \\begin{document}$$\\pmb {l}_\\mathbf {1}$$\\end{"
+        },
+        {
+            "paperId": "1ac30af5522c7a50ec4d1ee43fd2bd8652a9bd52",
+            "title": "A Neural Attention Model for Abstractive Sentence Summarization"
+        },
+        {
+            "paperId": "f04df4e20a18358ea2f689b4c129781628ef7fc1",
+            "title": "A large annotated corpus for learning natural language inference"
+        },
+        {
+            "paperId": "90e8f01b0a1b3183ac8676bbe7d72e749e651f96",
+            "title": "Learning Word Representations from Scarce and Noisy Data with Embedding Subspaces"
+        },
+        {
+            "paperId": "b624504240fa52ab76167acfe3156150ca01cf3b",
+            "title": "Attention-Based Models for Speech Recognition"
+        },
+        {
+            "paperId": "d1505c6123c102e53eb19dff312cb25cea840b72",
+            "title": "Teaching Machines to Read and Comprehend"
+        },
+        {
+            "paperId": "e837b79de602c69395498c1fbbe39bbb4e6f75ad",
+            "title": "Learning to Transduce with Unbounded Memory"
+        },
+        {
+            "paperId": "00b7f44857676600805172e99be6f9f2987e98eb",
+            "title": "Statistical Learning with Sparsity: The Lasso and Generalizations"
+        },
+        {
+            "paperId": "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e",
+            "title": "End-To-End Memory Networks"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "757f517f1952addc1716ea56f912f2e4a2803f7a",
+            "title": "Efficient Exact Gradient Update for training Deep Networks with Very Large Sparse Targets"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "0bfc6add0390f1b4cfbd0e90ac71475cca88b2d5",
+            "title": "A Review on Multi-Label Learning Algorithms"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "b83c32b75ded6fd45062b7cdaf8794a85ea36264",
+            "title": "Riemannian metrics for neural networks"
+        },
+        {
+            "paperId": "d46317cc16c8dbfd019afe99699f56dbfd0bb9b6",
+            "title": "Riemannian metrics for neural networks I: feedforward networks"
+        },
+        {
+            "paperId": "b7b915d508987b73b61eccd2b237e7ed099a2d29",
+            "title": "Maxout Networks"
+        },
+        {
+            "paperId": "7d5d560426f2ab9427f20940f81fac5fcd1fd3be",
+            "title": "Fast <it>k</it>-selection algorithms for graphics processing units"
+        },
+        {
+            "paperId": "b5ad96dab72c874967dd790a1c00b3e6cfcf1a70",
+            "title": "On the Consistency of Multi-Label Learning"
+        },
+        {
+            "paperId": "67107f78a84bdb2411053cb54e94fa226eea6d8e",
+            "title": "Deep Sparse Rectifier Neural Networks"
+        },
+        {
+            "paperId": "ed7c7c079c8c54d3b82e016cc52a7a2c3a61f237",
+            "title": "Efficient projections onto the l1-ball for learning in high dimensions"
+        },
+        {
+            "paperId": "f70e8b75539201a0b98a2ac2968ba551a1229619",
+            "title": "A Bradley\u2013Terry artificial neural network model for individual ratings in group competitions"
+        },
+        {
+            "paperId": "a92d7de31100a0fee816f0cb61b4a2a5a2d5e37a",
+            "title": "Semi-Supervised Learning"
+        },
+        {
+            "paperId": "2abe6b9ea1b13653b7384e9c8ef14b0d87e20cfc",
+            "title": "RCV1: A New Benchmark Collection for Text Categorization Research"
+        },
+        {
+            "paperId": "7678da8b2eb70a5383f203d948564d8f48c0c62a",
+            "title": "Statistical behavior and consistency of classification methods based on convex risk minimization"
+        },
+        {
+            "paperId": "ef8772242235273359511b139691f2f88eb5e87a",
+            "title": "Generalized Linear Models"
+        },
+        {
+            "paperId": "af068a5fe9905674e450f144a1e01d0e8689fb42",
+            "title": "Reducing multiclass to binary by coupling probability estimates"
+        },
+        {
+            "paperId": "382f2d3c7e318c3ad2de028c6598a9700899ce80",
+            "title": "Introduction to Reinforcement Learning"
+        },
+        {
+            "paperId": "930281f635c92fe3dee041b3e1315e606c76850e",
+            "title": "Bayesian analysis of binary and polychotomous response data"
+        },
+        {
+            "paperId": "416e7bb25c51e352330c6e58f5b06da0c58190d3",
+            "title": "An algorithm for a singly constrained class of quadratic programs subject to upper and lower bounds"
+        },
+        {
+            "paperId": "1267fe36b5ece49a9d8f913eb67716a040bbcced",
+            "title": "On the limited memory BFGS method for large scale optimization"
+        },
+        {
+            "paperId": "3ccce8175def336d05a0c19910064d301b01cdee",
+            "title": "A finite algorithm for finding the projection of a point onto the canonical simplex of \u221dn"
+        },
+        {
+            "paperId": "639bb2d08557584d28c19777b0c6732e498e82a5",
+            "title": "Time Bounds for Selection"
+        },
+        {
+            "paperId": "baf2c2c796470815a689ce04ce13ef6f10d61730",
+            "title": "Learning with a probabilistic teacher"
+        },
+        {
+            "paperId": "e6bdbc325de48cbd24a04829f5ce33612513677f",
+            "title": "Robust Estimation of a Location Parameter"
+        },
+        {
+            "paperId": "7d47ee5f84103529f84297c98c21dadb4742e3ff",
+            "title": "RANK ANALYSIS OF INCOMPLETE BLOCK DESIGNS THE METHOD OF PAIRED COMPARISONS"
+        },
+        {
+            "paperId": "4f8d648c52edf74e41b0996128aa536e13cc7e82",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": "504b662769227b1cdfb612412cc656e1e8cc7918",
+            "title": "A Fast Projection onto the Simplex and the l 1 Ball"
+        },
+        {
+            "paperId": "39a4fee0b7801d8a18f44537ec8b0a0b5227488f",
+            "title": "Conciliating Generalized Derivatives"
+        },
+        {
+            "paperId": "80ab36666842edf03e1c1a68688ba40a3d43c30d",
+            "title": "Semi-Supervised Learning"
+        },
+        {
+            "paperId": null,
+            "title": "Yoshua. Maxout Networks . In Proc. of International Conference on Machine Learning"
+        },
+        {
+            "paperId": "9221d1bbb248e04e48dfe9377d0f2ac160ac277e",
+            "title": "A Finite Algorithm for Finding the Projection of a Point onto the Canonical Simplex of R \""
+        },
+        {
+            "paperId": "06577c0515f3163437e28c54fa48b0e74a14e65b",
+            "title": "Efficient Bounds for the Softmax Function and Applications to Approximate Inference in Hybrid models"
+        },
+        {
+            "paperId": "04ba3964bc6ab679fa1f642d91a040b1c3b75d28",
+            "title": "The Margin Vector , Admissible Loss and Multi-class Margin-based Classifiers"
+        },
+        {
+            "paperId": "97efafdb4a3942ab3efba53ded7413199f79c054",
+            "title": "Reinforcement Learning: An Introduction"
+        },
+        {
+            "paperId": "1f462943c8d0af69c12a09058251848324135e5a",
+            "title": "Probabilistic Interpretation of Feedforward Classification Network Outputs, with Relationships to Statistical Pattern Recognition"
+        },
+        {
+            "paperId": "849a2f9fff249cb5c7356aa6b8f4a7c43ce74746",
+            "title": "Optimization And Nonsmooth Analysis"
+        },
+        {
+            "paperId": "8d3a318b62d2e970122da35b2a2e70a5d12cc16f",
+            "title": "A method for solving the convex programming problem with convergence rate O(1/k^2)"
+        },
+        {
+            "paperId": "c87d57da3b1f2b467ef4995d30df832ee2281107",
+            "title": "On robust estimation of the location parameter"
+        },
+        {
+            "paperId": null,
+            "title": "From Softmax to Sparsemax: A Sparse Model of Attention and Multi-Label Classi\ufb01cation"
+        }
+    ]
+}

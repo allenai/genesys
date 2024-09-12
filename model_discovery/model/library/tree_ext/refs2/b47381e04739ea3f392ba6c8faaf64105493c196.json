@@ -1,0 +1,166 @@
+{
+    "paperId": "b47381e04739ea3f392ba6c8faaf64105493c196",
+    "externalIds": {
+        "ArXiv": "1811.01088",
+        "DBLP": "journals/corr/abs-1811-01088",
+        "MAG": "2898700502",
+        "CorpusId": 53221289
+    },
+    "title": "Sentence Encoders on STILTs: Supplementary Training on Intermediate Labeled-data Tasks",
+    "abstract": "Pretraining sentence encoders with language modeling and related unsupervised tasks has recently been shown to be very effective for language understanding tasks. By supplementing language model-style pretraining with further training on data-rich supervised tasks, such as natural language inference, we obtain additional performance improvements on the GLUE benchmark. Applying supplementary training on BERT (Devlin et al., 2018), we attain a GLUE score of 81.8---the state of the art (as of 02/24/2019) and a 1.4 point improvement over BERT. We also observe reduced variance across random restarts in this setting. Our approach yields similar improvements when applied to ELMo (Peters et al., 2018a) and Radford et al. (2018)'s model. In addition, the benefits of supplementary training are particularly pronounced in data-constrained regimes, as we show in experiments with artificially limited training data.",
+    "venue": "arXiv.org",
+    "year": 2018,
+    "referenceCount": 32,
+    "citationCount": 448,
+    "influentialCitationCount": 52,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The benefits of supplementary training with further training on data-rich supervised tasks, such as natural language inference, obtain additional performance improvements on the GLUE benchmark, as well as observing reduced variance across random restarts in this setting."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "80842917",
+            "name": "Jason Phang"
+        },
+        {
+            "authorId": "79215748",
+            "name": "Thibault F\u00e9vry"
+        },
+        {
+            "authorId": "3644767",
+            "name": "Samuel R. Bowman"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "2d2e1409c07aa7ab1daf3849da7887eaf40f33de",
+            "title": "When does deep multi-task learning work for loosely related document classification tasks?"
+        },
+        {
+            "paperId": "256623ff025f36d343588bcd0b966c1fd26afcf8",
+            "title": "Looking for ELMo's friends: Sentence-Level Pretraining Beyond Language Modeling"
+        },
+        {
+            "paperId": "fb29af99e4ef690bcde788442b087fbac087f533",
+            "title": "Language Modeling Teaches You More Syntax than Translation Does: Lessons Learned Through Auxiliary Task Analysis"
+        },
+        {
+            "paperId": "ac11062f1f368d97f4c826c317bf50dcc13fdb59",
+            "title": "Dissecting Contextual Word Embeddings: Architecture and Representation"
+        },
+        {
+            "paperId": "cb0f3ee1e98faf92429d601cdcd76c69c1e484eb",
+            "title": "Neural Network Acceptability Judgments"
+        },
+        {
+            "paperId": "c41516420ddbd0f29e010ca259a74c1fc2da0466",
+            "title": "What you can cram into a single $&!#* vector: Probing sentence embeddings for linguistic properties"
+        },
+        {
+            "paperId": "451d4a16e425ecbf38c4b1cca0dcf5d9bec8255c",
+            "title": "GLUE: A Multi-Task Benchmark and Analysis Platform for Natural Language Understanding"
+        },
+        {
+            "paperId": "93b4cc549a1bc4bc112189da36c318193d05d806",
+            "title": "AllenNLP: A Deep Semantic Natural Language Processing Platform"
+        },
+        {
+            "paperId": "3febb2bed8865945e7fddc99efd791887bb7e14f",
+            "title": "Deep Contextualized Word Representations"
+        },
+        {
+            "paperId": "afc2850945a871e72c245818f9bc141bd659b453",
+            "title": "Learning General Purpose Distributed Sentence Representations via Large Scale Multi-task Learning"
+        },
+        {
+            "paperId": "1e077413b25c4d34945cc2707e17e46ed4fe784a",
+            "title": "Universal Language Model Fine-tuning for Text Classification"
+        },
+        {
+            "paperId": "4546b7207e1a87c205bdf45c70f7b06fb3c38e21",
+            "title": "Inference is Everything: Recasting Semantic Resources into a Unified Evaluation Framework"
+        },
+        {
+            "paperId": "b36a5bb1707bb9c70025294b3a310138aae8327a",
+            "title": "Automatic differentiation in PyTorch"
+        },
+        {
+            "paperId": "bc8fa64625d9189f5801837e7b133e7fe3c581f7",
+            "title": "Learned in Translation: Contextualized Word Vectors"
+        },
+        {
+            "paperId": "a23fa96e7217ba0e9405d9e1fe3cdedd57b6e096",
+            "title": "SemEval-2017 Task 1: Semantic Textual Similarity Multilingual and Crosslingual Focused Evaluation"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "ee7b883e35d754ae4f71c21bb71f9f03e4ffbb2c",
+            "title": "Supervised Learning of Universal Sentence Representations from Natural Language Inference Data"
+        },
+        {
+            "paperId": "5ded2b8c64491b4a67f6d39ce473d4b9347a672e",
+            "title": "A Broad-Coverage Challenge Corpus for Sentence Understanding through Inference"
+        },
+        {
+            "paperId": "1b02204b210f822dabf8d68b7e3ea7ac14ee1268",
+            "title": "Identifying beneficial task relations for multi-task learning in deep neural networks"
+        },
+        {
+            "paperId": "05dd7254b632376973f3a1b4d39485da17814df5",
+            "title": "SQuAD: 100,000+ Questions for Machine Comprehension of Text"
+        },
+        {
+            "paperId": "f04df4e20a18358ea2f689b4c129781628ef7fc1",
+            "title": "A large annotated corpus for learning natural language inference"
+        },
+        {
+            "paperId": "0e6824e137847be0599bb0032e37042ed2ef5045",
+            "title": "Aligning Books and Movies: Towards Story-Like Visual Explanations by Watching Movies and Reading Books"
+        },
+        {
+            "paperId": "5d833331b0e22ff359db05c62a8bca18c4f04b68",
+            "title": "One billion word benchmark for measuring progress in statistical language modeling"
+        },
+        {
+            "paperId": "687bac2d3320083eb4530bf18bb8f8f721477600",
+            "title": "Recursive Deep Models for Semantic Compositionality Over a Sentiment Treebank"
+        },
+        {
+            "paperId": "128cb6b891aee1b5df099acb48e2efecfcff689f",
+            "title": "The Winograd Schema Challenge"
+        },
+        {
+            "paperId": "df2b0e26d0599ce3e70df8a9da02e51594e0e992",
+            "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding"
+        },
+        {
+            "paperId": "cd18800a0fe0b668a1cc19f2ec95b5003d0a5035",
+            "title": "Improving Language Understanding by Generative Pre-Training"
+        },
+        {
+            "paperId": null,
+            "title": "2018), since early experiments showed better performance with the former. Consequently, we run the shared encoder on the two sentences u and u independently and then use [u; v; |u\u2212v|;u \u2217v"
+        },
+        {
+            "paperId": null,
+            "title": "Retro\ufb01tting word vectors to semantic lexicons"
+        },
+        {
+            "paperId": "e03d300581e16f6664157d2c1c6ceec33ec528ce",
+            "title": "Machine Learning Challenges. Evaluating Predictive Uncertainty, Visual Object Classification, and Recognising Tectual Entailment"
+        },
+        {
+            "paperId": "475354f10798f110d34792b6d88f31d6d5cb099e",
+            "title": "Automatically Constructing a Corpus of Sentential Paraphrases"
+        },
+        {
+            "paperId": "e808f28d411a958c5db81ceb111beb2638698f47",
+            "title": "The PASCAL Recognising Textual Entailment Challenge"
+        }
+    ]
+}

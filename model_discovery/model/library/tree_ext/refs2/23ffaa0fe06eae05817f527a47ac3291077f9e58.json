@@ -1,0 +1,146 @@
+{
+    "paperId": "23ffaa0fe06eae05817f527a47ac3291077f9e58",
+    "externalIds": {
+        "MAG": "2183341477",
+        "DBLP": "conf/cvpr/SzegedyVISW16",
+        "ArXiv": "1512.00567",
+        "DOI": "10.1109/CVPR.2016.308",
+        "CorpusId": 206593880
+    },
+    "title": "Rethinking the Inception Architecture for Computer Vision",
+    "abstract": "Convolutional networks are at the core of most state of-the-art computer vision solutions for a wide variety of tasks. Since 2014 very deep convolutional networks started to become mainstream, yielding substantial gains in various benchmarks. Although increased model size and computational cost tend to translate to immediate quality gains for most tasks (as long as enough labeled data is provided for training), computational efficiency and low parameter count are still enabling factors for various use cases such as mobile vision and big-data scenarios. Here we are exploring ways to scale up networks in ways that aim at utilizing the added computation as efficiently as possible by suitably factorized convolutions and aggressive regularization. We benchmark our methods on the ILSVRC 2012 classification challenge validation set demonstrate substantial gains over the state of the art: 21:2% top-1 and 5:6% top-5 error for single frame evaluation using a network with a computational cost of 5 billion multiply-adds per inference and with using less than 25 million parameters. With an ensemble of 4 models and multi-crop evaluation, we report 3:5% top-5 error and 17:3% top-1 error on the validation set and 3:6% top-5 error on the official test set.",
+    "venue": "Computer Vision and Pattern Recognition",
+    "year": 2015,
+    "referenceCount": 24,
+    "citationCount": 24920,
+    "influentialCitationCount": 3037,
+    "openAccessPdf": {
+        "url": "http://arxiv.org/pdf/1512.00567",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work is exploring ways to scale up networks in ways that aim at utilizing the added computation as efficiently as possible by suitably factorized convolutions and aggressive regularization."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2574060",
+            "name": "Christian Szegedy"
+        },
+        {
+            "authorId": "2657155",
+            "name": "Vincent Vanhoucke"
+        },
+        {
+            "authorId": "2054165706",
+            "name": "Sergey Ioffe"
+        },
+        {
+            "authorId": "1789737",
+            "name": "Jonathon Shlens"
+        },
+        {
+            "authorId": "3282833",
+            "name": "Z. Wojna"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "1121ff5cdeaa470521b8dff084ba1424dd613cc1",
+            "title": "Fast Algorithms for Convolutional Neural Networks"
+        },
+        {
+            "paperId": "382bebe4df1ce90b2093f2167fee6da4d3c5dfed",
+            "title": "Ontological supervision for fine grained classification of Street View storefronts"
+        },
+        {
+            "paperId": "efb5032e6199c80f83309fd866b25be9545831fd",
+            "title": "Compressing Neural Networks with the Hashing Trick"
+        },
+        {
+            "paperId": "5aa26299435bdf7db874ef1640a6c3b5a4a2c394",
+            "title": "FaceNet: A unified embedding for face recognition and clustering"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "d6f2f611da110b5b5061731be3fc4c7f45d8ee23",
+            "title": "Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification"
+        },
+        {
+            "paperId": "6fc6803df5f9ae505cae5b2f178ade4062c768d0",
+            "title": "Fully convolutional networks for semantic segmentation"
+        },
+        {
+            "paperId": "fb91db6aa4f710814f8aec28a7f3ecbc4e5ad4fd",
+            "title": "Deeply-Supervised Nets"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "0504945cc2d03550fecb6ff02e637f9421107c25",
+            "title": "Learning a Deep Convolutional Network for Image Super-Resolution"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "6d4c9c923e9f145d1c01a2de2afc38ec23c44253",
+            "title": "Large-Scale Video Classification with Convolutional Neural Networks"
+        },
+        {
+            "paperId": "2a002ce457f7ab3088fbd2691734f1ce79f750c4",
+            "title": "DeepPose: Human Pose Estimation via Deep Neural Networks"
+        },
+        {
+            "paperId": "67fc0ec1d26f334b05fe66d2b7e0767b60fb73b6",
+            "title": "Scalable Object Detection Using Deep Neural Networks"
+        },
+        {
+            "paperId": "b2180fc4f5cb46b5b5394487842399c501381d67",
+            "title": "Learning a Deep Compact Image Representation for Visual Tracking"
+        },
+        {
+            "paperId": "2f4df08d9072fc2ac181b7fced6a245315ce05c8",
+            "title": "Rich Feature Hierarchies for Accurate Object Detection and Semantic Segmentation"
+        },
+        {
+            "paperId": "aa7bfd2304201afbb19971ebde87b17e40242e91",
+            "title": "On the importance of initialization and momentum in deep learning"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "84069287da0a6b488b8c933f3cb5be759cb6237e",
+            "title": "On the difficulty of training recurrent neural networks"
+        },
+        {
+            "paperId": "8f9f992fddfccd5cd85d3254c0b5f54334d7fa63",
+            "title": "SVD-NET: an algorithm that automatically selects network structure"
+        },
+        {
+            "paperId": null,
+            "title": "and X"
+        },
+        {
+            "paperId": null,
+            "title": "Tensor-Flow: Large-scale machine learning on heterogeneous systems"
+        },
+        {
+            "paperId": null,
+            "title": "Divide the gradient by a running average of its recent magnitude"
+        }
+    ]
+}

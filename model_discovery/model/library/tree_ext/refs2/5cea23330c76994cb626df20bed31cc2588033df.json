@@ -1,0 +1,121 @@
+{
+    "paperId": "5cea23330c76994cb626df20bed31cc2588033df",
+    "externalIds": {
+        "MAG": "2058641082",
+        "DBLP": "conf/icassp/SainathKSAR13",
+        "DOI": "10.1109/ICASSP.2013.6638949",
+        "CorpusId": 3334366
+    },
+    "title": "Low-rank matrix factorization for Deep Neural Network training with high-dimensional output targets",
+    "abstract": "While Deep Neural Networks (DNNs) have achieved tremendous success for large vocabulary continuous speech recognition (LVCSR) tasks, training of these networks is slow. One reason is that DNNs are trained with a large number of training parameters (i.e., 10-50 million). Because networks are trained with a large number of output targets to achieve good performance, the majority of these parameters are in the final weight layer. In this paper, we propose a low-rank matrix factorization of the final weight layer. We apply this low-rank technique to DNNs for both acoustic modeling and language modeling. We show on three different LVCSR tasks ranging between 50-400 hrs, that a low-rank factorization reduces the number of parameters of the network by 30-50%. This results in roughly an equivalent reduction in training time, without a significant loss in final recognition accuracy, compared to a full-rank representation.",
+    "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+    "year": 2013,
+    "referenceCount": 18,
+    "citationCount": 613,
+    "influentialCitationCount": 25,
+    "openAccessPdf": {
+        "url": "http://vikas.sindhwani.org/lowRank.pdf",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A low-rank matrix factorization of the final weight layer is proposed and applied to DNNs for both acoustic modeling and language modeling, showing an equivalent reduction in training time and a significant loss in final recognition accuracy compared to a full-rank representation."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1784851",
+            "name": "Tara N. Sainath"
+        },
+        {
+            "authorId": "144707379",
+            "name": "Brian Kingsbury"
+        },
+        {
+            "authorId": "1808676",
+            "name": "Vikas Sindhwani"
+        },
+        {
+            "authorId": "3122752",
+            "name": "E. Arisoy"
+        },
+        {
+            "authorId": "1720857",
+            "name": "B. Ramabhadran"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "24e555913192d8722f4a0240445bf73db71bd884",
+            "title": "Deep convolutional neural networks for LVCSR"
+        },
+        {
+            "paperId": "d3986480be64dce5ae55c1f64df660d7d698f8fb",
+            "title": "Parallel stochastic gradient algorithms for large-scale matrix completion"
+        },
+        {
+            "paperId": "e33cbb25a8c7390aec6a398e36381f4f7770c283",
+            "title": "Deep Neural Networks for Acoustic Modeling in Speech Recognition"
+        },
+        {
+            "paperId": "473f0739666af2791ad6592822118240ed968b70",
+            "title": "Conversational Speech Transcription Using Context-Dependent Deep Neural Networks"
+        },
+        {
+            "paperId": "a17745f1d7045636577bcd5d513620df5860e9e5",
+            "title": "Deep Neural Network Language Models"
+        },
+        {
+            "paperId": "d7174b0cf599408fb723e6702504e27dc9d6c203",
+            "title": "Making Deep Belief Networks effective for large vocabulary continuous speech recognition"
+        },
+        {
+            "paperId": "7599dfed1de67c726f9e4fd372cc9ef03d2cf3e9",
+            "title": "Feature engineering in Context-Dependent Deep Neural Networks for conversational speech transcription"
+        },
+        {
+            "paperId": "90b63e917d5737b06357d50aa729619e933d9614",
+            "title": "Phone Recognition with the Mean-Covariance Restricted Boltzmann Machine"
+        },
+        {
+            "paperId": "f66612b7b986169730d4e9c6e473566025a18d85",
+            "title": "The IBM Attila speech recognition toolkit"
+        },
+        {
+            "paperId": "0e4d042b668805e19f097b7eb0f223babec68f67",
+            "title": "Performance Prediction for Exponential Language Models"
+        },
+        {
+            "paperId": "2443dc59cf3d6cc1deba6d3220d61664b1a7eada",
+            "title": "Lattice-based optimization of sequence classification criteria for neural-network acoustic modeling"
+        },
+        {
+            "paperId": "423a7a629266906f066e6d1c9e16c42ca9e30c06",
+            "title": "Dimension reduction and coefficient estimation in multivariate linear regression"
+        },
+        {
+            "paperId": "563e821bb5ea825efb56b77484f5287f08cf3753",
+            "title": "Convolutional networks for images, speech, and time series"
+        },
+        {
+            "paperId": "3d82e058a5c40954b8f5db170a298a889a254c37",
+            "title": "Connectionist Speech Recognition: A Hybrid Approach"
+        },
+        {
+            "paperId": "c25f3a963f62165a8fc46bc63865e6bec1477e59",
+            "title": "Scalable Minimum Bayes Risk Training of Deep Neural Network Acoustic Models Using Distributed Hessian-free Optimization"
+        },
+        {
+            "paperId": "31868290adf1c000c611dfc966b514d5a34e8d23",
+            "title": "FUNDAMENTAL TECHNOLOGIES IN MODERN SPEECH RECOGNITION Digital Object Identifier 10.1109/MSP.2012.2205597"
+        },
+        {
+            "paperId": "3c906195e300e82da75146426fdfc388afc88eb3",
+            "title": "Introduction to linear Algebra"
+        },
+        {
+            "paperId": "51ff037291582df4c205d4a9cbe6e7dcec8f5973",
+            "title": "To recognize shapes, first learn to generate images."
+        }
+    ]
+}

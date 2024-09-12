@@ -1,0 +1,199 @@
+{
+    "paperId": "27725a2d2a8cee9bf9fffc6c2167017103aba0fa",
+    "externalIds": {
+        "DBLP": "journals/corr/KalchbrennerGB14",
+        "ACL": "P14-1062",
+        "MAG": "2120615054",
+        "ArXiv": "1404.2188",
+        "DOI": "10.3115/v1/P14-1062",
+        "CorpusId": 1306065
+    },
+    "title": "A Convolutional Neural Network for Modelling Sentences",
+    "abstract": "The ability to accurately represent sentences is central to language understanding. We describe a convolutional architecture dubbed the Dynamic Convolutional Neural Network (DCNN) that we adopt for the semantic modelling of sentences. The network uses Dynamic k-Max Pooling, a global pooling operation over linear sequences. The network handles input sentences of varying length and induces a feature graph over the sentence that is capable of explicitly capturing short and long-range relations. The network does not rely on a parse tree and is easily applicable to any language. We test the DCNN in four experiments: small scale binary and multi-class sentiment prediction, six-way question classification and Twitter sentiment prediction by distant supervision. The network achieves excellent performance in the first three tasks and a greater than 25% error reduction in the last task with respect to the strongest baseline.",
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2014,
+    "referenceCount": 39,
+    "citationCount": 3476,
+    "influentialCitationCount": 258,
+    "openAccessPdf": {
+        "url": "https://doi.org/10.3115/v1/p14-1062",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A convolutional architecture dubbed the Dynamic Convolutional Neural Network (DCNN) is described that is adopted for the semantic modelling of sentences and induces a feature graph over the sentence that is capable of explicitly capturing short and long-range relations."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2583391",
+            "name": "Nal Kalchbrenner"
+        },
+        {
+            "authorId": "1864353",
+            "name": "Edward Grefenstette"
+        },
+        {
+            "authorId": "1685771",
+            "name": "Phil Blunsom"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "0ca7d208ff8d81377e0eaa9723820aeae7a7322d",
+            "title": "Grounded Compositional Semantics for Finding and Describing Images with Sentences"
+        },
+        {
+            "paperId": "a2a407f6123f57ae2c4c1205f6551cb47efd3297",
+            "title": "Category-theoretic quantitative compositional distributional models of natural language semantics"
+        },
+        {
+            "paperId": "944a1cfd79dbfb6fef460360a0765ba790f4027a",
+            "title": "Recurrent Continuous Translation Models"
+        },
+        {
+            "paperId": "687bac2d3320083eb4530bf18bb8f8f721477600",
+            "title": "Recursive Deep Models for Semantic Compositionality Over a Sentiment Treebank"
+        },
+        {
+            "paperId": "6b57643fb2c1b0a94409c2d30f76602c32583a80",
+            "title": "Prior Disambiguation of Word Tensors for Constructing Sentence Vectors"
+        },
+        {
+            "paperId": "79c0b2f44bbc2bc51de554b88ebe46204413f884",
+            "title": "The Role of Syntax in Vector Space Models of Compositional Semantics"
+        },
+        {
+            "paperId": "cd96a6e0b6bb099c515be8770764d2fd18e7b878",
+            "title": "Recurrent Convolutional Neural Networks for Discourse Compositionality"
+        },
+        {
+            "paperId": "d1275b2a2ab53013310e759e5c6878b96df643d4",
+            "title": "Context dependent recurrent neural network language model"
+        },
+        {
+            "paperId": "5f08df805f14baa826dbddcb002277b15d3f1556",
+            "title": "Continuous Space Translation Models for Phrase-Based Statistical Machine Translation"
+        },
+        {
+            "paperId": "1c6a286638140e5c0015826a0a1f19c504e744b1",
+            "title": "Vector Space Models of Word Meaning and Phrase Meaning: A Survey"
+        },
+        {
+            "paperId": "0060745e006c5f14ec326904119dca19c6545e51",
+            "title": "Improving neural networks by preventing co-adaptation of feature detectors"
+        },
+        {
+            "paperId": "dbb3b9c94129fe7a29cfdbd97f0ad5b5224ae246",
+            "title": "Domain and Function: A Dual-Space Model of Semantic Relations and Compositions"
+        },
+        {
+            "paperId": "cfa2646776405d50533055ceb1b7f050e9014dcb",
+            "title": "Semi-Supervised Recursive Autoencoders for Predicting Sentiment Distributions"
+        },
+        {
+            "paperId": "3c5126da7ce388c64b796c80d15a3c3629d6ad58",
+            "title": "Experimental Support for a Categorical Compositional Distributional Model of Meaning"
+        },
+        {
+            "paperId": "07ca885cb5cc4328895bfaec9ab752d5801b14cd",
+            "title": "Extensions of recurrent neural network language model"
+        },
+        {
+            "paperId": "413c1142de9d91804d6d11c67ff3fed59c9fc279",
+            "title": "Adaptive Subgradient Methods for Online Learning and Stochastic Optimization"
+        },
+        {
+            "paperId": "044b239c207a9decc77a7c2eb6de1f95b92c9fc3",
+            "title": "From symbolic to sub-symbolic information in question classification"
+        },
+        {
+            "paperId": "d39a3564921e3dfa0ecea92cddc2f0cb7e611511",
+            "title": "A Context-Theoretic Framework for Compositionality in Distributional Semantics"
+        },
+        {
+            "paperId": "745d86adca56ec50761591733e157f84cfb19671",
+            "title": "Composition in Distributional Models of Semantics"
+        },
+        {
+            "paperId": "37efe2ef1b9d27cc598361a8013ec888a6f7c4d8",
+            "title": "Nouns are Vectors, Adjectives are Matrices: Representing Adjective-Noun Constructions in Semantic Space"
+        },
+        {
+            "paperId": "8d9da542a6aa92fece5dfb7eecfb44ae7de0f664",
+            "title": "Estimating Linear Models for Compositional Distributional Semantics"
+        },
+        {
+            "paperId": "8492070dc4031ed825e95e4803781752bb5e909f",
+            "title": "Word Representations: A Simple and General Method for Semi-Supervised Learning"
+        },
+        {
+            "paperId": "228d9e4b69926594fd26080f4cfaa9ecfca44eb3",
+            "title": "Mathematical Foundations for a Compositional Distributional Model of Meaning"
+        },
+        {
+            "paperId": "94a9af119df61f501980cf095700f35c2a7762a3",
+            "title": "Question Classification using Head Words and their Hypernyms"
+        },
+        {
+            "paperId": "cb9cc883bdd08d58feee5c7da01acff6fdb4ad78",
+            "title": "A Structured Vector Space Model for Word Meaning in Context"
+        },
+        {
+            "paperId": "57458bc1cffe5caa45a885af986d70f723f406b4",
+            "title": "A unified architecture for natural language processing: deep neural networks with multitask learning"
+        },
+        {
+            "paperId": "b5d67d1dc671bce42a9daac0c3605adb3fcfc697",
+            "title": "Vector-based Models of Semantic Composition"
+        },
+        {
+            "paperId": "8ae3492af43f1b6ffedb61ac45d81d8ca1f24de7",
+            "title": "Question classification with log-linear models"
+        },
+        {
+            "paperId": "74fe7ec751cd50295b15cfd46389a8fefb37c414",
+            "title": "Learning to Map Sentences to Logical Form: Structured Classification with Probabilistic Categorial Grammars"
+        },
+        {
+            "paperId": "2c8ac3e1f0edeed1fbd76813e61efdc384c319c7",
+            "title": "Learning Question Classifiers"
+        },
+        {
+            "paperId": "1be8778de4c6eb623871fe08d0998016bd60936f",
+            "title": "LSTM recurrent networks learn simple context-free and context-sensitive languages"
+        },
+        {
+            "paperId": "aa14d921c3efb1e2b73aa8c44f801dc92c6b6e7a",
+            "title": "Inductive Learning in Symbolic Domains Using Structure-Driven Recurrent Neural Networks"
+        },
+        {
+            "paperId": "6a835df43fdc2f79126319f6fa033bb42147c6f6",
+            "title": "Recursive Distributed Representations"
+        },
+        {
+            "paperId": "3bd60e852930c1bda1414fb03d266db151cfc440",
+            "title": "Readings in speech recognition"
+        },
+        {
+            "paperId": "a57c6d627ffc667ae3547073876c35d6420accff",
+            "title": "Connectionist Learning Procedures"
+        },
+        {
+            "paperId": "cd62c9976534a6a2096a38244f6cbb03635a127e",
+            "title": "Phoneme recognition using time-delay neural networks"
+        },
+        {
+            "paperId": null,
+            "title": "Modelling Adjective-Noun Compositionality by Regression"
+        },
+        {
+            "paperId": "52e2bd533323ddf97073d034bae40a46eda55f34",
+            "title": "Twitter Sentiment Classi\ufb01cation using Distant Supervision"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        }
+    ]
+}

@@ -1,0 +1,127 @@
+{
+    "paperId": "413a03a146e6f7b16c11e73243d83e6f1a6627a3",
+    "externalIds": {
+        "DBLP": "journals/corr/abs-1805-02266",
+        "ACL": "P18-2103",
+        "MAG": "2798665661",
+        "ArXiv": "1805.02266",
+        "DOI": "10.18653/v1/P18-2103",
+        "CorpusId": 19204066
+    },
+    "title": "Breaking NLI Systems with Sentences that Require Simple Lexical Inferences",
+    "abstract": "We create a new NLI test set that shows the deficiency of state-of-the-art models in inferences that require lexical and world knowledge. The new examples are simpler than the SNLI test set, containing sentences that differ by at most one word from sentences in the training set. Yet, the performance on the new test set is substantially worse across systems trained on SNLI, demonstrating that these systems are limited in their generalization ability, failing to capture many simple inferences.",
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2018,
+    "referenceCount": 21,
+    "citationCount": 353,
+    "influentialCitationCount": 45,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/P18-2103.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new NLI test set is created that shows the deficiency of state-of-the-art models in inferences that require lexical and world knowledge, demonstrating that these systems are limited in their generalization ability."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "46179620",
+            "name": "Max Glockner"
+        },
+        {
+            "authorId": "3103343",
+            "name": "Vered Shwartz"
+        },
+        {
+            "authorId": "2089067",
+            "name": "Yoav Goldberg"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "8c6427cc1f4e1bbe5d6da34a4511842361f4fbb6",
+            "title": "Hypothesis Only Baselines in Natural Language Inference"
+        },
+        {
+            "paperId": "cf8c493079702ec420ab4fc9c0fabb56b2a16c84",
+            "title": "SciTaiL: A Textual Entailment Dataset from Science Question Answering"
+        },
+        {
+            "paperId": "2997b26ffb8c291ce478bd8a6e47979d5a55c466",
+            "title": "Annotation Artifacts in Natural Language Inference Data"
+        },
+        {
+            "paperId": "5d727286a59d7e2681b6fac5fa269e782849f007",
+            "title": "Reinforced Self-Attention Network: a Hybrid of Hard and Soft Attention for Sequence Modeling"
+        },
+        {
+            "paperId": "3b1d8eb163ffff598c2faa0d9d7cf933857a359f",
+            "title": "Neural Natural Language Inference Models Enhanced with External Knowledge"
+        },
+        {
+            "paperId": "1778e32c18bd611169e64c1805a51abff341ca53",
+            "title": "Natural Language Inference over Interaction Space"
+        },
+        {
+            "paperId": "26fe009b958e8728382d9d764bd7153632f0b869",
+            "title": "Shortcut-Stacked Sentence Encoders for Multi-Domain Inference"
+        },
+        {
+            "paperId": "ffb949d3493c3b2f3c9acf9c75cb03938933ddf0",
+            "title": "Adversarial Examples for Evaluating Reading Comprehension Systems"
+        },
+        {
+            "paperId": "5ded2b8c64491b4a67f6d39ce473d4b9347a672e",
+            "title": "A Broad-Coverage Challenge Corpus for Sentence Understanding through Inference"
+        },
+        {
+            "paperId": "83e7654d545fbbaaf2328df365a781fb67b841b4",
+            "title": "Enhanced LSTM for Natural Language Inference"
+        },
+        {
+            "paperId": "2cd8e8f510c89c7c18268e8ad51c061e459ad321",
+            "title": "A Decomposable Attention Model for Natural Language Inference"
+        },
+        {
+            "paperId": "36c097a225a95735271960e2b63a2cb9e98bff83",
+            "title": "A Fast Unified Model for Parsing and Sentence Understanding"
+        },
+        {
+            "paperId": "ea407573bfcd39f9a478fe33cf6ce0ee1780a5f0",
+            "title": "Natural Language Inference by Tree-Based Convolution and Heuristic Matching"
+        },
+        {
+            "paperId": "2846e83d405cbe3bf2f0f3b5f635dd8b3c680c45",
+            "title": "Reasoning about Entailment with Neural Attention"
+        },
+        {
+            "paperId": "f04df4e20a18358ea2f689b4c129781628ef7fc1",
+            "title": "A large annotated corpus for learning natural language inference"
+        },
+        {
+            "paperId": "71b4ca7440a06094f58a4dace1a455ad6430bead",
+            "title": "Recognizing Textual Entailment: Models and Applications Ido Dagan1, Dan Roth2, Mark Sammons2, and Fabio Massimo Zanzotto3 (1Bar-Ilan University, Israel, 2University of Illinois, Urbana, IL, and 3University of Rome \u201cTor Vergata,\u201d Italy) Morgan & Claypool (Synthesis Lectures on Human Language Technolo"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "44040913380206991b1991daf1192942e038fe31",
+            "title": "From image descriptions to visual denotations: New similarity metrics for semantic inference over event descriptions"
+        },
+        {
+            "paperId": "7e7343a5608fff1c68c5259db0c77b9193f1546d",
+            "title": "The measurement of observer agreement for categorical data."
+        },
+        {
+            "paperId": null,
+            "title": "WordNet"
+        },
+        {
+            "paperId": null,
+            "title": "Conference on Arti\ufb01cial Intelligence (AAAI)"
+        }
+    ]
+}

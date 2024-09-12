@@ -1,0 +1,254 @@
+{
+    "paperId": "f267934e9de60c5badfa9d3f28918e67ae7a2bf4",
+    "externalIds": {
+        "MAG": "2097039814",
+        "ArXiv": "1506.03478",
+        "DBLP": "journals/corr/TheisB15",
+        "CorpusId": 2865509
+    },
+    "title": "Generative Image Modeling Using Spatial LSTMs",
+    "abstract": "Modeling the distribution of natural images is challenging, partly because of strong statistical dependencies which can extend over hundreds of pixels. Recurrent neural networks have been successful in capturing long-range dependencies in a number of problems but only recently have found their way into generative image models. We here introduce a recurrent image model based on multidimensional long short-term memory units which are particularly suited for image modeling due to their spatial structure. Our model scales to images of arbitrary size and its likelihood is computationally tractable. We find that it outperforms the state of the art in quantitative comparisons on several image datasets and produces promising results when used for texture synthesis and inpainting.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2015,
+    "referenceCount": 55,
+    "citationCount": 192,
+    "influentialCitationCount": 16,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work introduces a recurrent image model based on multidimensional long short-term memory units which is particularly suited for image modeling due to their spatial structure and outperforms the state of the art in quantitative comparisons on several image datasets and produces promising results when used for texture synthesis and inpainting."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2073063",
+            "name": "Lucas Theis"
+        },
+        {
+            "authorId": "1731199",
+            "name": "M. Bethge"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "e6ac888b2f60aa49d5e2483f043f9f4adeaa0d5e",
+            "title": "Modeling Natural Image Statistics"
+        },
+        {
+            "paperId": "47900aca2f0b50da3010ad59b394c870f0e6c02e",
+            "title": "Deep Generative Image Models using a Laplacian Pyramid of Adversarial Networks"
+        },
+        {
+            "paperId": "2dcef55a07f8607a819c21fe84131ea269cc2e3c",
+            "title": "Deep Unsupervised Learning using Nonequilibrium Thermodynamics"
+        },
+        {
+            "paperId": "a2785f66c20fbdf30ec26c0931584c6d6a0f4fca",
+            "title": "DRAW: A Recurrent Neural Network For Image Generation"
+        },
+        {
+            "paperId": "829510ad6f975c939d589eeb01a3cf6fc6c8ce4d",
+            "title": "Unsupervised Learning of Video Representations using LSTMs"
+        },
+        {
+            "paperId": "2904a9932f4cd0f0886121dc1f2d4aaac0455176",
+            "title": "Generative Moment Matching Networks"
+        },
+        {
+            "paperId": "355f98e4827a1b6ad3f29d07ea2bcf9ad078295c",
+            "title": "Video (language) modeling: a baseline for generative models of natural videos"
+        },
+        {
+            "paperId": "0523e14247d74c4505cd5e32e1f0495f291ec432",
+            "title": "Factoring Variations in Natural Images with Deep Gaussian Mixture Models"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "6bdb186ec4726e00a8051119636d4df3b94043b5",
+            "title": "Caffe: Convolutional Architecture for Fast Feature Embedding"
+        },
+        {
+            "paperId": "66ad2fbc8b73242a889699868611fcf239e3435d",
+            "title": "Semi-supervised Learning with Deep Generative Models"
+        },
+        {
+            "paperId": "5f5dc5b9a2ba710937e2c413b37b053cd673df02",
+            "title": "Auto-Encoding Variational Bayes"
+        },
+        {
+            "paperId": "695a2c95eacdbccb7a73d2f1e90e7b35b4b3d864",
+            "title": "Deep AutoRegressive Networks"
+        },
+        {
+            "paperId": "705fd4febe2fff810d2f72f48dcda20826eca77a",
+            "title": "A Deep and Tractable Density Estimator"
+        },
+        {
+            "paperId": "b8de958fead0d8a9619b55c7299df3257c624a96",
+            "title": "DeCAF: A Deep Convolutional Activation Feature for Generic Visual Recognition"
+        },
+        {
+            "paperId": "309494da0769345cb35ca0b7b0aae8143eee85a2",
+            "title": "RNADE: The real-valued neural autoregressive density-estimator"
+        },
+        {
+            "paperId": "1a6c8861e12ff031217286f9d04be0192efb85ea",
+            "title": "\"Natural Images, Gaussian Mixtures and Dead Leaves\""
+        },
+        {
+            "paperId": "b7a807379a1fd304c9e9bbb74a67cc67a297ff6c",
+            "title": "Training sparse natural image models with a fast Gibbs sampler of an extended state space"
+        },
+        {
+            "paperId": "adb4ea2c0f3eff8a17c97a67f28b923e8e5bdff1",
+            "title": "Multimodal learning with deep Boltzmann machines"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "529403ab43b381b942b67751862b614cbd94341b",
+            "title": "From learning models of natural image patches to whole image restoration"
+        },
+        {
+            "paperId": "b68c34c55925a75804f97491b745de66b1ffc4be",
+            "title": "Learning Deep Energy Models"
+        },
+        {
+            "paperId": "f93844c68d96f2f01da973b2ed3c236c8a369e57",
+            "title": "On deep generative models with applications to recognition"
+        },
+        {
+            "paperId": "7d1184296dfda9efa1783c11fdb4b055bd8f39ed",
+            "title": "In All Likelihood, Deep Belief Is Not Enough"
+        },
+        {
+            "paperId": "d9e683ab9a092268e7d4faed7e9f4d35d5b405ee",
+            "title": "Lower bounds on the redundancy of natural images"
+        },
+        {
+            "paperId": "1e80f755bcbf10479afd2338cec05211fdbd325c",
+            "title": "Convolutional deep belief networks for scalable unsupervised learning of hierarchical representations"
+        },
+        {
+            "paperId": "dfcae80f4d34ac09ba8063c5cfb5be954d0bf5f1",
+            "title": "Fields of Experts"
+        },
+        {
+            "paperId": "2c377d9dcf88d00019f0b2ed9068f183024cd9d3",
+            "title": "Offline Handwriting Recognition with Multidimensional Recurrent Neural Networks"
+        },
+        {
+            "paperId": "160d3f6e81323caac8f1d7e564cb8917cc250bfa",
+            "title": "Who killed the directed model?"
+        },
+        {
+            "paperId": "80c330eee12decb84aaebcc85dc7ce414134ad61",
+            "title": "Modeling image patches with a directed hierarchy of Markov random fields"
+        },
+        {
+            "paperId": "8978cf7574ceb35f4c3096be768c7547b28a35d0",
+            "title": "A Fast Learning Algorithm for Deep Belief Nets"
+        },
+        {
+            "paperId": "7dbdb4209626fd92d2436a058663206216036e68",
+            "title": "Elements of Information Theory"
+        },
+        {
+            "paperId": "c4f7171f81e6842bf897b7a3595b40e5b17a816c",
+            "title": "In All Likelihood"
+        },
+        {
+            "paperId": "9a1ed876196ec9733acb1daa6d65e35ff0414291",
+            "title": "A database of human segmented natural images and its application to evaluating segmentation algorithms and measuring ecological statistics"
+        },
+        {
+            "paperId": "6af263550f3c0fa45cb8bcceee5df44fda20c327",
+            "title": "Natural Images"
+        },
+        {
+            "paperId": "f02f3eccc1cf74e435721d09e4834aff6c1d12ed",
+            "title": "Emergence of Phase- and Shift-Invariant Features by Decomposition of Natural Images into Independent Feature Subspaces"
+        },
+        {
+            "paperId": "31b0e2c5bec857e497ab545ff808ce9ccba9f3d1",
+            "title": "Independent component filters of natural images compared with simple cells in primary visual cortex"
+        },
+        {
+            "paperId": "ca1d23be869380ac9e900578c601c2d1febcc0c9",
+            "title": "The \u201cindependent components\u201d of natural scenes are edge filters"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "be9e72f6d5d852da757d821230daadddbc58c8bd",
+            "title": "Markov Chains for Exploring Posterior Distributions"
+        },
+        {
+            "paperId": "a120c05ad7cd4ce2eb8fb9697e16c7c4877208a5",
+            "title": "Connectionist Learning of Belief Networks"
+        },
+        {
+            "paperId": "2910ede7655523515ed12130ee73e5d01b66532d",
+            "title": "Textures A Photographic Album For Artists And Designers"
+        },
+        {
+            "paperId": "f4278dac2abafb66a0a824f1d59e72b67e7540a1",
+            "title": "The student-t mixture as a natural image patch prior with application to image compression"
+        },
+        {
+            "paperId": "f9a1b3850dfd837793743565a8af95973d395a4e",
+            "title": "LSTM Neural Networks for Language Modeling"
+        },
+        {
+            "paperId": null,
+            "title": "Mixtures of conditional Gaussian scale mixtures applied to multi-scale image representations"
+        },
+        {
+            "paperId": "b893e7053c9c7e266a23fb13a42261a88f650210",
+            "title": "The Neural Autoregressive Distribution Estimator"
+        },
+        {
+            "paperId": "e2ff540cb13ed8ff3edb859b4ec51cd318d3210a",
+            "title": "Learning Generative Texture Models with extended Fields-of-Experts"
+        },
+        {
+            "paperId": "c08d0525bd42fa1c24f9f5df72f4c8fcf7063b22",
+            "title": "Offline Handwriting Recognition with Multidimensional Recurrent Neural Networks"
+        },
+        {
+            "paperId": "1c7f6cea2236150f7e9c6b2e2347487ed981efb1",
+            "title": "Occlusion Models for Natural Images: A Statistical Study of a Scale-Invariant Dead Leaves Model"
+        },
+        {
+            "paperId": "38f1ed1eac3c9de0f75b60e81997086e2e654381",
+            "title": "In all likelihood"
+        },
+        {
+            "paperId": "117175a54263cc2ae693fe82c9b3fe0553931cd8",
+            "title": "Independent component filters of natural images compared with simple cells in primary visual cortex"
+        },
+        {
+            "paperId": null,
+            "title": "The utility driven dynamic error propagation network. Technical report"
+        },
+        {
+            "paperId": null,
+            "title": "Modele s\u00b4equential de partition al\u00b4eatoire. Technical report"
+        },
+        {
+            "paperId": "12b03af504d0960334c77567dab38791bf0f739a",
+            "title": "AND T"
+        }
+    ]
+}

@@ -1,0 +1,198 @@
+{
+    "paperId": "a1b3294a937cae1239a9d0d825e562c2d734c272",
+    "externalIds": {
+        "MAG": "2056085413",
+        "ArXiv": "0906.3465",
+        "DOI": "10.1214/09-AOAS314",
+        "CorpusId": 16272403,
+        "PubMed": "26877823"
+    },
+    "title": "TRANSPOSABLE REGULARIZED COVARIANCE MODELS WITH AN APPLICATION TO MISSING DATA IMPUTATION.",
+    "abstract": "Missing data estimation is an important challenge with high-dimensional data arranged in the form of a matrix. Typically this data matrix is transposable, meaning that either the rows, columns or both can be treated as features. To model transposable data, we present a modification of the matrix-variate normal, the mean-restricted matrix-variate normal, in which the rows and columns each have a separate mean vector and covariance matrix. By placing additive penalties on the inverse covariance matrices of the rows and columns, these so called transposable regularized covariance models allow for maximum likelihood estimation of the mean and non-singular covariance matrices. Using these models, we formulate EM-type algorithms for missing data imputation in both the multivariate and transposable frameworks. We present theoretical results exploiting the structure of our transposable models that allow these models and imputation methods to be applied to high-dimensional data. Simulations and results on microarray data and the Netflix data show that these imputation techniques often outperform existing methods and offer a greater degree of flexibility.",
+    "venue": "Annals of Applied Statistics",
+    "year": 2009,
+    "referenceCount": 40,
+    "citationCount": 121,
+    "influentialCitationCount": 15,
+    "openAccessPdf": {
+        "url": "https://projecteuclid.org/journals/annals-of-applied-statistics/volume-4/issue-2/Transposable-regularized-covariance-models-with-an-application-to-missing-data/10.1214/09-AOAS314.pdf",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Simulations and results on microarray data and the Netflix data show that these imputation techniques often outperform existing methods and offer a greater degree of flexibility."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2302572",
+            "name": "Genevera I. Allen"
+        },
+        {
+            "authorId": "1761784",
+            "name": "R. Tibshirani"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "2249ea630e56e4991aa157ad9aea65262efe4562",
+            "title": "Correlated z-Values and the Accuracy of Large-Scale Statistical Estimates"
+        },
+        {
+            "paperId": "d1b464429a81b98d9638b5ece9d3370761b64b0e",
+            "title": "Missing value estimation for DNA microarray gene expression data with principal curves"
+        },
+        {
+            "paperId": "8b097b03c9e381fb77a13727380593a853f0a8f0",
+            "title": "Are a set of microarrays independent of each other?"
+        },
+        {
+            "paperId": "8a2095b8e64ecfa2afb6c47586d3c58cb728554f",
+            "title": "Large-scale collaborative prediction using a nonparametric random effects model"
+        },
+        {
+            "paperId": "7cc528bda7296d89f032aa634e0aef7670928a31",
+            "title": "Covariance\u2010regularized regression and classification for high dimensional problems"
+        },
+        {
+            "paperId": "628e01f944acc31ac17af311859fbc45328ddeb0",
+            "title": "Exact low-rank matrix completion via convex optimization"
+        },
+        {
+            "paperId": "040c161f21e0fa57ac192ac826310f55d60277b0",
+            "title": "Exact Matrix Completion via Convex Optimization"
+        },
+        {
+            "paperId": "0dbfe2ef1e20460cd025252b61ec02683006a05b",
+            "title": "Sparse permutation invariant covariance estimation"
+        },
+        {
+            "paperId": "10d10df314c1b58f5c83629e73a35185876cd4e2",
+            "title": "Multi-task Gaussian Process Prediction"
+        },
+        {
+            "paperId": "d859c73867087370dd9b5a214640b69fdcee22fe",
+            "title": "Sparse inverse covariance estimation with the lasso"
+        },
+        {
+            "paperId": "cae130eb00f79a415b4ba2f01dbb7019c4a4666d",
+            "title": "Modeling relationships at multiple scales to improve accuracy of large recommender systems"
+        },
+        {
+            "paperId": "1626c940a64ad96a7ed53d7d6c0df63c6696956b",
+            "title": "Restricted Boltzmann machines for collaborative filtering"
+        },
+        {
+            "paperId": "14f4de8ca95add565ef8fe39d1ca7a131e17bd23",
+            "title": "Stochastic Relational Models for Discriminative Link Prediction"
+        },
+        {
+            "paperId": "5a2fec932b07906da51e81a60d429f7ed18a0cda",
+            "title": "Component selection and smoothing in multivariate nonparametric regression"
+        },
+        {
+            "paperId": "e38a7391db400b5b1006c9980bacbfc5e24eba6b",
+            "title": "Gene Expression Profiling Predicts Survival in Conventional Renal Cell Carcinoma"
+        },
+        {
+            "paperId": "fef4d954cdc629905b2a9aecc0a45ed03e408a96",
+            "title": "Missing value estimation for DNA microarray gene expression data: local least squares imputation"
+        },
+        {
+            "paperId": "42d87434ad937a3489d0379278b2d47693391258",
+            "title": "Choosing starting values for the EM algorithm for getting the highest likelihood in multivariate Gaussian mixture models"
+        },
+        {
+            "paperId": "2a23a81e37fcb39e365fa103f2ea4ae2dce37399",
+            "title": "Shrinkage Estimators for Covariance Matrices"
+        },
+        {
+            "paperId": "3d95ae9504cfb904216be4f2bfda9315d0476986",
+            "title": "Convergence of a Block Coordinate Descent Method for Nondifferentiable Minimization"
+        },
+        {
+            "paperId": "5b62860a9eb3492c5c2d7fb42fd023cae891df45",
+            "title": "Missing value estimation methods for DNA microarrays"
+        },
+        {
+            "paperId": "1655a0a81de71b713a283006dac3b1b5e9e756cc",
+            "title": "Matrix Variate Distributions"
+        },
+        {
+            "paperId": "c0a27ece169b14fd5b2190c776fc59aa2425b892",
+            "title": "The mle algorithm for the matrix normal distribution"
+        },
+        {
+            "paperId": "08339893c9dc8c0595fd98bda42ce888d686cab7",
+            "title": "Stochastic versions of the em algorithm: an experimental study in the mixture case"
+        },
+        {
+            "paperId": "3babbace8eb2d9585f02043b6daaba84d9033cac",
+            "title": "Multiple Imputation After 18+ Years"
+        },
+        {
+            "paperId": "0cbdb46a08d581424d8893e95a8ef81ce49e92e8",
+            "title": "A comparison result for multisplittings and waveform relaxation methods"
+        },
+        {
+            "paperId": "f2a877a7c76bafdc1072345bcb3a9b5b91a636b2",
+            "title": "A modified expectation maximization algorithm for penalized likelihood estimation in emission tomography"
+        },
+        {
+            "paperId": "0d798ccdab999daaa94d8d5da79a4c0ab8984b8c",
+            "title": "Space-alternating generalized expectation-maximization algorithm"
+        },
+        {
+            "paperId": "bf515582a04adf290cfb2a8974effce1b19828eb",
+            "title": "On the rate of convergence of the ECM algorithm"
+        },
+        {
+            "paperId": "721b25ffad2623a8d1e8044882f66e0dbe678f1d",
+            "title": "Maximum likelihood estimation via the ECM algorithm: A general framework"
+        },
+        {
+            "paperId": "669d1ab26142a39851578632f0ce2fa1630811d4",
+            "title": "Convergence of nested classical iterative methods for linear systems"
+        },
+        {
+            "paperId": "e1535c4f1e0c76a934598ec36c41b3759972dada",
+            "title": "On Use of the EM Algorithm for Penalized Likelihood Estimation"
+        },
+        {
+            "paperId": "91e71c006cd6712aee74fe972648c80443a366e7",
+            "title": "Missing Data"
+        },
+        {
+            "paperId": null,
+            "title": "Transposable regularized covariance models with an application to missing data imputation"
+        },
+        {
+            "paperId": null,
+            "title": "Supplement to \"Transposable regularized covariance"
+        },
+        {
+            "paperId": "31af4b8793e93fd35e89569ccd663ae8777f0072",
+            "title": "The Netflix Prize"
+        },
+        {
+            "paperId": "7843045e20f1ecb34c0335c541d7fd37d057634d",
+            "title": "Variable Selection via Penalized Likelihood (cid:3)"
+        },
+        {
+            "paperId": "3f98645200078264ebad85c318d7c2b8f81f61f0",
+            "title": "Updating Schemes, Correlation Structure, Blocking and Parameterization for the Gibbs Sampler"
+        },
+        {
+            "paperId": "f1655d8e58e24e19aef57a71db180bd148797f12",
+            "title": "A General Framework for"
+        },
+        {
+            "paperId": "69f0ea1b895da0e68e05b57b97052cec2953a58e",
+            "title": "A missing information principle: theory and applications"
+        },
+        {
+            "paperId": "416cad9e4600a76049d26269932b47d511f5dcf6",
+            "title": "Ieee Transactions on Image Processing: to Appear Penalized Maximum-likelihood Image Reconstruction Using Space-alternating Generalized Em Algorithms"
+        }
+    ]
+}

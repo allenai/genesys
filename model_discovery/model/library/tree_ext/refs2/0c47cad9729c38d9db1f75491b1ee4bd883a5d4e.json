@@ -1,0 +1,407 @@
+{
+    "paperId": "0c47cad9729c38d9db1f75491b1ee4bd883a5d4e",
+    "externalIds": {
+        "DBLP": "conf/emnlp/ClarkLML18",
+        "ACL": "D18-1217",
+        "ArXiv": "1809.08370",
+        "MAG": "2891602716",
+        "DOI": "10.18653/v1/D18-1217",
+        "CorpusId": 52811641
+    },
+    "title": "Semi-Supervised Sequence Modeling with Cross-View Training",
+    "abstract": "Unsupervised representation learning algorithms such as word2vec and ELMo improve the accuracy of many supervised NLP models, mainly because they can take advantage of large amounts of unlabeled text. However, the supervised models only learn from task-specific labeled data during the main training phase. We therefore propose Cross-View Training (CVT), a semi-supervised learning algorithm that improves the representations of a Bi-LSTM sentence encoder using a mix of labeled and unlabeled data. On labeled examples, standard supervised learning is used. On unlabeled examples, CVT teaches auxiliary prediction modules that see restricted views of the input (e.g., only part of a sentence) to match the predictions of the full model seeing the whole input. Since the auxiliary modules and the full model share intermediate representations, this in turn improves the full model. Moreover, we show that CVT is particularly effective when combined with multi-task learning. We evaluate CVT on five sequence tagging tasks, machine translation, and dependency parsing, achieving state-of-the-art results.",
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2018,
+    "referenceCount": 90,
+    "citationCount": 325,
+    "influentialCitationCount": 41,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/D18-1217.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Cross-View Training (CVT), a semi-supervised learning algorithm that improves the representations of a Bi-LSTM sentence encoder using a mix of labeled and unlabeled data, is proposed and evaluated, achieving state-of-the-art results."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "144358401",
+            "name": "Kevin Clark"
+        },
+        {
+            "authorId": "1707242",
+            "name": "Minh-Thang Luong"
+        },
+        {
+            "authorId": "144783904",
+            "name": "Christopher D. Manning"
+        },
+        {
+            "authorId": "2827616",
+            "name": "Quoc V. Le"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "a89d59f39e805e71b554a962d07449c5d39b7df3",
+            "title": "The Bottleneck"
+        },
+        {
+            "paperId": "cd34714b819ca75bba63fea36aff54d66f458d1b",
+            "title": "Manifold Mixup: Encouraging Meaningful On-Manifold Interpolation as a Regularizer"
+        },
+        {
+            "paperId": "2444be7584d1f5a7e2aa9f65078de09154f14ea1",
+            "title": "Born Again Neural Networks"
+        },
+        {
+            "paperId": "f053137323a88eb932d590bcdfc959ee805e2520",
+            "title": "Stack-Pointer Networks for Dependency Parsing"
+        },
+        {
+            "paperId": "c6774ef150e54eac63b97b735d1184ac10c66416",
+            "title": "Strong Baselines for Neural Semi-Supervised Learning under Domain Shift"
+        },
+        {
+            "paperId": "3febb2bed8865945e7fddc99efd791887bb7e14f",
+            "title": "Deep Contextualized Word Representations"
+        },
+        {
+            "paperId": "afc2850945a871e72c245818f9bc141bd659b453",
+            "title": "Learning General Purpose Distributed Sentence Representations via Large Scale Multi-task Learning"
+        },
+        {
+            "paperId": "65912ba93e57b7c96b5abe48435f433bfec6cd7b",
+            "title": "Improving the Improved Training of Wasserstein GANs: A Consistency Term and Its Dual Effect"
+        },
+        {
+            "paperId": "1e077413b25c4d34945cc2707e17e46ed4fe784a",
+            "title": "Universal Language Model Fine-tuning for Text Classification"
+        },
+        {
+            "paperId": "4feef0fd284feb1233399b400eb897f59ec92755",
+            "title": "mixup: Beyond Empirical Risk Minimization"
+        },
+        {
+            "paperId": "7647a06965d868a4f6451bef0818994100a142e8",
+            "title": "Empower Sequence Labeling with Task-Aware Neural Language Model"
+        },
+        {
+            "paperId": "684fe9e2d4f7b9b108b9305f7a69907b5e541725",
+            "title": "Multi-task Self-Supervised Visual Learning"
+        },
+        {
+            "paperId": "bc8fa64625d9189f5801837e7b133e7fe3c581f7",
+            "title": "Learned in Translation: Contextualized Word Vectors"
+        },
+        {
+            "paperId": "235e255462446d7364d9a5df7dc6fe736a7249ad",
+            "title": "Reporting Score Distributions Makes a Difference: Performance Study of LSTM-networks for Sequence Tagging"
+        },
+        {
+            "paperId": "80af06c29cf82381325849aa4bca7902d554f607",
+            "title": "In-Order Transition-based Constituent Parsing"
+        },
+        {
+            "paperId": "2344709a11b62878d8144b9e46a7c9e19acbcbd8",
+            "title": "Adversarial Dropout for Supervised and Semi-supervised Learning"
+        },
+        {
+            "paperId": "6d431f835c06afdea45dff6b24486bf301ebdef0",
+            "title": "An Overview of Multi-Task Learning in Deep Neural Networks"
+        },
+        {
+            "paperId": "ee7b883e35d754ae4f71c21bb71f9f03e4ffbb2c",
+            "title": "Supervised Learning of Universal Sentence Representations from Natural Language Inference Data"
+        },
+        {
+            "paperId": "3c57a1aa483d8bffe1339914b80d2913f2dc8376",
+            "title": "Good Semi-supervised Learning That Requires a Bad GAN"
+        },
+        {
+            "paperId": "ac17cfa150d802750b46220084d850cfdb64d1c1",
+            "title": "Semi-supervised Multitask Learning for Sequence Labeling"
+        },
+        {
+            "paperId": "4b1c6f6521da545892f3f5dc39461584d4a27ec0",
+            "title": "Virtual Adversarial Training: A Regularization Method for Supervised and Semi-Supervised Learning"
+        },
+        {
+            "paperId": "0bb4cadc80c0afaf29c57518dc9c06f8fcfa5f38",
+            "title": "Semi-supervised sequence tagging with bidirectional language models"
+        },
+        {
+            "paperId": "4908fc4d7f58383170c085fe8238a868e9a901f9",
+            "title": "Deep Multitask Learning for Semantic Dependency Parsing"
+        },
+        {
+            "paperId": "1342c1e1684620c019972e2679d5131f1e8a4a13",
+            "title": "Weight-averaged consistency targets improve semi-supervised deep learning results"
+        },
+        {
+            "paperId": "c35c2ce83221f909f3ee97bce3d49fae82b795c0",
+            "title": "Fast and Accurate Sequence Labeling with Iterated Dilated Convolutions"
+        },
+        {
+            "paperId": "6ce1922802169f757bbafc6e087cc274a867c763",
+            "title": "Regularizing Neural Networks by Penalizing Confident Output Distributions"
+        },
+        {
+            "paperId": "ac1ebc6d2953e0e85f9af825a99c3893f6836040",
+            "title": "Neural Probabilistic Model for Non-projective MST Parsing"
+        },
+        {
+            "paperId": "1669eda146ae7c13e6cea9c51b06b04a72b98991",
+            "title": "Shortcut Sequence Tagging"
+        },
+        {
+            "paperId": "2e55ba6c97ce5eb55abd959909403fe8da7e9fe9",
+            "title": "Overcoming catastrophic forgetting in neural networks"
+        },
+        {
+            "paperId": "fce10a1a9727cbda33d44b62409e303f1009417a",
+            "title": "What Do Recurrent Neural Network Grammars Learn About Syntax?"
+        },
+        {
+            "paperId": "85f94d8098322f8130512b4c6c4627548ce4a6cc",
+            "title": "Unsupervised Pretraining for Sequence to Sequence Learning"
+        },
+        {
+            "paperId": "ade0c116120b54b57a91da51235108b75c28375a",
+            "title": "A Joint Many-Task Model: Growing a Neural Network for Multiple NLP Tasks"
+        },
+        {
+            "paperId": "8cbef23c9ee2ae7c35cc691a0c1d713a6377c9f2",
+            "title": "Deep Biaffine Attention for Neural Dependency Parsing"
+        },
+        {
+            "paperId": "d7bd6e3addd8bc8e2e154048300eea15f030ed33",
+            "title": "Reinforcement Learning with Unsupervised Auxiliary Tasks"
+        },
+        {
+            "paperId": "39f1b108687f643015f96a0c800585a44621f99c",
+            "title": "Parsing as Language Modeling"
+        },
+        {
+            "paperId": "d2e4587744a89bad95fea69e08842cad6c8ff0dd",
+            "title": "Temporal Ensembling for Semi-Supervised Learning"
+        },
+        {
+            "paperId": "03ad06583c9721855ccd82c3d969a01360218d86",
+            "title": "Deep multi-task learning with low level tasks supervised at lower layers"
+        },
+        {
+            "paperId": "8f3b80ddc0dd62e6c3369fabb1715990c29e9b9a",
+            "title": "Learning without Forgetting"
+        },
+        {
+            "paperId": "57a10537978600fd33dcdd48922c791609a4851a",
+            "title": "Sequence-Level Knowledge Distillation"
+        },
+        {
+            "paperId": "4c20e7f95448ca3c1042a6d7fa5fa15ec27e9aeb",
+            "title": "Regularization With Stochastic Transformations and Perturbations for Deep Semi-Supervised Learning"
+        },
+        {
+            "paperId": "571b0750085ae3d939525e62af510ee2cee9d5ea",
+            "title": "Improved Techniques for Training GANs"
+        },
+        {
+            "paperId": "440dc6e5a06f35890d04b36768fe7b6e6d320684",
+            "title": "LSTM CCG Parsing"
+        },
+        {
+            "paperId": "2cd55ded95d5d13430edfa223ba591b514ebe8a5",
+            "title": "Adversarial Training Methods for Semi-Supervised Text Classification"
+        },
+        {
+            "paperId": "8dd6aae51e31a72752c4be5cddbdd76dfdc6cda4",
+            "title": "End-to-end Sequence Labeling via Bi-directional LSTM-CNNs-CRF"
+        },
+        {
+            "paperId": "f5a7da72496e2ca8edcd9f9123773012c010cfc6",
+            "title": "Neural Architectures for Named Entity Recognition"
+        },
+        {
+            "paperId": "0c133f79b23e8c680891d2e49a66f0e3d37f1466",
+            "title": "Stack-propagation: Improved Representation Learning for Syntax"
+        },
+        {
+            "paperId": "26e743d5bd465f49b9538deaf116c15e61b7951f",
+            "title": "Learning Distributed Representations of Sentences from Unlabelled Data"
+        },
+        {
+            "paperId": "23ffaa0fe06eae05817f527a47ac3291077f9e58",
+            "title": "Rethinking the Inception Architecture for Computer Vision"
+        },
+        {
+            "paperId": "10a4db59e81d26b2e0e896d3186ef81b4458b93f",
+            "title": "Named Entity Recognition with Bidirectional LSTM-CNNs"
+        },
+        {
+            "paperId": "f3b96ef2dc1fc5e14982f1b963db8db6a54183bb",
+            "title": "Improving Neural Machine Translation Models with Monolingual Data"
+        },
+        {
+            "paperId": "d76c07211479e233f7c6a6f32d5346c983c5598f",
+            "title": "Multi-task Sequence to Sequence Learning"
+        },
+        {
+            "paperId": "4aa9f5150b46320f534de4747a2dd0cd7f3fe292",
+            "title": "Semi-supervised Sequence Learning"
+        },
+        {
+            "paperId": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+            "title": "Effective Approaches to Attention-based Neural Machine Translation"
+        },
+        {
+            "paperId": "d450b0f12ae0437048e4047a630c31d902002d0c",
+            "title": "Distributional Smoothing with Virtual Adversarial Training"
+        },
+        {
+            "paperId": "6e795c6e9916174ae12349f5dc3f516570c17ce8",
+            "title": "Skip-Thought Vectors"
+        },
+        {
+            "paperId": "0c908739fbff75f03469d13d4a1a07de3414ee19",
+            "title": "Distilling the Knowledge in a Neural Network"
+        },
+        {
+            "paperId": "03cd6f2297637a322bdd4519b8cee331ef42984b",
+            "title": "Learning with Pseudo-Ensembles"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "5d833331b0e22ff359db05c62a8bca18c4f04b68",
+            "title": "One billion word benchmark for measuring progress in statistical language modeling"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "aa7bfd2304201afbb19971ebde87b17e40242e91",
+            "title": "On the importance of initialization and momentum in deep learning"
+        },
+        {
+            "paperId": "032d67d27ecacbf6c5b82eb67e5d02d81fb43a7a",
+            "title": "A Survey on Multi-view Learning"
+        },
+        {
+            "paperId": "0060745e006c5f14ec326904119dca19c6545e51",
+            "title": "Improving neural networks by preventing co-adaptation of feature detectors"
+        },
+        {
+            "paperId": "bc1022b031dc6c7019696492e8116598097a8c12",
+            "title": "Natural Language Processing (Almost) from Scratch"
+        },
+        {
+            "paperId": "c43025c429b1fbf6f1379f61801a1b40834d62e7",
+            "title": "Convolutional networks and applications in vision"
+        },
+        {
+            "paperId": "1f88427d7aa8225e47f946ac41a0667d7b69ac52",
+            "title": "What is the best multi-stage architecture for object recognition?"
+        },
+        {
+            "paperId": "57458bc1cffe5caa45a885af986d70f723f406b4",
+            "title": "A unified architecture for natural language processing: deep neural networks with multitask learning"
+        },
+        {
+            "paperId": "4c4dcf6655204130f330002a9fb45c4fd436d5ea",
+            "title": "CCGbank: A Corpus of CCG Derivations and Dependency Structures Extracted from the Penn Treebank"
+        },
+        {
+            "paperId": "78a9513e70f596077179101f6cb6eadc51602039",
+            "title": "Effective Self-Training for Parsing"
+        },
+        {
+            "paperId": "e54d8b07ef659f9ee2671441c4355e414e408836",
+            "title": "OntoNotes: The 90% Solution"
+        },
+        {
+            "paperId": "a7d685ff8532ecb972c9382f86dea53ee7528264",
+            "title": "Tri-training: exploiting unlabeled data using three classifiers"
+        },
+        {
+            "paperId": "5536d42ce80e129be8cae172ed1b7659c769d31d",
+            "title": "2005 Special Issue: Framewise phoneme classification with bidirectional LSTM and other neural network architectures"
+        },
+        {
+            "paperId": "10f97f1fb4f5c2c8e6c44d4a33da46d331dd4aeb",
+            "title": "Introduction to the CoNLL-2003 Shared Task: Language-Independent Named Entity Recognition"
+        },
+        {
+            "paperId": "9e85832b04cc3700c2c26d6ba93fdeae39cac04a",
+            "title": "Introduction to the CoNLL-2000 Shared Task Chunking"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "161ffb54a3fdf0715b198bb57bd22f910242eb49",
+            "title": "Multitask Learning"
+        },
+        {
+            "paperId": "944cba683d10d8c1a902e05cd68e32a9f47b372e",
+            "title": "Unsupervised Word Sense Disambiguation Rivaling Supervised Methods"
+        },
+        {
+            "paperId": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+            "title": "Building a Large Annotated Corpus of English: The Penn Treebank"
+        },
+        {
+            "paperId": "17a620afc87f5266e3fd8b3f308c883cc2c2b7c7",
+            "title": "Probability of error of some adaptive pattern-recognition machines"
+        },
+        {
+            "paperId": "cd18800a0fe0b668a1cc19f2ec95b5003d0a5035",
+            "title": "Improving Language Understanding by Generative Pre-Training"
+        },
+        {
+            "paperId": "cd49acefc8d51e324aa562e5337e1c2aff067053",
+            "title": "An Overview of Multi-task Learning"
+        },
+        {
+            "paperId": null,
+            "title": "2017) with a rate of 0.1 to the target labels when training on the labeled data. Dependency Parsing. We omit punctuation from evaluation, which is standard practice for the PTBSD"
+        },
+        {
+            "paperId": "b54268e3b8d148c0695ca52bebb0f80e26a4b987",
+            "title": "The IWSLT 2015 Evaluation Campaign"
+        },
+        {
+            "paperId": "2826f9dccdcceb113b33ccf2841d488f1419bb30",
+            "title": "Stanford Neural Machine Translation Systems for Spoken Language Domains"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        },
+        {
+            "paperId": "5098221cf78ba60b5afd26c171da50baf2670996",
+            "title": "A Co-Regularization Approach to Semi-supervised Learning with Multiple Views"
+        },
+        {
+            "paperId": "4b53e3f719ff983eef867c6d8deac5dbe38aecb4",
+            "title": "Some methods of speeding up the convergence of iteration methods"
+        },
+        {
+            "paperId": null,
+            "title": "Zhi-Hua"
+        }
+    ]
+}

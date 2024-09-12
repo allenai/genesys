@@ -1,0 +1,430 @@
+{
+    "paperId": "9cf30183adabcee24c38e0d2138fbe09730a2594",
+    "externalIds": {
+        "DBLP": "conf/nips/DoerschZ19",
+        "MAG": "2971217834",
+        "ArXiv": "1907.02499",
+        "CorpusId": 207976661
+    },
+    "title": "Sim2real transfer learning for 3D human pose estimation: motion to the rescue",
+    "abstract": "Synthetic visual data can provide practicically infinite diversity and rich labels, while avoiding ethical issues with privacy and bias. However, for many tasks, current models trained on synthetic data generalize poorly to real data. The task of 3D human pose estimation is a particularly interesting example of this sim2real problem, because learning-based approaches perform reasonably well given real training data, yet labeled 3D poses are extremely difficult to obtain in the wild, limiting scalability. In this paper, we show that standard neural-network approaches, which perform poorly when trained on synthetic RGB images, can perform well when the data is pre-processed to extract cues about the person\u2019s motion, notably as optical flow and the motion of 2D keypoints. Therefore, our results suggest that motion can be a simple way to bridge a sim2real gap when video is available. We evaluate on the 3D Poses in the Wild dataset, the most challenging modern benchmark for 3D pose estimation, where we show full 3D mesh recovery that is on par with state-of-the-art methods trained on real 3D sequences, despite training only on synthetic humans from the SURREAL dataset.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2019,
+    "referenceCount": 99,
+    "citationCount": 142,
+    "influentialCitationCount": 7,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper shows that standard neural-network approaches, which perform poorly when trained on synthetic RGB images, can perform well when the data is pre-processed to extract cues about the person\u2019s motion, notably as optical flow and the motion of 2D keypoints."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2786693",
+            "name": "Carl Doersch"
+        },
+        {
+            "authorId": "1688869",
+            "name": "Andrew Zisserman"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "0d9ebe5c24b592970759e11dd24de2b919d19f2c",
+            "title": "Does computer vision matter for action?"
+        },
+        {
+            "paperId": "39db3ba7ca7145cecbcb190bb85d6e07a6fb438f",
+            "title": "Exploiting Temporal Context for 3D Human Pose Estimation in the Wild"
+        },
+        {
+            "paperId": "cc6a32280064b061c6ca53467e2d5fb11dcce5c4",
+            "title": "Learning the Depths of Moving People by Watching Frozen People"
+        },
+        {
+            "paperId": "e887488dc30a5b35a3c16919e483996a0ca78769",
+            "title": "An Annotation Saved is an Annotation Earned: Using Fully Synthetic Training for Object Instance Detection"
+        },
+        {
+            "paperId": "c0dccd9be123057ec82a6747d8fec9cc34699a6d",
+            "title": "Sim-To-Real via Sim-To-Sim: Data-Efficient Robotic Grasping via Randomized-To-Canonical Adaptation Networks"
+        },
+        {
+            "paperId": "436142577b23f89832fe6ee2d77ee9585e103729",
+            "title": "Learning 3D Human Dynamics From Video"
+        },
+        {
+            "paperId": "0f50b7483f1b200ebf88c4dd7698de986399a0f3",
+            "title": "ImageNet-trained CNNs are biased towards texture; increasing shape bias improves accuracy and robustness"
+        },
+        {
+            "paperId": "71bd99d69a5e7abe1ab2822f1f60ba53c2e926b1",
+            "title": "MoSculp: Interactive Visualization of Shape and Time"
+        },
+        {
+            "paperId": "141ee531d03fb6626043e33dd8f269a6f1f63a4b",
+            "title": "How Robust is 3D Human Pose Estimation to Occlusion?"
+        },
+        {
+            "paperId": "ed48b221b81bc43b4ded24c20bf16c571e682ba6",
+            "title": "Neural Body Fitting: Unifying Deep Learning and Model Based Human Pose and Shape Estimation"
+        },
+        {
+            "paperId": "073e98d1a443e7b5f8b65903f18cd05a2b884400",
+            "title": "Unsupervised Learning of Object Landmarks through Conditional Image Generation"
+        },
+        {
+            "paperId": "07d6238d8f8edbfe0fd2887fa0a7939735f21e13",
+            "title": "Learning Human Optical Flow"
+        },
+        {
+            "paperId": "dda4ca5b584de2bf6a11ad024cecf62c7da99b64",
+            "title": "Monocular 3D Pose and Shape Estimation of Multiple People in Natural Scenes: The Importance of Multiple Scene Constraints"
+        },
+        {
+            "paperId": "13ad6164dba75845f0f397e9314ad596e74eb946",
+            "title": "Learning to Estimate 3D Human Pose and Shape from a Single Color Image"
+        },
+        {
+            "paperId": "75512a0c23866cc2f0bcf349b770f0fb2ce17e57",
+            "title": "Ordinal Depth Supervision for 3D Human Pose Estimation"
+        },
+        {
+            "paperId": "d70718d7a40584f0d63deadd3c8258d64fd4ff7b",
+            "title": "Driving Policy Transfer via Modularity and Abstraction"
+        },
+        {
+            "paperId": "e73696016b43314a7bef6015dacbe702af472d96",
+            "title": "End-to-End Recovery of Human Shape and Pose"
+        },
+        {
+            "paperId": "344a54da7dd406556d4b594337b87e3989a60da5",
+            "title": "GANerated Hands for Real-Time 3D Hand Tracking from Monocular RGB"
+        },
+        {
+            "paperId": "cf2ab0e639c19877596036603a3000ce7a1deb35",
+            "title": "Self-supervised Learning of Motion Capture"
+        },
+        {
+            "paperId": "bd484035307a97c673c2dce9a201eb93c2c21e7d",
+            "title": "Learning to Segment Moving Objects"
+        },
+        {
+            "paperId": "ea3801a15f4568856581357cfc4e5bb2de185a2e",
+            "title": "Structure-Aware and Temporally Coherent 3D Human Pose Estimation"
+        },
+        {
+            "paperId": "99911a8effd2ab3af4b4ba802920f3e1720a83e6",
+            "title": "Integral Human Pose Regression"
+        },
+        {
+            "paperId": "752771510a40076d47fd2952b72c4ae820c66081",
+            "title": "On Pre-Trained Image Features and Synthetic Images for Deep Learning"
+        },
+        {
+            "paperId": "135bafc83e9a73c88e759f98a28edfdb5c02f81d",
+            "title": "Men Also Like Shopping: Reducing Gender Bias Amplification using Corpus-level Constraints"
+        },
+        {
+            "paperId": "1113e78b078f22e90189b76f0e9a7d0b27c94a49",
+            "title": "Towards Accurate Marker-Less Human Shape and Pose Estimation over Time"
+        },
+        {
+            "paperId": "877c5a3ad915c2bbb5595252d08163f34ce58957",
+            "title": "LCR-Net: Localization-Classification-Regression for Human Pose"
+        },
+        {
+            "paperId": "86e1bdbfd13b9ed137e4c4b8b459a3980eb257f6",
+            "title": "The Kinetics Human Action Video Dataset"
+        },
+        {
+            "paperId": "129256ab0fd6785766a6709f107610deb3d9bfcd",
+            "title": "A Simple Yet Effective Baseline for 3d Human Pose Estimation"
+        },
+        {
+            "paperId": "550ba177de494789e91571129fdc3f6476b1bf79",
+            "title": "Learning to Estimate 3D Hand Pose from Single RGB Images"
+        },
+        {
+            "paperId": "9c373b1a7d3a987ceca9d33919725ec4bb290683",
+            "title": "Learning Video Object Segmentation with Visual Memory"
+        },
+        {
+            "paperId": "e77e7e8c090609627ff1a7ca9d27846169c15076",
+            "title": "Towards 3D Human Pose Estimation in the Wild: A Weakly-Supervised Approach"
+        },
+        {
+            "paperId": "9b2a27accc13bb958debd02142610cc37bbf6bf6",
+            "title": "Real-Time Hand Tracking under Occlusion from an Egocentric RGB-D Sensor"
+        },
+        {
+            "paperId": "5b4fddc0b86deea2fc139c43ee07892ad211a2dd",
+            "title": "Compositional Human Pose Regression"
+        },
+        {
+            "paperId": "32ceb28e45a445df4d89df281bb0e3ab5aab1a2a",
+            "title": "Domain randomization for transferring deep neural networks from simulation to the real world"
+        },
+        {
+            "paperId": "da45430e38ddd2e985f5c70fbc0a35bbd26b8bc8",
+            "title": "Optical Flow-Based 3D Human Motion Estimation from Monocular Video"
+        },
+        {
+            "paperId": "9e47c7cfecba80ba48713013546ecad542ebf4d9",
+            "title": "Domain Adaptation for Visual Applications: A Comprehensive Survey"
+        },
+        {
+            "paperId": "9bb1970efee43fb1676f82b9ec4abcf722d53fc3",
+            "title": "Unite the People: Closing the Loop Between 3D and 2D Human Representations"
+        },
+        {
+            "paperId": "76ae2eb617d2ad12edf6b84539fce6e5cf76b00e",
+            "title": "Towards Accurate Multi-person Pose Estimation in the Wild"
+        },
+        {
+            "paperId": "661778ccef17289a07e3eb0ba2343b851762213e",
+            "title": "Learning from Synthetic Humans"
+        },
+        {
+            "paperId": "68cb9fce1e6af2740377494350b650533c9a29e1",
+            "title": "Learning from Simulated and Unsupervised Images through Adversarial Training"
+        },
+        {
+            "paperId": "220ac48a22547a455d05f416e1fd22bbd0b0788d",
+            "title": "Unsupervised Pixel-Level Domain Adaptation with Generative Adversarial Networks"
+        },
+        {
+            "paperId": "edd846e76cacfba5be37da99c006e3ccc9b861b0",
+            "title": "FlowNet 2.0: Evolution of Optical Flow Estimation with Deep Networks"
+        },
+        {
+            "paperId": "7de5044fa5bbd9bce905647a8e4a6a354863ca3c",
+            "title": "Monocular 3D Human Pose Estimation in the Wild Using Improved CNN Supervision"
+        },
+        {
+            "paperId": "ed3c4d2d28faaccbaef876a7daaecc3cccadb48f",
+            "title": "3D Human Pose Estimation from a Single Image via Distance Matrix Regression"
+        },
+        {
+            "paperId": "a7835f2a878047817d7664f9ba94e53366c65e6e",
+            "title": "Coarse-to-Fine Volumetric Prediction for Single-Image 3D Human Pose"
+        },
+        {
+            "paperId": "f7ac2479e686eb2a7a8afc23f99f213fcd3c5292",
+            "title": "(CAD)$^2$RL: Real Single-Image Flight without a Single Real Image"
+        },
+        {
+            "paperId": "a93d81c7f033f1e2b54d3288b60d214f55ccc010",
+            "title": "Optical Flow Estimation Using a Spatial Pyramid Network"
+        },
+        {
+            "paperId": "192c7672216dcfb60da0e7953c1b044d1c209d3d",
+            "title": "Marker-Less 3D Human Motion Capture with Monocular Image Sequence and Height-Maps"
+        },
+        {
+            "paperId": "d0a662dc1ce3c950359b8dc6d11d41eb4d713e5d",
+            "title": "A Simple, Fast and Highly-Accurate Algorithm to Recover 3D Shape from 2D Landmarks on a Single Image"
+        },
+        {
+            "paperId": "b556a9a92340ceddb4abbf541b116334abdc0727",
+            "title": "Learning Camera Viewpoint Using CNN to Improve 3D Body Pose Estimation"
+        },
+        {
+            "paperId": "e3471f481c6b61489d8d48eb4668286f7db890da",
+            "title": "Human body part classification from optical flow"
+        },
+        {
+            "paperId": "4233b07033a1ef8af188383f30602a5fd0aa2181",
+            "title": "Keep It SMPL: Automatic Estimation of 3D Human Pose and Shape from a Single Image"
+        },
+        {
+            "paperId": "b64cf0ff488e6b770ae40b62d5df1c76d7fb8ed5",
+            "title": "Efficient and precise interactive hand tracking through joint, continuous optimization of pose and correspondences"
+        },
+        {
+            "paperId": "de46c06b35b428967c4f5364d58f5cf872afe04e",
+            "title": "MoCap-guided Data Augmentation for 3D Pose Estimation in the Wild"
+        },
+        {
+            "paperId": "0d6f20680b33ffcc4d83a01dc908df5cb856eb9b",
+            "title": "3D Action Recognition from Novel Viewpoints"
+        },
+        {
+            "paperId": "e944b414e9f601a6008076bd43b91d382090adbc",
+            "title": "VirtualWorlds as Proxy for Multi-object Tracking Analysis"
+        },
+        {
+            "paperId": "68e312c7508e3ba93357a2f5efe11da7d8a567ed",
+            "title": "Single Image 3D Interpreter Network"
+        },
+        {
+            "paperId": "400eb5386b13c32968fee796c71dec32aa754f1e",
+            "title": "Synthetic Data for Text Localisation in Natural Images"
+        },
+        {
+            "paperId": "442c36baa9c00c135d5d40aab967d84dbad9686a",
+            "title": "Learning Dense Correspondence via 3D-Guided Cycle Consistency"
+        },
+        {
+            "paperId": "7705d1e2aa1cf19367613c14159cfaed47a8b74a",
+            "title": "Synthesizing Training Images for Boosting Human 3D Pose Estimation"
+        },
+        {
+            "paperId": "1ced31e02234bc3d1092ffb2c7442ffbd51cb309",
+            "title": "A Large Dataset to Train Convolutional Networks for Disparity, Optical Flow, and Scene Flow Estimation"
+        },
+        {
+            "paperId": "1de6cbb2ae9ff64d90f3ebc9750c9a2c2ea6f97d",
+            "title": "Sparseness Meets Deepness: 3D Human Pose Estimation from Monocular Video"
+        },
+        {
+            "paperId": "f0990210925cb58cc4c38bce8288ab9cf091f2fa",
+            "title": "FlowCap: 2D Human Pose from Optical Flow"
+        },
+        {
+            "paperId": "d422df8bff4e677a3077635db116679d25142bfc",
+            "title": "Machine learning: Trends, perspectives, and prospects"
+        },
+        {
+            "paperId": "18a93518ee86747f66480096482b621c396c4b66",
+            "title": "Fast and robust hand tracking using detection-guided optimization"
+        },
+        {
+            "paperId": "e27cb3adde2d07d7bcb5c42282cefca76d58e2d1",
+            "title": "Pose-conditioned joint angle limits for 3D human pose reconstruction"
+        },
+        {
+            "paperId": "641f3b3cf91e11f77210447fe67375fdf350e983",
+            "title": "Learning a non-linear knowledge transfer model for cross-view action recognition"
+        },
+        {
+            "paperId": "1d5972b32a9b5a455a6eef389de5b7fca25771ad",
+            "title": "Domain-Adversarial Training of Neural Networks"
+        },
+        {
+            "paperId": "c2fb5b39428818d7ec8cc78e152e19c21b7db568",
+            "title": "FlowNet: Learning Optical Flow with Convolutional Networks"
+        },
+        {
+            "paperId": "a140556b31bf5e566cf25301e2bc8422934257e5",
+            "title": "Unequal Representation and Gender Stereotypes in Image Search Results for Occupations"
+        },
+        {
+            "paperId": "7928e47cca13d9d012952a311e405fa661e99071",
+            "title": "Visual Domain Adaptation: A survey of recent advances"
+        },
+        {
+            "paperId": "db362816aa0a78a57b632712c90ec5cd7b2f7f07",
+            "title": "Robust Estimation of 3D Human Poses from a Single Image"
+        },
+        {
+            "paperId": "71b7178df5d2b112d07e45038cb5637208659ff7",
+            "title": "Microsoft COCO: Common Objects in Context"
+        },
+        {
+            "paperId": "b3c785b99ec147049caa47f707f337b717705970",
+            "title": "SLIC Superpixels Compared to State-of-the-Art Superpixel Methods"
+        },
+        {
+            "paperId": "ec3eddefc3c658ed8de35ed18bfa7e6ce675019a",
+            "title": "Reconstructing 3D Human Pose from 2D Image Landmarks"
+        },
+        {
+            "paperId": "7de1d1612debcbde32cd588fa607a408df79c717",
+            "title": "Geodesic flow kernel for unsupervised domain adaptation"
+        },
+        {
+            "paperId": "25a7ea26685c856a10f47243e10c5f8be384d320",
+            "title": "Articulated people detection and pose estimation: Reshaping the future"
+        },
+        {
+            "paperId": "521c6f003a2434be8c12b3370b03cbe457c9dab9",
+            "title": "Learning people detection models from few training samples"
+        },
+        {
+            "paperId": "2915510a39448503ee873f9693cd3808ca74bd81",
+            "title": "Real-time human pose recognition in parts from single depth images"
+        },
+        {
+            "paperId": "b1d7b7ab1f108e78a08abc94945d61c0ded507b1",
+            "title": "Deterministic 3D Human Pose Estimation Using Rigid Structure"
+        },
+        {
+            "paperId": "244760dffe5480cbf8d7b051ba2a144c3f544b43",
+            "title": "Multilinear pose and body shape estimation of dressed subjects from image sets"
+        },
+        {
+            "paperId": "4e29147ea8982714048150a88da997d1a0328e83",
+            "title": "Estimating human shape and pose from a single image"
+        },
+        {
+            "paperId": "b7b23814948afc5525975ed44f3dd247100e6722",
+            "title": "Relevant Feature Selection for Human Pose Estimation and Localization in Cluttered Images"
+        },
+        {
+            "paperId": "16b16ca302de0df7f43eb0713fcc952b3ca08a11",
+            "title": "Combined discriminative and generative articulated pose and non-rigid shape estimation"
+        },
+        {
+            "paperId": "616c488dd3bfdc78d85137365d59cb29f75b20da",
+            "title": "Detailed Human Shape and Pose from Images"
+        },
+        {
+            "paperId": "1af67fb5c15470c9e8954cae66702293dd66bae8",
+            "title": "Learning Joint Top-Down and Bottom-up Processes for 3D Visual Inference"
+        },
+        {
+            "paperId": "adddc04ec7f00f3c3823b66c3369f668df15f957",
+            "title": "SCAPE: shape completion and animation of people"
+        },
+        {
+            "paperId": "37056506546e89011cf69cd32cabb5993f5e65a7",
+            "title": "Reconstruction of articulated objects from point correspondences in a single uncalibrated image"
+        },
+        {
+            "paperId": "1c25a91fdb4e8da680eb19cb20d0f2ffbb1ea34f",
+            "title": "Recognizing the sex of a walker from a dynamic point-light display"
+        },
+        {
+            "paperId": "a6f0aa2485265e2f714708570a495cf0469ca717",
+            "title": "Recognizing friends by their walk: Gait perception without familiarity cues"
+        },
+        {
+            "paperId": "58ea2fa0580b2117618be6e1cc9658a5c9531dba",
+            "title": "Visual perception of biological motion and a model for its analysis"
+        },
+        {
+            "paperId": "c19ed5102ecd953d5c78d5a0b87eaa51658e07d8",
+            "title": "Supplementary Material to: Recovering Accurate 3D Human Pose in The Wild Using IMUs and a Moving Camera"
+        },
+        {
+            "paperId": "6ebdf55cade577979515dc5d09620204a07e7c92",
+            "title": "Using Simulation and Domain Adaptation to Improve Efficiency of Deep Robotic Grasping"
+        },
+        {
+            "paperId": null,
+            "title": "Sfv: Reinforcement learning of physical skills from videos"
+        },
+        {
+            "paperId": "583d11f7e03af0da1f2e451deed7ac86663266d1",
+            "title": "Exploiting temporal information for 3D pose estimation"
+        },
+        {
+            "paperId": null,
+            "title": "Unpaired image-to-image translation using cycle-consistent adversarial networks"
+        },
+        {
+            "paperId": "0f4acbcaf70fb008fbf75d856ccd9dd529cad43c",
+            "title": "Generating Human Images and Ground Truth using Computer Graphics"
+        },
+        {
+            "paperId": null,
+            "title": "Smpl: A skinned multiperson linear model"
+        },
+        {
+            "paperId": null,
+            "title": "Carnegie-mellon mocap database"
+        }
+    ]
+}

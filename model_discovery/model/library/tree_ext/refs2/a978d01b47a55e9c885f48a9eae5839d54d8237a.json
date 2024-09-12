@@ -1,0 +1,126 @@
+{
+    "paperId": "a978d01b47a55e9c885f48a9eae5839d54d8237a",
+    "externalIds": {
+        "MAG": "2963954075",
+        "DBLP": "journals/corr/abs-1803-08970",
+        "ArXiv": "1803.08970",
+        "DOI": "10.1109/TAC.2018.2874669",
+        "CorpusId": 4392978
+    },
+    "title": "State Measurement Error-to-State Stability Results Based on Approximate Discrete-Time Models",
+    "abstract": "Digital controller design for nonlinear systems may be complicated by the fact that an exact discrete-time plant model is not known. One existing approach employs approximate discrete-time models for stability analysis and control design and ensures different types of closed-loop stability properties based on the approximate model and on specific bounds on the mismatch between the exact and approximate models. Although existing conditions for practical stability exist, some of which consider the presence of process disturbances, input-to-state stability (ISS) with respect to state-measurement errors and based on approximate discrete-time models has not been addressed. In this paper, we thus extend existing results in two main directions: 1) we provide ISS-related results, where the input is the state measurement error; and 2) our results allow for some specific varying-sampling-rate scenarios. We provide conditions to ensure semiglobal practical ISS, even under some specific forms of varying sampling rate. These conditions employ Lyapunov-like functions. We illustrate the application of our results on numerical examples, where we show that a bounded state-measurement error can cause a semiglobal practically stable system to diverge.",
+    "venue": "IEEE Transactions on Automatic Control",
+    "year": 2018,
+    "referenceCount": 22,
+    "citationCount": 7,
+    "influentialCitationCount": 0,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1803.08970",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper provides ISS-related results, where the input is the state measurement error; and its results allow for some specific varying-sampling-rate scenarios that provide conditions to ensure semiglobal practical ISS, even under some specific forms of varying sampling rate."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3490793",
+            "name": "Alexis J. Vallarella"
+        },
+        {
+            "authorId": "1683557",
+            "name": "H. Haimovich"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "02850fc3afbb68be6ffe6205da19253a702fd4cc",
+            "title": "Equivalence between uniform- and varying-sampling stability properties for discrete-time exact and approximate models"
+        },
+        {
+            "paperId": "f221d26255b1a593d338b07b09e4a50829e3a696",
+            "title": "Multirate Output Feedback Control of Nonlinear Networked Control Systems"
+        },
+        {
+            "paperId": "d8c00dd569f9eef9c256a71bc0f74f44ad563627",
+            "title": "On controller-driven varying-sampling-rate stabilization via Lie-algebraic solvability"
+        },
+        {
+            "paperId": "c71637baf838cec8d97e1f25633f4a0e1140aa8b",
+            "title": "An introduction to event-triggered and self-triggered control"
+        },
+        {
+            "paperId": "3008c1c0dd3e014f4495b2d45c7a9d72da7226f0",
+            "title": "A discrete-time framework for stability analysis of nonlinear networked control systems"
+        },
+        {
+            "paperId": "166ed8feb57fadb7a0848dc4fee9f99ccd99b23b",
+            "title": "Input-to-state stabilization for nonlinear dual-rate sampled-data systems via approximate discrete-time model"
+        },
+        {
+            "paperId": "2740a5b422eca7e5aaeb43a99e59d343a102a4bb",
+            "title": "To Sample or not to Sample: Self-Triggered Control for Nonlinear Systems"
+        },
+        {
+            "paperId": "ddc652ada4d4f55e666b07d936844d9e53f51c88",
+            "title": "A framework for nonlinear sampled-data observer design via approximate discrete-time models and emulation"
+        },
+        {
+            "paperId": "b577c60a6ed41c419c5707fcec5caf4ce75373dc",
+            "title": "A framework for stabilization of nonlinear sampled-data systems based on their approximate discrete-time models"
+        },
+        {
+            "paperId": "773c7a3c7f34e842e21e64c77de0e2232d5c1780",
+            "title": "Multirate versions of sampled-data stabilization of nonlinear systems"
+        },
+        {
+            "paperId": "bfc42a9fcf90ca9890f91c57ccfe723ce01c1e22",
+            "title": "Integral versions of iss for sampled-data nonlinear systems via their approximate discrete-time models"
+        },
+        {
+            "paperId": "9b4cb2a081f6c1ee4f967c42a0d82a328850d946",
+            "title": "A note on input-to-state stabilization for nonlinear sampled-data systems"
+        },
+        {
+            "paperId": "53467e2e1c1922f9471cd0ce4c3bffaaf5e4c6f2",
+            "title": "Input-to-state stabilization for nonlinear sampled-data systems via approximate discrete-time plant models"
+        },
+        {
+            "paperId": "25a0eaf413c57462da618b09f659d5e86817a45f",
+            "title": "Sufficient conditions for stabilization of sampled-data nonlinear systems via discrete-time approximations"
+        },
+        {
+            "paperId": "77695baf18586f789b9446451e98e16d575fc393",
+            "title": "Asymptotic Stability and Smooth Lyapunov Functions"
+        },
+        {
+            "paperId": "6381355b9e9445cc2e0840fbf230b06f60d561b9",
+            "title": "Smooth stabilization implies coprime factorization"
+        },
+        {
+            "paperId": null,
+            "title": "Stability results for control design based on approximate discrete-time models and under controller-driven sampling"
+        },
+        {
+            "paperId": null,
+            "title": "Event-triggered real-time scheduling of control tasks"
+        },
+        {
+            "paperId": "a17670e5fd876949b5c52036211d1d862e850823",
+            "title": "The Self Triggered Task Model for Real-Time Control Systems"
+        },
+        {
+            "paperId": "b6cd0eaf863a66b88c8ac50f38f54c96e9f77692",
+            "title": "A Smooth Converse Lyapunov Theorem for Robust Stability"
+        },
+        {
+            "paperId": "4ea2850caad7f515896a9fb8296037571d19fb44",
+            "title": "On the Input-to-State Stability Property"
+        },
+        {
+            "paperId": null,
+            "title": "For every M \u2265 0 and E \u2265 0"
+        }
+    ]
+}

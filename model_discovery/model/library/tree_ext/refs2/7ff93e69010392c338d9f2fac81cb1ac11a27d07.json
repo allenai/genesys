@@ -1,0 +1,266 @@
+{
+    "paperId": "7ff93e69010392c338d9f2fac81cb1ac11a27d07",
+    "externalIds": {
+        "DBLP": "conf/cvpr/ShuaiZWW16",
+        "ArXiv": "1509.00552",
+        "MAG": "2204696980",
+        "DOI": "10.1109/CVPR.2016.394",
+        "CorpusId": 12308254
+    },
+    "title": "DAG-Recurrent Neural Networks for Scene Labeling",
+    "abstract": "In image labeling, local representations for image units are usually generated from their surrounding image patches, thus long-range contextual information is not effectively encoded. In this paper, we introduce recurrent neural networks (RNNs) to address this issue. Specifically, directed acyclic graph RNNs (DAG-RNNs) are proposed to process DAG-structured images, which enables the network to model long-range semantic dependencies among image units. Our DAG-RNNs are capable of tremendously enhancing the discriminative power of local representations, which significantly benefits the local classification. Meanwhile, we propose a novel class weighting function that attends to rare classes, which phenomenally boosts the recognition accuracy for non-frequent classes. Integrating with convolution and deconvolution layers, our DAG-RNNs achieve new state-of-the-art results on the challenging SiftFlow, CamVid and Barcelona benchmarks.",
+    "venue": "Computer Vision and Pattern Recognition",
+    "year": 2015,
+    "referenceCount": 55,
+    "citationCount": 147,
+    "influentialCitationCount": 17,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1509.00552",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Direct acyclic graph RNNs are proposed to process DAG-structured images, which enables the network to model long-range semantic dependencies among image units and proposes a novel class weighting function that attends to rare classes, which phenomenally boosts the recognition accuracy for non-frequent classes."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2521776",
+            "name": "Bing Shuai"
+        },
+        {
+            "authorId": "145084658",
+            "name": "Zhen Zuo"
+        },
+        {
+            "authorId": "9071523",
+            "name": "B. Wang"
+        },
+        {
+            "authorId": "2096527",
+            "name": "G. Wang"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "2f13482eca88aec04837b3001507587bb81c8ed4",
+            "title": "Scene Parsing With Integration of Parametric and Non-Parametric Models"
+        },
+        {
+            "paperId": "79257758f03f9ff115db06ff6b753a4f21d17603",
+            "title": "Joint Calibration for Semantic Segmentation"
+        },
+        {
+            "paperId": "6523122fb98750866262757b1ff34bb15e87d1e1",
+            "title": "Integrating parametric and non-parametric models for scene labeling"
+        },
+        {
+            "paperId": "96d288df7ca67dafe1642c427a4d9f4901267c8b",
+            "title": "Scene labeling with LSTM recurrent neural networks"
+        },
+        {
+            "paperId": "ad3b3d00d3601190dd04155d69c343fb03bfe704",
+            "title": "Convolutional recurrent neural networks: Learning spatial dependencies for image representation"
+        },
+        {
+            "paperId": "6d7a686a170a76afadfa589e529bbcd9111394bb",
+            "title": "Quaddirectional 2D-Recurrent Neural Networks For Image Labeling"
+        },
+        {
+            "paperId": "4b9af9b9ed1bfb6b0688019d9fa79875bbcd8f3f",
+            "title": "Long Short-Term Memory Over Tree Structures"
+        },
+        {
+            "paperId": "32de44f01a96d4473d21099d15e25bc2b9f08e2f",
+            "title": "Improved Semantic Representations From Tree-Structured Long Short-Term Memory Networks"
+        },
+        {
+            "paperId": "ca5c766b2d31a1f5ce8896a0a42b40a2bff9323a",
+            "title": "Conditional Random Fields as Recurrent Neural Networks"
+        },
+        {
+            "paperId": "13f85f3b4d9a9607069d419e646d6fce8a35e8fe",
+            "title": "Recursive Context Propagation Network for Semantic Scene Labeling"
+        },
+        {
+            "paperId": "aa8ef9a12eafadf201c01562f125f5f212b009b6",
+            "title": "Feedforward semantic segmentation with zoom-out features"
+        },
+        {
+            "paperId": "6fc6803df5f9ae505cae5b2f178ade4062c768d0",
+            "title": "Fully convolutional networks for semantic segmentation"
+        },
+        {
+            "paperId": "71e90c4015e3dea597dbd583f3d3d08cdc0077fb",
+            "title": "Opinion Mining with Deep Recurrent Neural Networks"
+        },
+        {
+            "paperId": "b0154275176a0f2a33b5ea2ff4aa6206d691d848",
+            "title": "Superpixel Graph Label Transfer with Learned Distance Metric"
+        },
+        {
+            "paperId": "c571371f358491e957810753968fa6fe8218f3ca",
+            "title": "Non-parametric Higher-Order Random Fields for Image Segmentation"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "88c5ab6c3952bfe9c222ddbcfef6424bb3afb36c",
+            "title": "Scene Labeling Using Beam Search under Mutex Constraints"
+        },
+        {
+            "paperId": "5f05dd61dd2cf33aecca1e974a1c7fec1ea2486e",
+            "title": "Neural Decision Forests for Semantic Image Labelling"
+        },
+        {
+            "paperId": "366a03d11c2402e7e83c17480ba24ca1f220333e",
+            "title": "Unrolling Loopy Top-Down Semantic Feedback in Convolutional Deep Networks"
+        },
+        {
+            "paperId": "1a9658c0b7bea22075c0ea3c229b8c70c1790153",
+            "title": "Recurrent Convolutional Neural Networks for Scene Labeling"
+        },
+        {
+            "paperId": "12ecc2d786080f638a01b9999518e9386baa157d",
+            "title": "Joint Training of a Convolutional Network and a Graphical Model for Human Pose Estimation"
+        },
+        {
+            "paperId": "463825c7e3b437fea82f2052f4809b06e3c7d628",
+            "title": "Context Driven Scene Parsing with Attention to Rare Classes"
+        },
+        {
+            "paperId": "9f2efadf66817f1b38f58b3f50c7c8f34c69d89a",
+            "title": "DeepFace: Closing the Gap to Human-Level Performance in Face Verification"
+        },
+        {
+            "paperId": "1a2a770d23b4a171fa81de62a78a3deb0588f238",
+            "title": "Visualizing and Understanding Convolutional Networks"
+        },
+        {
+            "paperId": "b8de958fead0d8a9619b55c7299df3257c624a96",
+            "title": "DeCAF: A Deep Convolutional Activation Feature for Generic Visual Recognition"
+        },
+        {
+            "paperId": "237a04dd8291cbdb59b6dc4b53e689af743fe2a3",
+            "title": "Learning Hierarchical Features for Scene Labeling"
+        },
+        {
+            "paperId": "8f88b66e964161c29cccf64933083561b751d09b",
+            "title": "Finding Things: Image Parsing with Regions and Per-Exemplar Detectors"
+        },
+        {
+            "paperId": "1101dad0f6cbf404c9cc29ac273131233730bbba",
+            "title": "Nonparametric Scene Parsing with Adaptive Feature Relevance and Semantic Context"
+        },
+        {
+            "paperId": "c66acf09e97226740d9c3fd99286c494b070c564",
+            "title": "Fixed-Point Model For Structured Labeling"
+        },
+        {
+            "paperId": "4177ec52d1b80ed57f2e72b0f9a42365f1a8598d",
+            "title": "Speech recognition with deep recurrent neural networks"
+        },
+        {
+            "paperId": "ded103d0613e1a8f51f586cc1678aee3ff26e811",
+            "title": "Advances in optimizing recurrent networks"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "84069287da0a6b488b8c933f3cb5be759cb6237e",
+            "title": "On the difficulty of training recurrent neural networks"
+        },
+        {
+            "paperId": "d1aab16162fc85d8476d6d4ca8b016c9d3388ab8",
+            "title": "Efficient inference for fully-connected CRFs with stationarity"
+        },
+        {
+            "paperId": "c81c20109c809cfc47565a9477c04ee005d424bf",
+            "title": "Efficient Inference in Fully Connected CRFs with Gaussian Edge Potentials"
+        },
+        {
+            "paperId": "6601549a9f27233b4b21d9c1892efd40b055d74c",
+            "title": "Structured class-labels in random forests for semantic image labelling"
+        },
+        {
+            "paperId": "914f6db28db0de5f439e891dac38f09bbdc5a452",
+            "title": "Superparsing"
+        },
+        {
+            "paperId": "1ce0eb78df649516053a8c3fe760f98eec649679",
+            "title": "Semantic Segmentation of Urban Scenes Using Dense Depth Maps"
+        },
+        {
+            "paperId": "0385a8b21b50ba67e1b0e72d94cfc35675299afa",
+            "title": "What, Where and How Many? Combining Object Detectors and CRFs"
+        },
+        {
+            "paperId": "bb5b2df137a4d54c3a9145fa363e66531b491580",
+            "title": "Scene Text Recognition using Higher Order Language Priors"
+        },
+        {
+            "paperId": "ef2448cf2eae2bc2fc1d83f1da0fbaba188ecec7",
+            "title": "Nonparametric scene parsing: Label transfer via dense scene alignment"
+        },
+        {
+            "paperId": "d2c733e34d48784a37d717fe43d9e93277a8c53e",
+            "title": "ImageNet: A large-scale hierarchical image database"
+        },
+        {
+            "paperId": "2c377d9dcf88d00019f0b2ed9068f183024cd9d3",
+            "title": "Offline Handwriting Recognition with Multidimensional Recurrent Neural Networks"
+        },
+        {
+            "paperId": "08f624f7ee5c3b05b1b604357fb1532241e208db",
+            "title": "Segmentation and Recognition Using Structure from Motion Point Clouds"
+        },
+        {
+            "paperId": "969be710d87f31ea323fafa0041b21a6b4cebefc",
+            "title": "Auto-context and its application to high-level vision tasks"
+        },
+        {
+            "paperId": "87073fd45685b78cb5a68e5eae331d88f2a2be63",
+            "title": "Robust Higher Order Potentials for Enforcing Label Consistency"
+        },
+        {
+            "paperId": "f07260deea7dea6dfe82d208731f4790e37cb3b3",
+            "title": "TextonBoost: Joint Appearance, Shape and Context Modeling for Multi-class Object Recognition and Segmentation"
+        },
+        {
+            "paperId": "363b56f85e12389017ba8894056a1b309e46a5f7",
+            "title": "Multiscale conditional random fields for image labeling"
+        },
+        {
+            "paperId": "f178383deb578992b2a62844a08a6451cbad16ed",
+            "title": "A new class of upper bounds on the log partition function"
+        },
+        {
+            "paperId": "1a3d22599028a05669e884f3eaf19a342e190a87",
+            "title": "Backpropagation Through Time: What It Does and How to Do It"
+        },
+        {
+            "paperId": "668087f0ae7ce1de6e0bd0965dbb480c08103260",
+            "title": "Finding Structure in Time"
+        },
+        {
+            "paperId": "114b34fd2a2a2acd4a968cbaeb5e0d2251fb2835",
+            "title": "Combining Appearance and Structure from Motion Features for Road Scene Understanding"
+        },
+        {
+            "paperId": "05a281df21f4cb2b01e7751c50a4cba3ae0b992f",
+            "title": "Understanding belief propagation and its generalizations"
+        },
+        {
+            "paperId": "329ea533c0834195fc43f0d7c523c5ac7b0b0001",
+            "title": "Exploring artificial intelligence in the new millennium"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        }
+    ]
+}

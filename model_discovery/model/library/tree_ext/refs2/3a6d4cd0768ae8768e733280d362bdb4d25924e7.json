@@ -1,0 +1,198 @@
+{
+    "paperId": "3a6d4cd0768ae8768e733280d362bdb4d25924e7",
+    "externalIds": {
+        "DBLP": "journals/corr/GomezRUG17",
+        "MAG": "2963684275",
+        "ArXiv": "1707.04585",
+        "CorpusId": 8869447
+    },
+    "title": "The Reversible Residual Network: Backpropagation Without Storing Activations",
+    "abstract": "Deep residual networks (ResNets) have significantly pushed forward the state-of-the-art on image classification, increasing in performance as networks grow both deeper and wider. However, memory consumption becomes a bottleneck, as one needs to store the activations in order to calculate gradients using backpropagation. We present the Reversible Residual Network (RevNet), a variant of ResNets where each layer's activations can be reconstructed exactly from the next layer's. Therefore, the activations for most layers need not be stored in memory during backpropagation. We demonstrate the effectiveness of RevNets on CIFAR-10, CIFAR-100, and ImageNet, establishing nearly identical classification accuracy to equally-sized ResNets, even though the activation storage requirements are independent of depth.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2017,
+    "referenceCount": 39,
+    "citationCount": 475,
+    "influentialCitationCount": 44,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The Reversible Residual Network (RevNet) is presented, a variant of ResNets where each layer's activations can be reconstructed exactly from the next layer's, therefore, the activations for most layers need not be stored in memory during backpropagation."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "19177000",
+            "name": "Aidan N. Gomez"
+        },
+        {
+            "authorId": "2540599",
+            "name": "Mengye Ren"
+        },
+        {
+            "authorId": "2422559",
+            "name": "R. Urtasun"
+        },
+        {
+            "authorId": "1785346",
+            "name": "R. Grosse"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "1031a69923b80ad01cf3fbb703d10757a80e699b",
+            "title": "Pyramid Scene Parsing Network"
+        },
+        {
+            "paperId": "3070a1bd503c3767def898bbd50c7eea2bbf29c9",
+            "title": "Wider or Deeper: Revisiting the ResNet Model for Visual Recognition"
+        },
+        {
+            "paperId": "98445f4172659ec5e891e031d8202c102135c644",
+            "title": "Neural Machine Translation in Linear Time"
+        },
+        {
+            "paperId": "5b6ec746d309b165f9f9def873a2375b6fb40f3d",
+            "title": "Xception: Deep Learning with Depthwise Separable Convolutions"
+        },
+        {
+            "paperId": "df0402517a7338ae28bc54acaac400de6b456a46",
+            "title": "WaveNet: A Generative Model for Raw Audio"
+        },
+        {
+            "paperId": "27760cc69be4ce445962ccb270a02d1944a9d4c9",
+            "title": "Decoupled Neural Interfaces using Synthetic Gradients"
+        },
+        {
+            "paperId": "0936352b78a52bc5d2b5e3f04233efc56664af51",
+            "title": "Conditional Image Generation with PixelCNN Decoders"
+        },
+        {
+            "paperId": "f61e9fd5a4878e1493f7a6b03774a61c17b7e9a4",
+            "title": "Memory-Efficient Backpropagation Through Time"
+        },
+        {
+            "paperId": "09879f7956dddc2a9328f5c1472feeb8402bcbcf",
+            "title": "Density estimation using Real NVP"
+        },
+        {
+            "paperId": "6b570069f14c7588e066f7138e1f21af59d62e61",
+            "title": "Theano: A Python framework for fast computation of mathematical expressions"
+        },
+        {
+            "paperId": "942deb7d865b7782c03176d95e3a0d56cb71009e",
+            "title": "Training Deep Nets with Sublinear Memory Cost"
+        },
+        {
+            "paperId": "42e583e2f1dca03c7607974c99f3ff66c846d2c9",
+            "title": "High-performance Semantic Segmentation Using Very Deep Fully Convolutional Networks"
+        },
+        {
+            "paperId": "9c9d7247f8c51ec5a02b0d911d1d7b9e8160495d",
+            "title": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems"
+        },
+        {
+            "paperId": "25fb5a6abcd88ee52bdb3165b844c941e90eb9bf",
+            "title": "Revisiting Distributed Synchronous SGD"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "e0945081b5b87187a53d4329cf77cd8bff635795",
+            "title": "Highway Networks"
+        },
+        {
+            "paperId": "e2820bffe5b42cb7d88b7f65c12171c62ab4aae2",
+            "title": "Gradient-based Hyperparameter Optimization through Reversible Learning"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "dc8301b67f98accbb331190dd7bd987952a692af",
+            "title": "NICE: Non-linear Independent Components Estimation"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "71b7178df5d2b112d07e45038cb5637208659ff7",
+            "title": "Microsoft COCO: Common Objects in Context"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "3127190433230b3dc1abd0680bb58dced4bcd90e",
+            "title": "Large Scale Distributed Deep Networks"
+        },
+        {
+            "paperId": "a538b05ebb01a40323997629e171c91aa28b8e2f",
+            "title": "Rectified Linear Units Improve Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": "bc6dff14a130c57a91d5a21339c23471faf1d46f",
+            "title": "Et al"
+        },
+        {
+            "paperId": "d0be39ee052d246ae99c082a565aba25b811be2d",
+            "title": "Learning long-term dependencies with gradient descent is difficult"
+        },
+        {
+            "paperId": "ce9a21b93ba29d4145a8ef6bf401e77f261848de",
+            "title": "A Learning Algorithm for Continually Running Fully Recurrent Neural Networks"
+        },
+        {
+            "paperId": "052b1d8ce63b07fec3de9dbb583772d860b7c769",
+            "title": "Learning representations by back-propagating errors"
+        },
+        {
+            "paperId": "c5e9154cfaca2ac03ecbcf9e3ebdcde5b354372d",
+            "title": "Automatic Differentiation: Techniques and Applications"
+        },
+        {
+            "paperId": null,
+            "title": "Accurate"
+        },
+        {
+            "paperId": null,
+            "title": "Unpaired image-to-image translation using cycle-consistent adversarial networks"
+        },
+        {
+            "paperId": null,
+            "title": "Rigid-motion scattering for image classi\ufb01cation"
+        },
+        {
+            "paperId": "f2a0fbba89f0d18ea0abd29639d4e43babe59cf3",
+            "title": "Training Deep and Recurrent Networks with Hessian-Free Optimization"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        },
+        {
+            "paperId": "56f50f070a861923707d1faba7e9144ea99be6e8",
+            "title": "Higher Order Statistical Decorrelation without Information Loss"
+        },
+        {
+            "paperId": "86ab4cae682fbd49c5a5bedb630e5a40fa7529f6",
+            "title": "Handwritten Digit Recognition with a Back-Propagation Network"
+        },
+        {
+            "paperId": "73f36ff3a6d340606e09d2d0091da27a13af7a6f",
+            "title": "and as an in"
+        }
+    ]
+}

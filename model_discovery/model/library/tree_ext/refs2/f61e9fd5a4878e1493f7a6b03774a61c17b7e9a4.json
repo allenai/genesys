@@ -1,0 +1,106 @@
+{
+    "paperId": "f61e9fd5a4878e1493f7a6b03774a61c17b7e9a4",
+    "externalIds": {
+        "ArXiv": "1606.03401",
+        "DBLP": "conf/nips/GruslysMDLG16",
+        "MAG": "2423581336",
+        "CorpusId": 12775860
+    },
+    "title": "Memory-Efficient Backpropagation Through Time",
+    "abstract": "We propose a novel approach to reduce memory consumption of the backpropagation through time (BPTT) algorithm when training recurrent neural networks (RNNs). Our approach uses dynamic programming to balance a trade-off between caching of intermediate results and recomputation. The algorithm is capable of tightly fitting within almost any user-set memory budget while finding an optimal execution policy minimizing the computational cost. Computational devices have limited memory capacity and maximizing a computational performance given a fixed memory budget is a practical use-case. We provide asymptotic computational upper bounds for various regimes. The algorithm is particularly effective for long sequences. For sequences of length 1000, our algorithm saves 95\\% of memory usage while using only one third more time per iteration than the standard BPTT.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2016,
+    "referenceCount": 15,
+    "citationCount": 206,
+    "influentialCitationCount": 12,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel approach to reduce memory consumption of the backpropagation through time (BPTT) algorithm when training recurrent neural networks (RNNs) using dynamic programming to balance a trade-off between caching of intermediate results and recomputation."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2203658",
+            "name": "A. Gruslys"
+        },
+        {
+            "authorId": "1708654",
+            "name": "R. Munos"
+        },
+        {
+            "authorId": "1841008",
+            "name": "Ivo Danihelka"
+        },
+        {
+            "authorId": "1975889",
+            "name": "Marc Lanctot"
+        },
+        {
+            "authorId": "1753223",
+            "name": "Alex Graves"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "784ee73d5363c711118f784428d1ab89f019daa5",
+            "title": "Hybrid computing using a neural network with dynamic external memory"
+        },
+        {
+            "paperId": "942deb7d865b7782c03176d95e3a0d56cb71009e",
+            "title": "Training Deep Nets with Sublinear Memory Cost"
+        },
+        {
+            "paperId": "69e76e16740ed69f4dc55361a3d319ac2f1293dd",
+            "title": "Asynchronous Methods for Deep Reinforcement Learning"
+        },
+        {
+            "paperId": "4a63437aaee3267a5b427588adecb1c73a95b423",
+            "title": "Deep Attention Recurrent Q-Network"
+        },
+        {
+            "paperId": "e837b79de602c69395498c1fbbe39bbb4e6f75ad",
+            "title": "Learning to Transduce with Unbounded Memory"
+        },
+        {
+            "paperId": "a2785f66c20fbdf30ec26c0931584c6d6a0f4fca",
+            "title": "DRAW: A Recurrent Neural Network For Image Generation"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "4177ec52d1b80ed57f2e72b0f9a42365f1a8598d",
+            "title": "Speech recognition with deep recurrent neural networks"
+        },
+        {
+            "paperId": "a97b5db17acc731ef67321832dbbaf5766153135",
+            "title": "Supervised Sequence Labelling with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "93c20e38c85b69fc2d2eb314b3c1217913f7db11",
+            "title": "Generating Text with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "63a6685e02e6b9a187bd7e6717bba9dda9c7c9fa",
+            "title": "The Data-Flow Equations of Checkpointing in Reverse Automatic Differentiation"
+        },
+        {
+            "paperId": "c135eede17f30b901275057553d37c07c0b90198",
+            "title": "A First Look at Music Composition using LSTM Recurrent Neural Networks"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "1a3d22599028a05669e884f3eaf19a342e190a87",
+            "title": "Backpropagation Through Time: What It Does and How to Do It"
+        },
+        {
+            "paperId": "319f22bd5abfd67ac15988aa5c7f705f018c3ccd",
+            "title": "Learning internal representations by error propagation"
+        }
+    ]
+}

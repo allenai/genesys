@@ -1,0 +1,145 @@
+{
+    "paperId": "d133ef683d10af9102dad8a2a974b388fa42526a",
+    "externalIds": {
+        "MAG": "1425731158",
+        "DBLP": "conf/hotos/McSherryIM15",
+        "CorpusId": 10467552
+    },
+    "title": "Scalability! But at what COST?",
+    "abstract": "We offer a new metric for big data platforms, COST, or the Configuration that Outperforms a Single Thread. The COST of a given platform for a given problem is the hardware configuration required before the platform outperforms a competent single-threaded implementation. COST weighs a system's scalability against the overheads introduced by the system, and indicates the actual performance gains of the system, without rewarding systems that bring substantial but parallelizable overheads. \n \nWe survey measurements of data-parallel systems recently reported in SOSP and OSDI, and find that many systems have either a surprisingly large COST, often hundreds of cores, or simply underperform one thread for all of their reported configurations.",
+    "venue": "USENIX Workshop on Hot Topics in Operating Systems",
+    "year": 2015,
+    "referenceCount": 27,
+    "citationCount": 343,
+    "influentialCitationCount": 21,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work surveys measurements of data-parallel systems recently reported in SOSP and OSDI, and finds that many systems have either a surprisingly large COST, often hundreds of cores, or simply underperform one thread for all of their reported configurations."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3137076",
+            "name": "Frank McSherry"
+        },
+        {
+            "authorId": "2090818",
+            "name": "M. Isard"
+        },
+        {
+            "authorId": "20154699",
+            "name": "D. Murray"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "438c798dc62f022efa8916ef27edfc2473fe0031",
+            "title": "Making Sense of Performance in Data Analytics Frameworks"
+        },
+        {
+            "paperId": "d6adbafb07c7a5590516404208fe8776f1363eb3",
+            "title": "GraphX: Graph Processing in a Distributed Dataflow Framework"
+        },
+        {
+            "paperId": "0790c77c1eaf2368b55c6a0def09a43690eeb848",
+            "title": "DimmWitted: A Study of Main-Memory Statistical Analytics"
+        },
+        {
+            "paperId": "98ca08bdb4092d59ef6efcedf8003239f89cf58f",
+            "title": "Naiad: a timely dataflow system"
+        },
+        {
+            "paperId": "4bc31853ab9de45df2e03a0ea991f89d9449e42b",
+            "title": "X-Stream: edge-centric graph processing using streaming partitions"
+        },
+        {
+            "paperId": "3d985a05e4a49be71d497e7a2ff3fcbeb74c4bc8",
+            "title": "A lightweight infrastructure for graph analytics"
+        },
+        {
+            "paperId": "af4c61c2bbe823d1013c2c695968b6af9584a102",
+            "title": "The scalable commutativity rule: designing scalable software for multicore processors"
+        },
+        {
+            "paperId": "5355687e1dab8b770e7c79c8a626d8a4052eff43",
+            "title": "Ligra: a lightweight graph processing framework for shared memory"
+        },
+        {
+            "paperId": "b6d3df4881f8c211ac5a6449b1fd9bb26f93f76b",
+            "title": "GraphChi: Large-Scale Graph Computation on Just a PC"
+        },
+        {
+            "paperId": "eabbf28902292c8e4aefd282cbe61113a14d7621",
+            "title": "PowerGraph: Distributed Graph-Parallel Computation on Natural Graphs"
+        },
+        {
+            "paperId": "10fe4c8697a4d3dfda601a86a19f58aa27282ef1",
+            "title": "Spinning Fast Iterative Data Flows"
+        },
+        {
+            "paperId": "1eb5fce431067ab19a44a7962dfef28ef7127ab4",
+            "title": "Filtering: a method for solving graph problems in MapReduce"
+        },
+        {
+            "paperId": "90c12ec4ac9cfeb4a513f5a59e813436e90a8629",
+            "title": "PEGASUS: mining peta-scale graphs"
+        },
+        {
+            "paperId": "bf128226e8f6bf774e38f57f62e4fabe0e4acbd1",
+            "title": "TritonSort: A Balanced Large-Scale Sorting System"
+        },
+        {
+            "paperId": "2d867297dfe0d3ce2ed5b1d0f2dff88cac46ee94",
+            "title": "Pregel: a system for large-scale graph processing"
+        },
+        {
+            "paperId": "b2b057987c398ecf332f50f42891161c99e14aa4",
+            "title": "What is Twitter, a social network or a news media?"
+        },
+        {
+            "paperId": "337bb008eb531c4e8152d6c99423e715ce0d9b05",
+            "title": "PEGASUS: A Peta-Scale Graph Mining System Implementation and Observations"
+        },
+        {
+            "paperId": "64b049d95eddc28c891a26b8f59588b5eb00f3a5",
+            "title": "A large time-aware web graph"
+        },
+        {
+            "paperId": "ba8269289ea5ca6bd8f3b43c0153409e6286b38e",
+            "title": "UbiCrawler: a scalable fully distributed Web crawler"
+        },
+        {
+            "paperId": "73b59a9a5e9642d3b80469dce828b626d85457b8",
+            "title": "The webgraph framework I: compression techniques"
+        },
+        {
+            "paperId": "06b76711658691c9d33dcc9f777863a2a0f84746",
+            "title": "Java support for data-intensive systems: experiences building the telegraph dataflow system"
+        },
+        {
+            "paperId": "eb82d3035849cd23578096462ba419b53198a556",
+            "title": "The PageRank Citation Ranking : Bringing Order to the Web"
+        },
+        {
+            "paperId": "8665c9b459e4161825baf1f25b5141f41a5085ff",
+            "title": "A bridging model for parallel computation"
+        },
+        {
+            "paperId": null,
+            "title": "Madhyastha Radhika Niranjan Mysore , Alexander Pucher , and Amin Vahdat"
+        },
+        {
+            "paperId": null,
+            "title": "Austern , Aart J . C . Bik , James C . Dehnert , Ilan Horn , Naty Leiser , and Grzegorz Czajkowski"
+        },
+        {
+            "paperId": null,
+            "title": "Hosung Park, and Sue Moon"
+        },
+        {
+            "paperId": null,
+            "title": "Efficiency Matters! HotStorage"
+        }
+    ]
+}

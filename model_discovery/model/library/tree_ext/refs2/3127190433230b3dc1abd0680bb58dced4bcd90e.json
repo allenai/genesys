@@ -1,0 +1,197 @@
+{
+    "paperId": "3127190433230b3dc1abd0680bb58dced4bcd90e",
+    "externalIds": {
+        "DBLP": "conf/nips/DeanCMCDLMRSTYN12",
+        "MAG": "2168231600",
+        "CorpusId": 372467
+    },
+    "title": "Large Scale Distributed Deep Networks",
+    "abstract": "Recent work in unsupervised feature learning and deep learning has shown that being able to train large models can dramatically improve performance. In this paper, we consider the problem of training a deep network with billions of parameters using tens of thousands of CPU cores. We have developed a software framework called DistBelief that can utilize computing clusters with thousands of machines to train large models. Within this framework, we have developed two algorithms for large-scale distributed training: (i) Downpour SGD, an asynchronous stochastic gradient descent procedure supporting a large number of model replicas, and (ii) Sandblaster, a framework that supports a variety of distributed batch optimization procedures, including a distributed implementation of L-BFGS. Downpour SGD and Sandblaster L-BFGS both increase the scale and speed of deep network training. We have successfully used our system to train a deep network 30x larger than previously reported in the literature, and achieves state-of-the-art performance on ImageNet, a visual object recognition task with 16 million images and 21k categories. We show that these same techniques dramatically accelerate the training of a more modestly- sized deep network for a commercial speech recognition service. Although we focus on and report performance of these methods as applied to training large neural networks, the underlying algorithms are applicable to any gradient-based machine learning algorithm.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2012,
+    "referenceCount": 31,
+    "citationCount": 3679,
+    "influentialCitationCount": 299,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper considers the problem of training a deep network with billions of parameters using tens of thousands of CPU cores and develops two algorithms for large-scale distributed training, Downpour SGD and Sandblaster L-BFGS, which increase the scale and speed of deep network training."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "49959210",
+            "name": "J. Dean"
+        },
+        {
+            "authorId": "32131713",
+            "name": "G. Corrado"
+        },
+        {
+            "authorId": "3089272",
+            "name": "R. Monga"
+        },
+        {
+            "authorId": "2118440152",
+            "name": "Kai Chen"
+        },
+        {
+            "authorId": "145139947",
+            "name": "M. Devin"
+        },
+        {
+            "authorId": "2827616",
+            "name": "Quoc V. Le"
+        },
+        {
+            "authorId": "1715548",
+            "name": "Mark Z. Mao"
+        },
+        {
+            "authorId": "1706809",
+            "name": "Marc'Aurelio Ranzato"
+        },
+        {
+            "authorId": "33666044",
+            "name": "A. Senior"
+        },
+        {
+            "authorId": "2080690",
+            "name": "P. Tucker"
+        },
+        {
+            "authorId": "143781496",
+            "name": "Ke Yang"
+        },
+        {
+            "authorId": "34699434",
+            "name": "A. Ng"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "e33cbb25a8c7390aec6a398e36381f4f7770c283",
+            "title": "Deep Neural Networks for Acoustic Modeling in Speech Recognition"
+        },
+        {
+            "paperId": "260077710ef86047c582bbe505feca36962ca406",
+            "title": "Distributed GraphLab: A Framework for Machine Learning in the Cloud"
+        },
+        {
+            "paperId": "b3683f5b5bfa6533b2c0eacd653e19ac1ec33d57",
+            "title": "Distributed GraphLab: A Framework for Machine Learning in the Cloud"
+        },
+        {
+            "paperId": "5352b7ca90cbe4938f8e71a25d49517e7f94670a",
+            "title": "Scalable stacking and learning for building deep architectures"
+        },
+        {
+            "paperId": "398c296d0cc7f9d180f84969f8937e6d3a413796",
+            "title": "Multi-column deep neural networks for image classification"
+        },
+        {
+            "paperId": "6658bbf68995731b2083195054ff45b4eca38b3a",
+            "title": "Context-Dependent Pre-Trained Deep Neural Networks for Large-Vocabulary Speech Recognition"
+        },
+        {
+            "paperId": "72e93aa6767ee683de7f001fa72f1314e40a8f35",
+            "title": "Building high-level features using large scale unsupervised learning"
+        },
+        {
+            "paperId": "be9a17321537d9289875fe475b71f4821457b435",
+            "title": "An Analysis of Single-Layer Networks in Unsupervised Feature Learning"
+        },
+        {
+            "paperId": "1dbc1238409549ae6872a744b7b2ff1da5822053",
+            "title": "A reliable effective terascale linear learning system"
+        },
+        {
+            "paperId": "36f49b05d764bf5c10428b082c2d96c13c4203b9",
+            "title": "Hogwild: A Lock-Free Approach to Parallelizing Stochastic Gradient Descent"
+        },
+        {
+            "paperId": "053912e76e50c9f923a1fc1c173f1365776060cc",
+            "title": "On optimization methods for deep learning"
+        },
+        {
+            "paperId": "15b252f6a6439479462f74a4f41484a461a93ca5",
+            "title": "Distributed delayed stochastic optimization"
+        },
+        {
+            "paperId": "413c1142de9d91804d6d11c67ff3fed59c9fc279",
+            "title": "Adaptive Subgradient Methods for Online Learning and Stochastic Optimization"
+        },
+        {
+            "paperId": "83e9565cede81b2b88a9fa241833135da142f4d3",
+            "title": "Parallelized Stochastic Gradient Descent"
+        },
+        {
+            "paperId": "4c46347fbc272b21468efe3d9af34b4b2bad6684",
+            "title": "Deep learning via Hessian-free optimization"
+        },
+        {
+            "paperId": "371bd20afe88e73eafea2298b52beca7b9b5660a",
+            "title": "Distributed Training Strategies for the Structured Perceptron"
+        },
+        {
+            "paperId": "b98cd08b75ebf2bd1d1ec47c51ef75777a7e64bd",
+            "title": "Deep, Big, Simple Neural Nets for Handwritten Digit Recognition"
+        },
+        {
+            "paperId": "554fabcedec7ee5361661614c6b45dc5661a5f79",
+            "title": "Efficient Large-Scale Distributed Training of Conditional Maximum Entropy Models"
+        },
+        {
+            "paperId": "34050f81755e0f718cb924e460a4691e35722b2e",
+            "title": "Slow Learners are Fast"
+        },
+        {
+            "paperId": "d2c733e34d48784a37d717fe43d9e93277a8c53e",
+            "title": "ImageNet: A large-scale hierarchical image database"
+        },
+        {
+            "paperId": "e337c5e4c23999c36f64bcb33ebe6b284e1bcbf1",
+            "title": "Large-scale deep unsupervised learning using graphics processors"
+        },
+        {
+            "paperId": "57458bc1cffe5caa45a885af986d70f723f406b4",
+            "title": "A unified architecture for natural language processing: deep neural networks with multitask learning"
+        },
+        {
+            "paperId": "b8ad078927375243a4dd937f745c60e884ebbf6b",
+            "title": "A scalable modular convex solver for regularized risk minimization"
+        },
+        {
+            "paperId": "6c2b28f9354f667cd5bd07afc0471d8334430da7",
+            "title": "A Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "b87274e6d9aa4e6ba5148898aa92941617d2b6ed",
+            "title": "Efficient BackProp"
+        },
+        {
+            "paperId": "fbeaa499e10e98515f7e1c4ad89165e8c0677427",
+            "title": "Improving the speed of neural networks on CPUs"
+        },
+        {
+            "paperId": null,
+            "title": "Theano: a CPU and GPU math expression compiler"
+        },
+        {
+            "paperId": "511b0bb924d109767feb11855acd059125ff0164",
+            "title": "Hash Kernels"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        },
+        {
+            "paperId": "627be67feb084f1266cfc36e5aed3c3e7e6ce5f0",
+            "title": "MapReduce: simplified data processing on large clusters"
+        },
+        {
+            "paperId": "82eec4af1475de9a7e876bcbaddb4a0c4a1dc187",
+            "title": "Stochastic Gradient Learning in Neural Networks"
+        }
+    ]
+}

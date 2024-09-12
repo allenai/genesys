@@ -1,0 +1,158 @@
+{
+    "paperId": "acb98cd7944db1cb57799a84b8fe24bbee6acafa",
+    "externalIds": {
+        "MAG": "2290300449",
+        "ArXiv": "1602.09046",
+        "DBLP": "journals/corr/Guberman16",
+        "CorpusId": 13816364
+    },
+    "title": "On Complex Valued Convolutional Neural Networks",
+    "abstract": "Convolutional neural networks (CNNs) are the cutting edge model for supervised machine learning in computer vision. In recent years CNNs have outperformed traditional approaches in many computer vision tasks such as object detection, image classification and face recognition. CNNs are vulnerable to overfitting, and a lot of research focuses on finding regularization methods to overcome it. One approach is designing task specific models based on prior knowledge. \nSeveral works have shown that properties of natural images can be easily captured using complex numbers. Motivated by these works, we present a variation of the CNN model with complex valued input and weights. We construct the complex model as a generalization of the real model. Lack of order over the complex field raises several difficulties both in the definition and in the training of the network. We address these issues and suggest possible solutions. \nThe resulting model is shown to be a restricted form of a real valued CNN with twice the parameters. It is sensitive to phase structure, and we suggest it serves as a regularized model for problems where such structure is important. This suggestion is verified empirically by comparing the performance of a complex and a real network in the problem of cell detection. The two networks achieve comparable results, and although the complex model is hard to train, it is significantly less vulnerable to overfitting. We also demonstrate that the complex network detects meaningful phase structure in the data.",
+    "venue": "arXiv.org",
+    "year": 2016,
+    "referenceCount": 32,
+    "citationCount": 124,
+    "influentialCitationCount": 11,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A variation of the CNN model with complex valued input and weights is presented, and it is demonstrated that the complex model is significantly less vulnerable to overfitting and detects meaningful phase structure in the data."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3368902",
+            "name": "Nitzan Guberman"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "325e51cdb065666f3c9e21e70a823bbe33fefae7",
+            "title": "On the Expressive Power of Deep Learning: A Tensor Analysis"
+        },
+        {
+            "paperId": "2eff9844bddfcabe7b3f16c07fe5dad20ccedd53",
+            "title": "A theoretical argument for complex-valued convolutional networks"
+        },
+        {
+            "paperId": "f19a4a51707cb6e1bdaf0a5aa217a23dafade465",
+            "title": "Complex-valued hough transforms for circles"
+        },
+        {
+            "paperId": "9f2efadf66817f1b38f58b3f50c7c8f34c69d89a",
+            "title": "DeepFace: Closing the Gap to Human-Level Performance in Face Verification"
+        },
+        {
+            "paperId": "193edd20cae92c6759c18ce93eeea96afd9528eb",
+            "title": "Deep learning in neural networks: An overview"
+        },
+        {
+            "paperId": "7c5920c97f8bb1f91739b0d27746d655de95eedd",
+            "title": "Neuronal Synchrony in Complex-Valued Deep Networks"
+        },
+        {
+            "paperId": "2f4df08d9072fc2ac181b7fced6a245315ce05c8",
+            "title": "Rich Feature Hierarchies for Accurate Object Detection and Semantic Segmentation"
+        },
+        {
+            "paperId": "d124a098cdc6f99b9a152fcf8afa9327dac583be",
+            "title": "Dropout Training as Adaptive Regularization"
+        },
+        {
+            "paperId": "38f35dd624cd1cf827416e31ac5e0e0454028eca",
+            "title": "Regularization of Neural Networks using DropConnect"
+        },
+        {
+            "paperId": "aa7bfd2304201afbb19971ebde87b17e40242e91",
+            "title": "On the importance of initialization and momentum in deep learning"
+        },
+        {
+            "paperId": "5cea23330c76994cb626df20bed31cc2588033df",
+            "title": "Low-rank matrix factorization for Deep Neural Network training with high-dimensional output targets"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "30e2e85b7cf2e85f8965ec74b03f569caa2b5cdd",
+            "title": "Invariant Scattering Convolution Networks"
+        },
+        {
+            "paperId": "ea9d2a2b4ce11aaf85136840c65f3bc9c03ab649",
+            "title": "Understanding the difficulty of training deep feedforward neural networks"
+        },
+        {
+            "paperId": "06791ac9c0d9fe98ddd7da2117ca8ef1809480e3",
+            "title": "Computational Framework for Simulating Fluorescence Microscope Images With Cell Populations"
+        },
+        {
+            "paperId": "a57d5b5ae5666c7a801fd7bf74a2716f2af4e120",
+            "title": "Approximation by Fully Complex Multilayer Perceptrons"
+        },
+        {
+            "paperId": "d2cf4527edad30f46c888aebc106eba55c61f783",
+            "title": "Fully Complex Multi-Layer Perceptron Network for Nonlinear Signal Processing"
+        },
+        {
+            "paperId": "563e821bb5ea825efb56b77484f5287f08cf3753",
+            "title": "Convolutional networks for images, speech, and time series"
+        },
+        {
+            "paperId": "10c9eda049b7c4bbf56b4aee2114775f3ee0e688",
+            "title": "Complex domain backpropagation"
+        },
+        {
+            "paperId": "a76e79bff7fa8e90cd6b2595cff6fb1b5665b084",
+            "title": "On the complex backpropagation algorithm"
+        },
+        {
+            "paperId": "cd62c9976534a6a2096a38244f6cbb03635a127e",
+            "title": "Phoneme recognition using time-delay neural networks"
+        },
+        {
+            "paperId": "2913c2bf3f92b5ae369400a42b2d27cc5bc05ecb",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "20f63033e8775cbab0692aed92d38da7e725d64e",
+            "title": "Understanding Machine Learning - From Theory to Algorithms"
+        },
+        {
+            "paperId": null,
+            "title": "Aaron Courville, and Yoshua Bengio. Maxout Networks"
+        },
+        {
+            "paperId": null,
+            "title": "and Thomas Serre"
+        },
+        {
+            "paperId": null,
+            "title": ", David Warde - Farley , Mehdi Mirza , Aaron Courville , and Yoshua Bengio"
+        },
+        {
+            "paperId": "c6a436b6149fedf68e6ff2b3d2f2e9424b4d3fed",
+            "title": "Unsupervised Segmentation With Dynamical Units"
+        },
+        {
+            "paperId": "349e82ebdbf4334bc00038f008ad10d52c48fc25",
+            "title": "A Wavelet Tour of Signal Processing : The Sparse Way"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": null,
+            "title": "The Organization of Behaviour. Organization, page 62"
+        },
+        {
+            "paperId": "52dfa20f6fdfcda8c11034e3d819f4bd47e6207d",
+            "title": "Ieee Transactions on Pattern Analysis and Machine Intelligence 1 3d Convolutional Neural Networks for Human Action Recognition"
+        }
+    ]
+}

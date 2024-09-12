@@ -1,0 +1,206 @@
+{
+    "paperId": "59d8c68de09da69a608ceb149f40114f5538c5b1",
+    "externalIds": {
+        "DBLP": "conf/icassp/HersheyCEGJMPPS17",
+        "ArXiv": "1609.09430",
+        "MAG": "2526050071",
+        "DOI": "10.1109/ICASSP.2017.7952132",
+        "CorpusId": 8810481
+    },
+    "title": "CNN architectures for large-scale audio classification",
+    "abstract": "Convolutional Neural Networks (CNNs) have proven very effective in image classification and show promise for audio. We use various CNN architectures to classify the soundtracks of a dataset of 70M training videos (5.24 million hours) with 30,871 video-level labels. We examine fully connected Deep Neural Networks (DNNs), AlexNet [1], VGG [2], Inception [3], and ResNet [4]. We investigate varying the size of both training set and label vocabulary, finding that analogs of the CNNs used in image classification do well on our audio classification task, and larger training and label sets help up to a point. A model using embeddings from these classifiers does much better than raw features on the Audio Set [5] Acoustic Event Detection (AED) classification task.",
+    "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+    "year": 2016,
+    "referenceCount": 31,
+    "citationCount": 2210,
+    "influentialCitationCount": 253,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1609.09430",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work uses various CNN architectures to classify the soundtracks of a dataset of 70M training videos with 30,871 video-level labels, and investigates varying the size of both training set and label vocabulary, finding that analogs of the CNNs used in image classification do well on the authors' audio classification task, and larger training and label sets help up to a point."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "50781940",
+            "name": "Shawn Hershey"
+        },
+        {
+            "authorId": "1680841",
+            "name": "Sourish Chaudhuri"
+        },
+        {
+            "authorId": "1745455",
+            "name": "D. Ellis"
+        },
+        {
+            "authorId": "3116662",
+            "name": "J. Gemmeke"
+        },
+        {
+            "authorId": "35996413",
+            "name": "A. Jansen"
+        },
+        {
+            "authorId": "2107422370",
+            "name": "R. C. Moore"
+        },
+        {
+            "authorId": "2114994",
+            "name": "Manoj Plakal"
+        },
+        {
+            "authorId": "47380012",
+            "name": "D. Platt"
+        },
+        {
+            "authorId": "2278009",
+            "name": "R. Saurous"
+        },
+        {
+            "authorId": "2535887",
+            "name": "Bryan Seybold"
+        },
+        {
+            "authorId": "145290352",
+            "name": "M. Slaney"
+        },
+        {
+            "authorId": "39571582",
+            "name": "Ron J. Weiss"
+        },
+        {
+            "authorId": "12812321",
+            "name": "K. Wilson"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "50591a4fe89c5b48fd3cd6aebd65e89fa913768c",
+            "title": "What's In A Name? Malay Seals As Onomastic Sources"
+        },
+        {
+            "paperId": "5ba2218b708ca64ab556e39d5997202e012717d5",
+            "title": "Audio Set: An ontology and human-labeled dataset for audio events"
+        },
+        {
+            "paperId": "c10c5d3fd3575570ec55ddbe838fb2a52cf97bc9",
+            "title": "TRECVID 2016: Evaluating Video Search, Video Event Detection, Localization, and Hyperlinking"
+        },
+        {
+            "paperId": "2cfb0bb902c3586cae6bd7c4f6e3dcca9be92a11",
+            "title": "TUT database for acoustic scene classification and sound event detection"
+        },
+        {
+            "paperId": "77e5dd853a01b03c6dd6016f484dfd5f6c662db4",
+            "title": "Audio Event Detection using Weakly Labeled Data"
+        },
+        {
+            "paperId": "8635251071c5936ed4360f42933a8cd35bee07ea",
+            "title": "Deep Convolutional Neural Networks and Data Augmentation for Acoustic Event Detection"
+        },
+        {
+            "paperId": "8dc778b16b744066aa1793cce2c43250e75c1983",
+            "title": "Recurrent neural networks for polyphonic sound event detection in real life recordings"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "23ffaa0fe06eae05817f527a47ac3291077f9e58",
+            "title": "Rethinking the Inception Architecture for Computer Vision"
+        },
+        {
+            "paperId": "dec2ccce1ecb34bab02c42c2dd18cb468470adf8",
+            "title": "Convolutional, Long Short-Term Memory, fully connected Deep Neural Networks"
+        },
+        {
+            "paperId": "0a28efacb92d16e6e0dd4d87b5aca91b28be8853",
+            "title": "ActivityNet: A large-scale video benchmark for human activity understanding"
+        },
+        {
+            "paperId": "5418b2a482720e013d487a385c26fae0f017c6a6",
+            "title": "Beyond short snippets: Deep networks for video classification"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "6d4c9c923e9f145d1c01a2de2afc38ec23c44253",
+            "title": "Large-Scale Video Classification with Convolutional Neural Networks"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "03891a38bc47196d3f78e185e6ed3503fa1a7ac5",
+            "title": "Machine Hearing: An Emerging Field [Exploratory DSP]"
+        },
+        {
+            "paperId": "edf1ee17044f1ec37a1d5726eae68a00a697c2ba",
+            "title": "Real-world acoustic event detection"
+        },
+        {
+            "paperId": "6dc3c38593a6f74ae30cd2207508e5e4c0953185",
+            "title": "Acoustic event detection in real life recordings"
+        },
+        {
+            "paperId": "a538b05ebb01a40323997629e171c91aa28b8e2f",
+            "title": "Rectified Linear Units Improve Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": "d2c733e34d48784a37d717fe43d9e93277a8c53e",
+            "title": "ImageNet: A large-scale hierarchical image database"
+        },
+        {
+            "paperId": "386c6597c843e8fd1f18168b59b945fde3028a76",
+            "title": "CLEAR Evaluation of Acoustic Event Detection and Classification Systems"
+        },
+        {
+            "paperId": "6878cdc5b632e018f827a9d1520e7353d8502d25",
+            "title": "Retrieval evaluation with incomplete information"
+        },
+        {
+            "paperId": "34f625531db696a2c72e0c38ee225a7dc182b53c",
+            "title": "CP-JKU SUBMISSIONS FOR DCASE-2016 : A HYBRID APPROACH USING BINAURAL I-VECTORS AND DEEP CONVOLUTIONAL NEURAL NETWORKS"
+        },
+        {
+            "paperId": null,
+            "title": "TensorFlow: Large-scale machine learning on heterogeneous systems"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "fabd7988fa29d7acde2488352d464546ee07b331",
+            "title": "AN EXEMPLAR-BASED NMF APPROACH FOR AUDIO EVENT DETECTION"
+        },
+        {
+            "paperId": null,
+            "title": "Introducing the knowledge graph: things, not strings"
+        },
+        {
+            "paperId": "9f119feef5857c5a911a0c28835276e9a9481c39",
+            "title": "Machine Hearing: An Emerging Field"
+        },
+        {
+            "paperId": "44bb1605c4ab8a8ce2764fa20424f6a148101ca4",
+            "title": "ROC Graphs: Notes and Practical Considerations for Researchers"
+        }
+    ]
+}

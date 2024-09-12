@@ -1,0 +1,266 @@
+{
+    "paperId": "b227f3e4c0dc96e5ac5426b85485a70f2175a205",
+    "externalIds": {
+        "DBLP": "journals/corr/abs-1807-03748",
+        "ArXiv": "1807.03748",
+        "MAG": "2842511635",
+        "CorpusId": 49670925
+    },
+    "title": "Representation Learning with Contrastive Predictive Coding",
+    "abstract": "While supervised learning has enabled great progress in many applications, unsupervised learning has not seen such widespread adoption, and remains an important and challenging endeavor for artificial intelligence. In this work, we propose a universal unsupervised learning approach to extract useful representations from high-dimensional data, which we call Contrastive Predictive Coding. The key insight of our model is to learn such representations by predicting the future in latent space by using powerful autoregressive models. We use a probabilistic contrastive loss which induces the latent space to capture information that is maximally useful to predict future samples. It also makes the model tractable by using negative sampling. While most prior work has focused on evaluating representations for a particular modality, we demonstrate that our approach is able to learn useful representations achieving strong performance on four distinct domains: speech, images, text and reinforcement learning in 3D environments.",
+    "venue": "arXiv.org",
+    "year": 2018,
+    "referenceCount": 57,
+    "citationCount": 8470,
+    "influentialCitationCount": 1179,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a universal unsupervised learning approach to extract useful representations from high-dimensional data, which it calls Contrastive Predictive Coding, and demonstrates that the approach is able to learn useful representations achieving strong performance on four distinct domains: speech, images, text and reinforcement learning in 3D environments."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3422336",
+            "name": "A\u00e4ron van den Oord"
+        },
+        {
+            "authorId": "2144417088",
+            "name": "Yazhe Li"
+        },
+        {
+            "authorId": "1689108",
+            "name": "O. Vinyals"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "9693600e3c4c444620eb0e4f8c1b756400a15e0c",
+            "title": "Predictive Coding"
+        },
+        {
+            "paperId": "bb17ff968ae1dbd772ac337f469d1ca915cb4c03",
+            "title": "MINE: Mutual Information Neural Estimation"
+        },
+        {
+            "paperId": "80196cdfcd0c6ce2953bf65a7f019971e2026386",
+            "title": "IMPALA: Scalable Distributed Deep-RL with Importance Weighted Actor-Learner Architectures"
+        },
+        {
+            "paperId": "6b73775f40467aed52784ff355b9bb7168e9078c",
+            "title": "Mutual Information Neural Estimation"
+        },
+        {
+            "paperId": "684fe9e2d4f7b9b108b9305f7a69907b5e541725",
+            "title": "Multi-task Self-Supervised Visual Learning"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "2adae2da173b9dd720c8bcac0250a90a7f1ec697",
+            "title": "Time-Contrastive Networks: Self-Supervised Learning from Video"
+        },
+        {
+            "paperId": "77712d113a62caa83d6330360ce99d6a5f47bd6a",
+            "title": "Time-Contrastive Networks: Self-Supervised Learning from Multi-view Observation"
+        },
+        {
+            "paperId": "664ec878de4b7170712baae4a7821fc2602bba25",
+            "title": "Learning to Generate Reviews and Discovering Sentiment"
+        },
+        {
+            "paperId": "a5c68d0d01ace4a7a5f4d3e0a3fccc42a7d1f354",
+            "title": "DeepMind Lab"
+        },
+        {
+            "paperId": "df0402517a7338ae28bc54acaac400de6b456a46",
+            "title": "WaveNet: A Generative Model for Raw Audio"
+        },
+        {
+            "paperId": "97fb4e3d45bb098e27e0071448b6152217bd35a5",
+            "title": "Layer Normalization"
+        },
+        {
+            "paperId": "0936352b78a52bc5d2b5e3f04233efc56664af51",
+            "title": "Conditional Image Generation with PixelCNN Decoders"
+        },
+        {
+            "paperId": "1db6e3078597386ac4222ba6c3f4f61b61f53539",
+            "title": "Adversarial Feature Learning"
+        },
+        {
+            "paperId": "3ad068ebde8f1d3a450a8c7e64a3428507bc2f51",
+            "title": "Unsupervised Feature Extraction by Time-Contrastive Learning and Nonlinear ICA"
+        },
+        {
+            "paperId": "2ec8f7e0257a07d3914322b36072d1bbcd58a1e0",
+            "title": "Unsupervised Learning of Visual Representations by Solving Jigsaw Puzzles"
+        },
+        {
+            "paperId": "8201e6e687f2de477258e9be53ba7b73ee30d7de",
+            "title": "Colorful Image Colorization"
+        },
+        {
+            "paperId": "77f0a39b8e02686fd85b01971f8feb7f60971f80",
+            "title": "Identity Mappings in Deep Residual Networks"
+        },
+        {
+            "paperId": "2f2d8f8072e5cc9b296fad551f65f183bdbff7aa",
+            "title": "Exploring the Limits of Language Modeling"
+        },
+        {
+            "paperId": "69e76e16740ed69f4dc55361a3d319ac2f1293dd",
+            "title": "Asynchronous Methods for Deep Reinforcement Learning"
+        },
+        {
+            "paperId": "41f1d50c85d3180476c4c7b3eea121278b0d8474",
+            "title": "Pixel Recurrent Neural Networks"
+        },
+        {
+            "paperId": "6e795c6e9916174ae12349f5dc3f516570c17ce8",
+            "title": "Skip-Thought Vectors"
+        },
+        {
+            "paperId": "0e6824e137847be0599bb0032e37042ed2ef5045",
+            "title": "Aligning Books and Movies: Towards Story-Like Visual Explanations by Watching Movies and Reading Books"
+        },
+        {
+            "paperId": "fc1b1c9364c58ec406f494dd944b609a6a038ba6",
+            "title": "Unsupervised Visual Representation Learning by Context Prediction"
+        },
+        {
+            "paperId": "6d4ff172c2d1820f33c0c72286d52b846ab5a216",
+            "title": "Unsupervised Learning of Visual Representations Using Videos"
+        },
+        {
+            "paperId": "d41cfe9b2ada4e09d53262bc75c473d8043936fc",
+            "title": "Self-Adaptive Hierarchical Sentence Model"
+        },
+        {
+            "paperId": "34038d9424ce602d7ac917a4e582d977725d4393",
+            "title": "Librispeech: An ASR corpus based on public domain audio books"
+        },
+        {
+            "paperId": "5aa26299435bdf7db874ef1640a6c3b5a4a2c394",
+            "title": "FaceNet: A unified embedding for face recognition and clustering"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "d4dc1012d780e8e2547237eb5a6dc7b1bf47d2f0",
+            "title": "Show and tell: A neural image caption generator"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "f3de86aeb442216a8391befcacb49e58b478f512",
+            "title": "Distributed Representations of Sentences and Documents"
+        },
+        {
+            "paperId": "f6b51c8753a871dc94ff32152c00c01e94f90f09",
+            "title": "Efficient Estimation of Word Representations in Vector Space"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "5e9fa46f231c59e6573f9a116f77f53703347659",
+            "title": "Baselines and Bigrams: Simple, Good Sentiment and Topic Classification"
+        },
+        {
+            "paperId": "5b0d644f5c4b9880cbaf79932c0a4fa98996f068",
+            "title": "A fast and simple algorithm for training neural probabilistic language models"
+        },
+        {
+            "paperId": "e3ce36b9deb47aa6bb2aa19c4bfa71283b505025",
+            "title": "Noise-contrastive estimation: A new estimation principle for unnormalized statistical models"
+        },
+        {
+            "paperId": "699d5ab38deee78b1fd17cc8ad233c74196d16e9",
+            "title": "Adaptive Importance Sampling to Accelerate Training of a Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "78947497cbbffc691aac3f590d972130259af9ce",
+            "title": "Distance Metric Learning for Large Margin Nearest Neighbor Classification"
+        },
+        {
+            "paperId": "cfaae9b6857b834043606df3342d8dc97524aa9d",
+            "title": "Learning a similarity metric discriminatively, with application to face verification"
+        },
+        {
+            "paperId": "6af58c061f2e4f130c3b795c21ff0c7e3903278f",
+            "title": "Seeing Stars: Exploiting Class Relationships for Sentiment Categorization with Respect to Rating Scales"
+        },
+        {
+            "paperId": "8fcbc38e7196b0dc8748f04cd6101e71f92c158e",
+            "title": "A theory of cortical responses"
+        },
+        {
+            "paperId": "cdcf7cb29f37ac0546961ea8a076075b9cc1f992",
+            "title": "Mining and summarizing customer reviews"
+        },
+        {
+            "paperId": "167e1359943b96b9e92ee73db1df69a1f65d731d",
+            "title": "A Sentimental Education: Sentiment Analysis Using Subjectivity Summarization Based on Minimum Cuts"
+        },
+        {
+            "paperId": "2c8ac3e1f0edeed1fbd76813e61efdc384c319c7",
+            "title": "Learning Question Classifiers"
+        },
+        {
+            "paperId": "5127759530ce213f488af2859190697770f557f3",
+            "title": "Slow Feature Analysis: Unsupervised Learning of Invariances"
+        },
+        {
+            "paperId": "b02ba140bd22b46dfa69da6cdffa726ed684184c",
+            "title": "Adaptive predictive coding of speech signals"
+        },
+        {
+            "paperId": "6c11626ae08706e6185fceff0a6d05e4bfd6bd06",
+            "title": "Unsupervised Learning of Visual Representations using Videos"
+        },
+        {
+            "paperId": "31868290adf1c000c611dfc966b514d5a34e8d23",
+            "title": "FUNDAMENTAL TECHNOLOGIES IN MODERN SPEECH RECOGNITION Digital Object Identifier 10.1109/MSP.2012.2205597"
+        },
+        {
+            "paperId": "3a1a2cff2b70fb84a7ca7d97f8adcc5855851795",
+            "title": "The Kaldi Speech Recognition Toolkit"
+        },
+        {
+            "paperId": "1c46943103bd7b7a2c7be86859995a4144d1938b",
+            "title": "Visualizing Data using t-SNE"
+        },
+        {
+            "paperId": "1cff7cc15555c38607016aaba24059e76b160adb",
+            "title": "Annotating Expressions of Opinions and Emotions in Language"
+        },
+        {
+            "paperId": "a424ec3b8846f57b8ffdb566d272e28d5a525909",
+            "title": "Predictive coding in the visual cortex: a functional interpretation of some extra-classical receptive-field effects."
+        },
+        {
+            "paperId": null,
+            "title": "Neural networks for machine learning - lecture 6 a - overview of mini - batch gradient descent"
+        }
+    ]
+}

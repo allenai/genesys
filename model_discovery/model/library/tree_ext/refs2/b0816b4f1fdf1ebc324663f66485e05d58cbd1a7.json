@@ -1,0 +1,253 @@
+{
+    "paperId": "b0816b4f1fdf1ebc324663f66485e05d58cbd1a7",
+    "externalIds": {
+        "ArXiv": "math/0508276",
+        "MAG": "2162139029",
+        "DOI": "10.1214/009053605000000255",
+        "CorpusId": 13158356
+    },
+    "title": "Boosting with early stopping: Convergence and consistency",
+    "abstract": "Boosting is one of the most significant advances in machine learning for classification and regression. In its original and computationally flexible version, boosting seeks to minimize empirically a loss function in a greedy fashion. The resulting estimator takes an additive function form and is built iteratively by applying a base estimator (or learner) to updated samples depending on the previous iterations. An unusual regularization technique, early stopping, is employed based on CV or a test set. This paper studies numerical convergence, consistency and statistical rates of convergence of boosting with early stopping, when it is carried out over the linear span of a family of basis functions. For general loss functions, we prove the convergence of boosting's greedy optimization to the infinimum of the loss function over the linear span. Using the numerical convergence result, we find early-stopping strategies under which boosting is shown to be consistent based on i.i.d. samples, and we obtain bounds on the rates of convergence for boosting estimators. Simulation studies are also presented to illustrate the relevance of our theoretical results for providing insights to practical aspects of boosting. As a side product, these results also reveal the importance of restricting the greedy search step-sizes. as known in practice through the work of Friedman and others. Moreover, our results lead to a rigorous proof that for a linearly separable problem, AdaBoost with E \u2192 0 step-size becomes an L 1 -margin maximizer when left to run to convergence.",
+    "venue": "",
+    "year": 2005,
+    "referenceCount": 54,
+    "citationCount": 442,
+    "influentialCitationCount": 47,
+    "openAccessPdf": {
+        "url": "https://projecteuclid.org/journals/annals-of-statistics/volume-33/issue-4/Boosting-with-early-stopping-Convergence-and-consistency/10.1214/009053605000000255.pdf",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper studies numerical convergence, consistency and statistical rates of convergence of boosting with early stopping, when it is carried out over the linear span of a family of basis functions, and leads to a rigorous proof that for a linearly separable problem, AdaBoost becomes an L 1 -margin maximizer when left to run to convergence."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2117881943",
+            "name": "Tong Zhang"
+        },
+        {
+            "authorId": "144923779",
+            "name": "Bin Yu"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "1c1ea4eaf2c5ec2fb55debcbfa2bc8c07a821435",
+            "title": "Convexity, Classification, and Risk Bounds"
+        },
+        {
+            "paperId": "b7cbbe0be7751964d314eb09cfc3043206e47a2d",
+            "title": "Generalized Additive Models: An Introduction with R"
+        },
+        {
+            "paperId": "0af30d62d0585cb75fc492092e19fcd8b9f2c0b6",
+            "title": "Local Rademacher complexities"
+        },
+        {
+            "paperId": "5536245d909abbe77e07e442bdde4dacf7dfb96c",
+            "title": "Complexities of convex combinations and bounding the generalization error in classification"
+        },
+        {
+            "paperId": "8ce2d07baada7ec8432a55da041b747ff5395899",
+            "title": "-convexity"
+        },
+        {
+            "paperId": "9d411046c0a018f5c771a9140b2a2d7c4611ef30",
+            "title": "Greedy Algorithms for Classification -- Consistency, Convergence Rates, and Adaptivity"
+        },
+        {
+            "paperId": "a1b3100794bb86323869369a82a1d3fdc1c19754",
+            "title": "Generalization Error Bounds for Bayesian Mixture Algorithms"
+        },
+        {
+            "paperId": "b4a2034e0feab70767b1bccce0e90befb6027c3a",
+            "title": "On the Rate of Convergence of Regularized Boosting Classifiers"
+        },
+        {
+            "paperId": "5b494a400e61cfa1409be14847f978178fefbe50",
+            "title": "A Loss Function Analysis for Classification Methods in Text Categorization"
+        },
+        {
+            "paperId": "1cb32e7f3b4c728a5b9b76d5edef7b6a33638e9f",
+            "title": "Boosting With the L2 Loss"
+        },
+        {
+            "paperId": "81fb4f4bf48f2e282d4ea6ebfee762413834d710",
+            "title": "Sequential greedy approximation for certain convex optimization problems"
+        },
+        {
+            "paperId": "009f35c0e453f2435efd8d8ef8086b76b294967a",
+            "title": "Rademacher and Gaussian Complexities: Risk Bounds and Structural Results"
+        },
+        {
+            "paperId": "d48d85822cfd51c6276e631b4951ad2fceb5af53",
+            "title": "Population theory for boosting ensembles"
+        },
+        {
+            "paperId": "7678da8b2eb70a5383f203d948564d8f48c0c62a",
+            "title": "Statistical behavior and consistency of classification methods based on convex risk minimization"
+        },
+        {
+            "paperId": "62563cca01472b5fa11c3eda047e3bbcf3f7f6f4",
+            "title": "Process consistency for AdaBoost"
+        },
+        {
+            "paperId": "a310c457961d1500d4a94be53feb60b5efe8e711",
+            "title": "On the Bayes-risk consistency of regularized boosting methods"
+        },
+        {
+            "paperId": "a383b9dda7ca4340fbe638ff14bef6c95875b770",
+            "title": "The Consistency of Greedy Algorithms for Classification"
+        },
+        {
+            "paperId": "5212b200940bfd0b5a52b3d255b0323d2f7fa8fb",
+            "title": "Some Local Measures of Complexity of Convex Hulls and Generalization Bounds"
+        },
+        {
+            "paperId": "6388150296152c8173fae995e30c80a86d7cf1f7",
+            "title": "Empirical margin distributions and bounding the generalization error of combined classifiers"
+        },
+        {
+            "paperId": "1679beddda3a183714d380e944fe6bf586c083cd",
+            "title": "Greedy function approximation: A gradient boosting machine."
+        },
+        {
+            "paperId": "4db3d20b41628d3db51a2cb646474f54060aaa8c",
+            "title": "Further Explanation of the Effectiveness of Voting Methods: The Game between Margins and Weights"
+        },
+        {
+            "paperId": "d49bfad00101a03ac3e964bea3717c75a5bb3210",
+            "title": "Text Categorization Based on Regularized Linear Classification Methods"
+        },
+        {
+            "paperId": "b54c9359e8858842d1b1b744ac5ca573b8031dcc",
+            "title": "Logistic Regression, AdaBoost and Bregman Distances"
+        },
+        {
+            "paperId": "6f4493eff2531536a7aeb3fc11d62c30a8f487f6",
+            "title": "Special Invited Paper-Additive logistic regression: A statistical view of boosting"
+        },
+        {
+            "paperId": "a92684c164b0c46020a371ae5116df74bb37a412",
+            "title": "Prediction Games and Arcing Algorithms"
+        },
+        {
+            "paperId": "14e53403a0055dbe5faaf9f1f3be96ca0e692a4d",
+            "title": "Improved Boosting Algorithms Using Confidence-rated Predictions"
+        },
+        {
+            "paperId": "639057ad00ddaf8bbed3fa0dbd9663dfeb663d62",
+            "title": "Boosting in the Limit: Maximizing the Margin of Learned Ensembles"
+        },
+        {
+            "paperId": "4ba566223e426677d12a9a18418c023a4deec77e",
+            "title": "A decision-theoretic generalization of on-line learning and an application to boosting"
+        },
+        {
+            "paperId": "4d19272112b50547614479a0c409fca66e3b05f7",
+            "title": "Boosting the margin: A new explanation for the effectiveness of voting methods"
+        },
+        {
+            "paperId": "45ee7447b9dd406496c4a5d9d8fb6556366a01c6",
+            "title": "Weak Convergence and Empirical Processes: With Applications to Statistics"
+        },
+        {
+            "paperId": "2210a7157565422261b03cf2cdf4e91b583df5a0",
+            "title": "Matching pursuits with time-frequency dictionaries"
+        },
+        {
+            "paperId": "990504fc9e5a1f3619ace4fa7f5bf667069018b1",
+            "title": "Original Contribution: Multilayer feedforward networks with a nonpolynomial activation function can approximate any function"
+        },
+        {
+            "paperId": "04113e8974341f97258800126d05fd8df2751b7e",
+            "title": "Universal approximation bounds for superpositions of a sigmoidal function"
+        },
+        {
+            "paperId": "7e7f56734291de81e99976d092b58e4e4a2b6f60",
+            "title": "A Simple Lemma on Greedy Approximation in Hilbert Space and Convergence Rates for Projection Pursuit Regression and Neural Network Training"
+        },
+        {
+            "paperId": "d61540a96c22a1ed4a2b78558a2ebdd39f221a90",
+            "title": "Probability in Banach Spaces: Isoperimetry and Processes"
+        },
+        {
+            "paperId": null,
+            "title": "endelson,S.(2005).LocalRadem acher com plexities.Ann.Statist.33 1497{1537"
+        },
+        {
+            "paperId": null,
+            "title": "cA uliffe,J.(2005).Convexity,classi cation, and risk bounds.J.Am er.Statist.Assoc.To appear"
+        },
+        {
+            "paperId": "34a8125be385a069443352bdb0138036fa8ff81d",
+            "title": "Consistency for L\u2082boosting and matching pursuit with trees and tree-type basis functions"
+        },
+        {
+            "paperId": null,
+            "title": "Som e l ocalm easures ofcom pl exi ty ofconvex hul l s and general i zati on bounds.C om putationalLearning T heory.Lecture N otes in A rti cialIntell igence 2375 59{73"
+        },
+        {
+            "paperId": null,
+            "title": ",Schapire,R.E.and Singer,Y.(2002).Logisticregression,AdaBoost and Bregm an distances.M achine Learning"
+        },
+        {
+            "paperId": null,
+            "title": ",T ibshirani,R.and Friedman,J.H.(2001).The Elem entsofStatistical Learning.Springer,New York.M R1851606"
+        },
+        {
+            "paperId": "4cd4ccd9225f0a3c79cd4c72bd171039e28f2ab6",
+            "title": "The Elements of Statistical Learning"
+        },
+        {
+            "paperId": "65ca70eff15fbc417da4e8747bedae70f462762d",
+            "title": "Boosting with the L_2-Loss: Regression and Classification"
+        },
+        {
+            "paperId": null,
+            "title": "On the Bayes-risk consistency of boosting methods"
+        },
+        {
+            "paperId": "1cbaf21d0e95b5036f400df6df5c6eedbabe4197",
+            "title": "SOME INFINITY THEORY FOR PREDICTOR ENSEMBLES"
+        },
+        {
+            "paperId": "f5e23d650853dc7f3dbe4370d4ace6be55f931ae",
+            "title": "Functional Gradient Techniques for Combining Hypotheses"
+        },
+        {
+            "paperId": "814cf172298d11db0ac9b839440ed8f3db93e438",
+            "title": "Arcing Classifiers"
+        },
+        {
+            "paperId": "1e52db1f61a5f0083cbe87845c019ab351bfe6c9",
+            "title": "Statistical learning theory"
+        },
+        {
+            "paperId": null,
+            "title": "A rci ng cl assi ers (w i th di scussi on). A nn"
+        },
+        {
+            "paperId": "01386a32f6e0ace89f167627be4897af84d547fd",
+            "title": "\u0420\u0435\u0446\u0435\u043d\u0437\u0438\u044f \u043d\u0430 \u043a\u043d\u0438\u0433\u0443 Vaart Aad W. van der, Wellner Jon A., \u201cWeak Convergence and Empirical Processes, with Applications to Statistics\u201d@@@Book review: Vaart Aad W. van der, Wellner Jon A., \u201cWeak Convergence and Empirical Processes, with Applications to Statistics\u201d"
+        },
+        {
+            "paperId": null,
+            "title": "E(cid:14)cient agnostic learning of neuralnetworks with bounded fan-in"
+        },
+        {
+            "paperId": null,
+            "title": "uhlmann,P.and Y u,B.(2003).Boosting with the L2 loss:Regression and classication.J.Am er.Statist.Assoc.98 324{339.M R1995709"
+        },
+        {
+            "paperId": "f3a8b16aef388038ec55d474f1b510d7cf6084cb",
+            "title": "Probability in Banach spaces"
+        },
+        {
+            "paperId": null,
+            "title": "ibshirani,R.J.(1990).G eneralized Additive M odels.Chapm an and Hall,London.M R1082147"
+        }
+    ]
+}

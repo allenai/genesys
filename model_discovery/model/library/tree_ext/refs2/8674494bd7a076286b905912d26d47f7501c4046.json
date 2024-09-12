@@ -1,0 +1,178 @@
+{
+    "paperId": "8674494bd7a076286b905912d26d47f7501c4046",
+    "externalIds": {
+        "DBLP": "conf/nips/QiYSG17",
+        "MAG": "2963121255",
+        "ArXiv": "1706.02413",
+        "CorpusId": 1745976
+    },
+    "title": "PointNet++: Deep Hierarchical Feature Learning on Point Sets in a Metric Space",
+    "abstract": "Few prior works study deep learning on point sets. PointNet by Qi et al. is a pioneer in this direction. However, by design PointNet does not capture local structures induced by the metric space points live in, limiting its ability to recognize fine-grained patterns and generalizability to complex scenes. In this work, we introduce a hierarchical neural network that applies PointNet recursively on a nested partitioning of the input point set. By exploiting metric space distances, our network is able to learn local features with increasing contextual scales. With further observation that point sets are usually sampled with varying densities, which results in greatly decreased performance for networks trained on uniform densities, we propose novel set learning layers to adaptively combine features from multiple scales. Experiments show that our network called PointNet++ is able to learn deep point set features efficiently and robustly. In particular, results significantly better than state-of-the-art have been obtained on challenging benchmarks of 3D point clouds.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2017,
+    "referenceCount": 34,
+    "citationCount": 9188,
+    "influentialCitationCount": 1853,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A hierarchical neural network that applies PointNet recursively on a nested partitioning of the input point set and proposes novel set learning layers to adaptively combine features from multiple scales to learn deep point set features efficiently and robustly."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "144329939",
+            "name": "C. Qi"
+        },
+        {
+            "authorId": "47782132",
+            "name": "L. Yi"
+        },
+        {
+            "authorId": "144914140",
+            "name": "Hao Su"
+        },
+        {
+            "authorId": "51352814",
+            "name": "L. Guibas"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "62c0b026635520c899aeb1163c09904dcef85caf",
+            "title": "Deep learning with geodesic moments for 3D shape classification"
+        },
+        {
+            "paperId": "e52e37cd91366f07df1f98e88f87010f494dd16e",
+            "title": "ScanNet: Richly-Annotated 3D Reconstructions of Indoor Scenes"
+        },
+        {
+            "paperId": "d997beefc0922d97202789d2ac307c55c2c52fba",
+            "title": "PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation"
+        },
+        {
+            "paperId": "ade1b1bfe2abefbcfe324499aa284db2b8fc50a6",
+            "title": "SyncSpecCNN: Synchronized Spectral CNN for 3D Shape Segmentation"
+        },
+        {
+            "paperId": "511ff60d4aa5ab2660552f02ee85692425912b46",
+            "title": "OctNet: Learning Deep 3D Representations at High Resolutions"
+        },
+        {
+            "paperId": "729d5c7dc6bfb32e47b5bd24cdb01ccaaf62bba5",
+            "title": "A scalable active framework for region annotation in 3D shape collections"
+        },
+        {
+            "paperId": "4cdcf2ae5e1fafebd9b3613247a7b1962584da34",
+            "title": "Volumetric and Multi-view CNNs for Object Classification on 3D Data"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "9b686d76914befea66377ec79c1f9258d70ea7e3",
+            "title": "ShapeNet: An Information-Rich 3D Model Repository"
+        },
+        {
+            "paperId": "d01379ebb53c66a4ccf5f4959d904dcf9e161e41",
+            "title": "Order Matters: Sequence to sequence for sets"
+        },
+        {
+            "paperId": "2bab744edebfd92c02dbc0cb4b31c14d02ef6c78",
+            "title": "Semantic point cloud interpretation based on optimal neighborhoods, relevant features and efficient classifiers"
+        },
+        {
+            "paperId": "1ba8376f416e90fe434977ae9f300997667498d2",
+            "title": "Multi-view Convolutional Neural Networks for 3D Shape Recognition"
+        },
+        {
+            "paperId": "f1efe8f0a1312d3ac34bb021642f0dbc580338e5",
+            "title": "Non-rigid 3D Shape Retrieval"
+        },
+        {
+            "paperId": "a743115795375666593919cbd48590213c229ae9",
+            "title": "Geodesic Convolutional Neural Networks on Riemannian Manifolds"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "7c8a51d04522496c43db68f2582efd45eaf59fea",
+            "title": "3D ShapeNets: A deep representation for volumetric shapes"
+        },
+        {
+            "paperId": "5e925a9f1e20df61d1e860a7aa71894b35a1c186",
+            "title": "Spectral Networks and Locally Connected Networks on Graphs"
+        },
+        {
+            "paperId": "5e83ab70d0cbc003471e87ec306d27d9c80ecb16",
+            "title": "Network In Network"
+        },
+        {
+            "paperId": "d22799d7143c053eb13d7ad4c1f9ca976758bdfb",
+            "title": "Towards 3D lidar point cloud registration improvement using optimal neighborhood knowledge"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "843bb8daaf937a5ca2e167a1194e2525954fa4a0",
+            "title": "DIMENSIONALITY BASED SCALE SELECTION IN 3D LIDAR POINT CLOUDS"
+        },
+        {
+            "paperId": "955635d7179484f106f584c3d5766dee0cfa45db",
+            "title": "The wave kernel signature: A quantum mechanical approach to shape analysis"
+        },
+        {
+            "paperId": "ad2b2c05472453bc7c9a0e37f775103757b8fd76",
+            "title": "Interior Distance Using Barycentric Coordinates"
+        },
+        {
+            "paperId": "bc6dff14a130c57a91d5a21339c23471faf1d46f",
+            "title": "Et al"
+        },
+        {
+            "paperId": "306a35183bac4874e4160aca6544d6610985c97d",
+            "title": "Point-based multiscale surface representation"
+        },
+        {
+            "paperId": "5562a56da3a96dae82add7de705e2bd841eb00fc",
+            "title": "Best practices for convolutional neural networks applied to visual document analysis"
+        },
+        {
+            "paperId": "1b856dc8cf10f928454f468ed29be295d21cd5d4",
+            "title": "Estimating surface normals in noisy point cloud data"
+        },
+        {
+            "paperId": null,
+            "title": "Structure sensor-3d scanning"
+        },
+        {
+            "paperId": "e73742c4fa7a466708c1ee03b2c66b9b9b8a6183",
+            "title": "CLASSIFICATION AND SEGMENTATION OF TERRESTRIAL LASER SCANNER POINT CLOUDS USING LOCAL VARIANCE INFORMATION"
+        },
+        {
+            "paperId": "286e16de03d037a6bf1b916dcffec9ac568e9940",
+            "title": "The International Archives of the Photogrammetry , Remote Sensing and Spatial Information Sciences"
+        },
+        {
+            "paperId": "b4ce8dd9d16e03c4893662565e4c03e5357c9d93",
+            "title": "Discrete Differential-Geometry Operators for Triangulated 2-Manifolds"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "3215222470768a73cd3b7d2fe89a9496d5518a5e",
+            "title": "Eurographics Symposium on Geometry Processing 2009 a Concise and Provably Informative Multi-scale Signature Based on Heat Diffusion"
+        }
+    ]
+}

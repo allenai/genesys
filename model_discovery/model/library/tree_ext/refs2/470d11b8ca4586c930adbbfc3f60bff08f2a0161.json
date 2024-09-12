@@ -1,0 +1,187 @@
+{
+    "paperId": "470d11b8ca4586c930adbbfc3f60bff08f2a0161",
+    "externalIds": {
+        "MAG": "2948974578",
+        "DBLP": "conf/icml/MunkhdalaiY17",
+        "ArXiv": "1703.00837",
+        "CorpusId": 18702258,
+        "PubMed": "31106300"
+    },
+    "title": "Meta Networks",
+    "abstract": "Neural networks have been successfully applied in applications with a large amount of labeled data. However, the task of rapid generalization on new concepts with small training data while preserving performances on previously learned ones still presents a significant challenge to neural network models. In this work, we introduce a novel meta learning method, Meta Networks (MetaNet), that learns a meta-level knowledge across tasks and shifts its inductive biases via fast parameterization for rapid generalization. When evaluated on Omniglot and Mini-ImageNet benchmarks, our MetaNet models achieve a near human-level performance and outperform the baseline approaches by up to 6% accuracy. We demonstrate several appealing properties of MetaNet relating to generalization and continual learning.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2017,
+    "referenceCount": 38,
+    "citationCount": 1012,
+    "influentialCitationCount": 62,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel meta learning method, Meta Networks (MetaNet), is introduced that learns a meta-level knowledge across tasks and shifts its inductive biases via fast parameterization for rapid generalization."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2227827",
+            "name": "Tsendsuren Munkhdalai"
+        },
+        {
+            "authorId": "2119120474",
+            "name": "Hong Yu"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "29092f0deaac3898e43b3f094bf15d82b6a99afd",
+            "title": "Learning to Remember Rare Events"
+        },
+        {
+            "paperId": "2e55ba6c97ce5eb55abd959909403fe8da7e9fe9",
+            "title": "Overcoming catastrophic forgetting in neural networks"
+        },
+        {
+            "paperId": "29c887794eed2ca9462638ff853e6fe1ab91d5d8",
+            "title": "Optimization as a Model for Few-Shot Learning"
+        },
+        {
+            "paperId": "c91ae35dbcb6d479580ecd235eabf98374acdb55",
+            "title": "Using Fast Weights to Attend to the Recent Past"
+        },
+        {
+            "paperId": "563783de03452683a9206e85fe6d661714436686",
+            "title": "HyperNetworks"
+        },
+        {
+            "paperId": "cff79255a94b9b05a4ce893eb403a522e0923f04",
+            "title": "Neural Semantic Encoders"
+        },
+        {
+            "paperId": "3904315e2eca50d0086e4b7273f7fd707c652230",
+            "title": "Meta-Learning with Memory-Augmented Neural Networks"
+        },
+        {
+            "paperId": "71683e224ab91617950956b5005ed0439a733a71",
+            "title": "Learning to learn by gradient descent by gradient descent"
+        },
+        {
+            "paperId": "be1bb4e4aa1fcf70281b4bd24d8cd31c04864bb6",
+            "title": "Matching Networks for One Shot Learning"
+        },
+        {
+            "paperId": "405c31c85a324942811f3c9dc53ce3528f9284df",
+            "title": "Towards a Neural Statistician"
+        },
+        {
+            "paperId": "ead9a671428631e44f6fe49324efe69da628bc47",
+            "title": "Learning to Optimize"
+        },
+        {
+            "paperId": "aba48504f4f9563eafa44e0cfb22e1345d767c80",
+            "title": "Dynamic Filter Networks"
+        },
+        {
+            "paperId": "815c84ab906e43f3e6322f2ca3fd5e1360c64285",
+            "title": "Human-level concept learning through probabilistic program induction"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e",
+            "title": "End-To-End Memory Networks"
+        },
+        {
+            "paperId": "e2820bffe5b42cb7d88b7f65c12171c62ab4aae2",
+            "title": "Gradient-based Hyperparameter Optimization through Reversible Learning"
+        },
+        {
+            "paperId": "c1126fbffd6b8547a44c58b192b36b08b18299de",
+            "title": "Neural Turing Machines"
+        },
+        {
+            "paperId": "71ae756c75ac89e2d731c9c79649562b5768ff39",
+            "title": "Memory Networks"
+        },
+        {
+            "paperId": "0407b605b8f55db72e2545586bfe8e946b691b70",
+            "title": "An Empirical Investigation of Catastrophic Forgeting in Gradient-Based Neural Networks"
+        },
+        {
+            "paperId": "357da8861465de56c05259aeb7bf2116f7e73d21",
+            "title": "One-shot learning by inverting a compositional causal process"
+        },
+        {
+            "paperId": "e9f60363fd3d448492d6d670e5b333b4b26a5064",
+            "title": "Compete to Compute"
+        },
+        {
+            "paperId": "9382c0ec9904ea93089f439479607f7fd0195505",
+            "title": "Evolving Modular Fast-Weight Networks for Control"
+        },
+        {
+            "paperId": "cfaae9b6857b834043606df3342d8dc97524aa9d",
+            "title": "Learning a similarity metric discriminatively, with application to face verification"
+        },
+        {
+            "paperId": "98f8a0055bb28133efcff359a92937324d0e6f51",
+            "title": "A Perspective View and Survey of Meta-Learning"
+        },
+        {
+            "paperId": "ebd486f7601e55110b87a0c2cc3e53f5136c68cb",
+            "title": "The neurobiology of slow synaptic transmission."
+        },
+        {
+            "paperId": "3efcb97c1de1c87832a7a1d99e91801992a938ec",
+            "title": "Crafting Papers on Machine Learning"
+        },
+        {
+            "paperId": "f67e7dd2495500f3975f39e541fa38073d49a2ee",
+            "title": "Fixed-weight on-line learning"
+        },
+        {
+            "paperId": "61639af1a89c69094bcc0ed40fad752832b037c3",
+            "title": "Reducing the Ratio Between Learning Complexity and Number of Time Varying Variables in Fully Recurrent Nets"
+        },
+        {
+            "paperId": "32437ae95b6c70517a325bb14d2b9c33473fb96f",
+            "title": "A neural network that embeds its own meta-levels"
+        },
+        {
+            "paperId": "aad7acb39cfb1c2e52f0e4cf7b2ba70a98d18e45",
+            "title": "Explanation-Based Neural Network Learning for Robot Control"
+        },
+        {
+            "paperId": "bc22e87a26d020215afe91c751e5bdaddd8e4922",
+            "title": "Learning to Control Fast-Weight Memories: An Alternative to Dynamic Recurrent Networks"
+        },
+        {
+            "paperId": "d130325c41947a41a55a4431e9e8e15be89da8ea",
+            "title": "Learning a synaptic learning rule"
+        },
+        {
+            "paperId": null,
+            "title": "2016), the parameters G and Z of d and m"
+        },
+        {
+            "paperId": "f216444d4f2959b4520c61d20003fa30a199670a",
+            "title": "Siamese Neural Networks for One-Shot Image Recognition"
+        },
+        {
+            "paperId": "7257eacd80458e70c74494eb1b6759b52ff21399",
+            "title": "Using fast weights to deblur old memories"
+        },
+        {
+            "paperId": null,
+            "title": "Evolutionary principles in selfreferential learning"
+        },
+        {
+            "paperId": "d69a3ca39f86625cd6ac5050d7599033881e3be8",
+            "title": "The formation of learning sets."
+        },
+        {
+            "paperId": "a6bcf0e9b5034c4c9cbea839baadd69a42b05cc1",
+            "title": "Learning curves for stochastic gradient descent in linear feedforward networks"
+        }
+    ]
+}

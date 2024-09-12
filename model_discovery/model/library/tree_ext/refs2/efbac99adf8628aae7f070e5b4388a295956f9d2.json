@@ -1,0 +1,266 @@
+{
+    "paperId": "efbac99adf8628aae7f070e5b4388a295956f9d2",
+    "externalIds": {
+        "MAG": "2963993763",
+        "DBLP": "conf/cvpr/HuangLMW18",
+        "ArXiv": "1711.09224",
+        "DOI": "10.1109/CVPR.2018.00291",
+        "CorpusId": 31409561
+    },
+    "title": "CondenseNet: An Efficient DenseNet Using Learned Group Convolutions",
+    "abstract": "Deep neural networks are increasingly used on mobile devices, where computational resources are limited. In this paper we develop CondenseNet, a novel network architecture with unprecedented efficiency. It combines dense connectivity with a novel module called learned group convolution. The dense connectivity facilitates feature re-use in the network, whereas learned group convolutions remove connections between layers for which this feature re-use is superfluous. At test time, our model can be implemented using standard group convolutions, allowing for efficient computation in practice. Our experiments show that CondenseNets are far more efficient than state-of-the-art compact convolutional networks such as ShuffleNets.",
+    "venue": "2018 IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "year": 2017,
+    "referenceCount": 55,
+    "citationCount": 751,
+    "influentialCitationCount": 67,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1711.09224",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "CondenseNet is developed, a novel network architecture with unprecedented efficiency that combines dense connectivity with a novel module called learned group convolution, allowing for efficient computation in practice."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "143983679",
+            "name": "Gao Huang"
+        },
+        {
+            "authorId": "2049404247",
+            "name": "Shichen Liu"
+        },
+        {
+            "authorId": "1803520",
+            "name": "L. Maaten"
+        },
+        {
+            "authorId": "7446832",
+            "name": "Kilian Q. Weinberger"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "90a16f34d109b63d95ab4da2d491cbe3a1c8b656",
+            "title": "Learning Efficient Convolutional Networks through Network Slimming"
+        },
+        {
+            "paperId": "d0611891b9e8a7c5731146097b6f201578f47b2f",
+            "title": "Learning Transferable Architectures for Scalable Image Recognition"
+        },
+        {
+            "paperId": "ee53c9480132fc0d09b1192226cb2c460462fd6d",
+            "title": "Channel Pruning for Accelerating Very Deep Neural Networks"
+        },
+        {
+            "paperId": "0c3d62921a1f77f4c755dad70b6b15a83ba96b33",
+            "title": "Interleaved Group Convolutions for Deep Neural Networks"
+        },
+        {
+            "paperId": "9da734397acd7ff7c557960c62fb1b400b27bd89",
+            "title": "ShuffleNet: An Extremely Efficient Convolutional Neural Network for Mobile Devices"
+        },
+        {
+            "paperId": "6a821cb17b30c26218e3eb5c20d609dc04a47bcb",
+            "title": "Exploring the Regularity of Sparse Structure in Convolutional Neural Networks"
+        },
+        {
+            "paperId": "3647d6d0f151dc05626449ee09cc7bce55be497e",
+            "title": "MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications"
+        },
+        {
+            "paperId": "b134d0911e2e13ac169ffa5f478a39e6ef77869a",
+            "title": "Snapshot Ensembles: Train 1, get M for free"
+        },
+        {
+            "paperId": "125ccd810f43f1cba83c6681836d000f83d1886d",
+            "title": "Multi-Scale Dense Networks for Resource Efficient Image Classification"
+        },
+        {
+            "paperId": "6b867004cda7d2682159bc745d5ea1ef1bff48fc",
+            "title": "Multi-Scale Dense Convolutional Networks for Efficient Prediction"
+        },
+        {
+            "paperId": "6836636c87fe78a84284d7922a438ed51bc377e9",
+            "title": "Adaptive Neural Networks for Fast Test-Time Prediction"
+        },
+        {
+            "paperId": "7944d0b061610b1c67ad15efdf192681e60d0129",
+            "title": "Spatially Adaptive Computation Time for Residual Networks"
+        },
+        {
+            "paperId": "edf9fcdc814cfd4c548d87bfe3d2fc82a2a8522c",
+            "title": "Deep Convolutional Neural Networks with Merge-and-Run Mappings"
+        },
+        {
+            "paperId": "f6e0856b4a9199fa968ac00da612a9407b5cb85c",
+            "title": "Aggregated Residual Transformations for Deep Neural Networks"
+        },
+        {
+            "paperId": "04214e4c491366c1ead2cc85a2e36f717a2b8cd1",
+            "title": "Learning the Number of Neurons in Deep Networks"
+        },
+        {
+            "paperId": "5b6ec746d309b165f9f9def873a2375b6fb40f3d",
+            "title": "Xception: Deep Learning with Depthwise Separable Convolutions"
+        },
+        {
+            "paperId": "c2a1cb1612ba21e067a5c3ba478a8d73b796b77a",
+            "title": "Pruning Filters for Efficient ConvNets"
+        },
+        {
+            "paperId": "5694e46284460a648fe29117cbc55f6c9be3fa3c",
+            "title": "Densely Connected Convolutional Networks"
+        },
+        {
+            "paperId": "b022f2a277a4bf5f42382e86e4380b96340b9e86",
+            "title": "SGDR: Stochastic Gradient Descent with Warm Restarts"
+        },
+        {
+            "paperId": "d0156126edbfc524c8d108bdc0cf811cfe3129aa",
+            "title": "FractalNet: Ultra-Deep Neural Networks without Residuals"
+        },
+        {
+            "paperId": "1c4e9156ca07705531e45960b7a919dc473abb51",
+            "title": "Wide Residual Networks"
+        },
+        {
+            "paperId": "51db1f3c8dfc7d4077da39c96bb90a6358128111",
+            "title": "Deep Networks with Stochastic Depth"
+        },
+        {
+            "paperId": "04cca8e341a5da42b29b0bc831cb25a0f784fa01",
+            "title": "Adaptive Computation Time for Recurrent Neural Networks"
+        },
+        {
+            "paperId": "77f0a39b8e02686fd85b01971f8feb7f60971f80",
+            "title": "Identity Mappings in Deep Residual Networks"
+        },
+        {
+            "paperId": "b649a98ce77ece8cd7638bb74ab77d22d9be77e7",
+            "title": "XNOR-Net: ImageNet Classification Using Binary Convolutional Neural Networks"
+        },
+        {
+            "paperId": "592d2e65489f23ebd993dbdc0c84eda9ac8aadbe",
+            "title": "SqueezeNet: AlexNet-level accuracy with 50x fewer parameters and <1MB model size"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "642d0f49b7826adcf986616f4af77e736229990f",
+            "title": "Deep Compression: Compressing Deep Neural Network with Pruning, Trained Quantization and Huffman Coding"
+        },
+        {
+            "paperId": "b92aa7024b87f50737b372e5df31ef091ab54e62",
+            "title": "Training Very Deep Networks"
+        },
+        {
+            "paperId": "1ff9a37d766e3a4f39757f5e1b235a42dacf18ff",
+            "title": "Learning both Weights and Connections for Efficient Neural Network"
+        },
+        {
+            "paperId": "efb5032e6199c80f83309fd866b25be9545831fd",
+            "title": "Compressing Neural Networks with the Hashing Trick"
+        },
+        {
+            "paperId": "0c908739fbff75f03469d13d4a1a07de3414ee19",
+            "title": "Distilling the Knowledge in a Neural Network"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "d6f2f611da110b5b5061731be3fc4c7f45d8ee23",
+            "title": "Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification"
+        },
+        {
+            "paperId": "33af9298e5399269a12d4b9901492fe406af62b4",
+            "title": "Striving for Simplicity: The All Convolutional Net"
+        },
+        {
+            "paperId": "8604f376633af8b347e31d84c6150a93b11e34c2",
+            "title": "FitNets: Hints for Thin Deep Nets"
+        },
+        {
+            "paperId": "fb91db6aa4f710814f8aec28a7f3ecbc4e5ad4fd",
+            "title": "Deeply-Supervised Nets"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "71b7178df5d2b112d07e45038cb5637208659ff7",
+            "title": "Microsoft COCO: Common Objects in Context"
+        },
+        {
+            "paperId": "5e83ab70d0cbc003471e87ec306d27d9c80ecb16",
+            "title": "Network In Network"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "a538b05ebb01a40323997629e171c91aa28b8e2f",
+            "title": "Rectified Linear Units Improve Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": "d2c733e34d48784a37d717fe43d9e93277a8c53e",
+            "title": "ImageNet: A large-scale hierarchical image database"
+        },
+        {
+            "paperId": "bc6dff14a130c57a91d5a21339c23471faf1d46f",
+            "title": "Et al"
+        },
+        {
+            "paperId": "30c9bb327b7f2b9f1d1e5b69b9d0c97b410948d9",
+            "title": "Model compression"
+        },
+        {
+            "paperId": "d98ef875e2cbde3e2cc8fad521e3cbfe1bddbd69",
+            "title": "Model selection and estimation in regression with grouped variables"
+        },
+        {
+            "paperId": "e8eaf8aedb495b6ae0e174eea11e3cfcdf4a3724",
+            "title": "Optimal Brain Surgeon and general network pruning"
+        },
+        {
+            "paperId": null,
+            "title": "for ef\ufb01cient prediction"
+        },
+        {
+            "paperId": "1b7db8ad49f94da9b90db89bede5f27644bb9911",
+            "title": "SGDR: Stochastic Gradient Descent with Restarts"
+        },
+        {
+            "paperId": "28135fd3e80dda50a673cd556f10b9b972005d27",
+            "title": "Binarized Neural Networks"
+        },
+        {
+            "paperId": null,
+            "title": "and K"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        },
+        {
+            "paperId": "e7297db245c3feb1897720b173a59fe7e36babb7",
+            "title": "Optimal Brain Damage"
+        }
+    ]
+}

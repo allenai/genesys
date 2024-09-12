@@ -1,0 +1,291 @@
+{
+    "paperId": "0f885fd46064d271d4404cf9bb3d758e1a6f8d55",
+    "externalIds": {
+        "MAG": "2799269579",
+        "DBLP": "conf/eccv/MahajanGRHPLBM18",
+        "ArXiv": "1805.00932",
+        "DOI": "10.1007/978-3-030-01216-8_12",
+        "CorpusId": 13751202
+    },
+    "title": "Exploring the Limits of Weakly Supervised Pretraining",
+    "abstract": null,
+    "venue": "European Conference on Computer Vision",
+    "year": 2018,
+    "referenceCount": 58,
+    "citationCount": 1280,
+    "influentialCitationCount": 91,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper presents a unique study of transfer learning with large convolutional networks trained to predict hashtags on billions of social media images and shows improvements on several image classification and object detection tasks, and reports the highest ImageNet-1k single-crop, top-1 accuracy to date."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "144542135",
+            "name": "D. Mahajan"
+        },
+        {
+            "authorId": "2983898",
+            "name": "Ross B. Girshick"
+        },
+        {
+            "authorId": "34066479",
+            "name": "Vignesh Ramanathan"
+        },
+        {
+            "authorId": "39353098",
+            "name": "Kaiming He"
+        },
+        {
+            "authorId": "2210374",
+            "name": "Manohar Paluri"
+        },
+        {
+            "authorId": "1527103472",
+            "name": "Yixuan Li"
+        },
+        {
+            "authorId": "1842920",
+            "name": "Ashwin R. Bharambe"
+        },
+        {
+            "authorId": "1803520",
+            "name": "L. Maaten"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "f986968735459e789890f24b6b277b0920a9725d",
+            "title": "Places: A 10 Million Image Database for Scene Recognition"
+        },
+        {
+            "paperId": "bfbd82adb6b3fe8ad591981095288ae558d010ba",
+            "title": "ConvNets and ImageNet Beyond Accuracy: Explanations, Bias Detection, Adversarial Examples and Model Criticism"
+        },
+        {
+            "paperId": "655f587a59c835a7b6b5017016ea1c2123f266e6",
+            "title": "Separating Self-Expression and Visual Content in Hashtag Supervision"
+        },
+        {
+            "paperId": "df67d46e78aae0d2fccfb6212d101a342259c01b",
+            "title": "Squeeze-and-Excitation Networks"
+        },
+        {
+            "paperId": "d0611891b9e8a7c5731146097b6f201578f47b2f",
+            "title": "Learning Transferable Architectures for Scalable Image Recognition"
+        },
+        {
+            "paperId": "8760bc7631c0cb04e7138254e9fd6451b7def8ca",
+            "title": "Revisiting Unreasonable Effectiveness of Data in Deep Learning Era"
+        },
+        {
+            "paperId": "d7ddad7bbda29de7676c21bfeac6be2ce0a07d6f",
+            "title": "Dual Path Networks"
+        },
+        {
+            "paperId": "0d57ba12a6d958e178d83be4c84513f7e42b24e5",
+            "title": "Accurate, Large Minibatch SGD: Training ImageNet in 1 Hour"
+        },
+        {
+            "paperId": "b61a3f8b80bbd44f24544dc915f52fd30bbdf485",
+            "title": "Quo Vadis, Action Recognition? A New Model and the Kinetics Dataset"
+        },
+        {
+            "paperId": "e9c9da57bbf9a968489cb90ec7252319bcab42fb",
+            "title": "Hard Mixtures of Experts for Large Scale Weakly Supervised Vision"
+        },
+        {
+            "paperId": "1a0912bb76777469295bb2c059faee907e7f3258",
+            "title": "Mask R-CNN"
+        },
+        {
+            "paperId": "76ae2eb617d2ad12edf6b84539fce6e5cf76b00e",
+            "title": "Towards Accurate Multi-person Pose Estimation in the Wild"
+        },
+        {
+            "paperId": "8938988d82c6eb18e47deb5e69220652446c60bd",
+            "title": "Learning Visual N-Grams from Web Data"
+        },
+        {
+            "paperId": "35d181da0b939bdf3bdf579969e5fe69e277e03e",
+            "title": "Learning Features by Watching Objects Move"
+        },
+        {
+            "paperId": "2a94c84383ee3de5e6211d43d16e7de387f68878",
+            "title": "Feature Pyramid Networks for Object Detection"
+        },
+        {
+            "paperId": "1031a69923b80ad01cf3fbb703d10757a80e699b",
+            "title": "Pyramid Scene Parsing Network"
+        },
+        {
+            "paperId": "dfad8f616bd2a05c8cae5f61060f743f966ece85",
+            "title": "Realtime Multi-person 2D Pose Estimation Using Part Affinity Fields"
+        },
+        {
+            "paperId": "aad34665649953fa4bbacdc6eff4edb5408df6b3",
+            "title": "PolyNet: A Pursuit of Structural Diversity in Very Deep Networks"
+        },
+        {
+            "paperId": "f6e0856b4a9199fa968ac00da612a9407b5cb85c",
+            "title": "Aggregated Residual Transformations for Deep Neural Networks"
+        },
+        {
+            "paperId": "5b6ec746d309b165f9f9def873a2375b6fb40f3d",
+            "title": "Xception: Deep Learning with Depthwise Separable Convolutions"
+        },
+        {
+            "paperId": "540b5b4919d345e4da3cc4f3e8a7862329bf41a2",
+            "title": "What makes ImageNet good for transfer learning?"
+        },
+        {
+            "paperId": "5694e46284460a648fe29117cbc55f6c9be3fa3c",
+            "title": "Densely Connected Convolutional Networks"
+        },
+        {
+            "paperId": "c50630e485d3c7785ea9e1f3bff35ea00e926a56",
+            "title": "Deep Image Retrieval: Learning Global Representations for Image Search"
+        },
+        {
+            "paperId": "b5c26ab8767d046cb6e32d959fdf726aee89bb62",
+            "title": "Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning"
+        },
+        {
+            "paperId": "7a0a00380c13002b330c70be2802904c4f31064f",
+            "title": "Seeing through the Human Reporting Bias: Visual Classifiers from Noisy Human-Centric Labels"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "23ffaa0fe06eae05817f527a47ac3291077f9e58",
+            "title": "Rethinking the Inception Architecture for Computer Vision"
+        },
+        {
+            "paperId": "55a3c3bcf0827f5f750a105fd676ee33e86803fb",
+            "title": "Particular object retrieval with integral max-pooling of CNN activations"
+        },
+        {
+            "paperId": "8c30968d96e0c601adaa74db8907fa6ad73bae31",
+            "title": "Learning Visual Features from Large Weakly Supervised Data"
+        },
+        {
+            "paperId": "004aa2cb4b68850ee006af8a6807b3c1a6a198f0",
+            "title": "Deep Classifiers from Image Tags in the Wild"
+        },
+        {
+            "paperId": "d5012a6a4933e26ed9b23b0c38c073bb8063533f",
+            "title": "User Conditional Hashtag Prediction for Images"
+        },
+        {
+            "paperId": "5aa26299435bdf7db874ef1640a6c3b5a4a2c394",
+            "title": "FaceNet: A unified embedding for face recognition and clustering"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "d6f2f611da110b5b5061731be3fc4c7f45d8ee23",
+            "title": "Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification"
+        },
+        {
+            "paperId": "cb3a2ddcf305e2ec0f6b94af13d1e631ed261bdc",
+            "title": "Predicting Depth, Surface Normals and Semantic Labels with a Common Multi-scale Convolutional Architecture"
+        },
+        {
+            "paperId": "6fc6803df5f9ae505cae5b2f178ade4062c768d0",
+            "title": "Fully convolutional networks for semantic segmentation"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "8f96d88288385c3dbc681be5adf800bdaab3b35e",
+            "title": "Concreteness ratings for 40 thousand generally known English word lemmas"
+        },
+        {
+            "paperId": "dcbf587642c39f495117552ca453a4f955ffa76a",
+            "title": "Analyzing the Performance of Multilayer Neural Networks for Object Recognition"
+        },
+        {
+            "paperId": "b418792e8eac944d3ddaeccc570c40543a2b7fbd",
+            "title": "Web-scale training for face identification"
+        },
+        {
+            "paperId": "71b7178df5d2b112d07e45038cb5637208659ff7",
+            "title": "Microsoft COCO: Common Objects in Context"
+        },
+        {
+            "paperId": "d0b0c3e5a1e768490bc9b759685930541957508b",
+            "title": "Introductory Lectures on Convex Optimization - A Basic Course"
+        },
+        {
+            "paperId": "d4beac7746fb4a12bb04287a6638236b5ae0cfd9",
+            "title": "Optimized Product Quantization"
+        },
+        {
+            "paperId": "1a2a770d23b4a171fa81de62a78a3deb0588f238",
+            "title": "Visualizing and Understanding Convolutional Networks"
+        },
+        {
+            "paperId": "fc26b9c1afe81e1b20195123fe6f3ced9520abb6",
+            "title": "Visualizing and Understanding Convolutional Neural Networks"
+        },
+        {
+            "paperId": "2f4df08d9072fc2ac181b7fced6a245315ce05c8",
+            "title": "Rich Feature Hierarchies for Accurate Object Detection and Semantic Segmentation"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "b8de958fead0d8a9619b55c7299df3257c624a96",
+            "title": "DeCAF: A Deep Convolutional Activation Feature for Generic Visual Recognition"
+        },
+        {
+            "paperId": "a48a56b0727d09f599676524fe190308d9e88bf1",
+            "title": "Caltech-UCSD Birds 200"
+        },
+        {
+            "paperId": "d2c733e34d48784a37d717fe43d9e93277a8c53e",
+            "title": "ImageNet: A large-scale hierarchical image database"
+        },
+        {
+            "paperId": "5a2bfaa724ba37134eb55c29644f8576c3d64c96",
+            "title": "Hamming Embedding and Weak Geometric Consistency for Large Scale Image Search"
+        },
+        {
+            "paperId": null,
+            "title": "Technical"
+        },
+        {
+            "paperId": null,
+            "title": "Detectron"
+        },
+        {
+            "paperId": null,
+            "title": "Yfcc100m: The new data in multimedia research"
+        },
+        {
+            "paperId": "4748d22348e72e6e06c2476486afddbc76e5eca7",
+            "title": "Product Quantization for Nearest Neighbor Search"
+        },
+        {
+            "paperId": null,
+            "title": "WordNet: About WordNet"
+        },
+        {
+            "paperId": "8cb2a81872fcd2bb7e1b75e7f993f6c733222753",
+            "title": "Exhaustive Geometric Veri\ufb01cation for Image Retrieval Accepted for ECCV 2012"
+        },
+        {
+            "paperId": null,
+            "title": "Exploring the Limits of Weakly Supervised Pretraining 17"
+        }
+    ]
+}

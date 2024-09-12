@@ -1,0 +1,70 @@
+{
+    "paperId": "d7f7f6dfbdbe5220aded6a211c50079e28b217ad",
+    "externalIds": {
+        "DBLP": "journals/tc/Kohonen72",
+        "MAG": "2129217160",
+        "DOI": "10.1109/TC.1972.5008975",
+        "CorpusId": 21483100
+    },
+    "title": "Correlation Matrix Memories",
+    "abstract": "A new model for associative memory, based on a correlation matrix, is suggested. In this model information is accumulated on memory elements as products of component data. Denoting a key vector by q(p), and the data associated with it by another vector x(p), the pairs (q(p), x(p)) are memorized in the form of a matrix {see the Equation in PDF File} where c is a constant. A randomly selected subset of the elements of Mxq can also be used for memorizing. The recalling of a particular datum x(r) is made by a transformation x(r)=Mxqq(r). This model is failure tolerant and facilitates associative search of information; these are properties that are usually assigned to holographic memories. Two classes of memories are discussed: a complete correlation matrix memory (CCMM), and randomly organized incomplete correlation matrix memories (ICMM). The data recalled from the latter are stochastic variables but the fidelity of recall is shown to have a deterministic limit if the number of memory elements grows without limits. A special case of correlation matrix memories is the auto-associative memory in which any part of the memorized information can be used as a key. The memories are selective with respect to accumulated data. The ICMM exhibits adaptive improvement under certain circumstances. It is also suggested that correlation matrix memories could be applied for the classification of data.",
+    "venue": "IEEE transactions on computers",
+    "year": 1972,
+    "referenceCount": 10,
+    "citationCount": 919,
+    "influentialCitationCount": 26,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new model for associative memory, based on a correlation matrix, is suggested, in which any part of the memorized information can be used as a key and the memories are selective with respect to accumulated data."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1688681",
+            "name": "T. Kohonen"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "1ca8357e95e52c4b31d2933eb3e7935f9b2c513d",
+            "title": "Associative holographic memories"
+        },
+        {
+            "paperId": "aa8dddc4dc99dbb6e9538768f1d3cba66ad671b1",
+            "title": "Holographic Model of Temporal Recall"
+        },
+        {
+            "paperId": "505534c5958db6a4d612808e14aad82c827ab64c",
+            "title": "Holographic Model of Temporal Recall"
+        },
+        {
+            "paperId": "1004bbbb75dc5939794799522d501420d2e3234f",
+            "title": "Some current views on holography"
+        },
+        {
+            "paperId": "b460daf0fc1a51c6574f797f4c29b8f55b61bb62",
+            "title": "Theory of Optical Information Storage in Solids"
+        },
+        {
+            "paperId": "2d8bd84ec2e7034418334c49be66e912df6b7d35",
+            "title": "A New Optical Method of Storing and Retrieving Information"
+        },
+        {
+            "paperId": "d6390a86cd2300492f21e19f53f5e8a419dc81d5",
+            "title": "\u201cAddition\u201d and \u201cmultiplication\u201d theorems for the inputs of two neurons converging on a third"
+        },
+        {
+            "paperId": "fd253ff0f4f33caad4ec0aef200a85fe88572ccc",
+            "title": "Non-Holographic Associative Memory"
+        },
+        {
+            "paperId": null,
+            "title": "A class of randomly organized associative memo1969"
+        },
+        {
+            "paperId": "1f7c0ea983c9d9eaf22f5d289840ef12ac2da02c",
+            "title": "Bedingte Reflexe, die Lernmatrix"
+        }
+    ]
+}

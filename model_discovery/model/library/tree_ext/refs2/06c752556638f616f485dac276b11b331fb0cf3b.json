@@ -1,0 +1,382 @@
+{
+    "paperId": "06c752556638f616f485dac276b11b331fb0cf3b",
+    "externalIds": {
+        "MAG": "2963277597",
+        "ArXiv": "1503.07648",
+        "DBLP": "conf/colt/AlonMY16",
+        "CorpusId": 16029710
+    },
+    "title": "Sign rank versus VC dimension",
+    "abstract": "This work studies the maximum possible sign rank of $N \\times N$ sign matrices with a given VC dimension $d$. For $d=1$, this maximum is {three}. For $d=2$, this maximum is $\\tilde{\\Theta}(N^{1/2})$. For $d >2$, similar but slightly less accurate statements hold. {The lower bounds improve over previous ones by Ben-David et al., and the upper bounds are novel.} \nThe lower bounds are obtained by probabilistic constructions, using a theorem of Warren in real algebraic topology. The upper bounds are obtained using a result of Welzl about spanning trees with low stabbing number, and using the moment curve. \nThe upper bound technique is also used to: (i) provide estimates on the number of classes of a given VC dimension, and the number of maximum classes of a given VC dimension -- answering a question of Frankl from '89, and (ii) design an efficient algorithm that provides an $O(N/\\log(N))$ multiplicative approximation for the sign rank. \nWe also observe a general connection between sign rank and spectral gaps which is based on Forster's argument. Consider the $N \\times N$ adjacency matrix of a $\\Delta$ regular graph with a second eigenvalue of absolute value $\\lambda$ and $\\Delta \\leq N/2$. We show that the sign rank of the signed version of this matrix is at least $\\Delta/\\lambda$. We use this connection to prove the existence of a maximum class $C\\subseteq\\{\\pm 1\\}^N$ with VC dimension $2$ and sign rank $\\tilde{\\Theta}(N^{1/2})$. This answers a question of Ben-David et al.~regarding the sign rank of large VC classes. We also describe limitations of this approach, in the spirit of the Alon-Boppana theorem. \nWe further describe connections to communication complexity, geometry, learning theory, and combinatorics.",
+    "venue": "Annual Conference Computational Learning Theory",
+    "year": 2015,
+    "referenceCount": 86,
+    "citationCount": 42,
+    "influentialCitationCount": 5,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The lower bounds improve over previous ones by Ben-David et al., and the upper bounds are novel, and connections to communication complexity, geometry, learning theory, and combinatorics are described."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1734327",
+            "name": "N. Alon"
+        },
+        {
+            "authorId": "36415145",
+            "name": "S. Moran"
+        },
+        {
+            "authorId": "1699039",
+            "name": "A. Yehudayoff"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "4c75b748911ddcd888c5122f7672f69caa5d661f",
+            "title": "Statistical Learning Theory"
+        },
+        {
+            "paperId": "3b2bd8c89a0f34ab271a5c9f76c3646136aa1e3c",
+            "title": "Shattering news."
+        },
+        {
+            "paperId": "4330e396caab670c66777287697b6713736c2bdf",
+            "title": "The Probabilistic Method"
+        },
+        {
+            "paperId": "89d01eb06c108d17d4dd719999292ca1263be1f4",
+            "title": "Labeled Compression Schemes for Extremal Classes"
+        },
+        {
+            "paperId": "ada6ce980dfefcae064f09d6d817387fe0951902",
+            "title": "The complexity of computing the minimum rank of a sign pattern matrix"
+        },
+        {
+            "paperId": "14ae005800ae9db96830e2ecefa90291250f9688",
+            "title": "Wiley Series in Discrete Mathematics and Optimization"
+        },
+        {
+            "paperId": "d8c4386d4abfe460592b6f16881b97485d6e2b9f",
+            "title": "Intersection graphs of segments and $\\exists\\mathbb{R}$"
+        },
+        {
+            "paperId": "6fd0586a3a93d073f5a007a6337d03a655ebabac",
+            "title": "Bounding Embeddings of VC Classes into Maximum Classes"
+        },
+        {
+            "paperId": "5e25ae93b14186333b6ef1466523269eba0edbab",
+            "title": "The existence of designs"
+        },
+        {
+            "paperId": "332cf41bc3f9166371134c3d4f0dba59b6b3f514",
+            "title": "Recursive Teaching Dimension, Learning Complexity, and Maximum Classes"
+        },
+        {
+            "paperId": "117499c29435fd9804e742d08976ecb420774003",
+            "title": "A Geometric Approach to Sample Compression"
+        },
+        {
+            "paperId": "2a4a79d4d8a166e8640f2f5e3212f2439db5cde8",
+            "title": "Complexity Lower Bounds using Linear Algebra"
+        },
+        {
+            "paperId": "d5de17e5323add74c291a7511d410b23706b3d81",
+            "title": "Visibility constraints on features of 3D objects"
+        },
+        {
+            "paperId": "4b44950d173aa06ea54929a729a98cedfd9223e2",
+            "title": "The structure of almost all graphs in a hereditary property"
+        },
+        {
+            "paperId": "8ffda2f84565fc8865c795070fae8b1baebb7e6b",
+            "title": "The Sign-Rank of AC^O"
+        },
+        {
+            "paperId": "65106cd008cd959d9335eebd0610f945b9a6cfcd",
+            "title": "An Approximation Algorithm for Approximation Rank"
+        },
+        {
+            "paperId": "41a2a6b4afe6e09b8fc19b67905a69185c9ebb1d",
+            "title": "Communication Complexity Under Product and Nonproduct Distributions"
+        },
+        {
+            "paperId": "e1dc86e3bf250dcc138675bc664b5c9e87f74ded",
+            "title": "Learning Complexity vs. Communication Complexity"
+        },
+        {
+            "paperId": "b985a59d1eff2d02e444916c6546d0e9bd1582b1",
+            "title": "Unlabeled Compression Schemes for Maximum Classes,"
+        },
+        {
+            "paperId": "b9630fb1b9271a5344fbca3922308e76491e4938",
+            "title": "Halfspace Matrices"
+        },
+        {
+            "paperId": "121e53ccc22cbf6aa453a221fcde294b1fcffe60",
+            "title": "Expander Graphs and their Applications"
+        },
+        {
+            "paperId": "3e75d5e4be3ee4308169b5faf00d30b6910b9464",
+            "title": "Combinatorics of lopsided sets"
+        },
+        {
+            "paperId": "8477f8e8e0090a45f1e6c03a14a061b13c842723",
+            "title": "On the smallest possible dimension and the largest possible margin of linear arrangements representing given concept classes"
+        },
+        {
+            "paperId": "7598b0278268622c0fe53a35f934c20006939575",
+            "title": "Learning DNF in time 2\u00d5(n1/3)"
+        },
+        {
+            "paperId": "13ea05e6c5af98e109b66e656e95677476bf3880",
+            "title": "Limitations of Learning Via Embeddings in Euclidean Half Spaces"
+        },
+        {
+            "paperId": "da3f5b69457193ee3d1857abdc121f5c32d6d1e8",
+            "title": "Relations Between Communication Complexity, Linear Arrangements, and Computational Complexity"
+        },
+        {
+            "paperId": "47a1fca6d151fd45dfbffe00aff62cb6d172d5b7",
+            "title": "Estimating the Optimal Margins of Embeddings in Euclidean Half Spaces"
+        },
+        {
+            "paperId": "446a052d1541fdcf25bc97cfb8b764bb5b867492",
+            "title": "A linear lower bound on the unbounded error probabilistic communication complexity"
+        },
+        {
+            "paperId": "048d02623d94cc30dfbe3bda8ba75100735f33d8",
+            "title": "An algorithmic theory of learning: Robust concepts and random projection"
+        },
+        {
+            "paperId": "40498c41da4f7e71f8f50efc856786a9fa7cec20",
+            "title": "Norm-Graphs: Variations and Applications"
+        },
+        {
+            "paperId": "3f600e6c6cf93e78c9e6e690443d6d22c4bf18b9",
+            "title": "Nonlinear Component Analysis as a Kernel Eigenvalue Problem"
+        },
+        {
+            "paperId": "fe84db9e87a513b285ab32147cd901782e66616d",
+            "title": "A Tutorial on Support Vector Machines for Pattern Recognition"
+        },
+        {
+            "paperId": "06bc06d6998e5da31a53c1d0f2bd3c0ff9e29800",
+            "title": "Sample compression, learnability, and the Vapnik-Chervonenkis dimension"
+        },
+        {
+            "paperId": "c9e7df5f151b270dd10c605401af4092cbf6e98e",
+            "title": "Defect Sauer Results"
+        },
+        {
+            "paperId": "52b7bf3ba59b31f362aa07f957f1543a29a4279e",
+            "title": "Support-Vector Networks"
+        },
+        {
+            "paperId": "3ee765f1f71dd42c2a169fa13989a621e31a6c8a",
+            "title": "On Randomized One-round Communication Complexity"
+        },
+        {
+            "paperId": "da0819e556c860aa43496944f6592bfca0024759",
+            "title": "Sphere Packing Numbers for Subsets of the Boolean n-Cube with Bounded Vapnik-Chervonenkis Dimension"
+        },
+        {
+            "paperId": "b4246650b8dde9329fa7d84a3a04ab3bbd07f054",
+            "title": "Vapnik-Chervonenkis dimension and (pseudo-)hyperplane arrangements"
+        },
+        {
+            "paperId": "579ffaaab046217132f128ec8a11aadcf34908ac",
+            "title": "Localization vs. Identification of Semi-Algebraic Sets"
+        },
+        {
+            "paperId": "4aaa30769ca49875f45670970130c088136986d1",
+            "title": "A training algorithm for optimal margin classifiers"
+        },
+        {
+            "paperId": "5d9a36d8d59c0fafdf90c028e0d23fca64afaeea",
+            "title": "Discrepancy and approximations for bounded VC-dimension"
+        },
+        {
+            "paperId": "4796e05a275c89b40ee2d2ec55f946516e284589",
+            "title": "A parallel algorithmic version of the local lemma"
+        },
+        {
+            "paperId": "2289bc8250bd7c5dab97ffce6b47d0d70c748129",
+            "title": "Traces of antichains"
+        },
+        {
+            "paperId": "d59b10264294ccbac548401ee108b65501b4dce5",
+            "title": "Quasi-optimal range searching in spaces of finite VC-dimension"
+        },
+        {
+            "paperId": "38e74b6e1e1847c055bd05bba3a0cd759f01cb5d",
+            "title": "Partition trees for triangle counting and other range searching problems"
+        },
+        {
+            "paperId": "dbdfc10b6af746580bd48f2f3757e9060326e5ab",
+            "title": "\u025b-nets and simplex range queries"
+        },
+        {
+            "paperId": "bae07717fde194af9fb90fff48e753ff3281bc7f",
+            "title": "Partitioning and geometric embedding of range spaces of finite Vapnik-Chervonenkis dimension"
+        },
+        {
+            "paperId": "29b6251c84def0cbd35397c71fada0d22cd9409c",
+            "title": "Classifying learnable geometric concepts with the Vapnik-Chervonenkis dimension"
+        },
+        {
+            "paperId": "cc1e1e5d7c950f4f05e410c7edcceab1e32bfcd5",
+            "title": "Some intersection theorems for ordered sets and graphs"
+        },
+        {
+            "paperId": "f52e66066c129bb87f6a4f12f1c17fd4a2b440b3",
+            "title": "Epsilon-nets and simplex range queries"
+        },
+        {
+            "paperId": "dfb8b31ac84036778c489830c64e3e238078b797",
+            "title": "Probabilistic Communication Complexity"
+        },
+        {
+            "paperId": "69fa4fa8ec55b1a240fa68024de231a96b2e4ebb",
+            "title": "Eigenvalues, geometric expanders, sorting in rounds, and ramsey theory"
+        },
+        {
+            "paperId": "1ea6460b290976ec92bbf503c4568d76730a18c4",
+            "title": "Eigenvalues and expanders"
+        },
+        {
+            "paperId": "16e91a2b92a5b83944956d5c8bf1bc2cdae7906e",
+            "title": "Geometrical realization of set systems and probabilistic communication complexity"
+        },
+        {
+            "paperId": "009233749be702cb3ee7afb96cc7707c63f1cd52",
+            "title": "A theory of the learnable"
+        },
+        {
+            "paperId": "285ff677ec7882247eb343a625412c8e83e357c4",
+            "title": "Eigenvalues, Expanders and Superconcentrators (Extended Abstract)"
+        },
+        {
+            "paperId": "051e61c5c9ff22c346a18fc1b41e19b7f1de8f2e",
+            "title": "Difference equations, isoperimetric inequality and transience of certain random walks"
+        },
+        {
+            "paperId": "788c6d1b1419a0f7b7695c0e7e9e41cf54fbfe1b",
+            "title": "On the Density of Families of Sets"
+        },
+        {
+            "paperId": "6dd1548c9ebaf8db977e7c60bdac8d586dd4b375",
+            "title": "On Graphs that do not Contain a Thomsen Graph"
+        },
+        {
+            "paperId": "72227eee1576695e714491decfbfe5fc5e208b68",
+            "title": "Recursive teaching dimension, VC-dimension and sample compression"
+        },
+        {
+            "paperId": null,
+            "title": "R\u00d7C sign matrix with VC dimension one so that no row appears twice in it, and every column c is shattered (i.e. the two values \u00b11 appear in it). Then, there is a column c0 \u2208 [C] and a row"
+        },
+        {
+            "paperId": "b12f48af91c904256e10306f3e7d56f49139ea95",
+            "title": "The Sign-Rank of AC0"
+        },
+        {
+            "paperId": "261ce4d9e1ba6ce865eded8ebf1ce3be0272f10b",
+            "title": "Learning DNF in time 2 \u00d5(n 1/3 ) ."
+        },
+        {
+            "paperId": null,
+            "title": "We therefore use a variant of the spectral norm of a sign matrix S which we call star norm and"
+        },
+        {
+            "paperId": "16b9720067fcff1170a38ae9637abbca05054e79",
+            "title": "Projective Geometry: From Foundations to Applications"
+        },
+        {
+            "paperId": "3ea2ad59228a1a24a67d1e994fa77266a599e73a",
+            "title": "Mnev's Universality Theorem revisited"
+        },
+        {
+            "paperId": null,
+            "title": "plugging in its proof a result"
+        },
+        {
+            "paperId": "9a5654844f5434d174c2c4d589ea4d2306c6d843",
+            "title": "Projective Geometrie : Von den Grundlagen bis zu den Anwendungen"
+        },
+        {
+            "paperId": "35773db43639f65f4ad7bc4812d208135e295a4f",
+            "title": "Almost tight bounds for $\\epsilon$-nets"
+        },
+        {
+            "paperId": "73dcb887b9dfa9da84fdc807d83a50b8c95bccd2",
+            "title": "On the second eigenvalue of a graph"
+        },
+        {
+            "paperId": null,
+            "title": "Stretchabilltv of pseudolines is NP-hard Applied Geometry And Discrete Mathematics, Proceedings of a DI- MACS Workshop"
+        },
+        {
+            "paperId": "066dac6fffaece0f9dcc6d1c47453a47a0ca1ddf",
+            "title": "Stretchability of Pseudolines is NP-Hard"
+        },
+        {
+            "paperId": "6583b016d69f31418ed87cc73e1fd74682efff9f",
+            "title": "Some algebraic and geometric computations in PSPACE"
+        },
+        {
+            "paperId": "5356c7a08d1be180ac5b23fafa2f4fcfc8bbe53c",
+            "title": "The universality theorems on the classification problem of configuration varieties and convex polytopes varieties"
+        },
+        {
+            "paperId": null,
+            "title": "Razborov and"
+        },
+        {
+            "paperId": null,
+            "title": "Let F be a family of vectors in S1 \u00d7 S2"
+        },
+        {
+            "paperId": "1c01e83768e9b877a8fe0c74605d2f7dd090fbd5",
+            "title": "lambda1, Isoperimetric inequalities for graphs, and superconcentrators"
+        },
+        {
+            "paperId": "bef33daba19743dc38a068a12e832cc3c2f889e4",
+            "title": "il , , lsoperimetric Inequalities for Graphs , and Superconcentrators"
+        },
+        {
+            "paperId": "1d0635cda34b8af995313848a0c42bac6efe79ec",
+            "title": "Extensions of Lipschitz mappings into Hilbert space"
+        },
+        {
+            "paperId": "356413dedfdc41a61aa9a581ff92fee26b2bab9c",
+            "title": "Communication Complexity"
+        },
+        {
+            "paperId": "a36b028d024bf358c4af1a5e1dc3ca0aed23b553",
+            "title": "Chervonenkis: On the uniform convergence of relative frequencies of events to their probabilities"
+        },
+        {
+            "paperId": "06c126b1238dc11cc1e36a3b876dab4044637fa1",
+            "title": "Lower bounds for approximation by nonlinear manifolds"
+        },
+        {
+            "paperId": null,
+            "title": "The perceptron\u2013a perceiving and recognizing automaton"
+        },
+        {
+            "paperId": "9f2053cbddf27847ab26565dd31de252d63e2a19",
+            "title": "Projektive Geometrie"
+        },
+        {
+            "paperId": null,
+            "title": "Shattering-extremal systems. CoRR, abs"
+        },
+        {
+            "paperId": null,
+            "title": "ALON MORAN YEHUDAYOFF"
+        }
+    ]
+}

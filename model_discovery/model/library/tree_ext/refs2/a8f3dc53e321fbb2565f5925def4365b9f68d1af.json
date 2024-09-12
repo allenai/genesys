@@ -1,0 +1,258 @@
+{
+    "paperId": "a8f3dc53e321fbb2565f5925def4365b9f68d1af",
+    "externalIds": {
+        "DBLP": "journals/corr/abs-1805-08318",
+        "MAG": "2804078698",
+        "ArXiv": "1805.08318",
+        "CorpusId": 46898260
+    },
+    "title": "Self-Attention Generative Adversarial Networks",
+    "abstract": "In this paper, we propose the Self-Attention Generative Adversarial Network (SAGAN) which allows attention-driven, long-range dependency modeling for image generation tasks. Traditional convolutional GANs generate high-resolution details as a function of only spatially local points in lower-resolution feature maps. In SAGAN, details can be generated using cues from all feature locations. Moreover, the discriminator can check that highly detailed features in distant portions of the image are consistent with each other. Furthermore, recent work has shown that generator conditioning affects GAN performance. Leveraging this insight, we apply spectral normalization to the GAN generator and find that this improves training dynamics. The proposed SAGAN achieves the state-of-the-art results, boosting the best published Inception score from 36.8 to 52.52 and reducing Frechet Inception distance from 27.62 to 18.65 on the challenging ImageNet dataset. Visualization of the attention layers shows that the generator leverages neighborhoods that correspond to object shapes rather than local regions of fixed shape.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2018,
+    "referenceCount": 54,
+    "citationCount": 3448,
+    "influentialCitationCount": 310,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The proposed SAGAN achieves the state-of-the-art results, boosting the best published Inception score from 36.8 to 52.52 and reducing Frechet Inception distance from 27.62 to 18.65 on the challenging ImageNet dataset."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "48213346",
+            "name": "Han Zhang"
+        },
+        {
+            "authorId": "153440022",
+            "name": "I. Goodfellow"
+        },
+        {
+            "authorId": "1711560",
+            "name": "Dimitris N. Metaxas"
+        },
+        {
+            "authorId": "2624088",
+            "name": "Augustus Odena"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "d97c3d2afe663070ef486343deaf9b67e409215d",
+            "title": "Open Questions about Generative Adversarial Networks"
+        },
+        {
+            "paperId": "5a691a13300e8da7ae2355f50ec3d1029cfeb043",
+            "title": "HYPE: Human eYe Perceptual Evaluation of Generative Models"
+        },
+        {
+            "paperId": "a1a19aaddf57c0546357d890d9269092ba0afb26",
+            "title": "Semantic Image Synthesis With Spatially-Adaptive Normalization"
+        },
+        {
+            "paperId": "ceb2ebef0b41e31c1a21b28c2734123900c005e2",
+            "title": "A Style-Based Generator Architecture for Generative Adversarial Networks"
+        },
+        {
+            "paperId": "22aab110058ebbd198edb1f1e7b4f69fb13c0613",
+            "title": "Large Scale GAN Training for High Fidelity Natural Image Synthesis"
+        },
+        {
+            "paperId": "866aa9bcb15cf4a23a0afed515fa2f6b93f91d11",
+            "title": "Discriminator Rejection Sampling"
+        },
+        {
+            "paperId": "b7ebb535dc6c9f1227558e53eabb798c4d4ad424",
+            "title": "Skill Rating for Generative Models"
+        },
+        {
+            "paperId": "dd2ebc42a1a4491b4179dec0ca8686d5c66f6bfe",
+            "title": "The relativistic discriminator: a key element missing from standard GAN"
+        },
+        {
+            "paperId": "cf3d878d9c64bdff14dac364df8376a44225eec7",
+            "title": "Is Generator Conditioning Causally Related to GAN Performance?"
+        },
+        {
+            "paperId": "ab559473a01836e72b9fb9393d6e07c5745528f3",
+            "title": "cGANs with Projection Discriminator"
+        },
+        {
+            "paperId": "84de7d27e2f6160f634a483e8548c499a2cda7fa",
+            "title": "Spectral Normalization for Generative Adversarial Networks"
+        },
+        {
+            "paperId": "69902406e7d08f8865f02185699978db499d25e7",
+            "title": "Improving GANs Using Optimal Transport"
+        },
+        {
+            "paperId": "1db9bd18681b96473f3c82b21edc9240b44dc329",
+            "title": "Image Transformer"
+        },
+        {
+            "paperId": "3548baab3e5e6abc278cefdd33f3b58efb924554",
+            "title": "Geometry Score: A Method For Comparing Generative Adversarial Networks"
+        },
+        {
+            "paperId": "cc63a155021362b05c3c75bd5040373d72e0623e",
+            "title": "Inferring Semantic Layout for Hierarchical Text-to-Image Synthesis"
+        },
+        {
+            "paperId": "d1c424c261c577958917055f72fb9e2ad0348865",
+            "title": "PixelSNAIL: An Improved Autoregressive Generative Model"
+        },
+        {
+            "paperId": "8b35c00edfa4edfd7a99d816e671023d2c000d55",
+            "title": "AttnGAN: Fine-Grained Text to Image Generation with Attentional Generative Adversarial Networks"
+        },
+        {
+            "paperId": "8899094797e82c5c185a0893896320ef77f60e64",
+            "title": "Non-local Neural Networks"
+        },
+        {
+            "paperId": "744fe47157477235032f7bb3777800f9f2f45e52",
+            "title": "Progressive Growing of GANs for Improved Quality, Stability, and Variation"
+        },
+        {
+            "paperId": "4ace72f12491a7c06967a6011c4bef004192d767",
+            "title": "StackGAN++: Realistic Image Synthesis with Stacked Generative Adversarial Networks"
+        },
+        {
+            "paperId": "231af7dc01a166cac3b5b01ca05778238f796e41",
+            "title": "GANs Trained by a Two Time-Scale Update Rule Converge to a Local Nash Equilibrium"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "2d81914c1855f2d2873fd5cc26897330b42c0472",
+            "title": "SegAN: Adversarial Network with Multi-scale L1 Loss for Medical Image Segmentation"
+        },
+        {
+            "paperId": "5e4d2e73e71806e9147afbedcd504424721fa059",
+            "title": "Geometric GAN"
+        },
+        {
+            "paperId": "edf73ab12595c6709f646f542a0d2b33eb20a3f4",
+            "title": "Improved Training of Wasserstein GANs"
+        },
+        {
+            "paperId": "e57c09d50d67060b18806f9597674fdc28320dd2",
+            "title": "Deep and Hierarchical Implicit Models"
+        },
+        {
+            "paperId": "375aa8e5ed444c6f83e2abeff8475f76833a0a2e",
+            "title": "Hierarchical Implicit Models and Likelihood-Free Variational Inference"
+        },
+        {
+            "paperId": "2f85b7376769473d2bed56f855f115e23d727094",
+            "title": "Wasserstein GAN"
+        },
+        {
+            "paperId": "ea67d2d5f2a7d5760ec6b67ea93d11dd5affa921",
+            "title": "StackGAN: Text to Photo-Realistic Image Synthesis with Stacked Generative Adversarial Networks"
+        },
+        {
+            "paperId": "8acbe90d5b852dadea7810345451a99608ee54c7",
+            "title": "Image-to-Image Translation with Conditional Adversarial Networks"
+        },
+        {
+            "paperId": "024d30897e0a2b036bc122163a954b7f1a1d0679",
+            "title": "Mode Regularized Generative Adversarial Networks"
+        },
+        {
+            "paperId": "488bb25e0b1777847f04c943e6dbc4f84415b712",
+            "title": "Unrolled Generative Adversarial Networks"
+        },
+        {
+            "paperId": "04bd2907111855b9fde9413bb25b9788a4c03f26",
+            "title": "Unsupervised Cross-Domain Image Generation"
+        },
+        {
+            "paperId": "ecc0edd450ae7e52f65ddf61405b30ad6dbabdd7",
+            "title": "Conditional Image Synthesis with Auxiliary Classifier GANs"
+        },
+        {
+            "paperId": "3c7092347a5b7804d9534b6f3f52032c1502cbf8",
+            "title": "Amortised MAP Inference for Image Super-resolution"
+        },
+        {
+            "paperId": "cad4ac0d2389a89cf1955dd4788278c1e8ac1af9",
+            "title": "Learning What and Where to Draw"
+        },
+        {
+            "paperId": "df0c54fe61f0ffb9f0e36a17c2038d9a1964cba3",
+            "title": "Photo-Realistic Single Image Super-Resolution Using a Generative Adversarial Network"
+        },
+        {
+            "paperId": "2ba23d9b46027e47b4483243871760e315213ffe",
+            "title": "Energy-based Generative Adversarial Network"
+        },
+        {
+            "paperId": "372bc106c61e7eb004835e85bbfee997409f176a",
+            "title": "Coupled Generative Adversarial Networks"
+        },
+        {
+            "paperId": "0936352b78a52bc5d2b5e3f04233efc56664af51",
+            "title": "Conditional Image Generation with PixelCNN Decoders"
+        },
+        {
+            "paperId": "571b0750085ae3d939525e62af510ee2cee9d5ea",
+            "title": "Improved Techniques for Training GANs"
+        },
+        {
+            "paperId": "2cd8e8f510c89c7c18268e8ad51c061e459ad321",
+            "title": "A Decomposable Attention Model for Natural Language Inference"
+        },
+        {
+            "paperId": "6c7f040a150abf21dbcefe1f22e0f98fa184f41a",
+            "title": "Generative Adversarial Text to Image Synthesis"
+        },
+        {
+            "paperId": "13fe71da009484f240c46f14d9330e932f8de210",
+            "title": "Long Short-Term Memory-Networks for Machine Reading"
+        },
+        {
+            "paperId": "9766fee22e0d5e9247dd28556ba48ee371d33f5b",
+            "title": "Faster Asynchronous SGD"
+        },
+        {
+            "paperId": "8388f1be26329fa45e5807e968a641ce170ea078",
+            "title": "Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks"
+        },
+        {
+            "paperId": "2c1890864c1c2b750f48316dc8b650ba4772adc5",
+            "title": "Stacked Attention Networks for Image Question Answering"
+        },
+        {
+            "paperId": "a2785f66c20fbdf30ec26c0931584c6d6a0f4fca",
+            "title": "DRAW: A Recurrent Neural Network For Image Generation"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "dd6d044696df5e4353ff7c92b8009e1201c85129",
+            "title": "Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks"
+        },
+        {
+            "paperId": "c68796f833a7151f0a63d1d1608dc902b4fdc9b6",
+            "title": "GENERATIVE ADVERSARIAL NETS"
+        }
+    ]
+}

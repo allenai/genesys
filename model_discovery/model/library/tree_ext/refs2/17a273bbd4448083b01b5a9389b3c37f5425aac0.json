@@ -1,0 +1,326 @@
+{
+    "paperId": "17a273bbd4448083b01b5a9389b3c37f5425aac0",
+    "externalIds": {
+        "MAG": "1787224781",
+        "PubMedCentral": "4498753",
+        "DOI": "10.1371/journal.pone.0130140",
+        "CorpusId": 9327892,
+        "PubMed": "26161953"
+    },
+    "title": "On Pixel-Wise Explanations for Non-Linear Classifier Decisions by Layer-Wise Relevance Propagation",
+    "abstract": "Understanding and interpreting classification decisions of automated image classification systems is of high value in many applications, as it allows to verify the reasoning of the system and provides additional information to the human expert. Although machine learning methods are solving very successfully a plethora of tasks, they have in most cases the disadvantage of acting as a black box, not providing any information about what made them arrive at a particular decision. This work proposes a general solution to the problem of understanding classification decisions by pixel-wise decomposition of nonlinear classifiers. We introduce a methodology that allows to visualize the contributions of single pixels to predictions for kernel-based classifiers over Bag of Words features and for multilayered neural networks. These pixel contributions can be visualized as heatmaps and are provided to a human expert who can intuitively not only verify the validity of the classification decision, but also focus further analysis on regions of potential interest. We evaluate our method for classifiers trained on PASCAL VOC 2009 images, synthetic image data containing geometric shapes, the MNIST handwritten digits data set and for the pre-trained ImageNet model available as part of the Caffe open source package.",
+    "venue": "PLoS ONE",
+    "year": 2015,
+    "referenceCount": 68,
+    "citationCount": 3763,
+    "influentialCitationCount": 441,
+    "openAccessPdf": {
+        "url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0130140&type=printable",
+        "status": "GOLD"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a general solution to the problem of understanding classification decisions by pixel-wise decomposition of nonlinear classifiers by introducing a methodology that allows to visualize the contributions of single pixels to predictions for kernel-based classifiers over Bag of Words features and for multilayered neural networks."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "40405884",
+            "name": "Sebastian Bach"
+        },
+        {
+            "authorId": "49345823",
+            "name": "Alexander Binder"
+        },
+        {
+            "authorId": "144535526",
+            "name": "G. Montavon"
+        },
+        {
+            "authorId": "3245416",
+            "name": "F. Klauschen"
+        },
+        {
+            "authorId": "145034054",
+            "name": "K. M\u00fcller"
+        },
+        {
+            "authorId": "1699054",
+            "name": "W. Samek"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "a89a0ae64f7f75b63de0de083f3b561c94277621",
+            "title": "IEEE Computer Society"
+        },
+        {
+            "paperId": "bee044c8e8903fb67523c1f8c105ab4718600cdb",
+            "title": "Explaining and Harnessing Adversarial Examples"
+        },
+        {
+            "paperId": "218d50faffca29a2e7bf53c2b9b52e60760e8072",
+            "title": "Visual Causal Feature Learning"
+        },
+        {
+            "paperId": "dc6ac3437f0a6e64e4404b1b9d188394f8a3bf71",
+            "title": "Deep Inside Convolutional Networks: Visualising Image Classification Models and Saliency Maps"
+        },
+        {
+            "paperId": "d891dc72cbd40ffaeefdc79f2e7afe1e530a23ad",
+            "title": "Intriguing properties of neural networks"
+        },
+        {
+            "paperId": "1a2a770d23b4a171fa81de62a78a3deb0588f238",
+            "title": "Visualizing and Understanding Convolutional Networks"
+        },
+        {
+            "paperId": "ce2d94075dfd6d965f7bc1b4ffc79ebe733abbc2",
+            "title": "Taxonomic Prediction with Tree-Structured Covariances"
+        },
+        {
+            "paperId": "b90d880025b6655016851d93e80e80aaaa885ca0",
+            "title": "Image Classification with the Fisher Vector: Theory and Practice"
+        },
+        {
+            "paperId": "b8d96c9e7d1a6c320d7dcda64faddbee7d9dc3b8",
+            "title": "Enhanced representation and multi-task learning for image annotation"
+        },
+        {
+            "paperId": "79a3dc313e8a052220921e96485abe4c3fd9f93b",
+            "title": "Semantic Kernel Forests from Multiple Taxonomies"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "f9cec2df465224425ff64cfe45bc848138eb55de",
+            "title": "On Taxonomies for Multi-class Image Categorization"
+        },
+        {
+            "paperId": "6ba798ccf2b58c6374aba00e6ee37a7fce3f3695",
+            "title": "What has my classifier learned? Visualizing the classification rules of bag-of-feature model by support region detection"
+        },
+        {
+            "paperId": "72e93aa6767ee683de7f001fa72f1314e40a8f35",
+            "title": "Building high-level features using large scale unsupervised learning"
+        },
+        {
+            "paperId": "65152d68e8c3bdb9ca036e20d7cfc44835ecaee1",
+            "title": "Insights from Classifying Visual Concepts with Multiple Kernel Learning"
+        },
+        {
+            "paperId": "d743430cb2329caa5d446c17fc9ec07f5e916ab0",
+            "title": "Adaptive deconvolutional networks for mid and high level feature learning"
+        },
+        {
+            "paperId": "9af092ee9bb76ab006b3abb0e2cce70c52485fd2",
+            "title": "In defense of soft-assignment coding"
+        },
+        {
+            "paperId": "e36c6ca35e1aa6a9c89abb155ae707333c6fc3c4",
+            "title": "Visual Interpretation of Kernel\u2010Based Prediction Models"
+        },
+        {
+            "paperId": "297e8a487d57558d844b413ee23b39aa6e65e1e4",
+            "title": "The Visual Extent of an Object"
+        },
+        {
+            "paperId": "83f03c19f82b488ac9cf1ce3592ffdbd3ae8f480",
+            "title": "Visualization of nonlinear kernel models in neuroimaging by sensitivity maps"
+        },
+        {
+            "paperId": "3d2787bbaa7f6c8ca7eac7d399448ada4afbd069",
+            "title": "l p -Norm Multiple Kernel Learning"
+        },
+        {
+            "paperId": "39f3b1804b8df5be645a1dcb4a876e128385d9be",
+            "title": "Improving the Fisher Kernel for Large-Scale Image Classification"
+        },
+        {
+            "paperId": "1aa5a8ad5b7031ba39e1dc0537484694364a1312",
+            "title": "Evaluating Color Descriptors for Object and Scene Recognition"
+        },
+        {
+            "paperId": "c43025c429b1fbf6f1379f61801a1b40834d62e7",
+            "title": "Convolutional networks and applications in vision"
+        },
+        {
+            "paperId": "8889bb01d0752f989077362d75e9338f9cad2ad5",
+            "title": "Visual Word Ambiguity"
+        },
+        {
+            "paperId": "2f7713dcc35e7c05becf3be5522f36c9546b0364",
+            "title": "Locality-constrained Linear Coding for image classification"
+        },
+        {
+            "paperId": "c06f654b7959553771395f24508be529c0a6cd64",
+            "title": "Radar Remote Sensing of Urban Areas"
+        },
+        {
+            "paperId": "a5e23ef59eaf3fd897c460c28d23a982c72e8f65",
+            "title": "Nonlinear Learning using Local Coordinate Coding"
+        },
+        {
+            "paperId": "eecdc94eab2d84c16f030a73672127132c3f97ea",
+            "title": "Efficient and Accurate Lp-Norm Multiple Kernel Learning"
+        },
+        {
+            "paperId": "4e6238c8613b5b81f81552939bce33296aedfbfe",
+            "title": "How to Explain Individual Classification Decisions"
+        },
+        {
+            "paperId": "42a1a163a13ce3998ed11b011250913097e550c4",
+            "title": "Heterogeneous feature machines for visual recognition"
+        },
+        {
+            "paperId": "c9c7ab03bdb5fee15174d910d7fea14a16b086b7",
+            "title": "Multiple kernels for object detection"
+        },
+        {
+            "paperId": "0c9633aedafe4ee8cf238fa06c40b84f47e17362",
+            "title": "Linear spatial pyramid matching using sparse coding for image classification"
+        },
+        {
+            "paperId": "ca39d495ecda24db91a80de3785c8737d92b06d3",
+            "title": "Kernel Codebooks for Scene Categorization"
+        },
+        {
+            "paperId": "281956b1caec079fca4178a504c351567701c623",
+            "title": "Randomized Clustering Forests for Image Classification"
+        },
+        {
+            "paperId": "688b6fbc3c5c06e254961f70de9d855d3d008d09",
+            "title": "Why is Real-World Visual Object Recognition Hard?"
+        },
+        {
+            "paperId": "acda4460f0ad088023369c2e7e32f2512dcd75e7",
+            "title": "Self-supervised Monocular Road Detection in Desert Terrain"
+        },
+        {
+            "paperId": "dee20a7ce7745fc367c8bc7ede4f7b8c22efa52d",
+            "title": "Local Features and Kernels for Classification of Texture and Object Categories: A Comprehensive Study"
+        },
+        {
+            "paperId": "7a2252ccce2b65abc3759149b5c06587cc318e2f",
+            "title": "A Bayesian hierarchical model for learning natural scene categories"
+        },
+        {
+            "paperId": "f935f891dc9dd7761cf6973cb1bdb15c1e4ec23e",
+            "title": "An accurate comparison of methods for quantifying variable importance in artificial neural networks using simulated data"
+        },
+        {
+            "paperId": "8c04f169203f9e55056a6f7f956695babe622a38",
+            "title": "Distinctive Image Features from Scale-Invariant Keypoints"
+        },
+        {
+            "paperId": "141e6c1dd532504611266d08458dbe2a0dbb4e98",
+            "title": "Multiple kernel learning, conic duality, and the SMO algorithm"
+        },
+        {
+            "paperId": "3fdfa50a9224e22da8d2987f06346371ba26dd03",
+            "title": "Review and comparison of methods to study the contribution of variables in artificial neural network models"
+        },
+        {
+            "paperId": "0948365ef39ef153e61e9569ade541cf881c7c2a",
+            "title": "Learning the Kernel Matrix with Semidefinite Programming"
+        },
+        {
+            "paperId": "2ba745184e671c5f32fab44429716cf136121d59",
+            "title": "Understanding Neural Networks via Rule Extraction"
+        },
+        {
+            "paperId": "052b1d8ce63b07fec3de9dbb583772d860b7c769",
+            "title": "Learning representations by back-propagating errors"
+        },
+        {
+            "paperId": null,
+            "title": "Caffe: An Open Source Convolutional Architecture for Fast Feature Embedding"
+        },
+        {
+            "paperId": "41172dbdab7c4646c5584da8b5a44b5538e86eba",
+            "title": "Visualization of Nonlinear Classification Models in Neuroimaging - Signed Sensitivity Maps"
+        },
+        {
+            "paperId": null,
+            "title": "The ImageNet Large Scale Visual Recognition Challenge Available from: http://www.image-net.org/ challenges"
+        },
+        {
+            "paperId": "d17a4b1a57e46cc5d2dbda5c6bef1722a93c3277",
+            "title": "The CLEF 2011 Photo Annotation and Concept-based Retrieval Tasks"
+        },
+        {
+            "paperId": "239e9c9fc31b8f31845d13c0c50fe46d71b1cef2",
+            "title": "The Visual Extent of an Object"
+        },
+        {
+            "paperId": "2bfd6e24e84302fd0e2c12490539a58a9973e1bd",
+            "title": "lp-Norm Multiple Kernel Learning"
+        },
+        {
+            "paperId": "cde6b5a00be702e70abff31bcc4eb0d448ed6517",
+            "title": "UvA-DARE ( Digital Academic Repository ) The visual extent of an object : suppose we know the object locations"
+        },
+        {
+            "paperId": null,
+            "title": "Journal of Machine Learning Research"
+        },
+        {
+            "paperId": "ccb782b4013d7e32bc3e0ccd6446c0ecd7838149",
+            "title": "Object Recognition from Polarimetric SAR Images"
+        },
+        {
+            "paperId": "79b9be797404b2fc9ae165c14ab0f4d1f34ea7de",
+            "title": "ImageCLEF, Experimental Evaluation in Visual Information Retrieval"
+        },
+        {
+            "paperId": "723197b5c1a5ebb5cc748999a1d4bc6f6ec1cde3",
+            "title": "ImageCLEF, Experimental Evaluation in Visual Information Retrieval"
+        },
+        {
+            "paperId": "65d994fb778a8d9e0f632659fb33a082949a50d3",
+            "title": "Visualizing Higher-Layer Features of a Deep Network"
+        },
+        {
+            "paperId": "13ef25201af7f2a7e401ef31a6197f66357f6f01",
+            "title": "The PASCAL Visual Object Classes Challenge"
+        },
+        {
+            "paperId": "36245da2ebf4a6b32b164b2f8f11514c6af9fcc0",
+            "title": "The Pascal Visual Object Classes Challenge 2006 ( VOC 2006 ) Results"
+        },
+        {
+            "paperId": "dc52d1ede1b90bf9d296bc5b34c9310b7eaa99a2",
+            "title": "The mnist database of handwritten digits"
+        },
+        {
+            "paperId": "b91180d8853d00e8f2df7ee3532e07d3d0cce2af",
+            "title": "Visual categorization with bags of keypoints"
+        },
+        {
+            "paperId": "b1a5961609c623fc816aaa77565ba38b25531a8e",
+            "title": "Neural Networks: Tricks of the Trade"
+        },
+        {
+            "paperId": "906cfb7faad3af40031c37e57130caa65a2956d6",
+            "title": "Classification of cervical cell nuclei using morphological segmentation and textural feature extraction"
+        },
+        {
+            "paperId": "83b6755242f1cff6bacf270f65b4626d4d118f32",
+            "title": "Neural Networks for Pattern Recognition"
+        },
+        {
+            "paperId": "749ce8ccd9453d1b34901143cddf5f9bee2977cf",
+            "title": "Learning representations by back-propagation errors, nature"
+        },
+        {
+            "paperId": null,
+            "title": "Edinburgh Research Explorer The PASCAL Visual Object Classes (VOC) Challenge"
+        },
+        {
+            "paperId": null,
+            "title": "Explanations of Non-Linear Whole Image Classifier Decisions PLOS ONE |"
+        }
+    ]
+}

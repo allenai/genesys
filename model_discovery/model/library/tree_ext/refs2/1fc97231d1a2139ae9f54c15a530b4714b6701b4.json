@@ -1,0 +1,198 @@
+{
+    "paperId": "1fc97231d1a2139ae9f54c15a530b4714b6701b4",
+    "externalIds": {
+        "MAG": "2780149736",
+        "DBLP": "conf/iccv/HuangLLLT17",
+        "DOI": "10.1109/ICCV.2017.305",
+        "CorpusId": 9792042
+    },
+    "title": "Centered Weight Normalization in Accelerating Training of Deep Neural Networks",
+    "abstract": "Training deep neural networks is difficult for the pathological curvature problem. Re-parameterization is an effective way to relieve the problem by learning the curvature approximately or constraining the solutions of weights with good properties for optimization. This paper proposes to reparameterize the input weight of each neuron in deep neural networks by normalizing it with zero-mean and unit-norm, followed by a learnable scalar parameter to adjust the norm of the weight. This technique effectively stabilizes the distribution implicitly. Besides, it improves the conditioning of the optimization problem and thus accelerates the training of deep neural networks. It can be wrapped as a linear module in practice and plugged in any architecture to replace the standard linear module. We highlight the benefits of our method on both multi-layer perceptrons and convolutional neural networks, and demonstrate its scalability and efficiency on SVHN, CIFAR-10, CIFAR-100 and ImageNet datasets.",
+    "venue": "IEEE International Conference on Computer Vision",
+    "year": 2017,
+    "referenceCount": 38,
+    "citationCount": 67,
+    "influentialCitationCount": 12,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes to reparameterize the input weight of each neuron in deep neural networks by normalizing it with zero-mean and unit-norm, followed by a learnable scalar parameter to adjust the norm of the weight."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "48544864",
+            "name": "Lei Huang"
+        },
+        {
+            "authorId": "6820648",
+            "name": "Xianglong Liu"
+        },
+        {
+            "authorId": "50812322",
+            "name": "Yang Liu"
+        },
+        {
+            "authorId": "1727601",
+            "name": "B. Lang"
+        },
+        {
+            "authorId": "143719920",
+            "name": "D. Tao"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "fe549a656a82c7ee1fdef069a60a5bb4f8662d9e",
+            "title": "DizzyRNN: Reparameterizing Recurrent Neural Networks for Norm-Preserving Backpropagation"
+        },
+        {
+            "paperId": "79c78c98ea317ba8cdf25a9783ef4b8a7552db75",
+            "title": "Full-Capacity Unitary Recurrent Neural Networks"
+        },
+        {
+            "paperId": "da37db412be1eb3c79333bffa20d59e3307dbaf7",
+            "title": "Deep Robust Encoder Through Locality Preserving Low-Rank Dictionary"
+        },
+        {
+            "paperId": "97fb4e3d45bb098e27e0071448b6152217bd35a5",
+            "title": "Layer Normalization"
+        },
+        {
+            "paperId": "0692002b988277c89c1b47eeaf571b42192d6c6f",
+            "title": "Relative Natural Gradient for Learning Large Complex Models"
+        },
+        {
+            "paperId": "6598baaa754c48442b05367973b10262c1b611fd",
+            "title": "Hierarchically Gated Deep Networks for Semantic Segmentation"
+        },
+        {
+            "paperId": "77f0a39b8e02686fd85b01971f8feb7f60971f80",
+            "title": "Identity Mappings in Deep Residual Networks"
+        },
+        {
+            "paperId": "f0afa23165dd0c9ca4e67b3ce7a02300e8a8fde4",
+            "title": "Normalization Propagation: A Parametric Technique for Removing Internal Covariate Shift in Deep Networks"
+        },
+        {
+            "paperId": "3d2c6941a9b4608ba52b328369a3352db2092ae0",
+            "title": "Weight Normalization: A Simple Reparameterization to Accelerate Training of Deep Neural Networks"
+        },
+        {
+            "paperId": "573277bf56dd1cd73f0bf27115f9a6a974c25358",
+            "title": "A Kronecker-factored approximate Fisher matrix for convolution layers"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "9d44957fea999363321ae636a1fdc21cd6780ba1",
+            "title": "Deep Learning Strong Parts for Pedestrian Detection"
+        },
+        {
+            "paperId": "e9c771197a6564762754e48c1daafb066f449f2e",
+            "title": "Unitary Evolution Recurrent Neural Networks"
+        },
+        {
+            "paperId": "19cd60fb4032f27fa5dd791e53e57892c4052908",
+            "title": "Data-Dependent Path Normalization in Neural Networks"
+        },
+        {
+            "paperId": "97dc8df45972e4ed7423fc992a5092ba25b33411",
+            "title": "All you need is a good init"
+        },
+        {
+            "paperId": "5b93662a56a11d22efd49afa5aa79e64539260b8",
+            "title": "Scaling up Natural Gradient by Sparsely Factorizing the Inverse Fisher Matrix"
+        },
+        {
+            "paperId": "941e30afcae061a115301c65a1afe49d8856f14e",
+            "title": "Natural Neural Networks"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "d6f2f611da110b5b5061731be3fc4c7f45d8ee23",
+            "title": "Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "27a99c21a1324f087b2f144adc119f04137dfd87",
+            "title": "Deep Fried Convnets"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "91bdaf3f1226e4065c4296d5c362906ceadfc631",
+            "title": "Deep Learning Face Representation by Joint Identification-Verification"
+        },
+        {
+            "paperId": "04f16203f1e66e8d2151dc359fd0405a0f482da7",
+            "title": "Mean-normalized stochastic gradient for large-scale deep learning"
+        },
+        {
+            "paperId": "99c970348b8f70ce23d6641e201904ea49266b6e",
+            "title": "Exact solutions to the nonlinear dynamics of learning in deep linear neural networks"
+        },
+        {
+            "paperId": "eff61216e0136886e1158625b1e5a88ed1a7cbce",
+            "title": "Predicting Parameters in Deep Learning"
+        },
+        {
+            "paperId": "b7b915d508987b73b61eccd2b237e7ed099a2d29",
+            "title": "Maxout Networks"
+        },
+        {
+            "paperId": "b8ef1230a5cc9ea7cd8358f1ae7d1af97813ba14",
+            "title": "Deep Learning Made Easier by Linear Transformations in Perceptrons"
+        },
+        {
+            "paperId": "a538b05ebb01a40323997629e171c91aa28b8e2f",
+            "title": "Rectified Linear Units Improve Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": "ea9d2a2b4ce11aaf85136840c65f3bc9c03ab649",
+            "title": "Understanding the difficulty of training deep feedforward neural networks"
+        },
+        {
+            "paperId": "5763bd6b3f24a01c3bc7cd15d3c916b4840b759d",
+            "title": "Accelerated Gradient Descent by Factor-Centering Decomposition"
+        },
+        {
+            "paperId": "5a767a341364de1f75bea85e0b12ba7d3586a461",
+            "title": "Natural Gradient Works Efficiently in Learning"
+        },
+        {
+            "paperId": "f2a0fbba89f0d18ea0abd29639d4e43babe59cf3",
+            "title": "Training Deep and Recurrent Networks with Hessian-Free Optimization"
+        },
+        {
+            "paperId": "02227c94dd41fe0b439e050d377b0beb5d427cda",
+            "title": "Reading Digits in Natural Images with Unsupervised Feature Learning"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        },
+        {
+            "paperId": "deede4f010369a810eb1017fd9e757d9876a44c8",
+            "title": "Effiicient BackProp"
+        }
+    ]
+}

@@ -1,0 +1,141 @@
+{
+    "paperId": "b13813b49f160e1a2010c44bd4fb3d09a28446e3",
+    "externalIds": {
+        "DBLP": "conf/nips/HihiB95",
+        "MAG": "2099257174",
+        "CorpusId": 2843869
+    },
+    "title": "Hierarchical Recurrent Neural Networks for Long-Term Dependencies",
+    "abstract": "We have already shown that extracting long-term dependencies from sequential data is difficult, both for determimstic dynamical systems such as recurrent networks, and probabilistic models such as hidden Markov models (HMMs) or input/output hidden Markov models (IOHMMs). In practice, to avoid this problem, researchers have used domain specific a-priori knowledge to give meaning to the hidden or state variables representing past context. In this paper, we propose to use a more general type of a-priori knowledge, namely that the temporal dependencies are structured hierarchically. This implies that long-term dependencies are represented by variables with a long time scale. This principle is applied to a recurrent network which includes delays and multiple time scales. Experiments confirm the advantages of such structures. A similar approach is proposed for HMMs and IOHMMs.",
+    "venue": "Neural Information Processing Systems",
+    "year": 1995,
+    "referenceCount": 27,
+    "citationCount": 373,
+    "influentialCitationCount": 15,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes to use a more general type of a-priori knowledge, namely that the temporal dependencies are structured hierarchically, which implies that long-term dependencies are represented by variables with a long time scale."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2308463",
+            "name": "Salah El Hihi"
+        },
+        {
+            "authorId": "1751762",
+            "name": "Yoshua Bengio"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "063fe6ed19c0204d55bde174483c5a93eb4819c0",
+            "title": "Learning long-term dependencies is not as difficult with NARX recurrent neural networks"
+        },
+        {
+            "paperId": "d9c8b4f4a14b1568956f2a618c86728c6ce67390",
+            "title": "Diffusion of Context and Credit Information in Markovian Models"
+        },
+        {
+            "paperId": "bc948468c35d7201260c73cad05d14a3fb17e4da",
+            "title": "Unified Integration of Explicit Knowledge and Learning by Example in Recurrent Networks"
+        },
+        {
+            "paperId": "3b5db92ce2f86b2136fe7cf6a415fe1c0632a881",
+            "title": "TD Models: Modeling the World at a Mixture of Time Scales"
+        },
+        {
+            "paperId": "d0be39ee052d246ae99c082a565aba25b811be2d",
+            "title": "Learning long-term dependencies with gradient descent is difficult"
+        },
+        {
+            "paperId": "13369d124474b5f8dcbc70d12296a185832192b2",
+            "title": "Credit Assignment through Time: Alternatives to Backpropagation"
+        },
+        {
+            "paperId": "1678bd32846b1aded5b1e80a617170812e80f562",
+            "title": "Feudal Reinforcement Learning"
+        },
+        {
+            "paperId": "b107cfe948f5d3c6e00b7cf1ebeacadd40224e0d",
+            "title": "Inserting rules into recurrent neural networks"
+        },
+        {
+            "paperId": "b5cc2b2829a1fcf0260a1405f5f931efb21ffd5a",
+            "title": "Reinforcement Learning with a Hierarchy of Abstract Models"
+        },
+        {
+            "paperId": "a87889c316aaeee117d73ada27a9f0913e44483a",
+            "title": "A family of parallel hidden Markov models"
+        },
+        {
+            "paperId": "50c770b425a5bb25c77387f687a9910a9d130722",
+            "title": "Learning Complex, Extended Sequences Using the Principle of History Compression"
+        },
+        {
+            "paperId": "040800e88fbdff598fb85ea82c12f94c3939989f",
+            "title": "Reverse TDNN: An Architecture For Trajectory Generation"
+        },
+        {
+            "paperId": "2384a683444b8fc03774d5af6791d81f6c48b6b2",
+            "title": "The wavelet transform, time-frequency localization and signal analysis"
+        },
+        {
+            "paperId": "a8e8f3c8d4418c8d62e306538c9c1292635e9d27",
+            "title": "Backpropagation Applied to Handwritten Zip Code Recognition"
+        },
+        {
+            "paperId": "ce9a21b93ba29d4145a8ef6bf401e77f261848de",
+            "title": "A Learning Algorithm for Continually Running Fully Recurrent Neural Networks"
+        },
+        {
+            "paperId": "cd62c9976534a6a2096a38244f6cbb03635a127e",
+            "title": "Phoneme recognition using time-delay neural networks"
+        },
+        {
+            "paperId": "319f22bd5abfd67ac15988aa5c7f705f018c3ccd",
+            "title": "Learning internal representations by error propagation"
+        },
+        {
+            "paperId": "090f3ea5bc188bbb03aec02aba9ed9c7b38ff870",
+            "title": "An introduction to the application of the theory of probabilistic functions of a Markov process to automatic speech recognition"
+        },
+        {
+            "paperId": "3092a4929bdb3d6a8fe53f162586b7431b5ff8a4",
+            "title": "A Maximization Technique Occurring in the Statistical Analysis of Probabilistic Functions of Markov Chains"
+        },
+        {
+            "paperId": "680335c0de8300117aeb1639ab94580d947b154a",
+            "title": "An Input Output HMM Architecture"
+        },
+        {
+            "paperId": "2dc4d6d7d55f9f0f1de53bb7f6816502f8f38892",
+            "title": "Boltzmann Chains and Hidden Markov Models"
+        },
+        {
+            "paperId": "3ffaec850e49c5a4e1e467f1750fc3d4bbfa44a4",
+            "title": "Un modele probabiliste pour integrer la dimension temporelle dans un systeme de reconnaissance automatique de parole"
+        },
+        {
+            "paperId": "c6f63f504204a81340fda50c58f8b8098e0db18b",
+            "title": "Diffusion of Credit in Markovian Models"
+        },
+        {
+            "paperId": "af86194acd7786dc04c32a790f0eb779714032fa",
+            "title": "An EM Approach to Learning Sequential"
+        },
+        {
+            "paperId": "5fd7cbbecb090f32c198a1b2cc4e2582e06ea431",
+            "title": "Globally trained handwritten word recognizer using spatial representation, space displacement neural networks and hidden Markov models"
+        },
+        {
+            "paperId": "e08d090d1e586610d636a46004876e9f3ded8209",
+            "title": "A time-delay neural network architecture for isolated word recognition"
+        },
+        {
+            "paperId": "385622a5862c989653a648ac8abc59ae3fe785f7",
+            "title": "An introduction to hidden Markov models"
+        }
+    ]
+}

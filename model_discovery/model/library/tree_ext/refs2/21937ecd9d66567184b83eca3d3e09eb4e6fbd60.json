@@ -1,0 +1,306 @@
+{
+    "paperId": "21937ecd9d66567184b83eca3d3e09eb4e6fbd60",
+    "externalIds": {
+        "DBLP": "conf/iclr/FrankleC19",
+        "MAG": "2951099858",
+        "ArXiv": "1803.03635",
+        "CorpusId": 53388625
+    },
+    "title": "The Lottery Ticket Hypothesis: Finding Sparse, Trainable Neural Networks",
+    "abstract": "Neural network pruning techniques can reduce the parameter counts of trained networks by over 90%, decreasing storage requirements and improving computational performance of inference without compromising accuracy. However, contemporary experience is that the sparse architectures produced by pruning are difficult to train from the start, which would similarly improve training performance. \nWe find that a standard pruning technique naturally uncovers subnetworks whose initializations made them capable of training effectively. Based on these results, we articulate the \"lottery ticket hypothesis:\" dense, randomly-initialized, feed-forward networks contain subnetworks (\"winning tickets\") that - when trained in isolation - reach test accuracy comparable to the original network in a similar number of iterations. The winning tickets we find have won the initialization lottery: their connections have initial weights that make training particularly effective. \nWe present an algorithm to identify winning tickets and a series of experiments that support the lottery ticket hypothesis and the importance of these fortuitous initializations. We consistently find winning tickets that are less than 10-20% of the size of several fully-connected and convolutional feed-forward architectures for MNIST and CIFAR10. Above this size, the winning tickets that we find learn faster than the original network and reach higher test accuracy.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2018,
+    "referenceCount": 68,
+    "citationCount": 2995,
+    "influentialCitationCount": 478,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work finds that dense, randomly-initialized, feed-forward networks contain subnetworks (\"winning tickets\") that - when trained in isolation - reach test accuracy comparable to the original network in a similar number of iterations, and articulate the \"lottery ticket hypothesis\"."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "25581960",
+            "name": "Jonathan Frankle"
+        },
+        {
+            "authorId": "1701041",
+            "name": "Michael Carbin"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "d6f6d1504cfedde4efb23e7ec0f42f006062c6a0",
+            "title": "Gradient Descent Provably Optimizes Over-parameterized Neural Networks"
+        },
+        {
+            "paperId": "4a1004ecd34118116344633c7cdcc34493c423ee",
+            "title": "Rethinking the Value of Network Pruning"
+        },
+        {
+            "paperId": "74fe26e60f04055af52a88a513a1d6229ade5781",
+            "title": "Non-vacuous Generalization Bounds at the ImageNet Scale: a PAC-Bayesian Compression Approach"
+        },
+        {
+            "paperId": "46d635cd88b452a300d51486af397aa8a9725eef",
+            "title": "Compressibility and Generalization in Large-Scale Deep Learning"
+        },
+        {
+            "paperId": "d55d1d035e91220335edff0fe8f5d249d8c4a00b",
+            "title": "Measuring the Intrinsic Dimension of Objective Landscapes"
+        },
+        {
+            "paperId": "a9022d8ffb5e417458fba9a280f90c1b08cb6c73",
+            "title": "Stronger generalization bounds for deep nets via a compression approach"
+        },
+        {
+            "paperId": "2ec7156913117949ab933f27f492d0149bc0031f",
+            "title": "Learning Sparse Neural Networks through L0 Regularization"
+        },
+        {
+            "paperId": "ccee800244908d2960830967e70ead7dd8266f7a",
+            "title": "Deep Rewiring: Training very sparse deep networks"
+        },
+        {
+            "paperId": "049fd80f52c0b1fa4d532945d95a24734b62bdf3",
+            "title": "ThiNet: A Filter Level Pruning Method for Deep Neural Network Compression"
+        },
+        {
+            "paperId": "ee53c9480132fc0d09b1192226cb2c460462fd6d",
+            "title": "Channel Pruning for Accelerating Very Deep Neural Networks"
+        },
+        {
+            "paperId": "5ddd38a5df945e4afee68d96ed51fd6ca1f7d4cf",
+            "title": "A Closer Look at Memorization in Deep Networks"
+        },
+        {
+            "paperId": "9302e07c4951559ad9a538295029881a171faeec",
+            "title": "Bayesian Compression for Deep Learning"
+        },
+        {
+            "paperId": "11d3bac980b8d3d72f82719e47a4406916224bd6",
+            "title": "Concrete Dropout"
+        },
+        {
+            "paperId": "773d5ddc414424a8948446ddaa5275b944f50891",
+            "title": "Learning to Prune Deep Neural Networks via Layer-wise Optimal Brain Surgeon"
+        },
+        {
+            "paperId": "d773718f36ee1cc5bb9bc5b01afa8f76d09f452f",
+            "title": "Structured Bayesian Pruning via Log-Normal Multiplicative Noise"
+        },
+        {
+            "paperId": "1cc2f313bcb3b106af081f7031b924c9ad2662bd",
+            "title": "Exploring Sparsity in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "3647d6d0f151dc05626449ee09cc7bce55be497e",
+            "title": "MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications"
+        },
+        {
+            "paperId": "34cc3ceae5c3f7c8acbb89f2bff63f9d452b00d5",
+            "title": "Variational Dropout Sparsifies Deep Neural Networks"
+        },
+        {
+            "paperId": "c74bd5ad5abc3d13cf545f5e04718315c4515bbc",
+            "title": "Training Sparse Neural Networks"
+        },
+        {
+            "paperId": "9083a8e105e0f6959b9e7c59eac63ffdd443f2d7",
+            "title": "Generalized Dropout"
+        },
+        {
+            "paperId": "026ecf916023e13191331a354271b7f9b86e50a1",
+            "title": "Pruning Convolutional Neural Networks for Resource Efficient Transfer Learning"
+        },
+        {
+            "paperId": "3ac1df952ffb63abb4231a4410f6f8375ccdfe79",
+            "title": "Designing Energy-Efficient Convolutional Neural Networks Using Energy-Aware Pruning"
+        },
+        {
+            "paperId": "54ddb00fa691728944fd8becea90a373d21597cf",
+            "title": "Understanding deep learning requires rethinking generalization"
+        },
+        {
+            "paperId": "3db8730c203f88d7f08a6a99e8c02a077dc9b011",
+            "title": "Pruning Convolutional Neural Networks for Resource Efficient Inference"
+        },
+        {
+            "paperId": "c2a1cb1612ba21e067a5c3ba478a8d73b796b77a",
+            "title": "Pruning Filters for Efficient ConvNets"
+        },
+        {
+            "paperId": "df40ce107a71b770c9d0354b78fdd8989da80d2f",
+            "title": "Towards Evaluating the Robustness of Neural Networks"
+        },
+        {
+            "paperId": "c220cdbcec6f92e4bc0f58c5fa6c1183105be1f9",
+            "title": "Dynamic Network Surgery for Efficient DNNs"
+        },
+        {
+            "paperId": "64ade6c659f6deeed5527bdd81619cdba90af29a",
+            "title": "Training Skinny Deep Neural Networks with Iterative Hard Thresholding Methods"
+        },
+        {
+            "paperId": "4690ff0ccfe8d160dd456d1d7900f8fd3b6ad782",
+            "title": "DSD: Regularizing Deep Neural Networks with Dense-Sparse-Dense Training Flow"
+        },
+        {
+            "paperId": "60ae4f18cb53efff0174e3fea7064049737e1e67",
+            "title": "Network Trimming: A Data-Driven Neuron Pruning Approach towards Efficient Deep Architectures"
+        },
+        {
+            "paperId": "989e261e232c51cc48aa07064c573316f9f818c3",
+            "title": "Inductive Bias of Deep Convolutional Networks through Pooling Geometry"
+        },
+        {
+            "paperId": "592d2e65489f23ebd993dbdc0c84eda9ac8aadbe",
+            "title": "SqueezeNet: AlexNet-level accuracy with 50x fewer parameters and <1MB model size"
+        },
+        {
+            "paperId": "112d9cfa7439fedfb858775a3aca7651d14a33a2",
+            "title": "RandomOut: Using a convolutional gradient norm to win The Filter Lottery"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "3c716ab5d93e4f47d55c201e9faa891ac33c1074",
+            "title": "Learning Neural Network Architectures using Backpropagation"
+        },
+        {
+            "paperId": "c089aa996f848801908d7f1b82be82d10ba8e9f0",
+            "title": "Learning the Architecture of Deep Neural Networks"
+        },
+        {
+            "paperId": "3f081a7d2dbdcd10d71d0340721e4857a73ed7ee",
+            "title": "Diversity Networks"
+        },
+        {
+            "paperId": "6adf016e7531c91100d3cf4a74f5d4c87b26b528",
+            "title": "Distillation as a Defense to Adversarial Perturbations Against Deep Neural Networks"
+        },
+        {
+            "paperId": "642d0f49b7826adcf986616f4af77e736229990f",
+            "title": "Deep Compression: Compressing Deep Neural Network with Pruning, Trained Quantization and Huffman Coding"
+        },
+        {
+            "paperId": "b0bd441a0cc04cdd0d0e469fe4c5184ee148a97d",
+            "title": "Data-free Parameter Pruning for Deep Neural Networks"
+        },
+        {
+            "paperId": "1ff9a37d766e3a4f39757f5e1b235a42dacf18ff",
+            "title": "Learning both Weights and Connections for Efficient Neural Network"
+        },
+        {
+            "paperId": "4443e2e5bfd112562ecef578f772cee3c692f19f",
+            "title": "Variational Dropout and the Local Reparameterization Trick"
+        },
+        {
+            "paperId": "f35de4f9b1a7c4d3fa96a0d2ab1bf8937671f6b6",
+            "title": "Dropout as a Bayesian Approximation: Representing Model Uncertainty in Deep Learning"
+        },
+        {
+            "paperId": "0c908739fbff75f03469d13d4a1a07de3414ee19",
+            "title": "Distilling the Knowledge in a Neural Network"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "4b675d8f63888d7d6d7d77a0834efa5eaded64c5",
+            "title": "In Search of the Real Inductive Bias: On the Role of Implicit Regularization in Deep Learning"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "d770060812fb646b3846a7d398a3066145b5e3c8",
+            "title": "Do Deep Nets Really Need to be Deep?"
+        },
+        {
+            "paperId": "cc46229a7c47f485e090857cbab6e6bf68c09811",
+            "title": "Understanding Dropout"
+        },
+        {
+            "paperId": "38f35dd624cd1cf827416e31ac5e0e0454028eca",
+            "title": "Regularization of Neural Networks using DropConnect"
+        },
+        {
+            "paperId": "eff61216e0136886e1158625b1e5a88ed1a7cbce",
+            "title": "Predicting Parameters in Deep Learning"
+        },
+        {
+            "paperId": "0060745e006c5f14ec326904119dca19c6545e51",
+            "title": "Improving neural networks by preventing co-adaptation of feature detectors"
+        },
+        {
+            "paperId": "ea9d2a2b4ce11aaf85136840c65f3bc9c03ab649",
+            "title": "Understanding the difficulty of training deep feedforward neural networks"
+        },
+        {
+            "paperId": "758b1d823ac975720e6e81e375cd4432009e5bca",
+            "title": "Convex Neural Networks"
+        },
+        {
+            "paperId": "e8eaf8aedb495b6ae0e174eea11e3cfcdf4a3724",
+            "title": "Optimal Brain Surgeon and general network pruning"
+        },
+        {
+            "paperId": "a42954d4b9d0ccdf1036e0af46d87a01b94c3516",
+            "title": "Second Order Derivatives for Network Pruning: Optimal Brain Surgeon"
+        },
+        {
+            "paperId": "7e1ca8d081fc07e6190a3bf5e3156569d8e9c96b",
+            "title": "Stochastic Complexity and Modeling"
+        },
+        {
+            "paperId": "0b4d43ef0051a225e07af8194e81007ebba8d787",
+            "title": "Occam's razor"
+        },
+        {
+            "paperId": null,
+            "title": "The resnet18 architecture"
+        },
+        {
+            "paperId": null,
+            "title": "Under review as a conference"
+        },
+        {
+            "paperId": null,
+            "title": "2016)) never lead to higher accuracy as the network is pruned"
+        },
+        {
+            "paperId": null,
+            "title": "2016), this third stage likely learns at too slow of a rate"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "e7297db245c3feb1897720b173a59fe7e36babb7",
+            "title": "Optimal Brain Damage"
+        }
+    ]
+}

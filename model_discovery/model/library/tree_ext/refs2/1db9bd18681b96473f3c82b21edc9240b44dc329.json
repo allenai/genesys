@@ -1,0 +1,162 @@
+{
+    "paperId": "1db9bd18681b96473f3c82b21edc9240b44dc329",
+    "externalIds": {
+        "ArXiv": "1802.05751",
+        "DBLP": "conf/icml/ParmarVUKSKT18",
+        "MAG": "2950739196",
+        "CorpusId": 3353110
+    },
+    "title": "Image Transformer",
+    "abstract": "Image generation has been successfully cast as an autoregressive sequence generation or transformation problem. Recent work has shown that self-attention is an effective way of modeling textual sequences. In this work, we generalize a recently proposed model architecture based on self-attention, the Transformer, to a sequence modeling formulation of image generation with a tractable likelihood. By restricting the self-attention mechanism to attend to local neighborhoods we significantly increase the size of images the model can process in practice, despite maintaining significantly larger receptive fields per layer than typical convolutional neural networks. We propose another extension of self-attention allowing it to efficiently take advantage of the two-dimensional nature of images. While conceptually simple, our generative models trained on two image data sets are competitive with or significantly outperform the current state of the art in autoregressive image generation on two different data sets, CIFAR-10 and ImageNet. We also present results on image super-resolution with a large magnification ratio, applying an encoder-decoder configuration of our architecture. In a human evaluation study, we show that our super-resolution models improve significantly over previously published autoregressive super-resolution models. Images they generate fool human observers three times more often than the previous state of the art.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2018,
+    "referenceCount": 27,
+    "citationCount": 1493,
+    "influentialCitationCount": 65,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work generalizes a recently proposed model architecture based on self-attention, the Transformer, to a sequence modeling formulation of image generation with a tractable likelihood, and significantly increases the size of images the model can process in practice, despite maintaining significantly larger receptive fields per layer than typical convolutional neural networks."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3877127",
+            "name": "Niki Parmar"
+        },
+        {
+            "authorId": "40348417",
+            "name": "Ashish Vaswani"
+        },
+        {
+            "authorId": "39328010",
+            "name": "Jakob Uszkoreit"
+        },
+        {
+            "authorId": "40527594",
+            "name": "Lukasz Kaiser"
+        },
+        {
+            "authorId": "1846258",
+            "name": "Noam M. Shazeer"
+        },
+        {
+            "authorId": "31702389",
+            "name": "Alexander Ku"
+        },
+        {
+            "authorId": "47497262",
+            "name": "Dustin Tran"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "642c1b4a9da95ea4239708afc5929a5007a1870d",
+            "title": "Tensor2Tensor for Neural Machine Translation"
+        },
+        {
+            "paperId": "d1c424c261c577958917055f72fb9e2ad0348865",
+            "title": "PixelSNAIL: An Improved Autoregressive Generative Model"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "aa6f7ad0a06b52a8be89dbd8d056561418276ff2",
+            "title": "BEGAN: Boundary Equilibrium Generative Adversarial Networks"
+        },
+        {
+            "paperId": "8578744cea4cf7b65ee8a51c64f766b4c31a2e7e",
+            "title": "Pixel Recursive Super Resolution"
+        },
+        {
+            "paperId": "ea67d2d5f2a7d5760ec6b67ea93d11dd5affa921",
+            "title": "StackGAN: Text to Photo-Realistic Image Synthesis with Stacked Generative Adversarial Networks"
+        },
+        {
+            "paperId": "488bb25e0b1777847f04c943e6dbc4f84415b712",
+            "title": "Unrolled Generative Adversarial Networks"
+        },
+        {
+            "paperId": "b01871c114b122340209562972ff515b86b16ccf",
+            "title": "Video Pixel Networks"
+        },
+        {
+            "paperId": "df0c54fe61f0ffb9f0e36a17c2038d9a1964cba3",
+            "title": "Photo-Realistic Single Image Super-Resolution Using a Generative Adversarial Network"
+        },
+        {
+            "paperId": "97fb4e3d45bb098e27e0071448b6152217bd35a5",
+            "title": "Layer Normalization"
+        },
+        {
+            "paperId": "0936352b78a52bc5d2b5e3f04233efc56664af51",
+            "title": "Conditional Image Generation with PixelCNN Decoders"
+        },
+        {
+            "paperId": "6e90fd78e8a3b98af3954aae5209703aa966603e",
+            "title": "Unifying Count-Based Exploration and Intrinsic Motivation"
+        },
+        {
+            "paperId": "41f1d50c85d3180476c4c7b3eea121278b0d8474",
+            "title": "Pixel Recurrent Neural Networks"
+        },
+        {
+            "paperId": "13fe71da009484f240c46f14d9330e932f8de210",
+            "title": "Long Short-Term Memory-Networks for Machine Reading"
+        },
+        {
+            "paperId": "8388f1be26329fa45e5807e968a641ce170ea078",
+            "title": "Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks"
+        },
+        {
+            "paperId": "0875fc92cce33df5cf7df169590dbf0ca00d2652",
+            "title": "Generating Images from Captions with Attention"
+        },
+        {
+            "paperId": "f267934e9de60c5badfa9d3f28918e67ae7a2bf4",
+            "title": "Generative Image Modeling Using Spatial LSTMs"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "944a1cfd79dbfb6fef460360a0765ba790f4027a",
+            "title": "Recurrent Continuous Translation Models"
+        },
+        {
+            "paperId": "190e4800c67ef445e4bd0944a55debaccebcf43f",
+            "title": "Modeling High-Dimensional Discrete Data with Multi-Layer Neural Networks"
+        },
+        {
+            "paperId": "c68796f833a7151f0a63d1d1608dc902b4fdc9b6",
+            "title": "GENERATIVE ADVERSARIAL NETS"
+        },
+        {
+            "paperId": null,
+            "title": "Pixelcnn++: A pixelcnn implementation with discretized logistic mixture likelihood and other modifications. under review at ICLR 2017"
+        },
+        {
+            "paperId": null,
+            "title": "A decomposable attention model"
+        },
+        {
+            "paperId": null,
+            "title": "URL http://arxiv.org/ abs/1610.00527"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": "f4278dac2abafb66a0a824f1d59e72b67e7540a1",
+            "title": "The student-t mixture as a natural image patch prior with application to image compression"
+        },
+        {
+            "paperId": "b893e7053c9c7e266a23fb13a42261a88f650210",
+            "title": "The Neural Autoregressive Distribution Estimator"
+        }
+    ]
+}

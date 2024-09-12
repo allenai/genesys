@@ -1,0 +1,254 @@
+{
+    "paperId": "237a04dd8291cbdb59b6dc4b53e689af743fe2a3",
+    "externalIds": {
+        "DBLP": "journals/pami/FarabetCNL13",
+        "MAG": "2022508996",
+        "DOI": "10.1109/TPAMI.2012.231",
+        "CorpusId": 206765110,
+        "PubMed": "23787344"
+    },
+    "title": "Learning Hierarchical Features for Scene Labeling",
+    "abstract": "Scene labeling consists of labeling each pixel in an image with the category of the object it belongs to. We propose a method that uses a multiscale convolutional network trained from raw pixels to extract dense feature vectors that encode regions of multiple sizes centered on each pixel. The method alleviates the need for engineered features, and produces a powerful representation that captures texture, shape, and contextual information. We report results using multiple postprocessing methods to produce the final labeling. Among those, we propose a technique to automatically retrieve, from a pool of segmentation components, an optimal set of components that best explain the scene; these components are arbitrary, for example, they can be taken from a segmentation tree or from any family of oversegmentations. The system yields record accuracies on the SIFT Flow dataset (33 classes) and the Barcelona dataset (170 classes) and near-record accuracy on Stanford background dataset (eight classes), while being an order of magnitude faster than competing approaches, producing a 320\u00d7240 image labeling in less than a second, including feature extraction.",
+    "venue": "IEEE Transactions on Pattern Analysis and Machine Intelligence",
+    "year": 2013,
+    "referenceCount": 52,
+    "citationCount": 2669,
+    "influentialCitationCount": 126,
+    "openAccessPdf": {
+        "url": "http://yann.lecun.com/exdb/publis/pdf/farabet-pami-13.pdf",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A method that uses a multiscale convolutional network trained from raw pixels to extract dense feature vectors that encode regions of multiple sizes centered on each pixel, alleviates the need for engineered features, and produces a powerful representation that captures texture, shape, and contextual information."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2256269",
+            "name": "C. Farabet"
+        },
+        {
+            "authorId": "2341378",
+            "name": "C. Couprie"
+        },
+        {
+            "authorId": "1688714",
+            "name": "Laurent Najman"
+        },
+        {
+            "authorId": "1688882",
+            "name": "Yann LeCun"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "76f02eca773414828271da315b379efa9e1f57fa",
+            "title": "CPMC: Automatic Object Segmentation Using Constrained Parametric Min-Cuts"
+        },
+        {
+            "paperId": "56b3ff898cadde865d20ddb4e7a33434de186794",
+            "title": "Scene parsing with Multiscale Feature Learning, Purity Trees, and Optimal Covers"
+        },
+        {
+            "paperId": "b65891fde65045c86d71e6577f44b2dcbf43b9f4",
+            "title": "Pylon Model for Semantic Segmentation"
+        },
+        {
+            "paperId": "dd7f8b53e6802787179a961e766760cbbe2d5011",
+            "title": "A committee of neural networks for traffic sign classification"
+        },
+        {
+            "paperId": "9c0ddf74f87d154db88d79c640578c1610451eec",
+            "title": "Parsing Natural Scenes and Natural Language with Recursive Neural Networks"
+        },
+        {
+            "paperId": "204710a6a6d935150b5b16daf74493dea6d1b7a2",
+            "title": "NeuFlow: A runtime reconfigurable dataflow processor for vision"
+        },
+        {
+            "paperId": "0302bb2d5476540cfb21467473f5eca843caf90b",
+            "title": "Unbiased look at dataset bias"
+        },
+        {
+            "paperId": "0e5a262bf59b68ba8a7a1103d16fa33a9f5ffc28",
+            "title": "Contour Detection and Hierarchical Image Segmentation"
+        },
+        {
+            "paperId": "8b25a44f617c1ed3ed52c6655b0d456ff1c565bd",
+            "title": "Learning Convolutional Feature Hierarchies for Visual Recognition"
+        },
+        {
+            "paperId": "c63ef05c5f9c424b5cfeeed90dbe35eedf6cb8ec",
+            "title": "Fast Inference in Sparse Coding Algorithms with Applications to Object Recognition"
+        },
+        {
+            "paperId": "914f6db28db0de5f439e891dac38f09bbdc5a452",
+            "title": "Superparsing"
+        },
+        {
+            "paperId": "370308ad57aa43a29df1a9500c813c13254e16cd",
+            "title": "Stacked Hierarchical Labeling"
+        },
+        {
+            "paperId": "c3c82b476162d2d006e02180530875a64af18154",
+            "title": "Hardware accelerated convolutional neural networks for synthetic vision systems"
+        },
+        {
+            "paperId": "05d0340695c89384ebfd929c6fe46dc6023a0238",
+            "title": "Efficiently selecting regions for scene understanding"
+        },
+        {
+            "paperId": "07ef1b52b9fbb25cec28f65d030e44237c8f3f5b",
+            "title": "Maximin affinity learning of image segmentation"
+        },
+        {
+            "paperId": "dc08847b65953ef2ae3542e47b08b57a46b5ba34",
+            "title": "Decomposing a scene into geometric and semantically consistent regions"
+        },
+        {
+            "paperId": "52727dcc2d948093b8be500b5e8c66ed9b2ae729",
+            "title": "Class segmentation and object localization with superpixel neighborhoods"
+        },
+        {
+            "paperId": "5e796ec9be0009b8f6ae7b1ccba1c9c055328d14",
+            "title": "Associative hierarchical CRFs for object class image segmentation"
+        },
+        {
+            "paperId": "1f88427d7aa8225e47f946ac41a0667d7b69ac52",
+            "title": "What is the best multi-stage architecture for object recognition?"
+        },
+        {
+            "paperId": "ef2448cf2eae2bc2fc1d83f1da0fbaba188ecec7",
+            "title": "Nonparametric scene parsing: Label transfer via dense scene alignment"
+        },
+        {
+            "paperId": "54a9c2553138932426faebcaa67a63a84a56b55d",
+            "title": "Learning invariant features through topographic filter maps"
+        },
+        {
+            "paperId": "1e80f755bcbf10479afd2338cec05211fdbd325c",
+            "title": "Convolutional deep belief networks for scalable unsupervised learning of hierarchical representations"
+        },
+        {
+            "paperId": "01e50d0d08c26c639d377b27bd63e717a842db34",
+            "title": "Learning Hybrid Models for Image Annotation with Partially Labeled Data"
+        },
+        {
+            "paperId": "599c8d460575ddfea702075b8ccde01b6fe987e8",
+            "title": "Multi-Class Segmentation with Relative Location Prior"
+        },
+        {
+            "paperId": "0f78804622e975deff527e9401701f738c6f51a8",
+            "title": "Object Recognition by Integrating Multiple Image Segmentations"
+        },
+        {
+            "paperId": "f566b1f24e63151ddae652826638af054973a27f",
+            "title": "Supervised Learning of Image Restoration with Convolutional Networks"
+        },
+        {
+            "paperId": "2809f3a7f192f617a5cdf4c4e6b0fa84fb95aa50",
+            "title": "Object Recognition by Scene Alignment"
+        },
+        {
+            "paperId": "ccd52aff02b0f902f4ce7247c4fee7273014c41c",
+            "title": "Unsupervised Learning of Invariant Feature Hierarchies with Applications to Object Recognition"
+        },
+        {
+            "paperId": "46f30e94dd3d5902141c5fbe58d0bc9189545c76",
+            "title": "Dimensionality Reduction by Learning an Invariant Mapping"
+        },
+        {
+            "paperId": "f07260deea7dea6dfe82d208731f4790e37cb3b3",
+            "title": "TextonBoost: Joint Appearance, Shape and Context Modeling for Multi-class Object Recognition and Segmentation"
+        },
+        {
+            "paperId": "c029513aef54460ef6a468ff83f549d7ffbb646b",
+            "title": "Toward automatic phenotyping of developing embryos from videos"
+        },
+        {
+            "paperId": "6b728a7442ca158f895d07c11c77d302269a832d",
+            "title": "Synergistic Face Detection and Pose Estimation with Energy-Based Models"
+        },
+        {
+            "paperId": "68a859142ef42196e6a56305b8c6ac4cb2c9326e",
+            "title": "Convolutional face finder: a neural architecture for fast and robust face detection"
+        },
+        {
+            "paperId": "aeeffe327e6c93e9010c7b1e401caa9113723851",
+            "title": "Efficient Graph-Based Image Segmentation"
+        },
+        {
+            "paperId": "5562a56da3a96dae82add7de705e2bd841eb00fc",
+            "title": "Best practices for convolutional neural networks applied to visual document analysis"
+        },
+        {
+            "paperId": "3120324069ec20eed853d3f9bbbceb32e4173b93",
+            "title": "Fast approximate energy minimization via graph cuts"
+        },
+        {
+            "paperId": "6c62fdf1e6a520d9fee8ca9981fb588d07f2c6fa",
+            "title": "An experimental comparison of min-cut/max- flow algorithms for energy minimization in vision"
+        },
+        {
+            "paperId": "0d3b177e8d027d44c191e739a3a70ccacc2eac82",
+            "title": "Interactive graph cuts for optimal boundary & region segmentation of objects in N-D images"
+        },
+        {
+            "paperId": "b894683d59ef6d671d98387a7b9dc86212c02d8c",
+            "title": "Geodesic Saliency of Watershed Contours and Hierarchical Segmentation"
+        },
+        {
+            "paperId": "09ebd9ad4fa21c0d56433ac57a4cd69e94c72281",
+            "title": "Original approach for the localisation of objects in images"
+        },
+        {
+            "paperId": "cc7fa2cf9d7d2b3aca4fa22271412831e9a61e22",
+            "title": "An original approach for the localization of objects in images"
+        },
+        {
+            "paperId": "7ce629c521c02cae136725819d0cb0d86a6e7b4e",
+            "title": "Learning Object-Class Segmentation with Convolutional Neural Networks"
+        },
+        {
+            "paperId": "b87274e6d9aa4e6ba5148898aa92941617d2b6ed",
+            "title": "Efficient BackProp"
+        },
+        {
+            "paperId": "1ecc15c576b54d17f7900b073e19edb2db2554f1",
+            "title": "Deep Convolutional Networks for Scene Parsing"
+        },
+        {
+            "paperId": "b1a5961609c623fc816aaa77565ba38b25531a8e",
+            "title": "Neural Networks: Tricks of the Trade"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "86ab4cae682fbd49c5a5bedb630e5a40fa7529f6",
+            "title": "Handwritten Digit Recognition with a Back-Propagation Network"
+        },
+        {
+            "paperId": "29e3bfdf1a50578774e2cacdf0647d29774129cd",
+            "title": "Notes on Linear Programming: Part XXIX A Simple Algorithm for Finding Maximal Network Flows and an Application to the Hitchcock Problem"
+        },
+        {
+            "paperId": null,
+            "title": "For more information on this or any other computing topic, please visit our Digital Library at www.computer.org/publications/dlib"
+        },
+        {
+            "paperId": null,
+            "title": "mathematical morphology and machine learning"
+        },
+        {
+            "paperId": null,
+            "title": "Andrew"
+        },
+        {
+            "paperId": null,
+            "title": "Laurent"
+        }
+    ]
+}

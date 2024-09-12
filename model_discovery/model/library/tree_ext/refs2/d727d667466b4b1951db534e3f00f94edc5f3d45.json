@@ -1,0 +1,128 @@
+{
+    "paperId": "d727d667466b4b1951db534e3f00f94edc5f3d45",
+    "externalIds": {
+        "MAG": "78981383",
+        "CorpusId": 18379946
+    },
+    "title": "Using suffix arrays as language models: Scaling the n-gram",
+    "abstract": "In this article, we propose the use of suffix arrays to implement n-gram language models with practically unlimited size n. These unbounded n-grams are called \u221e-grams. This approach allows us to use large contexts efficiently to distinguish between different alternative sequences while applying synchronous back-off. From a practical point of view, the approach has been applied within the context of spelling confusibles, verb and noun agreement and prenominal adjective ordering. These initial experiments show promising results and we relate the performance to the size of the n-grams used for disambiguation.",
+    "venue": "",
+    "year": 2010,
+    "referenceCount": 24,
+    "citationCount": 4,
+    "influentialCitationCount": 0,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This article proposes the use of suffix arrays to implement n-gram language models with practically unlimited size n, called \u221e-grams, which allows us to use large contexts efficiently to distinguish between different alternative sequences while applying synchronous back-off."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2243741",
+            "name": "H. Stehouwer"
+        },
+        {
+            "authorId": "2066168",
+            "name": "Menno van Zaanen"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "0e640a9fc1535cb349430f57507db0bee22c6d28",
+            "title": "Language Models for Contextual Error Detection and Correction"
+        },
+        {
+            "paperId": "7f1d5d6ac6e988437a97993359c356a7bad3eea5",
+            "title": "Putting the t where it belongs : Solving a confusion problem in Dutch"
+        },
+        {
+            "paperId": "8ff79c8f1689820dff9baa92d6b1dfae5d1a7c03",
+            "title": "Correcting Misuse of Verb Forms"
+        },
+        {
+            "paperId": "9214b25f4089933913c5b8eb7a6e6663883d2f03",
+            "title": "Real-Word Spelling Correction with Trigrams: A Reconsideration of the Mays, Damerau, and Mercer Model"
+        },
+        {
+            "paperId": "0de0294aaa9fcc9ce0b435680c2a145562e9f4a4",
+            "title": "An efficient memory-based morphosyntactic tagger and parser for Dutch"
+        },
+        {
+            "paperId": "0d1529c612f52e05685651b89d8956dc3055c088",
+            "title": "Detecting Erroneous Sentences using Automatically Mined Sequential Patterns"
+        },
+        {
+            "paperId": "ee455537e727cf921263540134949b7042ba6521",
+            "title": "Detecting errors in English article usage by non-native speakers"
+        },
+        {
+            "paperId": "4ca9ea95a0a9846965e86619e646d9ca36930c18",
+            "title": "Replacing suffix trees with enhanced suffix arrays"
+        },
+        {
+            "paperId": "a8d028b04c6c73f17e688c14a2cf9d0975c3ffb6",
+            "title": "The Order of Prenominal Adjectives in Natural Language Generation"
+        },
+        {
+            "paperId": "5e75745c9315ab6cf7baabbf76b461a8178f39ea",
+            "title": "An Unsupervised Method for Detecting Grammatical Errors"
+        },
+        {
+            "paperId": "4eec0a1ce645151c4acc89b151814b3deb53af43",
+            "title": "Ordering Among Premodifiers"
+        },
+        {
+            "paperId": "111b870e874ded07f4af222b4754e36202c70d8e",
+            "title": "Forgetting Exceptions is Harmful in Language Learning"
+        },
+        {
+            "paperId": "58dba823fc1d5f5d45c6fb7414aba7fed7011fb8",
+            "title": "A Winnow-Based Approach to Context-Sensitive Spelling Correction"
+        },
+        {
+            "paperId": "d4e8bed3b50a035e1eabad614fe4218a34b3b178",
+            "title": "An Empirical Study of Smoothing Techniques for Language Modeling"
+        },
+        {
+            "paperId": "1337a72073e2c80da6e53b776ccb469d5abb0579",
+            "title": "Suffix arrays: a new method for on-line string searches"
+        },
+        {
+            "paperId": "a77f8b3c58a9186298e35913cd180c51c83c82ad",
+            "title": "The Art of Computer Programming, Volume 3, Sorting and Searching"
+        },
+        {
+            "paperId": "7457476bd4719212ab257ad96483a642a35d61bd",
+            "title": "The Art of Computer Programming"
+        },
+        {
+            "paperId": "fe7d1a890b4a7761706050a825a78ce5454d76b1",
+            "title": "Multi-Level Feature Extraction for Spelling Correction"
+        },
+        {
+            "paperId": "53ec25acde9e68cdf182beee0d9d19898db677be",
+            "title": "Automatic grammar correction for second-language learners"
+        },
+        {
+            "paperId": "9e0636681359d1fac0340d2012e7e81dcbc75ed5",
+            "title": "A Constraint Grammar Based Spellchecker for Danish with a Special Focus on Dyslexics"
+        },
+        {
+            "paperId": "002170c0235066baa156bef3a0017cb4b5676a06",
+            "title": "A man of measure : Festschrift in Honour of Fred Karlsson on His 60th Birthday"
+        },
+        {
+            "paperId": "578cc5c40c5d397806dce33394154767d5b8dc58",
+            "title": "Large scale experiments on correction of confused words"
+        },
+        {
+            "paperId": "323a7770dc26c7ebe569bcdd4ef39264081da100",
+            "title": "Zo helder en toch zoveel fouten! Wat leren we uit psycholingu\u00c3\u00afstisch onderzoek naar werkwoordfouten bij ervaren spellers?"
+        },
+        {
+            "paperId": null,
+            "title": "The CELEX lexical data base on CD-ROM"
+        }
+    ]
+}

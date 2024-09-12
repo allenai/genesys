@@ -1,0 +1,158 @@
+{
+    "paperId": "a925892c520f2bda9d274bd64789130106392242",
+    "externalIds": {
+        "MAG": "1810499140",
+        "DBLP": "conf/nips/JohnsonZ15",
+        "CorpusId": 1689250,
+        "PubMed": "27087766"
+    },
+    "title": "Semi-supervised Convolutional Neural Networks for Text Categorization via Region Embedding",
+    "abstract": "This paper presents a new semi-supervised framework with convolutional neural networks (CNNs) for text categorization. Unlike the previous approaches that rely on word embeddings, our method learns embeddings of small text regions from unlabeled data for integration into a supervised CNN. The proposed scheme for embedding learning is based on the idea of two-view semi-supervised learning, which is intended to be useful for the task of interest even though the training is done on unlabeled data. Our models achieve better results than previous approaches on sentiment classification and topic classification tasks.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2015,
+    "referenceCount": 31,
+    "citationCount": 340,
+    "influentialCitationCount": 27,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The proposed scheme for embedding learning is based on the idea of two-view semi-supervised learning, which is intended to be useful for the task of interest even though the training is done on unlabeled data."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2108925678",
+            "name": "Rie Johnson"
+        },
+        {
+            "authorId": "50728655",
+            "name": "Tong Zhang"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "54e840c8973db7665a6388b2d992ef08ed7f0260",
+            "title": "Ensemble of Generative and Discriminative Techniques for Sentiment Analysis of Movie Reviews"
+        },
+        {
+            "paperId": "f4c018bcc8ea707b83247866bdc8ccb87cd9f5da",
+            "title": "Neural Word Embedding as Implicit Matrix Factorization"
+        },
+        {
+            "paperId": "fbf417c83ae5b895fc645346e4efbf3a0aabeac9",
+            "title": "Effective Use of Word Order for Text Categorization with Convolutional Neural Networks"
+        },
+        {
+            "paperId": "7e8d5a108c28cdfb92f419ce919fbf7993dfebfc",
+            "title": "A Latent Semantic Model with Convolutional-Pooling Structure for Information Retrieval"
+        },
+        {
+            "paperId": "d79223ef37885b0a246bbb343728fbb8ef07c98a",
+            "title": "#TagSpace: Semantic Embeddings from Hashtags"
+        },
+        {
+            "paperId": "1f6ba0782862ec12a5ec6d7fb608523d55b0c6ba",
+            "title": "Convolutional Neural Networks for Sentence Classification"
+        },
+        {
+            "paperId": "863a6e503ca8ab8748ad0b65e36ca8e68641c717",
+            "title": "Product Feature Mining: Semantic Clues versus Syntactic Constituents"
+        },
+        {
+            "paperId": "ab001d508fbb4160e53686e05b800ab4baeb9728",
+            "title": "Learning Sentiment-Specific Word Embedding for Twitter Sentiment Classification"
+        },
+        {
+            "paperId": "f3de86aeb442216a8391befcacb49e58b478f512",
+            "title": "Distributed Representations of Sentences and Documents"
+        },
+        {
+            "paperId": "27725a2d2a8cee9bf9fffc6c2167017103aba0fa",
+            "title": "A Convolutional Neural Network for Modelling Sentences"
+        },
+        {
+            "paperId": "667939f67523db023d8465e18a96d0198905df72",
+            "title": "Convolutional neural network based triangular CRF for joint intent detection and slot filling"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "665f89a20b05472d82df0a12f2dd63e8fcc4f3ea",
+            "title": "Hidden factors and hidden topics: understanding rating dimensions with review text"
+        },
+        {
+            "paperId": "f6b51c8753a871dc94ff32152c00c01e94f90f09",
+            "title": "Efficient Estimation of Word Representations in Vector Space"
+        },
+        {
+            "paperId": "0060745e006c5f14ec326904119dca19c6545e51",
+            "title": "Improving neural networks by preventing co-adaptation of feature detectors"
+        },
+        {
+            "paperId": "5db592bef4b5ff231e1de92588907808f00bfbb4",
+            "title": "Multi-View Learning of Word Embeddings via CCA"
+        },
+        {
+            "paperId": "6f4065f0cc99a0839b0248ffb4457e5f0277b30d",
+            "title": "Domain Adaptation for Large-Scale Sentiment Classification: A Deep Learning Approach"
+        },
+        {
+            "paperId": "1c61f9ef06fe74505775a833ff849185757199e7",
+            "title": "Learning Word Vectors for Sentiment Analysis"
+        },
+        {
+            "paperId": "bc1022b031dc6c7019696492e8116598097a8c12",
+            "title": "Natural Language Processing (Almost) from Scratch"
+        },
+        {
+            "paperId": "8492070dc4031ed825e95e4803781752bb5e909f",
+            "title": "Word Representations: A Simple and General Method for Semi-Supervised Learning"
+        },
+        {
+            "paperId": "a9fc84f8abe740cdc7ee82e69444d1d00dbe0ceb",
+            "title": "A Scalable Hierarchical Distributed Language Model"
+        },
+        {
+            "paperId": "57458bc1cffe5caa45a885af986d70f723f406b4",
+            "title": "A unified architecture for natural language processing: deep neural networks with multitask learning"
+        },
+        {
+            "paperId": "6100169e81d2172375279dcc9700a9a4b186d481",
+            "title": "Two-view feature generation model for semi-supervised learning"
+        },
+        {
+            "paperId": "944e1a7b2c5c62e952418d7684e3cade89c76f87",
+            "title": "A Framework for Learning Predictive Structures from Multiple Tasks and Unlabeled Data"
+        },
+        {
+            "paperId": "2abe6b9ea1b13653b7384e9c8ef14b0d87e20cfc",
+            "title": "RCV1: A New Benchmark Collection for Text Categorization Research"
+        },
+        {
+            "paperId": "6c2b28f9354f667cd5bd07afc0471d8334430da7",
+            "title": "A Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "6713bcd188e7224cb0b0d3f4df27b05d771b4fc1",
+            "title": "Agile Software Development"
+        },
+        {
+            "paperId": "74b1a9e50f18af8a7b9f8dd38f40e0466ad7a8e8",
+            "title": "Transductive Inference for Text Classification using Support Vector Machines"
+        },
+        {
+            "paperId": "1e7cf9047604f39e517951d129b2b3eecf9e1cfb",
+            "title": "Modeling Interestingness with Deep Neural Networks"
+        },
+        {
+            "paperId": "98d2bb15fa31f6e9df73b8e7e8e038a99b420190",
+            "title": "A simple and general method for semi-supervised learning"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        }
+    ]
+}

@@ -1,0 +1,210 @@
+{
+    "paperId": "3f67f9c8a97dc2a0b7c40d1ced73294133e67aa1",
+    "externalIds": {
+        "ArXiv": "1812.04616",
+        "MAG": "2950106848",
+        "DBLP": "conf/iclr/KumarT19",
+        "CorpusId": 54472058
+    },
+    "title": "Von Mises-Fisher Loss for Training Sequence to Sequence Models with Continuous Outputs",
+    "abstract": "The Softmax function is used in the final layer of nearly all existing sequence-to-sequence models for language generation. However, it is usually the slowest layer to compute which limits the vocabulary size to a subset of most frequent types; and it has a large memory footprint. We propose a general technique for replacing the softmax layer with a continuous embedding layer. Our primary innovations are a novel probabilistic loss, and a training and inference procedure in which we generate a probability distribution over pre-trained word embeddings, instead of a multinomial distribution over the vocabulary obtained via softmax. We evaluate this new class of sequence-to-sequence models with continuous outputs on the task of neural machine translation. We show that our models obtain upto 2.5x speed-up in training time while performing on par with the state-of-the-art models in terms of translation quality. These models are capable of handling very large vocabularies without compromising on translation quality. They also produce more meaningful errors than in the softmax-based models, as these errors typically lie in a subspace of the vector space of the reference translations.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2018,
+    "referenceCount": 44,
+    "citationCount": 67,
+    "influentialCitationCount": 9,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a general technique for replacing the softmax layer with a continuous embedding layer, and introduces a novel probabilistic loss, and a training and inference procedure in which it generates a probability distribution over pre-trained word embeddings, instead of a multinomial distribution over the vocabulary obtained via softmax."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "51467955",
+            "name": "Sachin Kumar"
+        },
+        {
+            "authorId": "145317727",
+            "name": "Yulia Tsvetkov"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "5a7f3f0fdbdc29fddc7a41098ee8bbc3f7cfd1a1",
+            "title": "Toward Human Parity in Conversational Speech Recognition"
+        },
+        {
+            "paperId": "8e32e1f02b7060ce419a964b800d0927a2e1d69c",
+            "title": "Mimicking Word Embeddings using Subword RNNs"
+        },
+        {
+            "paperId": "3dbd28c63a7807280c9531735c715d4598024166",
+            "title": "A survey of cross-lingual embedding models"
+        },
+        {
+            "paperId": "f4c8539bed600c9c652aba76a996b8188761d3fe",
+            "title": "Stronger Baselines for Trustable Results in Neural Machine Translation"
+        },
+        {
+            "paperId": "032274e57f7d8b456bd255fe76b909b2c1d7458e",
+            "title": "A Deep Reinforced Model for Abstractive Summarization"
+        },
+        {
+            "paperId": "f0a498014c4ef67c0b72ceb18d95e0d25087fd57",
+            "title": "Neural Machine Translation via Binary Code Prediction"
+        },
+        {
+            "paperId": "668db48c6a79826456341680ee1175dfc4cced71",
+            "title": "Get To The Point: Summarization with Pointer-Generator Networks"
+        },
+        {
+            "paperId": "2cbb8de53759e75411bc528518947a3094fbce3a",
+            "title": "Billion-Scale Similarity Search with GPUs"
+        },
+        {
+            "paperId": "aab5002a22b9b4244a8329b140bd0a86021aa2d1",
+            "title": "OpenNMT: Open-Source Toolkit for Neural Machine Translation"
+        },
+        {
+            "paperId": "63e39cdf1ad884da6bc69096bb3413b5b1100559",
+            "title": "Using the Output Embedding to Improve Language Models"
+        },
+        {
+            "paperId": "1a327709cc53ff9e52454e50a643abf4a0ac92af",
+            "title": "Findings of the 2016 Conference on Machine Translation"
+        },
+        {
+            "paperId": "e2dba792360873aef125572812f3673b1a85d850",
+            "title": "Enriching Word Vectors with Subword Information"
+        },
+        {
+            "paperId": "8a5acd851a0454a909a8a633f591a7086cb2a975",
+            "title": "A new type of sharp bounds for ratios of modified Bessel functions"
+        },
+        {
+            "paperId": "2f2d8f8072e5cc9b296fad551f65f183bdbff7aa",
+            "title": "Exploring the Limits of Language Modeling"
+        },
+        {
+            "paperId": "759956bb98689dbcc891528636d8994e54318f85",
+            "title": "Strategies for Training Large Vocabulary Neural Language Models"
+        },
+        {
+            "paperId": "b8dc4ae9de13be5f4c8333b026cb3ad956ae5b65",
+            "title": "Neural Generative Question Answering"
+        },
+        {
+            "paperId": "12a5b7190b981bf478b4c9c04d3c0d41f13b9023",
+            "title": "BlackOut: Speeding up Recurrent Neural Network Language Models With Very Large Vocabularies"
+        },
+        {
+            "paperId": "3e498f3dc80b276defcede984f456f4fef1f2e1f",
+            "title": "An Exploration of Softmax Alternatives Belonging to the Spherical Loss Family"
+        },
+        {
+            "paperId": "1ac30af5522c7a50ec4d1ee43fd2bd8652a9bd52",
+            "title": "A Neural Attention Model for Abstractive Sentence Summarization"
+        },
+        {
+            "paperId": "1518039b5001f1836565215eb047526b3ac7f462",
+            "title": "Neural Machine Translation of Rare Words with Subword Units"
+        },
+        {
+            "paperId": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+            "title": "Effective Approaches to Attention-based Neural Machine Translation"
+        },
+        {
+            "paperId": "501acb88710ac23a99562f3987b842c8a5e234bd",
+            "title": "Hubness and Pollution: Delving into Cross-Space Mapping for Zero-Shot Learning"
+        },
+        {
+            "paperId": "86311b182786bfde19446f6ded0854de973d4060",
+            "title": "A Neural Conversational Model"
+        },
+        {
+            "paperId": "c824cd5510fecac3a03330f79c14b23856c229c0",
+            "title": "On the Accuracy of Self-Normalized Log-Linear Models"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "a5e4377d2149a8167d89383d785793967cf74602",
+            "title": "Meteor Universal: Language Specific Translation Evaluation for Any Target Language"
+        },
+        {
+            "paperId": "0183b3e9d84c15c7048e6c2149ed86257ccdc6cb",
+            "title": "Dependency-Based Word Embeddings"
+        },
+        {
+            "paperId": "53ca064b9f1b92951c1997e90b776e95b0880e52",
+            "title": "Learning word embeddings efficiently with noise-contrastive estimation"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "7b5e31257f01aba987f16e175a3e49e00a5bd3bb",
+            "title": "A Simple, Fast, and Effective Reparameterization of IBM Model 2"
+        },
+        {
+            "paperId": "4177ec52d1b80ed57f2e72b0f9a42365f1a8598d",
+            "title": "Speech recognition with deep recurrent neural networks"
+        },
+        {
+            "paperId": "d7da009f457917aa381619facfa5ffae9329a6e9",
+            "title": "Bleu: a Method for Automatic Evaluation of Machine Translation"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "3eb8fc44d5cddf373957c143dc2c5e801c8e571d",
+            "title": "Vector Quantization"
+        },
+        {
+            "paperId": "7344b71d205a7ad71ebad2873c063d7008f231fc",
+            "title": "The IWSLT 2016 Evaluation Campaign"
+        },
+        {
+            "paperId": "77e576c02792d7df5b102bb81d49df4b5382e1cc",
+            "title": "Normalized Word Embedding and Orthogonal Transform for Bilingual Word Translation"
+        },
+        {
+            "paperId": "b92513dac9d5b6a4683bcc625b94dd1ced98734e",
+            "title": "Two/Too Simple Adaptations of Word2Vec for Syntax Problems"
+        },
+        {
+            "paperId": "c19fbefdeead6a4154a22a9c8551a18b1530033a",
+            "title": "Hierarchical Probabilistic Neural Network Language Model"
+        },
+        {
+            "paperId": "6b388f0151ab37adb3d57738b8f52a3f943f86c8",
+            "title": "Quick Training of Probabilistic Neural Nets by Importance Sampling"
+        },
+        {
+            "paperId": "4cf3569e045993dfe090749f26a55a768684ab86",
+            "title": "Mixture density networks"
+        },
+        {
+            "paperId": "ba56155267c29d1b540e089df044db8f22c55a9a",
+            "title": "Theory of point estimation"
+        },
+        {
+            "paperId": "b2c64d75c6cab419da9f876e2f55ff54480f07e8",
+            "title": "The Psycho-Biology of Language."
+        }
+    ]
+}

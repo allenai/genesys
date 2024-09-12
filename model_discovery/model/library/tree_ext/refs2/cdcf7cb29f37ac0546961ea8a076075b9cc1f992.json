@@ -1,0 +1,233 @@
+{
+    "paperId": "cdcf7cb29f37ac0546961ea8a076075b9cc1f992",
+    "externalIds": {
+        "DBLP": "conf/kdd/HuL04",
+        "MAG": "2160660844",
+        "DOI": "10.1145/1014052.1014073",
+        "CorpusId": 207155218
+    },
+    "title": "Mining and summarizing customer reviews",
+    "abstract": "Merchants selling products on the Web often ask their customers to review the products that they have purchased and the associated services. As e-commerce is becoming more and more popular, the number of customer reviews that a product receives grows rapidly. For a popular product, the number of reviews can be in hundreds or even thousands. This makes it difficult for a potential customer to read them to make an informed decision on whether to purchase the product. It also makes it difficult for the manufacturer of the product to keep track and to manage customer opinions. For the manufacturer, there are additional difficulties because many merchant sites may sell the same product and the manufacturer normally produces many kinds of products. In this research, we aim to mine and to summarize all the customer reviews of a product. This summarization task is different from traditional text summarization because we only mine the features of the product on which the customers have expressed their opinions and whether the opinions are positive or negative. We do not summarize the reviews by selecting a subset or rewrite some of the original sentences from the reviews to capture the main points as in the classic text summarization. Our task is performed in three steps: (1) mining product features that have been commented on by customers; (2) identifying opinion sentences in each review and deciding whether each opinion sentence is positive or negative; (3) summarizing the results. This paper proposes several novel techniques to perform these tasks. Our experimental results using reviews of a number of products sold online demonstrate the effectiveness of the techniques.",
+    "venue": "Knowledge Discovery and Data Mining",
+    "year": 2004,
+    "referenceCount": 49,
+    "citationCount": 7972,
+    "influentialCitationCount": 796,
+    "openAccessPdf": {
+        "url": "http://www.cs.uic.edu/~liub/publications/kdd04-revSummary.pdf",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This research aims to mine and to summarize all the customer reviews of a product, and proposes several novel techniques to perform these tasks."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "19355717",
+            "name": "Minqing Hu"
+        },
+        {
+            "authorId": "47655430",
+            "name": "Bing Liu"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "fbd529b31145bfaf90e87e452334ef7d067bf6ab",
+            "title": "Learning to classify documents according to genre"
+        },
+        {
+            "paperId": "012ba9adf512b7c1e239036235d088efaf8866fc",
+            "title": "Term Extraction and Automatic Indexing"
+        },
+        {
+            "paperId": "64b8553bd62997d332910078bcd5ee74a43f9350",
+            "title": "Mining Opinion Features in Customer Reviews"
+        },
+        {
+            "paperId": "338a891907dce447da9a0fa2f27221bd35164163",
+            "title": "Mining the peanut gallery: opinion extraction and semantic classification of product reviews"
+        },
+        {
+            "paperId": "4f0d67a3a8a61d3a7ef0f940274ecff5f0d640ea",
+            "title": "Mining product reputations on the Web"
+        },
+        {
+            "paperId": "9e7c7853a16a378cc24a082153b282257a9675b7",
+            "title": "Thumbs Up or Thumbs Down? Semantic Orientation Applied to Unsupervised Classification of Reviews"
+        },
+        {
+            "paperId": "12d0353ce8b41b7e5409e5a4a611110aee33c7bc",
+            "title": "Thumbs up? Sentiment Classification using Machine Learning Techniques"
+        },
+        {
+            "paperId": "dd52c776306c304b223a30c9f7beee38b45d59b8",
+            "title": "Genre Classification and Domain Transfer for Information Filtering"
+        },
+        {
+            "paperId": "f7566f1797eb36429acbb09e581d6b2918a50760",
+            "title": "Foundations of Statistical Natural Language Processing"
+        },
+        {
+            "paperId": "3a8d4fd2c30e5031a574bc25363c8639912b3bbd",
+            "title": "Effects of Adjective Orientation and Gradability on Sentence Subjectivity"
+        },
+        {
+            "paperId": "5581992944c66522dd1b11f8a6150aeef2d95b7a",
+            "title": "Learning Subjective Adjectives from Corpora"
+        },
+        {
+            "paperId": "466c8a468a6823f42220baf406ec3ac7c042380f",
+            "title": "Summarizing text documents: sentence selection and evaluation metrics"
+        },
+        {
+            "paperId": "54744d6219a0722ffe68621730f61a0ac068af4c",
+            "title": "Analysis of Syntax-Based Pronoun Resolution Methods"
+        },
+        {
+            "paperId": "c4a974906a9f6c7380edc9e2281931bde78828b1",
+            "title": "Development and Use of a Gold-Standard Data Set for Subjectivity Classifications"
+        },
+        {
+            "paperId": "fb980cbf0647ecd80d9bd06aaaed6b716e121ac7",
+            "title": "Recognizing subjectivity: a case study in manual tagging"
+        },
+        {
+            "paperId": "4f3cb3bb5e8d77d457d418c4ff1f271566c87506",
+            "title": "Integrating Classification and Association Rule Mining"
+        },
+        {
+            "paperId": "97c0af623d9eac54abb076da8c2282e9c8b0bbb0",
+            "title": "Multi-Document Summarization by Graph Search and Matching"
+        },
+        {
+            "paperId": "bbfbe12f4f16d02b987759d97cc8430f016569d2",
+            "title": "Automatic Detection of Text Genre"
+        },
+        {
+            "paperId": "b62b80384f402d38c3425db6a99899d1cb9c50c6",
+            "title": "Predicting the Semantic Orientation of Adjectives"
+        },
+        {
+            "paperId": "e3dca00f4adf3a34da27092976b12a0442473669",
+            "title": "The Balancing Act: Combining Symbolic and Statistical Approaches to Language"
+        },
+        {
+            "paperId": "ad904e3667b4befc4511ea6320681a80fd8ae7be",
+            "title": "Automatic text decomposition using text segments and text themes"
+        },
+        {
+            "paperId": "d80a6a85b0c263d638877fff66ddc12963e3c34f",
+            "title": "A trainable document summarizer"
+        },
+        {
+            "paperId": "02562212f34fbca667aa497704df45bbed0721ed",
+            "title": "Technical terminology: some linguistic properties and an algorithm for identification in text"
+        },
+        {
+            "paperId": "4446061b1ed0bfb66805de8442db31ae1980f685",
+            "title": "On the Computation of Point of View"
+        },
+        {
+            "paperId": "29946f1724104a47d73ab9c88cde129505b66ee5",
+            "title": "Fast Algorithms for Mining Association Rules in Large Databases"
+        },
+        {
+            "paperId": "03dc0ddcacb60cc09b884dcfb3b8cd78bc2cf1a3",
+            "title": "Recognizing Text Genres With Simple Metrics Using Discriminant Analysis"
+        },
+        {
+            "paperId": "3c4e3462e3e9f0dd7b379f3e300ff47eefa803e5",
+            "title": "Direction-based text interpretation as an information access refinement"
+        },
+        {
+            "paperId": "4bd970a37c59c97804ff93cbb2c108e081de3a37",
+            "title": "Introduction to WordNet: An On-line Lexical Database"
+        },
+        {
+            "paperId": "7cb63b055d43aadfa0912e69106d96f6016e962d",
+            "title": "Constructing literature abstracts by computer: Techniques and prospects"
+        },
+        {
+            "paperId": "9e2caa39ac534744a180972a30a320ad0ae41ea3",
+            "title": "Word Association Norms, Mutual Information, and Lexicography"
+        },
+        {
+            "paperId": "2a210dc6b17efbaec314ca332abb1776ea40908d",
+            "title": "Combining Low-Level and Summary Representations of Opinions for Multi-Perspective Question Answering"
+        },
+        {
+            "paperId": null,
+            "title": "An Operational System for Detecting and Tracking Opinions in on-line discussion"
+        },
+        {
+            "paperId": null,
+            "title": "Yahoo ! for Amazon : Extracting market sentiment from stock message boards"
+        },
+        {
+            "paperId": "b5490a6ef9fbc9106ae9056fd35fcef60b730563",
+            "title": "Fuzzy Typing for Document Management"
+        },
+        {
+            "paperId": null,
+            "title": "NLProcessor \u2013 Text Analysis Toolkit"
+        },
+        {
+            "paperId": "d87ceda3042f781c341ac17109d1e94a717f5f60",
+            "title": "Book Reviews: WordNet: An Electronic Lexical Database"
+        },
+        {
+            "paperId": "ab701ae76d7c13e8215cb8c5acdc138efc33067d",
+            "title": "A Formal Model of Text Summarization Based on Condensation Operators of a Terminological Logic"
+        },
+        {
+            "paperId": "59825db92036250a58dc1c6d4f76ad998d0cd564",
+            "title": "Salience-based Content Characterisafion of Text Documents"
+        },
+        {
+            "paperId": null,
+            "title": "Lexter : A terminology extraction software for knowledge acquisition from texts"
+        },
+        {
+            "paperId": "2a4a9c37db04225f21a5b8ce764495a4897783d6",
+            "title": "Study and Implementation of Combined Techniques for Automatic Extraction of Terminology"
+        },
+        {
+            "paperId": "0adad831d09856e0ce677e4f22463b2a9ddfaf72",
+            "title": "What Might be in a Summary?"
+        },
+        {
+            "paperId": null,
+            "title": "Automatic Summarizing of English Texts"
+        },
+        {
+            "paperId": null,
+            "title": "An Overview of the FRUMP System. Strategies for Natural Language Parsing"
+        },
+        {
+            "paperId": "91556a9ef3b88c8a3252a9d39630734047ee0c43",
+            "title": "Word association norms"
+        },
+        {
+            "paperId": null,
+            "title": "Track Paper"
+        },
+        {
+            "paperId": null,
+            "title": "Identifying opinion sentences in each review and deciding whether each opinion sentence is positive or negative"
+        },
+        {
+            "paperId": null,
+            "title": "Mining product features that have been commented on by customers"
+        },
+        {
+            "paperId": null,
+            "title": "The user likes or dislikes most or all the features in one sentence"
+        },
+        {
+            "paperId": null,
+            "title": "Discourse Modeling for Automatic Text Summarizing"
+        }
+    ]
+}

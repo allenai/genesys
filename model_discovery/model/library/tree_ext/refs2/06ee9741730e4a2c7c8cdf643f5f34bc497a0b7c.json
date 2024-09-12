@@ -1,0 +1,158 @@
+{
+    "paperId": "06ee9741730e4a2c7c8cdf643f5f34bc497a0b7c",
+    "externalIds": {
+        "ArXiv": "1805.12076",
+        "DBLP": "journals/corr/abs-1805-12076",
+        "MAG": "2807299122",
+        "CorpusId": 44130076
+    },
+    "title": "Towards Understanding the Role of Over-Parametrization in Generalization of Neural Networks",
+    "abstract": "Despite existing work on ensuring generalization of neural networks in terms of scale sensitive complexity measures, such as norms, margin and sharpness, these complexity measures do not offer an explanation of why neural networks generalize better with over-parametrization. In this work we suggest a novel complexity measure based on unit-wise capacities resulting in a tighter generalization bound for two layer ReLU networks. Our capacity bound correlates with the behavior of test error with increasing network sizes, and could potentially explain the improvement in generalization with over-parametrization. We further present a matching lower bound for the Rademacher complexity that improves over previous capacity lower bounds for neural networks.",
+    "venue": "arXiv.org",
+    "year": 2018,
+    "referenceCount": 28,
+    "citationCount": 373,
+    "influentialCitationCount": 15,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel complexity measure based on unit-wise capacities resulting in a tighter generalization bound for two layer ReLU networks and a matching lower bound for the Rademacher complexity that improves over previous capacity lower bounds for neural networks are presented."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3007442",
+            "name": "Behnam Neyshabur"
+        },
+        {
+            "authorId": "46947755",
+            "name": "Zhiyuan Li"
+        },
+        {
+            "authorId": "1798880",
+            "name": "Srinadh Bhojanapalli"
+        },
+        {
+            "authorId": "1688882",
+            "name": "Yann LeCun"
+        },
+        {
+            "authorId": "1706280",
+            "name": "N. Srebro"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "9f5b82d9915d0752957602224c5056be7e749c83",
+            "title": "Foundations of Machine Learning"
+        },
+        {
+            "paperId": "d205595e3d1fa4342f29c9517f3b56fffe785d06",
+            "title": "Generalization in Deep Networks: The Role of Distance from Initialization"
+        },
+        {
+            "paperId": "e837dfa120e8ce3cd587bde7b0787ef43fa7832d",
+            "title": "Sensitivity and Generalization in Neural Networks: an Empirical Study"
+        },
+        {
+            "paperId": "a9022d8ffb5e417458fba9a280f90c1b08cb6c73",
+            "title": "Stronger generalization bounds for deep nets via a compression approach"
+        },
+        {
+            "paperId": "018a844cd7a496aed84f166e4b02ff547c3b5d16",
+            "title": "Size-Independent Sample Complexity of Neural Networks"
+        },
+        {
+            "paperId": "ecd88d2ef770348e16b807ad5430314dcf219098",
+            "title": "Fisher-Rao Metric, Geometry, and Complexity of Neural Networks"
+        },
+        {
+            "paperId": "075556dd42900a6bc4552a2f2531ba21b9b7b4c0",
+            "title": "Deep Neural Networks as Gaussian Processes"
+        },
+        {
+            "paperId": "11adc8bd35bd897502f9b5452ab7ac668ec9b0fb",
+            "title": "The Implicit Bias of Gradient Descent on Separable Data"
+        },
+        {
+            "paperId": "4fc3ee440c2b0f66255a9e6966cee871ee0cc6da",
+            "title": "A PAC-Bayesian Approach to Spectrally-Normalized Margin Bounds for Neural Networks"
+        },
+        {
+            "paperId": "d53fb3feeeab07a0d70bf466dd473ec6052ecc07",
+            "title": "Exploring Generalization in Deep Learning"
+        },
+        {
+            "paperId": "9753967a3af8e1db1e2da52a9bb3255bd1ce5c51",
+            "title": "Spectrally-normalized margin bounds for neural networks"
+        },
+        {
+            "paperId": "4e8917e73e02c76d55ded62e43541d44684a4c8a",
+            "title": "Implicit Regularization in Matrix Factorization"
+        },
+        {
+            "paperId": "540c226fdf7047ac602c7cb05a18db19ee595df0",
+            "title": "Computing Nonvacuous Generalization Bounds for Deep (Stochastic) Neural Networks with Many More Parameters than Training Data"
+        },
+        {
+            "paperId": "9b464642fabd44ca9891d9ef9cdbd324eb5878f4",
+            "title": "Nearly-tight VC-dimension and Pseudodimension Bounds for Piecewise Linear Neural Networks"
+        },
+        {
+            "paperId": "8edbd132765e72f5887b7ef8c38624f31dd53a77",
+            "title": "Nearly-tight VC-dimension bounds for piecewise linear neural networks"
+        },
+        {
+            "paperId": "54ddb00fa691728944fd8becea90a373d21597cf",
+            "title": "Understanding deep learning requires rethinking generalization"
+        },
+        {
+            "paperId": "8ec5896b4490c6e127d1718ffc36a3439d84cb81",
+            "title": "On Large-Batch Training for Deep Learning: Generalization Gap and Sharp Minima"
+        },
+        {
+            "paperId": "121c2d4019ca1caa1bc14374b85608d053af62e7",
+            "title": "A Vector-Contraction Inequality for Rademacher Complexities"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "6fe02ad979baad659f04c3376a77dbb2cb4699a5",
+            "title": "Path-SGD: Path-Normalized Optimization in Deep Neural Networks"
+        },
+        {
+            "paperId": "02480b5d060eb4cb2228ac7e824fda22b29c3e9e",
+            "title": "Norm-Based Capacity Control in Neural Networks"
+        },
+        {
+            "paperId": "f9c2ece8262f9dcf4ec176799e88e51adb1fd052",
+            "title": "Breaking the Curse of Dimensionality with Convex Neural Networks"
+        },
+        {
+            "paperId": "4b675d8f63888d7d6d7d77a0834efa5eaded64c5",
+            "title": "In Search of the Real Inductive Bias: On the Role of Implicit Regularization in Deep Learning"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "758b1d823ac975720e6e81e375cd4432009e5bca",
+            "title": "Convex Neural Networks"
+        },
+        {
+            "paperId": "009f35c0e453f2435efd8d8ef8086b76b294967a",
+            "title": "Rademacher and Gaussian Complexities: Risk Bounds and Structural Results"
+        },
+        {
+            "paperId": "2893d64bb2ad5fb4cf69ee63f8de3abb7906481c",
+            "title": "What Size Neural Network Gives Optimal Generalization? Convergence Properties of Backpropagation"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        }
+    ]
+}

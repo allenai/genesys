@@ -1,0 +1,175 @@
+{
+    "paperId": "2997b26ffb8c291ce478bd8a6e47979d5a55c466",
+    "externalIds": {
+        "MAG": "2962736243",
+        "ArXiv": "1803.02324",
+        "DBLP": "journals/corr/abs-1803-02324",
+        "ACL": "N18-2017",
+        "DOI": "10.18653/v1/N18-2017",
+        "CorpusId": 4537113
+    },
+    "title": "Annotation Artifacts in Natural Language Inference Data",
+    "abstract": "Large-scale datasets for natural language inference are created by presenting crowd workers with a sentence (premise), and asking them to generate three new sentences (hypotheses) that it entails, contradicts, or is logically neutral with respect to. We show that, in a significant portion of such data, this protocol leaves clues that make it possible to identify the label by looking only at the hypothesis, without observing the premise. Specifically, we show that a simple text categorization model can correctly classify the hypothesis alone in about 67% of SNLI (Bowman et. al, 2015) and 53% of MultiNLI (Williams et. al, 2017). Our analysis reveals that specific linguistic phenomena such as negation and vagueness are highly correlated with certain inference classes. Our findings suggest that the success of natural language inference models to date has been overestimated, and that the task remains a hard open problem.",
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2018,
+    "referenceCount": 30,
+    "citationCount": 1088,
+    "influentialCitationCount": 134,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/N18-2017.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that a simple text categorization model can correctly classify the hypothesis alone in about 67% of SNLI and 53% of MultiNLI, and that specific linguistic phenomena such as negation and vagueness are highly correlated with certain inference classes."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "40895369",
+            "name": "Suchin Gururangan"
+        },
+        {
+            "authorId": "2705113",
+            "name": "Swabha Swayamdipta"
+        },
+        {
+            "authorId": "39455775",
+            "name": "Omer Levy"
+        },
+        {
+            "authorId": "4671928",
+            "name": "Roy Schwartz"
+        },
+        {
+            "authorId": "3644767",
+            "name": "Samuel R. Bowman"
+        },
+        {
+            "authorId": "144365875",
+            "name": "Noah A. Smith"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "8c6427cc1f4e1bbe5d6da34a4511842361f4fbb6",
+            "title": "Hypothesis Only Baselines in Natural Language Inference"
+        },
+        {
+            "paperId": "8e2d8cee2fc474d0c08bfdfa707993d005067823",
+            "title": "Visual Referring Expression Recognition: What Do Systems Actually Learn?"
+        },
+        {
+            "paperId": "3c092128a2c98e5e3be5f8872cf05c635430cd60",
+            "title": "Evaluating Compositionality in Sentence Embeddings"
+        },
+        {
+            "paperId": "7b7ee580284cc148cf67b42c8a26f72cbcdb9452",
+            "title": "Natural Language Inference with External Knowledge"
+        },
+        {
+            "paperId": "1778e32c18bd611169e64c1805a51abff341ca53",
+            "title": "Natural Language Inference over Interaction Space"
+        },
+        {
+            "paperId": "ffb949d3493c3b2f3c9acf9c75cb03938933ddf0",
+            "title": "Adversarial Examples for Evaluating Reading Comprehension Systems"
+        },
+        {
+            "paperId": "624527d8b92bc6d423784113ded0b9fd639add00",
+            "title": "Pay Attention to the Ending:Strong Neural Baselines for the ROC Story Cloze Task"
+        },
+        {
+            "paperId": "ee7b883e35d754ae4f71c21bb71f9f03e4ffbb2c",
+            "title": "Supervised Learning of Universal Sentence Representations from Natural Language Inference Data"
+        },
+        {
+            "paperId": "5ded2b8c64491b4a67f6d39ce473d4b9347a672e",
+            "title": "A Broad-Coverage Challenge Corpus for Sentence Understanding through Inference"
+        },
+        {
+            "paperId": "a20ecabd83e0962329448d8af5025b8061c4ba36",
+            "title": "Social Bias in Elicited Natural Language Inferences"
+        },
+        {
+            "paperId": "3610591ee80d7133033a6fb09e4e324e54007805",
+            "title": "The Effect of Different Writing Tasks on Linguistic Style: A Case Study of the ROC Story Cloze Task"
+        },
+        {
+            "paperId": "7e232313a59d735ef7c8a9f4cc7bc980a29deb5e",
+            "title": "Making the V in VQA Matter: Elevating the Role of Image Understanding in Visual Question Answering"
+        },
+        {
+            "paperId": "8b336cacfcc0eb1c18174f8fb264ce0eb5d0307c",
+            "title": "Annotating Relation Inference in Context via Question Answering"
+        },
+        {
+            "paperId": "892e53fe5cd39f037cb2a961499f42f3002595dd",
+            "title": "Bag of Tricks for Efficient Text Classification"
+        },
+        {
+            "paperId": "3c1bbd2672c11a796f1e6e6aa787257498ec8bec",
+            "title": "Revisiting Visual Question Answering Baselines"
+        },
+        {
+            "paperId": "05dd7254b632376973f3a1b4d39485da17814df5",
+            "title": "SQuAD: 100,000+ Questions for Machine Comprehension of Text"
+        },
+        {
+            "paperId": "b1e20420982a4f923c08652941666b189b11b7fe",
+            "title": "A Thorough Examination of the CNN/Daily Mail Reading Comprehension Task"
+        },
+        {
+            "paperId": "2cd8e8f510c89c7c18268e8ad51c061e459ad321",
+            "title": "A Decomposable Attention Model for Natural Language Inference"
+        },
+        {
+            "paperId": "8e759195eb4b4f0f480a8a2cf1c629bfd881d4e5",
+            "title": "Analyzing the Behavior of Visual Question Answering Models"
+        },
+        {
+            "paperId": "85b68477a6e031d88b963833e15a4b4fc6855264",
+            "title": "A Corpus and Cloze Evaluation for Deeper Understanding of Commonsense Stories"
+        },
+        {
+            "paperId": "f04df4e20a18358ea2f689b4c129781628ef7fc1",
+            "title": "A large annotated corpus for learning natural language inference"
+        },
+        {
+            "paperId": "d1505c6123c102e53eb19dff312cb25cea840b72",
+            "title": "Teaching Machines to Read and Comprehend"
+        },
+        {
+            "paperId": "97ad70a9fa3f99adf18030e5e38ebe3d90daa2db",
+            "title": "VQA: Visual Question Answering"
+        },
+        {
+            "paperId": "f529dc492b7f3d1b22db64bc7ad36b1f13641a84",
+            "title": "Illinois-LH: A Denotational and Distributional Approach to Semantics"
+        },
+        {
+            "paperId": "c333778104f648c385b4631f7b4a859787e9d3d3",
+            "title": "A SICK cure for the evaluation of compositional distributional semantic models"
+        },
+        {
+            "paperId": "3f6f3f3549a023d328512ce94a51cfa1f13d57f7",
+            "title": "Crowdsourcing Inference-Rule Evaluation"
+        },
+        {
+            "paperId": "b4317b8a4490c84301907a61f5b8ebb26ab8828d",
+            "title": "Discovery of inference rules for question-answering"
+        },
+        {
+            "paperId": "51c49cc4654dbce3c3de2919800da1e7477d88b3",
+            "title": "Do Supervised Distributional Methods Really Learn Lexical Inference Relations?"
+        },
+        {
+            "paperId": "e03d300581e16f6664157d2c1c6ceec33ec528ce",
+            "title": "Machine Learning Challenges. Evaluating Predictive Uncertainty, Visual Object Classification, and Recognising Tectual Entailment"
+        },
+        {
+            "paperId": "e808f28d411a958c5db81ceb111beb2638698f47",
+            "title": "The PASCAL Recognising Textual Entailment Challenge"
+        }
+    ]
+}

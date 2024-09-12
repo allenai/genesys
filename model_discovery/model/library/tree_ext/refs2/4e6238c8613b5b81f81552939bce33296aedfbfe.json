@@ -1,0 +1,255 @@
+{
+    "paperId": "4e6238c8613b5b81f81552939bce33296aedfbfe",
+    "externalIds": {
+        "ArXiv": "0912.1128",
+        "DBLP": "journals/jmlr/BaehrensSHKHM10",
+        "MAG": "2150165932",
+        "DOI": "10.5555/1756006.1859912",
+        "CorpusId": 14664111
+    },
+    "title": "How to Explain Individual Classification Decisions",
+    "abstract": "After building a classifier with modern tools of machine learning we typically have a black box at hand that is able to predict well for unseen data. Thus, we get an answer to the question what is the most likely label of a given unseen data point. However, most methods will provide no answer why the model predicted a particular label for a single instance and what features were most influential for that particular instance. The only method that is currently able to provide such explanations are decision trees. This paper proposes a procedure which (based on a set of assumptions) allows to explain the decisions of any classification method.",
+    "venue": "Journal of machine learning research",
+    "year": 2009,
+    "referenceCount": 51,
+    "citationCount": 1030,
+    "influentialCitationCount": 61,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a procedure which (based on a set of assumptions) allows to explain the decisions of any classification method."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1742375",
+            "name": "D. Baehrens"
+        },
+        {
+            "authorId": "34954622",
+            "name": "T. Schroeter"
+        },
+        {
+            "authorId": "1734990",
+            "name": "S. Harmeling"
+        },
+        {
+            "authorId": "1716788",
+            "name": "M. Kawanabe"
+        },
+        {
+            "authorId": "39960184",
+            "name": "K. Hansen"
+        },
+        {
+            "authorId": "145034054",
+            "name": "K. M\u00fcller"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "a6fe018bc1df4de304908641a5d107430c465e52",
+            "title": "Gaussian Processes for Classification: QSAR Modeling of ADMET and Target Activity"
+        },
+        {
+            "paperId": "346b237834f7c39f9e099a1dba2d25854b93fd50",
+            "title": "Finding stationary subspaces in multivariate time series."
+        },
+        {
+            "paperId": "f6227e4c1caf47da99955b61253984bfbb0eddf8",
+            "title": "Benchmark Data Set for in Silico Prediction of Ames Mutagenicity"
+        },
+        {
+            "paperId": "090e7d6ef689854e0213ff43f8fe8f369d9f7a52",
+            "title": "Center-surround patterns emerge as optimal predictors for human saccade targets."
+        },
+        {
+            "paperId": "c62043a7d2537bbf40a84b9913957452a47fdb83",
+            "title": "Dataset Shift in Machine Learning"
+        },
+        {
+            "paperId": "31668a7a3a9302274a6f460e664889f6954cdcd9",
+            "title": "Towards a Model Independent Method for Explaining Classification for Individual Instances"
+        },
+        {
+            "paperId": "6230b0d3dff9785b86c738e440f3644be03e3abe",
+            "title": "POIMs: positional oligomer importance matrices\u2014understanding support vector machine-based signal detectors"
+        },
+        {
+            "paperId": "dfa6247a208e31d67281ab3bd4d3516f3c728c35",
+            "title": "Explaining Classifications For Individual Instances"
+        },
+        {
+            "paperId": "bc3746a565d567e0ad5fa3fdcd4508cd72827dc7",
+            "title": "A Probabilistic Approach to Classifying Metabolic Stability"
+        },
+        {
+            "paperId": "f65072a62067205a9094dbcb14e418561d88a692",
+            "title": "Automatic QSAR modeling of ADME properties: blood\u2013brain barrier penetration and aqueous solubility"
+        },
+        {
+            "paperId": "1fc971fc394fd7a00922b082973568850e77a163",
+            "title": "Direct Importance Estimation with Model Selection and Its Application to Covariate Shift Adaptation"
+        },
+        {
+            "paperId": "424c3ab98f1ae2d9e9ecf892e15a12c09f4e9ffe",
+            "title": "Covariate Shift Adaptation by Importance Weighted Cross Validation"
+        },
+        {
+            "paperId": "0fa4559d18133291ece8511cdf6a9e1479f343ef",
+            "title": "Estimating the domain of applicability for machine learning QSAR models: a study on aqueous solubility of drug discovery molecules"
+        },
+        {
+            "paperId": "020ef74593039c24234b5398062384ad69f1d1dd",
+            "title": "Predicting Lipophilicity of Drug\u2010Discovery Molecules using Gaussian Process Models"
+        },
+        {
+            "paperId": "6d73451babd87fade05c4283e4ecee9c6974b5e3",
+            "title": "Machine learning models for lipophilicity and their domain of applicability."
+        },
+        {
+            "paperId": "1854503524b6808b44e0f1af8d967318897e68ef",
+            "title": "Gaussian Processes: A Method for Automatic QSAR Modeling of ADME Properties"
+        },
+        {
+            "paperId": "004dda598893d576cc9ebfb5839db226a34989e1",
+            "title": "Accurate Solubility Prediction with Error Bars for Electrolytes: A Machine Learning Approach"
+        },
+        {
+            "paperId": "6daefda840b79015b134aee52d6fb4903955a5d8",
+            "title": "Assessing Approximate Inference for Binary Gaussian Process Classification"
+        },
+        {
+            "paperId": "8ca86e941da7254613a5d03dd7a6c36886fadc1d",
+            "title": "Gaussian Processes for Machine Learning (Adaptive Computation and Machine Learning)"
+        },
+        {
+            "paperId": "5adf0c58b96e6118cf5fb80dcab592cba25e8ff6",
+            "title": "Derivation and validation of toxicophores for mutagenicity prediction."
+        },
+        {
+            "paperId": "554894f70b28dba58b396c2d84080ac01051261b",
+            "title": "Gaussian Processes For Machine Learning"
+        },
+        {
+            "paperId": "e41ba5dc12c79a64dfa905c0328f95976252ffe0",
+            "title": "The Elements of Statistical Learning"
+        },
+        {
+            "paperId": "fe21fe877bdee557c10eba1bf4c787f0f171b2ca",
+            "title": "An introduction to variable and feature selection"
+        },
+        {
+            "paperId": "d84287d4310a83ecee317ed36914bd72ed7768df",
+            "title": "A methodology to explain neural network classification"
+        },
+        {
+            "paperId": "05357314fe2da7c2248b03d89b7ab9e358cbf01e",
+            "title": "Learning with Kernels: support vector machines, regularization, optimization, and beyond"
+        },
+        {
+            "paperId": "b0dc8ab275a9036c2503a82f5bfb560a192a1997",
+            "title": "Symmetrizing the Kullback-Leibler Distance"
+        },
+        {
+            "paperId": "1fcbefeb0beae4470cf40df74cd116b1d4bdcae4",
+            "title": "An introduction to kernel-based learning algorithms"
+        },
+        {
+            "paperId": "6710b1fffd6e850e04f972441732ecf66cf372a2",
+            "title": "Decision theory in expert systems and artificial intelligenc"
+        },
+        {
+            "paperId": "bf8169062536a6092598a24845f3a5c225063e3b",
+            "title": "Bacterial mutagenicity investigation of epoxides: drugs, drug metabolites, steroids and pesticides."
+        },
+        {
+            "paperId": "9889aa3193a19e08a6b7d8706690e321a0d67d80",
+            "title": "Carcinogens as frameshift mutagens: metabolites and derivatives of 2-acetylaminofluorene and other aromatic amine carcinogens."
+        },
+        {
+            "paperId": "ab21376e43ac90a4eafd14f0f02a0c87502b6bbf",
+            "title": "THE USE OF MULTIPLE MEASUREMENTS IN TAXONOMIC PROBLEMS"
+        },
+        {
+            "paperId": "b87274e6d9aa4e6ba5148898aa92941617d2b6ed",
+            "title": "Efficient BackProp"
+        },
+        {
+            "paperId": null,
+            "title": "for results of modeling this set using di\ufb00erent machine learning methods"
+        },
+        {
+            "paperId": null,
+            "title": "J. Comput.-Aided Mol. Des"
+        },
+        {
+            "paperId": "591daa66a99222b3d68bda45054137be958e9a11",
+            "title": "Une m\u00e9thode d'interpr\u00e9tation de scores"
+        },
+        {
+            "paperId": null,
+            "title": "DRAGON for Windows and Linux"
+        },
+        {
+            "paperId": "d8384f7ef288d2d5cb267128471c5427fc98b54b",
+            "title": "An Introduction to Variable and Feature Selection"
+        },
+        {
+            "paperId": null,
+            "title": "SVM Toolbox for Matlab"
+        },
+        {
+            "paperId": "8213dbed4db44e113af3ed17d6dad57471a0c048",
+            "title": "The Nature of Statistical Learning Theory"
+        },
+        {
+            "paperId": "42e5ed832d4310ce4378c44d05570439df28a393",
+            "title": "Probabilistic Outputs for Support vector Machines and Comparisons to Regularized Likelihood Methods"
+        },
+        {
+            "paperId": "43fcdee6c6d885ac2bd32e122dbf282f93720c22",
+            "title": "A Probabilistic Theory of Pattern Recognition"
+        },
+        {
+            "paperId": "5451278e1a11cf3f1be28a05f38d36c8641e68f7",
+            "title": "The Nature of Statistical Learning"
+        },
+        {
+            "paperId": "83b6755242f1cff6bacf270f65b4626d4d118f32",
+            "title": "Neural Networks for Pattern Recognition"
+        },
+        {
+            "paperId": "d55a52946a8dd153f3e32d60d8b044a4bfefabbe",
+            "title": "Explanation in Bayesian belief networks"
+        },
+        {
+            "paperId": "36e07bdcb9f8aa618d6d077238d3de2e7818a0f5",
+            "title": "Robust statistics: the approach based on influence functions"
+        },
+        {
+            "paperId": null,
+            "title": "Tables resulting from this ranking are made available as a supplement to this paper and can be down-loaded from the journals website"
+        },
+        {
+            "paperId": null,
+            "title": "5 (left panel"
+        },
+        {
+            "paperId": null,
+            "title": "This \ufb01nding agrees with the result obtained by visually inspecting Figure 7(e)"
+        },
+        {
+            "paperId": null,
+            "title": "4 (right"
+        },
+        {
+            "paperId": null,
+            "title": "For the sake of simplicity"
+        },
+        {
+            "paperId": null,
+            "title": "Steroids are natural products and occur in humans, animals and plants. They have a characteristic backbone containing four fused carbon-rings. Many"
+        }
+    ]
+}

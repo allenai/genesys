@@ -1,0 +1,62 @@
+{
+    "paperId": "ed6262b569c0a62c51d941228c54f34e563af022",
+    "externalIds": {
+        "DBLP": "conf/icassp/SchusterN12",
+        "MAG": "2121879602",
+        "DOI": "10.1109/ICASSP.2012.6289079",
+        "CorpusId": 22320655
+    },
+    "title": "Japanese and Korean voice search",
+    "abstract": "This paper describes challenges and solutions for building a successful voice search system as applied to Japanese and Korean at Google. We describe the techniques used to deal with an infinite vocabulary, how modeling completely in the written domain for language model and dictionary can avoid some system complexity, and how we built dictionaries, language and acoustic models in this framework. We show how to deal with the difficulty of scoring results for multiple script languages because of ambiguities. The development of voice search for these languages led to a significant simplification of the original process to build a system for any new language which in in parts became our default process for internationalization of voice search.",
+    "venue": "IEEE International Conference on Acoustics, Speech, and Signal Processing",
+    "year": 2012,
+    "referenceCount": 7,
+    "citationCount": 796,
+    "influentialCitationCount": 47,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The techniques used to deal with an infinite vocabulary, how modeling completely in the written domain for language model and dictionary can avoid some system complexity, and how dictionaries, language and acoustic models are built in this framework are described."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "144927151",
+            "name": "M. Schuster"
+        },
+        {
+            "authorId": "2890161",
+            "name": "Kaisuke Nakajima"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "397cfc3b5a5b2134edfffd27a10a4985799f2eab",
+            "title": "Query language modeling for voice search"
+        },
+        {
+            "paperId": "8770b4a5ca7734c88e5755f9558f79e93229c023",
+            "title": "Boosted MMI for model and feature-space discriminative training"
+        },
+        {
+            "paperId": "2b899462b71be626c475c5a372a353de7ec07832",
+            "title": "Semi-tied covariance matrices for hidden Markov models"
+        },
+        {
+            "paperId": "21183f44dd07531e5beb1540a75893e14b402c7c",
+            "title": "\u201cYour Word is my Command\u201d: Google Search by Voice: A Case Study"
+        },
+        {
+            "paperId": "fc7ac43bf47c585f1486beb66be6a2c28d5e9197",
+            "title": "Search by voice in Mandarin Chinese"
+        },
+        {
+            "paperId": "5da529ac026887c3cff60d2dcbc536995bf80dad",
+            "title": "Building transcribed speech corpora quickly and cheaply for many languages"
+        },
+        {
+            "paperId": "57eb04cf0dc27a47cbd373bc8e1d44624769ad2f",
+            "title": "Google Search by Voice: A Case Study"
+        }
+    ]
+}

@@ -1,0 +1,139 @@
+{
+    "paperId": "e323f3e86cd766b50ade5d722af810f1ce3d2664",
+    "externalIds": {
+        "MAG": "2949560487",
+        "ACL": "P18-2041",
+        "ArXiv": "1805.03871",
+        "DBLP": "journals/corr/abs-1805-03871",
+        "DOI": "10.18653/v1/P18-2041",
+        "CorpusId": 13666623
+    },
+    "title": "Obligation and Prohibition Extraction Using Hierarchical RNNs",
+    "abstract": "We consider the task of detecting contractual obligations and prohibitions. We show that a self-attention mechanism improves the performance of a BILSTM classifier, the previous state of the art for this task, by allowing it to focus on indicative tokens. We also introduce a hierarchical BILSTM, which converts each sentence to an embedding, and processes the sentence embeddings to classify each sentence. Apart from being faster to train, the hierarchical BILSTM outperforms the flat one, even when the latter considers surrounding sentences, because the hierarchical model has a broader discourse view.",
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2018,
+    "referenceCount": 24,
+    "citationCount": 53,
+    "influentialCitationCount": 0,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/P18-2041.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A self-attention mechanism improves the performance of a BILSTM classifier, the previous state of the art for this task, by allowing it to focus on indicative tokens, and introduces a hierarchical BIL STM, which converts each sentence to an embedding, and processes the sentence embeddings to classify each sentence."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "10783142",
+            "name": "Ilias Chalkidis"
+        },
+        {
+            "authorId": "1752430",
+            "name": "Ion Androutsopoulos"
+        },
+        {
+            "authorId": "31837709",
+            "name": "A. Michos"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "3e991a571d243f6f5f9a6e1bf6fea1ae8b2805c9",
+            "title": "Artificial Intelligence and Legal Analytics: New Tools for Law Practice in the Digital Age"
+        },
+        {
+            "paperId": "921196c32213a229245a9705ee4768bc941e7a26",
+            "title": "An Empirical Evaluation of Generic Convolutional and Recurrent Networks for Sequence Modeling"
+        },
+        {
+            "paperId": "624ffc3675964e156e21e79e6b223b808cf3752f",
+            "title": "Deeper Attention to Abusive User Content Moderation"
+        },
+        {
+            "paperId": "aee60581bada1c35e84f136c0c8b0618e809eb0f",
+            "title": "Multilingual Hierarchical Attention Networks for Document Classification"
+        },
+        {
+            "paperId": "aee65ad029df77fbb5038e7a20ed99492c7f1e7e",
+            "title": "Extracting contract elements"
+        },
+        {
+            "paperId": "537811e59157694ed1181233686612bd85404cdc",
+            "title": "Classifying sentential modality in legal language: a use case in financial regulations, acts and directives"
+        },
+        {
+            "paperId": "2ed4d603470bb96f6ce02c3f705bd83bd2748ce8",
+            "title": "Towards an automated production of legal texts using recurrent neural networks"
+        },
+        {
+            "paperId": "300e899c1c178c64604c1572c7982d941f3acec9",
+            "title": "Two-step cascaded textual entailment for legal bar exam question answering"
+        },
+        {
+            "paperId": "85f94d8098322f8130512b4c6c4627548ce4a6cc",
+            "title": "Unsupervised Pretraining for Sequence to Sequence Learning"
+        },
+        {
+            "paperId": "455afd748e8834ef521e4b67c7c056d3c33429e2",
+            "title": "Hierarchical Attention Networks for Document Classification"
+        },
+        {
+            "paperId": "8dd6aae51e31a72752c4be5cddbdd76dfdc6cda4",
+            "title": "End-to-end Sequence Labeling via Bi-directional LSTM-CNNs-CRF"
+        },
+        {
+            "paperId": "f895cbc2d4a2cd00b4a81cccabc6d9c94b8ddfe4",
+            "title": "Hierarchical Recurrent Neural Network for Document Modeling"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "60dda7f5efd67758bde1ee7f45e6d3ef86445495",
+            "title": "Deep Recursive Neural Networks for Compositionality in Language"
+        },
+        {
+            "paperId": "1149888d75af4ed5dffc25731b875651c3ccdeb2",
+            "title": "Hybrid speech recognition with Deep Bidirectional LSTM"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "ea9d2a2b4ce11aaf85136840c65f3bc9c03ab649",
+            "title": "Understanding the difficulty of training deep feedforward neural networks"
+        },
+        {
+            "paperId": "cd9abf0a71612dc3237a2430ecb0e35aaa9c50b7",
+            "title": "Automating the Extraction of Rights and Obligations for Regulatory Compliance"
+        },
+        {
+            "paperId": "cb91a9ef1723440bd35a3e5965a2e180ad1ab36f",
+            "title": "Text Tiling: Segmenting Text into Multi-paragraph Subtopic Passages"
+        },
+        {
+            "paperId": "95f1188fd6d031893ecd823c33fb0908a7cf79dc",
+            "title": "A Deep Learning Approach to Contract Element Extraction"
+        },
+        {
+            "paperId": "c5187ffaec983ab440829ad0fd78f1cd57a22ed2",
+            "title": "Classifying Legal Norms with Active Machine Learning"
+        },
+        {
+            "paperId": "5848b115e827a711b79679595e0a92c75398f2e6",
+            "title": "Breakdown Detection using Hierarchical Bi-Directional LSTMs"
+        },
+        {
+            "paperId": "dbbb7956dda24c09beac31cf7413192eec92cd06",
+            "title": "Semantic Annotation of Finance Regulatory Text using Multilabel Classification"
+        },
+        {
+            "paperId": "4a37993e8815763e141885354230189e8e2199a3",
+            "title": "Book review: Artificial Intelligence and Legal Analytics: New Tools for Law Practice in the Digital Age"
+        }
+    ]
+}

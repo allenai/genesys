@@ -1,0 +1,66 @@
+{
+    "paperId": "15957c2a8dc85e5066e393da9ab70883876521ea",
+    "externalIds": {
+        "DBLP": "journals/computer/Welch84",
+        "MAG": "1990653637",
+        "DOI": "10.1109/MC.1984.1659158",
+        "CorpusId": 2055321
+    },
+    "title": "A Technique for High-Performance Data Compression",
+    "abstract": "Data stored on disks and tapes or transferred over communications links in commercial computer systems generally contains significant redundancy. A mechanism or procedure which recodes the data to lessen the redundancy could possibly double or triple the effective data densitites in stored or communicated data. Moreover, if compression is automatic, it can also aid in the rise of software development costs. A transparent compression mechanism could permit the use of \"sloppy\" data structures, in that empty space or sparse encoding of data would not greatly expand the use of storage space or transfer time; however , that requires a good compression procedure. Several problems encountered when common compression methods are integrated into computer systems have prevented the widespread use of automatic data compression. For example (1) poor runtime execution speeds interfere in the attainment of very high data rates; (2) most compression techniques are not flexible enough to process different types of redundancy; (3) blocks of compressed data that have unpredictable lengths present storage space management problems. Each compression ' This article was written while Welch was employed at Sperry Research Center; he is now employed with Digital Equipment Corporation. 8 m, 2 /R4/OflAb l strategy poses a different set of these problems and, consequently , the use of each strategy is restricted to applications where its inherent weaknesses present no critical problems. This article introduces a new compression algorithm that is based on principles not found in existing commercial methods. This algorithm avoids many of the problems associated with older methods in that it dynamically adapts to the redundancy characteristics of the data being compressed. An investigation into possible application of this algorithm yields insight into the compressibility of various types of data and serves to illustrate system problems inherent in using any compression scheme. For readers interested in simple but subtle procedures, some details of this algorithm and its implementations are also described. The focus throughout this article will be on transparent compression in which the computer programmer is not aware of the existence of compression except in system performance. This form of compression is \"noiseless,\" the decompressed data is an exact replica of the input data, and the compression apparatus is given no special program information, such as data type or usage statistics. Transparency is perceived to be important because putting an extra burden on the application programmer would cause",
+    "venue": "Computer",
+    "year": 1984,
+    "referenceCount": 9,
+    "citationCount": 2412,
+    "influentialCitationCount": 177,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new compression algorithm is introduced that is based on principles not found in existing commercial methods in that it dynamically adapts to the redundancy characteristics of the data being compressed, and serves to illustrate system problems inherent in using any compression scheme."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2576061",
+            "name": "T. Welch"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "3d951ad1164c17217a24e46b57f9b31cea1b2b96",
+            "title": "Data compression via textual substitution"
+        },
+        {
+            "paperId": "56da945f32902d58e1f96f15de6ca821a1c1a287",
+            "title": "File archival techniques using data compression"
+        },
+        {
+            "paperId": "dd1c175faa2b62c527cf5a7ff10e8a19edf384fc",
+            "title": "Special Feature An Overview of Data Compression Techniques"
+        },
+        {
+            "paperId": "5be4e0eccca2892d31406a03b0c485f7a395fe5a",
+            "title": "Compression of individual sequences via variable-rate coding"
+        },
+        {
+            "paperId": "59c9f2036e673d8bc9713eed851d12c6c9fe53cb",
+            "title": "A universal algorithm for sequential data compression"
+        },
+        {
+            "paperId": "834aa4126868246a70e8aa86adca4331108c9981",
+            "title": "Experiments in text file compression"
+        },
+        {
+            "paperId": "f1851fffb98009158aec0857c665836e84ec4751",
+            "title": "Linear Algorithm for Data Compression via String Matching"
+        },
+        {
+            "paperId": null,
+            "title": "SOF1ViWRE ENGINEERS DELIVERING THE ADVANTAGE"
+        },
+        {
+            "paperId": null,
+            "title": "At McDonnell Douglas, tough assignments are the rule. And superior careers are the reward"
+        }
+    ]
+}

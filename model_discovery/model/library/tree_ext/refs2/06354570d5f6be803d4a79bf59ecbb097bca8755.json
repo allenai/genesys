@@ -1,0 +1,123 @@
+{
+    "paperId": "06354570d5f6be803d4a79bf59ecbb097bca8755",
+    "externalIds": {
+        "DBLP": "journals/corr/abs-1805-04908",
+        "ArXiv": "1805.04908",
+        "MAG": "2951060295",
+        "ACL": "P18-2117",
+        "DOI": "10.18653/v1/P18-2117",
+        "CorpusId": 44115640
+    },
+    "title": "On the Practical Computational Power of Finite Precision RNNs for Language Recognition",
+    "abstract": "While Recurrent Neural Networks (RNNs) are famously known to be Turing complete, this relies on infinite precision in the states and unbounded computation time. We consider the case of RNNs with finite precision whose computation time is linear in the input length. Under these limitations, we show that different RNN variants have different computational power. In particular, we show that the LSTM and the Elman-RNN with ReLU activation are strictly stronger than the RNN with a squashing activation and the GRU. This is achieved because LSTMs and ReLU-RNNs can easily implement counting behavior. We show empirically that the LSTM does indeed learn to effectively use the counting mechanism.",
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2018,
+    "referenceCount": 20,
+    "citationCount": 240,
+    "influentialCitationCount": 26,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/P18-2117.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that the LSTM and the Elman-RNN with ReLU activation are strictly stronger than the RNN with a squashing activation and the GRU."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145909798",
+            "name": "Gail Weiss"
+        },
+        {
+            "authorId": "2089067",
+            "name": "Yoav Goldberg"
+        },
+        {
+            "authorId": "1743232",
+            "name": "Eran Yahav"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "31b26b31f28988ebcfe7ff356e7fda7e17f1558c",
+            "title": "Recurrent Neural Networks as Weighted Language Recognizers"
+        },
+        {
+            "paperId": "cf9a2017fead3239fef2223e0a24e37f59d6745f",
+            "title": "Towards String-To-Tree Neural Machine Translation"
+        },
+        {
+            "paperId": "39f1b108687f643015f96a0c800585a44621f99c",
+            "title": "Parsing as Language Modeling"
+        },
+        {
+            "paperId": "d46b81707786d18499f911b4ab72bb10c65406ba",
+            "title": "A Simple Way to Initialize Recurrent Networks of Rectified Linear Units"
+        },
+        {
+            "paperId": "a7976c2bacfbb194ddbe7fd10c2e50a545cf4081",
+            "title": "LSTM: A Search Space Odyssey"
+        },
+        {
+            "paperId": "47570e7f63e296f224a0e7f9a0d08b0de3cbaf40",
+            "title": "Grammar as a Foreign Language"
+        },
+        {
+            "paperId": "ac3ee98020251797c2b401e1389461df88e52e62",
+            "title": "Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "1be8778de4c6eb623871fe08d0998016bd60936f",
+            "title": "LSTM recurrent networks learn simple context-free and context-sensitive languages"
+        },
+        {
+            "paperId": "545a4e23bf00ddbc1d3325324b4c61f57cf45081",
+            "title": "Recurrent nets that time and count"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "2ef075032d4ce31e75cf28fd50c3a945b03c8abb",
+            "title": "RECURRENT NEURAL NETWORKS AND FINITE AUTOMATA"
+        },
+        {
+            "paperId": "93aaf126443643fb0835df896ab07b523f2c9613",
+            "title": "Analog computation via neural networks"
+        },
+        {
+            "paperId": "17594df98c222217a11510dd454ba52a5a737378",
+            "title": "On the computational power of neural nets"
+        },
+        {
+            "paperId": "668087f0ae7ce1de6e0bd0965dbb480c08103260",
+            "title": "Finding Structure in Time"
+        },
+        {
+            "paperId": "31b1beb7a33feee7853fe195e5bc554d581154c6",
+            "title": "Counter machines and counter languages"
+        },
+        {
+            "paperId": "28135fd3e80dda50a673cd556f10b9b972005d27",
+            "title": "Binarized Neural Networks"
+        },
+        {
+            "paperId": "e43691c436c507e0ce1f9e433f6c2ae39318b6e8",
+            "title": "Neural Networks and Analog Computation"
+        },
+        {
+            "paperId": null,
+            "title": "These LSTMs generalize to much higher n than seen in the training set (though not in-\ufb01nitely so)"
+        },
+        {
+            "paperId": null,
+            "title": "The trained LSTM learn to use the per-dimension counting mechanism"
+        }
+    ]
+}

@@ -1,0 +1,150 @@
+{
+    "paperId": "08969cbeb4ac3fe0b20754cbcf221f8031fc682f",
+    "externalIds": {
+        "ArXiv": "1511.06440",
+        "DBLP": "journals/corr/SutskeverJGRLV15",
+        "MAG": "2179581459",
+        "CorpusId": 7221394
+    },
+    "title": "Towards Principled Unsupervised Learning",
+    "abstract": "General unsupervised learning is a long-standing conceptual problem in machine learning. Supervised learning is successful because it can be solved by the minimization of the training error cost function. Unsupervised learning is not as successful, because the unsupervised objective may be unrelated to the supervised task of interest. For an example, density modelling and reconstruction have often been used for unsupervised learning, but they did not produced the sought-after performance gains, because they have no knowledge of the supervised tasks. \nIn this paper, we present an unsupervised cost function which we name the Output Distribution Matching (ODM) cost, which measures a divergence between the distribution of predictions and distributions of labels. The ODM cost is appealing because it is consistent with the supervised cost in the following sense: a perfect supervised classifier is also perfect according to the ODM cost. Therefore, by aggressively optimizing the ODM cost, we are almost guaranteed to improve our supervised performance whenever the space of possible predictions is exponentially large. \nWe demonstrate that the ODM cost works well on number of small and semi-artificial datasets using no (or almost no) labelled training cases. Finally, we show that the ODM cost can be used for one-shot domain adaptation, which allows the model to classify inputs that differ from the input distribution in significant ways without the need for prior exposure to the new domain.",
+    "venue": "arXiv.org",
+    "year": 2015,
+    "referenceCount": 25,
+    "citationCount": 48,
+    "influentialCitationCount": 6,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "By aggressively optimizing the ODM cost, this paper shows that the model can be used for one-shot domain adaptation, which allows the model to classify inputs that differ from the input distribution in significant ways without the need for prior exposure to the new domain."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1701686",
+            "name": "I. Sutskever"
+        },
+        {
+            "authorId": "1944541",
+            "name": "R. J\u00f3zefowicz"
+        },
+        {
+            "authorId": "144717963",
+            "name": "Karol Gregor"
+        },
+        {
+            "authorId": "1748523",
+            "name": "Danilo Jimenez Rezende"
+        },
+        {
+            "authorId": "2542999",
+            "name": "T. Lillicrap"
+        },
+        {
+            "authorId": "1689108",
+            "name": "O. Vinyals"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "cddf8a10c7f48df67a797808a615be0d4acf9a8e",
+            "title": "Semi-supervised Learning with Ladder Networks"
+        },
+        {
+            "paperId": "6e795c6e9916174ae12349f5dc3f516570c17ce8",
+            "title": "Skip-Thought Vectors"
+        },
+        {
+            "paperId": "47900aca2f0b50da3010ad59b394c870f0e6c02e",
+            "title": "Deep Generative Image Models using a Laplacian Pyramid of Adversarial Networks"
+        },
+        {
+            "paperId": "1d5972b32a9b5a455a6eef389de5b7fca25771ad",
+            "title": "Domain-Adversarial Training of Neural Networks"
+        },
+        {
+            "paperId": "1c734a14c2325cb76783ca0431862c7f04a69268",
+            "title": "Deep Domain Confusion: Maximizing for Domain Invariance"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "66ad2fbc8b73242a889699868611fcf239e3435d",
+            "title": "Semi-supervised Learning with Deep Generative Models"
+        },
+        {
+            "paperId": "5f5dc5b9a2ba710937e2c413b37b053cd673df02",
+            "title": "Auto-Encoding Variational Bayes"
+        },
+        {
+            "paperId": "0157dcd6122c20b5afc359a799b2043453471f7f",
+            "title": "Exploiting Similarities among Languages for Machine Translation"
+        },
+        {
+            "paperId": "f6b51c8753a871dc94ff32152c00c01e94f90f09",
+            "title": "Efficient Estimation of Word Representations in Vector Space"
+        },
+        {
+            "paperId": "be9a17321537d9289875fe475b71f4821457b435",
+            "title": "An Analysis of Single-Layer Networks in Unsupervised Feature Learning"
+        },
+        {
+            "paperId": "681f6e3defcbdf931de975d720e185b2193ff343",
+            "title": "Unsupervised and Transfer Learning Challenge: a Deep Learning Approach"
+        },
+        {
+            "paperId": "082996bc27382467da36a01b5bfec689717cb60f",
+            "title": "A Statistical Model for Lost Language Decipherment"
+        },
+        {
+            "paperId": "3bd05be25c18887248f101505b8cefbfccc44843",
+            "title": "Attacking Decipherment Problems Optimally with Low-Order N-gram Models"
+        },
+        {
+            "paperId": "3709b6cb2ed14c04b60e38d5f75e89c41317e93d",
+            "title": "Learning Bilingual Lexicons from Monolingual Corpora"
+        },
+        {
+            "paperId": "355d44f53428b1ac4fb2ab468d593c720640e5bd",
+            "title": "Greedy Layer-Wise Training of Deep Networks"
+        },
+        {
+            "paperId": "af053bbb2a9ed53d73f5ab22a804720b0887c927",
+            "title": "Unsupervised Analysis for Decipherment Problems"
+        },
+        {
+            "paperId": "8978cf7574ceb35f4c3096be768c7547b28a35d0",
+            "title": "A Fast Learning Algorithm for Deep Belief Nets"
+        },
+        {
+            "paperId": "120ac09b2734ba9d785f6f3def85fe1936aa4322",
+            "title": "Learning a Translation Lexicon from Monolingual Corpora"
+        },
+        {
+            "paperId": "052b1d8ce63b07fec3de9dbb583772d860b7c769",
+            "title": "Learning representations by back-propagating errors"
+        },
+        {
+            "paperId": "c51641c3aec0b76518c329b942d7d9d9f74d9b3c",
+            "title": "Cryptogram decoding for optical character recognition"
+        },
+        {
+            "paperId": "7c59908c946a4157abc030cdbe2b63d08ba97db3",
+            "title": "Supporting Online Material for Reducing the Dimensionality of Data with Neural Networks"
+        },
+        {
+            "paperId": "c0b79601f2dd856904a1fcc34e16d59e7429fdb2",
+            "title": "A Technical Word- and Term-Translation Aid Using Noisy Parallel Corpora across Language Groups"
+        },
+        {
+            "paperId": null,
+            "title": "Text OCR by solving a cryptogram. International Business Machines Incorporated"
+        },
+        {
+            "paperId": "89b1be291ad824d5652c8f6953c1c32dc55abbe1",
+            "title": "Under review as a conference paper at ICLR 2019 softmax Transpose Updated Memory Memory embedded input linear concat Attention Weights concat"
+        }
+    ]
+}

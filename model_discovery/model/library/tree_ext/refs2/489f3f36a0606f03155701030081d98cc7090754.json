@@ -1,0 +1,210 @@
+{
+    "paperId": "489f3f36a0606f03155701030081d98cc7090754",
+    "externalIds": {
+        "DBLP": "journals/siammax/AvronCW17",
+        "MAG": "2950240514",
+        "ArXiv": "1611.03220",
+        "DOI": "10.1137/16M1105396",
+        "CorpusId": 3881777
+    },
+    "title": "Faster Kernel Ridge Regression Using Sketching and Preconditioning",
+    "abstract": "Kernel ridge regression is a simple yet powerful technique for nonparametric regression whose computation amounts to solving a linear system. This system is usually dense and highly ill-conditioned. In addition, the dimensions of the matrix are the same as the number of data points, so direct methods are unrealistic for large-scale datasets. In this paper, we propose a preconditioning technique for accelerating the solution of the aforementioned linear system. The preconditioner is based on random feature maps, such as random Fourier features, which have recently emerged as a powerful technique for speeding up and scaling the training of kernel-based methods, such as kernel ridge regression, by resorting to approximations. However, random feature maps only provide crude approximations to the kernel function, so delivering state-of-the-art results by directly solving the approximated system requires the number of random features to be very large. We show that random feature maps can be much more effective ...",
+    "venue": "SIAM Journal on Matrix Analysis and Applications",
+    "year": 2016,
+    "referenceCount": 42,
+    "citationCount": 114,
+    "influentialCitationCount": 13,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1611.03220",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper proposes a preconditioning technique based on random feature maps, such as random Fourier features, which have recently emerged as a powerful technique for speeding up and scaling the training of kernel-based methods by resorting to approximations."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1922753",
+            "name": "H. Avron"
+        },
+        {
+            "authorId": "2055593",
+            "name": "K. Clarkson"
+        },
+        {
+            "authorId": "143982862",
+            "name": "David P. Woodruff"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "1c3e88a1c1c2f0d10bec2991a9a7fb6f36dad01f",
+            "title": "Sharper Bounds for Regularized Data Fitting"
+        },
+        {
+            "paperId": "94121613bdc2b29bf03d7918948c657d835c78bb",
+            "title": "Sharper Bounds for Regression and Low-Rank Approximation with Regularization"
+        },
+        {
+            "paperId": "581ace3120b3ef3ae67496723f773117bf781260",
+            "title": "Hierarchically Compositional Kernels for Scalable Nonparametric Learning"
+        },
+        {
+            "paperId": "ca7d45e945362202cd9cb53b63bb45f378df49d0",
+            "title": "Efficient one-vs-one kernel ridge regression for speech recognition"
+        },
+        {
+            "paperId": "680608e00f25b740f32f4a9701568fbf4621d829",
+            "title": "Preconditioning Kernel Matrices"
+        },
+        {
+            "paperId": "24880ceed40ab6433d88cd60343863320c6e0555",
+            "title": "Large Scale Kernel Learning using Block Coordinate Descent"
+        },
+        {
+            "paperId": "a549bed132e669b3f581df1ac029f4a09115dc3f",
+            "title": "Fast Randomized Kernel Ridge Regression with Statistical Guarantees"
+        },
+        {
+            "paperId": "b27c928920ea01599bf06c1052960ddca7d2c8c9",
+            "title": "Optimal Approximate Matrix Product in Terms of Stable Rank"
+        },
+        {
+            "paperId": "9961449d085f0593882d4bdbe53268e8328254a5",
+            "title": "Implementing Randomized Matrix Algorithms in Parallel and Distributed Environments"
+        },
+        {
+            "paperId": "c51ded75669a7e0129cce27357158ca89d25c1ad",
+            "title": "Randomized sketches for kernels: Fast and optimal non-parametric regression"
+        },
+        {
+            "paperId": "503347a28184ec6d92137cfcab11a2f862318fcb",
+            "title": "Subspace Embeddings for the Polynomial Kernel"
+        },
+        {
+            "paperId": "bd47e101c7f869fffc57f529e532a0b9cf275a26",
+            "title": "How to Scale Up Kernel Methods to Be As Good As Deep Neural Nets"
+        },
+        {
+            "paperId": "ecbea3b74deb06657a2d0100a717501f7d1a252a",
+            "title": "Sketching as a Tool for Numerical Linear Algebra"
+        },
+        {
+            "paperId": "6a698d083dbf55c477e0fc1bac00406aa92ed348",
+            "title": "High-Performance Kernel Machines With Implicit Distributed Optimization and Randomization"
+        },
+        {
+            "paperId": "a09e59fdad035c3eacd3cdcf2651be11c4755e2a",
+            "title": "Preconditioned Krylov solvers for kernel regression"
+        },
+        {
+            "paperId": "6007164957cced3e5d5b02d3402ea82c3530d852",
+            "title": "Scalable Kernel Methods via Doubly Stochastic Gradients"
+        },
+        {
+            "paperId": "b3c879b2430a61d8c4393436685c85bcfbd6c6d8",
+            "title": "Kernel methods match Deep Neural Networks on TIMIT"
+        },
+        {
+            "paperId": "4f50f5d7c84a140ff0d5bf5a671d553145e83a9c",
+            "title": "A Fast Summation Tree Code for Mat\u00e9rn Kernel"
+        },
+        {
+            "paperId": "b03e90e1d44af90f296706098b1a5ea747b72ba9",
+            "title": "Compact Random Feature Maps"
+        },
+        {
+            "paperId": "7cda32aeefdd3cabd76871b8ee06bd1a1ea2ba10",
+            "title": "Revisiting the Nystrom Method for Improved Large-scale Machine Learning"
+        },
+        {
+            "paperId": "8e80a6e27c048ff90ee10a4d20010927736a6287",
+            "title": "Elemental: A New Framework for Distributed Memory Dense Matrix Computations"
+        },
+        {
+            "paperId": "7a76cd1bbd8f374c7e6bcb36296e9b7530c0e477",
+            "title": "Sharp analysis of low-rank kernel matrix approximations"
+        },
+        {
+            "paperId": "50353738eb935a0546aeb2e81882e2f334e32ab8",
+            "title": "Sampling Methods for the Nystr\u00f6m Method"
+        },
+        {
+            "paperId": "4407d119ba9682af2557514b609d56783bf392cd",
+            "title": "LSRN: A Parallel Iterative Solver for Strongly Over- or Underdetermined Systems"
+        },
+        {
+            "paperId": "f4647a881973a074cde283318c57434369ca66fa",
+            "title": "Compressed matrix multiplication"
+        },
+        {
+            "paperId": "2fb8eaf151c95307cee931c86752c34fa8efa0ce",
+            "title": "Optimal learning rates for Kernel Conjugate Gradient regression"
+        },
+        {
+            "paperId": "a471515c46aeba729cc50b3e7814ca85b69115a1",
+            "title": "Blendenpik: Supercharging LAPACK's Least-Squares Solver"
+        },
+        {
+            "paperId": "bda48e212c6f41d1e89816f559ee445762ea4ccb",
+            "title": "Automatic online tuning for fast Gaussian summation"
+        },
+        {
+            "paperId": "1c044e893d7055327e2971a9a9b65a8c764ca174",
+            "title": "Finding frequent items in data streams"
+        },
+        {
+            "paperId": "7a59fde27461a3ef4a21a249cc403d0d96e4a0d7",
+            "title": "Random Features for Large-Scale Kernel Machines"
+        },
+        {
+            "paperId": "9c47a465e02cd7c3470559d772dd6328ba8b77cc",
+            "title": "Faster least squares approximation"
+        },
+        {
+            "paperId": "d266c745d5f432464c34e461595d4ec7ee3ebff9",
+            "title": "Large-Scale Kernel Machines (Neural Information Processing)"
+        },
+        {
+            "paperId": "c02a63dbb6ee4f3a78b147f6228da4c78106ad3a",
+            "title": "Learning Bounds for Kernel Regression Using Effective Data Dimensionality"
+        },
+        {
+            "paperId": "24763030fb1e9813dad51d28bea9c5d1414f9cda",
+            "title": "Finding frequent items in data streams"
+        },
+        {
+            "paperId": "f96a214a253aaab297a138405812c856945ed335",
+            "title": "Proximal support vector machine classifiers"
+        },
+        {
+            "paperId": "922b81f11a71aa64cda78914e6356cce89cd4f86",
+            "title": "Ridge Regression Learning Algorithm in Dual Variables"
+        },
+        {
+            "paperId": "70000f7791ab8519429ce939bc897738a05939c3",
+            "title": "An Introduction to the Conjugate Gradient Method Without the Agonizing Pain"
+        },
+        {
+            "paperId": "aa83e435487321b9400eb184e85e638fa7f847c6",
+            "title": "Fast large scale Gaussian process regression using approximate matrix-vector products"
+        },
+        {
+            "paperId": "b6fff8b8ea77f157913986e7af53951d9fc1128e",
+            "title": "Using the Nystr\u00f6m Method to Speed Up Kernel Machines"
+        },
+        {
+            "paperId": null,
+            "title": "https://doi.org/10"
+        },
+        {
+            "paperId": "0fba6763b78c55eb512683dcf599a03b0d5c70d2",
+            "title": "Electronic Colloquium on Computational Complexity, Report No. 70 (2007) Fast Dimension Reduction Using Rademacher Series on Dual BCH Codes"
+        },
+        {
+            "paperId": null,
+            "title": "k Q Q \u2212 Q Q k 2 \u2264 k Q Q \u2212 Q Q k F \u2264 2 Now complete the proof using the equality Tr ( K ( Q , Q )) = s \u03bb ( K ) ("
+        }
+    ]
+}

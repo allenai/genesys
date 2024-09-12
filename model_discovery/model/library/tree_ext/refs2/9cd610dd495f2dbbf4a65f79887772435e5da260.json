@@ -1,0 +1,50 @@
+{
+    "paperId": "9cd610dd495f2dbbf4a65f79887772435e5da260",
+    "externalIds": {
+        "DBLP": "conf/www/PetersL13",
+        "MAG": "1706374111",
+        "DOI": "10.1145/2487788.2487828",
+        "CorpusId": 14554321
+    },
+    "title": "Content extraction using diverse feature sets",
+    "abstract": "The goal of content extraction or boilerplate detection is to separate the main content from navigation chrome, advertising blocks, copyright notices and the like in web pages. In this paper we explore a machine learning approach to content extraction that combines diverse feature sets and methods. Our main contributions are: a) preliminary results that show combining feature sets generally improves performance; and b) a method for including semantic information via id and class attributes applicable to HTML5. We also show that performance decreases on a new benchmark data set that better represents modern chrome.",
+    "venue": "The Web Conference",
+    "year": 2013,
+    "referenceCount": 4,
+    "citationCount": 43,
+    "influentialCitationCount": 6,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Preliminary results that show combining feature sets generally improves performance are shown and a method for including semantic information via id and class attributes applicable to HTML5 is developed, showing that performance decreases on a new benchmark data set that better represents modern chrome."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "39139825",
+            "name": "Matthew E. Peters"
+        },
+        {
+            "authorId": "2081990654",
+            "name": "Dan Lecocq"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "bc693993d28d1c54e00cd626068fd2ed06cf42b4",
+            "title": "DOM based content extraction via text density"
+        },
+        {
+            "paperId": "9049a8326b42f6902a6e33da595b1bd27cc9d586",
+            "title": "CETR: content extraction via tag ratios"
+        },
+        {
+            "paperId": "b11b8299608bd4411f037d4ba60327cd3f105b53",
+            "title": "Boilerplate detection using shallow text features"
+        },
+        {
+            "paperId": "094a417f47ab2cd278eba94bf0d4f7b4bff6319f",
+            "title": "Extracting article text from the web with maximum subsequence segmentation"
+        }
+    ]
+}

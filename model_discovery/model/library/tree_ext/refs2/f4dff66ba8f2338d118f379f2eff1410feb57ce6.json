@@ -1,0 +1,124 @@
+{
+    "paperId": "f4dff66ba8f2338d118f379f2eff1410feb57ce6",
+    "externalIds": {
+        "MAG": "2119609467",
+        "DOI": "10.1145/113445.113449",
+        "CorpusId": 52798160
+    },
+    "title": "A data locality optimizing algorithm",
+    "abstract": "This paper proposes an algorithm that improves the locality of a loop nest by transforming the code via interchange, reversal, skewing and tiling. The loop transformation algorithm is based on two concepts: a mathematical formulation of reuse and locality, and a loop transformation theory that unifies the various transforms as unimodular matrix transformations.The algorithm has been implemented in the SUIF (Stanford University Intermediate Format) compiler, and is successful in optimizing codes such as matrix multiplication, successive over-relaxation (SOR), LU decomposition without pivoting, and Givens QR factorization. Performance evaluation indicates that locality optimization is especially crucial for scaling up the performance of parallel code.",
+    "venue": "ACM-SIGPLAN Symposium on Programming Language Design and Implementation",
+    "year": 1991,
+    "referenceCount": 22,
+    "citationCount": 1230,
+    "influentialCitationCount": 111,
+    "openAccessPdf": {
+        "url": "https://dl.acm.org/doi/pdf/10.1145/113446.113449",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An algorithm that improves the locality of a loop nest by transforming the code via interchange, reversal, skewing and tiling is proposed, and is successful in optimizing codes such as matrix multiplication, successive over-relaxation, LU decomposition without pivoting, and Givens QR factorization."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "10214063",
+            "name": "Michael E. Wolf"
+        },
+        {
+            "authorId": "39682108",
+            "name": "M. Lam"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "5426e2a319a7f23389ccbb99eb1b5359d26a1751",
+            "title": "Global optimizations for parallelism and locality on scalable parallel machines"
+        },
+        {
+            "paperId": "5d80427dd880159b32cb3a84942ed132debd1df3",
+            "title": "A Loop Transformation Theory and an Algorithm to Maximize Parallelism"
+        },
+        {
+            "paperId": "318def48f4414636555d44f52da8c0bab16a46bc",
+            "title": "The cache performance and optimizations of blocked algorithms"
+        },
+        {
+            "paperId": "e89225f891a98820121832a155c2a275d563b0b1",
+            "title": "Automatic Blocking of Nested Loops"
+        },
+        {
+            "paperId": "166641a1c482e2aadbafed7d5f7e637924442237",
+            "title": "A set of level 3 basic linear algebra subprograms"
+        },
+        {
+            "paperId": "831cc6d9b7a333b38d34d923b52aed438e90ee1e",
+            "title": "More iteration space tiling"
+        },
+        {
+            "paperId": "26eede20ea9b8902911b69fd452b787e6d86f339",
+            "title": "Strategies for cache and local memory management by global program transformation"
+        },
+        {
+            "paperId": "a51652b8b4568de71cfcbfe08c25f5eb6c5b3ac0",
+            "title": "Impact of Hierarchical Memory Systems On Linear Algebra Algorithm Design"
+        },
+        {
+            "paperId": "38747b103e631e1a3800a0f4aed496d1bf8fb82f",
+            "title": "Supernode partitioning"
+        },
+        {
+            "paperId": "13d3eb5213678ffbbb4773e57754ad94c4ee61b2",
+            "title": "Organizing matrices and matrix operations for paged memory systems"
+        },
+        {
+            "paperId": null,
+            "title": "Dataflow analysis of scalar and array references"
+        },
+        {
+            "paperId": null,
+            "title": "Unimodular transformations of double loops"
+        },
+        {
+            "paperId": "ddc6200131e858f49eb14fc81fda91cefe3019e9",
+            "title": "Software methods for improvement of cache performance on supercomputer applications"
+        },
+        {
+            "paperId": "0e3046376d340ffd760d7c7f5eab3dada98a7f26",
+            "title": "Dependence analysis for supercomputing"
+        },
+        {
+            "paperId": null,
+            "title": "Computing dependence direction vectors and dependence cones"
+        },
+        {
+            "paperId": "225ca57add3b3fb12ef01cc97c4683350dc93fe4",
+            "title": "Matrix computations"
+        },
+        {
+            "paperId": "ea3b57a0fe46c7de2f43c62c6773cc2eed5a42f7",
+            "title": "Improving the Performance of Virtual Memory Computers"
+        },
+        {
+            "paperId": null,
+            "title": "ACM SIGPLAN 455 Best of PLDI"
+        },
+        {
+            "paperId": null,
+            "title": "Techniques for improving the inherent parallelism in programs"
+        },
+        {
+            "paperId": null,
+            "title": "Data dependence in ordinary programs"
+        },
+        {
+            "paperId": "cdfe13deb004b9faa005289f8e66ba822a5f312e",
+            "title": "The organization of matrices and matrix operations in a paged multiprogramming environment"
+        },
+        {
+            "paperId": null,
+            "title": "The funding of the SUIF project was provided by DARPA, NSF and the Department of Energy. I wish to thank my DARPA program managers"
+        }
+    ]
+}

@@ -1,0 +1,218 @@
+{
+    "paperId": "5bf31dc4bd54b623008c13f8bc8954dc7c9a2d80",
+    "externalIds": {
+        "MAG": "2726670313",
+        "DBLP": "conf/nips/SchuttKFCTM17",
+        "ArXiv": "1706.08566",
+        "CorpusId": 4106658
+    },
+    "title": "SchNet: A continuous-filter convolutional neural network for modeling quantum interactions",
+    "abstract": "Deep learning has the potential to revolutionize quantum chemistry as it is ideally suited to learn representations for structured data and speed up the exploration of chemical space. While convolutional neural networks have proven to be the first choice for images, audio and video data, the atoms in molecules are not restricted to a grid. Instead, their precise locations contain essential physical information, that would get lost if discretized. Thus, we propose to use continuous-filter convolutional layers to be able to model local correlations without requiring the data to lie on a grid. We apply those layers in SchNet: a novel deep learning architecture modeling quantum interactions in molecules. We obtain a joint model for the total energy and interatomic forces that follows fundamental quantum-chemical principles. This includes rotationally invariant energy predictions and a smooth, differentiable potential energy surface. Our architecture achieves state-of-the-art performance for benchmarks of equilibrium molecules and molecular dynamics trajectories. Finally, we introduce a more challenging benchmark with chemical and structural variations that suggests the path for further work.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2017,
+    "referenceCount": 42,
+    "citationCount": 919,
+    "influentialCitationCount": 129,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes to use continuous-filter convolutional layers to be able to model local correlations without requiring the data to lie on a grid, and obtains a joint model for the total energy and interatomic forces that follows fundamental quantum-chemical principles."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "31961144",
+            "name": "Kristof Sch\u00fctt"
+        },
+        {
+            "authorId": "2113697",
+            "name": "Pieter-Jan Kindermans"
+        },
+        {
+            "authorId": "29800712",
+            "name": "Huziel Enoc Sauceda Felix"
+        },
+        {
+            "authorId": "7631063",
+            "name": "Stefan Chmiela"
+        },
+        {
+            "authorId": "2462983",
+            "name": "A. Tkatchenko"
+        },
+        {
+            "authorId": "145034054",
+            "name": "K. M\u00fcller"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "b891a88f130f2fe174272c60189ebc34e6e9ea77",
+            "title": "Prediction Errors of Molecular Machine Learning Models Lower than Hybrid DFT Error."
+        },
+        {
+            "paperId": "e24cdf73b3e7e590c2fe5ecac9ae8aa983801367",
+            "title": "Neural Message Passing for Quantum Chemistry"
+        },
+        {
+            "paperId": "7b6cef118b3292d3b46a03a1ef2a4e2777653b4c",
+            "title": "Fast machine learning models of electronic and energetic properties consistently reach approximation errors better than DFT accuracy"
+        },
+        {
+            "paperId": "33d9d4593d44792e17a045e5f3407f0fe7a40dd1",
+            "title": "Machine learning of accurate energy-conserving molecular force fields"
+        },
+        {
+            "paperId": "5b6ec746d309b165f9f9def873a2375b6fb40f3d",
+            "title": "Xception: Deep Learning with Depthwise Separable Convolutions"
+        },
+        {
+            "paperId": "28f7cc049f3f4a4db81f0d0a608a4f57636cc35b",
+            "title": "Quantum-chemical insights from deep tensor neural networks"
+        },
+        {
+            "paperId": "df0402517a7338ae28bc54acaac400de6b456a46",
+            "title": "WaveNet: A Generative Model for Raw Audio"
+        },
+        {
+            "paperId": "2e5ee400be272be9c64c40f19ea91efb11046202",
+            "title": "Bypassing the Kohn-Sham equations with machine learning"
+        },
+        {
+            "paperId": "11ff55939971afa75b2ebf18e931c151fd131fb0",
+            "title": "REDFIT-X: Cross-spectral analysis of unevenly spaced paleoclimate time series"
+        },
+        {
+            "paperId": "aba48504f4f9563eafa44e0cfb22e1345d767c80",
+            "title": "Dynamic Filter Networks"
+        },
+        {
+            "paperId": "9f0fc0b3d525c27665896dc7fc24a8f204056f2d",
+            "title": "Wavelet Scattering Regression of Quantum Chemical Energies"
+        },
+        {
+            "paperId": "561c3fa53d36405186da9cab02bd68635c3738aa",
+            "title": "Molecular graph convolutions: moving beyond fingerprints"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "f63e917638553414526a0cc8550de4ad2d83fe7a",
+            "title": "Fast and Accurate Deep Network Learning by Exponential Linear Units (ELUs)"
+        },
+        {
+            "paperId": "5d1bfeed240709725c78bc72ea40e55410b373dc",
+            "title": "Convolutional Networks on Graphs for Learning Molecular Fingerprints"
+        },
+        {
+            "paperId": "e49ff72d420c8d72e62a9353e3abc053445e59bd",
+            "title": "Deep Convolutional Networks on Graph-Structured Data"
+        },
+        {
+            "paperId": "03956f0d63c1a8a3c9192afc5d05781779858005",
+            "title": "Machine Learning Predictions of Molecular Properties: Accurate Many-Body Potentials and Nonlocality in Chemical Space"
+        },
+        {
+            "paperId": "219702566e842652b78b678611ef37bbfa32c604",
+            "title": "The chemical space project."
+        },
+        {
+            "paperId": "07fcfb33b38e5b03866165eec48e07d12b37178b",
+            "title": "Bayesian interpolation of unequally spaced time series"
+        },
+        {
+            "paperId": "a743115795375666593919cbd48590213c229ae9",
+            "title": "Geodesic Convolutional Neural Networks on Riemannian Manifolds"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "7cbd04ee9de482866305ef403e7a2212ec84c7d1",
+            "title": "A method for the estimation of the significance of cross-correlations in unevenly sampled red-noise time series"
+        },
+        {
+            "paperId": "89655dc3c3a794cb25e055aed79424c66301d70f",
+            "title": "Quantum chemistry structures and properties of 134 kilo molecules"
+        },
+        {
+            "paperId": "6d4c9c923e9f145d1c01a2de2afc38ec23c44253",
+            "title": "Large-Scale Video Classification with Convolutional Neural Networks"
+        },
+        {
+            "paperId": "5e925a9f1e20df61d1e860a7aa71894b35a1c186",
+            "title": "Spectral Networks and Locally Connected Networks on Graphs"
+        },
+        {
+            "paperId": "0d39cc42f2186dac99898121bbc8bb2b965ba93d",
+            "title": "Assessment and Validation of Machine Learning Methods for Predicting Molecular Atomization Energies."
+        },
+        {
+            "paperId": "3ced109e0c16014cf4cdd677aeb1b95acf1c35d6",
+            "title": "How to represent crystal structures for machine learning: Towards fast prediction of electronic properties"
+        },
+        {
+            "paperId": "4a77a2ed53529431d816c42ec4554364e80ee18b",
+            "title": "Machine learning of molecular electronic properties in chemical compound space"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "99f2d996c8d2ff8e0f667b7237a7ed7de7cc5bf3",
+            "title": "On representing chemical environments"
+        },
+        {
+            "paperId": "6c10262a5d4230c7c85fbe528b8bbd9444116bca",
+            "title": "Finding Density Functionals with Machine Learning"
+        },
+        {
+            "paperId": "df2a7756382540e92895f10703cec32d50c4f316",
+            "title": "Fast and accurate modeling of molecular atomization energies with machine learning."
+        },
+        {
+            "paperId": "52da1e119d033fb2f289878cfa4a624df67378bf",
+            "title": "Atom-centered symmetry functions for constructing high-dimensional neural network potentials."
+        },
+        {
+            "paperId": "b587740a3051a4503b3edbb568d2333ab786e056",
+            "title": "Gaussian approximation potentials: the accuracy of quantum mechanics, without the electrons."
+        },
+        {
+            "paperId": "5d0dff55d6302848d59651de1b85e4195e9dff3b",
+            "title": "970 million druglike small molecules for virtual screening in the chemical universe database GDB-13."
+        },
+        {
+            "paperId": "7cb04f1ade6f426c70aa979a6771865400572dba",
+            "title": "Development of generalized potential-energy surfaces using many-body expansions, neural networks, and moiety energy approximations."
+        },
+        {
+            "paperId": "6ccabb3811728bb6a80c4519b1b716cfd6727402",
+            "title": "Simultaneous fitting of a potential-energy surface and its corresponding force fields using feedforward neural networks."
+        },
+        {
+            "paperId": "25a081126295898458fc36caf656f9b770fc5968",
+            "title": "Generalized neural-network representation of high-dimensional potential-energy surfaces."
+        },
+        {
+            "paperId": "3384e0a25a8589a82ccd1d8710bee6b510d53022",
+            "title": "A random-sampling high dimensional model representation neural network for building potential energy surfaces."
+        },
+        {
+            "paperId": "a8e8f3c8d4418c8d62e306538c9c1292635e9d27",
+            "title": "Backpropagation Applied to Handwritten Zip Code Recognition"
+        },
+        {
+            "paperId": "f7d082dadbda591cae3ff1cbbbc711feae2563d7",
+            "title": "Solid Harmonic Wavelet Scattering: Predicting Quantum Molecular Energy from Invariant Descriptors of 3D Electronic Densities"
+        },
+        {
+            "paperId": "8aa15d3fcc5f67b62abd27f78042e1691954217f",
+            "title": "Spherical convolutions and their application in molecular modelling"
+        }
+    ]
+}

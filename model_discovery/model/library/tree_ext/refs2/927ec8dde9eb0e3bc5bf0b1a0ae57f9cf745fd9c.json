@@ -1,0 +1,286 @@
+{
+    "paperId": "927ec8dde9eb0e3bc5bf0b1a0ae57f9cf745fd9c",
+    "externalIds": {
+        "MAG": "2795758732",
+        "DBLP": "conf/mm/WangYCLZ18",
+        "ArXiv": "1804.01438",
+        "DOI": "10.1145/3240508.3240552",
+        "CorpusId": 4591954
+    },
+    "title": "Learning Discriminative Features with Multiple Granularities for Person Re-Identification",
+    "abstract": "The combination of global and partial features has been an essential solution to improve discriminative performances in person re-identification (Re-ID) tasks. Previous part-based methods mainly focus on locating regions with specific pre-defined semantics to learn local representations, which increases learning difficulty but not efficient or robust to scenarios with large variances. In this paper, we propose an end-to-end feature learning strategy integrating discriminative information with various granularities. We carefully design the Multiple Granularity Network (MGN), a multi-branch deep network architecture consisting of one branch for global feature representations and two branches for local feature representations. Instead of learning on semantic regions, we uniformly partition the images into several stripes, and vary the number of parts in different local branches to obtain local feature representations with multiple granularities. Comprehensive experiments implemented on the mainstream evaluation datasets including Market-1501, DukeMTMC-reid and CUHK03 indicate that our method robustly achieves state-of-the-art performances and outperforms any existing approaches by a large margin. For example, on Market-1501 dataset in single query mode, we obtain a top result of Rank-1/mAP=96.6%/94.2% with this method after re-ranking.",
+    "venue": "ACM Multimedia",
+    "year": 2018,
+    "referenceCount": 59,
+    "citationCount": 1150,
+    "influentialCitationCount": 193,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1804.01438",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Comprehensive experiments implemented on the mainstream evaluation datasets including Market-1501, DukeMTMC-reid and CUHK03 indicate that the proposed end-to-end feature learning strategy robustly achieves state-of-the-art performances and outperforms any existing approaches by a large margin."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "50248679",
+            "name": "Guanshuo Wang"
+        },
+        {
+            "authorId": "46499930",
+            "name": "Yufeng Yuan"
+        },
+        {
+            "authorId": "2108969325",
+            "name": "Xiong Chen"
+        },
+        {
+            "authorId": "49298465",
+            "name": "Jiwei Li"
+        },
+        {
+            "authorId": "2109614930",
+            "name": "Xi Zhou"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "b5a9f87daed5b3a4b0d0381dc2b2480766a581a3",
+            "title": "Deep Group-Shuffling Random Walk for Person Re-identification"
+        },
+        {
+            "paperId": "1bfe59be5b42d6b7257da4b35a408239c01ab79d",
+            "title": "Adversarially Occluded Samples for Person Re-identification"
+        },
+        {
+            "paperId": "308a13fd1d2847d98930a8e5542f773a9651a0ae",
+            "title": "Group Consistent Similarity Learning via Deep CRF for Person Re-identification"
+        },
+        {
+            "paperId": "7dbb212555aa099673530b9298384bd562db7b6d",
+            "title": "End-to-End Deep Kronecker-Product Matching for Person Re-identification"
+        },
+        {
+            "paperId": "81a2614003fd8b241bc18581c4a0777f9e50d84e",
+            "title": "Attention-Aware Compositional Network for Person Re-identification"
+        },
+        {
+            "paperId": "7daa2c0f76fd3bfc7feadf313d6ac7504d4ecd20",
+            "title": "Dual Attention Matching Network for Context-Aware Feature Sequence Based Person Re-identification"
+        },
+        {
+            "paperId": "004acfec16c36649408c561faa102dd9de76f085",
+            "title": "Multi-level Factorisation Net for Person Re-identification"
+        },
+        {
+            "paperId": "67a9659de0bf671fafccd7f39b7587f85fb6dfbd",
+            "title": "Ring Loss: Convex Feature Normalization for Face Recognition"
+        },
+        {
+            "paperId": "1be42f20ff086a04092b4be73e105a318ffa4322",
+            "title": "Harmonious Attention Network for Person Re-identification"
+        },
+        {
+            "paperId": "4d8347a69e77cc02c1e1aba3a8b6646eac1a0b3d",
+            "title": "Re-ID done right: towards good practices for person re-identification"
+        },
+        {
+            "paperId": "66e4f5e354240a022789353798ce92e4ab68e109",
+            "title": "Pose-Normalized Image Generation for Person Re-identification"
+        },
+        {
+            "paperId": "26ac3ee756d4a24ec31de918f54098012e17fd25",
+            "title": "Deep-Person: Learning Discriminative Deep Features for Person Re-Identification"
+        },
+        {
+            "paperId": "a4958d26a3aaf77081fcb9b76393a30bf722e92e",
+            "title": "A Pose-Sensitive Embedding for Person Re-identification with Expanded Cross Neighborhood Re-ranking"
+        },
+        {
+            "paperId": "753d2a35c9edf5dfcac4ef3a6adc993b657b01f0",
+            "title": "Beyond Part Models: Person Retrieval with Refined Part Pooling"
+        },
+        {
+            "paperId": "767ac8398e845779be111eb4ce8cb60a8b69a511",
+            "title": "AlignedReID: Surpassing Human-Level Performance in Person Re-Identification"
+        },
+        {
+            "paperId": "088e7b24bd1cf6e5922ae6c80d37439e05fadce9",
+            "title": "Let Features Decide for Themselves: Feature Mask Network for Person Re-identification"
+        },
+        {
+            "paperId": "605886b07ec27492e8d5bc48f79ddc39c02ec190",
+            "title": "Learning Deep Context-Aware Features over Body and Latent Parts for Person Re-identification"
+        },
+        {
+            "paperId": "38cd49b7fc37a2e85822490b4517122ff7936960",
+            "title": "Person Re-identification by Deep Learning Multi-scale Representations"
+        },
+        {
+            "paperId": "f41c7bb02fc97d5fb9cadd7a49c3e558a1c58a44",
+            "title": "HydraPlus-Net: Attentive Deep Features for Pedestrian Analysis"
+        },
+        {
+            "paperId": "fd5cbf72a0cc82542b543207a9d1ea382ca7cbcf",
+            "title": "Pose-Driven Deep Convolutional Model for Person Re-identification"
+        },
+        {
+            "paperId": "38b6c9686f460f445a3de80241d6647ff47fb8dd",
+            "title": "Deeply-Learned Part-Aligned Representations for Person Re-identification"
+        },
+        {
+            "paperId": "6cacda04a541d251e8221d70ac61fda88fb61a70",
+            "title": "One-shot Face Recognition by Promoting Underrepresented Classes"
+        },
+        {
+            "paperId": "a6b163dcca2054df8629cfd66c26700409c39604",
+            "title": "Deep Representation Learning With Part Loss for Person Re-Identification"
+        },
+        {
+            "paperId": "b856c0eb039effce7da9ff45c3f5987f18928bef",
+            "title": "Pedestrian Alignment Network for Large-scale Person Re-Identification"
+        },
+        {
+            "paperId": "ee62cff7f027a31c3bd7f313bfdc04e7d79eb04a",
+            "title": "Spindle Net: Person Re-identification with Human Body Region Guided Feature Decomposition and Fusion"
+        },
+        {
+            "paperId": "3a30a58ff20614057e0c2f565be37c1ed620c240",
+            "title": "Noisy Softmax: Improving the Generalization Ability of DCNN via Postponing the Early Softmax Saturation"
+        },
+        {
+            "paperId": "f06a12928307e17b1aff2b9f4a6c11791f19b6a7",
+            "title": "Deep Mutual Learning"
+        },
+        {
+            "paperId": "65510920d60f23faae27e073c11e4f037c538067",
+            "title": "Person Re-Identification by Deep Joint Learning of Multi-Loss Classification"
+        },
+        {
+            "paperId": "21063765fc3dc7884dc2a28c68e6c7174ab70af2",
+            "title": "NormFace: L2 Hypersphere Embedding for Face Verification"
+        },
+        {
+            "paperId": "4901eaa5a3b8cca41e4bb664ef0446d6118bd87c",
+            "title": "Beyond Triplet Loss: A Deep Quadruplet Network for Person Re-identification"
+        },
+        {
+            "paperId": "a42758b4943c7599925e8c8415ee9b8078ff57ad",
+            "title": "In Defense of the Triplet Loss for Person Re-Identification"
+        },
+        {
+            "paperId": "f45c568e40e08ee1d75e4f063db3a96a392c0032",
+            "title": "SVDNet for Pedestrian Retrieval"
+        },
+        {
+            "paperId": "76d2422cf5db5a6a96977fc42dcdd92422c27c21",
+            "title": "Re-ranking Person Re-identification with k-Reciprocal Encoding"
+        },
+        {
+            "paperId": "f9b7783448f65205e085bd4e6fdfa2c8bfa9a4df",
+            "title": "Unlabeled Samples Generated by GAN Improve the Person Re-identification Baseline in Vitro"
+        },
+        {
+            "paperId": "78a11b7d2d7e1b19d92d2afd51bd3624eca86c3c",
+            "title": "Improved Deep Metric Learning with Multi-class N-pair Loss Objective"
+        },
+        {
+            "paperId": "367008b91eb57c5ea64ef7520dfcabc0c5c85532",
+            "title": "Person Re-identification: Past, Present and Future"
+        },
+        {
+            "paperId": "4cfd770ccecae1c0b4248bc800d7fd35c817bbbd",
+            "title": "A Discriminative Feature Learning Approach for Deep Face Recognition"
+        },
+        {
+            "paperId": "85aefde69e916523d9587b6abd01419420039474",
+            "title": "Performance Measures and a Data Set for Multi-target, Multi-camera Tracking"
+        },
+        {
+            "paperId": "6123e52c1a560c88817d8720e05fbff8565271fb",
+            "title": "Gated Siamese Convolutional Neural Network Architecture for Human Re-identification"
+        },
+        {
+            "paperId": "376aad5815f808c82e518956a70091bf828dbd25",
+            "title": "Person Re-identification by Multi-Channel Parts-Based CNN with Improved Triplet Loss Function"
+        },
+        {
+            "paperId": "8bee4e22446e171c941d4f85108d187fec573d61",
+            "title": "End-to-End Comparative Attention Networks for Person Re-Identification"
+        },
+        {
+            "paperId": "a45f78ca9f250b24cb82fd19614aa2cac9401583",
+            "title": "Learning Deep Feature Representations with Domain Guided Dropout for Person Re-identification"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "e24c261f5cfcd58a595efb7ca684aedcb2a2f22c",
+            "title": "Scalable Person Re-identification: A Benchmark"
+        },
+        {
+            "paperId": "884750937bb97e82c41316d80e5d104e0c0e4795",
+            "title": "Deep Metric Learning via Lifted Structured Feature Embedding"
+        },
+        {
+            "paperId": "274e5454e22b8cd73f7110dc42e09b8a84ff5a82",
+            "title": "An improved deep learning architecture for person re-identification"
+        },
+        {
+            "paperId": "dbb6ded623159c867fbeca0772db7b2eb9489523",
+            "title": "Spatial Transformer Networks"
+        },
+        {
+            "paperId": "7ffdbc358b63378f07311e883dddacc9faeeaf4b",
+            "title": "Fast R-CNN"
+        },
+        {
+            "paperId": "5aa26299435bdf7db874ef1640a6c3b5a4a2c394",
+            "title": "FaceNet: A unified embedding for face recognition and clustering"
+        },
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "3ac1a7d6630cd1c7b70c4c2c7bc92c40df1162ca",
+            "title": "Deep Metric Learning Using Triplet Network"
+        },
+        {
+            "paperId": "e70d75454de81b05fed9b63a405bcd1229f20229",
+            "title": "Deeply learned face representations are sparse, selective, and robust"
+        },
+        {
+            "paperId": "36358eff7c34de64c0ce8aa42cf7c4da24bf8e93",
+            "title": "Deep Metric Learning for Person Re-identification"
+        },
+        {
+            "paperId": "6bd36e9fd0ef20a3074e1430a6cc601e6d407fc3",
+            "title": "DeepReID: Deep Filter Pairing Neural Network for Person Re-identification"
+        },
+        {
+            "paperId": "f0822cc18e502e15a8c153773492934201e4c8f9",
+            "title": "Person re-identification by Local Maximal Occurrence representation and metric learning"
+        },
+        {
+            "paperId": "d2c733e34d48784a37d717fe43d9e93277a8c53e",
+            "title": "ImageNet: A large-scale hierarchical image database"
+        },
+        {
+            "paperId": "860a9d55d87663ca88e74b3ca357396cd51733d0",
+            "title": "A discriminatively trained, multiscale, deformable part model"
+        },
+        {
+            "paperId": "46f30e94dd3d5902141c5fbe58d0bc9189545c76",
+            "title": "Dimensionality Reduction by Learning an Invariant Mapping"
+        }
+    ]
+}

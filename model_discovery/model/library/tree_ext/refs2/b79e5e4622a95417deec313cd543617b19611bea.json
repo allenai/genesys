@@ -1,0 +1,98 @@
+{
+    "paperId": "b79e5e4622a95417deec313cd543617b19611bea",
+    "externalIds": {
+        "DBLP": "journals/corr/abs-1803-08375",
+        "ArXiv": "1803.08375",
+        "MAG": "2792643794",
+        "CorpusId": 4090379
+    },
+    "title": "Deep Learning using Rectified Linear Units (ReLU)",
+    "abstract": "We introduce the use of rectified linear units (ReLU) as the classification function in a deep neural network (DNN). Conventionally, ReLU is used as an activation function in DNNs, with Softmax function as their classification function. However, there have been several studies on using a classification function other than Softmax, and this study is an addition to those. We accomplish this by taking the activation of the penultimate layer $h_{n - 1}$ in a neural network, then multiply it by weight parameters $\\theta$ to get the raw scores $o_{i}$. Afterwards, we threshold the raw scores $o_{i}$ by $0$, i.e. $f(o) = \\max(0, o_{i})$, where $f(o)$ is the ReLU function. We provide class predictions $\\hat{y}$ through argmax function, i.e. argmax $f(x)$.",
+    "venue": "arXiv.org",
+    "year": 2018,
+    "referenceCount": 17,
+    "citationCount": 2672,
+    "influentialCitationCount": 156,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The use of rectified linear units (ReLU) as the classification function in a deep neural network (DNN) is introduced by taking the activation of the penultimate layer of a neural network, then multiplying it by weight parameters $\\theta$ to get the raw scores."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "26412983",
+            "name": "Abien Fred Agarap"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "594cd092bb357f33e8f696ad0d5e0b5355f09157",
+            "title": "A Neural Network Architecture Combining Gated Recurrent Unit (GRU) and Support Vector Machine (SVM) for Intrusion Detection in Network Traffic Data"
+        },
+        {
+            "paperId": "f9c602cc436a9ea2f9e7db48c77d924e09ce3c32",
+            "title": "Fashion-MNIST: a Novel Image Dataset for Benchmarking Machine Learning Algorithms"
+        },
+        {
+            "paperId": "3b51ad21de4e762ea684be363745e5e2dca848ee",
+            "title": "Parametric Exponential Linear Unit for Deep Convolutional Neural Networks"
+        },
+        {
+            "paperId": "4d4b46e545e1a3f6871b49cc69640ef2eb1a4654",
+            "title": "Semantically Conditioned LSTM-based Natural Language Generation for Spoken Dialogue Systems"
+        },
+        {
+            "paperId": "b624504240fa52ab76167acfe3156150ca01cf3b",
+            "title": "Attention-Based Models for Speech Recognition"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "4417f78b31546227784941bbd6f6532a177e60b8",
+            "title": "Deep Learning using Linear Support Vector Machines"
+        },
+        {
+            "paperId": "045dc508505049a05afeefc85a7d77638823f930",
+            "title": "A novel approach combining recurrent neural network and support vector machines for time series classification"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "cef52bea3f13b20d6a31391034b0fccec71c6781",
+            "title": "The NumPy Array: A Structure for Efficient Numerical Computation"
+        },
+        {
+            "paperId": "168f28ac3c8c7ea63bf7ed25f2288e8b67e2fe74",
+            "title": "Scikit-learn: Machine Learning in Python"
+        },
+        {
+            "paperId": "412a0bb5a3baa91b62053d82c562bc172df0439f",
+            "title": "Matplotlib: A 2D Graphics Environment"
+        },
+        {
+            "paperId": "03de8578480c53677c484e1facfced74f4f5b045",
+            "title": "Digital selection and analogue amplification coexist in a cortex-inspired silicon circuit"
+        },
+        {
+            "paperId": null,
+            "title": "Hierarchical AttentionNetworks for Document Classification"
+        },
+        {
+            "paperId": null,
+            "title": "TensorFlow: Large-Scale Machine"
+        },
+        {
+            "paperId": null,
+            "title": "MNIST handwritten digit database"
+        },
+        {
+            "paperId": null,
+            "title": "Breast cancer Wisconsin (diagnostic) data set"
+        }
+    ]
+}

@@ -1,0 +1,251 @@
+{
+    "paperId": "3aa52436575cf6768a0a1a476601825f6a62e58f",
+    "externalIds": {
+        "DBLP": "journals/tacl/LinzenDG16",
+        "ACL": "Q16-1037",
+        "MAG": "2949674892",
+        "ArXiv": "1611.01368",
+        "DOI": "10.1162/tacl_a_00115",
+        "CorpusId": 14091946
+    },
+    "title": "Assessing the Ability of LSTMs to Learn Syntax-Sensitive Dependencies",
+    "abstract": "The success of long short-term memory (LSTM) neural networks in language processing is typically attributed to their ability to capture long-distance statistical regularities. Linguistic regularities are often sensitive to syntactic structure; can such dependencies be captured by LSTMs, which do not have explicit structural representations? We begin addressing this question using number agreement in English subject-verb dependencies. We probe the architecture\u2019s grammatical competence both using training objectives with an explicit grammatical target (number prediction, grammaticality judgments) and using language models. In the strongly supervised settings, the LSTM achieved very high overall accuracy (less than 1% errors), but errors increased when sequential and structural information conflicted. The frequency of such errors rose sharply in the language-modeling setting. We conclude that LSTMs can capture a non-trivial amount of grammatical structure given targeted supervision, but stronger architectures may be required to further reduce errors; furthermore, the language modeling signal is insufficient for capturing syntax-sensitive dependencies, and should be supplemented with more direct supervision if such dependencies need to be captured.",
+    "venue": "Transactions of the Association for Computational Linguistics",
+    "year": 2016,
+    "referenceCount": 52,
+    "citationCount": 841,
+    "influentialCitationCount": 81,
+    "openAccessPdf": {
+        "url": "http://www.mitpressjournals.org/doi/pdf/10.1162/tacl_a_00115",
+        "status": "GOLD"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is concluded that LSTMs can capture a non-trivial amount of grammatical structure given targeted supervision, but stronger architectures may be required to further reduce errors; furthermore, the language modeling signal is insufficient for capturing syntax-sensitive dependencies, and should be supplemented with more direct supervision if such dependencies need to be captured."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2467508",
+            "name": "Tal Linzen"
+        },
+        {
+            "authorId": "2202008",
+            "name": "Emmanuel Dupoux"
+        },
+        {
+            "authorId": "79775260",
+            "name": "Yoav Goldberg"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "eec3a236ecd185712ce65fb336141f8656eea13d",
+            "title": "Simple and Accurate Dependency Parsing Using Bidirectional LSTM Feature Representations"
+        },
+        {
+            "paperId": "9462eee3e5eff15df5e97c38e24072c65e581cee",
+            "title": "Representation of Linguistic Form and Function in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "2f2d8f8072e5cc9b296fad551f65f183bdbff7aa",
+            "title": "Exploring the Limits of Language Modeling"
+        },
+        {
+            "paperId": "7345843e87c81e24e42264859b214d26042f8d51",
+            "title": "Recurrent Neural Network Grammars"
+        },
+        {
+            "paperId": "6f2fabcccf53d52b00f344c7e78350a6b9bfdd0a",
+            "title": "Structures, Not Strings: Linguistics as Part of the Cognitive Sciences"
+        },
+        {
+            "paperId": "3d2b6e99dc33d6361c28c3d5765e403c21f7fc10",
+            "title": "Unsupervised Prediction of Acceptability Judgements"
+        },
+        {
+            "paperId": "04d1a26c2516dc14a765112a63ec60dc3cb3de72",
+            "title": "Tree-Structured Composition in Neural Networks without Tree-Structured Architectures"
+        },
+        {
+            "paperId": "e837b79de602c69395498c1fbbe39bbb4e6f75ad",
+            "title": "Learning to Transduce with Unbounded Memory"
+        },
+        {
+            "paperId": "40be3888daa5c2e5af4d36ae22f690bcc8caf600",
+            "title": "Visualizing and Understanding Recurrent Networks"
+        },
+        {
+            "paperId": "fafa541419b3756968fe5b3156c6f0257cb29c23",
+            "title": "Visualizing and Understanding Neural Models in NLP"
+        },
+        {
+            "paperId": "d38e8631bba0720becdaf7b89f79d9f9dca45d82",
+            "title": "Inferring Algorithmic Patterns with Stack-Augmented Recurrent Nets"
+        },
+        {
+            "paperId": "47570e7f63e296f224a0e7f9a0d08b0de3cbaf40",
+            "title": "Grammar as a Foreign Language"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "3593c5ddf9bc00746879a57e51c7b696c6fe4dc5",
+            "title": "The time-course of feature interference in agreement comprehension: Multiple mechanisms and asymmetrical attraction."
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "5d833331b0e22ff359db05c62a8bca18c4f04b68",
+            "title": "One billion word benchmark for measuring progress in statistical language modeling"
+        },
+        {
+            "paperId": "e442a3ca917b8b491375c9662843f7fd8c729598",
+            "title": "Statistical Representation of Grammaticality Judgements: the Limits of N-Gram Models"
+        },
+        {
+            "paperId": "5d1d86c1990a21cdb71aea8f1939eddc36dbbe9e",
+            "title": "The Acquisition of Anaphora by Simple Recurrent Networks"
+        },
+        {
+            "paperId": "d4bd0035fe14832626279e6c3c72b73c21c7f5d8",
+            "title": "A Dynamic Oracle for Arc-Eager Dependency Parsing"
+        },
+        {
+            "paperId": "658e92b61fc8d3fbadadd4ebf252f3b0e75b87bb",
+            "title": "Parser Evaluation over Local and Non-Local Deep Dependencies in a Large Corpus"
+        },
+        {
+            "paperId": "0af1367bf98c9c9d90ec675c88661c6c57bc2739",
+            "title": "Evaluation of Dependency Parsers on Unbounded Dependencies"
+        },
+        {
+            "paperId": "c09dab49ed2aea6da6e0e57409c51c81e8bb97ab",
+            "title": "Unbounded Dependency Recovery for Parser Evaluation"
+        },
+        {
+            "paperId": "e2d149651898092f75640207440dc57f0effc7df",
+            "title": "On the interpretation of the number attraction effect: Response time evidence."
+        },
+        {
+            "paperId": "d772150bc4063438514e411884c2c693182fb706",
+            "title": "On the implicit acquisition of a context-free grammar by a simple recurrent neural network"
+        },
+        {
+            "paperId": "61e16460f9facaedcc2668877b05895af5ad1499",
+            "title": "Making syntax of sense: number agreement in sentence production."
+        },
+        {
+            "paperId": "1be8778de4c6eb623871fe08d0998016bd60936f",
+            "title": "LSTM recurrent networks learn simple context-free and context-sensitive languages"
+        },
+        {
+            "paperId": "d0585d60c1fe5b4c5fde208ecde015aacba8562e",
+            "title": "Simple Recurrent Networks Learn Context-Free and Context-Sensitive Languages by Counting"
+        },
+        {
+            "paperId": "47133d54d4a5f1fb3c46bdbf3a7a5e270d930e2f",
+            "title": "Language acquisition in the absence of explicit negative evidence: how important is starting small?"
+        },
+        {
+            "paperId": "dd45d5d76bf12745ee3ea805437ff7a60a4ae890",
+            "title": "A theory of lexical access in speech production"
+        },
+        {
+            "paperId": "9eb31f967e7503280834b5cbe8fbfa0f952d8f6d",
+            "title": "The empirical base of linguistics: Grammaticality judgments and linguistic methodology"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "161ffb54a3fdf0715b198bb57bd22f910242eb49",
+            "title": "Multitask Learning"
+        },
+        {
+            "paperId": "6655ceb8b516ab401ef1ffe5d4f317c5637a11ed",
+            "title": "Subject-verb agreement processes in comprehension"
+        },
+        {
+            "paperId": "057293b1a389132940d46cb2b725c356ed5c9f53",
+            "title": "Can recurrent neural networks learn natural language grammars?"
+        },
+        {
+            "paperId": "d5ddb30bf421bdfdf728b636993dc48b1e879176",
+            "title": "Learning and development in neural networks: the importance of starting small"
+        },
+        {
+            "paperId": "605d738a39df3c5e596613ab0ca6925f0eecdf35",
+            "title": "Distributed representations, simple recurrent networks, and grammatical structure"
+        },
+        {
+            "paperId": "2758a1bc1dce50788c0eaa8c48b7faae2a1d28af",
+            "title": "Broken agreement"
+        },
+        {
+            "paperId": "668087f0ae7ce1de6e0bd0965dbb480c08103260",
+            "title": "Finding Structure in Time"
+        },
+        {
+            "paperId": "4131146c9c3d56ef41ad2bf3a6976c1cce680ccd",
+            "title": "Recursive deep learning for natural language processing and computer vision"
+        },
+        {
+            "paperId": "f9a1b3850dfd837793743565a8af95973d395a4e",
+            "title": "LSTM Neural Networks for Language Modeling"
+        },
+        {
+            "paperId": "1d5e51519b97cf90b7890b5d167b0c14de78ee36",
+            "title": "Semantics: An International Handbook of Natural Language Meaning"
+        },
+        {
+            "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+            "title": "Recurrent neural network based language model"
+        },
+        {
+            "paperId": "881c43be6756f1a8c6827330661a41211c87414d",
+            "title": "Negative and Positive Polarity Items: Variation, Licensing, and Compositionality"
+        },
+        {
+            "paperId": "f5f91e2bafcc4c8466950e6b5f694b138236f4f5",
+            "title": "Last-Conjunct Agreement in Slovenian"
+        },
+        {
+            "paperId": null,
+            "title": "Agreement with nearest always bad?"
+        },
+        {
+            "paperId": "584515e1a5479dbcfaf1fbf540f4673c91bcad5c",
+            "title": "The Cambridge Grammar of the English Language"
+        },
+        {
+            "paperId": "57dbba9281cbd1b4dd5d1932f0dd605b8f498322",
+            "title": "A Recurrent Neural Network that Learns to Count"
+        },
+        {
+            "paperId": "724b26153983e669253226c974860bf00a0312b4",
+            "title": "The emergence of grammaticality in connectionist networks."
+        },
+        {
+            "paperId": "148d8aab465f45178ae1838b150c79fbb004c403",
+            "title": "The 'no negative evidence' problem: How do children avoid constructing an overly general grammar?"
+        },
+        {
+            "paperId": "486af640c427afba9036799cbe2bc41774a4d6c2",
+            "title": "Constraints on variables in syntax"
+        },
+        {
+            "paperId": null,
+            "title": "The only championship banners that are currently displayed within the building are for national or NCAA Championships"
+        }
+    ]
+}

@@ -1,0 +1,167 @@
+{
+    "paperId": "f3b96ef2dc1fc5e14982f1b963db8db6a54183bb",
+    "externalIds": {
+        "ArXiv": "1511.06709",
+        "MAG": "2284660317",
+        "ACL": "P16-1009",
+        "DBLP": "journals/corr/SennrichHB15a",
+        "DOI": "10.18653/v1/P16-1009",
+        "CorpusId": 15600925
+    },
+    "title": "Improving Neural Machine Translation Models with Monolingual Data",
+    "abstract": "Neural Machine Translation (NMT) has obtained state-of-the art performance for several language pairs, while only using parallel data for training. Target-side monolingual data plays an important role in boosting fluency for phrase-based statistical machine translation, and we investigate the use of monolingual data for NMT. In contrast to previous work, which combines NMT models with separately trained language models, we note that encoder-decoder NMT architectures already have the capacity to learn the same information as a language model, and we explore strategies to train with monolingual data without changing the neural network architecture. By pairing monolingual training data with an automatic back-translation, we can treat it as additional parallel training data, and we obtain substantial improvements on the WMT 15 task English German (+2.8-3.7 BLEU), and for the low-resourced IWSLT 14 task Turkish->English (+2.1-3.4 BLEU), obtaining new state-of-the-art results. We also show that fine-tuning on in-domain monolingual and parallel data gives substantial improvements for the IWSLT 15 task English->German.",
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2015,
+    "referenceCount": 31,
+    "citationCount": 2537,
+    "influentialCitationCount": 455,
+    "openAccessPdf": {
+        "url": "https://aclanthology.org/P16-1009.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work pairs monolingual training data with an automatic back-translation, and can treat it as additional parallel training data, and obtains substantial improvements on the WMT 15 task English German, and for the low-resourced IWSLT 14 task Turkish->English."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2082372",
+            "name": "Rico Sennrich"
+        },
+        {
+            "authorId": "2259100",
+            "name": "B. Haddow"
+        },
+        {
+            "authorId": "2539211",
+            "name": "Alexandra Birch"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "feb420a4ac7c5719d51480053cd3e8669d5f2062",
+            "title": "Findings of the 2015 Workshop on Statistical Machine Translation"
+        },
+        {
+            "paperId": "d8c5e6adf7023def3be0bee91799e18607cf588f",
+            "title": "The Edinburgh/JHU Phrase-based Machine Translation Systems for WMT 2015"
+        },
+        {
+            "paperId": "726244c312dc1145e9e9ee32ce641ab8dd9c6e74",
+            "title": "A Joint Dependency Model of Morphological and Syntactic Structure for Statistical Machine Translation"
+        },
+        {
+            "paperId": "1518039b5001f1836565215eb047526b3ac7f462",
+            "title": "Neural Machine Translation of Rare Words with Subword Units"
+        },
+        {
+            "paperId": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+            "title": "Effective Approaches to Attention-based Neural Machine Translation"
+        },
+        {
+            "paperId": "5fcd41ca42659ff792fc8ee7d535156e8e69f987",
+            "title": "On Using Monolingual Corpora in Neural Machine Translation"
+        },
+        {
+            "paperId": "fd76044388b6cb3ae8228075da020a6d60790e8a",
+            "title": "Incremental Adaptation Strategies for Neural Network Language Models"
+        },
+        {
+            "paperId": "1938624bb9b0f999536dcc8d8f519810bb4e1b3b",
+            "title": "On Using Very Large Target Vocabulary for Neural Machine Translation"
+        },
+        {
+            "paperId": "1214a350d1f7509eb09a07498c9403baed964a74",
+            "title": "Combined spoken language translation"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "0060745e006c5f14ec326904119dca19c6545e51",
+            "title": "Improving neural networks by preventing co-adaptation of feature detectors"
+        },
+        {
+            "paperId": "5a9ef216bf11f222438fff130c778267d39a9564",
+            "title": "Practical Variational Inference for Neural Networks"
+        },
+        {
+            "paperId": "897690c464c6abd8c4c15ad81153f39d07b7ee2e",
+            "title": "Investigations on Translation Model Adaptation Using Monolingual Data"
+        },
+        {
+            "paperId": "b973808183fcb5ede5570ae137f8b19f5c1d4e69",
+            "title": "Morphological Disambiguation of Turkish Text with Perceptron Algorithm"
+        },
+        {
+            "paperId": "40cbaf4106ab60586e8ffa7624fc779172cfd490",
+            "title": "Domain Adaptation for Statistical Machine Translation with Monolingual Resources"
+        },
+        {
+            "paperId": "4ee2eab4c298c1824a9fb8799ad8eed21be38d21",
+            "title": "Moses: Open Source Toolkit for Statistical Machine Translation"
+        },
+        {
+            "paperId": "78a9513e70f596077179101f6cb6eadc51602039",
+            "title": "Effective Self-Training for Parsing"
+        },
+        {
+            "paperId": "a3885c13438132b516e5ffc8b640d20b4e41a7a4",
+            "title": "Neural network-based face detection"
+        },
+        {
+            "paperId": "a1066659ec1afee9dce586f6f49b7d44527827e1",
+            "title": "A Statistical Approach to Machine Translation"
+        },
+        {
+            "paperId": "2826f9dccdcceb113b33ccf2841d488f1419bb30",
+            "title": "Stanford Neural Machine Translation Systems for Spoken Language Domains"
+        },
+        {
+            "paperId": "25eb839f39507fe6983ad3e692b2f8d93a5cb0cc",
+            "title": "Neural Machine Translation Systems for WMT \u2019 15"
+        },
+        {
+            "paperId": "81aace0e90c6a962059b117c24db0d856f340f41",
+            "title": "Report on the 11th IWSLT evaluation campaign"
+        },
+        {
+            "paperId": "09cd7876b72d6105c83db59052572433a0a2b36c",
+            "title": "WIT3: Web Inventory of Transcribed and Translated Talks"
+        },
+        {
+            "paperId": null,
+            "title": "SETimes: A parallel corpus of Balkan languages"
+        },
+        {
+            "paperId": "15ef3e35fdea806b5e255b63bb908c40d5c7df45",
+            "title": "Investigations on large-scale lightly-supervised training for statistical machine translation."
+        },
+        {
+            "paperId": "c07dc5234e3719460228bd835836e3806dd5173e",
+            "title": "A Statistical Approach to Machine Translation"
+        },
+        {
+            "paperId": null,
+            "title": "StatMT 09"
+        },
+        {
+            "paperId": null,
+            "title": "Lucia Specia, and Marco Turchi. 2015. Findings of the 2015 Workshop on Statistical Machine Translation. In Proceedings of the Tenth Workshop on Statistical Machine Translation"
+        },
+        {
+            "paperId": "13167f9cd8c7906ca808b01d28dca6dd951da8a5",
+            "title": "of the Association for Computational Linguistics"
+        }
+    ]
+}

@@ -1,0 +1,187 @@
+{
+    "paperId": "11540131eae85b2e11d53df7f1360eeb6476e7f4",
+    "externalIds": {
+        "MAG": "2116261113",
+        "DBLP": "journals/neco/GersSC00",
+        "DOI": "10.1162/089976600300015015",
+        "CorpusId": 11598600,
+        "PubMed": "11032042"
+    },
+    "title": "Learning to Forget: Continual Prediction with LSTM",
+    "abstract": "Long short-term memory (LSTM; Hochreiter & Schmidhuber, 1997) can solve numerous tasks not solvable by previous learning algorithms for recurrent neural networks (RNNs). We identify a weakness of LSTM networks processing continual input streams that are not a priori segmented into subsequences with explicitly marked ends at which the network's internal state could be reset. Without resets, the state may grow indefinitely and eventually cause the network to break down. Our remedy is a novel, adaptive forget gate that enables an LSTM cell to learn to reset itself at appropriate times, thus releasing internal resources. We review illustrative benchmark problems on which standard LSTM outperforms other RNN algorithms. All algorithms (including LSTM) fail to solve continual versions of these problems. LSTM with forget gates, however, easily solves them, and in an elegant way.",
+    "venue": "Neural Computation",
+    "year": 2000,
+    "referenceCount": 37,
+    "citationCount": 6184,
+    "influentialCitationCount": 369,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work identifies a weakness of LSTM networks processing continual input streams that are not a priori segmented into subsequences with explicitly marked ends at which the network's internal state could be reset, and proposes a novel, adaptive forget gate that enables an LSTm cell to learn to reset itself at appropriate times, thus releasing internal resources."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2088368",
+            "name": "Felix Alexander Gers"
+        },
+        {
+            "authorId": "145341374",
+            "name": "J. Schmidhuber"
+        },
+        {
+            "authorId": "1780235",
+            "name": "Fred Cummins"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "1be8778de4c6eb623871fe08d0998016bd60936f",
+            "title": "LSTM recurrent networks learn simple context-free and context-sensitive languages"
+        },
+        {
+            "paperId": "16b384730624acac4e7d57f627bcd084f2253953",
+            "title": "On a Fast, Compact Approximation of the Exponential Function"
+        },
+        {
+            "paperId": "2a9ce6eeada970ec7a494a3efc2b333e3b943ab2",
+            "title": "Language identification from prosody without explicit features"
+        },
+        {
+            "paperId": "357768b7206e67a7bb3549748668bf6187708cff",
+            "title": "A Biologically Based Computational Model of Working Memory"
+        },
+        {
+            "paperId": "1ff286ca984eda0afdc6d74d3a30d78ba95c89f6",
+            "title": "Automatic discrimination among languages based on prosody alone"
+        },
+        {
+            "paperId": "96cf56c27481551735346ee34ef01f7cebd12eee",
+            "title": "Stochastic approximation and neural network learning"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "f6e91c9e7e8f8a577a98ecfcfa998212a683195a",
+            "title": "Learning long-term dependencies in NARX recurrent neural networks"
+        },
+        {
+            "paperId": "003c9e0e2f7c41bc274ec3cb90bf0eb5fec0ac48",
+            "title": "A Multiscale Attentional Framework for Relaxation Neural Networks"
+        },
+        {
+            "paperId": "32e97eef94beacace020e79322cef0e1e5a76ee0",
+            "title": "Gradient calculations for dynamic recurrent neural networks: a survey"
+        },
+        {
+            "paperId": "e5fe093d0acce52a0094dca1c7c64b7a71116f8a",
+            "title": "Time Series Prediction : Forecasting The Future And Understanding The Past"
+        },
+        {
+            "paperId": "d0be39ee052d246ae99c082a565aba25b811be2d",
+            "title": "Learning long-term dependencies with gradient descent is difficult"
+        },
+        {
+            "paperId": "69ffda045870ad2ecc41d70475378f1644d08660",
+            "title": "Locally recurrent globally feedforward networks: a critical review of architectures"
+        },
+        {
+            "paperId": "89b9a181801f32bf62c4237c4265ba036a79f9dc",
+            "title": "A Fixed Size Storage O(n3) Time Complexity Learning Algorithm for Fully Recurrent Continually Running Networks"
+        },
+        {
+            "paperId": "250e63438812c71b8d7287f05b6235dbae2123d6",
+            "title": "Multi-State Time Delay Networks for Continuous Speech Recognition"
+        },
+        {
+            "paperId": "86dee86ea1b2eb5651e9ef9a4962460718d2ebd4",
+            "title": "Learning Sequential Structure with the Real-Time Recurrent Learning Algorithm"
+        },
+        {
+            "paperId": "2ae5a5507253aa3cada113d41d35fada1e84555f",
+            "title": "An Efficient Gradient-Based Algorithm for On-Line Training of Recurrent Network Trajectories"
+        },
+        {
+            "paperId": "f707a81a278d1598cd0a4493ba73f22dcdf90639",
+            "title": "Generalization by Weight-Elimination with Application to Forecasting"
+        },
+        {
+            "paperId": "4b04aedcde4166c5534fb01fd11d3c3901e3aaaa",
+            "title": "Connectionist Music Composition Based on Melodic and Stylistic Constraints"
+        },
+        {
+            "paperId": "9e8cf03655d224b0994d0f9d4f5aa80bca07021a",
+            "title": "The Recurrent Cascade-Correlation Architecture"
+        },
+        {
+            "paperId": "668087f0ae7ce1de6e0bd0965dbb480c08103260",
+            "title": "Finding Structure in Time"
+        },
+        {
+            "paperId": "d76aafbeb54575859441a442376766c597f6bb52",
+            "title": "Attractor dynamics and parallelism in a connectionist sequential machine"
+        },
+        {
+            "paperId": "bd46c1b5948abe04e565a8bae6454da63a1b021e",
+            "title": "Finite State Automata and Simple Recurrent Networks"
+        },
+        {
+            "paperId": "fd0da2f1d2b95e5b62221a00ff132219d0c853b7",
+            "title": "Adaptive neural oscillator using continuous-time back-propagation learning"
+        },
+        {
+            "paperId": "dbe8c61628896081998d1cd7d10343a45b7061bd",
+            "title": "Modular Construction of Time-Delay Neural Networks for Speech Recognition"
+        },
+        {
+            "paperId": null,
+            "title": "Learning to forget: Continual prediction with LSTM"
+        },
+        {
+            "paperId": null,
+            "title": "Learn to perceive the world as articulated: An approach for hierarchical learning"
+        },
+        {
+            "paperId": "10dae7fca6b65b61d155a622f0c6ca2bc3922251",
+            "title": "Gradient-based learning algorithms for recurrent networks and their computational complexity"
+        },
+        {
+            "paperId": "3f3d13e95c25a8f6a753e38dfce88885097cbd43",
+            "title": "Untersuchungen zu dynamischen neuronalen Netzen"
+        },
+        {
+            "paperId": "6d72a0e83e772468c6084ae7c79e43a4f5989feb",
+            "title": "A local learning algorithm for dynamic feedforward and recurrent networks"
+        },
+        {
+            "paperId": "26bc0449360d7016f684eafae5b5d2feded32041",
+            "title": "An E cient Gradient-Based Algorithm for On-LineTraining of Recurrent Network Trajectories"
+        },
+        {
+            "paperId": "7fb4d10f6d2ee3133135958aefd50bf22dcced9d",
+            "title": "A Focused Backpropagation Algorithm for Temporal Pattern Recognition"
+        },
+        {
+            "paperId": null,
+            "title": "The Neural Bucket Brigade: A local learning algorithm for dynamic feedforward"
+        },
+        {
+            "paperId": "4ade4934db522fe6d634ff6f48887da46eedb4d1",
+            "title": "Learning distributed representations of concepts."
+        },
+        {
+            "paperId": "266e07d0dd9a75b61e3632e9469993dbaf063f1c",
+            "title": "Generalization of backpropagation with application to a recurrent gas market model"
+        },
+        {
+            "paperId": null,
+            "title": "Learning to predict by methods of temporal di erences"
+        },
+        {
+            "paperId": "02f38b2d72d7b3243b5ba4005f814f71b80eec00",
+            "title": "The Utility Driven Dynamic Error Propagation Network"
+        }
+    ]
+}

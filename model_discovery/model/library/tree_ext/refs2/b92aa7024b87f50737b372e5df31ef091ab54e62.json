@@ -1,0 +1,198 @@
+{
+    "paperId": "b92aa7024b87f50737b372e5df31ef091ab54e62",
+    "externalIds": {
+        "MAG": "2950621961",
+        "DBLP": "journals/corr/SrivastavaGS15a",
+        "ArXiv": "1507.06228",
+        "CorpusId": 2722012
+    },
+    "title": "Training Very Deep Networks",
+    "abstract": "Theoretical and empirical evidence indicates that the depth of neural networks is crucial for their success. However, training becomes more difficult as depth increases, and training of very deep networks remains an open problem. Here we introduce a new architecture designed to overcome this. Our so-called highway networks allow unimpeded information flow across many layers on information highways. They are inspired by Long Short-Term Memory recurrent networks and use adaptive gating units to regulate the information flow. Even with hundreds of layers, highway networks can be trained directly through simple gradient descent. This enables the study of extremely deep and efficient architectures.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2015,
+    "referenceCount": 40,
+    "citationCount": 1614,
+    "influentialCitationCount": 105,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new architecture designed to overcome the challenges of training very deep networks, inspired by Long Short-Term Memory recurrent networks, which allows unimpeded information flow across many layers on information highways."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2100612",
+            "name": "R. Srivastava"
+        },
+        {
+            "authorId": "3035541",
+            "name": "Klaus Greff"
+        },
+        {
+            "authorId": "145341374",
+            "name": "J. Schmidhuber"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "40c6dcb1f2c236590be8f264d88fef390cc48820",
+            "title": "Binding via Reconstruction Clustering"
+        },
+        {
+            "paperId": "5b791cd374c7109693aaddee2c12d659ae4e3ec0",
+            "title": "Grid Long Short-Term Memory"
+        },
+        {
+            "paperId": "e0945081b5b87187a53d4329cf77cd8bff635795",
+            "title": "Highway Networks"
+        },
+        {
+            "paperId": "d6f2f611da110b5b5061731be3fc4c7f45d8ee23",
+            "title": "Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification"
+        },
+        {
+            "paperId": "33af9298e5399269a12d4b9901492fe406af62b4",
+            "title": "Striving for Simplicity: The All Convolutional Net"
+        },
+        {
+            "paperId": "8604f376633af8b347e31d84c6150a93b11e34c2",
+            "title": "FitNets: Hints for Thin Deep Nets"
+        },
+        {
+            "paperId": "ecd29385eb214d75fc4b310489ab11977a5d1181",
+            "title": "Random Walk Initialization for Training Very Deep Feedforward Networks"
+        },
+        {
+            "paperId": "4cab1e55aa076c4f5d87248dd21fec86843fdf99",
+            "title": "On the Expressive Efficiency of Sum Product Networks"
+        },
+        {
+            "paperId": "abc866e30163ec67f1cf4f4380e5f8323a6c598d",
+            "title": "Understanding Locally Competitive Networks"
+        },
+        {
+            "paperId": "c8cb691eae3a2e79adf07548d348ab58e90ee2ba",
+            "title": "Spatially-sparse convolutional neural networks"
+        },
+        {
+            "paperId": "fb91db6aa4f710814f8aec28a7f3ecbc4e5ad4fd",
+            "title": "Deeply-Supervised Nets"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "70155488a49d51755c1dfea728e03a6dd72703a1",
+            "title": "Deep Networks with Internal Selective Attention through Feedback Connections"
+        },
+        {
+            "paperId": "6bdb186ec4726e00a8051119636d4df3b94043b5",
+            "title": "Caffe: Convolutional Architecture for Fast Feature Embedding"
+        },
+        {
+            "paperId": "981ce6b655cc06416ff6bf7fac8c6c2076fd7fac",
+            "title": "Identifying and attacking the saddle point problem in high-dimensional non-convex optimization"
+        },
+        {
+            "paperId": "b034b5769ab94acf9fb8ae48c7edb560a300bb63",
+            "title": "On the Number of Linear Regions of Deep Neural Networks"
+        },
+        {
+            "paperId": "085d57b7f44e97ba6fa54543170b884a7461fc08",
+            "title": "On the Complexity of Neural Network Classifiers: A Comparison Between Shallow and Deep Architectures"
+        },
+        {
+            "paperId": "99c970348b8f70ce23d6641e201904ea49266b6e",
+            "title": "Exact solutions to the nonlinear dynamics of learning in deep linear neural networks"
+        },
+        {
+            "paperId": "5e83ab70d0cbc003471e87ec306d27d9c80ecb16",
+            "title": "Network In Network"
+        },
+        {
+            "paperId": "e9f60363fd3d448492d6d670e5b333b4b26a5064",
+            "title": "Compete to Compute"
+        },
+        {
+            "paperId": "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17",
+            "title": "Generating Sequences With Recurrent Neural Networks"
+        },
+        {
+            "paperId": "aa7bfd2304201afbb19971ebde87b17e40242e91",
+            "title": "On the importance of initialization and momentum in deep learning"
+        },
+        {
+            "paperId": "b7b915d508987b73b61eccd2b237e7ed099a2d29",
+            "title": "Maxout Networks"
+        },
+        {
+            "paperId": "5a568a54ed091a70cdfbc162ee602f39b718ba7a",
+            "title": "Feature Learning in Deep Neural Networks - A Study on Speech Recognition Tasks"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "b8ef1230a5cc9ea7cd8358f1ae7d1af97813ba14",
+            "title": "Deep Learning Made Easier by Linear Transformations in Perceptrons"
+        },
+        {
+            "paperId": "398c296d0cc7f9d180f84969f8937e6d3a413796",
+            "title": "Multi-column deep neural networks for image classification"
+        },
+        {
+            "paperId": "ea9d2a2b4ce11aaf85136840c65f3bc9c03ab649",
+            "title": "Understanding the difficulty of training deep feedforward neural networks"
+        },
+        {
+            "paperId": "342fe6a6338e73fd4d34c4f37f41e3bbad274dd2",
+            "title": "Networks"
+        },
+        {
+            "paperId": "8978cf7574ceb35f4c3096be768c7547b28a35d0",
+            "title": "A Fast Learning Algorithm for Deep Belief Nets"
+        },
+        {
+            "paperId": "11540131eae85b2e11d53df7f1360eeb6476e7f4",
+            "title": "Learning to Forget: Continual Prediction with LSTM"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "50c770b425a5bb25c77387f687a9910a9d130722",
+            "title": "Learning Complex, Extended Sequences Using the Principle of History Compression"
+        },
+        {
+            "paperId": "6843f4f392280fb1a9dc6c16e072dffc97f4b2e4",
+            "title": "On the power of small-depth threshold circuits"
+        },
+        {
+            "paperId": "f2a0fbba89f0d18ea0abd29639d4e43babe59cf3",
+            "title": "Training Deep and Recurrent Networks with Hessian-Free Optimization"
+        },
+        {
+            "paperId": "030ba5a03666bf4c3a17c64699f8de8ec13d623b",
+            "title": "Bridging Long Time Lags by Weight Guessing and \\Long Short Term Memory\""
+        },
+        {
+            "paperId": "3f3d13e95c25a8f6a753e38dfce88885097cbd43",
+            "title": "Untersuchungen zu dynamischen neuronalen Netzen"
+        },
+        {
+            "paperId": "3067cab09b04637260b85716c605ba578dafec54",
+            "title": "Computational limitations of small-depth circuits"
+        },
+        {
+            "paperId": "5a47ba057a858f8c024d2518cc3731fc7eb40de1",
+            "title": "Proceedings of the Twenty-Second International Joint Conference on Artificial Intelligence Flexible, High Performance Convolutional Neural Networks for Image Classification"
+        }
+    ]
+}

@@ -1,0 +1,137 @@
+{
+    "paperId": "4064696e69b0268003879c0bcae6527d3b786b85",
+    "externalIds": {
+        "DBLP": "conf/nips/MakhzaniF15",
+        "MAG": "1531103298",
+        "CorpusId": 11516457
+    },
+    "title": "Winner-Take-All Autoencoders",
+    "abstract": "In this paper, we propose a winner-take-all method for learning hierarchical sparse representations in an unsupervised fashion. We first introduce fully-connected winner-take-all autoencoders which use mini-batch statistics to directly enforce a lifetime sparsity in the activations of the hidden units. We then propose the convolutional winner-take-all autoencoder which combines the benefits of convolutional architectures and autoencoders for learning shift-invariant sparse representations. We describe a way to train convolutional autoencoders layer by layer, where in addition to lifetime sparsity, a spatial sparsity within each feature map is achieved using winner-take-all activation functions. We will show that winner-take-all autoencoders can be used to to learn deep sparse representations from the MNIST, CIFAR-10, ImageNet, Street View House Numbers and Toronto Face datasets, and achieve competitive classification performance.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2014,
+    "referenceCount": 26,
+    "citationCount": 237,
+    "influentialCitationCount": 33,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that winner-take-all autoencoders can be used to to learn deep sparse representations from the MNIST, CIFAR-10, ImageNet, Street View House Numbers and Toronto Face datasets, and achieve competitive classification performance."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2730435",
+            "name": "Alireza Makhzani"
+        },
+        {
+            "authorId": "1749650",
+            "name": "B. Frey"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "a6fd96a900d4130940b488863b71fd09ad41ccb9",
+            "title": "Discriminative Unsupervised Feature Learning with Convolutional Neural Networks"
+        },
+        {
+            "paperId": "ecb9200691f97de4c17243eb73f5fa6a33656827",
+            "title": "Stable and Efficient Representation Learning with Nonnegativity Constraints"
+        },
+        {
+            "paperId": "66ad2fbc8b73242a889699868611fcf239e3435d",
+            "title": "Semi-supervised Learning with Deep Generative Models"
+        },
+        {
+            "paperId": "6eee8041415facc9823d6b93ddb67a3773a3e1e3",
+            "title": "Convolutional Kernel Networks"
+        },
+        {
+            "paperId": "b94043a133e3d07ed0b1cfc036829e619ea0ba22",
+            "title": "k-Sparse Autoencoders"
+        },
+        {
+            "paperId": "b7b915d508987b73b61eccd2b237e7ed099a2d29",
+            "title": "Maxout Networks"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "a1306ce652f556fbb9e794d91084a29294298e6d",
+            "title": "Pedestrian Detection with Unsupervised Multi-stage Feature Learning"
+        },
+        {
+            "paperId": "0060745e006c5f14ec326904119dca19c6545e51",
+            "title": "Improving neural networks by preventing co-adaptation of feature detectors"
+        },
+        {
+            "paperId": "aef2050fe0fa48136cff50ec38bb5af2c6992bce",
+            "title": "Differentiable Pooling for Hierarchical Feature Learning"
+        },
+        {
+            "paperId": "30e2e85b7cf2e85f8965ec74b03f569caa2b5cdd",
+            "title": "Invariant Scattering Convolution Networks"
+        },
+        {
+            "paperId": "a233fccffdd2db27f833841d2cf0dfb338b03509",
+            "title": "Spike-and-Slab Sparse Coding for Unsupervised Feature Discovery"
+        },
+        {
+            "paperId": "182015c5edff1956cbafbcb3e7bbe294aa54f9fc",
+            "title": "Selecting Receptive Fields in Deep Networks"
+        },
+        {
+            "paperId": "be9a17321537d9289875fe475b71f4821457b435",
+            "title": "An Analysis of Single-Layer Networks in Unsupervised Feature Learning"
+        },
+        {
+            "paperId": "524b24a3523123785bedccfa0ef6c4857bf21b5f",
+            "title": "Unsupervised Models of Images by Spikeand-Slab RBMs"
+        },
+        {
+            "paperId": "8b25a44f617c1ed3ed52c6655b0d456ff1c565bd",
+            "title": "Learning Convolutional Feature Hierarchies for Visual Recognition"
+        },
+        {
+            "paperId": "e2c04849a3802715d5a9d89179c9f161014d6c2a",
+            "title": "Modeling pixel means and covariances using factorized third-order boltzmann machines"
+        },
+        {
+            "paperId": "83dfe3980b875c4e5fe6f2cb1df131cc46d175c8",
+            "title": "Deconvolutional networks"
+        },
+        {
+            "paperId": "e7c64258997838087c9ba4e87225627b015122b2",
+            "title": "Factored 3-Way Restricted Boltzmann Machines For Modeling Natural Images"
+        },
+        {
+            "paperId": "e2b7f37cd97a7907b1b8a41138721ed06a0b76cd",
+            "title": "Stacked Denoising Autoencoders: Learning Useful Representations in a Deep Network with a Local Denoising Criterion"
+        },
+        {
+            "paperId": "5a2668bf420d8509a4dfa28e1cdcdac14c649975",
+            "title": "3D Object Recognition with Deep Belief Nets"
+        },
+        {
+            "paperId": "1e80f755bcbf10479afd2338cec05211fdbd325c",
+            "title": "Convolutional deep belief networks for scalable unsupervised learning of hierarchical representations"
+        },
+        {
+            "paperId": "ddc45fad8d15771d9f1f8579331458785b2cdd93",
+            "title": "Deep Boltzmann Machines"
+        },
+        {
+            "paperId": "ccd52aff02b0f902f4ce7247c4fee7273014c41c",
+            "title": "Unsupervised Learning of Invariant Feature Hierarchies with Applications to Object Recognition"
+        },
+        {
+            "paperId": "02227c94dd41fe0b439e050d377b0beb5d427cda",
+            "title": "Reading Digits in Natural Images with Unsupervised Feature Learning"
+        },
+        {
+            "paperId": "bea5780d621e669e8069f05d0f2fc0db9df4b50f",
+            "title": "Convolutional Deep Belief Networks on CIFAR-10"
+        }
+    ]
+}

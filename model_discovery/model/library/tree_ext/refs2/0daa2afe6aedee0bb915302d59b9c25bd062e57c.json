@@ -1,0 +1,98 @@
+{
+    "paperId": "0daa2afe6aedee0bb915302d59b9c25bd062e57c",
+    "externalIds": {
+        "DBLP": "journals/spm/JacobsenL03",
+        "MAG": "1697514459",
+        "DOI": "10.1109/MSP.2003.1184347",
+        "CorpusId": 50146122
+    },
+    "title": "The sliding DFT",
+    "abstract": "The sliding DFT process for spectrum analysis was presented and shown to be more efficient than the popular Goertzel (1958) algorithm for sample-by-sample DFT bin computations. The sliding DFT provides computational advantages over the traditional DFT or FFT for many applications requiring successive output calculations, especially when only a subset of the DFT output bins are required. Methods for output stabilization as well as time-domain data windowing by means of frequency-domain convolution were also discussed. A modified sliding DFT algorithm, called the sliding Goertzel DFT, was proposed to further reduce the computational workload. We start our sliding DFT discussion by providing a review of the Goertzel algorithm and use its behavior as a yardstick to evaluate the performance of the sliding DFT technique. We examine stability issues regarding the sliding DFT implementation as well as review the process of frequency-domain convolution to accomplish time-domain windowing. Finally, a modified sliding DFT structure is proposed that provides improved computational efficiency.",
+    "venue": "IEEE Signal Processing Magazine",
+    "year": 2003,
+    "referenceCount": 16,
+    "citationCount": 634,
+    "influentialCitationCount": 75,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The sliding DFT process for spectrum analysis was presented and shown to be more efficient than the popular Goertzel (1958) algorithm for sample-by-sample DFT bin computations and a modified slide DFT structure is proposed that provides improved computational efficiency."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "49331965",
+            "name": "E. Jacobsen"
+        },
+        {
+            "authorId": "65871712",
+            "name": "R. Lyons"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "e728ddba3ccf3c08bbc24ab36419caf185edce9b",
+            "title": "Efficient dual-tone multifrequency detection using the nonuniform discrete Fourier transform"
+        },
+        {
+            "paperId": "49f6ae7e407cbaf610c72115892775f5b71bdc97",
+            "title": "A numerically-stable sliding-window estimator and its application to adaptive filters"
+        },
+        {
+            "paperId": "6ae99f38668bf50b220a8d8be35c7ef273294b27",
+            "title": "Generalized sliding FFT and its application to implementation of block LMS adaptive filters"
+        },
+        {
+            "paperId": "c67c14c0835b5bbc8f2a89377fa12614ffe489e4",
+            "title": "A comment on the computational complexity of sliding FFT"
+        },
+        {
+            "paperId": "a1fa3f3bdcb92e17b01d982e660841630991e868",
+            "title": "Some windows with very good sidelobe behavior"
+        },
+        {
+            "paperId": "157b3e1ab532f2c5e99907ed0d4ad80d44395ca2",
+            "title": "An update to the sliding DFT"
+        },
+        {
+            "paperId": "1cbfa10be8f8744a3e84e3f60b59f28ee4d17435",
+            "title": "Discrete Time Signal Processing"
+        },
+        {
+            "paperId": null,
+            "title": "The Goertzel algorithm"
+        },
+        {
+            "paperId": "99d03dc3437b5c4ed1b3e54d65a030330e32c6cb",
+            "title": "Discrete-time signal processing (2nd ed.)"
+        },
+        {
+            "paperId": null,
+            "title": "Analog Devices Available: http://www.analog.com/Ana- log_Root/static/library/dspManuals/Us- ing_ADSP-2100_Vol1_books"
+        },
+        {
+            "paperId": "415432e9606823b155c4341d88b75930fe38eeda",
+            "title": "Digital signal processing - principles, algorithms and applications (2. ed.)"
+        },
+        {
+            "paperId": null,
+            "title": "Algorithms for multi-channel DTMF detection for the WERDSP32 family"
+        },
+        {
+            "paperId": "0bb4388d22583f49e6dd3fef9f045a021e367871",
+            "title": "13 \u2013 Sliding FFT computes frequency spectra in real time"
+        },
+        {
+            "paperId": "c4bf850225bdb46b09a3c992d1bc87daf9e66248",
+            "title": "On the use of windows for harmonic analysis with the discrete Fourier transform"
+        },
+        {
+            "paperId": "f5ed53760000b1851c10734f271a97b7017ecfb8",
+            "title": "Theory and application of digital signal processing"
+        },
+        {
+            "paperId": "a5e4d0faf65627374b1ac82c3c79006d010173c9",
+            "title": "An Algorithm for the Evaluation of Finite Trigonometric Series"
+        }
+    ]
+}

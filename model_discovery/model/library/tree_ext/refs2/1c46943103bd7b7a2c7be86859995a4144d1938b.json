@@ -1,0 +1,196 @@
+{
+    "paperId": "1c46943103bd7b7a2c7be86859995a4144d1938b",
+    "externalIds": {
+        "MAG": "2187089797",
+        "CorpusId": 5855042
+    },
+    "title": "Visualizing Data using t-SNE",
+    "abstract": "We present a new technique called \u201ct-SNE\u201d that visualizes high-dimensional data by giving each datapoint a location in a two or three-dimensional map. The technique is a variation of Stochastic Neighbor Embedding (Hinton and Roweis, 2002) that is much easier to optimize, and produces significantly better visualizations by reducing the tendency to crowd points together in the center of the map. t-SNE is better than existing techniques at creating a single map that reveals structure at many different scales. This is particularly important for high-dimensional data that lie on several different, but related, low-dimensional manifolds, such as images of objects from multiple classes seen from multiple viewpoints. For visualizing the structure of very large datasets, we show how t-SNE can use random walks on neighborhood graphs to allow the implicit structure of all of the data to influence the way in which a subset of the data is displayed. We illustrate the performance of t-SNE on a wide variety of datasets and compare it with many other non-parametric visualization techniques, including Sammon mapping, Isomap, and Locally Linear Embedding. The visualizations produced by t-SNE are significantly better than those produced by the other techniques on almost all of the datasets.",
+    "venue": "",
+    "year": 2008,
+    "referenceCount": 41,
+    "citationCount": 36915,
+    "influentialCitationCount": 1187,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new technique called t-SNE that visualizes high-dimensional data by giving each datapoint a location in a two or three-dimensional map, a variation of Stochastic Neighbor Embedding that is much easier to optimize, and produces significantly better visualizations by reducing the tendency to crowd points together in the center of the map."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1803520",
+            "name": "L. Maaten"
+        },
+        {
+            "authorId": "1695689",
+            "name": "Geoffrey E. Hinton"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "49b32e124fb8f4bb63ef1f3ae0d7fbe205ab9a38",
+            "title": "Nonlinear Dimensionality Reduction"
+        },
+        {
+            "paperId": "ec378947c3d9d0e0e6800e9f207b242d8de3da86",
+            "title": "Colored Maximum Variance Unfolding"
+        },
+        {
+            "paperId": "a241afd3270a835e98a51edbfd6d34614e8b44a9",
+            "title": "On the Dimensionality of Face Space"
+        },
+        {
+            "paperId": "1fa265cca12dc92d5f1850d47e1bd338f924adf1",
+            "title": "Visualizing Similarity Data with a Mixture of Maps"
+        },
+        {
+            "paperId": "36813d0402e01e6a90f4bab5455f4354ffed6f40",
+            "title": "Graph Laplacian Regularization for Large-Scale Semidefinite Programming"
+        },
+        {
+            "paperId": "59d86a93c4ef54b5489bc375cd02e64205823f42",
+            "title": "Random Walks for Image Segmentation"
+        },
+        {
+            "paperId": "06eb6b4566cbb127ebf548f251e9b89bf34777f2",
+            "title": "Diffusion maps and coarse-graining: a unified framework for dimensionality reduction, graph partitioning, and data set parameterization"
+        },
+        {
+            "paperId": "7a138b65b72575d5c1f6c5bdd41fa4350584f89f",
+            "title": "Special issue on diffusion maps and wavelets"
+        },
+        {
+            "paperId": "0db9b767d19bce40299275b23b46ed06598d45f9",
+            "title": "Nonlinear dimensionality reduction of data manifolds with essential loops"
+        },
+        {
+            "paperId": "9b6c8644c7c3e46ba9aba62c63d1423cbed207f5",
+            "title": "Diffusion maps, spectral clustering and reaction coordinates of dynamical systems"
+        },
+        {
+            "paperId": "2ff87fef3fc79b5bb47f2783e5b28084ef6b83c4",
+            "title": "Learning a kernel matrix for nonlinear dimensionality reduction"
+        },
+        {
+            "paperId": "1e008a1f5484094eb5794672d7c7318dd86f4fb5",
+            "title": "From Visual Data Exploration to Visual Data Mining: A Survey"
+        },
+        {
+            "paperId": "b07c157e7d40e06a4f2d486b16d5180d8b24acb9",
+            "title": "Algebraic Graph Theory"
+        },
+        {
+            "paperId": "9d16c547d15a08091e68c86a99731b14366e3f0d",
+            "title": "Laplacian Eigenmaps and Spectral Techniques for Embedding and Clustering"
+        },
+        {
+            "paperId": "8e6779bb55f7fbed5684ded55df51747ea678a84",
+            "title": "Partially labeled classification with Markov random walks"
+        },
+        {
+            "paperId": "3537fcd0ff99a3b3cb3d279012df826358420556",
+            "title": "A global geometric framework for nonlinear dimensionality reduction."
+        },
+        {
+            "paperId": "f0a3e1752e1146da927adc24ae07144ab2e744ec",
+            "title": "Nonlinear dimensionality reduction by locally linear embedding."
+        },
+        {
+            "paperId": "9e3ef2c367a39225d1bfcdc8a539025b51eb2da7",
+            "title": "Jacobi-Davidson Style QR and QZ Algorithms for the Reduction of Matrix Pencils"
+        },
+        {
+            "paperId": "6873a60e73c94d3797ff84ce4f5e5de96d798cbf",
+            "title": "Multivariate Analysis"
+        },
+        {
+            "paperId": "53f0fbb425bc14468eb3bf96b2e1d41ba8087f36",
+            "title": "Nuclear feature extraction for breast tumor diagnosis"
+        },
+        {
+            "paperId": "cb7c9fd84a877522ca0f7dc4233ee376e073427c",
+            "title": "Increased rates of convergence through learning rate adaptation"
+        },
+        {
+            "paperId": "6d67a36f5fae72da77cdfa4c69c92b34ce27a9f4",
+            "title": "Random Walks and Electric Networks: REFERENCES"
+        },
+        {
+            "paperId": "6d4ad944f76e5eb48ddb4fb87c26ad18e99800d3",
+            "title": "The Use of Faces to Represent Points in k- Dimensional Space Graphically"
+        },
+        {
+            "paperId": "154f8a9906bcc99fca9b17aa521649b1c3734093",
+            "title": "A Nonlinear Mapping for Data Structure Analysis"
+        },
+        {
+            "paperId": "16e0ed03f6fd71559965accf035ed8ca0c05fbed",
+            "title": "Multidimensional scaling: I. Theory and method"
+        },
+        {
+            "paperId": "d252389e81eede4c33793bfd887c20e872126502",
+            "title": "The principle of minimized iterations in the solution of the matrix eigenvalue problem"
+        },
+        {
+            "paperId": "2309f7c5dad934f2adc2c5a066eba8fc2d8071ec",
+            "title": "Dimensionality Reduction: A Comparative Review"
+        },
+        {
+            "paperId": "d04d6db5f0df11d0cff57ec7e15134990ac07a4f",
+            "title": "Learning Deep Architectures for AI"
+        },
+        {
+            "paperId": "ea392e0cd29474bf10ab2f6d5afe75da1ea28f39",
+            "title": "Graph Laplacian Regularization for Large-Scale Semidefinite Programming"
+        },
+        {
+            "paperId": "7c59908c946a4157abc030cdbe2b63d08ba97db3",
+            "title": "Supporting Online Material for Reducing the Dimensionality of Data with Neural Networks"
+        },
+        {
+            "paperId": "ffa38ca7a97b42f3e28d983172aa907317b9aade",
+            "title": "On a Connection between Kernel PCA and Metric Multidimensional Scaling"
+        },
+        {
+            "paperId": null,
+            "title": "Semi-supervised learning using Gaussian fields and harmonic functions"
+        },
+        {
+            "paperId": "a65fd51bb5827b043fe1c1ac2129b76e332cc264",
+            "title": "Stochastic Neighbor Embedding"
+        },
+        {
+            "paperId": "df83034e88557e1e2c7f9d268d90b19762312847",
+            "title": "Global Versus Local Methods in Nonlinear Dimensionality Reduction"
+        },
+        {
+            "paperId": "1af08944ccddf031bcbec9befb251cb62a30b162",
+            "title": "Designing Pixel-Oriented Visualization Techniques: Theory and Applications"
+        },
+        {
+            "paperId": null,
+            "title": "A robust nonlinear projection method"
+        },
+        {
+            "paperId": "bfb5410593385a279cc62844bd395f744dec2302",
+            "title": "Curvilinear component analysis: a self-organizing neural network for nonlinear mapping of data sets"
+        },
+        {
+            "paperId": "77afac8f4d7f47c8b34371d8f8355cefbea1d4f6",
+            "title": "Columbia Object Image Library (COIL100)"
+        },
+        {
+            "paperId": null,
+            "title": "Annotated bibliography on graph drawing"
+        },
+        {
+            "paperId": null,
+            "title": "Markov processes and the Dirichlet problem"
+        },
+        {
+            "paperId": "9ebb5c0d6d54707a4d6181a693b6f755ec8a45a9",
+            "title": "Analysis of a complex of statistical variables into principal components."
+        }
+    ]
+}

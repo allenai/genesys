@@ -1,0 +1,322 @@
+{
+    "paperId": "fe6efcacf4be13ce7bdc643c9248442377e4081a",
+    "externalIds": {
+        "DBLP": "journals/jacm/KarkkainenSB06",
+        "MAG": "2067974452",
+        "DOI": "10.1145/1217856.1217858",
+        "CorpusId": 12825385
+    },
+    "title": "Linear work suffix array construction",
+    "abstract": "Suffix trees and suffix arrays are widely used and largely interchangeable index structures on strings and sequences. Practitioners prefer suffix arrays due to their simplicity and space efficiency while theoreticians use suffix trees due to linear-time construction algorithms and more explicit structure. We narrow this gap between theory and practice with a simple linear-time construction algorithm for suffix arrays. The simplicity is demonstrated with a C++ implementation of 50 effective lines of code. The algorithm is called DC3, which stems from the central underlying concept of difference cover. This view leads to a generalized algorithm, DC, that allows a space-efficient implementation and, moreover, supports the choice of a space--time tradeoff. For any v \u2208 [1,&nradic;], it runs in O(vn) time using O(n/&vradic;) space in addition to the input string and the suffix array. We also present variants of the algorithm for several parallel and hierarchical memory models of computation. The algorithms for BSP and EREW-PRAM models are asymptotically faster than all previous suffix tree or array construction algorithms.",
+    "venue": "JACM",
+    "year": 2006,
+    "referenceCount": 71,
+    "citationCount": 405,
+    "influentialCitationCount": 27,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A generalized algorithm, DC, that allows a space-efficient implementation and, moreover, supports the choice of a space--time tradeoff and is asymptotically faster than all previous suffix tree or array construction algorithms."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3151802",
+            "name": "Juha K\u00e4rkk\u00e4inen"
+        },
+        {
+            "authorId": "144376533",
+            "name": "P. Sanders"
+        },
+        {
+            "authorId": "2055057192",
+            "name": "S. Burkhardt"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "38c01bfa6d6371fa2460162d06d80dcf2bdfcb1e",
+            "title": "Better external memory suffix array construction"
+        },
+        {
+            "paperId": "69f0506d1e2e881d3a605001af8ce401b381935a",
+            "title": "Fast BWT in small space by blockwise suffix sorting"
+        },
+        {
+            "paperId": "0ce04e66b213563920a44a0e394225f50683d19c",
+            "title": "Faster suffix sorting"
+        },
+        {
+            "paperId": "8751702ba3652f14b14ad42afdd4b6ee0177a539",
+            "title": "Scalable Parallel Suffix Array Construction"
+        },
+        {
+            "paperId": "cc2de0a3f4a24cd4c8d2b83b8d647ecd6a693f4d",
+            "title": "Introduction"
+        },
+        {
+            "paperId": "a1f4bdb8eb2de5f339cd7b6588fb2933e112a2bf",
+            "title": "Linear-Time Construction of Compressed Suffix Arrays Using o(n log n)-Bit Working Space for Large Alphabets"
+        },
+        {
+            "paperId": "8fd682a28497e45c32dd92a5486447830ebb5a02",
+            "title": "Constructing suffix arrays in linear time"
+        },
+        {
+            "paperId": "d494efea7644219f121950ecf23e1f66a2614c66",
+            "title": "The performance of linear time suffix sorting algorithms"
+        },
+        {
+            "paperId": "4ca9ea95a0a9846965e86619e646d9ca36930c18",
+            "title": "Replacing suffix trees with enhanced suffix arrays"
+        },
+        {
+            "paperId": "05c6968b3378904eb688796be1e9153e35deb6c5",
+            "title": "Constructing Compressed Suffix Arrays with Large Alphabets"
+        },
+        {
+            "paperId": "87f213a66c953f2c1909ca9afd47211443232833",
+            "title": "Breaking a time-and-space barrier in constructing full-text indices"
+        },
+        {
+            "paperId": "bb44bb94d2917f7783aa7338170d3b1e39254daa",
+            "title": "Golomb Rulers And Difference Sets For Succinct Quantum Automata"
+        },
+        {
+            "paperId": "a21dc8520bb5faf821493e9aeaff197150643504",
+            "title": "Simple Linear Work Suffix Array Construction"
+        },
+        {
+            "paperId": "385bc7159f46d8d396eb7e5348f2dc4041c7686e",
+            "title": "Fast Lightweight Suffix Array Construction and Checking"
+        },
+        {
+            "paperId": "9bee658aef80bf1c558e73d55ca0b07ff3f0b08d",
+            "title": "Distributed and Paged Suffix Trees for Large Genetic Databases"
+        },
+        {
+            "paperId": "57029ca110075a4f1505fcbd33b799130065f1f2",
+            "title": "Space efficient linear time construction of suffix arrays"
+        },
+        {
+            "paperId": "956adffe829dedce36cb5eb926aa23b08b3e3646",
+            "title": "Asynchronous parallel disk sorting"
+        },
+        {
+            "paperId": "1cfbafd76020fe92541e950f5f92f2500e75a91d",
+            "title": "Computing Patterns in Strings"
+        },
+        {
+            "paperId": "2678913899087b6c6a595995d7601f3878ea3d97",
+            "title": "The Enhanced Suffix Array and Its Applications to Genome Analysis"
+        },
+        {
+            "paperId": "e73a992dc0ba3299ac846aa1575180b2d8f718c8",
+            "title": "Jewels of stringology"
+        },
+        {
+            "paperId": "98ec939bf4987357f7f85e29512c5a6e8dfa4a91",
+            "title": "Engineering a Lightweight Suffix Array Construction Algorithm"
+        },
+        {
+            "paperId": "89a7d871ae726888d1277ca25da1a7546b2abe38",
+            "title": "Optimal Exact Strring Matching Based on Suffix Arrays"
+        },
+        {
+            "paperId": "a7fde45fad1deaab714b6eed2c28200d5f26ec9d",
+            "title": "Jewels of stringology : text algorithms"
+        },
+        {
+            "paperId": "49f5be90dfd66a39a2abf7fe53905c8efc14062d",
+            "title": "A Space and Time Efficient Algorithm for Constructing Compressed Suffix Arrays"
+        },
+        {
+            "paperId": "f5e5f365acc6f00c014c523c65efd9df6cee2606",
+            "title": "Linear-Time Longest-Common-Prefix Computation in Suffix Arrays and Its Applications"
+        },
+        {
+            "paperId": "584f85ddaed18e362f52f43415ccc824f496b863",
+            "title": "Merging on the BSP model"
+        },
+        {
+            "paperId": "23a8318fc0003bd4f0c4f01e4e035c7a8b0efc70",
+            "title": "Opportunistic data structures with applications"
+        },
+        {
+            "paperId": "3199e345a9d7b3fdc3b8e81de276b7bf38885070",
+            "title": "On the sorting-complexity of suffix tree construction"
+        },
+        {
+            "paperId": "150df8ba8e0d2582ee4777f743853fb99d8a3314",
+            "title": "Quorums from difference covers"
+        },
+        {
+            "paperId": "cceb84298feb1e81bab4d43b9e2c2e57a3b05ea4",
+            "title": "Compressed suffix arrays and suffix trees with applications to text indexing and string matching (extended abstract)"
+        },
+        {
+            "paperId": "ca018445412da7e1d89eb8ba23c69b7e2bd2fa01",
+            "title": "Managing gigabytes (2nd ed.): compressing and indexing documents and images"
+        },
+        {
+            "paperId": "02fd3a176dc6a7910cf574406bcd3e0a118fa114",
+            "title": "A Note on Coarse Grained Parallel Integer Sorting"
+        },
+        {
+            "paperId": "050443c7cbe8cad3f6542908f38f8be05691de97",
+            "title": "Cache-oblivious algorithms"
+        },
+        {
+            "paperId": "fceef07615f9f3fed0d3d67d744997bb8da8d68c",
+            "title": "Communication-Efficient Parallel Sorting"
+        },
+        {
+            "paperId": "8d94832e245906775b428e949ac1f635bfb28ad3",
+            "title": "Managing Gigabytes: Compressing and Indexing Documents and Images"
+        },
+        {
+            "paperId": "1b90942a7661d956115716f33bd23deb4632266e",
+            "title": "The string B-tree: a new data structure for string search in external memory and its applications"
+        },
+        {
+            "paperId": "fa61807ef2716312fdc7e25fa17aa5d522afbefc",
+            "title": "Overcoming the memory bottleneck in suffix tree construction"
+        },
+        {
+            "paperId": "90e11e35a4e0d3beaf284a4c19cc30b889985ade",
+            "title": "Introduction to parallel algorithms"
+        },
+        {
+            "paperId": "ee9aca2136b32a87e97d1d118e8e9909efd9e05c",
+            "title": "Optimal Suffix Tree Construction with Large Alphabets"
+        },
+        {
+            "paperId": "020edb3a6f637fc1c0dadd42ad47ba887c6e1300",
+            "title": "Two new quorum based algorithms for distributed mutual exclusion"
+        },
+        {
+            "paperId": "eaa2ffac5946b8121823442d28c95bc2e52593e9",
+            "title": "Fast algorithms for sorting and searching strings"
+        },
+        {
+            "paperId": "ab35005c8d0badbf064118f7611853276859caf3",
+            "title": "Optimal Logarithmic Time Randomized Suffix Tree Construction"
+        },
+        {
+            "paperId": "d1e651b626f210f99f533eea1c8268208c7d46f9",
+            "title": "Sparse Suffix Trees"
+        },
+        {
+            "paperId": "0aea4f1f74293714df23f196590154fbf3952598",
+            "title": "Suffix Trees on Words"
+        },
+        {
+            "paperId": "a70deaad3a2079cb5c0c54442c29d6225e6bd4f8",
+            "title": "On-line construction of suffix trees"
+        },
+        {
+            "paperId": "104e68206057136fd12fce86c6cf3c15a31ad506",
+            "title": "Suffix Cactus: A Cross between Suffix Tree and Suffix Array"
+        },
+        {
+            "paperId": "bca483e1f04c25129386ed9d2268e924e89e4581",
+            "title": "Greed sort: optimal deterministic sorting on parallel disks"
+        },
+        {
+            "paperId": "1337a72073e2c80da6e53b776ccb469d5abb0579",
+            "title": "Suffix arrays: a new method for on-line string searches"
+        },
+        {
+            "paperId": "140d841d827995d2ecd880d99b1c1f27f80f2690",
+            "title": "Deterministic distribution sort in shared and distributed memory multiprocessors"
+        },
+        {
+            "paperId": "249aa3ce41f637f5bd8a2c6a575363e5dfd4d9c0",
+            "title": "Waste makes haste: tight bounds for loose parallel sorting"
+        },
+        {
+            "paperId": "5e6036ead19990bb971aaafe683599d80eea3e46",
+            "title": "New Indices for Text: Pat Trees and Pat Arrays"
+        },
+        {
+            "paperId": "8665c9b459e4161825baf1f25b5141f41a5085ff",
+            "title": "A bridging model for parallel computation"
+        },
+        {
+            "paperId": "d206440c08d9d27b7506d282317ba72a3196ca48",
+            "title": "Optimal Merging and Sorting on the Erew Pram"
+        },
+        {
+            "paperId": "dac149f4274d6517887ff766e7538ffbdbc86380",
+            "title": "Optimal and Sublogarithmic Time Randomized Parallel Sorting Algorithms"
+        },
+        {
+            "paperId": "29b99397712a2f159d729d07b750441c59fe2e51",
+            "title": "Parallel merge sort"
+        },
+        {
+            "paperId": "001d7fd7b9822eff912c08f5cf0ca57226cff917",
+            "title": "An architecture for extended abstract data flow"
+        },
+        {
+            "paperId": "66c797950b9b61b9019de53609218723c953acc7",
+            "title": "A Space-Economical Suffix Tree Construction Algorithm"
+        },
+        {
+            "paperId": "d3390f13eed511cde1116446e71c3d462fd6a004",
+            "title": "Linear Pattern Matching Algorithms"
+        },
+        {
+            "paperId": "0617301c077e56c44933e2b790a270f3e590db12",
+            "title": "A Hybrid Indexing Method for Approximate String Matching"
+        },
+        {
+            "paperId": "96416fe29c38f3cb676ec63adf376bd5ee4b22df",
+            "title": "Algorithms for parallel memory, I: Two-level memories"
+        },
+        {
+            "paperId": "d5dfc023cc38006ad8d2a6cc0ed034104f68b383",
+            "title": "Two Space Saving Tricks for Linear Time Lcp Array Computation"
+        },
+        {
+            "paperId": null,
+            "title": "RECEIVED JULY APRIL"
+        },
+        {
+            "paperId": "2dc2aa90be2d47762e028f13f9a1a14d75cbd1aa",
+            "title": "Linear Time Construction of Suffix Arrays"
+        },
+        {
+            "paperId": "99d41e99609bb075580e1c78ff157c86c63e978a",
+            "title": "A Theoretical and Experimental Study on the Construction of Suffix Arrays in External Memory\n"
+        },
+        {
+            "paperId": "e9dbcee38ba6084f8b052967dbd0813d2ef0c3b5",
+            "title": "Linear-Time Longest-Common-Prex Computation in Sux Arrays and Its Applications"
+        },
+        {
+            "paperId": null,
+            "title": "The flashsort1 algorithm. Dr. Dobb's Journal"
+        },
+        {
+            "paperId": "21f389aabe2491d620ce920e3bad2b12521fa025",
+            "title": "Algorithms on Strings, Trees, and Sequences - Computer Science and Computational Biology"
+        },
+        {
+            "paperId": "af56e6d4901dcd0f589bf969e604663d40f1be5d",
+            "title": "A Block-sorting Lossless Data Compression Algorithm"
+        },
+        {
+            "paperId": "408b8ddd4340ff59aa802549c0c7b7c24927b350",
+            "title": "Suffix trees and their applications in string algorithms"
+        },
+        {
+            "paperId": "3bcf2b6e1f2515d94a2de45cd096b063900fb0f6",
+            "title": "Engineering Radix Sort"
+        },
+        {
+            "paperId": "234343902942c2e0180eb4d91a6ae7f6151f10f9",
+            "title": "An Introduction to Parallel Algorithms"
+        }
+    ]
+}

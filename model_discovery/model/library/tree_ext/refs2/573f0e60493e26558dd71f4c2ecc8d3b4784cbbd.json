@@ -1,0 +1,130 @@
+{
+    "paperId": "573f0e60493e26558dd71f4c2ecc8d3b4784cbbd",
+    "externalIds": {
+        "MAG": "2252335727",
+        "DBLP": "journals/corr/XiaoC16",
+        "ArXiv": "1602.00367",
+        "CorpusId": 19018371
+    },
+    "title": "Efficient Character-level Document Classification by Combining Convolution and Recurrent Layers",
+    "abstract": "Document classification tasks were primarily tackled at word level. Recent research that works with character-level inputs shows several benefits over word-level approaches such as natural incorporation of morphemes and better handling of rare words. We propose a neural network architecture that utilizes both convolution and recurrent layers to efficiently encode character inputs. We validate the proposed model on eight large scale document classification tasks and compare with character-level convolution-only models. It achieves comparable performances with much less parameters.",
+    "venue": "arXiv.org",
+    "year": 2016,
+    "referenceCount": 24,
+    "citationCount": 219,
+    "influentialCitationCount": 17,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A neural network architecture that utilizes both convolution and recurrent layers to efficiently encode character inputs is proposed and validated on eight large scale document classification tasks and compared with character-level convolution-only models."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2122803457",
+            "name": "Yijun Xiao"
+        },
+        {
+            "authorId": "1979489",
+            "name": "Kyunghyun Cho"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "7654ed26f0c3ce38953d5c595105d3380bd09ccb",
+            "title": "ReSeg: A Recurrent Neural Network for Object Segmentation"
+        },
+        {
+            "paperId": "6b9d3e50e3de7f2a0c7ec6a0291e3265274c8e25",
+            "title": "Semantic Image Segmentation with Task-Specific Edge Detection Using CNNs and a Discriminatively Trained Domain Transform"
+        },
+        {
+            "paperId": "dec2ccce1ecb34bab02c42c2dd18cb468470adf8",
+            "title": "Convolutional, Long Short-Term Memory, fully connected Deep Neural Networks"
+        },
+        {
+            "paperId": "51a55df1f023571a7e07e338ee45a3e3d66ef73e",
+            "title": "Character-level Convolutional Networks for Text Classification"
+        },
+        {
+            "paperId": "ecb5336bf7b54a62109f325e7152bb74c4c7f527",
+            "title": "Document Modeling with Gated Recurrent Neural Network for Sentiment Classification"
+        },
+        {
+            "paperId": "891ce1687e2befddd19f54e4eef1d3f39c8dbaf7",
+            "title": "Character-Aware Neural Language Models"
+        },
+        {
+            "paperId": "6dab1c6491929d396e9e5463bc2e87af88602aa2",
+            "title": "Finding Function in Form: Compositional Character Models for Open Vocabulary Word Representation"
+        },
+        {
+            "paperId": "96526726f87233fb017f6ea9483090f04e0f0530",
+            "title": "Improved Transition-based Parsing by Modeling Characters instead of Words with LSTMs"
+        },
+        {
+            "paperId": "8cb72cf5490c2a532d52237f688f915a92afe04c",
+            "title": "From Feedforward to Recurrent LSTM Neural Networks for Language Modeling"
+        },
+        {
+            "paperId": "54e840c8973db7665a6388b2d992ef08ed7f0260",
+            "title": "Ensemble of Generative and Discriminative Techniques for Sentiment Analysis of Movie Reviews"
+        },
+        {
+            "paperId": "1f6ba0782862ec12a5ec6d7fb608523d55b0c6ba",
+            "title": "Convolutional Neural Networks for Sentence Classification"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "687bac2d3320083eb4530bf18bb8f8f721477600",
+            "title": "Recursive Deep Models for Semantic Compositionality Over a Sentiment Treebank"
+        },
+        {
+            "paperId": "8729441d734782c3ed532a7d2d9611b438c0a09a",
+            "title": "ADADELTA: An Adaptive Learning Rate Method"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "67107f78a84bdb2411053cb54e94fa226eea6d8e",
+            "title": "Deep Sparse Rectifier Neural Networks"
+        },
+        {
+            "paperId": "11540131eae85b2e11d53df7f1360eeb6476e7f4",
+            "title": "Learning to Forget: Continual Prediction with LSTM"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "d0be39ee052d246ae99c082a565aba25b811be2d",
+            "title": "Learning long-term dependencies with gradient descent is difficult"
+        },
+        {
+            "paperId": "34f25a8704614163c4095b3ee2fc969b60de4698",
+            "title": "Dropout: a simple way to prevent neural networks from overfitting"
+        },
+        {
+            "paperId": null,
+            "title": "LSTM networks for sentiment analysis"
+        },
+        {
+            "paperId": "2e5f2b57f4c476dd69dc22ccdf547e48f40a994c",
+            "title": "Gradient Flow in Recurrent Nets: the Difficulty of Learning Long-Term Dependencies"
+        },
+        {
+            "paperId": null,
+            "title": "Backpropagation through time: what does it do and how to do it"
+        },
+        {
+            "paperId": "1f462943c8d0af69c12a09058251848324135e5a",
+            "title": "Probabilistic Interpretation of Feedforward Classification Network Outputs, with Relationships to Statistical Pattern Recognition"
+        }
+    ]
+}

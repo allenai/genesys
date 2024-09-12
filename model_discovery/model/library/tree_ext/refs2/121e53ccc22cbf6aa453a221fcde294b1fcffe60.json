@@ -1,0 +1,816 @@
+{
+    "paperId": "121e53ccc22cbf6aa453a221fcde294b1fcffe60",
+    "externalIds": {
+        "MAG": "2018047324",
+        "DOI": "10.1090/S0273-0979-06-01126-8",
+        "CorpusId": 120893346
+    },
+    "title": "Expander Graphs and their Applications",
+    "abstract": "A major consideration we had in writing this survey was to make it accessible to mathematicians as well as to computer scientists, since expander graphs, the protagonists of our story, come up in numerous and often surprising contexts in both fields. But, perhaps, we should start with a few words about graphs in general. They are, of course, one of the prime objects of study in Discrete Mathematics. However, graphs are among the most ubiquitous models of both natural and human-made structures. In the natural and social sciences they model relations among species, societies, companies, etc. In computer science, they represent networks of communication, data organization, computational devices as well as the flow of computation, and more. In mathematics, Cayley graphs are useful in Group Theory. Graphs carry a natural metric and are therefore useful in Geometry, and though they are \u201cjust\u201d one-dimensional complexes, they are useful in certain parts of Topology, e.g. Knot Theory. In statistical physics, graphs can represent local connections between interacting parts of a system, as well as the dynamics of a physical process on such systems. The study of these models calls, then, for the comprehension of the significant structural properties of the relevant graphs. But are there nontrivial structural properties which are universally important? Expansion of a graph requires that it is simultaneously sparse and highly connected. Expander graphs were first defined by Bassalygo and Pinsker, and their existence first proved by Pinsker in the early \u201970s. The property of being an expander seems significant in many of these mathematical, computational and physical contexts. It is not surprising that expanders are useful in the design and analysis of communication networks. What is less obvious is that expanders have surprising utility in other computational settings such as in the theory of error correcting codes and the theory of pseudorandomness. In mathematics, we will encounter e.g. their role in the study of metric embeddings, and in particular in work around the Baum-Connes Conjecture. Expansion is closely related to the convergence rates of Markov Chains, and so they play a key role in the study of Monte-Carlo algorithms in statistical mechanics and in a host of practical computational applications. The list of such interesting and fruitful connections goes on and on with so many applications we will not even",
+    "venue": "",
+    "year": 2006,
+    "referenceCount": 196,
+    "citationCount": 1815,
+    "influentialCitationCount": 156,
+    "openAccessPdf": {
+        "url": "https://www.ams.org/bull/2006-43-04/S0273-0979-06-01126-8/S0273-0979-06-01126-8.pdf",
+        "status": "GOLD"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": null
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1722243",
+            "name": "N. Linial"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "6e3c56010e987b1f7b0ebc64d93d0442948cf389",
+            "title": "Random Graphs"
+        },
+        {
+            "paperId": "088ab372dff19fb8837d0f48d395d1a987251f3f",
+            "title": "Geometry of cuts and metrics"
+        },
+        {
+            "paperId": "d1d119f4fd37d9f8241d832167b325c112030ee1",
+            "title": "Codes on hypergraphs"
+        },
+        {
+            "paperId": "2c6cae3d2dab161c10a1ff68ce238507d8c9e883",
+            "title": "THE NON-BACKTRACKING SPECTRUM OF THE UNIVERSAL COVER OF A GRAPH"
+        },
+        {
+            "paperId": "a1541ddd5dcee948f4201d548fe207fb432acb56",
+            "title": "Hamilton cycles in random lifts of graphs"
+        },
+        {
+            "paperId": "70cd2b984c8aa738e872b33c11924be877c54465",
+            "title": "Lifts, Discrepancy and Nearly Optimal Spectral Gap*"
+        },
+        {
+            "paperId": "07907d7dd13dd5480cef98c91bb37217ca192768",
+            "title": "Monotone Circuits for the Majority Function"
+        },
+        {
+            "paperId": "f76354814dd0e1c9696396154e927a624649f2f7",
+            "title": "Linear degree extractors and the inapproximability of max clique and chromatic number"
+        },
+        {
+            "paperId": "67d33cd868700f5b3bd195e7984175ef296f1354",
+            "title": "On the expansion rate of Margulis expanders"
+        },
+        {
+            "paperId": "475e31c9d3b01d69a7a20212552741a840d03168",
+            "title": "Random Lifts of Graphs: Edge Expansion"
+        },
+        {
+            "paperId": "6567871fc588b3b53502b7b61eff61019873cac0",
+            "title": "Finite simple groups as expanders."
+        },
+        {
+            "paperId": "4a403a3f58051508c383b2d234dd662a824caa7d",
+            "title": "The unique games conjecture, integrality gap for cut problems and embeddability of negative type metrics into l/sub 1/"
+        },
+        {
+            "paperId": "b0ca6e4af50420f6f1b69aec0b8567748d71b00c",
+            "title": "A product decomposition for the classical quasisimple groups"
+        },
+        {
+            "paperId": "06f16cf0dc06592900e7980c6ecf5a856fd17190",
+            "title": "Kazhdan Constants for Sln(Z)"
+        },
+        {
+            "paperId": "d0277248950a8d72578e5c14c9a4fa5c4c72604f",
+            "title": "Derandomized Squaring of Graphs"
+        },
+        {
+            "paperId": "411b74ba25abdc98068bf9a7c986e0b3243a6df1",
+            "title": "Explicit constructions of Ramanujan complexes of type \u00c3d"
+        },
+        {
+            "paperId": "75f56da8a079bd37b6beeab5083207fb9bd772c8",
+            "title": "Random Lifts Of Graphs: Perfect Matchings"
+        },
+        {
+            "paperId": "c49b18965f7da9c45072327066b5bf2b2cb73f72",
+            "title": "ON THE HARDNESS OF APPROXIMATING MULTICUT AND SPARSEST-CUT"
+        },
+        {
+            "paperId": "3e95dae50593e862c04bc7296bdc6a167db07b79",
+            "title": "Symmetric groups and expander graphs"
+        },
+        {
+            "paperId": "babf2d64bd4ffc44657adcaa23c3dc9781e9b5cb",
+            "title": "Undirected ST-connectivity in log-space"
+        },
+        {
+            "paperId": "ae0f884156418831ef5876936362d5e4f799fa59",
+            "title": "Spectral norm of random matrices"
+        },
+        {
+            "paperId": "bfdd0a9b7ea4120c7a5e1cc33a8f7b4e2481073d",
+            "title": "Randomized algorithms"
+        },
+        {
+            "paperId": "3bc0ee724945f5b44569725729a432f51b8a5452",
+            "title": "Multilevel expander codes"
+        },
+        {
+            "paperId": "e6174dfde69a21e536e1556eff4e87b9c1fcdf87",
+            "title": "The Probabilistic Method, Second Edition"
+        },
+        {
+            "paperId": "1943118ff3e3851e94de4835568fb05415c9559e",
+            "title": "It is easy to determine whether a given integer is prime"
+        },
+        {
+            "paperId": "17d0afe4f814e5abc6252e572e3b039082bf6f07",
+            "title": "Low-Density Parity-Check Codes"
+        },
+        {
+            "paperId": "041bbdf11c0534043458894470f05453e12361d1",
+            "title": "What is . . . An expander"
+        },
+        {
+            "paperId": "829ee9ba3440cd386abeb0e133bd1d98a2eb77f6",
+            "title": "Embedding the diamond graph in Lp and dimension reduction in L1"
+        },
+        {
+            "paperId": "01b4182b4eabc679bf1d20daeec9873969b20a11",
+            "title": "On the extreme eigenvalues of regular graphs"
+        },
+        {
+            "paperId": "10316b9db70480f031dd4f4de78b1cae4b29c771",
+            "title": "A polynomial-time approximation algorithm for the permanent of a matrix with nonnegative entries"
+        },
+        {
+            "paperId": "d95ec88ae5188f22bbd3226e039ae7e159b36d85",
+            "title": "A new family of Cayley expanders (?)"
+        },
+        {
+            "paperId": "be38c30285bf48c127f87d9c83ea8516af02958e",
+            "title": "Expander flows, geometric embeddings and graph partitioning"
+        },
+        {
+            "paperId": "c54dbb8e8f0ff960ca939b1afc3271ab578fa34a",
+            "title": "Tight Estimates for Eigenvalues of Regular Graphs"
+        },
+        {
+            "paperId": "19b6fe720ad1a669041890a54e98f5041b9d4699",
+            "title": "Low-Distortion Embeddings of Finite Metric Spaces"
+        },
+        {
+            "paperId": "e07749650f1805861d00d9b3e7003ac6e7f5f883",
+            "title": "On codes from hypergraphs"
+        },
+        {
+            "paperId": "fcc591315b9ae8892493d6fed4b3915664aa0a81",
+            "title": "Lifts, Discrepancy and Nearly Optimal Spectral Gaps"
+        },
+        {
+            "paperId": "79b0359edff07ddc2794adac7542bacf966a9725",
+            "title": "Kazhdan Constants for $SL_n(Z)$"
+        },
+        {
+            "paperId": "2f00d55a8395376104419d6a94cade67f732e75f",
+            "title": "On the impossibility of dimension reduction in l1"
+        },
+        {
+            "paperId": "94aa162d36b05d777a031071fdf8082cdf74f70f",
+            "title": "Rank bounds and integrality gaps for cutting planes procedures"
+        },
+        {
+            "paperId": "0e3a147218d3bf1eb12f77e164e8eceec9758b63",
+            "title": "LECTURES ON DISCRETE GEOMETRY (Graduate Texts in Mathematics 212)"
+        },
+        {
+            "paperId": "8be2b16d146c185996692ffb5802929ba1490e9d",
+            "title": "Low-Density Parity-Check (LDPC) Codes Constructed from Protographs"
+        },
+        {
+            "paperId": "f95348600bd162db830712ca5deb028145d82745",
+            "title": "How to compute the volume in high dimension?"
+        },
+        {
+            "paperId": "8cb31ceca3f531c4fdf3b266640dcda56a36d79d",
+            "title": "A proof of alon's second eigenvalue conjecture"
+        },
+        {
+            "paperId": "26a24ca0d8e2520494648d261604cead164b2654",
+            "title": "Relative expanders or weakly relatively Ramanujan graphs"
+        },
+        {
+            "paperId": "6fc962010e1e3be68f6c327f0cd55b56e545a0ad",
+            "title": "Random walk in random groups"
+        },
+        {
+            "paperId": "88bb7a021ab2abb171b14951087f0f2b2a354e9d",
+            "title": "Smaller Explicit Superconcentrators"
+        },
+        {
+            "paperId": "6afbb27f6b60dc9e78fb45cfb42e1fdf8ba8643c",
+            "title": "Explicit unique-neighbor expanders"
+        },
+        {
+            "paperId": "0a1747a9962b03d60b9ed78d89a8d8c8b10082be",
+            "title": "Finite metric spaces: combinatorics, geometry and algorithms"
+        },
+        {
+            "paperId": "67edfdbce4ad6c4615b78d42a32efeca0c6e30f7",
+            "title": "Girth and euclidean distortion"
+        },
+        {
+            "paperId": "44de2761675f8a7e3cc58e3c3085ca22ac2cbeb3",
+            "title": "Expanders from symmetric codes"
+        },
+        {
+            "paperId": "162eef5b0eeb3f8077080d9e74c3955fa4d61b9a",
+            "title": "Randomness conductors and constant-degree lossless expanders"
+        },
+        {
+            "paperId": "7f1592d37d3ac89446c002fdbcca126b8de15efc",
+            "title": "Lectures on discrete geometry"
+        },
+        {
+            "paperId": "aa058f4c419f5f6affe744e0311d293a6f8d37b0",
+            "title": "Random lifts of graphs: Independence and chromatic number"
+        },
+        {
+            "paperId": "2127a9975392060e29e27d72c4c9ca4dfb88c2bf",
+            "title": "Lower bounds for polynomial calculus: non-binomial case"
+        },
+        {
+            "paperId": "9d98e96f4ec313724676848a62b5463eec16646c",
+            "title": "Semi-direct product in groups and zig-zag product in graphs: connections and applications"
+        },
+        {
+            "paperId": "fb3b0d01b8fd5d574ae0082453d752731b473bf9",
+            "title": "Lower bounds for matrix product, in bounded depth circuits with arbitrary gates"
+        },
+        {
+            "paperId": "4d927cbbe27bbcfab4d5d49674c7cca354962b13",
+            "title": "RANDOM GRAPHS (Wiley Interscience Series in Discrete Mathematics and Optimization)"
+        },
+        {
+            "paperId": "f2b32222ec8955c4378fd2804757f4f8449d9241",
+            "title": "The capacity of low-density parity-check codes under message-passing decoding"
+        },
+        {
+            "paperId": "02746a7981e1e6a8fd252b80e31bf782f5843eec",
+            "title": "Design of capacity-approaching irregular low-density parity-check codes"
+        },
+        {
+            "paperId": "fb634de10b41b1cedfab1e8a5e5b9a9f2ead8c81",
+            "title": "Pseudorandom generators in propositional proof complexity"
+        },
+        {
+            "paperId": "9cba141b6f6aa32c88de6c82832c274a5bcc3e33",
+            "title": "Entropy waves, the zig-zag graph product, and new constant-degree expanders and extractors"
+        },
+        {
+            "paperId": "bf2e3cb89d732935f3f0b4fa8d559e1e7b758364",
+            "title": "Least-Distortion Euclidean Embeddings of Graphs: Products of Cycles and Expanders"
+        },
+        {
+            "paperId": "ca98398263ec938127185036a56311f052b8585b",
+            "title": "Are bitvectors optimal?"
+        },
+        {
+            "paperId": "0612d96b8fcdd6a9c6da44cb56931951aef5fd02",
+            "title": "Random graphs"
+        },
+        {
+            "paperId": "97d096bd9b3b9718b60f44db168a99d48f4450d0",
+            "title": "Bounded generation and Kazhdan\u2019s property (T)"
+        },
+        {
+            "paperId": "0aea7c981f3c0bf140bbe30b135ad1d87eab3503",
+            "title": "Multicommodity max-flow min-cut theorems and their use in designing approximation algorithms"
+        },
+        {
+            "paperId": "129032d8d7a6e9b7c5a290ddcce8d3f68cb77ce3",
+            "title": "Short proofs are narrow-resolution made simple"
+        },
+        {
+            "paperId": "8c41a9c8a6f266330ace1e030327bad493a69b6e",
+            "title": "Clique is hard to approximate withinn1\u2212\u03b5"
+        },
+        {
+            "paperId": "1775b5b0278655166aa603bfe65d9b5ec9d42227",
+            "title": "Not Every Uniform Tree Covers Ramanujan Graphs"
+        },
+        {
+            "paperId": "8e901f2445df1e34f31f56794af85de0569cdc67",
+            "title": "Improved low-density parity-check codes using irregular graphs and belief propagation"
+        },
+        {
+            "paperId": "8c38d6c2adbcd47623820a8aa192d90ce4d936b7",
+            "title": "Approximation Algorithms for NP-Hard Problems"
+        },
+        {
+            "paperId": "52e2d4299190d1391ca92794e9e708b5c4f6463c",
+            "title": "Graph Theory"
+        },
+        {
+            "paperId": "f2c1830eedc095b92a78dc3afa39a36343ed81ad",
+            "title": "Introduction to algorithms"
+        },
+        {
+            "paperId": "125b537d78fc9180cdc64113e532622e5811171c",
+            "title": "Upper bound on the characters of the symmetric groups"
+        },
+        {
+            "paperId": "16f4cf679a7e0095b52804893baf847e557e3d81",
+            "title": "The Markov chain Monte Carlo method: an approach to approximate counting and integration"
+        },
+        {
+            "paperId": "9d3f23db79f56788c321e7858013757ba76e79de",
+            "title": "Zeta functions of finite graphs and coverings, III"
+        },
+        {
+            "paperId": "aa5de80194ee85d8452c8be20e026b025284961b",
+            "title": "Randomness is Linear in Space"
+        },
+        {
+            "paperId": "b3ca9ed6c8522c2bb6fdedff1bb666ed53370a33",
+            "title": "Spectral methods for matrix rigidity with applications to size-depth tradeoffs and communication complexity"
+        },
+        {
+            "paperId": "4cc8ed4478222810e02ce8d1324ff0432064a48c",
+            "title": "Eigenvalues and expansion of regular graphs"
+        },
+        {
+            "paperId": "bdf1a72765e0841ac18329d7b9bf8d0d9331be4c",
+            "title": "Linear-time encodable and decodable error-correcting codes"
+        },
+        {
+            "paperId": "c5ae2097be5b43da0a5477842c088acdf540a920",
+            "title": "On the second eigenvalue of hypergraphs"
+        },
+        {
+            "paperId": "2e0e636bd48c9f2cb41d49288b5390dcde6aacc3",
+            "title": "Derandomized graph products"
+        },
+        {
+            "paperId": "826ad9d93afd1826a1b4146c88c1476cef5835df",
+            "title": "The geometry of graphs and some of its algorithmic applications"
+        },
+        {
+            "paperId": "8c0618f6abde960051188e2d5f09ddfb11e2a1a0",
+            "title": "Approximate graph coloring by semidefinite programming"
+        },
+        {
+            "paperId": "635ecd5890f2b7b41595bd180ce1cea2e5b5e580",
+            "title": "Existence and Explicit Constructions of q + 1 Regular Ramanujan Graphs for Every Prime Power q"
+        },
+        {
+            "paperId": "ec78948613ecdd4142d93eb6db092fadd91c69ce",
+            "title": "Discrete groups, expanding graphs and invariant measures"
+        },
+        {
+            "paperId": "06807657daadd2c90a9603dcad6f8996c4035516",
+            "title": "Pseudorandomness for network algorithms"
+        },
+        {
+            "paperId": "ffc17ccab346334d0bdfc9b251112fbef97fc174",
+            "title": "Random Cayley Graphs and Expanders"
+        },
+        {
+            "paperId": "eae4a397e716b677e79187ce51ab5dc1f6c3a34d",
+            "title": "A Chernoff bound for random walks on expander graphs"
+        },
+        {
+            "paperId": "0e68cd2ccec847dea31cf75ee8ac5ab4e8b3cc17",
+            "title": "Expanders That Beat the Eigenvalue Bound: Explicit Construction and Applications"
+        },
+        {
+            "paperId": "b3aece51b9de755c5794c5657e084ccbaacf19a6",
+            "title": "Some geometric aspects of graphs and their eigenfunctions"
+        },
+        {
+            "paperId": "77f4328feaae852c33f985d219fc7d59a31001c7",
+            "title": "Proof verification and hardness of approximation problems"
+        },
+        {
+            "paperId": "eb0a2991bcb8f97ecad71da25fe10b350790e24f",
+            "title": "The Spectra of Infinite Hypertrees"
+        },
+        {
+            "paperId": "25698356c65b041324104597bd968dadf91176df",
+            "title": "Approximating clique is almost NP-complete"
+        },
+        {
+            "paperId": "2a2ec8055f0fd45e188dcd2616ab05d786bbf148",
+            "title": "Construction Of Asymptotically Good Low-rate Error-correcting Codes Through Pseudo-random Graphs"
+        },
+        {
+            "paperId": "d45914bc4b997f6fbe399e45e78fd984ed874c01",
+            "title": "On-line algorithms for path selection in a nonblocking network"
+        },
+        {
+            "paperId": "f5471a605e138ae98d68752f8215b730ffe9a5ba",
+            "title": "On the Complexity of Approximating the Independent Set Problem"
+        },
+        {
+            "paperId": "27ff3add3c9ef14e16b52615651fc4d248b4fc53",
+            "title": "Explicit construction of linear sized tolerant networks"
+        },
+        {
+            "paperId": "fa06ad6f6ff68c983891e51f70b3b2740e488b20",
+            "title": "The influence of variables on Boolean functions"
+        },
+        {
+            "paperId": "3c01b0ae05bbda8a61753acb030fe533b3545a69",
+            "title": "Approximate Counting, Uniform Generation and Rapidly Mixing Markov Chains"
+        },
+        {
+            "paperId": "97a5dc80ba13907406c3c47b5468517b0ba80356",
+            "title": "Deterministic simulation in LOGSPACE"
+        },
+        {
+            "paperId": "a6bd0d0623b2f523003074d7efa1d17160ef151e",
+            "title": "Constructing disjoint paths on expander graphs"
+        },
+        {
+            "paperId": "ac123d06a7c4b705b69797f468907eb46698c5bc",
+            "title": "Combinatorics: Set Systems, Hypergraphs, Families of Vectors and Combinatorial Probability"
+        },
+        {
+            "paperId": "1ea6460b290976ec92bbf503c4568d76730a18c4",
+            "title": "Eigenvalues and expanders"
+        },
+        {
+            "paperId": "c9c3069cfb91f8d0ac155380a404457ce9699412",
+            "title": "Expanders obtained from affine transformations"
+        },
+        {
+            "paperId": "d2dd4b7b18d49235bf708ea0718cb2850ac0da27",
+            "title": "On lipschitz embedding of finite metric spaces in Hilbert space"
+        },
+        {
+            "paperId": "d4cad1a491e89ea90e9b5195f2460deb1bccda19",
+            "title": "How to share memory in a distributed system"
+        },
+        {
+            "paperId": "ca8a1213594b31fa3629bbb1760da2f2f627e85d",
+            "title": "Explicit Concentrators from Generalized N-Gons"
+        },
+        {
+            "paperId": "051e61c5c9ff22c346a18fc1b41e19b7f1de8f2e",
+            "title": "Difference equations, isoperimetric inequality and transience of certain random walks"
+        },
+        {
+            "paperId": "6ece84502b601a847a84e8ec439989cbb9ea4a52",
+            "title": "Superconcentrators, generalizers and generalized connectors with limited depth"
+        },
+        {
+            "paperId": "acf58c9c53c735c2739b4d2c2f80e37da8cd5bec",
+            "title": "O(n LOG n) SORTING NETWORK."
+        },
+        {
+            "paperId": "c95e5bc3d21e0f5aada337079b7504fc91fdbd72",
+            "title": "Filling Riemannian manifolds"
+        },
+        {
+            "paperId": "5d87b9d75aeaae488ee27c6f4ac7972cf4875f9e",
+            "title": "Explicit constructions of graphs without short cycles and low density codes"
+        },
+        {
+            "paperId": "110a017ea04c3745323510a3240923d8c80241cb",
+            "title": "The expected eigenvalue distribution of a large regular graph"
+        },
+        {
+            "paperId": "671e4480ab175a07d3f30f7965189d7c3c5c85ff",
+            "title": "The eigenvalues of random symmetric matrices"
+        },
+        {
+            "paperId": "157218bae792b6ef550dfd0f73e688d83d98b3d7",
+            "title": "A recursive approach to low complexity codes"
+        },
+        {
+            "paperId": "e0006f8c15f099e254de3120e5f226dfdcf0e2b7",
+            "title": "Probabilistic algorithm for testing primality"
+        },
+        {
+            "paperId": "4dcf27fa98e8d36a29270b0e100ebe46d74a27ce",
+            "title": "Random walks, universal traversal sequences, and the complexity of maze problems"
+        },
+        {
+            "paperId": "779adee51d5764d5b6367f09b014d87c7738308f",
+            "title": "Explicit constructions of linear size superconcentrators"
+        },
+        {
+            "paperId": "6af613bf8ea5e00e0569a3e63d4832ad7b8ee5ac",
+            "title": "Every connected regular graph of even degree is a Schreier coset graph"
+        },
+        {
+            "paperId": "253087b9ed4528917c92ae22637f74767843f436",
+            "title": "New upper bounds on the rate of a code via the Delsarte-MacWilliams inequalities"
+        },
+        {
+            "paperId": "36a109672bf4ad2259d20813d43781f91c39dabc",
+            "title": "A Fast Monte-Carlo Test for Primality"
+        },
+        {
+            "paperId": "a580a8b88df29f2a5c50cc2efcb6ba4c102ed4d6",
+            "title": "Graph-Theoretic Properties in computational Complexity"
+        },
+        {
+            "paperId": "51e1dc72671d4bd94eef7774da697f95b6c65137",
+            "title": "Inequalities in Fourier analysis"
+        },
+        {
+            "paperId": "0e6beb95b5150ce99b108acdefabf70ccd3fee30",
+            "title": "An algorithm for the machine calculation of complex Fourier series"
+        },
+        {
+            "paperId": "a6a449b72942b7a6ffd14bd75e92e6656e317736",
+            "title": "An Introduction to Probability Theory and Its Applications"
+        },
+        {
+            "paperId": "10543dd909e123b144220ef7c866b686deb723d3",
+            "title": "An Introduction to Probability Theory and its Applications"
+        },
+        {
+            "paperId": "5b7497ba9734a088edcfdbfa344ef0cc6f4fef0e",
+            "title": "On the Distribution of the Roots of Certain Symmetric Matrices"
+        },
+        {
+            "paperId": "ff4324c1bb61c3903ea0d94701549a45900fdbd9",
+            "title": "Error detecting and error correcting codes"
+        },
+        {
+            "paperId": "0401a890704b706e1996c8c20975de380fb195b7",
+            "title": "Linear Representations of Finite Groups"
+        },
+        {
+            "paperId": "acc872bced2ecc10d2c8fd3a8df010052ba11303",
+            "title": "Translated from Russian by"
+        },
+        {
+            "paperId": "91d056107f83ff0b8fa45bf9e25abad7fb5aa4bb",
+            "title": "Eigenvalues of Non-Backtracking Walks in a Cycle with Random Loops"
+        },
+        {
+            "paperId": "ed1474464a1f62880c992790a3ff725d6319642b",
+            "title": "P , NP and mathematics \u2013 a computational complexity perspective"
+        },
+        {
+            "paperId": "6d12a1d23b21a9b170118a56386552bc5d4727de",
+            "title": "A Mathematical Theory of Communication"
+        },
+        {
+            "paperId": null,
+            "title": "Proc. of the 2006 International Congress of Mathematicians. Madrid"
+        },
+        {
+            "paperId": "aa3242b0c70f6b0ff75e160a97477fc5edecae74",
+            "title": "Pseudorandom Walks in Biregular Graphs and the RL vs. L Problem"
+        },
+        {
+            "paperId": "82f190c3110ab099b8c9a6157dd9aaf39f5931ba",
+            "title": "A lower bound on the spectral radius of the universal cover of a graph"
+        },
+        {
+            "paperId": "6766f0b0cffdf62e227a4d50ff2659a30c76f432",
+            "title": "I Computational Complexity"
+        },
+        {
+            "paperId": null,
+            "title": "Recent developments in extractors"
+        },
+        {
+            "paperId": null,
+            "title": "Probabilistically checkable proofs. In Computational complexity theory, volume 10 of IAS/Park City Math. Ser., pages 349\u2013389"
+        },
+        {
+            "paperId": "ab602c0652ff7f5756a356b26af3ab278be37d7e",
+            "title": "Minors in Lifts of Graphs Yotam Drier"
+        },
+        {
+            "paperId": "23068cc1a7996fa5bd810d4768f83a46935326f7",
+            "title": "Functional Analysis"
+        },
+        {
+            "paperId": "2905cf49fd93b5b138ce36a6e5a3b10d25427850",
+            "title": "On the Baum-Connes Assembly Map for Discrete Groups"
+        },
+        {
+            "paperId": "1d2f1602325f26693de04540d51eae371d54ce24",
+            "title": "Elementary number theory, group theory, and Ramanujan graphs"
+        },
+        {
+            "paperId": "5a8fdc6b9c39368aadd23412528fd5696a162539",
+            "title": "A Historical Review of the Isoperimetric Theorem in 2-D , and its place in Elementary Plane Geometry"
+        },
+        {
+            "paperId": "6d7ce02e7afa2781ce06841426c93a4044034319",
+            "title": "On the Impossibility of Dimension Reduction in l1"
+        },
+        {
+            "paperId": "63ce31345fa4ac22b7fa4e963e3424b6e4b777aa",
+            "title": "Asymptotic Behavior of the Random 3-Regular Bipartite Graph"
+        },
+        {
+            "paperId": "829bb4879342570558eedffa806dfa6f32276a3f",
+            "title": "Random Graph Coverings I: General Theory and Graph Connectivity"
+        },
+        {
+            "paperId": "d325ca557bd0e900448f1a290c4138179082c866",
+            "title": "A Markov chain for Steiner triple systems"
+        },
+        {
+            "paperId": "e42913da25e50c577ac4a260dc9157b09c7aad65",
+            "title": "On graphs of high girth (\u05e0\u05d5\u05e1\u05e4\u05d5 \u05e9\u05e2\u05e8, \u05ea\u05e7\u05e6\u05d9\u05e8 \u05d5\u05ea\u05db\u05df \u05d1\u05e2\u05d1\u05e8\u05d9\u05ea: \u05e2\u05dc \u05d2\u05e8\u05e4\u05d9\u05dd \u05d1\u05e2\u05dc\u05d9 \u05de\u05d5\u05ea\u05df \u05d2\u05d1\u05d5\u05d4.)"
+        },
+        {
+            "paperId": "8cca3495a8874a36f0f98f014c2921e58cd91217",
+            "title": "Semi-direct product in groups and Zig-zag product in graphs: Connections and applications"
+        },
+        {
+            "paperId": "c1550dc7c2b13552e9a4fea1e4ae39e36156a92d",
+            "title": "A Crash Course on Coding Theory"
+        },
+        {
+            "paperId": "3b91d0ed41f2a77e9202bc250b43ff080d0c5210",
+            "title": "Current Trends in Theoretical Computer Science"
+        },
+        {
+            "paperId": "6ea26f8eb85d5a5c05e1020ba11a1d2e43dee69f",
+            "title": "Random Graph Coverings I"
+        },
+        {
+            "paperId": "a4378d5be069d04372d6686901d25252ac099fc8",
+            "title": "Zeta Functions of Finite Graphs and Coverings , Part II"
+        },
+        {
+            "paperId": "31301b88cf0e22b3a51f9e7231f9de5d8fd907d9",
+            "title": "Static and Dynamic Path Selection on Expander Graphs: A Random Walk Approach"
+        },
+        {
+            "paperId": null,
+            "title": "Models of random regular graphsCanterbury), volume 267 of London Math. Soc. Lecture Note Ser"
+        },
+        {
+            "paperId": "081d924f0386b026d9753fa7bad05f2883450859",
+            "title": "Surveys in Combinatorics, 1999: Models of Random Regular Graphs"
+        },
+        {
+            "paperId": null,
+            "title": "Introduction to coding theory, volume 86 of Graduate Texts in Mathematics"
+        },
+        {
+            "paperId": "16666593472d5924b2bac14fdbd180773741f5bf",
+            "title": "Probabilistic checking of proofs: a new characterization of NP"
+        },
+        {
+            "paperId": "e5cca121e9852018c141ac3bc2cf2c35fea1dc9a",
+            "title": "The Probabilistic Method"
+        },
+        {
+            "paperId": "05cb06f6a0ca0c9704bd34d9a1575e4c25d023db",
+            "title": "A Sample of Samplers - A Computational Perspective on Sampling (survey)"
+        },
+        {
+            "paperId": "af4386779a3da6c0868b507e297d05a7d1aca2c1",
+            "title": "Mixing times"
+        },
+        {
+            "paperId": "77b3d010a3bbeb6576f18f1dedf547c2da827993",
+            "title": "Hardness Of Approximations"
+        },
+        {
+            "paperId": "0fca53efb8c3f9f2d26a56e968226b632e4ac78e",
+            "title": "Mathematical Physics \u00a9 Springer-Verlag 1996 On Orthogonal and Symplectic Matrix Ensembles"
+        },
+        {
+            "paperId": null,
+            "title": "On the Spectrum of Graphs and Their Universal Covering"
+        },
+        {
+            "paperId": null,
+            "title": "Geometric algorithms and combinatorial optimization, volume 2 of Algorithms and Combinatorics"
+        },
+        {
+            "paperId": "aad239e7b6739154c648a10c04157f4e9e928bdb",
+            "title": "Groups and Expanders"
+        },
+        {
+            "paperId": "5af1fa16d624217fd6d67a9f925a735147f7d0dd",
+            "title": "A course in combinatorics"
+        },
+        {
+            "paperId": "bb88e621c2c76242c0fc828c6fb7ed69afd2f051",
+            "title": "The Probabilistic Method"
+        },
+        {
+            "paperId": "73dcb887b9dfa9da84fdc807d83a50b8c95bccd2",
+            "title": "On the second eigenvalue of a graph"
+        },
+        {
+            "paperId": "989560956282b8545a7ea433851a0cb425dc7040",
+            "title": "Introduction to the theory of computation"
+        },
+        {
+            "paperId": null,
+            "title": "Explicit group-theoretic constructions of combinatorial schemes and their applications in the construction of expanders and concentrators"
+        },
+        {
+            "paperId": "f49f32857fc137e87d5b367698555a3cb39c8b99",
+            "title": "Asymptotic Theory Of Finite Dimensional Normed Spaces"
+        },
+        {
+            "paperId": "1c01e83768e9b877a8fe0c74605d2f7dd090fbd5",
+            "title": "lambda1, Isoperimetric inequalities for graphs, and superconcentrators"
+        },
+        {
+            "paperId": null,
+            "title": "A time-randomness tradeoff"
+        },
+        {
+            "paperId": "1d0635cda34b8af995313848a0c42bac6efe79ec",
+            "title": "Extensions of Lipschitz mappings into Hilbert space"
+        },
+        {
+            "paperId": "f04b0cb5a79448df85b9d9dfb59c2208e8130d39",
+            "title": "A note on the isoperimetric constant"
+        },
+        {
+            "paperId": "840694d1906eb3615479e13e6afa28313d10118a",
+            "title": "The Complexity of Testing Whether a Graph is a Superconcentrator"
+        },
+        {
+            "paperId": "cf7b3b38ca322cf95ef0a0b0502d7b44715a5789",
+            "title": "The theory of error-correcting codes\u2606"
+        },
+        {
+            "paperId": "48d022e5d091788f9a176b07b76ea39f43c83e4c",
+            "title": "Combinatorial problems and exercises"
+        },
+        {
+            "paperId": "71c9fd11ff75889aaa903b027af3a06e750e8add",
+            "title": "On the complexity of a concentrator"
+        },
+        {
+            "paperId": null,
+            "title": "The complexity of an optimal non-blocking commutation scheme without reorganization"
+        },
+        {
+            "paperId": "9fb53a3bdfb47230eeaf7d956b1a238db5cba690",
+            "title": "Reducibility Among Combinatorial Problems"
+        },
+        {
+            "paperId": null,
+            "title": "Fonctions harmoniques sur un arbre"
+        },
+        {
+            "paperId": "8de150fad52fa64d543acbb0f89226eb44b91c01",
+            "title": "\u00c9tude des coefficients de Fourier des fonctions de $L^p(G)$"
+        },
+        {
+            "paperId": null,
+            "title": "Fourier (Grenoble)"
+        },
+        {
+            "paperId": "3f3a83d5f2892cbc6a31bcbd1a6f57d923b1fa82",
+            "title": "A lower bound for the smallest eigenvalue of the Laplacian"
+        },
+        {
+            "paperId": "29f20b20fc2d5e9f663670a7562b2ea6d92eb2fd",
+            "title": "Connection of the dual space of a group with the structure of its close subgroups"
+        },
+        {
+            "paperId": "3742c17f24437a310b05888de2618212fe82cedf",
+            "title": "Ramanujan Graphs"
+        },
+        {
+            "paperId": "1e6fa65236afcfa4b43ded633dec41855aba70e1",
+            "title": "1.1. The model"
+        },
+        {
+            "paperId": "1e805522eb4fb54272ba9730ad2a96a6f6468423",
+            "title": "Combinatorics, Probability and Computing on the Edge-expansion of Graphs on the Edge-expansion of Graphs"
+        },
+        {
+            "paperId": "9cbc6bc1bec461f1bb7ddc4b68509ae9a4c6ef6b",
+            "title": "Theory of Error-correcting Codes"
+        },
+        {
+            "paperId": null,
+            "title": "Modern coding theory. Draft of the book"
+        },
+        {
+            "paperId": null,
+            "title": "On property (t)"
+        },
+        {
+            "paperId": "ba2b8ee57e274004045d5ccc4452346f35e72d49",
+            "title": "Geometric Inequalities"
+        }
+    ]
+}

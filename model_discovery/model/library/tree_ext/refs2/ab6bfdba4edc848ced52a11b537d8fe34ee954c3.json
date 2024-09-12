@@ -1,0 +1,95 @@
+{
+    "paperId": "ab6bfdba4edc848ced52a11b537d8fe34ee954c3",
+    "externalIds": {
+        "DBLP": "journals/tbe/MinamiNT99",
+        "MAG": "2117624000",
+        "DOI": "10.1109/10.740880",
+        "CorpusId": 3018671,
+        "PubMed": "9932339"
+    },
+    "title": "Real-time discrimination of ventricular tachyarrhythmia with Fourier-transform neural network",
+    "abstract": "The authors have developed a method to discriminate life-threatening ventricular arrhythmias by observing the QRS complex of the electrocardiogram (ECG) in each heartbeat. Changes in QRS complexes due to rhythm origination and conduction path were observed with the Fourier transform, and three kinds of rhythms were discriminated by a neural network. In this paper, the potential of the authors' method for clinical uses and real-time detection was examined using human surface ECGs and intracardiac electrograms (EGMs). The method achieved high sensitivity and specificity (>0.98) in discrimination of supraventricular rhythms from ventricular ones. The authors also present a hardware implementation of the algorithm on a commercial single-chip CPU.",
+    "venue": "IEEE Transactions on Biomedical Engineering",
+    "year": 1999,
+    "referenceCount": 14,
+    "citationCount": 505,
+    "influentialCitationCount": 23,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The authors' method to discriminate life-threatening ventricular arrhythmias by observing the QRS complex of the electrocardiogram (ECG) in each heartbeat achieved high sensitivity and specificity in discrimination of supraventricular rhythms from ventricular ones."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "48889933",
+            "name": "K. Minami"
+        },
+        {
+            "authorId": "2053282692",
+            "name": "H. Nakajima"
+        },
+        {
+            "authorId": "93584936",
+            "name": "T. Toyoshima"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "ff0948e38c42db7c12d8857e2bf22864556607c4",
+            "title": "Implantable cardioverter-defibrillators."
+        },
+        {
+            "paperId": "560ff03c3ffc60176339c948b6836d7bc2bc167e",
+            "title": "Arrhythmia diagnosis with discrimination of rhythm origin and measurement of heart-rate variation"
+        },
+        {
+            "paperId": "1e8e32f6f8738bfe1c9a4b59645eec4a7669cf14",
+            "title": "Arrhythmia diagnosis system which can distinguish atrial rhythms from ventricular rhythms"
+        },
+        {
+            "paperId": "3f9e16bc2bfa88554fd65d5de2cdeb7c8537a2be",
+            "title": "Real-time ventricular arrhythmia detection with Fourier analysis and neural network"
+        },
+        {
+            "paperId": "5d04c1ad488dc88a2b7d2ee804637f18253ee69b",
+            "title": "External defibrillators and emergency external pacemakers"
+        },
+        {
+            "paperId": "69ccc1da168c5ebc95e3102e4d77c14980f7a5d5",
+            "title": "Detection algorithms in implantable cardioverter defibrillators"
+        },
+        {
+            "paperId": "516326280f48e57b86b6955723a16fe12d05d336",
+            "title": "Implantable cardioverter defibrillators"
+        },
+        {
+            "paperId": "a9f77874343f0e35868a18cba1f1bd015fec643d",
+            "title": "Detecting ventricular fibrillation"
+        },
+        {
+            "paperId": "0d1dbfb536ad20b20233e71c7dba1a4f88b49ddd",
+            "title": "Comparing wavelet transforms for recognizing cardiac patterns"
+        },
+        {
+            "paperId": "e52ec51fce6c4fd0e953efb5d52bde47235323ad",
+            "title": "Differentiation of Beats of Ventricular and Sinus Origin Using a Self\u2010Training Neural Network"
+        },
+        {
+            "paperId": "2dcbed44ed1e690b79e76f117b85882896f03b91",
+            "title": "Algorithmic sequential decision-making in the frequency domain for life threatening ventricular arrhythmias and imitative artefacts: a diagnostic system."
+        },
+        {
+            "paperId": "3c0b7c35643b181837e55bc297539db468c89052",
+            "title": "Long-term outcome with the automatic implantable cardioverter-defibrillator."
+        },
+        {
+            "paperId": "12b03af504d0960334c77567dab38791bf0f739a",
+            "title": "AND T"
+        },
+        {
+            "paperId": null,
+            "title": "New waveform analyzing algorithm for ICD using neural network"
+        }
+    ]
+}

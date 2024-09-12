@@ -1,0 +1,498 @@
+{
+    "paperId": "d6553ec6df9cade86d780a09d8410d608154f3a5",
+    "externalIds": {
+        "MAG": "2108603643",
+        "DBLP": "journals/tsp/VoronenkoP09",
+        "DOI": "10.1109/TSP.2008.2006152",
+        "CorpusId": 9005414
+    },
+    "title": "Algebraic Signal Processing Theory: Cooley\u2013Tukey Type Algorithms for Real DFTs",
+    "abstract": "In this paper, we systematically derive a large class of fast general-radix algorithms for various types of real discrete Fourier transforms (real DFTs) including the discrete Hartley transform (DHT) based on the algebraic signal processing theory. This means that instead of manipulating the transform definition, we derive algorithms by manipulating the polynomial algebras underlying the transforms using one general method. The same method yields the well-known Cooley-Tukey fast Fourier transform (FFT) as well as general radix discrete cosine and sine transform algorithms. The algebraic approach makes the derivation concise, unifies and classifies many existing algorithms, yields new variants, enables structural optimization, and naturally produces a human-readable structural algorithm representation based on the Kronecker product formalism. We show, for the first time, that the general-radix Cooley-Tukey and the lesser known Bruun algorithms are instances of the same generic algorithm. Further, we show that this generic algorithm can be instantiated for all four types of the real DFT and the DHT.",
+    "venue": "IEEE Transactions on Signal Processing",
+    "year": 2008,
+    "referenceCount": 116,
+    "citationCount": 110,
+    "influentialCitationCount": 7,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper systematically derive a large class of fast general-radix algorithms for various types of real discrete Fourier transforms (real DFTs) including the discrete Hartley transform (DHT) based on the algebraic signal processing theory."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2637756",
+            "name": "Y. Voronenko"
+        },
+        {
+            "authorId": "1690697",
+            "name": "Markus P\u00fcschel"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "09129cc2b4fb0e33c6172de6782ad4e2e3a46ddf",
+            "title": "Algebraic Signal Processing Theory: Foundation and 1-D Time"
+        },
+        {
+            "paperId": "511242780ebae782e76112e594946d0c6085702a",
+            "title": "Algebraic Signal Processing Theory: 1-D Space"
+        },
+        {
+            "paperId": "258944fe29bb63427a43e9b6bb717039d7816703",
+            "title": "Algebraic signal processing theory: Cooley\u2013Tukey type algorithms on the 2-D hexagonal spatial lattice"
+        },
+        {
+            "paperId": "43ed41a0796f6be6c138f71216cedde2f7420555",
+            "title": "A Comparative Study of Different FFT Architectures for Software Defined Radio"
+        },
+        {
+            "paperId": "b52a525cbc2e19dd500c931f77e06a800be60aea",
+            "title": "Algebraic Signal Processing Theory: 2-D Spatial Hexagonal Lattice"
+        },
+        {
+            "paperId": "dbd07549bcdd5461cc9a5300aaf7eb3c5d5bb82b",
+            "title": "Type-II/III DCT/DST algorithms with reduced number of arithmetic operations"
+        },
+        {
+            "paperId": "45589bf30ac138c0c5081855ba154395b3222648",
+            "title": "Algebraic Signal Processing Theory: Cooley\u2013Tukey Type Algorithms for DCTs and DSTs"
+        },
+        {
+            "paperId": "8508e227e3792a81a1d375e5c5e45604ad735315",
+            "title": "Algebraic Signal Processing Theory: An Overview"
+        },
+        {
+            "paperId": "9301e284bb96ca221ebbc0fbb037046c29e96ba6",
+            "title": "Algebraic Signal Processing Theory"
+        },
+        {
+            "paperId": "414ec2632cded876e95f56e68ebb9748fbc6d28a",
+            "title": "FFT Program Generation for Shared Memory: SMP and Multicore"
+        },
+        {
+            "paperId": "2d45828b9c3a863be9d896427438c7ba2aee241d",
+            "title": "Algebraic Derivation of General Radix Cooley-Tukey Algorithms for the Real Discrete Fourier Transform"
+        },
+        {
+            "paperId": "4c6e3316479aa89ef1c0a76cee81bc3ae526b05f",
+            "title": "Fourier transform for the spatial quincunx lattice"
+        },
+        {
+            "paperId": "0221bee380311d75ffcc11fd66be7d5cf632f636",
+            "title": "SPIRAL: Code Generation for DSP Transforms"
+        },
+        {
+            "paperId": "576f8319bf5defcef7695ff4c61c2561215f6f81",
+            "title": "Formal loop merging for signal transforms"
+        },
+        {
+            "paperId": "bc05c294d9803ef04e89ab3b89bfd49744584cba",
+            "title": "Fourier transform for the directed quincunx lattice"
+        },
+        {
+            "paperId": "f8e9b050c93af6dea582563f61b6460b590bc3af",
+            "title": "The Design and Implementation of FFTW3"
+        },
+        {
+            "paperId": "e2b1824b6e9b14edbfd3bbcd2c240b49d3a1e1c7",
+            "title": "Cooley-Tukey FFT like algorithm for the discrete triangle transform"
+        },
+        {
+            "paperId": "90db82d7c82c5c1a73de039940bfbbf9d446ff2a",
+            "title": "The discrete triangle transform"
+        },
+        {
+            "paperId": "2c75d939186c65ec044138334fc74532a4b2fc64",
+            "title": "The Algebraic Approach to the Discrete Cosine and Sine Transforms and Their Fast Algorithms"
+        },
+        {
+            "paperId": "379713ae114b57e7e259a364beb1ca1bbcf91c41",
+            "title": "Cooley-Tukey FFT like algorithms for the DCT"
+        },
+        {
+            "paperId": "69e90d2531ec4bbd4bbe4ea1d49e1a53e7dc457d",
+            "title": "Decomposing Monomial Representations of Solvable Groups"
+        },
+        {
+            "paperId": "c67529fd0bc751ba17caa1f187ac4db1ed1f185c",
+            "title": "Prime-length real-valued polynomial residue division algorithms"
+        },
+        {
+            "paperId": "8141026e06e8cb4a86e7e734ea87f32fe502775a",
+            "title": "A SIMD vectorizing compiler for digital signal processing algorithms"
+        },
+        {
+            "paperId": "fbeb8dd4d5e9a8187e5f32e0027df3728236302b",
+            "title": "Automatic generation of fast discrete signal transforms"
+        },
+        {
+            "paperId": "06b94e58c8e4a62a6177c88a60f1cc90c7103cea",
+            "title": "Constant geometry algorithm for discrete cosine transform"
+        },
+        {
+            "paperId": "26833ec0ee3ccf651884ddc8d719f51e327133b8",
+            "title": "The fast generalized discrete Fourier transforms: A unified approach to the discrete sinusoidal transforms computation"
+        },
+        {
+            "paperId": "eeb2eb44102bf289db4a22635261d82ffa7dc7db",
+            "title": "FFTW: an adaptive software architecture for the FFT"
+        },
+        {
+            "paperId": "1b77dcf17eebb0c61315a92f1dd0ed91d92bc04c",
+            "title": "DCT algorithms for composite sequence lengths"
+        },
+        {
+            "paperId": "033ea1470356ddc9688978e05254581669595621",
+            "title": "The quick Fourier transform: an FFT based on symmetries"
+        },
+        {
+            "paperId": "54946e3ef95b6eb93d89346a768a9c73053870d0",
+            "title": "Algebraic complexity theory"
+        },
+        {
+            "paperId": "3740988cbdb34494b0a1b4893dfabaaabe71aa6f",
+            "title": "A Polynomial Approach to Linear Algebra"
+        },
+        {
+            "paperId": "34071ac2fbb22f973ce842f418c39e3b49defa44",
+            "title": "Real-valued fast discrete Fourier transform and cyclic convolution algorithms of highly composite even length"
+        },
+        {
+            "paperId": "6e21e28060684fdc1cf32ea05c8b64b5eb17752e",
+            "title": "Generalized FFT's- A survey of some recent results"
+        },
+        {
+            "paperId": "d64add399b410814836d0c46d57272a831cb82d4",
+            "title": "Architecture-oriented regular algorithms for discrete sine and cosine transforms"
+        },
+        {
+            "paperId": "8108eccfce6592671ef0a490299d4d9f5501dc62",
+            "title": "Real-valued decimation-in-time and decimation-in-frequency algorithms"
+        },
+        {
+            "paperId": "5f8eede1a2d12d207ae1a5b8fd371c7de972c3f9",
+            "title": "Transforming real-valued sequences: fast Fourier versus fast Hartley transform algorithms"
+        },
+        {
+            "paperId": "a26f7d418e308f8fe92b4dc2c7de707d3a07ce06",
+            "title": "A new look at the comparison of the fast Hartley and Fourier transforms"
+        },
+        {
+            "paperId": "f0429d6d7012eb9a3d5a4b7ec44059a72c42452e",
+            "title": "Unification of Legendre, Laguerre, Hermite, and binomial discrete transforms using Pascal's matrix"
+        },
+        {
+            "paperId": "970036bbae871db775b39c86c8368b5290b62b2b",
+            "title": "Basefield transforms with the convolution property"
+        },
+        {
+            "paperId": "234cb132ed32d3af0fb41a53973dc98d7e00fb4d",
+            "title": "Fast discrete transforms by means of eigenpolynomials"
+        },
+        {
+            "paperId": "a32054e1c7681289a156ff90ecbe57c5e4bebb3a",
+            "title": "Mixed-radix discrete cosine transform"
+        },
+        {
+            "paperId": "7f161c7e72e0075b4fccc09315a8bc8d860fdc82",
+            "title": "Some results in fixed point error analysis of the Bruun-FTT algorithm"
+        },
+        {
+            "paperId": "2b8c5317bc09a474d55d538a5c859fbfce9750f4",
+            "title": "Fast algorithms for the discrete cosine transform"
+        },
+        {
+            "paperId": "1f486dbf73868b617e386521bd0e35f8a8d30dd5",
+            "title": "Fast radix-p discrete cosine transform"
+        },
+        {
+            "paperId": "7fe183527baa96b5cb24b6a94c986249ef3a1e8a",
+            "title": "A new algorithm to compute the DCT and its inverse"
+        },
+        {
+            "paperId": "cab0b7235a2933c71b1e737a017e83c6b4c1869f",
+            "title": "Pruning the fast discrete cosine transform"
+        },
+        {
+            "paperId": "dbdf9036fa3e747e686c55a5b196f43bf508972c",
+            "title": "Direct methods for computing discrete sinusoidal transforms"
+        },
+        {
+            "paperId": "2caeb447a43f051992f568154c10aaf13db669fb",
+            "title": "A methodology for designing, modifying, and implementing Fourier transform algorithms on various architectures"
+        },
+        {
+            "paperId": "76420cb30ded72f84e3d03e796e90ea655c372bf",
+            "title": "Fast algorithms for computing the discrete W transforms"
+        },
+        {
+            "paperId": "7fe166b29c86d75ee73d3d9f901e995d5c4c87dc",
+            "title": "Algorithms meeting the lower bounds on the multiplicative complexity of length-2n DFTs and their connection with practical algorithms"
+        },
+        {
+            "paperId": "d5277e876b58db2814f89c0b0d072752b600e618",
+            "title": "Fast Fourier analysis for abelian group extensions"
+        },
+        {
+            "paperId": "0065097142a08e15898020fde6806268731d2cba",
+            "title": "Fast discrete sine transform algorithms"
+        },
+        {
+            "paperId": "e265052e44a88c8282d8243b23399774fed6f21b",
+            "title": "Algorithms for Discrete Fourier Transform and Convolution"
+        },
+        {
+            "paperId": "8e980fbf251ecb28ba85eb092fc66ce284bb63be",
+            "title": "Numerical Recipes in C: The Art of Scientific Computing"
+        },
+        {
+            "paperId": "cf79c3e490a7adfa234190441b8e122bf68608ec",
+            "title": "Fast computation of real discrete Fourier transform for any number of data points"
+        },
+        {
+            "paperId": "0530d99a407699d625d186b94a12c93d9f493a53",
+            "title": "Multiplicative complexity, convolution, and the DFT"
+        },
+        {
+            "paperId": "9425571b0e5b46af13ddd41e1b716e18e1da6d94",
+            "title": "The decimation-in-frequency algorithms for a family of discrete sine and cosine transforms"
+        },
+        {
+            "paperId": "9cd4d0cee6c22a65dd6e5ae51c9b6cdbaeb550df",
+            "title": "Real-valued fast Fourier transform algorithms"
+        },
+        {
+            "paperId": "830ece99ab8e54b5fb8a763de71c7ab1c1ee85e4",
+            "title": "Improved Fourier and Hartley transform algorithms: Application to cyclic convolution of real data"
+        },
+        {
+            "paperId": "8a25a8e33805c4fe1574b233e663407af62b780a",
+            "title": "A unified approach to the fast computation of all discrete trigonometric transforms"
+        },
+        {
+            "paperId": "8fad4f6cebff0c6a36ce4f2eb21bfa00e0c3768b",
+            "title": "New 2nDCT algorithms suitable for VLSI implementation"
+        },
+        {
+            "paperId": "1dc1223b4d66b293a5e7b737e08839db426d9b72",
+            "title": "A Fast Recursive Algorithm For Computing The Discrete Cosine Transform"
+        },
+        {
+            "paperId": "11544f07bb1059c4168fc72a50263c1426e98b74",
+            "title": "Implementation of \"Split-radix\" FFT algorithms for complex, real, and real-symmetric data"
+        },
+        {
+            "paperId": "30cee9c39414adc66d0e5611a464596adf86eb7d",
+            "title": "On the number of multiplications necessary to compute a length-2nDFT"
+        },
+        {
+            "paperId": "2620fdf0c3925f5f873c0c88e85cc8b059dda875",
+            "title": "Numerical Recipes in C: The Art of Sci-entific Computing"
+        },
+        {
+            "paperId": "00731c84723fe8d2bd0e48e8d82c36e7db1618fd",
+            "title": "On computing the discrete Hartley transform"
+        },
+        {
+            "paperId": "850682146f840520a8d2106cb5379ba8dc5c511c",
+            "title": "Implementation of \"Split-radix\" FFT algorithms for complex, real, and real symmetric data"
+        },
+        {
+            "paperId": "d8de5d07f79e52e1cc54e836128ee5cf7f469281",
+            "title": "Prime factor decomposition of the discrete cosine transform and its hardware realization"
+        },
+        {
+            "paperId": "f168c5dedff6243f30583073ea92b97b257ca0e8",
+            "title": "A new algorithm to compute the discrete cosine Transform"
+        },
+        {
+            "paperId": "38598761aafa11dec17979436b30fe9c8e5d4229",
+            "title": "Fast decimation-in-time algorithms for a family of discrete sine and cosine transforms"
+        },
+        {
+            "paperId": "387ad3e72385bf5239415aed79a8bd39a205404c",
+            "title": "Fast algorithms for the discrete W transform and for the discrete Fourier transform"
+        },
+        {
+            "paperId": "0556f5ac4c9b81e47c7f362f9075a2d06e9359ec",
+            "title": "The fast Hartley transform"
+        },
+        {
+            "paperId": "3c9508bf8af1d8382722a0174a75b72d3e920243",
+            "title": "Simple FFT and DCT algorithms with reduced number of operations"
+        },
+        {
+            "paperId": "2d48ece50be1aa6cde04db195ce1cb7db4d6a702",
+            "title": "Discrete Fourier transform algorithms for real valued sequences"
+        },
+        {
+            "paperId": "c6eeaf55bbc743fb43565b3e6188a77c14a9e5e1",
+            "title": "Prime factor FFT algorithms for real-valued series"
+        },
+        {
+            "paperId": "475376a8ef4b013cc8f18ca00b3deca062bf154c",
+            "title": "Abelian semi-simple algebras and algorithms for the Discrete Fourier Transform"
+        },
+        {
+            "paperId": "7c21ebc8fafd9742b81ccc2eb9788ca558eceed1",
+            "title": "The multiplicative complexity of the Discrete Fourier Transform"
+        },
+        {
+            "paperId": "4d7c795dd42fb2b6f7e1f9c67fda7cad124a107c",
+            "title": "Discrete Hartley transform"
+        },
+        {
+            "paperId": "dd5471026ff519f0678ef433fe8758be5e18a972",
+            "title": "On the structure of efficient DFT algorithms"
+        },
+        {
+            "paperId": "a0b6ad9d9830cd84c72b06dcbab0779c139ecbeb",
+            "title": "A prime factor FTT algorithm using distributed arithmetic"
+        },
+        {
+            "paperId": "4f40dc879dfadf45777acf5ae21dcace76f8684e",
+            "title": "New polynomial transform algorithms for multidimensional DFT's and convolutions"
+        },
+        {
+            "paperId": "96f54acd0b53bdbf39dc90a193088d462b93862f",
+            "title": "A Symmetric Cosine Transform"
+        },
+        {
+            "paperId": "a4d26625962428a3f885344768d1f84420d77db7",
+            "title": "A Fast Computational Algorithm for the Discrete Sine Transform"
+        },
+        {
+            "paperId": "57923211710a9684f7156b8dc6ebd8dc0dba0e55",
+            "title": "An Introduction to Orthogonal Polynomials"
+        },
+        {
+            "paperId": "24cdedec1eaa719865569e693fa9f6e42a9f659e",
+            "title": "On the multiplicative complexity of the Discrete Fourier Transform"
+        },
+        {
+            "paperId": "986c2fbf3f188a77376b8aaabd748a717cec7809",
+            "title": "Fast computation of discrete Fourier transforms using polynomial transforms"
+        },
+        {
+            "paperId": "42d93f235f829a62f4d76f9aabf2f373a3c002bf",
+            "title": "z-transform DFT filters and FFT's"
+        },
+        {
+            "paperId": "f3aeb3a51e73237c17d3c4805cbc3dc26eda1031",
+            "title": "A Fast Computational Algorithm for the Discrete Cosine Transform"
+        },
+        {
+            "paperId": "7af534a971b05b26b9758cdb7253b849d0de956e",
+            "title": "On computing the Discrete Fourier Transform."
+        },
+        {
+            "paperId": "ede1a27e961c1161b787f5ddca94472beba4828e",
+            "title": "Odd-time odd-frequency discrete Fourier transform for symmetric real-valued series"
+        },
+        {
+            "paperId": "ca8baf5e5b1099bb5ef87d9c6aaa94bc17a694e6",
+            "title": "One-dimensional and two-dimensional generalised discrete fourier transforms"
+        },
+        {
+            "paperId": "75906d282aac013869c3dab9e020957a2f00a229",
+            "title": "Real signals fast Fourier transform: Storage capacity and step number reduction by means of an odd discrete Fourier transform"
+        },
+        {
+            "paperId": "5ad17b77496c98827aa1cb4be7e5c6cc16284f5e",
+            "title": "Algebraic Theory of Finite Fourier Transforms"
+        },
+        {
+            "paperId": "040f8459239d8e91476a88fae1e0224bfa240a81",
+            "title": "A radix-eight fast Fourier transform subroutine for real-valued series"
+        },
+        {
+            "paperId": "030bd4c198f4325d11482f086ecd61acc15bc00b",
+            "title": "Numerical Analysis: A fast fourier transform algorithm for real-valued series"
+        },
+        {
+            "paperId": "93c670c45373a746a44c8ff74939a31417ca9750",
+            "title": "Discrete Fourier transforms when the number of data samples is prime"
+        },
+        {
+            "paperId": "f388740059086b9803d7101f66fc48371cdd1050",
+            "title": "An Adaptation of the Fast Fourier Transform for Parallel Processing"
+        },
+        {
+            "paperId": "0e6beb95b5150ce99b108acdefabf70ccd3fee30",
+            "title": "An algorithm for the machine calculation of complex Fourier series"
+        },
+        {
+            "paperId": "fad2d807404a4a4ddd871fb47dd34663f74e5d19",
+            "title": "The Interaction Algorithm and Practical Fourier Analysis"
+        },
+        {
+            "paperId": "4b60bb7fcae5449faa4ab428a55b78f3fe8c3144",
+            "title": "Library generation for linear transforms"
+        },
+        {
+            "paperId": "15b1282cd9430ed5659fd4ec92c6fc2a692b0710",
+            "title": "A Modified Split-Radix FFT With Fewer Arithmetic Operations"
+        },
+        {
+            "paperId": "21d1e5fc0038eeba5d4489a0c9b2bc638c85427f",
+            "title": "A modified split-radix FFT with reduced arithmetic complexity"
+        },
+        {
+            "paperId": "4501c532e93a5f0e9e3ce0a3145864adcddc01cc",
+            "title": "Factorization of Chebyshev Polynomials"
+        },
+        {
+            "paperId": "e744cb45d220469e9edbafa5bfe481568471484a",
+            "title": "Computation of an odd-length DCT from a real-valued DFT of the same length"
+        },
+        {
+            "paperId": "3f343c200110a8c72a57b17faafe474b328ca3db",
+            "title": "A polynomial approach to fast algorithms for discrete Fourier-cosine and Fourier-sine transforms"
+        },
+        {
+            "paperId": "48ca2b426b664b17746eb261008a47cfdceddfd8",
+            "title": "Fast Fourier transform methods"
+        },
+        {
+            "paperId": "39b131d970e81ec7f96312e72451134ec35eb1a6",
+            "title": "Multiplicative Complexity of Discrete Fourier Transform"
+        },
+        {
+            "paperId": "41a517f5fa57ce455815c03e155ecc328821f615",
+            "title": "A fast algorithm for the cosine transform based on successive order reduction of the chebyshev polynomial"
+        },
+        {
+            "paperId": "eeb88496e935b1fcec520268bf01197581dd5fe3",
+            "title": "The discreteW transform"
+        },
+        {
+            "paperId": null,
+            "title": "Verfahren der Schnellen Fouriertransformation [Fast Four  ier Transform Methods"
+        },
+        {
+            "paperId": null,
+            "title": "Fast Fourier Transformation and Convolution Algorithms, 2nd ed"
+        },
+        {
+            "paperId": "1ff2a79066f2501453c750f40b17613324ec12b9",
+            "title": "Arithmetic complexity of computations"
+        },
+        {
+            "paperId": "79f850a464fea866621ac45f2aab1bcb86165f15",
+            "title": "The Chebyshev polynomials"
+        },
+        {
+            "paperId": null,
+            "title": "FFTW 3.1.2 Available: http://fftw"
+        },
+        {
+            "paperId": null,
+            "title": "FFTW 3.1.2. [Online]"
+        },
+        {
+            "paperId": null,
+            "title": "Intel Integrated Performance Primitives 5.3. [Online]. Available: http:// www.intel.com/software/products"
+        }
+    ]
+}

@@ -1,0 +1,33 @@
+{
+    "paperId": "cb11771cbfd45aa09e00f1f3b0fc156a087fa544",
+    "externalIds": {
+        "MAG": "1585773866",
+        "DBLP": "books/daglib/0002126",
+        "DOI": "10.1137/1.9780898717761",
+        "CorpusId": 35253217
+    },
+    "title": "Evaluating derivatives - principles and techniques of algorithmic differentiation, Second Edition",
+    "abstract": "Algorithmic, or automatic, differentiation (AD) is a growing area of theoretical research and software development concerned with the accurate and efficient evaluation of derivatives for function evaluations given as computer programs. The resulting derivative values are useful for all scientific computations that are based on linear, quadratic, or higher order approximations to nonlinear scalar or vector functions. AD has been applied in particular to optimization, parameter identification, nonlinear equation solving, the numerical integration of differential equations, and combinations of these. Apart from quantifying sensitivities numerically, AD also yields structural dependence information, such as the sparsity pattern and generic rank of Jacobian matrices. The field opens up an exciting opportunity to develop new algorithms that reflect the true cost of accurate derivatives and to use them for improvements in speed and reliability. This second edition has been updated and expanded to cover recent developments in applications and theory, including an elegant NP completeness argument by Uwe Naumann and a brief introduction to scarcity, a generalization of sparsity. There is also added material on checkpointing and iterative differentiation. To improve readability the more detailed analysis of memory and complexity bounds has been relegated to separate, optional chapters.The book consists of three parts: a stand-alone introduction to the fundamentals of AD and its software; a thorough treatment of methods for sparse problems; and final chapters on program-reversal schedules, higher derivatives, nonsmooth problems and iterative processes. Each of the 15 chapters concludes with examples and exercises. Audience: This volume will be valuable to designers of algorithms and software for nonlinear computational problems. Current numerical software users should gain the insight necessary to choose and deploy existing AD software tools to the best advantage. Contents: Rules; Preface; Prologue; Mathematical Symbols; Chapter 1: Introduction; Chapter 2: A Framework for Evaluating Functions; Chapter 3: Fundamentals of Forward and Reverse; Chapter 4: Memory Issues and Complexity Bounds; Chapter 5: Repeating and Extending Reverse; Chapter 6: Implementation and Software; Chapter 7: Sparse Forward and Reverse; Chapter 8: Exploiting Sparsity by Compression; Chapter 9: Going beyond Forward and Reverse; Chapter 10: Jacobian and Hessian Accumulation; Chapter 11: Observations on Efficiency; Chapter 12: Reversal Schedules and Checkpointing; Chapter 13: Taylor and Tensor Coefficients; Chapter 14: Differentiation without Differentiability; Chapter 15: Implicit and Iterative Differentiation; Epilogue; List of Figures; List of Tables; Assumptions and Definitions; Propositions, Corollaries, and Lemmas; Bibliography; Index",
+    "venue": "Frontiers in applied mathematics",
+    "year": 2000,
+    "referenceCount": 0,
+    "citationCount": 3115,
+    "influentialCitationCount": 200,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This second edition has been updated and expanded to cover recent developments in applications and theory, including an elegant NP completeness argument by Uwe Naumann and a brief introduction to scarcity, a generalization of sparsity."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145983059",
+            "name": "A. Griewank"
+        },
+        {
+            "authorId": "143775646",
+            "name": "A. Walther"
+        }
+    ],
+    "references": []
+}

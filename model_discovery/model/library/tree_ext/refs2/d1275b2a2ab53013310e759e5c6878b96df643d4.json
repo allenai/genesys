@@ -1,0 +1,194 @@
+{
+    "paperId": "d1275b2a2ab53013310e759e5c6878b96df643d4",
+    "externalIds": {
+        "DBLP": "conf/slt/MikolovZ12",
+        "MAG": "1999965501",
+        "DOI": "10.1109/SLT.2012.6424228",
+        "CorpusId": 11383176
+    },
+    "title": "Context dependent recurrent neural network language model",
+    "abstract": "Recurrent neural network language models (RNNLMs) have recently demonstrated state-of-the-art performance across a variety of tasks. In this paper, we improve their performance by providing a contextual real-valued input vector in association with each word. This vector is used to convey contextual information about the sentence being modeled. By performing Latent Dirichlet Allocation using a block of preceding text, we achieve a topic-conditioned RNNLM. This approach has the key advantage of avoiding the data fragmentation associated with building multiple topic models on different data subsets. We report perplexity results on the Penn Treebank data, where we achieve a new state-of-the-art. We further apply the model to the Wall Street Journal speech recognition task, where we observe improvements in word-error-rate.",
+    "venue": "Spoken Language Technology Workshop",
+    "year": 2012,
+    "referenceCount": 40,
+    "citationCount": 596,
+    "influentialCitationCount": 61,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper improves recurrent neural network language models performance by providing a contextual real-valued input vector in association with each word to convey contextual information about the sentence being modeled by performing Latent Dirichlet Allocation using a block of preceding text."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2047446108",
+            "name": "Tomas Mikolov"
+        },
+        {
+            "authorId": "1681543",
+            "name": "G. Zweig"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "0ce317d84086b8885ddbc7923ec00bedb64ab6dc",
+            "title": "Measuring the Influence of Long Range Dependencies with Neural Network Language Models"
+        },
+        {
+            "paperId": "3e7840a81072bcd1f36dae230b613f5f9af27eda",
+            "title": "Improving arabic broadcast transcription using automatic topic clustering"
+        },
+        {
+            "paperId": "e6f4381f25bdb5466f3ed7c2d7c66bd4349f746d",
+            "title": "Cache neural network language models based on long-distance dependencies for a spoken dialog system"
+        },
+        {
+            "paperId": "dd32a96d9776185ed60fde26d933c75911379cad",
+            "title": "Discriminative Language Modeling With Linguistic and Statistically Derived Features"
+        },
+        {
+            "paperId": "cb45e9217fe323fbc199d820e7735488fca2a9b3",
+            "title": "Strategies for training large scale neural network language models"
+        },
+        {
+            "paperId": "77dfe038a9bdab27c4505444931eaa976e9ec667",
+            "title": "Empirical Evaluation and Combination of Advanced Language Modeling Techniques"
+        },
+        {
+            "paperId": "0d6203718c15f137fda2f295c96269bc2b254644",
+            "title": "Learning Recurrent Neural Networks with Hessian-Free Optimization"
+        },
+        {
+            "paperId": "3aaa1e4974800767fcbd2c24c2f2af42bf412f97",
+            "title": "Structured Output Layer neural network language model"
+        },
+        {
+            "paperId": "07ca885cb5cc4328895bfaec9ab752d5801b14cd",
+            "title": "Extensions of recurrent neural network language model"
+        },
+        {
+            "paperId": "8d73b5b6bbb93fdfb3974632b72930741cdedf46",
+            "title": "The subspace Gaussian mixture model - A structured model for speech recognition"
+        },
+        {
+            "paperId": "0963942fdcba17f7b94d1d636431d4a772476711",
+            "title": "Self-supervised discriminative training of statistical language models"
+        },
+        {
+            "paperId": "927c25cdd384e8f39ed7db7ab1558eb7fd8f048c",
+            "title": "A Joint Language Model With Fine-grain Syntactic Tags"
+        },
+        {
+            "paperId": "a1a4d2f3621ce7c56d7c396bb59f4eaf0e2b14fa",
+            "title": "Shrinking Exponential Language Models"
+        },
+        {
+            "paperId": "0e4d042b668805e19f097b7eb0f223babec68f67",
+            "title": "Performance Prediction for Exponential Language Models"
+        },
+        {
+            "paperId": "0fcc184b3b90405ec3ceafd6a4007c749df7c363",
+            "title": "Continuous space language models"
+        },
+        {
+            "paperId": "bd7d93193aad6c4b71cc8942e808753019e87706",
+            "title": "Three new graphical models for statistical language modelling"
+        },
+        {
+            "paperId": "9319ca5a532462f9f3515ac3d317668aa9650d5b",
+            "title": "Exact training of a neural syntactic language model"
+        },
+        {
+            "paperId": "28209ce8d0ac1cf4ceea3eeddf4630e1032fa0ef",
+            "title": "A neural probabilistic language model"
+        },
+        {
+            "paperId": "6c2b28f9354f667cd5bd07afc0471d8334430da7",
+            "title": "A Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "7ac0550daef2f936c4280aca87ff8e9c7e7baf69",
+            "title": "Maximum entropy techniques for exploiting syntactic, semantic and collocational dependencies in language modeling"
+        },
+        {
+            "paperId": "626a71ca59d88964d9a08e40ba0c8e4be2ac3bb9",
+            "title": "Robust decision tree state tying for continuous speech recognition"
+        },
+        {
+            "paperId": "a90c1ca6c335de94721d7445bb01b723c3d9a840",
+            "title": "Exploiting latent semantic information in statistical language modeling"
+        },
+        {
+            "paperId": "b888cae7e6e288b108f9d119fc23b84b4d447029",
+            "title": "Towards better integration of semantic predictors in statistical language modeling"
+        },
+        {
+            "paperId": "f72084efcae8b2007e590b0c5a8f1decb61ef935",
+            "title": "A whole sentence maximum entropy language model"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "404fffebcdb9b597489f62735d8ce59eff41f623",
+            "title": "Modeling long distance dependence in language: topic mixtures vs. dynamic cache models"
+        },
+        {
+            "paperId": "d4e8bed3b50a035e1eabad614fe4218a34b3b178",
+            "title": "An Empirical Study of Smoothing Techniques for Language Modeling"
+        },
+        {
+            "paperId": "d0be39ee052d246ae99c082a565aba25b811be2d",
+            "title": "Learning long-term dependencies with gradient descent is difficult"
+        },
+        {
+            "paperId": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+            "title": "Building a Large Annotated Corpus of English: The Penn Treebank"
+        },
+        {
+            "paperId": "606df60d518db088986e74fad1f357ea6e5312f2",
+            "title": "On the dynamic adaptation of stochastic language models"
+        },
+        {
+            "paperId": "6e58b5f825df9fb0b00465a66598f302c30b080a",
+            "title": "Trigger-based language models: a maximum entropy approach"
+        },
+        {
+            "paperId": "164125a65d42a791d2c1e108559344caef96d08b",
+            "title": "Indexing by Latent Semantic Analysis"
+        },
+        {
+            "paperId": "be1fed9544830df1137e72b1d2396c40d3e18365",
+            "title": "A Cache-Based Natural Language Model for Speech Recognition"
+        },
+        {
+            "paperId": "96364af2d208ea75ca3aeb71892d2f7ce7326b55",
+            "title": "Statistical Language Models Based on Neural Networks"
+        },
+        {
+            "paperId": null,
+            "title": "Mikolov"
+        },
+        {
+            "paperId": "751ca1f8ca9cff7e60f5985dff479c42cb6fc57e",
+            "title": "Personalizing Model M for Voice-Search"
+        },
+        {
+            "paperId": "3a1a2cff2b70fb84a7ca7d97f8adcc5855851795",
+            "title": "The Kaldi Speech Recognition Toolkit"
+        },
+        {
+            "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+            "title": "Recurrent neural network based language model"
+        },
+        {
+            "paperId": "ff80a400198f0ce26887672407d8872825e663bf",
+            "title": "Random forests and the data sparseness problem in language modeling"
+        },
+        {
+            "paperId": null,
+            "title": "Late  nt dirichlet allocation"
+        }
+    ]
+}

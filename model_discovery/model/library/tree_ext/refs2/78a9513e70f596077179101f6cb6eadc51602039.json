@@ -1,0 +1,134 @@
+{
+    "paperId": "78a9513e70f596077179101f6cb6eadc51602039",
+    "externalIds": {
+        "MAG": "2163568299",
+        "DBLP": "conf/naacl/McCloskyCJ06",
+        "ACL": "N06-1020",
+        "DOI": "10.3115/1220835.1220855",
+        "CorpusId": 628455
+    },
+    "title": "Effective Self-Training for Parsing",
+    "abstract": "We present a simple, but surprisingly effective, method of self-training a two-phase parser-reranker system using readily available unlabeled data. We show that this type of bootstrapping is possible for parsing when the bootstrapped parses are processed by a discriminative reranker. Our improved model achieves an f-score of 92.1%, an absolute 1.1% improvement (12% error reduction) over the previous best result for Wall Street Journal parsing. Finally, we provide some analysis to better understand the phenomenon.",
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2006,
+    "referenceCount": 23,
+    "citationCount": 676,
+    "influentialCitationCount": 59,
+    "openAccessPdf": {
+        "url": "http://dl.acm.org/ft_gateway.cfm?id=1220855&type=pdf",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents a simple, but surprisingly effective, method of self-training a two-phase parser-reranker system using readily available unlabeled data and shows that this type of bootstrapping is possible for parsing when the bootstrapped parses are processed by a discriminative reranker."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2240597",
+            "name": "David McClosky"
+        },
+        {
+            "authorId": "1749837",
+            "name": "Eugene Charniak"
+        },
+        {
+            "authorId": "145177220",
+            "name": "Mark Johnson"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "a89d59f39e805e71b554a962d07449c5d39b7df3",
+            "title": "The Bottleneck"
+        },
+        {
+            "paperId": "8dfdedcbeb3b67ecaa4d85ca4b9d1aff368b8e2a",
+            "title": "Better k-best Parsing"
+        },
+        {
+            "paperId": "0ecb33ced5b0976accdf13817151f80568b6fdcb",
+            "title": "Coarse-to-Fine n-Best Parsing and MaxEnt Discriminative Reranking"
+        },
+        {
+            "paperId": "1174297ddcf08937a94d8efe4c1efb65f3b92fd8",
+            "title": "Discriminative Training of a Neural Network Statistical Parser"
+        },
+        {
+            "paperId": "906765f7ac46011123cca59de775216f1ee9b451",
+            "title": "Bootstrapping POS-taggers using unlabelled data"
+        },
+        {
+            "paperId": "b16fc0643c715813c2eafc3f6d0e2bd59354b236",
+            "title": "Bootstrapping statistical parsers from small datasets"
+        },
+        {
+            "paperId": "77021fb48704b860fa850dd103b79db4dcf920ee",
+            "title": "A Generative Constituent-Context Model for Improved Grammar Induction"
+        },
+        {
+            "paperId": "f0c90a5bc53027d76b24854209a4cdb1bd75dd2f",
+            "title": "Applying Co-Training Methods to Statistical Parsing"
+        },
+        {
+            "paperId": "a48abd949978432b8a9498f94b029e440bc1b4f3",
+            "title": "PAC Generalization Bounds for Co-training"
+        },
+        {
+            "paperId": "48b915e2d54e93c3a66e9ddc35244ebdef22c101",
+            "title": "Computation of the N Best Parse Trees for Weighted and Stochastic Context-Free Grammars"
+        },
+        {
+            "paperId": "844db702be4bc149b06b822b47247e15f5894cc3",
+            "title": "Discriminative Reranking for Natural Language Parsing"
+        },
+        {
+            "paperId": "76d5e3fa888bee872b7adb7fa810089aa8ab1d58",
+            "title": "A Maximum-Entropy-Inspired Parser"
+        },
+        {
+            "paperId": "463dbd690d912b23d29b7581fb6b253b36f50394",
+            "title": "Estimators for Stochastic \u201cUnification-Based\u201d Grammars"
+        },
+        {
+            "paperId": "2a5e619f2c5f4220438b1357e596db5b1578398d",
+            "title": "Statistical Parsing with a Context-Free Grammar and Word Statistics"
+        },
+        {
+            "paperId": "d4e8bed3b50a035e1eabad614fe4218a34b3b178",
+            "title": "An Empirical Study of Smoothing Techniques for Language Modeling"
+        },
+        {
+            "paperId": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+            "title": "Building a Large Annotated Corpus of English: The Penn Treebank"
+        },
+        {
+            "paperId": "bdaf232c561f1f50e88b1d24097e214890b37e8b",
+            "title": "Structural Ambiguity and Lexical Relations"
+        },
+        {
+            "paperId": "8a62631f3782d0f6440745eea3b041ce917af4aa",
+            "title": "MAP adaptation of stochastic grammars"
+        },
+        {
+            "paperId": "ee7e21dd09949a5a53b39c13fca9cd3d55e2bc50",
+            "title": "Corpus Variation and Parser Performance"
+        },
+        {
+            "paperId": null,
+            "title": "North American News Text Corpus. Linguistic Data Consortium"
+        },
+        {
+            "paperId": null,
+            "title": "1995.North American News Text Corpus"
+        },
+        {
+            "paperId": null,
+            "title": "Mark Johnson, Stuart Geman, Stephen Canon, Zhiyi Chi, and Stefan Riezler"
+        },
+        {
+            "paperId": "13167f9cd8c7906ca808b01d28dca6dd951da8a5",
+            "title": "of the Association for Computational Linguistics"
+        }
+    ]
+}

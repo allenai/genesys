@@ -1,0 +1,419 @@
+{
+    "paperId": "7d5cf22c70484fe217936c66741fb73b2a278bde",
+    "externalIds": {
+        "MAG": "2765383698",
+        "ACL": "Q18-1021",
+        "DBLP": "journals/corr/abs-1710-06481",
+        "ArXiv": "1710.06481",
+        "DOI": "10.1162/tacl_a_00021",
+        "CorpusId": 9192723
+    },
+    "title": "Constructing Datasets for Multi-hop Reading Comprehension Across Documents",
+    "abstract": "Most Reading Comprehension methods limit themselves to queries which can be answered using a single sentence, paragraph, or document. Enabling models to combine disjoint pieces of textual evidence would extend the scope of machine comprehension methods, but currently no resources exist to train and test this capability. We propose a novel task to encourage the development of models for text understanding across multiple documents and to investigate the limits of existing methods. In our task, a model learns to seek and combine evidence \u2014 effectively performing multihop, alias multi-step, inference. We devise a methodology to produce datasets for this task, given a collection of query-answer pairs and thematically linked documents. Two datasets from different domains are induced, and we identify potential pitfalls and devise circumvention strategies. We evaluate two previously proposed competitive models and find that one can integrate information across documents. However, both models struggle to select relevant information; and providing documents guaranteed to be relevant greatly improves their performance. While the models outperform several strong baselines, their best accuracy reaches 54.5% on an annotated test set, compared to human performance at 85.0%, leaving ample room for improvement.",
+    "venue": "Transactions of the Association for Computational Linguistics",
+    "year": 2017,
+    "referenceCount": 94,
+    "citationCount": 476,
+    "influentialCitationCount": 71,
+    "openAccessPdf": {
+        "url": "http://www.mitpressjournals.org/doi/pdf/10.1162/tacl_a_00021",
+        "status": "GOLD"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel task to encourage the development of models for text understanding across multiple documents and to investigate the limits of existing methods, in which a model learns to seek and combine evidence \u2014 effectively performing multihop, alias multi-step, inference."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1851564",
+            "name": "Johannes Welbl"
+        },
+        {
+            "authorId": "1918552",
+            "name": "Pontus Stenetorp"
+        },
+        {
+            "authorId": "48662861",
+            "name": "Sebastian Riedel"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "e0d2c0627c19da645d6711361b747568488e71ef",
+            "title": "Results of the sixth edition of the BioASQ Challenge"
+        },
+        {
+            "paperId": "ffb949d3493c3b2f3c9acf9c75cb03938933ddf0",
+            "title": "Adversarial Examples for Evaluating Reading Comprehension Systems"
+        },
+        {
+            "paperId": "932a5de79d8a8ebb75ea0c43493450fd9922e738",
+            "title": "Crowdsourcing Multiple Choice Science Questions"
+        },
+        {
+            "paperId": "55b4b9b303da1b0e8f938a80636ec95f7af235fd",
+            "title": "Neural Question Answering at BioASQ 5B"
+        },
+        {
+            "paperId": "9dfbfb32618de0334384f2256736b92eec6cb30b",
+            "title": "Framing QA as Building and Ranking Intersentence Answer Justifications"
+        },
+        {
+            "paperId": "5889e9afbcc3935867f9ae16fe46c71b9f2b071f",
+            "title": "End-to-end Differentiable Proving"
+        },
+        {
+            "paperId": "acbd6e09ad888e68472a5c1cb6ec83176c7969bd",
+            "title": "Ask the Right Questions: Active Question Reformulation with Reinforcement Learning"
+        },
+        {
+            "paperId": "525f65936c331b0b766c7aea0eae64c595704c50",
+            "title": "Mnemonic Reader for Machine Comprehension"
+        },
+        {
+            "paperId": "f010affab57b5fcf1cd6be23df79d8ec98c7289c",
+            "title": "TriviaQA: A Large Scale Distantly Supervised Challenge Dataset for Reading Comprehension"
+        },
+        {
+            "paperId": "3adff57fd09965224506a1bacc0579d9d3c8c11e",
+            "title": "SearchQA: A New Q&A Dataset Augmented with Context from a Search Engine"
+        },
+        {
+            "paperId": "91fb9e6b3e3576188f8e886671c29a8cb602e738",
+            "title": "Task-Oriented Query Reformulation with Reinforcement Learning"
+        },
+        {
+            "paperId": "54b8aadb7c2576665ce26caf59464b6449ac9ccf",
+            "title": "Cross-Sentence N-ary Relation Extraction with Graph LSTMs"
+        },
+        {
+            "paperId": "46a7afc2b23bb3406fb64c36b6f2696145b54f24",
+            "title": "Making Neural QA as Simple as Possible but not Simpler"
+        },
+        {
+            "paperId": "e4600ece1f09236d082eca4537ee9c1efe687f6c",
+            "title": "FastQA: A Simple and Efficient Neural Architecture for Question Answering"
+        },
+        {
+            "paperId": "3610591ee80d7133033a6fb09e4e324e54007805",
+            "title": "The Effect of Different Writing Tasks on Linguistic Style: A Case Study of the ROC Story Cloze Task"
+        },
+        {
+            "paperId": "8d574fde3e46ad766fac26094e3bb1cf55a08226",
+            "title": "MS MARCO: A Human Generated MAchine Reading COmprehension Dataset"
+        },
+        {
+            "paperId": "e978d832a4d86571e1b52aa1685dc32ccb250f50",
+            "title": "Dynamic Coattention Networks For Question Answering"
+        },
+        {
+            "paperId": "3a7b63b50c64f4ec3358477790e84cbd6be2a0b4",
+            "title": "Bidirectional Attention Flow for Machine Comprehension"
+        },
+        {
+            "paperId": "dd95f96e3322dcaee9b1e3f7871ecc3ebcd51bfe",
+            "title": "MS MARCO: A Human Generated MAchine Reading COmprehension Dataset"
+        },
+        {
+            "paperId": "91a95f979f22172746c42ab436391674968c4983",
+            "title": "Learning to Answer Questions from Wikipedia Infoboxes"
+        },
+        {
+            "paperId": "9550ebf7640a4ee880591b5e8739294d085bedf6",
+            "title": "Learning to Reason With Adaptive Computation"
+        },
+        {
+            "paperId": "63a6a8ce2ad114b38d0fff30e71cf973529a9b5b",
+            "title": "Gated End-to-End Memory Networks"
+        },
+        {
+            "paperId": "c636a2dd242908fe2e598a1077c0c57bfdea8633",
+            "title": "ReasoNet: Learning to Stop Reading in Machine Comprehension"
+        },
+        {
+            "paperId": "a39ffa57ef8e538b3c6a6c2bbc0b641f7cdc60dc",
+            "title": "Who did What: A Large-Scale Person-Centered Cloze Dataset"
+        },
+        {
+            "paperId": "832fc9327695f7425d8759c6aaeec0fa2d7b0a90",
+            "title": "WikiReading: A Novel Large-scale Language Understanding Task over Wikipedia"
+        },
+        {
+            "paperId": "15454e478cc826e195cb15732ea0db57ad8bd38c",
+            "title": "Separating Answers from Queries for Neural Reading Comprehension"
+        },
+        {
+            "paperId": "d3d4273db96381330a98b1277fddc3907af95fbd",
+            "title": "Chains of Reasoning over Entities, Relations, and Text using Recurrent Neural Networks"
+        },
+        {
+            "paperId": "5ed791f810da580c78df6a052c6b9f2e258f6b0a",
+            "title": "The LAMBADA dataset: Word prediction requiring a broad discourse context"
+        },
+        {
+            "paperId": "05dd7254b632376973f3a1b4d39485da17814df5",
+            "title": "SQuAD: 100,000+ Questions for Machine Comprehension of Text"
+        },
+        {
+            "paperId": "4bf7edee5a4c4cfdbdd43a607c402420129fa277",
+            "title": "Query-Reduction Networks for Question Answering"
+        },
+        {
+            "paperId": "50959348844c9018061723ba537c1a7d27203957",
+            "title": "Query-Regression Networks for Machine Comprehension"
+        },
+        {
+            "paperId": "b1e20420982a4f923c08652941666b189b11b7fe",
+            "title": "A Thorough Examination of the CNN/Daily Mail Reading Comprehension Task"
+        },
+        {
+            "paperId": "f314339651cb25e4234e0b96fe8bd87206847993",
+            "title": "Iterative Alternating Neural Attention for Machine Reading"
+        },
+        {
+            "paperId": "dc4cbf25503ece9707cd0fa9c6fe992a74495f57",
+            "title": "Question Answering over Knowledge Base using Factual Memory Networks"
+        },
+        {
+            "paperId": "04cca8e341a5da42b29b0bc831cb25a0f784fa01",
+            "title": "Adaptive Computation Time for Recurrent Neural Networks"
+        },
+        {
+            "paperId": "ac50801574f7c97f1cf8f6718a9ff2b3e18c2dc6",
+            "title": "Improving Information Extraction by Acquiring External Evidence with Reinforcement Learning"
+        },
+        {
+            "paperId": "f2e50e2ee4021f199877c8920f1f984481c723aa",
+            "title": "Text Understanding with the Attention Sum Reader Network"
+        },
+        {
+            "paperId": "478b4a5123bd5fda98bb35e6317d7f3555fec97d",
+            "title": "Combining Retrieval, Statistics, and Inference to Answer Elementary Science Questions"
+        },
+        {
+            "paperId": "05965fa16f60ec378964e5721bbcc7d2848916b1",
+            "title": "WebNav: A New Large-Scale Task for Natural Language based Sequential Decision Making"
+        },
+        {
+            "paperId": "8aa9e24b68c7288517d55065ae0289f825b56c04",
+            "title": "The Reactome pathway Knowledgebase"
+        },
+        {
+            "paperId": "35b91b365ceb016fb3e022577cec96fb9b445dc5",
+            "title": "The Goldilocks Principle: Reading Children's Books with Explicit Memory Representations"
+        },
+        {
+            "paperId": "f53e2ae46470b89cd1ce6e3bf1d60d9c59722ce1",
+            "title": "WikiQA: A Challenge Dataset for Open-Domain Question Answering"
+        },
+        {
+            "paperId": "4d05ab884a6c1645b80ce5d02b09c7e5ff499790",
+            "title": "Towards Neural Network-based Reasoning"
+        },
+        {
+            "paperId": "452059171226626718eb677358836328f884298e",
+            "title": "Ask Me Anything: Dynamic Memory Networks for Natural Language Processing"
+        },
+        {
+            "paperId": "d1505c6123c102e53eb19dff312cb25cea840b72",
+            "title": "Teaching Machines to Read and Comprehend"
+        },
+        {
+            "paperId": "6e565308c8081e807709cb4a917443b737e6cdb4",
+            "title": "Large-scale Simple Question Answering with Memory Networks"
+        },
+        {
+            "paperId": "af2e6165b68e75c911dfdb8f81f9ab6627722ab7",
+            "title": "Compositional Vector Space Models for Knowledge Base Completion"
+        },
+        {
+            "paperId": "47adb249ce8f7f5f1e92112ba0f3757f8fbfbfc3",
+            "title": "Higher-order Lexical Semantic Models for Non-factoid Answer Reranking"
+        },
+        {
+            "paperId": "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e",
+            "title": "End-To-End Memory Networks"
+        },
+        {
+            "paperId": "abb33d75dc297993fcc3fb75e0f4498f413eb4f6",
+            "title": "Towards AI-Complete Question Answering: A Set of Prerequisite Toy Tasks"
+        },
+        {
+            "paperId": "71ae756c75ac89e2d731c9c79649562b5768ff39",
+            "title": "Memory Networks"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "33261d252218007147a71e40f8367ed152fa2fe0",
+            "title": "Question Answering with Subgraph Embeddings"
+        },
+        {
+            "paperId": "d8bd861b292233072aa40ab6bc029ac94d7f30af",
+            "title": "The Reactome pathway knowledgebase"
+        },
+        {
+            "paperId": "02b8261eced168d5ccf1f992b7ea6353758f35e9",
+            "title": "DrugBank 4.0: shedding new light on drug metabolism"
+        },
+        {
+            "paperId": "b29447ba499507a259ae9d8f685d60cc1597d7d3",
+            "title": "Semantic Parsing on Freebase from Question-Answer Pairs"
+        },
+        {
+            "paperId": "974d1048fa45227a3ef9f71efe5501f79683dfdf",
+            "title": "Improving Learning and Inference in a Large Knowledge-Base using Latent Syntactic Cues"
+        },
+        {
+            "paperId": "c3d92f37c9c2d164d95dcfdeb181dfa758f60437",
+            "title": "BioNLP Shared Task 2013: Supporting Resources"
+        },
+        {
+            "paperId": "a9a5b40e179ed22e3d59b7823bffc9d3aaa65474",
+            "title": "SemEval-2013 Task 9 : Extraction of Drug-Drug Interactions from Biomedical Texts (DDIExtraction 2013)"
+        },
+        {
+            "paperId": "14347af6ab135fae319dcbff9fe573fbe757d99f",
+            "title": "Development of a benchmark corpus to support the automatic extraction of drug-related adverse effects from medical case reports"
+        },
+        {
+            "paperId": "296094909b3a3524b8265410b6f9c4c63ebc9de8",
+            "title": "Besting the Quiz Master: Crowdsourcing Incremental Classification Games"
+        },
+        {
+            "paperId": "3b067b0fb2cd66f5d32c81b5a4d111f3d417fb86",
+            "title": "Improving Distantly Supervised Extraction of Drug-Drug and Protein-Protein Interactions"
+        },
+        {
+            "paperId": "1858073b92df5a796123d2e592670219d840c625",
+            "title": "Wikidata: a new platform for collaborative data collection"
+        },
+        {
+            "paperId": "8a826db2e830b2d82959fdcc85598e2b0e5e3198",
+            "title": "Discovery and Explanation of Drug-Drug Interactions via Text Mining"
+        },
+        {
+            "paperId": "2aea6cc6c42101b2615753c2933a33e57dd665f2",
+            "title": "Random Walk Inference and Learning in A Large Scale Knowledge Base"
+        },
+        {
+            "paperId": "00248a60f905f49c451e106ee6647823e9359e6c",
+            "title": "Overview of Genia Event Task in BioNLP Shared Task 2011"
+        },
+        {
+            "paperId": "b71c8e582e8e56d839c962b923b0b79bada2a7f8",
+            "title": "Learning First-Order Horn Clauses from Web Text"
+        },
+        {
+            "paperId": "054ba27fe5cc6085d20ea2707de886db6865dbed",
+            "title": "Relational retrieval using a combination of\u00a0path-constrained random walks"
+        },
+        {
+            "paperId": "e7e7b9a731678bf0494fe29cbebb42a822224cc6",
+            "title": "Modeling Relations and Their Mentions without Labeled Text"
+        },
+        {
+            "paperId": "d84b57362e2010f6f65357267df7e0157af30684",
+            "title": "Distant supervision for relation extraction without labeled data"
+        },
+        {
+            "paperId": "cf3ba53a5030b8dd6ec65101b6f5a9b8e4d06f80",
+            "title": "Scaling Textual Inference to the Web"
+        },
+        {
+            "paperId": "1976c9eeccc7115d18a04f1e7fb5145db6b96002",
+            "title": "Freebase: a collaboratively created graph database for structuring human knowledge"
+        },
+        {
+            "paperId": "498bb0efad6ec15dd09d941fb309aa18d6df9f5f",
+            "title": "Open Information Extraction from the Web"
+        },
+        {
+            "paperId": "40b49547451b840f959a3100a3faacfa5cb2ff55",
+            "title": "Markov logic networks"
+        },
+        {
+            "paperId": "0f103bf6fd9b7b91aa692e3f3ff7d370593a8900",
+            "title": "Overview of BioCreAtIvE: critical assessment of information extraction for biology"
+        },
+        {
+            "paperId": "d8b386062ffacfc5d3f90463b71c2c5ca0956431",
+            "title": "Artificial Intelligence Methods And Tools For Systems Biology"
+        },
+        {
+            "paperId": "ac615cc2be4f13e32e64cc038b89092b559f02c8",
+            "title": "Swiss-Prot: Juggling between evolution and stability"
+        },
+        {
+            "paperId": "b4317b8a4490c84301907a61f5b8ebb26ab8828d",
+            "title": "Discovery of inference rules for question-answering"
+        },
+        {
+            "paperId": "a411f6a0e6473137ac1a538f7cee65722fa3584f",
+            "title": "Gene Ontology: tool for the unification of biology"
+        },
+        {
+            "paperId": "9c7f4412b8f0310a91334aed79b8553b2ad70908",
+            "title": "Constructing Biological Knowledge Bases by Extracting Information from Text Sources"
+        },
+        {
+            "paperId": "bfcbc389a6df12d5f42d86068a780b31e64f336b",
+            "title": "A Knowledge-intensive Approach to Learning Relational Concepts"
+        },
+        {
+            "paperId": "be818f724d5d8185cc1edf05fd28886079d76b29",
+            "title": "First-Order Theory Revision"
+        },
+        {
+            "paperId": "554f3b32b956035fbfabba730c6f0300d6955dce",
+            "title": "Learning logical definitions from relations"
+        },
+        {
+            "paperId": "7e7343a5608fff1c68c5259db0c77b9193f1546d",
+            "title": "The measurement of observer agreement for categorical data."
+        },
+        {
+            "paperId": null,
+            "title": "Anastasia Krithara, Georgios Paliouras, and Ioannis Kakadiaris"
+        },
+        {
+            "paperId": "fdbb252f29ee0b72fc5467c0ae11f7cb30149f46",
+            "title": "Proceedings of the 2014 Conference on Empirical Methods in Natural Language Processing (EMNLP)"
+        },
+        {
+            "paperId": "3ff2e39dc79c34a17c4ed491e3daf3e03ee5c05d",
+            "title": "A Survey of Automatic Query Expansion in Information Retrieval"
+        },
+        {
+            "paperId": "874deb301078aedaae79a723f6855e350d6d82d5",
+            "title": "THE LIBRARY QUARTERLY"
+        },
+        {
+            "paperId": "7ad403a633f97aa78f7973f94af8551eddfb3e26",
+            "title": "TREC 2007 Genomics Track Overview"
+        },
+        {
+            "paperId": "b6fb385b5cc68e8f67a9d5f8cfad0e8da476e560",
+            "title": "Natural Language Processing and Systems Biology"
+        },
+        {
+            "paperId": "955fe5b0eb5e9fefab7bf21dede20e1285dca410",
+            "title": "UniProt: the Universal Protein knowledgebase"
+        },
+        {
+            "paperId": null,
+            "title": "Examples of document gold chains in WIKIHOP"
+        },
+        {
+            "paperId": null,
+            "title": "Processing Systems (NIPS) , Barcelona, Spain"
+        },
+        {
+            "paperId": null,
+            "title": "Portland, Oregon, USA,"
+        }
+    ]
+}

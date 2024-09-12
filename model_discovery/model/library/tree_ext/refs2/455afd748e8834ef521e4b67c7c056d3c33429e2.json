@@ -1,0 +1,222 @@
+{
+    "paperId": "455afd748e8834ef521e4b67c7c056d3c33429e2",
+    "externalIds": {
+        "DBLP": "conf/naacl/YangYDHSH16",
+        "ACL": "N16-1174",
+        "MAG": "2470673105",
+        "DOI": "10.18653/v1/N16-1174",
+        "CorpusId": 6857205
+    },
+    "title": "Hierarchical Attention Networks for Document Classification",
+    "abstract": "We propose a hierarchical attention network for document classification. Our model has two distinctive characteristics: (i) it has a hierarchical structure that mirrors the hierarchical structure of documents; (ii) it has two levels of attention mechanisms applied at the wordand sentence-level, enabling it to attend differentially to more and less important content when constructing the document representation. Experiments conducted on six large scale text classification tasks demonstrate that the proposed architecture outperform previous methods by a substantial margin. Visualization of the attention layers illustrates that the model selects qualitatively informative words and sentences.",
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2016,
+    "referenceCount": 42,
+    "citationCount": 4250,
+    "influentialCitationCount": 551,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/N16-1174.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Experiments conducted on six large scale text classification tasks demonstrate that the proposed architecture outperform previous methods by a substantial margin."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "8387085",
+            "name": "Zichao Yang"
+        },
+        {
+            "authorId": "2022168",
+            "name": "Diyi Yang"
+        },
+        {
+            "authorId": "1745899",
+            "name": "Chris Dyer"
+        },
+        {
+            "authorId": "144137069",
+            "name": "Xiaodong He"
+        },
+        {
+            "authorId": "46234526",
+            "name": "Alex Smola"
+        },
+        {
+            "authorId": "144547315",
+            "name": "E. Hovy"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "10f62af29c3fc5e2572baddca559ffbfd6be8787",
+            "title": "A C-LSTM Neural Network for Text Classification"
+        },
+        {
+            "paperId": "2c1890864c1c2b750f48316dc8b650ba4772adc5",
+            "title": "Stacked Attention Networks for Image Question Answering"
+        },
+        {
+            "paperId": "51a55df1f023571a7e07e338ee45a3e3d66ef73e",
+            "title": "Character-level Convolutional Networks for Text Classification"
+        },
+        {
+            "paperId": "ecb5336bf7b54a62109f325e7152bb74c4c7f527",
+            "title": "Document Modeling with Gated Recurrent Neural Network for Sentiment Classification"
+        },
+        {
+            "paperId": "f895cbc2d4a2cd00b4a81cccabc6d9c94b8ddfe4",
+            "title": "Hierarchical Recurrent Neural Network for Document Modeling"
+        },
+        {
+            "paperId": "6dab1c6491929d396e9e5463bc2e87af88602aa2",
+            "title": "Finding Function in Form: Compositional Character Models for Open Vocabulary Word Representation"
+        },
+        {
+            "paperId": "452059171226626718eb677358836328f884298e",
+            "title": "Ask Me Anything: Dynamic Memory Networks for Natural Language Processing"
+        },
+        {
+            "paperId": "d1505c6123c102e53eb19dff312cb25cea840b72",
+            "title": "Teaching Machines to Read and Comprehend"
+        },
+        {
+            "paperId": "b21c78a62fbb945a19ae9a8935933711647e7d70",
+            "title": "A Hierarchical Neural Autoencoder for Paragraphs and Documents"
+        },
+        {
+            "paperId": "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e",
+            "title": "End-To-End Memory Networks"
+        },
+        {
+            "paperId": "a583af2696030bcf5f556edc74573fbee902be0b",
+            "title": "Weakly Supervised Memory Networks"
+        },
+        {
+            "paperId": "32de44f01a96d4473d21099d15e25bc2b9f08e2f",
+            "title": "Improved Semantic Representations From Tree-Structured Long Short-Term Memory Networks"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "eba36ac75bf22edf9a1bfd33244d459c75b98305",
+            "title": "Recurrent Convolutional Neural Networks for Text Classification"
+        },
+        {
+            "paperId": "47570e7f63e296f224a0e7f9a0d08b0de3cbaf40",
+            "title": "Grammar as a Foreign Language"
+        },
+        {
+            "paperId": "fbf417c83ae5b895fc645346e4efbf3a0aabeac9",
+            "title": "Effective Use of Word Order for Text Categorization with Convolutional Neural Networks"
+        },
+        {
+            "paperId": "7e8d5a108c28cdfb92f419ce919fbf7993dfebfc",
+            "title": "A Latent Semantic Model with Convolutional-Pooling Structure for Information Retrieval"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "1f6ba0782862ec12a5ec6d7fb608523d55b0c6ba",
+            "title": "Convolutional Neural Networks for Sentence Classification"
+        },
+        {
+            "paperId": "6cb94b140baf03efb8e56a3715221120aadebbe9",
+            "title": "Jointly modeling aspects, ratings and sentiments for movie recommendation (JMARS)"
+        },
+        {
+            "paperId": "2f5102ec3f70d0dea98c957cc2cab4d15d83a2da",
+            "title": "The Stanford CoreNLP Natural Language Processing Toolkit"
+        },
+        {
+            "paperId": "ab001d508fbb4160e53686e05b800ab4baeb9728",
+            "title": "Learning Sentiment-Specific Word Embedding for Twitter Sentiment Classification"
+        },
+        {
+            "paperId": "e2ae833ec0bf4a0435d7feea94a48c027e06a0e1",
+            "title": "Sentiment Analysis of Short Informal Texts"
+        },
+        {
+            "paperId": "27725a2d2a8cee9bf9fffc6c2167017103aba0fa",
+            "title": "A Convolutional Neural Network for Modelling Sentences"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "687bac2d3320083eb4530bf18bb8f8f721477600",
+            "title": "Recursive Deep Models for Semantic Compositionality Over a Sentiment Treebank"
+        },
+        {
+            "paperId": "5e9fa46f231c59e6573f9a116f77f53703347659",
+            "title": "Baselines and Bigrams: Simple, Good Sentiment and Topic Classification"
+        },
+        {
+            "paperId": "1c61f9ef06fe74505775a833ff849185757199e7",
+            "title": "Learning Word Vectors for Sentiment Analysis"
+        },
+        {
+            "paperId": "a351ffd1634b0930bd51ff225a8836e540269947",
+            "title": "Text Categorization with Support Vector Machines: Learning with Many Relevant Features"
+        },
+        {
+            "paperId": "916177807ecbf0d78f2f64d756d4cecbaa3102a3",
+            "title": "A Bayesian Approach to Filtering Junk E-Mail"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "297d01ff6731c3bd917ede3d378c94cb84650e8f",
+            "title": "Opinion Mining and Sentiment Analysis"
+        },
+        {
+            "paperId": null,
+            "title": "CNN-char Character level CNN models are re-ported"
+        },
+        {
+            "paperId": null,
+            "title": "Yelp reviews are obtained from the Yelp Dataset Challenge in 2013, 2014 and 2015"
+        },
+        {
+            "paperId": null,
+            "title": "The ratings are from 1 to 5. 3,000,000 reviews are used for training and 650,000 reviews for testing. Similarly, we use 10% of the training samples as validation"
+        },
+        {
+            "paperId": "1e7cf9047604f39e517951d129b2b3eecf9e1cfb",
+            "title": "Modeling Interestingness with Deep Neural Networks"
+        },
+        {
+            "paperId": null,
+            "title": "SSWE uses sentiment speci\ufb01c word embeddings according to"
+        },
+        {
+            "paperId": null,
+            "title": "Text Features are constructed according to"
+        },
+        {
+            "paperId": null,
+            "title": "CNN-word Word based CNN models like that of"
+        },
+        {
+            "paperId": null,
+            "title": "The ratings range from 1 to 10. Yahoo answers are obtained from (Zhang et al., 2015)"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": null,
+            "title": "AverageSG constructs 200-dimensional word vectors using word2vec and the average word embeddings of each document are used"
+        }
+    ]
+}

@@ -1,0 +1,298 @@
+{
+    "paperId": "54c802e7dadac855de06725bf146cdf20319e46b",
+    "externalIds": {
+        "DBLP": "journals/corr/abs-1709-02371",
+        "MAG": "2963782415",
+        "ArXiv": "1709.02371",
+        "DOI": "10.1109/CVPR.2018.00931",
+        "CorpusId": 30824366
+    },
+    "title": "PWC-Net: CNNs for Optical Flow Using Pyramid, Warping, and Cost Volume",
+    "abstract": "We present a compact but effective CNN model for optical flow, called PWC-Net. PWC-Net has been designed according to simple and well-established principles: pyramidal processing, warping, and the use of a cost volume. Cast in a learnable feature pyramid, PWC-Net uses the current optical flow estimate to warp the CNN features of the second image. It then uses the warped features and features of the first image to construct a cost volume, which is processed by a CNN to estimate the optical flow. PWC-Net is 17 times smaller in size and easier to train than the recent FlowNet2 model. Moreover, it outperforms all published optical flow methods on the MPI Sintel final pass and KITTI 2015 benchmarks, running at about 35 fps on Sintel resolution (1024 \u00c3\u2014 436) images. Our models are available on our project website.",
+    "venue": "2018 IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "year": 2017,
+    "referenceCount": 63,
+    "citationCount": 2198,
+    "influentialCitationCount": 415,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1709.02371",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "PWC-Net has been designed according to simple and well-established principles: pyramidal processing, warping, and the use of a cost volume, and outperforms all published optical flow methods on the MPI Sintel final pass and KITTI 2015 benchmarks."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3232265",
+            "name": "Deqing Sun"
+        },
+        {
+            "authorId": "38101706",
+            "name": "Xiaodong Yang"
+        },
+        {
+            "authorId": "39793900",
+            "name": "Ming-Yu Liu"
+        },
+        {
+            "authorId": "1690538",
+            "name": "J. Kautz"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "5c44a73e918c3747e1ecdd93b2f4d6a2357a07df",
+            "title": "Bounding Boxes, Segmentations and Object Coordinates: How Important is Recognition for 3D Scene Flow Estimation in Autonomous Driving Scenarios?"
+        },
+        {
+            "paperId": "1323b0ccaad9eb1c5cd3a50f0f1af6797250a1c4",
+            "title": "MirrorFlow: Exploiting Symmetries in Joint Optical Flow and Occlusion Estimation"
+        },
+        {
+            "paperId": "857bc1f10bbfb5ff340230114d5c30bcf2224d1c",
+            "title": "Optical Flow in Mostly Rigid Scenes"
+        },
+        {
+            "paperId": "143e10cae07f27f2db9de171eb04a332ddbfeab4",
+            "title": "Accurate Optical Flow via Direct Cost Volume Processing"
+        },
+        {
+            "paperId": "572785b5d6f6fa4b174d79725f82c056b0fb4565",
+            "title": "Computer Vision for Autonomous Vehicles: Problems, Datasets and State-of-the-Art"
+        },
+        {
+            "paperId": "edd846e76cacfba5be37da99c006e3ccc9b861b0",
+            "title": "FlowNet 2.0: Evolution of Optical Flow Estimation with Deep Networks"
+        },
+        {
+            "paperId": "d8ff17234eeee47853ccf6c6d47b27e3fa0f5088",
+            "title": "InterpoNet, a Brain Inspired Neural Network for Optical Flow Dense Interpolation"
+        },
+        {
+            "paperId": "1d9df46f672b1e22b6f210343be8684f88c0ccca",
+            "title": "The One Hundred Layers Tiramisu: Fully Convolutional DenseNets for Semantic Segmentation"
+        },
+        {
+            "paperId": "a93d81c7f033f1e2b54d3288b60d214f55ccc010",
+            "title": "Optical Flow Estimation Using a Spatial Pyramid Network"
+        },
+        {
+            "paperId": "5694e46284460a648fe29117cbc55f6c9be3fa3c",
+            "title": "Densely Connected Convolutional Networks"
+        },
+        {
+            "paperId": "375b6972d4185ce275dcad51581c9bbb03fb3f4f",
+            "title": "Back to Basics: Unsupervised Learning of Optical Flow via Brightness Constancy and Motion Smoothness"
+        },
+        {
+            "paperId": "82fc08f5658e0e37aeb36177717621605e11cda1",
+            "title": "CNN-Based Patch Matching for Optical Flow with Thresholded Hinge Embedding Loss"
+        },
+        {
+            "paperId": "cab372bc3824780cce20d9dd1c22d4df39ed081a",
+            "title": "DeepLab: Semantic Image Segmentation with Deep Convolutional Nets, Atrous Convolution, and Fully Connected CRFs"
+        },
+        {
+            "paperId": "c90a2d5f881c70587643019e8af3c1fd0f6faa4d",
+            "title": "Efficient Coarse-to-Fine Patch Match for Large Displacement Optical Flow"
+        },
+        {
+            "paperId": "f5719438eb7e26827db9c3cd469063d1d12e1f19",
+            "title": "Full Flow: Optical Flow Estimation By Global Optimization over Regular Grids"
+        },
+        {
+            "paperId": "79e74d414736c2eedaddb2857506f187a11ddd96",
+            "title": "Exploiting Semantic Information and Deep Matching for Optical Flow"
+        },
+        {
+            "paperId": "f19108c55b7c1831566ce3250322e0f5637d44c9",
+            "title": "Learning Image Matching by Simply Watching Video"
+        },
+        {
+            "paperId": "1ced31e02234bc3d1092ffb2c7442ffbd51cb309",
+            "title": "A Large Dataset to Train Convolutional Networks for Disparity, Optical Flow, and Scene Flow Estimation"
+        },
+        {
+            "paperId": "cdae1edd4bd2c4c110f992cca57e88afecf5658a",
+            "title": "PatchBatch: A Batch Augmented Loss for Optical Flow"
+        },
+        {
+            "paperId": "7f5fc84819c0cf94b771fe15141f65b123f7b8ec",
+            "title": "Multi-Scale Context Aggregation by Dilated Convolutions"
+        },
+        {
+            "paperId": "60f4ba04d57411f1452531f192ac29d0dc3d50e1",
+            "title": "Blind video temporal consistency"
+        },
+        {
+            "paperId": "ad3e7515c61ccdc2c36887e7d4929c78904881db",
+            "title": "Stereo Matching by Training a Convolutional Neural Network to Compare Image Patches"
+        },
+        {
+            "paperId": "558ca5740807b93eb13781f3dc74b05663ea14f8",
+            "title": "Flow Fields: Dense Correspondence Fields for Highly Accurate Large Displacement Optical Flow Estimation"
+        },
+        {
+            "paperId": "09876610d463a2b40839e701d4ae8b7c7739e11c",
+            "title": "Efficient sparse-to-dense optical flow estimation using a learned basis and layers"
+        },
+        {
+            "paperId": "edf455c3b5b8d1c6337c72e39940125036354d03",
+            "title": "Object scene flow for autonomous vehicles"
+        },
+        {
+            "paperId": "dbb6ded623159c867fbeca0772db7b2eb9489523",
+            "title": "Spatial Transformer Networks"
+        },
+        {
+            "paperId": "6364fdaa0a0eccd823a779fcdd489173f938e91a",
+            "title": "U-Net: Convolutional Networks for Biomedical Image Segmentation"
+        },
+        {
+            "paperId": "c2fb5b39428818d7ec8cc78e152e19c21b7db568",
+            "title": "FlowNet: Learning Optical Flow with Convolutional Networks"
+        },
+        {
+            "paperId": "f08e462b77347dc3cf483ca24dcd484c0ba5b432",
+            "title": "EpicFlow: Edge-preserving interpolation of correspondences for optical flow"
+        },
+        {
+            "paperId": "6bdb186ec4726e00a8051119636d4df3b94043b5",
+            "title": "Caffe: Convolutional Architecture for Fast Feature Embedding"
+        },
+        {
+            "paperId": "67dccc9a856b60bdc4d058d83657a089b8ad4486",
+            "title": "Two-Stream Convolutional Networks for Action Recognition in Videos"
+        },
+        {
+            "paperId": "1850a106fad32010e2fae2f3c34d47e3237bb3f4",
+            "title": "A Quantitative Analysis of Current Practices in Optical Flow Estimation and the Principles Behind Them"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "7d53f0c87c8ab0de6f3e74515e3ffaf3fab40c62",
+            "title": "A Naturalistic Open Source Movie for Optical Flow Evaluation"
+        },
+        {
+            "paperId": "de5b0fd02ea4f4d67fe3ae0d74603b9822df4e42",
+            "title": "Are we ready for autonomous driving? The KITTI vision benchmark suite"
+        },
+        {
+            "paperId": "f908d2fb9cfcaff17030a912e4811fb02aaeec03",
+            "title": "Fast cost-volume filtering for visual correspondence and beyond"
+        },
+        {
+            "paperId": "6835f680a3d02b98ee090cdb93d3e7a15fb0cf97",
+            "title": "Large Displacement Optical Flow: Descriptor Matching in Variational Motion Estimation"
+        },
+        {
+            "paperId": "ff81ff15be185a2d59a8ce599d34c97d4a62e1b8",
+            "title": "A generative perspective on MRFs in low-level vision"
+        },
+        {
+            "paperId": "0f671859d83f6c19e0af5f5ccfe8aad3681ccc1b",
+            "title": "An Improved Algorithm for TV-L 1 Optical Flow"
+        },
+        {
+            "paperId": "bc6dff14a130c57a91d5a21339c23471faf1d46f",
+            "title": "Et al"
+        },
+        {
+            "paperId": "cb0a1bad3e35d279a7b4c8239ada48eea1fc83ec",
+            "title": "Learning for Optical Flow Using Stochastic Optimization"
+        },
+        {
+            "paperId": "ad61eebde119131f845dc902e1c8f7a4c6d66233",
+            "title": "Learning Optical Flow"
+        },
+        {
+            "paperId": "843959ffdccf31c6694d135fad07425924f785b1",
+            "title": "Extracting and composing robust features with denoising autoencoders"
+        },
+        {
+            "paperId": "1e34055f68c0fcf439dfb986b126189a55c53d22",
+            "title": "Human-assisted motion annotation"
+        },
+        {
+            "paperId": "804836b8ad86ef8042e3dcbd45442a52f031ee03",
+            "title": "A Database and Evaluation Methodology for Optical Flow"
+        },
+        {
+            "paperId": "2ac91e028cdc602695b46bd1f372c03b4d2776cf",
+            "title": "Unsupervised Learning of Image Transformations"
+        },
+        {
+            "paperId": "be9aa06e6aa2c78acf90d8bef161d3cfe4c667e6",
+            "title": "Bilateral Filtering-Based Optical Flow Estimation with Occlusion Detection"
+        },
+        {
+            "paperId": "cc1374b44729029e3fbccdf4b0c297e199478e66",
+            "title": "On the Spatial Statistics of Optical Flow"
+        },
+        {
+            "paperId": "91228e00fe33ed6072cfe849ab9e98160461549d",
+            "title": "High Accuracy Optical Flow Estimation Based on a Theory for Warping"
+        },
+        {
+            "paperId": "d2f78c2b2b325d72f359d4c797c9aab6a8e60942",
+            "title": "A Taxonomy and Evaluation of Dense Two-Frame Stereo Correspondence Algorithms"
+        },
+        {
+            "paperId": "861897df39716877fb1e03a7d09a234faca076e9",
+            "title": "Learning Low-Level Vision"
+        },
+        {
+            "paperId": "1d521835c9acbc71761603a1806e18c39e7c2c0d",
+            "title": "Robust computation of optical flow in a multi-scale differential framework"
+        },
+        {
+            "paperId": "1181acaf0bb0541830b80d8dc49fae430f035e4c",
+            "title": "Performance of optical flow techniques"
+        },
+        {
+            "paperId": "eaf31005e3e66eda87fda48b369e90a0a95c5320",
+            "title": "Probability distributions of optical flow"
+        },
+        {
+            "paperId": "a8e8f3c8d4418c8d62e306538c9c1292635e9d27",
+            "title": "Backpropagation Applied to Handwritten Zip Code Recognition"
+        },
+        {
+            "paperId": "a3229dc33ecb80c59a75b906c46b586dd059b781",
+            "title": "Determining Optical Flow"
+        },
+        {
+            "paperId": "7142ac9e4d5498037aeb0f459f278fd28dae8048",
+            "title": "Semi-Supervised Learning for Optical Flow with Generative Adversarial Networks"
+        },
+        {
+            "paperId": "d9f7fbbadc09a032d70f751f1fc865ecf044c03f",
+            "title": "Author manuscript, published in \"IEEE Intenational Conference on Computer Vision (ICCV), Sydney: Australie (2013)\" DeepFlow: Large displacement optical flow with deep matching"
+        },
+        {
+            "paperId": "65635c3a61b979625e44c986ac281c35ac3b0667",
+            "title": "Anisotropic Huber-L1 Optical Flow"
+        },
+        {
+            "paperId": "eee90c038f43370a29b07e46f38dfe6527143a2c",
+            "title": "The Robust Estimation of Multiple Motions: Parametric and Piecewise-Smooth Flow Fields"
+        },
+        {
+            "paperId": "12b03af504d0960334c77567dab38791bf0f739a",
+            "title": "AND T"
+        },
+        {
+            "paperId": "c30fe4be6fed989dc8d77bee3d6443e757020c0e",
+            "title": "Ieee Transactions on Pattern Analysis and Machine Intelligence 1 Motion Detail Preserving Optical Flow Estimation"
+        },
+        {
+            "paperId": "39e48b727947d1a7d0e4282ab61ef9bba4822564",
+            "title": "Universit\u00e4t Des Saarlandes Fachrichtung 6.1 \u2013 Mathematik Lucas/kanade Meets Horn/schunck: Combining Local and Global Optic Flow Methods Lucas/kanade Meets Horn/schunck: Combining Local and Global Optic Flow Methods"
+        }
+    ]
+}

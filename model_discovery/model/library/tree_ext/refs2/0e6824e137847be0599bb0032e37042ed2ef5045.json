@@ -1,0 +1,234 @@
+{
+    "paperId": "0e6824e137847be0599bb0032e37042ed2ef5045",
+    "externalIds": {
+        "ArXiv": "1506.06724",
+        "DBLP": "journals/corr/ZhuKZSUTF15",
+        "MAG": "1566289585",
+        "DOI": "10.1109/ICCV.2015.11",
+        "CorpusId": 6866988
+    },
+    "title": "Aligning Books and Movies: Towards Story-Like Visual Explanations by Watching Movies and Reading Books",
+    "abstract": "Books are a rich source of both fine-grained information, how a character, an object or a scene looks like, as well as high-level semantics, what someone is thinking, feeling and how these states evolve through a story. This paper aims to align books to their movie releases in order to provide rich descriptive explanations for visual content that go semantically far beyond the captions available in the current datasets. To align movies and books we propose a neural sentence embedding that is trained in an unsupervised way from a large corpus of books, as well as a video-text neural embedding for computing similarities between movie clips and sentences in the book. We propose a context-aware CNN to combine information from multiple sources. We demonstrate good quantitative performance for movie/book alignment and show several qualitative examples that showcase the diversity of tasks our model can be used for.",
+    "venue": "IEEE International Conference on Computer Vision",
+    "year": 2015,
+    "referenceCount": 44,
+    "citationCount": 2364,
+    "influentialCitationCount": 232,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1506.06724",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "To align movies and books, a neural sentence embedding that is trained in an unsupervised way from a large corpus of books, as well as a video-text neural embedding for computing similarities between movie clips and sentences in the book are proposed."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1844940337",
+            "name": "Yukun Zhu"
+        },
+        {
+            "authorId": "3450996",
+            "name": "Ryan Kiros"
+        },
+        {
+            "authorId": "1804104",
+            "name": "R. Zemel"
+        },
+        {
+            "authorId": "145124475",
+            "name": "R. Salakhutdinov"
+        },
+        {
+            "authorId": "2422559",
+            "name": "R. Urtasun"
+        },
+        {
+            "authorId": "143805211",
+            "name": "A. Torralba"
+        },
+        {
+            "authorId": "37895334",
+            "name": "S. Fidler"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "6b8b2075319accc23fef43e4cf76bc3682189d82",
+            "title": "Attention-Based Bidirectional Long Short-Term Memory Networks for Relation Classification"
+        },
+        {
+            "paperId": "6e795c6e9916174ae12349f5dc3f516570c17ce8",
+            "title": "Skip-Thought Vectors"
+        },
+        {
+            "paperId": "45ca387a4080b6aee610783ed03d19bd1891503f",
+            "title": "Book2Movie: Aligning video scenes with book chapters"
+        },
+        {
+            "paperId": "59ba3b1b31e2f8adb18fb886ad3fc087081c0e38",
+            "title": "What\u2019s Cookin\u2019? Interpreting Cooking Videos using Text, Speech and Vision"
+        },
+        {
+            "paperId": "54e54a82cafd995534e2f1e673e66b2ea4405707",
+            "title": "Aligning plot synopses to videos for story-based retrieval"
+        },
+        {
+            "paperId": "e0cff50a6ce27a8cb2b26ca586dea8a0b7cd67bd",
+            "title": "Don't just listen, use your imagination: Leveraging visual common sense for non-visual tasks"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "a5ea0da7b93452bec54b5034706f2255bfb5a8f3",
+            "title": "A dataset for Movie Description"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "43795b7bac3d921c4e579964b54187bdbf6c6330",
+            "title": "Translating Videos to Natural Language Using Deep Recurrent Neural Networks"
+        },
+        {
+            "paperId": "ac3ee98020251797c2b401e1389461df88e52e62",
+            "title": "Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling"
+        },
+        {
+            "paperId": "9667f8264745b626c6173b1310e2ff0298b09cfc",
+            "title": "Learning Deep Features for Scene Recognition using Places Database"
+        },
+        {
+            "paperId": "55e022fb7581bb9e1fce678d21fb25ffbb3fbb88",
+            "title": "Deep visual-semantic alignments for generating image descriptions"
+        },
+        {
+            "paperId": "d4dc1012d780e8e2547237eb5a6dc7b1bf47d2f0",
+            "title": "Show and tell: A neural image caption generator"
+        },
+        {
+            "paperId": "2e36ea91a3c8fbff92be2989325531b4002e2afc",
+            "title": "Unifying Visual-Semantic Embeddings with Multimodal Neural Language Models"
+        },
+        {
+            "paperId": "82fdca623c65b6acf6b06bdeed48b2a9ebdb80a9",
+            "title": "Explain Images with Multimodal Recurrent Neural Networks"
+        },
+        {
+            "paperId": "ac64fb7e6d2ddf236332ec9f371fe85d308c114d",
+            "title": "A Multi-World Approach to Question Answering about Real-World Scenes based on Uncertain Input"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "a0a083c7bb23db507a40a736953b1cca5a33b16d",
+            "title": "Linking People in Videos with \"Their\" Names Using Coreference Resolution"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "3e69940b2a7195920a36454ecc4aae7f15063f1d",
+            "title": "Hello, my name is\u2026"
+        },
+        {
+            "paperId": "16ae6b2ee079d290c6bf8f1ceac0fbc3477292fc",
+            "title": "Weakly Supervised Action Labeling in Videos under Ordering Constraints"
+        },
+        {
+            "paperId": "13549b4e6fffbb7932b7a83a8eb6be27e6a60eca",
+            "title": "What Are You Talking About? Text-to-Image Coreference"
+        },
+        {
+            "paperId": "dfe448d6297ea0a3d4deba21fbf1006bc35877d7",
+            "title": "Inferring the Why in Images"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "019099e1d82f0a502d699daa1c57e8a3c5e5066d",
+            "title": "Visual Semantic Search: Retrieving Videos via Complex Textual Queries"
+        },
+        {
+            "paperId": "71b7178df5d2b112d07e45038cb5637208659ff7",
+            "title": "Microsoft COCO: Common Objects in Context"
+        },
+        {
+            "paperId": "0ca7d208ff8d81377e0eaa9723820aeae7a7322d",
+            "title": "Grounded Compositional Semantics for Finding and Describing Images with Sentences"
+        },
+        {
+            "paperId": "092f57121e10dcb65a6c348dd8b529bb06ebfb89",
+            "title": "Video Event Understanding Using Natural Language Descriptions"
+        },
+        {
+            "paperId": "1a81c722727299e45af289d905d7dcf157174248",
+            "title": "BabyTalk: Understanding and Generating Simple Image Descriptions"
+        },
+        {
+            "paperId": "944a1cfd79dbfb6fef460360a0765ba790f4027a",
+            "title": "Recurrent Continuous Translation Models"
+        },
+        {
+            "paperId": "631a744c15041516bfbf0ecad67566129d18596b",
+            "title": "A Sentence Is Worth a Thousand Pixels"
+        },
+        {
+            "paperId": "9814df8bd00ba999c4d1e305a7e9bca579dc7c75",
+            "title": "Framing Image Description as a Ranking Task: Data, Models and Evaluation Metrics"
+        },
+        {
+            "paperId": "f6b51c8753a871dc94ff32152c00c01e94f90f09",
+            "title": "Efficient Estimation of Word Representations in Vector Space"
+        },
+        {
+            "paperId": "8c95d80f7d9afa550b9cb97cc53fe0be99354a32",
+            "title": "Efficient Structured Prediction with Latent Variables for General Graphical Models"
+        },
+        {
+            "paperId": "eaaed23a2d94feb2f1c3ff22a25777c7a78f3141",
+            "title": "Every Picture Tells a Story: Generating Sentences from Images"
+        },
+        {
+            "paperId": "1c923b406e2fe5a67a9bbf4aea8441a6b16742cc",
+            "title": "\u201cWho are you?\u201d - Learning person specific classifiers from video"
+        },
+        {
+            "paperId": "8e523721feebeaee18e487607b7d0920ac6cd3b4",
+            "title": "Beyond Nouns: Exploiting Prepositions and Comparative Adjectives for Learning Visual Classifiers"
+        },
+        {
+            "paperId": "c980b058f98dc1904ad328c2341a47c31479d076",
+            "title": "Movie/Script: Alignment and Parsing of Video and Text Transcription"
+        },
+        {
+            "paperId": "d7da009f457917aa381619facfa5ffae9329a6e9",
+            "title": "Bleu: a Method for Automatic Evaluation of Machine Translation"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "6166950a0f4d33812ed6c5e48d951cf370c4e74c",
+            "title": "Subtitle-free Movie to Script Alignment"
+        },
+        {
+            "paperId": "a4aba56927d7841c0aaedf5c73d42ccfadd75124",
+            "title": "Hello! My name is... Buffy'' -- Automatic Naming of Characters in TV Video"
+        }
+    ]
+}

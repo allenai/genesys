@@ -1,0 +1,182 @@
+{
+    "paperId": "227458886343b86bd15adf58c769be326b4b058a",
+    "externalIds": {
+        "MAG": "2898875342",
+        "DBLP": "conf/iclr/DinanRSFAW19",
+        "ArXiv": "1811.01241",
+        "CorpusId": 53218829
+    },
+    "title": "Wizard of Wikipedia: Knowledge-Powered Conversational agents",
+    "abstract": "In open-domain dialogue intelligent agents should exhibit the use of knowledge, however there are few convincing demonstrations of this to date. The most popular sequence to sequence models typically \"generate and hope\" generic utterances that can be memorized in the weights of the model when mapping from input utterance(s) to output, rather than employing recalled knowledge as context. Use of knowledge has so far proved difficult, in part because of the lack of a supervised learning benchmark task which exhibits knowledgeable open dialogue with clear grounding. To that end we collect and release a large dataset with conversations directly grounded with knowledge retrieved from Wikipedia. We then design architectures capable of retrieving knowledge, reading and conditioning on it, and finally generating natural responses. Our best performing dialogue models are able to conduct knowledgeable discussions on open-domain topics as evaluated by automatic metrics and human evaluations, while our new benchmark allows for measuring further improvements in this important research direction.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2018,
+    "referenceCount": 33,
+    "citationCount": 869,
+    "influentialCitationCount": 214,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The best performing dialogue models are able to conduct knowledgeable discussions on open-domain topics as evaluated by automatic metrics and human evaluations, while a new benchmark allows for measuring further improvements in this important research direction."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "31461304",
+            "name": "Emily Dinan"
+        },
+        {
+            "authorId": "3849208",
+            "name": "Stephen Roller"
+        },
+        {
+            "authorId": "35752280",
+            "name": "Kurt Shuster"
+        },
+        {
+            "authorId": "144270981",
+            "name": "Angela Fan"
+        },
+        {
+            "authorId": "2325985",
+            "name": "Michael Auli"
+        },
+        {
+            "authorId": "145183709",
+            "name": "J. Weston"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "1677f55e519781303fd6f42e3892023150cf0717",
+            "title": "Towards Exploiting Background Knowledge for Building Conversation Systems"
+        },
+        {
+            "paperId": "994c1b3d395ac5dc5e39c90235e821d62e976444",
+            "title": "Extending Neural Generative Conversational Model using External Knowledge Sources"
+        },
+        {
+            "paperId": "dde89e64a7f375b90e1cc594142940f4161e1592",
+            "title": "Training Millions of Personalized Dialogue Agents"
+        },
+        {
+            "paperId": "39e734da43eb8c72e9549b42e96760545036f8e5",
+            "title": "QuAC: Question Answering in Context"
+        },
+        {
+            "paperId": "05cf65bea06b26d11a6324113bb4d6219e495a7b",
+            "title": "Commonsense Knowledge Aware Conversation Generation with Graph Attention"
+        },
+        {
+            "paperId": "a76706d350b8c483a3aff73e61b91d15b5687335",
+            "title": "Universal Sentence Encoder"
+        },
+        {
+            "paperId": "6c7046195f64cccac1ed3275d88d77655534b5a4",
+            "title": "Personalizing Dialogue Agents: I have a dog, do you have pets too?"
+        },
+        {
+            "paperId": "9b4a861151fabae1dfd61c917d031c86d26be704",
+            "title": "Controllable Abstractive Summarization"
+        },
+        {
+            "paperId": "9e8d1ae59f0b2cb279c38bf66776214d4d4d1966",
+            "title": "StarSpace: Embed All The Things!"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "435553998fbef790b5bed3491a8f634d9ec5cfa2",
+            "title": "Efficient Natural Language Response Suggestion for Smart Reply"
+        },
+        {
+            "paperId": "104715e1097b7ebee436058bfd9f45540f269845",
+            "title": "Reading Wikipedia to Answer Open-Domain Questions"
+        },
+        {
+            "paperId": "2deaae3404a65f1a31e93439e693ebc00f568686",
+            "title": "Frames: a corpus for adding memory to goal-oriented dialogue systems"
+        },
+        {
+            "paperId": "28e49f28ea5202990cce701332fc3099507d8404",
+            "title": "A Knowledge-Grounded Neural Conversation Model"
+        },
+        {
+            "paperId": "e235bc8ccbe85de40f406d1a1201d50aec893b2d",
+            "title": "A Simple, Fast Diverse Decoding Algorithm for Neural Generation"
+        },
+        {
+            "paperId": "754cd9d2853ead8610ef6949cf3e6e6a48e69168",
+            "title": "Generative Deep Neural Networks for Dialogue: A Short Review"
+        },
+        {
+            "paperId": "e4dd95c4341ec7d14317a3d97022773a0822906c",
+            "title": "Diverse Beam Search: Decoding Diverse Solutions from Neural Sequence Models"
+        },
+        {
+            "paperId": "05dd7254b632376973f3a1b4d39485da17814df5",
+            "title": "SQuAD: 100,000+ Questions for Machine Comprehension of Text"
+        },
+        {
+            "paperId": "f81be44000814e7bcb12ae04b4e2d9c01b6515b3",
+            "title": "Learning End-to-End Goal-Oriented Dialog"
+        },
+        {
+            "paperId": "0a22389bd99b7efe3627ec6fc77ddaf3ff5e2faa",
+            "title": "A Network-based End-to-End Trainable Task-oriented Dialogue System"
+        },
+        {
+            "paperId": "be3a65ef15f79ebb8296e6a0e8d1a9cb5c0f3638",
+            "title": "Evaluating Prerequisite Qualities for Learning End-to-End Dialog Systems"
+        },
+        {
+            "paperId": "1518039b5001f1836565215eb047526b3ac7f462",
+            "title": "Neural Machine Translation of Rare Words with Subword Units"
+        },
+        {
+            "paperId": "5247a6e3a60ff0381355e66bfc313bf27512ae0c",
+            "title": "A Neural Network Approach to Context-Sensitive Generation of Conversational Responses"
+        },
+        {
+            "paperId": "86311b182786bfde19446f6ded0854de973d4060",
+            "title": "A Neural Conversational Model"
+        },
+        {
+            "paperId": "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e",
+            "title": "End-To-End Memory Networks"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "078b55e2f4899cf95a4c8d65613c340fa190acf8",
+            "title": "The Second Dialog State Tracking Challenge"
+        },
+        {
+            "paperId": "ac0cf8f35ce90e39f2fa9c47ec5145fb7e8773b8",
+            "title": "Designing interactive speech systems - from first ideas to user testing"
+        },
+        {
+            "paperId": null,
+            "title": ": Am not really certain about it but American football resulted from several major divergences from association football and rugby football"
+        },
+        {
+            "paperId": null,
+            "title": "Philadelphia is one of a few cities to have all four teams, but they love the Eagles more than anything else by a long shot!"
+        },
+        {
+            "paperId": null,
+            "title": "Most steak cuts are very tender meat but I think rib eye can be quite tender"
+        },
+        {
+            "paperId": null,
+            "title": "The Philadelphia eagles actually have a rugby player on their team this year. he never played football until this year"
+        },
+        {
+            "paperId": null,
+            "title": ": I like rib eye it is really good specially medium rare, When the word \u201csteak\u201d is used without quali\ufb01cation, it generally refers to a beefsteak"
+        }
+    ]
+}

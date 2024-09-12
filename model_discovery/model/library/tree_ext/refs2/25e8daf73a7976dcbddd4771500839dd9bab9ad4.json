@@ -1,0 +1,78 @@
+{
+    "paperId": "25e8daf73a7976dcbddd4771500839dd9bab9ad4",
+    "externalIds": {
+        "DBLP": "journals/corr/abs-1810-12698",
+        "ArXiv": "1810.12698",
+        "MAG": "2898942365",
+        "CorpusId": 53112478
+    },
+    "title": "Compositional Attention Networks for Interpretability in Natural Language Question Answering",
+    "abstract": "MAC Net is a compositional attention network designed for Visual Question Answering. We propose a modified MAC net architecture for Natural Language Question Answering. Question Answering typically requires Language Understanding and multi-step Reasoning. MAC net's unique architecture - the separation between memory and control, facilitates data-driven iterative reasoning. This makes it an ideal candidate for solving tasks that involve logical reasoning. Our experiments with 20 bAbI tasks demonstrate the value of MAC net as a data-efficient and interpretable architecture for Natural Language Question Answering. The transparent nature of MAC net provides a highly granular view of the reasoning steps taken by the network in answering a query.",
+    "venue": "arXiv.org",
+    "year": 2018,
+    "referenceCount": 9,
+    "citationCount": 3,
+    "influentialCitationCount": 0,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes a modified MAC net architecture for Natural Language Question Answering, which provides a highly granular view of the reasoning steps taken by the network in answering a query and demonstrates the value of MAC net as a data-efficient and interpretable architecture."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2066387390",
+            "name": "Selvakumar Murugan"
+        },
+        {
+            "authorId": "35361118",
+            "name": "Suriyadeepan Ramamoorthy"
+        },
+        {
+            "authorId": "1918298",
+            "name": "Vaidheeswaran Archana"
+        },
+        {
+            "authorId": "51117577",
+            "name": "Malaikannan Sankarasubbu"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "b0c34618ffd1154f35863e2ce7250ac6b6f2c424",
+            "title": "Interpretable Machine Learning"
+        },
+        {
+            "paperId": "289fb3709475f5c87df8d97f129af54029d27fee",
+            "title": "Compositional Attention Networks for Machine Reasoning"
+        },
+        {
+            "paperId": "e89dfa306723e8ef031765e9c44e5f6f94fd8fda",
+            "title": "Explanation in Artificial Intelligence: Insights from the Social Sciences"
+        },
+        {
+            "paperId": "5c39e37022661f81f79e481240ed9b175dec6513",
+            "title": "Towards A Rigorous Science of Interpretable Machine Learning"
+        },
+        {
+            "paperId": "c0883f5930a232a9c1ad601c978caede29155979",
+            "title": "\u201cWhy Should I Trust You?\u201d: Explaining the Predictions of Any Classifier"
+        },
+        {
+            "paperId": "452059171226626718eb677358836328f884298e",
+            "title": "Ask Me Anything: Dynamic Memory Networks for Natural Language Processing"
+        },
+        {
+            "paperId": "4f10b9f47c5bb6b54dd4f5ca8d9fa2c0bbd7ec5e",
+            "title": "End-To-End Memory Networks"
+        },
+        {
+            "paperId": "abb33d75dc297993fcc3fb75e0f4498f413eb4f6",
+            "title": "Towards AI-Complete Question Answering: A Set of Prerequisite Toy Tasks"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        }
+    ]
+}

@@ -1,0 +1,101 @@
+{
+    "paperId": "f426f3a623b0a808b42f2fc8820235059d0e18cf",
+    "externalIds": {
+        "MAG": "2143197186",
+        "DOI": "10.12785/JSAP/020205",
+        "CorpusId": 46400344
+    },
+    "title": "Time Series Classification",
+    "abstract": "Time series is an important class of temporal data objects and it can be easily obtained from scientific and financial applications. The nature time series data includes: large in data size, high dimensionality and necessary to update continuously. The increasing use of time series data has initiated a great deal of research and developing attempts in the field of data mining. Classification of time series data has a wide range of applications and has attracted researches from a wide range of discipline. In this paper the classical discriminant analysis is modified using the principal component analysis (PCA) to overcome the large dimensionality. The PCA modification can reduce the size of the data and improve the efficiency and accuracy. The new method is investigated using a simulation study to classify the linear AR(2) model and the bilinear BL(1,0,1,1) model. The results of our investigation show that the designed algorithm has a significant rate of correct classification especially if it is compared with the other methods. The PCA modification method is also applied to a real set of time series data and gave a superior rate of correct classification.",
+    "venue": "",
+    "year": 2013,
+    "referenceCount": 17,
+    "citationCount": 35,
+    "influentialCitationCount": 4,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The classical discriminant analysis is modified using the principal component analysis (PCA) to overcome the large dimensionality and the designed algorithm has a significant rate of correct classification especially if it is compared with the other methods."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "11658221",
+            "name": "M. Gabr"
+        },
+        {
+            "authorId": "70386573",
+            "name": "L. M. Fatehy"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "9e099d75edbf9852367815ad3fb177f41176cd46",
+            "title": "Segment-Based Features for Time Series Classification"
+        },
+        {
+            "paperId": "58c26ebd8cb921067c2b74cb2fc445ab5a1a3e4e",
+            "title": "Improving SVM classification on imbalanced time series data sets with ghost points"
+        },
+        {
+            "paperId": "5c08ccba51c040a48907d3d9ab997c43bf17c43d",
+            "title": "A review on time series data mining"
+        },
+        {
+            "paperId": "bf3071f59fcb78af7daf8e18558de60668eafb91",
+            "title": "Improving SVM Classification on Imbalanced Data Sets in Distance Spaces"
+        },
+        {
+            "paperId": "9c40543348fef37369c5b19ea26994ca1db8d9e8",
+            "title": "Time series shapelets: a new primitive for data mining"
+        },
+        {
+            "paperId": "807bfd050b9bd33d6dc8ff9533992d92a3590c5d",
+            "title": "Semi-supervised time series classification"
+        },
+        {
+            "paperId": "415dae363449d399141d07941424b057a26716aa",
+            "title": "Fast time series classification using numerosity reduction"
+        },
+        {
+            "paperId": "164a8b614cdc892c9532d6217ebc371473d4b903",
+            "title": "Adaptive Blind Signal and Image Processing - Learning Algorithms and Applications"
+        },
+        {
+            "paperId": "8db9bf81c33f669911b8a789ae6fef6c229fa6e1",
+            "title": "On the Need for Time Series Data Mining Benchmarks: A Survey and Empirical Demonstration"
+        },
+        {
+            "paperId": "c75cdde12b058fa369bf71c57d66a85f94f28359",
+            "title": "VARIABLE SELECTION AND INTERPRETATION OF COVARIANCE PRINCIPAL COMPONENTS"
+        },
+        {
+            "paperId": "4963920f1a6d5c0933d1d8865c85a1ca1f437f7f",
+            "title": "Applied Statistical Time Series Analysis"
+        },
+        {
+            "paperId": "34229d94fb3b4c6d2fa85f074421d604ec60f571",
+            "title": "Applied Multivariate Statistical Analysis"
+        },
+        {
+            "paperId": null,
+            "title": "\u201c Pattern Recognition and Machince Learning\u201d"
+        },
+        {
+            "paperId": "ffa17c6faac6cb47e40610efb80eb8ab99fe0c60",
+            "title": "Applied Multivariate Statistical Analysis: third edition"
+        },
+        {
+            "paperId": null,
+            "title": "\u201cThe UCR time series classification and clustering home page: http://www.cs.ucr.edu/~eamonn/ Time series data/\u201d"
+        },
+        {
+            "paperId": null,
+            "title": "Principal Component Analysis (2 nd edition"
+        },
+        {
+            "paperId": "777ae5fc47aedc7519295192cc86c55627b33873",
+            "title": "Simple principal components"
+        }
+    ]
+}

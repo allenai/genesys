@@ -1,0 +1,129 @@
+{
+    "paperId": "03911c85305d42aa2eeb02be82ef6fb7da644dd0",
+    "externalIds": {
+        "DBLP": "conf/nips/BergstraBBK11",
+        "MAG": "2106411961",
+        "CorpusId": 11688126
+    },
+    "title": "Algorithms for Hyper-Parameter Optimization",
+    "abstract": "Several recent advances to the state of the art in image classification benchmarks have come from better configurations of existing techniques rather than novel approaches to feature learning. Traditionally, hyper-parameter optimization has been the job of humans because they can be very efficient in regimes where only a few trials are possible. Presently, computer clusters and GPU processors make it possible to run more trials and we show that algorithmic approaches can find better results. We present hyper-parameter optimization results on tasks of training neural networks and deep belief networks (DBNs). We optimize hyper-parameters using random search and two new greedy sequential methods based on the expected improvement criterion. Random search has been shown to be sufficiently efficient for learning neural networks for several datasets, but we show it is unreliable for training DBNs. The sequential algorithms are applied to the most difficult DBN learning problems from [1] and find significantly better results than the best previously reported. This work contributes novel techniques for making response surface models P(y|x) in which many elements of hyper-parameter assignment (x) are known to be irrelevant given particular values of other elements.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2011,
+    "referenceCount": 22,
+    "citationCount": 4143,
+    "influentialCitationCount": 382,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work contributes novel techniques for making response surface models P(y|x) in which many elements of hyper-parameter assignment (x) are known to be irrelevant given particular values of other elements."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "32837403",
+            "name": "J. Bergstra"
+        },
+        {
+            "authorId": "2103302",
+            "name": "R. Bardenet"
+        },
+        {
+            "authorId": "1751762",
+            "name": "Yoshua Bengio"
+        },
+        {
+            "authorId": "143674326",
+            "name": "B. K\u00e9gl"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "188e247506ad992b8bc62d6c74789e89891a984f",
+            "title": "Random Search for Hyper-Parameter Optimization"
+        },
+        {
+            "paperId": "be9a17321537d9289875fe475b71f4821457b435",
+            "title": "An Analysis of Single-Layer Networks in Unsupervised Feature Learning"
+        },
+        {
+            "paperId": "6f568d757d2c1ab42f2006faa25690b74c3d2d44",
+            "title": "The Importance of Encoding Versus Training with Sparse Coding and Vector Quantization"
+        },
+        {
+            "paperId": "728744423ff0fb7e327664ed4e6352a95bb6c893",
+            "title": "Sequential Model-Based Optimization for General Algorithm Configuration"
+        },
+        {
+            "paperId": "560ac582a82dc0ce9765fc942f07f94908eaeeb3",
+            "title": "Surrogating the surrogate: accelerating Gaussian-process-based global optimization with a mixture cross-entropy algorithm"
+        },
+        {
+            "paperId": "e2b7f37cd97a7907b1b8a41138721ed06a0b76cd",
+            "title": "Stacked Denoising Autoencoders: Learning Useful Representations in a Deep Network with a Local Denoising Criterion"
+        },
+        {
+            "paperId": "0c8413ab8de0c1b8f2e86402b8d737d94371610f",
+            "title": "Information-Theoretic Regret Bounds for Gaussian Process Optimization in the Bandit Setting"
+        },
+        {
+            "paperId": "d46fd54609e09bcd135fd28750003185a5ee4125",
+            "title": "A High-Throughput Screening Approach to Discovering Good Forms of Biologically Inspired Visual Representation"
+        },
+        {
+            "paperId": "07c7218ec5ce408cff35b56670494c725ebf9a08",
+            "title": "Assessment of uncertainty in computer experiments from Universal to Bayesian Kriging"
+        },
+        {
+            "paperId": "b8012351bc5ebce4a4b3039bbbba3ce393bc3315",
+            "title": "An empirical evaluation of deep architectures on problems with many factors of variation"
+        },
+        {
+            "paperId": "55290c9496fdf0df54dfdbb57117aa58386f98bc",
+            "title": "An informational approach to the global optimization of expensive-to-evaluate functions"
+        },
+        {
+            "paperId": "8978cf7574ceb35f4c3096be768c7547b28a35d0",
+            "title": "A Fast Learning Algorithm for Deep Belief Nets"
+        },
+        {
+            "paperId": "51e44cdb27097fcdf1988fe2bb2c7366329b9514",
+            "title": "Gaussian Processes for Machine Learning"
+        },
+        {
+            "paperId": "a3db48fdc9aaf6921f269817ba4ed16b9b198394",
+            "title": "A Taxonomy of Global Optimization Methods Based on Response Surfaces"
+        },
+        {
+            "paperId": "ff6359d962f0deab55ba7ad5857506011f979136",
+            "title": "Estimation of Distribution Algorithms: A New Tool for Evolutionary Computation"
+        },
+        {
+            "paperId": "577d19a115f9ef6f002483fcf88adbb3b5479556",
+            "title": "Independent component analysis: algorithms and applications"
+        },
+        {
+            "paperId": null,
+            "title": "Theano: a CPU and GPU math expression compiler"
+        },
+        {
+            "paperId": null,
+            "title": "The application of Bayesian methods for seeking the extremum"
+        },
+        {
+            "paperId": "08c4fdd974d874c87ea87faa6b404a7b8eb72c73",
+            "title": "Automated configuration of algorithms for solving hard computational problems"
+        },
+        {
+            "paperId": "95a1f9e009d16e141448fbfea33353b02e1e9335",
+            "title": "The CMA Evolution Strategy: A Comparing Review"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": "b9b1b1654ce0eea729c4160bfedcbb3246460b1d",
+            "title": "Neural networks for pattern recognition"
+        }
+    ]
+}

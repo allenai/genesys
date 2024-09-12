@@ -1,0 +1,118 @@
+{
+    "paperId": "62df84d6a4d26f95e4714796c2337c9848cc13b5",
+    "externalIds": {
+        "ArXiv": "1512.01274",
+        "DBLP": "journals/corr/ChenLLLWWXXZZ15",
+        "MAG": "2186615578",
+        "CorpusId": 1507815
+    },
+    "title": "MXNet: A Flexible and Efficient Machine Learning Library for Heterogeneous Distributed Systems",
+    "abstract": "MXNet is a multi-language machine learning (ML) library to ease the development of ML algorithms, especially for deep neural networks. Embedded in the host language, it blends declarative symbolic expression with imperative tensor computation. It offers auto differentiation to derive gradients. MXNet is computation and memory efficient and runs on various heterogeneous systems, ranging from mobile devices to distributed GPU clusters. \nThis paper describes both the API design and the system implementation of MXNet, and explains how embedding of both symbolic expression and tensor operation is handled in a unified fashion. Our preliminary experiments reveal promising results on large scale deep neural network applications using multiple GPU machines.",
+    "venue": "arXiv.org",
+    "year": 2015,
+    "referenceCount": 13,
+    "citationCount": 2187,
+    "influentialCitationCount": 251,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The API design and the system implementation of MXNet are described, and it is explained how embedding of both symbolic expression and tensor operation is handled in a unified fashion."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1913774",
+            "name": "Tianqi Chen"
+        },
+        {
+            "authorId": "2124778071",
+            "name": "Mu Li"
+        },
+        {
+            "authorId": "2110420880",
+            "name": "Yutian Li"
+        },
+        {
+            "authorId": "1491081747",
+            "name": "Min Lin"
+        },
+        {
+            "authorId": "48246959",
+            "name": "Naiyan Wang"
+        },
+        {
+            "authorId": "1508337194",
+            "name": "Minjie Wang"
+        },
+        {
+            "authorId": "39102205",
+            "name": "Tianjun Xiao"
+        },
+        {
+            "authorId": "2113742783",
+            "name": "Bing Xu"
+        },
+        {
+            "authorId": "151505981",
+            "name": "Chiyuan Zhang"
+        },
+        {
+            "authorId": "38448016",
+            "name": "Zheng Zhang"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "995c5f5e62614fcb4d2796ad2faab969da51713e",
+            "title": "Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift"
+        },
+        {
+            "paperId": "b2fb47473f33ae3711dacc020aff0eb668061f2d",
+            "title": "Purine: A bi-graph based deep learning framework"
+        },
+        {
+            "paperId": "04ca5de59edbdd49a9c0502c58331524d220bc8c",
+            "title": "Communication Efficient Distributed Machine Learning with the Parameter Server"
+        },
+        {
+            "paperId": "37b07566d53b8533c57d707c4913aae505a93a66",
+            "title": "Minerva: A Scalable and Highly Efficient Training Platform for Deep Learning"
+        },
+        {
+            "paperId": "50684b147b752a07c313cb73d864f7b21bd8b703",
+            "title": "Scaling Distributed Machine Learning with the Parameter Server"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "6bdb186ec4726e00a8051119636d4df3b94043b5",
+            "title": "Caffe: Convolutional Architecture for Fast Feature Embedding"
+        },
+        {
+            "paperId": "3127190433230b3dc1abd0680bb58dced4bcd90e",
+            "title": "Large Scale Distributed Deep Networks"
+        },
+        {
+            "paperId": "855d0f722d75cc56a66a00ede18ace96bafee6bd",
+            "title": "Theano: new features and speed improvements"
+        },
+        {
+            "paperId": null,
+            "title": "Chainer: A powerful, flexible, and intuitive framework of neural networks"
+        },
+        {
+            "paperId": null,
+            "title": "Tensorflow: Large-scale machine learning on heterogeneous systems"
+        },
+        {
+            "paperId": "3449b65008b27f6e60a73d80c1fd990f0481126b",
+            "title": "Torch7: A Matlab-like Environment for Machine Learning"
+        },
+        {
+            "paperId": null,
+            "title": "Easy benchmarking of all public open-source implementations of convnets, 2015. https://github.com/soumith/convnet-benchmarks"
+        }
+    ]
+}

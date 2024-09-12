@@ -1,0 +1,118 @@
+{
+    "paperId": "81d4797f753e70d4bbac3002860d4ae846241a78",
+    "externalIds": {
+        "DBLP": "conf/focs/DrineasK01",
+        "MAG": "1587887312",
+        "DOI": "10.1109/SFCS.2001.959921",
+        "CorpusId": 7980833
+    },
+    "title": "Fast Monte-Carlo algorithms for approximate matrix multiplication",
+    "abstract": "Given an m ? n matrix A and an n ? p matrix B, we present 2 simple and intuitive algorithms to compute an approximation P to the product A ? B, with provable bounds for the norm of the \"error matrix\" P - A ? B. Both algorithms run in 0(mp+mn+np) time. In both algorithms, we randomly pick s = 0(1) columns of A to form an m ? s matrix S and the corresponding rows of B to form an s ? p matrix R. After scaling the columns of S and the rows of R, we multiply them together to obtain our approximation P. The choice of the probability distribution we use for picking the columns of A and the scaling are the crucial features which enable us to fairly elementary proofs of the error bounds. Our first algorithm can be implemented without storing the matrices A and B in Random Access Memory, provided we can make two passes through the matrices (stored in external memory). The second algorithm has a smaller bound on the 2-norm of the error matrix, but requires storage of A and B in RAM. We also present a fast algorithm that \"describes\" P as a sum of rank one matrices if B = AT.",
+    "venue": "Proceedings IEEE International Conference on Cluster Computing",
+    "year": 2001,
+    "referenceCount": 21,
+    "citationCount": 91,
+    "influentialCitationCount": 3,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "2 simple and intuitive algorithms to compute an approximation P to the product A ?"
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1738441",
+            "name": "P. Drineas"
+        },
+        {
+            "authorId": "144632403",
+            "name": "R. Kannan"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "9fe4e58bcf31d528a30f15bd0b180fbe298f91ef",
+            "title": "Fast computation of low rank matrix approximations"
+        },
+        {
+            "paperId": "f13e1dabed4bc18f91cdf9ec961dbd39734e3a92",
+            "title": "On the concentration of eigenvalues of random symmetric matrices"
+        },
+        {
+            "paperId": "02f7d20caffab4887f7cbc13ca78f25b8caf4b5c",
+            "title": "Approximating the Independence Number and the Chromatic Number in Expected Polynomial Time"
+        },
+        {
+            "paperId": "bbc531f6ca5e83c6fa507bdf6399ecf76ef2e614",
+            "title": "Fast Monte-Carlo algorithms for finding low-rank approximations"
+        },
+        {
+            "paperId": "1ca4f1a8c018f6b9c8dad8aa37c70c1add5936d1",
+            "title": "Approximating matrix multiplication for pattern recognition tasks"
+        },
+        {
+            "paperId": "06871028d4e71ceefe879853e9dc2183ea81bb32",
+            "title": "Using Linear Algebra for Intelligent Information Retrieval"
+        },
+        {
+            "paperId": "1992fee8d33e66e32a213ecf047f9022adbff92e",
+            "title": "Matrix multiplication via arithmetic progressions"
+        },
+        {
+            "paperId": "671e4480ab175a07d3f30f7965189d7c3c5c85ff",
+            "title": "The eigenvalues of random symmetric matrices"
+        },
+        {
+            "paperId": "cb80b424db4c94cbaf4c3ae0e570ac3eb6f3bcf3",
+            "title": "Gaussian elimination is not optimal"
+        },
+        {
+            "paperId": "4713a6bea2d6e55c0a88e90fa0b25f60a4e6faf3",
+            "title": "The algebraic eigenvalue problem"
+        },
+        {
+            "paperId": "1c74180188a592d20a63cedb45d53089201fe127",
+            "title": "Probability inequalities for sum of bounded random variables"
+        },
+        {
+            "paperId": "22ca4af08b52e7051c59dc692d80d8d7a727c3d8",
+            "title": "Clustering in large graphs and matrices"
+        },
+        {
+            "paperId": "08f604db8a9b22b4ed2053088a3e6f2b9ad5e96e",
+            "title": "Eecient Singular Value Decomposition via Improved Document Sampling Eecient Singular Value Decomposition via Improved Document Sampling"
+        },
+        {
+            "paperId": null,
+            "title": "A n Approximate  l1-di ernce algorithm for massive data sets"
+        },
+        {
+            "paperId": "225ca57add3b3fb12ef01cc97c4683350dc93fe4",
+            "title": "Matrix computations"
+        },
+        {
+            "paperId": null,
+            "title": "The CUR decomposition"
+        },
+        {
+            "paperId": null,
+            "title": "CUR is a low-rank decomposition in terms of the data that practitioners understand"
+        },
+        {
+            "paperId": null,
+            "title": "C consists of c = O"
+        },
+        {
+            "paperId": null,
+            "title": "@BULLET This is a \" challenging \" task (think: reification)!"
+        },
+        {
+            "paperId": null,
+            "title": "@BULLET Use it to explain the data and do dimensionality reduction, classification, clustering"
+        },
+        {
+            "paperId": null,
+            "title": "UT Austin) (sporulation and cell cycle data). Find a \" good \" set of genes and arrays to include in C and R? Provable and/or heuristic strategies are acceptable"
+        }
+    ]
+}

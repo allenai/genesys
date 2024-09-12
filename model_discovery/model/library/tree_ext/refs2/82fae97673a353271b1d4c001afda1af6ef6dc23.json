@@ -1,0 +1,141 @@
+{
+    "paperId": "82fae97673a353271b1d4c001afda1af6ef6dc23",
+    "externalIds": {
+        "DBLP": "conf/iccv/HariharanABMM11",
+        "MAG": "2144794286",
+        "DOI": "10.1109/ICCV.2011.6126343",
+        "CorpusId": 6683607
+    },
+    "title": "Semantic contours from inverse detectors",
+    "abstract": "We study the challenging problem of localizing and classifying category-specific object contours in real world images. For this purpose, we present a simple yet effective method for combining generic object detectors with bottom-up contours to identify object contours. We also provide a principled way of combining information from different part detectors and across categories. In order to study the problem and evaluate quantitatively our approach, we present a dataset of semantic exterior boundaries on more than 20, 000 object instances belonging to 20 categories, using the images from the VOC2011 PASCAL challenge [7].",
+    "venue": "Vision",
+    "year": 2011,
+    "referenceCount": 23,
+    "citationCount": 1568,
+    "influentialCitationCount": 137,
+    "openAccessPdf": {
+        "url": "http://www.eecs.berkeley.edu/Research/Projects/CS/vision/grouping/papers/habmm_iccv2011.pdf",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A simple yet effective method for combining generic object detectors with bottom-up contours to identify object contours is presented and a principled way of combining information from different part detectors and across categories is provided."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1790580",
+            "name": "Bharath Hariharan"
+        },
+        {
+            "authorId": "1778133",
+            "name": "Pablo Arbel\u00e1ez"
+        },
+        {
+            "authorId": "1769383",
+            "name": "Lubomir D. Bourdev"
+        },
+        {
+            "authorId": "35208858",
+            "name": "Subhransu Maji"
+        },
+        {
+            "authorId": "143751119",
+            "name": "Jitendra Malik"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "0e5a262bf59b68ba8a7a1103d16fa33a9f5ffc28",
+            "title": "Contour Detection and Hierarchical Image Segmentation"
+        },
+        {
+            "paperId": "d6d7dcdcf66fe83e49d175cd9d8ac0b507d0e9d8",
+            "title": "Recovering Occlusion Boundaries from an Image"
+        },
+        {
+            "paperId": "f0640da2565bad7037d969e9f07276c10102083d",
+            "title": "Category Independent Object Proposals"
+        },
+        {
+            "paperId": "c8d905b121e3e1f27d1f72195e27b7c8ac1a4386",
+            "title": "Detecting People Using Mutually Consistent Poselet Activations"
+        },
+        {
+            "paperId": "e79272fe3d65197100eae8be9fec6469107969ae",
+            "title": "Object Detection with Discriminatively Trained Part Based Models"
+        },
+        {
+            "paperId": "c96a264709f20d01ca7715b88da06710ba66c536",
+            "title": "Highly accurate boundary detection and grouping"
+        },
+        {
+            "paperId": "3e7164821bf58dbfe384c82aa8c3d23b049dded8",
+            "title": "From Images to Shape Models for Object Detection"
+        },
+        {
+            "paperId": "b11f559432f453fb801befe5e43768a97855c8ca",
+            "title": "Discriminative Sparse Image Models for Class-Specific Edge Detection and Image Interpretation"
+        },
+        {
+            "paperId": "092c275005ae49dc1303214f6d02d134457c7053",
+            "title": "LabelMe: A Database and Web-Based Tool for Image Annotation"
+        },
+        {
+            "paperId": "1f904b4cd514a3b7e49a73f25ca246b831d85601",
+            "title": "Learning to Find Object Boundaries Using Motion Cues"
+        },
+        {
+            "paperId": "d0c3b858afcbe291dec3f43149927d31286207e9",
+            "title": "Untangling Cycles for Contour Grouping"
+        },
+        {
+            "paperId": "b21e5822c87246cebc58c53ea7989b71baf0b81d",
+            "title": "Object Detection Combining Recognition and Segmentation"
+        },
+        {
+            "paperId": "484c3bdbd51997344db47517caf61c5e83b13d91",
+            "title": "Learning Class-Specific Edges for Object Detection and Segmentation"
+        },
+        {
+            "paperId": "be305b0684f1a6ec8407c107187d28502b48f993",
+            "title": "Supervised Learning of Edges and Object Boundaries"
+        },
+        {
+            "paperId": "8392ada55a60ba7814aaf4ad32d1a014d1acbeae",
+            "title": "Scale-invariant contour completion using conditional random fields"
+        },
+        {
+            "paperId": "e8b12467bdc20bde976750b8a28decdb33246d1d",
+            "title": "Histograms of oriented gradients for human detection"
+        },
+        {
+            "paperId": "83fa51c8ca9144361d4ba26152e7cfa27d5c5649",
+            "title": "Learning to detect natural image boundaries using local brightness, color, and texture cues"
+        },
+        {
+            "paperId": "9a1ed876196ec9733acb1daa6d65e35ff0414291",
+            "title": "A database of human segmented natural images and its application to evaluating segmentation algorithms and measuring ecological statistics"
+        },
+        {
+            "paperId": "ce2fd92335e904c4111381a8a1afb9bb7a484d1e",
+            "title": "Large Scale Image Annotations on Amazon Mechanical Turk"
+        },
+        {
+            "paperId": "13ef25201af7f2a7e401ef31a6197f66357f6f01",
+            "title": "The PASCAL Visual Object Classes Challenge"
+        },
+        {
+            "paperId": "19ee68e09d8507360ba07ee2c4840f85ae076be2",
+            "title": "Classifier-based Contour Tracking for Rigid and Deformable Objects"
+        },
+        {
+            "paperId": null,
+            "title": "ETHZ shape classes v 1.2"
+        },
+        {
+            "paperId": null,
+            "title": "1] Amazon. Amazon mechanical turk. https://www.mturk.com/mturk/welcome"
+        }
+    ]
+}

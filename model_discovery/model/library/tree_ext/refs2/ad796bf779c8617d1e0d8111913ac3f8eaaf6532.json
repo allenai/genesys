@@ -1,0 +1,163 @@
+{
+    "paperId": "ad796bf779c8617d1e0d8111913ac3f8eaaf6532",
+    "externalIds": {
+        "MAG": "2799051177",
+        "DBLP": "conf/acl/TitovSSV18",
+        "ArXiv": "1805.10163",
+        "ACL": "P18-1117",
+        "DOI": "10.18653/v1/P18-1117",
+        "CorpusId": 44062236
+    },
+    "title": "Context-Aware Neural Machine Translation Learns Anaphora Resolution",
+    "abstract": "Standard machine translation systems process sentences in isolation and hence ignore extra-sentential information, even though extended context can both prevent mistakes in ambiguous cases and improve translation coherence. We introduce a context-aware neural machine translation model designed in such way that the flow of information from the extended context to the translation model can be controlled and analyzed. We experiment with an English-Russian subtitles dataset, and observe that much of what is captured by our model deals with improving pronoun translation. We measure correspondences between induced attention distributions and coreference relations and observe that the model implicitly captures anaphora. It is consistent with gains for sentences where pronouns need to be gendered in translation. Beside improvements in anaphoric cases, the model also improves in overall BLEU, both over its context-agnostic version (+0.7) and over simple concatenation of the context and source sentences (+0.6).",
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2018,
+    "referenceCount": 29,
+    "citationCount": 281,
+    "influentialCitationCount": 47,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/P18-1117.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A context-aware neural machine translation model designed in such way that the flow of information from the extended context to the translation model can be controlled and analyzed is introduced."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "46235299",
+            "name": "Elena Voita"
+        },
+        {
+            "authorId": "1708801",
+            "name": "P. Serdyukov"
+        },
+        {
+            "authorId": "2082372",
+            "name": "Rico Sennrich"
+        },
+        {
+            "authorId": "144889265",
+            "name": "Ivan Titov"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "6a9e5377bbf28b86a1dd8cd5802998c949a34ff3",
+            "title": "OpenSubtitles2018: Statistical Rescoring of Sentence Alignments in Large, Noisy Parallel Corpora"
+        },
+        {
+            "paperId": "5503ed99ad2a536e00508432e87553786e1eaa3f",
+            "title": "Evaluating Discourse Phenomena in Neural Machine Translation"
+        },
+        {
+            "paperId": "cc00c75beab868c6f13d61223bd472c0992a42ee",
+            "title": "Validation of an Automatic Metric for the Accuracy of Pronoun Translation (APT)"
+        },
+        {
+            "paperId": "9c81f16df774c772dbefc947fe0e467b72500844",
+            "title": "Dynamic Entity Representations in Neural Language Models"
+        },
+        {
+            "paperId": "2cc765e602458960c3fefadafd75456d6f85f958",
+            "title": "Neural Machine Translation with Extended Context"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "fbe500cb74ea198227debe523e75ecff987153ea",
+            "title": "Does Neural Machine Translation Benefit from Larger Context?"
+        },
+        {
+            "paperId": "04d372284736c7c04c196cf535aed0c79320af81",
+            "title": "Exploiting Cross-Sentence Context for Neural Machine Translation"
+        },
+        {
+            "paperId": "e11edb4201007530c3692814a155b22f78a0d659",
+            "title": "OpenSubtitles2016: Extracting Large Parallel Corpora from Movie and TV Subtitles"
+        },
+        {
+            "paperId": "77770099cd73e6da90f046ac92fa2f9d32e469f6",
+            "title": "Learning Global Features for Coreference Resolution"
+        },
+        {
+            "paperId": "05538db75b933dc9f6e8241c7c1414b8fded6c4d",
+            "title": "Pronoun-Focused MT and Cross-Lingual Pronoun Prediction: Findings of the 2015 DiscoMT Shared Task on Pronoun Translation"
+        },
+        {
+            "paperId": "1518039b5001f1836565215eb047526b3ac7f462",
+            "title": "Neural Machine Translation of Rare Words with Subword Units"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "2f5102ec3f70d0dea98c957cc2cab4d15d83a2da",
+            "title": "The Stanford CoreNLP Natural Language Processing Toolkit"
+        },
+        {
+            "paperId": "f62816ef08637ffdbe653c25e11bc5469393ff2f",
+            "title": "Dynamic Topic Adaptation for Phrase-based MT"
+        },
+        {
+            "paperId": "358865305523525697c93c4a21751040c4516d21",
+            "title": "Latent Anaphora Resolution for Cross-Lingual Pronoun Prediction"
+        },
+        {
+            "paperId": "47a06b600080e8b68d4adbab28a959d122d2abf4",
+            "title": "Discourse in Statistical Machine Translation"
+        },
+        {
+            "paperId": "c3613147a0c3bab95ac301240c3fdbca53910a14",
+            "title": "N-gram-based Tense Models for Statistical Machine Translation"
+        },
+        {
+            "paperId": "20fdcf0f7ea43fd5441bd7bf7dfe70ce3d7a1889",
+            "title": "Translation Model Adaptation for Statistical Machine Translation with Monolingual Topic Information"
+        },
+        {
+            "paperId": "a2bf595e5a2dd9d005b8e5bc89029d03056ce4b1",
+            "title": "Cache-based Document-level Statistical Machine Translation"
+        },
+        {
+            "paperId": "9697b348053ceba765c7a007300e08ee266b4ab6",
+            "title": "Context Adaptation in Statistical Machine Translation Using Models with Exponentially Decaying Cache"
+        },
+        {
+            "paperId": "e4c47172785f6255e24c1b76e36cd0332e33cb43",
+            "title": "Aiding Pronoun Translation with Co-Reference Resolution"
+        },
+        {
+            "paperId": "ed16a3f5b3634b50290ae4e653c7104f0030bcf7",
+            "title": "One Translation Per Discourse"
+        },
+        {
+            "paperId": "ea5cf5569eef0a99df9b6d92b628a33fc82ca2e7",
+            "title": "On Some Pitfalls in Automatic Evaluation and Significance Testing for MT"
+        },
+        {
+            "paperId": "04d4610301b9be538a7ee0a7759cb4503c18f53d",
+            "title": "Introduction: Special Issue on Anaphora Resolution in Machine Translation and Multilingual NLP"
+        },
+        {
+            "paperId": "bf22399520dbafbf3e086a9feb6b6545a779a96e",
+            "title": "Machine Translation of Labeled Discourse Connectives"
+        },
+        {
+            "paperId": "8267e50bd7b5381824b75974a8fc50d8d5909fa1",
+            "title": "Modelling pronominal anaphora in statistical machine translation"
+        },
+        {
+            "paperId": null,
+            "title": "target vocabularies of about 32000 tokens. Translation pairs were batched together by approximate sequence length"
+        }
+    ]
+}

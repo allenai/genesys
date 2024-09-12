@@ -1,0 +1,271 @@
+{
+    "paperId": "7345843e87c81e24e42264859b214d26042f8d51",
+    "externalIds": {
+        "MAG": "2963073938",
+        "DBLP": "journals/corr/DyerKBS16",
+        "ACL": "N16-1024",
+        "ArXiv": "1602.07776",
+        "DOI": "10.18653/v1/N16-1024",
+        "CorpusId": 1949831
+    },
+    "title": "Recurrent Neural Network Grammars",
+    "abstract": "We introduce recurrent neural network grammars, probabilistic models of sentences with explicit phrase structure. We explain efficient inference procedures that allow application to both parsing and language modeling. Experiments show that they provide better parsing in English than any single previously published supervised generative model and better language modeling than state-of-the-art sequential RNNs in English and Chinese.",
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2016,
+    "referenceCount": 56,
+    "citationCount": 515,
+    "influentialCitationCount": 96,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/N16-1024.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": null
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1745899",
+            "name": "Chris Dyer"
+        },
+        {
+            "authorId": "3376845",
+            "name": "A. Kuncoro"
+        },
+        {
+            "authorId": "143668305",
+            "name": "Miguel Ballesteros"
+        },
+        {
+            "authorId": "144365875",
+            "name": "Noah A. Smith"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "36c097a225a95735271960e2b63a2cb9e98bff83",
+            "title": "A Fast Unified Model for Parsing and Sentence Understanding"
+        },
+        {
+            "paperId": "94960fcdf0ea3b346fca77ae8c63ae7943eb0d28",
+            "title": "Easy-First Dependency Parsing with Hierarchical Tree LSTMs"
+        },
+        {
+            "paperId": "4d4b46e545e1a3f6871b49cc69640ef2eb1a4654",
+            "title": "Semantically Conditioned LSTM-based Natural Language Generation for Spoken Dialogue Systems"
+        },
+        {
+            "paperId": "5ba79e88b37a084026ddc9ed2875a9dbe156aed4",
+            "title": "Feature Optimization for Constituent Parsing via Neural Networks"
+        },
+        {
+            "paperId": "d8ac015407cf68c695043b23d905cddd880e5844",
+            "title": "Generative Incremental Dependency Parsing with Neural Networks"
+        },
+        {
+            "paperId": "39af464a4390d442fe3f68b9933e6b1343b21227",
+            "title": "A Bayesian Model for Generative Transition-based Dependency Parsing"
+        },
+        {
+            "paperId": "b36b7f7c68923d14ba2859b5d28a1124616a8c89",
+            "title": "Transition-Based Dependency Parsing with Stack Long Short-Term Memory"
+        },
+        {
+            "paperId": "32de44f01a96d4473d21099d15e25bc2b9f08e2f",
+            "title": "Improved Semantic Representations From Tree-Structured Long Short-Term Memory Networks"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "47570e7f63e296f224a0e7f9a0d08b0de3cbaf40",
+            "title": "Grammar as a Foreign Language"
+        },
+        {
+            "paperId": "f264e8b33c0d49a692a6ce2c4bcb28588aeb7d97",
+            "title": "Recurrent Neural Network Regularization"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "9c8affd69f19c1e3fed565d2b07aa98784b106a1",
+            "title": "Joint POS Tagging and Transition-based Constituent Parsing in Chinese with Non-local Features"
+        },
+        {
+            "paperId": "5b2537973805684b65da2fa203af6d29220fe136",
+            "title": "Phrase Dependency Machine Translation with Quasi-Synchronous Tree-to-Tree Features"
+        },
+        {
+            "paperId": "faa0281fc701e562a67dfe23ebeecbb16b50a92a",
+            "title": "Efficient Higher-Order CRFs for Morphological Tagging"
+        },
+        {
+            "paperId": "687bac2d3320083eb4530bf18bb8f8f721477600",
+            "title": "Recursive Deep Models for Semantic Compositionality Over a Sentiment Treebank"
+        },
+        {
+            "paperId": "174bbdb96252454cbb40a9c4e53335996235a008",
+            "title": "Fast and Accurate Shift-Reduce Constituent Parsing"
+        },
+        {
+            "paperId": "acc4e56c44771ebf69302a06af51498aeb0a6ac8",
+            "title": "Parsing with Compositional Vector Grammars"
+        },
+        {
+            "paperId": "08994baceec0965f2f5009ecc701fc0e7a442965",
+            "title": "Processing"
+        },
+        {
+            "paperId": "2b920fe2d038571693bd96dafd3ed0dbadc4cb67",
+            "title": "Bayesian Symbol-Refined Tree Substitution Grammars for Syntactic Parsing"
+        },
+        {
+            "paperId": "ae5e6c6f5513613a161b2c85563f9708bf2e9178",
+            "title": "Dynamic Pooling and Unfolding Recursive Autoencoders for Paraphrase Detection"
+        },
+        {
+            "paperId": "90cad27cd7bbe5180a23ef2184e984b9e2a86f19",
+            "title": "LL(*): the foundation of the ANTLR parser generator"
+        },
+        {
+            "paperId": "f24fb33e739b0181fc171b515f957190e3bb6430",
+            "title": "Syntactic Processing Using the Generalized Perceptron and Beam Search"
+        },
+        {
+            "paperId": "305930bab3aa329d01c990494a494cbc1b7db3be",
+            "title": "Top-Down Nearly-Context-Sensitive Parsing"
+        },
+        {
+            "paperId": "ea9d2a2b4ce11aaf85136840c65f3bc9c03ab649",
+            "title": "Understanding the difficulty of training deep feedforward neural networks"
+        },
+        {
+            "paperId": "5bfd8d40bc071fffaf93685a46974b122ee4239d",
+            "title": "Self-Training PCFG Grammars with Latent Annotations Across Languages"
+        },
+        {
+            "paperId": "9762f5d2ca8c2132942d10ef6b064bf370262585",
+            "title": "A Latent Variable Model for Generative Dependency Parsing"
+        },
+        {
+            "paperId": "6e1b12dd7ca3443ba6e0fb38dfa3587a4eb5d539",
+            "title": "Improved Inference for Unlexicalized Parsing"
+        },
+        {
+            "paperId": "d01737b617acc555153f4660417908bf3971b1a5",
+            "title": "Scalable Inference and Training of Context-Rich Syntactic Translation Models"
+        },
+        {
+            "paperId": "78a9513e70f596077179101f6cb6eadc51602039",
+            "title": "Effective Self-Training for Parsing"
+        },
+        {
+            "paperId": "a350dc635ea3d0fd6dc8c0224fd8d6b55cc03271",
+            "title": "A Classifier-Based Parser with Linear Run-Time Complexity"
+        },
+        {
+            "paperId": "ffea7f0fd89dc940107cdf94f7decfcc42315c67",
+            "title": "A Neural Syntactic Language Model"
+        },
+        {
+            "paperId": "2c72257ae7a4a32dc60569f4e1fe4504b2678112",
+            "title": "The Penn Chinese TreeBank: Phrase structure annotation of a large corpus"
+        },
+        {
+            "paperId": "1174297ddcf08937a94d8efe4c1efb65f3b92fd8",
+            "title": "Discriminative Training of a Neural Network Statistical Parser"
+        },
+        {
+            "paperId": "1a9c68f68217be7e5608780596fa5744a404a2ca",
+            "title": "Robust garden path parsing"
+        },
+        {
+            "paperId": "2ae8397c07bd3c76f84c7cdac7897e8b7dec9029",
+            "title": "Inducing History Representations for Broad Coverage Statistical Parsing"
+        },
+        {
+            "paperId": "eb42a490cf4f186d3383c92963817d100afd81e2",
+            "title": "Feature-Rich Part-of-Speech Tagging with a Cyclic Dependency Network"
+        },
+        {
+            "paperId": "a9d59174cc50b119ee4be19b3e65177431e37003",
+            "title": "An efficient implementation of a new DOP model"
+        },
+        {
+            "paperId": "e30d29fdf23e14623a2024d4fe0f7f3d5dc889d3",
+            "title": "Probabilistic Top-Down Parsing and Language Modeling"
+        },
+        {
+            "paperId": "4af41f4d838daa7ca6995aeb4918b61989d1ed80",
+            "title": "Classes for fast maximum entropy training"
+        },
+        {
+            "paperId": "435245be302b3dc8ed244b1e6b2dba0b92baacf8",
+            "title": "Joint and Conditional Estimation of Tagging and Parsing Models"
+        },
+        {
+            "paperId": "a1c3748820d6b5ab4e7334524815df9bb6d20aed",
+            "title": "Structured language modeling"
+        },
+        {
+            "paperId": "76d5e3fa888bee872b7adb7fa810089aa8ab1d58",
+            "title": "A Maximum-Entropy-Inspired Parser"
+        },
+        {
+            "paperId": "5968067c696653fec60325633fb676f9134bd1db",
+            "title": "Relating Probabilistic Grammars and Automata"
+        },
+        {
+            "paperId": "a879da675c6133c23beb96c110c351bb4f9154dc",
+            "title": "The Neural Network Pushdown Automaton: Architecture, Dynamics and Training"
+        },
+        {
+            "paperId": "3de5d40b60742e3dfa86b19e7f660962298492af",
+            "title": "Class-Based n-gram Models of Natural Language"
+        },
+        {
+            "paperId": "17594df98c222217a11510dd454ba52a5a737378",
+            "title": "On the computational power of neural nets"
+        },
+        {
+            "paperId": "3f881781e79b5838ad35a510b6b8c0ad5d7d5584",
+            "title": "Computation of the Probability of Initial Substring Generation by Stochastic Context-Free Grammars"
+        },
+        {
+            "paperId": "668087f0ae7ce1de6e0bd0965dbb480c08103260",
+            "title": "Finding Structure in Time"
+        },
+        {
+            "paperId": "6c79a9bb8f885050cad70b4c69e016b186ffa538",
+            "title": "Trainable grammars for speech recognition"
+        },
+        {
+            "paperId": "62ea2ef8b7d98cf3a3b912a62a7a42ee82650e6b",
+            "title": "An efficient context-free parsing algorithm"
+        },
+        {
+            "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+            "title": "Recurrent neural network based language model"
+        },
+        {
+            "paperId": "1cd44dd4f1b0b1c0499b1dc9637010c6d63d445c",
+            "title": "A Tutorial on Particle Filtering and Smoothing: Fifteen years later"
+        },
+        {
+            "paperId": "7bd0a04b0f0687896e765b48619a27ee545e86db",
+            "title": "On the parameter space of generative lexicalized statistical parsing models"
+        },
+        {
+            "paperId": null,
+            "title": "Syntactic Structures"
+        }
+    ]
+}

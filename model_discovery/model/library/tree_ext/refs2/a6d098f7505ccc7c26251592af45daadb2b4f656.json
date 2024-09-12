@@ -1,0 +1,286 @@
+{
+    "paperId": "a6d098f7505ccc7c26251592af45daadb2b4f656",
+    "externalIds": {
+        "MAG": "2977242774",
+        "DBLP": "journals/corr/abs-1809-03864",
+        "ArXiv": "1809.03864",
+        "DOI": "10.1109/IJCNN.2019.8851954",
+        "CorpusId": 52189804
+    },
+    "title": "Response Characterization for Auditing Cell Dynamics in Long Short-term Memory Networks",
+    "abstract": "In this paper, we introduce a novel method to interpret recurrent neural networks (RNNs), particularly long short-term memory networks (LSTMs) at the cellular level. We propose a systematic pipeline for interpreting individual hidden state dynamics within the network using response characterization methods. The ranked contribution of individual cells to the network\u2019s output is computed by analyzing a set of interpretable metrics of their decoupled step and sinusoidal responses. As a result, our method is able to uniquely identify neurons with insightful dynamics, quantify relationships between dynamical properties and test accuracy through ablation analysis, and interpret the impact of network capacity on a network\u2019s dynamical distribution. Finally, we demonstrate the generalizability and scalability of our method by evaluating a series of different benchmark sequential datasets.",
+    "venue": "IEEE International Joint Conference on Neural Network",
+    "year": 2018,
+    "referenceCount": 58,
+    "citationCount": 25,
+    "influentialCitationCount": 0,
+    "openAccessPdf": {
+        "url": "https://dspace.mit.edu/bitstream/1721.1/130553/2/1809.03864.pdf",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel method to interpret recurrent neural networks (RNNs), particularly long short-term memory networks (LSTMs) at the cellular level by analyzing a set of interpretable metrics of their decoupled step and sinusoidal responses."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "8252176",
+            "name": "Ramin M. Hasani"
+        },
+        {
+            "authorId": "2056330",
+            "name": "Alexander Amini"
+        },
+        {
+            "authorId": "39083616",
+            "name": "Mathias Lechner"
+        },
+        {
+            "authorId": "2324381",
+            "name": "Felix Naser"
+        },
+        {
+            "authorId": "1787208",
+            "name": "R. Grosu"
+        },
+        {
+            "authorId": "145944286",
+            "name": "D. Rus"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "2deda3617b8ea9bd32f84e313d78048380a3c725",
+            "title": "Variational End-to-End Navigation and Localization"
+        },
+        {
+            "paperId": "94d91d7930c07b7c5ad364d7a689e14aba521fe6",
+            "title": "Variational Autoencoder for End-to-End Control of Autonomous Driving with Novelty Detection and Training De-biasing"
+        },
+        {
+            "paperId": "1c672c8d7d0d3845919feaa082c7c055bfaceec3",
+            "title": "Re-purposing Compact Neuronal Circuit Policies to Govern Reinforcement Learning Tasks"
+        },
+        {
+            "paperId": "8678390231035eb21b409c69b455f7cd07333d49",
+            "title": "Signals and Systems"
+        },
+        {
+            "paperId": "21af4ed208ea3ecdb20b75aa27cddd0bfe683eec",
+            "title": "The Building Blocks of Interpretability"
+        },
+        {
+            "paperId": "289fb3709475f5c87df8d97f129af54029d27fee",
+            "title": "Compositional Attention Networks for Machine Reasoning"
+        },
+        {
+            "paperId": "eb88646aeeb3ffc48566d7357495b12c035eccb9",
+            "title": "Do Convolutional Neural Networks Learn Class Hierarchy?"
+        },
+        {
+            "paperId": "90aec7132c14d3fa2d394751d8970690421c679b",
+            "title": "PatternNet and PatternLRP - Improving the interpretability of neural networks"
+        },
+        {
+            "paperId": "7380e343dd4547e21d5118b16daf03d021d98c4e",
+            "title": "Interpretable Explanations of Black Boxes by Meaningful Perturbation"
+        },
+        {
+            "paperId": "08ad8fad21f6ec4cda4d56be1ca5e146b7c913a1",
+            "title": "Understanding Black-box Predictions via Influence Functions"
+        },
+        {
+            "paperId": "f302e136c41db5de1d624412f68c9174cf7ae8be",
+            "title": "Axiomatic Attribution for Deep Networks"
+        },
+        {
+            "paperId": "267980e417f1d01a897e87fa409f64e2a76b96cd",
+            "title": "Opening the Black Box of Deep Neural Networks via Information"
+        },
+        {
+            "paperId": "42e9055ec712ec9c7f0a79d963ea034a72dc7fa8",
+            "title": "PixelVAE: A Latent Variable Model for Natural Images"
+        },
+        {
+            "paperId": "a798c13da2d500dd76c4ff76f18ded43df0d59bc",
+            "title": "LSTMVis: A Tool for Visual Analysis of Hidden State Dynamics in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "0e3cc46583217ec81e87045a4f9ae3478a008227",
+            "title": "End to End Learning for Self-Driving Cars"
+        },
+        {
+            "paperId": "bf55591e09b58ea9ce8d66110d6d3000ee804bdd",
+            "title": "Image Captioning with Semantic Attention"
+        },
+        {
+            "paperId": "9462eee3e5eff15df5e97c38e24072c65e581cee",
+            "title": "Representation of Linguistic Form and Function in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "30f78071ac2bc965ffbf452a7b315d6dfddae30e",
+            "title": "Lingusitic Analysis of Multi-Modal Recurrent Neural Networks"
+        },
+        {
+            "paperId": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+            "title": "Effective Approaches to Attention-based Neural Machine Translation"
+        },
+        {
+            "paperId": "1b5a24639fa80056d1a17b15f6997d10e76cc731",
+            "title": "Understanding Neural Networks Through Deep Visualization"
+        },
+        {
+            "paperId": "d1505c6123c102e53eb19dff312cb25cea840b72",
+            "title": "Teaching Machines to Read and Comprehend"
+        },
+        {
+            "paperId": "40be3888daa5c2e5af4d36ae22f690bcc8caf600",
+            "title": "Visualizing and Understanding Recurrent Networks"
+        },
+        {
+            "paperId": "b6b8a1b80891c96c28cc6340267b58186157e536",
+            "title": "End-to-End Training of Deep Visuomotor Policies"
+        },
+        {
+            "paperId": "a7976c2bacfbb194ddbe7fd10c2e50a545cf4081",
+            "title": "LSTM: A Search Space Odyssey"
+        },
+        {
+            "paperId": "340f48901f72278f6bf78a04ee5b01df208cc508",
+            "title": "Human-level control through deep reinforcement learning"
+        },
+        {
+            "paperId": "ac3ee98020251797c2b401e1389461df88e52e62",
+            "title": "Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling"
+        },
+        {
+            "paperId": "dc6ac3437f0a6e64e4404b1b9d188394f8a3bf71",
+            "title": "Deep Inside Convolutional Networks: Visualising Image Classification Models and Saliency Maps"
+        },
+        {
+            "paperId": "1a2a770d23b4a171fa81de62a78a3deb0588f238",
+            "title": "Visualizing and Understanding Convolutional Networks"
+        },
+        {
+            "paperId": "84069287da0a6b488b8c933f3cb5be759cb6237e",
+            "title": "On the difficulty of training recurrent neural networks"
+        },
+        {
+            "paperId": "b0fdf7661da13d338802f6a44724d7bbbc3391da",
+            "title": "Dynamical approximation by recurrent neural networks"
+        },
+        {
+            "paperId": "a2290c691d84d99e11e782e00809e5c262f15a32",
+            "title": "Mathematical control theory: deterministic finite dimensional systems (2nd ed.)"
+        },
+        {
+            "paperId": "de3ec11fe51e9abc6a6c1a639044ae5a70c43e72",
+            "title": "A Hierarchical Latent Variable Model for Data Visualization"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "e960a97db2c11a7c9f2577915c342bae074c7efb",
+            "title": "State observability in recurrent neural networks"
+        },
+        {
+            "paperId": "5d5c69c7180411ce01bc9168281428094ae95e9c",
+            "title": "Observability of Neural Network Behavior"
+        },
+        {
+            "paperId": "67e6194ccddf75509b2b62715dbe70f5c45968f9",
+            "title": "For neural networks, function determines form"
+        },
+        {
+            "paperId": "c94c156d00e0550a89a4af7bffd1d0c562320c76",
+            "title": "Predicting the secondary structure of globular proteins using neural network models."
+        },
+        {
+            "paperId": "2acf3ad7cb5efce1be987c5cdd6d130e809d6f96",
+            "title": "Realization Theory of Discrete-Time Nonlinear Systems: Part I - The Bounded Case"
+        },
+        {
+            "paperId": null,
+            "title": "Atmospheric Carbon Dioxide Record."
+        },
+        {
+            "paperId": null,
+            "title": "and Vedaldi"
+        },
+        {
+            "paperId": "7786bc6c25ba38ff0135f1bdad192f6b3c4ad0b3",
+            "title": "ALVINN, an autonomous land vehicle in a neural network"
+        },
+        {
+            "paperId": null,
+            "title": "and Fergus"
+        },
+        {
+            "paperId": null,
+            "title": "MNIST handwritten digit database"
+        },
+        {
+            "paperId": "65d994fb778a8d9e0f632659fb33a082949a50d3",
+            "title": "Visualizing Higher-Layer Features of a Deep Network"
+        },
+        {
+            "paperId": "1c46943103bd7b7a2c7be86859995a4144d1938b",
+            "title": "Visualizing Data using t-SNE"
+        },
+        {
+            "paperId": null,
+            "title": "and Hinton"
+        },
+        {
+            "paperId": "adc2f2747ea657ed8a335000b23a6da0751a771e",
+            "title": "UNIQUENESS OF WEIGHTS FOR RECURRENT NETS"
+        },
+        {
+            "paperId": "e01039276cd4565ae794c9756ed5798cba2858fb",
+            "title": "Recurrent Neural Networks: Identification and other System Theoretic Properties"
+        },
+        {
+            "paperId": "162d958ff885f1462aeda91cd72582323fd6a1f4",
+            "title": "Gradient-based learning applied to document recognition"
+        },
+        {
+            "paperId": null,
+            "title": "and Schmidhuber"
+        },
+        {
+            "paperId": null,
+            "title": "and Dai Pra"
+        },
+        {
+            "paperId": null,
+            "title": "Note that from now on, biases bi are dropped, for brevity"
+        },
+        {
+            "paperId": null,
+            "title": "and Botelho"
+        },
+        {
+            "paperId": "fac65d27c83dd9645cfb769e74440ed5fcdaee16",
+            "title": "Mathematical Control Theory: Deterministic Finite Dimensional Systems"
+        },
+        {
+            "paperId": null,
+            "title": "Evaluation of our interpretation method on four sequential datasets including classi\ufb01cation and regression tasks"
+        },
+        {
+            "paperId": null,
+            "title": "Mauna"
+        },
+        {
+            "paperId": null,
+            "title": "Yahoo Finance Website, S&P 500 Stock"
+        },
+        {
+            "paperId": null,
+            "title": "Design and implementation of a novel and lightweight algorithm for systematic LSTM interpretation based on response characterization"
+        }
+    ]
+}

@@ -1,0 +1,218 @@
+{
+    "paperId": "ef9ddbc35676ce8ffc2a8067044473727839dbac",
+    "externalIds": {
+        "MAG": "2949570458",
+        "ArXiv": "1711.03953",
+        "DBLP": "conf/iclr/YangDSC18",
+        "CorpusId": 26238954
+    },
+    "title": "Breaking the Softmax Bottleneck: A High-Rank RNN Language Model",
+    "abstract": "We formulate language modeling as a matrix factorization problem, and show that the expressiveness of Softmax-based models (including the majority of neural language models) is limited by a Softmax bottleneck. Given that natural language is highly context-dependent, this further implies that in practice Softmax with distributed word embeddings does not have enough capacity to model natural language. We propose a simple and effective method to address this issue, and improve the state-of-the-art perplexities on Penn Treebank and WikiText-2 to 47.69 and 40.68 respectively.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2017,
+    "referenceCount": 44,
+    "citationCount": 350,
+    "influentialCitationCount": 63,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is shown that the expressiveness of Softmax-based models (including the majority of neural language models) is limited by a Softmax bottleneck, and a simple and effective method is proposed to address this issue."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2109512754",
+            "name": "Zhilin Yang"
+        },
+        {
+            "authorId": "3422912",
+            "name": "Zihang Dai"
+        },
+        {
+            "authorId": "145124475",
+            "name": "R. Salakhutdinov"
+        },
+        {
+            "authorId": "50056360",
+            "name": "William W. Cohen"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "fa9decd1395cc2f39e9921f870ebc8a8ec2bd08d",
+            "title": "Dynamic Evaluation of Neural Sequence Models"
+        },
+        {
+            "paperId": "58c6f890a1ae372958b7decf56132fe258152722",
+            "title": "Regularizing and Optimizing LSTM Language Models"
+        },
+        {
+            "paperId": "2397ce306e5d7f3d0492276e357fb1833536b5d8",
+            "title": "On the State of the Art of Evaluation in Neural Language Models"
+        },
+        {
+            "paperId": "58dfeb0bc41429393bf27ff882b7b679031f106c",
+            "title": "Learning Discourse-level Diversity for Neural Dialog Models using Conditional Variational Autoencoders"
+        },
+        {
+            "paperId": "510e26733aaff585d65701b9f1be7ca9d5afc586",
+            "title": "Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer"
+        },
+        {
+            "paperId": "67d968c7450878190e45ac7886746de867bf673d",
+            "title": "Neural Architecture Search with Reinforcement Learning"
+        },
+        {
+            "paperId": "424aef7340ee618132cc3314669400e23ad910ba",
+            "title": "Tying Word Vectors and Word Classifiers: A Loss Framework for Language Modeling"
+        },
+        {
+            "paperId": "2d7782c225e0fc123d6e227f2cb253e58279ac73",
+            "title": "Improving Neural Language Models with a Continuous Cache"
+        },
+        {
+            "paperId": "efbd381493bb9636f489b965a2034d529cd56bcd",
+            "title": "Pointer Sentinel Mixture Models"
+        },
+        {
+            "paperId": "65eee67dee969fdf8b44c87c560d66ad4d78e233",
+            "title": "Hierarchical Multiscale Recurrent Neural Networks"
+        },
+        {
+            "paperId": "63e39cdf1ad884da6bc69096bb3413b5b1100559",
+            "title": "Using the Output Embedding to Improve Language Models"
+        },
+        {
+            "paperId": "7dba53e72c182e25e98e8f73a99d75ff69dda0c2",
+            "title": "Recurrent Highway Networks"
+        },
+        {
+            "paperId": "95cedaeb3178a4671703a05171a144e6b964a819",
+            "title": "Generalizing and Hybridizing Count-based and Neural Language Models"
+        },
+        {
+            "paperId": "8de1d8425937890522118ca63781c3b318e79f2f",
+            "title": "Sequential Neural Models with Stochastic Layers"
+        },
+        {
+            "paperId": "f3158ce4e1c9e908e7d06533d711d84205c973b9",
+            "title": "Recurrent Mixture Density Network for Spatiotemporal Visual Attention"
+        },
+        {
+            "paperId": "0c1f9ca23f4f09ecfc44bcc8ca1c2736624f4652",
+            "title": "A Theoretically Grounded Application of Dropout in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "0ac2b379fe9b2bf9d5b8129d6117adbb0ab595fb",
+            "title": "Deep Temporal Sigmoid Belief Networks for Sequence Modeling"
+        },
+        {
+            "paperId": "891ce1687e2befddd19f54e4eef1d3f39c8dbaf7",
+            "title": "Character-Aware Neural Language Models"
+        },
+        {
+            "paperId": "0c3b69b5247ef18fd5bab1109d87a04184ea8f4b",
+            "title": "A Recurrent Latent Variable Model for Sequential Data"
+        },
+        {
+            "paperId": "a2785f66c20fbdf30ec26c0931584c6d6a0f4fca",
+            "title": "DRAW: A Recurrent Neural Network For Image Generation"
+        },
+        {
+            "paperId": "f4c018bcc8ea707b83247866bdc8ccb87cd9f5da",
+            "title": "Neural Word Embedding as Implicit Matrix Factorization"
+        },
+        {
+            "paperId": "cbec12feff814f4d4d11e892ecdbd93fd393cb64",
+            "title": "Learning Stochastic Recurrent Networks"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "f264e8b33c0d49a692a6ce2c4bcb28588aeb7d97",
+            "title": "Recurrent Neural Network Regularization"
+        },
+        {
+            "paperId": "5f5dc5b9a2ba710937e2c413b37b053cd673df02",
+            "title": "Auto-Encoding Variational Bayes"
+        },
+        {
+            "paperId": "44ddac48353ead135eef4096859956eaa31be2a5",
+            "title": "Learning Factored Representations in a Deep Mixture of Experts"
+        },
+        {
+            "paperId": "5d833331b0e22ff359db05c62a8bca18c4f04b68",
+            "title": "One billion word benchmark for measuring progress in statistical language modeling"
+        },
+        {
+            "paperId": "6471fd1cbc081fb3b7b5b14d6ab9eaaba02b5c17",
+            "title": "Generating Sequences With Recurrent Neural Networks"
+        },
+        {
+            "paperId": "38f35dd624cd1cf827416e31ac5e0e0454028eca",
+            "title": "Regularization of Neural Networks using DropConnect"
+        },
+        {
+            "paperId": "d1275b2a2ab53013310e759e5c6878b96df643d4",
+            "title": "Context dependent recurrent neural network language model"
+        },
+        {
+            "paperId": "ccbd9da8f26337309c45b6ed97ab4715147dfba0",
+            "title": "Low Rank Language Models for Small Training Sets"
+        },
+        {
+            "paperId": "f91f997a356bd6207c3b55c9ffdaf77c4e25afbb",
+            "title": "Numerical Recipes 3rd Edition: The Art of Scientific Computing"
+        },
+        {
+            "paperId": "bd7d93193aad6c4b71cc8942e808753019e87706",
+            "title": "Three new graphical models for statistical language modelling"
+        },
+        {
+            "paperId": "7265a5524adb592bcdb991550c2880a1293d5cd7",
+            "title": "Recurrent Neural Networks Are Universal Approximators"
+        },
+        {
+            "paperId": "6c2b28f9354f667cd5bd07afc0471d8334430da7",
+            "title": "A Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "9548ac30c113562a51e603dbbc8e9fa651cfd3ab",
+            "title": "Improved backing-off for M-gram language modeling"
+        },
+        {
+            "paperId": "c8d90974c3f3b40fa05e322df2905fc16204aa56",
+            "title": "Adaptive Mixtures of Local Experts"
+        },
+        {
+            "paperId": "0c2563caba6bcdb113817d560ce9492467e45873",
+            "title": "Under review as a conference paper at ICLR 2020 many domain adaptation methods"
+        },
+        {
+            "paperId": "4b36f03deaee36947f87dee93ba6682849ad393b",
+            "title": "A Sparse Plus Low Rank Maximum Entropy Language Model"
+        },
+        {
+            "paperId": "1fd7fc06653723b05abe5f3d1de393ddcf6bdddb",
+            "title": "SUBWORD LANGUAGE MODELING WITH NEURAL NETWORKS"
+        },
+        {
+            "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+            "title": "Recurrent neural network based language model"
+        },
+        {
+            "paperId": "4574d77fff19e093782178595a8988a7f3aa1969",
+            "title": "Latent Dirichlet Allocation"
+        },
+        {
+            "paperId": null,
+            "title": "Switchboard-1 release 2"
+        },
+        {
+            "paperId": "d6ac23dab945332ac0cffada2bfb3400331dc8f0",
+            "title": "The Language Instinct"
+        }
+    ]
+}

@@ -1,0 +1,154 @@
+{
+    "paperId": "f895cbc2d4a2cd00b4a81cccabc6d9c94b8ddfe4",
+    "externalIds": {
+        "DBLP": "conf/emnlp/LinLYLZL15",
+        "ACL": "D15-1106",
+        "MAG": "2251849926",
+        "DOI": "10.18653/v1/D15-1106",
+        "CorpusId": 17014226
+    },
+    "title": "Hierarchical Recurrent Neural Network for Document Modeling",
+    "abstract": "This paper proposes a novel hierarchical recurrent neural network language model (HRNNLM) for document modeling. After establishing a RNN to capture the coherence between sentences in a document, HRNNLM integrates it as the sentence history information into the word level RNN to predict the word sequence with cross-sentence contextual information. A two-step training approach is designed, in which sentence-level and word-level language models are approximated for the convergence in a pipeline style. Examined by the standard sentence reordering scenario, HRNNLM is proved for its better accuracy in modeling the sentence coherence. And at the word level, experimental results also indicate a significant lower model perplexity, followed by a practical better translation result when applied to a Chinese-English document translation reranking task.",
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2015,
+    "referenceCount": 25,
+    "citationCount": 163,
+    "influentialCitationCount": 5,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/D15-1106.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A novel hierarchical recurrent neural network language model (HRNNLM) for document modeling that integrates it as the sentence history information into the word level RNN to predict the word sequence with cross-sentence contextual information."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "144472953",
+            "name": "R. Lin"
+        },
+        {
+            "authorId": "1803054",
+            "name": "Shujie Liu"
+        },
+        {
+            "authorId": "2105775",
+            "name": "Muyun Yang"
+        },
+        {
+            "authorId": "2112143809",
+            "name": "Mu Li"
+        },
+        {
+            "authorId": "143849609",
+            "name": "M. Zhou"
+        },
+        {
+            "authorId": "145175581",
+            "name": "Sheng Li"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "c945743ef99b1c897eaa07ba276dcec0fcdbc0b4",
+            "title": "A Model of Coherence Based on Distributed Sentence Representation"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "5d43224147a5bb8b17b6a6fc77bf86490e86991a",
+            "title": "A Recursive Recurrent Neural Network for Statistical Machine Translation"
+        },
+        {
+            "paperId": "f3de86aeb442216a8391befcacb49e58b478f512",
+            "title": "Distributed Representations of Sentences and Documents"
+        },
+        {
+            "paperId": "6c10bf6d777d15699c5320cbe9bde3068acbca7a",
+            "title": "Contextual domain classification in spoken language understanding systems using recurrent neural network"
+        },
+        {
+            "paperId": "687bac2d3320083eb4530bf18bb8f8f721477600",
+            "title": "Recursive Deep Models for Semantic Compositionality Over a Sentiment Treebank"
+        },
+        {
+            "paperId": "184676cb50d1c62b249e90a97e4edc8e42a1c024",
+            "title": "Word Alignment Modeling with Context Dependent Deep Neural Network"
+        },
+        {
+            "paperId": "f6b51c8753a871dc94ff32152c00c01e94f90f09",
+            "title": "Efficient Estimation of Word Representations in Vector Space"
+        },
+        {
+            "paperId": "d1275b2a2ab53013310e759e5c6878b96df643d4",
+            "title": "Context dependent recurrent neural network language model"
+        },
+        {
+            "paperId": "6658bbf68995731b2083195054ff45b4eca38b3a",
+            "title": "Context-Dependent Pre-Trained Deep Neural Networks for Large-Vocabulary Speech Recognition"
+        },
+        {
+            "paperId": "93c20e38c85b69fc2d2eb314b3c1217913f7db11",
+            "title": "Generating Text with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "bc1022b031dc6c7019696492e8116598097a8c12",
+            "title": "Natural Language Processing (Almost) from Scratch"
+        },
+        {
+            "paperId": "8b25a44f617c1ed3ed52c6655b0d456ff1c565bd",
+            "title": "Learning Convolutional Feature Hierarchies for Visual Recognition"
+        },
+        {
+            "paperId": "7c51326b7efed781adc4c01f1f457a714af3cb79",
+            "title": "Maximum Entropy Based Phrase Reordering Model for Statistical Machine Translation"
+        },
+        {
+            "paperId": "8978cf7574ceb35f4c3096be768c7547b28a35d0",
+            "title": "A Fast Learning Algorithm for Deep Belief Nets"
+        },
+        {
+            "paperId": "9d74eca00d4d0c4aa7c7369ae37d67498b37bf2f",
+            "title": "Modeling Local Coherence: An Entity-Based Approach"
+        },
+        {
+            "paperId": "1f12451245667a85d0ee225a80880fc93c71cc8b",
+            "title": "Minimum Error Rate Training in Statistical Machine Translation"
+        },
+        {
+            "paperId": "6c2b28f9354f667cd5bd07afc0471d8334430da7",
+            "title": "A Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "d7da009f457917aa381619facfa5ffae9329a6e9",
+            "title": "Bleu: a Method for Automatic Evaluation of Machine Translation"
+        },
+        {
+            "paperId": "119b5e8927f98e3fea76cbb57d7e053c24ac5c18",
+            "title": "Fast Text Compression with Neural Networks"
+        },
+        {
+            "paperId": "13b6eeb28328252a35cdcbe3ab8d09d2a9caf99d",
+            "title": "Stochastic Inversion Transduction Grammars and Bilingual Parsing of Parallel Corpora"
+        },
+        {
+            "paperId": "09cd7876b72d6105c83db59052572433a0a2b36c",
+            "title": "WIT3: Web Inventory of Transcribed and Translated Talks"
+        },
+        {
+            "paperId": "96364af2d208ea75ca3aeb71892d2f7ce7326b55",
+            "title": "Statistical Language Models Based on Neural Networks"
+        },
+        {
+            "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+            "title": "Recurrent neural network based language model"
+        },
+        {
+            "paperId": "caa5eec3feba1e3f4c421f28daaa6d1906b573ec",
+            "title": "Serial Order: A Parallel Distributed Processing Approach"
+        }
+    ]
+}

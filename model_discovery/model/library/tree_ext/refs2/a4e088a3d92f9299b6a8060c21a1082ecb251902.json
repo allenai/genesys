@@ -1,0 +1,186 @@
+{
+    "paperId": "a4e088a3d92f9299b6a8060c21a1082ecb251902",
+    "externalIds": {
+        "MAG": "2952982957",
+        "ArXiv": "1804.01882",
+        "DBLP": "journals/corr/abs-1804-01882",
+        "CorpusId": 4789131
+    },
+    "title": "Hyperbolic Entailment Cones for Learning Hierarchical Embeddings",
+    "abstract": "Learning graph representations via low-dimensional embeddings that preserve relevant network properties is an important class of problems in machine learning. We here present a novel method to embed directed acyclic graphs. Following prior work, we first advocate for using hyperbolic spaces which provably model tree-like structures better than Euclidean geometry. Second, we view hierarchical relations as partial orders defined using a family of nested geodesically convex cones. We prove that these entailment cones admit an optimal shape with a closed form expression both in the Euclidean and hyperbolic spaces. Moreover, they canonically define the embedding learning process. Experiments show significant improvements of our method over strong recent baselines both in terms of representational capacity and generalization.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2018,
+    "referenceCount": 37,
+    "citationCount": 236,
+    "influentialCitationCount": 40,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work presents a novel method to embed directed acyclic graphs through hierarchical relations as partial orders defined using a family of nested geodesically convex cones and proves that these entailment cones admit an optimal shape with a closed form expression both in the Euclidean and hyperbolic spaces."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1882451",
+            "name": "O. Ganea"
+        },
+        {
+            "authorId": "9940262",
+            "name": "Gary B\u00e9cigneul"
+        },
+        {
+            "authorId": "143936663",
+            "name": "Thomas Hofmann"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "33618275fcb19b0535d1b25d02b1d3f3d058de04",
+            "title": "Representation Tradeoffs for Hyperbolic Embeddings"
+        },
+        {
+            "paperId": "fec0420fb7c7a37d52a03ec76aacc54b79631f34",
+            "title": "Efficient Embedding of Scale-Free Graphs in the Hyperbolic Plane"
+        },
+        {
+            "paperId": "1590bd1bca945fc6ff50b8cdf2da14ea2061c79a",
+            "title": "Poincar\u00e9 Embeddings for Learning Hierarchical Representations"
+        },
+        {
+            "paperId": "374b4409f6a1d2d853af31e329f025da239d375f",
+            "title": "Graph Embedding Techniques, Applications, and Performance: A Survey"
+        },
+        {
+            "paperId": "eead15f6cd00df5e1bd7733108695778c8d43240",
+            "title": "Deep Joint Entity Disambiguation with Local Neural Attention"
+        },
+        {
+            "paperId": "0e779fd59353a7f1f5b559b9d65fa4bfe367890c",
+            "title": "Geometric Deep Learning: Going beyond Euclidean data"
+        },
+        {
+            "paperId": "36ee2c8bd605afd48035d15fdc6b8c8842363376",
+            "title": "node2vec: Scalable Feature Learning for Networks"
+        },
+        {
+            "paperId": "a782d0fc34c0ed5cd94a1e4237cb40900a248836",
+            "title": "Improving Hypernymy Detection with an Integrated Path-based and Distributional Method"
+        },
+        {
+            "paperId": "46b8cbcdff87b842c2c1d4a003c831f845096ba7",
+            "title": "Order-Embeddings of Images and Language"
+        },
+        {
+            "paperId": "2846e83d405cbe3bf2f0f3b5f635dd8b3c680c45",
+            "title": "Reasoning about Entailment with Neural Attention"
+        },
+        {
+            "paperId": "6e795c6e9916174ae12349f5dc3f516570c17ce8",
+            "title": "Skip-Thought Vectors"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "5f1697b60c10e76617463ecd998211d8d933022d",
+            "title": "Learning Semantic Hierarchies via Word Embeddings"
+        },
+        {
+            "paperId": "fff114cbba4f3ba900f33da574283e3de7f26c83",
+            "title": "DeepWalk: online learning of social representations"
+        },
+        {
+            "paperId": "2582ab7c70c9e7fcb84545944eba8f3a7f253248",
+            "title": "Translating Embeddings for Modeling Multi-relational Data"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "7450d8d30a82362b22d83d634ec1c5696855cdf9",
+            "title": "Stochastic Gradient Descent on Riemannian Manifolds"
+        },
+        {
+            "paperId": "5731795f184b2a5431fc909a0ce8bf7a9ec2c762",
+            "title": "Low Distortion Delaunay Embedding of Trees in Hyperbolic Plane"
+        },
+        {
+            "paperId": "f6764d853a14b0c34df1d2283e76277aead40fde",
+            "title": "A Three-Way Model for Collective Learning on Multi-Relational Data"
+        },
+        {
+            "paperId": "3dcc8ca392a394903bc44e8166b554ecb2676d0b",
+            "title": "On the tree-likeness of hyperbolic spaces"
+        },
+        {
+            "paperId": "ef8458353c245bbe3bcf81b055fe5313b93a9f66",
+            "title": "Hyperbolic Geometry of Complex Networks"
+        },
+        {
+            "paperId": "ee7d1082f8e439991b0f13294f964e33642cd739",
+            "title": "Hyperbolic Embedding and Routing for Dynamic Graphs"
+        },
+        {
+            "paperId": "1bd58404cd26a8572213fb32d886d4cbf0dc4433",
+            "title": "Greedy Forwarding in Dynamic Scale-Free Networks Embedded in Hyperbolic Metric Spaces"
+        },
+        {
+            "paperId": "af9d3f77fda8cf45a7dab6b8398efe1f95d679ac",
+            "title": "A Course On Geometric Group Theory"
+        },
+        {
+            "paperId": "82e4390c043754d5af22d48964a42a891f81e8b3",
+            "title": "Latent Space Approaches to Social Network Analysis"
+        },
+        {
+            "paperId": "5941abe345d4bd1a5f15d6ee9142a111e6b18a2a",
+            "title": "A focus+context technique based on hyperbolic geometry for visualizing large hierarchies"
+        },
+        {
+            "paperId": "4bd970a37c59c97804ff93cbb2c108e081de3a37",
+            "title": "Introduction to WordNet: An On-line Lexical Database"
+        },
+        {
+            "paperId": "762cbbbeb46f0b1873cfe1dccb57a37da3a5af3e",
+            "title": "A comprehensive introduction to differential geometry"
+        },
+        {
+            "paperId": "bb0c893c1eb5c26191da74247f820ee60cbbdf65",
+            "title": "An Introduction To Differential Geometry"
+        },
+        {
+            "paperId": null,
+            "title": "Effi-8 Indeed, mathematically, hyperbolic embeddings cannot be considered as Euclidean points"
+        },
+        {
+            "paperId": "240980c4ee1bc6da0fafdb2bd54006b5655b2ac3",
+            "title": "The Ricci Flow in Riemannian Geometry"
+        },
+        {
+            "paperId": "4194bd5dd89935800ecf47053b6eb91978da2d21",
+            "title": "Mathematical Proceedings of the Cambridge Philosophical Society"
+        },
+        {
+            "paperId": "0212dd222f4babd1a7fe0373f87da5bee78e3377",
+            "title": "On Hyperbolic Embedding of Internet Graph for Distance Estimation and Overlay Construction"
+        },
+        {
+            "paperId": "3519d16aa6cc859dd77824b8195ff1ccd9ae5f92",
+            "title": "Geometry of the Space of Phylogenetic Trees"
+        },
+        {
+            "paperId": "4302479b084ba07fb87126acc6b9c4030585d2c0",
+            "title": "Hyperbolic geometry"
+        },
+        {
+            "paperId": "b775883f10990352a991e3ee2b706c0272795cd2",
+            "title": "HYPERBOLIC GEOMETRY"
+        },
+        {
+            "paperId": null,
+            "title": "Hyperbolic groups. In Essays in group theory, pp. 75\u2013263"
+        }
+    ]
+}

@@ -1,0 +1,1373 @@
+{
+    "paperId": "85bdefa400e2eb8cb312baf02a068164c510c6ad",
+    "externalIds": {
+        "MAG": "2039617089",
+        "DBLP": "journals/tnn/ZhangWL14",
+        "DOI": "10.1109/TNNLS.2014.2317880",
+        "CorpusId": 14793276
+    },
+    "title": "A Comprehensive Review of Stability Analysis of Continuous-Time Recurrent Neural Networks",
+    "abstract": "Stability problems of continuous-time recurrent neural networks have been extensively studied, and many papers have been published in the literature. The purpose of this paper is to provide a comprehensive review of the research on stability of continuous-time recurrent neural networks, including Hopfield neural networks, Cohen-Grossberg neural networks, and related models. Since time delay is inevitable in practice, stability results of recurrent neural networks with different classes of time delays are reviewed in detail. For the case of delay-dependent stability, the results on how to deal with the constant/variable delay in recurrent neural networks are summarized. The relationship among stability results in different forms, such as algebraic inequality forms, M-matrix forms, linear matrix inequality forms, and Lyapunov diagonal stability forms, is discussed and compared. Some necessary and sufficient stability conditions for recurrent neural networks without time delays are also discussed. Concluding remarks and future directions of stability analysis of recurrent neural networks are given.",
+    "venue": "IEEE Transactions on Neural Networks and Learning Systems",
+    "year": 2014,
+    "referenceCount": 333,
+    "citationCount": 528,
+    "influentialCitationCount": 13,
+    "openAccessPdf": {
+        "url": "https://ieeexplore.ieee.org/ielx7/5962385/6828828/06814892.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The purpose of this paper is to provide a comprehensive review of the research on stability of continuous-time recurrent Neural networks, including Hopfield neural networks, Cohen-Grossberg neural networks and related models."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2286716372",
+            "name": "Huaguang Zhang"
+        },
+        {
+            "authorId": "48708104",
+            "name": "Zhanshan Wang"
+        },
+        {
+            "authorId": "1927205",
+            "name": "Derong Liu"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "4e8930ae948262a89acf2e43c8e8b6e902c312c4",
+            "title": "Variable Rate Image Compression with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "e0fb8721781a4a618c825f9bd3f6672c5cc28241",
+            "title": "Delay-Dependent Stability Criteria for Generalized Neural Networks With Two Delay Components"
+        },
+        {
+            "paperId": "adfd10310a513aeba90f8e943dd77babbaaa4f53",
+            "title": "New Criteria for Global Robust Stability of Delayed Neural Networks With Norm-Bounded Uncertainties"
+        },
+        {
+            "paperId": "d218f49ec9eea5038d5def90a10b7e7a6af201f6",
+            "title": "Ordinary Differential Equations"
+        },
+        {
+            "paperId": "b59c3a03fe247398fb2d764494c116d7f25aeec6",
+            "title": "Exponential stability of complex-valued neural networks with mixed delays"
+        },
+        {
+            "paperId": "027fe0325977e1c0ee325efd1fec9b81efe07a6b",
+            "title": "Periodicity and global exponential stability of generalized Cohen-Grossberg neural networks with discontinuous activations and mixed delays"
+        },
+        {
+            "paperId": "189b49f235654eb09b523e294ee7a3978d14c7d4",
+            "title": "Recurrent neural networks"
+        },
+        {
+            "paperId": "015fac648e9d628a46861106a4977328fab6c8e3",
+            "title": "Stability for Neural Networks With Time-Varying Delays via Some New Approaches"
+        },
+        {
+            "paperId": "7fc3dafdb7d4cf1d32048c03207d66efbe32c364",
+            "title": "Stability Analysis for Neural Networks With Time-Varying Delay Based on Quadratic Convex Combination"
+        },
+        {
+            "paperId": "642477eda37aa59330ed2b648ae3d34f4b26c85e",
+            "title": "Stability analysis for a class of neutral-type neural networks with Markovian jumping parameters and mode-dependent mixed delays"
+        },
+        {
+            "paperId": "aa58da72b05e4fe0c59f85fba63137e9a7e480c2",
+            "title": "Nonlinear dynamics and chaos in fractional-order neural networks"
+        },
+        {
+            "paperId": "a7f0a86919784412201e84297c0dbb8e1812d04e",
+            "title": "Neurohydrodynamics as a heuristic mechanism for cognitive processes in decision-making"
+        },
+        {
+            "paperId": "7ae75c1d89fb530f8f2cd2d995da8edc28df6fe2",
+            "title": "Global Stability of Complex-Valued Recurrent Neural Networks With Time-Delays"
+        },
+        {
+            "paperId": "72360a60392415d8020494360d3e21d6e78fc8d5",
+            "title": "Global asymptotic stability of stochastic reaction\u2013diffusion neural networks with time delays in the leakage terms \u2606"
+        },
+        {
+            "paperId": "dd8158f3f8b8887363a54236bcaff14c61abf7a6",
+            "title": "Critical dynamics study on recurrent neural networks: Globally exponential stability"
+        },
+        {
+            "paperId": "853ef172304da900a73d580d33023d119a65833e",
+            "title": "Stability and Dissipativity Analysis of Static Neural Networks With Time Delay"
+        },
+        {
+            "paperId": "23175e8c9f229d99c2c62ccdcc173949c74266eb",
+            "title": "Mode and Delay-Dependent Adaptive Exponential Synchronization in $p$th Moment for Stochastic Delayed Neural Networks With Markovian Switching"
+        },
+        {
+            "paperId": "4126d60c367f36a65d6979b052fa4a59bce635c2",
+            "title": "Dissipativity and quasi-synchronization for neural networks with discontinuous activations and parameter mismatches"
+        },
+        {
+            "paperId": "37c434c44becca1199d8248bd9c9ea821adf4029",
+            "title": "Global Asymptotic Stability for a Class of Generalized Neural Networks With Interval Time-Varying Delays"
+        },
+        {
+            "paperId": "2362b28360944bc94937db6179a672a77633d531",
+            "title": "Complete Delay-Decomposing Approach to Asymptotic Stability for Neural Networks With Time-Varying Delays"
+        },
+        {
+            "paperId": "6b866b6c7b37b12d19c14a2b8809239b98d357fd",
+            "title": "New Delay-Dependent Stability Criteria for Neural Networks With Two Additive Time-Varying Delay Components"
+        },
+        {
+            "paperId": "55359b88599cccf8c21bed6c50465466a82a8b0d",
+            "title": "Global Robust Stability Criteria for Interval Delayed Full-Range Cellular Neural Networks"
+        },
+        {
+            "paperId": "8b9dab936d0f34ac7337b273badc21c5897bacee",
+            "title": "Novel Exponential Stability Criteria of High-Order Neural Networks With Time-Varying Delays"
+        },
+        {
+            "paperId": "943d6cada0a0848b1e1fd235f9ad54572c383cee",
+            "title": "Convergence Dynamics of Stochastic Cohen\u2013Grossberg Neural Networks With Unbounded Distributed Delays"
+        },
+        {
+            "paperId": "6f7c1c6ee453c4d392d213a06510d2a9935168e1",
+            "title": "On Attracting Basins of Multiple Equilibria of a Class of Cellular Neural Networks"
+        },
+        {
+            "paperId": "8104f55a38abc948edb6bfc1196d7c6e5dfe11b7",
+            "title": "Robust State Estimation for Neural Networks With Discontinuous Activations"
+        },
+        {
+            "paperId": "bcd0356bcfcd7569dd879c33fdccf66d8ef983ee",
+            "title": "A delay-dividing approach to stability of neutral system with mixed delays and nonlinear perturbations"
+        },
+        {
+            "paperId": "215e81e9340e66061df127d591c939951447591c",
+            "title": "Further results for robust stability of cellular neural networks with linear fractional uncertainty"
+        },
+        {
+            "paperId": "b596f87761455d46ef072a4f23897b9be2dd64b2",
+            "title": "Artificial Neural Networks"
+        },
+        {
+            "paperId": "81696da5e8c69295cf0acf8c399c6595b377e1d4",
+            "title": "LMI Techniques for Optimization Over Polynomials in Control: A Survey"
+        },
+        {
+            "paperId": "55f0b114e9ba0e7a02fbe4523871aa98bd19b96e",
+            "title": "New results of global robust exponential stability of neural networks with delays"
+        },
+        {
+            "paperId": "01c4b5901bfe72731c44cb49a735f7692fd2bdb5",
+            "title": "Coexistence and local stability of multiple equilibria in neural networks with piecewise linear nondecreasing activation functions"
+        },
+        {
+            "paperId": "d26605ef24859b0a9be810e65a15d5ae63404e91",
+            "title": "Robust Stability Analysis for Stochastic Neural Networks With Time-Varying Delay"
+        },
+        {
+            "paperId": "0c7505972cbf8bae6110fe411ac05a2c2dd25b09",
+            "title": "A New Method for Stability Analysis of Recurrent Neural Networks With Interval Time-Varying Delay"
+        },
+        {
+            "paperId": "b22a3d8e630d371d6b0c72d595535cf7b4fcf902",
+            "title": "Robust stability analysis of uncertain systems with two additive time-varying delay components"
+        },
+        {
+            "paperId": "1b8dea636a20edbb793855ada567c6df984b3ef0",
+            "title": "Dynamical behaviors of a class of recurrent neural networks with discontinuous neuron activations"
+        },
+        {
+            "paperId": "a137451494f66402dc1bc6dd4c2186033e7d0909",
+            "title": "LMI conditions for global robust stability of delayed neural networks with discontinuous neuron activations"
+        },
+        {
+            "paperId": "54ff2acd05756240cedca132bdb386934d98f5d4",
+            "title": "Semistability, Finite-Time Stability, Differential Inclusions, and Discontinuous Dynamical Systems Having a Continuum of Equilibria"
+        },
+        {
+            "paperId": "df11ee3fed5323af4bb9072cb3f0ce875eccd840",
+            "title": "Global exponential stability of impulsive cellular neural networks with time-varying and distributed delay"
+        },
+        {
+            "paperId": "355716bb364b3814909b54b01321e36397d6127e",
+            "title": "Stability analysis on Cohen\u2013Grossberg neural networks with both time-varying and continuously distributed delays\u2606"
+        },
+        {
+            "paperId": "92c7e34c0e8d6018f9214f903e89df54a52446dc",
+            "title": "Stability Analysis of Discrete-Time Recurrent Neural Networks With Stochastic Delay"
+        },
+        {
+            "paperId": "29e32c1d0efceb3241006200dba104fc864bd395",
+            "title": "Stabilization of Systems With Probabilistic Interval Input Delays and Its Applications to Networked Control Systems"
+        },
+        {
+            "paperId": "65d56bba2689f7560140d350a890967be3be05eb",
+            "title": "Asymptotic stability of delayed neural networks: A descriptor system approach"
+        },
+        {
+            "paperId": "7d14c635672edafb6378aec25f84da79a565ed3a",
+            "title": "M-matrix structure and harmless delays in a Hopfield-type neural network"
+        },
+        {
+            "paperId": "5d2d723cae8ce3d00c594a6032e2f44c940d6087",
+            "title": "Global exponential stability of Cohen-Grossberg neural networks with variable delays"
+        },
+        {
+            "paperId": "b1e133fa6bb8aeeb39f90b30be7d5c251d76b717",
+            "title": "Global Exponential Stability of Impulsive Neural Networks With Variable Delay: An LMI Approach"
+        },
+        {
+            "paperId": "91393fea2d5988092a3eb304a72b6e585465aa3c",
+            "title": "Some Characterizations of Global Exponential Stability of a Generic Class of Continuous-Time Recurrent Neural Networks"
+        },
+        {
+            "paperId": "cd3be6a7473a58a74a25aab7fdcbaf0ed28c64b1",
+            "title": "Existence and global asymptotic stability of periodic solutions for Hopfield neural networks with discontinuous activations"
+        },
+        {
+            "paperId": "879473dcdcc9509336add601021cbee2ccee0727",
+            "title": "Robust Stability and Stabilization of Fractional-Order Interval Systems: An LMI Approach"
+        },
+        {
+            "paperId": "391b647c2930396543f821a3a1a7a582f45c53bc",
+            "title": "LMI Based Global Asymptotic Stability Criterion for Recurrent Neural Networks with Infinite Distributed Delays"
+        },
+        {
+            "paperId": "ea54ec33e2847d5636e66d438bc46a75a486c1f7",
+            "title": "Nonnegative Periodic Dynamics of Cohen-Grossberg Neural Networks with Discontinuous Activations and Discrete Time Delays"
+        },
+        {
+            "paperId": "a5635650c0babb306a9416d9d30fa2fd916f32d5",
+            "title": "Almost Sure Exponential Stability of Recurrent Neural Networks With Markovian Switching"
+        },
+        {
+            "paperId": "9ef66afcd3a2e644ac08c8f50c419c95e3236425",
+            "title": "On the stability of nonlinear systems with leakage delay"
+        },
+        {
+            "paperId": "4b14de1b97f9377c4c76c21af3f01c03f3785ec2",
+            "title": "Delay-dependent exponential stability for a class of neural networks with time delays and reaction-diffusion terms"
+        },
+        {
+            "paperId": "b42d2c46a0e61649470bfdbf99cfd0557a272cab",
+            "title": "Global exponential stability of reaction-diffusion cellular neural networks with S-type distributed time delays"
+        },
+        {
+            "paperId": "3f64c88e51c5469b7c3d41171652820763fb1b81",
+            "title": "Global Asymptotic Stability and Robust Stability of a Class of Cohen\u2013Grossberg Neural Networks With Mixed Delays"
+        },
+        {
+            "paperId": "4579fc07c1ad3a1681cbe141b3d66fc4eb804023",
+            "title": "Stability analysis of impulsive Cohen-Grossberg neural networks with distributed delays and reaction-diffusion terms"
+        },
+        {
+            "paperId": "96e699a046809a1c885ed47b146db0d5eb9346cb",
+            "title": "New Lyapunov-Krasovskii Functionals for Global Asymptotic Stability of Delayed Neural Networks"
+        },
+        {
+            "paperId": "6bcf71c9a464ec137f713e5765a1f3e324959fa7",
+            "title": "A descriptor system approach to non-fragile H\u221e control for uncertain fuzzy neutral systems"
+        },
+        {
+            "paperId": "4aa839aa537695e16ca8b43f77d2071d1d6dc263",
+            "title": "Improved global robust stability of interval delayed neural networks via split interval: Generalizations"
+        },
+        {
+            "paperId": "c3dd5e22d4eac457e3ecd07ba9acecea4b33ed7f",
+            "title": "A survey of linear matrix inequality techniques in stability analysis of delay systems"
+        },
+        {
+            "paperId": "470b42c1be54c7aad98d3ef3e71aacd0013b0342",
+            "title": "Multistability of neural networks with discontinuous activation function"
+        },
+        {
+            "paperId": "fa4fcb90080abf40cb2341b953db2fe7672b6ec8",
+            "title": "Robust Stability Analysis for Interval Cohen\u2013Grossberg Neural Networks With Unknown Time-Varying Delays"
+        },
+        {
+            "paperId": "371e069fd37a7bd5e591abbe8adc57b0ac3ab42a",
+            "title": "Delay-Dependent Stability for Recurrent Neural Networks With Time-Varying Delays"
+        },
+        {
+            "paperId": "4a95bfffca8bcff6fd075a0e909dec9fe21b362a",
+            "title": "Convergence dynamics of stochastic reaction\u2013diffusion recurrent neural networks with continuously distributed delays\u2606"
+        },
+        {
+            "paperId": "6c2b6fe56299b24e218ad28ae05a2ca6ffd6ea2b",
+            "title": "Convergence dynamics of Cohen-Grossberg neural networks with continuously distributed delays"
+        },
+        {
+            "paperId": "1750930ff179cf1615ba3207281eadc9d720a434",
+            "title": "Asymptotic stability analysis of neural networks with successive time delay components"
+        },
+        {
+            "paperId": "65fc792bdfc4c5c0ff81b28954de03b91b3f925b",
+            "title": "Multistability and multiperiodicity of delayed Cohen\u2013Grossberg neural networks with a general class of activation functions"
+        },
+        {
+            "paperId": "850fd14d21bbb0ddf1f62fd8077d49b19ef99214",
+            "title": "Delay-Distribution-Dependent Exponential Stability Criteria for Discrete-Time Recurrent Neural Networks With Stochastic Delay"
+        },
+        {
+            "paperId": "e36f2738378f59bf2cb55c3a1cb3cea6900372b5",
+            "title": "Global exponential stability analysis of Cohen\u2013Grossberg neural network with delays"
+        },
+        {
+            "paperId": "08f9b576e888bcd458a578ba3cd09ff9febea4d4",
+            "title": "A delay decomposition approach to stability and H\u221e control of linear time-delay systems \u2014 part I: Stability"
+        },
+        {
+            "paperId": "67fbd0f696bb28f3bc0a158e303e68b7bbf98327",
+            "title": "Extensively augmented Lyapunov functional approach for the stability of neutral time-delay systems"
+        },
+        {
+            "paperId": "30e7ce9c22238a50a2533937fbf07b3c988cecc0",
+            "title": "Absolute Exponential Stability of Recurrent Neural Networks With Generalized Activation Function"
+        },
+        {
+            "paperId": "155ce5b7e2146ace864edf72f13786c57cf6d305",
+            "title": "Lyapunov Method and Convergence of the Full-Range Model of CNNs"
+        },
+        {
+            "paperId": "a630af36e7fc0a9690d2e895418708b8876a5042",
+            "title": "Exponential stability preservation in discrete-time analogues of artificial neural networks with distributed delays"
+        },
+        {
+            "paperId": "cc6be6336f897aff8fd2b5d57688012d405afc27",
+            "title": "Global exponential stability of Cohen-Grossberg neural networks with distributed delays"
+        },
+        {
+            "paperId": "1d88c420e8ff21465841861b6165728679d41219",
+            "title": "Exponential stability of impulsive Cohen\u2013Grossberg networks with distributed delays"
+        },
+        {
+            "paperId": "dac3d65ca9e331cb21ecad6214f1c3e5c1776df9",
+            "title": "New Delay-Dependent Exponential Stability for Neural Networks With Time Delay"
+        },
+        {
+            "paperId": "0d98ae333d968fdd4ac580d5ae62a66fad1cfdca",
+            "title": "Analysis on global exponential robust stability of reaction\u2013diffusion neural networks with S-type distributed delays"
+        },
+        {
+            "paperId": "ed84bc71d1fbee582c82037e7d81711cb8f2a42b",
+            "title": "Global stability of stochastic high-order neural networks with discrete and distributed delays"
+        },
+        {
+            "paperId": "ccd7d04faacd7c5ad090ddb7ba7c05cbc5b84392",
+            "title": "Almost Periodic Dynamics of a Class of Delayed Neural Networks with Discontinuous Activations"
+        },
+        {
+            "paperId": "15e13fc1ef79d7894a04db74a2b8c61d5ad648ff",
+            "title": "A New Criterion of Delay-Dependent Asymptotic Stability for Hopfield Neural Networks With Time Delay"
+        },
+        {
+            "paperId": "9144914d5b41549225b77c2a851233543be74111",
+            "title": "Convergence of a Subclass of Cohen\u2013Grossberg Neural Networks via the \u0141ojasiewicz Inequality"
+        },
+        {
+            "paperId": "cba91bd1c1ce142d19cfeb82a321e59dbd7bcd20",
+            "title": "Stability Analysis of Markovian Jumping Stochastic Cohen\u2013Grossberg Neural Networks With Mixed Time Delays"
+        },
+        {
+            "paperId": "cbc89f155de223875f76849adddfc6e573f7e543",
+            "title": "Exponential state estimation for recurrent neural networks with distributed delays"
+        },
+        {
+            "paperId": "c44c8cd47c3a1fe1f75ab8998e66c891d47ed954",
+            "title": "Noise-Induced Stabilization of the Recurrent Neural Networks With Mixed Time-Varying Delays and Markovian-Switching Parameters"
+        },
+        {
+            "paperId": "ed2dbb3b56c27836627b629a932f9af8cefa378e",
+            "title": "Stability Analysis for Neural Networks With Time-Varying Interval Delay"
+        },
+        {
+            "paperId": "51592a5091308dd3f37ff207c1cebebef6522bf5",
+            "title": "Stability of Cohen-Grossberg neural networks with unbounded distributed delays"
+        },
+        {
+            "paperId": "aa07e85429d068c831e973ec96a14b55c3a3bce7",
+            "title": "Global $\\mu$ -Stability of Delayed Neural Networks With Unbounded Time-Varying Delays"
+        },
+        {
+            "paperId": "317c04998a248fe77870751f3d12504841b4a848",
+            "title": "Stability of Cohen-Grossberg neural networks with time-varying delays"
+        },
+        {
+            "paperId": "27467db728710f10c2a9403292ada98c5c296030",
+            "title": "Rn+-global stability of a Cohen-Grossberg neural network system with nonnegative equilibria"
+        },
+        {
+            "paperId": "558b9e40bafa630b98c5233b546394f4b065ddef",
+            "title": "Multistability in Spiking Neuron Models of Delayed Recurrent Inhibitory Loops"
+        },
+        {
+            "paperId": "040f6f44ad46c600d908188bcb2f0206da161050",
+            "title": "Power-Rate Global Stability of Dynamical Systems With Unbounded Time-Varying Delays"
+        },
+        {
+            "paperId": "4d98a8410ff6af0b97267681241aee459fc924f6",
+            "title": "Robust Exponential Stability of Recurrent Neural Networks With Multiple Time-Varying Delays"
+        },
+        {
+            "paperId": "d6c14eb11c385a1a954c429daf767d39fed7c11a",
+            "title": "Exponential stability of reaction\u2013diffusion generalized Cohen\u2013Grossberg neural networks with time-varying delays"
+        },
+        {
+            "paperId": "568dc2752394ddddc6a1a3d42448f585dffb1542",
+            "title": "New Sufficient Conditions for Global Robust Stability of Delayed Neural Networks"
+        },
+        {
+            "paperId": "fc1b553bf5faba3773a81595aea9596394ffc766",
+            "title": "Global Asymptotic Stability of Delayed Cellular Neural Networks"
+        },
+        {
+            "paperId": "4627c9139fcefc37e9b1d8ae78c45df643327012",
+            "title": "Quadratic separation for feedback connection of an uncertain matrix and an implicit linear transformation"
+        },
+        {
+            "paperId": "c2bce1f2c41062dd2046c742e812315db02d64ee",
+            "title": "Existence and exponential stability of periodic solutions for a class of Cohen-Grossberg neural networks with time-varying delays"
+        },
+        {
+            "paperId": "b42950d825458444af42215f92e04d1fe9ee56b3",
+            "title": "A new criterion for global robust stability of interval neural networks with discrete time delays"
+        },
+        {
+            "paperId": "aad3bf7fcb56ecc1e590e9ab1bc5c7e99af71c55",
+            "title": "Leakage delays in BAM"
+        },
+        {
+            "paperId": "b88a1df9f7ddab057df04f111adbcd267253b809",
+            "title": "Dynamical behaviors of Cohen-Grossberg neural networks with delays and reaction-diffusion terms"
+        },
+        {
+            "paperId": "c0401eca2157f5742d7ec7c29cfa61b12e8df052",
+            "title": "Global attraction and stability for Cohen-Grossberg neural networks with delays"
+        },
+        {
+            "paperId": "b5b4294235f584af7df0e57025fe5b9e5d88861a",
+            "title": "Global Asymptotical Stability of Recurrent Neural Networks With Multiple Discrete Delays and Distributed Delays"
+        },
+        {
+            "paperId": "12934c2c0b98e19c9c719bc22506fda190706fc5",
+            "title": "Globally Asymptotic Stability of a Class of Neutral-Type Neural Networks With Delays"
+        },
+        {
+            "paperId": "37e10163378a5630a39e30888374a58dac0b0373",
+            "title": "Multistability in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "86704c586a3622720f60b2bda8156f70287b6044",
+            "title": "Novel results concerning global robust stability of delayed neural networks"
+        },
+        {
+            "paperId": "5b61845548705a65a7d182e2ff7c36ff4374bab8",
+            "title": "Global exponential stability of generalized recurrent neural networks with discrete and distributed delays"
+        },
+        {
+            "paperId": "62b949d3364398cd2a747b1a2abded42a0177a74",
+            "title": "Multiperiodicity and Exponential Attractivity Evoked by Periodic External Inputs in Delayed Cellular Neural Networks"
+        },
+        {
+            "paperId": "b864b48e00d5f652e734596ff84a2520d316d951",
+            "title": "Global asymptotic stability of a class of neural networks with distributed delays"
+        },
+        {
+            "paperId": "4b14e8a7214940066bfa1d6254eacf5620273d9c",
+            "title": "Dynamical Behaviors of Delayed Neural Network Systems with Discontinuous Activation Functions"
+        },
+        {
+            "paperId": "eb36caf534ee802070621b6e0bb7e3298cb1727c",
+            "title": "Global attractivity of Cohen-Grossberg model with finite and infinite delays"
+        },
+        {
+            "paperId": "c7514741da42cab20206766f7e78c457b8da4be7",
+            "title": "Global asymptotic stability of delayed Cohen-Grossberg neural networks"
+        },
+        {
+            "paperId": "8cd71d522f34c6ec1e16dc039184452f44174415",
+            "title": "Exponential periodicity and stability of neural networks with reaction-diffusion terms and both variable and unbounded delays"
+        },
+        {
+            "paperId": "d05ad666a98ba8333c6715bf9ceed471981308ee",
+            "title": "Generalized Lyapunov approach for convergence of neural networks with discontinuous or non-Lipschitz activations"
+        },
+        {
+            "paperId": "24072618f845e572e5aef27be657e2ffc55231d1",
+            "title": "Periodic solutions and its exponential stability of reaction\u2013diffusion recurrent neural networks with continuously distributed delays"
+        },
+        {
+            "paperId": "65db2d4a959378c586349ac85f62d9a18841e53d",
+            "title": "Exponential stability of Cohen\u00bfGrossberg neural networks with a general class of activation functions"
+        },
+        {
+            "paperId": "b900164f8d6362f4747194a2883a15e782d037d2",
+            "title": "Augmented Lyapunov functional and delay\u2010dependent stability criteria for neutral systems"
+        },
+        {
+            "paperId": "88ba33908c891df752e93aaddd1b7b74af62a0f0",
+            "title": "Global robust stability for delayed neural networks with polytopic type uncertainties"
+        },
+        {
+            "paperId": "e7007a973684e3fa91bab2a0d7a321a0e22e8c99",
+            "title": "Global exponential stability and global convergence in finite time of delayed neural networks with infinite gain"
+        },
+        {
+            "paperId": "285e31c4dd2789c4e8a68f75496d0c74cb694877",
+            "title": "Global exponential convergence of Cohen-Grossberg neural networks with time delays"
+        },
+        {
+            "paperId": "c098cbaf6e527fff6d3a39d35ebbd50eb965d50a",
+            "title": "On global asymptotic stability of neural networks with discrete and distributed delays"
+        },
+        {
+            "paperId": "631d30556c230c73a33224d4eddbb24dcc936091",
+            "title": "Exponential stability for impulsive delay differential equations by Razumikhin method"
+        },
+        {
+            "paperId": "8d5859f7c2a57989f603982291bffacc47d52acb",
+            "title": "An analysis of global asymptotic stability of delayed Cohen-Grossberg neural networks via nonsmooth analysis"
+        },
+        {
+            "paperId": "496f777b9871dde7814fbad11640ac7080ea1124",
+            "title": "Universal Approach to Study Delayed Dynamical Systems"
+        },
+        {
+            "paperId": "2d3262e3ea229b2fcdb318e858e138811ec7fec5",
+            "title": "Global exponential stability analysis of Cohen-Grossberg neural networks"
+        },
+        {
+            "paperId": "2e2b1ddb4c5af0bd790ad423d8c458f9bca9c608",
+            "title": "Robust Hinfinite control for discrete-time fuzzy systems via basis-dependent Lyapunov functions"
+        },
+        {
+            "paperId": "662ec45c211a28431a51707cc4aa2fc696bc8534",
+            "title": "Global exponential stability of the periodic solution of a delayed neural network with discontinuous activations"
+        },
+        {
+            "paperId": "9013aef4904855390388dd93e8d070f086024c3d",
+            "title": "Global asymptotic stability of Cohen\u2013Grossberg neural network with continuously distributed delays"
+        },
+        {
+            "paperId": "3af2eb2fac65138c930d796f2d06580f966bef7c",
+            "title": "Convergence Dynamics of Stochastic Reaction-diffusion Recurrent Neural Networks with Delays"
+        },
+        {
+            "paperId": "3cd8f951173356abdb72f711e748500fb4c76f6e",
+            "title": "Global stability analysis of Cohen\u2013Grossberg neural networks with time varying delays"
+        },
+        {
+            "paperId": "edf0b5375d08962a2347b1b2694505c4606b9b68",
+            "title": "New necessary and sufficient conditions for absolute stability of neural networks"
+        },
+        {
+            "paperId": "e6a5a8b56ba9b17f0030c9d6c41b74522cc5099d",
+            "title": "LMI-based criteria for robust stability of Cohen\u2013Grossberg neural networks with delay"
+        },
+        {
+            "paperId": "deb94e8593ff3debbe4df379f52917d742ee136b",
+            "title": "Global exponential stability of Cohen\u2013Grossberg neural networks with variable delays\u2606"
+        },
+        {
+            "paperId": "30040cff391db8a20de21a475446e526341957f5",
+            "title": "A critical analysis on global convergence of Hopfield-type neural networks"
+        },
+        {
+            "paperId": "7537d8ced8a382c15f17615e12d9ee3ca233d803",
+            "title": "A novel global robust stability criterion for neural networks with delay"
+        },
+        {
+            "paperId": "ee6cadedbf7cca5f584f415654aa82b38e2588d8",
+            "title": "Dynamical Behaviors of a Large Class of General Delayed Neural Networks"
+        },
+        {
+            "paperId": "321e4574807480a2570753c47ebe7d6ad9777d04",
+            "title": "Dynamical behaviors of Cohen-Grossberg neural networks with discontinuous activation functions"
+        },
+        {
+            "paperId": "285cf99d2a854eec6628159e297a4134216d27e4",
+            "title": "New algebraic conditions for global exponential stability of delayed recurrent neural networks"
+        },
+        {
+            "paperId": "bbb63468f43e55a3d85f107f832c73cc68d2c15a",
+            "title": "Solving systems of linear equations via gradient systems with discontinuous righthand sides: application to LS-SVM"
+        },
+        {
+            "paperId": "27f53e85a862490705640c568843913e9841ec17",
+            "title": "Absolute stability of analytic neural networks: an approach based on finite trajectory length"
+        },
+        {
+            "paperId": "f8f323a16d7ac92c384833f7d699a5107fe32fe4",
+            "title": "Criteria for exponential stability of Cohen-Grossberg neural networks"
+        },
+        {
+            "paperId": "b289b17b6e77bb1075ec362b67457fe8d8d4dea3",
+            "title": "Globally exponentially robust stability and periodicity of delayed neural networks"
+        },
+        {
+            "paperId": "0e87eab03eda85ec1cf15c0e1a8918b09afd442b",
+            "title": "Technical Communique: A descriptor system approach to robust stability of uncertain neutral systems with discrete and distributed delays"
+        },
+        {
+            "paperId": "2a02084740185567b0de0c032993cddba6607b0e",
+            "title": "Boundedness and stability for Cohen\u2013Grossberg neural network with time-varying delays\u2606"
+        },
+        {
+            "paperId": "4eddc230d66271be91a15244a4f4f42f0094e1e4",
+            "title": "Global robust asymptotical stability of multi-delayed interval neural networks: an LMI approach"
+        },
+        {
+            "paperId": "4af11abb37d1873fcbb455daa125445db041a113",
+            "title": "Technical Communique: Delay-dependent criteria for robust stability of time-varying delay systems"
+        },
+        {
+            "paperId": "74b337d16c2e268fd41483cf4c15c93aa778f40a",
+            "title": "Parameter-dependent Lyapunov functional for stability of time-delay systems with polytopic-type uncertainties"
+        },
+        {
+            "paperId": "58357089f9943bd3c6d3424bb823815a3c26ab8a",
+            "title": "Global robust stability of delayed recurrent neural networks"
+        },
+        {
+            "paperId": "8543a5e25cacc865c3dbcd1b3bc5fabfa358a618",
+            "title": "Ellipsoidal bounds for uncertain linear equations and dynamical systems"
+        },
+        {
+            "paperId": "edabe62609f3cc27bb699f4bce5aff8b89f5fa12",
+            "title": "Absolute exponential stability of recurrent neural networks with Lipschitz-continuous activation functions and time delays"
+        },
+        {
+            "paperId": "7cc143e86abc1cf182e13d67a3afbe466fd7cd8c",
+            "title": "Global asymptotic stability of Lotka-Volterra competition systems with diffusion and time delays"
+        },
+        {
+            "paperId": "6aa893fdfcdc6eec59695e3e7b6489171fb28523",
+            "title": "A reference model approach to stability analysis of neural networks"
+        },
+        {
+            "paperId": "4d97acfe17838077132a62247467a98b43389f49",
+            "title": "Globally exponential stability of generalized Cohen\u2013Grossberg neural networks with delays"
+        },
+        {
+            "paperId": "f2275613cc47471174f896e8197d0437a4fcc912",
+            "title": "Global convergence of neural networks with discontinuous neuron activations"
+        },
+        {
+            "paperId": "8dbe7b35f39911d1b010daacbca5b4a2fb03fd46",
+            "title": "Delay-independent stability analysis of Cohen-Grossberg neural networks"
+        },
+        {
+            "paperId": "cd9854f64ae0d8fa047d1cc8166091bce42ed966",
+            "title": "Global exponential stability of a general class of recurrent neural networks with time-varying delays"
+        },
+        {
+            "paperId": "4729392a2cbbe85249ea87afa7263bcf24ef5b41",
+            "title": "Necessary and sufficient condition for absolute stability of normal neural networks"
+        },
+        {
+            "paperId": "8402fe23dca0f1ea8ddfc3e3a2a9f81ee07a1507",
+            "title": "Global exponential stability of reaction\u2013diffusion recurrent neural networks with time-varying delays"
+        },
+        {
+            "paperId": "1fe6d8985fb2c76848e080bf892f7477f31d6acf",
+            "title": "On using discretized Cohen-Grossberg node dynamics for model-free actor-critic neural learning in non-Markovian domains"
+        },
+        {
+            "paperId": "484ca8c15e8565346b26ca0e14d7312178e0cca6",
+            "title": "A decomposition approach to analysis of competitive\u2013cooperative neural networks with delay"
+        },
+        {
+            "paperId": "3fcedaeb0c257a024e5c46da6351de4dfb1ea8ed",
+            "title": "Global Convergence of Delayed Neural Network Systems"
+        },
+        {
+            "paperId": "69c179c35e752fd0caa9d7748548e5a0e39d6bc7",
+            "title": "New Conditions on Global Stability of Cohen-Grossberg Neural Networks"
+        },
+        {
+            "paperId": "219687a200cb2eba4b742ab9af960a58ae570db5",
+            "title": "Globally exponential stability of neural networks with variable delays"
+        },
+        {
+            "paperId": "f1726213efdf452029c59e2b4f3bbf9a46e652ee",
+            "title": "Global asymptotic stability of a general class of recurrent neural networks with time-varying delays"
+        },
+        {
+            "paperId": "e5b65989027f8796e07bcb59540d9313fbc3615e",
+            "title": "Global Asymptotic Stability of a Class of Dynamical Neural Networks"
+        },
+        {
+            "paperId": "de66e867cf266fd6bba60c9a804d355e9f2799f6",
+            "title": "Strict positive realness for linear time-delay systems"
+        },
+        {
+            "paperId": "c381a84f9e60629adcf5d9203effeac9729a2bdd",
+            "title": "A new result on the global convergence of Hopfield neural networks"
+        },
+        {
+            "paperId": "fa22f5c2d743b4469cb3094361186610ad73cc37",
+            "title": "Global Convergence Rate of Recurrently Connected Neural Networks"
+        },
+        {
+            "paperId": "5272baa940b58567eede0149478099d0b3d03923",
+            "title": "Stability analysis OS discrete-time recurrently connected neural network"
+        },
+        {
+            "paperId": "179cb4c394c1b1489824a406d606aec21aaa15f0",
+            "title": "Global stability of a class of continuous-time recurrent neural networks"
+        },
+        {
+            "paperId": "ffaf399561bbb75b49c0d0af838c3b2b1b248164",
+            "title": "An improved global stability result for delayed cellular neural networks"
+        },
+        {
+            "paperId": "615a7ceb583fc33574d6cff7ec30cca6d20258e6",
+            "title": "Some extensions of a new method to analyze complete stability of neural networks"
+        },
+        {
+            "paperId": "08b89270ec9c8f1a3015d6d775c2af59e5341103",
+            "title": "(Corr. to) Delay-dependent exponential stability analysis of delayed neural networks: an LMI approach"
+        },
+        {
+            "paperId": "2373ba445e96b18a6b70d1b6b6cf8ef9b3d946a3",
+            "title": "Harmless delays in Cohen\u2013Grossberg neural networks \u2606"
+        },
+        {
+            "paperId": "3c3d702887a41c5739b91effca5ea8ec51d20d75",
+            "title": "Global asymptotic stability and global exponential stability of continuous-time recurrent neural networks"
+        },
+        {
+            "paperId": "fc4ed2d2b556e60c67cb876071b9cfb9b0337c13",
+            "title": "A descriptor system approach to H\u221e control of linear time-delay systems"
+        },
+        {
+            "paperId": "df636542f1e4f08e29420b195e32bba765582a01",
+            "title": "LMI-based approach for asymptotically stability analysis of delayed neural networks"
+        },
+        {
+            "paperId": "776df0866d38bbb98efe63fa77f8264882bf0605",
+            "title": "Exponential stability of Cohen-Grossberg neural networks"
+        },
+        {
+            "paperId": "05bfcffc60d2a588a4e667766a2f81abde1aa6f3",
+            "title": "Global asymptotic stability of bidirectional associative memory neural networks with S-type distributed delays"
+        },
+        {
+            "paperId": "d6479cc2b37e1a536e531456628107f5d0e87666",
+            "title": "An additive diagonal-stability condition for absolute exponential stability of a general class of neural networks"
+        },
+        {
+            "paperId": "783fb25c0259720e6ad7b419c7b17c83949277c9",
+            "title": "Global convergence of delayed dynamical systems"
+        },
+        {
+            "paperId": "a6d7ed831093ba093fa1891df0e116270294e8ed",
+            "title": "Stability of general neural networks with reaction-diffusion"
+        },
+        {
+            "paperId": "1cecbc96e731421453a8ba67a2352e066655a050",
+            "title": "Global exponential stability of delayed Hopfield neural networks"
+        },
+        {
+            "paperId": "202e6fa10bd389c7357a91cc8457d3f11e153528",
+            "title": "Inversion Error, Condition Number, and Approximate Inverses of Uncertain Matrices"
+        },
+        {
+            "paperId": "22fa3ec1896e3df131ac7fe66a3643f9527fe8d8",
+            "title": "An exponential convergence estimate for analog neural networks with delay"
+        },
+        {
+            "paperId": "91e0f83a8ebd98de473af25d4b7d534db819ffba",
+            "title": "A complete proof of global exponential convergence of a neural network for quadratic optimization with bound constraints"
+        },
+        {
+            "paperId": "b7e40baef708d83fa43b6f469d79f0c65720411f",
+            "title": "Non-fragile Hinfinity control for linear systems with multiplicative controller gain variations"
+        },
+        {
+            "paperId": "ffd9456923ab53077386b7b4702644f96bf49fad",
+            "title": "New theorems on global convergence of some dynamical systems"
+        },
+        {
+            "paperId": "119e9dbf9c7b6a13c089df4249d454be179cbe12",
+            "title": "Exponential Convergence of Delayed Dynamical Systems"
+        },
+        {
+            "paperId": "a812a32ed68950a29ac779d844dc1f08219aba07",
+            "title": "Nonlinear measures: a new approach to exponential stability analysis for Hopfield-type neural networks"
+        },
+        {
+            "paperId": "5281325cd7cb1fb4a61d5c0a49f3c740824a4d10",
+            "title": "Delay-dependent robust stabilization of uncertain state-delayed systems"
+        },
+        {
+            "paperId": "91c0aaeb28e5f63785d3ac4e3436bf48c58e115f",
+            "title": "On stability of nonlinear continuous-time neural networks with delays"
+        },
+        {
+            "paperId": "0a0ca7081d8db18349842343ece38f9e18fad7f0",
+            "title": "A comment on \"On equilibria, stability, and instability of Hopfield neural networks\" [and reply]"
+        },
+        {
+            "paperId": "26770d8813b38e613e94505b1a5d70f35f4f4f7b",
+            "title": "Global stability analysis in delayed Hopfield neural network models"
+        },
+        {
+            "paperId": "4a9c9888ff4547d33c19f0443e12f248e9618baf",
+            "title": "Dynamics of a class of discete-time neural networks and their comtinuous-time counterparts"
+        },
+        {
+            "paperId": "de4259d27a37e822a16bacafd571038d45d4a822",
+            "title": "Absolute exponential stability of neural networks with a general class of activation functions"
+        },
+        {
+            "paperId": "9624cadc0df00d993f004a6c01a6a3b71a027587",
+            "title": "Exponential stability of stochastic delay interval systems"
+        },
+        {
+            "paperId": "e9027196d967c9509927ce81b03b0304a04d2d24",
+            "title": "Results concerning the absolute stability of delayed neural networks"
+        },
+        {
+            "paperId": "03de8578480c53677c484e1facfced74f4f5b045",
+            "title": "Digital selection and analogue amplification coexist in a cortex-inspired silicon circuit"
+        },
+        {
+            "paperId": "2dd0b44d0c9566408986426a01c5f7d3d2a5572b",
+            "title": "A proof of Kaszkurewicz and Bhaya's conjecture on absolute stability of neural networks in two-neuron case"
+        },
+        {
+            "paperId": "6805b504c24298aa4197bf6af111e4d224331e84",
+            "title": "Matrix diagonal stability in systems and computation"
+        },
+        {
+            "paperId": "e0add250c88c6299dcd6ea36be39781f27a4db49",
+            "title": "Advances in linear matrix inequality methods in control: advances in design and control"
+        },
+        {
+            "paperId": "a973b306d45cdc2907eed51b84abda915ff08ace",
+            "title": "Stability analysis of Hopfield-type neural networks"
+        },
+        {
+            "paperId": "58a686d377a3d92cec78b02714fcc440cc5859fd",
+            "title": "An analysis of a class of neural networks for solving linear programming problems"
+        },
+        {
+            "paperId": "05e24fd4a9742a15f027091f5a521f5d361bac7b",
+            "title": "On the Design of Second Order Dynamics Reaction-Diffusion CNNs"
+        },
+        {
+            "paperId": "b7378e03d28a63f685b9de0b9a60462cfa1e1b1f",
+            "title": "Estimate of exponential convergence rate and exponential stability for neural networks"
+        },
+        {
+            "paperId": "c2ea86813725f31f617383fe4acfc28cba98f13a",
+            "title": "A delay-dependent stability criterion for systems with uncertain time-invariant delays"
+        },
+        {
+            "paperId": "54c83154e794a47f2aa38846426112fea3c2570e",
+            "title": "On the Global Convergence of a Class of Functional Differential Equations with Applications in Neural Network Theory"
+        },
+        {
+            "paperId": "2b973138c13d65280300a273a2df5d81d2474079",
+            "title": "Global Attractivity in Delayed Hopfield Neural Network Models"
+        },
+        {
+            "paperId": "1b4cb80e1b6b64ee02f2c6b57488aac60223702c",
+            "title": "Robust stability for interval Hopfield neural networks with time delay"
+        },
+        {
+            "paperId": "58b63eb3c01f223bbeffb70c67d153fc2c47ae83",
+            "title": "A simple proof of a necessary and sufficient condition for absolute stability of symmetric neural networks"
+        },
+        {
+            "paperId": "9b9fad27421b225caf53fbbafcf0cc88fa795ae8",
+            "title": "New sufficient conditions for absolute stability of neural networks"
+        },
+        {
+            "paperId": "23145ee862d40f827854050bc5d520744dbf72c9",
+            "title": "A comment on \"Comments on 'Necessary and sufficient condition for absolute stability of neural networks'\""
+        },
+        {
+            "paperId": "7738fc25373d3a86eba68beb9fb37ccad4b67822",
+            "title": "Sliding Modes in Solving Convex Programming Problems"
+        },
+        {
+            "paperId": "e72fad154c98c22b950b9be18c8a7f025c9d6365",
+            "title": "Comments on \"New conditions for global stability of neural networks with application to linear and quadratic programming problems\""
+        },
+        {
+            "paperId": "f2284cf0dcc607650c0f1f4fe35c37000d426fa2",
+            "title": "A recurrent dynamic neural network for noisy signal representation"
+        },
+        {
+            "paperId": "4f62e4a440ae4b2550e8d1a75a27b1ed6ca153b9",
+            "title": "Necessary and Sufficient Condition for Absolute Exponential Stability of a Class of Nonsymmetric Neural Networks"
+        },
+        {
+            "paperId": "84d1c64dda3761fe88e9008b9e3febad0a4c6b86",
+            "title": "Stability in Gilpin-Ayala competition models with diffusion"
+        },
+        {
+            "paperId": "82dbf7da29cb6122896594d56157232d9fb36aa9",
+            "title": "Effect of time-varying cross-diffusivity in a two-species Lotka-Volterra competitive system"
+        },
+        {
+            "paperId": "9dd2e4e973a837566550dea3658cd5b6150ae69e",
+            "title": "A note on stability of analog neural networks with time delays"
+        },
+        {
+            "paperId": "d599e5a0a42e603d960d77b84ea3e9f8dc3319fb",
+            "title": "Memory and Learning of Sequential Patterns by Nonmonotone Neural Networks"
+        },
+        {
+            "paperId": "61dc5c52b442fd1f7047aa49fcad9f03e881aad6",
+            "title": "On the Brain-State-in-a-Convex-Domain Neural Models"
+        },
+        {
+            "paperId": "207fe0177d1166d0be34c0ca9ddcafae3cc5b81f",
+            "title": "Control of rational systems using linear-fractional representations and linear matrix inequalities"
+        },
+        {
+            "paperId": "c585a68ec44ae0c64417e5fb29ea597a90fbd580",
+            "title": "Neural Networks - A Systematic Introduction"
+        },
+        {
+            "paperId": "ff77336a691005741dd2bf7fbc9022bcf0741668",
+            "title": "Robust stability of nonlinear time-delay systems with applications to neural networks"
+        },
+        {
+            "paperId": "cfc1f7417d0a0f9e6e2c48cdf2407f52918c1331",
+            "title": "Solving optimization problems with variable-constraint by an extended Cohen-Grossberg model"
+        },
+        {
+            "paperId": "0d32f14f4febe362b3e442ebf69af5534966b12a",
+            "title": "Asymmetric Hopfield-type networks: Theory and applications"
+        },
+        {
+            "paperId": "9e023626e439480579628a93f6ad3f6d41cd4c69",
+            "title": "A Unified Constructive Network Model for Problem-Solving"
+        },
+        {
+            "paperId": "1fa8658fe813c726364a4cf293517de97a54a906",
+            "title": "Global exponential stability and periodic solutions of delay Hopfield neural networks"
+        },
+        {
+            "paperId": "45bb5c60539d14d3b49ec79dcae5318f86cc56c9",
+            "title": "Global convergence of the Hopfield neural network with nonzero diagonal elements"
+        },
+        {
+            "paperId": "32e97eef94beacace020e79322cef0e1e5a76ee0",
+            "title": "Gradient calculations for dynamic recurrent neural networks: a survey"
+        },
+        {
+            "paperId": "c0d8919c4ce74fe4ba0c1d7b051ab568cff8f409",
+            "title": "Recurrent excitation in neocortical circuits"
+        },
+        {
+            "paperId": "84d5411e1bb7125fbd2c45bc3706c929ba161bef",
+            "title": "Comments on \"Necessary and sufficient condition for absolute stability of neural networks\""
+        },
+        {
+            "paperId": "21a7c71e80a8ecbd9ace9ce695d01c2194bf9bc2",
+            "title": "New conditions for global stability of neural networks with application to linear and quadratic programming problems"
+        },
+        {
+            "paperId": "1cd10c715a3c702d34d70c51b0245c81e290a0f5",
+            "title": "Global convergence and asymptotic stability of asymmetric Hopfield neural networks"
+        },
+        {
+            "paperId": "c7bfbd7c284f57e8a50c69dc1e9db4812e807d10",
+            "title": "Qualitative analysis of Cohen-Grossberg neural networks with multiple delays."
+        },
+        {
+            "paperId": "87a9541be0b6edba926facc55fc8e1316d8446d5",
+            "title": "Delay-independent stability in bidirectional associative memory networks"
+        },
+        {
+            "paperId": "69a00efb819d625b6272be4f9aebdc4f2478864d",
+            "title": "On Global Asymptotic Stability of a Class of Nonlinear Systems Arising in Neural Network Theory"
+        },
+        {
+            "paperId": "e36f44724d46052cfa6c4af74b183164511f6133",
+            "title": "Stability in asymmetric Hopfield nets with transmission delays"
+        },
+        {
+            "paperId": "ea4e895d472fc9dc1b67f3bbf67a3f1bfd1955fa",
+            "title": "Exponential stability and oscillation of Hopfield graded response neural network"
+        },
+        {
+            "paperId": "9ed9c7ddbefce2a2af34d6d529a017ba6369f818",
+            "title": "How delays affect neural dynamics and learning"
+        },
+        {
+            "paperId": "c3c88f2dc4d243c11b3832a8c658a7a0e2e10479",
+            "title": "Necessary and sufficient condition for absolute stability of neural networks"
+        },
+        {
+            "paperId": "6c0cbbd275bb43e09f0527a31ddd61824eca295b",
+            "title": "Introduction to the theory of neural computation"
+        },
+        {
+            "paperId": "b69052343f124be9589e24e48f7bb91add4021ae",
+            "title": "Asymptotic behaviour of reaction-diffusion systems in population and epidemic models"
+        },
+        {
+            "paperId": "5def91bf488e6ce7f5cb41690388ecea2cbc6f4c",
+            "title": "On a class of globally stable neural circuits"
+        },
+        {
+            "paperId": "c2026e45bad6764e7ca6e0a60bd298afdb38aaff",
+            "title": "A global stable analysis for CGNN and CNN with asymmetric weights"
+        },
+        {
+            "paperId": "6af27fbe174c52d4a26f4a08cd554ad8fce32f84",
+            "title": "Location and stability of the high-gain equilibria of nonlinear neural networks"
+        },
+        {
+            "paperId": "ce563eb32be14558c1ce8110e038d55da0587406",
+            "title": "Robustness and Perturbation Analysis of a Class of Nonlinear Systems with Applications to Neural Networks"
+        },
+        {
+            "paperId": "8ecfe9772556d826349fa2495451bac7bf8b642b",
+            "title": "Original Contribution: Averaged neural networks"
+        },
+        {
+            "paperId": "68ecfd6d69f0b8695d684aea7285ebc13399dd72",
+            "title": "Stability of cellular neural networks with dominant nonlinear and delay-type templates. (Memo UCB/ERL No. M92/121.)"
+        },
+        {
+            "paperId": "5f6e3929975985b69769ad54157633e09d45a2a4",
+            "title": "Neural network for quadratic optimization with bound constraints"
+        },
+        {
+            "paperId": "6de4ae5ab6656acf1d94852e1b5ca6d53375c875",
+            "title": "Capacity of associative memory using a nonmonotonic neuron model"
+        },
+        {
+            "paperId": "210225cacf1460daba8fa8c604b44f27a825da9c",
+            "title": "Neural networks for control systems - A survey"
+        },
+        {
+            "paperId": "c417c0173543ac07c0a6be4c40786ce26ad7d111",
+            "title": "Recent directions in matrix stability"
+        },
+        {
+            "paperId": "36e792667abcd8f9263ee0176673470dc31be105",
+            "title": "A condition for global convergence of a class of symmetric neural circuits"
+        },
+        {
+            "paperId": "c3b443da43d6c05f31d48b45e84a9a08ceab4829",
+            "title": "Stability and dynamics of delay-type general and cellular neural networks"
+        },
+        {
+            "paperId": "a754ad13f544e58eed36206c096b02b2aaba4fa1",
+            "title": "Stability and Oscillations in Delay Differential Equations of Population Dynamics"
+        },
+        {
+            "paperId": "b2a64f660aac4d2fc48e7644f288fbd9a942c055",
+            "title": "Stability conditions for nonlinear continuous neural networks with asymmetric connection weights"
+        },
+        {
+            "paperId": "8b4837707b2bb6fa316597e02f96d1a983422f0b",
+            "title": "Global convergence and suppression of spurious states of the Hopfield neural networks"
+        },
+        {
+            "paperId": "e9fd22ab8679f9d83fd9780570d7c95c3a3d996d",
+            "title": "Nonlinear dynamics and stability of analog neural networks"
+        },
+        {
+            "paperId": "f8c7a711512a47bd3234106a933fb3479ae3785e",
+            "title": "On a class of nonsymmetrical neural networks with application to ADC"
+        },
+        {
+            "paperId": "ecf2056c848de4252b304394ca009cbae953848a",
+            "title": "Analysis and synthesis of neural networks with lower block triangular interconnecting structure"
+        },
+        {
+            "paperId": "6b22faeace74b37fba210ab2e6dd33b0abc5ce74",
+            "title": "Neural networks for control systems"
+        },
+        {
+            "paperId": "5f3517488d1abd224823abace235f8cdf33d0da2",
+            "title": "Stability in contractive nonlinear neural networks"
+        },
+        {
+            "paperId": "2c4423b62ce270220a1ad343bdfd39e910416df1",
+            "title": "Nonlinear switched capacitor 'neural' networks for optimization problems"
+        },
+        {
+            "paperId": "7dcd68d2421c1d065c88810d8685582546f25252",
+            "title": "Convergent activation dynamics in continuous time networks"
+        },
+        {
+            "paperId": "0c213d1300c6c80b74d495863654c7c019e1ea7a",
+            "title": "Analysis and synthesis of a class of neural networks: variable structure systems with infinite grain"
+        },
+        {
+            "paperId": "af7e334e91ca6d7d01085c1e9ba24216ef6fc957",
+            "title": "Comparison Between Kanerva's SDM and Hopfield-Type Neural Networks"
+        },
+        {
+            "paperId": "9f5039d72865bcccb10017df85ab76f1e05dbf63",
+            "title": "Qualitative analysis of neural networks"
+        },
+        {
+            "paperId": "7b64d8953c49cadbc4b194fcda04e856ae6a1f17",
+            "title": "Neural networks for nonlinear programming"
+        },
+        {
+            "paperId": "e69606729837aa1d0168c47f812cbccaba09dc83",
+            "title": "Neural computation by concentrating information in time."
+        },
+        {
+            "paperId": "4517ca6110dfb5de3f004f67653de3c33b8d6234",
+            "title": "Computing with neural circuits: a model."
+        },
+        {
+            "paperId": "8879e718ab012e530608a72cddab3ac0edc30743",
+            "title": "Simple 'neural' optimization networks: An A/D converter, signal decision circuit, and a linear programming circuit"
+        },
+        {
+            "paperId": "99ee22b46792bc30b0ad6a6c21d49ee90d73d9ad",
+            "title": "Lyapunov Diagonal Semistability of Real H-Matrices"
+        },
+        {
+            "paperId": "24b9eebe49cf7e00cf50cf7b7d9243386a23fe7c",
+            "title": "Neurons with graded response have collective computational properties like those of two-state neurons."
+        },
+        {
+            "paperId": "00e6b6ea28c0217d7c7e90824c17b37528f69104",
+            "title": "Absolute stability of global pattern formation and parallel memory storage by competitive neural networks"
+        },
+        {
+            "paperId": "66782787edce5a86d2c527cb693f1cc4a8a17a5f",
+            "title": "Discrete delay, distributed delay and stability switches"
+        },
+        {
+            "paperId": "98b4d4e24aab57ab4e1124ff8106909050645cfa",
+            "title": "Neural networks and physical systems with emergent collective computational abilities."
+        },
+        {
+            "paperId": "099e9af1b8f874457dea9526516ce8c8dcb93662",
+            "title": "Nonnegative Matrices in the Mathematical Sciences"
+        },
+        {
+            "paperId": "24db299a36f2a9d557f386a7a961f2f6143987ab",
+            "title": "Convergence to the equilibrium state in the Volterra-Lotka diffusion equations"
+        },
+        {
+            "paperId": "5f6e354d524e1c80d3bb71813a7cda60e3b06a05",
+            "title": "Pattern formation, contrast control, and oscillations in the short term memory of shunting on-center off-surround networks"
+        },
+        {
+            "paperId": "347a83cb6a47810962569fde567e0108ffa2c450",
+            "title": "Ordinary Differential Equations"
+        },
+        {
+            "paperId": "59c589c33875948b67f80913f7c32510833138db",
+            "title": "Global convergence of neural networks with mixed time-varying delays and discontinuous neuron activations"
+        },
+        {
+            "paperId": "7b87a2b3410251c781bb233d39e0d50415ca7aec",
+            "title": "Robustness Analysis of Global Exponential Stability of Recurrent Neural Networks in the Presence of Time Delays and Random Disturbances"
+        },
+        {
+            "paperId": null,
+            "title": "He is an Associate Editor of Automatica"
+        },
+        {
+            "paperId": "6f188a07845715758a449c7249a4bbaaf843874c",
+            "title": "Robust Stability Criterion for Discrete-Time Uncertain Markovian Jumping Neural Networks With Defective Statistics of Modes Transitions"
+        },
+        {
+            "paperId": "9bb474f5c365dd97db17aeb4d3bfff9fc42819b6",
+            "title": "Global Asymptotic Stability of Reaction\u2013Diffusion Cohen\u2013Grossberg Neural Networks With Continuously Distributed Delays"
+        },
+        {
+            "paperId": "cf65bc946a2704c637da27a3502d4a8ea9f068e8",
+            "title": "Improved stability criteria of neural networks with time-varying delays: An augmented LKF approach"
+        },
+        {
+            "paperId": "66fdca236c96c0a593de299d64fb3f79fadd5724",
+            "title": "Robust Stability of Cohen\u2013Grossberg Neural Networks via State Transmission Matrix"
+        },
+        {
+            "paperId": "f0e3356efd0ae73d3f150e93569f99a234736faf",
+            "title": "New criteria for globally exponential stability of delayed Cohen-Grossberg neural network"
+        },
+        {
+            "paperId": "488c18f25593ce7f68fdb10a0b73e8e6fd2605b1",
+            "title": "Augmented Lyapunov functional approach to stability of uncertain neutral systems with time-varying delays"
+        },
+        {
+            "paperId": "7ab04a46ca6a0137af490ee183eecf944247a927",
+            "title": "Multiperiodicity and Attractivity of Delayed Recurrent Neural Networks With Unsaturating Piecewise Linear Transfer Functions"
+        },
+        {
+            "paperId": "467e608d25f784250b31abf47d654b6c8eaadb28",
+            "title": "LMI approach for global robust stability of Cohen-Grossberg neural networks with multiple delays"
+        },
+        {
+            "paperId": "fa130137efa41736ea4bdc5f61c1b8ff3d56856a",
+            "title": "A delay decomposition approach to stability and H\u221e control of linear time-delay systems \u2014 part II: H\u221e control"
+        },
+        {
+            "paperId": "5f1226d12bf33866c3e612eea1103b18fae71056",
+            "title": "Non-fragile Hinfinity filter design for linear continuous-time systems"
+        },
+        {
+            "paperId": "12dc1733464ba9546ac77b6f8e524fd83bc39b4b",
+            "title": "A new delay system approach to network-based control"
+        },
+        {
+            "paperId": "52fc6632ae35796ba45f091ae933bcc71cb97481",
+            "title": "Multistability and convergence in delayed neural networks"
+        },
+        {
+            "paperId": "79084ed1b04d7f55819d560249e906d3aabe0f3f",
+            "title": "On the Almost Periodic Solution of Cellular Neural Networks With Distributed Delays"
+        },
+        {
+            "paperId": "5333bb87784a64a2ebd2d30fadce9c6fb6b61960",
+            "title": "Stability analysis for continuous systems with two additive time-varying delay components"
+        },
+        {
+            "paperId": "b2683d5d404fb949895427a384df8724930c2901",
+            "title": "Exponential stability of impulsive neural networks with time-varying delays and reaction-diffusion terms"
+        },
+        {
+            "paperId": "fec2c7f8c790d315523f0cda367e271c02420330",
+            "title": "Robust stability of time varying polytopic systems"
+        },
+        {
+            "paperId": "a277e90b2f0a75bc9aa6acfad1d014302e858db3",
+            "title": "An improved global asymptotic stability criterion for delayed cellular neural networks"
+        },
+        {
+            "paperId": "b5c02bb6412e25573e70332329c3e731bc2b5de7",
+            "title": "Stability analysis of Cohen-Grossberg neural networks"
+        },
+        {
+            "paperId": "ace376f46203a7931c20d3744a051ee1a7dfe853",
+            "title": "Stability of Cohen-Grossberg neural networks with distributed delays"
+        },
+        {
+            "paperId": "ab735bb79046459ee281cb5594b9ec8bf00a14ef",
+            "title": "Stability for Cellular Neural Networks with Delay"
+        },
+        {
+            "paperId": null,
+            "title": "He was named the Cheung Kong Scholar by the Education Ministry of China in"
+        },
+        {
+            "paperId": "f9d7b3710f4d674bad068165934667750bb54133",
+            "title": "Robust global exponential stability of Cohen-Grossberg neural networks with time delays"
+        },
+        {
+            "paperId": "6e4fb6c98b252ea95db09ded4c759dc4ca1047b0",
+            "title": "A comparative study of two modeling approaches in neural networks"
+        },
+        {
+            "paperId": "c657e640db7005be4c959cacac91deceb4cc1e2f",
+            "title": "Deriving sufficient conditions for global asymptotic stability of delayed neural networks via nonsmooth analysis"
+        },
+        {
+            "paperId": "ece48b6a36844b7a93edb983a0eabed08d4d61c0",
+            "title": "Absolute exponential stability of a class of continuous-time recurrent neural networks"
+        },
+        {
+            "paperId": "2f54549e0cd50485bfad4ffbef33b259b0b200cb",
+            "title": "Effect of transmission delay on the rate of convergence of a class of nonlinear contractive dynamical systems"
+        },
+        {
+            "paperId": "39ea7110d090677c12c98e7bc1ec0d8beb66a5d5",
+            "title": "Stability of asymmetric Hopfield networks"
+        },
+        {
+            "paperId": "f465c8d1b5ab8fc3bfab5005582d52fa13428013",
+            "title": "Qualitative Analysis and Synthesis of Recurrent Neural Networks"
+        },
+        {
+            "paperId": "5468769a0a040a3f31585233813e3fd94b5bf0b2",
+            "title": "Neural Networks for Combinatorial Optimization: A Review of More Than a Decade of Research"
+        },
+        {
+            "paperId": "af15535b865217f9112f83831042fe54e331c4f1",
+            "title": "Recurrent Neural Networks: Design and Applications"
+        },
+        {
+            "paperId": "0a3f94df30fbc48c98097312e5e270b5a76ca1dd",
+            "title": "Recurrent neural networks: design and applications"
+        },
+        {
+            "paperId": "10f777895b895f23d43dfe4c98fc62ad6a9a2292",
+            "title": "Linear Matrix Inequalities In System And Control Theory"
+        },
+        {
+            "paperId": "d0c4952c884bdab6f3bf5def94b8cbd73c609666",
+            "title": "Discretized LMI set in the stability problem of linear uncertain time-delay systems"
+        },
+        {
+            "paperId": "4d8c2238c7176b4bb274b6dd4e1ef977db70fc4c",
+            "title": "Stability analysis of dynamical neural networks"
+        },
+        {
+            "paperId": "7deffda7503b45d5e8ee91b4c071606108e2d8c1",
+            "title": "RAZUMIKHIN-TYPE THEOREMS ON EXPONENTIAL STABILITY OF NEUTRAL STOCHASTIC FUNCTIONAL DIFFERENTIAL EQUATIONS\u2217"
+        },
+        {
+            "paperId": null,
+            "title": "Nonlinear Systems, 2nd ed"
+        },
+        {
+            "paperId": "46a16d3648aa719abaf319b7ca474cfde62f76e4",
+            "title": "Linear Matrix Inequalities in Systems and Control Theory"
+        },
+        {
+            "paperId": "045310b06e8a3983a363a118cc9dcc3f292970b4",
+            "title": "Neural Networks: A Comprehensive Foundation"
+        },
+        {
+            "paperId": "228caae11ad261e225b174ddc3375a6962257ef8",
+            "title": "Original Contribution: Associative memory with nonmonotone dynamics"
+        },
+        {
+            "paperId": null,
+            "title": "He was a Staff Fellow with the General Motors Research and Development Center"
+        },
+        {
+            "paperId": "a8edd60a3be9a6e09bd4c6c586a109e4f3f7b116",
+            "title": "Introduction to artificial neural systems"
+        },
+        {
+            "paperId": "4b30789eb2002b108f97a09924b72806a81b612d",
+            "title": "Neural networks and fuzzy systems: a dynamical systems approach to machine intelligence"
+        },
+        {
+            "paperId": "910ec8bee5ac71d42bb6887401a15dce4e9e13e6",
+            "title": "High-order absolutely stable neural networks"
+        },
+        {
+            "paperId": "6a919609534d8d641f6a6fe0d13fa4dd81a36d79",
+            "title": "Stability of analog neural networks with delay."
+        },
+        {
+            "paperId": "d9c6a018b26d562c73e293de67b8424e64e59ec1",
+            "title": "Qualitative analysis and synthesis of a class of neural networks"
+        },
+        {
+            "paperId": "4577bcd4792cbdea9875988989b00335dae54595",
+            "title": "Nonlinear neural networks: Principles, mechanisms, and architectures"
+        },
+        {
+            "paperId": null,
+            "title": "Polya, Inequalities, 2nd ed"
+        }
+    ]
+}

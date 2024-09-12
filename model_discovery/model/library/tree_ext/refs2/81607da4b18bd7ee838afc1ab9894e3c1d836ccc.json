@@ -1,0 +1,98 @@
+{
+    "paperId": "81607da4b18bd7ee838afc1ab9894e3c1d836ccc",
+    "externalIds": {
+        "DBLP": "journals/corr/Kumar17",
+        "MAG": "2611453176",
+        "ArXiv": "1704.08863",
+        "CorpusId": 11589817
+    },
+    "title": "On weight initialization in deep neural networks",
+    "abstract": "A proper initialization of the weights in a neural network is critical to its convergence. Current insights into weight initialization come primarily from linear activation functions. In this paper, I develop a theory for weight initializations with non-linear activations. First, I derive a general weight initialization strategy for any neural network using activation functions differentiable at 0. Next, I derive the weight initialization strategy for the Rectified Linear Unit (RELU), and provide theoretical insights into why the Xavier initialization is a poor choice with RELU activations. My analysis provides a clear demonstration of the role of non-linearities in determining the proper weight initializations.",
+    "venue": "arXiv.org",
+    "year": 2017,
+    "referenceCount": 17,
+    "citationCount": 205,
+    "influentialCitationCount": 10,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A theory for weight initializations with non-linear activations is developed, a general weight initialization strategy for any neural network using activation functions differentiable at 0.1 is derived, and theoretical insights are provided into why the Xavier initialization is a poor choice with RELU activations."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2109544880",
+            "name": "S. Kumar"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "97dc8df45972e4ed7423fc992a5092ba25b33411",
+            "title": "All you need is a good init"
+        },
+        {
+            "paperId": "d6f2f611da110b5b5061731be3fc4c7f45d8ee23",
+            "title": "Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification"
+        },
+        {
+            "paperId": "ecd29385eb214d75fc4b310489ab11977a5d1181",
+            "title": "Random Walk Initialization for Training Very Deep Feedforward Networks"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "e74f9b7f8eec6ba4704c206b93bc8079af3da4bd",
+            "title": "ImageNet Large Scale Visual Recognition Challenge"
+        },
+        {
+            "paperId": "1f6ba0782862ec12a5ec6d7fb608523d55b0c6ba",
+            "title": "Convolutional Neural Networks for Sentence Classification"
+        },
+        {
+            "paperId": "99c970348b8f70ce23d6641e201904ea49266b6e",
+            "title": "Exact solutions to the nonlinear dynamics of learning in deep linear neural networks"
+        },
+        {
+            "paperId": "2a002ce457f7ab3088fbd2691734f1ce79f750c4",
+            "title": "DeepPose: Human Pose Estimation via Deep Neural Networks"
+        },
+        {
+            "paperId": "713f73ce5c3013d9fb796c21b981dc6629af0bd5",
+            "title": "Deep Neural Networks for Object Detection"
+        },
+        {
+            "paperId": "4177ec52d1b80ed57f2e72b0f9a42365f1a8598d",
+            "title": "Speech recognition with deep recurrent neural networks"
+        },
+        {
+            "paperId": "9c0ddf74f87d154db88d79c640578c1610451eec",
+            "title": "Parsing Natural Scenes and Natural Language with Recursive Neural Networks"
+        },
+        {
+            "paperId": "ea9d2a2b4ce11aaf85136840c65f3bc9c03ab649",
+            "title": "Understanding the difficulty of training deep feedforward neural networks"
+        },
+        {
+            "paperId": "57458bc1cffe5caa45a885af986d70f723f406b4",
+            "title": "A unified architecture for natural language processing: deep neural networks with multitask learning"
+        },
+        {
+            "paperId": "d4ab89fcc6547b8b77d028abfa34e659eb685ca6",
+            "title": "Elements of large-sample theory"
+        },
+        {
+            "paperId": "367f2c63a6f6a10b3b64b8729d601e69337ee3cc",
+            "title": "Rectifier Nonlinearities Improve Neural Network Acoustic Models"
+        },
+        {
+            "paperId": "33f4995e1b9d792ef368695f2711696a67369f70",
+            "title": "The TANH Transformation"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        }
+    ]
+}

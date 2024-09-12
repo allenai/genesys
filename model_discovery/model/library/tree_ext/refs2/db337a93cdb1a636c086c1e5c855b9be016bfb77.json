@@ -1,0 +1,102 @@
+{
+    "paperId": "db337a93cdb1a636c086c1e5c855b9be016bfb77",
+    "externalIds": {
+        "MAG": "2962759636",
+        "ArXiv": "1702.05043",
+        "DBLP": "conf/iclr/TallecO18",
+        "CorpusId": 3527317
+    },
+    "title": "Unbiased Online Recurrent Optimization",
+    "abstract": "The novel Unbiased Online Recurrent Optimization (UORO) algorithm allows for online learning of general recurrent computational graphs such as recurrent network models. It works in a streaming fashion and avoids backtracking through past activations and inputs. UORO is computationally as costly as Truncated Backpropagation Through Time (truncated BPTT), a widespread algorithm for online learning of recurrent networks. UORO is a modification of NoBackTrack that bypasses the need for model sparsity and makes implementation easy in current deep learning frameworks, even for complex models. \nLike NoBackTrack, UORO provides unbiased gradient estimates; unbiasedness is the core hypothesis in stochastic gradient descent theory, without which convergence to a local optimum is not guaranteed. On the contrary, truncated BPTT does not provide this property, leading to possible divergence. \nOn synthetic tasks where truncated BPTT is shown to diverge, UORO converges. For instance, when a parameter has a positive short-term but negative long-term influence, truncated BPTT diverges unless the truncation span is very significantly longer than the intrinsic temporal range of the interactions, while UORO performs well thanks to the unbiasedness of its gradients.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2017,
+    "referenceCount": 17,
+    "citationCount": 89,
+    "influentialCitationCount": 13,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The novel Unbiased Online Recurrent Optimization (UORO) algorithm allows for online learning of general recurrent computational graphs such as recurrent network models and performs well thanks to the unbiasedness of its gradients."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "31803582",
+            "name": "Corentin Tallec"
+        },
+        {
+            "authorId": "1734570",
+            "name": "Y. Ollivier"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "048bde8e1c8a7122498c8101d1f4c37bc484076c",
+            "title": "Autour De L'Usage des gradients en apprentissage statistique"
+        },
+        {
+            "paperId": "27760cc69be4ce445962ccb270a02d1944a9d4c9",
+            "title": "Decoupled Neural Interfaces using Synthetic Gradients"
+        },
+        {
+            "paperId": "f61e9fd5a4878e1493f7a6b03774a61c17b7e9a4",
+            "title": "Memory-Efficient Backpropagation Through Time"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "413c1142de9d91804d6d11c67ff3fed59c9fc279",
+            "title": "Adaptive Subgradient Methods for Online Learning and Stochastic Optimization"
+        },
+        {
+            "paperId": "370984d3910e61d41ee8318714cd610b689de726",
+            "title": "2007 Special Issue: Optimization and applications of echo state networks with leaky- integrator neurons"
+        },
+        {
+            "paperId": "7a12bf1df8ffaaf6d44e01d2d62124389f15f59c",
+            "title": "Backpropagation-decorrelation: online recurrent learning with O(N) complexity"
+        },
+        {
+            "paperId": "e0535dedb8607d83cd2614317c99913378e89e26",
+            "title": "Real-Time Computing Without Stable States: A New Framework for Neural Computation Based on Perturbations"
+        },
+        {
+            "paperId": "19bb461ebc18b43d44b3589659a2e450fff74c32",
+            "title": "A Monte Carlo EM Approach for Partially Observable Diffusion Processes: Theory and Applications to Neural Networks"
+        },
+        {
+            "paperId": "47f87b78c6ad449a81c3a82510e0bcba73dc0aee",
+            "title": "Long Short-Term Memory Learns Context Free and Context Sensitive Languages"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "32e97eef94beacace020e79322cef0e1e5a76ee0",
+            "title": "Gradient calculations for dynamic recurrent neural networks: a survey"
+        },
+        {
+            "paperId": "ff32cebbdb8a436ccd8ae797647428615ae32d74",
+            "title": "Tangent Prop - A Formalism for Specifying Selected Invariances in an Adaptive Network"
+        },
+        {
+            "paperId": "ce9a21b93ba29d4145a8ef6bf401e77f261848de",
+            "title": "A Learning Algorithm for Continually Running Fully Recurrent Neural Networks"
+        },
+        {
+            "paperId": "5a5679bdae3507d2af06c88e06af31d86544a909",
+            "title": "1 The NoBackTrack algorithm 1 . 1 The rank-one trick : an expectation-preserving reduction"
+        },
+        {
+            "paperId": "b87274e6d9aa4e6ba5148898aa92941617d2b6ed",
+            "title": "Efficient BackProp"
+        },
+        {
+            "paperId": "a10990aab66ffaf6bfd3fe582c42c93a9e406fa7",
+            "title": "A tutorial on training recurrent neural networks , covering BPPT , RTRL , EKF and the \" echo state network \" approach - Semantic Scholar"
+        }
+    ]
+}

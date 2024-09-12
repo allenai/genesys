@@ -1,0 +1,158 @@
+{
+    "paperId": "b48f327d8f2515216ac19314a58292c43bb53422",
+    "externalIds": {
+        "DBLP": "journals/corr/abs-1807-05076",
+        "ArXiv": "1807.05076",
+        "MAG": "2883582441",
+        "CorpusId": 49741672
+    },
+    "title": "Metalearning with Hebbian Fast Weights",
+    "abstract": "We unify recent neural approaches to one-shot learning with older ideas of associative memory in a model for metalearning. Our model learns jointly to represent data and to bind class labels to representations in a single shot. It builds representations via slow weights, learned across tasks through SGD, while fast weights constructed by a Hebbian learning rule implement one-shot binding for each new task. On the Omniglot, Mini-ImageNet, and Penn Treebank one-shot learning benchmarks, our model achieves state-of-the-art results.",
+    "venue": "arXiv.org",
+    "year": 2018,
+    "referenceCount": 31,
+    "citationCount": 34,
+    "influentialCitationCount": 2,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work unify recent neural approaches to one-shot learning with older ideas of associative memory in a model for metalearning that achieves state-of-the-art results on the Omniglot, Mini-ImageNet, and Penn Treebank one- shot learning benchmarks."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2227827",
+            "name": "Tsendsuren Munkhdalai"
+        },
+        {
+            "authorId": "3382568",
+            "name": "Adam Trischler"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "69ac3b35887eb42e8fe554619fc7255e6e95a4cb",
+            "title": "Fast Parametric Learning with Activation Memorization"
+        },
+        {
+            "paperId": "2798df47acbeb89a9e044e43e747782ec05968af",
+            "title": "Rapid Adaptation with Conditionally Shifted Neurons"
+        },
+        {
+            "paperId": "427edff08dadb04913ad67c2831089e248eff059",
+            "title": "Learning Rapid-Temporal Adaptations"
+        },
+        {
+            "paperId": "f9d94a7ed0984052f46aba17978b14a7cf187d0b",
+            "title": "Learning Algorithms for Active Learning"
+        },
+        {
+            "paperId": "00357a417ce470a78f7a84d18ae2604330455d2a",
+            "title": "Meta-Learning with Temporal Convolutions"
+        },
+        {
+            "paperId": "c889d6f98e6d79b89c3a6adf8a921f88fa6ba518",
+            "title": "Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks"
+        },
+        {
+            "paperId": "470d11b8ca4586c930adbbfc3f60bff08f2a0161",
+            "title": "Meta Networks"
+        },
+        {
+            "paperId": "17ebe1eb19655543a6b876f91d41917488e70f55",
+            "title": "Random synaptic feedback weights support error backpropagation for deep learning"
+        },
+        {
+            "paperId": "29c887794eed2ca9462638ff853e6fe1ab91d5d8",
+            "title": "Optimization as a Model for Few-Shot Learning"
+        },
+        {
+            "paperId": "3904315e2eca50d0086e4b7273f7fd707c652230",
+            "title": "Meta-Learning with Memory-Augmented Neural Networks"
+        },
+        {
+            "paperId": "71683e224ab91617950956b5005ed0439a733a71",
+            "title": "Learning to learn by gradient descent by gradient descent"
+        },
+        {
+            "paperId": "be1bb4e4aa1fcf70281b4bd24d8cd31c04864bb6",
+            "title": "Matching Networks for One Shot Learning"
+        },
+        {
+            "paperId": "815c84ab906e43f3e6322f2ca3fd5e1360c64285",
+            "title": "Human-level concept learning through probabilistic program induction"
+        },
+        {
+            "paperId": "d6f2f611da110b5b5061731be3fc4c7f45d8ee23",
+            "title": "Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification"
+        },
+        {
+            "paperId": "71ae756c75ac89e2d731c9c79649562b5768ff39",
+            "title": "Memory Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "98f8a0055bb28133efcff359a92937324d0e6f51",
+            "title": "A Perspective View and Survey of Meta-Learning"
+        },
+        {
+            "paperId": "044b2c29e0a54dc689786bd4d029b9ba6e355d58",
+            "title": "Learning to Learn Using Gradient Descent"
+        },
+        {
+            "paperId": "77c53d8d539f2b48f7b71d4e2f8041a43b0e1800",
+            "title": "Competitive Hebbian learning through spike-timing-dependent synaptic plasticity"
+        },
+        {
+            "paperId": "7ee98330fb5969839d88bcabdb44d03848dc9d35",
+            "title": "A \u2018Self-Referential\u2019 Weight Matrix"
+        },
+        {
+            "paperId": "aad7acb39cfb1c2e52f0e4cf7b2ba70a98d18e45",
+            "title": "Explanation-Based Neural Network Learning for Robot Control"
+        },
+        {
+            "paperId": "d130325c41947a41a55a4431e9e8e15be89da8ea",
+            "title": "Learning a synaptic learning rule"
+        },
+        {
+            "paperId": "62fe57e40232add7ede5a683b31e643fc0712c9f",
+            "title": "Bidirectional associative memories"
+        },
+        {
+            "paperId": "98b4d4e24aab57ab4e1124ff8106909050645cfa",
+            "title": "Neural networks and physical systems with emergent collective computational abilities."
+        },
+        {
+            "paperId": "b9164335be5808ddd59786869a9f992331af5218",
+            "title": "The organization of behavior: A neuropsychological theory"
+        },
+        {
+            "paperId": "f216444d4f2959b4520c61d20003fa30a199670a",
+            "title": "Siamese Neural Networks for One-Shot Image Recognition"
+        },
+        {
+            "paperId": "67156902beca9bc90b728c8d5dd4ac9d8b27d3a3",
+            "title": "Chainer : a Next-Generation Open Source Framework for Deep Learning"
+        },
+        {
+            "paperId": null,
+            "title": "Universit\u00e9 de Montr\u00e9al, D\u00e9partement d'informatique et de recherche op\u00e9rationnelle"
+        },
+        {
+            "paperId": "10055eb6f2f711a36d9aa8f759d3b3f01ebddb5d",
+            "title": "Self-Organization and Associative Memory"
+        },
+        {
+            "paperId": "7257eacd80458e70c74494eb1b6759b52ff21399",
+            "title": "Using fast weights to deblur old memories"
+        },
+        {
+            "paperId": "bdaec1b3eb9a8f7a2b296be009a148c35236f3ce",
+            "title": "Evolutionary principles in self-referential learning, or on learning how to learn: The meta-meta-. hook"
+        }
+    ]
+}

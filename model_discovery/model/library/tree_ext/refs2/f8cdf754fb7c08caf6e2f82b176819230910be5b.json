@@ -1,0 +1,354 @@
+{
+    "paperId": "f8cdf754fb7c08caf6e2f82b176819230910be5b",
+    "externalIds": {
+        "ACL": "W12-4501",
+        "DBLP": "conf/conll/PradhanMXUZ12",
+        "MAG": "2155069789",
+        "CorpusId": 41479182
+    },
+    "title": "CoNLL-2012 Shared Task: Modeling Multilingual Unrestricted Coreference in OntoNotes",
+    "abstract": "The CoNLL-2012 shared task involved predicting coreference in three languages -- English, Chinese and Arabic -- using OntoNotes data. It was a follow-on to the English-only task organized in 2011. Until the creation of the OntoNotes corpus, resources in this subfield of language processing have tended to be limited to noun phrase coreference, often on a restricted set of entities, such as ACE entities. OntoNotes provides a large-scale corpus of general anaphoric coreference not restricted to noun phrases or to a specified set of entity types and covering multiple languages. OntoNotes also provides additional layers of integrated annotation, capturing additional shallow semantic structure. This paper briefly describes the OntoNotes annotation (coreference and other layers) and then describes the parameters of the shared task including the format, pre-processing information, evaluation criteria, and presents and discusses the results achieved by the participating systems. Being a task that has a complex evaluation history, and multiple evalation conditions, it has, in the past, been difficult to judge the improvement in new algorithms over previously reported results. Having a standard test set and evaluation parameters, all based on a resource that provides multiple integrated annotation layers (parses, semantic roles, word senses, named entities and coreference) that could support joint models, should help to energize ongoing research in the task of entity and event coreference.",
+    "venue": "EMNLP-CoNLL Shared Task",
+    "year": 2012,
+    "referenceCount": 77,
+    "citationCount": 788,
+    "influentialCitationCount": 199,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The OntoNotes annotation (coreference and other layers) is described and the parameters of the shared task including the format, pre-processing information, evaluation criteria, and presents and discusses the results achieved by the participating systems."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1735131",
+            "name": "Sameer Pradhan"
+        },
+        {
+            "authorId": "1719404",
+            "name": "Alessandro Moschitti"
+        },
+        {
+            "authorId": "1702849",
+            "name": "Nianwen Xue"
+        },
+        {
+            "authorId": "143835479",
+            "name": "Olga Uryupina"
+        },
+        {
+            "authorId": "49889227",
+            "name": "Yuchen Zhang"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "98e8750f5aa9c4965ceff9947538af136e663d5e",
+            "title": "Evaluating the state of the art in coreference resolution for electronic medical records"
+        },
+        {
+            "paperId": "09d15d813855f168220338fc5d8988c8a1ebfe44",
+            "title": "Overcoming barriers to NLP for clinical text: the role of shared tasks and the need for additional creative solutions"
+        },
+        {
+            "paperId": "bb6c904eccd9663037c75251712b6da7f6398ae8",
+            "title": "Unrestricted Coreference Resolution via Global Hypergraph Partitioning"
+        },
+        {
+            "paperId": "bd87a452b4a2530b6c22eadec1d7bede990ad36f",
+            "title": "Language-Independent Parsing with Empty Elements"
+        },
+        {
+            "paperId": "0b2b5cba20dcb7f622f265a72e5fcf6a351ef20b",
+            "title": "BLANC: Implementing the Rand index for coreference evaluation"
+        },
+        {
+            "paperId": "548a54142456254709ba927660bd976a29b6fdb8",
+            "title": "A Multi-Pass Sieve for Coreference Resolution"
+        },
+        {
+            "paperId": "a03df0d1a46f4394c8c93a2a0a94c7e09a94482f",
+            "title": "Evaluation Metrics For End-to-End Coreference Resolution Systems"
+        },
+        {
+            "paperId": "10168117f627120908160c3674bebecc864180fc",
+            "title": "Chasing the ghost: recovering empty categories in the Chinese Treebank"
+        },
+        {
+            "paperId": "df8b3823d74f39fe13ae9f64bf736138fdfaff8f",
+            "title": "The Revised Arabic PropBank"
+        },
+        {
+            "paperId": "cc62f9bb8772b1202aebad3f19b0ffac3ca42bfd",
+            "title": "SemEval-2010 Task 1: Coreference Resolution in Multiple Languages"
+        },
+        {
+            "paperId": "9931b8ea6594b97c7dfca93936a2d95a38167046",
+            "title": "It Makes Sense: A Wide-Coverage Word Sense Disambiguation System for Free Text"
+        },
+        {
+            "paperId": "c96f7099e2e8b6d402440700ca5fd2bf247ca81f",
+            "title": "Supervised Noun Phrase Coreference Research: The First Fifteen Years"
+        },
+        {
+            "paperId": "7719679e6255c51d157116fcfbc858b7e7dfdb59",
+            "title": "Coreference Resolution in a Modular, Entity-Centered Model"
+        },
+        {
+            "paperId": "455a1994727ced91e81891821778376a4e867563",
+            "title": "Conundrums in Noun Phrase Coreference Resolution: Making Sense of the State-of-the-Art"
+        },
+        {
+            "paperId": "ca2c7d02cbb0d533c3831ee0feb8d61664f52dfb",
+            "title": "State-of-the-art NLP Approaches to Coreference Resolution: Theory and Practical Recipes"
+        },
+        {
+            "paperId": "c7d3f610b528226f1c862c4f9cd6b37623f7390f",
+            "title": "The CoNLL-2009 Shared Task: Syntactic and Semantic Dependencies in Multiple Languages"
+        },
+        {
+            "paperId": "8334962b171d9253c86390ee7fe537e1d1dc4a56",
+            "title": "Global joint models for coreference resolution and named entity classification"
+        },
+        {
+            "paperId": "44acd22bfb89f6e3d5529b2fa92b18b035e6bab5",
+            "title": "Adding semantic roles to the Chinese Treebank"
+        },
+        {
+            "paperId": "ed2f04fc0164e64533affc4acffe80bf934e3440",
+            "title": "Unsupervised Models for Coreference Resolution"
+        },
+        {
+            "paperId": "14c146d457bbd201f3a117ee9c848300d341e5d0",
+            "title": "The CoNLL 2008 Shared Task on Joint Parsing of Syntactic and Semantic Dependencies"
+        },
+        {
+            "paperId": "03541f4c7b737964289b3cb2cde4b6ac08a1c29d",
+            "title": "Labeling Chinese Predicates with Semantic Roles"
+        },
+        {
+            "paperId": "fd020e3882d41ec678804d09e844d3012bb03450",
+            "title": "BART: A modular toolkit for coreference resolution"
+        },
+        {
+            "paperId": "f83e6d9413f2d840d8ddf84daf9f2d75993400b9",
+            "title": "A Pilot Arabic Propbank"
+        },
+        {
+            "paperId": "4f74a7a6ccd4197865a9e9ff91e360c36e89ba53",
+            "title": "A large-scale classification of English verbs"
+        },
+        {
+            "paperId": "5cb6ce78710b22cda87d423a9e54235804a01321",
+            "title": "Unrestricted Coreference: Identifying Entities and Events in OntoNotes"
+        },
+        {
+            "paperId": "6ee68cba9c5be48fa10b20e004bbfa2eaae07d86",
+            "title": "OntoNotes: A Unified Relational Semantic Representation"
+        },
+        {
+            "paperId": "aa2916bcfdcd859664d08ae275f2d52f9ae50804",
+            "title": "Antecedent Selection Techniques for High-Recall Coreference Resolution"
+        },
+        {
+            "paperId": "bb9b679a6a321291d22d2d286df01f00d307987a",
+            "title": "Proceedings of the 2007 Joint Conference on Empirical Methods in Natural Language Processing and Computational Natural Language Learning (EMNLP-CoNLL)"
+        },
+        {
+            "paperId": "a957e6cbc55f004f94b468f23c5149f1b0fd3389",
+            "title": "First-Order Probabilistic Models for Coreference Resolution"
+        },
+        {
+            "paperId": "7b9516f264fa75a87bfd4cc19318bbd1d26586a0",
+            "title": "Joint Determination of Anaphoricity and Coreference Resolution using Integer Programming"
+        },
+        {
+            "paperId": "6e1b12dd7ca3443ba6e0fb38dfa3587a4eb5d539",
+            "title": "Improved Inference for Unlexicalized Parsing"
+        },
+        {
+            "paperId": "4ec4776f938fb15862facce71f7db62884f1ef1e",
+            "title": "Shallow Semantics for Coreference Resolution"
+        },
+        {
+            "paperId": "0d0c997a8d69ab12ef023ff5f1733bd4997a7a8a",
+            "title": "Issues in Synchronizing the English Treebank and PropBank"
+        },
+        {
+            "paperId": "3b1f3bdc23df05f6a0d1865adccf78c12452db3e",
+            "title": "Bootstrapping Path-Based Pronoun Resolution"
+        },
+        {
+            "paperId": "bb0e2d4104326b62966a9fc03151f4db2d42d7f2",
+            "title": "Making fine-grained and coarse-grained sense distinctions, both manually and automatically"
+        },
+        {
+            "paperId": "6d375f8b45d8e5e961875bf74a89f32394759b89",
+            "title": "Exploiting Semantic Role Labeling, WordNet and Wikipedia for Coreference Resolution"
+        },
+        {
+            "paperId": "e54d8b07ef659f9ee2671441c4355e414e408836",
+            "title": "OntoNotes: The 90% Solution"
+        },
+        {
+            "paperId": "26efb7af8cd79947e1fe3c959588764d879f71ae",
+            "title": "Semantic Role Labeling for Coreference Resolution"
+        },
+        {
+            "paperId": "de133c1f22d0dfe12539e25dda70f28672459b99",
+            "title": "On Coreference Resolution Performance Metrics"
+        },
+        {
+            "paperId": "a584e4b607e972783cea22daaaf1114ea94a8035",
+            "title": "Support Vector Learning for Semantic Argument Classification"
+        },
+        {
+            "paperId": "c60db61b8faeb6e2cdf1605ed9d3fa66b9443c18",
+            "title": "The Reliability of Anaphoric Annotation, Reconsidered: Taking Ambiguity into Account"
+        },
+        {
+            "paperId": "0ecb33ced5b0976accdf13817151f80568b6fdcb",
+            "title": "Coarse-to-Fine n-Best Parsing and MaxEnt Discriminative Reranking"
+        },
+        {
+            "paperId": "2c72257ae7a4a32dc60569f4e1fe4504b2678112",
+            "title": "The Penn Chinese TreeBank: Phrase structure annotation of a large corpus"
+        },
+        {
+            "paperId": "99d2dcdcf4cf05facaa101a48c7e31d140b4736d",
+            "title": "The Proposition Bank: An Annotated Corpus of Semantic Roles"
+        },
+        {
+            "paperId": "cbb786e7e42d02de0080299dc2e114357e816002",
+            "title": "Conditional Models of Identity Uncertainty with Application to Noun Coreference"
+        },
+        {
+            "paperId": "8825d6c76ccf361341f005de3646118a7f3211fd",
+            "title": "Developing an Arabic Treebank: Methods, Guidelines, Procedures, and Tools"
+        },
+        {
+            "paperId": "dc5c74ca0e6b71fa723351a376bbfb650871fef0",
+            "title": "Background to Framenet"
+        },
+        {
+            "paperId": "9cc89fab12679d5444ffc6ae91c985eb9698b6e5",
+            "title": "The role of the National Institute of Standards and Technology in DARPA's Broadcast News continuous speech recognition research program"
+        },
+        {
+            "paperId": "a20bfec3c95aad003dcb45a21a220c19cca8bb66",
+            "title": "A Machine Learning Approach to Coreference Resolution of Noun Phrases"
+        },
+        {
+            "paperId": "427e14bef4fbfdd4fe0eb3947ab9f100235fd06b",
+            "title": "Edit Detection and Parsing for Transcribed Speech"
+        },
+        {
+            "paperId": "ae287b7ecbb3dffaa0e302acfd7bbf44f733acfc",
+            "title": "Coreference for NLP Applications"
+        },
+        {
+            "paperId": "a340eadd28c01de25b49d6b75285a6d7ab5073ab",
+            "title": "Automating Coreference: The Role of Annotated Training Data"
+        },
+        {
+            "paperId": "890c1201d3edef7104ba9d75078ed90f9c30c93b",
+            "title": "A Model-Theoretic Coreference Scoring Scheme"
+        },
+        {
+            "paperId": "02537122c7f00d63c8c9c861791a2026a4879e33",
+            "title": "Using Decision Trees for Coreference Resolution"
+        },
+        {
+            "paperId": "0b44fcbeea9415d400c5f5789d6b892b6f98daff",
+            "title": "Building a Large Annotated Corpus of English: The Penn Treebank"
+        },
+        {
+            "paperId": "bf1c964095abdd32d9df5a2ed5bd60f64dea9ab3",
+            "title": "Resolution"
+        },
+        {
+            "paperId": "0255a217b8ca1e8faac541609ae25e89231cab60",
+            "title": "Singular or Plural? Exploiting Parallel Corpora for Chinese Number Prediction"
+        },
+        {
+            "paperId": "0b0e2ad61d79a52d19c3b467ed59afb1319d23d5",
+            "title": "Handbook of Natural Language Processing and Machine Translation: DARPA Global Autonomous Language Exploitation"
+        },
+        {
+            "paperId": "6d5ff1e0d334e0236ba6eaa905bd681695051a83",
+            "title": "Stanford\u2019s Multi-Pass Sieve Coreference Resolution System at the CoNLL-2011 Shared Task"
+        },
+        {
+            "paperId": "2ed51de85d3aa1a921c334bcd6293b58edbe5798",
+            "title": "Null element restoration"
+        },
+        {
+            "paperId": "5d437f098752798b601e5171311e74184dd05843",
+            "title": "Supervised Models for Coreference Resolution"
+        },
+        {
+            "paperId": "c7cf3b9654a3ccc5c327582efc20d458ae4fe71a",
+            "title": "A Large-scale Classication of English Verbs"
+        },
+        {
+            "paperId": null,
+            "title": "BBN pronoun coreference and entity type corpus LDC catalog no.: LDC2005T33"
+        },
+        {
+            "paperId": "bc0b93f9320d7c8eb03132652363f4135d9fd4dd",
+            "title": "Computing Reliability for Coreference Annotation"
+        },
+        {
+            "paperId": "0617dd6924df7a3491c299772b70e90507b195dc",
+            "title": "The Automatic Content Extraction (ACE) Program \u2013 Tasks, Data, and Evaluation"
+        },
+        {
+            "paperId": null,
+            "title": "The mate/gnome scheme for anaphoric annotation, revisited"
+        },
+        {
+            "paperId": null,
+            "title": "Message understanding conference (MUC) 7"
+        },
+        {
+            "paperId": "4b512f10838e05f5b2eee94bfbd20f3d9c4ecb9b",
+            "title": "Algorithms for Scoring Coreference Chains"
+        },
+        {
+            "paperId": null,
+            "title": "Coreference task de\ufb01nition (v3.0, 13 jul 97)"
+        },
+        {
+            "paperId": null,
+            "title": "An O(ND) difference algorithm and its variations"
+        },
+        {
+            "paperId": null,
+            "title": "Objective criteria for the evaluation of clustering methods"
+        },
+        {
+            "paperId": null,
+            "title": "U.S. spokesman Dates and monetary amounts can be considered"
+        },
+        {
+            "paperId": null,
+            "title": "Meetings are most productive when they are held in the morning. Those meetings ,"
+        },
+        {
+            "paperId": null,
+            "title": "The current account de\ufb01cit on France\u2019s balance of payments narrowed to 1.48 billion French francs ($236.8 million) in August from a revised 2.1 billion francs in July"
+        },
+        {
+            "paperId": null,
+            "title": "\u4ed6 \u62c5 \u4efb \u603b \u7edf \u4efb \u5185 \u6700 \u540e \u4e00 \u6b21 \u7684 [ \u4e9a (1) \u592a \u7ecf \u6d4e \u5408 \u4f5c \u4f1a \u8bae"
+        },
+        {
+            "paperId": null,
+            "title": "Joint Conference on Natural Language Processing of the AFNLP"
+        },
+        {
+            "paperId": null,
+            "title": "called the Casablanca bombings \u201ca strike against all peace-loving people.\u201d"
+        }
+    ]
+}

@@ -1,0 +1,165 @@
+{
+    "paperId": "ec0bc920662693375a881d8beb8c97bf08281dba",
+    "externalIds": {
+        "MAG": "1595783387",
+        "DOI": "10.1184/R1/6608579.V1",
+        "CorpusId": 60459178
+    },
+    "title": "Prefix sums and their applications",
+    "abstract": "Abstract: \"Experienced algorithm designers rely heavily on a set of building blocks and on the tools needed to put the blocks together into an algorithm. The understanding of these basic blocks and tools is therefore critical to the understanding of algorithms. Many of the blocks and tools needed for parallel algorithms extend from sequential algorithms, such as dynamic-programming and divide-and-conquer, but others are new. This paper introduces one of the simplest and most useful building blocks for parallel algorithms: the all-prefix-sums operation. The paper defines the operation, shows how to implement it on a P-RAM and illustrates many applications of the operation.In addition to being a useful building block, the all-prefix-sums operation is a good example of a computation that seems inherently sequential, but for which there is an efficient parallel algorithm.\"",
+    "venue": "",
+    "year": 1990,
+    "referenceCount": 34,
+    "citationCount": 559,
+    "influentialCitationCount": 67,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper defines the all-prefix-sums operation, shows how to implement it on a P-RAM and illustrates many applications of the operation."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1717462",
+            "name": "G. Blelloch"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "79164fe72e6b54d09a9b70453804557241a149e1",
+            "title": "Faster Optimal Parallel Prefix Sums and List Ranking"
+        },
+        {
+            "paperId": "3c019693f59a32bf2fe5e99e93372c2816705139",
+            "title": "Scans as Primitive Parallel Operations"
+        },
+        {
+            "paperId": "a75e50b42d3ae946620d4f9429d617458b9aceef",
+            "title": "New bounds for parallel prefix circuits"
+        },
+        {
+            "paperId": "7c6e08e5be50148dba03375fd1d05f29b2e361d3",
+            "title": "The chip complexity of binary arithmetic"
+        },
+        {
+            "paperId": "4359d10783ef1b0537e7f28b55d89bd3abe3e0b7",
+            "title": "The Complexity of Parallel Evaluation of Linear Recurrences"
+        },
+        {
+            "paperId": "5885446af6b0b258ca8edbdfed0da687ca6d9fee",
+            "title": "Parallel Tridiagonal Equation Solvers"
+        },
+        {
+            "paperId": "dd5f438aea7575890209c6fbb654a691e4c024f6",
+            "title": "Time and Parallel Processor Bounds for Linear Recurrence Systems"
+        },
+        {
+            "paperId": "1835b07b5671b97a4350f8c07b5412a1b390fdf7",
+            "title": "A Parallel Algorithm for the Efficient Solution of a General Class of Recurrence Equations"
+        },
+        {
+            "paperId": "a1efad845665fbb645614f535348ec3048f5869d",
+            "title": "Parallel Processing with the Perfect Shuffle"
+        },
+        {
+            "paperId": "acbd0d8557edad81f05b7098a5500937725acefb",
+            "title": "The Organization of Computations for Uniform Recurrence Equations"
+        },
+        {
+            "paperId": "8b60de2f86b890a04ac59bebb0c9c104504feb1d",
+            "title": "Vector Models for Data-Parallel Computing"
+        },
+        {
+            "paperId": "e8e7d619a0caf5ef5ef7161a39bbea6728b44f58",
+            "title": "Simple, Efficient Asynchronous Parallel Prefix Algorithms"
+        },
+        {
+            "paperId": "dbcf118ab41d32644d9dd679b0580d52c60dfd26",
+            "title": "On a New Class of Optimal Parallel Prefix Circuits with (Size+Depth) = 2n-2 AND\\lceil log n \\rceil DEPTH(2 \\lceil log n \\rceil -3)"
+        },
+        {
+            "paperId": "2e248152f79ca98050a208b51de304212c57b906",
+            "title": "Ultracomputers"
+        },
+        {
+            "paperId": null,
+            "title": "Parallel Pre\ufb01x Computation"
+        },
+        {
+            "paperId": null,
+            "title": "A network of computers to execute reduction languages"
+        },
+        {
+            "paperId": "b67ad519057ee99a0a149f07a94e77eeab2e07e9",
+            "title": "An Efficient Parallel Algorithm for the Solution of a Tridiagonal Linear System of Equations"
+        },
+        {
+            "paperId": "3dbe2ee8de3c3bf06ed722b36cef75152f3d5997",
+            "title": "On the Algorithmic Complexity of Discrete Functions"
+        },
+        {
+            "paperId": "993de2892811b5dc507bbb618a7233cbf7a7f6a8",
+            "title": "Journal of the Association for Computing Machinery"
+        },
+        {
+            "paperId": null,
+            "title": "The parallel solution of recurrence problems was first discussed by Karp, Miller and Winograd [9], and parallel algorithms to solve them are given by Kogge and Stone"
+        },
+        {
+            "paperId": null,
+            "title": "Ladner and Michael J . Fischer . Parallel Prefix Computation"
+        },
+        {
+            "paperId": null,
+            "title": "Blelloch and James J . Little . Parallel Solutions to Geometric Problems on the Scan Model of Computation"
+        },
+        {
+            "paperId": null,
+            "title": "Optimal Parallel Prefix Circuits with (size + depth) = 2n -n and"
+        },
+        {
+            "paperId": null,
+            "title": "To evaluate polynomials"
+        },
+        {
+            "paperId": null,
+            "title": "11 Use a scan to generate the \ufb01rst n Fibonacci numbers"
+        },
+        {
+            "paperId": null,
+            "title": "To perform lexical analysis. For example, to parse a program into tokens"
+        },
+        {
+            "paperId": null,
+            "title": "1.15 Describe how quicksort is changed so that it selects a random element within each segment for a pivot"
+        },
+        {
+            "paperId": null,
+            "title": "To solve tridiagonal linear systems"
+        },
+        {
+            "paperId": null,
+            "title": "To delete marked elements from an array (see Section 1.3)"
+        },
+        {
+            "paperId": null,
+            "title": "To add multi precision numbers. These are numbers that cannot be represented in a single machine word"
+        },
+        {
+            "paperId": null,
+            "title": "To search for regular expressions. For example"
+        },
+        {
+            "paperId": null,
+            "title": "To implement quicksort (see Section 1)"
+        },
+        {
+            "paperId": null,
+            "title": "Chapter 1. Pre\ufb01x Sums and Their Applications"
+        },
+        {
+            "paperId": null,
+            "title": "1.9 Prove that the operator \u00d7 s de\ufb01ned in (1.17) is semiassociative"
+        }
+    ]
+}

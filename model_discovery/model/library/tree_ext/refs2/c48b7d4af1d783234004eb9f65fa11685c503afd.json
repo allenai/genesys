@@ -1,0 +1,110 @@
+{
+    "paperId": "c48b7d4af1d783234004eb9f65fa11685c503afd",
+    "externalIds": {
+        "DBLP": "conf/acl/MaZXY13",
+        "MAG": "2250516627",
+        "ACL": "P13-2020",
+        "CorpusId": 16859281
+    },
+    "title": "Easy-First POS Tagging and Dependency Parsing with Beam Search",
+    "abstract": "In this paper, we combine easy-first dependency parsing and POS tagging algorithms with beam search and structured perceptron. We propose a simple variant of \u201cearly-update\u201d to ensure valid update in the training process. The proposed solution can also be applied to combine beam search and structured perceptron with other systems that exhibit spurious ambiguity. On CTB, we achieve 94.01% tagging accuracy and 86.33% unlabeled attachment score with a relatively small beam width. On PTB, we also achieve state-of-the-art performance.",
+    "venue": "Annual Meeting of the Association for Computational Linguistics",
+    "year": 2013,
+    "referenceCount": 17,
+    "citationCount": 18,
+    "influentialCitationCount": 0,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper combines easy-first dependency parsing and POS tagging algorithms with beam search and structured perceptron and proposes a simple variant of \u201cearly-update\u201d to ensure valid update in the training process."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2109919783",
+            "name": "Ji Ma"
+        },
+        {
+            "authorId": "1728004",
+            "name": "Jingbo Zhu"
+        },
+        {
+            "authorId": "1391183811",
+            "name": "Tong Xiao"
+        },
+        {
+            "authorId": "144610884",
+            "name": "Nan Yang"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "3bb602ca7717d632ffc82ecae39a54a486d40571",
+            "title": "A Separately Passive-Aggressive Training Algorithm for Joint POS Tagging and Dependency Parsing"
+        },
+        {
+            "paperId": "9f96a2975c5d8119be280f06a675abf823aa738d",
+            "title": "Easy-First Chinese POS Tagging and Dependency Parsing"
+        },
+        {
+            "paperId": "42c9f88423e6b0cf38a8dc03a5b3f961efb5d8d8",
+            "title": "Data-driven Dependency Parsing With Empty Heads"
+        },
+        {
+            "paperId": "026c19a29d3d1f3997393192ced1eb6098038f09",
+            "title": "Analyzing the Effect of Global Learning and Beam-Search on Transition-Based Dependency Parsing"
+        },
+        {
+            "paperId": "ac87a78eec7521880fb5d47d68729f48d32f9176",
+            "title": "An Empirical Etudy of Non-Lexical Extensions to Delexicalized Transfer"
+        },
+        {
+            "paperId": "91c3130e89d2fd37caface9047389c71de14e2a1",
+            "title": "Structured Perceptron with Inexact Search"
+        },
+        {
+            "paperId": "c1d96c0f421f8b519cafdbb4e499faa1c797ed9b",
+            "title": "Transition-based Dependency Parsing with Rich Non-local Features"
+        },
+        {
+            "paperId": "311a30c808ee16e13e8d1a9ba5c12213de5ddf60",
+            "title": "Dynamic Programming for Linear-Time Incremental Parsing"
+        },
+        {
+            "paperId": "c90133d2f73b2d6d159f63ca5caf8a08c669cd6f",
+            "title": "Efficient Third-Order Dependency Parsers"
+        },
+        {
+            "paperId": "3ce0f00d6c949192107f1bd6a167c03e1fb7393a",
+            "title": "An Efficient Algorithm for Easy-First Non-Directional Dependency Parsing"
+        },
+        {
+            "paperId": "2b6a2a67a1bedbc53eb66f9658e34e85ba53a9c6",
+            "title": "LTAG Dependency Parsing with Bidirectional Incremental Construction"
+        },
+        {
+            "paperId": "3594af2ebf510609651bf282dfea65c8e837b1a7",
+            "title": "Joint Word Segmentation and POS Tagging Using a Single Perceptron"
+        },
+        {
+            "paperId": "fa97eda69a5a62388ea5bd02439a356b94047268",
+            "title": "Probabilistic Models for Action-Based Chinese Dependency Parsing"
+        },
+        {
+            "paperId": "6503a3d9fb204c2a08ecfcfe6ba5b815fc65a030",
+            "title": "Guided Learning for Bidirectional Sequence Classification"
+        },
+        {
+            "paperId": "c7607b791d5df3b45dc49a1dab48d8fae07ebd4b",
+            "title": "Chinese Segmentation with a Word-Based Perceptron Algorithm"
+        },
+        {
+            "paperId": "5a7958b418bceb48a315384568091ab1898b1640",
+            "title": "Discriminative Training Methods for Hidden Markov Models: Theory and Experiments with Perceptron Algorithms"
+        },
+        {
+            "paperId": "1504a9d5829033a8cb4cf37b8bb13dfd4baddc7b",
+            "title": "Enriching the Knowledge Sources Used in a Maximum Entropy Part-of-Speech Tagger"
+        }
+    ]
+}

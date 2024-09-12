@@ -1,0 +1,113 @@
+{
+    "paperId": "8edbd132765e72f5887b7ef8c38624f31dd53a77",
+    "externalIds": {
+        "MAG": "2596625124",
+        "DBLP": "conf/colt/HarveyLM17",
+        "CorpusId": 1503891
+    },
+    "title": "Nearly-tight VC-dimension bounds for piecewise linear neural networks",
+    "abstract": "We prove new upper and lower bounds on the VC-dimension of deep neural networks with the ReLU activation function. These bounds are tight for almost the entire range of parameters. Letting $W$ be the number of weights and $L$ be the number of layers, we prove that the VC-dimension is $O(W L \\log(W))$, and provide examples with VC-dimension $\\Omega( W L \\log(W/L) )$. This improves both the previously known upper bounds and lower bounds. In terms of the number $U$ of non-linear units, we prove a tight bound $\\Theta(W U)$ on the VC-dimension. All of these results generalize to arbitrary piecewise linear activation functions.",
+    "venue": "Annual Conference Computational Learning Theory",
+    "year": 2017,
+    "referenceCount": 19,
+    "citationCount": 170,
+    "influentialCitationCount": 23,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proves new upper and lower bounds on the VC-dimension of deep neural networks with the ReLU activation function, and proves a tight bound $\\Theta(W U)$ on theVC-dimension."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2058535047",
+            "name": "Nick Harvey"
+        },
+        {
+            "authorId": "3382597",
+            "name": "Christopher Liaw"
+        },
+        {
+            "authorId": "2062860421",
+            "name": "Abbas Mehrabian"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "23a4083ff361a73a781dcad0d6e239ae75540396",
+            "title": "Depth-Width Tradeoffs in Approximating Natural Functions with Neural Networks"
+        },
+        {
+            "paperId": "72bda1cb43d329b82ba180e1e7b977c52daae95d",
+            "title": "Depth Separation in ReLU Networks for Approximating Smooth Non-Linear Functions"
+        },
+        {
+            "paperId": "87524c2bb725f967b7fac73442d6412b43d422d1",
+            "title": "Why Deep Neural Networks for Function Approximation?"
+        },
+        {
+            "paperId": "47d540eaa09d5f060b620146a319b5556805e08e",
+            "title": "Why Deep Neural Networks?"
+        },
+        {
+            "paperId": "4d74c808f5720eb9eb312f7be85be03bd7207071",
+            "title": "Error bounds for approximations with deep ReLU networks"
+        },
+        {
+            "paperId": "4206c84525a7904df3613b843491c0ae6a5507eb",
+            "title": "Benefits of Depth in Neural Networks"
+        },
+        {
+            "paperId": "a9da71715d54e33959751c88bb69a5875a23e324",
+            "title": "The Power of Depth for Feedforward Neural Networks"
+        },
+        {
+            "paperId": "325e51cdb065666f3c9e21e70a823bbe33fefae7",
+            "title": "On the Expressive Power of Deep Learning: A Tensor Analysis"
+        },
+        {
+            "paperId": "da07bb3688f5ec5b42ee19fb06270a68be6ac46a",
+            "title": "Neural Network Learning: Theoretical Foundations"
+        },
+        {
+            "paperId": "fe5e6b810957da9bc10b099b00fd64c221d97961",
+            "title": "Almost Linear VC-Dimension Bounds for Piecewise Polynomial Networks"
+        },
+        {
+            "paperId": "c60f3ee93b489d1b85ea2de2571a7f4b4cc6ecfa",
+            "title": "Neural Nets with Superlinear VC-Dimension"
+        },
+        {
+            "paperId": "94d43b9ba85a57523c9b553dd5ca645aa5716d03",
+            "title": "Bounding the Vapnik-Chervonenkis Dimension of Concept Classes Parameterized by Real Numbers"
+        },
+        {
+            "paperId": "e0b8fa3496283d4d808fba9ff62d5f024bcf23be",
+            "title": "Learnability and the Vapnik-Chervonenkis dimension"
+        },
+        {
+            "paperId": null,
+            "title": "The impact of the nonlinearity on the VC-dimension of a deep network, 2017"
+        },
+        {
+            "paperId": "4f8d648c52edf74e41b0996128aa536e13cc7e82",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": "25406e6733a698bfc4ac836f8e74f458e75dad4f",
+            "title": "What Size Net Gives Valid Generalization?"
+        },
+        {
+            "paperId": "a36b028d024bf358c4af1a5e1dc3ca0aed23b553",
+            "title": "Chervonenkis: On the uniform convergence of relative frequencies of events to their probabilities"
+        },
+        {
+            "paperId": "06c126b1238dc11cc1e36a3b876dab4044637fa1",
+            "title": "Lower bounds for approximation by nonlinear manifolds"
+        },
+        {
+            "paperId": null,
+            "title": "Cover. Capacity problems for linear machines"
+        }
+    ]
+}

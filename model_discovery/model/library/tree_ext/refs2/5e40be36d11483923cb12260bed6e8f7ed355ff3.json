@@ -1,0 +1,190 @@
+{
+    "paperId": "5e40be36d11483923cb12260bed6e8f7ed355ff3",
+    "externalIds": {
+        "MAG": "2740899359",
+        "DBLP": "journals/corr/abs-1709-00893",
+        "ArXiv": "1709.00893",
+        "DOI": "10.24963/ijcai.2017/568",
+        "CorpusId": 20407824
+    },
+    "title": "Interactive Attention Networks for Aspect-Level Sentiment Classification",
+    "abstract": "Aspect-level sentiment classification aims at identifying the sentiment polarity of specific target in its context. Previous approaches have realized the importance of targets in sentiment classification and developed various methods with the goal of precisely modeling their contexts via generating target-specific representations. However, these studies always ignore the separate modeling of targets. In this paper, we argue that both targets and contexts deserve special treatment and need to be learned their own representations via interactive learning. Then, we propose the interactive attention networks (IAN) to interactively learn attentions in the contexts and targets, and generate the representations for targets and contexts separately. With this design, the IAN model can well represent a target and its collocative context, which is helpful to sentiment classification. Experimental results on SemEval 2014 Datasets demonstrate the effectiveness of our model.",
+    "venue": "International Joint Conference on Artificial Intelligence",
+    "year": 2017,
+    "referenceCount": 36,
+    "citationCount": 895,
+    "influentialCitationCount": 141,
+    "openAccessPdf": {
+        "url": "https://www.ijcai.org/proceedings/2017/0568.pdf",
+        "status": "BRONZE"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is argued that both targets and contexts deserve special treatment and need to be learned their own representations via interactive learning and proposed the interactive attention networks (IAN) to interactively learn attentions in the contexts and targets."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2963245",
+            "name": "Dehong Ma"
+        },
+        {
+            "authorId": "1695451",
+            "name": "Sujian Li"
+        },
+        {
+            "authorId": "1686594",
+            "name": "Xiaodong Zhang"
+        },
+        {
+            "authorId": "1781885",
+            "name": "Houfeng Wang"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "82bb306038446302cedd20fa986d20640ed88a2e",
+            "title": "Attention-based LSTM for Aspect-level Sentiment Classification"
+        },
+        {
+            "paperId": "def0ec30fab1594a2686677868e7fed4c11fb7f4",
+            "title": "A Hierarchical Model of Reviews for Aspect-based Sentiment Analysis"
+        },
+        {
+            "paperId": "b28f7e2996b6ee2784dd2dbb8212cfa0c79ba9e7",
+            "title": "Aspect Level Sentiment Classification with Deep Memory Network"
+        },
+        {
+            "paperId": "0b0dc14b8a8dcccbfc62a38355fff2f6a361e9d2",
+            "title": "Effective LSTMs for Target-Dependent Sentiment Classification"
+        },
+        {
+            "paperId": "e5a241df2f4bc8dca3763131571a2145d139f426",
+            "title": "Target-Dependent Twitter Sentiment Classification with Rich Automatic Features"
+        },
+        {
+            "paperId": "37eaa303f2d6167363c523c028fc06f16c46fb85",
+            "title": "Learning Tag Embeddings and Tag-specific Composition Functions in Recursive Neural Network"
+        },
+        {
+            "paperId": "32de44f01a96d4473d21099d15e25bc2b9f08e2f",
+            "title": "Improved Semantic Representations From Tree-Structured Long Short-Term Memory Networks"
+        },
+        {
+            "paperId": "f37e1b62a767a307c046404ca96bc140b3e68cb5",
+            "title": "GloVe: Global Vectors for Word Representation"
+        },
+        {
+            "paperId": "06e122f475a21d92dba137609c40f35690217475",
+            "title": "Adaptive Recursive Neural Network for Target-dependent Twitter Sentiment Classification"
+        },
+        {
+            "paperId": "687bac2d3320083eb4530bf18bb8f8f721477600",
+            "title": "Recursive Deep Models for Semantic Compositionality Over a Sentiment Treebank"
+        },
+        {
+            "paperId": "506b0cad3d660a53364d622e49673ae5f95526c8",
+            "title": "NRC-Canada: Building the State-of-the-Art in Sentiment Analysis of Tweets"
+        },
+        {
+            "paperId": "2b669398c4cf2ebe04375c8b1beae20f4ac802fa",
+            "title": "Improving Word Representations via Global Context and Multiple Word Prototypes"
+        },
+        {
+            "paperId": "33c95f4d13958e65e676a9cd64bd4d8df0fdb44d",
+            "title": "Sentiment Analysis and Opinion Mining"
+        },
+        {
+            "paperId": "cfa2646776405d50533055ceb1b7f050e9014dcb",
+            "title": "Semi-Supervised Recursive Autoencoders for Predicting Sentiment Distributions"
+        },
+        {
+            "paperId": "7ba9dcbd2e9163f2684b098786bbc3abb4784905",
+            "title": "Target-dependent Twitter Sentiment Classification"
+        },
+        {
+            "paperId": "c08253f2f5c9d3a0e808c54b32e6f2b170012a41",
+            "title": "Proceedings of the 12th Conference of the European Chapter of the Association for Computational Linguistics"
+        },
+        {
+            "paperId": "841c52958004893b21bee9d6f8373e8a279f76c7",
+            "title": "Semi-Supervised Polarity Lexicon Induction"
+        },
+        {
+            "paperId": "02b3e1a74d6f09a467823ade1460fb950b7f609b",
+            "title": "Proceedings of the Conference on Empirical Methods in Natural Language Processing"
+        },
+        {
+            "paperId": "b25663fa149be5286de193c13324098aedd7e2cc",
+            "title": "Opinion Mining and Sentiment Analysis"
+        },
+        {
+            "paperId": "57458bc1cffe5caa45a885af986d70f723f406b4",
+            "title": "A unified architecture for natural language processing: deep neural networks with multitask learning"
+        },
+        {
+            "paperId": "7bc9d310197d243613e254c0a3f7a1bada1e36d4",
+            "title": "Building Lexicon for Sentiment Analysis from Massive Collection of HTML Documents"
+        },
+        {
+            "paperId": "6c2b28f9354f667cd5bd07afc0471d8334430da7",
+            "title": "A Neural Probabilistic Language Model"
+        },
+        {
+            "paperId": "12d0353ce8b41b7e5409e5a4a611110aee33c7bc",
+            "title": "Thumbs up? Sentiment Classification using Machine Learning Techniques"
+        },
+        {
+            "paperId": "20b844e395355b40fa5940c61362ec40e56027aa",
+            "title": "Neural networks"
+        },
+        {
+            "paperId": "297d01ff6731c3bd917ede3d378c94cb84650e8f",
+            "title": "Opinion Mining and Sentiment Analysis"
+        },
+        {
+            "paperId": null,
+            "title": "In IJCAI"
+        },
+        {
+            "paperId": "2453d7c408f17cd477584fad9a8c864276b24782",
+            "title": "Synthesis Lectures on Human Language Technologies"
+        },
+        {
+            "paperId": "dd89721cff18055a6ffb9348e7377846c99da08d",
+            "title": "Learning Sentiment Lexicons in Spanish"
+        },
+        {
+            "paperId": null,
+            "title": "In LREC"
+        },
+        {
+            "paperId": "b93e9e3ec0c8d1fafa60fdf0fc184d2f710c112b",
+            "title": "Proceedings of the 49th Annual Meeting of the Association for Computational Linguistics: Human Language Technologies"
+        },
+        {
+            "paperId": "9819b600a828a57e1cde047bbe710d3446b30da5",
+            "title": "Recurrent neural network based language model"
+        },
+        {
+            "paperId": null,
+            "title": "In Interspeech"
+        },
+        {
+            "paperId": null,
+            "title": "Foundations and Trends in Information Retrieval"
+        },
+        {
+            "paperId": null,
+            "title": "journal of machine learning research"
+        },
+        {
+            "paperId": "735d4220d5579cc6afe956d9f6ea501a96ae99e2",
+            "title": "On the momentum term in gradient descent learning algorithms"
+        },
+        {
+            "paperId": null,
+            "title": "International Conference on Computational Linguistics"
+        }
+    ]
+}

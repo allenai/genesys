@@ -1,0 +1,214 @@
+{
+    "paperId": "b1c169cb857d992449ae1bc00ff17f8cbb3ef285",
+    "externalIds": {
+        "MAG": "2804339109",
+        "DBLP": "journals/corr/abs-1805-09657",
+        "ArXiv": "1805.09657",
+        "CorpusId": 43980722
+    },
+    "title": "Learning compositionally through attentive guidance",
+    "abstract": "While neural network models have been successfully applied to domains that require substantial generalisation skills, recent studies have implied that they struggle when solving the task they are trained on requires inferring its underlying compositional structure. In this paper, we introduce Attentive Guidance, a mechanism to direct a sequence to sequence model equipped with attention to find more compositional solutions. We test it on two tasks, devised precisely to assess the compositional capabilities of neural models, and we show that vanilla sequence to sequence models with attention overfit the training distribution, while the guided versions come up with compositional solutions that fit the training and testing distributions almost equally well. Moreover, the learned solutions generalise even in cases where the training and testing distributions strongly diverge. In this way, we demonstrate that sequence to sequence models are capable of finding compositional solutions without requiring extra components. These results helps to disentangle the causes for the lack of systematic compositionality in neural networks, which can in turn fuel future work.",
+    "venue": "arXiv.org",
+    "year": 2018,
+    "referenceCount": 42,
+    "citationCount": 27,
+    "influentialCitationCount": 1,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Attentive Guidance, a mechanism to direct a sequence to sequence model equipped with attention to find more compositional solutions, is introduced, and it is shown that vanilla sequence tosequence models with attention overfit the training distribution, while the guided versions come up with Compositional solutions that fit the training and testing distributions almost equally well."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3449411",
+            "name": "Dieuwke Hupkes"
+        },
+        {
+            "authorId": "2111008600",
+            "name": "Anand Singh"
+        },
+        {
+            "authorId": "46238522",
+            "name": "K. Korrel"
+        },
+        {
+            "authorId": "2067996",
+            "name": "Germ\u00e1n Kruszewski"
+        },
+        {
+            "authorId": "2552871",
+            "name": "Elia Bruni"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "3abc5ffb1757ec3f35cb7b4100410570b0b51e09",
+            "title": "LSTMs Can Learn Syntax-Sensitive Dependencies Well, But Modeling Structure Makes Them Better"
+        },
+        {
+            "paperId": "15be357a094d22dd7895961cc2fab83f577a9602",
+            "title": "The Fine Line between Linguistic Generalization and Failure in Seq2Seq-Attention Models"
+        },
+        {
+            "paperId": "3d42ddf7c5ce59ae04d1d27085be9f736d1be04b",
+            "title": "Colorless Green Recurrent Networks Dream Hierarchically"
+        },
+        {
+            "paperId": "08fbb1b4cfdc83977d2c8f08bdfb663f13c0e60a",
+            "title": "Memorize or generalize? Searching for a compositional RNN in a haystack"
+        },
+        {
+            "paperId": "289fb3709475f5c87df8d97f129af54029d27fee",
+            "title": "Compositional Attention Networks for Machine Reasoning"
+        },
+        {
+            "paperId": "f170fed9acd71bd5feb20901c7ec1fe395f3fae5",
+            "title": "Visualisation and 'diagnostic classifiers' reveal how recurrent and recursive neural networks process hierarchical structure"
+        },
+        {
+            "paperId": "eecab00a7c6d58792ec5e620ab1fc37043545a14",
+            "title": "Still not systematic after all these years: On the compositional skills of sequence-to-sequence recurrent networks"
+        },
+        {
+            "paperId": "3fafe70edc7067015ca2d49aef2773c22a71647d",
+            "title": "Exploring Human-like Attention Supervision in Visual Question Answering"
+        },
+        {
+            "paperId": "00f5bfc2fb760249ba4e9c72b72eea4574068339",
+            "title": "VQS: Linking Segmentations to Questions and Answers for Supervised Attention in VQA and Question-Focused Semantic Segmentation"
+        },
+        {
+            "paperId": "6b024162f81e8ff7aa34c3a43d601a912d012c78",
+            "title": "Making Neural Programming Architectures Generalize via Recursion"
+        },
+        {
+            "paperId": "03eb382e04cca8cca743f7799070869954f1402a",
+            "title": "CLEVR: A Diagnostic Dataset for Compositional Language and Elementary Visual Reasoning"
+        },
+        {
+            "paperId": "3a13f7c43b767b1fb72ef107ef62a4ddd48dd2a7",
+            "title": "Modular Multitask Reinforcement Learning with Policy Sketches"
+        },
+        {
+            "paperId": "29e944711a354c396fad71936f536e83025b6ce0",
+            "title": "Categorical Reparameterization with Gumbel-Softmax"
+        },
+        {
+            "paperId": "d4a887499773ff32aae898711e595654f3f65199",
+            "title": "Supervised Attentions for Neural Machine Translation"
+        },
+        {
+            "paperId": "0bd373acdd3c3596d67db5dd544d9176dfd7ee9f",
+            "title": "Probing the Compositionality of Intuitive Functions"
+        },
+        {
+            "paperId": "846aedd869a00c09b40f1f1f35673cb22bc87490",
+            "title": "Mastering the game of Go with deep neural networks and tree search"
+        },
+        {
+            "paperId": "815c84ab906e43f3e6322f2ca3fd5e1360c64285",
+            "title": "Human-level concept learning through probabilistic program induction"
+        },
+        {
+            "paperId": "a2499dd426c46c645ee805d7594b6687547c72d4",
+            "title": "Neural Random Access Machines"
+        },
+        {
+            "paperId": "b59d91e0699d4e1896a15bae13fd180bdaf77ea5",
+            "title": "Neural Programmer-Interpreters"
+        },
+        {
+            "paperId": "bf85a0cd645ad68919c0706741ab568a60a58af2",
+            "title": "Neural Programmer: Inducing Latent Programs with Gradient Descent"
+        },
+        {
+            "paperId": "93499a7c7f699b6630a86fad964536f9423bb6d0",
+            "title": "Effective Approaches to Attention-based Neural Machine Translation"
+        },
+        {
+            "paperId": "c9fa385527ba3c7b6b497229d1a000a554cdc08c",
+            "title": "Advances in Neural Information Processing Systems (NIPS)"
+        },
+        {
+            "paperId": "ac3ee98020251797c2b401e1389461df88e52e62",
+            "title": "Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "bf1f8415b61d0afe31b2e901e888866c5b7e4f96",
+            "title": "Motor primitives in vertebrates and invertebrates"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "56cbfcbfffd8c54bd8477d10b6e0e17e097b97c7",
+            "title": "Connectionism and cognitive architecture: A critical analysis"
+        },
+        {
+            "paperId": "f6524a6b8e6091c0a11d665180a5ad94bbf1d3b4",
+            "title": "Inductive Inference: Theory and Methods"
+        },
+        {
+            "paperId": "d382b9c11e5c6a8e173fbeb442545e3be8d3e3a5",
+            "title": "Modeling By Shortest Data Description*"
+        },
+        {
+            "paperId": "20cc59e8879305cbe18409c77464eff272e1cf55",
+            "title": "Language Identification in the Limit"
+        },
+        {
+            "paperId": "6e785a402a60353e6e22d6883d3998940dcaea96",
+            "title": "Three models for the description of language"
+        },
+        {
+            "paperId": null,
+            "title": "Learning compositionally through attentive guidance"
+        },
+        {
+            "paperId": null,
+            "title": "and Baroni"
+        },
+        {
+            "paperId": "b045668f865009b15133a6736962178b55719cb0",
+            "title": "Neural Information Processing Systems (NIPS)"
+        },
+        {
+            "paperId": null,
+            "title": "and De Freitas"
+        },
+        {
+            "paperId": "81b3b3fe994a9eda6d3f9d2149aa4492d1933975",
+            "title": "Learning Continuous Phrase Representations and Syntactic Parsing with Recursive Neural Networks"
+        },
+        {
+            "paperId": "4b3439884c4dbac5fc5530ab5afeaf3669e85462",
+            "title": "Sequential Decisions based on Algorithmic Probability"
+        },
+        {
+            "paperId": null,
+            "title": "and Hochner"
+        },
+        {
+            "paperId": "75c74bfd77c4f87060ef045072704556ba6f4f57",
+            "title": "Compositionality"
+        },
+        {
+            "paperId": null,
+            "title": "Attention mechanisms MLP attention method"
+        },
+        {
+            "paperId": null,
+            "title": "ceedings of the first workshop on building linguistically generalizable nlp systems"
+        }
+    ]
+}

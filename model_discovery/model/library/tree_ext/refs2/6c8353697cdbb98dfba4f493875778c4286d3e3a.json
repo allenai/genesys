@@ -1,0 +1,154 @@
+{
+    "paperId": "6c8353697cdbb98dfba4f493875778c4286d3e3a",
+    "externalIds": {
+        "DBLP": "conf/cvpr/RennieMMRG17",
+        "MAG": "2963084599",
+        "ArXiv": "1612.00563",
+        "DOI": "10.1109/CVPR.2017.131",
+        "CorpusId": 206594923
+    },
+    "title": "Self-Critical Sequence Training for Image Captioning",
+    "abstract": "Recently it has been shown that policy-gradient methods for reinforcement learning can be utilized to train deep end-to-end systems directly on non-differentiable metrics for the task at hand. In this paper we consider the problem of optimizing image captioning systems using reinforcement learning, and show that by carefully optimizing our systems using the test metrics of the MSCOCO task, significant gains in performance can be realized. Our systems are built using a new optimization approach that we call self-critical sequence training (SCST). SCST is a form of the popular REINFORCE algorithm that, rather than estimating a baseline to normalize the rewards and reduce variance, utilizes the output of its own test-time inference algorithm to normalize the rewards it experiences. Using this approach, estimating the reward signal (as actor-critic methods must do) and estimating normalization (as REINFORCE algorithms typically do) is avoided, while at the same time harmonizing the model with respect to its test-time inference procedure. Empirically we find that directly optimizing the CIDEr metric with SCST and greedy decoding at test-time is highly effective. Our results on the MSCOCO evaluation sever establish a new state-of-the-art on the task, improving the best result in terms of CIDEr from 104.9 to 114.7.",
+    "venue": "Computer Vision and Pattern Recognition",
+    "year": 2016,
+    "referenceCount": 26,
+    "citationCount": 1767,
+    "influentialCitationCount": 328,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1612.00563",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper considers the problem of optimizing image captioning systems using reinforcement learning, and shows that by carefully optimizing systems using the test metrics of the MSCOCO task, significant gains in performance can be realized."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2071376",
+            "name": "Steven J. Rennie"
+        },
+        {
+            "authorId": "2293163",
+            "name": "E. Marcheret"
+        },
+        {
+            "authorId": "2211263",
+            "name": "Youssef Mroueh"
+        },
+        {
+            "authorId": "39320489",
+            "name": "Jerret Ross"
+        },
+        {
+            "authorId": "1782589",
+            "name": "Vaibhava Goel"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "2fe874a1c85ecc9e848bf9defd76535e19d51f39",
+            "title": "Professor Forcing: A New Algorithm for Training Recurrent Networks"
+        },
+        {
+            "paperId": "62f74d3aaf9e86633e4d88b04a6d04ca93e8b81e",
+            "title": "Show and Tell: Lessons Learned from the 2015 MSCOCO Image Captioning Challenge"
+        },
+        {
+            "paperId": "0d24a0695c9fc669e643bad51d4e14f056329dec",
+            "title": "An Actor-Critic Algorithm for Sequence Prediction"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "b7aee9dfb027d6061c6a653684c0fa9a9bba750d",
+            "title": "Sequence Level Training with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "df137487e20ba7c6e1e2b9a1e749f2a578b5ad99",
+            "title": "Scheduled Sampling for Sequence Prediction with Recurrent Neural Networks"
+        },
+        {
+            "paperId": "d316c82c12cf4c45f9e85211ef3d1fa62497bff8",
+            "title": "High-Dimensional Continuous Control Using Generalized Advantage Estimation"
+        },
+        {
+            "paperId": "c9d7afd65b2127e6f0651bc7e13eeec1897ac8dd",
+            "title": "Reinforcement Learning Neural Turing Machines"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "55e022fb7581bb9e1fce678d21fb25ffbb3fbb88",
+            "title": "Deep visual-semantic alignments for generating image descriptions"
+        },
+        {
+            "paperId": "258986132bf17755fe8263e42429fe73218c1534",
+            "title": "CIDEr: Consensus-based image description evaluation"
+        },
+        {
+            "paperId": "d4dc1012d780e8e2547237eb5a6dc7b1bf47d2f0",
+            "title": "Show and tell: A neural image caption generator"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "71b7178df5d2b112d07e45038cb5637208659ff7",
+            "title": "Microsoft COCO: Common Objects in Context"
+        },
+        {
+            "paperId": "331f0fb3b6176c6e463e0401025b04f6ace9ccd3",
+            "title": "Neural Variational Inference and Learning in Belief Networks"
+        },
+        {
+            "paperId": "28aa465c3af7e5ccf1b10ae9cf76e83aab3ee34f",
+            "title": "Context models and out-of-context objects"
+        },
+        {
+            "paperId": "7533d30329cfdbf04ee8ee82bfef792d08015ee5",
+            "title": "METEOR: An Automatic Metric for MT Evaluation with Improved Correlation with Human Judgments"
+        },
+        {
+            "paperId": "60b05f32c32519a809f21642ef1eb3eaf3848008",
+            "title": "ROUGE: A Package for Automatic Evaluation of Summaries"
+        },
+        {
+            "paperId": "d7da009f457917aa381619facfa5ffae9329a6e9",
+            "title": "Bleu: a Method for Automatic Evaluation of Machine Translation"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "4c915c1eecb217c123a36dc6d3ce52d12c742614",
+            "title": "Simple Statistical Gradient-Following Algorithms for Connectionist Reinforcement Learning"
+        },
+        {
+            "paperId": "97efafdb4a3942ab3efba53ded7413199f79c054",
+            "title": "Reinforcement Learning: An Introduction"
+        },
+        {
+            "paperId": null,
+            "title": "a blue boat is sitting on the side of a building \u00ad0"
+        },
+        {
+            "paperId": null,
+            "title": "a blue street sign on the side of a building \u00ad0.224760 3. a blue umbrella sitting on top of a building \u00ad0"
+        },
+        {
+            "paperId": null,
+            "title": "Attention heat-maps for the best model in the XE-trained ensemble of attention models, for the image depicted in figure 6"
+        }
+    ]
+}

@@ -1,0 +1,194 @@
+{
+    "paperId": "39e0c341351f8f4a39ac890b96217c7f4bde5369",
+    "externalIds": {
+        "MAG": "2099057450",
+        "DBLP": "journals/corr/TheisOB15",
+        "ArXiv": "1511.01844",
+        "CorpusId": 2187805
+    },
+    "title": "A note on the evaluation of generative models",
+    "abstract": "Probabilistic generative models can be used for compression, denoising, inpainting, texture synthesis, semi-supervised learning, unsupervised feature learning, and other tasks. Given this wide range of applications, it is not surprising that a lot of heterogeneity exists in the way these models are formulated, trained, and evaluated. As a consequence, direct comparison between models is often difficult. This article reviews mostly known but often underappreciated properties relating to the evaluation and interpretation of generative models with a focus on image models. In particular, we show that three of the currently most commonly used criteria---average log-likelihood, Parzen window estimates, and visual fidelity of samples---are largely independent of each other when the data is high-dimensional. Good performance with respect to one criterion therefore need not imply good performance with respect to the other criteria. Our results show that extrapolation from one criterion to another is not warranted and generative models need to be evaluated directly with respect to the application(s) they were intended for. In addition, we provide examples demonstrating that Parzen window estimates should generally be avoided.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2015,
+    "referenceCount": 39,
+    "citationCount": 1071,
+    "influentialCitationCount": 77,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This article reviews mostly known but often underappreciated properties relating to the evaluation and interpretation of generative models with a focus on image models and shows that three of the currently most commonly used criteria---average log-likelihood, Parzen window estimates, and visual fidelity of samples---are largely independent of each other when the data is high-dimensional."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2073063",
+            "name": "Lucas Theis"
+        },
+        {
+            "authorId": "3422336",
+            "name": "A\u00e4ron van den Oord"
+        },
+        {
+            "authorId": "1731199",
+            "name": "M. Bethge"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "9d1fb89b99aafc01ee56fc92df1ad150fba67c22",
+            "title": "On orthogonality and learning recurrent networks with long term dependencies"
+        },
+        {
+            "paperId": "4593b38d391666595bab33e152638647146bd65b",
+            "title": "Variational Generative Stochastic Networks with Collaborative Shaping"
+        },
+        {
+            "paperId": "47900aca2f0b50da3010ad59b394c870f0e6c02e",
+            "title": "Deep Generative Image Models using a Laplacian Pyramid of Adversarial Networks"
+        },
+        {
+            "paperId": "f267934e9de60c5badfa9d3f28918e67ae7a2bf4",
+            "title": "Generative Image Modeling Using Spatial LSTMs"
+        },
+        {
+            "paperId": "ecef28ddfcacf4f2ba9c22a3c8296d4e19322d3d",
+            "title": "Texture synthesis and the controlled generation of natural stimuli using convolutional neural networks"
+        },
+        {
+            "paperId": "0d0eeb46fc5ec778a62bb94aa2ef261b08e6f8c6",
+            "title": "Texture Synthesis Using Convolutional Neural Networks"
+        },
+        {
+            "paperId": "4e2f6b4bc889eed1afe5833d5190f6f02e501061",
+            "title": "Training generative neural networks via Maximum Mean Discrepancy optimization"
+        },
+        {
+            "paperId": "2dcef55a07f8607a819c21fe84131ea269cc2e3c",
+            "title": "Deep Unsupervised Learning using Nonequilibrium Thermodynamics"
+        },
+        {
+            "paperId": "a2785f66c20fbdf30ec26c0931584c6d6a0f4fca",
+            "title": "DRAW: A Recurrent Neural Network For Image Generation"
+        },
+        {
+            "paperId": "2904a9932f4cd0f0886121dc1f2d4aaac0455176",
+            "title": "Generative Moment Matching Networks"
+        },
+        {
+            "paperId": "0523e14247d74c4505cd5e32e1f0495f291ec432",
+            "title": "Factoring Variations in Natural Images with Deep Gaussian Mixture Models"
+        },
+        {
+            "paperId": "b437b5a0445f17b06b12791bc48aeb8110e95dc5",
+            "title": "Learning to generate chairs with convolutional neural networks"
+        },
+        {
+            "paperId": "66ad2fbc8b73242a889699868611fcf239e3435d",
+            "title": "Semi-supervised Learning with Deep Generative Models"
+        },
+        {
+            "paperId": "5ffa8bf1bf3e39227be28de4ff6915d3b21eb52d",
+            "title": "Deep Generative Stochastic Networks Trainable by Backprop"
+        },
+        {
+            "paperId": "309494da0769345cb35ca0b7b0aae8143eee85a2",
+            "title": "RNADE: The real-valued neural autoregressive density-estimator"
+        },
+        {
+            "paperId": "09d21ce2873e81ba48dd529817ac25ea71c0ffa7",
+            "title": "How Sensitive Is the Human Visual System to the Local Statistics of Natural Images?"
+        },
+        {
+            "paperId": "d0965d8f9842f2db960b36b528107ca362c00d1a",
+            "title": "Better Mixing via Deep Representations"
+        },
+        {
+            "paperId": "bd5fc28c7356915ec71abafbe86b7596c60720aa",
+            "title": "The conference paper"
+        },
+        {
+            "paperId": "aeed631d6a84100b5e9a021ec1914095c66de415",
+            "title": "Bayesian Learning via Stochastic Gradient Langevin Dynamics"
+        },
+        {
+            "paperId": "0fe79ea0d4e3db83662d1123a9d73f4eba477ff4",
+            "title": "Approximate inference for the loss-calibrated Bayesian"
+        },
+        {
+            "paperId": "e3ce36b9deb47aa6bb2aa19c4bfa71283b505025",
+            "title": "Noise-contrastive estimation: A new estimation principle for unnormalized statistical models"
+        },
+        {
+            "paperId": "35e57c040ddf95eca2a9bd6e1c532a08147b1f29",
+            "title": "Minimum Probability Flow Learning"
+        },
+        {
+            "paperId": "3596cc61267bdae97bb1df9b01a8e9a1b8dca450",
+            "title": "Natural Image Statistics - A Probabilistic Approach to Early Computational Vision"
+        },
+        {
+            "paperId": "8670e2aaec203332b46abed2237e54fc3e422c11",
+            "title": "Mean squared error: Love it or leave it? A new look at Signal Fidelity Measures"
+        },
+        {
+            "paperId": "3a3aa31045bb79ecded928347f26685f180807ff",
+            "title": "Scene Completion Using Millions of Photographs"
+        },
+        {
+            "paperId": "9bca4d7b932e0854c3325f1578cfd17341dd8ea8",
+            "title": "A Kernel Method for the Two-Sample-Problem"
+        },
+        {
+            "paperId": "668b1277fbece28c4841eeab1c97e4ebd0079700",
+            "title": "Pattern Recognition and Machine Learning"
+        },
+        {
+            "paperId": "f5d565d307a746d8bc0feb52c873995af698deca",
+            "title": "Principled Hybrids of Generative and Discriminative Models"
+        },
+        {
+            "paperId": "9966e890f2eedb4577e11b9d5a66380a4d9341fe",
+            "title": "Estimation of Non-Normalized Statistical Models by Score Matching"
+        },
+        {
+            "paperId": "52070af952474cf13ecd015d42979373ff7c1c00",
+            "title": "Training Products of Experts by Minimizing Contrastive Divergence"
+        },
+        {
+            "paperId": "37afeac49518877dc96a3ca2ec3ebdfc5305e0a9",
+            "title": "A Parametric Texture Model Based on Joint Statistics of Complex Wavelet Coefficients"
+        },
+        {
+            "paperId": "faa975eaeb6a45031f77d6d7344ac905f74fb962",
+            "title": "The mathematical theory of communication"
+        },
+        {
+            "paperId": "c68796f833a7151f0a63d1d1608dc902b4fdc9b6",
+            "title": "GENERATIVE ADVERSARIAL NETS"
+        },
+        {
+            "paperId": "bcd857d75841aa3e92cd4284a8818aba9f6c0c3f",
+            "title": "Published as a conference paper at ICLR 2018 S IMULATING A CTION D YNAMICS WITH N EURAL P ROCESS N ETWORKS"
+        },
+        {
+            "paperId": "e193734562261e42e207de81a44b8f874c9faf0a",
+            "title": "Locally-connected transformations for deep GMMs"
+        },
+        {
+            "paperId": null,
+            "title": "Unlearning for better mixing"
+        },
+        {
+            "paperId": "b6a80aac142cd46113d4b592650c8c277c37556d",
+            "title": "F Mean Squared Error: Love It or Leave It?"
+        },
+        {
+            "paperId": "6d12a1d23b21a9b170118a56386552bc5d4727de",
+            "title": "A Mathematical Theory of Communication"
+        },
+        {
+            "paperId": null,
+            "title": "1 In decision theory, such a metric is called an improper scoring function"
+        }
+    ]
+}

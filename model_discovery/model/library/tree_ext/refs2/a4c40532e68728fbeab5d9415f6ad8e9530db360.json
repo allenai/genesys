@@ -1,0 +1,154 @@
+{
+    "paperId": "a4c40532e68728fbeab5d9415f6ad8e9530db360",
+    "externalIds": {
+        "ACL": "W17-3518",
+        "DBLP": "conf/inlg/GardentSNP17",
+        "MAG": "2786660442",
+        "DOI": "10.18653/v1/W17-3518",
+        "CorpusId": 28193461
+    },
+    "title": "The WebNLG Challenge: Generating Text from RDF Data",
+    "abstract": "The WebNLG challenge consists in mapping sets of RDF triples to text. It provides a common benchmark on which to train, evaluate and compare \u201cmicroplanners\u201d, i.e. generation systems that verbalise a given content by making a range of complex interacting choices including referring expression generation, aggregation, lexicalisation, surface realisation and sentence segmentation. In this paper, we introduce the microplanning task, describe data preparation, introduce our evaluation methodology, analyse participant results and provide a brief description of the participating systems.",
+    "venue": "International Conference on Natural Language Generation",
+    "year": 2017,
+    "referenceCount": 27,
+    "citationCount": 345,
+    "influentialCitationCount": 89,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/W17-3518.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The microplanning task is introduced, data preparation, evaluation methodology, participant results and a brief description of the participating systems are provided."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1794075",
+            "name": "Claire Gardent"
+        },
+        {
+            "authorId": "2181869",
+            "name": "Anastasia Shimorina"
+        },
+        {
+            "authorId": "143790499",
+            "name": "Shashi Narayan"
+        },
+        {
+            "authorId": "1400959575",
+            "name": "Laura Perez-Beltrachini"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "19a632b17b2ee5f64df41bdd23755316a02fb939",
+            "title": "Creating Training Corpora for NLG Micro-Planners"
+        },
+        {
+            "paperId": "7aced008122aa344ee2b889e69f66945b92fae73",
+            "title": "FORGe at SemEval-2017 Task 9: Deep sentence generation based on a sequence of graph transducers"
+        },
+        {
+            "paperId": "43e24832ac3e5081c263d88b1071578b7b9ef4ec",
+            "title": "Split and Rephrase"
+        },
+        {
+            "paperId": "17a3c997aa774842e303734ea40cca291b39be79",
+            "title": "Analysing Data-To-Text Generation Benchmarks"
+        },
+        {
+            "paperId": "100104b980d56a40cadfbd7034fa7807ce49b3fb",
+            "title": "Nematus: a Toolkit for Neural Machine Translation"
+        },
+        {
+            "paperId": "aab5002a22b9b4244a8329b140bd0a86021aa2d1",
+            "title": "OpenNMT: Open-Source Toolkit for Neural Machine Translation"
+        },
+        {
+            "paperId": "8cf76f09a63e8195b535edbb0d53e60d93a076aa",
+            "title": "Building RDF Content for Data-to-Text Generation"
+        },
+        {
+            "paperId": "c151627b73a9d5b9af5402e70d18f4fa7623a4e7",
+            "title": "Towards more variation in text generation: Developing and evaluating variation models for choice of referential form"
+        },
+        {
+            "paperId": "9ffaa3a91071f0b9b7676b8cfc73e06069329724",
+            "title": "Multi-domain Neural Network Language Generation for Spoken Dialogue Systems"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "a5e4377d2149a8167d89383d785793967cf74602",
+            "title": "Meteor Universal: Language Specific Translation Evaluation for Any Target Language"
+        },
+        {
+            "paperId": "a58d4feda8935d3387fff78efff057adaca8a4c0",
+            "title": "The KBGen Challenge"
+        },
+        {
+            "paperId": "0793c4cfc4327eb6c51d9efb014a5ac271768f04",
+            "title": "Overview of the First Content Selection Challenge from Open Semantic Web Data"
+        },
+        {
+            "paperId": "9e88533210ad1555b5e4085fa67f87505f63e1ee",
+            "title": "The First Surface Realisation Shared Task: Overview and Evaluation Results"
+        },
+        {
+            "paperId": "1f5dc1b42cfcca0c15cedc8d4789cd17c4575f75",
+            "title": "The GREC Named Entity Generation Challenge 2009: Overview and Evaluation Results"
+        },
+        {
+            "paperId": "899e806a782c0377e12719d051f98969729c65ee",
+            "title": "The TUNA-REG Challenge 2009: Overview and Evaluation Results"
+        },
+        {
+            "paperId": "4ee2eab4c298c1824a9fb8799ad8eed21be38d21",
+            "title": "Moses: Open Source Toolkit for Statistical Machine Translation"
+        },
+        {
+            "paperId": "009f60203ac86cda58a783a7003c575f06c475fd",
+            "title": "Manual and Automatic Evaluation of Machine Translation between European Languages"
+        },
+        {
+            "paperId": "d7da009f457917aa381619facfa5ffae9329a6e9",
+            "title": "Bleu: a Method for Automatic Evaluation of Machine Translation"
+        },
+        {
+            "paperId": "54cecdd7bf811d492ef394636dbc214e9a77adcd",
+            "title": "Language and Thought"
+        },
+        {
+            "paperId": "d630b21864a6311012046ab7c7c274d4da1776ab",
+            "title": "Generating Referring Expressions in Context: The GREC Task Evaluation Challenges"
+        },
+        {
+            "paperId": "904a8de2b46fd02e4d850806a28893c05408d9d5",
+            "title": "Automatic Measurement of Syntactic Complexity Using the Revised Developmental Level Scale"
+        },
+        {
+            "paperId": "d4584ae905c7748d1926b1a7b784f7c6a5eabef9",
+            "title": "The TUNA Challenge 2008: Overview and Evaluation Results"
+        },
+        {
+            "paperId": "dd81aab2d438f5dab82dfc8993a8c8f7db538921",
+            "title": "The attribute selection for GRE challenge: overview and evaluation results"
+        },
+        {
+            "paperId": "3d07b5087e53c6f7c228b3c7e769494527be228e",
+            "title": "A Study of Translation Edit Rate with Targeted Human Annotation"
+        },
+        {
+            "paperId": "a5899f1ec92af7d01f35225161430116a6eabbea",
+            "title": "A STUDY OF TRANSLATION ERROR RATE WITH TARGETED HUMAN ANNOTATION"
+        },
+        {
+            "paperId": "91d92735e11cb48f63b94f4750df1202d75b59bf",
+            "title": "Natural Language Generation"
+        }
+    ]
+}

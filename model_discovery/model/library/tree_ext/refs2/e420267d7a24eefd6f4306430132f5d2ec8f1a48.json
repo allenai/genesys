@@ -1,0 +1,283 @@
+{
+    "paperId": "e420267d7a24eefd6f4306430132f5d2ec8f1a48",
+    "externalIds": {
+        "MAG": "2158177997",
+        "DBLP": "journals/tnn/CheplyginaTL16",
+        "ArXiv": "1402.1349",
+        "DOI": "10.1109/TNNLS.2015.2424254",
+        "CorpusId": 17764344,
+        "PubMed": "27214351"
+    },
+    "title": "Dissimilarity-Based Ensembles for Multiple Instance Learning",
+    "abstract": "In multiple instance learning, objects are sets (bags) of feature vectors (instances) rather than individual feature vectors. In this paper, we address the problem of how these bags can best be represented. Two standard approaches are to use (dis)similarities between bags and prototype bags, or between bags and prototype instances. The first approach results in a relatively low-dimensional representation, determined by the number of training bags, whereas the second approach results in a relatively high-dimensional representation, determined by the total number of instances in the training set. However, an advantage of the latter representation is that the informativeness of the prototype instances can be inferred. In this paper, a third, intermediate approach is proposed, which links the two approaches and combines their strengths. Our classifier is inspired by a random subspace ensemble, and considers subspaces of the dissimilarity space, defined by subsets of instances, as prototypes. We provide insight into the structure of some popular multiple instance problems and show state-of-the-art performances on these data sets.",
+    "venue": "IEEE Transactions on Neural Networks and Learning Systems",
+    "year": 2014,
+    "referenceCount": 60,
+    "citationCount": 46,
+    "influentialCitationCount": 2,
+    "openAccessPdf": {
+        "url": "http://arxiv.org/pdf/1402.1349",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A third, intermediate approach is proposed, which links the two approaches and combines their strengths and is inspired by a random subspace ensemble, and considers subspaces of the dissimilarity space, defined by subsets of instances, as prototypes."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2225413",
+            "name": "V. Cheplygina"
+        },
+        {
+            "authorId": "2743835",
+            "name": "D. Tax"
+        },
+        {
+            "authorId": "143888579",
+            "name": "M. Loog"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "4a548c9fe8e092bed2dd74ed42d0df9102b609b3",
+            "title": "Combining Instance Information to Classify Bags"
+        },
+        {
+            "paperId": "f757d5154136cc2d4c3ba74c419b055c695dd814",
+            "title": "Class-Dependent Dissimilarity Measures for Multiple Instance Learning"
+        },
+        {
+            "paperId": "944c179371429ca1f5974d584eb6ec29f0c01cc9",
+            "title": "A study on semi-supervised dissimilarity representation"
+        },
+        {
+            "paperId": "79d34d700f661698d54a3b5f94c45603d7437436",
+            "title": "Does one rotten apple spoil the whole barrel?"
+        },
+        {
+            "paperId": "51d044329a930ed51f00bbb4319448023e552cf5",
+            "title": "Implementation of multiple-instance learning in drug activity prediction"
+        },
+        {
+            "paperId": "5a60fa14194de1c0a8e32b6a4c35c22cfcb77e3c",
+            "title": "Acoustic classification of multiple simultaneous bird species: a multi-instance multi-label approach."
+        },
+        {
+            "paperId": "dcca1c50f5a01054dce85c0022e121712d2eacd4",
+            "title": "Bag Dissimilarities for Multiple Instance Learning"
+        },
+        {
+            "paperId": "5c8ae85860208fba428ce5e848d73c8bdcf280ad",
+            "title": "Multiple-Instance Learning with Instance Selection via Dominant Sets"
+        },
+        {
+            "paperId": "3bc6de78c3c4f8bee2df16b35b5f10bb8426e2c5",
+            "title": "MIS-Boost: Multiple Instance Selection Boosting"
+        },
+        {
+            "paperId": "b72f1ff0f1a29888546b21a925484f267ef15c30",
+            "title": "Pruned Random Subspace Method for One-Class Classifiers"
+        },
+        {
+            "paperId": "0617142a7b989433d494c8a1b6a742d7da911bcd",
+            "title": "MILIS: Multiple Instance Learning with Instance Selection"
+        },
+        {
+            "paperId": "a1c7b10ab7e582f981b2b5b6b38239cc064e9ecb",
+            "title": "Prototype Selection for Dissimilarity Representation by a Genetic Algorithm"
+        },
+        {
+            "paperId": "c448275946092dd012fd845c09fe334e2d9294c9",
+            "title": "\"Good\" and \"Bad\" Diversity in Majority Vote Ensembles"
+        },
+        {
+            "paperId": "247b527f0a071eed4e5c43dda90b52fb01cd3eef",
+            "title": "A review of multi-instance learning assumptions"
+        },
+        {
+            "paperId": "080e2b25c5574d08f1528077045e341c7f824008",
+            "title": "Random Subspace Ensembles for fMRI Classification"
+        },
+        {
+            "paperId": "c4c0ba0f41d8d51ad896f673cc26f2a9c0810763",
+            "title": "Multi-instance clustering with applications to multi-instance prediction"
+        },
+        {
+            "paperId": "d5fb0956d88d0bccd3c0633687b3357fd5fcda92",
+            "title": "Learning Curves for the Analysis of Multiple Instance Classifiers"
+        },
+        {
+            "paperId": "49c67ea9313bd859b201603857c45e3597c77b4e",
+            "title": "Multi-instance learning by treating instances as non-I.I.D. samples"
+        },
+        {
+            "paperId": "835c1fa10bbe06730b55ccca95be239f9421e52c",
+            "title": "Training a Support Vector Machine in the Primal"
+        },
+        {
+            "paperId": "a052172b253427e72d21c962f19433f20e90cfe0",
+            "title": "Multiple Instance Learning for Computer Aided Diagnosis"
+        },
+        {
+            "paperId": "71564232ce7ff2187c1d73cc2d52fa79241c7113",
+            "title": "Multi-Instance Multi-Label Learning with Application to Scene Classification"
+        },
+        {
+            "paperId": "4a3684ee0c64d22386a44c0ddfbf8d609cd2de48",
+            "title": "MILES: Multiple-Instance Learning via Embedded Instance Selection"
+        },
+        {
+            "paperId": "6c96bcc3fdb93be81af58ea369109bf8664156ca",
+            "title": "Random subspace method for multivariate feature selection"
+        },
+        {
+            "paperId": "64f7e1cc695de39ee145e90b8cd959a65eac4739",
+            "title": "Prototype selection for dissimilarity-based classifiers"
+        },
+        {
+            "paperId": "521768f7772163bc7c57ae2c9855889abb747fbb",
+            "title": "Multiple Instance Boosting for Object Detection"
+        },
+        {
+            "paperId": "6c425df743d37fda090a43f01da233fb5e0ba300",
+            "title": "The Dissimilarity Representation for Pattern Recognition - Foundations and Applications"
+        },
+        {
+            "paperId": "85d727b119304dde458bcd8cf5cb87a906fb41ba",
+            "title": "Using AUC and accuracy in evaluating learning algorithms"
+        },
+        {
+            "paperId": "3b3d39bfcdd976edc63dbaa4c65c47f314cc5d6c",
+            "title": "Investigation of the random forest framework for classification of hyperspectral data"
+        },
+        {
+            "paperId": "5fe2cba2a84414be2508246c6dd29b561ead10f9",
+            "title": "Diversity creation methods: a survey and categorisation"
+        },
+        {
+            "paperId": "e5a3b6c3a0f55976b70aeb5ead058891bfbee097",
+            "title": "1-norm Support Vector Machines"
+        },
+        {
+            "paperId": "2642e2ddaf39596405369f7c61e74aa95e836694",
+            "title": "Measures of Diversity in Classifier Ensembles and Their Relationship with the Ensemble Accuracy"
+        },
+        {
+            "paperId": "cb0e3fd66f7b1bc87adfe6245f7d4e23c1011924",
+            "title": "Simultaneous classification and relevant feature identification in high-dimensional spaces: application to molecular profiling data"
+        },
+        {
+            "paperId": "c8518c1bae658ff2d4fb8ba41e307a681c1559f7",
+            "title": "The combining classifier: to train or not to train?"
+        },
+        {
+            "paperId": "3b9d6390ca28e742013e3b6b493d03d8d635bf7e",
+            "title": "Multiple instance learning with generalized support vector machines"
+        },
+        {
+            "paperId": "10c1ab4e9ad4b5c6f8298812e2aed1c615ee3ebb",
+            "title": "Multi-Instance Kernels"
+        },
+        {
+            "paperId": "4307eb085543a0fcbb86e1bdf6aed2b8ae2c9ce7",
+            "title": "A Discussion on the Classifier Projection Space for Classifier Combining"
+        },
+        {
+            "paperId": "b2500c7d42a5b774a902a0b215bcba92c6eaae35",
+            "title": "On Combining Dissimilarity Representations"
+        },
+        {
+            "paperId": "1003bbcddcca97a4a4757c13f9b4e32f78dde7c6",
+            "title": "Bagging and the Random Subspace Method for Redundant Feature Spaces"
+        },
+        {
+            "paperId": "fb98ba3aa910e0ea4bd16c755832a086dc2bb2a2",
+            "title": "EM-DD: An Improved Multiple-Instance Learning Technique"
+        },
+        {
+            "paperId": "cfc44747b1591c1bb229ea833742787ae3a8709e",
+            "title": "Combining multiple classifiers by averaging or by multiplying?"
+        },
+        {
+            "paperId": "8b8fe662b83884580f7684fc5f05b9986f0f8cca",
+            "title": "Solving the Multiple-Instance Problem: A Lazy Learning Approach"
+        },
+        {
+            "paperId": "d6f72830965acc59188745d5ebe053a01c558608",
+            "title": "Experiments with Classifier Combining Rules"
+        },
+        {
+            "paperId": "5cfe394cf3b75c54ac1e8cee5e27c40b48a0c95a",
+            "title": "Classification with Nonmetric Distances: Image Retrieval and Class Representation"
+        },
+        {
+            "paperId": "b41d0fa5fdaadd47fc882d3db04277d03fb21832",
+            "title": "The Random Subspace Method for Constructing Decision Forests"
+        },
+        {
+            "paperId": "cf6bb048a9442193d9106eb2c12e769ac6f9ecde",
+            "title": "after"
+        },
+        {
+            "paperId": "dd4f1e4a1d230b275ac8fdb7bca6e1ff98a6f38b",
+            "title": "Combining classifiers: A theoretical framework"
+        },
+        {
+            "paperId": "4d8340eae2c98ab5e0a3b1a7e071a7ddb9106cff",
+            "title": "A Framework for Multiple-Instance Learning"
+        },
+        {
+            "paperId": "48ddd9101a90fe65e3061de69626741b843ff5e4",
+            "title": "The use of the area under the ROC curve in the evaluation of machine learning algorithms"
+        },
+        {
+            "paperId": "1c7d38f68fe1150895a186e30b60c02dd89a676a",
+            "title": "Solving the Multiple Instance Problem with Axis-Parallel Rectangles"
+        },
+        {
+            "paperId": "ac793a22a276e670c13991dd7c1a67f7868e4f5b",
+            "title": "Gene Selection for Cancer Classification using Support Vector Machines"
+        },
+        {
+            "paperId": null,
+            "title": "Neural Inf. Process. Syst"
+        },
+        {
+            "paperId": "85b5bf5c80ab782b04c6a0687c306eb6686dbea2",
+            "title": "Bio-molecular cancer prediction with random subspace ensembles of support vector machines"
+        },
+        {
+            "paperId": "14c51ff0bb50251d0c981789dfb3ded612e4a57f",
+            "title": "Simultaneous classi cation and relevant feature identi cation in high-dimensional spaces : application to molecular pro ling data"
+        },
+        {
+            "paperId": "02e68b069d9cf13c082049429ffed18a5ca5f6d0",
+            "title": "Support Vector Machines for Multiple-Instance Learning"
+        },
+        {
+            "paperId": "b5e6b9b8ef290b9a760c739e6fdd8e6e02012850",
+            "title": "PRTools3: A Matlab Toolbox for Pattern Recognition"
+        },
+        {
+            "paperId": "4defef5f4a6727423108dbfb97ff3eaa0181b765",
+            "title": "Combining multiple classi \" ers by averaging or by multiplying ?"
+        },
+        {
+            "paperId": "611dd4b2cc5f2c5ba1109a3953e5acef8f279a67",
+            "title": "Hypercomplex spectral signal representations for the processing and analysis of images"
+        },
+        {
+            "paperId": null,
+            "title": "Comparing the use of background knowledge by inductive logic programming systems"
+        },
+        {
+            "paperId": null,
+            "title": "problems concerning the representation of data, multiple instance learning, simple and elegant classi\ufb01ers and the fair evaluation of methods have focus"
+        },
+        {
+            "paperId": null,
+            "title": "Laboratory at the Delft"
+        }
+    ]
+}

@@ -1,0 +1,113 @@
+{
+    "paperId": "6fb07b90b7fd2785ffec0da1069e75c53f7313c2",
+    "externalIds": {
+        "DBLP": "conf/nips/LeeS00",
+        "MAG": "2135029798",
+        "CorpusId": 2095855
+    },
+    "title": "Algorithms for Non-negative Matrix Factorization",
+    "abstract": "Non-negative matrix factorization (NMF) has previously been shown to be a useful decomposition for multivariate data. Two different multiplicative algorithms for NMF are analyzed. They differ only slightly in the multiplicative factor used in the update rules. One algorithm can be shown to minimize the conventional least squares error while the other minimizes the generalized Kullback-Leibler divergence. The monotonic convergence of both algorithms can be proven using an auxiliary function analogous to that used for proving convergence of the Expectation-Maximization algorithm. The algorithms can also be interpreted as diagonally rescaled gradient descent, where the rescaling factor is optimally chosen to ensure convergence.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2000,
+    "referenceCount": 19,
+    "citationCount": 8575,
+    "influentialCitationCount": 1280,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Two different multiplicative algorithms for non-negative matrix factorization are analyzed and one algorithm can be shown to minimize the conventional least squares error while the other minimizes the generalized Kullback-Leibler divergence."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2115651440",
+            "name": "Daniel D. Lee"
+        },
+        {
+            "authorId": "2285404888",
+            "name": "H. Sebastian"
+        },
+        {
+            "authorId": "2285247350",
+            "name": "Seung y"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "29bae9472203546847ec1352a604566d0f602728",
+            "title": "Learning the parts of objects by non-negative matrix factorization"
+        },
+        {
+            "paperId": "bbc293125266ac5631c35dafd11c328d21a974f8",
+            "title": "Sparse coding in the primate cortex"
+        },
+        {
+            "paperId": "f7463aad3b5182820995101602788ea4c9bb4d9f",
+            "title": "Aggregate and mixed-order Markov models for statistical language processing"
+        },
+        {
+            "paperId": "6982720b38510a887d79013e03ec2f9a5147edf2",
+            "title": "Least squares formulation of robust non-negative factor analysis"
+        },
+        {
+            "paperId": "98eed3f082351c4821d1edb315846207a8fefbe9",
+            "title": "Exponentiated Gradient Versus Gradient Descent for Linear Predictors"
+        },
+        {
+            "paperId": "4cf7e8e452c31ac2adb736ec006eccd3a26bea36",
+            "title": "Unsupervised Learning by Convex and Conic Coding"
+        },
+        {
+            "paperId": "8e7cb3277364dd536f5482f693425cbbcaddbc7f",
+            "title": "A unified approach to statistical tomography using coordinate descent optimization"
+        },
+        {
+            "paperId": "4dc175e8f6e7ca5c40ffd6fb9c6b92323bf7daf2",
+            "title": "Additive versus exponentiated gradient updates for linear prediction"
+        },
+        {
+            "paperId": "ff1152582155acaa0e9d0ccbc900a4641504256d",
+            "title": "What Is the Goal of Sensory Coding?"
+        },
+        {
+            "paperId": "2620fdf0c3925f5f873c0c88e85cc8b059dda875",
+            "title": "Numerical Recipes in C: The Art of Sci-entific Computing"
+        },
+        {
+            "paperId": "a41fd7e04f18ee369c0a48a1e83b05eb6b1fded3",
+            "title": "Maximum Likelihood Reconstruction for Emission Tomography"
+        },
+        {
+            "paperId": "d36efb9ad91e00faa334b549ce989bfae7e2907a",
+            "title": "Maximum likelihood from incomplete data via the EM - algorithm plus discussions on the paper"
+        },
+        {
+            "paperId": "30ad4474c7d6e9fd68b3e0fa2db235f1c8bc32f0",
+            "title": "An iterative technique for the rectification of observed distributions"
+        },
+        {
+            "paperId": "552e26d425c6cd6d79e428716adcd2897ee62e0e",
+            "title": "SPARSE CODING IN THE PRIMATE CORTEX"
+        },
+        {
+            "paperId": "c564aa7639a08c280423489e52b6e32055c9aa7f",
+            "title": "Vector quantization and signal compression"
+        },
+        {
+            "paperId": "a6f1dfcc44277d4cfd8507284d994c9283dc3a2f",
+            "title": "Eigenfaces for Recognition"
+        },
+        {
+            "paperId": "16b4fd36ff5ca603fed13a326054cd0373ea442c",
+            "title": "Numerical Recipes: The Art of Scientific Computing"
+        },
+        {
+            "paperId": "9cd946b389c208a7a719626132fa51390e897067",
+            "title": "Numerical recipes: The art of scientific computing"
+        },
+        {
+            "paperId": "eb5f518e9fdd764835f719bfef59b1276cb562b3",
+            "title": "Bayesian-Based Iterative Method of Image Restoration"
+        }
+    ]
+}

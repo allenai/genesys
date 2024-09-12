@@ -1,0 +1,122 @@
+{
+    "paperId": "29232ff5aa884ea0f1bcda7c32e23ccd1dd6f7c0",
+    "externalIds": {
+        "DBLP": "conf/nips/MaddisonTM14",
+        "ArXiv": "1411.0030",
+        "MAG": "3037529683",
+        "CorpusId": 204937530
+    },
+    "title": "A* Sampling",
+    "abstract": "The problem of drawing samples from a discrete distribution can be converted into a discrete optimization problem [1, 2, 3, 4]. In this work, we show how sampling from a continuous distribution can be converted into an optimization problem over continuous space. Central to the method is a stochastic process recently described in mathematical statistics that we call the Gumbel process. We present a new construction of the Gumbel process and A* Sampling, a practical generic sampling algorithm that searches for the maximum of a Gumbel process using A* search. We analyze the correctness and convergence time of A* Sampling and demonstrate empirically that it makes more efficient use of bound and likelihood evaluations than the most closely related adaptive rejection sampling-based algorithms.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2014,
+    "referenceCount": 21,
+    "citationCount": 369,
+    "influentialCitationCount": 27,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work shows how sampling from a continuous distribution can be converted into an optimization problem over continuous space and presents a new construction of the Gumbel process and A* Sampling, a practical generic sampling algorithm that searches for the maximum of a Gumbels process using A* search."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2772217",
+            "name": "Chris J. Maddison"
+        },
+        {
+            "authorId": "1725299",
+            "name": "Daniel Tarlow"
+        },
+        {
+            "authorId": "52626911",
+            "name": "T. Minka"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "47aaa0ab99a3f23c9dd508c6feec644a3ddaa4bb",
+            "title": "Embed and Project: Discrete Sampling with Universal Hashing"
+        },
+        {
+            "paperId": "0f4f58578f73a7a03a89dd4df80bf9311f474b4e",
+            "title": "On Sampling from the Gibbs Distribution with Random Maximum A-Posteriori Perturbations"
+        },
+        {
+            "paperId": "7a02dc674741d45e9d040512ac1f54c0b049b612",
+            "title": "The OS* Algorithm: a Joint Approach to Exact Optimization and Sampling"
+        },
+        {
+            "paperId": "e07128013831350c237aeba5ce4375d0ae8de20d",
+            "title": "On the Partition Function and Random Maximum A-Posteriori Perturbations"
+        },
+        {
+            "paperId": "4474a3b3d3ab9238dbdd3baa48c40f423e245a8b",
+            "title": "Perturb-and-MAP random fields: Using discrete optimization to learn and sample from energy models"
+        },
+        {
+            "paperId": "1eba62ae174b1c4ecb489fbb79bfa1564146e43f",
+            "title": "Gaussian sampling by local perturbations"
+        },
+        {
+            "paperId": "a7d356ce68aff5872254bd37ff63a48d2008d88c",
+            "title": "Exact and Approximate Sampling by Systematic Stochastic Search"
+        },
+        {
+            "paperId": "5cf42384b68adcfb0026a409f13a4de58603a3f5",
+            "title": "Globally optimal bilinear programming for computer vision applications"
+        },
+        {
+            "paperId": "49962975ddf0d09ba3acb8800485f98112da5342",
+            "title": "Global Optimization Using Interval Analysis: Revised and Expanded"
+        },
+        {
+            "paperId": "01f3a96f25f0b4f07ef11dd1986c8932b5a468f2",
+            "title": "AND/OR search spaces for graphical models"
+        },
+        {
+            "paperId": "15c10ae31b039fe50d5cb51f7dbac6cbc3e4102c",
+            "title": "Expectation Propagation for approximate Bayesian inference"
+        },
+        {
+            "paperId": "e9063ba74d9211d766432f21e185f2c85e9d4ef8",
+            "title": "Slice Sampling"
+        },
+        {
+            "paperId": "7dd0a09f1d8352c4d38ff549f54f024993c8825d",
+            "title": "Exact sampling with coupled Markov chains and applications to statistical mechanics"
+        },
+        {
+            "paperId": "b84417895935c2e0c50f89ec9477556ec4dbb8be",
+            "title": "The relationship between Luce's Choice Axiom, Thurstone's Theory of Comparative Judgment, and the double exponential distribution"
+        },
+        {
+            "paperId": null,
+            "title": "Dmitrey"
+        },
+        {
+            "paperId": "07d7f275143adf1e7328e2cb4f6ce86a2113a706",
+            "title": "Random Choice over a Continuous Set of Options"
+        },
+        {
+            "paperId": "de6d8b89714f2f063cfb21ee062d2fc9dd6af25c",
+            "title": "Randomized Optimum Models for Structured Prediction"
+        },
+        {
+            "paperId": "555daedf3625fc0b01598303d6fdc557d8a097fc",
+            "title": "Adaptive Rejection Sampling for Gibbs Sampling"
+        },
+        {
+            "paperId": null,
+            "title": "Perfect Sampling on Continuous State Spaces"
+        },
+        {
+            "paperId": "2f32398df545069c8422d55caa246ae18475a64f",
+            "title": "Perfect slice samplers"
+        },
+        {
+            "paperId": "6e103f45ce2f653fd7aafcf67afa80c39130294f",
+            "title": "Statistical Theory of Extreme Values and Some Practical Applications : A Series of Lectures"
+        }
+    ]
+}

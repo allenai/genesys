@@ -1,0 +1,56 @@
+{
+    "paperId": "b3bf6373ff41a115197cb5b30e57830c16130c2c",
+    "externalIds": {
+        "MAG": "2924560712",
+        "CorpusId": 14638345
+    },
+    "title": "Using TF-IDF to Determine Word Relevance in Document Queries",
+    "abstract": "In this paper, we examine the results of applying Term Frequency Inverse Document Frequency (TF-IDF) to determine what words in a corpus of documents might be more favorable to use in a query. As the term implies, TF-IDF calculates values for each word in a document through an inverse proportion of the frequency of the word in a particular document to the percentage of documents the word appears in. Words with high TF-IDF numbers imply a strong relationship with the document they appear in, suggesting that if that word were to appear in a query, the document could be of interest to the user. We provide evidence that this simple algorithm efficiently categorizes relevant words that can enhance query retrieval.",
+    "venue": "",
+    "year": 2003,
+    "referenceCount": 7,
+    "citationCount": 2077,
+    "influentialCitationCount": 179,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper examines the results of applying Term Frequency Inverse Document Frequency to determine what words in a corpus of documents might be more favorable to use in a query and provides evidence that this simple algorithm efficiently categorizes relevant words that can enhance query retrieval."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2069852866",
+            "name": "J. E. Ramos"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "485e3956c9c0ff224802f7d23a0fb986fcd8ebe0",
+            "title": "Reexamining tf.idf based information retrieval with Genetic Programming"
+        },
+        {
+            "paperId": "0ca50da53eaf9dc939e126a06975654f9531c600",
+            "title": "Bridging the lexical chasm: statistical approaches to answer-finding"
+        },
+        {
+            "paperId": "15281680463698dca403697bd627af4efebc98a2",
+            "title": "Information retrieval as statistical translation"
+        },
+        {
+            "paperId": "06871028d4e71ceefe879853e9dc2183ea81bb32",
+            "title": "Using Linear Algebra for Intelligent Information Retrieval"
+        },
+        {
+            "paperId": "a1066659ec1afee9dce586f6f49b7d44527827e1",
+            "title": "A Statistical Approach to Machine Translation"
+        },
+        {
+            "paperId": "e50a316f97c9a405aa000d883a633bd5707f1a34",
+            "title": "Term-Weighting Approaches in Automatic Text Retrieval"
+        },
+        {
+            "paperId": null,
+            "title": "Cross-Language Text Retrieval with Three Languages"
+        }
+    ]
+}

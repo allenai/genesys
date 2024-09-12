@@ -35,9 +35,11 @@ design = import_and_reload('design').design
 evolve = import_and_reload('evolve').evolve
 engine = import_and_reload('engine').engine
 prompt = import_and_reload('prompt').prompt
+search = import_and_reload('search').search
 
 
-# from bin.pages import home,viewer,design,evolve,engine,prompt
+
+# from bin.pages import home,viewer,design,evolve,engine,prompt,search
 
 
 
@@ -46,12 +48,13 @@ prompt = import_and_reload('prompt').prompt
 # Setup the evo system
 
 @st.cache_resource()
-def build_evo_system(name='test_evo_004'):
+def build_evo_system(name='test_evo_000'):
     strparams=[
         f"evoname={name}",
         "scales=14M,31M,70M",
         "selection_ratio=0.25",
         "select_method=random",
+        "design_budget=0",
     ]
     evo_system = BuildEvolution(
         strparams=';'.join(strparams),
@@ -96,6 +99,7 @@ pages = {
     'Evolve': evolve,
     'Design': design,
     'Engine': engine,
+    'Search': search,
     'Prompt': prompt,
 }
 titles=list(pages.keys())+['GitHub']
@@ -106,18 +110,5 @@ pg = st_navbar(
     urls=urls
 )
 pages['Home'] = home
-
-# if pg == 'Home':
-#     importlib.reload(bin.pages.home)
-# elif pg == 'Viewer':
-#     importlib.reload(bin.pages.viewer)
-# elif pg == 'Evolve':
-#     importlib.reload(bin.pages.evolve)
-# elif pg == 'Design':
-#     importlib.reload(bin.pages.design)
-# elif pg == 'Engine':
-#     importlib.reload(bin.pages.engine)
-# elif pg == 'Prompt':
-#     importlib.reload(bin.pages.prompt)
 
 pages[pg](evosys,project_dir)

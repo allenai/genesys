@@ -1,0 +1,190 @@
+{
+    "paperId": "65106cd008cd959d9335eebd0610f945b9a6cfcd",
+    "externalIds": {
+        "MAG": "2951323667",
+        "ArXiv": "0809.2093",
+        "DBLP": "journals/corr/abs-0809-2093",
+        "DOI": "10.1109/CCC.2009.25",
+        "CorpusId": 6242437
+    },
+    "title": "An Approximation Algorithm for Approximation Rank",
+    "abstract": "One of the strongest techniques available for showing lower bounds on bounded-error communication complexity is the logarithm of the approximation rank of the communication matrix---the minimum rank of a matrix which is entrywise close to the communication matrix. Krause showed that the logarithm of approximation rank is a lower bound in the randomized case, and later Buhrman and de Wolf showed it could also be used for quantum communication complexity. As a lower bound technique, approximation rank has two main drawbacks: it is difficult to compute, and it is not known to lower bound the model of quantum communication complexity with entanglement. We give a polynomial time constant factor approximation algorithm to the logarithm of approximation rank, and show that the logarithm of approximation rank is a lower bound on quantum communication complexity with entanglement.",
+    "venue": "2009 24th Annual IEEE Conference on Computational Complexity",
+    "year": 2008,
+    "referenceCount": 38,
+    "citationCount": 35,
+    "influentialCitationCount": 0,
+    "openAccessPdf": {
+        "url": "http://arxiv.org/pdf/0809.2093",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A polynomial time constant factor approximation algorithm is given to the logarithm of approximation rank, and it is shown that the logarsithm is a lower bound on quantum communication complexity with entanglement."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2110707585",
+            "name": "Troy Lee"
+        },
+        {
+            "authorId": "2994279",
+            "name": "A. Shraibman"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "e1ada191566510f7efc2d4b7a76a3167bafe4c43",
+            "title": "Perturbed Identity Matrices Have High Rank: Proof and Applications"
+        },
+        {
+            "paperId": "2c55fb83e6c78c9bd9f7d4163ec5b83c65708482",
+            "title": "A Direct Product Theorem for Discrepancy"
+        },
+        {
+            "paperId": "d849c7c58892e9db6524738e41023d6abfdae694",
+            "title": "Complexity measures of sign matrices"
+        },
+        {
+            "paperId": "d85e8b7f29b279d25b4c0e845042778ce82b23f2",
+            "title": "A Lower Bound for Agnostically Learning Disjunctions"
+        },
+        {
+            "paperId": "b9630fb1b9271a5344fbca3922308e76491e4938",
+            "title": "Halfspace Matrices"
+        },
+        {
+            "paperId": "cb06f8e6d3528122b962988f9373178f4b43da18",
+            "title": "On Computation and Communication with Small Bias"
+        },
+        {
+            "paperId": "219e97f70a84d9464c8e3b3bac2addea953cad34",
+            "title": "Lower bounds in communication complexity based on factorization norms"
+        },
+        {
+            "paperId": "2dca86a626ef078b41920d502a3160e0999a693a",
+            "title": "Problems and results in extremal combinatorics--I"
+        },
+        {
+            "paperId": "e1df18e4e25198382f563573dd85f5bd34b75f8d",
+            "title": "Quantum search of spatial regions"
+        },
+        {
+            "paperId": "13ea05e6c5af98e109b66e656e95677476bf3880",
+            "title": "Limitations of Learning Via Embeddings in Euclidean Half Spaces"
+        },
+        {
+            "paperId": "2803e1343b09670ff68a2e33d1543d236fd93f26",
+            "title": "An information statistics approach to data stream and communication complexity"
+        },
+        {
+            "paperId": "b74b85f95b804c9af1e7d0d576f6d5d359922e04",
+            "title": "Quantum communication complexity of symmetric predicates"
+        },
+        {
+            "paperId": "3717d7644596602e929373c7a56fb2f898cf93ec",
+            "title": "Informational complexity and the direct sum problem for simultaneous message complexity"
+        },
+        {
+            "paperId": "7b411f24b957e4cd3f6f89c532d6484928a9d2bf",
+            "title": "Lower bounds for quantum communication complexity"
+        },
+        {
+            "paperId": "dc46c4068a2b01d394abd7466cc793662926c6ac",
+            "title": "Communication complexity lower bounds by polynomials"
+        },
+        {
+            "paperId": "2776d54485c112ceda70c4fee2ba6d85a331de0a",
+            "title": "Improved approximation algorithms for maximum cut and satisfiability problems using semidefinite programming"
+        },
+        {
+            "paperId": "91e31089d058febb9f3d5b4f06c1b60c27295448",
+            "title": "Fourier analysis for probabilistic communication complexity"
+        },
+        {
+            "paperId": "4f4f548fd8e5dd58b3bf34f8e85377bd8b5869d7",
+            "title": "Proceedings of the 30th IEEE symposium on Foundations of computer science"
+        },
+        {
+            "paperId": "537befdd8d4cbc7754b0c0df83d9f7c7b58070ca",
+            "title": "The Hadamard Operator Norm of a Circulant and Applications"
+        },
+        {
+            "paperId": "be3ff4d44f635ef9545c44963bb3857d3796dfe6",
+            "title": "Geometric arguments yield better bounds for threshold circuits and distributed computing"
+        },
+        {
+            "paperId": "e6625b84bfbb3a0dd3777816faa02c4358b37edc",
+            "title": "On the Distributional Complexity of Disjointness"
+        },
+        {
+            "paperId": "3139941a3f0b027a3115482c7b346970d1107532",
+            "title": "Lattices, mobius functions and communications complexity"
+        },
+        {
+            "paperId": "dfb8b31ac84036778c489830c64e3e238078b797",
+            "title": "Probabilistic Communication Complexity"
+        },
+        {
+            "paperId": "be61fc5903f22384c90b94013a51448e8d5610eb",
+            "title": "Lower bounds by probabilistic arguments"
+        },
+        {
+            "paperId": "d298caafd2caa3a68978efcc4f545cb1103e28ea",
+            "title": "Las Vegas is better than determinism in VLSI and distributed computing (Extended Abstract)"
+        },
+        {
+            "paperId": "7bafdec9b8a08a7ce59067eb86068ca1f64c21cf",
+            "title": "Some complexity questions related to distributive computing(Preliminary Report)"
+        },
+        {
+            "paperId": "7cd97b0579ea3e4be968b4f52ce83ad06f2e7349",
+            "title": "Geometric Algorithms and Combinatorial Optimization"
+        },
+        {
+            "paperId": null,
+            "title": "and R"
+        },
+        {
+            "paperId": null,
+            "title": "Positive de\ufb01nite matrices"
+        },
+        {
+            "paperId": "cf3a5ab7e04df5252e1f3417a4332a499b11dd89",
+            "title": "Problems and results in Extremal Combinatorics , Part"
+        },
+        {
+            "paperId": "9d25331abab226c34eb4fe403660d941321d43ff",
+            "title": "Semidefinite programming"
+        },
+        {
+            "paperId": null,
+            "title": "Semide nite Programming"
+        },
+        {
+            "paperId": "30ffd4a8e479d04b1dea5749eac4a466dccde64b",
+            "title": "Probability Inequalities for Sums of Bounded Random Variables"
+        },
+        {
+            "paperId": null,
+            "title": "A new lower bound on the real Grothendieck constant"
+        },
+        {
+            "paperId": "6eef4d1cb052699dbe20d6f33f04c63586195808",
+            "title": "Banach-Mazur distances and finite-dimensional operator ideals"
+        },
+        {
+            "paperId": "aeaf85b9a224f78261b795051c7996957ed6824b",
+            "title": "Summing and nuclear norms in Banach space theory"
+        },
+        {
+            "paperId": "1d0635cda34b8af995313848a0c42bac6efe79ec",
+            "title": "Extensions of Lipschitz mappings into Hilbert space"
+        },
+        {
+            "paperId": "baeeb413bfc64f3f09b98ead97c0656d066d136a",
+            "title": "Constantes de Grothendieck et fonctions de type positif sur les sph\u00e8res"
+        }
+    ]
+}

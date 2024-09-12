@@ -1,0 +1,102 @@
+{
+    "paperId": "04d1a26c2516dc14a765112a63ec60dc3cb3de72",
+    "externalIds": {
+        "MAG": "2963447120",
+        "DBLP": "journals/corr/BowmanMP15",
+        "ArXiv": "1506.04834",
+        "CorpusId": 2244960
+    },
+    "title": "Tree-Structured Composition in Neural Networks without Tree-Structured Architectures",
+    "abstract": "Tree-structured neural networks encode a particular tree geometry for a sentence in the network design. However, these models have at best only slightly outperformed simpler sequence-based models. We hypothesize that neural sequence models like LSTMs are in fact able to discover and implicitly use recursive compositional structure, at least for tasks with clear cues to that structure in the data. We demonstrate this possibility using an artificial data task for which recursive compositional structure is crucial, and find an LSTM-based sequence model can indeed learn to exploit the underlying tree structure. However, its performance consistently lags behind that of tree models, even on large training sets, suggesting that tree-structured models are more effective at exploiting recursive structure.",
+    "venue": "CoCo@NIPS",
+    "year": 2015,
+    "referenceCount": 16,
+    "citationCount": 71,
+    "influentialCitationCount": 11,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is found that an LSTM-based sequence model can indeed learn to exploit the underlying tree structure, and its performance consistently lags behind that of tree models, even on large training sets, suggesting that tree-structured models are more effective at exploiting recursive structure."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3644767",
+            "name": "Samuel R. Bowman"
+        },
+        {
+            "authorId": "144783904",
+            "name": "Christopher D. Manning"
+        },
+        {
+            "authorId": "144922861",
+            "name": "Christopher Potts"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "40be3888daa5c2e5af4d36ae22f690bcc8caf600",
+            "title": "Visualizing and Understanding Recurrent Networks"
+        },
+        {
+            "paperId": "b36b7f7c68923d14ba2859b5d28a1124616a8c89",
+            "title": "Transition-Based Dependency Parsing with Stack Long Short-Term Memory"
+        },
+        {
+            "paperId": "df77714269f1f88182092f8535b1bc290fcd835d",
+            "title": "When Are Tree Structures Necessary for Deep Learning of Representations?"
+        },
+        {
+            "paperId": "32de44f01a96d4473d21099d15e25bc2b9f08e2f",
+            "title": "Improved Semantic Representations From Tree-Structured Long Short-Term Memory Networks"
+        },
+        {
+            "paperId": "47570e7f63e296f224a0e7f9a0d08b0de3cbaf40",
+            "title": "Grammar as a Foreign Language"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "f264e8b33c0d49a692a6ce2c4bcb28588aeb7d97",
+            "title": "Recurrent Neural Network Regularization"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "7c05a4ffee7e159e34b2efea7e44d994333ec628",
+            "title": "Recursive Neural Networks Can Learn Logical Semantics"
+        },
+        {
+            "paperId": "8007fc25a1f5c03f7c8ac95ccf5cf8aa3d989092",
+            "title": "Learning New Facts From Knowledge Bases With Neural Tensor Networks and Semantic Word Vectors"
+        },
+        {
+            "paperId": "8729441d734782c3ed532a7d2d9611b438c0a09a",
+            "title": "ADADELTA: An Adaptive Learning Rate Method"
+        },
+        {
+            "paperId": "cfa2646776405d50533055ceb1b7f050e9014dcb",
+            "title": "Semi-Supervised Recursive Autoencoders for Predicting Sentiment Distributions"
+        },
+        {
+            "paperId": "5feb2c61b04532869e44d1ca4e48c7108aee5fd3",
+            "title": "An extended model of natural logic"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "668087f0ae7ce1de6e0bd0965dbb480c08103260",
+            "title": "Finding Structure in Time"
+        },
+        {
+            "paperId": null,
+            "title": "Learning task-dependent distributed representations by backpropagation through structure"
+        }
+    ]
+}

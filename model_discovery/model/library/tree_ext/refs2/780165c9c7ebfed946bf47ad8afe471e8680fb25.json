@@ -1,0 +1,121 @@
+{
+    "paperId": "780165c9c7ebfed946bf47ad8afe471e8680fb25",
+    "externalIds": {
+        "MAG": "2135910425",
+        "DBLP": "conf/nips/KumarMT09",
+        "CorpusId": 446764
+    },
+    "title": "Ensemble Nystrom Method",
+    "abstract": "A crucial technique for scaling kernel methods to very large data sets reaching or exceeding millions of instances is based on low-rank approximation of kernel matrices. We introduce a new family of algorithms based on mixtures of Nystrom approximations, ensemble Nystrom algorithms, that yield more accurate low-rank approximations than the standard Nystrom method. We give a detailed study of variants of these algorithms based on simple averaging, an exponential weight method, or regression-based methods. We also present a theoretical analysis of these algorithms, including novel error bounds guaranteeing a better convergence rate than the standard Nystrom method. Finally, we report results of extensive experiments with several data sets containing up to 1M points demonstrating the significant improvement over the standard Nystrom approximation.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2009,
+    "referenceCount": 21,
+    "citationCount": 134,
+    "influentialCitationCount": 20,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new family of algorithms based on mixtures of Nystrom approximation, ensemble Nystrom algorithms, that yield more accurate low-rank approximations than the standard Nystrom method are introduced."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "152663162",
+            "name": "Sanjiv Kumar"
+        },
+        {
+            "authorId": "81080659",
+            "name": "M. Mohri"
+        },
+        {
+            "authorId": "145532827",
+            "name": "Ameet Talwalkar"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "9794b809f33c279e9d8056d0b0695cc765adf69a",
+            "title": "On sampling-based approximate spectral decomposition"
+        },
+        {
+            "paperId": "25f7cdba90ff53b40ff865a4e088ee5749f34210",
+            "title": "Sampling Techniques for the Nystrom Method"
+        },
+        {
+            "paperId": "3035c5919f3588989ab7a3a04ea77aadf31edffc",
+            "title": "Stability of transductive regression algorithms"
+        },
+        {
+            "paperId": "ed2f7914bf51168842f33618d50f1e5f21622548",
+            "title": "Improved Nystr\u00f6m low-rank approximation and error analysis"
+        },
+        {
+            "paperId": "68d54eca0cbd3a6bc45227bcec0efa5dbb9b1cc1",
+            "title": "Large-scale manifold learning"
+        },
+        {
+            "paperId": "a158158d35980673f98628ed56e3cec72f89b709",
+            "title": "Towards the identification of essential genes using targeted genome sequencing and comparative analysis"
+        },
+        {
+            "paperId": "11e6b5a30a921e6028662105148fac41a76f0500",
+            "title": "On the Nystr\u00f6m Method for Approximating a Gram Matrix for Improved Kernel-Based Learning"
+        },
+        {
+            "paperId": "8c04f169203f9e55056a6f7f956695babe622a38",
+            "title": "Distinctive Image Features from Scale-Invariant Keypoints"
+        },
+        {
+            "paperId": "b89f0e4f43570688dd983813c9a3efa2fa7e7ebc",
+            "title": "The CMU Pose, Illumination, and Expression (PIE) database"
+        },
+        {
+            "paperId": "922b81f11a71aa64cda78914e6356cce89cd4f86",
+            "title": "Ridge Regression Learning Algorithm in Dual Variables"
+        },
+        {
+            "paperId": "3f600e6c6cf93e78c9e6e690443d6d22c4bf18b9",
+            "title": "Nonlinear Component Analysis as a Kernel Eigenvalue Problem"
+        },
+        {
+            "paperId": "52b7bf3ba59b31f362aa07f957f1543a29a4279e",
+            "title": "Support-Vector Networks"
+        },
+        {
+            "paperId": "4aaa30769ca49875f45670970130c088136986d1",
+            "title": "A training algorithm for optimal margin classifiers"
+        },
+        {
+            "paperId": "22cd8ee12f34e75781dd34be2f9cd9f5a1ffe2fc",
+            "title": "The weighted majority algorithm"
+        },
+        {
+            "paperId": null,
+            "title": "UCI machine learning repository"
+        },
+        {
+            "paperId": "dc52d1ede1b90bf9d296bc5b34c9310b7eaa99a2",
+            "title": "The mnist database of handwritten digits"
+        },
+        {
+            "paperId": "13c82489c1568b67265d17a15720001a5737171e",
+            "title": "Spectral grouping using the Nystrom method"
+        },
+        {
+            "paperId": "1938e0ae87955edc4eb930df8d5e839245e604a7",
+            "title": "Fast Embedding of Sparse Similarity Graphs"
+        },
+        {
+            "paperId": null,
+            "title": "The CMU PIE database"
+        },
+        {
+            "paperId": "b6fff8b8ea77f157913986e7af53951d9fc1128e",
+            "title": "Using the Nystr\u00f6m Method to Speed Up Kernel Machines"
+        },
+        {
+            "paperId": "225ca57add3b3fb12ef01cc97c4683350dc93fe4",
+            "title": "Matrix computations"
+        }
+    ]
+}

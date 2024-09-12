@@ -1,0 +1,150 @@
+{
+    "paperId": "b7339c1deeb617c894cc08c92ed8c2d4ab14b4b5",
+    "externalIds": {
+        "ArXiv": "1810.11579",
+        "MAG": "2952994212",
+        "DBLP": "conf/nips/ChenKLYF18",
+        "CorpusId": 53106274
+    },
+    "title": "A2-Nets: Double Attention Networks",
+    "abstract": "Learning to capture long-range relations is fundamental to image/video recognition. Existing CNN models generally rely on increasing depth to model such relations which is highly inefficient. In this work, we propose the \"double attention block\", a novel component that aggregates and propagates informative global features from the entire spatio-temporal space of input images/videos, enabling subsequent convolution layers to access features from the entire space efficiently. The component is designed with a double attention mechanism in two steps, where the first step gathers features from the entire space into a compact set through second-order attention pooling and the second step adaptively selects and distributes features to each location via another attention. The proposed double attention block is easy to adopt and can be plugged into existing deep neural networks conveniently. We conduct extensive ablation studies and experiments on both image and video recognition tasks for evaluating its performance. On the image recognition task, a ResNet-50 equipped with our double attention blocks outperforms a much larger ResNet-152 architecture on ImageNet-1k dataset with over 40% less the number of parameters and less FLOPs. On the action recognition task, our proposed model achieves the state-of-the-art results on the Kinetics and UCF-101 datasets with significantly higher efficiency than recent works.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2018,
+    "referenceCount": 26,
+    "citationCount": 482,
+    "influentialCitationCount": 29,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work proposes the \"double attention block\", a novel component that aggregates and propagates informative global features from the entire spatio-temporal space of input images/videos, enabling subsequent convolution layers to access featuresFrom the entire space efficiently."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2144861793",
+            "name": "Yunpeng Chen"
+        },
+        {
+            "authorId": "1944225",
+            "name": "Yannis Kalantidis"
+        },
+        {
+            "authorId": "2109020391",
+            "name": "Jianshu Li"
+        },
+        {
+            "authorId": "143653681",
+            "name": "Shuicheng Yan"
+        },
+        {
+            "authorId": "33221685",
+            "name": "Jiashi Feng"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "c02b909a514af6b9255315e2d50112845ca5ed0e",
+            "title": "ShuffleNet V2: Practical Guidelines for Efficient CNN Architecture Design"
+        },
+        {
+            "paperId": "fe82d072a8d13cfefcd575db893f3374251f04a8",
+            "title": "Multi-Fiber Networks for Video Recognition"
+        },
+        {
+            "paperId": "16b42f570873fc03d503090adb0a75a467c5f30c",
+            "title": "Inverted Residuals and Linear Bottlenecks: Mobile Networks for Classification, Detection and Segmentation"
+        },
+        {
+            "paperId": "dd9cfe7124c734f5a6fc90227d541d3dbcd72ba4",
+            "title": "MobileNetV2: Inverted Residuals and Linear Bottlenecks"
+        },
+        {
+            "paperId": "89c3050522a0bb9820c32dc7444e003ef0d3e2e4",
+            "title": "A Closer Look at Spatiotemporal Convolutions for Action Recognition"
+        },
+        {
+            "paperId": "8899094797e82c5c185a0893896320ef77f60e64",
+            "title": "Non-local Neural Networks"
+        },
+        {
+            "paperId": "90bb40d96fcd16129eb85ce5dc4ee3b2380d74c8",
+            "title": "Attentional Pooling for Action Recognition"
+        },
+        {
+            "paperId": "fb37561499573109fc2cebb6a7b08f44917267dd",
+            "title": "Squeeze-and-Excitation Networks"
+        },
+        {
+            "paperId": "a92adfdd8996ab2bd7cdc910ea1d3db03c66d34f",
+            "title": "ConvNet Architecture Search for Spatiotemporal Feature Learning"
+        },
+        {
+            "paperId": "d7ddad7bbda29de7676c21bfeac6be2ce0a07d6f",
+            "title": "Dual Path Networks"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "b61a3f8b80bbd44f24544dc915f52fd30bbdf485",
+            "title": "Quo Vadis, Action Recognition? A New Model and the Kinetics Dataset"
+        },
+        {
+            "paperId": "86e1bdbfd13b9ed137e4c4b8b459a3980eb257f6",
+            "title": "The Kinetics Human Action Video Dataset"
+        },
+        {
+            "paperId": "2c462c81970b8d7e30c19c87bb5d4ad59fc306a2",
+            "title": "Is Second-Order Information Helpful for Large-Scale Visual Recognition?"
+        },
+        {
+            "paperId": "f6e0856b4a9199fa968ac00da612a9407b5cb85c",
+            "title": "Aggregated Residual Transformations for Deep Neural Networks"
+        },
+        {
+            "paperId": "cab372bc3824780cce20d9dd1c22d4df39ed081a",
+            "title": "DeepLab: Semantic Image Segmentation with Deep Convolutional Nets, Atrous Convolution, and Fully Connected CRFs"
+        },
+        {
+            "paperId": "77f0a39b8e02686fd85b01971f8feb7f60971f80",
+            "title": "Identity Mappings in Deep Residual Networks"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "62df84d6a4d26f95e4714796c2337c9848cc13b5",
+            "title": "MXNet: A Flexible and Efficient Machine Learning Library for Heterogeneous Distributed Systems"
+        },
+        {
+            "paperId": "3d3f789a56dca288b2c8e23ef047a2b342184950",
+            "title": "Bilinear CNN Models for Fine-Grained Visual Recognition"
+        },
+        {
+            "paperId": "7ffdbc358b63378f07311e883dddacc9faeeaf4b",
+            "title": "Fast R-CNN"
+        },
+        {
+            "paperId": "5418b2a482720e013d487a385c26fae0f017c6a6",
+            "title": "Beyond short snippets: Deep networks for video classification"
+        },
+        {
+            "paperId": "d25c65d261ea0e6a458be4c50c40ffe5bc508f77",
+            "title": "Learning Spatiotemporal Features with 3D Convolutional Networks"
+        },
+        {
+            "paperId": "f01fc808592ea7c473a69a6e7484040a435f36d9",
+            "title": "Long-term recurrent convolutional networks for visual recognition and description"
+        },
+        {
+            "paperId": "da9e411fcf740569b6b356f330a1d0fc077c8d7c",
+            "title": "UCF101: A Dataset of 101 Human Actions Classes From Videos in The Wild"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        }
+    ]
+}

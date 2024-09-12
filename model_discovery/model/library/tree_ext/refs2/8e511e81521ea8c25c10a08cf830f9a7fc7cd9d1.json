@@ -1,0 +1,178 @@
+{
+    "paperId": "8e511e81521ea8c25c10a08cf830f9a7fc7cd9d1",
+    "externalIds": {
+        "MAG": "2951040528",
+        "DBLP": "conf/focs/Gall12",
+        "ArXiv": "1204.1111",
+        "DOI": "10.1109/FOCS.2012.80",
+        "CorpusId": 2410545
+    },
+    "title": "Faster Algorithms for Rectangular Matrix Multiplication",
+    "abstract": "Let \u03b1 be the maximal value such that the product of an n \u00d7 n<sup>\u03b1</sup> matrix by an n<sup>\u03b1</sup> \u00d7 n matrix can be computed with n<sup>2+o(1)</sup> arithmetic operations. In this paper we show that \u03b1 >; 0.30298, which improves the previous record \u03b1 >; 0.29462 by Coppersmith (Journal of Complexity, 1997). More generally, we construct a new algorithm for multiplying an n \u00d7 n<sup>k</sup> matrix by an n<sup>k</sup> \u00d7 n matrix, for any value k \u2260 1. The complexity of this algorithm is better than all known algorithms for rectangular matrix multiplication. In the case of square matrix multiplication (i.e., for k = 1), we recover exactly the complexity of the algorithm by Coppersmith and Winograd (Journal of Symbolic Computation, 1990). These new upper bounds can be used to improve the time complexity of several known algorithms that rely on rectangular matrix multiplication. For example, we directly obtain a O(n<sup>2.5302</sup>)-time algorithm for the all-pairs shortest paths problem over directed graphs with small integer weights, where n denotes the number of vertices, and also improve the time complexity of sparse square matrix multiplication.",
+    "venue": "IEEE Annual Symposium on Foundations of Computer Science",
+    "year": 2012,
+    "referenceCount": 36,
+    "citationCount": 181,
+    "influentialCitationCount": 14,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1204.1111",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new algorithm for multiplying an n \u00d7 n<sup>k</sup> matrix by an n\u2013k \u00d7 n matrix, which is better than all known algorithms for rectangular matrix multiplication and recovers exactly the complexity of the algorithm by Coppersmith and Winograd."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "14027261",
+            "name": "F. Gall"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "986b83af0d5d62acc7ffca1c79b3fc9275d0e286",
+            "title": "On sunflowers and matrix multiplication"
+        },
+        {
+            "paperId": "3030fa2aecda339d593b86a260bfab9988b42df7",
+            "title": "Multiplying matrices faster than coppersmith-winograd"
+        },
+        {
+            "paperId": "7a54d2b5caf2463501ace213320ff2280e7ee62b",
+            "title": "The complexity of matrix multiplication"
+        },
+        {
+            "paperId": "b50742403c2d85ea5a4e9327c5d56d34b5ec1fbe",
+            "title": "Non-uniform ACC Circuit Lower Bounds"
+        },
+        {
+            "paperId": "afa638d5f6ec4324f5a65dfdb8ff7088660dac48",
+            "title": "Computing the diameter polynomially faster than APSP"
+        },
+        {
+            "paperId": "ba7b2e0fed82b266450254969b5b3ad68ac82459",
+            "title": "Fast Dynamic Transitive Closure with Lookahead"
+        },
+        {
+            "paperId": "ec6252fb7e8e25763a9bf3cfcc43b6b92e422de2",
+            "title": "On the possibility of faster SAT algorithms"
+        },
+        {
+            "paperId": "9bfe266c9e401a06a5826953b2a2373adc87739e",
+            "title": "Faster join-projects and sparse matrix multiplications"
+        },
+        {
+            "paperId": "84cf60d1bb1ab7e8b22734066119549a5bd003a8",
+            "title": "Efficient algorithms on sets of permutations, dominance, and real-weighted APSP"
+        },
+        {
+            "paperId": "8eccb3b21e1cc7a6e35ee848c2de5e57844949a7",
+            "title": "All-pairs shortest paths with a sublinear additive error"
+        },
+        {
+            "paperId": "30ca36a1d557bb832597ad93443554fbc9e1872b",
+            "title": "Fast rectangular matrix multiplication and some applications"
+        },
+        {
+            "paperId": "8826c61572dc1d632e6e81e10ee9bbf90ce1c0d2",
+            "title": "Fast Algorithms for Maximum Subset Matching and All-Pairs Shortest Paths in Graphs with a (Not So) Small Vertex Cover"
+        },
+        {
+            "paperId": "eba558ac915c042894344f83bd2a2503eb3d7294",
+            "title": "Faster algorithms for finding lowest common ancestors in directed acyclic graphs"
+        },
+        {
+            "paperId": "f54a7132d12ad95e45c1620328786d20f116083b",
+            "title": "Counting colors in boxes"
+        },
+        {
+            "paperId": "c998bb3543e928c87f78d97356d4bd7bd76f1ca4",
+            "title": "Colored intersection searching via sparse rectangular matrix multiplication"
+        },
+        {
+            "paperId": "f3989c4a6aa53b0567fd5ddba03dae2d4a7ec6a0",
+            "title": "Group-theoretic algorithms for matrix multiplication"
+        },
+        {
+            "paperId": "1dfdbecd20ee160c4d9a82b3596b0bd54a8a6123",
+            "title": "Dynamic transitive closure via dynamic matrix inverse: extended abstract"
+        },
+        {
+            "paperId": "b1848703264f90b73f33d936940863e4d8629f59",
+            "title": "Fast sparse matrix multiplication"
+        },
+        {
+            "paperId": "21153f122a3f871589f67de38379d78f01c7add4",
+            "title": "Detecting short directed cycles using rectangular matrix multiplication and dynamic programming"
+        },
+        {
+            "paperId": "994769a04aa9cb3f00545434cff17cdf881acb84",
+            "title": "A group-theoretic approach to fast matrix multiplication"
+        },
+        {
+            "paperId": "ff21b34d6f709dcc3104df64d6dc3fb0952f75ae",
+            "title": "Fully dynamic transitive closure: breaking through the O(n/sup 2/) barrier"
+        },
+        {
+            "paperId": "eec92e7994b43ff8aedc1986a5049e7c31997fbc",
+            "title": "All pairs shortest paths using bridging sets and rectangular matrix multiplication"
+        },
+        {
+            "paperId": "eccb8721b9296efd450a723ec462449616b80cbe",
+            "title": "All pairs lightest shortest paths"
+        },
+        {
+            "paperId": "ee64ab6a05667113e2f6808dceed08a187387db6",
+            "title": "Fast Rectangular Matrix Multiplication and Applications"
+        },
+        {
+            "paperId": "19c8c920bd58ec86cb297ad6d7e5fa7ceb99be06",
+            "title": "Rectangular Matrix Multiplication Revisited"
+        },
+        {
+            "paperId": "54946e3ef95b6eb93d89346a768a9c73053870d0",
+            "title": "Algebraic complexity theory"
+        },
+        {
+            "paperId": "26108e32b0891ebfff74276e8b7ea1301b1de1a3",
+            "title": "Algebraic Complexity Theory"
+        },
+        {
+            "paperId": "1992fee8d33e66e32a213ecf047f9022adbff92e",
+            "title": "Matrix multiplication via arithmetic progressions"
+        },
+        {
+            "paperId": "122b88e3881de89eacfb69cc588f1750a0b1b6f6",
+            "title": "The asymptotic spectrum of tensors and the exponent of matrix multiplication"
+        },
+        {
+            "paperId": "3d8be4f0d7fb8a63c94ee5a3cc7feb1b466689a1",
+            "title": "Partial and Total Matrix Multiplication"
+        },
+        {
+            "paperId": "7aa9db2ed644f2cd8804988034154fc967c39ec0",
+            "title": "On Sets of Integers Which Contain No Three Terms in Arithmetical Progression."
+        },
+        {
+            "paperId": "38f40e73feba9d955ed87e3fc3dcc4de4c7e73a0",
+            "title": "On Sets of Integers Which Contain No Three Terms in Arithmetical Progression."
+        },
+        {
+            "paperId": "691f4085e9f70ba865191dc223c34ef45b4144f6",
+            "title": "RAPID MULTIPLICATION OF RECTANGULAR MATRICES *"
+        },
+        {
+            "paperId": "c643d5a3314a0592be3989696fe1732f79a0b42c",
+            "title": "Relative bilinear complexity and matrix multiplication."
+        },
+        {
+            "paperId": "2e61d0582eb9ea222dd3ba6eae58e29a2f0df7a0",
+            "title": "On the Asymptotic Complexity of Rectangular Matrix Multiplication"
+        },
+        {
+            "paperId": "a88239161390696c950f39388f5b5c29ceee15f6",
+            "title": "Journal f\u00fcr die reine und angewandte Mathematik"
+        }
+    ]
+}

@@ -1,0 +1,231 @@
+{
+    "paperId": "33618275fcb19b0535d1b25d02b1d3f3d058de04",
+    "externalIds": {
+        "MAG": "2797520557",
+        "ArXiv": "1804.03329",
+        "DBLP": "conf/icml/SalaSGR18",
+        "CorpusId": 4753193,
+        "PubMed": "31131375"
+    },
+    "title": "Representation Tradeoffs for Hyperbolic Embeddings",
+    "abstract": "Hyperbolic embeddings offer excellent quality with few dimensions when embedding hierarchical data structures like synonym or type hierarchies. Given a tree, we give a combinatorial construction that embeds the tree in hyperbolic space with arbitrarily low distortion without using optimization. On WordNet, our combinatorial embedding obtains a mean-average-precision of 0.989 with only two dimensions, while Nickel et al.'s recent construction obtains 0.87 using 200 dimensions. We provide upper and lower bounds that allow us to characterize the precision-dimensionality tradeoff inherent in any hyperbolic embedding. To embed general metric spaces, we propose a hyperbolic generalization of multidimensional scaling (h-MDS). We show how to perform exact recovery of hyperbolic points from distances, provide a perturbation analysis, and give a recovery result that allows us to reduce dimensionality. The h-MDS approach offers consistently low distortion even with few dimensions across several datasets. Finally, we extract lessons from the algorithms and theory above to design a PyTorch-based implementation that can handle incomplete information and is scalable.",
+    "venue": "International Conference on Machine Learning",
+    "year": 2018,
+    "referenceCount": 47,
+    "citationCount": 361,
+    "influentialCitationCount": 35,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A hyperbolic generalization of multidimensional scaling (h-MDS), which offers consistently low distortion even with few dimensions across several datasets, is proposed and a PyTorch-based implementation is designed that can handle incomplete information and is scalable."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "14123214",
+            "name": "Frederic Sala"
+        },
+        {
+            "authorId": "1801197",
+            "name": "Christopher De Sa"
+        },
+        {
+            "authorId": "39499001",
+            "name": "Albert Gu"
+        },
+        {
+            "authorId": "1803218",
+            "name": "Christopher R\u00e9"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "d5bf5c4a57d3904736221c7769e46eed61d16b62",
+            "title": "Exploratory Social Network Analysis with Pajek: Revised and Expanded Edition for Updated Software"
+        },
+        {
+            "paperId": "a4e088a3d92f9299b6a8060c21a1082ecb251902",
+            "title": "Hyperbolic Entailment Cones for Learning Hierarchical Embeddings"
+        },
+        {
+            "paperId": "27806b124cc74e137a14226e9b8f79949b531089",
+            "title": "On kissing numbers and spherical codes in high dimensions"
+        },
+        {
+            "paperId": "8ef5524a3938bdcb4f744a99295514d069d71a32",
+            "title": "Geometry"
+        },
+        {
+            "paperId": "a90179a880a34c70cb916133f931be7a97fec2d5",
+            "title": "Hyperbolic Representation Learning for Fast and Efficient Neural Question Answering"
+        },
+        {
+            "paperId": "76ce8d30c6f72aa56ae02cd42a064e41b9ab9391",
+            "title": "Neural Embeddings of Graphs in Hyperbolic Space"
+        },
+        {
+            "paperId": "1590bd1bca945fc6ff50b8cdf2da14ea2061c79a",
+            "title": "Poincar\u00e9 Embeddings for Learning Hierarchical Representations"
+        },
+        {
+            "paperId": "4da378a940b8223cb40ac1d10e0c307e694ca364",
+            "title": "Barycentric subspace analysis on manifolds"
+        },
+        {
+            "paperId": "89bb669417df25750ad3f6f0cd7066270362e2d6",
+            "title": "Preliminary insights from DNA barcoding into the diversity of mosses colonising modern building surfaces"
+        },
+        {
+            "paperId": "4aa83ac367905a2647bd223d42c9eef057d195d6",
+            "title": "Metric tree\u2010like structures in real\u2010world networks: an empirical study"
+        },
+        {
+            "paperId": "93ee8e1c05d11d63aa3d61653b2c8bae75e0aecd",
+            "title": "The Network Data Repository with Interactive Graph Analytics and Visualization"
+        },
+        {
+            "paperId": "c4b2c711b5b5ed56c3b01cbac67a127e0a4f872a",
+            "title": "Global Convergence of Stochastic Gradient Descent for Some Non-convex Matrix Problems"
+        },
+        {
+            "paperId": "7b888a7654f76a69e89ade49d441fad2277d8673",
+            "title": "Metric Embedding, Hyperbolic Space, and Social Networks"
+        },
+        {
+            "paperId": "60a0de0050cd6116c7eddcf731068f120ec0a8a5",
+            "title": "Spherical and Hyperbolic Embeddings of Data"
+        },
+        {
+            "paperId": "ca6b761d7379c3e2b9efdbd50e0fc86c32e91627",
+            "title": "Probabilistic Principal Geodesic Analysis"
+        },
+        {
+            "paperId": "50d53cc562225549457cbc782546bfbe1ac6f0cf",
+            "title": "Reasoning With Neural Tensor Networks for Knowledge Base Completion"
+        },
+        {
+            "paperId": "18bce2dcdfa77e16d7aa5b17215e3b461997f59c",
+            "title": "On the Hyperbolicity of Small-World and Treelike Random Graphs"
+        },
+        {
+            "paperId": "5731795f184b2a5431fc909a0ce8bf7a9ec2c762",
+            "title": "Low Distortion Delaunay Embedding of Trees in Hyperbolic Plane"
+        },
+        {
+            "paperId": "3327bf74c1319351f8880d0d8d5fa927bb3f2ec6",
+            "title": "Multidimensional Scaling in the Poincar\u00e9 Disk"
+        },
+        {
+            "paperId": "ef8458353c245bbe3bcf81b055fe5313b93a9f66",
+            "title": "Hyperbolic Geometry of Complex Networks"
+        },
+        {
+            "paperId": "ee7d1082f8e439991b0f13294f964e33642cd739",
+            "title": "Hyperbolic Embedding and Routing for Dynamic Graphs"
+        },
+        {
+            "paperId": "9ce23599d6be0e4b77e5746a1a1d5433fba341aa",
+            "title": "On curvature and temperature of complex networks"
+        },
+        {
+            "paperId": "c369d9192c9754fb7a04529c68f2fb286f646df7",
+            "title": "The Power of Convex Relaxation: Near-Optimal Matrix Completion"
+        },
+        {
+            "paperId": "8cbbbd8b2b46b4ccb2d08935b54497a05abf1c23",
+            "title": "Succinct Greedy Graph Drawing in the Hyperbolic Plane"
+        },
+        {
+            "paperId": "08efd13ef299e58f6ada692d17aa37d0b2f050da",
+            "title": "Reconstructing approximate tree metrics"
+        },
+        {
+            "paperId": "779bc3570167c8251afb0a88ca355b596583caea",
+            "title": "The human disease network"
+        },
+        {
+            "paperId": "f506b2ddb142d2ec539400297ba53383d958abef",
+            "title": "Geographic Routing Using Hyperbolic Space"
+        },
+        {
+            "paperId": "a9fee459ed211f53bfadef22e3ab774d0e927358",
+            "title": "Computing Semantic Relatedness Using Wikipedia-based Explicit Semantic Analysis"
+        },
+        {
+            "paperId": "29752f2f4a40df45a6eb61afb7c347f1799b1f45",
+            "title": "Graph evolution: Densification and shrinking diameters"
+        },
+        {
+            "paperId": "11647c4d6867daaa90e67850f36d2cd8e614acdc",
+            "title": "Principal geodesic analysis for the study of nonlinear statistics of shape"
+        },
+        {
+            "paperId": "6d3af16f0512506b3244234b1045a4c6ba11a80e",
+            "title": "H-MDS: a new approach for interactive visualization with multidimensional scaling in the hyperbolic space"
+        },
+        {
+            "paperId": "5e49e7a0a6c6d46a368a4c036bc9e89a0ac4edd5",
+            "title": "Lethality and centrality in protein networks"
+        },
+        {
+            "paperId": "f1962baa356e10c4fd936b9e9f910869a5864a75",
+            "title": "Authoritative sources in a hyperlinked environment"
+        },
+        {
+            "paperId": "826ad9d93afd1826a1b4146c88c1476cef5835df",
+            "title": "The geometry of graphs and some of its algorithmic applications"
+        },
+        {
+            "paperId": "611f388d87c1d9ef36ec243e151f7bee9954f8ad",
+            "title": "Laying out and visualizing large trees using a hyperbolic space"
+        },
+        {
+            "paperId": "4b2feb260b32a763b90a870ba9face4574aaf8f9",
+            "title": "Lectures on Hyperbolic Geometry"
+        },
+        {
+            "paperId": "9d6f5e7a5ea7156aa8c2a11c0b9b613af44e910a",
+            "title": "Sphere Packings, Lattices and Groups"
+        },
+        {
+            "paperId": "721f54f6fa32f5f02c5124a2b73ce5f4280b4eaf",
+            "title": "Matrix analysis"
+        },
+        {
+            "paperId": "311a98cacb0fb83a1c3d03bf11dcb50d124a8e13",
+            "title": "HUMAN DISEASE"
+        },
+        {
+            "paperId": null,
+            "title": "First insights in the diversity of certain mosses colonising modern building surfaces by use of genetic barcoding"
+        },
+        {
+            "paperId": "d295bd407d82fc3054d2c47ec08f0620d63c8e09",
+            "title": "INTRINSIC SHAPE ANALYSIS: GEODESIC PCA FOR RIEMANNIAN MANIFOLDS MODULO ISOMETRIC LIE GROUP ACTIONS"
+        },
+        {
+            "paperId": "23fa89ae96d9f1b3f07b2ac64e576a1f6c8d7588",
+            "title": "Exploratory Social Network Analysis with Pajek"
+        },
+        {
+            "paperId": null,
+            "title": "TreeBASE: a prototype database of phylogenetic analyses and an interactive tool for browsing the phylogeny of life"
+        },
+        {
+            "paperId": null,
+            "title": "Hyperbolic groups"
+        },
+        {
+            "paperId": "0b90832bc51835c991c86b0cedb5f6d6aa9c6422",
+            "title": "Studies in the Robustness of Multidimensional Scaling: Perturbational Analysis of Classical Scaling"
+        },
+        {
+            "paperId": "d1df87616054e99230faa3e307e51de03bd0e71f",
+            "title": "Studies in the Robustness of Multidimensional Scaling: Procrustes Statistics"
+        },
+        {
+            "paperId": null,
+            "title": "Precision D avg MAP 128 0.357 0.347 256 0.091 0.986 512 0.076 1.0 1024 0.064 1.0 Table"
+        }
+    ]
+}

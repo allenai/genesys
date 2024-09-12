@@ -1,0 +1,222 @@
+{
+    "paperId": "3f7ff48661979438d99c94aa8c3090ee1855f41d",
+    "externalIds": {
+        "MAG": "2527994842",
+        "PubMedCentral": "5291440",
+        "DOI": "10.1371/journal.pone.0171410",
+        "CorpusId": 17281926,
+        "PubMed": "28158264"
+    },
+    "title": "Recognition of prokaryotic and eukaryotic promoters using convolutional deep learning neural networks",
+    "abstract": "Accurate computational identification of promoters remains a challenge as these key DNA regulatory regions have variable structures composed of functional motifs that provide gene-specific initiation of transcription. In this paper we utilize Convolutional Neural Networks (CNN) to analyze sequence characteristics of prokaryotic and eukaryotic promoters and build their predictive models. We trained a similar CNN architecture on promoters of five distant organisms: human, mouse, plant (Arabidopsis), and two bacteria (Escherichia coli and Bacillus subtilis). We found that CNN trained on sigma70 subclass of Escherichia coli promoter gives an excellent classification of promoters and non-promoter sequences (Sn = 0.90, Sp = 0.96, CC = 0.84). The Bacillus subtilis promoters identification CNN model achieves Sn = 0.91, Sp = 0.95, and CC = 0.86. For human, mouse and Arabidopsis promoters we employed CNNs for identification of two well-known promoter classes (TATA and non-TATA promoters). CNN models nicely recognize these complex functional regions. For human promoters Sn/Sp/CC accuracy of prediction reached 0.95/0.98/0,90 on TATA and 0.90/0.98/0.89 for non-TATA promoter sequences, respectively. For Arabidopsis we observed Sn/Sp/CC 0.95/0.97/0.91 (TATA) and 0.94/0.94/0.86 (non-TATA) promoters. Thus, the developed CNN models, implemented in CNNProm program, demonstrated the ability of deep learning approach to grasp complex promoter sequence characteristics and achieve significantly higher accuracy compared to the previously developed promoter prediction programs. We also propose random substitution procedure to discover positionally conserved promoter functional elements. As the suggested approach does not require knowledge of any specific promoter features, it can be easily extended to identify promoters and other complex functional regions in sequences of many other and especially newly sequenced genomes. The CNNProm program is available to run at web server http://www.softberry.com.",
+    "venue": "PLoS ONE",
+    "year": 2016,
+    "referenceCount": 46,
+    "citationCount": 179,
+    "influentialCitationCount": 21,
+    "openAccessPdf": {
+        "url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0171410&type=printable",
+        "status": "GOLD"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "The developed CNN models, implemented in CNNProm program, demonstrated the ability of deep learning approach to grasp complex promoter sequence characteristics and achieve significantly higher accuracy compared to the previously developed promoter prediction programs."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "145484351",
+            "name": "Ramzan Umarov"
+        },
+        {
+            "authorId": "2190320019",
+            "name": "V. V. Solovyev"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "e35cd6eec3ccd1d1b273d837147b2ba0fbccaeab",
+            "title": "The Ensembl gene annotation system"
+        },
+        {
+            "paperId": "6b570069f14c7588e066f7138e1f21af59d62e61",
+            "title": "Theano: A Python framework for fast computation of mathematical expressions"
+        },
+        {
+            "paperId": "98b2df80e7850ab71933a278eec5504c7d04e1d3",
+            "title": "DanQ: a hybrid convolutional and recurrent deep neural network for quantifying the function of DNA sequences"
+        },
+        {
+            "paperId": "1b6d713d303a97d66c98b93f04b0d405cad79621",
+            "title": "Gene expression inference with deep learning"
+        },
+        {
+            "paperId": "753b392250e50427f96d6de5376e6ccc37b4eef6",
+            "title": "RegulonDB version 9.0: high-level integration of gene regulation, coexpression, motif clustering and beyond"
+        },
+        {
+            "paperId": "e018d3883c82c9f85a4c8b7698c3fe52cc40eb39",
+            "title": "Predicting effects of noncoding variants with deep learning\u2013based sequence model"
+        },
+        {
+            "paperId": "42d3ae61ca296558cba61446bd95b8a6e5b1082d",
+            "title": "Predicting the sequence specificities of DNA- and RNA-binding proteins by deep learning"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "4ffbc9a1747c043311bb0a394fc5656d4be62967",
+            "title": "DBTSS as an integrative platform for transcriptome, epigenome and genome sequence variation data"
+        },
+        {
+            "paperId": "e15cf50aa89fee8535703b9f9512fca5bfc43327",
+            "title": "Going deeper with convolutions"
+        },
+        {
+            "paperId": "193edd20cae92c6759c18ce93eeea96afd9528eb",
+            "title": "Deep learning in neural networks: An overview"
+        },
+        {
+            "paperId": "1322cd01d3c1ca4a62631ec4a419785f06a12cdb",
+            "title": "Structural Properties of Prokaryotic Promoter Regions Correlate with Functional Features"
+        },
+        {
+            "paperId": "61923d2ad079a3e5a54e1b09eca5a1247f7cdbc1",
+            "title": "NPEST: a nonparametric method and a database for transcription start site prediction"
+        },
+        {
+            "paperId": "abd1c342495432171beb7ca8fd9551ef13cbd0ff",
+            "title": "ImageNet classification with deep convolutional neural networks"
+        },
+        {
+            "paperId": "95f2dfedbfcd27b33bd62bb273bd5d0235483b35",
+            "title": "EPD and EPDnew, high-quality promoter resources in the next-generation sequencing era"
+        },
+        {
+            "paperId": "855d0f722d75cc56a66a00ede18ace96bafee6bd",
+            "title": "Theano: new features and speed improvements"
+        },
+        {
+            "paperId": "6adfbdec352292638ffbca65fc4d168f16dcd49b",
+            "title": "Prediction of plant promoters based on hexamers and random triplet pair analysis"
+        },
+        {
+            "paperId": "168f28ac3c8c7ea63bf7ed25f2288e8b67e2fe74",
+            "title": "Scikit-learn: Machine Learning in Python"
+        },
+        {
+            "paperId": "a9047f5412d5cac44170dec1714334b2d4d31fad",
+            "title": "Genome-wide analysis of rice (Oryza sativa L. subsp. japonica) TATA box and Y Patch promoter elements."
+        },
+        {
+            "paperId": "a366164ea4ba673850764fda3f8880a833f4138e",
+            "title": "Pol II promoter prediction using characteristic 4-mer motifs: a machine learning approach"
+        },
+        {
+            "paperId": "3bf06754c03c58f5a2599d816caf0bab0250ea42",
+            "title": "Scalable parallel programming"
+        },
+        {
+            "paperId": "cdc30039ea696b6fb17bffa0a514cfd76af00f2d",
+            "title": "Differentiation of core promoter architecture between plants and mammals revealed by LDSS analysis"
+        },
+        {
+            "paperId": "dfd7f62ebee46b14b0e6b5fbde6a59f037e231cc",
+            "title": "Mammalian RNA polymerase II core promoters: insights from genome-wide studies"
+        },
+        {
+            "paperId": "341a11c8842d7c678a66a7200a9cc81951155a34",
+            "title": "Detection of prokaryotic promoters from the genomic distribution of hexanucleotide pairs"
+        },
+        {
+            "paperId": "0d3abdc3c959fc96e146230587d6bdaa05fa7724",
+            "title": "Performance assessment of promoter predictions on ENCODE regions in the EGASP experiment"
+        },
+        {
+            "paperId": "e5c1388234cff49e90a5f96f54804061464dee84",
+            "title": "EGASP: the human ENCODE Genome Annotation Assessment Project"
+        },
+        {
+            "paperId": "798e78290871ba37cb4dcf36386e5edf6ea441e8",
+            "title": "Promoter prediction and annotation of microbial genomes based on DNA sequence and structural responses to superhelical stress"
+        },
+        {
+            "paperId": "5536d42ce80e129be8cae172ed1b7659c769d31d",
+            "title": "2005 Special Issue: Framewise phoneme classification with bidirectional LSTM and other neural network architectures"
+        },
+        {
+            "paperId": "416aa560dc4453672aa7ffd9ef39f318c5d54947",
+            "title": "Plant promoter prediction with confidence estimation"
+        },
+        {
+            "paperId": "edf8b8c745d66209605feea17a5d66946d9f69a9",
+            "title": "Sequence alignment kernel for recognition of promoter regions"
+        },
+        {
+            "paperId": "f6faf249f6cef5248ab791475e6b3c6b5a508610",
+            "title": "Application of a Time-delay Neural Network to Promoter Annotation in the Drosophila Melanogaster Genome"
+        },
+        {
+            "paperId": "689a3c725feb8a34eeef2106769c9363b547c5d7",
+            "title": "Promoter2.0: for the recognition of PolII promoter sequences"
+        },
+        {
+            "paperId": "127ab09226768ad2786c7fa1b1c4aa2e7ebe2aa4",
+            "title": "Eukaryotic promoter recognition."
+        },
+        {
+            "paperId": "24c68ec410edf7d369888622e85903f5cb342144",
+            "title": "Evaluation of gene structure prediction programs."
+        },
+        {
+            "paperId": "29b67086f67192d36b36945231895a671c62c5cc",
+            "title": "Predicting Pol II promoter sequences using transcription factor binding sites."
+        },
+        {
+            "paperId": "536858efa59c6c3594b52fa573228eb64b36886f",
+            "title": "Compilation of E. coli mRNA promoter sequences."
+        },
+        {
+            "paperId": "630bbaed718a018b30c42eee1e80fda00e5e289f",
+            "title": "Sequence logos: a new way to display consensus sequences."
+        },
+        {
+            "paperId": "e74daf2cdcd723d7b92c2e06ee63eb5efe2a3b73",
+            "title": "Analysis of E. coli promoter sequences."
+        },
+        {
+            "paperId": "155345976aa505a10a45e9119f2853df4d7999d7",
+            "title": "Comparison of the predicted and observed secondary structure of T4 phage lysozyme."
+        },
+        {
+            "paperId": "4f8d648c52edf74e41b0996128aa536e13cc7e82",
+            "title": "Deep Learning"
+        },
+        {
+            "paperId": null,
+            "title": "Keras: Deep Learninglibrary for Theano and TensorFlow"
+        },
+        {
+            "paperId": "88cd5fdbfb2dba16a6b23987d30ad9437ff0c805",
+            "title": "Automatic Annotation of Microbial Genomes and Metagenomic Sequences 3 MATERIAL AND METHODS Learning Parameters and Prediction of Protein-Coding Genes"
+        },
+        {
+            "paperId": "06ab1907e4dea2f607bc9338e844dc0b49048119",
+            "title": "Identification of promoter regions and regulatory sites."
+        },
+        {
+            "paperId": "8ae81017cbba570abf5a0ddcf10947edb0714b53",
+            "title": "DBTBS: a database of Bacillus subtilis promoters and transcription factors"
+        },
+        {
+            "paperId": null,
+            "title": "Sequence logo for Arabidopsis non-TATA promoter sequences. X-axis is a position in promoter sequence, Y-axis is informational content in bits"
+        },
+        {
+            "paperId": null,
+            "title": "Keras: Deep Learning library for Theano and TensorFlow. GitHub; 2015. Available from: https://github.com/fchollet/keras"
+        }
+    ]
+}

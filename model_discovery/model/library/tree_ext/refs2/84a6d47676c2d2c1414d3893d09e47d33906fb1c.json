@@ -1,0 +1,125 @@
+{
+    "paperId": "84a6d47676c2d2c1414d3893d09e47d33906fb1c",
+    "externalIds": {
+        "MAG": "2889235221",
+        "DBLP": "journals/corr/abs-1808-09121",
+        "CorpusId": 52109970
+    },
+    "title": "WiC: 10, 000 Example Pairs for Evaluating Context-Sensitive Representations",
+    "abstract": "By design, word embeddings are unable to model the dynamic nature of words' semantics, i.e., the property of words to correspond to potentially different meanings depending on the context in which they appear. To address this limitation, dozens of specialized word embedding techniques have been proposed. However, despite the popularity of research on this topic, very few evaluation benchmarks exist that specifically focus on the dynamic semantics of words. In this paper we show that existing models have surpassed the performance ceiling for the standard de facto dataset, i.e., the Stanford Contextual Word Similarity. To address the lack of a suitable benchmark, we put forward a large-scale Word in Context dataset, called WiC, based on annotations curated by experts, for generic evaluation of context-sensitive word embeddings. WiC is released in this https URL.",
+    "venue": "North American Chapter of the Association for Computational Linguistics",
+    "year": 2018,
+    "referenceCount": 23,
+    "citationCount": 43,
+    "influentialCitationCount": 5,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A large-scale Word in Context dataset, called WiC, based on annotations curated by experts, for generic evaluation of context-sensitive word embeddings, shows that existing models have surpassed the performance ceiling for the standard de facto dataset, i.e., the Stanford Contextual Word Similarity."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1717641",
+            "name": "Mohammad Taher Pilehvar"
+        },
+        {
+            "authorId": "1387447871",
+            "name": "Jos\u00e9 Camacho-Collados"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "bf9db8ca2dce7386cbed1ae0fd6465148cdb2b98",
+            "title": "From Word to Sense Embeddings: A Survey on Vector Representations of Meaning"
+        },
+        {
+            "paperId": "3febb2bed8865945e7fddc99efd791887bb7e14f",
+            "title": "Deep Contextualized Word Representations"
+        },
+        {
+            "paperId": "5cc2204e1f74101d3076ebddefeed17b48596f74",
+            "title": "Towards a Seamless Integration of Word Senses into Downstream NLP Applications"
+        },
+        {
+            "paperId": "b54315a22b825e9ca1b59aa1d3fac98ea4925941",
+            "title": "De-Conflated Semantic Representations"
+        },
+        {
+            "paperId": "59761abc736397539bdd01ad7f9d91c8607c0457",
+            "title": "context2vec: Learning Generic Context Embedding with Bidirectional LSTM"
+        },
+        {
+            "paperId": "9c7c96521eb20b09733378af30c3335466f7a175",
+            "title": "Supersense Embeddings: A Unified Model for Supersense Interpretation, Prediction, and Utilization"
+        },
+        {
+            "paperId": "b4e3e8f1b8ca595b6ab3b28aaf39fcc5f338dac3",
+            "title": "Making Sense of Word Embeddings"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "1a08e135ac11db0249c6afb4540672c5a349495e",
+            "title": "Efficient Non-parametric Estimation of Multiple Embeddings per Word in Vector Space"
+        },
+        {
+            "paperId": "7a96765c147c9c814803c8c9de28a1dd069271da",
+            "title": "SimLex-999: Evaluating Semantic Models With (Genuine) Similarity Estimation"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "f6b51c8753a871dc94ff32152c00c01e94f90f09",
+            "title": "Efficient Estimation of Word Representations in Vector Space"
+        },
+        {
+            "paperId": "7f90ef42f22d4f9b86d33b0ad7f16261273c8612",
+            "title": "BabelNet: The automatic construction, evaluation and application of a wide-coverage multilingual semantic network"
+        },
+        {
+            "paperId": "2b669398c4cf2ebe04375c8b1beae20f4ac802fa",
+            "title": "Improving Word Representations via Global Context and Multiple Word Prototypes"
+        },
+        {
+            "paperId": "08d4da77c489d550c3e215725551481310719893",
+            "title": "Human Behaviour and the Principle of Least Effort: an Introduction to Human Ecology"
+        },
+        {
+            "paperId": "0c432aedd60e73dc19a707f4a1d967f089c7b4b7",
+            "title": "Piggyback: Using Search Engines for Robust Cross-Domain Named Entity Recognition"
+        },
+        {
+            "paperId": "c62450a13bb6692385490dd4b371de9857761374",
+            "title": "Multi-Prototype Vector-Space Models of Word Meaning"
+        },
+        {
+            "paperId": "f599522c03471ccec0cdc0bc98b3f8dd7ed4ecf1",
+            "title": "Meaningful Clustering of Senses Helps Boost Word Sense Disambiguation Performance"
+        },
+        {
+            "paperId": "2e9d221c206e9503ceb452302d68d10e293f2a10",
+            "title": "Long Short-Term Memory"
+        },
+        {
+            "paperId": "7ef3ac14cdb484aaa2b039850093febd5cf73a21",
+            "title": "Contextual correlates of synonymy"
+        },
+        {
+            "paperId": "79e5966a2355fb40f306e380dba58a155db4d609",
+            "title": "Learning Semantic Textual Similarity with Structural Representations"
+        },
+        {
+            "paperId": "bb6898d6041e97c4946661b3a3df0f82286a43b5",
+            "title": "Verbnet: a broad-coverage, comprehensive verb lexicon"
+        },
+        {
+            "paperId": "d87ceda3042f781c341ac17109d1e94a717f5f60",
+            "title": "Book Reviews: WordNet: An Electronic Lexical Database"
+        }
+    ]
+}

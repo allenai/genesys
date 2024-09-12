@@ -1,0 +1,138 @@
+{
+    "paperId": "6a667700100e228cb30a5d884258a0db921603fe",
+    "externalIds": {
+        "MAG": "2806363513",
+        "DBLP": "journals/corr/RanganathGB14",
+        "ArXiv": "1401.0118",
+        "CorpusId": 1580089
+    },
+    "title": "Black Box Variational Inference",
+    "abstract": "Variational inference has become a widely used method to approximate posteriors in complex latent variables models. However, deriving a variational inference algorithm generally requires significant model-specific analysis, and these efforts can hinder and deter us from quickly developing and exploring a variety of models for a problem at hand. In this paper, we present a \"black box\" variational inference algorithm, one that can be quickly applied to many models with little additional derivation. Our method is based on a stochastic optimization of the variational objective where the noisy gradient is computed from Monte Carlo samples from the variational distribution. We develop a number of methods to reduce the variance of the gradient, always maintaining the criterion that we want to avoid difficult model-based derivations. We evaluate our method against the corresponding black box sampling based methods. We find that our method reaches better predictive likelihoods much faster than sampling methods. Finally, we demonstrate that Black Box Variational Inference lets us easily explore a wide space of models by quickly constructing and evaluating several models of longitudinal healthcare data.",
+    "venue": "International Conference on Artificial Intelligence and Statistics",
+    "year": 2013,
+    "referenceCount": 25,
+    "citationCount": 1076,
+    "influentialCitationCount": 120,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper presents a \"black box\" variational inference algorithm, one that can be quickly applied to many models with little additional derivation, based on a stochastic optimization of the variational objective where the noisy gradient is computed from Monte Carlo samples from the Variational distribution."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2615814",
+            "name": "R. Ranganath"
+        },
+        {
+            "authorId": "21007048",
+            "name": "S. Gerrish"
+        },
+        {
+            "authorId": "1796335",
+            "name": "D. Blei"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "5f5dc5b9a2ba710937e2c413b37b053cd673df02",
+            "title": "Auto-Encoding Variational Bayes"
+        },
+        {
+            "paperId": "5fb8a9271af105a5065a5a855e71a7d25c7a6f1b",
+            "title": "Variance Reduction for Stochastic Gradient Optimization"
+        },
+        {
+            "paperId": "4ed6688adb26026eee306c95dccb816b97b45f4a",
+            "title": "Automated Variational Inference in Probabilistic Programming"
+        },
+        {
+            "paperId": "bccb2f99a9d1c105699f5d88c479569085e2c7ba",
+            "title": "Stochastic variational inference"
+        },
+        {
+            "paperId": "51336c08ea621d9c1c724607daf86991b2931fa3",
+            "title": "Fixed-Form Variational Posterior Approximation through Stochastic Linear Regression"
+        },
+        {
+            "paperId": "9ceb1dea15ac3df3d610fd0b3cc52b9a4e9141a3",
+            "title": "Variational Bayesian Inference with Stochastic Search"
+        },
+        {
+            "paperId": "15bbea3d58ac3f7c21392eaba72b8b166888f81f",
+            "title": "Non-conjugate Variational Message Passing for Multinomial and Binary Regression"
+        },
+        {
+            "paperId": "2362581b7d9cc91d0bffc3da71c4e405973c231b",
+            "title": "Probability and Stochastics"
+        },
+        {
+            "paperId": "413c1142de9d91804d6d11c67ff3fed59c9fc279",
+            "title": "Adaptive Subgradient Methods for Online Learning and Stochastic Optimization"
+        },
+        {
+            "paperId": "2fdbc7a540699cf33610be0b3ed1aa99bc3c5c03",
+            "title": "A Stochastic approximation method for inference in probabilistic graphical models"
+        },
+        {
+            "paperId": "d98d0d1900b13b87aa4ffd6b69c046beb63f0434",
+            "title": "Graphical Models, Exponential Families, and Variational Inference"
+        },
+        {
+            "paperId": "2d05e3aaea5cfda209294439cfcff85736938eb2",
+            "title": "Variational Inference for Large-Scale Models of Discrete Choice"
+        },
+        {
+            "paperId": "e981f16fde9185373634b53d94baa1f9185ff890",
+            "title": "A correlated topic model of Science"
+        },
+        {
+            "paperId": "668b1277fbece28c4841eeab1c97e4ebd0079700",
+            "title": "Pattern Recognition and Machine Learning"
+        },
+        {
+            "paperId": "133809cf62bf67f0a63b35e5ef5180d20c9aec19",
+            "title": "Large Scale Online Learning"
+        },
+        {
+            "paperId": "6120cc252bc74239012f11b8b075cb7cb16bee26",
+            "title": "An Introduction to Variational Methods for Graphical Models"
+        },
+        {
+            "paperId": "ef1196c195f0416c9aed09d2e9516a9545cec4f7",
+            "title": "Rao-Blackwellisation of sampling schemes"
+        },
+        {
+            "paperId": "771a09f35664dfc0f57c844e80816008cf3ecd71",
+            "title": "Stochastic approximation algorithms and applications"
+        },
+        {
+            "paperId": "34ddd8865569c2c32dec9bf7ffc817ff42faaa01",
+            "title": "A Stochastic Approximation Method"
+        },
+        {
+            "paperId": null,
+            "title": "Simulation. Elsevier"
+        },
+        {
+            "paperId": "e5f22d558526017f130c75ca35fe0a737c01aaee",
+            "title": "Propagation Algorithms for Variational Bayesian Learning"
+        },
+        {
+            "paperId": "e407ea7fda6d152d2186f4b5e27aa04ec2d32dcd",
+            "title": "A Variational Approach to Bayesian Logistic Regression Models and their Extensions"
+        },
+        {
+            "paperId": "1216449626c0554d5aad9f5d7d9eb5d50808f635",
+            "title": "Theoretical Statistics"
+        },
+        {
+            "paperId": null,
+            "title": "gradient with respect to the i th factor\u2019s variational parameters as \u2207 \u03bb i L"
+        },
+        {
+            "paperId": null,
+            "title": "E q 1 . . . E q n [ \u2207 \u03bb i log q i ( z i | \u03bb i )(log p ( x, z ) \u2212 n (cid:88) j =1 log q j ( z j | \u03bb j ))]"
+        }
+    ]
+}

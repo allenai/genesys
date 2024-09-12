@@ -1,0 +1,58 @@
+{
+    "paperId": "4758a42c3a481230d6bea5561616a1f85c5cf9a4",
+    "externalIds": {
+        "MAG": "2414919120",
+        "ArXiv": "1604.06915",
+        "DBLP": "journals/corr/Shalev-ShwartzS16",
+        "CorpusId": 8069656
+    },
+    "title": "On the Sample Complexity of End-to-end Training vs. Semantic Abstraction Training",
+    "abstract": "We compare the end-to-end training approach to a modular approach in which a system is decomposed into semantically meaningful components. We focus on the sample complexity aspect, in the regime where an extremely high accuracy is necessary, as is the case in autonomous driving applications. We demonstrate cases in which the number of training examples required by the end-to-end approach is exponentially larger than the number of examples required by the semantic abstraction approach.",
+    "venue": "arXiv.org",
+    "year": 2016,
+    "referenceCount": 6,
+    "citationCount": 57,
+    "influentialCitationCount": 1,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work compares the end-to-end training approach to a modular approach in which a system is decomposed into semantically meaningful components, and demonstrates cases in which the number of training examples required is exponentially larger than thenumber of examples required by the semantic abstraction approach."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "1389955537",
+            "name": "Shai Shalev-Shwartz"
+        },
+        {
+            "authorId": "3140335",
+            "name": "A. Shashua"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "d6b93b766dff2066cebbc897c9ec7fbc44848ad7",
+            "title": "DeepDriving: Learning Affordance for Direct Perception in Autonomous Driving"
+        },
+        {
+            "paperId": "1054b9480d759485cc4573f16b4537c698ba26d2",
+            "title": "The Ecological Approach to Visual Perception: Classic Edition"
+        },
+        {
+            "paperId": "0e7638dc16a5e5e9e46c91272bfb9c3dd242ef6d",
+            "title": "Between MDPs and Semi-MDPs: A Framework for Temporal Abstraction in Reinforcement Learning"
+        },
+        {
+            "paperId": "9acfbc840fd03d11fca251f6eb5212eeaf171d96",
+            "title": "Against direct perception"
+        },
+        {
+            "paperId": "9dc62fe526f67674512d749ad1880f8eaa5ca3de",
+            "title": "Understanding Machine Learning From Theory to Algorithms 1st Edition Shwartz Solutions Manual"
+        },
+        {
+            "paperId": "7786bc6c25ba38ff0135f1bdad192f6b3c4ad0b3",
+            "title": "ALVINN, an autonomous land vehicle in a neural network"
+        }
+    ]
+}

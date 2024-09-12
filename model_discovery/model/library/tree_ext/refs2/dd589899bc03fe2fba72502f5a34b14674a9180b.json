@@ -1,0 +1,143 @@
+{
+    "paperId": "dd589899bc03fe2fba72502f5a34b14674a9180b",
+    "externalIds": {
+        "ArXiv": "1707.09168",
+        "DBLP": "journals/corr/LuoFXZZ17",
+        "MAG": "2740833370",
+        "ACL": "D17-1289",
+        "DOI": "10.18653/v1/D17-1289",
+        "CorpusId": 7699280
+    },
+    "title": "Learning to Predict Charges for Criminal Cases with Legal Basis",
+    "abstract": "The charge prediction task is to determine appropriate charges for a given case, which is helpful for legal assistant systems where the user input is fact description. We argue that relevant law articles play an important role in this task, and therefore propose an attention-based neural network method to jointly model the charge prediction task and the relevant article extraction task in a unified framework. The experimental results show that, besides providing legal basis, the relevant articles can also clearly improve the charge prediction results, and our full model can effectively predict appropriate charges for cases with different expression styles.",
+    "venue": "Conference on Empirical Methods in Natural Language Processing",
+    "year": 2017,
+    "referenceCount": 23,
+    "citationCount": 234,
+    "influentialCitationCount": 38,
+    "openAccessPdf": {
+        "url": "https://www.aclweb.org/anthology/D17-1289.pdf",
+        "status": "HYBRID"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "It is argued that relevant law articles play an important role in this task, and therefore an attention-based neural network method is proposed to jointly model the charge prediction task and the relevant article extraction task in a unified framework."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2242463",
+            "name": "Bingfeng Luo"
+        },
+        {
+            "authorId": "1717629",
+            "name": "Yansong Feng"
+        },
+        {
+            "authorId": "2110484477",
+            "name": "Jianbo Xu"
+        },
+        {
+            "authorId": "2156004365",
+            "name": "Xiang Zhang"
+        },
+        {
+            "authorId": "144060462",
+            "name": "Dongyan Zhao"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "61b3b14977068904450bcba9a76c7d58bfc89ce8",
+            "title": "A general approach for predicting the behavior of the Supreme Court of the United States"
+        },
+        {
+            "paperId": "a929a3d92e305f4ef22ad9e52d264e7782394bd4",
+            "title": "Predicting judicial decisions of the European Court of Human Rights: a Natural Language Processing perspective"
+        },
+        {
+            "paperId": "455afd748e8834ef521e4b67c7c056d3c33429e2",
+            "title": "Hierarchical Attention Networks for Document Classification"
+        },
+        {
+            "paperId": "be1bb4e4aa1fcf70281b4bd24d8cd31c04864bb6",
+            "title": "Matching Networks for One Shot Learning"
+        },
+        {
+            "paperId": "ba98f3e910160e2b699d6db34af5bf52778c983c",
+            "title": "Improved Neural Network-based Multi-label Classification with Better Initialization Leveraging Label Co-occurrence"
+        },
+        {
+            "paperId": "6f6f4d664caf33f1c67fd1d04949db6cac8d4605",
+            "title": "Lexical-Morphological Modeling for Legal Text Analysis"
+        },
+        {
+            "paperId": "ecb5336bf7b54a62109f325e7152bb74c4c7f527",
+            "title": "Document Modeling with Gated Recurrent Neural Network for Sentiment Classification"
+        },
+        {
+            "paperId": "2f9c910a375681b46fd90979e20510d0446aaafa",
+            "title": "Legal Question Answering Using Ranking SVM and Syntactic/Semantic Similarity"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "1f6ba0782862ec12a5ec6d7fb608523d55b0c6ba",
+            "title": "Convolutional Neural Networks for Sentence Classification"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "f47d0bf65acc89f964058baf662472dc1dec6621",
+            "title": "Large-Scale Multi-label Text Classification - Revisiting Neural Networks"
+        },
+        {
+            "paperId": "87f40e6f3022adbc1f1905e3e506abad05a9964f",
+            "title": "Distributed Representations of Words and Phrases and their Compositionality"
+        },
+        {
+            "paperId": "02b3a96771065df924d8ca9c7d3cfa56c6bfd518",
+            "title": "A text mining approach to assist the general public in the retrieval of legal documents"
+        },
+        {
+            "paperId": "5e9fa46f231c59e6573f9a116f77f53703347659",
+            "title": "Baselines and Bigrams: Simple, Good Sentiment and Topic Classification"
+        },
+        {
+            "paperId": "9497e6bcc43a9830c2784aa20bbe22f1796cd2f6",
+            "title": "Exploring Phrase-Based Classification of Judicial Documents for Criminal Charges in Chinese"
+        },
+        {
+            "paperId": "912411d05a8b0e1d56999bd638ca31479409a44d",
+            "title": "Classifying Criminal Charges in Chinese for Web-Based Legal Services"
+        },
+        {
+            "paperId": "d839f40a66b96c0742bd63f650867a584859022d",
+            "title": "Case Instance Generation and Refinement for Case-Based Criminal Summary Judgments in Chinese"
+        },
+        {
+            "paperId": "2c4986b03ab15bdad01f808a6786bee01e3800a1",
+            "title": "Learning to classify text using support vector machines - methods, theory and algorithms"
+        },
+        {
+            "paperId": "7453ba87fb9418c6e4f5609cc3ba3d99b9b34874",
+            "title": "Analyzing the Extraction of Relevant Legal Judgments using Paragraph-level and Citation Information"
+        },
+        {
+            "paperId": "8de22dd6dd8cf7ba3ca5aef501fffcc2989d3799",
+            "title": "Predicting associated statutes for legal problems"
+        },
+        {
+            "paperId": null,
+            "title": "COLIEE-14"
+        },
+        {
+            "paperId": "463febfea2a03be20d8ea02a5d5cd183fb29794b",
+            "title": "\u5229\u7528\u6a5f\u5668\u5b78\u7fd2\u65bc\u4e2d\u6587\u6cd5\u5f8b\u6587\u4ef6\u4e4b\u6a19\u8a18\u3001\u6848\u4ef6\u5206\u985e\u53ca\u91cf\u5211\u9810\u6e2c (Exploiting Machine Learning Models for Chinese Legal Documents Labeling, Case Classification, and Sentencing Prediction) [In Chinese]"
+        }
+    ]
+}

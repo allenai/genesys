@@ -1,0 +1,194 @@
+{
+    "paperId": "e7fe886600399448f3282c8da8fd98ab7e50eae3",
+    "externalIds": {
+        "MAG": "2901433466",
+        "ArXiv": "1805.12589",
+        "DBLP": "conf/cvpr/DeshpandeAWSF19",
+        "DOI": "10.1109/CVPR.2019.01095",
+        "CorpusId": 53739686
+    },
+    "title": "Fast, Diverse and Accurate Image Captioning Guided by Part-Of-Speech",
+    "abstract": "Image captioning is an ambiguous problem, with many suitable captions for an image. To address ambiguity, beam search is the de facto method for sampling multiple captions. However, beam search is computationally expensive and known to produce generic captions. To address this concern, some variational auto-encoder (VAE) and generative adversarial net (GAN) based methods have been proposed. Though diverse, GAN and VAE are less accurate. In this paper, we first predict a meaningful summary of the image, then generate the caption based on that summary. We use part-of-speech as summaries, since our summary should drive caption generation. We achieve the trifecta: (1) High accuracy for the diverse captions as evaluated by standard captioning metrics and user studies; (2) Faster computation of diverse captions compared to beam search and diverse beam search; and (3) High diversity as evaluated by counting novel sentences, distinct n-grams and mutual overlap (i.e., mBleu-4) scores.",
+    "venue": "Computer Vision and Pattern Recognition",
+    "year": 2018,
+    "referenceCount": 36,
+    "citationCount": 139,
+    "influentialCitationCount": 19,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1805.12589",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This paper first predicts a meaningful summary of the image, then generates the caption based on that summary, and achieves the trifecta: high accuracy for the diverse captions as evaluated by standard captioning metrics and user studies, and faster computation of diverseCaptions compared to beam search and diverse beam search."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "113001756",
+            "name": "A. Deshpande"
+        },
+        {
+            "authorId": "29956361",
+            "name": "J. Aneja"
+        },
+        {
+            "authorId": "2130339621",
+            "name": "Liwei Wang"
+        },
+        {
+            "authorId": "2068227",
+            "name": "A. Schwing"
+        },
+        {
+            "authorId": "144016256",
+            "name": "D. Forsyth"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "cbc3ebf2809edcaa04e252d25f4373c924f4136b",
+            "title": "CNN+CNN: Convolutional Decoders for Image Captioning"
+        },
+        {
+            "paperId": "1b1e3f7218f1c0f0db56bf2bd9475521454693a1",
+            "title": "Diverse Beam Search for Improved Description of Complex Scenes"
+        },
+        {
+            "paperId": "39144e468bde0424d38a3f20a6b62ddec4b459ae",
+            "title": "Generating Diverse and Accurate Visual Captions by Comparative Adversarial Learning"
+        },
+        {
+            "paperId": "3bf09b2e2639add154a9fe6ff98cc373d3e90e4e",
+            "title": "Neural Baby Talk"
+        },
+        {
+            "paperId": "7c1802d8d43dfe783650a03f03d41609fa5ae91e",
+            "title": "Discriminability Objective for Training Descriptive Captions"
+        },
+        {
+            "paperId": "921196c32213a229245a9705ee4768bc941e7a26",
+            "title": "An Empirical Evaluation of Generic Convolutional and Recurrent Networks for Sequence Modeling"
+        },
+        {
+            "paperId": "7d3dd33950f4a1be56eb88c0791263b3e3a6deee",
+            "title": "Object Counts! Bringing Explicit Detections Back into Image Captioning"
+        },
+        {
+            "paperId": "9fb5e3db385588f671b11cfc8bf18efb90ee7b19",
+            "title": "Convolutional Image Captioning"
+        },
+        {
+            "paperId": "82247c9e74ddebb4dce65560ee69620579358f2d",
+            "title": "Diverse and Accurate Image Description Using a Variational Auto-Encoder with an Additive Gaussian Encoding Space"
+        },
+        {
+            "paperId": "a82c1d1ccaa3a3d1d6ee6677de0eed2e93ddb6e8",
+            "title": "Bottom-Up and Top-Down Attention for Image Captioning and Visual Question Answering"
+        },
+        {
+            "paperId": "43428880d75b3a14257c3ee9bda054e61eb869c0",
+            "title": "Convolutional Sequence to Sequence Learning"
+        },
+        {
+            "paperId": "134f4f4d4a4830b96971952d9a8b06ba2da5cc02",
+            "title": "Learning Two-Branch Neural Networks for Image-Text Matching Tasks"
+        },
+        {
+            "paperId": "1c0a6854b793ca8ad281513c184318b73d4868c4",
+            "title": "Speaking the Same Language: Matching Machine to Human Captions by Adversarial Training"
+        },
+        {
+            "paperId": "24dc571a49d3431e8cb1f1008f86d5dd5b7a1613",
+            "title": "Towards Diverse and Natural Image Descriptions via a Conditional GAN"
+        },
+        {
+            "paperId": "6c8353697cdbb98dfba4f493875778c4286d3e3a",
+            "title": "Self-Critical Sequence Training for Image Captioning"
+        },
+        {
+            "paperId": "163a474747fd63ab62ae586711fa5e5a2ac91bd8",
+            "title": "Improved Image Captioning via Policy Gradient optimization of SPIDEr"
+        },
+        {
+            "paperId": "5785466bc14529e94e54baa4ed051f7037f3b1d3",
+            "title": "Boosting Image Captioning with Attributes"
+        },
+        {
+            "paperId": "29e944711a354c396fad71936f536e83025b6ce0",
+            "title": "Categorical Reparameterization with Gumbel-Softmax"
+        },
+        {
+            "paperId": "62f74d3aaf9e86633e4d88b04a6d04ca93e8b81e",
+            "title": "Show and Tell: Lessons Learned from the 2015 MSCOCO Image Captioning Challenge"
+        },
+        {
+            "paperId": "f90d9c5615f4a0e3f9a1ce2a0075269b9bab6b5f",
+            "title": "SPICE: Semantic Propositional Image Caption Evaluation"
+        },
+        {
+            "paperId": "b65faba7088864e134e7eb3b68c8e2f18cc5b4f6",
+            "title": "Situation Recognition: Visual Semantic Role Labeling for Image Understanding"
+        },
+        {
+            "paperId": "424561d8585ff8ebce7d5d07de8dbf7aae5e7270",
+            "title": "Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks"
+        },
+        {
+            "paperId": "3ca194773fe583661b988fbdf33f7680764438b3",
+            "title": "Exploring Nearest Neighbor Approaches for Image Captioning"
+        },
+        {
+            "paperId": "4d8f2d14af5991d4f0d050d22216825cac3157bd",
+            "title": "Show, Attend and Tell: Neural Image Caption Generation with Visual Attention"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "54b2b6f35f1b5704dddfaa3a137a2f4ad3dfe745",
+            "title": "Deep Captioning with Multimodal Recurrent Neural Networks (m-RNN)"
+        },
+        {
+            "paperId": "55e022fb7581bb9e1fce678d21fb25ffbb3fbb88",
+            "title": "Deep visual-semantic alignments for generating image descriptions"
+        },
+        {
+            "paperId": "258986132bf17755fe8263e42429fe73218c1534",
+            "title": "CIDEr: Consensus-based image description evaluation"
+        },
+        {
+            "paperId": "eb42cf88027de515750f230b23b1a057dc782108",
+            "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition"
+        },
+        {
+            "paperId": "a5e4377d2149a8167d89383d785793967cf74602",
+            "title": "Meteor Universal: Language Specific Translation Evaluation for Any Target Language"
+        },
+        {
+            "paperId": "71b7178df5d2b112d07e45038cb5637208659ff7",
+            "title": "Microsoft COCO: Common Objects in Context"
+        },
+        {
+            "paperId": "e8679859bf0ad6ca4253603d05462838957733fb",
+            "title": "A Systematic Exploration of Diversity in Machine Translation"
+        },
+        {
+            "paperId": "146b3649b693ae591c8953c0aae5264512c26ea3",
+            "title": "Solving the Problem of Cascading Errors: Approximate Bayesian Inference for Linguistic Annotation Pipelines"
+        },
+        {
+            "paperId": "60b05f32c32519a809f21642ef1eb3eaf3848008",
+            "title": "ROUGE: A Package for Automatic Evaluation of Summaries"
+        },
+        {
+            "paperId": "d7da009f457917aa381619facfa5ffae9329a6e9",
+            "title": "Bleu: a Method for Automatic Evaluation of Machine Translation"
+        },
+        {
+            "paperId": null,
+            "title": "Section 4.2 has more details. At"
+        }
+    ]
+}

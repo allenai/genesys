@@ -1,0 +1,194 @@
+{
+    "paperId": "fc56572b7524d0b5b0e4770f57185b20d9294136",
+    "externalIds": {
+        "MAG": "2968734407",
+        "DOI": "10.1021/acs.jmedchem.9b00959",
+        "CorpusId": 199572628,
+        "PubMed": "31408336"
+    },
+    "title": "Pushing the boundaries of molecular representation for drug discovery with graph attention mechanism.",
+    "abstract": "Hunting for chemicals with favourable pharmacological, toxicological and pharmacokinetic properties remains a formidable challenge for drug discovery. Deep learning provides us with powerful tools to build predictive models that are appropriate for the rising amounts of data, but the gap between what these neural networks learn and what human beings can comprehend is growing. Moreover, this gap may induce distrust and restrict deep learning applications in practice. Here, we introduce a new graph neural network architecture called Attentive FP for molecular representation that uses a graph attention mechanism to learn from relevant drug discovery datasets. We demonstrate that Attentive FP achieves state-of-the-art predictive performances on a variety of datasets and that what it learns is interpretable. The feature visualization for Attentive FP suggests that it automatically learns non-local intramolecular interactions from specified tasks, which can help us gain chemical insights directly from data beyond human perception.",
+    "venue": "Journal of Medicinal Chemistry",
+    "year": 2020,
+    "referenceCount": 31,
+    "citationCount": 539,
+    "influentialCitationCount": 41,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A new graph neural network architecture called Attentive FP for molecular representation that uses a graph attention mechanism to learn from relevant drug discovery datasets and achieves state-of-the-art predictive performances on a variety of datasets and that what it learns is interpretable."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "50977647",
+            "name": "Zhaoping Xiong"
+        },
+        {
+            "authorId": "119787545",
+            "name": "Dingyan Wang"
+        },
+        {
+            "authorId": "2110996631",
+            "name": "Xiaohong Liu"
+        },
+        {
+            "authorId": "51135036",
+            "name": "Feisheng Zhong"
+        },
+        {
+            "authorId": "27635066",
+            "name": "X. Wan"
+        },
+        {
+            "authorId": "47056625",
+            "name": "Xutong Li"
+        },
+        {
+            "authorId": "49970292",
+            "name": "Zhaojun Li"
+        },
+        {
+            "authorId": "33821388",
+            "name": "Xiaomin Luo"
+        },
+        {
+            "authorId": "39196184",
+            "name": "Kaixian Chen"
+        },
+        {
+            "authorId": "145530295",
+            "name": "Hualiang Jiang"
+        },
+        {
+            "authorId": "38858880",
+            "name": "M. Zheng"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "951af7222535d934ca2b401ca0cd2181b28284f9",
+            "title": "Reinforcement learning in artificial and biological systems"
+        },
+        {
+            "paperId": "bd0e010a0f1993a6dcd9027e914a6762b7ecec0d",
+            "title": "Mind and machine in drug design"
+        },
+        {
+            "paperId": "9e84a60220f847334e9894884762fdfa1695ef73",
+            "title": "Feedback GAN for DNA optimizes protein functions"
+        },
+        {
+            "paperId": "aab7e4d55cebf531028a4b7e8d977c0bda732ab6",
+            "title": "Reconstructing quantum states with generative models"
+        },
+        {
+            "paperId": "c292e473b3825eeb9db03c70b2e1c033aea190d5",
+            "title": "Machine learning for molecular and materials science"
+        },
+        {
+            "paperId": "5578de6d4bbb190e7abe62a2a6c0d97dece0ee12",
+            "title": "Learning atoms for materials discovery"
+        },
+        {
+            "paperId": "a44f2ad10815051142c97fb466c51c8c9eda1d7f",
+            "title": "Predicting reaction performance in C\u2013N cross-coupling using machine learning"
+        },
+        {
+            "paperId": "de9bb91b586bc518ecd5a45237ac398dd48566c1",
+            "title": "Learning a Local-Variable Model of Aromatic and Conjugated Systems"
+        },
+        {
+            "paperId": "e9126a98de0c39dcffe4c4f5158e037460196724",
+            "title": "SchNet - A deep learning architecture for molecules and materials."
+        },
+        {
+            "paperId": "bfd721f09e2977c7d03a1185428332785992cc02",
+            "title": "Hierarchical modeling of molecular energies using a deep neural network."
+        },
+        {
+            "paperId": "ef8ab2a0be51a0cd04c2c0f01adfae956a2a84af",
+            "title": "Planning chemical syntheses with deep neural networks and symbolic AI"
+        },
+        {
+            "paperId": "09430c7080172d50a591cef44d85fd16e58d945e",
+            "title": "Convolutional Embedding of Attributed Molecular Graphs for Physical Property Prediction"
+        },
+        {
+            "paperId": "9b1e4e897b62085f2f4d731e5c3ec891b76b76cd",
+            "title": "Retrosynthetic Reaction Prediction Using Neural Sequence-to-Sequence Models"
+        },
+        {
+            "paperId": "d71af418eeb9f5a68062929bae12af74773ffcb2",
+            "title": "The ChEMBL database in 2017"
+        },
+        {
+            "paperId": "4e1f35169edb0debd734e7e5834b5672ca7911e1",
+            "title": "Low Data Drug Discovery with One-Shot Learning"
+        },
+        {
+            "paperId": "28f7cc049f3f4a4db81f0d0a608a4f57636cc35b",
+            "title": "Quantum-chemical insights from deep tensor neural networks"
+        },
+        {
+            "paperId": "561c3fa53d36405186da9cab02bd68635c3738aa",
+            "title": "Molecular graph convolutions: moving beyond fingerprints"
+        },
+        {
+            "paperId": "5e75b62b90d3bbbb7c17bdc8ebf04e08802534b6",
+            "title": "Inverse QSPR/QSAR Analysis for Chemical Structure Generation (from y to x)"
+        },
+        {
+            "paperId": "ba4d66346b7e575b79e6f1401859bac41e9762e7",
+            "title": "Modelling the Tox21 10\u2009K chemical profiles for in vivo toxicity prediction and mechanism characterization"
+        },
+        {
+            "paperId": "815c84ab906e43f3e6322f2ca3fd5e1360c64285",
+            "title": "Human-level concept learning through probabilistic program induction"
+        },
+        {
+            "paperId": "c1e62b537f3d30018e7979a89b0e0f15e2b6eecc",
+            "title": "The SIDER database of drugs and side effects"
+        },
+        {
+            "paperId": "89655dc3c3a794cb25e055aed79424c66301d70f",
+            "title": "Quantum chemistry structures and properties of 134 kilo molecules"
+        },
+        {
+            "paperId": "c156ebfe6d0ae3aa7a97b7137250484464d7ae3a",
+            "title": "Tuning HERG out: antitarget QSAR models for drug development."
+        },
+        {
+            "paperId": "343ef23644cd0f2adc0f9bafdd2bd6c13820bc64",
+            "title": "Parallel Gaussian Process Optimization with Upper Confidence Bound and Pure Exploration"
+        },
+        {
+            "paperId": "4453295600cc89c33f643c8729972fa64aab0233",
+            "title": "Enumeration of 166 Billion Organic Small Molecules in the Chemical Universe Database GDB-17"
+        },
+        {
+            "paperId": "2c9b060388b88841cf8095cd9efcbfeb805357f6",
+            "title": "PubChem's BioAssay Database"
+        },
+        {
+            "paperId": "e7b18110c70ccb71305dda7a973f89630ffd9879",
+            "title": "On Early Stopping in Gradient Descent Learning"
+        },
+        {
+            "paperId": "cec54acf06b42db2ab85f4da34397476007f89cf",
+            "title": "Development, interpretation and temporal evaluation of a global QSAR of hERG electrophysiology screening data"
+        },
+        {
+            "paperId": "0f389f96464971d44df06b445ec8123a8db26bf1",
+            "title": "QSAR - How Good Is It in Practice? Comparison of Descriptor Sets on an Unbiased Cross Section of Corporate Data Sets"
+        },
+        {
+            "paperId": "a883cacbc8f9b021b2a63f0453307855fa075d33",
+            "title": "The relationship between Precision-Recall and ROC curves"
+        },
+        {
+            "paperId": "41e10ff7faeab6a0ef1feb6aa8b8dad03b59c208",
+            "title": "Quantum-Chemical Descriptors in QSAR/QSPR Studies."
+        }
+    ]
+}

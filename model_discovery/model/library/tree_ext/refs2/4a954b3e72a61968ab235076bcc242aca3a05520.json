@@ -1,0 +1,174 @@
+{
+    "paperId": "4a954b3e72a61968ab235076bcc242aca3a05520",
+    "externalIds": {
+        "MAG": "2952677972",
+        "DBLP": "journals/corr/abs-1812-00420",
+        "ArXiv": "1812.00420",
+        "CorpusId": 54443381
+    },
+    "title": "Efficient Lifelong Learning with A-GEM",
+    "abstract": "In lifelong learning, the learner is presented with a sequence of tasks, incrementally building a data-driven prior which may be leveraged to speed up learning of a new task. In this work, we investigate the efficiency of current lifelong approaches, in terms of sample complexity, computational and memory cost. Towards this end, we first introduce a new and a more realistic evaluation protocol, whereby learners observe each example only once and hyper-parameter selection is done on a small and disjoint set of tasks, which is not used for the actual learning experience and evaluation. Second, we introduce a new metric measuring how quickly a learner acquires a new skill. Third, we propose an improved version of GEM (Lopez-Paz & Ranzato, 2017), dubbed Averaged GEM (A-GEM), which enjoys the same or even better performance as GEM, while being almost as computationally and memory efficient as EWC (Kirkpatrick et al., 2016) and other regularization-based methods. Finally, we show that all algorithms including A-GEM can learn even more quickly if they are provided with task descriptors specifying the classification tasks under consideration. Our experiments on several standard lifelong learning benchmarks demonstrate that A-GEM has the best trade-off between accuracy and efficiency.",
+    "venue": "International Conference on Learning Representations",
+    "year": 2018,
+    "referenceCount": 33,
+    "citationCount": 1227,
+    "influentialCitationCount": 259,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "An improved version of GEM is proposed, dubbed Averaged GEM (A-GEM), which enjoys the same or even better performance as GEM, while being almost as computationally and memory efficient as EWC and other regularization-based methods."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "22235380",
+            "name": "Arslan Chaudhry"
+        },
+        {
+            "authorId": "1706809",
+            "name": "Marc'Aurelio Ranzato"
+        },
+        {
+            "authorId": "34849128",
+            "name": "Marcus Rohrbach"
+        },
+        {
+            "authorId": "1712479",
+            "name": "Mohamed Elhoseiny"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "1766648967f6206a944a4bd18bbbd92a74c164bd",
+            "title": "Automatically Composing Representation Transformations as a Means for Generalization"
+        },
+        {
+            "paperId": "0e93ee6176197f758dd5e8e9cff8b9610274c402",
+            "title": "Modular meta-learning"
+        },
+        {
+            "paperId": "ae7619604821adce52c28daa2aed14f5a191d975",
+            "title": "Progress & Compress: A scalable framework for continual learning"
+        },
+        {
+            "paperId": "73d5c3cff5a777169dc62d0b351ddcfda503cd33",
+            "title": "Reinforced Continual Learning"
+        },
+        {
+            "paperId": "847d0b91b60d8b4082d32bcbd898185c831af1d7",
+            "title": "Large-Scale Visual Relationship Understanding"
+        },
+        {
+            "paperId": "9958590c281e7a7b524dd594635037143c632c21",
+            "title": "Riemannian Walk for Incremental Learning: Understanding Forgetting and Intransigence"
+        },
+        {
+            "paperId": "713b0d9005944f80af00addc81b162ca74ea4b14",
+            "title": "Memory Aware Synapses: Learning what (not) to forget"
+        },
+        {
+            "paperId": "fc9d5be5e3f14b4c4b145b6c4bd96a9182f39fd2",
+            "title": "Routing Networks: Adaptive Selection of Non-linear Functions for Multi-Task Learning"
+        },
+        {
+            "paperId": "d475f695dedd94e96771fdaa1e5c075fd01d11cf",
+            "title": "Variational Continual Learning"
+        },
+        {
+            "paperId": "ffe28f6bf0e9e6bbca6313319aa1a5409d283d9b",
+            "title": "Zero-Shot Learning\u2014A Comprehensive Evaluation of the Good, the Bad and the Ugly"
+        },
+        {
+            "paperId": "118fae4b4d07453561f1eded88654f812c7c61ec",
+            "title": "Gradient Episodic Memory for Continual Learning"
+        },
+        {
+            "paperId": "59a922212153d3407e658109f36c11a34ee7d283",
+            "title": "Continual Learning with Deep Generative Replay"
+        },
+        {
+            "paperId": "a99d857ecc78316a0d9a774972b775058d5644ca",
+            "title": "Continual Learning Through Synaptic Intelligence"
+        },
+        {
+            "paperId": "11e8cee777cd326afb75471d60efe3b1241cdba8",
+            "title": "CommAI: Evaluating the first steps towards a useful general AI"
+        },
+        {
+            "paperId": "321f1877bc570ff9b318e909cefb7c27138458df",
+            "title": "PathNet: Evolution Channels Gradient Descent in Super Neural Networks"
+        },
+        {
+            "paperId": "2e55ba6c97ce5eb55abd959909403fe8da7e9fe9",
+            "title": "Overcoming catastrophic forgetting in neural networks"
+        },
+        {
+            "paperId": "1703631a938b397ba7e858161ce16448f6046d6f",
+            "title": "iCaRL: Incremental Classifier and Representation Learning"
+        },
+        {
+            "paperId": "66b8d34477cf1736f91fd22b27e37ce0b703c86e",
+            "title": "Expert Gate: Lifelong Learning with a Network of Experts"
+        },
+        {
+            "paperId": "d7a0faf933616b078981bac1f1f7bc45beff4f8e",
+            "title": "Using Task Features for Zero-Shot Knowledge Transfer in Lifelong Learning"
+        },
+        {
+            "paperId": "53c9443e4e667170acc60ca1b31a0ec7151fe753",
+            "title": "Progressive Neural Networks"
+        },
+        {
+            "paperId": "7f45650e4c9dd8cbc2bf2dd411fc24ba5631de60",
+            "title": "Write a Classifier: Predicting Visual Classifiers from Unstructured Text"
+        },
+        {
+            "paperId": "2c03df8b48bf3fa39054345bafabfeff15bfd11d",
+            "title": "Deep Residual Learning for Image Recognition"
+        },
+        {
+            "paperId": "5dc2a215bd7cd5bdd3a0baa8c967575632696fac",
+            "title": "Universal Value Function Approximators"
+        },
+        {
+            "paperId": "c069629a51f6c1c301eb20ed77bc6b586c24ce32",
+            "title": "The Caltech-UCSD Birds-200-2011 Dataset"
+        },
+        {
+            "paperId": "50e9a441f56124b7b969e6537b66469a0e1aa707",
+            "title": "Horde: a scalable real-time architecture for learning knowledge from unsupervised sensorimotor interaction"
+        },
+        {
+            "paperId": "0566bf06a0368b518b8b474166f7b1dfef3f9283",
+            "title": "Learning to detect unseen object classes by between-class attribute transfer"
+        },
+        {
+            "paperId": "dde691805cfa7d6f1bb88c7411c1c3377b6cdc67",
+            "title": "Lifelong Learning Algorithms"
+        },
+        {
+            "paperId": "cd94282256db82fb814480f08f8612045f0725f1",
+            "title": "CHILD: A First Step Towards Continual Learning"
+        },
+        {
+            "paperId": "ab1888c7712c10069f66f6f47499e3f077efb506",
+            "title": "Gradient Episodic Memory for Continuum Learning"
+        },
+        {
+            "paperId": "5d90f06bb70a0a3dced62413346235c02b1aa086",
+            "title": "Learning Multiple Layers of Features from Tiny Images"
+        },
+        {
+            "paperId": "dc52d1ede1b90bf9d296bc5b34c9310b7eaa99a2",
+            "title": "The mnist database of handwritten digits"
+        },
+        {
+            "paperId": "3fd90098551bf88c7509521adf1c0ba9b5dfeb57",
+            "title": "Attribute-Based Classification for Zero-Shot Visual Object Categorization"
+        },
+        {
+            "paperId": null,
+            "title": "Split AWA), 1, 10] \u2022 RWALK -learning rate"
+        }
+    ]
+}

@@ -1,0 +1,98 @@
+{
+    "paperId": "e2c8726d092aea573e69f5b0a2654225883cfacf",
+    "externalIds": {
+        "MAG": "2787998955",
+        "DBLP": "journals/corr/abs-1802-05799",
+        "ArXiv": "1802.05799",
+        "CorpusId": 3398835
+    },
+    "title": "Horovod: fast and easy distributed deep learning in TensorFlow",
+    "abstract": "Training modern deep learning models requires large amounts of computation, often provided by GPUs. Scaling computation from one GPU to many can enable much faster training and research progress but entails two complications. First, the training library must support inter-GPU communication. Depending on the particular methods employed, this communication may entail anywhere from negligible to significant overhead. Second, the user must modify his or her training code to take advantage of inter-GPU communication. Depending on the training library's API, the modification required may be either significant or minimal. \nExisting methods for enabling multi-GPU training under the TensorFlow library entail non-negligible communication overhead and require users to heavily modify their model-building code, leading many researchers to avoid the whole mess and stick with slower single-GPU training. In this paper we introduce Horovod, an open source library that improves on both obstructions to scaling: it employs efficient inter-GPU communication via ring reduction and requires only a few lines of modification to user code, enabling faster, easier distributed training in TensorFlow. Horovod is available under the Apache 2.0 license at this https URL",
+    "venue": "arXiv.org",
+    "year": 2018,
+    "referenceCount": 16,
+    "citationCount": 1108,
+    "influentialCitationCount": 191,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Horovod is an open source library that improves on both obstructions to scaling: it employs efficient inter-GPU communication via ring reduction and requires only a few lines of modification to user code, enabling faster, easier distributed training in TensorFlow."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "2064034552",
+            "name": "Alexander Sergeev"
+        },
+        {
+            "authorId": "35816153",
+            "name": "Mike Del Balso"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "0d57ba12a6d958e178d83be4c84513f7e42b24e5",
+            "title": "Accurate, Large Minibatch SGD: Training ImageNet in 1 Hour"
+        },
+        {
+            "paperId": "4954fa180728932959997a4768411ff9136aac81",
+            "title": "TensorFlow: A system for large-scale machine learning"
+        },
+        {
+            "paperId": "9c9d7247f8c51ec5a02b0d911d1d7b9e8160495d",
+            "title": "TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems"
+        },
+        {
+            "paperId": "6f4e48c2a5de9337d147ebbb7d0ff0e555adceca",
+            "title": "Bandwidth optimal all-reduce algorithms for clusters of workstations"
+        },
+        {
+            "paperId": "b27542559edf6cc867afdc1637fe36b9a4e250e6",
+            "title": "Open MPI: Goals, Concept, and Design of a Next Generation MPI Implementation"
+        },
+        {
+            "paperId": null,
+            "title": "Message Passing Interface (MPI) Forum Home Page"
+        },
+        {
+            "paperId": null,
+            "title": "Meet Michelangelo: Uber\u2019s machine learning platform"
+        },
+        {
+            "paperId": null,
+            "title": "Bringing HPC techniques to deep learning"
+        },
+        {
+            "paperId": null,
+            "title": "uber/horovod: Distributed training framework for TensorFlow"
+        },
+        {
+            "paperId": null,
+            "title": "The Trace Event Profiling Tool (about:tracing)"
+        },
+        {
+            "paperId": null,
+            "title": "TensorFlow Authors"
+        },
+        {
+            "paperId": null,
+            "title": "baidu-research/tensorflow-allreduce. https://github. com/baidu-research/tensorflow-allreduce, 2017"
+        },
+        {
+            "paperId": null,
+            "title": "TensorFlow Benchmarks. https://github.com/alsrgv/benchmark/ tree/horovod_v2, 2017"
+        },
+        {
+            "paperId": null,
+            "title": "RDMA over Converged Ethernet -Wikipedia, the free encyclopedia"
+        },
+        {
+            "paperId": null,
+            "title": "Online; accessed 6-December-2017"
+        },
+        {
+            "paperId": "2d757edc96f1933e5a49ae6a251271fb9b7571bf",
+            "title": "Wikipedia"
+        }
+    ]
+}

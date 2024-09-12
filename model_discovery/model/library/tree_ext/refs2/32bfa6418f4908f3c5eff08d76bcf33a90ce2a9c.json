@@ -1,0 +1,230 @@
+{
+    "paperId": "32bfa6418f4908f3c5eff08d76bcf33a90ce2a9c",
+    "externalIds": {
+        "ArXiv": "1806.10474",
+        "DBLP": "conf/nips/DielemanOS18",
+        "MAG": "2811079561",
+        "CorpusId": 49473209
+    },
+    "title": "The challenge of realistic music generation: modelling raw audio at scale",
+    "abstract": "Realistic music generation is a challenging task. When building generative models of music that are learnt from data, typically high-level representations such as scores or MIDI are used that abstract away the idiosyncrasies of a particular performance. But these nuances are very important for our perception of musicality and realism, so in this work we embark on modelling music in the raw audio domain. It has been shown that autoregressive models excel at generating raw audio waveforms of speech, but when applied to music, we find them biased towards capturing local signal structure at the expense of modelling long-range correlations. This is problematic because music exhibits structure at many different timescales. In this work, we explore autoregressive discrete autoencoders (ADAs) as a means to enable autoregressive models to capture long-range correlations in waveforms. We find that they allow us to unconditionally generate piano music directly in the raw audio domain, which shows stylistic consistency across tens of seconds.",
+    "venue": "Neural Information Processing Systems",
+    "year": 2018,
+    "referenceCount": 48,
+    "citationCount": 171,
+    "influentialCitationCount": 16,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "Autoregressive discrete autoencoders (ADAs) are explored as a means to enable autoregressive models to capture long-range correlations in waveforms and are found to unconditionally generate piano music directly in the raw audio domain, which shows stylistic consistency across tens of seconds."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "48373216",
+            "name": "S. Dieleman"
+        },
+        {
+            "authorId": "3422336",
+            "name": "A\u00e4ron van den Oord"
+        },
+        {
+            "authorId": "34838386",
+            "name": "K. Simonyan"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "eb72dcf0ba423d0e12d63cd7881f2ac5dfda7984",
+            "title": "Associative Compression Networks"
+        },
+        {
+            "paperId": "b8b58667229d5b30cdb55ae447bbf86cd698049f",
+            "title": "Associative Compression Networks for Representation Learning"
+        },
+        {
+            "paperId": "2b050df9e24eb65b0d37f13c6eea1d29b4e316ce",
+            "title": "A Hierarchical Latent Vector Model for Learning Long-Term Structure in Music"
+        },
+        {
+            "paperId": "f2c882fd290d616ff96c1c5d6af4578682e26556",
+            "title": "Efficient Neural Audio Synthesis"
+        },
+        {
+            "paperId": "608e4bbe7a2d6f04d68b5747d9d0778d5fce47df",
+            "title": "Learning Longer-term Dependencies in RNNs with Auxiliary Losses"
+        },
+        {
+            "paperId": "3aece1cf265056e11c0332bf0af31da608947428",
+            "title": "Synthesizing Audio with Generative Adversarial Networks"
+        },
+        {
+            "paperId": "ab786457ee8085b129e30df14f38966961c234b3",
+            "title": "Hierarchical Adversarially Learned Inference"
+        },
+        {
+            "paperId": "8691706ad0cf5e83969658b2e6bfffdc379440c9",
+            "title": "Generating Wikipedia by Summarizing Long Sequences"
+        },
+        {
+            "paperId": "f6cbf83e1ce3b099d656d2346b261d5ef7f2b62e",
+            "title": "Parallel WaveNet: Fast High-Fidelity Speech Synthesis"
+        },
+        {
+            "paperId": "af10f3c1c0859aa620623f760c8a29e78f177f7f",
+            "title": "Population Based Training of Neural Networks"
+        },
+        {
+            "paperId": "f466157848d1a7772fb6d02cdac9a7a5e7ef982e",
+            "title": "Neural Discrete Representation Learning"
+        },
+        {
+            "paperId": "2dad7e558a1e2982d0d42042021f4cde4af04abf",
+            "title": "Dilated Recurrent Neural Networks"
+        },
+        {
+            "paperId": "eba908be67198eda5d8e1ec4ce739aad4fe36a97",
+            "title": "A Functional Taxonomy of Music Generation Systems"
+        },
+        {
+            "paperId": "6a70f88b77a88db4102af25aadd66952944ac5d7",
+            "title": "Deep Learning Techniques for Music Generation - A Survey"
+        },
+        {
+            "paperId": "231af7dc01a166cac3b5b01ca05778238f796e41",
+            "title": "GANs Trained by a Two Time-Scale Update Rule Converge to a Local Nash Equilibrium"
+        },
+        {
+            "paperId": "3a8d537bcec370d37990d39eab01c729496ad057",
+            "title": "Learning a Hierarchical Latent-Variable Model of 3D Shapes"
+        },
+        {
+            "paperId": "97c01b6cef7d7d88ec7eda488bfdc46fd601e76a",
+            "title": "Neural Audio Synthesis of Musical Notes with WaveNet Autoencoders"
+        },
+        {
+            "paperId": "2e77b99e8bd10b9e4551a780c0bde9dd10fdbe9b",
+            "title": "PixelCNN++: Improving the PixelCNN with Discretized Logistic Mixture Likelihood and Other Modifications"
+        },
+        {
+            "paperId": "120adede81dc6b3bfcb4cd276f0b73cc58a96c1a",
+            "title": "PixelCNN Models with Auxiliary Variables for Natural Image Modeling"
+        },
+        {
+            "paperId": "c2a08137657ac2312ae70991e74aa73ce93051ef",
+            "title": "An Architecture for Deep, Hierarchical Generative Models"
+        },
+        {
+            "paperId": "e221e2c2ca8bd74a7b818406c8a2a342760e7d65",
+            "title": "SampleRNN: An Unconditional End-to-End Neural Audio Generation Model"
+        },
+        {
+            "paperId": "590c9a1ff422b03477f7830b20609f212c85aa13",
+            "title": "Variational Lossy Autoencoder"
+        },
+        {
+            "paperId": "42e9055ec712ec9c7f0a79d963ea034a72dc7fa8",
+            "title": "PixelVAE: A Latent Variable Model for Natural Images"
+        },
+        {
+            "paperId": "df0402517a7338ae28bc54acaac400de6b456a46",
+            "title": "WaveNet: A Generative Model for Raw Audio"
+        },
+        {
+            "paperId": "6a97d2668187965743d1b825b306defccbabbb4c",
+            "title": "Improved Variational Inference with Inverse Autoregressive Flow"
+        },
+        {
+            "paperId": "571b0750085ae3d939525e62af510ee2cee9d5ea",
+            "title": "Improved Techniques for Training GANs"
+        },
+        {
+            "paperId": "609e0f0e60ddfe83fdc71bf5397205323888289d",
+            "title": "A Hierarchical Latent Variable Encoder-Decoder Model for Generating Dialogues"
+        },
+        {
+            "paperId": "ef3152106e7f4d05ad8d32a5b90d3790c5cdef24",
+            "title": "Recurrent Orthogonal Networks and Long-Memory Tasks"
+        },
+        {
+            "paperId": "41f1d50c85d3180476c4c7b3eea121278b0d8474",
+            "title": "Pixel Recurrent Neural Networks"
+        },
+        {
+            "paperId": "7f5fc84819c0cf94b771fe15141f65b123f7b8ec",
+            "title": "Multi-Scale Context Aggregation by Dilated Convolutions"
+        },
+        {
+            "paperId": "e9c771197a6564762754e48c1daafb066f449f2e",
+            "title": "Unitary Evolution Recurrent Neural Networks"
+        },
+        {
+            "paperId": "d82b55c35c8673774a708353838918346f6c006f",
+            "title": "Generating Sentences from a Continuous Space"
+        },
+        {
+            "paperId": "47900aca2f0b50da3010ad59b394c870f0e6c02e",
+            "title": "Deep Generative Image Models using a Laplacian Pyramid of Adversarial Networks"
+        },
+        {
+            "paperId": "0c3b69b5247ef18fd5bab1109d87a04184ea8f4b",
+            "title": "A Recurrent Latent Variable Model for Sequential Data"
+        },
+        {
+            "paperId": "9665247ea3421929f9b6ad721f139f11edb1dbb8",
+            "title": "Learning Longer Memory in Recurrent Neural Networks"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "5522764282c85aea422f1c4dc92ff7e0ca6987bc",
+            "title": "A Clockwork RNN"
+        },
+        {
+            "paperId": "484ad17c926292fbe0d5211540832a8c8a8e958b",
+            "title": "Stochastic Backpropagation and Approximate Inference in Deep Generative Models"
+        },
+        {
+            "paperId": "5f5dc5b9a2ba710937e2c413b37b053cd673df02",
+            "title": "Auto-Encoding Variational Bayes"
+        },
+        {
+            "paperId": "62c76ca0b2790c34e85ba1cce09d47be317c7235",
+            "title": "Estimating or Propagating Gradients Through Stochastic Neurons for Conditional Computation"
+        },
+        {
+            "paperId": "07c43a3ff15f2104022f2b1ca8ec4128a930b414",
+            "title": "Modeling Temporal Dependencies in High-Dimensional Sequences: Application to Polyphonic Music Generation and Transcription"
+        },
+        {
+            "paperId": "a538b05ebb01a40323997629e171c91aa28b8e2f",
+            "title": "Rectified Linear Units Improve Restricted Boltzmann Machines"
+        },
+        {
+            "paperId": "b13813b49f160e1a2010c44bd4fb3d09a28446e3",
+            "title": "Hierarchical Recurrent Neural Networks for Long-Term Dependencies"
+        },
+        {
+            "paperId": "6dc61f37ecc552413606d8c89ffbc46ec98ed887",
+            "title": "Acceleration of stochastic approximation by averaging"
+        },
+        {
+            "paperId": "c68796f833a7151f0a63d1d1608dc902b4fdc9b6",
+            "title": "GENERATIVE ADVERSARIAL NETS"
+        },
+        {
+            "paperId": null,
+            "title": "Performance rnn: Generating music with expressive timing and dynamics"
+        },
+        {
+            "paperId": null,
+            "title": "Acl. In Proceedings of the 40th annual meeting on association for computational linguistics, pages 311\u2013318"
+        },
+        {
+            "paperId": "ecf79fcaba4eac5628ac1315d1c612952672a8f2",
+            "title": "Experiments In Musical Intelligence"
+        }
+    ]
+}

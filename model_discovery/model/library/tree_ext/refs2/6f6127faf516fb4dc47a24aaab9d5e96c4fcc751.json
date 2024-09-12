@@ -1,0 +1,206 @@
+{
+    "paperId": "6f6127faf516fb4dc47a24aaab9d5e96c4fcc751",
+    "externalIds": {
+        "MAG": "2804145368",
+        "DBLP": "journals/corr/abs-1805-11063",
+        "ArXiv": "1805.11063",
+        "CorpusId": 44089406
+    },
+    "title": "Theory and Experiments on Vector Quantized Autoencoders",
+    "abstract": "Deep neural networks with discrete latent variables offer the promise of better symbolic reasoning, and learning abstractions that are more useful to new tasks. There has been a surge in interest in discrete latent variable models, however, despite several recent improvements, the training of discrete latent variable models has remained challenging and their performance has mostly failed to match their continuous counterparts. Recent work on vector quantized autoencoders (VQ-VAE) has made substantial progress in this direction, with its perplexity almost matching that of a VAE on datasets such as CIFAR-10. In this work, we investigate an alternate training technique for VQ-VAE, inspired by its connection to the Expectation Maximization (EM) algorithm. Training the discrete bottleneck with EM helps us achieve better image generation results on CIFAR-10, and together with knowledge distillation, allows us to develop a non-autoregressive machine translation model whose accuracy almost matches a strong greedy autoregressive baseline Transformer, while being 3.3 times faster at inference.",
+    "venue": "arXiv.org",
+    "year": 2018,
+    "referenceCount": 41,
+    "citationCount": 78,
+    "influentialCitationCount": 9,
+    "openAccessPdf": null,
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "This work investigates an alternate training technique for VQ-VAE, inspired by its connection to the Expectation Maximization (EM) algorithm, and develops a non-autoregressive machine translation model whose accuracy almost matches a strong greedy autoregressive baseline Transformer, while being 3.3 times faster at inference."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "39788470",
+            "name": "Aurko Roy"
+        },
+        {
+            "authorId": "40348417",
+            "name": "Ashish Vaswani"
+        },
+        {
+            "authorId": "2072676",
+            "name": "Arvind Neelakantan"
+        },
+        {
+            "authorId": "3877127",
+            "name": "Niki Parmar"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "2d08ed53491053d84b6de89aedbf2178b9c8cf84",
+            "title": "Fast Decoding in Sequence Models using Discrete Latent Variables"
+        },
+        {
+            "paperId": "9c5c89199114858eafbe50b46d77d38ffd03b28a",
+            "title": "Deterministic Non-Autoregressive Neural Sequence Modeling by Iterative Refinement"
+        },
+        {
+            "paperId": "1db9bd18681b96473f3c82b21edc9240b44dc329",
+            "title": "Image Transformer"
+        },
+        {
+            "paperId": "1723f1bb6fa033d638d0127e056470a9431246c9",
+            "title": "Discrete Autoencoders for Sequence Models"
+        },
+        {
+            "paperId": "15e81c8d1c21f9e928c72721ac46d458f3341454",
+            "title": "Non-Autoregressive Neural Machine Translation"
+        },
+        {
+            "paperId": "f466157848d1a7772fb6d02cdac9a7a5e7ef982e",
+            "title": "Neural Discrete Representation Learning"
+        },
+        {
+            "paperId": "682d194235ba3b573889836ba118502e8b525728",
+            "title": "Backpropagation through the Void: Optimizing control variates for black-box gradient estimation"
+        },
+        {
+            "paperId": "204e3073870fae3d05bcbc2f6a8e263d9b72e776",
+            "title": "Attention is All you Need"
+        },
+        {
+            "paperId": "2d1b8f60f2724efd6c9344870fb60e8525157d70",
+            "title": "Parallel Multiscale Autoregressive Density Estimation"
+        },
+        {
+            "paperId": "977560251c2bd4c28a6c7c707c29f4091c5e6247",
+            "title": "Lossy Image Compression with Compressive Autoencoders"
+        },
+        {
+            "paperId": "a642bbbaf8822565f9b812ea279c596cc54ce4c3",
+            "title": "REBAR: Low-variance, unbiased gradient estimates for discrete latent variable models"
+        },
+        {
+            "paperId": "6ce1922802169f757bbafc6e087cc274a867c763",
+            "title": "Regularizing Neural Networks by Penalizing Confident Output Distributions"
+        },
+        {
+            "paperId": "2e77b99e8bd10b9e4551a780c0bde9dd10fdbe9b",
+            "title": "PixelCNN++: Improving the PixelCNN with Discretized Logistic Mixture Likelihood and Other Modifications"
+        },
+        {
+            "paperId": "29e944711a354c396fad71936f536e83025b6ce0",
+            "title": "Categorical Reparameterization with Gumbel-Softmax"
+        },
+        {
+            "paperId": "515a21e90117941150923e559729c59f5fdade1c",
+            "title": "The Concrete Distribution: A Continuous Relaxation of Discrete Random Variables"
+        },
+        {
+            "paperId": "b01871c114b122340209562972ff515b86b16ccf",
+            "title": "Video Pixel Networks"
+        },
+        {
+            "paperId": "df0402517a7338ae28bc54acaac400de6b456a46",
+            "title": "WaveNet: A Generative Model for Raw Audio"
+        },
+        {
+            "paperId": "57a10537978600fd33dcdd48922c791609a4851a",
+            "title": "Sequence-Level Knowledge Distillation"
+        },
+        {
+            "paperId": "0936352b78a52bc5d2b5e3f04233efc56664af51",
+            "title": "Conditional Image Generation with PixelCNN Decoders"
+        },
+        {
+            "paperId": "6a97d2668187965743d1b825b306defccbabbb4c",
+            "title": "Improved Variational Inference with Inverse Autoregressive Flow"
+        },
+        {
+            "paperId": "266e8622d57457ad76224649c6b00adf23c0b76d",
+            "title": "Variational Inference for Monte Carlo Objectives"
+        },
+        {
+            "paperId": "0c908739fbff75f03469d13d4a1a07de3414ee19",
+            "title": "Distilling the Knowledge in a Neural Network"
+        },
+        {
+            "paperId": "a6cb366736791bcccc5c8639de5a8f9636bf87e8",
+            "title": "Adam: A Method for Stochastic Optimization"
+        },
+        {
+            "paperId": "d4dc1012d780e8e2547237eb5a6dc7b1bf47d2f0",
+            "title": "Show and tell: A neural image caption generator"
+        },
+        {
+            "paperId": "cea967b59209c6be22829699f05b8b1ac4dc092d",
+            "title": "Sequence to Sequence Learning with Neural Networks"
+        },
+        {
+            "paperId": "fa72afa9b2cbc8f0d7b05d52548906610ffbb9c5",
+            "title": "Neural Machine Translation by Jointly Learning to Align and Translate"
+        },
+        {
+            "paperId": "0b544dfe355a5070b60986319a3f51fb45d1348e",
+            "title": "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+        },
+        {
+            "paperId": "331f0fb3b6176c6e463e0401025b04f6ace9ccd3",
+            "title": "Neural Variational Inference and Learning in Belief Networks"
+        },
+        {
+            "paperId": "484ad17c926292fbe0d5211540832a8c8a8e958b",
+            "title": "Stochastic Backpropagation and Approximate Inference in Deep Generative Models"
+        },
+        {
+            "paperId": "0e2261c75bf0ac263ff4d2eaf90f996d82622633",
+            "title": "Cartesian K-Means"
+        },
+        {
+            "paperId": "b452a856a3e3d4d37b1de837996aa6813bedfdcf",
+            "title": "Web-scale k-means clustering"
+        },
+        {
+            "paperId": "226966243877f186d346be01047cf71cee1b5ec4",
+            "title": "Online EM for Unsupervised Models"
+        },
+        {
+            "paperId": "606f7ac92d5170fab86e012c93fb95202d6a9823",
+            "title": "On-line EM Algorithm for the Normalized Gaussian Network"
+        },
+        {
+            "paperId": "266a32615cdc2028eb743dc19d28242c8e67e357",
+            "title": "A Monte Carlo Implementation of the EM Algorithm and the Poor Man's Data Augmentation Algorithms"
+        },
+        {
+            "paperId": "d36efb9ad91e00faa334b549ce989bfae7e2907a",
+            "title": "Maximum likelihood from incomplete data via the EM - algorithm plus discussions on the paper"
+        },
+        {
+            "paperId": "c68796f833a7151f0a63d1d1608dc902b4fdc9b6",
+            "title": "GENERATIVE ADVERSARIAL NETS"
+        },
+        {
+            "paperId": "4c915c1eecb217c123a36dc6d3ce52d12c742614",
+            "title": "Simple Statistical Gradient-Following Algorithms for Connectionist Reinforcement Learning"
+        },
+        {
+            "paperId": "2352d9105de31032538900dfb2ce7c95f6402963",
+            "title": "Convergence Properties of the K-Means Algorithms"
+        },
+        {
+            "paperId": "ac8ab51a86f1a9ae74dd0e4576d1a019f5e654ed",
+            "title": "Some methods for classification and analysis of multivariate observations"
+        },
+        {
+            "paperId": "777010281e4ad7feef46bcbd8c1e3fcdf467ec57",
+            "title": "Some methods for classi cation and analysis of multivariate observations"
+        },
+        {
+            "paperId": null,
+            "title": "Gomez , Lukasz Kaiser , and Illia Polosukhin"
+        }
+    ]
+}

@@ -1,0 +1,154 @@
+{
+    "paperId": "2644e2af9d79ba80c0d0b868a6966e87784456cd",
+    "externalIds": {
+        "MAG": "2792142467",
+        "DBLP": "journals/siamsc/Hokanson20",
+        "ArXiv": "1803.00043",
+        "DOI": "10.1137/18M1194481",
+        "CorpusId": 119141157
+    },
+    "title": "A Data-Driven McMillan Degree Lower Bound",
+    "abstract": "Given measurements of a linear time-invariant system, the McMillan degree is the dimension of the smallest such system that reproduces these observed dynamics. Using impulse response measurements where the system has been started in some (unknown) state and then allowed to evolve freely, a classical result by Ho and Kalman reveals the McMillan degree as the rank of a Hankel matrix built from these measurements. However, if measurements are contaminated by noise, this Hankel matrix will almost surely be full rank. Hence practitioners often estimate the rank of this matrix---and thus the McMillan degree---by manually setting a threshold between the large singular values that correspond to the non-zero singular values of the noise-free Hankel matrix and the small singular values that are pertubations of the zero singular values. Here we introduce a probabilistic upper bound on the perturbation of the singular values of this Hankel matrix when measurements are corrupted by additive Gaussian noise, and hence provide guidance on setting the threshold to obtain a lower bound on the McMillan degree. This result is powered by a new, probabilistic bound on the 2-norm of a random Hankel matrix with normally distributed entries. Unlike existing results for random Hankel matrices, this bound features no unknown constants and, moreover, is within a small factor of the empirically observed bound when entries are independent and identically distributed. This bound on the McMillan degree provides an inexpensive alternative to more general model order selection techniques such as the Akaike Information Criteria (AIC).",
+    "venue": "SIAM Journal on Scientific Computing",
+    "year": 2018,
+    "referenceCount": 30,
+    "citationCount": 5,
+    "influentialCitationCount": 0,
+    "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1803.00043",
+        "status": "GREEN"
+    },
+    "tldr": {
+        "model": "tldr@v2.0.0",
+        "text": "A probabilistic upper bound on the perturbation of the singular values of this Hankel matrix when measurements are corrupted by additive Gaussian noise is introduced, and an inexpensive alternative to more general model order selection techniques such as the Akaike Information Criteria is provided."
+    },
+    "embedding": null,
+    "authors": [
+        {
+            "authorId": "3010259",
+            "name": "J. Hokanson"
+        }
+    ],
+    "references": [
+        {
+            "paperId": "e3b23ccae02442c464c3c2638c0bbe601d5f6eb8",
+            "title": "On the finite rank and finite-dimensional representation of bounded semi-infinite Hankel operators"
+        },
+        {
+            "paperId": "ec01a568bdb86e2413919a26d2837629d0229d7d",
+            "title": "Remark on the norm of random Hankel matrices"
+        },
+        {
+            "paperId": "9fc420c4911205e749a3dc2dadb68ae87f40af6b",
+            "title": "H2-Optimal Model Reduction with Higher-Order Poles"
+        },
+        {
+            "paperId": "df42c553d6cf93f4aa335df184bcdccfa201e7be",
+            "title": "Statistical Signal Processing of Complex-Valued Data: The Theory of Improper and Noncircular Signals"
+        },
+        {
+            "paperId": "44a3055fffb43b550c5bc405bdf88919fbac0446",
+            "title": "Spectral Analysis of Large Dimensional Random Matrices"
+        },
+        {
+            "paperId": "ab5e5dd5c93d7b91d87b0e0f6a92dc2d9b4ea8c5",
+            "title": "A Few Remarks on the Operator Norm of Random Toeplitz Matrices"
+        },
+        {
+            "paperId": "91bac46b0bfa9481fb03b57bcfed2b0a3dc88dbe",
+            "title": "A Review of Results on Sums of Random Variables"
+        },
+        {
+            "paperId": "a12f6fa950a283ca4d6ad2d0f004f6b4e2da5b71",
+            "title": "On the spectral norm of a random Toeplitz matrix"
+        },
+        {
+            "paperId": "d4c797eaa4b1eed97cebe670f4c830542cc4acf1",
+            "title": "Estimating the Number of Harmonics Using Enhanced Matrix"
+        },
+        {
+            "paperId": "f396ff473485f96c66ab504811f36d17d3df2165",
+            "title": "Modal parameter identification using response data only"
+        },
+        {
+            "paperId": "cf47a700da36a6e1383df12373c8edc9f1a5c748",
+            "title": "Spectral measure of large random Hankel, Markov and Toeplitz matrices"
+        },
+        {
+            "paperId": "f9da232e92967e6eb27f93f0e61e2906981100f1",
+            "title": "Minimal state-space realization in linear system theory: an overview"
+        },
+        {
+            "paperId": "9c49ce6b2664d98b0dcf0de7b7e5e9d20c1e4a9a",
+            "title": "Improved method for accurate and efficient quantification of MRS data with use of prior knowledge"
+        },
+        {
+            "paperId": "d7655bca0f077e83c57a4e60b989ea607c406d0b",
+            "title": "The fit of a sum of exponentials to noisy data"
+        },
+        {
+            "paperId": "4e5c080cb77538d9da78a70a763021570edf660f",
+            "title": "Improved algorithm for noniterative time-domain model fitting to exponentially damped magnetic resonance signals"
+        },
+        {
+            "paperId": "721f54f6fa32f5f02c5124a2b73ce5f4280b4eaf",
+            "title": "Matrix analysis"
+        },
+        {
+            "paperId": "8626a4961319e05224955ea90ec730cc4eb82061",
+            "title": "An eigensystem realization algorithm for modal parameter identification and model reduction. [control systems design for large space structures]"
+        },
+        {
+            "paperId": "f1b57c40d9a82cb5f27f8e43f3dfdebb75b47622",
+            "title": "Dynamic system identification experiment design and data analysis"
+        },
+        {
+            "paperId": "50a42ed2f81b9fe150883a6c89194c88a9647106",
+            "title": "A new look at the statistical model identification"
+        },
+        {
+            "paperId": "347048baaf7154bc735bb8d41335d81e45f9f2c7",
+            "title": "Introduction to formal realizability theory \u2014 II"
+        },
+        {
+            "paperId": "c00409efa0b8efb86704c2f9409aff912ac270a2",
+            "title": "Model Selection And Multimodel Inference"
+        },
+        {
+            "paperId": "5934d6c8321226f6bded6b1da167f84eccbd5af6",
+            "title": "Iterative Methods for Toeplitz Systems"
+        },
+        {
+            "paperId": "803a7862f27093540148cd518b30a4f4319932da",
+            "title": "A collection of benchmark examples for model reduction of linear time invariant dynamical systems."
+        },
+        {
+            "paperId": null,
+            "title": "System Identification: Theory for the User"
+        },
+        {
+            "paperId": "c519991b46a606b8f02791544d09aae27bf148b9",
+            "title": "METHODOLOGIES IN SPECTRAL ANALYSIS OF LARGE DIMENSIONAL RANDOM MATRICES , A REVIEW"
+        },
+        {
+            "paperId": "abaff99aa3175aeb6f16bbfeac420c0879d00b34",
+            "title": "ARPACK users' guide - solution of large-scale eigenvalue problems with implicitly restarted Arnoldi methods"
+        },
+        {
+            "paperId": "286e36b2f81fdb4f0fc276ef94f83971090e5005",
+            "title": "Subspace-based signal analysis using singular value decomposition"
+        },
+        {
+            "paperId": "fac65d27c83dd9645cfb769e74440ed5fcdaee16",
+            "title": "Mathematical Control Theory: Deterministic Finite Dimensional Systems"
+        },
+        {
+            "paperId": "f0188bc7a3f83cda20099744b2dcd09d5fd6a1b6",
+            "title": "Determining the number of terms in a Prony algorithm exponential fit"
+        },
+        {
+            "paperId": "483f1961fa2d5442fe5b9ab53d36dcc4e239c12d",
+            "title": "Editorial: Effective construction of linear state-variable models from input/output functions"
+        }
+    ]
+}
