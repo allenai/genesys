@@ -2,6 +2,8 @@ import os
 from enum import Enum
 import inspect
 import copy
+from dataclasses import dataclass
+from typing import Optional
 
 from exec_utils.models.model import ModelOutput
 from .alang import FlowCreator,register_module,ROLE,SYSTEM_CALLER,USER_CALLER,AgentContext
@@ -27,20 +29,25 @@ GAB_BASE=inspect.getsource(GABBase)
 GAB_COMPOSER=inspect.getsource(GABComposer)
 
 
+@dataclass
+class AgentModelDef:
+    name: str
+    model_name: Optional[str] = None
+
 class DesignModes(Enum):
     MUTATION = 'Mutate from existing design'
     SCRATCH = 'Design from scratch (unstable)'
     CROSSOVER = 'Crossover multiple designs (unsupported)'
 
 
-def load_system_prompt(agent,prompt):
+def reload_role(agent,model:AgentModelDef,prompt):# reload the role of an agent, it will change the role
+    name=agent.name
+    model_name=model.model_name
     agent.model_state.static_message=agent.model_state.fn(
         instruction=prompt,examples=[]
     )
-    return agent
-
-def reload_role(name,agent,prompt): # reload the role of an agent, it will change the role
-    agent=load_system_prompt(agent,prompt)
+    if model_name is not None:
+        agent.model_state._config.model_name=model_name
     return ROLE(name,agent)
 
 def apply_prompt(role,prompt,**kwargs):
@@ -842,6 +849,7 @@ class GUFlowMutation(FlowCreator):
 
         super().__init__(system,'GAU Design Flow from Existing Tree')
         self.system=system
+        self.sss=system.sss # search_utils
         self.status_handler=status_handler
         self.stream=stream
         self.args=['main_tid']
@@ -849,21 +857,31 @@ class GUFlowMutation(FlowCreator):
         self.lib_dir=system.lib_dir
 
         # prepare roles
-        self.gpt4o0806_agent=self.system.designer # as we replaced the system prompt, essential its just a base agent
-        self.gpt4omini_agent=self.system.debugger 
-        self.claude_agent=self.system.claude
-
 
         AGENT_TYPES = {
-            'claude3.5_sonnet':self.claude_agent,
-            'gpt4o_0806':self.gpt4o0806_agent,
-            'gpt4o_mini':self.gpt4omini_agent,
+            'claude3.5_sonnet':self.system.claude,
+            'gpt4o_0806':self.system.designer,
+            'gpt4o_mini':self.system.designer,
+            'o1_preview':self.system.designer,
+            'o1_mini':self.system.designer,
+            'None':None, # None for search assistiant 
+        }
+        AGENT_TYPES_MODEL_NAMES = {
+            'claude3.5_sonnet':'claude-3.5-sonnet-20240620', # maybe incompatible with exec_utils
+            'gpt4o_0806':'gpt-4o-2024-08-06',
+            'gpt4o_mini':'gpt-4o-mini',
+            'o1_preview':'o1-preview',
+            'o1_mini':'o1-mini',
+            'None':None,
         }
 
         self.failed_rounds=0
         self.max_attemps=design_cfg['max_attemps']
-        agent_types=design_cfg['agent_types']     
-        self.agents={k:AGENT_TYPES[v] for k,v in agent_types.items()}
+        self.agent_types=design_cfg['agent_types']     
+        self.agents={}
+        for name,value in self.agent_types.items():
+            self.agents[name]=AgentModelDef(AGENT_TYPES[value],AGENT_TYPES_MODEL_NAMES[value])
+
         self.termination=design_cfg['termination']
         self.threshold=design_cfg['threshold']
         self.search_settings=design_cfg['search_settings']
@@ -934,7 +952,8 @@ class GUFlowMutation(FlowCreator):
         return query,state,{}
     
 
-    def search_for_proposal(self,main_tid,ideation,instructions):
+    def call_search_assistant(self,main_tid,ideation,instructions):
+        self.stream.write(f'Warning: Search Assistant prompt has not been updated, performance may degrade.')
         S2_SEARCH_SYSTEM=P.S2_SEARCH_ASSISTANT_SYSTEM()
         S2_SEARCH_ASSISTANT=reload_role('search_assistant',self.agents['SEARCH_ASSISTANT'],S2_SEARCH_SYSTEM)
         context_search_assistant=AgentContext()
@@ -951,12 +970,12 @@ class GUFlowMutation(FlowCreator):
             analysis,query=out['analysis'],out['query']
             self.stream.write(f'### Analysis\n{analysis}')
             self.stream.write(f'### Query\n{query}')
-            papers=search_for_papers(query)
-            self.stream.write(f'### S2 Papers\n{papers}')
+            rets=self.sss(query,analysis) # TODO: specifically prompts details for search assistant
+            self.stream.markdown(rets,unsafe_allow_html=True)
             self.print_raw_output(out,'SEARCH_ASSISTANT')
 
             # S2 Search Response
-            s2_search_response_prompt=P.S2_SEARCH_PROPOSAL_RESPONSE(SEARCH_RESULTS=papers)
+            s2_search_response_prompt=P.S2_SEARCH_PROPOSAL_RESPONSE(SEARCH_RESULTS=rets)
             P.S2_SEARCH_PROPOSAL_RESPONSE.apply(S2_SEARCH_ASSISTANT.obj)
             self.print_details(S2_SEARCH_ASSISTANT.obj,context_search_assistant,s2_search_response_prompt)
             _,out=self.dialog.call(search_assistant_tid,s2_search_response_prompt)
@@ -1005,34 +1024,93 @@ class GUFlowMutation(FlowCreator):
         self.stream.write(f'#### Start design process by generating a design proposal')
 
         USE_2STAGE=self.search_settings['proposal_search']
+        USE_ISEARCH=self.agent_types['SEARCH_ASSISTANT']=='None' and USE_2STAGE 
+        USE_2STAGE=USE_2STAGE and not USE_ISEARCH
 
         traces=[]
         context_design_proposer=AgentContext()
         context_proposal_reviewer=AgentContext()
         SELECTIONS=list(self.base_tree.units.keys())
         for i in range(self.max_attemps['design_proposal']):
-            DESIGN_PROPOSER_SYSTEM=P.GUM_DESIGN_PROPOSER_SYSTEM_2STAGE if USE_2STAGE else P.GUM_DESIGN_PROPOSER_SYSTEM
+            DESIGN_PROPOSER_SYSTEM=P.GUM_DESIGN_PROPOSER_SYSTEM 
+            if USE_ISEARCH:
+                DESIGN_PROPOSER_SYSTEM=P.GUM_DESIGN_PROPOSER_SYSTEM_ISEARCH
+            elif USE_2STAGE:
+                DESIGN_PROPOSER_SYSTEM=P.GUM_DESIGN_PROPOSER_SYSTEM_2STAGE
             DESIGN_PROPOSER=reload_role('design_proposer',self.agents['DESIGN_PROPOSER'],DESIGN_PROPOSER_SYSTEM(GAU_BASE=GAU_BASE))
             design_proposer_tid=self.dialog.fork(main_tid,USER_CALLER,DESIGN_PROPOSER,context=context_design_proposer,
                                                 alias='design_proposal',note=f'Starting design proposal...')
             if i==0:
                 status_info=f'Initial design proposal...'
-                GUM_DESIGN_PROPOSAL=P.gen_GUM_DESIGN_PROPOSAL(SELECTIONS=SELECTIONS,two_stage=USE_2STAGE)
-                if USE_2STAGE:
+                GUM_DESIGN_PROPOSAL=P.gen_GUM_DESIGN_PROPOSAL(SELECTIONS=SELECTIONS,two_stage=USE_2STAGE,use_isearch=USE_ISEARCH)
+                if USE_ISEARCH:
+                    GUM_DESIGN_PROPOSAL,GUM_DESIGN_PROPOSAL_FINISH=GUM_DESIGN_PROPOSAL
+                elif USE_2STAGE:
                     GUM_DESIGN_PROPOSAL,GUM_DESIGN_PROPOSAL_STAGE2=GUM_DESIGN_PROPOSAL
                 proposal_prompt=GUM_DESIGN_PROPOSAL(SEED=query)
                 GUM_DESIGN_PROPOSAL.apply(DESIGN_PROPOSER.obj)
             else:
                 status_info=f'Refining design proposal (attempt {i})...'
-                GUM_PROPOSAL_REFINEMENT=P.gen_GUM_PROPOSAL_REFINEMENT(SELECTIONS=SELECTIONS,two_stage=USE_2STAGE)
-                if USE_2STAGE:
+                GUM_PROPOSAL_REFINEMENT=P.gen_GUM_PROPOSAL_REFINEMENT(SELECTIONS=SELECTIONS,two_stage=USE_2STAGE,use_isearch=USE_ISEARCH)
+                if USE_ISEARCH:
+                    GUM_PROPOSAL_REFINEMENT,GUM_DESIGN_PROPOSAL_FINISH=GUM_PROPOSAL_REFINEMENT
+                elif USE_2STAGE:
                     GUM_PROPOSAL_REFINEMENT,GUM_DESIGN_PROPOSAL_STAGE2=GUM_PROPOSAL_REFINEMENT
                 proposal_prompt=GUM_PROPOSAL_REFINEMENT(REVIEW=review,RATING=rating,SUGGESTIONS=suggestions,
                                                          PASS_OR_NOT='Pass' if rating>=4 else 'Fail')
                 GUM_PROPOSAL_REFINEMENT.apply(DESIGN_PROPOSER.obj)
             
             ideation,instructions,search_report,search_references=None,None,None,None
-            if USE_2STAGE:
+            search_stack=[]
+            if USE_ISEARCH:
+                with self.status_handler(status_info):
+                    self.print_details(DESIGN_PROPOSER.obj,context_design_proposer,proposal_prompt)
+                    _,out=self.dialog.call(design_proposer_tid,proposal_prompt)
+                    analysis,query,detail,ready,reflection=out['analysis'],out['query'],out['detail'],out['ready'],out.get('reflection',None)
+                    if reflection:
+                        self.stream.write(f'# Reflection\n{reflection}')
+                        self.stream.write(f'# Analysis\n{analysis}')
+                        self.stream.write(f'# Query\n{query}')
+                        self.stream.write(f'# Detail\n{detail}')
+                        self.stream.write(f'# Ready\n{ready}')
+
+                for i in range(self.max_attemps['max_search_rounds']):
+                    if ready: break
+                    with self.status_handler(f'Searching... round {i+1}...'):
+                        search_ret=self.sss(query,analysis)
+                        search_stack.append(
+                            {
+                                'analysis':analysis,
+                                'query':query,
+                                'detail':detail,
+                                'ready':ready,
+                                'search_ret':search_ret,
+                            }
+                        )
+                        search_cont_prompt=P.GUM_DESIGN_PROPOSAL_ISEARCH_CONT(SEARCH_RESULTS=search_ret)
+                        P.GUM_DESIGN_PROPOSAL_ISEARCH_CONT.apply(DESIGN_PROPOSER.obj)
+                        self.print_details(DESIGN_PROPOSER.obj,context_design_proposer,search_cont_prompt)
+                        _,out=self.dialog.call(design_proposer_tid,search_cont_prompt)
+                        analysis,query,detail,ready=out['analysis'],out['query'],out['detail'],out['ready']
+                        self.stream.write(f'### Analysis\n{analysis}')
+                        self.stream.write(f'### Query\n{query}')
+                        self.stream.write(f'### Detail\n{detail}')
+                        self.stream.write(f'### Ready\n{ready}')
+                        self.print_raw_output(out,'DESIGN_PROPOSER')
+                        self.stream.write('---')
+                
+                search_finish_prompt=P.GUM_DESIGN_PROPOSAL_ISEARCH_FINISH()
+                P.GUM_DESIGN_PROPOSAL_ISEARCH_FINISH.apply(DESIGN_PROPOSER.obj)
+                self.print_details(DESIGN_PROPOSER.obj,context_design_proposer,search_finish_prompt)
+                _,out=self.dialog.call(design_proposer_tid,search_finish_prompt)
+                selection,proposal,modelname,changes=out['selection'],out['proposal'],out['modelname'],out.get('changes',None)
+                self.stream.write(f'# Proposal\n{proposal}')
+                if changes:
+                    self.stream.write(f'# Changes\n{changes}')
+                context_design_proposer=self.dialog.context(design_proposer_tid)
+                self.print_raw_output(out,'DESIGN_PROPOSER')
+
+            elif USE_2STAGE: # use search or not
                 with self.status_handler(status_info):
                     self.print_details(DESIGN_PROPOSER.obj,context_design_proposer,proposal_prompt)
                     _,out=self.dialog.call(design_proposer_tid,proposal_prompt)
@@ -1043,8 +1121,8 @@ class GUFlowMutation(FlowCreator):
                     self.stream.write(f'# Instructions to Search Assistant\n{instructions}')
                     self.print_raw_output(out,'DESIGN_PROPOSER')
 
-                with self.status_handler('Searching from S2...'):
-                    search_report,search_references=self.search_for_proposal(main_tid,ideation,instructions)
+                with self.status_handler('Searching...'):
+                    search_report,search_references=self.call_search_assistant(main_tid,ideation,instructions)
 
                 with self.status_handler('Generating proposal...'):
                     proposal_prompt_stage2=GUM_DESIGN_PROPOSAL_STAGE2(GATHERED_INFO=search_report)
@@ -1057,7 +1135,6 @@ class GUFlowMutation(FlowCreator):
                         self.stream.write(f'# Changes\n{changes}')
                     context_design_proposer=self.dialog.context(design_proposer_tid)
                     self.print_raw_output(out,'DESIGN_PROPOSER')
-
             else:
                 with self.status_handler(status_info):
                     self.print_details(DESIGN_PROPOSER.obj,context_design_proposer,proposal_prompt)
@@ -1075,23 +1152,73 @@ class GUFlowMutation(FlowCreator):
                     self.print_raw_output(out,'DESIGN_PROPOSER')
 
 
-            PROPOSAL_REVIEWER=reload_role('proposal_reviewer',self.agents['PROPOSAL_REVIEWER'],P.GUM_PROPOSAL_REVIEWER_SYSTEM())
+            ### Review
+            USE_ISEARCH_REVIEW=self.search_settings['proposal_review_search']
+
+            SYSTEM_PROMPT=P.GUM_PROPOSAL_REVIEWER_SYSTEM() if not USE_ISEARCH_REVIEW else P.GUM_PROPOSAL_REVIEWER_SEARCH_SYSTEM()
+            PROPOSAL_REVIEWER=reload_role('proposal_reviewer',self.agents['PROPOSAL_REVIEWER'],SYSTEM_PROMPT)
             proposal_reviewer_tid=self.dialog.fork(main_tid,USER_CALLER,PROPOSAL_REVIEWER,context=context_proposal_reviewer,
                                                 alias='proposal_review',note=f'Reviewing proposal...')
             if i==0:
                 status_info=f'Reviewing initial proposal...'
-                proposal_review_prompt=P.GUM_PROPOSAL_REVIEW(
-                    SEED=query,SELECTION=selection,PROPOSAL=proposal)
+                if USE_ISEARCH_REVIEW:
+                    proposal_review_prompt=P.GUM_PROPOSAL_REVIEW_ISEARCH_BEGIN(
+                        SEED=query,SELECTION=selection,PROPOSAL=proposal)
+                else:
+                    proposal_review_prompt=P.GUM_PROPOSAL_REVIEW(
+                        SEED=query,SELECTION=selection,PROPOSAL=proposal)
                 P.GUM_PROPOSAL_REVIEW.apply(PROPOSAL_REVIEWER.obj)
             else:
                 status_info=f'Reviewing refined proposal (version {i})...'
-                proposal_review_prompt=P.GUM_PROPOSAL_REREVIEW(
-                    SELECTION=selection,PROPOSAL=proposal,CHANGES=changes)
+                if USE_ISEARCH_REVIEW:  
+                    proposal_review_prompt=P.GUM_PROPOSAL_REREVIEW_ISEARCH(
+                        SELECTION=selection,PROPOSAL=proposal,CHANGES=changes)
+                else:
+                    proposal_review_prompt=P.GUM_PROPOSAL_REREVIEW(
+                        SELECTION=selection,PROPOSAL=proposal,CHANGES=changes)
                 P.GUM_PROPOSAL_REREVIEW.apply(PROPOSAL_REVIEWER.obj)
             
-            with self.status_handler(status_info):
-                self.print_details(PROPOSAL_REVIEWER.obj,context_proposal_reviewer,proposal_review_prompt)
-                _,out=self.dialog.call(proposal_reviewer_tid,proposal_review_prompt)
+            review_search_stack=[]
+            if USE_ISEARCH_REVIEW:
+                with self.status_handler(status_info):
+                    self.print_details(PROPOSAL_REVIEWER.obj,context_proposal_reviewer,proposal_review_prompt)
+                    _,out=self.dialog.call(proposal_reviewer_tid,proposal_review_prompt)
+                    analysis,query,detail,ready=out['analysis'],out['query'],out['detail'],out['ready']
+                    self.stream.write(f'### Analysis\n{analysis}')
+                    self.stream.write(f'### Query\n{query}')
+                    self.stream.write(f'### Detail\n{detail}')
+                    self.stream.write(f'### Ready\n{ready}')
+                    self.print_raw_output(out,'PROPOSAL_REVIEWER')
+                
+                for i in range(self.max_attemps['max_search_rounds']):
+                    if ready: break
+                    with self.status_handler(f'Searching... round {i+1}...'):
+                        search_ret=self.sss(query,analysis)
+                        review_search_stack.append(
+                            {
+                                'analysis':analysis,
+                                'query':query,
+                                'detail':detail,
+                                'ready':ready,
+                                'search_ret':search_ret,
+                            }
+                        )
+                        search_cont_prompt=P.GUM_PROPOSAL_REVIEW_ISEARCH_CONT(SEARCH_RESULTS=search_ret)
+                        P.GUM_PROPOSAL_REVIEW_ISEARCH_CONT.apply(PROPOSAL_REVIEWER.obj)
+                        self.print_details(PROPOSAL_REVIEWER.obj,context_proposal_reviewer,search_cont_prompt)
+                        _,out=self.dialog.call(proposal_reviewer_tid,search_cont_prompt)
+                        analysis,query,detail,ready=out['analysis'],out['query'],out['detail'],out['ready']
+                        self.stream.write(f'### Analysis\n{analysis}')
+                        self.stream.write(f'### Query\n{query}')
+                        self.stream.write(f'### Detail\n{detail}')
+                        self.stream.write(f'### Ready\n{ready}')
+                        self.print_raw_output(out,'PROPOSAL_REVIEWER')
+                        self.stream.write('---')
+                
+                search_finish_prompt=P.GUM_PROPOSAL_REVIEW_ISEARCH_FINAL()
+                P.GUM_PROPOSAL_REVIEW_ISEARCH_FINAL.apply(PROPOSAL_REVIEWER.obj)
+                self.print_details(PROPOSAL_REVIEWER.obj,context_proposal_reviewer,search_finish_prompt)
+                _,out=self.dialog.call(proposal_reviewer_tid,search_finish_prompt)
                 review,rating,suggestions=out['review'],out['rating'],out['suggestions']
                 context_proposal_reviewer=self.dialog.context(proposal_reviewer_tid)
                 passornot='Pass' if rating>=self.threshold['proposal_rating'] else 'Fail'
@@ -1099,6 +1226,17 @@ class GUFlowMutation(FlowCreator):
                 self.stream.write(review)
                 self.stream.write(suggestions)
                 self.print_raw_output(out,'PROPOSAL_REVIEWER')
+            else:
+                with self.status_handler(status_info):
+                    self.print_details(PROPOSAL_REVIEWER.obj,context_proposal_reviewer,proposal_review_prompt)
+                    _,out=self.dialog.call(proposal_reviewer_tid,proposal_review_prompt)
+                    review,rating,suggestions=out['review'],out['rating'],out['suggestions']
+                    context_proposal_reviewer=self.dialog.context(proposal_reviewer_tid)
+                    passornot='Pass' if rating>=self.threshold['proposal_rating'] else 'Fail'
+                    self.stream.write(f'### Rating: {rating} out of 5 ({passornot})')
+                    self.stream.write(review)
+                    self.stream.write(suggestions)
+                    self.print_raw_output(out,'PROPOSAL_REVIEWER')
 
             trace={
                 # proposal content
@@ -1117,6 +1255,8 @@ class GUFlowMutation(FlowCreator):
                 'instructions':instructions,
                 'search_report':search_report,
                 'search_references':search_references,
+                'search_stack':search_stack,
+                'review_search_stack':review_search_stack,
             }
             traces.append(trace)
 

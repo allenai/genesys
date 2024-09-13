@@ -9,7 +9,7 @@ from exec_utils.models.model import ModelState,OpenAIModel,ModelRuntimeError,Uti
 from exec_utils.models.utils import openai_costs
 
 
-def gpt4o_costs(usage,model_name):
+def openai_costs(usage,model_name):
     costs={
         "gpt-4o-2024-08-06":{
             'input':2.5/1e6,
@@ -19,12 +19,20 @@ def gpt4o_costs(usage,model_name):
             'input':0.15/1e6,
             'output':0.6/1e6,
         },
+        "o1-preview":{
+            'input':15/1e6,
+            'output':60/1e6,
+        },
+        "o1-mini":{
+            'input':3/1e6,
+            'output':12/1e6,
+        },
     }
     usage['cost']=usage['input_tokens']*costs[model_name]['input'] + usage['output_tokens']*costs[model_name]['output']
     usage['model_name']=model_name
     return usage
 
-def claude3_5_sonnet_costs(usage,model_name='claude-3-5-sonnet-20240620'):
+def anthropic_costs(usage,model_name='claude-3-5-sonnet-20240620'):
     costs={
         "claude-3-5-sonnet-20240620":{
             'input':3/1e6,
@@ -189,7 +197,7 @@ def call_model_structured(model,message,response_format, logprobs=False) -> Mode
         'input_tokens':completions.usage.prompt_tokens,
         'output_tokens':completions.usage.completion_tokens,
     }
-    usage=gpt4o_costs(usage,model._config.model_name)
+    usage=openai_costs(usage,model._config.model_name)
     cost=usage['cost']
     model._model_cost += cost
     token_probs = completions.choices[0].token_probs.content if logprobs else []
@@ -422,7 +430,7 @@ def call_model_claude(model,message,system,response_format, logprobs=False,use_c
     else:
         text=RET['content'][0]['text']
 
-    usage=claude3_5_sonnet_costs(RET['usage'],model._config.model_name)
+    usage=anthropic_costs(RET['usage'],model._config.model_name)
 
     return ModelOutputPlus(
         text=text,

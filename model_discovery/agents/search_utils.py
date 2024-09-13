@@ -66,15 +66,12 @@ class SuperScholarSearcher:
     def __init__(self,ptree,stream,cfg={}):
         self.ptree=ptree
         self.files_dir=U.pjoin(ptree.lib_dir,'..','files')
-        DEFAULT_SEARCH_LIMITS={
-            's2':5,
-            'arxiv':3,
-            'pwc':3,
-            'lib':5,
-            'lib2':3,
-            'libp':3,
-        }
-        self.result_limits=U.safe_get_cfg_dict(cfg,'result_limits',DEFAULT_SEARCH_LIMITS)
+        self.co=cohere.Client(os.environ['COHERE_API_KEY'])
+        self.pc = Pinecone(api_key=os.environ['PINECONE_API_KEY'])
+
+        self.index_name=None
+        self.reconfig(cfg)
+
         self.stream=stream
         self.pwc_client=PapersWithCodeClient()
 
@@ -88,21 +85,32 @@ class SuperScholarSearcher:
             openai_api_key=os.environ['MY_OPENAI_KEY'],
             model="text-embedding-3-large"
         )
-        self.index_name=cfg.get('index_name','modis-library-v0') # change it to your index name
-        self.pc = Pinecone(api_key=os.environ['PINECONE_API_KEY'])
-        self.index=self.get_index(self.index_name)
 
+    def reconfig(self,cfg):
+        DEFAULT_SEARCH_LIMITS={
+            's2':5,
+            'arxiv':3,
+            'pwc':3,
+            'lib':5,
+            'lib2':3,
+            'libp':3,
+        }
+        self.result_limits=U.safe_get_cfg_dict(cfg,'result_limits',DEFAULT_SEARCH_LIMITS)
         self.rerank_ratio=cfg.get('rerank_ratio',0.2)
-        self.co=cohere.Client(os.environ['COHERE_API_KEY'])
+        index_name=cfg.get('index_name','modis-library-v0') # change it to your index name
+        assert index_name, 'Index name is required'
+        if index_name!=self.index_name: # always do it in init
+            self.index_name=index_name
+            self.index=self.get_index(index_name)
 
-    def __call__(self,title_abstract,detail=None,raw=False,prompt=True):
+    def __call__(self,query,detail=None,raw=False,prompt=True):
         """
-        title_abstract: for search papers by title and abstract
-        content: for matching the related content from papers
+        query: for search papers in S2, ArXiv, and Papers with Code...
+        detail: for search papers in the internal library vector stores
         """
-        query = detail if detail else title_abstract
+        query = detail if detail else query
         internal_results,internal_pp=self.search_internal(query,pretty=True,prompt=prompt)
-        external_results,external_pp=self.search_external(title_abstract,pretty=True,prompt=prompt)
+        external_results,external_pp=self.search_external(detail,pretty=True,prompt=prompt)
         
         self.stream.write(f'Concluding search results...')
         
@@ -602,9 +610,9 @@ class SuperScholarSearcher:
                 ('Secondary',self.texts2,'2',self.splits2,self.vectors2),
                 ('Plus',self.textsp,'p',self.splitsp,self.vectorsp)]:
             
-            ### XXX: REMOVE THIS
-            if name!='Primary':
-                continue
+            # ## XXX: REMOVE THIS
+            # if name!='Primary':
+            #     continue
 
             for i in tqdm(lib,desc=f'Loading splits {name}'):
                 U.mkdir(U.pjoin(self.files_dir,'splits'+tail))

@@ -30,6 +30,7 @@ from .agents.roles import *
 from .agents.flow.alang import AgentDialogManager,AgentDialogFlowNaive,ALangCompiler,SYSTEM_CALLER,FAILED,ROLE
 from .agents.flow.naive_flows import design_flow_definition,review_naive,design_naive,naive_design_review
 from .agents.flow.gau_flows import gu_design_scratch,gu_design_mutation,DesignModes,RunningModes
+from .agents.search_utils import SuperScholarSearcher
 
 # from .evolution import NodeObject
 
@@ -386,6 +387,7 @@ class ModelDiscoverySystem(exec_utils.System):
         
         # to be set later
         self.ptree = None
+        self.sss = None
 
         # Load flows
 
@@ -401,6 +403,7 @@ class ModelDiscoverySystem(exec_utils.System):
 
     def bind_ptree(self,ptree): # need to bind a tree before start working, should be done immediately
         self.ptree = ptree
+        self.sss = SuperScholarSearcher(ptree,self.stream)
 
     def get_system_info(self):
         system_info = {}
@@ -428,6 +431,7 @@ class ModelDiscoverySystem(exec_utils.System):
         design_id=None,
         stream: Optional[ModuleType] = None,
         design_cfg = {},
+        search_cfg = {},
         mode=DesignModes.MUTATION,
         proposal=None, # implementation only mode, directly implement a proposal, experimental
         **kwargs
@@ -451,9 +455,9 @@ class ModelDiscoverySystem(exec_utils.System):
         DEFAULT_AGENTS={
             'DESIGN_PROPOSER':'claude3.5_sonnet',
             'PROPOSAL_REVIEWER':'claude3.5_sonnet',
-            'DESIGN_IMPLEMENTER':'claude3.5_sonnet',
+            'DESIGN_IMPLEMENTER':'o1-mini',
             'IMPLEMENTATION_REVIEWER':'claude3.5_sonnet',
-            'SEARCH_ASSISTANT':'gpt4o_mini',
+            'SEARCH_ASSISTANT':'None', # None means no separate search assistant
         }
         DEFAULT_MAX_ATTEMPTS={
             'design_proposal':10,
@@ -488,6 +492,8 @@ class ModelDiscoverySystem(exec_utils.System):
         design_cfg['search_settings']=U.safe_get_cfg_dict(design_cfg,'search_settings',DEFAULT_SEARCH_SETTINGS)
         design_cfg['running_mode']=U.safe_get_cfg_dict(design_cfg,'running_mode',DEFAULT_MODE)
         design_cfg['num_samples']=U.safe_get_cfg_dict(design_cfg,'num_samples',DEFAULT_NUM_SAMPLES)
+
+        self.sss.reconfig(search_cfg)
 
         # 1. create or retrieve a new session
         if design_id is None: # if provided, then its resuming a session

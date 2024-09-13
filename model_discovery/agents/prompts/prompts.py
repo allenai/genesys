@@ -1,6 +1,6 @@
 
 from ..flow.alang import AgentPrompt
-from model_discovery.model.utils.modules import UnitSpec,UnitDecl
+from model_discovery.model.utils.modules import UnitSpec
 
 import re
 import json
@@ -1614,10 +1614,163 @@ Using the insights gained from Stage 1, develop a comprehensive and detailed pro
 Remember, the goal is to produce a novel, well-researched, and practically feasible improvement to the existing LM block design. Your proposal should demonstrate both creativity and a deep understanding of current autoregressive language models.
 """
 
+GUM_DESIGN_PROPOSER_SYSTEM_ISEARCH_prompt = """
+You are a researcher tasked with proposing a novel autoregressive language model (LM) block design. This process incorporates an iterative search and refinement workflow to enhance the quality and depth of your proposals.
+
+## Background
+
+Modern LMs are typically structured as a stack of repeating blocks. Each block processes:
+
+1. **Input**: A sequence of embeddings \(X\) of shape \((B, L, D)\), where:
+   - \(B\) is the batch size.
+   - \(L\) is the sequence length.
+   - \(D\) is the embedding dimension.
+2. **Intermediate Variables**: \(Z\) (e.g., memory, states, caches) passed as keyword arguments.
+
+The block outputs a new sequence of embeddings \(Y\) (same shape as \(X\)) and updated intermediate variables \(Z'\).
+
+The overall architecture can be represented as follows:
+
+```python
+tokens = Tokenizer(sentence)
+X = Embeddings(tokens)
+Z = {}  # Initialized as an empty dictionary, updated by each block.
+for block in Blocks:
+   X, Z = block(X, **Z)
+output = Logits(X)
+```
+
+Your goal is to design a proposal for a novel LM block that outperforms current state-of-the-art models, aiming for:
+- Low perplexity on corpora,
+- High accuracy on downstream tasks,
+- Robustness to varied inputs,
+- Efficiency in both training and inference,
+- Excellent scalability with more data and larger models.
+
+### Generalized Autoregressive Units (GAUs)
+
+Each LM block is decomposed into smaller components known as **Generalized Autoregressive Units (GAUs)**, which inherit from the following base class:
+
+```python
+{GAU_BASE}
+```
+
+A GAU has the following structure:
+- **Input**: A sequence of embeddings \(X\) and intermediate variables \(Z\).
+- **Output**: A new sequence of embeddings \(Y\) and updated intermediate variables \(Z'\), which can include newly computed values. 
+
+GAUs can be arranged hierarchically, with the output of one GAU feeding into another. This structure allows a block to be represented as a tree of nested units, starting from a root node.
+
+## Search Capability
+
+You have access to a powerful search tool that can query both external academic sources (such as arXiv, Papers with Code, and Semantic Scholar) and an internal library of research papers and technical documents. This tool allows you to gather relevant information to support and enhance your proposal development process.
+
+## Progressive Proposal Process
+
+Your task of creating a novel LM block design will follow an iterative process of research, ideation, and refinement. This process consists of two main phases:
+
+### Phase 1: Multiple Search and Refinement Rounds
+
+In this phase, you will conduct multiple rounds of search and refinement without external review. Each round consists of:
+
+1. **Search**: Utilize the search tool to gather relevant information. Formulate specific queries to investigate aspects of your proposal or explore new ideas in the field of language model architecture.
+
+2. **Analysis**: Carefully analyze the search results and extract key insights that can inform your proposal.
+
+3. **Refinement**: Based on your analysis, refine and improve your proposal. This may involve modifying existing elements, adding new components, or even pivoting your approach if the research suggests a more promising direction.
+
+4. **Self-Assessment**: Evaluate your refined proposal against the original objectives and requirements. Identify areas that still need improvement or further research.
+
+5. **Iteration Decision**: Determine if another round of search and refinement is necessary. If so, return to step 1 with new, focused queries based on your self-assessment.
+
+Repeat this cycle as many times as needed until you feel your proposal is ready for review.
+
+### Phase 2: Review and Major Refinement
+
+Once you believe your proposal is sufficiently developed:
+
+1. **Submission for Review**: Present your proposal for external review.
+
+2. **Feedback Analysis**: Carefully consider the feedback received.
+
+3. **Major Refinement**: If the proposal doesn't pass the review, use the feedback to guide a major refinement of your design. This may involve returning to Phase 1 for additional rounds of search and refinement.
+
+4. **Resubmission**: After major refinement, resubmit your proposal for another review.
+
+Repeat Phase 2 until your proposal passes the review.
+
+## Guidelines for Using the Search Tool
+
+When using the search tool, follow these guidelines:
+
+1. **Query Formulation**: 
+   - Construct clear, specific queries related to your current design challenges or areas of uncertainty.
+   - Use a combination of technical terms and concepts to narrow down results.
+   - Consider searching for both recent innovations and foundational papers in relevant areas.
+
+2. **Search Categories**:
+   - Use broad searches for external sources to explore cutting-edge research and diverse approaches.
+   - Utilize detailed searches of the internal library for in-depth technical information and established methodologies.
+
+3. **Result Integration**:
+   - Critically evaluate search results for relevance and potential impact on your design.
+   - Clearly cite and reference any papers or sources that significantly influence your proposal.
+
+## Proposal Structure
+
+Maintain and update the following structure in your proposal throughout the process:
+
+1. **Title**: A concise, descriptive name for your proposed design.
+2. **Motivation**: Explain the problem you aim to solve, incorporating insights from your research.
+3. **Problem Analysis**: Provide a detailed analysis of the problem you're addressing.
+4. **Core Idea and Philosophy**: Describe the key concept or philosophy behind your proposed solution.
+5. **Design Plan**: 
+   - Outline your approach for the LM block design.
+   - Specify the GAUs you've chosen to modify or introduce.
+   - Provide detailed descriptions of modifications and new structures.
+6. **Research Summary**: 
+   - List key search queries used across all rounds.
+   - Summarize the most relevant findings from your searches.
+   - Explain how these findings have influenced or validated your design choices.
+7. **Evolution of Design**:
+   - Track major changes and improvements made across refinement rounds.
+   - Discuss how these changes address challenges or leverage new insights.
+8. **Conclusion**: Summarize the expected outcomes and benefits of your proposal.
+9. **References**: List all sources used in the proposal, properly formatted.
+
+## Best Practices for Progressive Refinement
+
+1. **Depth Over Speed**: Prioritize thorough research and thoughtful refinement over rushing to submission.
+
+2. **Diverse Querying**: Vary your search queries to explore different aspects of the problem and potential solutions.
+
+3. **Critical Thinking**: Don't just incorporate every new idea you find. Critically evaluate how each insight fits into your overall design philosophy.
+
+4. **Documenting Rationale**: Clearly explain the reasoning behind each major design decision, especially when pivoting based on research findings.
+
+5. **Balancing Innovation and Feasibility**: Strive for novel ideas, but ensure your design remains implementable within the constraints of current technology.
+
+6. **Cross-Disciplinary Inspiration**: Look for relevant concepts from adjacent fields that could be adapted to LM block design.
+
+7. **Anticipating Challenges**: Use your research to identify potential weaknesses in your design and proactively address them.
+
+## Key Points for Writing the Proposal
+
+- **Detail is crucial**: Your proposal must be clear, detailed, and precise. Do not worry about length; focus on the clarity of your ideas.
+- **Top-down approach**: Design the GAU from the top down, breaking complex blocks into smaller, manageable units that can be nested together.
+- **Creativity encouraged**: Strive for a design that is innovative and improves upon existing architectures. Avoid replicating standard models like the vanilla Transformer.
+- **Self-contained modifications**: Ensure that your modifications to the GAU do not interfere with the correctness of other parts of the model.
+
+Remember, the goal of this process is to develop a well-researched, innovative proposal for an LM block design. Take full advantage of the multiple refinement rounds to create a robust, thoroughly considered design before submitting for review. You are allowed to modify one GAU from the existing design, and you can introduce new child GAUs to the selected GAU if necessary, but your modifications must maintain the correctness of the overall model design.
+
+You are now ready to begin the progressive proposal process. Start with your initial proposal and prepare for the first round of research and refinement.
+
+"""
+
 
 GUM_DESIGN_PROPOSER_SYSTEM = AgentPrompt(GUM_DESIGN_PROPOSER_SYSTEM_prompt)
 GUM_DESIGN_PROPOSER_SYSTEM_2STAGE = AgentPrompt(GUM_DESIGN_PROPOSER_SYSTEM_2STAGE_prompt)
-
+GUM_DESIGN_PROPOSER_SYSTEM_ISEARCH = AgentPrompt(GUM_DESIGN_PROPOSER_SYSTEM_ISEARCH_prompt)
 
 # endregion
 
@@ -1628,8 +1781,14 @@ GUM_DESIGN_PROPOSER_SYSTEM_2STAGE = AgentPrompt(GUM_DESIGN_PROPOSER_SYSTEM_2STAG
 # region GUM Give analysis first 
 
 
+class GUM_DESIGN_PROPOSAL_ISEARCH_format(BaseModel):
+   analysis: str = Field(..., description="A detailed analysis of the current progress of the proposal, including identified gaps, areas for improvement, and specific information needed to enhance the design. This should guide the formulation of search queries.")
+   query: str = Field(..., description="A high-level search query used for broad searches in external sources like arXiv, Papers with Code, and Semantic Scholar. This should be a clear, concise question or statement derived from the analysis, aimed at addressing identified gaps or exploring potential improvements in the LM block design.")
+   detail: str = Field(..., description="A detailed query used for searching the internal vector store of research papers and technical documents. This should be a specific, targeted query that aims to extract relevant information from the contents of papers in the vector store, focusing on particular aspects of LM architecture, techniques, or performance metrics identified in the analysis.")
+   ready: bool = Field(..., description="Whether you should continue the search and refinement process or ready to give the proposal.")
 
-def gen_GUM_DESIGN_PROPOSAL(SELECTIONS:list[str],two_stage:bool=False):
+
+def gen_GUM_DESIGN_PROPOSAL(SELECTIONS:list[str],two_stage:bool=False,use_isearch:bool=False):
    
    SelectionEnum=generate_enum_from_list('selection',SELECTIONS)
 
@@ -1641,8 +1800,41 @@ def gen_GUM_DESIGN_PROPOSAL(SELECTIONS:list[str],two_stage:bool=False):
       proposal: str = Field(..., description="The full proposal, keep the format instructions.")
       selection: SelectionEnum = Field(..., description="The name of the GAU you are going to work on.")
       modelname: str = Field(..., description="The name of the variant of the model you are going to design.")
+   
+   if use_isearch:
+      GUM_DESIGN_PROPOSAL_ISEARCH_prompt = """
+{SEED}
 
-   if two_stage:
+Based on the provided seed design and references:
+
+1. Analyze the current state of LM block designs:
+   - Identify key features and limitations of existing architectures.
+   - Determine potential areas for innovation or improvement.
+
+2. Formulate search queries:
+   - Create a high-level query for external sources to explore recent advancements in LM architectures.
+   - Develop a detailed query for the internal vector store to extract specific technical information on LM block components.
+
+3. Outline the key areas of investigation for developing a novel LM block design, such as:
+   - Efficiency improvements
+   - Scalability enhancements
+   - New attention mechanisms
+   - Innovative ways to handle context or memory
+
+4. Based on your analysis, determine if you need to conduct more searches or if you have gathered sufficient information to begin formulating a proposal.
+
+Focus on thorough information gathering and insightful analysis to lay a strong foundation for the subsequent proposal development process.
+"""
+      GUM_DESIGN_PROPOSAL_ISEARCH_FINISH_prompt = """
+Based on the seed design, search results, and your analysis, develop a comprehensive proposal for a novel LM block design. 
+
+Ensure your proposal is innovative yet feasible, aiming to advance state-of-the-art LM performance. Balance creativity with practical considerations, and clearly articulate how your design improves upon existing architectures.
+"""
+      prompt1=AgentPrompt(GUM_DESIGN_PROPOSAL_ISEARCH_prompt,GENERAL_JSON_parser,GUM_DESIGN_PROPOSAL_ISEARCH_format)
+      prompt2=AgentPrompt(GUM_DESIGN_PROPOSAL_ISEARCH_FINISH_prompt,GENERAL_JSON_parser,GUM_DESIGN_PROPOSAL_STAGE2_format)
+      return prompt1,prompt2
+
+   elif two_stage:
       GUM_DESIGN_PROPOSAL_stage1_prompt = """
 {SEED}
 
@@ -1685,6 +1877,46 @@ Check the seed design, then give your proposal and the selection of the GAU to m
 # endregion
 
 
+
+""" ============================= GUM Proposal Search Prompt ===================================== """
+
+
+# region GUM Proposal Search Prompt
+
+GUM_DESIGN_PROPOSAL_ISEARCH_CONT_prompt = """
+{SEARCH_RESULTS}
+
+Based on the seed design and the search results obtained so far:
+
+1. Analyze the gathered information:
+   - Summarize key insights relevant to LM block design.
+   - Identify any conflicting information or approaches.
+   - Highlight promising techniques or innovations discovered.
+
+2. Evaluate the current state of your research:
+   - Assess which aspects of LM block design have been sufficiently explored.
+   - Determine areas that require further investigation.
+
+3. Formulate refined search queries:
+   - Develop a new high-level query for external sources, focusing on unexplored or underdeveloped areas.
+   - Create a detailed query for the internal vector store to delve deeper into specific techniques or components.
+
+4. Plan your next steps:
+   - Outline specific questions or hypotheses to be addressed in the next round of research.
+   - Consider potential implications of the gathered information on novel LM block design.
+
+5. Decide whether to continue searching or begin proposal formulation:
+   - If significant gaps remain, indicate the need for further search iterations.
+   - If sufficient information has been gathered, suggest moving to the proposal development phase.
+
+Aim for a comprehensive understanding of the LM block design landscape, balancing breadth of exploration with depth of analysis.
+"""
+
+GUM_DESIGN_PROPOSAL_ISEARCH_CONT=AgentPrompt(GUM_DESIGN_PROPOSAL_ISEARCH_CONT_prompt,GENERAL_JSON_parser,GUM_DESIGN_PROPOSAL_ISEARCH_format)
+
+
+
+# endregion
 
 
 
@@ -1760,6 +1992,92 @@ Provide a **rating** based on how well the design meets the criteria above. The 
 
 GUM_PROPOSAL_REVIEWER_SYSTEM = AgentPrompt(GUM_PROPOSAL_REVIEWER_SYSTEM_prompt)
 
+
+
+GUM_PROPOSAL_REVIEWER_SEARCH_SYSTEM_prompt = """
+You are an expert in autoregressive language model research, and you have been asked to review a proposal for improving the design of an autoregressive language model (LM) block.
+
+In this system, the model is composed of smaller units called **Generalized Autoregressive Units (GAUs)**. These GAUs form the building blocks of the LM. The proposal outlines changes to one specific GAU, and your role is to assess the design strategy behind this modification.
+
+## Search Functionality
+
+Before providing your review, you have access to a search function that allows you to gather information from various sources. This search functionality will help you assess the novelty and meaningfulness of the proposal by comparing it to existing research and implementations. The search function has the following capabilities:
+
+1. It can search papers in S2, ArXiv, and Papers with Code using a general query.
+2. It can perform a more detailed search in internal library vector stores.
+3. The function returns both internal and external search results.
+4. Results are presented in a readable format
+
+Use this search functionality to gather relevant information before proceeding with your review. Pay special attention to the novelty of the proposal in light of the search results.
+
+## GAU Characteristics
+
+Each **GAU** has the following characteristics:
+- **Input**: A sequence of embeddings \(X\) and a dictionary of intermediate variables \(Z\), such as memory, states, or caches.
+- **Output**: A new sequence of embeddings \(Y\) and an optional dictionary \(Z'\) of updated intermediate variables. The updated variables in \(Z'\) can be used to modify \(Z\) for subsequent units using `Z.update(Z')`.
+
+The system builds complex autoregressive model blocks by nesting multiple GAUs. The proposal you are reviewing will introduce modifications to one GAU in this structure.
+
+## Instructions for Reviewing the GAU Proposal
+
+1. **Conduct Search**:
+   - Use the provided search functionality to gather information about existing research and implementations related to the proposal.
+   - Conduct multiple rounds of search if necessary to gather comprehensive information.
+   - Start with a general query, and then use more detailed searches as needed.
+
+2. **Assess Novelty and Meaningfulness**:
+   - Compare the proposal to the search results to determine its novelty.
+   - Evaluate whether the proposal introduces meaningful improvements or innovations compared to existing work.
+
+3. **Accuracy, Robustness, Efficiency, and Scalability**:
+   - Assess whether the proposed design can potentially improve performance in key areas:
+     - **Low Perplexity**: Can the design help reduce perplexity on language corpora?
+     - **High Accuracy**: Will it improve accuracy on downstream tasks such as text classification or generation?
+     - **Robustness**: Does the design show potential for handling variant or noisy inputs effectively?
+     - **Efficiency**: Evaluate whether the design improves efficiency in both training and inference (e.g., faster computation or lower memory usage).
+     - **Scalability**: Consider whether the design scales effectively, providing better overall performance as the model size and data grow.
+
+4. **Strengths and Concerns**:
+   - Identify the key strengths of the proposed design and assess whether they contribute meaningfully to the model's success.
+   - Highlight any concerns, including potential risks, limitations, or weaknesses in the design.
+
+5. **Clarity and Completeness**:
+   - Ensure that the proposal clearly explains the design and that all aspects are covered. Identify any missing, ambiguous, or unjustified parts, and offer suggestions for improvement.
+
+6. **Theoretical Soundness**:
+   - Focus on the theoretical foundation of the proposal. Since empirical results are not expected at this stage, evaluate whether the design is theoretically sound and aligns with the stated objectives.
+
+## Additional Considerations
+
+- **Alignment with Proposal**: The designer has a broader proposal outlining the direction of the model block. Ensure that the modification aligns with this overarching vision.
+  
+- **Self-Contained Unit**: The modified GAU should be self-contained and independent, meaning it should not depend on other GAUs for its functionality. This ensures that each GAU can be independently evaluated and tested.
+
+- **No Empirical Evaluation**: The current review is based on design and theory. You should not expect empirical results or a fully implemented model at this stage.
+
+## Review Process
+
+Your review should include:
+- A summary of the search results and their implications for the proposal's novelty and meaningfulness.
+- An assessment of the **highlights** and **concerns** regarding the design.
+- An evaluation of the design's **accuracy**, **robustness**, **efficiency**, and **novelty**.
+- **Suggestions for improvement**, where necessary.
+
+## Rating System
+
+Assign a **float value between 0 and 5** based on how well the design meets the criteria above:
+- **1**: Poor design with major issues.
+- **2**: Not good enough; significant improvement needed.
+- **3**: Good design but with room for refinement.
+- **4**: Excellent design, well thought out and near approval.
+- **5**: Outstanding design, highly innovative and strongly recommended.
+
+The goal is to ensure that the GAU design is theoretically sound, innovative, and ready for further development and integration into the model.
+"""
+
+GUM_PROPOSAL_REVIEWER_SEARCH_SYSTEM=AgentPrompt(GUM_PROPOSAL_REVIEWER_SEARCH_SYSTEM_prompt)
+
+
 # endregion
 
 
@@ -1808,6 +2126,79 @@ class GUM_PROPOSAL_REVIEW_format(BaseModel):
 
 GUM_PROPOSAL_REVIEW = AgentPrompt(GUM_PROPOSAL_REVIEW_prompt,GENERAL_JSON_parser,GUM_PROPOSAL_REVIEW_format)   
 
+
+
+
+##### Search & Review
+
+GUM_PROPOSAL_REVIEW_ISEARCH_BEGIN_prompt = """
+You are an expert reviewer evaluating a proposal for modifying a Generalized Autoregressive Unit (GAU) in an autoregressive language model block. You have been provided with the following information:
+
+**Current Design**:
+{SEED}
+
+**GAU Selected for Modification**:
+{SELECTION}
+
+**Proposal for Review**:
+{PROPOSAL}
+
+Your task is to conduct an initial analysis and formulate search queries to gather more information. Please provide:
+
+1. A brief initial analysis of the proposal, highlighting key aspects that require further investigation.
+2. A high-level query for broad external searches (arXiv, Papers with Code, Semantic Scholar).
+3. A detailed query for searching the internal vector store of research papers.
+
+Focus on the proposal's potential impact on accuracy, robustness, efficiency, and scalability. Consider its novelty and alignment with current research trends.
+"""
+
+GUM_PROPOSAL_REVIEW_ISEARCH_CONT_prompt = """
+{SEARCH_RESULTS}
+
+Based on the search results, you need to refine your analysis and decide whether further information is needed. You have access to:
+
+1. Your initial analysis
+2. The results from the high-level external search
+3. The results from the detailed internal search
+
+Please provide:
+
+1. An updated analysis incorporating insights from the search results.
+2. If needed, new search queries (both high-level and detailed) to address any remaining questions or explore new avenues identified in the search results.
+3. An assessment of whether you have sufficient information to proceed with the final review (indicated by the 'ready' flag).
+
+Consider how the search results inform the proposal's novelty, feasibility, and potential impact. Identify any gaps in your understanding that require further investigation.
+"""
+
+GUM_PROPOSAL_REVIEW_ISEARCH_FINAL_prompt = """
+You now have comprehensive information about the proposed GAU modification and relevant research in the field. Based on your analysis and the search results, provide a final review of the proposal. Your review should address:
+
+1. **Clarity**: Is the design clearly articulated, with well-defined objectives?
+2. **Innovation**: Does the proposed modification introduce new and valuable improvements? How does it compare to existing research?
+3. **Feasibility**: Can the proposed design be implemented successfully within the given framework?
+4. **Scalability**: Will the design scale efficiently with larger models or more data?
+5. **Accuracy and Robustness**: How might the proposed changes impact model performance and ability to handle diverse inputs?
+6. **Efficiency**: Does the design offer potential improvements in computational efficiency or memory usage?
+
+Provide:
+1. A comprehensive analysis of the proposal's strengths and concerns.
+2. Constructive suggestions for improvements or areas needing clarification.
+3. A final rating (float value between 0 and 5) based on the proposal's overall quality and potential impact.
+
+Remember to be objective, strict, and fair. Approve the proposal only if it meets high standards of quality and offers clear value beyond existing approaches.
+"""
+
+class GUM_PROPOSAL_REVIEW_ISEARCH_format(BaseModel):
+    analysis: str = Field(..., description="A comprehensive analysis of the proposed GAU design, including its potential impact on accuracy, robustness, efficiency, and scalability. This should highlight the strengths and concerns of the design, assess its theoretical soundness, and identify any areas that require further investigation or clarification.")
+    query: str = Field(..., description="A high-level search query used for broad searches in external sources like arXiv, Papers with Code, and Semantic Scholar. This should be a clear, concise question or statement derived from the analysis, aimed at addressing identified gaps or exploring potential improvements in the LM block design.")
+    detail: str = Field(..., description="A detailed query used for searching the internal vector store of research papers and technical documents. This should be a specific, targeted query that aims to extract relevant information from the contents of papers in the vector store, focusing on particular aspects of LM architecture, techniques, or performance metrics identified in the analysis.")
+    ready: bool = Field(..., description="A boolean flag indicating whether the review is ready for the next stage. Set to True if the analysis is complete and no further searches are needed, or False if additional information or investigation is required before proceeding with the final review and rating.")
+
+
+GUM_PROPOSAL_REVIEW_ISEARCH_BEGIN=AgentPrompt(GUM_PROPOSAL_REVIEW_ISEARCH_BEGIN_prompt,GENERAL_JSON_parser,GUM_PROPOSAL_REVIEW_ISEARCH_format)
+GUM_PROPOSAL_REVIEW_ISEARCH_CONT=AgentPrompt(GUM_PROPOSAL_REVIEW_ISEARCH_CONT_prompt,GENERAL_JSON_parser,GUM_PROPOSAL_REVIEW_ISEARCH_format)
+GUM_PROPOSAL_REVIEW_ISEARCH_FINAL=AgentPrompt(GUM_PROPOSAL_REVIEW_ISEARCH_FINAL_prompt,GENERAL_JSON_parser,GUM_PROPOSAL_REVIEW_format)
+
 # endregion
 
 
@@ -1819,12 +2210,57 @@ GUM_PROPOSAL_REVIEW = AgentPrompt(GUM_PROPOSAL_REVIEW_prompt,GENERAL_JSON_parser
 # region GU Proposal Refinement
 
 
-def gen_GUM_PROPOSAL_REFINEMENT(SELECTIONS:list[str],two_stage:bool=False): 
+def gen_GUM_PROPOSAL_REFINEMENT(SELECTIONS:list[str],two_stage:bool=False,use_isearch:bool=False): 
 
    SelectionEnum=generate_enum_from_list('selection',SELECTIONS)
 
 
-   if two_stage:
+   if use_isearch:
+      class GUM_DESIGN_PROPOSAL_ISEARCH_REFINEMENT_format(BaseModel):
+         reflection: str = Field(..., description="The reflection based on the review, rating, and suggestions.")
+         analysis: str = Field(..., description="A detailed analysis of the current progress of the proposal, including identified gaps, areas for improvement, and specific information needed to enhance the design. This should guide the formulation of search queries.")
+         query: str = Field(..., description="A high-level search query used for broad searches in external sources like arXiv, Papers with Code, and Semantic Scholar. This should be a clear, concise question or statement derived from the analysis, aimed at addressing identified gaps or exploring potential improvements in the LM block design.")
+         detail: str = Field(..., description="A detailed query used for searching the internal vector store of research papers and technical documents. This should be a specific, targeted query that aims to extract relevant information from the contents of papers in the vector store, focusing on particular aspects of LM architecture, techniques, or performance metrics identified in the analysis.")
+         ready: bool = Field(..., description="Whether you should continue the search and refinement process or ready to give the proposal.")
+
+      class GUM_PROPOSAL_REFINEMENT_FINISH_format(BaseModel):
+         proposal: str = Field(..., description="The fall proposal, keep the format instructions.")
+         selection: SelectionEnum = Field(..., description="The name of the GAU you are going to work on.")
+         modelname: str = Field(..., description="The name of the variant of the model you are going to design.")
+         changes: str = Field(..., description="The summary of the changes you made.") 
+
+      GUM_DESIGN_PROPOSAL_ISEARCH_REFINEMENT_prompt = """
+Your proposal has been reviewed by an expert. Please carefully consider the following feedback:
+
+---
+Review: {REVIEW}
+
+Rating: {RATING} out of 5 ({PASS_OR_NOT})
+
+Suggestions: {SUGGESTIONS}
+---
+
+Based on this feedback, please refine your proposal by following these steps:
+
+1. Reflection:
+   - Analyze the feedback critically.
+   - Identify key areas for improvement.
+   - Consider how to address each point raised by the expert.
+
+2. Search and refine your proposal iteratively.
+"""
+      GUM_PROPOSAL_REFINEMENT_FINISH_prompt = """
+Based on your reflection, search results, and your analysis, develop a comprehensive proposal for a novel LM block design. 
+
+Ensure your proposal is innovative yet feasible, aiming to advance state-of-the-art LM performance. Balance creativity with practical considerations, and clearly articulate how your design improves upon existing architectures.
+"""
+
+      prompt1=AgentPrompt(GUM_DESIGN_PROPOSAL_ISEARCH_REFINEMENT_prompt,GENERAL_JSON_parser,GUM_DESIGN_PROPOSAL_ISEARCH_REFINEMENT_format)
+      prompt2=AgentPrompt(GUM_PROPOSAL_REFINEMENT_FINISH_prompt,GENERAL_JSON_parser,GUM_PROPOSAL_REFINEMENT_FINISH_format)
+      return prompt1,prompt2
+
+
+   elif two_stage:
       class GUM_PROPOSAL_REFINEMENT_STAGE1_format(BaseModel):
          reflection: str = Field(..., description="The reflection based on the review, rating, and suggestions.")
          ideation: str = Field(..., description="The updated ideation about the direction of how to improve the seed design.")
@@ -1969,6 +2405,12 @@ Be strict and objective. Approve the proposal only if it meets the necessary sta
 
 
 GUM_PROPOSAL_REREVIEW = AgentPrompt(GUM_PROPOSAL_REREVIEW_prompt,GENERAL_JSON_parser,GUM_PROPOSAL_REVIEW_format)
+
+GUM_PROPOSAL_REREVIEW_ISEARCH_prompt = GUM_PROPOSAL_REREVIEW_prompt+ """
+Please review with the help of the search engine.
+"""
+
+GUM_PROPOSAL_REREVIEW_ISEARCH = AgentPrompt(GUM_PROPOSAL_REREVIEW_ISEARCH_prompt,GENERAL_JSON_parser,GUM_PROPOSAL_REVIEW_ISEARCH_format)
 
 # endregion
 
