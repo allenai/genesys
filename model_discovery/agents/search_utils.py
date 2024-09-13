@@ -101,7 +101,7 @@ class SuperScholarSearcher:
         content: for matching the related content from papers
         """
         query = detail if detail else title_abstract
-        internal_docs,internal_info,internal_pp=self.search_internal(query,pretty=True,prompt=prompt)
+        internal_results,internal_pp=self.search_internal(query,pretty=True,prompt=prompt)
         external_results,external_pp=self.search_external(title_abstract,pretty=True,prompt=prompt)
         
         self.stream.write(f'Concluding search results...')
@@ -110,8 +110,7 @@ class SuperScholarSearcher:
         if raw:
             raw_ret={
                 'external_rets':external_results,
-                'internal_docs':internal_docs,
-                'internal_info':internal_info,
+                'internal_rets':internal_results,
             }
             return pp,raw_ret
         else:
@@ -168,6 +167,10 @@ class SuperScholarSearcher:
             elif 'openAccessPdf' in r:
                 return self.get_paper_file(pdf_url=r['openAccessPdf'])
 
+    def search_external_details(self,query):
+        # TODO: search for the contents in the external papers
+        pass
+
     #### External Sources, give you mostly the abstract and title
 
 
@@ -181,13 +184,14 @@ class SuperScholarSearcher:
         for r in arxiv_results+pwc_results:
             if not self.exist_in_set(r,aggregated_results):
                 aggregated_results.append(r)
-        self.stream.write(f'---\n##### *Found {len(aggregated_results)} related papers*')
+        self.stream.write(f'##### *Found {len(aggregated_results)} related papers*')
         if prompt:
             aggregated_results=self.prompt_results(aggregated_results)
+        grouped_results=self.group_by_sources(aggregated_results)
         if pretty:
-            return aggregated_results, self.pretty_print(aggregated_results)
+            return grouped_results, self.pretty_print(grouped_results)
         else:
-            return aggregated_results
+            return grouped_results
 
     def prompt_results(self,results):
         prompt_results=[]
@@ -198,48 +202,72 @@ class SuperScholarSearcher:
             prompt_results.append(r)
         return prompt_results
 
-    def pretty_print(self,results):
-        ppr=f'#### Found {len(results)} related papers from external sources\n\n'
-        for i,r in enumerate(results):
-            ppr+=f'##### {i+1}. {r["title"]}\n\n'
-            ppr+=f'*{", ".join(r["authors"]) if r["authors"] else "Anonymous"}*\n\n'
-            if 'tldr' in r and r['tldr']:
-                ppr+=f'**TL;DR:** {r["tldr"]}\n\n'
-            ppr+=f'**Abstract:** {r["abstract"]}\n\n'
-            if 'venue' in r and r['venue']:
-                ppr+=f'**Venue:** {r["venue"]}\n\n'
-            elif 'conference' in r and r['conference']:
-                ppr+=f'**Conference:** {r["conference"]}\n\n'
-            elif 'proceeding' in r and r['proceeding']:
-                ppr+=f'**Proceeding:** {r["proceeding"]}\n\n'
-            if 'year' in r:
-                ppr+=f'**Year:** {r["year"]}\n\n'
-            if 'published' in r:
-                ppr+=f'**Published:** {r["published"]}'
-                if 'updated' in r:
-                    ppr+=f'  (*Updated: {r["updated"]}*)'
-                ppr+='\n\n'
-            if 'citationCount' in r:
-                ppr+=f'**Citations:** {r["citationCount"]}'
-                if 'influentialCitationCount' in r:
-                    ppr+=f'  (*Influential: {r["influentialCitationCount"]}*)'
-            ppr+='\n\n'
+    def group_by_sources(self,results):
+        # group the results by the source
+        grouped_results={}
+        for r in results:
             if 's2_id' in r:
-                ppr+=f'**Semantic Scholar ID:** {r["s2_id"]}\n\n'
-            if 'pwc_id' in r:
-                ppr+=f'**PaperswithCode ID:** {r["pwc_id"]}\n\n'
-            if 'arxiv_id' in r and r['arxiv_id']:
-                ppr+=f'**ArXiv ID:** {r["arxiv_id"]}\n\n'
-            if 'repository' in r:
-                ppr+=f'**Repository:**\n\n'
-                ppr+=f'  - *Owner:* {r["repository"]["owner"]}\n\n'
-                ppr+=f'  - *Name:* {r["repository"]["name"]}\n\n'
-                ppr+=f'  - *Description:* {r["repository"]["description"]}\n\n'
-                ppr+=f'  - *Stars:* {r["repository"]["stars"]}\n\n'
-                ppr+=f'  - *URL:* {r["repository"]["url"]}\n\n'
-            if 'openAccessPdf' in r and r['openAccessPdf']:
-                ppr+=f'**Open Access PDF:** {r["openAccessPdf"]}\n\n'
-            ppr+=f'\n\n'
+                if 'Semantic Scholar' not in grouped_results:
+                    grouped_results['Semantic Scholar']=[]
+                grouped_results['Semantic Scholar'].append(r)
+            elif 'pwc_id' in r:
+                if 'Papers with Code' not in grouped_results:
+                    grouped_results['Papers with Code']=[]
+                grouped_results['Papers with Code'].append(r)
+            else:
+                if 'ArXiv' not in grouped_results:
+                    grouped_results['ArXiv']=[]
+                grouped_results['ArXiv'].append(r)
+        return grouped_results
+
+    def pretty_print(self,grouped_results):
+        num_results=sum([len(group) for group in grouped_results.values()])
+        ppr=f'---\n## Found {num_results} related papers from {len(grouped_results)} external sources\n\n'
+        for source in ['Semantic Scholar','ArXiv','Papers with Code']:
+            if source not in grouped_results:
+                continue
+            group=grouped_results[source]
+            ppr+=f'### {len(group)} related papers from {source}\n\n'
+            for i,r in enumerate(group):
+                ppr+=f'#### {i+1}. {r["title"]}\n\n'
+                ppr+=f'*{", ".join(r["authors"]) if r["authors"] else "Anonymous"}*\n\n'
+                if 'tldr' in r and r['tldr']:
+                    ppr+=f'**TL;DR:** {r["tldr"]}\n\n'
+                ppr+=f'**Abstract:** {r["abstract"]}\n\n'
+                if 'venue' in r and r['venue']:
+                    ppr+=f'**Venue:** {r["venue"]}\n\n'
+                elif 'conference' in r and r['conference']:
+                    ppr+=f'**Conference:** {r["conference"]}\n\n'
+                elif 'proceeding' in r and r['proceeding']:
+                    ppr+=f'**Proceeding:** {r["proceeding"]}\n\n'
+                if 'year' in r:
+                    ppr+=f'**Year:** {r["year"]}\n\n'
+                if 'published' in r:
+                    ppr+=f'**Published:** {r["published"]}'
+                    if 'updated' in r:
+                        ppr+=f'  (*Updated: {r["updated"]}*)'
+                    ppr+='\n\n'
+                if 'citationCount' in r:
+                    ppr+=f'**Citations:** {r["citationCount"]}'
+                    if 'influentialCitationCount' in r:
+                        ppr+=f'  (*Influential: {r["influentialCitationCount"]}*)'
+                ppr+='\n\n'
+                if 's2_id' in r:
+                    ppr+=f'**Semantic Scholar ID:** {r["s2_id"]}\n\n'
+                if 'pwc_id' in r:
+                    ppr+=f'**PaperswithCode ID:** {r["pwc_id"]}\n\n'
+                if 'arxiv_id' in r and r['arxiv_id']:
+                    ppr+=f'**ArXiv ID:** {r["arxiv_id"]}\n\n'
+                if 'repository' in r:
+                    ppr+=f'**Repository:**\n\n'
+                    ppr+=f'  - *Owner:* {r["repository"]["owner"]}\n\n'
+                    ppr+=f'  - *Name:* {r["repository"]["name"]}\n\n'
+                    ppr+=f'  - *Description:* {r["repository"]["description"]}\n\n'
+                    ppr+=f'  - *Stars:* {r["repository"]["stars"]}\n\n'
+                    ppr+=f'  - *URL:* {r["repository"]["url"]}\n\n'
+                if 'openAccessPdf' in r and r['openAccessPdf']:
+                    ppr+=f'**Open Access PDF:** {r["openAccessPdf"]}\n\n'
+                ppr+=f'\n\n'
         return ppr
 
 
@@ -591,7 +619,11 @@ class SuperScholarSearcher:
                         if tail=='': lib=self.texts
                         elif tail=='2': lib=self.texts2
                         elif tail=='p': lib=self.textsp
-                    vector,split=self.split_text(lib[i],i)
+                    try:
+                        vector,split=self.split_text(lib[i],i)
+                    except Exception as e:
+                        print(f'Error splitting {i}: {e}')
+                        vector,split={},{}
                     U.save_json(vector,U.pjoin(self.files_dir,'vectors'+tail,f'{i}.json'))
                     U.save_json(split,U.pjoin(self.files_dir,'splits'+tail,f'{i}.json'))
                 splits.update(split)
@@ -606,7 +638,8 @@ class SuperScholarSearcher:
                 ('secondary',self.vectors),
                 ('plus',self.vectors)]:
             for id in tqdm(vectors,desc=f'Upserting texts {namespace}'):
-                self.index.upsert(vectors=vectors[id],namespace=namespace)
+                if vectors[id]:
+                    self.index.upsert(vectors=vectors[id],namespace=namespace)
 
     def _rerank(self,query,docs,result_limit):
         response = self.co.rerank(
@@ -661,11 +694,14 @@ class SuperScholarSearcher:
         scores=[i.score for i in matches]
         docs=[self._get_split_by_id(i,namespace) for i in split_ids]
         ids=[i.metadata['id'] for i in matches]
+        splits=[i.metadata['splits'] for i in matches]
         if self.rerank_ratio>0:
             indices,relevance_scores=self._rerank(query,docs,result_limit)
             scores=relevance_scores
             ids=[ids[i] for i in indices]
             docs=[docs[i] for i in indices]
+            splits=[splits[i] for i in indices]
+            split_ids=[split_ids[i] for i in indices]
         # group by id
         grouped_docs={}
         for i in range(len(ids)):
@@ -674,6 +710,8 @@ class SuperScholarSearcher:
             grouped_docs[ids[i]].append({
                 'score':scores[i],
                 'doc':docs[i],
+                'split_id':split_ids[i],
+                'splits':splits[i],
             })
             grouped_docs[ids[i]].sort(key=lambda x: x['score'], reverse=True)
         # metainfo per id
@@ -703,56 +741,62 @@ class SuperScholarSearcher:
 
     def search_internal(self,query,pretty=True,prompt=True) -> Union[None, List[Dict]]:
         # search for papers in the internal library
-        grouped_docs,metainfo=self.search_lib_primary(query,self.result_limits['lib'])
-
+        sources={}
+        sources['Internal Library']=self.search_lib_primary(query,self.result_limits['lib'])
         # only primary now, testing
-        # grouped_docs2,metainfo2=self.search_lib_secondary(query,self.result_limits['lib2'])
-        # grouped_docsp,metainfop=self.search_lib_plus(query,self.result_limits['libp'])
-        # grouped_docs.update(grouped_docs2)
-        # grouped_docs.update(grouped_docsp)
-        # metainfo.update(metainfo2)
-        # metainfo.update(metainfop)
+        # sources['Referencces of Library']=self.search_lib_secondary(query,self.result_limits['lib2'])
+        # sources['Recommanded Papers of Library']=self.search_lib_plus(query,self.result_limits['libp'])
 
-        count=sum([len(grouped_docs[i]) for i in grouped_docs])
-        rerankinfo='' if self.rerank_ratio==0 else f' after reranking {int(count//self.rerank_ratio)} candidates'
-        self.stream.write(f'---\n##### *Found {count} related contents{rerankinfo}...*')
+        total_chunks=0
+        for source in sources:
+            total_chunks+=sum([len(sources[i][0]) for i in sources])
+        rerankinfo='' if self.rerank_ratio==0 else f' after reranking {int(total_chunks//self.rerank_ratio)} candidates'
+        self.stream.write(f'##### *Found {total_chunks} related contents{rerankinfo}...*')
         if pretty:
-            return grouped_docs,metainfo,self.vs_pretty_print(grouped_docs,metainfo,prompt)
+            return sources,self.vs_pretty_print(sources,prompt)
         else:
-            return grouped_docs,metainfo
+            return sources
     
-    def vs_pretty_print(self,grouped_docs,metainfo,prompt=True):
-        count=sum([len(grouped_docs[i]) for i in grouped_docs])
-        ppr=f'#### Found {count} related contents from {len(grouped_docs)} papers in internal library\n\n'
-        group_scores={}
-        for i in grouped_docs:
-            group=grouped_docs[i]
-            group_scores[i]=np.mean([j['score'] for j in group])
-        group_scores=sorted(group_scores.items(),key=lambda x:x[1],reverse=True)
+    def vs_pretty_print(self,sources,prompt=True):
+        total_chunks=0
+        for source in sources:
+            total_chunks+=sum([len(sources[i][0]) for i in sources])
+        total_papers=sum([len(sources[i][0]) for i in sources])
+        ppr=f'---\n## Found {total_chunks} related chunks from {len(sources)} internal sources\n\n'
+        for source in sources:
+            grouped_docs=sources[source][0]
+            metainfo=sources[source][1]
+            count=sum([len(grouped_docs[i]) for i in grouped_docs])
+            ppr+=f'### {count} related chunks from {len(grouped_docs)} papers in {source}\n\n'
+            group_scores={}
+            for i in grouped_docs:
+                group=grouped_docs[i]
+                group_scores[i]=np.mean([j['score'] for j in group])
+            group_scores=sorted(group_scores.items(),key=lambda x:x[1],reverse=True)
 
-        for idx,id_score in enumerate(group_scores):
-            id,score=id_score
-            r=metainfo[id]
-            ppr+=f'##### {idx+1}. {r["title"]} (Avg. Score: {score:.2f})\n\n'
-            ppr+=f'*{", ".join(r["authors"]) if r["authors"] else "Anonymous"}*\n\n'
-            ppr+=f'**Published in:** {r["venue"]} ({r["year"]})'
-            ppr+=f'\t**Cited by** {r["citationCount"]}'
-            ppr+=f'  (*Influential: {r["influentialCitationCount"]}*)\n\n'
-            ppr+=f'**TL;DR:** {r["tldr"]}\n\n'
-            if prompt:
-                ppr+=f'**Abstract:** {r["abstract"]}\n\n'
-            group=grouped_docs[id]
-            for did,doc in enumerate(group):
-                ppr+=f'###### *Relevant Excerpt {did+1} (Score: {doc["score"]:.2f})*\n\n'
-                ppr+=f'```\n...\n{doc["doc"]}\n...\n```\n\n'
-            if not prompt:
-                ppr+=f'<details><summary>Show details</summary>\n\n'
-                ppr+=f'**Semantic Scholar ID:** {r["s2id"]}\n\n'
-                ppr+=f'**Abstract:** {r["abstract"]}\n\n'
-                if r['code'] is not None:
-                    ppr+=f'###### Reference Code\n\n'
-                    ppr+=f'```python\n{r["code"]}\n```\n\n'
-                ppr+=f'</details>\n\n'
+            for idx,id_score in enumerate(group_scores):
+                id,score=id_score
+                r=metainfo[id]
+                ppr+=f'#### {idx+1}. {r["title"]} (Avg. Score: {score:.2f})\n\n'
+                ppr+=f'*{", ".join(r["authors"]) if r["authors"] else "Anonymous"}*\n\n'
+                ppr+=f'**Published in:** {r["venue"]} ({r["year"]})'
+                ppr+=f'\t**Cited by** {r["citationCount"]}'
+                ppr+=f'  (*Influential: {r["influentialCitationCount"]}*)\n\n'
+                ppr+=f'**TL;DR:** {r["tldr"]}\n\n'
+                if prompt:
+                    ppr+=f'**Abstract:** {r["abstract"]}\n\n'
+                group=grouped_docs[id]
+                for did,doc in enumerate(group):
+                    ppr+=f'##### *Relevant Chunk: No. {int(doc["split_id"].split("-")[1])+1}/{int(doc["splits"])} (Score: {doc["score"]:.2f})*\n\n'
+                    ppr+=f'```\n{doc["doc"]}\n```\n\n'
+                if not prompt:
+                    ppr+=f'<details><summary>Show details</summary>\n\n'
+                    ppr+=f'**Semantic Scholar ID:** {r["s2id"]}\n\n'
+                    ppr+=f'**Abstract:** {r["abstract"]}\n\n'
+                    if r['code'] is not None:
+                        ppr+=f'###### Reference Code\n\n'
+                        ppr+=f'```python\n{r["code"]}\n```\n\n'
+                    ppr+=f'</details>\n\n'
         return ppr
 
 

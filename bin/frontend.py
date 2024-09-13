@@ -98,8 +98,8 @@ pages = {
     "Viewer": viewer,
     'Evolve': evolve,
     'Design': design,
-    'Engine': engine,
     'Search': search,
+    'Engine': engine,
     'Prompt': prompt,
 }
 titles=list(pages.keys())+['GitHub']

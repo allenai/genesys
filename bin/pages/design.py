@@ -184,9 +184,10 @@ def design(evosys,project_dir):
                 save_folder=U.pjoin(db_dir,'log',save_folder_name)
             with cols[1]:
                 folders=['']
-                for i in os.listdir(U.pjoin(db_dir,'log')):
-                    if os.path.isdir(U.pjoin(db_dir,'log',i)):
-                        folders.append(i)
+                if os.path.exists(U.pjoin(db_dir,'log')):
+                    for i in os.listdir(U.pjoin(db_dir,'log')):
+                        if os.path.isdir(U.pjoin(db_dir,'log',i)):
+                            folders.append(i)
                 selected_folder = st.selectbox(label="**View folder stats**",options=folders)
                 selected_folder_dir = U.pjoin(db_dir,'log',selected_folder)
             with cols[2]:

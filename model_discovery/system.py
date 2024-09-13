@@ -399,7 +399,7 @@ class ModelDiscoverySystem(exec_utils.System):
         self.design_fn_scratch=gu_design_scratch
         self.design_fn_mutation=gu_design_mutation
 
-    def bind_ptree(self,ptree): # need to bind a tree before start working
+    def bind_ptree(self,ptree): # need to bind a tree before start working, should be done immediately
         self.ptree = ptree
 
     def get_system_info(self):
