@@ -34,6 +34,10 @@ try: # a stupid patch for windows
     os.environ['S2_API_KEY']=S2_API_KEY
     os.environ['AWS_SECRET_ACCESS_KEY']=AWS_SECRET_ACCESS_KEY
     os.environ['AWS_ACCESS_KEY_ID']=AWS_ACCESS_KEY_ID
+    os.environ['MATHPIX_API_ID']=MATHPIX_API_ID
+    os.environ['UNSTRUCTURED_API_ID']=UNSTRUCTURED_API_ID
+    os.environ['PINECONE_API_KEY']=PINECONE_API_KEY
+    os.environ['COHERE_API_KEY']=COHERE_API_KEY
     os.environ['DATA_DIR']=DATA_DIR
     os.environ['CKPT_DIR']=CKPT_DIR
     os.environ['HF_DATASETS_TRUST_REMOTE_CODE']='1'    

@@ -58,6 +58,22 @@ llm = BuildModel()
 llm("what is your name?")
 ```
 
+### Build search library
+
+Download `library_files.zip`[] , unzip it and put it under `model/library`. It should be like this: 
+```
+model/
+    library/
+        files/
+            htmls/
+            htmls2/
+            htmlsp/
+            pdfs/
+            pdfs2/
+            pdfsp/
+```
+
+
 ### training data variables 
 Other library specific environment variables 
 ```

@@ -1,0 +1,1737 @@
+4
+2
+0
+2
+
+n
+u
+J
+
+4
+1
+
+]
+L
+C
+.
+s
+c
+[
+
+1
+v
+7
+9
+8
+9
+0
+.
+6
+0
+4
+2
+:
+v
+i
+X
+r
+a
+
+3D-RPE: Enhancing Long-Context Modeling Through
+3D Rotary Position Encoding
+
+Xindian Ma1, Wenyuan Liu1, Peng Zhang1∗, Nan Xu2
+1 College of Intelligence and Computing, Tianjin University, Tianjin, China
+2 Beijing Wenge Technology Co. Ltd.
+{xindianma, lwy2020, pzhang}@tju.edu.cn
+{xunan2015}@ia.ac.cn
+
+Abstract
+
+Inspired by the Bloch Sphere representation, we propose a novel rotary position
+encoding on a three-dimensional sphere, named 3D Rotary Position Encoding
+(3D-RPE). 3D-RPE is an advanced version of the widely used 2D Rotary Position
+Encoding (RoPE), with two major advantages for modeling long contexts: control-
+lable long-term decay and improved position resolution. For controllable long-term
+decay, 3D-RPE allows for the regulation of long-term decay within the chunk
+size, ensuring the modeling of relative positional information between tokens at a
+distant relative position. For enhanced position resolution, 3D-RPE can mitigate
+the degradation of position resolution caused by position interpolation on RoPE.
+We have conducted experiments on long-context Natural Language Understanding
+(NLU) and long-sequence Language Modeling (LM) tasks. From the experimental
+results, 3D-RPE achieved performance improvements over RoPE, especially in
+long-context NLU tasks.
+
+1
+
+Introduction
+
+Rotary Position Encoding (RoPE) [23] is essential in Transformer-based Large Language Models
+(LLMs), such as the LLaMA models [24]. RoPE merges the advantages of absolute and relative
+positional encoding by using a rotation mechanism to represent each position. Despite its widespread
+use in LLMs [24, 27, 7], RoPE has notable limitations when extending LLMs with a predefined context
+window. The long-term decay problem of RoPE limits the model’s ability to extend positions outward
+in long-context tasks. Although the long-context modeling capability of LLMs can be extended
+through position interpolation, as more positions are inserted, RoPE encounters the challenge of
+decreased position resolution.
+
+We propose a novel position encoding mechanism for transformer architecture, called 3D Rotary
+Position Encoding (3D-RPE), to address challenges in long-context modeling faced by LLMs using
+RoPE. Inspired by the Bloch Sphere representation, 3D-RPE applies rotary position encoding on a
+three-dimensional spherical surface, as illustrated in Figure 1(b). In contrast, RoPE employs rotation
+on a two-dimensional circular path, as depicted in Figure 1(a). RoPE suffers from long-term decay,
+as shown in Figure 1(c), implying that as the relative distance increases, the relative upper bound
+on token correlations at modeled relative positions will continuously decrease. 3D-RPE addresses
+this issue by segmenting a long sequence into chunks and setting rotation angles within and between
+the chunks to construct position encoding. As shown in Figure 1(d), 3D-RPE is able to control this
+relative upper bound through two relative positional dimensions, namely within and between chunks.
+
+∗Corresponding Author: Peng Zhang
+
+Preprint.
+
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 1: 2D Rotary Position Encoding (RoPE) vs. 3D Rotary Position Encoding (3D-RPE).
+
+Compared to Figure 1(c), this method improves the upper bound on correlations between long relative
+distances and alleviates the issue of long-term decay.
+
+Position Interpolation (PI) methods [4, 18] based on RoPE are often employed to extend LLMs for
+modeling contexts that exceed the pre-training length. These techniques scale the position encoding
+during inference, allowing the originally out-of-range position encoding to fall within the trained
+position interval after interpolation. However, as the interpolation factor increases, PI experiences
+a substantial decline in positional resolution among tokens, detrimentally affecting long-context
+modeling performance. As illustrated in Figure 1(e), extending the pre-training length Lp to L using
+linear PI [4] leads to reduced positional resolution with increasing L. 3D-RPE employs a 3D rotating
+sphere for position encoding, which supports higher positional resolution compared to the 2D circular
+rotation. Similarly, through linear PI extension, 3D-RPE achieves a positional resolution superior to
+Lp
+L (See Figure 1(f)). This benefit has been theoretically proven (Refer to Theorem 1 in Section 3.2.2)
+and corroborated by experimental results (Refer to Table 4 in Section 5.2).
+
+We conducted experiments on long-sequence Language Modeling (LM) and long-context Natural
+Language Understanding (NLU) tasks. Our experimental results highlight the promising performance
+of the 3D-RPE method, especially in tasks requiring long-context language understanding.
+
+Our major contributions of this paper are as follows:
+
+• A position encoding method on a 3D sphere, 3D-RPE, is provided, which can enhance the
+
+long-context modeling capability of LLMs by replacing RoPE.
+
+• It is proved that 3D-RPE has two benefits, controllable long-term decay and mitigating the
+
+reduction in positional resolution caused by position interpolation.
+
+• LLMs combine with 3D-RPE have achieved significant performance improvements in
+
+long-context NLU tasks.
+
+The structure of this paper is as follows. Section 2 covers the preliminaries of 3D-RPE, Bloch Sphere,
+and RoPE. Section 3 explains the construction of 3D-RPE on a 3D rotating sphere and highlights its
+benefits over RoPE. Section 4 reviews related work. In Section 5, we validated the advantages of our
+method through experiments. Section 6 concludes with a discussion on 3D-RPE’s impact.
+
+2
+
+Method2D Rotary Position Encoding (RoPE)3D Rotary Position Encoding(3D-RPE)Schematic DrawingFormulaLong-term DecayPosition Resolution𝑓{𝒒,𝒌}(𝒉,𝑚)=𝑒𝑖𝑚𝜃𝒉𝑓{𝒒,𝒌}(𝒉,𝑚,𝑗)=𝑒𝑖𝑚𝜃(cos𝜑𝑗𝒉⊥+sin𝜑𝑗𝒉)𝜺𝒓𝒐𝒑𝒆=1𝜺𝒓𝒐𝒑𝒆′=𝐿𝑝𝐿PI𝜺𝟑𝒅−𝒓𝒑𝒆=1𝜺𝟑𝒅−𝒓𝒑𝒆′>𝐿𝑝𝐿PIO𝒉𝜃𝒉′𝑥𝑦z𝒉𝑇O𝜃𝜑𝒉𝑦x（a）（b）（c）（d）𝑚−𝑛𝑚−𝑛𝜑𝑖−𝜑𝑗chunk size c = 1000relative upper boundrelative upper bound𝒉′10003020100600241051520253001000200030004000（e）（f）2 Preliminaries
+
+The analysis of 3D-RPE relies on these concepts and results from the filed of Bloch Sphere and RoPE.
+We offer an introduction to Bloch Sphere in Section 2.1 and RoPE [23] in Section 2.2.
+
+2.1 Bloch Sphere
+
+Bloch Sphere (BS) offers a geometric depiction of a quantum mechanical system’s pure state, limited
+to two levels. The state vector ∣ϕ⟩ is mathematically expressed as
+
+∣ϕ⟩ = eiθ(cos
+
+∣0⟩ + sin
+
+eiθ1 ∣1⟩)
+
+(1)
+where ∣0⟩ and ∣1⟩ are Dirac’s notations. θ, θ1 and φ are rotation angles. In our work, θ encodes the
+relative positions of tokens within chunks, φ encodes the relative positions of tokens across chunks,
+and θ1 is equal to 0. Some other concepts about BS are showed in Supplementary Materials A.
+
+φ
+2
+
+φ
+2
+
+2.2 Rotary Position Embedding
+
+Rotary Position Embedding (RoPE) is a commonly used relative position encoding technique in
+LLMs, such as LLaMA [24], GPT-J [27], Vicuna [7] and etc. RoPE is a 2-dimensional space rotary
+encoding, which is denoted as follows:
+
+RoP E(hm, m) = eimθhm , RoP E(hn, n) = einθhn
+(2)
+hm and hn are hidden vectors from the query and key for a specific attention head in transformer.
+For ease of differentiation, hm and hn can be refined later as qm and kn, i is the imaginary unit, θ is
+the rotary angle in RoPE. m and n are indexes about positions. Then, the inner product is employed
+to define the self-attention score before softmax computing:
+
+s(m − n, qm, kn) = ⟨RoP E(qm, m), RoP E(kn, n)⟩
+d/2−1
+∑
+l=0
+
+q[2l∶2l+1]k[2l∶2l+1]ei(m−n)θl ]
+
+= Re[
+
+(3)
+
+Eq (3) is unary function respect to the relative position (m − n), representing the relative position
+between tokens and modeling the relative positional information. Here, Re[⋅] denotes the calculation
+of the real part of a complex number. In our study, the 3D-RPE self-attention score is a binary
+function containing the relative position (m − n).
+
+3 Method
+
+Section 3.1 introduces the new position encoding on a 3D sphere, 3D-RPE. Section 3.2 focuses
+on analyzing two benefits of 3D-RPE, namely controllable long-term decay and enhanced position
+resolution.
+
+3.1
+
+3D Rotary Position Encoding
+
+For a long sequence of length L and a chunk size set to c, where c is smaller than the pre-training
+length of LLM, the sequence can be divided into ⌈L/c⌉ chunks. Here, ⌈.⌉ represents the ceiling
+function, rounding up to the nearest integer (see Figure 2). The state vector hj,m comes from either
+Query or Key. Here, j ∈ [0, ⌈L/c⌉ − 1] represents the positional index of the chunk, and m ∈ [0, c − 1]
+indicates the positional index of the token within the chunk. This is used to calculate the new state
+vector ̃hj,m by rotating the Bloch Sphere. Specifically, two rotation angles, θ and φ are defined, with
+θ governing the position encoding within the chunk’s internal tokens, and φ governing the position
+encoding between the chunks. Our position encoding method is called 3D Rotary Position Encoding,
+or 3D-RPE. The formal definition of 3D-RPE is provided as follows. The computational process of
+3D-RPE in practice is provided in Supplementary Materials B.1.
+Definition 1 (3D Rotary Position Encoding). Let hj,m ∈ Rd be a state vector of an attention head
+without position encoding, where d is the dimension of the vector, which is an even number. 3D-RPE
+encodes hj,m into the vector ̃hj,m, which can be formalized as:
+
+̃hj,m = eimθ(cos φjh⊥
+
+j,m
+
++ sin φjhj,m)
+
+(4)
+
+3
+
+Figure 2: Visualization of the 3D Rotary Position Encoding (3D-RPE). The context size is L,
+]T
+and the chunk size is c. The vectors [h1
+j,m, h1
+form an orthogonal basis,
+j,m
+corresponding to the ∣1⟩ and ∣0⟩ states in Eq. (1). The components h1
+j,m and h2
+j,m represent the first
+and second dimensions of the state vector hj,m, which is the mth token in the jth chunk.
+
+and [−h2
+
+j,m, h2
+
+]T
+
+j,m
+
+i is the imaginary unit. h⊥
+first and second halves of the state vector hj,m.
+
+j,m equals to [−h2
+
+j,m, h1
+
+j,m
+
+]T
+
+, where h1
+
+j,m
+
+∈ Rd/2 and h2
+
+j,m
+
+∈ Rd/2 is the
+
+In transformer-based LLMs, after applying position encoding to the state vectors from Query and
+Key, it is essential to compute their attention scores. For the sake of clarity and formalization, we
+denote the position encoding of the state vector from Query as 3d-PE(q, i, m) and from Key as
+3d-PE(k, j, n), where i and j range from 0 to ⌈L/c⌉ − 1, and m and n range from 0 to c − 1. The
+self-attention score can be obtained through the conjugate symmetric inner product of qi,m and kj,n,
+which are the state vectors from Query and Key,
+
+s(qi,m, kj,n, φi − φj, m − n) = Re[ei(φi−φj )
+
+d/2−1
+∑
+l=0
+
+ei(m−n)θl(qlkl + qd/2+lkd/2+l)]
+
+(5)
+
+− 1], φi = base−i and φj = base−j. Let {q, k}
+
+where l ∈ [0, d
+l denote the l-th components of {q, k}.
+2
+In experiments using the LLaMA2 models, the base is generally set to 10, 000. The self-attention
+score computed after applying 3d-PE is a function of both the relative position between chunks
+(φi − φj) and the relative position (m − n).
+Consequently, the self-attention score relying on 3d-PE is influenced by the relative positions at both
+the chunk and token levels. It is important to highlight that when qi,m and kj,n reside within the
+same chunk (i.e., i = j), Eq. (5) simplifies to the standard RoPE formulation as depicted in Eq. (3).
+For a detailed derivation and computation process of Eq. (5), as well as the complete formulation of
+Eq. (4), please refer to Supplementary Materials B.2.
+
+3.2 Benefits of 3D-RPE
+
+In this section, we delve into two benefits offered by 3D-RPE: the ability to control long-term decay
+and mitigate the reduction in positional resolution caused by position interpolation.
+
+4
+
+−ℎ𝑗,𝑚2ℎ𝑗,𝑚1ℎ𝑗,𝑚1ℎ𝑗,𝑚2෨ℎ𝑗,𝑚1෨ℎ𝑗,𝑚2j𝜑𝑚𝜃[ℎ𝑗,1,ℎ𝑗,2,…,ℎ𝑗,𝑐−1][෨ℎ𝑗,1,෨ℎ𝑗,2,…,෨ℎ𝑗,𝑐−1]3D Rotary Position Encoded Query/ Key…Chunk j……………Divide  into Chunks011−cChunk  0Chunk1𝐿𝑐−1……Chunk Chunkj………………2−c23………………23𝐿−1𝐿−2011−c2−c23Query/ KeyLong Sequence4Chunk j015Figure 3: Visualization of the Relative Position Matrix A employing 3D-RPE, with chunk size c=4,
+and sequence size L=12. The matrix elements Ai,j represents the relative position between the ith
+query vector q and the jth key vector k.
+
+3.2.1 Controllable Long-term Decay
+
+3D-RPE has the property of controllable long-term decay. Like RoPE, taking the absolute value s in
+Eq (5) and applying the Abel transformation, we derive the upper bound of the correlation coefficients
+related to term dependencies as follows:
+
+∣s(qi,m, kj,n, φi − φj, m − n)∣ ≤ ∣ei(φi−φj )∣∣
+
+d/2−1
+∑
+l=0
+
+El+1(hl+1 − hl)∣
+
+≤ (max
+
+l
+
+∣hl+1 − hl∣)
+
+d/2−1
+∑
+l=0
+
+∣El+1∣
+
+(6)
+
+where El = ∑l−1
+∑d/2
+by 1
+j=1
+d/2
+θt = 10000 −2t
+E3d−rpe of 3D-RPE, it is formalized as follows:
+
+k=0 ei(m−n)θk and E0 = 0. For RoPE [23], the relative upper bound Erope is given
+∣Sj∣, where Sj = ∑j−1
+t=0 ei(m−n)θt (see the section 3.4.3 of RoPE [23]). By setting
+d , the value decays as the relative position (m − n) increases. For the upper bound
+
+E3d−rpe = 1
+d/2
+
+d/2
+∑
+j=1
+
+∣El∣
+
+(7)
+
+The domains of the relative position (m − n) differ between E3d−rpe and Erope. In Erope, (m − n)
+is in the range [0, L − 1], while in E3d−rpe, it is in [0, c − 1]. The relative positions between tokens
+exceeding the chunk size c are constructed collaboratively using positional encoding within and
+across chunks. The Relative Position Matrix A using 3D-RPE is shown in Figure 3.
+
+To illustrate the advantage of controllable long-term decay, we present the results in Figure 1(c) and
+Figure 1(d). As shown in Figure 1(c), when the relative position (m − n) exceeds approximately
+1000, Erope begins to significantly decrease to below 5. This limitation of Erope ≤ 5 poses challenges
+for RoPE in modeling attention scores between tokens with longer relative distances (greater than
+4000). In contrast, as shown in Figure 1(d), 3D-RPE employs both (m − n) and (φi − φj), setting
+c = 1000 to keep (m − n) within 1000, thereby preventing decay over longer distances. This method
+ensures E3d−rpe stays at or above 5 for all relative positions.
+
+5
+
+Chunk0Position ids of qChunk1Chunk2[0,0][0,1][0,2][0,3][1,0][1,1][1,2][1,3][2,0][2,1][2,2][2,3]Position ids of kChunk0Chunk1Chunk2[0,0][0,0][0,0][0,1][0,1][0,2][0,0][0,0][0,0][0,0][0,0][0,0][0,0][0,0][0,1][0,2][0,3][0,1][0,2][0,1][0,1][0,1][0,1][0,2][0,2][0,3][1,0][1,1][1,2][1,3][0,3][0,2][0,1][0,3][0,2][0,1][1,0][1,0][1,0][0,3][1,1][0,2][0,3][1,0][1,0][1,0][0,3][0,3][0,2][1,1][1,1][1,2][1,2][1,1][2,0][2,0][2,0][2,1][2,1][2,2][1,2][1,1][1,2][1,3][1,3][1,3]3.2.2 Enhanced Positional Resolution
+
+Position Interpolation (PI) [4] has been introduced to scale down the position indices to align with
+the original window size, resulting in enhanced outcomes for context extension. However, as the
+extension length and interpolation increase, PI can lead to a reduction in relative positional resolution.
+3D-RPE can be used alongside PI for long-context extensions. Compared to RoPE combined with PI,
+3D-RPE has the advantage of mitigating the reduction in positional resolution caused by positional
+interpolation, as demonstrated in Theorem 1.
+Theorem 1 (Enhanced Position Resolution). For a pre-trained language model with a length of Lp
+and an extension length requirement of L, employing linear position interpolation extension methods
+I based on Rotary Position Encoding (RoPE) can elevate the relative positional resolution from
+Erope to E ′
+3d−rpe denote the relative positional encoding resolution achieved by the method
+I based on 3D-RPE, with chunk size c ≥ 3, there is:
+
+rope. Let E ′
+
+E ′
+
+3d−rpe
+
+> E ′
+
+rope
+
+(8)
+
+The Proof of Theorem 1 is provided in Supplementary Materials C.
+
+To empirically validate the superior performance of this benefit in a training-free setting, it has
+been observed that methods combining RoPE with interpolation lead to a significant increase in
+Perplexity as the modeling length increases in language modeling tasks. Conversely, the increase
+in Perplexity is substantially smaller when employing 3D-RPE with linear interpolation (Refer to
+Table 4 in Section 5). This phenomenon indicates that this benefit has led to an improvement in the
+performance of long sequence language modeling.
+
+4 Related Work
+
+This section provides an overview of the extensive literature on position encoding in Transformers [26]
+and discusses context extending capabilities based on RoPE.
+
+Position Encoding (PE): PE is important for Transformer-based language models. Earlier stud-
+ies [22, 21, 28, 23] have focused on enhancing the original absolute position encoding to develop
+better relative position encoding, thereby improving the text modeling capabilities of language models.
+These works [22, 21, 28] utilized trainable position vector encoding to directly incorporate positional
+information into context representations. Although effective, these methods typically add positional
+information to contextual representations, making them unsuitable for linear self-attention architec-
+tures. RoFormer [23] introduced relative position information by rotating context representations,
+known as RoPE. Transformers utilizing RoPE have become a prevalent backbone in various LLM
+designs [24, 8, 27, 16]. Our proposed 3D-RPE differs from the two-dimensional space of RoPE by
+modeling the relative position information of tokens through rotation on the Bloch Sphere.
+
+Long-context LLMs based on RoPE: To enhance the contextual capabilities of Large Language
+Models (LLMs) using RoPE, several positional encoding interpolation techniques have been devel-
+oped. These include Linear Position Interpolation (LPI) [4], Neural Tangent Kernel (NTK) [17], and
+Yet Another Recurrent Network (YaRN) [18] interpolation. Position Sequence Tuning (PoSE) [31]
+has notably increased sequence lengths to 128k by amalgamating these positional interpolation
+strategies. Additionally, LongLora [5] introduced the shift-short attention mechanism, allowing for
+effective emulation of full attention and extending sequences up to 100k, leveraging the LLMa-2-7B
+model and LoRA’s fine-tuning approach [12]. 3D-RPE further strengthens the positional relation-
+ships between distant tokens by capturing inter-chunk positional information and is compatible with
+existing fine-tuning techniques like LoRA to bolster long-context representation. The Dual Chunk
+Attention (DCA) [2] method, which enhances the use of pre-trained integer-based parameters, splits
+query and key sequences into chunks and uses three specialized matrices to capture the relative
+positions within and between these chunks. This method enhances the model’s ability to process
+longer sequences, but it is unable to model the relative positions within distant chunks. In our work,
+we employ rotating positional encoding to link attention across different chunks.
+
+5 Experiments
+
+We evaluate the method of position encoding, 3D-RPE, on LLaMA2 [24] models (specifically,
+LLaMA-2-7B and LLaMA-2-7B-chat), which have a 4k pre-training context, and LLaMA-3-8B-
+
+6
+
+Instruct 2, which has an 8k pre-training context. Our experiments aim to explore the following
+aspects: 1) The effect of 3D-RPE on long-context generation can be assessed using Perplexity. 2)
+The impact of 3D-RPE on long-context understanding and generation tasks, can be reflected by the
+accuracy of long sequence natural language tasks, e.g., multiply documents QA. 3) Ablation studies
+to confirm the advantages of 3D-RPE in position interpolation.
+
+5.1 Experimental Settings
+
+In this section, we elaborate on the experimental setup by introducing two types of tasks (i.e., long-
+context language understanding and long sequence language modeling) and detailing three aspects of
+the configuration (i.e., training parameters, training and evaluation datasets, and baseline models).
+
+Training Setting: For long-context Natural Language Understanding (NLU) tasks, we have fine-
+tuned LLaMA-2-7B-chat and LLaMA-3-8B-Instruct. The context length for these models has been
+extended from 4k to 16k and from 8k to 16k, respectively. The fine-tuning method follows the
+fine-tuning strategy of LongChat [13]. The training step is 3, 000. For the long-sequence Language
+Modeling (LM) tasks, we have fine-tuned LLaMA-2-7B to support extended context length of 32k
+tokens. The training step is 1, 000. We set the per-device batch size as 1, and gradient accumulation
+step as 8, which means that the batch size is 8. We train the model with the next token prediction
+objective with LoRA [12].
+We employed the AdamW optimizer [15] with β1 = 0.9 and β2 = 0.95 for all fine-tuned models.
+Chunk size is set to 3k. The learning rate was set to 2 × 10−5, and a linear learning rate warmup was
+applied. Training was conducted on a single 4xA800 GPU machine using FlashAttention-2 [10].
+
+Datasets: In the context of long-context NLU tasks, we employ the LongAlpaca-12k dataset, which
+contains 9,000 LongQA and 3,000 short QA entries [6], and the LongAlpace-16k-length dataset3. To
+evaluate the performance of 3D-RPE for long-context extension, we use the LongBench [3], which
+includes 13 English tasks, 5 Chinese tasks and 2 code tasks, with most tasks having an average
+context length of 5k to 15k tokens. We focus on the English and code tasks to evaluate our method,
+3D-RPE. Additionally, the LEval [1] evaluation set, which also consists of long-context datasets,
+is used to verify the effectiveness of 3D-RPE. The five datasets annotated from scratch in LEval,
+namely Coursera, QuALiTY, CodeU, GSM,and TOEFL, are utilized.
+
+For long-sequence LM tasks, we use the RedPajama-Data [9] for fine-tuning training. The dataset is a
+large-scale pre-training dataset (the size reaches 1.2 trillion tokens) designed to provide high-quality
+training data for language models, and contains multiple data sources (i.e., github, arxiv, book, c4
+and Wikipedia, etc.). We sample 20, 000 samples from these data sources for training. For evaluation,
+we utilize the PG19 book corpus dataset [20], which includes 100 documents, and the Arxiv Math
+Proof-pile dataset (test split). Additionally, all methods evaluate perplexity by using a sliding window
+following [19].
+
+Baseline models: For long-context NLU tasks, the fine-tuned models, including LongAlpace-16k [5],
+LongChat-32k [14] LongLlama [25] and ChatGLM [11] are used as the baseline models. Models of
+fine-tuning free in language modeling tasks are also used in long-context NLU tasks.
+
+In long sequence LM tasks, the methods of LongLoRA [5], StreamingLLM [29], Positional Inter-
+polation(PI) [4] and the NTK-Aware Scale RoPE(NTK) [17] are selected as the baselines, all based
+on the LLaMA-2-7B-base model. Among these baseline models, PI, NTK and StreamingLLM are
+fine-tuning-free methods. The fine-tuned models include LongLoRA and Activation Beacon [30]. In
+Ablation experiments, interpolation methods without training are used as baseline models, which are
+PI and NTK.
+
+5.2 Long-Context Natural Language Understanding
+
+In this task, the LongBench [3] evaluation set was initially utilized. Five categories of tasks were
+included: single-document QA (3 tasks), multi-document QA (3 tasks), summarization (3 tasks),
+few-shot learning (3 tasks), and code completion (2 tasks). The average score for each type is reported
+in Table 1. The evaluation metrics followed those specified in LongBench [3], which differ across
+
+2https://github.com/meta-llama/llama3
+3https://github.com/dvlab-research/LongLoRA/
+
+7
+
+Table 1: Comparison between open-source based models on long-context NLU tasks. Our model,
+3D-RPE-LlaMA2-7B-Chat is fine-tuning on LLaMA-2-7b-chat, which is extended from 4k to 16k
+context lengths. Baseline models can be categorized into two groups: those that necessitate fine-
+tuning during training (such as LongAlpaca [5] and LongLLaMA [25]), and those that do not require
+it (including PI, NTK, StreamingLLM [29], and ChunkLLaMA-16k [2]). The experimental results
+for each specific evaluation set in Supplementary Material D.2.
+
+METHODS
+LLaMA-2-7B-chat
+LLaMA-2-7B-chat-PI
+LLaMA-2-7B-chat-NTK
+StreamingLLM
+ChunkLLaMA-16k
+LongChat-32k
+LongAlpaca-16k
+LongLLaMA
+Vicuna-v1.5-7B-16k
+ChatGLM3-6B-32k
+3D-RPE-LLaMA2-7B-Chat
+
+Single-Doc QA Multi-Doc QA Summarization Few-shot Code
+48.10
+52.73
+49.28
+48.00
+49.73
+54.10
+56.00
+66.05
+47.30
+56.20
+76.50
+
+60.01
+49.43
+59.29
+50.05
+46.31
+64.02
+63.70
+60.31
+66.20
+68.10
+73.16
+
+22.60
+17.16
+23.34
+22.22
+22.98
+23.50
+28.10
+16.37
+18.63
+46.60
+60.10
+
+24.90
+18.98
+23.21
+21.47
+24.04
+31.58
+28.70
+30.12
+28.01
+40.30
+47.40
+
+24.70
+25.03
+24.40
+22.20
+21.52
+26.70
+27.80
+24.19
+26.01
+29.50
+28.99
+
+Table 2: Comparison with open-source models, LLaMA-2-7B-chat, LLaMA3-8B-Instruct, on 5
+closed-ended-ended tasks with various input length from LEval [1]. The evaluation metric “EM,”
+which represents the exact match score, is adopted. * indicates the model is train-free.
+
+MODELS
+
+Coursera QuALiTY CodeU GSM TOEFL
+
+LLaMA-2-7B-Chat
+LongChat-7B-16K
+LLaMA2-7B-NTK
+Vicuna1.5-7B-16k
+3D-RPE-LLaMA2-7B-Chat(ours)
+LLaMA3-8B-Instruct*
+3D-RPE-LLaMA3-8B-Instruct*
+
+29.21
+29.74
+32.71
+38.66
+39.38
+51.45
+51.89
+
+37.62
+33.66
+33.16
+39.60
+38.11
+64.34
+61.38
+
+1.11
+3.33
+0.00
+5.55
+2.22
+4.44
+4.44
+
+19.00
+10.00
+19.00
+19.00
+21.01
+76.00
+80.00
+
+51.67
+47.95
+52.78
+55.39
+57.99
+82.89
+82.89
+
+tasks and are detailed in Supplementary Material D.1. The results in Table 1 highlight our model’s
+significant performance advantages over baseline models in four tasks, both for models without
+training and those with fine-tuning. In summarization tasks, our model also achieved performance
+comparable to ChatGLM3-6B-32k. These experimental outcomes indicate that our model enhances
+the correlation between tokens with distant relative positions in long contexts through 3D-RPE,
+resulting in improved performance.
+
+Subsequently, the LEval Benchmark [1] was employed. Table 2 reveals that our model, 3D-RPE-
+LLaMA2-7B-Chat, outperformed LLaMA2-7B-NTK and LongChat-7B-16K. Although it did not
+surpass Vicuna1.5-7B-16K in Quality and CodeU tasks, it excelled in the Coursera, GSM, and
+TOEFL tasks. Additionally, we conducted experiments on LLaMA3-8B-Instruct using a 16k context
+window with 3D-RPE. The 3D-RPE-LLaMA3-8B-Instruct* showed performance improvements in
+the Coursera and GSM tasks. While 3D-RPE did not enhance performance in the CodeU, TOEFL,
+and QuALiTY tasks, there was no significant performance decline either. These experimental results
+demonstrate the effectiveness of the 3D-RPE method.
+
+5.3 Long-Sequence Language Modeling
+
+In Table 3, we present the perplexity scores for our model, 3D-RPE-LLaMA-2-7B and baseline
+models on the proof-pile and PG19 test datasets. 3D-RPE-LLaMA-2-7B was fine-tuned from the
+LLaMA2-7B-Base model using a dataset with a 32k context window. To evaluate performance, we
+set sequence lengths of 8k, 16k, and 32k. We extended our model’s sequence length from 32k to
+100k using the position extending method from PoSE [31]. The results indicate that our method
+outperforms train-free sequence extending models. Compared to fine-tuned models, our model shows
+better performance at 8k and 16k sequence lengths. This suggests that the new positional encoding,
+
+8
+
+Table 3: Perplexity evaluation on different extending methods. We conduct evaluation on the
+Proof-pile and PG-19 test datasets, varying evaluation context window size from 8k to 100k.
+
+METHODS
+
+LLaMA2-7B-Base
+LLama2-7B-PI
+LLama2-7B-NTK
+StreamingLLM
+LongLoRA-32k
+LongLoRA-100k
+LongChat-32k
+Activation Beacon
+3D-RPE-LLaMA2-7B
+
+PG-19
+
+Proof-Pile
+
+8k
+
+131.09
+11.32
+10.28
+9.23
+7.33
+7.57
+8.92
+8.52
+7.03
+
+16k
+> 102
+19.5
+11.5
+9.25
+7.16
+7.33
+8.85
+8.54
+7.10
+
+32k
+100k
+8k
+> 102 OOM 16.79
+> 102 OOM 3.86
+OOM 3.98
+37.8
+3.47
+9.32
+9.24
+7.04
+2.78
+–
+7.04
+7.16
+2.78
+OOM 2.98
+8.81
+3.45
+8.68
+8.56
+2.72
+8.12
+8.09
+
+16k
+> 102
+5.94
+5.94
+3.51
+2.61
+2.60
+2.70
+3.42
+2.93
+
+32k
+100k
+> 102 OOM
+OOM
+33.7
+OOM
+33.7
+3.55
+3.50
+2.50
+–
+2.52
+2.58
+OOM
+2.65
+3.35
+3.39
+3.05
+2.89
+
+Table 4: Results are evaluated in Perplexity on PG19 validation split. ’*’ denotes train-free, imple-
+menting 3D-RPE directly on the LLaMA2-7B-Base model without additional fine-tuning, utilizing a
+chunk size of 3k. The context length of 8k is extended directly with 3D-RPE. Achieving 16k and 32k
+is accomplished through linear positional interpolation with chunks based on the 8k context length.
+
+MODELS
+
+LLaMA2-7B-PI
+LLaMA2-7B-NTK
+LLaMA2-7B-Yarn
+
+3D-RPE-LLaMA2-7B*
+
+4k
+
+7.94
+7.87
+7.87
+
+7.87
+
+8k
+
+16k
+
+9.19
+11.98
+8.06
+
+15.11
+26.12
+9.82
+
+32k
+> 102
+58.91
+11.74
+
+7.90
+
+7.71
+
+9.34
+
+3D-RPE, improves or maintains modeling performance for larger context windows (32k) compared
+to smaller ones (8k and 16k). For the 32k and 100k tasks, although our model did not surpass
+LongLoRA-32k and LongLoRA-100k, it did outperform LongChat-32k and Activation Beacon.
+
+Notably, our model can further extend from 32k to 100k without significantly increasing perplexity
+values, in combination with other train-free extension methods. However, due to its specific attention
+mechanism, the LongLoRA models cannot be extended beyond their predefined context windows in
+a train-free manner. For instance, LongLoRA-32k cannot be further extended to 100k.
+
+5.4 Ablation Study
+
+In this section, we conduct ablation studies in this section to explore how 3D-RPE affects the linear
+interpolation method. We compare position interpolation methods (PI, NTK, and Yarn) with the
+method that combines 3D-RPE with position interpolation on the LLaMA-2-7B-Base model in a
+train-free manner. The experimental results can be found in Table 2. The 3D-RPE-LLaMA2-7B*
+model with linearly positional interpolation from 8k to 16k and 32k, the 3D-RPE approach yields
+improved results by mitigating the decrease in positional resolution caused by interpolation methods.
+These results are consistent with the findings of Theorem 1 in Section 3.2.2 presented in this paper.
+
+6 Conclusion and Future Work
+
+In this paper, we present a novel rotary position encoding method called 3D Rotary Position Encoding
+(3D-RPE). Compared to RoPE, we have theoretically proved that 3D-RPE possesses two key advan-
+tages: controllable long-term decay and enhanced interpolation resolution. Experimentally, 3D-RPE
+has demonstrated outstanding performance in long-context Natural Language Understanding.
+
+In the future, 3D-RPE holds promise as a foundational positional encoding strategy for LLMs,
+especially in the aspect of modeling long contexts. Moreover, given that 3D-RPE encapsulates
+positional encoding within a three-dimensional framework, it has the potential to integrate with visual
+data, thereby facilitating an in-depth exploration of its efficacy in synchronizing graphical and textual
+semantic information.
+
+9
+
+References
+
+[1] Chenxin An, Shansan Gong, Ming Zhong, Mukai Li, Jun Zhang, Lingpeng Kong, and Xipeng Qiu. L-eval:
+Instituting standardized evaluation for long context language models. arXiv preprint arXiv:2307.11088,
+2023.
+
+[2] Chenxin An, Fei Huang, Jun Zhang, Shansan Gong, Xipeng Qiu, Chang Zhou, and Lingpeng Kong.
+
+Training-free long-context scaling of large language models, 2024.
+
+[3] Yushi Bai, Xin Lv, Jiajie Zhang, Hongchang Lyu, Jiankai Tang, Zhidian Huang, Zhengxiao Du, Xiao
+Liu, Aohan Zeng, Lei Hou, Yuxiao Dong, Jie Tang, and Juanzi Li. Longbench: A bilingual, multitask
+benchmark for long context understanding. arXiv preprint arXiv:2308.14508, 2023.
+
+[4] Shouyuan Chen, Sherman Wong, Liangjian Chen, and Yuandong Tian. Extending context window of large
+
+language models via positional interpolation. arXiv preprint arXiv:2306.15595, 2023.
+
+[5] Yukang Chen, Shengju Qian, Haotian Tang, Xin Lai, Zhijian Liu, Song Han, and Jiaya Jia. Longlora:
+
+Efficient fine-tuning of long-context large language models. arXiv:2309.12307, 2023.
+
+[6] Yukang Chen, Shaozuo Yu, Shengju Qian, Haotian Tang, Xin Lai, Zhijian Liu, Song Han, and Jiaya Jia.
+Long alpaca: Long-context instruction-following models. https://github.com/dvlab-research/
+LongLoRA, 2023.
+
+[7] Wei-Lin Chiang, Zhuohan Li, Zi Lin, Ying Sheng, Zhanghao Wu, Hao Zhang, Lianmin Zheng, Siyuan
+Zhuang, Yonghao Zhuang, Joseph E Gonzalez, et al. Vicuna: An open-source chatbot impressing gpt-4
+with 90%* chatgpt quality, march 2023. URL https://lmsys. org/blog/2023-03-30-vicuna, 3(5), 2023.
+
+[8] Aakanksha Chowdhery, Sharan Narang, Jacob Devlin, Maarten Bosma, Gaurav Mishra, Adam Roberts,
+Paul Barham, Hyung Won Chung, Charles Sutton, Sebastian Gehrmann, et al. Palm: Scaling language
+modeling with pathways. arXiv preprint arXiv:2204.02311, 2022.
+
+[9] Together Computer. Redpajama: An open source recipe to reproduce llama training dataset. https:
+
+//github.com/togethercomputer/RedPajama-Data, 2023.
+
+[10] Tri Dao. FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning. CoRR, 2023.
+
+[11] Zhengxiao Du, Yujie Qian, Xiao Liu, Ming Ding, Jiezhong Qiu, Zhilin Yang, and Jie Tang. Glm: General
+language model pretraining with autoregressive blank infilling. In Proceedings of the 60th Annual Meeting
+of the Association for Computational Linguistics (Volume 1: Long Papers), pages 320–335, 2022.
+
+[12] Edward J Hu, Yelong Shen, Phillip Wallis, Zeyuan Allen-Zhu, Yuanzhi Li, Shean Wang, Lu Wang, and
+Weizhu Chen. LoRA: Low-rank adaptation of large language models. In International Conference on
+Learning Representations, 2022.
+
+[13] Dacheng Li, Rulin Shao, Anze Xie, Ying Sheng, Lianmin Zheng, Joseph Gonzalez, Ion Stoica, Xuezhe
+Ma, and Hao Zhang. How long can context length of open-source llms truly promise? In NeurIPS 2023
+Workshop on Instruction Tuning and Instruction Following, 2023.
+
+[14] Dacheng Li, Rulin Shao, Anze Xie, Ying Sheng, Lianmin Zheng, Joseph E. Gonzalez, Ion Stoica, Xuezhe
+Ma, and Hao Zhang. How long can open-source llms truly promise on context length? arXiv preprint
+arXiv:2306.04537, June 2023.
+
+[15] Ilya Loshchilov and Frank Hutter. Decoupled weight decay regularization. In ICLR, 2019, 2019.
+
+[16] Erik Nijkamp, Bo Pang, Hiroaki Hayashi, Lifu Tu, Huan Wang, Yingbo Zhou, Silvio Savarese, and
+Caiming Xiong. Codegen: An open large language model for code with multi-turn program synthesis.
+arXiv preprint arXiv:2203.13474, 2022.
+
+[17] Bowen Peng and Jeffrey Quesnelle.
+
+to
+have extended (8k+) context size without any fine-tuning and minimal perplexity degrada-
+tion.
+https://www.reddit.com/r/LocalLLaMA/comments/14lz7j5/ntkaware_scaled_rope_
+allows_llama_models_to_have, 2023.
+
+Ntk-aware scaled rope allows
+
+llama models
+
+[18] Bowen Peng, Jeffrey Quesnelle, Honglu Fan, and Enrico Shippole. Yarn: Efficient context window
+
+extension of large language models. arXiv preprint arXiv:2203.13474, 2023.
+
+[19] Oriol Press, Noah A Smith, and Michael Lewis. Train short, test long: Attention with linear biases enables
+
+input length extrapolation. In ICLR, 2022, 2022.
+
+10
+
+[20] Jack W Rae, Anna Potapenko, Siddhant M Jayakumar, Chloe Hillier, and Timothy P Lillicrap. Compressive
+transformers for long-range sequence modelling. In International Conference on Learning Representations,
+2020.
+
+[21] Colin Raffel, Noam Shazeer, Adam Roberts, Katherine Lee, Sharan Narang, Michael Matena, Yanqi Zhou,
+Wei Li, and Peter J Liu. Exploring the limits of transfer learning with a unified text-to-text transformer.
+Journal of Machine Learning Research, 21(140):1–67, 2020.
+
+[22] Peter Shaw, Jakob Uszkoreit, and Ashish Vaswani. Self-attention with relative position representations. In
+Proceedings of the 2018 Conference of the North American Chapter of the Association for Computational
+Linguistics: Human Language Technologies, pages 464–468, 2018.
+
+[23] Jianlin Su, Murtadha Ahmed, Yu Lu, Shengfeng Pan, Wen Bo, and Yunfeng Liu. Roformer: Enhanced
+
+transformer with rotary position embedding. Neurocomputing, 568:127063, 2024.
+
+[24] Hugo Touvron, Louis Martin, Kevin Stone, Peter Albert, Amjad Almahairi, Yasmine Babaei, Nikolay
+Bashlykov, Soumya Batra, Prajjwal Bhargava, Shruti Bhosale, et al. Llama 2: Open foundation and
+fine-tuned chat models. arXiv preprint arXiv:2307.09288, 2023.
+
+[25] Szymon Tworkowski, Konrad Staniszewski, Mikołaj Pacek, Yuhuai Wu, Henryk Michalewski, and Piotr
+Miłos. Focused transformer: Contrastive training for context scaling. arXiv preprint arXiv:2307.03170,
+2023.
+
+[26] Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N Gomez, Łukasz
+Kaiser, and Illia Polosukhin. Attention is all you need. Advances in neural information processing systems,
+30, 2017.
+
+[27] Ben Wang and Aran Komatsuzaki. Gpt-j-6b: A 6 billion parameter autoregressive language model. GitHub,
+
+2021.
+
+[28] Benyou Wang, Donghao Zhao, Christina Lioma, Qiuchi Li, Peng Zhang, and Jakob Grue Simonsen.
+Encoding word order in complex embeddings. In International Conference on Learning Representations,
+2020.
+
+[29] Guangxuan Xiao, Yuandong Tian, Beidi Chen, Song Han, and Mike Lewis. Efficient streaming language
+
+models with attention sinks. arXiv, 2023.
+
+[30] Peitian Zhang, Zheng Liu, Shitao Xiao, Ninglu Shao, Qiwei Ye, and Zhicheng Dou. Soaring from 4k to
+
+400k: Extending llm’s context with activation beacon, 2024.
+
+[31] Dawei Zhu, Nan Yang, Liang Wang, Yifan Song, Wenhao Wu, Furu Wei, and Sujian Li. Pose: Efficient
+context window extension of llms via positional skip-wise training. arXiv preprint arXiv:2309.10400,
+2023.
+
+A Bloch Sphere
+
+Bloch Sphere: 3D Rotary Position Encoding (3D-RPE), proposed by us, corresponds to a Bloch Sphere. In this
+section, we mainly introduce the basic concept of Bloch Sphere, which corresponds to Eq. (1) in this paper.
+
+The Bloch Sphere is a geometric tool to used to represent qubits, typically depicted in a three-dimensional polar
+coordinate system as a point on the Sphere (see Figure 4). A single quantum state is represented by the following
+equation in linear algebra:
+
+∣ϕ⟩ = α ∣0⟩ + β ∣1⟩
+(9)
+where α and β are complex numbers, i.e., α, β ∈ C. According to Euler’s formula in complex analysis, the
+coefficients α and β can be reexpressed as:
+
+α = a + bi = r0(cos(θα) + isin(θα)) = r0eiθα
+β = c + di = r1(cos(θβ) + isin(θβ)) = r1eiθβ
+
+By substituting Eq. (10) into Eq. (9), the quantum state representation is denoted as:
+
+∣ϕ⟩ = r0(cos(θα) + isin(θα)) ∣0⟩ + r1(cos(θβ) + isin(θβ)) ∣1⟩
+
+= r0eiθα
+= eiθα
+
+∣0⟩ + r1eiθβ ∣1⟩
+(r0 ∣0⟩ + r1ei(θβ −θα)
+
+∣1⟩)
+
+11
+
+(10)
+
+(11)
+
+Figure 4: A diagram of Bloch Sphere.
+
+θα is the global phase.
+
+2
+Considering the normalization condition ∣α∣
+
+2
+
++ ∣β∣
+
+= 1, we have:
+
+Given r0 = cos φ
+
+2
+∣r0∣
+2 , r1 = sin φ
+2 , θα = θ and θβ − θα = θ1, the state ∣ϕ⟩ can be expressed as:
+
++ ∣r1ei(θβ −θα)
+
+1∣ei(θβ −θα)
+
+0 + r2
+
+0 + r2
+
+1 = 1
+
+= r2
+
+= r2
+
+2
+∣
+
+2
+
+∣
+
+∣ϕ⟩ = eiθ
+
+(cos
+
+φ
+2 ∣0⟩ + sin
+
+φ
+2
+
+eiθ1 ∣1⟩)
+
+(12)
+
+(13)
+
+Therefore, the Eq. (1) of this paper is given out.
+
+To adapt to the original 2D rotation position encoding (RoPE) of pre-trained LLMs, such as LLaMA models, the
+global phase θ is used to model the relative positions between tokens within a chunk, while the rotation angle φ
+2
+is used to model the relative positions between tokens across chunks.
+
+B Supplementary Material for the Method Section
+
+In this section, we mainly introduce the specific implementation of our positional encoding method (3D-RPE),
+and the formula derivation details of attention score calculation (Eq. (5) of this paper) not detailed in this paper.
+
+B.1 Implement of 3D-RPE
+
+j,m + sin φjhj,m)
+
+In Section 3.1, we give the general form of 3D Rotary Position Encoding (3D-RPE):
+(cos φjh⊥
+̃hj,m = eimθ
+cos φj and sin φj are scalar quantities in R. h⊥
+j,m and hj,m are shown below:
+−hd/2
+⎤
+⎥
+⎥
+−hd/2+1
+⎥
+⎥
+⎥
+⋮
+⎥
+−hd−2
+⎥
+⎥
+⎥
+−hd−1
+⎥
+⎥
+h0
+⎥
+⎥
+h1
+⎥
+⎥
+⎥
+⋮
+⎥
+⎥
+hd/2−2
+⎥
+⎥
+hd/2−1
+⎥
+⎦
+
+h0
+⎡
+⎢
+h1
+⎢
+⎢
+⎢
+⋮
+⎢
+⎢
+hd/2−2
+⎢
+⎢
+hd/2−1
+⎢
+⎢
+⎢
+hd/2
+⎢
+⎢
+hd/2+1
+⎢
+⎢
+⎢
+⋮
+⎢
+⎢
+hd−2
+⎢
+⎢
+hd−1
+⎢
+⎣
+
+⎡
+⎢
+⎢
+⎢
+⎢
+⎢
+⎢
+⎢
+⎢
+⎢
+⎢
+⎢
+⎢
+⎢
+⎢
+⎢
+⎢
+⎢
+⎢
+⎢
+⎢
+⎢
+⎣
+
+⎤
+⎥
+⎥
+⎥
+⎥
+⎥
+⎥
+⎥
+⎥
+⎥
+⎥
+⎥
+⎥
+⎥
+⎥
+⎥
+⎥
+⎥
+⎥
+⎥
+⎥
+⎥
+⎦
+
+hj,m =
+
+j,m =
+
+h⊥
+
+12
+
+(14)
+
+𝑥𝑦z|ۧ0|ۧ1O|ۧ∅𝜃𝜑In the concrete implementation, analogous to RoPE, for each two-dimensional subspace R2 of Rd, we assign
+angles θl = base−2l/d that vary from high to low frequencies. An equivalent rotation matrix R
+θ
+m is utilized to
+substitute for eimθ:
+
+0
+
+0
+0
+⋮
+
+θ
+m =
+R
+
+cos mθ0
+0
+⋮
+0
+sin mθ0
+0
+⋮
+0
+
+⋯
+cos mθ1 ⋯
+⋱
+⋯ cos mθd/2−1
+⋯
+sin mθ1 ⋯
+⋱
+⋯ sin mθd/2−1
+Therefore, Eq.(4) of this paper can be transformed to
+
+⎡
+⎢
+⎢
+⎢
+⎢
+⎢
+⎢
+⎢
+⎢
+⎢
+⎢
+⎢
+⎢
+⎢
+⎢
+⎣
+
+0
+0
+⋮
+
+⋮
+0
+0
+
+⋮
+0
+
+− sin mθ0
+0
+⋮
+0
+cos mθ0
+0
+⋮
+0
+
+0
+
+0
+0
+⋮
+
+⋮
+0
+0
+
+⋯
+− sin mθ1 ⋯
+⋱
+⋯ − sin mθd/2−1
+⋯
+cos mθ1 ⋯
+⋱
+⋯ cos mθd/2−1
+
+0
+0
+⋮
+
+⋮
+0
+
+⎤
+⎥
+⎥
+⎥
+⎥
+⎥
+⎥
+⎥
+⎥
+⎥
+⎥
+⎥
+⎥
+⎥
+⎥
+⎦
+
+(15)
+
+θ
+̃hj,m = R
+
+m(cos φjh⊥
+
+j,m + sin φjhj,m)
+
+θ
+where R
+m is a design form equivalent to the rotation matrix in RoPE, mainly re-mapped to correspond to
+specific application implementations and calculation derivations in LLMs. In the specific implementation, after
+the rotary position encoding of LLMs, the long sequence is chunked based on the chunk size c. Then, the rotation
+φj is set on each chunk, j is the position of chunk.
+
+B.2 Derivation of Attention for 3D-RPE
+
+The formula derivation details of attention score calculation(Eq. (5)) is as follows.
+
+Since h⊥
+
+= ei π
+
+2 h = ih, we could get:
+
+̃hj,m = eimθ
+= eimθ
+= eimθei π
+
+2
+
+−φj hj,m
+
+(i cos φjhj,m + sin φjhj,m)
+π
+π
+(i sin (
+2 − φj)hj,m)
+2 − φj)hj,m + cos (
+
+(16)
+
+Let qi,m=3d-PE(q, i, m), kj,n=3d-PE(k, j, n). Taking the real part of the inner product of qi,m and kj,n
+yields:
+
+s(qi,m, kj,n) = Re[ei(φi−φj )
+
+∑
+l=0
+which is a function related to both m − n and φi − φj.
+
+d/2−1
+
+ei(m−n)θl (qlkl + qd/2+lkd/2+l)]
+
+(17)
+
+C 3D Rotary Position Encoding Resolution Enhancement
+
+In this section, before proving Theorem 1, we first provide the definitions of positional resolution for RoPE, as
+well as the positional resolution after positional interpolation.
+
+Definition 2 (Positional Interpolation Resolution). Let qm+1 and km be query state and key state of the m-th
+and (m + 1)-th hidden states after RoPE. Given a pre-training length Lp, the attention score a is:
+
+a(qm+1, km) = qkT eiθ
+The Resolution Erope corresponding to the initial length Lp is Erope = 1. After employing linear interpolation
+with length L ≥ Lp, the attention score is:
+
+(18)
+
+Note that the Resolution Erope turns to E
+
+a(qm+1, km) = qkT ei
+′
+rope = Lp/L ≤ 1 and decreases as L increases.
+
+Lp
+L θ
+
+(19)
+
+As the resolution decreases, the magnitude of the rotation of attention score becomes smaller, reflecting the
+extent of positional difference becomes smaller. Now we give the following theorem, explaining how 3D-RPE
+mitigates the resolution decreasing in detail.
+
+Theorem 2 (Chunk Position Encoding Resolution Enhancement). For a pre-trained language model with
+a pre-training length Lp and an extension length requirement of L, employing linear position interpolation
+extension methods I based on Rotary Position Encoding (RoPE) can elevate the relative positional resolution
+′
+from Erope to E
+3d−rpe denote the relative positional encoding resolution achieved by the method I
+based on 3D-RPE, with chunk size c >= 3, there is:
+
+′
+rope, Let E
+
+′
+3d−rpe > E
+
+E
+
+′
+rope
+
+13
+
+(20)
+
+Proof. For 3D-RPE, let the chunk size and chunk number be denoted as c and n = ⌈Lp/c⌉ respectively. Prior
+to interpolation, the indices within a chunk range from [0, 1, ⋯, c − 1]. Linear interpolation involves evenly
+distributing the excess L − Lp tokens across n chunks. This results in new indices within the chunk, range from
+[0, 1, 2, ⋯, c′
+= ⌈L/n⌉ ≤ Lp. So the attention score of qi,m+1 and ki,m based on 3D-RPE after
+interpolation is:
+
+− 1], where c′
+
+a3d−rpe = qkT eiθei(φi−φi)
+= qkT eiθ
+
+The resolution of relative position for 3D-RPE is:
+
+′
+3d−rpe = 1
+E
+
+For special cases q(i+1,0) and k(i,c′−1):
+
+′
+
+3d−rpe ≥ c′
+E
+
+− 1 +
+
+(φi+1 − φi)
+θ
+
+> c′
+
+− 2 ≥ 1
+
+(21)
+
+where (φi+1 − φi)/θ ≥ −1/10000 > −1. As long as c′
+case, the chunk size c is not set to a very small number, hence c′
+different interpolation lengths L, we need to configure a varying number of chunks n, such that c′
+Lp.
+
+′
+′
+rope = Lp/L. Under normal
+3d−rpe ≥ 1 > E
+≥ 3 is certainly established; moreover, for
+= ⌈L/n⌉ ≤
+
+≥ 3, there is E
+
+D Experimental Supplementary Materials
+
+D.1 Evaluation Metrics
+
+This section mainly presents the utilization of evaluation metrics for a total of 16 tasks from the LongBench.
+
+Dataset
+Narrative QA
+Qsper
+MultiFieldQA-En
+Hotpot QA
+2WikiM QA
+Musique
+GovReport
+QMSum
+MultiNews
+Trec
+Trivia QA
+SAMsum
+PassageRetrieval-En
+Passage Count
+Lcc
+RepoBench-P
+
+Metric
+F1_Score
+F1_Score
+F1_Score
+F1_Score
+F1_Score
+F1_Score
+Rouge_Score
+Rouge_Score
+Rouge_Score
+Classification_Score
+F1_Score
+Rouge_Score
+Retrieval_Score
+Count_Score
+Code_Sim_Score
+Code_Sim_Score
+
+D.2 Details of Experimental Results
+
+This section mainly presents the performance of all tasks corresponding to each type of experiment in LongBench.
+These experimental results are reported in Table 5.
+
+14
+
+Table 5: Comparison of Experimental Performance on Different Datasets for Various Tasks in
+LongBench, Using Baseline Models Provided by LongBench. 3D-RPE-LLaMA2-7B is our model.
+
+Single-Document QA
+LLaMA2-7B-Chat-4k
+LongChat-v1.5-7B-32k
+InternLM-7B-8k
+Vicuna-v1.5-7B-16k
+LongLora-16k
+3D-RPE-LLaMA2-7B(our)
+
+Multi-Document QA
+LLaMA2-7B-chat-4k
+LongChat-v1.5-7B-32k
+InternLM-7B-8k
+Vicuna-v1.5-7B-16k
+LongLora-16k
+3D-RPE-LLaMA2-7B(our)
+
+Summarization
+LLaMA2-7B-chat-4k
+LongChat-v1.5-7B-32k
+InternLM-7B-8k
+Vicuna-v1.5-7B-16k
+LongLora-16k
+3D-RPE-LLaMA2-7B(our)
+
+Few-shot Learning
+LLaMA2-7B-chat-4k
+LongChat-v1.5-7B-32k
+InternLM-7B-8k
+Vicuna-v1.5-7B-16k
+LongLora-16k
+3D-RPE-LLaMA2-7B-16k(our)
+
+Synthetic Tasks
+LLaMA2-7B-chat-4k
+LongChat-v1.5-7B-32k
+InternLM-7B-8k
+Vicuna-v1.5-7B-16k
+LongLora-16k
+3D-RPE-LLaMA2-7B-16k(our)
+
+Code Completion
+LLaMA2-7B-chat-4k
+LongChat-v1.5-7B-32k
+InternLM-7B-8k
+Vicuna-v1.5-7B-16k
+LongLora-16k
+3D-RPE-LLaMA2-7B-16k(our)
+
+Narrative QA
+18.7
+16.9
+12.1
+19.4
+19.8
+40.56
+
+Qasper
+19.2
+27.7
+16.7
+26.1
+29.1
+41.35
+
+MultiFieldQA-En
+36.8
+41.4
+23.4
+38.5
+37.1
+60.3
+
+2WikiM QA
+32.8
+20.6
+22.8
+20.8
+30.26
+58.80
+
+QMSum
+20.8
+22.7
+15.9
+22.8
+24.13
+25.3
+
+Trivia QA
+77.8
+82.3
+77.8
+86.2
+85.69
+90.00
+
+Musique
+9.4
+9.7
+9.0
+9.8
+17.14
+59.01
+
+MultiNews
+25.8
+26.4
+22.8
+27.2
+27.74
+29.68
+
+SAMSum
+40.7
+34.2
+21.2
+40.8
+41.88
+40.00
+
+PassageRetrival-En
+9.8
+30.5
+6.0
+4.5
+29.75
+14.5
+
+RepoBench-P
+43.8
+55.3
+28.8
+43.5
+54.45
+73.90
+
+Hotpot QA
+25.4
+31.5
+28.7
+25.3
+37.01
+62.49
+
+GovReport
+27.3
+30.8
+9.7
+27.9
+31.53
+32.01
+
+Trec
+61.5
+63.5
+52.0
+71.5
+63.5
+89.50
+
+Passage Count
+2.1
+1.0
+3.0
+6.5
+3.61
+4.0
+
+Lcc
+52.4
+53.0
+44.1
+51.0
+57.61
+79.10
+
+15
+
+

@@ -7,9 +7,55 @@ import feedparser
 import urllib.request
 import urllib.parse
 from paperswithcode import PapersWithCodeClient
+from openai import OpenAI
+import cohere
+import numpy as np
+
+from langchain_community.document_loaders import MathpixPDFLoader,UnstructuredHTMLLoader
+from pinecone.grpc import PineconeGRPC as Pinecone
+from pinecone import ServerlessSpec
+from langchain_openai import OpenAIEmbeddings
+from langchain_experimental.text_splitter import SemanticChunker
+
+from tqdm import tqdm
+import pypdf
+
 
 
 import model_discovery.utils as U
+
+
+
+
+### Paper With Code Patches, it depends on old version of pydantic, httpx, and typing_extensions
+
+from paperswithcode.client import handler
+
+@handler
+def pwc_search_patched(
+    cls,
+    q: Optional[str] = None,
+    page: int = 1,
+    items_per_page: int = 50,
+    **kwargs
+):
+    """Search in a similar fashion to the frontpage search.
+
+    Args:
+        q: Filter papers by querying the paper title and abstract.
+        page: Desired page.
+        items_per_page: Desired number of items per page.
+
+    Returns:
+        PaperRepos object.
+    """
+    params = {key: str(value) for key, value in kwargs.items()}
+    params["page"] = str(page)
+    params["items_per_page"] = str(items_per_page)
+    timeout = None
+    if q is not None:
+        params["q"] = q
+    return cls.http.get("/search/", params=params, timeout=timeout)
 
 
 
@@ -21,40 +67,77 @@ class SuperScholarSearcher:
         self.ptree=ptree
         self.files_dir=U.pjoin(ptree.lib_dir,'..','files')
         DEFAULT_SEARCH_LIMITS={
-            's2':10,
-            'arxiv':5,
-            'pwc':5,
+            's2':5,
+            'arxiv':3,
+            'pwc':3,
+            'lib':5,
+            'lib2':3,
+            'libp':3,
         }
         self.result_limits=U.safe_get_cfg_dict(cfg,'result_limits',DEFAULT_SEARCH_LIMITS)
         self.stream=stream
         self.pwc_client=PapersWithCodeClient()
 
+        self.client = OpenAI(api_key=os.environ['MY_OPENAI_KEY'])
+        self.lib=None
+        self.texts=None
+        self.splits=None
+        self.vectors=None
 
+        self.embedding=OpenAIEmbeddings(
+            openai_api_key=os.environ['MY_OPENAI_KEY'],
+            model="text-embedding-3-large"
+        )
+        self.index_name=cfg.get('index_name','modis-library-v0') # change it to your index name
+        self.pc = Pinecone(api_key=os.environ['PINECONE_API_KEY'])
+        self.index=self.get_index(self.index_name)
 
-    def __forward__(self,title_abstract,content):
+        self.rerank_ratio=cfg.get('rerank_ratio',0.2)
+        self.co=cohere.Client(os.environ['COHERE_API_KEY'])
+
+    def __call__(self,title_abstract,detail=None,raw=False,prompt=True):
         """
         title_abstract: for search papers by title and abstract
         content: for matching the related content from papers
         """
-        pass
+        query = detail if detail else title_abstract
+        internal_docs,internal_info,internal_pp=self.search_internal(query,pretty=True,prompt=prompt)
+        external_results,external_pp=self.search_external(title_abstract,pretty=True,prompt=prompt)
+        
+        self.stream.write(f'Concluding search results...')
+        
+        pp=internal_pp+'\n'+external_pp
+        if raw:
+            raw_ret={
+                'external_rets':external_results,
+                'internal_docs':internal_docs,
+                'internal_info':internal_info,
+            }
+            return pp,raw_ret
+        else:
+            return pp
+        
+
+    def has_index(self,index_name):
+        existing_indexes=[i['name'] for i in self.pc.list_indexes()]
+        return index_name in existing_indexes
 
 
-    
     #### Get Paper Files by URL or ArXiv ID
 
     def get_html(self,url,save_path):
         if U.pexists(save_path):
-            return U.load_file(save_path)
+            return U.read_file(save_path)
         response = requests.get(url)
         if response.status_code == 200:
-            U.save_file(save_path,response.text)
+            U.write_file(save_path,response.text)
             return response.text
         else:
             return None
 
     def download_pdf(self,url,save_path):
         if U.pexists(save_path):
-            return U.load_file(save_path)
+            return U.read_file(save_path)
         try:
             pdf=urllib.request.urlretrieve(url, save_path)
             return pdf
@@ -62,6 +145,7 @@ class SuperScholarSearcher:
             return None
 
     def get_paper_file(self,arxiv_id=None,pdf_url=None):
+        # TODO: try also downloading the pdf from the arxiv_id first, pdf quality is better
         paper_file=None
         htmlst_dir=U.pjoin(self.files_dir,'htmlst')
         pdfst_dir=U.pjoin(self.files_dir,'pdfst')
@@ -87,7 +171,7 @@ class SuperScholarSearcher:
     #### External Sources, give you mostly the abstract and title
 
 
-    def search_external(self,query,pretty=True,pure=True) -> Union[None, List[Dict]]:
+    def search_external(self,query,pretty=True,prompt=True) -> Union[None, List[Dict]]:
         # search for external papers
         s2_results=self.safe_search(self.search_s2,query,self.result_limits['s2'])
         arxiv_results=self.safe_search(self.search_arxiv,query,self.result_limits['arxiv'])
@@ -97,25 +181,25 @@ class SuperScholarSearcher:
         for r in arxiv_results+pwc_results:
             if not self.exist_in_set(r,aggregated_results):
                 aggregated_results.append(r)
-        self.stream.write(f'##### *Found {len(aggregated_results)} related papers*')
-        if pure:
-            aggregated_results=self.pure_results(aggregated_results)
+        self.stream.write(f'---\n##### *Found {len(aggregated_results)} related papers*')
+        if prompt:
+            aggregated_results=self.prompt_results(aggregated_results)
         if pretty:
             return aggregated_results, self.pretty_print(aggregated_results)
         else:
             return aggregated_results
 
-    def pure_results(self,results):
-        pure_results=[]
+    def prompt_results(self,results):
+        prompt_results=[]
         for r in results:
             for key in ['arxiv_id','s2_id','pwc_id','repository','openAccessPdf']:
                 if key in r:
                     r.pop(key)
-            pure_results.append(r)
-        return pure_results
+            prompt_results.append(r)
+        return prompt_results
 
     def pretty_print(self,results):
-        ppr=''
+        ppr=f'#### Found {len(results)} related papers from external sources\n\n'
         for i,r in enumerate(results):
             ppr+=f'##### {i+1}. {r["title"]}\n\n'
             ppr+=f'*{", ".join(r["authors"]) if r["authors"] else "Anonymous"}*\n\n'
@@ -186,7 +270,7 @@ class SuperScholarSearcher:
         # https://api.semanticscholar.org/api-docs/graph#tag/Paper-Data/operation/post_graph_get_papers
         
         S2_API_KEY=os.environ['S2_API_KEY']
-        info=f'Searching Semantic Scholar for "{query}"'
+        info=f'*Searching Semantic Scholar for "{query}"*'
         params={
             "query": query,
             "limit": result_limit,
@@ -242,7 +326,7 @@ class SuperScholarSearcher:
         :param start_year: The minimum year of paper submission (default: 2015).
         :return: List of paper titles and summaries.
         """
-        self.stream.write(f'Searching arXiv for "{query}" in {", ".join(category)}...')
+        self.stream.write(f'*Searching arXiv for "{query}" in {", ".join(category)}...*')
         base_url = 'http://export.arxiv.org/api/query?'
         user_query=urllib.parse.quote(query, safe=":/?&=")
         category_str='+OR+'.join(['cat:'+i for i in category])
@@ -269,8 +353,8 @@ class SuperScholarSearcher:
 
     def search_pwc(self,query, result_limit=10) -> Union[None, List[Dict]]:
         # https://paperswithcode-client.readthedocs.io/en/latest/api/client.html?highlight=search#paperswithcode.client.PapersWithCodeClient.search
-        self.stream.write(f'Searching Papers with Code for "{query}"...')
-        ret=user_input(self.pwc_client,query,items_per_page=result_limit)
+        self.stream.write(f'*Searching Papers with Code for "{query}"...*')
+        ret=pwc_search_patched(self.pwc_client,query,items_per_page=result_limit)
         results=ret['results']
         papers=[]
         for i in results:
@@ -302,38 +386,378 @@ class SuperScholarSearcher:
 
     #### Internal Sources
 
+    def _load_texts(self,index_only=False):
+        # try to load pdf-converted texts, if not exist, load html-converted texts, otherwise skip
+        if index_only:
+            if U.pexists(U.pjoin(self.files_dir,'texts_index.json')):
+                self.texts=U.load_json(U.pjoin(self.files_dir,'texts_index.json'))
+            if U.pexists(U.pjoin(self.files_dir,'texts2_index.json')):
+                self.texts2=U.load_json(U.pjoin(self.files_dir,'texts2_index.json'))
+            if U.pexists(U.pjoin(self.files_dir,'textsp_index.json')):
+                self.textsp=U.load_json(U.pjoin(self.files_dir,'textsp_index.json'))
+            if self.texts and self.texts2 and self.textsp:
+                return
+
+        self.stream.write('Loading raw_texts in internal library...')
+        self.texts={}
+        self.texts2={}
+        self.textsp={}
+        for name,lib,tail in [
+                ('Primary',self.texts,''),
+                ('Secondary',self.texts2,'2'),
+                ('Plus',self.textsp,'p')]:
+            text_dir=U.pjoin(self.files_dir,'texts'+tail)
+            htext_dir=U.pjoin(self.files_dir,'htexts'+tail)
+            if U.pexists(htext_dir): 
+                for i in os.listdir(htext_dir):
+                    if i.endswith('.txt'):
+                        if index_only:
+                            lib[i.split('.')[0]]=None
+                        else:
+                            lib[i.split('.')[0]]=U.read_file(U.pjoin(htext_dir,i))
+            if U.pexists(text_dir):  # pdfs first, overwrite htmls
+                for i in os.listdir(text_dir):
+                    if i.endswith('.txt'):
+                        if index_only:
+                            lib[i.split('.')[0]]=None
+                        else:
+                            lib[i.split('.')[0]]=U.read_file(U.pjoin(text_dir,i))
+        if index_only:
+            U.save_json(self.texts,U.pjoin(self.files_dir,'texts_index.json'))
+            U.save_json(self.texts2,U.pjoin(self.files_dir,'texts2_index.json'))
+            U.save_json(self.textsp,U.pjoin(self.files_dir,'textsp_index.json'))
+
     def _load_libs(self): # used for building the search library
         # load the primary and secondary libraries
-        self.lib={}
-        for i in os.listdir(self.ptree.lib_dir):
-            if i.endswith('.json'):
-                self.lib[i.split('.')[0]]=U.load_json(U.pjoin(self.ptree.lib_dir,i))
+        files_dir=U.pjoin(self.ptree.lib_dir,'..','files')
         lib_est_dir=U.pjoin(self.ptree.lib_dir,'..','tree_ext')
+        self.lib={}
         self.lib2={}
-        lib2_dir=U.pjoin(lib_est_dir,'secondary')
-        for i in os.listdir(lib2_dir):
-            if i.endswith('.json'):
-                self.lib2[i.split('.')[0]]=U.load_json(U.pjoin(lib2_dir,i))
         self.libp={}
-        libp_dir=U.pjoin(lib_est_dir,'plus')
-        for i in os.listdir(libp_dir):
-            if i.endswith('.json'):
-                self.libp[i.split('.')[0]]=U.load_json(U.pjoin(libp_dir,i))
+
+        for name,lib,dir,tail in [
+                ('Primary',self.lib,self.ptree.lib_dir,''),
+                ('Secondary',self.lib2,U.pjoin(lib_est_dir,'secondary'),'2'),
+                ('Plus',self.libp,U.pjoin(lib_est_dir,'plus'),'p')]:
+
+            ### XXX: REMOVE THIS
+            if name!='Primary':
+                continue
+
+            for i in os.listdir(dir):
+                if i.endswith('.json'):
+                    lib[i.split('.')[0]]=U.load_json(U.pjoin(dir,i))
+            for i in os.listdir(U.pjoin(files_dir,'htmls'+tail)):   
+                if i.endswith('.html'):
+                    lib[i.split('.')[0]]['html_path']=U.pjoin(files_dir,'htmls'+tail,i)
+            for i in os.listdir(U.pjoin(files_dir,'pdfs'+tail)):    
+                if i.endswith('.pdf'):
+                    lib[i.split('.')[0]]['pdf_path']=U.pjoin(files_dir,'pdfs'+tail,i)
+
+    def _convert_libs_html(self):
+        # convert the htmls in the libraries to text
+        if self.lib is None:
+            self._load_libs()
+        for name,lib,folder in [
+                ('Primary',self.lib,'htexts'),
+                ('Secondary',self.lib2,'htexts2'),
+                ('Plus',self.libp,'htextsp')]:
+            save_dir=U.pjoin(self.files_dir,folder)
+            U.mkdir(save_dir)
+            for i in tqdm(lib,desc=f'Converting library {name} HTMLs'):
+                save_path=U.pjoin(save_dir,f'{i}.txt')
+                if 'html_path' in lib[i] and not U.pexists(save_path):
+                    try:
+                        self._convert_html_to_text(lib[i]['html_path'],save_path)
+                    except Exception as e:
+                        print(f'Error converting {lib[i]["html_path"]}: {e}')
+
+    def _convert_libs_pdf(self,max_pages=0): # max_pages=0 means no limit, only for non-primary papers
+        # convert the pdfs in the libraries to text, PDF conversion is expensive but have higher quality then htmls
+        if self.lib is None:
+            self._load_libs()
+        for name,lib,folder in [
+                ('Primary',self.lib,'texts'),
+                ('Secondary',self.lib2,'texts2'),
+                ('Plus',self.libp,'textsp')]:
+            save_dir=U.pjoin(self.files_dir,folder)
+            U.mkdir(save_dir)
+            for i in tqdm(self.lib,desc=f'Converting library {name} PDFs'):
+                save_path=U.pjoin(save_dir,f'{i}.txt')
+                if 'pdf_path' in self.lib[i] and not U.pexists(save_path):
+                    try:
+                        max_pages=0 if name=='Primary' else max_pages
+                        self._convert_pdf_to_text(self.lib[i]['pdf_path'],save_path,max_pages)
+                    except Exception as e:
+                        print(f'Error converting {self.lib[i]["pdf_path"]}: {e}')
+
+    def _convert_pdf_to_text(self,file_path,save_path,max_pages=0):
+        # use mathpix to convert the pdf to text https://mathpix.com/ 
+        if max_pages>0:
+            pdf=pypdf.PdfReader(file_path)
+            if len(pdf.pages)>max_pages:
+                return None # skip the paper
         
-    def search_lib_primary(query, result_limit=10) -> Union[None, List[Dict]]:
+        loader=MathpixPDFLoader(file_path,mathpix_api_id=os.environ['MATHPIX_API_KEY'])
+        data=loader.load()
+        text=''
+        for i in data:
+            text+=i.page_content
+        with open(save_path,'w',encoding='utf-8') as f:
+            f.write(text)
+        return text
+
+    def _convert_html_to_text(self,file_path,save_path):
+        # convert html to text using unstructured
+        loader = UnstructuredHTMLLoader(file_path)
+        data = loader.load()
+        text=''
+        for i in data:
+            text+=i.page_content
+        with open(save_path,'w',encoding='utf-8') as f:
+            f.write(text)
+        return text
+
+    def _upload_file(self,file_path):
+        RET=self.client.files.create(
+            file=open(file_path, "rb",encoding='utf-8'),
+            purpose="assistants"
+        )
+        return RET.id
+
+    def get_index(self,index_name=None):
+        if not index_name:
+            index_name=self.index_name
+        if not self.has_index(index_name):
+            self.pc.create_index(
+                name=index_name,
+                dimension=3072, # assume openai text-embedding-3-large	
+                metric="cosine", 
+                spec=ServerlessSpec(
+                    cloud='aws', 
+                    region='us-west-2'
+                ) 
+            ) 
+        return self.pc.Index(index_name)
+
+    def split_text(self,text,id,text_splitter=None):
+        if not text_splitter:
+            text_splitter = SemanticChunker(
+                self.embedding, breakpoint_threshold_type="gradient"
+            )
+        docs = text_splitter.create_documents([text])
+        txts=[i.page_content for i in docs]
+        embs=self.embedding.embed_documents(txts)
+        vectors=[]
+        splits={}
+        for idx,i in enumerate(docs):
+            vectors.append({
+                'id':f'{id}-{idx}',
+                'values':embs[idx],
+                'metadata':{'id':id,'splits':len(docs)},
+            })
+            splits[f'{id}-{idx}']=i.page_content
+        return vectors,splits
+
+    def _load_splits(self,load_vectors=False):
+        if self.texts is None: # just load index for now
+            self._load_texts(index_only=True)
+
+        self.splits={}
+        self.splits2={}
+        self.splitsp={}
+        self.vectors={}
+        self.vectors2={}
+        self.vectorsp={}
+        for name,lib,tail,splits,vectors in [
+                ('Primary',self.texts,'',self.splits,self.vectors),
+                ('Secondary',self.texts2,'2',self.splits2,self.vectors2),
+                ('Plus',self.textsp,'p',self.splitsp,self.vectorsp)]:
+            
+            ### XXX: REMOVE THIS
+            if name!='Primary':
+                continue
+
+            for i in tqdm(lib,desc=f'Loading splits {name}'):
+                U.mkdir(U.pjoin(self.files_dir,'splits'+tail))
+                U.mkdir(U.pjoin(self.files_dir,'vectors'+tail))
+                if U.pexists(U.pjoin(self.files_dir,'splits'+tail,f'{i}.json')):
+                    split=U.load_json(U.pjoin(self.files_dir,'splits'+tail,f'{i}.json'))
+                    if load_vectors:
+                        vector=U.load_json(U.pjoin(self.files_dir,'vectors'+tail,f'{i}.json'))
+                else:
+                    if not lib[i]:
+                        self._load_texts()
+                        if tail=='': lib=self.texts
+                        elif tail=='2': lib=self.texts2
+                        elif tail=='p': lib=self.textsp
+                    vector,split=self.split_text(lib[i],i)
+                    U.save_json(vector,U.pjoin(self.files_dir,'vectors'+tail,f'{i}.json'))
+                    U.save_json(split,U.pjoin(self.files_dir,'splits'+tail,f'{i}.json'))
+                splits.update(split)
+                if load_vectors:
+                    vectors[i]=vector
+
+    def _build_vector_stores(self):
+        if self.vectors is None:
+            self._load_splits(load_vectors=True)
+        for namespace,vectors in [
+                ('primary',self.vectors),
+                ('secondary',self.vectors),
+                ('plus',self.vectors)]:
+            for id in tqdm(vectors,desc=f'Upserting texts {namespace}'):
+                self.index.upsert(vectors=vectors[id],namespace=namespace)
+
+    def _rerank(self,query,docs,result_limit):
+        response = self.co.rerank(
+            model="rerank-english-v3.0",
+            query=query,
+            documents=docs,
+            top_n=result_limit,
+        )
+        indices=[i.index for i in response.results] # 0-indexed
+        relevance_scores=[i.relevance_score for i in response.results]
+        return indices,relevance_scores
+
+    def _get_split_by_id(self,id,namespace):
+        if self.splits is None:
+            self._load_splits()
+        if namespace=='primary':
+            return self.splits[id]
+        elif namespace=='secondary':
+            return self.splits2[id]
+        elif namespace=='plus':
+            return self.splitsp[id]
+        else:
+            raise ValueError(f'Unknown namespace: {namespace}')
+
+    def _get_metainfo_by_id(self,id,namespace):
+        if self.lib is None:
+            self._load_libs()
+        if namespace=='primary':
+            return self.lib[id]
+        elif namespace=='secondary':
+            return self.lib2[id]
+        elif namespace=='plus':
+            return self.libp[id]
+        else:
+            raise ValueError(f'Unknown namespace: {namespace}')
+
+    def _query_index(self,query,namespace,result_limit=10):
+        embed=self.embedding.embed_query(query)
+        if self.rerank_ratio>0:
+            top_k=int(result_limit//self.rerank_ratio)
+        else:
+            top_k=result_limit
+        ret=self.index.query(
+            namespace=namespace,
+            vector=embed,
+            top_k=top_k,
+            include_values=False,
+            include_metadata=True
+        )
+        matches=ret.matches
+        split_ids=[i.id for i in matches]
+        scores=[i.score for i in matches]
+        docs=[self._get_split_by_id(i,namespace) for i in split_ids]
+        ids=[i.metadata['id'] for i in matches]
+        if self.rerank_ratio>0:
+            indices,relevance_scores=self._rerank(query,docs,result_limit)
+            scores=relevance_scores
+            ids=[ids[i] for i in indices]
+            docs=[docs[i] for i in indices]
+        # group by id
+        grouped_docs={}
+        for i in range(len(ids)):
+            if ids[i] not in grouped_docs:
+                grouped_docs[ids[i]]=[]
+            grouped_docs[ids[i]].append({
+                'score':scores[i],
+                'doc':docs[i],
+            })
+            grouped_docs[ids[i]].sort(key=lambda x: x['score'], reverse=True)
+        # metainfo per id
+        metainfo={}
+        for id in grouped_docs:
+            metainfo[id]=self._get_metainfo_by_id(id,namespace)
+        return grouped_docs,metainfo
+
+
+    def search_lib_primary(self,query, result_limit=10) -> Union[None, List[Dict]]:
         # the selected ~300 model arch papers
-        pass
+        self.stream.write('*Searching primary library...*')
+        grouped_docs,metainfo=self._query_index(query,'primary',result_limit)
+        return grouped_docs,metainfo
 
-    def search_lib_secondary(query, result_limit=10) -> Union[None, List[Dict]]:
+    def search_lib_secondary(self,query, result_limit=10) -> Union[None, List[Dict]]:
         # the papers that are cited by the primary library, where their ideas come from  
-        pass
+        self.stream.write('*Searching secondary library...*')
+        grouped_docs,metainfo=self._query_index(query,'secondary',result_limit)
+        return grouped_docs,metainfo
 
-    def search_lib_plus(query, result_limit=10) -> Union[None, List[Dict]]:
+    def search_lib_plus(self,query, result_limit=10) -> Union[None, List[Dict]]:
         # the papers recommended by S2 for the primary library  
-        pass
+        self.stream.write('*Searching library plus...*')
+        grouped_docs,metainfo=self._query_index(query,'plus',result_limit)
+        return grouped_docs,metainfo
 
+    def search_internal(self,query,pretty=True,prompt=True) -> Union[None, List[Dict]]:
+        # search for papers in the internal library
+        grouped_docs,metainfo=self.search_lib_primary(query,self.result_limits['lib'])
 
+        # only primary now, testing
+        # grouped_docs2,metainfo2=self.search_lib_secondary(query,self.result_limits['lib2'])
+        # grouped_docsp,metainfop=self.search_lib_plus(query,self.result_limits['libp'])
+        # grouped_docs.update(grouped_docs2)
+        # grouped_docs.update(grouped_docsp)
+        # metainfo.update(metainfo2)
+        # metainfo.update(metainfop)
+
+        count=sum([len(grouped_docs[i]) for i in grouped_docs])
+        rerankinfo='' if self.rerank_ratio==0 else f' after reranking {int(count//self.rerank_ratio)} candidates'
+        self.stream.write(f'---\n##### *Found {count} related contents{rerankinfo}...*')
+        if pretty:
+            return grouped_docs,metainfo,self.vs_pretty_print(grouped_docs,metainfo,prompt)
+        else:
+            return grouped_docs,metainfo
     
+    def vs_pretty_print(self,grouped_docs,metainfo,prompt=True):
+        count=sum([len(grouped_docs[i]) for i in grouped_docs])
+        ppr=f'#### Found {count} related contents from {len(grouped_docs)} papers in internal library\n\n'
+        group_scores={}
+        for i in grouped_docs:
+            group=grouped_docs[i]
+            group_scores[i]=np.mean([j['score'] for j in group])
+        group_scores=sorted(group_scores.items(),key=lambda x:x[1],reverse=True)
+
+        for idx,id_score in enumerate(group_scores):
+            id,score=id_score
+            r=metainfo[id]
+            ppr+=f'##### {idx+1}. {r["title"]} (Avg. Score: {score:.2f})\n\n'
+            ppr+=f'*{", ".join(r["authors"]) if r["authors"] else "Anonymous"}*\n\n'
+            ppr+=f'**Published in:** {r["venue"]} ({r["year"]})'
+            ppr+=f'\t**Cited by** {r["citationCount"]}'
+            ppr+=f'  (*Influential: {r["influentialCitationCount"]}*)\n\n'
+            ppr+=f'**TL;DR:** {r["tldr"]}\n\n'
+            if prompt:
+                ppr+=f'**Abstract:** {r["abstract"]}\n\n'
+            group=grouped_docs[id]
+            for did,doc in enumerate(group):
+                ppr+=f'###### *Relevant Excerpt {did+1} (Score: {doc["score"]:.2f})*\n\n'
+                ppr+=f'```\n...\n{doc["doc"]}\n...\n```\n\n'
+            if not prompt:
+                ppr+=f'<details><summary>Show details</summary>\n\n'
+                ppr+=f'**Semantic Scholar ID:** {r["s2id"]}\n\n'
+                ppr+=f'**Abstract:** {r["abstract"]}\n\n'
+                if r['code'] is not None:
+                    ppr+=f'###### Reference Code\n\n'
+                    ppr+=f'```python\n{r["code"]}\n```\n\n'
+                ppr+=f'</details>\n\n'
+        return ppr
+
+
+
+
     #### Design Artifacts (TODO later)
 
     def search_design(query, result_limit=10) -> Union[None, List[Dict]]:
@@ -342,34 +766,3 @@ class SuperScholarSearcher:
 
 
 
-
-
-### Paper With Code Patches, it depends on old version of pydantic, httpx, and typing_extensions
-
-from paperswithcode.client import handler
-
-@handler
-def user_input(
-    cls,
-    q: Optional[str] = None,
-    page: int = 1,
-    items_per_page: int = 50,
-    **kwargs
-):
-    """Search in a similar fashion to the frontpage search.
-
-    Args:
-        q: Filter papers by querying the paper title and abstract.
-        page: Desired page.
-        items_per_page: Desired number of items per page.
-
-    Returns:
-        PaperRepos object.
-    """
-    params = {key: str(value) for key, value in kwargs.items()}
-    params["page"] = str(page)
-    params["items_per_page"] = str(items_per_page)
-    timeout = None
-    if q is not None:
-        params["q"] = q
-    return cls.http.get("/search/", params=params, timeout=timeout)
