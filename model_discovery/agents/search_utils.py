@@ -66,6 +66,7 @@ class SuperScholarSearcher:
     def __init__(self,ptree,stream,cfg={}):
         self.ptree=ptree
         self.files_dir=U.pjoin(ptree.lib_dir,'..','files')
+        self.libfiles_dir=U.pjoin(ptree.lib_dir,'..','lib_files') # files for the library requests, including indices and splits
         self.co=cohere.Client(os.environ['COHERE_API_KEY'])
         self.pc = Pinecone(api_key=os.environ['PINECONE_API_KEY'])
 
@@ -427,12 +428,12 @@ class SuperScholarSearcher:
     def _load_texts(self,index_only=False):
         # try to load pdf-converted texts, if not exist, load html-converted texts, otherwise skip
         if index_only:
-            if U.pexists(U.pjoin(self.files_dir,'texts_index.json')):
-                self.texts=U.load_json(U.pjoin(self.files_dir,'texts_index.json'))
-            if U.pexists(U.pjoin(self.files_dir,'texts2_index.json')):
-                self.texts2=U.load_json(U.pjoin(self.files_dir,'texts2_index.json'))
-            if U.pexists(U.pjoin(self.files_dir,'textsp_index.json')):
-                self.textsp=U.load_json(U.pjoin(self.files_dir,'textsp_index.json'))
+            if U.pexists(U.pjoin(self.libfiles_dir,'texts_index.json')):
+                self.texts=U.load_json(U.pjoin(self.libfiles_dir,'texts_index.json'))
+            if U.pexists(U.pjoin(self.libfiles_dir,'texts2_index.json')):
+                self.texts2=U.load_json(U.pjoin(self.libfiles_dir,'texts2_index.json'))
+            if U.pexists(U.pjoin(self.libfiles_dir,'textsp_index.json')):
+                self.textsp=U.load_json(U.pjoin(self.libfiles_dir,'textsp_index.json'))
             if self.texts and self.texts2 and self.textsp:
                 return
 
@@ -461,9 +462,9 @@ class SuperScholarSearcher:
                         else:
                             lib[i.split('.')[0]]=U.read_file(U.pjoin(text_dir,i))
         if index_only:
-            U.save_json(self.texts,U.pjoin(self.files_dir,'texts_index.json'))
-            U.save_json(self.texts2,U.pjoin(self.files_dir,'texts2_index.json'))
-            U.save_json(self.textsp,U.pjoin(self.files_dir,'textsp_index.json'))
+            U.save_json(self.texts,U.pjoin(self.libfiles_dir,'texts_index.json'))
+            U.save_json(self.texts2,U.pjoin(self.libfiles_dir,'texts2_index.json'))
+            U.save_json(self.textsp,U.pjoin(self.libfiles_dir,'textsp_index.json'))
 
     def _load_libs(self): # used for building the search library
         # load the primary and secondary libraries
@@ -617,14 +618,15 @@ class SuperScholarSearcher:
                 continue
             
             for i in tqdm(lib,desc=f'Loading splits {name}'):
-                U.mkdir(U.pjoin(self.files_dir,'splits'+tail))
+                U.mkdir(U.pjoin(self.libfiles_dir,'splits'+tail))
                 U.mkdir(U.pjoin(self.files_dir,'vectors'+tail))
-                if U.pexists(U.pjoin(self.files_dir,'splits'+tail,f'{i}.json')):
-                    split=U.load_json(U.pjoin(self.files_dir,'splits'+tail,f'{i}.json'))
+                if U.pexists(U.pjoin(self.libfiles_dir,'splits'+tail,f'{i}.json')):
+                    split=U.load_json(U.pjoin(self.libfiles_dir,'splits'+tail,f'{i}.json'))
                     if load_vectors:
                         vector=U.load_json(U.pjoin(self.files_dir,'vectors'+tail,f'{i}.json'))
                 else:
                     if not lib[i]:
+                        print(f'{i} not found in {name}')
                         self._load_texts()
                         if tail=='': lib=self.texts
                         elif tail=='2': lib=self.texts2
@@ -635,7 +637,7 @@ class SuperScholarSearcher:
                         print(f'Error splitting {i}: {e}')
                         vector,split={},{}
                     U.save_json(vector,U.pjoin(self.files_dir,'vectors'+tail,f'{i}.json'))
-                    U.save_json(split,U.pjoin(self.files_dir,'splits'+tail,f'{i}.json'))
+                    U.save_json(split,U.pjoin(self.libfiles_dir,'splits'+tail,f'{i}.json'))
                 splits.update(split)
                 if load_vectors:
                     vectors[i]=vector
