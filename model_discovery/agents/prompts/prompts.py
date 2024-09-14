@@ -1634,7 +1634,7 @@ The overall architecture can be represented as follows:
 ```python
 tokens = Tokenizer(sentence)
 X = Embeddings(tokens)
-Z = {}  # Initialized as an empty dictionary, updated by each block.
+Z = {{}}  # Initialized as an empty dictionary, updated by each block.
 for block in Blocks:
    X, Z = block(X, **Z)
 output = Logits(X)

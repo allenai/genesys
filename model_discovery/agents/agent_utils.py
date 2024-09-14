@@ -166,7 +166,7 @@ def call_model_structured(model,message,response_format, logprobs=False) -> Mode
     pydantic BaseModel # Recommended!
     """
     
-    assert 'gpt-4o' in model._config.model_name
+    # assert 'gpt-4o' in model._config.model_name
     
     if (response_format is not None and inspect.isclass(response_format)
         and issubclass(response_format,BaseModel)):

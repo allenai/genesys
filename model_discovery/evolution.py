@@ -379,6 +379,7 @@ class DesignArtifact(NodeObject):
     @classmethod
     def load(cls, design_dir: str):
         metadata = U.load_json(U.pjoin(design_dir, 'metadata.json'))
+        metadata['mode']=DesignModes(metadata['mode'])
         proposal = Proposal.load(design_dir)
         if proposal is None:
             return None
@@ -459,6 +460,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
     def load_design_sessions(self):
         for design_id in os.listdir(U.pjoin(self.db_dir,'sessions')):
             metadata = U.load_json(U.pjoin(self.session_dir(design_id), 'metadata.json'))
+            metadata['mode']=DesignModes(metadata['mode'])
             self.design_sessions[design_id] = metadata
 
     @property
@@ -471,20 +473,23 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
 
     # How to handle variants? i.e., in GPT, there are optional pre-conv and post-conv, maybe just all of them to the tree, let selector to choose
 
-    def new_design(self, seed_ids, ref_ids, instruct, mode=DesignModes.MUTATION): # new design session, a session explore the steps from a selected node
+    def new_design(self, seed_ids, ref_ids, instruct, num_samples, mode=DesignModes.MUTATION): # new design session, a session explore the steps from a selected node
         # generate unique hash for the design, do not consider the order
         design_id = hashlib.sha256(f"{sorted(ref_ids)}{sorted(seed_ids)}{instruct}{mode}".encode()).hexdigest()
         sessdata = {
             'seed_ids': seed_ids,
             'ref_ids': ref_ids,
             'instruct': instruct,
-            'mode': mode,
+            'mode': mode.value,
             'proposed': [],
             'reranked': {},
+            'num_samples': num_samples
         }
         self.design_sessions[design_id] = sessdata
-        U.save_json(sessdata, U.pjoin(self.session_dir(design_id), 'metadata.json'))
-        U.mkdir(U.pjoin(self.session_dir(design_id), 'log'))
+        sess_dir=self.session_dir(design_id)
+        U.mkdir(sess_dir)
+        U.save_json(sessdata, U.pjoin(sess_dir, 'metadata.json'))
+        U.mkdir(U.pjoin(sess_dir, 'log'))
         return design_id
     
     def get_gau_tree(self,acronym:str):
@@ -524,7 +529,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         unfinished_designs = []
         for design_id in self.design_sessions:
             sessdata=self.design_sessions[design_id]
-            num_samples=sessdata['design_cfg']['num_samples']
+            num_samples=sessdata['num_samples']
             passed = self.session_proposals(design_id,passed_only=True)
             implemented = self.session_implementations(design_id,succeed_only=True)
             if sum(passed)<num_samples['proposal'] or \
@@ -830,11 +835,12 @@ class EvolutionSystem(exec_utils.System):
             #from_json='/path/to/config'
             **kwargs
         )
-        self.rnd_agent.bind_ptree(self.ptree)
+        self.rnd_agent.bind_ptree(self.ptree,self.stream)
         # self.ptree.export()
 
     def link_stream(self,stream):
         self.stream=stream
+        self.rnd_agent.sss.stream=stream
 
     def reload(self,config):
         self._config = config
@@ -880,22 +886,30 @@ class EvolutionSystem(exec_utils.System):
             self.stream.write(f"No budget for {act}, will do another action")
             act='design' if act=='verify' else 'verify'
 
+        act='design' # XXX: for testing
+
         if act=='design':
             self.design() # FIXME: it needs to be updated with actual selector and design cfg
         elif act=='verify':
             self.verify()
 
     # TODO: the interface should be updated when selector agent is ready, and design cfg is ready
-    def design(self,n_sources,design_cfg,user_input='',design_id=None,mode=DesignModes.MUTATION,resume=True): # select then sample, TODO: n_sources and design_cfg should be configed
+    def design(self,n_sources=None,design_cfg={},user_input='',design_id=None,mode=DesignModes.MUTATION,resume=True): # select then sample, TODO: n_sources and design_cfg should be configed
         # user_input and design_cfg maybe changed by the user, so we need to pass them in
         unfinished_designs = self.ptree.get_unfinished_designs()
+        if n_sources is None:
+            n_sources = {
+                'ReferenceCoreWithTree':1,
+                # 'DesignArtifact':1,
+                'ReferenceWithCode':2,
+            }
         if design_id is None:
             if len(unfinished_designs)==0 or not resume:
                 instruct,seed,refs=self.select(n_sources,mode=mode) # use the seed_ids to record the phylogenetic tree
                 self.sample(instruct,seed,refs,mode=mode,user_input=user_input,design_cfg=design_cfg)
             else:
                 design_id = random.choice(unfinished_designs)
-                self.stream.write(f"There are {len(unfinished_designs)} unfinished designs, restore session {design_id}")
+                self.stream.write(f"There are {len(unfinished_designs)} unfinished designs, restore session {design_id}, num_samples will be restored.")
                 self.sample(design_id=design_id,user_input=user_input,design_cfg=design_cfg) # should not change the design_cfg
         else:
             self.stream.write(f"Design id provided, will restore session {design_id}")
@@ -913,7 +927,16 @@ class EvolutionSystem(exec_utils.System):
         Given the seeds which direct the global direction, the agent system should be fully responsible for the best local move
         """
 
-        self.rnd_agent(user_input,instruct,seed,refs,design_id,self.stream,design_cfg,mode)
+        self.rnd_agent(
+            user_input,
+            instruct=instruct,
+            seed=seed,
+            refs=refs,
+            design_id=design_id,
+            stream=self.stream,
+            design_cfg=design_cfg,
+            mode=mode
+        )
 
 
     # TODO: upgrade to Selector agent
@@ -939,10 +962,10 @@ class EvolutionSystem(exec_utils.System):
             refs = [i for i in seeds if i.type not in seed_types]
             assert len(seed)>0, "There must be at least one seed from DesignArtifact or ReferenceCoreWithTree when design from existing"
             if len(seed)>1:
-                seed = random.choice(seed) # NOTE: randomly select for now, should not happen at all
-                refs = [i for i in seeds if i.acronym!=seed.acronym]
+                seed = [random.choice(seed)] # NOTE: randomly select for now, should not happen at all
+                refs = [i for i in seeds if i.acronym!=seed[0].acronym]
             else:
-                seed = seeds[0]
+                seed = [seeds[0]]
         elif mode==DesignModes.SCRATCH:
             seed_types = ['DesignArtifact','ReferenceCoreWithTree','ReferenceWithCode']
             seed = [i for i in seeds if i.type in seed_types]
@@ -1117,6 +1140,6 @@ if __name__ == '__main__':
     # )
     # evolution_system._run(args.mode)
 
-    test_evolve('test_evo_004',step=True)
+    test_evolve('test_evo_001',step=True)
 
  

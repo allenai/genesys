@@ -131,7 +131,6 @@ def design(evosys,project_dir):
         if mode!=DesignModes.MUTATION.value:
             st.header("WARNING!!!: Only mutation mode is supported now. Other modes are not stable or unimplemented.")
 
-
         sources = ['ReferenceCoreWithTree', 'DesignArtifact', 'ReferenceCore', 'ReferenceWithCode', 'Reference']
         sources={i:len(evosys.ptree.filter_by_type(i)) for i in sources}
         

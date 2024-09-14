@@ -86,7 +86,7 @@ class SuperScholarSearcher:
             model="text-embedding-3-large"
         )
 
-    def reconfig(self,cfg):
+    def reconfig(self,cfg,stream=None):
         DEFAULT_SEARCH_LIMITS={
             's2':5,
             'arxiv':3,
@@ -102,6 +102,8 @@ class SuperScholarSearcher:
         if index_name!=self.index_name: # always do it in init
             self.index_name=index_name
             self.index=self.get_index(index_name)
+        if stream:
+            self.stream=stream
 
     def __call__(self,query,detail=None,raw=False,prompt=True):
         """
@@ -610,10 +612,10 @@ class SuperScholarSearcher:
                 ('Secondary',self.texts2,'2',self.splits2,self.vectors2),
                 ('Plus',self.textsp,'p',self.splitsp,self.vectorsp)]:
             
-            # ## XXX: REMOVE THIS
-            # if name!='Primary':
-            #     continue
-
+            ## XXX: REMOVE THIS
+            if name!='Primary':
+                continue
+            
             for i in tqdm(lib,desc=f'Loading splits {name}'):
                 U.mkdir(U.pjoin(self.files_dir,'splits'+tail))
                 U.mkdir(U.pjoin(self.files_dir,'vectors'+tail))

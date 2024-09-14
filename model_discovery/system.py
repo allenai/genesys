@@ -401,9 +401,9 @@ class ModelDiscoverySystem(exec_utils.System):
         self.design_fn_scratch=gu_design_scratch
         self.design_fn_mutation=gu_design_mutation
 
-    def bind_ptree(self,ptree): # need to bind a tree before start working, should be done immediately
+    def bind_ptree(self,ptree,stream): # need to bind a tree before start working, should be done immediately
         self.ptree = ptree
-        self.sss = SuperScholarSearcher(ptree,self.stream)
+        self.sss = SuperScholarSearcher(ptree,stream)
 
     def get_system_info(self):
         system_info = {}
@@ -424,7 +424,7 @@ class ModelDiscoverySystem(exec_utils.System):
 
     def query_system(
         self,
-        user_input='',
+        query='', # user query
         instruct=None,
         seed=None,
         refs=None,
@@ -449,13 +449,15 @@ class ModelDiscoverySystem(exec_utils.System):
 
         assert self.ptree is not None, 'Phylogenetic tree is not initialized, please bind a tree first'
         
+        user_input = query
+
         if stream is None: # and self._config.debug_steps:
             stream = PrintSystem(self._config)
 
         DEFAULT_AGENTS={
             'DESIGN_PROPOSER':'claude3.5_sonnet',
             'PROPOSAL_REVIEWER':'claude3.5_sonnet',
-            'DESIGN_IMPLEMENTER':'o1-mini',
+            'DESIGN_IMPLEMENTER':'o1_mini',
             'IMPLEMENTATION_REVIEWER':'claude3.5_sonnet',
             'SEARCH_ASSISTANT':'None', # None means no separate search assistant
         }
@@ -463,7 +465,7 @@ class ModelDiscoverySystem(exec_utils.System):
             'design_proposal':10,
             'implementation_debug':7,
             'post_refinement':5,
-            'max_search_rounds':10,
+            'max_search_rounds':4,
         }
         DEFAULT_TERMINATION={
             'max_failed_rounds':3,
@@ -490,17 +492,17 @@ class ModelDiscoverySystem(exec_utils.System):
         design_cfg['termination']=U.safe_get_cfg_dict(design_cfg,'termination',DEFAULT_TERMINATION)
         design_cfg['threshold']=U.safe_get_cfg_dict(design_cfg,'threshold',DEFAULT_THRESHOLD)
         design_cfg['search_settings']=U.safe_get_cfg_dict(design_cfg,'search_settings',DEFAULT_SEARCH_SETTINGS)
-        design_cfg['running_mode']=U.safe_get_cfg_dict(design_cfg,'running_mode',DEFAULT_MODE)
+        design_cfg['running_mode']=design_cfg.get('running_mode',DEFAULT_MODE)
         design_cfg['num_samples']=U.safe_get_cfg_dict(design_cfg,'num_samples',DEFAULT_NUM_SAMPLES)
 
-        self.sss.reconfig(search_cfg)
+        self.sss.reconfig(search_cfg,stream)
 
         # 1. create or retrieve a new session
         if design_id is None: # if provided, then its resuming a session
-            assert seed is None and refs is None and instruct is None, "Must provide seed, refs, and instruct to create a new design"
+            assert seed, "Must provide seed to create a new design"
             seed_ids = [seed.acronym for seed in seed]
-            ref_ids = [ref.acronym for ref in refs]
-            design_id=self.ptree.new_design(seed_ids, ref_ids, instruct, mode)
+            ref_ids = [ref.acronym for ref in refs] if refs else []
+            design_id=self.ptree.new_design(seed_ids, ref_ids, instruct, design_cfg['num_samples'], mode)
         else: # resuming a session
             stream.write(f"Restoring design session: {design_id}")
             mode=self.ptree.session_get(design_id,'mode')

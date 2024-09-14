@@ -6,6 +6,7 @@ from dataclasses import dataclass
 from typing import Optional
 
 from exec_utils.models.model import ModelOutput
+from exec_utils import SimpleLMAgent
 from .alang import FlowCreator,register_module,ROLE,SYSTEM_CALLER,USER_CALLER,AgentContext
 from .gau_utils import check_and_reformat_gau_code
 from ..search_utils import SuperScholarSearcher
@@ -31,7 +32,7 @@ GAB_COMPOSER=inspect.getsource(GABComposer)
 
 @dataclass
 class AgentModelDef:
-    name: str
+    agent: SimpleLMAgent
     model_name: Optional[str] = None
 
 class DesignModes(Enum):
@@ -40,15 +41,14 @@ class DesignModes(Enum):
     CROSSOVER = 'Crossover multiple designs (unsupported)'
 
 
-def reload_role(agent,model:AgentModelDef,prompt):# reload the role of an agent, it will change the role
-    name=agent.name
-    model_name=model.model_name
-    agent.model_state.static_message=agent.model_state.fn(
+def reload_role(name,agentdef:AgentModelDef,prompt):# reload the role of an agent, it will change the role
+    model_name=agentdef.model_name
+    agentdef.agent.model_state.static_message=agentdef.agent.model_state.fn(
         instruction=prompt,examples=[]
     )
     if model_name is not None:
-        agent.model_state._config.model_name=model_name
-    return ROLE(name,agent)
+        agentdef.agent.model._config.model_name=model_name
+    return ROLE(name,agentdef.agent)
 
 def apply_prompt(role,prompt,**kwargs):
     _prompt=prompt(**kwargs)
@@ -854,7 +854,6 @@ class GUFlowMutation(FlowCreator):
         self.stream=stream
         self.args=['main_tid']
         self.outs=['design_stack']
-        self.lib_dir=system.lib_dir
 
         # prepare roles
 
@@ -1030,7 +1029,7 @@ class GUFlowMutation(FlowCreator):
         traces=[]
         context_design_proposer=AgentContext()
         context_proposal_reviewer=AgentContext()
-        SELECTIONS=list(self.base_tree.units.keys())
+        SELECTIONS=list(self.seed_tree.units.keys())
         for i in range(self.max_attemps['design_proposal']):
             DESIGN_PROPOSER_SYSTEM=P.GUM_DESIGN_PROPOSER_SYSTEM 
             if USE_ISEARCH:
@@ -1312,7 +1311,7 @@ class GUFlowMutation(FlowCreator):
             proposals=[proposal]
         for proposal in proposals:
             self.stream.write(f'Implementing proposal: {proposal.modelname} with rating {proposal.rating} out of 5')
-            self.tree=copy.deepcopy(self.base_tree)
+            self.tree=copy.deepcopy(self.seed_tree)
             self.tree.name=proposal.modelname
             cost_raw=copy.deepcopy(self.costs)
             RETS=self._implement_proposal_recursive(main_tid,proposal)
