@@ -153,6 +153,15 @@ def _prompt_model_structured(model,message,response_format,logprobs=False,**kwar
     # )
 
 
+def o1_beta_message_patch(message):
+    msgs=[]
+    for msg in message:
+        msgs.append({
+            'role':msg['role'] if msg['role']!='system' else 'user',
+            'content':msg['content']
+        })
+    return msgs
+
 def call_model_structured(model,message,response_format, logprobs=False) -> ModelOutputPlus:
     """Calls the underlying model 
     
@@ -174,14 +183,24 @@ def call_model_structured(model,message,response_format, logprobs=False) -> Mode
     else:
         model_fn=model.model_obj.chat.completions.create
     
+    # XXX: patches for o1 beta stage
+    fn_kwargs={}
+    if model._config.model_name in ['o1-mini','o1-preview']: 
+        message=o1_beta_message_patch(message)
+        logprobs=False 
+        fn_kwargs['max_completion_tokens']=model._config.max_output_tokens
+        model_fn=model.model_obj.chat.completions.create # parse is not supported for o1 
+    else:
+        fn_kwargs['max_tokens']=model._config.max_output_tokens
+
     completions = model_fn(
         model=model._config.model_name,
         messages=message,
-        max_tokens=model._config.max_output_tokens,
-        stop=model._stop,
+        # stop=model._stop,
         temperature=model._config.temperature,
         response_format=response_format,
-        logprobs=logprobs
+        logprobs=logprobs,
+        **fn_kwargs
     )
     msg=completions.choices[0].message
     if (response_format is not None and inspect.isclass(response_format)

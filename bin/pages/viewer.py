@@ -18,8 +18,9 @@ import model_discovery.utils as U
 
 from model_discovery.evolution import EvolutionSystem
 
-from model_discovery.agents.flow.gau_flows import GUFlowScratch
-
+from model_discovery.agents.flow._legacy_gau_flows import GUFlowScratch
+from model_discovery.agents.flow._legacy_naive_flows import design_flow_definition,review_naive,design_naive,naive_design_review
+from model_discovery.agents.flow.gau_flows import GUFlowMutation
 
 class ViewModes(Enum):
     DIALOGS = 'Dialogs'
@@ -32,9 +33,29 @@ def viewer(evosys,project_dir):
     ### build the system 
     st.title("Agent Viewer")
 
+    
+    # Lagacy flows for development
+    DESIGN_ALANG =design_flow_definition()
+    design_flow,DESIGN_ALANG_reformatted=ALangCompiler().compile(DESIGN_ALANG,design_flow_definition,reformat=True)
+    
+    design_flow_naive=AgentDialogFlowNaive('Model Design Flow',design_naive)
+    review_flow_naive=AgentDialogFlowNaive('Model Review Flow',review_naive)
+    gu_flow_scratch = GUFlowScratch(system,None,None)
+    gu_flow_mutation = GUFlowMutation(system,None,None)
+
+    flows={
+        'GU Flow (Scratch) (Legacy)':gu_flow_scratch,
+        'GU Flow (Mutation)':gu_flow_mutation,
+        'Naive Design Flow':design_flow_naive,
+        'Naive Review Flow':review_flow_naive,
+    }
+
+
     ### Sidebar
     with st.sidebar:
         view_mode = st.selectbox("View Mode", list(ViewModes))
+        selected_flow = st.selectbox("Select a flow", list(flows.keys()))
+        flow = flows[selected_flow]
 
 
     if view_mode == ViewModes.DIALOGS:
@@ -81,9 +102,8 @@ def viewer(evosys,project_dir):
         # flow=system.design_flow
         # script=system.DESIGN_ALANG_reformatted
 
-        gu_flow = GUFlowScratch(system,None,None)
-        flow = gu_flow.flow
-        script = gu_flow.script
+        flow = flow.flow
+        script = flow.script
 
         if simple_mode:
             col1, col2 = st.columns([2,1])

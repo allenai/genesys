@@ -28,8 +28,7 @@ from exec_utils import (
 )
 from .agents.roles import *
 from .agents.flow.alang import AgentDialogManager,AgentDialogFlowNaive,ALangCompiler,SYSTEM_CALLER,FAILED,ROLE
-from .agents.flow.naive_flows import design_flow_definition,review_naive,design_naive,naive_design_review
-from .agents.flow.gau_flows import gu_design_scratch,gu_design_mutation,DesignModes,RunningModes
+from .agents.flow.gau_flows import gu_design_mutation,DesignModes,RunningModes
 from .agents.search_utils import SuperScholarSearcher
 
 # from .evolution import NodeObject
@@ -390,15 +389,6 @@ class ModelDiscoverySystem(exec_utils.System):
         self.sss = None
 
         # Load flows
-
-        # Lagacy flows for development
-        self.review_flow=AgentDialogFlowNaive('Model Review Flow',review_naive)
-        self.DESIGN_ALANG =design_flow_definition()
-        self.design_flow,self.DESIGN_ALANG_reformatted=ALangCompiler().compile(self.DESIGN_ALANG,design_flow_definition,reformat=True)
-        self.design_flow_naive=AgentDialogFlowNaive('Model Design Flow',design_naive)
-
-        # New flows for production
-        self.design_fn_scratch=gu_design_scratch
         self.design_fn_mutation=gu_design_mutation
 
     def bind_ptree(self,ptree,stream): # need to bind a tree before start working, should be done immediately
@@ -457,8 +447,9 @@ class ModelDiscoverySystem(exec_utils.System):
         DEFAULT_AGENTS={
             'DESIGN_PROPOSER':'claude3.5_sonnet',
             'PROPOSAL_REVIEWER':'claude3.5_sonnet',
-            'DESIGN_IMPLEMENTER':'o1_mini',
-            'IMPLEMENTATION_REVIEWER':'None',
+            'IMPLEMENTATION_PLANNER':'claude3.5_sonnet',
+            'IMPLEMENTATION_CODER':'o1_mini',
+            'IMPLEMENTATION_OBSERVER':'None',
             'SEARCH_ASSISTANT':'None', # None means no separate search assistant
         }
         DEFAULT_MAX_ATTEMPTS={
@@ -524,7 +515,6 @@ class ModelDiscoverySystem(exec_utils.System):
             self.design_fn_mutation(self,design_stream,design_id,design_cfg,user_input,proposal)
         elif mode==DesignModes.SCRATCH:
             raise NotImplementedError('Scratch mode is unstable, do not use it')
-            self.design_fn_scratch(self,design_stream,design_id)
         elif mode==DesignModes.CROSSOVER:
             raise NotImplementedError('Crossover mode is not implemented')
         else:

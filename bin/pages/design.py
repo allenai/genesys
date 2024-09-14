@@ -5,7 +5,6 @@ import datetime
 import streamlit as st
 import sys,os
 
-
 sys.path.append('.')
 import model_discovery.utils as U
 from model_discovery.agents.flow.gau_flows import EndReasons,RunningModes,END_REASONS_LABELS,DesignModes
@@ -102,7 +101,7 @@ def design(evosys,project_dir):
 
     with st.expander("**Control Panel**",expanded=True):#,icon='⚙️'):
 
-        col1, col2 = st.columns([1, 3])
+        col1, col2 = st.columns([1, 5])
         with col1:
             # st.markdown("#### Configure design mode")
             mode = st.selectbox(label="Design Mode",options=[i.value for i in DesignModes])
@@ -112,9 +111,10 @@ def design(evosys,project_dir):
             agent_type_labels = {
                 'DESIGN_PROPOSER':'Proposal Agent',
                 'PROPOSAL_REVIEWER':'Proposal Reviewer',
-                'DESIGN_IMPLEMENTER':'Implementation Agent',
-                'IMPLEMENTATION_REVIEWER':'Implementation Supervisor',
-                'SEARCH_ASSISTANT': 'Separate Search Assistant'
+                'IMPLEMENTATION_PLANNER':'Implementation Planner',
+                'IMPLEMENTATION_CODER':'Implementation Coder',
+                'IMPLEMENTATION_OBSERVER':'Implementation Observer',
+                'SEARCH_ASSISTANT': '*Separate Search Assistant*'
             }
             agent_types = {}
             cols = st.columns(len(agent_type_labels))
@@ -122,16 +122,16 @@ def design(evosys,project_dir):
                 with cols[i]:
                     index=2#0 # for fast testing
                     options=AGENT_TYPES
-                    if agent in ['SEARCH_ASSISTANT','IMPLEMENTATION_REVIEWER']:
+                    if agent in ['SEARCH_ASSISTANT','IMPLEMENTATION_OBSERVER']:
                         index=len(AGENT_TYPES)
                         options=AGENT_TYPES+['None']
-                    elif agent=='DESIGN_IMPLEMENTER':
+                    elif agent=='IMPLEMENTATION_CODER':
                         index=4
-                    agent_types[agent] = st.selectbox(label=agent_type_labels[agent],options=options,index=index)
+                    agent_types[agent] = st.selectbox(label=agent_type_labels[agent],options=options,index=index,disabled=agent=='SEARCH_ASSISTANT')
             design_cfg['agent_types'] = agent_types
 
         if mode!=DesignModes.MUTATION.value:
-            st.header("WARNING!!!: Only mutation mode is supported now. Other modes are not stable or unimplemented.")
+            st.toast("WARNING!!!: Only mutation mode is supported now. Other modes are not stable or unimplemented.")
 
         sources = ['ReferenceCoreWithTree', 'DesignArtifact', 'ReferenceCore', 'ReferenceWithCode', 'Reference']
         sources={i:len(evosys.ptree.filter_by_type(i)) for i in sources}

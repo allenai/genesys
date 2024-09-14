@@ -1,7 +1,7 @@
 import numpy as np
 
 from .alang import ROLE,SYSTEM_CALLER,FAILED
-from ..prompts.prompts import GAB_ERROR,REVIEWER_PROMPT,DESIGNER_PROMPT
+from ..prompts._legacy_prompts import GAB_ERROR,REVIEWER_PROMPT,DESIGNER_PROMPT
 
 # from model_discovery.system import ModelDiscoverySystem
 import inspect  
