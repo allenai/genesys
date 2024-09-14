@@ -113,18 +113,20 @@ def design(evosys,project_dir):
                 'DESIGN_PROPOSER':'Proposal Agent',
                 'PROPOSAL_REVIEWER':'Proposal Reviewer',
                 'DESIGN_IMPLEMENTER':'Implementation Agent',
-                'IMPLEMENTATION_REVIEWER':'Implementation Reviewer',
-                'SEARCH_ASSISTANT': 'Search Assistant'
+                'IMPLEMENTATION_REVIEWER':'Implementation Supervisor',
+                'SEARCH_ASSISTANT': 'Separate Search Assistant'
             }
             agent_types = {}
             cols = st.columns(len(agent_type_labels))
             for i,agent in enumerate(agent_type_labels):
                 with cols[i]:
-                    index=0
+                    index=2#0 # for fast testing
                     options=AGENT_TYPES
-                    if agent=='SEARCH_ASSISTANT':
-                        index=-1
+                    if agent in ['SEARCH_ASSISTANT','IMPLEMENTATION_REVIEWER']:
+                        index=len(AGENT_TYPES)
                         options=AGENT_TYPES+['None']
+                    elif agent=='DESIGN_IMPLEMENTER':
+                        index=4
                     agent_types[agent] = st.selectbox(label=agent_type_labels[agent],options=options,index=index)
             design_cfg['agent_types'] = agent_types
 
@@ -141,8 +143,9 @@ def design(evosys,project_dir):
                 if mode==DesignModes.MUTATION.value and source=='ReferenceCoreWithTree':
                     n_sources[source] = st.number_input(label=f'{source} ({sources[source]})',min_value=1,value=1,max_value=1,disabled=True)
                 else:
-                    init_value=min(1,sources[source])
-                    n_sources[source] = st.number_input(label=f'{source} ({sources[source]})',min_value=0,value=init_value,max_value=sources[source])
+                    init_value=0 if source in ['DesignArtifact','ReferenceCore'] else min(2,sources[source])
+                    disabled=True if source == 'DesignArtifact' else False
+                    n_sources[source] = st.number_input(label=f'{source} ({sources[source]})',min_value=0,value=init_value,max_value=sources[source],disabled=disabled)
 
 
         col1,col2=st.columns([3,2])
@@ -207,7 +210,7 @@ def design(evosys,project_dir):
     #### Run design
 
     # cols = st.columns([7,2.5,1.8,1.2])
-    cols = st.columns([7,3,2])
+    cols = st.columns([6,2,2,1,1])
     with cols[0]:
         user_input = st.text_input(label = "Add any additional instructions (optional)" )
     with cols[1]:
@@ -215,13 +218,14 @@ def design(evosys,project_dir):
         design_cfg['running_mode'] = RunningModes(running_mode)
     with cols[2]:
         EXPERIMENT_RUNS = st.number_input(label="Number of design runs",min_value=1,value=1)
-    
-    cols = st.columns([1,1])
-    with cols[0]:
-        with st.expander('Check configurations'):
-            st.write(design_cfg)
-    with cols[1]:
-        submit = st.button(label="***Run design***", use_container_width=True,disabled=mode!=DesignModes.MUTATION.value)
+    with cols[3]:
+        st.write('')
+        st.write('')
+        submit = st.button(label="***Run design***",disabled=mode!=DesignModes.MUTATION.value)
+    with cols[4]:
+        st.write('')
+        st.write('')
+        resume = st.checkbox(label="Resume",value=True)
 
     if submit:
         for i in range(EXPERIMENT_RUNS):
@@ -239,7 +243,6 @@ def design(evosys,project_dir):
             with st.spinner(text=spinner_text):
                 _mode = DesignModes(mode)
                 design_id=None
-                resume=False
                 evosys.design(n_sources,design_cfg,user_input=user_input,mode=_mode,design_id=design_id,resume=resume)
     
     elif selected_design:
@@ -259,4 +262,8 @@ def design(evosys,project_dir):
                 log=eval(U.read_file(U.pjoin(selected_folder_dir,session,'stream.log')))
                 logs.append(log)
             stat_logs(logs)
+
+    
+
+
 

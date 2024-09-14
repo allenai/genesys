@@ -59,6 +59,7 @@ def build_evo_system(name='test_evo_000'):
     evo_system = BuildEvolution(
         strparams=';'.join(strparams),
         do_cache=False,
+        stream=st,
         # cache_type='diskcache',
     )
     return evo_system

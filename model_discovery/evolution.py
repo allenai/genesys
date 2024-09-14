@@ -56,7 +56,7 @@ from typing import (
     Optional,
     Union
 )
-from .system import BuildSystem,PrintSystem,DesignModes
+from .system import BuildSystem,PrintSystem,DesignModes,RunningModes
 from exec_utils.factory import _check_config
 from exec_utils import BuildSystem as NativeBuild
 from exec_utils.aliases import ConfigType
@@ -290,19 +290,25 @@ class Proposal:
     instructions:str
     search_report:str
     search_references:str
-    traces: List[Dict]
+    # traces: List[Dict]
     costs: Dict[str, float]
     design_cfg: Dict[str, Any]
     user_input: str
+    search_stack: List[str] = None
+    review_search_stack: List[str] = None
 
-    def save(self, design_dir: str):
-        U.save_json(self.to_dict(), U.pjoin(design_dir, f'proposal.json'))
+    def save(self, design_dir: str, name='proposal.json'):
+        self.design_cfg['running_mode']=self.design_cfg['running_mode'].value
+        U.save_json(asdict(self), U.pjoin(design_dir, name))
+        self.design_cfg['running_mode']=RunningModes(self.design_cfg['running_mode'])
 
     @classmethod
-    def load(cls, design_dir: str):
-        if not U.pexists(U.pjoin(design_dir, 'proposal.json')):
+    def load(cls, design_dir: str, name='proposal.json'):
+        if not U.pexists(U.pjoin(design_dir, name)):
             return None
-        return cls.from_dict(U.load_json(U.pjoin(design_dir, 'proposal.json')))
+        dict=U.load_json(U.pjoin(design_dir, name))
+        dict['design_cfg']['running_mode']=RunningModes(dict['design_cfg']['running_mode'])
+        return cls(**dict)
 
 
 @dataclass
@@ -324,13 +330,29 @@ class Implementation:
     # TODO:consider gaudict management
 
     def save(self, design_dir: str):
-        U.save_json(self.to_dict(), U.pjoin(design_dir, f'implementation.json'))
+        dict=self.to_dict()
+        U.save_json(dict, U.pjoin(design_dir, f'implementation.json'))
+        self=self.from_dict(dict)
+
+    def to_dict(self):
+        self.history=[asdict(attempt) for attempt in self.history]
+        for i in range(len(self.history)):
+            self.history[i]['design_cfg']['running_mode']=self.history[i]['design_cfg']['running_mode'].value
+        return asdict(self)
+
+    @classmethod
+    def from_dict(cls, dict: Dict):
+        for i in range(len(dict['history'])):
+            dict['history'][i]['design_cfg']['running_mode']=RunningModes(dict['history'][i]['design_cfg']['running_mode'])
+        dict['history']=[ImplementationAttempt.from_dict(attempt) for attempt in dict['history']]
+        return cls(**dict)
 
     @classmethod
     def load(cls, design_dir: str):
         if not U.pexists(U.pjoin(design_dir, 'implementation.json')):
             return None
-        return cls.from_dict(U.load_json(U.pjoin(design_dir, 'implementation.json')))
+        dict=U.load_json(U.pjoin(design_dir, 'implementation.json'))
+        return cls.from_dict(dict)
     
     def get_cost(self):
         costs={}
@@ -348,7 +370,7 @@ class Verification:
     verification_passed: bool
 
     def save(self, design_dir: str):
-        U.save_json(self.to_dict(), U.pjoin(design_dir, f'verification.json'))
+        U.save_json(asdict(self), U.pjoin(design_dir, f'verification.json'))
 
     @classmethod
     def load(cls, dir: str):
@@ -362,37 +384,33 @@ class DesignArtifact(NodeObject):
     verifications: Dict[str, Verification] = field(default_factory=dict) # find by modelname/id
     
     @property
-    def stage(self) -> str:
-        if self.verifications:
-            return 'Verified'
-        elif self.implementation:
-            if self.implementation.succeed:
-                return 'Implemented'
-            else:
-                return 'ImplementationFailed'
-        elif self.proposal:
-            if self.proposal.passed:
-                return 'Proposed'
-            else:
-                return 'ProposalFailed'
+    def type(self) -> str:
+        if self.is_implemented():
+            return 'DesignArtifactImplemented'
+        else:
+            return 'DesignArtifact'
             
     @classmethod
     def load(cls, design_dir: str):
         metadata = U.load_json(U.pjoin(design_dir, 'metadata.json'))
-        metadata['mode']=DesignModes(metadata['mode'])
         proposal = Proposal.load(design_dir)
         if proposal is None:
             return None
         implementation = Implementation.load(design_dir)
         verifications = {}
-        for scale in os.listdir(U.pjoin(design_dir,'verifications')):
-            dir = U.pjoin(design_dir,'verifications',f'{scale}.json')
-            if U.pexists(dir):
-                verifications[scale] = Verification.load(dir)
+        ver_dir=U.pjoin(design_dir,'verifications')
+        if U.pexists(ver_dir):
+            for scale in os.listdir(ver_dir):
+                dir = U.pjoin(ver_dir,f'{scale}.json')
+                if U.pexists(dir):
+                    verifications[scale] = Verification.load(dir)
         return cls(proposal=proposal, implementation=implementation, verifications=verifications, **metadata)
             
     def to_prompt(self):
         raise NotImplementedError('to_prompt is not implemented yet for DesignArtifact, TODO')
+
+    def is_implemented(self):
+        return self.implementation is not None and self.implementation.succeed
 
     def get_cost(self):
         costs=self.proposal.costs
@@ -497,7 +515,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         if node.type=='ReferenceCoreWithTree':
             tree=node.tree
             return tree
-        elif node.type=='DesignArtifact':
+        elif node.type=='DesignArtifact' and node.implementation and node.implementation.succeed:
             tree=node.implementation.tree
             return tree
         else:
@@ -510,7 +528,9 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         return seeds,refs,sessdata['instruct']
     
     def session_dir(self, design_id: str):
-        return U.pjoin(self.db_dir, 'sessions', design_id)
+        sess_dir=U.pjoin(self.db_dir, 'sessions', design_id)
+        U.mkdir(sess_dir)
+        return sess_dir
     
     def session_get(self,design_id:str,key:str):
         return self.design_sessions[design_id].get(key)
@@ -520,7 +540,9 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         self.save_session(design_id)
     
     def design_dir(self, acronym: str):
-        return U.pjoin(self.db_dir, 'designs', acronym)
+        design_dir=U.pjoin(self.db_dir, 'designs', acronym)
+        U.mkdir(design_dir)
+        return design_dir
     
     def get_node(self, acronym: str):
         return self.G.nodes[acronym]['data']
@@ -532,8 +554,8 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
             num_samples=sessdata['num_samples']
             passed = self.session_proposals(design_id,passed_only=True)
             implemented = self.session_implementations(design_id,succeed_only=True)
-            if sum(passed)<num_samples['proposal'] or \
-                sum(implemented)<num_samples['implementation']:
+            if len(passed)<num_samples['proposal'] or \
+                len(implemented)<num_samples['implementation']:
                 unfinished_designs.append(design_id)
         return unfinished_designs
     
@@ -556,7 +578,6 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
     def propose(self, design_id: str, proposal,proposal_traces,costs,design_cfg,user_input): # create a new design artifact
         sessdata=self.design_sessions[design_id]
         seeds=sessdata['seed_ids']
-        proposal['traces']=proposal_traces
         proposal['costs']=costs
         proposal['design_cfg']=design_cfg
         proposal['user_input']=user_input
@@ -569,8 +590,16 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         acronym = self.unique_acronym(proposal.modelname)
         proposal.modelname = acronym
         metadata = {'design_id': design_id, 'acronym': acronym, 'seed_ids': seeds, 'title': title}
-        U.save_json(metadata, U.pjoin(self.session_dir(design_id), 'metadata.json'))
-        proposal.save(self.session_dir(design_id))
+        U.save_json(metadata, U.pjoin(self.design_dir(design_id), 'metadata.json'))
+        proposal.save(self.design_dir(design_id))
+        traces_dir=U.pjoin(self.design_dir(design_id),'proposal_traces')
+        for idx,trace in enumerate(proposal_traces):
+            U.mkdir(traces_dir)
+            trace['costs']=costs
+            trace['design_cfg']=design_cfg
+            trace['user_input']=user_input
+            proposal_trace=Proposal(**trace)
+            proposal_trace.save(traces_dir,f'trace_{idx}.json')
         design_artifact = DesignArtifact(design_id=design_id, acronym=acronym, seed_ids=seeds, title=title, proposal=proposal)
         self.G.add_node(acronym, data=design_artifact)
         self.design_sessions[design_id]['proposed'].append(acronym)
@@ -593,6 +622,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
             implementation.history.append(attempt)
         implementation.save(self.design_dir(design_id))
         design_artifact.implementation=implementation
+        self.G.nodes[design_id]['data']=design_artifact
 
     def verify(self, design_id: str, scale: str, verification_report): # attach a verification report under a scale to an implemented node
         pass
@@ -688,8 +718,8 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
             if max_nodes and idx>max_nodes:
                 break
             data=self.G.nodes[node]['data']
-            if data.type=='DesignArtifact':
-                scale=data.scale
+            if data.type in ['DesignArtifact','DesignArtifactImplemented']:
+                scale='31M'   #data.scale # TODO: use the actual scale
                 color=NODE_COLOR_MAP[scale]
                 if data.seed_ids == []:
                     color=ROOT_COLOR
@@ -902,6 +932,7 @@ class EvolutionSystem(exec_utils.System):
                 'ReferenceCoreWithTree':1,
                 # 'DesignArtifact':1,
                 'ReferenceWithCode':2,
+                'Reference':2,
             }
         if design_id is None:
             if len(unfinished_designs)==0 or not resume:
@@ -909,11 +940,13 @@ class EvolutionSystem(exec_utils.System):
                 self.sample(instruct,seed,refs,mode=mode,user_input=user_input,design_cfg=design_cfg)
             else:
                 design_id = random.choice(unfinished_designs)
-                self.stream.write(f"There are {len(unfinished_designs)} unfinished designs, restore session {design_id}, num_samples will be restored.")
-                self.sample(design_id=design_id,user_input=user_input,design_cfg=design_cfg) # should not change the design_cfg
+                mode=DesignModes(self.ptree.session_get(design_id,'mode'))
+                self.stream.write(f"There are {len(unfinished_designs)} unfinished designs, restore a session {design_id}, mode: {mode}.")
+                self.sample(design_id=design_id,user_input=user_input,design_cfg=design_cfg,mode=mode) # should not change the design_cfg
         else:
-            self.stream.write(f"Design id provided, will restore session {design_id}")
-            self.sample(design_id=design_id,user_input=user_input,design_cfg=design_cfg)
+            mode=DesignModes(self.ptree.session_get(design_id,'mode'))
+            self.stream.write(f"Design id provided, will restore session {design_id}, mode: {mode}")
+            self.sample(design_id=design_id,user_input=user_input,design_cfg=design_cfg,mode=mode)
 
     def sample(self,instruct=None,seed:List[NodeObject]=None,refs:List[NodeObject]=None,design_id=None,mode=DesignModes.MUTATION,user_input='',design_cfg={}):
         """ 
@@ -957,7 +990,7 @@ class EvolutionSystem(exec_utils.System):
                 instruct+=_instruct # NOTE: should not like this
                 seeds.extend(topk)
         if mode==DesignModes.MUTATION:
-            seed_types = ['DesignArtifact','ReferenceCoreWithTree']
+            seed_types = ['DesignArtifactImplemented','ReferenceCoreWithTree']
             seed = [i for i in seeds if i.type in seed_types] # NOTE: need improve 
             refs = [i for i in seeds if i.type not in seed_types]
             assert len(seed)>0, "There must be at least one seed from DesignArtifact or ReferenceCoreWithTree when design from existing"
@@ -967,7 +1000,7 @@ class EvolutionSystem(exec_utils.System):
             else:
                 seed = [seeds[0]]
         elif mode==DesignModes.SCRATCH:
-            seed_types = ['DesignArtifact','ReferenceCoreWithTree','ReferenceWithCode']
+            seed_types = ['DesignArtifactImplemented','ReferenceCoreWithTree','ReferenceWithCode']
             seed = [i for i in seeds if i.type in seed_types]
             refs = [i for i in seeds if i.type not in seed_types]
         elif mode==DesignModes.CROSSOVER:

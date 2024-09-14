@@ -1673,7 +1673,7 @@ Your task of creating a novel LM block design will follow an iterative process o
 
 In this phase, you will conduct multiple rounds of search and refinement without external review. Each round consists of:
 
-1. **Search**: Utilize the search tool to gather relevant information. Formulate specific queries to investigate aspects of your proposal or explore new ideas in the field of language model architecture.
+1. **Search**: Utilize the search tool to gather relevant information. Formulate specific queries to investigate aspects of your proposal or explore new ideas in the field of language model architecture. For searching external sources, you can use keywords, do not give more than 3 keywords a time which may cause failure, if you want to search more topic, do it in more rounds.
 
 2. **Analysis**: Carefully analyze the search results and extract key insights that can inform your proposal.
 
@@ -1783,7 +1783,7 @@ GUM_DESIGN_PROPOSER_SYSTEM_ISEARCH = AgentPrompt(GUM_DESIGN_PROPOSER_SYSTEM_ISEA
 
 class GUM_DESIGN_PROPOSAL_ISEARCH_format(BaseModel):
    analysis: str = Field(..., description="A detailed analysis of the current progress of the proposal, including identified gaps, areas for improvement, and specific information needed to enhance the design. This should guide the formulation of search queries.")
-   query: str = Field(..., description="A high-level search query used for broad searches in external sources like arXiv, Papers with Code, and Semantic Scholar. This should be a clear, concise question or statement derived from the analysis, aimed at addressing identified gaps or exploring potential improvements in the LM block design.")
+   keywords: str = Field(..., description="Keywords for searching external sources like arXiv, Papers with Code, and Semantic Scholar. This should be clear, concise keywords derived from the analysis to help the search engine locate the papers that may help you in based on title, abstract, and other metadata, aimed at addressing identified gaps or exploring potential improvements in the LM block design. Do not give more than 3 keywords a time which may cause failure, if you want to search more topic, do it in next round.")
    detail: str = Field(..., description="A detailed query used for searching the internal vector store of research papers and technical documents. This should be a specific, targeted query that aims to extract relevant information from the contents of papers in the vector store, focusing on particular aspects of LM architecture, techniques, or performance metrics identified in the analysis.")
    ready: bool = Field(..., description="Whether you should continue the search and refinement process or ready to give the proposal.")
 
@@ -2003,7 +2003,7 @@ In this system, the model is composed of smaller units called **Generalized Auto
 
 Before providing your review, you have access to a search function that allows you to gather information from various sources. This search functionality will help you assess the novelty and meaningfulness of the proposal by comparing it to existing research and implementations. The search function has the following capabilities:
 
-1. It can search papers in S2, ArXiv, and Papers with Code using a general query.
+1. It can search papers in S2, ArXiv, and Papers with Code using a keywords, do not give more than 3 keywords a time which may cause failure, if you want to search more topic, do it in more rounds.
 2. It can perform a more detailed search in internal library vector stores.
 3. The function returns both internal and external search results.
 4. Results are presented in a readable format
@@ -2189,10 +2189,10 @@ Remember to be objective, strict, and fair. Approve the proposal only if it meet
 """
 
 class GUM_PROPOSAL_REVIEW_ISEARCH_format(BaseModel):
-    analysis: str = Field(..., description="A comprehensive analysis of the proposed GAU design, including its potential impact on accuracy, robustness, efficiency, and scalability. This should highlight the strengths and concerns of the design, assess its theoretical soundness, and identify any areas that require further investigation or clarification.")
-    query: str = Field(..., description="A high-level search query used for broad searches in external sources like arXiv, Papers with Code, and Semantic Scholar. This should be a clear, concise question or statement derived from the analysis, aimed at addressing identified gaps or exploring potential improvements in the LM block design.")
-    detail: str = Field(..., description="A detailed query used for searching the internal vector store of research papers and technical documents. This should be a specific, targeted query that aims to extract relevant information from the contents of papers in the vector store, focusing on particular aspects of LM architecture, techniques, or performance metrics identified in the analysis.")
-    ready: bool = Field(..., description="A boolean flag indicating whether the review is ready for the next stage. Set to True if the analysis is complete and no further searches are needed, or False if additional information or investigation is required before proceeding with the final review and rating.")
+   analysis: str = Field(..., description="A comprehensive analysis of the proposed GAU design, including its potential impact on accuracy, robustness, efficiency, and scalability. This should highlight the strengths and concerns of the design, assess its theoretical soundness, and identify any areas that require further investigation or clarification.")
+   keywords: str = Field(..., description="Keywords for searching external sources like arXiv, Papers with Code, and Semantic Scholar. This should be clear, concise keywords derived from the analysis to help the search engine locate the papers that may help you in based on title, abstract, and other metadata, aimed at addressing identified gaps or exploring potential improvements in the LM block design. Do not give more than 3 keywords a time which may cause failure, if you want to search more topic, do it in next round.")
+   detail: str = Field(..., description="A detailed query used for searching the internal vector store of research papers and technical documents. This should be a specific, targeted query that aims to extract relevant information from the contents of papers in the vector store, focusing on particular aspects of LM architecture, techniques, or performance metrics identified in the analysis.")
+   ready: bool = Field(..., description="A boolean flag indicating whether the review is ready for the next stage. Set to True if the analysis is complete and no further searches are needed, or False if additional information or investigation is required before proceeding with the final review and rating.")
 
 
 GUM_PROPOSAL_REVIEW_ISEARCH_BEGIN=AgentPrompt(GUM_PROPOSAL_REVIEW_ISEARCH_BEGIN_prompt,GENERAL_JSON_parser,GUM_PROPOSAL_REVIEW_ISEARCH_format)
@@ -2219,7 +2219,7 @@ def gen_GUM_PROPOSAL_REFINEMENT(SELECTIONS:list[str],two_stage:bool=False,use_is
       class GUM_DESIGN_PROPOSAL_ISEARCH_REFINEMENT_format(BaseModel):
          reflection: str = Field(..., description="The reflection based on the review, rating, and suggestions.")
          analysis: str = Field(..., description="A detailed analysis of the current progress of the proposal, including identified gaps, areas for improvement, and specific information needed to enhance the design. This should guide the formulation of search queries.")
-         query: str = Field(..., description="A high-level search query used for broad searches in external sources like arXiv, Papers with Code, and Semantic Scholar. This should be a clear, concise question or statement derived from the analysis, aimed at addressing identified gaps or exploring potential improvements in the LM block design.")
+         keywords: str = Field(..., description="Keywords for searching external sources like arXiv, Papers with Code, and Semantic Scholar. This should be clear, concise keywords derived from the analysis to help the search engine locate the papers that may help you in based on title, abstract, and other metadata, aimed at addressing identified gaps or exploring potential improvements in the LM block design. Do not give more than 3 keywords a time which may cause failure, if you want to search more topic, do it in next round.")
          detail: str = Field(..., description="A detailed query used for searching the internal vector store of research papers and technical documents. This should be a specific, targeted query that aims to extract relevant information from the contents of papers in the vector store, focusing on particular aspects of LM architecture, techniques, or performance metrics identified in the analysis.")
          ready: bool = Field(..., description="Whether you should continue the search and refinement process or ready to give the proposal.")
 

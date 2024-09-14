@@ -36,9 +36,9 @@ class AgentModelDef:
     model_name: Optional[str] = None
 
 class DesignModes(Enum):
-    MUTATION = 'Mutate from existing design'
+    MUTATION = 'Mutate existing design'
     SCRATCH = 'Design from scratch (unstable)'
-    CROSSOVER = 'Crossover multiple designs (unsupported)'
+    CROSSOVER = 'Crossover designs (unsupported)'
 
 
 def reload_role(name,agentdef:AgentModelDef,prompt):# reload the role of an agent, it will change the role
@@ -1030,7 +1030,7 @@ class GUFlowMutation(FlowCreator):
         context_design_proposer=AgentContext()
         context_proposal_reviewer=AgentContext()
         SELECTIONS=list(self.seed_tree.units.keys())
-        for i in range(self.max_attemps['design_proposal']):
+        for attempt in range(self.max_attemps['design_proposal']):
             DESIGN_PROPOSER_SYSTEM=P.GUM_DESIGN_PROPOSER_SYSTEM 
             if USE_ISEARCH:
                 DESIGN_PROPOSER_SYSTEM=P.GUM_DESIGN_PROPOSER_SYSTEM_ISEARCH
@@ -1039,7 +1039,7 @@ class GUFlowMutation(FlowCreator):
             DESIGN_PROPOSER=reload_role('design_proposer',self.agents['DESIGN_PROPOSER'],DESIGN_PROPOSER_SYSTEM(GAU_BASE=GAU_BASE))
             design_proposer_tid=self.dialog.fork(main_tid,USER_CALLER,DESIGN_PROPOSER,context=context_design_proposer,
                                                 alias='design_proposal',note=f'Starting design proposal...')
-            if i==0:
+            if attempt==0:
                 status_info=f'Initial design proposal...'
                 GUM_DESIGN_PROPOSAL=P.gen_GUM_DESIGN_PROPOSAL(SELECTIONS=SELECTIONS,two_stage=USE_2STAGE,use_isearch=USE_ISEARCH)
                 if USE_ISEARCH:
@@ -1049,7 +1049,7 @@ class GUFlowMutation(FlowCreator):
                 proposal_prompt=GUM_DESIGN_PROPOSAL(SEED=query)
                 GUM_DESIGN_PROPOSAL.apply(DESIGN_PROPOSER.obj)
             else:
-                status_info=f'Refining design proposal (attempt {i})...'
+                status_info=f'Refining design proposal (attempt {attempt})...'
                 GUM_PROPOSAL_REFINEMENT=P.gen_GUM_PROPOSAL_REFINEMENT(SELECTIONS=SELECTIONS,two_stage=USE_2STAGE,use_isearch=USE_ISEARCH)
                 if USE_ISEARCH:
                     GUM_PROPOSAL_REFINEMENT,GUM_DESIGN_PROPOSAL_FINISH=GUM_PROPOSAL_REFINEMENT
@@ -1065,49 +1065,50 @@ class GUFlowMutation(FlowCreator):
                 with self.status_handler(status_info):
                     self.print_details(DESIGN_PROPOSER.obj,context_design_proposer,proposal_prompt)
                     _,out=self.dialog.call(design_proposer_tid,proposal_prompt)
-                    analysis,query,detail,ready,reflection=out['analysis'],out['query'],out['detail'],out['ready'],out.get('reflection',None)
+                    analysis,keywords,detail,ready,reflection=out['analysis'],out['keywords'],out['detail'],out['ready'],out.get('reflection',None)
                     if reflection:
                         self.stream.write(f'# Reflection\n{reflection}')
-                        self.stream.write(f'# Analysis\n{analysis}')
-                        self.stream.write(f'# Query\n{query}')
-                        self.stream.write(f'# Detail\n{detail}')
-                        self.stream.write(f'# Ready\n{ready}')
+                    self.stream.write(f'# Analysis\n{analysis}')
+                    self.stream.write(f'# Query\n{keywords}')
+                    self.stream.write(f'# Detail\n{detail}')
+                    self.stream.write(f'# Ready\n{ready}')
 
                 for i in range(self.max_attemps['max_search_rounds']):
-                    if ready: break
                     with self.status_handler(f'Searching... round {i+1}...'):
-                        search_ret=self.sss(query,analysis)
-                        search_stack.append(
-                            {
+                        search_ret=self.sss(keywords,detail)
+                        search_stack.append({
                                 'analysis':analysis,
-                                'query':query,
+                                'query':keywords,
                                 'detail':detail,
                                 'ready':ready,
                                 'search_ret':search_ret,
-                            }
-                        )
+                            })
                         search_cont_prompt=P.GUM_DESIGN_PROPOSAL_ISEARCH_CONT(SEARCH_RESULTS=search_ret)
                         P.GUM_DESIGN_PROPOSAL_ISEARCH_CONT.apply(DESIGN_PROPOSER.obj)
                         self.print_details(DESIGN_PROPOSER.obj,context_design_proposer,search_cont_prompt)
                         _,out=self.dialog.call(design_proposer_tid,search_cont_prompt)
-                        analysis,query,detail,ready=out['analysis'],out['query'],out['detail'],out['ready']
+                        analysis,keywords,detail,ready=out['analysis'],out['keywords'],out['detail'],out['ready']
                         self.stream.write(f'### Analysis\n{analysis}')
-                        self.stream.write(f'### Query\n{query}')
+                        self.stream.write(f'### Query\n{keywords}')
                         self.stream.write(f'### Detail\n{detail}')
                         self.stream.write(f'### Ready\n{ready}')
                         self.print_raw_output(out,'DESIGN_PROPOSER')
                         self.stream.write('---')
+                    if ready: break # the first ready will be ignored, at least one search is required
                 
-                search_finish_prompt=P.GUM_DESIGN_PROPOSAL_ISEARCH_FINISH()
-                P.GUM_DESIGN_PROPOSAL_ISEARCH_FINISH.apply(DESIGN_PROPOSER.obj)
-                self.print_details(DESIGN_PROPOSER.obj,context_design_proposer,search_finish_prompt)
-                _,out=self.dialog.call(design_proposer_tid,search_finish_prompt)
-                selection,proposal,modelname,changes=out['selection'],out['proposal'],out['modelname'],out.get('changes',None)
-                self.stream.write(f'# Proposal\n{proposal}')
-                if changes:
-                    self.stream.write(f'# Changes\n{changes}')
-                context_design_proposer=self.dialog.context(design_proposer_tid)
-                self.print_raw_output(out,'DESIGN_PROPOSER')
+                with self.status_handler('Finishing design proposal...'):
+                    search_finish_prompt=GUM_DESIGN_PROPOSAL_FINISH()
+                    GUM_DESIGN_PROPOSAL_FINISH.apply(DESIGN_PROPOSER.obj)
+                    self.print_details(DESIGN_PROPOSER.obj,context_design_proposer,search_finish_prompt)
+                    _,out=self.dialog.call(design_proposer_tid,search_finish_prompt)
+                    selection,proposal,modelname,changes=out['selection'],out['proposal'],out['modelname'],out.get('changes',None)
+                    self.stream.write(f'### Design Name: {modelname}')
+                    self.stream.write(f'### Selection: {selection}')
+                    self.stream.write(f'# Proposal\n{proposal}')
+                    if changes:
+                        self.stream.write(f'# Changes\n{changes}')
+                    context_design_proposer=self.dialog.context(design_proposer_tid)
+                    self.print_raw_output(out,'DESIGN_PROPOSER')
 
             elif USE_2STAGE: # use search or not
                 with self.status_handler(status_info):
@@ -1129,6 +1130,8 @@ class GUFlowMutation(FlowCreator):
                     self.print_details(DESIGN_PROPOSER.obj,context_design_proposer,proposal_prompt_stage2)
                     _,out=self.dialog.call(design_proposer_tid,proposal_prompt_stage2)
                     selection,proposal,modelname,changes=out['selection'],out['proposal'],out['modelname'],out.get('changes',None)
+                    self.stream.write(f'### Design Name: {modelname}')
+                    self.stream.write(f'### Selection: {selection}')
                     self.stream.write(f'# Proposal\n{proposal}')
                     if changes:
                         self.stream.write(f'# Changes\n{changes}')
@@ -1158,73 +1161,66 @@ class GUFlowMutation(FlowCreator):
             PROPOSAL_REVIEWER=reload_role('proposal_reviewer',self.agents['PROPOSAL_REVIEWER'],SYSTEM_PROMPT)
             proposal_reviewer_tid=self.dialog.fork(main_tid,USER_CALLER,PROPOSAL_REVIEWER,context=context_proposal_reviewer,
                                                 alias='proposal_review',note=f'Reviewing proposal...')
-            if i==0:
+            if attempt==0:
                 status_info=f'Reviewing initial proposal...'
-                if USE_ISEARCH_REVIEW:
-                    proposal_review_prompt=P.GUM_PROPOSAL_REVIEW_ISEARCH_BEGIN(
-                        SEED=query,SELECTION=selection,PROPOSAL=proposal)
-                else:
-                    proposal_review_prompt=P.GUM_PROPOSAL_REVIEW(
-                        SEED=query,SELECTION=selection,PROPOSAL=proposal)
-                P.GUM_PROPOSAL_REVIEW.apply(PROPOSAL_REVIEWER.obj)
+                REVIEW_PROMPT=P.GUM_PROPOSAL_REVIEW_ISEARCH_BEGIN if USE_ISEARCH_REVIEW else P.GUM_PROPOSAL_REVIEW
+                proposal_review_prompt=REVIEW_PROMPT(
+                    SEED=query,SELECTION=selection,PROPOSAL=proposal)
+                REVIEW_PROMPT.apply(PROPOSAL_REVIEWER.obj)
             else:
-                status_info=f'Reviewing refined proposal (version {i})...'
-                if USE_ISEARCH_REVIEW:  
-                    proposal_review_prompt=P.GUM_PROPOSAL_REREVIEW_ISEARCH(
-                        SELECTION=selection,PROPOSAL=proposal,CHANGES=changes)
-                else:
-                    proposal_review_prompt=P.GUM_PROPOSAL_REREVIEW(
-                        SELECTION=selection,PROPOSAL=proposal,CHANGES=changes)
-                P.GUM_PROPOSAL_REREVIEW.apply(PROPOSAL_REVIEWER.obj)
-            
+                status_info=f'Reviewing refined proposal (version {attempt})...'
+                REREVIEW_PROMPT=P.GUM_PROPOSAL_REREVIEW_ISEARCH if USE_ISEARCH_REVIEW else P.GUM_PROPOSAL_REREVIEW
+                proposal_review_prompt=REREVIEW_PROMPT(
+                    SELECTION=selection,PROPOSAL=proposal,CHANGES=changes)
+                REVIEW_PROMPT.apply(PROPOSAL_REVIEWER.obj)
+
             review_search_stack=[]
             if USE_ISEARCH_REVIEW:
                 with self.status_handler(status_info):
                     self.print_details(PROPOSAL_REVIEWER.obj,context_proposal_reviewer,proposal_review_prompt)
                     _,out=self.dialog.call(proposal_reviewer_tid,proposal_review_prompt)
-                    analysis,query,detail,ready=out['analysis'],out['query'],out['detail'],out['ready']
+                    analysis,keywords,detail,ready=out['analysis'],out['keywords'],out['detail'],out['ready']
                     self.stream.write(f'### Analysis\n{analysis}')
-                    self.stream.write(f'### Query\n{query}')
+                    self.stream.write(f'### Query\n{keywords}')
                     self.stream.write(f'### Detail\n{detail}')
                     self.stream.write(f'### Ready\n{ready}')
                     self.print_raw_output(out,'PROPOSAL_REVIEWER')
                 
                 for i in range(self.max_attemps['max_search_rounds']):
-                    if ready: break
                     with self.status_handler(f'Searching... round {i+1}...'):
-                        search_ret=self.sss(query,analysis)
-                        review_search_stack.append(
-                            {
+                        search_ret=self.sss(keywords,detail)
+                        review_search_stack.append({
                                 'analysis':analysis,
-                                'query':query,
+                                'query':keywords,
                                 'detail':detail,
                                 'ready':ready,
                                 'search_ret':search_ret,
-                            }
-                        )
+                            })
                         search_cont_prompt=P.GUM_PROPOSAL_REVIEW_ISEARCH_CONT(SEARCH_RESULTS=search_ret)
                         P.GUM_PROPOSAL_REVIEW_ISEARCH_CONT.apply(PROPOSAL_REVIEWER.obj)
                         self.print_details(PROPOSAL_REVIEWER.obj,context_proposal_reviewer,search_cont_prompt)
                         _,out=self.dialog.call(proposal_reviewer_tid,search_cont_prompt)
-                        analysis,query,detail,ready=out['analysis'],out['query'],out['detail'],out['ready']
+                        analysis,keywords,detail,ready=out['analysis'],out['keywords'],out['detail'],out['ready']
                         self.stream.write(f'### Analysis\n{analysis}')
-                        self.stream.write(f'### Query\n{query}')
+                        self.stream.write(f'### Query\n{keywords}')
                         self.stream.write(f'### Detail\n{detail}')
                         self.stream.write(f'### Ready\n{ready}')
                         self.print_raw_output(out,'PROPOSAL_REVIEWER')
                         self.stream.write('---')
+                    if ready: break # the first ready will be ignored, at least one search is required
                 
-                search_finish_prompt=P.GUM_PROPOSAL_REVIEW_ISEARCH_FINAL()
-                P.GUM_PROPOSAL_REVIEW_ISEARCH_FINAL.apply(PROPOSAL_REVIEWER.obj)
-                self.print_details(PROPOSAL_REVIEWER.obj,context_proposal_reviewer,search_finish_prompt)
-                _,out=self.dialog.call(proposal_reviewer_tid,search_finish_prompt)
-                review,rating,suggestions=out['review'],out['rating'],out['suggestions']
-                context_proposal_reviewer=self.dialog.context(proposal_reviewer_tid)
-                passornot='Pass' if rating>=self.threshold['proposal_rating'] else 'Fail'
-                self.stream.write(f'### Rating: {rating} out of 5 ({passornot})')
-                self.stream.write(review)
-                self.stream.write(suggestions)
-                self.print_raw_output(out,'PROPOSAL_REVIEWER')
+                with self.status_handler('Finishing proposal review...'):
+                    search_finish_prompt=P.GUM_PROPOSAL_REVIEW_ISEARCH_FINAL()
+                    P.GUM_PROPOSAL_REVIEW_ISEARCH_FINAL.apply(PROPOSAL_REVIEWER.obj)
+                    self.print_details(PROPOSAL_REVIEWER.obj,context_proposal_reviewer,search_finish_prompt)
+                    _,out=self.dialog.call(proposal_reviewer_tid,search_finish_prompt)
+                    review,rating,suggestions=out['review'],out['rating'],out['suggestions']
+                    context_proposal_reviewer=self.dialog.context(proposal_reviewer_tid)
+                    passornot='Pass' if rating>=self.threshold['proposal_rating'] else 'Fail'
+                    self.stream.write(f'### Rating: {rating} out of 5 ({passornot})')
+                    self.stream.write(review)
+                    self.stream.write(suggestions)
+                    self.print_raw_output(out,'PROPOSAL_REVIEWER')
             else:
                 with self.status_handler(status_info):
                     self.print_details(PROPOSAL_REVIEWER.obj,context_proposal_reviewer,proposal_review_prompt)
@@ -1289,8 +1285,8 @@ class GUFlowMutation(FlowCreator):
             rerank=self.rerank_proposals(proposals)
             self.ptree.session_set(self.design_id,'reranked',rerank)
         for acronym in rerank['rank']:
-            design=self.ptree.get_design(acronym)
-            if design.implmentation is None or not design.implementation.succeed:
+            design=self.ptree.get_node(acronym)
+            if not design.is_implemented():
                 proposals.append(design.proposal)
         return proposals
 
@@ -1337,6 +1333,7 @@ class GUFlowMutation(FlowCreator):
         round=0
         PROTECTED_UNITS=list(set(self.tree.units.keys())-set([proposal.selection])) # the units besides the current one, they should not be *modified*, can be removed as descendants
         self.stream.write(f'##### Protected Units: {PROTECTED_UNITS}')
+        USE_REVIEW=self.agent_types['IMPLEMENTATION_REVIEWER']!='None'
 
         post_refinement=0 # TODO: introduce self-evaluate to post-refinement
         while True:
@@ -1437,14 +1434,25 @@ class GUFlowMutation(FlowCreator):
                         node=self.tree.units[selection]
                         if round>1: # round > 1, use unit implementation prompt, tree view background is already in context
                             gu_implement_unit_prompt=GUM_IMPLEMENTATION_UNIT(
-                                SPECIFICATION=node.spec.to_prompt(),IMPLEMENTATION=node.code,REVIEW=node.review,RATING=node.rating,
-                                SUGGESTIONS=node.suggestions, CHILDREN=node.children
+                                SPECIFICATION=node.spec.to_prompt(),
+                                IMPLEMENTATION=node.code,
+                                REVIEW=node.review,
+                                RATING=node.rating,
+                                SUGGESTIONS=node.suggestions, 
+                                CHILDREN=node.children
                             )
                         else: # round 1, use unit implementation prompt with tree view background, context is empty
                             gu_implement_unit_prompt=GUM_IMPLEMENTATION_UNIT(
-                                SPECIFICATION=node.spec.to_prompt(),IMPLEMENTATION=node.code,REVIEW=node.review,RATING=node.rating,
-                                SUGGESTIONS=node.suggestions,VIEW=VIEW_DETAILED, CHILDREN=node.children,
-                                PROPOSAL=proposal.proposal,PREVIEW=proposal.review,PRATING=proposal.rating,
+                                SPECIFICATION=node.spec.to_prompt(),
+                                IMPLEMENTATION=node.code,
+                                REVIEW=node.review,
+                                RATING=node.rating,
+                                SUGGESTIONS=node.suggestions,
+                                VIEW=VIEW_DETAILED, 
+                                CHILDREN=node.children,
+                                PROPOSAL=proposal.proposal,
+                                PREVIEW=proposal.review,
+                                PRATING=proposal.rating,
                             )
                     else:
                         REFINE=False # implement a new unit
@@ -1462,8 +1470,10 @@ class GUFlowMutation(FlowCreator):
                     gu_implement_unit_prompt=RETRY_RPOMPT(
                         FORMAT_CHECKER_REPORT=FORMAT_CHECKER_REPORT,
                         FUNCTION_CHECKER_REPORT=FUNCTION_CHECKER_REPORT,
-                        REVIEW=review,RATING=rating,SUGGESTIONS=suggestions,
-                        PASS_OR_NOT='Accept' if rating>3 else 'Reject',
+                        REVIEW=review if USE_REVIEW else 'REVIEW_DISABLED',
+                        RATING=rating if USE_REVIEW else 'REVIEW_DISABLED',
+                        SUGGESTIONS=suggestions if USE_REVIEW else 'REVIEW_DISABLED',
+                        PASS_OR_NOT='Accept' if rating>3 else 'Reject' if USE_REVIEW else 'REVIEW_DISABLED',
                         GAU_BASE=GAU_BASE
                     )
                     RETRY_RPOMPT.apply(DESIGN_IMPLEMENTER.obj)
@@ -1603,51 +1613,63 @@ class GUFlowMutation(FlowCreator):
                     }
 
                 ########################### Review the implementation ###########################
-                IMPLEMENTATION_REVIEWER=reload_role('implementation_reviewer',self.agents['IMPLEMENTATION_REVIEWER'], 
-                                                    P.GUM_IMPLEMENTATION_REVIEWER_SYSTEM())
-                implementation_reviewer_tid=self.dialog.fork(main_tid,USER_CALLER,IMPLEMENTATION_REVIEWER,context=context_implementation_reviewer,
-                                                    alias='implementation_review',note=f'Reviewing implementation...')
-                if REFINE:
-                    if attempt==0:
-                        status_info=f'Reviewing refinement of {selection}...'
-                        gum_implementation_unit_review_prompt=P.GUM_IMPLEMENTATION_UNIT_REFINE_REVIEW(
-                            UNIT_NAME=selection,ANALYSIS=analysis,IMPLEMENTATION=reformatted_code,
-                            CHANGES=changes,PROPOSAL=proposal.proposal, CHECKER_REPORT=checker_report,
-                            VIEW=VIEW_DETAILED, DESCRIPTION=node.desc,REVIEW=node.review,
-                            RATING=node.rating,SUGGESTIONS=node.suggestions,SPECIFICATION=node.spec.to_prompt()
+                
+                if USE_REVIEW:
+                    IMPLEMENTATION_REVIEWER=reload_role('implementation_reviewer',self.agents['IMPLEMENTATION_REVIEWER'], 
+                                                        P.GUM_IMPLEMENTATION_REVIEWER_SYSTEM())
+                    implementation_reviewer_tid=self.dialog.fork(main_tid,USER_CALLER,IMPLEMENTATION_REVIEWER,context=context_implementation_reviewer,
+                                                        alias='implementation_review',note=f'Reviewing implementation...')
+                    if REFINE:
+                        if attempt==0:
+                            status_info=f'Reviewing refinement of {selection}...'
+                            gum_implementation_unit_review_prompt=P.GUM_IMPLEMENTATION_UNIT_REFINE_REVIEW(
+                                UNIT_NAME=selection,ANALYSIS=analysis,IMPLEMENTATION=reformatted_code,
+                                CHANGES=changes,PROPOSAL=proposal.proposal, CHECKER_REPORT=checker_report,
+                                VIEW=VIEW_DETAILED, DESCRIPTION=node.desc,REVIEW=node.review,
+                                RATING=node.rating,SUGGESTIONS=node.suggestions,SPECIFICATION=node.spec.to_prompt()
+                            )
+                            P.GUM_IMPLEMENTATION_UNIT_REFINE_REVIEW.apply(IMPLEMENTATION_REVIEWER.obj)
+                        else:
+                            status_info=f'Reviewing refined implementation of {selection} (version {attempt})...'
+                            gum_implementation_unit_review_prompt=P.GUM_IMPLEMENTATION_REREVIEW(
+                                UNIT_NAME=selection,ANALYSIS=analysis,IMPLEMENTATION=reformatted_code,
+                                CHANGES=changes,SPECIFICATION=spec.to_prompt(), CHECKER_REPORT=checker_report
+                            )
+                            P.GUM_IMPLEMENTATION_REREVIEW.apply(IMPLEMENTATION_REVIEWER.obj)
+                    else: # first attempt of a new unit
+                        status_info=f'Reviewing implementation of {selection}...'
+                        gum_implementation_unit_review_prompt=P.GUM_IMPLEMENTATION_UNIT_REVIEW(
+                            UNIT_NAME=selection,PROPOSAL=proposal.proposal,REVIEW=proposal.review,
+                            RATING=proposal.rating,VIEW=VIEW_DETAILED,SPECIFICATION=spec.to_prompt(),
+                            ANALYSIS=analysis,IMPLEMENTATION=reformatted_code,CHECKER_REPORT=checker_report,
                         )
-                        P.GUM_IMPLEMENTATION_UNIT_REFINE_REVIEW.apply(IMPLEMENTATION_REVIEWER.obj)
-                    else:
-                        status_info=f'Reviewing refined implementation of {selection} (version {attempt})...'
-                        gum_implementation_unit_review_prompt=P.GUM_IMPLEMENTATION_REREVIEW(
-                            UNIT_NAME=selection,ANALYSIS=analysis,IMPLEMENTATION=reformatted_code,
-                            CHANGES=changes,SPECIFICATION=spec.to_prompt(), CHECKER_REPORT=checker_report
-                        )
-                        P.GUM_IMPLEMENTATION_REREVIEW.apply(IMPLEMENTATION_REVIEWER.obj)
-                else: # first attempt of a new unit
-                    status_info=f'Reviewing implementation of {selection}...'
-                    gum_implementation_unit_review_prompt=P.GUM_IMPLEMENTATION_UNIT_REVIEW(
-                        UNIT_NAME=selection,PROPOSAL=proposal.proposal,REVIEW=proposal.review,
-                        RATING=proposal.rating,VIEW=VIEW_DETAILED,SPECIFICATION=spec.to_prompt(),
-                        ANALYSIS=analysis,IMPLEMENTATION=reformatted_code,CHECKER_REPORT=checker_report,
-                    )
-                    P.GUM_IMPLEMENTATION_UNIT_REVIEW.apply(IMPLEMENTATION_REVIEWER.obj)
-                with self.status_handler(status_info):
-                    self.print_details(IMPLEMENTATION_REVIEWER.obj,context_implementation_reviewer,gum_implementation_unit_review_prompt)
-                    _,out=self.dialog.call(implementation_reviewer_tid,gum_implementation_unit_review_prompt)
-                    review,rating,suggestions=out['review'],out['rating'],out['suggestions']
-                    context_implementation_reviewer=self.dialog.context(implementation_reviewer_tid)
-                    passornot='Accept' if rating>3 else 'Reject'
-                    self.stream.write(f'### Rating: {rating} out of 5 ({passornot})')
-                    self.stream.write(review)
-                    self.stream.write(suggestions)
-                    self.print_raw_output(out,'IMPLEMENTATION_REVIEWER')
+                        P.GUM_IMPLEMENTATION_UNIT_REVIEW.apply(IMPLEMENTATION_REVIEWER.obj)
 
-                    self.tree.units[selection].rating=rating
-                    self.tree.units[selection].review=review
-                    self.tree.units[selection].suggestions=suggestions
+
+                    with self.status_handler(status_info):
+                        self.print_details(IMPLEMENTATION_REVIEWER.obj,context_implementation_reviewer,gum_implementation_unit_review_prompt)
+                        _,out=self.dialog.call(implementation_reviewer_tid,gum_implementation_unit_review_prompt)
+                        review,rating,suggestions=out['review'],out['rating'],out['suggestions']
+                        context_implementation_reviewer=self.dialog.context(implementation_reviewer_tid)
+                        passornot='Accept' if rating>3 else 'Reject'
+                        self.stream.write(f'### Rating: {rating} out of 5 ({passornot})')
+                        self.stream.write(review)
+                        self.stream.write(suggestions)
+                        self.print_raw_output(out,'IMPLEMENTATION_REVIEWER')
+
+                        self.tree.units[selection].rating=rating
+                        self.tree.units[selection].review=review
+                        self.tree.units[selection].suggestions=suggestions
+                else:
+                    review=None
+                    rating=None
+                    suggestions=None
 
                 ########################### Attempt finished ###########################  
+                if USE_REVIEW:
+                    review_pass=rating>3
+                else:
+                    review_pass=True
                 design = {
                     'unit': self.tree.units[selection].json(),
                     'gab_code':gabcode_reformat,
@@ -1658,7 +1680,8 @@ class GUFlowMutation(FlowCreator):
                     'changes':changes,
                 }
                 traces.append(design)
-                if not checkpass or rating<=3 or len(format_errors)>0: # failed  
+
+                if not checkpass or not review_pass or len(format_errors)>0: # failed  
                     succeed=False
                     self.tree=tree_backup # restore the tree
                     # if selection in UNIMPLEMENTED: 
@@ -1722,6 +1745,18 @@ class GUFlowMutation(FlowCreator):
         self.tree.clear_disconnected() 
         RETS['new_unit_name']=NEWNAME
         RETS['SUCCEED']=SUCCEED
+        if SUCCEED:
+            self.stream.write('#### Design Implementation succeeded!')
+            try:
+                self.stream.balloons()
+            except:
+                pass
+        else:
+            self.stream.write('#### Design Implementation failed!')
+            try:
+                self.stream.snow()
+            except:
+                pass
         return RETS
     
     

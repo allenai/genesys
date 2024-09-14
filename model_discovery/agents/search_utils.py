@@ -103,6 +103,11 @@ class SuperScholarSearcher:
         if index_name!=self.index_name: # always do it in init
             self.index_name=index_name
             self.index=self.get_index(index_name)
+        self.cfg={
+            'index_name':self.index_name,
+            'result_limits':self.result_limits,
+            'rerank_ratio':self.rerank_ratio,
+        }
         if stream:
             self.stream=stream
 
@@ -111,9 +116,9 @@ class SuperScholarSearcher:
         query: for search papers in S2, ArXiv, and Papers with Code...
         detail: for search papers in the internal library vector stores
         """
-        query = detail if detail else query
-        internal_results,internal_pp=self.search_internal(query,pretty=True,prompt=prompt)
-        external_results,external_pp=self.search_external(detail,pretty=True,prompt=prompt)
+        iquery = detail if detail else query
+        internal_results,internal_pp=self.search_internal(iquery,pretty=True,prompt=prompt)
+        external_results,external_pp=self.search_external(query,pretty=True,prompt=prompt)
         
         self.stream.write(f'Concluding search results...')
         
@@ -195,23 +200,12 @@ class SuperScholarSearcher:
         for r in arxiv_results+pwc_results:
             if not self.exist_in_set(r,aggregated_results):
                 aggregated_results.append(r)
-        self.stream.write(f'##### *Found {len(aggregated_results)} related papers*')
-        if prompt:
-            aggregated_results=self.prompt_results(aggregated_results)
+        self.stream.write(f'##### *Found {len(aggregated_results)} related papers from external sources*')
         grouped_results=self.group_by_sources(aggregated_results)
         if pretty:
-            return grouped_results, self.pretty_print(grouped_results)
+            return grouped_results, self.pretty_print(grouped_results,prompt)
         else:
             return grouped_results
-
-    def prompt_results(self,results):
-        prompt_results=[]
-        for r in results:
-            for key in ['arxiv_id','s2_id','pwc_id','repository','openAccessPdf']:
-                if key in r:
-                    r.pop(key)
-            prompt_results.append(r)
-        return prompt_results
 
     def group_by_sources(self,results):
         # group the results by the source
@@ -231,9 +225,9 @@ class SuperScholarSearcher:
                 grouped_results['ArXiv'].append(r)
         return grouped_results
 
-    def pretty_print(self,grouped_results):
+    def pretty_print(self,grouped_results,prompt=True):
         num_results=sum([len(group) for group in grouped_results.values()])
-        ppr=f'---\n## Found {num_results} related papers from {len(grouped_results)} external sources\n\n'
+        ppr=f'\n---\n## Found {num_results} related papers from {len(grouped_results)} external sources\n\n'
         for source in ['Semantic Scholar','ArXiv','Papers with Code']:
             if source not in grouped_results:
                 continue
@@ -263,22 +257,25 @@ class SuperScholarSearcher:
                     if 'influentialCitationCount' in r:
                         ppr+=f'  (*Influential: {r["influentialCitationCount"]}*)'
                 ppr+='\n\n'
-                if 's2_id' in r:
-                    ppr+=f'**Semantic Scholar ID:** {r["s2_id"]}\n\n'
-                if 'pwc_id' in r:
-                    ppr+=f'**PaperswithCode ID:** {r["pwc_id"]}\n\n'
-                if 'arxiv_id' in r and r['arxiv_id']:
-                    ppr+=f'**ArXiv ID:** {r["arxiv_id"]}\n\n'
-                if 'repository' in r:
-                    ppr+=f'**Repository:**\n\n'
-                    ppr+=f'  - *Owner:* {r["repository"]["owner"]}\n\n'
-                    ppr+=f'  - *Name:* {r["repository"]["name"]}\n\n'
-                    ppr+=f'  - *Description:* {r["repository"]["description"]}\n\n'
-                    ppr+=f'  - *Stars:* {r["repository"]["stars"]}\n\n'
-                    ppr+=f'  - *URL:* {r["repository"]["url"]}\n\n'
-                if 'openAccessPdf' in r and r['openAccessPdf']:
-                    ppr+=f'**Open Access PDF:** {r["openAccessPdf"]}\n\n'
-                ppr+=f'\n\n'
+                if not prompt:
+                    if 's2_id' in r:
+                        s2_url=f'https://www.semanticscholar.org/paper/{r["s2_id"]}'
+                        ppr+=f'**Semantic Scholar URL:** {s2_url}\n\n'
+                    if 'pwc_id' in r:
+                        ppr+=f'**Papers with Code URL:** {r["url_abs"]}\n\n'
+                    if 'arxiv_id' in r and r['arxiv_id']:
+                        arxiv_url=f'https://arxiv.org/abs/{r["arxiv_id"]}'
+                        ppr+=f'**ArXiv URL:** {arxiv_url}\n\n'
+                    if 'repository' in r:
+                        ppr+=f'**Repository:**\n\n'
+                        ppr+=f'  - *Owner:* {r["repository"]["owner"]}\n\n'
+                        ppr+=f'  - *Name:* {r["repository"]["name"]}\n\n'
+                        ppr+=f'  - *Description:* {r["repository"]["description"]}\n\n'
+                        ppr+=f'  - *Stars:* {r["repository"]["stars"]}\n\n'
+                        ppr+=f'  - *URL:* {r["repository"]["url"]}\n\n'
+                    if 'openAccessPdf' in r and r['openAccessPdf']:
+                        ppr+=f'**Open Access PDF:** {r["openAccessPdf"]}\n\n'
+                    ppr+=f'\n\n'
         return ppr
 
 
@@ -407,6 +404,7 @@ class SuperScholarSearcher:
                 'published':paper['published'],
                 'proceeding':paper['proceeding'],
                 'conference':paper['conference'],
+                'url_abs':paper['url_abs'],
                 'openAccessPdf':paper['url_pdf'],
                 'arxiv_id':paper['arxiv_id'],
                 'repository':None,
@@ -774,7 +772,7 @@ class SuperScholarSearcher:
         for source in sources:
             total_chunks+=sum([len(sources[i][0]) for i in sources])
         total_papers=sum([len(sources[i][0]) for i in sources])
-        ppr=f'---\n## Found {total_chunks} related chunks from {len(sources)} internal sources\n\n'
+        ppr=f'\n---\n## Found {total_chunks} related chunks from {len(sources)} internal sources\n\n'
         for source in sources:
             grouped_docs=sources[source][0]
             metainfo=sources[source][1]

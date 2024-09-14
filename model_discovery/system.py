@@ -458,14 +458,14 @@ class ModelDiscoverySystem(exec_utils.System):
             'DESIGN_PROPOSER':'claude3.5_sonnet',
             'PROPOSAL_REVIEWER':'claude3.5_sonnet',
             'DESIGN_IMPLEMENTER':'o1_mini',
-            'IMPLEMENTATION_REVIEWER':'claude3.5_sonnet',
+            'IMPLEMENTATION_REVIEWER':'None',
             'SEARCH_ASSISTANT':'None', # None means no separate search assistant
         }
         DEFAULT_MAX_ATTEMPTS={
             'design_proposal':10,
             'implementation_debug':7,
-            'post_refinement':5,
-            'max_search_rounds':4,
+            'post_refinement':0,
+            'max_search_rounds':3,
         }
         DEFAULT_TERMINATION={
             'max_failed_rounds':3,
@@ -496,6 +496,18 @@ class ModelDiscoverySystem(exec_utils.System):
         design_cfg['num_samples']=U.safe_get_cfg_dict(design_cfg,'num_samples',DEFAULT_NUM_SAMPLES)
 
         self.sss.reconfig(search_cfg,stream)
+        
+        try:
+            cols=stream.columns(2)
+            with cols[0]:
+                with stream.expander('Check design configurations'):
+                    stream.write(design_cfg)
+            with cols[1]:
+                with stream.expander('Check search configurations'):
+                    search_cfg=self.sss.cfg
+                    stream.write(search_cfg)
+        except:
+            pass
 
         # 1. create or retrieve a new session
         if design_id is None: # if provided, then its resuming a session
