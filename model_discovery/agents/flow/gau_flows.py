@@ -13,6 +13,7 @@ from .gau_utils import check_and_reformat_gau_code
 # from model_discovery.system import ModelDiscoverySystem
 import model_discovery.agents.prompts.prompts as P
 from model_discovery.model.composer import GAUBase, GAUTree, check_tree_name, GABComposer
+from model_discovery.configs.gam_config import GAMConfig_14M
 from model_discovery.model.utils.modules import GABBase
 import model_discovery.utils as U
 
@@ -279,8 +280,10 @@ class GUFlowMutation(FlowCreator):
         if self.mode==RunningModes.IMPLEMENTATION_ONLY:
             self.stream.write('Implementation only mode, skipping proposal generation...')
             return query,state,{}
-        passed_proposals=self.ptree.session_proposals(self.design_id,passed_only=True)
-        for _ in range(self.num_samples['proposal']-len(passed_proposals)):
+        passed_proposals,_=self.ptree.session_proposals(self.design_id,passed_only=True)
+        remaining_samples=self.num_samples['proposal']-len(passed_proposals)
+        self.stream.write(f'{len(passed_proposals)} proposals passed yet. Remaining {remaining_samples} samples to generate.')
+        for _ in range(remaining_samples):
             cost_raw=copy.deepcopy(self.costs)
             query,state,RET=self._generate_proposal(self.seed_input,state,main_tid)
             proposal,proposal_traces=RET['proposal'],RET['proposal_traces']
@@ -550,25 +553,28 @@ class GUFlowMutation(FlowCreator):
         return query,state,RET
         
 
-    def rerank_proposals(self,proposals): # now simply rank by rating, TODO: improve it
+    def rerank_proposals(self,proposals,acronyms): # now simply rank by rating, TODO: improve it
         rerank={}
-        rank=sorted(proposals,key=lambda x:x.rating,reverse=True)
-        rerank['rank']=[proposal.modelname for proposal in rank]
+        proposal_dict=zip(acronyms,proposals)
+        rank=sorted(proposal_dict,key=lambda x:x[1].rating,reverse=True)
+        rerank['rank']=[x[0] for x in rank]
         return rerank
 
     def reranked_proposal(self):
         # select the highest rated unimplemented proposal
         proposals=[]
+        acronyms=[] 
         rerank=self.ptree.session_get(self.design_id,'reranked')
         if not rerank:
-            proposals=self.ptree.session_proposals(self.design_id,passed_only=True)
-            rerank=self.rerank_proposals(proposals)
+            proposals,acronyms=self.ptree.session_proposals(self.design_id,passed_only=True)
+            rerank=self.rerank_proposals(proposals,acronyms)
             self.ptree.session_set(self.design_id,'reranked',rerank)
         for acronym in rerank['rank']:
             design=self.ptree.get_node(acronym)
             if not design.is_implemented():
                 proposals.append(design.proposal)
-        return proposals
+                acronyms.append(acronym)
+        return proposals,acronyms
 
     @register_module(
         "PROC",
@@ -582,18 +588,20 @@ class GUFlowMutation(FlowCreator):
         elif self.mode==RunningModes.IMPLEMENTATION_ONLY:
             self.stream.write('Implementation only mode, will select from unimplemented passed proposals or using provided proposal if any')
         if proposal is None:
-            proposals=self.reranked_proposal()
+            proposals,acronyms=self.reranked_proposal()
         else:
             proposals=[proposal]
-        for proposal in proposals:
+            acronyms=[proposal.acronym]
+        self.stream.write(f'Implementing {len(proposals)} proposals.')
+        for proposal,acronym in zip(proposals,acronyms):
             self.stream.write(f'Implementing proposal: {proposal.modelname} with rating {proposal.rating} out of 5')
             self.tree=copy.deepcopy(self.seed_tree)
             self.tree.name=proposal.modelname
             cost_raw=copy.deepcopy(self.costs)
             RETS=self._implement_proposal_recursive(main_tid,proposal)
             costs={k:v-cost_raw[k] for k,v in self.costs.items()}
-            ROUNDS,new_unit_name,SUCCEED=RETS['ROUNDS'],RETS['new_unit_name'],RETS['SUCCEED']
-            self.ptree.implement(self.design_id,self.tree,new_unit_name,ROUNDS,SUCCEED,costs,self.design_cfg,self.user_input)
+            ROUNDS,SUCCEED=RETS['ROUNDS'],RETS['SUCCEED']
+            self.ptree.implement(acronym,self.tree,ROUNDS,SUCCEED,costs,self.design_cfg,self.user_input)
 
         return query,state,{}
    
@@ -652,7 +660,7 @@ class GUFlowMutation(FlowCreator):
                     GUM_IMPLEMENTATION_UNIT_SELECTION=P.gen_GUM_IMPLEMENTATION_UNIT_SELECTION(
                         IMPLEMENTED+UNIMPLEMENTED,post_refining=len(UNIMPLEMENTED)==0)
                     gu_implementation_unit_selection_prompt=GUM_IMPLEMENTATION_UNIT_SELECTION(
-                        VIEW=VIEW_DETAILED,LOG='\n'.join(LOG)
+                        VIEW=VIEW_DETAILED,LOG='\n'.join(LOG),ROUND=round
                     )
                     GUM_IMPLEMENTATION_UNIT_SELECTION.apply(IMPLEMENTATION_PLANNER.obj)
                     self.print_details(IMPLEMENTATION_PLANNER.obj,context_implementation_planner,gu_implementation_unit_selection_prompt)
@@ -709,7 +717,7 @@ class GUFlowMutation(FlowCreator):
             tree_backup=copy.deepcopy(self.tree) # backup the tree for rollback
             for attempt in range(self.max_attemps['implementation_debug']):
                 IMPLEMENTATION_CODER=reload_role('implementation_coder',self.agents['IMPLEMENTATION_CODER'],P.GUMT_IMPLEMENTATION_CODER_SYSTEM(
-                    GAB_BASE=GAB_BASE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE))
+                    GAB_BASE=GAB_BASE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE,PROPOSAL=proposal.proposal,REVIEW=proposal.review,RATING=proposal.rating))
                 implementation_coder_tid=self.dialog.fork(main_tid,USER_CALLER,IMPLEMENTATION_CODER,context=context_implementation_coder,
                                                     alias='implementation_coder',note=f'Starting design implementation...')
                 if attempt==0: # first attempt, implement the unit
@@ -736,17 +744,18 @@ class GUFlowMutation(FlowCreator):
                 else: # Debugging or refining the implementation
                     status_info=f'Refining design implementation of {selection} (attempt {attempt})...'
                     REFINE=True
-                    # if round>1: 
-                    RETRY_RPOMPT=P.GU_IMPLEMENTATION_UNIT_RETRY
-                    # else:
-                    #     RETRY_RPOMPT=P.GUM_IMPLEMENTATION_UNIT_REFINE
+                    RETRY_RPOMPT=P.gen_GU_IMPLEMENTATION_UNIT_RETRY(use_o1=USE_O1_CODER)
+                    if USE_PAIRING:
+                        pass_or_not='Accept' if rating>=OBSERVE_THRESHOLD else 'Reject'
+                    else:
+                        pass_or_not='IMPLEMENTATION OBSERVER NOT AVAILABLE'
                     gu_implement_unit_prompt=RETRY_RPOMPT(
                         FORMAT_CHECKER_REPORT=FORMAT_CHECKER_REPORT,
                         FUNCTION_CHECKER_REPORT=FUNCTION_CHECKER_REPORT,
                         REVIEW=review if USE_PAIRING else 'IMPLEMENTATION OBSERVER NOT AVAILABLE',
                         RATING=rating if USE_PAIRING else 'IMPLEMENTATION OBSERVER NOT AVAILABLE',
                         SUGGESTIONS=suggestions if USE_PAIRING else 'IMPLEMENTATION OBSERVER NOT AVAILABLE',
-                        PASS_OR_NOT='Accept' if rating>=OBSERVE_THRESHOLD else 'Reject' if USE_PAIRING else 'IMPLEMENTATION OBSERVER NOT AVAILABLE',
+                        PASS_OR_NOT=pass_or_not,
                         GAU_BASE=GAU_BASE
                     )
                     RETRY_RPOMPT.apply(IMPLEMENTATION_CODER.obj)
@@ -821,8 +830,11 @@ class GUFlowMutation(FlowCreator):
                             NEW_DECLARED.append(childname)
 
                     self.stream.write(f'### Children')
-                    for childname,child in children.items():
-                        self.stream.write(f'##### {childname}\n'+child.to_prompt())
+                    if children==[]:
+                        self.stream.write('No children declared.')
+                    else:
+                        for childname,child in children.items():
+                            self.stream.write(f'##### {childname}\n'+child.to_prompt())
                     
                     collapse_write(
                         self.stream,
@@ -864,7 +876,7 @@ class GUFlowMutation(FlowCreator):
                         self.stream.write(f'### Unit Tests Results\n```bash\n{_unit_test_results}\n```')
 
                         gabcode = self.tree.compose()
-                        checkpass,check_report,gabcode_reformat,check_results = self.system.checker.check(self.system._cfg,gabcode,selection)
+                        checkpass,check_report,gabcode_reformat,check_results = self.system.checker.check(GAMConfig_14M(),gabcode,selection)
 
                         if not _unit_test_passed:
                             if 'All tests passed!' in check_report:
@@ -876,7 +888,7 @@ class GUFlowMutation(FlowCreator):
                         self.stream.write(f'### Reformatted GAB Code\n```python\n{gabcode_reformat}\n```')
                         
                         checkpass = checkpass and _unit_test_passed
-                        checker_report = check_report
+                        checker_report = check_report # Too long in the prompt
                         check_report = f'### Unit tests\n```bash\n{_unit_test_results}\n```\n\n### Checkers report\n```bash\n{check_report}\n```\n\n'
                     else:
                         check_report = 'Format check failed with fetal errors, please fix the format errors and try again.'
@@ -903,16 +915,17 @@ class GUFlowMutation(FlowCreator):
                             gum_implementation_unit_review_prompt=P.GUMT_IMPLEMENTATION_UNIT_REFINE_OBSERVE(
                                 UNIT_NAME=selection,ANALYSIS=analysis,IMPLEMENTATION=reformatted_code,
                                 CHANGES=changes, VIEW=VIEW_DETAILED, DESCRIPTION=node.desc,
-                                SUGGESTIONS=node.suggestions,SPECIFICATION=node.spec.to_prompt()
+                                REVIEW=node.review,RATING=node.rating,SUGGESTIONS=node.suggestions,
+                                SPECIFICATION=node.spec.to_prompt()
                             )
                             P.GUMT_IMPLEMENTATION_UNIT_REFINE_OBSERVE.apply(IMPLEMENTATION_OBSERVER.obj)
                         else:
                             status_info=f'Observing refined implementation of {selection} (version {attempt})...'
-                            gum_implementation_unit_review_prompt=P.GUMT_IMPLEMENTATION_REOBSERVE_prompt(
+                            gum_implementation_unit_review_prompt=P.GUMT_IMPLEMENTATION_REOBSERVE(
                                 UNIT_NAME=selection,ANALYSIS=analysis,IMPLEMENTATION=reformatted_code,
                                 CHANGES=changes,SPECIFICATION=spec.to_prompt()
                             )
-                            P.GUMT_IMPLEMENTATION_REOBSERVE_prompt.apply(IMPLEMENTATION_OBSERVER.obj)
+                            P.GUMT_IMPLEMENTATION_REOBSERVE.apply(IMPLEMENTATION_OBSERVER.obj)
                     else: # first attempt of a new unit
                         status_info=f'Reviewing implementation of {selection}...'
                         gum_implementation_unit_review_prompt=P.GUMT_IMPLEMENTATION_UNIT_OBSERVE(

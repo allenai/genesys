@@ -188,16 +188,17 @@ def call_model_structured(model,message,response_format, logprobs=False) -> Mode
     if model._config.model_name in ['o1-mini','o1-preview']: 
         message=o1_beta_message_patch(message)
         logprobs=False 
-        fn_kwargs['max_completion_tokens']=model._config.max_output_tokens
+        fn_kwargs['max_completion_tokens']=model._config.max_output_tokens*4-1 # leave spaces for raesoning tokens
         model_fn=model.model_obj.chat.completions.create # parse is not supported for o1 
     else:
-        fn_kwargs['max_tokens']=model._config.max_output_tokens
+        fn_kwargs['max_completion_tokens']=model._config.max_output_tokens
+        fn_kwargs['temperature']=model._config.temperature
+
 
     completions = model_fn(
         model=model._config.model_name,
         messages=message,
         # stop=model._stop,
-        temperature=model._config.temperature,
         response_format=response_format,
         logprobs=logprobs,
         **fn_kwargs

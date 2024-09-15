@@ -315,7 +315,6 @@ class Proposal:
 @dataclass
 class ImplementationAttempt:
     succeed: bool
-    new_unit_name: str
     rounds: int
     costs: Dict[str, float]
     tree: GAUTree
@@ -325,7 +324,6 @@ class ImplementationAttempt:
 @dataclass
 class Implementation:
     succeed: bool
-    new_unit_name: str
     implementation: GAUTree
     history: List[ImplementationAttempt]
     # TODO:consider gaudict management
@@ -371,7 +369,7 @@ class Verification:
     verification_passed: bool
 
     def save(self, design_dir: str):
-        U.save_json(asdict(self), U.pjoin(design_dir, f'verification.json'))
+        U.save_json(asdict(self), U.pjoin(design_dir, 'verifications',f'{self.scale}.json'))
 
     @classmethod
     def load(cls, dir: str):
@@ -563,18 +561,25 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
     def session_proposals(self,design_id:str,passed_only=False):
         sessdata=self.design_sessions[design_id]
         designs = [self.get_node(acronym) for acronym in sessdata['proposed']]
+        acronyms = [design.acronym for design in designs]
         proposals = [design.proposal for design in designs]
         if passed_only:
+            acronyms = [design.acronym for design in designs if design.proposal.passed]
             proposals = [proposal for proposal in proposals if proposal.passed]
-        return proposals
+        return proposals,acronyms
     
     def session_implementations(self,design_id:str,succeed_only=False):
         sessdata=self.design_sessions[design_id]
-        designs = [self.get_node(acronym) for acronym in sessdata['proposed']]
-        implementations = [design.implementation for design in designs if design.implementation is not None]
-        if succeed_only:
-            implementations = [implementation for implementation in implementations if implementation.succeed]
-        return implementations
+        acronyms=[]
+        implementations=[]
+        for acronym in sessdata['proposed']:
+            design=self.get_node(acronym)
+            if design.implementation:
+                if succeed_only and not design.implementation.succeed:
+                    continue
+                implementations.append(design.implementation)
+                acronyms.append(acronym)
+        return implementations,acronyms
 
     def propose(self, design_id: str, proposal,proposal_traces,costs,design_cfg,user_input): # create a new design artifact
         sessdata=self.design_sessions[design_id]
@@ -588,12 +593,12 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
             if line.startswith("# "):
                 title = line[2:]
                 break
-        acronym = self.unique_acronym(proposal.modelname)
+        acronym = self.unique_acronym(proposal.modelname.replace(' ', '_').lower())
         proposal.modelname = acronym
         metadata = {'design_id': design_id, 'acronym': acronym, 'seed_ids': seeds, 'title': title}
-        U.save_json(metadata, U.pjoin(self.design_dir(design_id), 'metadata.json'))
-        proposal.save(self.design_dir(design_id))
-        traces_dir=U.pjoin(self.design_dir(design_id),'proposal_traces')
+        U.save_json(metadata, U.pjoin(self.design_dir(acronym), 'metadata.json'))
+        proposal.save(self.design_dir(acronym))
+        traces_dir=U.pjoin(self.design_dir(acronym),'proposal_traces')
         for idx,trace in enumerate(proposal_traces):
             U.mkdir(traces_dir)
             trace['costs']=costs
@@ -610,22 +615,21 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         sessdata=self.design_sessions[design_id]
         U.save_json(sessdata, U.pjoin(self.session_dir(design_id), 'metadata.json'))
 
-    def implement(self, design_id: str, tree,new_unit_name,ROUNDS,SUCCEED,costs,design_cfg,user_input): # update a proposal node with implementation
-        design_artifact=self.get_node(design_id)
+    def implement(self, acronym: str, tree,ROUNDS,SUCCEED,costs,design_cfg,user_input): # update a proposal node with implementation
+        design_artifact=self.get_node(acronym)
         implementation=design_artifact.implementation
-        attempt=ImplementationAttempt(succeed=SUCCEED, new_unit_name=new_unit_name, rounds=ROUNDS, costs=costs, tree=tree, design_cfg=design_cfg, user_input=user_input)
+        attempt=ImplementationAttempt(succeed=SUCCEED, rounds=ROUNDS, costs=costs, tree=tree, design_cfg=design_cfg, user_input=user_input)
         if implementation is None:
-            implementation=Implementation(succeed=SUCCEED, new_unit_name=new_unit_name, implementation=tree, history=[attempt])
+            implementation=Implementation(succeed=SUCCEED, implementation=tree, history=[attempt])
         else:
             implementation.succeed=SUCCEED
             implementation.implementation=tree
-            implementation.new_unit_name=new_unit_name
             implementation.history.append(attempt)
-        implementation.save(self.design_dir(design_id))
+        implementation.save(self.design_dir(acronym))
         design_artifact.implementation=implementation
-        self.G.nodes[design_id]['data']=design_artifact
+        self.G.nodes[acronym]['data']=design_artifact
 
-    def verify(self, design_id: str, scale: str, verification_report): # attach a verification report under a scale to an implemented node
+    def verify(self, acronym: str, scale: str, verification_report): # attach a verification report under a scale to an implemented node
         pass
 
     def unique_acronym(self, acronym: str) -> str:
@@ -633,9 +637,9 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         if acronym not in existing_acronyms:
             return acronym
         i = 1
-        while f"{acronym}{i}" in existing_acronyms:
+        while f"{acronym}_{i}" in existing_acronyms:
             i += 1
-        return f"{acronym}{i}"
+        return f"{acronym}_{i}"
 
     def filter_by_type(self,types):
         if isinstance(types, str):

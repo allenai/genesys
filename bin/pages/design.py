@@ -182,7 +182,7 @@ def design(evosys,project_dir):
             with cols[1]:
                 max_attempts['implementation_debug'] = st.number_input(label="Max debug attempts",min_value=3,value=7)
             with cols[2]:
-                max_attempts['post_refinement'] = st.number_input(label="Max post refinements",min_value=0,value=5)
+                max_attempts['post_refinement'] = st.number_input(label="Max post refinements",min_value=0,value=3)
         with col2:
             st.markdown("##### Configure experiment settings")
             cols=st.columns([2,2,3])

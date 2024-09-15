@@ -109,7 +109,9 @@ Here is the composed LM block code `gab.py` based on the GAUs for you to refer:
 """
 
 
-GU_IMPLEMENTATION_RETRY_prompt = """
+
+def gen_GU_IMPLEMENTATION_UNIT_RETRY(use_o1=False):
+   GU_IMPLEMENTATION_RETRY_prompt = """
 Your design has undergone checks by the format checker, functionality checker, and has been reviewed by the observer. Unfortunately, it did not pass. Below is the feedback:
 
 - **Format Checker**: This report assesses whether your code adheres to the required format guidelines.
@@ -167,8 +169,10 @@ Here is the GAUBase class for you to refer:
 Please ensure your final submission is thoroughly tested and ready for the next round of review.
 """
 
-
-GU_IMPLEMENTATION_UNIT_RETRY= AgentPrompt(GU_IMPLEMENTATION_RETRY_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_RETRY_DEBUG_format)
+   if use_o1:
+      return AgentPrompt(GU_IMPLEMENTATION_RETRY_prompt,GENERAL_CODE_parser)
+   else:
+      return AgentPrompt(GU_IMPLEMENTATION_RETRY_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_RETRY_DEBUG_format)
 
 
 # endregion
@@ -1640,7 +1644,7 @@ GUM_DESIGNER_SYSTEM = AgentPrompt(GUM_DESIGNER_SYSTEM_prompt)
 
 def gen_GUM_IMPLEMENTATION_UNIT_SELECTION(SELECTIONS,post_refining=False):
    GUM_IMPLEMENTATION_UNIT_SELECTION_prompt = """
-It is round {round} for the design implementation. You will need to select the GAU to work on for this round.
+It is round {ROUND} for the design implementation. You will need to select the GAU to work on for this round.
 
 #### Current Design Overview:
 Below is a tree of the GAUs that compose the language model (LM) block and the details of the GAUs:
@@ -1808,19 +1812,6 @@ After completing this GAU, you will be asked to implement any remaining parts of
 
 
    return AgentPrompt(GUM_IMPLEMENTATION_UNIT_prompt,GENERAL_JSON_parser,GUM_IMPLEMENTATION_UNIT_format)
-
-# endregion
-
-
-
-
-""" ============================= GUM Implementation Unit Refine Prompt ===================================== """
-
-# region GU Implementation Refine
-
-
-GUM_IMPLEMENTATION_UNIT_REFINE= AgentPrompt(GU_IMPLEMENTATION_RETRY_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_REFINE_format)
-
 
 # endregion
 
@@ -2438,6 +2429,10 @@ The planner has chosen to refine the GAU named **{UNIT_NAME}**. While the coder 
 {DESCRIPTION}
 
 #### Previous Review:
+- **Previous Review**: 
+
+{REVIEW}
+
 - **Previous Rating**: {RATING} out of 5 (Passing score: >3)
 - **Suggestions from the Previous Observer**: {SUGGESTIONS}
 
@@ -2662,7 +2657,7 @@ GUMT_IMPLEMENTATION_UNIT_OBSERVE = AgentPrompt(GUMT_IMPLEMENTATION_UNIT_OBSERVE_
 # region GUMT Implementation Unit
 
 
-
+# O1 Prompt guides https://platform.openai.com/docs/guides/reasoning/advice-on-prompting
 
 def gen_GUMT_IMPLEMENTATION_UNIT(refine=False,use_o1=False):
 
@@ -2682,11 +2677,11 @@ implemented:
 
 **Current Implementation**: {IMPLEMENTATION}
 
-**Review**: {REVIEW}
+**Observer Review**: {REVIEW}
 
-**Rating**: {RATING} out of 5 (Passing score >3)
+**Observer Rating**: {RATING} out of 5 (Passing score >3)
 
-**Reviewer Suggestions**: {SUGGESTIONS}
+**Observer Suggestions**: {SUGGESTIONS}
 
 ### Refinement Process
 
@@ -2773,3 +2768,6 @@ You must include your full implementation in your final response. You must wrape
       return AgentPrompt(GUMT_IMPLEMENTATION_UNIT_prompt,GENERAL_JSON_parser,GUMT_IMPLEMENTATION_UNIT_format)
 
 # endregion
+
+
+

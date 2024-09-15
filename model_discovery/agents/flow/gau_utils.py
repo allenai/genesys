@@ -821,7 +821,7 @@ def check_and_reformat_gau_code(source_code, unit_name):
         tree = ast.parse(source_code)
     except Exception as e:
         fetal_errors.append(f"Error parsing the code: {e}\n")
-        return None, None, None, errors, warnings, fetal_errors, None
+        return None, None, None, errors, warnings, fetal_errors, None, None
 
     # Step 2: Run the format checker which now removes the import lines
     gaufinder = GAUFinder()
@@ -885,8 +885,8 @@ def check_and_reformat_gau_code(source_code, unit_name):
         exec(reformatted_code,local)
     except Exception as e:
         fetal_errors.append(f"Error executing the code: {e}\nWill continue the checking process but please fix the code first.")
-    children_decl=local.get('CHILDREN_DECLARATIONS',None)
-    if children_decl is None:
+    children_decl=local.get('CHILDREN_DECLARATIONS',[])
+    if children_decl==[]:
         warnings.append("Warning: No CHILDREN_DECLARATIONS found in the GAU. Will assume there is no children.")
         children=[]
     else:

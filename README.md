@@ -27,7 +27,7 @@ You can also set them in setup.sh then follow the instructions below to set up t
 ```shell
 conda create -n modis python=3.12
 conda activate modis
-3pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118 # for cuda 11.8
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118 # for cuda 11.8
 bash scripts/setup.sh # remember to set up the environment variables in setup.sh
 ```
 
