@@ -45,12 +45,6 @@ class DesignerAgent(exec_utils.SimpleLMAgent):
         raw_text = raw_output.text
         output = {}
 
-        codes = re.findall(r"```python(.*?)```", raw_text, re.DOTALL)
-        if codes:
-            for code in codes:
-                if code.strip().startswith("# gab.py"):
-                    output["code"] = code
-
         output["text"] = raw_text
         output["_details"] = {}
         output["_details"]["cost"] = raw_output.usage

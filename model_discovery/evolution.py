@@ -279,6 +279,7 @@ class LibraryReference(NodeObject):
 class Proposal:
     selection:str
     modelname:str
+    variantname:str
     proposal:str
     review:str
     rating:int

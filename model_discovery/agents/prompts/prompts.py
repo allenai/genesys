@@ -36,14 +36,7 @@ class GU_IMPLEMENTATION_RETRY_DEBUG_format(BaseModel): # for retry
    implementation: str = Field(..., description="The full python implementation of the GAU following the GAU format instructions.")
    changes: str = Field(..., description="The exact changes you have made in the code. It must include detailed code diffs and necessary context with explanation.")
 
-class GU_IMPLEMENTATION_RETRY_format(BaseModel): # for retry
-   reflection: str = Field(..., description="The reflection of the feedback from the reviewer.")
-   analysis: str = Field(..., description="The analysis of how to best design and implement the GAU.")
-   implementation: str = Field(..., description="The full python implementation of the GAU following the GAU format instructions.")
-   changes: str = Field(..., description="The exact changes you have made in the code. It must include detailed code diffs and necessary context with explanation.")
-
 class GU_IMPLEMENTATION_REFINE_format(BaseModel): # for refine, allow to update description, implementation, children, and changes
-   newname: str = Field(..., description="The name of this GAU variant, remember that do not apply this new name to your implementation, keep the original name in the implementation.")
    reflection: str = Field(..., description="The reflection of the feedback from the reviewer.")
    analysis: str = Field(..., description="The analysis of how to best design and implement the GAU.")
    implementation: str = Field(..., description="The full python implementation of the GAU following the GAU format instructions.")
@@ -60,8 +53,18 @@ def GENERAL_JSON_parser(raw_output: ModelOutputPlus) -> Dict[Any,Any]:
       output["_details"]["running_cost"] = raw_output.usage['cost']
       return output
 
-
-
+def GENERAL_CODE_parser(raw_output: ModelOutputPlus) -> Dict[Any,Any]:
+      raw_text = raw_output.text
+      output = {}
+      codes = re.findall(r"```python(.*?)```", raw_text, re.DOTALL)
+      if not codes:
+         codes = ['No code is generated, please try again.']
+      output["text"] = raw_text
+      output["code"] = codes
+      output["_details"] = {}
+      output["_details"]["cost"] = raw_output.usage
+      output["_details"]["running_cost"] = raw_output.usage['cost']
+      return output
 
 
 class GU_IMPLEMENTATION_REVIEW_format(BaseModel):
@@ -107,7 +110,7 @@ Here is the composed LM block code `gab.py` based on the GAUs for you to refer:
 
 
 GU_IMPLEMENTATION_RETRY_prompt = """
-Your design has undergone checks by the format checker, functionality checker, and has been reviewed by an expert. Unfortunately, it did not pass. Below is the feedback:
+Your design has undergone checks by the format checker, functionality checker, and has been reviewed by the observer. Unfortunately, it did not pass. Below is the feedback:
 
 - **Format Checker**: This report assesses whether your code adheres to the required format guidelines.
   
@@ -121,11 +124,11 @@ Your design has undergone checks by the format checker, functionality checker, a
   **Functionality Checker Report**:
   {FUNCTION_CHECKER_REPORT}
 
-- **Expert Review**: 
+- **Observer Review**: 
   **Review**: {REVIEW}
   **Rating**: {RATING} out of 5 ({PASS_OR_NOT})
 
-- **Suggestions from the Expert**:
+- **Suggestions from the Observer**:
   {SUGGESTIONS}
 
 ### Next Steps:
@@ -570,7 +573,8 @@ def gen_GUM_DESIGN_PROPOSAL(SELECTIONS:list[str],two_stage:bool=False,use_isearc
    class GUM_DESIGN_PROPOSAL_STAGE2_format(BaseModel):
       proposal: str = Field(..., description="The full proposal, keep the format instructions.")
       selection: SelectionEnum = Field(..., description="The name of the GAU you are going to work on.")
-      modelname: str = Field(..., description="The name of the variant of the model you are going to design.")
+      variantname: str = Field(..., description="The name of the variant of the selected GAU you are going to design.")
+      modelname: str = Field(..., description="The name of the resulting model by applying the variant of GAU.")
    
    if use_isearch:
       GUM_DESIGN_PROPOSAL_ISEARCH_prompt = """
@@ -997,8 +1001,10 @@ def gen_GUM_PROPOSAL_REFINEMENT(SELECTIONS:list[str],two_stage:bool=False,use_is
       class GUM_PROPOSAL_REFINEMENT_FINISH_format(BaseModel):
          proposal: str = Field(..., description="The fall proposal, keep the format instructions.")
          selection: SelectionEnum = Field(..., description="The name of the GAU you are going to work on.")
-         modelname: str = Field(..., description="The name of the variant of the model you are going to design.")
+         variantname: str = Field(..., description="The name of the variant of the selected GAU you are going to design.")
+         modelname: str = Field(..., description="The name of the resulting model by applying the variant of GAU.")
          changes: str = Field(..., description="The summary of the changes you made.") 
+
 
       GUM_DESIGN_PROPOSAL_ISEARCH_REFINEMENT_prompt = """
 Your proposal has been reviewed by an expert. Please carefully consider the following feedback:
@@ -1040,7 +1046,8 @@ Ensure your proposal is innovative yet feasible, aiming to advance state-of-the-
       class GUM_PROPOSAL_REFINEMENT_STAGE2_format(BaseModel):
          proposal: str = Field(..., description="The fall proposal, keep the format instructions.")
          selection: SelectionEnum = Field(..., description="The name of the GAU you are going to work on.")
-         modelname: str = Field(..., description="The name of the variant of the model you are going to design.")
+         variantname: str = Field(..., description="The name of the variant of the selected GAU you are going to design.")
+         modelname: str = Field(..., description="The name of the resulting model by applying the variant of GAU.")
          changes: str = Field(..., description="The summary of the changes you made.") 
 
       GUM_PROPOSAL_REFINEMENT_STAGE1_prompt = """
@@ -1118,7 +1125,8 @@ Ensure your refined proposal is comprehensive, well-justified, and directly addr
          reflection: str = Field(..., description="The reflection based on the review, rating, and suggestions.")
          proposal: str = Field(..., description="The fall proposal, keep the format instructions.")
          selection: SelectionEnum = Field(..., description="The name of the GAU you are going to work on.")
-         modelname: str = Field(..., description="The name of the variant of the model you are going to design.")
+         variantname: str = Field(..., description="The name of the variant of the selected GAU you are going to design.")
+         modelname: str = Field(..., description="The name of the resulting model by applying the variant of GAU.")
          changes: str = Field(..., description="The summary of the changes you made.") 
 
       GUM_PROPOSAL_REFINEMENT_prompt = """
@@ -1386,8 +1394,7 @@ S2_SEARCH_PROPOSAL_RESPONSE = AgentPrompt(S2_SEARCH_PROPOSAL_RESPONSE_prompt,GEN
 
 # About GAB
 GUM_DESIGNER_SYSTEM_prompt_part1 = """
-You are a researcher designing a new autoregressive language model (LM). Modern
-LMs are typically structured as a stack of repeating blocks. Each block accepts: 
+Modern LMs are typically structured as a stack of repeating blocks. Each block accepts: 
 
 1. A sequence of embeddings $X$ of shape $(B, L, D)$, where $B$ is the batch
    size, $L$ is the sequence length, and $D$ is the embedding dimension.
@@ -1602,8 +1609,8 @@ GUM_DESIGNER_SYSTEM_prompt_part4 = """
 """
 
 
-GUM_DESIGNER_SYSTEM_prompt=GUM_DESIGNER_SYSTEM_prompt_part1+GUM_DESIGNER_SYSTEM_prompt_part2+\
-   GUM_DESIGNER_SYSTEM_prompt_part3+GUM_DESIGNER_SYSTEM_prompt_part4
+GUM_DESIGNER_SYSTEM_prompt="You are a researcher designing a new autoregressive language model (LM). "+\
+   GUM_DESIGNER_SYSTEM_prompt_part1+GUM_DESIGNER_SYSTEM_prompt_part2+GUM_DESIGNER_SYSTEM_prompt_part3+GUM_DESIGNER_SYSTEM_prompt_part4
 
 
 GUM_DESIGNER_SYSTEM = AgentPrompt(GUM_DESIGNER_SYSTEM_prompt)
@@ -1633,12 +1640,7 @@ GUM_DESIGNER_SYSTEM = AgentPrompt(GUM_DESIGNER_SYSTEM_prompt)
 
 def gen_GUM_IMPLEMENTATION_UNIT_SELECTION(SELECTIONS,post_refining=False):
    GUM_IMPLEMENTATION_UNIT_SELECTION_prompt = """
-####  Overall Proposal for Refining the Design:
-{PROPOSAL}
-
-#### Review of the Proposal:
-{REVIEW}
-- **Rating**: {RATING} out of 5 (Passing score: >3)
+It is round {round} for the design implementation. You will need to select the GAU to work on for this round.
 
 #### Current Design Overview:
 Below is a tree of the GAUs that compose the language model (LM) block and the details of the GAUs:
@@ -1752,7 +1754,7 @@ each of them as a child GAU. Do not make a single unit overly complex.
 Remember your final goal is to refine the GAU in a way that enhances the overall
 design, ensuring both correctness and innovation.
    """
-      GUM_IMPLEMENTATION_UNIT_format = GU_IMPLEMENTATION_RETRY_format
+      GUM_IMPLEMENTATION_UNIT_format = GU_IMPLEMENTATION_REFINE_format
       
       if begin:
          GUM_IMPLEMENTATION_UNIT_prompt = """
@@ -2166,3 +2168,608 @@ GUM_IMPLEMENTATION_UNIT_REVIEW = AgentPrompt(GUM_IMPLEMENTATION_UNIT_REVIEW_prom
 
 # endregion
 
+
+
+'''
+#######################################################
+##                                                                                               
+## Trio architecture for GU Mutate from existing design prompts                                    
+##                                                                                               
+#######################################################
+'''
+
+# region Trio architecture for GU Mutate from existing design prompts
+
+
+GUMT_GUILDLINES=f"""
+- Guildline Part 1: Overview of autoregressive language models and block structure:
+
+---
+
+{GUM_DESIGNER_SYSTEM_prompt_part1}
+
+---
+
+- Guildline Part2: Explanation of Generalized Autoregressive Units (GAUs):
+
+---
+
+{GUM_DESIGNER_SYSTEM_prompt_part2}
+
+---
+
+- Guildline Part3: Instructions for the design process:
+
+---
+
+{GUM_DESIGNER_SYSTEM_prompt_part3}
+
+---
+
+- Guildline Part4: Guidelines for designing GAUs:
+
+---
+
+{GUM_DESIGNER_SYSTEM_prompt_part4}
+
+---
+"""
+
+
+
+GUMT_IMPLEMENTATION_PLANNER_SYSTEM_prompt="""
+# Implementation Planner System Prompt
+
+You are the Implementation Planner for a team designing a new autoregressive language model (LM) based on Generalized Autoregressive Units (GAUs). Your role is to guide the implementation process by making strategic decisions about which units to implement or refine, and providing high-level instructions to the Implementation Coder.
+
+## Background and Context
+
+Please refer to the following sections from the original system prompt for essential background information:
+
+""" + GUMT_GUILDLINES + """
+
+Ensure that you are familiar with these sections as they provide crucial context for your role.
+
+## The proposal and corresponding review for the design to implement
+
+###  Overall Proposal for Refining the Design
+
+{PROPOSAL}
+
+### Review of the Proposal
+
+{REVIEW}
+
+#### Rating
+
+{RATING} out of 5 (Passing score: >3)
+
+## Your Responsibilities:
+
+1. **Analyze the Proposal**: Thoroughly understand the proposed LM design, including all GAUs and their relationships.
+
+2. **Prioritize Implementation**: Decide the order in which GAUs should be implemented or refined. Consider dependencies between units and the overall structure of the model.
+
+3. **Select Next Unit**: Each round, choose either:
+   - An unimplemented GAU
+   - A previously implemented GAU that needs refinement
+   - You will not be asked in the first round, in which the coder will always start by the selected unit in the proposal
+
+4. **Provide High-Level Instructions**: For the selected GAU, give clear, concise instructions to the Implementation Coder. These should include:
+   - The purpose and function of the GAU
+   - Key features or operations to implement
+   - Any specific requirements or constraints
+   - Potential challenges or areas that need careful consideration
+
+5. **Consider Dependencies**: Ensure that your instructions account for the GAU's place in the overall architecture and its interactions with other units.
+
+6. **Promote Innovation**: Encourage the Coder to explore novel approaches that could improve performance or efficiency, while staying true to the overall design philosophy.
+
+7. **Iterative Refinement**: Based on feedback from the Implementation Observer, decide when a GAU needs further refinement and what aspects to focus on.
+
+## Guidelines:
+
+- Follow the design principles outlined in Guideline Part 3, particularly regarding the decomposition of complex GAUs and the declaration of child GAUs.
+- Adhere to the guidelines for designing GAUs as specified in Guideline Part 4, including class naming, initialization, and call behavior.
+- Maintain a holistic view of the model architecture as described in Guideline Part 1 and Guideline Part 2.
+- Balance between faithfulness to the proposal and openness to improvements that could enhance model performance.
+- Ensure your instructions promote code that is modular, efficient, and scalable.
+- Consider the principles of good software design, such as DRY (Don't Repeat Yourself) and SOLID principles.
+- Be prepared to adjust the implementation plan based on insights gained during the process.
+
+Remember, your role is to guide the overall implementation strategy. You don't need to provide detailed code instructions, but rather high-level direction that will enable the Implementation Coder to write effective, innovative code that aligns with the original design principles and goals of the project.
+"""
+
+
+GUMT_IMPLEMENTATION_CODER_SYSTEM_prompt=f"""
+# Implementation Coder System Prompt
+
+You are the Implementation Coder for a team designing a new autoregressive language model (LM) based on Generalized Autoregressive Units (GAUs). Your role is to write the actual code for each GAU as directed by the Implementation Planner.
+
+## Background and Context
+
+Please refer to the following sections from the original system prompt for essential background information:
+
+""" + GUMT_GUILDLINES + """
+
+Ensure that you are familiar with these sections as they provide crucial context for your implementation work.
+
+## The proposal and corresponding review for the design to implement
+
+###  Overall Proposal for Refining the Design
+
+{PROPOSAL}
+
+### Review of the Proposal
+
+{REVIEW}
+
+#### Rating
+
+{RATING} out of 5 (Passing score: >3)
+
+## Your Responsibilities:
+
+1. **Implement GAUs**: Write the Python code for the GAU selected by the Implementation Planner. This includes:
+   - Defining the GAU class, inheriting from GAUBase
+   - Implementing the `__init__` and `_forward` methods
+   - Handling inputs and outputs correctly through the `X`, `Y`, `Z`, and `Z'` interface
+   - Declaring and instantiating child GAUs as placeholders when necessary
+
+2. **Follow Design Principles**: Adhere to the design principles outlined in Guideline Part 3 and Guideline Part 4, including:
+   - Proper decomposition of complex GAUs into child units
+   - Correct placeholder declaration and child GAU calls
+   - Proper preparation of inputs and outputs
+   - Following the specified class naming and initialization conventions
+
+3. **Write Docstrings**: Provide clear and comprehensive docstrings for each GAU, explaining its purpose, inputs, outputs, and any important details about its operation.
+
+4. **Create Unit Tests**: Write at least one unit test for each GAU to verify its core functionality and edge cases, as specified in Guideline Part 3.
+
+5. **Innovate**: While implementing the GAU as directed, look for opportunities to improve efficiency or introduce novel mechanisms that could enhance the model's performance, as encouraged in Guideline Part 4.
+
+6. **Handle Edge Cases**: Ensure your code gracefully handles potential issues, such as missing inputs or unexpected data types, as mentioned in Guideline Part 4.
+
+## Guidelines:
+
+- Follow Python best practices and PEP 8 style guidelines
+- Ensure your code is clean, well-commented, and easy to understand
+- Use meaningful variable and function names
+- Optimize for both readability and performance
+- Don't implement placeholder GAUs; these will be handled by the system as explained in Guideline Part 3
+- Focus on the current GAU without worrying about the internal workings of other GAUs
+- Be prepared to refine your implementation based on feedback from the Implementation Observer
+- Adhere strictly to the GAU call behavior and initialization guidelines provided in Guideline Part 4
+
+Remember, you're implementing one GAU at a time. Your code should be self-contained and interact with other units only through the defined interfaces. Always consider how your implementation fits into the broader architecture of the language model as described in Guideline Part 1 and Guideline Part 2.
+"""
+
+
+GUMT_IMPLEMENTATION_OBSERVER_SYSTEM_prompt=f"""
+# Implementation Observer System Prompt
+
+You are the Implementation Observer for a team designing a new autoregressive language model (LM) based on Generalized Autoregressive Units (GAUs). Your role is to review and provide feedback on the code written by the Implementation Coder, ensuring it aligns with the proposal and follows best practices.
+
+## Background and Context
+
+Please refer to the following sections from the original system prompt for essential background information:
+
+""" + GUMT_GUILDLINES + """
+
+Ensure that you are familiar with these sections as they provide crucial context for your review work.
+
+## The proposal and corresponding review for the design to implement
+
+###  Overall Proposal for Refining the Design
+
+{PROPOSAL}
+
+### Review of the Proposal
+
+{REVIEW}
+
+#### Rating
+
+{RATING} out of 5 (Passing score: >3)
+
+## Your Responsibilities:
+
+1. **Code Review**: Carefully examine the code produced by the Implementation Coder for each GAU. Look for:
+   - Adherence to the proposed design and the Planner's instructions
+   - Correct implementation of the GAU interface (handling of `X`, `Y`, `Z`, and `Z'`) as described in Guideline Part 2
+   - Proper declaration and use of child GAUs as outlined in Guideline Part 3
+   - Efficiency and performance considerations
+   - Potential bugs or edge cases
+   - Adherence to Python best practices and PEP 8 style guidelines
+
+2. **Proposal Alignment**: Ensure the implementation aligns with the overall proposal and fits seamlessly into the broader model architecture as described in Guideline Part 1 and Guideline Part 2.
+
+3. **Innovation Assessment**: Evaluate any novel approaches or optimizations introduced by the Coder. Consider their potential impact on model performance and scalability, keeping in mind the goals outlined in Guideline Part 1.
+
+4. **Docstring and Test Review**: Check that docstrings are comprehensive and accurate, and that unit tests adequately cover the GAU's functionality, as specified in GUM_DESIGNER_SYSTEM_prompt_part3.
+
+5. **Feedback Compilation**: Prepare clear, constructive feedback for both the Implementation Planner and Coder. This should include:
+   - Identified issues or potential improvements
+   - Suggestions for refinements or alternative approaches
+   - Commendations for particularly effective or innovative solutions
+
+6. **Consistency Check**: Ensure that the implementation maintains consistency with previously implemented GAUs and the overall system architecture, adhering to the guidelines in GUM_DESIGNER_SYSTEM_prompt_part4.
+
+## Guidelines:
+
+- Approach each review with a critical yet constructive mindset
+- Consider both the technical correctness and the strategic value of the implementation
+- Look for opportunities to improve code quality, efficiency, or innovativeness
+- Be specific in your feedback, providing clear examples or suggestions where possible
+- Consider the balance between faithfulness to the proposal and potential improvements
+- Flag any potential issues that might affect the integration of the GAU into the larger model
+- Ensure that the implementation follows the key design principles and guidelines outlined in Guideline Part 3 and Guideline Part 4
+
+Remember, your role is crucial in maintaining the quality and coherence of the overall implementation. Your insights will guide both the Planner in making strategic decisions and the Coder in refining their work. Strive to promote a design that pushes the boundaries of current language models while ensuring robustness and scalability, as emphasized in the original system prompt.
+"""
+
+GUMT_IMPLEMENTATION_PLANNER_SYSTEM=AgentPrompt(GUMT_IMPLEMENTATION_PLANNER_SYSTEM_prompt)
+GUMT_IMPLEMENTATION_CODER_SYSTEM=AgentPrompt(GUMT_IMPLEMENTATION_CODER_SYSTEM_prompt)
+GUMT_IMPLEMENTATION_OBSERVER_SYSTEM=AgentPrompt(GUMT_IMPLEMENTATION_OBSERVER_SYSTEM_prompt)
+
+
+# endregion
+
+
+
+""" ============================= GUMT Implementation Unit Refine Observe Prompt ===================================== """
+
+
+# region GUMT Implementation Refine Observe 
+
+GUMT_IMPLEMENTATION_UNIT_REFINE_OBSERVE_prompt = """
+#### Current Design Overview:
+Below is a tree of the GAUs that compose the language model (LM) block and the details of the GAUs:
+
+{VIEW}
+
+---
+
+### GAU Selected for Refinement:
+
+The planner has chosen to refine the GAU named **{UNIT_NAME}**. While the coder must follow the core idea from the proposal, they are allowed to introduce new ideas and details that could improve the design.
+
+#### GAU Description:
+{DESCRIPTION}
+
+#### Previous Review:
+- **Previous Rating**: {RATING} out of 5 (Passing score: >3)
+- **Suggestions from the Previous Observer**: {SUGGESTIONS}
+
+#### Design Idea (Analysis):
+{ANALYSIS}
+
+#### GAU Specification:
+{SPECIFICATION}
+
+#### Full GAU Implementation:
+```python
+{IMPLEMENTATION}
+```
+
+#### Summary of Changes Made:
+{CHANGES}
+
+
+### Instructions for Review:
+
+As the Implementation Observer, your role is to critically review the refined implementation of the GAU named **{UNIT_NAME}**. Your feedback will be crucial in ensuring the quality, effectiveness, and innovation of the language model design. Please follow this structured approach to your review:
+
+#### 1. Context Review
+- Familiarize yourself with the current design overview, particularly the tree structure of the GAUs.
+- Understand the GAU's place within the larger language model block.
+
+#### 2. Proposal Alignment
+- Review the GAU description and design idea (analysis).
+- Assess how well the implementation aligns with the core idea from the proposal.
+- Evaluate any new ideas or details introduced by the coder for potential improvements.
+
+#### 3. Previous Review Consideration
+- Note the previous rating and suggestions.
+- Determine if and how the current implementation addresses previous feedback.
+
+#### 4. Code Analysis
+Carefully examine the full GAU implementation, focusing on:
+- Correctness of the implementation according to the GAU specification.
+- Proper use of the GAU interface (`X`, `Y`, `Z`, `Z'`).
+- Efficiency and performance considerations.
+- Innovation in approach or mechanisms.
+- Adherence to Python best practices and PEP 8 style guidelines.
+- Proper handling of edge cases and potential issues.
+- Quality and comprehensiveness of docstrings.
+- Presence and quality of unit tests.
+
+#### 5. Changes Evaluation
+- Review the summary of changes made.
+- Assess the impact and appropriateness of these changes.
+
+#### 6. Integration and Scalability
+- Consider how well this GAU integrates with other previously designed GAUs.
+- Evaluate the potential impact on the overall model's performance and scalability.
+
+#### 7. Feedback Compilation
+Prepare a comprehensive feedback report including:
+1. Overall assessment (1-5 rating, with 5 being excellent)
+2. Strengths of the implementation
+3. Areas for improvement
+4. Specific suggestions for refinement
+5. Comments on innovation and potential impact
+6. Any concerns about integration or scalability
+7. Recommendations for the Implementation Planner and Coder
+
+### Guidelines for Your Review:
+- Be thorough and critical, but also constructive.
+- Balance faithfulness to the original proposal with openness to valuable innovations.
+- Consider both immediate functionality and long-term implications for the model.
+- Provide specific, actionable feedback whenever possible.
+- Highlight particularly effective or innovative solutions.
+- Flag any potential issues that might affect the integration of the GAU into the larger model.
+
+Remember, your insights are crucial for guiding both the Planner in making strategic decisions and the Coder in refining their work. Strive to promote a design that pushes the boundaries of current language models while ensuring robustness and scalability.
+
+Please provide your detailed review based on this structure, ensuring you address all the key points outlined above.
+"""
+
+GUMT_IMPLEMENTATION_UNIT_REFINE_OBSERVE = AgentPrompt(GUMT_IMPLEMENTATION_UNIT_REFINE_OBSERVE_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_REVIEW_format)
+
+
+# endregion
+
+
+
+""" ============================= GUM Implementation Rereview Prompt ===================================== """
+
+
+# region GUM Implementation Rereview 
+
+GUMT_IMPLEMENTATION_REOBSERVE_prompt = """The coder has refined the design and implementation of the GAU **{UNIT_NAME}** based on your previous feedback and the results from the checkers. The refinement follows the same proposal, but incorporates changes to address the concerns raised.
+
+---
+
+### Updated Design Details:
+
+- **Updated Design Idea**:
+  {ANALYSIS}
+
+- **GAU Specification**:
+  {SPECIFICATION}
+
+- **Updated Full Implementation**:
+  ```python
+  {IMPLEMENTATION}
+  ```
+
+- **Summary of Changes**:
+  {CHANGES}
+
+Please review and provide feedback on the updated implementation.
+"""
+
+
+
+GUMT_IMPLEMENTATION_REOBSERVE = AgentPrompt(GUMT_IMPLEMENTATION_REOBSERVE_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_REVIEW_format)
+
+
+# endregion
+
+
+""" ============================= GUMT Implementation Unit Observe Prompt ===================================== """
+
+
+# region GUMT Implementation Unit Observe
+
+GUMT_IMPLEMENTATION_UNIT_OBSERVE_prompt = """
+#### Current Design Overview:
+Below is a tree of the GAUs that compose the language model (LM) block, along with details about each GAU:
+
+{VIEW}
+
+---
+
+The coder is implementing the GAU named **{UNIT_NAME}**.
+
+### GAU Specification and Implementation:
+
+- **GAU Specification**:
+  {SPECIFICATION}
+
+- **Design Idea (Analysis)**:
+  {ANALYSIS}
+
+- **Full GAU Implementation**:
+  ```python
+  {IMPLEMENTATION}
+  ```
+
+### Instructions for Review:
+
+As the Implementation Observer, your role is to critically review the newly implemented GAU named **{UNIT_NAME}**. Your feedback will be crucial in ensuring the quality, effectiveness, and innovation of this new component within the language model design. Please follow this structured approach to your review:
+
+## 1. Context Review
+- Familiarize yourself with the current design overview, particularly the tree structure of the GAUs.
+- Understand where this new GAU fits within the larger language model block.
+
+## 2. Specification and Design Alignment
+- Carefully review the GAU specification and design idea (analysis).
+- Assess how well the implementation aligns with the specified requirements and design objectives.
+- Evaluate any innovative approaches or mechanisms introduced by the coder.
+
+## 3. Code Analysis
+Thoroughly examine the full GAU implementation, focusing on:
+- Correctness of the implementation according to the GAU specification.
+- Proper use of the GAU interface (`X`, `Y`, `Z`, `Z'`).
+- Efficiency and performance considerations.
+- Adherence to Python best practices and PEP 8 style guidelines.
+- Proper handling of edge cases and potential issues.
+- Quality and comprehensiveness of docstrings.
+- Presence and quality of unit tests.
+- Appropriate use of child GAUs or placeholder declarations, if applicable.
+
+## 4. Integration and Scalability
+- Consider how well this new GAU integrates with existing GAUs in the model.
+- Evaluate the potential impact on the overall model's performance and scalability.
+- Assess whether the implementation allows for future extensions or modifications.
+
+## 5. Innovation Assessment
+- Identify any novel approaches or optimizations introduced in the implementation.
+- Evaluate the potential benefits and risks of these innovations.
+- Consider how these innovations align with the overall goals of the language model design.
+
+## 6. Potential Issues Identification
+- Flag any potential issues or vulnerabilities in the implementation.
+- Consider edge cases or scenarios that might not be adequately addressed.
+- Identify any parts of the code that might benefit from further optimization or refinement.
+
+## 7. Feedback Compilation
+Prepare a comprehensive feedback report including:
+1. Overall assessment (1-5 rating, with 5 being excellent)
+2. Strengths of the implementation
+3. Areas for improvement
+4. Specific suggestions for refinement or optimization
+5. Comments on innovation and potential impact
+6. Any concerns about integration or scalability
+7. Recommendations for the Implementation Planner and Coder
+
+## Guidelines for Your Review:
+- Be thorough and critical, but also constructive.
+- Balance adherence to the specification with openness to valuable innovations.
+- Consider both immediate functionality and long-term implications for the model.
+- Provide specific, actionable feedback whenever possible.
+- Highlight particularly effective or innovative solutions.
+- Flag any potential issues that might affect the integration of the GAU into the larger model.
+- Consider how this new GAU contributes to the overall goals of the language model design.
+
+Remember, your insights are crucial for guiding both the Planner in making strategic decisions and the Coder in refining their work. Strive to promote a design that pushes the boundaries of current language models while ensuring robustness and scalability.
+
+Please provide your detailed review based on this structure, ensuring you address all the key points outlined above. Your thorough evaluation will play a vital role in the successful integration of this new GAU into the language model architecture.
+"""
+
+GUMT_IMPLEMENTATION_UNIT_OBSERVE = AgentPrompt(GUMT_IMPLEMENTATION_UNIT_OBSERVE_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_REVIEW_format)
+
+
+# endregion
+
+
+
+""" ============================= GUMT Implementation Unit ===================================== """
+
+
+# region GUMT Implementation Unit
+
+
+
+
+def gen_GUMT_IMPLEMENTATION_UNIT(refine=False,use_o1=False):
+
+   if refine:
+      GUMT_IMPLEMENTATION_UNIT_prompt = """
+#### Current Design Overview: Below is a tree of the GAUs that compose the
+language model (LM) block and the details of the GAUs:
+
+{VIEW}
+
+Below is the specification for the GAU selected by the planner to be
+implemented:
+
+**Specification**: {SPECIFICATION}
+
+**Children list**: {CHILDREN}
+
+**Current Implementation**: {IMPLEMENTATION}
+
+**Review**: {REVIEW}
+
+**Rating**: {RATING} out of 5 (Passing score >3)
+
+**Reviewer Suggestions**: {SUGGESTIONS}
+
+### Refinement Process
+
+If there is a review provided, you may start by reflecting on the feedback.
+Otherwise, leave reflection empty. The, proceed with the following:
+
+1. **New Analysis and Design**: - Provide an updated detailed analysis based on
+   the feedback, including your new design direction and justifications. -
+   Include a high-level pseudocode that captures the core of the new design. 
+
+2. **Implementation**: - Provide the full updated implementation of the GAU,
+   following the specified format and templates. Remember to update the
+   docstring of the GAU class accordingly. Follow the instruction in the GAU
+   template carefully. If the original docstring is missing or incorrect or not
+   following the template, please rewrite the docstring based on the new design.
+
+3. **Children list**: - Provide the list of the children GAUs that are declared
+   in the current GAU. You can declare new children GAUs or preserve the
+   existing ones. If you do not declare any new children GAUs, you should
+   provide the original children GAUs. 
+
+4. **Log of Changes**: - Summarize the key changes you made during the
+   refinement process. Including *all* code snippets where you made a change
+   wrapped in ```python ```.
+
+### Key Points to Remember: - The bug or issue must always be resolved within
+the current GAU, as other units are either fully implemented and tested or
+placeholders that do not perform any computation. - Ensure the GAU is
+self-contained, so you won't need to adjust it later when working on other
+units. - The design must align with the original proposal and follow all
+instructions, templates, and format requirements. - Use a top-down approach:
+break down complex operations into smaller tasks where necessary and declare
+each of them as a child GAU. Do not make a single unit overly complex.
+
+Remember your final goal is to refine the GAU in a way that enhances the overall
+design, ensuring both correctness and innovation. Please also give a new name of
+this variant of the GAU, but notice that, please do not rename the GAUBase class
+of the unit in your code.
+   """
+      GUMT_IMPLEMENTATION_UNIT_format = GU_IMPLEMENTATION_REFINE_format
+   else:
+      GUMT_IMPLEMENTATION_UNIT_prompt = """
+#### GAU Declaration:
+Below is the declaration of the GAU you are tasked with implementing. Please ensure that your design and implementation align with the details provided:
+
+{DECLARATION}
+
+---
+
+### Instructions for Implementation:
+
+1. **Design and Implement the GAU**:
+   - Your design should be based on the proposal, following the provided instructions, templates, and format requirements.
+   - The implementation will be reviewed and tested. It will only be accepted once it passes both the review and the functionality checks.
+   - Write the docstring of the GAU class carefully. Follow the instruction about the format of the docstring in the GAU template carefully.
+   
+2. **Detailed Analysis**:
+   - Your design should include a detailed analysis of how your implementation addresses the declared requirements. 
+   - You may introduce new ideas and details not covered in the proposal if they improve the design.
+
+3. **Top-Down Approach**:
+   - Focus on designing the current GAU step-by-step rather than trying to implement everything at once. Be patient and thorough.
+   - Use a top-down approach: break down complex operations into smaller tasks where necessary and declare each of them as a child GAU. 
+
+4. **Placeholder Definition**:
+   - Feel free to define placeholders for more complex child GAUs that can be implemented later. These placeholders will help guide future stages of the design.
+   
+---
+
+### Final Note:
+After completing this GAU, you will be asked to implement any remaining parts of the GAB block. Make sure your GAU is well-structured and self-contained to support the overall model design.
+   """
+      GUMT_IMPLEMENTATION_UNIT_format = GU_IMPLEMENTATION_format
+   
+   if use_o1:
+      GUMT_IMPLEMENTATION_UNIT_prompt+="""
+You must include your full implementation in your final response. You must wrape it in a block quote as follows:
+```python
+{{Your full implementation}}
+```. Do not include any thing else.
+"""
+      return AgentPrompt(GUMT_IMPLEMENTATION_UNIT_prompt,GENERAL_CODE_parser)
+   else: 
+      return AgentPrompt(GUMT_IMPLEMENTATION_UNIT_prompt,GENERAL_JSON_parser,GUMT_IMPLEMENTATION_UNIT_format)
+
+# endregion

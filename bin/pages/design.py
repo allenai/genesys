@@ -107,7 +107,7 @@ def design(evosys,project_dir):
             mode = st.selectbox(label="Design Mode",options=[i.value for i in DesignModes])
         with col2:
             # st.markdown("#### Configure the base models for each agent")
-            AGENT_TYPES = ['claude3.5_sonnet','gpt4o_0806','gpt4o_mini','o1_preview','o1_mini']
+            AGENT_TYPES = ['claude3.5_sonnet','gpt4o_0806','gpt4o_mini']
             agent_type_labels = {
                 'DESIGN_PROPOSER':'Proposal Agent',
                 'PROPOSAL_REVIEWER':'Proposal Reviewer',
@@ -120,13 +120,14 @@ def design(evosys,project_dir):
             cols = st.columns(len(agent_type_labels))
             for i,agent in enumerate(agent_type_labels):
                 with cols[i]:
-                    index=2#0 # for fast testing
+                    index=2 #0 # for fast testing
                     options=AGENT_TYPES
                     if agent in ['SEARCH_ASSISTANT','IMPLEMENTATION_OBSERVER']:
-                        index=len(AGENT_TYPES)
                         options=AGENT_TYPES+['None']
-                    elif agent=='IMPLEMENTATION_CODER':
-                        index=4
+                        index=len(options)-1
+                    elif agent=='IMPLEMENTATION_CODER': # only coder supports o1 for now
+                        options=AGENT_TYPES+['o1_preview','o1_mini']
+                        index=len(options)-1
                     agent_types[agent] = st.selectbox(label=agent_type_labels[agent],options=options,index=index,disabled=agent=='SEARCH_ASSISTANT')
             design_cfg['agent_types'] = agent_types
 

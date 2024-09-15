@@ -428,6 +428,8 @@ class ModelDiscoverySystem(exec_utils.System):
     ) -> list:
         """Main function for implementing system calls.
 
+        Proposer Dual + Implementer Trio
+
         :param stream: 
             The (optional) streamlit module for writing to frontend 
         :param frontend: 

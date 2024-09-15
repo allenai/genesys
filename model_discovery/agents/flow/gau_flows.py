@@ -83,7 +83,6 @@ def print_raw_output(stream,out):
 ###################################################################
 
 
-# region MUTATION
 
 
 class EndReasons(Enum):
@@ -294,6 +293,7 @@ class GUFlowMutation(FlowCreator):
         Sample one proposal based on the current tree and add it to the tree
         '''
         self.dialog=self.system.dialog
+        REVIEW_THRESHOLD=self.threshold['proposal_rating']
 
         with self.status_handler('Starting the design process, seeds sampled.'):
             self.stream.write(query,unsafe_allow_html=True)
@@ -379,7 +379,7 @@ class GUFlowMutation(FlowCreator):
                     GUM_DESIGN_PROPOSAL_FINISH.apply(DESIGN_PROPOSER.obj)
                     self.print_details(DESIGN_PROPOSER.obj,context_design_proposer,search_finish_prompt)
                     _,out=self.dialog.call(design_proposer_tid,search_finish_prompt)
-                    selection,proposal,modelname,changes=out['selection'],out['proposal'],out['modelname'],out.get('changes',None)
+                    selection,proposal,modelname,variantname,changes=out['selection'],out['proposal'],out['modelname'],out['variantname'],out.get('changes',None)
                     self.stream.write(f'### Design Name: {modelname}')
                     self.stream.write(f'### Selection: {selection}')
                     self.stream.write(f'# Proposal\n{proposal}')
@@ -407,7 +407,7 @@ class GUFlowMutation(FlowCreator):
                     GUM_DESIGN_PROPOSAL_STAGE2.apply(DESIGN_PROPOSER.obj)
                     self.print_details(DESIGN_PROPOSER.obj,context_design_proposer,proposal_prompt_stage2)
                     _,out=self.dialog.call(design_proposer_tid,proposal_prompt_stage2)
-                    selection,proposal,modelname,changes=out['selection'],out['proposal'],out['modelname'],out.get('changes',None)
+                    selection,proposal,modelname,variantname,changes=out['selection'],out['proposal'],out['modelname'],out['variantname'],out.get('changes',None)
                     self.stream.write(f'### Design Name: {modelname}')
                     self.stream.write(f'### Selection: {selection}')
                     self.stream.write(f'# Proposal\n{proposal}')
@@ -419,9 +419,10 @@ class GUFlowMutation(FlowCreator):
                 with self.status_handler(status_info):
                     self.print_details(DESIGN_PROPOSER.obj,context_design_proposer,proposal_prompt)
                     _,out=self.dialog.call(design_proposer_tid,proposal_prompt)
-                    selection,proposal,modelname=out['selection'],out['proposal'],out['modelname']
+                    selection,proposal,modelname,variantname=out['selection'],out['proposal'],out['modelname'],out['variantname']
                     self.stream.write(f'### Design Name: {modelname}')
                     self.stream.write(f'### Selection: {selection}')
+                    self.stream.write(f'### Variant Name: {variantname}')
                     reflection,changes=out.get('reflection',None),out.get('changes',None)
                     self.stream.write(f'# Proposal\n{proposal}')
                     if reflection:
@@ -494,7 +495,7 @@ class GUFlowMutation(FlowCreator):
                     _,out=self.dialog.call(proposal_reviewer_tid,search_finish_prompt)
                     review,rating,suggestions=out['review'],out['rating'],out['suggestions']
                     context_proposal_reviewer=self.dialog.context(proposal_reviewer_tid)
-                    passornot='Pass' if rating>=self.threshold['proposal_rating'] else 'Fail'
+                    passornot='Pass' if rating>=REVIEW_THRESHOLD else 'Fail'
                     self.stream.write(f'### Rating: {rating} out of 5 ({passornot})')
                     self.stream.write(review)
                     self.stream.write(suggestions)
@@ -505,7 +506,7 @@ class GUFlowMutation(FlowCreator):
                     _,out=self.dialog.call(proposal_reviewer_tid,proposal_review_prompt)
                     review,rating,suggestions=out['review'],out['rating'],out['suggestions']
                     context_proposal_reviewer=self.dialog.context(proposal_reviewer_tid)
-                    passornot='Pass' if rating>=self.threshold['proposal_rating'] else 'Fail'
+                    passornot='Pass' if rating>=REVIEW_THRESHOLD else 'Fail'
                     self.stream.write(f'### Rating: {rating} out of 5 ({passornot})')
                     self.stream.write(review)
                     self.stream.write(suggestions)
@@ -515,6 +516,7 @@ class GUFlowMutation(FlowCreator):
                 # proposal content
                 'selection':selection,
                 'modelname':modelname,
+                'variantname':variantname,
                 'proposal':proposal,
                 # review process
                 'review':review,
@@ -533,17 +535,17 @@ class GUFlowMutation(FlowCreator):
             }
             traces.append(trace)
 
-            if rating>=self.threshold['proposal_rating']:
+            if rating>=REVIEW_THRESHOLD:
                 self.stream.write(f'#### Proposal passed with rating {rating} out of 5, starting implementation')
                 break
         
-        if rating<self.threshold['proposal_rating']:
+        if rating<REVIEW_THRESHOLD:
             self.stream.write(f'#### Proposal failed with rating {rating} out of 5, stopping design process')
             # raise Exception('Design proposal failed, stopping design process')
         RET={
             'proposal':trace,
             'proposal_traces':traces,
-            'proposal_passed':rating>=self.threshold['proposal_rating'],
+            'proposal_passed':rating>=REVIEW_THRESHOLD,
         }
         return query,state,RET
         
@@ -603,6 +605,7 @@ class GUFlowMutation(FlowCreator):
         '''
 
         self.dialog=self.system.dialog
+        OBSERVE_THRESHOLD=self.threshold['implementation_rating']
 
         RETS={}
         RETS['ROUNDS']=[]
@@ -615,12 +618,16 @@ class GUFlowMutation(FlowCreator):
         # o1 beta does not support structured outputs, so let it output the code directly
         USE_O1_CODER=self.agents['IMPLEMENTATION_CODER'].model_name in ['o1-mini','o1-preview']
 
+        context_implementation_planner=AgentContext() # context accummulated for all attempts in one unit
+        
+
         post_refinement=0 # TODO: introduce self-evaluate to post-refinement
         while True:
             round+=1 # Each round works on one unit at a time, start counting from beginning so that we dont wrap it in wrong place
             traces=[]
-            context_design=AgentContext() # context accummulated for all attempts in one unit
-            context_implementation_reviewer=AgentContext()
+            context_implementation_coder=AgentContext()
+            context_implementation_observer=AgentContext()
+
             succeed=False
             _,IMPLEMENTED,UNIMPLEMENTED=self.tree.view()
             # GAB_CODE=self.tree.compose()
@@ -634,27 +641,26 @@ class GUFlowMutation(FlowCreator):
                 post_refinement+=1
 
             ################# SELECTING THE NEXT UNIT TO WORK ON #################
-
-            DESIGN_IMPLEMENTER=reload_role('design_implementer',self.agents['DESIGN_IMPLEMENTER'],P.GUM_DESIGNER_SYSTEM(
-                GAB_BASE=GAB_BASE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE))
-            design_implementer_tid=self.dialog.fork(main_tid,USER_CALLER,DESIGN_IMPLEMENTER,context=context_design_implementer,
-                                                alias='design_implementation',note=f'Starting design implementation...')
+            
+            IMPLEMENTATION_PLANNER=reload_role('implementation_planner',self.agents['IMPLEMENTATION_PLANNER'],P.GUMT_IMPLEMENTATION_PLANNER_SYSTEM(
+                GAB_BASE=GAB_BASE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE,PROPOSAL=proposal.proposal,REVIEW=proposal.review,RATING=proposal.rating))
+            implementation_planner_tid=self.dialog.fork(main_tid,USER_CALLER,IMPLEMENTATION_PLANNER,context=context_implementation_planner,
+                                                alias='implementation_planner',note=f'Starting implementation planning...')
             
             if round>1: # if round > 1, let the agent choose the next unit to work on, TODO: maybe more background about previous rounds
                 with self.status_handler('Selecting the next unit to work on...'):
                     GUM_IMPLEMENTATION_UNIT_SELECTION=P.gen_GUM_IMPLEMENTATION_UNIT_SELECTION(
                         IMPLEMENTED+UNIMPLEMENTED,post_refining=len(UNIMPLEMENTED)==0)
                     gu_implementation_unit_selection_prompt=GUM_IMPLEMENTATION_UNIT_SELECTION(
-                        PROPOSAL=proposal.proposal,REVIEW=proposal.review,RATING=proposal.rating,
                         VIEW=VIEW_DETAILED,LOG='\n'.join(LOG)
                     )
-                    GUM_IMPLEMENTATION_UNIT_SELECTION.apply(DESIGN_IMPLEMENTER.obj)
-                    self.print_details(DESIGN_IMPLEMENTER.obj,context_design_implementer,gu_implementation_unit_selection_prompt)
+                    GUM_IMPLEMENTATION_UNIT_SELECTION.apply(IMPLEMENTATION_PLANNER.obj)
+                    self.print_details(IMPLEMENTATION_PLANNER.obj,context_implementation_planner,gu_implementation_unit_selection_prompt)
                     self.stream.write(f'{VIEW_DETAILED}\n\nNow selecting the next unit to work on...')
                     
-                    _,out=self.dialog.call(design_implementer_tid,gu_implementation_unit_selection_prompt)
+                    _,out=self.dialog.call(implementation_planner_tid,gu_implementation_unit_selection_prompt)
                     selection,motivation,rough_plan,termination=out['selection'],out['motivation'],out['rough_plan'],out['termination']
-                    context_design_implementer=self.dialog.context(design_implementer_tid) # update context with tree view background
+                    context_implementation_planner=self.dialog.context(implementation_planner_tid) # update context with tree view background
                     self.stream.write(f'### Selection: {selection}')
                     self.stream.write(f'### Motivation\n{motivation}')    
                     self.stream.write(f'### Rough Plan\n{rough_plan}')
@@ -702,44 +708,31 @@ class GUFlowMutation(FlowCreator):
 
             tree_backup=copy.deepcopy(self.tree) # backup the tree for rollback
             for attempt in range(self.max_attemps['implementation_debug']):
-                DESIGN_IMPLEMENTER=reload_role('design_implementer',self.agents['DESIGN_IMPLEMENTER'],P.GUM_DESIGNER_SYSTEM(
+                IMPLEMENTATION_CODER=reload_role('implementation_coder',self.agents['IMPLEMENTATION_CODER'],P.GUMT_IMPLEMENTATION_CODER_SYSTEM(
                     GAB_BASE=GAB_BASE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE))
-                design_implementer_tid=self.dialog.fork(main_tid,USER_CALLER,DESIGN_IMPLEMENTER,context=context_design_implementer,
-                                                    alias='design_implementation',note=f'Starting design implementation...')
+                implementation_coder_tid=self.dialog.fork(main_tid,USER_CALLER,IMPLEMENTATION_CODER,context=context_implementation_coder,
+                                                    alias='implementation_coder',note=f'Starting design implementation...')
                 if attempt==0: # first attempt, implement the unit
                     status_info=f'Starting design implementation of {selection}...'
                     if selection in IMPLEMENTED:
                         REFINE=True 
-                        GUM_IMPLEMENTATION_UNIT=P.gen_GUM_IMPLEMENTATION_UNIT(refine=True,begin=round==1) # first round can only be an implemented unit
+                        GUM_IMPLEMENTATION_UNIT=P.gen_GUMT_IMPLEMENTATION_UNIT(refine=True,use_o1=USE_O1_CODER) # first round can only be an implemented unit
                         node=self.tree.units[selection]
-                        if round>1: # round > 1, use unit implementation prompt, tree view background is already in context
-                            gu_implement_unit_prompt=GUM_IMPLEMENTATION_UNIT(
-                                SPECIFICATION=node.spec.to_prompt(),
-                                IMPLEMENTATION=node.code,
-                                REVIEW=node.review,
-                                RATING=node.rating,
-                                SUGGESTIONS=node.suggestions, 
-                                CHILDREN=node.children
-                            )
-                        else: # round 1, use unit implementation prompt with tree view background, context is empty
-                            gu_implement_unit_prompt=GUM_IMPLEMENTATION_UNIT(
-                                SPECIFICATION=node.spec.to_prompt(),
-                                IMPLEMENTATION=node.code,
-                                REVIEW=node.review,
-                                RATING=node.rating,
-                                SUGGESTIONS=node.suggestions,
-                                VIEW=VIEW_DETAILED, 
-                                CHILDREN=node.children,
-                                PROPOSAL=proposal.proposal,
-                                PREVIEW=proposal.review,
-                                PRATING=proposal.rating,
-                            )
+                        gu_implement_unit_prompt=GUM_IMPLEMENTATION_UNIT(
+                            SPECIFICATION=node.spec.to_prompt(),
+                            IMPLEMENTATION=node.code,
+                            REVIEW=node.review,
+                            RATING=node.rating,
+                            SUGGESTIONS=node.suggestions,
+                            VIEW=VIEW_DETAILED, 
+                            CHILDREN=node.children,
+                        )
                     else:
                         REFINE=False # implement a new unit
-                        GUM_IMPLEMENTATION_UNIT=P.gen_GUM_IMPLEMENTATION_UNIT(refine=False)
+                        GUM_IMPLEMENTATION_UNIT=P.gen_GUMT_IMPLEMENTATION_UNIT(refine=False,use_o1=USE_O1_CODER)
                         declaration=self.tree.declares[selection]
                         gu_implement_unit_prompt=GUM_IMPLEMENTATION_UNIT(DECLARATION=declaration.to_prompt())
-                    GUM_IMPLEMENTATION_UNIT.apply(DESIGN_IMPLEMENTER.obj)
+                    GUM_IMPLEMENTATION_UNIT.apply(IMPLEMENTATION_CODER.obj)
                 else: # Debugging or refining the implementation
                     status_info=f'Refining design implementation of {selection} (attempt {attempt})...'
                     REFINE=True
@@ -750,36 +743,37 @@ class GUFlowMutation(FlowCreator):
                     gu_implement_unit_prompt=RETRY_RPOMPT(
                         FORMAT_CHECKER_REPORT=FORMAT_CHECKER_REPORT,
                         FUNCTION_CHECKER_REPORT=FUNCTION_CHECKER_REPORT,
-                        REVIEW=review if USE_PAIRING else 'REVIEW_DISABLED',
-                        RATING=rating if USE_PAIRING else 'REVIEW_DISABLED',
-                        SUGGESTIONS=suggestions if USE_PAIRING else 'REVIEW_DISABLED',
-                        PASS_OR_NOT='Accept' if rating>3 else 'Reject' if USE_PAIRING else 'REVIEW_DISABLED',
+                        REVIEW=review if USE_PAIRING else 'IMPLEMENTATION OBSERVER NOT AVAILABLE',
+                        RATING=rating if USE_PAIRING else 'IMPLEMENTATION OBSERVER NOT AVAILABLE',
+                        SUGGESTIONS=suggestions if USE_PAIRING else 'IMPLEMENTATION OBSERVER NOT AVAILABLE',
+                        PASS_OR_NOT='Accept' if rating>=OBSERVE_THRESHOLD else 'Reject' if USE_PAIRING else 'IMPLEMENTATION OBSERVER NOT AVAILABLE',
                         GAU_BASE=GAU_BASE
                     )
-                    RETRY_RPOMPT.apply(DESIGN_IMPLEMENTER.obj)
+                    RETRY_RPOMPT.apply(IMPLEMENTATION_CODER.obj)
 
 
                 with self.status_handler(status_info): # calling the agent
-                    self.print_details(DESIGN_IMPLEMENTER.obj,context_design_implementer,gu_implement_unit_prompt)
-                    _,out=self.dialog.call(design_implementer_tid,gu_implement_unit_prompt)
-                    context_design_implementer=self.dialog.context(design_implementer_tid)
+                    self.print_details(IMPLEMENTATION_CODER.obj,context_implementation_coder,gu_implement_unit_prompt)
+                    _,out=self.dialog.call(implementation_coder_tid,gu_implement_unit_prompt)
+                    context_implementation_coder=self.dialog.context(implementation_coder_tid)
                     reflection,changes,debugging_steps=None,None,None
                     if REFINE: # 1. working on an existing unit 2. all >0 attempts
-                        reflection,analysis,implementation,changes=out['reflection'],out['analysis'],out['implementation'],out['changes']
-                        self.stream.write(f'### Reflection\n{reflection}')
-                        self.stream.write(f'## Refinement of {selection}')
-                        if 'debugging_steps' in out:
-                            debugging_steps=out['debugging_steps']
-                            if isinstance(debugging_steps,list):
-                                self.stream.write(f'### Debugging Steps\n')
-                                for idx,step in enumerate(debugging_steps):
-                                    self.stream.write(f'##### Diagnosis {idx+1}\n{step["diagnosis"]}\n')
-                                    self.stream.write(f'##### Suggested Action {idx+1}\n{step["suggested_action"]}\n')
-                            else:
-                                self.stream.write(f'### Debugging Steps\n{debugging_steps}')
-                        if round==1 and attempt==0:
-                            NEWNAME=out['newname']
-                            self.stream.write(f'#### New Name: {NEWNAME}')
+                        if USE_O1_CODER:
+                            reflection,analysis,changes=None,None,None
+                            implementation=out['code'][-1]
+                        else:
+                            reflection,analysis,implementation,changes=out['reflection'],out['analysis'],out['implementation'],out['changes']
+                            self.stream.write(f'### Reflection\n{reflection}')
+                            self.stream.write(f'## Refinement of {selection}')
+                            if 'debugging_steps' in out:
+                                debugging_steps=out['debugging_steps']
+                                if isinstance(debugging_steps,list):
+                                    self.stream.write(f'### Debugging Steps\n')
+                                    for idx,step in enumerate(debugging_steps):
+                                        self.stream.write(f'##### Diagnosis {idx+1}\n{step["diagnosis"]}\n')
+                                        self.stream.write(f'##### Suggested Action {idx+1}\n{step["suggested_action"]}\n')
+                                else:
+                                    self.stream.write(f'### Debugging Steps\n{debugging_steps}')
                         if selection in IMPLEMENTED: # update the unit spec for now, unit name update at the end
                             spec=self.tree.units[selection].spec
                         else: # possible when debugging the implementation of a new unit
@@ -790,7 +784,10 @@ class GUFlowMutation(FlowCreator):
                                 outputs=declaration.outputs
                             )
                     else: # only for the first attempt of a new unit, the reason we do this is that the response format is different for this case
-                        implementation,analysis=out['implementation'],out['analysis']
+                        if USE_O1_CODER:
+                            implementation,analysis=out['code'][-1],None
+                        else:
+                            implementation,analysis=out['implementation'],out['analysis']
                         self.stream.write(f'## Implementation of {selection}')
                         spec = P.UnitSpec(
                             unitname=selection,
@@ -798,12 +795,13 @@ class GUFlowMutation(FlowCreator):
                             inputs=declaration.inputs,
                             outputs=declaration.outputs
                         )                    
-                    self.stream.write(analysis)
+                    if analysis:
+                        self.stream.write(analysis)
                     self.stream.write(f'### Code\n```python\n{implementation}\n```')
-                    if REFINE:
+                    if REFINE and changes:
                         self.stream.write(f'### Changes\n{changes}')
                     
-                    self.print_raw_output(out,'DESIGN_IMPLEMENTER')
+                    self.print_raw_output(out,'IMPLEMENTATION_CODER')
 
 
                 # Run all checks for every implementations, optimize both grammar and semantics at the same time 
@@ -895,46 +893,44 @@ class GUFlowMutation(FlowCreator):
                 ########################### Review the implementation ###########################
                 
                 if USE_PAIRING:
-                    IMPLEMENTATION_REVIEWER=reload_role('implementation_reviewer',self.agents['IMPLEMENTATION_REVIEWER'], 
-                                                        P.GUM_IMPLEMENTATION_REVIEWER_SYSTEM())
-                    implementation_reviewer_tid=self.dialog.fork(main_tid,USER_CALLER,IMPLEMENTATION_REVIEWER,context=context_implementation_reviewer,
-                                                        alias='implementation_review',note=f'Reviewing implementation...')
+                    IMPLEMENTATION_OBSERVER=reload_role('implementation_reviewer',self.agents['IMPLEMENTATION_OBSERVER'], P.GUMT_IMPLEMENTATION_OBSERVER_SYSTEM(
+                        GAB_BASE=GAB_BASE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE,PROPOSAL=proposal.proposal,REVIEW=proposal.review,RATING=proposal.rating))
+                    implementation_observer_tid=self.dialog.fork(main_tid,USER_CALLER,IMPLEMENTATION_OBSERVER,context=context_implementation_observer,
+                                                        alias='implementation_observer',note=f'Reviewing implementation...')
                     if REFINE:
                         if attempt==0:
-                            status_info=f'Reviewing refinement of {selection}...'
-                            gum_implementation_unit_review_prompt=P.GUM_IMPLEMENTATION_UNIT_REFINE_REVIEW(
+                            status_info=f'Observing refinement of {selection}...'
+                            gum_implementation_unit_review_prompt=P.GUMT_IMPLEMENTATION_UNIT_REFINE_OBSERVE(
                                 UNIT_NAME=selection,ANALYSIS=analysis,IMPLEMENTATION=reformatted_code,
-                                CHANGES=changes,PROPOSAL=proposal.proposal, CHECKER_REPORT=checker_report,
-                                VIEW=VIEW_DETAILED, DESCRIPTION=node.desc,REVIEW=node.review,
-                                RATING=node.rating,SUGGESTIONS=node.suggestions,SPECIFICATION=node.spec.to_prompt()
+                                CHANGES=changes, VIEW=VIEW_DETAILED, DESCRIPTION=node.desc,
+                                SUGGESTIONS=node.suggestions,SPECIFICATION=node.spec.to_prompt()
                             )
-                            P.GUM_IMPLEMENTATION_UNIT_REFINE_REVIEW.apply(IMPLEMENTATION_REVIEWER.obj)
+                            P.GUMT_IMPLEMENTATION_UNIT_REFINE_OBSERVE.apply(IMPLEMENTATION_OBSERVER.obj)
                         else:
-                            status_info=f'Reviewing refined implementation of {selection} (version {attempt})...'
-                            gum_implementation_unit_review_prompt=P.GUM_IMPLEMENTATION_REREVIEW(
+                            status_info=f'Observing refined implementation of {selection} (version {attempt})...'
+                            gum_implementation_unit_review_prompt=P.GUMT_IMPLEMENTATION_REOBSERVE_prompt(
                                 UNIT_NAME=selection,ANALYSIS=analysis,IMPLEMENTATION=reformatted_code,
-                                CHANGES=changes,SPECIFICATION=spec.to_prompt(), CHECKER_REPORT=checker_report
+                                CHANGES=changes,SPECIFICATION=spec.to_prompt()
                             )
-                            P.GUM_IMPLEMENTATION_REREVIEW.apply(IMPLEMENTATION_REVIEWER.obj)
+                            P.GUMT_IMPLEMENTATION_REOBSERVE_prompt.apply(IMPLEMENTATION_OBSERVER.obj)
                     else: # first attempt of a new unit
                         status_info=f'Reviewing implementation of {selection}...'
-                        gum_implementation_unit_review_prompt=P.GUM_IMPLEMENTATION_UNIT_REVIEW(
-                            UNIT_NAME=selection,PROPOSAL=proposal.proposal,REVIEW=proposal.review,
-                            RATING=proposal.rating,VIEW=VIEW_DETAILED,SPECIFICATION=spec.to_prompt(),
-                            ANALYSIS=analysis,IMPLEMENTATION=reformatted_code,CHECKER_REPORT=checker_report,
+                        gum_implementation_unit_review_prompt=P.GUMT_IMPLEMENTATION_UNIT_OBSERVE(
+                            UNIT_NAME=selection,VIEW=VIEW_DETAILED,SPECIFICATION=spec.to_prompt(),
+                            ANALYSIS=analysis,IMPLEMENTATION=reformatted_code,
                         )
-                        P.GUM_IMPLEMENTATION_UNIT_REVIEW.apply(IMPLEMENTATION_REVIEWER.obj)
+                        P.GUMT_IMPLEMENTATION_UNIT_OBSERVE.apply(IMPLEMENTATION_OBSERVER.obj)
 
                     with self.status_handler(status_info):
-                        self.print_details(IMPLEMENTATION_REVIEWER.obj,context_implementation_reviewer,gum_implementation_unit_review_prompt)
-                        _,out=self.dialog.call(implementation_reviewer_tid,gum_implementation_unit_review_prompt)
+                        self.print_details(IMPLEMENTATION_OBSERVER.obj,context_implementation_observer,gum_implementation_unit_review_prompt)
+                        _,out=self.dialog.call(implementation_observer_tid,gum_implementation_unit_review_prompt)
                         review,rating,suggestions=out['review'],out['rating'],out['suggestions']
-                        context_implementation_reviewer=self.dialog.context(implementation_reviewer_tid)
-                        passornot='Accept' if rating>3 else 'Reject'
+                        context_implementation_observer=self.dialog.context(implementation_observer_tid)
+                        passornot='Accept' if rating>=OBSERVE_THRESHOLD else 'Reject'
                         self.stream.write(f'### Rating: {rating} out of 5 ({passornot})')
                         self.stream.write(review)
                         self.stream.write(suggestions)
-                        self.print_raw_output(out,'IMPLEMENTATION_REVIEWER')
+                        self.print_raw_output(out,'IMPLEMENTATION_OBSERVER')
 
                         self.tree.units[selection].rating=rating
                         self.tree.units[selection].review=review
@@ -946,7 +942,7 @@ class GUFlowMutation(FlowCreator):
 
                 ########################### Attempt finished ###########################  
                 if USE_PAIRING:
-                    review_pass=rating>3
+                    review_pass=rating>=OBSERVE_THRESHOLD
                 else:
                     review_pass=True
                 design = {
@@ -1020,9 +1016,7 @@ class GUFlowMutation(FlowCreator):
                     LOG.append(f'Newly declared units in Round {round}: {NEW_DECLARED}.')
                 
         ########################### Design finished ###########################  
-        # self.tree.rename_unit(proposal['selection'],NEWNAME)
         self.tree.clear_disconnected() 
-        RETS['new_unit_name']=NEWNAME
         RETS['SUCCEED']=SUCCEED
         if SUCCEED:
             self.stream.write('#### Design Implementation succeeded!')
@@ -1064,4 +1058,3 @@ def gu_design_mutation(system,stream,design_id,design_cfg,user_input='',proposal
     # new_name=design_stack['new_name']
     # return new_tree,new_name,design_stack,costs,succeed
 
-# endregion
