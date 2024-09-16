@@ -11,7 +11,7 @@ from model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl # DO
 # YOU CAN DEFINE MORE CLASSES OR FUNCTIONS HERE #
 
 
-class UnitName(GAUBase):
+class UnitName(GAUBase): # CHANGE THE CLASS NAME TO THE NAME OF THE GAU #
     """
     FILL IN THE DOCSTRING HERE, FOLLOWING THE EXAMPLE BELOW:
 

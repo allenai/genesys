@@ -477,9 +477,9 @@ class SuperScholarSearcher:
                 ('Secondary',self.lib2,U.pjoin(lib_est_dir,'secondary'),'2'),
                 ('Plus',self.libp,U.pjoin(lib_est_dir,'plus'),'p')]:
 
-            ### XXX: REMOVE THIS
-            if name!='Primary':
-                continue
+            # ### XXX: REMOVE THIS
+            # if name!='Primary':
+            #     continue
 
             for i in os.listdir(dir):
                 if i.endswith('.json'):
@@ -611,9 +611,9 @@ class SuperScholarSearcher:
                 ('Secondary',self.texts2,'2',self.splits2,self.vectors2),
                 ('Plus',self.textsp,'p',self.splitsp,self.vectorsp)]:
             
-            ## XXX: REMOVE THIS
-            if name!='Primary':
-                continue
+            # ## XXX: REMOVE THIS
+            # if name!='Primary':
+            #     continue
             
             for i in tqdm(lib,desc=f'Loading splits {name}'):
                 U.mkdir(U.pjoin(self.libfiles_dir,'splits'+tail))
