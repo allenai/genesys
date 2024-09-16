@@ -36,7 +36,7 @@ class GAUNode: # this is mainly used to 1. track the hierarchies 2. used for the
 
     def json(self):
         data = self.__dict__.copy()
-        data['spec'] = self.spec.model_dump_json()  
+        data['spec'] = self.spec.model_dump_json() 
         return json.dumps(data, indent=4)
 
     def save(self, dir):
@@ -160,6 +160,9 @@ class GAB(GABBase):
             run_code += '\texcept Exception as e:\n'
             run_code += f'\t\tprint("Error in running {test_name}:")\n'
             run_code += '\t\tprint(traceback.format_exc())\n'
+        if len(gau_tests)==0:
+            run_code += f'\t\tprint("No tests found for {unit_name}, all tests must be decorated with @gau_test")'
+
         run_code += '\n\nif __name__ == "__main__":'
         run_code += f"\n\trun_{unit_name}_tests()"
 
@@ -245,8 +248,11 @@ class GAUTree:
             self.root = node
         self.units[name] = node
 
-    def replace_unit(self, old: str, new: str): # also need to rename the references in the code, seems hard, so we do not do it for now
-        assert new in self.units, f"You must have new unit added to the tree already"
+    def _replace_unit(self, old: str, new: str): # also need to rename the references in the code, seems hard, so we do not do it for now
+        # just clear the old unit, you need to add the new one later manually, its an unsafe method
+        if old == new:  
+            return
+        # assert new in self.units, f"You must have new unit added to the tree already"
         self.del_unit(old)
 
         # rename the root 
@@ -306,9 +312,8 @@ class GAUTree:
         for unit in removed:
             del self.units[unit]
         return removed  
-    
-    def save(self): # save the Tree only when the design is finalized and fully tested
-        dir=U.pjoin(self.flows_dir,f'{self.name}.json')
+
+    def to_dict(self):
         data = {
             'name':self.name,
             'root':self.root.spec.unitname,
@@ -320,6 +325,19 @@ class GAUTree:
             'rating':self.rating,
             'suggestions':self.suggestions
         }
+        return data
+
+    @classmethod
+    def from_dict(cls, dict: Dict):
+        tree = cls(dict['name'], dict['proposal'], dict['review'], dict['rating'], dict['suggestions'], lib_dir)
+        for unit_name in dict['units']:
+            tree.units[unit_name] = tree.dict.get(unit_name)
+        tree.root = tree.dict.get(dict['root'])
+        return tree
+    
+    def save(self): # save the Tree only when the design is finalized and fully tested
+        dir=U.pjoin(self.flows_dir,f'{self.name}.json')
+        data = self.to_dict()
         U.save_json(data,dir)
         for unit in self.units.values(): # Do not overwrite by default, which should be done by the design process
             if not self.dict.exist(unit.spec.unitname): # Deal with the name repetition
@@ -329,10 +347,7 @@ class GAUTree:
     def load(cls, name, lib_dir):
         dir = U.pjoin(lib_dir, 'flows', f'{name}.json')
         data = U.load_json(dir)
-        tree = cls(data['name'], data['proposal'], data['review'], data['rating'], data['suggestions'], lib_dir)
-        for unit_name in data['units']:
-            tree.units[unit_name] = tree.dict.get(unit_name)
-        tree.root = tree.dict.get(data['root'])
+        tree = cls.from_dict(data)
         return tree
 
     def compose(self): # compose the GAB from the GAUTree and test it
@@ -348,7 +363,7 @@ class GAUTree:
         code = self.compose_unit(unit_name)
         if code is None:
             report = f'Unit {unit_name} not found'
-            return (report, None) if return_code else report
+            return (report, None, False) if return_code else (report, False)
 
         # Prepare to capture output
         _stdout_output = io.StringIO()

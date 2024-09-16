@@ -14,7 +14,7 @@ from .gau_utils import check_and_reformat_gau_code
 import model_discovery.agents.prompts.prompts as P
 from model_discovery.model.composer import GAUBase, GAUTree, check_tree_name, GABComposer
 from model_discovery.configs.gam_config import GAMConfig_14M
-from model_discovery.model.utils.modules import GABBase
+from model_discovery.model.utils.modules import GABBase, UnitDecl
 import model_discovery.utils as U
 
 
@@ -72,8 +72,13 @@ def print_details(stream,agent,context,prompt):
 
 def print_raw_output(stream,out):
     if not hasattr(stream,'_isprintsystem'):
+        stream.write('---')
         stream.write(
             f"""<details><summary>Raw output</summary>{out}</details>""",
+            unsafe_allow_html=True
+        )
+        stream.write(
+            f"""<details><summary>Raw text</summary>{out['text']}</details>""",
             unsafe_allow_html=True
         )
 
@@ -282,7 +287,7 @@ class GUFlowMutation(FlowCreator):
             return query,state,{}
         passed_proposals,_=self.ptree.session_proposals(self.design_id,passed_only=True)
         remaining_samples=self.num_samples['proposal']-len(passed_proposals)
-        self.stream.write(f'{len(passed_proposals)} proposals passed yet. Remaining {remaining_samples} samples to generate.')
+        self.stream.write(f'{len(passed_proposals)} proposals passed yet. Remaining {remaining_samples} proposal{"s" if remaining_samples>1 else ""} to generate.')
         for _ in range(remaining_samples):
             cost_raw=copy.deepcopy(self.costs)
             query,state,RET=self._generate_proposal(self.seed_input,state,main_tid)
@@ -302,6 +307,7 @@ class GUFlowMutation(FlowCreator):
             self.stream.write(query,unsafe_allow_html=True)
 
         self.stream.write(f'#### Start design process by generating a design proposal')
+        self.stream.write(f'###### **Current time: {datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}**')
 
         USE_2STAGE=self.search_settings['proposal_search']
         USE_ISEARCH=self.agent_types['SEARCH_ASSISTANT']=='None' and USE_2STAGE 
@@ -356,7 +362,7 @@ class GUFlowMutation(FlowCreator):
 
                 for i in range(self.max_attemps['max_search_rounds']):
                     with self.status_handler(f'Searching... round {i+1}...'):
-                        search_ret=self.sss(keywords,detail)
+                        search_ret=self.sss(keywords,detail,analysis=analysis)
                         search_stack.append({
                                 'analysis':analysis,
                                 'query':keywords,
@@ -470,7 +476,7 @@ class GUFlowMutation(FlowCreator):
                 
                 for i in range(self.max_attemps['max_search_rounds']):
                     with self.status_handler(f'Searching... round {i+1}...'):
-                        search_ret=self.sss(keywords,detail)
+                        search_ret=self.sss(keywords,detail,analysis=analysis)
                         review_search_stack.append({
                                 'analysis':analysis,
                                 'query':keywords,
@@ -614,22 +620,27 @@ class GUFlowMutation(FlowCreator):
             'format_warnings':format_warnings,
         }
 
+        if children_decl is not None:
+            children = {child.unitname: child for child in children_decl}
+            # never overwrite existing ones, as the children might be reused
+            NEW_DECLARED = []
+            for childname,child in children.items():
+                if childname not in self.tree.declares and childname not in self.tree.units: # only add new ones
+                    self.tree.declares[childname]=child
+                    NEW_DECLARED.append(childname)
+        else: # must be fetal error
+            children={}
+            NEW_DECLARED=[]
+
         if fetal_errors:
-            return format_checks,format_errors,format_warnings,fetal_errors, unit_name, reformatted_code, docstring, new_args, gau_tests, children_decl
+            return format_checks,format_errors,format_warnings,fetal_errors, unit_name, reformatted_code, docstring, new_args, gau_tests, children_decl, NEW_DECLARED
         
         if spec is not None:
             spec.document=docstring
 
-        children = {child.unitname: child for child in children_decl}
-        # never overwrite existing ones, as the children might be reused
-        NEW_DECLARED = []
-        for childname,child in children.items():
-            if childname not in self.tree.declares and childname not in self.tree.units: # only add new ones
-                self.tree.declares[childname]=child
-                NEW_DECLARED.append(childname)
 
-        self.stream.write(f'### Children')
-        if children==[]:
+        self.stream.write(f'#### Children in {unit_name}')
+        if children=={}:
             self.stream.write('No children declared.')
         else:
             for childname,child in children.items():
@@ -650,23 +661,21 @@ class GUFlowMutation(FlowCreator):
 
         # !!!TODO: the reformatter should rename the existing kwargs from the tree, okey for root node
         # !!!TODO: remove any possible if __name__=='__main__' method from the code
-        # 2. check the functionality of the composed GAB
-        checkpass=False
-        func_checks = {}
-        if unit_name not in self.tree.units:
-            if spec is not None:
-                self.tree.add_unit(
-                    spec,reformatted_code,new_args,analysis,None,None,list(children.keys()),gau_tests,None,requirements=declaration.requirements
-                )
-        else:
-            self.tree.units[unit_name].code=reformatted_code
-            self.tree.units[unit_name].args=new_args
-            self.tree.units[unit_name].analysis=analysis
-            self.tree.units[unit_name].children=list(children.keys())
-            self.tree.units[unit_name].gau_tests=gau_tests
-            # TODO: remove disconnected units
-        
-        return format_checks,format_errors,format_warnings,fetal_errors,unit_name, reformatted_code, docstring, new_args, gau_tests, children_decl
+        if selection is not None: # for non o1 mode
+            if unit_name not in self.tree.units:
+                if spec is not None:
+                    self.tree.add_unit(
+                        spec,reformatted_code,new_args,analysis,None,None,list(children.keys()),gau_tests,None,requirements=declaration.requirements
+                    )
+            else:
+                self.tree.units[unit_name].code=reformatted_code
+                self.tree.units[unit_name].args=new_args
+                self.tree.units[unit_name].analysis=analysis
+                self.tree.units[unit_name].children=list(children.keys())
+                self.tree.units[unit_name].gau_tests=gau_tests
+                # TODO: remove disconnected units
+            
+        return format_checks,format_errors,format_warnings,fetal_errors,unit_name, reformatted_code, docstring, new_args, gau_tests, children_decl, NEW_DECLARED
                         
 
     def _implement_proposal_recursive(self,main_tid,proposal):
@@ -743,9 +752,11 @@ class GUFlowMutation(FlowCreator):
             LOG.append(f'Round {round} started. Implementing unit {selection}.')
 
             if selection in IMPLEMENTED:
-                self.stream.write(f'##### Start design refinement of {selection}')
+                self.stream.write(f'##### Start implementing refined unit {selection}')
             else:
-                self.stream.write(f'##### Start design implementation of {selection}')
+                self.stream.write(f'##### Start implementing new unit {selection}')
+            self.stream.write(f'###### **Current time: {datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}**')
+
 
             ### Termination
 
@@ -899,29 +910,31 @@ class GUFlowMutation(FlowCreator):
                         docstrings={}
                         new_args={}
                         gau_tests={}
-                        children={}
+                        children_decls={}
                         reformatted_codes={}
                         fetal_errors=[]
                         format_warnings=[]
                         format_errors=[]
                         reformatted_code=''
                         parents={}
+                        NEW_DECLARED=set()
                         for idx,implementation in enumerate(implementations):
-                            format_checks,format_errors,format_warnings,fetal_errors, unit_name, _reformatted_code, _docstring,_new_args,_gau_tests,_children=self.check_code_format(implementation)
-                            if not _docstring:
+                            _format_checks,_format_errors,_format_warnings,_fetal_errors, unit_name, _reformatted_code, _docstring,_new_args,_gau_tests,_children_decl,_NEW_DECLARED=self.check_code_format(implementation)
+                            NEW_DECLARED.update(_NEW_DECLARED)
+                            fetal_errors.extend([f'Code block {idx+1} of {unit_name}: {e}' for e in _fetal_errors])
+                            format_warnings.extend([f'Code block {idx+1} of {unit_name}: {e}' for e in _format_warnings])
+                            format_errors.extend([f'Code block {idx+1} of {unit_name}: {e}' for e in _format_errors])
+                            if not _docstring: 
                                 continue
                             docstrings[unit_name]=_docstring
                             new_args[unit_name]=_new_args
                             gau_tests[unit_name]=_gau_tests
-                            children[unit_name]=_children
-                            for c in _children:
+                            children_decls[unit_name]=_children_decl
+                            for c in _children_decl:
                                 parents[c.unitname]=unit_name
                             reformatted_codes[unit_name]=_reformatted_code
-                            fetal_errors.extend([f'{unit_name}: {e}' for e in fetal_errors])
-                            format_warnings.extend([f'{unit_name}: {e}' for e in format_warnings])
-                            format_errors.extend([f'{unit_name}: {e}' for e in format_errors])
                             unit_name=f'None_{idx+1}' if not unit_name else unit_name
-                            format_checks[unit_name]=format_checks
+                            format_checks[unit_name]=_format_checks
                             reformatted_code+=f'### {unit_name} Reformatted Code\n```python\n{_reformatted_code}\n```\n\n'
                             collapse_write(
                                 self.stream,
@@ -937,19 +950,7 @@ class GUFlowMutation(FlowCreator):
                         for unit_name,docstring in docstrings.items():
                             if unit_name not in parents:
                                 root_name.append(unit_name)
-                            if unit_name not in self.tree.units and unit_name in self.tree.declares:
-                                declaration=self.tree.declares[unit_name]
-                                _spec = P.UnitSpec(
-                                    unitname=unit_name,
-                                    document=docstring,
-                                    inputs=declaration.inputs,
-                                    outputs=declaration.outputs
-                                )           
-                                self.tree.add_unit( # all new units are added 
-                                    _spec,reformatted_codes[unit_name],new_args[unit_name],None,None,None,list(children[unit_name].keys()),gau_tests[unit_name],None,requirements=declaration.requirements
-                                )   
-                            else:
-                                fetal_errors.append(f'Unit {unit_name} has not been declared.')
+                        self.stream.write(f'##### Found local root units: {root_name}')
                         if len(docstrings)==0:
                             fetal_errors.append(f'There is no valid GAU implementation found.')
                         else:
@@ -961,10 +962,44 @@ class GUFlowMutation(FlowCreator):
                                 unit_name=root_name[0]
                                 reformatted_code=f'### {unit_name} Reformatted Code\n```python\n{reformatted_code}\n```\n\n'
                                 # replace selection with unit_name
-                                self.tree.replace_unit(selection,unit_name)
+                                self.tree._replace_unit(selection,unit_name) # do replace first
                                 LOG.append(f'Replace unit {selection} with {unit_name}')
+                                self.stream.write(f'Replace local root unit {selection} with {unit_name}')
+                                self.tree.declares[unit_name]=UnitDecl(
+                                    unitname=unit_name,
+                                    requirements='',
+                                    inputs=spec.inputs,
+                                    outputs=spec.outputs
+                                )
+                        for unit_name,docstring in docstrings.items():
+                            if unit_name not in self.tree.declares: # if it is a new local root, then it is declared above, otherwise, it should be declared as a child
+                                errors.append(f'Unit {unit_name} has not been declared. May cause errors when linking the units.')
+                                declaration=UnitDecl(
+                                    unitname=unit_name,
+                                    requirements='',
+                                    inputs=[],
+                                    outputs=[]
+                                )
+                            else:
+                                declaration=self.tree.declares[unit_name]
+                            # XXX: whether we allow overwrite the existing unit besides selection???? 
+                            if unit_name in self.tree.units: # overwrite the existing unit, remove the old one first
+                                self.tree.del_unit(unit_name)
+                                self.stream.write(f'Overwriting unit {unit_name} in the tree...')
+                            else:
+                                self.stream.write(f'Adding unit {unit_name} to the tree...')
+                            _spec = P.UnitSpec(
+                                unitname=unit_name,
+                                document=docstring,
+                                inputs=declaration.inputs,
+                                outputs=declaration.outputs
+                            )           
+                            self.tree.add_unit( # all new units are added 
+                                _spec,reformatted_codes[unit_name],new_args[unit_name],None,None,None,[c.unitname for c in children_decls[unit_name]],gau_tests[unit_name],None,requirements=declaration.requirements
+                            )   
+                        unit_name=root_name[0] if len(root_name)>0 else selection
                     else:   
-                        format_checks,format_errors,format_warnings,fetal_errors, unit_name, reformatted_code, _, _, _, _=self.check_code_format(implementation,selection,spec,analysis)
+                        format_checks,format_errors,format_warnings,fetal_errors, unit_name, reformatted_code, _, _, _, _, NEW_DECLARED=self.check_code_format(implementation,selection,spec,analysis)
                         unit_name=selection
                         reformatted_code=f'### {unit_name} Reformatted Code\n```python\n{reformatted_code}\n```\n\n'
                         collapse_write(
@@ -984,15 +1019,25 @@ class GUFlowMutation(FlowCreator):
                             _unit_test_passed=True
                             _unit_test_results=''
                             for unitname in format_checks.keys():
-                                __unit_test_results, _, __unit_test_passed = self.tree.test_unit(unitname, True)
+                                __unit_test_results, _unit_test_code, __unit_test_passed = self.tree.test_unit(unitname, True)
                                 self.stream.write(f'### {unitname} Unit Tests Passed: {__unit_test_passed}')
-                                self.stream.write(f'### {unitname} Unit Tests Results\n```bash\n{_unit_test_results}\n```')
+                                self.stream.write(f'### {unitname} Unit Tests Results\n```bash\n{__unit_test_results}\n```')
+                                collapse_write(
+                                    self.stream,
+                                    'Unit Tests Code for '+unitname,
+                                    f'\n\n```python\n{_unit_test_code}\n```\n\n'
+                                )
                                 _unit_test_passed = _unit_test_passed and __unit_test_passed
                                 _unit_test_results += f'### {unitname} Unit Tests Results\n```bash\n{__unit_test_results}\n```\n\n'
                         else:
-                            _unit_test_results, _, _unit_test_passed = self.tree.test_unit(spec.unitname, True)
+                            _unit_test_results, _unit_test_code, _unit_test_passed = self.tree.test_unit(spec.unitname, True)
                             self.stream.write(f'### Unit Tests Passed: {_unit_test_passed}')
                             self.stream.write(f'### Unit Tests Results\n```bash\n{_unit_test_results}\n```')
+                            collapse_write(
+                                self.stream,
+                                'Unit Tests Code for '+unitname,
+                                f'```python\n{_unit_test_code}\n```\n'
+                            )   
                             _unit_test_results += f'### Unit Tests Results\n```bash\n{_unit_test_results}\n```\n\n'
 
                         gabcode = self.tree.compose()
@@ -1016,6 +1061,7 @@ class GUFlowMutation(FlowCreator):
                         check_results={}
                         gabcode_reformat=None
                         checkpass=False
+                        self.stream.write(f'#### Functionality check skipped due to fetal format errors \n {fetal_errors}')
 
                     func_checks = {
                         'checkpass':checkpass,
@@ -1093,7 +1139,7 @@ class GUFlowMutation(FlowCreator):
 
                 if not checkpass or not review_pass or len(format_errors)>0: # failed  
                     succeed=False
-                    self.tree=tree_backup # restore the tree
+                    self.tree=copy.deepcopy(tree_backup) # restore the tree
                     # if selection in UNIMPLEMENTED: 
                     #     self.tree.del_unit(selection) # remove the unit 
                     # else:

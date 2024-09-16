@@ -161,7 +161,7 @@ def design(evosys,project_dir):
             with cols[1]:
                 termination['max_total_budget'] = st.number_input(label="Max total budget (0 is no limit)",min_value=0,value=0)
             with cols[2]:
-                termination['max_debug_budget'] = st.number_input(label="Max debug budget (0 is no limit)",min_value=0,value=3)
+                termination['max_debug_budget'] = st.number_input(label="Max debug budget (0 is no limit)",min_value=0,value=0)
             with cols[3]:
                 max_attempts['max_search_rounds'] = st.number_input(label="Max search rounds",min_value=0,value=3)
         with col2:
@@ -180,11 +180,11 @@ def design(evosys,project_dir):
             st.markdown("##### Configure max number of attempts")
             cols=st.columns(3)
             with cols[0]:
-                max_attempts['design_proposal'] = st.number_input(label="Max proposal attempts",min_value=3,value=10)
+                max_attempts['design_proposal'] = st.number_input(label="Max proposal attempts",min_value=3,value=5)
             with cols[1]:
-                max_attempts['implementation_debug'] = st.number_input(label="Max debug attempts",min_value=3,value=7)
+                max_attempts['implementation_debug'] = st.number_input(label="Max debug attempts",min_value=3,value=5)
             with cols[2]:
-                max_attempts['post_refinement'] = st.number_input(label="Num of post refinements",min_value=0,value=3)
+                max_attempts['post_refinement'] = st.number_input(label="Max post refinements",min_value=0,value=0)
         with col2:
             st.markdown("##### Configure experiment settings")
             cols=st.columns([2,2,3])

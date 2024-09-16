@@ -26,18 +26,19 @@ import model_discovery.utils as U
 
 
 PERPLEXITY_SYSTEM = """
-You are an AI research assistant who helps language model researchers whose goal
-is to discover the best novel autoregressive LM block that can defeat the
-existing state-of-the-art models, measured in low perplexity in corpora, high
-accuracy in downstream tasks, robustness to variant inputs, efficiency in
-training and inference, and most importantly, good scalability that providing
-better overall performance with more data and larger models.
+You are an AI research assistant who helps a language model researcher. Your
+goal is to help the researcher to discover the best novel autoregressive LM
+block that can defeat the existing state-of-the-art models, measured in low
+perplexity in corpora, high accuracy in downstream tasks, robustness to variant
+inputs, efficiency in training and inference, and most importantly, good
+scalability that providing better overall performance with more data and larger
+models.
 
 You task is to search for the information that can help the researchers to
-achieve this goal. You will be given a set of keywords that points
-to the topic they are interested in, and details about the exact contents they
-are looking for. Search for the informaiton based on the keywords and details
-that align with the goal.
+achieve this goal. You will be given a set of keywords that points to the topic
+they are interested in, and details about the exact contents they are looking
+for. Search for the informaiton based on the keywords and details that align
+with the goal.
 """
 
 PERPLEXITY_PROMPT = """
@@ -46,6 +47,7 @@ Here is a set of keywords:
 
 Here is a detail: 
 {detail}
+{analysis}
 
 Search for the information that can help the researchers to achieve the goal of
 improving autoregressive language model design.
@@ -143,7 +145,7 @@ class SuperScholarSearcher:
         if stream:
             self.stream=stream
 
-    def __call__(self,query,detail,raw=False,prompt=True):
+    def __call__(self,query,detail,analysis=None,raw=False,prompt=True):
         """
         query: for search papers in S2, ArXiv, and Papers with Code...
         detail: for search papers in the internal library vector stores
@@ -153,7 +155,7 @@ class SuperScholarSearcher:
         external_results,external_pp=self.search_external(query,pretty=True,prompt=prompt)
         if self.perplexity_settings['model_size']!='none':
             perplexity_results, perplexity_pp = self.search_perplexity(
-                query,detail,size=self.perplexity_settings['model_size'],max_tokens=self.perplexity_settings['max_tokens'])
+                query,detail,analysis,size=self.perplexity_settings['model_size'],max_tokens=self.perplexity_settings['max_tokens'])
         else:
             perplexity_results, perplexity_pp = None, None
 
@@ -463,10 +465,14 @@ class SuperScholarSearcher:
 
     ##### Perplexity.ai Web Search
 
-    def search_perplexity(self,query,detail, size='large', max_tokens=2000): # perplexity search
+    def search_perplexity(self,query,detail,analysis=None, size='large', max_tokens=2000): # perplexity search
         self.stream.write(f'*Searching web with Perplexity...*')
         url = "https://api.perplexity.ai/chat/completions"
 
+        if analysis:
+            analysis=f'\nHere is an analysis of the model that the researcher is trying to improve that may help you better understand the researcher\'s intent:\n{analysis}'
+        else:
+            analysis=''
         payload = {
             "model": f"llama-3.1-sonar-{size}-128k-online",
             "messages": [
@@ -476,7 +482,7 @@ class SuperScholarSearcher:
                 },
                 {
                     "role": "user",
-                    "content": PERPLEXITY_PROMPT.format(query=query, detail=detail)
+                    "content": PERPLEXITY_PROMPT.format(query=query, detail=detail, analysis=analysis)
                 }
             ],
             "max_tokens": max_tokens,
@@ -504,6 +510,7 @@ class SuperScholarSearcher:
             self.stream.write(f'Error searching web with Perplexity: {RET["error"]}')
             return None, None
         else:
+            self.stream.write(f'##### *Results collected from web search*')
             ret = RET['choices'][0]['message']['content']
             return RET,f'\n---\n## Web search results\n\n {ret}'
 

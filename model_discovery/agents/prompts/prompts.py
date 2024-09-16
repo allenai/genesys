@@ -157,7 +157,7 @@ Please refine your design and implementation based on the feedback provided. You
 4. **Key Considerations**:
    - **Follow the GAU template and base class instructions** precisely**: Make sure your implementation is consistent with the provided guidelines.
    - **Limit changes to the current GAU**: Any bugs or issues should be resolved within the GAU you are working on. Other units are either fully tested or placeholders and should not require changes.
-   - **Ensure the unit is self-contained**: Your unit should function independently, without requiring future modifications to other units. This modularity is essential for scalability and ease of integration.
+   - **Ensure the unit is self-contained**: Your unit should function independently, without requiring future modifications to other units. This modularity is essential for scalability and ease of integration. And each unit should be able to be initilized by the system automatically without any external interventions.
 
 5. **No access to other units**: 
    - Remember that you can only solve the bugs within the unit you are working on, you cannot access other units including the child units. You can update them later, all your updates to the child unit classes in your code will be ignored and removed. Only the edits to the current unit will be kept. Think of how to solve the problems or delay the problems by editing within current unit.
@@ -170,6 +170,19 @@ Please ensure your final submission is thoroughly tested and ready for the next 
 """
 
    if use_o1:
+      GU_IMPLEMENTATION_RETRY_prompt += """
+Notice that all the codes implemented in your previous responses are discarded, you must include full implementations of all units again or leave some children as placeholders for now if intended.
+You can provide multiple implementations of *different units* including the selected unit and optionally its children. 
+You must wrape each implementation in a block quote as follows:
+```python
+{{full implementation of a unit, unittests decorated with @gau_test, and children declarations}}
+```
+. All implementations must follow the format of the GAU template, and remember to keep the first line as the marker `# GAU_IMPLEMENTATION_FILE` to allow the parser detect a GAU implementation file. 
+Only the code block wrapped by ```python ``` and kept first line as `# GAU_IMPLEMENTATION_FILE` will be considered as a GAU implementation.
+The class name of the GAU will be detected as the unit name of an implementation. Remember to keep the unittests and children declarations of each unit in the same file of the implementation. 
+In another word, each file must contain three sections: 1) the unit implementation, 2) the unittests (all unittests must be decorated with @gau_test, otherwise it will be ignored), 3) the children declarations. 
+And always remember to declare children GAUs if there is any in your unit, either new, placeholder or reuse existing ones. Otherwise the linker will not be able to find them.  
+"""
       return AgentPrompt(GU_IMPLEMENTATION_RETRY_prompt,GENERAL_CODE_parser)
    else:
       return AgentPrompt(GU_IMPLEMENTATION_RETRY_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_RETRY_DEBUG_format)
@@ -3038,14 +3051,17 @@ After completing this GAU, you will be asked to implement any remaining parts of
    
    if use_o1:
       GUMT_IMPLEMENTATION_UNIT_prompt+="""
-You must include full implementations of units in your final response. You can provide multiple implementations including the selected unit and optionally its children. 
+You must include full implementations of units in your final response. 
+You can provide multiple implementations of *different units* including the selected unit and optionally its children. 
 You must wrape each implementation in a block quote as follows:
 ```python
-{{full implementation of a unit}}
+{{full implementation of a unit, unittests decorated with @gau_test, and children declarations}}
 ```
 . All implementations must follow the format of the GAU template, and remember to keep the first line as the marker `# GAU_IMPLEMENTATION_FILE` to allow the parser detect a GAU implementation file. 
 Only the code block wrapped by ```python ``` and kept first line as `# GAU_IMPLEMENTATION_FILE` will be considered as a GAU implementation.
-The class name of the GAU will be detected as the unit name of an implementation.
+The class name of the GAU will be detected as the unit name of an implementation. Remember to keep the unittests and children declarations of each unit in the same file of the implementation. 
+In another word, each file must contain three sections: 1) the unit implementation, 2) the unittests (all unittests must be decorated with @gau_test, otherwise it will be ignored), 3) the children declarations. 
+And always remember to declare children GAUs if there is any in your unit, either new, placeholder or reuse existing ones. Otherwise the linker will not be able to find them.  
 """
       return AgentPrompt(GUMT_IMPLEMENTATION_UNIT_prompt,GENERAL_CODE_parser)
    else: 

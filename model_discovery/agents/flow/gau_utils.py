@@ -16,8 +16,19 @@ class GAUFinder(ast.NodeVisitor):
     def __init__(self):
         self.gaubase_classes = []
         self.errors = []
+        self.inside_gau_test = False
+
+    def visit_FunctionDef(self, node): # for the case when the gau class is defined locally inside a function
+        if any(isinstance(decorator, ast.Name) and decorator.id == 'gau_test' for decorator in node.decorator_list):
+            self.inside_gau_test = True  # Start processing only when inside GAU test
+            self.generic_visit(node)
+            self.inside_gau_test = False  # Reset after processing GAU test
+        else:
+            self.inside_gau_test = False
 
     def visit_ClassDef(self, node):
+        if self.inside_gau_test:
+            return node
         # Extract the base class names
         base_names = [base.id if isinstance(base, ast.Name) else base.attr if isinstance(base, ast.Attribute) else None for base in node.bases]
 

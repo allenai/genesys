@@ -92,7 +92,7 @@ class GAUBase(nn.Module):
         raise NotImplementedError
     
     def forward(self, X, **Z):
-        assert len(X.shape) == 3 and X.shape[-1] == self.embed_dim, f"Input X must be a sequence of shape (batch, seqlen, embed_dim), all other kinds of variables should be passed by Z. Got {X.shape} instead."
+        assert len(X.shape) == 3 and X.shape[-1] == self.embed_dim, f"Input X must be a sequence of shape (batch, seqlen, embed_dim), all other kinds of variables should be passed by Z. Got {X.shape} instead. self.embed_dim={self.embed_dim}"
         _params = inspect.signature(self._forward).parameters
         X=X.to(**self.factory_kwargs)
         _Z = {k: v for k, v in Z.items() if k in _params}

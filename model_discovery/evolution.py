@@ -300,9 +300,14 @@ class Proposal:
     review_search_stack: List[str] = None
 
     def save(self, design_dir: str, name='proposal.json'):
-        self.design_cfg['running_mode']=self.design_cfg['running_mode'].value
-        U.save_json(asdict(self), U.pjoin(design_dir, name))
-        self.design_cfg['running_mode']=RunningModes(self.design_cfg['running_mode'])
+        dict=asdict(self)
+        dict['design_cfg']['running_mode']=self.design_cfg['running_mode'].value
+        U.save_json(dict, U.pjoin(design_dir, name))
+
+    @classmethod
+    def from_dict(cls, dict: Dict):
+        dict['design_cfg']['running_mode']=RunningModes(dict['design_cfg']['running_mode'])
+        return cls(**dict)
 
     @classmethod
     def load(cls, design_dir: str, name='proposal.json'):
@@ -310,7 +315,7 @@ class Proposal:
             return None
         dict=U.load_json(U.pjoin(design_dir, name))
         dict['design_cfg']['running_mode']=RunningModes(dict['design_cfg']['running_mode'])
-        return cls(**dict)
+        return cls.from_dict(dict)
 
 
 @dataclass
@@ -322,6 +327,18 @@ class ImplementationAttempt:
     design_cfg: Dict[str, Any]
     user_input: str
 
+    def to_dict(self):
+        dict=asdict(self)
+        dict['design_cfg']['running_mode']=self.design_cfg['running_mode'].value
+        dict['tree']=self.tree.to_dict()
+        return dict
+
+    @classmethod
+    def from_dict(cls, dict: Dict):
+        dict['design_cfg']['running_mode']=RunningModes(dict['design_cfg']['running_mode'])
+        dict['tree']=GAUTree.from_dict(dict['tree'])
+        return cls(**dict)
+
 @dataclass
 class Implementation:
     succeed: bool
@@ -332,19 +349,19 @@ class Implementation:
     def save(self, design_dir: str):
         dict=self.to_dict()
         U.save_json(dict, U.pjoin(design_dir, f'implementation.json'))
-        self=self.from_dict(dict)
 
     def to_dict(self):
-        self.history=[asdict(attempt) for attempt in self.history]
-        for i in range(len(self.history)):
-            self.history[i]['design_cfg']['running_mode']=self.history[i]['design_cfg']['running_mode'].value
-        return asdict(self)
+        dict=asdict(self)
+        dict['implementation']=self.implementation.to_dict()
+        dict['history']=[attempt.to_dict() for attempt in self.history]
+        return dict
 
     @classmethod
     def from_dict(cls, dict: Dict):
         for i in range(len(dict['history'])):
             dict['history'][i]['design_cfg']['running_mode']=RunningModes(dict['history'][i]['design_cfg']['running_mode'])
         dict['history']=[ImplementationAttempt.from_dict(attempt) for attempt in dict['history']]
+        dict['implementation']=GAUTree.from_dict(dict['implementation'])
         return cls(**dict)
 
     @classmethod
@@ -498,7 +515,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
             'seed_ids': seed_ids,
             'ref_ids': ref_ids,
             'instruct': instruct,
-            'mode': mode.value,
+            'mode': mode,
             'proposed': [],
             'reranked': {},
             'num_samples': num_samples
@@ -506,7 +523,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         self.design_sessions[design_id] = sessdata
         sess_dir=self.session_dir(design_id)
         U.mkdir(sess_dir)
-        U.save_json(sessdata, U.pjoin(sess_dir, 'metadata.json'))
+        self.save_session(design_id)
         U.mkdir(U.pjoin(sess_dir, 'log'))
         return design_id
     
@@ -617,8 +634,14 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         self.save_session(design_id)
 
     def save_session(self,design_id: str):
-        sessdata=self.design_sessions[design_id]
+        sessdata=self.design_sessions[design_id]        
+        try:
+            sessdata['mode']=DesignModes(sessdata['mode'])
+        except:
+            pass
+        sessdata['mode']=sessdata['mode'].value
         U.save_json(sessdata, U.pjoin(self.session_dir(design_id), 'metadata.json'))
+        sessdata['mode']=DesignModes(sessdata['mode'])
 
     def implement(self, acronym: str, tree,ROUNDS,SUCCEED,costs,design_cfg,user_input): # update a proposal node with implementation
         design_artifact=self.get_node(acronym)

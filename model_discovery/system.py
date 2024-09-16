@@ -286,13 +286,26 @@ class PrintSystem:
         print(msg)
 
 
+def safe_backup(file):
+    count=0
+    content=U.read_file(file)
+    while U.pexists(file):
+        U.rename(file,file+f'.backup{count}')
+        count+=1
+    U.write_file(file,content)
+
+
 class StreamWrapper:
     def __init__(self,stream,log_file):
         self.stream=stream
         self.log_file=log_file
         self._log=[]
         if U.pexists(self.log_file):
-            self._log=eval(U.read_file(self.log_file))
+            try:
+                self._log=eval(U.read_file(self.log_file))
+            except: # not a valid log file, create a new one
+                safe_backup(self.log_file)
+                self._log=[]
         self.status = StatusHandlerWrapper(stream.status, self.log)
         self.spinner = SpinnerWrapper(stream.spinner, self.log)
     
