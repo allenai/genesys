@@ -551,8 +551,9 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         for design_id in self.design_sessions:
             sessdata=self.design_sessions[design_id]
             num_samples=sessdata['num_samples']
-            passed = self.session_proposals(design_id,passed_only=True)
-            implemented = self.session_implementations(design_id,succeed_only=True)
+            passed,_ = self.session_proposals(design_id,passed_only=True)
+            implemented,_ = self.session_implementations(design_id,succeed_only=True)
+            # print(f"Design {design_id} has {len(passed)}/{num_samples['proposal']} proposals and {len(implemented)}/{num_samples['implementation']} implementations.")
             if len(passed)<num_samples['proposal'] or \
                 len(implemented)<num_samples['implementation']:
                 unfinished_designs.append(design_id)
@@ -560,13 +561,16 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
     
     def session_proposals(self,design_id:str,passed_only=False):
         sessdata=self.design_sessions[design_id]
-        designs = [self.get_node(acronym) for acronym in sessdata['proposed']]
-        acronyms = [design.acronym for design in designs]
-        proposals = [design.proposal for design in designs]
-        if passed_only:
-            acronyms = [design.acronym for design in designs if design.proposal.passed]
-            proposals = [proposal for proposal in proposals if proposal.passed]
+        acronyms=[]
+        proposals=[]
+        for acronym in sessdata['proposed']:
+            design=self.get_node(acronym)
+            if passed_only and not design.proposal.passed:
+                continue
+            proposals.append(design.proposal)
+            acronyms.append(acronym)
         return proposals,acronyms
+
     
     def session_implementations(self,design_id:str,succeed_only=False):
         sessdata=self.design_sessions[design_id]
@@ -861,6 +865,7 @@ class EvolutionSystem(exec_utils.System):
         self.stream.write(f"Checkpoint directory: {self.evo_dir}")
 
         self.ptree=PhylogeneticTree(U.pjoin(self.evo_dir,'db'))
+        print(f"Phylogenetic tree loaded with {len(self.ptree.G.nodes)} nodes and {len(self.ptree.design_sessions)} design sessions from {self.ptree.db_dir}.")
         self.rnd_agent = BuildSystem(
             debug_steps=False, # True for debugging, but very long
             # cache_type="diskcache", #<-- agent caching method 
@@ -932,6 +937,7 @@ class EvolutionSystem(exec_utils.System):
     def design(self,n_sources=None,design_cfg={},user_input='',design_id=None,mode=DesignModes.MUTATION,resume=True): # select then sample, TODO: n_sources and design_cfg should be configed
         # user_input and design_cfg maybe changed by the user, so we need to pass them in
         unfinished_designs = self.ptree.get_unfinished_designs()
+        self.stream.write(f"Found {len(unfinished_designs)} unfinished designs, allow resume: {resume}")
         if n_sources is None:
             n_sources = {
                 'ReferenceCoreWithTree':1,
@@ -946,7 +952,7 @@ class EvolutionSystem(exec_utils.System):
             else:
                 design_id = random.choice(unfinished_designs)
                 mode=DesignModes(self.ptree.session_get(design_id,'mode'))
-                self.stream.write(f"There are {len(unfinished_designs)} unfinished designs, restore a session {design_id}, mode: {mode}.")
+                self.stream.write(f"Restoring a session {design_id}, mode: {mode}.")
                 self.sample(design_id=design_id,user_input=user_input,design_cfg=design_cfg,mode=mode) # should not change the design_cfg
         else:
             mode=DesignModes(self.ptree.session_get(design_id,'mode'))

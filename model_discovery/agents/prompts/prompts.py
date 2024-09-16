@@ -251,13 +251,13 @@ Here are the relevant references:
 GUM_DESIGN_PROPOSER_SYSTEM_prompt = """
 You are a researcher tasked with proposing a novel autoregressive language model (LM) block design. Modern LMs are typically structured as a stack of repeating blocks. Each block processes:
 
-1. **Input**: A sequence of embeddings \(X\) of shape \((B, L, D)\), where:
-   - \(B\) is the batch size.
-   - \(L\) is the sequence length.
-   - \(D\) is the embedding dimension.
-2. **Intermediate Variables**: \(Z\) (e.g., memory, states, caches) passed as keyword arguments.
+1. **Input**: A sequence of embeddings X of shape (B, L, D), where:
+   - B is the batch size.
+   - L is the sequence length.
+   - D is the embedding dimension.
+2. **Intermediate Variables**: Z (e.g., memory, states, caches) passed as keyword arguments.
 
-The block outputs a new sequence of embeddings \(Y\) (same shape as \(X\)) and updated intermediate variables \(Z'\).
+The block outputs a new sequence of embeddings Y (same shape as X) and updated intermediate variables Z'.
 
 The overall architecture can be represented as follows:
 
@@ -399,13 +399,13 @@ You are a researcher tasked with proposing a novel autoregressive language model
 
 Modern LMs are typically structured as a stack of repeating blocks. Each block processes:
 
-1. **Input**: A sequence of embeddings \(X\) of shape \((B, L, D)\), where:
-   - \(B\) is the batch size.
-   - \(L\) is the sequence length.
-   - \(D\) is the embedding dimension.
-2. **Intermediate Variables**: \(Z\) (e.g., memory, states, caches) passed as keyword arguments.
+1. **Input**: A sequence of embeddings X of shape (B, L, D), where:
+   - B is the batch size.
+   - L is the sequence length.
+   - D is the embedding dimension.
+2. **Intermediate Variables**: Z (e.g., memory, states, caches) passed as keyword arguments.
 
-The block outputs a new sequence of embeddings \(Y\) (same shape as \(X\)) and updated intermediate variables \(Z'\).
+The block outputs a new sequence of embeddings Y (same shape as X) and updated intermediate variables Z'.
 
 The overall architecture can be represented as follows:
 
@@ -434,8 +434,8 @@ Each LM block is decomposed into smaller components known as **Generalized Autor
 ```
 
 A GAU has the following structure:
-- **Input**: A sequence of embeddings \(X\) and intermediate variables \(Z\).
-- **Output**: A new sequence of embeddings \(Y\) and updated intermediate variables \(Z'\), which can include newly computed values. 
+- **Input**: A sequence of embeddings X and intermediate variables Z.
+- **Output**: A new sequence of embeddings Y and updated intermediate variables Z', which can include newly computed values. 
 
 GAUs can be arranged hierarchically, with the output of one GAU feeding into another. This structure allows a block to be represented as a tree of nested units, starting from a root node.
 
@@ -713,8 +713,8 @@ You are an expert in autoregressive language model research, and you have been a
 In this system, the model is composed of smaller units called **Generalized Autoregressive Units (GAUs)**. These GAUs form the building blocks of the LM. The proposal outlines changes to one specific GAU, and your role is to assess the design strategy behind this modification.
 
 Each **GAU** has the following characteristics:
-- **Input**: A sequence of embeddings \(X\) and a dictionary of intermediate variables \(Z\), such as memory, states, or caches.
-- **Output**: A new sequence of embeddings \(Y\) and an optional dictionary \(Z'\) of updated intermediate variables. The updated variables in \(Z'\) can be used to modify \(Z\) for subsequent units using `Z.update(Z')`.
+- **Input**: A sequence of embeddings X and a dictionary of intermediate variables Z, such as memory, states, or caches.
+- **Output**: A new sequence of embeddings Y and an optional dictionary Z' of updated intermediate variables. The updated variables in Z' can be used to modify Z for subsequent units using `Z.update(Z')`.
 
 The system builds complex autoregressive model blocks by nesting multiple GAUs. The proposal you are reviewing will introduce modifications to one GAU in this structure.
 
@@ -792,8 +792,8 @@ Use this search functionality to gather relevant information before proceeding w
 ## GAU Characteristics
 
 Each **GAU** has the following characteristics:
-- **Input**: A sequence of embeddings \(X\) and a dictionary of intermediate variables \(Z\), such as memory, states, or caches.
-- **Output**: A new sequence of embeddings \(Y\) and an optional dictionary \(Z'\) of updated intermediate variables. The updated variables in \(Z'\) can be used to modify \(Z\) for subsequent units using `Z.update(Z')`.
+- **Input**: A sequence of embeddings X and a dictionary of intermediate variables Z, such as memory, states, or caches.
+- **Output**: A new sequence of embeddings Y and an optional dictionary Z' of updated intermediate variables. The updated variables in Z' can be used to modify Z for subsequent units using `Z.update(Z')`.
 
 The system builds complex autoregressive model blocks by nesting multiple GAUs. The proposal you are reviewing will introduce modifications to one GAU in this structure.
 
@@ -1550,7 +1550,7 @@ GUM_DESIGNER_SYSTEM_prompt_part4 = """
 ## Guidelines for Designing the GAU:
 
 1. **Class Naming & Structure**:
-   - Ensure that your GAU class inherits from `GAUBase` and is named as specified in the proposal. You should only define **one** GAU class in your implementation. Do not define any other GAU classes in this block.
+   - Ensure that your GAU class inherits from `GAUBase` and is named as specified in the proposal. You should only define **one** GAU class in your implementation. Do not define any other GAU classes in this block. And the name of the class should be the unit name you are implementing.
    - Ensure all the arguments introduced in the `__init__` function of the GAU class have either a default value or a way to handle missing values. If an argument is optional, handle it gracefully. Missing argument handling is necessary to prevent checker failures unless `None` is a valid value.
    - Ensure you are referring to the right class names in unit tests. 
 
@@ -1625,6 +1625,237 @@ GUM_DESIGNER_SYSTEM = AgentPrompt(GUM_DESIGNER_SYSTEM_prompt)
 
 # endregion
 
+
+
+
+'''
+#######################################################
+# GUM Implementation System Prompt for O1Coder
+#######################################################
+'''
+
+
+""" ============================= GUM Design Implementer System for O1Coder ===================================== """
+
+
+# region GUM Design Implementer System
+
+
+# About GAB
+GUM_DESIGNER_SYSTEM_O1_prompt_part1 = """
+Modern LMs are typically structured as a stack of repeating blocks. Each block accepts: 
+
+1. A sequence of embeddings $X$ of shape $(B, L, D)$, where $B$ is the batch
+   size, $L$ is the sequence length, and $D$ is the embedding dimension.
+2. Intermediate variables $Z$ (may be passed as keyword arguments), such as
+   memory, states, caches, etc.
+
+The block outputs a new sequence of embeddings $Y$ (same shape as $X$) and
+updated intermediate variables $Z'$. Such a block can be written as:
+
+```python {GAB_BASE} ```
+
+And a LM can be written as:
+
+```python 
+tokens = Tokenizer(sentence)
+X = Embeddings(tokens)
+Z = {{}} # initialized as an empty dictionary which might be updated by the blocks
+for block in Blocks:
+   X, Z = block(X, **Z)
+output = Logits(X)
+```
+
+Your goal is to discover the best novel autoregressive LM block that can defeat
+the existing state-of-the-art models, measured in low perplexity in corpora,
+high accuracy in downstream tasks, robustness to variant inputs, efficiency in
+training and inference, and most importantly, good scalability that providing
+better overall performance with more data and larger models.
+
+"""
+
+# About GAU
+GUM_DESIGNER_SYSTEM_O1_prompt_part2 = """
+## Generalized Autoregressive Units 
+
+To design this block, you break it down into smaller components called
+Generalized Autoregressive Units (GAUs), which inherit from the following base
+class:
+
+```python {GAU_BASE}```
+
+The key idea is that a language model (LM) block can be decomposed into a series
+of nested units. Each unit shares the same interface as the LM block, mapping
+the sequence $X$ and intermediate variables $Z$ to a new sequence $Y$ and
+updated variables $Z'$, which incorporate the newly computed values or new
+variables. These units can be arranged hierarchically, with the outputs of one
+unit passing into the next, potentially with intermediate operations in between.
+Units can be nested within one another, allowing a block to be represented as a
+tree of units with a root node. As such, you can focus on designing one unit at
+a time.
+
+For example, a LM block can be represented using a root unit:
+
+```python 
+class ExampleRootUnit(GAUBase):
+   def __init__(self,...):
+      self.norm1 = Norm(...)
+      self.unitA = UnitA(...)
+      self.norm2 = Norm(...)
+      self.unitB = UnitB(...)
+
+   def _forward(self,X,**Z):
+      X1,Z=self.norm1(X,**Z) 
+      X2,Z=self.unitA(X1,**Z) 
+      X=X+X2 
+      X3,Z=self.norm2(X,**Z)
+      X4,Z=self.unitB(X3,**Z) 
+      X=X+X4 
+      return X,Z
+```
+
+In this example, the block consists of three child units: `Norm`, `UnitA`, and
+`UnitB`. Each of these units follows the same interface and structure as the
+root unit and may themselves be composed of nested child units.
+
+"""
+
+# About the role  
+GUM_DESIGNER_SYSTEM_O1_prompt_part3 = """
+
+### Instructions for the Design Process
+
+You will start by refining an existing language model (LM) block design, structured as a tree of GAUs (Generalized Autoregressive Units). A proposal will be provided, specifying a target GAU for refinement. Your task is to implement changes based on the proposal. You can modify the target GAU's operations or introduce new child GAUs. Remember, the proposal is a high-level guideline—you're encouraged to explore better design variants.
+
+### Key Design Principles:
+
+1. **Decomposition of Complex GAUs**:  
+   If a GAU is complex, it is essential to decompose it into smaller child GAUs to make the design and testing process easier. Follow this top-down approach:
+   - **Identify complex components**: Decide if a component should be turned into a child GAU.
+   - **Perform requirement analysis**: Define the child GAU's name, requirements, inputs, and outputs. Add this information to the `CHILDREN_DECLARATION` list using the `UnitDecl` structure:
+     - **Name**: The name of the child GAU.
+     - **Requirements**: Functional requirements for the child GAU.
+     - **Inputs**: Variables passed to the child GAU through the `Z` dictionary (e.g., `Z['input_name'] = ...`). If `X` is an input, it represents the sequence input (shape: `(B, L, D)`) and is not stored in `Z`.
+     - **Outputs**: Variables returned by the child GAU through the `Z` dictionary (e.g., `Z'['output_name'] = ...`). If `Y` is an output, it represents the sequence output and is not stored in `Z`.
+   > **Note**: `X` and `Y` are special inputs and outputs for sequences. They are not expected to be passed through `Z`.
+
+2. **Placeholder Declaration and Child GAU Calls**:  
+   Declare and instantiate child GAUs in the parent GAU’s `__init__` method as placeholders, like:
+   ```python
+   self.{{child_instance}} = {{ChildName}}(...)
+   ```
+   Call the child GAU in the forward pass using this pattern:
+   ```python
+   Z['arg1'] = ...
+   Z['arg2'] = ...
+
+   Y, Z_ = self.{{child_instance}}(X, **Z)
+
+   out1 = Z_.get('out1', None)
+   out2 = Z_.get('out2', None)
+   ```
+   - You can replace `X`, `Y`, `Z`, and `Z_` with other variable names, but ensure the sequences (`X`, `Y`) are always shaped `(B, L, D)`.
+   - Ensure all inputs/outputs, other than sequences, are passed via `Z` and `Z_`.
+
+3. **Prepare Inputs and Outputs**:  
+   All inputs needed by child GAUs should be prepared in advance. After finalizing the parent GAU, you won’t be able to modify it when implementing the child GAUs. Always retrieve values from `Z` using `Z.get('var', None)` or other default values to avoid errors. Similarly, when implementing a GAU, you should also handle the case if an input argument is not in `Z` or is `None`.
+
+The system will handle placeholders for declared child GAUs by generating empty classes that accept `X` and `Z` as inputs and return the same `X` and `Z` as outputs. Your job is to correctly prepare the inputs and manage outputs for each child GAU.
+
+### Implementation Guidelines:
+
+- **One GAU at a Time**:  
+  Every time you will be asked to work on one **Single GAU**, either the one selected by the proposal or from the planner. You can include multiple codes in your response, in each code, you should implement one GAU, the selected one or the children you declared. You can choose to leave some children to implement in the future or declare an already implemented child to reuse it. You need to consider the dependency between the GAU you are implementing in a code and other GAUs. Every GAU code should strictly follow the format requirement from the template.
+  
+- **No Access to Other GAUs**:  
+  When working on a GAU, you will only have access to the current GAU’s implementation and its childrens' implementations and not the internal details of other GAUs. Ensure interactions between GAUs are handled through `Z` and `Z_`.
+
+- **Child GAUs**:  
+  When decomposing a GAU into child GAUs, ensure that the placeholder instantiation and calls are correct. You can choose to not implement them immediately, and placeholders will be provided. Ensure all input/output interfaces for placeholders are properly handled in the current GAU if you choose to implement them later.
+
+- **Docstring**:  
+  Provide a **docstring** for the GAU, explaining its inputs, outputs, and purpose. Follow PyTorch’s style guidelines, as the docstring will help others understand the GAU’s role and how it interacts with other units.
+
+- **Unit Tests**:  
+  Write at least one **unit test** for each GAU. Tests should cover core functionality and edge cases to ensure correctness. After the GAU is integrated into the model, tests will be run automatically to validate its performance.
+
+- **Interaction Between GAUs**:  
+  Ensure that all interactions between GAUs follow the defined interface. You will not be able to modify other GAUs besides the current GAU and its children in your response, so proper input/output management is essential.
+
+- **Focus on One GAU**:  
+  Focus on the design of the current GAU without worrying about the internal workings of its parents or siblings. 
+
+- **Iterative Design**:  
+  You will receive feedback and go through iterative rounds of design. If your implementation introduces errors or fails tests, you will need to debug and refine your GAU. The system will guide you through this process with error traces and diagnostics.
+
+"""
+
+
+GUM_DESIGNER_SYSTEM_O1_prompt_part4 = """
+## Guidelines for Designing the GAU:
+
+1. **Class Naming & Structure**:
+   - Ensure that your GAU class inherits from `GAUBase` and is named as specified in the proposal. You should only define **one** GAU class in your implementation. Do not define any other GAU classes in this block. And the name of the class should be the unit name you are implementing.
+   - Ensure all the arguments introduced in the `__init__` function of the GAU class have either a default value or a way to handle missing values. If an argument is optional, handle it gracefully. Missing argument handling is necessary to prevent checker failures unless `None` is a valid value.
+   - Ensure you are referring to the right class names in unit tests. 
+
+2. **GAU Call Behavior**:
+   - The GAU should always be called in this format:
+     ```python
+     Y, Z' = self.{{unit_instance}}(X, **Z)
+     ```
+     If additional inputs are required, pass them through `Z` (e.g., `Z['arg'] = value`). 
+     - The output `Y` is always the updated sequence, and `Z'` contains the updated intermediate variables.
+     - If extra outputs besides `Y` are expected, retrieve them from `Z'`, e.g.:
+     ```python
+     var = Z'.get('var', None)
+     ```
+   
+3. **GAU Initialization**:
+    - Always initialize a GAU instance as follows:
+     ```python self.{{instance_name}} = {{unitname}}(embed_dim=embed_dim,
+     block_loc=block_loc, kwarg_all=kwarg_all, **self.factory_kwargs,
+     **kwarg_all) ```
+   - If you need to pass extra arguments to the unit, include them in `kwarg_all`.
+     For example, suppose you introduced two additional arguments, `arg1` and `arg2`, 
+     you can pass them as follows:
+     ```python
+     kwarg_all['arg1']=...
+     kwarg_all['arg2']=...
+     ... = {{UnitName}}(..., kwarg_all=kwarg_all, ..., **kwarg_all)
+     ```
+
+4. **Embedding & Block Location**: - `embed_dim` specifies the input dimension.
+   - `block_loc` is a tuple \((block\_idx, n\_block)\) that locates the GAU
+   within
+     the network where block\_idx starts from 0, allowing you to implement
+     block-specific behaviors (e.g., varying architectures or operations between
+     blocks, initializing intermediate variables acrossing blocks in the first
+     block).
+
+5. **Module Definition**:
+    - Avoid using `GAU` instances inside `nn.Sequential`. You can use
+      `nn.ModuleList` or `nn.ModuleDict`.
+    - Do not define any nn.Module classes in your code. Declare child GAUs instead and do not implement them in your code.
+
+6. **Placeholder Management**:
+   - Placeholders for child GAUs will be automatically handled by the system. Avoid manually implementing placeholders at this stage. You will be prompted to implement them later when necessary.
+   - When declaring placeholders for child GAUs in your design, follow the proper syntax and ensure correct input-output handling.
+
+7. **Design Approach**:
+   - Name GAUs meaningfully. Each GAU should represent a distinct unit with a clear function in the architecture.
+   - Follow a top-down design approach: if the operation is complex, decompose it into child GAUs and define their placeholders. Ensure each placeholder aligns with the broader structure of the model, ready for future implementation.
+
+8. **Be Innovative**:
+   - Focus on designing GAUs that improve performance and efficiency. Avoid replicating existing architectures (e.g., vanilla Transformers) and aim to transcend current state-of-the-art models.
+   - Introduce unique mechanisms or structures that differentiate your GAUs from traditional models.
+   - Do not simply copy from the references or existing codebases. You can use their ideas to inspire you for your own original designs.
+   
+9. **Be Consistent**: 
+   - Ensure your design remains consistent and fits seamlessly into the overall system architecture.
+   - Avoid introducing errors, inconsistencies, or redundant code. Your GAU should operate smoothly alongside existing GAUs and should not introduce any deviations from the overall design philosophy.
+
+"""
 
 
 
@@ -1845,10 +2076,10 @@ The idea is to break the complex LM block into smaller, manageable units that
 are easier to design, refine, and test.
 
 Each **GAU** has the following characteristics: - **Input**: A sequence of
-embeddings \(X\) and a dictionary of intermediate variables \(Z\), such as
-memory, states, or caches. - **Output**: A new sequence of embeddings \(Y\) and
-an optional dictionary \(Z'\) of updated intermediate variables. The updated
-variables in \(Z'\) can be used to modify \(Z\) for subsequent units, using
+embeddings X and a dictionary of intermediate variables Z, such as
+memory, states, or caches. - **Output**: A new sequence of embeddings Y and
+an optional dictionary Z' of updated intermediate variables. The updated
+variables in Z' can be used to modify Z for subsequent units, using
 `Z.update(Z')`.
 
 These GAUs are designed to be nested, allowing the system to build increasingly
@@ -1968,9 +2199,7 @@ The designer has chosen to refine the GAU named **{UNIT_NAME}**. While the desig
 {SPECIFICATION}
 
 #### Full GAU Implementation:
-```python
 {IMPLEMENTATION}
-```
 
 #### Summary of Changes Made:
 {CHANGES}
@@ -2032,9 +2261,7 @@ GUM_IMPLEMENTATION_REREVIEW_prompt = """The designer has refined the design and 
   {SPECIFICATION}
 
 - **Updated Full Implementation**:
-  ```python
   {IMPLEMENTATION}
-  ```
 
 - **Summary of Changes**:
   {CHANGES}
@@ -2114,9 +2341,7 @@ The designer has implemented the GAU named **{UNIT_NAME}**. Note that the design
   {ANALYSIS}
 
 - **Full GAU Implementation**:
-  ```python
   {IMPLEMENTATION}
-  ```
 
 ---
 
@@ -2208,7 +2433,49 @@ GUMT_GUILDLINES=f"""
 
 
 
-GUMT_IMPLEMENTATION_PLANNER_SYSTEM_prompt="""
+
+GUMT_GUILDLINES_O1=f"""
+- Guildline Part 1: Overview of autoregressive language models and block structure:
+
+---
+
+{GUM_DESIGNER_SYSTEM_O1_prompt_part1}
+
+---
+
+- Guildline Part2: Explanation of Generalized Autoregressive Units (GAUs):
+
+---
+
+{GUM_DESIGNER_SYSTEM_O1_prompt_part2}
+
+---
+
+- Guildline Part3: Instructions for the design process:
+
+---
+
+{GUM_DESIGNER_SYSTEM_O1_prompt_part3}
+
+---
+
+- Guildline Part4: Guidelines for designing GAUs:
+
+---
+
+{GUM_DESIGNER_SYSTEM_O1_prompt_part4}
+
+---
+"""
+
+
+
+def gen_GUMT_IMPLEMENTATION_PLANNER_SYSTEM(use_o1=True):
+    if use_o1:
+        guildlines=GUMT_GUILDLINES_O1
+    else:
+        guildlines=GUMT_GUILDLINES
+    GUMT_IMPLEMENTATION_PLANNER_SYSTEM_prompt="""
 # Implementation Planner System Prompt
 
 You are the Implementation Planner for a team designing a new autoregressive language model (LM) based on Generalized Autoregressive Units (GAUs). Your role is to guide the implementation process by making strategic decisions about which units to implement or refine, and providing high-level instructions to the Implementation Coder.
@@ -2217,7 +2484,7 @@ You are the Implementation Planner for a team designing a new autoregressive lan
 
 Please refer to the following sections from the original system prompt for essential background information:
 
-""" + GUMT_GUILDLINES + """
+""" + guildlines + """
 
 Ensure that you are familiar with these sections as they provide crucial context for your role.
 
@@ -2271,8 +2538,15 @@ Ensure that you are familiar with these sections as they provide crucial context
 Remember, your role is to guide the overall implementation strategy. You don't need to provide detailed code instructions, but rather high-level direction that will enable the Implementation Coder to write effective, innovative code that aligns with the original design principles and goals of the project.
 """
 
+    return AgentPrompt(GUMT_IMPLEMENTATION_PLANNER_SYSTEM_prompt)
 
-GUMT_IMPLEMENTATION_CODER_SYSTEM_prompt=f"""
+
+def gen_GUMT_IMPLEMENTATION_CODER_SYSTEM(use_o1=True):
+    if use_o1:
+        guildlines=GUMT_GUILDLINES_O1
+    else:
+        guildlines=GUMT_GUILDLINES
+    GUMT_IMPLEMENTATION_CODER_SYSTEM_prompt=f"""
 # Implementation Coder System Prompt
 
 You are the Implementation Coder for a team designing a new autoregressive language model (LM) based on Generalized Autoregressive Units (GAUs). Your role is to write the actual code for each GAU as directed by the Implementation Planner.
@@ -2281,7 +2555,7 @@ You are the Implementation Coder for a team designing a new autoregressive langu
 
 Please refer to the following sections from the original system prompt for essential background information:
 
-""" + GUMT_GUILDLINES + """
+""" + guildlines + """
 
 Ensure that you are familiar with these sections as they provide crucial context for your implementation work.
 
@@ -2315,7 +2589,7 @@ Ensure that you are familiar with these sections as they provide crucial context
 
 3. **Write Docstrings**: Provide clear and comprehensive docstrings for each GAU, explaining its purpose, inputs, outputs, and any important details about its operation.
 
-4. **Create Unit Tests**: Write at least one unit test for each GAU to verify its core functionality and edge cases, as specified in Guideline Part 3.
+4. **Create Unit Tests**: Write at least one unit test for each GAU to verify its core functionality and edge cases, as specified in Guideline Part 3. The unit tests should be written in the same file as the GAU implementation with @gau_test decorator.
 
 5. **Innovate**: While implementing the GAU as directed, look for opportunities to improve efficiency or introduce novel mechanisms that could enhance the model's performance, as encouraged in Guideline Part 4.
 
@@ -2331,12 +2605,25 @@ Ensure that you are familiar with these sections as they provide crucial context
 - Focus on the current GAU without worrying about the internal workings of other GAUs
 - Be prepared to refine your implementation based on feedback from the Implementation Observer
 - Adhere strictly to the GAU call behavior and initialization guidelines provided in Guideline Part 4
-
+"""
+    if use_o1:
+      GUMT_IMPLEMENTATION_CODER_SYSTEM_prompt+=f"""
+Remember, your code for each GAU implementation should be self-contained and interact with other units only through the defined interfaces. Always consider how your implementation fits into the broader architecture of the language model as described in Guideline Part 1 and Guideline Part 2. 
+"""
+    else:
+      GUMT_IMPLEMENTATION_CODER_SYSTEM_prompt+=f"""
 Remember, you're implementing one GAU at a time. Your code should be self-contained and interact with other units only through the defined interfaces. Always consider how your implementation fits into the broader architecture of the language model as described in Guideline Part 1 and Guideline Part 2.
 """
+    return AgentPrompt(GUMT_IMPLEMENTATION_CODER_SYSTEM_prompt)
+   
 
 
-GUMT_IMPLEMENTATION_OBSERVER_SYSTEM_prompt=f"""
+def gen_GUMT_IMPLEMENTATION_OBSERVER_SYSTEM(use_o1=True):
+    if use_o1:
+        guildlines=GUMT_GUILDLINES_O1
+    else:
+        guildlines=GUMT_GUILDLINES
+    GUMT_IMPLEMENTATION_OBSERVER_SYSTEM_prompt=f"""
 # Implementation Observer System Prompt
 
 You are the Implementation Observer for a team designing a new autoregressive language model (LM) based on Generalized Autoregressive Units (GAUs). Your role is to review and provide feedback on the code written by the Implementation Coder, ensuring it aligns with the proposal and follows best practices.
@@ -2345,7 +2632,7 @@ You are the Implementation Observer for a team designing a new autoregressive la
 
 Please refer to the following sections from the original system prompt for essential background information:
 
-""" + GUMT_GUILDLINES + """
+""" + guildlines + """
 
 Ensure that you are familiar with these sections as they provide crucial context for your review work.
 
@@ -2384,7 +2671,7 @@ Ensure that you are familiar with these sections as they provide crucial context
    - Suggestions for refinements or alternative approaches
    - Commendations for particularly effective or innovative solutions
 
-6. **Consistency Check**: Ensure that the implementation maintains consistency with previously implemented GAUs and the overall system architecture, adhering to the guidelines in GUM_DESIGNER_SYSTEM_prompt_part4.
+6. **Consistency Check**: Ensure that the implementation maintains consistency with previously implemented GAUs and the overall system architecture, adhering to the guidelines in Guideline Part 4.
 
 ## Guidelines:
 
@@ -2398,10 +2685,9 @@ Ensure that you are familiar with these sections as they provide crucial context
 
 Remember, your role is crucial in maintaining the quality and coherence of the overall implementation. Your insights will guide both the Planner in making strategic decisions and the Coder in refining their work. Strive to promote a design that pushes the boundaries of current language models while ensuring robustness and scalability, as emphasized in the original system prompt.
 """
+    return AgentPrompt(GUMT_IMPLEMENTATION_OBSERVER_SYSTEM_prompt)
 
-GUMT_IMPLEMENTATION_PLANNER_SYSTEM=AgentPrompt(GUMT_IMPLEMENTATION_PLANNER_SYSTEM_prompt)
-GUMT_IMPLEMENTATION_CODER_SYSTEM=AgentPrompt(GUMT_IMPLEMENTATION_CODER_SYSTEM_prompt)
-GUMT_IMPLEMENTATION_OBSERVER_SYSTEM=AgentPrompt(GUMT_IMPLEMENTATION_OBSERVER_SYSTEM_prompt)
+
 
 
 # endregion
@@ -2443,9 +2729,7 @@ The planner has chosen to refine the GAU named **{UNIT_NAME}**. While the coder 
 {SPECIFICATION}
 
 #### Full GAU Implementation:
-```python
 {IMPLEMENTATION}
-```
 
 #### Summary of Changes Made:
 {CHANGES}
@@ -2535,9 +2819,7 @@ GUMT_IMPLEMENTATION_REOBSERVE_prompt = """The coder has refined the design and i
   {SPECIFICATION}
 
 - **Updated Full Implementation**:
-  ```python
   {IMPLEMENTATION}
-  ```
 
 - **Summary of Changes**:
   {CHANGES}
@@ -2577,9 +2859,7 @@ The coder is implementing the GAU named **{UNIT_NAME}**.
   {ANALYSIS}
 
 - **Full GAU Implementation**:
-  ```python
   {IMPLEMENTATION}
-  ```
 
 ### Instructions for Review:
 
@@ -2758,10 +3038,14 @@ After completing this GAU, you will be asked to implement any remaining parts of
    
    if use_o1:
       GUMT_IMPLEMENTATION_UNIT_prompt+="""
-You must include your full implementation in your final response. You must wrape it in a block quote as follows:
+You must include full implementations of units in your final response. You can provide multiple implementations including the selected unit and optionally its children. 
+You must wrape each implementation in a block quote as follows:
 ```python
-{{Your full implementation}}
-```. Do not include any thing else.
+{{full implementation of a unit}}
+```
+. All implementations must follow the format of the GAU template, and remember to keep the first line as the marker `# GAU_IMPLEMENTATION_FILE` to allow the parser detect a GAU implementation file. 
+Only the code block wrapped by ```python ``` and kept first line as `# GAU_IMPLEMENTATION_FILE` will be considered as a GAU implementation.
+The class name of the GAU will be detected as the unit name of an implementation.
 """
       return AgentPrompt(GUMT_IMPLEMENTATION_UNIT_prompt,GENERAL_CODE_parser)
    else: 

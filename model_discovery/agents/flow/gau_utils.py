@@ -811,7 +811,7 @@ class GAUCallChecker(ast.NodeVisitor):
 
 
 
-def check_and_reformat_gau_code(source_code, unit_name):
+def check_and_reformat_gau_code(source_code,unit_name=None):
     errors = []
     fetal_errors = []
     warnings = []
@@ -821,7 +821,7 @@ def check_and_reformat_gau_code(source_code, unit_name):
         tree = ast.parse(source_code)
     except Exception as e:
         fetal_errors.append(f"Error parsing the code: {e}\n")
-        return None, None, None, errors, warnings, fetal_errors, None, None
+        return None, None, None, errors, warnings, fetal_errors, None, None, None
 
     # Step 2: Run the format checker which now removes the import lines
     gaufinder = GAUFinder()
@@ -829,24 +829,21 @@ def check_and_reformat_gau_code(source_code, unit_name):
     fetal_errors += gaufinder.errors
     gau_classes = gaufinder.gaubase_classes
 
-    if len(gau_classes)==1:
-        if gau_classes[0].name != unit_name:
-            errors.append(f"Error: GAUBase class {unit_name} not found, found a GAUBase class {gau_classes[0].name} instead. "
-                          "Please make sure the GAUBase class name is the same as the unit name. If you are refining a unit, you should keep the name of the class unchanged. Do not use the new name to rename the class. "
-                          "The checker will continue the checking process by assuming this class is the unit class."
-                          )
-    elif len(gau_classes) > 1:
-        errors.append(
-            f"Error: Multiple GAUBase classes found: {', '.join(cls.name for cls in gau_classes)}. Please make sure there is only one GAUBase class and the unit name is the same as the GAUBase class name."
-            " If you want to define children GAUs, please leave them as placeholder for now and do not implement them, you will be asked to implement them later."
-            " If you are refining a unit, you should keep the name of the class unchanged. Do not use the new name to rename the class."
-            " The checker will continue the checking process if there is a GAUBase class matches the unit name. Or assuming `GAU` is the unit class."
+    if len(gau_classes) == 0:
+        fetal_errors.append(
+            "Error: No GAUBase class found. Please make sure there is at least one GAUBase class in the code."
         )
-        # for cls in gau_classes:
-        #     if cls.name in [unit_name, "GAU"]: 
-        #         continue
-        #     if cls.name not in children:
-        #         errors.append(f"Error: GAUBase class '{cls.name}' you defined is not provided in children list, if you need to define a children in your GAU, you need to declare it and provide in your children list.")
+        return None, None, None, [], [], fetal_errors, None, None, None
+    elif len(gau_classes) > 1:
+        fetal_errors.append(
+            f"Error: Multiple GAUBase classes found: {', '.join(cls.name for cls in gau_classes)}. Please make sure there is only one GAUBase class in a file and the unit name is the same as the GAUBase class name."
+            " If you want to implementent children GAUs, please provide them in separate files."
+        )
+        if unit_name is None:
+            fetal_errors.append(
+                " The checker will continue the checking process by assuming the first GAUBase class is the unit class."
+            )
+    unit_name = gau_classes[0].name
 
     format_checker = FormatChecker(unit_name, gau_classes)
     format_checker.visit(tree)
@@ -922,7 +919,7 @@ def check_and_reformat_gau_code(source_code, unit_name):
     warnings += format_checker.warnings + gau_test_checker.warnings + attribute_checker.warnings
 
     # Return the reformatted code, any new arguments, errors, and warnings
-    return reformatted_code, new_args, gau_tests, errors, warnings, fetal_errors, docstring, children_decl
+    return reformatted_code, new_args, gau_tests, errors, warnings, fetal_errors, docstring, children_decl, unit_name
 
 
 
