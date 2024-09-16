@@ -25,6 +25,32 @@ import pypdf
 import model_discovery.utils as U
 
 
+PERPLEXITY_SYSTEM = """
+You are an AI research assistant who helps language model researchers whose goal
+is to discover the best novel autoregressive LM block that can defeat the
+existing state-of-the-art models, measured in low perplexity in corpora, high
+accuracy in downstream tasks, robustness to variant inputs, efficiency in
+training and inference, and most importantly, good scalability that providing
+better overall performance with more data and larger models.
+
+You task is to search for the information that can help the researchers to
+achieve this goal. You will be given a set of keywords that points
+to the topic they are interested in, and details about the exact contents they
+are looking for. Search for the informaiton based on the keywords and details
+that align with the goal.
+"""
+
+PERPLEXITY_PROMPT = """
+Here is a set of keywords: 
+{query}
+
+Here is a detail: 
+{detail}
+
+Search for the information that can help the researchers to achieve the goal of
+improving autoregressive language model design.
+"""
+
 
 
 ### Paper With Code Patches, it depends on old version of pydantic, httpx, and typing_extensions
@@ -96,8 +122,13 @@ class SuperScholarSearcher:
             'lib2':3,
             'libp':3,
         }
+        DEFAULT_PERPLEXITY_SETTINGS={
+            'model_size':'large',
+            'max_tokens':2000,
+        }
         self.result_limits=U.safe_get_cfg_dict(cfg,'result_limits',DEFAULT_SEARCH_LIMITS)
         self.rerank_ratio=cfg.get('rerank_ratio',0.2)
+        self.perplexity_settings=U.safe_get_cfg_dict(cfg,'perplexity_settings',DEFAULT_PERPLEXITY_SETTINGS)
         index_name=cfg.get('index_name','modis-library-v0') # change it to your index name
         assert index_name, 'Index name is required'
         if index_name!=self.index_name: # always do it in init
@@ -107,11 +138,12 @@ class SuperScholarSearcher:
             'index_name':self.index_name,
             'result_limits':self.result_limits,
             'rerank_ratio':self.rerank_ratio,
+            'perplexity_settings':self.perplexity_settings,
         }
         if stream:
             self.stream=stream
 
-    def __call__(self,query,detail=None,raw=False,prompt=True):
+    def __call__(self,query,detail,raw=False,prompt=True):
         """
         query: for search papers in S2, ArXiv, and Papers with Code...
         detail: for search papers in the internal library vector stores
@@ -119,14 +151,22 @@ class SuperScholarSearcher:
         iquery = detail if detail else query
         internal_results,internal_pp=self.search_internal(iquery,pretty=True,prompt=prompt)
         external_results,external_pp=self.search_external(query,pretty=True,prompt=prompt)
-        
+        if self.perplexity_settings['model_size']!='none':
+            perplexity_results, perplexity_pp = self.search_perplexity(
+                query,detail,size=self.perplexity_settings['model_size'],max_tokens=self.perplexity_settings['max_tokens'])
+        else:
+            perplexity_results, perplexity_pp = None, None
+
         self.stream.write(f'Concluding search results...')
         
         pp=internal_pp+'\n'+external_pp
+        if perplexity_pp:
+            pp+='\n'+perplexity_pp
         if raw:
             raw_ret={
                 'external_rets':external_results,
                 'internal_rets':internal_results,
+                'perplexity_rets':perplexity_results,
             }
             return pp,raw_ret
         else:
@@ -195,7 +235,7 @@ class SuperScholarSearcher:
         s2_results=self.safe_search(self.search_s2,query,self.result_limits['s2'])
         arxiv_results=self.safe_search(self.search_arxiv,query,self.result_limits['arxiv'])
         pwc_results=self.safe_search(self.search_pwc,query,self.result_limits['pwc'])
-
+        
         aggregated_results=s2_results
         for r in arxiv_results+pwc_results:
             if not self.exist_in_set(r,aggregated_results):
@@ -420,6 +460,52 @@ class SuperScholarSearcher:
             papers.append(paper)
         return papers
 
+
+    ##### Perplexity.ai Web Search
+
+    def search_perplexity(self,query,detail, size='large', max_tokens=2000): # perplexity search
+        self.stream.write(f'*Searching web with Perplexity...*')
+        url = "https://api.perplexity.ai/chat/completions"
+
+        payload = {
+            "model": f"llama-3.1-sonar-{size}-128k-online",
+            "messages": [
+                {
+                    "role": "system",
+                    "content": PERPLEXITY_SYSTEM
+                },
+                {
+                    "role": "user",
+                    "content": PERPLEXITY_PROMPT.format(query=query, detail=detail)
+                }
+            ],
+            "max_tokens": max_tokens,
+            "temperature": 0.2,
+            "top_p": 0.9,
+            "return_citations": True,
+            "search_domain_filter": ["perplexity.ai"],
+            "return_images": False,
+            "return_related_questions": False,
+            "search_recency_filter": "month",
+            "top_k": 0,
+            "stream": False,
+            "presence_penalty": 0,
+            "frequency_penalty": 1
+        }
+
+        headers = {
+            "Authorization": f"Bearer {os.environ['PERPLEXITY_API_KEY']}",
+            "Content-Type": "application/json"
+        }
+
+        response = requests.request("POST", url, json=payload, headers=headers)
+        RET = response.json()
+        if 'error' in RET:
+            self.stream.write(f'Error searching web with Perplexity: {RET["error"]}')
+            return None, None
+        else:
+            ret = RET['choices'][0]['message']['content']
+            return RET,f'\n---\n## Web search results\n\n {ret}'
 
     #### Internal Sources
 

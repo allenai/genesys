@@ -38,6 +38,7 @@ try: # a stupid patch for windows
     os.environ['UNSTRUCTURED_API_ID']=UNSTRUCTURED_API_ID
     os.environ['PINECONE_API_KEY']=PINECONE_API_KEY
     os.environ['COHERE_API_KEY']=COHERE_API_KEY
+    os.environ['PERPLEXITY_API_KEY']=PERPLEXITY_API_KEY
     os.environ['DATA_DIR']=DATA_DIR
     os.environ['CKPT_DIR']=CKPT_DIR
     os.environ['HF_DATASETS_TRUST_REMOTE_CODE']='1'    
@@ -934,7 +935,7 @@ class EvolutionSystem(exec_utils.System):
             self.verify()
 
     # TODO: the interface should be updated when selector agent is ready, and design cfg is ready
-    def design(self,n_sources=None,design_cfg={},user_input='',design_id=None,mode=DesignModes.MUTATION,resume=True): # select then sample, TODO: n_sources and design_cfg should be configed
+    def design(self,n_sources=None,design_cfg={},search_cfg={},user_input='',design_id=None,mode=DesignModes.MUTATION,resume=True): # select then sample, TODO: n_sources and design_cfg should be configed
         # user_input and design_cfg maybe changed by the user, so we need to pass them in
         unfinished_designs = self.ptree.get_unfinished_designs()
         self.stream.write(f"Found {len(unfinished_designs)} unfinished designs, allow resume: {resume}")
@@ -948,18 +949,18 @@ class EvolutionSystem(exec_utils.System):
         if design_id is None:
             if len(unfinished_designs)==0 or not resume:
                 instruct,seed,refs=self.select(n_sources,mode=mode) # use the seed_ids to record the phylogenetic tree
-                self.sample(instruct,seed,refs,mode=mode,user_input=user_input,design_cfg=design_cfg)
+                self.sample(instruct,seed,refs,mode=mode,user_input=user_input,design_cfg=design_cfg,search_cfg=search_cfg)
             else:
                 design_id = random.choice(unfinished_designs)
                 mode=DesignModes(self.ptree.session_get(design_id,'mode'))
                 self.stream.write(f"Restoring a session {design_id}, mode: {mode}.")
-                self.sample(design_id=design_id,user_input=user_input,design_cfg=design_cfg,mode=mode) # should not change the design_cfg
+                self.sample(design_id=design_id,user_input=user_input,design_cfg=design_cfg,mode=mode,search_cfg=search_cfg) # should not change the design_cfg
         else:
             mode=DesignModes(self.ptree.session_get(design_id,'mode'))
             self.stream.write(f"Design id provided, will restore session {design_id}, mode: {mode}")
-            self.sample(design_id=design_id,user_input=user_input,design_cfg=design_cfg,mode=mode)
+            self.sample(design_id=design_id,user_input=user_input,design_cfg=design_cfg,mode=mode,search_cfg=search_cfg)
 
-    def sample(self,instruct=None,seed:List[NodeObject]=None,refs:List[NodeObject]=None,design_id=None,mode=DesignModes.MUTATION,user_input='',design_cfg={}):
+    def sample(self,instruct=None,seed:List[NodeObject]=None,refs:List[NodeObject]=None,design_id=None,mode=DesignModes.MUTATION,user_input='',design_cfg={},search_cfg={}):
         """ 
         Sample a design at a given scale and verify it 
         
@@ -979,6 +980,7 @@ class EvolutionSystem(exec_utils.System):
             design_id=design_id,
             stream=self.stream,
             design_cfg=design_cfg,
+            search_cfg=search_cfg,
             mode=mode
         )
 

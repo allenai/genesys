@@ -245,31 +245,30 @@ class GAUTree:
             self.root = node
         self.units[name] = node
 
-    def rename_unit(self, oldname, newname): # also need to rename the references in the code, seems hard, so we do not do it for now
-        raise NotImplementedError("Not implemented yet")
-        assert oldname in self.units, f"Unit {oldname} is not in the tree"
-        assert newname not in self.units, f"Unit {newname} is already in the tree"
+    def replace_unit(self, old: str, new: str): # also need to rename the references in the code, seems hard, so we do not do it for now
+        assert new in self.units, f"You must have new unit added to the tree already"
+        self.del_unit(old)
+
+        # rename the root 
+        if self.root.spec.unitname == old:
+            self.root.spec.unitname = new
+
+        # rename the declares
+        if old in self.declares:
+            if new not in self.declares:
+                self.declares[new] = copy.deepcopy(self.declares[old])
+            del self.declares[old]
+
         # rename children
         for unit in self.units.values():
-            if oldname in unit.children:
-                unit.children[unit.children.index(oldname)] = newname
-        # rename the root if necessary
-        if self.root.spec.unitname == oldname:
-            self.root.spec.unitname = newname
-        # rename the declares
-        if oldname in self.declares:
-            self.declares[newname] = self.declares[oldname]
-            del self.declares[oldname]
-        # rename the proposal_traces
-        for i,trace in enumerate(self.proposal_traces):
-            if trace==oldname:
-                self.proposal_traces[i] = newname
-        # rename the units
-        for unit in self.units.values():
-            if unit.spec.unitname == oldname:
-                unit.spec.unitname = newname
-        # # rename the dict
-        # self.dict.rename(oldname, newname)
+            if old in unit.children: # both new and old names are class names
+                unit.children[unit.children.index(old)] = new
+                unit.code=unit.code.replace(f'{old}(',f'{new}(') 
+                unit.code=unit.code.replace(f'{old},',f'{new},') # both new and old names are instance names
+
+        # May also neeed to update the traces
+        # update the dict should be handled separately, should simply add a new entry for back compatibility, should be handled already
+
 
     def get_children(self,name):
         assert name in self.units, f"Unit {name} is not in the tree"

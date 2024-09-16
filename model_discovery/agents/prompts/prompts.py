@@ -287,8 +287,8 @@ Each LM block is decomposed into smaller components known as **Generalized Autor
 ```
 
 A GAU has the following structure:
-- **Input**: A sequence of embeddings \(X\) and intermediate variables \(Z\).
-- **Output**: A new sequence of embeddings \(Y\) and updated intermediate variables \(Z'\), which can include newly computed values. 
+- **Input**: A sequence of embeddings X and intermediate variables Z.
+- **Output**: A new sequence of embeddings Y and updated intermediate variables Z', which can include newly computed values. 
 
 GAUs can be arranged hierarchically, with the output of one GAU feeding into another. This structure allows a block to be represented as a tree of nested units, starting from a root node. You will focus on designing or modifying one GAU at a time.
 
@@ -1581,9 +1581,9 @@ GUM_DESIGNER_SYSTEM_prompt_part4 = """
      ```
 
 4. **Embedding & Block Location**: - `embed_dim` specifies the input dimension.
-   - `block_loc` is a tuple \((block\_idx, n\_block)\) that locates the GAU
+   - `block_loc` is a tuple (block_idx, n_block) that locates the GAU
    within
-     the network where block\_idx starts from 0, allowing you to implement
+     the network where block_idx starts from 0, allowing you to implement
      block-specific behaviors (e.g., varying architectures or operations between
      blocks, initializing intermediate variables acrossing blocks in the first
      block).
@@ -1826,9 +1826,9 @@ GUM_DESIGNER_SYSTEM_O1_prompt_part4 = """
      ```
 
 4. **Embedding & Block Location**: - `embed_dim` specifies the input dimension.
-   - `block_loc` is a tuple \((block\_idx, n\_block)\) that locates the GAU
+   - `block_loc` is a tuple (block_idx, n_block) that locates the GAU
    within
-     the network where block\_idx starts from 0, allowing you to implement
+     the network where block_idx starts from 0, allowing you to implement
      block-specific behaviors (e.g., varying architectures or operations between
      blocks, initializing intermediate variables acrossing blocks in the first
      block).

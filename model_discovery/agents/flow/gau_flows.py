@@ -669,7 +669,7 @@ class GUFlowMutation(FlowCreator):
         return format_checks,format_errors,format_warnings,fetal_errors,unit_name, reformatted_code, docstring, new_args, gau_tests, children_decl
                         
 
-    def _implement_proposal_recursive(self,main_tid,proposal=None):
+    def _implement_proposal_recursive(self,main_tid,proposal):
         '''
         1. Implement the selected unit first
         2. Implement any unimplemented newly declared units
@@ -905,12 +905,17 @@ class GUFlowMutation(FlowCreator):
                         format_warnings=[]
                         format_errors=[]
                         reformatted_code=''
+                        parents={}
                         for idx,implementation in enumerate(implementations):
                             format_checks,format_errors,format_warnings,fetal_errors, unit_name, _reformatted_code, _docstring,_new_args,_gau_tests,_children=self.check_code_format(implementation)
+                            if not _docstring:
+                                continue
                             docstrings[unit_name]=_docstring
                             new_args[unit_name]=_new_args
                             gau_tests[unit_name]=_gau_tests
                             children[unit_name]=_children
+                            for c in _children:
+                                parents[c.unitname]=unit_name
                             reformatted_codes[unit_name]=_reformatted_code
                             fetal_errors.extend([f'{unit_name}: {e}' for e in fetal_errors])
                             format_warnings.extend([f'{unit_name}: {e}' for e in format_warnings])
@@ -928,22 +933,36 @@ class GUFlowMutation(FlowCreator):
                                     f'\n\n{reformatted_code}\n\n'
                                 )
                             )
-                            for unit_name,docstring in docstrings.items():
-                                if unit_name not in self.tree.units and unit_name in self.tree.declares:
-                                    declaration=self.tree.declares[unit_name]
-                                    _spec = P.UnitSpec(
-                                        unitname=unit_name,
-                                        document=docstring,
-                                        inputs=declaration.inputs,
-                                        outputs=declaration.outputs
-                                    )           
-                                    self.tree.add_unit(
-                                        _spec,reformatted_codes[unit_name],new_args[unit_name],None,None,None,list(children[unit_name].keys()),gau_tests[unit_name],None,requirements=declaration.requirements
-                                    )   
-                                else:
-                                    fetal_errors.append(f'Unit {unit_name} has not been declared.')
-                        if selection not in format_checks:
-                            fetal_errors.append(f'Implementation of selected unit {selection} not found.')
+                        root_name=[]
+                        for unit_name,docstring in docstrings.items():
+                            if unit_name not in parents:
+                                root_name.append(unit_name)
+                            if unit_name not in self.tree.units and unit_name in self.tree.declares:
+                                declaration=self.tree.declares[unit_name]
+                                _spec = P.UnitSpec(
+                                    unitname=unit_name,
+                                    document=docstring,
+                                    inputs=declaration.inputs,
+                                    outputs=declaration.outputs
+                                )           
+                                self.tree.add_unit( # all new units are added 
+                                    _spec,reformatted_codes[unit_name],new_args[unit_name],None,None,None,list(children[unit_name].keys()),gau_tests[unit_name],None,requirements=declaration.requirements
+                                )   
+                            else:
+                                fetal_errors.append(f'Unit {unit_name} has not been declared.')
+                        if len(docstrings)==0:
+                            fetal_errors.append(f'There is no valid GAU implementation found.')
+                        else:
+                            if len(root_name)==0:
+                                fetal_errors.append(f'There is no root unit found, please check if there is any cycle in the dependency graph of units.')
+                            elif len(root_name)>1:
+                                fetal_errors.append(f'There are multiple root units found: {", ".join(root_name)}, please check if there is any cycle in the dependency graph of units.')
+                            else:
+                                unit_name=root_name[0]
+                                reformatted_code=f'### {unit_name} Reformatted Code\n```python\n{reformatted_code}\n```\n\n'
+                                # replace selection with unit_name
+                                self.tree.replace_unit(selection,unit_name)
+                                LOG.append(f'Replace unit {selection} with {unit_name}')
                     else:   
                         format_checks,format_errors,format_warnings,fetal_errors, unit_name, reformatted_code, _, _, _, _=self.check_code_format(implementation,selection,spec,analysis)
                         unit_name=selection
@@ -1048,9 +1067,9 @@ class GUFlowMutation(FlowCreator):
                         self.stream.write(suggestions)
                         self.print_raw_output(out,'IMPLEMENTATION_OBSERVER')
 
-                        self.tree.units[selection].rating=rating
-                        self.tree.units[selection].review=review
-                        self.tree.units[selection].suggestions=suggestions
+                        self.tree.units[unit_name].rating=rating
+                        self.tree.units[unit_name].review=review
+                        self.tree.units[unit_name].suggestions=suggestions
                 else:
                     review=None
                     rating=None
@@ -1062,7 +1081,7 @@ class GUFlowMutation(FlowCreator):
                 else:
                     review_pass=True
                 design = {
-                    'unit': self.tree.units[selection].json(),
+                    'unit': self.tree.units[unit_name].json(),
                     'gab_code':gabcode_reformat,
                     'format_checks':format_checks,
                     'func_checks':func_checks,
@@ -1101,7 +1120,7 @@ class GUFlowMutation(FlowCreator):
                             )
                 else:
                     succeed=True
-                    self.tree.units[selection].design_traces=traces
+                    self.tree.units[unit_name].design_traces=traces
                     # removed=self.tree.clear_disconnected() # there might be some disconnected units, leave it for now
                     # PROTECTED_UNITS=list(set(PROTECTED_UNITS)-set(removed))
                     self.stream.write(f'#### Implementation passed, starting the next unit')
@@ -1118,7 +1137,7 @@ class GUFlowMutation(FlowCreator):
                 }
                 RETS['ROUNDS'].append(RET)
                 self.failed_rounds+=1
-                LOG.append(f'Round {round} finished. Failed to implement unit {selection}.')
+                LOG.append(f'Round {round} finished. Failed to implement unit {unit_name} of selection {selection}.')
             else:
                 RET={
                     'round':round,
@@ -1127,7 +1146,7 @@ class GUFlowMutation(FlowCreator):
                     'unit_design_traces':traces,
                 }
                 RETS['ROUNDS'].append(RET)
-                LOG.append(f'Round {round} finished. Successfully implemented unit {selection}.')
+                LOG.append(f'Round {round} finished. Successfully implemented unit {unit_name} of selection {selection}.')
                 if NEW_DECLARED:
                     LOG.append(f'Newly declared units in Round {round}: {NEW_DECLARED}.')
                 

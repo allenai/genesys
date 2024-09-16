@@ -20,32 +20,37 @@ def search(evosys,project_dir):
     st.title("Paper Search Engine")
 
     with st.expander("Search Configurations",expanded=True):
-        cfg={}
-        cfg['result_limits']={}
+        search_cfg={}
+        search_cfg['result_limits']={}
+        search_cfg['perplexity_settings']={}
 
         cols=st.columns(4)
         with cols[0]:
-            cfg['result_limits']['lib']=st.number_input("Library: Primary Search Result Limit",value=5,min_value=0,step=1)
+            search_cfg['result_limits']['lib']=st.number_input("Library: Primary Search Result Limit",value=5,min_value=0,step=1)
         with cols[1]:
-            cfg['result_limits']['lib2']=st.number_input("Library: Secondary Search Result Limit",value=0,min_value=0,step=1,disabled=True)
+            search_cfg['result_limits']['lib2']=st.number_input("Library: Secondary Search Result Limit",value=0,min_value=0,step=1,disabled=True)
         with cols[2]:
-            cfg['result_limits']['libp']=st.number_input("Library: Plus Search Result Limit",value=0,min_value=0,step=1,disabled=True)
+            search_cfg['result_limits']['libp']=st.number_input("Library: Plus Search Result Limit",value=0,min_value=0,step=1,disabled=True)
         with cols[3]:
-            cfg['rerank_ratio']=st.slider("Rerank Scale Ratio (0 means no rerank)",min_value=0.0,max_value=1.0,value=0.2,step=0.01)
+            search_cfg['rerank_ratio']=st.slider("Rerank Scale Ratio (0 means no rerank)",min_value=0.0,max_value=1.0,value=0.2,step=0.01)
 
-        cols=st.columns([2,2,2,1])
+        cols=st.columns([2,2,2,2,2,1])
         with cols[0]:
-            cfg['result_limits']['s2']=st.number_input("S2 Search Result Limit",value=5,min_value=0,step=1)
+            search_cfg['result_limits']['s2']=st.number_input("S2 Search Result Limit",value=5,min_value=0,step=1)
         with cols[1]:
-            cfg['result_limits']['arxiv']=st.number_input("Arxiv Search Result Limit",value=3,min_value=0,step=1)
+            search_cfg['result_limits']['arxiv']=st.number_input("Arxiv Search Result Limit",value=3,min_value=0,step=1)
         with cols[2]:
-            cfg['result_limits']['pwc']=st.number_input("Papers With Code Search Result Limit",value=3,min_value=0,step=1)
+            search_cfg['result_limits']['pwc']=st.number_input("Papers With Code Search Result Limit",value=3,min_value=0,step=1)
         with cols[3]:
+            search_cfg['perplexity_settings']['model_size']=st.selectbox("Perplexity Model Size",options=['none','small','large','huge'],index=2)
+        with cols[4]:
+            search_cfg['perplexity_settings']['max_tokens']=st.number_input("Perplexity Max Tokens",value=2000,min_value=500,step=100,disabled=search_cfg['perplexity_settings']['model_size']=='none')
+        with cols[5]:
             st.write("")
             st.write("")
-            prompting=st.checkbox("Prompting Mode",value=False)
+            prompting=st.checkbox("Prompting",value=False)
 
-    sss=SuperScholarSearcher(evosys.ptree,stream=st,cfg=cfg)
+    sss=SuperScholarSearcher(evosys.ptree,stream=st,cfg=search_cfg)
 
     
     details=st.text_area("Search Content with Detailed Query (for vector store search)",placeholder='I want to ask about ...',height=100)

@@ -152,15 +152,18 @@ def design(evosys,project_dir):
         col1,col2=st.columns([3,2])
         termination={}
         threshold={}
+        max_attempts = {}
         with col1:
-            st.markdown("##### Configure termination conditions (0 means no limit)")
-            cols=st.columns(3)
+            st.markdown("##### Configure termination conditions and budgets")
+            cols=st.columns(4)
             with cols[0]:
-                termination['max_failed_rounds'] = st.number_input(label="Max failed rounds",min_value=1,value=3)
+                termination['max_failed_rounds'] = st.number_input(label="Max failed rounds (0 is no limit)",min_value=1,value=3)
             with cols[1]:
-                termination['max_total_budget'] = st.number_input(label="Max total budget",min_value=0,value=0)
+                termination['max_total_budget'] = st.number_input(label="Max total budget (0 is no limit)",min_value=0,value=0)
             with cols[2]:
-                termination['max_debug_budget'] = st.number_input(label="Max debug budget",min_value=0,value=2)
+                termination['max_debug_budget'] = st.number_input(label="Max debug budget (0 is no limit)",min_value=0,value=3)
+            with cols[3]:
+                max_attempts['max_search_rounds'] = st.number_input(label="Max search rounds",min_value=0,value=3)
         with col2:
             st.markdown("##### Configure the threshold for rating the design")
             cols=st.columns(2)
@@ -172,8 +175,7 @@ def design(evosys,project_dir):
         design_cfg['threshold'] = threshold 
 
 
-        col1,col2=st.columns([3,5])
-        max_attempts = {}
+        col1,col2=st.columns([4,5])
         with col1:
             st.markdown("##### Configure max number of attempts")
             cols=st.columns(3)
@@ -182,7 +184,7 @@ def design(evosys,project_dir):
             with cols[1]:
                 max_attempts['implementation_debug'] = st.number_input(label="Max debug attempts",min_value=3,value=7)
             with cols[2]:
-                max_attempts['post_refinement'] = st.number_input(label="Max post refinements",min_value=0,value=3)
+                max_attempts['post_refinement'] = st.number_input(label="Num of post refinements",min_value=0,value=3)
         with col2:
             st.markdown("##### Configure experiment settings")
             cols=st.columns([2,2,3])
@@ -206,7 +208,33 @@ def design(evosys,project_dir):
         design_cfg['max_attempts'] = max_attempts
 
 
+    with st.expander("Search Configurations",expanded=False):
+        search_cfg={}
+        search_cfg['result_limits']={}
+        search_cfg['perplexity_settings']={}
 
+        cols=st.columns(4)
+        with cols[0]:
+            search_cfg['result_limits']['lib']=st.number_input("Library: Primary Search Result Limit",value=5,min_value=0,step=1)
+        with cols[1]:
+            search_cfg['result_limits']['lib2']=st.number_input("Library: Secondary Search Result Limit",value=0,min_value=0,step=1,disabled=True)
+        with cols[2]:
+            search_cfg['result_limits']['libp']=st.number_input("Library: Plus Search Result Limit",value=0,min_value=0,step=1,disabled=True)
+        with cols[3]:
+            search_cfg['rerank_ratio']=st.slider("Rerank Scale Ratio (0 means no rerank)",min_value=0.0,max_value=1.0,value=0.2,step=0.01)
+
+        cols=st.columns([2,2,2,2,2])
+        with cols[0]:
+            search_cfg['result_limits']['s2']=st.number_input("S2 Search Result Limit",value=5,min_value=0,step=1)
+        with cols[1]:
+            search_cfg['result_limits']['arxiv']=st.number_input("Arxiv Search Result Limit",value=3,min_value=0,step=1)
+        with cols[2]:
+            search_cfg['result_limits']['pwc']=st.number_input("Papers With Code Search Result Limit",value=3,min_value=0,step=1)
+        with cols[3]:
+            search_cfg['perplexity_settings']['model_size']=st.selectbox("Perplexity Model Size",options=['none','small','large','huge'],index=2)
+        with cols[4]:
+            search_cfg['perplexity_settings']['max_tokens']=st.number_input("Perplexity Max Tokens",value=2000,min_value=500,step=100,disabled=search_cfg['perplexity_settings']['model_size']=='none')
+       
 
     #### Run design
 
@@ -244,7 +272,7 @@ def design(evosys,project_dir):
             with st.spinner(text=spinner_text):
                 _mode = DesignModes(mode)
                 design_id=None
-                evosys.design(n_sources,design_cfg,user_input=user_input,mode=_mode,design_id=design_id,resume=resume)
+                evosys.design(n_sources,design_cfg,search_cfg,user_input=user_input,mode=_mode,design_id=design_id,resume=resume)
     
     elif selected_design:
         with st.empty():
