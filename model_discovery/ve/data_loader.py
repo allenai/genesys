@@ -79,7 +79,7 @@ def combine_datasets(dataset_dicts, weights:dict=None): # weights e.g. {'train':
     
     return DatasetDict(combined_dict)
 
-def pretokenize_dataset(dataset_name):
+def pretokenize_dataset(dataset_name,tokenize_func=tokenize):
     def decorator(dataload_func):
         @ft.wraps(dataload_func)
         def wrapper(tokenizer_name=None, context_length=None, *args, **kwargs):
@@ -100,7 +100,7 @@ def pretokenize_dataset(dataset_name):
                 ds = dataload_func(tokenizer_name=tokenizer_name, context_length=context_length, *args, **kwargs)
                 # ds = ds.shuffle() # no need to shuffle now, hf trainer will shuffle it every epoch, https://discuss.huggingface.co/t/how-to-ensure-the-dataset-is-shuffled-for-each-epoch-using-trainer-and-datasets/4212/7
                 tokenized_datasets = ds.map(
-                    lambda x: tokenize(x, tokenizer=tokenizer, context_length=context_length),
+                    lambda x: tokenize_func(x, tokenizer=tokenizer, context_length=context_length),
                     batched=True, remove_columns=ds["train"].column_names, num_proc=DEFAULT_NUM_PROC_TOKENIZE, batch_size=1000,
                 )
                 tokenized_datasets.save_to_disk(tokenized_dir)
@@ -142,8 +142,8 @@ def download_contents_py(blob_id):
         content = fin.read().decode("utf-8", errors="ignore")
     return {"text": content}
 
-@pretokenize_dataset('python-edu-12.5')
-def load_python_edu_12_5(tokenizer_name, context_length):
+@pretokenize_dataset('python-edu')
+def load_python_edu(tokenizer_name, context_length):
     ds = load_dataset("chengjunyan1/smollm-12.5-corpus", "python-edu", num_proc=DEFAULT_NUM_PROC_LOAD)
     ds_train = ds['train'].map(download_contents_py, input_columns="blob_id", num_proc=DEFAULT_NUM_PROC_LOAD)
     ds_test = ds['test'].map(download_contents_py, input_columns="blob_id", num_proc=DEFAULT_NUM_PROC_LOAD)
@@ -151,21 +151,71 @@ def load_python_edu_12_5(tokenizer_name, context_length):
     ds = DatasetDict({'train':ds_train, 'test':ds_test, 'eval':ds_eval})
     return ds
 
-@pretokenize_dataset('fineweb-edu-dedup-12.5')
-def load_fine_web_dedup_12_5(tokenizer_name, context_length):
+@pretokenize_dataset('fineweb-edu-dedup')
+def load_fine_web_dedup(tokenizer_name, context_length):
     return load_dataset("chengjunyan1/smollm-12.5-corpus","fineweb-edu-dedup", num_proc=DEFAULT_NUM_PROC_LOAD)
 
-@pretokenize_dataset('cosmopedia-v2-12.5')
-def load_cosmopedia_v2_12_5(tokenizer_name, context_length):
+
+def tokenize_cosmopedia(
+        element,
+        tokenizer: transformers.PreTrainedTokenizer,
+        context_length: int
+    ) -> dict:
+    """Tokenizers input and returns their input_ids 
+
+    """
+    text = f"Audience: {element['audience']}\n\nPrompt: {element['prompt']}\n\nResponse: {element['text']}"
+    outputs = tokenizer(
+        text,  # need to change accordingly
+        padding='max_length',  # Pad all sequences to max_length
+        truncation=True,
+        max_length=context_length,
+        return_overflowing_tokens=False,  # Do not return overflowing tokens
+        return_length=True,
+    )
+    return {"input_ids": outputs["input_ids"]}
+
+@pretokenize_dataset('cosmopedia-v2',tokenize_func=tokenize_cosmopedia)
+def load_cosmopedia_v2(tokenizer_name, context_length):
     return load_dataset("chengjunyan1/smollm-12.5-corpus","cosmopedia-v2", num_proc=DEFAULT_NUM_PROC_LOAD)
+
+@pretokenize_dataset('open-web-math')
+def load_open_web_math(tokenizer_name, context_length):
+    return load_dataset("chengjunyan1/smollm-12.5-corpus","open-web-math", num_proc=DEFAULT_NUM_PROC_LOAD)
+
+
+def tokenize_deepmind_math(
+        element,
+        tokenizer: transformers.PreTrainedTokenizer,
+        context_length: int
+    ) -> dict:
+    """Tokenizers input and returns their input_ids 
+
+    """
+    text = f"Question: {element['question']}\n\nAnswer: {element['answer']}"
+    outputs = tokenizer(
+        text,  # need to change accordingly
+        padding='max_length',  # Pad all sequences to max_length
+        truncation=True,
+        max_length=context_length,
+        return_overflowing_tokens=False,  # Do not return overflowing tokens
+        return_length=True,
+    )
+    return {"input_ids": outputs["input_ids"]}
+
+@pretokenize_dataset('deepmind-math',tokenize_func=tokenize_deepmind_math)
+def load_deepmind_math(tokenizer_name, context_length):
+    return load_dataset("chengjunyan1/smollm-12.5-corpus","deepmind-math", num_proc=DEFAULT_NUM_PROC_LOAD)
 
 loaders={
     'babylm'      :load_babylm,
     'tinystories' :load_tinystories,
     'wikitext2'  :load_wikitext2,
-    'python-edu-12.5':load_python_edu_12_5,
-    'fineweb-edu-dedup-12.5':load_fine_web_dedup_12_5,
-    'cosmopedia-v2-12.5':load_cosmopedia_v2_12_5
+    'python-edu':load_python_edu,
+    'fineweb-edu-dedup':load_fine_web_dedup,
+    'cosmopedia-v2':load_cosmopedia_v2,
+    'open-web-math':load_open_web_math,
+    'deepmind-math':load_deepmind_math
 }
 
 def load_datasets(cfg: GAMConfig): # weights e.g. {'train':[1.5,1.0]} for two datasets
