@@ -15,7 +15,7 @@ class GAMConfig(PretrainedConfig):
     batch_tokens: int 
     learning_rate: float
     context_length: int = DEFAULT_CONTEXT_LENGTH
-    training_data: List[str] = field(default_factory=lambda: SMOLLM_10_CORPUS)
+    training_data: List[str] = field(default_factory=lambda: SMOLLM_125_CORPUS)
     eval_tasks: List[str] = field(default_factory=lambda: [
         *DEFAULT_TASK_LIST1,
     ])
