@@ -1,5 +1,8 @@
 import os
 import transformers
+import logging
+
+logging.basicConfig(level=logging.ERROR)
 
 from huggingface_hub import login
 from transformers import AutoTokenizer
@@ -101,7 +104,8 @@ def pretokenize_dataset(dataset_name,tokenize_func=tokenize):
                 # ds = ds.shuffle() # no need to shuffle now, hf trainer will shuffle it every epoch, https://discuss.huggingface.co/t/how-to-ensure-the-dataset-is-shuffled-for-each-epoch-using-trainer-and-datasets/4212/7
                 tokenized_datasets = ds.map(
                     lambda x: tokenize_func(x, tokenizer=tokenizer, context_length=context_length),
-                    batched=True, remove_columns=ds["train"].column_names, num_proc=DEFAULT_NUM_PROC_TOKENIZE, batch_size=1000,
+                    batched=True, remove_columns=ds["train"].column_names, num_proc=DEFAULT_NUM_PROC_TOKENIZE, 
+                    batch_size=1000,
                 )
                 tokenized_datasets.save_to_disk(tokenized_dir)
                 print(f"Saved tokenized dataset {dataset_name} to {tokenized_dir}")
@@ -142,13 +146,13 @@ def download_contents_py(blob_id):
         content = fin.read().decode("utf-8", errors="ignore")
     return {"text": content}
 
-@pretokenize_dataset('python-edu')
-def load_python_edu(tokenizer_name, context_length):
+@pretokenize_dataset('python-edu') # directly load from huggingface, pre downloaded texts, may need to remove later
+def load_python_edu(tokenizer_name, context_length): 
     ds = load_dataset("chengjunyan1/smollm-12.5-corpus", "python-edu", num_proc=DEFAULT_NUM_PROC_LOAD)
-    ds_train = ds['train'].map(download_contents_py, input_columns="blob_id", num_proc=DEFAULT_NUM_PROC_LOAD)
-    ds_test = ds['test'].map(download_contents_py, input_columns="blob_id", num_proc=DEFAULT_NUM_PROC_LOAD)
-    ds_eval = ds['eval'].map(download_contents_py, input_columns="blob_id", num_proc=DEFAULT_NUM_PROC_LOAD)
-    ds = DatasetDict({'train':ds_train, 'test':ds_test, 'eval':ds_eval})
+    # ds_train = ds['train'].map(download_contents_py, input_columns="blob_id", num_proc=DEFAULT_NUM_PROC_LOAD)
+    # ds_test = ds['test'].map(download_contents_py, input_columns="blob_id", num_proc=DEFAULT_NUM_PROC_LOAD)
+    # ds_eval = ds['eval'].map(download_contents_py, input_columns="blob_id", num_proc=DEFAULT_NUM_PROC_LOAD)
+    # ds = DatasetDict({'train':ds_train, 'test':ds_test, 'eval':ds_eval})
     return ds
 
 @pretokenize_dataset('fineweb-edu-dedup')
@@ -174,6 +178,7 @@ def tokenize_cosmopedia(
         return_length=True,
     )
     return {"input_ids": outputs["input_ids"]}
+
 
 @pretokenize_dataset('cosmopedia-v2',tokenize_func=tokenize_cosmopedia)
 def load_cosmopedia_v2(tokenizer_name, context_length):

@@ -70,11 +70,14 @@ def run(scale,model_name,args,training_token_multiplier=20,path=None): # do a si
     args.scale=scale
     args.ckpt_dir=ckpt_dir
     args.data_dir=os.environ.get("DATA_DIR")
-    args.resume=True
+    args.resume=False
     args.training_token_multiplier=training_token_multiplier
     args.logging_steps=10
     args.port="25869"
     args.tune_lr_in_auto_bs=False
+
+    # args.n_gpus = 1 # use it for the first time setup and data loading
+
     reportdir=f"{ckpt_dir}/{args.evoname}/ve/{args.design_id}/report.json"
     if not os.path.exists(reportdir):
         ve_main(args)

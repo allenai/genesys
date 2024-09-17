@@ -25,16 +25,16 @@ from .utils.modules import GatedMLP, MLP
 
 from model_discovery.model.block_registry import BlockRegister
 
-try: 
-    from model_discovery.model.ops.triton.layer_norm import (
-        RMSNorm,
-        layer_norm_fn,
-        rms_norm_fn
-    )
-except:
-    RMSNorm       = None
-    layer_norm_fn = None
-    rms_norm_fn   = None 
+# try: 
+#     from model_discovery.model.ops.triton.layer_norm import (
+#         RMSNorm,
+#         layer_norm_fn,
+#         rms_norm_fn
+#     )
+# except:
+RMSNorm       = None
+layer_norm_fn = None
+rms_norm_fn   = None 
 
 from model_discovery import utils as U
 

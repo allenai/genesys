@@ -515,6 +515,7 @@ class ModisTrainer(Trainer):
                 print(f"Auto-set batch size to {self._train_batch_size}, max_steps to {args_max_steps}, learning rate to {self.args.learning_rate}")
             else:
                 self.args.gradient_accumulation_steps *= self.args.per_device_train_batch_size // self._train_batch_size
+                self.args.gradient_accumulation_steps = max(self.args.gradient_accumulation_steps,1)
                 args.gradient_accumulation_steps = self.args.gradient_accumulation_steps
                 print(f"Auto-set batch size to {self._train_batch_size}, max_steps to {args_max_steps}, accumulation steps to {self.args.gradient_accumulation_steps}")
         logger.debug(f"Currently training with a batch size of: {self._train_batch_size}")

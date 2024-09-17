@@ -206,7 +206,7 @@ def run_train(args,gab,gab_config) -> None:
         trainer = ModisTrainer(
             model=model,
             train_dataset=tokenized_datasets["train"],
-            eval_dataset=tokenized_datasets["valid"], 
+            eval_dataset=tokenized_datasets["eval"], 
             tokenizer=tokenizer,
             args=training_args,
             data_collator=data_collator,
@@ -234,7 +234,7 @@ def run_train(args,gab,gab_config) -> None:
 def exec_train(args,training_args, trainer):
     global wandb_ids
     wandb_ids['pretrain']=wandb.run.id
-    U.save_json(wandb_ids,f"{training_args.output_dir}/wandb_ids.json")
+    # U.save_json(wandb_ids,f"{training_args.output_dir}/wandb_ids.json")
     
     # Automatically resume from the latest checkpoint if it exists
     if args.training_token_multiplier > 0:
