@@ -708,7 +708,7 @@ class GUFlowMutation(FlowCreator):
             context_implementation_observer=AgentContext()
 
             succeed=False
-            _,IMPLEMENTED,UNIMPLEMENTED=self.tree.view()
+            IMPLEMENTED,UNIMPLEMENTED=self.tree.check_implemented()
             # GAB_CODE=self.tree.compose()
             VIEW_DETAILED=self.tree.to_prompt(unit_code=True)
             UNIMPLEMENTED=list(set(UNIMPLEMENTED)-set(PROTECTED_UNITS)) # although its impossible to have unavailable units

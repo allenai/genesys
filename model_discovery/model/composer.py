@@ -337,6 +337,8 @@ class GAUTree:
         for unit_name in dict['units']:
             tree.units[unit_name] = GAUNode.from_dict(dict['units'][unit_name])
         tree.root = tree.units[dict['root']]
+        for unit_name in dict['declares']:
+            tree.declares[unit_name] = UnitDecl.model_validate_json(dict['declares'][unit_name])
         return tree
 
     @classmethod
@@ -445,6 +447,13 @@ class GAUTree:
                 pstr, unimplemented = self._view(child_unit, path, child_node, pstr, unimplemented)
         
         return pstr, unimplemented
+
+    def check_implemented(self):
+        all_children=self.descendants(self.root.spec.unitname)
+        all_children.add(self.root.spec.unitname)
+        implemented=set(self.units.keys())
+        unimplemented=all_children-implemented
+        return implemented,unimplemented
 
     def view(self, unit_code=True):
         """
