@@ -128,7 +128,7 @@ def design(evosys,project_dir):
                             index=len(options)-1
                     elif agent=='IMPLEMENTATION_CODER': # only coder supports o1 for now
                         options=AGENT_TYPES+['o1_preview','o1_mini']
-                        index=len(options)-1
+                        index=len(options)-2
                     agent_types[agent] = st.selectbox(label=agent_type_labels[agent],options=options,index=index,disabled=agent=='SEARCH_ASSISTANT')
             design_cfg['agent_types'] = agent_types
 
@@ -164,7 +164,7 @@ def design(evosys,project_dir):
             with cols[2]:
                 termination['max_debug_budget'] = st.number_input(label="Max debug budget (0 is no limit)",min_value=0,value=0)
             with cols[3]:
-                max_attempts['max_search_rounds'] = st.number_input(label="Max search rounds",min_value=0,value=3)
+                max_attempts['max_search_rounds'] = st.number_input(label="Max search rounds",min_value=0,value=4)
         with col2:
             st.markdown("##### Configure the threshold for rating the design")
             cols=st.columns(2)
@@ -234,7 +234,7 @@ def design(evosys,project_dir):
         with cols[3]:
             search_cfg['perplexity_settings']['model_size']=st.selectbox("Perplexity Model Size",options=['none','small','large','huge'],index=2)
         with cols[4]:
-            search_cfg['perplexity_settings']['max_tokens']=st.number_input("Perplexity Max Tokens",value=2000,min_value=500,step=100,disabled=search_cfg['perplexity_settings']['model_size']=='none')
+            search_cfg['perplexity_settings']['max_tokens']=st.number_input("Perplexity Max Tokens",value=4000,min_value=500,step=100,disabled=search_cfg['perplexity_settings']['model_size']=='none')
        
 
     #### Run design

@@ -120,6 +120,7 @@ class GUFlowMutation(FlowCreator):
     """
     The flow for designing a GAB Flow nested of GAB Units from scratch.
     the input query should be the seeds from the root tree for the design
+    Do not allow root for now
     """
     def __init__(self,system,status_handler,stream,design_id,design_cfg,user_input=''):
         self.costs={
@@ -317,7 +318,7 @@ class GUFlowMutation(FlowCreator):
         traces=[]
         context_design_proposer=AgentContext()
         context_proposal_reviewer=AgentContext()
-        SELECTIONS=list(self.seed_tree.units.keys())
+        SELECTIONS=list(set(self.seed_tree.units.keys())-{self.seed_tree.root.spec.unitname})
         for attempt in range(self.max_attemps['design_proposal']):
             DESIGN_PROPOSER_SYSTEM=P.GUM_DESIGN_PROPOSER_SYSTEM 
             if USE_ISEARCH:
@@ -362,6 +363,7 @@ class GUFlowMutation(FlowCreator):
                     self.stream.write(f'# Ready\n{ready}')
 
                 for i in range(self.max_attemps['max_search_rounds']):
+                    # TODO: perplexity context maintainance
                     with self.status_handler(f'Searching... round {i+1}...'):
                         search_ret=self.sss(keywords,detail,analysis=analysis)
                         search_stack.append({
@@ -602,14 +604,18 @@ class GUFlowMutation(FlowCreator):
         self.stream.write(f'Implementing {len(proposals)} proposals.')
         for proposal,acronym in zip(proposals,acronyms):
             self.stream.write(f'Implementing proposal: {proposal.modelname} with rating {proposal.rating} out of 5')
-            self.tree=copy.deepcopy(self.seed_tree)
-            self.tree.name=proposal.modelname
+            tree_ckpt=self.ptree.get_implementation_checkpoint(acronym)
+            if tree_ckpt is None:
+                self.tree=copy.deepcopy(self.seed_tree)
+                self.tree.name=proposal.modelname
+            else:
+                self.tree=copy.deepcopy(tree_ckpt)
             cost_raw=copy.deepcopy(self.costs)
-            RETS=self._implement_proposal_recursive(main_tid,proposal)
+            RETS=self._implement_proposal_recursive(main_tid,proposal,acronym)
             costs={k:v-cost_raw[k] for k,v in self.costs.items()}
             ROUNDS,SUCCEED=RETS['ROUNDS'],RETS['SUCCEED']
-            self.ptree.implement(acronym,self.tree,ROUNDS,SUCCEED,costs,self.design_cfg,self.user_input)
-
+            status='implemented' if SUCCEED else 'failed'
+            self.ptree.implement(acronym,self.tree,ROUNDS,status,costs,self.design_cfg,self.user_input)
         return query,state,{}
    
     def check_code_format(self,code,selection=None,spec=None,analysis=None):
@@ -676,7 +682,7 @@ class GUFlowMutation(FlowCreator):
         return format_checks,format_errors,format_warnings,fetal_errors,unit_name, reformatted_code, docstring, new_args, gau_tests, children_decl, NEW_DECLARED
                         
 
-    def _implement_proposal_recursive(self,main_tid,proposal):
+    def _implement_proposal_recursive(self,main_tid,proposal,acronym):
         '''
         1. Implement the selected unit first
         2. Implement any unimplemented newly declared units
@@ -685,6 +691,7 @@ class GUFlowMutation(FlowCreator):
 
         self.dialog=self.system.dialog
         OBSERVE_THRESHOLD=self.threshold['implementation_rating']
+        cost_raw=copy.deepcopy(self.costs)
 
         RETS={}
         RETS['ROUNDS']=[]
@@ -738,8 +745,9 @@ class GUFlowMutation(FlowCreator):
             
             if round>1: # if round > 1, let the agent choose the next unit to work on, TODO: maybe more background about previous rounds
                 with self.status_handler('Selecting the next unit to work on...'):
+                    SELECTIONS=set(IMPLEMENTED+UNIMPLEMENTED)-{self.tree.root.spec.unitname}
                     GUM_IMPLEMENTATION_UNIT_SELECTION=P.gen_GUM_IMPLEMENTATION_UNIT_SELECTION(
-                        IMPLEMENTED+UNIMPLEMENTED,post_refining=len(UNIMPLEMENTED)==0)
+                        SELECTIONS,post_refining=len(UNIMPLEMENTED)==0)
                     gu_implementation_unit_selection_prompt=GUM_IMPLEMENTATION_UNIT_SELECTION(
                         VIEW=VIEW_DETAILED,LOG='\n'.join(LOG),ROUND=round
                     )
@@ -973,7 +981,7 @@ class GUFlowMutation(FlowCreator):
                                 )
                         for unit_name,docstring in docstrings.items():
                             if unit_name not in self.tree.declares and unit_name not in self.tree.units: # if it is a new local root, then it is declared above, otherwise, it should be declared as a child
-                                errors.append(f'A new unit {unit_name} has not been declared. May cause errors when linking the units.')
+                                format_errors.append(f'A new unit {unit_name} has not been declared. May cause errors when linking the units.')
                                 declaration=UnitDecl(
                                     unitname=unit_name,
                                     requirements='',
@@ -1166,6 +1174,9 @@ class GUFlowMutation(FlowCreator):
                             )
                 else:
                     succeed=True
+                    costs={k:v-cost_raw[k] for k,v in self.costs.items()}
+                    self.ptree.implement(acronym,self.tree,RETS['ROUNDS'],'unfinished',costs,self.design_cfg,self.user_input)
+                    cost_raw=copy.deepcopy(self.costs)
                     # self.tree.units[unit_name].design_traces=traces
                     # removed=self.tree.clear_disconnected() # there might be some disconnected units, leave it for now
                     # PROTECTED_UNITS=list(set(PROTECTED_UNITS)-set(removed))

@@ -320,7 +320,7 @@ class Proposal:
 
 @dataclass
 class ImplementationAttempt:
-    succeed: bool
+    status: str
     rounds: int
     costs: Dict[str, float]
     tree: GAUTree
@@ -341,7 +341,7 @@ class ImplementationAttempt:
 
 @dataclass
 class Implementation:
-    succeed: bool
+    status: str # implemented, failed, or unfinished
     implementation: GAUTree
     history: List[ImplementationAttempt]
     # TODO:consider gaudict management
@@ -427,7 +427,7 @@ class DesignArtifact(NodeObject):
         raise NotImplementedError('to_prompt is not implemented yet for DesignArtifact, TODO')
 
     def is_implemented(self):
-        return self.implementation is not None and self.implementation.succeed
+        return self.implementation is not None and self.implementation.status=='implemented'
 
     def get_cost(self):
         costs=self.proposal.costs
@@ -532,7 +532,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         if node.type=='ReferenceCoreWithTree':
             tree=node.tree
             return tree
-        elif node.type=='DesignArtifact' and node.implementation and node.implementation.succeed:
+        elif node.type=='DesignArtifact' and node.implementation and node.implementation.status=='implemented':
             tree=node.implementation.tree
             return tree
         else:
@@ -570,12 +570,19 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
             sessdata=self.design_sessions[design_id]
             num_samples=sessdata['num_samples']
             passed,_ = self.session_proposals(design_id,passed_only=True)
-            implemented,_ = self.session_implementations(design_id,succeed_only=True)
+            implemented,_ = self.session_implementations(design_id,implemented_only=True)
             # print(f"Design {design_id} has {len(passed)}/{num_samples['proposal']} proposals and {len(implemented)}/{num_samples['implementation']} implementations.")
             if len(passed)<num_samples['proposal'] or \
                 len(implemented)<num_samples['implementation']:
                 unfinished_designs.append(design_id)
         return unfinished_designs
+
+    def get_implementation_checkpoint(self,acronym:str):
+        design=self.get_node(acronym)
+        if design.implementation:
+            return design.implementation.implementation
+        else:
+            return None
     
     def session_proposals(self,design_id:str,passed_only=False):
         sessdata=self.design_sessions[design_id]
@@ -590,14 +597,14 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         return proposals,acronyms
 
     
-    def session_implementations(self,design_id:str,succeed_only=False):
+    def session_implementations(self,design_id:str,implemented_only=False):
         sessdata=self.design_sessions[design_id]
         acronyms=[]
         implementations=[]
         for acronym in sessdata['proposed']:
             design=self.get_node(acronym)
             if design.implementation:
-                if succeed_only and not design.implementation.succeed:
+                if implemented_only and design.implementation.status!='implemented':
                     continue
                 implementations.append(design.implementation)
                 acronyms.append(acronym)
@@ -643,14 +650,14 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         U.save_json(sessdata, U.pjoin(self.session_dir(design_id), 'metadata.json'))
         sessdata['mode']=DesignModes(sessdata['mode'])
 
-    def implement(self, acronym: str, tree,ROUNDS,SUCCEED,costs,design_cfg,user_input): # update a proposal node with implementation
+    def implement(self, acronym: str, tree,ROUNDS,status,costs,design_cfg,user_input): # update a proposal node with implementation
         design_artifact=self.get_node(acronym)
         implementation=design_artifact.implementation
-        attempt=ImplementationAttempt(succeed=SUCCEED, rounds=ROUNDS, costs=costs, tree=tree, design_cfg=design_cfg, user_input=user_input)
+        attempt=ImplementationAttempt(status=status, rounds=ROUNDS, costs=costs, tree=tree, design_cfg=design_cfg, user_input=user_input)
         if implementation is None:
-            implementation=Implementation(succeed=SUCCEED, implementation=tree, history=[attempt])
+            implementation=Implementation(status=status, implementation=tree, history=[attempt])
         else:
-            implementation.succeed=SUCCEED
+            implementation.status=status
             implementation.implementation=tree
             implementation.history.append(attempt)
         implementation.save(self.design_dir(acronym))

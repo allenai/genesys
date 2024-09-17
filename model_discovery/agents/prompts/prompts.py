@@ -456,7 +456,7 @@ GAUs can be arranged hierarchically, with the output of one GAU feeding into ano
 
 ## Search Capability
 
-You have access to a powerful search tool that can query both external academic sources (such as arXiv, Papers with Code, and Semantic Scholar) and an internal library of research papers and technical documents. This tool allows you to gather relevant information to support and enhance your proposal development process.
+You have access to a powerful search assistant that can query both external academic sources (such as arXiv, Papers with Code, and Semantic Scholar) and an internal library of research papers and technical documents. This search assistant will collect information from the internet based on your queries and provide detailed analysis of the results. This tool allows you to gather relevant information to support and enhance your proposal development process.
 
 ## Progressive Proposal Process
 
@@ -466,17 +466,19 @@ Your task of creating a novel LM block design will follow an iterative process o
 
 In this phase, you will conduct multiple rounds of search and refinement without external review. Each round consists of:
 
-1. **Search**: Utilize the search tool to gather relevant information. Formulate specific queries to investigate aspects of your proposal or explore new ideas in the field of language model architecture. For searching external sources, you can use keywords, do not give more than 3 keywords a time which may cause failure, if you want to search more topic, do it in more rounds.
+1. **Search**: Utilize the search assistant to gather relevant information. Formulate specific queries to investigate aspects of your proposal or explore new ideas in the field of language model architecture. For searching external sources, use keywords, but limit to no more than 3 keywords at a time to avoid potential failure. If you want to search more topics, do so in multiple rounds.
 
-2. **Analysis**: Carefully analyze the search results and extract key insights that can inform your proposal.
+2. **Analysis**: Carefully analyze the search results and detailed analysis provided by the search assistant. Extract key insights that can inform your proposal.
 
-3. **Refinement**: Based on your analysis, refine and improve your proposal. This may involve modifying existing elements, adding new components, or even pivoting your approach if the research suggests a more promising direction.
+3. **Refinement**: Based on your analysis, refine and improve your proposal. This may involve modifying existing elements, adding new components, or adjusting your approach if the research suggests a more promising direction.
 
 4. **Self-Assessment**: Evaluate your refined proposal against the original objectives and requirements. Identify areas that still need improvement or further research.
 
 5. **Iteration Decision**: Determine if another round of search and refinement is necessary. If so, return to step 1 with new, focused queries based on your self-assessment.
 
 Repeat this cycle as many times as needed until you feel your proposal is ready for review.
+
+Note: Throughout this process, ensure that your proposals are supported by mathematical, theoretical, or logical justifications. Each design decision should be backed by sound reasoning and, where applicable, mathematical formulations.
 
 ### Phase 2: Review and Major Refinement
 
@@ -492,9 +494,9 @@ Once you believe your proposal is sufficiently developed:
 
 Repeat Phase 2 until your proposal passes the review.
 
-## Guidelines for Using the Search Tool
+## Guidelines for Using the Search Assistant
 
-When using the search tool, follow these guidelines:
+When using the search assistant, follow these guidelines:
 
 1. **Query Formulation**: 
    - Construct clear, specific queries related to your current design challenges or areas of uncertainty.
@@ -506,8 +508,11 @@ When using the search tool, follow these guidelines:
    - Utilize detailed searches of the internal library for in-depth technical information and established methodologies.
 
 3. **Result Integration**:
-   - Critically evaluate search results for relevance and potential impact on your design.
+   - Critically evaluate the search results and analysis provided by the search assistant for relevance and potential impact on your design.
    - Clearly cite and reference any papers or sources that significantly influence your proposal.
+
+4. **Iterative Refinement**:
+   - Use the insights from each search to inform subsequent queries, allowing for a more focused and in-depth exploration of relevant topics.
 
 ## Proposal Structure
 
@@ -519,45 +524,50 @@ Maintain and update the following structure in your proposal throughout the proc
 4. **Core Idea and Philosophy**: Describe the key concept or philosophy behind your proposed solution.
 5. **Design Plan**: 
    - Outline your approach for the LM block design.
-   - Specify the GAUs you've chosen to modify or introduce.
+   - Specify the single GAU you've chosen to modify (excluding the root unit).
    - Provide detailed descriptions of modifications and new structures.
-6. **Research Summary**: 
+   - Include mathematical formulations and theoretical justifications for your design choices.
+6. **Implementation Guidelines**:
+   - Provide pseudo-code for the modified GAU and any new child GAUs.
+   - Include mathematical formulas necessary for implementation.
+   - Offer step-by-step instructions for integrating the new design into the existing model.
+7. **Research Summary**: 
    - List key search queries used across all rounds.
-   - Summarize the most relevant findings from your searches.
+   - Summarize the most relevant findings from your searches, including insights from the search assistant's analysis.
    - Explain how these findings have influenced or validated your design choices.
-7. **Evolution of Design**:
+8. **Evolution of Design**:
    - Track major changes and improvements made across refinement rounds.
    - Discuss how these changes address challenges or leverage new insights.
-8. **Conclusion**: Summarize the expected outcomes and benefits of your proposal.
-9. **References**: List all sources used in the proposal, properly formatted.
+9. **Theoretical Analysis**:
+   - Provide mathematical or logical arguments for why your design is expected to improve model performance.
+   - Discuss potential trade-offs and how they are addressed.
+10. **Conclusion**: Summarize the expected outcomes and benefits of your proposal.
+11. **References**: List all sources used in the proposal, properly formatted.
 
 ## Best Practices for Progressive Refinement
 
 1. **Depth Over Speed**: Prioritize thorough research and thoughtful refinement over rushing to submission.
-
 2. **Diverse Querying**: Vary your search queries to explore different aspects of the problem and potential solutions.
-
 3. **Critical Thinking**: Don't just incorporate every new idea you find. Critically evaluate how each insight fits into your overall design philosophy.
-
 4. **Documenting Rationale**: Clearly explain the reasoning behind each major design decision, especially when pivoting based on research findings.
-
 5. **Balancing Innovation and Feasibility**: Strive for novel ideas, but ensure your design remains implementable within the constraints of current technology.
-
 6. **Cross-Disciplinary Inspiration**: Look for relevant concepts from adjacent fields that could be adapted to LM block design.
-
 7. **Anticipating Challenges**: Use your research to identify potential weaknesses in your design and proactively address them.
 
 ## Key Points for Writing the Proposal
 
 - **Detail is crucial**: Your proposal must be clear, detailed, and precise. Do not worry about length; focus on the clarity of your ideas.
 - **Top-down approach**: Design the GAU from the top down, breaking complex blocks into smaller, manageable units that can be nested together.
-- **Creativity encouraged**: Strive for a design that is innovative and improves upon existing architectures. Avoid replicating standard models like the vanilla Transformer.
-- **Self-contained modifications**: Ensure that your modifications to the GAU do not interfere with the correctness of other parts of the model.
+- **Creativity with constraint**: Strive for a design that is innovative yet maintains the overall structure of the existing model. Avoid drastic changes that would significantly alter the model's architecture.
+- **Local modifications**: Focus on making changes to a single GAU (excluding the root unit) and its potential child GAUs. Ensure that your modifications do not interfere with the correctness of other parts of the model.
+- **Simplicity and implementability**: Prioritize designs that are relatively simple and feasible to implement. Avoid overly complicated structures that might be challenging to code or integrate.
+- **Mathematical rigor**: Provide mathematical formulations, theoretical justifications, and logical arguments for your design choices. This adds credibility and helps in understanding the expected improvements.
+- **Implementation clarity**: Include clear guidelines for implementation, such as pseudo-code, mathematical formulas, and step-by-step instructions. This ensures that coders can implement your design without losing track of the overall structure.
+- **Evolutionary approach**: Design your modifications in a way that allows for gradual tracking of differences across designs, facilitating an evolutionary path of improvement.
 
-Remember, the goal of this process is to develop a well-researched, innovative proposal for an LM block design. Take full advantage of the multiple refinement rounds to create a robust, thoroughly considered design before submitting for review. You are allowed to modify one GAU from the existing design, and you can introduce new child GAUs to the selected GAU if necessary, but your modifications must maintain the correctness of the overall model design.
+Remember, the goal of this process is to develop a well-researched, innovative, yet implementable proposal for an LM block design. Take full advantage of the multiple refinement rounds to create a robust, thoroughly considered design before submitting for review. You are allowed to modify one GAU from the existing design (excluding the root unit), and you can introduce new child GAUs to the selected GAU if necessary, but your modifications must maintain the correctness and overall structure of the model design.
 
 You are now ready to begin the progressive proposal process. Start with your initial proposal and prepare for the first round of research and refinement.
-
 """
 
 
@@ -591,7 +601,7 @@ def gen_GUM_DESIGN_PROPOSAL(SELECTIONS:list[str],two_stage:bool=False,use_isearc
 
    class GUM_DESIGN_PROPOSAL_STAGE2_format(BaseModel):
       proposal: str = Field(..., description="The full proposal, keep the format instructions.")
-      selection: SelectionEnum = Field(..., description="The name of the GAU you are going to work on.")
+      selection: SelectionEnum = Field(..., description="The name of the GAU you are going to work on. Do not select the root unit to avoid too drastic changes immediately.")
       variantname: str = Field(..., description="The name of the variant of the selected GAU you are going to design.")
       modelname: str = Field(..., description="The name of the resulting model by applying the variant of GAU.")
    
@@ -1019,7 +1029,7 @@ def gen_GUM_PROPOSAL_REFINEMENT(SELECTIONS:list[str],two_stage:bool=False,use_is
 
       class GUM_PROPOSAL_REFINEMENT_FINISH_format(BaseModel):
          proposal: str = Field(..., description="The fall proposal, keep the format instructions.")
-         selection: SelectionEnum = Field(..., description="The name of the GAU you are going to work on.")
+         selection: SelectionEnum = Field(..., description="The name of the GAU you are going to work on. Do not select the root unit to avoid too drastic changes immediately.")
          variantname: str = Field(..., description="The name of the variant of the selected GAU you are going to design.")
          modelname: str = Field(..., description="The name of the resulting model by applying the variant of GAU.")
          changes: str = Field(..., description="The summary of the changes you made.") 
@@ -1064,7 +1074,7 @@ Ensure your proposal is innovative yet feasible, aiming to advance state-of-the-
 
       class GUM_PROPOSAL_REFINEMENT_STAGE2_format(BaseModel):
          proposal: str = Field(..., description="The fall proposal, keep the format instructions.")
-         selection: SelectionEnum = Field(..., description="The name of the GAU you are going to work on.")
+         selection: SelectionEnum = Field(..., description="The name of the GAU you are going to work on. Do not select the root unit to avoid too drastic changes immediately.")
          variantname: str = Field(..., description="The name of the variant of the selected GAU you are going to design.")
          modelname: str = Field(..., description="The name of the resulting model by applying the variant of GAU.")
          changes: str = Field(..., description="The summary of the changes you made.") 
@@ -1143,7 +1153,7 @@ Ensure your refined proposal is comprehensive, well-justified, and directly addr
       class GUM_PROPOSAL_REFINEMENT_format(BaseModel):
          reflection: str = Field(..., description="The reflection based on the review, rating, and suggestions.")
          proposal: str = Field(..., description="The fall proposal, keep the format instructions.")
-         selection: SelectionEnum = Field(..., description="The name of the GAU you are going to work on.")
+         selection: SelectionEnum = Field(..., description="The name of the GAU you are going to work on. Do not select the root unit to avoid too drastic changes immediately.")
          variantname: str = Field(..., description="The name of the variant of the selected GAU you are going to design.")
          modelname: str = Field(..., description="The name of the resulting model by applying the variant of GAU.")
          changes: str = Field(..., description="The summary of the changes you made.") 
@@ -1613,7 +1623,7 @@ GUM_DESIGNER_SYSTEM_prompt_part4 = """
    - When declaring placeholders for child GAUs in your design, follow the proper syntax and ensure correct input-output handling.
 
 7. **Design Approach**:
-   - Name GAUs meaningfully. Each GAU should represent a distinct unit with a clear function in the architecture.
+   - Name GAUs meaningfully. Each GAU should represent a distinct unit with a clear function in the architecture. Remember to rename the class name of a GAU if you are improving it.
    - Follow a top-down design approach: if the operation is complex, decompose it into child GAUs and define their placeholders. Ensure each placeholder aligns with the broader structure of the model, ready for future implementation.
 
 8. **Be Innovative**:
@@ -1923,7 +1933,7 @@ Below is a tree of the GAUs that compose the language model (LM) block and the d
    SelectionEnum=generate_enum_from_list('selection',SELECTIONS)
 
    class GUM_IMPLEMENTATION_UNIT_SELECTION_format(BaseModel):
-      selection: SelectionEnum = Field(..., description="The name of the GAU you are going to work on.")
+      selection: SelectionEnum = Field(..., description="The name of the GAU you are going to work on. Do not select the root unit to avoid too drastic changes immediately.")
       motivation: str = Field(..., description="The motivation for the selection.")
       rough_plan: str = Field(..., description="The rough plan for implementing the selected GAU.")
       termination: bool = Field(..., description="Whether to terminate the design process.")
@@ -2020,7 +2030,7 @@ Below is a tree of the GAUs that compose the language model (LM) block and the d
 
 {VIEW}
 
-""" + GUM_IMPLEMENTATION_UNIT_prompt+" Please also give a new name of this variant of the GAU, but notice that, please do not rename the GAUBase class of the unit in your code."
+""" + GUM_IMPLEMENTATION_UNIT_prompt+" Please also give a new name of this variant of the GAU."
          GUM_IMPLEMENTATION_UNIT_format = GU_IMPLEMENTATION_REFINE_format
    else:
       GUM_IMPLEMENTATION_UNIT_prompt = """
@@ -3014,8 +3024,7 @@ each of them as a child GAU. Do not make a single unit overly complex.
 
 Remember your final goal is to refine the GAU in a way that enhances the overall
 design, ensuring both correctness and innovation. Please also give a new name of
-this variant of the GAU, but notice that, please do not rename the GAUBase class
-of the unit in your code.
+this variant of the GAU.
    """
       GUMT_IMPLEMENTATION_UNIT_format = GU_IMPLEMENTATION_REFINE_format
    else:

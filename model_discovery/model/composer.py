@@ -57,6 +57,8 @@ class GAUNode: # this is mainly used to 1. track the hierarchies 2. used for the
         data = U.load_json(U.pjoin(dir, f'{name}.json'))
         return cls.from_dict(data)
 
+
+# TODO: WORK IN PROGRESS
 class GAUDict: # GAU code book, registry of GAUs, shared by a whole evolution
     def __init__(self, lib_dir=None):
         self.units = {}
