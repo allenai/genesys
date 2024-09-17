@@ -150,13 +150,17 @@ def add_line_num(code):  # line i: code
     lines = code.split('\n')
     return '\n'.join([f'line {i+1}: {line}' for i, line in enumerate(lines)])
 
-def get_factory_kwargs():
-    if torch.cuda.is_available():
-        device='cuda'
-        dtype=torch.bfloat16
-    else:
+def get_factory_kwargs(cpu_only=False):
+    if cpu_only:
         device='cpu'
         dtype=torch.float16
+    else:
+        if torch.cuda.is_available():
+            device='cuda'
+            dtype=torch.bfloat16
+        else:
+            device='cpu'
+            dtype=torch.float16
     return {"device": device, "dtype": dtype}
 
 

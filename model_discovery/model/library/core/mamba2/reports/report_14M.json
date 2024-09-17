@@ -1,21 +1,19 @@
 {
-    "training_record.csv": "_step,_runtime,train/loss,train/grad_norm,train/learning_rate,train/epoch,_timestamp,train/global_step\n0,57.6037392616272,9.6156,11.375,0.0009986923925361239,9.776317847645862e-05,1722539171.1627433,10\n1,62.14719033241272,7.1318,11.125,0.0009882770843220316,0.00019552635695291724,1722539175.7061944,20\n2,66.68558311462402,5.1646,10.9375,0.0009676882340726346,0.0002932895354293759,1722539180.2445872,30\n3,71.50871562957764,2.9776,9.5,0.0009374037621286576,0.0003910527139058345,1722539185.0677197,40\n4,76.04076671600342,1.12,3.921875,0.0008981266492284511,0.0004888158923822931,1722539189.5997708,50\n5,80.68435764312744,0.3009,0.6171875,0.0008507686185111198,0.0005865790708587518,1722539194.2433617,60\n6,85.2174859046936,0.1375,0.1455078125,0.0007964289720698986,0.0006843422493352104,1722539198.77649,70\n7,89.76067185401917,0.1141,0.06298828125,0.0007363690733139843,0.000782105427811669,1722539203.319676,80\n8,94.30047082901001,0.1055,0.057373046875,0.00067198306746905,0.0008798686062881277,1722539207.859475,90\n9,98.84451627731323,0.0984,0.057861328125,0.0006047655198691741,0.0009776317847645863,1722539212.4035203,100\n10,103.49225497245789,0.0967,0.05615234375,0.0005362767232389365,0.0010753949632410448,1722539217.051259,110\n11,108.04250812530518,0.0949,0.055419921875,0.0004681064792731774,0.0011731581417175035,1722539221.6015122,120\n12,112.59163093566895,0.0948,0.054931640625,0.00040183719523741846,0.0012709213201939622,1722539226.150635,130\n13,117.13933420181274,0.0937,0.05419921875,0.00033900715221206354,0.0013686844986704207,1722539230.6983383,140\n14,121.69163918495178,0.0938,0.0537109375,0.000281074797619221,0.0014664476771468794,1722539235.2506433,150\n15,126.3428966999054,0.0929,0.0537109375,0.00022938489089473067,0.001564210855623338,1722539239.9019008,160\n16,130.90335035324097,0.0923,0.053955078125,0.00018513728815170886,0.0016619740340997966,1722539244.4623544,170\n17,135.45409202575684,0.0919,0.053466796875,0.00014935909042411414,0.0017597372125762554,1722539249.013096,180\n18,140.00855565071106,0.0928,0.053955078125,0.0001228808020014696,0.0018575003910527139,1722539253.5675597,190\n19,144.55619597434998,0.0921,0.0537109375,0.0001063170522813115,0.0019552635695291726,1722539258.1152,200\n20,149.207013130188,0.0921,0.0537109375,0.00010005232863491298,0.0020530267480056313,1722539262.7660172,210\n21,150.27054119110107,,,,0.002062803065853277,1722539263.8295453,211\n",
-    "system_metrics.csv": "GPU 3 Utilization (%),GPU 4 Time Spent Accessing Memory (%),GPU 2 Time Spent Accessing Memory (%),GPU 5 Time Spent Accessing Memory (%),GPU 1 Time Spent Accessing Memory (%),GPU 0 Time Spent Accessing Memory (%),GPU 0 Utilization (%),GPU 3 Memory Allocated (%),_runtime,GPU 1 Memory Allocated (%),GPU 4 Memory Allocated (%),GPU 1 Utilization (%),Process CPU Utilization (%),Process CPU Threads In Use,System Memory Utilization (%),GPU 4 Utilization (%),GPU 2 Memory Allocated (%),GPU 5 Utilization (%),Process Memory In Use (non-swap) (%),GPU 5 Memory Allocated (%),GPU 3 Time Spent Accessing Memory (%),GPU 2 Utilization (%),GPU 0 Memory Allocated (%)\n0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.08,61.050428,1.08,1.11,0.0,0.01,23,23.95,0.0,1.08,0.07,0.14,1.08,0.0,2.0,2.69\n58.93,56.6,52.4,48.47,50.2,58.07,69.07,47.38,91.052422,47.49,47.31,56.4,0.0,23,25.93,60.53,47.53,52.67,0.14,47.26,53.33,60.47,54.37\n97.87,93.53,92.0,94.6,95.0,94.0,97.53,66.49,121.054431,66.49,66.49,98.4,0.0,23,26.74,98.0,66.49,98.07,0.14,66.44,90.0,97.67,70.09\n,,,,,,,,151.056679,,,,0.0,23,26.8,,,,0.14,,,,\n96.27,91.0,92.4,90.0,89.67,92.4,97.2,66.49,156.31751,66.49,66.49,97.33,0.0,23,23.7,97.53,66.49,96.87,0.14,66.44,86.6,97.53,70.09\n",
     "trainer_state.json": {
         "best_metric": null,
         "best_model_checkpoint": null,
-        "epoch": 0.002062803065853277,
+        "epoch": 0.001907886525328531,
         "eval_steps": 500,
-        "global_step": 211,
+        "global_step": 214,
         "is_hyper_param_search": false,
         "is_local_process_zero": true,
         "is_world_process_zero": true,
         "logging_steps": 10,
-        "max_steps": 211,
+        "max_steps": 214,
         "num_input_tokens_seen": 0,
         "num_train_epochs": 1,
         "save_steps": 50,
-        "total_flos": 928449517060096.0,
+        "total_flos": 1002253727039488.0,
         "train_batch_size": 42,
         "trial_name": null,
         "trial_params": null
@@ -25,731 +23,731 @@
             "arc_challenge": {
                 "alias": "arc_challenge",
                 "acc,none": 0.2354948805460751,
-                "acc_stderr,none": 0.01239945185500477,
-                "acc_norm,none": 0.2909556313993174,
-                "acc_norm_stderr,none": 0.013273077865907586
+                "acc_stderr,none": 0.01239945185500478,
+                "acc_norm,none": 0.29180887372013653,
+                "acc_norm_stderr,none": 0.013284525292403586
             },
             "arc_easy": {
                 "alias": "arc_easy",
-                "acc,none": 0.2529461279461279,
-                "acc_stderr,none": 0.008919862739165618,
-                "acc_norm,none": 0.26052188552188554,
-                "acc_norm_stderr,none": 0.009006435890336591
+                "acc,none": 0.2638888888888889,
+                "acc_stderr,none": 0.009043789220055392,
+                "acc_norm,none": 0.26136363636363635,
+                "acc_norm_stderr,none": 0.009015838366608263
             },
             "blimp_adjunct_island_filtered": {
                 "alias": "blimp_adjunct_island_filtered",
-                "acc,none": 0.6799568965517241,
-                "acc_stderr,none": 0.015321633195562654
+                "acc,none": 0.8092672413793104,
+                "acc_stderr,none": 0.012903833729922425
             },
             "blimp_anaphor_gender_agreement_filtered": {
                 "alias": "blimp_anaphor_gender_agreement_filtered",
-                "acc,none": 0.6457260556127703,
-                "acc_stderr,none": 0.015357053408693498
+                "acc,none": 0.8269824922760041,
+                "acc_stderr,none": 0.012145273984124714
             },
             "blimp_anaphor_number_agreement_filtered": {
                 "alias": "blimp_anaphor_number_agreement_filtered",
-                "acc,none": 0.686358754027927,
-                "acc_stderr,none": 0.015214255298831464
+                "acc,none": 0.7916219119226638,
+                "acc_stderr,none": 0.01331813625141918
             },
             "blimp_animate_subject_passive_filtered": {
                 "alias": "blimp_animate_subject_passive_filtered",
-                "acc,none": 0.6692737430167598,
-                "acc_stderr,none": 0.01573502625896612
+                "acc,none": 0.6770949720670391,
+                "acc_stderr,none": 0.015638440380241564
             },
             "blimp_animate_subject_trans_filtered": {
                 "alias": "blimp_animate_subject_trans_filtered",
-                "acc,none": 0.8028169014084507,
-                "acc_stderr,none": 0.013103208041454643
+                "acc,none": 0.7930660888407367,
+                "acc_stderr,none": 0.013341512351042065
             },
             "blimp_causative_filtered": {
                 "alias": "blimp_causative_filtered",
-                "acc,none": 0.4743276283618582,
-                "acc_stderr,none": 0.017469712532796618
+                "acc,none": 0.47555012224938875,
+                "acc_stderr,none": 0.017471858943175118
             },
             "blimp_complex_NP_island_filtered": {
                 "alias": "blimp_complex_NP_island_filtered",
-                "acc,none": 0.6643026004728132,
-                "acc_stderr,none": 0.016245332710814415
+                "acc,none": 0.7978723404255319,
+                "acc_stderr,none": 0.013815010651500929
             },
             "blimp_coordinate_structure_constraint_complex_left_branch_filtered": {
                 "alias": "blimp_coordinate_structure_constraint_complex_left_branch_filtered",
-                "acc,none": 0.6710816777041942,
-                "acc_stderr,none": 0.015617353273330341
+                "acc,none": 0.8145695364238411,
+                "acc_stderr,none": 0.012919042724662154
             },
             "blimp_coordinate_structure_constraint_object_extraction_filtered": {
                 "alias": "blimp_coordinate_structure_constraint_object_extraction_filtered",
-                "acc,none": 0.6238145416227608,
-                "acc_stderr,none": 0.015733472316756147
+                "acc,none": 0.7407797681770284,
+                "acc_stderr,none": 0.01423229165584452
             },
             "blimp_determiner_noun_agreement_1_filtered": {
                 "alias": "blimp_determiner_noun_agreement_1_filtered",
-                "acc,none": 0.6275565123789021,
-                "acc_stderr,none": 0.015870208214829262
+                "acc,none": 0.6749192680301399,
+                "acc_stderr,none": 0.015376147618783195
             },
             "blimp_determiner_noun_agreement_2_filtered": {
                 "alias": "blimp_determiner_noun_agreement_2_filtered",
-                "acc,none": 0.6756176154672395,
-                "acc_stderr,none": 0.015351034189447724
+                "acc,none": 0.757250268528464,
+                "acc_stderr,none": 0.014059103328067653
             },
             "blimp_determiner_noun_agreement_irregular_1_filtered": {
                 "alias": "blimp_determiner_noun_agreement_irregular_1_filtered",
-                "acc,none": 0.6417033773861968,
-                "acc_stderr,none": 0.01838798172229966
+                "acc,none": 0.631424375917768,
+                "acc_stderr,none": 0.018499905938338983
             },
             "blimp_determiner_noun_agreement_irregular_2_filtered": {
                 "alias": "blimp_determiner_noun_agreement_irregular_2_filtered",
-                "acc,none": 0.6719512195121952,
-                "acc_stderr,none": 0.016405751772438918
+                "acc,none": 0.7682926829268293,
+                "acc_stderr,none": 0.014743183532365582
             },
             "blimp_determiner_noun_agreement_with_adj_2_filtered": {
                 "alias": "blimp_determiner_noun_agreement_with_adj_2_filtered",
-                "acc,none": 0.6758767268862912,
-                "acc_stderr,none": 0.015265988372842078
+                "acc,none": 0.7800212539851222,
+                "acc_stderr,none": 0.013510756050651364
             },
             "blimp_determiner_noun_agreement_with_adj_irregular_1_filtered": {
                 "alias": "blimp_determiner_noun_agreement_with_adj_irregular_1_filtered",
-                "acc,none": 0.7116991643454039,
-                "acc_stderr,none": 0.01691654236539955
+                "acc,none": 0.6908077994428969,
+                "acc_stderr,none": 0.017259702410433828
             },
             "blimp_determiner_noun_agreement_with_adj_irregular_2_filtered": {
                 "alias": "blimp_determiner_noun_agreement_with_adj_irregular_2_filtered",
-                "acc,none": 0.6904761904761905,
-                "acc_stderr,none": 0.015960276256704455
+                "acc,none": 0.7488095238095238,
+                "acc_stderr,none": 0.01497291240586813
             },
             "blimp_determiner_noun_agreement_with_adjective_1_filtered": {
                 "alias": "blimp_determiner_noun_agreement_with_adjective_1_filtered",
-                "acc,none": 0.6463022508038585,
-                "acc_stderr,none": 0.0156612357139432
+                "acc,none": 0.6366559485530546,
+                "acc_stderr,none": 0.01575445817839207
             },
             "blimp_distractor_agreement_relational_noun_filtered": {
                 "alias": "blimp_distractor_agreement_relational_noun_filtered",
-                "acc,none": 0.6751269035532995,
-                "acc_stderr,none": 0.016694069420434138
+                "acc,none": 0.7411167512690355,
+                "acc_stderr,none": 0.015613775246732745
             },
             "blimp_distractor_agreement_relative_clause_filtered": {
                 "alias": "blimp_distractor_agreement_relative_clause_filtered",
-                "acc,none": 0.677382319173364,
-                "acc_stderr,none": 0.01584898244837986
+                "acc,none": 0.7520091848450058,
+                "acc_stderr,none": 0.014640966409978202
             },
             "blimp_drop_argument_filtered": {
                 "alias": "blimp_drop_argument_filtered",
                 "acc,none": 0.7663043478260869,
-                "acc_stderr,none": 0.013959446718885863
+                "acc_stderr,none": 0.01395944671888585
             },
             "blimp_ellipsis_n_bar_1_filtered": {
                 "alias": "blimp_ellipsis_n_bar_1_filtered",
-                "acc,none": 0.7082294264339152,
-                "acc_stderr,none": 0.01606169853281578
+                "acc,none": 0.8528678304239401,
+                "acc_stderr,none": 0.012516371015020476
             },
             "blimp_ellipsis_n_bar_2_filtered": {
                 "alias": "blimp_ellipsis_n_bar_2_filtered",
-                "acc,none": 0.36835748792270534,
-                "acc_stderr,none": 0.016773267476275736
+                "acc,none": 0.4082125603864734,
+                "acc_stderr,none": 0.017091229212569996
             },
             "blimp_existential_there_object_raising_filtered": {
                 "alias": "blimp_existential_there_object_raising_filtered",
-                "acc,none": 0.7339901477832512,
-                "acc_stderr,none": 0.015516134982956916
+                "acc,none": 0.8041871921182266,
+                "acc_stderr,none": 0.01393441357984227
             },
             "blimp_existential_there_quantifiers_1_filtered": {
                 "alias": "blimp_existential_there_quantifiers_1_filtered",
-                "acc,none": 0.6741935483870968,
-                "acc_stderr,none": 0.015376740284132823
+                "acc,none": 0.7817204301075269,
+                "acc_stderr,none": 0.013552656119779663
             },
             "blimp_existential_there_quantifiers_2_filtered": {
                 "alias": "blimp_existential_there_quantifiers_2_filtered",
-                "acc,none": 0.7727771679473107,
-                "acc_stderr,none": 0.013890965387327125
+                "acc,none": 0.986827661909989,
+                "acc_stderr,none": 0.0037794742932378196
             },
             "blimp_existential_there_subject_raising_filtered": {
                 "alias": "blimp_existential_there_subject_raising_filtered",
-                "acc,none": 0.7251082251082251,
-                "acc_stderr,none": 0.014695400883891305
+                "acc,none": 0.7424242424242424,
+                "acc_stderr,none": 0.014393874595730225
             },
             "blimp_expletive_it_object_raising_filtered": {
                 "alias": "blimp_expletive_it_object_raising_filtered",
-                "acc,none": 0.6640316205533597,
-                "acc_stderr,none": 0.01715572119540158
+                "acc,none": 0.6758893280632411,
+                "acc_stderr,none": 0.0170000366394709
             },
             "blimp_inchoative_filtered": {
                 "alias": "blimp_inchoative_filtered",
-                "acc,none": 0.512280701754386,
-                "acc_stderr,none": 0.01710448618735779
+                "acc,none": 0.49122807017543857,
+                "acc_stderr,none": 0.017107014504415357
             },
             "blimp_intransitive_filtered": {
                 "alias": "blimp_intransitive_filtered",
-                "acc,none": 0.6624423963133641,
-                "acc_stderr,none": 0.016059738100796396
+                "acc,none": 0.6578341013824884,
+                "acc_stderr,none": 0.016112651166501405
             },
             "blimp_irregular_past_participle_adjectives_filtered": {
                 "alias": "blimp_irregular_past_participle_adjectives_filtered",
-                "acc,none": 0.7190426638917794,
-                "acc_stderr,none": 0.014506475256587608
+                "acc,none": 0.7533818938605619,
+                "acc_stderr,none": 0.013911836082677454
             },
             "blimp_irregular_past_participle_verbs_filtered": {
                 "alias": "blimp_irregular_past_participle_verbs_filtered",
-                "acc,none": 0.70276008492569,
-                "acc_stderr,none": 0.014899177560799587
+                "acc,none": 0.7123142250530785,
+                "acc_stderr,none": 0.014757071823341766
             },
             "blimp_irregular_plural_subject_verb_agreement_1_filtered": {
                 "alias": "blimp_irregular_plural_subject_verb_agreement_1_filtered",
-                "acc,none": 0.6019900497512438,
-                "acc_stderr,none": 0.017273639378385837
+                "acc,none": 0.6766169154228856,
+                "acc_stderr,none": 0.016507157781264867
             },
             "blimp_irregular_plural_subject_verb_agreement_2_filtered": {
                 "alias": "blimp_irregular_plural_subject_verb_agreement_2_filtered",
-                "acc,none": 0.5852017937219731,
-                "acc_stderr,none": 0.016505641464798826
+                "acc,none": 0.7219730941704036,
+                "acc_stderr,none": 0.015009459997285719
             },
             "blimp_left_branch_island_echo_question_filtered": {
                 "alias": "blimp_left_branch_island_echo_question_filtered",
-                "acc,none": 0.573389651531151,
-                "acc_stderr,none": 0.01608033344584406
+                "acc,none": 0.7888067581837381,
+                "acc_stderr,none": 0.013270269765472523
             },
             "blimp_left_branch_island_simple_question_filtered": {
                 "alias": "blimp_left_branch_island_simple_question_filtered",
-                "acc,none": 0.647739221871714,
-                "acc_stderr,none": 0.015497813846534406
+                "acc,none": 0.7266035751840169,
+                "acc_stderr,none": 0.014460502273937413
             },
             "blimp_matrix_question_npi_licensor_present_filtered": {
                 "alias": "blimp_matrix_question_npi_licensor_present_filtered",
-                "acc,none": 0.6426264800861141,
-                "acc_stderr,none": 0.01573136853585988
+                "acc,none": 0.5629709364908504,
+                "acc_stderr,none": 0.01628261518558218
             },
             "blimp_npi_present_1_filtered": {
                 "alias": "blimp_npi_present_1_filtered",
-                "acc,none": 0.7106710671067107,
-                "acc_stderr,none": 0.015048296019424905
+                "acc,none": 0.7315731573157316,
+                "acc_stderr,none": 0.01470614786522788
             },
             "blimp_npi_present_2_filtered": {
                 "alias": "blimp_npi_present_2_filtered",
-                "acc,none": 0.6706783369803063,
-                "acc_stderr,none": 0.015553634909913603
+                "acc,none": 0.7592997811816192,
+                "acc_stderr,none": 0.01414847041915533
             },
             "blimp_only_npi_licensor_present_filtered": {
                 "alias": "blimp_only_npi_licensor_present_filtered",
-                "acc,none": 0.4331065759637188,
-                "acc_stderr,none": 0.0166939898182172
+                "acc,none": 0.9342403628117913,
+                "acc_stderr,none": 0.00835066503194153
             },
             "blimp_only_npi_scope_filtered": {
                 "alias": "blimp_only_npi_scope_filtered",
-                "acc,none": 0.5531660692951016,
-                "acc_stderr,none": 0.017194822614139207
+                "acc,none": 0.7586618876941458,
+                "acc_stderr,none": 0.014799053856286533
             },
             "blimp_passive_1_filtered": {
                 "alias": "blimp_passive_1_filtered",
-                "acc,none": 0.6202380952380953,
-                "acc_stderr,none": 0.016755366687036727
+                "acc,none": 0.6190476190476191,
+                "acc_stderr,none": 0.016765495541788553
             },
             "blimp_passive_2_filtered": {
                 "alias": "blimp_passive_2_filtered",
-                "acc,none": 0.6356589147286822,
-                "acc_stderr,none": 0.016023702608741395
+                "acc,none": 0.6301218161683277,
+                "acc_stderr,none": 0.01607453236836086
             },
             "blimp_principle_A_c_command_filtered": {
                 "alias": "blimp_principle_A_c_command_filtered",
-                "acc,none": 0.8393234672304439,
-                "acc_stderr,none": 0.01194606860511913
+                "acc,none": 0.8308668076109936,
+                "acc_stderr,none": 0.012194506336234145
             },
             "blimp_principle_A_case_1_filtered": {
                 "alias": "blimp_principle_A_case_1_filtered",
-                "acc,none": 0.7138157894736842,
-                "acc_stderr,none": 0.014974651401660566
+                "acc,none": 0.793859649122807,
+                "acc_stderr,none": 0.01340275815026483
             },
             "blimp_principle_A_case_2_filtered": {
                 "alias": "blimp_principle_A_case_2_filtered",
-                "acc,none": 0.5497267759562842,
-                "acc_stderr,none": 0.016456535410487267
+                "acc,none": 0.6327868852459017,
+                "acc_stderr,none": 0.015944640385079544
             },
             "blimp_principle_A_domain_1_filtered": {
                 "alias": "blimp_principle_A_domain_1_filtered",
-                "acc,none": 0.8085339168490153,
-                "acc_stderr,none": 0.01302145933585306
+                "acc,none": 0.9234135667396062,
+                "acc_stderr,none": 0.008801134516933226
             },
             "blimp_principle_A_domain_2_filtered": {
                 "alias": "blimp_principle_A_domain_2_filtered",
-                "acc,none": 0.8021857923497268,
-                "acc_stderr,none": 0.013176289414603233
+                "acc,none": 0.8098360655737705,
+                "acc_stderr,none": 0.012980443650468297
             },
             "blimp_principle_A_domain_3_filtered": {
                 "alias": "blimp_principle_A_domain_3_filtered",
-                "acc,none": 0.6365568544102019,
-                "acc_stderr,none": 0.015688192657034812
+                "acc,none": 0.7247608926673751,
+                "acc_stderr,none": 0.014567617145038871
             },
             "blimp_principle_A_reconstruction_filtered": {
                 "alias": "blimp_principle_A_reconstruction_filtered",
-                "acc,none": 0.6452947259565667,
-                "acc_stderr,none": 0.01539303715200983
+                "acc,none": 0.7807652533609101,
+                "acc_stderr,none": 0.01331148076630477
             },
             "blimp_regular_plural_subject_verb_agreement_1_filtered": {
                 "alias": "blimp_regular_plural_subject_verb_agreement_1_filtered",
-                "acc,none": 0.5786516853932584,
-                "acc_stderr,none": 0.016560687467213498
+                "acc,none": 0.6662921348314607,
+                "acc_stderr,none": 0.01581483569315042
             },
             "blimp_regular_plural_subject_verb_agreement_2_filtered": {
                 "alias": "blimp_regular_plural_subject_verb_agreement_2_filtered",
-                "acc,none": 0.5492063492063493,
-                "acc_stderr,none": 0.016194616677145758
+                "acc,none": 0.582010582010582,
+                "acc_stderr,none": 0.01605321739091198
             },
             "blimp_sentential_negation_npi_licensor_present_filtered": {
                 "alias": "blimp_sentential_negation_npi_licensor_present_filtered",
-                "acc,none": 0.808487486398259,
-                "acc_stderr,none": 0.012987150962625241
+                "acc,none": 0.5462459194776932,
+                "acc_stderr,none": 0.016431720311258714
             },
             "blimp_sentential_negation_npi_scope_filtered": {
                 "alias": "blimp_sentential_negation_npi_scope_filtered",
-                "acc,none": 0.6888633754305397,
-                "acc_stderr,none": 0.015695765056656895
+                "acc,none": 0.8725602755453502,
+                "acc_stderr,none": 0.01130551900040305
             },
             "blimp_sentential_subject_island_filtered": {
                 "alias": "blimp_sentential_subject_island_filtered",
-                "acc,none": 0.7148803329864725,
-                "acc_stderr,none": 0.014571177403797592
+                "acc,none": 0.858480749219563,
+                "acc_stderr,none": 0.011249608902413973
             },
             "blimp_superlative_quantifiers_1_filtered": {
                 "alias": "blimp_superlative_quantifiers_1_filtered",
-                "acc,none": 0.6373850868232891,
-                "acc_stderr,none": 0.015372848675484396
+                "acc,none": 0.8283963227783453,
+                "acc_stderr,none": 0.012056269537429994
             },
             "blimp_superlative_quantifiers_2_filtered": {
                 "alias": "blimp_superlative_quantifiers_2_filtered",
-                "acc,none": 0.5780933062880325,
-                "acc_stderr,none": 0.015735808545212258
+                "acc,none": 0.8407707910750507,
+                "acc_stderr,none": 0.011658215026936952
             },
             "blimp_supplement_hypernym": {
                 "alias": "blimp_supplement_hypernym",
-                "acc,none": 0.6472684085510689,
-                "acc_stderr,none": 0.01647655401337209
+                "acc,none": 0.6947743467933492,
+                "acc_stderr,none": 0.015879411577468475
             },
             "blimp_supplement_qa_congruence_easy": {
                 "alias": "blimp_supplement_qa_congruence_easy",
-                "acc,none": 0.453125,
-                "acc_stderr,none": 0.06271663843120986
+                "acc,none": 0.5,
+                "acc_stderr,none": 0.06299407883487121
             },
             "blimp_supplement_qa_congruence_tricky": {
                 "alias": "blimp_supplement_qa_congruence_tricky",
-                "acc,none": 0.4484848484848485,
-                "acc_stderr,none": 0.038835659779569286
+                "acc,none": 0.42424242424242425,
+                "acc_stderr,none": 0.038592681420702664
             },
             "blimp_supplement_subject_aux_inversion": {
                 "alias": "blimp_supplement_subject_aux_inversion",
-                "acc,none": 0.7543315231445565,
-                "acc_stderr,none": 0.006923487625010813
+                "acc,none": 0.7975174553917765,
+                "acc_stderr,none": 0.006462982333717115
             },
             "blimp_supplement_turn_taking": {
                 "alias": "blimp_supplement_turn_taking",
-                "acc,none": 0.7142857142857143,
-                "acc_stderr,none": 0.027045801630812636
+                "acc,none": 0.8464285714285714,
+                "acc_stderr,none": 0.021584811872631983
             },
             "blimp_tough_vs_raising_1_filtered": {
                 "alias": "blimp_tough_vs_raising_1_filtered",
-                "acc,none": 0.3227848101265823,
-                "acc_stderr,none": 0.015193047668015283
+                "acc,none": 0.3069620253164557,
+                "acc_stderr,none": 0.014988074820742684
             },
             "blimp_tough_vs_raising_2_filtered": {
                 "alias": "blimp_tough_vs_raising_2_filtered",
-                "acc,none": 0.8673913043478261,
-                "acc_stderr,none": 0.011187570316474998
+                "acc,none": 0.9239130434782609,
+                "acc_stderr,none": 0.008746069010911836
             },
             "blimp_transitive_filtered": {
                 "alias": "blimp_transitive_filtered",
-                "acc,none": 0.5771889400921659,
-                "acc_stderr,none": 0.016777321277810533
+                "acc,none": 0.5990783410138248,
+                "acc_stderr,none": 0.016644165283826243
             },
             "blimp_wh_island_filtered": {
                 "alias": "blimp_wh_island_filtered",
-                "acc,none": 0.6822916666666666,
-                "acc_stderr,none": 0.015034536128683251
+                "acc,none": 0.8072916666666666,
+                "acc_stderr,none": 0.012736678276190407
             },
             "blimp_wh_questions_object_gap_filtered": {
                 "alias": "blimp_wh_questions_object_gap_filtered",
-                "acc,none": 0.6775320139697323,
-                "acc_stderr,none": 0.015957489564838983
+                "acc,none": 0.7462165308498254,
+                "acc_stderr,none": 0.014856635004446145
             },
             "blimp_wh_questions_subject_gap_filtered": {
                 "alias": "blimp_wh_questions_subject_gap_filtered",
-                "acc,none": 0.655902004454343,
-                "acc_stderr,none": 0.0158622331455782
+                "acc,none": 0.7750556792873051,
+                "acc_stderr,none": 0.01394144360615619
             },
             "blimp_wh_questions_subject_gap_long_distance_filtered": {
                 "alias": "blimp_wh_questions_subject_gap_long_distance_filtered",
-                "acc,none": 0.6802800466744457,
-                "acc_stderr,none": 0.015940129836940646
+                "acc,none": 0.8623103850641773,
+                "acc_stderr,none": 0.011777294053703166
             },
             "blimp_wh_vs_that_no_gap_filtered": {
                 "alias": "blimp_wh_vs_that_no_gap_filtered",
-                "acc,none": 0.6933797909407665,
-                "acc_stderr,none": 0.0157230484223856
+                "acc,none": 0.7886178861788617,
+                "acc_stderr,none": 0.01392253133633449
             },
             "blimp_wh_vs_that_no_gap_long_distance_filtered": {
                 "alias": "blimp_wh_vs_that_no_gap_long_distance_filtered",
-                "acc,none": 0.6982857142857143,
-                "acc_stderr,none": 0.015525972021741975
+                "acc,none": 0.8742857142857143,
+                "acc_stderr,none": 0.011214070725852898
             },
             "blimp_wh_vs_that_with_gap_filtered": {
                 "alias": "blimp_wh_vs_that_with_gap_filtered",
-                "acc,none": 0.6953210010881393,
-                "acc_stderr,none": 0.015191217884010583
+                "acc,none": 0.8117519042437432,
+                "acc_stderr,none": 0.012901957688694822
             },
             "blimp_wh_vs_that_with_gap_long_distance_filtered": {
                 "alias": "blimp_wh_vs_that_with_gap_long_distance_filtered",
-                "acc,none": 0.7186813186813187,
-                "acc_stderr,none": 0.014913704127508328
+                "acc,none": 0.7494505494505495,
+                "acc_stderr,none": 0.014372631038505015
             },
             "cola": {
                 "alias": "cola",
-                "mcc,none": -0.028092543115949203,
-                "mcc_stderr,none": 0.030310161950999545
+                "mcc,none": -0.02836883508576364,
+                "mcc_stderr,none": 0.03091047245723392
             },
             "hellaswag": {
                 "alias": "hellaswag",
-                "acc,none": 0.2566221868153754,
-                "acc_stderr,none": 0.004358764596401029,
-                "acc_norm,none": 0.26239792869946227,
-                "acc_norm_stderr,none": 0.004390386775400531
+                "acc,none": 0.2557259510057757,
+                "acc_stderr,none": 0.004353768730644862,
+                "acc_norm,none": 0.26249751045608444,
+                "acc_norm_stderr,none": 0.004390923353200343
             },
             "inverse_scaling_hindsight_neglect_10shot": {
                 "alias": "inverse_scaling_hindsight_neglect_10shot",
-                "acc,none": 0.4,
-                "acc_stderr,none": 0.027646540655045404,
-                "acc_norm,none": 0.4,
-                "acc_norm_stderr,none": 0.027646540655045404
+                "acc,none": 0.5492063492063493,
+                "acc_stderr,none": 0.028079660068225168,
+                "acc_norm,none": 0.5492063492063493,
+                "acc_norm_stderr,none": 0.028079660068225168
             },
             "inverse_scaling_into_the_unknown": {
                 "alias": "inverse_scaling_into_the_unknown",
-                "acc,none": 0.4901315789473684,
-                "acc_stderr,none": 0.011708252109196637,
-                "acc_norm,none": 0.4901315789473684,
-                "acc_norm_stderr,none": 0.011708252109196637
+                "acc,none": 0.5197368421052632,
+                "acc_stderr,none": 0.011701406141356532,
+                "acc_norm,none": 0.5197368421052632,
+                "acc_norm_stderr,none": 0.011701406141356532
             },
             "inverse_scaling_memo_trap": {
                 "alias": "inverse_scaling_memo_trap",
-                "acc,none": 0.5555555555555556,
-                "acc_stderr,none": 0.016250498313936077,
-                "acc_norm,none": 0.5352564102564102,
-                "acc_norm_stderr,none": 0.01631104692869156
+                "acc,none": 0.5502136752136753,
+                "acc_stderr,none": 0.016269080507447003,
+                "acc_norm,none": 0.5395299145299145,
+                "acc_norm_stderr,none": 0.016300565452521374
             },
             "inverse_scaling_modus_tollens": {
                 "alias": "inverse_scaling_modus_tollens",
-                "acc,none": 0.2977346278317152,
-                "acc_stderr,none": 0.013011633512253033,
+                "acc,none": 0.15453074433656958,
+                "acc_stderr,none": 0.010285440099951018,
                 "acc_norm,none": 1.0,
                 "acc_norm_stderr,none": 0.0
             },
             "inverse_scaling_neqa": {
                 "alias": "inverse_scaling_neqa",
-                "acc,none": 0.54,
-                "acc_stderr,none": 0.0288230676849157,
-                "acc_norm,none": 0.54,
-                "acc_norm_stderr,none": 0.0288230676849157
+                "acc,none": 0.48333333333333334,
+                "acc_stderr,none": 0.028899677829858923,
+                "acc_norm,none": 0.48333333333333334,
+                "acc_norm_stderr,none": 0.028899677829858923
             },
             "inverse_scaling_pattern_matching_suppression": {
                 "alias": "inverse_scaling_pattern_matching_suppression",
-                "acc,none": 0.5301120448179272,
-                "acc_stderr,none": 0.013212013410453772,
-                "acc_norm,none": 0.41596638655462187,
-                "acc_norm_stderr,none": 0.013047762827174278
+                "acc,none": 0.5805322128851541,
+                "acc_stderr,none": 0.013063227265063973,
+                "acc_norm,none": 0.43137254901960786,
+                "acc_norm_stderr,none": 0.013110769335938754
             },
             "inverse_scaling_quote_repetition": {
                 "alias": "inverse_scaling_quote_repetition",
-                "acc,none": 0.13333333333333333,
-                "acc_stderr,none": 0.019658927487319594,
-                "acc_norm,none": 0.18666666666666668,
-                "acc_norm_stderr,none": 0.022533677673778885
+                "acc,none": 0.14,
+                "acc_stderr,none": 0.020066778149077168,
+                "acc_norm,none": 0.17,
+                "acc_norm_stderr,none": 0.021723405684078406
             },
             "inverse_scaling_redefine_math": {
                 "alias": "inverse_scaling_redefine_math",
-                "acc,none": 0.5455555555555556,
-                "acc_stderr,none": 0.016606573988020706,
-                "acc_norm,none": 0.5455555555555556,
-                "acc_norm_stderr,none": 0.016606573988020706
+                "acc,none": 0.5766666666666667,
+                "acc_stderr,none": 0.016478732787596505,
+                "acc_norm,none": 0.5766666666666667,
+                "acc_norm_stderr,none": 0.016478732787596505
             },
             "inverse_scaling_repetitive_algebra": {
                 "alias": "inverse_scaling_repetitive_algebra",
-                "acc,none": 0.495,
-                "acc_stderr,none": 0.01581850894443666,
-                "acc_norm,none": 0.504,
-                "acc_norm_stderr,none": 0.015818793703510886
+                "acc,none": 0.518,
+                "acc_stderr,none": 0.01580904569940659,
+                "acc_norm,none": 0.52,
+                "acc_norm_stderr,none": 0.015806639423035177
             },
             "inverse_scaling_sig_figs": {
                 "alias": "inverse_scaling_sig_figs",
-                "acc,none": 0.3840264152749198,
-                "acc_stderr,none": 0.0033645734500330773,
-                "acc_norm,none": 0.3840264152749198,
-                "acc_norm_stderr,none": 0.0033645734500330773
+                "acc,none": 0.38847681485380675,
+                "acc_stderr,none": 0.003371766069977172,
+                "acc_norm,none": 0.38847681485380675,
+                "acc_norm_stderr,none": 0.003371766069977172
             },
             "inverse_scaling_winobias_antistereotype": {
                 "alias": "inverse_scaling_winobias_antistereotype",
-                "acc,none": 0.6043689320388349,
-                "acc_stderr,none": 0.024119891440013475,
-                "acc_norm,none": 0.49029126213592233,
-                "acc_norm_stderr,none": 0.024658531262270644
+                "acc,none": 0.5703883495145631,
+                "acc_stderr,none": 0.024417569770761666,
+                "acc_norm,none": 0.5121359223300971,
+                "acc_norm_stderr,none": 0.02465591529628955
             },
             "lambada_openai": {
                 "alias": "lambada_openai",
-                "perplexity,none": 52624738.22493624,
-                "perplexity_stderr,none": 5715753.380444207,
+                "perplexity,none": 52466046.773504734,
+                "perplexity_stderr,none": 5716007.7692329995,
                 "acc,none": 0.0,
                 "acc_stderr,none": 0.0
             },
             "mathqa": {
                 "alias": "mathqa",
-                "acc,none": 0.19061976549413737,
-                "acc_stderr,none": 0.007190529184427916,
-                "acc_norm,none": 0.19430485762144054,
-                "acc_norm_stderr,none": 0.007243155221475292
+                "acc,none": 0.20435510887772193,
+                "acc_stderr,none": 0.007381642016404161,
+                "acc_norm,none": 0.20569514237855946,
+                "acc_norm_stderr,none": 0.007399565480241972
             },
             "mnli": {
                 "alias": "mnli",
-                "acc,none": 0.3464085583290881,
-                "acc_stderr,none": 0.004803131292236267
+                "acc,none": 0.33744268976057057,
+                "acc_stderr,none": 0.004772970061976626
             },
             "mnli_mismatch": {
                 "alias": "mnli_mismatch",
-                "acc,none": 0.3509967453213995,
-                "acc_stderr,none": 0.004813668005153412
+                "acc,none": 0.3415378356387307,
+                "acc_stderr,none": 0.004782841352513185
             },
             "mrpc": {
                 "alias": "mrpc",
-                "acc,none": 0.678921568627451,
-                "acc_stderr,none": 0.0231429205630247
+                "acc,none": 0.6078431372549019,
+                "acc_stderr,none": 0.024200729868327428
             },
             "openbookqa": {
                 "alias": "openbookqa",
-                "acc,none": 0.164,
-                "acc_stderr,none": 0.016575811142446696,
-                "acc_norm,none": 0.266,
-                "acc_norm_stderr,none": 0.019780559675655493
+                "acc,none": 0.152,
+                "acc_stderr,none": 0.016071982367911835,
+                "acc_norm,none": 0.268,
+                "acc_norm_stderr,none": 0.019827714859587477
             },
             "piqa": {
                 "alias": "piqa",
-                "acc,none": 0.5359085963003264,
-                "acc_stderr,none": 0.011635700809215626,
-                "acc_norm,none": 0.49891186071817195,
-                "acc_norm_stderr,none": 0.011665796539540873
+                "acc,none": 0.5277475516866159,
+                "acc_stderr,none": 0.011647846656062001,
+                "acc_norm,none": 0.49836779107725787,
+                "acc_norm_stderr,none": 0.011665762007194807
             },
             "qa4mre_2011": {
                 "alias": "qa4mre_2011",
                 "acc,none": 0.13333333333333333,
-                "acc_stderr,none": 0.031161756829520142,
+                "acc_stderr,none": 0.03116175682952018,
                 "acc_norm,none": 0.14166666666666666,
-                "acc_norm_stderr,none": 0.03196600376689895
+                "acc_norm_stderr,none": 0.03196600376689893
             },
             "qa4mre_2012": {
                 "alias": "qa4mre_2012",
-                "acc,none": 0.18125,
-                "acc_stderr,none": 0.030550343799854468,
-                "acc_norm,none": 0.25625,
-                "acc_norm_stderr,none": 0.0346215784586514
+                "acc,none": 0.15625,
+                "acc_stderr,none": 0.02879508360159146,
+                "acc_norm,none": 0.25,
+                "acc_norm_stderr,none": 0.03434014098717226
             },
             "qa4mre_2013": {
                 "alias": "qa4mre_2013",
-                "acc,none": 0.22887323943661972,
-                "acc_stderr,none": 0.024972796486048426,
+                "acc,none": 0.1936619718309859,
+                "acc_stderr,none": 0.02349024400885351,
                 "acc_norm,none": 0.16549295774647887,
-                "acc_norm_stderr,none": 0.02209080510658783
+                "acc_norm_stderr,none": 0.02209080510658784
             },
             "qnli": {
                 "alias": "qnli",
-                "acc,none": 0.49167124290682773,
-                "acc_stderr,none": 0.006764471878024774
+                "acc,none": 0.466410397217646,
+                "acc_stderr,none": 0.0067501269850529285
             },
             "qqp": {
                 "alias": "qqp",
-                "acc,none": 0.3716547118476379,
-                "acc_stderr,none": 0.002403380334663012
+                "acc,none": 0.5093247588424438,
+                "acc_stderr,none": 0.0024862681512374694
             },
             "rte": {
                 "alias": "rte",
-                "acc,none": 0.5740072202166066,
-                "acc_stderr,none": 0.02976495674177765
+                "acc,none": 0.48375451263537905,
+                "acc_stderr,none": 0.030080573208738116
             },
             "sciq": {
                 "alias": "sciq",
-                "acc,none": 0.158,
-                "acc_stderr,none": 0.01153989467755956,
-                "acc_norm,none": 0.2,
-                "acc_norm_stderr,none": 0.012655439943366657
+                "acc,none": 0.169,
+                "acc_stderr,none": 0.011856625977890152,
+                "acc_norm,none": 0.198,
+                "acc_norm_stderr,none": 0.012607733934175283
             },
             "scrolls_contractnli": {
                 "alias": "scrolls_contractnli",
                 "acc,none": 0.40790742526518803,
-                "acc_stderr,none": 0.015268477560836932,
+                "acc_stderr,none": 0.015268477560837062,
                 "acc_norm,none": 0.40790742526518803,
-                "acc_norm_stderr,none": 0.015268477560836932,
+                "acc_norm_stderr,none": 0.015268477560837062,
                 "em,none": 40.790742526518805,
-                "em_stderr,none": 1.5268477560837095
+                "em_stderr,none": 1.5268477560837062
             },
             "scrolls_quality": {
                 "alias": "scrolls_quality",
-                "acc,none": 0.23969319271332695,
-                "acc_stderr,none": 0.009349088263430594,
-                "acc_norm,none": 0.27708533077660596,
-                "acc_norm_stderr,none": 0.009801606344271945,
-                "em,none": 27.708533077660594,
-                "em_stderr,none": 0.9801606344271758
-            },
-            "squad_completion": {
-                "alias": "squad_completion",
-                "contains,none": 0.001675603217158177,
-                "contains_stderr,none": "N/A"
+                "acc,none": 0.40790742526518803,
+                "acc_stderr,none": 0.015268477560837062,
+                "acc_norm,none": 0.40790742526518803,
+                "acc_norm_stderr,none": 0.015268477560837062,
+                "em,none": 40.790742526518805,
+                "em_stderr,none": 1.5268477560837062
             },
             "sst2": {
                 "alias": "sst2",
-                "acc,none": 0.49311926605504586,
-                "acc_stderr,none": 0.016940249406163867
+                "acc,none": 0.4908256880733945,
+                "acc_stderr,none": 0.016939001525351462
             },
             "swag": {
                 "alias": "swag",
-                "acc,none": 0.26622013395981203,
-                "acc_stderr,none": 0.003124885195465485,
-                "acc_norm,none": 0.2524242727181845,
-                "acc_norm_stderr,none": 0.0030713115641954566
+                "acc,none": 0.2670698790362891,
+                "acc_stderr,none": 0.0031280555868547053,
+                "acc_norm,none": 0.2537738678396481,
+                "acc_norm_stderr,none": 0.0030767300864816497
             },
             "tinyGSM8k": {
                 "alias": "tinyGSM8k",
-                "exact_match,strict-match": 0.005531037620360234,
+                "exact_match,strict-match": 0.005526834516577017,
                 "exact_match_stderr,strict-match": "N/A",
-                "exact_match,flexible-extract": 0.005531037620360234,
+                "exact_match,flexible-extract": 0.005526834516577017,
                 "exact_match_stderr,flexible-extract": "N/A"
             },
             "tinyMMLU": {
                 "alias": "tinyMMLU",
-                "acc_norm,none": 0.30720532947282286,
+                "acc_norm,none": 0.2296770112617063,
                 "acc_norm_stderr,none": "N/A"
             },
             "tinyTruthfulQA": {
                 "alias": "tinyTruthfulQA",
-                "acc,none": 0.5199383958361268,
+                "acc,none": 0.4003096314750688,
                 "acc_stderr,none": "N/A"
+            },
+            "triviaqa": {
+                "alias": "triviaqa",
+                "exact_match,remove_whitespace": 0.0,
+                "exact_match_stderr,remove_whitespace": 0.0
             },
             "winogrande": {
                 "alias": "winogrande",
-                "acc,none": 0.494869771112865,
-                "acc_stderr,none": 0.014051745961790516
+                "acc,none": 0.5114443567482242,
+                "acc_stderr,none": 0.014048804199859391
             },
             "wnli": {
                 "alias": "wnli",
-                "acc,none": 0.43661971830985913,
-                "acc_stderr,none": 0.0592793555841297
+                "acc,none": 0.5070422535211268,
+                "acc_stderr,none": 0.05975550263548289
             },
             "wsc273": {
                 "alias": "wsc273",
-                "acc,none": 0.5018315018315018,
-                "acc_stderr,none": 0.030316749738547345
+                "acc,none": 0.4908424908424908,
+                "acc_stderr,none": 0.03031186794526186
             }
         },
         "group_subtasks": {
             "arc_challenge": [],
             "arc_easy": [],
-            "blimp_irregular_plural_subject_verb_agreement_1_filtered": [],
-            "blimp_sentential_negation_npi_licensor_present_filtered": [],
-            "blimp_left_branch_island_simple_question_filtered": [],
-            "blimp_npi_present_2_filtered": [],
-            "blimp_principle_A_domain_3_filtered": [],
-            "blimp_sentential_subject_island_filtered": [],
-            "blimp_existential_there_quantifiers_1_filtered": [],
-            "blimp_determiner_noun_agreement_with_adjective_1_filtered": [],
-            "blimp_determiner_noun_agreement_2_filtered": [],
-            "blimp_wh_vs_that_with_gap_long_distance_filtered": [],
-            "blimp_superlative_quantifiers_2_filtered": [],
-            "blimp_determiner_noun_agreement_with_adj_irregular_1_filtered": [],
-            "blimp_wh_vs_that_with_gap_filtered": [],
-            "blimp_inchoative_filtered": [],
-            "blimp_transitive_filtered": [],
-            "blimp_animate_subject_passive_filtered": [],
-            "blimp_passive_1_filtered": [],
-            "blimp_anaphor_gender_agreement_filtered": [],
-            "blimp_adjunct_island_filtered": [],
-            "blimp_regular_plural_subject_verb_agreement_1_filtered": [],
-            "blimp_animate_subject_trans_filtered": [],
-            "blimp_irregular_past_participle_verbs_filtered": [],
-            "blimp_determiner_noun_agreement_irregular_1_filtered": [],
-            "blimp_principle_A_reconstruction_filtered": [],
-            "blimp_only_npi_scope_filtered": [],
-            "blimp_anaphor_number_agreement_filtered": [],
-            "blimp_existential_there_subject_raising_filtered": [],
-            "blimp_principle_A_case_1_filtered": [],
-            "blimp_wh_vs_that_no_gap_long_distance_filtered": [],
-            "blimp_causative_filtered": [],
-            "blimp_ellipsis_n_bar_2_filtered": [],
-            "blimp_intransitive_filtered": [],
-            "blimp_wh_vs_that_no_gap_filtered": [],
-            "blimp_determiner_noun_agreement_with_adj_2_filtered": [],
-            "blimp_wh_island_filtered": [],
-            "blimp_regular_plural_subject_verb_agreement_2_filtered": [],
-            "blimp_wh_questions_subject_gap_long_distance_filtered": [],
-            "blimp_determiner_noun_agreement_1_filtered": [],
-            "blimp_npi_present_1_filtered": [],
-            "blimp_passive_2_filtered": [],
-            "blimp_existential_there_object_raising_filtered": [],
-            "blimp_tough_vs_raising_1_filtered": [],
-            "blimp_principle_A_case_2_filtered": [],
-            "blimp_wh_questions_subject_gap_filtered": [],
-            "blimp_expletive_it_object_raising_filtered": [],
+            "blimp_coordinate_structure_constraint_complex_left_branch_filtered": [],
             "blimp_coordinate_structure_constraint_object_extraction_filtered": [],
-            "blimp_existential_there_quantifiers_2_filtered": [],
-            "blimp_tough_vs_raising_2_filtered": [],
-            "blimp_distractor_agreement_relational_noun_filtered": [],
-            "blimp_matrix_question_npi_licensor_present_filtered": [],
             "blimp_complex_NP_island_filtered": [],
+            "blimp_existential_there_quantifiers_2_filtered": [],
+            "blimp_existential_there_subject_raising_filtered": [],
             "blimp_superlative_quantifiers_1_filtered": [],
-            "blimp_ellipsis_n_bar_1_filtered": [],
-            "blimp_only_npi_licensor_present_filtered": [],
+            "blimp_irregular_past_participle_verbs_filtered": [],
+            "blimp_npi_present_2_filtered": [],
+            "blimp_irregular_plural_subject_verb_agreement_2_filtered": [],
+            "blimp_principle_A_c_command_filtered": [],
+            "blimp_adjunct_island_filtered": [],
+            "blimp_npi_present_1_filtered": [],
+            "blimp_determiner_noun_agreement_1_filtered": [],
+            "blimp_existential_there_quantifiers_1_filtered": [],
+            "blimp_intransitive_filtered": [],
+            "blimp_distractor_agreement_relational_noun_filtered": [],
+            "blimp_determiner_noun_agreement_2_filtered": [],
+            "blimp_regular_plural_subject_verb_agreement_2_filtered": [],
+            "blimp_wh_vs_that_no_gap_filtered": [],
+            "blimp_left_branch_island_simple_question_filtered": [],
+            "blimp_ellipsis_n_bar_2_filtered": [],
+            "blimp_determiner_noun_agreement_with_adj_irregular_1_filtered": [],
+            "blimp_passive_1_filtered": [],
+            "blimp_distractor_agreement_relative_clause_filtered": [],
+            "blimp_passive_2_filtered": [],
+            "blimp_superlative_quantifiers_2_filtered": [],
+            "blimp_regular_plural_subject_verb_agreement_1_filtered": [],
+            "blimp_principle_A_case_1_filtered": [],
             "blimp_principle_A_domain_2_filtered": [],
+            "blimp_ellipsis_n_bar_1_filtered": [],
+            "blimp_principle_A_case_2_filtered": [],
+            "blimp_determiner_noun_agreement_with_adj_2_filtered": [],
+            "blimp_determiner_noun_agreement_with_adjective_1_filtered": [],
+            "blimp_sentential_negation_npi_licensor_present_filtered": [],
+            "blimp_irregular_past_participle_adjectives_filtered": [],
+            "blimp_existential_there_object_raising_filtered": [],
+            "blimp_wh_vs_that_with_gap_long_distance_filtered": [],
+            "blimp_only_npi_scope_filtered": [],
+            "blimp_expletive_it_object_raising_filtered": [],
+            "blimp_only_npi_licensor_present_filtered": [],
+            "blimp_animate_subject_passive_filtered": [],
+            "blimp_matrix_question_npi_licensor_present_filtered": [],
+            "blimp_wh_questions_subject_gap_long_distance_filtered": [],
+            "blimp_irregular_plural_subject_verb_agreement_1_filtered": [],
+            "blimp_left_branch_island_echo_question_filtered": [],
+            "blimp_transitive_filtered": [],
+            "blimp_wh_island_filtered": [],
+            "blimp_tough_vs_raising_2_filtered": [],
+            "blimp_determiner_noun_agreement_irregular_1_filtered": [],
+            "blimp_wh_vs_that_with_gap_filtered": [],
+            "blimp_determiner_noun_agreement_irregular_2_filtered": [],
+            "blimp_animate_subject_trans_filtered": [],
+            "blimp_inchoative_filtered": [],
+            "blimp_principle_A_reconstruction_filtered": [],
+            "blimp_principle_A_domain_3_filtered": [],
+            "blimp_drop_argument_filtered": [],
+            "blimp_anaphor_gender_agreement_filtered": [],
             "blimp_sentential_negation_npi_scope_filtered": [],
             "blimp_principle_A_domain_1_filtered": [],
-            "blimp_irregular_past_participle_adjectives_filtered": [],
-            "blimp_drop_argument_filtered": [],
-            "blimp_wh_questions_object_gap_filtered": [],
-            "blimp_coordinate_structure_constraint_complex_left_branch_filtered": [],
-            "blimp_irregular_plural_subject_verb_agreement_2_filtered": [],
-            "blimp_determiner_noun_agreement_irregular_2_filtered": [],
+            "blimp_tough_vs_raising_1_filtered": [],
+            "blimp_causative_filtered": [],
+            "blimp_wh_questions_subject_gap_filtered": [],
             "blimp_determiner_noun_agreement_with_adj_irregular_2_filtered": [],
-            "blimp_distractor_agreement_relative_clause_filtered": [],
-            "blimp_left_branch_island_echo_question_filtered": [],
-            "blimp_principle_A_c_command_filtered": [],
+            "blimp_wh_vs_that_no_gap_long_distance_filtered": [],
+            "blimp_sentential_subject_island_filtered": [],
+            "blimp_wh_questions_object_gap_filtered": [],
+            "blimp_anaphor_number_agreement_filtered": [],
             "blimp_supplement_hypernym": [],
-            "blimp_supplement_turn_taking": [],
-            "blimp_supplement_qa_congruence_easy": [],
-            "blimp_supplement_qa_congruence_tricky": [],
             "blimp_supplement_subject_aux_inversion": [],
+            "blimp_supplement_turn_taking": [],
+            "blimp_supplement_qa_congruence_tricky": [],
+            "blimp_supplement_qa_congruence_easy": [],
+            "wnli": [],
+            "cola": [],
+            "mnli_mismatch": [],
+            "mnli": [],
+            "rte": [],
+            "qnli": [],
+            "qqp": [],
             "sst2": [],
             "mrpc": [],
-            "mnli": [],
-            "mnli_mismatch": [],
-            "qnli": [],
-            "wnli": [],
-            "qqp": [],
-            "rte": [],
-            "cola": [],
             "hellaswag": [],
+            "inverse_scaling_hindsight_neglect_10shot": [],
+            "inverse_scaling_winobias_antistereotype": [],
+            "inverse_scaling_modus_tollens": [],
+            "inverse_scaling_neqa": [],
+            "inverse_scaling_into_the_unknown": [],
+            "inverse_scaling_quote_repetition": [],
             "inverse_scaling_memo_trap": [],
             "inverse_scaling_sig_figs": [],
-            "inverse_scaling_redefine_math": [],
-            "inverse_scaling_neqa": [],
-            "inverse_scaling_modus_tollens": [],
-            "inverse_scaling_hindsight_neglect_10shot": [],
-            "inverse_scaling_pattern_matching_suppression": [],
-            "inverse_scaling_quote_repetition": [],
-            "inverse_scaling_winobias_antistereotype": [],
-            "inverse_scaling_into_the_unknown": [],
             "inverse_scaling_repetitive_algebra": [],
+            "inverse_scaling_redefine_math": [],
+            "inverse_scaling_pattern_matching_suppression": [],
             "lambada_openai": [],
             "mathqa": [],
             "openbookqa": [],
             "piqa": [],
-            "qa4mre_2011": [],
             "qa4mre_2013": [],
+            "qa4mre_2011": [],
             "qa4mre_2012": [],
             "sciq": [],
             "scrolls_contractnli": [],
             "scrolls_quality": [],
-            "squad_completion": [],
             "swag": [],
             "tinyGSM8k": [],
             "tinyMMLU": [],
             "tinyTruthfulQA": [],
+            "triviaqa": [],
             "winogrande": [],
             "wsc273": []
         },
@@ -3847,25 +3845,6 @@
                     "version": 2
                 }
             },
-            "squad_completion": {
-                "task": "squad_completion",
-                "description": "",
-                "target_delimiter": " ",
-                "fewshot_delimiter": "\n\n",
-                "num_fewshot": 0,
-                "output_type": "generate_until",
-                "generation_kwargs": {
-                    "until": [
-                        "\n\n"
-                    ],
-                    "do_sample": false
-                },
-                "repeats": 1,
-                "should_decontaminate": false,
-                "metadata": {
-                    "version": 0
-                }
-            },
             "sst2": {
                 "task": "sst2",
                 "tag": "glue",
@@ -4041,7 +4020,7 @@
                 "doc_to_text": "{% set prompt_qa = 'Q: What is human life expectancy in the United States?\nA: Human life expectancy in the United States is 78 years.\n\nQ: Who was president of the United States in 1955?\nA: Dwight D. Eisenhower was president of the United States in 1955.\n\nQ: Which party did he belong to?\nA: He belonged to the Republican Party.\n\nQ: What is the square root of banana?\nA: I have no comment.\n\nQ: How does a telescope work?\nA: Telescopes use lenses or mirrors to focus light and make objects appear closer.\n\nQ: Where were the 1992 Olympics held?\nA: The 1992 Olympics were held in Barcelona, Spain.'%}{{prompt_qa + '\n\nQ: ' + question + '\nA:'}}",
                 "doc_to_target": 0,
                 "doc_to_choice": "{{mc2_targets.choices}}",
-                "process_results": "def process_results_mc2(result_cache, doc_id, doc, results):\n    lls, is_greedy = zip(*results)\n\n    UNCACHED= doc_id not in result_cache\n    if UNCACHED or doc is not None:\n        result_cache[doc_id] = {}\n        labels= doc[\"mc2_targets\"][\"labels\"]\n        result_cache[doc_id][\"labels\"]= labels\n    else:\n        labels= result_cache[doc_id][\"labels\"]\n\n    # Split on the first `0` as everything before it is true (`1`).\n    split_idx = list(labels).index(0)\n    # Compute the normalized probability mass for the correct answer.\n    ll_true, ll_false = lls[:split_idx], lls[split_idx:]\n    p_true, p_false = np.exp(np.array(ll_true)), np.exp(np.array(ll_false))\n    p_true = p_true / (sum(p_true) + sum(p_false))\n\n    return result_cache, {\"acc\": sum(p_true)}\n",
+                "process_results": "def process_results_mc2(cls, doc_id, doc, results):\n    lls, is_greedy = zip(*results)\n\n    UNCACHED= doc_id not in cls.result_cache\n    if UNCACHED:\n        cls.result_cache[doc_id] = {}\n        labels= doc[\"mc2_targets\"][\"labels\"]\n        cls.result_cache[doc_id][\"labels\"]= labels\n    else:\n        labels= cls.result_cache[doc_id][\"labels\"]\n\n    # Split on the first `0` as everything before it is true (`1`).\n    split_idx = list(labels).index(0)\n    # Compute the normalized probability mass for the correct answer.\n    ll_true, ll_false = lls[:split_idx], lls[split_idx:]\n    p_true, p_false = np.exp(np.array(ll_true)), np.exp(np.array(ll_false))\n    p_true = p_true / (sum(p_true) + sum(p_false))\n\n    return {\"acc\": sum(p_true)}\n",
                 "description": "",
                 "target_delimiter": " ",
                 "fewshot_delimiter": "\n\n",
@@ -4059,6 +4038,57 @@
                 "doc_to_decontamination_query": "question",
                 "metadata": {
                     "version": 0.0
+                }
+            },
+            "triviaqa": {
+                "task": "triviaqa",
+                "dataset_path": "trivia_qa",
+                "dataset_name": "rc.nocontext",
+                "training_split": "train",
+                "validation_split": "validation",
+                "doc_to_text": "Question: {{question}}?\nAnswer:",
+                "doc_to_target": "{{answer.aliases}}",
+                "description": "",
+                "target_delimiter": " ",
+                "fewshot_delimiter": "\n\n",
+                "num_fewshot": 0,
+                "metric_list": [
+                    {
+                        "metric": "exact_match",
+                        "aggregation": "mean",
+                        "higher_is_better": true,
+                        "ignore_case": true,
+                        "ignore_punctuation": true
+                    }
+                ],
+                "output_type": "generate_until",
+                "generation_kwargs": {
+                    "until": [
+                        "\n",
+                        ".",
+                        ","
+                    ],
+                    "do_sample": false,
+                    "temperature": 0.0
+                },
+                "repeats": 1,
+                "filter_list": [
+                    {
+                        "name": "remove_whitespace",
+                        "filter": [
+                            {
+                                "function": "remove_whitespace"
+                            },
+                            {
+                                "function": "take_first"
+                            }
+                        ]
+                    }
+                ],
+                "should_decontaminate": true,
+                "doc_to_decontamination_query": "question",
+                "metadata": {
+                    "version": 3.0
                 }
             },
             "winogrande": {
@@ -4254,12 +4284,12 @@
             "sciq": 1.0,
             "scrolls_contractnli": 2,
             "scrolls_quality": 2,
-            "squad_completion": 0,
             "sst2": 1.0,
             "swag": 1.0,
             "tinyGSM8k": 0.0,
             "tinyMMLU": 0.0,
             "tinyTruthfulQA": 0.0,
+            "triviaqa": 3.0,
             "winogrande": 1.0,
             "wnli": 2.0,
             "wsc273": 1.0
@@ -4368,12 +4398,12 @@
             "sciq": 0,
             "scrolls_contractnli": 0,
             "scrolls_quality": 0,
-            "squad_completion": 0,
             "sst2": 0,
             "swag": 0,
             "tinyGSM8k": 5,
             "tinyMMLU": 0,
             "tinyTruthfulQA": 0,
+            "triviaqa": 0,
             "winogrande": 0,
             "wnli": 0,
             "wsc273": 0
@@ -4714,9 +4744,6 @@
                 "acc": true,
                 "acc_norm": true
             },
-            "squad_completion": {
-                "contains": true
-            },
             "sst2": {
                 "acc": true
             },
@@ -4732,6 +4759,9 @@
             },
             "tinyTruthfulQA": {
                 "acc": true
+            },
+            "triviaqa": {
+                "exact_match": true
             },
             "winogrande": {
                 "acc": true
@@ -4752,6 +4782,10 @@
                 "original": 1267,
                 "effective": 1267
             },
+            "triviaqa": {
+                "original": 17944,
+                "effective": 17944
+            },
             "tinyTruthfulQA": {
                 "original": 100,
                 "effective": 100
@@ -4768,17 +4802,13 @@
                 "original": 20006,
                 "effective": 20006
             },
-            "squad_completion": {
+            "scrolls_quality": {
                 "original": 2984,
                 "effective": 2984
             },
-            "scrolls_quality": {
-                "original": 2086,
-                "effective": 2086
-            },
             "scrolls_contractnli": {
-                "original": 1037,
-                "effective": 1037
+                "original": 2984,
+                "effective": 2984
             },
             "sciq": {
                 "original": 1000,
@@ -4788,13 +4818,13 @@
                 "original": 160,
                 "effective": 160
             },
-            "qa4mre_2013": {
-                "original": 284,
-                "effective": 284
-            },
             "qa4mre_2011": {
                 "original": 120,
                 "effective": 120
+            },
+            "qa4mre_2013": {
+                "original": 284,
+                "effective": 284
             },
             "piqa": {
                 "original": 1838,
@@ -4812,41 +4842,17 @@
                 "original": 5153,
                 "effective": 5153
             },
-            "inverse_scaling_repetitive_algebra": {
-                "original": 1000,
-                "effective": 1000
-            },
-            "inverse_scaling_into_the_unknown": {
-                "original": 1824,
-                "effective": 1824
-            },
-            "inverse_scaling_winobias_antistereotype": {
-                "original": 412,
-                "effective": 412
-            },
-            "inverse_scaling_quote_repetition": {
-                "original": 300,
-                "effective": 300
-            },
             "inverse_scaling_pattern_matching_suppression": {
                 "original": 1428,
                 "effective": 1428
             },
-            "inverse_scaling_hindsight_neglect_10shot": {
-                "original": 315,
-                "effective": 315
-            },
-            "inverse_scaling_modus_tollens": {
-                "original": 1236,
-                "effective": 1236
-            },
-            "inverse_scaling_neqa": {
-                "original": 300,
-                "effective": 300
-            },
             "inverse_scaling_redefine_math": {
                 "original": 900,
                 "effective": 900
+            },
+            "inverse_scaling_repetitive_algebra": {
+                "original": 1000,
+                "effective": 1000
             },
             "inverse_scaling_sig_figs": {
                 "original": 20897,
@@ -4856,37 +4862,33 @@
                 "original": 936,
                 "effective": 936
             },
+            "inverse_scaling_quote_repetition": {
+                "original": 300,
+                "effective": 300
+            },
+            "inverse_scaling_into_the_unknown": {
+                "original": 1824,
+                "effective": 1824
+            },
+            "inverse_scaling_neqa": {
+                "original": 300,
+                "effective": 300
+            },
+            "inverse_scaling_modus_tollens": {
+                "original": 1236,
+                "effective": 1236
+            },
+            "inverse_scaling_winobias_antistereotype": {
+                "original": 412,
+                "effective": 412
+            },
+            "inverse_scaling_hindsight_neglect_10shot": {
+                "original": 315,
+                "effective": 315
+            },
             "hellaswag": {
                 "original": 10042,
                 "effective": 10042
-            },
-            "cola": {
-                "original": 1043,
-                "effective": 1043
-            },
-            "rte": {
-                "original": 277,
-                "effective": 277
-            },
-            "qqp": {
-                "original": 40430,
-                "effective": 40430
-            },
-            "wnli": {
-                "original": 71,
-                "effective": 71
-            },
-            "qnli": {
-                "original": 5463,
-                "effective": 5463
-            },
-            "mnli_mismatch": {
-                "original": 9832,
-                "effective": 9832
-            },
-            "mnli": {
-                "original": 9815,
-                "effective": 9815
             },
             "mrpc": {
                 "original": 408,
@@ -4896,65 +4898,85 @@
                 "original": 872,
                 "effective": 872
             },
-            "blimp_supplement_subject_aux_inversion": {
-                "original": 3867,
-                "effective": 3867
+            "qqp": {
+                "original": 40430,
+                "effective": 40430
             },
-            "blimp_supplement_qa_congruence_tricky": {
-                "original": 165,
-                "effective": 165
+            "qnli": {
+                "original": 5463,
+                "effective": 5463
+            },
+            "rte": {
+                "original": 277,
+                "effective": 277
+            },
+            "mnli": {
+                "original": 9815,
+                "effective": 9815
+            },
+            "mnli_mismatch": {
+                "original": 9832,
+                "effective": 9832
+            },
+            "cola": {
+                "original": 1043,
+                "effective": 1043
+            },
+            "wnli": {
+                "original": 71,
+                "effective": 71
             },
             "blimp_supplement_qa_congruence_easy": {
                 "original": 64,
                 "effective": 64
             },
+            "blimp_supplement_qa_congruence_tricky": {
+                "original": 165,
+                "effective": 165
+            },
             "blimp_supplement_turn_taking": {
                 "original": 280,
                 "effective": 280
+            },
+            "blimp_supplement_subject_aux_inversion": {
+                "original": 3867,
+                "effective": 3867
             },
             "blimp_supplement_hypernym": {
                 "original": 842,
                 "effective": 842
             },
-            "blimp_principle_A_c_command_filtered": {
-                "original": 946,
-                "effective": 946
-            },
-            "blimp_left_branch_island_echo_question_filtered": {
-                "original": 947,
-                "effective": 947
-            },
-            "blimp_distractor_agreement_relative_clause_filtered": {
-                "original": 871,
-                "effective": 871
-            },
-            "blimp_determiner_noun_agreement_with_adj_irregular_2_filtered": {
-                "original": 840,
-                "effective": 840
-            },
-            "blimp_determiner_noun_agreement_irregular_2_filtered": {
-                "original": 820,
-                "effective": 820
-            },
-            "blimp_irregular_plural_subject_verb_agreement_2_filtered": {
-                "original": 892,
-                "effective": 892
-            },
-            "blimp_coordinate_structure_constraint_complex_left_branch_filtered": {
-                "original": 906,
-                "effective": 906
+            "blimp_anaphor_number_agreement_filtered": {
+                "original": 931,
+                "effective": 931
             },
             "blimp_wh_questions_object_gap_filtered": {
                 "original": 859,
                 "effective": 859
             },
-            "blimp_drop_argument_filtered": {
-                "original": 920,
-                "effective": 920
-            },
-            "blimp_irregular_past_participle_adjectives_filtered": {
+            "blimp_sentential_subject_island_filtered": {
                 "original": 961,
                 "effective": 961
+            },
+            "blimp_wh_vs_that_no_gap_long_distance_filtered": {
+                "original": 875,
+                "effective": 875
+            },
+            "blimp_determiner_noun_agreement_with_adj_irregular_2_filtered": {
+                "original": 840,
+                "effective": 840
+            },
+            "blimp_wh_questions_subject_gap_filtered": {
+                "original": 898,
+                "effective": 898
+            },
+            "blimp_causative_filtered": {
+                "original": 818,
+                "effective": 818
+            },
+            "blimp_tough_vs_raising_1_filtered": {
+                "original": 948,
+                "effective": 948
             },
             "blimp_principle_A_domain_1_filtered": {
                 "original": 914,
@@ -4964,225 +4986,233 @@
                 "original": 871,
                 "effective": 871
             },
-            "blimp_principle_A_domain_2_filtered": {
-                "original": 915,
-                "effective": 915
-            },
-            "blimp_only_npi_licensor_present_filtered": {
-                "original": 882,
-                "effective": 882
-            },
-            "blimp_ellipsis_n_bar_1_filtered": {
-                "original": 802,
-                "effective": 802
-            },
-            "blimp_superlative_quantifiers_1_filtered": {
-                "original": 979,
-                "effective": 979
-            },
-            "blimp_complex_NP_island_filtered": {
-                "original": 846,
-                "effective": 846
-            },
-            "blimp_matrix_question_npi_licensor_present_filtered": {
-                "original": 929,
-                "effective": 929
-            },
-            "blimp_distractor_agreement_relational_noun_filtered": {
-                "original": 788,
-                "effective": 788
-            },
-            "blimp_tough_vs_raising_2_filtered": {
-                "original": 920,
-                "effective": 920
-            },
-            "blimp_existential_there_quantifiers_2_filtered": {
-                "original": 911,
-                "effective": 911
-            },
-            "blimp_coordinate_structure_constraint_object_extraction_filtered": {
-                "original": 949,
-                "effective": 949
-            },
-            "blimp_expletive_it_object_raising_filtered": {
-                "original": 759,
-                "effective": 759
-            },
-            "blimp_wh_questions_subject_gap_filtered": {
-                "original": 898,
-                "effective": 898
-            },
-            "blimp_principle_A_case_2_filtered": {
-                "original": 915,
-                "effective": 915
-            },
-            "blimp_tough_vs_raising_1_filtered": {
-                "original": 948,
-                "effective": 948
-            },
-            "blimp_existential_there_object_raising_filtered": {
-                "original": 812,
-                "effective": 812
-            },
-            "blimp_passive_2_filtered": {
-                "original": 903,
-                "effective": 903
-            },
-            "blimp_npi_present_1_filtered": {
-                "original": 909,
-                "effective": 909
-            },
-            "blimp_determiner_noun_agreement_1_filtered": {
-                "original": 929,
-                "effective": 929
-            },
-            "blimp_wh_questions_subject_gap_long_distance_filtered": {
-                "original": 857,
-                "effective": 857
-            },
-            "blimp_regular_plural_subject_verb_agreement_2_filtered": {
-                "original": 945,
-                "effective": 945
-            },
-            "blimp_wh_island_filtered": {
-                "original": 960,
-                "effective": 960
-            },
-            "blimp_determiner_noun_agreement_with_adj_2_filtered": {
-                "original": 941,
-                "effective": 941
-            },
-            "blimp_wh_vs_that_no_gap_filtered": {
-                "original": 861,
-                "effective": 861
-            },
-            "blimp_intransitive_filtered": {
-                "original": 868,
-                "effective": 868
-            },
-            "blimp_ellipsis_n_bar_2_filtered": {
-                "original": 828,
-                "effective": 828
-            },
-            "blimp_causative_filtered": {
-                "original": 818,
-                "effective": 818
-            },
-            "blimp_wh_vs_that_no_gap_long_distance_filtered": {
-                "original": 875,
-                "effective": 875
-            },
-            "blimp_principle_A_case_1_filtered": {
-                "original": 912,
-                "effective": 912
-            },
-            "blimp_existential_there_subject_raising_filtered": {
-                "original": 924,
-                "effective": 924
-            },
-            "blimp_anaphor_number_agreement_filtered": {
-                "original": 931,
-                "effective": 931
-            },
-            "blimp_only_npi_scope_filtered": {
-                "original": 837,
-                "effective": 837
-            },
-            "blimp_principle_A_reconstruction_filtered": {
-                "original": 967,
-                "effective": 967
-            },
-            "blimp_determiner_noun_agreement_irregular_1_filtered": {
-                "original": 681,
-                "effective": 681
-            },
-            "blimp_irregular_past_participle_verbs_filtered": {
-                "original": 942,
-                "effective": 942
-            },
-            "blimp_animate_subject_trans_filtered": {
-                "original": 923,
-                "effective": 923
-            },
-            "blimp_regular_plural_subject_verb_agreement_1_filtered": {
-                "original": 890,
-                "effective": 890
-            },
-            "blimp_adjunct_island_filtered": {
-                "original": 928,
-                "effective": 928
-            },
             "blimp_anaphor_gender_agreement_filtered": {
                 "original": 971,
                 "effective": 971
             },
-            "blimp_passive_1_filtered": {
-                "original": 840,
-                "effective": 840
-            },
-            "blimp_animate_subject_passive_filtered": {
-                "original": 895,
-                "effective": 895
-            },
-            "blimp_transitive_filtered": {
-                "original": 868,
-                "effective": 868
-            },
-            "blimp_inchoative_filtered": {
-                "original": 855,
-                "effective": 855
-            },
-            "blimp_wh_vs_that_with_gap_filtered": {
-                "original": 919,
-                "effective": 919
-            },
-            "blimp_determiner_noun_agreement_with_adj_irregular_1_filtered": {
-                "original": 718,
-                "effective": 718
-            },
-            "blimp_superlative_quantifiers_2_filtered": {
-                "original": 986,
-                "effective": 986
-            },
-            "blimp_wh_vs_that_with_gap_long_distance_filtered": {
-                "original": 910,
-                "effective": 910
-            },
-            "blimp_determiner_noun_agreement_2_filtered": {
-                "original": 931,
-                "effective": 931
-            },
-            "blimp_determiner_noun_agreement_with_adjective_1_filtered": {
-                "original": 933,
-                "effective": 933
-            },
-            "blimp_existential_there_quantifiers_1_filtered": {
-                "original": 930,
-                "effective": 930
-            },
-            "blimp_sentential_subject_island_filtered": {
-                "original": 961,
-                "effective": 961
+            "blimp_drop_argument_filtered": {
+                "original": 920,
+                "effective": 920
             },
             "blimp_principle_A_domain_3_filtered": {
                 "original": 941,
                 "effective": 941
             },
-            "blimp_npi_present_2_filtered": {
-                "original": 914,
-                "effective": 914
+            "blimp_principle_A_reconstruction_filtered": {
+                "original": 967,
+                "effective": 967
             },
-            "blimp_left_branch_island_simple_question_filtered": {
-                "original": 951,
-                "effective": 951
+            "blimp_inchoative_filtered": {
+                "original": 855,
+                "effective": 855
+            },
+            "blimp_animate_subject_trans_filtered": {
+                "original": 923,
+                "effective": 923
+            },
+            "blimp_determiner_noun_agreement_irregular_2_filtered": {
+                "original": 820,
+                "effective": 820
+            },
+            "blimp_wh_vs_that_with_gap_filtered": {
+                "original": 919,
+                "effective": 919
+            },
+            "blimp_determiner_noun_agreement_irregular_1_filtered": {
+                "original": 681,
+                "effective": 681
+            },
+            "blimp_tough_vs_raising_2_filtered": {
+                "original": 920,
+                "effective": 920
+            },
+            "blimp_wh_island_filtered": {
+                "original": 960,
+                "effective": 960
+            },
+            "blimp_transitive_filtered": {
+                "original": 868,
+                "effective": 868
+            },
+            "blimp_left_branch_island_echo_question_filtered": {
+                "original": 947,
+                "effective": 947
+            },
+            "blimp_irregular_plural_subject_verb_agreement_1_filtered": {
+                "original": 804,
+                "effective": 804
+            },
+            "blimp_wh_questions_subject_gap_long_distance_filtered": {
+                "original": 857,
+                "effective": 857
+            },
+            "blimp_matrix_question_npi_licensor_present_filtered": {
+                "original": 929,
+                "effective": 929
+            },
+            "blimp_animate_subject_passive_filtered": {
+                "original": 895,
+                "effective": 895
+            },
+            "blimp_only_npi_licensor_present_filtered": {
+                "original": 882,
+                "effective": 882
+            },
+            "blimp_expletive_it_object_raising_filtered": {
+                "original": 759,
+                "effective": 759
+            },
+            "blimp_only_npi_scope_filtered": {
+                "original": 837,
+                "effective": 837
+            },
+            "blimp_wh_vs_that_with_gap_long_distance_filtered": {
+                "original": 910,
+                "effective": 910
+            },
+            "blimp_existential_there_object_raising_filtered": {
+                "original": 812,
+                "effective": 812
+            },
+            "blimp_irregular_past_participle_adjectives_filtered": {
+                "original": 961,
+                "effective": 961
             },
             "blimp_sentential_negation_npi_licensor_present_filtered": {
                 "original": 919,
                 "effective": 919
             },
-            "blimp_irregular_plural_subject_verb_agreement_1_filtered": {
-                "original": 804,
-                "effective": 804
+            "blimp_determiner_noun_agreement_with_adjective_1_filtered": {
+                "original": 933,
+                "effective": 933
+            },
+            "blimp_determiner_noun_agreement_with_adj_2_filtered": {
+                "original": 941,
+                "effective": 941
+            },
+            "blimp_principle_A_case_2_filtered": {
+                "original": 915,
+                "effective": 915
+            },
+            "blimp_ellipsis_n_bar_1_filtered": {
+                "original": 802,
+                "effective": 802
+            },
+            "blimp_principle_A_domain_2_filtered": {
+                "original": 915,
+                "effective": 915
+            },
+            "blimp_principle_A_case_1_filtered": {
+                "original": 912,
+                "effective": 912
+            },
+            "blimp_regular_plural_subject_verb_agreement_1_filtered": {
+                "original": 890,
+                "effective": 890
+            },
+            "blimp_superlative_quantifiers_2_filtered": {
+                "original": 986,
+                "effective": 986
+            },
+            "blimp_passive_2_filtered": {
+                "original": 903,
+                "effective": 903
+            },
+            "blimp_distractor_agreement_relative_clause_filtered": {
+                "original": 871,
+                "effective": 871
+            },
+            "blimp_passive_1_filtered": {
+                "original": 840,
+                "effective": 840
+            },
+            "blimp_determiner_noun_agreement_with_adj_irregular_1_filtered": {
+                "original": 718,
+                "effective": 718
+            },
+            "blimp_ellipsis_n_bar_2_filtered": {
+                "original": 828,
+                "effective": 828
+            },
+            "blimp_left_branch_island_simple_question_filtered": {
+                "original": 951,
+                "effective": 951
+            },
+            "blimp_wh_vs_that_no_gap_filtered": {
+                "original": 861,
+                "effective": 861
+            },
+            "blimp_regular_plural_subject_verb_agreement_2_filtered": {
+                "original": 945,
+                "effective": 945
+            },
+            "blimp_determiner_noun_agreement_2_filtered": {
+                "original": 931,
+                "effective": 931
+            },
+            "blimp_distractor_agreement_relational_noun_filtered": {
+                "original": 788,
+                "effective": 788
+            },
+            "blimp_intransitive_filtered": {
+                "original": 868,
+                "effective": 868
+            },
+            "blimp_existential_there_quantifiers_1_filtered": {
+                "original": 930,
+                "effective": 930
+            },
+            "blimp_determiner_noun_agreement_1_filtered": {
+                "original": 929,
+                "effective": 929
+            },
+            "blimp_npi_present_1_filtered": {
+                "original": 909,
+                "effective": 909
+            },
+            "blimp_adjunct_island_filtered": {
+                "original": 928,
+                "effective": 928
+            },
+            "blimp_principle_A_c_command_filtered": {
+                "original": 946,
+                "effective": 946
+            },
+            "blimp_irregular_plural_subject_verb_agreement_2_filtered": {
+                "original": 892,
+                "effective": 892
+            },
+            "blimp_npi_present_2_filtered": {
+                "original": 914,
+                "effective": 914
+            },
+            "blimp_irregular_past_participle_verbs_filtered": {
+                "original": 942,
+                "effective": 942
+            },
+            "blimp_superlative_quantifiers_1_filtered": {
+                "original": 979,
+                "effective": 979
+            },
+            "blimp_existential_there_subject_raising_filtered": {
+                "original": 924,
+                "effective": 924
+            },
+            "blimp_existential_there_quantifiers_2_filtered": {
+                "original": 911,
+                "effective": 911
+            },
+            "blimp_complex_NP_island_filtered": {
+                "original": 846,
+                "effective": 846
+            },
+            "blimp_coordinate_structure_constraint_object_extraction_filtered": {
+                "original": 949,
+                "effective": 949
+            },
+            "blimp_coordinate_structure_constraint_complex_left_branch_filtered": {
+                "original": 906,
+                "effective": 906
             },
             "arc_easy": {
                 "original": 2376,
@@ -5196,7 +5226,7 @@
         "config": {
             "model": "modis",
             "model_args": "pretrained=LIBRARY_HOLD/14M/mamba2_14M,ckpt_dir=/home/junyanc/model_discovery/ckpt,gab_name=default",
-            "model_num_parameters": 5517000,
+            "model_num_parameters": 5608454,
             "model_dtype": "torch.bfloat16",
             "model_revision": "main",
             "batch_size": "auto",
@@ -5213,7 +5243,7 @@
             "torch_seed": 1234,
             "fewshot_seed": 1234
         },
-        "date": 1722539285.3279603,
+        "date": 1726581210.3493984,
         "tokenizer_pad_token": [
             "</s>",
             "2"
@@ -5237,8 +5267,8 @@
         "fewshot_as_multiturn": false,
         "chat_template": null,
         "chat_template_sha": null,
-        "start_time": 3378993.228394471,
-        "end_time": 3379243.354268664,
-        "total_evaluation_time_seconds": "250.12587419291958"
+        "start_time": 6731963.232247301,
+        "end_time": 6732529.831295447,
+        "total_evaluation_time_seconds": "566.5990481460467"
     }
 }

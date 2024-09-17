@@ -398,7 +398,7 @@ class GABFormatChecker:
         return not bool(self.errors),report,self.hints,self.gab_code
 
 
-def get_system_info_str():
+def get_system_info_str(cpu_only=False):
     system_info=''
     # CPU Information
     cpu_info = {
@@ -412,7 +412,7 @@ def get_system_info_str():
     system_info+=f'{cpu_info["Processor"]}'       
 
     # GPU Information
-    if torch.cuda.is_available():
+    if torch.cuda.is_available() and not cpu_only:
         gpu_info = []
         for i in range(torch.cuda.device_count()):
             gpu_info.append({
@@ -470,11 +470,13 @@ class EffectiveChecker: # WORING IN PROGRESS
         return {'run_time':runtime,'loss':loss,'gradient_of_losses':gradient_of_losses,'max_memory_allocated':max_memory_allocated,
                 'total_flos':total_flos,'train_loss':train_loss}
 
-    def check_training(self, config, model) -> None:
+    def check_training(self, config, model, cpu_only=False) -> None:
+        if cpu_only:
+            return
         benchmarks=U.load_json(f'{CACHEPATH}/checker_benchmark.json')
         if 'training' not in benchmarks:
             benchmarks['training']={}
-        cache_key=f'{config.scale}_{get_system_info_str()}'
+        cache_key=f'{config.scale}_{get_system_info_str(cpu_only)}'
         if cache_key not in benchmarks['training']:
             benchmark=self.get_benchmark(config)
             benchmarks['training'][cache_key]=benchmark
@@ -715,7 +717,7 @@ class Checker(exec_utils.BaseTool):
         return True
 
 
-    def _check_differentiable(self, model, vocab_size: int) -> bool:
+    def _check_differentiable(self, model, vocab_size: int, cpu_only=False) -> bool:
         """Check if the model is differentiable.
         A basic check, run effectiveness checker for more practical gradient checks.
         
@@ -728,7 +730,7 @@ class Checker(exec_utils.BaseTool):
             True if the model is differentiable, False if it is not.
         """
         mock_input = torch.randint(0, vocab_size, (2, DEFAULT_CONTEXT_LENGTH)).cuda() if \
-            torch.cuda.is_available() else torch.randint(0, vocab_size, (2, DEFAULT_CONTEXT_LENGTH))
+            torch.cuda.is_available() and not cpu_only else torch.randint(0, vocab_size, (2, DEFAULT_CONTEXT_LENGTH))
         self.rprint(f'Checking differentiability... Mock input shape: {mock_input.shape}.')
         
         criterion = nn.CrossEntropyLoss()
@@ -806,7 +808,7 @@ class Checker(exec_utils.BaseTool):
         self.rprint(errors)
         return checkpass,gab_code
     
-    def _check_forward_pass(self, gab, emb, vocab_size: int) -> bool:
+    def _check_forward_pass(self, gab, emb, vocab_size: int, cpu_only=False) -> bool:
         """Check if the forward pass is correct 
 
         :param gab: 
@@ -816,7 +818,7 @@ class Checker(exec_utils.BaseTool):
 
         """
         mock_input = torch.randint(0, vocab_size, (2, DEFAULT_CONTEXT_LENGTH)).cuda() if \
-          torch.cuda.is_available() else torch.randint(0, vocab_size, (2, DEFAULT_CONTEXT_LENGTH))
+          torch.cuda.is_available() and not cpu_only else torch.randint(0, vocab_size, (2, DEFAULT_CONTEXT_LENGTH))
         mock_input = mock_input.to(gab.device)
         self.rprint(f'Checking forward pass... Mock input shape: {mock_input.shape}.')
         emb.eval()
@@ -841,7 +843,7 @@ class Checker(exec_utils.BaseTool):
         return True
     
 
-    def check(self, config, gab_code: str, name: str, eff=False) -> bool:
+    def check(self, config, gab_code: str, name: str, eff=False, cpu_only=False, reformat_only=False) -> bool:
         """Runs through a bunch of checks for the new module at path 
 
         :param path: 
@@ -856,6 +858,9 @@ class Checker(exec_utils.BaseTool):
             self.rprint('Checking the designed model...')
             try:
                 checkpass,gab_code = self._check_format_and_reformat(gab_code)
+                if reformat_only:
+                    check_report=self.get_report(gab_code)
+                    return checkpass,check_report,gab_code,{}
                 assert checkpass
             except AssertionError:
                 check_report=self.get_report(gab_code)
@@ -889,7 +894,7 @@ class Checker(exec_utils.BaseTool):
                 self.rprint('Reloading the model...')
                 _test_output = io.StringIO()
                 with redirect_stdout(_test_output), redirect_stderr(_test_output):
-                    glm,_ = reload_gam(config,gab_code,name,**U.get_factory_kwargs())
+                    glm,_ = reload_gam(config,gab_code,name,**U.get_factory_kwargs(cpu_only))
                 captured = _test_output.getvalue()
                 if captured != '':
                     captured_output += f' - Captured outputs during the loading and initialization of the model:\n\nBEGIN OF CAPTURED OUTPUT:\n\n{captured}\n\nEND OF CAPTURED OUTPUT.\n\n'
@@ -952,14 +957,15 @@ class Checker(exec_utils.BaseTool):
                 checkpass1=self._check_forward_pass(
                     gab,
                     gam.embedding,
-                    config.vocab_size
+                    config.vocab_size,
+                    cpu_only
                 )
                 assert checkpass1
                 checkpass2=self._check_causality(
                     gab,
                     gam.d_model
                 )
-                checkpass3=self._check_differentiable(glm,config.vocab_size)
+                checkpass3=self._check_differentiable(glm,config.vocab_size, cpu_only)
                 if eff:
                     checkpass4,effectiveness=self._check_effectiveness(glm,config)
                     assert checkpass2 and checkpass3 and checkpass4
@@ -1000,87 +1006,101 @@ class Checker(exec_utils.BaseTool):
         return check_report
 
 
-    def tune(self,config,gab_code,name,tune_dim=True)->str: # the model is already correct but we need to tune its scale
+    def tune(self, config, gab_code, name, tune_dim=True, cpu_only=False) -> str:
         print('Tuning the model scale...')
-        d_model=config.d_model
-        n_block=config.n_block
-        # assert d_model%128==0 # initial d_model from config should be a multiple of 128
-        vocab_size=config.vocab_size
-        reference_size=config.reference_size
-        threshold=config.size_threshold
-        UB=int(reference_size*(1+threshold))
-        LB=int(reference_size*(1-threshold))
+        d_model = config.d_model
+        n_block = config.n_block
+        vocab_size = config.vocab_size
+        reference_size = config.reference_size
+        threshold = config.size_threshold
+        UB = int(reference_size * (1 + threshold))
+        LB = int(reference_size * (1 - threshold))
         print(f'Reference size: {reference_size}, threshold: {threshold}, upper bound: {UB}, lower bound: {LB}')
 
-        exec(gab_code,globals())
-        if 'GAB' not in globals(): 
+        exec(gab_code, globals())
+        if 'GAB' not in globals():
             raise NameError("GAB class not defined in the executed code")
 
-        glm,_ = reload_gam(config,gab_code,name,**U.get_factory_kwargs())
-        size=sum(p.numel() for p in glm.parameters())
-        if LB<size<UB:
+        # Ensure model is loaded on CPU
+        factory_kwargs = {} if cpu_only else U.get_factory_kwargs()
+        glm, _ = reload_gam(config, gab_code, name, **factory_kwargs)
+        size = sum(p.numel() for p in glm.parameters())
+        
+        if LB < size < UB:
             print('The model size is already within the threshold.')
             return 'autoconfig={}'
-        
-        # Tune n_blocks first, then d_model, idea is to maximally keep the size of embedding layer first
-        DIR=1 if size<LB else -1
+
+        DIR = 1 if size < LB else -1
+
         while True:
-            n_block+=DIR
+            n_block += DIR
             print(f'Trying n_block={n_block}')
-            auto_cfg={'n_block':n_block}
-            glm,_ = reload_gam(config,gab_code,name,auto_cfg,**U.get_factory_kwargs())
-            size=sum(p.numel() for p in glm.parameters())
-            if LB<size<UB:
+            auto_cfg = {'n_block': n_block}
+            
+            # Reload the model and ensure CPU-only execution
+            del glm  # Clear previous model
+            glm, _ = reload_gam(config, gab_code, name, auto_cfg, **factory_kwargs)
+            size = sum(p.numel() for p in glm.parameters())
+            
+            if LB < size < UB:
                 print('Model after tuned:')
                 glm.print_size()
-                return "autoconfig = {\n    'n_block': "+str(n_block)+"\n}"
-            if (DIR==1 and size>UB) or (DIR==-1 and size<LB):
+                return "autoconfig = {\n    'n_block': " + str(n_block) + "\n}"
+
+            if (DIR == 1 and size > UB) or (DIR == -1 and size < LB):
                 print('The model size requirement cannot be met by tuning n_block.')
                 break
-    
+
         if not tune_dim:
             raise ValueError('The model size requirement cannot be met by tuning n_block.')
-                
+
         print('Tuning d_model...')
 
-        # keep depth first, then width
-        MIN_DIM=96 # model dim is always a multiple of 64 or 96
-        while True: # tune d_model as little as possible
-            if LB<=size<=UB:
+        MIN_DIM = 96  # model dim is always a multiple of 64 or 96
+        while True:  # tune d_model as little as possible
+            if LB <= size <= UB:
                 break
-            elif size<LB:
-                n_block+=1
-            elif size>UB:
-                if d_model<=MIN_DIM:
-                    n_block-=1
+            elif size < LB:
+                n_block += 1
+            elif size > UB:
+                if d_model <= MIN_DIM:
+                    n_block -= 1
                 else:
-                    d_model//=2
+                    d_model //= 2
+            
             print(f'Trying d_model={d_model}, n_block={n_block}')
-            auto_cfg={'d_model':d_model,'n_block':n_block}
-            size=sum(p.numel() for p in glm.parameters())
-        
+            auto_cfg = {'d_model': d_model, 'n_block': n_block}
 
+            del glm  # Clear previous model
+            glm, _ = reload_gam(config, gab_code, name, auto_cfg, **factory_kwargs)
+            size = sum(p.numel() for p in glm.parameters())
 
         print(f'Checking model correctness with d_model={d_model}')
+        step_size = 16
+
         while True:
             try:
-                mock_input=torch.randint(0, vocab_size, (2, DEFAULT_CONTEXT_LENGTH)).to(glm.device)
+                # Ensure mock input runs on CPU
+                mock_input = torch.randint(0, vocab_size, (2, DEFAULT_CONTEXT_LENGTH))
                 _ = glm(mock_input)
                 break
             except Exception as e:
-                d_model+=step_size*DIR
+                d_model += step_size * DIR
                 print(f'The model is incorrect. Trying d_model={d_model}')
-                glm,_ = reload_gam(config,gab_code,name,auto_cfg,**U.get_factory_kwargs())
-                size=sum(p.numel() for p in glm.parameters())
-                if size>reference_size*(1+2*threshold) or size<reference_size*(1-2*threshold):
-                    # Not likely to happen when reference d_model is a multiple of 128 and step_size is at least 8 or 12, but leave it for safety
+                auto_cfg = {'d_model': d_model, 'n_block': n_block}
+                
+                del glm  # Clear previous model
+                glm, _ = reload_gam(config, gab_code, name, auto_cfg, **factory_kwargs)
+                size = sum(p.numel() for p in glm.parameters())
+
+                if size > reference_size * (1 + 2 * threshold) or size < reference_size * (1 - 2 * threshold):
                     raise ValueError('The model is too far from the reference size and cannot be correctly tuned.')
 
         print(f'The model is correct with d_model = {d_model}')
         print('Model after tuned:')
         glm.print_size()
-        return "autoconfig = {\n    'd_model': "+str(d_model)+"\n    'n_block': "+str(n_block)+"\n}"
-    
+        return "autoconfig = {\n    'd_model': " + str(d_model) + "\n    'n_block': " + str(n_block) + "\n}"
+
     def __call__(self,path: str) -> bool:
         return self.check(path)
 

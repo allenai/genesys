@@ -6,7 +6,7 @@ DEFAULT_CONTEXT_LENGTH = 2048
 # GLUE_TASK_LIST = ["cola","mnli","mrpc","qnli","qqp","rte","sst","wnli"]
 
 STANDARD_EVAL_TASKS = ["lambada_openai","hellaswag","piqa","arc_easy","arc_challenge","winogrande", "openbookqa"] 
-ADDITIONAL_EVAL_TASKS = ["squad_completion","mathqa","sciq","swag","wsc273","scrolls_contractnli","scrolls_quality","qa4mre","triviaqa"]
+ADDITIONAL_EVAL_TASKS = ["mathqa","sciq","swag","wsc273","scrolls_contractnli","scrolls_quality","qa4mre","triviaqa"]
 BABYLM_GROUP = ["blimp_filtered","blimp_supplement"]
 TINY_NON_STANDARD = ["tinyGSM8k", "tinyMMLU", "tinyTruthfulQA"]
 

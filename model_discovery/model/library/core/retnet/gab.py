@@ -141,11 +141,11 @@ class GAB(GABBase):
         Constraints:  Causal, differentiable, parameter number, complexity, parallelizable
     """
 
-    def __init__(self, embed_dim: int, device=None, dtype=None, expand_k:
-        int=1, expand_v: int=2, num_heads: int=8, norm_eps: float=1e-06, **
-        kwargs):
+    def __init__(self, embed_dim: int, block_loc, device=None, dtype=None,
+        expand_k: int=1, expand_v: int=2, num_heads: int=8, norm_eps: float
+        =1e-06, **kwargs):
         factory_kwargs = {'device': device, 'dtype': dtype}
-        super().__init__(embed_dim)
+        super().__init__(embed_dim, block_loc)
         self.hidden_size = embed_dim
         self.attn_norm = RMSNorm(self.hidden_size, eps=norm_eps).to(device=
             device, dtype=dtype)
@@ -164,9 +164,6 @@ class GAB(GABBase):
         return X
 
 
-""" The dictionary of hyperparameters for constructing a GAB layer
-    embed_dim, device, dtype should NOT be included in gab_config
-"""
 gab_config = {'expand_k': 1, 'expand_v': 2, 'num_heads': 8, 'norm_eps': 1e-06}
 
 

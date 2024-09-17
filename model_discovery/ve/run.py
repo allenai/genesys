@@ -234,7 +234,7 @@ def run_train(args,gab,gab_config) -> None:
 def exec_train(args,training_args, trainer):
     global wandb_ids
     wandb_ids['pretrain']=wandb.run.id
-    # U.save_json(wandb_ids,f"{training_args.output_dir}/wandb_ids.json")
+    U.save_json(wandb_ids,f"{training_args.output_dir}/wandb_ids.json")
     
     # Automatically resume from the latest checkpoint if it exists
     if args.training_token_multiplier > 0:
@@ -395,11 +395,23 @@ def report(args) -> dict:
     if args.resume and U.pexists(f"{outdir}/report.json"):
         util_logger.info(f"Report already exists at {outdir}/report.json")
         return
-    run_id=U.load_json(f"{outdir}/wandb_ids.json")['pretrain']
-    history,system_metrics=get_history(
-        run_id,
-        project_path=f"{args.wandb_entity}/{args.wandb_project}"
-    )
+    report={}
+    try:
+        run_id=U.load_json(f"{outdir}/wandb_ids.json")['pretrain']
+        history,system_metrics=get_history(
+            run_id,
+            project_path=f"{args.wandb_entity}/{args.wandb_project}"
+        )
+        report={
+            "training_record.csv":str(history.to_csv(index=False)),
+            "system_metrics.csv":str(system_metrics.to_csv(index=False)),
+        }
+    except:
+        report={
+            "training_record.csv":"",
+            "system_metrics.csv":"",
+        }
+
     trainer_state=U.load_json(f"{outdir}/trainer_state.json")
     eval_results=get_eval_results(outdir)
 
@@ -409,8 +421,6 @@ def report(args) -> dict:
         eval_results.pop(i)
     
     report={
-        "training_record.csv":str(history.to_csv(index=False)),
-        "system_metrics.csv":str(system_metrics.to_csv(index=False)),
         "trainer_state.json": trainer_state,
         "eval_results.json": eval_results,
     }

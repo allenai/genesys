@@ -22,6 +22,9 @@ from networkx.drawing.nx_pydot import to_pydot,warnings
 from pyvis.network import Network
 import math
 
+from model_discovery.model.library.tester import check_tune
+
+
 
 try: # a stupid patch for windows
     from .secrets import *
@@ -107,6 +110,8 @@ REFERENCE_COLOR = '#AF47D2'
 RWC_COLOR = '#FB773C' # reference with code
 EXT_COLOR_1HOC = '#ed556a' # extended 1-hop reference
 
+
+TARGET_SCALES = ['14M','31M','70M','125M','350M','760M','1300M']
 
 
 @dataclass
@@ -383,12 +388,16 @@ class Implementation:
 @dataclass
 class Verification:
     scale: str
-    verification_report: str
-    verification_passed: bool
+    verification_report: Dict
 
     def save(self, design_dir: str):
+        U.mkdir(U.pjoin(design_dir, 'verifications'))
         U.save_json(asdict(self), U.pjoin(design_dir, 'verifications',f'{self.scale}.json'))
 
+    @classmethod
+    def from_dict(cls, dict: Dict):
+        return cls(**dict)
+    
     @classmethod
     def load(cls, dir: str):
         return cls.from_dict(U.load_json(dir))
@@ -399,7 +408,8 @@ class DesignArtifact(NodeObject):
     proposal: Proposal
     implementation: Implementation = None # find by modelname/id
     verifications: Dict[str, Verification] = field(default_factory=dict) # find by modelname/id
-    
+    codes: Dict[str, str] = field(default_factory=dict) # find by modelname/id
+
     @property
     def type(self) -> str:
         if self.is_implemented():
@@ -418,11 +428,13 @@ class DesignArtifact(NodeObject):
         ver_dir=U.pjoin(design_dir,'verifications')
         if U.pexists(ver_dir):
             for scale in os.listdir(ver_dir):
+                scale=scale.split('.')[0]
                 dir = U.pjoin(ver_dir,f'{scale}.json')
                 if U.pexists(dir):
                     verifications[scale] = Verification.load(dir)
-        return cls(proposal=proposal, implementation=implementation, verifications=verifications, **metadata)
-            
+        codes = U.load_json(U.pjoin(design_dir, 'codes.json'))
+        return cls(proposal=proposal, implementation=implementation, verifications=verifications, codes=codes, **metadata)
+
     def to_prompt(self):
         raise NotImplementedError('to_prompt is not implemented yet for DesignArtifact, TODO')
 
@@ -534,6 +546,15 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         U.mkdir(U.pjoin(sess_dir, 'log'))
         return design_id
     
+    
+    def get_unverified(self,scale):
+        unverified=[]
+        for acronym in self.filter_by_type('DesignArtifactImplemented'):
+            design=self.get_node(acronym)
+            if scale not in design.verifications:
+                unverified.append(acronym)
+        return unverified
+
     def get_gau_tree(self,acronym:str):
         node=self.get_node(acronym)
         if node.type=='ReferenceCoreWithTree':
@@ -670,10 +691,21 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         implementation.save(self.design_dir(acronym))
         design_artifact.implementation=implementation
         self.G.nodes[acronym]['data']=design_artifact
+        # Tune in all target scales
+        codes = {}
+        _code = tree.compose()
+        for scale in TARGET_SCALES:
+            codes[scale] = check_tune(scale,acronym, code=_code,check_only=True,cpu_only=True,reformat_only=True)
+        U.save_json(codes, U.pjoin(self.design_dir(acronym), 'codes.json'))
 
     def verify(self, acronym: str, scale: str, verification_report): # attach a verification report under a scale to an implemented node
-        pass
+        design_artifact=self.get_node(acronym)
+        verification=Verification(scale=scale, verification_report=verification_report)
+        design_artifact.verifications[scale]=verification
+        self.G.nodes[acronym]['data']=design_artifact
+        verification.save(self.design_dir(acronym))
 
+        
     def unique_acronym(self, acronym: str) -> str:
         existing_acronyms = set(self.G.nodes)
         if acronym not in existing_acronyms:
@@ -964,7 +996,7 @@ class EvolutionSystem(exec_utils.System):
             self.stream.write(f"No budget for {act}, will do another action")
             act='design' if act=='verify' else 'verify'
 
-        act='design' # XXX: for testing
+        act='verify' # XXX: for testing
 
         if act=='design':
             self.design() # FIXME: it needs to be updated with actual selector and design cfg
@@ -1106,33 +1138,36 @@ class EvolutionSystem(exec_utils.System):
 
 
     def verify(self): # choose then verify
-        raise NotImplementedError("Need update")    
-        designed=os.listdir(U.pjoin(self.evo_dir,'db'))
-        for design_id in designed:
-            report_dir=U.pjoin(self.evo_dir,'ve',design_id,'report.json')
-            if U.load_json(report_dir)=={}:
-                for _ in range(3): # try 3 times
-                    scale=random.choice(self.state['scales']) # XXX: ad hoc
-                    self._verify(design_id,scale) # verify the design until it's done
-                    report=U.load_json(report_dir)
-                    if report!={}: 
-                        return design_id
-                return 'FAILED'
-        return None
+        scale='14M'
+        unverified=self.ptree.get_unverified(scale)
+        if len(unverified)==0:
+            self.stream.write(f"No unverified design at scale {scale}.")
+            return None
+        design_id=random.choice(unverified)
+        self.stream.write(f"Verifying design {design_id} at scale {scale}...")
+        self._verify(design_id,scale) # verify the design until it's done
+        report_dir=U.pjoin(self.evo_dir,'ve',design_id+f'_{scale}','report.json')
+        report=U.load_json(report_dir)
+        self.ptree.verify(design_id,scale,report)
+        if report!={}: 
+            return 'SUCCESS'
+        return 'FAILED'
         
     def _verify(self,design_id,scale): # do a single verify
-        raise NotImplementedError("Need update")
-        artifact=U.load_json(U.pjoin(self.evo_dir,'db',design_id,'artifact.json'))
-        with open('./model/gab.py','w', encoding='utf-8') as f:
-            f.write(artifact['code'])
+        design=self.ptree.get_node(design_id) # need to ensure this design has not been verified under scale
+        #### XXX need manully check then comment it, need to fix, TUNE cause the problem
+        _code = design.implementation.implementation.compose()
+        code = check_tune(scale,design_id, code=_code,check_only=True,cpu_only=True,reformat_only=True)
+        with open('./model_discovery/model/gab.py','w', encoding='utf-8') as f:
+            f.write(code)
         args = ve_parser.parse_args()
         args.evoname=self.evoname
-        args.design_id=artifact['acronym']
+        args.design_id=design_id+f'_{scale}'
         args.scale=scale
         args.ckpt_dir=self.ckpt_dir
         args.data_dir=os.environ.get("DATA_DIR")
         args.resume=True
-        args.training_token_multiplier=self.get_train_budget(artifact)
+        args.training_token_multiplier=self.get_train_budget(design)
         ve_main(args)
 
 
@@ -1224,6 +1259,6 @@ if __name__ == '__main__':
     # )
     # evolution_system._run(args.mode)
 
-    test_evolve('test_evo_001',step=True)
+    test_evolve('test_evo_000',step=True)
 
  

@@ -151,12 +151,12 @@ class GAB(GABBase):
         Constraints:  Causal, differentiable, parameter number, complexity, parallelizable
     """
 
-    def __init__(self, embed_dim: int, device=None, dtype=None, d_state=64,
-        d_conv=4, expand=2, headdim=128, ngroups=1, A_init_range=(1, 16),
-        dt_min=0.001, dt_max=0.1, dt_init_floor=0.0001, chunk_size=256, **
-        kwargs):
+    def __init__(self, embed_dim: int, block_loc, device=None, dtype=None,
+        d_state=64, d_conv=4, expand=2, headdim=128, ngroups=1,
+        A_init_range=(1, 16), dt_min=0.001, dt_max=0.1, dt_init_floor=
+        0.0001, chunk_size=256, **kwargs):
         factory_kwargs = {'device': device, 'dtype': dtype}
-        super().__init__(embed_dim)
+        super().__init__(embed_dim, block_loc)
         self.mamba1 = Mamba2Simple(embed_dim, d_state, d_conv, expand,
             headdim, ngroups, A_init_range, dt_min, dt_max, dt_init_floor,
             chunk_size, **factory_kwargs)
@@ -172,9 +172,6 @@ class GAB(GABBase):
         return X
 
 
-""" The dictionary of hyperparameters for constructing a GAB layer
-    embed_dim, device, dtype should NOT be included in gab_config
-"""
 gab_config = {'d_state': 64, 'd_conv': 4, 'expand': 2, 'headdim': 128,
     'ngroups': 1, 'A_init_range': (1, 16), 'dt_min': 0.001, 'dt_max': 0.1,
     'dt_init_floor': 0.0001, 'chunk_size': 256}

@@ -20,32 +20,38 @@ from model_discovery.ve.run import parser as ve_parser
 from model_discovery import utils as U
 
 
-LIBRARY_PATH = U.pjoin(os.path.dirname(os.path.abspath(__file__)),'base')
+LIBRARY_PATH = U.pjoin(os.path.dirname(os.path.abspath(__file__)),'core')
 print(LIBRARY_PATH)
 ckpt_dir=os.environ.get("CKPT_DIR")
 
 
-def check_tune(scale, model_name, path=None):
+def check_tune(scale, model_name, path=None, code=None, check_only=False, cpu_only=False, reformat_only=False):
     checker = BuildTool(
         tool_type="checker",
     )
     cfg = eval(f"GAMConfig_{scale}()")
 
-    if path is None:
-        assert model_name in MODEL2CODE, "Model name not found in MODEL2CODE, path not provided as well"
-        code=MODEL2CODE[model_name]
-        path = U.pjoin(LIBRARY_PATH, model_name)
-    else:
-        code=U.read_file(U.pjoin(path, f'{model_name}.py')) # assert model_name is a path
+    if code is None:
+        if path is None:
+            assert model_name in MODEL2CODE, "Model name not found in MODEL2CODE, path not provided as well"
+            code=MODEL2CODE[model_name]
+            path = U.pjoin(LIBRARY_PATH, model_name)
+        else:
+            if not path.endswith('.py'):
+                path = U.pjoin(path, f'{model_name}.py')
+            code=U.read_file(path) # assert model_name is a path
 
-    checkpass,report,code,results = checker.check(cfg,code,model_name,True)
+    checkpass,report,code,results = checker.check(cfg,code,model_name,True, cpu_only=cpu_only, reformat_only=reformat_only)
     if not checkpass:
         print(report)
         raise Exception('Model does not pass the checker')
-    autocfg = checker.tune(cfg,code,model_name)
+    autocfg = checker.tune(cfg,code,model_name, cpu_only=cpu_only) # cause segment error when using with evo
+    # autocfg = "autoconfig = { }"
     print('Tuning complete, saving the code with autocfg.')
     code=code+f'\n\n\n{autocfg}\nblock_config=gab_config\nblock_config.update(autoconfig)'
     code+='\n\n\nfrom .block_registry import BlockRegister\n\nBlockRegister(\n    name="default",\n    config=block_config\n)(GAB)'
+    if check_only:
+        return code
     with open(U.pjoin(path,'gab.py'),'w') as f:
         f.write(code)
     savedir=U.pjoin(path, 'reports')
@@ -70,7 +76,7 @@ def run(scale,model_name,args,training_token_multiplier=20,path=None): # do a si
     args.scale=scale
     args.ckpt_dir=ckpt_dir
     args.data_dir=os.environ.get("DATA_DIR")
-    args.resume=False
+    args.resume=True
     args.training_token_multiplier=training_token_multiplier
     args.logging_steps=10
     args.port="25869"
@@ -92,8 +98,9 @@ def run(scale,model_name,args,training_token_multiplier=20,path=None): # do a si
 
 
 if __name__ == "__main__":
-    model_name = 'gpt2' 
-    path = '/home/junyanc/model_discovery/model_discovery/model/library/core/gpt2/gau'
+    model_name = 'rwkv6' 
+    path = None
+    # path = '/home/junyanc/model_discovery/model_discovery/model/library/core/gpt2/gau'
     scale = '14M' 
     args = ve_parser.parse_args()
 

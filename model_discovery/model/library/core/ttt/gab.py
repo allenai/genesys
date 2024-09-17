@@ -7,8 +7,10 @@ import torch.utils.checkpoint
 from torch.utils._pytree import tree_map
 from transformers.utils import logging
 from transformers.activations import ACT2FN
-causal_conv1d_update, causal_conv1d_fn = None, None
-logger = logging.get_logger(__name__)
+try:
+    from causal_conv1d import causal_conv1d_fn, causal_conv1d_update
+except:
+    causal_conv1d_update, causal_conv1d_fn = None, None
 
 
 def rotate_half(x):
@@ -441,11 +443,11 @@ class GAB(GABBase):
         Constraints:  Causal, differentiable, parameter number, complexity, parallelizable
     """
 
-    def __init__(self, embed_dim: int, device=None, dtype=None,
+    def __init__(self, embed_dim: int, block_loc, device=None, dtype=None,
         scan_checkpoint_group_size=4, conv_kernel=4, mini_batch_size=16,
         rope_theta=10000.0, rms_norm_eps=1e-06, ttt_base_lr=1.0, **kwargs):
         factory_kwargs = {'device': device, 'dtype': dtype}
-        super().__init__(embed_dim)
+        super().__init__(embed_dim, block_loc)
         self.hidden_size = embed_dim
         num_attention_heads = max(4, embed_dim // 64)
         self.seq_modeling_block = TTTLinear(hidden_size=embed_dim,
@@ -464,7 +466,7 @@ class GAB(GABBase):
         self.seq_norm = self.seq_norm.to(device=device, dtype=dtype)
         self.ffn_norm = self.ffn_norm.to(device=device, dtype=dtype)
 
-    def _forward(self, X, **kwargs):
+    def _forward(self, X, *Z, **intermediate_vars):
         hidden_states = X
         position_ids = torch.arange(0, X.shape[1], dtype=torch.long, device
             =X.device).unsqueeze(0)
@@ -473,8 +475,7 @@ class GAB(GABBase):
         hidden_states = residual + hidden_states
         residual = hidden_states
         hidden_states = self.seq_norm(hidden_states)
-        hidden_states = self.seq_modeling_block(hidden_states=hidden_states,
-            position_ids=position_ids)
+        hidden_states = self.seq_modeling_block(hidden_states, position_ids)
         hidden_states = residual + hidden_states
         residual = hidden_states
         hidden_states = self.ffn_norm(hidden_states)
@@ -483,9 +484,6 @@ class GAB(GABBase):
         return hidden_states
 
 
-""" The dictionary of hyperparameters for constructing a GAB layer
-    embed_dim, device, dtype should NOT be included in gab_config
-"""
 gab_config = {'scan_checkpoint_group_size': 0, 'conv_kernel': 4,
     'mini_batch_size': 16, 'rope_theta': 10000.0, 'rms_norm_eps': 1e-06,
     'ttt_base_lr': 1.0}
