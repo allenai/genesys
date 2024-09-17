@@ -120,11 +120,12 @@ def design(evosys,project_dir):
             cols = st.columns(len(agent_type_labels))
             for i,agent in enumerate(agent_type_labels):
                 with cols[i]:
-                    index=2 #0 # for fast testing
+                    index=0 
                     options=AGENT_TYPES
                     if agent in ['SEARCH_ASSISTANT','IMPLEMENTATION_OBSERVER']:
                         options=AGENT_TYPES+['None']
-                        index=len(options)-1
+                        if agent=='SEARCH_ASSISTANT':
+                            index=len(options)-1
                     elif agent=='IMPLEMENTATION_CODER': # only coder supports o1 for now
                         options=AGENT_TYPES+['o1_preview','o1_mini']
                         index=len(options)-1

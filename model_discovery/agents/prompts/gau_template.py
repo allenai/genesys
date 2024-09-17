@@ -105,7 +105,7 @@ def unit_test_name(device=None, dtype=None)->None: # RENAME THIS FUNCTION, DO NO
 CHILDREN_DECLARATIONS = [ # DO NOT REMOVE THIS LINE, DO NOT CHANGE THIS NAME #
     # UnitDecl(
     #   unitname="", # Name of the child GAU
-    #   demands="", # Demands of the child GAU
+    #   requirements="", # Requirements of the child GAU, what do you expect it to do
     #   inputs=[], # List of argument names
     #   outputs=[] # List of argument names
     # ),  

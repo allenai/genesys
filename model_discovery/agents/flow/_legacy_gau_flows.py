@@ -13,7 +13,7 @@ from ..search_utils import SuperScholarSearcher
 
 # from model_discovery.system import ModelDiscoverySystem
 import model_discovery.agents.prompts._legacy_prompts as P
-from model_discovery.model.composer import GAUBase, GAUTree, check_tree_name, GABComposer
+from model_discovery.model.composer import GAUBase, GAUTree, GABComposer #check_tree_name
 from model_discovery.model.utils.modules import GABBase
 import model_discovery.utils as U
 
@@ -209,7 +209,7 @@ class GUFlowScratch(FlowCreator): # ❄️ FREEZING #
 
             if rating>3:
                 self.stream.write(f'#### Proposal passed with rating {rating} out of 5, starting implementation')
-                check_tree_name(modelname,self.lib_dir) # TODO: error handling
+                # check_tree_name(modelname,self.lib_dir) # TODO: error handling
                 self.tree=GAUTree(name=modelname,proposal=proposal,review=review,rating=rating,suggestions=suggestions,lib_dir=self.lib_dir,proposal_traces=traces)
                 break
         

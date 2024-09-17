@@ -35,18 +35,27 @@ class GAUNode: # this is mainly used to 1. track the hierarchies 2. used for the
     requirements: str = None # requirements of the GAU from declaration, root GAU has no requirements as the demand is the proposal
 
     def json(self):
-        data = self.__dict__.copy()
-        data['spec'] = self.spec.model_dump_json() 
+        data = self.to_dict()
         return json.dumps(data, indent=4)
 
     def save(self, dir):
         U.save_json(json.loads(self.json()), U.pjoin(dir, f'{self.spec.unitname}.json'))
 
+    def to_dict(self):
+        data = self.__dict__.copy()
+        data['spec'] = self.spec.model_dump_json() 
+        return data
+
+    @classmethod
+    def from_dict(cls, dict):
+        data = cls(**dict)
+        data.spec = UnitSpec.model_validate_json(data.spec)  # Ensure proper deserialization
+        return data
+
     @classmethod
     def load(cls, name, dir):
         data = U.load_json(U.pjoin(dir, f'{name}.json'))
-        data['spec'] = UnitSpec.model_validate_json(json.dumps(data['spec']))  # Ensure proper deserialization
-        return cls(**data)
+        return cls.from_dict(data)
 
 class GAUDict: # GAU code book, registry of GAUs, shared by a whole evolution
     def __init__(self, lib_dir=None):
@@ -75,14 +84,6 @@ class GAUDict: # GAU code book, registry of GAUs, shared by a whole evolution
         if unit_name not in self.units:
             return None
         return self.units[unit_name]
-
-
-def check_tree_name(name, lib_dir):
-    assert lib_dir is not None, "Please provide the database directory"
-    flows_dir = U.pjoin(lib_dir, 'flows')
-    U.mkdir(flows_dir)
-    existing_trees=[f.split('.')[0] for f in os.listdir(flows_dir)]
-    assert name not in existing_trees, f"Tree {name} is already in the database"
 
 
 class GABComposer:
@@ -231,10 +232,11 @@ class GAUTree:
         self.review = review # review of the design
         self.rating = rating
         self.suggestions = suggestions
-        self.dict = GAUDict(lib_dir)
         if lib_dir is not None:
-            self.flows_dir = U.pjoin(lib_dir, 'flows')
-            U.mkdir(self.flows_dir)
+            self.dict = GAUDict(lib_dir) # TODO: consider this later
+        
+    def set_lib_dir(self,lib_dir):
+        self.dict = GAUDict(lib_dir)
 
     def add_unit(self, spec, code, args, desc, review, rating, children, gautests, suggestions, design_traces=None, requirements=None, overwrite=False):
         name = spec.unitname
@@ -242,7 +244,7 @@ class GAUTree:
             print(f"Unit {name} is already in the tree")
             return
         # assert name not in self.units, f"Unit {name} is already in the tree"
-        assert not self.dict.exist(name), f"Unit {name} is already registered"
+        # assert not self.dict.exist(name), f"Unit {name} is already registered"
         node = GAUNode(spec, code, args, desc, review, rating, children, gautests, suggestions, design_traces, requirements)
         if len(self.units)==0:
             self.root = node
@@ -250,7 +252,7 @@ class GAUTree:
 
     def _replace_unit(self, old: str, new: str): # also need to rename the references in the code, seems hard, so we do not do it for now
         # just clear the old unit, you need to add the new one later manually, its an unsafe method
-        if old == new:  
+        if old == new or old not in self.units:  
             return
         # assert new in self.units, f"You must have new unit added to the tree already"
         self.del_unit(old)
@@ -261,8 +263,8 @@ class GAUTree:
 
         # rename the declares
         if old in self.declares:
-            if new not in self.declares:
-                self.declares[new] = copy.deepcopy(self.declares[old])
+            # if new not in self.declares:
+            #     self.declares[new] = copy.deepcopy(self.declares[old])
             del self.declares[old]
 
         # rename children
@@ -302,22 +304,24 @@ class GAUTree:
         else:
             descendants=set()
         return descendants
+
+    def get_disconnected(self):
+        connected=self.descendants(self.root.spec.unitname)
+        connected.add(self.root.spec.unitname)
+        disconnected=set(self.units.keys())-connected
+        return disconnected
     
     def clear_disconnected(self):
-        connected=self.descendants(self.root.spec.unitname)
-        removed=[]
-        for unit in list(self.units.keys()):
-            if unit not in connected:
-                removed.append(unit)
-        for unit in removed:
+        disconnected=self.get_disconnected()
+        for unit in disconnected:
             del self.units[unit]
-        return removed  
+        return disconnected  
 
     def to_dict(self):
         data = {
             'name':self.name,
             'root':self.root.spec.unitname,
-            'units':list(self.units.keys()),
+            'units':{name:self.units[name].to_dict() for name in self.units},  
             'declares': {name:declare.model_dump_json() for name,declare in self.declares.items()},
             'proposal':self.proposal,
             'proposal_traces':self.proposal_traces,
@@ -328,20 +332,12 @@ class GAUTree:
         return data
 
     @classmethod
-    def from_dict(cls, dict: Dict):
+    def from_dict(cls, dict: Dict, lib_dir=None):
         tree = cls(dict['name'], dict['proposal'], dict['review'], dict['rating'], dict['suggestions'], lib_dir)
         for unit_name in dict['units']:
-            tree.units[unit_name] = tree.dict.get(unit_name)
-        tree.root = tree.dict.get(dict['root'])
+            tree.units[unit_name] = GAUNode.from_dict(dict['units'][unit_name])
+        tree.root = tree.units[dict['root']]
         return tree
-    
-    def save(self): # save the Tree only when the design is finalized and fully tested
-        dir=U.pjoin(self.flows_dir,f'{self.name}.json')
-        data = self.to_dict()
-        U.save_json(data,dir)
-        for unit in self.units.values(): # Do not overwrite by default, which should be done by the design process
-            if not self.dict.exist(unit.spec.unitname): # Deal with the name repetition
-                self.dict.register(unit)
 
     @classmethod
     def load(cls, name, lib_dir):
@@ -480,6 +476,14 @@ class GAUTree:
             pstr += '\n\nDeclarations for Unimplemented Units:\n'
             for unit in unimplemented:
                 pstr += self.declares[unit].to_prompt() + '\n'
+
+        unused=self.get_disconnected()
+        if unused:
+            pstr += '\n\nUnused Units:\n'
+            for unit in unused:
+                pstr += self.units[unit].spec.to_prompt() + '\n'
+                if unit_code:
+                    pstr += f'\nCode:\n```python\n{self.units[unit].code}\n```\n'
         
         return pstr, list(implemented), list(unimplemented)
 
@@ -493,7 +497,7 @@ class GAUTree:
         code = self.compose_root() if unit_code else self.compose()
         
         return (
-            f'## Tree Map of the GAUs\n'
+            f'## Tree Map of the GAUs\n\n'
             '<details><summary>Click to expand</summary>\n\n'
             f'```bash\n{view}\n```\n'
             '</details>\n\n'
@@ -503,7 +507,7 @@ class GAUTree:
             '... # Unit implementations\n```\n'
             '</details>\n\n'
         ) if unit_code else (
-            f'## Tree Map of the GAUs\n'
+            f'## Tree Map of the GAUs\n\n'
             '<details><summary>Click to expand</summary>\n\n'
             f'```bash\n{view}\n```\n'
             '</details>\n\n'

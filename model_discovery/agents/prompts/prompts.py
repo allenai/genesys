@@ -182,6 +182,8 @@ Only the code block wrapped by ```python ``` and kept first line as `# GAU_IMPLE
 The class name of the GAU will be detected as the unit name of an implementation. Remember to keep the unittests and children declarations of each unit in the same file of the implementation. 
 In another word, each file must contain three sections: 1) the unit implementation, 2) the unittests (all unittests must be decorated with @gau_test, otherwise it will be ignored), 3) the children declarations. 
 And always remember to declare children GAUs if there is any in your unit, either new, placeholder or reuse existing ones. Otherwise the linker will not be able to find them.  
+You can modify based on the implementations from the provided seed, but you should never simply copy them as your response. If you want to reuse a unit, you can simply declare it in the children list without providing the implementation. 
+Remember you implementation should follow the proposal.
 """
       return AgentPrompt(GU_IMPLEMENTATION_RETRY_prompt,GENERAL_CODE_parser)
    else:
@@ -2666,12 +2668,13 @@ Ensure that you are familiar with these sections as they provide crucial context
 ## Your Responsibilities:
 
 1. **Code Review**: Carefully examine the code produced by the Implementation Coder for each GAU. Look for:
-   - Adherence to the proposed design and the Planner's instructions
+   - Adherence to the proposal and the Planner's instructions. 
    - Correct implementation of the GAU interface (handling of `X`, `Y`, `Z`, and `Z'`) as described in Guideline Part 2
    - Proper declaration and use of child GAUs as outlined in Guideline Part 3
    - Efficiency and performance considerations
    - Potential bugs or edge cases
    - Adherence to Python best practices and PEP 8 style guidelines
+   - Check if the implementation is simply copied from the seed. If so, you should give a score of 0 no matter what. But it is allowed to modify based on the seed. 
 
 2. **Proposal Alignment**: Ensure the implementation aligns with the overall proposal and fits seamlessly into the broader model architecture as described in Guideline Part 1 and Guideline Part 2.
 
@@ -3062,6 +3065,8 @@ Only the code block wrapped by ```python ``` and kept first line as `# GAU_IMPLE
 The class name of the GAU will be detected as the unit name of an implementation. Remember to keep the unittests and children declarations of each unit in the same file of the implementation. 
 In another word, each file must contain three sections: 1) the unit implementation, 2) the unittests (all unittests must be decorated with @gau_test, otherwise it will be ignored), 3) the children declarations. 
 And always remember to declare children GAUs if there is any in your unit, either new, placeholder or reuse existing ones. Otherwise the linker will not be able to find them.  
+You can modify based on the implementations from the provided seed, but you should never simply copy them as your response. If you want to reuse a unit, you can simply declare it in the children list without providing the implementation. 
+Remember you implementation should follow the proposal.
 """
       return AgentPrompt(GUMT_IMPLEMENTATION_UNIT_prompt,GENERAL_CODE_parser)
    else: 

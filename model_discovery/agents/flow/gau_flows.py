@@ -4,6 +4,7 @@ import inspect
 import copy
 from dataclasses import dataclass
 from typing import Optional
+import datetime
 
 from exec_utils.models.model import ModelOutput
 from exec_utils import SimpleLMAgent
@@ -12,7 +13,7 @@ from .gau_utils import check_and_reformat_gau_code
 
 # from model_discovery.system import ModelDiscoverySystem
 import model_discovery.agents.prompts.prompts as P
-from model_discovery.model.composer import GAUBase, GAUTree, check_tree_name, GABComposer
+from model_discovery.model.composer import GAUBase, GAUTree, GABComposer
 from model_discovery.configs.gam_config import GAMConfig_14M
 from model_discovery.model.utils.modules import GABBase, UnitDecl
 import model_discovery.utils as U
@@ -621,15 +622,13 @@ class GUFlowMutation(FlowCreator):
         }
 
         if children_decl is not None:
-            children = {child.unitname: child for child in children_decl}
             # never overwrite existing ones, as the children might be reused
             NEW_DECLARED = []
-            for childname,child in children.items():
-                if childname not in self.tree.declares and childname not in self.tree.units: # only add new ones
-                    self.tree.declares[childname]=child
-                    NEW_DECLARED.append(childname)
+            for child_decl in children_decl:
+                if child_decl.unitname not in self.tree.declares and child_decl.unitname not in self.tree.units: # only add new ones
+                    self.tree.declares[child_decl.unitname]=child_decl
+                    NEW_DECLARED.append(child_decl.unitname)
         else: # must be fetal error
-            children={}
             NEW_DECLARED=[]
 
         if fetal_errors:
@@ -640,11 +639,11 @@ class GUFlowMutation(FlowCreator):
 
 
         self.stream.write(f'#### Children in {unit_name}')
-        if children=={}:
+        if children_decl==[]:
             self.stream.write('No children declared.')
         else:
-            for childname,child in children.items():
-                self.stream.write(f'##### {childname}\n'+child.to_prompt())
+            for child in children_decl:
+                self.stream.write(f'##### {child.unitname}\n'+child.to_prompt())
         
         # collapse_write(
         #     self.stream,
@@ -665,15 +664,14 @@ class GUFlowMutation(FlowCreator):
             if unit_name not in self.tree.units:
                 if spec is not None:
                     self.tree.add_unit(
-                        spec,reformatted_code,new_args,analysis,None,None,list(children.keys()),gau_tests,None,requirements=declaration.requirements
+                        spec,reformatted_code,new_args,analysis,None,None,[child.unitname for child in children_decl],gau_tests,None,requirements=declaration.requirements
                     )
             else:
                 self.tree.units[unit_name].code=reformatted_code
                 self.tree.units[unit_name].args=new_args
                 self.tree.units[unit_name].analysis=analysis
-                self.tree.units[unit_name].children=list(children.keys())
+                self.tree.units[unit_name].children=[child.unitname for child in children_decl]
                 self.tree.units[unit_name].gau_tests=gau_tests
-                # TODO: remove disconnected units
             
         return format_checks,format_errors,format_warnings,fetal_errors,unit_name, reformatted_code, docstring, new_args, gau_tests, children_decl, NEW_DECLARED
                         
@@ -720,6 +718,15 @@ class GUFlowMutation(FlowCreator):
 
             if len(UNIMPLEMENTED)==0 and round>1: # round 1 is selected unit, naturally no unimplemented units, consume the post refinement count only if round>1
                 post_refinement+=1
+                
+
+            # 1. design succeeded, post refinement count reached
+            if post_refinement>self.max_attemps['post_refinement']:
+                self.stream.write(f'#### All units have been implemented and maximal refinements are reached, stopping design process')
+                SUCCEED=True
+                self.stream.log(EndReasons.MAX_POST_REFINEMENT_REACHED,'end')
+                break
+            
 
             ################# SELECTING THE NEXT UNIT TO WORK ON #################
             
@@ -760,13 +767,6 @@ class GUFlowMutation(FlowCreator):
 
             ### Termination
 
-            # 1. design succeeded, post refinement count reached
-            if post_refinement>self.max_attemps['post_refinement']:
-                self.stream.write(f'#### All units have been implemented and maximal refinements are reached, stopping design process')
-                SUCCEED=True
-                self.stream.log(EndReasons.MAX_POST_REFINEMENT_REACHED,'end')
-                break
-            
             # 2. design succeeded, agent choose to terminate
             if termination and len(UNIMPLEMENTED)==0:
                 self.stream.write(f'#### All units have been implemented, the agent choose to terminate the design process')
@@ -972,8 +972,8 @@ class GUFlowMutation(FlowCreator):
                                     outputs=spec.outputs
                                 )
                         for unit_name,docstring in docstrings.items():
-                            if unit_name not in self.tree.declares: # if it is a new local root, then it is declared above, otherwise, it should be declared as a child
-                                errors.append(f'Unit {unit_name} has not been declared. May cause errors when linking the units.')
+                            if unit_name not in self.tree.declares and unit_name not in self.tree.units: # if it is a new local root, then it is declared above, otherwise, it should be declared as a child
+                                errors.append(f'A new unit {unit_name} has not been declared. May cause errors when linking the units.')
                                 declaration=UnitDecl(
                                     unitname=unit_name,
                                     requirements='',
@@ -984,7 +984,6 @@ class GUFlowMutation(FlowCreator):
                                 declaration=self.tree.declares[unit_name]
                             # XXX: whether we allow overwrite the existing unit besides selection???? 
                             if unit_name in self.tree.units: # overwrite the existing unit, remove the old one first
-                                self.tree.del_unit(unit_name)
                                 self.stream.write(f'Overwriting unit {unit_name} in the tree...')
                             else:
                                 self.stream.write(f'Adding unit {unit_name} to the tree...')
@@ -994,8 +993,9 @@ class GUFlowMutation(FlowCreator):
                                 inputs=declaration.inputs,
                                 outputs=declaration.outputs
                             )           
+                            _children=[c.unitname for c in children_decls[unit_name]]
                             self.tree.add_unit( # all new units are added 
-                                _spec,reformatted_codes[unit_name],new_args[unit_name],None,None,None,[c.unitname for c in children_decls[unit_name]],gau_tests[unit_name],None,requirements=declaration.requirements
+                                _spec,reformatted_codes[unit_name],new_args[unit_name],None,None,None,_children,gau_tests[unit_name],None,requirements=declaration.requirements, overwrite=True
                             )   
                         unit_name=root_name[0] if len(root_name)>0 else selection
                     else:   
@@ -1166,7 +1166,7 @@ class GUFlowMutation(FlowCreator):
                             )
                 else:
                     succeed=True
-                    self.tree.units[unit_name].design_traces=traces
+                    # self.tree.units[unit_name].design_traces=traces
                     # removed=self.tree.clear_disconnected() # there might be some disconnected units, leave it for now
                     # PROTECTED_UNITS=list(set(PROTECTED_UNITS)-set(removed))
                     self.stream.write(f'#### Implementation passed, starting the next unit')
