@@ -580,6 +580,7 @@ class AttributeChecker(ast.NodeVisitor):
 
     def process_dict(self, node):
         for key, value in zip(node.keys, node.values):
+            if not key: continue # XXX: ad hoc patch, not sure why there is empty key 
             self.current_path.append(f"Dict[{key.s}]")
             if isinstance(value, ast.Call) and self.is_child_class(value.func):
                 self.gau_instances[".".join(self.current_path)] = {"type": "Dict", "node": value}
@@ -900,8 +901,11 @@ def check_and_reformat_gau_code(source_code,unit_name=None):
         warnings.append("Warning: No CHILDREN_DECLARATIONS found in the GAU. Will assume there is no children.")
         children=[]
     else:
-        print(children_decl)
-        children=[decl.unitname for decl in children_decl]
+        try:
+            children=[decl.unitname for decl in children_decl]
+        except Exception as e:
+            fetal_errors.append(f"Error: Failed to parse CHILDREN_DECLARATIONS, please make sure the format is correct. Do not define UnitDecl by yourself, import it from model_discovery.model.utils.modules. Error: {e}")
+            children=[]
 
     tree = ast.parse(reformatted_code)
     cleaner=CodeKeywordCleaner(['CHILDREN_DECLARATIONS'])

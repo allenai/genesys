@@ -492,6 +492,11 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
 
     # new design: proposal -> implement -> verify
 
+    def reload(self):
+        self.G=nx.DiGraph()
+        self.design_sessions={}
+        self.load()
+
     def load_design_sessions(self):
         for design_id in os.listdir(U.pjoin(self.db_dir,'sessions')):
             metadata = U.load_json(U.pjoin(self.session_dir(design_id), 'metadata.json'))
@@ -510,7 +515,9 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
 
     def new_design(self, seed_ids, ref_ids, instruct, num_samples, mode=DesignModes.MUTATION): # new design session, a session explore the steps from a selected node
         # generate unique hash for the design, do not consider the order
-        design_id = hashlib.sha256(f"{sorted(ref_ids)}{sorted(seed_ids)}{instruct}{mode}".encode()).hexdigest()
+        # design_id = hashlib.sha256(f"{sorted(ref_ids)}{sorted(seed_ids)}{instruct}{mode}".encode()).hexdigest()
+        hash_tail=hashlib.sha256(f"{sorted(ref_ids)}{sorted(seed_ids)}{instruct}{mode}".encode()).hexdigest()
+        design_id = f"{datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}-{hash_tail[-6:]}"
         sessdata = {
             'seed_ids': seed_ids,
             'ref_ids': ref_ids,
@@ -967,6 +974,7 @@ class EvolutionSystem(exec_utils.System):
     # TODO: the interface should be updated when selector agent is ready, and design cfg is ready
     def design(self,n_sources=None,design_cfg={},search_cfg={},user_input='',design_id=None,mode=DesignModes.MUTATION,resume=True): # select then sample, TODO: n_sources and design_cfg should be configed
         # user_input and design_cfg maybe changed by the user, so we need to pass them in
+        self.ptree.reload()
         unfinished_designs = self.ptree.get_unfinished_designs()
         self.stream.write(f"Found {len(unfinished_designs)} unfinished designs, allow resume: {resume}")
         if n_sources is None:

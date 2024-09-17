@@ -698,6 +698,7 @@ class GUFlowMutation(FlowCreator):
         SUCCEED=False
         LOG=[]
         round=0
+        # XXX: Protected units should be self.seed_tree.units.keys() - self.tree.units.keys(), but this make things simpler
         PROTECTED_UNITS=list(set(self.tree.units.keys())-set([proposal.selection])) # the units besides the current one, they should not be *modified*, can be removed as descendants
         self.stream.write(f'##### Protected Units: {PROTECTED_UNITS}')
         USE_PAIRING=self.agent_types['IMPLEMENTATION_OBSERVER']!='None'
@@ -843,7 +844,7 @@ class GUFlowMutation(FlowCreator):
                         RATING=rating if USE_PAIRING else 'IMPLEMENTATION OBSERVER NOT AVAILABLE',
                         SUGGESTIONS=suggestions if USE_PAIRING else 'IMPLEMENTATION OBSERVER NOT AVAILABLE',
                         PASS_OR_NOT=pass_or_not,
-                        GAU_BASE=GAU_BASE
+                        # GAU_BASE=GAU_BASE
                     )
                     RETRY_RPOMPT.apply(IMPLEMENTATION_CODER.obj)
 
@@ -1008,6 +1009,7 @@ class GUFlowMutation(FlowCreator):
                                 _spec,reformatted_codes[unit_name],new_args[unit_name],None,None,None,_children,gau_tests[unit_name],None,requirements=declaration.requirements, overwrite=True
                             )   
                         unit_name=root_name[0] if len(root_name)>0 else selection
+                        
                     else:   
                         format_checks,format_errors,format_warnings,fetal_errors, unit_name, reformatted_code, _, _, _, _, NEW_DECLARED=self.check_code_format(implementation,selection,spec,analysis)
                         unit_name=selection

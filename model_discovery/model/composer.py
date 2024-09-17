@@ -254,10 +254,11 @@ class GAUTree:
 
     def _replace_unit(self, old: str, new: str): # also need to rename the references in the code, seems hard, so we do not do it for now
         # just clear the old unit, you need to add the new one later manually, its an unsafe method
-        if old == new or old not in self.units:  
-            return
+        # if old == new or old not in self.units:  
+        #     return
         # assert new in self.units, f"You must have new unit added to the tree already"
-        self.del_unit(old)
+        if old in self.units:
+            self.del_unit(old)
 
         # rename the root 
         if self.root.spec.unitname == old:
@@ -270,11 +271,12 @@ class GAUTree:
             del self.declares[old]
 
         # rename children
-        for unit in self.units.values():
-            if old in unit.children: # both new and old names are class names
-                unit.children[unit.children.index(old)] = new
-                unit.code=unit.code.replace(f'{old}(',f'{new}(') 
-                unit.code=unit.code.replace(f'{old},',f'{new},') # both new and old names are instance names
+        if old != new:
+            for unit in self.units.values():
+                if old in unit.children: # both new and old names are class names
+                    unit.children[unit.children.index(old)] = new
+                    unit.code=unit.code.replace(f'{old}(',f'{new}(') 
+                    unit.code=unit.code.replace(f'{old},',f'{new},') # both new and old names are instance names
 
         # May also neeed to update the traces
         # update the dict should be handled separately, should simply add a new entry for back compatibility, should be handled already
