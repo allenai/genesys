@@ -157,8 +157,9 @@ class KwargAllChecker(ast.NodeVisitor):
                     non_default_arg_count -= 1  # Adjust the count of non-default args
             else:
                 # Add the param to __init__ arguments if not already present
-                self.additional_args.append((param_name, default_value))
-                init_arg_names.append(param_name)
+                if isinstance(default_value, ast.Constant):
+                    self.additional_args.append((param_name, default_value))
+                    init_arg_names.append(param_name)
 
             # Replace the line with self.param_name = param_name
             new_assign = ast.Assign(
@@ -189,6 +190,7 @@ class InitChecker(ast.NodeVisitor):
     def __init__(self, unit_name):
         self.unit_name = unit_name
         self.inside_gau_class = False
+        self.instantiated_classes = []
 
     def visit_ClassDef(self, node):
         if node.name == self.unit_name:
@@ -217,6 +219,11 @@ class InitChecker(ast.NodeVisitor):
                 if isinstance(stmt, ast.Expr) and isinstance(stmt.value, ast.Call):
                     if isinstance(stmt.value.func, ast.Attribute) and stmt.value.func.attr == "__init__":
                         continue
+
+                # Detect the classes instantiated by self.xxx = ...
+                if isinstance(stmt, ast.Assign) and isinstance(stmt.value, ast.Call):
+                    if isinstance(stmt.value.func, ast.Name):
+                        self.instantiated_classes.append(stmt.value.func.id)
 
                 new_body.append(stmt)
 
@@ -728,7 +735,6 @@ class GAUCallChecker(ast.NodeVisitor):
         self.errors = []
         self.code_lines = code_lines
         self.children = children
-        self.called_gau_classes = []
 
     def visit_ClassDef(self, node):
         if node.name == self.unit_name:
@@ -788,10 +794,7 @@ class GAUCallChecker(ast.NodeVisitor):
 
     def is_child_class(self, func):
         class_name = self.get_class_name(func)
-        if class_name in self.children:
-            self.called_gau_classes.append(class_name)
-            return True
-        return False
+        return class_name in self.children
 
     def check_gau_call(self, stmt):
         """Check if the GAU instance is called with the correct arguments."""
@@ -799,11 +802,11 @@ class GAUCallChecker(ast.NodeVisitor):
         args = stmt.value.args
         keywords = stmt.value.keywords
         lineno = stmt.lineno
-        if not (len(args) == 1 and len(keywords) == 1 and isinstance(keywords[0].value, ast.Name) and keywords[0].arg is None and keywords[0].value.id == "Z"):
+        if not (len(args) == 1 and len(keywords) == 1 and isinstance(keywords[0].value, ast.Name) and keywords[0].arg is None):# and keywords[0].value.id == "Z"):
             self.errors.append(f'line {lineno}: {self.code_lines[lineno-1]}: Error: GAU call must have the sequence as the first argument and the **Z. If you need to pass in other arguments, you can do so in the **Z. Do not change the name of Z.')
 
         target = stmt.targets[0]
-        if not (isinstance(target, ast.Tuple) and len(target.elts)==2 and isinstance(target.elts[1], ast.Name) and target.elts[1].id == "Z"):
+        if not (isinstance(target, ast.Tuple) and len(target.elts)==2 and isinstance(target.elts[1], ast.Name)):# and target.elts[1].id == "Z"):
             self.errors.append(f'line {lineno}: {self.code_lines[lineno-1]}: Error: GAU call always returns a tuple of two variables, the first is a sequence and the second must be the updated **Z. If you need to return other variables, you can do so in the **Z. Do not change the name of Z, and Z will be updated in-place when it went through the GAU.')
         
 
@@ -883,6 +886,7 @@ def check_and_reformat_gau_code(source_code,unit_name=None):
     # Step 4: Run the InitChecker
     init_checker = InitChecker(unit_name)
     init_checker.visit(tree)
+    instantiated_classes = init_checker.instantiated_classes
     
     # Step 6: Process the module (e.g., imports and removing classes)
     module_processor = ModuleProcessor(
@@ -912,6 +916,12 @@ def check_and_reformat_gau_code(source_code,unit_name=None):
             fetal_errors.append(f"Error: Failed to parse CHILDREN_DECLARATIONS, please make sure the format is correct. Do not define UnitDecl by yourself, import it from model_discovery.model.utils.modules. Error: {e}")
             children=[]
 
+    print(f"instantiated_classes: {instantiated_classes}")
+    UNUSED_GAU_CLASSES = set(children) - set(instantiated_classes)
+    if UNUSED_GAU_CLASSES:
+        errors.append(f"Error: {', '.join(UNUSED_GAU_CLASSES)} are declared as children but never used.")
+
+
     tree = ast.parse(reformatted_code)
     cleaner=CodeKeywordCleaner(['CHILDREN_DECLARATIONS'])
     cleaner.visit(tree)
@@ -932,12 +942,7 @@ def check_and_reformat_gau_code(source_code,unit_name=None):
     gau_instances = {key.replace("self.", ""): value for key, value in attribute_checker.gau_instances.items()}   
     gaucallchecker = GAUCallChecker(unit_name, gau_instances, code_lines, children)
     gaucallchecker.visit(tree)
-    called_gau_classes = gaucallchecker.called_gau_classes
     fetal_errors += gaucallchecker.errors
-
-    UNUSED_GAU_CLASSES = set(children) - set(called_gau_classes)
-    if UNUSED_GAU_CLASSES:
-        errors.append(f"Error: {', '.join(UNUSED_GAU_CLASSES)} are declared as children but never used.")
 
     # Step 7: Generate the reformatted source code
     reformatted_code = astor.to_source(tree)

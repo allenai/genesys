@@ -172,21 +172,9 @@ Please refine your design and implementation based on the feedback provided. You
 # """
 
    if use_o1:
-#       GU_IMPLEMENTATION_RETRY_prompt += """
-# Notice that all the codes implemented in your previous responses are discarded, you must include full implementations of all units again or leave some children as placeholders for now if intended.
-# You can provide multiple implementations of *different units* including the selected unit and optionally its children. 
-# You must wrape each implementation in a block quote as follows:
-# ```python
-# {{full implementation of a unit, unittests decorated with @gau_test, and children declarations}}
-# ```
-# . All implementations must follow the format of the GAU template, and remember to keep the first line as the marker `# GAU_IMPLEMENTATION_FILE` to allow the parser detect a GAU implementation file. 
-# Only the code block wrapped by ```python ``` and kept first line as `# GAU_IMPLEMENTATION_FILE` will be considered as a GAU implementation.
-# The class name of the GAU will be detected as the unit name of an implementation. Remember to keep the unittests and children declarations of each unit in the same file of the implementation. 
-# In another word, each file must contain three sections: 1) the unit implementation, 2) the unittests (all unittests must be decorated with @gau_test, otherwise it will be ignored), 3) the children declarations. 
-# And always remember to declare children GAUs if there is any in your unit, either new, placeholder or reuse existing ones. Otherwise the linker will not be able to find them.  
-# You can modify based on the implementations from the provided seed, but you should never simply copy them as your response. If you want to reuse a unit, you can simply declare it in the children list without providing the implementation. 
-# Remember you implementation should follow the proposal.
-# """
+      GU_IMPLEMENTATION_RETRY_prompt += """
+Please try to fix the code based on the information provided. Do not include anything else besides the implementation(s) of the unit(s) in your final response.
+"""
       return AgentPrompt(GU_IMPLEMENTATION_RETRY_prompt,GENERAL_CODE_parser)
    else:
       return AgentPrompt(GU_IMPLEMENTATION_RETRY_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_RETRY_DEBUG_format)
@@ -906,12 +894,15 @@ You have been provided with an existing design of an autoregressive language mod
 **Proposal for Review**:
 {PROPOSAL}
 
+**Similar Design Proposals from Previous Designs**:
+{TOP_K_PPS}
+
 ### Review Instructions
 
 Please evaluate the design in the proposal based on its **technical merits**. Your review should focus on:
 
 - **Clarity**: Is the design clearly articulated, with well-defined objectives?
-- **Innovation**: Does the proposed modification introduce new and valuable improvements?
+- **Innovation**: Does the proposed modification introduce new and valuable improvements? How does it compare to existing researches and previous design proposals?
 - **Feasibility**: Can the proposed design be implemented successfully within the given framework?
 - **Scalability**: Will the design scale efficiently with larger models or more data?
 
@@ -949,11 +940,15 @@ You are an expert reviewer evaluating a proposal for modifying a Generalized Aut
 **Proposal for Review**:
 {PROPOSAL}
 
+**Similar Design Proposals from Previous Designs**:
+{TOP_K_PPS}
+
 Your task is to conduct an initial analysis and formulate search queries to gather more information. Please provide:
 
 1. A brief initial analysis of the proposal, highlighting key aspects that require further investigation.
 2. A high-level query for broad external searches (arXiv, Papers with Code, Semantic Scholar).
 3. A detailed query for searching the internal vector store of research papers.
+4. Check if the proposal is novel or not compared to the previous design proposals and existing researches. 
 
 Focus on the proposal's potential impact on accuracy, robustness, efficiency, and scalability. Consider its novelty and alignment with current research trends.
 """
@@ -1199,6 +1194,9 @@ The designer has modified the proposal based on your previous review. Below is t
 **Change Log** (summary of modifications made):
 {CHANGES}
 
+**Similar Design Proposals from Previous Designs**:
+{TOP_K_PPS}
+
 ### Review Instructions
 
 1. **Carefully review** the refined proposal and compare it against your original feedback.
@@ -1208,7 +1206,8 @@ The designer has modified the proposal based on your previous review. Below is t
    - Your evaluation should be based on the **design quality**, not the writing style.
    - Any feedback on writing should be included under **suggestions**, not reflected in the rating.
    - Do not inflate the rating simply because previous concerns were addressed. The rating should reflect the overall merit of the design at this stage.
-
+5. Check if the updated proposal is novel or not compared to the previous design proposals and existing researches.
+   
 ### Final Note:
 Be strict and objective. Approve the proposal only if it meets the necessary standards of quality and innovation. Do not pass a proposal unless it is sufficiently strong.
 """
@@ -3218,6 +3217,10 @@ Remember your final goal is to refine the GAU in a way that enhances the overall
 design, ensuring both correctness and innovation. Please also give a new name of
 this variant of the GAU.
    """
+      else:
+         GUMT_IMPLEMENTATION_UNIT_prompt+="""
+Please refine based on the information provided. Do not include anything else besides the implementation(s) of the unit(s) in your final response.
+"""
       GUMT_IMPLEMENTATION_UNIT_format = GU_IMPLEMENTATION_REFINE_format
    else:
       GUMT_IMPLEMENTATION_UNIT_prompt = """
@@ -3253,25 +3256,13 @@ Below is the declaration of the GAU you are tasked with implementing. Please ens
 ### Final Note:
 After completing this GAU, you will be asked to implement any remaining parts of the GAB block. Make sure your GAU is well-structured and self-contained to support the overall model design.
    """
+      else:
+         GUMT_IMPLEMENTATION_UNIT_prompt+="""
+Please implement based on the information provided. Do not include anything else besides the implementation(s) of the unit(s) in your final response.
+"""
       GUMT_IMPLEMENTATION_UNIT_format = GU_IMPLEMENTATION_format
    
    if use_o1:
-#       GUMT_IMPLEMENTATION_UNIT_prompt+="""
-# You must include full implementations of units in your final response. 
-# You can provide multiple implementations of *different units* including the selected unit and optionally its children. 
-# You must wrape each implementation in a block quote as follows:
-# ```python
-# {{full implementation of a unit, unittests decorated with @gau_test, and children declarations}}
-# ```
-# . All implementations must follow the format of the GAU template, and remember to keep the first line as the marker `# GAU_IMPLEMENTATION_FILE` to allow the parser detect a GAU implementation file. 
-# Only the code block wrapped by ```python ``` and kept first line as `# GAU_IMPLEMENTATION_FILE` will be considered as a GAU implementation.
-# In order to allow the parser successfully detect the code blocks, DO NOT nest any ```python ``` blocks within the code block of a unit implementation, e.g., in examples of the doc string, dont wrap the examples with ```python ```.  
-# The class name of the GAU will be detected as the unit name of an implementation. Remember to keep the unittests and children declarations of each unit in the same file of the implementation. 
-# In another word, each file must contain three sections: 1) the unit implementation, 2) the unittests (all unittests must be decorated with @gau_test, otherwise it will be ignored), 3) the children declarations. 
-# And always remember to declare children GAUs if there is any in your unit, either new, placeholder or reuse existing ones. Otherwise the linker will not be able to find them.  
-# You can modify based on the implementations from the provided seed, but you should never simply copy them as your response. If you want to reuse a unit, you can simply declare it in the children list without providing the implementation. 
-# Remember you implementation should follow the proposal.
-# """
       return AgentPrompt(GUMT_IMPLEMENTATION_UNIT_prompt,GENERAL_CODE_parser)
    else: 
       return AgentPrompt(GUMT_IMPLEMENTATION_UNIT_prompt,GENERAL_JSON_parser,GUMT_IMPLEMENTATION_UNIT_format)

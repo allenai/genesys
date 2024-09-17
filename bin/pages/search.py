@@ -23,16 +23,21 @@ def search(evosys,project_dir):
         search_cfg={}
         search_cfg['result_limits']={}
         search_cfg['perplexity_settings']={}
+        search_cfg['proposal_search_cfg']={}
 
-        cols=st.columns(4)
+        cols=st.columns([2,2,2,3,2,3])
         with cols[0]:
-            search_cfg['result_limits']['lib']=st.number_input("Library: Primary Search Result Limit",value=5,min_value=0,step=1)
+            search_cfg['result_limits']['lib']=st.number_input("Library Primary",value=5,min_value=0,step=1)
         with cols[1]:
-            search_cfg['result_limits']['lib2']=st.number_input("Library: Secondary Search Result Limit",value=0,min_value=0,step=1,disabled=True)
+            search_cfg['result_limits']['lib2']=st.number_input("Library Secondary",value=0,min_value=0,step=1,disabled=True)
         with cols[2]:
-            search_cfg['result_limits']['libp']=st.number_input("Library: Plus Search Result Limit",value=0,min_value=0,step=1,disabled=True)
+            search_cfg['result_limits']['libp']=st.number_input("Library Plus",value=0,min_value=0,step=1,disabled=True)
         with cols[3]:
             search_cfg['rerank_ratio']=st.slider("Rerank Scale Ratio (0 means no rerank)",min_value=0.0,max_value=1.0,value=0.2,step=0.01)
+        with cols[4]:
+            search_cfg['proposal_search_cfg']['top_k']=st.number_input("Proposal Top K",value=3,min_value=0,step=1)
+        with cols[5]:
+            search_cfg['proposal_search_cfg']['cutoff']=st.slider("Proposal Search Cutoff",min_value=0.0,max_value=1.0,value=0.5,step=0.01)
 
         cols=st.columns([2,2,2,2,2,1])
         with cols[0]:

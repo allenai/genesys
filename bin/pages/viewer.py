@@ -38,7 +38,7 @@ def viewer(evosys,project_dir):
     ptree=evosys.ptree
 
     ### build the system 
-    st.title("Viewers")
+    # st.title("Viewers")
 
     
     # Lagacy flows for development
@@ -76,7 +76,7 @@ def viewer(evosys,project_dir):
     if view_mode == ViewModes.DESIGNS:
 
         
-        st.markdown('## Design Artifact Viewer')
+        st.title('Design Artifact Viewer')
 
         # st.header('14M Training Results')
         csv_res_dir=U.pjoin(evosys.evo_dir,'..','..','notebooks','all_acc_14M.csv')
@@ -111,7 +111,7 @@ def viewer(evosys,project_dir):
 
 
     elif view_mode == ViewModes.DIALOGS:
-        st.markdown('## ALang Dialog Viewer')
+        st.title('ALang Dialog Viewer')
         sess_dir = U.pjoin(evosys.evo_dir, 'db', 'sessions')
         dialogs = {}
         for d in os.listdir(sess_dir):
@@ -129,10 +129,11 @@ def viewer(evosys,project_dir):
 
         with st.sidebar:
             st.write("Empty sidebar")
+            
 
     elif view_mode == ViewModes.FLOW:
             
-        st.markdown('## ALang Design Flow Viewer')
+        st.title('ALang Design Flow Viewer')
 
         system=evosys.rnd_agent
         evo_dir=evosys.evo_dir

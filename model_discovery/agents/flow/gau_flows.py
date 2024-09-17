@@ -452,17 +452,19 @@ class GUFlowMutation(FlowCreator):
             PROPOSAL_REVIEWER=reload_role('proposal_reviewer',self.agents['PROPOSAL_REVIEWER'],SYSTEM_PROMPT)
             proposal_reviewer_tid=self.dialog.fork(main_tid,USER_CALLER,PROPOSAL_REVIEWER,context=context_proposal_reviewer,
                                                 alias='proposal_review',note=f'Reviewing proposal...')
+            _,top_k_pps=self.sss.query_design_proposals(proposal)
+            self.stream.write(top_k_pps)
             if attempt==0:
                 status_info=f'Reviewing initial proposal...'
                 REVIEW_PROMPT=P.GUM_PROPOSAL_REVIEW_ISEARCH_BEGIN if USE_ISEARCH_REVIEW else P.GUM_PROPOSAL_REVIEW
                 proposal_review_prompt=REVIEW_PROMPT(
-                    SEED=query,SELECTION=selection,PROPOSAL=proposal)
+                    SEED=query,SELECTION=selection,PROPOSAL=proposal,TOP_K_PPS=top_k_pps)
                 REVIEW_PROMPT.apply(PROPOSAL_REVIEWER.obj)
             else:
                 status_info=f'Reviewing refined proposal (version {attempt})...'
                 REREVIEW_PROMPT=P.GUM_PROPOSAL_REREVIEW_ISEARCH if USE_ISEARCH_REVIEW else P.GUM_PROPOSAL_REREVIEW
                 proposal_review_prompt=REREVIEW_PROMPT(
-                    SELECTION=selection,PROPOSAL=proposal,CHANGES=changes)
+                    SELECTION=selection,PROPOSAL=proposal,CHANGES=changes,TOP_K_PPS=top_k_pps)
                 REVIEW_PROMPT.apply(PROPOSAL_REVIEWER.obj)
 
             review_search_stack=[]

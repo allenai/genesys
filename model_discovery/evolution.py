@@ -436,7 +436,32 @@ class DesignArtifact(NodeObject):
         return cls(proposal=proposal, implementation=implementation, verifications=verifications, codes=codes, **metadata)
 
     def to_prompt(self):
-        raise NotImplementedError('to_prompt is not implemented yet for DesignArtifact, TODO')
+        prompt=f"""
+# Proposal: {self.proposal.modelname}
+
+{self.proposal.proposal}
+
+## Review
+
+{self.proposal.review}
+
+### Rating: {self.proposal.rating} out of 5
+
+### Reviewer Suggestions
+
+{self.proposal.suggestions}
+"""
+        if self.is_implemented():
+            prompt+=f"""
+# Implementation
+
+{self.implementation.implementation.view()}
+            """
+        for scale in self.verifications:
+            pass # TODO
+
+        return prompt
+
 
     def to_desc(self):
         mdtext = f'## {self.proposal.modelname}'
@@ -569,8 +594,8 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         if node.type=='ReferenceCoreWithTree':
             tree=node.tree
             return tree
-        elif node.type=='DesignArtifact' and node.implementation and node.implementation.status=='implemented':
-            tree=node.implementation.tree
+        elif node.type=='DesignArtifactImplemented':
+            tree=node.implementation.implementation
             return tree
         else:
             return None 

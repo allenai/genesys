@@ -16,6 +16,8 @@ from pinecone.grpc import PineconeGRPC as Pinecone
 from pinecone import ServerlessSpec
 from langchain_openai import OpenAIEmbeddings
 from langchain_experimental.text_splitter import SemanticChunker
+from langchain.evaluation import load_evaluator,EmbeddingDistance
+
 
 from tqdm import tqdm
 import pypdf
@@ -115,6 +117,36 @@ class SuperScholarSearcher:
             model="text-embedding-3-large"
         )
 
+        self.emb_evaluator = load_evaluator(
+            "embedding_distance", 
+            embeddings=self.embedding,
+            distance_metric=EmbeddingDistance.COSINE
+        )
+
+        self.design_proposals={}
+        for acronym in self.ptree.filter_by_type(['DesignArtifact','DesignArtifactImplemented']):
+            design=self.ptree.get_node(acronym)
+            self.design_proposals[acronym]=design.proposal.proposal
+
+    def query_design_proposals(self,query,pp=True):
+        top_k=self.proposal_search_cfg['top_k']
+        cutoff=self.proposal_search_cfg['cutoff']
+        scores={i:1-self.emb_evaluator.evaluate_strings(query,self.design_proposals[i]) 
+                for i in self.design_proposals}
+        filtered_scores={i:s for i,s in scores.items() if s>cutoff}
+        pps=list(sorted(filtered_scores.items(),key=lambda x:x[1]))[:top_k]
+        if pp:
+            prt=''
+            if not pps:
+                prt+='### No design proposals found from the previous designs for the given proposal.\n\n'
+            else:
+                prt+=f'### Found {len(pps)} similar design proposals from the previous designs for the given proposal:\n\n'
+                for i,p in pps:
+                    prt+=f'#### {i} (Score: {scores[i]:.2f})\n\n<details><summary>Click to Expand</summary>\n\n```\n{self.design_proposals[i]}\n```\n\n</details>\n\n'
+            return pps,prt
+        else:
+            return pps
+
     def reconfig(self,cfg,stream=None):
         DEFAULT_SEARCH_LIMITS={
             's2':5,
@@ -128,9 +160,14 @@ class SuperScholarSearcher:
             'model_size':'large',
             'max_tokens':2000,
         }
+        DEFAULT_PROPOSAL_SEARCH_CFG={
+            'top_k':3,
+            'cutoff':0.5,
+        }
         self.result_limits=U.safe_get_cfg_dict(cfg,'result_limits',DEFAULT_SEARCH_LIMITS)
         self.rerank_ratio=cfg.get('rerank_ratio',0.2)
         self.perplexity_settings=U.safe_get_cfg_dict(cfg,'perplexity_settings',DEFAULT_PERPLEXITY_SETTINGS)
+        self.proposal_search_cfg=U.safe_get_cfg_dict(cfg,'proposal_search',DEFAULT_PROPOSAL_SEARCH_CFG)
         index_name=cfg.get('index_name','modis-library-v0') # change it to your index name
         assert index_name, 'Index name is required'
         if index_name!=self.index_name: # always do it in init
@@ -141,6 +178,7 @@ class SuperScholarSearcher:
             'result_limits':self.result_limits,
             'rerank_ratio':self.rerank_ratio,
             'perplexity_settings':self.perplexity_settings,
+            'proposal_search':self.proposal_search_cfg,
         }
         if stream:
             self.stream=stream
@@ -536,22 +574,29 @@ class SuperScholarSearcher:
                 ('Primary',self.texts,''),
                 ('Secondary',self.texts2,'2'),
                 ('Plus',self.textsp,'p')]:
+            
+            ## XXX: REMOVE THIS
+            if name!='Primary':
+                continue
+
             text_dir=U.pjoin(self.files_dir,'texts'+tail)
             htext_dir=U.pjoin(self.files_dir,'htexts'+tail)
-            if U.pexists(htext_dir): 
-                for i in os.listdir(htext_dir):
-                    if i.endswith('.txt'):
-                        if index_only:
-                            lib[i.split('.')[0]]=None
-                        else:
-                            lib[i.split('.')[0]]=U.read_file(U.pjoin(htext_dir,i))
             if U.pexists(text_dir):  # pdfs first, overwrite htmls
-                for i in os.listdir(text_dir):
+                for i in tqdm(os.listdir(text_dir),desc=f'Loading splits {name}'):
                     if i.endswith('.txt'):
                         if index_only:
                             lib[i.split('.')[0]]=None
                         else:
                             lib[i.split('.')[0]]=U.read_file(U.pjoin(text_dir,i))
+            if U.pexists(htext_dir): 
+                for i in tqdm(os.listdir(htext_dir),desc=f'Loading splits {name}'):
+                    if i.endswith('.txt'):
+                        if i.split('.')[0] in lib:
+                            continue
+                        if index_only:
+                            lib[i.split('.')[0]]=None
+                        else:
+                            lib[i.split('.')[0]]=U.read_file(U.pjoin(htext_dir,i))
         if index_only:
             U.save_json(self.texts,U.pjoin(self.libfiles_dir,'texts_index.json'))
             U.save_json(self.texts2,U.pjoin(self.libfiles_dir,'texts2_index.json'))
@@ -610,6 +655,11 @@ class SuperScholarSearcher:
                 ('Primary',self.lib,'texts'),
                 ('Secondary',self.lib2,'texts2'),
                 ('Plus',self.libp,'textsp')]:
+            
+            # XXX: only convert primary papers for now
+            if name!='Primary':
+                continue
+
             save_dir=U.pjoin(self.files_dir,folder)
             U.mkdir(save_dir)
             for i in tqdm(self.lib,desc=f'Converting library {name} PDFs'):
@@ -722,11 +772,11 @@ class SuperScholarSearcher:
                         if tail=='': lib=self.texts
                         elif tail=='2': lib=self.texts2
                         elif tail=='p': lib=self.textsp
-                    try:
-                        vector,split=self.split_text(lib[i],i)
-                    except Exception as e:
-                        print(f'Error splitting {i}: {e}')
-                        vector,split={},{}
+                    # try:
+                    vector,split=self.split_text(lib[i],i)
+                    # except Exception as e:
+                    #     print(f'Error splitting {i}: {e}')
+                    #     vector,split={},{}
                     U.save_json(vector,U.pjoin(self.files_dir,'vectors'+tail,f'{i}.json'))
                     U.save_json(split,U.pjoin(self.libfiles_dir,'splits'+tail,f'{i}.json'))
                 splits.update(split)
@@ -740,6 +790,11 @@ class SuperScholarSearcher:
                 ('primary',self.vectors),
                 ('secondary',self.vectors),
                 ('plus',self.vectors)]:
+            
+            ## XXX: REMOVE THIS
+            if namespace!='primary':
+                continue
+
             for id in tqdm(vectors,desc=f'Upserting texts {namespace}'):
                 if vectors[id]:
                     self.index.upsert(vectors=vectors[id],namespace=namespace)
