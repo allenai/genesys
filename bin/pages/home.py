@@ -18,5 +18,5 @@ def home(evosys,project_dir):
 
 
     with st.sidebar:
-        st.write("Empty sidebar")
+        st.write("Welcome to the Model Discovery System")
     

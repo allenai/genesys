@@ -438,6 +438,15 @@ class DesignArtifact(NodeObject):
     def to_prompt(self):
         raise NotImplementedError('to_prompt is not implemented yet for DesignArtifact, TODO')
 
+    def to_desc(self):
+        mdtext = f'## {self.proposal.modelname}'
+        mdtext += f'\n**Selection:** {self.proposal.selection}'
+        mdtext += f'\n**Model:** {self.proposal.modelname}'
+        mdtext += f'\n**Variant:** {self.proposal.variantname}'
+        mdtext += f'\n**Rating:** {self.proposal.rating}/5'
+        mdtext += f'\n**Passed:** {self.proposal.passed}'
+        return mdtext.replace(':', ' ').replace('e.\ng.\n', 'e.g.').replace('i.\ne.\n', 'i.e.')
+
     def is_implemented(self):
         return self.implementation is not None and self.implementation.status=='implemented'
 
@@ -529,7 +538,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         # generate unique hash for the design, do not consider the order
         # design_id = hashlib.sha256(f"{sorted(ref_ids)}{sorted(seed_ids)}{instruct}{mode}".encode()).hexdigest()
         hash_tail=hashlib.sha256(f"{sorted(ref_ids)}{sorted(seed_ids)}{instruct}{mode}".encode()).hexdigest()
-        design_id = f"{datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}-{hash_tail[-6:]}"
+        design_id = f"{datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}-{hash_tail[-6:]}"
         sessdata = {
             'seed_ids': seed_ids,
             'ref_ids': ref_ids,
@@ -1079,7 +1088,7 @@ class EvolutionSystem(exec_utils.System):
             assert len(seed)>0, "There must be at least one seed from DesignArtifact or ReferenceCoreWithTree when design from existing"
             if len(seed)>1:
                 seed = [random.choice(seed)] # NOTE: randomly select for now, should not happen at all
-                refs = [i for i in seeds if i.acronym!=seed[0].acronym]
+                # refs = [i for i in seeds if i.acronym!=seed[0].acronym]
             else:
                 seed = [seeds[0]]
         elif mode==DesignModes.SCRATCH:

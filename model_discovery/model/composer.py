@@ -439,7 +439,7 @@ class GAUTree:
             name = '    ' * level + ' |- ' + name
             path += '.' + _name
         else:
-            pstr += f'GAU Tree Map for {self.name}:\n'
+            # pstr += f'GAU Tree Map for {self.name}:\n'
             path = _name
         
         pstr += '  ' + name + '\n'
@@ -465,7 +465,7 @@ class GAUTree:
         along with their specifications and code if applicable.
         """
         pstr, unimplemented = self._view(self.root.spec.unitname, node=self.root)
-        
+        pstr=f'#### {self.name} Tree Map\n\n```bash\n{pstr}'
         # Collect implemented and unimplemented units
         implemented = set(self.units.keys())
         
@@ -475,28 +475,31 @@ class GAUTree:
             pstr += '\nUnimplemented Units: ' + ', '.join(unimplemented)
         else:
             pstr += '\nAll units are implemented.'
+        pstr += '\n```\n'
         
-        pstr += '\n\nSpecifications for Implemented Units:\n'
+        pstr += '\n\n#### Specifications for Implemented Units:\n'
         
         # Append specifications and code for implemented units
         for unit in self.units.values():
             pstr += unit.spec.to_prompt() + '\n'
             if unit_code:
-                pstr += f'\nCode:\n```python\n{unit.code}\n```\n'
+                pstr += f'\n###### Implementation \n\n<details><summary>Click to expand</summary>\n\n```python\n{unit.code}\n```\n</details>\n'
+                pstr += '\n---\n'
         
         # Append unimplemented unit declarations
         if unimplemented:
-            pstr += '\n\nDeclarations for Unimplemented Units:\n'
+            pstr += '\n\n##### Declarations for Unimplemented Units:\n'
             for unit in unimplemented:
-                pstr += self.declares[unit].to_prompt() + '\n'
+                pstr += self.declares[unit].to_prompt() + '\n---\n'
 
         unused=self.get_disconnected()
         if unused:
-            pstr += '\n\nUnused Units:\n'
+            pstr += '\n\n##### Unused Units:\n'
             for unit in unused:
                 pstr += self.units[unit].spec.to_prompt() + '\n'
                 if unit_code:
-                    pstr += f'\nCode:\n```python\n{self.units[unit].code}\n```\n'
+                    pstr += f'\n###### Implementation \n\n<details><summary>Click to expand</summary>\n\n```python\n{self.units[unit].code}\n```\n</details>\n'
+                pstr += '\n---\n'
         
         return pstr, list(implemented), list(unimplemented)
 
@@ -512,7 +515,7 @@ class GAUTree:
         return (
             f'## Tree Map of the GAUs\n\n'
             '<details><summary>Click to expand</summary>\n\n'
-            f'```bash\n{view}\n```\n'
+            f'\n{view}\n'
             '</details>\n\n'
             '## Composed LM Block Code\n'
             '<details><summary>Click to expand</summary>\n\n'
@@ -522,7 +525,7 @@ class GAUTree:
         ) if unit_code else (
             f'## Tree Map of the GAUs\n\n'
             '<details><summary>Click to expand</summary>\n\n'
-            f'```bash\n{view}\n```\n'
+            f'\n{view}\n'
             '</details>\n\n'
             '## Composed LM Block Code\n'
             '<details><summary>Click to expand</summary>\n\n'

@@ -95,7 +95,7 @@ class GUFlowScratch(FlowCreator): # ❄️ FREEZING #
             'implementation_debug':10,
             'post_refinement':10,
         }
-        self.lib_dir=system.lib_dir
+        self.lib_dir=system.ptree.lib_dir
 
         # prepare roles
         self.gpt4o0806_agent=self.system.designer # as we replaced the system prompt, essential its just a base agent

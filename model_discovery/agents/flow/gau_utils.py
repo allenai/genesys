@@ -728,6 +728,7 @@ class GAUCallChecker(ast.NodeVisitor):
         self.errors = []
         self.code_lines = code_lines
         self.children = children
+        self.called_gau_classes = []
 
     def visit_ClassDef(self, node):
         if node.name == self.unit_name:
@@ -786,7 +787,11 @@ class GAUCallChecker(ast.NodeVisitor):
         return None
 
     def is_child_class(self, func):
-        return self.get_class_name(func) in self.children
+        class_name = self.get_class_name(func)
+        if class_name in self.children:
+            self.called_gau_classes.append(class_name)
+            return True
+        return False
 
     def check_gau_call(self, stmt):
         """Check if the GAU instance is called with the correct arguments."""
@@ -927,7 +932,12 @@ def check_and_reformat_gau_code(source_code,unit_name=None):
     gau_instances = {key.replace("self.", ""): value for key, value in attribute_checker.gau_instances.items()}   
     gaucallchecker = GAUCallChecker(unit_name, gau_instances, code_lines, children)
     gaucallchecker.visit(tree)
+    called_gau_classes = gaucallchecker.called_gau_classes
     fetal_errors += gaucallchecker.errors
+
+    UNUSED_GAU_CLASSES = set(children) - set(called_gau_classes)
+    if UNUSED_GAU_CLASSES:
+        errors.append(f"Error: {', '.join(UNUSED_GAU_CLASSES)} are declared as children but never used.")
 
     # Step 7: Generate the reformatted source code
     reformatted_code = astor.to_source(tree)

@@ -51,6 +51,9 @@ def evolve(evosys,project_dir):
     st.header("Phylogenetic Tree Viewer")
     ptree_dir_full=U.pjoin(evosys.evo_dir,f'PTree.html')
     if st.button('Click here to view the Full Phylogenetic Tree'):
+        if not U.pexists(ptree_dir_full):
+            with st.spinner('Loading...'):
+                evosys.ptree.export()
         check_output("start " + ptree_dir_full, shell=True)
 
     # check this: https://github.com/napoles-uach/streamlit_network 
@@ -64,6 +67,6 @@ def evolve(evosys,project_dir):
     components.html(source_code, height = 800)
 
 
-    with st.sidebar:
-        st.write("Empty sidebar")
+    # with st.sidebar:
+    #     st.write("Empty sidebar")
     

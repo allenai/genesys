@@ -25,7 +25,7 @@ print(LIBRARY_PATH)
 ckpt_dir=os.environ.get("CKPT_DIR")
 
 
-def check_tune(scale, model_name, path=None, code=None, check_only=False, cpu_only=False, reformat_only=False):
+def check_tune(scale, model_name, path=None, code=None, check_only=False, cpu_only=False, reformat_only=False,skip_tune=False):
     checker = BuildTool(
         tool_type="checker",
     )
@@ -42,6 +42,8 @@ def check_tune(scale, model_name, path=None, code=None, check_only=False, cpu_on
             code=U.read_file(path) # assert model_name is a path
 
     checkpass,report,code,results = checker.check(cfg,code,model_name,True, cpu_only=cpu_only, reformat_only=reformat_only)
+    if skip_tune:
+        return code
     if not checkpass:
         print(report)
         raise Exception('Model does not pass the checker')

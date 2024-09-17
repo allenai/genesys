@@ -50,6 +50,7 @@ def get_system_info():
 def engine(evosys,project_dir):
 
     st.title("Verification Engine")
+    evosys.ptree.reload()
     
     st.header("System Info")
     col1, col2, col3 = st.columns(3)
@@ -65,30 +66,28 @@ def engine(evosys,project_dir):
             st.write(mem_info)
 
     
-    designed=os.listdir(U.pjoin(evosys.evo_dir,'db'))
-    unverified=[]
+    designed=evosys.ptree.filter_by_type(['DesignArtifactImplemented'])
+    
+    verified={}
     for design_id in designed:
-        report_dir=U.pjoin(evosys.evo_dir,'ve',design_id,'report.json')
-        if U.load_json(report_dir)=={}:
-            unverified.append(design_id)
+        design=evosys.ptree.get_node(design_id)
+        verifications=design.verifications
+        verified[design_id]={}
+        for scale,verification in verifications.items():
+            verified[design_id][scale]=verification
 
-    st.header("Verified Designs")
-    if len(designed)==0:
-        st.write("No designs have been created yet.")
-    for design_id in designed:
-        report_dir=U.pjoin(evosys.evo_dir,'ve',design_id,'report.json')
-        if U.load_json(report_dir)!={}:
-            st.write(f"Design: {design_id}")
-            st.write(U.load_json(report_dir))
+    st.subheader("Designs")
+    # if len(verified)==0:
+    #     st.write("No designs have been verified yet.")
+    # for design_id in verified:
+    #     for scale,verification in verified[design_id].items():
+    #         st.write(f"Design: {design_id}, Scale: {scale}, Verification: {verification}")
 
-    st.header("Unverified Designs")
-    if len(unverified)==0:
-        st.write("There is no unverified designs.")
-    for design_id in unverified:
-        st.write(f"Design: {design_id}")
+    # st.header("Unverified Designs")
+    # if len(unverified)==0:
+    #     st.write("There is no unverified designs.")
+    # for design_id in unverified:
+    #     st.write(f"Design: {design_id}")
 
 
-
-    with st.sidebar:
-        st.write("Empty sidebar")
     

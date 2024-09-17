@@ -21,7 +21,7 @@ class UnitDecl(BaseModel):
 
    def to_prompt(self):
       return f"""
-Unit Name: {self.unitname}
+##### Unit Name: {self.unitname}
 - Requirements: {self.requirements}
 - Inputs: {", ".join(self.inputs)}
 - Outputs: {", ".join(self.outputs)}
@@ -35,11 +35,11 @@ class UnitSpec(BaseModel):
 
    def to_prompt(self):
       return f"""
-Unit Name: {self.unitname}
-Document:
-'''
+##### Unit Name: {self.unitname}
+- Document:
+```python
 {self.document}  
-'''
+```
 - Inputs: {", ".join(self.inputs)}
 - Outputs: {", ".join(self.outputs)}
 """

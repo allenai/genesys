@@ -135,7 +135,7 @@ def design(evosys,project_dir):
         if mode!=DesignModes.MUTATION.value:
             st.toast("WARNING!!!: Only mutation mode is supported now. Other modes are not stable or unimplemented.")
 
-        sources = ['ReferenceCoreWithTree', 'DesignArtifact', 'ReferenceCore', 'ReferenceWithCode', 'Reference']
+        sources = ['ReferenceCoreWithTree', 'DesignArtifactImplemented', 'DesignArtifact', 'ReferenceCore', 'ReferenceWithCode', 'Reference']
         sources={i:len(evosys.ptree.filter_by_type(i)) for i in sources}
         
         st.markdown("##### Configure the number of seeds to sample from each source")
@@ -143,12 +143,15 @@ def design(evosys,project_dir):
         for i,source in enumerate(sources):
             with cols[i]:
                 if mode==DesignModes.MUTATION.value and source=='ReferenceCoreWithTree':
-                    n_sources[source] = st.number_input(label=f'{source} ({sources[source]})',min_value=1,value=1,max_value=1,disabled=True)
+                    n_sources[source] = st.number_input(label=f'{source} ({sources[source]})',min_value=1,value=1)#,max_value=1,disabled=True)
                 else:
                     init_value=0 if source in ['DesignArtifact','ReferenceCore'] else min(2,sources[source])
-                    disabled=True if source == 'DesignArtifact' else False
-                    n_sources[source] = st.number_input(label=f'{source} ({sources[source]})',min_value=0,value=init_value,max_value=sources[source],disabled=disabled)
-
+                    if source == 'DesignArtifactImplemented':
+                        init_value = min(1,sources[source])
+                    # disabled=True if source == 'DesignArtifact' else False
+                    n_sources[source] = st.number_input(label=f'{source} ({sources[source]})',min_value=0,value=init_value,max_value=sources[source])#,disabled=disabled)
+        if mode==DesignModes.MUTATION.value:
+            st.write('**ReferenceCoreWithTree and DesignArtifactImplemented are seed types. Will randomly sample one from samples from them as seed.*')
 
         col1,col2=st.columns([3,2])
         termination={}
@@ -258,6 +261,8 @@ def design(evosys,project_dir):
         resume = st.checkbox(label="Resume",value=True)
 
     if submit:
+        if mode==DesignModes.MUTATION.value:
+            assert n_sources['ReferenceCoreWithTree']+n_sources['DesignArtifactImplemented']>0, "You must select at least one ReferenceCoreWithTree orDesignArtifactImplemented as seeds."
         for i in range(EXPERIMENT_RUNS):
             with st.empty():
                 if EXPERIMENT_RUNS>1:

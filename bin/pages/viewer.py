@@ -10,6 +10,7 @@ from subprocess import check_output
 from streamlit_markmap import markmap
 from streamlit_timeline import timeline
 from enum import Enum
+import pandas as pd
 
 sys.path.append('.')
 from model_discovery.agents.flow.alang import DialogTreeViewer
@@ -19,10 +20,13 @@ import model_discovery.utils as U
 from model_discovery.evolution import EvolutionSystem
 
 from model_discovery.agents.flow._legacy_gau_flows import GUFlowScratch
-from model_discovery.agents.flow._legacy_naive_flows import design_flow_definition,review_naive,design_naive,naive_design_review
+from model_discovery.agents.flow._legacy_naive_flows import design_flow_definition,review_naive,design_naive
 from model_discovery.agents.flow.gau_flows import GUFlowMutation
+from model_discovery.agents.flow.alang import AgentDialogFlowNaive,ALangCompiler
+from model_discovery.model.library.tester import check_tune
 
 class ViewModes(Enum):
+    DESIGNS = 'Designs'
     DIALOGS = 'Dialogs'
     FLOW = 'Flow'
 
@@ -30,8 +34,11 @@ class ViewModes(Enum):
 
 def viewer(evosys,project_dir):
     
+    system=evosys.rnd_agent
+    ptree=evosys.ptree
+
     ### build the system 
-    st.title("Agent Viewer")
+    st.title("Viewers")
 
     
     # Lagacy flows for development
@@ -40,12 +47,12 @@ def viewer(evosys,project_dir):
     
     design_flow_naive=AgentDialogFlowNaive('Model Design Flow',design_naive)
     review_flow_naive=AgentDialogFlowNaive('Model Review Flow',review_naive)
-    gu_flow_scratch = GUFlowScratch(system,None,None)
-    gu_flow_mutation = GUFlowMutation(system,None,None)
+    # gu_flow_scratch = GUFlowScratch(system,None,None)
+    # gu_flow_mutation = GUFlowMutation(system,None,None,'',{})
 
     flows={
-        'GU Flow (Scratch) (Legacy)':gu_flow_scratch,
-        'GU Flow (Mutation)':gu_flow_mutation,
+        # 'GU Flow (Scratch) (Legacy)':gu_flow_scratch,
+        # 'GU Flow (Mutation)':gu_flow_mutation,
         'Naive Design Flow':design_flow_naive,
         'Naive Review Flow':review_flow_naive,
     }
@@ -54,16 +61,61 @@ def viewer(evosys,project_dir):
     ### Sidebar
     with st.sidebar:
         view_mode = st.selectbox("View Mode", list(ViewModes))
-        selected_flow = st.selectbox("Select a flow", list(flows.keys()))
-        flow = flows[selected_flow]
+        if view_mode == ViewModes.FLOW:
+            selected_flow = st.selectbox("Select a flow", list(flows.keys()))
+            flow = flows[selected_flow]
+        elif view_mode == ViewModes.DESIGNS:
+            design_artifacts = evosys.ptree.filter_by_type(['DesignArtifact','DesignArtifactImplemented'])
+            selected_design = st.selectbox("Select a design", design_artifacts)
+        elif view_mode == ViewModes.DIALOGS:
+            log_dir = U.pjoin(evosys.evo_dir, 'log')
+            dialogs = {}
+            for d in os.listdir(log_dir):
+                dialogs[d] = DialogTreeViewer(U.pjoin(log_dir, d))
+
+    if view_mode == ViewModes.DESIGNS:
+
+        
+        st.markdown('## Design Artifact Viewer')
+
+        # st.header('14M Training Results')
+        csv_res_dir=U.pjoin(evosys.evo_dir,'..','..','notebooks','all_acc_14M.csv')
+        csv_res_norm_dir=U.pjoin(evosys.evo_dir,'..','..','notebooks','all_acc_14M_norm.csv')
+        df=pd.read_csv(csv_res_dir)
+        df_norm=pd.read_csv(csv_res_norm_dir)
+
+        col1,col2=st.columns(2)
+        with col1:
+            st.markdown('### Raw Results on 14M')
+            st.dataframe(df)
+        with col2:
+            st.markdown('### Relative to Random (%)')
+            st.dataframe(df_norm)
+
+        design=ptree.get_node(selected_design)
+
+        st.subheader(f'Proposal for {selected_design}')
+        with st.expander('View Proposal'):
+            st.markdown(design.proposal.proposal)
+        with st.expander('View Review'):
+            st.markdown(design.proposal.review)
+            st.write('#### Rating: ',design.proposal.rating,'out of 5')
+        st.subheader(f'GAU Tree for {selected_design}')
+        with st.expander('Click to expand'):
+            itree=design.implementation.implementation
+            st.write(itree.view()[0],unsafe_allow_html=True)
+        gab_code=check_tune('14M',design.acronym,code=itree.compose(),skip_tune=True,reformat_only=True)
+        st.subheader('Exported GAB Code')
+        with st.expander('Click to expand'):
+            st.code(gab_code,language='python')
 
 
-    if view_mode == ViewModes.DIALOGS:
+    elif view_mode == ViewModes.DIALOGS:
         st.markdown('## ALang Dialog Viewer')
-        log_dir = U.pjoin(evosys.evo_dir, 'log')
+        sess_dir = U.pjoin(evosys.evo_dir, 'db', 'sessions')
         dialogs = {}
-        for d in os.listdir(log_dir):
-            dialogs[d] = DialogTreeViewer(U.pjoin(log_dir, d))
+        for d in os.listdir(sess_dir):
+            dialogs[d] = DialogTreeViewer(U.pjoin(sess_dir, d))
 
         if not dialogs:
             st.warning("No dialogs found in the log directory")
@@ -77,6 +129,7 @@ def viewer(evosys,project_dir):
 
         with st.sidebar:
             st.write("Empty sidebar")
+
     elif view_mode == ViewModes.FLOW:
             
         st.markdown('## ALang Design Flow Viewer')
@@ -102,7 +155,7 @@ def viewer(evosys,project_dir):
         # flow=system.design_flow
         # script=system.DESIGN_ALANG_reformatted
 
-        flow = flow.flow
+        # flow = flow.flow
         script = flow.script
 
         if simple_mode:
