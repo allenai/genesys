@@ -611,7 +611,7 @@ class GUFlowMutation(FlowCreator):
             else:
                 self.tree=copy.deepcopy(tree_ckpt)
             cost_raw=copy.deepcopy(self.costs)
-            RETS=self._implement_proposal_recursive(main_tid,proposal,acronym)
+            RETS=self._implement_proposal_recursive(main_tid,proposal,acronym,resume=tree_ckpt is not None)
             costs={k:v-cost_raw[k] for k,v in self.costs.items()}
             ROUNDS,SUCCEED=RETS['ROUNDS'],RETS['SUCCEED']
             status='implemented' if SUCCEED else 'failed'
@@ -682,7 +682,7 @@ class GUFlowMutation(FlowCreator):
         return format_checks,format_errors,format_warnings,fetal_errors,unit_name, reformatted_code, docstring, new_args, gau_tests, children_decl, NEW_DECLARED
                         
 
-    def _implement_proposal_recursive(self,main_tid,proposal,acronym):
+    def _implement_proposal_recursive(self,main_tid,proposal,acronym,resume=False):
         '''
         1. Implement the selected unit first
         2. Implement any unimplemented newly declared units
@@ -710,6 +710,8 @@ class GUFlowMutation(FlowCreator):
         post_refinement=0 # TODO: introduce self-evaluate to post-refinement
         while True:
             round+=1 # Each round works on one unit at a time, start counting from beginning so that we dont wrap it in wrong place
+            if resume: # resume from a checkpoint, do not force selecting the selection
+                round+=1
             traces=[]
             context_implementation_coder=AgentContext()
             context_implementation_observer=AgentContext()
@@ -1120,10 +1122,11 @@ class GUFlowMutation(FlowCreator):
                         self.stream.write(review)
                         self.stream.write(suggestions)
                         self.print_raw_output(out,'IMPLEMENTATION_OBSERVER')
-
-                        self.tree.units[unit_name].rating=rating
-                        self.tree.units[unit_name].review=review
-                        self.tree.units[unit_name].suggestions=suggestions
+                        
+                        if unit_name in self.tree.units:
+                            self.tree.units[unit_name].rating=rating
+                            self.tree.units[unit_name].review=review
+                            self.tree.units[unit_name].suggestions=suggestions
                 else:
                     review=None
                     rating=None
@@ -1135,7 +1138,7 @@ class GUFlowMutation(FlowCreator):
                 else:
                     review_pass=True
                 design = {
-                    'unit': self.tree.units[unit_name].json(),
+                    'unit': self.tree.units[unit_name].json() if unit_name in self.tree.units else None,
                     'gab_code':gabcode_reformat,
                     'format_checks':format_checks,
                     'func_checks':func_checks,

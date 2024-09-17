@@ -1,6 +1,7 @@
 import ast
 import astor
 
+import traceback
 from model_discovery.model.utils.modules import UnitDecl
 
 
@@ -892,12 +893,14 @@ def check_and_reformat_gau_code(source_code,unit_name=None):
     try:
         exec(reformatted_code,local)
     except Exception as e:
-        fetal_errors.append(f"Error executing the code: {e}\nWill continue the checking process but please fix the code first.")
+        full_traceback=str(traceback.format_exc()).replace('File "<string>"','In "Reformatted Code"')
+        fetal_errors.append(f"Error when trying to execute the code by exec(reformatted_code), full traceback:\n{full_traceback}\nWill continue the checking process but please fix the code first.")
     children_decl=local.get('CHILDREN_DECLARATIONS',[])
     if children_decl==[]:
         warnings.append("Warning: No CHILDREN_DECLARATIONS found in the GAU. Will assume there is no children.")
         children=[]
     else:
+        print(children_decl)
         children=[decl.unitname for decl in children_decl]
 
     tree = ast.parse(reformatted_code)

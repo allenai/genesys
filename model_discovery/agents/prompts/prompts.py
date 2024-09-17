@@ -3071,6 +3071,7 @@ You must wrape each implementation in a block quote as follows:
 ```
 . All implementations must follow the format of the GAU template, and remember to keep the first line as the marker `# GAU_IMPLEMENTATION_FILE` to allow the parser detect a GAU implementation file. 
 Only the code block wrapped by ```python ``` and kept first line as `# GAU_IMPLEMENTATION_FILE` will be considered as a GAU implementation.
+In order to allow the parser successfully detect the code blocks, DO NOT nest any ```python ``` blocks within the code block of a unit implementation, e.g., in examples of the doc string, dont wrap the examples with ```python ```.  
 The class name of the GAU will be detected as the unit name of an implementation. Remember to keep the unittests and children declarations of each unit in the same file of the implementation. 
 In another word, each file must contain three sections: 1) the unit implementation, 2) the unittests (all unittests must be decorated with @gau_test, otherwise it will be ignored), 3) the children declarations. 
 And always remember to declare children GAUs if there is any in your unit, either new, placeholder or reuse existing ones. Otherwise the linker will not be able to find them.  

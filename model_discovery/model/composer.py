@@ -456,8 +456,8 @@ class GAUTree:
         implemented=set(self.units.keys())
         unimplemented=all_children-implemented
         return implemented,unimplemented
-
-    def view(self, unit_code=True):
+ 
+    def view(self, unit_code=True): # XXX: BUGGY! NEED TO CHECK! GOT WRONG TREE SOMETIMES
         """
         Returns a detailed view of the GAU tree, showing implemented and unimplemented units,
         along with their specifications and code if applicable.
