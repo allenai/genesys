@@ -931,7 +931,7 @@ class Checker(exec_utils.BaseTool):
                     'Error: Model initialization failed with error: '+str(e)+'\n'
                     'Full Traceback: \n' + error_trace + '\n'
                     f'Captured output during the test:\n\nBEGIN OF CAPTURED OUTPUT:\n\n{captured_output}\n\nEND OF CAPTURED OUTPUT.\n\n'
-                    'Hints: 1. if it is a dtype or device error, check whether the factory kwargs are passed to the layers, and whether you manually designate a type instead of apply the type from factory kwargs or the input\'s type during conversion or creating of an variable. \n'
+                    '1. if it is a dtype or device error, check whether the factory kwargs are passed to the layers, and whether you manually designate a type instead of apply the type from factory kwargs or the input\'s type during conversion or creating of an variable. \n'
                     '2. If it is a shape error, check whether the output sequence shape is equal to the input sequence shape. GAU must accept a sequence X and additional arguments from Z as input and output a sequence Y with the same shape of input sequence and optional updated intermediate variables Z. \n'
                     '3. Always remember to strictly follow the GAU template and do not implement redundant part like embedding layer. \n'
                 )
@@ -953,6 +953,7 @@ class Checker(exec_utils.BaseTool):
         effectiveness = None
         with U.CodeTimer("Model functional tests"):
             checkpass2=False
+            checked3=False
             try:
                 checkpass1=self._check_forward_pass(
                     gab,
@@ -965,6 +966,7 @@ class Checker(exec_utils.BaseTool):
                     gab,
                     gam.d_model
                 )
+                checked3=True
                 checkpass3=self._check_differentiable(glm,config.vocab_size, cpu_only)
                 if eff:
                     checkpass4,effectiveness=self._check_effectiveness(glm,config)
@@ -975,8 +977,11 @@ class Checker(exec_utils.BaseTool):
                 self.rprint(f'Model test failed\n{e}')
                 self.rprint('Full traceback:\n'+traceback.format_exc())
                 if not checkpass2:
-                    self.rprint('Hint: If you used convolutional layer, you should consider that the conv kernel may cover the future steps. '
+                    self.rprint('If you used convolutional layer, you should consider that the conv kernel may cover the future steps. '
                                 'You can add padding and truncation of future steps to the conv layer to make it causal.\n')
+                if checked3 and not checkpass3:
+                    self.rprint('Please check if you have defined any non-differentiable operations in your model that cut off the gradient flow. '
+                                'Or if you have any operations defined but never used them in your forward pass.')
                 check_report=self.get_report(gab_code)
                 return False,check_report,gab_code,{'hints': self.hints}
 

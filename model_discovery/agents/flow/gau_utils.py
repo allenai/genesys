@@ -916,7 +916,6 @@ def check_and_reformat_gau_code(source_code,unit_name=None):
             fetal_errors.append(f"Error: Failed to parse CHILDREN_DECLARATIONS, please make sure the format is correct. Do not define UnitDecl by yourself, import it from model_discovery.model.utils.modules. Error: {e}")
             children=[]
 
-    print(f"instantiated_classes: {instantiated_classes}")
     UNUSED_GAU_CLASSES = set(children) - set(instantiated_classes)
     if UNUSED_GAU_CLASSES:
         errors.append(f"Error: {', '.join(UNUSED_GAU_CLASSES)} are declared as children but never used.")

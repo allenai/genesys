@@ -284,7 +284,15 @@ class PrintSystem:
 
     def markdown(self,msg,**kwargs):
         print(msg)
+    
+    def spinner(self,msg,**kwargs):
+        print(msg)
 
+    def balloons(self,**kwargs):
+        pass
+
+    def snow(self,**kwargs):
+        pass
 
 def safe_backup(file):
     count=1
@@ -306,6 +314,8 @@ class StreamWrapper:
                 self._log=[]
         self.status = StatusHandlerWrapper(stream.status, self.log)
         self.spinner = SpinnerWrapper(stream.spinner, self.log)
+        self.balloons = stream.balloons
+        self.snow = stream.snow
     
     def log(self,msg,type):
         self._log.append((datetime.datetime.now(),msg,type))

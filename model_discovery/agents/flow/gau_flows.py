@@ -453,7 +453,7 @@ class GUFlowMutation(FlowCreator):
             proposal_reviewer_tid=self.dialog.fork(main_tid,USER_CALLER,PROPOSAL_REVIEWER,context=context_proposal_reviewer,
                                                 alias='proposal_review',note=f'Reviewing proposal...')
             _,top_k_pps=self.sss.query_design_proposals(proposal)
-            self.stream.write(top_k_pps)
+            # self.stream.markdown(top_k_pps)
             if attempt==0:
                 status_info=f'Reviewing initial proposal...'
                 REVIEW_PROMPT=P.GUM_PROPOSAL_REVIEW_ISEARCH_BEGIN if USE_ISEARCH_REVIEW else P.GUM_PROPOSAL_REVIEW
@@ -617,7 +617,8 @@ class GUFlowMutation(FlowCreator):
             costs={k:v-cost_raw[k] for k,v in self.costs.items()}
             ROUNDS,SUCCEED=RETS['ROUNDS'],RETS['SUCCEED']
             status='implemented' if SUCCEED else 'failed'
-            self.ptree.implement(acronym,self.tree,ROUNDS,status,costs,self.design_cfg,self.user_input)
+            with self.status_handler(f'Adding implementation to tree, tuning and exporting full LM codes...'):
+                self.ptree.implement(acronym,self.tree,ROUNDS,status,costs,self.design_cfg,self.user_input)
         return query,state,{}
    
     def check_code_format(self,code,selection=None,spec=None,analysis=None):
@@ -808,7 +809,7 @@ class GUFlowMutation(FlowCreator):
                 GUMT_IMPLEMENTATION_CODER_SYSTEM=P.gen_GUMT_IMPLEMENTATION_CODER_SYSTEM(use_o1=USE_O1_CODER)
                 IMPLEMENTATION_CODER=reload_role('implementation_coder',self.agents['IMPLEMENTATION_CODER'],GUMT_IMPLEMENTATION_CODER_SYSTEM(
                     GAB_BASE=GAB_BASE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE,PROPOSAL=proposal.proposal,REVIEW=proposal.review,RATING=proposal.rating))
-                implementation_coder_tid=self.dialog.fork(main_tid,USER_CALLER,IMPLEMENTATION_CODER,context=context_implementation_coder,
+                implementation_coder_tid=self.dialog.fork(main_tid,USER_CALLER,IMPLEMENTATION_CODER,context=context_implementation_coder.truncate(2), # keep last 2 messages and system message
                                                     alias='implementation_coder',note=f'Starting design implementation...')
                 if attempt==0: # first attempt, implement the unit
                     status_info=f'Starting design implementation of {selection}...'
@@ -970,7 +971,7 @@ class GUFlowMutation(FlowCreator):
                             if len(root_name)==0:
                                 fetal_errors.append(f'There is no root unit found, please check if there is any cycle in the dependency graph of units.')
                             elif len(root_name)>1:
-                                fetal_errors.append(f'There are multiple root units found: {", ".join(root_name)}, please check if there is any cycle in the dependency graph of units.')
+                                fetal_errors.append(f'There are multiple root units found: {", ".join(root_name)}, please check if you miss declare some child units.')
                             else:
                                 unit_name=root_name[0]
                                 reformatted_code=f'### {unit_name} Reformatted Code\n```python\n{reformatted_code}\n```\n\n'
@@ -1219,16 +1220,10 @@ class GUFlowMutation(FlowCreator):
         RETS['SUCCEED']=SUCCEED
         if SUCCEED:
             self.stream.write('#### Design Implementation succeeded!')
-            try:
-                self.stream.balloons()
-            except:
-                pass
+            self.stream.balloons()
         else:
             self.stream.write('#### Design Implementation failed!')
-            try:
-                self.stream.snow()
-            except:
-                pass
+            self.stream.snow()
         return RETS
     
     

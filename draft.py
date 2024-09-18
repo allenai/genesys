@@ -2,126 +2,130 @@ import torch
 import torch.nn as nn
 from model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl
 import torch.nn.functional as F
-import logging
-from typing import Dict, Tuple
+import math
+from typing import Optional
 
 
 class DynamicHybridLayer(GAUBase):
     """
     Dynamic Hybrid Layer (DHL)
 
-    This GAU integrates a Selective State Space Model (SSM) block, an Attention block,
-    and combines their outputs using a dynamic gating mechanism informed by a context vector
+    This GAU integrates a Selective State Space Model (SSM) block and an Attention block,
+    combining their outputs using a dynamic gating mechanism informed by a context vector
     extracted from the input. The DHL adaptively balances the contributions of SSM and
     attention to efficiently handle long sequences while maintaining the ability to capture
     complex dependencies.
 
-    Args:
-        embed_dim (int): Embedding dimension.
-        block_loc (Tuple[int, int]): Location of the block within the network.
-        kwarg_all (dict): Dictionary of all keyword arguments.
+    **Enhancements Implemented:**
+    - **Hierarchical Chunking:** Processes very long sequences efficiently by splitting them into manageable chunks.
+    - **Adaptive Gating Mechanism:** Adjusts the balance between SSM and Attention outputs based on sequence length.
+    - **Optimized Computations:** Reduces computational overhead by projecting gating inputs to a lower dimension.
+    - **Error Handling and Input Validation:** Ensures robustness by checking input types and dimensions.
 
-    Inputs:
-        - X: Input sequence tensor of shape (B, L, D).
+    **Inputs:**
+        - **X:** Input sequence tensor of shape (B, L, D), where B is batch size, L is sequence length, and D is embedding dimension.
 
-    Outputs:
-        - Y: Output sequence tensor of the same shape as X.
+    **Outputs:**
+        - **Y:** Output sequence tensor of the same shape as X.
 
-    Child GAUs:
-        - SelectiveSSMUnit
-        - AttentionUnit
-        - AdvancedContextVectorExtractor
-        - HierarchicalChunkProcessor
-        - MemoryCompressor
+    **Intermediate Variables in Z:**
+        - **'X_norm':** Normalized input tensor.
+        - **'S':** Output from the SelectiveSSMUnit.
+        - **'A':** Output from the AttentionUnit.
+        - **'C':** Context vector extracted from the input.
+
+    **Child GAUs:**
+        - **SelectiveSSMUnit:** Processes the normalized input through a selective SSM.
+        - **AttentionUnit:** Applies an efficient attention mechanism to the normalized input.
+        - **ContextVectorExtractor:** Extracts a context vector from the normalized input.
+
+    **Usage Example:**
+
+        layer = DynamicHybridLayer(embed_dim=64, block_loc=(0,1), kwarg_all={})
+        Y, Z = layer(X)
     """
 
     def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, sequence_threshold=1024, ssm_dim_factor=
-        1.0, chunk_size=1024, **kwargs):
+        device=None, dtype=None, ssm_dim: int=None, num_heads: int=8,
+        max_chunk_length: int=1024, **kwargs):
         self.factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc, kwarg_all)
-        self.embed_dim = embed_dim
-        self.block_loc = block_loc
-        self.kwarg_all = kwarg_all
-        self.ssm_dim = int(self.embed_dim * ssm_dim_factor)
-        self.norm = nn.LayerNorm(self.embed_dim, **self.factory_kwargs)
-        self.s_proj = nn.Linear(self.embed_dim, gate_proj_dim, **self.
-            factory_kwargs)
-        self.a_proj = nn.Linear(self.embed_dim, gate_proj_dim, **self.
-            factory_kwargs)
-        self.c_proj = nn.Linear(self.embed_dim, gate_proj_dim, **self.
-            factory_kwargs)
+        ssm_dim = ssm_dim if ssm_dim is not None else embed_dim
+        self.max_chunk_length = max_chunk_length
+        self.norm = nn.LayerNorm(embed_dim, **self.factory_kwargs)
+        kwarg_all['ssm_dim'] = ssm_dim
+        kwarg_all['num_heads'] = num_heads
         self.ssm_unit = SelectiveSSMUnit(embed_dim=self.embed_dim,
             block_loc=self.block_loc, kwarg_all=self.kwarg_all, **
             self.factory_kwargs, **self.kwarg_all)
         self.attention_unit = AttentionUnit(embed_dim=self.embed_dim,
             block_loc=self.block_loc, kwarg_all=self.kwarg_all, **
             self.factory_kwargs, **self.kwarg_all)
-        self.context_unit = AdvancedContextVectorExtractor(embed_dim=
-            self.embed_dim, block_loc=self.block_loc, kwarg_all=
-            self.kwarg_all, **self.factory_kwargs, **self.kwarg_all)
-        self.gate = nn.Linear(gate_proj_dim * 3, self.embed_dim, **self.
-            factory_kwargs)
-        self.out_proj = nn.Linear(self.embed_dim, self.embed_dim, **self.
-            factory_kwargs)
-        self.hierarchical_processor = HierarchicalChunkProcessor(embed_dim=
-            self.embed_dim, block_loc=self.block_loc, kwarg_all=
-            self.kwarg_all, **self.factory_kwargs, **self.kwarg_all)
-        self.memory_compressor = MemoryCompressor(embed_dim=self.embed_dim,
+        self.context_unit = ContextVectorExtractor(embed_dim=self.embed_dim,
             block_loc=self.block_loc, kwarg_all=self.kwarg_all, **
             self.factory_kwargs, **self.kwarg_all)
-        self.sequence_threshold = sequence_threshold
-        ssm_dim_factor = ssm_dim_factor
-        gate_proj_dim = gate_proj_dim
-        self.chunk_size = chunk_size
+        gating_input_dim = self.embed_dim // 4
+        self.gate_proj = nn.Linear(self.embed_dim, gating_input_dim, **self
+            .factory_kwargs)
+        self.gate = nn.Linear(gating_input_dim, 1, **self.factory_kwargs)
+        self.out_proj = nn.Linear(embed_dim, embed_dim, **self.factory_kwargs)
 
     def _forward(self, X, **Z):
         if not isinstance(X, torch.Tensor):
             raise TypeError('Input X must be a torch.Tensor')
+        if X.dim() != 3:
+            raise ValueError(
+                f'Input X must be a 3D tensor, got {X.dim()}D tensor instead')
         if X.shape[-1] != self.embed_dim:
             raise ValueError(
-                f'Expected input of shape (B, L, {self.embed_dim}), got {X.shape}'
+                f'Expected last dimension of X to be {self.embed_dim}, got {X.shape[-1]}'
                 )
         B, L, D = X.shape
-        X_norm = self.norm(X)
-        Z['X_norm'] = X_norm
-        if L > self.sequence_threshold:
-            Z['chunk_size'] = self.chunk_size
-            Y_hp, Z_ = self.hierarchical_processor(X_norm, **Z)
-            X_norm = Y_hp
-            Z.update(Z_)
-            Y_mc, Z_ = self.memory_compressor(X_norm, **Z)
-            X_norm = Y_mc
-            Z.update(Z_)
+        if L > self.max_chunk_length:
+            chunks = X.split(self.max_chunk_length, dim=1)
+            outputs = []
+            for chunk in chunks:
+                Y_chunk, Z = self._process_chunk(chunk, **Z)
+                outputs.append(Y_chunk)
+            Y = torch.cat(outputs, dim=1)
         else:
-            pass
-        Y_s, Z_ = self.ssm_unit(X_norm, **Z)
-        S = Y_s
-        Z.update(Z_)
-        Y_a, Z_ = self.attention_unit(X_norm, **Z)
-        A = Y_a
-        Z.update(Z_)
-        Y_c, Z_ = self.context_unit(X_norm, **Z)
-        C = Y_c
-        Z.update(Z_)
+            Y, Z = self._process_chunk(X, **Z)
+        return Y, Z
+
+    def _process_chunk(self, X_chunk, **Z):
+        X_norm = self.norm(X_chunk)
+        Z['X_norm'] = X_norm
+        S, Z = self.ssm_unit(X_norm, **Z)
+        A, Z = self.attention_unit(X_norm, **Z)
+        C, Z = self.context_unit(X_norm, **Z)
         if S is None:
             S = X_norm
         if A is None:
             A = X_norm
         if C is None:
-            C = torch.mean(X_norm, dim=1, keepdim=True).expand(B, L, D)
-        S_proj = self.s_proj(S)
-        A_proj = self.a_proj(A)
-        C_proj = self.c_proj(C)
-        concatenated = torch.cat([S_proj, A_proj, C_proj], dim=-1)
-        G = torch.sigmoid(self.gate(concatenated))
-        seq_factor = min(L / self.sequence_threshold, 1.0)
-        G = G * seq_factor + (1 - seq_factor) * (1 - G)
+            C = torch.mean(X_norm, dim=1, keepdim=True)
+        seq_len_factor = min(1.0, X_chunk.shape[1] / self.max_chunk_length)
+        gating_input = (S + A + seq_len_factor * C.expand_as(S)) / 3
+        gating_hidden = self.gate_proj(gating_input)
+        G = torch.sigmoid(self.gate(gating_hidden))
         Y = G * S + (1 - G) * A
         Y = self.out_proj(Y)
-        Y = Y + X
-        if self.training and L < 5000:
-            logging.debug(
-                f'Gating values mean: {G.mean().item()} at block {self.block_loc}'
-                )
+        Y = Y + X_chunk
         return Y, Z
+    
+
+'''
+GPT2
+       |- MHA
+           |- RotaryPositionalEmbeddings
+       |- DynamicHybridLayer (Rating: 4.6/5)
+           |- SelectiveSSMUnit (Rating: 4.5/5)
+               |- SSMUnit (Rating: 4.5/5)
+           |- AttentionUnit
+           |- ContextVectorExtractor (Rating: 4.0/5)
+       |- RMSNorm
+
+Implemented Units: SelectiveSSMUnit, RotaryPositionalEmbeddings, RMSNorm, SSMUnit, AttentionUnit, MHA, ContextVectorExtractor, GPT2, DynamicHybridLayer
+All units are implemented.
+
+'''

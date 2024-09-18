@@ -65,7 +65,14 @@ class AgentContext:
         self.data.append((query,role,metadata))
     
     def get(self):
-        return [(query,role) for query,role,_ in self.data]    
+        return [(query,role) for query,role,_ in self.data] 
+
+    def truncate(self,n):
+        # keep the last n messages and optionally the system message
+        _self=AgentContext()
+        _self.data=self.data[-n:]
+        return _self
+
 
 @dataclass
 class ROLE:

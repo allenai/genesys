@@ -131,7 +131,7 @@ class SuperScholarSearcher:
     def query_design_proposals(self,query,pp=True):
         top_k=self.proposal_search_cfg['top_k']
         cutoff=self.proposal_search_cfg['cutoff']
-        scores={i:1-self.emb_evaluator.evaluate_strings(query,self.design_proposals[i]) 
+        scores={i:1-self.emb_evaluator.evaluate_strings(prediction=query,reference=self.design_proposals[i])['score'] 
                 for i in self.design_proposals}
         filtered_scores={i:s for i,s in scores.items() if s>cutoff}
         pps=list(sorted(filtered_scores.items(),key=lambda x:x[1]))[:top_k]
