@@ -314,91 +314,154 @@ class GUFlowMutation(FlowCreator):
         USE_2STAGE=self.search_settings['proposal_search']
         USE_ISEARCH=self.agent_types['SEARCH_ASSISTANT']=='None' and USE_2STAGE 
         USE_2STAGE=USE_2STAGE and not USE_ISEARCH
+        USE_O1_PROPOSER='o1_mini' in self.agent_types['DESIGN_PROPOSER']
 
         traces=[]
         context_design_proposer=AgentContext()
         context_proposal_reviewer=AgentContext()
-        SELECTIONS=list(set(self.seed_tree.units.keys())-{self.seed_tree.root.spec.unitname})
+        o1_attempt_context=AgentContext()
+        units=set(self.seed_tree.units.keys())
+        SELECTIONS=units if USE_O1_PROPOSER else units-{self.seed_tree.root.spec.unitname} 
+        SELECTIONS=list(SELECTIONS)
         for attempt in range(self.max_attemps['design_proposal']):
-            DESIGN_PROPOSER_SYSTEM=P.GUM_DESIGN_PROPOSER_SYSTEM 
-            if USE_ISEARCH:
-                DESIGN_PROPOSER_SYSTEM=P.GUM_DESIGN_PROPOSER_SYSTEM_ISEARCH
-            elif USE_2STAGE:
-                DESIGN_PROPOSER_SYSTEM=P.GUM_DESIGN_PROPOSER_SYSTEM_2STAGE
-            DESIGN_PROPOSER=reload_role('design_proposer',self.agents['DESIGN_PROPOSER'],DESIGN_PROPOSER_SYSTEM(GAU_BASE=GAU_BASE))
+            if USE_O1_PROPOSER:
+                context_design_proposer=copy.deepcopy(o1_attempt_context)
+                o1_attempt_context=AgentContext()
+                DESIGN_PROPOSER=reload_role('design_proposer',self.agents['DESIGN_PROPOSER'],P.O1M_PROPOSER_BACKGROUND(
+                    GAU_BASE=GAU_BASE,SEED=query,SELECTIONS=SELECTIONS))
+            else:
+                DESIGN_PROPOSER_SYSTEM=P.GUM_DESIGN_PROPOSER_SYSTEM 
+                if USE_ISEARCH:
+                    DESIGN_PROPOSER_SYSTEM=P.GUM_DESIGN_PROPOSER_SYSTEM_ISEARCH
+                elif USE_2STAGE:
+                    DESIGN_PROPOSER_SYSTEM=P.GUM_DESIGN_PROPOSER_SYSTEM_2STAGE
+                DESIGN_PROPOSER=reload_role('design_proposer',self.agents['DESIGN_PROPOSER'],DESIGN_PROPOSER_SYSTEM(GAU_BASE=GAU_BASE))
             design_proposer_tid=self.dialog.fork(main_tid,USER_CALLER,DESIGN_PROPOSER,context=context_design_proposer,
                                                 alias='design_proposal',note=f'Starting design proposal...')
+            
+            # initial design proposal
             if attempt==0:
                 status_info=f'Initial design proposal...'
-                GUM_DESIGN_PROPOSAL=P.gen_GUM_DESIGN_PROPOSAL(SELECTIONS=SELECTIONS,two_stage=USE_2STAGE,use_isearch=USE_ISEARCH)
-                if USE_ISEARCH:
-                    GUM_DESIGN_PROPOSAL,GUM_DESIGN_PROPOSAL_FINISH=GUM_DESIGN_PROPOSAL
-                elif USE_2STAGE:
-                    GUM_DESIGN_PROPOSAL,GUM_DESIGN_PROPOSAL_STAGE2=GUM_DESIGN_PROPOSAL
-                proposal_prompt=GUM_DESIGN_PROPOSAL(SEED=query)
+                if USE_O1_PROPOSER:
+                    GUM_DESIGN_PROPOSAL=P.O1M_DESIGN_PROPOSAL
+                    proposal_prompt=GUM_DESIGN_PROPOSAL()
+                else:
+                    GUM_DESIGN_PROPOSAL=P.gen_GUM_DESIGN_PROPOSAL(SELECTIONS=SELECTIONS,two_stage=USE_2STAGE,use_isearch=USE_ISEARCH)
+                    if USE_ISEARCH:
+                        GUM_DESIGN_PROPOSAL,GUM_DESIGN_PROPOSAL_FINISH=GUM_DESIGN_PROPOSAL
+                    elif USE_2STAGE:
+                        GUM_DESIGN_PROPOSAL,GUM_DESIGN_PROPOSAL_STAGE2=GUM_DESIGN_PROPOSAL
+                    proposal_prompt=GUM_DESIGN_PROPOSAL(SEED=query)
                 GUM_DESIGN_PROPOSAL.apply(DESIGN_PROPOSER.obj)
             else:
                 status_info=f'Refining design proposal (attempt {attempt})...'
-                GUM_PROPOSAL_REFINEMENT=P.gen_GUM_PROPOSAL_REFINEMENT(SELECTIONS=SELECTIONS,two_stage=USE_2STAGE,use_isearch=USE_ISEARCH)
-                if USE_ISEARCH:
-                    GUM_PROPOSAL_REFINEMENT,GUM_DESIGN_PROPOSAL_FINISH=GUM_PROPOSAL_REFINEMENT
-                elif USE_2STAGE:
-                    GUM_PROPOSAL_REFINEMENT,GUM_DESIGN_PROPOSAL_STAGE2=GUM_PROPOSAL_REFINEMENT
+                if USE_O1_PROPOSER:
+                    GUM_PROPOSAL_REFINEMENT=P.O1M_DESIGN_PROPOSAL_REFINEMENT
+                else:
+                    GUM_PROPOSAL_REFINEMENT=P.gen_GUM_PROPOSAL_REFINEMENT(SELECTIONS=SELECTIONS,two_stage=USE_2STAGE,use_isearch=USE_ISEARCH)
+                    if USE_ISEARCH:
+                        GUM_PROPOSAL_REFINEMENT,GUM_DESIGN_PROPOSAL_FINISH=GUM_PROPOSAL_REFINEMENT
+                    elif USE_2STAGE:
+                        GUM_PROPOSAL_REFINEMENT,GUM_DESIGN_PROPOSAL_STAGE2=GUM_PROPOSAL_REFINEMENT
                 proposal_prompt=GUM_PROPOSAL_REFINEMENT(REVIEW=review,RATING=rating,SUGGESTIONS=suggestions,
                                                          PASS_OR_NOT='Pass' if rating>=4 else 'Fail')
                 GUM_PROPOSAL_REFINEMENT.apply(DESIGN_PROPOSER.obj)
             
             ideation,instructions,search_report,search_references=None,None,None,None
+            thoughts,keywords,description=None,None,None
             search_stack=[]
-            if USE_ISEARCH:
+            if USE_ISEARCH or USE_O1_PROPOSER:
                 with self.status_handler(status_info):
                     self.print_details(DESIGN_PROPOSER.obj,context_design_proposer,proposal_prompt)
                     _,out=self.dialog.call(design_proposer_tid,proposal_prompt)
-                    analysis,keywords,detail,ready,reflection=out['analysis'],out['keywords'],out['detail'],out['ready'],out.get('reflection',None)
-                    if reflection:
-                        self.stream.write(f'# Reflection\n{reflection}')
-                    self.stream.write(f'# Analysis\n{analysis}')
-                    self.stream.write(f'# Query\n{keywords}')
-                    self.stream.write(f'# Detail\n{detail}')
-                    self.stream.write(f'# Ready\n{ready}')
+                    if USE_O1_PROPOSER:
+                        thoughts,keywords,description=out['text'],out['keywords'],out['description']
+                        ready="I'm ready" in thoughts
+                        self.stream.markdown(thoughts,unsafe_allow_html=True)
+                    else:
+                        analysis,keywords,detail,ready,reflection=out['analysis'],out['keywords'],out['detail'],out['ready'],out.get('reflection',None)
+                        if reflection:
+                            self.stream.write(f'# Reflection\n{reflection}')
+                        self.stream.write(f'# Analysis\n{analysis}')
+                        self.stream.write(f'# Query\n{keywords}')
+                        self.stream.write(f'# Detail\n{detail}')
+                        self.stream.write(f'# Ready\n{ready}')
 
                 for i in range(self.max_attemps['max_search_rounds']):
                     # TODO: perplexity context maintainance
                     with self.status_handler(f'Searching... round {i+1}...'):
-                        search_ret=self.sss(keywords,detail,analysis=analysis)
+                        if USE_O1_PROPOSER:
+                            keywords=None if keywords==[] else ', '.join(keywords)
+                            detail=thoughts if description==[] else '\n'.join(description)
+                            search_ret=self.sss(keywords,detail,instruct=thoughts)
+                            analysis=thoughts
+                            if not keywords:
+                                search_ret+='\n\nWarning: No keywords detected, external search skipped, please wrap your keywords in a quoted block like this: ```keywords {{Your keywods}} ``` in your response next time.'
+                            if description==[]:
+                                search_ret+='\n\nWarning: No description detected, will use full response to search internal library, please wrap your description in a quoted block like this: ```description {{Your description}}``` in your response next time.'
+                        else:
+                            search_ret=self.sss(keywords,detail,analysis=analysis)
                         search_stack.append({
-                                'analysis':analysis,
-                                'query':keywords,
-                                'detail':detail,
-                                'ready':ready,
-                                'search_ret':search_ret,
-                            })
-                        search_cont_prompt=P.GUM_DESIGN_PROPOSAL_ISEARCH_CONT(SEARCH_RESULTS=search_ret)
-                        P.GUM_DESIGN_PROPOSAL_ISEARCH_CONT.apply(DESIGN_PROPOSER.obj)
+                            'analysis':analysis,
+                            'query':keywords,
+                            'detail':detail,
+                            'ready':ready,
+                            'search_ret':search_ret,
+                        })
+                        PROPOSAL_ISEARCH_CONT=P.O1M_PROPOSAL_ISEARCH_CONT if USE_O1_PROPOSER else P.GUM_DESIGN_PROPOSAL_ISEARCH_CONT_2STAGE
+                        search_cont_prompt=PROPOSAL_ISEARCH_CONT(SEARCH_RESULTS=search_ret)
+                        PROPOSAL_ISEARCH_CONT.apply(DESIGN_PROPOSER.obj)
                         self.print_details(DESIGN_PROPOSER.obj,context_design_proposer,search_cont_prompt)
                         _,out=self.dialog.call(design_proposer_tid,search_cont_prompt)
-                        analysis,keywords,detail,ready=out['analysis'],out['keywords'],out['detail'],out['ready']
-                        self.stream.write(f'### Analysis\n{analysis}')
-                        self.stream.write(f'### Query\n{keywords}')
-                        self.stream.write(f'### Detail\n{detail}')
-                        self.stream.write(f'### Ready\n{ready}')
+                        if USE_O1_PROPOSER:
+                            thoughts,keywords,description=out['text'],out['keywords'],out['description']
+                            ready="I'm ready" in thoughts
+                            self.stream.markdown(thoughts,unsafe_allow_html=True)
+                        else:
+                            analysis,keywords,detail,ready,reflection=out['analysis'],out['keywords'],out['detail'],out['ready'],out.get('reflection',None)
+                            if reflection:
+                                self.stream.write(f'# Reflection\n{reflection}')
+                            self.stream.write(f'# Analysis\n{analysis}')
+                            self.stream.write(f'# Query\n{keywords}')
+                            self.stream.write(f'# Detail\n{detail}')
+                            self.stream.write(f'# Ready\n{ready}')
                         self.print_raw_output(out,'DESIGN_PROPOSER')
                         self.stream.write('---')
                     if ready: break # the first ready will be ignored, at least one search is required
                 
+                variantname=None
                 with self.status_handler('Finishing design proposal...'):
-                    search_finish_prompt=GUM_DESIGN_PROPOSAL_FINISH()
-                    GUM_DESIGN_PROPOSAL_FINISH.apply(DESIGN_PROPOSER.obj)
-                    self.print_details(DESIGN_PROPOSER.obj,context_design_proposer,search_finish_prompt)
-                    _,out=self.dialog.call(design_proposer_tid,search_finish_prompt)
-                    selection,proposal,modelname,variantname,changes=out['selection'],out['proposal'],out['modelname'],out['variantname'],out.get('changes',None)
-                    self.stream.write(f'### Design Name: {modelname}')
-                    self.stream.write(f'### Selection: {selection}')
-                    self.stream.write(f'# Proposal\n{proposal}')
-                    if changes:
-                        self.stream.write(f'# Changes\n{changes}')
-                    context_design_proposer=self.dialog.context(design_proposer_tid)
-                    self.print_raw_output(out,'DESIGN_PROPOSER')
+                    if USE_O1_PROPOSER:
+                        o1m_finish_prompt=P.O1M_PROPOSAL_FINISH(SELECTIONS=SELECTIONS)
+                        self.print_details(DESIGN_PROPOSER.obj,context_design_proposer,o1m_finish_prompt)
+                        P.O1M_PROPOSAL_FINISH.apply(DESIGN_PROPOSER.obj)
+                        o1_attempt_context.append(o1m_finish_prompt,'user',{})
+                        _,out=self.dialog.call(design_proposer_tid,o1m_finish_prompt)
+                        proposal,selection,modelname=out['proposal'],out['selection'],out['title']
+                        for _ in range(5):
+                            succeed,retry_prompt=gen_O1M_PROPOSAL_DEBUG_prompt(selection,SELECTIONS)
+                            if succeed:
+                                break
+                            _,out=self.dialog.call(design_proposer_tid,retry_prompt)
+                            selection=out['selection']
+                        if not succeed:
+                            raise Exception('Design proposal failed, stopping design process')
+                        o1_attempt_context.append(f'{proposal}\n\n### Selection\n\n{selection}','assistant',out)
+                        modelname=modelname[0] if modelname else f'An Improved {selection}'
+                        self.stream.write(f'### Selection: {selection}')
+                        self.stream.write(f'### Proposal\n{proposal}')
+                    else:
+                        self.print_details(DESIGN_PROPOSER.obj,context_design_proposer,GUM_DESIGN_PROPOSAL_FINISH())
+                        GUM_DESIGN_PROPOSAL_FINISH.apply(DESIGN_PROPOSER.obj)
+                        _,out=self.dialog.call(design_proposer_tid,GUM_DESIGN_PROPOSAL_FINISH())
+                        selection,proposal,modelname,variantname,changes=out['selection'],out['proposal'],out['modelname'],out['variantname'],out.get('changes',None)
+                        self.stream.write(f'### Design Name: {modelname}')
+                        self.stream.write(f'### Selection: {selection}')
+                        self.stream.write(f'# Proposal\n{proposal}')
+                        if changes:
+                            self.stream.write(f'# Changes\n{changes}')
+                        context_design_proposer=self.dialog.context(design_proposer_tid)
+                        self.print_raw_output(out,'DESIGN_PROPOSER')
 
             elif USE_2STAGE: # use search or not
                 with self.status_handler(status_info):

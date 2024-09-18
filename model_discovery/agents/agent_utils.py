@@ -215,8 +215,10 @@ def call_model_structured(model,message,response_format, logprobs=False) -> Mode
 
     usage={
         'input_tokens':completions.usage.prompt_tokens,
-        'output_tokens':completions.usage.completion_tokens,
+        'output_tokens':completions.usage.completion_tokens,    
     }
+    if 'o1' in model._config.model_name:
+        usage['reasoning_tokens']=completions.usage.completion_tokens_details
     usage=openai_costs(usage,model._config.model_name)
     cost=usage['cost']
     model._model_cost += cost

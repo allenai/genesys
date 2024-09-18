@@ -3271,3 +3271,374 @@ Please implement based on the information provided. Do not include anything else
 
 
 
+
+
+'''
+#######################################################
+##                                                                                               
+## O1M Proposer prompts                                 
+##                                                                                               
+#######################################################
+'''
+
+
+
+
+
+""" ============================= O1 Mutation Proposer Background Prompt ===================================== """
+
+
+# region O1M Proposer Background Prompt
+
+
+O1M_PROPOSER_BACKGROUND_prompt = """
+You are a language modeling researcher, your role is to propose a novel autoregressive language model (LM) block design. 
+
+## Background
+
+Modern LMs are typically structured as a stack of repeating blocks. Each block processes:
+
+1. **Input**: A sequence of embeddings X of shape (B, L, D), where:
+   - B is the batch size.
+   - L is the sequence length.
+   - D is the embedding dimension.
+2. **Intermediate Variables**: Z (e.g., memory, states, caches) passed as keyword arguments.
+
+The block outputs a new sequence of embeddings Y (same shape as X) and updated intermediate variables Z'.
+
+The overall architecture can be represented as follows:
+
+```python
+tokens = Tokenizer(sentence)
+X = Embeddings(tokens)
+Z = {{}}  # Initialized as an empty dictionary, updated by each block.
+for block in Blocks:
+   X, Z = block(X, **Z)
+output = Logits(X)
+```
+
+Your goal is to design a proposal for a novel LM block that outperforms current state-of-the-art models, aiming for:
+- Low perplexity on corpora,
+- High accuracy on downstream tasks,
+- Robustness to varied inputs,
+- Efficiency in both training and inference,
+- Excellent scalability with more data and larger models.
+
+### Generalized Autoregressive Units (GAUs)
+
+Each LM block is decomposed into smaller components known as **Generalized Autoregressive Units (GAUs)**, which inherit from the following base class:
+
+```python
+{GAU_BASE}
+```
+
+A GAU has the following structure:
+- **Input**: A sequence of embeddings X and intermediate variables Z.
+- **Output**: A new sequence of embeddings Y and updated intermediate variables Z', which can include newly computed values. 
+
+GAUs can be arranged hierarchically, with the output of one GAU feeding into another. This structure allows a block to be represented as a tree of nested units, starting from a root node.
+
+
+
+## Instructions
+
+Your task is to improve a seed design by modifying one GAU which may have multiple children GAUs, you will need to select one specific GAU in the seed to work on. You can add, remove, or replace existing child units or operations to improve it. 
+In order to make the improvements traceable and make an architecture factorizable which allows further analysis of the elements and factors that lead to better LM designs, we wish an improvement you proposed should be a "locality" that has a controllable step size. 
+Specifically, you are not encouraged to introduce a drastic change to the seed design. Your edit should influence as few existing or potential new units as possible. To itemize:
+
+- **Top-down approach**: Design the GAU from the top down, breaking complex blocks into smaller, manageable units that can be nested together. 
+- **Reuse existing units**: You are encouraged to reuse the existing unit. Edit it only when it is necessary for you to perform your idea. 
+- **Creativity with constraint**: Strive for a design that is innovative yet maintains the overall structure of the existing model. Avoid drastic changes that would significantly alter the model's architecture.
+- **Local modifications**: Focus on making changes to a single GAU and its potential child GAUs. If your edits have to involve mutiple GAUs, select the shared root of these units. Ensure that your modifications do not interfere with the correctness of other parts of the model.
+- **Simplicity and implementability**: Prioritize designs that are relatively simple and feasible to implement. Avoid overly complicated structures that might be challenging to code or integrate.
+- **Evolutionary approach**: Design your modifications in a way that allows for gradual tracking of differences across designs, facilitating an evolutionary path of improvement.
+
+## Task
+
+Here is the seed design for you to improve and some "ice-breaking" references for you to get started:
+
+{SEED}
+
+Here is the list of GAUs in the seed design that you can select from:
+
+{SELECTIONS}
+
+You need to think about which GAU to modify and how to improve it based on the instructions above.   
+"""
+
+
+
+___draft="""
+### Phase 1: Multiple Search and Refinement Rounds
+
+In this phase, you will conduct multiple rounds of search and refinement without external review. Each round consists of:
+
+1. **Search**: Utilize the search assistant to gather relevant information. Formulate specific queries to investigate aspects of your proposal or explore new ideas in the field of language model architecture. For searching external sources, use keywords, but limit to no more than 3 keywords at a time to avoid potential failure. If you want to search more topics, do so in multiple rounds.
+
+2. **Analysis**: Carefully analyze the search results and detailed analysis provided by the search assistant. Extract key insights that can inform your proposal.
+
+3. **Refinement**: Based on your analysis, refine and improve your proposal. This may involve modifying existing elements, adding new components, or adjusting your approach if the research suggests a more promising direction.
+
+4. **Self-Assessment**: Evaluate your refined proposal against the original objectives and requirements. Identify areas that still need improvement or further research.
+
+5. **Iteration Decision**: Determine if another round of search and refinement is necessary. If so, return to step 1 with new, focused queries based on your self-assessment.
+
+Repeat this cycle as many times as needed until you feel your proposal is ready for review.
+
+Note: Throughout this process, ensure that your proposals are supported by mathematical, theoretical, or logical justifications. Each design decision should be backed by sound reasoning and, where applicable, mathematical formulations.
+
+### Phase 2: Review and Major Refinement
+
+Once you believe your proposal is sufficiently developed:
+
+1. **Submission for Review**: Present your proposal for external review.
+
+2. **Feedback Analysis**: Carefully consider the feedback received.
+
+3. **Major Refinement**: If the proposal doesn't pass the review, use the feedback to guide a major refinement of your design. This may involve returning to Phase 1 for additional rounds of search and refinement.
+
+4. **Resubmission**: After major refinement, resubmit your proposal for another review.
+
+Repeat Phase 2 until your proposal passes the review.
+
+## Guidelines for Using the Search Assistant
+
+When using the search assistant, follow these guidelines:
+
+1. **Query Formulation**: 
+   - Construct clear, specific queries related to your current design challenges or areas of uncertainty.
+   - Use a combination of technical terms and concepts to narrow down results.
+   - Consider searching for both recent innovations and foundational papers in relevant areas.
+
+2. **Search Categories**:
+   - Use broad searches for external sources to explore cutting-edge research and diverse approaches.
+   - Utilize detailed searches of the internal library for in-depth technical information and established methodologies.
+
+3. **Result Integration**:
+   - Critically evaluate the search results and analysis provided by the search assistant for relevance and potential impact on your design.
+   - Clearly cite and reference any papers or sources that significantly influence your proposal.
+
+4. **Iterative Refinement**:
+   - Use the insights from each search to inform subsequent queries, allowing for a more focused and in-depth exploration of relevant topics.
+
+## Proposal Structure
+
+Maintain and update the following structure in your proposal throughout the process:
+
+1. **Title**: A concise, descriptive name for your proposed design.
+2. **Motivation**: Explain the problem you aim to solve, incorporating insights from your research.
+3. **Problem Analysis**: Provide a detailed analysis of the problem you're addressing.
+4. **Core Idea and Philosophy**: Describe the key concept or philosophy behind your proposed solution.
+5. **Design Plan**: 
+   - Outline your approach for the LM block design.
+   - Specify the single GAU you've chosen to modify (excluding the root unit).
+   - Provide detailed descriptions of modifications and new structures.
+   - Include mathematical formulations and theoretical justifications for your design choices.
+6. **Implementation Guidelines**:
+   - Provide pseudo-code for the modified GAU and any new child GAUs.
+   - Include mathematical formulas necessary for implementation.
+   - Offer step-by-step instructions for integrating the new design into the existing model.
+7. **Research Summary**: 
+   - List key search queries used across all rounds.
+   - Summarize the most relevant findings from your searches, including insights from the search assistant's analysis.
+   - Explain how these findings have influenced or validated your design choices.
+8. **Evolution of Design**:
+   - Track major changes and improvements made across refinement rounds.
+   - Discuss how these changes address challenges or leverage new insights.
+9. **Theoretical Analysis**:
+   - Provide mathematical or logical arguments for why your design is expected to improve model performance.
+   - Discuss potential trade-offs and how they are addressed.
+10. **Conclusion**: Summarize the expected outcomes and benefits of your proposal.
+11. **References**: List all sources used in the proposal, properly formatted.
+
+## Best Practices for Progressive Refinement
+
+1. **Depth Over Speed**: Prioritize thorough research and thoughtful refinement over rushing to submission.
+2. **Diverse Querying**: Vary your search queries to explore different aspects of the problem and potential solutions.
+3. **Critical Thinking**: Don't just incorporate every new idea you find. Critically evaluate how each insight fits into your overall design philosophy.
+4. **Documenting Rationale**: Clearly explain the reasoning behind each major design decision, especially when pivoting based on research findings.
+5. **Balancing Innovation and Feasibility**: Strive for novel ideas, but ensure your design remains implementable within the constraints of current technology.
+6. **Cross-Disciplinary Inspiration**: Look for relevant concepts from adjacent fields that could be adapted to LM block design.
+7. **Anticipating Challenges**: Use your research to identify potential weaknesses in your design and proactively address them.
+
+## Key Points for Writing the Proposal
+
+- **Detail is crucial**: Your proposal must be clear, detailed, and precise. Do not worry about length; focus on the clarity of your ideas.
+- **Top-down approach**: Design the GAU from the top down, breaking complex blocks into smaller, manageable units that can be nested together.
+- **Creativity with constraint**: Strive for a design that is innovative yet maintains the overall structure of the existing model. Avoid drastic changes that would significantly alter the model's architecture.
+- **Local modifications**: Focus on making changes to a single GAU (excluding the root unit) and its potential child GAUs. Ensure that your modifications do not interfere with the correctness of other parts of the model.
+- **Simplicity and implementability**: Prioritize designs that are relatively simple and feasible to implement. Avoid overly complicated structures that might be challenging to code or integrate.
+- **Mathematical rigor**: Provide mathematical formulations, theoretical justifications, and logical arguments for your design choices. This adds credibility and helps in understanding the expected improvements.
+- **Implementation clarity**: Include clear guidelines for implementation, such as pseudo-code, mathematical formulas, and step-by-step instructions. This ensures that coders can implement your design without losing track of the overall structure.
+- **Evolutionary approach**: Design your modifications in a way that allows for gradual tracking of differences across designs, facilitating an evolutionary path of improvement.
+
+Remember, the goal of this process is to develop a well-researched, innovative, yet implementable proposal for an LM block design. Take full advantage of the multiple refinement rounds to create a robust, thoroughly considered design before submitting for review. You are allowed to modify one GAU from the existing design (excluding the root unit), and you can introduce new child GAUs to the selected GAU if necessary, but your modifications must maintain the correctness and overall structure of the model design.
+
+You are now ready to begin the progressive proposal process. Start with your initial proposal and prepare for the first round of research and refinement.
+"""
+
+
+
+O1M_PROPOSER_BACKGROUND = AgentPrompt(O1M_PROPOSER_BACKGROUND_prompt)
+
+
+
+# endregion
+
+
+
+""" ============================= O1 Mutation Proposer Search Prompt ===================================== """
+
+
+# region O1M Proposer Search Prompt
+
+O1M_DESIGN_PROPOSAL_prompt = """
+You will start your research proposal process by investigation, ideation, and literature reviews. You have access to a powerful search engine that can query external academic sources (such as arXiv, Papers with Code, and Semantic Scholar), an internal library of research papers, and technical documents. And a web search assistant will collect information from the internet based on your instructions and ideas. You need to perform this process for multiple rounds until you think you have sufficient information and thoughts for you to provide the proposal. 
+
+To use these tools, in your final response:
+1. You need to include a set of keywords for searching the external sources, please provide a set of precise keywords about the papers you are interested in that will be input to the search frame. Limit to no more than 3 keywords at a time to avoid potential difficulty in unmatching. If you want to search for more topics, do so in multiple rounds. Wrap your keywords in a quoted block like this: ```keywords {{Your keywods}} ``` in your response. If you do not quote your keywords in this format, the system won't be able to detect them.
+2. You need to include a detailed description of the contents you are intended to search from the internal library, the library search engine works as a vector store, it will find the best matching excerpts from the literatures stored in the library. Wrap that description in a quoted block like this: ```description {{Your description}}```.  If you do not quote your description in this format, the system won't be able to detect them.
+3. The web search assistant will read your response, understand your ideas and intent by himself and collect the information for you.
+4. When you think you got sufficient information and ready to give the proposal, include "I'm ready" in your response, be sure these words do not change in order to allow the system to recognize them.
+
+Now start your analysis and prepare for the proposal.
+"""
+
+
+O1M_DESIGN_PROPOSAL_REFINEMENT_prompt = """
+Your proposal has been reviewed by an expert. Please carefully consider the following feedback:
+
+---
+Review: {REVIEW}
+
+Rating: {RATING} out of 5 ({PASS_OR_NOT})
+
+Suggestions: {SUGGESTIONS}
+---
+
+Based on this feedback, please refine your proposal. You will start your research proposal refinement process by investigation, ideation, and literature reviews. You have access to a powerful search engine that can query external academic sources (such as arXiv, Papers with Code, and Semantic Scholar), an internal library of research papers, and technical documents. And a web search assistant will collect information from the internet based on your instructions and ideas. You need to perform this process for multiple rounds until you think you have sufficient information and thoughts for you to provide the proposal. 
+
+To use these tools, in your final response:
+1. You need to include a set of keywords for searching the external sources, please provide a set of precise keywords about the papers you are interested in that will be input to the search frame. Limit to no more than 3 keywords at a time to avoid potential difficulty in unmatching. If you want to search for more topics, do so in multiple rounds. Wrap your keywords in a quoted block like this: ```keywords {{Your keywods}} ``` in your response. If you do not quote your keywords in this format, the system won't be able to detect them.
+2. You need to include a detailed description of the contents you are intended to search from the internal library, the library search engine works as a vector store, it will find the best matching excerpts from the literatures stored in the library. Wrap that description in a quoted block like this: ```description {{Your description}}```.  If you do not quote your description in this format, the system won't be able to detect them.
+3. The web search assistant will read your response, understand your ideas and intent by himself and collect the information for you.
+4. When you think you got sufficient information and ready to give the proposal, include "I'm ready" in your response, be sure these words do not change in order to allow the system to recognize them.
+
+Now start your analysis and prepare for the refined proposal.
+"""
+
+def O1_SEARCH_parser(raw_output: ModelOutputPlus) -> Dict[Any,Any]:
+      raw_text = raw_output.text
+      output = {}
+      keywords = re.findall(r"```keywords (.*?)```", raw_text, re.DOTALL)
+      description = re.findall(r"```description (.*?)```", raw_text, re.DOTALL)
+      output["text"] = raw_text
+      output["keywords"] = [i.strip() for i in keywords]
+      output["description"] = [i.strip() for i in description]
+      output["_details"] = {}
+      output["_details"]["cost"] = raw_output.usage
+      output["_details"]["running_cost"] = raw_output.usage['cost']
+      return output
+
+
+O1M_DESIGN_PROPOSAL = AgentPrompt(O1M_DESIGN_PROPOSAL_prompt,O1_SEARCH_parser)
+O1M_DESIGN_PROPOSAL_REFINEMENT = AgentPrompt(O1M_DESIGN_PROPOSAL_REFINEMENT_prompt,O1_SEARCH_parser,O1_SEARCH_parser)
+
+# endregion
+
+
+
+""" ============================= O1 Mutation Proposer Continue Prompt ===================================== """
+
+
+# region O1M Proposer Continue Prompt
+
+O1M_PROPOSAL_ISEARCH_CONT_prompt = """
+{SEARCH_RESULTS}
+
+Continue searching or begin proposal formulation. Remember in your response:
+1. You can include a set of keywords for searching the external sources, please provide a set of precise keywords about the papers you are interested in that will be input to the search frame. Limit to no more than 3 keywords at a time to avoid potential difficulty in unmatching. If you want to search for more topics, do so in multiple rounds. Wrap your keywords in a quoted block like this: ```keywords {{Your keywods}} ``` in your response. If you do not quote your keywords in this format, the system won't be able to detect them.
+2. You can include a detailed description of the contents you are intended to search from the internal library, the library search engine works as a vector store, it will find the best matching excerpts from the literatures stored in the library. Wrap that description in a quoted block like this: ```description {{Your description}}```.  If you do not quote your description in this format, the system won't be able to detect them.
+3. The web search assistant will read your response, understand your ideas and intent by himself and collect the information for you.
+4. When you think you got sufficient information and ready to give the proposal, include "I'm ready" in your response, be sure these words do not change in order to allow the system to recognize them. Notice that the when you reply "I'm ready", the search will be terminated and search request (if any) in your response will be ignored, and you will receive further instructions about the next step.
+"""
+
+O1M_PROPOSAL_ISEARCH_CONT = AgentPrompt(O1M_PROPOSAL_ISEARCH_CONT_prompt)
+
+# endregion
+
+
+
+""" ============================= O1 Mutation Proposer Proposal Finish Prompt ===================================== """
+
+
+# region O1M Proposer Proposal Finish Prompt
+
+O1M_PROPOSAL_FINISH_prompt = """
+## Proposal Structure
+
+Maintain and update the following structure in your proposal throughout the process:
+
+1. **Title**: A concise, descriptive model name for your proposed design. It should be a single line level 1 heading. It should also be the only level 1 heading in your response.
+2. **Motivation**: Explain the problem you aim to solve, incorporating insights from your research.
+3. **Related Work**: 
+   - Summarize the current progress and related work based on your Investigation.
+   - Explain how these findings have influenced or validated your design choices.
+4. **Problem Analysis**: 
+  - Provide a detailed analysis of the problem you're addressing. Describe the key concept or philosophy behind your proposed solution.
+   - Provide mathematical or logical arguments for why your design is expected to improve model performance.
+   - Discuss potential trade-offs and how they are addressed.
+5. **Design Plan**: 
+   - Outline your approach for the LM block design.
+   - Specify the single GAU you've chosen to modify (excluding the root unit).
+   - Provide detailed descriptions of modifications and new structures.
+   - Include mathematical formulations and theoretical justifications for your design choices.
+6. **Implementation Guidelines**:
+   - Provide pseudo-code for the modified GAU and any new child GAUs.
+   - Include mathematical formulas necessary for implementation.
+   - Offer step-by-step instructions for integrating the new design into the existing model.
+7. **Conclusion**: Summarize the expected outcomes and benefits of your proposal.
+8. **References**: List all sources used in the proposal, properly formatted.
+
+## Key Points for Writing the Proposal
+
+- **Detail is crucial**: Your proposal must be clear, detailed, and precise. Do not worry about length; focus on the clarity of your ideas.
+- **Mathematical rigor**: Provide mathematical formulations, theoretical justifications, and logical arguments for your design choices. This adds credibility and helps in understanding the expected improvements.
+- **Implementation clarity**: Include clear guidelines for implementation, such as pseudo-code, mathematical formulas, and step-by-step instructions. This ensures that coders can implement your design without losing track of the overall structure.
+
+Now please give your final proposal and the selection of the GAU you will modify. In order to allow the system to detect your selection, please wrap the selection in a quoted block like this: ```selection {{Your selection}}```. And your selection must come from one of {SELECTIONS}.
+"""
+
+
+def O1M_PROPOSAL_parser(raw_output: ModelOutputPlus) -> Dict[Any,Any]:
+      raw_text = raw_output.text
+      output = {}
+      selection = re.findall(r"```selection (.*?)```", raw_text, re.DOTALL)
+      output["text"] = raw_text
+      title = re.findall(r"# (.*?)\n", raw_text, re.DOTALL)
+      output["title"] = [i.strip() for i in title]
+      output["selection"] = [i.strip() for i in selection]
+      output["_details"] = {}
+      output["_details"]["cost"] = raw_output.usage
+      output["_details"]["running_cost"] = raw_output.usage['cost']
+      return output
+
+O1M_PROPOSAL_FINISH = AgentPrompt(O1M_PROPOSAL_FINISH_prompt,O1M_PROPOSAL_parser)
+
+def gen_O1M_PROPOSAL_DEBUG_prompt(selections,SLECTIONS):
+   succeed=False
+   if len(selections)==0:
+      prompt="No selection is detected, please provide a selection from {SELECTIONS} in a quoted block like this: ```selection {{Your selection}}```. Do not include any other text in your response."
+   elif len(selections)>1:
+      prompt="Multiple selections are detected, please provide a single selection from {SELECTIONS} in a quoted block like this: ```selection {{Your selection}}```. If your edits involve multiple GAUs, provide the shared root of these units. Do not include any other text in your response."
+   else:
+      selection=selections[0]
+      if selection not in SLECTIONS:
+         prompt=f"The selection {selection} is not from the allowed selections {SLECTIONS}, please provide a selection from {SLECTIONS} in a quoted block like this: ```selection {{Your selection}}```. Do not include any other text in your response."
+      else:
+         succeed=True
+   return succeed,AgentPrompt(prompt,O1M_PROPOSAL_parser)
+
+# endregion
+
+

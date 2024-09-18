@@ -43,6 +43,8 @@ for. Search for the informaiton based on the keywords and details that align
 with the goal.
 """
 
+
+
 PERPLEXITY_PROMPT = """
 Here is a set of keywords: 
 {query}
@@ -53,6 +55,29 @@ Here is a detail:
 
 Search for the information that can help the researchers to achieve the goal of
 improving autoregressive language model design.
+"""
+
+
+PERPLEXITY_SYSTEM_INSTRUCT = """
+You are an AI research assistant who helps a language model researcher. Your
+goal is to help the researcher to discover the best novel autoregressive LM
+block that can defeat the existing state-of-the-art models, measured in low
+perplexity in corpora, high accuracy in downstream tasks, robustness to variant
+inputs, efficiency in training and inference, and most importantly, good
+scalability that providing better overall performance with more data and larger
+models.
+
+You task is to search for the information that can help the researchers to
+achieve this goal based on their ideas. You will be provided researcher's
+thoughts and you need to search for the information that can help them.
+"""
+
+PERPLEXITY_PROMPT_INSTRUCT = """
+Here the thoughts of the researcher: 
+{instruct}
+
+Read the thoughts, understand the goal, idea and intents of the researcher. Find
+the most useful information that can help the researcher to achieve the goal.
 """
 
 
@@ -183,25 +208,44 @@ class SuperScholarSearcher:
         if stream:
             self.stream=stream
 
-    def __call__(self,query,detail,analysis=None,raw=False,prompt=True):
+    def __call__(self,query=None,detail=None,analysis=None,instruct=None,raw=False,prompt=True):
         """
         query: for search papers in S2, ArXiv, and Papers with Code...
         detail: for search papers in the internal library vector stores
         """
-        iquery = detail if detail else query
-        internal_results,internal_pp=self.search_internal(iquery,pretty=True,prompt=prompt)
-        external_results,external_pp=self.search_external(query,pretty=True,prompt=prompt)
+        if detail:
+            internal_results,internal_pp=self.search_internal(detail,pretty=True,prompt=prompt)
+        else:
+            internal_results,internal_pp=None,None
+        if query:
+            external_results,external_pp=self.search_external(query,pretty=True,prompt=prompt)
+        else:
+            external_results,external_pp=None,None
         if self.perplexity_settings['model_size']!='none':
-            perplexity_results, perplexity_pp = self.search_perplexity(
-                query,detail,analysis,size=self.perplexity_settings['model_size'],max_tokens=self.perplexity_settings['max_tokens'])
+            if instruct:
+                perplexity_results, perplexity_pp = self.search_perplexity(
+                    query,detail,analysis,instruct,
+                    size=self.perplexity_settings['model_size'],
+                    max_tokens=self.perplexity_settings['max_tokens'])
+            elif query or detail or analysis:
+                perplexity_results, perplexity_pp = self.search_perplexity(
+                    query,detail,analysis,instruct,
+                    size=self.perplexity_settings['model_size'],
+                    max_tokens=self.perplexity_settings['max_tokens'])
+            else:
+                perplexity_results, perplexity_pp = None, None
         else:
             perplexity_results, perplexity_pp = None, None
 
         self.stream.write(f'Concluding search results...')
-        
-        pp=internal_pp+'\n'+external_pp
+
+        pp=''
+        if internal_pp:
+            pp+=internal_pp+'\n'
+        if external_pp:
+            pp+=external_pp+'\n'
         if perplexity_pp:
-            pp+='\n'+perplexity_pp
+            pp+=perplexity_pp+'\n'
         if raw:
             raw_ret={
                 'external_rets':external_results,
@@ -503,7 +547,7 @@ class SuperScholarSearcher:
 
     ##### Perplexity.ai Web Search
 
-    def search_perplexity(self,query,detail,analysis=None, size='large', max_tokens=2000): # perplexity search
+    def search_perplexity(self,query,detail,analysis=None, instruct=None, size='large', max_tokens=2000): # perplexity search
         self.stream.write(f'*Searching web with Perplexity...*')
         url = "https://api.perplexity.ai/chat/completions"
 
@@ -511,16 +555,21 @@ class SuperScholarSearcher:
             analysis=f'\nHere is an analysis of the model that the researcher is trying to improve that may help you better understand the researcher\'s intent:\n{analysis}'
         else:
             analysis=''
+        
+        if instruct:
+            content=PERPLEXITY_PROMPT_INSTRUCT.format(instruct=instruct)
+        else:
+            content=PERPLEXITY_PROMPT.format(query=query, detail=detail, analysis=analysis)
         payload = {
             "model": f"llama-3.1-sonar-{size}-128k-online",
             "messages": [
                 {
                     "role": "system",
-                    "content": PERPLEXITY_SYSTEM
+                    "content": PERPLEXITY_SYSTEM_INSTRUCT if instruct else PERPLEXITY_SYSTEM
                 },
                 {
                     "role": "user",
-                    "content": PERPLEXITY_PROMPT.format(query=query, detail=detail, analysis=analysis)
+                    "content": content
                 }
             ],
             "max_tokens": max_tokens,

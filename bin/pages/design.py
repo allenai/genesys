@@ -126,7 +126,7 @@ def design(evosys,project_dir):
                         options=AGENT_TYPES+['None']
                         if agent=='SEARCH_ASSISTANT':
                             index=len(options)-1
-                    elif agent=='IMPLEMENTATION_CODER': # only coder supports o1 for now
+                    elif agent in ['IMPLEMENTATION_CODER','DESIGN_PROPOSER']: 
                         options=AGENT_TYPES+['o1_preview','o1_mini']
                         index=len(options)-2
                     agent_types[agent] = st.selectbox(label=agent_type_labels[agent],options=options,index=index,disabled=agent=='SEARCH_ASSISTANT')

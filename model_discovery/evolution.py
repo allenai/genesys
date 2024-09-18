@@ -18,7 +18,7 @@ import numpy as np
 from io import StringIO
 import hashlib
 import random
-from networkx.drawing.nx_pydot import to_pydot,warnings
+# from networkx.drawing.nx_pydot import to_pydot,warnings
 from pyvis.network import Network
 import math
 
@@ -484,22 +484,22 @@ class DesignArtifact(NodeObject):
         return costs
 
 
-def write_dot(G, path):
-    """Write NetworkX graph G to Graphviz dot format on path.
+# def write_dot(G, path):
+#     """Write NetworkX graph G to Graphviz dot format on path.
 
-    Path can be a string or a file handle.
-    """
-    msg = (
-        "nx.nx_pydot.write_dot depends on the pydot package, which has"
-        "known issues and is not actively maintained. Consider using"
-        "nx.nx_agraph.write_dot instead.\n\n"
-        "See https://github.com/networkx/networkx/issues/5723"
-    )
-    warnings.warn(msg, PendingDeprecationWarning, stacklevel=2)
-    P = to_pydot(G)
-    with open(path, "w", encoding='utf-8') as f:
-        f.write(P.to_string())
-    return
+#     Path can be a string or a file handle.
+#     """
+#     msg = (
+#         "nx.nx_pydot.write_dot depends on the pydot package, which has"
+#         "known issues and is not actively maintained. Consider using"
+#         "nx.nx_agraph.write_dot instead.\n\n"
+#         "See https://github.com/networkx/networkx/issues/5723"
+#     )
+#     warnings.warn(msg, PendingDeprecationWarning, stacklevel=2)
+#     P = to_pydot(G)
+#     with open(path, "w", encoding='utf-8') as f:
+#         f.write(P.to_string())
+#     return
 
 
 class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
@@ -868,7 +868,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
                 G.add_edge(edge[0],edge[1])
         fname='phylogenetic_tree'
         if max_nodes: fname+=f'_{max_nodes}'
-        write_dot(G, U.pjoin(self.db_dir, '..', fname+".dot"))
+        # write_dot(G, U.pjoin(self.db_dir, '..', fname+".dot"))
         self.viz(G,max_nodes=max_nodes,height=height,layout=layout)
 
 
