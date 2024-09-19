@@ -110,7 +110,7 @@ RWC_COLOR = '#FB773C' # reference with code
 EXT_COLOR_1HOC = '#ed556a' # extended 1-hop reference
 
 
-TARGET_SCALES = ['14M','31M','70M','125M','350M','760M','1300M']
+TARGET_SCALES = ['14M','31M','70M','125M','350M']#,'760M','1300M']
 
 
 @dataclass
@@ -759,10 +759,11 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         design_artifact.implementation=implementation
         self.G.nodes[acronym]['data']=design_artifact
         # Tune in all target scales
-        codes = {}
-        _code = tree.compose()
-        for scale in TARGET_SCALES:
-            codes[scale] = check_tune(scale,acronym, code=_code,check_only=True,cpu_only=True,reformat_only=True)
+        if status=='implemented':
+            codes = {}
+            _code = tree.compose()
+            for scale in TARGET_SCALES:
+                codes[scale] = check_tune(scale,acronym, code=_code,check_only=True,cpu_only=True,reformat_only=True)
         U.save_json(codes, U.pjoin(self.design_dir(acronym), 'codes.json'))
 
     def verify(self, acronym: str, scale: str, verification_report): # attach a verification report under a scale to an implemented node

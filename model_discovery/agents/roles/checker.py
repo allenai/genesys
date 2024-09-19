@@ -1011,7 +1011,7 @@ class Checker(exec_utils.BaseTool):
         return check_report
 
 
-    def tune(self, config, gab_code, name, tune_dim=True, cpu_only=False) -> str:
+    def tune(self, config, gab_code, name, cpu_only=False) -> str:
         print('Tuning the model scale...')
         d_model = config.d_model
         n_block = config.n_block
@@ -1034,55 +1034,31 @@ class Checker(exec_utils.BaseTool):
         if LB < size < UB:
             print('The model size is already within the threshold.')
             return 'autoconfig={}'
-
-        DIR = 1 if size < LB else -1
+        
+        MIN_DIM = 96  # model dim is always a multiple of 64 or 96
+        
+        # Guarantee the n_block first, then d_model, only if d_model is smaller than MIN_DIM
 
         while True:
-            n_block += DIR
-            print(f'Trying n_block={n_block}')
-            auto_cfg = {'n_block': n_block}
-            
-            # Reload the model and ensure CPU-only execution
-            del glm  # Clear previous model
-            glm, _ = reload_gam(config, gab_code, name, auto_cfg, **factory_kwargs)
-            size = sum(p.numel() for p in glm.parameters())
-            
             if LB < size < UB:
-                print('Model after tuned:')
-                glm.print_size()
-                return "autoconfig = {\n    'n_block': " + str(n_block) + "\n}"
-
-            if (DIR == 1 and size > UB) or (DIR == -1 and size < LB):
-                print('The model size requirement cannot be met by tuning n_block.')
-                break
-
-        if not tune_dim:
-            raise ValueError('The model size requirement cannot be met by tuning n_block.')
-
-        print('Tuning d_model...')
-
-        MIN_DIM = 96  # model dim is always a multiple of 64 or 96
-        while True:  # tune d_model as little as possible
-            if LB <= size <= UB:
                 break
             elif size < LB:
                 n_block += 1
             elif size > UB:
-                if d_model <= MIN_DIM:
+                if d_model // 2 < MIN_DIM: 
                     n_block -= 1
                 else:
                     d_model //= 2
             
-            print(f'Trying d_model={d_model}, n_block={n_block}')
+            print(f'Trying n_block={n_block}, d_model={d_model}')
             auto_cfg = {'d_model': d_model, 'n_block': n_block}
-
+            
             del glm  # Clear previous model
             glm, _ = reload_gam(config, gab_code, name, auto_cfg, **factory_kwargs)
             size = sum(p.numel() for p in glm.parameters())
 
-        print(f'Checking model correctness with d_model={d_model}')
+        print(f'Checking model correctness')
         step_size = 16
-
         while True:
             try:
                 # Ensure mock input runs on CPU
@@ -1090,7 +1066,7 @@ class Checker(exec_utils.BaseTool):
                 _ = glm(mock_input)
                 break
             except Exception as e:
-                d_model += step_size * DIR
+                d_model += -step_size if size > LB else step_size
                 print(f'The model is incorrect. Trying d_model={d_model}')
                 auto_cfg = {'d_model': d_model, 'n_block': n_block}
                 
@@ -1101,10 +1077,10 @@ class Checker(exec_utils.BaseTool):
                 if size > reference_size * (1 + 2 * threshold) or size < reference_size * (1 - 2 * threshold):
                     raise ValueError('The model is too far from the reference size and cannot be correctly tuned.')
 
-        print(f'The model is correct with d_model = {d_model}')
+        print(f'The model is correct with d_model = {d_model} and n_block = {n_block}')
         print('Model after tuned:')
         glm.print_size()
-        return "autoconfig = {\n    'd_model': " + str(d_model) + "\n    'n_block': " + str(n_block) + "\n}"
+        return f"autoconfig = {\n\t'd_model': {d_model},\n\t'n_block': {n_block}\n}"
 
     def __call__(self,path: str) -> bool:
         return self.check(path)
