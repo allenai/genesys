@@ -928,7 +928,7 @@ class GUFlowMutation(FlowCreator):
             UNIMPLEMENTED=list(set(UNIMPLEMENTED)-set(PROTECTED_UNITS)) # although its impossible to have unavailable units
             IMPLEMENTED=list(set(IMPLEMENTED)-set(PROTECTED_UNITS))
 
-            self.stream.write(f'Round {round}. Unprotected Implemented: {IMPLEMENTED}, Unimplemented: {UNIMPLEMENTED}')
+            self.stream.write(f'Round {round-1 if resume else round}. Unprotected Implemented: {IMPLEMENTED}, Unimplemented: {UNIMPLEMENTED}')
 
             if len(UNIMPLEMENTED)==0 and round>1: # round 1 is selected unit, naturally no unimplemented units, consume the post refinement count only if round>1
                 post_refinement+=1
@@ -1232,6 +1232,7 @@ class GUFlowMutation(FlowCreator):
                             )
                         )
 
+                    _func_checkpass = False
                     if fetal_errors==[]:
                         # run unit tests
                         if USE_O1_CODER:
@@ -1289,6 +1290,25 @@ class GUFlowMutation(FlowCreator):
                         'check_results':check_results,
                     }
 
+                    FORMAT_CHECKER_REPORT = P.gen_FORMAT_CHECKER_REPORT(
+                        RESULT='failed' if len(format_errors+fetal_errors)>0 else 'passed',
+                        ERRORS=format_errors+fetal_errors,
+                        WARNINGS=format_warnings
+                    )
+                    if len(fetal_errors)>0:
+                        FUNCTION_CHECKER_REPORT = 'Functionality check skipped due to fetal format errors.'
+                    else:
+                        if checkpass:
+                            FUNCTION_CHECKER_REPORT = P.FUNCTION_CHECKER_REPORT_PASS.format(
+                                REPORT=check_report,
+                            )
+                        else:
+                            gabcode_reformat_with_line_num = '\n'.join([f'{i+1}: {line}' for i,line in enumerate(gabcode_reformat.split('\n'))])
+                            FUNCTION_CHECKER_REPORT = P.FUNCTION_CHECKER_REPORT_FAIL.format(
+                                REPORT=check_report,
+                                GAB_CODE_WITH_LINE_NUM=gabcode_reformat_with_line_num
+                            )
+
                 ########################### Review the implementation ###########################
                 
                 if USE_PAIRING:
@@ -1309,7 +1329,7 @@ class GUFlowMutation(FlowCreator):
                         GAB_BASE=GAB_BASE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE,
                         PROPOSAL=proposal.proposal,REVIEW=proposal.review,RATING=proposal.rating))
                     implementation_observer_tid=self.dialog.fork(main_tid,USER_CALLER,IMPLEMENTATION_OBSERVER,context=context_implementation_observer,
-                                                        alias='implementation_observer',note=f'Reviewing implementation...')
+                                                        alias='implementation_observer',note=f'Observing implementation...')
                     if REFINE:
                         if attempt==0:
                             status_info=f'Observing refinement of {selection}...'
@@ -1345,7 +1365,7 @@ class GUFlowMutation(FlowCreator):
                                 )
                             GUMT_IMPLEMENTATION_REOBSERVE.apply(IMPLEMENTATION_OBSERVER.obj)
                     else: # first attempt of a new unit
-                        status_info=f'Reviewing implementation of {selection}...'
+                        status_info=f'Observing implementation of {selection}...'
                         prompt_kwargs={}
                         if USE_O1_OBSERVER:
                             GUMT_IMPLEMENTATION_UNIT_OBSERVE=P.O1_IMPLEMENTATION_UNIT_OBSERVE
@@ -1367,8 +1387,6 @@ class GUFlowMutation(FlowCreator):
                         if USE_O1_OBSERVER:
                             suggestions=None
                             review,rating=out['text'],out['rating']
-                            passornot='Accept' if rating>=OBSERVE_THRESHOLD else 'Reject'
-                            self.stream.write(f'### Rating: {rating} out of 5 ({passornot})')
                             self.stream.write(review)
                             self.print_raw_output(out,'IMPLEMENTATION_OBSERVER')
                             for _ in range(5):
@@ -1384,6 +1402,8 @@ class GUFlowMutation(FlowCreator):
                                 self.print_raw_output(out,'PROPOSAL_REVIEWER')
                             if not succeed:
                                 raise Exception('Design proposal failed, stopping design process')
+                            passornot='Accept' if rating>=OBSERVE_THRESHOLD else 'Reject'
+                            self.stream.write(f'### Rating: {rating} out of 5 ({passornot})')
                         else:
                             review,rating,suggestions=out['review'],out['rating'],out['suggestions']
                             context_implementation_observer=self.dialog.context(implementation_observer_tid)
@@ -1427,24 +1447,6 @@ class GUFlowMutation(FlowCreator):
                     #     self.tree.units[selection]=node_backup # restore the unit
                     # for childname in new_declared: 
                     #     self.tree.del_declare(childname) # remove the new declared children to restore the tree
-                    FORMAT_CHECKER_REPORT = P.gen_FORMAT_CHECKER_REPORT(
-                        RESULT='failed' if len(format_errors+fetal_errors)>0 else 'passed',
-                        ERRORS=format_errors+fetal_errors,
-                        WARNINGS=format_warnings
-                    )
-                    if len(fetal_errors)>0:
-                        FUNCTION_CHECKER_REPORT = 'Functionality check skipped due to fetal format errors.'
-                    else:
-                        if checkpass:
-                            FUNCTION_CHECKER_REPORT = P.FUNCTION_CHECKER_REPORT_PASS.format(
-                                REPORT=check_report,
-                            )
-                        else:
-                            gabcode_reformat_with_line_num = '\n'.join([f'{i+1}: {line}' for i,line in enumerate(gabcode_reformat.split('\n'))])
-                            FUNCTION_CHECKER_REPORT = P.FUNCTION_CHECKER_REPORT_FAIL.format(
-                                REPORT=check_report,
-                                GAB_CODE_WITH_LINE_NUM=gabcode_reformat_with_line_num
-                            )
                 else:
                     succeed=True
                     costs={k:v-cost_raw[k] for k,v in self.costs.items()}
