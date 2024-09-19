@@ -25,9 +25,13 @@ DEFAULT_NUM_PROC_LOAD =  os.cpu_count()*4 # Configure it based on your system, i
 DEFAULT_NUM_PROC_TOKENIZE =  max(os.cpu_count()//2,1)
 
 try:
-    login(os.environ.get("HF_KEY",None))
+    hf_key = os.environ.get("HF_KEY",None)
+    if hf_key is not None:
+        login(hf_key)
+    else:
+        raise ValueError("HF_KEY is not set, please set it to login to HuggingFace Hub.")
 except Exception as e: 
-    print("Failed to login to HuggingFace Hub, some datasets may not be available to download.")
+    print("Failed to login to HuggingFace Hub, some datasets may not be available to download: {e}")
 
 def get_tokenizer(tokenizer_name):
     tokenizer=AutoTokenizer.from_pretrained(tokenizer_name)

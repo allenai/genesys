@@ -464,11 +464,11 @@ class GAUTree:
         Returns a detailed view of the GAU tree, showing implemented and unimplemented units,
         along with their specifications and code if applicable.
         """
-        pstr, unimplemented = self._view(self.root.spec.unitname, node=self.root)
+        pstr, _ = self._view(self.root.spec.unitname, node=self.root)
         pstr=f'#### {self.name} Tree Map\n\n```bash\n{pstr}'
         # Collect implemented and unimplemented units
-        implemented = set(self.units.keys())
-        
+        implemented,unimplemented = self.check_implemented()
+
         # Display implemented and unimplemented units
         pstr += '\nImplemented Units: ' + ', '.join(implemented)
         if unimplemented:

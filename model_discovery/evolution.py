@@ -2,29 +2,7 @@
 
 from __future__ import annotations
 
-import sys
-import re
-import exec_utils
-import pathlib
-import datetime
 import os
-import json
-import time
-import tempfile
-from dataclasses import dataclass, field, asdict
-import networkx as nx
-import pandas as pd
-import numpy as np
-from io import StringIO
-import hashlib
-import random
-# from networkx.drawing.nx_pydot import to_pydot,warnings
-from pyvis.network import Network
-import math
-
-from model_discovery.model.library.tester import check_tune
-
-
 
 try: # a stupid patch for windows
     from .secrets import *
@@ -47,6 +25,27 @@ try: # a stupid patch for windows
     os.environ['HF_DATASETS_TRUST_REMOTE_CODE']='1'    
 except:
     pass
+
+import sys
+import re
+import exec_utils
+import pathlib
+import datetime
+import json
+import time
+import tempfile
+from dataclasses import dataclass, field, asdict
+import networkx as nx
+import pandas as pd
+import numpy as np
+from io import StringIO
+import hashlib
+import random
+# from networkx.drawing.nx_pydot import to_pydot,warnings
+from pyvis.network import Network
+import math
+
+from model_discovery.model.library.tester import check_tune
 
 
 from types import ModuleType

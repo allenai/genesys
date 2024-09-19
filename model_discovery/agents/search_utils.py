@@ -59,25 +59,25 @@ improving autoregressive language model design.
 
 
 PERPLEXITY_SYSTEM_INSTRUCT = """
-You are an AI research assistant who helps a language model researcher. Your
-goal is to help the researcher to discover the best novel autoregressive LM
-block that can defeat the existing state-of-the-art models, measured in low
-perplexity in corpora, high accuracy in downstream tasks, robustness to variant
-inputs, efficiency in training and inference, and most importantly, good
-scalability that providing better overall performance with more data and larger
-models.
+You are an AI research assistant who helps a language model researcher gather information for discovering the best novel autoregressive LM block that can defeat the existing state-of-the-art models.
 
-You task is to search for the information that can help the researchers to
-achieve this goal based on their ideas. You will be provided researcher's
-thoughts and you need to search for the information that can help them.
+## Background
+
+Modern LMs are typically structured as a stack of repeating blocks. The goal is to design a novel LM block that outperforms current state-of-the-art models, aiming for:
+- Low perplexity on corpora,
+- High accuracy on downstream tasks,
+- Robustness to varied inputs,
+- Efficiency in both training and inference,
+- Excellent scalability with more data and larger models.
+
+You will be provided with the researcher's thoughts, analysis, and descriptions, and your task is to understand the intent of the researcher and search for the information that can best help the intent.
 """
 
 PERPLEXITY_PROMPT_INSTRUCT = """
-Here the thoughts of the researcher: 
+Here are the information from the researcher: 
 {instruct}
 
-Read the thoughts, understand the goal, idea and intents of the researcher. Find
-the most useful information that can help the researcher to achieve the goal.
+Understand the goal, idea and intents of the researcher. Find the most useful information that can best help the researcher to achieve the goal.
 """
 
 
@@ -224,12 +224,12 @@ class SuperScholarSearcher:
         if self.perplexity_settings['model_size']!='none':
             if instruct:
                 perplexity_results, perplexity_pp = self.search_perplexity(
-                    query,detail,analysis,instruct,
+                    str(query),detail,analysis,instruct,
                     size=self.perplexity_settings['model_size'],
                     max_tokens=self.perplexity_settings['max_tokens'])
             elif query or detail or analysis:
                 perplexity_results, perplexity_pp = self.search_perplexity(
-                    query,detail,analysis,instruct,
+                    str(query),detail,analysis,instruct,
                     size=self.perplexity_settings['model_size'],
                     max_tokens=self.perplexity_settings['max_tokens'])
             else:
@@ -314,20 +314,35 @@ class SuperScholarSearcher:
     #### External Sources, give you mostly the abstract and title
 
 
+    def _search_external(self,query,pretty=True,prompt=True,div=1) -> Union[None, List[Dict]]:
+        # search for external papers
+        s2_results=self.safe_search(self.search_s2,query,max(self.result_limits['s2']//div,3))
+        arxiv_results=self.safe_search(self.search_arxiv,query,max(self.result_limits['arxiv']//div,2))
+        pwc_results=self.safe_search(self.search_pwc,query,max(self.result_limits['pwc']//div,2))
+        aggregated_results=self.safe_append_results(s2_results,arxiv_results+pwc_results)
+        return aggregated_results
+    
+    def safe_append_results(self,results,aggregated_results,query=None):
+        for r in results:
+            if not self.exist_in_set(r,aggregated_results):
+                if query:
+                    r['search_query']=query
+                aggregated_results.append(r)
+        return aggregated_results
+
     def search_external(self,query,pretty=True,prompt=True) -> Union[None, List[Dict]]:
         # search for external papers
-        s2_results=self.safe_search(self.search_s2,query,self.result_limits['s2'])
-        arxiv_results=self.safe_search(self.search_arxiv,query,self.result_limits['arxiv'])
-        pwc_results=self.safe_search(self.search_pwc,query,self.result_limits['pwc'])
-        
-        aggregated_results=s2_results
-        for r in arxiv_results+pwc_results:
-            if not self.exist_in_set(r,aggregated_results):
-                aggregated_results.append(r)
+        if isinstance(query,str):
+            aggregated_results=self._search_external(query,pretty,prompt)
+        else:
+            assert isinstance(query,list), 'query must be a string or a list of keywords'
+            aggregated_results=[]
+            for q in query:
+                aggregated_results=self.safe_append_results(self._search_external(q,pretty,prompt,div=len(query)),aggregated_results,q)
         self.stream.write(f'##### *Found {len(aggregated_results)} related papers from external sources*')
         grouped_results=self.group_by_sources(aggregated_results)
         if pretty:
-            return grouped_results, self.pretty_print(grouped_results,prompt)
+            return grouped_results, self.pretty_print(grouped_results,query,prompt)
         else:
             return grouped_results
 
@@ -349,9 +364,14 @@ class SuperScholarSearcher:
                 grouped_results['ArXiv'].append(r)
         return grouped_results
 
-    def pretty_print(self,grouped_results,prompt=True):
+    def pretty_print(self,grouped_results,query,prompt=True):
         num_results=sum([len(group) for group in grouped_results.values()])
         ppr=f'\n---\n## Found {num_results} related papers from {len(grouped_results)} external sources\n\n'
+        if isinstance(query,str):
+            ppr+=f'\n\nYour raw search query input to the search frame: {query}\n\n'
+        else:
+            ppr+=f'\n\nYour {len(query)} raw search queries input to the search frame: {", ".join(query)}\n\n'
+        ppr+=f'Considering refining your search by improving the query keywords input.\n\n'
         for source in ['Semantic Scholar','ArXiv','Papers with Code']:
             if source not in grouped_results:
                 continue
@@ -359,6 +379,8 @@ class SuperScholarSearcher:
             ppr+=f'### {len(group)} related papers from {source}\n\n'
             for i,r in enumerate(group):
                 ppr+=f'#### {i+1}. {r["title"]}\n\n'
+                if 'search_query' in r:
+                    ppr+=f'*From Search Query: {r["search_query"]}*\n\n'
                 ppr+=f'*{", ".join(r["authors"]) if r["authors"] else "Anonymous"}*\n\n'
                 if 'tldr' in r and r['tldr']:
                     ppr+=f'**TL;DR:** {r["tldr"]}\n\n'
@@ -415,8 +437,9 @@ class SuperScholarSearcher:
                 return True
         if paper1['title'].strip()==paper2['title'].strip():
             return True
-        if paper1['abstract'].strip()==paper2['abstract'].strip():
-            return True
+        if paper1['abstract'] and paper2['abstract']:
+            if paper1['abstract'].strip()==paper2['abstract'].strip():
+                return True
         return False
 
     def safe_search(self,fn,query,result_limit=10):
@@ -960,16 +983,18 @@ class SuperScholarSearcher:
         rerankinfo='' if self.rerank_ratio==0 else f' after reranking {int(total_chunks//self.rerank_ratio)} candidates'
         self.stream.write(f'##### *Found {total_chunks} related contents{rerankinfo}...*')
         if pretty:
-            return sources,self.vs_pretty_print(sources,prompt)
+            return sources,self.vs_pretty_print(sources,query,prompt)
         else:
             return sources
     
-    def vs_pretty_print(self,sources,prompt=True):
+    def vs_pretty_print(self,sources,query,prompt=True):
         total_chunks=0
         for source in sources:
             total_chunks+=sum([len(sources[i][0]) for i in sources])
         total_papers=sum([len(sources[i][0]) for i in sources])
         ppr=f'\n---\n## Found {total_chunks} related chunks from {len(sources)} internal sources\n\n'
+        ppr+=f'Your raw search query input to the search frame: \n\n{query}\n\n'
+        ppr+=f'Considering refining your search by improving the query keywords input.\n\n'
         for source in sources:
             grouped_docs=sources[source][0]
             metainfo=sources[source][1]

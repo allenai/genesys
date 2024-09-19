@@ -190,6 +190,7 @@ def call_model_structured(model,message,response_format, logprobs=False) -> Mode
         logprobs=False 
         fn_kwargs['max_completion_tokens']=model._config.max_output_tokens*4-1 # leave spaces for raesoning tokens
         model_fn=model.model_obj.chat.completions.create # parse is not supported for o1 
+        response_format=None
     else:
         fn_kwargs['max_completion_tokens']=model._config.max_output_tokens
         fn_kwargs['temperature']=model._config.temperature

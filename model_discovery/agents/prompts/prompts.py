@@ -620,6 +620,10 @@ Based on the provided seed design and references:
 Focus on thorough information gathering and insightful analysis to lay a strong foundation for the subsequent proposal development process.
 """
       GUM_DESIGN_PROPOSAL_ISEARCH_FINISH_prompt = """
+Here is the search results from your last query, you will not be able to access the search assistant again after this, so do not include any more search queries:
+
+{SEARCH_RESULTS}
+
 Based on the seed design, search results, and your analysis, develop a comprehensive proposal for a novel LM block design. 
 
 Ensure your proposal is innovative yet feasible, aiming to advance state-of-the-art LM performance. Balance creativity with practical considerations, and clearly articulate how your design improves upon existing architectures.
@@ -1624,7 +1628,7 @@ GUM_DESIGNER_SYSTEM_prompt_part4 = """
    - When declaring placeholders for child GAUs in your design, follow the proper syntax and ensure correct input-output handling.
 
 7. **Design Approach**:
-   - Name GAUs meaningfully. Each GAU should represent a distinct unit with a clear function in the architecture. Remember to rename the class name of a GAU if you are improving it.
+   - Name GAUs meaningfully. Each GAU should represent a distinct unit with a clear function in the architecture. If you are improving based on an existing GAU, DO NOT use the same name as the existing GAU. Give a new name, and remember to use the new name to the class in your implementation.
    - Follow a top-down design approach: if the operation is complex, decompose it into child GAUs and define their placeholders. Ensure each placeholder aligns with the broader structure of the model, ready for future implementation.
 
 8. **Be Innovative**:
@@ -2684,15 +2688,17 @@ You can modify based on the implementations from the provided seed, but you shou
 - **Interaction Between GAUs**:  
   Ensure that all interactions between GAUs follow the defined interface. You will not be able to modify other GAUs besides the current GAU and its children in your response, so proper input/output management is essential.
 
-
 - **Iterative Design**:  
   You will receive feedback and go through iterative rounds of design. If your implementation introduces errors or fails tests, you will need to debug and refine your GAU. The system will guide you through this process with error traces and diagnostics.
 
+- **Reuse Existing GAUs**:  
+   If there is an existing GAU in the provided seed that can meet your needs, you should directly reuse it instead of implementing it again. You are encouraged to reuse existing GAUs. Declaring a new GAU only if it is necessary.
 
 ## Guidelines for Designing the GAU:
 
 1. **Class Naming & Structure**:
    - Ensure that your GAU class inherits from `GAUBase` and is named as specified in the proposal. You should only define **one** GAU class in each implementation. Do not define any other GAU classes in this block. And the name of the class should be the unit name you are implementing.
+   - If you are modifying based on an existing GAU, DO NOT use the original name, give a new name to the new GAU you are implementing.
    - Ensure all the arguments introduced in the `__init__` function of the GAU class have either a default value or a way to handle missing values. If an argument is optional, handle it gracefully. Missing argument handling is necessary to prevent checker failures unless `None` is a valid value.
    - Ensure you are referring to the right class names in unit tests. 
 
@@ -3494,14 +3500,53 @@ O1M_PROPOSER_BACKGROUND = AgentPrompt(O1M_PROPOSER_BACKGROUND_prompt)
 
 O1M_DESIGN_PROPOSAL_prompt = """
 You will start your research proposal process by investigation, ideation, and literature reviews. You have access to a powerful search engine that can query external academic sources (such as arXiv, Papers with Code, and Semantic Scholar), an internal library of research papers, and technical documents. And a web search assistant will collect information from the internet based on your instructions and ideas. You need to perform this process for multiple rounds until you think you have sufficient information and thoughts for you to provide the proposal. 
+Follow these guidelines in your response:
 
-To use these tools, in your final response:
-1. You need to include a set of keywords for searching the external sources, please provide a set of precise keywords about the papers you are interested in that will be input to the search frame. Limit to no more than 3 keywords at a time to avoid potential difficulty in unmatching. If you want to search for more topics, do so in multiple rounds. Wrap your keywords in a quoted block like this: ```keywords {{Your keywods}} ``` in your response. If you do not quote your keywords in this format, the system won't be able to detect them.
-2. You need to include a detailed description of the contents you are intended to search from the internal library, the library search engine works as a vector store, it will find the best matching excerpts from the literatures stored in the library. Wrap that description in a quoted block like this: ```description {{Your description}}```.  If you do not quote your description in this format, the system won't be able to detect them.
-3. The web search assistant will read your response, understand your ideas and intent by himself and collect the information for you.
-4. When you think you got sufficient information and ready to give the proposal, include "I'm ready" in your response, be sure these words do not change in order to allow the system to recognize them.
+1. Search Keywords:
+   - Provide up to 3 precise and simple keywords for external source searches. Each keyword should be a precise and specific term.
+   - The keywords will be directly passed to the search frames of arXiv, Papers with Code, and Semantic Scholar. The keywords formulation should be based on the features of the search algorithms of these websites.
+   - Format: ```keywords YOUR_KEYWORDS```
 
-Now start your analysis and prepare for the proposal.
+2. Internal Library Search:
+   - Describe the content you want to find in the internal library. 
+   - The library uses vector search to find relevant excerpts. So the description formulation should consider the features of the cosine similarity vector search algorithm.
+   - Format: ```description YOUR_DESCRIPTION```
+
+3. Explain Your Analysis:
+   - Clearly articulate your motivation and thought process.
+   - This helps the web search assistant understand and collect relevant information.
+   - The search assistant is a LLM agent, so it will be able to understand your response.
+
+4. Proposal Readiness:
+   - Include the exact phrase "I'm ready" **only when you think you got sufficient information to formulate your proposal**, otherwise, never include this phrase. And you will receive further instructions about the next step.
+   - You are not allowed to propose without adaquate information, your first few readiness may not be accepted.
+   - Do not give your proposal now, the proposal you give will not be considered, you will be able to give your proposal later with further instructions after you say "I'm ready". 
+   - Note: The search queries (if any) in your responses will be still processed, and passed to you, but you will not be able to access the search engine afterward.
+
+## Best Practices for Progressive Refinement
+
+1. Prioritize Depth: Conduct thorough research before finalizing your proposal.
+
+2. Diverse Exploration: Use varied search queries to examine different aspects of the problem and potential solutions.
+
+3. Critical Evaluation: Carefully assess how new insights fit into your overall design philosophy.
+
+4. Rationale Documentation: Clearly explain the reasoning behind major design decisions, especially when pivoting based on research findings.
+
+5. Innovation vs. Feasibility: Strive for novel ideas while ensuring implementability within current technological constraints.
+
+6. Interdisciplinary Approach: Seek adaptable concepts from related fields that could enhance LM block design.
+
+7. Proactive Problem-Solving: Use research to identify and address potential weaknesses in your design.
+
+8. Iterative Refinement: Continuously improve your proposal based on new information and insights. Also improve your skill of formulating search queries based on the feedback from the search engine to better locate the information you need.
+
+9. Coherence and Consistency: Ensure all elements of your proposal align with your core design principles.
+
+10. Quantitative Backing: Where possible, support your design choices with relevant data or performance metrics.
+
+Remember, the goal is to develop a well-researched, innovative, and feasible proposal for LM block design. Be patient and search for more rounds to perfect your ideas.
+Now start your analysis and investigation. Make sure the keywords and description are formulated properly.
 """
 
 
@@ -3518,22 +3563,69 @@ Suggestions: {SUGGESTIONS}
 
 Based on this feedback, please refine your proposal. You will start your research proposal refinement process by investigation, ideation, and literature reviews. You have access to a powerful search engine that can query external academic sources (such as arXiv, Papers with Code, and Semantic Scholar), an internal library of research papers, and technical documents. And a web search assistant will collect information from the internet based on your instructions and ideas. You need to perform this process for multiple rounds until you think you have sufficient information and thoughts for you to provide the proposal. 
 
-To use these tools, in your final response:
-1. You need to include a set of keywords for searching the external sources, please provide a set of precise keywords about the papers you are interested in that will be input to the search frame. Limit to no more than 3 keywords at a time to avoid potential difficulty in unmatching. If you want to search for more topics, do so in multiple rounds. Wrap your keywords in a quoted block like this: ```keywords {{Your keywods}} ``` in your response. If you do not quote your keywords in this format, the system won't be able to detect them.
-2. You need to include a detailed description of the contents you are intended to search from the internal library, the library search engine works as a vector store, it will find the best matching excerpts from the literatures stored in the library. Wrap that description in a quoted block like this: ```description {{Your description}}```.  If you do not quote your description in this format, the system won't be able to detect them.
-3. The web search assistant will read your response, understand your ideas and intent by himself and collect the information for you.
-4. When you think you got sufficient information and ready to give the proposal, include "I'm ready" in your response, be sure these words do not change in order to allow the system to recognize them.
+Follow these guidelines in your response:
 
-Now start your analysis and prepare for the refined proposal.
+1. Search Keywords:
+   - Provide up to 3 precise keywords for external source searches. Each keyword should be a precise and specific term.
+   - Format: ```keywords YOUR_KEYWORDS```
+
+2. Internal Library Search:
+   - Describe the content you want to find in the internal library.
+   - Format: ```description YOUR_DESCRIPTION```
+   - The library uses vector search to find relevant excerpts.
+
+3. Explain Your Analysis:
+   - Clearly articulate your motivation and thought process.
+   - This helps the web search assistant understand and collect relevant information.
+
+4. Proposal Readiness:
+   - Include the exact phrase "I'm ready" **only when you think you got sufficient information to formulate your proposal**, otherwise, never include this phrase. And you will receive further instructions about the next step.
+   - You are not allowed to propose without adaquate information, your first few readiness may not be accepted.
+   - Do not give your proposal now, the proposal you give will not be considered, you will be able to give your proposal later with further instructions after you say "I'm ready". 
+   - Note: The search queries (if any) in your responses will be still processed, and passed to you, but you will not be able to access the search engine afterward.
+   
+## Best Practices for Progressive Refinement
+
+1. Prioritize Depth: Conduct thorough research before finalizing your proposal.
+
+2. Diverse Exploration: Use varied search queries to examine different aspects of the problem and potential solutions.
+
+3. Critical Evaluation: Carefully assess how new insights fit into your overall design philosophy.
+
+4. Rationale Documentation: Clearly explain the reasoning behind major design decisions, especially when pivoting based on research findings.
+
+5. Innovation vs. Feasibility: Strive for novel ideas while ensuring implementability within current technological constraints.
+
+6. Interdisciplinary Approach: Seek adaptable concepts from related fields that could enhance LM block design.
+
+7. Proactive Problem-Solving: Use research to identify and address potential weaknesses in your design.
+
+8. Iterative Refinement: Continuously improve your proposal based on new information and insights.
+
+9. Coherence and Consistency: Ensure all elements of your proposal align with your core design principles.
+
+10. Quantitative Backing: Where possible, support your design choices with relevant data or performance metrics.
+
+Remember, the goal is to develop a well-researched, innovative, and feasible proposal for LM block design. Be patient and search for more rounds to perfect your ideas.
+
+Now start your analysis. Make sure the keywords and description are formulated properly.
 """
 
 def O1_SEARCH_parser(raw_output: ModelOutputPlus) -> Dict[Any,Any]:
       raw_text = raw_output.text
       output = {}
-      keywords = re.findall(r"```keywords (.*?)```", raw_text, re.DOTALL)
-      description = re.findall(r"```description (.*?)```", raw_text, re.DOTALL)
+      keywords = re.findall(r"```keywords(.*?)```", raw_text, re.DOTALL)
+      description = re.findall(r"```description(.*?)```", raw_text, re.DOTALL)
       output["text"] = raw_text
-      output["keywords"] = [i.strip() for i in keywords]
+      kws=[]
+      for kw in keywords:
+         kw=kw.replace('keywords','').replace('keyword','').strip()
+         for k in kw.split(','):
+            for kk in k.split('\n'):
+               kws.append(kk.strip())  
+      if kws==[]:
+         kws=None
+      output["keywords"] = kws
       output["description"] = [i.strip() for i in description]
       output["_details"] = {}
       output["_details"]["cost"] = raw_output.usage
@@ -3542,7 +3634,7 @@ def O1_SEARCH_parser(raw_output: ModelOutputPlus) -> Dict[Any,Any]:
 
 
 O1M_DESIGN_PROPOSAL = AgentPrompt(O1M_DESIGN_PROPOSAL_prompt,O1_SEARCH_parser)
-O1M_DESIGN_PROPOSAL_REFINEMENT = AgentPrompt(O1M_DESIGN_PROPOSAL_REFINEMENT_prompt,O1_SEARCH_parser,O1_SEARCH_parser)
+O1M_DESIGN_PROPOSAL_REFINEMENT = AgentPrompt(O1M_DESIGN_PROPOSAL_REFINEMENT_prompt,O1_SEARCH_parser)
 
 # endregion
 
@@ -3556,14 +3648,11 @@ O1M_DESIGN_PROPOSAL_REFINEMENT = AgentPrompt(O1M_DESIGN_PROPOSAL_REFINEMENT_prom
 O1M_PROPOSAL_ISEARCH_CONT_prompt = """
 {SEARCH_RESULTS}
 
-Continue searching or begin proposal formulation. Remember in your response:
-1. You can include a set of keywords for searching the external sources, please provide a set of precise keywords about the papers you are interested in that will be input to the search frame. Limit to no more than 3 keywords at a time to avoid potential difficulty in unmatching. If you want to search for more topics, do so in multiple rounds. Wrap your keywords in a quoted block like this: ```keywords {{Your keywods}} ``` in your response. If you do not quote your keywords in this format, the system won't be able to detect them.
-2. You can include a detailed description of the contents you are intended to search from the internal library, the library search engine works as a vector store, it will find the best matching excerpts from the literatures stored in the library. Wrap that description in a quoted block like this: ```description {{Your description}}```.  If you do not quote your description in this format, the system won't be able to detect them.
-3. The web search assistant will read your response, understand your ideas and intent by himself and collect the information for you.
-4. When you think you got sufficient information and ready to give the proposal, include "I'm ready" in your response, be sure these words do not change in order to allow the system to recognize them. Notice that the when you reply "I'm ready", the search will be terminated and search request (if any) in your response will be ignored, and you will receive further instructions about the next step.
+Based on the search results provided, continue your analysis.
+Remember to follow the response format guidelines and best practices for progressive refinement.
 """
 
-O1M_PROPOSAL_ISEARCH_CONT = AgentPrompt(O1M_PROPOSAL_ISEARCH_CONT_prompt)
+O1M_PROPOSAL_ISEARCH_CONT = AgentPrompt(O1M_PROPOSAL_ISEARCH_CONT_prompt,O1_SEARCH_parser)
 
 # endregion
 
@@ -3575,6 +3664,13 @@ O1M_PROPOSAL_ISEARCH_CONT = AgentPrompt(O1M_PROPOSAL_ISEARCH_CONT_prompt)
 # region O1M Proposer Proposal Finish Prompt
 
 O1M_PROPOSAL_FINISH_prompt = """
+Here is more search results based on your last response, you will not be able to access the search assistant again after this, so do not include any more search queries in your response:
+
+{SEARCH_RESULTS}
+
+Firtly, provide a short model name for your design, like "Mamba", "Llama3", "GPT-4o" and so on. Wrap it in a quoted block like this: ```model_name YOUR_MODEL_NAME```.
+Then, give your proposal in the following structure:
+
 ## Proposal Structure
 
 Maintain and update the following structure in your proposal throughout the process:
@@ -3606,18 +3702,21 @@ Maintain and update the following structure in your proposal throughout the proc
 - **Mathematical rigor**: Provide mathematical formulations, theoretical justifications, and logical arguments for your design choices. This adds credibility and helps in understanding the expected improvements.
 - **Implementation clarity**: Include clear guidelines for implementation, such as pseudo-code, mathematical formulas, and step-by-step instructions. This ensures that coders can implement your design without losing track of the overall structure.
 
-Now please give your final proposal and the selection of the GAU you will modify. In order to allow the system to detect your selection, please wrap the selection in a quoted block like this: ```selection {{Your selection}}```. And your selection must come from one of {SELECTIONS}.
+Now please give your final proposal and the selection of the GAU you will modify. 
+Be sure to wrap the selection in a quoted block like this: ```selection YOUR_SELECTION```. And your selection must come from one of {SELECTIONS}. Ensure there is one and only one ```selection YOUR_SELECTION``` quoted block in your response.
 """
 
 
 def O1M_PROPOSAL_parser(raw_output: ModelOutputPlus) -> Dict[Any,Any]:
       raw_text = raw_output.text
       output = {}
-      selection = re.findall(r"```selection (.*?)```", raw_text, re.DOTALL)
+      selection = re.findall(r"```selection(.*?)```", raw_text, re.DOTALL)
       output["text"] = raw_text
       title = re.findall(r"# (.*?)\n", raw_text, re.DOTALL)
       output["title"] = [i.strip() for i in title]
       output["selection"] = [i.strip() for i in selection]
+      model_name = re.findall(r"```model_name(.*?)```", raw_text, re.DOTALL)
+      output["model_name"] = [i.strip() for i in model_name]
       output["_details"] = {}
       output["_details"]["cost"] = raw_output.usage
       output["_details"]["running_cost"] = raw_output.usage['cost']
@@ -3625,17 +3724,18 @@ def O1M_PROPOSAL_parser(raw_output: ModelOutputPlus) -> Dict[Any,Any]:
 
 O1M_PROPOSAL_FINISH = AgentPrompt(O1M_PROPOSAL_FINISH_prompt,O1M_PROPOSAL_parser)
 
-def gen_O1M_PROPOSAL_DEBUG_prompt(selections,SLECTIONS):
+def gen_O1M_PROPOSAL_DEBUG_prompt(selections,SELECTIONS):
    succeed=False
    if len(selections)==0:
-      prompt="No selection is detected, please provide a selection from {SELECTIONS} in a quoted block like this: ```selection {{Your selection}}```. Do not include any other text in your response."
-   elif len(selections)>1:
-      prompt="Multiple selections are detected, please provide a single selection from {SELECTIONS} in a quoted block like this: ```selection {{Your selection}}```. If your edits involve multiple GAUs, provide the shared root of these units. Do not include any other text in your response."
+      prompt=f"No selection is detected, please provide a selection from {SELECTIONS} in a quoted block like this: ```selection YOUR_SELECTION```. Do not include any other text in your response."
+   # elif len(selections)>1:
+   #    prompt=f"Multiple selections are detected, please provide a single selection from {SELECTIONS} in a quoted block like this: ```selection YOUR_SELECTION```. If your edits involve multiple GAUs, provide the shared root of these units. Do not include any other text in your response."
    else:
       selection=selections[0]
-      if selection not in SLECTIONS:
-         prompt=f"The selection {selection} is not from the allowed selections {SLECTIONS}, please provide a selection from {SLECTIONS} in a quoted block like this: ```selection {{Your selection}}```. Do not include any other text in your response."
+      if selection not in SELECTIONS:
+         prompt=f"The selection {selection} is not from the allowed selections {SELECTIONS}, please provide a selection from {SELECTIONS} in a quoted block like this: ```selection YOUR_SELECTION```. Do not include any other text in your response."
       else:
+         prompt=''
          succeed=True
    return succeed,AgentPrompt(prompt,O1M_PROPOSAL_parser)
 
