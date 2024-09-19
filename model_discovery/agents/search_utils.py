@@ -330,8 +330,17 @@ class SuperScholarSearcher:
                 aggregated_results.append(r)
         return aggregated_results
 
-    def search_external(self,query,pretty=True,prompt=True) -> Union[None, List[Dict]]:
+    def search_external(self,query,pretty=True,prompt=True,split_keywords=True) -> Union[None, List[Dict]]:
         # search for external papers
+        if split_keywords:
+            kws=[]
+            keywords = [query] if isinstance(query,str) else query
+            for kw in keywords:
+                kw=kw.replace('keywords','').replace('keyword','').strip()
+                for k in kw.split(','):
+                    for kk in k.split('\n'):
+                        kws.append(kk.strip())  
+            query=kws
         if isinstance(query,str):
             aggregated_results=self._search_external(query,pretty,prompt)
         else:

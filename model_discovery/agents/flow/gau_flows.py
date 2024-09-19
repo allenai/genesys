@@ -415,7 +415,7 @@ class GUFlowMutation(FlowCreator):
                             'ready':ready,
                             'search_ret':search_ret,
                         })
-                        PROPOSAL_ISEARCH_CONT=P.O1M_PROPOSAL_ISEARCH_CONT if USE_O1_PROPOSER else P.GUM_DESIGN_PROPOSAL_ISEARCH_CONT_2STAGE
+                        PROPOSAL_ISEARCH_CONT=P.O1M_PROPOSAL_ISEARCH_CONT if USE_O1_PROPOSER else P.GUM_DESIGN_PROPOSAL_ISEARCH_CONT
                         search_cont_prompt=PROPOSAL_ISEARCH_CONT(SEARCH_RESULTS=search_ret)
                         if i<=_MIN_ROUNDS:
                             search_cont_prompt+=f'\n\nNote: This is your {i+1}th set of search results, you are not allowed to propose without adaquate information, you need to propose with at least {_MIN_ROUNDS+1} sets of search results. And your first {_MIN_ROUNDS} readiness will not be accepted.'
