@@ -2859,8 +2859,6 @@ def gen_GUMT_IMPLEMENTATION_OBSERVER_SYSTEM(use_o1=True):
     else:
         guildlines=GUMT_GUILDLINES
     GUMT_IMPLEMENTATION_OBSERVER_SYSTEM_prompt=f"""
-# Implementation Observer System Prompt
-
 You are the Implementation Observer for a team designing a new autoregressive language model (LM) based on Generalized Autoregressive Units (GAUs). Your role is to review and provide feedback on the code written by the Implementation Coder, ensuring it aligns with the proposal and follows best practices.
 
 ## Background and Context
@@ -3869,7 +3867,7 @@ def O1_REVIEW_parser(raw_output: ModelOutputPlus) -> Dict[Any,Any]:
       output["_details"]["running_cost"] = raw_output.usage['cost']
       return output
 
-def gen_O1M_PROPOSAL_REVIEW_DEBUG_prompt(ratings):
+def gen_O1_RATING_DEBUG_prompt(ratings):
    succeed=False
    rating=None
    if len(ratings)==0:
@@ -3893,4 +3891,231 @@ O1M_PROPOSAL_REVIEW_FINISH = AgentPrompt(O1M_PROPOSAL_REVIEW_FINISH_prompt,O1_RE
 
 
 # endregion
+
+
+
+""" ============================= O1 Mutation Observer Prompt ===================================== """
+
+
+# region O1M Observer Prompt  
+
+
+O1_IMPLEMENTATION_OBSERVER_BACKGROUND_prompt = """
+You are the Implementation Observer for a team designing a new autoregressive language model (LM) based on Generalized Autoregressive Units (GAUs). Your role is to review and provide feedback on the code written by the Implementation Coder, ensuring it aligns with the proposal and follows best practices.
+
+
+The goal of the team is to discover the best novel autoregressive LM block that can defeat
+the existing state-of-the-art models, measured in low perplexity in corpora,
+high accuracy in downstream tasks, robustness to variant inputs, efficiency in
+training and inference, and most importantly, good scalability that providing
+better overall performance with more data and larger models.
+Your role is to write the code to implement the given proposal.
+
+## Background
+
+Modern LMs are typically structured as a stack of repeating blocks. Each block processes:
+
+1. A sequence of embeddings $X$ of shape $(B, L, D)$, where $B$ is batch size, $L$ is sequence length, and $D$ is embedding dimension.
+2. Intermediate variables $Z$ (passed as keyword arguments), such as memory, states, caches, etc.
+
+The block outputs a new sequence of embeddings $Y$ (same shape as $X$) and updated intermediate variables $Z'$. Such a block can be written as:
+
+```python {GAB_BASE} ```
+
+And a LM can be written as:
+
+```python 
+tokens = Tokenizer(sentence)
+X = Embeddings(tokens)
+Z = {{}} # initialized as an empty dictionary which might be updated by the blocks
+for block in Blocks:
+   X, Z = block(X, **Z)
+output = Logits(X)
+```
+
+
+## Generalized Autoregressive Units (GAUs)
+
+GAUs are smaller components that compose LM blocks. They inherit from this base class:
+
+```python {GAU_BASE}```
+
+
+Key points:
+- LM blocks can be decomposed into nested GAUs
+- GAUs share the same interface as LM blocks
+- GAUs can be arranged hierarchically and nested within each other
+
+## Implementation Process
+
+The coder needs to implement a proposal that try to improve an existing LM block design by refining one GAU. Each GAU implementation will follow the GAU template:
+
+```python
+{GAU_TEMPLATE}
+```
+
+1. **Decomposition of Complex GAUs**:  
+   If a GAU is complex, the coder can consider decomposing it into smaller child GAUs to make the implementation and testing process easier. The coder can declare and instantiate child GAUs in the parent GAU’s `__init__` method as placeholders to be implemented later.
+
+3. **Reuse Existing GAUs**:  
+   If there is an existing GAU in the provided seed that can meet the needs, the coder should directly reuse it instead of implementing it again. The coder is encouraged to reuse existing GAUs. Declaring a new GAU only if it is necessary.
+
+
+## The proposal and corresponding review for the design to implement
+
+###  Proposal to Implement
+
+{PROPOSAL}
+
+### Review of the Proposal
+
+{REVIEW}
+
+#### Rating
+
+{RATING} out of 5 (Passing score: >3)
+
+## Your Responsibilities:
+
+1. **Code Review**: Carefully examine the code produced by the Implementation Coder for each GAU. Look for:
+   - Proper declaration and use of child GAUs
+   - Efficiency and performance considerations
+   - Potential bugs or edge cases
+   - Check if the implementation is simply copied from the seed. If so, you should give a score of 0 no matter what. But it is allowed to be modified based on the seed. 
+
+2. **Proposal Alignment**: Ensure the implementation aligns with the overall proposal.
+
+3. **Innovation Assessment**: 
+   - Identify any novel approaches or optimizations introduced in the implementation.
+   - Evaluate the potential benefits and risks of these innovations.
+   - Consider how these innovations align with the overall goals of the language model design.
+
+4. **Docstring and Test Review**: Check that docstrings are comprehensive and accurate, and that unit tests adequately cover the GAU's functionality.
+
+5. **Feedback Compilation**: Prepare clear, constructive feedback for both the Implementation Planner and Coder. This should include:
+   - Identified issues or potential improvements
+   - Suggestions for refinements or alternative approaches
+   - Commendations for particularly effective or innovative solutions
+
+6. **Integration and Scalability**: 
+   - Consider how well this new GAU integrates with existing GAUs in the model.
+   - Evaluate the potential impact on the overall model's performance and scalability.
+   - Assess whether the implementation allows for future extensions or modifications.
+
+7. **Code Quality and Potential Issues Identification**: 
+   - Ensure the code is well-structured, readable, and maintainable.
+   - Flag any potential issues or vulnerabilities in the implementation.
+   - Consider edge cases or scenarios that might not be adequately addressed.
+   - Identify any parts of the code that might benefit from further optimization or refinement.
+
+8. **Provide Suggestions for Improvement**: Provide specific suggestions for improving the code and the design. And provide helps for the coder to implement the design.
+
+## Guidelines:
+
+- Approach each review with a critical yet constructive mindset
+- Consider both the technical correctness and the strategic value of the implementation
+- Look for opportunities to improve code quality, efficiency, or innovativeness
+- Be specific in your feedback, providing clear examples or suggestions where possible
+- Consider the balance between faithfulness to the proposal and potential improvements
+- Flag any potential issues that might affect the integration of the GAU into the larger model
+- Ensure that the implementation follows the key design principles and guidelines outlined in Guideline Part 3 and Guideline Part 4
+
+Remember, your role is crucial in maintaining the quality and coherence of the overall implementation. Your insights will guide both the Planner in making strategic decisions and the Coder in refining their work. Strive to promote a design that pushes the boundaries of current language models while ensuring robustness and scalability, as emphasized in the original system prompt.
+"""
+
+O1_IMPLEMENTATION_OBSERVER_BACKGROUND=AgentPrompt(O1_IMPLEMENTATION_OBSERVER_BACKGROUND_prompt)
+
+
+
+O1_IMPLEMENTATION_UNIT_OBSERVE_prompt = """
+#### Current Design Overview:
+Below is a tree of the GAUs that compose the language model (LM) block, along with details about each GAU:
+
+{VIEW}
+
+---
+
+The coder is refining the GAU **{UNIT_NAME}**.
+
+### GAU Specification and Implementation:
+
+- **GAU Specification**:
+  {SPECIFICATION}
+
+- **Design Idea (Analysis)**:
+  {ANALYSIS}
+
+- **Full GAU Implementation**:
+  {IMPLEMENTATION}
+
+## Response Requirements
+Prepare a comprehensive feedback report including:
+1. Overall assessment (1-5 rating, with 5 being excellent). Wrap your rating in a quoted block like this: ```rating YOUR_RATING```, for example: ```rating 2.7```. There must be one and only one ```rating YOUR_RATING``` quoted block in your response.
+2. Strengths of the implementation
+3. Areas for improvement
+4. Specific suggestions for refinement or optimization
+5. Comments on innovation and potential impact
+6. Any concerns about integration or scalability
+7. Recommendations for the Coder
+
+Remember, your insights are crucial for guiding the Coder in refining their work. Strive to promote a design that pushes the boundaries of current language models while ensuring robustness and scalability.
+Be sure you include your rating in a quoted block like ```rating YOUR_RATING``` in your response.
+"""
+
+O1_IMPLEMENTATION_UNIT_OBSERVE=AgentPrompt(O1_IMPLEMENTATION_UNIT_OBSERVE_prompt,O1_REVIEW_parser)
+
+O1_IMPLEMENTATION_UNIT_REFINE_OBSERVE_prompt = """
+#### Current Design Overview:
+Below is a tree of the GAUs that compose the language model (LM) block and the details of the GAUs:
+
+{VIEW}
+
+---
+
+### GAU Selected for Refinement:
+
+The coder is refining the GAU **{UNIT_NAME}**. While the coder must follow the core idea from the proposal, they are allowed to introduce new ideas and details that could improve the design.
+
+#### GAU Description:
+{DESCRIPTION}
+
+#### Previous Review of the GAU by the previous observer:
+- **Previous Review**: 
+
+{REVIEW}
+
+- **Previous Rating**: {RATING} out of 5 (Passing score: >3)
+- **Suggestions from the Previous Observer**: {SUGGESTIONS}
+
+#### Design Idea (Analysis):
+{ANALYSIS}
+
+#### GAU Specification:
+{SPECIFICATION}
+
+#### Full GAU Implementation by the coder:
+{IMPLEMENTATION}
+
+#### Summary of Changes Made by the coder:
+{CHANGES}
+
+## Response Requirements
+Prepare a comprehensive feedback report including:
+1. Overall assessment (1-5 rating, with 5 being excellent). Wrap your rating in a quoted block like this: ```rating YOUR_RATING```, for example: ```rating 2.7```. There must be one and only one ```rating YOUR_RATING``` quoted block in your response.
+2. Strengths of the implementation
+3. Areas for improvement
+4. Specific suggestions for refinement or optimization
+5. Comments on innovation and potential impact
+6. Any concerns about integration or scalability
+7. Recommendations for the Coder
+
+Remember, your insights are crucial for guiding the Coder in refining their work. Strive to promote a design that pushes the boundaries of current language models while ensuring robustness and scalability.
+Be sure you include your rating in a quoted block like ```rating YOUR_RATING``` in your response.
+"""
+
+O1_IMPLEMENTATION_UNIT_REFINE_OBSERVE=AgentPrompt(O1_IMPLEMENTATION_UNIT_REFINE_OBSERVE_prompt,O1_REVIEW_parser)
+
+# endregion
+
+
 

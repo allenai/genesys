@@ -122,10 +122,12 @@ def design(evosys,project_dir):
                 with cols[i]:
                     index=0 
                     options=AGENT_TYPES
-                    if agent in ['SEARCH_ASSISTANT','IMPLEMENTATION_OBSERVER']:
+                    if agent in ['SEARCH_ASSISTANT']:
                         options=AGENT_TYPES+['None']
-                        if agent=='SEARCH_ASSISTANT':
-                            index=len(options)-1
+                        index=len(options)-1
+                    elif agent in ['IMPLEMENTATION_OBSERVER']:
+                        options=AGENT_TYPES+['o1_preview','o1_mini','None']
+                        index=len(options)-2
                     elif agent in ['IMPLEMENTATION_CODER','DESIGN_PROPOSER','PROPOSAL_REVIEWER']: 
                         options=AGENT_TYPES+['o1_preview','o1_mini']
                         if agent in ['PROPOSAL_REVIEWER','DESIGN_PROPOSER']:

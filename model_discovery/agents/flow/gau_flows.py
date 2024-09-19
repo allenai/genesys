@@ -687,7 +687,7 @@ class GUFlowMutation(FlowCreator):
                         self.stream.write(review)
                         self.print_raw_output(out,'PROPOSAL_REVIEWER')
                         for _ in range(5):
-                            succeed,rating,RETRY_PROMPT=P.gen_O1M_PROPOSAL_REVIEW_DEBUG_prompt(rating)
+                            succeed,rating,RETRY_PROMPT=P.gen_O1_RATING_DEBUG_prompt(rating)
                             if succeed:
                                 break
                             self.print_details(PROPOSAL_REVIEWER.obj,context_proposal_reviewer,RETRY_PROMPT())
@@ -906,7 +906,8 @@ class GUFlowMutation(FlowCreator):
         self.stream.write(f'##### Protected Units: {PROTECTED_UNITS}')
         USE_PAIRING=self.agent_types['IMPLEMENTATION_OBSERVER']!='None'
         # o1 beta does not support structured outputs, so let it output the code directly
-        USE_O1_CODER=self.agents['IMPLEMENTATION_CODER'].model_name in ['o1-mini','o1-preview']
+        USE_O1_CODER='o1' in self.agents['IMPLEMENTATION_CODER'].model_name
+        USE_O1_OBSERVER='o1' in self.agents['IMPLEMENTATION_OBSERVER'].model_name
 
         context_implementation_planner=AgentContext() # context accummulated for all attempts in one unit
         
@@ -1059,12 +1060,13 @@ class GUFlowMutation(FlowCreator):
                     reflection,changes,debugging_steps=None,None,None
                     if REFINE: # 1. working on an existing unit 2. all >0 attempts
                         if USE_O1_CODER:
-                            reflection,analysis,changes=None,None,None
+                            reflection,analysis=None,None
                             codes=out['code']
                             implementations=[]
                             for code in codes:
                                 if code.strip().startswith('# GAU_IMPLEMENTATION_FILE'):
                                     implementations.append(code)
+                            changes="The coder didn't provide the summary of changes."
                         else:
                             reflection,analysis,implementation,changes=out['reflection'],out['analysis'],out['implementation'],out['changes']
                             self.stream.write(f'### Reflection\n{reflection}')
@@ -1289,46 +1291,85 @@ class GUFlowMutation(FlowCreator):
                 ########################### Review the implementation ###########################
                 
                 if USE_PAIRING:
-                    GUMT_IMPLEMENTATION_OBSERVER_SYSTEM=P.gen_GUMT_IMPLEMENTATION_OBSERVER_SYSTEM(use_o1=USE_O1_CODER)
+                    if USE_O1_OBSERVER:
+                        GUMT_IMPLEMENTATION_OBSERVER_SYSTEM=P.O1_IMPLEMENTATION_OBSERVER_BACKGROUND
+                    else:
+                        GUMT_IMPLEMENTATION_OBSERVER_SYSTEM=P.gen_GUMT_IMPLEMENTATION_OBSERVER_SYSTEM(use_o1=USE_O1_CODER)
                     IMPLEMENTATION_OBSERVER=reload_role('implementation_reviewer',self.agents['IMPLEMENTATION_OBSERVER'], GUMT_IMPLEMENTATION_OBSERVER_SYSTEM(
-                        GAB_BASE=GAB_BASE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE,PROPOSAL=proposal.proposal,REVIEW=proposal.review,RATING=proposal.rating))
+                        GAB_BASE=GAB_BASE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE,
+                        PROPOSAL=proposal.proposal,REVIEW=proposal.review,RATING=proposal.rating))
                     implementation_observer_tid=self.dialog.fork(main_tid,USER_CALLER,IMPLEMENTATION_OBSERVER,context=context_implementation_observer,
                                                         alias='implementation_observer',note=f'Reviewing implementation...')
                     if REFINE:
                         if attempt==0:
                             status_info=f'Observing refinement of {selection}...'
-                            gum_implementation_unit_review_prompt=P.GUMT_IMPLEMENTATION_UNIT_REFINE_OBSERVE(
+                            if USE_O1_OBSERVER:
+                                GUMT_IMPLEMENTATION_UNIT_REFINE_OBSERVE=P.O1_IMPLEMENTATION_UNIT_REFINE_OBSERVE
+                            else:
+                                GUMT_IMPLEMENTATION_UNIT_REFINE_OBSERVE=P.GUMT_IMPLEMENTATION_UNIT_REFINE_OBSERVE
+                            gum_implementation_unit_review_prompt=GUMT_IMPLEMENTATION_UNIT_REFINE_OBSERVE(
                                 UNIT_NAME=selection,ANALYSIS=analysis,IMPLEMENTATION=reformatted_code,
                                 CHANGES=changes, VIEW=VIEW_DETAILED, DESCRIPTION=node.desc,
                                 REVIEW=node.review,RATING=node.rating,SUGGESTIONS=node.suggestions,
                                 SPECIFICATION=node.spec.to_prompt()
                             )
-                            P.GUMT_IMPLEMENTATION_UNIT_REFINE_OBSERVE.apply(IMPLEMENTATION_OBSERVER.obj)
+                            GUMT_IMPLEMENTATION_UNIT_REFINE_OBSERVE.apply(IMPLEMENTATION_OBSERVER.obj)
                         else:
                             status_info=f'Observing refined implementation of {selection} (version {attempt})...'
-                            gum_implementation_unit_review_prompt=P.GUMT_IMPLEMENTATION_REOBSERVE(
-                                UNIT_NAME=selection,ANALYSIS=analysis,IMPLEMENTATION=reformatted_code,
-                                CHANGES=changes,SPECIFICATION=spec.to_prompt()
-                            )
-                            P.GUMT_IMPLEMENTATION_REOBSERVE.apply(IMPLEMENTATION_OBSERVER.obj)
+                            if USE_O1_OBSERVER:
+                                GUMT_IMPLEMENTATION_REOBSERVE=P.O1_IMPLEMENTATION_UNIT_OBSERVE
+                                gum_implementation_unit_review_prompt=GUMT_IMPLEMENTATION_REOBSERVE(
+                                    UNIT_NAME=selection,ANALYSIS=analysis,IMPLEMENTATION=reformatted_code,
+                                    VIEW=VIEW_DETAILED, SPECIFICATION=spec.to_prompt()
+                                )
+                            else:
+                                GUMT_IMPLEMENTATION_REOBSERVE=P.GUMT_IMPLEMENTATION_REOBSERVE
+                                gum_implementation_unit_review_prompt=GUMT_IMPLEMENTATION_REOBSERVE(
+                                    UNIT_NAME=selection,ANALYSIS=analysis,IMPLEMENTATION=reformatted_code,
+                                    CHANGES=changes,SPECIFICATION=spec.to_prompt()
+                                )
+                            GUMT_IMPLEMENTATION_REOBSERVE.apply(IMPLEMENTATION_OBSERVER.obj)
                     else: # first attempt of a new unit
                         status_info=f'Reviewing implementation of {selection}...'
-                        gum_implementation_unit_review_prompt=P.GUMT_IMPLEMENTATION_UNIT_OBSERVE(
+                        if USE_O1_OBSERVER:
+                            GUMT_IMPLEMENTATION_UNIT_OBSERVE=P.O1_IMPLEMENTATION_UNIT_OBSERVE
+                        else:
+                            GUMT_IMPLEMENTATION_UNIT_OBSERVE=P.GUMT_IMPLEMENTATION_UNIT_OBSERVE
+                        gum_implementation_unit_review_prompt=GUMT_IMPLEMENTATION_UNIT_OBSERVE(
                             UNIT_NAME=selection,VIEW=VIEW_DETAILED,SPECIFICATION=spec.to_prompt(),
                             ANALYSIS=analysis,IMPLEMENTATION=reformatted_code,
                         )
-                        P.GUMT_IMPLEMENTATION_UNIT_OBSERVE.apply(IMPLEMENTATION_OBSERVER.obj)
+                        GUMT_IMPLEMENTATION_UNIT_OBSERVE.apply(IMPLEMENTATION_OBSERVER.obj)
 
                     with self.status_handler(status_info):
+                        if USE_O1_OBSERVER:
+                            context_implementation_observer=AgentContext()
                         self.print_details(IMPLEMENTATION_OBSERVER.obj,context_implementation_observer,gum_implementation_unit_review_prompt)
                         _,out=self.dialog.call(implementation_observer_tid,gum_implementation_unit_review_prompt)
-                        review,rating,suggestions=out['review'],out['rating'],out['suggestions']
+                        self.print_raw_output(out,'IMPLEMENTATION_OBSERVER')
+                        if USE_O1_OBSERVER:
+                            suggestions=None
+                            review,rating=out['text'],out['rating']
+                            for _ in range(5):
+                                succeed,rating,RETRY_PROMPT=P.gen_O1_RATING_DEBUG_prompt(rating)
+                                if succeed:
+                                    break
+                                self.print_details(IMPLEMENTATION_OBSERVER.obj,context_implementation_observer,RETRY_PROMPT())
+                                RETRY_PROMPT.apply(IMPLEMENTATION_OBSERVER.obj)
+                                self.stream.write(f'Error in output, retry...') # TODO: very costly and wasteful, need to fix
+                                _,out=self.dialog.call(implementation_observer_tid,RETRY_PROMPT())
+                                rating=out['rating']
+                                self.stream.write(f'##### Correcting rating: {rating}')
+                                self.print_raw_output(out,'PROPOSAL_REVIEWER')
+                            if not succeed:
+                                raise Exception('Design proposal failed, stopping design process')
+                        else:
+                            review,rating,suggestions=out['review'],out['rating'],out['suggestions']
                         context_implementation_observer=self.dialog.context(implementation_observer_tid)
                         passornot='Accept' if rating>=OBSERVE_THRESHOLD else 'Reject'
                         self.stream.write(f'### Rating: {rating} out of 5 ({passornot})')
                         self.stream.write(review)
                         self.stream.write(suggestions)
-                        self.print_raw_output(out,'IMPLEMENTATION_OBSERVER')
                         
                         if unit_name in self.tree.units:
                             self.tree.units[unit_name].rating=rating
