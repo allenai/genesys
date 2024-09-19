@@ -3936,7 +3936,7 @@ output = Logits(X)
 
 ## Generalized Autoregressive Units (GAUs)
 
-GAUs are smaller components that compose LM blocks. They inherit from this base class:
+GAUs are smaller components that compose LM blocks. GAU implementations must inherit from this base class:
 
 ```python {GAU_BASE}```
 
@@ -3948,7 +3948,7 @@ Key points:
 
 ## Implementation Process
 
-The coder needs to implement a proposal that try to improve an existing LM block design by refining one GAU. Each GAU implementation will follow the GAU template:
+The coder needs to implement a proposal that try to improve an existing LM block design by refining one GAU. Each GAU implementation must follow this GAU template:
 
 ```python
 {GAU_TEMPLATE}
@@ -3957,9 +3957,11 @@ The coder needs to implement a proposal that try to improve an existing LM block
 1. **Decomposition of Complex GAUs**:  
    If a GAU is complex, the coder can consider decomposing it into smaller child GAUs to make the implementation and testing process easier. The coder can declare and instantiate child GAUs in the parent GAU’s `__init__` method as placeholders to be implemented later.
 
-3. **Reuse Existing GAUs**:  
+2. **Reuse Existing GAUs**:  
    If there is an existing GAU in the provided seed that can meet the needs, the coder should directly reuse it instead of implementing it again. The coder is encouraged to reuse existing GAUs. Declaring a new GAU only if it is necessary.
 
+3. **Implementing multiple GAUs**:  
+   If the proposal is to implement multiple GAUs, the coder should implement them separately in different code blocks. Each code block should be a complete GAU implementation following the GAU template. One code block should only implement one GAU.
 
 ## The proposal and corresponding review for the design to implement
 
@@ -4048,15 +4050,30 @@ The coder is refining the GAU **{UNIT_NAME}**.
 - **Full GAU Implementation**:
   {IMPLEMENTATION}
 
+## Format and Functionality Checks
+
+The implementation has undergone checks by the format checker, and functionality checker. 
+
+- **Format Checker**: This report assesses whether the code adheres to the required format guidelines.
+  
+  **Format Checker Report**:
+  {FORMAT_CHECKER_REPORT}
+
+- **Functionality Checker**: The functionality checker evaluates two critical aspects:
+  1. **Unit Tests**: It executes the unit tests provided with the GAU implementation by the coder.
+  2. **Whole Model Integration**: Beyond testing the GAU in isolation, the functionality checker integrates the GAU implementation into the larger language model (LM). It composes the tree of GAUs as the LM block. It generates any necessary placeholder classes for unimplemented units and verifies the functionality of the entire LM, including forward pass, backward pass, and causality.
+
+  **Functionality Checker Report**:
+  {FUNCTION_CHECKER_REPORT}
+
 ## Response Requirements
 Prepare a comprehensive feedback report including:
 1. Overall assessment (1-5 rating, with 5 being excellent). Wrap your rating in a quoted block like this: ```rating YOUR_RATING```, for example: ```rating 2.7```. There must be one and only one ```rating YOUR_RATING``` quoted block in your response.
 2. Strengths of the implementation
-3. Areas for improvement
-4. Specific suggestions for refinement or optimization
-5. Comments on innovation and potential impact
-6. Any concerns about integration or scalability
-7. Recommendations for the Coder
+3. Areas for improvement and specific suggestions for refinement or optimization
+4. Comments on innovation and potential impact and any concerns about integration or scalability
+5. *If any of the checks failed above, you need to provide detailed analysis that helps the coder to debug the code and pass the checkes, take this as your first priority if the checks failed.*
+6. Recommendations for the Coder
 
 Remember, your insights are crucial for guiding the Coder in refining their work. Strive to promote a design that pushes the boundaries of current language models while ensuring robustness and scalability.
 Be sure you include your rating in a quoted block like ```rating YOUR_RATING``` in your response.
@@ -4099,15 +4116,31 @@ The coder is refining the GAU **{UNIT_NAME}**. While the coder must follow the c
 #### Summary of Changes Made by the coder:
 {CHANGES}
 
+## Format and Functionality Checks
+
+The implementation has undergone checks by the format checker, and functionality checker. 
+
+- **Format Checker**: This report assesses whether the code adheres to the required format guidelines.
+  
+  **Format Checker Report**:
+  {FORMAT_CHECKER_REPORT}
+
+- **Functionality Checker**: The functionality checker evaluates two critical aspects:
+  1. **Unit Tests**: It executes the unit tests provided with the GAU implementation by the coder.
+  2. **Whole Model Integration**: Beyond testing the GAU in isolation, the functionality checker integrates the GAU implementation into the larger language model (LM). It composes the tree of GAUs as the LM block. It generates any necessary placeholder classes for unimplemented units and verifies the functionality of the entire LM, including forward pass, backward pass, and causality.
+
+  **Functionality Checker Report**:
+  {FUNCTION_CHECKER_REPORT}
+
+
 ## Response Requirements
 Prepare a comprehensive feedback report including:
 1. Overall assessment (1-5 rating, with 5 being excellent). Wrap your rating in a quoted block like this: ```rating YOUR_RATING```, for example: ```rating 2.7```. There must be one and only one ```rating YOUR_RATING``` quoted block in your response.
 2. Strengths of the implementation
-3. Areas for improvement
-4. Specific suggestions for refinement or optimization
-5. Comments on innovation and potential impact
-6. Any concerns about integration or scalability
-7. Recommendations for the Coder
+3. Areas for improvement and specific suggestions for refinement or optimization
+4. Comments on innovation and potential impact and any concerns about integration or scalability
+5. *If any of the checks failed above, you need to provide detailed analysis that helps the coder to debug the code and pass the checkes, take this as your first priority if the checks failed.*
+6. Recommendations for the Coder
 
 Remember, your insights are crucial for guiding the Coder in refining their work. Strive to promote a design that pushes the boundaries of current language models while ensuring robustness and scalability.
 Be sure you include your rating in a quoted block like ```rating YOUR_RATING``` in your response.

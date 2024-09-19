@@ -1261,6 +1261,7 @@ class GUFlowMutation(FlowCreator):
 
                         gabcode = self.tree.compose()
                         checkpass,check_report,gabcode_reformat,check_results = self.system.checker.check(GAMConfig_14M(),gabcode,selection)
+                        _func_checkpass = checkpass
 
                         if not _unit_test_passed:
                             if 'All tests passed!' in check_report:
@@ -1291,6 +1292,15 @@ class GUFlowMutation(FlowCreator):
                 ########################### Review the implementation ###########################
                 
                 if USE_PAIRING:
+                    if len(format_errors+fetal_errors)>0:
+                        _FORMAT_CHECKER_REPORT=FORMAT_CHECKER_REPORT
+                    else:
+                        _FORMAT_CHECKER_REPORT='Format check passed.'
+                    if not _func_checkpass:
+                        _FUNCTION_CHECKER_REPORT=FUNCTION_CHECKER_REPORT
+                    else:
+                        _FUNCTION_CHECKER_REPORT='Functionality check passed.'
+                    
                     if USE_O1_OBSERVER:
                         GUMT_IMPLEMENTATION_OBSERVER_SYSTEM=P.O1_IMPLEMENTATION_OBSERVER_BACKGROUND
                     else:
@@ -1303,15 +1313,18 @@ class GUFlowMutation(FlowCreator):
                     if REFINE:
                         if attempt==0:
                             status_info=f'Observing refinement of {selection}...'
+                            prompt_kwargs={}
                             if USE_O1_OBSERVER:
                                 GUMT_IMPLEMENTATION_UNIT_REFINE_OBSERVE=P.O1_IMPLEMENTATION_UNIT_REFINE_OBSERVE
+                                prompt_kwargs['FORMAT_CHECKER_REPORT']=_FORMAT_CHECKER_REPORT
+                                prompt_kwargs['FUNCTION_CHECKER_REPORT']=_FUNCTION_CHECKER_REPORT
                             else:
                                 GUMT_IMPLEMENTATION_UNIT_REFINE_OBSERVE=P.GUMT_IMPLEMENTATION_UNIT_REFINE_OBSERVE
                             gum_implementation_unit_review_prompt=GUMT_IMPLEMENTATION_UNIT_REFINE_OBSERVE(
                                 UNIT_NAME=selection,ANALYSIS=analysis,IMPLEMENTATION=reformatted_code,
                                 CHANGES=changes, VIEW=VIEW_DETAILED, DESCRIPTION=node.desc,
                                 REVIEW=node.review,RATING=node.rating,SUGGESTIONS=node.suggestions,
-                                SPECIFICATION=node.spec.to_prompt()
+                                SPECIFICATION=node.spec.to_prompt(),**prompt_kwargs
                             )
                             GUMT_IMPLEMENTATION_UNIT_REFINE_OBSERVE.apply(IMPLEMENTATION_OBSERVER.obj)
                         else:
@@ -1320,7 +1333,9 @@ class GUFlowMutation(FlowCreator):
                                 GUMT_IMPLEMENTATION_REOBSERVE=P.O1_IMPLEMENTATION_UNIT_OBSERVE
                                 gum_implementation_unit_review_prompt=GUMT_IMPLEMENTATION_REOBSERVE(
                                     UNIT_NAME=selection,ANALYSIS=analysis,IMPLEMENTATION=reformatted_code,
-                                    VIEW=VIEW_DETAILED, SPECIFICATION=spec.to_prompt()
+                                    VIEW=VIEW_DETAILED, SPECIFICATION=spec.to_prompt(),
+                                    FORMAT_CHECKER_REPORT=_FORMAT_CHECKER_REPORT,
+                                    FUNCTION_CHECKER_REPORT=_FUNCTION_CHECKER_REPORT,
                                 )
                             else:
                                 GUMT_IMPLEMENTATION_REOBSERVE=P.GUMT_IMPLEMENTATION_REOBSERVE
@@ -1331,13 +1346,16 @@ class GUFlowMutation(FlowCreator):
                             GUMT_IMPLEMENTATION_REOBSERVE.apply(IMPLEMENTATION_OBSERVER.obj)
                     else: # first attempt of a new unit
                         status_info=f'Reviewing implementation of {selection}...'
+                        prompt_kwargs={}
                         if USE_O1_OBSERVER:
                             GUMT_IMPLEMENTATION_UNIT_OBSERVE=P.O1_IMPLEMENTATION_UNIT_OBSERVE
+                            prompt_kwargs['FORMAT_CHECKER_REPORT']=_FORMAT_CHECKER_REPORT
+                            prompt_kwargs['FUNCTION_CHECKER_REPORT']=_FUNCTION_CHECKER_REPORT
                         else:
                             GUMT_IMPLEMENTATION_UNIT_OBSERVE=P.GUMT_IMPLEMENTATION_UNIT_OBSERVE
                         gum_implementation_unit_review_prompt=GUMT_IMPLEMENTATION_UNIT_OBSERVE(
                             UNIT_NAME=selection,VIEW=VIEW_DETAILED,SPECIFICATION=spec.to_prompt(),
-                            ANALYSIS=analysis,IMPLEMENTATION=reformatted_code,
+                            ANALYSIS=analysis,IMPLEMENTATION=reformatted_code,**prompt_kwargs
                         )
                         GUMT_IMPLEMENTATION_UNIT_OBSERVE.apply(IMPLEMENTATION_OBSERVER.obj)
 
@@ -1346,10 +1364,13 @@ class GUFlowMutation(FlowCreator):
                             context_implementation_observer=AgentContext()
                         self.print_details(IMPLEMENTATION_OBSERVER.obj,context_implementation_observer,gum_implementation_unit_review_prompt)
                         _,out=self.dialog.call(implementation_observer_tid,gum_implementation_unit_review_prompt)
-                        self.print_raw_output(out,'IMPLEMENTATION_OBSERVER')
                         if USE_O1_OBSERVER:
                             suggestions=None
                             review,rating=out['text'],out['rating']
+                            passornot='Accept' if rating>=OBSERVE_THRESHOLD else 'Reject'
+                            self.stream.write(f'### Rating: {rating} out of 5 ({passornot})')
+                            self.stream.write(review)
+                            self.print_raw_output(out,'IMPLEMENTATION_OBSERVER')
                             for _ in range(5):
                                 succeed,rating,RETRY_PROMPT=P.gen_O1_RATING_DEBUG_prompt(rating)
                                 if succeed:
@@ -1365,12 +1386,13 @@ class GUFlowMutation(FlowCreator):
                                 raise Exception('Design proposal failed, stopping design process')
                         else:
                             review,rating,suggestions=out['review'],out['rating'],out['suggestions']
-                        context_implementation_observer=self.dialog.context(implementation_observer_tid)
-                        passornot='Accept' if rating>=OBSERVE_THRESHOLD else 'Reject'
-                        self.stream.write(f'### Rating: {rating} out of 5 ({passornot})')
-                        self.stream.write(review)
-                        self.stream.write(suggestions)
-                        
+                            context_implementation_observer=self.dialog.context(implementation_observer_tid)
+                            passornot='Accept' if rating>=OBSERVE_THRESHOLD else 'Reject'
+                            self.stream.write(f'### Rating: {rating} out of 5 ({passornot})')
+                            self.stream.write(review)
+                            self.stream.write(suggestions)
+                            self.print_raw_output(out,'IMPLEMENTATION_OBSERVER')
+                            
                         if unit_name in self.tree.units:
                             self.tree.units[unit_name].rating=rating
                             self.tree.units[unit_name].review=review
