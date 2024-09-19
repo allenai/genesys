@@ -153,24 +153,6 @@ class SuperScholarSearcher:
             design=self.ptree.get_node(acronym)
             self.design_proposals[acronym]=design.proposal.proposal
 
-    def query_design_proposals(self,query,pp=True):
-        top_k=self.proposal_search_cfg['top_k']
-        cutoff=self.proposal_search_cfg['cutoff']
-        scores={i:1-self.emb_evaluator.evaluate_strings(prediction=query,reference=self.design_proposals[i])['score'] 
-                for i in self.design_proposals}
-        filtered_scores={i:s for i,s in scores.items() if s>cutoff}
-        pps=list(sorted(filtered_scores.items(),key=lambda x:x[1]))[:top_k]
-        if pp:
-            prt=''
-            if not pps:
-                prt+='### No design proposals found from the previous designs for the given proposal.\n\n'
-            else:
-                prt+=f'### Found {len(pps)} similar design proposals from the previous designs for the given proposal:\n\n'
-                for i,p in pps:
-                    prt+=f'#### {i} (Score: {scores[i]:.2f})\n\n<details><summary>Click to Expand</summary>\n\n```\n{self.design_proposals[i]}\n```\n\n</details>\n\n'
-            return pps,prt
-        else:
-            return pps
 
     def reconfig(self,cfg,stream=None):
         DEFAULT_SEARCH_LIMITS={
@@ -260,6 +242,59 @@ class SuperScholarSearcher:
     def has_index(self,index_name):
         existing_indexes=[i['name'] for i in self.pc.list_indexes()]
         return index_name in existing_indexes
+
+
+    #### Search design base
+
+    def _search_designs(self,query,parents=None):
+        topk,prt=self.query_design_proposals(query)
+        RET={
+            'topk':topk,
+            'proposal_prt':prt,
+        }
+        if parents:
+            siblings,prts=self.query_sibling_designs(parents)
+            prt+='\n\n---\n\n'+prts
+            RET['sibling_designs']=siblings
+            RET['sibling_prt']=prts
+        return RET,prt
+
+    def query_sibling_designs(self,parents,pp=True):
+        siblings=self.ptree.find_sibling_designs(parents)
+        if pp:
+            prt=''
+            abstracts,reviews,ratings=self.ptree.get_abstracts(siblings)
+            if not siblings:
+                prt+='### No siblings found from the previous designs with same seeds.\n\n'
+            else:
+                prt+=f'### Found {len(siblings)} siblings from the previous designs with same seeds:\n\n'
+                for i,p in enumerate(siblings):
+                    prt+=f'#### Sibling {i+1}. {p}\n\n```\n\n{abstracts[i]}\n\n```\n\n'
+                    prt+=f'##### Review\n\n```\n\n{reviews[i]}\n\n```\n\n'
+                    prt+=f'##### Rating\n\n```\n\n{ratings[i]} out of 5\n\n```\n\n'
+            return siblings,prt
+        else:
+            return siblings
+    
+    def query_design_proposals(self,query,pp=True):
+        top_k=self.proposal_search_cfg['top_k']
+        cutoff=self.proposal_search_cfg['cutoff']
+        scores={i:1-self.emb_evaluator.evaluate_strings(prediction=query,reference=self.design_proposals[i])['score'] 
+                for i in self.design_proposals}
+        filtered_scores={i:s for i,s in scores.items() if s>cutoff}
+        pps=list(sorted(filtered_scores.items(),key=lambda x:x[1]))[:top_k]
+        if pp:
+            prt=''
+            if not pps:
+                prt+='### No similar design proposals found from the previous designs for the given proposal.\n\n'
+            else:
+                prt+=f'### Found {len(pps)} similar design proposals from the previous designs for the given proposal:\n\n'
+                for i,p in pps:
+                    prt+=f'#### {i} (Score: {scores[i]:.2f})\n\n<details><summary>Click to Expand</summary>\n\n```\n{self.design_proposals[i]}\n```\n\n</details>\n\n'
+            return pps,prt
+        else:
+            return pps
+
 
 
     #### Get Paper Files by URL or ArXiv ID

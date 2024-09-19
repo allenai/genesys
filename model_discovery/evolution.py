@@ -300,6 +300,7 @@ class Proposal:
     costs: Dict[str, float]
     design_cfg: Dict[str, Any]
     user_input: str
+    abstract:str = None
     search_stack: List[str] = None
     review_search_stack: List[str] = None
 
@@ -436,6 +437,10 @@ class DesignArtifact(NodeObject):
 
     def to_prompt(self):
         prompt=f"""
+### Abstract
+
+{self.proposal.abstract}
+
 # Proposal: {self.proposal.modelname}
 
 {self.proposal.proposal}
@@ -541,6 +546,35 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         self.G=nx.DiGraph()
         self.design_sessions={}
         self.load()
+
+    def get_nodes(self,acronyms):
+        if isinstance(acronyms,str):
+            acronyms=[acronyms]
+        return [self.get_node(acronym) for acronym in acronyms]
+    
+    def get_abstracts(self,acronyms):
+        abstracts=[]
+        reviews=[]
+        ratings=[]
+        for acronym in acronyms:
+            proposal=self.get_node(acronym).proposal
+            if proposal.abstract:
+                abstracts.append(proposal.abstract)
+            else:
+                abstracts.append(proposal.proposal[:1600]+'...') # ~400 tokens
+            reviews.append(proposal.review)
+            ratings.append(proposal.rating)
+        return abstracts,reviews,ratings
+    
+    def find_sibling_designs(self,parents):
+        if isinstance(parents,str):
+            parents=[parents]
+        siblings=[]
+        for acronym in self.filter_by_type(['DesignArtifact','DesignArtifactImplemented']):
+            design=self.get_node(acronym)
+            if any([p in design.seed_ids for p in parents]):
+                siblings.append(acronym)
+        return siblings
 
     def load_design_sessions(self):
         for design_id in os.listdir(U.pjoin(self.db_dir,'sessions')):
