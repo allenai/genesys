@@ -13,6 +13,8 @@ import model_discovery.utils as U
 import bin.app_utils as AU
 
 
+TARGET_SCALES = ['14M','31M','70M','125M','350M','760M','1300M']
+
 
 
 def get_system_info():
@@ -52,12 +54,14 @@ def get_system_info():
 def engine(evosys,project_dir):
 
     st.title("Verification Engine")
-    evosys.ptree.reload()
+
+    # evosys.ptree.load()
 
     # with st.sidebar:
-    #     logo_png = AU.square_logo("VER", "ENG")
-    #     st.image(logo_png, use_column_width=True)
-    
+        # wandb_api_key=st.text_input('Your Wandb API Key',type='password')
+        # if wandb_api_key:
+        #     os.environ['WANDB_API_KEY']=wandb_api_key
+
     st.header("System Info")
     col1, col2, col3 = st.columns(3)
     cpu_info, gpu_info, mem_info = get_system_info()
@@ -82,18 +86,28 @@ def engine(evosys,project_dir):
         for scale,verification in verifications.items():
             verified[design_id][scale]=verification
 
-    st.subheader("Designs")
-    # if len(verified)==0:
-    #     st.write("No designs have been verified yet.")
-    # for design_id in verified:
-    #     for scale,verification in verified[design_id].items():
-    #         st.write(f"Design: {design_id}, Scale: {scale}, Verification: {verification}")
+    st.header("Verify Designs")
+    col1,col2,col3=st.columns(3)
+    with col1:
+        design_id=st.selectbox("Design",options=verified.keys())
+        vss=list(verified[design_id].keys())
+        vsstr='*Verified on '+', '.join(vss)+'*' if len(vss)>0 else ''
+        st.write(vsstr)
 
-    # st.header("Unverified Designs")
-    # if len(unverified)==0:
-    #     st.write("There is no unverified designs.")
-    # for design_id in unverified:
-    #     st.write(f"Design: {design_id}")
+    with col2:
+        options=[]
+        for scale in TARGET_SCALES:
+            if scale not in verified[design_id]:
+                options.append(scale)
+        tail=' (excluded verified scales)' if len(vss)>0 else ''
+        scale=st.select_slider("Scale"+tail,options=options)
+    with col3:
+        st.write('')
+        st.write('')
+        if st.button("Run Verification"):
+            st.write("Hello")
+            st.balloons()
+
 
 
     

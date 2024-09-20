@@ -530,7 +530,6 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
     | ... # units, etc.
     """
     def __init__(self, db_dir: str):
-        self.G = nx.DiGraph()
         self.db_dir = db_dir
         self.lib_dir = U.pjoin(LIBRARY_DIR,'tree')
         self.lib_ext_dir = U.pjoin(LIBRARY_DIR,'tree_ext')
@@ -542,10 +541,8 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
 
     # new design: proposal -> implement -> verify
 
-    def reload(self):
-        self.G=nx.DiGraph()
-        self.design_sessions={}
-        self.load()
+    # def reload(self): # why do we need this at all??
+    #     self.load()
 
     def get_nodes(self,acronyms):
         if isinstance(acronyms,str):
@@ -577,6 +574,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         return siblings
 
     def load_design_sessions(self):
+        self.design_sessions={}
         for design_id in os.listdir(U.pjoin(self.db_dir,'sessions')):
             metadata = U.load_json(U.pjoin(self.session_dir(design_id), 'metadata.json'))
             metadata['mode']=DesignModes(metadata['mode'])
@@ -792,8 +790,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
                 nodes.append(node)
         return nodes
     
-    def remove_redundant_edges(self):
-        G = self.G  # Work directly with self.G
+    def remove_redundant_edges(self,G):
         topological_order = list(nx.topological_sort(G))
         redundant_edges = []
 
@@ -811,23 +808,37 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         # Remove all redundant edges
         for u, v in redundant_edges:
             G.remove_edge(u, v)
-            
+        
+        return G
+
     def load(self):
+        self.G=self.load_graph()
+        self.load_design_sessions()
+
+    def load_graph(self,max_nodes=None):
         edges_to_add = []
+        count=0
+        G=nx.DiGraph()
         for id in os.listdir(U.pjoin(self.db_dir,'designs')):
+            if max_nodes and count>max_nodes:
+                break
             artifact = DesignArtifact.load(self.design_dir(id))
-            self.G.add_node(artifact.acronym, data=artifact)
+            G.add_node(artifact.acronym, data=artifact)
+            count+=1
             for seed_id in artifact.seed_ids:
                 edges_to_add.append((seed_id, artifact.acronym))
         
         # Load core library
         for id in os.listdir(self.lib_dir):
+            if max_nodes and count>max_nodes:
+                break
             id=id.split('.')[0]
             ref = LibraryReference.load(self.lib_dir, id)
-            self.G.add_node(ref.acronym, data=ref)
+            G.add_node(ref.acronym, data=ref)
+            count+=1
             for seed_id in ref.seed_ids:
                 edges_to_add.append((seed_id, ref.acronym))
-
+                
         # # load extended library
         # dir_ext_1hop = U.pjoin(self.lib_ext_dir,'1hop')
         # for i in os.listdir(dir_ext_1hop):
@@ -838,13 +849,15 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         #         edges_to_add.append((seed_id, ref.acronym))
         
         for seed_id, product_id in edges_to_add:
-            if seed_id == product_id or nx.has_path(self.G, product_id, seed_id):
+            if seed_id not in G.nodes or product_id not in G.nodes:
                 continue
-            self.G.add_edge(seed_id, product_id)
+            if seed_id == product_id or nx.has_path(G, product_id, seed_id):
+                continue
+            G.add_edge(seed_id, product_id)
         
-        self.remove_redundant_edges()
-        self.load_design_sessions()
-        
+        G=self.remove_redundant_edges(G)
+
+        return G
 
     def viz(self,G,height=5000,width="100%",layout=False,max_nodes=None): # larger canvas may be needed for large trees
         nt=Network(
@@ -861,10 +874,14 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
 
     def export(self,max_nodes=None,height=5000,layout=False): #,with_ext=False
         G=nx.DiGraph()
-        for idx,node in enumerate(self.G.nodes):
+        if not max_nodes or max_nodes==0 or max_nodes>=len(self.G.nodes):
+            _G=self.G.copy()
+        else:
+            _G=self.load_graph(max_nodes)
+        for idx,node in enumerate(_G.nodes):
             if max_nodes and idx>max_nodes:
                 break
-            data=self.G.nodes[node]['data']
+            data=_G.nodes[node]['data']
             if data.type in ['DesignArtifact','DesignArtifactImplemented']:
                 scale='31M'   #data.scale # TODO: use the actual scale
                 color=NODE_COLOR_MAP[scale]
@@ -897,7 +914,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
                 # scale=scale,
                 # rating=data.rating
             )
-        for edge in self.G.edges:
+        for edge in _G.edges:
             if edge[0] in G.nodes and edge[1] in G.nodes:
                 G.add_edge(edge[0],edge[1])
         fname='phylogenetic_tree'
@@ -1073,7 +1090,7 @@ class EvolutionSystem(exec_utils.System):
     # TODO: the interface should be updated when selector agent is ready, and design cfg is ready
     def design(self,n_sources=None,design_cfg={},search_cfg={},user_input='',design_id=None,mode=DesignModes.MUTATION,resume=True): # select then sample, TODO: n_sources and design_cfg should be configed
         # user_input and design_cfg maybe changed by the user, so we need to pass them in
-        self.ptree.reload()
+        # self.ptree.reload() # WHY WE NEED THIS???
         unfinished_designs = self.ptree.get_unfinished_designs()
         self.stream.write(f"Found {len(unfinished_designs)} unfinished designs, allow resume: {resume}")
         if n_sources is None:

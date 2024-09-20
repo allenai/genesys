@@ -58,8 +58,8 @@ def viewer(evosys,project_dir):
     flows={
         # 'GU Flow (Scratch) (Legacy)':gu_flow_scratch,
         # 'GU Flow (Mutation)':gu_flow_mutation,
-        'Naive Design Flow':design_flow_naive,
-        'Naive Review Flow':review_flow_naive,
+        'Naive Design Flow':(design_flow,DESIGN_ALANG_reformatted),
+        # 'Naive Review Flow':(review_flow_naive,''),
     }
 
 
@@ -74,10 +74,7 @@ def viewer(evosys,project_dir):
             design_artifacts = evosys.ptree.filter_by_type(['DesignArtifact','DesignArtifactImplemented'])
             selected_design = st.selectbox("Select a design", design_artifacts)
         elif view_mode == ViewModes.DIALOGS:
-            log_dir = U.pjoin(evosys.evo_dir, 'log')
-            dialogs = {}
-            for d in os.listdir(log_dir):
-                dialogs[d] = DialogTreeViewer(U.pjoin(log_dir, d))
+            pass
 
     if view_mode == ViewModes.DESIGNS:
 
@@ -108,64 +105,63 @@ def viewer(evosys,project_dir):
         with st.expander('View Review'):
             st.markdown(design.proposal.review)
             st.write('#### Rating: ',design.proposal.rating,'out of 5')
-        st.subheader(f'GAU Tree for {selected_design}')
-        with st.expander('Click to expand'):
-            itree=design.implementation.implementation
-            st.write(itree.view()[0],unsafe_allow_html=True)
-        gab_code=check_tune('14M',design.acronym,code=itree.compose(),skip_tune=True,reformat_only=True)
-        st.subheader('Exported GAB Code')
-        with st.expander('Click to expand'):
-            st.code(gab_code,language='python')
+        if design.implementation:
+            st.subheader(f'GAU Tree for {selected_design}')
+            with st.expander('Click to expand'):
+                itree=design.implementation.implementation
+                st.write(itree.view()[0],unsafe_allow_html=True)
+            gab_code=check_tune('14M',design.acronym,code=itree.compose(),skip_tune=True,reformat_only=True)
+            st.subheader('Exported GAB Code')
+            with st.expander('Click to expand'):
+                st.code(gab_code,language='python')
+        else:
+            st.warning('The design has not been implemented yet.')
 
 
     elif view_mode == ViewModes.DIALOGS:
         st.title('ALang Dialog Viewer')
         sess_dir = U.pjoin(evosys.evo_dir, 'db', 'sessions')
-        dialogs = {}
-        for d in os.listdir(sess_dir):
-            dialogs[d] = DialogTreeViewer(U.pjoin(sess_dir, d))
 
-        if not dialogs:
+        if not os.path.exists(sess_dir):
             st.warning("No dialogs found in the log directory")
         else:
-            selected_dialog = st.selectbox("Select a dialog", list(dialogs.keys()))
-            dialog = dialogs[selected_dialog]
-            markmap(dialog.to_markmap(),height=300)
-            selected_thread = st.selectbox("Select a thread", list(dialog.threads.keys()))
-            thread = dialog.threads[selected_thread]
-            timeline(thread.to_timeline(),height=800)
+            dialogs = {}
+            for d in os.listdir(sess_dir):
+                dialogs[d] = DialogTreeViewer(U.pjoin(sess_dir, d,'log'))
 
-        with st.sidebar:
-            st.write("Empty sidebar")
+            if not dialogs:
+                st.warning("No dialogs found in the log directory")
+            else:
+                selected_dialog = st.selectbox("Select a dialog", list(dialogs.keys()))
+                dialog = dialogs[selected_dialog]
+                markmap(dialog.to_markmap(),height=300)
+                selected_thread = st.selectbox("Select a thread", list(dialog.threads.keys()))
+                thread = dialog.threads[selected_thread]
+                timeline(thread.to_timeline(),height=800)
+
             
 
     elif view_mode == ViewModes.FLOW:
             
         st.title('ALang Design Flow Viewer')
 
-        system=evosys.rnd_agent
-        evo_dir=evosys.evo_dir
-
         simple_mode = 'VIEW_FLOWCHART_SIMPLE' 
         if simple_mode not in st.session_state:
             st.session_state[simple_mode] = True
 
         with st.sidebar:
-            if st.button('View Simplified Flowchart'):
+            st.write('Viewer Setting')
+            if st.button('View Simplified Flowchart',use_container_width=True):
                 st.session_state[simple_mode] = True
                 st.rerun()
-            if st.button('View Full Flowchart'):
+            if st.button('View Full Flowchart',use_container_width=True):
                 st.session_state[simple_mode] = False
                 st.rerun()
 
 
         simple_mode = st.session_state[simple_mode] # True
 
-        # flow=system.design_flow
-        # script=system.DESIGN_ALANG_reformatted
-
-        # flow = flow.flow
-        script = flow.script
+        flow,script = flow
 
         if simple_mode:
             col1, col2 = st.columns([2,1])
@@ -196,21 +192,21 @@ def viewer(evosys,project_dir):
         st.write('Automatically reformatted by compiler')
         st.code(script,line_numbers=True,language='bash')
 
-        st.markdown('## Naive Control Flow Viewer')
+        # st.markdown('## Naive Control Flow Viewer')
 
-        col1, col2 = st.columns(2)
+        # col1, col2 = st.columns(2)
 
-        with col1:
-            if st.button('Click here to view the Flow Chart of a Naive Design Flow'):
-                fc_dir = system.design_flow_naive.export(evo_dir)
-                check_output("start " + fc_dir, shell=True)
-            st.code(inspect.getsource(system.design_flow_naive.prog))
+        # with col1:
+        #     if st.button('Click here to view the Flow Chart of a Naive Design Flow'):
+        #         fc_dir = naive.export(evo_dir)
+        #         check_output("start " + fc_dir, shell=True)
+        #     st.code(inspect.getsource(naive.prog))
 
-        with col2:
-            if st.button('Click here to view the Flow Chart of a Naive Review Flow'):
-                fc_dir = system.review_flow.export(evo_dir)
-                check_output("start " + fc_dir, shell=True)
-            st.code(inspect.getsource(system.review_flow.prog))
+        # with col2:
+        #     if st.button('Click here to view the Flow Chart of a Naive Review Flow'):
+        #         fc_dir = system.review_flow.export(evo_dir)
+        #         check_output("start " + fc_dir, shell=True)
+        #     st.code(inspect.getsource(review_flow.prog))
 
         # components.html(open(fc_dir).read(),height=800,scrolling=True)
 

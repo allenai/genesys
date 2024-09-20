@@ -23,6 +23,7 @@ def run_sample(evosys,project_dir,step=False):
         if step:
             break
 
+
 def evolve(evosys,project_dir):
 
     st.title("Evolution Engine")
@@ -52,19 +53,36 @@ def evolve(evosys,project_dir):
 
     st.header("Phylogenetic Tree Viewer")
     ptree_dir_full=U.pjoin(evosys.evo_dir,f'PTree.html')
-    if st.button('Click here to view the Full Phylogenetic Tree'):
-        if not U.pexists(ptree_dir_full):
-            with st.spinner('Loading...'):
-                evosys.ptree.export()
-        check_output("start " + ptree_dir_full, shell=True)
+
+    col1, col2, col3 = st.columns([6,0.1,2])
+    
+    max_nodes=100
+    evosys.ptree.export(max_nodes=100,height='800px')
+    ptree_dir_small=U.pjoin(evosys.evo_dir,f'PTree_100.html')
+
+    with col1:
+        _max_nodes=st.slider('Max Nodes',min_value=0,max_value=len(evosys.ptree.G.nodes),value=100)
 
     # check this: https://github.com/napoles-uach/streamlit_network 
-
-    max_nodes=100
-    evosys.ptree.export(max_nodes=max_nodes,height='800px')
-    ptree_dir_small=U.pjoin(evosys.evo_dir,f'PTree_{max_nodes}.html')
-    st.write(f'Only showing the first {max_nodes} nodes here (some edges may be missing). '
-            'Legend: :rainbow[Seed Designs (*Pink*)] | :blue[Design Artifacts] | :orange[Reference w/ Code] | :violet[Reference w/o Code]')
+    with col3:
+        st.write('')
+        st.write('')
+        if st.button(f'Refresh Tree with First {_max_nodes} Nodes'):#,use_container_width=True):
+            evosys.ptree.export(max_nodes=_max_nodes,height='800px')
+            ptree_dir_small=U.pjoin(evosys.evo_dir,f'PTree_{_max_nodes}.html')
+            max_nodes=_max_nodes
+    
+    # with col3:
+    #     st.write('')
+    #     st.write('')
+    #     if st.button('View Full Phylogenetic Tree',use_container_width=True):
+    #         if not U.pexists(ptree_dir_full):
+    #             with st.spinner('Loading...'):
+    #                 evosys.ptree.export()
+    #         check_output("xdg-open " + ptree_dir_full, shell=True)
+            
+    st.write(f'**Only showing the first {max_nodes} nodes here**. '
+            'Legend: :rainbow[Seed Designs (*Pink*)] | :blue[Design Artifacts] | :orange[Reference w/ Code] | :violet[Reference w/o Code] *(Size by # of citations)*')
 
     HtmlFile = open(ptree_dir_small, 'r', encoding='utf-8')
     source_code = HtmlFile.read() 
