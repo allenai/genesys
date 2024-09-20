@@ -63,7 +63,7 @@ def evolve(evosys,project_dir):
     max_nodes=100
     evosys.ptree.export(max_nodes=max_nodes,height='800px')
     ptree_dir_small=U.pjoin(evosys.evo_dir,f'PTree_{max_nodes}.html')
-    st.write(f'Only showing the first {max_nodes} nodes here. '
+    st.write(f'Only showing the first {max_nodes} nodes here (some edges may be missing). '
             'Legend: :rainbow[Seed Designs (*Pink*)] | :blue[Design Artifacts] | :orange[Reference w/ Code] | :violet[Reference w/o Code]')
 
     HtmlFile = open(ptree_dir_small, 'r', encoding='utf-8')

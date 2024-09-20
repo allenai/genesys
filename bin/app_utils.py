@@ -10,7 +10,7 @@ SQUARE_LOGO_SVG = """
   <text x="150" y="210" font-family="Arial, sans-serif" font-size="60" font-weight="bold" fill="#{COLOR}" text-anchor="middle">{LOWER_TEXT}</text>
 </svg>
 """
-
+# font-style="italic" 
 
 def square_logo(upper_text, lower_text, color='000000'):
     svg_code = SQUARE_LOGO_SVG.format(UPPER_TEXT=upper_text, LOWER_TEXT=lower_text, COLOR=color)

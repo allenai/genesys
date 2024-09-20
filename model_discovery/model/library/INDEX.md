@@ -1,6 +1,12 @@
 # Language Modeling Library (300)
 Library of methods and theory that may inspire the language modeling designs. Around 256 major papers & projects, and other interesting stuffs. Google Sheet: https://docs.google.com/spreadsheets/d/1GxMjIY-RZWChS6g03NP9q4kv9tRjvQ9N8ZBkHIPvR1Y/edit?usp=sharing
 
+
+## TODO
+
+- https://arxiv.org/pdf/2409.10594 KAT
+
+
 ## Baselines and Core Reference Designs (155)
 Major and latest branches of (autoregressive) model architecture variants after Transformers/GPTs. Collected from surveys, popular repos, and recent papers. Excluded MoE, Hierarchical and Heterogeneous Architectures, and non-causal models. Only consider identical single causal blocks. Can use S2 with reference type to build the phylogenetic tree later. Do not considering param-sharing like Albert. 
 

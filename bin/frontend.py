@@ -50,15 +50,14 @@ search = import_and_reload('search').search
 
 @st.cache_resource()
 def build_evo_system(name='test_evo_000'):
-    strparams=[
-        f"evoname={name}",
-        "scales=14M,31M,70M",
-        "selection_ratio=0.25",
-        "select_method=random",
-        
-    ]
+    params={
+        'evoname':name,
+        'scales':'14M,31M,70M',
+        'selection_ratio':0.25,
+        'select_method':'random',
+    }
     evo_system = BuildEvolution(
-        strparams=';'.join(strparams),
+        params=params,
         do_cache=False,
         stream=st,
         # cache_type='diskcache',

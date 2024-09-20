@@ -27,9 +27,9 @@ from model_discovery.model.library.tester import check_tune
 import bin.app_utils as AU
 
 class ViewModes(Enum):
-    DESIGNS = 'Designs'
-    DIALOGS = 'Dialogs'
-    FLOW = 'Flow'
+    DESIGNS = 'Design Artifacts'
+    DIALOGS = 'Agent Dialogs'
+    FLOW = 'Agent Flows'
 
 
 
@@ -41,9 +41,9 @@ def viewer(evosys,project_dir):
     ### build the system 
     # st.title("Viewers")
 
-    with st.sidebar:
-        logo_png = AU.square_logo("DES", "ART")
-        st.image(logo_png, use_column_width=True)
+    # with st.sidebar:
+        # logo_png = AU.square_logo("DES", "ART")
+        # st.image(logo_png, use_column_width=True)
 
     
     # Lagacy flows for development
@@ -65,7 +65,8 @@ def viewer(evosys,project_dir):
 
     ### Sidebar
     with st.sidebar:
-        view_mode = st.selectbox("View Mode", list(ViewModes))
+        view_mode = st.selectbox("View Mode", list([i.value for i in ViewModes]))
+        view_mode = ViewModes(view_mode)
         if view_mode == ViewModes.FLOW:
             selected_flow = st.selectbox("Select a flow", list(flows.keys()))
             flow = flows[selected_flow]

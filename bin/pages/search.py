@@ -20,9 +20,9 @@ def search(evosys,project_dir):
 
     st.title("Paper Search Engine")
 
-    with st.sidebar:
-        logo_png = AU.square_logo("SEA", "RCH")
-        st.image(logo_png, use_column_width=True)
+    # with st.sidebar:
+    #     logo_png = AU.square_logo("SEA", "RCH")
+    #     st.image(logo_png, use_column_width=True)
 
     with st.expander("Search Configurations",expanded=True):
         search_cfg={}

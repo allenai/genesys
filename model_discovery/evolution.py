@@ -955,16 +955,13 @@ class EvolutionSystem(exec_utils.System):
     def __init__(self,agent_system,config,**kwargs):
         self.agents = agent_system
         self._config = config
-        self.stream = PrintSystem(self._config)
+        self.params=config.params
+        self.stream = PrintSystem(config)
         self.load(**kwargs)
 
     def load(self,**kwargs):
-        # init params, TODO: upgrade to exec_util params, use a simple str params for now
-        self.params={}
-        for param in self._config.strparams.split(';'):
-            key,val=param.split('=')
-            self.params[key]=val
-        self.stream.write(self.params)
+        # # init params, TODO: upgrade to exec_util params, use a simple str params for now
+        # self.stream.write(self.params)
 
         # set the name and save dir
         self.evoname=self.params['evoname'] # Provide the name for the whole run including evolutions of all scales, all designs, all agents
@@ -976,7 +973,8 @@ class EvolutionSystem(exec_utils.System):
         U.mkdir(self.evo_dir)
 
         self.select_method=self.params['select_method']
-        self.design_budget_limit=int(self.params.get('design_budget',0)) # 0 means unlimited, cost save in evo tree
+        self.params['design_budget']=int(self.params.get('design_budget',0))
+        self.design_budget_limit=self.params['design_budget'] # 0 means unlimited, cost save in evo tree
 
         # load or init the state
         self.state=self.load_state() # load the state by evoname
@@ -1020,9 +1018,9 @@ class EvolutionSystem(exec_utils.System):
         self.stream=stream
         self.rnd_agent.sss.stream=stream
 
-    def reload(self,config):
-        self._config = config
-        self.stream = PrintSystem(self._config)
+    def reload(self,params):
+        self.params = params
+        self._config.params = params
         self.load()
 
     def query_system(self,
@@ -1291,15 +1289,15 @@ def BuildEvolution(
 ############################################################################################################
 
 def test_evolve(test_name,step=False):
-    strparams=[
-        f"evoname={test_name}",
-        "scales=14M,31M,70M",
-        "selection_ratio=0.25",
-        "select_method=random",
-        "design_budget=0",
-    ]
+    params={
+        'evoname':test_name,
+        'scales':'14M,31M,70M',
+        'selection_ratio':0.25,
+        'select_method':'random',
+        'design_budget':0,
+    }
     evolution_system = BuildEvolution(
-        strparams=';'.join(strparams),
+        params=params,
         do_cache=True,
         cache_type='diskcache',
     )
@@ -1310,19 +1308,19 @@ def test_evolve(test_name,step=False):
 
 
 if __name__ == '__main__':
-    strparams=[
-        "evoname=evolution_test1",
-        "scales=14M,31M,70M",
-        "selection_ratio=0.25",
-        "select_method=random",
-        "design_budget=0",
-    ]
+    params={
+        'evoname':'evolution_test1',
+        'scales':'14M,31M,70M',
+        'selection_ratio':0.25,
+        'select_method':'random',
+        'design_budget':0,
+    }
 
     args = ve_parser.parse_args()
-    strparams.append(f"evoname={args.evoname}")
+    params['evoname']=args.evoname
 
     # evolution_system = BuildEvolution(
-    #     strparams=';'.join(strparams),
+    #     params=params,
     #     do_cache=False,
     #     # cache_type='diskcache',
     # )

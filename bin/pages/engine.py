@@ -54,9 +54,9 @@ def engine(evosys,project_dir):
     st.title("Verification Engine")
     evosys.ptree.reload()
 
-    with st.sidebar:
-        logo_png = AU.square_logo("VER", "ENG")
-        st.image(logo_png, use_column_width=True)
+    # with st.sidebar:
+    #     logo_png = AU.square_logo("VER", "ENG")
+    #     st.image(logo_png, use_column_width=True)
     
     st.header("System Info")
     col1, col2, col3 = st.columns(3)

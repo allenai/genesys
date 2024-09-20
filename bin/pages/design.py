@@ -95,8 +95,8 @@ def design(evosys,project_dir):
 
     ### side bar 
     with st.sidebar:
-        logo_png = AU.square_logo("MOD", "DES")
-        st.image(logo_png, use_column_width=True)
+        # logo_png = AU.square_logo("MOD", "DES")
+        # st.image(logo_png, use_column_width=True)
         st.button("reset design query")
 
 

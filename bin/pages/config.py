@@ -17,7 +17,29 @@ import bin.app_utils as AU
 
 def config(evosys,project_dir):
 
-    st.title("System Configurations")
+    st.title("System Management")
+
+    with st.expander("Evolution System Config",expanded=True):
+        with st.form("Evolution System Config"):
+            col1,col2=st.columns(2)
+            with col1:
+                params={}
+                params['evoname']=st.text_input('Experiment Name',value=evosys.params['evoname'])
+                params['scales']=st.text_input('Scales',value=evosys.params['scales'])
+                params['selection_ratio']=st.slider('Selection Ratio',min_value=0.0,max_value=1.0,value=evosys.params['selection_ratio'])
+                params['select_method']=st.text_input('Select Method',value=evosys.params['select_method'])
+                params['design_budget']=st.number_input('Design Budget ($)',value=evosys.params['design_budget'],min_value=0)
+            with col2:
+                st.write("Current Config:")
+                st.write(evosys.params)
+
+                submitted = st.form_submit_button("Reload")
+                if submitted:
+                    with st.spinner('Reloading...'):
+                        evosys.reload(params)
+    # with col2:
+    #     with st.expander("Current Config",expanded=True):
+    #         st.write(evosys.params)
     
     # ve_pages = {
     #     "Your account": [
