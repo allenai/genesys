@@ -21,6 +21,9 @@ async def _getweather(city):
 def home(evosys,project_dir):
     
     readme = U.read_file(U.pjoin(project_dir,'README.md'))
+
+    # st.header('*You can config the system in the Config tab*')
+    
     st.markdown(readme)
 
     # st.balloons()

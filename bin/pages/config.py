@@ -19,6 +19,7 @@ def config(evosys,project_dir):
 
     st.title("System Management")
 
+    config={}
     with st.expander("Evolution System Config",expanded=True):
         with st.form("Evolution System Config"):
             col1,col2=st.columns(2)
@@ -29,6 +30,7 @@ def config(evosys,project_dir):
                 params['selection_ratio']=st.slider('Selection Ratio',min_value=0.0,max_value=1.0,value=evosys.params['selection_ratio'])
                 params['select_method']=st.text_input('Select Method',value=evosys.params['select_method'])
                 params['design_budget']=st.number_input('Design Budget ($)',value=evosys.params['design_budget'],min_value=0)
+                config['params']=params
             with col2:
                 st.write("Current Config:")
                 st.write(evosys.params)
@@ -56,5 +58,27 @@ def config(evosys,project_dir):
     # pg.run()
     
     with st.sidebar:
-        logo_png = AU.square_logo("SYS", "CFG")
-        st.image(logo_png, use_column_width=True)
+        # logo_png = AU.square_logo("SYS", "CFG")
+        # st.image(logo_png, use_column_width=True)
+
+        # st.write("Save/Load Config")
+
+        st.download_button(
+            label="Download your config",
+            data=json.dumps(config),
+            file_name="config.json",
+            mime="text/json",
+            use_container_width=True
+        )
+
+        uploaded_file = st.file_uploader(
+            "Upload your config",
+            type=['json'],
+            accept_multiple_files=False,
+            # use_container_width=True
+        )
+
+        if uploaded_file is not None:
+            config = json.load(uploaded_file)
+            with st.expander("Loaded Config",expanded=True):
+                st.write(config)
