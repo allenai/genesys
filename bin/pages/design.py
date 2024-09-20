@@ -128,12 +128,12 @@ def design(evosys,project_dir):
                     elif agent in ['IMPLEMENTATION_OBSERVER']:
                         options=AGENT_TYPES+['o1_preview','o1_mini','None']
                         index=len(options)-2
-                    elif agent in ['IMPLEMENTATION_CODER','DESIGN_PROPOSER','PROPOSAL_REVIEWER']: 
+                    elif agent in ['IMPLEMENTATION_CODER','DESIGN_PROPOSER','PROPOSAL_REVIEWER','IMPLEMENTATION_PLANNER']: 
                         options=AGENT_TYPES+['o1_preview','o1_mini']
-                        if agent in ['PROPOSAL_REVIEWER','DESIGN_PROPOSER']:
-                            index=len(options)-1
-                        else:
+                        if agent in ['IMPLEMENTATION_CODER']:
                             index=len(options)-2
+                        else:
+                            index=len(options)-1
                     agent_types[agent] = st.selectbox(label=agent_type_labels[agent],options=options,index=index,disabled=agent=='SEARCH_ASSISTANT')
             design_cfg['agent_types'] = agent_types
 

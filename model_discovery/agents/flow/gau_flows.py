@@ -477,7 +477,7 @@ class GUFlowMutation(FlowCreator):
                         self.stream.write(f'### Proposal\n{proposal}')
                         self.print_raw_output(out,'DESIGN_PROPOSER')
                         for _ in range(5):
-                            succeed,selection,RETRY_PROMPT=P.gen_O1M_PROPOSAL_DEBUG_prompt(selection,SELECTIONS)
+                            succeed,selection,RETRY_PROMPT=P.gen_O1_SELECTION_DEBUG_prompt(selection,SELECTIONS)
                             if succeed:
                                 break
                             self.print_details(DESIGN_PROPOSER.obj,context_design_proposer,RETRY_PROMPT())
@@ -908,9 +908,10 @@ class GUFlowMutation(FlowCreator):
         # o1 beta does not support structured outputs, so let it output the code directly
         USE_O1_CODER='o1' in self.agents['IMPLEMENTATION_CODER'].model_name
         USE_O1_OBSERVER='o1' in self.agents['IMPLEMENTATION_OBSERVER'].model_name
+        USE_O1_PLANNER='o1' in self.agents['IMPLEMENTATION_PLANNER'].model_name
 
         context_implementation_planner=AgentContext() # context accummulated for all attempts in one unit
-        
+        o1_planner_context=AgentContext()
 
         post_refinement=0 # TODO: introduce self-evaluate to post-refinement
         while True:
@@ -932,7 +933,6 @@ class GUFlowMutation(FlowCreator):
 
             if len(UNIMPLEMENTED)==0 and round>1: # round 1 is selected unit, naturally no unimplemented units, consume the post refinement count only if round>1
                 post_refinement+=1
-                
 
             # 1. design succeeded, post refinement count reached
             if post_refinement>self.max_attemps['post_refinement']:
@@ -944,33 +944,93 @@ class GUFlowMutation(FlowCreator):
 
             ################# SELECTING THE NEXT UNIT TO WORK ON #################
             
-            GUMT_IMPLEMENTATION_PLANNER_SYSTEM=P.gen_GUMT_IMPLEMENTATION_PLANNER_SYSTEM(use_o1=USE_O1_CODER)
+            if USE_O1_PLANNER:
+                GUMT_IMPLEMENTATION_PLANNER_SYSTEM=P.O1_IMPLEMENTATION_PLANNER_BACKGROUND
+                context_implementation_planner=copy.deepcopy(o1_planner_context)
+            else:
+                GUMT_IMPLEMENTATION_PLANNER_SYSTEM=P.gen_GUMT_IMPLEMENTATION_PLANNER_SYSTEM(use_o1=USE_O1_CODER)
             IMPLEMENTATION_PLANNER=reload_role('implementation_planner',self.agents['IMPLEMENTATION_PLANNER'],GUMT_IMPLEMENTATION_PLANNER_SYSTEM(
-                GAB_BASE=GAB_BASE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE,PROPOSAL=proposal.proposal,REVIEW=proposal.review,RATING=proposal.rating))
+                GAB_BASE=GAB_BASE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE,SELECTION=proposal.selection,
+                PROPOSAL=proposal.proposal,REVIEW=proposal.review,RATING=proposal.rating))
             implementation_planner_tid=self.dialog.fork(main_tid,USER_CALLER,IMPLEMENTATION_PLANNER,context=context_implementation_planner,
                                                 alias='implementation_planner',note=f'Starting implementation planning...')
             
-            if round>1: # if round > 1, let the agent choose the next unit to work on, TODO: maybe more background about previous rounds
-                with self.status_handler('Selecting the next unit to work on...'):
-                    SELECTIONS=set(IMPLEMENTED+UNIMPLEMENTED)-{self.tree.root.spec.unitname}
-                    GUM_IMPLEMENTATION_UNIT_SELECTION=P.gen_GUM_IMPLEMENTATION_UNIT_SELECTION(
-                        SELECTIONS,post_refining=len(UNIMPLEMENTED)==0)
-                    gu_implementation_unit_selection_prompt=GUM_IMPLEMENTATION_UNIT_SELECTION(
-                        VIEW=VIEW_DETAILED,LOG='\n'.join(LOG),ROUND=round
-                    )
+            if round>1 or USE_O1_PLANNER: # if round > 1, let the agent choose the next unit to work on, TODO: maybe more background about previous rounds
+                with self.status_handler('Planning for the next round...'):
+                    SELECTIONS=set(IMPLEMENTED+UNIMPLEMENTED)#-{self.tree.root.spec.unitname}
+                    if USE_O1_PLANNER:
+                        if round==1:
+                            GUM_IMPLEMENTATION_UNIT_SELECTION=P.O1_IMPLEMENTATION_PLANNER_BEGIN
+                            gu_implementation_unit_selection_prompt=GUM_IMPLEMENTATION_UNIT_SELECTION(
+                                VIEW=VIEW_DETAILED,
+                            )
+                        elif len(UNIMPLEMENTED)==0:
+                            GUM_IMPLEMENTATION_UNIT_SELECTION=P.O1_IMPLEMENTATION_PLANNER_POST_REFINE
+                            gu_implementation_unit_selection_prompt=GUM_IMPLEMENTATION_UNIT_SELECTION(
+                                ROUND=round,VIEW=VIEW_DETAILED,SELECTIONS=SELECTIONS,
+                            )
+                        else:
+                            GUM_IMPLEMENTATION_UNIT_SELECTION=P.O1_IMPLEMENTATION_PLANNER_SELECTION
+                            gu_implementation_unit_selection_prompt=GUM_IMPLEMENTATION_UNIT_SELECTION(
+                                ROUND=round,VIEW=VIEW_DETAILED,SELECTIONS=SELECTIONS,
+                                IMPLEMENTED=IMPLEMENTED,UNIMPLEMENTED=UNIMPLEMENTED
+                            )
+                    else:
+                        GUM_IMPLEMENTATION_UNIT_SELECTION=P.gen_GUM_IMPLEMENTATION_UNIT_SELECTION(
+                            SELECTIONS,post_refining=len(UNIMPLEMENTED)==0)
+                        gu_implementation_unit_selection_prompt=GUM_IMPLEMENTATION_UNIT_SELECTION(
+                            VIEW=VIEW_DETAILED,LOG='\n'.join(LOG),ROUND=round
+                        )
                     GUM_IMPLEMENTATION_UNIT_SELECTION.apply(IMPLEMENTATION_PLANNER.obj)
                     self.print_details(IMPLEMENTATION_PLANNER.obj,context_implementation_planner,gu_implementation_unit_selection_prompt)
-                    self.stream.write(f'{VIEW_DETAILED}\n\nNow selecting the next unit to work on...')
+                    # self.stream.write(f'{VIEW_DETAILED}\n\nNow selecting the next unit to work on...')
                     
+                    o1_planner_context.append(gu_implementation_unit_selection_prompt,'user',{})
                     _,out=self.dialog.call(implementation_planner_tid,gu_implementation_unit_selection_prompt)
-                    selection,motivation,rough_plan,termination=out['selection'],out['motivation'],out['rough_plan'],out['termination']
-                    context_implementation_planner=self.dialog.context(implementation_planner_tid) # update context with tree view background
-                    self.stream.write(f'### Selection: {selection}')
-                    self.stream.write(f'### Motivation\n{motivation}')    
-                    self.stream.write(f'### Rough Plan\n{rough_plan}')
+                    motivation,rough_plan=None,None
+                    termination=False
+                    if USE_O1_PLANNER:
+                        if round==1:
+                            plan=out['text']
+                            selection=proposal.selection
+                        else:   
+                            plan,selection=out['text'],out['selection']
+                        o1_planner_context.append(plan,'assistant',{})
+                        if round>1 and len(UNIMPLEMENTED)==0:
+                            termination="```terminate```" in plan
+                        self.stream.write(f'### Selection: {selection}')
+                        self.stream.write(f'### Plan\n{plan}')
+                        self.print_raw_output(out,'IMPLEMENTATION_PLANNER')
+                        if not termination and round>1:
+                            for _ in range(5):
+                                succeed,selection,RETRY_PROMPT=P.gen_O1_SELECTION_DEBUG_prompt(selection,SELECTIONS)
+                                if succeed:
+                                    break
+                                else:
+                                    if len(UNIMPLEMENTED)==0:
+                                        termination=True
+                                        break
+                                self.print_details(IMPLEMENTATION_PLANNER.obj,context_implementation_planner,RETRY_PROMPT())
+                                RETRY_PROMPT.apply(IMPLEMENTATION_PLANNER.obj)
+                                self.stream.write(f'Error in output, retry...') # TODO: very costly and wasteful, need to fix
+                                _,out=self.dialog.call(implementation_planner_tid,RETRY_PROMPT())
+                                selection=out['selection']
+                                self.stream.write(f'##### Correcting selection: {selection}')
+                                self.print_raw_output(out,'IMPLEMENTATION_PLANNER')
+                            if not succeed and not termination:
+                                raise Exception('Design proposal failed, stopping design process')
+                    else:
+                        selection,motivation,rough_plan,termination=out['selection'],out['motivation'],out['rough_plan'],out['termination']
+                        plan=out['text']
+                        context_implementation_planner=self.dialog.context(implementation_planner_tid) # update context with tree view background
+                        self.stream.write(f'### Selection: {selection}')
+                        self.stream.write(f'### Motivation\n{motivation}')    
+                        self.stream.write(f'### Rough Plan\n{rough_plan}')
+                        self.print_raw_output(out,'IMPLEMENTATION_PLANNER')
             else: # round 1, work on the selected unit
                 selection=proposal.selection
                 termination=False
+                plan='Not available for the first round.'
             LOG.append(f'Round {round} started. Implementing unit {selection}.')
 
             if selection in IMPLEMENTED:
@@ -1009,7 +1069,8 @@ class GUFlowMutation(FlowCreator):
             for attempt in range(self.max_attemps['implementation_debug']):
                 GUMT_IMPLEMENTATION_CODER_SYSTEM=P.gen_GUMT_IMPLEMENTATION_CODER_SYSTEM(use_o1=USE_O1_CODER)
                 IMPLEMENTATION_CODER=reload_role('implementation_coder',self.agents['IMPLEMENTATION_CODER'],GUMT_IMPLEMENTATION_CODER_SYSTEM(
-                    GAB_BASE=GAB_BASE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE,PROPOSAL=proposal.proposal,REVIEW=proposal.review,RATING=proposal.rating))
+                    GAB_BASE=GAB_BASE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE,PLAN=plan,
+                    PROPOSAL=proposal.proposal,REVIEW=proposal.review,RATING=proposal.rating))
                 implementation_coder_tid=self.dialog.fork(main_tid,USER_CALLER,IMPLEMENTATION_CODER,context=context_implementation_coder.truncate(2), # keep last 2 messages and system message
                                                     alias='implementation_coder',note=f'Starting design implementation...')
                 if attempt==0: # first attempt, implement the unit

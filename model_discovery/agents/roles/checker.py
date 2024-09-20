@@ -1080,8 +1080,10 @@ class Checker(exec_utils.BaseTool):
         print(f'The model is correct with d_model = {d_model} and n_block = {n_block}')
         print('Model after tuned:')
         glm.print_size()
-        return f"autoconfig = {\n\t'd_model': {d_model},\n\t'n_block': {n_block}\n}"
-
+        return f"""autoconfig = {{
+    'd_model': {d_model},
+    'n_block': {n_block}
+}}"""
     def __call__(self,path: str) -> bool:
         return self.check(path)
 

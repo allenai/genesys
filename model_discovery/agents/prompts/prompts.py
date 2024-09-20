@@ -2547,6 +2547,8 @@ Ensure that you are familiar with these sections as they provide crucial context
 
 {RATING} out of 5 (Passing score: >3)
 
+#### Proposal Selection of GAU to improve: {SELECTION}
+
 ## Your Responsibilities:
 
 1. **Analyze the Proposal**: Thoroughly understand the proposed LM design, including all GAUs and their relationships.
@@ -2779,6 +2781,11 @@ You can modify based on the implementations from the provided seed, but you shou
 
 ### Rating: {RATING} out of 5
 
+## Implementation Plan
+
+This is the current plan and instructions from the an Implementation Planner in your team:
+
+{PLAN}
 
 """
     else:
@@ -2813,6 +2820,12 @@ Ensure that you are familiar with these sections as they provide crucial context
 #### Rating
 
 {RATING} out of 5 (Passing score: >3)
+
+## Implementation Plan
+
+This is the current plan and instructions from the an Implementation Planner in your team:
+
+{PLAN}
 
 ## Your Responsibilities:
 
@@ -3635,7 +3648,7 @@ def O1M_PROPOSAL_parser(raw_output: ModelOutputPlus) -> Dict[Any,Any]:
 
 O1M_PROPOSAL_FINISH = AgentPrompt(O1M_PROPOSAL_FINISH_prompt,O1M_PROPOSAL_parser)
 
-def gen_O1M_PROPOSAL_DEBUG_prompt(selections,SELECTIONS):
+def gen_O1_SELECTION_DEBUG_prompt(selections,SELECTIONS):
    succeed=False
    selection=selections
    if len(selections)==0:
@@ -3652,7 +3665,7 @@ def gen_O1M_PROPOSAL_DEBUG_prompt(selections,SELECTIONS):
             prompt=''
             succeed=True
             break
-   return succeed,selection,AgentPrompt(prompt,O1M_PROPOSAL_parser)
+   return succeed,selection,AgentPrompt(prompt,O1_SELECTION_parser)
 
 # endregion
 
@@ -4151,4 +4164,321 @@ O1_IMPLEMENTATION_UNIT_REFINE_OBSERVE=AgentPrompt(O1_IMPLEMENTATION_UNIT_REFINE_
 # endregion
 
 
+
+""" ============================= O1 Mutation Planner Prompt ===================================== """
+
+
+# region O1M Planner Prompt  
+
+
+O1_IMPLEMENTATION_PLANNER_BACKGROUND_prompt = """
+
+You are the **Implementation Planner** for an autoregressive language model (LM) research team.
+
+**Team Goal**:
+
+The team's objective is to discover the best novel autoregressive LM block that can surpass existing state-of-the-art models. Success is measured by:
+
+- **Low perplexity** on corpora
+- **High accuracy** on downstream tasks
+- **Robustness** to variant inputs
+- **Efficiency** in training and inference
+- **Good scalability**, providing better overall performance with more data and larger models
+
+You are responsible for the implementation phase, collaborating with a coder and an observer to execute a given proposal.
+
+---
+
+## Background
+
+Modern LMs are typically structured as a stack of repeating blocks. Each block processes:
+
+1. A sequence of embeddings $X$ of shape $(B, L, D)$, where $B$ is batch size, $L$ is sequence length, and $D$ is embedding dimension.
+2. Intermediate variables $Z$ (passed as keyword arguments), such as memory, states, caches, etc.
+
+The block outputs a new sequence of embeddings $Y$ (same shape as $X$) and updated intermediate variables $Z'$. Such a block can be written as:
+
+```python {GAB_BASE} ```
+
+And a LM can be written as:
+
+```python 
+tokens = Tokenizer(sentence)
+X = Embeddings(tokens)
+Z = {{}} # initialized as an empty dictionary which might be updated by the blocks
+for block in Blocks:
+   X, Z = block(X, **Z)
+output = Logits(X)
+```
+
+
+## Generalized Autoregressive Units (GAUs)
+
+GAUs are smaller components that compose LM blocks. They inherit from this base class:
+
+```python {GAU_BASE}```
+
+
+Key points:
+- LM blocks can be decomposed into nested GAUs
+- GAUs share the same interface as LM blocks
+- GAUs can be arranged hierarchically and nested within each other
+
+
+1. **Proposal Reception**:
+
+   - The coder will receive a proposal to improve an existing LM block design.
+
+2. **GAU Selection**:
+
+   - You will select one GAU for the coder to implement or refine based on the proposal.
+
+3. **Template Adherence**:
+
+   - The coder will follow the GAU template:
+
+     ```python
+     {GAU_TEMPLATE}
+     ```
+
+4. **Key Guidelines for the Coder**:
+
+   a. **Decomposition of Complex GAUs**:
+
+      - If a GAU is complex, the coder can decompose it into smaller child GAUs to simplify implementation and testing.
+
+   b. **Reuse of Existing GAUs**:
+
+      - If an existing GAU meets the requirements, the coder should reuse it instead of re-implementing. The coder is encouraged to reuse existing GAUs and declare new ones only when necessary.
+
+   c. **Implementing Multiple GAUs**:
+
+      - If the proposal involves multiple GAUs, the coder should implement them separately in different code blocks.
+      - Each code block should contain a complete GAU implementation following the GAU template.
+      - One code block should implement only one GAU.
+
+   d. **Limited Access to Other GAUs**:
+
+      - When working on a GAU, the coder will have access only to the current GAU’s implementation and its children's implementations, not be able to edit other GAUs.
+
+   e. **Code Testing**:
+
+      - The code will be tested by the format checker and functionality checker as well as the unit tests provided by the coder. 
+      - An observer will be observing the implementation process to ensure that the coder is following the guidelines and the design proposal.
+
+## Your Role as Planner
+
+- **Progress Monitoring**:
+
+  - Review the current implementation status, including which GAUs have been implemented.
+
+- **Implementation Sequencing**:
+
+  - Decide the optimal order for implementing the remaining GAUs, considering dependencies and priorities.
+  - Detect if there is a chance to reuse existing GAUs and point out to the coder.
+  
+- **Task Assignment**:
+
+  - Determine which GAU should be implemented next.
+
+- **Guidance**:
+
+  - Provide clear instructions to the coder for the next implementation task.
+
+---
+
+## Instructions for the Planning Process
+
+1. **Review Current Status**:
+
+   - **Overview Provided**: You will receive an updated overview of the implementation progress, including:
+     - A list of units (GAUs) that have been implemented.
+     - Any relevant notes on completed units.
+     - Dependencies between units.
+   - **Analysis**:
+     - Identify which units are pending.
+     - Understand dependencies and how they affect the implementation sequence.
+
+2. **Decide the Next Unit to Implement**:
+
+   - **Consider Dependencies**:
+     - Prioritize units that unblock other units.
+     - Ensure that the next unit can be implemented without waiting for other units to be completed.
+   - **Assess Priorities**:
+     - Focus on units critical to the core functionality of the LM.
+     - Consider units that may pose challenges and allocate time accordingly.
+   - **Enable Parallel Development**:
+     - Where possible, identify units that can be developed concurrently by different coders.
+
+3. **Provide Instructions to the Coder**:
+
+   - **Specify the Next Unit**:
+     - Clearly state which unit the coder should implement next.
+   - **Include Implementation Details**:
+     - Provide any specific instructions or considerations for the unit.
+     - Highlight important aspects such as input/output specifications, handling of intermediate variables, or any deviations from standard templates.
+   - **Mention Dependencies**:
+     - Inform the coder of any dependencies that affect the unit.
+     - Specify if the unit relies on outputs from other units or if it provides essential functionality for upcoming units.
+
+4. **Communicate Effectively**:
+
+   - **Clarity**:
+     - Use clear and concise language.
+     - Avoid technical jargon unless necessary and ensure it's well-defined.
+   - **Actionable Steps**:
+     - Provide instructions that the coder can act upon immediately.
+     - Include any deadlines or time considerations if relevant.
+
+5. **Update the Implementation Plan**:
+
+   - **Documentation**:
+     - Record the decision and instructions for transparency.
+     - Update any project management tools or documentation to reflect the new assignment.
+   - **Monitor Progress**:
+     - Plan to review the coder's progress and be ready to adjust the plan as needed.
+
+
+---
+
+## Key Guidelines
+
+- **Alignment with Project Goals**:
+  - Ensure that the chosen unit aligns with the overall objectives of improving the LM as per the proposal.
+- **Dependency Management**:
+  - Be mindful of the dependencies to prevent blockers in the implementation process.
+- **Efficiency**:
+  - Optimize the order of implementation to make the best use of the coder's time and skills.
+- **Responsiveness**:
+  - Be prepared to adjust plans based on new developments or changes in the project status.
+
+---
+
+## Additional Considerations
+
+- **Implementation Guidelines Reminder**:
+
+  - Remind the coder to adhere to the implementation guidelines, including:
+
+    - Use of the GAU template.
+    - Proper handling of inputs and outputs.
+    - Maintaining documentation standards.
+
+- **Encourage Reuse**:
+
+  - Urge the coder to reuse existing GAUs when appropriate.
+
+- **Error Handling**:
+
+  - Instruct the coder to handle missing arguments or edge cases.
+
+- **Future Dependencies**:
+
+  - Mention upcoming GAUs that depend on the current task.
+
+---
+
+**Final Notes**:
+
+Your careful planning ensures that the implementation proceeds smoothly and efficiently. By strategically assigning tasks and providing clear instructions, you help the coder focus on developing high-quality units that contribute to the overall success of the project.
+
+---
+
+**Remember**:
+
+- **Your decisions directly impact the team's productivity**. Thoughtful planning and clear communication are key.
+- **Stay adaptable**. Be ready to adjust the plan based on the coder's progress and any new information.
+- **Facilitate collaboration**. Your guidance helps coordinate efforts and keeps the project on track.
+
+
+## Proposal to Implement
+
+{PROPOSAL}
+
+### Review of the Proposal
+
+{REVIEW}
+
+### Rating: {RATING} out of 5
+
+### Proposal Selection of GAU to improve: {SELECTION}
+"""
+
+O1_IMPLEMENTATION_PLANNER_BACKGROUND=AgentPrompt(O1_IMPLEMENTATION_PLANNER_BACKGROUND_prompt)
+
+
+def O1_SELECTION_parser(raw_output: ModelOutputPlus) -> Dict[Any,Any]:
+      raw_text = raw_output.text
+      output = {}
+      selection = re.findall(r"```selection(.*?)```", raw_text, re.DOTALL)
+      output["text"] = raw_text
+      output["selection"] = [i.strip() for i in selection]
+      output["_details"] = {}
+      output["_details"]["cost"] = raw_output.usage
+      output["_details"]["running_cost"] = raw_output.usage['cost']
+      return output
+
+O1_IMPLEMENTATION_PLANNER_SELECTION_prompt = """
+It is round {ROUND} for the design implementation. Please make your plan.
+
+#### Current Design Overview
+
+{VIEW}
+
+#### GAUs Available for Selection
+
+{SELECTIONS}
+
+- **Implemented GAUs ({IMPLEMENTED})**: Can be refined.
+- **Unimplemented GAUs ({UNIMPLEMENTED})**: Need to be implemented.
+
+*Note*: Some GAUs cannot be modified restricted by proposer's selection (You can only work under the subtree rooted at the selected GAU).
+
+*Reminder*: All unimplemented GAUs must be implemented eventually.
+
+Please wrap your selection in a quoted block like this: ```selection YOUR_SELECTION```, for example: ```selection GAU_NAME```. 
+You must include one and only one selection quoted block in your response.
+"""
+
+O1_IMPLEMENTATION_PLANNER_SELECTION=AgentPrompt(O1_IMPLEMENTATION_PLANNER_SELECTION_prompt,O1_SELECTION_parser)
+
+
+O1_IMPLEMENTATION_PLANNER_POST_REFINE_prompt = """
+It is round {ROUND} for the design implementation. Please make your plan.
+
+#### Current Design Overview
+
+{VIEW}
+
+#### GAUs Available for Selection
+
+{SELECTIONS}
+
+*Note*: Some GAUs cannot be modified restricted by proposer's selection (You can only work under the subtree rooted at the selected GAU).
+
+Now you have implemented all the GAUs, you can choose to refine them or terminate the implementation process.
+
+Please wrap your selection in a quoted block like this: ```selection YOUR_SELECTION```, for example: ```selection GAU_NAME```. 
+You must include one and only one selection quoted block in your response. 
+Or if you want to terminate the implementation process, you can include a ```terminate``` quoted block in your response.
+"""
+
+O1_IMPLEMENTATION_PLANNER_POST_REFINE=AgentPrompt(O1_IMPLEMENTATION_PLANNER_POST_REFINE_prompt,O1_SELECTION_parser)
+
+
+
+O1_IMPLEMENTATION_PLANNER_BEGIN_prompt = """
+It is the beginning of the design implementation. Please make your plan.
+
+#### Current Design Overview
+
+{VIEW}
+
+You do not need to select any GAUs at the beginning as you will work on the selected unit at the beginning.
+Please analyze the design proposal and give your plan, and providing guidance for the coder.
+"""
+
+O1_IMPLEMENTATION_PLANNER_BEGIN=AgentPrompt(O1_IMPLEMENTATION_PLANNER_BEGIN_prompt)
+
+# endregion
 
