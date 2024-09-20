@@ -19,6 +19,8 @@ def config(evosys,project_dir):
 
     st.title("System Management")
 
+    st.subheader("Set Global Configs")
+    
     config={}
     with st.expander("Evolution System Config",expanded=True):
         with st.form("Evolution System Config"):
