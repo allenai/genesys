@@ -4425,6 +4425,9 @@ It is round {ROUND} for the design implementation. Please make your plan.
 
 {VIEW}
 
+#### Log of Progress:
+{LOG}
+
 #### GAUs Available for Selection
 
 {SELECTIONS}
@@ -4432,7 +4435,7 @@ It is round {ROUND} for the design implementation. Please make your plan.
 - **Implemented GAUs ({IMPLEMENTED})**: Can be refined.
 - **Unimplemented GAUs ({UNIMPLEMENTED})**: Need to be implemented.
 
-*Note*: Some GAUs cannot be modified restricted by proposer's selection (You can only work under the subtree rooted at the selected GAU).
+*Note*: {PROTECTED} are protected and cannot be modified. You can only work under the subtree rooted at the selected GAU from proposer's selection.
 
 *Reminder*: All unimplemented GAUs must be implemented eventually.
 
@@ -4450,11 +4453,15 @@ It is round {ROUND} for the design implementation. Please make your plan.
 
 {VIEW}
 
+
+#### Log of Progress:
+{LOG}
+
 #### GAUs Available for Selection
 
 {SELECTIONS}
 
-*Note*: Some GAUs cannot be modified restricted by proposer's selection (You can only work under the subtree rooted at the selected GAU).
+*Note*: {PROTECTED} are protected and cannot be modified. You can only work under the subtree rooted at the selected GAU from proposer's selection.
 
 Now you have implemented all the GAUs, you can choose to refine them or terminate the implementation process.
 
@@ -4479,6 +4486,21 @@ Please analyze the design proposal and give your plan, and providing guidance fo
 """
 
 O1_IMPLEMENTATION_PLANNER_BEGIN=AgentPrompt(O1_IMPLEMENTATION_PLANNER_BEGIN_prompt)
+
+O1_IMPLEMENTATION_PLANNER_BEGIN_RETRY_prompt = """
+The agent failed in It is the beginning of the design implementation. Please make your plan.
+
+#### Current Design Overview
+
+{VIEW}
+
+You do not need to select any GAUs at the beginning as you will work on the selected unit at the beginning.
+Please analyze the design proposal and give your plan, and providing guidance for the coder.
+"""
+
+O1_IMPLEMENTATION_PLANNER_BEGIN=AgentPrompt(O1_IMPLEMENTATION_PLANNER_BEGIN_prompt)
+
+
 
 # endregion
 

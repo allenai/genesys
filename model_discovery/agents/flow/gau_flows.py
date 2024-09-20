@@ -900,6 +900,7 @@ class GUFlowMutation(FlowCreator):
         RETS['ROUNDS']=[]
         SUCCEED=False
         LOG=[]
+        INITIAL_PASS=True if resume else False
         round=0
         # XXX: Protected units should be self.seed_tree.units.keys() - self.tree.units.keys(), but this make things simpler
         PROTECTED_UNITS=list(set(self.tree.units.keys())-set([proposal.selection])) # the units besides the current one, they should not be *modified*, can be removed as descendants
@@ -958,22 +959,26 @@ class GUFlowMutation(FlowCreator):
             if round>1 or USE_O1_PLANNER: # if round > 1, let the agent choose the next unit to work on, TODO: maybe more background about previous rounds
                 with self.status_handler('Planning for the next round...'):
                     SELECTIONS=set(IMPLEMENTED+UNIMPLEMENTED)#-{self.tree.root.spec.unitname}
+                    SKIP_PLANNING=False
                     if USE_O1_PLANNER:
                         if round==1:
                             GUM_IMPLEMENTATION_UNIT_SELECTION=P.O1_IMPLEMENTATION_PLANNER_BEGIN
                             gu_implementation_unit_selection_prompt=GUM_IMPLEMENTATION_UNIT_SELECTION(
                                 VIEW=VIEW_DETAILED,
                             )
+                        elif not INITIAL_PASS:
+                            SKIP_PLANNING=True
                         elif len(UNIMPLEMENTED)==0:
                             GUM_IMPLEMENTATION_UNIT_SELECTION=P.O1_IMPLEMENTATION_PLANNER_POST_REFINE
                             gu_implementation_unit_selection_prompt=GUM_IMPLEMENTATION_UNIT_SELECTION(
                                 ROUND=round,VIEW=VIEW_DETAILED,SELECTIONS=SELECTIONS,
+                                PROTECTED=PROTECTED_UNITS,LOG='\n'.join(LOG)
                             )
                         else:
                             GUM_IMPLEMENTATION_UNIT_SELECTION=P.O1_IMPLEMENTATION_PLANNER_SELECTION
                             gu_implementation_unit_selection_prompt=GUM_IMPLEMENTATION_UNIT_SELECTION(
-                                ROUND=round,VIEW=VIEW_DETAILED,SELECTIONS=SELECTIONS,
-                                IMPLEMENTED=IMPLEMENTED,UNIMPLEMENTED=UNIMPLEMENTED
+                                ROUND=round,VIEW=VIEW_DETAILED,SELECTIONS=SELECTIONS,LOG='\n'.join(LOG),
+                                IMPLEMENTED=IMPLEMENTED,UNIMPLEMENTED=UNIMPLEMENTED,PROTECTED=PROTECTED_UNITS
                             )
                     else:
                         GUM_IMPLEMENTATION_UNIT_SELECTION=P.gen_GUM_IMPLEMENTATION_UNIT_SELECTION(
@@ -981,44 +986,46 @@ class GUFlowMutation(FlowCreator):
                         gu_implementation_unit_selection_prompt=GUM_IMPLEMENTATION_UNIT_SELECTION(
                             VIEW=VIEW_DETAILED,LOG='\n'.join(LOG),ROUND=round
                         )
-                    GUM_IMPLEMENTATION_UNIT_SELECTION.apply(IMPLEMENTATION_PLANNER.obj)
-                    self.print_details(IMPLEMENTATION_PLANNER.obj,context_implementation_planner,gu_implementation_unit_selection_prompt)
-                    # self.stream.write(f'{VIEW_DETAILED}\n\nNow selecting the next unit to work on...')
-                    
-                    o1_planner_context.append(gu_implementation_unit_selection_prompt,'user',{})
-                    _,out=self.dialog.call(implementation_planner_tid,gu_implementation_unit_selection_prompt)
+
+                    if not SKIP_PLANNING:
+                        GUM_IMPLEMENTATION_UNIT_SELECTION.apply(IMPLEMENTATION_PLANNER.obj)
+                        self.print_details(IMPLEMENTATION_PLANNER.obj,context_implementation_planner,gu_implementation_unit_selection_prompt)
+                        # self.stream.write(f'{VIEW_DETAILED}\n\nNow selecting the next unit to work on...')
+                        o1_planner_context.append(gu_implementation_unit_selection_prompt,'user',{})
+                        _,out=self.dialog.call(implementation_planner_tid,gu_implementation_unit_selection_prompt)
                     motivation,rough_plan=None,None
                     termination=False
                     if USE_O1_PLANNER:
-                        if round==1:
-                            plan=out['text']
-                            selection=proposal.selection
-                        else:   
-                            plan,selection=out['text'],out['selection']
-                        o1_planner_context.append(plan,'assistant',{})
-                        if round>1 and len(UNIMPLEMENTED)==0:
-                            termination="```terminate```" in plan
-                        self.stream.write(f'### Selection: {selection}')
-                        self.stream.write(f'### Plan\n{plan}')
-                        self.print_raw_output(out,'IMPLEMENTATION_PLANNER')
-                        if not termination and round>1:
-                            for _ in range(5):
-                                succeed,selection,RETRY_PROMPT=P.gen_O1_SELECTION_DEBUG_prompt(selection,SELECTIONS)
-                                if succeed:
-                                    break
-                                else:
-                                    if len(UNIMPLEMENTED)==0:
-                                        termination=True
+                        if not SKIP_PLANNING: # reuse the results last round, only happen when failed in the begining
+                            if round==1:
+                                plan=out['text']
+                                selection=proposal.selection
+                            else:   
+                                plan,selection=out['text'],out['selection']
+                            o1_planner_context.append(plan,'assistant',{})
+                            if round>1 and len(UNIMPLEMENTED)==0:
+                                termination="```terminate```" in plan
+                            self.stream.write(f'### Selection: {selection}')
+                            self.stream.write(f'### Plan\n{plan}')
+                            self.print_raw_output(out,'IMPLEMENTATION_PLANNER')
+                            if not termination and round>1:
+                                for _ in range(5):
+                                    succeed,selection,RETRY_PROMPT=P.gen_O1_SELECTION_DEBUG_prompt(selection,SELECTIONS)
+                                    if succeed:
                                         break
-                                self.print_details(IMPLEMENTATION_PLANNER.obj,context_implementation_planner,RETRY_PROMPT())
-                                RETRY_PROMPT.apply(IMPLEMENTATION_PLANNER.obj)
-                                self.stream.write(f'Error in output, retry...') # TODO: very costly and wasteful, need to fix
-                                _,out=self.dialog.call(implementation_planner_tid,RETRY_PROMPT())
-                                selection=out['selection']
-                                self.stream.write(f'##### Correcting selection: {selection}')
-                                self.print_raw_output(out,'IMPLEMENTATION_PLANNER')
-                            if not succeed and not termination:
-                                raise Exception('Design proposal failed, stopping design process')
+                                    else:
+                                        if len(UNIMPLEMENTED)==0:
+                                            termination=True
+                                            break
+                                    self.print_details(IMPLEMENTATION_PLANNER.obj,context_implementation_planner,RETRY_PROMPT())
+                                    RETRY_PROMPT.apply(IMPLEMENTATION_PLANNER.obj)
+                                    self.stream.write(f'Error in output, retry...') # TODO: very costly and wasteful, need to fix
+                                    _,out=self.dialog.call(implementation_planner_tid,RETRY_PROMPT())
+                                    selection=out['selection']
+                                    self.stream.write(f'##### Correcting selection: {selection}')
+                                    self.print_raw_output(out,'IMPLEMENTATION_PLANNER')
+                                if not succeed and not termination:
+                                    raise Exception('Design proposal failed, stopping design process')
                     else:
                         selection,motivation,rough_plan,termination=out['selection'],out['motivation'],out['rough_plan'],out['termination']
                         plan=out['text']
@@ -1512,6 +1519,7 @@ class GUFlowMutation(FlowCreator):
                     succeed=True
                     costs={k:v-cost_raw[k] for k,v in self.costs.items()}
                     self.ptree.implement(acronym,self.tree,RETS['ROUNDS'],'unfinished',costs,self.design_cfg,self.user_input)
+                    INITIAL_PASS=True
                     cost_raw=copy.deepcopy(self.costs)
                     # self.tree.units[unit_name].design_traces=traces
                     # removed=self.tree.clear_disconnected() # there might be some disconnected units, leave it for now
