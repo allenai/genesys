@@ -87,26 +87,29 @@ def engine(evosys,project_dir):
             verified[design_id][scale]=verification
 
     st.header("Verify Designs")
-    col1,col2,col3=st.columns(3)
-    with col1:
-        design_id=st.selectbox("Design",options=verified.keys())
-        vss=list(verified[design_id].keys())
-        vsstr='*Verified on '+', '.join(vss)+'*' if len(vss)>0 else ''
-        st.write(vsstr)
+    if len(verified)==0:
+        st.warning('No implemented designs found in the experiment directory')
+    else:
+        col1,col2,col3=st.columns(3)
+        with col1:
+            design_id=st.selectbox("Design",options=verified.keys())
+            vss=list(verified[design_id].keys())
+            vsstr='*Verified on '+', '.join(vss)+'*' if len(vss)>0 else ''
+            st.write(vsstr)
 
-    with col2:
-        options=[]
-        for scale in TARGET_SCALES:
-            if scale not in verified[design_id]:
-                options.append(scale)
-        tail=' (excluded verified scales)' if len(vss)>0 else ''
-        scale=st.select_slider("Scale"+tail,options=options)
-    with col3:
-        st.write('')
-        st.write('')
-        if st.button("Run Verification"):
-            st.write("Hello")
-            st.balloons()
+        with col2:
+            options=[]
+            for scale in TARGET_SCALES:
+                if scale not in verified[design_id]:
+                    options.append(scale)
+            tail=' (excluded verified scales)' if len(vss)>0 else ''
+            scale=st.select_slider("Scale"+tail,options=options)
+        with col3:
+            st.write('')
+            st.write('')
+            if st.button("Run Verification"):
+                st.write("Hello")
+                st.balloons()
 
 
 

@@ -411,7 +411,7 @@ class GAUTree:
                 new_check_report.append(line)
             report='\n'.join(new_check_report)                
             if need_code_lines:
-                report = f'Exported unit tests script with line number:\n\n{U.add_line_num(code)}\n\n{'-'*100}\n\n{report}'
+                report = f'Exported unit tests script with line number:\n\n{U.add_line_num(code)}\n\n{"-"*100}\n\n{report}'
         else:
             report = f"No output captured for {unit_name} unit tests"
 

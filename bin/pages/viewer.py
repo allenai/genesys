@@ -28,8 +28,8 @@ import bin.app_utils as AU
 
 class ViewModes(Enum):
     DESIGNS = 'Design Artifacts'
-    DIALOGS = 'Agent Dialogs'
-    FLOW = 'Agent Flows'
+    DIALOGS = 'Agent Dialogs (Experimental)'
+    FLOW = 'Agent Flows (Experimental)'
 
 
 
@@ -58,7 +58,7 @@ def viewer(evosys,project_dir):
     flows={
         # 'GU Flow (Scratch) (Legacy)':gu_flow_scratch,
         # 'GU Flow (Mutation)':gu_flow_mutation,
-        'Naive Design Flow':(design_flow,DESIGN_ALANG_reformatted),
+        'Naive Design Flow (Legacy)':(design_flow,DESIGN_ALANG_reformatted),
         # 'Naive Review Flow':(review_flow_naive,''),
     }
 
@@ -97,29 +97,31 @@ def viewer(evosys,project_dir):
             st.markdown('### Relative to Random (%)')
             st.dataframe(df_norm)
 
-        design=ptree.get_node(selected_design)
-
-        st.subheader(f'Proposal for {selected_design}')
-        with st.expander('View Proposal'):
-            st.markdown(design.proposal.proposal)
-        with st.expander('View Review'):
-            st.markdown(design.proposal.review)
-            st.write('#### Rating: ',design.proposal.rating,'out of 5')
-        if design.implementation:
-            st.subheader(f'GAU Tree for {selected_design}')
-            with st.expander('Click to expand'):
-                itree=design.implementation.implementation
-                st.write(itree.view()[0],unsafe_allow_html=True)
-            gab_code=check_tune('14M',design.acronym,code=itree.compose(),skip_tune=True,reformat_only=True)
-            st.subheader('Exported GAB Code')
-            with st.expander('Click to expand'):
-                st.code(gab_code,language='python')
+        if design_artifacts:
+            design=ptree.get_node(selected_design)
+            st.subheader(f'Proposal for {selected_design}')
+            with st.expander('View Proposal'):
+                st.markdown(design.proposal.proposal)
+            with st.expander('View Review'):
+                st.markdown(design.proposal.review)
+                st.write('#### Rating: ',design.proposal.rating,'out of 5')
+            if design.implementation:
+                st.subheader(f'GAU Tree for {selected_design}')
+                with st.expander('Click to expand'):
+                    itree=design.implementation.implementation
+                    st.write(itree.view()[0],unsafe_allow_html=True)
+                gab_code=check_tune('14M',design.acronym,code=itree.compose(),skip_tune=True,reformat_only=True)
+                st.subheader('Exported GAB Code')
+                with st.expander('Click to expand'):
+                    st.code(gab_code,language='python')
+            else:
+                st.warning('The design has not been implemented yet.')
         else:
-            st.warning('The design has not been implemented yet.')
+            st.warning('No design artifacts found in the experiment directory')
 
 
     elif view_mode == ViewModes.DIALOGS:
-        st.title('ALang Dialog Viewer')
+        st.title('ALang Dialog Viewer (Experimental)')
         sess_dir = U.pjoin(evosys.evo_dir, 'db', 'sessions')
 
         if not os.path.exists(sess_dir):
@@ -143,7 +145,9 @@ def viewer(evosys,project_dir):
 
     elif view_mode == ViewModes.FLOW:
             
-        st.title('ALang Design Flow Viewer')
+        st.title('ALang Design Flow Viewer (Experimental)')
+        st.subheader(f'Viewing: {selected_flow}')
+
 
         simple_mode = 'VIEW_FLOWCHART_SIMPLE' 
         if simple_mode not in st.session_state:
@@ -151,10 +155,10 @@ def viewer(evosys,project_dir):
 
         with st.sidebar:
             st.write('Viewer Setting')
-            if st.button('View Simplified Flowchart',use_container_width=True):
+            if st.button('View Simplified Chart',use_container_width=True):
                 st.session_state[simple_mode] = True
                 st.rerun()
-            if st.button('View Full Flowchart',use_container_width=True):
+            if st.button('View Full Chart',use_container_width=True):
                 st.session_state[simple_mode] = False
                 st.rerun()
 

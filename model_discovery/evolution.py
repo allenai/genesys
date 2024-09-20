@@ -437,10 +437,6 @@ class DesignArtifact(NodeObject):
 
     def to_prompt(self):
         prompt=f"""
-### Abstract
-
-{self.proposal.abstract}
-
 # Proposal: {self.proposal.modelname}
 
 {self.proposal.proposal}
@@ -1000,8 +996,6 @@ class EvolutionSystem(exec_utils.System):
         if 'scales' not in self.state:
             scales=self.params['scales'].split(',') # e.g. "14M,31M,70M,125M", scales
             self.state['scales']=list(sorted(scales, key=lambda x: U.letternum2num(x))) # sort from small to large
-        if 'current_scale' not in self.state:
-            self.state['current_scale']=0
         if 'budgets' not in self.state: # remaining budget for each scale
             budget=1
             self.state['budgets']={}    
@@ -1013,7 +1007,6 @@ class EvolutionSystem(exec_utils.System):
         self.scales=[eval(f'GAMConfig_{scale}()') for scale in self.state['scales']]
 
         self.stream.write(f"Evolution system initialized with scales: {self.state['scales']}")
-        self.stream.write(f"Current scale: {self.state['current_scale']}")
         self.stream.write(f"Budgets remaining: {self.state['budgets']}")
         self.stream.write(f"Checkpoint directory: {self.evo_dir}")
 
