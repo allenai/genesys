@@ -10,23 +10,14 @@ from subprocess import check_output
 
 sys.path.append('.')
 import model_discovery.utils as U
-
-def mock1():
-    st.title("Mock Page 1")
-
-def mock2():
-    st.title("Mock Page 2")
-
-def mock3():
-    st.title("Mock Page 3")
-
-def mock4():
-    st.title("Mock Page 4")
+import bin.app_utils as AU
 
 
-def prompt(evosys,project_dir):
 
-    st.title("Prompt Lab")
+
+def config(evosys,project_dir):
+
+    st.title("System Configurations")
     
     # ve_pages = {
     #     "Your account": [
@@ -42,3 +33,6 @@ def prompt(evosys,project_dir):
     # pg = st.navigation(ve_pages)
     # pg.run()
     
+    with st.sidebar:
+        logo_png = AU.square_logo("SYS", "CFG")
+        st.image(logo_png, use_column_width=True)

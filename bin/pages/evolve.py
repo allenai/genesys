@@ -10,6 +10,8 @@ import streamlit.components.v1 as components
 
 sys.path.append('.')
 import model_discovery.utils as U
+import bin.app_utils as AU
+
 
 
 
@@ -58,15 +60,17 @@ def evolve(evosys,project_dir):
 
     # check this: https://github.com/napoles-uach/streamlit_network 
 
-    max_nodes=200
+    max_nodes=100
     evosys.ptree.export(max_nodes=max_nodes,height='800px')
     ptree_dir_small=U.pjoin(evosys.evo_dir,f'PTree_{max_nodes}.html')
-    st.write(f'Only showing the first {max_nodes} nodes.')
+    st.write(f'Only showing the first {max_nodes} nodes here. '
+            'Legend: :rainbow[Seed Designs (*Pink*)] | :blue[Design Artifacts] | :orange[Reference w/ Code] | :violet[Reference w/o Code]')
+
     HtmlFile = open(ptree_dir_small, 'r', encoding='utf-8')
     source_code = HtmlFile.read() 
     components.html(source_code, height = 800)
 
-
-    # with st.sidebar:
-    #     st.write("Empty sidebar")
+    with st.sidebar:
+        logo_png = AU.square_logo("EVO", "SYS")
+        st.image(logo_png, use_column_width=True)
     

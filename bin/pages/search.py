@@ -11,6 +11,7 @@ import psutil
 sys.path.append('.')
 import model_discovery.utils as U
 from model_discovery.agents.search_utils import SuperScholarSearcher
+import bin.app_utils as AU
 
 
 
@@ -18,6 +19,10 @@ from model_discovery.agents.search_utils import SuperScholarSearcher
 def search(evosys,project_dir):
 
     st.title("Paper Search Engine")
+
+    with st.sidebar:
+        logo_png = AU.square_logo("SEA", "RCH")
+        st.image(logo_png, use_column_width=True)
 
     with st.expander("Search Configurations",expanded=True):
         search_cfg={}
@@ -55,8 +60,11 @@ def search(evosys,project_dir):
             st.write("")
             prompting=st.checkbox("Prompting",value=False)
 
-    sss=SuperScholarSearcher(evosys.ptree,stream=st,cfg=search_cfg)
+        analysis=st.text_area("Instructs to the Search Agent",placeholder='Please finds me information about ...',height=100)
 
+
+    sss=evosys.rnd_agent.sss
+    sss.reconfig(search_cfg,st)
     
     details=st.text_area("Search Content with Detailed Query (for vector store search)",placeholder='I want to ask about ...',height=100)
 
@@ -69,7 +77,7 @@ def search(evosys,project_dir):
         search_btn=st.button("Search",use_container_width=True)
     if search_btn:
         with st.spinner('Searching...'):    
-            prt=sss(query,details,prompt=prompting)
+            prt=sss(query,details,analysis,prompt=prompting)
             st.markdown(prt,unsafe_allow_html=True)
     
 

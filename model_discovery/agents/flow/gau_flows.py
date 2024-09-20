@@ -347,8 +347,6 @@ class GUFlowMutation(FlowCreator):
                 DESIGN_PROPOSER=reload_role('design_proposer',self.agents['DESIGN_PROPOSER'],DESIGN_PROPOSER_SYSTEM(GAU_BASE=GAU_BASE))
             design_proposer_tid=self.dialog.fork(main_tid,USER_CALLER,DESIGN_PROPOSER,context=context_design_proposer,
                                                 alias='design_proposal',note=f'Starting design proposal...')
-            
-            # initial design proposal
             if attempt==0:
                 status_info=f'Initial design proposal...'
                 if USE_O1_PROPOSER:

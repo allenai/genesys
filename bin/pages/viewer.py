@@ -24,6 +24,7 @@ from model_discovery.agents.flow._legacy_naive_flows import design_flow_definiti
 from model_discovery.agents.flow.gau_flows import GUFlowMutation
 from model_discovery.agents.flow.alang import AgentDialogFlowNaive,ALangCompiler
 from model_discovery.model.library.tester import check_tune
+import bin.app_utils as AU
 
 class ViewModes(Enum):
     DESIGNS = 'Designs'
@@ -39,6 +40,10 @@ def viewer(evosys,project_dir):
 
     ### build the system 
     # st.title("Viewers")
+
+    with st.sidebar:
+        logo_png = AU.square_logo("DES", "ART")
+        st.image(logo_png, use_column_width=True)
 
     
     # Lagacy flows for development
@@ -77,6 +82,8 @@ def viewer(evosys,project_dir):
 
         
         st.title('Design Artifact Viewer')
+
+        
 
         # st.header('14M Training Results')
         csv_res_dir=U.pjoin(evosys.evo_dir,'..','..','notebooks','all_acc_14M.csv')

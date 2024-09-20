@@ -3371,7 +3371,6 @@ A GAU has the following structure:
 GAUs can be arranged hierarchically, with the output of one GAU feeding into another. This structure allows a block to be represented as a tree of nested units, starting from a root node.
 
 
-
 ## Instructions
 
 Your task is to improve a seed design by modifying one GAU which may have multiple children GAUs, you will need to select one specific GAU in the seed to work on. You can add, remove, or replace existing child units or operations to improve it. 
@@ -3381,7 +3380,7 @@ Specifically, you are not encouraged to introduce a drastic change to the seed d
 - **Top-down approach**: Design the GAU from the top down, breaking complex blocks into smaller, manageable units that can be nested together. 
 - **Reuse existing units**: You are encouraged to reuse the existing unit. Edit it only when it is necessary for you to perform your idea. 
 - **Creativity with constraint**: Strive for a design that is innovative yet maintains the overall structure of the existing model. Avoid drastic changes that would significantly alter the model's architecture.
-- **Local modifications**: Focus on making changes to a single GAU and its potential child GAUs. If your edits have to involve mutiple GAUs, select the shared root of these units. Ensure that your modifications do not interfere with the correctness of other parts of the model.
+- **Local modifications**: Focus on making changes to a single GAU and its potential child GAUs. If your edits have to involve multiple GAUs, select the shared root of these units. Ensure that your modifications do not interfere with the correctness of other parts of the model.
 - **Simplicity and implementability**: Prioritize designs that are relatively simple and feasible to implement. Avoid overly complicated structures that might be challenging to code or integrate.
 - **Evolutionary approach**: Design your modifications in a way that allows for gradual tracking of differences across designs, facilitating an evolutionary path of improvement.
 
@@ -3395,13 +3394,12 @@ Here is the list of GAUs in the seed design that you can select from:
 
 {SELECTIONS}
 
-Here are the sibling designs with the same seed, avoid proposing the same design as your siblings, think of how to make your design unique and better.
+Here are the sibling designs with the same seed, avoid proposing the same design as your siblings, and think of how to make your design unique and better.
 
 {SIBLINGS}
 
 You need to think about which GAU to modify and how to improve it based on the instructions above.   
 """
-
 
 
 

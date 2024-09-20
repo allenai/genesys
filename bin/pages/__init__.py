@@ -3,5 +3,5 @@ from .viewer import viewer
 from .design import design
 from .evolve import evolve
 from .engine import engine
-from .prompt import prompt
+from .config import config
 from .search import search

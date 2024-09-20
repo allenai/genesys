@@ -8,7 +8,7 @@ import sys,os
 sys.path.append('.')
 import model_discovery.utils as U
 from model_discovery.agents.flow.gau_flows import EndReasons,RunningModes,END_REASONS_LABELS,DesignModes
-
+import bin.app_utils as AU
 
 
 def stat_logs(logs):
@@ -94,7 +94,10 @@ def design(evosys,project_dir):
     st.title("Model Design Engine")
 
     ### side bar 
-    st.sidebar.button("reset design query")
+    with st.sidebar:
+        logo_png = AU.square_logo("MOD", "DES")
+        st.image(logo_png, use_column_width=True)
+        st.button("reset design query")
 
 
     #### Configure design

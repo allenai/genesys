@@ -11,6 +11,7 @@ st.set_page_config(page_title="AlphaGPT", layout="wide")
 sys.path.append('.')
 from model_discovery import BuildEvolution
 import model_discovery.utils as U
+import bin.app_utils as AU
 
 from streamlit_navigation_bar import st_navbar
 
@@ -34,7 +35,7 @@ viewer = import_and_reload('viewer').viewer
 design = import_and_reload('design').design
 evolve = import_and_reload('evolve').evolve
 engine = import_and_reload('engine').engine
-prompt = import_and_reload('prompt').prompt
+config = import_and_reload('config').config
 search = import_and_reload('search').search
 
 
@@ -96,12 +97,12 @@ styles = {
 urls = {"GitHub": "https://github.com/allenai/model_discovery"}
 
 pages = {
-    "Viewer": viewer,
-    'Evolve': evolve,
     'Design': design,
+    'Evolve': evolve,
     'Search': search,
+    "Viewer": viewer,
     'Engine': engine,
-    'Prompt': prompt,
+    'Config': config,
 }
 titles=list(pages.keys())+['GitHub']
 pg = st_navbar(

@@ -1022,6 +1022,7 @@ class EvolutionSystem(exec_utils.System):
 
     def reload(self,config):
         self._config = config
+        self.stream = PrintSystem(self._config)
         self.load()
 
     def query_system(self,
