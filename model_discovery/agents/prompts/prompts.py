@@ -1518,6 +1518,31 @@ In this example, the block consists of three child units: `Norm`, `UnitA`, and
 `UnitB`. Each of these units follows the same interface and structure as the
 root unit and may themselves be composed of nested child units.
 
+
+#### Note
+
+1. **GAU is just a specialized nn.Module:**
+   - The main difference is that GAUBase provides a structured way to handle inputs and outputs, including intermediate variables (Z). 
+   - You can define layers and implement logic just like in a regular nn.Module.
+
+2. Input and Output structure:
+   - Input: X (tensor of shape (batch, seqlen, embed_dim)) and Z (dictionary of intermediate variables)
+   - Output: Y (tensor of same shape as X) and updated Z (dictionary)
+
+3. The _forward method:
+   - This is where you implement the core logic of your GAU.
+   - It should take X and any needed intermediate variables from Z as arguments.
+   - It should return Y and a dictionary of updated/new intermediate variables.
+
+4. Nesting GAUs:
+   - You can create more complex GAUs by nesting simpler ones.
+   - In the _forward method of a complex GAU, you would call the simpler GAUs in sequence, passing the output of one to the input of the next.
+
+5. Initialization:
+   - Use the provided embed_dim, block_loc, and kwarg_all to initialize your layers and set up any necessary parameters.
+
+
+
 """
 
 # About the role  
@@ -1762,6 +1787,29 @@ class ExampleRootUnit(GAUBase):
 In this example, the block consists of three child units: `Norm`, `UnitA`, and
 `UnitB`. Each of these units follows the same interface and structure as the
 root unit and may themselves be composed of nested child units.
+
+#### Note
+
+1. **GAU is just a specialized nn.Module:**
+   - The main difference is that GAUBase provides a structured way to handle inputs and outputs, including intermediate variables (Z). 
+   - You can define layers and implement logic just like in a regular nn.Module.
+
+2. Input and Output structure:
+   - Input: X (tensor of shape (batch, seqlen, embed_dim)) and Z (dictionary of intermediate variables)
+   - Output: Y (tensor of same shape as X) and updated Z (dictionary)
+
+3. The _forward method:
+   - This is where you implement the core logic of your GAU.
+   - It should take X and any needed intermediate variables from Z as arguments.
+   - It should return Y and a dictionary of updated/new intermediate variables.
+
+4. Nesting GAUs:
+   - You can create more complex GAUs by nesting simpler ones.
+   - In the _forward method of a complex GAU, you would call the simpler GAUs in sequence, passing the output of one to the input of the next.
+
+5. Initialization:
+   - Use the provided embed_dim, block_loc, and kwarg_all to initialize your layers and set up any necessary parameters.
+
 
 """
 
@@ -2634,6 +2682,29 @@ Key points:
 - LM blocks can be decomposed into nested GAUs
 - GAUs share the same interface as LM blocks
 - GAUs can be arranged hierarchically and nested within each other
+
+### Note
+
+1. **GAU is just a specialized nn.Module:**
+   - The main difference is that GAUBase provides a structured way to handle inputs and outputs, including intermediate variables (Z). 
+   - You can define layers and implement logic just like in a regular nn.Module.
+
+2. Input and Output structure:
+   - Input: X (tensor of shape (batch, seqlen, embed_dim)) and Z (dictionary of intermediate variables)
+   - Output: Y (tensor of same shape as X) and updated Z (dictionary)
+
+3. The _forward method:
+   - This is where you implement the core logic of your GAU.
+   - It should take X and any needed intermediate variables from Z as arguments.
+   - It should return Y and a dictionary of updated/new intermediate variables.
+
+4. Nesting GAUs:
+   - You can create more complex GAUs by nesting simpler ones.
+   - In the _forward method of a complex GAU, you would call the simpler GAUs in sequence, passing the output of one to the input of the next.
+
+5. Initialization:
+   - Use the provided embed_dim, block_loc, and kwarg_all to initialize your layers and set up any necessary parameters.
+
 
 ### Instructions for the Implementation Process
 
@@ -3956,6 +4027,30 @@ Key points:
 - LM blocks can be decomposed into nested GAUs
 - GAUs share the same interface as LM blocks
 - GAUs can be arranged hierarchically and nested within each other
+
+
+### Note
+
+1. **GAU is just a specialized nn.Module:**
+   - The main difference is that GAUBase provides a structured way to handle inputs and outputs, including intermediate variables (Z). 
+   - You can define layers and implement logic just like in a regular nn.Module.
+
+2. Input and Output structure:
+   - Input: X (tensor of shape (batch, seqlen, embed_dim)) and Z (dictionary of intermediate variables)
+   - Output: Y (tensor of same shape as X) and updated Z (dictionary)
+
+3. The _forward method:
+   - This is where you implement the core logic of your GAU.
+   - It should take X and any needed intermediate variables from Z as arguments.
+   - It should return Y and a dictionary of updated/new intermediate variables.
+
+4. Nesting GAUs:
+   - You can create more complex GAUs by nesting simpler ones.
+   - In the _forward method of a complex GAU, you would call the simpler GAUs in sequence, passing the output of one to the input of the next.
+
+5. Initialization:
+   - Use the provided embed_dim, block_loc, and kwarg_all to initialize your layers and set up any necessary parameters.
+
 
 ## Implementation Process
 

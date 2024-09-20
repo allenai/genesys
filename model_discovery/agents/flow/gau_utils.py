@@ -733,6 +733,7 @@ class GAUCallChecker(ast.NodeVisitor):
         self.gau_instances = gau_instances  # This should be populated by the previous checker
         self.inside_gau_class = False
         self.errors = []
+        self.warnings = []
         self.code_lines = code_lines
         self.children = children
 
@@ -769,7 +770,7 @@ class GAUCallChecker(ast.NodeVisitor):
         if isinstance(stmt, (ast.Assign, ast.AnnAssign)):
             target = stmt.targets[0] if isinstance(stmt, ast.Assign) else stmt.target
             value = stmt.value  
-            
+
             # some times there is sentence like self.A.B = ..., it is not an assignment to a gau instance, so we need to exclude this case
             if isinstance(target, ast.Attribute) and isinstance(target.value, ast.Name) and target.value.id == "self": 
                 if target.attr in self.gau_instances: # gau on left hand side
@@ -784,6 +785,7 @@ class GAUCallChecker(ast.NodeVisitor):
                 if isinstance(value.func, ast.Attribute) and value.func.attr in self.gau_instances:
                     if value.func.value.id == "self":
                         self.check_gau_call(stmt)
+                        
 
     def get_class_name(self, func):
         if isinstance(func, ast.Name):
@@ -796,18 +798,22 @@ class GAUCallChecker(ast.NodeVisitor):
         class_name = self.get_class_name(func)
         return class_name in self.children
 
-    def check_gau_call(self, stmt):
+    def check_gau_call(self, stmt): # cannot process module dict and module list now
         """Check if the GAU instance is called with the correct arguments."""
 
         args = stmt.value.args
         keywords = stmt.value.keywords
         lineno = stmt.lineno
         if not (len(args) == 1 and len(keywords) == 1 and isinstance(keywords[0].value, ast.Name) and keywords[0].arg is None):# and keywords[0].value.id == "Z"):
-            self.errors.append(f'line {lineno}: {self.code_lines[lineno-1]}: Error: GAU call must have the sequence as the first argument and the **Z. If you need to pass in other arguments, you can do so in the **Z. Do not change the name of Z.')
+            self.errors.append(f'line {lineno}: {self.code_lines[lineno-1]}: Error: GAU call must have the sequence as the first argument and the **Z. If you need to pass in other arguments, you can do so in the **Z.')
 
         target = stmt.targets[0]
         if not (isinstance(target, ast.Tuple) and len(target.elts)==2 and isinstance(target.elts[1], ast.Name)):# and target.elts[1].id == "Z"):
-            self.errors.append(f'line {lineno}: {self.code_lines[lineno-1]}: Error: GAU call always returns a tuple of two variables, the first is a sequence and the second must be the updated **Z. If you need to return other variables, you can do so in the **Z. Do not change the name of Z, and Z will be updated in-place when it went through the GAU.')
+            if isinstance(target, ast.Name):
+                stmt.targets[0] = ast.Tuple(elts=[target, ast.Name(id='_', ctx=ast.Store())])
+                self.warnings.append(f'line {lineno}: {self.code_lines[lineno-1]}: Warning: GAU call always returns a tuple of two variables, the first is a sequence and the second must be the updated Z. If you need to return other variables, you can include them in Z. Trying to fix it by adding a dummy second variable "_", may cause unknown semantic errors.')
+            else:
+                self.errors.append(f'line {lineno}: {self.code_lines[lineno-1]}: Error: GAU call always returns a tuple of two variables, the first is a sequence and the second must be the updated Z. If you need to return other variables, you can include them in Z.')
         
 
     def get_instance_name(self, func_attr):
@@ -841,7 +847,7 @@ def check_and_reformat_gau_code(source_code,unit_name=None):
     try:
         tree = ast.parse(source_code)
     except Exception as e:
-        fetal_errors.append(f"Error parsing the code: {e}\n")
+        fetal_errors.append(f"Fetal Error: parsing the code: {e}\n")
         return None, None, None, errors, warnings, fetal_errors, None, None, None
 
     # Step 2: Run the format checker which now removes the import lines
@@ -852,12 +858,12 @@ def check_and_reformat_gau_code(source_code,unit_name=None):
 
     if len(gau_classes) == 0:
         fetal_errors.append(
-            "Error: No GAUBase class found. Please make sure there is at least one GAUBase class in the code."
+            "Fetal Error: No GAUBase class found. Please make sure there is at least one GAUBase class in the code."
         )
         return None, None, None, [], [], fetal_errors, None, None, None
     elif len(gau_classes) > 1:
         fetal_errors.append(
-            f"Error: Multiple GAUBase classes found: {', '.join(cls.name for cls in gau_classes)}. Please make sure there is only one GAUBase class in a file and the unit name is the same as the GAUBase class name."
+            f"Fetal Error: Multiple GAUBase classes found: {', '.join(cls.name for cls in gau_classes)}. Please make sure there is only one GAUBase class in a file and the unit name is the same as the GAUBase class name."
             " If you want to implementent children GAUs, please provide them in separate files."
         )
         if unit_name is None:
@@ -870,7 +876,7 @@ def check_and_reformat_gau_code(source_code,unit_name=None):
     format_checker.visit(tree)
     docstring=format_checker.docstring
     if not format_checker.gau_class_found:
-        fetal_errors.append(f"Error: Cannot detect the unit class.")
+        fetal_errors.append(f"Fetal Error: Cannot detect the GAU class.")
 
     # Step 3: Run the GauTestChecker to detect and remove functions decorated by @gau_test
     gau_test_checker = GauTestChecker(unit_name)
@@ -904,7 +910,7 @@ def check_and_reformat_gau_code(source_code,unit_name=None):
         exec(reformatted_code,local)
     except Exception as e:
         full_traceback=str(traceback.format_exc()).replace('File "<string>"','In "Reformatted Code"')
-        fetal_errors.append(f"Error when trying to execute the code by exec(reformatted_code), full traceback:\n{full_traceback}\nWill continue the checking process but please fix the code first.")
+        fetal_errors.append(f"Fetal Error when trying to execute the code by exec(reformatted_code), full traceback:\n{full_traceback}\nWill continue the checking process but please fix the code first.")
     children_decl=local.get('CHILDREN_DECLARATIONS',[])
     if children_decl==[]:
         warnings.append("Warning: No CHILDREN_DECLARATIONS found in the GAU. Will assume there is no children.")
@@ -913,7 +919,7 @@ def check_and_reformat_gau_code(source_code,unit_name=None):
         try:
             children=[decl.unitname for decl in children_decl]
         except Exception as e:
-            fetal_errors.append(f"Error: Failed to parse CHILDREN_DECLARATIONS, please make sure the format is correct. Do not define UnitDecl by yourself, import it from model_discovery.model.utils.modules. Error: {e}")
+            fetal_errors.append(f"Fetal Error: Failed to parse CHILDREN_DECLARATIONS, please make sure the format is correct. Do not define UnitDecl by yourself, import it from model_discovery.model.utils.modules. Error: {e}")
             children=[]
 
     UNUSED_GAU_CLASSES = set(children) - set(instantiated_classes)
@@ -933,21 +939,23 @@ def check_and_reformat_gau_code(source_code,unit_name=None):
     attribute_checker = AttributeChecker(unit_name, children, code_lines)
     attribute_checker.visit(tree)
     if not attribute_checker.found_init:
-        fetal_errors.append("Error: No __init__ method found in the GAU.")
+        fetal_errors.append("Fetal Error: No __init__ method found in the GAU.")
     if not attribute_checker.found__forward:
-        fetal_errors.append("Error: No _forward method found in the GAU.")
+        fetal_errors.append("Fetal Error: No _forward method found in the GAU.")
     new_args = attribute_checker.new_args
 
     gau_instances = {key.replace("self.", ""): value for key, value in attribute_checker.gau_instances.items()}   
     gaucallchecker = GAUCallChecker(unit_name, gau_instances, code_lines, children)
     gaucallchecker.visit(tree)
-    fetal_errors += gaucallchecker.errors
+    errors += gaucallchecker.errors
+    warnings += gaucallchecker.warnings
+
 
     # Step 7: Generate the reformatted source code
     reformatted_code = astor.to_source(tree)
     
     # Step 8: Collect errors and warnings
-    fetal_errors += format_checker.errors + attribute_checker.errors + module_processor.errors
+    errors += format_checker.errors + attribute_checker.errors + module_processor.errors
     warnings += format_checker.warnings + gau_test_checker.warnings + attribute_checker.warnings
 
     # Return the reformatted code, any new arguments, errors, and warnings
