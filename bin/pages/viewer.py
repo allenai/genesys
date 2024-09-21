@@ -24,19 +24,29 @@ from model_discovery.agents.flow._legacy_naive_flows import design_flow_definiti
 from model_discovery.agents.flow.gau_flows import GUFlowMutation
 from model_discovery.agents.flow.alang import AgentDialogFlowNaive,ALangCompiler
 from model_discovery.model.library.tester import check_tune
+from model_discovery.evolution import DesignArtifact
 import bin.app_utils as AU
 
 class ViewModes(Enum):
     DESIGNS = 'Design Artifacts'
+    EXPERIMENTS = 'Experiments'
     DIALOGS = 'Agent Dialogs (Experimental)'
     FLOW = 'Agent Flows (Experimental)'
 
 
 
+def load_db(db_dir):
+    artifacts={}
+    for id in os.listdir(U.pjoin(db_dir,'designs')):
+        artifact = DesignArtifact.load(U.pjoin(db_dir,'designs',id))
+        artifacts[artifact.acronym]=artifact
+    return artifacts
+
+
 def viewer(evosys,project_dir):
     
-    system=evosys.rnd_agent
-    ptree=evosys.ptree
+    # system=evosys.rnd_agent
+    # ptree=evosys.ptree
 
     ### build the system 
     # st.title("Viewers")
@@ -71,8 +81,11 @@ def viewer(evosys,project_dir):
             selected_flow = st.selectbox("Select a flow", list(flows.keys()))
             flow = flows[selected_flow]
         elif view_mode == ViewModes.DESIGNS:
-            design_artifacts = evosys.ptree.filter_by_type(['DesignArtifact','DesignArtifactImplemented'])
-            selected_design = st.selectbox("Select a design", design_artifacts)
+            ckpts=os.listdir(evosys.ckpt_dir)
+            selected_ckpt=st.selectbox('Select a experiment directory',ckpts)
+            db_dir=U.pjoin(evosys.ckpt_dir,selected_ckpt,'db')
+            design_artifacts = load_db(db_dir)
+            selected_design = st.selectbox("Select a design", list(design_artifacts.keys()))
         elif view_mode == ViewModes.DIALOGS:
             pass
 
@@ -81,6 +94,7 @@ def viewer(evosys,project_dir):
         
         st.title('Design Artifact Viewer')
 
+        
         
 
         # st.header('14M Training Results')
@@ -98,7 +112,7 @@ def viewer(evosys,project_dir):
             st.dataframe(df_norm)
 
         if design_artifacts:
-            design=ptree.get_node(selected_design)
+            design=design_artifacts[selected_design]
             st.subheader(f'Proposal for {selected_design}')
             with st.expander('View Proposal'):
                 st.markdown(design.proposal.proposal)
@@ -119,6 +133,10 @@ def viewer(evosys,project_dir):
         else:
             st.warning('No design artifacts found in the experiment directory')
 
+
+    elif view_mode == ViewModes.EXPERIMENTS:
+        st.title('Experiment Viewer')
+        st.write(evosys.evo_dir)
 
     elif view_mode == ViewModes.DIALOGS:
         st.title('ALang Dialog Viewer (Experimental)')

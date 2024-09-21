@@ -96,11 +96,11 @@ styles = {
 urls = {"GitHub": "https://github.com/allenai/model_discovery"}
 
 pages = {
-    'Design': design,
     'Evolve': evolve,
+    'Design': design,
+    'Engine': engine,
     'Search': search,
     "Viewer": viewer,
-    'Engine': engine,
     'Config': config,
 }
 titles=list(pages.keys())+['GitHub']

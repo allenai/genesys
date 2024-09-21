@@ -26,7 +26,7 @@ def run_sample(evosys,project_dir,step=False):
 
 def evolve(evosys,project_dir):
 
-    st.title("Evolution Engine")
+    st.title("Evolution System")
     
     evo_state={}
     evo_state['evoname']=evosys.evoname

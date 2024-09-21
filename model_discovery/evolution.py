@@ -974,7 +974,6 @@ class EvolutionSystem(exec_utils.System):
 
     def load(self,**kwargs):
         # # init params, TODO: upgrade to exec_util params, use a simple str params for now
-        # self.stream.write(self.params)
 
         # set the name and save dir
         self.evoname=self.params['evoname'] # Provide the name for the whole run including evolutions of all scales, all designs, all agents
@@ -985,28 +984,37 @@ class EvolutionSystem(exec_utils.System):
         self.evo_dir=U.pjoin(self.ckpt_dir,self.evoname)
         U.mkdir(self.evo_dir)
 
-        self.select_method=self.params['select_method']
-        self.params['design_budget']=int(self.params.get('design_budget',0))
-        self.design_budget_limit=self.params['design_budget'] # 0 means unlimited, cost save in evo tree
-
-        # load or init the state
+        # load or init the state, if it is an existing evolution, load the state, otherwise init the state
         self.state=self.load_state() # load the state by evoname
+        if 'select_method' not in self.params:
+            self.params['select_method']='random'
+        if 'select_method' not in self.state:
+            self.state['select_method']=self.params['select_method']
+        self.select_method=self.state['select_method']
+        if 'design_budget' not in self.params:
+            self.params['design_budget']=0
+        if 'design_budget' not in self.state:
+            self.state['design_budget']=int(self.params['design_budget'])
+        self.design_budget_limit=self.state['design_budget']
+        if 'selection_ratio' not in self.params:
+            self.params['selection_ratio']=0.25
         if 'selection_ratio' not in self.state:
             self.state['selection_ratio']=float(self.params['selection_ratio'])
-        if 'scales' not in self.state:
-            scales=self.params['scales'].split(',') # e.g. "14M,31M,70M,125M", scales
-            self.state['scales']=list(sorted(scales, key=lambda x: U.letternum2num(x))) # sort from small to large
+        if 'scales' not in self.params:
+            self.params['scales']='14M,31M,70M,125M,350M'
         if 'budgets' not in self.state: # remaining budget for each scale
+            scales=self.params['scales'].split(',') # e.g. "14M,31M,70M,125M", scales
             budget=1
             self.state['budgets']={}    
-            for scale in self.state['scales'][::-1]:
+            for scale in scales[::-1]:
                 self.state['budgets'][scale]=int(np.ceil(budget))
                 budget/=self.state['selection_ratio']
+        scales=list(self.state['budgets'].keys())
         self.save_state() # save the initialized state
 
-        self.scales=[eval(f'GAMConfig_{scale}()') for scale in self.state['scales']]
+        self.scales=[eval(f'GAMConfig_{scale}()') for scale in scales]
 
-        self.stream.write(f"Evolution system initialized with scales: {self.state['scales']}")
+        self.stream.write(f"Evolution system initialized with scales: {scales}")
         self.stream.write(f"Budgets remaining: {self.state['budgets']}")
         self.stream.write(f"Checkpoint directory: {self.evo_dir}")
 
@@ -1028,10 +1036,14 @@ class EvolutionSystem(exec_utils.System):
         self.stream=stream
         self.rnd_agent.sss.stream=stream
 
-    def reload(self,params):
-        self.params = params
-        self._config.params = params
+    def reload(self,params=None):
+        if params:
+            self.params = params
+            self._config.params = params
         self.load()
+    
+    def switch_ckpt(self,ckpt_name):
+        self.reload({'evoname':ckpt_name})
 
     def query_system(self,
         query: Optional[str] = '',
@@ -1185,6 +1197,7 @@ class EvolutionSystem(exec_utils.System):
 
     def heuristic_select(self,K: int=1,selector_instruct='',
             filter_type=['DesignArtifact','ReferenceWithCode','ReferenceCoreWithTree','ReferenceCore'])-> List[NodeObject]:
+        raise NotImplementedError
         alpha=0.1
         sample_metrics={}
         sample_scale={}

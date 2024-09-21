@@ -63,7 +63,7 @@ def engine(evosys,project_dir):
         #     os.environ['WANDB_API_KEY']=wandb_api_key
 
     st.header("System Info")
-    col1, col2, col3 = st.columns(3)
+    col1, col2, col3, col4 = st.columns(4)
     cpu_info, gpu_info, mem_info = get_system_info()
     with col1:
         with st.expander("CPU Info"):
@@ -74,6 +74,10 @@ def engine(evosys,project_dir):
     with col3:
         with st.expander("Memory Info"):
             st.write(mem_info)
+    with col4:
+        with st.expander("Experiment Info"):
+            st.write(f'Experiment Name: {evosys.evoname}')
+            st.write(evosys.state)
 
     
     designed=evosys.ptree.filter_by_type(['DesignArtifactImplemented'])
@@ -110,6 +114,13 @@ def engine(evosys,project_dir):
             if st.button("Run Verification"):
                 st.write("Hello")
                 st.balloons()
+
+    st.header("Running Verifications")
+
+    st.warning("No running verifications")
+    
+
+
 
 
 

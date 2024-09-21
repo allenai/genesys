@@ -197,25 +197,27 @@ def design(evosys,project_dir):
             with cols[2]:
                 max_attempts['post_refinement'] = st.number_input(label="Max post refinements",min_value=0,value=0)
         with col2:
-            st.markdown("##### Configure experiment settings")
+            st.markdown("##### Re-show previous runs (work in progress)")
             cols=st.columns([2,2,3])
             with cols[0]:
-                save_folder_name = st.text_input(label="Experiment folder name",value='default')
-                save_folder=U.pjoin(db_dir,'log',save_folder_name)
+                ckpts=os.listdir(evosys.ckpt_dir)
+                current_ckpt = evosys.evoname
+                selected_ckpt = st.selectbox(label="Select a ckpt",options=ckpts,index=ckpts.index(current_ckpt),disabled=True)
+                db_dir = U.pjoin(evosys.ckpt_dir,selected_ckpt,'db')
             with cols[1]:
                 folders=['']
-                if os.path.exists(U.pjoin(db_dir,'log')):
-                    for i in os.listdir(U.pjoin(db_dir,'log')):
-                        if os.path.isdir(U.pjoin(db_dir,'log',i)):
+                if os.path.exists(U.pjoin(db_dir,'sessions')):
+                    for i in os.listdir(U.pjoin(db_dir,'sessions')):
+                        if os.path.isdir(U.pjoin(db_dir,'sessions',i,'log')):
                             folders.append(i)
-                selected_folder = st.selectbox(label="**View folder stats**",options=folders)
-                selected_folder_dir = U.pjoin(db_dir,'log',selected_folder)
+                selected_folder = st.selectbox(label="**View folder stats**",options=folders,disabled=True)
+                selected_folder_dir = U.pjoin(db_dir,'sessions',selected_folder,'log')
             with cols[2]:
                 designs=['']
                 if selected_folder and os.path.exists(selected_folder_dir):
                     designs += os.listdir(selected_folder_dir)
                 folder_name = selected_folder if selected_folder else 'No folder selected'
-                selected_design = st.selectbox(label=f"***View runs in selected folder: {folder_name}***",options=designs)
+                selected_design = st.selectbox(label=f"***View runs in selected folder: {folder_name}***",options=designs,disabled=True)
         design_cfg['max_attempts'] = max_attempts
 
 
