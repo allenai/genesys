@@ -738,12 +738,14 @@ class SuperScholarSearcher:
             for i in os.listdir(dir):
                 if i.endswith('.json'):
                     lib[i.split('.')[0]]=U.load_json(U.pjoin(dir,i))
-            for i in os.listdir(U.pjoin(files_dir,'htmls'+tail)):   
-                if i.endswith('.html'):
-                    lib[i.split('.')[0]]['html_path']=U.pjoin(files_dir,'htmls'+tail,i)
-            for i in os.listdir(U.pjoin(files_dir,'pdfs'+tail)):    
-                if i.endswith('.pdf'):
-                    lib[i.split('.')[0]]['pdf_path']=U.pjoin(files_dir,'pdfs'+tail,i)
+            if U.pexists(U.pjoin(files_dir,'htmls'+tail))       :
+                for i in os.listdir(U.pjoin(files_dir,'htmls'+tail)):   
+                    if i.endswith('.html'):
+                        lib[i.split('.')[0]]['html_path']=U.pjoin(files_dir,'htmls'+tail,i)
+            if U.pexists(U.pjoin(files_dir,'pdfs'+tail)):
+                for i in os.listdir(U.pjoin(files_dir,'pdfs'+tail)):    
+                    if i.endswith('.pdf'):
+                        lib[i.split('.')[0]]['pdf_path']=U.pjoin(files_dir,'pdfs'+tail,i)
 
     def _convert_libs_html(self):
         # convert the htmls in the libraries to text
@@ -876,10 +878,10 @@ class SuperScholarSearcher:
             
             for i in tqdm(lib,desc=f'Loading splits {name}'):
                 U.mkdir(U.pjoin(self.libfiles_dir,'splits'+tail))
-                U.mkdir(U.pjoin(self.files_dir,'vectors'+tail))
                 if U.pexists(U.pjoin(self.libfiles_dir,'splits'+tail,f'{i}.json')):
                     split=U.load_json(U.pjoin(self.libfiles_dir,'splits'+tail,f'{i}.json'))
                     if load_vectors:
+                        U.mkdir(U.pjoin(self.files_dir,'vectors'+tail))
                         vector=U.load_json(U.pjoin(self.files_dir,'vectors'+tail,f'{i}.json'))
                 else:
                     if not lib[i]:

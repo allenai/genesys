@@ -306,20 +306,16 @@ class StreamWrapper:
         self.stream=stream
         self.log_file=log_file
         self._log=[]
-        if U.pexists(self.log_file):
-            try:
-                self._log=eval(U.read_file(self.log_file))
-            except Exception as e: # not a valid log file, create a new one
-                safe_backup(self.log_file)
-                self._log=[]
         self.status = StatusHandlerWrapper(stream.status, self.log)
         self.spinner = SpinnerWrapper(stream.spinner, self.log)
         self.balloons = stream.balloons
         self.snow = stream.snow
     
     def log(self,msg,type):
-        self._log.append((datetime.datetime.now(),msg,type))
-        U.write_file(self.log_file,str(self._log))
+        _msg=msg.replace('\n','/NEWLINE/').replace('\t','/TAB/')
+        self._log.append((datetime.datetime.now(),_msg,type))
+        line=str(self._log[-1])+'\n'
+        U.append_file(self.log_file,line)
     
     def write(self,msg,**kwargs):
         self.stream.write(msg,**kwargs)
@@ -427,7 +423,7 @@ class ModelDiscoverySystem(exec_utils.System):
 
     def new_session(self,design_id,stream):
         self.log_dir = U.pjoin(self.ptree.session_dir(design_id), 'log')
-        log_file = U.pjoin(self.log_dir,'stream.log')
+        log_file = U.pjoin(self.log_dir,f'{datetime.datetime.now().strftime("%Y%m%d_%H%M%S")}.log')
         self.sess_state = {} 
         self.dialog = AgentDialogManager(self.log_dir,self.get_system_info(),stream)
         design_stream = StreamWrapper(stream,log_file)

@@ -71,6 +71,8 @@ def show_log(log):
             in_status = False
         elif type == 'write':
             line.append(f"st.write({text_repr}, unsafe_allow_html=True)")
+        elif type == 'warning':
+            line.append(f"st.warning({text_repr})")
         elif type == 'markdown':
             line.append(f"st.markdown({text_repr}, unsafe_allow_html=True)")
         
@@ -78,6 +80,15 @@ def show_log(log):
     
     final_code = '\n'.join(code)
     exec(final_code)
+
+def load_log(log_file):
+    log=[]
+    for line in U.read_file(log_file).split('\n'):
+        try:
+            log.append(eval(line.replace('/NEWLINE/','\n').replace('/TAB/','\t')))
+        except:
+            log.append((datetime.datetime.now(),f'MISSING LINE: ERROR IN LOG FILE: {line}','warning'))
+    return log
 
 
 
@@ -95,6 +106,8 @@ def design(evosys,project_dir):
 
     ### side bar 
     with st.sidebar:
+        st.write(f'**Namespace: ```{evosys.evoname}```**')
+    
         if st.button("Reset design query",use_container_width=True):
             st.rerun()
 
@@ -280,7 +293,7 @@ def design(evosys,project_dir):
         for i in range(EXPERIMENT_RUNS):
             with st.empty():
                 if EXPERIMENT_RUNS>1:
-                    st.subheader(f'Running {EXPERIMENT_RUNS} designs, save to *{save_folder_name}*...')
+                    st.subheader(f'Running {EXPERIMENT_RUNS} designs, save to *{evosys.ptree.db_dir}*...')
 
             if sum(n_sources.values())==0:
                 st.write("You selected no seed, the agent will randomly generate a design for you.")
@@ -297,7 +310,7 @@ def design(evosys,project_dir):
     elif selected_design:
         with st.empty():
             st.markdown(f'### Viewing design log for session: *{selected_design}*...')
-        log=eval(U.read_file(U.pjoin(save_folder,selected_design,'stream.log')))
+        log=eval(U.read_file(U.pjoin(selected_folder_dir,'stream.log')))
         show_log(log)
     
     elif selected_folder:
@@ -308,7 +321,7 @@ def design(evosys,project_dir):
         else:
             logs=[]
             for session in os.listdir(selected_folder_dir):
-                log=eval(U.read_file(U.pjoin(selected_folder_dir,session,'stream.log')))
+                log=eval(U.read_file(U.pjoin(selected_folder_dir,'stream.log')))
                 logs.append(log)
             stat_logs(logs)
 

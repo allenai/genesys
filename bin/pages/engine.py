@@ -12,8 +12,17 @@ sys.path.append('.')
 import model_discovery.utils as U
 import bin.app_utils as AU
 
+from model_discovery.configs.gam_config import ( 
+    GAMConfig,GAMConfig_14M,GAMConfig_31M,GAMConfig_70M,GAMConfig_125M,GAMConfig_350M,GAMConfig_760M,
+    GAMConfig_1300M,GAMConfig_2700M,GAMConfig_6700M,GAMConfig_13B,GAMConfig_175B,GAMConfig_1T,GAMConfig_debug
+)
+
+from model_discovery.ve.data_loader import load_datasets
+
 
 TARGET_SCALES = ['14M','31M','70M','125M','350M','760M','1300M']
+
+SMOLLM_125_CORPUS=['cosmopedia-v2','python-edu','fineweb-edu-dedup','open-web-math','deepmind-math-small','stackoverflow-clean']
 
 
 
@@ -57,12 +66,11 @@ def engine(evosys,project_dir):
 
     # evosys.ptree.load()
 
-    # with st.sidebar:
-        # wandb_api_key=st.text_input('Your Wandb API Key',type='password')
-        # if wandb_api_key:
-        #     os.environ['WANDB_API_KEY']=wandb_api_key
+    with st.sidebar:
+        st.write(f'**Namespace: ```{evosys.evoname}```**')
+        
 
-    st.header("System Info")
+    st.subheader("System Diagnostics")
     col1, col2, col3, col4 = st.columns(4)
     cpu_info, gpu_info, mem_info = get_system_info()
     with col1:
@@ -76,8 +84,28 @@ def engine(evosys,project_dir):
             st.write(mem_info)
     with col4:
         with st.expander("Experiment Info"):
-            st.write(f'Experiment Name: {evosys.evoname}')
+            st.write(f'Namespace: ```{evosys.evoname}```')
             st.write(evosys.state)
+
+    with st.expander("Diagnostic Panel"):
+        # st.subheader("Test loading datasets")
+        config=GAMConfig_14M()
+        st.subheader("Test dataset loader")
+        col1,_,col3,_,col4,_=st.columns([3,0.5,2,0.5,2,1])
+        with col1:
+            dataset_name=st.selectbox("Choose a Dataset",options=SMOLLM_125_CORPUS)
+        with col3:
+            st.write('')
+            st.write('')
+            if st.button("Test Loading "+dataset_name,use_container_width=True):
+                config.training_data=[dataset_name]
+                load_datasets(config)
+        with col4:
+            st.write('')
+            st.write('')
+            if st.button("Test Loading All Datasets",use_container_width=True):
+                config.training_data=SMOLLM_125_CORPUS
+                load_datasets(config)
 
     
     designed=evosys.ptree.filter_by_type(['DesignArtifactImplemented'])
@@ -113,7 +141,6 @@ def engine(evosys,project_dir):
             st.write('')
             if st.button("Run Verification"):
                 st.write("Hello")
-                st.balloons()
 
     st.header("Running Verifications")
 

@@ -53,8 +53,8 @@ def config(evosys,project_dir):
         with st.form("Environment Variables"):
             col1,col2,col3,col4=st.columns(4)
             with col1:
-                env_vars['CKPT_DIR']=st.text_input('CKPT_DIR',value=os.environ.get("CKPT_DIR"))
-                env_vars['DATA_DIR']=st.text_input('DATA_DIR',value=os.environ.get("DATA_DIR"))
+                env_vars['CKPT_DIR']=st.text_input('CKPT_DIR (No need to change)',value=os.environ.get("CKPT_DIR"))
+                env_vars['DATA_DIR']=st.text_input('DATA_DIR (No need to change)',value=os.environ.get("DATA_DIR"))
                 env_vars['S2_API_KEY']=st.text_input('S2_API_KEY',type='password')
             with col2:
                 env_vars['WANDB_API_KEY']=st.text_input('WANDB_API_KEY (Required for Training)',type='password')
@@ -87,7 +87,7 @@ def config(evosys,project_dir):
             col1,col2=st.columns(2)
             with col1:
                 params={}
-                params['evoname']=st.text_input('Experiment Name',value=evosys.params['evoname'])
+                params['evoname']=st.text_input('Experiment Namespace',value=evosys.params['evoname'])
                 target_scale=st.select_slider('Target Scale',options=TARGET_SCALES,value=evosys.params['scales'].split(',')[-1])
                 scales=[]
                 for s in TARGET_SCALES:

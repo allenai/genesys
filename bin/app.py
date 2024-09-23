@@ -37,6 +37,7 @@ evolve = import_and_reload('evolve').evolve
 engine = import_and_reload('engine').engine
 config = import_and_reload('config').config
 search = import_and_reload('search').search
+select = import_and_reload('select').select
 
 
 
@@ -98,9 +99,10 @@ urls = {"GitHub": "https://github.com/allenai/model_discovery"}
 pages = {
     'Evolve': evolve,
     'Design': design,
-    'Engine': engine,
     'Search': search,
-    "Viewer": viewer,
+    'Engine': engine,
+    'Select': select,
+    'Viewer': viewer,
     'Config': config,
 }
 titles=list(pages.keys())+['GitHub']

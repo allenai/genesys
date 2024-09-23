@@ -63,6 +63,10 @@ def write_file(file,data):
     with open(file, 'w', encoding='utf-8') as f:
         f.write(data)
 
+def append_file(file,data):
+    with open(file, 'a', encoding='utf-8') as f:
+        f.write(data)
+
 def load_yaml(file): # load yaml file as a dictionary
     if not pexists(file):
         return {}

@@ -1176,7 +1176,11 @@ class EvolutionSystem(exec_utils.System):
             seed = [i for i in seeds if i.type in seed_types]
             refs = [i for i in seeds if i.type not in seed_types]
         elif mode==DesignModes.CROSSOVER:
-            raise NotImplementedError("TODO: do it in future")
+            seed_types = ['DesignArtifactImplemented','ReferenceCoreWithTree']
+            seeds = [i for i in seeds if i.type in seed_types]
+            assert len(seeds)>=2, "There must be at least two seeds from DesignArtifactImplemented and ReferenceCoreWithTree when design from existing"
+            seed = random.sample(seeds,2)
+            refs = [i for i in seeds if i not in seed]
         return instruct,seed,refs
 
     def _select(self,K: int=1,selector_instruct='',

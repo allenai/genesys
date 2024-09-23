@@ -212,9 +212,32 @@ def tokenize_deepmind_math(
     )
     return {"input_ids": outputs["input_ids"]}
 
-@pretokenize_dataset('deepmind-math',tokenize_func=tokenize_deepmind_math)
-def load_deepmind_math(tokenizer_name, context_length):
-    return load_dataset("chengjunyan1/smollm-12.5-corpus","deepmind-math", num_proc=DEFAULT_NUM_PROC_LOAD)
+@pretokenize_dataset('deepmind-math-small',tokenize_func=tokenize_deepmind_math)
+def load_deepmind_math_small(tokenizer_name, context_length):
+    return load_dataset("chengjunyan1/smollm-12.5-corpus","deepmind-math-small", num_proc=DEFAULT_NUM_PROC_LOAD)
+
+def tokenize_stackoverflow_clean(
+        element,
+        tokenizer: transformers.PreTrainedTokenizer,
+        context_length: int
+    ) -> dict:
+    """Tokenizes the input and returns their input_ids 
+
+    """
+    outputs = tokenizer(
+        element["content"],  # need to change accordingly
+        padding='max_length',  # Pad all sequences to max_length
+        truncation=True,
+        max_length=context_length,
+        return_overflowing_tokens=False,  # Do not return overflowing tokens
+        return_length=True,
+    )
+    return {"input_ids": outputs["input_ids"]}
+    
+
+@pretokenize_dataset('stackoverflow-clean',tokenize_func=tokenize_stackoverflow_clean)
+def load_stackoverflow_clean(tokenizer_name, context_length):
+    return load_dataset("chengjunyan1/smollm-12.5-corpus","stackoverflow-clean", num_proc=DEFAULT_NUM_PROC_LOAD)
 
 loaders={
     'babylm'      :load_babylm,
@@ -224,7 +247,8 @@ loaders={
     'fineweb-edu-dedup':load_fine_web_dedup,
     'cosmopedia-v2':load_cosmopedia_v2,
     'open-web-math':load_open_web_math,
-    'deepmind-math':load_deepmind_math
+    'deepmind-math-small':load_deepmind_math_small,
+    'stackoverflow-clean':load_stackoverflow_clean
 }
 
 def load_datasets(cfg: GAMConfig): # weights e.g. {'train':[1.5,1.0]} for two datasets
