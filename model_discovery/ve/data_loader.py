@@ -65,7 +65,9 @@ def combine_datasets(dataset_dicts, weights:dict=None): # weights e.g. {'train':
     combined_dict = {}
     
     # Initialize weights if not provided
-    for dataset_dict in dataset_dicts:
+    for name in dataset_dicts:
+        print(f"Combining dataset: {name}")
+        dataset_dict = dataset_dicts[name]
         for key, dataset in dataset_dict.items():
             if key in combined_dict:
                 combined_dict[key] = concatenate_datasets([combined_dict[key], dataset])
@@ -75,7 +77,8 @@ def combine_datasets(dataset_dicts, weights:dict=None): # weights e.g. {'train':
     # Apply weights by resampling the datasets
     for key in combined_dict:
         datasets = []
-        for idx,dataset in enumerate(dataset_dicts):
+        for idx,name in enumerate(dataset_dicts):
+            dataset = dataset_dicts[name]
             if key in dataset:
                 if weights is None or key not in weights or weights[key][idx] == 1.0:
                     datasets.append(dataset[key])
@@ -84,9 +87,11 @@ def combine_datasets(dataset_dicts, weights:dict=None): # weights e.g. {'train':
                     datasets.append(resampled_dataset)
         combined_dict[key] = concatenate_datasets(datasets)
     
-    return DatasetDict(combined_dict)
-
-def pretokenize_dataset(dataset_name,tokenize_func=tokenize):
+    ds = DatasetDict(combined_dict)
+    print('Combined dataset:\n',ds)
+    return ds
+    
+def pretokenize_dataset(dataset_name):
     def decorator(dataload_func):
         @ft.wraps(dataload_func)
         def wrapper(tokenizer_name=None, context_length=None, *args, **kwargs):
@@ -111,7 +116,7 @@ def pretokenize_dataset(dataset_name,tokenize_func=tokenize):
                 else: # chunked datasets
                     remove_columns = ds["train_0"].column_names 
                 tokenized_datasets = ds.map(
-                    lambda x: tokenize_func(x, tokenizer=tokenizer, context_length=context_length),
+                    lambda x: tokenize(x, tokenizer=tokenizer, context_length=context_length),
                     batched=True, remove_columns=remove_columns, num_proc=DEFAULT_NUM_PROC_TOKENIZE, 
                     batch_size=1000,
                 )
@@ -176,36 +181,34 @@ def load_python_edu(tokenizer_name, context_length):
 def load_fine_web_dedup(tokenizer_name, context_length):
     return load_dataset("chengjunyan1/smollm-12.5-corpus","fineweb-edu-dedup", num_proc=DEFAULT_NUM_PROC_LOAD)
 
-
-def tokenize_cosmopedia(
-        element,
-        tokenizer: transformers.PreTrainedTokenizer,
-        context_length: int
-    ) -> dict:
-    """Tokenizers input and returns their input_ids 
-
-    """
-    text = f"Audience: {element['audience']}\n\nPrompt: {element['prompt']}\n\nResponse: {element['text']}"
-    outputs = tokenizer(
-        text,  # need to change accordingly
-        padding='max_length',  # Pad all sequences to max_length
-        truncation=True,
-        max_length=context_length,
-        return_overflowing_tokens=False,  # Do not return overflowing tokens
-        return_length=True,
-    )
-    return {"input_ids": outputs["input_ids"]}
-
-
-@pretokenize_dataset('cosmopedia-v2',tokenize_func=tokenize_cosmopedia)
+@pretokenize_dataset('cosmopedia-v2')
 def load_cosmopedia_v2(tokenizer_name, context_length):
-    ds = load_dataset("chengjunyan1/smollm-12.5-corpus","cosmopedia-v2", num_proc=DEFAULT_NUM_PROC_LOAD)
-    chunk_size = 1_000_000
-    n_chunks=len(ds['train'])//chunk_size+1
-    for i in range(n_chunks):
-        ds[f'train_{i}'] = ds['train'].select(range(i*chunk_size,min((i+1)*chunk_size,len(ds['train']))))
-    del ds['train']
-    print('Chunked Cosmopedia-v2 dataset:\n',ds)
+    ds = load_dataset("chengjunyan1/smollm-12.5-corpus", "cosmopedia-v2", num_proc=DEFAULT_NUM_PROC_LOAD)
+    
+    def format_text(examples):
+        return {
+            'text': [
+                f"Audience: {audience}\n\nPrompt: {prompt}\n\nResponse: {text}"
+                for audience, prompt, text in zip(examples['audience'], examples['prompt'], examples['text'])
+            ]
+        }
+    
+    for split in ['train', 'test', 'eval']:
+        ds[split] = ds[split].map(
+            format_text,
+            batched=True,
+            batch_size=1000,
+            num_proc=DEFAULT_NUM_PROC_LOAD,
+            remove_columns=['audience', 'prompt']
+        )
+    
+    # chunk_size = 1_000_000
+    # n_chunks = len(ds['train']) // chunk_size + 1
+    # for i in range(n_chunks):
+    #     ds[f'train_{i}'] = ds['train'].select(range(i*chunk_size, min((i+1)*chunk_size, len(ds['train']))))
+    # del ds['train']
+    
+    # print('Chunked Cosmopedia-v2 dataset:\n', ds)
     return ds
 
 @pretokenize_dataset('open-web-math')
@@ -213,51 +216,35 @@ def load_open_web_math(tokenizer_name, context_length):
     return load_dataset("chengjunyan1/smollm-12.5-corpus","open-web-math", num_proc=DEFAULT_NUM_PROC_LOAD)
 
 
-def tokenize_deepmind_math(
-        element,
-        tokenizer: transformers.PreTrainedTokenizer,
-        context_length: int
-    ) -> dict:
-    """Tokenizers input and returns their input_ids 
-
-    """
-    text = f"Question: {element['question']}\n\nAnswer: {element['answer']}"
-    outputs = tokenizer(
-        text,  # need to change accordingly
-        padding='max_length',  # Pad all sequences to max_length
-        truncation=True,
-        max_length=context_length,
-        return_overflowing_tokens=False,  # Do not return overflowing tokens
-        return_length=True,
-    )
-    return {"input_ids": outputs["input_ids"]}
-
-@pretokenize_dataset('deepmind-math-small',tokenize_func=tokenize_deepmind_math)
+@pretokenize_dataset('deepmind-math-small')
 def load_deepmind_math_small(tokenizer_name, context_length):
-    return load_dataset("chengjunyan1/smollm-12.5-corpus","deepmind-math-small", num_proc=DEFAULT_NUM_PROC_LOAD)
-
-def tokenize_stackoverflow_clean(
-        element,
-        tokenizer: transformers.PreTrainedTokenizer,
-        context_length: int
-    ) -> dict:
-    """Tokenizes the input and returns their input_ids 
-
-    """
-    outputs = tokenizer(
-        element["content"],  # need to change accordingly
-        padding='max_length',  # Pad all sequences to max_length
-        truncation=True,
-        max_length=context_length,
-        return_overflowing_tokens=False,  # Do not return overflowing tokens
-        return_length=True,
-    )
-    return {"input_ids": outputs["input_ids"]}
+    ds = load_dataset("chengjunyan1/smollm-12.5-corpus", "deepmind-math-small", num_proc=DEFAULT_NUM_PROC_LOAD)
     
+    def format_text(examples):
+        return {
+            'text': [
+                f"Question: {question}\n\nAnswer: {answer}"
+                for question, answer in zip(examples['question'], examples['answer'])
+            ]
+        }
+    
+    for split in ['train', 'test', 'eval']:
+        ds[split] = ds[split].map(
+            format_text,
+            batched=True,
+            batch_size=1000,
+            num_proc=DEFAULT_NUM_PROC_LOAD,
+            remove_columns=['question', 'answer']
+        )
+    
+    return ds
 
-@pretokenize_dataset('stackoverflow-clean',tokenize_func=tokenize_stackoverflow_clean)
+
+@pretokenize_dataset('stackoverflow-clean')
 def load_stackoverflow_clean(tokenizer_name, context_length):
-    return load_dataset("chengjunyan1/smollm-12.5-corpus","stackoverflow-clean", num_proc=DEFAULT_NUM_PROC_LOAD)
+    ds = load_dataset("chengjunyan1/smollm-12.5-corpus","stackoverflow-clean", num_proc=DEFAULT_NUM_PROC_LOAD)
+    ds = ds.rename_column('content', 'text')
+    return ds
 
 loaders={
     'babylm'      :load_babylm,
@@ -275,12 +262,12 @@ def load_datasets(cfg: GAMConfig): # weights e.g. {'train':[1.5,1.0]} for two da
     """Loads the datasets 
 
     """
-    dataset_dicts = [
-        loaders[dataset](
+    dataset_dicts = {
+        dataset: loaders[dataset](
             tokenizer_name=cfg.tokenizer,
             context_length=cfg.context_length
         ) for dataset in cfg.training_data
-    ]
+    } 
     tokenizer=get_tokenizer(cfg.tokenizer)
     dataset=combine_datasets(dataset_dicts, cfg.training_weight)
     # assert 'train' in dataset and 'valid' in dataset, "Dataset must have 'train' and 'valid' keys, and optionally a 'test' key"
@@ -288,12 +275,12 @@ def load_datasets(cfg: GAMConfig): # weights e.g. {'train':[1.5,1.0]} for two da
     return dataset,tokenizer
 
 def load_datasets_args(tokenizer,context_length,training_data,training_weight=None):
-    dataset_dicts = [
-        loaders[dataset](
+    dataset_dicts = {
+        dataset: loaders[dataset](
             tokenizer_name=tokenizer,
             context_length=context_length
         ) for dataset in training_data
-    ]
+    }
     tokenizer=get_tokenizer(tokenizer)
     dataset=combine_datasets(dataset_dicts, training_weight)
     # assert 'train' in dataset and 'valid' in dataset, "Dataset must have 'train' and 'valid' keys, and optionally a 'test' key"
