@@ -37,6 +37,8 @@ class ViewModes(Enum):
 
 def load_db(db_dir):
     artifacts={}
+    if not U.pexists(U.pjoin(db_dir,'designs')):
+        return artifacts
     for id in os.listdir(U.pjoin(db_dir,'designs')):
         artifact = DesignArtifact.load(U.pjoin(db_dir,'designs',id))
         artifacts[artifact.acronym]=artifact

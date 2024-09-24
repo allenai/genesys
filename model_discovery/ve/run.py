@@ -10,6 +10,7 @@ import argparse
 import wandb
 import time
 import logging
+from datetime import datetime
 
 # import transformers
 from huggingface_hub import login
@@ -135,7 +136,7 @@ def before_train(args):
         wandb.init(
             project=args.wandb_project,
             entity=args.wandb_entity,
-            name=f"{args.evoname}_{args.design_id}"
+            name=f"{args.evoname}_{args.design_id}_{datetime.now().strftime('%Y%m%d%H%M%S')}"
         )
     util_logger.info(f'Time elapsed for setting up wandb: {(time.perf_counter() - start):.1f} s')
     return gab,gab_config
@@ -396,21 +397,21 @@ def report(args) -> dict:
         util_logger.info(f"Report already exists at {outdir}/report.json")
         return
     report={}
-    try:
-        run_id=U.load_json(f"{outdir}/wandb_ids.json")['pretrain']
-        history,system_metrics=get_history(
-            run_id,
-            project_path=f"{args.wandb_entity}/{args.wandb_project}"
-        )
-        report={
-            "training_record.csv":str(history.to_csv(index=False)),
-            "system_metrics.csv":str(system_metrics.to_csv(index=False)),
-        }
-    except:
-        report={
-            "training_record.csv":"",
-            "system_metrics.csv":"",
-        }
+    # try:
+    run_id=U.load_json(f"{outdir}/wandb_ids.json")['pretrain']
+    history,system_metrics=get_history(
+        run_id,
+        project_path=f"{args.wandb_entity}/{args.wandb_project}"
+    )
+    report={
+        "training_record.csv":str(history.to_csv(index=False)),
+        "system_metrics.csv":str(system_metrics.to_csv(index=False)),
+    }
+    # except:
+    #     report={
+    #         "training_record.csv":"",
+    #         "system_metrics.csv":"",
+    #     }
 
     trainer_state=U.load_json(f"{outdir}/trainer_state.json")
     eval_results=get_eval_results(outdir)

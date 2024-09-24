@@ -1,1 +1,1 @@
-streamlit run bin/app.py --server.port 8501
+streamlit run bin/app.py "$@"

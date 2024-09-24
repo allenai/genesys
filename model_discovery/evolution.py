@@ -109,7 +109,7 @@ REFERENCE_COLOR = '#AF47D2'
 RWC_COLOR = '#FB773C' # reference with code
 EXT_COLOR_1HOC = '#ed556a' # extended 1-hop reference
 
-
+# from low to high
 TARGET_SCALES = ['14M','31M','70M','125M','350M']#,'760M','1300M']
 
 
@@ -164,6 +164,7 @@ class LibraryReference(NodeObject):
     description: str = None
     url: str = None
     tree: GAUTree = None
+    verifications: Dict[str, Verification] = field(default_factory=dict)
 
     def __post_init__(self):
         py_dir=U.pjoin(LIBRARY_DIR,'base',self.acronym,self.acronym+'_edu.py')
@@ -182,8 +183,19 @@ class LibraryReference(NodeObject):
                 self.tree=GAUTree.load_from_base(tree_dir)
             if self.tree is not None:
                 print(f'{self.acronym} tree loaded')
+            verification_dir=U.pjoin(core_dir,'verifications')
+            if U.pexists(verification_dir):
+                for scale in os.listdir(verification_dir):
+                    report=U.load_json(U.pjoin(verification_dir,scale))
+                    scale=scale.split('.')[0]
+                    if 'verification_report' in report:
+                        self.verifications[scale]=Verification.from_dict(report['verification_report'])
+                    else:
+                        self.verifications[scale]=Verification(scale=scale,verification_report=report)
         else:
             self.code=None
+
+        
 
     @property
     def type(self) -> str:
@@ -608,12 +620,22 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         return design_id
     
     
-    def get_unverified(self,scale):
+    def get_unverified_designs(self,scale):
         unverified=[]
         for acronym in self.filter_by_type('DesignArtifactImplemented'):
             design=self.get_node(acronym)
             if scale not in design.verifications:
                 unverified.append(acronym)
+        return unverified
+
+        
+    def get_unverified_scales(self,acronym): # from low to high
+        unverified=[]
+        design=self.get_node(acronym)
+        for scale in TARGET_SCALES:
+            if scale not in design.verifications:
+                unverified.append(scale)
+        unverified.sort(key=lambda x: int(x.replace('M','')))
         return unverified
 
     def get_gau_tree(self,acronym:str):
@@ -649,6 +671,11 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         design_dir=U.pjoin(self.db_dir, 'designs', acronym)
         U.mkdir(design_dir)
         return design_dir
+    
+    def coreref_dir(self, acronym: str):
+        coreref_dir=U.pjoin(LIBRARY_DIR,'core',acronym,'reports')
+        U.mkdir(coreref_dir)
+        return coreref_dir
     
     def get_node(self, acronym: str):
         return self.G.nodes[acronym]['data']
@@ -765,7 +792,10 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         verification=Verification(scale=scale, verification_report=verification_report)
         design_artifact.verifications[scale]=verification
         self.G.nodes[acronym]['data']=design_artifact
-        verification.save(self.design_dir(acronym))
+        if design_artifact.type=='DesignArtifactImplemented':
+            verification.save(self.design_dir(acronym))
+        else:
+            verification.save(self.coreref_dir(acronym))
 
         
     def unique_acronym(self, acronym: str) -> str:
@@ -991,15 +1021,33 @@ class EvolutionSystem(exec_utils.System):
         if 'select_method' not in self.state:
             self.state['select_method']=self.params['select_method']
         self.select_method=self.state['select_method']
+
+        # action choose strategy
+        if 'action_strategy' not in self.params:
+            self.params['action_strategy']='random'
+        if 'action_strategy' not in self.state:
+            self.state['action_strategy']=self.params['action_strategy']
+        self.action_strategy=self.state['action_strategy']
+
+        
+        # design verify strategy
+        if 'verify_strategy' not in self.params:
+            self.params['verify_strategy']='random'
+        if 'verify_strategy' not in self.state:
+            self.state['verify_strategy']=self.params['verify_strategy']
+        self.verify_strategy=self.state['verify_strategy']
+
         if 'design_budget' not in self.params:
             self.params['design_budget']=0
         if 'design_budget' not in self.state:
             self.state['design_budget']=int(self.params['design_budget'])
         self.design_budget_limit=self.state['design_budget']
+
         if 'selection_ratio' not in self.params:
             self.params['selection_ratio']=0.25
         if 'selection_ratio' not in self.state:
             self.state['selection_ratio']=float(self.params['selection_ratio'])
+        
         if 'scales' not in self.params:
             self.params['scales']='14M,31M,70M,125M,350M'
         if 'budgets' not in self.state: # remaining budget for each scale
@@ -1080,7 +1128,7 @@ class EvolutionSystem(exec_utils.System):
             self.stream.write(f"No budget for design and verify, evolution stops, system sleeps, please terminate manually")
             time.sleep(1e9)
             return
-        act=random.choice(['design','verify'])
+        act=self.choose()
         if not self.check_budget(act):
             self.stream.write(f"No budget for {act}, will do another action")
             act='design' if act=='verify' else 'verify'
@@ -1228,29 +1276,56 @@ class EvolutionSystem(exec_utils.System):
     
     def choose(self):
         """ Choose a move, select a design to verify """
-        raise NotImplementedError
+        if self.action_strategy=='random':
+            return random.choice(['design','verify'])
+        # TODO: max parallel sampling efficiency strategy
+        else:
+            raise ValueError(f"Invalid action choose strategy: {self.action_strategy}")
 
 
-    def verify(self): # choose then verify
-        scale='14M'
-        unverified=self.ptree.get_unverified(scale)
-        if len(unverified)==0:
-            self.stream.write(f"No unverified design at scale {scale}.")
+    def verify(self,design_id=None,scale=None,resume=True): # choose then verify
+        if design_id is None:
+            design_id,scale=self._select_verify_design()
+        if design_id is None:
             return None
-        design_id=random.choice(unverified)
         self.stream.write(f"Verifying design {design_id} at scale {scale}...")
-        self._verify(design_id,scale) # verify the design until it's done
+        self._verify(design_id,scale,resume=resume) # verify the design until it's done
         report_dir=U.pjoin(self.evo_dir,'ve',design_id+f'_{scale}','report.json')
         report=U.load_json(report_dir)
         self.ptree.verify(design_id,scale,report)
         if report!={}: 
             return 'SUCCESS'
         return 'FAILED'
-        
-    def _verify(self,design_id,scale): # do a single verify
+
+    def _select_verify_design(self):
+        TARGET_SCALES.sort(key=lambda x: int(x.replace('M','')))
+        if self.verify_strategy=='random':
+            for scale in TARGET_SCALES:
+                if self.state['budgets'][scale]==0:
+                    self.stream.write(f"No budget for design verify at scale {scale}.")
+                    continue
+                unverified=self.ptree.get_unverified_designs(scale)
+                if len(unverified)==0:
+                    self.stream.write(f"No unverified design at scale {scale}.")
+                else:
+                    design_id=random.choice(unverified)
+                    return design_id,scale
+            self.stream.write(f"No unverified design found at any scale.")
+            return None,None
+        else:
+            raise ValueError(f"Invalid design verify strategy: {self.verify_strategy}")
+                
+    def _verify(self,design_id,scale,resume=True): # do a single verify
         design=self.ptree.get_node(design_id) # need to ensure this design has not been verified under scale
         #### XXX need manully check then comment it, need to fix, TUNE cause the problem
-        _code = design.implementation.implementation.compose()
+        if design.type=='DesignArtifactImplemented':
+            _code = design.implementation.implementation.compose()
+        else:
+            code_dir=U.pjoin(LIBRARY_DIR,'core',design_id,design_id+'.py')
+            if U.pexists(code_dir):
+                _code = U.read_file(code_dir)
+            else:
+                raise FileNotFoundError(f"Code file not found for design {design_id}")
         code = check_tune(scale,design_id, code=_code,check_only=True,cpu_only=True,reformat_only=True)
         with open('./model_discovery/model/gab.py','w', encoding='utf-8') as f:
             f.write(code)
@@ -1260,12 +1335,12 @@ class EvolutionSystem(exec_utils.System):
         args.scale=scale
         args.ckpt_dir=self.ckpt_dir
         args.data_dir=os.environ.get("DATA_DIR")
-        args.resume=True
+        args.resume=resume
         args.training_token_multiplier=self.get_train_budget(design)
         ve_main(args)
 
 
-    def get_train_budget(self,artifact):
+    def get_train_budget(self,artifact): # dynamic budget 
         # rating=artifact['rating']
         return 20
     

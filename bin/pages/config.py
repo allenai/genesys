@@ -43,6 +43,7 @@ def config(evosys,project_dir):
 
     def apply_config(config):
         apply_env_vars(evosys,config['env_vars'])
+        # st.session_state['EVOSYS_PARAMS']=config['params']
         evosys.reload(config['params'])
         st.toast(f"Applied config:\n{config}")
 
@@ -98,7 +99,6 @@ def config(evosys,project_dir):
                 params['select_method']=st.selectbox('Seed Selection Method',options=SELECT_METHODS,index=SELECT_METHODS.index(evosys.params['select_method']))
                 params['design_budget']=st.number_input('Design Budget ($)',value=evosys.params['design_budget'],min_value=0,step=100)
                 config['params']=params
-                st.session_state['EVOSYS_PARAMS']=params
 
             with col2:
                 st.write("Current Settings:")
