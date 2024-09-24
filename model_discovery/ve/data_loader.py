@@ -22,7 +22,7 @@ from ..configs.gam_config import GAMConfig
 from .. import utils as U
 
 DEFAULT_NUM_PROC_LOAD =  os.cpu_count()*4 # Configure it based on your system, it can significantly speed up the download of datasets
-DEFAULT_NUM_PROC_TOKENIZE =  max(os.cpu_count()//2,1)
+DEFAULT_NUM_PROC_TOKENIZE =  os.cpu_count()
 
 try:
     hf_key = os.environ.get("HF_KEY",None)
@@ -106,11 +106,24 @@ def pretokenize_dataset(dataset_name,tokenize_func=tokenize):
             except FileNotFoundError:
                 ds = dataload_func(tokenizer_name=tokenizer_name, context_length=context_length, *args, **kwargs)
                 # ds = ds.shuffle() # no need to shuffle now, hf trainer will shuffle it every epoch, https://discuss.huggingface.co/t/how-to-ensure-the-dataset-is-shuffled-for-each-epoch-using-trainer-and-datasets/4212/7
+                if 'train' in ds:
+                    remove_columns = ds["train"].column_names
+                else: # chunked datasets
+                    remove_columns = ds["train_0"].column_names 
                 tokenized_datasets = ds.map(
                     lambda x: tokenize_func(x, tokenizer=tokenizer, context_length=context_length),
-                    batched=True, remove_columns=ds["train"].column_names, num_proc=DEFAULT_NUM_PROC_TOKENIZE, 
+                    batched=True, remove_columns=remove_columns, num_proc=DEFAULT_NUM_PROC_TOKENIZE, 
                     batch_size=1000,
                 )
+                print('Tokenized dataset:\n',tokenized_datasets)
+                if 'train' not in tokenized_datasets: # chunked datasets, merge all train_0, train_1, etc. to train
+                    K=0
+                    while f"train_{K}" in tokenized_datasets:
+                        K+=1
+                    tokenized_datasets['train'] = concatenate_datasets([tokenized_datasets[f"train_{i}"] for i in range(K)])
+                    for i in range(K):
+                        del tokenized_datasets[f"train_{i}"]
+                    print('Merged Chunked dataset:\n',tokenized_datasets)
                 tokenized_datasets.save_to_disk(tokenized_dir)
                 print(f"Saved tokenized dataset {dataset_name} to {tokenized_dir}")
 
@@ -186,7 +199,14 @@ def tokenize_cosmopedia(
 
 @pretokenize_dataset('cosmopedia-v2',tokenize_func=tokenize_cosmopedia)
 def load_cosmopedia_v2(tokenizer_name, context_length):
-    return load_dataset("chengjunyan1/smollm-12.5-corpus","cosmopedia-v2", num_proc=DEFAULT_NUM_PROC_LOAD)
+    ds = load_dataset("chengjunyan1/smollm-12.5-corpus","cosmopedia-v2", num_proc=DEFAULT_NUM_PROC_LOAD)
+    chunk_size = 1_000_000
+    n_chunks=len(ds['train'])//chunk_size+1
+    for i in range(n_chunks):
+        ds[f'train_{i}'] = ds['train'].select(range(i*chunk_size,min((i+1)*chunk_size,len(ds['train']))))
+    del ds['train']
+    print('Chunked Cosmopedia-v2 dataset:\n',ds)
+    return ds
 
 @pretokenize_dataset('open-web-math')
 def load_open_web_math(tokenizer_name, context_length):

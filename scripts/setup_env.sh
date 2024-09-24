@@ -53,11 +53,11 @@ if [ "$PREPARE_DATA_ONLY" = false ]; then
 
     # Installing the LATEST customized LM evaluation harness
     echo "Preparing the environment"
-    pip uninstall lm_eval # uninstall current installation first
-    pip install -r requirements_linux.txt
+    # pip uninstall lm_eval # uninstall current installation first
+    pip install -r requirements.txt
 
     # Uninstalling peft
-    pip uninstall peft
+    # pip uninstall peft
 
 fi
 
@@ -75,6 +75,8 @@ fi
 # Prepare Datasets
 echo "Preparing the pre-training datasets"
 python -c "
+import sys
+sys.path.append('..')
 from model_discovery.ve.data_loader import load_datasets
 from model_discovery.configs.gam_config import GAMConfig_14M
 
