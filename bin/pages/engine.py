@@ -3,14 +3,14 @@ import time
 import pathlib
 import copy
 import streamlit as st
-import sys,os
+import sys
+import os
 import torch
 import platform
 import psutil
-import multiprocessing
-from multiprocessing import Process, Value, Queue
-import ctypes
-import signal
+import subprocess
+import shlex
+import select
 
 sys.path.append('.')
 import model_discovery.utils as U
@@ -22,7 +22,6 @@ from model_discovery.configs.gam_config import (
 )
 
 from model_discovery.ve.data_loader import load_datasets
-from model_discovery.evolution import BuildEvolution
 
 
 TARGET_SCALES = ['14M','31M','70M','125M','350M','760M','1300M']
@@ -64,22 +63,49 @@ def get_system_info():
     return cpu_info, gpu_info, mem_info
 
 
-def run_verification(params, design_id, scale, resume, stop_flag, completion_queue):
-    def signal_handler(signum, frame):
-        stop_flag.value = True
+def nvidia_smi_monitor():
+    with st.expander("NVIDIA-SMI Monitor"):
+        def get_nvidia_smi_output():
+            try:
+                result = subprocess.run(['nvidia-smi'], stdout=subprocess.PIPE)
+                return result.stdout.decode('utf-8')
+            except Exception as e:
+                return f"Error: {e}"
+        # while True:
+        if st.button("Refresh",key='refresh_btn'):
+            st.rerun()
+        st.text(get_nvidia_smi_output())
+        # time.sleep(0.1)
 
-    signal.signal(signal.SIGINT, signal_handler)
-    signal.signal(signal.SIGTERM, signal_handler)
 
-    try:
-        # Recreate the evosys object in this process
-        _evosys = BuildEvolution(params=params, do_cache=False, stream=st)
-        _evosys.verify(design_id, scale, resume=resume)
-        completion_queue.put(("completed", None))
-    except Exception as e:
-        completion_queue.put(("error", str(e)))
-    finally:
-        stop_flag.value = True
+def _run_verification(params, design_id, scale, resume):
+    params_str = shlex.quote(json.dumps(params))
+    cmd = f"python -m model_discovery.evolution --mode verify --params {params_str} --design_id {design_id} --scale {scale}"
+    if resume:
+        cmd+=' --resume'
+    st.write(f'Running Verification command:\n```{cmd}```')
+
+    process = subprocess.run(cmd, shell=True)#, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, bufsize=1, universal_newlines=True)
+    return process
+
+def run_verification(params, design_id, scale, resume):
+    key = f"{design_id}_{scale}"
+    if key not in st.session_state['running_verifications']:
+        params = copy.deepcopy(params)
+        process = _run_verification(params, design_id, scale, resume)
+        st.session_state['running_verifications'][key] = process
+        st.session_state['output'][key] = []
+        st.success(f"Verification process started for {design_id} on scale {scale}.")
+    else:
+        st.warning(f"A verification process for {design_id} on scale {scale} is already running.")
+
+
+def stream_output(process, key):
+    for line in process.stdout:
+        st.session_state['output'][key].append(line)
+        
+    for line in process.stderr:
+        st.session_state['output'][key].append(f"ERROR: {line}")
 
 
 def engine(evosys,project_dir):
@@ -90,8 +116,9 @@ def engine(evosys,project_dir):
 
     if 'running_verifications' not in st.session_state:
         st.session_state['running_verifications'] = {}
-
-
+    
+    if 'output' not in st.session_state:
+        st.session_state['output'] = {}
 
     with st.sidebar:
         st.write(f'**Namespace: ```{evosys.evoname}```**')
@@ -137,6 +164,8 @@ def engine(evosys,project_dir):
                 st.spinner('Loading... Please check the console for output')
                 config.training_data=SMOLLM_125_CORPUS
                 load_datasets(config)
+    
+    nvidia_smi_monitor()
 
 
     st.header("Verify Designs")
@@ -168,10 +197,7 @@ def engine(evosys,project_dir):
         st.write('')
         st.write('')
         already_verified=scale in verified[selected_design]
-        ckpt_dir=U.pjoin(evosys.evo_dir,'ve',selected_design+'_'+scale)
         txt='Run Verification' if not already_verified else 'Re-Run Verification'
-        if not already_verified and U.pexists(ckpt_dir):
-            txt='Resume Verification'
         run_btn= st.button(txt,use_container_width=True)
     
     with col5:
@@ -199,66 +225,68 @@ def engine(evosys,project_dir):
             for design_id in running_runs:
                 for scale in running_runs[design_id]:
                     wandb_ids=running_runs[design_id][scale]
-                    col1,col2=st.columns([0.6,0.4])
+                    col1,col2,col3=st.columns([1,0.1,0.1])
                     with col1:
-                        st.write(f'{design_id} on {scale} is running, wandb id: {wandb_ids}')
+                        wandb_id=wandb_ids['pretrain']
+                        project=wandb_ids['project']
+                        entity=wandb_ids['entity']
+                        url=f'https://wandb.ai/{entity}/{project}/runs/{wandb_id}'
+                        st.write(f'{design_id} on {scale} can be resumed [WANDB LINK]({url})')
                     with col2:
-                        st.write('')
-                        st.write('')
-                        if st.button(f'Stop/Resume'):#,use_container_width=True):
-                            st.write('WIP')
-
+                        resume_btn = st.button(f'Resume',key=f'btn_{design_id}_{scale}') #,use_container_width=True):
+                    with col3:
+                        restart_btn = st.button(f'Restart',key=f'btn_{design_id}_{scale}_restart') #,use_container_width=True):
+                    if resume_btn:
+                        run_verification(evosys.params, design_id, scale, resume=True)
+                    if restart_btn:
+                        run_verification(evosys.params, design_id, scale, resume=False)
+                        
     if run_btn:
-        if f"{selected_design}_{scale}" not in st.session_state['running_verifications']:
-            stop_flag = Value(ctypes.c_bool, False)
-            completion_queue = Queue()
-            params = copy.deepcopy(evosys.params)
-            process = Process(target=run_verification, args=(params, selected_design, scale, resume, stop_flag, completion_queue))
-            process.start()
-            st.session_state['running_verifications'][f"{selected_design}_{scale}"] = {
-                'process': process,
-                'stop_flag': stop_flag,
-                'completion_queue': completion_queue
-            }
-            st.success(f"Verification process started for {selected_design} on scale {scale}.")
-        else:
-            st.warning(f"A verification process for {selected_design} on scale {scale} is already running.")
+        run_verification(evosys.params, selected_design, scale, resume)
 
-        
-    st.header("Running Verifications")
+    st.header("Running Verification")
 
     if not st.session_state['running_verifications']:
-        st.warning("No running verifications")
+        st.warning("No running verification")
     else:
-        for key, verification in list(st.session_state['running_verifications'].items()):
-            process = verification['process']
-            stop_flag = verification['stop_flag']
-            completion_queue = verification['completion_queue']
-
-            if not completion_queue.empty():
-                status, message = completion_queue.get()
-                if status == "completed":
-                    st.success(f"Verification process for {key} completed successfully.")
-                elif status == "error":
-                    st.error(f"Verification process for {key} encountered an error: {message}")
-                del st.session_state['running_verifications'][key]
-            elif process.is_alive():
+        for key, process in list(st.session_state['running_verifications'].items()):
+            if hasattr(process, 'poll') and process.poll() is None:  # Process is still running
+                while True:
+                    output = process.stdout.readline()
+                    if output == '' and process.poll() is not None:
+                        break
+                    if output:
+                        print(output.strip())  # Print to console in real-time
+                        st.session_state['output'][key].append(output.strip())
+                
                 col1, col2 = st.columns([3, 1])
                 with col1:
                     st.info(f"Verification process for {key} is running.")
+                    wandb_ids = U.load_json(U.pjoin(evosys.evo_dir, 've', key, 'wandb_ids.json'))
+                    wandb_id = wandb_ids['pretrain']
+                    project = wandb_ids['project']
+                    entity = wandb_ids['entity']
+                    url = f'https://wandb.ai/{entity}/{project}/runs/{wandb_id}'
+                    st.write(f'View on [WANDB LINK]({url})')
                 with col2:
                     if st.button(f"Stop", key=f"stop_{key}"):
-                        stop_flag.value = True
-                        process.join(timeout=5)
-                        if process.is_alive():
-                            process.terminate()
-                        del st.session_state['running_verifications'][key]
+                        process.terminate()
                         st.success(f"Verification process for {key} stopped.")
-            else:
+                        del st.session_state['running_verifications'][key]
+            else:  # Process has finished
+                if process.returncode == 0:
+                    st.success(f"Verification process for {key} completed successfully.")
+                else:
+                    st.error(f"Verification process for {key} encountered an error. Check the output for details.")
                 del st.session_state['running_verifications'][key]
 
+            # Display output in Streamlit
+            with st.expander(f"Output for {key}"):
+                st.text("\n".join(st.session_state['output'].get(key, [])))
 
-
+    # Add a refresh button to manually update the page
+    if st.button("Refresh"):
+        st.rerun()
 
 
     

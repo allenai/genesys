@@ -43,12 +43,24 @@ torch.backends.cudnn.allow_tf32 = True
 util_logger = logging.getLogger('model_discovery.run')
 os.environ["HF_HUB_ENABLE_HF_TRANSFER"] = "1"
 
+import socket
+
+def find_free_port(start_port=25986, max_port=65535):
+    for port in range(start_port, max_port + 1):
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            try:
+                s.bind(('', port))  # Try to bind to the port
+                return port  # If successful, return this port
+            except OSError:
+                continue  # If the port is already in use, try the next one
+    raise RuntimeError("No free ports available in the specified range.")
+
 
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--evoname", type=str, default="evolution_test") # the name of the whole evolution
 parser.add_argument("--design_id", type=str, default="test") # should be named after the agent, it should be the same as gab name
-parser.add_argument("--resume", type=bool, default=True) # whether resume from the latest checkpoint if there is one, or fully retrain
+parser.add_argument("--resume", action='store_true', help="Whether to resume from the latest checkpoint if there is one, or fully retrain")
 parser.add_argument("--scale", type=str, default='debug') 
 parser.add_argument("--n_gpus", type=int, default=torch.cuda.device_count())
 parser.add_argument("--n_nodes", type=int, default=1)
@@ -64,11 +76,12 @@ parser.add_argument("--download_data_only", action='store_true')
 parser.add_argument("--logging_steps", type=int, default=20)
 parser.add_argument("--gab_name", type=str, default='default') ## name of gab block to use 
 parser.add_argument("--PERF_PROF_MODE", type=bool, default=False) # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
-parser.add_argument("--port", type=str, default="29500") # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
+# parser.add_argument("--port", type=str, default="29500") # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
 parser.add_argument("--tune_lr_in_auto_bs", type=bool, default=False) # tune lr or tune grad accumulation steps
 
 # PATCH for the evolution
-parser.add_argument("--mode", type=str, default='') # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
+parser.add_argument("--mode", type=str, default='test') # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
+parser.add_argument("--params", type=str, default='') 
 
 
 
@@ -128,9 +141,10 @@ def before_train(args):
     if args.resume and 'pretrain' in wandb_ids:
         wandb.init(
             resume="must", 
-            project=args.wandb_project, 
-            entity=args.wandb_entity,
-            id=wandb_ids['pretrain']
+            project=wandb_ids['project'], 
+            entity=wandb_ids['entity'],
+            id=wandb_ids['pretrain'],
+            name=wandb_ids['pretrain_name']
         )
     else: 
         wandb.init(
@@ -235,6 +249,9 @@ def run_train(args,gab,gab_config) -> None:
 def exec_train(args,training_args, trainer):
     global wandb_ids
     wandb_ids['pretrain']=wandb.run.id
+    wandb_ids['project']=args.wandb_project
+    wandb_ids['entity']=args.wandb_entity
+    wandb_ids['pretrain_name'] = wandb.run.name
     U.save_json(wandb_ids,f"{training_args.output_dir}/wandb_ids.json")
     
     # Automatically resume from the latest checkpoint if it exists
@@ -316,7 +333,9 @@ def train(args):
         return
     start = time.perf_counter()
     gab,gab_config=before_train(args)
-    notebook_launcher(run_train, args=(vars(args),gab,gab_config), num_processes=args.n_gpus, use_port=args.port)
+    free_port = find_free_port()
+    util_logger.info(f"Using port for training: {free_port}")
+    notebook_launcher(run_train, args=(vars(args),gab,gab_config), num_processes=args.n_gpus, use_port=free_port)
     after_train(args)
     util_logger.info(f'Training time: {(time.perf_counter() - start):.1f} s')
 
@@ -351,7 +370,9 @@ def run_eval(args):
         # "--wandb_args", "project=modis",
     ]
     gab,gab_config=BlockRegister.load_block(args.gab_name)
-    notebook_launcher(cli_evaluate, args=(None,gab,gab_config), num_processes=args.n_gpus, use_port=args.port)
+    free_port = find_free_port()
+    util_logger.info(f"Using port for evaluation: {free_port}")
+    notebook_launcher(cli_evaluate, args=(None,gab,gab_config), num_processes=args.n_gpus, use_port=free_port)
     
 def evalu(args):
     if args.PERF_PROF_MODE: return
@@ -457,7 +478,7 @@ if __name__ == "__main__":
     args.resume = True
     # args.n_gpus = 1
     args.PERF_PROF_MODE = False
-    args.port="25986"
+    # args.port="25986"
 
     main(args)
 

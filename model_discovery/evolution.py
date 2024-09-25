@@ -1410,24 +1410,39 @@ def test_evolve(test_name,step=False):
 
 
 if __name__ == '__main__':
-    params={
-        'evoname':'evolution_test1',
-        'scales':'14M,31M,70M',
-        'selection_ratio':0.25,
-        'select_method':'random',
-        'design_budget':0,
-    }
-
     args = ve_parser.parse_args()
-    params['evoname']=args.evoname
+    print('*'*20)
+    print('Parsed args:',args)
+    print('*'*20)
+    if args.mode=='test':
+        params={
+            'evoname':'evolution_test1',
+            'scales':'14M,31M,70M',
+            'selection_ratio':0.25,
+            'select_method':'random',
+            'design_budget':0,
+        }
+        params['evoname']=args.evoname
+        args.evoname=params['evoname']
 
-    # evolution_system = BuildEvolution(
-    #     params=params,
-    #     do_cache=False,
-    #     # cache_type='diskcache',
-    # )
-    # evolution_system._run(args.mode)
 
-    test_evolve('test_evo_000',step=True)
-
- 
+        test_evolve('test_evo_000',step=True)
+    else:
+        params=json.loads(args.params)
+        print(f'Running with params:\n{params}')
+        evolution_system = BuildEvolution(
+            params=params,
+            do_cache=False,
+            # cache_type='diskcache',
+        )
+        if args.mode=='verify':
+            # python -m model_discovery.evolution --mode verify --params $params --design_id $design_id --scale $scale --resume $resume
+            evolution_system.verify(args.design_id, args.scale, resume=args.resume)
+        elif args.mode=='design':
+            pass
+            # evolution_system.design(n_sources,design_cfg,search_cfg,user_input,design_id,mode,resume)
+        elif args.mode=='evolve':
+            # evolution_system.evolve()
+            pass
+        else:
+            raise ValueError(f"Invalid mode: {args.mode}")

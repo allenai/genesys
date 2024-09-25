@@ -10,6 +10,7 @@ ADDITIONAL_EVAL_TASKS = ["mathqa","sciq","swag","wsc273","scrolls_contractnli","
 BABYLM_GROUP = ["blimp_filtered","blimp_supplement"]
 TINY_NON_STANDARD = ["tinyGSM8k", "tinyMMLU", "tinyTruthfulQA"]
 
+# Optional tasks
 GROUP_EVAL_TASKS = ["glue","inverse_scaling_mc","super-glue-lm-eval-v1","tinyBenchmarks","blimp"]
 GENERATIVE_EVAL_TASKS = ["triviaqa", "drop", "babi", "unscramble", "scrolls_govreport","scrolls_summscreenfd","scrolls_narrativeqa","scrolls_qasper","scrolls_qmsum","squad_completion"]
 DIFFICULT_EVAL_TASK = ["paws_en","race", "crows_pairs_english","commonsense_qa","anli","logiqa","headqa_en","hendrycks_math","chain_of_thought","gpqa_main_cot_zeroshot","ifeval","mmlu"]
@@ -21,13 +22,15 @@ NONACC_EVAL_TASKS = ["lambada_openai","cola","tinyGSM8k"]
 
 # Other need generate: squad_completion
 
-SMOLLM_125_CORPUS=['cosmopedia-v2','python-edu','fineweb-edu-dedup','open-web-math','deepmind-math-small','stackoverflow-clean']
+# SMOLLM_125_CORPUS=['cosmopedia-v2','python-edu','fineweb-edu-dedup','open-web-math','deepmind-math-small','stackoverflow-clean']
 
-# SMOLLM_125_CORPUS=['fineweb-edu-dedup']
+SMOLLM_125_CORPUS=['fineweb-edu-dedup']
 
 DEFAULT_TASK_LIST1=[
     "inverse_scaling_mc",
     "glue",
+    "smollm125",
+    "squad_completion",
     *STANDARD_EVAL_TASKS,
     *ADDITIONAL_EVAL_TASKS,
     *BABYLM_GROUP,

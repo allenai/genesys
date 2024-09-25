@@ -169,8 +169,9 @@ def download_contents_py(blob_id):
     return {"text": content}
 
 @pretokenize_dataset('python-edu') # directly load from huggingface, pre downloaded texts, may need to remove later
-def load_python_edu(tokenizer_name, context_length): 
+def load_python_edu(tokenizer_name, context_length,splits=['train','eval']): 
     ds = load_dataset("chengjunyan1/smollm-12.5-corpus", "python-edu", num_proc=DEFAULT_NUM_PROC_LOAD)
+    ds = DatasetDict({split:ds[split] for split in splits})
     # ds_train = ds['train'].map(download_contents_py, input_columns="blob_id", num_proc=DEFAULT_NUM_PROC_LOAD)
     # ds_test = ds['test'].map(download_contents_py, input_columns="blob_id", num_proc=DEFAULT_NUM_PROC_LOAD)
     # ds_eval = ds['eval'].map(download_contents_py, input_columns="blob_id", num_proc=DEFAULT_NUM_PROC_LOAD)
@@ -178,11 +179,13 @@ def load_python_edu(tokenizer_name, context_length):
     return ds
 
 @pretokenize_dataset('fineweb-edu-dedup')
-def load_fine_web_dedup(tokenizer_name, context_length):
-    return load_dataset("chengjunyan1/smollm-12.5-corpus","fineweb-edu-dedup", num_proc=DEFAULT_NUM_PROC_LOAD)
+def load_fine_web_dedup(tokenizer_name, context_length,splits=['train','eval']):
+    ds = load_dataset("chengjunyan1/smollm-12.5-corpus","fineweb-edu-dedup", num_proc=DEFAULT_NUM_PROC_LOAD)
+    ds = DatasetDict({split:ds[split] for split in splits})
+    return ds
 
 @pretokenize_dataset('cosmopedia-v2')
-def load_cosmopedia_v2(tokenizer_name, context_length):
+def load_cosmopedia_v2(tokenizer_name, context_length,splits=['train','eval']):
     ds = load_dataset("chengjunyan1/smollm-12.5-corpus", "cosmopedia-v2", num_proc=DEFAULT_NUM_PROC_LOAD)
     
     def format_text(examples):
@@ -192,8 +195,9 @@ def load_cosmopedia_v2(tokenizer_name, context_length):
                 for audience, prompt, text in zip(examples['audience'], examples['prompt'], examples['text'])
             ]
         }
-    
-    for split in ['train', 'test', 'eval']:
+
+    ds = DatasetDict({split:ds[split] for split in splits})
+    for split in splits:
         ds[split] = ds[split].map(
             format_text,
             batched=True,
@@ -212,12 +216,14 @@ def load_cosmopedia_v2(tokenizer_name, context_length):
     return ds
 
 @pretokenize_dataset('open-web-math')
-def load_open_web_math(tokenizer_name, context_length):
-    return load_dataset("chengjunyan1/smollm-12.5-corpus","open-web-math", num_proc=DEFAULT_NUM_PROC_LOAD)
+def load_open_web_math(tokenizer_name, context_length,splits=['train','eval']):
+    ds = load_dataset("chengjunyan1/smollm-12.5-corpus","open-web-math", num_proc=DEFAULT_NUM_PROC_LOAD)
+    ds = DatasetDict({split:ds[split] for split in splits})
+    return ds
 
 
 @pretokenize_dataset('deepmind-math-small')
-def load_deepmind_math_small(tokenizer_name, context_length):
+def load_deepmind_math_small(tokenizer_name, context_length,splits=['train','eval']):
     ds = load_dataset("chengjunyan1/smollm-12.5-corpus", "deepmind-math-small", num_proc=DEFAULT_NUM_PROC_LOAD)
     
     def format_text(examples):
@@ -228,7 +234,8 @@ def load_deepmind_math_small(tokenizer_name, context_length):
             ]
         }
     
-    for split in ['train', 'test', 'eval']:
+    ds = DatasetDict({split:ds[split] for split in splits})
+    for split in splits:
         ds[split] = ds[split].map(
             format_text,
             batched=True,
@@ -236,14 +243,15 @@ def load_deepmind_math_small(tokenizer_name, context_length):
             num_proc=DEFAULT_NUM_PROC_LOAD,
             remove_columns=['question', 'answer']
         )
-    
+
     return ds
 
 
 @pretokenize_dataset('stackoverflow-clean')
-def load_stackoverflow_clean(tokenizer_name, context_length):
+def load_stackoverflow_clean(tokenizer_name, context_length,splits=['train','eval']):
     ds = load_dataset("chengjunyan1/smollm-12.5-corpus","stackoverflow-clean", num_proc=DEFAULT_NUM_PROC_LOAD)
     ds = ds.rename_column('content', 'text')
+    ds = DatasetDict({split:ds[split] for split in splits})
     return ds
 
 loaders={
