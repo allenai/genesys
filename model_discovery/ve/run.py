@@ -11,6 +11,7 @@ import wandb
 import time
 import logging
 from datetime import datetime
+import uuid
 
 # import transformers
 from huggingface_hub import login
@@ -143,8 +144,8 @@ def before_train(args):
             resume="must", 
             project=wandb_ids['project'], 
             entity=wandb_ids['entity'],
-            id=wandb_ids['pretrain'],
-            name=wandb_ids['pretrain_name']
+            id=wandb_ids['pretrain']['id'],
+            name=wandb_ids['pretrain']['name']
         )
     else: 
         wandb.init(
@@ -248,10 +249,11 @@ def run_train(args,gab,gab_config) -> None:
 
 def exec_train(args,training_args, trainer):
     global wandb_ids
-    wandb_ids['pretrain']=wandb.run.id
+    wandb_ids['pretrain']={}
+    wandb_ids['pretrain']['id']=wandb.run.id
     wandb_ids['project']=args.wandb_project
     wandb_ids['entity']=args.wandb_entity
-    wandb_ids['pretrain_name'] = wandb.run.name
+    wandb_ids['pretrain']['name'] = wandb.run.name
     U.save_json(wandb_ids,f"{training_args.output_dir}/wandb_ids.json")
     
     # Automatically resume from the latest checkpoint if it exists
@@ -335,7 +337,13 @@ def train(args):
     gab,gab_config=before_train(args)
     free_port = find_free_port()
     util_logger.info(f"Using port for training: {free_port}")
-    notebook_launcher(run_train, args=(vars(args),gab,gab_config), num_processes=args.n_gpus, use_port=free_port)
+    notebook_launcher(
+        run_train, 
+        args=(vars(args),gab,gab_config), 
+        num_processes=args.n_gpus, 
+        use_port=free_port,
+        # start_method='spawn'  # Add this line
+    )
     after_train(args)
     util_logger.info(f'Training time: {(time.perf_counter() - start):.1f} s')
 
@@ -357,6 +365,13 @@ def run_eval(args):
     #     return
     print("Evaluation Start")
     cfg=eval(f"GAMConfig_{args.scale}()")
+    wandb_ids=U.load_json(f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}/wandb_ids.json")
+    wandb_ids['evaluate']={}
+    wandb_name=f"{args.evoname}_{args.design_id}_eval_{datetime.now().strftime('%Y%m%d%H%M%S')}"
+    wandb_ids['evaluate']['id']=str(uuid.uuid4())[:8]
+    wandb_ids['evaluate']['name'] = wandb_name
+    U.save_json(wandb_ids,f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}/wandb_ids.json")
+    
     sys.argv = [
         "",
         "--model", "modis",
@@ -367,7 +382,7 @@ def run_eval(args):
         "--max_batch_size", f"{cfg.eval_batch_size}",
         "--output_path", f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}/eval_results",
         "--cache_requests", "true", # refresh for debugging, true for normal 
-        # "--wandb_args", "project=modis",
+        "--wandb_args", f"project={args.wandb_project},entity={args.wandb_entity},name={wandb_name}"
     ]
     gab,gab_config=BlockRegister.load_block(args.gab_name)
     free_port = find_free_port()
@@ -419,7 +434,7 @@ def report(args) -> dict:
         return
     report={}
     # try:
-    run_id=U.load_json(f"{outdir}/wandb_ids.json")['pretrain']
+    run_id=U.load_json(f"{outdir}/wandb_ids.json")['pretrain']['id']
     history,system_metrics=get_history(
         run_id,
         project_path=f"{args.wandb_entity}/{args.wandb_project}"

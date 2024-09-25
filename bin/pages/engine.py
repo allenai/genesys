@@ -11,6 +11,7 @@ import psutil
 import subprocess
 import shlex
 import select
+import pandas as pd
 
 sys.path.append('.')
 import model_discovery.utils as U
@@ -63,20 +64,6 @@ def get_system_info():
     return cpu_info, gpu_info, mem_info
 
 
-def nvidia_smi_monitor():
-    with st.expander("NVIDIA-SMI Monitor"):
-        def get_nvidia_smi_output():
-            try:
-                result = subprocess.run(['nvidia-smi'], stdout=subprocess.PIPE)
-                return result.stdout.decode('utf-8')
-            except Exception as e:
-                return f"Error: {e}"
-        # while True:
-        if st.button("Refresh",key='refresh_btn'):
-            st.rerun()
-        st.text(get_nvidia_smi_output())
-        # time.sleep(0.1)
-
 
 def _run_verification(params, design_id, scale, resume):
     params_str = shlex.quote(json.dumps(params))
@@ -124,13 +111,19 @@ def engine(evosys,project_dir):
         st.write(f'**Namespace: ```{evosys.evoname}```**')
         with st.expander("Running Sessions"):
             st.write(st.session_state['running_verifications'])
+        with st.expander("View CPU stats"):
+            cpu_percentages = psutil.cpu_percent(interval=1, percpu=True)
+            if st.button("Refresh",key='refresh_btn_cpu'):
+                cpu_percentages = psutil.cpu_percent(interval=1, percpu=True)
+            cpu_df = pd.DataFrame(cpu_percentages, columns=["Usage (%)"], index=[f"Core {i}" for i in range(len(cpu_percentages))])
+            st.dataframe(cpu_df)
 
 
     st.subheader("System Diagnostics")
     col1, col2, col3, col4 = st.columns(4)
     cpu_info, gpu_info, mem_info = get_system_info()
     with col1:
-        with st.expander("CPU Info"):
+        with st.expander("Platform Info"):
             st.write(cpu_info)
     with col2:
         with st.expander("GPU Info"):
@@ -138,35 +131,57 @@ def engine(evosys,project_dir):
     with col3:
         with st.expander("Memory Info"):
             st.write(mem_info)
+            if st.button("Refresh",key='refresh_btn_mem'):
+                cpu_info, gpu_info, mem_info = get_system_info()
     with col4:
         with st.expander("Experiment Info"):
             st.write(f'Namespace: ```{evosys.evoname}```')
             st.write(evosys.state)
 
-    with st.expander("Diagnostic Panel (For internal use)"):
-        # st.subheader("Test loading datasets")
-        config=GAMConfig_14M()
-        st.subheader("Test dataset loader")
-        col1,_,col2,_,col3,_=st.columns([3,0.3,2,0.3,2,1])
-        with col1:
-            dataset_name=st.selectbox("Choose a Dataset",options=SMOLLM_125_CORPUS)
-        with col2:
-            st.write('')
-            st.write('')
-            if st.button("Test Loading "+dataset_name,use_container_width=True):
-                st.spinner('Loading... Please check the console for output')
-                config.training_data=[dataset_name]
-                load_datasets(config)
-        with col3:
-            st.write('')
-            st.write('')
-            if st.button("Test Loading All Datasets",use_container_width=True):
-                st.spinner('Loading... Please check the console for output')
-                config.training_data=SMOLLM_125_CORPUS
-                load_datasets(config)
+    Col1,Col2=st.columns([5,4])
     
-    nvidia_smi_monitor()
+    with Col1:
+        with st.expander("NVIDIA-SMI Monitor"):
+            def get_nvidia_smi_output():
+                try:
+                    result = subprocess.run(['nvidia-smi'], stdout=subprocess.PIPE)
+                    return result.stdout.decode('utf-8')
+                except Exception as e:
+                    return f"Error: {e}"
+            _output=get_nvidia_smi_output()
+            if st.button("Refresh",key='refresh_btn'):
+                _output=get_nvidia_smi_output()
+            st.text(_output)
 
+
+    with Col2:
+        disable_diagnostic_panel=True
+        with st.expander("Diagnostic Panel (For internal use)"):
+            # st.subheader("Test loading datasets")
+            config=GAMConfig_14M()
+            st.subheader("Test dataset loader")
+            col1,col2,col3=st.columns([3,2,2])
+            with col1:
+                dataset_name=st.selectbox("Choose a Dataset",options=SMOLLM_125_CORPUS,disabled=disable_diagnostic_panel)
+            with col2:
+                st.write('')
+                st.write('')
+                if st.button("Test Loading",use_container_width=True,disabled=disable_diagnostic_panel):
+                    st.spinner('Loading... Please check the console for output')
+                    config.training_data=[dataset_name]
+                    load_datasets(config)
+            with col3:
+                st.write('')
+                st.write('')
+                if st.button("Load all",use_container_width=True,disabled=disable_diagnostic_panel):
+                    st.spinner('Loading... Please check the console for output')
+                    config.training_data=SMOLLM_125_CORPUS
+                    load_datasets(config)
+
+
+
+
+    ##################################################################################
 
     st.header("Verify Designs")
     col1,_,col2,_,col3,_,col4,col5=st.columns([1,0.05,0.9,0.05,1.3,0.05,0.6,0.4])
@@ -225,16 +240,23 @@ def engine(evosys,project_dir):
             for design_id in running_runs:
                 for scale in running_runs[design_id]:
                     wandb_ids=running_runs[design_id][scale]
-                    col1,col2,col3=st.columns([1,0.1,0.1])
+                    if 'id' not in wandb_ids['pretrain']: continue
+                    wandb_id=wandb_ids['pretrain']['id']
+                    wandb_name=wandb_ids['pretrain']['name']
+                    project=wandb_ids['project']
+                    entity=wandb_ids['entity']
+                    url=f'https://wandb.ai/{entity}/{project}/runs/{wandb_id}'
+                        
+                    col1,col2,col3,col4,col5=st.columns([0.5,0.5,1,0.3,0.3])
                     with col1:
-                        wandb_id=wandb_ids['pretrain']
-                        project=wandb_ids['project']
-                        entity=wandb_ids['entity']
-                        url=f'https://wandb.ai/{entity}/{project}/runs/{wandb_id}'
-                        st.write(f'{design_id} on {scale} can be resumed [WANDB LINK]({url})')
+                        st.write(f"Run id: ```{wandb_id}```")
                     with col2:
-                        resume_btn = st.button(f'Resume',key=f'btn_{design_id}_{scale}') #,use_container_width=True):
+                        st.write(f"Model name: **{design_id}**-*{scale}*")
                     with col3:
+                        st.write(f"W&B run: [{wandb_name}]({url})")
+                    with col4:
+                        resume_btn = st.button(f'Resume',key=f'btn_{design_id}_{scale}') #,use_container_width=True):
+                    with col5:
                         restart_btn = st.button(f'Restart',key=f'btn_{design_id}_{scale}_restart') #,use_container_width=True):
                     if resume_btn:
                         run_verification(evosys.params, design_id, scale, resume=True)
@@ -285,7 +307,7 @@ def engine(evosys,project_dir):
                 st.text("\n".join(st.session_state['output'].get(key, [])))
 
     # Add a refresh button to manually update the page
-    if st.button("Refresh"):
+    if st.button("Refresh",key='refresh_btn_engine'):
         st.rerun()
 
 

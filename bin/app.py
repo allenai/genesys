@@ -6,8 +6,6 @@ import streamlit as st
 import importlib
 import multiprocessing
 
-multiprocessing.set_start_method('spawn', force=True)
-
 st.set_page_config(page_title="AlphaGPT", layout="wide")
 
 

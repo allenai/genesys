@@ -274,7 +274,7 @@ class GABFormatChecker:
         
         # Update self.gab_code with the modified AST
         self.gab_code = astor.to_source(code_ast)
-        print(f'Code after reformatted:\n\n{self.gab_code}\n\n')
+        # print(f'Code after reformatted:\n\n{self.gab_code}\n\n')
 
         # Execute the modified AST
         try: ####NOTE: LEAVE IT OPEN FOR DEBUGGING CAUSE, REMEMBER TO UNCOMMENT

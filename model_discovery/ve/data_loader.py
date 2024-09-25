@@ -66,7 +66,7 @@ def combine_datasets(dataset_dicts, weights:dict=None): # weights e.g. {'train':
     
     # Initialize weights if not provided
     for name in dataset_dicts:
-        print(f"Combining dataset: {name}")
+        # print(f"Combining dataset: {name}")
         dataset_dict = dataset_dicts[name]
         for key, dataset in dataset_dict.items():
             if key in combined_dict:
@@ -88,7 +88,7 @@ def combine_datasets(dataset_dicts, weights:dict=None): # weights e.g. {'train':
         combined_dict[key] = concatenate_datasets(datasets)
     
     ds = DatasetDict(combined_dict)
-    print('Combined dataset:\n',ds)
+    # print('Combined dataset:\n',ds)
     return ds
     
 def pretokenize_dataset(dataset_name):

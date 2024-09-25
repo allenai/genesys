@@ -44,6 +44,13 @@ import random
 # from networkx.drawing.nx_pydot import to_pydot,warnings
 from pyvis.network import Network
 import math
+import multiprocessing
+
+try:
+    multiprocessing.set_start_method('spawn')
+except RuntimeError:
+    pass
+
 
 from model_discovery.model.library.tester import check_tune
 
@@ -447,7 +454,7 @@ class DesignArtifact(NodeObject):
         codes = U.load_json(U.pjoin(design_dir, 'codes.json'))
         return cls(proposal=proposal, implementation=implementation, verifications=verifications, codes=codes, **metadata)
 
-    def to_prompt(self):
+    def to_prompt(self, full_code=True):
         prompt=f"""
 # Proposal: {self.proposal.modelname}
 
@@ -464,10 +471,17 @@ class DesignArtifact(NodeObject):
 {self.proposal.suggestions}
 """
         if self.is_implemented():
-            prompt+=f"""
+            if full_code:
+                prompt+=f"""
 # Implementation
 
 {self.implementation.implementation.view()}
+            """
+            else:
+                prompt+=f"""
+# Implementation
+
+{self.implementation.implementation.root.spec.document}
             """
         for scale in self.verifications:
             pass # TODO
@@ -482,6 +496,8 @@ class DesignArtifact(NodeObject):
         mdtext += f'\n**Variant:** {self.proposal.variantname}'
         mdtext += f'\n**Rating:** {self.proposal.rating}/5'
         mdtext += f'\n**Passed:** {self.proposal.passed}'
+        if self.is_implemented():
+            mdtext += f'\n**Implementation:**\n\n{self.implementation.implementation.root.spec.document}'
         return mdtext.replace(':', ' ').replace('e.\ng.\n', 'e.g.').replace('i.\ne.\n', 'i.e.')
 
     def is_implemented(self):
@@ -1411,9 +1427,9 @@ def test_evolve(test_name,step=False):
 
 if __name__ == '__main__':
     args = ve_parser.parse_args()
-    print('*'*20)
-    print('Parsed args:',args)
-    print('*'*20)
+    # print('*'*20)
+    # print('Parsed args:',args)
+    # print('*'*20)
     if args.mode=='test':
         params={
             'evoname':'evolution_test1',
