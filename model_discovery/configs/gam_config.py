@@ -219,9 +219,9 @@ class GAMConfig_debug(GAMConfig_14M):
     #     "lambada_openai","hellaswag","piqa","arc_easy","arc_challenge","winogrande",
     #     "blimp", # "blimp_filtered","blimp_supplement"
     # ])
-    rms_norm: bool = False 
-    fused_add_norm: bool = False # TRITON BUGGY
-    use_template: bool = False
+    # rms_norm: bool = False 
+    # fused_add_norm: bool = False # TRITON BUGGY
+    # use_template: bool = False
     
 
 

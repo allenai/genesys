@@ -65,13 +65,22 @@ def get_system_info():
 
 
 
+def _prep_verification(params, design_id, scale, resume):
+    params_str = shlex.quote(json.dumps(params))
+    cmd = f"python -m model_discovery.evolution --mode prep_verify --params {params_str} --design_id {design_id} --scale {scale}"
+    if resume:
+        cmd+=' --resume'
+    st.write(f'Preparing Verification...')
+    process = subprocess.run(cmd, shell=True)#, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, bufsize=1, universal_newlines=True)
+    return process
+
 def _run_verification(params, design_id, scale, resume):
     params_str = shlex.quote(json.dumps(params))
     cmd = f"python -m model_discovery.evolution --mode verify --params {params_str} --design_id {design_id} --scale {scale}"
     if resume:
         cmd+=' --resume'
-    st.write(f'Running Verification command:\n```{cmd}```')
-
+    st.write(f'Running Verification command:\n\n```{cmd}```')
+    st.write('Please check the console for verification progress...')
     process = subprocess.run(cmd, shell=True)#, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, bufsize=1, universal_newlines=True)
     return process
 
@@ -79,6 +88,7 @@ def run_verification(params, design_id, scale, resume):
     key = f"{design_id}_{scale}"
     if key not in st.session_state['running_verifications']:
         params = copy.deepcopy(params)
+        _prep_verification(params, design_id, scale, resume)
         process = _run_verification(params, design_id, scale, resume)
         st.session_state['running_verifications'][key] = process
         st.session_state['output'][key] = []
@@ -266,49 +276,49 @@ def engine(evosys,project_dir):
     if run_btn:
         run_verification(evosys.params, selected_design, scale, resume)
 
-    st.header("Running Verification")
+    # st.header("Running Verification")
 
-    if not st.session_state['running_verifications']:
-        st.warning("No running verification")
-    else:
-        for key, process in list(st.session_state['running_verifications'].items()):
-            if hasattr(process, 'poll') and process.poll() is None:  # Process is still running
-                while True:
-                    output = process.stdout.readline()
-                    if output == '' and process.poll() is not None:
-                        break
-                    if output:
-                        print(output.strip())  # Print to console in real-time
-                        st.session_state['output'][key].append(output.strip())
+    # if not st.session_state['running_verifications']:
+    #     st.warning("No running verification")
+    # else:
+    #     for key, process in list(st.session_state['running_verifications'].items()):
+    #         if hasattr(process, 'poll') and process.poll() is None:  # Process is still running
+    #             while True:
+    #                 output = process.stdout.readline()
+    #                 if output == '' and process.poll() is not None:
+    #                     break
+    #                 if output:
+    #                     print(output.strip())  # Print to console in real-time
+    #                     st.session_state['output'][key].append(output.strip())
                 
-                col1, col2 = st.columns([3, 1])
-                with col1:
-                    st.info(f"Verification process for {key} is running.")
-                    wandb_ids = U.load_json(U.pjoin(evosys.evo_dir, 've', key, 'wandb_ids.json'))
-                    wandb_id = wandb_ids['pretrain']
-                    project = wandb_ids['project']
-                    entity = wandb_ids['entity']
-                    url = f'https://wandb.ai/{entity}/{project}/runs/{wandb_id}'
-                    st.write(f'View on [WANDB LINK]({url})')
-                with col2:
-                    if st.button(f"Stop", key=f"stop_{key}"):
-                        process.terminate()
-                        st.success(f"Verification process for {key} stopped.")
-                        del st.session_state['running_verifications'][key]
-            else:  # Process has finished
-                if process.returncode == 0:
-                    st.success(f"Verification process for {key} completed successfully.")
-                else:
-                    st.error(f"Verification process for {key} encountered an error. Check the output for details.")
-                del st.session_state['running_verifications'][key]
+    #             col1, col2 = st.columns([3, 1])
+    #             with col1:
+    #                 st.info(f"Verification process for {key} is running.")
+    #                 wandb_ids = U.load_json(U.pjoin(evosys.evo_dir, 've', key, 'wandb_ids.json'))
+    #                 wandb_id = wandb_ids['pretrain']
+    #                 project = wandb_ids['project']
+    #                 entity = wandb_ids['entity']
+    #                 url = f'https://wandb.ai/{entity}/{project}/runs/{wandb_id}'
+    #                 st.write(f'View on [WANDB LINK]({url})')
+    #             with col2:
+    #                 if st.button(f"Stop", key=f"stop_{key}"):
+    #                     process.terminate()
+    #                     st.success(f"Verification process for {key} stopped.")
+    #                     del st.session_state['running_verifications'][key]
+    #         else:  # Process has finished
+    #             if process.returncode == 0:
+    #                 st.success(f"Verification process for {key} completed successfully.")
+    #             else:
+    #                 st.error(f"Verification process for {key} encountered an error. Check the output for details.")
+    #             del st.session_state['running_verifications'][key]
 
-            # Display output in Streamlit
-            with st.expander(f"Output for {key}"):
-                st.text("\n".join(st.session_state['output'].get(key, [])))
+    #         # Display output in Streamlit
+    #         with st.expander(f"Output for {key}"):
+    #             st.text("\n".join(st.session_state['output'].get(key, [])))
 
-    # Add a refresh button to manually update the page
-    if st.button("Refresh",key='refresh_btn_engine'):
-        st.rerun()
+    # # Add a refresh button to manually update the page
+    # if st.button("Refresh",key='refresh_btn_engine'):
+    #     st.rerun()
 
 
     

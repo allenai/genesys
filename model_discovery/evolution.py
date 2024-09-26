@@ -52,7 +52,6 @@ except RuntimeError:
     pass
 
 
-from model_discovery.model.library.tester import check_tune
 
 
 from types import ModuleType
@@ -66,6 +65,7 @@ from typing import (
     Optional,
     Union
 )
+from model_discovery.model.library.tester import check_tune
 from .system import BuildSystem,PrintSystem,DesignModes,RunningModes
 from exec_utils.factory import _check_config
 from exec_utils import BuildSystem as NativeBuild
@@ -553,7 +553,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
     │   └── ...
     | ... # units, etc.
     """
-    def __init__(self, db_dir: str):
+    def __init__(self, db_dir: str, db_only=False):
         self.db_dir = db_dir
         self.lib_dir = U.pjoin(LIBRARY_DIR,'tree')
         self.lib_ext_dir = U.pjoin(LIBRARY_DIR,'tree_ext')
@@ -561,6 +561,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         U.mkdir(db_dir)
         U.mkdir(U.pjoin(db_dir,'designs'))
         U.mkdir(U.pjoin(db_dir,'sessions'))
+        self.db_only=db_only
         self.load()
 
     # new design: proposal -> implement -> verify
@@ -614,9 +615,11 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
 
     # How to handle variants? i.e., in GPT, there are optional pre-conv and post-conv, maybe just all of them to the tree, let selector to choose
 
-    def new_design(self, seed_ids, ref_ids, instruct, num_samples, mode=DesignModes.MUTATION): # new design session, a session explore the steps from a selected node
+    def new_design(self, seed_ids, ref_ids, instruct, num_samples, mode=None): # new design session, a session explore the steps from a selected node
         # generate unique hash for the design, do not consider the order
         # design_id = hashlib.sha256(f"{sorted(ref_ids)}{sorted(seed_ids)}{instruct}{mode}".encode()).hexdigest()
+        if mode is None:
+            mode=DesignModes.MUTATION
         hash_tail=hashlib.sha256(f"{sorted(ref_ids)}{sorted(seed_ids)}{instruct}{mode}".encode()).hexdigest()
         design_id = f"{datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}-{hash_tail[-6:]}"
         sessdata = {
@@ -855,7 +858,8 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
 
     def load(self):
         self.G=self.load_graph()
-        self.load_design_sessions()
+        if not self.db_only:
+            self.load_design_sessions()
 
     def load_graph(self,max_nodes=None):
         edges_to_add = []
@@ -869,7 +873,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
             count+=1
             for seed_id in artifact.seed_ids:
                 edges_to_add.append((seed_id, artifact.acronym))
-        
+
         # Load core library
         for id in os.listdir(self.lib_dir):
             if max_nodes and count>max_nodes:
@@ -880,7 +884,10 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
             count+=1
             for seed_id in ref.seed_ids:
                 edges_to_add.append((seed_id, ref.acronym))
-                
+         
+        if self.db_only:
+            return G
+
         # # load extended library
         # dir_ext_1hop = U.pjoin(self.lib_ext_dir,'1hop')
         # for i in os.listdir(dir_ext_1hop):
@@ -995,6 +1002,24 @@ def report_reader(report):
     # TODO: add an analysis of the report by the Selector agent
     return report
 
+
+
+
+
+def _verify(evoname,design_id,scale,resume=True, mult=20): # do a single verify
+    args = ve_parser.parse_args()
+    args.evoname=evoname
+    args.design_id=design_id+f'_{scale}'
+    args.scale=scale
+    args.ckpt_dir=os.environ.get("CKPT_DIR")
+    args.data_dir=os.environ.get("DATA_DIR")
+    args.resume=resume
+    args.training_token_multiplier=mult
+    ve_main(args)
+
+
+
+
 # @exec_utils.Registry("config","evolution")
 # class CustomParams(exec_utils.ModuleParams):
 #     strparams: str = exec_utils.ParamField(
@@ -1023,10 +1048,7 @@ class EvolutionSystem(exec_utils.System):
 
         # set the name and save dir
         self.evoname=self.params['evoname'] # Provide the name for the whole run including evolutions of all scales, all designs, all agents
-        if not 'ckpt_dir' in self.params or not self.params['ckpt_dir']:
-            self.ckpt_dir=os.environ.get("CKPT_DIR")
-        else:
-            self.ckpt_dir=self.params['ckpt_dir']
+        self.ckpt_dir=os.environ.get("CKPT_DIR")
         self.evo_dir=U.pjoin(self.ckpt_dir,self.evoname)
         U.mkdir(self.evo_dir)
 
@@ -1074,6 +1096,12 @@ class EvolutionSystem(exec_utils.System):
                 self.state['budgets'][scale]=int(np.ceil(budget))
                 budget/=self.state['selection_ratio']
         scales=list(self.state['budgets'].keys())
+
+        if 'no_agent' not in self.params:
+            self.params['no_agent']=False
+        if 'db_only' not in self.params:
+            self.params['db_only']=False
+
         self.save_state() # save the initialized state
 
         self.scales=[eval(f'GAMConfig_{scale}()') for scale in scales]
@@ -1082,19 +1110,23 @@ class EvolutionSystem(exec_utils.System):
         self.stream.write(f"Budgets remaining: {self.state['budgets']}")
         self.stream.write(f"Checkpoint directory: {self.evo_dir}")
 
-        self.ptree=PhylogeneticTree(U.pjoin(self.evo_dir,'db'))
+        self.ptree=PhylogeneticTree(U.pjoin(self.evo_dir,'db'),self.params['db_only'])
         print(f"Phylogenetic tree loaded with {len(self.ptree.G.nodes)} nodes and {len(self.ptree.design_sessions)} design sessions from {self.ptree.db_dir}.")
-        self.rnd_agent = BuildSystem(
-            debug_steps=False, # True for debugging, but very long
-            # cache_type="diskcache", #<-- agent caching method 
-            temperature=0.1,
-            jupyter=False,
-            # cache_id=919,
-            #from_json='/path/to/config'
-            **kwargs
-        )
-        self.rnd_agent.bind_ptree(self.ptree,self.stream)
-        # self.ptree.export()
+
+        if self.params['no_agent']:
+            self.rnd_agent = None
+        else:
+            self.rnd_agent = BuildSystem(
+                debug_steps=False, # True for debugging, but very long
+                # cache_type="diskcache", #<-- agent caching method 
+                temperature=0.1,
+                jupyter=False,
+                # cache_id=919,
+                #from_json='/path/to/config'
+                **kwargs
+            )
+            self.rnd_agent.bind_ptree(self.ptree,self.stream)
+            # self.ptree.export()
 
     def link_stream(self,stream):
         self.stream=stream
@@ -1157,9 +1189,11 @@ class EvolutionSystem(exec_utils.System):
             self.verify()
 
     # TODO: the interface should be updated when selector agent is ready, and design cfg is ready
-    def design(self,n_sources=None,design_cfg={},search_cfg={},user_input='',design_id=None,mode=DesignModes.MUTATION,resume=True): # select then sample, TODO: n_sources and design_cfg should be configed
+    def design(self,n_sources=None,design_cfg={},search_cfg={},user_input='',design_id=None,mode=None,resume=True): # select then sample, TODO: n_sources and design_cfg should be configed
         # user_input and design_cfg maybe changed by the user, so we need to pass them in
         # self.ptree.reload() # WHY WE NEED THIS???
+        if mode is None:
+            mode=DesignModes.MUTATION
         unfinished_designs = self.ptree.get_unfinished_designs()
         self.stream.write(f"Found {len(unfinished_designs)} unfinished designs, allow resume: {resume}")
         if n_sources is None:
@@ -1183,7 +1217,7 @@ class EvolutionSystem(exec_utils.System):
             self.stream.write(f"Design id provided, will restore session {design_id}, mode: {mode}")
             self.sample(design_id=design_id,user_input=user_input,design_cfg=design_cfg,mode=mode,search_cfg=search_cfg)
 
-    def sample(self,instruct=None,seed:List[NodeObject]=None,refs:List[NodeObject]=None,design_id=None,mode=DesignModes.MUTATION,user_input='',design_cfg={},search_cfg={}):
+    def sample(self,instruct=None,seed:List[NodeObject]=None,refs:List[NodeObject]=None,design_id=None,mode=None,user_input='',design_cfg={},search_cfg={}):
         """ 
         Sample a design at a given scale and verify it 
         
@@ -1194,6 +1228,8 @@ class EvolutionSystem(exec_utils.System):
         Selector choose which seeds to use, and budget for verification
         Given the seeds which direct the global direction, the agent system should be fully responsible for the best local move
         """
+        if mode is None:
+            mode=DesignModes.MUTATION
 
         self.rnd_agent(
             user_input,
@@ -1209,13 +1245,15 @@ class EvolutionSystem(exec_utils.System):
 
 
     # TODO: upgrade to Selector agent
-    def select(self,K: Union[int,Dict[str,int]],selector_instruct='',mode=DesignModes.MUTATION)->Tuple[str,List[NodeObject]]:
+    def select(self,K: Union[int,Dict[str,int]],selector_instruct='',mode=None)->Tuple[str,List[NodeObject]]:
         '''
         K: int or dict of {source_type: num of seeds}, if K is int, then sample from all default sources (the ones with code)
         Return:
             seeds: List[NodeObject]
             instruct: str, the prompt generated from the selector and seeds
         '''
+        if mode is None:
+            mode=DesignModes.MUTATION
         seeds=[]
         instruct=''
         if isinstance(K,int):
@@ -1305,7 +1343,8 @@ class EvolutionSystem(exec_utils.System):
         if design_id is None:
             return None
         self.stream.write(f"Verifying design {design_id} at scale {scale}...")
-        self._verify(design_id,scale,resume=resume) # verify the design until it's done
+        mult=self.get_train_budget(self.ptree.get_node(design_id))
+        _verify(self.evoname,design_id,scale,resume=resume, mult=mult) # verify the design until it's done
         report_dir=U.pjoin(self.evo_dir,'ve',design_id+f'_{scale}','report.json')
         report=U.load_json(report_dir)
         self.ptree.verify(design_id,scale,report)
@@ -1330,10 +1369,10 @@ class EvolutionSystem(exec_utils.System):
             return None,None
         else:
             raise ValueError(f"Invalid design verify strategy: {self.verify_strategy}")
-                
-    def _verify(self,design_id,scale,resume=True): # do a single verify
+    
+    def _prep_verify(self,design_id,scale):
         design=self.ptree.get_node(design_id) # need to ensure this design has not been verified under scale
-        #### XXX need manully check then comment it, need to fix, TUNE cause the problem
+        ### XXX need manully check then comment it, need to fix, TUNE cause the problem
         if design.type=='DesignArtifactImplemented':
             _code = design.implementation.implementation.compose()
         else:
@@ -1345,15 +1384,7 @@ class EvolutionSystem(exec_utils.System):
         code = check_tune(scale,design_id, code=_code,check_only=True,cpu_only=True,reformat_only=True)
         with open('./model_discovery/model/gab.py','w', encoding='utf-8') as f:
             f.write(code)
-        args = ve_parser.parse_args()
-        args.evoname=self.evoname
-        args.design_id=design_id+f'_{scale}'
-        args.scale=scale
-        args.ckpt_dir=self.ckpt_dir
-        args.data_dir=os.environ.get("DATA_DIR")
-        args.resume=resume
-        args.training_token_multiplier=self.get_train_budget(design)
-        ve_main(args)
+        return self.get_train_budget(design)
 
 
     def get_train_budget(self,artifact): # dynamic budget 
@@ -1400,10 +1431,6 @@ def BuildEvolution(
 
 
 
-
-
-
-
 ############################################################################################################
 
 def test_evolve(test_name,step=False):
@@ -1441,24 +1468,28 @@ if __name__ == '__main__':
         params['evoname']=args.evoname
         args.evoname=params['evoname']
 
-
         test_evolve('test_evo_000',step=True)
     else:
         params=json.loads(args.params)
-        print(f'Running with params:\n{params}')
-        evolution_system = BuildEvolution(
-            params=params,
-            do_cache=False,
-            # cache_type='diskcache',
-        )
+        # print(f'Running with params:\n{params}')
         if args.mode=='verify':
-            # python -m model_discovery.evolution --mode verify --params $params --design_id $design_id --scale $scale --resume $resume
-            evolution_system.verify(args.design_id, args.scale, resume=args.resume)
-        elif args.mode=='design':
-            pass
-            # evolution_system.design(n_sources,design_cfg,search_cfg,user_input,design_id,mode,resume)
-        elif args.mode=='evolve':
-            # evolution_system.evolve()
-            pass
+            _verify(args.evoname,args.design_id, args.scale, resume=args.resume)
         else:
-            raise ValueError(f"Invalid mode: {args.mode}")
+            if args.mode=='prep_verify':
+                params['no_agent']=True
+                params['db_only']=True
+            evolution_system = BuildEvolution(
+                params=params,
+                do_cache=False,
+                # cache_type='diskcache',
+            )
+            if args.mode=='prep_verify':
+                evolution_system._prep_verify(args.design_id, args.scale)
+            elif args.mode=='design':
+                pass
+                # evolution_system.design(n_sources,design_cfg,search_cfg,user_input,design_id,mode,resume)
+            elif args.mode=='evolve':
+                # evolution_system.evolve()
+                pass
+            else:
+                raise ValueError(f"Invalid mode: {args.mode}")

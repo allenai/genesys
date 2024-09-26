@@ -102,232 +102,6 @@ if is_apex_available():
 
 
 
-
-
-
-# Find optimal batch size with binary search, unstable because of GPU
-# def find_executable_batch_size(function: callable = None, starting_batch_size: int = 128):
-#     """
-#     A basic decorator that will try to execute `function`. If it fails from exceptions related to out-of-memory or
-#     CUDNN, the batch size is cut in half and passed to `function`
-
-#     `function` must take in a `batch_size` parameter as its first argument.
-
-#     Args:
-#         function (`callable`, *optional*):
-#             A function to wrap
-#         starting_batch_size (`int`, *optional*):
-#             The batch size to try and fit into memory
-
-#     Example:
-
-#     ```python
-#     >>> from accelerate.utils import find_executable_batch_size
-
-
-#     >>> @find_executable_batch_size(starting_batch_size=128)
-#     ... def train(batch_size, model, optimizer):
-#     ...     ...
-
-
-#     >>> train(model, optimizer)
-#     ```
-#     """
-#     if function is None:
-#         return functools.partial(find_executable_batch_size, starting_batch_size=starting_batch_size)
-
-#     batch_size = starting_batch_size
-
-#     def decorator(*args, **kwargs):
-#         nonlocal batch_size
-#         clear_device_cache(garbage_collection=True)
-#         params = list(inspect.signature(function).parameters.keys())
-#         # Guard against user error
-#         if len(params) < (len(args) + 1):
-#             arg_str = ", ".join([f"{arg}={value}" for arg, value in zip(params[1:], args[1:])])
-#             raise TypeError(
-#                 f"Batch size was passed into `{function.__name__}` as the first argument when called."
-#                 f"Remove this as the decorator already does so: `{function.__name__}({arg_str})`"
-#             )
-#         while True: # Initial phase: test the upper bound where 0.5 * batch_size < target < batch_size
-#             try:
-#                 function(batch_size, finding_executable_batch_size=True, *args, **kwargs)
-#                 clear_device_cache(garbage_collection=True)
-#                 batch_size *= 2
-#             except Exception as e:
-#                 if should_reduce_batch_size(e):
-#                     clear_device_cache(garbage_collection=True)
-#                     lower_bound = batch_size // 2
-#                     break
-#                 else:
-#                     raise e
-
-#         # Binary search phase
-#         def bin_search(upper_bound,lower_bound):
-#             print(f"Performing Binary Search with upper_bound: {upper_bound}, lower_bound: {lower_bound}")
-#             while lower_bound < upper_bound:
-#                 mid_batch_size = (lower_bound + upper_bound + 1) // 2
-#                 try:
-#                     function(mid_batch_size, finding_executable_batch_size=True, *args, **kwargs)
-#                     clear_device_cache(garbage_collection=True)
-#                     lower_bound = mid_batch_size
-#                 except Exception as e:
-#                     if should_reduce_batch_size(e):
-#                         clear_device_cache(garbage_collection=True)
-#                         upper_bound = mid_batch_size - 1
-#                     else:
-#                         raise e
-#             print(f"Binary Search completed with batch_size: {lower_bound}")
-#             if lower_bound>8:
-#                 return lower_bound
-#             else:
-#                 return lower_bound-1
-
-#         upper_bound = batch_size
-
-#         while True:
-#             try:
-#                 batch_size = bin_search(upper_bound,lower_bound)
-#                 return function(batch_size, *args, **kwargs)
-#             except Exception as e:
-#                 if should_reduce_batch_size(e):
-#                     clear_device_cache(garbage_collection=True)
-#                     upper_bound = batch_size
-#                     lower_bound = lower_bound // 2
-#                 else:
-#                     raise e
-        
-
-#     return decorator
-
-
-
-# Find a good batch size with heuristics, more stable than binary search, still not ideal
-# def find_executable_batch_size(function: callable = None, starting_batch_size: int = 128):
-#     """
-#     A basic decorator that will try to execute `function`. If it fails from exceptions related to out-of-memory or
-#     CUDNN, the batch size is cut in half and passed to `function`
-
-#     `function` must take in a `batch_size` parameter as its first argument.
-
-#     Args:
-#         function (`callable`, *optional*):
-#             A function to wrap
-#         starting_batch_size (`int`, *optional*):
-#             The batch size to try and fit into memory
-
-#     Example:
-
-#     ```python
-#     >>> from accelerate.utils import find_executable_batch_size
-
-
-#     >>> @find_executable_batch_size(starting_batch_size=128)
-#     ... def train(batch_size, model, optimizer):
-#     ...     ...
-
-
-#     >>> train(model, optimizer)
-#     ```
-#     """
-#     if function is None:
-#         return functools.partial(find_executable_batch_size, starting_batch_size=starting_batch_size)
-
-#     batch_size = starting_batch_size
-
-#     def decorator(*args, **kwargs):
-#         nonlocal batch_size
-#         clear_device_cache(garbage_collection=True)
-#         params = list(inspect.signature(function).parameters.keys())
-#         # Guard against user error
-#         if len(params) < (len(args) + 1):
-#             arg_str = ", ".join([f"{arg}={value}" for arg, value in zip(params[1:], args[1:])])
-#             raise TypeError(
-#                 f"Batch size was passed into `{function.__name__}` as the first argument when called."
-#                 f"Remove this as the decorator already does so: `{function.__name__}({arg_str})`"
-#             )
-        
-#         # e.g., start with 128, test with 384, then 256, 192, 160, 144, 128, 112, ...
-#         step_size = batch_size
-#         min_step = max(1, step_size // 8)
-#         batch_size *= 3 # upper bound 
-#         while True:
-#             if batch_size == 0:
-#                 raise RuntimeError("No executable batch size found, reached zero.")
-#             try:
-#                 return function(batch_size, *args, **kwargs)
-#             except Exception as e:
-#                 if should_reduce_batch_size(e):
-#                     clear_device_cache(garbage_collection=True)
-#                     batch_size -= step_size
-#                     step_size = max(min_step, step_size // 2)
-#                 else:
-#                     raise
-
-#     return decorator
-
-
-
-# A little bit modifying of the vanilla one for robustness, NOW JUST KEEP IT ORIGINAL, GPU CAN BE UNSTABLE
-# def find_executable_batch_size(function: callable = None, starting_batch_size: int = 128, decay_ratio=0.5, upper_ratio=2):
-#     """
-#     A basic decorator that will try to execute `function`. If it fails from exceptions related to out-of-memory or
-#     CUDNN, the batch size is cut in half and passed to `function`
-
-#     `function` must take in a `batch_size` parameter as its first argument.
-
-#     Args:
-#         function (`callable`, *optional*):
-#             A function to wrap
-#         starting_batch_size (`int`, *optional*):
-#             The batch size to try and fit into memory
-
-#     Example:
-
-#     ```python
-#     >>> from accelerate.utils import find_executable_batch_size
-
-
-#     >>> @find_executable_batch_size(starting_batch_size=128)
-#     ... def train(batch_size, model, optimizer):
-#     ...     ...
-
-
-#     >>> train(model, optimizer)
-#     ```
-#     """
-#     if function is None:
-#         return functools.partial(find_executable_batch_size, starting_batch_size=starting_batch_size)
-
-#     batch_size = int(starting_batch_size*upper_ratio) # try a larger batch size first
-
-#     def decorator(*args, **kwargs):
-#         nonlocal batch_size
-#         clear_device_cache(garbage_collection=True)
-#         params = list(inspect.signature(function).parameters.keys())
-#         # Guard against user error
-#         if len(params) < (len(args) + 1):
-#             arg_str = ", ".join([f"{arg}={value}" for arg, value in zip(params[1:], args[1:])])
-#             raise TypeError(
-#                 f"Batch size was passed into `{function.__name__}` as the first argument when called."
-#                 f"Remove this as the decorator already does so: `{function.__name__}({arg_str})`"
-#             )
-#         while True:
-#             if batch_size == 0:
-#                 raise RuntimeError("No executable batch size found, reached zero.")
-#             try:
-#                 return function(batch_size, *args, **kwargs)
-#             except Exception as e:
-#                 if should_reduce_batch_size(e):
-#                     clear_device_cache(garbage_collection=True)
-#                     # batch_size //= 2
-#                     batch_size = int(batch_size*decay_ratio)
-#                 else:
-#                     raise
-
-#     return decorator
-
-
 class ModisTrainer(Trainer):
 
 
@@ -517,7 +291,7 @@ class ModisTrainer(Trainer):
                 self.args.gradient_accumulation_steps *= self.args.per_device_train_batch_size // self._train_batch_size
                 self.args.gradient_accumulation_steps = max(self.args.gradient_accumulation_steps,1)
                 args.gradient_accumulation_steps = self.args.gradient_accumulation_steps
-                print(f"Auto-set batch size to {self._train_batch_size}, max_steps to {args_max_steps}, accumulation steps to {self.args.gradient_accumulation_steps}")
+                print(f"Auto-set batch size to {self._train_batch_size}, accumulation steps to {self.args.gradient_accumulation_steps}")
         logger.debug(f"Currently training with a batch size of: {self._train_batch_size}")
         # Data loader and number of training steps
         train_dataloader = self.get_train_dataloader()
@@ -1002,3 +776,243 @@ class ModisTrainer(Trainer):
         return TrainOutput(self.state.global_step, train_loss, metrics)
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Find optimal batch size with binary search, unstable because of GPU
+# def find_executable_batch_size(function: callable = None, starting_batch_size: int = 128):
+#     """
+#     A basic decorator that will try to execute `function`. If it fails from exceptions related to out-of-memory or
+#     CUDNN, the batch size is cut in half and passed to `function`
+
+#     `function` must take in a `batch_size` parameter as its first argument.
+
+#     Args:
+#         function (`callable`, *optional*):
+#             A function to wrap
+#         starting_batch_size (`int`, *optional*):
+#             The batch size to try and fit into memory
+
+#     Example:
+
+#     ```python
+#     >>> from accelerate.utils import find_executable_batch_size
+
+
+#     >>> @find_executable_batch_size(starting_batch_size=128)
+#     ... def train(batch_size, model, optimizer):
+#     ...     ...
+
+
+#     >>> train(model, optimizer)
+#     ```
+#     """
+#     if function is None:
+#         return functools.partial(find_executable_batch_size, starting_batch_size=starting_batch_size)
+
+#     batch_size = starting_batch_size
+
+#     def decorator(*args, **kwargs):
+#         nonlocal batch_size
+#         clear_device_cache(garbage_collection=True)
+#         params = list(inspect.signature(function).parameters.keys())
+#         # Guard against user error
+#         if len(params) < (len(args) + 1):
+#             arg_str = ", ".join([f"{arg}={value}" for arg, value in zip(params[1:], args[1:])])
+#             raise TypeError(
+#                 f"Batch size was passed into `{function.__name__}` as the first argument when called."
+#                 f"Remove this as the decorator already does so: `{function.__name__}({arg_str})`"
+#             )
+#         while True: # Initial phase: test the upper bound where 0.5 * batch_size < target < batch_size
+#             try:
+#                 function(batch_size, finding_executable_batch_size=True, *args, **kwargs)
+#                 clear_device_cache(garbage_collection=True)
+#                 batch_size *= 2
+#             except Exception as e:
+#                 if should_reduce_batch_size(e):
+#                     clear_device_cache(garbage_collection=True)
+#                     lower_bound = batch_size // 2
+#                     break
+#                 else:
+#                     raise e
+
+#         # Binary search phase
+#         def bin_search(upper_bound,lower_bound):
+#             print(f"Performing Binary Search with upper_bound: {upper_bound}, lower_bound: {lower_bound}")
+#             while lower_bound < upper_bound:
+#                 mid_batch_size = (lower_bound + upper_bound + 1) // 2
+#                 try:
+#                     function(mid_batch_size, finding_executable_batch_size=True, *args, **kwargs)
+#                     clear_device_cache(garbage_collection=True)
+#                     lower_bound = mid_batch_size
+#                 except Exception as e:
+#                     if should_reduce_batch_size(e):
+#                         clear_device_cache(garbage_collection=True)
+#                         upper_bound = mid_batch_size - 1
+#                     else:
+#                         raise e
+#             print(f"Binary Search completed with batch_size: {lower_bound}")
+#             if lower_bound>8:
+#                 return lower_bound
+#             else:
+#                 return lower_bound-1
+
+#         upper_bound = batch_size
+
+#         while True:
+#             try:
+#                 batch_size = bin_search(upper_bound,lower_bound)
+#                 return function(batch_size, *args, **kwargs)
+#             except Exception as e:
+#                 if should_reduce_batch_size(e):
+#                     clear_device_cache(garbage_collection=True)
+#                     upper_bound = batch_size
+#                     lower_bound = lower_bound // 2
+#                 else:
+#                     raise e
+        
+
+#     return decorator
+
+
+
+# Find a good batch size with heuristics, more stable than binary search, still not ideal
+# def find_executable_batch_size(function: callable = None, starting_batch_size: int = 128):
+#     """
+#     A basic decorator that will try to execute `function`. If it fails from exceptions related to out-of-memory or
+#     CUDNN, the batch size is cut in half and passed to `function`
+
+#     `function` must take in a `batch_size` parameter as its first argument.
+
+#     Args:
+#         function (`callable`, *optional*):
+#             A function to wrap
+#         starting_batch_size (`int`, *optional*):
+#             The batch size to try and fit into memory
+
+#     Example:
+
+#     ```python
+#     >>> from accelerate.utils import find_executable_batch_size
+
+
+#     >>> @find_executable_batch_size(starting_batch_size=128)
+#     ... def train(batch_size, model, optimizer):
+#     ...     ...
+
+
+#     >>> train(model, optimizer)
+#     ```
+#     """
+#     if function is None:
+#         return functools.partial(find_executable_batch_size, starting_batch_size=starting_batch_size)
+
+#     batch_size = starting_batch_size
+
+#     def decorator(*args, **kwargs):
+#         nonlocal batch_size
+#         clear_device_cache(garbage_collection=True)
+#         params = list(inspect.signature(function).parameters.keys())
+#         # Guard against user error
+#         if len(params) < (len(args) + 1):
+#             arg_str = ", ".join([f"{arg}={value}" for arg, value in zip(params[1:], args[1:])])
+#             raise TypeError(
+#                 f"Batch size was passed into `{function.__name__}` as the first argument when called."
+#                 f"Remove this as the decorator already does so: `{function.__name__}({arg_str})`"
+#             )
+        
+#         # e.g., start with 128, test with 384, then 256, 192, 160, 144, 128, 112, ...
+#         step_size = batch_size
+#         min_step = max(1, step_size // 8)
+#         batch_size *= 3 # upper bound 
+#         while True:
+#             if batch_size == 0:
+#                 raise RuntimeError("No executable batch size found, reached zero.")
+#             try:
+#                 return function(batch_size, *args, **kwargs)
+#             except Exception as e:
+#                 if should_reduce_batch_size(e):
+#                     clear_device_cache(garbage_collection=True)
+#                     batch_size -= step_size
+#                     step_size = max(min_step, step_size // 2)
+#                 else:
+#                     raise
+
+#     return decorator
+
+
+
+# A little bit modifying of the vanilla one for robustness, NOW JUST KEEP IT ORIGINAL, GPU CAN BE UNSTABLE
+# def find_executable_batch_size(function: callable = None, starting_batch_size: int = 128, decay_ratio=0.5, upper_ratio=2):
+#     """
+#     A basic decorator that will try to execute `function`. If it fails from exceptions related to out-of-memory or
+#     CUDNN, the batch size is cut in half and passed to `function`
+
+#     `function` must take in a `batch_size` parameter as its first argument.
+
+#     Args:
+#         function (`callable`, *optional*):
+#             A function to wrap
+#         starting_batch_size (`int`, *optional*):
+#             The batch size to try and fit into memory
+
+#     Example:
+
+#     ```python
+#     >>> from accelerate.utils import find_executable_batch_size
+
+
+#     >>> @find_executable_batch_size(starting_batch_size=128)
+#     ... def train(batch_size, model, optimizer):
+#     ...     ...
+
+
+#     >>> train(model, optimizer)
+#     ```
+#     """
+#     if function is None:
+#         return functools.partial(find_executable_batch_size, starting_batch_size=starting_batch_size)
+
+#     batch_size = int(starting_batch_size*upper_ratio) # try a larger batch size first
+
+#     def decorator(*args, **kwargs):
+#         nonlocal batch_size
+#         clear_device_cache(garbage_collection=True)
+#         params = list(inspect.signature(function).parameters.keys())
+#         # Guard against user error
+#         if len(params) < (len(args) + 1):
+#             arg_str = ", ".join([f"{arg}={value}" for arg, value in zip(params[1:], args[1:])])
+#             raise TypeError(
+#                 f"Batch size was passed into `{function.__name__}` as the first argument when called."
+#                 f"Remove this as the decorator already does so: `{function.__name__}({arg_str})`"
+#             )
+#         while True:
+#             if batch_size == 0:
+#                 raise RuntimeError("No executable batch size found, reached zero.")
+#             try:
+#                 return function(batch_size, *args, **kwargs)
+#             except Exception as e:
+#                 if should_reduce_batch_size(e):
+#                     clear_device_cache(garbage_collection=True)
+#                     # batch_size //= 2
+#                     batch_size = int(batch_size*decay_ratio)
+#                 else:
+#                     raise
+
+#     return decorator
