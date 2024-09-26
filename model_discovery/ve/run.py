@@ -490,7 +490,7 @@ if __name__ == "__main__":
     
     args.evoname = "ve_test"
     args.design_id = "test"
-    args.resume = True
+    args.resume = False
     # args.n_gpus = 1
     args.PERF_PROF_MODE = False
     # args.port="25986"
