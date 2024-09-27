@@ -219,117 +219,131 @@ def verify(evosys,project_dir):
                 verified[design_id][scale]=verification
     with col2:
         selected_design=st.selectbox("Select a Design",options=verified.keys())
-        vss=list(verified[selected_design].keys())
-        vsstr='*(Verified on '+', '.join(vss)+')*' if len(vss)>0 else ''
+        if selected_design is not None:
+            vss=list(verified[selected_design].keys())
+            vsstr='*(Verified on '+', '.join(vss)+')*' if len(vss)>0 else ''
         # st.write(f':red[{vsstr}]')
 
     with col3:
-        scale=st.select_slider(f"Choose a Scale :red[{vsstr}]",options=TARGET_SCALES)
+        if selected_design is not None:
+            scale=st.select_slider(f"Choose a Scale :red[{vsstr}]",options=TARGET_SCALES)
+        else:
+            scale=st.select_slider(f"Choose a Scale",options=TARGET_SCALES,disabled=True)
+            
 
     with col4:
         st.write('')
         st.write('')
-        already_verified=scale in verified[selected_design]
-        txt='Run Verification' if not already_verified else 'Re-Run Verification'
-        run_btn= st.button(txt,use_container_width=True)
+        if selected_design is not None:
+            already_verified=scale in verified[selected_design]
+            txt='Run Verification' if not already_verified else 'Re-Run Verification'
+            run_btn= st.button(txt,use_container_width=True)
+        else:
+            run_btn= st.button('Run Verification',use_container_width=True,disabled=True)
     
     with col5:
         st.write('')
         st.write('')
-        resume=st.checkbox("Resume",value=not already_verified)
+        if selected_design is not None:
+            resume=st.checkbox("Resume",value=not already_verified)
+        else:
+            resume=st.checkbox("Resume",value=False,disabled=True)
 
     if len(verified)==0:
-        st.warning('No implemented designs found in the experiment directory')
+        st.info('No implemented designs found under this namespace.')
 
     unfinished_runs={}
     finished_runs={}
-    for run_name in os.listdir(U.pjoin(evosys.evo_dir,'ve')):
-        scale=run_name.split('_')[-1]
-        design_id=run_name[:-len(scale)-1]
-        run_dir=U.pjoin(evosys.evo_dir,'ve',run_name)
-        if not U.pexists(U.pjoin(run_dir,'report.json')):
-            if design_id not in unfinished_runs:
-                unfinished_runs[design_id]={}
-            wandb_ids=U.load_json(U.pjoin(run_dir,'wandb_ids.json'))
-            unfinished_runs[design_id][scale]=wandb_ids
-        else:
-            if design_id not in finished_runs:
-                finished_runs[design_id]={}
-            finished_runs[design_id][scale]=f'{design_id}_{scale}'
+    if U.pexists(U.pjoin(evosys.evo_dir,'ve')):
+        for run_name in os.listdir(U.pjoin(evosys.evo_dir,'ve')):
+            scale=run_name.split('_')[-1]
+            design_id=run_name[:-len(scale)-1]
+            run_dir=U.pjoin(evosys.evo_dir,'ve',run_name)
+            if not U.pexists(U.pjoin(run_dir,'report.json')):
+                if design_id not in unfinished_runs:
+                    unfinished_runs[design_id]={}
+                wandb_ids=U.load_json(U.pjoin(run_dir,'wandb_ids.json'))
+                unfinished_runs[design_id][scale]=wandb_ids
+            else:
+                if design_id not in finished_runs:
+                    finished_runs[design_id]={}
+                finished_runs[design_id][scale]=f'{design_id}_{scale}'
 
-    with st.expander("Unfinished Verifications"):
-        if len(unfinished_runs)==0:
-            st.info("No unfinished verifications")
-        else:
-            for design_id in unfinished_runs:
-                for scale in unfinished_runs[design_id]:
-                    wandb_ids=unfinished_runs[design_id][scale]
-                    url=None
-                    if 'pretrain' in wandb_ids:
+        with st.expander("Unfinished Verifications"):
+            if len(unfinished_runs)==0:
+                st.info("No unfinished verifications")
+            else:
+                for design_id in unfinished_runs:
+                    for scale in unfinished_runs[design_id]:
+                        wandb_ids=unfinished_runs[design_id][scale]
+                        url=None
+                        if 'pretrain' in wandb_ids:
+                            wandb_id=wandb_ids['pretrain']['id']
+                            wandb_name=wandb_ids['pretrain']['name']
+                            project=wandb_ids['project']
+                            entity=wandb_ids['entity']
+                            url=f'https://wandb.ai/{entity}/{project}/runs/{wandb_id}'
+                            
+                        col1,col2,col3,col4,col5=st.columns([0.5,0.5,1,0.3,0.3])
+                        with col1:
+                            st.write(f"Run id: ```{wandb_id}```")
+                        with col2:
+                            st.write(f"Model name: **{design_id}**-*{scale}*")
+                        with col3:
+                            if url:
+                                st.write(f"W&B run: [{wandb_name}]({url})")
+                        with col4:
+                            resume_btn = st.button(f'Resume',key=f'btn_{design_id}_{scale}') #,use_container_width=True):
+                        with col5:
+                            restart_btn = st.button(f'Restart',key=f'btn_{design_id}_{scale}_restart') #,use_container_width=True):
+                        if resume_btn:
+                            run_verification(evosys.params, design_id, scale, resume=True)
+                        if restart_btn:
+                            run_verification(evosys.params, design_id, scale, resume=False)
+
+        with st.expander("Finished Verifications"):
+            if len(finished_runs)==0:
+                st.info("No finished verifications")
+            else:
+                for design_id in finished_runs:
+                    for scale in finished_runs[design_id]:
+                        id_scale=f'{design_id}_{scale}'
+                        wandb_ids=U.load_json(U.pjoin(evosys.evo_dir,'ve',id_scale,'wandb_ids.json'))
                         wandb_id=wandb_ids['pretrain']['id']
                         wandb_name=wandb_ids['pretrain']['name']
                         project=wandb_ids['project']
                         entity=wandb_ids['entity']
                         url=f'https://wandb.ai/{entity}/{project}/runs/{wandb_id}'
-                        
-                    col1,col2,col3,col4,col5=st.columns([0.5,0.5,1,0.3,0.3])
-                    with col1:
-                        st.write(f"Run id: ```{wandb_id}```")
-                    with col2:
-                        st.write(f"Model name: **{design_id}**-*{scale}*")
-                    with col3:
-                        if url:
+                        col1,col2,col3,col4,col5=st.columns([0.5,0.5,1,0.4,0.4])
+                        with col1:
+                            st.write(f"Run id: ```{wandb_id}```")
+                        with col2:
+                            st.write(f"Model name: **{design_id}**-*{scale}*")
+                        with col3:
                             st.write(f"W&B run: [{wandb_name}]({url})")
-                    with col4:
-                        resume_btn = st.button(f'Resume',key=f'btn_{design_id}_{scale}') #,use_container_width=True):
-                    with col5:
-                        restart_btn = st.button(f'Restart',key=f'btn_{design_id}_{scale}_restart') #,use_container_width=True):
-                    if resume_btn:
-                        run_verification(evosys.params, design_id, scale, resume=True)
-                    if restart_btn:
-                        run_verification(evosys.params, design_id, scale, resume=False)
-
-    with st.expander("Finished Verifications"):
-        if len(finished_runs)==0:
-            st.info("No finished verifications")
-        else:
-            for design_id in finished_runs:
-                for scale in finished_runs[design_id]:
-                    id_scale=f'{design_id}_{scale}'
-                    wandb_ids=U.load_json(U.pjoin(evosys.evo_dir,'ve',id_scale,'wandb_ids.json'))
-                    wandb_id=wandb_ids['pretrain']['id']
-                    wandb_name=wandb_ids['pretrain']['name']
-                    project=wandb_ids['project']
-                    entity=wandb_ids['entity']
-                    url=f'https://wandb.ai/{entity}/{project}/runs/{wandb_id}'
-                    col1,col2,col3,col4,col5=st.columns([0.5,0.5,1,0.4,0.4])
-                    with col1:
-                        st.write(f"Run id: ```{wandb_id}```")
-                    with col2:
-                        st.write(f"Model name: **{design_id}**-*{scale}*")
-                    with col3:
-                        st.write(f"W&B run: [{wandb_name}]({url})")
-                    with col4:
-                        report_path=U.pjoin(evosys.evo_dir,'ve',id_scale,'report.json')
-                        st.download_button(
-                            label="Download Report",
-                            data=json.dumps(U.load_json(report_path),indent=4),
-                            file_name=f"{design_id}_{scale}_report.json",
-                            mime="text/json",
-                            # use_container_width=True
-                        )
-                    with col5:
-                        pretrain_path=U.pjoin(evosys.evo_dir,'ve',id_scale,'pretrained')
-                        zip_path=U.pjoin(evosys.evo_dir,'ve',id_scale,'pretrained.zip')
-                        if not U.pexists(zip_path):
-                            with st.spinner(f"Zipping Pretrained Model for {design_id}-*{scale}*..."):
-                                U.zip_folder(pretrain_path,zip_path)
-                        st.download_button(
-                            label="Download Model",
-                            data=U.load_zip_file(zip_path),
-                            file_name=f"{design_id}_{scale}_pretrained.zip",
-                            mime='application/zip'
-                        )
+                        with col4:
+                            report_path=U.pjoin(evosys.evo_dir,'ve',id_scale,'report.json')
+                            st.download_button(
+                                label="Download Report",
+                                data=json.dumps(U.load_json(report_path),indent=4),
+                                file_name=f"{design_id}_{scale}_report.json",
+                                mime="text/json",
+                                # use_container_width=True
+                            )
+                        with col5:
+                            pretrain_path=U.pjoin(evosys.evo_dir,'ve',id_scale,'pretrained')
+                            zip_path=U.pjoin(evosys.evo_dir,'ve',id_scale,'pretrained.zip')
+                            if not U.pexists(zip_path):
+                                with st.spinner(f"Zipping Pretrained Model for {design_id}-*{scale}*..."):
+                                    U.zip_folder(pretrain_path,zip_path)
+                            st.download_button(
+                                label="Download Model",
+                                data=U.load_zip_file(zip_path),
+                                file_name=f"{design_id}_{scale}_pretrained.zip",
+                                mime='application/zip'
+                            )
+    # else:
+    #     st.info('No verification runs found under this namespace.')
 
 
     if run_btn:

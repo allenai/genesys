@@ -13,7 +13,7 @@ import bin.app_utils as AU
 
 def select(evosys,project_dir):
     
-    st.title('Seed Selector')
+    st.title('Node Selector Playground')
 
     with st.sidebar:
         st.write(f'**Running Namespace:\n```{evosys.evoname}```**')
@@ -64,5 +64,6 @@ def select(evosys,project_dir):
         for ref in refs:
             with st.expander(f'**{ref.acronym}** *({ref.type})*'):
                 st.write(ref.to_prompt())
-
+    else:
+        st.info(f'**NOTE:** All settings here will only be applied to this playground. The playground will directly work on the selected running namespace ```{evosys.evoname}```.')
 

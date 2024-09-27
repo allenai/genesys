@@ -161,7 +161,7 @@ def start_design_thread(evosys, n_sources=None, design_cfg={}, search_cfg={}, us
 
 def _design_tuning(evosys,project_dir):
     ### build the system 
-    st.title("Model Design Engine")
+    st.title("Design Engine Playground")
 
     system = evosys.rnd_agent
     db_dir = evosys.ptree.db_dir
@@ -175,7 +175,7 @@ def _design_tuning(evosys,project_dir):
 
     #### Configure design
 
-    with st.expander("**Configuration Panel**",expanded=True):#,icon='⚙️'):
+    with st.expander("**Playground Settings**",expanded=True):#,icon='⚙️'):
 
         col1, col2 = st.columns([1, 5])
         with col1:
@@ -293,8 +293,7 @@ def _design_tuning(evosys,project_dir):
                 selected_design = st.selectbox(label=f"***View runs in selected folder: {folder_name}***",options=designs,disabled=True)
         design_cfg['max_attempts'] = max_attempts
 
-
-    with st.expander("Search Configurations",expanded=False):
+    with st.expander("Search Settings",expanded=False):
         search_cfg={}
         search_cfg['result_limits']={}
         search_cfg['perplexity_settings']={}
@@ -368,7 +367,6 @@ def _design_tuning(evosys,project_dir):
                 select_cfg={'n_sources':n_sources}
                 evosys.design(select_cfg,design_cfg,search_cfg,user_input=user_input,mode=_mode,design_id=design_id,resume=resume)
     
-    
     elif selected_design:
         with st.empty():
             st.markdown(f'### Viewing design log for session: *{selected_design}*...')
@@ -386,11 +384,18 @@ def _design_tuning(evosys,project_dir):
                 log=eval(U.read_file(U.pjoin(selected_folder_dir,'stream.log')))
                 logs.append(log)
             stat_logs(logs)
+    else:
+        st.info(f'**NOTE:** All settings here will only be applied to this design playground session. The playground session will directly work on the selected running namespace ```{evosys.evoname}```.')
+
+
 
     
 
 def _design_engine(evosys,project_dir):
-    st.title("Design Sampling Engine")
+    st.title("Model Design Engine")
+
+    st.info('**NOTE:** Remember to configure the design engine settings in the config page before running.')
+
 
     db_dir = evosys.ptree.db_dir
     design_cfg = {}
@@ -416,10 +421,10 @@ def design(evosys,project_dir):
     with st.sidebar:
         st.write(f'**Running Namespace:\n```{evosys.evoname}```**')
 
-        if st.button("**Engine Runner**" if st.session_state['design_tab']=='design_runner' else "Engine Runner",use_container_width=True):
+        if st.button("**Design Engine**" if st.session_state['design_tab']=='design_runner' else "Design Engine",use_container_width=True):
             st.session_state['design_tab'] = 'design_runner'
             st.rerun()
-        if st.button("**Engine Tunner**" if st.session_state['design_tab']=='design_tunner' else "Engine Tunner",use_container_width=True):
+        if st.button("**Design Playground**" if st.session_state['design_tab']=='design_tunner' else "Design Playground",use_container_width=True):
             st.session_state['design_tab'] = 'design_tunner'
             st.rerun()
 

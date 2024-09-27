@@ -18,7 +18,7 @@ import bin.app_utils as AU
 
 def search(evosys,project_dir):
 
-    st.title("Paper Search Engine")
+    st.title("Search Engine Playground")
 
     with st.sidebar:
         st.write(f'**Running Namespace:\n```{evosys.evoname}```**')
@@ -78,6 +78,8 @@ def search(evosys,project_dir):
         with st.spinner('Searching...'):    
             prt=sss(query,details,analysis,prompt=prompting)
             st.markdown(prt,unsafe_allow_html=True)
+    else:
+        st.info(f'**NOTE:** All settings here will only be applied to this playground. The playground will directly work on the selected running namespace ```{evosys.evoname}```.')
     
 
 

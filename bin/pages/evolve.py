@@ -90,7 +90,7 @@ def evolve(evosys,project_dir):
 
     with st.sidebar:
         st.write(f'**Running Namespace:\n```{evosys.evoname}```**')
-        logo_png = AU.square_logo("EVO", "SYS")
+        logo_png = AU.square_logo("LLM", "EVO")
         st.image(logo_png, use_column_width=True)
 
     
