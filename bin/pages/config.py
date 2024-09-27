@@ -130,6 +130,8 @@ def config(evosys,project_dir):
         experiment={}
         experiment['directory']=exp_dir
         state=U.load_json(U.pjoin(exp_dir,'state.json'))
+        if not state:
+            continue
         experiment['selection_ratio']=state['selection_ratio']
         experiment['remaining_budget']=state['budgets']
         experiment['created_sessions']=len(os.listdir(U.pjoin(exp_dir,'db','sessions')))

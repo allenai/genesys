@@ -108,7 +108,7 @@ def stream_output(process, key):
             st.code(f"ERROR: {line}")
 
 
-def engine(evosys,project_dir):
+def verify(evosys,project_dir):
 
     st.title("Verification Engine")
 

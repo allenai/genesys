@@ -35,7 +35,7 @@ home = import_and_reload('home').home
 viewer = import_and_reload('viewer').viewer
 design = import_and_reload('design').design
 evolve = import_and_reload('evolve').evolve
-engine = import_and_reload('engine').engine
+verify = import_and_reload('verify').verify
 config = import_and_reload('config').config
 search = import_and_reload('search').search
 select = import_and_reload('select').select
@@ -100,7 +100,7 @@ urls = {"GitHub": "https://github.com/allenai/model_discovery"}
 pages = {
     'Evolve': evolve,
     'Design': design,
-    'Engine': engine,
+    'Verify': verify,
     'Search': search,
     'Select': select,
     'Viewer': viewer,
