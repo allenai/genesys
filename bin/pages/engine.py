@@ -12,6 +12,7 @@ import subprocess
 import shlex
 import select
 import pandas as pd
+import signal
 
 sys.path.append('.')
 import model_discovery.utils as U
@@ -66,7 +67,7 @@ def get_system_info():
 def _run_verification(params, design_id, scale, resume):
     params_str = shlex.quote(json.dumps(params))
     cmd = f"python -m model_discovery.evolution --mode prep_model --params {params_str} --design_id {design_id} --scale {scale}"
-    with st.spinner(f'Preparing Models...'):
+    with st.spinner(f'Preparing Model...'):
         process = subprocess.run(cmd, shell=True)#, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, bufsize=1, universal_newlines=True)
 
     cmd = f"python -m model_discovery.evolution --mode verify --params {params_str} --design_id {design_id} --scale {scale}"
@@ -240,29 +241,36 @@ def engine(evosys,project_dir):
     if len(verified)==0:
         st.warning('No implemented designs found in the experiment directory')
 
-    running_runs={}
+    unfinished_runs={}
+    finished_runs={}
     for run_name in os.listdir(U.pjoin(evosys.evo_dir,'ve')):
         scale=run_name.split('_')[-1]
         design_id=run_name[:-len(scale)-1]
         run_dir=U.pjoin(evosys.evo_dir,'ve',run_name)
         if not U.pexists(U.pjoin(run_dir,'report.json')):
-            if design_id not in running_runs:
-                running_runs[design_id]={}
+            if design_id not in unfinished_runs:
+                unfinished_runs[design_id]={}
             wandb_ids=U.load_json(U.pjoin(run_dir,'wandb_ids.json'))
-            running_runs[design_id][scale]=wandb_ids
-    with st.expander("Unfinished Verifications"):
-        if len(running_runs)==0:
-            st.warning("No unfinished verifications")
+            unfinished_runs[design_id][scale]=wandb_ids
         else:
-            for design_id in running_runs:
-                for scale in running_runs[design_id]:
-                    wandb_ids=running_runs[design_id][scale]
-                    if 'id' not in wandb_ids['pretrain']: continue
-                    wandb_id=wandb_ids['pretrain']['id']
-                    wandb_name=wandb_ids['pretrain']['name']
-                    project=wandb_ids['project']
-                    entity=wandb_ids['entity']
-                    url=f'https://wandb.ai/{entity}/{project}/runs/{wandb_id}'
+            if design_id not in finished_runs:
+                finished_runs[design_id]={}
+            finished_runs[design_id][scale]=f'{design_id}_{scale}'
+
+    with st.expander("Unfinished Verifications"):
+        if len(unfinished_runs)==0:
+            st.info("No unfinished verifications")
+        else:
+            for design_id in unfinished_runs:
+                for scale in unfinished_runs[design_id]:
+                    wandb_ids=unfinished_runs[design_id][scale]
+                    url=None
+                    if 'pretrain' in wandb_ids:
+                        wandb_id=wandb_ids['pretrain']['id']
+                        wandb_name=wandb_ids['pretrain']['name']
+                        project=wandb_ids['project']
+                        entity=wandb_ids['entity']
+                        url=f'https://wandb.ai/{entity}/{project}/runs/{wandb_id}'
                         
                     col1,col2,col3,col4,col5=st.columns([0.5,0.5,1,0.3,0.3])
                     with col1:
@@ -270,7 +278,8 @@ def engine(evosys,project_dir):
                     with col2:
                         st.write(f"Model name: **{design_id}**-*{scale}*")
                     with col3:
-                        st.write(f"W&B run: [{wandb_name}]({url})")
+                        if url:
+                            st.write(f"W&B run: [{wandb_name}]({url})")
                     with col4:
                         resume_btn = st.button(f'Resume',key=f'btn_{design_id}_{scale}') #,use_container_width=True):
                     with col5:
@@ -279,47 +288,93 @@ def engine(evosys,project_dir):
                         run_verification(evosys.params, design_id, scale, resume=True)
                     if restart_btn:
                         run_verification(evosys.params, design_id, scale, resume=False)
-                        
+
+    with st.expander("Finished Verifications"):
+        if len(finished_runs)==0:
+            st.info("No finished verifications")
+        else:
+            for design_id in finished_runs:
+                for scale in finished_runs[design_id]:
+                    id_scale=f'{design_id}_{scale}'
+                    wandb_ids=U.load_json(U.pjoin(evosys.evo_dir,'ve',id_scale,'wandb_ids.json'))
+                    wandb_id=wandb_ids['pretrain']['id']
+                    wandb_name=wandb_ids['pretrain']['name']
+                    project=wandb_ids['project']
+                    entity=wandb_ids['entity']
+                    url=f'https://wandb.ai/{entity}/{project}/runs/{wandb_id}'
+                    col1,col2,col3,col4,col5=st.columns([0.5,0.5,1,0.4,0.4])
+                    with col1:
+                        st.write(f"Run id: ```{wandb_id}```")
+                    with col2:
+                        st.write(f"Model name: **{design_id}**-*{scale}*")
+                    with col3:
+                        st.write(f"W&B run: [{wandb_name}]({url})")
+                    with col4:
+                        report_path=U.pjoin(evosys.evo_dir,'ve',id_scale,'report.json')
+                        st.download_button(
+                            label="Download Report",
+                            data=json.dumps(U.load_json(report_path),indent=4),
+                            file_name=f"{design_id}_{scale}_report.json",
+                            mime="text/json",
+                            # use_container_width=True
+                        )
+                    with col5:
+                        pretrain_path=U.pjoin(evosys.evo_dir,'ve',id_scale,'pretrained')
+                        zip_path=U.pjoin(evosys.evo_dir,'ve',id_scale,'pretrained.zip')
+                        if not U.pexists(zip_path):
+                            with st.spinner(f"Zipping Pretrained Model for {design_id}-*{scale}*..."):
+                                U.zip_folder(pretrain_path,zip_path)
+                        st.download_button(
+                            label="Download Model",
+                            data=U.load_zip_file(zip_path),
+                            file_name=f"{design_id}_{scale}_pretrained.zip",
+                            mime='application/zip'
+                        )
+
+
     if run_btn:
         run_verification(evosys.params, selected_design, scale, resume)
 
 
 
+    ##################################################################################
 
-    # # st.header("Running Verification")
+    if None in [process.poll() for process in st.session_state['running_verifications'].values()]:
+        st.subheader("*Running Verification*")
 
-    # if not st.session_state['running_verifications']:
-    #     st.warning("No running verification")
-    # else:
-    #     st.header("Running Verification")
-    #     for key, process in list(st.session_state['running_verifications'].items()):            
-    #         if hasattr(process, 'poll') and process.poll() is None:  # Process is still running
-    #             col1, col2 = st.columns([3, 1])
-    #             with col1:
-    #                 st.info(f"Verification process for {key} is running.")
-    #                 wandb_ids = U.load_json(U.pjoin(evosys.evo_dir, 've', key, 'wandb_ids.json'))
-    #                 wandb_id = wandb_ids['pretrain']['id']
-    #                 project = wandb_ids['project']
-    #                 entity = wandb_ids['entity']
-    #                 url = f'https://wandb.ai/{entity}/{project}/runs/{wandb_id}'
-    #                 st.write(f'View on {url}')
-    #             with col2:
-    #                 if st.button(f"Stop", key=f"stop_{key}"):
-    #                     process.terminate()
-    #                     st.success(f"Verification process for {key} stopped.")
-    #                     del st.session_state['running_verifications'][key]
-    #         else:  # Process has finished
-    #             if process.returncode == 0:
-    #                 st.success(f"Verification process for {key} completed successfully.")
-    #             else:
-    #                 st.error(f"Verification process for {key} encountered an error. Check the output for details.")
-    #             del st.session_state['running_verifications'][key]
+    running_process=None
+    for key, process in st.session_state['running_verifications'].items():
+        if process.poll() is None:
+            running_process=process
 
-    #         # Display output in Streamlit
-    #         with st.expander(f"Output for {key}"):
-    #             # st.text("\n".join(st.session_state['output'].get(key, [])))
-    #             stream_output(process,key)
-
-
-
-    
+    if running_process:
+        with st.spinner(f"Verification process for {key} is running."):
+            wandb_ids = U.load_json(U.pjoin(evosys.evo_dir, 've', key, 'wandb_ids.json'))
+            if 'pretrain' in wandb_ids:
+                wandb_id = wandb_ids['pretrain']['id']
+                project = wandb_ids['project']
+                entity = wandb_ids['entity']
+                url = f'https://wandb.ai/{entity}/{project}/runs/{wandb_id}'
+                st.info(f"Check console for output. View training run on [W&B]({url}).")
+                if st.button(f"Terminate",key=f'btn_{key}_term'):
+                    try:
+                        parent = psutil.Process(process.pid)
+                        children = parent.children(recursive=True)
+                        for child in children:
+                            child.terminate()
+                        parent.terminate()
+                        
+                        gone, alive = psutil.wait_procs(children + [parent], timeout=5)
+                        
+                        for p in alive:
+                            p.kill()
+                        
+                        st.success(f"Verification process for {key} terminated.")
+                        del st.session_state['running_verifications'][key]
+                    except psutil.NoSuchProcess:
+                        st.info(f"Process for {key} has already ended.")
+                    except Exception as e:
+                        st.error(f"Error terminating process: {str(e)}")
+            while process.poll() is None:
+                time.sleep(1)
+            

@@ -7,6 +7,7 @@ import keyword
 import textwrap
 import torch
 import yaml
+import zipfile
 
 pjoin=os.path.join
 psplit=os.path.split
@@ -59,6 +60,13 @@ def read_file(file,lines=False):
             return f.readlines()
         return f.read()
 
+def load_zip_file(zip_file_path):
+    if not pexists(zip_file_path):
+        return None
+    with open(zip_file_path, "rb") as file:
+        zip_data = file.read()
+    return zip_data
+    
 def write_file(file,data):
     with open(file, 'w', encoding='utf-8') as f:
         f.write(data)
@@ -175,3 +183,10 @@ def safe_get_cfg_dict(cfg,key,default):
         _cfg_dict[k]=_dict.get(k,v)
     return _cfg_dict
 
+
+def zip_folder(folder,zip_file):
+    with zipfile.ZipFile(zip_file, 'w', zipfile.ZIP_DEFLATED) as zipf:
+        for root, dirs, files in os.walk(folder):
+            for file in files:
+                file_path = os.path.join(root, file)
+                zipf.write(file_path, os.path.relpath(file_path, folder))

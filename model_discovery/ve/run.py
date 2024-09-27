@@ -76,7 +76,7 @@ parser.add_argument("--seed", type=int, default=42)
 parser.add_argument("--ckpt_dir", type=str, default=None)
 parser.add_argument("--data_dir", type=str, default=None)
 parser.add_argument("--download_data_only", action='store_true')
-parser.add_argument("--logging_steps", type=int, default=20)
+parser.add_argument("--logging_steps", type=int, default=5)
 parser.add_argument("--gab_name", type=str, default='default') ## name of gab block to use 
 parser.add_argument("--PERF_PROF_MODE", type=bool, default=False) # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
 parser.add_argument("--gradient_accumulation_steps", type=int, default=1) # auto find batch size
