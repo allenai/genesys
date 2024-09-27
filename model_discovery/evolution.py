@@ -1223,15 +1223,16 @@ class EvolutionSystem(exec_utils.System):
         # user_input and design_cfg maybe changed by the user, so we need to pass them in
         # self.ptree.reload() # WHY WE NEED THIS???
         if mode is None:
-            mode=DesignModes.MUTATION
+            mode=DesignModes.MUTATION        
+        if select_cfg is None:
+            select_cfg = self.select_cfg
         if design_cfg is None:
             design_cfg = self.design_cfg
         if search_cfg is None:
             search_cfg = self.search_cfg
         unfinished_designs = self.ptree.get_unfinished_designs()
         self.stream.write(f"Found {len(unfinished_designs)} unfinished designs, allow resume: {resume}")
-        if not select_cfg:
-            select_cfg = self.select_cfg
+
         n_sources=select_cfg.get('n_sources',{
             'ReferenceCoreWithTree':1,
             'DesignArtifactImplemented':1,
