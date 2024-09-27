@@ -182,7 +182,6 @@ class ModisTrainer(Trainer):
         callbacks: Optional[List[TrainerCallback]] = None,
         optimizers: Tuple[torch.optim.Optimizer, torch.optim.lr_scheduler.LambdaLR] = (None, None),
         preprocess_logits_for_metrics: Optional[Callable[[torch.Tensor, torch.Tensor], torch.Tensor]] = None,
-        tune_lr_in_auto_bs: bool = False,
     ):
         super().__init__(
             model=model,
@@ -197,11 +196,8 @@ class ModisTrainer(Trainer):
             optimizers=optimizers,
             preprocess_logits_for_metrics=preprocess_logits_for_metrics,
         )
-        self.args_backup=copy.deepcopy(args) 
-        self.tune_lr_in_auto_bs = tune_lr_in_auto_bs
-        # if self.tune_lr_in_auto_bs and args.auto_find_batch_size: # only if tune lr in auto bs, not use it in most cases
-        self.train=self.custom_train
-        
+        self.initial_batch_size=args.per_device_train_batch_size
+        self.initial_gradient_accumulation_steps=args.gradient_accumulation_steps
                 
     def compute_loss(self, model, inputs, return_outputs=False):
         input_ids = inputs.pop("input_ids")
@@ -216,124 +212,11 @@ class ModisTrainer(Trainer):
 
         return lm_loss
     
-
-    def custom_train(
-        self,
-        resume_from_checkpoint: Optional[Union[str, bool]] = None,
-        trial: Union["optuna.Trial", Dict[str, Any]] = None,
-        ignore_keys_for_eval: Optional[List[str]] = None,
-        **kwargs,
-    ):
-        """
-        Main training entry point.
-
-        Args:
-            resume_from_checkpoint (`str` or `bool`, *optional*):
-                If a `str`, local path to a saved checkpoint as saved by a previous instance of [`Trainer`]. If a
-                `bool` and equals `True`, load the last checkpoint in *args.output_dir* as saved by a previous instance
-                of [`Trainer`]. If present, training will resume from the model/optimizer/scheduler states loaded here.
-            trial (`optuna.Trial` or `Dict[str, Any]`, *optional*):
-                The trial run or the hyperparameter dictionary for hyperparameter search.
-            ignore_keys_for_eval (`List[str]`, *optional*)
-                A list of keys in the output of your model (if it is a dictionary) that should be ignored when
-                gathering predictions for evaluation during the training.
-            kwargs (`Dict[str, Any]`, *optional*):
-                Additional keyword arguments used to hide deprecated arguments
-        """
-        if resume_from_checkpoint is False:
-            resume_from_checkpoint = None
-
-        # memory metrics - must set up as early as possible
-        self._memory_tracker.start()
-
-        args = self.args
-
-        self.is_in_train = True
-
-        # Attach NEFTune hooks if necessary
-        if self.neftune_noise_alpha is not None:
-            self.model = self._activate_neftune(self.model)
-
-        # do_train is not a reliable argument, as it might not be set and .train() still called, so
-        # the following is a workaround:
-        if (args.fp16_full_eval or args.bf16_full_eval) and not args.do_train:
-            self._move_model_to_device(self.model, args.device)
-
-        if "model_path" in kwargs:
-            resume_from_checkpoint = kwargs.pop("model_path")
-            warnings.warn(
-                "`model_path` is deprecated and will be removed in a future version. Use `resume_from_checkpoint` "
-                "instead.",
-                FutureWarning,
-            )
-        if len(kwargs) > 0:
-            raise TypeError(f"train() received got unexpected keyword arguments: {', '.join(list(kwargs.keys()))}.")
-        # This might change the seed so needs to run first.
-        self._hp_search_setup(trial)
-        self._train_batch_size = self.args.train_batch_size
-
-        # Model re-init
-        model_reloaded = False
-        if self.model_init is not None:
-            # Seed must be set before instantiating the model when using model_init.
-            enable_full_determinism(self.args.seed) if self.args.full_determinism else set_seed(self.args.seed)
-            self.model = self.call_model_init(trial)
-            model_reloaded = True
-            # Reinitializes optimizer and scheduler
-            self.optimizer, self.lr_scheduler = None, None
-
-        # Load potential model checkpoint
-        if isinstance(resume_from_checkpoint, bool) and resume_from_checkpoint:
-            resume_from_checkpoint = get_last_checkpoint(args.output_dir)
-            if resume_from_checkpoint is None:
-                raise ValueError(f"No valid checkpoint found in output directory ({args.output_dir})")
-
-        if resume_from_checkpoint is not None:
-            if not is_sagemaker_mp_enabled() and not self.is_deepspeed_enabled and not self.is_fsdp_enabled:
-                self._load_from_checkpoint(resume_from_checkpoint)
-            # In case of repeating the find_executable_batch_size, set `self._train_batch_size` properly
-            state = TrainerState.load_from_json(os.path.join(resume_from_checkpoint, TRAINER_STATE_NAME))
-            if state.train_batch_size is not None:
-                self._train_batch_size = state.train_batch_size
-
-        # If model was re-initialized, put it on the right device and update self.model_wrapped
-        if model_reloaded:
-            if self.place_model_on_device:
-                self._move_model_to_device(self.model, args.device)
-            self.model_wrapped = self.model
-
-        inner_training_loop = custom_find_executable_batch_size(
-            self._custom_inner_training_loop, self._train_batch_size, args.auto_find_batch_size
-        )
-        if args.push_to_hub:
-            try:
-                # Disable progress bars when uploading models during checkpoints to avoid polluting stdout
-                hf_hub_utils.disable_progress_bars()
-                return inner_training_loop(
-                    args=args,
-                    resume_from_checkpoint=resume_from_checkpoint,
-                    trial=trial,
-                    ignore_keys_for_eval=ignore_keys_for_eval,
-                )
-            finally:
-                hf_hub_utils.enable_progress_bars()
-        else:
-            return inner_training_loop(
-                args=args,
-                resume_from_checkpoint=resume_from_checkpoint,
-                trial=trial,
-                ignore_keys_for_eval=ignore_keys_for_eval,
-            )
-
-    def _custom_inner_training_loop(
-        self, batch_size=None, args=None, resume_from_checkpoint=None, trial=None, ignore_keys_for_eval=None,
-        finding_executable_batch_size=False
+    def _inner_training_loop(
+        self, batch_size=None, args=None, resume_from_checkpoint=None, trial=None, ignore_keys_for_eval=None
     ):
         self.accelerator.free_memory()
         self._train_batch_size = batch_size
-        args_max_steps = args.max_steps # Do not override the original value
-        self.args.learning_rate = self.args_backup.learning_rate # set initial lr to be the backup
-        self.args.gradient_accumulation_steps = self.args_backup.gradient_accumulation_steps # set initial accumulation steps to be the backup
         if self.args.auto_find_batch_size:
             if self.state.train_batch_size != self._train_batch_size:
                 from accelerate.utils import release_memory
@@ -349,15 +232,10 @@ class ModisTrainer(Trainer):
                     self.propagate_args_to_deepspeed(True)
                     self.args.per_device_train_batch_size = original_bs
             self.state.train_batch_size = self._train_batch_size
-            if self.tune_lr_in_auto_bs:
-                args_max_steps = int(np.ceil(self.args.max_steps * self.args.per_device_train_batch_size // self._train_batch_size))
-                self.args.learning_rate *= self._train_batch_size / self.args.per_device_train_batch_size
-                print(f"Auto-set batch size to {self._train_batch_size}, max_steps to {args_max_steps}, learning rate to {self.args.learning_rate}")
-            else:
-                self.args.gradient_accumulation_steps *= self.args.per_device_train_batch_size // self._train_batch_size
-                self.args.gradient_accumulation_steps = max(self.args.gradient_accumulation_steps,1)
-                args.gradient_accumulation_steps = self.args.gradient_accumulation_steps
-                print(f"Auto-set batch size to {self._train_batch_size}, accumulation steps to {self.args.gradient_accumulation_steps}")
+            self.args.gradient_accumulation_steps = self.initial_gradient_accumulation_steps * self.initial_batch_size // self._train_batch_size
+            self.args.gradient_accumulation_steps = max(self.args.gradient_accumulation_steps,1)
+            args.gradient_accumulation_steps = self.args.gradient_accumulation_steps
+            print(f"Auto-set batch size to {self._train_batch_size}, accumulation steps to {self.args.gradient_accumulation_steps}")
         logger.debug(f"Currently training with a batch size of: {self._train_batch_size}")
         # Data loader and number of training steps
         train_dataloader = self.get_train_dataloader()
@@ -377,17 +255,17 @@ class ModisTrainer(Trainer):
             num_update_steps_per_epoch = len_dataloader // args.gradient_accumulation_steps
             num_update_steps_per_epoch = max(num_update_steps_per_epoch, 1)
             num_examples = self.num_examples(train_dataloader)
-            if args_max_steps > 0:
-                max_steps = args_max_steps
-                num_train_epochs = args_max_steps // num_update_steps_per_epoch + int(
-                    args_max_steps % num_update_steps_per_epoch > 0
+            if args.max_steps > 0:
+                max_steps = args.max_steps
+                num_train_epochs = args.max_steps // num_update_steps_per_epoch + int(
+                    args.max_steps % num_update_steps_per_epoch > 0
                 )
                 # May be slightly incorrect if the last batch in the training dataloader has a smaller size but it's
                 # the best we can do.
-                num_train_samples = args_max_steps * total_train_batch_size
+                num_train_samples = args.max_steps * total_train_batch_size
                 if args.include_tokens_per_second:
                     num_train_tokens = (
-                        self.num_tokens(train_dataloader, args_max_steps) * args.gradient_accumulation_steps
+                        self.num_tokens(train_dataloader, args.max_steps) * args.gradient_accumulation_steps
                     )
             else:
                 max_steps = math.ceil(args.num_train_epochs * num_update_steps_per_epoch)
@@ -395,19 +273,19 @@ class ModisTrainer(Trainer):
                 num_train_samples = self.num_examples(train_dataloader) * args.num_train_epochs
                 if args.include_tokens_per_second:
                     num_train_tokens = self.num_tokens(train_dataloader) * args.num_train_epochs
-        elif args_max_steps > 0:  # Rely on max_steps when dataloader does not have a working size
-            max_steps = args_max_steps
+        elif args.max_steps > 0:  # Rely on max_steps when dataloader does not have a working size
+            max_steps = args.max_steps
             # Setting a very large number of epochs so we go as many times as necessary over the iterator.
             num_train_epochs = sys.maxsize
             num_update_steps_per_epoch = max_steps
-            num_examples = total_train_batch_size * args_max_steps
-            num_train_samples = args_max_steps * total_train_batch_size
+            num_examples = total_train_batch_size * args.max_steps
+            num_train_samples = args.max_steps * total_train_batch_size
             if args.include_tokens_per_second:
-                num_train_tokens = self.num_tokens(train_dataloader, args_max_steps) * args.gradient_accumulation_steps
+                num_train_tokens = self.num_tokens(train_dataloader, args.max_steps) * args.gradient_accumulation_steps
         else:
             raise ValueError(
                 "args.max_steps must be set to a positive value if dataloader does not have a length, was"
-                f" {args_max_steps}"
+                f" {args.max_steps}"
             )
 
         if DebugOption.UNDERFLOW_OVERFLOW in self.args.debug:
@@ -613,7 +491,7 @@ class ModisTrainer(Trainer):
             steps_in_epoch = (
                 len(epoch_iterator)
                 if len_dataloader is not None
-                else args_max_steps * args.gradient_accumulation_steps
+                else args.max_steps * args.gradient_accumulation_steps
             )
             self.control = self.callback_handler.on_epoch_begin(args, self.state, self.control)
 
@@ -745,9 +623,6 @@ class ModisTrainer(Trainer):
                     self.control = self.callback_handler.on_step_end(args, self.state, self.control)
 
                     self._maybe_log_save_evaluate(tr_loss, grad_norm, model, trial, epoch, ignore_keys_for_eval)
-
-                    if finding_executable_batch_size:
-                        return True
                 else:
                     self.control = self.callback_handler.on_substep_end(args, self.state, self.control)
 
@@ -853,173 +728,5 @@ class ModisTrainer(Trainer):
 
 
 
-
-
-
-
-
-
-
-
-# Find optimal batch size with binary search, unstable because of GPU
-# def find_executable_batch_size(function: callable = None, starting_batch_size: int = 128):
-#     """
-#     A basic decorator that will try to execute `function`. If it fails from exceptions related to out-of-memory or
-#     CUDNN, the batch size is cut in half and passed to `function`
-
-#     `function` must take in a `batch_size` parameter as its first argument.
-
-#     Args:
-#         function (`callable`, *optional*):
-#             A function to wrap
-#         starting_batch_size (`int`, *optional*):
-#             The batch size to try and fit into memory
-
-#     Example:
-
-#     ```python
-#     >>> from accelerate.utils import find_executable_batch_size
-
-
-#     >>> @find_executable_batch_size(starting_batch_size=128)
-#     ... def train(batch_size, model, optimizer):
-#     ...     ...
-
-
-#     >>> train(model, optimizer)
-#     ```
-#     """
-#     if function is None:
-#         return functools.partial(find_executable_batch_size, starting_batch_size=starting_batch_size)
-
-#     batch_size = starting_batch_size
-
-#     def decorator(*args, **kwargs):
-#         nonlocal batch_size
-#         clear_device_cache(garbage_collection=True)
-#         params = list(inspect.signature(function).parameters.keys())
-#         # Guard against user error
-#         if len(params) < (len(args) + 1):
-#             arg_str = ", ".join([f"{arg}={value}" for arg, value in zip(params[1:], args[1:])])
-#             raise TypeError(
-#                 f"Batch size was passed into `{function.__name__}` as the first argument when called."
-#                 f"Remove this as the decorator already does so: `{function.__name__}({arg_str})`"
-#             )
-#         while True: # Initial phase: test the upper bound where 0.5 * batch_size < target < batch_size
-#             try:
-#                 function(batch_size, finding_executable_batch_size=True, *args, **kwargs)
-#                 clear_device_cache(garbage_collection=True)
-#                 batch_size *= 2
-#             except Exception as e:
-#                 if should_reduce_batch_size(e):
-#                     clear_device_cache(garbage_collection=True)
-#                     lower_bound = batch_size // 2
-#                     break
-#                 else:
-#                     raise e
-
-#         # Binary search phase
-#         def bin_search(upper_bound,lower_bound):
-#             print(f"Performing Binary Search with upper_bound: {upper_bound}, lower_bound: {lower_bound}")
-#             while lower_bound < upper_bound:
-#                 mid_batch_size = (lower_bound + upper_bound + 1) // 2
-#                 try:
-#                     function(mid_batch_size, finding_executable_batch_size=True, *args, **kwargs)
-#                     clear_device_cache(garbage_collection=True)
-#                     lower_bound = mid_batch_size
-#                 except Exception as e:
-#                     if should_reduce_batch_size(e):
-#                         clear_device_cache(garbage_collection=True)
-#                         upper_bound = mid_batch_size - 1
-#                     else:
-#                         raise e
-#             print(f"Binary Search completed with batch_size: {lower_bound}")
-#             if lower_bound>8:
-#                 return lower_bound
-#             else:
-#                 return lower_bound-1
-
-#         upper_bound = batch_size
-
-#         while True:
-#             try:
-#                 batch_size = bin_search(upper_bound,lower_bound)
-#                 return function(batch_size, *args, **kwargs)
-#             except Exception as e:
-#                 if should_reduce_batch_size(e):
-#                     clear_device_cache(garbage_collection=True)
-#                     upper_bound = batch_size
-#                     lower_bound = lower_bound // 2
-#                 else:
-#                     raise e
-        
-
-#     return decorator
-
-
-
-# Find a good batch size with heuristics, more stable than binary search, still not ideal
-# def find_executable_batch_size(function: callable = None, starting_batch_size: int = 128):
-#     """
-#     A basic decorator that will try to execute `function`. If it fails from exceptions related to out-of-memory or
-#     CUDNN, the batch size is cut in half and passed to `function`
-
-#     `function` must take in a `batch_size` parameter as its first argument.
-
-#     Args:
-#         function (`callable`, *optional*):
-#             A function to wrap
-#         starting_batch_size (`int`, *optional*):
-#             The batch size to try and fit into memory
-
-#     Example:
-
-#     ```python
-#     >>> from accelerate.utils import find_executable_batch_size
-
-
-#     >>> @find_executable_batch_size(starting_batch_size=128)
-#     ... def train(batch_size, model, optimizer):
-#     ...     ...
-
-
-#     >>> train(model, optimizer)
-#     ```
-#     """
-#     if function is None:
-#         return functools.partial(find_executable_batch_size, starting_batch_size=starting_batch_size)
-
-#     batch_size = starting_batch_size
-
-#     def decorator(*args, **kwargs):
-#         nonlocal batch_size
-#         clear_device_cache(garbage_collection=True)
-#         params = list(inspect.signature(function).parameters.keys())
-#         # Guard against user error
-#         if len(params) < (len(args) + 1):
-#             arg_str = ", ".join([f"{arg}={value}" for arg, value in zip(params[1:], args[1:])])
-#             raise TypeError(
-#                 f"Batch size was passed into `{function.__name__}` as the first argument when called."
-#                 f"Remove this as the decorator already does so: `{function.__name__}({arg_str})`"
-#             )
-        
-#         # e.g., start with 128, test with 384, then 256, 192, 160, 144, 128, 112, ...
-#         step_size = batch_size
-#         min_step = max(1, step_size // 8)
-#         batch_size *= 3 # upper bound 
-#         while True:
-#             if batch_size == 0:
-#                 raise RuntimeError("No executable batch size found, reached zero.")
-#             try:
-#                 return function(batch_size, *args, **kwargs)
-#             except Exception as e:
-#                 if should_reduce_batch_size(e):
-#                     clear_device_cache(garbage_collection=True)
-#                     batch_size -= step_size
-#                     step_size = max(min_step, step_size // 2)
-#                 else:
-#                     raise
-
-#     return decorator
 
 

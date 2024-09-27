@@ -80,8 +80,8 @@ parser.add_argument("--logging_steps", type=int, default=20)
 parser.add_argument("--gab_name", type=str, default='default') ## name of gab block to use 
 parser.add_argument("--PERF_PROF_MODE", type=bool, default=False) # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
 parser.add_argument("--gradient_accumulation_steps", type=int, default=1) # auto find batch size
-parser.add_argument("--tune_lr_in_auto_bs", type=bool, default=False) # tune lr or tune grad accumulation steps
-parser.add_argument("--auto_find_batch_size_hf", type=bool, default=True) # whether use hf auto_find_batch_size (fast but not stable) or custom one
+# parser.add_argument("--tune_lr_in_auto_bs", type=bool, default=False) # tune lr or tune grad accumulation steps, do not use it as it may change the behavior of training
+parser.add_argument("--auto_find_batch_size_hf", type=bool, default=False) # whether use hf auto_find_batch_size (fast but not stable) or custom one
 
 # PATCH for the evolution
 parser.add_argument("--mode", type=str, default='test') # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
@@ -284,7 +284,7 @@ def run_train(args,gab,gab_config,num_steps=None) -> None:
             tokenizer=tokenizer,
             args=training_args,
             data_collator=data_collator,
-            tune_lr_in_auto_bs=args.tune_lr_in_auto_bs, # tune lr or tune grad accumulation steps
+            # tune_lr_in_auto_bs=args.tune_lr_in_auto_bs, # tune lr or tune grad accumulation steps
         )
     print(f'Time elapsed for setting up trainer: {(time.perf_counter() - start):.1f} s')
     
