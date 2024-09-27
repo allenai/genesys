@@ -3,13 +3,25 @@ import time
 import pathlib
 import datetime
 import streamlit as st
+from streamlit.runtime.scriptrunner import add_script_run_ctx
 import sys,os
-
+import threading
+import queue
 sys.path.append('.')
 import model_discovery.utils as U
 from model_discovery.agents.flow.gau_flows import EndReasons,RunningModes,END_REASONS_LABELS,DesignModes
 import bin.app_utils as AU
 
+
+
+def get_thread_safe_session_state():
+    try:
+        return st.session_state
+    except RuntimeError:
+        return {}
+
+
+#################################################
 
 def stat_logs(logs):
     end_reasons = {}
@@ -94,14 +106,62 @@ def load_log(log_file):
 
 ###########################################################################
 
+def _run_design(evosys, thread_id, n_sources=None, design_cfg={}, search_cfg={}, user_input='', design_id=None, mode=None, resume=True, placeholder=None):
+    session_state = get_thread_safe_session_state()
+    stop_event = session_state.get('design_threads', {}).get(thread_id, {}).get('stop_event', threading.Event())
+    output_queue = session_state.get('design_threads', {}).get(thread_id, {}).get('queue', queue.Queue())
+    
+    # Create a custom StreamlitOutputStream that puts messages in the queue
+    class ThreadSafeStream:
+        def write(self, text):
+            output_queue.put(text)
+        
+        def __getattr__(self, attr):
+            return lambda *args, **kwargs: None  # No-op for other methods
 
-def _run_design(evosys,n_sources=None,design_cfg={},search_cfg={},user_input='',design_id=None,mode=None,resume=True): 
-    evosys.design(n_sources,design_cfg,search_cfg,user_input=user_input,mode=mode,design_id=design_id,resume=resume)
+    thread_safe_stream = ThreadSafeStream()
+    
+    while not stop_event.is_set():
+        # Run the design function with the thread-safe stream
+        select_cfg={'n_sources':n_sources}
+        evosys.design(select_cfg, design_cfg, search_cfg, user_input=user_input, mode=mode, design_id=design_id, resume=resume, stream=thread_safe_stream)
+        time.sleep(1)  # Simulate some processing time
+        print(f"Thread {thread_id} is running")
+
+    print(f"Thread {thread_id} has stopped.")
+
+# Function to start a new thread
+def start_design_thread(evosys, n_sources=None, design_cfg={}, search_cfg={}, user_input='', design_id=None, mode=None, resume=True):
+    thread_id = len(st.session_state.get('design_threads', {})) + 1  # Unique thread ID
+    stop_event = threading.Event()
+    
+    # Create a placeholder for this thread's output
+    placeholder = st.empty()
+    
+    design_thread = threading.Thread(target=_run_design, 
+                                     args=(evosys, thread_id, n_sources, design_cfg, search_cfg, user_input, design_id, mode, resume, placeholder))
+    
+    # Add Streamlit's script run context to the thread
+    add_script_run_ctx(design_thread)
+    
+    # Store the thread, stop event, and placeholder in session state
+    if 'design_threads' not in st.session_state:
+        st.session_state['design_threads'] = {}
+    st.session_state['design_threads'][thread_id] = {
+        "thread": design_thread, 
+        "stop_event": stop_event,
+        "placeholder": placeholder,
+        "queue": queue.Queue()
+    }
+    
+    # Start the thread
+    design_thread.start()
+    return thread_id
 
 
 def _design_tuning(evosys,project_dir):
     ### build the system 
-    st.title("Agent Tunner")
+    st.title("Model Design Engine")
 
     system = evosys.rnd_agent
     db_dir = evosys.ptree.db_dir
@@ -119,8 +179,7 @@ def _design_tuning(evosys,project_dir):
 
         col1, col2 = st.columns([1, 5])
         with col1:
-            # st.markdown("#### Configure design mode")
-            mode = st.selectbox(label="Design Mode",options=[i.value for i in DesignModes])
+            mode = st.selectbox(label="Design Mode",options=[i.value for i in DesignModes],disabled=True)
         with col2:
             # st.markdown("#### Configure the base models for each agent")
             AGENT_TYPES = ['claude3.5_sonnet','gpt4o_0806','gpt4o_mini']
@@ -275,10 +334,10 @@ def _design_tuning(evosys,project_dir):
     with cols[0]:
         user_input = st.text_input(label = "Add any additional instructions (optional)" )
     with cols[1]:
-        running_mode = st.selectbox(label="Running Mode",options=[i.value for i in RunningModes],index=2)
+        running_mode = st.selectbox(label="Running Mode",options=[i.value for i in RunningModes],index=2,disabled=True)
         design_cfg['running_mode'] = RunningModes(running_mode)
     with cols[2]:
-        EXPERIMENT_RUNS = st.number_input(label="Number of design runs",min_value=1,value=1)
+        EXPERIMENT_RUNS = st.number_input(label="Number of design runs",min_value=1,value=1,disabled=True)
     with cols[3]:
         st.write('')
         st.write('')
@@ -306,7 +365,9 @@ def _design_tuning(evosys,project_dir):
             with st.spinner(text=spinner_text):
                 _mode = DesignModes(mode)
                 design_id=None
-                _run_design(evosys,project_dir,n_sources,design_cfg,search_cfg,user_input=user_input,mode=_mode,design_id=design_id,resume=resume)
+                select_cfg={'n_sources':n_sources}
+                evosys.design(select_cfg,design_cfg,search_cfg,user_input=user_input,mode=_mode,design_id=design_id,resume=resume)
+    
     
     elif selected_design:
         with st.empty():
@@ -329,7 +390,15 @@ def _design_tuning(evosys,project_dir):
     
 
 def _design_engine(evosys,project_dir):
-    st.title("Model Design Engine")
+    st.title("Design Sampling Engine")
+
+    db_dir = evosys.ptree.db_dir
+    design_cfg = {}
+    n_sources = {}
+
+
+
+
 
 
 
@@ -337,18 +406,20 @@ def _design_engine(evosys,project_dir):
 
 def design(evosys,project_dir):
 
+    if 'design_threads' not in st.session_state:
+        st.session_state['design_threads'] = {}  # Format: {thread_id: {"thread": thread_object, "stop_event": event_object}}
 
     if 'design_tab' not in st.session_state:
         st.session_state['design_tab'] = 'design_tunner'
 
     ### side bar 
     with st.sidebar:
-        st.write(f'**Namespace: ```{evosys.evoname}```**')
+        st.write(f'**Running Namespace:\n```{evosys.evoname}```**')
 
-        if st.button("**Design Runner**" if st.session_state['design_tab']=='design_runner' else "Design Runner",use_container_width=True):
+        if st.button("**Engine Runner**" if st.session_state['design_tab']=='design_runner' else "Engine Runner",use_container_width=True):
             st.session_state['design_tab'] = 'design_runner'
             st.rerun()
-        if st.button("**Design Tunner**" if st.session_state['design_tab']=='design_tunner' else "Design Tunner",use_container_width=True):
+        if st.button("**Engine Tunner**" if st.session_state['design_tab']=='design_tunner' else "Engine Tunner",use_container_width=True):
             st.session_state['design_tab'] = 'design_tunner'
             st.rerun()
 

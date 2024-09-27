@@ -16,7 +16,7 @@ def select(evosys,project_dir):
     st.title('Seed Selector')
 
     with st.sidebar:
-        st.write(f'**Namespace: ```{evosys.evoname}```**')
+        st.write(f'**Running Namespace:\n```{evosys.evoname}```**')
 
 
 

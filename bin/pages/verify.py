@@ -121,7 +121,7 @@ def verify(evosys,project_dir):
         st.session_state['output'] = {}
 
     with st.sidebar:
-        st.write(f'**Namespace: ```{evosys.evoname}```**')
+        st.write(f'**Running Namespace:\n```{evosys.evoname}```**')
         with st.expander("Running Sessions"):
             st.write({key:process.poll() for key,process in st.session_state['running_verifications'].items()})
         with st.expander("View CPU stats"):

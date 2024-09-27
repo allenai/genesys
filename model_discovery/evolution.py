@@ -1039,6 +1039,9 @@ class EvolutionSystem(exec_utils.System):
         self._config = config
         self.params=config.params
         self.stream = PrintSystem(config)
+        self.design_cfg = {}
+        self.search_cfg = {}
+        self.select_cfg = {}
         self.load(**kwargs)
 
     def load(self,**kwargs):
@@ -1049,6 +1052,8 @@ class EvolutionSystem(exec_utils.System):
         self.ckpt_dir=os.environ.get("CKPT_DIR")
         self.evo_dir=U.pjoin(self.ckpt_dir,self.evoname)
         U.mkdir(self.evo_dir)
+        
+        self.load_config()
 
         # load or init the state, if it is an existing evolution, load the state, otherwise init the state
         self.state=self.load_state() # load the state by evoname
@@ -1126,17 +1131,32 @@ class EvolutionSystem(exec_utils.System):
             self.rnd_agent.bind_ptree(self.ptree,self.stream)
             # self.ptree.export()
 
+    
+
     def link_stream(self,stream):
         self.stream=stream
         self.rnd_agent.sss.stream=stream
+
+    def reconfig(self,design_cfg=None,search_cfg=None,select_cfg=None):
+        if design_cfg is not None:
+            self.design_cfg = design_cfg
+        if search_cfg is not None:
+            self.search_cfg = search_cfg
+        if select_cfg is not None:
+            self.select_cfg = select_cfg
+        if design_cfg is not None or search_cfg is not None or select_cfg is not None:
+            self.save_config()
 
     def reload(self,params=None):
         if params:
             self.params = params
             self._config.params = params
         self.load()
-    
+
     def switch_ckpt(self,ckpt_name):
+        self.design_cfg = {}
+        self.search_cfg = {}
+        self.select_cfg = {}
         self.reload({'evoname':ckpt_name})
 
     def query_system(self,
@@ -1154,9 +1174,21 @@ class EvolutionSystem(exec_utils.System):
     def load_state(self):
         return U.load_json(U.pjoin(self.evo_dir,'state.json'))
 
+    def load_config(self):
+        config = U.load_json(U.pjoin(self.evo_dir,'config.json'))
+        self.design_cfg = config.get('design_cfg',{})
+        self.search_cfg = config.get('search_cfg',{})
+        self.select_cfg = config.get('select_cfg',{})
+
     def save_state(self):
         U.save_json(self.state,U.pjoin(self.evo_dir,'state.json'))
-
+    
+    def save_config(self):
+        config = U.load_json(U.pjoin(self.evo_dir,'config.json'))
+        config['design_cfg'] = self.design_cfg
+        config['search_cfg'] = self.search_cfg
+        config['select_cfg'] = self.select_cfg
+        U.save_json(config,U.pjoin(self.evo_dir,'config.json'))
 
     def check_budget(self,action):
         if action=='design': # check the design budget
@@ -1187,20 +1219,25 @@ class EvolutionSystem(exec_utils.System):
             self.verify()
 
     # TODO: the interface should be updated when selector agent is ready, and design cfg is ready
-    def design(self,n_sources=None,design_cfg={},search_cfg={},user_input='',design_id=None,mode=None,resume=True): # select then sample, TODO: n_sources and design_cfg should be configed
+    def design(self,select_cfg=None,design_cfg=None,search_cfg=None,user_input='',design_id=None,mode=None,resume=True): # select then sample, TODO: n_sources and design_cfg should be configed
         # user_input and design_cfg maybe changed by the user, so we need to pass them in
         # self.ptree.reload() # WHY WE NEED THIS???
         if mode is None:
             mode=DesignModes.MUTATION
+        if design_cfg is None:
+            design_cfg = self.design_cfg
+        if search_cfg is None:
+            search_cfg = self.search_cfg
         unfinished_designs = self.ptree.get_unfinished_designs()
         self.stream.write(f"Found {len(unfinished_designs)} unfinished designs, allow resume: {resume}")
-        if n_sources is None:
-            n_sources = {
-                'ReferenceCoreWithTree':1,
-                # 'DesignArtifact':1,
-                'ReferenceWithCode':2,
-                'Reference':2,
-            }
+        if not select_cfg:
+            select_cfg = self.select_cfg
+        n_sources=select_cfg.get('n_sources',{
+            'ReferenceCoreWithTree':1,
+            'DesignArtifactImplemented':1,
+            'ReferenceWithCode':2,
+            'Reference':2,
+        })
         if design_id is None:
             if len(unfinished_designs)==0 or not resume:
                 instruct,seed,refs=self.select(n_sources,mode=mode) # use the seed_ids to record the phylogenetic tree
@@ -1488,7 +1525,8 @@ if __name__ == '__main__':
             if args.mode=='prep_model':
                 evolution_system._prep_model(args.design_id, args.scale)
             elif args.mode=='design':
-                evolution_system.design(n_sources,design_cfg,search_cfg,user_input,design_id,mode,resume)
+                # evolution_system.design(n_sources,design_cfg,search_cfg,user_input,design_id,mode,resume)
+                pass
             elif args.mode=='evolve':
                 # evolution_system.evolve()
                 pass

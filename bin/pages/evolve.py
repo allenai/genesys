@@ -89,8 +89,8 @@ def evolve(evosys,project_dir):
     components.html(source_code, height = 800)
 
     with st.sidebar:
+        st.write(f'**Running Namespace:\n```{evosys.evoname}```**')
         logo_png = AU.square_logo("EVO", "SYS")
         st.image(logo_png, use_column_width=True)
-        st.write(f'**Namespace: ```{evosys.evoname}```**')
 
     

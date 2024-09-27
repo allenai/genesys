@@ -21,7 +21,7 @@ def search(evosys,project_dir):
     st.title("Paper Search Engine")
 
     with st.sidebar:
-        st.write(f'**Namespace: ```{evosys.evoname}```**')
+        st.write(f'**Running Namespace:\n```{evosys.evoname}```**')
 
     with st.expander("Search Configurations",expanded=True):
         search_cfg={}

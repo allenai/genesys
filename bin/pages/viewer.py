@@ -198,6 +198,7 @@ def viewer(evosys,project_dir):
 
     ### Sidebar
     with st.sidebar:
+        st.write(f'**Running Namespace:\n```{evosys.evoname}```**')
         view_mode = st.selectbox("View Mode", list([i.value for i in ViewModes]))
         view_mode = ViewModes(view_mode)
         if view_mode == ViewModes.FLOW:

@@ -14,7 +14,19 @@ sys.path.append('.')
 import model_discovery.utils as U
 import bin.app_utils as AU
 
+from model_discovery.agents.flow.gau_flows import DesignModes,RunningModes
+
 TARGET_SCALES = ['14M','31M','70M','125M','350M','760M','1300M']
+
+
+def apply_config(evosys,config,params_only=False):
+    apply_env_vars(evosys,config['env_vars'])
+    if not params_only:
+        evosys.reconfig(design_cfg=config['design_cfg'],select_cfg=config['select_cfg'],search_cfg=config['search_cfg'])
+    # st.session_state['EVOSYS_PARAMS']=config['params']
+    evosys.reload(config['params'])
+    U.save_json(config,U.pjoin(evosys.evo_dir,'config.json'))
+    st.toast(f"Applied and saved config:\n{config}")
 
 
 def apply_env_vars(evosys,env_vars):
@@ -32,7 +44,188 @@ def apply_env_vars(evosys,env_vars):
         st.toast("No changes to environment variables")
 
     return changed
-            
+
+def apply_select_config(evosys,select_cfg):
+    evosys.reconfig(select_cfg=select_cfg)
+
+def apply_design_config(evosys,design_cfg):
+    evosys.reconfig(design_cfg=design_cfg)
+
+def apply_search_config(evosys,search_cfg):
+    evosys.reconfig(search_cfg=search_cfg)
+
+def design_config(evosys):
+
+    st.subheader("Model Design Engine Settings")
+
+    design_cfg=evosys.design_cfg
+    select_cfg=evosys.select_cfg
+    search_cfg=evosys.search_cfg
+
+    n_sources=select_cfg.get('n_sources',{})
+    
+    #### Configure design
+
+    
+    with st.expander(f"Node Selector Configurations for ```{evosys.evoname}```",expanded=False,icon='🌱'):
+
+        sources = ['ReferenceCoreWithTree', 'DesignArtifactImplemented', 'DesignArtifact', 'ReferenceCore', 'ReferenceWithCode', 'Reference']
+        sources={i:len(evosys.ptree.filter_by_type(i)) for i in sources}
+        
+        st.markdown("##### Configure the number of seeds to sample from each source")
+        cols = st.columns(len(sources))
+        mode=evosys.design_cfg.get('mode',DesignModes.MUTATION.value)
+        for i,source in enumerate(sources):
+            with cols[i]:
+                if mode==DesignModes.MUTATION.value and source=='ReferenceCoreWithTree':
+                    n_sources[source] = st.number_input(label=f'{source} ({sources[source]})',min_value=0,value=1)#,max_value=1,disabled=True)
+                else:
+                    init_value=0 if source in ['DesignArtifact','ReferenceCore'] else min(2,sources[source])
+                    if source == 'DesignArtifactImplemented':
+                        init_value = min(1,sources[source])
+                    # disabled=True if source == 'DesignArtifact' else False
+                    n_sources[source] = st.number_input(label=f'{source} ({sources[source]})',min_value=0,value=init_value,max_value=sources[source])#,disabled=disabled)
+        if mode==DesignModes.MUTATION.value:
+            st.write('**ReferenceCoreWithTree and DesignArtifactImplemented are seed types in MUTATION mode. Will randomly sample one from samples from them as seed.*')
+        select_cfg['n_sources']=n_sources
+
+        st.button("Save and Apply",key='save_select_config',on_click=apply_select_config,args=(evosys,select_cfg))   
+
+
+
+    with st.expander(f"Design Agent Configurations for ```{evosys.evoname}```",expanded=False,icon='🎨'):
+
+        col1, col2 = st.columns([1, 5])
+        with col1:
+            mode = st.selectbox(label="Design Mode",options=[i.value for i in DesignModes],disabled=True)
+        with col2:
+            # st.markdown("#### Configure the base models for each agent")
+            AGENT_TYPES = ['claude3.5_sonnet','gpt4o_0806','gpt4o_mini']
+            agent_type_labels = {
+                'DESIGN_PROPOSER':'Proposal Agent',
+                'PROPOSAL_REVIEWER':'Proposal Reviewer',
+                'IMPLEMENTATION_PLANNER':'Implementation Planner',
+                'IMPLEMENTATION_CODER':'Implementation Coder',
+                'IMPLEMENTATION_OBSERVER':'Implementation Observer',
+                'SEARCH_ASSISTANT': '*Separate Search Assistant*'
+            }
+            agent_types = {}
+            cols = st.columns(len(agent_type_labels))
+            for i,agent in enumerate(agent_type_labels):
+                with cols[i]:
+                    index=0 
+                    options=AGENT_TYPES
+                    if agent in ['SEARCH_ASSISTANT']:
+                        options=AGENT_TYPES+['None']
+                        index=len(options)-1
+                    elif agent in ['IMPLEMENTATION_OBSERVER']:
+                        options=AGENT_TYPES+['o1_preview','o1_mini','None']
+                        index=len(options)-2
+                    elif agent in ['IMPLEMENTATION_CODER','DESIGN_PROPOSER','PROPOSAL_REVIEWER','IMPLEMENTATION_PLANNER']: 
+                        options=AGENT_TYPES+['o1_preview','o1_mini']
+                        if agent in ['IMPLEMENTATION_CODER']:
+                            index=len(options)-1
+                        else:
+                            index=len(options)-1
+                    agent_types[agent] = st.selectbox(label=agent_type_labels[agent],options=options,index=index,disabled=agent=='SEARCH_ASSISTANT')
+            design_cfg['agent_types'] = agent_types
+
+        if mode!=DesignModes.MUTATION.value:
+            st.toast("WARNING!!!: Only mutation mode is supported now. Other modes are not stable or unimplemented.")
+
+        col1,col2=st.columns([3,2])
+        termination={}
+        threshold={}
+        max_attempts = {}
+        with col1:
+            st.markdown("##### Configure termination conditions and budgets")
+            cols=st.columns(4)
+            with cols[0]:
+                termination['max_failed_rounds'] = st.number_input(label="Max failed rounds (0 is no limit)",min_value=1,value=3)
+            with cols[1]:
+                termination['max_total_budget'] = st.number_input(label="Max total budget (0 is no limit)",min_value=0,value=0)
+            with cols[2]:
+                termination['max_debug_budget'] = st.number_input(label="Max debug budget (0 is no limit)",min_value=0,value=0)
+            with cols[3]:
+                max_attempts['max_search_rounds'] = st.number_input(label="Max search rounds",min_value=0,value=4)
+        with col2:
+            st.markdown("##### Configure the threshold for rating the design")
+            cols=st.columns(2)
+            with cols[0]:
+                threshold['proposal_rating'] = st.slider(label="Proposal rating",min_value=0,max_value=5,value=4)
+            with cols[1]:
+                threshold['implementation_rating'] = st.slider(label="Implementation rating",min_value=0,max_value=5,value=3)
+        design_cfg['termination'] = termination
+        design_cfg['threshold'] = threshold 
+
+
+        col1,col2=st.columns([4,5])
+        with col1:
+            st.markdown("##### Configure max number of attempts")
+            cols=st.columns(3)
+            with cols[0]:
+                max_attempts['design_proposal'] = st.number_input(label="Max proposal attempts",min_value=3,value=5)
+            with cols[1]:
+                max_attempts['implementation_debug'] = st.number_input(label="Max debug attempts",min_value=3,value=5)
+            with cols[2]:
+                max_attempts['post_refinement'] = st.number_input(label="Max post refinements",min_value=0,value=0)
+        design_cfg['max_attempts'] = max_attempts
+        with col2:
+            st.markdown("##### Connecting Design Base to Firestore")
+
+        st.button("Save and Apply",key='save_design_config',on_click=apply_design_config,args=(evosys,design_cfg,select_cfg))   
+
+
+
+    with st.expander(f"Search Engine Configurations for ```{evosys.evoname}```",expanded=False,icon='🔎'):
+        search_cfg={}
+        search_cfg['result_limits']={}
+        search_cfg['perplexity_settings']={}
+        search_cfg['proposal_search_cfg']={}
+
+        cols=st.columns([2,2,2,3,2,3])
+        with cols[0]:
+            search_cfg['result_limits']['lib']=st.number_input("Library Primary",value=5,min_value=0,step=1)
+        with cols[1]:
+            search_cfg['result_limits']['lib2']=st.number_input("Library Secondary",value=0,min_value=0,step=1,disabled=True)
+        with cols[2]:
+            search_cfg['result_limits']['libp']=st.number_input("Library Plus",value=0,min_value=0,step=1,disabled=True)
+        with cols[3]:
+            search_cfg['rerank_ratio']=st.slider("Rerank Scale Ratio (0 means no rerank)",min_value=0.0,max_value=1.0,value=0.2,step=0.01)
+        with cols[4]:
+            search_cfg['proposal_search_cfg']['top_k']=st.number_input("Proposal Top K",value=3,min_value=0,step=1)
+        with cols[5]:
+            search_cfg['proposal_search_cfg']['cutoff']=st.slider("Proposal Search Cutoff",min_value=0.0,max_value=1.0,value=0.5,step=0.01)
+
+        cols=st.columns([2,2,2,2,2])
+        with cols[0]:
+            search_cfg['result_limits']['s2']=st.number_input("S2 Search Result Limit",value=5,min_value=0,step=1)
+        with cols[1]:
+            search_cfg['result_limits']['arxiv']=st.number_input("Arxiv Search Result Limit",value=3,min_value=0,step=1)
+        with cols[2]:
+            search_cfg['result_limits']['pwc']=st.number_input("Papers With Code Search Result Limit",value=3,min_value=0,step=1)
+        with cols[3]:
+            search_cfg['perplexity_settings']['model_size']=st.selectbox("Perplexity Model Size",options=['none','small','large','huge'],index=2)
+        with cols[4]:
+            search_cfg['perplexity_settings']['max_tokens']=st.number_input("Perplexity Max Tokens",value=4000,min_value=500,step=100,disabled=search_cfg['perplexity_settings']['model_size']=='none')
+       
+        st.button("Save and Apply",key='save_search_config',on_click=apply_search_config,args=(evosys,search_cfg))
+
+
+    with st.expander(f"Check Configurations for ```{evosys.evoname}``` (Empty for default)",expanded=False,icon='🔧'):
+        col1,col2,col3=st.columns(3)
+        with col1:
+            st.write("**Check Select Config:**")
+            st.write(evosys.select_cfg)
+        with col2:
+            st.write("**Check Design Config:**")
+            st.write(evosys.design_cfg)
+        with col3:
+            st.write("**Check Search Config:**")
+            st.write(evosys.search_cfg)
+
+
+
 
 def config(evosys,project_dir):
 
@@ -41,16 +234,10 @@ def config(evosys,project_dir):
 
     config={}
 
-    def apply_config(config):
-        apply_env_vars(evosys,config['env_vars'])
-        # st.session_state['EVOSYS_PARAMS']=config['params']
-        evosys.reload(config['params'])
-        st.toast(f"Applied config:\n{config}")
-
     st.subheader("Environment Settings")
 
     env_vars={}
-    with st.expander("Environment Variables (Leave blank to use default)"):
+    with st.expander("Environment Variables (Leave blank to use default)",icon='🔑'):
         with st.form("Environment Variables"):
             col1,col2,col3,col4=st.columns(4)
             with col1:
@@ -69,6 +256,7 @@ def config(evosys,project_dir):
                 env_vars['PERPLEXITY_API_KEY']=st.text_input('PERPLEXITY_API_KEY',type='password')
                 env_vars['MATHPIX_API_ID']=st.text_input('MATHPIX_API_ID (Optional)',type='password')
                 st.write("")
+                st.write("")
                 if st.form_submit_button("Apply"):
                     changed=apply_env_vars(evosys,env_vars)
                     if changed:
@@ -83,7 +271,7 @@ def config(evosys,project_dir):
     
 
     
-    with st.expander("Experiment Settings",expanded=True):
+    with st.expander("Evolution Settings",expanded=False,icon='🧬'):
         with st.form("Evolution System Config"):
             col1,col2=st.columns(2)
             with col1:
@@ -109,7 +297,15 @@ def config(evosys,project_dir):
                 settings['Verification Budges']=evosys.state['budgets']
                 st.write(settings)
 
-            st.form_submit_button("Apply",on_click=apply_config,args=(config,))
+            st.form_submit_button("Apply and Save",on_click=apply_config,args=(evosys,config,True))
+
+    with st.expander("Verification Engine Settings",expanded=False,icon='⚙️'):
+        st.write("**TODO**")
+
+    
+
+    design_config(evosys)
+    
 
 
     st.subheader("Existing Experiments")
@@ -128,10 +324,10 @@ def config(evosys,project_dir):
     for ckpt in os.listdir(evosys.ckpt_dir):
         exp_dir=U.pjoin(evosys.ckpt_dir,ckpt)
         experiment={}
-        experiment['directory']=exp_dir
-        state=U.load_json(U.pjoin(exp_dir,'state.json'))
-        if not state:
+        experiment['namespace']=ckpt
+        if not U.pexists(U.pjoin(exp_dir,'state.json')):
             continue
+        state=U.load_json(U.pjoin(exp_dir,'state.json'))
         experiment['selection_ratio']=state['selection_ratio']
         experiment['remaining_budget']=state['budgets']
         experiment['created_sessions']=len(os.listdir(U.pjoin(exp_dir,'db','sessions')))
@@ -153,8 +349,15 @@ def config(evosys,project_dir):
         st.write("No experiments found.")
 
 
-    
+
+    ################### Side bar ###################
+
     with st.sidebar:
+
+        st.write(f'**Running Namespace:\n```{evosys.evoname}```**')
+        config['select_cfg']=evosys.select_cfg
+        config['design_cfg']=evosys.design_cfg
+        config['search_cfg']=evosys.search_cfg
         st.download_button(
             label="Download your config",
             data=json.dumps(config,indent=4),
@@ -174,4 +377,4 @@ def config(evosys,project_dir):
             uploaded_config = json.load(uploaded_file)
             with st.expander("Loaded Config",expanded=False):
                 st.write(uploaded_config)
-            st.button("Apply Uplaoded Config",on_click=apply_config,args=(uploaded_config,))
+            st.button("Apply Uplaoded Config",on_click=apply_config,args=(evosys,uploaded_config,))
