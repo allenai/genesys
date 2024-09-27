@@ -99,7 +99,7 @@ def _explore_setup(args):
     gab,gab_config = BlockRegister.load_block(args.gab_name)
     free_port = find_free_port()
     util_logger.info(f"Using port for training: {free_port}")
-    num_steps=2 # a small number for testing OOM
+    num_steps=5 # a small number for testing OOM
 
     notebook_launcher(
         run_train, 
@@ -111,7 +111,7 @@ def _explore_setup(args):
 # stable but slow
 def _auto_tune_setup(args): # Need to be called before training after models are prepared
     config = eval(f"GAMConfig_{args.scale}()")
-    config.training_data = ['wikitext2']
+    config.training_data = ['cosmopedia-v2']
     args.mode='_explore_setup'
     args_dict = vars(args)
     gradient_accumulation_steps=config.gradient_accumulation_steps

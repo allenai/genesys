@@ -68,33 +68,43 @@ def _run_verification(params, design_id, scale, resume):
     cmd = f"python -m model_discovery.evolution --mode prep_model --params {params_str} --design_id {design_id} --scale {scale}"
     with st.spinner(f'Preparing Models...'):
         process = subprocess.run(cmd, shell=True)#, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, bufsize=1, universal_newlines=True)
-    
+
     cmd = f"python -m model_discovery.evolution --mode verify --params {params_str} --design_id {design_id} --scale {scale}"
     if resume:
         cmd+=' --resume'
     st.write(f'Launching Verification with command:\n```{cmd}```')
     with st.spinner('Running... Please check the console for verification progress.'):
-        process = subprocess.run(cmd, shell=True)#, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, bufsize=1, universal_newlines=True)
+        # process = subprocess.run(cmd, shell=True)#, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, bufsize=1, universal_newlines=True)
+        process = subprocess.Popen(cmd, shell=True)#, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+
     return process
 
 def run_verification(params, design_id, scale, resume):
     key = f"{design_id}_{scale}"
-    if key not in st.session_state['running_verifications']:
+    # if key not in st.session_state['running_verifications']:
+    polls=[p.poll() for p in st.session_state['running_verifications'].values()]
+    if not None in polls:
         params = copy.deepcopy(params)
         process = _run_verification(params, design_id, scale, resume)
         st.session_state['running_verifications'][key] = process
         st.session_state['output'][key] = []
-        st.success(f"Verification process started for {design_id} on scale {scale}.")
+        st.success(f"Verification process started for {design_id} on scale {scale}. Check console for output.")
     else:
+        key=list(st.session_state['running_verifications'].keys())[0]
+        design_id,scale=key.split('_')
         st.warning(f"A verification process for {design_id} on scale {scale} is already running.")
 
 
 def stream_output(process, key):
-    for line in process.stdout:
-        st.session_state['output'][key].append(line)
+    if hasattr(process, 'stdout'):
+        for line in process.stdout:
+            # st.session_state['output'][key].append(line)
+            st.code(line)
         
-    for line in process.stderr:
-        st.session_state['output'][key].append(f"ERROR: {line}")
+    if hasattr(process, 'stderr'):
+        for line in process.stderr:
+            # st.session_state['output'][key].append(f"ERROR: {line}")
+            st.code(f"ERROR: {line}")
 
 
 def engine(evosys,project_dir):
@@ -112,13 +122,18 @@ def engine(evosys,project_dir):
     with st.sidebar:
         st.write(f'**Namespace: ```{evosys.evoname}```**')
         with st.expander("Running Sessions"):
-            st.write(st.session_state['running_verifications'])
+            st.write({key:process.poll() for key,process in st.session_state['running_verifications'].items()})
         with st.expander("View CPU stats"):
             cpu_percentages = psutil.cpu_percent(interval=1, percpu=True)
             if st.button("Refresh",key='refresh_btn_cpu'):
                 cpu_percentages = psutil.cpu_percent(interval=1, percpu=True)
             cpu_df = pd.DataFrame(cpu_percentages, columns=["Usage (%)"], index=[f"Core {i}" for i in range(len(cpu_percentages))])
             st.dataframe(cpu_df)
+                
+        # Add a refresh button to manually update the page
+        if st.button("Refresh",key='refresh_btn_engine'):
+            st.rerun()
+
 
 
     st.subheader("System Diagnostics")
@@ -268,30 +283,26 @@ def engine(evosys,project_dir):
     if run_btn:
         run_verification(evosys.params, selected_design, scale, resume)
 
-    # st.header("Running Verification")
+
+
+
+    # # st.header("Running Verification")
 
     # if not st.session_state['running_verifications']:
     #     st.warning("No running verification")
     # else:
-    #     for key, process in list(st.session_state['running_verifications'].items()):
+    #     st.header("Running Verification")
+    #     for key, process in list(st.session_state['running_verifications'].items()):            
     #         if hasattr(process, 'poll') and process.poll() is None:  # Process is still running
-    #             while True:
-    #                 output = process.stdout.readline()
-    #                 if output == '' and process.poll() is not None:
-    #                     break
-    #                 if output:
-    #                     print(output.strip())  # Print to console in real-time
-    #                     st.session_state['output'][key].append(output.strip())
-                
     #             col1, col2 = st.columns([3, 1])
     #             with col1:
     #                 st.info(f"Verification process for {key} is running.")
     #                 wandb_ids = U.load_json(U.pjoin(evosys.evo_dir, 've', key, 'wandb_ids.json'))
-    #                 wandb_id = wandb_ids['pretrain']
+    #                 wandb_id = wandb_ids['pretrain']['id']
     #                 project = wandb_ids['project']
     #                 entity = wandb_ids['entity']
     #                 url = f'https://wandb.ai/{entity}/{project}/runs/{wandb_id}'
-    #                 st.write(f'View on [WANDB LINK]({url})')
+    #                 st.write(f'View on {url}')
     #             with col2:
     #                 if st.button(f"Stop", key=f"stop_{key}"):
     #                     process.terminate()
@@ -306,11 +317,9 @@ def engine(evosys,project_dir):
 
     #         # Display output in Streamlit
     #         with st.expander(f"Output for {key}"):
-    #             st.text("\n".join(st.session_state['output'].get(key, [])))
+    #             # st.text("\n".join(st.session_state['output'].get(key, [])))
+    #             stream_output(process,key)
 
-    # # Add a refresh button to manually update the page
-    # if st.button("Refresh",key='refresh_btn_engine'):
-    #     st.rerun()
 
 
     

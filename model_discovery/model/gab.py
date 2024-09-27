@@ -51,32 +51,28 @@ class GPT2(GAUBase):
 
 
 import torch.nn.functional as F
+from torch import Tensor
 
 
-class GatedMLP(GAUBase):
+class RMSNorm(GAUBase):
 
     def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, hidden_features=None, out_features=None,
-        activation=None, bias=False, multiple_of=128, **kwargs):
+        device=None, dtype=None, eps=1e-05, **kwargs):
+        """If group_size is not None, we do GroupNorm with each group having group_size elements.
+        group_size=None is equivalent to group_size=hidden_size (i.e. there's only 1 group).
+        """
         self.factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc, kwarg_all)
-        out_features = out_features if out_features is not None else embed_dim
-        hidden_features = (hidden_features if hidden_features is not None else
-            int(8 * embed_dim / 3))
-        hidden_features = (hidden_features + multiple_of - 1
-            ) // multiple_of * multiple_of
-        self.fc1 = nn.Linear(embed_dim, 2 * hidden_features, bias=bias, **
-            self.factory_kwargs)
-        self.activation = activation if activation is not None else F.silu
-        self.fc2 = nn.Linear(hidden_features, out_features, bias=bias, **
-            self.factory_kwargs)
+        self.weight = nn.Parameter(torch.ones(embed_dim, **self.factory_kwargs)
+            )
+        self.variance_epsilon = eps
 
     def _forward(self, X, **Z):
-        y = self.fc1(X)
-        y, gate = y.chunk(2, dim=-1)
-        y = y * self.activation(gate)
-        y = self.fc2(y)
-        return y
+        input_dtype = X.dtype
+        X = X.to(torch.float32)
+        variance = X.pow(2).mean(-1, keepdim=True)
+        X = X * torch.rsqrt(variance + self.variance_epsilon)
+        return self.weight * X.to(input_dtype)
 
 
 import torch.nn.functional as F
@@ -341,28 +337,32 @@ class RotaryPositionalEmbeddings(GAUBase):
 
 
 import torch.nn.functional as F
-from torch import Tensor
 
 
-class RMSNorm(GAUBase):
+class GatedMLP(GAUBase):
 
     def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, eps=1e-05, **kwargs):
-        """If group_size is not None, we do GroupNorm with each group having group_size elements.
-        group_size=None is equivalent to group_size=hidden_size (i.e. there's only 1 group).
-        """
+        device=None, dtype=None, hidden_features=None, out_features=None,
+        activation=None, bias=False, multiple_of=128, **kwargs):
         self.factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc, kwarg_all)
-        self.weight = nn.Parameter(torch.ones(embed_dim, **self.factory_kwargs)
-            )
-        self.variance_epsilon = eps
+        out_features = out_features if out_features is not None else embed_dim
+        hidden_features = (hidden_features if hidden_features is not None else
+            int(8 * embed_dim / 3))
+        hidden_features = (hidden_features + multiple_of - 1
+            ) // multiple_of * multiple_of
+        self.fc1 = nn.Linear(embed_dim, 2 * hidden_features, bias=bias, **
+            self.factory_kwargs)
+        self.activation = activation if activation is not None else F.silu
+        self.fc2 = nn.Linear(hidden_features, out_features, bias=bias, **
+            self.factory_kwargs)
 
     def _forward(self, X, **Z):
-        input_dtype = X.dtype
-        X = X.to(torch.float32)
-        variance = X.pow(2).mean(-1, keepdim=True)
-        X = X * torch.rsqrt(variance + self.variance_epsilon)
-        return self.weight * X.to(input_dtype)
+        y = self.fc1(X)
+        y, gate = y.chunk(2, dim=-1)
+        y = y * self.activation(gate)
+        y = self.fc2(y)
+        return y
 
 
 gab_config = {'hidden_features': None, 'out_features': None, 'activation':
