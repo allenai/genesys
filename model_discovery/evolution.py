@@ -1470,6 +1470,8 @@ if __name__ == '__main__':
         test_evolve('test_evo_000',step=True)
     else:
         params=json.loads(args.params)
+        args.evoname=params['evoname']
+        
         # print(f'Running with params:\n{params}')
         if args.mode=='verify':
             # python -m model_discovery.evolution --mode verify --params '{"evoname": "test_evo_000", "scales": "14M,31M,70M", "selection_ratio": 0.25, "select_method": "random", "action_strategy": "random", "verify_strategy": "random", "design_budget": 0, "no_agent": false, "db_only": false}' --design_id sparsitron --scale 14M

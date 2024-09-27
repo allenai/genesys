@@ -199,8 +199,8 @@ class ModisTrainer(Trainer):
         )
         self.args_backup=copy.deepcopy(args) 
         self.tune_lr_in_auto_bs = tune_lr_in_auto_bs
-        if self.tune_lr_in_auto_bs and args.auto_find_batch_size: # only if tune lr in auto bs, not use it in most cases
-            self.train=self.custom_train
+        # if self.tune_lr_in_auto_bs and args.auto_find_batch_size: # only if tune lr in auto bs, not use it in most cases
+        self.train=self.custom_train
         
                 
     def compute_loss(self, model, inputs, return_outputs=False):
