@@ -63,17 +63,6 @@ def get_system_info():
     }
     return cpu_info, gpu_info, mem_info
 
-
-
-def _run_explore_setup(params, design_id, scale, resume):
-    params_str = shlex.quote(json.dumps(params))
-    cmd = f"python -m model_discovery.ve.run --mode _explore_setup --params {params_str} --design_id {design_id} --scale {scale}"
-    if resume:
-        cmd+=' --resume'
-    process = subprocess.run(cmd, shell=True)
-    return process
-
-
 def _run_verification(params, design_id, scale, resume):
     params_str = shlex.quote(json.dumps(params))
     cmd = f"python -m model_discovery.evolution --mode prep_model --params {params_str} --design_id {design_id} --scale {scale}"

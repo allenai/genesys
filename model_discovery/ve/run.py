@@ -431,8 +431,6 @@ def run_eval(args):
     wandb_ids=U.load_json(f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}/wandb_ids.json")
     wandb_ids['evaluate']={}
     wandb_name=f"{args.evoname}_{args.design_id}_eval_{datetime.now().strftime('%Y%m%d%H%M%S')}"
-    wandb_id=str(uuid.uuid4())[:8]
-    wandb_ids['evaluate']['id']=wandb_id
     wandb_ids['evaluate']['name'] = wandb_name
     U.save_json(wandb_ids,f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}/wandb_ids.json")
     
@@ -446,7 +444,7 @@ def run_eval(args):
         "--max_batch_size", f"{cfg.eval_batch_size}",
         "--output_path", f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}/eval_results",
         "--cache_requests", "true", # refresh for debugging, true for normal 
-        "--wandb_args", f"project={args.wandb_project},entity={args.wandb_entity},name={wandb_name},id={wandb_id}"
+        "--wandb_args", f"project={args.wandb_project},entity={args.wandb_entity},name={wandb_name}"
     ]
     gab,gab_config=BlockRegister.load_block(args.gab_name)
     free_port = find_free_port()
