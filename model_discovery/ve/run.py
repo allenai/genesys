@@ -12,7 +12,7 @@ import time
 import logging
 from datetime import datetime
 import uuid
-
+import shlex
 # import transformers
 from huggingface_hub import login
 
@@ -24,6 +24,7 @@ from transformers import (
 from accelerate import notebook_launcher
 import functools as ft
 from argparse import Namespace
+import subprocess
 
 from .data_loader import load_datasets
 from .modis_trainer import ModisTrainer
@@ -42,6 +43,7 @@ torch.backends.cudnn.allow_tf32 = True
 # torch.backends.cudnn.benchmark = True
 
 util_logger = logging.getLogger('model_discovery.run')
+util_logger.setLevel(logging.INFO)
 os.environ["HF_HUB_ENABLE_HF_TRANSFER"] = "1"
 
 import socket
@@ -77,12 +79,62 @@ parser.add_argument("--download_data_only", action='store_true')
 parser.add_argument("--logging_steps", type=int, default=20)
 parser.add_argument("--gab_name", type=str, default='default') ## name of gab block to use 
 parser.add_argument("--PERF_PROF_MODE", type=bool, default=False) # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
-# parser.add_argument("--port", type=str, default="29500") # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
+parser.add_argument("--gradient_accumulation_steps", type=int, default=1) # auto find batch size
 parser.add_argument("--tune_lr_in_auto_bs", type=bool, default=False) # tune lr or tune grad accumulation steps
+parser.add_argument("--auto_find_batch_size_hf", type=bool, default=False) # whether use hf auto_find_batch_size (fast but not stable) or custom one
 
 # PATCH for the evolution
 parser.add_argument("--mode", type=str, default='test') # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
 parser.add_argument("--params", type=str, default='') 
+
+
+
+
+########################################### Tools ###########################################
+
+
+
+def _explore_setup(args):
+    setup(args)
+    gab,gab_config = BlockRegister.load_block(args.gab_name)
+    free_port = find_free_port()
+    util_logger.info(f"Using port for training: {free_port}")
+    num_steps=2 # a small number for testing OOM
+
+    notebook_launcher(
+        run_train, 
+        args=(vars(args),gab,gab_config,num_steps), 
+        num_processes=args.n_gpus, 
+        use_port=free_port,
+    )
+
+# stable but slow
+def _auto_tune_setup(args): # Need to be called before training after models are prepared
+    config = eval(f"GAMConfig_{args.scale}()")
+    config.training_data = ['wikitext2']
+    args.mode='_explore_setup'
+    args_dict = vars(args)
+    gradient_accumulation_steps=config.gradient_accumulation_steps
+    
+    while True:
+        util_logger.info(f"Exploring with gradient_accumulation_steps: {gradient_accumulation_steps}")
+        args.gradient_accumulation_steps=gradient_accumulation_steps
+        cmd_args = [f"--{key}={value}" if value is not True else f"--{key}" for key, value in args_dict.items() if value is not False and value is not None]
+        cmd = f"python -m model_discovery.ve.run {' '.join(map(shlex.quote, cmd_args))}"
+
+        process = subprocess.run(cmd, shell=True, capture_output=True, text=True)
+        
+        if "CUDA out of memory" in process.stderr:
+            util_logger.error(f"CUDA out of memory error occurred with gradient_accumulation_steps: {gradient_accumulation_steps}")
+            gradient_accumulation_steps *= 2
+        else:
+            util_logger.info(f"Training completed successfully with gradient_accumulation_steps: {gradient_accumulation_steps}")
+            break
+    return gradient_accumulation_steps
+
+
+
+########################################### Major Functions ###########################################
 
 
 
@@ -106,11 +158,11 @@ def setup(args) -> None:
     if not args.ckpt_dir:
         raise ValueError('Must specify the checkpoint directory via `--ckpt_dir`')
 
-    if not os.environ.get("DATA_DIR") or args.data_dir:
-        util_logger.info(
-            f'Manually changing the data directory based on input: {args.data_dir}'
-        )
-        os.environ["DATA_DIR"] = args.data_dir 
+    # if not os.environ.get("DATA_DIR") or args.data_dir:
+    #     util_logger.info(
+    #         f'Manually changing the data directory based on input: {args.data_dir}'
+    #     )
+    #     os.environ["DATA_DIR"] = args.data_dir 
         
     ### make checkpoint dir
     U.mkdir(U.pjoin(args.ckpt_dir,args.evoname,'ve'))
@@ -154,10 +206,13 @@ def before_train(args):
             name=f"{args.evoname}_{args.design_id}_{datetime.now().strftime('%Y%m%d%H%M%S')}"
         )
     util_logger.info(f'Time elapsed for setting up wandb: {(time.perf_counter() - start):.1f} s')
-    return gab,gab_config
+    
+    if not args.auto_find_batch_size_hf:    
+        args.gradient_accumulation_steps = _auto_tune_setup(args)
+    return args,gab,gab_config
 
 
-def run_train(args,gab,gab_config) -> None:
+def run_train(args,gab,gab_config,num_steps=None) -> None: 
     """Runs the full training pipeline 
 
     :param args: 
@@ -183,12 +238,15 @@ def run_train(args,gab,gab_config) -> None:
         
     num_params = sum(p.numel() for p in model.parameters())
     training_tokens=num_params*args.training_token_multiplier 
+    
     if config.per_device_batch_size:
-        num_steps = int(training_tokens / (config.per_device_batch_size * args.n_gpus * args.n_nodes * config.context_length))+1
+        if num_steps is None:
+            num_steps = int(training_tokens / (config.per_device_batch_size * args.n_gpus * args.n_nodes * config.context_length))+1
         per_device_batch_size=config.per_device_batch_size
     else: # auto find bs based on training tokens, can preset gradient_accumulation_steps to avoid too many auto tune steps
-        num_steps = int(np.ceil(training_tokens / (config.batch_tokens)))
-        per_device_batch_size=(config.batch_tokens // config.context_length)//args.n_gpus//config.gradient_accumulation_steps
+        if num_steps is None:
+            num_steps = int(np.ceil(training_tokens / (config.batch_tokens)))
+        per_device_batch_size=(config.batch_tokens // config.context_length)//args.n_gpus//args.gradient_accumulation_steps
 
     print(f"Training tokens: {U.strscale(training_tokens)}, num steps: {num_steps}, per device batch size: {per_device_batch_size}, num gpus: {args.n_gpus}")
 
@@ -197,8 +255,8 @@ def run_train(args,gab,gab_config) -> None:
         max_steps=num_steps,
         per_device_train_batch_size=per_device_batch_size,
         per_device_eval_batch_size = per_device_batch_size * 2,
-        auto_find_batch_size=True, # for safety
-        gradient_accumulation_steps=config.gradient_accumulation_steps,
+        auto_find_batch_size=args.auto_find_batch_size_hf, # unstable! Manually implement it
+        gradient_accumulation_steps=args.gradient_accumulation_steps, # use args one, not config one, to use with prep_setup
         optim=args.optim,
         output_dir=f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}",
         logging_steps=args.logging_steps,
@@ -248,13 +306,18 @@ def run_train(args,gab,gab_config) -> None:
 
 
 def exec_train(args,training_args, trainer):
-    global wandb_ids
-    wandb_ids['pretrain']={}
-    wandb_ids['pretrain']['id']=wandb.run.id
-    wandb_ids['project']=args.wandb_project
-    wandb_ids['entity']=args.wandb_entity
-    wandb_ids['pretrain']['name'] = wandb.run.name
-    U.save_json(wandb_ids,f"{training_args.output_dir}/wandb_ids.json")
+    # if wandb is defined
+    
+    if 'wandb_ids' in globals():
+        global wandb_ids
+        wandb_ids['pretrain']={}
+        wandb_ids['pretrain']['id']=wandb.run.id
+        wandb_ids['project']=args.wandb_project
+        wandb_ids['entity']=args.wandb_entity
+        wandb_ids['pretrain']['name'] = wandb.run.name
+        U.save_json(wandb_ids,f"{training_args.output_dir}/wandb_ids.json")
+    else:
+        print('No wandb id found, skip recording wandb metrics.')
     
     # Automatically resume from the latest checkpoint if it exists
     if args.training_token_multiplier > 0:
@@ -334,15 +397,15 @@ def train(args):
         util_logger.info(f"Model {args.design_id} is already pretrained")
         return
     start = time.perf_counter()
-    gab,gab_config=before_train(args)
+    args,gab,gab_config=before_train(args)
     free_port = find_free_port()
     util_logger.info(f"Using port for training: {free_port}")
+    print('Running with args:',args)
     notebook_launcher(
         run_train, 
         args=(vars(args),gab,gab_config), 
         num_processes=args.n_gpus, 
         use_port=free_port,
-        # start_method='spawn'  # Add this line
     )
     after_train(args)
     util_logger.info(f'Training time: {(time.perf_counter() - start):.1f} s')
@@ -488,13 +551,15 @@ def main(args):
 if __name__ == "__main__":
     args = parser.parse_args()
     
-    args.evoname = "ve_test"
-    args.design_id = "test"
-    args.resume = False
-    # args.n_gpus = 1
-    args.PERF_PROF_MODE = False
-    # args.port="25986"
+    if args.mode=='test':
+        args.evoname = "ve_test"
+        args.design_id = "test"
+        args.resume = False
+        # args.n_gpus = 1
+        args.PERF_PROF_MODE = True
+        # args.port="25986"
+        main(args)
+    elif args.mode=='_explore_setup':
+        _explore_setup(args)
 
-    main(args)
 
-    ### To continue pretraining, set args.allow_continue_pretraining=True and appl

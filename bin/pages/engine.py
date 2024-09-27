@@ -65,30 +65,33 @@ def get_system_info():
 
 
 
-def _prep_verification(params, design_id, scale, resume):
+def _run_explore_setup(params, design_id, scale, resume):
     params_str = shlex.quote(json.dumps(params))
-    cmd = f"python -m model_discovery.evolution --mode prep_verify --params {params_str} --design_id {design_id} --scale {scale}"
+    cmd = f"python -m model_discovery.ve.run --mode _explore_setup --params {params_str} --design_id {design_id} --scale {scale}"
     if resume:
         cmd+=' --resume'
-    st.write(f'Preparing Verification...')
-    process = subprocess.run(cmd, shell=True)#, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, bufsize=1, universal_newlines=True)
+    process = subprocess.run(cmd, shell=True)
     return process
+
 
 def _run_verification(params, design_id, scale, resume):
     params_str = shlex.quote(json.dumps(params))
+    cmd = f"python -m model_discovery.evolution --mode prep_model --params {params_str} --design_id {design_id} --scale {scale}"
+    with st.spinner(f'Preparing Models...'):
+        process = subprocess.run(cmd, shell=True)#, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, bufsize=1, universal_newlines=True)
+    
     cmd = f"python -m model_discovery.evolution --mode verify --params {params_str} --design_id {design_id} --scale {scale}"
     if resume:
         cmd+=' --resume'
-    st.write(f'Running Verification command:\n\n```{cmd}```')
-    st.write('Please check the console for verification progress...')
-    process = subprocess.run(cmd, shell=True)#, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, bufsize=1, universal_newlines=True)
+    st.write(f'Launching Verification with command:\n```{cmd}```')
+    with st.spinner('Running... Please check the console for verification progress.'):
+        process = subprocess.run(cmd, shell=True)#, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, bufsize=1, universal_newlines=True)
     return process
 
 def run_verification(params, design_id, scale, resume):
     key = f"{design_id}_{scale}"
     if key not in st.session_state['running_verifications']:
         params = copy.deepcopy(params)
-        _prep_verification(params, design_id, scale, resume)
         process = _run_verification(params, design_id, scale, resume)
         st.session_state['running_verifications'][key] = process
         st.session_state['output'][key] = []

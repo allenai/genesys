@@ -81,6 +81,7 @@ class GAMConfig_14M(GAMConfig):
     batch_tokens: int = 1024*512 # 0.5M tokens
 
 
+
 @dataclass
 class GAMConfig_31M(GAMConfig):
     scale: str = '31M'
@@ -148,6 +149,7 @@ class GAMConfig_1300M(GAMConfig):
     eval_batch_size: int = 512
     learning_rate: float = 2e-4
     batch_tokens: int = 1024*1024 # 1M tokens
+    gradient_accumulation_steps: int = 16
 
 
 @dataclass
@@ -160,7 +162,6 @@ class GAMConfig_2700M(GAMConfig):
     learning_rate: float = 1.6e-4
     batch_tokens: int = 1024*1024 # 1M tokens
 
-
 @dataclass
 class GAMConfig_6700M(GAMConfig):
     scale: str = '6.7B'
@@ -170,7 +171,6 @@ class GAMConfig_6700M(GAMConfig):
     eval_batch_size: int = 512
     learning_rate: float = 1.2e-4
     batch_tokens: int = 2*1024*1024 # 2M tokens
-
 
 
 @dataclass
@@ -184,7 +184,6 @@ class GAMConfig_13B(GAMConfig):
     batch_tokens: int = 2*1024*1024 # 2M tokens
 
 
-
 @dataclass
 class GAMConfig_175B(GAMConfig):
     scale: str = '175B'
@@ -196,7 +195,6 @@ class GAMConfig_175B(GAMConfig):
     batch_tokens: int = 3200*1024 # 3.2M tokens
 
 
-
 @dataclass
 class GAMConfig_1T(GAMConfig): # Just for fun
     scale: str = '1T'
@@ -206,7 +204,6 @@ class GAMConfig_1T(GAMConfig): # Just for fun
     eval_batch_size: int = 512
     learning_rate: float = 0.3e-4
     batch_tokens: int = 6400*1024 # 6.4M tokens
-
 
 
 # Debugging configuration

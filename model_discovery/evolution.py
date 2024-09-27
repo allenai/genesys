@@ -1018,8 +1018,6 @@ def _verify(evoname,design_id,scale,resume=True, mult=20): # do a single verify
     ve_main(args)
 
 
-
-
 # @exec_utils.Registry("config","evolution")
 # class CustomParams(exec_utils.ModuleParams):
 #     strparams: str = exec_utils.ParamField(
@@ -1370,7 +1368,7 @@ class EvolutionSystem(exec_utils.System):
         else:
             raise ValueError(f"Invalid design verify strategy: {self.verify_strategy}")
     
-    def _prep_verify(self,design_id,scale):
+    def _prep_model(self,design_id,scale):
         design=self.ptree.get_node(design_id) # need to ensure this design has not been verified under scale
         ### XXX need manully check then comment it, need to fix, TUNE cause the problem
         if design.type=='DesignArtifactImplemented':
@@ -1381,7 +1379,8 @@ class EvolutionSystem(exec_utils.System):
                 _code = U.read_file(code_dir)
             else:
                 raise FileNotFoundError(f"Code file not found for design {design_id}")
-        code = check_tune(scale,design_id, code=_code,check_only=True,cpu_only=True,reformat_only=True)
+        code = check_tune(scale,design_id, code=_code,check_only=True,cpu_only=False,reformat_only=True)
+        
         with open('./model_discovery/model/gab.py','w', encoding='utf-8') as f:
             f.write(code)
         return self.get_train_budget(design)
@@ -1473,9 +1472,10 @@ if __name__ == '__main__':
         params=json.loads(args.params)
         # print(f'Running with params:\n{params}')
         if args.mode=='verify':
+            # python -m model_discovery.evolution --mode verify --params '{"evoname": "test_evo_000", "scales": "14M,31M,70M", "selection_ratio": 0.25, "select_method": "random", "action_strategy": "random", "verify_strategy": "random", "design_budget": 0, "no_agent": false, "db_only": false}' --design_id sparsitron --scale 14M
             _verify(args.evoname,args.design_id, args.scale, resume=args.resume)
         else:
-            if args.mode=='prep_verify':
+            if args.mode=='prep_model':
                 params['no_agent']=True
                 params['db_only']=True
             evolution_system = BuildEvolution(
@@ -1483,8 +1483,8 @@ if __name__ == '__main__':
                 do_cache=False,
                 # cache_type='diskcache',
             )
-            if args.mode=='prep_verify':
-                evolution_system._prep_verify(args.design_id, args.scale)
+            if args.mode=='prep_model':
+                evolution_system._prep_model(args.design_id, args.scale)
             elif args.mode=='design':
                 pass
                 # evolution_system.design(n_sources,design_cfg,search_cfg,user_input,design_id,mode,resume)
