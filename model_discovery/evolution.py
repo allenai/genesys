@@ -1488,8 +1488,7 @@ if __name__ == '__main__':
             if args.mode=='prep_model':
                 evolution_system._prep_model(args.design_id, args.scale)
             elif args.mode=='design':
-                pass
-                # evolution_system.design(n_sources,design_cfg,search_cfg,user_input,design_id,mode,resume)
+                evolution_system.design(n_sources,design_cfg,search_cfg,user_input,design_id,mode,resume)
             elif args.mode=='evolve':
                 # evolution_system.evolve()
                 pass

@@ -100,8 +100,8 @@ urls = {"GitHub": "https://github.com/allenai/model_discovery"}
 pages = {
     'Evolve': evolve,
     'Design': design,
-    'Search': search,
     'Engine': engine,
+    'Search': search,
     'Select': select,
     'Viewer': viewer,
     'Config': config,

@@ -51,7 +51,6 @@ def stat_logs(logs):
             st.write(f"{reason.value}: {count} ({ratio*100:.2f}%)")
     
 
-
 def show_log(log):
     # four types: enter, exit, write, markdown
     in_status = False
@@ -93,28 +92,25 @@ def load_log(log_file):
 
 
 
+###########################################################################
 
-def design(evosys,project_dir):
+
+def _run_design(evosys,n_sources=None,design_cfg={},search_cfg={},user_input='',design_id=None,mode=None,resume=True): 
+    evosys.design(n_sources,design_cfg,search_cfg,user_input=user_input,mode=mode,design_id=design_id,resume=resume)
+
+
+def _design_tuning(evosys,project_dir):
+    ### build the system 
+    st.title("Design Engine Tunner")
 
     system = evosys.rnd_agent
     db_dir = evosys.ptree.db_dir
     design_cfg = {}
     n_sources = {}
 
-    ### build the system 
-    st.title("Model Design Engine")
-
-    ### side bar 
-    with st.sidebar:
-        st.write(f'**Namespace: ```{evosys.evoname}```**')
-    
-        if st.button("Reset design query",use_container_width=True):
-            st.rerun()
-
-
     #### Configure design
 
-    with st.expander("**Control Panel**",expanded=True):#,icon='⚙️'):
+    with st.expander("**Tunning Panel**",expanded=True):#,icon='⚙️'):
 
         col1, col2 = st.columns([1, 5])
         with col1:
@@ -305,7 +301,7 @@ def design(evosys,project_dir):
             with st.spinner(text=spinner_text):
                 _mode = DesignModes(mode)
                 design_id=None
-                evosys.design(n_sources,design_cfg,search_cfg,user_input=user_input,mode=_mode,design_id=design_id,resume=resume)
+                _run_design(evosys,project_dir,n_sources,design_cfg,search_cfg,user_input=user_input,mode=_mode,design_id=design_id,resume=resume)
     
     elif selected_design:
         with st.empty():
@@ -327,5 +323,36 @@ def design(evosys,project_dir):
 
     
 
+def _design_engine(evosys,project_dir):
+    st.title("Design Engine Runner")
 
 
+
+
+
+def design(evosys,project_dir):
+
+
+    if 'design_tab' not in st.session_state:
+        st.session_state['design_tab'] = 'design_tunner'
+
+    ### side bar 
+    with st.sidebar:
+        st.write(f'**Namespace: ```{evosys.evoname}```**')
+
+        if st.button("**Engine Tunner**" if st.session_state['design_tab']=='design_tunner' else "Engine Tunner",use_container_width=True):
+            st.session_state['design_tab'] = 'design_tunner'
+            st.rerun()
+        if st.button("**Engine Runner**" if st.session_state['design_tab']=='design_runner' else "Engine Runner",use_container_width=True):
+            st.session_state['design_tab'] = 'design_runner'
+            st.rerun()
+
+        if st.session_state['design_tab']=='design_tunner':
+            st.write('Control Panel')
+            if st.button("Reset design query"):#,use_container_width=True):
+                st.rerun()
+
+    if st.session_state['design_tab']=='design_tunner':
+        _design_tuning(evosys,project_dir)
+    if st.session_state['design_tab']=='design_runner':
+        _design_engine(evosys,project_dir)
