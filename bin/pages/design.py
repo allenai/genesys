@@ -175,7 +175,7 @@ def _design_tuning(evosys,project_dir):
 
     #### Configure design
 
-    with st.expander("**Tunning Panel**",expanded=True):#,icon='⚙️'):
+    with st.expander("**Configuration Panel**",expanded=True):#,icon='⚙️'):
 
         col1, col2 = st.columns([1, 5])
         with col1:
