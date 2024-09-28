@@ -77,7 +77,9 @@ def running_status(st,evosys):
     with st.expander("🐎 Running Designs",expanded=False):
       for idx,key in enumerate(running_designs):
         st.write(f'```{key}```')
-  st.write('---')
+  if len(running_verifications)==0 and len(running_designs)==0:
+    st.caption('*No verification or design workloads*')
+  st.divider()
     
             
           
