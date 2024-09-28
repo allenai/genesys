@@ -262,7 +262,7 @@ class SpinnerWrapper:
                 cls.original_spinner = self.spinner_class(message, *args, **kwargs)
 
             def __enter__(cls):
-                cls.log_function(cls.message, 'enter')
+                cls.log_function(cls.message, 'enterspinner')
                 return cls.original_spinner.__enter__()
 
             def __exit__(cls, exc_type, exc_val, exc_tb):
@@ -308,8 +308,6 @@ class StreamWrapper:
         self._log=[]
         self.status = StatusHandlerWrapper(stream.status, self.log)
         self.spinner = SpinnerWrapper(stream.spinner, self.log)
-        self.balloons = stream.balloons
-        self.snow = stream.snow
     
     def log(self,msg,type):
         _msg=str(msg).replace('\n','/NEWLINE/').replace('\t','/TAB/')
@@ -324,6 +322,15 @@ class StreamWrapper:
     def markdown(self,msg,**kwargs):
         self.stream.markdown(msg,**kwargs)
         self.log(msg,'markdown')
+
+    def balloons(self,**kwargs):
+        self.stream.balloons(**kwargs)
+        self.log('balloons','balloons')
+
+    def snow(self,**kwargs):
+        self.stream.snow(**kwargs)
+        self.log('snow','snow')
+
         
 
 @exec_utils.Registry(

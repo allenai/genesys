@@ -247,28 +247,49 @@ def stat_logs(logs):
 def show_log(log):
     # four types: enter, exit, write, markdown
     in_status = False
+    
     code = []
     for dt, text, type in log:
-        line = []
+        line = ''
         if in_status:
-            line.append('\t')
-        
+            status_count += 1
+            line += '\t'
         # Use repr() to get a string literal representation
-        text_repr = repr(text)
+        text = text.replace('/NEWLINE/','\n').replace('/TAB/','\t')
+        text_repr = f"'''{text}'''"
         
         if type == 'enter':
             in_status = True
-            line.append(f"with st.status({text_repr}):")
+            line += f"with st.status({text_repr}):"
+            status_count = 0
+        elif type == 'enterspinner':
+            in_status = True
+            line += f"with st.spinner({text_repr}):"
+            status_count = 0
         elif type == 'exit':
             in_status = False
+            if status_count==1:
+                line += 'st.write("No output inside status.")'
+                code.append(line)
+            status_count = 0
+            continue
         elif type == 'write':
-            line.append(f"st.write({text_repr}, unsafe_allow_html=True)")
+            line += f"st.write({text_repr}, unsafe_allow_html=True)"
         elif type == 'warning':
-            line.append(f"st.warning({text_repr})")
+            line += f"st.warning({text_repr})"
+        elif type == 'error':
+            line += f"st.error({text_repr})"
         elif type == 'markdown':
-            line.append(f"st.markdown({text_repr}, unsafe_allow_html=True)")
-        
-        code.append(''.join(line))
+            line += f"st.markdown({text_repr}, unsafe_allow_html=True)"
+        elif type == 'end':
+            line += f"st.write('End with reason: '+{text_repr})"
+        elif type == 'balloons':
+            line += f"st.balloons()"
+        elif type == 'snow':
+            line += f"st.snow()"
+        else:
+            line += f"st.write('{type}'+': '+{text_repr})"
+        code.append(line)
     
     final_code = '\n'.join(code)
     exec(final_code)
@@ -276,10 +297,12 @@ def show_log(log):
 def load_log(log_file):
     log=[]
     for line in U.read_file(log_file).split('\n'):
-        try:
-            log.append(eval(line.replace('/NEWLINE/','\n').replace('/TAB/','\t')))
-        except:
-            log.append((datetime.datetime.now(),f'MISSING LINE: ERROR IN LOG FILE: {line}','warning'))
+        if not line:
+            continue
+        try:  
+            log.append(eval(line))
+        except Exception as e:
+            log.append((datetime.datetime.now(),f'ERROR IN LOG LINE: {line}\n\n{e}','error'))
     return log
 
 
@@ -537,10 +560,10 @@ def design(evosys,project_dir):
     with st.sidebar:
         AU.running_status(st,evosys)
 
-        if st.button("**Design Engine**" if st.session_state['design_tab']=='design_runner' else "Design Engine",use_container_width=True):
+        if st.button("***Design Engine***" if st.session_state['design_tab']=='design_runner' else "Design Engine",use_container_width=True):
             st.session_state['design_tab'] = 'design_runner'
             st.rerun()
-        if st.button("**Design Agents**" if st.session_state['design_tab']=='design_tunner' else "Design Agents",use_container_width=True):
+        if st.button("***Design Agents***" if st.session_state['design_tab']=='design_tunner' else "Design Agents",use_container_width=True):
             st.session_state['design_tab'] = 'design_tunner'
             st.rerun()
 
