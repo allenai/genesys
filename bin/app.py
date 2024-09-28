@@ -1,18 +1,26 @@
 import sys,os
+sys.path.append('.')
+
 import time
 import pathlib
 import functools as ft
 import streamlit as st
 import importlib
 import multiprocessing
-
-st.set_page_config(page_title="AlphaGPT", layout="wide")
-
-
-sys.path.append('.')
-from model_discovery import BuildEvolution
 import model_discovery.utils as U
+from PIL import Image
 import bin.app_utils as AU
+
+
+
+current_dir = pathlib.Path(__file__).parent
+logo_path = U.pjoin(current_dir,'assets','storm_logo.svg')
+
+logo=AU.svg_to_image(logo_path)
+st.set_page_config(page_title="μLM", layout="wide",page_icon=logo)
+
+
+from model_discovery import BuildEvolution
 
 from streamlit_navigation_bar import st_navbar
 
@@ -71,9 +79,7 @@ evosys = build_evo_system()
 
 # Setup the streamlit pages
 
-current_dir = pathlib.Path(__file__).parent
 project_dir = current_dir.parent
-logo_path = U.pjoin(current_dir,'assets','storm.svg')
 
 styles = {
     "nav": {
@@ -109,7 +115,7 @@ pages = {
 titles=list(pages.keys())+['GitHub']
 pg = st_navbar(
     titles,
-    logo_path=logo_path,
+    logo_path=U.pjoin(current_dir,'assets','storm.svg'),
     styles=styles,
     urls=urls
 )

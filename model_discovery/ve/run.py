@@ -86,6 +86,8 @@ parser.add_argument("--auto_find_batch_size_hf", type=bool, default=False) # whe
 # PATCH for the evolution
 parser.add_argument("--mode", type=str, default='test') # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
 parser.add_argument("--params", type=str, default='') 
+parser.add_argument("--sess_id", type=str, default='') 
+
 
 
 

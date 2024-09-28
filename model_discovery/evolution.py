@@ -423,7 +423,7 @@ class Verification:
 
 @dataclass
 class DesignArtifact(NodeObject):
-    design_id: str # design session id
+    sess_id: str # design session id
     proposal: Proposal
     implementation: Implementation = None # find by modelname/id
     verifications: Dict[str, Verification] = field(default_factory=dict) # find by modelname/id
@@ -545,7 +545,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
     │   │   │   └── ...
     │   └── ...
     ├── sessions
-    │   ├── design_id
+    │   ├── sess_id
     │   │   ├── metadata.json
     │   │   ├── log
     │   │   │   ├── stream.log
@@ -600,10 +600,10 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
 
     def load_design_sessions(self):
         self.design_sessions={}
-        for design_id in os.listdir(U.pjoin(self.db_dir,'sessions')):
-            metadata = U.load_json(U.pjoin(self.session_dir(design_id), 'metadata.json'))
+        for sess_id in os.listdir(U.pjoin(self.db_dir,'sessions')):
+            metadata = U.load_json(U.pjoin(self.session_dir(sess_id), 'metadata.json'))
             metadata['mode']=DesignModes(metadata['mode'])
-            self.design_sessions[design_id] = metadata
+            self.design_sessions[sess_id] = metadata
 
     @property
     def design_cost(self):
@@ -615,13 +615,12 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
 
     # How to handle variants? i.e., in GPT, there are optional pre-conv and post-conv, maybe just all of them to the tree, let selector to choose
 
-    def new_design(self, seed_ids, ref_ids, instruct, num_samples, mode=None): # new design session, a session explore the steps from a selected node
-        # generate unique hash for the design, do not consider the order
-        # design_id = hashlib.sha256(f"{sorted(ref_ids)}{sorted(seed_ids)}{instruct}{mode}".encode()).hexdigest()
+    def new_design(self, seed_ids, ref_ids, instruct, num_samples, mode=None, sess_id=None): # new design session, a session explore the steps from a selected node
         if mode is None:
             mode=DesignModes.MUTATION
         hash_tail=hashlib.sha256(f"{sorted(ref_ids)}{sorted(seed_ids)}{instruct}{mode}".encode()).hexdigest()
-        design_id = f"{datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}-{hash_tail[-6:]}"
+        if sess_id is None:
+            sess_id = f"{datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}-{hash_tail[-6:]}"
         sessdata = {
             'seed_ids': seed_ids,
             'ref_ids': ref_ids,
@@ -631,12 +630,12 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
             'reranked': {},
             'num_samples': num_samples
         }
-        self.design_sessions[design_id] = sessdata
-        sess_dir=self.session_dir(design_id)
+        self.design_sessions[sess_id] = sessdata
+        sess_dir=self.session_dir(sess_id)
         U.mkdir(sess_dir)
-        self.save_session(design_id)
+        self.save_session(sess_id)
         U.mkdir(U.pjoin(sess_dir, 'log'))
-        return design_id
+        return sess_id
     
     
     def get_unverified_designs(self,scale):
@@ -668,23 +667,23 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         else:
             return None 
     
-    def get_session_input(self,design_id:str):
-        sessdata=self.design_sessions[design_id]
+    def get_session_input(self,sess_id:str):
+        sessdata=self.design_sessions[sess_id]
         seeds=[self.get_node(seed_id) for seed_id in sessdata['seed_ids']]
         refs=[self.get_node(ref_id) for ref_id in sessdata['ref_ids']]
         return seeds,refs,sessdata['instruct']
     
-    def session_dir(self, design_id: str):
-        sess_dir=U.pjoin(self.db_dir, 'sessions', design_id)
+    def session_dir(self, sess_id: str):
+        sess_dir=U.pjoin(self.db_dir, 'sessions', sess_id)
         U.mkdir(sess_dir)
         return sess_dir
     
-    def session_get(self,design_id:str,key:str):
-        return self.design_sessions[design_id].get(key)
+    def session_get(self,sess_id:str,key:str):
+        return self.design_sessions[sess_id].get(key)
 
-    def session_set(self,design_id:str,key:str,value):
-        self.design_sessions[design_id][key]=value
-        self.save_session(design_id)
+    def session_set(self,sess_id:str,key:str,value):
+        self.design_sessions[sess_id][key]=value
+        self.save_session(sess_id)
     
     def design_dir(self, acronym: str):
         design_dir=U.pjoin(self.db_dir, 'designs', acronym)
@@ -699,18 +698,45 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
     def get_node(self, acronym: str):
         return self.G.nodes[acronym]['data']
     
-    def get_unfinished_designs(self):
+    def get_session_state(self,sess_id:str):
+        passed,_ = self.session_proposals(sess_id,passed_only=True)
+        implemented,_ = self.session_implementations(sess_id,implemented_only=True)
+        return len(passed),len(implemented)
+
+    def update_design_tree(self):
+        edges_to_add = []
+        for id in os.listdir(U.pjoin(self.db_dir,'designs')):
+            artifact = DesignArtifact.load(self.design_dir(id))
+            if artifact.acronym not in self.G.nodes:
+                self.G.add_node(artifact.acronym, data=artifact)
+                for seed_id in artifact.seed_ids:
+                    edges_to_add.append((seed_id, artifact.acronym))
+        
+        for seed_id, product_id in edges_to_add:
+            if seed_id not in self.G.nodes or product_id not in self.G.nodes:
+                continue
+            if seed_id == product_id or nx.has_path(self.G, product_id, seed_id):
+                continue
+            self.G.add_edge(seed_id, product_id)
+
+    def get_unfinished_designs(self,return_finished=False):
+        self.load_design_sessions()
+        self.update_design_tree()
         unfinished_designs = []
-        for design_id in self.design_sessions:
-            sessdata=self.design_sessions[design_id]
+        finished_designs = []
+        for sess_id in self.design_sessions:
+            sessdata=self.design_sessions[sess_id]
             num_samples=sessdata['num_samples']
-            passed,_ = self.session_proposals(design_id,passed_only=True)
-            implemented,_ = self.session_implementations(design_id,implemented_only=True)
-            # print(f"Design {design_id} has {len(passed)}/{num_samples['proposal']} proposals and {len(implemented)}/{num_samples['implementation']} implementations.")
-            if len(passed)<num_samples['proposal'] or \
-                len(implemented)<num_samples['implementation']:
-                unfinished_designs.append(design_id)
-        return unfinished_designs
+            passed,implemented=self.get_session_state(sess_id)
+            if passed<num_samples['proposal'] or \
+                implemented<num_samples['implementation']:
+                unfinished_designs.append(sess_id)
+            else:
+                finished_designs.append(sess_id)
+        if return_finished:
+            return unfinished_designs,finished_designs
+        else:
+            return unfinished_designs
 
     def get_implementation_checkpoint(self,acronym:str):
         design=self.get_node(acronym)
@@ -719,8 +745,8 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         else:
             return None
     
-    def session_proposals(self,design_id:str,passed_only=False):
-        sessdata=self.design_sessions[design_id]
+    def session_proposals(self,sess_id:str,passed_only=False):
+        sessdata=self.design_sessions[sess_id]
         acronyms=[]
         proposals=[]
         for acronym in sessdata['proposed']:
@@ -732,8 +758,8 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         return proposals,acronyms
 
     
-    def session_implementations(self,design_id:str,implemented_only=False):
-        sessdata=self.design_sessions[design_id]
+    def session_implementations(self,sess_id:str,implemented_only=False):
+        sessdata=self.design_sessions[sess_id]
         acronyms=[]
         implementations=[]
         for acronym in sessdata['proposed']:
@@ -745,8 +771,8 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
                 acronyms.append(acronym)
         return implementations,acronyms
 
-    def propose(self, design_id: str, proposal,proposal_traces,costs,design_cfg,user_input): # create a new design artifact
-        sessdata=self.design_sessions[design_id]
+    def propose(self, sess_id: str, proposal,proposal_traces,costs,design_cfg,user_input): # create a new design artifact
+        sessdata=self.design_sessions[sess_id]
         seeds=sessdata['seed_ids']
         proposal['costs']=costs
         proposal['design_cfg']=design_cfg
@@ -759,7 +785,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
                 break
         acronym = self.unique_acronym(proposal.modelname.replace(' ', '_').lower())
         proposal.modelname = acronym
-        metadata = {'design_id': design_id, 'acronym': acronym, 'seed_ids': seeds, 'title': title}
+        metadata = {'sess_id': sess_id, 'acronym': acronym, 'seed_ids': seeds, 'title': title}
         U.save_json(metadata, U.pjoin(self.design_dir(acronym), 'metadata.json'))
         proposal.save(self.design_dir(acronym))
         traces_dir=U.pjoin(self.design_dir(acronym),'proposal_traces')
@@ -770,19 +796,19 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
             trace['user_input']=user_input
             proposal_trace=Proposal(**trace)
             proposal_trace.save(traces_dir,f'trace_{idx}.json')
-        design_artifact = DesignArtifact(design_id=design_id, acronym=acronym, seed_ids=seeds, title=title, proposal=proposal)
+        design_artifact = DesignArtifact(sess_id=sess_id, acronym=acronym, seed_ids=seeds, title=title, proposal=proposal)
         self.G.add_node(acronym, data=design_artifact)
-        self.design_sessions[design_id]['proposed'].append(acronym)
-        self.save_session(design_id)
+        self.design_sessions[sess_id]['proposed'].append(acronym)
+        self.save_session(sess_id)
 
-    def save_session(self,design_id: str):
-        sessdata=self.design_sessions[design_id]        
+    def save_session(self,sess_id: str):
+        sessdata=self.design_sessions[sess_id]        
         try:
             sessdata['mode']=DesignModes(sessdata['mode'])
         except:
             pass
         sessdata['mode']=sessdata['mode'].value
-        U.save_json(sessdata, U.pjoin(self.session_dir(design_id), 'metadata.json'))
+        U.save_json(sessdata, U.pjoin(self.session_dir(sess_id), 'metadata.json'))
         sessdata['mode']=DesignModes(sessdata['mode'])
 
     def implement(self, acronym: str, tree,ROUNDS,status,costs,design_cfg,user_input): # update a proposal node with implementation
@@ -1219,7 +1245,7 @@ class EvolutionSystem(exec_utils.System):
             self.verify()
 
     # TODO: the interface should be updated when selector agent is ready, and design cfg is ready
-    def design(self,select_cfg=None,design_cfg=None,search_cfg=None,user_input='',design_id=None,mode=None,resume=True): # select then sample, TODO: n_sources and design_cfg should be configed
+    def design(self,select_cfg=None,design_cfg=None,search_cfg=None,user_input='',sess_id=None,mode=None,resume=True): # select then sample, TODO: n_sources and design_cfg should be configed
         # user_input and design_cfg maybe changed by the user, so we need to pass them in
         # self.ptree.reload() # WHY WE NEED THIS???
         if mode is None:
@@ -1239,21 +1265,25 @@ class EvolutionSystem(exec_utils.System):
             'ReferenceWithCode':2,
             'Reference':2,
         })
-        if design_id is None:
+        if sess_id is None:
             if len(unfinished_designs)==0 or not resume:
                 instruct,seed,refs=self.select(n_sources,mode=mode) # use the seed_ids to record the phylogenetic tree
                 self.sample(instruct,seed,refs,mode=mode,user_input=user_input,design_cfg=design_cfg,search_cfg=search_cfg)
             else:
-                design_id = random.choice(unfinished_designs)
-                mode=DesignModes(self.ptree.session_get(design_id,'mode'))
-                self.stream.write(f"Restoring a session {design_id}, mode: {mode}.")
-                self.sample(design_id=design_id,user_input=user_input,design_cfg=design_cfg,mode=mode,search_cfg=search_cfg) # should not change the design_cfg
+                sess_id = random.choice(unfinished_designs)
+                mode=DesignModes(self.ptree.session_get(sess_id,'mode'))
+                self.stream.write(f"Restoring a session {sess_id}, mode: {mode}.")
+                self.sample(sess_id=sess_id,user_input=user_input,design_cfg=design_cfg,mode=mode,search_cfg=search_cfg) # should not change the design_cfg
         else:
-            mode=DesignModes(self.ptree.session_get(design_id,'mode'))
-            self.stream.write(f"Design id provided, will restore session {design_id}, mode: {mode}")
-            self.sample(design_id=design_id,user_input=user_input,design_cfg=design_cfg,mode=mode,search_cfg=search_cfg)
+            if sess_id in self.ptree.design_sessions:
+                mode=DesignModes(self.ptree.session_get(sess_id,'mode'))
+                self.stream.write(f"Design id provided, will restore session {sess_id}, mode: {mode}")
+                self.sample(sess_id=sess_id,user_input=user_input,design_cfg=design_cfg,mode=mode,search_cfg=search_cfg)
+            else: # create a new design session using an external id
+                instruct,seed,refs=self.select(n_sources,mode=mode) # use the seed_ids to record the phylogenetic tree
+                self.sample(instruct,seed,refs,sess_id,mode=mode,user_input=user_input,design_cfg=design_cfg,search_cfg=search_cfg)
 
-    def sample(self,instruct=None,seed:List[NodeObject]=None,refs:List[NodeObject]=None,design_id=None,mode=None,user_input='',design_cfg={},search_cfg={}):
+    def sample(self,instruct=None,seed:List[NodeObject]=None,refs:List[NodeObject]=None,sess_id=None,mode=None,user_input='',design_cfg={},search_cfg={}):
         """ 
         Sample a design at a given scale and verify it 
         
@@ -1272,7 +1302,7 @@ class EvolutionSystem(exec_utils.System):
             instruct=instruct,
             seed=seed,
             refs=refs,
-            design_id=design_id,
+            sess_id=sess_id,
             stream=self.stream,
             design_cfg=design_cfg,
             search_cfg=search_cfg,
@@ -1507,6 +1537,8 @@ if __name__ == '__main__':
 
         test_evolve('test_evo_000',step=True)
     else:
+        if args.params=='':
+            raise ValueError("Params is required")
         params=json.loads(args.params)
         args.evoname=params['evoname']
         
@@ -1526,8 +1558,8 @@ if __name__ == '__main__':
             if args.mode=='prep_model':
                 evolution_system._prep_model(args.design_id, args.scale)
             elif args.mode=='design':
-                # evolution_system.design(n_sources,design_cfg,search_cfg,user_input,design_id,mode,resume)
-                pass
+                sess_id=None if args.sess_id=='' else args.sess_id
+                evolution_system.design(sess_id=sess_id)
             elif args.mode=='evolve':
                 # evolution_system.evolve()
                 pass

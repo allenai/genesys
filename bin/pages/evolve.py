@@ -81,7 +81,7 @@ def evolve(evosys,project_dir):
     #                 evosys.ptree.export()
     #         check_output("xdg-open " + ptree_dir_full, shell=True)
             
-    st.write(f'**Only showing the first {max_nodes} nodes here**. '
+    st.write(f'**First {max_nodes} nodes under the namespace ```{evosys.evoname}```**. '
             'Legend: :rainbow[Seed Designs (*Pink*)] | :blue[Design Artifacts] | :orange[Reference w/ Code] | :violet[Reference w/o Code] *(Size by # of citations)*')
 
     HtmlFile = open(ptree_dir_small, 'r', encoding='utf-8')
@@ -89,8 +89,8 @@ def evolve(evosys,project_dir):
     components.html(source_code, height = 800)
 
     with st.sidebar:
-        st.write(f'**Running Namespace:\n```{evosys.evoname}```**')
-        logo_png = AU.square_logo("LLM", "EVO")
+        AU.running_status(st,evosys)
+        logo_png = AU.square_logo("μLM")
         st.image(logo_png, use_column_width=True)
 
     

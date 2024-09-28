@@ -354,7 +354,7 @@ def config(evosys,project_dir):
 
     with st.sidebar:
 
-        st.write(f'**Running Namespace:\n```{evosys.evoname}```**')
+        AU.running_status(st,evosys)
         config['select_cfg']=evosys.select_cfg
         config['design_cfg']=evosys.design_cfg
         config['search_cfg']=evosys.search_cfg

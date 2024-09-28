@@ -312,7 +312,7 @@ class StreamWrapper:
         self.snow = stream.snow
     
     def log(self,msg,type):
-        _msg=msg.replace('\n','/NEWLINE/').replace('\t','/TAB/')
+        _msg=str(msg).replace('\n','/NEWLINE/').replace('\t','/TAB/')
         self._log.append((datetime.datetime.now(),_msg,type))
         line=str(self._log[-1])+'\n'
         U.append_file(self.log_file,line)
@@ -421,8 +421,8 @@ class ModelDiscoverySystem(exec_utils.System):
             'claude3.5_sonnet':self.claude.config
         }
 
-    def new_session(self,design_id,stream):
-        self.log_dir = U.pjoin(self.ptree.session_dir(design_id), 'log')
+    def new_session(self,sess_id,stream):
+        self.log_dir = U.pjoin(self.ptree.session_dir(sess_id), 'log')
         log_file = U.pjoin(self.log_dir,f'{datetime.datetime.now().strftime("%Y%m%d_%H%M%S")}.log')
         self.sess_state = {} 
         self.dialog = AgentDialogManager(self.log_dir,self.get_system_info(),stream)
@@ -435,7 +435,7 @@ class ModelDiscoverySystem(exec_utils.System):
         instruct=None,
         seed=None,
         refs=None,
-        design_id=None,
+        sess_id=None,
         stream: Optional[ModuleType] = None,
         design_cfg = {},
         search_cfg = {},
@@ -520,18 +520,25 @@ class ModelDiscoverySystem(exec_utils.System):
             pass
 
         # 1. create or retrieve a new session
-        if design_id is None: # if provided, then its resuming a session
+        if sess_id is None: # if provided, then its resuming a session
             assert seed, "Must provide seed to create a new design"
             seed_ids = [seed.acronym for seed in seed]
             ref_ids = [ref.acronym for ref in refs] if refs else []
-            design_id=self.ptree.new_design(seed_ids, ref_ids, instruct, design_cfg['num_samples'], mode)
-        else: # resuming a session
-            stream.write(f"Restoring design session: {design_id}")
-            mode=self.ptree.session_get(design_id,'mode')
+            sess_id=self.ptree.new_design(seed_ids, ref_ids, instruct, design_cfg['num_samples'], mode)
+            stream.write(f"Starting new design session: {sess_id}")
+        else: # resuming a session or creating a new session with a given id
+            if sess_id not in self.ptree.design_sessions:
+                seed_ids = [seed.acronym for seed in seed]
+                ref_ids = [ref.acronym for ref in refs] if refs else []
+                self.ptree.new_design(seed_ids, ref_ids, instruct, design_cfg['num_samples'], mode, sess_id)
+                stream.write(f"Starting new design session: {sess_id}")
+            else:
+                stream.write(f"Restoring design session: {sess_id}")
+                mode=self.ptree.session_get(sess_id,'mode')
         
-        design_stream=self.new_session(design_id,stream)
+        design_stream=self.new_session(sess_id,stream)
         if mode==DesignModes.MUTATION:
-            self.design_fn_mutation(self,design_stream,design_id,design_cfg,user_input,proposal)
+            self.design_fn_mutation(self,design_stream,sess_id,design_cfg,user_input,proposal)
         elif mode==DesignModes.SCRATCH:
             raise NotImplementedError('Scratch mode is unstable, do not use it')
         elif mode==DesignModes.CROSSOVER:

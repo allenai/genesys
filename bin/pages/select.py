@@ -16,7 +16,7 @@ def select(evosys,project_dir):
     st.title('Node Selector Playground')
 
     with st.sidebar:
-        st.write(f'**Running Namespace:\n```{evosys.evoname}```**')
+        AU.running_status(st,evosys)
 
 
 

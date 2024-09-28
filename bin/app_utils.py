@@ -12,11 +12,26 @@ SQUARE_LOGO_SVG = """
     <text x="150" y="210" font-family="Arial, sans-serif" font-size="60" font-weight="bold" fill="#{COLOR}" text-anchor="middle">{LOWER_TEXT}</text>
 </svg>
 """
+
+SQUARE_CENTER_LOGO_SVG = """
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+    <path d="M50,50 L250,50 L250,250 L50,250 Z" fill="none" stroke="#{COLOR}" stroke-width="4" />
+    <text x="150" y="165" font-family="Arial, sans-serif" font-size="60" font-weight="bold" fill="#{COLOR}" text-anchor="middle">{UPPER_TEXT}</text>
+</svg>
+"""
 # font-style="italic" 
 
-def square_logo(upper_text, lower_text, color='000000'):
-    svg_code = SQUARE_LOGO_SVG.format(UPPER_TEXT=upper_text, LOWER_TEXT=lower_text, COLOR=color)
+def square_logo(upper_text, lower_text=None, color='000000'):
+    if lower_text is None:
+        svg_code = SQUARE_CENTER_LOGO_SVG.format(UPPER_TEXT=upper_text, COLOR=color)
+    else:
+        svg_code = SQUARE_LOGO_SVG.format(UPPER_TEXT=upper_text, LOWER_TEXT=lower_text, COLOR=color)
     png_data = cairosvg.svg2png(bytestring=svg_code.encode('utf-8'))
+    return Image.open(io.BytesIO(png_data))
+
+def svg_to_image(svg_path):
+    svg_data = open(svg_path, 'r').read()
+    png_data = cairosvg.svg2png(bytestring=svg_data.encode('utf-8'))
     return Image.open(io.BytesIO(png_data))
 
 
@@ -50,7 +65,20 @@ def grid_view(st,item_dict:dict,per_row=3,spacing=0.05):
                 st.write(value)
 
 
-
+def running_status(st,evosys):
+  st.write(f'**Running Namespace:\n```{evosys.evoname}```**')
+  running_verifications=[key for key,process in st.session_state['running_verifications'].items() if process.poll() is None]
+  if len(running_verifications)!=0:
+    with st.expander("🥏 Running Verifies",expanded=False):
+      for idx,key in enumerate(running_verifications):
+        st.write(f'```{key}```')
+  running_designs=[key for key,process in st.session_state['design_threads'].items() if process.poll() is None]
+  if len(running_designs)!=0:
+    with st.expander("🐎 Running Designs",expanded=False):
+      for idx,key in enumerate(running_designs):
+        st.write(f'```{key}```')
+  st.write('---')
+    
             
           
   

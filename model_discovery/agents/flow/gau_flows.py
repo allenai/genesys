@@ -127,7 +127,7 @@ class GUFlowMutation(FlowCreator):
     the input query should be the seeds from the root tree for the design
     Do not allow root for now
     """
-    def __init__(self,system,status_handler,stream,design_id,design_cfg,user_input=''):
+    def __init__(self,system,status_handler,stream,sess_id,design_cfg,user_input=''):
         self.costs={
             'DESIGN_PROPOSER':0,
             'PROPOSAL_REVIEWER':0,
@@ -181,9 +181,9 @@ class GUFlowMutation(FlowCreator):
 
         # assert any(self.termination.values())>0, 'At least one of the termination conditions should be set'
 
-        self.design_id = design_id
+        self.sess_id = sess_id
         self.ptree=system.ptree
-        seeds,refs,instruct=self.ptree.get_session_input(design_id)
+        seeds,refs,instruct=self.ptree.get_session_input(sess_id)
         self.seed_tree = self.ptree.get_gau_tree(seeds[0].acronym)
         self.seed_id=seeds[0].acronym
         self.seed_input=P.build_GUM_QUERY(seeds[0],refs,instruct,user_input)
@@ -293,7 +293,7 @@ class GUFlowMutation(FlowCreator):
         if self.mode==RunningModes.IMPLEMENTATION_ONLY:
             self.stream.write('Implementation only mode, skipping proposal generation...')
             return query,state,{}
-        passed_proposals,_=self.ptree.session_proposals(self.design_id,passed_only=True)
+        passed_proposals,_=self.ptree.session_proposals(self.sess_id,passed_only=True)
         remaining_samples=self.num_samples['proposal']-len(passed_proposals)
         self.stream.write(f'{len(passed_proposals)} proposals passed yet. Remaining {remaining_samples} proposal{"s" if remaining_samples>1 else ""} to generate.')
         for _ in range(remaining_samples):
@@ -301,7 +301,7 @@ class GUFlowMutation(FlowCreator):
             query,state,RET=self._generate_proposal(self.seed_input,state,main_tid)
             proposal,proposal_traces=RET['proposal'],RET['proposal_traces']
             costs={k:v-cost_raw[k] for k,v in self.costs.items()}
-            self.ptree.propose(self.design_id,proposal,proposal_traces,costs,self.design_cfg,self.user_input)
+            self.ptree.propose(self.sess_id,proposal,proposal_traces,costs,self.design_cfg,self.user_input)
         return query,state,{}
 
     def _generate_proposal(self,query,state,main_tid):
@@ -773,11 +773,11 @@ class GUFlowMutation(FlowCreator):
         # select the highest rated unimplemented proposal
         proposals=[]
         acronyms=[] 
-        rerank=self.ptree.session_get(self.design_id,'reranked')
+        rerank=self.ptree.session_get(self.sess_id,'reranked')
         if not rerank:
-            proposals,acronyms=self.ptree.session_proposals(self.design_id,passed_only=True)
+            proposals,acronyms=self.ptree.session_proposals(self.sess_id,passed_only=True)
             rerank=self.rerank_proposals(proposals,acronyms)
-            self.ptree.session_set(self.design_id,'reranked',rerank)
+            self.ptree.session_set(self.sess_id,'reranked',rerank)
         for acronym in rerank['rank']:
             design=self.ptree.get_node(acronym)
             if not design.is_implemented():
@@ -1571,10 +1571,10 @@ class GUFlowMutation(FlowCreator):
 
         return query,state,{}
 
-def gu_design_mutation(system,stream,design_id,design_cfg,user_input='',proposal=None):
+def gu_design_mutation(system,stream,sess_id,design_cfg,user_input='',proposal=None):
     main_tid = system.dialog.fork(0,note='Starting a new session...',alias='main')
     status_handler = stream.status
-    gu_flow = GUFlowMutation(system, status_handler,stream,design_id,design_cfg,user_input)
+    gu_flow = GUFlowMutation(system, status_handler,stream,sess_id,design_cfg,user_input)
     GU_CALLEE = ROLE('GAB Unit Designer',gu_flow.flow)
     gum_tid = system.dialog.fork(main_tid,SYSTEM_CALLER,GU_CALLEE,note=f'launch design flow',alias=f'gu_mutate')
     system.dialog.call(gum_tid,'',main_tid=main_tid,proposal=proposal) 

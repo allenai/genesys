@@ -21,7 +21,7 @@ def search(evosys,project_dir):
     st.title("Search Engine Playground")
 
     with st.sidebar:
-        st.write(f'**Running Namespace:\n```{evosys.evoname}```**')
+        AU.running_status(st,evosys)
 
     with st.expander("Search Configurations",expanded=True):
         search_cfg={}

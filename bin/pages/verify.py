@@ -88,7 +88,7 @@ def run_verification(params, design_id, scale, resume):
         params = copy.deepcopy(params)
         process = _run_verification(params, design_id, scale, resume)
         st.session_state['running_verifications'][key] = process
-        st.session_state['output'][key] = []
+        # st.session_state['output'][key] = []
         st.success(f"Verification process started for {design_id} on scale {scale}. Check console for output.")
     else:
         key=list(st.session_state['running_verifications'].keys())[0]
@@ -117,13 +117,11 @@ def verify(evosys,project_dir):
     if 'running_verifications' not in st.session_state:
         st.session_state['running_verifications'] = {}
     
-    if 'output' not in st.session_state:
-        st.session_state['output'] = {}
+    # if 'output' not in st.session_state:
+    #     st.session_state['output'] = {}
 
     with st.sidebar:
-        st.write(f'**Running Namespace:\n```{evosys.evoname}```**')
-        with st.expander("Running Sessions"):
-            st.write({key:process.poll() for key,process in st.session_state['running_verifications'].items()})
+        AU.running_status(st,evosys)
         with st.expander("View CPU stats"):
             cpu_percentages = psutil.cpu_percent(interval=1, percpu=True)
             if st.button("Refresh",key='refresh_btn_cpu'):
@@ -354,7 +352,7 @@ def verify(evosys,project_dir):
     ##################################################################################
 
     if None in [process.poll() for process in st.session_state['running_verifications'].values()]:
-        st.subheader("*Running Verification*")
+        st.subheader("🥏 *Running Verification*")
 
     running_process=None
     for key, process in st.session_state['running_verifications'].items():

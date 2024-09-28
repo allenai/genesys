@@ -5,20 +5,202 @@ import datetime
 import streamlit as st
 from streamlit.runtime.scriptrunner import add_script_run_ctx
 import sys,os
-import threading
-import queue
 sys.path.append('.')
+import uuid
+
+import subprocess
+import shlex
+import psutil
+
+
 import model_discovery.utils as U
 from model_discovery.agents.flow.gau_flows import EndReasons,RunningModes,END_REASONS_LABELS,DesignModes
 import bin.app_utils as AU
 
 
 
-def get_thread_safe_session_state():
-    try:
-        return st.session_state
-    except RuntimeError:
-        return {}
+
+
+###########################################################################
+
+
+
+def _gen_sess_id():
+    return f"{datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}-{uuid.uuid4().hex[:6]}"
+
+def _run_design_thread(evosys,sess_id=None):
+    params_str = shlex.quote(json.dumps(evosys.params))
+    if sess_id is None:
+        sess_id = _gen_sess_id()
+    cmd = f"python -m model_discovery.evolution --mode design --params {params_str} --sess_id {sess_id}"
+    process = subprocess.Popen(cmd, shell=True)#, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, bufsize=1, universal_newlines=True)
+    return process,sess_id
+
+
+def run_design_thread(evosys,sess_id=None):
+    polls=[p.poll() for p in st.session_state['design_threads'].values()]
+    n_running = sum([p is None for p in polls])
+    if n_running < st.session_state['max_design_threads']:
+        process,sess_id = _run_design_thread(evosys,sess_id)
+        st.session_state['design_threads'][sess_id] = process
+        st.toast(f"Design thread launched for {evosys.evoname}.",icon="🚀")
+    else:
+        st.toast(f"Max number of design threads reached ({st.session_state['max_design_threads']}). Please wait for some threads to finish.",icon="🚨")
+
+def _design_engine(evosys,project_dir):
+    st.title("Model Design Engine")
+
+    with st.sidebar:
+        st.session_state['max_design_threads'] = st.number_input(label="Max Design Threads",min_value=1,value=3,step=1)
+        st.write(f'Controls')
+        if st.button("Refresh",key='refresh_btn_design'):
+            st.session_state['viewing_log'] = None
+            st.rerun()
+
+    
+    st.subheader(f"Design Sessions under ```{evosys.evoname}```")
+    unfinished_designs,finished_designs = evosys.ptree.get_unfinished_designs(return_finished=True)
+
+    with st.expander("Finished Design Sessions (View details in Viewer)"):
+        if len(finished_designs)>0:
+            for sess_id in finished_designs:
+                sessdata=evosys.ptree.design_sessions[sess_id]
+                passed,implemented=evosys.ptree.get_session_state(sess_id)
+                cols=st.columns([2.5,1,1,0.1,0.5])
+                with cols[0]:
+                    st.write(f'Session ID: ```{sess_id}```')
+                with cols[1]:
+                    state='❌' if passed<sessdata["num_samples"]["proposal"] else '✅'
+                    st.write(f'Proposals sampled: ```{passed}/{sessdata["num_samples"]["proposal"]}``` {state}')
+                with cols[2]:
+                    state='❌' if implemented<sessdata["num_samples"]["implementation"] else '✅'
+                    st.write(f'Implementations sampled: ```{implemented}/{sessdata["num_samples"]["implementation"]}``` {state}')
+                with cols[4]:
+                    if st.button('View Log',key=f'btn_{sess_id}_view_log'):
+                        st.session_state['viewing_log'] = sess_id
+        else:
+            st.info('No finished design sessions.')
+
+    with st.expander("Unfinished Design Sessions (View details in Viewer)",expanded=False):
+        if len(unfinished_designs)>0:
+            for sess_id in unfinished_designs:
+                sessdata=evosys.ptree.design_sessions[sess_id]
+                passed,implemented=evosys.ptree.get_session_state(sess_id)
+                cols=st.columns([3,3,3,1,1,1])
+                with cols[0]:
+                    st.write(f'Session ID: ```{sess_id}```')
+                with cols[1]:
+                    state='❌' if passed<sessdata["num_samples"]["proposal"] else '✅'
+                    st.write(f'Proposals Progress: ```{passed}/{sessdata["num_samples"]["proposal"]}``` passed {state}')
+                with cols[2]:
+                    state='❌' if implemented<sessdata["num_samples"]["implementation"] else '✅'
+                    st.write(f'Implementations Progress: ```{implemented}/{sessdata["num_samples"]["implementation"]}``` succeeded {state}')
+                with cols[3]:
+                    if st.button('View Log',key=f'btn_{sess_id}_view_log'):
+                        st.session_state['viewing_log'] = sess_id
+                with cols[4]:
+                    if st.button('Resume',key=f'btn_{sess_id}_resume'):
+                        st.session_state['viewing_log'] = None
+                        run_design_thread(evosys,sess_id)
+                with cols[5]:
+                    delete_btn = st.button('Delete',key=f'btn_{sess_id}_delete',disabled=True)
+        else:
+            st.success('No unfinished design sessions.')
+
+
+    st.subheader("Run deisgn thread")
+    col1,col2=st.columns([4,1])
+    with col1:
+        with st.expander("Check current design settings"):
+            cols=st.columns(3)
+            with cols[0]:
+                st.write('**Selection Config**')
+                st.write(evosys.select_cfg)
+            with cols[1]:
+                st.write('**Design Config**')
+                st.write(evosys.design_cfg)
+            with cols[2]:
+                st.write('**Search Config**')
+                st.write(evosys.search_cfg)
+    with col2:
+        new_thread_btn = st.button('***Launch a new design session***',use_container_width=True)
+
+    if new_thread_btn:
+        st.session_state['viewing_log'] = None
+        run_design_thread(evosys)
+
+    running_process={key:process for key,process in st.session_state['design_threads'].items() if process.poll() is None}
+    if len(running_process)>0:
+        st.subheader("🐎 *Running Threads*")
+        with st.expander("Design Sessions",expanded=True):
+            for key,process in running_process.items():
+                cols=st.columns([3,2,2,1,1,1])
+                sessmeta = U.load_json(U.pjoin(evosys.ptree.session_dir(key), 'metadata.json'))
+                passed,implemented=evosys.ptree.get_session_state(key)
+                with cols[0]:
+                    st.write(f'⏩ Session ID: ```{key}```')
+                with cols[1]:
+                    state='❎' if passed<sessmeta.get("num_samples",{}).get("proposal",0) else '✅'
+                    st.write(f'Proposals progress: ```{passed}/{sessmeta.get("num_samples",{}).get("proposal",0)}``` {state}')
+                with cols[2]:
+                    state='❎' if implemented<sessmeta.get("num_samples",{}).get("implementation",0) else '✅'
+                    st.write(f'Implementations progress: ```{implemented}/{sessmeta.get("num_samples",{}).get("implementation",0)}``` {state}')
+                with cols[4]:
+                    if st.button('View Log',key=f'btn_{key}_view'):
+                        st.session_state['viewing_log'] = key
+                with cols[5]:
+                    if st.button(f"Terminate",key=f'btn_{key}_term'):
+                        try:
+                            parent = psutil.Process(process.pid)
+                            children = parent.children(recursive=True)
+                            for child in children:
+                                child.terminate()
+                            parent.terminate()
+                            
+                            gone, alive = psutil.wait_procs(children + [parent], timeout=5)
+                            
+                            for p in alive:
+                                p.kill()
+                            
+                            st.toast(f"Verification process for {key} terminated.",icon="🛑")
+                            del st.session_state['design_threads'][key]
+                            st.session_state['viewing_log'] = None
+                            time.sleep(0.5)
+                            st.rerun()
+                        except psutil.NoSuchProcess:
+                            st.toast(f"Process for {key} has already ended.",icon="🚨")
+                        except Exception as e:
+                            st.toast(f"Error terminating process: {str(e)}",icon="🚨")
+    else:
+        st.info(f'**NOTE:** Remember to configure the design engine settings in the config page before running. The engine will work based on the namespace: ```{evosys.evoname}```')
+
+    if st.session_state['viewing_log']:
+        sess_id = st.session_state['viewing_log']
+        log_dir = U.pjoin(evosys.ptree.db_dir,'sessions',sess_id,'log')
+        logs = []
+        for log_file in os.listdir(log_dir):
+            if log_file.endswith('.log'):
+                logs.append(log_file.split('.')[0])
+        logs = logs[::-1] # most recent logs first
+        st.write(f'#### Viewing log for session: ```{sess_id}```')
+        col1,_,col2,col3=st.columns([5,1,1,1])
+        with col1:
+            selected_log = st.selectbox(label='Select a log file',options=logs)
+            log=load_log(U.pjoin(log_dir,f'{selected_log}.log'))
+        with col2:
+            st.write('')
+            st.write('')
+            if st.button('Refresh'):
+                st.rerun()
+        with col3:
+            st.write('')
+            st.write('')
+            if st.button('Clear'):
+                st.session_state['viewing_log'] = None
+                st.rerun()
+        show_log(log)
+    else:
+        st.write('')
 
 
 #################################################
@@ -62,7 +244,6 @@ def stat_logs(logs):
             ratio = end_ratios[reason]
             st.write(f"{reason.value}: {count} ({ratio*100:.2f}%)")
     
-
 def show_log(log):
     # four types: enter, exit, write, markdown
     in_status = False
@@ -102,66 +283,13 @@ def load_log(log_file):
     return log
 
 
+########################################################################################
 
-
-###########################################################################
-
-def _run_design(evosys, thread_id, n_sources=None, design_cfg={}, search_cfg={}, user_input='', design_id=None, mode=None, resume=True, placeholder=None):
-    session_state = get_thread_safe_session_state()
-    stop_event = session_state.get('design_threads', {}).get(thread_id, {}).get('stop_event', threading.Event())
-    output_queue = session_state.get('design_threads', {}).get(thread_id, {}).get('queue', queue.Queue())
-    
-    # Create a custom StreamlitOutputStream that puts messages in the queue
-    class ThreadSafeStream:
-        def write(self, text):
-            output_queue.put(text)
-        
-        def __getattr__(self, attr):
-            return lambda *args, **kwargs: None  # No-op for other methods
-
-    thread_safe_stream = ThreadSafeStream()
-    
-    while not stop_event.is_set():
-        # Run the design function with the thread-safe stream
-        select_cfg={'n_sources':n_sources}
-        evosys.design(select_cfg, design_cfg, search_cfg, user_input=user_input, mode=mode, design_id=design_id, resume=resume, stream=thread_safe_stream)
-        time.sleep(1)  # Simulate some processing time
-        print(f"Thread {thread_id} is running")
-
-    print(f"Thread {thread_id} has stopped.")
-
-# Function to start a new thread
-def start_design_thread(evosys, n_sources=None, design_cfg={}, search_cfg={}, user_input='', design_id=None, mode=None, resume=True):
-    thread_id = len(st.session_state.get('design_threads', {})) + 1  # Unique thread ID
-    stop_event = threading.Event()
-    
-    # Create a placeholder for this thread's output
-    placeholder = st.empty()
-    
-    design_thread = threading.Thread(target=_run_design, 
-                                     args=(evosys, thread_id, n_sources, design_cfg, search_cfg, user_input, design_id, mode, resume, placeholder))
-    
-    # Add Streamlit's script run context to the thread
-    add_script_run_ctx(design_thread)
-    
-    # Store the thread, stop event, and placeholder in session state
-    if 'design_threads' not in st.session_state:
-        st.session_state['design_threads'] = {}
-    st.session_state['design_threads'][thread_id] = {
-        "thread": design_thread, 
-        "stop_event": stop_event,
-        "placeholder": placeholder,
-        "queue": queue.Queue()
-    }
-    
-    # Start the thread
-    design_thread.start()
-    return thread_id
 
 
 def _design_tuning(evosys,project_dir):
     ### build the system 
-    st.title("Design Engine Playground")
+    st.title("Model Design Agents")
 
     system = evosys.rnd_agent
     db_dir = evosys.ptree.db_dir
@@ -175,7 +303,7 @@ def _design_tuning(evosys,project_dir):
 
     #### Configure design
 
-    with st.expander("**Playground Settings**",expanded=True):#,icon='⚙️'):
+    with st.expander("**Agents Settings**",expanded=True):#,icon='⚙️'):
 
         col1, col2 = st.columns([1, 5])
         with col1:
@@ -363,9 +491,9 @@ def _design_tuning(evosys,project_dir):
                 spinner_text = f"running model design loop ({i+1}/{EXPERIMENT_RUNS})"
             with st.spinner(text=spinner_text):
                 _mode = DesignModes(mode)
-                design_id=None
+                sess_id=None
                 select_cfg={'n_sources':n_sources}
-                evosys.design(select_cfg,design_cfg,search_cfg,user_input=user_input,mode=_mode,design_id=design_id,resume=resume)
+                evosys.design(select_cfg,design_cfg,search_cfg,user_input=user_input,mode=_mode,sess_id=sess_id,resume=resume)
     
     elif selected_design:
         with st.empty():
@@ -385,25 +513,7 @@ def _design_tuning(evosys,project_dir):
                 logs.append(log)
             stat_logs(logs)
     else:
-        st.info(f'**NOTE:** All settings here will only be applied to this design playground session. The playground session will directly work on the selected running namespace ```{evosys.evoname}```.')
-
-
-
-    
-
-def _design_engine(evosys,project_dir):
-    st.title("Model Design Engine")
-
-    st.info('**NOTE:** Remember to configure the design engine settings in the config page before running.')
-
-
-    db_dir = evosys.ptree.db_dir
-    design_cfg = {}
-    n_sources = {}
-
-
-
-
+        st.info(f'**NOTE:** All settings here will only be applied to this design session. The design will be based on and saved to the running namespace ```{evosys.evoname}```.')
 
 
 
@@ -412,19 +522,25 @@ def _design_engine(evosys,project_dir):
 def design(evosys,project_dir):
 
     if 'design_threads' not in st.session_state:
-        st.session_state['design_threads'] = {}  # Format: {thread_id: {"thread": thread_object, "stop_event": event_object}}
+        st.session_state['design_threads'] = {}  
 
     if 'design_tab' not in st.session_state:
-        st.session_state['design_tab'] = 'design_tunner'
+        st.session_state['design_tab'] = 'design_runner'
+
+    if 'max_design_threads' not in st.session_state:
+        st.session_state['max_design_threads'] = 5
+
+    if 'viewing_log' not in st.session_state:
+        st.session_state['viewing_log'] = None
 
     ### side bar 
     with st.sidebar:
-        st.write(f'**Running Namespace:\n```{evosys.evoname}```**')
+        AU.running_status(st,evosys)
 
         if st.button("**Design Engine**" if st.session_state['design_tab']=='design_runner' else "Design Engine",use_container_width=True):
             st.session_state['design_tab'] = 'design_runner'
             st.rerun()
-        if st.button("**Design Playground**" if st.session_state['design_tab']=='design_tunner' else "Design Playground",use_container_width=True):
+        if st.button("**Design Agents**" if st.session_state['design_tab']=='design_tunner' else "Design Agents",use_container_width=True):
             st.session_state['design_tab'] = 'design_tunner'
             st.rerun()
 

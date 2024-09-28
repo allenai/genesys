@@ -29,7 +29,7 @@ import bin.app_utils as AU
 
 class ViewModes(Enum):
     DESIGNS = 'Design Artifacts'
-    EXPERIMENTS = 'Experiments'
+    SESSIONS = 'Design Sessions'
     DIALOGS = 'Agent Dialogs (Experimental)'
     FLOW = 'Agent Flows (Experimental)'
 
@@ -89,8 +89,8 @@ def _view_designs(evosys,design_artifacts,selected_design):
         st.warning('No design artifacts found in the experiment directory')
 
 
-def _view_experiments(evosys):
-    st.title('Experiment Viewer')
+def _view_sessions(evosys):
+    st.title('Session Viewer')
     st.write(evosys.evo_dir)
 
 
@@ -198,7 +198,7 @@ def viewer(evosys,project_dir):
 
     ### Sidebar
     with st.sidebar:
-        st.write(f'**Running Namespace:\n```{evosys.evoname}```**')
+        AU.running_status(st,evosys)
         view_mode = st.selectbox("View Mode", list([i.value for i in ViewModes]))
         view_mode = ViewModes(view_mode)
         if view_mode == ViewModes.FLOW:
@@ -221,7 +221,8 @@ def viewer(evosys,project_dir):
             flow = flows[selected_flow]
         elif view_mode == ViewModes.DESIGNS:
             ckpts=os.listdir(evosys.ckpt_dir)
-            selected_ckpt=st.selectbox('Select a experiment directory',ckpts)
+            ns_index=ckpts.index(evosys.evoname)
+            selected_ckpt=st.selectbox('Select a namespace',ckpts,index=ns_index)
             db_dir=U.pjoin(evosys.ckpt_dir,selected_ckpt,'db')
             design_artifacts = load_db(db_dir)
             selected_design = st.selectbox("Select a design", list(design_artifacts.keys()))
@@ -232,8 +233,8 @@ def viewer(evosys,project_dir):
     if view_mode == ViewModes.DESIGNS:
         _view_designs(evosys,design_artifacts,selected_design)
 
-    elif view_mode == ViewModes.EXPERIMENTS:
-        _view_experiments(evosys)
+    elif view_mode == ViewModes.SESSIONS:
+        _view_sessions(evosys)
 
     elif view_mode == ViewModes.DIALOGS:
         _view_dialogs(evosys)

@@ -7,6 +7,7 @@ import feedparser
 import urllib.request
 import urllib.parse
 from paperswithcode import PapersWithCodeClient
+from requests.exceptions import RequestException
 from openai import OpenAI
 import cohere
 import numpy as np
@@ -543,7 +544,7 @@ class SuperScholarSearcher:
             papers.append(paper)
         return papers
 
-    def search_arxiv(self,query, result_limit=10, category=['cs.LG','cs.CL']):#, start_year=2015):
+    def search_arxiv(self,query, result_limit=10, category=['cs.LG','cs.CL'], max_retries=3, retry_delay=1):#, start_year=2015):
         """
         Searches arXiv for papers in the specified category with the user query and time restriction.
 
@@ -561,7 +562,18 @@ class SuperScholarSearcher:
         # date_filter = f'AND+submittedDate:[{start_year}0101+TO+*]' # not working
         query_string = f"search_query={search_query}&start=0&max_results={result_limit}"
         query_url = base_url + query_string
-        response = feedparser.parse(query_url)
+
+        for attempt in range(max_retries):
+            try:
+                response = feedparser.parse(query_url)
+            except (ConnectionResetError, RequestException) as e:
+                if attempt < max_retries - 1:
+                    self.stream.write(f"*ArXiv search failed. Retrying in {retry_delay} seconds...*")
+                    time.sleep(retry_delay)
+                else:
+                    self.stream.write(f"*ArXiv search failed after {max_retries} attempts: {str(e)}*")
+                    return []
+
         papers = []
         for entry in response['entries']:
             paper={
