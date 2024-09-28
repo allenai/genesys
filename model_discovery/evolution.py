@@ -707,10 +707,10 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         edges_to_add = []
         for id in os.listdir(U.pjoin(self.db_dir,'designs')):
             artifact = DesignArtifact.load(self.design_dir(id))
-            if artifact.acronym not in self.G.nodes:
-                self.G.add_node(artifact.acronym, data=artifact)
-                for seed_id in artifact.seed_ids:
-                    edges_to_add.append((seed_id, artifact.acronym))
+            # if artifact.acronym not in self.G.nodes:
+            self.G.add_node(artifact.acronym, data=artifact)
+            for seed_id in artifact.seed_ids:
+                edges_to_add.append((seed_id, artifact.acronym))
         
         for seed_id, product_id in edges_to_add:
             if seed_id not in self.G.nodes or product_id not in self.G.nodes:
