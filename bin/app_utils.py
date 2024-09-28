@@ -66,19 +66,20 @@ def grid_view(st,item_dict:dict,per_row=3,spacing=0.05):
 
 
 def running_status(st,evosys):
-  st.write(f'**Running Namespace:\n```{evosys.evoname}```**')
-  running_verifications=[key for key,process in st.session_state['running_verifications'].items() if process.poll() is None]
+  st.write(f'🏠 **Namespace:\n```{evosys.evoname}```**')
+  running_verifications=[key for key,process in st.session_state.get('running_verifications',{}).items() if process.poll() is None]
   if len(running_verifications)!=0:
     with st.expander("🥏 Running Verifies",expanded=False):
       for idx,key in enumerate(running_verifications):
         st.write(f'```{key}```')
-  running_designs=[key for key,process in st.session_state['design_threads'].items() if process.poll() is None]
+  running_designs=[key for key,process in st.session_state.get('design_threads',{}).items() if process.poll() is None]
   if len(running_designs)!=0:
     with st.expander("🐎 Running Designs",expanded=False):
       for idx,key in enumerate(running_designs):
         st.write(f'```{key}```')
   if len(running_verifications)==0 and len(running_designs)==0:
-    st.caption('*No verification or design workloads*')
+    st.write('')
+    st.write(':gray[*No workloads running*] 💤')
   st.divider()
     
             

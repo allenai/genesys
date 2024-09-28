@@ -52,7 +52,7 @@ def _design_engine(evosys,project_dir):
 
     with st.sidebar:
         st.session_state['max_design_threads'] = st.number_input(label="Max Design Threads",min_value=1,value=3,step=1)
-        st.write(f'Controls')
+        # st.write(f'Controls')
         if st.button("Refresh",key='refresh_btn_design'):
             st.session_state['viewing_log'] = None
             st.rerun()
