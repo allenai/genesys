@@ -502,6 +502,7 @@ class ModelDiscoverySystem(exec_utils.System):
         DEFAULT_NUM_SAMPLES={
             'proposal':1,
             'implementation':1,
+            'rerank_method':'rating',
         }
         
         design_cfg['max_attemps']=U.safe_get_cfg_dict(design_cfg,'max_attemps',DEFAULT_MAX_ATTEMPTS)

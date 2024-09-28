@@ -6,3 +6,4 @@ from .verify import verify
 from .config import config
 from .search import search
 from .select import select
+from .tester import tester

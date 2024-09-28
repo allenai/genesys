@@ -45,13 +45,12 @@ import random
 from pyvis.network import Network
 import math
 import multiprocessing
+from google.cloud import firestore
 
 try:
     multiprocessing.set_start_method('spawn')
 except RuntimeError:
     pass
-
-
 
 
 from types import ModuleType
@@ -87,6 +86,7 @@ __all__ = [
 ]
 
 
+SECRETS_DIR = U.pjoin(os.path.dirname(__file__),'configs','secrets')
 LIBRARY_DIR = U.pjoin(os.path.dirname(__file__),'model','library')
 
 NODE_COLOR_MAP={
@@ -553,7 +553,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
     │   └── ...
     | ... # units, etc.
     """
-    def __init__(self, db_dir: str, db_only=False):
+    def __init__(self, db_dir: str, db_only=False, use_remote_db=False):
         self.db_dir = db_dir
         self.lib_dir = U.pjoin(LIBRARY_DIR,'tree')
         self.lib_ext_dir = U.pjoin(LIBRARY_DIR,'tree_ext')
@@ -562,6 +562,14 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         U.mkdir(U.pjoin(db_dir,'designs'))
         U.mkdir(U.pjoin(db_dir,'sessions'))
         self.db_only=db_only
+        self.use_remote_db=use_remote_db
+        if use_remote_db:
+            self.remote_db = None
+            db_key_path = U.pjoin(SECRETS_DIR,'db_key.json')
+            if U.pexists(db_key_path):
+                self.remote_db = firestore.Client.from_service_account_json(db_key_path)
+            else:
+                print(f'No db key found at {db_key_path}, using local db only. Will sync when db key is available.')
         self.load()
 
     # new design: proposal -> implement -> verify
@@ -1095,7 +1103,6 @@ class EvolutionSystem(exec_utils.System):
         if 'action_strategy' not in self.state:
             self.state['action_strategy']=self.params['action_strategy']
         self.action_strategy=self.state['action_strategy']
-
         
         # design verify strategy
         if 'verify_strategy' not in self.params:
@@ -1130,6 +1137,8 @@ class EvolutionSystem(exec_utils.System):
             self.params['no_agent']=False
         if 'db_only' not in self.params:
             self.params['db_only']=False
+        if 'use_remote_db' not in self.params:
+            self.params['use_remote_db']=False
 
         self.save_state() # save the initialized state
 
@@ -1139,7 +1148,7 @@ class EvolutionSystem(exec_utils.System):
         self.stream.write(f"Budgets remaining: {self.state['budgets']}")
         self.stream.write(f"Checkpoint directory: {self.evo_dir}")
 
-        self.ptree=PhylogeneticTree(U.pjoin(self.evo_dir,'db'),self.params['db_only'])
+        self.ptree=PhylogeneticTree(U.pjoin(self.evo_dir,'db'),self.params['db_only'],self.params['use_remote_db'])
         print(f"Phylogenetic tree loaded with {len(self.ptree.G.nodes)} nodes and {len(self.ptree.design_sessions)} design sessions from {self.ptree.db_dir}.")
 
         if self.params['no_agent']:
@@ -1205,6 +1214,10 @@ class EvolutionSystem(exec_utils.System):
         self.design_cfg = config.get('design_cfg',{})
         self.search_cfg = config.get('search_cfg',{})
         self.select_cfg = config.get('select_cfg',{})
+        params = config.get('params',{})
+        params.update(self.params) 
+        self.params = params # overwrite the params with the new params
+        return config
 
     def save_state(self):
         U.save_json(self.state,U.pjoin(self.evo_dir,'state.json'))

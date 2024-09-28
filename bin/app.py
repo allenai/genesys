@@ -47,10 +47,11 @@ verify = import_and_reload('verify').verify
 config = import_and_reload('config').config
 search = import_and_reload('search').search
 select = import_and_reload('select').select
+tester = import_and_reload('tester').tester
 
 
 
-# from bin.pages import home,viewer,design,evolve,engine,prompt,search
+# from bin.pages import *
 
 
 
@@ -111,6 +112,7 @@ pages = {
     'Select': select,
     'Viewer': viewer,
     'Config': config,
+    'Tester': tester,
 }
 titles=list(pages.keys())+['GitHub']
 pg = st_navbar(

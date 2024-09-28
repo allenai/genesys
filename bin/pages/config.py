@@ -21,12 +21,13 @@ TARGET_SCALES = ['14M','31M','70M','125M','350M','760M','1300M']
 
 def apply_config(evosys,config,params_only=False):
     apply_env_vars(evosys,config['env_vars'])
+    if config['params']['evoname']!=evosys.params['evoname']:
+        evosys.switch_ckpt(config['params']['evoname'])
     if not params_only:
         evosys.reconfig(design_cfg=config['design_cfg'],select_cfg=config['select_cfg'],search_cfg=config['search_cfg'])
-    # st.session_state['EVOSYS_PARAMS']=config['params']
     evosys.reload(config['params'])
     U.save_json(config,U.pjoin(evosys.evo_dir,'config.json'))
-    st.toast(f"Applied and saved config:\n{config}")
+    st.toast(f"Applied and saved config in {evosys.evo_dir}")
 
 
 def apply_env_vars(evosys,env_vars):
@@ -171,7 +172,17 @@ def design_config(evosys):
                 max_attempts['post_refinement'] = st.number_input(label="Max post refinements",min_value=0,value=0)
         design_cfg['max_attempts'] = max_attempts
         with col2:
-            st.markdown("##### Connecting Design Base to Firestore")
+            num_samples={}
+            st.markdown("##### Configure number of samples")
+            cols=st.columns(3)
+            with cols[0]:
+                num_samples['proposal']=st.number_input(label="Proposal Samples",min_value=1,value=1)
+            with cols[1]:
+                num_samples['implementation']=st.number_input(label="Implementation Samples",min_value=1,value=1)
+            with cols[2]:
+                rerank_methods=['random','rating']
+                num_samples['rerank_method']=st.selectbox(label="Rerank Method",options=rerank_methods,index=rerank_methods.index('rating'),disabled=True)
+        design_cfg['num_samples']=num_samples
 
         st.button("Save and Apply",key='save_design_config',on_click=apply_design_config,args=(evosys,design_cfg,select_cfg))   
 
@@ -273,9 +284,9 @@ def config(evosys,project_dir):
     
     with st.expander("Evolution Settings",expanded=False,icon='🧬'):
         with st.form("Evolution System Config"):
+            params={}
             col1,col2=st.columns(2)
             with col1:
-                params={}
                 params['evoname']=st.text_input('Experiment Namespace',value=evosys.params['evoname'])
                 target_scale=st.select_slider('Target Scale',options=TARGET_SCALES,value=evosys.params['scales'].split(',')[-1])
                 scales=[]
@@ -286,7 +297,8 @@ def config(evosys,project_dir):
                 params['selection_ratio']=st.slider('Selection Ratio',min_value=0.0,max_value=1.0,value=evosys.params['selection_ratio'])
                 params['select_method']=st.selectbox('Seed Selection Method',options=SELECT_METHODS,index=SELECT_METHODS.index(evosys.params['select_method']))
                 params['design_budget']=st.number_input('Design Budget ($)',value=evosys.params['design_budget'],min_value=0,step=100)
-                config['params']=params
+                params['use_remote_db']=st.checkbox('Use Remote DB (Required for distributed evolution)',value=evosys.params['use_remote_db'])
+            config['params']=params
 
             with col2:
                 st.write("Current Settings:")
@@ -295,7 +307,9 @@ def config(evosys,project_dir):
                 settings['Seed Selection Method']=evosys.select_method
                 settings['Design Budget']=evosys.design_budget_limit if evosys.design_budget_limit>0 else '♾️'
                 settings['Verification Budges']=evosys.state['budgets']
+                settings['Use Remote DB']=evosys.params['use_remote_db']
                 st.write(settings)
+
 
             st.form_submit_button("Apply and Save",on_click=apply_config,args=(evosys,config,True))
 
@@ -328,10 +342,12 @@ def config(evosys,project_dir):
         if not U.pexists(U.pjoin(exp_dir,'state.json')):
             continue
         state=U.load_json(U.pjoin(exp_dir,'state.json'))
+        config=U.load_json(U.pjoin(exp_dir,'config.json'))
         experiment['selection_ratio']=state['selection_ratio']
         experiment['remaining_budget']=state['budgets']
         experiment['created_sessions']=len(os.listdir(U.pjoin(exp_dir,'db','sessions')))
         experiment['sampled_designs']=len(os.listdir(U.pjoin(exp_dir,'db','designs')))
+        experiment['use_remote_db']=config.get('params',{}).get('use_remote_db',False)
         if exp_dir==evosys.evo_dir:
             experiment['ICON']='🏠'
             experiment['BUTTON']=[('Current Directory',None,True)]
@@ -355,12 +371,13 @@ def config(evosys,project_dir):
     with st.sidebar:
 
         AU.running_status(st,evosys)
-        config['select_cfg']=evosys.select_cfg
-        config['design_cfg']=evosys.design_cfg
-        config['search_cfg']=evosys.search_cfg
+        _config=U.load_json(U.pjoin(evosys.evo_dir,'config.json'))
+        _config['select_cfg']=evosys.select_cfg
+        _config['design_cfg']=evosys.design_cfg
+        _config['search_cfg']=evosys.search_cfg
         st.download_button(
             label="Download your config",
-            data=json.dumps(config,indent=4),
+            data=json.dumps(_config,indent=4),
             file_name="config.json",
             mime="text/json",
             use_container_width=True
