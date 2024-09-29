@@ -29,7 +29,7 @@ This is a frontend for the Model Discovery System.
 
 ''')
     
-    welcome = U.read_file(U.pjoin(project_dir,'bin','assets','howtouse.md'))
+    # welcome = U.read_file(U.pjoin(project_dir,'bin','assets','howtouse.md'))
     # st.markdown(welcome)
 
     col1,col2=st.columns(2)
@@ -60,6 +60,12 @@ This is a frontend for the Model Discovery System.
 3. **Search**: The designer agent can search the knowledge base during the design process.
 4. **Engine**: The verification engine can be used to train a **chosen design** (not necessarily the new design and not necessarily take turns with the design step) in a given scale and evaluate the performance.
 5. **Evolve**: The evolution loop will repeat the above processes. 
+
+## UI Info
+
+ * **Namespace**: The experiment name, 📶 means connected to the remote DB, 📴 means local only.
+ * **Running Sessions**: Design and scale that is being verified and running design sessions.
+
 ''')
 
 
