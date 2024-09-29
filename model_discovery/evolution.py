@@ -1183,6 +1183,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         U.save_json(metadata, U.pjoin(self.design_dir(acronym), 'metadata.json'))
         proposal.save(self.design_dir(acronym))
         traces_dir=U.pjoin(self.design_dir(acronym),'proposal_traces')
+        _proposal_traces={}
         for idx,trace in enumerate(proposal_traces):
             U.mkdir(traces_dir)
             trace['costs']=costs
@@ -1190,14 +1191,14 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
             trace['user_input']=user_input
             proposal_trace=Proposal(**trace)
             proposal_trace.save(traces_dir,f'trace_{idx}.json')
-            proposal_traces[idx]=proposal_trace.to_dict()
+            _proposal_traces[f'trace_{idx}']=proposal_trace.to_dict()
         design_artifact = DesignArtifact(sess_id=sess_id, acronym=acronym, seed_ids=seeds, title=title, proposal=proposal)
         self.G.add_node(acronym, data=design_artifact)
         self.design_sessions[sess_id]['proposed'].append(acronym)
         self.save_session(sess_id)
         self.FM.upload_metadata(acronym,metadata,overwrite=True)
         self.FM.upload_proposal(acronym,proposal.to_dict(),overwrite=True)
-        self.FM.upload_proposal_traces(acronym,proposal_traces,overwrite=True)
+        self.FM.upload_proposal_traces(acronym,_proposal_traces,overwrite=True)
         self.FM.update_index()
 
     def save_session(self,sess_id: str):
