@@ -66,7 +66,7 @@ def grid_view(st,item_dict:dict,per_row=3,spacing=0.05):
 
 
 def running_status(st,evosys):
-  db_status = '📶' if evosys.ptree.use_remote_db and evosys.ptree.remote_db else '📴'
+  db_status = '📶' if evosys.ptree.FM else '📴'
   st.write(f'🏠 **Namespace:\n```{evosys.evoname}``` {db_status}**')
   running_verifications=[key for key,process in st.session_state.get('running_verifications',{}).items() if process.poll() is None]
   if len(running_verifications)!=0:

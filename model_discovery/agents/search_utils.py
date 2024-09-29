@@ -518,7 +518,11 @@ class SuperScholarSearcher:
             headers={"X-API-KEY": S2_API_KEY},
             params=params
         )
-        rsp.raise_for_status()
+        try:
+            rsp.raise_for_status()
+        except Exception as e:
+            self.stream.write(f'Error searching Semantic Scholar: {e}')
+            return []
         results = rsp.json()
         total = results["total"]
         if not total:

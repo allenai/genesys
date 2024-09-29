@@ -7,6 +7,7 @@ from streamlit.runtime.scriptrunner import add_script_run_ctx
 import sys,os
 sys.path.append('.')
 import uuid
+import random
 
 import subprocess
 import shlex
@@ -42,8 +43,12 @@ def run_design_thread(evosys,sess_id=None):
     n_running = sum([p is None for p in polls])
     if n_running < st.session_state['max_design_threads']:
         process,sess_id = _run_design_thread(evosys,sess_id)
+        time.sleep(10) # wait for the thread to start and session to be created
         st.session_state['design_threads'][sess_id] = process
         st.toast(f"Design thread launched for {evosys.evoname}.",icon="🚀")
+        # time.sleep(3) # wait for the thread to start and session to be created
+        st.session_state['viewing_log'] = None
+        # st.rerun()
     else:
         st.toast(f"Max number of design threads reached ({st.session_state['max_design_threads']}). Please wait for some threads to finish.",icon="🚨")
 
@@ -100,8 +105,8 @@ def _design_engine(evosys,project_dir):
                         st.session_state['viewing_log'] = sess_id
                 with cols[4]:
                     if st.button('Resume',key=f'btn_{sess_id}_resume'):
-                        st.session_state['viewing_log'] = None
-                        run_design_thread(evosys,sess_id)
+                        with st.status(f'Resuming session: ```{sess_id}```...'):
+                            run_design_thread(evosys,sess_id)
                 with cols[5]:
                     delete_btn = st.button('Delete',key=f'btn_{sess_id}_delete',disabled=True)
         else:
@@ -109,7 +114,7 @@ def _design_engine(evosys,project_dir):
 
 
     st.subheader("Run deisgn thread")
-    col1,col2=st.columns([4,1])
+    col1,col2,col3=st.columns([4,1,1])
     with col1:
         with st.expander("Check current design settings"):
             cols=st.columns(3)
@@ -123,11 +128,17 @@ def _design_engine(evosys,project_dir):
                 st.write('**Search Config**')
                 st.write(evosys.search_cfg)
     with col2:
-        new_thread_btn = st.button('***Launch a new design session***',use_container_width=True)
-
-    if new_thread_btn:
-        st.session_state['viewing_log'] = None
-        run_design_thread(evosys)
+        rand_resume_btn = st.button('***Resume Random Session***',use_container_width=True,disabled=len(unfinished_designs)==0)
+    with col3:
+        new_session_btn = st.button('***Launch New Session***',use_container_width=True)
+        
+    if rand_resume_btn:
+        sess_id = random.choice(unfinished_designs)
+        with st.status(f'Resuming random unfinished session: ```{sess_id}```...'):
+            run_design_thread(evosys,sess_id)
+    if new_session_btn:
+        with st.status('Starting a new design session...'):
+            run_design_thread(evosys)
 
     running_process={key:process for key,process in st.session_state['design_threads'].items() if process.poll() is None}
     if len(running_process)>0:

@@ -45,6 +45,7 @@ import random
 from pyvis.network import Network
 import math
 import multiprocessing
+import shutil
 from google.cloud import firestore
 
 try:
@@ -107,7 +108,6 @@ class FirestoreManager:
         for i in range(100): # should definitely be enough
             self.key_dict[f'trace_{i}']=f't{i}'
         self.key_dict_inv={v: k for k, v in self.key_dict.items()}
-        self.get_index()
         self.cache={}
         self.sync_to_db(verbose=False) # see if there is anything to upload
 
@@ -295,6 +295,15 @@ class FirestoreManager:
 
         return design
 
+    def upload_metadata(self,design_id,metadata,overwrite=False,verbose=False):
+        self.upload_key_data(design_id,'metadata',metadata,overwrite,verbose=verbose)
+
+    def upload_proposal(self,design_id,proposal,overwrite=False,verbose=False):
+        self.upload_key_data(design_id,'proposal',proposal,overwrite,verbose=verbose)
+    
+    def upload_proposal_traces(self,design_id,proposal_traces,overwrite=False,verbose=False):
+        for trace_id,trace in proposal_traces.items():
+            self.upload_collection_key_data(design_id,'proposal_traces',trace_id,trace,overwrite,verbose=verbose)
 
     def upload_design(self, design_id, design, overwrite=False, upload_index=True, verbose=False):
         """
@@ -305,13 +314,12 @@ class FirestoreManager:
         """
         # Upload metadata.json
         if 'metadata' in design:
-            self.upload_key_data(design_id,'metadata',design['metadata'],overwrite,verbose=verbose)
+            self.upload_metadata(design_id,design['metadata'],overwrite,verbose=verbose)
 
         # Upload proposal.json
         if 'proposal' in design:
-            self.upload_key_data(design_id,'proposal',design['proposal'],overwrite)
-            for trace_id,trace in design['proposal_traces'].items():
-                self.upload_collection_key_data(design_id,'proposal_traces',trace_id,trace,overwrite,verbose=verbose)
+            self.upload_proposal(design_id,design['proposal'],overwrite,verbose=verbose)
+            self.upload_proposal_traces(design_id,design['proposal_traces'],overwrite,verbose=verbose)
 
         # Upload implementation.json
         if 'implementation' in design:
@@ -339,7 +347,91 @@ class FirestoreManager:
             design=self.load_design_local(design_id)
             self.upload_design(design_id,design,overwrite=overwrite,upload_index=False,verbose=verbose)
         self.update_index()
-        print('DB synced')
+        print('Local designs synced to remote DB')
+    
+    def download_design(self,design_id,overwrite=False): # download a single design from db
+        design_dir=U.pjoin(self.db_dir,'designs',design_id)
+        if not U.pexists(design_dir):
+            os.makedirs(design_dir)
+        index_term=self.index[design_id]
+
+        # check metadata
+        if 'metadata' in index_term:
+            metadata_path=U.pjoin(design_dir,'metadata.json')
+            if not U.pexists(metadata_path) or overwrite:
+                metadata=self.collection.document(design_id).collection('metadata').get().to_dict()
+                U.save_json(metadata,metadata_path)
+                print(f'Downloaded metadata for design {design_id}')
+        
+        # check proposal
+        if 'proposal' in index_term:    
+            proposal_path=U.pjoin(design_dir,'proposal.json')
+            if not U.pexists(proposal_path) or overwrite:
+                proposal=self.collection.document(design_id).collection('proposal').get().to_dict()
+                U.save_json(proposal,proposal_path)
+                print(f'Downloaded proposal for design {design_id}')
+
+        # check proposal traces     
+        if 'proposal_traces' in index_term:
+            for trace_id in index_term['proposal_traces']:
+                trace_path=U.pjoin(design_dir,'proposal_traces',trace_id+'.json')
+                if not U.pexists(trace_path) or overwrite:
+                    trace=self.collection.document(design_id).collection('proposal_traces').document(trace_id).get().to_dict()
+                    U.save_json(trace,trace_path)
+                    print(f'Downloaded proposal trace {trace_id} for design {design_id}')
+
+        # check implementation
+        if 'implementation' in index_term:
+            implementation_path=U.pjoin(design_dir,'implementation.json')
+            if not U.pexists(implementation_path) or overwrite:
+                implementation=self.collection.document(design_id).collection('implementation').get().to_dict()
+                implementation['history']=[]
+                for idx,_ in index_term['implementation_history']:
+                    step=self.collection.document(design_id).collection('implementation_history').document(str(idx)).get().to_dict()
+                    implementation['history'].append(step)
+                U.save_json(implementation,implementation_path)
+                print(f'Downloaded implementation for design {design_id}')
+            
+            elif U.pexists(implementation_path):
+                _implementation=U.load_json(implementation_path)
+                if len(_implementation['history'])<len(index_term['implementation_history']):
+                    implementation=self.collection.document(design_id).collection('implementation').get().to_dict()
+                    implementation['history']=_implementation['history']
+                    for idx in range(len(_implementation['history']),len(index_term['implementation_history'])):
+                        step=self.collection.document(design_id).collection('implementation_history').document(str(idx)).get().to_dict()
+                        implementation['history'].append(step)
+                    U.save_json(implementation,implementation_path)
+                    print(f'Downloaded implementation for design {design_id}')
+
+        # check verifications
+        if 'verifications' in index_term:
+            for scale in index_term['verifications']:
+                verification_path=U.pjoin(design_dir,'verifications',scale+'.json')
+                if not U.pexists(verification_path) or overwrite:
+                    verification=self.collection.document(design_id).collection('verifications').document(scale).get().to_dict()
+                    verification['verification_report']={}
+                    for key in index_term['verifications'][scale]:
+                        report=self.collection.document(design_id).collection('verifications').document(scale).collection('verification_report').document(key).get().to_dict()
+                        verification['verification_report'][key]=report
+                    U.save_json(verification,verification_path)
+                    print(f'Downloaded verification for scale {scale} in design {design_id}')
+        
+        # check codes
+        if 'codes' in index_term:
+            codes_path=U.pjoin(design_dir,'codes.json')
+            if not U.pexists(codes_path) or overwrite:
+                codes={}
+                for scale in index_term['codes']:
+                    code=self.collection.document(design_id).collection('codes').document(scale).get().to_dict()
+                    codes[scale]=code
+                U.save_json(codes,codes_path)
+                print(f'Downloaded codes for design {design_id}')
+
+    def sync_from_db(self,overwrite=False): # download all designs from db if out of date
+        self.get_index()
+        for design_id in self.index:
+            self.download_design(design_id,overwrite=overwrite)
+        print('Local designs synced from remote DB')
 
 
 
@@ -583,9 +675,12 @@ class Proposal:
     review_search_stack: List[str] = None
 
     def save(self, design_dir: str, name='proposal.json'):
+        U.save_json(self.to_dict(), U.pjoin(design_dir, name))
+    
+    def to_dict(self):
         dict=asdict(self)
         dict['design_cfg']['running_mode']=self.design_cfg['running_mode'].value
-        U.save_json(dict, U.pjoin(design_dir, name))
+        return dict
 
     @classmethod
     def from_dict(cls, dict: Dict):
@@ -630,8 +725,7 @@ class Implementation:
     # TODO:consider gaudict management
 
     def save(self, design_dir: str):
-        dict=self.to_dict()
-        U.save_json(dict, U.pjoin(design_dir, f'implementation.json'))
+        U.save_json(self.to_dict(), U.pjoin(design_dir, f'implementation.json'))
 
     def to_dict(self):
         dict=asdict(self)
@@ -670,7 +764,10 @@ class Verification:
 
     def save(self, design_dir: str):
         U.mkdir(U.pjoin(design_dir, 'verifications'))
-        U.save_json(asdict(self), U.pjoin(design_dir, 'verifications',f'{self.scale}.json'))
+        U.save_json(self.to_dict(), U.pjoin(design_dir, 'verifications',f'{self.scale}.json'))
+
+    def to_dict(self):
+        return asdict(self)
 
     @classmethod
     def from_dict(cls, dict: Dict):
@@ -815,7 +912,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
     │   └── ...
     | ... # units, etc.
     """
-    def __init__(self, evoname, db_dir: str, db_only=False, use_remote_db=False):
+    def __init__(self, evoname, db_dir: str, db_only=False, use_remote_db=True): # recommended to use remote db for distributed sampling
         self.evoname = evoname
         self.db_dir = db_dir
         self.lib_dir = U.pjoin(LIBRARY_DIR,'tree')
@@ -831,8 +928,9 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
             if U.pexists(db_key_path):
                 self.remote_db = firestore.Client.from_service_account_json(db_key_path)
                 self.FM = FirestoreManager(evoname,db_dir,self.remote_db)
+                self.FM.sync_from_db()
             else:
-                print(f'No db key found at {db_key_path}, using local db only. Will sync when db key is available.')
+                print(f'No db key found at {db_key_path}, using local db only. Will sync when remote db key is available.')
         self.load()
 
     # new design: proposal -> implement -> verify
@@ -871,10 +969,16 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
 
     def load_design_sessions(self):
         self.design_sessions={}
+        to_delete=[]
         for sess_id in os.listdir(U.pjoin(self.db_dir,'sessions')):
             metadata = U.load_json(U.pjoin(self.session_dir(sess_id), 'metadata.json'))
+            if not metadata:
+                to_delete.append(sess_id) # delete empty sessions
+                continue
             metadata['mode']=DesignModes(metadata['mode'])
             self.design_sessions[sess_id] = metadata
+        for sess_id in to_delete:
+            shutil.rmtree(self.session_dir(sess_id))
 
     @property
     def design_cost(self):
@@ -908,7 +1012,6 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         U.mkdir(U.pjoin(sess_dir, 'log'))
         return sess_id
     
-    
     def get_unverified_designs(self,scale):
         unverified=[]
         for acronym in self.filter_by_type('DesignArtifactImplemented'):
@@ -917,7 +1020,6 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
                 unverified.append(acronym)
         return unverified
 
-        
     def get_unverified_scales(self,acronym): # from low to high
         unverified=[]
         design=self.get_node(acronym)
@@ -967,6 +1069,14 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         return coreref_dir
     
     def get_node(self, acronym: str):
+        if acronym not in self.G.nodes:
+            if self.FM:
+                self.FM.get_index()
+                if acronym not in self.FM.index:
+                    return None
+                self.FM.download_design(acronym)
+                artifact=DesignArtifact.load(self.design_dir(acronym))
+                self.G.add_node(acronym, data=artifact)
         return self.G.nodes[acronym]['data']
     
     def get_session_state(self,sess_id:str):
@@ -974,15 +1084,29 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         implemented,_ = self.session_implementations(sess_id,implemented_only=True)
         return len(passed),len(implemented)
 
+    def add_design_artifact(self,id,artifact):
+        self.G.add_node(id, data=artifact)
+        edges_to_add = []
+        for seed_id in artifact.seed_ids:
+            edges_to_add.append((seed_id, id))
+        for seed_id, product_id in edges_to_add:
+            if seed_id not in self.G.nodes or product_id not in self.G.nodes:
+                continue
+            if seed_id == product_id or nx.has_path(self.G, product_id, seed_id):
+                continue
+            self.G.add_edge(seed_id, product_id)
+
     def update_design_tree(self):
+        if self.FM:
+            self.FM.sync_from_db()
         edges_to_add = []
         for id in os.listdir(U.pjoin(self.db_dir,'designs')):
             artifact = DesignArtifact.load(self.design_dir(id))
-            # if artifact.acronym not in self.G.nodes:
-            self.G.add_node(artifact.acronym, data=artifact)
-            for seed_id in artifact.seed_ids:
-                edges_to_add.append((seed_id, artifact.acronym))
-        
+            if id not in self.G.nodes:
+                self.G.add_node(id, data=artifact)
+                for seed_id in artifact.seed_ids:
+                    edges_to_add.append((seed_id, id))
+
         for seed_id, product_id in edges_to_add:
             if seed_id not in self.G.nodes or product_id not in self.G.nodes:
                 continue
@@ -1027,7 +1151,6 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
             proposals.append(design.proposal)
             acronyms.append(acronym)
         return proposals,acronyms
-
     
     def session_implementations(self,sess_id:str,implemented_only=False):
         sessdata=self.design_sessions[sess_id]
@@ -1063,14 +1186,19 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         for idx,trace in enumerate(proposal_traces):
             U.mkdir(traces_dir)
             trace['costs']=costs
-            trace['design_cfg']=design_cfg1
+            trace['design_cfg']=design_cfg
             trace['user_input']=user_input
             proposal_trace=Proposal(**trace)
             proposal_trace.save(traces_dir,f'trace_{idx}.json')
+            proposal_traces[idx]=proposal_trace.to_dict()
         design_artifact = DesignArtifact(sess_id=sess_id, acronym=acronym, seed_ids=seeds, title=title, proposal=proposal)
         self.G.add_node(acronym, data=design_artifact)
         self.design_sessions[sess_id]['proposed'].append(acronym)
         self.save_session(sess_id)
+        self.FM.upload_metadata(acronym,metadata,overwrite=True)
+        self.FM.upload_proposal(acronym,proposal.to_dict(),overwrite=True)
+        self.FM.upload_proposal_traces(acronym,proposal_traces,overwrite=True)
+        self.FM.update_index()
 
     def save_session(self,sess_id: str):
         sessdata=self.design_sessions[sess_id]        
@@ -1102,6 +1230,8 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
             for scale in TARGET_SCALES:
                 codes[scale] = check_tune(scale,acronym, code=_code,check_only=True,cpu_only=True,reformat_only=True)
         U.save_json(codes, U.pjoin(self.design_dir(acronym), 'codes.json'))
+        self.FM.upload_implementation(acronym,implementation.to_dict(),overwrite=True)
+        self.FM.update_index()
 
     def verify(self, acronym: str, scale: str, verification_report): # attach a verification report under a scale to an implemented node
         design_artifact=self.get_node(acronym)
@@ -1112,10 +1242,14 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
             verification.save(self.design_dir(acronym))
         else:
             verification.save(self.coreref_dir(acronym))
-
+        self.FM.upload_verification(acronym,verification.to_dict(),scale,overwrite=True)
+        self.FM.update_index()
         
     def unique_acronym(self, acronym: str) -> str:
         existing_acronyms = set(self.G.nodes)
+        if self.FM:
+            self.FM.get_index()
+            existing_acronyms.update(self.FM.index.keys())
         if acronym not in existing_acronyms:
             return acronym
         i = 1
@@ -1401,7 +1535,7 @@ class EvolutionSystem(exec_utils.System):
         if 'db_only' not in self.params:
             self.params['db_only']=False
         if 'use_remote_db' not in self.params:
-            self.params['use_remote_db']=False
+            self.params['use_remote_db']=True
 
         self.save_state() # save the initialized state
 

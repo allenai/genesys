@@ -471,11 +471,11 @@ class ModelDiscoverySystem(exec_utils.System):
             stream = PrintSystem(self._config)
 
         DEFAULT_AGENTS={
-            'DESIGN_PROPOSER':'claude3.5_sonnet',
-            'PROPOSAL_REVIEWER':'claude3.5_sonnet',
-            'IMPLEMENTATION_PLANNER':'claude3.5_sonnet',
+            'DESIGN_PROPOSER':'o1_mini',
+            'PROPOSAL_REVIEWER':'o1_mini',
+            'IMPLEMENTATION_PLANNER':'o1_mini',
             'IMPLEMENTATION_CODER':'o1_mini',
-            'IMPLEMENTATION_OBSERVER':'None',
+            'IMPLEMENTATION_OBSERVER':'o1_mini',
             'SEARCH_ASSISTANT':'None', # None means no separate search assistant
         }
         DEFAULT_MAX_ATTEMPTS={

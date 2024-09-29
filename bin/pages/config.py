@@ -223,7 +223,7 @@ def design_config(evosys):
         st.button("Save and Apply",key='save_search_config',on_click=apply_search_config,args=(evosys,search_cfg))
 
 
-    with st.expander(f"Check Configurations for ```{evosys.evoname}``` (Empty for default)",expanded=False,icon='🔧'):
+    with st.expander(f"Check Configurations for ```{evosys.evoname}``` (Empty means using default)",expanded=False,icon='🔧'):
         col1,col2,col3=st.columns(3)
         with col1:
             st.write("**Check Select Config:**")
