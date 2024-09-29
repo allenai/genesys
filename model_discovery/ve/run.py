@@ -498,14 +498,15 @@ def report(args) -> dict:
         return
     report={}
     # try:
-    run_id=U.load_json(f"{outdir}/wandb_ids.json")['pretrain']['id']
-    history,system_metrics=get_history(
-        run_id,
-        project_path=f"{args.wandb_entity}/{args.wandb_project}"
-    )
+    # run_id=U.load_json(f"{outdir}/wandb_ids.json")['pretrain']['id']
+    # history,system_metrics=get_history(
+    #     run_id,
+    #     project_path=f"{args.wandb_entity}/{args.wandb_project}"
+    # )
     report={
-        "training_record.csv":str(history.to_csv(index=False)),
-        "system_metrics.csv":str(system_metrics.to_csv(index=False)),
+        # "training_record.csv":str(history.to_csv(index=False)),
+        # "system_metrics.csv":str(system_metrics.to_csv(index=False)),
+        "wandb_ids.json":U.load_json(f"{outdir}/wandb_ids.json")
     }
     # except:
     #     report={
@@ -521,10 +522,10 @@ def report(args) -> dict:
     for i in ['upper_git_hash','transformers_version','pretty_env_info','git_hash']:
         eval_results.pop(i)
     
-    report={
+    report.update({
         "trainer_state.json": trainer_state,
         "eval_results.json": eval_results,
-    }
+    })
     with open(f"{outdir}/report.json", 'w') as report_out:
         report_out.write(json.dumps(report,indent=4))
         

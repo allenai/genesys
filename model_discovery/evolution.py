@@ -86,6 +86,265 @@ __all__ = [
 ]
 
 
+
+
+class FirestoreManager:
+    def __init__(self, evoname, db_dir, remote_db):
+        self.db_dir = db_dir
+        self.collection=remote_db.collection(evoname)
+        self.key_dict={
+            'metadata':'m',
+            'proposal':'p',
+            'implementation':'i',
+            'proposal_traces':'pt',
+            'implementation_history':'ih',
+            'verifications':'v',
+            'verification_report':'vr',
+            'eval_results.json':'er',
+            'trainer_state.json':'ts',
+            'wandb_ids.json':'wi'
+        }
+        for i in range(100): # should definitely be enough
+            self.key_dict[f'trace_{i}']=f't{i}'
+        self.key_dict_inv={v: k for k, v in self.key_dict.items()}
+        self.get_index()
+        self.cache={}
+        self.sync_to_db(verbose=False) # see if there is anything to upload
+
+    def compress_index(self,data):
+        return U.translate_dict_keys(data,self.key_dict,allow_missing=True)
+
+    def decompress_index(self,data):
+        return U.translate_dict_keys(data,self.key_dict_inv,allow_missing=True)
+
+    def get_index(self):
+        index=self.collection.document('index').get().to_dict()
+        if index is None:
+            index={}
+        self.index=self.decompress_index(index)
+
+    def update_index(self):
+        self.safe_upload(self.collection.document('index'),self.compress_index(self.index))
+
+    def doc_to_design(self,doc):
+        design_data = doc.to_dict()
+        proposal_traces = self.get_subcollection(doc.reference, 'proposal_traces')
+        if proposal_traces:
+            design_data['proposal_traces'] = proposal_traces
+        verifications = self.get_subcollection(doc.reference, 'verifications')
+        if verifications:
+            design_data['verifications'] = verifications
+            for scale in verifications:
+                verification_reports = self.get_subcollection(doc.reference, 'verifications',scale, 'verification_report')
+                if verification_reports:
+                    design_data['verifications'][scale]['verification_report'] = verification_reports
+        if 'implementation' in design_data:
+            implementation_history = self.get_subcollection(doc.reference, 'implementation_history')
+            design_data['implementation']['history'] = [implementation_history[i] for i in sorted(implementation_history.keys())]
+        codes = self.get_subcollection(doc.reference, 'codes')
+        if codes:
+            design_data['codes'] = codes
+        return design_data
+    
+    def get_design(self, design_id, use_cache=True):
+        if use_cache and design_id in self.cache:
+            design_data=self.cache[design_id]
+        else:
+            doc=self.collection.document(design_id).get()
+            design_data=self.doc_to_design(doc)
+            self.cache[design_id]=design_data # update cache
+        metadata=design_data['metadata']
+        proposal = Proposal.from_dict(design_data['proposal']) if 'proposal' in design_data else None
+        implementation = Implementation.from_dict(design_data['implementation']) if 'implementation' in design_data else None
+        verifications = {scale: Verification.from_dict(design_data['verifications'][scale]) for scale in design_data['verifications']} if 'verifications' in design_data else {}
+        codes = {scale: design_data['codes'][scale] for scale in design_data['codes']} if 'codes' in design_data else {}
+        return DesignArtifact(proposal=proposal, implementation=implementation, verifications=verifications, codes=codes, **metadata)
+
+    def get_subcollection(self, doc_ref, subcollection_name):
+        subcollection = doc_ref.collection(subcollection_name).get()
+        return {doc.id: doc.to_dict() for doc in subcollection}
+
+    def safe_upload(self, ref, data, merge=True):
+        """
+        Safely upload data to Firestore.
+        
+        :param ref: Firestore document reference
+        :param data: Data to upload
+        :param overwrite: Whether to overwrite existing data
+        :return: True if upload was successful, False otherwise
+        """
+        try:
+            ref.set(data, merge=merge)
+            return True
+        except Exception as e:
+            print(f"Error uploading data: {e}")
+            return False
+
+    def upload_key_data(self, design_id, key, data, overwrite=False, verbose=False):
+        key=str(key)
+        design_ref = self.collection.document(design_id)
+        if design_id not in self.index:
+            self.index[design_id]={}
+        upload=True
+        if key in self.index[design_id] and not overwrite:
+            upload=False
+            if verbose:
+                print(f'Key "{key}" already exists in design "{design_id}"')
+        if upload:
+            self.index[design_id][key]=1
+            if self.safe_upload(design_ref, {key: data}):
+                print(f'Uploaded "{key}" for design "{design_id}" successfully')
+            else:
+                print(f'Failed to upload "{key}" for design "{design_id}"')
+
+    def upload_collection_key_data(self, design_id, collection_name, key, key_data, overwrite=False, verbose=False):
+        key=str(key)
+        design_ref = self.collection.document(design_id)
+        data_ref = design_ref.collection(collection_name).document(str(key))
+        if design_id not in self.index:
+            self.index[design_id]={}
+        if collection_name not in self.index[design_id]:
+            self.index[design_id][collection_name]={}
+        upload=True
+        if key in self.index[design_id][collection_name] and not overwrite:
+            upload=False
+            if verbose:
+                print(f'Key "{key}" already exists in design "{design_id}" collection "{collection_name}"')
+        if upload:
+            self.index[design_id][collection_name][key]=1
+            if self.safe_upload(data_ref, key_data):
+                print(f'Uploaded "{key}" for design "{design_id}" collection "{collection_name}" successfully')
+            else:
+                print(f'Failed to upload "{key}" for design "{design_id}" collection "{collection_name}"')
+            
+    def upload_implementation(self, design_id, implementation, overwrite=False,verbose=False):
+        history=implementation.pop('history')
+        self.upload_key_data(design_id,'implementation',implementation,overwrite,verbose=verbose)
+        for idx,step in enumerate(history):
+            self.upload_collection_key_data(design_id,f'implementation_history',idx,step,overwrite,verbose=verbose)
+
+    def upload_verification(self, design_id, verification, scale, overwrite=False, verbose=False):
+        reports=verification.pop('verification_report')
+        if design_id not in self.index:
+            self.index[design_id]={}
+        if 'verifications' not in self.index[design_id]:
+            self.index[design_id]['verifications']={}
+        upload=True
+        if scale in self.index[design_id]['verifications'] and not overwrite:
+            upload=False
+            if verbose:
+                print(f'Verification for scale "{scale}" already exists in design "{design_id}"')
+        if upload:
+            self.index[design_id]['verifications'][scale]={}
+            if self.safe_upload(self.collection.document(design_id).collection('verifications').document(scale),verification):
+                print(f'Uploaded verification metadata for scale "{scale}" in design "{design_id}"')
+            else:
+                print(f'Failed to upload verification metadata for scale "{scale}" in design "{design_id}"')
+        for key,report in reports.items():
+            upload=True        
+            if key in self.index[design_id]['verifications'][scale] and not overwrite:
+                upload=False
+                if verbose:
+                    print(f'Verification report for scale "{scale}" and key "{key}" already exists in design "{design_id}"')
+            if upload:
+                self.index[design_id]['verifications'][scale][key]=1
+                if self.safe_upload(self.collection.document(design_id).collection('verifications').document(scale).collection('verification_report').document(key),report):
+                    print(f'Uploaded verification report for scale "{scale}" and key "{key}" in design "{design_id}"')
+                else:
+                    print(f'Failed to upload verification report for scale "{scale}" and key "{key}" in design "{design_id}"')
+            
+    def load_design_local(self, design_id):
+        design_path = os.path.join(self.db_dir, 'designs', design_id)
+        if not U.pexists(design_path):
+            print(f"Design '{design_id}' not found in local database.")
+            return None
+        design={}
+        
+        metadata_path = os.path.join(design_path, 'metadata.json')
+        if os.path.exists(metadata_path):
+            design['metadata']=U.load_json(metadata_path)
+
+        proposal_path = os.path.join(design_path, 'proposal.json')
+        if os.path.exists(proposal_path):
+            design['proposal']=U.load_json(proposal_path)
+            design['proposal_traces']={}
+            traces_path = os.path.join(design_path, 'proposal_traces')
+            if U.pexists(traces_path):
+                for trace in os.listdir(traces_path):
+                    if trace.endswith('.json'):
+                        trace_data=U.load_json(U.pjoin(traces_path,trace))
+                        trace_id=trace.split('.')[0]
+                        design['proposal_traces'][trace_id]=trace_data
+
+        implementation_path = os.path.join(design_path, 'implementation.json')
+        if os.path.exists(implementation_path):
+            design['implementation']=U.load_json(implementation_path)
+
+        verifications_path = os.path.join(design_path, 'verifications')
+        if U.pexists(verifications_path):
+            design['verifications']={}
+            for verification in os.listdir(verifications_path):
+                if verification.endswith('.json'):
+                    verification_data=U.load_json(U.pjoin(verifications_path,verification))
+                    scale=verification.split('.')[0]
+                    design['verifications'][scale]=verification_data
+
+        codes_path=U.pjoin(design_path,'codes.json')
+        if U.pexists(codes_path):
+            design['codes']=U.load_json(codes_path)
+
+        return design
+
+
+    def upload_design(self, design_id, design, overwrite=False, upload_index=True, verbose=False):
+        """
+        Upload a single design to Firestore.
+        
+        :param design_id: The acronym of the design
+        :param overwrite: Whether to overwrite existing data
+        """
+        # Upload metadata.json
+        if 'metadata' in design:
+            self.upload_key_data(design_id,'metadata',design['metadata'],overwrite,verbose=verbose)
+
+        # Upload proposal.json
+        if 'proposal' in design:
+            self.upload_key_data(design_id,'proposal',design['proposal'],overwrite)
+            for trace_id,trace in design['proposal_traces'].items():
+                self.upload_collection_key_data(design_id,'proposal_traces',trace_id,trace,overwrite,verbose=verbose)
+
+        # Upload implementation.json
+        if 'implementation' in design:
+            self.upload_implementation(design_id,design['implementation'],overwrite,verbose=verbose)
+
+        # Upload verifications
+        if 'verifications' in design:
+            for scale,verification in design['verifications'].items():
+                self.upload_verification(design_id,verification,scale,overwrite,verbose=verbose)
+
+        # Upload codes.json
+        if 'codes' in design:
+            for scale,code in design['codes'].items():  
+                self.upload_collection_key_data(design_id,'codes',scale,code,overwrite,verbose=verbose)
+
+        if verbose:
+            print(f"Upload of design '{design_id}' completed.")
+        if upload_index:
+            self.update_index()
+    
+    def sync_to_db(self,overwrite=False,verbose=False): # upload all local designs to db
+        self.get_index()
+        designs=os.listdir(U.pjoin(self.db_dir,'designs'))
+        for design_id in designs:
+            design=self.load_design_local(design_id)
+            self.upload_design(design_id,design,overwrite=overwrite,upload_index=False,verbose=verbose)
+        self.update_index()
+        print('DB synced')
+
+
+
+############################################
+
 SECRETS_DIR = U.pjoin(os.path.dirname(__file__),'configs','secrets')
 LIBRARY_DIR = U.pjoin(os.path.dirname(__file__),'model','library')
 
@@ -534,26 +793,30 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
     # Read from a design base and construct a phylogenetic tree
     """
     Physical structure:
-    db_dir
+    evoname
     ├── designs
     │   ├── acronym
     |   |   ├── metadata.json
     │   │   ├── proposal.json
+    │   │   ├── proposal_traces
+    │   │   │   ├── trace1.json
+    │   │   │   └── ...
     │   │   ├── implementation.json
     │   │   ├── verifications
-    │   │   │   ├── scale.json
+    │   │   │   ├── scale1.json
     │   │   │   └── ...
     │   └── ...
     ├── sessions
     │   ├── sess_id
     │   │   ├── metadata.json
     │   │   ├── log
-    │   │   │   ├── stream.log
+    │   │   │   ├── log1.log
     │   │   │   └── ...
     │   └── ...
     | ... # units, etc.
     """
-    def __init__(self, db_dir: str, db_only=False, use_remote_db=False):
+    def __init__(self, evoname, db_dir: str, db_only=False, use_remote_db=False):
+        self.evoname = evoname
         self.db_dir = db_dir
         self.lib_dir = U.pjoin(LIBRARY_DIR,'tree')
         self.lib_ext_dir = U.pjoin(LIBRARY_DIR,'tree_ext')
@@ -562,12 +825,12 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         U.mkdir(U.pjoin(db_dir,'designs'))
         U.mkdir(U.pjoin(db_dir,'sessions'))
         self.db_only=db_only
-        self.use_remote_db=use_remote_db
+        self.FM = None
         if use_remote_db:
-            self.remote_db = None
             db_key_path = U.pjoin(SECRETS_DIR,'db_key.json')
             if U.pexists(db_key_path):
                 self.remote_db = firestore.Client.from_service_account_json(db_key_path)
+                self.FM = FirestoreManager(evoname,db_dir,self.remote_db)
             else:
                 print(f'No db key found at {db_key_path}, using local db only. Will sync when db key is available.')
         self.load()
@@ -800,7 +1063,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         for idx,trace in enumerate(proposal_traces):
             U.mkdir(traces_dir)
             trace['costs']=costs
-            trace['design_cfg']=design_cfg
+            trace['design_cfg']=design_cfg1
             trace['user_input']=user_input
             proposal_trace=Proposal(**trace)
             proposal_trace.save(traces_dir,f'trace_{idx}.json')
@@ -1148,7 +1411,7 @@ class EvolutionSystem(exec_utils.System):
         self.stream.write(f"Budgets remaining: {self.state['budgets']}")
         self.stream.write(f"Checkpoint directory: {self.evo_dir}")
 
-        self.ptree=PhylogeneticTree(U.pjoin(self.evo_dir,'db'),self.params['db_only'],self.params['use_remote_db'])
+        self.ptree=PhylogeneticTree(self.evoname,U.pjoin(self.evo_dir,'db'),self.params['db_only'],self.params['use_remote_db'])
         print(f"Phylogenetic tree loaded with {len(self.ptree.G.nodes)} nodes and {len(self.ptree.design_sessions)} design sessions from {self.ptree.db_dir}.")
 
         if self.params['no_agent']:

@@ -190,3 +190,13 @@ def zip_folder(folder,zip_file):
             for file in files:
                 file_path = os.path.join(root, file)
                 zipf.write(file_path, os.path.relpath(file_path, folder))
+
+
+def translate_dict_keys(data,key_dict,allow_missing=True):
+    new_data={}
+    for k,v in data.items():
+        if isinstance(v,dict):
+            v=translate_dict_keys(v,key_dict,allow_missing)
+        k=key_dict.get(k,k) if allow_missing else key_dict[k]
+        new_data[k]=v
+    return new_data
