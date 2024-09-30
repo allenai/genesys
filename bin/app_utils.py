@@ -64,10 +64,12 @@ def grid_view(st,item_dict:dict,per_row=3,spacing=0.05):
               else:
                 st.write(value)
 
-
 def running_status(st,evosys):
   db_status = '📶' if evosys.ptree.FM else '📴'
   st.write(f'🏠 **Namespace:\n```{evosys.evoname}``` {db_status}**')
+  if st.session_state.listening_mode:
+    st.write(f'👂```{st.session_state.listener.node_id}``` *is listening*\n')
+
   running_verifications=[key for key,process in st.session_state.get('running_verifications',{}).items() if process.poll() is None]
   if len(running_verifications)!=0:
     with st.expander("🥏 Running Verifies",expanded=False):

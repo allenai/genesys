@@ -47,6 +47,7 @@ verify = import_and_reload('verify').verify
 config = import_and_reload('config').config
 search = import_and_reload('search').search
 select = import_and_reload('select').select
+listen = import_and_reload('listen').listen
 tester = import_and_reload('tester').tester
 
 
@@ -78,7 +79,23 @@ def build_evo_system(name='test_evo_000'):
 evosys = build_evo_system()
 
 
+# Setup the streamlit session state
+
+if 'listening_mode' not in st.session_state:
+    st.session_state.listening_mode = False
+
+if 'design_threads' not in st.session_state:
+    st.session_state['design_threads'] = {}  
+
+if 'max_design_threads' not in st.session_state:
+    st.session_state['max_design_threads'] = 5
+
+if 'running_verifications' not in st.session_state:
+    st.session_state['running_verifications'] = {}
+
+
 # Setup the streamlit pages
+
 
 project_dir = current_dir.parent
 
@@ -112,6 +129,7 @@ pages = {
     'Select': select,
     'Viewer': viewer,
     'Config': config,
+    'Listen': listen,
     'Tester': tester,
 }
 titles=list(pages.keys())+['GitHub']

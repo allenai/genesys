@@ -352,14 +352,17 @@ class FirestoreManager:
     def download_design(self,design_id,overwrite=False): # download a single design from db
         design_dir=U.pjoin(self.db_dir,'designs',design_id)
         if not U.pexists(design_dir):
-            os.makedirs(design_dir)
+            U.mkdir(design_dir)
         index_term=self.index[design_id]
 
         # check metadata
+        Doc=None
         if 'metadata' in index_term:
             metadata_path=U.pjoin(design_dir,'metadata.json')
             if not U.pexists(metadata_path) or overwrite:
-                metadata=self.collection.document(design_id).collection('metadata').get().to_dict()
+                print(f'Downloading metadata for design {design_id}')
+                Doc=self.collection.document(design_id).get().to_dict()
+                metadata=Doc['metadata']
                 U.save_json(metadata,metadata_path)
                 print(f'Downloaded metadata for design {design_id}')
         
@@ -367,7 +370,9 @@ class FirestoreManager:
         if 'proposal' in index_term:    
             proposal_path=U.pjoin(design_dir,'proposal.json')
             if not U.pexists(proposal_path) or overwrite:
-                proposal=self.collection.document(design_id).collection('proposal').get().to_dict()
+                if Doc is None:
+                    Doc=self.collection.document(design_id).get().to_dict()
+                proposal=Doc['proposal']
                 U.save_json(proposal,proposal_path)
                 print(f'Downloaded proposal for design {design_id}')
 
@@ -376,6 +381,7 @@ class FirestoreManager:
             for trace_id in index_term['proposal_traces']:
                 trace_path=U.pjoin(design_dir,'proposal_traces',trace_id+'.json')
                 if not U.pexists(trace_path) or overwrite:
+                    U.mkdir(U.pjoin(design_dir,'proposal_traces'))
                     trace=self.collection.document(design_id).collection('proposal_traces').document(trace_id).get().to_dict()
                     U.save_json(trace,trace_path)
                     print(f'Downloaded proposal trace {trace_id} for design {design_id}')
@@ -384,9 +390,11 @@ class FirestoreManager:
         if 'implementation' in index_term:
             implementation_path=U.pjoin(design_dir,'implementation.json')
             if not U.pexists(implementation_path) or overwrite:
-                implementation=self.collection.document(design_id).collection('implementation').get().to_dict()
+                if Doc is None:
+                    Doc=self.collection.document(design_id).get().to_dict()
+                implementation=Doc['implementation']
                 implementation['history']=[]
-                for idx,_ in index_term['implementation_history']:
+                for idx in index_term['implementation_history']:
                     step=self.collection.document(design_id).collection('implementation_history').document(str(idx)).get().to_dict()
                     implementation['history'].append(step)
                 U.save_json(implementation,implementation_path)
@@ -395,7 +403,9 @@ class FirestoreManager:
             elif U.pexists(implementation_path):
                 _implementation=U.load_json(implementation_path)
                 if len(_implementation['history'])<len(index_term['implementation_history']):
-                    implementation=self.collection.document(design_id).collection('implementation').get().to_dict()
+                    if Doc is None:
+                        Doc=self.collection.document(design_id).get().to_dict()
+                    implementation=Doc['implementation']
                     implementation['history']=_implementation['history']
                     for idx in range(len(_implementation['history']),len(index_term['implementation_history'])):
                         step=self.collection.document(design_id).collection('implementation_history').document(str(idx)).get().to_dict()
@@ -408,6 +418,7 @@ class FirestoreManager:
             for scale in index_term['verifications']:
                 verification_path=U.pjoin(design_dir,'verifications',scale+'.json')
                 if not U.pexists(verification_path) or overwrite:
+                    U.mkdir(U.pjoin(design_dir,'verifications'))
                     verification=self.collection.document(design_id).collection('verifications').document(scale).get().to_dict()
                     verification['verification_report']={}
                     for key in index_term['verifications'][scale]:
