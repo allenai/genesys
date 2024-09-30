@@ -30,7 +30,7 @@ import sys
 import re
 import exec_utils
 import pathlib
-import datetime
+from datetime import datetime, timedelta
 import json
 import copy
 import time
@@ -1013,7 +1013,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
             mode=DesignModes.MUTATION
         hash_tail=hashlib.sha256(f"{sorted(ref_ids)}{sorted(seed_ids)}{instruct}{mode}".encode()).hexdigest()
         if sess_id is None:
-            sess_id = f"{datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}-{hash_tail[-6:]}"
+            sess_id = f"{datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}-{hash_tail[-6:]}"
         sessdata = {
             'seed_ids': seed_ids,
             'ref_ids': ref_ids,
@@ -1459,6 +1459,113 @@ def report_reader(report):
 
 
 
+class ConnectionManager:
+    def __init__(self, evoname, remote_db, stream):
+        self.evoname = evoname
+        self.collection = remote_db.collection(evoname + '_connections')
+        self.zombie_threshold = 20  # seconds
+        self.max_design_threads_per_node = 3
+        self.st = stream
+
+    def clear_zombie_connections(self):
+        threshold_time = datetime.utcnow() - timedelta(seconds=self.zombie_threshold)
+        zombie_connections = self.collection.where('last_heartbeat', '<', threshold_time).get()
+        
+        for doc in zombie_connections:
+            print(f"Clearing zombie connection: {doc.id}")
+            doc.reference.delete()
+    
+    def get_active_connections(self):
+        self.clear_zombie_connections()
+        connections = self.collection.where('status', '==', 'connected').get()
+        self.connections = {c.id: c.to_dict() for c in connections}
+        return list(self.connections.keys())
+
+    def get_available_connections(self):
+        self.get_active_connections()
+        design_available = []
+        verify_available = []
+        for node_id in self.connections:
+            command_status = self.check_command_status(node_id)
+            if command_status:
+                running_designs=[]
+                running_verifies=[]
+                for pid in command_status:
+                    command = command_status[pid]
+                    if command['command'].startswith('design') and command['status'] == 'running':
+                        running_designs.append(pid)
+                    elif command['command'].startswith('verify') and command['status'] == 'running':
+                        running_verifies.append(pid)
+                if len(running_designs) < self.max_design_threads_per_node:
+                    design_available.append(node_id)
+                if len(running_verifies) == 0:
+                    verify_available.append(node_id)
+        return design_available, verify_available
+
+    def check_command_status(self,node_id):
+        node_data = self.connections[node_id]
+        if node_data and 'command_status' in node_data:
+            return node_data['command_status']
+        else:
+            return None
+
+    def design_command(self,node_id,resume=True):
+        command_status = self.check_command_status(node_id)
+        running_designs=[]
+        if command_status:
+            running_designs=[]
+            for pid in command_status:
+                command = command_status[pid]
+                if command['command'].startswith('design') and command['status'] == 'running':
+                    running_designs.append(pid)
+        if len(running_designs) >= self.max_design_threads_per_node:
+            self.st.toast(f"Max number of design threads reached ({self.max_design_threads_per_node}) for node {node_id}. Please wait for some threads to finish.",icon='🚨')
+            return
+        command = f'design,{self.evoname}'
+        if resume:
+            command += ',resume'
+        self.send_command(node_id,command)
+    
+    def verify_command(self,node_id,design_id,scale,resume=True):
+        command_status = self.check_command_status(node_id)
+        running_verifies=[]
+        if command_status:
+            running_verifies=[]
+            for pid in command_status:
+                command = command_status[pid]
+                if command['command'].startswith('verify') and command['status'] == 'running':
+                    running_verifies.append(pid)
+        if len(running_verifies) > 0:
+            self.st.toast(f"There is already a verification running for node {node_id}. Please wait for it to finish.",icon='🚨')
+            return
+        command = f'verify,{self.evoname},{design_id},{scale}'
+        if resume:
+            command += ',resume'
+        self.send_command(node_id,command)
+    
+    def send_command(self, node_id, command):
+        self.get_active_connections()
+        try:
+            node_ref = self.collection.document(node_id)
+            update_time = node_ref.update({
+                'commands': firestore.ArrayUnion([command]),
+                'last_command_sent': firestore.SERVER_TIMESTAMP
+            })
+            self.st.toast(f"Command sent to {node_id}: {command}")
+            self.st.toast(f"Update time: {update_time}")
+            return True
+        except Exception as e:
+            self.st.toast(f"Error sending command to {node_id}: {str(e)}",icon='🚨')
+            return False
+
+    def disconnect_node(self, node_id):
+        node_ref = self.collection.document(node_id)
+        node_ref.update({'status': 'disconnected'})
+
+ 
+
+
+
 
 def _verify(evoname,design_id,scale,resume=True, mult=20): # do a single verify
     args = ve_parser.parse_args()
@@ -1497,9 +1604,11 @@ class EvolutionSystem(exec_utils.System):
         self.search_cfg = {}
         self.select_cfg = {}
         self.remote_db = None
+        self.CM = None
         db_key_path = U.pjoin(SECRETS_DIR,'db_key.json')
         if U.pexists(db_key_path):
             self.remote_db = firestore.Client.from_service_account_json(db_key_path)
+            self.CM = ConnectionManager(self.params['evoname'], self.remote_db, self.stream)
             print(f'Remote db connected.')
         else:
             print(f'No db key found at {db_key_path}, using local db only. Will sync when remote db key is available.')
@@ -1596,6 +1705,8 @@ class EvolutionSystem(exec_utils.System):
     def link_stream(self,stream):
         self.stream=stream
         self.rnd_agent.sss.stream=stream
+        if self.CM is not None:
+            self.CM.st = stream
 
     def reconfig(self,design_cfg=None,search_cfg=None,select_cfg=None):
         if design_cfg is not None:

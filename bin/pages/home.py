@@ -82,7 +82,7 @@ in a given scale and evaluate the performance by the customed LM-Eval.
 ## GUI Guide
 
  * **Namespace**: The experiment name, 📶 means connected to the remote DB, 📴 is disconnected.
- * **Listening**: When the system is running in the listening mode or connected to listeners, the status will show with 👂.
+ * **Listening**: When the system is running in the listening mode or connected to listeners as master node, the corresponding status will show with 👂.
 ''')
 
 

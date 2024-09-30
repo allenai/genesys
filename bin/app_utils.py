@@ -70,9 +70,9 @@ def running_status(st,evosys):
   if st.session_state.listening_mode:
     st.write(f'👂```{st.session_state.listener.node_id}``` *is listening*\n')
   else:
-    if st.session_state.get('listener_connections',{}):
+    if evosys.CM is not None:
       with st.expander("👂 Listener Connections",expanded=False):
-        for conn in st.session_state.get('listener_connections'):
+        for conn in evosys.CM.get_active_connections():
           st.write(f'```{conn}```')
 
   running_verifications=[key for key,process in st.session_state.get('running_verifications',{}).items() if process.poll() is None]
