@@ -19,6 +19,7 @@ class ConnectionManager:
         self.evoname = evoname
         self.collection = remote_db.collection(evoname + '_connections')
         self.zombie_threshold = 30  # seconds
+        self.max_design_threads_per_node = 3
 
     def clear_zombie_connections(self):
         threshold_time = datetime.utcnow() - timedelta(seconds=self.zombie_threshold)
@@ -33,13 +34,43 @@ class ConnectionManager:
         conns= self.collection.where('status', '==', 'connected').get()
         return [c.id for c in conns]
 
+    def check_command_status(self,node_id):
+        node_ref = self.collection.document(node_id)
+        node_data = node_ref.get().to_dict()
+        if node_data and 'command_status' in node_data:
+            return node_data['command_status']
+        else:
+            return None
+
     def design_command(self,node_id,resume=True):
+        command_status = self.check_command_status(node_id)
+        running_designs=[]
+        if command_status:
+            running_designs=[]
+            for pid in command_status:
+                command = command_status[pid]
+                if command['command'].startswith('design') and command['status'] == 'running':
+                    running_designs.append(pid)
+        if len(running_designs) >= self.max_design_threads_per_node:
+            st.toast(f"Max number of design threads reached ({self.max_design_threads_per_node}) for node {node_id}. Please wait for some threads to finish.",icon='🚨')
+            return
         command = f'design,{self.evoname}'
         if resume:
             command += ',resume'
         self.send_command(node_id,command)
     
     def verify_command(self,node_id,design_id,scale,resume=True):
+        command_status = self.check_command_status(node_id)
+        running_verifies=[]
+        if command_status:
+            running_verifies=[]
+            for pid in command_status:
+                command = command_status[pid]
+                if command['command'].startswith('verify') and command['status'] == 'running':
+                    running_verifies.append(pid)
+        if len(running_verifies) > 0:
+            st.toast(f"There is already a verification running for node {node_id}. Please wait for it to finish.",icon='🚨')
+            return
         command = f'verify,{self.evoname},{design_id},{scale}'
         if resume:
             command += ',resume'

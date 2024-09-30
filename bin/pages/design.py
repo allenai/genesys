@@ -40,17 +40,19 @@ def _run_design_thread(evosys,sess_id=None,params=None):
     return process,sess_id
 
 
-def run_design_thread(evosys,sess_id=None,params=None):
-    polls=[p.poll() for p in st.session_state['design_threads'].values()]
-    n_running = sum([p is None for p in polls])
-    if n_running < st.session_state['max_design_threads']:
+def run_design_thread(evosys,sess_id=None,params=None,cli=False):
+    if not cli:
+        polls=[p.poll() for p in st.session_state['design_threads'].values()]
+        n_running = sum([p is None for p in polls])
+    if cli or n_running < st.session_state['max_design_threads']:
         process,sess_id = _run_design_thread(evosys,sess_id,params)
         time.sleep(10) # wait for the thread to start and session to be created
-        st.session_state['design_threads'][sess_id] = process
-        st.toast(f"Design thread launched for {evosys.evoname}.",icon="🚀")
-        # time.sleep(3) # wait for the thread to start and session to be created
-        st.session_state['viewing_log'] = None
-        # st.rerun()
+        if not cli:
+            st.session_state['design_threads'][sess_id] = process
+            st.toast(f"Design thread launched for {evosys.evoname}.",icon="🚀")
+            # time.sleep(3) # wait for the thread to start and session to be created
+            st.session_state['viewing_log'] = None
+            # st.rerun()
         return sess_id,process.pid
     else:
         msg=f"Max number of design threads reached ({st.session_state['max_design_threads']}). Please wait for some threads to finish."

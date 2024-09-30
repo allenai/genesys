@@ -64,32 +64,40 @@ def get_system_info():
     }
     return cpu_info, gpu_info, mem_info
 
-def _run_verification(params, design_id, scale, resume):
+def _run_verification(params, design_id, scale, resume, cli=False):
     params_str = shlex.quote(json.dumps(params))
     cmd = f"python -m model_discovery.evolution --mode prep_model --params {params_str} --design_id {design_id} --scale {scale}"
-    with st.spinner(f'Preparing Model...'):
-        process = subprocess.run(cmd, shell=True)#, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, bufsize=1, universal_newlines=True)
+    if cli:
+        process = subprocess.Popen(cmd, shell=True)
+    else:
+        with st.spinner(f'Preparing Model...'):
+            process = subprocess.run(cmd, shell=True)#, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, bufsize=1, universal_newlines=True)
 
     cmd = f"python -m model_discovery.evolution --mode verify --params {params_str} --design_id {design_id} --scale {scale}"
     if resume:
         cmd+=' --resume'
-    st.write(f'Launching Verification with command:\n```{cmd}```')
-    with st.spinner('Running... Please check the console for verification progress.'):
-        # process = subprocess.run(cmd, shell=True)#, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, bufsize=1, universal_newlines=True)
-        process = subprocess.Popen(cmd, shell=True)#, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    if cli:
+        process = subprocess.Popen(cmd, shell=True)
+    else:
+        st.write(f'Launching Verification with command:\n```{cmd}```')
+        with st.spinner('Running... Please check the console for verification progress.'):
+            # process = subprocess.run(cmd, shell=True)#, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, bufsize=1, universal_newlines=True)
+            process = subprocess.Popen(cmd, shell=True)#, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 
     return process
 
-def run_verification(params, design_id, scale, resume):
+def run_verification(params, design_id, scale, resume, cli=False):
     key = f"{design_id}_{scale}"
     # if key not in st.session_state['running_verifications']:
-    polls=[p.poll() for p in st.session_state['running_verifications'].values()]
-    if not None in polls:
+    if not cli: 
+        polls=[p.poll() for p in st.session_state['running_verifications'].values()]
+    if cli or (not None in polls):
         params = copy.deepcopy(params)
-        process = _run_verification(params, design_id, scale, resume)
-        st.session_state['running_verifications'][key] = process
-        # st.session_state['output'][key] = []
-        st.success(f"Verification process started for {design_id} on scale {scale}. Check console for output.")
+        process = _run_verification(params, design_id, scale, resume, cli=cli)
+        if not cli:
+            st.session_state['running_verifications'][key] = process
+            # st.session_state['output'][key] = []
+            st.success(f"Verification process started for {design_id} on scale {scale}. Check console for output.")
         return key,process.pid
     else:
         key=list(st.session_state['running_verifications'].keys())[0]

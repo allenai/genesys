@@ -31,7 +31,7 @@ def get_process(pid):
         return None
 
 
-def verify_command(evosys, evoname, design_id, scale, resume=True):
+def verify_command(evosys, evoname, design_id, scale, resume=True, cli=False):
     if evosys.evoname != evoname:
         evosys.switch_ckpt(evoname)
     if resume:
@@ -41,10 +41,10 @@ def verify_command(evosys, evoname, design_id, scale, resume=True):
             scale=exp.split('_')[-1]
             design_id = exp[:-len(scale)-1]
     params = {'evoname': evoname}
-    sess_id,pid = run_verification(params, design_id, scale, resume)
+    sess_id,pid = run_verification(params, design_id, scale, resume, cli=cli)
     return sess_id,pid
 
-def design_command(evosys, evoname, resume=True):
+def design_command(evosys, evoname, resume=True, cli=False):
     sess_id = None
     params = {'evoname': evoname}
     if evosys.evoname != evoname:
@@ -53,12 +53,12 @@ def design_command(evosys, evoname, resume=True):
         unfinished_designs = evosys.ptree.get_unfinished_designs()
         if len(unfinished_designs) > 0:
             sess_id = random.choice(unfinished_designs)
-    sess_id,pid = run_design_thread(evosys, sess_id, params)
+    sess_id,pid = run_design_thread(evosys, sess_id, params, cli=cli)
     return sess_id,pid
 
 
 class Listener:
-    def __init__(self, evosys, node_id=None):
+    def __init__(self, evosys, node_id=None, cli=False):
         self.evosys = evosys
         remote_db = evosys.ptree.remote_db
         self.evoname = evosys.evoname
@@ -69,7 +69,8 @@ class Listener:
         self.command_queue = queue.Queue()
         self.command_status = {}
         self.poll_freq = 5
-        
+        self.cli = cli
+
     def build_connection(self):
         self.doc_ref.set({
             'status': 'connected',
@@ -92,19 +93,19 @@ class Listener:
                         sess_id,pid = self.execute_command(command)
                         self.command_queue.put((command,sess_id,pid))
                         if sess_id:
-                            self.command_status[pid] = {
-                                'command': command,
-                                'sess_id': sess_id,
-                                'status': None
+                            self.command_status[str(pid)] = {
+                                'command': str(command),
+                                'sess_id': str(sess_id),
+                                'status': 'running'
                             }
                     self.doc_ref.update({'commands': []})
                 
                 for pid in self.command_status:
-                    process = get_process(pid)
+                    process = get_process(int(pid))
                     if process and process.is_running():
-                        self.command_status[pid]['status'] = 'running'
+                        self.command_status[str(pid)]['status'] = 'running'
                     else:
-                        self.command_status[pid]['status'] = 'finished'
+                        self.command_status[str(pid)]['status'] = 'finished'
 
                 self.doc_ref.update(
                     {
@@ -116,12 +117,12 @@ class Listener:
         self.cleanup()
     
     def execute_command(self, command):
-        st.write(f"Executing command: {command}")
+        # st.write(f"Executing command: {command}")
         comps=command.split(',')
         if comps[0] == 'design':
-            sess_id,pid = design_command(self.evosys, comps[1], resume='resume' in comps)
+            sess_id,pid = design_command(self.evosys, comps[1], resume='resume' in comps, cli=self.cli)
         elif comps[0] == 'verify':
-            sess_id,pid = verify_command(self.evosys, comps[1], comps[2], comps[3], resume='resume' in comps)
+            sess_id,pid = verify_command(self.evosys, comps[1], comps[2], comps[3], resume='resume' in comps, cli=self.cli)
         else:
             raise ValueError(f"Unknown command: {command}")
         return sess_id,pid
@@ -130,13 +131,14 @@ class Listener:
         self.running = False
 
     def cleanup(self):
-        st.info("Cleaning up and disconnecting...")
+        # st.info("Cleaning up and disconnecting...")
         self.doc_ref.delete()  # Delete the connection document
 
 
-def start_listener_thread(listener):
+def start_listener_thread(listener,add_ctx=True):
     thread = threading.Thread(target=listener.listen_for_commands)
-    add_script_run_ctx(thread)  # Add Streamlit context to the thread
+    if add_ctx:
+        add_script_run_ctx(thread)  # Add Streamlit context to the thread
     thread.start()
     return thread
 
@@ -268,3 +270,22 @@ def listen(evosys, project_dir):
 
     else:
         st.info("No listener runned.")
+
+
+if __name__ == "__main__":
+    from model_discovery.evolution import BuildEvolution
+
+    print("Running in CLI mode.")
+
+    # run in CLI mode
+    evosys = BuildEvolution(
+        params={'evoname':'test_evo_000'}, # doesnt matter, will switch to the commanded evoname
+        do_cache=False,
+        # cache_type='diskcache',
+    )
+
+    listener = Listener(evosys, cli=True)
+    listener.build_connection()
+    start_listener_thread(listener,add_ctx=False)
+    
+
