@@ -535,14 +535,14 @@ class AttributeChecker(ast.NodeVisitor):
         return "<unknown>"
 
     def process_modulelist(self, node):
-        if isinstance(node.args[0], ast.List):
+        if len(node.args)>0 and isinstance(node.args[0], ast.List):
             for index, elem in enumerate(node.args[0].elts):
                 self.current_path.append(f"ModuleList[{index}]")
                 if isinstance(elem, ast.Call) and self.is_child_class(elem.func):
                     self.gau_instances[".".join(self.current_path)] = {"type": "ModuleList", "node": elem}
                     self.rewrite_instantiation(elem)
                 self.current_path.pop()
-        elif isinstance(node.args[0], ast.ListComp):
+        elif len(node.args)>0 and isinstance(node.args[0], ast.ListComp):
             self.process_comprehension(node.args[0])
 
     def process_collections(self, stmt):

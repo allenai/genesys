@@ -67,6 +67,7 @@ class Listener:
         self.doc_ref = self.collection.document(self.node_id)
         self.running = False
         self.command_queue = queue.Queue()
+        self.command_status = {}
         self.poll_freq = 5
         
     def build_connection(self):
@@ -90,9 +91,26 @@ class Listener:
                     for command in commands:
                         sess_id,pid = self.execute_command(command)
                         self.command_queue.put((command,sess_id,pid))
+                        if sess_id:
+                            self.command_status[pid] = {
+                                'command': command,
+                                'sess_id': sess_id,
+                                'status': None
+                            }
                     self.doc_ref.update({'commands': []})
                 
-                self.doc_ref.update({'last_heartbeat': firestore.SERVER_TIMESTAMP})
+                for pid in self.command_status:
+                    process = get_process(pid)
+                    if process and process.is_running():
+                        self.command_status[pid]['status'] = 'running'
+                    else:
+                        self.command_status[pid]['status'] = 'finished'
+
+                self.doc_ref.update(
+                    {
+                        'last_heartbeat': firestore.SERVER_TIMESTAMP,
+                        'command_status': self.command_status
+                    })
             
             time.sleep(self.poll_freq)  
         self.cleanup()
@@ -127,7 +145,7 @@ def listen(evosys, project_dir):
     with st.sidebar:
         AU.running_status(st, evosys)
 
-    st.title('Listener Control')
+    st.title('Listening Mode')
 
     # Initialize session state
     if 'listener' not in st.session_state:
@@ -137,7 +155,7 @@ def listen(evosys, project_dir):
     if 'exec_commands' not in st.session_state:
         st.session_state.exec_commands = {}
 
-    col1,col2 = st.columns(2)
+    col1,_,col2,_,col3,_ = st.columns([3,0.1,1,0.1,1,1.8])
 
     with col1:
         node_id = st.text_input("Node ID (manual or random)", disabled=st.session_state.listening_mode)
@@ -146,7 +164,7 @@ def listen(evosys, project_dir):
         st.write('') 
         st.write('')    
         if not st.session_state.listening_mode:
-            if st.button("Start Listening"):
+            if st.button("Start Listening", use_container_width=True):
                 listener = Listener(evosys, node_id)
                 listener.build_connection()
                 st.session_state.listener = listener
@@ -155,7 +173,7 @@ def listen(evosys, project_dir):
                 st.success(f"Listening started. Node ID: {listener.node_id}")
                 st.rerun()
         else:
-            if st.button("Stop Listening"):
+            if st.button("Stop Listening", use_container_width=True):
                 if st.session_state.listener:
                     st.session_state.listener.stop_listening()
                     st.session_state.listener_thread.join()
@@ -166,6 +184,8 @@ def listen(evosys, project_dir):
                     st.rerun() # Add this section to process commands in the main Streamlit thread
 
         if st.session_state.listener:
+            if st.session_state.listener.node_id not in st.session_state.exec_commands:
+                st.session_state.exec_commands[st.session_state.listener.node_id] = {}
             try:
                 while True:
                     st.toast("Listening for commands...")
@@ -174,7 +194,7 @@ def listen(evosys, project_dir):
                         st.toast(f"Command {command} failed. {pid}")
                     else:
                         st.toast(f"Command {command} started. {pid}")
-                        st.session_state.exec_commands[pid] = command, sess_id
+                        st.session_state.exec_commands[st.session_state.listener.node_id][pid] = command, sess_id
                         ctype = command.split()[0]
                         if ctype == 'design':
                             st.session_state['design_threads'][sess_id] = get_process(pid)
@@ -183,23 +203,68 @@ def listen(evosys, project_dir):
             except queue.Empty:
                 pass
 
+    with col3:
+        st.write('')
+        st.write('')
+        st.button("*Refresh status*", use_container_width=True)
+
     st.subheader("Commands status")
 
-    active_commands,inactive_commands = [],[]
-    for pid,cmd_sess in st.session_state.exec_commands.items():
-        command,sess_id = cmd_sess
-        if get_process(pid).poll() is None:
-            active_commands.append((command,sess_id))
-        else:
-            inactive_commands.append((command,sess_id))
-    
-    if len(active_commands) == 0 and len(inactive_commands) == 0:
-        st.info("No commands running or finished.")
+    if len(st.session_state.exec_commands) > 0:
+        
+        col1,col2 = st.columns([2,1])
+        with col1:
+            all_nodes = list(st.session_state.exec_commands.keys())
+            selected_node = st.selectbox("Select node ID", all_nodes,index=all_nodes.index(st.session_state.listener.node_id))
+            st.write(':orange[*View details in **Design**, **Verify**, and **Viewer** tabs.*]')
+        with col2:
+            st.write('')
+            st.write('')
 
-    with st.expander("Running Commands"):
-        for command,sess_id in active_commands:
-            st.write(f"{command} - {sess_id} - {pid}")
+        active_commands,inactive_commands = [],[]
+        for pid in st.session_state.exec_commands[selected_node]:
+            command,sess_id = st.session_state.exec_commands[selected_node][pid]
+            process = get_process(pid)
+            if process and process.is_running():
+                active_commands.append((command,sess_id,pid))
+            else:
+                inactive_commands.append((command,sess_id,pid))
+        
+        if len(active_commands) == 0 and len(inactive_commands) == 0:
+            st.info("No commands running or finished.")
 
-    with st.expander("Finished Commands"):
-        for command,sess_id in inactive_commands:
-            st.write(f"{command} - {sess_id} - {pid}")
+        def show_commands(commands):
+            for command,sess_id,pid in commands:
+                cols=st.columns([0.6,0.05,1,0.05,2])
+                ctype = command.split(',')[0]
+                args = command.split(',')[1:]
+                with cols[0]:
+                    st.write(f'PID: ```{pid}```')
+                with cols[2]:
+                    if ctype == 'design':
+                        st.write(f"Command: ```Design```")
+                    elif ctype == 'verify':
+                        st.write(f"Command: ```Verify```")
+                with cols[4]:
+                    if ctype == 'design':
+                        st.write(f"Design Session: ```{sess_id}```")
+                    elif ctype == 'verify':
+                        st.write(f"Verified Model: ```{sess_id}```")
+
+        col1,col2 = st.columns([1,1])
+        with col1:
+            with st.expander("Running Commands"):
+                if len(active_commands) == 0:
+                    st.info("No running commands.")
+                else:
+                    show_commands(active_commands)
+
+        with col2:
+            with st.expander("Finished Commands"):
+                if len(inactive_commands) == 0:
+                    st.info("No finished commands.")
+                else:
+                    show_commands(inactive_commands)
+
+    else:
+        st.info("No listener runned.")
