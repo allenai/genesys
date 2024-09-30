@@ -63,7 +63,8 @@ the main interface to the system instead of the common command-line interface
 - Or tunning the selector in the **:blue[Select]** tab.
 - Or train a design in the verification **:blue[Engine]** tab.
 
-3. View the system states and results in the **:blue[Viewer]** tab.
+3. View the system states and results in the **:blue[Viewer]** tab. 
+- Or check the distributed design base in the Firestore.
 ''')
 
     with col2:
@@ -73,8 +74,10 @@ the main interface to the system instead of the common command-line interface
 1. **Select**: The selector sample seed node(s) from the tree for the next round of evolution.
 2. **Design**: The designer will sample a new design based on the seed(s).
 3. **Search**: The designer agent can search the knowledge base during the design process.
-4. **Engine**: The verification engine can be used to train a **chosen design** (not necessarily the new design and not necessarily take turns with the design step) in a given scale and evaluate the performance.
-5. **Evolve**: The evolution loop will repeat the above processes. 
+4. **Verify**: The verification engine can be used to train a **chosen design** 
+(not necessarily the new design and not necessarily take turns with the design step) 
+in a given scale and evaluate the performance by the customed LM-Eval.
+5. **Evolve**: The evolution loop will repeat the above processes asynchronously. 
 
 ## UI Info
 
@@ -84,6 +87,22 @@ the main interface to the system instead of the common command-line interface
 ''')
 
 
+    st.markdown('''
+## Distributed Evolution
+
+The evolutionary system continously run two threads asynchronously in multiple nodes until the budget is exhausted:
+1. **Design Threads**: Continously sample new designs on selected nodes. It is driven by the *Model Design Engine* in the **Design** tab.
+2. **Verify Threads**: Continously run verifications on the selected design and scale. It is driven by the *Verification Engine* in the **Verify** tab.
+
+The two threads can be runned in multiple nodes besides the master node.
+The network is managed in the **Firestore**. To add a node to the network,
+simply run `python -m model_discovery.listen` or `bash script/run_listener.sh`
+on the node. Or you can also run it in `Listen` tab in the GUI, so that you
+can view the design process and verification results in real-time in the 
+***Design***, ***Verify*** and ***Viewer*** tabs.
+
+
+''')
 
     # st.balloons()
 
@@ -93,7 +112,7 @@ the main interface to the system instead of the common command-line interface
 
     st.subheader('Tabs')
 
-    tabs=st.tabs(['Evolve','Design','Search','Engine','Select','Viewer','Config'])
+    tabs=st.tabs(['Evolve','Design','Search','Verify','Select','Viewer','Config','Listen','Tester'])
 
     with tabs[0]:
       st.markdown('''
@@ -133,6 +152,16 @@ Multiple views of the system states and results.
     with tabs[6]:
       st.markdown('''
 Configure the experiment settings. Recommended to set it up before running.
+''')  
+
+    with tabs[7]:
+      st.markdown('''
+Listening mode, accepting commands from master node. Can also run it in the CLI using `python -m model_discovery.listen` or `bash script/run_listener.sh`.
+''')  
+
+    with tabs[8]:
+      st.markdown('''
+A tab for internal use. 
 ''')  
 
 

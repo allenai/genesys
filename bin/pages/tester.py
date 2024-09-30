@@ -31,12 +31,12 @@ class ConnectionManager:
     
     def get_active_connections(self):
         self.clear_zombie_connections()
-        conns= self.collection.where('status', '==', 'connected').get()
-        return [c.id for c in conns]
+        connections = self.collection.where('status', '==', 'connected').get()
+        self.connections = {c.id: c.to_dict() for c in connections}
+        return list(self.connections.keys())
 
     def check_command_status(self,node_id):
-        node_ref = self.collection.document(node_id)
-        node_data = node_ref.get().to_dict()
+        node_data = self.connections[node_id]
         if node_data and 'command_status' in node_data:
             return node_data['command_status']
         else:
@@ -77,6 +77,7 @@ class ConnectionManager:
         self.send_command(node_id,command)
     
     def send_command(self, node_id, command):
+        self.get_active_connections()
         try:
             node_ref = self.collection.document(node_id)
             update_time = node_ref.update({
@@ -144,3 +145,6 @@ def tester(evosys,project_dir):
             resume = st.checkbox('Resume', value=True)
         if send_btn:
             CM.verify_command(selected_conn, design_id, scale, resume)
+
+    st.subheader('Connection Status')
+    st.write(CM.connections)
