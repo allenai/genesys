@@ -65,7 +65,7 @@ def grid_view(st,item_dict:dict,per_row=3,spacing=0.05):
                 st.write(value)
 
 def running_status(st,evosys):
-  db_status = '📶' if evosys.ptree.FM else '📴'
+  db_status = '📶' if evosys.ptree.remote_db else '📴'
   st.write(f'🏠 **Namespace:\n```{evosys.evoname}``` {db_status}**')
   if st.session_state.listening_mode:
     st.write(f'👂```{st.session_state.listener.node_id}``` *is listening*\n')

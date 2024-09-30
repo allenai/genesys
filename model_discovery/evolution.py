@@ -32,6 +32,7 @@ import exec_utils
 import pathlib
 import datetime
 import json
+import copy
 import time
 import tempfile
 from dataclasses import dataclass, field, asdict
@@ -934,14 +935,16 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         U.mkdir(U.pjoin(db_dir,'sessions'))
         self.db_only=db_only
         self.FM = None
-        if use_remote_db:
-            db_key_path = U.pjoin(SECRETS_DIR,'db_key.json')
-            if U.pexists(db_key_path):
-                self.remote_db = firestore.Client.from_service_account_json(db_key_path)
-                self.FM = FirestoreManager(evoname,db_dir,self.remote_db)
-                self.FM.sync_from_db()
-            else:
-                print(f'No db key found at {db_key_path}, using local db only. Will sync when remote db key is available.')
+        self.use_remote_db=use_remote_db
+        db_key_path = U.pjoin(SECRETS_DIR,'db_key.json')
+        self.remote_db = None
+        if U.pexists(db_key_path):
+            self.remote_db = firestore.Client.from_service_account_json(db_key_path)
+        else:
+            print(f'No db key found at {db_key_path}, using local db only. Will sync when remote db key is available.')
+        if use_remote_db and self.remote_db is not None:
+            self.FM = FirestoreManager(evoname,db_dir,self.remote_db)
+            self.FM.sync_from_db()
         self.load()
 
     # new design: proposal -> implement -> verify
@@ -994,10 +997,19 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
     @property
     def design_cost(self):
         costs=0
-        designs=self.filter_by_type('DesignArtifact')
+        designs=self.filter_by_type(['DesignArtifact','DesignArtifactImplemented'])
         for design in designs:
             costs+=sum(self.get_node(design).get_cost().values())
         return costs
+
+    def remaining_budget(self,budgets):
+        budgets=copy.deepcopy(budgets)
+        designs=self.filter_by_type(['DesignArtifactImplemented'])
+        for design in designs:
+            for scale in self.get_node(design).verifications:
+                if scale in budgets:
+                    budgets[scale]-=1
+        return budgets
 
     # How to handle variants? i.e., in GPT, there are optional pre-conv and post-conv, maybe just all of them to the tree, let selector to choose
 
@@ -1575,8 +1587,6 @@ class EvolutionSystem(exec_utils.System):
             self.rnd_agent.bind_ptree(self.ptree,self.stream)
             # self.ptree.export()
 
-    
-
     def link_stream(self,stream):
         self.stream=stream
         self.rnd_agent.sss.stream=stream
@@ -1597,11 +1607,18 @@ class EvolutionSystem(exec_utils.System):
             self._config.params = params
         self.load()
 
-    def switch_ckpt(self,ckpt_name):
+    def switch_ckpt(self,ckpt_name,load_params=True):
         self.design_cfg = {}
         self.search_cfg = {}
         self.select_cfg = {}
-        self.reload({'evoname':ckpt_name})
+        _params = {'evoname':ckpt_name}
+        if self.ptree.remote_db:
+            self.sync_from_db(ckpt_name)
+        if load_params:
+            config_path = U.pjoin(self.ckpt_dir,ckpt_name,'config.json')
+            params = U.load_json(config_path).get('params',{})
+            _params.update(params)
+        self.reload(_params)
 
     def query_system(self,
         query: Optional[str] = '',
@@ -1618,7 +1635,21 @@ class EvolutionSystem(exec_utils.System):
     def load_state(self):
         return U.load_json(U.pjoin(self.evo_dir,'state.json'))
 
+    def sync_from_db(self,evoname=None):
+        if evoname is None:
+            evoname=self.evoname
+        collection=self.ptree.remote_db.collection('experiments')
+        doc=collection.document(evoname).get()
+        if doc.exists:
+            doc=doc.to_dict()
+            config=doc.get('config',{})
+            state=doc.get('state')
+            U.save_json(config,U.pjoin(self.evo_dir,'config.json'))
+            U.save_json(state,U.pjoin(self.evo_dir,'state.json'))
+
     def load_config(self):
+        if self.ptree.remote_db:
+            self.sync_from_db()
         config = U.load_json(U.pjoin(self.evo_dir,'config.json'))
         self.design_cfg = config.get('design_cfg',{})
         self.search_cfg = config.get('search_cfg',{})
@@ -1628,7 +1659,14 @@ class EvolutionSystem(exec_utils.System):
         self.params = params # overwrite the params with the new params
         return config
 
+    def sync_state_to_db(self):
+        collection=self.ptree.remote_db.collection('experiments')
+        doc=collection.document(self.evoname)
+        doc.set({'state':self.state},merge=True)
+
     def save_state(self):
+        if self.ptree.remote_db:
+            self.sync_state_to_db()
         U.save_json(self.state,U.pjoin(self.evo_dir,'state.json'))
     
     def save_config(self):
@@ -1643,7 +1681,7 @@ class EvolutionSystem(exec_utils.System):
             if self.design_budget_limit>0 and self.ptree.design_cost>=self.design_budget_limit:
                 return False
         elif action=='verify':
-            if sum(self.state['budgets'].values())<=0:
+            if sum(self.ptree.remaining_budget(self.state['scales']).values())<=0:
                 return False
         else:
             raise ValueError(f"Invalid action: {action}")

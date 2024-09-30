@@ -13,6 +13,13 @@ from google.cloud import firestore
 
 from bin.pages.design import run_design_thread
 from bin.pages.verify import run_verification
+from bin.pages.config import download_exp_from_db
+
+
+# Comments
+# 1. Load exp
+# 2. Run design
+# 3. Run verify
 
 
 class Listener:

@@ -66,7 +66,6 @@ def design_config(evosys):
     n_sources=select_cfg.get('n_sources',{})
     
     #### Configure design
-
     
     with st.expander(f"Node Selector Configurations for ```{evosys.evoname}```",expanded=False,icon='🌱'):
 
@@ -254,8 +253,26 @@ def sync_exps_to_db(evosys):
     for exp in os.listdir(evosys.ckpt_dir):
         config=U.load_json(U.pjoin(evosys.ckpt_dir,exp,'config.json'))
         state=U.load_json(U.pjoin(evosys.ckpt_dir,exp,'state.json'))
+        if not state: continue
         upload_exp_to_db(evosys,exp,config,state)
     st.toast("Synced all experiments to remote DB")
+
+
+def download_exp_from_db(evosys,exp):
+    collection=evosys.ptree.remote_db.collection('experiments')
+    doc=collection.document(exp).get()
+    if doc.exists:
+        doc_id=doc.id
+        doc=doc.to_dict()
+        config=doc.get('config',{})
+        state=doc.get('state')
+        U.mkdir(U.pjoin(evosys.ckpt_dir,doc_id))
+        U.mkdir(U.pjoin(evosys.ckpt_dir,doc_id,'db','sessions'))
+        U.mkdir(U.pjoin(evosys.ckpt_dir,doc_id,'db','designs'))
+        if config:
+            U.save_json(config,U.pjoin(evosys.ckpt_dir,doc_id,'config.json'))
+        if state:
+            U.save_json(state,U.pjoin(evosys.ckpt_dir,doc_id,'state.json'))
 
 def sync_exps_from_db(evosys):
     collection=evosys.ptree.remote_db.collection('experiments')
@@ -266,11 +283,14 @@ def sync_exps_from_db(evosys):
         config=doc.get('config',{})
         state=doc.get('state')
         U.mkdir(U.pjoin(evosys.ckpt_dir,doc_id))
+        U.mkdir(U.pjoin(evosys.ckpt_dir,doc_id,'db','sessions'))
+        U.mkdir(U.pjoin(evosys.ckpt_dir,doc_id,'db','designs'))
         if config:
             U.save_json(config,U.pjoin(evosys.ckpt_dir,doc_id,'config.json'))
         if state:
             U.save_json(state,U.pjoin(evosys.ckpt_dir,doc_id,'state.json'))
     st.toast("Synced all experiments from remote DB")
+    st.rerun()
 
 
 def config(evosys,project_dir):
@@ -356,23 +376,21 @@ def config(evosys,project_dir):
     design_config(evosys)
     
 
-
-    st.subheader("Existing Experiments")
-
-
-    col1,col2,_=st.columns([1,1,2])
+    col1,col2,col3,_=st.columns([1.2,1,1,3])
     with col1:
-        if st.button("Upload to Remote DB"):
-            sync_exps_to_db(evosys)
+        st.subheader("Existing Experiments")
     with col2:
-        if st.button("Download from Remote DB"):
+        if st.button("*Upload to Remote DB*",use_container_width=True,disabled=evosys.ptree.remote_db is None):
+            sync_exps_to_db(evosys)
+    with col3:
+        if st.button("*Download from Remote DB*",use_container_width=True,disabled=evosys.ptree.remote_db is None):
             sync_exps_from_db(evosys)
     
     def delete_dir(dir):
         if os.path.exists(dir):
             shutil.rmtree(dir)
         st.toast(f"Deleted directory: {dir}")
-        if evosys.params['use_remote_db']:
+        if evosys.ptree.remote_db:
             delete_exp_from_db(evosys,dir)
         # st.rerun()
     
