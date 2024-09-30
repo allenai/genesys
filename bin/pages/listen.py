@@ -70,48 +70,56 @@ class Listener:
         self.command_status = {}
         self.poll_freq = 5
         self.cli = cli
+        self.active = True
 
     def build_connection(self):
-        self.doc_ref.set({
-            'status': 'connected',
-            'last_heartbeat': firestore.SERVER_TIMESTAMP,
-            'commands': []
-        })
+        # check if the node_id is already in the collection
+        doc = self.doc_ref.get()
+        if doc.exists and doc.to_dict().get('status','n/a') == 'connected':
+            self.active = False
+        else:
+            self.doc_ref.set({
+                'status': 'connected',
+                'last_heartbeat': firestore.SERVER_TIMESTAMP,
+                'commands': []
+            })
+            self.active = True
 
     def listen_for_commands(self):
         self.running = True
         while self.running:
-            doc = self.doc_ref.get()
-            if doc.exists:
-                data = doc.to_dict()
-                if data['status'] == 'disconnected':
-                    break
-                
-                commands = data.get('commands', [])
-                if commands:
-                    for command in commands:
-                        sess_id,pid = self.execute_command(command)
-                        self.command_queue.put((command,sess_id,pid))
-                        if sess_id:
-                            self.command_status[str(pid)] = {
-                                'command': str(command),
-                                'sess_id': str(sess_id),
-                                'status': 'running'
-                            }
-                    self.doc_ref.update({'commands': []})
-                
-                for pid in self.command_status:
-                    process = get_process(int(pid))
-                    if process and process.is_running():
-                        self.command_status[str(pid)]['status'] = 'running'
-                    else:
-                        self.command_status[str(pid)]['status'] = 'finished'
+            if self.active:
+                doc = self.doc_ref.get()
+                if doc.exists:
+                    data = doc.to_dict()
+                    if data['status'] == 'disconnected':
+                        break
+                    
+                    commands = data.get('commands', [])
+                    if commands:
+                        for command in commands:
+                            sess_id,pid = self.execute_command(command)
+                            self.command_queue.put((command,sess_id,pid))
+                            if sess_id:
+                                self.command_status[str(pid)] = {
+                                    'command': str(command),
+                                    'sess_id': str(sess_id),
+                                    'status': 'running'
+                                }
+                        self.doc_ref.update({'commands': []})
+                    
+                    for pid in self.command_status:
+                        process = get_process(int(pid))
+                        if process and process.is_running():
+                            self.command_status[str(pid)]['status'] = 'running'
+                        else:
+                            self.command_status[str(pid)]['status'] = 'finished'
 
-                self.doc_ref.update(
-                    {
-                        'last_heartbeat': firestore.SERVER_TIMESTAMP,
-                        'command_status': self.command_status
-                    })
+                    self.doc_ref.update(
+                        {
+                            'last_heartbeat': firestore.SERVER_TIMESTAMP,
+                            'command_status': self.command_status
+                        })
             
             time.sleep(self.poll_freq)  
         self.cleanup()
@@ -157,16 +165,17 @@ def listen(evosys, project_dir):
     if 'exec_commands' not in st.session_state:
         st.session_state.exec_commands = {}
 
-    col1,_,col2,_,col3,_ = st.columns([3,0.1,1,0.1,1,1.8])
+    col1,_,col2,_,col3,_ = st.columns([3.5,0.1,1,0.1,1,1.5])
 
     with col1:
-        node_id = st.text_input("Node ID (manual or random)", disabled=st.session_state.listening_mode)
+        node_id = st.text_input("Node ID (empty for random) :orange[*If a running node id in the same machine is provided, it will subscribe the status.*]", disabled=st.session_state.listening_mode)
+        st.write(f'')
 
     with col2:
         st.write('') 
         st.write('')    
         if not st.session_state.listening_mode:
-            if st.button("Start Listening", use_container_width=True):
+            if st.button("**Start Listening**", use_container_width=True):
                 listener = Listener(evosys, node_id)
                 listener.build_connection()
                 st.session_state.listener = listener
@@ -175,7 +184,7 @@ def listen(evosys, project_dir):
                 st.success(f"Listening started. Node ID: {listener.node_id}")
                 st.rerun()
         else:
-            if st.button("Stop Listening", use_container_width=True):
+            if st.button("**Stop Listening**", use_container_width=True):
                 if st.session_state.listener:
                     st.session_state.listener.stop_listening()
                     st.session_state.listener_thread.join()
@@ -188,22 +197,30 @@ def listen(evosys, project_dir):
         if st.session_state.listener:
             if st.session_state.listener.node_id not in st.session_state.exec_commands:
                 st.session_state.exec_commands[st.session_state.listener.node_id] = {}
-            try:
-                while True:
-                    st.toast("Listening for commands...")
-                    command,sess_id,pid = st.session_state.listener.command_queue.get_nowait()
-                    if not sess_id:
-                        st.toast(f"Command {command} failed. {pid}")
-                    else:
-                        st.toast(f"Command {command} started. {pid}")
-                        st.session_state.exec_commands[st.session_state.listener.node_id][pid] = command, sess_id
-                        ctype = command.split()[0]
-                        if ctype == 'design':
-                            st.session_state['design_threads'][sess_id] = get_process(pid)
-                        elif ctype == 'verify':
-                            st.session_state['running_verifications'][sess_id] = get_process(pid)
-            except queue.Empty:
-                pass
+            if st.session_state.listener.active:
+                try:
+                    while True:
+                        st.toast("Listening for commands...")
+                        command,sess_id,pid = st.session_state.listener.command_queue.get_nowait()
+                        if not sess_id:
+                            st.toast(f"Command {command} failed. {pid}")
+                        else:
+                            st.toast(f"Command {command} started. {pid}")
+                            st.session_state.exec_commands[st.session_state.listener.node_id][pid] = command, sess_id
+                except queue.Empty:
+                    pass
+            else:
+                doc = st.session_state.listener.doc_ref.get()
+                command_status = doc.to_dict() if doc.exists else {}
+                for pid,status in command_status.items():
+                    st.session_state.exec_commands[st.session_state.listener.node_id][pid] = status['command'], status['sess_id']
+            for pid in st.session_state.exec_commands[st.session_state.listener.node_id]:
+                command,sess_id = st.session_state.exec_commands[st.session_state.listener.node_id][pid]
+                ctype = command.split()[0]
+                if ctype == 'design':
+                    st.session_state['design_threads'][sess_id] = get_process(pid)
+                elif ctype == 'verify':
+                    st.session_state['running_verifications'][sess_id] = get_process(pid)
 
     with col3:
         st.write('')

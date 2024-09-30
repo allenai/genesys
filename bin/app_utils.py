@@ -69,6 +69,11 @@ def running_status(st,evosys):
   st.write(f'🏠 **Namespace:\n```{evosys.evoname}``` {db_status}**')
   if st.session_state.listening_mode:
     st.write(f'👂```{st.session_state.listener.node_id}``` *is listening*\n')
+  else:
+    if st.session_state.get('listener_connections',{}):
+      with st.expander("👂 Listener Connections",expanded=False):
+        for conn in st.session_state.get('listener_connections'):
+          st.write(f'```{conn}```')
 
   running_verifications=[key for key,process in st.session_state.get('running_verifications',{}).items() if process.poll() is None]
   if len(running_verifications)!=0:

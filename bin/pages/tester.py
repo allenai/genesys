@@ -18,7 +18,7 @@ class ConnectionManager:
     def __init__(self, evoname, remote_db):
         self.evoname = evoname
         self.collection = remote_db.collection(evoname + '_connections')
-        self.zombie_threshold = 30  # seconds
+        self.zombie_threshold = 20  # seconds
         self.max_design_threads_per_node = 3
 
     def clear_zombie_connections(self):
