@@ -112,10 +112,10 @@ def verify(evosys,project_dir):
 
     st.title("Verification Engine")
 
-    # evosys.ptree.load()
+    if st.session_state.listening_mode:
+        st.warning("**NOTE:** You are running in listening mode. You cannot control verification sessions by yourself.")
 
-    if 'running_verifications' not in st.session_state:
-        st.session_state['running_verifications'] = {}
+    # evosys.ptree.load()
     
     # if 'output' not in st.session_state:
     #     st.session_state['output'] = {}
@@ -235,7 +235,7 @@ def verify(evosys,project_dir):
         if selected_design is not None:
             already_verified=scale in verified[selected_design]
             txt='Run Verification' if not already_verified else 'Re-Run Verification'
-            run_btn= st.button(txt,use_container_width=True)
+            run_btn= st.button(txt,use_container_width=True,disabled=st.session_state.listening_mode)
         else:
             run_btn= st.button('Run Verification',use_container_width=True,disabled=True)
     
@@ -291,9 +291,9 @@ def verify(evosys,project_dir):
                             if url:
                                 st.write(f"W&B run: [{wandb_name}]({url})")
                         with col4:
-                            resume_btn = st.button(f'Resume',key=f'btn_{design_id}_{scale}') #,use_container_width=True):
+                            resume_btn = st.button(f'Resume',key=f'btn_{design_id}_{scale}',disabled=st.session_state.listening_mode) #,use_container_width=True):
                         with col5:
-                            restart_btn = st.button(f'Restart',key=f'btn_{design_id}_{scale}_restart') #,use_container_width=True):
+                            restart_btn = st.button(f'Restart',key=f'btn_{design_id}_{scale}_restart',disabled=st.session_state.listening_mode) #,use_container_width=True):
                         if resume_btn:
                             run_verification(evosys.params, design_id, scale, resume=True)
                         if restart_btn:
@@ -307,16 +307,21 @@ def verify(evosys,project_dir):
                     for scale in finished_runs[design_id]:
                         id_scale=f'{design_id}_{scale}'
                         wandb_ids=U.load_json(U.pjoin(evosys.evo_dir,'ve',id_scale,'wandb_ids.json'))
-                        wandb_id=wandb_ids['pretrain']['id']
-                        wandb_name=wandb_ids['pretrain']['name']
-                        project=wandb_ids['project']
-                        entity=wandb_ids['entity']
-                        url=f'https://wandb.ai/{entity}/{project}/runs/{wandb_id}'
+                        if 'pretrain' in wandb_ids:
+                            wandb_id=wandb_ids['pretrain']['id']
+                            wandb_name=wandb_ids['pretrain']['name']
+                            project=wandb_ids['project']
+                            entity=wandb_ids['entity']
+                            url=f'https://wandb.ai/{entity}/{project}/runs/{wandb_id}'
+                        else:
+                            wandb_name='N/A'
+                            wandb_id='N/A'
+                            url='N/A'
                         col1,col2,col3,col4,col5=st.columns([0.5,0.5,1,0.4,0.4])
                         with col1:
                             st.write(f"Run id: ```{wandb_id}```")
                         with col2:
-                            st.write(f"Model name: **{design_id}**-*{scale}*")
+                            st.write(f"Model: **{design_id}**-*{scale}*")
                         with col3:
                             st.write(f"W&B run: [{wandb_name}]({url})")
                         with col4:
@@ -368,7 +373,7 @@ def verify(evosys,project_dir):
                 entity = wandb_ids['entity']
                 url = f'https://wandb.ai/{entity}/{project}/runs/{wandb_id}'
                 st.info(f"Check console for output. View training run on [W&B]({url}).")
-                if st.button(f"Terminate",key=f'btn_{key}_term'):
+                if st.button(f"Terminate",key=f'btn_{key}_term',disabled=st.session_state.listening_mode):
                     try:
                         parent = psutil.Process(process.pid)
                         children = parent.children(recursive=True)

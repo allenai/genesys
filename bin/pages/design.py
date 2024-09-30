@@ -54,6 +54,10 @@ def run_design_thread(evosys,sess_id=None):
 
 def _design_engine(evosys,project_dir):
     st.title("Model Design Engine")
+    
+    if st.session_state.listening_mode:
+        st.warning("**NOTE:** You are running in listening mode. You cannot control design sessions by yourself.")
+
 
     with st.sidebar:
         st.session_state['max_design_threads'] = st.number_input(label="Max Design Threads",min_value=1,value=3,step=1)
@@ -104,7 +108,7 @@ def _design_engine(evosys,project_dir):
                     if st.button('View Log',key=f'btn_{sess_id}_view_log'):
                         st.session_state['viewing_log'] = sess_id
                 with cols[4]:
-                    if st.button('Resume',key=f'btn_{sess_id}_resume'):
+                    if st.button('Resume',key=f'btn_{sess_id}_resume',disabled=st.session_state.listening_mode):
                         with st.status(f'Resuming session: ```{sess_id}```...'):
                             run_design_thread(evosys,sess_id)
                 with cols[5]:
@@ -128,9 +132,9 @@ def _design_engine(evosys,project_dir):
                 st.write('**Search Config**')
                 st.write(evosys.search_cfg)
     with col2:
-        rand_resume_btn = st.button('***Resume Random Session***',use_container_width=True,disabled=len(unfinished_designs)==0)
+        rand_resume_btn = st.button('***Resume Random Session***',use_container_width=True,disabled=len(unfinished_designs)==0 or st.session_state.listening_mode)
     with col3:
-        new_session_btn = st.button('***Launch New Session***',use_container_width=True)
+        new_session_btn = st.button('***Launch New Session***',use_container_width=True,disabled=st.session_state.listening_mode)
         
     if rand_resume_btn:
         sess_id = random.choice(unfinished_designs)
@@ -160,7 +164,7 @@ def _design_engine(evosys,project_dir):
                     if st.button('View Log',key=f'btn_{key}_view'):
                         st.session_state['viewing_log'] = key
                 with cols[5]:
-                    if st.button(f"Terminate",key=f'btn_{key}_term'):
+                    if st.button(f"Terminate",key=f'btn_{key}_term',disabled=st.session_state.listening_mode):
                         try:
                             parent = psutil.Process(process.pid)
                             children = parent.children(recursive=True)
@@ -324,6 +328,9 @@ def load_log(log_file):
 def _design_tuning(evosys,project_dir):
     ### build the system 
     st.title("Model Design Agents")
+
+    if st.session_state.listening_mode:
+        st.warning("**NOTE:** You are running in listening mode. You cannot launch design sessions by yourself.")
 
     system = evosys.rnd_agent
     db_dir = evosys.ptree.db_dir
@@ -502,7 +509,7 @@ def _design_tuning(evosys,project_dir):
     with cols[3]:
         st.write('')
         st.write('')
-        submit = st.button(label="***Run design***",disabled=mode!=DesignModes.MUTATION.value)
+        submit = st.button(label="***Run design***",disabled=mode!=DesignModes.MUTATION.value or st.session_state.listening_mode)
     with cols[4]:
         st.write('')
         st.write('')
@@ -555,14 +562,8 @@ def _design_tuning(evosys,project_dir):
 
 def design(evosys,project_dir):
 
-    if 'design_threads' not in st.session_state:
-        st.session_state['design_threads'] = {}  
-
     if 'design_tab' not in st.session_state:
         st.session_state['design_tab'] = 'design_runner'
-
-    if 'max_design_threads' not in st.session_state:
-        st.session_state['max_design_threads'] = 5
 
     if 'viewing_log' not in st.session_state:
         st.session_state['viewing_log'] = None
