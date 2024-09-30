@@ -93,6 +93,9 @@ if 'max_design_threads' not in st.session_state:
 if 'running_verifications' not in st.session_state:
     st.session_state['running_verifications'] = {}
 
+if 'listener_connections' not in st.session_state:
+    st.session_state['listener_connections'] = {}
+
 
 # Setup the streamlit pages
 

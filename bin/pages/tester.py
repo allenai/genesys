@@ -147,4 +147,5 @@ def tester(evosys,project_dir):
             CM.verify_command(selected_conn, design_id, scale, resume)
 
     st.subheader('Connection Status')
+    st.session_state['listener_connections']=CM.connections
     st.write(CM.connections)

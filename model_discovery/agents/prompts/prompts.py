@@ -174,6 +174,7 @@ Please refine your design and implementation based on the feedback provided. You
    if use_o1:
       GU_IMPLEMENTATION_RETRY_prompt += """
 Please try to fix the code based on the information provided. Do not include anything else besides the implementation(s) of the unit(s) in your final response.
+Do not worry about the number of tokens in your reasoning, you can use as many as you need to give the best response.
 """
       return AgentPrompt(GU_IMPLEMENTATION_RETRY_prompt,GENERAL_CODE_parser)
    else:
@@ -1951,6 +1952,8 @@ GUM_DESIGNER_SYSTEM_O1_prompt_part4 = """
 """
 
 
+# endregion
+
 
 '''
 #######################################################
@@ -3323,6 +3326,7 @@ this variant of the GAU.
       else:
          GUMT_IMPLEMENTATION_UNIT_prompt+="""
 Please refine based on the information provided. Do not include anything else besides the implementation(s) of the unit(s) in your final response.
+Do not worry about the number of tokens in your reasoning, you can use as many as you need to give the best response.
 """
       GUMT_IMPLEMENTATION_UNIT_format = GU_IMPLEMENTATION_REFINE_format
    else:
@@ -3362,6 +3366,7 @@ After completing this GAU, you will be asked to implement any remaining parts of
       else:
          GUMT_IMPLEMENTATION_UNIT_prompt+="""
 Please implement based on the information provided. Do not include anything else besides the implementation(s) of the unit(s) in your final response.
+Do not worry about the number of tokens in your reasoning, you can use as many as you need to give the best response.
 """
       GUMT_IMPLEMENTATION_UNIT_format = GU_IMPLEMENTATION_format
    
@@ -3536,6 +3541,7 @@ Follow these guidelines in your response:
 
 Remember, the goal is to develop a well-researched, innovative, and feasible proposal for LM block design. Be patient and search for more rounds to perfect your ideas.
 Now start your analysis and investigation. Make sure the keywords and description are formulated properly.
+Do not worry about the number of tokens in your reasoning and your response, you can use as many as you need to give the best response.
 """
 
 
@@ -3598,6 +3604,7 @@ Follow these guidelines in your response:
 Remember, the goal is to develop a well-researched, innovative, and feasible proposal for LM block design. Be patient and search for more rounds to perfect your ideas.
 
 Now start your analysis. Make sure the keywords and description are formulated properly.
+Do not worry about the number of tokens in your reasoning and your response, you can use as many as you need to give the best response.
 """
 
 def O1_SEARCH_parser(raw_output: ModelOutputPlus) -> Dict[Any,Any]:
@@ -3651,6 +3658,7 @@ O1M_PROPOSAL_ISEARCH_CONT = AgentPrompt(O1M_PROPOSAL_ISEARCH_CONT_prompt,O1_SEAR
 
 
 # region O1M Proposer Proposal Finish Prompt
+# https://www.reddit.com/r/OpenAI/comments/1fsdc5z/o1mini_tends_to_get_better_results_on_the_2024/
 
 O1M_PROPOSAL_FINISH_prompt = """
 Here is more search results based on your last response, you will not be able to access the search assistant again after this, so do not include any more search queries in your response:
@@ -3693,7 +3701,9 @@ Maintain and update the following structure in your proposal throughout the proc
 - **Implementation clarity**: Include clear guidelines for implementation, such as pseudo-code, mathematical formulas, and step-by-step instructions. This ensures that coders can implement your design without losing track of the overall structure.
 
 Now please give your final proposal and the selection of the GAU you will modify. 
-Be sure to wrap the selection in a quoted block like this: ```selection YOUR_SELECTION```. And your selection must come from one of {SELECTIONS}. Ensure there is one and only one ```selection YOUR_SELECTION``` quoted block in your response.
+Be sure to wrap the selection in a quoted block like this: ```selection YOUR_SELECTION```. 
+And your selection must come from one of {SELECTIONS}. Ensure there is one and only one ```selection YOUR_SELECTION``` quoted block in your response.
+Do not worry about the number of tokens in your reasoning and your response, you can use as many as you need to give the best response.
 """
 
 
@@ -3876,6 +3886,7 @@ Follow these guidelines in your response:
 
 Remember, the goal is to ensure a well-researched, innovative, and feasible proposal for LM block design. Be patient and search for more rounds to perfect your ideas.
 Now start your analysis and investigation. Make sure the keywords and description are formulated properly.
+Do not worry about the number of tokens in your reasoning and your response, you can use as many as you need to give the best response.
 """
 
 O1M_PROPOSAL_REVIEW = AgentPrompt(O1M_PROPOSAL_REVIEW_prompt,O1_SEARCH_parser)
@@ -3935,6 +3946,7 @@ Provide:
 3. A final rating (float number between 0 and 5) based on the proposal's overall quality and potential impact. Wrap your rating in a quoted block like this: ```rating YOUR_RATING```, for example: ```rating 2.7```. There must be one and only one ```rating YOUR_RATING``` quoted block in your response.
 
 Remember to be objective, strict, and fair. Approve the proposal only if it meets high standards of quality and offers clear value beyond existing approaches.
+Do not worry about the number of tokens in your reasoning and your response, you can use as many as you need to give the best response.
 """
 
 
@@ -4183,6 +4195,7 @@ Prepare a comprehensive feedback report including:
 
 Remember, your insights are crucial for guiding the Coder in refining their work. Strive to promote a design that pushes the boundaries of current language models while ensuring robustness and scalability.
 Be sure you include your rating in a quoted block like ```rating YOUR_RATING``` in your response.
+Do not worry about the number of tokens in your reasoning and your response, you can use as many as you need to give the best response.
 """
 
 O1_IMPLEMENTATION_UNIT_OBSERVE=AgentPrompt(O1_IMPLEMENTATION_UNIT_OBSERVE_prompt,O1_REVIEW_parser)
@@ -4250,6 +4263,7 @@ Prepare a comprehensive feedback report including:
 
 Remember, your insights are crucial for guiding the Coder in refining their work. Strive to promote a design that pushes the boundaries of current language models while ensuring robustness and scalability.
 Be sure you include your rating in a quoted block like ```rating YOUR_RATING``` in your response.
+Do not worry about the number of tokens in your reasoning and your response, you can use as many as you need to give the best response.
 """
 
 O1_IMPLEMENTATION_UNIT_REFINE_OBSERVE=AgentPrompt(O1_IMPLEMENTATION_UNIT_REFINE_OBSERVE_prompt,O1_REVIEW_parser)
@@ -4534,6 +4548,7 @@ It is round {ROUND} for the design implementation. Please make your plan.
 
 Please wrap your selection in a quoted block like this: ```selection YOUR_SELECTION```, for example: ```selection GAU_NAME```. 
 You must include one and only one selection quoted block in your response.
+Do not worry about the number of tokens in your reasoning and your response, you can use as many as you need to give the best response.
 """
 
 O1_IMPLEMENTATION_PLANNER_SELECTION=AgentPrompt(O1_IMPLEMENTATION_PLANNER_SELECTION_prompt,O1_SELECTION_parser)
@@ -4561,6 +4576,7 @@ Now you have implemented all the GAUs, you can choose to refine them or terminat
 Please wrap your selection in a quoted block like this: ```selection YOUR_SELECTION```, for example: ```selection GAU_NAME```. 
 You must include one and only one selection quoted block in your response. 
 Or if you want to terminate the implementation process, you can include a ```terminate``` quoted block in your response.
+Do not worry about the number of tokens in your reasoning and your response, you can use as many as you need to give the best response.
 """
 
 O1_IMPLEMENTATION_PLANNER_POST_REFINE=AgentPrompt(O1_IMPLEMENTATION_PLANNER_POST_REFINE_prompt,O1_SELECTION_parser)
@@ -4589,6 +4605,7 @@ The agent failed in It is the beginning of the design implementation. Please mak
 
 You do not need to select any GAUs at the beginning as you will work on the selected unit at the beginning.
 Please analyze the design proposal and give your plan, and providing guidance for the coder.
+Do not worry about the number of tokens in your reasoning and your response, you can use as many as you need to give the best response.
 """
 
 O1_IMPLEMENTATION_PLANNER_BEGIN=AgentPrompt(O1_IMPLEMENTATION_PLANNER_BEGIN_prompt)
