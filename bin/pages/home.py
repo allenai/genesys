@@ -23,8 +23,22 @@ def home(evosys,project_dir):
     st.markdown('''
 # Welcome to the Model Discovery System
 
-The Model Discovery System is a system aimed at using large language model agents to discover novel and human-level autoregressive language model designs. 
-This is a frontend for the Model Discovery System.
+The Model Discovery System is a system aimed at using large language model
+agents to discover novel and human-level autoregressive language model designs.
+This is a graphical user interface (GUI) for the Model Discovery System. You can
+use it to run experiments, view results, and tune the agents. We use this GUI as
+the main interface to the system instead of the common command-line interface
+(CLI).
+
+* ***Why not a CLI?*** Command-line is *insufficient* to deal with such a
+  complicated system. In a command-line interface, it is hard to observe and
+  manage the experiment states (e.g., launching multiple design threads, running
+  verifications on multiple nodes), and there is no way to read the design
+  artifacts (e.g., long markdown or python outputs from multiple agents). 
+
+* ***Can I use a CLI instead?*** Yes, you can always use the CLI to run the
+  system. The GUI essentially integrated experiment monitors and runners to
+  create subprocess to run the low-level CLI instructions. 
 
 
 ''')
