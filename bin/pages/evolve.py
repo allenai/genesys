@@ -52,7 +52,7 @@ def evolve(evosys,project_dir):
 
 
     st.header("Phylogenetic Tree Viewer")
-    ptree_dir_full=U.pjoin(evosys.evo_dir,f'PTree.html')
+    # ptree_dir_full=U.pjoin(evosys.evo_dir,f'PTree.html')
 
     col1, col2, col3 = st.columns([6,0.1,2])
     
@@ -91,7 +91,10 @@ def evolve(evosys,project_dir):
 
     with st.sidebar:
         AU.running_status(st,evosys)
-        logo_png = AU.square_logo("μLM")
-        st.image(logo_png, use_column_width=True)
+
+        # logo = AU.square_logo("μLM")
+        # logo_path = U.pjoin(pathlib.Path(__file__).parent,'..','assets','storm_logo.svg')
+        # logo=AU.svg_to_image(logo_path)
+        # st.image(logo, use_column_width=True)
 
     

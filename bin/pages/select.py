@@ -11,15 +11,10 @@ import model_discovery.utils as U
 import bin.app_utils as AU
 
 
-def select(evosys,project_dir):
-    
-    st.title('Node Selector Playground')
-
-    with st.sidebar:
-        AU.running_status(st,evosys)
 
 
-
+def design_selector(evosys,project_dir):
+    st.header('Design Selector')
     col1, col2, col3 = st.columns([1, 1, 4])
     with col1:
         # st.markdown("#### Configure design mode")
@@ -47,7 +42,7 @@ def select(evosys,project_dir):
                 n_sources[source] = st.number_input(label=f'{source} ({sources[source]})',min_value=0,value=init_value,max_value=sources[source])#,disabled=disabled)
     
     if st.button('Select'):
-        instruct,seeds,refs=evosys.select(n_sources,mode=DesignModes(mode))
+        instruct,seeds,refs=evosys.select_design(n_sources,mode=DesignModes(mode))
 
         st.subheader(f'**Instructions from the selector:**')
         if instruct:
@@ -66,4 +61,57 @@ def select(evosys,project_dir):
                 st.write(ref.to_prompt())
     else:
         st.info(f'**NOTE:** All settings here will only be applied to this playground. The playground will directly work on the selected running namespace ```{evosys.evoname}```.')
+
+
+def verify_selector(evosys,project_dir):
+    st.header('Verify Selector')
+
+    col1, col2, col3, col4 = st.columns(4)
+    with col1:
+        selection_mode = st.selectbox(label="Selection Mode",options=['random'])
+    with col2:
+        st.write('')
+        with st.expander('Remaining Budget'):
+            st.write(evosys.verify_budget)
+    with col3:
+        scale = st.selectbox(label="Scale",options=evosys.target_scales)
+    with col4:
+        st.write('')
+        with st.expander(f'Unverified Designs under :red[**{scale}**]'):
+            unverified = evosys.ptree.get_unverified_designs(scale)
+            st.write(unverified)
+
+
+
+    verify_selected = st.button('Select')
+
+    if verify_selected:
+        design_id,scale=evosys.select_verify()
+        if design_id is None:
+            st.warning('No design to verify.')
+        else:
+            st.write(f'Selected {design_id} at scale {scale} to be verified.')
+
+
+def select(evosys,project_dir):
+    
+    st.title('Selector Playground')
+
+    if 'view_selector' not in st.session_state:
+        st.session_state.view_selector = 'design'
+
+    with st.sidebar:
+        AU.running_status(st,evosys)
+
+        st.write('Choose the selector to view')
+        if st.button('**Design Selector**' if st.session_state.view_selector == 'design' else 'Design Selector',use_container_width=True):
+            st.session_state.view_selector = 'design'
+        if st.button('**Verify Selector**' if st.session_state.view_selector == 'verify' else 'Verify Selector',use_container_width=True):
+            st.session_state.view_selector = 'verify'
+
+
+    if st.session_state.view_selector == 'design':
+        design_selector(evosys,project_dir)
+    elif st.session_state.view_selector == 'verify':
+        verify_selector(evosys,project_dir)
 

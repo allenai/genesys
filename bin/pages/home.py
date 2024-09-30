@@ -79,10 +79,10 @@ the main interface to the system instead of the common command-line interface
 in a given scale and evaluate the performance by the customed LM-Eval.
 5. **Evolve**: The evolution loop will repeat the above processes asynchronously. 
 
-## GUI Guide
+## GUI Guideline
 
- * **Namespace**: The experiment name, 📶 means connected to the remote DB, 📴 is disconnected.
- * **Listening**: When the system is running in the listening mode or connected to listeners as master node, the corresponding status will show with 👂.
+ * **Namespace**: The experiment name, 📶 is online with remote DB connected, 📴 means offline.
+ * **Listening**: When the system is running in the listening mode or connected to listeners as master node, the status will show with 👂, 🐎 means running designs 🥏 means running verifies. 
 ''')
 
 
@@ -99,6 +99,8 @@ simply run `python -m model_discovery.listen` or `bash script/run_listener.sh`
 on the node. Or you can also run it in `Listen` tab in the GUI, so that you
 can view the design process and verification results in real-time in the 
 ***Design***, ***Verify*** and ***Viewer*** tabs.
+You can also run the system with CLI, then you can always check the status in GUI (on the same machine) afterwards
+by input the same node id in the **Listen** tab. 
 
 
 ''')

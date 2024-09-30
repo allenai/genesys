@@ -479,8 +479,8 @@ REFERENCE_COLOR = '#AF47D2'
 RWC_COLOR = '#FB773C' # reference with code
 EXT_COLOR_1HOC = '#ed556a' # extended 1-hop reference
 
-# from low to high
-TARGET_SCALES = ['14M','31M','70M','125M','350M']#,'760M','1300M']
+# # from low to high
+# TARGET_SCALES = ['14M','31M','70M','125M','350M']#,'760M','1300M']
 
 
 @dataclass
@@ -924,8 +924,9 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
     │   └── ...
     | ... # units, etc.
     """
-    def __init__(self, evoname, db_dir: str, db_only=False, remote_db=None, use_remote_db=True): # recommended to use remote db for distributed sampling
+    def __init__(self, evoname, target_scales, db_dir: str, db_only=False, remote_db=None, use_remote_db=True): # recommended to use remote db for distributed sampling
         self.evoname = evoname
+        self.target_scales = target_scales
         self.db_dir = db_dir
         self.lib_dir = U.pjoin(LIBRARY_DIR,'tree')
         self.lib_ext_dir = U.pjoin(LIBRARY_DIR,'tree_ext')
@@ -1041,7 +1042,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
     def get_unverified_scales(self,acronym): # from low to high
         unverified=[]
         design=self.get_node(acronym)
-        for scale in TARGET_SCALES:
+        for scale in self.target_scales:
             if scale not in design.verifications:
                 unverified.append(scale)
         unverified.sort(key=lambda x: int(x.replace('M','')))
@@ -1246,7 +1247,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         if status=='implemented':
             codes = {}
             _code = tree.compose()
-            for scale in TARGET_SCALES:
+            for scale in self.target_scales:
                 codes[scale] = check_tune(scale,acronym, code=_code,check_only=True,cpu_only=True,reformat_only=True)
         U.save_json(codes, U.pjoin(self.design_dir(acronym), 'codes.json'))
         self.FM.upload_implementation(acronym,implementation.to_dict(),overwrite=True)
@@ -1481,25 +1482,29 @@ class ConnectionManager:
         self.connections = {c.id: c.to_dict() for c in connections}
         return list(self.connections.keys())
 
+    def check_workload(self,node_id):
+        command_status = self.check_command_status(node_id)
+        running_designs=[]
+        running_verifies=[]
+        if command_status:
+            for pid in command_status:
+                command = command_status[pid]
+                if command['command'].startswith('design') and command['status'] == 'running':
+                    running_designs.append(pid)
+                elif command['command'].startswith('verify') and command['status'] == 'running':
+                    running_verifies.append(pid)
+        return running_designs, running_verifies
+
     def get_available_connections(self):
         self.get_active_connections()
         design_available = []
         verify_available = []
         for node_id in self.connections:
-            command_status = self.check_command_status(node_id)
-            if command_status:
-                running_designs=[]
-                running_verifies=[]
-                for pid in command_status:
-                    command = command_status[pid]
-                    if command['command'].startswith('design') and command['status'] == 'running':
-                        running_designs.append(pid)
-                    elif command['command'].startswith('verify') and command['status'] == 'running':
-                        running_verifies.append(pid)
-                if len(running_designs) < self.max_design_threads_per_node:
-                    design_available.append(node_id)
-                if len(running_verifies) == 0:
-                    verify_available.append(node_id)
+            running_designs, running_verifies = self.check_workload(node_id)
+            if len(running_designs) < self.max_design_threads_per_node:
+                design_available.append(node_id)
+            if len(running_verifies) == 0:
+                verify_available.append(node_id)
         return design_available, verify_available
 
     def check_command_status(self,node_id):
@@ -1510,14 +1515,8 @@ class ConnectionManager:
             return None
 
     def design_command(self,node_id,resume=True):
-        command_status = self.check_command_status(node_id)
-        running_designs=[]
-        if command_status:
-            running_designs=[]
-            for pid in command_status:
-                command = command_status[pid]
-                if command['command'].startswith('design') and command['status'] == 'running':
-                    running_designs.append(pid)
+        self.get_active_connections() # refresh the connection status
+        running_designs, _ = self.check_workload(node_id)
         if len(running_designs) >= self.max_design_threads_per_node:
             self.st.toast(f"Max number of design threads reached ({self.max_design_threads_per_node}) for node {node_id}. Please wait for some threads to finish.",icon='🚨')
             return
@@ -1527,14 +1526,8 @@ class ConnectionManager:
         self.send_command(node_id,command)
     
     def verify_command(self,node_id,design_id,scale,resume=True):
-        command_status = self.check_command_status(node_id)
-        running_verifies=[]
-        if command_status:
-            running_verifies=[]
-            for pid in command_status:
-                command = command_status[pid]
-                if command['command'].startswith('verify') and command['status'] == 'running':
-                    running_verifies.append(pid)
+        self.get_active_connections() # refresh the connection status
+        _, running_verifies = self.check_workload(node_id)
         if len(running_verifies) > 0:
             self.st.toast(f"There is already a verification running for node {node_id}. Please wait for it to finish.",icon='🚨')
             return
@@ -1667,8 +1660,9 @@ class EvolutionSystem(exec_utils.System):
             for scale in scales[::-1]:
                 self.state['budgets'][scale]=int(np.ceil(budget))
                 budget/=self.state['selection_ratio']
-        scales=list(self.state['budgets'].keys())
-
+        self.target_scales=list(self.state['budgets'].keys())
+        self.target_scales.sort(key=lambda x:int(x.replace('M','')))
+        
         if 'no_agent' not in self.params:
             self.params['no_agent']=False
         if 'db_only' not in self.params:
@@ -1678,13 +1672,13 @@ class EvolutionSystem(exec_utils.System):
 
         self.save_state() # save the initialized state
 
-        self.scales=[eval(f'GAMConfig_{scale}()') for scale in scales]
+        self.scales=[eval(f'GAMConfig_{scale}()') for scale in self.target_scales]
 
-        self.stream.write(f"Evolution system initialized with scales: {scales}")
+        self.stream.write(f"Evolution system initialized with scales: {self.target_scales}")
         self.stream.write(f"Budgets remaining: {self.state['budgets']}")
         self.stream.write(f"Checkpoint directory: {self.evo_dir}")
 
-        self.ptree=PhylogeneticTree(self.evoname,U.pjoin(self.evo_dir,'db'),self.params['db_only'],self.remote_db,self.params['use_remote_db'])
+        self.ptree=PhylogeneticTree(self.evoname,self.target_scales,U.pjoin(self.evo_dir,'db'),self.params['db_only'],self.remote_db,self.params['use_remote_db'])
         print(f"Phylogenetic tree loaded with {len(self.ptree.G.nodes)} nodes and {len(self.ptree.design_sessions)} design sessions from {self.ptree.db_dir}.")
 
         if self.params['no_agent']:
@@ -1805,7 +1799,10 @@ class EvolutionSystem(exec_utils.System):
 
     @property
     def verify_budget(self):
-        return self.ptree.remaining_budget(self.state['budgets'])
+        vb = self.ptree.remaining_budget(self.state['budgets'])
+        vb=sorted(vb.items(),key=lambda x:int(x[0].replace('M','')))
+        vb = {k:v for k,v in vb}
+        return vb
 
     @property
     def available_verify_budget(self):
@@ -1863,7 +1860,7 @@ class EvolutionSystem(exec_utils.System):
         })
         if sess_id is None:
             if len(unfinished_designs)==0 or not resume:
-                instruct,seed,refs=self.select(n_sources,mode=mode) # use the seed_ids to record the phylogenetic tree
+                instruct,seed,refs=self.select_design(n_sources,mode=mode) # use the seed_ids to record the phylogenetic tree
                 self.sample(instruct,seed,refs,mode=mode,user_input=user_input,design_cfg=design_cfg,search_cfg=search_cfg)
             else:
                 sess_id = random.choice(unfinished_designs)
@@ -1876,7 +1873,7 @@ class EvolutionSystem(exec_utils.System):
                 self.stream.write(f"Design id provided, will restore session {sess_id}, mode: {mode}")
                 self.sample(sess_id=sess_id,user_input=user_input,design_cfg=design_cfg,mode=mode,search_cfg=search_cfg)
             else: # create a new design session using an external id
-                instruct,seed,refs=self.select(n_sources,mode=mode) # use the seed_ids to record the phylogenetic tree
+                instruct,seed,refs=self.select_design(n_sources,mode=mode) # use the seed_ids to record the phylogenetic tree
                 self.sample(instruct,seed,refs,sess_id,mode=mode,user_input=user_input,design_cfg=design_cfg,search_cfg=search_cfg)
 
     def sample(self,instruct=None,seed:List[NodeObject]=None,refs:List[NodeObject]=None,sess_id=None,mode=None,user_input='',design_cfg={},search_cfg={}):
@@ -1907,7 +1904,7 @@ class EvolutionSystem(exec_utils.System):
 
 
     # TODO: upgrade to Selector agent
-    def select(self,K: Union[int,Dict[str,int]],selector_instruct='',mode=None)->Tuple[str,List[NodeObject]]:
+    def select_design(self,K: Union[int,Dict[str,int]],selector_instruct='',mode=None)->Tuple[str,List[NodeObject]]:
         '''
         K: int or dict of {source_type: num of seeds}, if K is int, then sample from all default sources (the ones with code)
         Return:
@@ -1919,10 +1916,10 @@ class EvolutionSystem(exec_utils.System):
         seeds=[]
         instruct=''
         if isinstance(K,int):
-            instruct,seeds=self._select(K,selector_instruct)
+            instruct,seeds=self._select_design(K,selector_instruct)
         elif isinstance(K,dict):
             for source_type,num in K.items():
-                _instruct,topk=self._select(num,selector_instruct,source_type)
+                _instruct,topk=self._select_design(num,selector_instruct,source_type)
                 instruct+=_instruct # NOTE: should not like this
                 seeds.extend(topk)
         if mode==DesignModes.MUTATION:
@@ -1947,7 +1944,7 @@ class EvolutionSystem(exec_utils.System):
             refs = [i for i in seeds if i not in seed]
         return instruct,seed,refs
 
-    def _select(self,K: int=1,selector_instruct='',
+    def _select_design(self,K: int=1,selector_instruct='',
             filter_type=['DesignArtifact','ReferenceWithCode','ReferenceCoreWithTree','ReferenceCore'])-> Tuple[str,List[NodeObject]]: # K is the number of designs to sample, instruct is the instruction to the selector, select seeds or select populations
         """ Provide the instruction including seeds and instructs for the next design """
         K=min(K,len(self.ptree.filter_by_type(filter_type)))
@@ -2001,7 +1998,7 @@ class EvolutionSystem(exec_utils.System):
 
     def verify(self,design_id=None,scale=None,resume=True): # choose then verify
         if design_id is None:
-            design_id,scale=self._select_verify_design()
+            design_id,scale=self.select_verify()
         if design_id is None:
             return None
         self.stream.write(f"Verifying design {design_id} at scale {scale}...")
@@ -2014,13 +2011,9 @@ class EvolutionSystem(exec_utils.System):
             return 'SUCCESS'
         return 'FAILED'
 
-    def _select_verify_design(self):
-        TARGET_SCALES.sort(key=lambda x: int(x.replace('M','')))
+    def select_verify(self):
         if self.verify_strategy=='random':
-            for scale in TARGET_SCALES:
-                if self.state['budgets'][scale]==0:
-                    self.stream.write(f"No budget for design verify at scale {scale}.")
-                    continue
+            for scale in self.available_verify_budget:
                 unverified=self.ptree.get_unverified_designs(scale)
                 if len(unverified)==0:
                     self.stream.write(f"No unverified design at scale {scale}.")
