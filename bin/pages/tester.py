@@ -66,4 +66,8 @@ def tester(evosys,project_dir):
         for connection in active_connections:
             CM.send_command(connection.id, command)
 
+    ### Clear zombie connections
+    if st.button('Clear zombie connections'):
+        CM.clear_zombie_connections()
+
     

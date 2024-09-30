@@ -236,6 +236,41 @@ def design_config(evosys):
             st.write(evosys.search_cfg)
 
 
+def upload_exp_to_db(evosys,exp,config=None,state=None):
+    collection=evosys.ptree.remote_db.collection('experiments')
+    to_set={}
+    if config:
+        to_set['config']=config
+    if state:
+        to_set['state']=state
+    if len(to_set)>0:
+        collection.document(exp).set(to_set,merge=True)
+
+def delete_exp_from_db(evosys,exp):
+    collection=evosys.ptree.remote_db.collection('experiments')
+    collection.document(exp).delete()
+
+def sync_exps_to_db(evosys):
+    for exp in os.listdir(evosys.ckpt_dir):
+        config=U.load_json(U.pjoin(evosys.ckpt_dir,exp,'config.json'))
+        state=U.load_json(U.pjoin(evosys.ckpt_dir,exp,'state.json'))
+        upload_exp_to_db(evosys,exp,config,state)
+    st.toast("Synced all experiments to remote DB")
+
+def sync_exps_from_db(evosys):
+    collection=evosys.ptree.remote_db.collection('experiments')
+    docs=collection.get()
+    for doc in docs:
+        doc_id=doc.id
+        doc=doc.to_dict()
+        config=doc.get('config',{})
+        state=doc.get('state')
+        U.mkdir(U.pjoin(evosys.ckpt_dir,doc_id))
+        if config:
+            U.save_json(config,U.pjoin(evosys.ckpt_dir,doc_id,'config.json'))
+        if state:
+            U.save_json(state,U.pjoin(evosys.ckpt_dir,doc_id,'state.json'))
+    st.toast("Synced all experiments from remote DB")
 
 
 def config(evosys,project_dir):
@@ -323,11 +358,22 @@ def config(evosys,project_dir):
 
 
     st.subheader("Existing Experiments")
+
+
+    col1,col2,_=st.columns([1,1,2])
+    with col1:
+        if st.button("Upload to Remote DB"):
+            sync_exps_to_db(evosys)
+    with col2:
+        if st.button("Download from Remote DB"):
+            sync_exps_from_db(evosys)
     
     def delete_dir(dir):
         if os.path.exists(dir):
             shutil.rmtree(dir)
         st.toast(f"Deleted directory: {dir}")
+        if evosys.params['use_remote_db']:
+            delete_exp_from_db(evosys,dir)
         # st.rerun()
     
     def switch_dir(dir):
