@@ -924,7 +924,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
     │   └── ...
     | ... # units, etc.
     """
-    def __init__(self, evoname, db_dir: str, db_only=False, use_remote_db=True): # recommended to use remote db for distributed sampling
+    def __init__(self, evoname, db_dir: str, db_only=False, remote_db=None, use_remote_db=True): # recommended to use remote db for distributed sampling
         self.evoname = evoname
         self.db_dir = db_dir
         self.lib_dir = U.pjoin(LIBRARY_DIR,'tree')
@@ -936,12 +936,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         self.db_only=db_only
         self.FM = None
         self.use_remote_db=use_remote_db
-        db_key_path = U.pjoin(SECRETS_DIR,'db_key.json')
-        self.remote_db = None
-        if U.pexists(db_key_path):
-            self.remote_db = firestore.Client.from_service_account_json(db_key_path)
-        else:
-            print(f'No db key found at {db_key_path}, using local db only. Will sync when remote db key is available.')
+        self.remote_db = remote_db
         if use_remote_db and self.remote_db is not None:
             self.FM = FirestoreManager(evoname,db_dir,self.remote_db)
             self.FM.sync_from_db()
@@ -1497,6 +1492,13 @@ class EvolutionSystem(exec_utils.System):
         self.design_cfg = {}
         self.search_cfg = {}
         self.select_cfg = {}
+        self.remote_db = None
+        db_key_path = U.pjoin(SECRETS_DIR,'db_key.json')
+        if U.pexists(db_key_path):
+            self.remote_db = firestore.Client.from_service_account_json(db_key_path)
+            print(f'Remote db connected.')
+        else:
+            print(f'No db key found at {db_key_path}, using local db only. Will sync when remote db key is available.')
         self.load(**kwargs)
 
     def load(self,**kwargs):
@@ -1569,7 +1571,7 @@ class EvolutionSystem(exec_utils.System):
         self.stream.write(f"Budgets remaining: {self.state['budgets']}")
         self.stream.write(f"Checkpoint directory: {self.evo_dir}")
 
-        self.ptree=PhylogeneticTree(self.evoname,U.pjoin(self.evo_dir,'db'),self.params['db_only'],self.params['use_remote_db'])
+        self.ptree=PhylogeneticTree(self.evoname,U.pjoin(self.evo_dir,'db'),self.params['db_only'],self.remote_db,self.params['use_remote_db'])
         print(f"Phylogenetic tree loaded with {len(self.ptree.G.nodes)} nodes and {len(self.ptree.design_sessions)} design sessions from {self.ptree.db_dir}.")
 
         if self.params['no_agent']:
@@ -1612,13 +1614,23 @@ class EvolutionSystem(exec_utils.System):
         self.search_cfg = {}
         self.select_cfg = {}
         _params = {'evoname':ckpt_name}
-        if self.ptree.remote_db:
+        if self.remote_db:
             self.sync_from_db(ckpt_name)
         if load_params:
             config_path = U.pjoin(self.ckpt_dir,ckpt_name,'config.json')
             params = U.load_json(config_path).get('params',{})
             _params.update(params)
         self.reload(_params)
+
+    def get_unfinished_verifies(self,evoname=None):
+        if evoname is None:
+            evoname = self.evoname
+        ve_dir=U.pjoin(self.ckpt_dir,evoname,'ve')
+        unfinished_verifies = []
+        for v in os.listdir(ve_dir):
+            if not U.pexists(U.pjoin(ve_dir,v,'report.json')):
+                unfinished_verifies.append(v)
+        return unfinished_verifies
 
     def query_system(self,
         query: Optional[str] = '',
@@ -1638,7 +1650,7 @@ class EvolutionSystem(exec_utils.System):
     def sync_from_db(self,evoname=None):
         if evoname is None:
             evoname=self.evoname
-        collection=self.ptree.remote_db.collection('experiments')
+        collection=self.remote_db.collection('experiments')
         doc=collection.document(evoname).get()
         if doc.exists:
             doc=doc.to_dict()
@@ -1648,7 +1660,7 @@ class EvolutionSystem(exec_utils.System):
             U.save_json(state,U.pjoin(self.evo_dir,'state.json'))
 
     def load_config(self):
-        if self.ptree.remote_db:
+        if self.remote_db:
             self.sync_from_db()
         config = U.load_json(U.pjoin(self.evo_dir,'config.json'))
         self.design_cfg = config.get('design_cfg',{})
@@ -1660,12 +1672,12 @@ class EvolutionSystem(exec_utils.System):
         return config
 
     def sync_state_to_db(self):
-        collection=self.ptree.remote_db.collection('experiments')
+        collection=self.remote_db.collection('experiments')
         doc=collection.document(self.evoname)
         doc.set({'state':self.state},merge=True)
 
     def save_state(self):
-        if self.ptree.remote_db:
+        if self.remote_db:
             self.sync_state_to_db()
         U.save_json(self.state,U.pjoin(self.evo_dir,'state.json'))
     
@@ -1676,12 +1688,21 @@ class EvolutionSystem(exec_utils.System):
         config['select_cfg'] = self.select_cfg
         U.save_json(config,U.pjoin(self.evo_dir,'config.json'))
 
+    @property
+    def verify_budget(self):
+        return self.ptree.remaining_budget(self.state['budgets'])
+
+    @property
+    def available_verify_budget(self):
+        budget=self.verify_budget
+        return {k:v for k,v in budget.items() if v>0}
+
     def check_budget(self,action):
         if action=='design': # check the design budget
             if self.design_budget_limit>0 and self.ptree.design_cost>=self.design_budget_limit:
                 return False
         elif action=='verify':
-            if sum(self.ptree.remaining_budget(self.state['scales']).values())<=0:
+            if sum(self.verify_budget.values())<=0:
                 return False
         else:
             raise ValueError(f"Invalid action: {action}")
