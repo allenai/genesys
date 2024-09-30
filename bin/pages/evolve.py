@@ -57,6 +57,7 @@ def evolve(evosys,project_dir):
     col1, col2, col3 = st.columns([6,0.1,2])
     
     max_nodes=100
+    
     evosys.ptree.export(max_nodes=100,height='800px')
     ptree_dir_small=U.pjoin(evosys.evo_dir,f'PTree_100.html')
 

@@ -79,11 +79,10 @@ the main interface to the system instead of the common command-line interface
 in a given scale and evaluate the performance by the customed LM-Eval.
 5. **Evolve**: The evolution loop will repeat the above processes asynchronously. 
 
-## UI Info
+## GUI Guide
 
- * **Namespace**: The experiment name, 📶 means connected to the remote DB, 📴 means disconnected.
- * **Running Sessions**: Design and scale that is being verified and running design sessions.
-
+ * **Namespace**: The experiment name, 📶 means connected to the remote DB, 📴 is disconnected.
+ * **Listening**: When the system is running in the listening mode or connected to listeners, the status will show with 👂.
 ''')
 
 
