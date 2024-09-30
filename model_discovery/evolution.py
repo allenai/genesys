@@ -198,7 +198,7 @@ class FirestoreManager:
             else:
                 print(f'Failed to upload "{key}" for design "{design_id}"')
 
-    def upload_collection_key_data(self, design_id, collection_name, key, key_data, overwrite=False, verbose=False):
+    def upload_collection_key_data(self, design_id, collection_name, key, data, overwrite=False, verbose=False):
         key=str(key)
         design_ref = self.collection.document(design_id)
         data_ref = design_ref.collection(collection_name).document(str(key))
@@ -213,7 +213,7 @@ class FirestoreManager:
                 print(f'Key "{key}" already exists in design "{design_id}" collection "{collection_name}"')
         if upload:
             self.index[design_id][collection_name][key]=1
-            if self.safe_upload(data_ref, key_data):
+            if self.safe_upload(data_ref, {key: data}):
                 print(f'Uploaded "{key}" for design "{design_id}" collection "{collection_name}" successfully')
             else:
                 print(f'Failed to upload "{key}" for design "{design_id}" collection "{collection_name}"')
@@ -1195,7 +1195,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
             if line.startswith("# "):
                 title = line[2:]
                 break
-        acronym = self.unique_acronym(proposal.modelname.replace(' ', '_').lower())
+        acronym = self.unique_acronym(proposal.modelname)
         proposal.modelname = acronym
         metadata = {'sess_id': sess_id, 'acronym': acronym, 'seed_ids': seeds, 'title': title}
         U.save_json(metadata, U.pjoin(self.design_dir(acronym), 'metadata.json'))
@@ -1265,6 +1265,10 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         self.FM.update_index()
         
     def unique_acronym(self, acronym: str) -> str:
+        acronym = acronym.replace(' ', '_').lower()
+        acronym = acronym.replace('__','_')
+        for c in ['(',')','[',']','{','}','"']:
+            acronym = acronym.replace(c,'')
         existing_acronyms = set(self.G.nodes)
         if self.FM:
             self.FM.get_index()
