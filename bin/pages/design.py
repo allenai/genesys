@@ -29,8 +29,10 @@ import bin.app_utils as AU
 def _gen_sess_id():
     return f"{datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}-{uuid.uuid4().hex[:6]}"
 
-def _run_design_thread(evosys,sess_id=None):
-    params_str = shlex.quote(json.dumps(evosys.params))
+def _run_design_thread(evosys,sess_id=None,params=None):
+    if params is None:
+        params = evosys.params
+    params_str = shlex.quote(json.dumps(params))
     if sess_id is None:
         sess_id = _gen_sess_id()
     cmd = f"python -m model_discovery.evolution --mode design --params {params_str} --sess_id {sess_id}"
@@ -38,19 +40,22 @@ def _run_design_thread(evosys,sess_id=None):
     return process,sess_id
 
 
-def run_design_thread(evosys,sess_id=None):
+def run_design_thread(evosys,sess_id=None,params=None):
     polls=[p.poll() for p in st.session_state['design_threads'].values()]
     n_running = sum([p is None for p in polls])
     if n_running < st.session_state['max_design_threads']:
-        process,sess_id = _run_design_thread(evosys,sess_id)
+        process,sess_id = _run_design_thread(evosys,sess_id,params)
         time.sleep(10) # wait for the thread to start and session to be created
         st.session_state['design_threads'][sess_id] = process
         st.toast(f"Design thread launched for {evosys.evoname}.",icon="🚀")
         # time.sleep(3) # wait for the thread to start and session to be created
         st.session_state['viewing_log'] = None
         # st.rerun()
+        return sess_id,process.pid
     else:
-        st.toast(f"Max number of design threads reached ({st.session_state['max_design_threads']}). Please wait for some threads to finish.",icon="🚨")
+        msg=f"Max number of design threads reached ({st.session_state['max_design_threads']}). Please wait for some threads to finish."
+        st.toast(msg,icon="🚨")
+        return None,msg
 
 def _design_engine(evosys,project_dir):
     st.title("Model Design Engine")

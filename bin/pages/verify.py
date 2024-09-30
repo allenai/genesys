@@ -90,11 +90,13 @@ def run_verification(params, design_id, scale, resume):
         st.session_state['running_verifications'][key] = process
         # st.session_state['output'][key] = []
         st.success(f"Verification process started for {design_id} on scale {scale}. Check console for output.")
+        return key,process.pid
     else:
         key=list(st.session_state['running_verifications'].keys())[0]
         design_id,scale=key.split('_')
-        st.warning(f"A verification process for {design_id} on scale {scale} is already running.")
-
+        msg=f"A verification process for {design_id} on scale {scale} is already running."
+        st.warning(msg)
+        return None,msg
 
 def stream_output(process, key):
     if hasattr(process, 'stdout'):
