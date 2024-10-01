@@ -1,4 +1,4 @@
-# install torch with cuda yourself first
+# install torch --index-url https://download.pytorch.org/whl/cu118 
 # paperswithcode-client>=0.3.1 # install it manually first, then install this list 
 openai>=1.47.0
 einops
@@ -15,7 +15,7 @@ accelerate
 causal-conv1d
 mamba-ssm
 flash-attn
-torchtune
+torchtune==0.2.0 # higher version has problem of initializing CUDA early
 torchao
 boto3
 pydantic>=2.9.2

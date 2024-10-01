@@ -242,7 +242,7 @@ def verify(evosys,project_dir):
 
     with col3:
         if selected_design is not None:
-            selected_scale=st.select_slider(f"Choose a Scale :red[{vsstr}]",options=TARGET_SCALES)
+            selected_scale=st.select_slider(f"Choose a Scale :orange[{vsstr}]",options=TARGET_SCALES)
         else:
             selected_scale=st.select_slider(f"Choose a Scale",options=TARGET_SCALES,disabled=True)
             
