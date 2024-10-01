@@ -63,8 +63,9 @@ class DistributedCommandCenter:
                 design_workloads, verify_workloads = self.evosys.CM.get_all_workloads()
 
                 design_availability = {k:self.evosys.CM.max_design_threads_per_node - v for k,v in design_workloads.items()}
-                for _ in range(self.max_design_threads_total-sum(design_workloads.values())):
-                    design_availability = self.assign_design_workload(design_availability)
+                if sum(design_availability.values())>0:
+                    for _ in range(self.max_design_threads_total-sum(design_workloads.values())):
+                        design_availability = self.assign_design_workload(design_availability)
                     
                 for node_id in verify_workloads:
                     if verify_workloads[node_id] == 0:
