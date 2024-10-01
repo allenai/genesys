@@ -40,6 +40,7 @@ if [ "$PREPARE_DATA_ONLY" = false ]; then
 
     export HF_DATASETS_TRUST_REMOTE_CODE=1
 
+    # TODO Update the following variables
     # OPTIONAL: append these exports to your .bashrc or .bash_profile for them to be set globally
     echo "export MY_OPENAI_KEY=$MY_OPENAI_KEY" >> ~/.bashrc
     echo "export HF_KEY=$HF_KEY" >> ~/.bashrc

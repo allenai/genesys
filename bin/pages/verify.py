@@ -237,21 +237,21 @@ def verify(evosys,project_dir):
         selected_design=st.selectbox("Select a Design",options=verified.keys())
         if selected_design is not None:
             vss=list(verified[selected_design].keys())
-            vsstr='*(Verified on '+', '.join(vss)+')*' if len(vss)>0 else ''
+            vsstr='*(Verified: '+', '.join(vss)+')*' if len(vss)>0 else ''
         # st.write(f':red[{vsstr}]')
 
     with col3:
         if selected_design is not None:
-            scale=st.select_slider(f"Choose a Scale :red[{vsstr}]",options=TARGET_SCALES)
+            selected_scale=st.select_slider(f"Choose a Scale :red[{vsstr}]",options=TARGET_SCALES)
         else:
-            scale=st.select_slider(f"Choose a Scale",options=TARGET_SCALES,disabled=True)
+            selected_scale=st.select_slider(f"Choose a Scale",options=TARGET_SCALES,disabled=True)
             
 
     with col4:
         st.write('')
         st.write('')
         if selected_design is not None:
-            already_verified=scale in verified[selected_design]
+            already_verified=selected_scale in verified[selected_design]
             txt='Run Verification'
             #  if not already_verified else 'Re-Run Verification'
             run_btn= st.button(txt,use_container_width=True,disabled=st.session_state.listening_mode or st.session_state.evo_running or already_verified)
@@ -369,7 +369,7 @@ def verify(evosys,project_dir):
 
 
     if run_btn:
-        run_verification(evosys.params, selected_design, scale, resume)
+        run_verification(evosys.params, selected_design, selected_scale, resume)
 
 
 
@@ -417,4 +417,3 @@ def verify(evosys,project_dir):
 
 
 
-            
