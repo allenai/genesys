@@ -78,7 +78,7 @@ def _design_engine(evosys,project_dir):
             st.rerun()
 
     
-    st.subheader(f"Design Sessions under ```{evosys.evoname}```")
+    st.subheader(f"Design Sessions in this node")
     unfinished_designs,finished_designs = evosys.ptree.get_unfinished_designs(return_finished=True)
 
     with st.expander("Finished Design Sessions (View details in Viewer)"):

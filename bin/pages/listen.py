@@ -31,7 +31,8 @@ def get_process(pid):
         return None
 
 
-def verify_command(evosys, evoname, design_id=None, scale=None, resume=True, cli=False):
+def verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume=True, cli=False):
+    log_ref = evosys.remote_db.collection('experiment_logs').document(evosys.evoname)
     if evosys.evoname != evoname:
         evosys.switch_ckpt(evoname)
     if design_id is None or scale is None:
@@ -48,9 +49,18 @@ def verify_command(evosys, evoname, design_id=None, scale=None, resume=True, cli
             design_id = exp[:-len(scale)-1]
     params = {'evoname': evoname}
     sess_id,pid = run_verification(params, design_id, scale, resume, cli=cli)
+    if sess_id:
+        log_ref.update({
+            firestore.SERVER_TIMESTAMP: f'Node {node_id} running verification on {design_id}_{scale}'
+        },merge=True)
+    else:
+        log_ref.update({
+            firestore.SERVER_TIMESTAMP: f'Node {node_id} failed to run verification on {design_id}_{scale} with error: {pid}'
+        },merge=True)
     return sess_id,pid
 
-def design_command(evosys, evoname, resume=True, cli=False):
+def design_command(node_id, evosys, evoname, resume=True, cli=False):
+    log_ref = evosys.remote_db.collection('experiment_logs').document(evosys.evoname)
     sess_id = None
     params = {'evoname': evoname}
     if evosys.evoname != evoname:
@@ -60,6 +70,14 @@ def design_command(evosys, evoname, resume=True, cli=False):
         if len(unfinished_designs) > 0:
             sess_id = random.choice(unfinished_designs)
     sess_id,pid = run_design_thread(evosys, sess_id, params, cli=cli)
+    if sess_id:
+        log_ref.update({
+            firestore.SERVER_TIMESTAMP: f'Node {node_id} running design thread with session id {sess_id}'
+        },merge=True)
+    else:
+        log_ref.update({
+            firestore.SERVER_TIMESTAMP: f'Node {node_id} failed to run design thread with error: {pid}'
+        },merge=True)
     return sess_id,pid
 
 
@@ -134,12 +152,12 @@ class Listener:
         # st.write(f"Executing command: {command}")
         comps=command.split(',')
         if comps[0] == 'design':
-            sess_id,pid = design_command(self.evosys, comps[1], resume='resume' in comps, cli=self.cli)
+            sess_id,pid = design_command(self.node_id, self.evosys, comps[1], resume='resume' in comps, cli=self.cli)
         elif comps[0] == 'verify':
             if len(comps) == 2 or (len(comps) == 3 and 'resume' in comps):
-                sess_id,pid = verify_command(self.evosys, comps[1], resume='resume' in comps, cli=self.cli)
+                sess_id,pid = verify_command(self.node_id, self.evosys, comps[1], resume='resume' in comps, cli=self.cli)
             else:
-                sess_id,pid = verify_command(self.evosys, comps[1], comps[2], comps[3], resume='resume' in comps, cli=self.cli)
+                sess_id,pid = verify_command(self.node_id, self.evosys, comps[1], comps[2], comps[3], resume='resume' in comps, cli=self.cli)
         else:
             raise ValueError(f"Unknown command: {command}")
         return sess_id,pid

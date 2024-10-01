@@ -22,13 +22,15 @@ class DistributedCommandCenter:
         self.evosys=evosys
         self.max_design_threads_total=max_design_threads_total
         self.st=stream
-        self.collection = evosys.remote_db.collection('experiment_connections')
-        self.doc_ref = self.collection.document(self.evosys.evoname)
+        self.doc_ref = evosys.remote_db.collection('experiment_connections').document(self.evosys.evoname)
+        self.log_ref = evosys.remote_db.collection('experiment_logs').document(self.evosys.evoname)
         self.running = False
         self.cli=cli
         self.poll_freq=20
         self.zombie_threshold = 30  # seconds
 
+    def read_logs(self):
+        return self.log_ref.get().to_dict()
 
     def build_connection(self):
         # check if the node_id is already in the collection
@@ -171,6 +173,11 @@ def evolve(evosys,project_dir):
         st.warning("Now only support distributed mode, all working nodes should run in listening mode.")
 
 
+    if st.session_state.evo_running:
+        st.subheader("***Running Logs***")
+        for timestamp,log in st.session_state.command_center.read_logs().items():
+            st.write(f'{timestamp}: {log}')
+
     st.header("Phylogenetic Tree Monitor")
 
     col1, col2, col3 = st.columns([6,0.1,2])
@@ -187,7 +194,8 @@ def evolve(evosys,project_dir):
     with col3:
         st.write('')
         st.write('')
-        if st.button(f'Refresh Tree with First {_max_nodes} Nodes'):#,use_container_width=True):
+        if st.button(f'Refresh & Sync Tree'):#,use_container_width=True):
+            evosys.update_design_tree()
             evosys.ptree.export(max_nodes=_max_nodes,height='800px')
             ptree_dir_small=U.pjoin(evosys.evo_dir,f'PTree_{_max_nodes}.html')
             max_nodes=_max_nodes

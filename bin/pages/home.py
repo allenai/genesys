@@ -70,7 +70,7 @@ the main interface to the system instead of the common command-line interface
 Only distributed evolution is supported now. As sequantial evolution is complicated which need to consider the action policy. See details below. To launch the distributed evolution:
  1. Configure the experiment settings in the **Config** tab. Save and upload to the cloud. (*CLI mode is working in progress*)
  2. Launch the nodes in the **Listen** tab. Or directly launch by `bash scripts/run_node.sh`. Remember to run it in GPU-available sessions. You can also launch a node in the master.
- 3. Run the evolution in the **Evolve** tab. Or directly launch by `bash scripts/run_evo.sh`. Remember to run it in a no-GPU session to release the computational resources.
+ 3. Run the evolution in the **Evolve** tab. Or directly launch by `bash scripts/run_evo.sh`. 
 
 **NOTE:** do not run multiple nodes in the same user space as it will cause the file access conflict. Just use all the GPUs in each node.
 ''')
