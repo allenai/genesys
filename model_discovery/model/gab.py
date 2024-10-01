@@ -27,9 +27,8 @@ class GPT2(GAUBase):
         device=None, dtype=None, **kwargs):
         self.factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc, kwarg_all)
-        self.mha = CondSparseMHA(embed_dim=self.embed_dim, block_loc=self.
-            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
-            self.kwarg_all)
+        self.mha = MHA(embed_dim=self.embed_dim, block_loc=self.block_loc,
+            kwarg_all=self.kwarg_all, **self.factory_kwargs, **self.kwarg_all)
         self.mlp = GatedMLP(embed_dim=self.embed_dim, block_loc=self.
             block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
             self.kwarg_all)
@@ -51,173 +50,119 @@ class GPT2(GAUBase):
 
 
 import torch.nn.functional as F
-import math
-from einops import rearrange
+from torch import Tensor
 
 
-class CondSparseMHA(GAUBase):
-    """
-    Conditional Sparse Multi-Head Attention (CS-MHA)
-
-    This GAU implements a multi-head self-attention mechanism with conditional sparse attention.
-    It introduces a scoring network that dynamically assigns importance weights to each attention
-    head based on the input context. The attention outputs of different heads are scaled by these
-    weights, allowing the model to focus on the most relevant heads while maintaining differentiability.
-
-    Args:
-        embed_dim (int): The embedding dimension.
-        block_loc (tuple): The location of the block within the network.
-        kwarg_all (dict): Dictionary of all keyword arguments for initializing child units.
-        n_heads (int): Number of attention heads.
-        dropout (float): Dropout probability.
-        causal (bool): Whether to apply causal masking.
-        softmax_scale (float): Scaling factor for softmax.
-        rotary_emb_base (float): Base value for rotary positional embeddings.
-        **kwargs: Additional keyword arguments.
-
-    Inputs:
-        X (Tensor): Input embeddings of shape (B, L, D).
-
-    Outputs:
-        Y (Tensor): Output embeddings of shape (B, L, D).
-
-    Example:
-        >>> cond_sparse_mha = CondSparseMHA(embed_dim=512, block_loc=(0, 12), kwarg_all={}, n_heads=8)
-        >>> Y, _ = cond_sparse_mha(X)
-    """
+class RMSNorm(GAUBase):
 
     def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        n_heads: int=8, dropout: float=0.1, causal: bool=True,
-        softmax_scale: float=None, rotary_emb_base: float=10000.0, device=
-        None, dtype=None, **kwargs):
+        device=None, dtype=None, eps=1e-05, **kwargs):
+        """If group_size is not None, we do GroupNorm with each group having group_size elements.
+        group_size=None is equivalent to group_size=hidden_size (i.e. there's only 1 group).
+        """
+        self.factory_kwargs = {'device': device, 'dtype': dtype}
+        super().__init__(embed_dim, block_loc, kwarg_all)
+        self.weight = nn.Parameter(torch.ones(embed_dim, **self.factory_kwargs)
+            )
+        self.variance_epsilon = eps
+
+    def _forward(self, X, **Z):
+        input_dtype = X.dtype
+        X = X.to(torch.float32)
+        variance = X.pow(2).mean(-1, keepdim=True)
+        X = X * torch.rsqrt(variance + self.variance_epsilon)
+        return self.weight * X.to(input_dtype)
+
+
+import torch.nn.functional as F
+import math
+from einops import rearrange, repeat
+
+
+class MHA(GAUBase):
+    """Multi-head self-attention and cross-attention"""
+
+    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
+        n_heads: int=8, causal: bool=True, num_heads_kv: int=None, head_dim:
+        int=None, mlp_dim: int=0, qkv_proj_bias: bool=True, out_proj_bias:
+        bool=True, softmax_scale: float=None, rotary_emb_base=10000.0,
+        d_conv: int=0, device=None, dtype=None, **kwargs) ->None:
+        """
+        num_heads_kv: can be used to toggle MQA / GQA. If None, use num_heads.
+        return_residual: whether to return the input x along with the output. This is for
+            performance reason: for post-norm architecture, returning the input allows us
+            to fuse the backward of nn.Linear with the residual connection.
+        """
         self.factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc, kwarg_all)
         self.embed_dim = embed_dim
-        self.n_heads = n_heads
-        self.causal = causal
+        self.d_conv = d_conv
         self.softmax_scale = softmax_scale
-        self.head_dim = embed_dim // n_heads
-        assert self.head_dim * n_heads == self.embed_dim, 'embed_dim must be divisible by n_heads'
-        self.query = nn.Linear(embed_dim, embed_dim, **self.factory_kwargs)
-        self.key = nn.Linear(embed_dim, embed_dim, **self.factory_kwargs)
-        self.value = nn.Linear(embed_dim, embed_dim, **self.factory_kwargs)
-        self.scoring_network = nn.Linear(embed_dim, n_heads, **self.
-            factory_kwargs)
-        self.dropout = nn.Dropout(dropout)
-        self.out_proj = nn.Linear(embed_dim, embed_dim, **self.factory_kwargs)
+        self.causal = causal
+        self.num_heads = n_heads
+        self.num_heads_kv = (num_heads_kv if num_heads_kv is not None else
+            n_heads)
+        assert self.num_heads % self.num_heads_kv == 0, 'num_heads must be divisible by num_heads_kv'
+        if head_dim is None:
+            assert self.embed_dim % n_heads == 0, 'embed_dim must be divisible by num_heads'
+        self.head_dim = (head_dim if head_dim is not None else self.
+            embed_dim // n_heads)
+        self.mlp_dim = math.ceil(mlp_dim / 256) * 256
+        qkv_dim = self.head_dim * (self.num_heads + 2 * self.num_heads_kv)
+        out_dim = self.head_dim * self.num_heads
         kwarg_all['rotary_emb_dim'] = self.head_dim
         self.rotary_emb = RotaryPositionalEmbeddings(embed_dim=self.
             embed_dim, block_loc=self.block_loc, kwarg_all=self.kwarg_all,
             **self.factory_kwargs, **self.kwarg_all)
+        self.in_proj = nn.Linear(embed_dim, qkv_dim + self.mlp_dim, bias=
+            qkv_proj_bias, **self.factory_kwargs)
+        if self.d_conv > 0:
+            self.conv1d = nn.Conv1d(qkv_dim, qkv_dim, kernel_size=self.
+                d_conv, padding=self.d_conv - 1, groups=qkv_dim, **self.
+                factory_kwargs)
+        self.out_proj = nn.Linear(out_dim + self.mlp_dim // 2, embed_dim,
+            bias=out_proj_bias, **self.factory_kwargs)
 
     def _forward(self, X, **Z):
         """
-        Forward pass of the Conditional Sparse Multi-Head Attention.
-
-        Args:
-            X (Tensor): Input tensor of shape (B, L, D).
-            **Z: Additional intermediate variables.
-
-        Returns:
-            Y (Tensor): Output tensor of shape (B, L, D).
-            Z (dict): Updated intermediate variables.
+        Arguments:
+            x: (batch, seqlen, hidden_dim) (where hidden_dim = num heads * head dim) if
+                cu_seqlens is None and max_seqlen is None, else (total, hidden_dim) where total
+                is the is the sum of the sequence lengths in the batch.
+            inference_params: for generation. Adapted from Megatron-LM (and Apex)
+            https://github.com/NVIDIA/apex/blob/3ff1a10f72ec07067c4e44759442329804ac5162/apex/transformer/testing/standalone_transformer_lm.py#L470
         """
-        B, L, D = X.size()
-        Q, K, V = self._project_qkv(X)
-        Q, K, Z = self._apply_rotary_embeddings(Q, K, X, Z)
-        head_weights = self._compute_head_weights(X)
-        Q = Q * head_weights
-        K = K * head_weights
-        V = V * head_weights
-        attn_output = self._compute_attention(Q, K, V)
-        Y = self.out_proj(attn_output)
-        return Y, Z
-
-    def _project_qkv(self, X):
-        """
-        Projects the input tensor X to queries, keys, and values.
-
-        Args:
-            X (Tensor): Input tensor of shape (B, L, D).
-
-        Returns:
-            Q (Tensor): Queries of shape (B, L, n_heads, head_dim).
-            K (Tensor): Keys of shape (B, L, n_heads, head_dim).
-            V (Tensor): Values of shape (B, L, n_heads, head_dim).
-        """
-        Q = self.query(X).view(X.size(0), -1, self.n_heads, self.head_dim)
-        K = self.key(X).view(X.size(0), -1, self.n_heads, self.head_dim)
-        V = self.value(X).view(X.size(0), -1, self.n_heads, self.head_dim)
-        return Q, K, V
-
-    def _apply_rotary_embeddings(self, Q, K, X, Z):
-        """
-        Applies Rotary Positional Embeddings to queries and keys.
-
-        Args:
-            Q (Tensor): Queries.
-            K (Tensor): Keys.
-            X (Tensor): Input tensor.
-            Z (dict): Intermediate variables.
-
-        Returns:
-            Q (Tensor): Queries with rotary embeddings applied.
-            K (Tensor): Keys with rotary embeddings applied.
-            Z (dict): Updated intermediate variables.
-        """
-        Z['input_emb'] = Q
+        qkv = self.in_proj(X)
+        if self.mlp_dim > 0:
+            qkv, x_mlp = qkv.split([qkv.shape[-1] - self.mlp_dim, self.
+                mlp_dim], dim=-1)
+            x_mlp_up, x_mlp_gate = x_mlp.chunk(2, dim=-1)
+            x_mlp = x_mlp_up * F.silu(x_mlp_gate)
+        if self.d_conv > 0:
+            qkv = rearrange(self.conv1d(rearrange(qkv, 'b s d -> b d s'))[
+                ..., :-(self.d_conv - 1)], 'b d s -> b s d').contiguous()
+        q, k, v = qkv.split([self.num_heads * self.head_dim] * 3, dim=-1)
+        q = rearrange(q, '... (h d) -> ... h d', d=self.head_dim)
+        k = rearrange(k, '... (h d) -> ... h d', d=self.head_dim)
+        v = rearrange(v, '... (h d) -> ... h d', d=self.head_dim)
+        Z['input_emb'] = q
         _, Z = self.rotary_emb(X, **Z)
-        Q = Z['output_emb']
-        Z['input_emb'] = K
+        q = Z['output_emb']
+        Z['input_emb'] = k
         _, Z = self.rotary_emb(X, **Z)
-        K = Z['output_emb']
-        return Q, K, Z
-
-    def _compute_head_weights(self, X):
-        """
-        Computes importance weights for each attention head.
-
-        Args:
-            X (Tensor): Input tensor of shape (B, L, D).
-
-        Returns:
-            head_weights (Tensor): Head weights of shape (B, L, n_heads, 1).
-        """
-        scores = self.scoring_network(X)
-        head_weights = F.softmax(scores, dim=-1)
-        head_weights = head_weights.unsqueeze(-1)
-        return head_weights
-
-    def _compute_attention(self, Q, K, V):
-        """
-        Computes the scaled dot-product attention.
-
-        Args:
-            Q (Tensor): Queries of shape (B, L, n_heads, head_dim).
-            K (Tensor): Keys of shape (B, L, n_heads, head_dim).
-            V (Tensor): Values of shape (B, L, n_heads, head_dim).
-
-        Returns:
-            attn_output (Tensor): Attention output of shape (B, L, D).
-        """
-        B, L, n_heads, head_dim = Q.size()
-        Q = Q.transpose(1, 2)
-        K = K.transpose(1, 2)
-        V = V.transpose(1, 2)
-        scale = self.softmax_scale or 1 / math.sqrt(head_dim)
-        Q = Q * scale
-        attn_scores = torch.matmul(Q, K.transpose(-2, -1))
-        if self.causal:
-            causal_mask = torch.triu(torch.ones(L, L, device=Q.device,
-                dtype=Q.dtype), diagonal=1)
-            attn_scores = attn_scores.masked_fill(causal_mask == 1, float(
-                '-inf'))
-        attn_probs = F.softmax(attn_scores, dim=-1)
-        attn_probs = self.dropout(attn_probs)
-        attn_output = torch.matmul(attn_probs, V)
-        attn_output = attn_output.transpose(1, 2).contiguous().view(B, L,
-            self.embed_dim)
-        return attn_output
+        k = Z['output_emb']
+        k = torch.repeat_interleave(k, dim=2, repeats=self.num_heads //
+            self.num_heads_kv)
+        v = torch.repeat_interleave(v, dim=2, repeats=self.num_heads //
+            self.num_heads_kv)
+        context = F.scaled_dot_product_attention(q.transpose(1, 2), k.
+            transpose(1, 2), v.transpose(1, 2), is_causal=self.causal,
+            scale=self.softmax_scale).transpose(1, 2)
+        context = rearrange(context, '... h d -> ... (h d)')
+        if self.mlp_dim > 0:
+            context = torch.cat([context, x_mlp], dim=-1)
+        out = self.out_proj(context)
+        return out
 
 
 import torch.nn.functional as F
@@ -340,35 +285,11 @@ class GatedMLP(GAUBase):
         return y
 
 
-import torch.nn.functional as F
-from torch import Tensor
-
-
-class RMSNorm(GAUBase):
-
-    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, eps=1e-05, **kwargs):
-        """If group_size is not None, we do GroupNorm with each group having group_size elements.
-        group_size=None is equivalent to group_size=hidden_size (i.e. there's only 1 group).
-        """
-        self.factory_kwargs = {'device': device, 'dtype': dtype}
-        super().__init__(embed_dim, block_loc, kwarg_all)
-        self.weight = nn.Parameter(torch.ones(embed_dim, **self.factory_kwargs)
-            )
-        self.variance_epsilon = eps
-
-    def _forward(self, X, **Z):
-        input_dtype = X.dtype
-        X = X.to(torch.float32)
-        variance = X.pow(2).mean(-1, keepdim=True)
-        X = X * torch.rsqrt(variance + self.variance_epsilon)
-        return self.weight * X.to(input_dtype)
-
-
-gab_config = {'hidden_features': None, 'out_features': None, 'activation':
-    None, 'bias': False, 'multiple_of': 128, 'eps': 1e-05,
-    'rotary_emb_base': 10000.0, 'max_seq_len': 4096, 'n_heads': 8,
-    'dropout': 0.1, 'causal': True, 'softmax_scale': None}
+gab_config = {'n_heads': 8, 'causal': True, 'num_heads_kv': None,
+    'head_dim': None, 'mlp_dim': 0, 'qkv_proj_bias': True, 'out_proj_bias':
+    True, 'softmax_scale': None, 'rotary_emb_base': 10000, 'd_conv': 0,
+    'hidden_features': None, 'out_features': None, 'activation': None,
+    'bias': False, 'multiple_of': 128, 'max_seq_len': 4096, 'eps': 1e-05}
 
 
 

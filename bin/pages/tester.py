@@ -68,3 +68,6 @@ def tester(evosys,project_dir):
         st.write(CM.connections)
     else:
         st.info('No connections')
+
+
+    st.write(evosys.ptree.get_node('"gatemix++"'))

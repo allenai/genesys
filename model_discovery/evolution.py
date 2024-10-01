@@ -1087,7 +1087,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         U.mkdir(coreref_dir)
         return coreref_dir
     
-    def get_node(self, acronym: str):
+    def _get_node(self, acronym: str):
         if acronym not in self.G.nodes:
             if self.FM:
                 self.FM.get_index()
@@ -1096,7 +1096,19 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
                 self.FM.download_design(acronym)
                 artifact=DesignArtifact.load(self.design_dir(acronym))
                 self.G.add_node(acronym, data=artifact)
-        return self.G.nodes[acronym]['data']
+        if acronym in self.G.nodes:
+            return self.G.nodes[acronym]['data']
+        else:
+            return None
+
+    def get_node(self, acronym: str): # sometimes the agent output with "" or ''
+        node = self._get_node(acronym)
+        if node is None:
+            node = self._get_node(f'"{acronym}"')
+        if node is None:
+            node = self._get_node(f"'{acronym}'")
+        return node
+
     
     def get_session_state(self,sess_id:str):
         passed,_ = self.session_proposals(sess_id,passed_only=True)
