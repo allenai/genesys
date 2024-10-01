@@ -18,7 +18,7 @@ import model_discovery.utils as U
 import bin.app_utils as AU
 
 
-class DistributedCommandCenter:
+class CommandCenter:
     def __init__(self,evosys,max_design_threads_total,stream,cli=False):
         self.evosys=evosys
         self.max_design_threads_total=max_design_threads_total
@@ -143,9 +143,9 @@ def evolve(evosys,project_dir):
         max_design_threads_total=st.number_input("Max Design Threads (bounded by API rate)",min_value=1,value=4,disabled=st.session_state.listening_mode or st.session_state.evo_running)
     with col2:
         # always use extreme mode, use as much gpus as possible
-        verify_schedule=st.selectbox("Verification Scheduling",['extremely'],disabled=st.session_state.listening_mode or st.session_state.evo_running)
+        verify_schedule=st.selectbox("Node Scheduling",['maximal utilization'],disabled=st.session_state.listening_mode or st.session_state.evo_running)
     with col3:
-        node_schedule=st.selectbox("Workload Scheduling",['load balanced'],disabled=st.session_state.listening_mode or st.session_state.evo_running)
+        node_schedule=st.selectbox("Network Scheduling",['load balancing'],disabled=st.session_state.listening_mode or st.session_state.evo_running)
     with col4:
         st.write('')
         st.write('')
@@ -167,7 +167,7 @@ def evolve(evosys,project_dir):
     if not st.session_state.evo_running:
         if run_evo_btn:
             with st.spinner('Launching...'):
-                command_center = DistributedCommandCenter(evosys,max_design_threads_total,st)
+                command_center = CommandCenter(evosys,max_design_threads_total,st)
                 command_center.build_connection()
                 st.session_state.command_center = command_center
                 st.session_state.command_center_thread = x_evolve(command_center)
@@ -243,13 +243,14 @@ def evolve(evosys,project_dir):
 
         st.button('🔄 Refresh',use_container_width=True)
 
-        st.download_button(
-            label="📩 Download Logs",
-            data=json.dumps(st.session_state.command_center.read_logs(),indent=4),
-            file_name=f"{evosys.evoname}_logs.json",
-            mime="text/json",
-            use_container_width=True
-        )
+        if st.session_state.command_center:
+            st.download_button(
+                label="📩 Download Logs",
+                data=json.dumps(st.session_state.command_center.read_logs(),indent=4),
+                file_name=f"{evosys.evoname}_logs.json",
+                mime="text/json",
+                use_container_width=True
+            )
 
 
         # logo = AU.square_logo("μLM")
@@ -273,7 +274,7 @@ if __name__ == '__main__':
         # cache_type='diskcache',
     )
 
-    command_center = DistributedCommandCenter(evosys,args.max_threads,st,cli=True)
+    command_center = CommandCenter(evosys,args.max_threads,st,cli=True)
     command_center.build_connection()
     command_center_thread=x_evolve(command_center,cli=True)
     

@@ -944,7 +944,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
     │   └── ...
     | ... # units, etc.
     """
-    def __init__(self, evoname, target_scales, db_dir: str, db_only=False, remote_db=None, use_remote_db=True): # recommended to use remote db for distributed sampling
+    def __init__(self, evoname, target_scales, db_dir: str, db_only=False, remote_db=None, use_remote_db=True): 
         self.evoname = evoname
         self.target_scales = target_scales
         self.db_dir = db_dir
