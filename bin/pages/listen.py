@@ -52,12 +52,12 @@ def verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume=
     timestamp=firestore.SERVER_TIMESTAMP
     if sess_id:
         log=f'Node {node_id} running verification on {design_id}_{scale}'
-        log_ref.update({
+        log_ref.set({
             timestamp: log
         },merge=True)
     else:
         log=f'Node {node_id} failed to run verification on {design_id}_{scale} with error: {pid}'
-        log_ref.update({
+        log_ref.set({
             timestamp: log
         },merge=True)
     print(f'{timestamp}: {log}')
@@ -77,12 +77,12 @@ def design_command(node_id, evosys, evoname, resume=True, cli=False):
     timestamp=firestore.SERVER_TIMESTAMP
     if sess_id:
         log=f'Node {node_id} running design thread with session id {sess_id}'
-        log_ref.update({
+        log_ref.set({
             timestamp: log
         },merge=True)
     else:
         log=f'Node {node_id} failed to run design thread with error: {pid}'
-        log_ref.update({
+        log_ref.set({
             timestamp: log
         },merge=True)
     print(f'{timestamp}: {log}')

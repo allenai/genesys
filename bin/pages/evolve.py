@@ -147,27 +147,31 @@ def evolve(evosys,project_dir):
             if st.button(
                 f":rainbow[***Launch {distributed}Evolution***] :rainbow[🚀]",
                 disabled=st.session_state.listening_mode or not evosys.remote_db or passive_mode
-            ):
-                command_center = DistributedCommandCenter(evosys,max_design_threads_total,st)
-                command_center.build_connection()
-                st.session_state.command_center = command_center
-                st.session_state.command_center_thread = x_evolve(command_center)
-                st.session_state.evo_running = True
-                st.success(f"Evolution launched for {evosys.evoname}.")
-                st.rerun()
+            ):  
+                with st.spinner('Launching...'):
+                    command_center = DistributedCommandCenter(evosys,max_design_threads_total,st)
+                    command_center.build_connection()
+                    st.session_state.command_center = command_center
+                    st.session_state.command_center_thread = x_evolve(command_center)
+                    st.session_state.evo_running = True
+                    st.success(f"Evolution launched for {evosys.evoname}.")
+                    time.sleep(10)
+                    st.rerun()
         else:
             if st.button(
                 f"***Stop {distributed}Evolution*** 🛑",
                 disabled=st.session_state.listening_mode or not evosys.remote_db or passive_mode,
             ):
                 if st.session_state.command_center:
-                    st.session_state.command_center.stop_evolution()
-                    st.session_state.command_center_thread.join()
-                    st.session_state.command_center = None
-                    st.session_state.command_center_thread = None
-                    st.session_state.evo_running = False
-                    st.success(f"Evolution stopped for {evosys.evoname}.")
-                    st.rerun()
+                    with st.spinner('Stopping... Note, the nodes will keep working on the unfinished jobs'):
+                        st.session_state.command_center.stop_evolution()
+                        st.session_state.command_center_thread.join()
+                        st.session_state.command_center = None
+                        st.session_state.command_center_thread = None
+                        st.session_state.evo_running = False
+                        st.success(f"Evolution stopped for {evosys.evoname}.")
+                        time.sleep(5)
+                        st.rerun()
     
     if not evosys.remote_db:
         st.warning("Now only support distributed mode, all working nodes should run in listening mode.")
