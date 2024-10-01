@@ -89,7 +89,7 @@ def design_config(evosys):
             st.write('**ReferenceCoreWithTree and DesignArtifactImplemented are seed types in MUTATION mode. Will randomly sample one from samples from them as seed.*')
         select_cfg['n_sources']=n_sources
 
-        st.button("Save and Apply",key='save_select_config',on_click=apply_select_config,args=(evosys,select_cfg),disabled=st.session_state.listening_mode)   
+        st.button("Save and Apply",key='save_select_config',on_click=apply_select_config,args=(evosys,select_cfg),disabled=st.session_state.listening_mode or st.session_state.evo_running)   
 
 
 
@@ -183,7 +183,7 @@ def design_config(evosys):
                 num_samples['rerank_method']=st.selectbox(label="Rerank Method",options=rerank_methods,index=rerank_methods.index('rating'),disabled=True)
         design_cfg['num_samples']=num_samples
 
-        st.button("Save and Apply",key='save_design_config',on_click=apply_design_config,args=(evosys,design_cfg,select_cfg),disabled=st.session_state.listening_mode)   
+        st.button("Save and Apply",key='save_design_config',on_click=apply_design_config,args=(evosys,design_cfg,select_cfg),disabled=st.session_state.listening_mode or st.session_state.evo_running)   
 
 
 
@@ -219,7 +219,7 @@ def design_config(evosys):
         with cols[4]:
             search_cfg['perplexity_settings']['max_tokens']=st.number_input("Perplexity Max Tokens",value=4000,min_value=500,step=100,disabled=search_cfg['perplexity_settings']['model_size']=='none')
        
-        st.button("Save and Apply",key='save_search_config',on_click=apply_search_config,args=(evosys,search_cfg),disabled=st.session_state.listening_mode)
+        st.button("Save and Apply",key='save_search_config',on_click=apply_search_config,args=(evosys,search_cfg),disabled=st.session_state.listening_mode or st.session_state.evo_running)
 
 
     with st.expander(f"Check Configurations for ```{evosys.evoname}``` (Empty means using default)",expanded=False,icon='🔧'):
@@ -298,7 +298,10 @@ def config(evosys,project_dir):
     st.title("Experiment Management")
 
     if st.session_state.listening_mode:
-        st.warning("**NOTE:** You are running in listening mode. You cannot modify the configuration of the evolution system.")
+        st.warning("**NOTE:** You are running in listening mode. You cannot modify the system configuration.")
+
+    if st.session_state.evo_running:
+        st.warning("**NOTE:** Evolution system is running. You cannot modify the system configuration while the system is running.")
 
     config={}
 
@@ -336,6 +339,7 @@ def config(evosys,project_dir):
     st.subheader("Evolution System Settings")
 
     SELECT_METHODS = ['random']
+    VERIFY_STRATEGY = ['random']
     
 
     
@@ -352,7 +356,11 @@ def config(evosys,project_dir):
                         scales.append(s)
                 params['scales']=','.join(scales)
                 params['selection_ratio']=st.slider('Selection Ratio',min_value=0.0,max_value=1.0,value=evosys.params['selection_ratio'])
-                params['select_method']=st.selectbox('Seed Selection Method',options=SELECT_METHODS,index=SELECT_METHODS.index(evosys.params['select_method']))
+                _col1,_col2=st.columns(2)
+                with _col1:
+                    params['select_method']=st.selectbox('Select Method',options=SELECT_METHODS,index=SELECT_METHODS.index(evosys.params['select_method']))
+                with _col2:
+                    params['verify_strategy']=st.selectbox('Verify Strategy',options=VERIFY_STRATEGY,index=VERIFY_STRATEGY.index(evosys.params['verify_strategy']))
                 params['design_budget']=st.number_input('Design Budget ($)',value=evosys.params['design_budget'],min_value=0,step=100)
                 params['use_remote_db']=st.checkbox('Use Remote DB (Required for distributed evolution)',value=evosys.params['use_remote_db'])
             config['params']=params
@@ -382,10 +390,10 @@ def config(evosys,project_dir):
     with col1:
         st.subheader("Existing Experiments")
     with col2:
-        if st.button("*Upload to Remote DB*",use_container_width=True,disabled=evosys.ptree.remote_db is None or st.session_state.listening_mode):
+        if st.button("*Upload to Remote DB*",use_container_width=True,disabled=evosys.ptree.remote_db is None or st.session_state.listening_mode or st.session_state.evo_running):
             sync_exps_to_db(evosys)
     with col3:
-        if st.button("*Download from Remote DB*",use_container_width=True,disabled=evosys.ptree.remote_db is None or st.session_state.listening_mode):
+        if st.button("*Download from Remote DB*",use_container_width=True,disabled=evosys.ptree.remote_db is None or st.session_state.listening_mode or st.session_state.evo_running):
             sync_exps_from_db(evosys)
     
     def delete_dir(dir):
@@ -420,8 +428,8 @@ def config(evosys,project_dir):
             experiments[ckpt+' (Current)']=experiment
         else:
             experiment['BUTTON']=[
-                ('Delete',ft.partial(delete_dir,exp_dir),st.session_state.listening_mode),
-                ('Switch',ft.partial(switch_dir,ckpt),st.session_state.listening_mode)
+                ('Delete',ft.partial(delete_dir,exp_dir),st.session_state.listening_mode or st.session_state.evo_running),
+                ('Switch',ft.partial(switch_dir,ckpt),st.session_state.listening_mode or st.session_state.evo_running)
             ]
             experiments[ckpt]=experiment
 
@@ -460,4 +468,4 @@ def config(evosys,project_dir):
             uploaded_config = json.load(uploaded_file)
             with st.expander("Loaded Config",expanded=False):
                 st.write(uploaded_config)
-            st.button("Apply Uplaoded Config",on_click=apply_config,args=(evosys,uploaded_config,),disabled=st.session_state.listening_mode)
+            st.button("Apply Uplaoded Config",on_click=apply_config,args=(evosys,uploaded_config,),disabled=st.session_state.listening_mode or st.session_state.evo_running)

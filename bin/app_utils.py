@@ -70,6 +70,8 @@ def running_status(st,evosys):
   if st.session_state.listening_mode:
     st.write(f'👂```{st.session_state.listener.node_id}``` *is listening*\n')
   else:
+    if st.session_state.evo_running:
+      st.write('🚀 ***Evolution System is running***')
     if evosys.CM is not None:
       with st.expander("👂 Connections",expanded=False):
         for conn in evosys.CM.get_active_connections():
@@ -87,9 +89,12 @@ def running_status(st,evosys):
     with st.expander("🐎 Running Designs",expanded=False):
       for idx,key in enumerate(running_designs):
         st.write(f'```{key}```')
-  if len(running_verifications)==0 and len(running_designs)==0:
-    st.write('')
-    st.write(':gray[*No workloads running*] 💤')
+  
+  if not st.session_state.evo_running:
+    if len(running_verifications)==0 and len(running_designs)==0:
+      st.write('')
+      st.write(':gray[*No workloads running*] 💤')
+  
 
   st.divider()
     

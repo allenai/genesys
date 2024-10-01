@@ -1497,14 +1497,14 @@ class ConnectionManager:
 
     def get_available_connections(self):
         self.get_active_connections()
-        design_available = []
-        verify_available = []
+        design_available = {}
+        verify_available = {}
         for node_id in self.connections:
             running_designs, running_verifies = self.check_workload(node_id)
             if len(running_designs) < self.max_design_threads_per_node:
-                design_available.append(node_id)
+                design_available[node_id] = self.max_design_threads_per_node - len(running_designs)
             if len(running_verifies) == 0:
-                verify_available.append(node_id)
+                verify_available[node_id] = 1
         return design_available, verify_available
 
     def check_command_status(self,node_id):
@@ -1525,13 +1525,16 @@ class ConnectionManager:
             command += ',resume'
         self.send_command(node_id,command)
     
-    def verify_command(self,node_id,design_id,scale,resume=True):
+    def verify_command(self,node_id,design_id=None,scale=None,resume=True):
         self.get_active_connections() # refresh the connection status
         _, running_verifies = self.check_workload(node_id)
         if len(running_verifies) > 0:
             self.st.toast(f"There is already a verification running for node {node_id}. Please wait for it to finish.",icon='🚨')
             return
-        command = f'verify,{self.evoname},{design_id},{scale}'
+        command = f'verify,{self.evoname}'
+        if design_id:
+            assert scale is not None, "Scale is required for verify command if design_id is specified"
+            command += f',{design_id},{scale}'
         if resume:
             command += ',resume'
         self.send_command(node_id,command)
@@ -1627,11 +1630,11 @@ class EvolutionSystem(exec_utils.System):
         self.select_method=self.state['select_method']
 
         # action choose strategy
-        if 'action_strategy' not in self.params:
-            self.params['action_strategy']='random'
-        if 'action_strategy' not in self.state:
-            self.state['action_strategy']=self.params['action_strategy']
-        self.action_strategy=self.state['action_strategy']
+        if 'action_policy' not in self.params:
+            self.params['action_policy']='random'
+        if 'action_policy' not in self.state:
+            self.state['action_policy']=self.params['action_policy']
+        self.action_policy=self.state['action_policy']
         
         # design verify strategy
         if 'verify_strategy' not in self.params:
@@ -1809,9 +1812,16 @@ class EvolutionSystem(exec_utils.System):
         budget=self.verify_budget
         return {k:v for k,v in budget.items() if v>0}
 
+    @property
+    def design_budget(self):
+        if self.design_budget_limit>0:
+            return self.design_budget_limit - self.ptree.design_cost
+        else:
+            return float('inf')
+
     def check_budget(self,action):
         if action=='design': # check the design budget
-            if self.design_budget_limit>0 and self.ptree.design_cost>=self.design_budget_limit:
+            if self.design_budget<=0:
                 return False
         elif action=='verify':
             if sum(self.verify_budget.values())<=0:
@@ -1820,7 +1830,8 @@ class EvolutionSystem(exec_utils.System):
             raise ValueError(f"Invalid action: {action}")
         return True
         
-    def evolve(self): # each time do one step, agent choose what to do, use shell to run it continuously 
+    def evolve_step(self): # each time do one step, agent choose what to do, use shell to run it continuously 
+        # NOTE: sequential evolve is not considered for now, as it involves action policy which is complicated
         if not self.check_budget('design') and not self.check_budget('verify'):
             self.stream.write(f"No budget for design and verify, evolution stops, system sleeps, please terminate manually")
             time.sleep(1e9)
@@ -1904,7 +1915,7 @@ class EvolutionSystem(exec_utils.System):
 
 
     # TODO: upgrade to Selector agent
-    def select_design(self,K: Union[int,Dict[str,int]],selector_instruct='',mode=None)->Tuple[str,List[NodeObject]]:
+    def select_design(self,K: Union[int,Dict[str,int]],selector_instruct='',mode=None,select_method=None)->Tuple[str,List[NodeObject]]:
         '''
         K: int or dict of {source_type: num of seeds}, if K is int, then sample from all default sources (the ones with code)
         Return:
@@ -1916,10 +1927,10 @@ class EvolutionSystem(exec_utils.System):
         seeds=[]
         instruct=''
         if isinstance(K,int):
-            instruct,seeds=self._select_design(K,selector_instruct)
+            instruct,seeds=self._select_design(K,selector_instruct,select_method=select_method)
         elif isinstance(K,dict):
             for source_type,num in K.items():
-                _instruct,topk=self._select_design(num,selector_instruct,source_type)
+                _instruct,topk=self._select_design(num,selector_instruct,source_type,select_method)
                 instruct+=_instruct # NOTE: should not like this
                 seeds.extend(topk)
         if mode==DesignModes.MUTATION:
@@ -1945,14 +1956,17 @@ class EvolutionSystem(exec_utils.System):
         return instruct,seed,refs
 
     def _select_design(self,K: int=1,selector_instruct='',
-            filter_type=['DesignArtifact','ReferenceWithCode','ReferenceCoreWithTree','ReferenceCore'])-> Tuple[str,List[NodeObject]]: # K is the number of designs to sample, instruct is the instruction to the selector, select seeds or select populations
+            filter_type=['DesignArtifactImplemented','ReferenceWithCode','DesignArtifact','ReferenceCoreWithTree','ReferenceCore'],
+            select_method=None)-> Tuple[str,List[NodeObject]]: # K is the number of designs to sample, instruct is the instruction to the selector, select seeds or select populations
         """ Provide the instruction including seeds and instructs for the next design """
         K=min(K,len(self.ptree.filter_by_type(filter_type)))
         if K==0: # no design to sample
             return '',[]
-        if self.select_method=='heuristic':
+        if select_method is None:
+            select_method = self.select_method
+        if select_method=='heuristic':
             topk = self.heuristic_select(K,selector_instruct,filter_type)
-        elif self.select_method=='random':
+        elif select_method=='random':
             topk = self.random_select(K,selector_instruct,filter_type)
         instruct='' # TODO: leave it to the selector agent
         return instruct,topk
@@ -1987,13 +2001,12 @@ class EvolutionSystem(exec_utils.System):
         topk=random.sample(self.ptree.filter_by_type(filter_type),K)
         return self.nodes2data(topk)
     
-    def choose(self):
+    def choose(self): # For sequential evolution, not needed for parallel
         """ Choose a move, select a design to verify """
-        if self.action_strategy=='random':
+        if self.action_policy=='random':
             return random.choice(['design','verify'])
-        # TODO: max parallel sampling efficiency strategy
         else:
-            raise ValueError(f"Invalid action choose strategy: {self.action_strategy}")
+            raise ValueError(f"Invalid action policy: {self.action_policy}")
 
 
     def verify(self,design_id=None,scale=None,resume=True): # choose then verify
@@ -2011,8 +2024,10 @@ class EvolutionSystem(exec_utils.System):
             return 'SUCCESS'
         return 'FAILED'
 
-    def select_verify(self):
-        if self.verify_strategy=='random':
+    def select_verify(self,verify_strategy=None):
+        if verify_strategy is None:
+            verify_strategy = self.verify_strategy
+        if verify_strategy=='random':
             for scale in self.available_verify_budget:
                 unverified=self.ptree.get_unverified_designs(scale)
                 if len(unverified)==0:
@@ -2023,7 +2038,7 @@ class EvolutionSystem(exec_utils.System):
             self.stream.write(f"No unverified design found at any scale.")
             return None,None
         else:
-            raise ValueError(f"Invalid design verify strategy: {self.verify_strategy}")
+            raise ValueError(f"Invalid verify strategy: {self.verify_strategy}")
     
     def _prep_model(self,design_id,scale):
         design=self.ptree.get_node(design_id) # need to ensure this design has not been verified under scale
@@ -2102,7 +2117,7 @@ def test_evolve(test_name,step=False):
         do_cache=True,
         cache_type='diskcache',
     )
-    while evolution_system.evolve():
+    while evolution_system.evolve_step():
         if step:
             break
 
@@ -2133,7 +2148,7 @@ if __name__ == '__main__':
         
         # print(f'Running with params:\n{params}')
         if args.mode=='verify':
-            # python -m model_discovery.evolution --mode verify --params '{"evoname": "test_evo_000", "scales": "14M,31M,70M", "selection_ratio": 0.25, "select_method": "random", "action_strategy": "random", "verify_strategy": "random", "design_budget": 0, "no_agent": false, "db_only": false}' --design_id sparsitron --scale 14M
+            # python -m model_discovery.evolution --mode verify --params '{"evoname": "test_evo_000", "scales": "14M,31M,70M", "selection_ratio": 0.25, "select_method": "random", "action_policy": "random", "verify_strategy": "random", "design_budget": 0, "no_agent": false, "db_only": false}' --design_id sparsitron --scale 14M
             _verify(args.evoname,args.design_id, args.scale, resume=args.resume)
         else:
             if args.mode=='prep_model':
@@ -2149,8 +2164,7 @@ if __name__ == '__main__':
             elif args.mode=='design':
                 sess_id=None if args.sess_id=='' else args.sess_id
                 evolution_system.design(sess_id=sess_id)
-            elif args.mode=='evolve':
-                # evolution_system.evolve()
-                pass
+            elif args.mode=='evolve_step': # Sequential evolve one step
+                evolution_system.evolve_step()
             else:
                 raise ValueError(f"Invalid mode: {args.mode}")

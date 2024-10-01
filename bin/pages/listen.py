@@ -31,9 +31,15 @@ def get_process(pid):
         return None
 
 
-def verify_command(evosys, evoname, design_id, scale, resume=True, cli=False):
+def verify_command(evosys, evoname, design_id=None, scale=None, resume=True, cli=False):
     if evosys.evoname != evoname:
         evosys.switch_ckpt(evoname)
+    if design_id is None or scale is None:
+        design_id,scale=evosys.select_verify()
+        if design_id is None:
+            msg = "No unverified design found at any scale."
+            st.error(msg)
+            return None,msg
     if resume:
         unfinished_verifies = evosys.get_unfinished_verifies(evoname)
         if len(unfinished_verifies) > 0:
@@ -130,7 +136,10 @@ class Listener:
         if comps[0] == 'design':
             sess_id,pid = design_command(self.evosys, comps[1], resume='resume' in comps, cli=self.cli)
         elif comps[0] == 'verify':
-            sess_id,pid = verify_command(self.evosys, comps[1], comps[2], comps[3], resume='resume' in comps, cli=self.cli)
+            if len(comps) == 2 or (len(comps) == 3 and 'resume' in comps):
+                sess_id,pid = verify_command(self.evosys, comps[1], resume='resume' in comps, cli=self.cli)
+            else:
+                sess_id,pid = verify_command(self.evosys, comps[1], comps[2], comps[3], resume='resume' in comps, cli=self.cli)
         else:
             raise ValueError(f"Unknown command: {command}")
         return sess_id,pid
@@ -154,6 +163,9 @@ def listen(evosys, project_dir):
     ### Sidebar
     with st.sidebar:
         AU.running_status(st, evosys)
+    
+    if st.session_state.evo_running:
+        st.warning("**NOTE:** You are running as the master node. You cannot change the role of the node while the system is running.")
 
     st.title('Listening Mode')
 
@@ -175,7 +187,7 @@ def listen(evosys, project_dir):
         st.write('') 
         st.write('')    
         if not st.session_state.listening_mode:
-            if st.button("**Start Listening**", use_container_width=True):
+            if st.button("**Start Listening**", use_container_width=True, disabled=st.session_state.evo_running):
                 listener = Listener(evosys, node_id)
                 listener.build_connection()
                 st.session_state.listener = listener
@@ -184,7 +196,7 @@ def listen(evosys, project_dir):
                 st.success(f"Listening started. Node ID: {listener.node_id}")
                 st.rerun()
         else:
-            if st.button("**Stop Listening**", use_container_width=True):
+            if st.button("**Stop Listening**", use_container_width=True, disabled=st.session_state.evo_running):
                 if st.session_state.listener:
                     st.session_state.listener.stop_listening()
                     st.session_state.listener_thread.join()

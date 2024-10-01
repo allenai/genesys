@@ -84,6 +84,9 @@ evosys = build_evo_system()
 if 'listening_mode' not in st.session_state:
     st.session_state.listening_mode = False
 
+if 'evo_running' not in st.session_state:
+    st.session_state.evo_running = False
+
 if 'design_threads' not in st.session_state:
     st.session_state['design_threads'] = {}  
 

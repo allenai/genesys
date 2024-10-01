@@ -20,7 +20,7 @@ def design_selector(evosys,project_dir):
         # st.markdown("#### Configure design mode")
         mode = st.selectbox(label="Design Mode",options=[i.value for i in DesignModes])
     with col2:
-        selection_mode = st.selectbox(label="Selection Mode",options=['random'])
+        select_method = st.selectbox(label="Selection Method",options=['random'])
 
 
     st.subheader('Random Select')
@@ -42,7 +42,7 @@ def design_selector(evosys,project_dir):
                 n_sources[source] = st.number_input(label=f'{source} ({sources[source]})',min_value=0,value=init_value,max_value=sources[source])#,disabled=disabled)
     
     if st.button('Select'):
-        instruct,seeds,refs=evosys.select_design(n_sources,mode=DesignModes(mode))
+        instruct,seeds,refs=evosys.select_design(n_sources,mode=DesignModes(mode),select_method=select_method)
 
         st.subheader(f'**Instructions from the selector:**')
         if instruct:
@@ -66,9 +66,9 @@ def design_selector(evosys,project_dir):
 def verify_selector(evosys,project_dir):
     st.header('Verify Selector')
 
-    col1, col2, col3, col4 = st.columns(4)
+    col1, col2, col3, col4 = st.columns([1,1,1,1])
     with col1:
-        selection_mode = st.selectbox(label="Selection Mode",options=['random'])
+        verify_strategy = st.selectbox(label="Verify Strategy",options=['random'])
     with col2:
         st.write('')
         with st.expander('Remaining Budget'):
@@ -77,16 +77,18 @@ def verify_selector(evosys,project_dir):
         scale = st.selectbox(label="Scale",options=evosys.target_scales)
     with col4:
         st.write('')
-        with st.expander(f'Unverified Designs under :red[**{scale}**]'):
+        with st.expander(f'Unverified Designs under ***{scale}***'):
             unverified = evosys.ptree.get_unverified_designs(scale)
             st.write(unverified)
 
-
+    if verify_strategy == 'random':
+        st.subheader('Random Strategy')
+        st.write('*Random strategy will use up smaller scale budgets first.*')
 
     verify_selected = st.button('Select')
 
     if verify_selected:
-        design_id,scale=evosys.select_verify()
+        design_id,scale=evosys.select_verify(verify_strategy=verify_strategy)
         if design_id is None:
             st.warning('No design to verify.')
         else:
