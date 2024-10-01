@@ -5,6 +5,7 @@ import streamlit as st
 import sys,os
 from subprocess import check_output
 import graphviz
+import pytz
 import streamlit.components.v1 as components
 from google.cloud import firestore
 from datetime import datetime, timedelta
@@ -36,7 +37,10 @@ class DistributedCommandCenter:
         # check if the node_id is already in the collection
         doc = self.doc_ref.get()
         if doc.exists and doc.to_dict().get('status','n/a') == 'connected':
-            if (datetime.now() - doc.to_dict()['last_heartbeat']).total_seconds() < self.zombie_threshold:
+            last_heartbeat = doc.to_dict().get('last_heartbeat')
+            threshold_time = datetime.now(pytz.UTC) - timedelta(seconds=self.zombie_threshold)
+            is_zombie = last_heartbeat < threshold_time
+            if not is_zombie:
                 self.active = False
                 return 
         self.doc_ref.set({
@@ -180,8 +184,12 @@ def evolve(evosys,project_dir):
 
     if st.session_state.evo_running:
         st.subheader("***Running Logs***")
-        for timestamp,log in st.session_state.command_center.read_logs().items():
-            st.write(f'{timestamp}: {log}')
+        evo_log=st.session_state.command_center.read_logs()
+        if evo_log:
+            for timestamp,log in evo_log.items():
+                st.write(f'{timestamp}: {log}')
+        else:
+            st.info("No logs available at the moment.")
 
     st.header("Phylogenetic Tree Monitor")
 
@@ -200,7 +208,7 @@ def evolve(evosys,project_dir):
         st.write('')
         st.write('')
         if st.button(f'Refresh & Sync Tree'):#,use_container_width=True):
-            evosys.update_design_tree()
+            evosys.ptree.update_design_tree()
             evosys.ptree.export(max_nodes=_max_nodes,height='800px')
             ptree_dir_small=U.pjoin(evosys.evo_dir,f'PTree_{_max_nodes}.html')
             max_nodes=_max_nodes

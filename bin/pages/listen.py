@@ -32,9 +32,9 @@ def get_process(pid):
 
 
 def verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume=True, cli=False):
-    log_ref = evosys.remote_db.collection('experiment_logs').document(evosys.evoname)
     if evosys.evoname != evoname:
         evosys.switch_ckpt(evoname)
+    log_ref = evosys.remote_db.collection('experiment_logs').document(evoname)
     if design_id is None or scale is None:
         design_id,scale=evosys.select_verify()
         if design_id is None:
@@ -49,7 +49,7 @@ def verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume=
             design_id = exp[:-len(scale)-1]
     params = {'evoname': evoname}
     sess_id,pid = run_verification(params, design_id, scale, resume, cli=cli)
-    timestamp=firestore.SERVER_TIMESTAMP
+    timestamp=str(firestore.SERVER_TIMESTAMP)
     if sess_id:
         log=f'Node {node_id} running verification on {design_id}_{scale}'
         log_ref.set({
@@ -64,17 +64,17 @@ def verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume=
     return sess_id,pid
 
 def design_command(node_id, evosys, evoname, resume=True, cli=False):
-    log_ref = evosys.remote_db.collection('experiment_logs').document(evosys.evoname)
     sess_id = None
     params = {'evoname': evoname}
     if evosys.evoname != evoname:
         evosys.switch_ckpt(evoname)
+    log_ref = evosys.remote_db.collection('experiment_logs').document(evoname)
     if resume:
         unfinished_designs = evosys.ptree.get_unfinished_designs()
         if len(unfinished_designs) > 0:
             sess_id = random.choice(unfinished_designs)
     sess_id,pid = run_design_thread(evosys, sess_id, params, cli=cli)
-    timestamp=firestore.SERVER_TIMESTAMP
+    timestamp=str(firestore.SERVER_TIMESTAMP)
     if sess_id:
         log=f'Node {node_id} running design thread with session id {sess_id}'
         log_ref.set({
