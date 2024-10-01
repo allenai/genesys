@@ -597,3 +597,21 @@ def design(evosys,project_dir):
         _design_tuning(evosys,project_dir)
     if st.session_state['design_tab']=='design_runner':
         _design_engine(evosys,project_dir)
+
+
+
+if __name__ == '__main__':
+    from model_discovery.evolution import BuildEvolution
+    import argparse
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--evoname", default='test_evo_000', type=str)
+    args = parser.parse_args()
+
+    evosys = BuildEvolution(
+        params={'evoname':args.evoname}, # doesnt matter, will switch to the commanded evoname
+        do_cache=False,
+        # cache_type='diskcache',
+    )
+
+    run_design_thread(evosys,cli=True)

@@ -1,1 +1,1 @@
-python -m model_discovery.ve.run "$@"
+python -m bin.pages.verify "$@"

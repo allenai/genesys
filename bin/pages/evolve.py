@@ -4,7 +4,6 @@ import pathlib
 import streamlit as st
 import sys,os
 from subprocess import check_output
-import graphviz
 import pytz
 import streamlit.components.v1 as components
 from google.cloud import firestore
@@ -264,12 +263,12 @@ if __name__ == '__main__':
     import argparse
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("--evoname", type=str) # the name of the whole evolution
+    parser.add_argument("--evoname", default='test_evo_000', type=str) # the name of the whole evolution
     parser.add_argument("--max_threads", type=int, default=4) # the max number of threads to use
     args = parser.parse_args()
 
     evosys = BuildEvolution(
-        params={'evoname':args.evoname}, # doesnt matter, will switch to the commanded evoname
+        params={'evoname':args.evoname}, 
         do_cache=False,
         # cache_type='diskcache',
     )

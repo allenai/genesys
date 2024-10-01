@@ -780,7 +780,7 @@ class GUFlowMutation(FlowCreator):
             self.ptree.session_set(self.sess_id,'reranked',rerank)
         for acronym in rerank['rank']:
             design=self.ptree.get_node(acronym)
-            if not design.is_implemented():
+            if not design.is_implemented() and not design.is_challenging():
                 proposals.append(design.proposal)
                 acronyms.append(acronym)
         return proposals,acronyms

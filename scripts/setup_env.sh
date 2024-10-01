@@ -23,12 +23,20 @@ done
 
 if [ "$PREPARE_DATA_ONLY" = false ]; then
     # Set environment variables, export by yourself
+
     # export MY_OPENAI_KEY=YOUR-KEY
+    # export ANTHROPIC_API_KEY=YOUR-KEY
     # export HF_KEY=YOUR-KEY
+    # export HF_HUB_KEY=YOUR-KEY # Optional
     # export GITHUB_TOKEN=YOUR-KEY
     # export WANDB_API_KEY=YOUR-KEY
-    # export AWS_ACCESS_KEY_ID=YOUR-KEY
     # export AWS_SECRET_ACCESS_KEY=YOUR-KEY
+    # export AWS_ACCESS_KEY_ID=YOUR-KEY
+    # export S2_API_KEY=YOUR-KEY
+    # export MATHPIX_API_ID=YOUR-KEY # Optional
+    # export PINECONE_API_KEY=YOUR-KEY
+    # export COHERE_API_KEY=YOUR-KEY
+    # export PERPLEXITY_API_KEY=YOUR-KEY
 
     # Create directories
     mkdir -p ~/model_discovery/data
@@ -44,18 +52,25 @@ if [ "$PREPARE_DATA_ONLY" = false ]; then
     # OPTIONAL: append these exports to your .bashrc or .bash_profile for them to be set globally
     echo "export MY_OPENAI_KEY=$MY_OPENAI_KEY" >> ~/.bashrc
     echo "export HF_KEY=$HF_KEY" >> ~/.bashrc
+    echo "export HF_HUB_KEY=$HF_HUB_KEY" >> ~/.bashrc
     echo "export GITHUB_TOKEN=$GITHUB_TOKEN" >> ~/.bashrc
-    echo "export WANDB_API_KEY=$WANDB_API" >> ~/.bashrc
+    echo "export ANTHROPIC_API_KEY=$ANTHROPIC_API_KEY" >> ~/.bashrc
+    echo "export WANDB_API_KEY=$WANDB_API_KEY" >> ~/.bashrc
     echo "export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID" >> ~/.bashrc
     echo "export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY" >> ~/.bashrc
-    echo "export DATA_DIR=~/model_discovery/data" >> ~/.bashrc
-    echo "export CKPT_DIR=~/model_discovery/ckpt" >> ~/.bashrc
+    echo "export S2_API_KEY=$S2_API_KEY" >> ~/.bashrc
+    echo "export MATHPIX_API_ID=$MATHPIX_API_ID" >> ~/.bashrc
+    echo "export PINECONE_API_KEY=$PINECONE_API_KEY" >> ~/.bashrc
+    echo "export COHERE_API_KEY=$COHERE_API_KEY" >> ~/.bashrc
+    echo "export PERPLEXITY_API_KEY=$PERPLEXITY_API_KEY" >> ~/.bashrc
+    echo "export DATA_DIR=$DATA_DIR" >> ~/.bashrc
+    echo "export CKPT_DIR=$CKPT_DIR" >> ~/.bashrc
     source ~/.bashrc
 
     # Installing the LATEST customized LM evaluation harness
     echo "Preparing the environment"
-    # pip uninstall lm_eval # uninstall current installation first
-    pip install -r requirements.txt
+    # pip install -r requirements.txt
+    bash scripts/setup_requirements.sh
 
     # Uninstalling peft
     # pip uninstall peft

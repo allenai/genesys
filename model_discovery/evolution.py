@@ -891,6 +891,9 @@ class DesignArtifact(NodeObject):
     def is_implemented(self):
         return self.implementation is not None and self.implementation.status=='implemented'
 
+    def is_challenging(self):
+        return self.implementation is not None and self.implementation.status=='challenging'
+
     def get_cost(self):
         costs=self.proposal.costs
         if self.implementation:
@@ -944,7 +947,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
     │   └── ...
     | ... # units, etc.
     """
-    def __init__(self, evoname, target_scales, db_dir: str, db_only=False, remote_db=None, use_remote_db=True): 
+    def __init__(self, evoname, target_scales, db_dir: str, db_only=False, remote_db=None, use_remote_db=True,max_implementation_attempts=3): 
         self.evoname = evoname
         self.target_scales = target_scales
         self.db_dir = db_dir
@@ -954,6 +957,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         U.mkdir(db_dir)
         U.mkdir(U.pjoin(db_dir,'designs'))
         U.mkdir(U.pjoin(db_dir,'sessions'))
+        self.max_implementation_attempts=max_implementation_attempts
         self.db_only=db_only
         self.FM = None
         self.use_remote_db=use_remote_db
@@ -1281,6 +1285,9 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
             _code = tree.compose()
             for scale in self.target_scales:
                 codes[scale] = check_tune(scale,acronym, code=_code,check_only=True,cpu_only=True,reformat_only=True)
+        else:
+            if len(implementation.history)>self.max_implementation_attempts:
+                status='challenging' # too difficult maybe
         U.save_json(codes, U.pjoin(self.design_dir(acronym), 'codes.json'))
         self.FM.upload_implementation(acronym,implementation.to_dict(),overwrite=True)
         self.FM.update_index()

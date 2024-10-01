@@ -416,4 +416,17 @@ def verify(evosys,project_dir):
             
 
 
+if __name__ == '__main__':
+    import argparse
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--evoname", default='test_evo_000', type=str) # the name of the whole evolution
+    parser.add_argument("--design_id", default=None, type=str) # the name of the whole evolution
+    parser.add_argument("--scale", default=None, type=str) # the name of the whole evolution
+    parser.add_argument("--resume", action='store_true') # the name of the whole evolution
+
+    args = parser.parse_args()
+
+    params={'evoname':args.evoname}
+    run_verification(params, args.design_id, args.scale, args.resume, cli=True)
 

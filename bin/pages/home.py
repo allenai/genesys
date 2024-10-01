@@ -61,7 +61,7 @@ the main interface to the system instead of the common command-line interface
 
 * ***Can I use a CLI instead?*** Yes, you can always use the CLI to run the
   system. The GUI essentially integrated experiment monitors and runners to
-  create a subprocess to run the low-level CLI instructions. 
+  create a subprocess to run the low-level CLI instructions. See details below.
 ''')
 
     st.markdown('''
@@ -121,8 +121,8 @@ on a given scale and evaluate the performance using the customed LM-Eval.
 ## Evolution
 
 The evolutionary system continuously runs two threads asynchronously in multiple nodes until the budget is exhausted:
-1. **Design Threads**: Continuously sample new designs on selected nodes. It is driven by the *Model Design Engine* in the **Design** tab.
-2. **Verify Threads**: Continuously run verifications on the selected design and scale. It is driven by the *Verification Engine* in the **Verify** tab.
+1. **Design Threads**: Continuously sample new designs on selected nodes. It is driven by the *Model Design Engine* in the **Design** tab. You can also run it in CLI by `python -m model_discovery.design` or `bash script/run_design.sh`.
+2. **Verify Threads**: Continuously run verifications on the selected design and scale. It is driven by the *Verification Engine* in the **Verify** tab. You can also run it in CLI by `python -m model_discovery.verify` or `bash script/run_verify.sh`.
 
 The network of working nodes are orchestrated by a master node through the **Firebase**. 
 To add a node to the network, simply run `python -m model_discovery.listen` or `bash script/run_node.sh`

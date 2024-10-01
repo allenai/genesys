@@ -1,11 +1,12 @@
-# Language Modeling Library (300)
+# Language Modeling Library (300+)
 Library of methods and theory that may inspire the language modeling designs. Around 256 major papers & projects, and other interesting stuffs. Google Sheet: https://docs.google.com/spreadsheets/d/1GxMjIY-RZWChS6g03NP9q4kv9tRjvQ9N8ZBkHIPvR1Y/edit?usp=sharing
 
 
-## TODO
+## TODO: add new methods to the library
 
 - https://arxiv.org/pdf/2409.10594 KAT
 - https://github.com/BlinkDL/RWKV-LM/tree/main/RWKV-v7 RWKV-v7
+- https://www.liquid.ai/liquid-foundation-models LFM
 
 
 ## Baselines and Core Reference Designs (155)
