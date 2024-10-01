@@ -1495,17 +1495,16 @@ class ConnectionManager:
                     running_verifies.append(pid)
         return running_designs, running_verifies
 
-    def get_available_connections(self):
+
+    def get_all_workloads(self):
         self.get_active_connections()
-        design_available = {}
-        verify_available = {}
+        design_workload = {}
+        verify_workload = {}
         for node_id in self.connections:
             running_designs, running_verifies = self.check_workload(node_id)
-            if len(running_designs) < self.max_design_threads_per_node:
-                design_available[node_id] = self.max_design_threads_per_node - len(running_designs)
-            if len(running_verifies) == 0:
-                verify_available[node_id] = 1
-        return design_available, verify_available
+            design_workload[node_id] = len(running_designs)
+            verify_workload[node_id] = len(running_verifies)
+        return design_workload, verify_workload
 
     def check_command_status(self,node_id):
         node_data = self.connections[node_id]

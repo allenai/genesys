@@ -40,17 +40,25 @@ the main interface to the system instead of the common command-line interface
 * ***Can I use a CLI instead?*** Yes, you can always use the CLI to run the
   system. The GUI essentially integrated experiment monitors and runners to
   create subprocess to run the low-level CLI instructions. 
+''')
 
+    st.markdown('''
+## :rainbow[How to launch the evolution?] 
+
+Only distributed evolution is supported now. As sequantial evolution is complicated which need to consider the action policy. See details below. To launch the distributed evolution:
+ 1. Configure the experiment settings in the **Config** tab. Save and upload to the cloud. (*CLI mode is working in progress*)
+ 2. Launch the nodes in the **Listen** tab. Or directly launch by `bash scripts/run_node.sh`. Remember to run it in GPU-available sessions. You can also launch a node in the master.
+ 3. Run the evolution in the **Evolve** tab. Or directly launch by `bash scripts/run_evo.sh`. Remember to run it in a no-GPU session to release the computational resources.
 
 ''')
-    
+
     # welcome = U.read_file(U.pjoin(project_dir,'bin','assets','howtouse.md'))
     # st.markdown(welcome)
 
     col1,col2=st.columns(2)
     with col1:
       st.markdown('''
-## How to use
+## How to use this GUI?
 
 1. Configure the experiment settings in the **:blue[Config]** tab. 
 - Or selecting an existing namespace to resume the experiment.
@@ -79,7 +87,7 @@ the main interface to the system instead of the common command-line interface
 in a given scale and evaluate the performance by the customed LM-Eval.
 5. **Evolve**: The evolution loop will repeat the above processes asynchronously. 
 
-## GUI Guideline
+## Icon Guideline
 
  * **Namespace**: The experiment name, 📶 is online with remote DB connected, 📴 means offline.
  * **Listening**: When the system is running in the listening mode or connected to listeners as master node, the status will show with 👂, 🐎 means running designs 🥏 means running verifies. 
@@ -95,7 +103,7 @@ The evolutionary system continously run two threads asynchronously in multiple n
 
 The two threads can be runned in multiple nodes besides the master node.
 The network is managed in the **Firestore**. To add a node to the network,
-simply run `python -m model_discovery.listen` or `bash script/run_listener.sh`
+simply run `python -m model_discovery.listen` or `bash script/run_node.sh`
 on the node. Or you can also run it in `Listen` tab in the GUI, so that you
 can view the design process and verification results in real-time in the 
 ***Design***, ***Verify*** and ***Viewer*** tabs.
@@ -157,7 +165,7 @@ Configure the experiment settings. Recommended to set it up before running.
 
     with tabs[7]:
       st.markdown('''
-Listening mode, accepting commands from master node. Can also run it in the CLI using `python -m model_discovery.listen` or `bash script/run_listener.sh`.
+Listening mode, accepting commands from master node. Can also run it in the CLI using `python -m model_discovery.listen` or `bash script/run_node.sh`.
 ''')  
 
     with tabs[8]:

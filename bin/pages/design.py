@@ -53,6 +53,8 @@ def run_design_thread(evosys,sess_id=None,params=None,cli=False):
             # time.sleep(3) # wait for the thread to start and session to be created
             st.session_state['viewing_log'] = None
             # st.rerun()
+        else:
+            print(f'Success: Design thread launched for {evosys.evoname}.')
         return sess_id,process.pid
     else:
         msg=f"Max number of design threads reached ({st.session_state['max_design_threads']}). Please wait for some threads to finish."

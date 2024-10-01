@@ -146,11 +146,11 @@ class Listener:
         
     def stop_listening(self):
         self.running = False
+        self.cleanup()
 
     def cleanup(self):
         # st.info("Cleaning up and disconnecting...")
         self.doc_ref.delete()  # Delete the connection document
-
 
 def start_listener_thread(listener,add_ctx=True):
     thread = threading.Thread(target=listener.listen_for_commands)
@@ -167,6 +167,7 @@ def listen(evosys, project_dir):
     if st.session_state.evo_running:
         st.warning("**NOTE:** You are running as the master node. You cannot change the role of the node while the system is running.")
 
+
     st.title('Listening Mode')
 
     # Initialize session state
@@ -176,6 +177,12 @@ def listen(evosys, project_dir):
         st.session_state.listener_thread = None
     if 'exec_commands' not in st.session_state:
         st.session_state.exec_commands = {}
+
+    passive_mode=False  
+    if st.session_state.listener and st.session_state.listener.running and not st.session_state.listener.active:
+        passive_mode=True
+        st.info('The command center is already running (background or still alive). You are in passive observation mode.')
+
 
     col1,_,col2,_,col3,_ = st.columns([3.5,0.1,1,0.1,1,1.5])
 
@@ -187,7 +194,7 @@ def listen(evosys, project_dir):
         st.write('') 
         st.write('')    
         if not st.session_state.listening_mode:
-            if st.button("**Start Listening**", use_container_width=True, disabled=st.session_state.evo_running):
+            if st.button("**Start Listening**", use_container_width=True, disabled=st.session_state.evo_running or passive_mode):
                 listener = Listener(evosys, node_id)
                 listener.build_connection()
                 st.session_state.listener = listener
@@ -196,7 +203,7 @@ def listen(evosys, project_dir):
                 st.success(f"Listening started. Node ID: {listener.node_id}")
                 st.rerun()
         else:
-            if st.button("**Stop Listening**", use_container_width=True, disabled=st.session_state.evo_running):
+            if st.button("**Stop Listening**", use_container_width=True, disabled=st.session_state.evo_running or passive_mode):
                 if st.session_state.listener:
                     st.session_state.listener.stop_listening()
                     st.session_state.listener_thread.join()

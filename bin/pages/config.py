@@ -469,3 +469,9 @@ def config(evosys,project_dir):
             with st.expander("Loaded Config",expanded=False):
                 st.write(uploaded_config)
             st.button("Apply Uplaoded Config",on_click=apply_config,args=(evosys,uploaded_config,),disabled=st.session_state.listening_mode or st.session_state.evo_running)
+
+
+# if __name__ == "__main__":
+
+
+

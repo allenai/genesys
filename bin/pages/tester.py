@@ -22,7 +22,7 @@ def tester(evosys,project_dir):
     st.title('Testing page (for internal use)')
 
     ### Connection manager
-    CM = ConnectionManager(evosys.evoname, evosys.ptree.remote_db)
+    CM = ConnectionManager(evosys.evoname, evosys.ptree.remote_db, st)
 
 
     ### Send command to all active connections

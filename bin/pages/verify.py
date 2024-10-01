@@ -68,6 +68,7 @@ def _run_verification(params, design_id, scale, resume, cli=False):
     params_str = shlex.quote(json.dumps(params))
     cmd = f"python -m model_discovery.evolution --mode prep_model --params {params_str} --design_id {design_id} --scale {scale}"
     if cli:
+        print('Preparing Model...')
         process = subprocess.Popen(cmd, shell=True)
     else:
         with st.spinner(f'Preparing Model...'):
@@ -77,6 +78,7 @@ def _run_verification(params, design_id, scale, resume, cli=False):
     if resume:
         cmd+=' --resume'
     if cli:
+        print(f'Launching Verification with command:\n```{cmd}```')
         process = subprocess.Popen(cmd, shell=True)
     else:
         st.write(f'Launching Verification with command:\n```{cmd}```')
@@ -98,6 +100,8 @@ def run_verification(params, design_id, scale, resume, cli=False):
             st.session_state['running_verifications'][key] = process
             # st.session_state['output'][key] = []
             st.success(f"Verification process started for {design_id} on scale {scale}. Check console for output.")
+        else:
+            print(f"Success: Verification process started for {design_id} on scale {scale}. Check console for output.")
         return key,process.pid
     else:
         key=list(st.session_state['running_verifications'].keys())[0]
