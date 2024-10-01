@@ -160,7 +160,7 @@ def evolve(evosys,project_dir):
                     st.session_state.command_center_thread = x_evolve(command_center)
                     st.session_state.evo_running = True
                     st.success(f"Evolution launched for {evosys.evoname}.")
-                    time.sleep(10)
+                    time.sleep(3)
                     st.rerun()
         else:
             if st.button(
@@ -175,7 +175,7 @@ def evolve(evosys,project_dir):
                         st.session_state.command_center_thread = None
                         st.session_state.evo_running = False
                         st.success(f"Evolution stopped for {evosys.evoname}.")
-                        time.sleep(5)
+                        time.sleep(3)
                         st.rerun()
     
     if not evosys.remote_db:

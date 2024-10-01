@@ -68,7 +68,7 @@ def running_status(st,evosys):
   db_status = '📶' if evosys.ptree.remote_db else '📴'
   st.write(f'🏠 **Namespace:\n```{evosys.evoname}``` {db_status}**')
   if st.session_state.listening_mode:
-    st.write(f'👂```{st.session_state.listener.node_id}``` *is listening*\n')
+    st.status(f'👂```{st.session_state.listener.node_id}``` *is listening*\n')
   else:
     if st.session_state.evo_running:
       st.status('🚀 ***Evolution Running***')
