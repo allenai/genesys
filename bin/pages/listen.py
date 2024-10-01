@@ -50,7 +50,6 @@ def verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume=
             design_id = exp[:-len(scale)-1]
     params = {'evoname': evoname}
     sess_id,pid = run_verification(params, design_id, scale, resume, cli=cli)
-    # format: October 1, 2024 at 12:50:01 AM UTC-7
     timestamp=datetime.now().strftime('%B %d, %Y at %I:%M:%S %p %Z')
     if sess_id:
         log=f'Node {node_id} running verification on {design_id}_{scale}'
