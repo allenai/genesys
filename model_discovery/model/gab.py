@@ -75,6 +75,35 @@ class RMSNorm(GAUBase):
 
 
 import torch.nn.functional as F
+
+
+class GatedMLP(GAUBase):
+
+    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
+        device=None, dtype=None, hidden_features=None, out_features=None,
+        activation=None, bias=False, multiple_of=128, **kwargs):
+        self.factory_kwargs = {'device': device, 'dtype': dtype}
+        super().__init__(embed_dim, block_loc, kwarg_all)
+        out_features = out_features if out_features is not None else embed_dim
+        hidden_features = (hidden_features if hidden_features is not None else
+            int(8 * embed_dim / 3))
+        hidden_features = (hidden_features + multiple_of - 1
+            ) // multiple_of * multiple_of
+        self.fc1 = nn.Linear(embed_dim, 2 * hidden_features, bias=bias, **
+            self.factory_kwargs)
+        self.activation = activation if activation is not None else F.silu
+        self.fc2 = nn.Linear(hidden_features, out_features, bias=bias, **
+            self.factory_kwargs)
+
+    def _forward(self, X, **Z):
+        y = self.fc1(X)
+        y, gate = y.chunk(2, dim=-1)
+        y = y * self.activation(gate)
+        y = self.fc2(y)
+        return y
+
+
+import torch.nn.functional as F
 import math
 from einops import rearrange, repeat
 
@@ -256,40 +285,12 @@ class RotaryPositionalEmbeddings(GAUBase):
         return X, {'output_emb': output_emb}
 
 
-import torch.nn.functional as F
-
-
-class GatedMLP(GAUBase):
-
-    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, hidden_features=None, out_features=None,
-        activation=None, bias=False, multiple_of=128, **kwargs):
-        self.factory_kwargs = {'device': device, 'dtype': dtype}
-        super().__init__(embed_dim, block_loc, kwarg_all)
-        out_features = out_features if out_features is not None else embed_dim
-        hidden_features = (hidden_features if hidden_features is not None else
-            int(8 * embed_dim / 3))
-        hidden_features = (hidden_features + multiple_of - 1
-            ) // multiple_of * multiple_of
-        self.fc1 = nn.Linear(embed_dim, 2 * hidden_features, bias=bias, **
-            self.factory_kwargs)
-        self.activation = activation if activation is not None else F.silu
-        self.fc2 = nn.Linear(hidden_features, out_features, bias=bias, **
-            self.factory_kwargs)
-
-    def _forward(self, X, **Z):
-        y = self.fc1(X)
-        y, gate = y.chunk(2, dim=-1)
-        y = y * self.activation(gate)
-        y = self.fc2(y)
-        return y
-
-
-gab_config = {'n_heads': 8, 'causal': True, 'num_heads_kv': None,
-    'head_dim': None, 'mlp_dim': 0, 'qkv_proj_bias': True, 'out_proj_bias':
-    True, 'softmax_scale': None, 'rotary_emb_base': 10000, 'd_conv': 0,
+gab_config = {'softmax_scale': None, 'out_proj_bias': True, 'n_heads': 8,
+    'num_heads_kv': None, 'd_conv': 0, 'mlp_dim': 0, 'head_dim': None,
+    'causal': True, 'qkv_proj_bias': True, 'rotary_emb_base': 10000,
+    'max_seq_len': 4096, 'bias': False, 'multiple_of': 128,
     'hidden_features': None, 'out_features': None, 'activation': None,
-    'bias': False, 'multiple_of': 128, 'max_seq_len': 4096, 'eps': 1e-05}
+    'eps': 1e-05}
 
 
 

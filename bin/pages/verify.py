@@ -230,8 +230,9 @@ def verify(evosys,project_dir):
             design=evosys.ptree.get_node(design_id)
             verifications=design.verifications
             verified[design_id]={}
-            for scale,verification in verifications.items():
-                verified[design_id][scale]=verification
+            for scale,_ in verifications.items():
+                verified[design_id][scale]=True
+
     with col2:
         selected_design=st.selectbox("Select a Design",options=verified.keys())
         if selected_design is not None:
@@ -251,8 +252,9 @@ def verify(evosys,project_dir):
         st.write('')
         if selected_design is not None:
             already_verified=scale in verified[selected_design]
-            txt='Run Verification' if not already_verified else 'Re-Run Verification'
-            run_btn= st.button(txt,use_container_width=True,disabled=st.session_state.listening_mode or st.session_state.evo_running)
+            txt='Run Verification'
+            #  if not already_verified else 'Re-Run Verification'
+            run_btn= st.button(txt,use_container_width=True,disabled=st.session_state.listening_mode or st.session_state.evo_running or already_verified)
         else:
             run_btn= st.button('Run Verification',use_container_width=True,disabled=True)
     

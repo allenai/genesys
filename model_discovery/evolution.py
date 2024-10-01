@@ -1694,6 +1694,17 @@ class EvolutionSystem(exec_utils.System):
 
         self.ptree=PhylogeneticTree(self.evoname,self.target_scales,U.pjoin(self.evo_dir,'db'),self.params['db_only'],self.remote_db,self.params['use_remote_db'])
         print(f"Phylogenetic tree loaded with {len(self.ptree.G.nodes)} nodes and {len(self.ptree.design_sessions)} design sessions from {self.ptree.db_dir}.")
+        
+        # Scan VE for missing verifications
+        ve_dir=U.pjoin(self.evo_dir,'ve')
+        for design_scale in os.listdir(ve_dir):
+            scale=design_scale.split('_')[1]
+            design_id=design_scale[:-len(scale)-1]
+            node=self.ptree.get_node(design_id)
+            if scale not in node.verifications:
+                report_dir=U.pjoin(ve_dir,design_scale,'report.json')
+                report=U.load_json(report_dir)
+                self.ptree.verify(design_id,scale,report)
 
         if self.params['no_agent']:
             self.rnd_agent = None
