@@ -194,7 +194,7 @@ def evolve(evosys,project_dir):
         evo_log=st.session_state.command_center.read_logs()
         if evo_log:
             for timestamp,log in evo_log.items():
-                st.write(f'{timestamp}: {log}')
+                st.write(f'{timestamp.split("_")[0]}: {log}')
         else:
             st.info("No logs available at the moment.")
 
@@ -233,7 +233,7 @@ def evolve(evosys,project_dir):
         AU.running_status(st,evosys)
 
         st.button('🔄 Refresh')
-        
+
         # logo = AU.square_logo("μLM")
         # logo_path = U.pjoin(pathlib.Path(__file__).parent,'..','assets','storm_logo.svg')
         # logo=AU.svg_to_image(logo_path)
