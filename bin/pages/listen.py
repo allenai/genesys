@@ -90,6 +90,14 @@ def design_command(node_id, evosys, evoname, resume=True, cli=False):
     return sess_id,pid
 
 
+def is_running(pid):
+    process = get_process(pid)
+    if process:
+        if str(process.status()) in ['running','disk-sleep', 'waiting', 'waking']:
+            return True
+    return False
+
+
 class Listener:
     def __init__(self, evosys, node_id=None, cli=False):
         self.evosys = evosys
@@ -142,11 +150,13 @@ class Listener:
                         self.doc_ref.update({'commands': []})
                     
                     for pid in self.command_status:
-                        process = get_process(int(pid))
-                        if process and process.is_running():
+                        if is_running(int(pid)):
                             self.command_status[str(pid)]['status'] = 'running'
                         else:
-                            self.command_status[str(pid)]['status'] = 'finished'
+                            process = get_process(int(pid))
+                            status=process.status() if process else 'N/A'
+                            self.command_status[str(pid)]['status'] = status
+                            psutil.Process(int(pid)).kill()
 
                     self.doc_ref.update(
                         {
@@ -257,8 +267,9 @@ def listen(evosys, project_dir):
                     pass
             else:
                 doc = st.session_state.listener.doc_ref.get()
-                command_status = doc.to_dict() if doc.exists else {}
+                command_status = doc.to_dict()['command_status'] if doc.exists else {}
                 for pid,status in command_status.items():
+                    pid=int(pid)
                     st.session_state.exec_commands[st.session_state.listener.node_id][pid] = status['command'], status['sess_id']
             for pid in st.session_state.exec_commands[st.session_state.listener.node_id]:
                 command,sess_id = st.session_state.exec_commands[st.session_state.listener.node_id][pid]
@@ -288,9 +299,9 @@ def listen(evosys, project_dir):
 
         active_commands,inactive_commands = [],[]
         for pid in st.session_state.exec_commands[selected_node]:
+            pid=int(pid)
             command,sess_id = st.session_state.exec_commands[selected_node][pid]
-            process = get_process(pid)
-            if process and process.is_running():
+            if is_running(pid):
                 active_commands.append((command,sess_id,pid))
             else:
                 inactive_commands.append((command,sess_id,pid))
@@ -298,13 +309,14 @@ def listen(evosys, project_dir):
         if len(active_commands) == 0 and len(inactive_commands) == 0:
             st.info("No commands running or finished.")
 
-        def show_commands(commands):
-            for command,sess_id,pid in commands:
-                cols=st.columns([0.6,0.05,1,0.05,2])
+        def show_commands(commands,max_lines=20):
+            for command,sess_id,pid in commands[-max_lines:]:
+                cols=st.columns([0.5,0.01,0.2,0.01,1.8])
                 ctype = command.split(',')[0]
                 args = command.split(',')[1:]
+                process = get_process(pid)
                 with cols[0]:
-                    st.write(f'PID: ```{pid}```')
+                    st.write(f'PID: ```{pid}``` ({process.status() if process else "N/A"})')
                 with cols[2]:
                     if ctype == 'design':
                         st.write(f"Command: ```Design```")
