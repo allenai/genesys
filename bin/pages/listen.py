@@ -50,7 +50,7 @@ def verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume=
             design_id = exp[:-len(scale)-1]
     params = {'evoname': evoname}
     sess_id,pid = run_verification(params, design_id, scale, resume, cli=cli)
-    timestamp=datetime.now().strftime('%B %d, %Y at %I:%M:%S %p %Z')
+    timestamp=datetime.now().strftime('%B %d, %Y at %I:%M:%S %p %Z')+' '+str(uuid.uuid4())[:8]
     if sess_id:
         log=f'Node {node_id} running verification on {design_id}_{scale}'
         log_ref.set({
@@ -75,7 +75,7 @@ def design_command(node_id, evosys, evoname, resume=True, cli=False):
         if len(unfinished_designs) > 0:
             sess_id = random.choice(unfinished_designs)
     sess_id,pid = run_design_thread(evosys, sess_id, params, cli=cli)
-    timestamp=datetime.now().strftime('%B %d, %Y at %I:%M:%S %p %Z')
+    timestamp=datetime.now().strftime('%B %d, %Y at %I:%M:%S %p %Z')+' '+str(uuid.uuid4())[:8]
     if sess_id:
         log=f'Node {node_id} running design thread with session id {sess_id}'
         log_ref.set({
