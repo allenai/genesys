@@ -322,6 +322,19 @@ if __name__ == "__main__":
 
     listener = Listener(evosys, cli=True)
     listener.build_connection()
-    start_listener_thread(listener,add_ctx=False)
+    listener_thread = start_listener_thread(listener,add_ctx=False)
     
+    try:
+        # Keep the main thread alive
+        while listener.active:
+            time.sleep(1)
+    except KeyboardInterrupt:
+        print("Shutting down...")
+    finally:
+        listener.stop_listening()
+        listener_thread.join(timeout=10)  # Wait for the thread to finish, with a timeout
+
+    print("Listener stopped.")
+
+
 

@@ -73,11 +73,13 @@ def running_status(st,evosys):
     if st.session_state.evo_running:
       st.write('🚀 ***Evolution System is running***')
     if evosys.CM is not None:
-      with st.expander("👂 Connections",expanded=False):
-        for conn in evosys.CM.get_active_connections():
-          _running_designs, _running_verifies = evosys.CM.check_workload(conn)
-          _max_designs = evosys.CM.max_design_threads_per_node
-          st.write(f'```{conn}```: {len(_running_designs)}/{_max_designs} 🐎 {len(_running_verifies)}/1 🥏')
+      active_connections=evosys.CM.get_active_connections()
+      if len(active_connections)!=0:
+        with st.expander(f"👂 Connections: ```{len(active_connections)}```",expanded=False):
+          for conn in active_connections:
+            _running_designs, _running_verifies = evosys.CM.check_workload(conn)
+            _max_designs = evosys.CM.max_design_threads_per_node
+            st.write(f'```{conn}```: {len(_running_designs)}/{_max_designs} 🐎 {len(_running_verifies)}/1 🥏')
           
   running_verifications=[key for key,process in st.session_state.get('running_verifications',{}).items() if process.poll() is None]
   if len(running_verifications)!=0:

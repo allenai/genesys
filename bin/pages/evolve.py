@@ -227,4 +227,18 @@ if __name__ == '__main__':
 
     command_center = DistributedCommandCenter(evosys,args.max_threads,st,cli=True)
     command_center.build_connection()
-    x_evolve(command_center,cli=True)
+    command_center_thread=x_evolve(command_center,cli=True)
+    
+    try:
+        # Keep the main thread alive
+        while command_center_thread.active:
+            time.sleep(1)
+    except KeyboardInterrupt:
+        print("Shutting down...")
+    finally:
+        command_center_thread.stop_listening()
+        command_center_thread.join(timeout=10)  # Wait for the thread to finish, with a timeout
+
+    print("Evolution stopped.")
+
+
