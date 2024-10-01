@@ -10,6 +10,12 @@ import python_weather
 
 sys.path.append('.')
 import model_discovery.utils as U
+import bin.app_utils as AU
+
+current_dir = pathlib.Path(__file__).parent
+logo_path = U.pjoin(current_dir,'assets','storm_logo.svg')
+
+logo=AU.svg_to_image(logo_path)
 
 
 async def _getweather(city):
@@ -20,6 +26,7 @@ async def _getweather(city):
   
 def home(evosys,project_dir):
 
+    st.image(logo)
     st.markdown('''
 # Welcome to the Model Discovery System
 
