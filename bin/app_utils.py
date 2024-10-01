@@ -71,7 +71,7 @@ def running_status(st,evosys):
     st.status(f'👂```{st.session_state.listener.node_id}``` *is listening*\n')
   else:
     if st.session_state.evo_running:
-      st.status('🚀 ***Evolution Running***')
+      st.status('🚀 ***Running Evolution***')
     if evosys.CM is not None:
       active_connections=evosys.CM.get_active_connections()
       if len(active_connections)!=0:

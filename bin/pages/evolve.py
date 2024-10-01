@@ -101,6 +101,8 @@ def get_evo_state(evosys):
     evo_state.pop('design_budget')
     if 'action_strategy' in evo_state:
         evo_state.pop('action_strategy')
+    if 'current_scale' in evo_state:
+        evo_state.pop('current_scale')
     evo_state['target_scales']=evosys.target_scales
     evo_state.pop('scales')
     evo_state['remaining_verify_budget']=evosys.verify_budget
@@ -136,14 +138,14 @@ def evolve(evosys,project_dir):
             st.write(evosys._config)
 
     st.header("Launch Pad")
-    col1, _, col2, _, col3, _, col4 = st.columns([1.2,0.05,1,0.05,1,0.05,2],gap='small')
+    col1, _, col2, _, col3, _, col4 = st.columns([1.2,0.05,1,0.05,1,0.05,1],gap='small')
     with col1:
-        max_design_threads_total=st.number_input("Max Design Threads (bounded by API rate)",min_value=1,value=4)
+        max_design_threads_total=st.number_input("Max Design Threads (bounded by API rate)",min_value=1,value=4,disabled=st.session_state.listening_mode or st.session_state.evo_running)
     with col2:
         # always use extreme mode, use as much gpus as possible
-        verify_schedule=st.selectbox("Verification Scheduling",['extremely'])
+        verify_schedule=st.selectbox("Verification Scheduling",['extremely'],disabled=st.session_state.listening_mode or st.session_state.evo_running)
     with col3:
-        node_schedule=st.selectbox("Workload Scheduling",['load balanced'])
+        node_schedule=st.selectbox("Workload Scheduling",['load balanced'],disabled=st.session_state.listening_mode or st.session_state.evo_running)
     with col4:
         st.write('')
         st.write('')
@@ -151,12 +153,14 @@ def evolve(evosys,project_dir):
         if not st.session_state.evo_running:
             run_evo_btn = st.button(
                 f":rainbow[***Launch {distributed}Evolution***] :rainbow[🚀]",
-                disabled=st.session_state.listening_mode or not evosys.remote_db or passive_mode
+                disabled=st.session_state.listening_mode or not evosys.remote_db or passive_mode,
+                use_container_width=True
             ) 
         else:
             stop_evo_btn = st.button(
                 f"***Stop {distributed}Evolution*** 🛑",
                 disabled=st.session_state.listening_mode or not evosys.remote_db or passive_mode,
+                use_container_width=True
             )
     
     
@@ -189,14 +193,19 @@ def evolve(evosys,project_dir):
         st.warning("Now only support distributed mode, all working nodes should run in listening mode.")
 
 
+    view_latest_K=10
     if st.session_state.evo_running:
-        st.subheader("***Running Logs***")
-        evo_log=st.session_state.command_center.read_logs()
-        if evo_log:
-            for timestamp,log in evo_log.items():
-                st.write(f'{timestamp.split("_")[0]}: {log}')
-        else:
-            st.info("No logs available at the moment.")
+        with st.expander(f"📝 **Running Logs** *(Latest {view_latest_K} logs)*",expanded=True):
+            evo_log=st.session_state.command_center.read_logs()
+            if evo_log:
+                evo_log=sorted(evo_log.items(),key=lambda x:datetime.strptime(x[0].split("_")[0].strip(),'%B %d, %Y at %I:%M:%S %p'),reverse=True)
+                for timestamp,log in evo_log[-view_latest_K:]:
+                    _node_id=log.split(" ")[1]
+                    _log=" ".join(log.split(" ")[2:])
+                    st.write(f'**[{timestamp.split("_")[0]}]** Node ```{_node_id}``` {_log}')
+                st.write(f'**......** *({len(evo_log)-view_latest_K} more logs are hidden, {len(evo_log)} total logs)*')
+            else:
+                st.info("No logs available at the moment.")
 
     st.header("Phylogenetic Tree Monitor")
 
@@ -232,7 +241,16 @@ def evolve(evosys,project_dir):
     with st.sidebar:
         AU.running_status(st,evosys)
 
-        st.button('🔄 Refresh')
+        st.button('🔄 Refresh',use_container_width=True)
+
+        st.download_button(
+            label="📩 Download Logs",
+            data=json.dumps(st.session_state.command_center.read_logs(),indent=4),
+            file_name=f"{evosys.evoname}_logs.json",
+            mime="text/json",
+            use_container_width=True
+        )
+
 
         # logo = AU.square_logo("μLM")
         # logo_path = U.pjoin(pathlib.Path(__file__).parent,'..','assets','storm_logo.svg')

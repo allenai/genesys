@@ -208,7 +208,7 @@ def listen(evosys, project_dir):
     passive_mode=False  
     if st.session_state.listener and st.session_state.listener.running and not st.session_state.listener.active:
         passive_mode=True
-        st.info('The command center is already running (background or still alive). You are in passive observation mode.')
+        st.info('The listener is already running (background or still alive). You are in passive observation mode.')
 
 
     col1,_,col2,_,col3,_ = st.columns([3.5,0.1,1,0.1,1,1.5])
