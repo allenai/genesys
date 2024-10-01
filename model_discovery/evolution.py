@@ -1108,7 +1108,6 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         if node is None:
             node = self._get_node(f"'{acronym}'")
         return node
-
     
     def get_session_state(self,sess_id:str):
         passed,_ = self.session_proposals(sess_id,passed_only=True)
@@ -1244,6 +1243,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
 
     def implement(self, acronym: str, tree,ROUNDS,status,costs,design_cfg,user_input): # update a proposal node with implementation
         design_artifact=self.get_node(acronym)
+        acronym=design_artifact.acronym
         implementation=design_artifact.implementation
         attempt=ImplementationAttempt(status=status, rounds=ROUNDS, costs=costs, tree=tree, design_cfg=design_cfg, user_input=user_input)
         if implementation is None:
@@ -1267,6 +1267,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
 
     def verify(self, acronym: str, scale: str, verification_report): # attach a verification report under a scale to an implemented node
         design_artifact=self.get_node(acronym)
+        acronym=design_artifact.acronym
         verification=Verification(scale=scale, verification_report=verification_report)
         design_artifact.verifications[scale]=verification
         self.G.nodes[acronym]['data']=design_artifact
@@ -1704,7 +1705,7 @@ class EvolutionSystem(exec_utils.System):
             if scale not in node.verifications:
                 report_dir=U.pjoin(ve_dir,design_scale,'report.json')
                 report=U.load_json(report_dir)
-                self.ptree.verify(design_id,scale,report)
+                self.ptree.verify(node.acronym,scale,report)
 
         if self.params['no_agent']:
             self.rnd_agent = None
@@ -2064,6 +2065,7 @@ class EvolutionSystem(exec_utils.System):
     
     def _prep_model(self,design_id,scale):
         design=self.ptree.get_node(design_id) # need to ensure this design has not been verified under scale
+        design_id=design.acronym
         ### XXX need manully check then comment it, need to fix, TUNE cause the problem
         if design.type=='DesignArtifactImplemented':
             _code = design.implementation.implementation.compose()
@@ -2168,25 +2170,23 @@ if __name__ == '__main__':
         params=json.loads(args.params)
         args.evoname=params['evoname']
         
-        # print(f'Running with params:\n{params}')
-        if args.mode=='verify':
-            # python -m model_discovery.evolution --mode verify --params '{"evoname": "test_evo_000", "scales": "14M,31M,70M", "selection_ratio": 0.25, "select_method": "random", "action_policy": "random", "verify_strategy": "random", "design_budget": 0, "no_agent": false, "db_only": false}' --design_id sparsitron --scale 14M
-            _verify(args.evoname,args.design_id, args.scale, resume=args.resume)
+        if args.mode=='prep_model':
+            params['no_agent']=True
+            params['db_only']=True
+        evolution_system = BuildEvolution(
+            params=params,
+            do_cache=False,
+            # cache_type='diskcache',
+        )
+        
+        if args.mode=='prep_model':
+            evolution_system._prep_model(args.design_id, args.scale)
+        elif args.mode=='verify':
+            evolution_system.verify(args.design_id, args.scale, resume=args.resume)
+        elif args.mode=='design':
+            sess_id=None if args.sess_id=='' else args.sess_id
+            evolution_system.design(sess_id=sess_id)
+        elif args.mode=='evolve_step': # Sequential evolve one step
+            evolution_system.evolve_step()
         else:
-            if args.mode=='prep_model':
-                params['no_agent']=True
-                params['db_only']=True
-            evolution_system = BuildEvolution(
-                params=params,
-                do_cache=False,
-                # cache_type='diskcache',
-            )
-            if args.mode=='prep_model':
-                evolution_system._prep_model(args.design_id, args.scale)
-            elif args.mode=='design':
-                sess_id=None if args.sess_id=='' else args.sess_id
-                evolution_system.design(sess_id=sess_id)
-            elif args.mode=='evolve_step': # Sequential evolve one step
-                evolution_system.evolve_step()
-            else:
-                raise ValueError(f"Invalid mode: {args.mode}")
+            raise ValueError(f"Invalid mode: {args.mode}")
