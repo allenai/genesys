@@ -13,6 +13,9 @@ import shlex
 import select
 import pandas as pd
 import signal
+import random
+from datetime import datetime
+import uuid
 
 sys.path.append('.')
 import model_discovery.utils as U
@@ -29,6 +32,43 @@ from model_discovery.ve.data_loader import load_datasets
 TARGET_SCALES = ['14M','31M','70M','125M','350M','760M','1300M']
 
 SMOLLM_125_CORPUS=['fineweb-edu-dedup']#,'cosmopedia-v2','python-edu','open-web-math','deepmind-math-small','stackoverflow-clean']
+
+
+
+
+
+
+def verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume=True, cli=False):
+    if evosys.evoname != evoname:
+        evosys.switch_ckpt(evoname)
+    log_ref = evosys.remote_db.collection('experiment_logs').document(evoname)
+    if design_id is None or scale is None:
+        design_id,scale=evosys.select_verify()
+        if design_id is None:
+            msg = "No unverified design found at any scale."
+            st.error(msg)
+            return None,msg
+    if resume:
+        unfinished_verifies = evosys.get_unfinished_verifies(evoname)
+        if len(unfinished_verifies) > 0:
+            exp = random.choice(unfinished_verifies)
+            scale=exp.split('_')[-1]
+            design_id = exp[:-len(scale)-1]
+    params = {'evoname': evoname}
+    sess_id,pid = run_verification(params, design_id, scale, resume, cli=cli)
+    timestamp=datetime.now().strftime('%B %d, %Y at %I:%M:%S %p %Z')+'_'+str(uuid.uuid4())
+    if sess_id:
+        log=f'Node {node_id} running verification on {design_id}_{scale}'
+        log_ref.set({
+            timestamp: log
+        },merge=True)
+    else:
+        log=f'Node {node_id} failed to run verification on {design_id}_{scale} with error: {pid}'
+        log_ref.set({
+            timestamp: log
+        },merge=True)
+    print(f'{timestamp.split("_")[0]}: {log}')
+    return sess_id,pid
 
 
 
@@ -63,6 +103,10 @@ def get_system_info():
         'Memory Percent': f"{psutil.virtual_memory().percent:.2f} %",
     }
     return cpu_info, gpu_info, mem_info
+
+
+
+
 
 def _run_verification(params, design_id, scale, resume, cli=False):
     params_str = shlex.quote(json.dumps(params))
@@ -109,6 +153,7 @@ def run_verification(params, design_id, scale, resume, cli=False):
         msg=f"A verification process for {design_id} on scale {scale} is already running."
         st.warning(msg)
         return None,msg
+
 
 def stream_output(process, key):
     if hasattr(process, 'stdout'):
@@ -418,6 +463,7 @@ def verify(evosys,project_dir):
 
 if __name__ == '__main__':
     import argparse
+    from model_discovery.evolution import BuildEvolution
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--evoname", default='test_evo_000', type=str) # the name of the whole evolution
@@ -427,6 +473,16 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    params={'evoname':args.evoname}
-    run_verification(params, args.design_id, args.scale, args.resume, cli=True)
+    args.design_id = None if args.design_id == 'None' else args.design_id
+    args.scale = None if args.scale == 'None' else args.scale
+
+    evosys = BuildEvolution(
+        params={'evoname':args.evoname}, # doesnt matter, will switch to the commanded evoname
+        do_cache=False,
+        # cache_type='diskcache',
+    )
+
+    node_id=str(uuid.uuid4())[:8]
+    verify_command(node_id,evosys,args.evoname,design_id=args.design_id,scale=args.scale,resume=args.resume,cli=True)
+
 

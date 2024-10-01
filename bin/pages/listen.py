@@ -15,80 +15,16 @@ import model_discovery.utils as U
 import bin.app_utils as AU
 from google.cloud import firestore
 from streamlit.runtime.scriptrunner import add_script_run_ctx
-from streamlit.runtime import get_instance
 
-from bin.pages.design import run_design_thread
-from bin.pages.verify import run_verification
+from bin.pages.design import design_command
+from bin.pages.verify import verify_command
 
-
-# Comments
-# 1. Run/stop design
-# 2. Run/stop verify
 
 def get_process(pid):
     try:
         return psutil.Process(pid)
     except psutil.NoSuchProcess:
         return None
-
-
-def verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume=True, cli=False):
-    if evosys.evoname != evoname:
-        evosys.switch_ckpt(evoname)
-    log_ref = evosys.remote_db.collection('experiment_logs').document(evoname)
-    if design_id is None or scale is None:
-        design_id,scale=evosys.select_verify()
-        if design_id is None:
-            msg = "No unverified design found at any scale."
-            st.error(msg)
-            return None,msg
-    if resume:
-        unfinished_verifies = evosys.get_unfinished_verifies(evoname)
-        if len(unfinished_verifies) > 0:
-            exp = random.choice(unfinished_verifies)
-            scale=exp.split('_')[-1]
-            design_id = exp[:-len(scale)-1]
-    params = {'evoname': evoname}
-    sess_id,pid = run_verification(params, design_id, scale, resume, cli=cli)
-    timestamp=datetime.now().strftime('%B %d, %Y at %I:%M:%S %p %Z')+'_'+str(uuid.uuid4())
-    if sess_id:
-        log=f'Node {node_id} running verification on {design_id}_{scale}'
-        log_ref.set({
-            timestamp: log
-        },merge=True)
-    else:
-        log=f'Node {node_id} failed to run verification on {design_id}_{scale} with error: {pid}'
-        log_ref.set({
-            timestamp: log
-        },merge=True)
-    print(f'{timestamp.split("_")[0]}: {log}')
-    return sess_id,pid
-
-def design_command(node_id, evosys, evoname, resume=True, cli=False):
-    sess_id = None
-    params = {'evoname': evoname}
-    if evosys.evoname != evoname:
-        evosys.switch_ckpt(evoname)
-    log_ref = evosys.remote_db.collection('experiment_logs').document(evoname)
-    if resume:
-        unfinished_designs = evosys.ptree.get_unfinished_designs()
-        if len(unfinished_designs) > 0:
-            sess_id = random.choice(unfinished_designs)
-    sess_id,pid = run_design_thread(evosys, sess_id, params, cli=cli)
-    timestamp=datetime.now().strftime('%B %d, %Y at %I:%M:%S %p %Z')+'_'+str(uuid.uuid4())
-    if sess_id:
-        log=f'Node {node_id} running design thread with session id {sess_id}'
-        log_ref.set({
-            timestamp: log
-        },merge=True)
-    else:
-        log=f'Node {node_id} failed to run design thread with error: {pid}'
-        log_ref.set({
-            timestamp: log
-        },merge=True)
-    print(f'{timestamp.split("_")[0]}: {log}')
-    return sess_id,pid
-
 
 def is_running(pid):
     process = get_process(pid)
@@ -156,8 +92,8 @@ class Listener:
                             process = get_process(int(pid))
                             status=process.status() if process else 'N/A'
                             self.command_status[str(pid)]['status'] = status
-                            psutil.Process(int(pid)).kill()
-
+                            # psutil.Process(int(pid)).kill() # XXX: see if it can kill itself for now
+ 
                     self.doc_ref.update(
                         {
                             'last_heartbeat': firestore.SERVER_TIMESTAMP,

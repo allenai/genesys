@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import os
-
+import sys
 try: # a stupid patch for windows
     from .secrets import *
     os.environ['MY_OPENAI_KEY']=MY_OPENAI_KEY
@@ -1899,7 +1899,7 @@ class EvolutionSystem(exec_utils.System):
             self.verify()
 
     # TODO: the interface should be updated when selector agent is ready, and design cfg is ready
-    def design(self,select_cfg=None,design_cfg=None,search_cfg=None,user_input='',sess_id=None,mode=None,resume=True): # select then sample, TODO: n_sources and design_cfg should be configed
+    def design(self,select_cfg=None,design_cfg=None,search_cfg=None,user_input='',sess_id=None,mode=None,resume=True,in_process=False): # select then sample, TODO: n_sources and design_cfg should be configed
         # user_input and design_cfg maybe changed by the user, so we need to pass them in
         # self.ptree.reload() # WHY WE NEED THIS???
         if mode is None:
@@ -1935,9 +1935,11 @@ class EvolutionSystem(exec_utils.System):
                 self.sample(sess_id=sess_id,user_input=user_input,design_cfg=design_cfg,mode=mode,search_cfg=search_cfg)
             else: # create a new design session using an external id
                 instruct,seed,refs=self.select_design(n_sources,mode=mode) # use the seed_ids to record the phylogenetic tree
-                self.sample(instruct,seed,refs,sess_id,mode=mode,user_input=user_input,design_cfg=design_cfg,search_cfg=search_cfg)
+                self.sample(instruct,seed,refs,sess_id,mode=mode,user_input=user_input,design_cfg=design_cfg,search_cfg=search_cfg,in_process=in_process)
+        if in_process:
+            sys.exit(0)
 
-    def sample(self,instruct=None,seed:List[NodeObject]=None,refs:List[NodeObject]=None,sess_id=None,mode=None,user_input='',design_cfg={},search_cfg={}):
+    def sample(self,instruct=None,seed:List[NodeObject]=None,refs:List[NodeObject]=None,sess_id=None,mode=None,user_input='',design_cfg={},search_cfg={},in_process=False):
         """ 
         Sample a design at a given scale and verify it 
         
@@ -2059,7 +2061,7 @@ class EvolutionSystem(exec_utils.System):
             raise ValueError(f"Invalid action policy: {self.action_policy}")
 
 
-    def verify(self,design_id=None,scale=None,resume=True): # choose then verify
+    def verify(self,design_id=None,scale=None,resume=True,in_process=False): # choose then verify
         if design_id is None:
             design_id,scale=self.select_verify()
         if design_id is None:
@@ -2070,6 +2072,8 @@ class EvolutionSystem(exec_utils.System):
         report_dir=U.pjoin(self.evo_dir,'ve',design_id+f'_{scale}','report.json')
         report=U.load_json(report_dir)
         self.ptree.verify(design_id,scale,report)
+        if in_process:
+            sys.exit(0)
         if report!={}: 
             return 'SUCCESS'
         return 'FAILED'
@@ -2209,10 +2213,10 @@ if __name__ == '__main__':
         if args.mode=='prep_model':
             evolution_system._prep_model(args.design_id, args.scale)
         elif args.mode=='verify':
-            evolution_system.verify(args.design_id, args.scale, resume=args.resume)
+            evolution_system.verify(args.design_id, args.scale, resume=args.resume,in_process=True)
         elif args.mode=='design':
             sess_id=None if args.sess_id=='' else args.sess_id
-            evolution_system.design(sess_id=sess_id)
+            evolution_system.design(sess_id=sess_id,in_process=True)
         elif args.mode=='evolve_step': # Sequential evolve one step
             evolution_system.evolve_step()
         else:

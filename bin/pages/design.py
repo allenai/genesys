@@ -22,6 +22,33 @@ import bin.app_utils as AU
 
 
 
+def design_command(node_id, evosys, evoname, resume=True, cli=False):
+    sess_id = None
+    params = {'evoname': evoname}
+    if evosys.evoname != evoname:
+        evosys.switch_ckpt(evoname)
+    log_ref = evosys.remote_db.collection('experiment_logs').document(evoname)
+    if resume:
+        unfinished_designs = evosys.ptree.get_unfinished_designs()
+        if len(unfinished_designs) > 0:
+            sess_id = random.choice(unfinished_designs)
+    sess_id,pid = run_design_thread(evosys, sess_id, params, cli=cli)
+    timestamp=datetime.now().strftime('%B %d, %Y at %I:%M:%S %p %Z')+'_'+str(uuid.uuid4())
+    if sess_id:
+        log=f'Node {node_id} running design thread with session id {sess_id}'
+        log_ref.set({
+            timestamp: log
+        },merge=True)
+    else:
+        log=f'Node {node_id} failed to run design thread with error: {pid}'
+        log_ref.set({
+            timestamp: log
+        },merge=True)
+    print(f'{timestamp.split("_")[0]}: {log}')
+    return sess_id,pid
+
+
+
 ###########################################################################
 
 
@@ -606,6 +633,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--evoname", default='test_evo_000', type=str)
+    parser.add_argument("--resume", action='store_true') # the name of the whole evolution
     args = parser.parse_args()
 
     evosys = BuildEvolution(
@@ -614,4 +642,6 @@ if __name__ == '__main__':
         # cache_type='diskcache',
     )
 
-    run_design_thread(evosys,cli=True)
+    node_id=str(uuid.uuid4())[:8]
+    design_command(node_id,evosys,args.evoname,resume=args.resume,cli=True)
+    
