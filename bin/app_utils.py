@@ -92,9 +92,12 @@ def running_status(st,evosys):
   
   if not st.session_state.evo_running:
     if len(running_verifications)==0 and len(running_designs)==0:
-      st.write('')
+      # st.write('')
       st.write(':gray[*No workloads running*] 💤')
   
+  if evosys.remote_db:
+    URL='https://console.firebase.google.com/u/0/project/model-discovery/firestore/databases/-default-/data'
+    st.write(f'🔗 **Remote DB:** [link]({URL})')
 
   st.divider()
     

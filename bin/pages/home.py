@@ -72,6 +72,7 @@ Only distributed evolution is supported now. As sequantial evolution is complica
  2. Launch the nodes in the **Listen** tab. Or directly launch by `bash scripts/run_node.sh`. Remember to run it in GPU-available sessions. You can also launch a node in the master.
  3. Run the evolution in the **Evolve** tab. Or directly launch by `bash scripts/run_evo.sh`. Remember to run it in a no-GPU session to release the computational resources.
 
+**NOTE:** do not run multiple nodes in the same user space as it will cause the file access conflict. Just use all the GPUs in each node.
 ''')
 
     # welcome = U.read_file(U.pjoin(project_dir,'bin','assets','howtouse.md'))
