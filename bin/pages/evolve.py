@@ -237,6 +237,7 @@ if __name__ == '__main__':
     command_center.build_connection()
     command_center_thread=x_evolve(command_center,cli=True)
     
+    print("Evolution launched!")
     try:
         # Keep the main thread alive
         while command_center_thread.active:

@@ -729,6 +729,24 @@ class ImplementationAttempt:
         dict['tree']=GAUTree.from_dict(dict['tree'])
         return cls(**dict)
 
+
+def _patch__try_fix_history(history): # FIXME: figure out why it happens
+    if isinstance(history,dict):
+        if '0' in history:
+            return [history[k] for k in history]
+        else:
+            return [history]
+    new_history=[]
+    if len(history)>0:
+        if '0' in history[0]: # not sure why like that, but do it for now
+            for _history in history:
+                for _,v in _history.items():
+                    new_history.append(v)
+        else:
+            new_history=history
+    return new_history
+
+
 @dataclass
 class Implementation:
     status: str # implemented, failed, or unfinished
@@ -746,12 +764,14 @@ class Implementation:
         return dict
 
     @classmethod
-    def from_dict(cls, dict: Dict):
-        for i in range(len(dict['history'])):
-            dict['history'][i]['design_cfg']['running_mode']=RunningModes(dict['history'][i]['design_cfg']['running_mode'])
-        dict['history']=[ImplementationAttempt.from_dict(attempt) for attempt in dict['history']]
-        dict['implementation']=GAUTree.from_dict(dict['implementation'])
-        return cls(**dict)
+    def from_dict(cls, _dict: Dict):
+        _dict['history']=_patch__try_fix_history(_dict['history'])
+        for i in range(len(_dict['history'])):
+            if 'design_cfg' in _dict['history'][i]:
+                _dict['history'][i]['design_cfg']['running_mode']=RunningModes(_dict['history'][i]['design_cfg']['running_mode'])
+        _dict['history']=[ImplementationAttempt.from_dict(attempt) for attempt in _dict['history']]
+        _dict['implementation']=GAUTree.from_dict(_dict['implementation'])
+        return cls(**_dict)
 
     @classmethod
     def load(cls, design_dir: str):

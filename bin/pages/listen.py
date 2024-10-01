@@ -49,14 +49,18 @@ def verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume=
             design_id = exp[:-len(scale)-1]
     params = {'evoname': evoname}
     sess_id,pid = run_verification(params, design_id, scale, resume, cli=cli)
+    timestamp=firestore.SERVER_TIMESTAMP
     if sess_id:
+        log=f'Node {node_id} running verification on {design_id}_{scale}'
         log_ref.update({
-            firestore.SERVER_TIMESTAMP: f'Node {node_id} running verification on {design_id}_{scale}'
+            timestamp: log
         },merge=True)
     else:
+        log=f'Node {node_id} failed to run verification on {design_id}_{scale} with error: {pid}'
         log_ref.update({
-            firestore.SERVER_TIMESTAMP: f'Node {node_id} failed to run verification on {design_id}_{scale} with error: {pid}'
+            timestamp: log
         },merge=True)
+    print(f'{timestamp}: {log}')
     return sess_id,pid
 
 def design_command(node_id, evosys, evoname, resume=True, cli=False):
@@ -70,14 +74,18 @@ def design_command(node_id, evosys, evoname, resume=True, cli=False):
         if len(unfinished_designs) > 0:
             sess_id = random.choice(unfinished_designs)
     sess_id,pid = run_design_thread(evosys, sess_id, params, cli=cli)
+    timestamp=firestore.SERVER_TIMESTAMP
     if sess_id:
+        log=f'Node {node_id} running design thread with session id {sess_id}'
         log_ref.update({
-            firestore.SERVER_TIMESTAMP: f'Node {node_id} running design thread with session id {sess_id}'
+            timestamp: log
         },merge=True)
     else:
+        log=f'Node {node_id} failed to run design thread with error: {pid}'
         log_ref.update({
-            firestore.SERVER_TIMESTAMP: f'Node {node_id} failed to run design thread with error: {pid}'
+            timestamp: log
         },merge=True)
+    print(f'{timestamp}: {log}')
     return sess_id,pid
 
 
@@ -341,7 +349,8 @@ if __name__ == "__main__":
     listener = Listener(evosys, cli=True)
     listener.build_connection()
     listener_thread = start_listener_thread(listener,add_ctx=False)
-    
+
+    print("Listening started.")
     try:
         # Keep the main thread alive
         while listener.active:

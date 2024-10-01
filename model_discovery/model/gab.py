@@ -232,6 +232,31 @@ class RotaryPositionalEmbeddings(GAUBase):
 
 
 import torch.nn.functional as F
+from torch import Tensor
+
+
+class RMSNorm(GAUBase):
+
+    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
+        device=None, dtype=None, eps=1e-05, **kwargs):
+        """If group_size is not None, we do GroupNorm with each group having group_size elements.
+        group_size=None is equivalent to group_size=hidden_size (i.e. there's only 1 group).
+        """
+        self.factory_kwargs = {'device': device, 'dtype': dtype}
+        super().__init__(embed_dim, block_loc, kwarg_all)
+        self.weight = nn.Parameter(torch.ones(embed_dim, **self.factory_kwargs)
+            )
+        self.variance_epsilon = eps
+
+    def _forward(self, X, **Z):
+        input_dtype = X.dtype
+        X = X.to(torch.float32)
+        variance = X.pow(2).mean(-1, keepdim=True)
+        X = X * torch.rsqrt(variance + self.variance_epsilon)
+        return self.weight * X.to(input_dtype)
+
+
+import torch.nn.functional as F
 
 
 class GatedMLP(GAUBase):
@@ -258,31 +283,6 @@ class GatedMLP(GAUBase):
         y = y * self.activation(gate)
         y = self.fc2(y)
         return y
-
-
-import torch.nn.functional as F
-from torch import Tensor
-
-
-class RMSNorm(GAUBase):
-
-    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, eps=1e-05, **kwargs):
-        """If group_size is not None, we do GroupNorm with each group having group_size elements.
-        group_size=None is equivalent to group_size=hidden_size (i.e. there's only 1 group).
-        """
-        self.factory_kwargs = {'device': device, 'dtype': dtype}
-        super().__init__(embed_dim, block_loc, kwarg_all)
-        self.weight = nn.Parameter(torch.ones(embed_dim, **self.factory_kwargs)
-            )
-        self.variance_epsilon = eps
-
-    def _forward(self, X, **Z):
-        input_dtype = X.dtype
-        X = X.to(torch.float32)
-        variance = X.pow(2).mean(-1, keepdim=True)
-        X = X * torch.rsqrt(variance + self.variance_epsilon)
-        return self.weight * X.to(input_dtype)
 
 
 gab_config = {'n_heads': 8, 'causal': True, 'num_heads_kv': None,
