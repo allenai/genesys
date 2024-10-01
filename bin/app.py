@@ -13,6 +13,11 @@ import bin.app_utils as AU
 
 
 
+custom_args = sys.argv[1:]
+
+DEPLOY_MODE = 'deploy' in custom_args or '--deploy' in custom_args or '-d' in custom_args
+
+
 current_dir = pathlib.Path(__file__).parent
 logo_path = U.pjoin(current_dir,'assets','storm_logo.svg')
 
@@ -29,30 +34,30 @@ project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(project_root)
 
 # Import the parent module first
-import bin.pages
+if not DEPLOY_MODE:
+    import bin.pages
 
-# Function to dynamically import and reload modules
-def import_and_reload(module_name):
-    full_module_name = f'bin.pages.{module_name}'
-    if full_module_name in sys.modules:
-        return importlib.reload(sys.modules[full_module_name])
-    return importlib.import_module(full_module_name)
+    # Function to dynamically import and reload modules
+    def import_and_reload(module_name):
+        full_module_name = f'bin.pages.{module_name}'
+        if full_module_name in sys.modules:
+            return importlib.reload(sys.modules[full_module_name])
+        return importlib.import_module(full_module_name)
 
-# Import and reload modules
-home = import_and_reload('home').home
-viewer = import_and_reload('viewer').viewer
-design = import_and_reload('design').design
-evolve = import_and_reload('evolve').evolve
-verify = import_and_reload('verify').verify
-config = import_and_reload('config').config
-search = import_and_reload('search').search
-select = import_and_reload('select').select
-listen = import_and_reload('listen').listen
-tester = import_and_reload('tester').tester
+    # Import and reload modules
+    home = import_and_reload('home').home
+    viewer = import_and_reload('viewer').viewer
+    design = import_and_reload('design').design
+    evolve = import_and_reload('evolve').evolve
+    verify = import_and_reload('verify').verify
+    config = import_and_reload('config').config
+    search = import_and_reload('search').search
+    select = import_and_reload('select').select
+    listen = import_and_reload('listen').listen
+    tester = import_and_reload('tester').tester
 
-
-
-# from bin.pages import *
+else:
+    from bin.pages import home,viewer,design,evolve,verify,config,search,select,listen
 
 
 
@@ -136,8 +141,10 @@ pages = {
     'Viewer': viewer,
     'Config': config,
     'Listen': listen,
-    'Tester': tester,
 }
+if not DEPLOY_MODE:
+    pages['Tester'] = tester
+
 titles=list(pages.keys())+['GitHub']
 pg = st_navbar(
     titles,

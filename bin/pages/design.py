@@ -585,7 +585,7 @@ def design(evosys,project_dir):
     ### side bar 
     with st.sidebar:
         AU.running_status(st,evosys)
-
+        st.write('Select a mode')
         if st.button("***Design Engine***" if st.session_state['design_tab']=='design_runner' else "Design Engine",use_container_width=True):
             st.session_state['design_tab'] = 'design_runner'
             st.rerun()

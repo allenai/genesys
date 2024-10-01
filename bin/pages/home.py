@@ -13,7 +13,7 @@ import model_discovery.utils as U
 import bin.app_utils as AU
 
 current_dir = pathlib.Path(__file__).parent
-logo_path = U.pjoin(current_dir,'assets','storm_logo.svg')
+logo_path = U.pjoin(current_dir,'..','assets','storm_logo.svg')
 
 logo=AU.svg_to_image(logo_path)
 
@@ -26,10 +26,25 @@ async def _getweather(city):
   
 def home(evosys,project_dir):
 
-    st.image(logo)
-    st.markdown('''
-# Welcome to the Model Discovery System
+  
+    with st.sidebar:
+      # st.write("*Welcome to the Model Discovery System!*")
+      # AU.running_status(st,evosys)
+      # st.image(logo,use_column_width=True)
+      st.image('https://images.unsplash.com/photo-1722691694088-b3b2ab29be31?q=80&w=2535&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')
+      city = 'Seattle' 
+      temprature = asyncio.run(_getweather(city))
+      st.write(f"*Today is {datetime.now().strftime('%b %d, %Y, %a')}. The temperature in {city} right now is :blue[{temprature}]°F.*")
 
+
+    # col1,col2=st.columns([1.45,1])
+    # with col1: 
+    st.markdown('# Welcome to the Model Discovery System')
+    # with col2:
+    #   st.write('')
+    #   st.image(logo,width=80)
+    
+    st.markdown('''
 The Model Discovery System is a system aimed at using large language model
 agents to discover novel and human-level autoregressive language model designs.
 This is a graphical user interface (GUI) for the Model Discovery System. You can
@@ -128,7 +143,7 @@ by input the same node id in the **Listen** tab.
 
     st.subheader('Tabs')
 
-    tabs=st.tabs(['Evolve','Design','Search','Verify','Select','Viewer','Config','Listen','Tester'])
+    tabs=st.tabs(['Evolve','Design','Verify','Search','Select','Viewer','Config','Listen'])
 
     with tabs[0]:
       st.markdown('''
@@ -174,17 +189,3 @@ Configure the experiment settings. Recommended to set it up before running.
       st.markdown('''
 Listening mode, accepting commands from master node. Can also run it in the CLI using `python -m model_discovery.listen` or `bash script/run_node.sh`.
 ''')  
-
-    with tabs[8]:
-      st.markdown('''
-A tab for internal use. 
-''')  
-
-
-    with st.sidebar:
-        # st.write("*Welcome to the Model Discovery System!*")
-       
-        st.image('https://images.unsplash.com/photo-1722691694088-b3b2ab29be31?q=80&w=2535&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')
-        city = 'Seattle' 
-        temprature = asyncio.run(_getweather(city))
-        st.write(f"*Today is {datetime.now().strftime('%b %d, %Y, %a')}. The temperature in {city} right now is :blue[{temprature}]°F.*")
