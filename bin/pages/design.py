@@ -21,7 +21,9 @@ import bin.app_utils as AU
 
 
 
-
+# Do not need a lock, as each node will maintain its own design sessions, so
+# unless a node is permanently lost (never join the network again, unlikely
+# happen), the design sessions will always be finished by resumes. 
 def design_command(node_id, evosys, evoname, resume=True, cli=False):
     sess_id = None
     params = {'evoname': evoname}
