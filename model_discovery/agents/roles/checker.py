@@ -1060,7 +1060,7 @@ class Checker(exec_utils.BaseTool):
         print(f'Checking model correctness')
         step_size = 16
         while True:
-            # try:
+            # try:  # NOTE: Let it open for debugging
             # Ensure mock input runs on CPU
             mock_input = torch.randint(0, vocab_size, (2, DEFAULT_CONTEXT_LENGTH), device=glm.device)
             _ = glm(mock_input)
