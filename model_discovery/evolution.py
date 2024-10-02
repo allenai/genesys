@@ -429,6 +429,8 @@ class FirestoreManager:
                 if not U.pexists(verification_path) or overwrite:
                     U.mkdir(U.pjoin(design_dir,'verifications'))
                     verification=self.collection.document(design_id).collection('verifications').document(scale).get().to_dict()
+                    if not verification:
+                        continue
                     verification['verification_report']={}
                     for key in index_term['verifications'][scale]:
                         report=self.collection.document(design_id).collection('verifications').document(scale).collection('verification_report').document(key).get().to_dict()
