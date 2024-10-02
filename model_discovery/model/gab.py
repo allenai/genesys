@@ -51,6 +51,35 @@ class GPT2(GAUBase):
 
 
 import torch.nn.functional as F
+
+
+class GatedMLP(GAUBase):
+
+    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
+        device=None, dtype=None, hidden_features=None, out_features=None,
+        activation=None, bias=False, multiple_of=128, **kwargs):
+        self.factory_kwargs = {'device': device, 'dtype': dtype}
+        super().__init__(embed_dim, block_loc, kwarg_all)
+        out_features = out_features if out_features is not None else embed_dim
+        hidden_features = (hidden_features if hidden_features is not None else
+            int(8 * embed_dim / 3))
+        hidden_features = (hidden_features + multiple_of - 1
+            ) // multiple_of * multiple_of
+        self.fc1 = nn.Linear(embed_dim, 2 * hidden_features, bias=bias, **
+            self.factory_kwargs)
+        self.activation = activation if activation is not None else F.silu
+        self.fc2 = nn.Linear(hidden_features, out_features, bias=bias, **
+            self.factory_kwargs)
+
+    def _forward(self, X, **Z):
+        y = self.fc1(X)
+        y, gate = y.chunk(2, dim=-1)
+        y = y * self.activation(gate)
+        y = self.fc2(y)
+        return y
+
+
+import torch.nn.functional as F
 from einops import rearrange
 
 
@@ -126,61 +155,88 @@ class AdaptiveMHA(GAUBase):
 
 
 import torch.nn.functional as F
-from einops import rearrange
+import math
 
 
-class GlobalAttention(GAUBase):
+class CausalLinearAttention(GAUBase):
     """
-    Global Attention
+    Causal Linear Attention module for efficient sequence processing.
 
-    This GAU implements standard multi-head self-attention to capture long-range dependencies.
+    This module implements a causal linear attention mechanism, which approximates
+    the standard softmax attention in linear time complexity with respect to the
+    sequence length. It ensures that the attention computation is causal, meaning
+    each position only attends to positions up to and including itself.
 
-    Inputs:
-        - X: Input sequence embeddings of shape (B, L, D).
+    **Mathematical Overview:**
 
-    Outputs:
-        - Y: Output sequence embeddings of the same shape as X.
+    The standard attention is computed as:
+
+        A = softmax(Q K^T / sqrt(d_k)) V
+
+    In linear attention, we approximate the softmax function using a positive
+    definite kernel feature mapping φ(.), so that:
+
+        Attention(Q, K, V) ≈ φ(Q) [φ(K)^T V]
+
+    To ensure causality, cumulative sums are used during the computation.
+
+    **Implementation Details:**
+
+    - Queries, keys, and values are linear projections of the input.
+    - A feature mapping (e.g., ELU + 1) is applied to queries and keys.
+    - Causality is enforced through cumulative sums over the sequence length.
+    - The output is passed through an output projection layer.
+
+    **Args:**
+
+        embed_dim (int): The dimension of the input embeddings.
+        block_loc (tuple): The location of this block within the network.
+        kwarg_all (dict): Additional keyword arguments.
+        device (torch.device, optional): The device to use.
+        dtype (torch.dtype, optional): The data type.
+
+    **Example:**
+
+        attention = CausalLinearAttention(embed_dim=512, block_loc=(0, 12), kwarg_all={})
+        Y, Z = attention(X)
+
+    **Note:**
+
+    - This module is designed to handle sequences of shape (B, L, D).
+    - It uses cumulative sums to enforce causality.
+
     """
 
     def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        n_heads: int=8, causal: bool=True, device=None, dtype=None, **kwargs):
+        device=None, dtype=None, **kwargs):
         self.factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc, kwarg_all)
-        self.n_heads = n_heads
-        self.head_dim = embed_dim // n_heads
-        self.causal = causal
-        self.qkv_proj = nn.Linear(embed_dim, 3 * embed_dim, **self.
+        self.q_proj = nn.Linear(embed_dim, embed_dim, bias=False, **self.
             factory_kwargs)
-        self.out_proj = nn.Linear(embed_dim, embed_dim, **self.factory_kwargs)
+        self.k_proj = nn.Linear(embed_dim, embed_dim, bias=False, **self.
+            factory_kwargs)
+        self.v_proj = nn.Linear(embed_dim, embed_dim, bias=False, **self.
+            factory_kwargs)
+        self.out_proj = nn.Linear(embed_dim, embed_dim, bias=False, **self.
+            factory_kwargs)
+        self.feature_map = lambda x: F.elu(x) + 1
 
     def _forward(self, X, **Z):
-        """
-        Forward pass of GlobalAttention.
-
-        Args:
-            X (Tensor): Input sequence of shape (B, L, D).
-
-        Returns:
-            Y (Tensor): Output sequence of shape (B, L, D).
-        """
         B, L, D = X.shape
-        qkv = self.qkv_proj(X)
-        q, k, v = qkv.chunk(3, dim=-1)
-        q = rearrange(q, 'b l (h d) -> b h l d', h=self.n_heads)
-        k = rearrange(k, 'b l (h d) -> b h l d', h=self.n_heads)
-        v = rearrange(v, 'b l (h d) -> b h l d', h=self.n_heads)
-        attn_scores = torch.einsum('b h i d, b h j d -> b h i j', q, k
-            ) / self.head_dim ** 0.5
-        if self.causal:
-            mask = torch.triu(torch.ones(L, L, device=X.device), diagonal=1
-                ).bool()
-            attn_scores = attn_scores.masked_fill(mask[None, None, :, :],
-                float('-inf'))
-        attn_probs = F.softmax(attn_scores, dim=-1)
-        attn_output = torch.matmul(attn_probs, v)
-        attn_output = rearrange(attn_output, 'b h l d -> b l (h d)')
-        Y = self.out_proj(attn_output)
-        return Y, Z
+        Q = self.q_proj(X)
+        K = self.k_proj(X)
+        V = self.v_proj(X)
+        Q = self.feature_map(Q)
+        K = self.feature_map(K)
+        K_cumsum = torch.cumsum(K, dim=1)
+        KV_cumsum = torch.cumsum(K * V, dim=1)
+        numerator = (Q * KV_cumsum).sum(dim=2, keepdim=True)
+        denominator = (Q * K_cumsum).sum(dim=2, keepdim=True) + 1e-06
+        Y = numerator / denominator
+        Y = Y.expand(-1, -1, D)
+        Y = self.out_proj(Y)
+        Z_ = {}
+        return Y, Z_
 
 
 import torch.nn.functional as F
@@ -305,117 +361,61 @@ class AdaptiveAttentionRouter(GAUBase):
 
 
 import torch.nn.functional as F
-import math
+from einops import rearrange
 
 
-class CausalLinearAttention(GAUBase):
+class GlobalAttention(GAUBase):
     """
-    Causal Linear Attention module for efficient sequence processing.
+    Global Attention
 
-    This module implements a causal linear attention mechanism, which approximates
-    the standard softmax attention in linear time complexity with respect to the
-    sequence length. It ensures that the attention computation is causal, meaning
-    each position only attends to positions up to and including itself.
+    This GAU implements standard multi-head self-attention to capture long-range dependencies.
 
-    **Mathematical Overview:**
+    Inputs:
+        - X: Input sequence embeddings of shape (B, L, D).
 
-    The standard attention is computed as:
-
-        A = softmax(Q K^T / sqrt(d_k)) V
-
-    In linear attention, we approximate the softmax function using a positive
-    definite kernel feature mapping φ(.), so that:
-
-        Attention(Q, K, V) ≈ φ(Q) [φ(K)^T V]
-
-    To ensure causality, cumulative sums are used during the computation.
-
-    **Implementation Details:**
-
-    - Queries, keys, and values are linear projections of the input.
-    - A feature mapping (e.g., ELU + 1) is applied to queries and keys.
-    - Causality is enforced through cumulative sums over the sequence length.
-    - The output is passed through an output projection layer.
-
-    **Args:**
-
-        embed_dim (int): The dimension of the input embeddings.
-        block_loc (tuple): The location of this block within the network.
-        kwarg_all (dict): Additional keyword arguments.
-        device (torch.device, optional): The device to use.
-        dtype (torch.dtype, optional): The data type.
-
-    **Example:**
-
-        attention = CausalLinearAttention(embed_dim=512, block_loc=(0, 12), kwarg_all={})
-        Y, Z = attention(X)
-
-    **Note:**
-
-    - This module is designed to handle sequences of shape (B, L, D).
-    - It uses cumulative sums to enforce causality.
-
+    Outputs:
+        - Y: Output sequence embeddings of the same shape as X.
     """
 
     def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, **kwargs):
+        n_heads: int=8, causal: bool=True, device=None, dtype=None, **kwargs):
         self.factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc, kwarg_all)
-        self.q_proj = nn.Linear(embed_dim, embed_dim, bias=False, **self.
+        self.n_heads = n_heads
+        self.head_dim = embed_dim // n_heads
+        self.causal = causal
+        self.qkv_proj = nn.Linear(embed_dim, 3 * embed_dim, **self.
             factory_kwargs)
-        self.k_proj = nn.Linear(embed_dim, embed_dim, bias=False, **self.
-            factory_kwargs)
-        self.v_proj = nn.Linear(embed_dim, embed_dim, bias=False, **self.
-            factory_kwargs)
-        self.out_proj = nn.Linear(embed_dim, embed_dim, bias=False, **self.
-            factory_kwargs)
-        self.feature_map = lambda x: F.elu(x) + 1
+        self.out_proj = nn.Linear(embed_dim, embed_dim, **self.factory_kwargs)
 
     def _forward(self, X, **Z):
+        """
+        Forward pass of GlobalAttention.
+
+        Args:
+            X (Tensor): Input sequence of shape (B, L, D).
+
+        Returns:
+            Y (Tensor): Output sequence of shape (B, L, D).
+        """
         B, L, D = X.shape
-        Q = self.q_proj(X)
-        K = self.k_proj(X)
-        V = self.v_proj(X)
-        Q = self.feature_map(Q)
-        K = self.feature_map(K)
-        K_cumsum = torch.cumsum(K, dim=1)
-        KV_cumsum = torch.cumsum(K * V, dim=1)
-        numerator = (Q * KV_cumsum).sum(dim=2, keepdim=True)
-        denominator = (Q * K_cumsum).sum(dim=2, keepdim=True) + 1e-06
-        Y = numerator / denominator
-        Y = Y.expand(-1, -1, D)
-        Y = self.out_proj(Y)
-        Z_ = {}
-        return Y, Z_
-
-
-import torch.nn.functional as F
-
-
-class GatedMLP(GAUBase):
-
-    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, hidden_features=None, out_features=None,
-        activation=None, bias=False, multiple_of=128, **kwargs):
-        self.factory_kwargs = {'device': device, 'dtype': dtype}
-        super().__init__(embed_dim, block_loc, kwarg_all)
-        out_features = out_features if out_features is not None else embed_dim
-        hidden_features = (hidden_features if hidden_features is not None else
-            int(8 * embed_dim / 3))
-        hidden_features = (hidden_features + multiple_of - 1
-            ) // multiple_of * multiple_of
-        self.fc1 = nn.Linear(embed_dim, 2 * hidden_features, bias=bias, **
-            self.factory_kwargs)
-        self.activation = activation if activation is not None else F.silu
-        self.fc2 = nn.Linear(hidden_features, out_features, bias=bias, **
-            self.factory_kwargs)
-
-    def _forward(self, X, **Z):
-        y = self.fc1(X)
-        y, gate = y.chunk(2, dim=-1)
-        y = y * self.activation(gate)
-        y = self.fc2(y)
-        return y
+        qkv = self.qkv_proj(X)
+        q, k, v = qkv.chunk(3, dim=-1)
+        q = rearrange(q, 'b l (h d) -> b h l d', h=self.n_heads)
+        k = rearrange(k, 'b l (h d) -> b h l d', h=self.n_heads)
+        v = rearrange(v, 'b l (h d) -> b h l d', h=self.n_heads)
+        attn_scores = torch.einsum('b h i d, b h j d -> b h i j', q, k
+            ) / self.head_dim ** 0.5
+        if self.causal:
+            mask = torch.triu(torch.ones(L, L, device=X.device), diagonal=1
+                ).bool()
+            attn_scores = attn_scores.masked_fill(mask[None, None, :, :],
+                float('-inf'))
+        attn_probs = F.softmax(attn_scores, dim=-1)
+        attn_output = torch.matmul(attn_probs, v)
+        attn_output = rearrange(attn_output, 'b h l d -> b l (h d)')
+        Y = self.out_proj(attn_output)
+        return Y, Z
 
 
 import torch.nn.functional as F

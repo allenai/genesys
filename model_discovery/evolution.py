@@ -1312,12 +1312,14 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
             verification.save(self.coreref_dir(acronym))
         self.FM.upload_verification(acronym,verification.to_dict(),scale,overwrite=True)
         self.FM.update_index()
-        
-    def unique_acronym(self, acronym: str) -> str:
-        acronym = acronym.replace(' ', '_').lower()
-        acronym = acronym.replace('__','_')
-        for c in ['(',')','[',']','{','}','"']:
-            acronym = acronym.replace(c,'')
+
+    def unique_acronym(self, acronym: str, max_length=32) -> str:
+        acronym = acronym.lower()
+        acronym = re.sub(r'[^a-z0-9_]', '_', acronym)
+        acronym = re.sub(r'_+', '_', acronym)
+        acronym = acronym.strip('_')
+        acronym = acronym[:max_length]
+
         existing_acronyms = set(self.G.nodes)
         if self.FM:
             self.FM.get_index()
@@ -2165,12 +2167,6 @@ def BuildEvolution(
     return evolution
 
 
-
-
-
-
-
-
 ############################################################################################################
 
 def test_evolve(test_name,step=False):
@@ -2189,7 +2185,6 @@ def test_evolve(test_name,step=False):
     while evolution_system.evolve_step():
         if step:
             break
-
 
 
 if __name__ == '__main__':
