@@ -101,7 +101,7 @@ def _explore_setup(args):
     gab,gab_config = BlockRegister.load_block(args.gab_name)
     free_port = find_free_port()
     util_logger.info(f"Using port for training: {free_port}")
-    num_steps=5 # a small number for testing OOM
+    num_steps=10 # a small number for testing OOM
 
     notebook_launcher(
         run_train, 
@@ -209,8 +209,8 @@ def before_train(args):
         )
     util_logger.info(f'Time elapsed for setting up wandb: {(time.perf_counter() - start):.1f} s')
     
-    if not args.auto_find_batch_size_hf:    
-        args.gradient_accumulation_steps = _auto_tune_setup(args)
+    # if not args.auto_find_batch_size_hf:    
+    args.gradient_accumulation_steps = _auto_tune_setup(args) # always use it for safety
     return args,gab,gab_config
 
 
@@ -257,7 +257,7 @@ def run_train(args,gab,gab_config,num_steps=None) -> None:
         max_steps=num_steps,
         per_device_train_batch_size=per_device_batch_size,
         per_device_eval_batch_size = per_device_batch_size * 2,
-        auto_find_batch_size=args.auto_find_batch_size_hf, # unstable! Manually implement it
+        # auto_find_batch_size=args.auto_find_batch_size_hf, # unstable! Manually implement it
         gradient_accumulation_steps=args.gradient_accumulation_steps, # use args one, not config one, to use with prep_setup
         optim=args.optim,
         output_dir=f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}",

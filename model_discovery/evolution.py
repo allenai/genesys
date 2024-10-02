@@ -146,6 +146,14 @@ class FirestoreManager:
         if codes:
             design_data['codes'] = codes
         return design_data
+
+    def is_verified(self, design_id, scale):
+        self.get_index()
+        if design_id in self.index:
+            if 'verifications' in self.index[design_id]:
+                if scale in self.index[design_id]['verifications']:
+                    return True
+        return False
     
     def get_design(self, design_id, use_cache=True):
         if use_cache and design_id in self.cache:
@@ -1726,7 +1734,7 @@ class EvolutionSystem(exec_utils.System):
         # Scan VE for missing verifications
         ve_dir=U.pjoin(self.evo_dir,'ve')
         for design_scale in os.listdir(ve_dir):
-            scale=design_scale.split('_')[1]
+            scale=design_scale.split('_')[-1]
             design_id=design_scale[:-len(scale)-1]
             node=self.ptree.get_node(design_id)
             if scale not in node.verifications:
@@ -2078,12 +2086,18 @@ class EvolutionSystem(exec_utils.System):
             return 'SUCCESS'
         return 'FAILED'
 
-    def select_verify(self,verify_strategy=None):
+    def select_verify(self,verify_strategy=None,exclude_list=[]):
         if verify_strategy is None:
             verify_strategy = self.verify_strategy
+        exclude={}
+        for design_id,scale in exclude_list: # list of (design_id,scale) being verified by other nodes
+            if scale not in exclude:
+                exclude[scale]=[]
+            exclude[scale].append(design_id)
         if verify_strategy=='random':
             for scale in self.available_verify_budget:
                 unverified=self.ptree.get_unverified_designs(scale)
+                unverified=[i for i in unverified if i not in exclude.get(scale,[])]
                 if len(unverified)==0:
                     self.stream.write(f"No unverified design at scale {scale}.")
                 else:

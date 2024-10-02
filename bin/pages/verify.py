@@ -9,13 +9,17 @@ import torch
 import platform
 import psutil
 import subprocess
+import pytz
 import shlex
 import select
 import pandas as pd
-import signal
+import multiprocessing
 import random
-from datetime import datetime
+from datetime import datetime, timedelta
 import uuid
+import subprocess
+from google.cloud.firestore import DELETE_FIELD
+
 
 sys.path.append('.')
 import model_discovery.utils as U
@@ -35,40 +39,224 @@ SMOLLM_125_CORPUS=['fineweb-edu-dedup']#,'cosmopedia-v2','python-edu','open-web-
 
 
 
+def verify_command(node_id, evoname, design_id=None, scale=None, resume=True, cli=False):
+    evosys = BuildEvolution(params={'evoname': evoname}, do_cache=False)
+    check_stale_verifications(evosys, evoname)
+    sess_id, pid = _verify_command(node_id, evosys, evoname, design_id, scale, resume, cli)
+    
+    # Start the daemon in a separate process
+    print('Starting Daemon Process...')
+    daemon_cmd = f"python -m bin.pages.verify --daemon --evoname {evoname} --sess_id {sess_id} --design_id {design_id} --scale {scale} --node_id {node_id} --pid {pid}"
+    subprocess.Popen(daemon_cmd, shell=True)
 
+    return sess_id, pid
 
+# python -m bin.pages.verify --daemon --evoname {evoname} --sess_id {sess_id} --design_id {design_id} --scale {scale} --node_id {node_id} --pid {pid}
 
-def verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume=True, cli=False):
+def _verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume=True, cli=False):
     if evosys.evoname != evoname:
         evosys.switch_ckpt(evoname)
-    log_ref = evosys.remote_db.collection('experiment_logs').document(evoname)
-    if design_id is None or scale is None:
-        design_id,scale=evosys.select_verify()
-        if design_id is None:
-            msg = "No unverified design found at any scale."
-            st.error(msg)
-            return None,msg
-    if resume:
-        unfinished_verifies = evosys.get_unfinished_verifies(evoname)
-        if len(unfinished_verifies) > 0:
-            exp = random.choice(unfinished_verifies)
-            scale=exp.split('_')[-1]
-            design_id = exp[:-len(scale)-1]
+
+    verify_ref = evosys.remote_db.collection('verifications').document(evoname)
+
+    # Acquire lock
+    while True:
+        doc = verify_ref.get().to_dict()
+        current_time = datetime.now()
+        
+        if doc is None or not doc.get('lock', {}).get('locked'):
+            # No lock, we can acquire it
+            verify_ref.set({
+                'lock': {'locked': True, 'node_id': node_id, 'timestamp': current_time}
+            }, merge=True)
+            break
+        else:
+            lock_info = doc['lock']
+            lock_time = lock_info['timestamp'].replace(tzinfo=None)  # Remove timezone info for comparison
+            
+            if (current_time - lock_time).total_seconds() > evosys.CM.zombie_threshold:
+                # The lock is held by a zombie node, we can take it
+                verify_ref.set({
+                    'lock': {'locked': True, 'node_id': node_id, 'timestamp': current_time}
+                }, merge=True)
+                print(f"Took over zombie lock from node {lock_info['node_id']}")
+                break
+            
+        time.sleep(1)  # Wait before trying again
+
+    try:
+        if design_id is None or scale is None:
+            doc = verify_ref.get().to_dict()
+            verifying_dict = doc.get('verifying', {})
+            unfinished_verifies = evosys.get_unfinished_verifies(evoname)
+            available_verifies = [v for v in unfinished_verifies if v not in verifying_dict]
+
+            if resume and available_verifies:
+                exp = random.choice(available_verifies)
+                scale = exp.split('_')[-1]
+                design_id = exp[:-len(scale)-1]
+            else:
+                exclude_list = []
+                for key in verifying_dict:
+                    scale = key.split('_')[-1]
+                    design_id = key[:-len(scale)-1]
+                    exclude_list.append((design_id,scale))  
+                design_id, scale = evosys.select_verify(exclude_list=exclude_list)
+                if design_id is None:
+                    msg = "No unverified design found at any scale."
+                    if not cli:
+                        st.error(msg)
+                    return None, msg
+
+            # Add to verifying list with timestamp
+            verify_key = f"{design_id}_{scale}"
+            verify_ref.update({
+                f'verifying.{verify_key}': {
+                    'node_id': node_id,
+                    'timestamp': datetime.now(),
+                    # 'pid': None,  # Will be updated later
+                    # 'sess_id': None
+                }
+            })
+
+    finally:
+        # Release lock
+        verify_ref.update({'lock': {'locked': False, 'node_id': None}})
+
     params = {'evoname': evoname}
-    sess_id,pid = run_verification(params, design_id, scale, resume, cli=cli)
-    timestamp=datetime.now().strftime('%B %d, %Y at %I:%M:%S %p %Z')+'_'+str(uuid.uuid4())
-    if sess_id:
-        log=f'Node {node_id} running verification on {design_id}_{scale}'
-        log_ref.set({
-            timestamp: log
-        },merge=True)
-    else:
-        log=f'Node {node_id} failed to run verification on {design_id}_{scale} with error: {pid}'
-        log_ref.set({
-            timestamp: log
-        },merge=True)
+    sess_id, pid = run_verification(params, design_id, scale, resume, cli=cli)
+    # if sess_id is not None:
+    #     verify_ref.update({f'verifying.{verify_key}.pid': pid, f'verifying.{verify_key}.sess_id': sess_id})
+    return sess_id, pid
+    
+
+def do_log(log_ref,timestamp,log):
+    log_ref.set({timestamp: log}, merge=True)
     print(f'{timestamp.split("_")[0]}: {log}')
-    return sess_id,pid
+
+def verify_daemon(evoname, sess_id, design_id, scale, node_id, pid):
+    evosys = BuildEvolution(params={'evoname': evoname}, do_cache=False)
+    verify_ref = evosys.remote_db.collection('verifications').document(evoname)
+    log_ref = evosys.remote_db.collection('experiment_logs').document(evoname)
+    timestamp = datetime.now().strftime('%B %d, %Y at %I:%M:%S %p %Z')+'_'+str(uuid.uuid4())
+    
+    verify_key = f"{design_id}_{scale}"
+
+    if sess_id:
+        log = f'Node {node_id} running verification on {design_id}_{scale}'
+        do_log(log_ref,timestamp,log)
+        
+        # Start heartbeat
+        verify_ref.set({'heartbeats': {node_id: datetime.now()}}, merge=True)
+        
+        # Run heartbeat in a separate thread
+        stop_heartbeat = multiprocessing.Event()
+        def heartbeat():
+            while not stop_heartbeat.is_set():
+                verify_ref.set({'heartbeats': {node_id: datetime.now()}}, merge=True)
+                stop_heartbeat.wait(60)  # Update every minute or when stopped
+        
+        heartbeat_process = multiprocessing.Process(target=heartbeat)
+        heartbeat_process.start()
+        
+        try:
+            # Wait for the verification process to complete
+            process = psutil.Process(pid)
+            inactive_time = 0
+            while process.is_running():
+                if process.status() in [psutil.STATUS_SLEEPING, psutil.STATUS_STOPPED, psutil.STATUS_ZOMBIE]:
+                    inactive_time += 60
+                    if inactive_time > 120:  # If inactive for more than 3 minutes
+                        process.terminate()
+                        raise Exception("Process terminated due to inactivity")
+                else:
+                    inactive_time = 0
+                time.sleep(60)  # Check every minute
+            
+            # Check if the process completed successfully
+            if process.returncode == 0:
+                complete_verification(evosys, evoname, design_id, scale, node_id)
+                log = f'Node {node_id} completed verification on {design_id}_{scale}'
+            else:
+                log = f'Node {node_id} failed verification on {design_id}_{scale} with return code {process.returncode}'
+            
+            do_log(log_ref,datetime.now().strftime('%B %d, %Y at %I:%M:%S %p %Z')+'_'+str(uuid.uuid4()),log)
+        
+        except psutil.NoSuchProcess:
+            log = f'Node {node_id} lost track of verification process for {design_id}_{scale}'
+            do_log(log_ref,datetime.now().strftime('%B %d, %Y at %I:%M:%S %p %Z')+'_'+str(uuid.uuid4()),log)
+        
+        except Exception as e:
+            log = f'Node {node_id} encountered an error during verification of {design_id}_{scale}: {str(e)}'
+            do_log(log_ref,datetime.now().strftime('%B %d, %Y at %I:%M:%S %p %Z')+'_'+str(uuid.uuid4()),log)
+        
+        finally:
+            # Stop the heartbeat process
+            stop_heartbeat.set()
+            heartbeat_process.join(timeout=5)  # Wait up to 5 seconds for the thread to stop
+            
+            # Ensure verification is marked as complete even if an exception occurred
+            complete_verification(evosys, evoname, design_id, scale, node_id)
+    else:
+        log = f'Node {node_id} failed to run verification on {design_id}_{scale} with error: {pid}'
+        do_log(log_ref,timestamp,log)
+        # Remove from verifying dict if failed
+        verify_ref.update({
+            f'verifying.{verify_key}': DELETE_FIELD
+        })
+
+    return sess_id, pid
+
+
+def complete_verification(evosys, evoname, design_id, scale, node_id):
+    verify_ref = evosys.remote_db.collection('verifications').document(evoname)
+    
+    verify_key = f"{design_id}_{scale}"
+    verify_ref.update({
+        f'verifying.{verify_key}': DELETE_FIELD,
+        f'heartbeats.{node_id}': DELETE_FIELD
+    })
+
+def check_stale_verifications(evosys, evoname, max_age=210):
+    verify_ref = evosys.remote_db.collection('verifications').document(evoname)
+    
+    doc = verify_ref.get().to_dict()
+    if doc is None:
+        return
+    verifying_dict = doc.get('verifying', {})
+    heartbeats = doc.get('heartbeats', {})
+    
+    now = datetime.now(pytz.UTC)
+    stale_verifications = []
+    
+    for verify_key, item in verifying_dict.items():
+        node_id = item['node_id']
+        last_heartbeat = heartbeats.get(node_id)
+        
+        if last_heartbeat is None:
+            stale_verifications.append(verify_key)
+        else:
+            # Ensure last_heartbeat is timezone-aware
+            if last_heartbeat.tzinfo is None:
+                last_heartbeat = pytz.UTC.localize(last_heartbeat)
+            
+            if (now - last_heartbeat).total_seconds() > max_age:
+                stale_verifications.append(verify_key)
+        
+        if U.pexists(U.pjoin(evosys.evo_dir,'ve',verify_key,'report.json')):
+            stale_verifications.append(verify_key)
+        else:
+            scale=verify_key.split('_')[-1]
+            design_id=verify_key[:-len(scale)-1]
+            if evosys.ptree.FM.is_verified(design_id,scale):
+                stale_verifications.append(verify_key)
+    
+    if stale_verifications:
+        update_dict = {f'verifying.{key}': DELETE_FIELD for key in stale_verifications}
+        update_dict.update({f'heartbeats.{verifying_dict[key]["node_id"]}': DELETE_FIELD for key in stale_verifications})
+        verify_ref.update(update_dict)
+        for key in stale_verifications:
+            print(f"Removed stale verification: {key} from node {verifying_dict[key]['node_id']}")
 
 
 
@@ -106,9 +294,7 @@ def get_system_info():
 
 
 
-
-
-def _run_verification(params, design_id, scale, resume, cli=False):
+def _run_verification(params, design_id, scale, resume, cli=False, prep_only=False):
     params_str = shlex.quote(json.dumps(params))
     cmd = f"python -m model_discovery.evolution --mode prep_model --params {params_str} --design_id {design_id} --scale {scale}"
     if cli:
@@ -117,6 +303,9 @@ def _run_verification(params, design_id, scale, resume, cli=False):
     else:
         with st.spinner(f'Preparing Model...'):
             process = subprocess.run(cmd, shell=True)#, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, bufsize=1, universal_newlines=True)
+
+    if prep_only:
+        return process
 
     cmd = f"python -m model_discovery.evolution --mode verify --params {params_str} --design_id {design_id} --scale {scale}"
     if resume:
@@ -132,14 +321,16 @@ def _run_verification(params, design_id, scale, resume, cli=False):
 
     return process
 
-def run_verification(params, design_id, scale, resume, cli=False):
+def run_verification(params, design_id, scale, resume, cli=False, prep_only=False):
     key = f"{design_id}_{scale}"
     # if key not in st.session_state['running_verifications']:
     if not cli: 
         polls=[p.poll() for p in st.session_state['running_verifications'].values()]
     if cli or (not None in polls):
         params = copy.deepcopy(params)
-        process = _run_verification(params, design_id, scale, resume, cli=cli)
+        process = _run_verification(params, design_id, scale, resume, cli=cli, prep_only=prep_only)
+        if prep_only:
+            return None,'Prepare only (for testing)'
         if not cli:
             st.session_state['running_verifications'][key] = process
             # st.session_state['output'][key] = []
@@ -262,7 +453,7 @@ def verify(evosys,project_dir):
     ##################################################################################
 
     st.header("Verify Designs")
-    col1,_,col2,_,col3,_,col4,col5=st.columns([1,0.05,0.9,0.05,1.3,0.05,0.6,0.4])
+    col1,_,col2,_,col3,_,col4,col5,col6=st.columns([1,0.05,0.9,0.05,1.3,0.05,0.6,0.4,0.45])
     with col1:
         node_type=st.selectbox("Select Type",options=['Agent Designs (Implemented)','Human Baselines (Seed Tree)'])
         if node_type=='Agent Designs (Implemented)':
@@ -310,6 +501,14 @@ def verify(evosys,project_dir):
             resume=st.checkbox("Resume",value=not already_verified)
         else:
             resume=st.checkbox("Resume",value=False,disabled=True)
+        
+    with col6:
+        st.write('')
+        st.write('')
+        if selected_design is not None:
+            check_tune_btn= st.button('*Check & Tune*',use_container_width=True,disabled=st.session_state.listening_mode or st.session_state.evo_running)
+        else:
+            check_tune_btn= st.button('*Check & Tune*',use_container_width=True,disabled=True)
 
     if len(verified)==0:
         st.info('No implemented designs found under this namespace.')
@@ -416,6 +615,8 @@ def verify(evosys,project_dir):
     if run_btn:
         run_verification(evosys.params, selected_design, selected_scale, resume)
 
+    if check_tune_btn:
+        run_verification(evosys.params, selected_design, selected_scale,resume,prep_only=True)
 
 
     ##################################################################################
@@ -470,19 +671,32 @@ if __name__ == '__main__':
     parser.add_argument("--design_id", default=None, type=str) # the name of the whole evolution
     parser.add_argument("--scale", default=None, type=str) # the name of the whole evolution
     parser.add_argument("--resume", action='store_true') # the name of the whole evolution
+    parser.add_argument("--daemon", action='store_true')
+    parser.add_argument("--prep_only", action='store_true')
+    parser.add_argument("--sess_id", default=None, type=str)
+    parser.add_argument("--node_id", default=None, type=str)
+    parser.add_argument("--pid", default=None, type=int)
 
     args = parser.parse_args()
 
     args.design_id = None if args.design_id == 'None' else args.design_id
     args.scale = None if args.scale == 'None' else args.scale
+    args.sess_id = None if args.sess_id == 'None' else args.sess_id
+    args.node_id = None if args.node_id == 'None' else args.node_id
+    args.pid = None if args.pid == 'None' else args.pid
 
-    evosys = BuildEvolution(
-        params={'evoname':args.evoname}, # doesnt matter, will switch to the commanded evoname
-        do_cache=False,
-        # cache_type='diskcache',
-    )
-
-    node_id=str(uuid.uuid4())[:8]
-    verify_command(node_id,evosys,args.evoname,design_id=args.design_id,scale=args.scale,resume=args.resume,cli=True)
+    if args.daemon:
+        assert args.node_id is not None
+        verify_daemon(args.evoname, args.sess_id, args.design_id, args.scale, args.node_id, args.pid)
+    elif args.prep_only:
+        # bash scripts/run_verify.sh --prep_only --design_id ghanet --scale 31M
+        assert args.design_id is not None and args.scale is not None
+        from model_discovery.evolution import BuildEvolution
+        evosys = BuildEvolution(
+            params={'evoname':args.evoname,'db_only':True,'no_agent':True},do_cache=False)
+        evosys._prep_model(args.design_id, args.scale)
+    else:
+        node_id=args.node_id or str(uuid.uuid4())[:8]
+        verify_command(node_id,args.evoname,design_id=args.design_id,scale=args.scale,resume=args.resume,cli=True)
 
 

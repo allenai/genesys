@@ -70,4 +70,4 @@ def tester(evosys,project_dir):
         st.info('No connections')
 
 
-    st.write(evosys.ptree.get_node('"gatemix++"'))
+    st.write(evosys.ptree.get_node('sparsitron-x'))

@@ -1060,22 +1060,22 @@ class Checker(exec_utils.BaseTool):
         print(f'Checking model correctness')
         step_size = 16
         while True:
-            try:
-                # Ensure mock input runs on CPU
-                mock_input = torch.randint(0, vocab_size, (2, DEFAULT_CONTEXT_LENGTH))
-                _ = glm(mock_input)
-                break
-            except Exception as e:
-                d_model += -step_size if size > LB else step_size
-                print(f'The model is incorrect. Trying d_model={d_model}')
-                auto_cfg = {'d_model': d_model, 'n_block': n_block}
+            # try:
+            # Ensure mock input runs on CPU
+            mock_input = torch.randint(0, vocab_size, (2, DEFAULT_CONTEXT_LENGTH), device=glm.device)
+            _ = glm(mock_input)
+            break
+            # except Exception as e:
+            #     d_model += -step_size if size > LB else step_size
+            #     print(f'The model is incorrect. Trying d_model={d_model}')
+            #     auto_cfg = {'d_model': d_model, 'n_block': n_block}
                 
-                del glm  # Clear previous model
-                glm, _ = reload_gam(config, gab_code, name, auto_cfg, **factory_kwargs)
-                size = sum(p.numel() for p in glm.parameters())
+            #     del glm  # Clear previous model
+            #     glm, _ = reload_gam(config, gab_code, name, auto_cfg, **factory_kwargs)
+            #     size = sum(p.numel() for p in glm.parameters())
 
-                if size > reference_size * (1 + 2 * threshold) or size < reference_size * (1 - 2 * threshold):
-                    raise ValueError('The model is too far from the reference size and cannot be correctly tuned.')
+            #     if size > reference_size * (1 + 2 * threshold) or size < reference_size * (1 - 2 * threshold):
+            #         raise ValueError('The model is too far from the reference size and cannot be correctly tuned.')
 
         print(f'The model is correct with d_model = {d_model} and n_block = {n_block}')
         print('Model after tuned:')

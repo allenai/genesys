@@ -30,7 +30,7 @@ SMOLLM_125_CORPUS=['fineweb-edu-dedup']
 DEFAULT_TASK_LIST1=[
     "inverse_scaling_mc",
     "glue",
-    # "smollm125", # seems too large?
+    # "smollm125_tiny",  # TODO: still buggy
     "squad_completion",
     *STANDARD_EVAL_TASKS,
     *ADDITIONAL_EVAL_TASKS,

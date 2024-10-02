@@ -92,7 +92,7 @@ class Listener:
                             process = get_process(int(pid))
                             status=process.status() if process else 'N/A'
                             self.command_status[str(pid)]['status'] = status
-                            # psutil.Process(int(pid)).kill() # XXX: see if it can kill itself for now
+                            psutil.Process(int(pid)).kill() 
  
                     self.doc_ref.update(
                         {
