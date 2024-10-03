@@ -329,6 +329,41 @@ class StreamWrapper:
 
         
 
+DEFAULT_AGENTS={
+    'DESIGN_PROPOSER':'o1_mini',
+    'PROPOSAL_REVIEWER':'o1_mini',
+    'IMPLEMENTATION_PLANNER':'o1_mini',
+    'IMPLEMENTATION_CODER':'o1_mini',
+    'IMPLEMENTATION_OBSERVER':'o1_mini',
+    'SEARCH_ASSISTANT':'None', # None means no separate search assistant
+}
+DEFAULT_MAX_ATTEMPTS={
+    'design_proposal':10,
+    'implementation_debug':7,
+    'post_refinement':0,
+    'max_search_rounds':3,
+}
+DEFAULT_TERMINATION={
+    'max_failed_rounds':3,
+    'max_total_budget':0, # 0 means no limit
+    'max_debug_budget':2,
+}
+DEFAULT_THRESHOLD={
+    'proposal_rating':4,
+    'implementation_rating':3,
+}
+DEFAULT_SEARCH_SETTINGS={
+    'proposal_search':True,
+    'proposal_review_search':True,
+    'search_for_papers_num':10,
+}
+DEFAULT_MODE=RunningModes.BOTH.value
+DEFAULT_NUM_SAMPLES={
+    'proposal':1,
+    'implementation':1,
+    'rerank_method':'rating',
+}
+
 @exec_utils.Registry(
     resource_type="system_type",
     name="model_discovery_system",
@@ -419,7 +454,6 @@ class ModelDiscoverySystem(exec_utils.System):
         system_info = {}
         system_info['agents']={
             'gpt4o':self.designer.config,
-            # 'reviewers':{style:agent.config for style,agent in self.reviewers.items()},
             'gpt4o-mini':self.debugger.config,
             'claude3.5_sonnet':self.claude.config
         }
@@ -465,48 +499,13 @@ class ModelDiscoverySystem(exec_utils.System):
 
         if stream is None: # and self._config.debug_steps:
             stream = PrintSystem(self._config)
-
-        DEFAULT_AGENTS={
-            'DESIGN_PROPOSER':'o1_mini',
-            'PROPOSAL_REVIEWER':'o1_mini',
-            'IMPLEMENTATION_PLANNER':'o1_mini',
-            'IMPLEMENTATION_CODER':'o1_mini',
-            'IMPLEMENTATION_OBSERVER':'o1_mini',
-            'SEARCH_ASSISTANT':'None', # None means no separate search assistant
-        }
-        DEFAULT_MAX_ATTEMPTS={
-            'design_proposal':10,
-            'implementation_debug':7,
-            'post_refinement':0,
-            'max_search_rounds':3,
-        }
-        DEFAULT_TERMINATION={
-            'max_failed_rounds':3,
-            'max_total_budget':0, # 0 means no limit
-            'max_debug_budget':2,
-        }
-        DEFAULT_THRESHOLD={
-            'proposal_rating':4,
-            'implementation_rating':3,
-        }
-        DEFAULT_SEARCH_SETTINGS={
-            'proposal_search':True,
-            'proposal_review_search':True,
-            'search_for_papers_num':10,
-        }
-        DEFAULT_MODE=RunningModes.BOTH
-        DEFAULT_NUM_SAMPLES={
-            'proposal':1,
-            'implementation':1,
-            'rerank_method':'rating',
-        }
         
         design_cfg['max_attemps']=U.safe_get_cfg_dict(design_cfg,'max_attemps',DEFAULT_MAX_ATTEMPTS)
         design_cfg['agent_types']=U.safe_get_cfg_dict(design_cfg,'agent_types',DEFAULT_AGENTS)
         design_cfg['termination']=U.safe_get_cfg_dict(design_cfg,'termination',DEFAULT_TERMINATION)
         design_cfg['threshold']=U.safe_get_cfg_dict(design_cfg,'threshold',DEFAULT_THRESHOLD)
         design_cfg['search_settings']=U.safe_get_cfg_dict(design_cfg,'search_settings',DEFAULT_SEARCH_SETTINGS)
-        design_cfg['running_mode']=design_cfg.get('running_mode',DEFAULT_MODE)
+        design_cfg['running_mode']=RunningModes(design_cfg.get('running_mode',DEFAULT_MODE))
         design_cfg['num_samples']=U.safe_get_cfg_dict(design_cfg,'num_samples',DEFAULT_NUM_SAMPLES)
 
         self.sss.reconfig(search_cfg,stream)

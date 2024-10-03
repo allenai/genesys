@@ -22,6 +22,7 @@ def search(evosys,project_dir):
 
     with st.sidebar:
         AU.running_status(st,evosys)
+        
 
     with st.expander("Search Configurations",expanded=True):
         search_cfg={}
@@ -64,6 +65,16 @@ def search(evosys,project_dir):
 
     sss=evosys.rnd_agent.sss
     sss.reconfig(search_cfg,st)
+
+    with st.sidebar:
+        def display_status(name,status):
+            marks={True:'✅',False:'❌'}
+            st.write(f'{name}: {marks[status]}')
+        display_status('Cohere connected',sss.co is not None)
+        display_status('Pinecone connected',sss.pc is not None)
+        display_status('Perplexity key set',sss.ppl_key_set)
+        display_status('S2 key set',sss.s2_key_set)
+    
     
     details=st.text_area("Search Content with Detailed Query (for vector store search)",placeholder='I want to ask about ...',height=100)
 

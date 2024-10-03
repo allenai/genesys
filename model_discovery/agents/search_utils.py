@@ -115,6 +115,24 @@ def pwc_search_patched(
 
 
 
+DEFAULT_SEARCH_LIMITS={
+    's2':5,
+    'arxiv':3,
+    'pwc':3,
+    'lib':5,
+    'lib2':3,
+    'libp':3,
+}
+DEFAULT_PERPLEXITY_SETTINGS={
+    'model_size':'large',
+    'max_tokens':2000,
+}
+DEFAULT_PROPOSAL_SEARCH_CFG={
+    'top_k':3,
+    'cutoff':0.5,
+}
+DEFAULT_RERANK_RATIO=0.2
+
 class SuperScholarSearcher:
     """
     One search interface that directly give you all the answers
@@ -123,8 +141,19 @@ class SuperScholarSearcher:
         self.ptree=ptree
         self.files_dir=U.pjoin(ptree.lib_dir,'..','files')
         self.libfiles_dir=U.pjoin(ptree.lib_dir,'..','lib_files') # files for the library requests, including indices and splits
-        self.co=cohere.Client(os.environ['COHERE_API_KEY'])
-        self.pc = Pinecone(api_key=os.environ['PINECONE_API_KEY'])
+        self.co=None
+        try:
+            self.co=cohere.Client(os.environ['COHERE_API_KEY'])
+        except Exception as e:
+            print(f'Unable to initialize Cohere: {e}')
+        self.pc=None
+        try:
+            self.pc = Pinecone(api_key=os.environ['PINECONE_API_KEY'])
+        except Exception as e:
+            print(f'Unable to initialize Pinecone: {e}')
+        
+        self.s2_key_set='S2_API_KEY' in os.environ
+        self.ppl_key_set='PERPLEXITY_API_KEY' in os.environ
 
         self.index_name=None
         self.reconfig(cfg)
@@ -156,29 +185,13 @@ class SuperScholarSearcher:
 
 
     def reconfig(self,cfg,stream=None):
-        DEFAULT_SEARCH_LIMITS={
-            's2':5,
-            'arxiv':3,
-            'pwc':3,
-            'lib':5,
-            'lib2':3,
-            'libp':3,
-        }
-        DEFAULT_PERPLEXITY_SETTINGS={
-            'model_size':'large',
-            'max_tokens':2000,
-        }
-        DEFAULT_PROPOSAL_SEARCH_CFG={
-            'top_k':3,
-            'cutoff':0.5,
-        }
         self.result_limits=U.safe_get_cfg_dict(cfg,'result_limits',DEFAULT_SEARCH_LIMITS)
-        self.rerank_ratio=cfg.get('rerank_ratio',0.2)
+        self.rerank_ratio=cfg.get('rerank_ratio',DEFAULT_RERANK_RATIO)
         self.perplexity_settings=U.safe_get_cfg_dict(cfg,'perplexity_settings',DEFAULT_PERPLEXITY_SETTINGS)
         self.proposal_search_cfg=U.safe_get_cfg_dict(cfg,'proposal_search',DEFAULT_PROPOSAL_SEARCH_CFG)
         index_name=cfg.get('index_name','modis-library-v0') # change it to your index name
         assert index_name, 'Index name is required'
-        if index_name!=self.index_name: # always do it in init
+        if index_name!=self.index_name and self.pc is not None: # always do it in init
             self.index_name=index_name
             self.index=self.get_index(index_name)
         self.cfg={
@@ -200,11 +213,14 @@ class SuperScholarSearcher:
             internal_results,internal_pp=self.search_internal(detail,pretty=True,prompt=prompt)
         else:
             internal_results,internal_pp=None,None
+
         if query:
             external_results,external_pp=self.search_external(query,pretty=True,prompt=prompt)
         else:
             external_results,external_pp=None,None
-        if self.perplexity_settings['model_size']!='none':
+
+        perplexity_results, perplexity_pp = None, None
+        if self.perplexity_settings['model_size']!='none' and self.ppl_key_set:
             if instruct:
                 perplexity_results, perplexity_pp = self.search_perplexity(
                     str(query),detail,analysis,instruct,
@@ -215,10 +231,6 @@ class SuperScholarSearcher:
                     str(query),detail,analysis,instruct,
                     size=self.perplexity_settings['model_size'],
                     max_tokens=self.perplexity_settings['max_tokens'])
-            else:
-                perplexity_results, perplexity_pp = None, None
-        else:
-            perplexity_results, perplexity_pp = None, None
 
         self.stream.write(f'Concluding search results...')
 
@@ -497,7 +509,10 @@ class SuperScholarSearcher:
     def search_s2(self,query, result_limit=10,start_year=2010, top_conf_only=True, **fields) -> Union[None, List[Dict]]:
         # https://api.semanticscholar.org/api-docs/graph#tag/Paper-Data/operation/post_graph_get_papers
         
-        S2_API_KEY=os.environ['S2_API_KEY']
+        if self.s2_key_set:
+            headers={"X-API-KEY": os.environ['S2_API_KEY']}
+        else:
+            headers={}
         info=f'*Searching Semantic Scholar for "{query}"*'
         params={
             "query": query,
@@ -515,7 +530,7 @@ class SuperScholarSearcher:
         self.stream.write(info+'...')
         rsp = requests.get(
             "https://api.semanticscholar.org/graph/v1/paper/search",
-            headers={"X-API-KEY": S2_API_KEY},
+            headers=headers,
             params=params
         )
         try:
@@ -987,7 +1002,7 @@ class SuperScholarSearcher:
         docs=[self._get_split_by_id(i,namespace) for i in split_ids]
         ids=[i.metadata['id'] for i in matches]
         splits=[i.metadata['splits'] for i in matches]
-        if self.rerank_ratio>0:
+        if self.rerank_ratio>0 and self.co is not None:
             indices,relevance_scores=self._rerank(query,docs,result_limit)
             scores=relevance_scores
             ids=[ids[i] for i in indices]
@@ -1034,7 +1049,8 @@ class SuperScholarSearcher:
     def search_internal(self,query,pretty=True,prompt=True) -> Union[None, List[Dict]]:
         # search for papers in the internal library
         sources={}
-        sources['Internal Library']=self.search_lib_primary(query,self.result_limits['lib'])
+        if self.pc is not None:
+            sources['Internal Library']=self.search_lib_primary(query,self.result_limits['lib'])
         # only primary now, testing
         # sources['Referencces of Library']=self.search_lib_secondary(query,self.result_limits['lib2'])
         # sources['Recommanded Papers of Library']=self.search_lib_plus(query,self.result_limits['libp'])

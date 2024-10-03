@@ -15,12 +15,14 @@ from streamlit.runtime.scriptrunner import add_script_run_ctx
 sys.path.append('.')
 import model_discovery.utils as U
 import bin.app_utils as AU
+from model_discovery.evolution import DEFAULT_PARAMS
 
 
 class CommandCenter:
-    def __init__(self,evosys,max_design_threads_total,stream,cli=False):
+    def __init__(self,evosys,max_design_threads_total,max_design_threads_per_node,stream,cli=False):
         self.evosys=evosys
         self.max_design_threads_total=max_design_threads_total
+        self.max_design_threads_per_node=max_design_threads_per_node
         self.st=stream
         self.doc_ref = evosys.remote_db.collection('experiment_connections').document(self.evosys.evoname)
         self.log_ref = evosys.remote_db.collection('experiment_logs').document(self.evosys.evoname)
@@ -51,6 +53,7 @@ class CommandCenter:
     def assign_design_workload(self,design_availability):
         # find the node with largest availability
         node_id = max(design_availability, key=design_availability.get)
+        self.evosys.CM.set_max_design_threads_per_node(self.max_design_threads_per_node)
         self.evosys.CM.design_command(node_id)
         design_availability[node_id] -= 1
         return design_availability
@@ -60,6 +63,7 @@ class CommandCenter:
         self.doc_ref.delete()  # Delete the connection document
 
     def run_evolution(self):
+        self.evosys.sync_to_db() # sync the config to the db
         self.running = True
         while self.running:
             if self.active:
@@ -93,22 +97,6 @@ def x_evolve(command_center,cli=False): # extereme evolution
     return thread
 
 
-def get_evo_state(evosys):
-    evo_state={}
-    evo_state.update(evosys.state)
-    evo_state.pop('budgets')
-    evo_state.pop('design_budget')
-    if 'action_strategy' in evo_state:
-        evo_state.pop('action_strategy')
-    if 'current_scale' in evo_state:
-        evo_state.pop('current_scale')
-    evo_state['target_scales']=evosys.target_scales
-    evo_state.pop('scales')
-    evo_state['remaining_verify_budget']=evosys.verify_budget
-    evo_state['remaining_design_budget']=evosys.design_budget
-    evo_state['design_cost']=evosys.ptree.design_cost
-    return evo_state
-
 def evolve(evosys,project_dir):
 
     st.title("Evolution System")
@@ -131,15 +119,17 @@ def evolve(evosys,project_dir):
     col1, col2 = st.columns(2)
     with col1:
         with st.expander("System Status"):
-            st.write(get_evo_state(evosys))
+            st.write(evosys.get_evo_state())
     with col2:
         with st.expander("Configuration"):
             st.write(evosys._config)
 
     st.header("Launch Pad")
-    col1, _, col2, _, col3, _, col4 = st.columns([1.2,0.05,1,0.05,1,0.05,1],gap='small')
+    col1, col1_, col2, col3, col4 = st.columns([1,1,1,1,1],gap='small')
     with col1:
-        max_design_threads_total=st.number_input("Max Design Threads (bounded by API rate)",min_value=1,value=4,disabled=st.session_state.listening_mode or st.session_state.evo_running)
+        max_design_threads_total=st.number_input("Max Design Threads (Total)",min_value=1,value=4,disabled=st.session_state.listening_mode or st.session_state.evo_running)
+    with col1_:
+        max_design_threads_per_node=st.number_input("Max Design Threads (Node)",min_value=1,value=4,disabled=st.session_state.listening_mode or st.session_state.evo_running)
     with col2:
         # always use extreme mode, use as much gpus as possible
         verify_schedule=st.selectbox("Node Scheduling",['maximal utilization'],disabled=st.session_state.listening_mode or st.session_state.evo_running)
@@ -148,25 +138,25 @@ def evolve(evosys,project_dir):
     with col4:
         st.write('')
         st.write('')
-        distributed='Distributed ' if evosys.remote_db else ''
+        # distributed='Distributed ' if evosys.remote_db else ''
         if not st.session_state.evo_running:
             run_evo_btn = st.button(
-                f":rainbow[***Launch {distributed}Evolution***] :rainbow[🚀]",
+                f":rainbow[***Launch Evolution***] :rainbow[🚀]",
                 disabled=st.session_state.listening_mode or not evosys.remote_db or passive_mode,
-                use_container_width=True
+                # use_container_width=True
             ) 
         else:
             stop_evo_btn = st.button(
-                f"***Stop {distributed}Evolution*** 🛑",
+                f"***Stop Evolution*** 🛑",
                 disabled=st.session_state.listening_mode or not evosys.remote_db or passive_mode,
-                use_container_width=True
+                # use_container_width=True
             )
     
     
     if not st.session_state.evo_running:
         if run_evo_btn:
             with st.spinner('Launching...'):
-                command_center = CommandCenter(evosys,max_design_threads_total,st)
+                command_center = CommandCenter(evosys,max_design_threads_total,max_design_threads_per_node,st)
                 command_center.build_connection()
                 st.session_state.command_center = command_center
                 st.session_state.command_center_thread = x_evolve(command_center)

@@ -50,7 +50,7 @@ def verify_command(node_id, evoname, design_id=None, scale=None, resume=True, cl
         log = f'Node {node_id} running verification on {_design_id}_{_scale}'
         do_log(log_ref,timestamp,log)
         # Start the daemon in a separate process
-        print('Starting Daemon Process...')
+        print('Starting Verify Daemon Process...')
         daemon_cmd = f"python -m bin.pages.verify --daemon --evoname {evoname} --sess_id {sess_id} --design_id {_design_id} --scale {_scale} --node_id {node_id} --pid {pid}"
         subprocess.Popen(daemon_cmd, shell=True)
     else:
@@ -110,7 +110,7 @@ def _verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume
                     scale = key.split('_')[-1]
                     design_id = key[:-len(scale)-1]
                     exclude_list.append((design_id,scale))  
-                design_id, scale = evosys.select_verify(exclude_list=exclude_list)
+                design_id, scale = evosys.selector.select_verify(exclude_list=exclude_list)
                 if design_id is None:
                     msg = "No unverified design found at any scale."
                     if not cli:
@@ -167,7 +167,10 @@ def do_log(log_ref,timestamp,log):
     print(f'{timestamp.split("_")[0]}: {log}')
 
 def verify_daemon(evoname, sess_id, design_id, scale, node_id, pid):
-    evosys = BuildEvolution(params={'evoname': evoname}, do_cache=False)
+    evosys = BuildEvolution(
+        params={'evoname': evoname,'tree_only':True,'no_agent':True}, 
+        do_cache=False,
+    )
     verify_ref = evosys.remote_db.collection('verifications').document(evoname)
     log_ref = evosys.remote_db.collection('experiment_logs').document(evoname)
     
@@ -183,7 +186,7 @@ def verify_daemon(evoname, sess_id, design_id, scale, node_id, pid):
                 verify_ref.set({'heartbeats': {node_id: datetime.now()}}, merge=True)
                 
                 if process.status() == psutil.STATUS_ZOMBIE:
-                    log = f'Node {node_id} detected zombie process for {design_id}_{scale}'
+                    log = f'Node {node_id} detected zombie process {pid} for {design_id}_{scale}'
                     do_log(log_ref,datetime.now().strftime('%B %d, %Y at %I:%M:%S %p %Z')+'_'+str(uuid.uuid4()),log)
                     break
                 elif process.status() in [psutil.STATUS_DEAD, psutil.STATUS_STOPPED]:
@@ -193,7 +196,7 @@ def verify_daemon(evoname, sess_id, design_id, scale, node_id, pid):
                 else:
                     time.sleep(60)  # Check every minute for active processes
             except psutil.NoSuchProcess:
-                log = f'Node {node_id} lost track of verification process for {design_id}_{scale}'
+                log = f'Node {node_id} lost track of verification process {pid} for {design_id}_{scale}'
                 do_log(log_ref,datetime.now().strftime('%B %d, %Y at %I:%M:%S %p %Z')+'_'+str(uuid.uuid4()),log)
                 raise psutil.NoSuchProcess(pid)
 
@@ -201,16 +204,16 @@ def verify_daemon(evoname, sess_id, design_id, scale, node_id, pid):
         try:
             exit_code = process.wait(timeout=1)
             if exit_code == 0:
-                log = f'Node {node_id} completed verification on {design_id}_{scale}'
+                log = f'Node {node_id} completed verification process {pid} on {design_id}_{scale}'
             else:
-                log = f'Node {node_id} failed verification on {design_id}_{scale} with exit code {exit_code}'
+                log = f'Node {node_id} failed verification process {pid} on {design_id}_{scale} with exit code {exit_code}'
         except psutil.TimeoutExpired:
-            log = f'Node {node_id} failed to get exit code for {design_id}_{scale}'
+            log = f'Node {node_id} failed to get exit code for verification process {pid} on {design_id}_{scale}'
         
         do_log(log_ref,datetime.now().strftime('%B %d, %Y at %I:%M:%S %p %Z')+'_'+str(uuid.uuid4()),log)
 
     except Exception as e:
-        log = f'Node {node_id} encountered an error during verification of {design_id}_{scale}: {str(e)}'
+        log = f'Node {node_id} encountered an error during verification process {pid} on {design_id}_{scale}: {str(e)}'
         do_log(log_ref,datetime.now().strftime('%B %d, %Y at %I:%M:%S %p %Z')+'_'+str(uuid.uuid4()),log)
     
     finally:
@@ -396,7 +399,7 @@ def verify(evosys,project_dir):
             st.dataframe(cpu_df)
                 
         # Add a refresh button to manually update the page
-        if st.button("Refresh",key='refresh_btn_engine'):
+        if st.button('🔄 Refresh',key='refresh_btn_engine',use_container_width=True):
             st.rerun()
 
 
@@ -418,7 +421,7 @@ def verify(evosys,project_dir):
     with col4:
         with st.expander("Experiment Info"):
             st.write(f'Namespace: ```{evosys.evoname}```')
-            st.write(evosys.state)
+            st.write(evosys.params)
 
     Col1,Col2=st.columns([5,4])
     
@@ -709,7 +712,7 @@ if __name__ == '__main__':
             params={'evoname':args.evoname,'db_only':True,'no_agent':True},do_cache=False)
         evosys._prep_model(args.design_id, args.scale)
     else:
-        node_id=args.node_id or str(uuid.uuid4())[:8]
+        node_id= args.node_id if args.node_id else str(uuid.uuid4())[:8]
         verify_command(node_id,args.evoname,design_id=args.design_id,scale=args.scale,resume=args.resume,cli=True)
 
 

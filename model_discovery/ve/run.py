@@ -87,6 +87,7 @@ parser.add_argument("--auto_find_batch_size_hf", type=bool, default=False) # whe
 parser.add_argument("--mode", type=str, default='test') # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
 parser.add_argument("--params", type=str, default='') 
 parser.add_argument("--sess_id", type=str, default='') 
+parser.add_argument("--cpu_only", action='store_true') 
 
 
 
@@ -485,6 +486,25 @@ def get_history(run_id, project_path = "aristo/model_discovery"):
     system_metrics.rename(columns=system_note,inplace=True)
     return history,system_metrics
 
+
+def get_history_report(wandb_ids):
+    report={}
+    try:
+        run_id=wandb_ids['pretrain']['id']
+        wandb_entity=wandb_ids['entity']
+        wandb_project=wandb_ids['project']
+        history,system_metrics=get_history(
+            run_id,
+            project_path=f"{wandb_entity}/{wandb_project}"
+        )
+        report["training_record.csv"]=str(history.to_csv(index=False))
+        report["system_metrics.csv"]=str(system_metrics.to_csv(index=False))
+    except Exception as e:
+        util_logger.error(f"Error getting history report: {e}")
+        pass
+    return report
+
+
 def report(args) -> dict:
     """Returns the training report 
 
@@ -497,22 +517,9 @@ def report(args) -> dict:
         util_logger.info(f"Report already exists at {outdir}/report.json")
         return
     report={}
-    # try:
-    # run_id=U.load_json(f"{outdir}/wandb_ids.json")['pretrain']['id']
-    # history,system_metrics=get_history(
-    #     run_id,
-    #     project_path=f"{args.wandb_entity}/{args.wandb_project}"
-    # )
-    report={
-        # "training_record.csv":str(history.to_csv(index=False)),
-        # "system_metrics.csv":str(system_metrics.to_csv(index=False)),
-        "wandb_ids.json":U.load_json(f"{outdir}/wandb_ids.json")
-    }
-    # except:
-    #     report={
-    #         "training_record.csv":"",
-    #         "system_metrics.csv":"",
-    #     }
+    wandb_ids=U.load_json(f"{outdir}/wandb_ids.json")
+    report["wandb_ids.json"]=wandb_ids
+    report.update(get_history_report(wandb_ids))
 
     trainer_state=U.load_json(f"{outdir}/trainer_state.json")
     eval_results=get_eval_results(outdir)
@@ -522,10 +529,9 @@ def report(args) -> dict:
     for i in ['upper_git_hash','transformers_version','pretty_env_info','git_hash']:
         eval_results.pop(i)
     
-    report.update({
-        "trainer_state.json": trainer_state,
-        "eval_results.json": eval_results,
-    })
+    report["trainer_state.json"]=trainer_state
+    report["eval_results.json"]=eval_results
+    
     with open(f"{outdir}/report.json", 'w') as report_out:
         report_out.write(json.dumps(report,indent=4))
         

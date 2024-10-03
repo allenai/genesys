@@ -183,6 +183,11 @@ def safe_get_cfg_dict(cfg,key,default):
         _cfg_dict[k]=_dict.get(k,v)
     return _cfg_dict
 
+def init_dict(cfg,default):
+    for k,v in default.items():
+        if k not in cfg:
+            cfg[k]=v
+    return cfg
 
 def zip_folder(folder,zip_file):
     with zipfile.ZipFile(zip_file, 'w', zipfile.ZIP_DEFLATED) as zipf:

@@ -72,6 +72,8 @@ from exec_utils.factory import _check_config
 from exec_utils import BuildSystem as NativeBuild
 from exec_utils.aliases import ConfigType
 
+from model_discovery.agents.roles.selector import Selector
+
 from model_discovery.model.composer import GAUTree
 from model_discovery import utils as U
 from .configs.gam_config import ( 
@@ -80,7 +82,7 @@ from .configs.gam_config import (
 )
 from .ve.run import main as ve_main
 from .ve.run import parser as ve_parser
-
+from .ve.run import get_history_report
 
 __all__ = [
     "EvolutionSystem",
@@ -252,6 +254,7 @@ class FirestoreManager:
         for key,report in reports.items():
             upload=True        
             if key in self.index[design_id]['verifications'][scale] and not overwrite:
+                if key in ['training_record.csv','system_metrics.csv']: continue
                 upload=False
                 if verbose:
                     print(f'Verification report for scale "{scale}" and key "{key}" already exists in design "{design_id}"')
@@ -462,6 +465,10 @@ class FirestoreManager:
 SECRETS_DIR = U.pjoin(os.path.dirname(__file__),'configs','secrets')
 LIBRARY_DIR = U.pjoin(os.path.dirname(__file__),'model','library')
 
+
+DESIGN_COLOR='#5698c3'
+DESIGN_IMPLEMENTED_COLOR='#1177b0'
+
 NODE_COLOR_MAP={
     '14M':'#5698c3',
     '31M':'#1177b0',
@@ -473,6 +480,9 @@ NODE_COLOR_MAP={
 }
 
 ROOT_COLOR='#9eccab'
+
+DESIGN_SIZE=15
+DESIGN_IMPLEMENTED_SIZE=20
 
 NODE_SIZE_MAP={
     '14M':15,
@@ -1041,6 +1051,25 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
                     budgets[scale]-=1
         return budgets
 
+    def get_design_vectors(self):
+        designs=self.filter_by_type('DesignArtifactImplemented')
+        design_vectors = {}
+        for design in designs:
+            vector = {}
+            node = self.get_node(design)
+            vector['proposal_rating'] = node.proposal.rating
+            vector['units'] = {}
+            for unit_name, unit in node.implementation.implementation.units.items():
+                vector['units'][unit_name] = unit.rating
+            vector['verifications'] = {}
+            for scale in node.verifications:
+                verification_report = node.verifications[scale].verification_report
+                if 'training_record.csv' not in verification_report or 'system_metrics.csv' not in verification_report:
+                    verification_report.update(get_history_report(verification_report['wandb_ids.json']))
+                vector['verifications'][scale] = verification_report
+            design_vectors[design] = vector
+        return design_vectors
+
     # How to handle variants? i.e., in GPT, there are optional pre-conv and post-conv, maybe just all of them to the tree, let selector to choose
 
     def new_design(self, seed_ids, ref_ids, instruct, num_samples, mode=None, sess_id=None): # new design session, a session explore the steps from a selected node
@@ -1372,38 +1401,40 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         edges_to_add = []
         count=0
         G=nx.DiGraph()
-        for id in os.listdir(U.pjoin(self.db_dir,'designs')):
-            if max_nodes and count>max_nodes:
-                break
-            artifact = DesignArtifact.load(self.design_dir(id))
-            G.add_node(artifact.acronym, data=artifact)
-            count+=1
-            for seed_id in artifact.seed_ids:
-                edges_to_add.append((seed_id, artifact.acronym))
 
-        # Load core library
+        # Load designs
+        implemented_designs=[]
+        other_designs=[]
+        for id in os.listdir(U.pjoin(self.db_dir,'designs')):
+            artifact = DesignArtifact.load(self.design_dir(id))
+            if artifact.type=='DesignArtifactImplemented':
+                implemented_designs.append(artifact)
+            else:
+                other_designs.append(artifact)
+        
+        # Load primary library
+        core_refs=[]
+        other_refs=[]
         for id in os.listdir(self.lib_dir):
+            ref = LibraryReference.load(self.lib_dir, id.split('.')[0])
+            if ref.type in ['ReferenceCore','ReferenceCoreWithTree']:
+                core_refs.append(ref)
+            else:
+                other_refs.append(ref)
+
+        nodes_to_add=implemented_designs+other_designs+core_refs+other_refs
+        for data in nodes_to_add:
             if max_nodes and count>max_nodes:
                 break
-            id=id.split('.')[0]
-            ref = LibraryReference.load(self.lib_dir, id)
-            G.add_node(ref.acronym, data=ref)
+            G.add_node(data.acronym, data=data)
             count+=1
-            for seed_id in ref.seed_ids:
-                edges_to_add.append((seed_id, ref.acronym))
+            for seed_id in data.seed_ids:
+                edges_to_add.append((seed_id, data.acronym))
          
         if self.db_only:
             return G
-
-        # # load extended library
-        # dir_ext_1hop = U.pjoin(self.lib_ext_dir,'1hop')
-        # for i in os.listdir(dir_ext_1hop):
-        #     id=i.split('.')[0]
-        #     ref = LibraryReference1hop.load(dir_ext_1hop, id)
-        #     self.G.add_node(ref.acronym, data=ref)
-        #     for seed_id in ref.seed_ids:
-        #         edges_to_add.append((seed_id, ref.acronym))
-        
+            
+        # Add edges
         for seed_id, product_id in edges_to_add:
             if seed_id not in G.nodes or product_id not in G.nodes:
                 continue
@@ -1428,6 +1459,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         if max_nodes: fname+=f'_{max_nodes}'
         nt.show(U.pjoin(self.db_dir, '..', fname+'.html'))
 
+
     def export(self,max_nodes=None,height=5000,layout=False): #,with_ext=False
         G=nx.DiGraph()
         if not max_nodes or max_nodes==0 or max_nodes>=len(self.G.nodes):
@@ -1439,11 +1471,10 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
                 break
             data=_G.nodes[node]['data']
             if data.type in ['DesignArtifact','DesignArtifactImplemented']:
-                scale='31M'   #data.scale # TODO: use the actual scale
-                color=NODE_COLOR_MAP[scale]
+                color=DESIGN_COLOR if data.type=='DesignArtifact' else DESIGN_IMPLEMENTED_COLOR
                 if data.seed_ids == []:
                     color=ROOT_COLOR
-                size=NODE_SIZE_MAP[scale]
+                size=DESIGN_SIZE if data.type=='DesignArtifact' else DESIGN_IMPLEMENTED_SIZE
             elif data.type=='Reference':
                 color=REFERENCE_COLOR
                 citations=data.citationCount
@@ -1513,12 +1544,15 @@ def report_reader(report):
 
 
 class ConnectionManager:
-    def __init__(self, evoname, remote_db, stream):
+    def __init__(self, evoname, remote_db, stream, max_design_threads_per_node=4):
         self.evoname = evoname
         self.collection = remote_db.collection(evoname + '_connections')
         self.zombie_threshold = 20  # seconds
-        self.max_design_threads_per_node = 3
+        self.max_design_threads_per_node = max_design_threads_per_node
         self.st = stream
+
+    def set_max_design_threads_per_node(self, max_design_threads_per_node):
+        self.max_design_threads_per_node = max_design_threads_per_node
 
     def clear_zombie_connections(self):
         threshold_time = datetime.utcnow() - timedelta(seconds=self.zombie_threshold)
@@ -1568,7 +1602,7 @@ class ConnectionManager:
     def design_command(self,node_id,resume=True):
         self.get_active_connections() # refresh the connection status
         running_designs, _ = self.check_workload(node_id)
-        if len(running_designs) >= self.max_design_threads_per_node:
+        if self.max_design_threads_per_node>0 and len(running_designs) >= self.max_design_threads_per_node:
             self.st.toast(f"Max number of design threads reached ({self.max_design_threads_per_node}) for node {node_id}. Please wait for some threads to finish.",icon='🚨')
             return
         command = f'design,{self.evoname}'
@@ -1626,6 +1660,28 @@ def _verify(evoname,design_id,scale,resume=True, mult=20): # do a single verify
     ve_main(args)
 
 
+
+DEFAULT_PARAMS = {
+    'action_policy': 'random',
+    'design_budget': 0,
+    'scales': '14M,31M,70M,125M,350M',
+    'selection_ratio': 0.2,
+    'no_agent': False,
+    'db_only': False,
+    'use_remote_db': True,
+}
+
+
+DEFAULT_N_SOURCES={ 
+    'DesignArtifact':2,
+    'DesignArtifactImplemented':0,
+    'ReferenceCore':0,
+    'ReferenceCoreWithTree':0,
+    'Reference':2,
+    'ReferenceWithCode':2,
+}
+
+
 # @exec_utils.Registry("config","evolution")
 # class CustomParams(exec_utils.ModuleParams):
 #     strparams: str = exec_utils.ParamField(
@@ -1665,71 +1721,32 @@ class EvolutionSystem(exec_utils.System):
         # # init params, TODO: upgrade to exec_util params, use a simple str params for now
 
         # set the name and save dir
+        assert 'evoname' in self.params, "evoname is required"
         self.evoname=self.params['evoname'] # Provide the name for the whole run including evolutions of all scales, all designs, all agents
         self.ckpt_dir=os.environ.get("CKPT_DIR")
         self.evo_dir=U.pjoin(self.ckpt_dir,self.evoname)
         U.mkdir(self.evo_dir)
+        U.mkdir(U.pjoin(self.evo_dir,'ve'))
         
         self.load_config()
 
-        # load or init the state, if it is an existing evolution, load the state, otherwise init the state
-        self.state=self.load_state() # load the state by evoname
-        if 'select_method' not in self.params:
-            self.params['select_method']='random'
-        if 'select_method' not in self.state:
-            self.state['select_method']=self.params['select_method']
-        self.select_method=self.state['select_method']
+        self.params=U.init_dict(self.params,DEFAULT_PARAMS)
 
-        # action choose strategy
-        if 'action_policy' not in self.params:
-            self.params['action_policy']='random'
-        if 'action_policy' not in self.state:
-            self.state['action_policy']=self.params['action_policy']
-        self.action_policy=self.state['action_policy']
-        
-        # design verify strategy
-        if 'verify_strategy' not in self.params:
-            self.params['verify_strategy']='random'
-        if 'verify_strategy' not in self.state:
-            self.state['verify_strategy']=self.params['verify_strategy']
-        self.verify_strategy=self.state['verify_strategy']
+        self.action_policy=self.params['action_policy']
+        self.design_budget_limit=self.params['design_budget']
 
-        if 'design_budget' not in self.params:
-            self.params['design_budget']=0
-        if 'design_budget' not in self.state:
-            self.state['design_budget']=int(self.params['design_budget'])
-        self.design_budget_limit=self.state['design_budget']
-
-        if 'selection_ratio' not in self.params:
-            self.params['selection_ratio']=0.25
-        if 'selection_ratio' not in self.state:
-            self.state['selection_ratio']=float(self.params['selection_ratio'])
-        
-        if 'scales' not in self.params:
-            self.params['scales']='14M,31M,70M,125M,350M'
-        if 'budgets' not in self.state: # remaining budget for each scale
-            scales=self.params['scales'].split(',') # e.g. "14M,31M,70M,125M", scales
-            budget=1
-            self.state['budgets']={}    
-            for scale in scales[::-1]:
-                self.state['budgets'][scale]=int(np.ceil(budget))
-                budget/=self.state['selection_ratio']
-        self.target_scales=list(self.state['budgets'].keys())
+        self._verify_budget={}
+        budget=1
+        for scale in self.params['scales'].split(',')[::-1]:
+            self._verify_budget[scale]=int(np.ceil(budget))
+            budget/=self.params['selection_ratio']
+        self.target_scales=list(self._verify_budget.keys())
         self.target_scales.sort(key=lambda x:int(x.replace('M','')))
-        
-        if 'no_agent' not in self.params:
-            self.params['no_agent']=False
-        if 'db_only' not in self.params:
-            self.params['db_only']=False
-        if 'use_remote_db' not in self.params:
-            self.params['use_remote_db']=True
-
-        self.save_state() # save the initialized state
 
         self.scales=[eval(f'GAMConfig_{scale}()') for scale in self.target_scales]
 
         self.stream.write(f"Evolution system initialized with scales: {self.target_scales}")
-        self.stream.write(f"Budgets remaining: {self.state['budgets']}")
+        self.stream.write(f"Verify budgets: {self._verify_budget}")
         self.stream.write(f"Checkpoint directory: {self.evo_dir}")
 
         self.ptree=PhylogeneticTree(self.evoname,self.target_scales,U.pjoin(self.evo_dir,'db'),self.params['db_only'],self.remote_db,self.params['use_remote_db'])
@@ -1746,6 +1763,8 @@ class EvolutionSystem(exec_utils.System):
                 report=U.load_json(report_dir)
                 self.ptree.verify(node.acronym,scale,report)
 
+        self.selector = Selector(self.ptree,self.select_cfg)
+
         if self.params['no_agent']:
             self.rnd_agent = None
         else:
@@ -1760,6 +1779,19 @@ class EvolutionSystem(exec_utils.System):
             )
             self.rnd_agent.bind_ptree(self.ptree,self.stream)
             # self.ptree.export()
+
+    def get_evo_state(self):
+        evo_state={}
+        evo_state['Seed Selection Method']=self.design_cfg.get('select_method','random')
+        evo_state['Verification Strategy']=self.design_cfg.get('verify_strategy','random')
+        evo_state['target_scales']=self.target_scales
+        evo_state['Remaining Verify Budget']=self.verify_budget
+        evo_state['Remaining Design Budget']=self.design_budget
+        evo_state['Design Cost Spent']=self.ptree.design_cost
+        evo_state['Use Remote DB']=self.ptree.use_remote_db
+        if not self.remote_db:
+            evo_state['Action Choice Policy']=self.action_policy
+        return evo_state
 
     def link_stream(self,stream):
         self.stream=stream
@@ -1817,9 +1849,16 @@ class EvolutionSystem(exec_utils.System):
         
         self.stream.write("Hello from the evolution system")
 
-
-    def load_state(self):
-        return U.load_json(U.pjoin(self.evo_dir,'state.json'))
+    def sync_to_db(self):
+        collection=self.remote_db.collection('experiments')
+        config=U.load_json(U.pjoin(self.evo_dir,'config.json'))
+        config.update({
+            'params': self.params,
+            'design_cfg': self.design_cfg,
+            'search_cfg': self.search_cfg,
+            'select_cfg': self.select_cfg,
+        })
+        collection.document(self.evoname).set({'config': config})
 
     def sync_from_db(self,evoname=None):
         if evoname is None:
@@ -1829,42 +1868,36 @@ class EvolutionSystem(exec_utils.System):
         if doc.exists:
             doc=doc.to_dict()
             config=doc.get('config',{})
-            state=doc.get('state')
-            U.save_json(config,U.pjoin(self.evo_dir,'config.json'))
-            U.save_json(state,U.pjoin(self.evo_dir,'state.json'))
+            evo_dir=U.pjoin(self.ckpt_dir,evoname)
+            U.save_json(config,U.pjoin(evo_dir,'config.json'))
 
     def load_config(self):
         if self.remote_db:
             self.sync_from_db()
         config = U.load_json(U.pjoin(self.evo_dir,'config.json'))
         self.design_cfg = config.get('design_cfg',{})
+        if 'running_mode' in self.design_cfg:
+            self.design_cfg['running_mode'] = RunningModes(self.design_cfg['running_mode'])
         self.search_cfg = config.get('search_cfg',{})
         self.select_cfg = config.get('select_cfg',{})
         params = config.get('params',{})
-        params.update(self.params) 
-        self.params = params # overwrite the params with the new params
+        params.update(self.params) # to directly use config, provide only evoname in config
+        self.params = params # logic is that, if new params provided, use new params, otherwise, use config, otherwise, use default
         return config
-
-    def sync_state_to_db(self):
-        collection=self.remote_db.collection('experiments')
-        doc=collection.document(self.evoname)
-        doc.set({'state':self.state},merge=True)
-
-    def save_state(self):
-        if self.remote_db:
-            self.sync_state_to_db()
-        U.save_json(self.state,U.pjoin(self.evo_dir,'state.json'))
     
     def save_config(self):
         config = U.load_json(U.pjoin(self.evo_dir,'config.json'))
         config['design_cfg'] = self.design_cfg
+        if 'running_mode' in config['design_cfg']:
+            if not isinstance(config['design_cfg']['running_mode'],str):
+                config['design_cfg']['running_mode'] = config['design_cfg']['running_mode'].value
         config['search_cfg'] = self.search_cfg
         config['select_cfg'] = self.select_cfg
         U.save_json(config,U.pjoin(self.evo_dir,'config.json'))
 
     @property
     def verify_budget(self):
-        vb = self.ptree.remaining_budget(self.state['budgets'])
+        vb = self.ptree.remaining_budget(self._verify_budget)
         vb=sorted(vb.items(),key=lambda x:int(x[0].replace('M','')))
         vb = {k:v for k,v in vb}
         return vb
@@ -1925,15 +1958,13 @@ class EvolutionSystem(exec_utils.System):
         unfinished_designs = self.ptree.get_unfinished_designs()
         self.stream.write(f"Found {len(unfinished_designs)} unfinished designs, allow resume: {resume}")
 
-        n_sources=select_cfg.get('n_sources',{
-            'ReferenceCoreWithTree':1,
-            'DesignArtifactImplemented':1,
-            'ReferenceWithCode':2,
-            'Reference':2,
-        })
+
+        selector_args={}
+        selector_args['n_sources']=select_cfg.get('n_sources',DEFAULT_N_SOURCES)
+
         if sess_id is None:
             if len(unfinished_designs)==0 or not resume:
-                instruct,seed,refs=self.select_design(n_sources,mode=mode) # use the seed_ids to record the phylogenetic tree
+                instruct,seed,refs=self.selector.select_design(selector_args,mode=mode) # use the seed_ids to record the phylogenetic tree
                 self.sample(instruct,seed,refs,mode=mode,user_input=user_input,design_cfg=design_cfg,search_cfg=search_cfg)
             else:
                 sess_id = random.choice(unfinished_designs)
@@ -1946,7 +1977,7 @@ class EvolutionSystem(exec_utils.System):
                 self.stream.write(f"Design id provided, will restore session {sess_id}, mode: {mode}")
                 self.sample(sess_id=sess_id,user_input=user_input,design_cfg=design_cfg,mode=mode,search_cfg=search_cfg)
             else: # create a new design session using an external id
-                instruct,seed,refs=self.select_design(n_sources,mode=mode) # use the seed_ids to record the phylogenetic tree
+                instruct,seed,refs=self.selector.select_design(selector_args,mode=mode) # use the seed_ids to record the phylogenetic tree
                 self.sample(instruct,seed,refs,sess_id,mode=mode,user_input=user_input,design_cfg=design_cfg,search_cfg=search_cfg,in_process=in_process)
         if in_process:
             sys.exit(0)
@@ -1977,94 +2008,6 @@ class EvolutionSystem(exec_utils.System):
             mode=mode
         )
 
-
-    # TODO: upgrade to Selector agent
-    def select_design(self,K: Union[int,Dict[str,int]],selector_instruct='',mode=None,select_method=None)->Tuple[str,List[NodeObject]]:
-        '''
-        K: int or dict of {source_type: num of seeds}, if K is int, then sample from all default sources (the ones with code)
-        Return:
-            seeds: List[NodeObject]
-            instruct: str, the prompt generated from the selector and seeds
-        '''
-        if mode is None:
-            mode=DesignModes.MUTATION
-        seeds=[]
-        instruct=''
-        if isinstance(K,int):
-            instruct,seeds=self._select_design(K,selector_instruct,select_method=select_method)
-        elif isinstance(K,dict):
-            for source_type,num in K.items():
-                _instruct,topk=self._select_design(num,selector_instruct,source_type,select_method)
-                instruct+=_instruct # NOTE: should not like this
-                seeds.extend(topk)
-        if mode==DesignModes.MUTATION:
-            seed_types = ['DesignArtifactImplemented','ReferenceCoreWithTree']
-            seed = [i for i in seeds if i.type in seed_types] # NOTE: need improve 
-            refs = [i for i in seeds if i.type not in seed_types]
-            assert len(seed)>0, "There must be at least one seed from DesignArtifact or ReferenceCoreWithTree when design from existing"
-            if len(seed)>1:
-                seed = [random.choice(seed)] # NOTE: randomly select for now, should not happen at all
-                # refs = [i for i in seeds if i.acronym!=seed[0].acronym]
-            else:
-                seed = [seeds[0]]
-        elif mode==DesignModes.SCRATCH:
-            seed_types = ['DesignArtifactImplemented','ReferenceCoreWithTree','ReferenceWithCode']
-            seed = [i for i in seeds if i.type in seed_types]
-            refs = [i for i in seeds if i.type not in seed_types]
-        elif mode==DesignModes.CROSSOVER:
-            seed_types = ['DesignArtifactImplemented','ReferenceCoreWithTree']
-            seeds = [i for i in seeds if i.type in seed_types]
-            assert len(seeds)>=2, "There must be at least two seeds from DesignArtifactImplemented and ReferenceCoreWithTree when design from existing"
-            seed = random.sample(seeds,2)
-            refs = [i for i in seeds if i not in seed]
-        return instruct,seed,refs
-
-    def _select_design(self,K: int=1,selector_instruct='',
-            filter_type=['DesignArtifactImplemented','ReferenceWithCode','DesignArtifact','ReferenceCoreWithTree','ReferenceCore'],
-            select_method=None)-> Tuple[str,List[NodeObject]]: # K is the number of designs to sample, instruct is the instruction to the selector, select seeds or select populations
-        """ Provide the instruction including seeds and instructs for the next design """
-        K=min(K,len(self.ptree.filter_by_type(filter_type)))
-        if K==0: # no design to sample
-            return '',[]
-        if select_method is None:
-            select_method = self.select_method
-        if select_method=='heuristic':
-            topk = self.heuristic_select(K,selector_instruct,filter_type)
-        elif select_method=='random':
-            topk = self.random_select(K,selector_instruct,filter_type)
-        instruct='' # TODO: leave it to the selector agent
-        return instruct,topk
-
-    def nodes2data(self,nodes)->List[NodeObject]: # convert the nodes to data: NodeObject
-        return [self.ptree.G.nodes[node]['data'] for node in nodes]
-
-    def heuristic_select(self,K: int=1,selector_instruct='',
-            filter_type=['DesignArtifact','ReferenceWithCode','ReferenceCoreWithTree','ReferenceCore'])-> List[NodeObject]:
-        raise NotImplementedError
-        alpha=0.1
-        sample_metrics={}
-        sample_scale={}
-        for node in self.ptree.filter_by_type(filter_type):
-            artifact=self.ptree.G.nodes[node]['data']
-            if artifact.verify_report is not None:
-                # TODO: upgrade this thing
-                report=report_reader(artifact.verify_report)
-                sample_metrics[node]=np.mean([v for k,v in report['metrics']['eval'].items() if 'acc' in k])
-                scale_id=self.state['scales'].index(artifact.scale)+1
-                sample_scale[node]=scale_id
-
-        # TODO: upgrade this thing
-        prob=np.array([v for k,v in sample_metrics.items()])*(1-alpha)+np.random.rand(len(sample_metrics))*alpha
-        prob=prob*np.array([v for k,v in sample_scale.items()]) # prefer the higher scale
-        prob=prob/np.sum(prob)
-        topk=np.random.choice(list(sample_metrics.keys()),size=K,replace=False,p=prob)
-        return self.nodes2data(topk)
-
-    def random_select(self,K: int=1,selector_instruct='',
-            filter_type=['DesignArtifact','ReferenceWithCode','ReferenceCoreWithTree','ReferenceCore']):
-        topk=random.sample(self.ptree.filter_by_type(filter_type),K)
-        return self.nodes2data(topk)
-    
     def choose(self): # For sequential evolution, not needed for parallel
         """ Choose a move, select a design to verify """
         if self.action_policy=='random':
@@ -2072,10 +2015,9 @@ class EvolutionSystem(exec_utils.System):
         else:
             raise ValueError(f"Invalid action policy: {self.action_policy}")
 
-
     def verify(self,design_id=None,scale=None,resume=True,in_process=False): # choose then verify
         if design_id is None:
-            design_id,scale=self.select_verify()
+            design_id,scale=self.selector.select_verify()
         if design_id is None:
             return None
         self.stream.write(f"Verifying design {design_id} at scale {scale}...")
@@ -2090,28 +2032,6 @@ class EvolutionSystem(exec_utils.System):
             return 'SUCCESS'
         return 'FAILED'
 
-    def select_verify(self,verify_strategy=None,exclude_list=[]):
-        if verify_strategy is None:
-            verify_strategy = self.verify_strategy
-        exclude={}
-        for design_id,scale in exclude_list: # list of (design_id,scale) being verified by other nodes
-            if scale not in exclude:
-                exclude[scale]=[]
-            exclude[scale].append(design_id)
-        if verify_strategy=='random':
-            for scale in self.available_verify_budget:
-                unverified=self.ptree.get_unverified_designs(scale)
-                unverified=[i for i in unverified if i not in exclude.get(scale,[])]
-                if len(unverified)==0:
-                    self.stream.write(f"No unverified design at scale {scale}.")
-                else:
-                    design_id=random.choice(unverified)
-                    return design_id,scale
-            self.stream.write(f"No unverified design found at any scale.")
-            return None,None
-        else:
-            raise ValueError(f"Invalid verify strategy: {self.verify_strategy}")
-    
     def _prep_model(self,design_id,scale):
         design=self.ptree.get_node(design_id) # need to ensure this design has not been verified under scale
         design_id=design.acronym

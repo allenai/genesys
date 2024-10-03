@@ -21,20 +21,41 @@ import bin.app_utils as AU
 
 
 
+def do_log(log_ref,timestamp,log):
+    log_ref.set({timestamp: log}, merge=True)
+    print(f'{timestamp.split("_")[0]}: {log}')
+
+
 # Do not need a lock, as each node will maintain its own design sessions, so
 # unless a node is permanently lost (never join the network again, unlikely
 # happen), the design sessions will always be finished by resumes. 
-def design_command(node_id, evosys, evoname, resume=True, cli=False):
+def design_command(node_id, evosys, evoname, resume=True, cli=False, cpu_only=False):
+    sess_id,pid =_design_command(node_id, evosys, evoname, resume, cli, cpu_only)
+    log_ref = evosys.remote_db.collection('experiment_logs').document(evoname)
+    timestamp = datetime.now().strftime('%B %d, %Y at %I:%M:%S %p %Z')+'_'+str(uuid.uuid4())
+    if sess_id:
+        log=f'Node {node_id} running design thread with session id {sess_id}'
+        do_log(log_ref,timestamp,log)
+        print('Starting Design Daemon Process...')
+        daemon_cmd = f"python -m bin.pages.design --daemon --evoname {evoname} --sess_id {sess_id} --node_id {node_id} --pid {pid}"
+        subprocess.Popen(daemon_cmd, shell=True)
+    else:
+        log=f'Node {node_id} failed to run design thread with error: {pid}'
+        do_log(log_ref,timestamp,log)
+    return sess_id,pid
+
+
+def _design_command(node_id, evosys, evoname, resume=True, cli=False, cpu_only=False):
     sess_id = None
     params = {'evoname': evoname}
-    if evosys.evoname != evoname:
-        evosys.switch_ckpt(evoname)
+    if evosys.evoname != evoname: # FIXME: initialize evosys inside
+        evosys.switch_ckpt(evoname) 
     log_ref = evosys.remote_db.collection('experiment_logs').document(evoname)
     if resume:
         unfinished_designs = evosys.ptree.get_unfinished_designs()
         if len(unfinished_designs) > 0:
             sess_id = random.choice(unfinished_designs)
-    sess_id,pid = run_design_thread(evosys, sess_id, params, cli=cli)
+    sess_id,pid = run_design_thread(evosys, sess_id, params, cli=cli, cpu_only=cpu_only)
     timestamp=datetime.now().strftime('%B %d, %Y at %I:%M:%S %p %Z')+'_'+str(uuid.uuid4())
     if sess_id:
         log=f'Node {node_id} running design thread with session id {sess_id}'
@@ -50,6 +71,50 @@ def design_command(node_id, evosys, evoname, resume=True, cli=False):
     return sess_id,pid
 
 
+def design_daemon(evosys, evoname, sess_id, node_id, pid):
+    if evosys.evoname != evoname: # FIXME: initialize evosys inside
+        evosys.switch_ckpt(evoname)
+    log_ref = evosys.remote_db.collection('experiment_logs').document(evoname)
+    
+    # Start heartbeat
+    try:
+        process = psutil.Process(pid)
+        while True:
+            try:
+                # Update heartbeat
+                if process.status() == psutil.STATUS_ZOMBIE:
+                    log = f'Node {node_id} detected zombie process {pid} for {sess_id}'
+                    do_log(log_ref,datetime.now().strftime('%B %d, %Y at %I:%M:%S %p %Z')+'_'+str(uuid.uuid4()),log)
+                    break
+                elif process.status() in [psutil.STATUS_DEAD, psutil.STATUS_STOPPED]:
+                    break
+                elif process.status() == psutil.STATUS_SLEEPING:
+                    time.sleep(60)  # Wait for 1 minute before checking again
+                else:
+                    time.sleep(60)  # Check every minute for active processes
+            except psutil.NoSuchProcess:
+                log = f'Node {node_id} lost track of design process {pid} for {sess_id}'
+                do_log(log_ref,datetime.now().strftime('%B %d, %Y at %I:%M:%S %p %Z')+'_'+str(uuid.uuid4()),log)
+                raise psutil.NoSuchProcess(pid)
+
+        # Check if the process completed successfully
+        try:
+            exit_code = process.wait(timeout=1)
+            if exit_code == 0:
+                log = f'Node {node_id} completed design process {pid} for {sess_id}'
+            else:
+                log = f'Node {node_id} failed design process {pid} for {sess_id} with exit code {exit_code}'
+        except psutil.TimeoutExpired:
+            log = f'Node {node_id} failed to get exit code for design process {pid} for {sess_id}'
+        
+        do_log(log_ref,datetime.now().strftime('%B %d, %Y at %I:%M:%S %p %Z')+'_'+str(uuid.uuid4()),log)
+
+    except Exception as e:
+        log = f'Node {node_id} encountered an error during design process {pid} for {sess_id}: {str(e)}'
+        do_log(log_ref,datetime.now().strftime('%B %d, %Y at %I:%M:%S %p %Z')+'_'+str(uuid.uuid4()),log)
+    
+    return sess_id, pid
+
 
 ###########################################################################
 
@@ -58,23 +123,25 @@ def design_command(node_id, evosys, evoname, resume=True, cli=False):
 def _gen_sess_id():
     return f"{datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}-{uuid.uuid4().hex[:6]}"
 
-def _run_design_thread(evosys,sess_id=None,params=None):
+def _run_design_thread(evosys,sess_id=None,params=None, cpu_only=False):
     if params is None:
         params = evosys.params
     params_str = shlex.quote(json.dumps(params))
     if sess_id is None:
         sess_id = _gen_sess_id()
     cmd = f"python -m model_discovery.evolution --mode design --params {params_str} --sess_id {sess_id}"
+    if cpu_only:
+        cmd += " --cpu_only"
     process = subprocess.Popen(cmd, shell=True)#, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, bufsize=1, universal_newlines=True)
     return process,sess_id
 
 
-def run_design_thread(evosys,sess_id=None,params=None,cli=False):
+def run_design_thread(evosys,sess_id=None,params=None,cli=False, cpu_only=False):
     if not cli:
         polls=[p.poll() for p in st.session_state['design_threads'].values()]
         n_running = sum([p is None for p in polls])
     if cli or n_running < st.session_state['max_design_threads']:
-        process,sess_id = _run_design_thread(evosys,sess_id,params)
+        process,sess_id = _run_design_thread(evosys,sess_id,params, cpu_only=cpu_only)
         time.sleep(10) # wait for the thread to start and session to be created
         if not cli:
             st.session_state['design_threads'][sess_id] = process
@@ -100,7 +167,7 @@ def _design_engine(evosys,project_dir):
         st.warning("**NOTE:** Evolution system is running. Design engine is taken over by the system.")
 
     with st.sidebar:
-        st.session_state['max_design_threads'] = st.number_input(label="Max Design Threads",min_value=1,value=3,step=1)
+        st.session_state['max_design_threads'] = st.number_input(label="Max Design Threads (for here)",min_value=1,value=5,step=1)
         # st.write(f'Controls')
         if st.button("Refresh",key='refresh_btn_design'):
             st.session_state['viewing_log'] = None
@@ -636,14 +703,27 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("--evoname", default='test_evo_000', type=str)
     parser.add_argument("--resume", action='store_true') # the name of the whole evolution
+    parser.add_argument("--daemon", action='store_true')
+    parser.add_argument("--sess_id", default=None, type=str)
+    parser.add_argument("--node_id", default=None, type=str)
+    parser.add_argument("--pid", default=None, type=int)
     args = parser.parse_args()
 
-    evosys = BuildEvolution(
-        params={'evoname':args.evoname}, # doesnt matter, will switch to the commanded evoname
-        do_cache=False,
-        # cache_type='diskcache',
-    )
+    args.sess_id = None if args.sess_id == 'None' else args.sess_id
+    args.node_id = None if args.node_id == 'None' else args.node_id
+    args.pid = None if args.pid == 'None' else args.pid
 
-    node_id=str(uuid.uuid4())[:8]
-    design_command(node_id,evosys,args.evoname,resume=args.resume,cli=True)
+    if args.daemon:
+        evosys = BuildEvolution(
+            params={'evoname':args.evoname,'db_only':True,'no_agent':True}, 
+            do_cache=False,
+        )
+        design_daemon(evosys,args.evoname,args.sess_id,args.node_id,args.pid)
+    else:
+        evosys = BuildEvolution(
+            params={'evoname':args.evoname}, 
+            do_cache=False,
+        )
+        node_id= args.node_id if args.node_id else str(uuid.uuid4())[:8]
+        design_command(node_id,evosys,args.evoname,resume=args.resume,cli=True)
     

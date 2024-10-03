@@ -6,6 +6,7 @@ import sys,os
 import inspect
 import pyflowchart as pfc
 import uuid
+import copy
 import streamlit.components.v1 as components
 import shutil
 import functools as ft
@@ -13,18 +14,27 @@ import functools as ft
 sys.path.append('.')
 import model_discovery.utils as U
 import bin.app_utils as AU
+import numpy as np
 
 from model_discovery.agents.flow.gau_flows import DesignModes,RunningModes
+from model_discovery.evolution import DEFAULT_PARAMS,DEFAULT_N_SOURCES
+from model_discovery.agents.roles.selector import DEFAULT_SEED_DIST,SCHEDULER_OPTIONS
+from model_discovery.system import DEFAULT_AGENTS,DEFAULT_MAX_ATTEMPTS,DEFAULT_TERMINATION,\
+    DEFAULT_THRESHOLD,DEFAULT_SEARCH_SETTINGS,DEFAULT_NUM_SAMPLES,DEFAULT_MODE
+from model_discovery.agents.search_utils import DEFAULT_SEARCH_LIMITS,DEFAULT_RERANK_RATIO,\
+    DEFAULT_PERPLEXITY_SETTINGS,DEFAULT_PROPOSAL_SEARCH_CFG
 
 TARGET_SCALES = ['14M','31M','70M','125M','350M','760M','1300M']
+SELECT_METHODS = ['random']
+VERIFY_STRATEGY = ['random']
 
 
-def apply_config(evosys,config,params_only=False):
-    apply_env_vars(evosys,config['env_vars'])
+    
+
+def apply_config(evosys,config):
     if config['params']['evoname']!=evosys.params['evoname']:
-        evosys.switch_ckpt(config['params']['evoname'])
-    if not params_only:
-        evosys.reconfig(design_cfg=config['design_cfg'],select_cfg=config['select_cfg'],search_cfg=config['search_cfg'])
+        evosys.switch_ckpt(config['params']['evoname'],load_params=False)
+    evosys.reconfig(design_cfg=config['design_cfg'],select_cfg=config['select_cfg'],search_cfg=config['search_cfg'])
     evosys.reload(config['params'])
     U.save_json(config,U.pjoin(evosys.evo_dir,'config.json'))
     st.toast(f"Applied and saved config in {evosys.evo_dir}")
@@ -47,47 +57,83 @@ def apply_env_vars(evosys,env_vars):
     return changed
 
 def apply_select_config(evosys,select_cfg):
-    evosys.reconfig(select_cfg=select_cfg)
+    with st.spinner('Applying and saving select config...'):
+        evosys.reconfig(select_cfg=select_cfg)
+        st.toast("Applied and saved select config")
 
 def apply_design_config(evosys,design_cfg):
-    evosys.reconfig(design_cfg=design_cfg)
+    with st.spinner('Applying and saving design config...'):
+        evosys.reconfig(design_cfg=design_cfg)
+        st.toast("Applied and saved design config")
 
 def apply_search_config(evosys,search_cfg):
-    evosys.reconfig(search_cfg=search_cfg)
+    with st.spinner('Applying and saving search config...'):    
+        evosys.reconfig(search_cfg=search_cfg)
+        st.toast("Applied and saved search config")
 
 def design_config(evosys):
 
     st.subheader("Model Design Engine Settings")
 
-    design_cfg=evosys.design_cfg
-    select_cfg=evosys.select_cfg
-    search_cfg=evosys.search_cfg
+    design_cfg=copy.deepcopy(evosys.design_cfg)
+    select_cfg=copy.deepcopy(evosys.select_cfg)
+    search_cfg=copy.deepcopy(evosys.search_cfg)
 
-    n_sources=select_cfg.get('n_sources',{})
+    select_method=select_cfg.get('select_method','random')
+    verify_strategy=select_cfg.get('verify_strategy','random')
+    n_sources=select_cfg.get('n_sources',DEFAULT_N_SOURCES)
+    seed_dist=select_cfg.get('seed_dist',DEFAULT_SEED_DIST)
+
+
+    design_cfg['max_attemps']=U.safe_get_cfg_dict(design_cfg,'max_attemps',DEFAULT_MAX_ATTEMPTS)
+    design_cfg['agent_types']=U.safe_get_cfg_dict(design_cfg,'agent_types',DEFAULT_AGENTS)
+    design_cfg['termination']=U.safe_get_cfg_dict(design_cfg,'termination',DEFAULT_TERMINATION)
+    design_cfg['threshold']=U.safe_get_cfg_dict(design_cfg,'threshold',DEFAULT_THRESHOLD)
+    design_cfg['search_settings']=U.safe_get_cfg_dict(design_cfg,'search_settings',DEFAULT_SEARCH_SETTINGS)
+    design_cfg['running_mode']=RunningModes(design_cfg.get('running_mode',DEFAULT_MODE))
+    design_cfg['num_samples']=U.safe_get_cfg_dict(design_cfg,'num_samples',DEFAULT_NUM_SAMPLES)
+
+    search_cfg['result_limits']=U.safe_get_cfg_dict(search_cfg,'result_limits',DEFAULT_SEARCH_LIMITS)
+    search_cfg['rerank_ratio']=search_cfg.get('rerank_ratio',DEFAULT_RERANK_RATIO)
+    search_cfg['perplexity_settings']=U.safe_get_cfg_dict(search_cfg,'perplexity_settings',DEFAULT_PERPLEXITY_SETTINGS)
+    search_cfg['proposal_search_cfg']=U.safe_get_cfg_dict(search_cfg,'proposal_search',DEFAULT_PROPOSAL_SEARCH_CFG)
     
     #### Configure design
     
     with st.expander(f"Node Selector Configurations for ```{evosys.evoname}```",expanded=False,icon='🌱'):
-
-        sources = ['ReferenceCoreWithTree', 'DesignArtifactImplemented', 'DesignArtifact', 'ReferenceCore', 'ReferenceWithCode', 'Reference']
-        sources={i:len(evosys.ptree.filter_by_type(i)) for i in sources}
         
-        st.markdown("##### Configure the number of seeds to sample from each source")
+        _col1,_col2=st.columns([2,3])
+        with _col1:
+            st.write('###### Configure Selector')
+            cols=st.columns(2)
+            with cols[0]:
+                select_cfg['select_method']=st.selectbox('Select Method',options=SELECT_METHODS,index=SELECT_METHODS.index(select_method))
+            with cols[1]:
+                select_cfg['verify_strategy']=st.selectbox('Verify Strategy',options=VERIFY_STRATEGY,index=VERIFY_STRATEGY.index(verify_strategy))
+        with _col2:
+            st.write('###### Configure *Seed* Selection Distribution')
+            cols = st.columns(3)
+            with cols[0]:
+                seed_dist['scheduler'] = st.selectbox('Scheduler',options=SCHEDULER_OPTIONS,index=SCHEDULER_OPTIONS.index(seed_dist['scheduler']))
+            with cols[1]:
+                seed_dist['restart_prob'] = st.slider('Restart Probability',min_value=0.0,max_value=1.0,step=0.01,value=DEFAULT_SEED_DIST['restart_prob'])
+            with cols[2]:
+                seed_dist['warmup_rounds'] = st.number_input('Warmup Rounds',min_value=0,value=seed_dist['warmup_rounds'])
+
+        sources={i:len(evosys.ptree.filter_by_type(i)) for i in DEFAULT_N_SOURCES}
+        
+        st.markdown("###### Configure the number of *references* from each source")
         cols = st.columns(len(sources))
         mode=evosys.design_cfg.get('mode',DesignModes.MUTATION.value)
         for i,source in enumerate(sources):
             with cols[i]:
-                if mode==DesignModes.MUTATION.value and source=='ReferenceCoreWithTree':
-                    n_sources[source] = st.number_input(label=f'{source} ({sources[source]})',min_value=0,value=1)#,max_value=1,disabled=True)
+                if source in ['DesignArtifact','DesignArtifactImplemented']:
+                    n_sources[source] = st.number_input(label=f'{source}',min_value=0,value=n_sources[source])#,disabled=True)
                 else:
-                    init_value=0 if source in ['DesignArtifact','ReferenceCore'] else min(2,sources[source])
-                    if source == 'DesignArtifactImplemented':
-                        init_value = min(1,sources[source])
-                    # disabled=True if source == 'DesignArtifact' else False
-                    n_sources[source] = st.number_input(label=f'{source} ({sources[source]})',min_value=0,value=init_value,max_value=sources[source])#,disabled=disabled)
-        if mode==DesignModes.MUTATION.value:
-            st.write('**ReferenceCoreWithTree and DesignArtifactImplemented are seed types in MUTATION mode. Will randomly sample one from samples from them as seed.*')
+                    n_sources[source] = st.number_input(label=f'{source} ({sources[source]})',min_value=0,value=n_sources[source],max_value=sources[source])#,disabled=True)
+        st.write('***Note:** 1. :red[ReferenceCoreWithTree] and :blue[DesignArtifactImplemented] are seed types. 2. Only considering **Mutation Mode** for now.*') # as mutation mode has the highest marginal effect and the basis of all modes 
         select_cfg['n_sources']=n_sources
+        select_cfg['seed_dist']=seed_dist
 
         st.button("Save and Apply",key='save_select_config',on_click=apply_select_config,args=(evosys,select_cfg),disabled=st.session_state.listening_mode or st.session_state.evo_running)   
 
@@ -183,7 +229,7 @@ def design_config(evosys):
                 num_samples['rerank_method']=st.selectbox(label="Rerank Method",options=rerank_methods,index=rerank_methods.index('rating'),disabled=True)
         design_cfg['num_samples']=num_samples
 
-        st.button("Save and Apply",key='save_design_config',on_click=apply_design_config,args=(evosys,design_cfg,select_cfg),disabled=st.session_state.listening_mode or st.session_state.evo_running)   
+        st.button("Save and Apply",key='save_design_config',on_click=apply_design_config,args=(evosys,design_cfg),disabled=st.session_state.listening_mode or st.session_state.evo_running)   
 
 
 
@@ -222,7 +268,7 @@ def design_config(evosys):
         st.button("Save and Apply",key='save_search_config',on_click=apply_search_config,args=(evosys,search_cfg),disabled=st.session_state.listening_mode or st.session_state.evo_running)
 
 
-    with st.expander(f"Check Configurations for ```{evosys.evoname}``` (Empty means using default)",expanded=False,icon='🔧'):
+    with st.expander(f"Check Configurations for ```{evosys.evoname}``` (Empty parts will inherit from default)",expanded=False,icon='🔧'):
         col1,col2,col3=st.columns(3)
         with col1:
             st.write("**Check Select Config:**")
@@ -235,26 +281,23 @@ def design_config(evosys):
             st.write(evosys.search_cfg)
 
 
-def upload_exp_to_db(evosys,exp,config=None,state=None):
+def upload_exp_to_db(evosys,exp,config=None):
     collection=evosys.ptree.remote_db.collection('experiments')
     to_set={}
     if config:
         to_set['config']=config
-    if state:
-        to_set['state']=state
     if len(to_set)>0:
         collection.document(exp).set(to_set,merge=True)
 
 def delete_exp_from_db(evosys,exp):
     collection=evosys.ptree.remote_db.collection('experiments')
     collection.document(exp).delete()
+    st.toast(f"Deleted experiment from remote DB: {exp}")
 
 def sync_exps_to_db(evosys):
     for exp in os.listdir(evosys.ckpt_dir):
         config=U.load_json(U.pjoin(evosys.ckpt_dir,exp,'config.json'))
-        state=U.load_json(U.pjoin(evosys.ckpt_dir,exp,'state.json'))
-        if not state: continue
-        upload_exp_to_db(evosys,exp,config,state)
+        upload_exp_to_db(evosys,exp,config)
     st.toast("Synced all experiments to remote DB")
 
 
@@ -265,14 +308,12 @@ def download_exp_from_db(evosys,exp):
         doc_id=doc.id
         doc=doc.to_dict()
         config=doc.get('config',{})
-        state=doc.get('state')
         U.mkdir(U.pjoin(evosys.ckpt_dir,doc_id))
+        U.mkdir(U.pjoin(evosys.ckpt_dir,doc_id,'ve'))
         U.mkdir(U.pjoin(evosys.ckpt_dir,doc_id,'db','sessions'))
         U.mkdir(U.pjoin(evosys.ckpt_dir,doc_id,'db','designs'))
         if config:
             U.save_json(config,U.pjoin(evosys.ckpt_dir,doc_id,'config.json'))
-        if state:
-            U.save_json(state,U.pjoin(evosys.ckpt_dir,doc_id,'state.json'))
 
 def sync_exps_from_db(evosys):
     collection=evosys.ptree.remote_db.collection('experiments')
@@ -281,17 +322,62 @@ def sync_exps_from_db(evosys):
         doc_id=doc.id
         doc=doc.to_dict()
         config=doc.get('config',{})
-        state=doc.get('state')
         U.mkdir(U.pjoin(evosys.ckpt_dir,doc_id))
+        U.mkdir(U.pjoin(evosys.ckpt_dir,doc_id,'ve'))
         U.mkdir(U.pjoin(evosys.ckpt_dir,doc_id,'db','sessions'))
         U.mkdir(U.pjoin(evosys.ckpt_dir,doc_id,'db','designs'))
         if config:
             U.save_json(config,U.pjoin(evosys.ckpt_dir,doc_id,'config.json'))
-        if state:
-            U.save_json(state,U.pjoin(evosys.ckpt_dir,doc_id,'state.json'))
     st.toast("Synced all experiments from remote DB")
     st.rerun()
 
+
+def evosys_config(evosys):
+
+    st.subheader("Evolution System Settings")
+
+    config=U.load_json(U.pjoin(evosys.evo_dir,'config.json'))
+
+    with st.expander("Evolution Settings",expanded=False,icon='🧬'):
+        with st.form("Evolution System Config"):
+            _params={}
+            col1,col2=st.columns(2)
+            with col1:
+                _params['evoname']=st.text_input('Experiment Namespace',value=evosys.params['evoname'])
+                target_scale=st.select_slider('Target Scale',options=TARGET_SCALES,value=evosys.params['scales'].split(',')[-1])
+                scales=[]
+                for s in TARGET_SCALES:
+                    if int(target_scale.replace('M',''))>=int(s.replace('M','')):
+                        scales.append(s)
+                _params['scales']=','.join(scales)
+                _params['selection_ratio']=st.slider('Selection Ratio',min_value=0.0,max_value=1.0,value=evosys.params['selection_ratio'])
+                _params['design_budget']=st.number_input('Design Budget ($)',value=evosys.params['design_budget'],min_value=0,step=100)
+                _params['use_remote_db']=st.checkbox('Use Remote DB (Required for distributed evolution)',value=evosys.params['use_remote_db'])
+
+            with col2:
+                st.write("Current Settings:")
+                settings={}
+                settings['Experiment Directory']=evosys.evo_dir
+                # settings['Seed Selection Method']=evosys.select_method
+                # settings['Verification Strategy']=evosys.verify_strategy
+                settings['Design Budget']=evosys.design_budget_limit if evosys.design_budget_limit>0 else '♾️'
+                settings['Verification Budges']=evosys.verify_budget
+                settings['Use Remote DB']=evosys.params['use_remote_db']
+                st.write(settings)
+
+            if st.form_submit_button("Apply and Save"):
+                with st.spinner("Applying and saving..."):
+                    config['params']=_params
+                    if config['params']['evoname']!=evosys.params['evoname']:
+                        evosys.switch_ckpt(config['params']['evoname'],load_params=False)
+                    evosys.reload(config['params'])
+                    U.save_json(config,U.pjoin(evosys.evo_dir,'config.json'))
+                    st.toast(f"Applied and saved params in {evosys.evo_dir}")
+
+    with st.expander("Verification Engine Settings",expanded=False,icon='⚙️'):
+        st.write("**TODO**")
+
+    
 
 def config(evosys,project_dir):
 
@@ -303,7 +389,6 @@ def config(evosys,project_dir):
     if st.session_state.evo_running:
         st.warning("**NOTE:** Evolution system is running. You cannot modify the system configuration while the system is running.")
 
-    config={}
 
     st.subheader("Environment Settings")
 
@@ -333,56 +418,7 @@ def config(evosys,project_dir):
                     if changed:
                         evosys.reload()
     
-    config['env_vars']=env_vars
-
-
-    st.subheader("Evolution System Settings")
-
-    SELECT_METHODS = ['random']
-    VERIFY_STRATEGY = ['random']
-    
-
-    
-    with st.expander("Evolution Settings",expanded=False,icon='🧬'):
-        with st.form("Evolution System Config"):
-            params={}
-            col1,col2=st.columns(2)
-            with col1:
-                params['evoname']=st.text_input('Experiment Namespace',value=evosys.params['evoname'])
-                target_scale=st.select_slider('Target Scale',options=TARGET_SCALES,value=evosys.params['scales'].split(',')[-1])
-                scales=[]
-                for s in TARGET_SCALES:
-                    if int(target_scale.replace('M',''))>=int(s.replace('M','')):
-                        scales.append(s)
-                params['scales']=','.join(scales)
-                params['selection_ratio']=st.slider('Selection Ratio',min_value=0.0,max_value=1.0,value=evosys.params['selection_ratio'])
-                _col1,_col2=st.columns(2)
-                with _col1:
-                    params['select_method']=st.selectbox('Select Method',options=SELECT_METHODS,index=SELECT_METHODS.index(evosys.params['select_method']))
-                with _col2:
-                    params['verify_strategy']=st.selectbox('Verify Strategy',options=VERIFY_STRATEGY,index=VERIFY_STRATEGY.index(evosys.params['verify_strategy']))
-                params['design_budget']=st.number_input('Design Budget ($)',value=evosys.params['design_budget'],min_value=0,step=100)
-                params['use_remote_db']=st.checkbox('Use Remote DB (Required for distributed evolution)',value=evosys.params['use_remote_db'])
-            config['params']=params
-
-            with col2:
-                st.write("Current Settings:")
-                settings={}
-                settings['Experiment Directory']=evosys.evo_dir
-                settings['Seed Selection Method']=evosys.select_method
-                settings['Design Budget']=evosys.design_budget_limit if evosys.design_budget_limit>0 else '♾️'
-                settings['Verification Budges']=evosys.state['budgets']
-                settings['Use Remote DB']=evosys.params['use_remote_db']
-                st.write(settings)
-
-
-            st.form_submit_button("Apply and Save",on_click=apply_config,args=(evosys,config,True))
-
-    with st.expander("Verification Engine Settings",expanded=False,icon='⚙️'):
-        st.write("**TODO**")
-
-    
-
+    evosys_config(evosys)
     design_config(evosys)
     
 
@@ -396,39 +432,47 @@ def config(evosys,project_dir):
         if st.button("*Download from Remote DB*",use_container_width=True,disabled=evosys.ptree.remote_db is None or st.session_state.listening_mode or st.session_state.evo_running):
             sync_exps_from_db(evosys)
     
-    def delete_dir(dir):
+    def delete_exp(dir,evoname):
         if os.path.exists(dir):
             shutil.rmtree(dir)
         st.toast(f"Deleted directory: {dir}")
         if evosys.ptree.remote_db:
-            delete_exp_from_db(evosys,dir)
+            delete_exp_from_db(evosys,evoname)
         # st.rerun()
     
-    def switch_dir(dir):
-        evosys.switch_ckpt(dir)
-        st.toast(f"Switched to {dir}")
+    def switch_dir(evoname):
+        evosys.switch_ckpt(evoname)
+        st.toast(f"Switched to {evoname}")
+
 
     experiments={}
     for ckpt in os.listdir(evosys.ckpt_dir):
         exp_dir=U.pjoin(evosys.ckpt_dir,ckpt)
         experiment={}
         experiment['namespace']=ckpt
-        if not U.pexists(U.pjoin(exp_dir,'state.json')):
-            continue
-        state=U.load_json(U.pjoin(exp_dir,'state.json'))
-        config=U.load_json(U.pjoin(exp_dir,'config.json'))
-        experiment['selection_ratio']=state['selection_ratio']
-        experiment['remaining_budget']=state['budgets']
+        ckpt_config=U.load_json(U.pjoin(exp_dir,'config.json'))
+        if not ckpt_config: continue
+        if 'params' not in ckpt_config: ckpt_config['params']={}
+        ckpt_config['params']=U.init_dict(ckpt_config['params'],DEFAULT_PARAMS)
+        experiment['selection_ratio']=ckpt_config['params']['selection_ratio']
+        verify_budget={}
+        budget=1
+        for scale in ckpt_config['params']['scales'].split(',')[::-1]:
+            verify_budget[scale]=int(np.ceil(budget))
+            budget/=ckpt_config['params']['selection_ratio']
+        experiment['remaining_budget']=verify_budget
+        U.mkdir(U.pjoin(exp_dir,'db','sessions'))
+        U.mkdir(U.pjoin(exp_dir,'db','designs'))
         experiment['created_sessions']=len(os.listdir(U.pjoin(exp_dir,'db','sessions')))
         experiment['sampled_designs']=len(os.listdir(U.pjoin(exp_dir,'db','designs')))
-        experiment['use_remote_db']=config.get('params',{}).get('use_remote_db',False)
+        experiment['use_remote_db']=ckpt_config.get('params',{}).get('use_remote_db',False)
         if exp_dir==evosys.evo_dir:
             experiment['ICON']='🏠'
             experiment['BUTTON']=[('Current Directory',None,True)]
             experiments[ckpt+' (Current)']=experiment
         else:
             experiment['BUTTON']=[
-                ('Delete',ft.partial(delete_dir,exp_dir),st.session_state.listening_mode or st.session_state.evo_running),
+                ('Delete',ft.partial(delete_exp,exp_dir,ckpt),st.session_state.listening_mode or st.session_state.evo_running),
                 ('Switch',ft.partial(switch_dir,ckpt),st.session_state.listening_mode or st.session_state.evo_running)
             ]
             experiments[ckpt]=experiment
@@ -436,7 +480,7 @@ def config(evosys,project_dir):
     if len(experiments)>0:
         AU.grid_view(st,experiments,per_row=3,spacing=0.05)
     else:
-        st.write("No experiments found.")
+        st.info("No experiments found in the current directory. You may download from remote DB")
 
 
 
@@ -445,13 +489,20 @@ def config(evosys,project_dir):
     with st.sidebar:
 
         AU.running_status(st,evosys)
-        _config=U.load_json(U.pjoin(evosys.evo_dir,'config.json'))
-        _config['select_cfg']=evosys.select_cfg
-        _config['design_cfg']=evosys.design_cfg
-        _config['search_cfg']=evosys.search_cfg
+
+        def dump_config(_evosys):
+            _config=U.load_json(U.pjoin(_evosys.evo_dir,'config.json'))
+            _config['select_cfg']=_evosys.select_cfg
+            _config['design_cfg']=_evosys.design_cfg
+            if 'running_mode' in _config['design_cfg']:
+                if not isinstance(_config['design_cfg']['running_mode'],str):
+                    _config['design_cfg']['running_mode'] = _config['design_cfg']['running_mode'].value
+            _config['search_cfg']=_evosys.search_cfg
+            return json.dumps(_config,indent=4)
+
         st.download_button(
             label="Download your config",
-            data=json.dumps(_config,indent=4),
+            data=dump_config(evosys),
             file_name="config.json",
             mime="text/json",
             use_container_width=True
