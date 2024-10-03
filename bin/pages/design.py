@@ -1,7 +1,7 @@
 import json
 import time
 import pathlib
-import datetime
+from datetime import datetime
 import streamlit as st
 from streamlit.runtime.scriptrunner import add_script_run_ctx
 import sys,os
@@ -121,7 +121,7 @@ def design_daemon(evosys, evoname, sess_id, node_id, pid):
 
 
 def _gen_sess_id():
-    return f"{datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}-{uuid.uuid4().hex[:6]}"
+    return f"{datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}-{uuid.uuid4().hex[:6]}"
 
 def _run_design_thread(evosys,sess_id=None,params=None, cpu_only=False):
     if params is None:
@@ -181,16 +181,17 @@ def _design_engine(evosys,project_dir):
         if len(finished_designs)>0:
             for sess_id in finished_designs:
                 sessdata=evosys.ptree.design_sessions[sess_id]
-                passed,implemented=evosys.ptree.get_session_state(sess_id)
+                passed,implemented,challenging,unfinished=evosys.ptree.get_session_state(sess_id)
                 cols=st.columns([2.5,1,1,0.1,0.5])
                 with cols[0]:
                     st.write(f'Session ID: ```{sess_id}```')
                 with cols[1]:
-                    state='❌' if passed<sessdata["num_samples"]["proposal"] else '✅'
-                    st.write(f'Proposals sampled: ```{passed}/{sessdata["num_samples"]["proposal"]}``` {state}')
+                    state='❌' if len(passed)<sessdata["num_samples"]["proposal"] else '✅'
+                    st.write(f'Proposals sampled: ```{len(passed)}/{sessdata["num_samples"]["proposal"]}``` {state}')
                 with cols[2]:
-                    state='❌' if implemented<sessdata["num_samples"]["implementation"] else '✅'
-                    st.write(f'Implementations sampled: ```{implemented}/{sessdata["num_samples"]["implementation"]}``` {state}')
+                    state='❌' if len(implemented)+len(challenging)<sessdata["num_samples"]["implementation"] else '✅'
+                    challenging_state=f'(:red[{len(challenging)}])'
+                    st.write(f'Implementations sampled: ```{len(implemented)+len(challenging)}{challenging_state}/{sessdata["num_samples"]["implementation"]}``` {state}')
                 with cols[4]:
                     if st.button('View Log',key=f'btn_{sess_id}_view_log'):
                         st.session_state['viewing_log'] = sess_id
@@ -201,16 +202,17 @@ def _design_engine(evosys,project_dir):
         if len(unfinished_designs)>0:
             for sess_id in unfinished_designs:
                 sessdata=evosys.ptree.design_sessions[sess_id]
-                passed,implemented=evosys.ptree.get_session_state(sess_id)
+                passed,implemented,challenging,unfinished=evosys.ptree.get_session_state(sess_id)
                 cols=st.columns([3,3,3,1,1,1])
                 with cols[0]:
                     st.write(f'Session ID: ```{sess_id}```')
                 with cols[1]:
-                    state='❌' if passed<sessdata["num_samples"]["proposal"] else '✅'
-                    st.write(f'Proposals Progress: ```{passed}/{sessdata["num_samples"]["proposal"]}``` passed {state}')
+                    state='❌' if len(passed)<sessdata["num_samples"]["proposal"] else '✅'
+                    st.write(f'Proposals Progress: ```{len(passed)}/{sessdata["num_samples"]["proposal"]}``` passed {state}')
                 with cols[2]:
-                    state='❌' if implemented<sessdata["num_samples"]["implementation"] else '✅'
-                    st.write(f'Implementations Progress: ```{implemented}/{sessdata["num_samples"]["implementation"]}``` succeeded {state}')
+                    state='❌' if len(implemented)+len(challenging)<sessdata["num_samples"]["implementation"] else '✅'
+                    challenging_state=f'(:red[{len(challenging)}])'
+                    st.write(f'Implementations Progress: ```{len(implemented)+len(challenging)}{challenging_state}/{sessdata["num_samples"]["implementation"]}``` succeeded {state}')
                 with cols[3]:
                     if st.button('View Log',key=f'btn_{sess_id}_view_log'):
                         st.session_state['viewing_log'] = sess_id
@@ -258,15 +260,16 @@ def _design_engine(evosys,project_dir):
             for key,process in running_process.items():
                 cols=st.columns([3,2,2,1,1,1])
                 sessmeta = U.load_json(U.pjoin(evosys.ptree.session_dir(key), 'metadata.json'))
-                passed,implemented=evosys.ptree.get_session_state(key)
+                passed,implemented,challenging,unfinished=evosys.ptree.get_session_state(key)
                 with cols[0]:
                     st.write(f'⏩ Session ID: ```{key}```')
                 with cols[1]:
-                    state='❎' if passed<sessmeta.get("num_samples",{}).get("proposal",0) else '✅'
-                    st.write(f'Proposals progress: ```{passed}/{sessmeta.get("num_samples",{}).get("proposal",0)}``` {state}')
+                    state='❎' if len(passed)<sessmeta.get("num_samples",{}).get("proposal",0) else '✅'
+                    st.write(f'Proposals progress: ```{len(passed)}/{sessmeta.get("num_samples",{}).get("proposal",0)}``` {state}')
                 with cols[2]:
-                    state='❎' if implemented<sessmeta.get("num_samples",{}).get("implementation",0) else '✅'
-                    st.write(f'Implementations progress: ```{implemented}/{sessmeta.get("num_samples",{}).get("implementation",0)}``` {state}')
+                    state='❎' if len(implemented)+len(challenging)<sessmeta.get("num_samples",{}).get("implementation",0) else '✅'
+                    challenging_state=f'(:red[{len(challenging)}])'
+                    st.write(f'Implementations progress: ```{len(implemented)+len(challenging)}{challenging_state}/{sessmeta.get("num_samples",{}).get("implementation",0)}``` {state}')
                 with cols[4]:
                     if st.button('View Log',key=f'btn_{key}_view'):
                         st.session_state['viewing_log'] = key
@@ -424,7 +427,7 @@ def load_log(log_file):
         try:  
             log.append(eval(line))
         except Exception as e:
-            log.append((datetime.datetime.now(),f'ERROR IN LOG LINE: {line}\n\n{e}','error'))
+            log.append((datetime.now(),f'ERROR IN LOG LINE: {line}\n\n{e}','error'))
     return log
 
 

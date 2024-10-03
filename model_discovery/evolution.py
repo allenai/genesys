@@ -911,9 +911,6 @@ class DesignArtifact(NodeObject):
     def is_implemented(self):
         return self.implementation is not None and self.implementation.status=='implemented'
 
-    def is_challenging(self):
-        return self.implementation is not None and self.implementation.status=='challenging'
-
     def get_cost(self):
         costs=self.proposal.costs
         if self.implementation:
@@ -967,7 +964,8 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
     │   └── ...
     | ... # units, etc.
     """
-    def __init__(self, evoname, target_scales, db_dir: str, db_only=False, remote_db=None, use_remote_db=True,max_implementation_attempts=3): 
+    def __init__(self, evoname, target_scales, db_dir: str, db_only=False, 
+            remote_db=None, use_remote_db=True,challanging_threshold=3): 
         self.evoname = evoname
         self.target_scales = target_scales
         self.db_dir = db_dir
@@ -977,7 +975,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         U.mkdir(db_dir)
         U.mkdir(U.pjoin(db_dir,'designs'))
         U.mkdir(U.pjoin(db_dir,'sessions'))
-        self.max_implementation_attempts=max_implementation_attempts
+        self.challanging_threshold=challanging_threshold
         self.db_only=db_only
         self.FM = None
         self.use_remote_db=use_remote_db
@@ -1174,8 +1172,25 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
     
     def get_session_state(self,sess_id:str):
         passed,_ = self.session_proposals(sess_id,passed_only=True)
-        implemented,_ = self.session_implementations(sess_id,implemented_only=True)
-        return len(passed),len(implemented)
+        implemented,unfinished = self.session_implementations(sess_id)
+        unfinished_impls=self.get_implementations(unfinished)
+        challenging=[]
+        for acronym in unfinished_impls:
+            impl=unfinished_impls[acronym]
+            if len(impl.history)>self.challanging_threshold:
+                challenging.append(acronym)
+        return passed,implemented,challenging,unfinished
+
+    def get_challanging_designs(self,sess_id:str):
+        sessdata=self.design_sessions[sess_id]
+        challenging={}
+        for acronym in sessdata['proposed']:
+            impl=self.get_node(acronym).implementation  
+            if impl:
+                if impl.status!='implemented':
+                    if len(impl.history)>self.challanging_threshold:
+                        challenging[acronym]=len(impl.history)
+        return challenging
 
     def add_design_artifact(self,id,artifact):
         self.G.add_node(id, data=artifact)
@@ -1215,9 +1230,10 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         for sess_id in self.design_sessions:
             sessdata=self.design_sessions[sess_id]
             num_samples=sessdata['num_samples']
-            passed,implemented=self.get_session_state(sess_id)
-            if passed<num_samples['proposal'] or \
-                implemented<num_samples['implementation']:
+            passed,implemented,challenging,unfinished=self.get_session_state(sess_id)
+            if len(passed)<num_samples['proposal']:
+                unfinished_designs.append(sess_id)
+            elif len(implemented)+len(challenging)<num_samples['implementation']:
                 unfinished_designs.append(sess_id)
             else:
                 finished_designs.append(sess_id)
@@ -1246,18 +1262,25 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
             acronyms.append(acronym)
         return proposals,acronyms
     
-    def session_implementations(self,sess_id:str,implemented_only=False):
+    def session_implementations(self,sess_id:str):
         sessdata=self.design_sessions[sess_id]
-        acronyms=[]
-        implementations=[]
+        implemented=[]
+        unfinished=[]
         for acronym in sessdata['proposed']:
             design=self.get_node(acronym)
             if design.implementation:
-                if implemented_only and design.implementation.status!='implemented':
-                    continue
-                implementations.append(design.implementation)
-                acronyms.append(acronym)
-        return implementations,acronyms
+                if design.implementation.status=='implemented':
+                    implemented.append(acronym) 
+                else:
+                    unfinished.append(acronym)
+        return implemented,unfinished
+    
+    def get_implementations(self,acronyms:list):
+        implementations={}
+        for acronym in acronyms:
+            design=self.get_node(acronym)
+            implementations[acronym]=design.implementation
+        return implementations
 
     def propose(self, sess_id: str, proposal,proposal_traces,costs,design_cfg,user_input): # create a new design artifact
         sessdata=self.design_sessions[sess_id]
@@ -1316,8 +1339,6 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
             implementation.status=status
             implementation.implementation=tree
             implementation.history.append(attempt)
-        if len(implementation.history)>self.max_implementation_attempts:
-            implementation.status='challenging' # too difficult maybe
         implementation.save(self.design_dir(acronym))
         design_artifact.implementation=implementation
         self.G.nodes[acronym]['data']=design_artifact
@@ -1947,7 +1968,6 @@ class EvolutionSystem(exec_utils.System):
             search_cfg = self.search_cfg
         unfinished_designs = self.ptree.get_unfinished_designs()
         self.stream.write(f"Found {len(unfinished_designs)} unfinished designs, allow resume: {resume}")
-
 
         selector_args={}
         selector_args['n_sources']=select_cfg.get('n_sources',DEFAULT_N_SOURCES)
