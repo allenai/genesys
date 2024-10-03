@@ -187,11 +187,11 @@ def _design_engine(evosys,project_dir):
                     st.write(f'Session ID: ```{sess_id}```')
                 with cols[1]:
                     state='❌' if len(passed)<sessdata["num_samples"]["proposal"] else '✅'
-                    st.write(f'Proposals sampled: ```{len(passed)}/{sessdata["num_samples"]["proposal"]}``` {state}')
+                    st.write(f'Proposals: ```{len(passed)}/{sessdata["num_samples"]["proposal"]}``` {state}')
                 with cols[2]:
                     state='❌' if len(implemented)+len(challenging)<sessdata["num_samples"]["implementation"] else '✅'
-                    challenging_state=f'(:red[{len(challenging)}])'
-                    st.write(f'Implementations sampled: ```{len(implemented)+len(challenging)}{challenging_state}/{sessdata["num_samples"]["implementation"]}``` {state}')
+                    challenging_state=f'({len(challenging)})' if len(challenging)>0 else ''
+                    st.write(f'Implementations: ```{len(implemented)+len(challenging)}{challenging_state}/{sessdata["num_samples"]["implementation"]}``` {state}')
                 with cols[4]:
                     if st.button('View Log',key=f'btn_{sess_id}_view_log'):
                         st.session_state['viewing_log'] = sess_id
@@ -208,11 +208,11 @@ def _design_engine(evosys,project_dir):
                     st.write(f'Session ID: ```{sess_id}```')
                 with cols[1]:
                     state='❌' if len(passed)<sessdata["num_samples"]["proposal"] else '✅'
-                    st.write(f'Proposals Progress: ```{len(passed)}/{sessdata["num_samples"]["proposal"]}``` passed {state}')
+                    st.write(f'Proposal: ```{len(passed)}/{sessdata["num_samples"]["proposal"]}``` passed {state}')
                 with cols[2]:
                     state='❌' if len(implemented)+len(challenging)<sessdata["num_samples"]["implementation"] else '✅'
-                    challenging_state=f'(:red[{len(challenging)}])'
-                    st.write(f'Implementations Progress: ```{len(implemented)+len(challenging)}{challenging_state}/{sessdata["num_samples"]["implementation"]}``` succeeded {state}')
+                    challenging_state=f'({len(challenging)})' if len(challenging)>0 else ''
+                    st.write(f'Implementation: ```{len(implemented)+len(challenging)}{challenging_state}/{sessdata["num_samples"]["implementation"]}``` succeeded {state}')
                 with cols[3]:
                     if st.button('View Log',key=f'btn_{sess_id}_view_log'):
                         st.session_state['viewing_log'] = sess_id
