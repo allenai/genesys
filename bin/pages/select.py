@@ -89,7 +89,7 @@ def verify_selector(evosys,project_dir):
     with col2:
         st.write('')
         with st.expander('Remaining Budget'):
-            st.write(evosys.verify_budget)
+            st.write(evosys.selector.verify_budget)
     with col3:
         scale = st.selectbox(label="Scale",options=evosys.target_scales)
     with col4:

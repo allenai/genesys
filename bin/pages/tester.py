@@ -44,7 +44,7 @@ def tester(evosys,project_dir):
     elif command_type == 'verify':
         col1,col2,col3,col4=st.columns([1,1,1,1])
         with col1:
-            budget = evosys.available_verify_budget
+            budget = evosys.selector.available_verify_budget
             scale = st.selectbox('Select scale',options=list(budget.keys()))
         unverified = evosys.ptree.get_unverified_designs(scale)
         with col2:

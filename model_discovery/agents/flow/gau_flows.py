@@ -804,17 +804,27 @@ class GUFlowMutation(FlowCreator):
         self.stream.write(f'Implementing {len(proposals)} proposals: {", ".join([f"{i+1}. {proposal.modelname} with rating {proposal.rating} out of 5" for i,proposal in enumerate(proposals)])}')
         for proposal,acronym in zip(proposals,acronyms):
             self.stream.write(f'Implementing proposal: {proposal.modelname} with rating {proposal.rating} out of 5')
-            tree_ckpt=self.ptree.get_implementation_checkpoint(acronym)
+            tree_ckpt,status=self.ptree.get_implementation_checkpoint(acronym)
+            initial_pass=False
             if tree_ckpt is None:
                 self.tree=copy.deepcopy(self.seed_tree)
                 self.tree.name=proposal.modelname
             else:
                 self.tree=copy.deepcopy(tree_ckpt)
+                if status=='initial_pass':
+                    initial_pass=True
+
             cost_raw=copy.deepcopy(self.costs)
-            RETS=self._implement_proposal_recursive(main_tid,proposal,acronym,resume=tree_ckpt is not None)
+            RETS=self._implement_proposal_recursive(main_tid,proposal,acronym,resume=tree_ckpt is not None,initial_pass=initial_pass)
             costs={k:v-cost_raw[k] for k,v in self.costs.items()}
-            ROUNDS,SUCCEED=RETS['ROUNDS'],RETS['SUCCEED']
-            status='implemented' if SUCCEED else 'failed'
+            ROUNDS,SUCCEED,INITIAL_PASS=RETS['ROUNDS'],RETS['SUCCEED'],RETS['INITIAL_PASS']
+            if SUCCEED:
+                status='implemented'
+            else:
+                if INITIAL_PASS:
+                    status='initial_pass'
+                else:
+                    status='failed'
             with self.status_handler(f'Adding implementation to tree, tuning and exporting full LM codes...'):
                 self.ptree.implement(acronym,self.tree,ROUNDS,status,costs,self.design_cfg,self.user_input)
         return query,state,{}
@@ -883,7 +893,7 @@ class GUFlowMutation(FlowCreator):
         return format_checks,format_errors,format_warnings,fetal_errors,unit_name, reformatted_code, docstring, new_args, gau_tests, children_decl, NEW_DECLARED
                         
 
-    def _implement_proposal_recursive(self,main_tid,proposal,acronym,resume=False):
+    def _implement_proposal_recursive(self,main_tid,proposal,acronym,resume=False,initial_pass=False):
         '''
         1. Implement the selected unit first
         2. Implement any unimplemented newly declared units
@@ -898,7 +908,7 @@ class GUFlowMutation(FlowCreator):
         RETS['ROUNDS']=[]
         SUCCEED=False
         LOG=[]
-        INITIAL_PASS=True if resume else False
+        INITIAL_PASS=initial_pass
         round=0
         # XXX: Protected units should be self.seed_tree.units.keys() - self.tree.units.keys(), but this make things simpler
         PROTECTED_UNITS=list(set(self.tree.units.keys())-set([proposal.selection])) # the units besides the current one, they should not be *modified*, can be removed as descendants
@@ -934,7 +944,7 @@ class GUFlowMutation(FlowCreator):
                 post_refinement+=1
 
             # 1. design succeeded, post refinement count reached
-            if post_refinement>self.max_attemps['post_refinement']:
+            if INITIAL_PASS and post_refinement>self.max_attemps['post_refinement']:
                 self.stream.write(f'#### All units have been implemented and maximal refinements are reached, stopping design process')
                 SUCCEED=True
                 self.stream.log(EndReasons.MAX_POST_REFINEMENT_REACHED,'end')
@@ -1552,6 +1562,7 @@ class GUFlowMutation(FlowCreator):
         ########################### Design finished ###########################  
         self.tree.clear_disconnected() 
         RETS['SUCCEED']=SUCCEED
+        RETS['INITIAL_PASS']=INITIAL_PASS
         if SUCCEED:
             self.stream.write('#### Design Implementation succeeded!')
             self.stream.balloons()

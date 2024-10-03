@@ -361,7 +361,7 @@ def evosys_config(evosys):
                 # settings['Seed Selection Method']=evosys.select_method
                 # settings['Verification Strategy']=evosys.verify_strategy
                 settings['Design Budget']=evosys.design_budget_limit if evosys.design_budget_limit>0 else '♾️'
-                settings['Verification Budges']=evosys.verify_budget
+                settings['Verification Budges']=evosys.selector.verify_budget
                 settings['Use Remote DB']=evosys.params['use_remote_db']
                 st.write(settings)
 

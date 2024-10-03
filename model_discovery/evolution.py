@@ -1229,9 +1229,10 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
     def get_implementation_checkpoint(self,acronym:str):
         design=self.get_node(acronym)
         if design.implementation:
-            return design.implementation.implementation
+            impl=design.implementation
+            return impl.implementation,impl.status
         else:
-            return None
+            return None,None
     
     def session_proposals(self,sess_id:str,passed_only=False):
         sessdata=self.design_sessions[sess_id]
@@ -1315,6 +1316,8 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
             implementation.status=status
             implementation.implementation=tree
             implementation.history.append(attempt)
+        if len(implementation.history)>self.max_implementation_attempts:
+            implementation.status='challenging' # too difficult maybe
         implementation.save(self.design_dir(acronym))
         design_artifact.implementation=implementation
         self.G.nodes[acronym]['data']=design_artifact
@@ -1324,9 +1327,6 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
             _code = tree.compose()
             for scale in self.target_scales:
                 codes[scale] = check_tune(scale,acronym, code=_code,check_only=True,cpu_only=True,reformat_only=True)
-        else:
-            if len(implementation.history)>self.max_implementation_attempts:
-                status='challenging' # too difficult maybe
         U.save_json(codes, U.pjoin(self.design_dir(acronym), 'codes.json'))
         self.FM.upload_implementation(acronym,implementation.to_dict(),overwrite=True)
         self.FM.update_index()
@@ -1764,7 +1764,7 @@ class EvolutionSystem(exec_utils.System):
                 report=U.load_json(report_dir)
                 self.ptree.verify(node.acronym,scale,report)
 
-        self.selector = Selector(self.ptree,self.select_cfg)
+        self.selector = Selector(self.ptree,self.select_cfg,self._verify_budget,self.stream)
 
         if self.params['no_agent']:
             self.rnd_agent = None
@@ -1797,6 +1797,7 @@ class EvolutionSystem(exec_utils.System):
     def link_stream(self,stream):
         self.stream=stream
         self.rnd_agent.sss.stream=stream
+        self.selector.stream=stream
         if self.CM is not None:
             self.CM.st = stream
 
@@ -1895,18 +1896,6 @@ class EvolutionSystem(exec_utils.System):
         config['search_cfg'] = self.search_cfg
         config['select_cfg'] = self.select_cfg
         U.save_json(config,U.pjoin(self.evo_dir,'config.json'))
-
-    @property
-    def verify_budget(self):
-        vb = self.ptree.remaining_budget(self._verify_budget)
-        vb=sorted(vb.items(),key=lambda x:int(x[0].replace('M','')))
-        vb = {k:v for k,v in vb}
-        return vb
-
-    @property
-    def available_verify_budget(self):
-        budget=self.verify_budget
-        return {k:v for k,v in budget.items() if v>0}
 
     @property
     def design_budget(self):

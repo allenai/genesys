@@ -20,10 +20,11 @@ SCHEDULER_OPTIONS = ['constant']
 
 
 class Selector:
-    def __init__(self,ptree,select_cfg):
+    def __init__(self,ptree,select_cfg,_verify_budget,stream):
         self.ptree=ptree
         self.select_cfg=select_cfg
-
+        self._verify_budget=_verify_budget
+        self.stream=stream
 
     #########################  Select Design  #########################
 
@@ -124,3 +125,15 @@ class Selector:
         else:
             raise ValueError(f"Invalid verify strategy: {verify_strategy}")
     
+    
+    @property
+    def verify_budget(self):
+        vb = self.ptree.remaining_budget(self._verify_budget)
+        vb=sorted(vb.items(),key=lambda x:int(x[0].replace('M','')))
+        vb = {k:v for k,v in vb}
+        return vb
+
+    @property
+    def available_verify_budget(self):
+        budget=self.verify_budget
+        return {k:v for k,v in budget.items() if v>0}

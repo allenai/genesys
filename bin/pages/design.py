@@ -378,7 +378,7 @@ def show_log(log):
             line += '\t'
         # Use repr() to get a string literal representation
         text = text.replace('/NEWLINE/','\n').replace('/TAB/','\t')
-        text_repr = f"'''{text}'''"
+        text_repr = f"r'''{text}'''"
         
         if type == 'enter':
             in_status = True
