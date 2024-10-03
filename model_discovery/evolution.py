@@ -1339,10 +1339,11 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         self.G.nodes[acronym]['data']=design_artifact
         if design_artifact.type=='DesignArtifactImplemented':
             verification.save(self.design_dir(acronym))
+            self.FM.upload_verification(acronym,verification.to_dict(),scale,overwrite=True)
+            self.FM.update_index()
         else:
+            # for baselines, it should be saved in repo already, can be synced by github
             verification.save(self.coreref_dir(acronym))
-        self.FM.upload_verification(acronym,verification.to_dict(),scale,overwrite=True)
-        self.FM.update_index()
 
     def unique_acronym(self, acronym: str, max_length=32) -> str:
         acronym = acronym.lower()

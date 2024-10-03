@@ -186,7 +186,7 @@ def before_train(args):
 
     gab,gab_config = BlockRegister.load_block(args.gab_name)
     if args.PERF_PROF_MODE: # skip the following if in performance profiling mode
-        return gab,gab_config
+        return args,gab,gab_config
         
     ## initialize wandb
     util_logger.info(f'Setting up wandb...')
@@ -562,10 +562,9 @@ if __name__ == "__main__":
     if args.mode=='test':
         args.evoname = "ve_test"
         args.design_id = "test"
-        args.resume = False
+        args.resume = True
         # args.n_gpus = 1
-        args.PERF_PROF_MODE = True
-        # args.port="25986"
+        # args.PERF_PROF_MODE = True
         main(args)
     elif args.mode=='_explore_setup':
         _explore_setup(args)

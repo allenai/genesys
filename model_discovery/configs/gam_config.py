@@ -212,6 +212,13 @@ class GAMConfig_1T(GAMConfig): # Just for fun
 @dataclass
 class GAMConfig_debug(GAMConfig_14M):
     scale: str = 'debug'
+    training_data = List[str] = field(default_factory=lambda: [
+        "fineweb-edu-dedup",  
+    ])
+    eval_tasks: List[str] = field(default_factory=lambda: [
+        "smollm125-tiny",  
+        # "squad_completion",
+    ])
     # eval_tasks: List[str] = field(default_factory=lambda: [
     #     "lambada_openai","hellaswag","piqa","arc_easy","arc_challenge","winogrande",
     #     "blimp", # "blimp_filtered","blimp_supplement"

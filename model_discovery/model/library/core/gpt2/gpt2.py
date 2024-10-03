@@ -24,4 +24,19 @@ class GAB(GABBase):
         X = self.fn2(self.norm2(X))+X
         return X, Z
     
-gab_config = {'n_heads':8, 'rotary_pct':0.25}
+gab_config = {
+    'n_heads':8, 
+    'rotary_pct':0.25
+}
+
+# autoconfig={}
+
+# block_config=gab_config
+# block_config.update(autoconfig)
+
+# from .block_registry import BlockRegister
+
+# BlockRegister(
+#     name="default",
+#     config=block_config
+# )(GAB)

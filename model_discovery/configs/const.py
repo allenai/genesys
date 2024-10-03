@@ -23,14 +23,12 @@ NONACC_EVAL_TASKS = ["lambada_openai","cola","tinyGSM8k"]
 
 # Other need generate: squad_completion
 
-# SMOLLM_125_CORPUS=['cosmopedia-v2','python-edu','fineweb-edu-dedup','open-web-math','deepmind-math-small','stackoverflow-clean']
-
-SMOLLM_125_CORPUS=['fineweb-edu-dedup']
+SMOLLM_125_CORPUS=['cosmopedia-v2','python-edu','fineweb-edu-dedup','open-web-math','deepmind-math-small','stackoverflow-clean']
 
 DEFAULT_TASK_LIST1=[
     "inverse_scaling_mc",
     "glue",
-    # "smollm125_tiny",  # TODO: still buggy
+    "smollm125-tiny",  
     "squad_completion",
     *STANDARD_EVAL_TASKS,
     *ADDITIONAL_EVAL_TASKS,
