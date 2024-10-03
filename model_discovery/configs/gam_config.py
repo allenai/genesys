@@ -212,7 +212,7 @@ class GAMConfig_1T(GAMConfig): # Just for fun
 @dataclass
 class GAMConfig_debug(GAMConfig_14M):
     scale: str = 'debug'
-    training_data = List[str] = field(default_factory=lambda: [
+    training_data: List[str] = field(default_factory=lambda: [
         "fineweb-edu-dedup",  
     ])
     eval_tasks: List[str] = field(default_factory=lambda: [
