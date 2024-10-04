@@ -630,7 +630,7 @@ Here is the search results from your last query, you will not be able to access 
 
 {SEARCH_RESULTS}
 
-Based on the seed design, search results, and your analysis, develop a comprehensive proposal for a novel LM block design. 
+Based on the seed design, search results, and your analysis, develop a comprehensive proposal for a novel LM block design. Remember to follow the output format strictly.
 
 Ensure your proposal is innovative yet feasible, aiming to advance state-of-the-art LM performance. Balance creativity with practical considerations, and clearly articulate how your design improves upon existing architectures.
 """
@@ -1069,7 +1069,7 @@ Based on this feedback, please refine your proposal by following these steps:
 2. Search and refine your proposal iteratively.
 """
       GUM_PROPOSAL_REFINEMENT_FINISH_prompt = """
-Based on your reflection, search results, and your analysis, develop a comprehensive proposal for a novel LM block design. 
+Based on your reflection, search results, and your analysis, develop a comprehensive proposal for a novel LM block design. Remember to follow the output format strictly.
 
 Ensure your proposal is innovative yet feasible, aiming to advance state-of-the-art LM performance. Balance creativity with practical considerations, and clearly articulate how your design improves upon existing architectures.
 """

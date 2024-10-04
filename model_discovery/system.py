@@ -363,6 +363,8 @@ DEFAULT_NUM_SAMPLES={
     'implementation':1,
     'rerank_method':'rating',
 }
+DEFAULT_UNITTEST_PASS_REQUIRED=False
+
 
 @exec_utils.Registry(
     resource_type="system_type",
@@ -507,6 +509,7 @@ class ModelDiscoverySystem(exec_utils.System):
         design_cfg['search_settings']=U.safe_get_cfg_dict(design_cfg,'search_settings',DEFAULT_SEARCH_SETTINGS)
         design_cfg['running_mode']=RunningModes(design_cfg.get('running_mode',DEFAULT_MODE))
         design_cfg['num_samples']=U.safe_get_cfg_dict(design_cfg,'num_samples',DEFAULT_NUM_SAMPLES)
+        design_cfg['unittest_pass_required']=design_cfg.get('unittest_pass_required',DEFAULT_UNITTEST_PASS_REQUIRED)
 
         self.sss.reconfig(search_cfg,stream)
         

@@ -1040,14 +1040,21 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
             costs+=sum(self.get_node(design).get_cost().values())
         return costs
 
-    def remaining_budget(self,budgets):
+    def budget_status(self,budgets,ret_verified=False):
         budgets=copy.deepcopy(budgets)
+        verified={}
         designs=self.filter_by_type(['DesignArtifactImplemented'])
         for design in designs:
             for scale in self.get_node(design).verifications:
                 if scale in budgets:
                     budgets[scale]-=1
-        return budgets
+                if scale not in verified:
+                    verified[scale]=0
+                verified[scale]+=1
+        if ret_verified:
+            return budgets,verified
+        else:
+            return budgets
 
     def get_design_vectors(self):
         designs=self.filter_by_type('DesignArtifactImplemented')
@@ -1230,7 +1237,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         for sess_id in self.design_sessions:
             sessdata=self.design_sessions[sess_id]
             num_samples=sessdata['num_samples']
-            passed,implemented,challenging,unfinished=self.get_session_state(sess_id)
+            passed,implemented,challenging,_=self.get_session_state(sess_id)
             if len(passed)<num_samples['proposal']:
                 unfinished_designs.append(sess_id)
             elif len(implemented)+len(challenging)<num_samples['implementation']:
@@ -1348,7 +1355,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
             _code = tree.compose()
             for scale in self.target_scales:
                 codes[scale] = check_tune(scale,acronym, code=_code,check_only=True,cpu_only=True,reformat_only=True)
-        U.save_json(codes, U.pjoin(self.design_dir(acronym), 'codes.json'))
+            U.save_json(codes, U.pjoin(self.design_dir(acronym), 'codes.json'))
         self.FM.upload_implementation(acronym,implementation.to_dict(),overwrite=True)
         self.FM.update_index()
 
@@ -1785,7 +1792,7 @@ class EvolutionSystem(exec_utils.System):
                 report=U.load_json(report_dir)
                 self.ptree.verify(node.acronym,scale,report)
 
-        self.selector = Selector(self.ptree,self.select_cfg,self._verify_budget,self.stream)
+        self.selector = Selector(self.ptree,self.select_cfg,self._verify_budget,self.params['selection_ratio'],self.stream)
 
         if self.params['no_agent']:
             self.rnd_agent = None
@@ -1978,8 +1985,9 @@ class EvolutionSystem(exec_utils.System):
                 self.sample(instruct,seed,refs,mode=mode,user_input=user_input,design_cfg=design_cfg,search_cfg=search_cfg)
             else:
                 sess_id = random.choice(unfinished_designs)
+                passed,implemented,challenging,unfinished=self.ptree.get_session_state(sess_id)
                 mode=DesignModes(self.ptree.session_get(sess_id,'mode'))
-                self.stream.write(f"Restoring a session {sess_id}, mode: {mode}.")
+                self.stream.write(f"Restoring a session {sess_id}, mode: {mode}. {len(passed)} proposals passed, {len(implemented)} implemented, {len(unfinished)} are unfinished where {len(challenging)} are challenging.")
                 self.sample(sess_id=sess_id,user_input=user_input,design_cfg=design_cfg,mode=mode,search_cfg=search_cfg) # should not change the design_cfg
         else:
             if sess_id in self.ptree.design_sessions:

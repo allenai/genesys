@@ -167,6 +167,7 @@ class GUFlowMutation(FlowCreator):
         self.failed_rounds=0
         self.max_attemps=design_cfg['max_attemps']
         self.agent_types=design_cfg['agent_types']     
+        self.unittest_pass_required=design_cfg['unittest_pass_required']
         self.agents={}
         for name,value in self.agent_types.items():
             self.agents[name]=AgentModelDef(AGENT_TYPES[value],AGENT_TYPES_MODEL_NAMES[value])
@@ -395,7 +396,7 @@ class GUFlowMutation(FlowCreator):
                         self.stream.write(f'# Ready\n{ready}')
                     self.print_raw_output(out,'DESIGN_PROPOSER')
 
-                _MIN_ROUNDS=2
+                _MIN_ROUNDS=max(2-attempt,0)
                 _MAX_ROUNDS=max(self.max_attemps['max_search_rounds'],_MIN_ROUNDS)
                 for i in range(_MAX_ROUNDS):
                     # TODO: perplexity context maintainance
@@ -811,7 +812,7 @@ class GUFlowMutation(FlowCreator):
                 self.tree.name=proposal.modelname
             else:
                 self.tree=copy.deepcopy(tree_ckpt)
-                if status=='initial_pass':
+                if status in ['initial_pass','unfinished']:
                     initial_pass=True
 
             cost_raw=copy.deepcopy(self.costs)
@@ -829,7 +830,7 @@ class GUFlowMutation(FlowCreator):
                 self.ptree.implement(acronym,self.tree,ROUNDS,status,costs,self.design_cfg,self.user_input)
         return query,state,{}
    
-    def check_code_format(self,code,selection=None,spec=None,analysis=None):
+    def check_code_format(self,code,selection=None,spec=None,analysis=None,declaration=None):
         # 1. check the format code for GAU
         reformatted_code,new_args,gau_tests,format_errors,format_warnings,fetal_errors,docstring,children_decl, unit_name=check_and_reformat_gau_code(code,selection)
         
@@ -918,6 +919,8 @@ class GUFlowMutation(FlowCreator):
         USE_O1_CODER='o1' in self.agents['IMPLEMENTATION_CODER'].model_name
         USE_O1_OBSERVER='o1' in self.agents['IMPLEMENTATION_OBSERVER'].model_name
         USE_O1_PLANNER='o1' in self.agents['IMPLEMENTATION_PLANNER'].model_name
+
+        assert USE_O1_CODER, 'Non-o1 coders are buggy now, please use o1 coders'
 
         context_implementation_planner=AgentContext() # context accummulated for all attempts in one unit
         o1_planner_context=AgentContext()
@@ -1294,8 +1297,18 @@ class GUFlowMutation(FlowCreator):
                         unit_name=root_name[0] if len(root_name)>0 else selection
                         
                     else:   
-                        format_checks,format_errors,format_warnings,fetal_errors, unit_name, reformatted_code, _, _, _, _, NEW_DECLARED=self.check_code_format(implementation,selection,spec,analysis)
                         unit_name=selection
+                        if unit_name not in self.tree.declares and unit_name not in self.tree.units: # if it is a new local root, then it is declared above, otherwise, it should be declared as a child
+                            format_errors.append(f'A new implemented unit {unit_name} has not been declared. May cause errors when linking the units.')
+                            declaration=UnitDecl(
+                                unitname=unit_name,
+                                requirements='',
+                                inputs=[],
+                                outputs=[]
+                            )
+                        else:
+                            declaration=self.tree.declares[unit_name]
+                        format_checks,format_errors,format_warnings,fetal_errors, unit_name, reformatted_code, docstring,new_args,gau_tests,children_decl,NEW_DECLARED=self.check_code_format(implementation,selection,spec,analysis,declaration)
                         reformatted_code=f'### {unit_name} Reformatted Code\n```python\n{reformatted_code}\n```\n\n'
                         collapse_write(
                             self.stream,
@@ -1349,7 +1362,7 @@ class GUFlowMutation(FlowCreator):
                         self.stream.write(f'### Check Output\n```python\n{check_results}\n```')
                         self.stream.write(f'### Reformatted GAB Code\n```python\n{gabcode_reformat}\n```')
                         
-                        checkpass = checkpass and _unit_test_passed
+                        checkpass = checkpass and _unit_test_passed if self.unittest_pass_required else checkpass
                         checker_report = check_report # Too long in the prompt
                         check_report = f'{_unit_test_results}### Checkers report\n```bash\n{check_report}\n```\n\n'
                     else:

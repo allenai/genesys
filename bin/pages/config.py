@@ -20,7 +20,7 @@ from model_discovery.agents.flow.gau_flows import DesignModes,RunningModes
 from model_discovery.evolution import DEFAULT_PARAMS,DEFAULT_N_SOURCES
 from model_discovery.agents.roles.selector import DEFAULT_SEED_DIST,SCHEDULER_OPTIONS
 from model_discovery.system import DEFAULT_AGENTS,DEFAULT_MAX_ATTEMPTS,DEFAULT_TERMINATION,\
-    DEFAULT_THRESHOLD,DEFAULT_SEARCH_SETTINGS,DEFAULT_NUM_SAMPLES,DEFAULT_MODE
+    DEFAULT_THRESHOLD,DEFAULT_SEARCH_SETTINGS,DEFAULT_NUM_SAMPLES,DEFAULT_MODE,DEFAULT_UNITTEST_PASS_REQUIRED
 from model_discovery.agents.search_utils import DEFAULT_SEARCH_LIMITS,DEFAULT_RERANK_RATIO,\
     DEFAULT_PERPLEXITY_SETTINGS,DEFAULT_PROPOSAL_SEARCH_CFG
 
@@ -92,7 +92,8 @@ def design_config(evosys):
     design_cfg['search_settings']=U.safe_get_cfg_dict(design_cfg,'search_settings',DEFAULT_SEARCH_SETTINGS)
     design_cfg['running_mode']=RunningModes(design_cfg.get('running_mode',DEFAULT_MODE))
     design_cfg['num_samples']=U.safe_get_cfg_dict(design_cfg,'num_samples',DEFAULT_NUM_SAMPLES)
-
+    design_cfg['unittest_pass_required']=design_cfg.get('unittest_pass_required',DEFAULT_UNITTEST_PASS_REQUIRED)
+    
     search_cfg['result_limits']=U.safe_get_cfg_dict(search_cfg,'result_limits',DEFAULT_SEARCH_LIMITS)
     search_cfg['rerank_ratio']=search_cfg.get('rerank_ratio',DEFAULT_RERANK_RATIO)
     search_cfg['perplexity_settings']=U.safe_get_cfg_dict(search_cfg,'perplexity_settings',DEFAULT_PERPLEXITY_SETTINGS)
@@ -167,7 +168,10 @@ def design_config(evosys):
                     elif agent in ['IMPLEMENTATION_OBSERVER']:
                         options=AGENT_TYPES+['o1_preview','o1_mini','None']
                         index=len(options)-2
-                    elif agent in ['IMPLEMENTATION_CODER','DESIGN_PROPOSER','PROPOSAL_REVIEWER','IMPLEMENTATION_PLANNER']: 
+                    elif agent in ['IMPLEMENTATION_CODER']:
+                        options=['o1_preview','o1_mini']
+                        index=len(options)-1
+                    elif agent in ['DESIGN_PROPOSER','PROPOSAL_REVIEWER','IMPLEMENTATION_PLANNER']: 
                         options=AGENT_TYPES+['o1_preview','o1_mini']
                         if agent in ['IMPLEMENTATION_CODER']:
                             index=len(options)-1
@@ -205,7 +209,7 @@ def design_config(evosys):
         design_cfg['threshold'] = threshold 
 
 
-        col1,col2=st.columns([4,5])
+        col1,col2,col3=st.columns([4,5,2])
         with col1:
             st.markdown("##### Configure max number of attempts")
             cols=st.columns(3)
@@ -228,6 +232,10 @@ def design_config(evosys):
                 rerank_methods=['random','rating']
                 num_samples['rerank_method']=st.selectbox(label="Rerank Method",options=rerank_methods,index=rerank_methods.index('rating'),disabled=True)
         design_cfg['num_samples']=num_samples
+        with col3:
+            st.markdown("##### Configure unittests")
+            st.write('')
+            design_cfg['unittest_pass_required']=st.checkbox('Require passing unittests',value=design_cfg['unittest_pass_required'])
 
         st.button("Save and Apply",key='save_design_config',on_click=apply_design_config,args=(evosys,design_cfg),disabled=st.session_state.listening_mode or st.session_state.evo_running)   
 
@@ -268,7 +276,7 @@ def design_config(evosys):
         st.button("Save and Apply",key='save_search_config',on_click=apply_search_config,args=(evosys,search_cfg),disabled=st.session_state.listening_mode or st.session_state.evo_running)
 
 
-    with st.expander(f"Check Configurations for ```{evosys.evoname}``` (Empty parts will inherit from default)",expanded=False,icon='🔧'):
+    with st.expander(f"Check Configurations for ```{evosys.evoname}``` (Missing parts will apply default)",expanded=False,icon='🔧'):
         col1,col2,col3=st.columns(3)
         with col1:
             st.write("**Check Select Config:**")

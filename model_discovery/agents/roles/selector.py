@@ -20,10 +20,11 @@ SCHEDULER_OPTIONS = ['constant']
 
 
 class Selector:
-    def __init__(self,ptree,select_cfg,_verify_budget,stream):
+    def __init__(self,ptree,select_cfg,_verify_budget,selection_ratio,stream):
         self.ptree=ptree
         self.select_cfg=select_cfg
         self._verify_budget=_verify_budget
+        self.selection_ratio=selection_ratio
         self.stream=stream
 
     #########################  Select Design  #########################
@@ -128,7 +129,7 @@ class Selector:
     
     @property
     def verify_budget(self):
-        vb = self.ptree.remaining_budget(self._verify_budget)
+        vb = self.ptree.budget_status(self._verify_budget)
         vb=sorted(vb.items(),key=lambda x:int(x[0].replace('M','')))
         vb = {k:v for k,v in vb}
         return vb
@@ -137,3 +138,57 @@ class Selector:
     def available_verify_budget(self):
         budget=self.verify_budget
         return {k:v for k,v in budget.items() if v>0}
+
+
+    def request_temporal_budget(self): # keep selection ratio
+        _,used=self.ptree.budget_status(self._verify_budget,ret_verified=True)
+        exceeded={}
+        for scale in used:
+            exceeded[scale]=used[scale]-self._verify_budget[scale]
+        scales=list(exceeded.keys())
+        scales.sort(key=lambda x:int(x.replace('M','')))
+        temporal_budget={}
+
+        def dict_geq(d1,d2):
+            for k in d1:
+                if k not in d2:
+                    continue
+                if d1[k]<d2[k]:
+                    return False
+            return True
+        
+        def dict_add(d1,d2):
+            return {k:d1.get(k,0)+d2.get(k,0) for k in set(d1)|set(d2)}
+        
+        def scale_to_int(scale):
+            return int(scale.replace('M',''))
+        
+        def get_lower_half(scale,scales):
+            lower=[s for s in scales if scale_to_int(s)<=scale_to_int(scale)]
+            lower.sort(key=scale_to_int)
+            return lower
+
+        def try_assign(scale,scales):
+            assign={s:0 for s in scales}
+            lower=get_lower_half(scale,scales)
+            budget=1
+            for s in lower[::-1]:
+                assign[s]=budget
+                budget=int(budget/self.selection_ratio)
+            return assign
+
+        assign={}
+        found=False
+        while not found:
+            # scan from small scale to large scale
+            for scale in scales:
+                _assign=copy.deepcopy(assign)
+                _assign=dict_add(_assign,try_assign(scale,scales))
+                if dict_geq(_assign,exceeded):
+                    found=True
+                    break
+            assign=_assign # next round with full budget or found
+
+        return assign
+            
+        

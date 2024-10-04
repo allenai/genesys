@@ -177,7 +177,7 @@ def _design_engine(evosys,project_dir):
     st.subheader(f"Design Sessions in this node")
     unfinished_designs,finished_designs = evosys.ptree.get_unfinished_designs(return_finished=True)
 
-    with st.expander("Finished Design Sessions (View details in Viewer)"):
+    with st.expander("Finished Design Sessions (braket indicates # of given up challenging implementations)"):
         if len(finished_designs)>0:
             for sess_id in finished_designs:
                 sessdata=evosys.ptree.design_sessions[sess_id]
@@ -198,7 +198,7 @@ def _design_engine(evosys,project_dir):
         else:
             st.info('No finished design sessions.')
 
-    with st.expander("Unfinished Design Sessions (View details in Viewer)",expanded=False):
+    with st.expander("Unfinished Design Sessions (braket indicates # of given up challenging implementations)",expanded=False):
         if len(unfinished_designs)>0:
             for sess_id in unfinished_designs:
                 sessdata=evosys.ptree.design_sessions[sess_id]
@@ -485,7 +485,10 @@ def _design_tuning(evosys,project_dir):
                     elif agent in ['IMPLEMENTATION_OBSERVER']:
                         options=AGENT_TYPES+['o1_preview','o1_mini','None']
                         index=len(options)-2
-                    elif agent in ['IMPLEMENTATION_CODER','DESIGN_PROPOSER','PROPOSAL_REVIEWER','IMPLEMENTATION_PLANNER']: 
+                    elif agent in ['IMPLEMENTATION_CODER']:
+                        options=['o1_preview','o1_mini']
+                        index=len(options)-1
+                    elif agent in ['DESIGN_PROPOSER','PROPOSAL_REVIEWER','IMPLEMENTATION_PLANNER']: 
                         options=AGENT_TYPES+['o1_preview','o1_mini']
                         if agent in ['IMPLEMENTATION_CODER']:
                             index=len(options)-1
@@ -541,7 +544,7 @@ def _design_tuning(evosys,project_dir):
         design_cfg['threshold'] = threshold 
 
 
-        col1,col2=st.columns([4,5])
+        col1,col2,col3=st.columns([4,5,2])
         with col1:
             st.markdown("##### Configure max number of attempts")
             cols=st.columns(3)
@@ -572,8 +575,13 @@ def _design_tuning(evosys,project_dir):
                 if selected_folder and os.path.exists(selected_folder_dir):
                     designs += os.listdir(selected_folder_dir)
                 folder_name = selected_folder if selected_folder else 'No folder selected'
-                selected_design = st.selectbox(label=f"***View runs in selected folder: {folder_name}***",options=designs,disabled=True)
+                selected_design = st.selectbox(label=f"***View runs in selected folder***",options=designs,disabled=True)
         design_cfg['max_attempts'] = max_attempts
+        with col3:
+            st.markdown("##### Configure unittests")
+            st.write('')
+            design_cfg['unittest_pass_required']=st.checkbox('Require passing unittests',value=False)
+
 
     with st.expander("Search Settings",expanded=False):
         search_cfg={}
