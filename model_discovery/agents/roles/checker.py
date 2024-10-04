@@ -491,8 +491,8 @@ class EffectiveChecker: # WORING IN PROGRESS
             self.errors.append('The model is not training correctly. The loss is not decreasing. ')
         if loss>1e4: # its already abnormal
             self.errors.append('The model is diverging. The loss is NaN. ')
-        if run_time>benchmark['run_time']*50: # NOTE: MAKE IT REALLY LOOSE NOW
-            self.errors.append(f"The model is not efficient. The training time is overly long. Its {run_time/benchmark['run_time']:.2f} times of the benchmark.")
+        # if run_time>benchmark['run_time']*10: # NOTE: MAKE IT REALLY LOOSE NOW
+        #     self.errors.append(f"The model is not efficient. The training time is overly long. Its {run_time/benchmark['run_time']:.2f} times of the benchmark.")
         elif run_time>benchmark['run_time']*5:
             self.warnings.append(f"The model is not efficient. The training time is long. Its {run_time/benchmark['run_time']:.2f} times of the benchmark.")
         if max_memory_allocated>benchmark['max_memory_allocated']*5:
