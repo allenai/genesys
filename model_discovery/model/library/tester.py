@@ -18,6 +18,8 @@ from exec_utils import (
 from model_discovery.ve.run import main as ve_main
 from model_discovery.ve.run import parser as ve_parser
 from model_discovery import utils as U
+from model_discovery.model.composer import GAUTree
+
 
 
 LIBRARY_PATH = U.pjoin(os.path.dirname(os.path.abspath(__file__)),'core')
@@ -31,15 +33,15 @@ def check_tune(scale, model_name, path=None, code=None, check_only=False, cpu_on
     )
     cfg = eval(f"GAMConfig_{scale}()")
 
+
     if code is None:
         if path is None:
             assert model_name in MODEL2CODE, "Model name not found in MODEL2CODE, path not provided as well"
             code=MODEL2CODE[model_name]
             path = U.pjoin(LIBRARY_PATH, model_name)
         else:
-            if not path.endswith('.py'):
-                path = U.pjoin(path, f'{model_name}.py')
-            code=U.read_file(path) # assert model_name is a path
+            _path = U.pjoin(path, f'{model_name}.py')
+            code=U.read_file(_path) # assert model_name is a path
 
     checkpass,report,code,results = checker.check(cfg,code,model_name,True, cpu_only=cpu_only, reformat_only=reformat_only)
     if skip_tune:
@@ -47,6 +49,7 @@ def check_tune(scale, model_name, path=None, code=None, check_only=False, cpu_on
     if not checkpass:
         print(report)
         raise Exception('Model does not pass the checker')
+    print('Starting tuning...')
     autocfg = checker.tune(cfg,code,model_name, cpu_only=cpu_only) # cause segment error when using with evo
     # autocfg = "autoconfig = { }"
     print('Tuning complete, saving the code with autocfg.')
@@ -100,14 +103,21 @@ def run(scale,model_name,args,training_token_multiplier=20,path=None): # do a si
 
 
 if __name__ == "__main__":
-    model_name = 'rwkv6' 
+    model_name = 'mamba2' 
     path = None
-    # path = '/home/junyanc/model_discovery/model_discovery/model/library/core/gpt2/gau'
+    tree_dir = f'/home/junyanc/model_discovery/model_discovery/model/library/core/{model_name}/units'
+    path = f'/home/junyanc/model_discovery/model_discovery/model/library/core/{model_name}/gau'
     scale = '14M' 
     args = ve_parser.parse_args()
 
     if args.mode=='check':
-        check_tune(scale, model_name, path)
+        if U.pexists(tree_dir):
+            tree=GAUTree.load_from_base(tree_dir)
+            U.mkdir(path)
+            with open(U.pjoin(path,model_name+'.py'),'w') as f:
+                f.write(tree.compose())
+            check_tune(scale, model_name, path)
+        else:
+            check_tune(scale, model_name, path)
     else:
         run(scale, model_name,args, path=path) # Then run this
-

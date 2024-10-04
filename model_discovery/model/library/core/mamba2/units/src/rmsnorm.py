@@ -118,7 +118,7 @@ SPEC = {
     References:
         - Paper: "Root Mean Square Layer Normalization" by Biao Zhang and Rico Sennrich
           https://arxiv.org/abs/1910.07467
-    """,
+"""
 }
 ARGS = {
     "eps":1e-5,

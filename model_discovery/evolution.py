@@ -66,7 +66,6 @@ from typing import (
     Optional,
     Union
 )
-from model_discovery.model.library.tester import check_tune
 from .system import BuildSystem,PrintSystem,DesignModes,RunningModes
 from exec_utils.factory import _check_config
 from exec_utils import BuildSystem as NativeBuild
@@ -1336,6 +1335,8 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         sessdata['mode']=DesignModes(sessdata['mode'])
 
     def implement(self, acronym: str, tree,ROUNDS,status,costs,design_cfg,user_input): # update a proposal node with implementation
+        from model_discovery.model.library.tester import check_tune
+        
         design_artifact=self.get_node(acronym)
         acronym=design_artifact.acronym
         implementation=design_artifact.implementation
@@ -2051,6 +2052,8 @@ class EvolutionSystem(exec_utils.System):
         return 'FAILED'
 
     def _prep_model(self,design_id,scale):
+        from model_discovery.model.library.tester import check_tune
+        
         design=self.ptree.get_node(design_id) # need to ensure this design has not been verified under scale
         design_id=design.acronym
         ### XXX need manully check then comment it, need to fix, TUNE cause the problem

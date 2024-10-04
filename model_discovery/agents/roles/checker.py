@@ -270,7 +270,7 @@ class GABFormatChecker:
             self.errors.append('Full traceback:\n'+traceback.format_exc())
             return self._report_errors()
         
-        code_ast = self._reformat(code_ast) # NOTE: maybe also check docstrings
+        code_ast = self._reformat(code_ast) # NOTE: maybe also (check) docstrings
         
         # Update self.gab_code with the modified AST
         self.gab_code = astor.to_source(code_ast)
@@ -484,7 +484,9 @@ class EffectiveChecker: # WORING IN PROGRESS
         else:
             benchmark=benchmarks['training'][cache_key]
 
+        print('Entering test training...')
         run_time,loss,gradient_of_losses,max_memory_allocated,total_flos,train_loss=self.test_training(config,model)
+        print('Test training done.')
         if gradient_of_losses>0:
             self.errors.append('The model is not training correctly. The loss is not decreasing. ')
         if loss>1e4: # its already abnormal
@@ -578,7 +580,7 @@ class EffectiveChecker: # WORING IN PROGRESS
             auto_find_batch_size=True, # for safety
             optim="adamw_hf",
             logging_steps=1,
-            dataloader_num_workers=16,
+            dataloader_num_workers=1,
             dataloader_pin_memory=True,
             tf32=True,
             ddp_find_unused_parameters=False,  # Set this to False

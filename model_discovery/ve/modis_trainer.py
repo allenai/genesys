@@ -509,7 +509,7 @@ class ModisTrainer(Trainer):
             step = -1
             for step, inputs in enumerate(epoch_iterator):
                 total_batched_samples += 1
-
+                
                 if self.args.include_num_input_tokens_seen:
                     main_input_name = getattr(self.model, "main_input_name", "input_ids")
                     if main_input_name not in inputs:
@@ -525,6 +525,7 @@ class ModisTrainer(Trainer):
                                 torch.tensor(inputs[main_input_name].numel(), device=input_device, dtype=torch.int64)
                             )
                         ).item()
+
                 if rng_to_sync:
                     self._load_rng_state(resume_from_checkpoint)
                     rng_to_sync = False
@@ -655,6 +656,7 @@ class ModisTrainer(Trainer):
                     )
             if self.control.should_training_stop:
                 break
+
 
         if args.past_index and hasattr(self, "_past"):
             # Clean the state at the end of training
