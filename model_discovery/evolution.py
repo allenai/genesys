@@ -22,6 +22,7 @@ try: # a stupid patch for windows
     os.environ['PERPLEXITY_API_KEY']=PERPLEXITY_API_KEY
     os.environ['DATA_DIR']=DATA_DIR
     os.environ['CKPT_DIR']=CKPT_DIR
+    os.environ['DB_KEY_PATH']=DB_KEY_PATH
     os.environ['HF_DATASETS_TRUST_REMOTE_CODE']='1'    
 except:
     pass
@@ -48,6 +49,7 @@ import math
 import multiprocessing
 import shutil
 from google.cloud import firestore
+
 
 try:
     multiprocessing.set_start_method('spawn')
@@ -461,7 +463,6 @@ class FirestoreManager:
 
 ############################################
 
-SECRETS_DIR = U.pjoin(os.path.dirname(__file__),'configs','secrets')
 LIBRARY_DIR = U.pjoin(os.path.dirname(__file__),'model','library')
 
 
@@ -1560,15 +1561,17 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
 
 
 class ConnectionManager:
-    def __init__(self, evoname, remote_db, stream, max_design_threads_per_node=4):
+    def __init__(self, evoname, group_id, remote_db, stream):
         self.evoname = evoname
+        self.group_id = group_id
         self.collection = remote_db.collection(evoname + '_connections')
         self.zombie_threshold = 20  # seconds
-        self.max_design_threads_per_node = max_design_threads_per_node
         self.st = stream
-
-    def set_max_design_threads_per_node(self, max_design_threads_per_node):
-        self.max_design_threads_per_node = max_design_threads_per_node
+        self.max_design_threads={}
+        self.accept_verify_job={}
+    
+    def set_group_id(self, group_id):
+        self.group_id = group_id
 
     def clear_zombie_connections(self):
         threshold_time = datetime.utcnow() - timedelta(seconds=self.zombie_threshold)
@@ -1580,8 +1583,15 @@ class ConnectionManager:
     
     def get_active_connections(self):
         self.clear_zombie_connections()
-        connections = self.collection.where('status', '==', 'connected').get()
+        query = firestore.And([
+            firestore.FieldFilter("status", "==", "connected"),
+            firestore.FieldFilter("group_id", "==", self.group_id)
+        ])
+        connections = self.collection.where(filter=query).get()
         self.connections = {c.id: c.to_dict() for c in connections}
+        for node_id in self.connections:
+            self.max_design_threads[node_id] = self.connections[node_id].get('max_design_threads')
+            self.accept_verify_job[node_id] = self.connections[node_id].get('accept_verify_job')
         return list(self.connections.keys())
 
     def check_workload(self,node_id):
@@ -1618,8 +1628,8 @@ class ConnectionManager:
     def design_command(self,node_id,resume=True):
         self.get_active_connections() # refresh the connection status
         running_designs, _ = self.check_workload(node_id)
-        if self.max_design_threads_per_node>0 and len(running_designs) >= self.max_design_threads_per_node:
-            self.st.toast(f"Max number of design threads reached ({self.max_design_threads_per_node}) for node {node_id}. Please wait for some threads to finish.",icon='🚨')
+        if len(running_designs) >= self.max_design_threads[node_id]:
+            self.st.toast(f"Max number of design threads reached ({self.max_design_threads[node_id]}) for node {node_id}. Please wait for some threads to finish.",icon='🚨')
             return
         command = f'design,{self.evoname}'
         if resume:
@@ -1628,6 +1638,9 @@ class ConnectionManager:
     
     def verify_command(self,node_id,design_id=None,scale=None,resume=True):
         self.get_active_connections() # refresh the connection status
+        if not self.accept_verify_job[node_id]:
+            self.st.toast(f"Node {node_id} is not accepting verify jobs.",icon='🚨')
+            return
         _, running_verifies = self.check_workload(node_id)
         if len(running_verifies) > 0:
             self.st.toast(f"There is already a verification running for node {node_id}. Please wait for it to finish.",icon='🚨')
@@ -1685,6 +1698,7 @@ DEFAULT_PARAMS = {
     'no_agent': False,
     'db_only': False,
     'use_remote_db': True,
+    'group_id': 'default',
 }
 
 
@@ -1722,19 +1736,20 @@ class EvolutionSystem(exec_utils.System):
         self.design_cfg = {}
         self.search_cfg = {}
         self.select_cfg = {}
-        self.remote_db = None
-        self.CM = None
-        db_key_path = U.pjoin(SECRETS_DIR,'db_key.json')
-        if U.pexists(db_key_path):
-            self.remote_db = firestore.Client.from_service_account_json(db_key_path)
-            self.CM = ConnectionManager(self.params['evoname'], self.remote_db, self.stream)
-            print(f'Remote db connected.')
-        else:
-            print(f'No db key found at {db_key_path}, using local db only. Will sync when remote db key is available.')
         self.load(**kwargs)
 
     def load(self,**kwargs):
         # # init params, TODO: upgrade to exec_util params, use a simple str params for now
+        self.remote_db = None
+        self.CM = None
+        db_key_path = os.environ.get("DB_KEY_PATH",None)
+        if U.pexists(db_key_path):
+            self.remote_db = firestore.Client.from_service_account_json(db_key_path)
+            self.CM = ConnectionManager(self.params['evoname'], 'default', self.remote_db, self.stream)
+            print(f'Remote db connected.')
+        else:
+            raise ValueError(f'No db key found at {db_key_path}. Only distributed evolution is supported now.')
+            print(f'No db key found at {db_key_path}, using local db only. Will sync when remote db key is available.')
 
         # set the name and save dir
         assert 'evoname' in self.params, "evoname is required"
@@ -1748,6 +1763,10 @@ class EvolutionSystem(exec_utils.System):
 
         self.params=U.init_dict(self.params,DEFAULT_PARAMS)
 
+        if self.CM:
+            print(f"Connecting to group id: {self.params['group_id']}")
+            self.CM.set_group_id(self.params['group_id'])
+        
         self.action_policy=self.params['action_policy']
         self.design_budget_limit=self.params['design_budget']
 
@@ -1807,6 +1826,8 @@ class EvolutionSystem(exec_utils.System):
         evo_state['Use Remote DB']=self.ptree.use_remote_db
         if not self.remote_db:
             evo_state['Action Choice Policy']=self.action_policy
+        else:
+            evo_state['Network Group ID']=self.CM.group_id
         return evo_state
 
     def link_stream(self,stream):

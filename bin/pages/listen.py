@@ -7,7 +7,8 @@ import signal
 import threading
 import queue
 import random
-from datetime import datetime
+from datetime import datetime, timedelta
+import pytz
 import psutil
 sys.path.append('.')
 
@@ -18,6 +19,8 @@ from streamlit.runtime.scriptrunner import add_script_run_ctx
 
 from bin.pages.design import design_command
 from bin.pages.verify import verify_command
+
+from art import tprint
 
 
 def get_process(pid):
@@ -34,36 +37,92 @@ def is_running(pid):
     return False
 
 
+def _listener_running(ckpt_dir,zombie_threshold=20):
+    local_dir = U.pjoin(ckpt_dir,'.node.json')
+    local_doc = U.load_json(local_dir)
+    if local_doc:
+        last_heartbeat = datetime.fromisoformat(local_doc['last_heartbeat'])
+        threshold_time = datetime.now(pytz.UTC) - timedelta(seconds=zombie_threshold)
+        if last_heartbeat > threshold_time:
+            return local_doc['node_id']
+        else:
+            local_doc['status'] = 'stopped'
+            U.save_json(local_doc,local_dir)
+    return None
+
 class Listener:
-    def __init__(self, evosys, node_id=None, cli=False):
+    def __init__(self, evosys, node_id=None, group_id='default', max_design_threads=5, accept_verify_job=True, cli=False):
         self.evosys = evosys
         remote_db = evosys.ptree.remote_db
         self.evoname = evosys.evoname
-        self.node_id = node_id if node_id else str(uuid.uuid4())[:8]
         self.collection = remote_db.collection(evosys.evoname + '_connections')
-        self.doc_ref = self.collection.document(self.node_id)
         self.running = False
         self.command_queue = queue.Queue()
         self.command_status = {}
-        self.poll_freq = 5
+        self.poll_freq = 10
         self.cli = cli
         self.active = True
+        self.zombie_threshold = 20  # seconds
+        self.local_dir = U.pjoin(evosys.ckpt_dir,'.node.json')
+        self.max_design_threads = max_design_threads
+        self.accept_verify_job = accept_verify_job
+        self.group_id = group_id
+
+        self.initialize(node_id)
+
+    def initialize(self,node_id=None):
+        local_doc = U.load_json(self.local_dir)
+        running_node_id = _listener_running(self.evosys.ckpt_dir,self.zombie_threshold)
+        if running_node_id:
+            self.node_id = running_node_id
+            self.group_id = local_doc['group_id']
+            print(f'There is already a listener running in this machine/userspace, Node ID: {self.node_id}, will run in passive mode. Please check in GUI.')
+            self.active = False
+        else:
+            self.node_id = self._assign_node_id(node_id)
+            if node_id and node_id != self.node_id:
+                print(f'Node ID {node_id} is in use. Automatically assigned to {self.node_id} instead.')
+            local_doc['node_id'] = self.node_id
+            local_doc['group_id'] = self.group_id
+            local_doc['max_design_threads'] = self.max_design_threads
+            local_doc['accept_verify_job'] = self.accept_verify_job
+            U.save_json(local_doc,self.local_dir)
+        self.doc_ref = self.collection.document(self.node_id)
+    
+    def _assign_node_id(self,node_id=None):
+        if not node_id:
+            node_id = str(uuid.uuid4())[:6]
+        count=0
+        while True:
+            tail='_'+str(count) if count>0 else ''
+            doc_ref=self.collection.document(node_id+tail)
+            if not doc_ref.get().exists:
+                return node_id+tail
+            count+=1
 
     def build_connection(self):
         # check if the node_id is already in the collection
         doc = self.doc_ref.get()
+        local_doc = U.load_json(self.local_dir)
         if doc.exists and doc.to_dict().get('status','n/a') == 'connected':
             self.active = False
         else:
             self.doc_ref.set({
                 'status': 'connected',
+                'group_id': self.group_id,
                 'last_heartbeat': firestore.SERVER_TIMESTAMP,
+                'max_design_threads': self.max_design_threads,
+                'accept_verify_job': self.accept_verify_job,
                 'commands': []
             })
             self.active = True
+            local_doc['last_heartbeat'] = str(datetime.now(pytz.UTC))
+            local_doc['status'] = 'running'
+            U.save_json(local_doc,self.local_dir)
 
     def listen_for_commands(self):
         self.running = True
+        local_doc = U.load_json(self.local_dir)
         while self.running:
             if self.active:
                 doc = self.doc_ref.get()
@@ -99,7 +158,9 @@ class Listener:
                             'last_heartbeat': firestore.SERVER_TIMESTAMP,
                             'command_status': self.command_status
                         })
-            
+                    local_doc['last_heartbeat'] = str(datetime.now(pytz.UTC))
+                    U.save_json(local_doc,self.local_dir)
+
             time.sleep(self.poll_freq)  
         self.cleanup()
     
@@ -124,6 +185,9 @@ class Listener:
     def cleanup(self):
         # st.info("Cleaning up and disconnecting...")
         self.doc_ref.delete()  # Delete the connection document
+        local_doc = U.load_json(self.local_dir)
+        local_doc['status'] = 'stopped'
+        U.save_json(local_doc,self.local_dir)
 
 def start_listener_thread(listener,add_ctx=True):
     thread = threading.Thread(target=listener.listen_for_commands)
@@ -132,59 +196,87 @@ def start_listener_thread(listener,add_ctx=True):
     thread.start()
     return thread
 
+
+def launch_listener(evosys, node_id, group_id, max_design_threads, accept_verify_job):
+    listener = Listener(evosys, node_id, group_id, max_design_threads, accept_verify_job)
+    listener.build_connection()
+    st.session_state.listener = listener
+    st.session_state.listener_thread = start_listener_thread(listener)
+    st.session_state.listening_mode = True
+    st.success(f"Listening started. Node ID: {listener.node_id}. Group ID: {listener.group_id}. Max design threads: {listener.max_design_threads}. Accept verify job: {listener.accept_verify_job}.")
+    st.rerun()
+
+def stop_listening():
+    if st.session_state.listener:
+        st.session_state.listener.stop_listening()
+        st.session_state.listener_thread.join()
+        st.session_state.listener = None
+        st.session_state.listener_thread = None
+        st.session_state.listening_mode = False
+        ckpt_dir = os.environ.get("CKPT_DIR")
+        local_doc = U.load_json(U.pjoin(ckpt_dir,'.node.json'))
+        local_doc['status'] = 'stopped'
+        U.save_json(local_doc,U.pjoin(ckpt_dir,'.node.json'))
+        st.success("Listening stopped.")
+        st.rerun() # Add this section to process commands in the main Streamlit thread
+
+
 def listen(evosys, project_dir):
+        
+    st.title('Listening Mode')
+
+    if not st.session_state.listening_mode:
+        st.warning('**NOTE:** It is recommended to run a node by `run_node.sh` for production use. Run node here for demonstration.')
+
+
+    _node_id = _listener_running(evosys.ckpt_dir)
+    _local_doc = U.load_json(U.pjoin(evosys.ckpt_dir,'.node.json'))
+    if not _node_id:
+        if st.session_state.listener and _local_doc and _local_doc['status'] == 'stopped' and _local_doc['node_id'] == st.session_state.listener.node_id:
+            stop_listening()
+    
+    passive_mode=False  
+    if st.session_state.listener and st.session_state.listener.running and not st.session_state.listener.active:
+        passive_mode=True
+        st.info(f'You are viewing the status of a running listener. Node ID: ```{st.session_state.listener.node_id}```. Group ID: ```{st.session_state.listener.group_id}```. Max design threads: ```{st.session_state.listener.max_design_threads}```. Accept verify job: ```{st.session_state.listener.accept_verify_job}```.')
+
+
     ### Sidebar
     with st.sidebar:
         AU.running_status(st, evosys)
+
     
     if st.session_state.evo_running:
         st.warning("**NOTE:** You are running as the master node. You cannot change the role of the node while the system is running.")
 
 
-    st.title('Listening Mode')
 
-    # Initialize session state
-    if 'listener' not in st.session_state:
-        st.session_state.listener = None
-    if 'listener_thread' not in st.session_state:
-        st.session_state.listener_thread = None
-    if 'exec_commands' not in st.session_state:
-        st.session_state.exec_commands = {}
+    col1,col2,col3,col4,col5 = st.columns([1.2,1.2,1,0.9,1])
 
-    passive_mode=False  
-    if st.session_state.listener and st.session_state.listener.running and not st.session_state.listener.active:
-        passive_mode=True
-        st.info('The listener is already running (background or still alive). You are in passive observation mode.')
-
-
-    col1,_,col2,_,col3,_ = st.columns([3.5,0.1,1,0.1,1,1.5])
 
     with col1:
-        node_id = st.text_input("Node ID (empty for random) :orange[*If a running node id in the same machine is provided, it will subscribe the status.*]", disabled=st.session_state.listening_mode)
-        st.write(f'')
+        input_node_id = st.text_input("Node ID (empty for random)", disabled=st.session_state.listening_mode)
 
     with col2:
+        input_group_id = st.text_input("Group ID (empty for default)", disabled=st.session_state.listening_mode)
+
+    with col3:
+        input_max_design_threads = st.number_input("Max design threads", min_value=1, value=5, disabled=st.session_state.listening_mode)
+
+    with col5:
+        st.write('')    
+        st.write('')
+        input_accept_verify_job = st.checkbox("Accept verify job", value=True, disabled=st.session_state.listening_mode)
+
+    with col4:
         st.write('') 
         st.write('')    
         if not st.session_state.listening_mode:
             if st.button("**Start Listening**", use_container_width=True, disabled=st.session_state.evo_running or passive_mode):
-                listener = Listener(evosys, node_id)
-                listener.build_connection()
-                st.session_state.listener = listener
-                st.session_state.listener_thread = start_listener_thread(listener)
-                st.session_state.listening_mode = True
-                st.success(f"Listening started. Node ID: {listener.node_id}")
-                st.rerun()
+                launch_listener(evosys, input_node_id, input_group_id, input_max_design_threads, input_accept_verify_job)
         else:
             if st.button("**Stop Listening**", use_container_width=True, disabled=st.session_state.evo_running or passive_mode):
-                if st.session_state.listener:
-                    st.session_state.listener.stop_listening()
-                    st.session_state.listener_thread.join()
-                    st.session_state.listener = None
-                    st.session_state.listener_thread = None
-                    st.session_state.listening_mode = False
-                    st.success("Listening stopped.")
-                    st.rerun() # Add this section to process commands in the main Streamlit thread
+                stop_listening()
 
         if st.session_state.listener:
             if st.session_state.listener.node_id not in st.session_state.exec_commands:
@@ -215,24 +307,22 @@ def listen(evosys, project_dir):
                 elif ctype == 'verify':
                     st.session_state['running_verifications'][sess_id] = get_process(pid)
 
-    with col3:
-        st.write('')
-        st.write('')
-        st.button("*Refresh status*", use_container_width=True)
+        
 
     st.subheader("Commands status")
 
-    if len(st.session_state.exec_commands) > 0:
-        
-        col1,col2 = st.columns([2,1])
-        with col1:
+    with st.sidebar:
+        if len(st.session_state.exec_commands) > 0 and st.session_state.listener:
             all_nodes = list(st.session_state.exec_commands.keys())
             selected_node = st.selectbox("Select node ID", all_nodes,index=all_nodes.index(st.session_state.listener.node_id))
-            st.write(':orange[*View details in **Design**, **Verify**, and **Viewer** tabs.*]')
-        with col2:
-            st.write('')
-            st.write('')
+            # st.caption(':orange[*View more details in **Design**, **Verify**, and **Viewer** tabs.*]')
+            st.button("*Refresh status*",use_container_width=True)
+        else:
+            st.info("No listener running.")
+            
 
+    if len(st.session_state.exec_commands) > 0 and st.session_state.listener:
+        
         active_commands,inactive_commands = [],[]
         for pid in st.session_state.exec_commands[selected_node]:
             pid=int(pid)
@@ -242,9 +332,6 @@ def listen(evosys, project_dir):
             else:
                 inactive_commands.append((command,sess_id,pid))
         
-        if len(active_commands) == 0 and len(inactive_commands) == 0:
-            st.info("No commands running or finished.")
-
         def show_commands(commands,max_lines=20):
             for command,sess_id,pid in commands[-max_lines:]:
                 cols=st.columns([0.5,0.01,0.2,0.01,1.8])
@@ -280,37 +367,57 @@ def listen(evosys, project_dir):
                     show_commands(inactive_commands)
 
     else:
-        st.info("No listener runned.")
+        st.info("No listener running.")
 
 
 if __name__ == "__main__":
     from model_discovery.evolution import BuildEvolution
+    import argparse
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--node_id', type=str, default='None', help='Node ID (empty for random)')
+    parser.add_argument('--no_gpus', action='store_true', help='Do not use GPUs (will not accept verify jobs)')
+    parser.add_argument('--max_design_threads', type=int, default=5, help='Max number of design threads can accept')
+    parser.add_argument('--group_id', type=str, default='default', help='Group ID, if you want to run multiple experiments')
+    args = parser.parse_args()
+
+    node_id = args.node_id if args.node_id != 'None' else None
 
     print("Running in CLI mode.")
 
+
     # run in CLI mode
-    evosys = BuildEvolution(
-        params={'evoname':'test_evo_000'}, # doesnt matter, will switch to the commanded evoname
-        do_cache=False,
-        # cache_type='diskcache',
-    )
 
-    listener = Listener(evosys, cli=True)
-    listener.build_connection()
-    listener_thread = start_listener_thread(listener,add_ctx=False)
+    _node_id = _listener_running(os.environ.get("CKPT_DIR"))
+    if _node_id:
+        local_doc = U.load_json(U.pjoin(os.environ.get("CKPT_DIR"),'.node.json'))
+        _group_id = local_doc['group_id']
+        _max_design_threads = local_doc['max_design_threads']
+        _accept_verify_job = local_doc['accept_verify_job'] 
+        print(f'Local running listener detected:\nNode ID: {_node_id}.\nGroup ID: {_group_id}.\nMax design threads: {_max_design_threads}.\nAccept verify job: {_accept_verify_job}.\nPlease view it in the GUI Listen tab.')
+    else:
+        evosys = BuildEvolution(
+            params={'evoname':'test_evo_000'}, # doesnt matter, will switch to the commanded evoname
+            do_cache=False,
+            # cache_type='diskcache',
+        )
+        listener = Listener(evosys, node_id, args.group_id, max_design_threads=args.max_design_threads, accept_verify_job=not args.no_gpus, cli=True)
+        listener.build_connection()
+        listener_thread = start_listener_thread(listener,add_ctx=False)
 
-    print("Listening started.")
-    try:
-        # Keep the main thread alive
-        while listener.active:
-            time.sleep(1)
-    except KeyboardInterrupt:
-        print("Shutting down...")
-    finally:
-        listener.stop_listening()
-        listener_thread.join(timeout=10)  # Wait for the thread to finish, with a timeout
+        tprint('EVOCLI', font='modular ')
+        print(f"Listener launched: \nNode ID: {listener.node_id} \nGroup ID: {listener.group_id} \nMax design threads: {listener.max_design_threads} \nAccept verify job: {listener.accept_verify_job}")
+        try:
+            # Keep the main thread alive
+            while listener.active:
+                time.sleep(1)
+        except KeyboardInterrupt:
+            print("Shutting down...")
+        finally:
+            listener.stop_listening()
+            listener_thread.join(timeout=10)  # Wait for the thread to finish, with a timeout
 
-    print("Listener stopped.")
+        print("Listener stopped.")
 
 
 

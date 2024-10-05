@@ -25,7 +25,6 @@ async def _getweather(city):
     return weather.temperature
   
 def home(evosys,project_dir):
-
   
     with st.sidebar:
       # st.write("*Welcome to the Model Discovery System!*")
@@ -34,10 +33,14 @@ def home(evosys,project_dir):
       # img_path='https://plus.unsplash.com/premium_photo-1676035055997-8a0b479d6e7e?q=80&w=2264&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
       img_path=U.pjoin(current_dir,'..','assets','gene.PNG')
       st.image(img_path)
-      city = 'Seattle' 
-      temprature = asyncio.run(_getweather(city))
-      st.caption(f":blue[{datetime.now().strftime('%b %d, %Y, %A')}]. {city} temperature :blue[{temprature} °F].")
+      # city = 'Seattle' 
+      # try:
+      #   temprature = asyncio.run(_getweather(city)) # unreliable sometimes
+      # except Exception as e:
+      #   temprature = 'N/A'
+      # st.caption(f":blue[{datetime.now().strftime('%b %d, %Y, %A')}]. {city} temperature :blue[{temprature} °F].")
 
+      st.caption(f"Today is :blue[{datetime.now().strftime('%b %d, %Y, %A')}].")
 
     # col1,col2=st.columns([1.45,1])
     # with col1: 
@@ -69,12 +72,27 @@ the main interface to the system instead of the common command-line interface
     st.markdown('''
 ## :rainbow[How to launch the evolution?] 
 
-The evolution is distributed, asynchronous and parallel (see details below), it can be launched by:
- 1. Configure the experiment settings in the **Config** tab. Save and upload to the cloud. (*CLI mode is working in progress*)
- 2. Launch the nodes in the **Listen** tab. Or directly launch by `bash scripts/run_node.sh`. Remember to run it in GPU-available sessions. You can also launch a node in the master.
- 3. Run the evolution in the **Evolve** tab. Or directly launch by `bash scripts/run_evo.sh`. 
+The evolution is distributed, asynchronous and parallel (see details below), it
+can be launched by:
+ 1. Configure the experiment settings in the **Config** tab. Save and upload to
+    the cloud. (*CLI mode is working in progress*)
+ 2. Launch by `bash scripts/run_node.sh [--node_id <node_id>] [--group_id <group_id>]
+    [--max_design_threads <max_design_threads>] [--no_gpus]`. Or play with it in the **Listen** tab. 
+    - `--node_id` is optional, if not specified, a random node id will be assigned;
+    - `--group_id` is default to `default`, set it if you need to run multiple
+      experiments at the same time, one evolution can only be run in one network
+      group and one network group can run one evolution at the same time;
+    - `--max_design_threads` is default to 5, it is the maximum number of design threads on this node;
+    - if `--no_gpus` is specified, the node will not accept verifications jobs, otherwise, it will
+      accept verifications jobs on all GPUs.
+ 3. Run the evolution in the **Evolve** tab. Or directly launch by `bash
+    scripts/run_evo.sh [--evoname <evoname>] [--group_id <group_id>] [--design_to_verify_ratio <design_to_verify_ratio>]`. 
+    - `--evoname` is the name of the evolution, it is the same as the namespace;
+    - `--group_id` is the same as the one in the node;
+    - `--design_to_verify_ratio` is the ratio of the number of design threads to the number of available verification nodes, it is the same as the one in the node;
 
-**NOTE:** Do not run multiple nodes in the same user space as it will cause the file access conflict. Just use all the GPUs in each node.
+**NOTE:** Do not run multiple nodes in the same user space as it will cause the
+file access conflict. Just use all the GPUs in each node.
 ''')
 
     # welcome = U.read_file(U.pjoin(project_dir,'bin','assets','howtouse.md'))
@@ -115,24 +133,27 @@ on a given scale and evaluate the performance using the customed LM-Eval.
 ## Icon Guideline
 
  * **Namespace**: The experiment name, 📶 is online with remote DB connected, 📴 means offline.
- * **Listening**: When the system is running in the listening mode or connected to listeners as the master node, the status will show with 👂, 🐎 means running designs 🥏 means running verifies. 
+ * **Listening**: To view your running node status, just launch the GUI and go to the **Listen** tab.
 ''')
 
 
     st.markdown('''
 ## Evolution
 
-The evolutionary system continuously runs two threads asynchronously in multiple nodes until the budget is exhausted:
-1. **Design Threads**: Continuously sample new designs on selected nodes. It is driven by the *Model Design Engine* in the **Design** tab. You can also run it in CLI by `python -m model_discovery.design` or `bash script/run_design.sh`.
-2. **Verify Threads**: Continuously run verifications on the selected design and scale. It is driven by the *Verification Engine* in the **Verify** tab. You can also run it in CLI by `python -m model_discovery.verify` or `bash script/run_verify.sh`.
+The evolutionary system continuously runs two threads asynchronously in multiple
+nodes until the budget is exhausted: 1. **Design Threads**: Continuously sample
+new designs on selected nodes. It is driven by the *Model Design Engine* in the
+**Design** tab. You can also run it in CLI by `python -m model_discovery.design`
+or `bash script/run_design.sh`. 2. **Verify Threads**: Continuously run
+verifications on the selected design and scale. It is driven by the
+*Verification Engine* in the **Verify** tab. You can also run it in CLI by
+`python -m model_discovery.verify` or `bash script/run_verify.sh`.
 
-The network of working nodes are orchestrated by a master node through the **Firebase**. 
-To add a node to the network, simply run `python -m model_discovery.listen` or `bash script/run_node.sh`
-on the node. You can also run it in the `Listen` tab in the GUI so that you
-can view the design process and verification results in real time in the 
-***Design***, ***Verify*** and ***Viewer*** tabs.
-You can also run the system with CLI, then you can always check the status in GUI (on the same machine) afterward
-by inputting the node ID of the same machine (so that the processes are retrievable) in the **Listen** tab. 
+The network of working nodes are orchestrated by a master node through the
+**Firebase**. To add a node to the network, simply run `python -m
+model_discovery.listen` or `bash script/run_node.sh` on the node. It is
+recommended to run it in GPU-available sessions. You can also launch a node in
+the master machine.
 ''')
 
     # st.balloons()

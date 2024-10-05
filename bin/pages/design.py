@@ -161,7 +161,7 @@ def _design_engine(evosys,project_dir):
     st.title("Model Design Engine")
     
     if st.session_state.listening_mode:
-        st.warning("**NOTE:** You are running in listening mode. Design engine is taken over by the system.")
+        st.warning("**WARNING:** You are running in listening mode. If there is an evolution running, running design threads in the same namespace will cause unexpected errors.")
 
     if st.session_state.evo_running:
         st.warning("**NOTE:** Evolution system is running. Design engine is taken over by the system.")
@@ -217,7 +217,7 @@ def _design_engine(evosys,project_dir):
                     if st.button('View Log',key=f'btn_{sess_id}_view_log'):
                         st.session_state['viewing_log'] = sess_id
                 with cols[4]:
-                    if st.button('Resume',key=f'btn_{sess_id}_resume',disabled=st.session_state.listening_mode or st.session_state.evo_running):
+                    if st.button('Resume',key=f'btn_{sess_id}_resume',disabled=st.session_state.evo_running):
                         with st.status(f'Resuming session: ```{sess_id}```...'):
                             run_design_thread(evosys,sess_id)
                 with cols[5]:
@@ -241,9 +241,9 @@ def _design_engine(evosys,project_dir):
                 st.write('**Search Config**')
                 st.write(evosys.search_cfg)
     with col2:
-        rand_resume_btn = st.button('***Random Resume***',use_container_width=True,disabled=len(unfinished_designs)==0 or st.session_state.listening_mode or st.session_state.evo_running)
+        rand_resume_btn = st.button('***Random Resume***',use_container_width=True,disabled=len(unfinished_designs)==0 or st.session_state.evo_running)
     with col3:
-        new_session_btn = st.button('***Launch New Session***',use_container_width=True,disabled=st.session_state.listening_mode or st.session_state.evo_running)
+        new_session_btn = st.button('***Launch New Session***',use_container_width=True,disabled=st.session_state.evo_running)
         
     if rand_resume_btn:
         sess_id = random.choice(unfinished_designs)
@@ -274,7 +274,7 @@ def _design_engine(evosys,project_dir):
                     if st.button('View Log',key=f'btn_{key}_view'):
                         st.session_state['viewing_log'] = key
                 with cols[5]:
-                    if st.button(f"Terminate",key=f'btn_{key}_term',disabled=st.session_state.listening_mode or st.session_state.evo_running):
+                    if st.button(f"Terminate",key=f'btn_{key}_term',disabled=st.session_state.evo_running):
                         try:
                             parent = psutil.Process(process.pid)
                             children = parent.children(recursive=True)
@@ -440,7 +440,7 @@ def _design_tuning(evosys,project_dir):
     st.title("Model Design Agents")
 
     if st.session_state.listening_mode:
-        st.warning("**NOTE:** You are running in listening mode. Design engine is taken over by the system.")
+        st.warning("**WARNING:** You are running in listening mode. Design engine is taken over by the system.")
 
     if st.session_state.evo_running:
         st.warning("**NOTE:** Evolution system is running. Design engine is taken over by the system.")
@@ -633,7 +633,7 @@ def _design_tuning(evosys,project_dir):
     with cols[3]:
         st.write('')
         st.write('')
-        submit = st.button(label="***Run***",disabled=mode!=DesignModes.MUTATION.value or st.session_state.listening_mode or st.session_state.evo_running,use_container_width=True)
+        submit = st.button(label="***Run***",disabled=mode!=DesignModes.MUTATION.value or st.session_state.evo_running,use_container_width=True)
     with cols[4]:
         st.write('')
         st.write('')

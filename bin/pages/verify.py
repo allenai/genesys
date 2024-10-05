@@ -378,8 +378,9 @@ def verify(evosys,project_dir):
 
     st.title("Verification Engine")
 
-    if st.session_state.listening_mode:
-        st.warning("**NOTE:** You are running in listening mode. Verification engine is taken over by the system.")
+    if st.session_state.listening_mode and st.session_state.listener.accept_verify_job:
+        st.warning("**WARNING:** You are running a listener with GPUs. Verification engine is taken over by the system.")
+        DISABLE_VERIFICATION=True
 
     if st.session_state.evo_running:
         st.warning("**NOTE:** You are running as the master node. Verification engine is taken over by the system.")
@@ -506,7 +507,7 @@ def verify(evosys,project_dir):
             already_verified=selected_scale in verified[selected_design]
             txt='Run Verification'
             #  if not already_verified else 'Re-Run Verification'
-            run_btn= st.button(txt,use_container_width=True,disabled=st.session_state.listening_mode or st.session_state.evo_running or already_verified)
+            run_btn= st.button(txt,use_container_width=True,disabled=DISABLE_VERIFICATION or st.session_state.evo_running or already_verified)
         else:
             run_btn= st.button('Run Verification',use_container_width=True,disabled=True)
     
@@ -522,7 +523,7 @@ def verify(evosys,project_dir):
         st.write('')
         st.write('')
         if selected_design is not None:
-            check_tune_btn= st.button('*Check*',use_container_width=True,disabled=st.session_state.listening_mode or st.session_state.evo_running)
+            check_tune_btn= st.button('*Check*',use_container_width=True,disabled=DISABLE_VERIFICATION or st.session_state.evo_running)
         else:
             check_tune_btn= st.button('*Check*',use_container_width=True,disabled=True)
 
@@ -570,9 +571,9 @@ def verify(evosys,project_dir):
                             if url:
                                 st.write(f"W&B run: [{wandb_name.replace(f'{evosys.evoname}_','')[:10]}]({url})")
                         with col4:
-                            resume_btn = st.button(f'Resume',key=f'btn_{design_id}_{scale}',disabled=st.session_state.listening_mode or st.session_state.evo_running) #,use_container_width=True):
+                            resume_btn = st.button(f'Resume',key=f'btn_{design_id}_{scale}',disabled=DISABLE_VERIFICATION or st.session_state.evo_running) #,use_container_width=True):
                         with col5:
-                            restart_btn = st.button(f'Restart',key=f'btn_{design_id}_{scale}_restart',disabled=st.session_state.listening_mode or st.session_state.evo_running) #,use_container_width=True):
+                            restart_btn = st.button(f'Restart',key=f'btn_{design_id}_{scale}_restart',disabled=DISABLE_VERIFICATION or st.session_state.evo_running) #,use_container_width=True):
                         if resume_btn:
                             run_verification(evosys.params, design_id, scale, resume=True)
                         if restart_btn:
@@ -654,7 +655,7 @@ def verify(evosys,project_dir):
                 entity = wandb_ids['entity']
                 url = f'https://wandb.ai/{entity}/{project}/runs/{wandb_id}'
                 st.info(f"Check console for output. View training run on [W&B]({url}).")
-                if st.button(f"Terminate",key=f'btn_{key}_term',disabled=st.session_state.listening_mode or st.session_state.evo_running):
+                if st.button(f"Terminate",key=f'btn_{key}_term',disabled=DISABLE_VERIFICATION or st.session_state.evo_running):
                     try:
                         parent = psutil.Process(process.pid)
                         children = parent.children(recursive=True)
