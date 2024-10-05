@@ -46,11 +46,11 @@ def search(evosys,project_dir):
 
         cols=st.columns([2,2,2,2,2,1])
         with cols[0]:
-            search_cfg['result_limits']['s2']=st.number_input("S2 Search Result Limit",value=5,min_value=0,step=1)
+            search_cfg['result_limits']['s2']=st.number_input("S2 Result Limit",value=5,min_value=0,step=1)
         with cols[1]:
-            search_cfg['result_limits']['arxiv']=st.number_input("Arxiv Search Result Limit",value=3,min_value=0,step=1)
+            search_cfg['result_limits']['arxiv']=st.number_input("Arxiv Result Limit",value=3,min_value=0,step=1)
         with cols[2]:
-            search_cfg['result_limits']['pwc']=st.number_input("Papers With Code Search Result Limit",value=3,min_value=0,step=1)
+            search_cfg['result_limits']['pwc']=st.number_input("Papers w/ Code Result Limit",value=3,min_value=0,step=1)
         with cols[3]:
             search_cfg['perplexity_settings']['model_size']=st.selectbox("Perplexity Model Size",options=['none','small','large','huge'],index=2)
         with cols[4]:
@@ -58,7 +58,7 @@ def search(evosys,project_dir):
         with cols[5]:
             st.write("")
             st.write("")
-            prompting=st.checkbox("Prompting",value=False)
+            prompting=st.checkbox("Prompt",value=False)
 
         analysis=st.text_area("Instructs to the Search Agent",placeholder='Please finds me information about ...',height=100)
 
@@ -69,11 +69,12 @@ def search(evosys,project_dir):
     with st.sidebar:
         def display_status(name,status):
             marks={True:'✅',False:'❌'}
-            st.write(f'{name}: {marks[status]}')
-        display_status('Cohere connected',sss.co is not None)
-        display_status('Pinecone connected',sss.pc is not None)
-        display_status('Perplexity key set',sss.ppl_key_set)
-        display_status('S2 key set',sss.s2_key_set)
+            st.write(f'{marks[status]} *{name}*')
+        with st.expander("Service Connection",expanded=True):
+            display_status('Cohere',sss.co is not None)
+            display_status('Pinecone',sss.pc is not None)
+            display_status('Perplexity',sss.ppl_key_set)
+            display_status('Semantic Scholar',sss.s2_key_set)
     
     
     details=st.text_area("Search Content with Detailed Query (for vector store search)",placeholder='I want to ask about ...',height=100)

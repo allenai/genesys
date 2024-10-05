@@ -31,10 +31,12 @@ def home(evosys,project_dir):
       # st.write("*Welcome to the Model Discovery System!*")
       # AU.running_status(st,evosys)
       # st.image(logo,use_column_width=True)
-      st.image('https://images.unsplash.com/photo-1722691694088-b3b2ab29be31?q=80&w=2535&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')
+      # img_path='https://plus.unsplash.com/premium_photo-1676035055997-8a0b479d6e7e?q=80&w=2264&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      img_path=U.pjoin(current_dir,'..','assets','gene.PNG')
+      st.image(img_path)
       city = 'Seattle' 
       temprature = asyncio.run(_getweather(city))
-      st.write(f"*Today is {datetime.now().strftime('%b %d, %Y, %a')}. The temperature in {city} right now is :blue[{temprature}]°F.*")
+      st.caption(f":blue[{datetime.now().strftime('%b %d, %Y, %A')}]. {city} temperature :blue[{temprature} °F].")
 
 
     # col1,col2=st.columns([1.45,1])

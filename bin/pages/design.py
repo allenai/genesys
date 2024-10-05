@@ -169,7 +169,7 @@ def _design_engine(evosys,project_dir):
     with st.sidebar:
         st.session_state['max_design_threads'] = st.number_input(label="Max Design Threads (for here)",min_value=1,value=5,step=1)
         # st.write(f'Controls')
-        if st.button("Refresh",key='refresh_btn_design'):
+        if st.button("🔄 Refresh",key='refresh_btn_design',use_container_width=True):
             st.session_state['viewing_log'] = None
             st.rerun()
 
@@ -182,16 +182,16 @@ def _design_engine(evosys,project_dir):
             for sess_id in finished_designs:
                 sessdata=evosys.ptree.design_sessions[sess_id]
                 passed,implemented,challenging,unfinished=evosys.ptree.get_session_state(sess_id)
-                cols=st.columns([2.5,1,1,0.1,0.5])
+                cols=st.columns([3,2,3,0.1,1])
                 with cols[0]:
-                    st.write(f'Session ID: ```{sess_id}```')
+                    st.write(f'Session ID: ```{sess_id[:32]}```')
                 with cols[1]:
                     state='❌' if len(passed)<sessdata["num_samples"]["proposal"] else '✅'
-                    st.write(f'Proposals: ```{len(passed)}/{sessdata["num_samples"]["proposal"]}``` {state}')
+                    st.write(f'Proposal passed: ```{len(passed)}/{sessdata["num_samples"]["proposal"]}``` {state}')
                 with cols[2]:
                     state='❌' if len(implemented)+len(challenging)<sessdata["num_samples"]["implementation"] else '✅'
-                    challenging_state=f'({len(challenging)})' if len(challenging)>0 else ''
-                    st.write(f'Implementations: ```{len(implemented)+len(challenging)}{challenging_state}/{sessdata["num_samples"]["implementation"]}``` {state}')
+                    # challenging_state=f'({len(challenging)})' if len(challenging)>0 else ''
+                    st.write(f'Implementation succeed: ```{len(implemented)+len(challenging)}({len(challenging)})/{sessdata["num_samples"]["implementation"]}``` {state}')
                 with cols[4]:
                     if st.button('View Log',key=f'btn_{sess_id}_view_log'):
                         st.session_state['viewing_log'] = sess_id
@@ -203,16 +203,16 @@ def _design_engine(evosys,project_dir):
             for sess_id in unfinished_designs:
                 sessdata=evosys.ptree.design_sessions[sess_id]
                 passed,implemented,challenging,unfinished=evosys.ptree.get_session_state(sess_id)
-                cols=st.columns([3,3,3,1,1,1])
+                cols=st.columns([3,2,3,1,1,1])
                 with cols[0]:
                     st.write(f'Session ID: ```{sess_id}```')
                 with cols[1]:
                     state='❌' if len(passed)<sessdata["num_samples"]["proposal"] else '✅'
-                    st.write(f'Proposal: ```{len(passed)}/{sessdata["num_samples"]["proposal"]}``` passed {state}')
+                    st.write(f'Proposal passed: ```{len(passed)}/{sessdata["num_samples"]["proposal"]}``` {state}')
                 with cols[2]:
                     state='❌' if len(implemented)+len(challenging)<sessdata["num_samples"]["implementation"] else '✅'
-                    challenging_state=f'({len(challenging)})' if len(challenging)>0 else ''
-                    st.write(f'Implementation: ```{len(implemented)+len(challenging)}{challenging_state}/{sessdata["num_samples"]["implementation"]}``` succeeded {state}')
+                    # challenging_state=f'({len(challenging)})' if len(challenging)>0 else ''
+                    st.write(f'Implementation succeed: ```{len(implemented)+len(challenging)}({len(challenging)})/{sessdata["num_samples"]["implementation"]}``` {state}')
                 with cols[3]:
                     if st.button('View Log',key=f'btn_{sess_id}_view_log'):
                         st.session_state['viewing_log'] = sess_id
@@ -227,7 +227,7 @@ def _design_engine(evosys,project_dir):
 
 
     st.subheader("Run deisgn thread")
-    col1,col2,col3=st.columns([4,1,1])
+    col1,col2,col3=st.columns([4.2,1,1])
     with col1:
         with st.expander("Check current design settings"):
             cols=st.columns(3)
@@ -241,7 +241,7 @@ def _design_engine(evosys,project_dir):
                 st.write('**Search Config**')
                 st.write(evosys.search_cfg)
     with col2:
-        rand_resume_btn = st.button('***Resume Random Session***',use_container_width=True,disabled=len(unfinished_designs)==0 or st.session_state.listening_mode or st.session_state.evo_running)
+        rand_resume_btn = st.button('***Random Resume***',use_container_width=True,disabled=len(unfinished_designs)==0 or st.session_state.listening_mode or st.session_state.evo_running)
     with col3:
         new_session_btn = st.button('***Launch New Session***',use_container_width=True,disabled=st.session_state.listening_mode or st.session_state.evo_running)
         
@@ -315,12 +315,12 @@ def _design_engine(evosys,project_dir):
         with col2:
             st.write('')
             st.write('')
-            if st.button('Refresh'):
+            if st.button('🔄 Refresh',use_container_width=True):
                 st.rerun()
         with col3:
             st.write('')
             st.write('')
-            if st.button('Clear'):
+            if st.button('🧹 Clear',use_container_width=True):
                 st.session_state['viewing_log'] = None
                 st.rerun()
         show_log(log)
@@ -452,7 +452,7 @@ def _design_tuning(evosys,project_dir):
 
     with st.sidebar:
         st.write('Controls')
-        if st.button("Reset design query"):#,use_container_width=True):
+        if st.button("🔄 *Reset design query*",use_container_width=True):
             st.rerun()
 
     #### Configure design
@@ -470,8 +470,8 @@ def _design_tuning(evosys,project_dir):
                 'PROPOSAL_REVIEWER':'Proposal Reviewer',
                 'IMPLEMENTATION_PLANNER':'Implementation Planner',
                 'IMPLEMENTATION_CODER':'Implementation Coder',
-                'IMPLEMENTATION_OBSERVER':'Implementation Observer',
-                'SEARCH_ASSISTANT': '*Separate Search Assistant*'
+                'IMPLEMENTATION_OBSERVER':'Impl. Observer',
+                'SEARCH_ASSISTANT': '*Search Assistant*'
             }
             agent_types = {}
             cols = st.columns(len(agent_type_labels))
@@ -513,24 +513,27 @@ def _design_tuning(evosys,project_dir):
                     init_value=0 if source in ['DesignArtifact','ReferenceCore'] else min(2,sources[source])
                     if source == 'DesignArtifactImplemented':
                         init_value = min(1,sources[source])
+                        label = f'ImplementedDesign ({sources[source]})'
+                    else:
+                        label = f'{source} ({sources[source]})'
                     # disabled=True if source == 'DesignArtifact' else False
-                    n_sources[source] = st.number_input(label=f'{source} ({sources[source]})',min_value=0,value=init_value,max_value=sources[source])#,disabled=disabled)
-        if mode==DesignModes.MUTATION.value:
-            st.write('**ReferenceCoreWithTree and DesignArtifactImplemented are seed types. Will randomly sample one from samples from them as seed.*')
+                    n_sources[source] = st.number_input(label=label,min_value=0,value=init_value,max_value=sources[source])#,disabled=disabled)
+        # if mode==DesignModes.MUTATION.value:
+        #     st.write('**ReferenceCoreWithTree and DesignArtifactImplemented are seed types. Will randomly sample one from samples from them as seed.*')
 
         col1,col2=st.columns([3,2])
         termination={}
         threshold={}
         max_attempts = {}
         with col1:
-            st.markdown("##### Configure termination conditions and budgets")
+            st.markdown("##### Configure termination conditions and budgets (0 is no limit)")
             cols=st.columns(4)
             with cols[0]:
-                termination['max_failed_rounds'] = st.number_input(label="Max failed rounds (0 is no limit)",min_value=1,value=3)
+                termination['max_failed_rounds'] = st.number_input(label="Max failed rounds",min_value=1,value=3)
             with cols[1]:
-                termination['max_total_budget'] = st.number_input(label="Max total budget (0 is no limit)",min_value=0,value=0)
+                termination['max_total_budget'] = st.number_input(label="Max total budget",min_value=0,value=0)
             with cols[2]:
-                termination['max_debug_budget'] = st.number_input(label="Max debug budget (0 is no limit)",min_value=0,value=0)
+                termination['max_debug_budget'] = st.number_input(label="Max debug budget",min_value=0,value=0)
             with cols[3]:
                 max_attempts['max_search_rounds'] = st.number_input(label="Max search rounds",min_value=0,value=4)
         with col2:
@@ -549,13 +552,13 @@ def _design_tuning(evosys,project_dir):
             st.markdown("##### Configure max number of attempts")
             cols=st.columns(3)
             with cols[0]:
-                max_attempts['design_proposal'] = st.number_input(label="Max proposal attempts",min_value=3,value=5)
+                max_attempts['design_proposal'] = st.number_input(label="Proposal attempts",min_value=3,value=5)
             with cols[1]:
-                max_attempts['implementation_debug'] = st.number_input(label="Max debug attempts",min_value=3,value=5)
+                max_attempts['implementation_debug'] = st.number_input(label="Debug attempts",min_value=3,value=5)
             with cols[2]:
-                max_attempts['post_refinement'] = st.number_input(label="Max post refinements",min_value=0,value=0)
+                max_attempts['post_refinement'] = st.number_input(label="Post refinements",min_value=0,value=0)
         with col2:
-            st.markdown("##### Re-show previous runs (work in progress)")
+            st.markdown("##### Re-show previous runs *(work in progress)*")
             cols=st.columns([2,2,3])
             with cols[0]:
                 ckpts=os.listdir(evosys.ckpt_dir)
@@ -580,7 +583,7 @@ def _design_tuning(evosys,project_dir):
         with col3:
             st.markdown("##### Configure unittests")
             st.write('')
-            design_cfg['unittest_pass_required']=st.checkbox('Require passing unittests',value=False)
+            design_cfg['unittest_pass_required']=st.checkbox('Unittests pass required',value=False)
 
 
     with st.expander("Search Settings",expanded=False):
@@ -619,7 +622,7 @@ def _design_tuning(evosys,project_dir):
     #### Run design
 
     # cols = st.columns([7,2.5,1.8,1.2])
-    cols = st.columns([6,2,2,1,1])
+    cols = st.columns([6,2,2,0.8,1.2])
     with cols[0]:
         user_input = st.text_input(label = "Add any additional instructions (optional)" )
     with cols[1]:
@@ -630,7 +633,7 @@ def _design_tuning(evosys,project_dir):
     with cols[3]:
         st.write('')
         st.write('')
-        submit = st.button(label="***Run design***",disabled=mode!=DesignModes.MUTATION.value or st.session_state.listening_mode or st.session_state.evo_running)
+        submit = st.button(label="***Run***",disabled=mode!=DesignModes.MUTATION.value or st.session_state.listening_mode or st.session_state.evo_running,use_container_width=True)
     with cols[4]:
         st.write('')
         st.write('')

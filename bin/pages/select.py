@@ -49,7 +49,8 @@ def design_selector(evosys,project_dir):
     for i,source in enumerate(sources):
         with cols[i]:
             if source in ['DesignArtifact','DesignArtifactImplemented']:
-                n_sources[source] = st.number_input(label=f'{source} ({sources[source]})',min_value=0,value=n_sources[source])#,disabled=True)
+                _label=source if source=='DesignArtifact' else 'ImplementedDesign'
+                n_sources[source] = st.number_input(label=f'{_label} ({sources[source]})',min_value=0,value=n_sources[source])#,disabled=True)
             else:
                 n_sources[source] = st.number_input(label=f'{source} ({sources[source]})',min_value=0,value=n_sources[source],max_value=sources[source])#,disabled=True)
     

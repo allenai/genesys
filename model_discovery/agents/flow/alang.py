@@ -665,7 +665,7 @@ class AgentDialogFlow:
             self.flow_edges.append(StreamlitFlowEdge(f'{flow_id}-{children[0].id}',str(flow_id),str(children[0].id),animated=True,label=hint0))
             self.flow_edges.append(StreamlitFlowEdge(f'{flow_id}-{children[1].id}',str(flow_id),str(children[1].id),animated=True,label=hint1))
 
-    def export(self,height=1000,simplify=False):
+    def export(self,height=1000,simplify=False,light_mode=False):
         if simplify:
             for id in self.flow_nodes:
                 if id not in self.flow_nodes_simple:
@@ -679,6 +679,9 @@ class AgentDialogFlow:
             horizontal_spacing=300
             vertical_spacing=150
             node_node_spacing=450
+        style = {}
+        if light_mode:
+            style = {'backgroundColor': '#f0f0f0', 'textColor': '#000000'}
         return streamlit_flow(
             self.name, 
             list(flow_nodes.values()), 
@@ -698,7 +701,8 @@ class AgentDialogFlow:
             allow_new_edges=True, 
             get_node_on_click=True,
             # get_edge_on_click=True,
-            min_zoom=0.1
+            min_zoom=0.1,
+            style=style
         )
     
 #endregion

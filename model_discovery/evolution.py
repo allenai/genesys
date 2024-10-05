@@ -1055,7 +1055,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         else:
             return budgets
 
-    def get_design_vectors(self):
+    def get_design_vectors(self): # a more numerical representation of a design, selector to use
         designs=self.filter_by_type('DesignArtifactImplemented')
         design_vectors = {}
         for design in designs:
@@ -1069,7 +1069,8 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
             for scale in node.verifications:
                 verification_report = node.verifications[scale].verification_report
                 if 'training_record.csv' not in verification_report or 'system_metrics.csv' not in verification_report:
-                    verification_report.update(get_history_report(verification_report['wandb_ids.json']))
+                    if 'wandb_ids.json' in verification_report:
+                        verification_report.update(get_history_report(verification_report['wandb_ids.json']))
                 vector['verifications'][scale] = verification_report
             design_vectors[design] = vector
         return design_vectors
@@ -1098,19 +1099,35 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         U.mkdir(U.pjoin(sess_dir, 'log'))
         return sess_id
     
-    def get_unverified_designs(self,scale):
-        unverified=[]
+    def get_unverified_designs(self,scale=None,exclude={}): # exclude is a dict: {scale: [design_id, ...], ...}
+        unverified=[] if scale else {s:[] for s in self.target_scales}
         for acronym in self.filter_by_type('DesignArtifactImplemented'):
+            if acronym in exclude.get(scale,[]):
+                continue
             design=self.get_node(acronym)
-            if scale not in design.verifications:
-                unverified.append(acronym)
+            if scale:
+                if scale not in design.verifications:
+                    unverified.append(acronym)
+            else:
+                for scale in self.target_scales:
+                    if scale not in design.verifications:
+                        unverified[scale].append(acronym)
         return unverified
 
-    def get_unverified_scales(self,acronym): # from low to high
+    def get_unverified_scales(self,acronym=None,exclude_inv={}): # exclude_inv is a dict: {design_id: [scale, ...], ...}
+        if acronym:
+            return self._get_unverified_scales(acronym,exclude_inv.get(acronym,[]))
+        else:
+            unverified={}
+            for acronym in self.filter_by_type('DesignArtifactImplemented'):
+                unverified[acronym]=self._get_unverified_scales(acronym,exclude_inv.get(acronym,[]))
+            return unverified
+
+    def _get_unverified_scales(self,acronym,exclude_scales=[]): # from low to high
         unverified=[]
         design=self.get_node(acronym)
         for scale in self.target_scales:
-            if scale not in design.verifications:
+            if scale not in design.verifications and scale not in exclude_scales:
                 unverified.append(scale)
         unverified.sort(key=lambda x: int(x.replace('M','')))
         return unverified
@@ -1540,37 +1557,6 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         self.viz(G,max_nodes=max_nodes,height=height,layout=layout)
 
 
-def report_reader(report):
-    metrics={}
-    training_record=report['training_record.csv']
-    system_metrics=report['system_metrics.csv']
-    trainer_state=report['trainer_state.json']
-    eval_results=report['eval_results.json']
-    
-    metrics['perf']={}
-    metrics['perf']['total_train_flos']=trainer_state['total_flos']
-    metrics['perf']['total_eval_time']=float(eval_results['total_evaluation_time_seconds'])
-    metrics['perf']['num_params']=eval_results['config']['model_num_parameters']
-    metrics['eval']={}
-    for task in eval_results['results']:
-        res=eval_results['results'][task]
-        task_alias=res['alias']
-        if 'perplexity,none' in res:
-            metrics['eval'][f'{task_alias}_ppl']=-np.log2(res['perplexity,none']) # the lower the better
-        elif 'acc_norm,none' in res: 
-            metrics['eval'][f'{task_alias}_acc_norm']=res['acc_norm,none']
-        elif 'acc,none' in res:
-            metrics['eval'][f'{task_alias}_acc']=res['acc,none']
-    
-    report={
-        'metrics':metrics,
-        'training_record':training_record,
-        'system_metrics':system_metrics,
-    }
-    # TODO: add an analysis of the report by the Selector agent
-    return report
-
-
 
 
 class ConnectionManager:
@@ -1815,7 +1801,7 @@ class EvolutionSystem(exec_utils.System):
         evo_state['Seed Selection Method']=self.design_cfg.get('select_method','random')
         evo_state['Verification Strategy']=self.design_cfg.get('verify_strategy','random')
         evo_state['target_scales']=self.target_scales
-        evo_state['Remaining Verify Budget']=self.verify_budget
+        evo_state['Remaining Verify Budget']=self.selector.verify_budget
         evo_state['Remaining Design Budget']=self.design_budget
         evo_state['Design Cost Spent']=self.ptree.design_cost
         evo_state['Use Remote DB']=self.ptree.use_remote_db
@@ -1938,13 +1924,14 @@ class EvolutionSystem(exec_utils.System):
             if self.design_budget<=0:
                 return False
         elif action=='verify':
-            if sum(self.verify_budget.values())<=0:
+            if sum(self.selector.verify_budget.values())<=0:
                 return False
         else:
             raise ValueError(f"Invalid action: {action}")
         return True
         
     def evolve_step(self): # each time do one step, agent choose what to do, use shell to run it continuously 
+        raise NotImplementedError("Evolve step is still working in progress")
         # NOTE: sequential evolve is not considered for now, as it involves action policy which is complicated
         if not self.check_budget('design') and not self.check_budget('verify'):
             self.stream.write(f"No budget for design and verify, evolution stops, system sleeps, please terminate manually")

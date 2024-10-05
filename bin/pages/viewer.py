@@ -11,6 +11,7 @@ from streamlit_markmap import markmap
 from streamlit_timeline import timeline
 from enum import Enum
 import pandas as pd
+from streamlit_theme import st_theme
 
 sys.path.append('.')
 from model_discovery.agents.flow.alang import DialogTreeViewer
@@ -91,29 +92,39 @@ def _view_designs(evosys,design_artifacts,selected_design):
 
 def _view_sessions(evosys):
     st.title('Session Viewer')
-    st.write(evosys.evo_dir)
+    st.warning('This feature is not yet implemented')
 
 
 def _view_dialogs(evosys):
     st.title('ALang Dialog Viewer (Experimental)')
-    sess_dir = U.pjoin(evosys.evo_dir, 'db', 'sessions')
+
+    with st.sidebar:
+        evoname = st.selectbox("Select an evolution", list(os.listdir(U.pjoin(evosys.ckpt_dir))))
+
+    sess_dir = U.pjoin(evosys.ckpt_dir, evoname, 'db', 'sessions')
 
     if not os.path.exists(sess_dir):
         st.warning("No dialogs found in the log directory")
     else:
         dialogs = {}
         for d in os.listdir(sess_dir):
-            dialogs[d] = DialogTreeViewer(U.pjoin(sess_dir, d,'log'))
+            try:
+                dialogs[d] = DialogTreeViewer(U.pjoin(sess_dir, d,'log'))
+            except Exception as e:
+                dialogs[d+' (Failed to load)'] = str(e)
 
         if not dialogs:
             st.warning("No dialogs found in the log directory")
         else:
             selected_dialog = st.selectbox("Select a dialog", list(dialogs.keys()))
             dialog = dialogs[selected_dialog]
-            markmap(dialog.to_markmap(),height=300)
-            selected_thread = st.selectbox("Select a thread", list(dialog.threads.keys()))
-            thread = dialog.threads[selected_thread]
-            timeline(thread.to_timeline(),height=800)
+            if isinstance(dialog,str):
+                st.warning('Failed to load the dialog: '+dialog)
+            else:
+                markmap(dialog.to_markmap(),height=300)
+                selected_thread = st.selectbox("Select a thread", list(dialog.threads.keys()))
+                thread = dialog.threads[selected_thread]
+                timeline(thread.to_timeline(),height=800)
 
 
 
@@ -145,7 +156,8 @@ def _view_flows(evosys,selected_flow,flow):
     if simple_mode:
         col1, col2 = st.columns([2,1])
         with col1:
-            selected_id = flow.export(800,simplify=simple_mode)
+            light_mode = True
+            selected_id = flow.export(800,simplify=simple_mode,light_mode=light_mode)
 
         with col2:
             nodes=flow.nodes
@@ -160,11 +172,12 @@ def _view_flows(evosys,selected_flow,flow):
                     else:
                         st.markdown(f'### Node ID {node_id} does not have a source.')
                 else:
-                    st.markdown('### Select a code and view source here.')
+                    st.markdown('### Select a node to view the source of the node here.')
             else:
-                st.markdown('### Select a code and view source here.')
+                st.markdown('### Select a node to view the source of the node here.')
     else:
-        flow.export(800)
+        light_mode = True # st_theme()['base']=='light'
+        flow.export(800,light_mode=light_mode)
 
 
     st.markdown('## ALang Design Flow Source')

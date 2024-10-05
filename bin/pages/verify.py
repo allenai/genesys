@@ -469,7 +469,7 @@ def verify(evosys,project_dir):
     ##################################################################################
 
     st.header("Verify Designs")
-    col1,_,col2,_,col3,_,col4,col5,col6=st.columns([1,0.05,0.9,0.05,1.3,0.05,0.6,0.4,0.45])
+    col1,_,col2,_,col3,_,col4,col5,col6=st.columns([1,0.05,0.9,0.05,1.3,0.05,0.6,0.5,0.4])
     with col1:
         node_type=st.selectbox("Select Type",options=['Agent Designs (Implemented)','Human Baselines (Seed Tree)'])
         if node_type=='Agent Designs (Implemented)':
@@ -522,9 +522,9 @@ def verify(evosys,project_dir):
         st.write('')
         st.write('')
         if selected_design is not None:
-            check_tune_btn= st.button('*Check & Tune*',use_container_width=True,disabled=st.session_state.listening_mode or st.session_state.evo_running)
+            check_tune_btn= st.button('*Check*',use_container_width=True,disabled=st.session_state.listening_mode or st.session_state.evo_running)
         else:
-            check_tune_btn= st.button('*Check & Tune*',use_container_width=True,disabled=True)
+            check_tune_btn= st.button('*Check*',use_container_width=True,disabled=True)
 
     if len(verified)==0:
         st.info('No implemented designs found under this namespace.')
@@ -561,14 +561,14 @@ def verify(evosys,project_dir):
                             entity=wandb_ids['entity']
                             url=f'https://wandb.ai/{entity}/{project}/runs/{wandb_id}'
                             
-                        col1,col2,col3,col4,col5=st.columns([0.5,0.5,1,0.3,0.3])
+                        col1,col2,col3,col4,col5=st.columns([0.3,0.5,0.8,0.4,0.4])
                         with col1:
                             st.write(f"Run id: ```{wandb_id}```")
                         with col2:
                             st.write(f"Model name: **{design_id}**-*{scale}*")
                         with col3:
                             if url:
-                                st.write(f"W&B run: [{wandb_name}]({url})")
+                                st.write(f"W&B run: [{wandb_name.replace(f'{evosys.evoname}_','')[:10]}]({url})")
                         with col4:
                             resume_btn = st.button(f'Resume',key=f'btn_{design_id}_{scale}',disabled=st.session_state.listening_mode or st.session_state.evo_running) #,use_container_width=True):
                         with col5:
@@ -596,13 +596,13 @@ def verify(evosys,project_dir):
                             wandb_name='N/A'
                             wandb_id='N/A'
                             url='N/A'
-                        col1,col2,col3,col4,col5=st.columns([0.5,0.5,1,0.4,0.4])
+                        col1,col2,col3,col4,col5=st.columns([0.3,0.5,0.8,0.4,0.4])
                         with col1:
                             st.write(f"Run id: ```{wandb_id}```")
                         with col2:
                             st.write(f"Model: **{design_id}**-*{scale}*")
                         with col3:
-                            st.write(f"W&B run: [{wandb_name}]({url})")
+                            st.write(f"W&B run: [{wandb_name.replace(f'{evosys.evoname}_','')}]({url})")
                         with col4:
                             report_path=U.pjoin(evosys.evo_dir,'ve',id_scale,'report.json')
                             st.download_button(

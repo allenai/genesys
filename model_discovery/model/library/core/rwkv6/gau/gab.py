@@ -1,19 +1,18 @@
-
-# gab.py    # DO NOT CHANGE OR REMOVE THE MAKK HERE, KEEP IT ALWAYS THE FIRST LINE #
-
 import torch
 import torch.nn as nn
-
-from model_discovery.model.utils.modules import GABBase # DO NOT CHANGE THIS IMPORT STATEMENT #
+from model_discovery.model.utils.modules import GABBase
 
 
 class GAB(GABBase):
-    def __init__(self,embed_dim: int, block_loc: tuple, device=None,dtype=None,**kwargs): # YOU CAN ADD MORE ARGUMENTS, BUT YOU HAVE TO HAVE embed_dim, device, dtype AS THE ARGUTMENTS #
-        factory_kwargs = {"device": device, "dtype": dtype} # remember to pass it to nn layers
-        super().__init__(embed_dim, block_loc) # DO NOT CHANGE THIS LINE #
-        self.root = RWKV6(embed_dim=embed_dim, block_loc=block_loc, kwarg_all=kwargs, **factory_kwargs, **kwargs)
 
-    def _forward(self, X, **Z): 
+    def __init__(self, embed_dim: int, block_loc: tuple, device=None, dtype
+        =None, **kwargs):
+        factory_kwargs = {'device': device, 'dtype': dtype}
+        super().__init__(embed_dim, block_loc)
+        self.root = RWKV6(embed_dim=embed_dim, block_loc=block_loc,
+            kwarg_all=kwargs, **factory_kwargs, **kwargs)
+
+    def _forward(self, X, **Z):
         X, Z = self.root(X, **Z)
         return X, Z
 
@@ -47,10 +46,6 @@ class RWKV6(GAUBase):
         X = X2 + X
         return X
 
-
-CHILDREN_DECLARATIONS = [UnitDecl(unitname='RWKV6Attention', requirements=
-    '', inputs=['X'], outputs=['Y']), UnitDecl(unitname='RWKV6FeedForward',
-    requirements='', inputs=['X'], outputs=['Y'])]
 
 import torch.nn.functional as F
 
@@ -90,9 +85,6 @@ class RWKV6FeedForward(GAUBase):
         receptance = self.receptance(X, **{'delta': delta})[1]['o']
         return receptance.sigmoid() * value
 
-
-CHILDREN_DECLARATIONS = [UnitDecl(unitname='LerpLinear', requirements='',
-    inputs=['X', 'delta'], outputs=['Y'])]
 
 import torch.nn.functional as F
 from typing import Optional
@@ -142,9 +134,6 @@ class LerpLinear(GAUBase):
         return X, {'o': o}
 
 
-CHILDREN_DECLARATIONS = [UnitDecl(unitname='LoRA', requirements='', inputs=
-    ['X'], outputs=['Y'])]
-
 import torch.nn.functional as F
 from typing import Optional
 
@@ -177,8 +166,6 @@ class LoRA(GAUBase):
     def _forward(self, X, **Z):
         return X, {'o': self.lora(X)}
 
-
-CHILDREN_DECLARATIONS = []
 
 import torch.nn.functional as F
 from einops import rearrange
@@ -306,10 +293,6 @@ class RWKV6Attention(GAUBase):
         return o
 
 
-CHILDREN_DECLARATIONS = [UnitDecl(unitname='LerpLinear', requirements='',
-    inputs=['X', 'delta'], outputs=['Y']), UnitDecl(unitname='DDLerpLinear',
-    requirements='', inputs=['X', 'mu', 'delta'], outputs=['Y'])]
-
 import torch.nn.functional as F
 from typing import Optional
 
@@ -356,8 +339,20 @@ class DDLerpLinear(GAUBase):
         return x, {'o': o}
 
 
-CHILDREN_DECLARATIONS = [UnitDecl(unitname='LoRA', requirements='', inputs=
-    ['X'], outputs=['Y'])]
+gab_config = {'norm_eps': 1e-05, 'num_heads': 4, 'gate_fn': 'swish',
+    'proj_low_rank_dim': 32, 'gate_low_rank_dim': 64, 'elementwise_affine':
+    True}
 
 
-gab_config = {'norm_eps': 1e-05, 'num_heads': 4, 'gate_fn': 'swish', 'proj_low_rank_dim': 32, 'gate_low_rank_dim': 64, 'elementwise_affine': True}
+
+autoconfig={}
+block_config=gab_config
+block_config.update(autoconfig)
+
+
+from .block_registry import BlockRegister
+
+BlockRegister(
+    name="default",
+    config=block_config
+)(GAB)

@@ -153,8 +153,8 @@ def design_config(evosys):
                 'PROPOSAL_REVIEWER':'Proposal Reviewer',
                 'IMPLEMENTATION_PLANNER':'Implementation Planner',
                 'IMPLEMENTATION_CODER':'Implementation Coder',
-                'IMPLEMENTATION_OBSERVER':'Implementation Observer',
-                'SEARCH_ASSISTANT': '*Separate Search Assistant*'
+                'IMPLEMENTATION_OBSERVER':'Impl. Observer',
+                'SEARCH_ASSISTANT': '*Search Assistant*'
             }
             agent_types = {}
             cols = st.columns(len(agent_type_labels))
@@ -188,14 +188,14 @@ def design_config(evosys):
         threshold={}
         max_attempts = {}
         with col1:
-            st.markdown("##### Configure termination conditions and budgets")
+            st.markdown("##### Configure termination conditions and budgets (0 is no limit)")
             cols=st.columns(4)
             with cols[0]:
-                termination['max_failed_rounds'] = st.number_input(label="Max failed rounds (0 is no limit)",min_value=1,value=3)
+                termination['max_failed_rounds'] = st.number_input(label="Max failed rounds",min_value=1,value=3)
             with cols[1]:
-                termination['max_total_budget'] = st.number_input(label="Max total budget (0 is no limit)",min_value=0,value=0)
+                termination['max_total_budget'] = st.number_input(label="Max total budget",min_value=0,value=0)
             with cols[2]:
-                termination['max_debug_budget'] = st.number_input(label="Max debug budget (0 is no limit)",min_value=0,value=0)
+                termination['max_debug_budget'] = st.number_input(label="Max debug budget",min_value=0,value=0)
             with cols[3]:
                 max_attempts['max_search_rounds'] = st.number_input(label="Max search rounds",min_value=0,value=4)
         with col2:
@@ -214,11 +214,11 @@ def design_config(evosys):
             st.markdown("##### Configure max number of attempts")
             cols=st.columns(3)
             with cols[0]:
-                max_attempts['design_proposal'] = st.number_input(label="Max proposal attempts",min_value=3,value=5)
+                max_attempts['design_proposal'] = st.number_input(label="Proposal attempts",min_value=3,value=5)
             with cols[1]:
-                max_attempts['implementation_debug'] = st.number_input(label="Max debug attempts",min_value=3,value=5)
+                max_attempts['implementation_debug'] = st.number_input(label="Debug attempts",min_value=3,value=5)
             with cols[2]:
-                max_attempts['post_refinement'] = st.number_input(label="Max post refinements",min_value=0,value=0)
+                max_attempts['post_refinement'] = st.number_input(label="Post refinements",min_value=0,value=0)
         design_cfg['max_attempts'] = max_attempts
         with col2:
             num_samples={}
@@ -235,7 +235,7 @@ def design_config(evosys):
         with col3:
             st.markdown("##### Configure unittests")
             st.write('')
-            design_cfg['unittest_pass_required']=st.checkbox('Require passing unittests',value=design_cfg['unittest_pass_required'])
+            design_cfg['unittest_pass_required']=st.checkbox('Unittests pass required',value=design_cfg['unittest_pass_required'])
 
         st.button("Save and Apply",key='save_design_config',on_click=apply_design_config,args=(evosys,design_cfg),disabled=st.session_state.listening_mode or st.session_state.evo_running)   
 
@@ -430,7 +430,7 @@ def config(evosys,project_dir):
     design_config(evosys)
     
 
-    col1,col2,col3,_=st.columns([1.2,1,1,3])
+    col1,col2,col3,_=st.columns([1.2,1,1,2])
     with col1:
         st.subheader("Existing Experiments")
     with col2:
@@ -511,7 +511,7 @@ def config(evosys,project_dir):
         st.download_button(
             label="Download your config",
             data=dump_config(evosys),
-            file_name="config.json",
+            file_name=f"{evosys.evoname}_config.json",
             mime="text/json",
             use_container_width=True
         )

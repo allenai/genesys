@@ -154,16 +154,19 @@ def evolve(evosys,project_dir):
     
     
     if not st.session_state.evo_running:
-        if run_evo_btn:
-            with st.spinner('Launching...'):
-                command_center = CommandCenter(evosys,max_design_threads_total,max_design_threads_per_node,st)
-                command_center.build_connection()
-                st.session_state.command_center = command_center
-                st.session_state.command_center_thread = x_evolve(command_center)
-                st.session_state.evo_running = True
-                st.success(f"Evolution launched for {evosys.evoname}.")
-                time.sleep(3)
-                st.rerun()
+        if run_evo_btn:          
+            if len(evosys.CM.get_active_connections())==0:
+                st.toast('No listener connected, evolution will not start. Please launch listeners first.',icon='🚨')
+            else:
+                with st.spinner('Launching...'):
+                    command_center = CommandCenter(evosys,max_design_threads_total,max_design_threads_per_node,st)
+                    command_center.build_connection()
+                    st.session_state.command_center = command_center
+                    st.session_state.command_center_thread = x_evolve(command_center)
+                    st.session_state.evo_running = True
+                    st.success(f"Evolution launched for {evosys.evoname}.")
+                    time.sleep(3)
+                    st.rerun()
     else:
         if stop_evo_btn:
             if st.session_state.command_center:

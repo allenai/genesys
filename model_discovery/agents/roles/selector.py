@@ -1,5 +1,7 @@
 from typing import List, Tuple, Dict
 import random
+import copy
+import numpy as np
 
 import model_discovery.utils as U
 from model_discovery.system import DesignModes
@@ -96,6 +98,27 @@ class Selector:
                 nodes.extend(self.nodes2data(topk))
         return nodes
 
+    def report_to_metrics(report):
+        metrics={}
+        trainer_state=report['trainer_state.json']
+        eval_results=report['eval_results.json']
+        
+        metrics['perf']={}
+        metrics['perf']['total_train_flos']=trainer_state['total_flos']
+        metrics['perf']['total_eval_time']=float(eval_results['total_evaluation_time_seconds'])
+        metrics['perf']['num_params']=eval_results['config']['model_num_parameters']
+        metrics['eval']={}
+        for task in eval_results['results']:
+            res=eval_results['results'][task]
+            task_alias=res['alias']
+            if 'perplexity,none' in res:
+                metrics['eval'][f'{task_alias}_ppl']=-np.log10(res['perplexity,none']) # the lower the better
+            elif 'acc_norm,none' in res: 
+                metrics['eval'][f'{task_alias}_acc_norm']=res['acc_norm,none']
+            elif 'acc,none' in res:
+                metrics['eval'][f'{task_alias}_acc']=res['acc,none']
+        
+        return metrics
 
     def _get_design_scores(self):
         design_vectors = self.ptree.get_design_vectors()
@@ -104,29 +127,65 @@ class Selector:
 
     #########################  Select Verify  #########################
 
-    def select_verify(self,verify_strategy=None,exclude_list=[]):
-        if verify_strategy is None:
-            verify_strategy = self.select_cfg.get('verify_strategy',DEFAULT_SELECT_METHOD)
+    def _get_exclude(self,exclude_list):
         exclude={}
         for design_id,scale in exclude_list: # list of (design_id,scale) being verified by other nodes
             if scale not in exclude:
                 exclude[scale]=[]
             exclude[scale].append(design_id)
+        return exclude
+
+    def _get_exclude_inv(self,exclude_list):
+        exclude_inv={}
+        for design_id,scale in exclude_list: # list of (design_id,scale) being verified by other nodes
+            if design_id not in exclude_inv:
+                exclude_inv[design_id]=[]
+            exclude_inv[design_id].append(scale)
+        return exclude_inv
+
+    def _get_unverified_scale_designs(self,exclude_list):
+        exclude=self._get_exclude(exclude_list)
+        unverified_scale_designs=self.ptree.get_unverified_designs(exclude=exclude)
+        return unverified_scale_designs
+
+    def _get_unverified_design_scales(self,exclude_list):
+        exclude_inv=self._get_exclude_inv(exclude_list)
+        unverified_design_scales=self.ptree.get_unverified_scales(exclude_inv=exclude_inv)
+        return unverified_design_scales
+
+    def select_verify(self,verify_strategy=None,exclude_list=[]):
+        if verify_strategy is None:
+            verify_strategy = self.select_cfg.get('verify_strategy',DEFAULT_SELECT_METHOD)
+        exclude=self._get_exclude(exclude_list)
         if verify_strategy=='random':
-            for scale in self.available_verify_budget:
-                unverified=self.ptree.get_unverified_designs(scale)
-                unverified=[i for i in unverified if i not in exclude.get(scale,[])]
-                if len(unverified)==0:
-                    self.stream.write(f"No unverified design at scale {scale}.")
-                else:
-                    design_id=random.choice(unverified)
-                    return design_id,scale
+            return self.random_select_verify(exclude)
+        else:
+            raise ValueError(f"Invalid verify strategy: {verify_strategy}")
+
+    def random_select_verify(self,exclude_list=[]): # exclude_list is a list of (design_id,scale) being verified by other nodes
+        available_verify_budget=self.available_verify_budget
+        if len(available_verify_budget)==0:
+            self.stream.write(f"No available verify budget found.")
+            return None,None
+        unverified_scale_designs=self._get_unverified_scale_designs(exclude_list)
+        if len(unverified_scale_designs)==0:
             self.stream.write(f"No unverified design found at any scale.")
             return None,None
         else:
-            raise ValueError(f"Invalid verify strategy: {verify_strategy}")
-    
-    
+            jump_prob=self.select_cfg.get('jump_prob',0.1)
+            scale_idx=0
+            while True:
+                if scale_idx==len(available_verify_budget)-1:
+                    break
+                if random.random()<jump_prob:
+                    scale_idx+=1
+                else:
+                    break
+            scale=list(available_verify_budget.keys())[scale_idx]
+            design_id = random.choice(unverified_scale_designs[scale])
+            return design_id,scale
+
+
     @property
     def verify_budget(self):
         vb = self.ptree.budget_status(self._verify_budget)
@@ -147,7 +206,6 @@ class Selector:
             exceeded[scale]=used[scale]-self._verify_budget[scale]
         scales=list(exceeded.keys())
         scales.sort(key=lambda x:int(x.replace('M','')))
-        temporal_budget={}
 
         def dict_geq(d1,d2):
             for k in d1:

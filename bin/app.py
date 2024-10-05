@@ -9,6 +9,8 @@ import importlib
 import multiprocessing
 import model_discovery.utils as U
 from PIL import Image
+from streamlit_theme import st_theme
+
 import bin.app_utils as AU
 
 
@@ -146,9 +148,10 @@ if not DEPLOY_MODE:
     pages['Tester'] = tester
 
 titles=list(pages.keys())+['GitHub']
+_logo = 'storm.svg' if st_theme()['base']=='light' else 'storm_logo.svg'
 pg = st_navbar(
     titles,
-    logo_path=U.pjoin(current_dir,'assets','storm.svg'),
+    logo_path=U.pjoin(current_dir,'assets',_logo),
     styles=styles,
     urls=urls
 )

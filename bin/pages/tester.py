@@ -70,4 +70,14 @@ def tester(evosys,project_dir):
         st.info('No connections')
 
 
-    st.write(evosys.ptree.get_node('sparsitron-x'))
+    st.header('Design vectors')
+
+    design_vectors = evosys.ptree.get_design_vectors()
+    col1, col2 = st.columns([1,3])
+    with col1:
+        selected_design = st.selectbox('Select design',options=list(design_vectors.keys()))
+    with col2:
+        st.write('')
+        with st.expander('Design vectors'):
+            st.write(design_vectors[selected_design])
+    
