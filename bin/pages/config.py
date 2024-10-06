@@ -20,7 +20,8 @@ from model_discovery.agents.flow.gau_flows import DesignModes,RunningModes
 from model_discovery.evolution import DEFAULT_PARAMS,DEFAULT_N_SOURCES
 from model_discovery.agents.roles.selector import DEFAULT_SEED_DIST,SCHEDULER_OPTIONS
 from model_discovery.system import DEFAULT_AGENTS,DEFAULT_MAX_ATTEMPTS,DEFAULT_TERMINATION,\
-    DEFAULT_THRESHOLD,DEFAULT_SEARCH_SETTINGS,DEFAULT_NUM_SAMPLES,DEFAULT_MODE,DEFAULT_UNITTEST_PASS_REQUIRED
+    DEFAULT_THRESHOLD,DEFAULT_SEARCH_SETTINGS,DEFAULT_NUM_SAMPLES,DEFAULT_MODE,DEFAULT_UNITTEST_PASS_REQUIRED,\
+    AGENT_OPTIONS,DEFAULT_AGENT_WEIGHTS,DEFAULT_AGENT_WEIGHTS
 from model_discovery.agents.search_utils import DEFAULT_SEARCH_LIMITS,DEFAULT_RERANK_RATIO,\
     DEFAULT_PERPLEXITY_SETTINGS,DEFAULT_PROPOSAL_SEARCH_CFG
 
@@ -70,6 +71,16 @@ def apply_search_config(evosys,search_cfg):
     with st.spinner('Applying and saving search config...'):    
         evosys.reconfig(search_cfg=search_cfg)
         st.toast("Applied and saved search config")
+
+
+AGENT_TYPE_LABELS = {
+    'DESIGN_PROPOSER':'Proposal Agent',
+    'PROPOSAL_REVIEWER':'Proposal Reviewer',
+    'IMPLEMENTATION_PLANNER':'Impl. Planner',
+    'IMPLEMENTATION_CODER':'Implementation Coder',
+    'IMPLEMENTATION_OBSERVER':'Impl. Observer',
+    'SEARCH_ASSISTANT': '*Search Assistant*'
+}
 
 def design_config(evosys):
 
@@ -147,38 +158,22 @@ def design_config(evosys):
             mode = st.selectbox(label="Design Mode",options=[i.value for i in DesignModes],disabled=True)
         with col2:
             # st.markdown("#### Configure the base models for each agent")
-            AGENT_TYPES = ['claude3.5_sonnet','gpt4o_0806','gpt4o_mini']
-            agent_type_labels = {
-                'DESIGN_PROPOSER':'Proposal Agent',
-                'PROPOSAL_REVIEWER':'Proposal Reviewer',
-                'IMPLEMENTATION_PLANNER':'Impl. Planner',
-                'IMPLEMENTATION_CODER':'Implementation Coder',
-                'IMPLEMENTATION_OBSERVER':'Impl. Observer',
-                'SEARCH_ASSISTANT': '*Search Assistant*'
-            }
             agent_types = {}
-            cols = st.columns(len(agent_type_labels))
-            for i,agent in enumerate(agent_type_labels):
+            cols = st.columns(len(AGENT_TYPE_LABELS))
+            for i,agent in enumerate(AGENT_TYPE_LABELS):
                 with cols[i]:
                     index=0 
-                    options=AGENT_TYPES
+                    options=copy.deepcopy(AGENT_OPTIONS[agent])
                     if agent in ['SEARCH_ASSISTANT']:
-                        options=AGENT_TYPES+['None']
                         index=len(options)-1
                     elif agent in ['IMPLEMENTATION_OBSERVER']:
-                        options=AGENT_TYPES+['o1_preview','o1_mini','None']
                         index=len(options)-2
                     elif agent in ['IMPLEMENTATION_CODER']:
-                        options=['o1_preview','o1_mini']
                         index=len(options)-1
-                    elif agent in ['DESIGN_PROPOSER','PROPOSAL_REVIEWER','IMPLEMENTATION_PLANNER']: 
-                        options=AGENT_TYPES+['o1_preview','o1_mini']
-                        if agent in ['IMPLEMENTATION_CODER']:
-                            index=len(options)-1
-                        else:
-                            index=len(options)-1
-                    agent_types[agent] = st.selectbox(label=agent_type_labels[agent],options=options,index=index,disabled=agent=='SEARCH_ASSISTANT')
+                    options += ['hybrid']
+                    agent_types[agent] = st.selectbox(label=AGENT_TYPE_LABELS[agent],options=options,index=index,disabled=agent=='SEARCH_ASSISTANT')
             design_cfg['agent_types'] = agent_types
+        st.caption('***Note:** If you choose "hybrid", you will need to configure the weights for each agent below in advanced configs later.*')
 
         if mode!=DesignModes.MUTATION.value:
             st.toast("WARNING!!!: Only mutation mode is supported now. Other modes are not stable or unimplemented.")
@@ -393,11 +388,44 @@ def evosys_config(evosys):
     with st.expander("Verification Engine Settings",expanded=False,icon='⚙️'):
         st.write("**TODO**")
 
-    
+
+
+
+
+def advanced_config(evosys):
+    st.subheader("*Advanced Configurations*")
+
+    design_cfg=copy.deepcopy(evosys.design_cfg)
+    design_cfg['agent_weights']=U.safe_get_cfg_dict(design_cfg,'agent_weights',DEFAULT_AGENT_WEIGHTS)
+    with st.expander(f"Hybrid Agent Weights for ```{evosys.evoname}```",expanded=False,icon='🤖'):
+        cols=st.columns(5)
+        for i in range(5):
+            agent_type = list(AGENT_TYPE_LABELS.keys())[i]
+            with cols[i]:
+                st.write(f'###### {AGENT_TYPE_LABELS[agent_type]}')
+                for idx,option in enumerate(AGENT_OPTIONS[agent_type]):
+                    cur_weight=float(design_cfg['agent_weights'][agent_type][idx])
+                    design_cfg["agent_weights"][agent_type][idx]=st.number_input(option,min_value=0.0,max_value=1.0,value=cur_weight,step=0.05,key=f'agent_weight_{agent_type}_{idx}')
+                remaining_weight=1.0-sum(design_cfg['agent_weights'][agent_type])
+                if remaining_weight==0:
+                    st.success(f'Remaining weight: ```{remaining_weight:.2f}```')
+                elif remaining_weight>0:
+                    st.warning(f'Remaining weight: ```{remaining_weight:.2f}```')
+                else:
+                    st.error(f'Weights exceeded: ```{remaining_weight:.2f}```')
+        st.button("Save and Apply",key='save_agent_weights',
+            on_click=apply_design_config,args=(evosys,design_cfg),
+            disabled=st.session_state.evo_running,
+            help='Before a design thread is started, the agent type of each role will be randomly selected based on the weights.'
+        )   
+        
+
 
 def config(evosys,project_dir):
 
     st.title("Experiment Management")
+
+    st.info("**NOTE:** Remember to upload your config to make the changes permanent and downloadable for nodes.")
 
     if st.session_state.listening_mode:
         st.warning("**WARNING:** You are running in listening mode. Modifying configurations may cause unexpected errors to any running evolution.")
@@ -436,6 +464,7 @@ def config(evosys,project_dir):
     
     evosys_config(evosys)
     design_config(evosys)
+    advanced_config(evosys)
     
 
     col1,col2,col3,_=st.columns([1.2,1,1,2])

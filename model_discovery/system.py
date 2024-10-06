@@ -28,7 +28,8 @@ from exec_utils import (
 )
 from .agents.roles import *
 from .agents.flow.alang import AgentDialogManager
-from .agents.flow.gau_flows import gu_design_mutation,DesignModes,RunningModes
+from .agents.flow.gau_flows import gu_design_mutation,DesignModes,RunningModes,\
+    AGENT_TYPES,AGENT_OPTIONS,DEFAULT_AGENT_WEIGHTS
 from .agents.search_utils import SuperScholarSearcher
 
 import model_discovery.utils as U
@@ -365,7 +366,6 @@ DEFAULT_NUM_SAMPLES={
 }
 DEFAULT_UNITTEST_PASS_REQUIRED=False
 
-
 @exec_utils.Registry(
     resource_type="system_type",
     name="model_discovery_system",
@@ -510,6 +510,7 @@ class ModelDiscoverySystem(exec_utils.System):
         design_cfg['running_mode']=RunningModes(design_cfg.get('running_mode',DEFAULT_MODE))
         design_cfg['num_samples']=U.safe_get_cfg_dict(design_cfg,'num_samples',DEFAULT_NUM_SAMPLES)
         design_cfg['unittest_pass_required']=design_cfg.get('unittest_pass_required',DEFAULT_UNITTEST_PASS_REQUIRED)
+        design_cfg['agent_weights']=U.safe_get_cfg_dict(design_cfg,'agent_weights',DEFAULT_AGENT_WEIGHTS)
 
         self.sss.reconfig(search_cfg,stream)
         

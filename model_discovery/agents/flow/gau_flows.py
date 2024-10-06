@@ -5,6 +5,7 @@ import copy
 from dataclasses import dataclass
 from typing import Optional
 import datetime
+import random
 
 from exec_utils.models.model import ModelOutput
 from exec_utils import SimpleLMAgent
@@ -29,6 +30,23 @@ GAU_TEMPLATE=open(gau_template_path).read()
 GAU_BASE=inspect.getsource(GAUBase)
 GAB_BASE=inspect.getsource(GABBase)
 
+AGENT_TYPES = ['claude3.5_sonnet','gpt4o_0806','gpt4o_mini','o1_preview','o1_mini']
+AGENT_OPTIONS = {
+    'DESIGN_PROPOSER':AGENT_TYPES,
+    'PROPOSAL_REVIEWER':AGENT_TYPES,
+    'IMPLEMENTATION_PLANNER':AGENT_TYPES,
+    'IMPLEMENTATION_CODER':['o1_preview','o1_mini'],
+    'IMPLEMENTATION_OBSERVER':AGENT_TYPES+['None'],
+    'SEARCH_ASSISTANT':['claude3.5_sonnet','gpt4o_0806','gpt4o_mini','None']
+}
+
+DEFAULT_AGENT_WEIGHTS = {
+    'DESIGN_PROPOSER': [0.6,0.1,0,0.2,0.1],
+    'PROPOSAL_REVIEWER': [0.6,0.1,0,0.2,0.1],
+    'IMPLEMENTATION_PLANNER': [0.3,0.1,0,0.2,0.4],
+    'IMPLEMENTATION_CODER': [1,0],
+    'IMPLEMENTATION_OBSERVER': [0.1,0.1,0,0.1,0.7,0.0],
+} # THE ORDER MUST BE CORRESPONDING TO AGENT_OPTIONS
 
 @dataclass
 class AgentModelDef:
@@ -169,8 +187,14 @@ class GUFlowMutation(FlowCreator):
         self.agent_types=design_cfg['agent_types']     
         self.unittest_pass_required=design_cfg['unittest_pass_required']
         self.agents={}
-        for name,value in self.agent_types.items():
-            self.agents[name]=AgentModelDef(AGENT_TYPES[value],AGENT_TYPES_MODEL_NAMES[value])
+
+        with self.stream.status('Setting up agents'):
+            for name,agent_type in self.agent_types.items():
+                if agent_type == 'hybrid':
+                    weights=design_cfg['agent_weights'][name]
+                    agent_type=random.choices(AGENT_OPTIONS[name],weights=weights,k=1)[0]
+                    self.stream.write(f'Agent ```{name}``` is randomly selected as ```{agent_type}``` with hybrid weights ```{weights}```')
+                self.agents[name]=AgentModelDef(AGENT_TYPES[agent_type],AGENT_TYPES_MODEL_NAMES[agent_type])
 
         self.termination=design_cfg['termination']
         self.threshold=design_cfg['threshold']
