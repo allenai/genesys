@@ -78,10 +78,11 @@ parser.add_argument("--data_dir", type=str, default=None)
 parser.add_argument("--download_data_only", action='store_true')
 parser.add_argument("--logging_steps", type=int, default=5)
 parser.add_argument("--gab_name", type=str, default='default') ## name of gab block to use 
-parser.add_argument("--PERF_PROF_MODE", type=bool, default=False) # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
+parser.add_argument("--PERF_PROF_MODE", action='store_true') # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
 parser.add_argument("--gradient_accumulation_steps", type=int, default=1) # auto find batch size
 # parser.add_argument("--tune_lr_in_auto_bs", type=bool, default=False) # tune lr or tune grad accumulation steps, do not use it as it may change the behavior of training
 parser.add_argument("--auto_find_batch_size_hf", type=bool, default=False) # whether use hf auto_find_batch_size (fast but not stable) or custom one
+parser.add_argument("--RANDOM_TESTING", action='store_true') # whether use random testing
 
 # PATCH for the evolution
 parser.add_argument("--mode", type=str, default='test') # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
@@ -183,9 +184,8 @@ def setup(args) -> None:
 
 def before_train(args):
     start = time.perf_counter()
-
     gab,gab_config = BlockRegister.load_block(args.gab_name)
-    if args.PERF_PROF_MODE: # skip the following if in performance profiling mode
+    if args.PERF_PROF_MODE or args.RANDOM_TESTING: # skip the following if in performance profiling mode
         return args,gab,gab_config
         
     ## initialize wandb
@@ -228,7 +228,8 @@ def run_train(args,gab,gab_config,num_steps=None) -> None:
         config = eval(f"GAMConfig_{args.scale}()")
         model = ModisLMHeadModel(
             config, gab, dtype=torch.bfloat16, device="cuda",
-            block_config=gab_config
+            block_config=gab_config,
+            RANDOM_TESTING=args.RANDOM_TESTING
         ) # seems should not be bf16 for tf32 mode
         model.print_size()
     
@@ -385,7 +386,7 @@ def exec_profiler(trainer):
         # trace_handler(prof,False) # uncomment if not using on_trace_ready
 
 def after_train(args):
-    if args.PERF_PROF_MODE: return
+    if args.PERF_PROF_MODE or args.RANDOM_TESTING: return
     start=time.perf_counter()
     output_dir=f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}"
     history,system_metrics=get_history(wandb.run.id)
@@ -431,11 +432,12 @@ def run_eval(args):
     #     return
     print("Evaluation Start")
     cfg=eval(f"GAMConfig_{args.scale}()")
-    wandb_ids=U.load_json(f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}/wandb_ids.json")
-    wandb_ids['evaluate']={}
-    wandb_name=f"{args.evoname}_{args.design_id}_eval_{datetime.now().strftime('%Y%m%d%H%M%S')}"
-    wandb_ids['evaluate']['name'] = wandb_name
-    U.save_json(wandb_ids,f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}/wandb_ids.json")
+    if not args.RANDOM_TESTING:
+        wandb_ids=U.load_json(f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}/wandb_ids.json")
+        wandb_ids['evaluate']={}
+        wandb_name=f"{args.evoname}_{args.design_id}_eval_{datetime.now().strftime('%Y%m%d%H%M%S')}"
+        wandb_ids['evaluate']['name'] = wandb_name
+        U.save_json(wandb_ids,f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}/wandb_ids.json")
     
     sys.argv = [
         "",
@@ -447,8 +449,11 @@ def run_eval(args):
         "--max_batch_size", f"{cfg.eval_batch_size}",
         "--output_path", f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}/eval_results",
         "--cache_requests", "true", # refresh for debugging, true for normal 
-        "--wandb_args", f"project={args.wandb_project},entity={args.wandb_entity},name={wandb_name}"
     ]
+    if not args.RANDOM_TESTING:
+        sys.argv += [
+            "--wandb_args", f"project={args.wandb_project},entity={args.wandb_entity},name={wandb_name}"
+        ]
     gab,gab_config=BlockRegister.load_block(args.gab_name)
     free_port = find_free_port()
     util_logger.info(f"Using port for evaluation: {free_port}")
@@ -548,6 +553,14 @@ def main(args):
     """
     start = time.perf_counter()
     print(f"Starting run with args: {args}")
+    if args.RANDOM_TESTING:
+        args.evoname = "random"
+        args.design_id = "random"
+        args.scale = "14M"
+        args.gab_name = "random"
+        args.training_token_multiplier = 0
+        args.resume = False
+        print("Running random testing...")
     setup(args)
     train(args)
     evalu(args)

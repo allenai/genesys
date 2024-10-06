@@ -35,7 +35,7 @@ def design_selector(evosys,project_dir):
         st.write('###### Configure *Seed* Selection Distribution')
         cols = st.columns(3)
         with cols[0]:
-            seed_dist['scheduler'] = st.selectbox('Scheduler',options=SCHEDULER_OPTIONS,index=SCHEDULER_OPTIONS.index(seed_dist['scheduler']))
+            seed_dist['scheduler'] = st.selectbox('Annealing Scheduler',options=SCHEDULER_OPTIONS,index=SCHEDULER_OPTIONS.index(seed_dist['scheduler']))
         with cols[1]:
             seed_dist['restart_prob'] = st.slider('Restart Probability',min_value=0.0,max_value=1.0,step=0.01,value=seed_dist['restart_prob'])
         with cols[2]:

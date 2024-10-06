@@ -20,13 +20,20 @@ DEFAULT_SEED_DIST = {
 }
 SCHEDULER_OPTIONS = ['constant']
 
+DEFAULT_JUMP_PROB = {
+    '14M':[0.1,0.05,0.025], # 10% to 35, 5% to 70, 2.5% to 130, 82.5% to stay
+    '35M':[0.1,0.05], # 10% to 70, 5% to 130M, 85% to stay
+    '70M':[0.1], # 10% to 130M, 90% to stay
+}
+
 
 class Selector:
-    def __init__(self,ptree,select_cfg,_verify_budget,selection_ratio,stream):
+    def __init__(self,ptree,select_cfg,_verify_budget,selection_ratio,stream,allow_temporal_budget=True):
         self.ptree=ptree
         self.select_cfg=select_cfg
         self._verify_budget=_verify_budget
         self.selection_ratio=selection_ratio
+        self.allow_temporal_budget=allow_temporal_budget
         self.stream=stream
 
     #########################  Select Design  #########################
@@ -167,22 +174,28 @@ class Selector:
         if len(available_verify_budget)==0:
             self.stream.write(f"No available verify budget found.")
             return None,None
-        unverified_scale_designs=self._get_unverified_scale_designs(exclude_list)
-        if len(unverified_scale_designs)==0:
+        # unverified=self._get_unverified_scale_designs(exclude_list) # indexed by scale
+        unverified=self._get_unverified_design_scales(exclude_list) # indexed by design_id
+        if len(unverified)==0:
             self.stream.write(f"No unverified design found at any scale.")
             return None,None
         else:
-            jump_prob=self.select_cfg.get('jump_prob',0.1)
-            scale_idx=0
-            while True:
-                if scale_idx==len(available_verify_budget)-1:
-                    break
-                if random.random()<jump_prob:
-                    scale_idx+=1
-                else:
-                    break
-            scale=list(available_verify_budget.keys())[scale_idx]
-            design_id = random.choice(unverified_scale_designs[scale])
+            # select a random design
+            if 'jump_prob' not in self.select_cfg:
+                self.select_cfg['jump_prob']=DEFAULT_JUMP_PROB
+            for scale in DEFAULT_JUMP_PROB:
+                if scale not in self.select_cfg['jump_prob']:
+                    self.select_cfg['jump_prob'][scale]=DEFAULT_JUMP_PROB[scale]
+            design_id=random.choice(list(unverified.keys()))
+
+            available_scales=[]
+            for scale in unverified[design_id]:
+                if scale in available_verify_budget:
+                    available_scales.append(scale)
+            if len(available_scales)==0:
+                self.stream.write(f"No available verify scale found for design {design_id}.")
+                return None,None
+            scale=random.choice(available_scales)
             return design_id,scale
 
 

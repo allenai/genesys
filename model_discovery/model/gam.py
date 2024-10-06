@@ -332,6 +332,7 @@ class ModisLMHeadModel(PreTrainedModel):
         device=None,
         dtype=None,
         block_config = {},
+        RANDOM_TESTING=False,
     ) -> None:
         """Initializes LM model 
 
@@ -383,6 +384,7 @@ class ModisLMHeadModel(PreTrainedModel):
             )
         )
         self.tie_weights()
+        self.RANDOM_TESTING=RANDOM_TESTING
 
     def tie_weights(self):
         if self.config.tie_embeddings:
@@ -400,7 +402,8 @@ class ModisLMHeadModel(PreTrainedModel):
         if num_last_tokens > 0:
             hidden_states = hidden_states[:, -num_last_tokens:]
         lm_logits = self.lm_head(hidden_states)
-        # lm_logits = torch.rand_like(lm_logits).to(lm_logits.device, dtype=lm_logits.dtype) # FOR RANDOM TESTING
+        if self.RANDOM_TESTING:
+            lm_logits = torch.rand_like(lm_logits).to(lm_logits.device, dtype=lm_logits.dtype) # FOR RANDOM TESTING
         return CausalLMOutput(logits=lm_logits)
 
     @classmethod

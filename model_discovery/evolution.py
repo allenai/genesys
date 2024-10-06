@@ -1378,7 +1378,11 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         self.FM.upload_implementation(acronym,implementation.to_dict(),overwrite=True)
         self.FM.update_index()
 
-    def verify(self, acronym: str, scale: str, verification_report): # attach a verification report under a scale to an implemented node
+    def verify(self, acronym: str, scale: str, verification_report, RANDOM_TESTING=False): # attach a verification report under a scale to an implemented node
+        if RANDOM_TESTING:
+            eval_results = verification_report['eval_results.json']
+            self.remote_db.collection('random_baseline').document('eval_results').set(eval_results)
+            return
         design_artifact=self.get_node(acronym)
         acronym=design_artifact.acronym
         verification=Verification(scale=scale, verification_report=verification_report)
@@ -1677,7 +1681,7 @@ class ConnectionManager:
 
 
 
-def _verify(evoname,design_id,scale,resume=True, mult=20): # do a single verify
+def _verify(evoname,design_id,scale,resume=True, mult=20, RANDOM_TESTING=False): # do a single verify
     args = ve_parser.parse_args()
     args.evoname=evoname
     args.design_id=design_id+f'_{scale}'
@@ -1686,6 +1690,7 @@ def _verify(evoname,design_id,scale,resume=True, mult=20): # do a single verify
     args.data_dir=os.environ.get("DATA_DIR")
     args.resume=resume
     args.training_token_multiplier=mult
+    args.RANDOM_TESTING=RANDOM_TESTING
     ve_main(args)
 
 
@@ -2042,17 +2047,20 @@ class EvolutionSystem(exec_utils.System):
         else:
             raise ValueError(f"Invalid action policy: {self.action_policy}")
 
-    def verify(self,design_id=None,scale=None,resume=True,in_process=False): # choose then verify
+    def verify(self,design_id=None,scale=None,resume=True,in_process=False, RANDOM_TESTING=False): # choose then verify
         if design_id is None:
             design_id,scale=self.selector.select_verify()
         if design_id is None:
             return None
         self.stream.write(f"Verifying design {design_id} at scale {scale}...")
         mult=self.get_train_budget(self.ptree.get_node(design_id))
-        _verify(self.evoname,design_id,scale,resume=resume, mult=mult) # verify the design until it's done
-        report_dir=U.pjoin(self.evo_dir,'ve',design_id+f'_{scale}','report.json')
+        _verify(self.evoname,design_id,scale,resume=resume, mult=mult, RANDOM_TESTING=RANDOM_TESTING) # verify the design until it's done
+        if RANDOM_TESTING:
+            report_dir=U.pjoin(self.ckpt_dir,'random','ve','random','report.json')
+        else:
+            report_dir=U.pjoin(self.evo_dir,'ve',design_id+f'_{scale}','report.json')
         report=U.load_json(report_dir)
-        self.ptree.verify(design_id,scale,report)
+        self.ptree.verify(design_id,scale,report,RANDOM_TESTING=RANDOM_TESTING)
         if in_process:
             sys.exit(0)
         if report!={}: 
@@ -2173,7 +2181,7 @@ if __name__ == '__main__':
         if args.mode=='prep_model':
             evolution_system._prep_model(args.design_id, args.scale)
         elif args.mode=='verify':
-            evolution_system.verify(args.design_id, args.scale, resume=args.resume,in_process=True)
+            evolution_system.verify(args.design_id, args.scale, resume=args.resume,in_process=True, RANDOM_TESTING=args.RANDOM_TESTING)
         elif args.mode=='design':
             sess_id=None if args.sess_id=='' else args.sess_id
             evolution_system.design(sess_id=sess_id,in_process=True)

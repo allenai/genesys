@@ -801,7 +801,13 @@ class GUFlowMutation(FlowCreator):
         acronyms=[] 
         rerank=self.ptree.session_get(self.sess_id,'reranked')
         if not rerank:
-            proposals,acronyms=self.ptree.session_proposals(self.sess_id,passed_only=True)
+            _proposals,_acronyms=self.ptree.session_proposals(self.sess_id,passed_only=True)
+            proposals=[]
+            acronyms=[]
+            for i,acronym in enumerate(_acronyms):
+                if acronym not in acronyms: # why it happens at all???
+                    proposals.append(_proposals[i])
+                    acronyms.append(acronym)
             rerank=self.rerank_proposals(proposals,acronyms)
             self.ptree.session_set(self.sess_id,'reranked',rerank)
         for acronym in rerank['rank']:
@@ -1298,7 +1304,7 @@ class GUFlowMutation(FlowCreator):
                         for unit_name,docstring in docstrings.items():
                             if unit_name in self.tree.units: # the unit is already implemented
                                 format_errors.append(f'The unit {unit_name} has already been implemented. Please do not implement the same unit twice. If the existing unit can already meet your needs, please reuse it. If you are going to modify the existing unit, please provide a new name for the unit.')
-                            if unit_name not in self.tree.declares and unit_name not in self.tree.units: # if it is a new local root, then it is declared above, otherwise, it should be declared as a child
+                            if unit_name not in self.tree.declares:# and unit_name not in self.tree.units: # if it is a new local root, then it is declared above, otherwise, it should be declared as a child
                                 format_errors.append(f'A new implemented unit {unit_name} has not been declared. May cause errors when linking the units.')
                                 declaration=UnitDecl(
                                     unitname=unit_name,
