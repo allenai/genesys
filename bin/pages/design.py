@@ -1,7 +1,7 @@
 import json
 import time
 import pathlib
-from datetime import datetime
+import datetime
 import streamlit as st
 from streamlit.runtime.scriptrunner import add_script_run_ctx
 import sys,os
@@ -32,7 +32,7 @@ def do_log(log_ref,timestamp,log):
 def design_command(node_id, evosys, evoname, resume=True, cli=False, cpu_only=False):
     sess_id,pid =_design_command(node_id, evosys, evoname, resume, cli, cpu_only)
     log_ref = evosys.remote_db.collection('experiment_logs').document(evoname)
-    timestamp = datetime.now().strftime('%B %d, %Y at %I:%M:%S %p %Z')+'_'+str(uuid.uuid4())
+    timestamp = datetime.datetime.now().strftime('%B %d, %Y at %I:%M:%S %p %Z')+'_'+str(uuid.uuid4())
     if sess_id:
         log=f'Node {node_id} running design thread with session id {sess_id}'
         do_log(log_ref,timestamp,log)
@@ -56,7 +56,7 @@ def _design_command(node_id, evosys, evoname, resume=True, cli=False, cpu_only=F
         if len(unfinished_designs) > 0:
             sess_id = random.choice(unfinished_designs)
     sess_id,pid = run_design_thread(evosys, sess_id, params, cli=cli, cpu_only=cpu_only)
-    timestamp=datetime.now().strftime('%B %d, %Y at %I:%M:%S %p %Z')+'_'+str(uuid.uuid4())
+    timestamp=datetime.datetime.now().strftime('%B %d, %Y at %I:%M:%S %p %Z')+'_'+str(uuid.uuid4())
     if sess_id:
         log=f'Node {node_id} running design thread with session id {sess_id}'
         log_ref.set({
@@ -84,7 +84,7 @@ def design_daemon(evosys, evoname, sess_id, node_id, pid):
                 # Update heartbeat
                 if process.status() == psutil.STATUS_ZOMBIE:
                     log = f'Node {node_id} detected zombie process {pid} for {sess_id}'
-                    do_log(log_ref,datetime.now().strftime('%B %d, %Y at %I:%M:%S %p %Z')+'_'+str(uuid.uuid4()),log)
+                    do_log(log_ref,datetime.datetime.now().strftime('%B %d, %Y at %I:%M:%S %p %Z')+'_'+str(uuid.uuid4()),log)
                     break
                 elif process.status() in [psutil.STATUS_DEAD, psutil.STATUS_STOPPED]:
                     break
@@ -94,7 +94,7 @@ def design_daemon(evosys, evoname, sess_id, node_id, pid):
                     time.sleep(60)  # Check every minute for active processes
             except psutil.NoSuchProcess:
                 log = f'Node {node_id} lost track of design process {pid} for {sess_id}'
-                do_log(log_ref,datetime.now().strftime('%B %d, %Y at %I:%M:%S %p %Z')+'_'+str(uuid.uuid4()),log)
+                do_log(log_ref,datetime.datetime.now().strftime('%B %d, %Y at %I:%M:%S %p %Z')+'_'+str(uuid.uuid4()),log)
                 raise psutil.NoSuchProcess(pid)
 
         # Check if the process completed successfully
@@ -107,11 +107,11 @@ def design_daemon(evosys, evoname, sess_id, node_id, pid):
         except psutil.TimeoutExpired:
             log = f'Node {node_id} failed to get exit code for design process {pid} for {sess_id}'
         
-        do_log(log_ref,datetime.now().strftime('%B %d, %Y at %I:%M:%S %p %Z')+'_'+str(uuid.uuid4()),log)
+        do_log(log_ref,datetime.datetime.now().strftime('%B %d, %Y at %I:%M:%S %p %Z')+'_'+str(uuid.uuid4()),log)
 
     except Exception as e:
         log = f'Node {node_id} encountered an error during design process {pid} for {sess_id}: {str(e)}'
-        do_log(log_ref,datetime.now().strftime('%B %d, %Y at %I:%M:%S %p %Z')+'_'+str(uuid.uuid4()),log)
+        do_log(log_ref,datetime.datetime.now().strftime('%B %d, %Y at %I:%M:%S %p %Z')+'_'+str(uuid.uuid4()),log)
     
     return sess_id, pid
 
@@ -121,7 +121,7 @@ def design_daemon(evosys, evoname, sess_id, node_id, pid):
 
 
 def _gen_sess_id():
-    return f"{datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}-{uuid.uuid4().hex[:6]}"
+    return f"{datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}-{uuid.uuid4().hex[:6]}"
 
 def _run_design_thread(evosys,sess_id=None,params=None, cpu_only=False):
     if params is None:
@@ -327,47 +327,68 @@ def _design_engine(evosys,project_dir):
     else:
         st.write('')
 
+    with st.sidebar:
+        analyze_btn = st.button('🔍 *Analyze Sessions*',use_container_width=True)
+
+    if analyze_btn:
+        all_logs = []
+        local_sessions = os.listdir(U.pjoin(evosys.ptree.db_dir,'sessions'))
+        for sess in local_sessions:
+            log_dir = U.pjoin(evosys.ptree.db_dir,'sessions',sess,'log')
+            for log_file in os.listdir(log_dir):
+                if log_file.endswith('.log'):
+                    all_logs.append(load_log(U.pjoin(log_dir,log_file)))
+        with st.status('Analyzing sessions...'):
+            st.write(f'###### Design sessions in this node for ```{evosys.evoname}```')
+            st.write(f'Total number of sessions: {len(local_sessions)}')
+            st.write(f'Total number of logs: {len(all_logs)}')
+            stat_logs(all_logs)
+
 
 #################################################
 
 def stat_logs(logs):
     end_reasons = {}
     end_labels = {}
-    for reason in EndReasons:
-        end_reasons[reason] = 0
     for _,label in END_REASONS_LABELS.items():
         end_labels[label] = 0
+    end_reasons[str(EndReasons.UNFINISHED)] = 0
     for log in logs:
         unfinished = True
-        for _,text,type in log:
-            if type=='end':
+        for _log in log:
+            if _log[2]=='end':
                 unfinished=False
-                end_reasons[text] += 1
+                reason = str(_log[1])
+                if reason not in end_reasons:
+                    end_reasons[reason] = 0
+                end_reasons[reason] += 1
         if unfinished:
-            end_reasons[EndReasons.UNFINISHED] += 1
+            end_reasons[str(EndReasons.UNFINISHED)] += 1
     
-    end_ratios = {i:num/sum(end_reasons.values()) for i,num in end_reasons.items()}
-    for i in end_reasons:
-        end_labels[END_REASONS_LABELS[i]] += end_reasons[i]
-    end_label_ratios = {i:num/sum(end_labels.values()) for i,num in end_labels.items()}
+    st.write(end_reasons)
+
+    # end_ratios = {i:num/sum(end_reasons.values()) for i,num in end_reasons.items()}
+    # for i in end_reasons:
+    #     end_labels[END_REASONS_LABELS[i]] += end_reasons[i]
+    # end_label_ratios = {i:num/sum(end_labels.values()) for i,num in end_labels.items()}
 
 
-    col1,col2=st.columns([1,1])
+    # col1,col2=st.columns([1,1])
     
-    with col1:
-        st.write('###### Total number of runs: ',sum(end_reasons.values()))
-        st.write('###### Success rate')
-        for reason in end_label_ratios:
-            count = end_labels[reason]
-            ratio = end_label_ratios[reason]
-            st.write(f"{reason}: {count} ({ratio*100:.2f}%)")
+    # with col1:
+    #     st.write('###### Total number of runs: ',sum(end_reasons.values()))
+    #     st.write('###### Success rate')
+    #     for reason in end_label_ratios:
+    #         count = end_labels[reason]
+    #         ratio = end_label_ratios[reason]
+    #         st.write(f"{reason}: {count} ({ratio*100:.2f}%)")
             
-    with col2:
-        st.write('###### End reasons')
-        for reason in end_ratios:
-            count = end_reasons[reason]
-            ratio = end_ratios[reason]
-            st.write(f"{reason.value}: {count} ({ratio*100:.2f}%)")
+    # with col2:
+    #     st.write('###### End reasons')
+    #     for reason in end_ratios:
+    #         count = end_reasons[reason]
+    #         ratio = end_ratios[reason]
+    #         st.write(f"{reason.value}: {count} ({ratio*100:.2f}%)")
     
 def show_log(log):
     # four types: enter, exit, write, markdown
@@ -427,7 +448,7 @@ def load_log(log_file):
         try:  
             log.append(eval(line))
         except Exception as e:
-            log.append((datetime.now(),f'ERROR IN LOG LINE: {line}\n\n{e}','error'))
+            log.append((datetime.datetime.now(),f'ERROR IN LOG LINE: {line}\n\n{e}','error'))
     return log
 
 
@@ -547,7 +568,7 @@ def _design_tuning(evosys,project_dir):
         design_cfg['threshold'] = threshold 
 
 
-        col1,col2,col3=st.columns([4,5,2])
+        col1,col2,col3=st.columns([4,2,5])
         with col1:
             st.markdown("##### Configure max number of attempts")
             cols=st.columns(3)
@@ -557,13 +578,20 @@ def _design_tuning(evosys,project_dir):
                 max_attempts['implementation_debug'] = st.number_input(label="Debug attempts",min_value=3,value=5)
             with cols[2]:
                 max_attempts['post_refinement'] = st.number_input(label="Post refinements",min_value=0,value=0)
+        design_cfg['max_attempts'] = max_attempts
+
         with col2:
-            st.markdown("##### Re-show previous runs *(work in progress)*")
-            cols=st.columns([2,2,3])
+            st.markdown("##### Configure unittests")
+            st.write('')
+            design_cfg['unittest_pass_required']=st.checkbox('Unittests pass required',value=False)#,help='Whether require the coder to pass self-generated unit tests before the code is accepted.')
+
+        with col3:
+            st.markdown("##### :orange[*View previous runs*]")
+            cols=st.columns([2,2,2,1])
             with cols[0]:
-                ckpts=os.listdir(evosys.ckpt_dir)
+                ckpts=[i for i in os.listdir(evosys.ckpt_dir) if i!='.node.json']
                 current_ckpt = evosys.evoname
-                selected_ckpt = st.selectbox(label="Select a ckpt",options=ckpts,index=ckpts.index(current_ckpt),disabled=True)
+                selected_ckpt = st.selectbox(label="Select folder",options=ckpts,index=ckpts.index(current_ckpt))
                 db_dir = U.pjoin(evosys.ckpt_dir,selected_ckpt,'db')
             with cols[1]:
                 folders=['']
@@ -571,20 +599,20 @@ def _design_tuning(evosys,project_dir):
                     for i in os.listdir(U.pjoin(db_dir,'sessions')):
                         if os.path.isdir(U.pjoin(db_dir,'sessions',i,'log')):
                             folders.append(i)
-                selected_folder = st.selectbox(label="**View folder stats**",options=folders,disabled=True)
+                selected_folder = st.selectbox(label="Select session",options=folders)
                 selected_folder_dir = U.pjoin(db_dir,'sessions',selected_folder,'log')
             with cols[2]:
-                designs=['']
+                design_logs=['']
                 if selected_folder and os.path.exists(selected_folder_dir):
-                    designs += os.listdir(selected_folder_dir)
+                    design_logs += [i for i in os.listdir(selected_folder_dir) if i.endswith('.log')]
                 folder_name = selected_folder if selected_folder else 'No folder selected'
-                selected_design = st.selectbox(label=f"***View runs in selected folder***",options=designs,disabled=True)
-        design_cfg['max_attempts'] = max_attempts
-        with col3:
-            st.markdown("##### Configure unittests")
-            st.write('')
-            design_cfg['unittest_pass_required']=st.checkbox('Unittests pass required',value=False)
-
+                selected_design_log = st.selectbox(label=f"Select log file",options=design_logs)
+                if selected_design_log:
+                    selected_design_log_path = U.pjoin(selected_folder_dir,selected_design_log)
+            with cols[3]:
+                st.write('')
+                st.write('')
+                view_log_btn = st.button("*View*",disabled=selected_design_log=='')
 
     with st.expander("Search Settings",expanded=False):
         search_cfg={}
@@ -660,28 +688,24 @@ def _design_tuning(evosys,project_dir):
                 select_cfg={'n_sources':n_sources}
                 evosys.design(select_cfg,design_cfg,search_cfg,user_input=user_input,mode=_mode,sess_id=sess_id,resume=resume)
     
-    elif selected_design:
-        with st.empty():
-            st.markdown(f'### Viewing design log for session: *{selected_design}*...')
-        log=eval(U.read_file(U.pjoin(selected_folder_dir,'stream.log')))
-        show_log(log)
-    
-    elif selected_folder:
-        with st.empty():
-            st.subheader(f'Viewing statistics for experiment folder: *{selected_folder}*')
-        if not U.pexists(selected_folder_dir):
-            st.write('No runs in this folder.')
-        else:
-            logs=[]
-            for session in os.listdir(selected_folder_dir):
-                log=eval(U.read_file(U.pjoin(selected_folder_dir,'stream.log')))
-                logs.append(log)
-            stat_logs(logs)
+    elif view_log_btn:
+        show_log(load_log(selected_design_log_path))
+
     else:
         st.info(f'**NOTE:** All settings here will only be applied to this design session. The design will be based on and saved to the running namespace ```{evosys.evoname}```.')
 
-
-
+    
+    # elif selected_folder:
+    #     with st.empty():
+    #         st.subheader(f'Viewing statistics for experiment folder: *{selected_folder}*')
+    #     if not U.pexists(selected_folder_dir):
+    #         st.write('No runs in this folder.')
+    #     else:
+    #         logs=[]
+    #         for session in os.listdir(selected_folder_dir):
+    #             log=eval(U.read_file(U.pjoin(selected_folder_dir,'stream.log')))
+    #             logs.append(log)
+    #         stat_logs(logs)
 
 
 def design(evosys,project_dir):

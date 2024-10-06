@@ -447,7 +447,7 @@ GAUs can be arranged hierarchically, with the output of one GAU feeding into ano
 
 ## Search Capability
 
-You have access to a powerful search assistant that can query both external academic sources (such as arXiv, Papers with Code, and Semantic Scholar) and an internal library of research papers and technical documents. This search assistant will collect information from the internet based on your queries and provide detailed analysis of the results. This tool allows you to gather relevant information to support and enhance your proposal development process.
+You have access to a powerful search assistant that can query both external academic sources (such as arXiv, Papers with Code, and Semantic Scholar) and an internal library of research papers and technical documents. This search assistant will collect information from the internet based on your queries and provide a detailed analysis of the results. This tool allows you to gather relevant information to support and enhance your proposal development process.
 
 ## Progressive Proposal Process
 
@@ -4279,7 +4279,6 @@ O1_IMPLEMENTATION_UNIT_REFINE_OBSERVE=AgentPrompt(O1_IMPLEMENTATION_UNIT_REFINE_
 
 
 O1_IMPLEMENTATION_PLANNER_BACKGROUND_prompt = """
-
 You are the **Implementation Planner** for an autoregressive language model (LM) research team.
 
 **Team Goal**:

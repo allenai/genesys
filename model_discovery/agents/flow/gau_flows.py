@@ -319,6 +319,7 @@ class GUFlowMutation(FlowCreator):
         self.stream.write(f'###### **Current time: {datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}**')
 
         USE_2STAGE=self.search_settings['proposal_search']
+        # Iterative Search is default now, designed for claude, utilizing cache mechanism
         USE_ISEARCH=self.agent_types['SEARCH_ASSISTANT']=='None' and USE_2STAGE 
         USE_2STAGE=USE_2STAGE and not USE_ISEARCH
         USE_O1_PROPOSER='o1' in self.agent_types['DESIGN_PROPOSER']
@@ -922,7 +923,7 @@ class GUFlowMutation(FlowCreator):
 
         assert USE_O1_CODER, 'Non-o1 coders are buggy now, please use o1 coders'
 
-        context_implementation_planner=AgentContext() # context accummulated for all attempts in one unit
+        context_implementation_planner=AgentContext() 
         o1_planner_context=AgentContext()
 
         post_refinement=0 # TODO: introduce self-evaluate to post-refinement
@@ -956,11 +957,15 @@ class GUFlowMutation(FlowCreator):
 
             ################# SELECTING THE NEXT UNIT TO WORK ON #################
             
+            # if USE_O1_PLANNER:
+            #     GUMT_IMPLEMENTATION_PLANNER_SYSTEM=P.O1_IMPLEMENTATION_PLANNER_BACKGROUND
+            #     context_implementation_planner=copy.deepcopy(o1_planner_context)
+            # else:
+            #     GUMT_IMPLEMENTATION_PLANNER_SYSTEM=P.gen_GUMT_IMPLEMENTATION_PLANNER_SYSTEM(use_o1=USE_O1_CODER)
+            
+            GUMT_IMPLEMENTATION_PLANNER_SYSTEM=P.O1_IMPLEMENTATION_PLANNER_BACKGROUND
             if USE_O1_PLANNER:
-                GUMT_IMPLEMENTATION_PLANNER_SYSTEM=P.O1_IMPLEMENTATION_PLANNER_BACKGROUND
                 context_implementation_planner=copy.deepcopy(o1_planner_context)
-            else:
-                GUMT_IMPLEMENTATION_PLANNER_SYSTEM=P.gen_GUMT_IMPLEMENTATION_PLANNER_SYSTEM(use_o1=USE_O1_CODER)
             IMPLEMENTATION_PLANNER=reload_role('implementation_planner',self.agents['IMPLEMENTATION_PLANNER'],GUMT_IMPLEMENTATION_PLANNER_SYSTEM(
                 GAB_BASE=GAB_BASE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE,SELECTION=proposal.selection,
                 PROPOSAL=proposal.proposal,REVIEW=proposal.review,RATING=proposal.rating))
