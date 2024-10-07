@@ -167,8 +167,8 @@ pages = {
     'Config': config,
     'Listen': listen,
 }
-if not DEPLOY_MODE:
-    pages['Tester'] = tester
+# if not DEPLOY_MODE:
+#     pages['Tester'] = tester
 
 titles=list(pages.keys())+['GitHub']
 _logo = 'storm.svg' if st_theme()['base']=='light' else 'storm_logo.svg'

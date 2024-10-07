@@ -985,6 +985,10 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
             self.FM.sync_from_db()
         self.load()
 
+        random_baseline = self.remote_db.collection('random_baseline').document('eval_results.json').get()
+        self.random_baseline = random_baseline.to_dict() if random_baseline.exists else {}
+        assert self.random_baseline, 'No random baseline eval results found, please run `bash scripts/run_verify.sh --RANDOM_TESTING` first'
+            
     # new design: proposal -> implement -> verify
 
     # def reload(self): # why do we need this at all??
@@ -1056,25 +1060,35 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         else:
             return budgets
 
-    def get_design_vectors(self): # a more numerical representation of a design, selector to use
-        designs=self.filter_by_type('DesignArtifactImplemented')
+    def get_design_vectors(self,is_baseline=False): # a more numerical representation of a design, selector to use
+        if is_baseline:
+            designs=self.filter_by_type(['ReferenceCore','ReferenceCoreWithTree'])
+        else:
+            designs=self.filter_by_type('DesignArtifactImplemented')
         design_vectors = {}
         for design in designs:
-            vector = {}
-            node = self.get_node(design)
+            design_vectors[design] = self.get_design_vector(design,is_baseline)
+        return design_vectors
+
+    def get_design_vector(self,acronym,is_baseline=False):
+        vector = {}
+        node = self.get_node(acronym)
+        if not is_baseline:
             vector['proposal_rating'] = node.proposal.rating
             vector['units'] = {}
             for unit_name, unit in node.implementation.implementation.units.items():
                 vector['units'][unit_name] = unit.rating
-            vector['verifications'] = {}
-            for scale in node.verifications:
-                verification_report = node.verifications[scale].verification_report
-                if 'training_record.csv' not in verification_report or 'system_metrics.csv' not in verification_report:
-                    if 'wandb_ids.json' in verification_report:
-                        verification_report.update(get_history_report(verification_report['wandb_ids.json']))
-                vector['verifications'][scale] = verification_report
-            design_vectors[design] = vector
-        return design_vectors
+        vector['verifications'] = {}
+        for scale in node.verifications:
+            verification_report = node.verifications[scale].verification_report
+            if 'training_record.csv' not in verification_report or 'system_metrics.csv' not in verification_report:
+                if 'wandb_ids.json' in verification_report:
+                    verification_report.update(get_history_report(verification_report['wandb_ids.json']))
+            vector['verifications'][scale] = verification_report
+        return vector
+
+    def get_baseline_vectors(self):
+        return self.get_design_vectors(is_baseline=True)
 
     # How to handle variants? i.e., in GPT, there are optional pre-conv and post-conv, maybe just all of them to the tree, let selector to choose
 
@@ -1381,7 +1395,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
     def verify(self, acronym: str, scale: str, verification_report, RANDOM_TESTING=False): # attach a verification report under a scale to an implemented node
         if RANDOM_TESTING:
             eval_results = verification_report['eval_results.json']
-            self.remote_db.collection('random_baseline').document('eval_results').set(eval_results)
+            self.remote_db.collection('random_baseline').document('eval_results.json').set(eval_results)
             return
         design_artifact=self.get_node(acronym)
         acronym=design_artifact.acronym

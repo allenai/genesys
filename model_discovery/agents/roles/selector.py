@@ -27,6 +27,46 @@ DEFAULT_JUMP_PROB = {
 }
 
 
+
+DEFAULT_CONFIDENCE_POINTS = {
+    'proposed': 1,
+    'implemented': 1,
+    '14M': 1,
+    '31M': 2,
+    '70M': 3,
+    '125M': 4,
+    '350M': 5,
+    '760M': 6,
+    '1300M': 7,
+    '2700M': 8,
+    '6700M': 9,
+    '13B': 10,
+    '175B': 11,
+    '1T': 12,
+    'units_placeholder': 20,
+}
+
+
+DEFAULT_SCALE_WEIGHTS = {
+    '14M': 1,
+    '31M': 2,
+    '70M': 3,
+    '125M': 4,
+    '350M': 5,
+    '760M': 6,
+    '1300M': 7,
+    '2700M': 8,
+    '6700M': 9,
+    '13B': 10,
+    '175B': 11,
+    '1T': 12,
+}
+
+
+DEFAULT_RANDOM_EVAL_THRESHOLD = 0.02
+
+
+
 class Selector:
     def __init__(self,ptree,select_cfg,_verify_budget,selection_ratio,stream,allow_temporal_budget=True):
         self.ptree=ptree
@@ -170,6 +210,8 @@ class Selector:
             raise ValueError(f"Invalid verify strategy: {verify_strategy}")
 
     def random_select_verify(self,exclude_list=[]): # exclude_list is a list of (design_id,scale) being verified by other nodes
+        raise NotImplementedError('Random select verify is not implemented')
+        
         available_verify_budget=self.available_verify_budget
         if len(available_verify_budget)==0:
             self.stream.write(f"No available verify budget found.")

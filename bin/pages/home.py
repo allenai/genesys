@@ -24,23 +24,61 @@ async def _getweather(city):
     weather = await client.get(city)
     return weather.temperature
   
-def home(evosys,project_dir):
-  
-    with st.sidebar:
-      # st.write("*Welcome to the Model Discovery System!*")
-      # AU.running_status(st,evosys)
-      # st.image(logo,use_column_width=True)
-      # img_path='https://plus.unsplash.com/premium_photo-1676035055997-8a0b479d6e7e?q=80&w=2264&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-      img_path=U.pjoin(current_dir,'..','assets','gene.PNG')
-      st.image(img_path)
-      # city = 'Seattle' 
-      # try:
-      #   temprature = asyncio.run(_getweather(city)) # unreliable sometimes
-      # except Exception as e:
-      #   temprature = 'N/A'
-      # st.caption(f":blue[{datetime.now().strftime('%b %d, %Y, %A')}]. {city} temperature :blue[{temprature} °F].")
 
-      st.caption(f"Today is :blue[{datetime.now().strftime('%b %d, %Y, %A')}].")
+def tabs():
+    st.subheader('Tabs')
+
+    tabs=st.tabs(['Evolve','Design','Verify','Search','Select','Viewer','Config','Listen'])
+
+    with tabs[0]:
+      st.markdown('''
+The Evolve tab is the main interface for the Model Discovery System. It allows
+you to run the full model discovery evolution loop. Before you start, make sure
+to configure the experiment settings in the Config tab. By default, the system
+will always run under the "text_evo_000" **namespace**. You can create new
+namespaces to save your experiments.
+''')
+
+    with tabs[1]:
+      st.markdown('''
+Sampler for sampling single design based on the seed.
+''')
+
+    with tabs[2]:
+      st.markdown('''
+The verification engine for the training a design under a scale.
+''')
+
+    with tabs[3]:
+      st.markdown('''
+The knowledge base for the agents to use in RAG.
+''')
+
+    with tabs[4]:
+      st.markdown('''
+Select the next seeds for the next round of evolution. Place for tunning and
+testing the selector.
+''')
+
+    with tabs[5]:
+      st.markdown('''
+Multiple views of the system states and results.
+''')
+
+    with tabs[6]:
+      st.markdown('''
+Configure the experiment settings. Recommended to set it up before running.
+''')  
+
+    with tabs[7]:
+      st.markdown('''
+Listening mode, accepting commands from master node. Can also run it in the CLI using `python -m model_discovery.listen` or `bash script/run_node.sh`.
+''')  
+
+
+
+def howtouse():
+
 
     # col1,col2=st.columns([1.45,1])
     # with col1: 
@@ -156,57 +194,27 @@ recommended to run it in GPU-available sessions. You can also launch a node in
 the master machine.
 ''')
 
-    # st.balloons()
+  
 
 
-    ################################################
+def home(evosys,project_dir):
+  
+    with st.sidebar:
+      # st.write("*Welcome to the Model Discovery System!*")
+      # AU.running_status(st,evosys)
+      # st.image(logo,use_column_width=True)
+      # img_path='https://plus.unsplash.com/premium_photo-1676035055997-8a0b479d6e7e?q=80&w=2264&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      img_path=U.pjoin(current_dir,'..','assets','gene.PNG')
+      st.image(img_path)
+      # city = 'Seattle' 
+      # try:
+      #   temprature = asyncio.run(_getweather(city)) # unreliable sometimes
+      # except Exception as e:
+      #   temprature = 'N/A'
+      # st.caption(f":blue[{datetime.now().strftime('%b %d, %Y, %A')}]. {city} temperature :blue[{temprature} °F].")
+
+      st.caption(f"Today is :blue[{datetime.now().strftime('%b %d, %Y, %A')}].")
 
 
-    st.subheader('Tabs')
-
-    tabs=st.tabs(['Evolve','Design','Verify','Search','Select','Viewer','Config','Listen'])
-
-    with tabs[0]:
-      st.markdown('''
-The Evolve tab is the main interface for the Model Discovery System. It allows
-you to run the full model discovery evolution loop. Before you start, make sure
-to configure the experiment settings in the Config tab. By default, the system
-will always run under the "text_evo_000" **namespace**. You can create new
-namespaces to save your experiments.
-''')
-
-    with tabs[1]:
-      st.markdown('''
-Sampler for sampling single design based on the seed.
-''')
-
-    with tabs[2]:
-      st.markdown('''
-The verification engine for the training a design under a scale.
-''')
-
-    with tabs[3]:
-      st.markdown('''
-The knowledge base for the agents to use in RAG.
-''')
-
-    with tabs[4]:
-      st.markdown('''
-Select the next seeds for the next round of evolution. Place for tunning and
-testing the selector.
-''')
-
-    with tabs[5]:
-      st.markdown('''
-Multiple views of the system states and results.
-''')
-
-    with tabs[6]:
-      st.markdown('''
-Configure the experiment settings. Recommended to set it up before running.
-''')  
-
-    with tabs[7]:
-      st.markdown('''
-Listening mode, accepting commands from master node. Can also run it in the CLI using `python -m model_discovery.listen` or `bash script/run_node.sh`.
-''')  
+    howtouse()
+    tabs()

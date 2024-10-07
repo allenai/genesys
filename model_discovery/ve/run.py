@@ -529,7 +529,9 @@ def report(args) -> dict:
     trainer_state=U.load_json(f"{outdir}/trainer_state.json")
     eval_results=get_eval_results(outdir)
 
-    trainer_state.pop("log_history")
+    # trainer_state.pop("log_history")
+    # only keep the last log_history, detail can be found in wandb
+    trainer_state['log_history'] = [trainer_state['log_history'][-1]]
     trainer_state.pop("stateful_callbacks")
     for i in ['upper_git_hash','transformers_version','pretty_env_info','git_hash']:
         eval_results.pop(i)
