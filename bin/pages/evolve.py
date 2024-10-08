@@ -309,7 +309,7 @@ if __name__ == '__main__':
     command_center.build_connection()
     command_center_thread=x_evolve(command_center,cli=True)
     
-    tprint('EVOCLI', font='modular ')
+    tprint(AU.CLI_TITLE, font='modular ')
     print("Evolution launched!")
     try:
         # Keep the main thread alive

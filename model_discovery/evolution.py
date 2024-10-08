@@ -2010,9 +2010,31 @@ class EvolutionSystem(exec_utils.System):
             self.design() # FIXME: it needs to be updated with actual selector and design cfg
         elif act=='verify':
             self.verify()
+            
+    def _process_manual_input(self,manual):
+        if manual is None:
+            return None
+        if isinstance(manual,str):
+            return [self.ptree.get_node(manual)]
+        elif isinstance(manual,NodeObject):
+            return [manual]
+        elif isinstance(manual,list):
+            _nodes = []
+            for i in manual:
+                if isinstance(i,str):
+                    _nodes.append(self.ptree.get_node(i))
+                elif isinstance(i,NodeObject):
+                    _nodes.append(i)
+                else:
+                    raise ValueError(f"Invalid manual input: {i}")
+            return _nodes
+        else:
+            raise ValueError(f"Invalid manual input: {manual}")
 
     # TODO: the interface should be updated when selector agent is ready, and design cfg is ready
-    def design(self,select_cfg=None,design_cfg=None,search_cfg=None,user_input='',sess_id=None,mode=None,resume=True,in_process=False): # select then sample, TODO: n_sources and design_cfg should be configed
+    def design(self,select_cfg=None,design_cfg=None,search_cfg=None,user_input='',sess_id=None,mode=None,resume=True,in_process=False,
+        manual_seed=None,manual_refs=None
+    ): # select then sample, TODO: n_sources and design_cfg should be configed
         # user_input and design_cfg maybe changed by the user, so we need to pass them in
         # self.ptree.reload() # WHY WE NEED THIS???
         if mode is None:
@@ -2029,10 +2051,18 @@ class EvolutionSystem(exec_utils.System):
         selector_args={}
         selector_args['n_sources']=select_cfg.get('n_sources',DEFAULT_N_SOURCES)
 
+        manual_seed = self._process_manual_input(manual_seed)
+        manual_refs = self._process_manual_input(manual_refs)
+
+        def _new_sample(selector_args,mode,in_process=False,sess_id=None):
+            instruct,seed,refs=self.selector.select_design(selector_args,mode=mode) # use the seed_ids to record the phylogenetic tree
+            seed = manual_seed if manual_seed is not None else seed
+            refs = manual_refs if manual_refs is not None else refs
+            self.sample(instruct,seed,refs,sess_id=sess_id,mode=mode,user_input=user_input,design_cfg=design_cfg,search_cfg=search_cfg,in_process=in_process)
+
         if sess_id is None:
             if len(unfinished_designs)==0 or not resume:
-                instruct,seed,refs=self.selector.select_design(selector_args,mode=mode) # use the seed_ids to record the phylogenetic tree
-                self.sample(instruct,seed,refs,mode=mode,user_input=user_input,design_cfg=design_cfg,search_cfg=search_cfg)
+                _new_sample(selector_args,mode=mode) # use the seed_ids to record the phylogenetic tree
             else:
                 sess_id = random.choice(unfinished_designs)
                 passed,implemented,challenging,unfinished=self.ptree.get_session_state(sess_id)
@@ -2045,8 +2075,7 @@ class EvolutionSystem(exec_utils.System):
                 self.stream.write(f"Design id provided, will restore session {sess_id}, mode: {mode}")
                 self.sample(sess_id=sess_id,user_input=user_input,design_cfg=design_cfg,mode=mode,search_cfg=search_cfg)
             else: # create a new design session using an external id
-                instruct,seed,refs=self.selector.select_design(selector_args,mode=mode) # use the seed_ids to record the phylogenetic tree
-                self.sample(instruct,seed,refs,sess_id,mode=mode,user_input=user_input,design_cfg=design_cfg,search_cfg=search_cfg,in_process=in_process)
+                _new_sample(selector_args,mode=mode,in_process=in_process,sess_id=sess_id) # use the seed_ids to record the phylogenetic tree
         if in_process:
             sys.exit(0)
 

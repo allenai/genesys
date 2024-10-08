@@ -406,7 +406,7 @@ if __name__ == "__main__":
         listener.build_connection()
         listener_thread = start_listener_thread(listener,add_ctx=False)
 
-        tprint('EVOCLI', font='modular ')
+        tprint(AU.CLI_TITLE, font='modular ')
         print(f"Listener launched: \nNode ID: {listener.node_id} \nGroup ID: {listener.group_id} \nMax design threads: {listener.max_design_threads} \nAccept verify job: {listener.accept_verify_job}")
         try:
             # Keep the main thread alive

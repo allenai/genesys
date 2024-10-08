@@ -24,7 +24,7 @@ current_dir = pathlib.Path(__file__).parent
 logo_path = U.pjoin(current_dir,'assets','storm_logo.svg')
 
 logo=AU.svg_to_image(logo_path)
-st.set_page_config(page_title="μLM", layout="wide",page_icon=logo)
+st.set_page_config(page_title="Genesys", layout="wide",page_icon=logo)
 
 
 from model_discovery import BuildEvolution
@@ -107,6 +107,9 @@ if 'running_verifications' not in st.session_state:
 if 'listener_connections' not in st.session_state:
     st.session_state['listener_connections'] = {}
 
+st.session_state.is_deploy = DEPLOY_MODE
+st.session_state.current_theme = st_theme()
+
 
 # Initialize session state
 if 'listener' not in st.session_state:
@@ -170,8 +173,10 @@ pages = {
 if not DEPLOY_MODE:
     pages['Tester'] = tester
 
+
+
 titles=list(pages.keys())+['GitHub']
-_logo = 'storm.svg' if st_theme()['base']=='light' else 'storm_logo.svg'
+_logo = 'storm.svg' if st.session_state.current_theme['base']=='light' else 'storm_logo.svg'
 pg = st_navbar(
     titles,
     logo_path=U.pjoin(current_dir,'assets',_logo),

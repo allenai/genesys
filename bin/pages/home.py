@@ -107,8 +107,9 @@ the main interface to the system instead of the common command-line interface
   create a subprocess to run the low-level CLI instructions. See details below.
 ''')
 
-    st.markdown('''
-## :rainbow[How to launch the evolution?] 
+    title_color = 'rainbow' if st.session_state.current_theme['base']=='light' else 'violet'
+    st.markdown(f'''
+## :{title_color}[How to launch the evolution?] 
 
 The evolution is distributed, asynchronous and parallel (see details below), it
 can be launched by:

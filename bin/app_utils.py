@@ -5,6 +5,8 @@ import numpy as np
 import uuid
 
 
+CLI_TITLE = 'GENESYS'
+
 SQUARE_LOGO_SVG = """
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
     <path d="M50,50 L250,50 L250,250 L50,250 Z" fill="none" stroke="#{COLOR}" stroke-width="4" />

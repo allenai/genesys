@@ -306,7 +306,7 @@ def show_design(evosys,design_vector,relative=None,threshold=None):
     with cols[0]:
         st.write(f'###### Design confidence (simple count points): ```{confidence_percentage:.2f}%``` ({confidence}/{total_points})')
         st.write(f'###### Proposal rating: ```{proposal_rating}/5.0```') if proposal_rating else st.write('Proposal rating: ```N/A```')
-        st.write(f'###### Scale-Weighted mean 01 normed metrics: ```{weighted_acc}```')
+        st.write(f'###### Scale-Weighted mean 0-1 normed metrics: ```{weighted_acc}```')
     
     with cols[1]:
         with st.expander('**Ranking metrics (0-1 normed)**',expanded=False):
@@ -345,7 +345,6 @@ def show_design(evosys,design_vector,relative=None,threshold=None):
             'Relative evaluation metrics',
             'Scale Weighted Grouped 0-1 Normed Metrics',
             'Scale Weighted Grouped Unnormed Metrics',
-            'Tie sensitivity normalized metrics'
         ]
         selected_processed_metrics = st.selectbox('Select processed metrics to show',options=PROCESSED_METRICS)
         with st.expander(selected_processed_metrics,expanded=True):
@@ -508,7 +507,7 @@ def selector_lab(evosys,project_dir):
         design_vectors = evosys.ptree.get_design_vectors()
         baseline_vectors = evosys.ptree.get_baseline_vectors()
 
-    st.subheader('Dynamic Leaderboard')
+    st.subheader('Real-time Leaderboard')
     with st.status('Generating leaderboard...'):
         leaderboards_normed,leaderboards_unnormed_h,leaderboards_unnormed_l=export_leaderboards(evosys,design_vectors,baseline_vectors)
     cols = st.columns([1,1,3])
@@ -594,7 +593,7 @@ def selector_lab(evosys,project_dir):
 
     st.subheader('**Selector Ranking**',help='How the selector ranks the designs and make decisions.')
 
-    with st.expander('Notes about Selector design and the Evolution System (For internal reference)',icon='🎼'):
+    with st.expander('Notes about Selector design and the Evolution Process (For internal reference)',icon='🎼'):
         st.markdown(SELECTOR_NOTES)
 
     ranking_args = U.safe_get_cfg_dict(evosys.selector.select_cfg,'ranking_args',DEFAULT_RANKING_ARGS)

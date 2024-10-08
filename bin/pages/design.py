@@ -652,15 +652,19 @@ def _design_tuning(evosys,project_dir):
 
     #### Run design
 
+    EXPERIMENT_RUNS=1
+    
     # cols = st.columns([7,2.5,1.8,1.2])
-    cols = st.columns([6,2,2,0.8,1.2])
+    cols = st.columns([5.7,1.5,2.8,0.8,1.2])
     with cols[0]:
         user_input = st.text_input(label = "Add any additional instructions (optional)" )
     with cols[1]:
-        running_mode = st.selectbox(label="Running Mode",options=[i.value for i in RunningModes],index=2,disabled=True)
-        design_cfg['running_mode'] = RunningModes(running_mode)
+        # running_mode = st.selectbox(label="Running Mode",options=[i.value for i in RunningModes],index=2,disabled=True)
+        # design_cfg['running_mode'] = RunningModes(running_mode)
+        custom_seed = st.selectbox(label="Manual seed",options=['None']+evosys.ptree.filter_by_type(['ReferenceCoreWithTree','DesignArtifactImplemented']))
     with cols[2]:
-        EXPERIMENT_RUNS = st.number_input(label="Number of design runs",min_value=1,value=1,disabled=True)
+        # EXPERIMENT_RUNS = st.number_input(label="Number of design runs",min_value=1,value=1,disabled=True)
+        custom_references = st.text_input(label="Manual References (comma separated ids)",value='')
     with cols[3]:
         st.write('')
         st.write('')
