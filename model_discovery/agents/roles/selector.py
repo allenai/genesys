@@ -2,11 +2,35 @@ from typing import List, Tuple, Dict
 import random
 import copy
 import numpy as np
-
+import pandas as pd
 import model_discovery.utils as U
 from model_discovery.system import DesignModes
 
+from rankit.Table import Table
+import rankit.Ranker as Ranker
+from rankit.Merge import borda_count_merge,average_ranking_merge
+
+
+
 SEED_TYPES = ['DesignArtifactImplemented','ReferenceCoreWithTree']
+
+
+
+# https://github.com/wattlebird/ranking
+RANKING_METHODS = [
+    'average',
+    'massey',
+    'colley',
+    'markov'
+]
+
+MERGE_METHODS = ['borda','average']
+
+SCHEDULER_OPTIONS = ['constant']
+
+BUDGET_TYPES = ['design_bound','verify_bound']
+
+
 
 DEFAULT_SELECT_METHOD = 'random'
 DEFAULT_VERIFY_STRATEGY = 'random'
@@ -16,16 +40,8 @@ DEFAULT_VERIFY_STRATEGY = 'random'
 DEFAULT_SEED_DIST = {
     'scheduler':'constant', # linear or cosine
     'restart_prob':0.2, # the chance of sampling from the seeds again
-    'warmup_rounds':10, # the number of rounds to warmup the scheduler
+    'warmup_rounds':10, # the number of verified designs to warmup the scheduler
 }
-SCHEDULER_OPTIONS = ['constant']
-
-DEFAULT_JUMP_PROB = {
-    '14M':[0.1,0.05,0.025], # 10% to 35, 5% to 70, 2.5% to 130, 82.5% to stay
-    '35M':[0.1,0.05], # 10% to 70, 5% to 130M, 85% to stay
-    '70M':[0.1], # 10% to 130M, 90% to stay
-}
-
 
 
 DEFAULT_CONFIDENCE_POINTS = {
@@ -65,16 +81,7 @@ DEFAULT_SCALE_WEIGHTS = {
 
 DEFAULT_RANDOM_EVAL_THRESHOLD = 0.02
 
-
-# https://github.com/wattlebird/ranking
-RANKING_METHODS = [
-    'average',
-    'massey',
-    'colley',
-    'markov'
-]
-
-MERGE_METHODS = ['borda','average']
+DEFAULT_BUDGET_TYPE = 'design_bound'
 
 DEFAULT_RANKING_ARGS = {
     'ranking_method':'massey', # or a list of ranking methods, and aggregated by borda
@@ -86,12 +93,461 @@ DEFAULT_RANKING_ARGS = {
     'multi_rank_merge': 'borda', # 'borda', 'average'
     'markov_restart': 0.3,
     'convergence_threshold': 1e-4,
+    'quadrant_merge': 'average', # 'borda', 'average'
 }
 
 DEFAULT_QUADRANT_ARGS = {
     'design_quantile':0.25, # upper quantile regarded as good
     'confidence_quantile':0.25, # upper quantile regarded as good
 }
+
+DEFAULT_DESIGN_EXPLORE_ARGS = {
+    'explore_prob':0.2, # chance go to explore quadrant
+    'scheduler':'constant',
+    'background_noise':0.05 # noise when selecting from ranked designs
+}
+
+DEFAULT_VERIFY_EXPLORE_ARGS = {
+    'explore_prob':0.2,
+    'scheduler':'constant',
+    'background_noise':0.05
+}
+
+
+
+def group_results(eval_results):
+    grouped_results = {}
+    for scale in eval_results:
+        if not eval_results[scale]:
+            continue
+        grouped_results[scale] = _group_results(eval_results[scale])
+    return grouped_results
+
+
+_GROUP_KEYWORDS = ['blimp','inverse_scaling']
+
+def _group_results(results):
+    grouped_results = {}
+
+    def _in_group(alias):
+        for g in _GROUP_KEYWORDS:
+            if g in alias:
+                return g
+        return False
+
+    for metric in results:
+        metric_results = results[metric]
+        grouped={}
+        for alias in metric_results:
+            group = _in_group(alias)
+            result = metric_results[alias]
+            if group:
+                if group not in grouped:
+                    grouped[group] = []
+                grouped[group].append(result)
+            else:
+                grouped[alias] = [result]
+        for group in grouped:
+            grouped[group] = np.mean(grouped[group])
+        grouped_results[metric] = grouped
+    return grouped_results
+
+def scale_weight_results(select_cfg,eval_results): # WILL REMOVE SCALES
+    weights = U.safe_get_cfg_dict(select_cfg,'scale_weights',DEFAULT_SCALE_WEIGHTS)
+    total_weights = 0
+    weighted_results = {}
+    for scale in eval_results:
+        total_weights+=weights[scale]
+        for metric in eval_results[scale]:
+            if metric not in weighted_results:
+                weighted_results[metric] = {}
+            results = eval_results[scale][metric]
+            for task in results:
+                if task not in weighted_results[metric]:
+                    weighted_results[metric][task] = 0
+                weighted_results[metric][task]+=results[task]*weights[scale]
+    for metric in weighted_results:
+        for task in weighted_results[metric]:
+            weighted_results[metric][task]/=total_weights
+    return weighted_results
+
+
+# def _shuffle_within_rank(df):
+#     return df.groupby('rank').apply(lambda x: x.sample(frac=1)).reset_index(drop=True)
+
+def _divide_rank(df,quantile):
+    # divide into upper quantile and lower quantile
+    upper_quantile = df['rank'].quantile(quantile)
+    lower_quantile = df['rank'].quantile(1-quantile)
+    upper_df = df[df['rank'] > upper_quantile]
+    lower_df = df[df['rank'] < lower_quantile]
+    return upper_df,lower_df
+
+def design_confidence_simple(select_cfg,design_vector):
+    verifications = design_vector['verifications']
+    verified_scales = verifications.keys()
+    confidence_points = U.safe_get_cfg_dict(select_cfg,'confidence_points',DEFAULT_CONFIDENCE_POINTS)
+    confidence = sum([confidence_points[i] for i in verified_scales]) + confidence_points['proposed'] + confidence_points['implemented']
+    total_points = sum(confidence_points.values())
+    return confidence,total_points
+
+
+def _get_ranking_quadrant(select_cfg,design_rank,confidence_rank):
+    quadrant_args = U.safe_get_cfg_dict(select_cfg,'quadrant_args',DEFAULT_QUADRANT_ARGS)
+    # confidence_rank = _shuffle_within_rank(confidence_rank)
+    # design_rank = _shuffle_within_rank(design_rank)
+    design_upper,design_lower = _divide_rank(design_rank,quadrant_args['design_quantile'])
+    confidence_upper,confidence_lower = _divide_rank(confidence_rank,quadrant_args['confidence_quantile'])
+    return {
+        'design_upper':design_upper,
+        'design_lower':design_lower,
+        'confidence_upper':confidence_upper,
+        'confidence_lower':confidence_lower
+    }
+
+def rank_confidences(search_cfg,design_vectors,filter=[]):
+    rank={}
+    for acronym in design_vectors:
+        if filter and acronym not in filter:
+            continue
+        design_vector = design_vectors[acronym]
+        confidence,total_points = design_confidence_simple(search_cfg,design_vector)
+        rank[acronym] = confidence
+    # to df of Nx1, each row is a confidence, indexed by design
+    rank = pd.DataFrame(list(rank.items()), columns=['name', 'confidence'])
+    rank = rank.sort_values(by='confidence',ascending=False)
+    rank.reset_index(inplace=True)
+    rank.drop(columns=['index'],inplace=True)
+    rank['rank'] = rank['confidence'].rank(method='min', ascending=False).astype(int)
+    return rank
+
+
+def _merge_ranks(ranks,merge_method,rename=True):
+    _ranks=[ranks[i] for i in ranks]
+    if merge_method == 'borda':
+        rank = borda_count_merge(_ranks)
+        if rename:
+            rank.rename(columns={'BordaCount':'rating'},inplace=True)
+        return rank
+    elif merge_method == 'average':
+        rank = average_ranking_merge(_ranks)
+        if rename:
+            rank.rename(columns={'AverageRank':'rating'},inplace=True)
+        return rank
+    else:
+        raise ValueError(f'Unknown merge method: {merge_method}')
+
+def around_ranking_matrix(ranking_matrix,draw_margin=0.01):
+    ranking_matrix = ranking_matrix.apply(lambda x: np.around(x/draw_margin)*draw_margin)
+    return ranking_matrix
+
+
+
+def trainer_state_getter(trainer_state):
+    if 'log_history' not in trainer_state:
+        return {}
+    return {
+        'flops': trainer_state['log_history'][-1]['total_flops'], # not sure if resuming influence this
+        'loss': trainer_state['log_history'][-1]['train_loss'],
+    }
+
+def eval_results_getter(eval_results):
+    metrics = {}
+    stderrs = {}
+    for task_name in eval_results['results']:
+        data = eval_results['results'][task_name]
+        alias = data['alias']
+        for _metric_name in data:
+            if _metric_name == 'alias':
+                continue
+            metric_type = _metric_name.split(',')[0].replace('_stderr','')
+            metric = _metric_name.replace('_stderr','')
+            if 'smollm125' in task_name:
+                continue # still buggy
+            higher_is_better = eval_results['higher_is_better'][task_name][metric_type]
+            metric+=',H' if higher_is_better else ',L'
+            if metric not in metrics:
+                metrics[metric] = {}
+                stderrs[metric] = {}
+            if data[_metric_name] == 'N/A':
+                continue
+            if 'stderr' in _metric_name:
+                stderrs[metric][alias] = data[_metric_name]
+            else:
+                metrics[metric][alias] = data[_metric_name]
+    return metrics,stderrs
+
+
+
+_01_NORMED_METRIC_KEYWORDS = [
+    'acc',
+    'mcc',
+    'contains',
+    'exact_match'
+]
+
+def _is_01_normed(metric):
+    for i in _01_NORMED_METRIC_KEYWORDS:
+        if i in metric:
+            return True
+    return False
+
+def _get_acc_norm(scale_free_eval_metrics,mean=False,acc_norm_exclude=['mmlu']): # if no acc_norm, use acc
+    accs = {}
+    acc = scale_free_eval_metrics['acc,none,H']
+    acc_norm = scale_free_eval_metrics['acc_norm,none,H']
+    for task in acc:
+        if task in acc_norm and task not in acc_norm_exclude:
+            accs[task.replace(' - ','')+'/acc_norm'] = acc_norm[task]
+        else:
+            accs[task.replace(' - ','')+'/acc'] = acc[task]
+    return accs
+
+
+def _flat_weighted_metrics(scale_weighted_eval_metrics,acc_norm_exclude=['mmlu']):
+    # https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard/discussions/106 
+    _01_normed_metrics = {} # from 0 to 1, the higher the better
+    _unnormed_metrics_h = {} # unknown unnormalized metrics, higher is better
+    _unnormed_metrics_l = {} # unknown unnormalized metrics, lower is better
+    if len(scale_weighted_eval_metrics) == 0:
+        return _01_normed_metrics,{'higher_is_better':{},'lower_is_better':{}}
+    accs = _get_acc_norm(scale_weighted_eval_metrics,acc_norm_exclude=acc_norm_exclude)
+    scale_weighted_eval_metrics.pop('acc,none,H')
+    scale_weighted_eval_metrics.pop('acc_norm,none,H')
+    _01_normed_metrics.update(accs)
+
+    for _metric in scale_weighted_eval_metrics:
+        if _is_01_normed(_metric):
+            for task in scale_weighted_eval_metrics[_metric]:
+                result = scale_weighted_eval_metrics[_metric][task]
+                task = task.replace(' - ','')
+                if 'mcc' in _metric:
+                    result = (result+1)/2
+                if _metric.endswith(',L'): # although I think people already did this
+                    result = 1-result
+                metric = _metric.replace(',L','').replace(',H','')
+                metric,tail=metric.split(',')
+                if tail!='none':
+                    metric+=f'({tail})'
+                _01_normed_metrics[task+'/'+metric] = result
+        else:
+            for task in scale_weighted_eval_metrics[_metric]:
+                result = scale_weighted_eval_metrics[_metric][task]
+                task = task.replace(' - ','')
+                metric,tail,LH = _metric.split(',')
+                if tail!='none':
+                    metric+=f'({tail})'
+                if LH == 'H':
+                    _unnormed_metrics_h[task+'/'+metric] = result
+                else:
+                    _unnormed_metrics_l[task+'/'+metric] = result
+    _unnormed_metrics = {
+        'higher_is_better':_unnormed_metrics_h,
+        'lower_is_better':_unnormed_metrics_l,
+    }
+    return _01_normed_metrics,_unnormed_metrics
+
+
+def get_raw_metrics(design_vector):
+    proposal_rating = design_vector['proposal_rating'] if 'proposal_rating' in design_vector else None
+    training_metrics = {}
+    eval_metrics = {}
+    eval_stderrs = {}
+    for scale in design_vector['verifications']:
+        verification_report = design_vector['verifications'][scale]
+        if 'trainer_state.json' in verification_report:
+            training_record = verification_report['trainer_state.json']
+            training_metrics[scale] = trainer_state_getter(training_record)
+        else:
+            training_metrics[scale] = {}
+        if 'eval_results.json' in verification_report:
+            eval_results = verification_report['eval_results.json']
+            eval_metrics[scale],eval_stderrs[scale] = eval_results_getter(eval_results)
+        else:
+            eval_metrics[scale] = {}
+            eval_stderrs[scale] = {}
+    return proposal_rating,training_metrics,eval_metrics,eval_stderrs
+
+
+def get_ranking_metrics(select_cfg,design_vector,normed_only=True):
+    proposal_rating,training_metrics,eval_metrics,_ = get_raw_metrics(design_vector)
+    scale_weighted_grouped_metrics = scale_weight_results(select_cfg,group_results(eval_metrics))
+    _01_normed_metrics,_unnormed_metrics = _flat_weighted_metrics(scale_weighted_grouped_metrics)
+    
+    ranking_metrics = _01_normed_metrics
+    scale_weighted_training_metrics = scale_weight_results(select_cfg,training_metrics)
+    ranking_metrics.update(scale_weighted_training_metrics)
+    ranking_metrics['proposal_rating'] = proposal_rating/5.0
+    if normed_only:
+        return ranking_metrics,None
+    ranking_metrics_unnormed=_unnormed_metrics['higher_is_better']
+    for i in _unnormed_metrics['lower_is_better']:
+        ranking_metrics_unnormed[i.replace(' - ','')] = -_unnormed_metrics['lower_is_better'][i]
+    return ranking_metrics,ranking_metrics_unnormed
+
+def get_ranking_matrix(select_cfg,design_vectors,normed_only=True,
+                    verified_only=True,drop_na=True,drop_zero=True):
+    ranking_matrix = pd.DataFrame()
+    for acronym in design_vectors:
+        design_vector = design_vectors[acronym]
+        ranking_metrics,ranking_metrics_unnormed = get_ranking_metrics(select_cfg,design_vector,normed_only)
+        if verified_only and len(ranking_metrics)<=1: # only proposal rating
+            continue
+        ranking_matrix = pd.concat([ranking_matrix,pd.DataFrame(ranking_metrics,index=[acronym])],axis=0)
+        if not normed_only:
+            ranking_matrix = pd.concat([ranking_matrix,pd.DataFrame(ranking_metrics_unnormed,index=[acronym])],axis=0)
+    # drop cols with any N/A, drop all 0 cols
+    if drop_na:
+        ranking_matrix=ranking_matrix.dropna(axis=1)
+    if drop_zero:
+        ranking_matrix = ranking_matrix.loc[:, (ranking_matrix != 0).any(axis=0)]
+    return ranking_matrix
+
+
+def column_to_pairs(column):
+    pairs = []
+    for i in range(len(column)):
+        for j in range(i+1,len(column)):
+            obj1 = column.index[i]
+            obj2 = column.index[j]
+            v1 = column[obj1]
+            v2 = column[obj2]
+            if v1 > v2:
+                pairs.append((obj1,obj2,v1,v2))
+            else:
+                pairs.append((obj2,obj1,v2,v1))
+    cols=['design1','design2','metric1','metric2']
+    return pd.DataFrame(pairs,columns=cols)
+
+
+def ranking_matrix_to_pairs(ranking_matrix:pd.DataFrame):
+    # convert to pairs of winner_name,loser_name,winner_score,loser_score
+    columns = []
+    for metric in ranking_matrix.columns:
+        column = ranking_matrix[metric]
+        pairs = column_to_pairs(column)
+        columns.append(pairs)
+    merged_columns = pd.concat(columns,axis=0)
+    return merged_columns
+
+
+def __rank_designs(ranking_matrix,ranking_args,ranking_method):
+    cols=['design1','design2','metric1','metric2']
+    data = Table(ranking_matrix, col = cols)
+    if ranking_method == 'massey':
+        ranker = Ranker.MasseyRanker(drawMargin = ranking_args['draw_margin'])
+    elif ranking_method == 'colley':
+        ranker = Ranker.ColleyRanker(drawMargin = ranking_args['draw_margin'])
+    elif ranking_method == 'markov':
+        ranker = Ranker.MarkovRanker(restart = ranking_args['markov_restart'], 
+            threshold = ranking_args['convergence_threshold'])
+    else:
+        raise ValueError(f'Unknown ranking method: {ranking_method}')
+    return ranker.rank(data)
+
+
+def _rank_designs(ranking_matrix,ranking_args,ranking_method):
+    metric_wise_merge = ranking_args['metric_wise_merge']
+    metric_wise_merge = None if metric_wise_merge in ['None','none'] else metric_wise_merge
+    if ranking_method not in ['colley','massey']:
+        ranking_matrix = around_ranking_matrix(ranking_matrix,ranking_args['draw_margin']) 
+    ranks = {}
+    if metric_wise_merge and ranking_method != 'markov':
+        # separte each column 
+        for metric in ranking_matrix.columns:
+            column = ranking_matrix[metric]
+            if ranking_method == 'average':
+                # directly convert the to the format name, rating, rank
+                ranki = column.sort_values(ascending=False)
+                ranki = ranki.to_frame(name='rating')
+                ranki.reset_index(inplace=True)
+                ranki.rename(columns={'index':'name'},inplace=True)
+                ranki['rank'] = ranki['rating'].rank(method='min', ascending=False).astype(int)
+                ranks[metric] = ranki
+            else:
+                pairs = column_to_pairs(column)
+                ranks[metric] = __rank_designs(pairs,ranking_args,ranking_method)
+        rank = _merge_ranks(ranks,metric_wise_merge)
+    else:
+        # merge all columns, concate the index
+        if ranking_method == 'average':
+            rank = ranking_matrix.rank(method='average')
+            cols = rank.columns
+            rank['rating'] = rank.mean(axis=1)
+            rank = rank.drop(cols,axis=1)
+            rank = rank.reset_index()
+            rank = rank.rename(columns={'index':'name'})
+            rank['rank'] = rank['rating'].rank(method='min', ascending=False).astype(int)
+        else:   
+            merged_columns = ranking_matrix_to_pairs(ranking_matrix)
+            rank = __rank_designs(merged_columns,ranking_args,ranking_method)
+    return rank,ranks
+
+
+def rank_designs(ranking_matrix,ranking_args):
+    ranking_methods = ranking_args['ranking_method']
+    if isinstance(ranking_methods,str):
+        ranking_methods = [ranking_methods]
+    subranks = {}
+    subsubranks = {}
+    for ranking_method in ranking_methods:
+        _subrank,_subsubranks = _rank_designs(ranking_matrix,ranking_args,ranking_method)
+        subranks[ranking_method] = _subrank
+        subsubranks[ranking_method] = _subsubranks
+    if len(ranking_methods) > 1:
+        merge_method = ranking_args['multi_rank_merge']
+        rank = _merge_ranks(subranks,merge_method)
+    else:
+        rank = subranks[ranking_methods[0]]
+    return rank,subranks,subsubranks
+
+
+def _combine_design_quadrant(quadrants):
+    design_upper = quadrants['design_upper']
+    design_lower = quadrants['design_lower']
+    confidence_upper = quadrants['confidence_upper']
+    confidence_lower = quadrants['confidence_lower']
+
+    # Combine design and confidence data
+    design_data = pd.concat([design_upper, design_lower])
+    confidence_data = pd.concat([confidence_upper, confidence_lower])
+    
+    # Merge design and confidence data on 'name'
+    all_data = pd.merge(design_data, confidence_data, on='name', suffixes=('_design', '_confidence'))
+    all_data = all_data.drop_duplicates(subset=['name'])
+
+    # Calculate midpoints
+    design_midpoint = (design_upper['rating'].min() + design_lower['rating'].max()) / 2
+    confidence_midpoint = (confidence_upper['confidence'].min() + confidence_lower['confidence'].max()) / 2
+
+    # Divide into quadrants based on midpoints
+    quadrants = {
+        'good_design_high_confidence': all_data[(all_data['rating'] > design_midpoint) & (all_data['confidence'] > confidence_midpoint)],
+        'good_design_low_confidence': all_data[(all_data['rating'] > design_midpoint) & (all_data['confidence'] <= confidence_midpoint)],
+        'poor_design_high_confidence': all_data[(all_data['rating'] <= design_midpoint) & (all_data['confidence'] > confidence_midpoint)],
+        'poor_design_low_confidence': all_data[(all_data['rating'] <= design_midpoint) & (all_data['confidence'] <= confidence_midpoint)]
+    }
+    return quadrants
+
+
+def _rank_combined_quadrant(quadrants,merge_method='average',rename=True):
+    ranked_quadrants = {}
+    for quadrant_name, quadrant_data in quadrants.items():
+        design_data = quadrant_data.loc[:,['name','rating','rank_design']]
+        design_data.rename(columns={'rank_design':'rank'},inplace=True)
+        confidence_data = quadrant_data.loc[:,['name','confidence','rank_confidence']]
+        confidence_data.rename(columns={'rank_confidence':'rank'},inplace=True)
+        ranked_quadrants[quadrant_name] = _merge_ranks({'design':design_data,'confidence':confidence_data},merge_method,rename=rename)
+    return ranked_quadrants
+
+
+def get_ranked_quadrant(select_cfg,design_rank,confidence_rank):
+    quadrants = _get_ranking_quadrant(select_cfg,design_rank,confidence_rank)
+    combined_quadrant = _combine_design_quadrant(quadrants)
+    ranking_args = U.safe_get_cfg_dict(select_cfg,'ranking_args',DEFAULT_RANKING_ARGS)
+    ranked_quadrants = _rank_combined_quadrant(combined_quadrant,ranking_args['multi_rank_merge'])
+    return ranked_quadrants
+
 
 class Selector:
     def __init__(self,ptree,select_cfg,_verify_budget,selection_ratio,stream,allow_temporal_budget=True):
@@ -101,6 +557,26 @@ class Selector:
         self.selection_ratio=selection_ratio
         self.allow_temporal_budget=allow_temporal_budget
         self.stream=stream
+        
+
+    def _get_ranked_quadrants(self):
+        self.design_vectors = self.ptree.get_design_vectors() # cache it
+        design_rank = self._rank_designs(self.design_vectors)
+        confidence_rank = rank_confidences(self.select_cfg,self.design_vectors,design_rank['name'].tolist())
+        ranked_quadrants = get_ranked_quadrant(self.select_cfg,design_rank,confidence_rank)
+        return ranked_quadrants
+
+    def _rank_designs(self,design_vectors):
+        ranking_args = U.safe_get_cfg_dict(self.select_cfg,'ranking_args',DEFAULT_RANKING_ARGS)
+        ranking_matrix = get_ranking_matrix(
+            self.select_cfg,design_vectors,ranking_args['normed_only'],
+            drop_na=ranking_args['drop_na'],drop_zero=ranking_args['drop_zero']
+        )
+        if len(ranking_matrix)==0:
+            return None
+        design_rank,_,_ = rank_designs(ranking_matrix,ranking_args)
+        return design_rank
+
 
     #########################  Select Design  #########################
 
@@ -139,13 +615,48 @@ class Selector:
         _seeds=self._sample_from_sources({i:1 for i in SEED_TYPES},with_type=True)
         
         restart_prob = self._get_restart_prob(seed_dist)
-        if random.random()<restart_prob: # use ReferenceCoreWithTree as seeds
+        if random.random()<restart_prob or self.ptree.n_verified<=seed_dist['warmup_rounds']: # use ReferenceCoreWithTree as seeds
             seeds=_seeds['ReferenceCoreWithTree']
         else:
-            seeds=_seeds['DesignArtifactImplemented']
+            seeds=self._quadrant_design_seeds()
         seed_ids=[i.acronym for i in seeds]
         refs=[ref for ref in refs if ref.acronym not in seed_ids]
         return instruct,seeds,refs
+
+
+    def _quadrant_sample(self,exploit_pool,explore_pool,explore_args,exclude=[]):
+        explore_prob = explore_args['explore_prob']
+        background_noise = explore_args['background_noise']
+
+        if len(exclude)>0:
+            exploit_pool = exploit_pool.copy()
+            exploit_pool = exploit_pool[~exploit_pool['name'].isin(exclude)]
+            explore_pool = explore_pool.copy()
+            explore_pool = explore_pool[~explore_pool['name'].isin(exclude)]
+        if random.random()<explore_prob or len(exploit_pool)==0:
+            if len(explore_pool)==0:
+                return None
+            pool = explore_pool
+        else:
+            pool = exploit_pool
+        candidates = pool['name'].tolist()
+        probs = np.zeros(len(candidates))
+        probs[0] = 1
+        probs = probs + background_noise
+        probs = probs / probs.sum()
+        acronym = random.choices(candidates,weights=probs,k=1)[0]
+        return acronym
+
+
+    def _quadrant_design_seeds(self):
+        ranked_quadrants = self._get_ranked_quadrants()
+        good_design_high_confidence = ranked_quadrants['good_design_high_confidence']
+        poor_design_high_confidence = ranked_quadrants['poor_design_high_confidence']
+
+        explore_args = U.safe_get_cfg_dict(self.select_cfg,'design_explore_args',DEFAULT_DESIGN_EXPLORE_ARGS) 
+        acronym = self._quadrant_sample(good_design_high_confidence,poor_design_high_confidence,explore_args)
+        seeds = [self.ptree.get_node(acronym)]
+        return seeds
 
     def _get_restart_prob(self,seed_dist):
         scheduler = seed_dist['scheduler']
@@ -170,32 +681,6 @@ class Selector:
             else:
                 nodes.extend(self.nodes2data(topk))
         return nodes
-
-    def report_to_metrics(report):
-        metrics={}
-        trainer_state=report['trainer_state.json']
-        eval_results=report['eval_results.json']
-        
-        metrics['perf']={}
-        metrics['perf']['total_train_flos']=trainer_state['total_flos']
-        metrics['perf']['total_eval_time']=float(eval_results['total_evaluation_time_seconds'])
-        metrics['perf']['num_params']=eval_results['config']['model_num_parameters']
-        metrics['eval']={}
-        for task in eval_results['results']:
-            res=eval_results['results'][task]
-            task_alias=res['alias']
-            if 'perplexity,none' in res:
-                metrics['eval'][f'{task_alias}_ppl']=-np.log10(res['perplexity,none']) # the lower the better
-            elif 'acc_norm,none' in res: 
-                metrics['eval'][f'{task_alias}_acc_norm']=res['acc_norm,none']
-            elif 'acc,none' in res:
-                metrics['eval'][f'{task_alias}_acc']=res['acc,none']
-        
-        return metrics
-
-    def _get_design_scores(self):
-        design_vectors = self.ptree.get_design_vectors()
-        raise NotImplementedError('Need to implement the design score function')
 
 
     #########################  Select Verify  #########################
@@ -230,41 +715,59 @@ class Selector:
         if verify_strategy is None:
             verify_strategy = self.select_cfg.get('verify_strategy',DEFAULT_SELECT_METHOD)
         exclude=self._get_exclude(exclude_list)
+        available_verify_budget=self.available_verify_budget
+        budget_type = self.select_cfg.get('budget_type',DEFAULT_SELECT_METHOD)
+        if len(available_verify_budget)<=0:
+            if budget_type=='verify_bound':
+                self.stream.write(f"No available verify budget found.")
+                return None,None
+            elif budget_type=='design_bound':
+                available_verify_budget=self.request_temporal_budget()
+            else:
+                raise ValueError(f"Invalid budget type: {budget_type}")
         if verify_strategy=='random':
-            return self.random_select_verify(exclude)
+            return self.random_select_verify(available_verify_budget,exclude)
         else:
             raise ValueError(f"Invalid verify strategy: {verify_strategy}")
 
-    def random_select_verify(self,exclude_list=[]): # exclude_list is a list of (design_id,scale) being verified by other nodes
-        raise NotImplementedError('Random select verify is not implemented')
-        
-        available_verify_budget=self.available_verify_budget
-        if len(available_verify_budget)==0:
-            self.stream.write(f"No available verify budget found.")
-            return None,None
-        # unverified=self._get_unverified_scale_designs(exclude_list) # indexed by scale
-        unverified=self._get_unverified_design_scales(exclude_list) # indexed by design_id
-        if len(unverified)==0:
-            self.stream.write(f"No unverified design found at any scale.")
-            return None,None
-        else:
-            # select a random design
-            if 'jump_prob' not in self.select_cfg:
-                self.select_cfg['jump_prob']=DEFAULT_JUMP_PROB
-            for scale in DEFAULT_JUMP_PROB:
-                if scale not in self.select_cfg['jump_prob']:
-                    self.select_cfg['jump_prob'][scale]=DEFAULT_JUMP_PROB[scale]
-            design_id=random.choice(list(unverified.keys()))
+    def random_select_verify(self,available_verify_budget,exclude_list=[]): # exclude_list is a list of (design_id,scale) being verified by other nodes        
+        unverified_by_scale=self._get_unverified_scale_designs(exclude_list) # indexed by scale
+        unverified_14M=unverified_by_scale.get('14M',[])
+        if len(unverified_14M)>0:
+            design_id=random.choice(unverified_14M)
+            return design_id,'14M'
+        # Now all the designs are at least verified at 14M
+        unverified_by_design=self._get_unverified_design_scales(exclude_list) # indexed by design_id
+        ranked_quadrants = self._get_ranked_quadrants()
+        good_design_low_confidence = ranked_quadrants['good_design_low_confidence']
+        poor_design_low_confidence = ranked_quadrants['poor_design_low_confidence']
 
-            available_scales=[]
-            for scale in unverified[design_id]:
-                if scale in available_verify_budget:
-                    available_scales.append(scale)
-            if len(available_scales)==0:
-                self.stream.write(f"No available verify scale found for design {design_id}.")
-                return None,None
-            scale=random.choice(available_scales)
-            return design_id,scale
+        unverified_scales=[i for i in unverified_by_scale.keys() if i in available_verify_budget]
+        unverified_scales.sort(key=lambda x:int(x.replace('M','')))
+        lowest_scale=unverified_scales[0]
+
+        explore_args = U.safe_get_cfg_dict(self.select_cfg,'verify_explore_args',DEFAULT_VERIFY_EXPLORE_ARGS) 
+        exclude_design=[]
+        while True:
+            acronym = self._quadrant_sample(good_design_low_confidence,poor_design_low_confidence,explore_args,exclude_design)
+            if acronym is None: # randomly select a design from the lowest scale
+                break
+            scales = unverified_by_design[acronym]
+            scale = sorted(scales,key=lambda x:int(x.replace('M','')))[0]
+            if scale in available_verify_budget:
+                return acronym,scale
+            else:
+                exclude_design.append(acronym)
+        # rank unverified lowest scale designs
+        pool = unverified_by_scale[lowest_scale]
+        vectors = {i:self.design_vectors[i] for i in pool}
+        design_rank = self._rank_designs(vectors)
+        if design_rank is None: # unlikely happen, but for safety, randomly select a design from the lowest scale
+            acronym = random.choice(unverified_by_design[lowest_scale])
+            self.stream.write(f"No available verify design found, randomly select a design from the lowest scale: {lowest_scale}")
+            return acronym,lowest_scale
+        acronym = design_rank.iloc[0]['name']
+        return acronym,lowest_scale
 
 
     @property
@@ -278,7 +781,6 @@ class Selector:
     def available_verify_budget(self):
         budget=self.verify_budget
         return {k:v for k,v in budget.items() if v>0}
-
 
     def request_temporal_budget(self): # keep selection ratio
         _,used=self.ptree.budget_status(self._verify_budget,ret_verified=True)
@@ -298,6 +800,9 @@ class Selector:
         
         def dict_add(d1,d2):
             return {k:d1.get(k,0)+d2.get(k,0) for k in set(d1)|set(d2)}
+
+        def dict_sub(d1,d2):
+            return {k:d1.get(k,0)-d2.get(k,0) for k in set(d1)|set(d2)}
         
         def scale_to_int(scale):
             return int(scale.replace('M',''))
@@ -328,6 +833,8 @@ class Selector:
                     break
             assign=_assign # next round with full budget or found
 
-        return assign
+        remaining = dict_sub(assign,exceeded)
+        available_budget = {k:v for k,v in remaining.items() if v>0}
+        return available_budget
             
         

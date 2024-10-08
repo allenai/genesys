@@ -1001,6 +1001,15 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
     # def reload(self): # why do we need this at all??
     #     self.load()
 
+    @property
+    def n_verified(self):
+        n=0
+        for acronym in self.filter_by_type('DesignArtifactImplemented'):
+            design=self.get_node(acronym)
+            if design.verifications:
+                n+=1
+        return n
+
     def get_nodes(self,acronyms):
         if isinstance(acronyms,str):
             acronyms=[acronyms]
@@ -1071,6 +1080,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         if is_baseline:
             designs=self.filter_by_type(['ReferenceCore','ReferenceCoreWithTree'])
         else:
+            self.update_design_tree()
             designs=self.filter_by_type('DesignArtifactImplemented')
         design_vectors = {}
         for design in designs:
@@ -1096,6 +1106,11 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
 
     def get_baseline_vectors(self):
         return self.get_design_vectors(is_baseline=True)
+
+    def get_design_artifacts(self):
+        self.update_design_tree()
+        acronyms= self.filter_by_type(['DesignArtifact','DesignArtifactImplemented'])
+        return {acronym:self.get_node(acronym) for acronym in acronyms}
 
     # How to handle variants? i.e., in GPT, there are optional pre-conv and post-conv, maybe just all of them to the tree, let selector to choose
 
@@ -1131,9 +1146,9 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
                 if scale not in design.verifications:
                     unverified.append(acronym)
             else:
-                for scale in self.target_scales:
-                    if scale not in design.verifications:
-                        unverified[scale].append(acronym)
+                for _scale in self.target_scales:
+                    if _scale not in design.verifications:
+                        unverified[_scale].append(acronym)
         return unverified
 
     def get_unverified_scales(self,acronym=None,exclude_inv={}): # exclude_inv is a dict: {design_id: [scale, ...], ...}

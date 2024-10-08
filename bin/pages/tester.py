@@ -11,6 +11,7 @@ import bin.app_utils as AU
 
 from model_discovery.evolution import ConnectionManager
 
+from model_discovery.agents.roles.selector import *
 
 
 def tester(evosys,project_dir):

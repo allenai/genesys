@@ -6,6 +6,7 @@ import sys,os
 import inspect
 import pyflowchart as pfc
 import streamlit.components.v1 as components
+import matplotlib.pyplot as plt
 from subprocess import check_output
 from streamlit_markmap import markmap
 from streamlit_timeline import timeline
@@ -18,54 +19,53 @@ from model_discovery.agents.flow.alang import DialogTreeViewer
 import model_discovery.utils as U
 
 
-from model_discovery.evolution import EvolutionSystem
-
 from model_discovery.agents.flow._legacy_gau_flows import GUFlowScratch
 from model_discovery.agents.flow._legacy_naive_flows import design_flow_definition,review_naive,design_naive
 from model_discovery.agents.flow.gau_flows import GUFlowMutation
 from model_discovery.agents.flow.alang import AgentDialogFlowNaive,ALangCompiler
 from model_discovery.model.library.tester import check_tune
-from model_discovery.evolution import DesignArtifact
 import bin.app_utils as AU
 
+
+from bin.pages.select import SELECTOR_NOTES
+from model_discovery.agents.roles.selector import *
+from model_discovery.agents.roles.selector import _group_results,_flat_weighted_metrics,\
+    _combine_design_quadrant,_rank_combined_quadrant,_get_ranking_quadrant
+
+
+
 class ViewModes(Enum):
+    METRICS = 'Experiment Visulizer'
     DESIGNS = 'Design Artifacts'
-    SESSIONS = 'Design Sessions'
     DIALOGS = 'Agent Dialogs (Experimental)'
     FLOW = 'Agent Flows (Experimental)'
 
 
-
-def load_db(db_dir):
-    artifacts={}
-    if not U.pexists(U.pjoin(db_dir,'designs')):
-        return artifacts
-    for id in os.listdir(U.pjoin(db_dir,'designs')):
-        artifact = DesignArtifact.load(U.pjoin(db_dir,'designs',id))
-        artifacts[artifact.acronym]=artifact
-    return artifacts
-
-
-
-
-
-def _view_designs(evosys,design_artifacts,selected_design):
+def _view_designs(evosys):
 
     st.title('Design Artifact Viewer')
 
-    # st.header('14M Training Results')
-    csv_res_dir=U.pjoin(evosys.evo_dir,'..','..','notebooks','all_acc_14M.csv')
-    csv_res_norm_dir=U.pjoin(evosys.evo_dir,'..','..','notebooks','all_acc_14M_norm.csv')
-    df=pd.read_csv(csv_res_dir)
-    df_norm=pd.read_csv(csv_res_norm_dir)
 
-    col1,col2=st.columns(2)
-    with col1:
-        st.markdown('### Raw Results on 14M')
-        st.dataframe(df)
-    with col2:
-        st.markdown('### Relative to Random (%)')
-        st.dataframe(df_norm)
+    
+    with st.status('Loading design artifacts...'):
+        design_artifacts = evosys.ptree.get_design_artifacts()
+
+    with st.sidebar:
+        selected_design = st.selectbox('Select a design',list(design_artifacts.keys()))
+
+    # # st.header('14M Training Results')
+    # csv_res_dir=U.pjoin(evosys.evo_dir,'..','..','notebooks','all_acc_14M.csv')
+    # csv_res_norm_dir=U.pjoin(evosys.evo_dir,'..','..','notebooks','all_acc_14M_norm.csv')
+    # df=pd.read_csv(csv_res_dir)
+    # df_norm=pd.read_csv(csv_res_norm_dir)
+
+    # col1,col2=st.columns(2)
+    # with col1:
+    #     st.markdown('### Raw Results on 14M')
+    #     st.dataframe(df)
+    # with col2:
+    #     st.markdown('### Relative to Random (%)')
+    #     st.dataframe(df_norm)
 
     if design_artifacts:
         design=design_artifacts[selected_design]
@@ -89,10 +89,6 @@ def _view_designs(evosys,design_artifacts,selected_design):
     else:
         st.warning('No design artifacts found in the experiment directory')
 
-
-def _view_sessions(evosys):
-    st.title('Session Viewer')
-    st.warning('This feature is not yet implemented')
 
 
 def _view_dialogs(evosys):
@@ -204,6 +200,503 @@ def _view_flows(evosys,selected_flow,flow):
 
 
 
+#############################################################################
+
+
+
+############################################################
+
+
+
+def dict_sub(d1,d2):
+    if not d1 or not d2:
+        return d1
+    d1 = copy.deepcopy(d1)
+    for k in d1:
+        if k not in d2:
+            continue
+        if isinstance(d1[k],dict):
+            d1[k] = dict_sub(d1[k],d2[k])
+        else:
+            d1[k] -= d2[k]
+    return d1
+
+def get_relative_metrics(evosys,design_vector,relative_vector):
+    proposal_rating,training_metrics,eval_metrics,eval_stderrs = get_raw_metrics(design_vector)
+    if not relative_vector:
+        return proposal_rating,training_metrics,eval_metrics,eval_stderrs
+    if isinstance(relative_vector,str):
+        if relative_vector == 'random':
+            _proposal_rating,_training_metrics,r_eval_metrics,r_eval_stderrs = get_random_metrics(evosys)
+            _eval_metrics = {scale:r_eval_metrics for scale in eval_metrics}
+            _eval_stderrs = {scale:r_eval_stderrs for scale in eval_stderrs}
+        elif relative_vector == 'none':
+            return proposal_rating,training_metrics,eval_metrics,eval_stderrs
+        else:
+            raise ValueError(f'Unknown relative vector: {relative_vector}')
+    else:
+        _proposal_rating,_training_metrics,_eval_metrics,_eval_stderrs = get_raw_metrics(relative_vector)
+    if proposal_rating and _proposal_rating:
+        proposal_rating -= _proposal_rating
+    training_metrics = dict_sub(training_metrics,_training_metrics)
+    eval_metrics = dict_sub(eval_metrics,_eval_metrics)
+    eval_stderrs = dict_sub(eval_stderrs,_eval_stderrs)
+    return proposal_rating,training_metrics,eval_metrics,eval_stderrs
+
+
+def random_normalized_eval_metrics(evosys,design_vector,threshold=None):
+    if threshold is None:
+        threshold = evosys.selector.select_cfg.get('random_eval_threshold',DEFAULT_RANDOM_EVAL_THRESHOLD)
+    _,_,_eval_metrics,_ = get_relative_metrics(evosys,design_vector,'random')
+    _,_,r_eval_metrics,_ = get_random_metrics(evosys)
+    normalized_eval_metrics = {}
+    for scale in _eval_metrics:
+        normalized_eval_metrics[scale] = {}
+        for metric in _eval_metrics[scale]:
+            if metric not in r_eval_metrics:
+                continue
+            normalized_eval_metrics[scale][metric] = {}
+            for task in _eval_metrics[scale][metric]:
+                if task not in r_eval_metrics[metric]:
+                    continue
+                _result = _eval_metrics[scale][metric][task]
+                r_result = r_eval_metrics[metric][task]
+                if metric.endswith(',H'):
+                    if _result > r_result and (r_result == 0 or (_result - r_result)/r_result > threshold):
+                        normalized_eval_metrics[scale][metric][task] = _result
+                elif metric.endswith(',L'):
+                    if _result < r_result and (r_result == 0 or (r_result - _result)/_result > threshold):
+                        normalized_eval_metrics[scale][metric][task] = _result
+    return normalized_eval_metrics
+   
+
+def _mean_eval_metrics(eval_metrics):
+    mean_metrics = {}
+    for scale in eval_metrics:
+        mean_metrics[scale] = {}
+        for metric in eval_metrics[scale]:
+            result = eval_metrics[scale][metric]
+            mean_metrics[scale][metric] = np.mean([result[i] for i in result])
+    return mean_metrics
+
+
+def design_utility_simple(select_cfg,design_vector):
+    proposal_rating,_,eval_metrics,_ = get_raw_metrics(design_vector)
+    scale_weighted_grouped_metrics = scale_weight_results(select_cfg,group_results(eval_metrics))
+    _01_normed_metrics,_ = _flat_weighted_metrics(scale_weighted_grouped_metrics)
+    return proposal_rating,np.mean(list(_01_normed_metrics.values()))
+
+def get_random_metrics(evosys):
+    eval_metrics,eval_stderrs = eval_results_getter(evosys.ptree.random_baseline)
+    return None,None,eval_metrics,eval_stderrs
+
+
+def show_design(evosys,design_vector,relative=None,threshold=None):
+    select_cfg = evosys.selector.select_cfg
+    confidence,total_points = design_confidence_simple(select_cfg,design_vector)
+    confidence_percentage = confidence / total_points * 100
+    proposal_rating,weighted_acc = design_utility_simple(select_cfg,design_vector)
+    proposal_rating,training_metrics,eval_metrics,eval_stderrs=get_raw_metrics(design_vector)
+    grouped_metrics = group_results(eval_metrics)
+    scale_weighted_grouped_metrics = scale_weight_results(select_cfg,grouped_metrics)
+    _01_normed_metrics,_unnormed_metrics = _flat_weighted_metrics(scale_weighted_grouped_metrics)
+    
+    ranking_metrics,ranking_metrics_unnormed = get_ranking_metrics(select_cfg,design_vector,False)
+    cols=st.columns(2)
+    with cols[0]:
+        st.write(f'###### Design confidence (simple count points): ```{confidence_percentage:.2f}%``` ({confidence}/{total_points})')
+        st.write(f'###### Proposal rating: ```{proposal_rating}/5.0```') if proposal_rating else st.write('Proposal rating: ```N/A```')
+        st.write(f'###### Scale-Weighted mean 01 normed metrics: ```{weighted_acc}```')
+    
+    with cols[1]:
+        with st.expander('**Ranking metrics (0-1 normed)**',expanded=False):
+            st.json(ranking_metrics)
+        with st.expander('***Ranking metrics (Unnormed)***',expanded=False):
+            st.json(ranking_metrics_unnormed)
+
+    cols=st.columns(2)
+    with cols[0]:
+        st.write('##### Raw metrics')
+        RAW_METRICS = [
+            'Training metrics',
+            'Evaluation metrics',
+            'Evaluation stderrs',
+            'Grouped evaluation metrics',
+            'Scale Weighted Grouped Evaluation Metrics',
+        ]
+        selected_raw_metrics = st.selectbox('Select raw metrics to show',options=RAW_METRICS)
+        with st.expander(selected_raw_metrics,expanded=True):
+            if selected_raw_metrics == 'Training metrics':
+                st.json(training_metrics)
+            elif selected_raw_metrics == 'Evaluation metrics':
+                st.json(eval_metrics)
+            elif selected_raw_metrics == 'Evaluation stderrs':
+                st.json(eval_stderrs)
+            elif selected_raw_metrics == 'Grouped evaluation metrics':
+                st.json(grouped_metrics)
+            elif selected_raw_metrics == 'Scale Weighted Grouped Evaluation Metrics':
+                st.json(scale_weighted_grouped_metrics)
+
+    with cols[1]:
+        st.write('##### Processed metrics')
+        PROCESSED_METRICS = [
+            'Mean grouped evaluation metrics',
+            'Random normalized evaluation metrics',
+            'Relative evaluation metrics',
+            'Scale Weighted Grouped 0-1 Normed Metrics',
+            'Scale Weighted Grouped Unnormed Metrics',
+            'Tie sensitivity normalized metrics'
+        ]
+        selected_processed_metrics = st.selectbox('Select processed metrics to show',options=PROCESSED_METRICS)
+        with st.expander(selected_processed_metrics,expanded=True):
+            if selected_processed_metrics == 'Mean grouped evaluation metrics':
+                st.json(_mean_eval_metrics(group_results(eval_metrics)))
+            elif selected_processed_metrics == 'Random normalized evaluation metrics':
+                st.json(random_normalized_eval_metrics(evosys,design_vector,threshold))
+            elif selected_processed_metrics == 'Relative evaluation metrics':
+                if relative and relative != 'none':
+                    st.json(get_relative_metrics(evosys,design_vector,relative)[2])
+                else:
+                    st.info('No relative metrics to show.')
+            elif selected_processed_metrics == 'Scale Weighted Grouped 0-1 Normed Metrics':
+                st.json(_01_normed_metrics)
+            elif selected_processed_metrics == 'Scale Weighted Grouped Unnormed Metrics':
+                st.json(_unnormed_metrics)
+
+
+
+
+##################### Visualization #####################
+
+def visualize_ranking_quadrant(quadrants):
+    design_upper = quadrants['design_upper']
+    design_lower = quadrants['design_lower']
+    confidence_upper = quadrants['confidence_upper']
+    confidence_lower = quadrants['confidence_lower']
+
+    # Combine design and confidence data
+    design_data = pd.concat([design_upper, design_lower])
+    confidence_data = pd.concat([confidence_upper, confidence_lower])
+    
+    # Merge design and confidence data on 'name'
+    combined_data = pd.merge(design_data, confidence_data, on='name', suffixes=('_design', '_confidence'))
+    combined_data = combined_data.drop_duplicates(subset=['name'])
+
+    fig, ax = plt.subplots(figsize=(12, 12))
+
+    # Calculate the midpoints for x and y axes
+    x_midpoint = (confidence_upper['confidence'].min() + confidence_lower['confidence'].max()) / 2
+    y_midpoint = (design_upper['rating'].min() + design_lower['rating'].max()) / 2
+
+    # Adjust the data points relative to the midpoints
+    combined_data['confidence_adjusted'] = combined_data['confidence'] - x_midpoint
+    combined_data['rating_adjusted'] = combined_data['rating'] - y_midpoint
+
+    # Plot the points
+    scatter = ax.scatter(combined_data['confidence_adjusted'], combined_data['rating_adjusted'], 
+                         c=combined_data['rank_design'], cmap='viridis', alpha=0.7)
+
+    # Add labels and title
+    ax.set_xlabel('Confidence')
+    ax.set_ylabel('Design Rating')
+    ax.set_title('Confidence vs Design Rating Quadrant')
+
+    # Add colorbar
+    plt.colorbar(scatter, label='Design Rank')
+
+    # Add gridlines
+    ax.grid(True)
+
+    # Add quadrant labels
+    ax.text(0.95, 0.95, 'Good Design\nHigh Confidence', ha='right', va='top', transform=ax.transAxes, fontsize=12)
+    ax.text(0.05, 0.95, 'Good Design\nLow Confidence', ha='left', va='top', transform=ax.transAxes, fontsize=12)
+    ax.text(0.95, 0.05, 'Poor Design\nHigh Confidence', ha='right', va='bottom', transform=ax.transAxes, fontsize=12)
+    ax.text(0.05, 0.05, 'Poor Design\nLow Confidence', ha='left', va='bottom', transform=ax.transAxes, fontsize=12)
+
+    # Add axes at the midpoint
+    ax.axhline(y=0, color='k', linestyle='--')
+    ax.axvline(x=0, color='k', linestyle='--')
+
+    # Add name labels to points
+    for idx, row in combined_data.iterrows():
+        ax.annotate(row['name'], (row['confidence_adjusted'], row['rating_adjusted']), 
+                    xytext=(5, 5), textcoords='offset points', fontsize=8, alpha=0.7)
+
+    return fig
+    
+
+##################### Leaderboard #####################
+
+LEADERBOARD_1 = [
+    'blimp',
+    'inverse_scaling',
+    'glue',
+    'qa4mre',
+    'mathqa',
+    'wsc273'
+]
+
+def post_process_leaderboard(leaderboard):
+    # transpose the dataframe
+    leaderboard = leaderboard.transpose()
+    leaderboard['avg.']=leaderboard.mean(axis=1)
+    return leaderboard
+
+def export_leaderboards(evosys,design_vectors, baseline_vectors):
+    _,_,eval_metrics,_ = get_random_metrics(evosys)
+    random_eval_metrics = _group_results(eval_metrics)
+    design_eval_metrics = {}
+    baseline_eval_metrics = {}
+    for mode in ['design','baseline']:
+        vectors = design_vectors if mode == 'design' else baseline_vectors
+        eval_metrics = design_eval_metrics if mode == 'design' else baseline_eval_metrics
+        for acronym in vectors:
+            _eval_metrics = get_raw_metrics(vectors[acronym])[2]
+            if len(_eval_metrics) > 0:
+                _eval_metrics = group_results(_eval_metrics)
+                for scale in _eval_metrics:
+                    if scale not in eval_metrics:
+                        eval_metrics[scale] = {}
+                    eval_metrics[scale][acronym] = _eval_metrics[scale]
+    random_01_normed_metrics,random_unnormed_metrics=_flat_weighted_metrics(random_eval_metrics)
+    leaderboards_normed={}
+    leaderboards_unnormed_h={}
+    leaderboards_unnormed_l={}
+    for scale in design_eval_metrics:
+        leaderboards_normed[scale] = pd.DataFrame(list(random_01_normed_metrics.items()), columns=['metrics', 'random']).set_index('metrics')
+        leaderboards_unnormed_h[scale] = pd.DataFrame(list(random_unnormed_metrics['higher_is_better'].items()), columns=['metrics', 'random']).set_index('metrics')
+        leaderboards_unnormed_l[scale] = pd.DataFrame(list(random_unnormed_metrics['lower_is_better'].items()), columns=['metrics', 'random']).set_index('metrics')
+        _design_eval_metrics = design_eval_metrics[scale]
+        _baseline_eval_metrics = baseline_eval_metrics[scale]
+        for mode in ['baseline','design']:
+            _eval_metrics = _design_eval_metrics if mode == 'design' else _baseline_eval_metrics
+            for acronym in _eval_metrics:
+                colname = acronym if mode == 'design' else acronym+' (baseline)'
+                _01_normed_metrics,_unnormed_metrics=_flat_weighted_metrics(_eval_metrics[acronym])
+                _leaderboards_normed = pd.DataFrame(list(_01_normed_metrics.items()),columns=['metrics',colname]).set_index('metrics')
+                leaderboards_normed[scale] = pd.concat([leaderboards_normed[scale],_leaderboards_normed],axis=1)
+                _leaderboards_unnormed_h = pd.DataFrame(list(_unnormed_metrics['higher_is_better'].items()),columns=['metrics',colname]).set_index('metrics')
+                leaderboards_unnormed_h[scale] = pd.concat([leaderboards_unnormed_h[scale],_leaderboards_unnormed_h],axis=1)
+                _leaderboards_unnormed_l = pd.DataFrame(list(_unnormed_metrics['lower_is_better'].items()),columns=['metrics',colname]).set_index('metrics')
+                leaderboards_unnormed_l[scale] = pd.concat([leaderboards_unnormed_l[scale],_leaderboards_unnormed_l],axis=1)
+    for scale in leaderboards_normed:
+        leaderboards_normed[scale] = post_process_leaderboard(leaderboards_normed[scale])
+        leaderboards_unnormed_h[scale] = post_process_leaderboard(leaderboards_unnormed_h[scale])
+        leaderboards_unnormed_l[scale] = post_process_leaderboard(leaderboards_unnormed_l[scale])
+    return leaderboards_normed,leaderboards_unnormed_h,leaderboards_unnormed_l
+
+def leaderboard_relative(leaderboard,relative='random'):
+    base_row = leaderboard.loc[relative]
+    leaderboard = leaderboard - base_row
+    leaderboard = leaderboard*100
+    return leaderboard.round(2)
+
+
+
+def leaderboard_filter(leaderboard,task_filter=[]):
+    if not task_filter:
+        return leaderboard
+    filtered_columns = [col for col in leaderboard.columns if any(task in col for task in task_filter)]
+    filtered_leaderboard = leaderboard[filtered_columns]
+    filtered_leaderboard['avg.'] = filtered_leaderboard.mean(axis=1)
+    return filtered_leaderboard
+
+def selector_lab(evosys,project_dir):
+    st.title('*Experiment Visualizer*')
+
+    with st.status('Loading latest data...'):
+        design_vectors = evosys.ptree.get_design_vectors()
+        baseline_vectors = evosys.ptree.get_baseline_vectors()
+
+    st.subheader('Dynamic Leaderboard')
+    with st.status('Generating leaderboard...'):
+        leaderboards_normed,leaderboards_unnormed_h,leaderboards_unnormed_l=export_leaderboards(evosys,design_vectors,baseline_vectors)
+    cols = st.columns([1,1,3])
+    with cols[0]:
+        scale = st.selectbox('Select scale',options=list(leaderboards_normed.keys()))
+    with cols[1]:
+        _options = ['random']+list(baseline_vectors.keys())
+        relative = st.selectbox('Relative to',options=_options)
+    with cols[2]:
+        input_task_filter = st.text_input('Task filter list (keywords matching, comma separated)',value=','.join(LEADERBOARD_1))
+        input_task_filter=[i.strip() for i in input_task_filter.split(',')]
+    cols = st.columns(2)
+
+    with cols[0]:
+        with st.expander('Normed metrics (0-1, higher is better)',expanded=True):
+            _leaderboards_normed = leaderboard_filter(leaderboards_normed[scale],input_task_filter)
+            st.dataframe(_leaderboards_normed)
+    with cols[1]:
+        with st.expander(f'Relative to ```{relative}``` (Normed metrics, %)',expanded=True):
+            relative = f'{relative} (baseline)' if relative != 'random' else 'random'
+            st.dataframe(leaderboard_relative(_leaderboards_normed,relative=relative))
+    
+    cols = st.columns(2)
+    with cols[0]:
+        with st.expander('Unnormed metrics (Higher is better)'):
+            _leaderboards_unnormed_h = leaderboard_filter(leaderboards_unnormed_h[scale],input_task_filter)
+            if _leaderboards_unnormed_h.empty:
+                st.info('No data to show')
+            else:
+                st.dataframe(_leaderboards_unnormed_h)
+    with cols[1]:
+        with st.expander('Unnormed metrics (Lower is better)'):
+            _leaderboards_unnormed_l = leaderboard_filter(leaderboards_unnormed_l[scale],input_task_filter)
+            if _leaderboards_unnormed_l.empty:
+                st.info('No data to show')
+            else:
+                st.dataframe(_leaderboards_unnormed_l)
+
+
+    st.subheader('Metrics Explorer')
+
+    cols = st.columns(3)
+    with cols[0]:
+        show_mode = st.selectbox('Select a category',options=['design','baseline'])
+
+    with cols[1]:
+        if show_mode == 'design':
+            vectors = design_vectors
+        elif show_mode == 'baseline':
+            vectors = baseline_vectors
+        options = []
+        for design in vectors:
+            if len(vectors[design]["verifications"]) > 0:
+                options.append(f'{design} ({len(vectors[design]["verifications"])} verified)')
+        selected_design = st.selectbox('Select a verified design',options=options)
+        selected_design = selected_design.split(' ')[0]
+        design_vector=vectors[selected_design]
+
+    with cols[2]:
+        relative = st.selectbox('Relative to',options=['none','random']+list(baseline_vectors.keys()))
+        if relative == 'none':
+            relative = None
+        elif relative == 'random':
+            relative = 'random'
+        else:
+            relative = baseline_vectors[relative]
+
+    cols=st.columns(3)
+    with cols[0]:
+        with st.expander('Confidence points'):
+            confidence_points = U.safe_get_cfg_dict(evosys.selector.select_cfg,'confidence_points',DEFAULT_CONFIDENCE_POINTS)
+            st.json(confidence_points)
+    with cols[1]:
+        with st.expander('Random eval norm threshold'):
+            threshold = st.number_input('Threshold',min_value=0.0,max_value=1.0,step=0.01,value=evosys.selector.select_cfg.get('random_eval_threshold',DEFAULT_RANDOM_EVAL_THRESHOLD))
+    with cols[2]:
+        with st.expander('Scale weights'):
+            scale_weights = U.safe_get_cfg_dict(evosys.selector.select_cfg,'scale_weights',DEFAULT_SCALE_WEIGHTS)
+            st.json(scale_weights)
+
+    show_design(evosys,design_vector,relative,threshold)
+
+
+    st.subheader('**Selector Ranking**',help='How the selector ranks the designs and make decisions.')
+
+    with st.expander('Notes about Selector design and the Evolution System (For internal reference)',icon='🎼'):
+        st.markdown(SELECTOR_NOTES)
+
+    ranking_args = U.safe_get_cfg_dict(evosys.selector.select_cfg,'ranking_args',DEFAULT_RANKING_ARGS)
+    cols = st.columns([5,1,0.8,0.8])
+    with cols[0]:
+        _cols=st.columns([2,1])
+        with _cols[0]:
+            _value = ranking_args['ranking_method']
+            if isinstance(_value,str):
+                _value = [_value]
+            ranking_args['ranking_method'] = st.multiselect('Ranking method (Required)',options=RANKING_METHODS,default=_value,
+                help='Ranking method to use, if muliple methods are provided, will be aggregated by the "multi-rank merge" method')
+        with _cols[1]:
+            ranking_args['multi_rank_merge'] = st.selectbox('Multi-rank merge',options=MERGE_METHODS)
+    with cols[1]:
+        st.write('')
+        normed_only = st.checkbox('Normed only',value=ranking_args['normed_only'])
+    with cols[2]:
+        st.write('')
+        drop_zero = st.checkbox('Drop All 0',value=ranking_args['drop_zero'])
+    with cols[3]:
+        st.write('')
+        drop_na = st.checkbox('Drop N/A',value=ranking_args['drop_na'])
+    # with cols[4]:
+    #     st.write('')
+    #     rank_design_btn = st.button('Rank',use_container_width=True)
+
+    with st.expander('Ranking method arguments',expanded=True):
+        cols = st.columns(4)
+        with cols[0]:
+            ranking_args['draw_margin'] = st.number_input('Draw margin',min_value=0.0,max_value=1.0,step=0.001,value=ranking_args['draw_margin'], format="%0.3f",
+                help='Margin for draw (tie)')
+        with cols[1]:
+            ranking_args['convergence_threshold'] = st.number_input('Convergence threshold',min_value=0.0,max_value=1.0,step=0.001,value=ranking_args['convergence_threshold'], format="%0.5f",
+            help='Convergence threshold for iterations in methods like Markov chain')
+        with cols[2]:
+            ranking_args['markov_restart'] = st.number_input('Markov restart',min_value=0.0,max_value=1.0,step=0.001,value=ranking_args['markov_restart'], format="%0.3f")
+        with cols[3]:
+            ranking_args['metric_wise_merge'] = st.selectbox('Metric-wise merge',options=['None']+MERGE_METHODS,
+                help='If set, will rank for each metric separately and then aggregate by the "metric-wise merge" method, not available for markov method')
+
+    # if rank_design_btn:
+    assert ranking_args['ranking_method'], 'Ranking method is required'
+    with st.status('Generating ranking matrix...',expanded=True):
+        ranking_matrix = get_ranking_matrix(evosys.selector.select_cfg,design_vectors,normed_only,
+            drop_na=drop_na,drop_zero=drop_zero)
+        # compute average at the end of each row
+        _ranking_matrix = ranking_matrix.copy()
+        _ranking_matrix['avg.'] = _ranking_matrix.mean(axis=1)
+        st.dataframe(_ranking_matrix)
+    
+    with st.status('Ranking designs...',expanded=True):
+        design_rank,subranks,subsubranks = rank_designs(ranking_matrix,ranking_args)
+    
+    with st.expander('Design Ranking',expanded=True):
+        cols=st.columns(3)
+        with cols[0]:
+            st.subheader('Design Ranking')
+            st.write(design_rank)
+        with cols[1]:
+            select_subrank = st.selectbox('Select subrank',options=subranks.keys())
+            st.write(subranks[select_subrank])
+        with cols[2]:
+            select_subsubrank = st.selectbox('Select subsubrank',options=subsubranks[select_subrank].keys())
+            if select_subsubrank:
+                st.write(subsubranks[select_subrank][select_subsubrank])
+            else:
+                st.info('No subsubrank to show')
+
+
+    st.subheader('Ranking Quadrant',help='The quadrants how selector make exploit & exploration trade-off decision for design and verify selections.')
+    cols = st.columns([1,2])
+
+    with cols[0]:
+        with st.status('Ranking confidence filter by design rank...',expanded=True):
+            st.subheader('Confidence Ranking')
+            confidence_rank = rank_confidences(evosys.selector.select_cfg,design_vectors,design_rank['name'].tolist())
+            st.dataframe(confidence_rank)
+
+    with cols[1]:
+        with st.status('Generating ranking quadrant...',expanded=True):
+            ranking_quadrants = _get_ranking_quadrant(evosys.selector.select_cfg,design_rank,confidence_rank)
+            combined_quadrant = _combine_design_quadrant(ranking_quadrants)
+            fig = visualize_ranking_quadrant(ranking_quadrants)
+            st.pyplot(fig)
+
+    with cols[0]:
+        with st.expander('Ranked Ranking Quadrants',expanded=True):
+            _rerank_method = st.selectbox('Rerank merge method',options=MERGE_METHODS)
+            ranked_quadrants = _rank_combined_quadrant(combined_quadrant,_rerank_method,rename=False)
+            _category = st.selectbox('Select a category',options=ranked_quadrants.keys())
+    
+    # with st.expander('Exploration settings'):
+    #     design_explore_args = U.safe_get_cfg_dict(evosys.selector.select_cfg,'explore_args',DEFAULT_DESIGN_EXPLORE_ARGS)
+    #     verify_explore_args = U.safe_get_cfg_dict(evosys.selector.select_cfg,'verify_explore_args',DEFAULT_VERIFY_EXPLORE_ARGS)
+    #     seed_dist = U.safe_get_cfg_dict(evosys.selector.select_cfg,'seed_dist',DEFAULT_SEED_DIST)
+
+    # st.subheader('Performance improvement over time')
+    # TODO
+
+
+
 
 def viewer(evosys,project_dir):
     
@@ -232,25 +725,16 @@ def viewer(evosys,project_dir):
             }
             selected_flow = st.selectbox("Select a flow", list(flows.keys()))
             flow = flows[selected_flow]
-        elif view_mode == ViewModes.DESIGNS:
-            ckpts=os.listdir(evosys.ckpt_dir)
-            ns_index=ckpts.index(evosys.evoname)
-            selected_ckpt=st.selectbox('Select a namespace',ckpts,index=ns_index)
-            db_dir=U.pjoin(evosys.ckpt_dir,selected_ckpt,'db')
-            design_artifacts = load_db(db_dir)
-            selected_design = st.selectbox("Select a design", list(design_artifacts.keys()))
-        elif view_mode == ViewModes.DIALOGS:
-            pass
 
 
     if view_mode == ViewModes.DESIGNS:
-        _view_designs(evosys,design_artifacts,selected_design)
-
-    elif view_mode == ViewModes.SESSIONS:
-        _view_sessions(evosys)
+        _view_designs(evosys)
 
     elif view_mode == ViewModes.DIALOGS:
         _view_dialogs(evosys)
             
     elif view_mode == ViewModes.FLOW:
         _view_flows(evosys,selected_flow,flow)
+
+    elif view_mode == ViewModes.METRICS:
+        selector_lab(evosys,project_dir)
