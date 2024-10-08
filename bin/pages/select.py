@@ -192,7 +192,7 @@ def design_selector(evosys,project_dir):
                     n_sources[source] = st.number_input(label=f'{source} ({sources[source]})',min_value=0,value=n_sources[source],max_value=sources[source])#,disabled=True)
 
     with st.expander('Ranking and Design Exploration settings'):
-        st.write('**TODO** refer to viewer for details')
+        st.write("**TODO:** Refer to viewer page for more details")
 
     if st.button('Select'):
         selector_args = {
@@ -246,7 +246,7 @@ def verify_selector(evosys,project_dir):
     #     st.write('*Random strategy will use up smaller scale budgets first.*')
 
     with st.expander('Ranking and Verify Exploration settings'):
-        st.write('**TODO** refer to viewer for details')
+        st.write("**TODO:** Refer to viewer page for more details")
 
     verify_selected = st.button('Select')
 

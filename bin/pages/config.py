@@ -419,6 +419,8 @@ def advanced_config(evosys):
             help='Before a design thread is started, the agent type of each role will be randomly selected based on the weights.'
         )   
         
+    with st.expander(f"Selector Ranking and Exploration Settings for ```{evosys.evoname}```",expanded=False,icon='🧰'):
+        st.write("**TODO:** Refer to viewer page for more details")
 
 
 def config(evosys,project_dir):

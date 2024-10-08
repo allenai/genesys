@@ -65,7 +65,7 @@ class CommandCenter:
                 'status': 'connected',
                 'last_heartbeat': firestore.SERVER_TIMESTAMP,
                 'evoname': self.evosys.evoname,
-                'group_id': self.evosys.group_id,
+                'group_id': self.evosys.CM.group_id,
             })
             self.active = True
 
@@ -210,7 +210,8 @@ def evolve(evosys,project_dir):
     
     if not st.session_state.evo_running:
         if run_evo_btn:       
-            with st.spinner('Launching...'):   
+            with st.spinner('Launching...'):  
+                 
                 launch_evo(evosys,input_design_to_verify_ratio)
     else:
         if stop_evo_btn:

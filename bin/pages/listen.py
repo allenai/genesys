@@ -259,7 +259,8 @@ def listen(evosys, project_dir):
 
     with col2:
         input_group_id = st.text_input("Group ID (empty for default)", disabled=st.session_state.listening_mode)
-
+        input_group_id = input_group_id if input_group_id else 'default'
+        
     with col3:
         input_max_design_threads = st.number_input("Max design threads", min_value=1, value=5, disabled=st.session_state.listening_mode)
 
